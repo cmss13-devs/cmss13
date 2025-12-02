@@ -1,4 +1,4 @@
-//I still dont think this should be a closet but whatever
+//I still don't think this should be a closet but whatever
 /obj/structure/closet/fireaxecabinet
 	name = "Fire Axe Cabinet"
 	desc = "There is small label that reads \"For Emergency use only\" along with details for safe use of the axe. As if."
@@ -187,8 +187,8 @@
 		hasaxe = 1
 	icon_state = text("fireaxe[][][][]",hasaxe,src.localopened,src.hitstaken,src.smashed)
 
-/obj/structure/closet/fireaxecabinet/open()
+/obj/structure/closet/fireaxecabinet/open(mob/user, force)
 	return
 
-/obj/structure/closet/fireaxecabinet/close()
+/obj/structure/closet/fireaxecabinet/close(mob/user)
 	return

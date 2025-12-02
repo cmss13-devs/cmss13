@@ -16,6 +16,7 @@
 	alpha = 0 // We want this thing to be transparent when it drops on a turf because it will be on the user's turf. We then want to make it opaque as it travels.
 	layer = FLY_LAYER
 	animate_movement = NO_STEPS //disables gliding because it fights against what animate() is doing
+	blocks_emissive = EMISSIVE_BLOCK_GENERIC
 
 	var/datum/ammo/ammo //The ammo data which holds most of the actual info.
 
@@ -940,7 +941,7 @@
 	. = TRUE
 	bullet_message(P, damaging = damage)
 	if(damage)
-		apply_damage(damage, P.ammo.damage_type, P.def_zone, 0, 0, P)
+		apply_damage(damage, P.ammo.damage_type, P.def_zone, 0, 0, P, enviro=P.ammo.damage_enviro)
 		P.play_hit_effect(src)
 
 	SEND_SIGNAL(P, COMSIG_BULLET_ACT_LIVING, src, damage, damage)
@@ -973,8 +974,8 @@
 		apply_stamina_damage(P.ammo.stamina_damage, P.def_zone, ARMOR_ENERGY) // Stamina damage is energy
 
 	//Shields
-	if( !(ammo_flags & AMMO_ROCKET) ) //No, you can't block rockets.
-		if(prob(75) && check_shields(damage * 0.65, "[P]") ) // Lower chance to block bullets
+	if(!(ammo_flags & AMMO_ROCKET)) //No, you can't block rockets.
+		if(check_shields("[P]", get_dir(src, P.firer), attack_type = SHIELD_ATTACK_PROJECTILE)) // Lower chance to block bullets
 			P.ammo.on_shield_block(src)
 			bullet_ping(P)
 			return
@@ -1032,7 +1033,7 @@
 		handle_blood_splatter(splatter_dir)
 
 		. = TRUE
-		apply_damage(damage_result, P.ammo.damage_type, P.def_zone, firer = P.firer)
+		apply_damage(damage_result, P.ammo.damage_type, P.def_zone, firer=P.firer, enviro=P.ammo.damage_enviro)
 
 		if(P.ammo.shrapnel_chance > 0 && prob(P.ammo.shrapnel_chance + floor(damage / 10)))
 			if(ammo_flags & AMMO_SPECIAL_EMBED)
@@ -1104,6 +1105,7 @@
 			"armor_integrity" = armor_integrity,
 			"direction" = P.dir,
 			"armour_type" = GLOB.xeno_ranged,
+			"enviro" = P.ammo.damage_enviro,
 		)
 		SEND_SIGNAL(src, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE, damagedata)
 		damage_result = armor_damage_reduction(GLOB.xeno_ranged, damagedata["damage"],
@@ -1131,7 +1133,7 @@
 		//only apply the blood splatter if we do damage
 		handle_blood_splatter(get_dir(P.starting, loc))
 
-		apply_damage(damage_result,P.ammo.damage_type, P.def_zone) //Deal the damage.
+		apply_damage(damage_result,P.ammo.damage_type, P.def_zone, enviro=P.ammo.damage_enviro) //Deal the damage.
 		if(length(xeno_shields))
 			P.play_shielded_hit_effect(src)
 		else

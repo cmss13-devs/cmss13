@@ -19,6 +19,9 @@ GLOBAL_VAR_INIT(total_dead_xenos, 0)
 	if(SSticker?.mode?.hardcore)
 		ghostize()
 
+	if(hauled_mob)
+		release_haul(stuns=FALSE)
+
 	set_light_range(0)
 
 	if(pulledby)
@@ -73,8 +76,10 @@ GLOBAL_VAR_INIT(total_dead_xenos, 0)
 
 			if(hive && hive.living_xeno_queen == src)
 				notify_ghosts(header = "Queen Death", message = "The Queen has been slain!", source = src, action = NOTIFY_ORBIT)
-				xeno_message(SPAN_XENOANNOUNCE("A sudden tremor ripples through the hive... the Queen has been slain! Vengeance!"),3, hivenumber)
-				hive.slashing_allowed = XENO_SLASH_ALLOWED
+				SScmtv.spectate_event("Queen Death", src)
+				xeno_message(SPAN_XENOANNOUNCE("A sudden tremor ripples through the hive... the Queen has been slain! Vengeance!"), 3, hivenumber)
+				if(!hive.hive_flags_locked)
+					hive.hive_flags = initial(hive.hive_flags)
 				hive.set_living_xeno_queen(null)
 				//on the off chance there was somehow two queen alive
 				for(var/mob/living/carbon/xenomorph/queen/Q in GLOB.living_xeno_list)

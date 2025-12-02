@@ -202,6 +202,8 @@
 	var/mob/living/M
 	if(ismob(A))
 		M = A
+		for(var/datum/action/minimap/user_map in M.actions)
+			user_map.override_locator(exterior)
 	else
 		var/mobs_amount = 0
 		for(M in A)
@@ -298,6 +300,11 @@
 				to_chat(A, SPAN_WARNING("Something is blocking the exit!"))
 			return FALSE
 
+	var/mob/living/mob
+	if(ismob(A))
+		mob = A
+		for(var/datum/action/minimap/user_map in mob.actions)
+			user_map.clear_locator_override()
 	A.forceMove(get_turf(exit_turf))
 	update_passenger_count()
 	return TRUE
@@ -335,3 +342,18 @@
 	for(var/turf/T as anything in block(bounds[1], bounds[2]))
 		for(var/obj/effect/landmark/interior/L in T)
 			L.on_load(src)
+
+/datum/interior/proc/drop_human_bodies(turf/drop_turf)
+	if((passengers_taken_slots == 0) && (revivable_dead_taken_slots == 0))
+		return // no one of interest inside
+
+	var/count = 0
+
+	for(var/mob/living/L as anything in get_passengers())
+		if(L.stat == DEAD)
+			L.forceMove(drop_turf) // Drop the bodies on the floor
+			count += 1
+
+	if(count > 0)
+		exterior.visible_message(SPAN_NOTICE("The sudden jolt throws \the [count == 1 ? "body" : "bodies"] out of \the [exterior]"))
+		update_passenger_count()

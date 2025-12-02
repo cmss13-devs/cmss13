@@ -69,8 +69,8 @@
 		if(new_character.client)
 			new_character.client.init_verbs()
 			new_character.client.change_view(GLOB.world_view_size) //reset view range to default.
-			new_character.client.pixel_x = 0
-			new_character.client.pixel_y = 0
+			new_character.client.set_pixel_x(0)
+			new_character.client.set_pixel_y(0)
 			if(usr && usr.open_uis)
 				for(var/datum/nanoui/ui in usr.open_uis)
 					if(ui.allowed_user_stat == -1)
@@ -80,6 +80,10 @@
 
 	SEND_SIGNAL(src, COMSIG_MIND_TRANSFERRED, old_current)
 	SEND_SIGNAL(new_character, COMSIG_MOB_NEW_MIND, current.client)
+
+	// comm_title is probably null when this is called.
+	var/datum/highlight_keywords_payload/payload = new(new_character)
+	new_character.client.tgui_panel.window.send_message("settings/updateHighlightKeywords", payload.to_list())
 
 	new_character.refresh_huds(current) //inherit the HUDs from the old body
 	new_character.aghosted = FALSE //reset aghost and away timer

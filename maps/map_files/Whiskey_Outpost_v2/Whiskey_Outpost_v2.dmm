@@ -289,6 +289,9 @@
 	},
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/cic)
+"aU" = (
+/turf/open/gm/dirt,
+/area/whiskey_outpost/inside/caves/deep)
 "aV" = (
 /turf/open/floor/whitegreen/southwest,
 /area/whiskey_outpost/inside/hospital)
@@ -1074,6 +1077,9 @@
 "dG" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
 /area/whiskey_outpost/outside/lane/three_south)
+"dH" = (
+/turf/open/jungle/clear,
+/area/whiskey_outpost/inside/caves/deep)
 "dI" = (
 /obj/structure/barricade/metal/wired,
 /obj/structure/machinery/m56d_hmg/mg_turret/whiskey,
@@ -1391,6 +1397,9 @@
 /obj/effect/landmark/wo_supplies/storage/m56d,
 /turf/open/floor/prison/floor_plate,
 /area/whiskey_outpost/inside/supply)
+"eI" = (
+/turf/open/gm/dirtgrassborder/east,
+/area/whiskey_outpost/inside/caves/deep)
 "eJ" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -1401,6 +1410,9 @@
 "eK" = (
 /turf/open/gm/river,
 /area/whiskey_outpost/outside/river/east)
+"eL" = (
+/turf/open/jungle/impenetrable/grass_clear,
+/area/whiskey_outpost/inside/caves/deep)
 "eM" = (
 /obj/structure/machinery/light/small{
 	dir = 4
@@ -1426,6 +1438,9 @@
 	},
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/living)
+"eQ" = (
+/turf/open/gm/dirtgrassborder/west,
+/area/whiskey_outpost/inside/caves/deep)
 "eR" = (
 /obj/structure/barricade/sandbags/wired,
 /obj/structure/machinery/m56d_hmg/mg_turret/whiskey,
@@ -1455,6 +1470,9 @@
 /obj/item/storage/toolbox/emergency,
 /turf/open/floor/prison/floor_marked/southwest,
 /area/whiskey_outpost/inside/supply)
+"eV" = (
+/turf/closed/wall/r_wall/unmeltable,
+/area/whiskey_outpost/inside/caves/deep)
 "eW" = (
 /obj/structure/surface/rack,
 /obj/structure/machinery/light{
@@ -8751,9 +8769,6 @@
 	},
 /turf/open/floor/whitegreen/north,
 /area/whiskey_outpost/inside/hospital/triage)
-"NV" = (
-/turf/open/gm/dirt,
-/area/whiskey_outpost/inside/caves)
 "NW" = (
 /obj/structure/barricade/sandbags/wired{
 	dir = 8;
@@ -24139,10 +24154,10 @@ Zf
 Zf
 Zf
 Zf
-BK
-BK
-BK
-BK
+dH
+dH
+dH
+dH
 Zf
 Zf
 Zf
@@ -24341,11 +24356,11 @@ Zf
 Zf
 Zf
 Zf
-BK
-BK
-BK
-BK
-BK
+dH
+dH
+dH
+dH
+dH
 Zf
 Zf
 Zf
@@ -24543,11 +24558,11 @@ Zf
 Zf
 Zf
 Zf
-BK
-BK
-BK
-BK
-BK
+dH
+dH
+dH
+dH
+dH
 Zf
 Zf
 Zf
@@ -24745,11 +24760,11 @@ Zf
 Zf
 Zf
 Zf
-BK
-BK
-BK
-BK
-BK
+dH
+dH
+dH
+dH
+dH
 Zf
 Zf
 Zf
@@ -24946,11 +24961,11 @@ xK
 mw
 WM
 WM
-WM
-WM
-WM
-mw
-mw
+eV
+eV
+eV
+eQ
+eQ
 bI
 bI
 bI
@@ -25148,13 +25163,13 @@ ce
 ce
 ce
 Az
-ce
-ce
-ce
-ce
-ce
-ce
-ce
+aU
+aU
+aU
+aU
+aU
+aU
+aU
 bX
 bX
 bX
@@ -25350,12 +25365,12 @@ ce
 ce
 ce
 ce
-ce
-ce
-ce
-ce
-ce
-ce
+aU
+aU
+aU
+aU
+aU
+aU
 bX
 bX
 bX
@@ -25552,13 +25567,13 @@ ce
 ce
 ce
 ce
-ce
-ce
-ce
-ce
-ce
-ce
-ce
+aU
+aU
+aU
+aU
+aU
+aU
+aU
 bX
 bX
 bX
@@ -25754,12 +25769,12 @@ ce
 lp
 ce
 ce
-ce
-ce
-ce
-ce
-ce
-ce
+aU
+aU
+aU
+aU
+aU
+aU
 bI
 bI
 bI
@@ -25956,12 +25971,12 @@ Mb
 Mb
 WM
 WM
-WM
-WM
-WM
-Mb
-Mb
-Mb
+eV
+eV
+eV
+eI
+eI
+eI
 bI
 bI
 bI
@@ -26159,11 +26174,11 @@ Zf
 Zf
 Zf
 Zf
-BK
-BK
-BK
-BK
-Vh
+dH
+dH
+dH
+dH
+eL
 Zf
 Zf
 Zf
@@ -26361,10 +26376,10 @@ Zf
 Zf
 Zf
 Zf
-BK
-BK
-BK
-BK
+dH
+dH
+dH
+dH
 Zf
 Zf
 Zf
@@ -26563,9 +26578,9 @@ Zf
 Zf
 Zf
 Zf
-BK
-BK
-BK
+dH
+dH
+dH
 Zf
 Zf
 Zf
@@ -26766,8 +26781,8 @@ Zf
 Zf
 Zf
 Zf
-BK
-BK
+dH
+dH
 Zf
 Zf
 Zf
@@ -26968,8 +26983,8 @@ Zf
 Zf
 Zf
 Zf
-BK
-BK
+dH
+dH
 Zf
 Zf
 Zf
@@ -27170,8 +27185,8 @@ Zf
 Zf
 Zf
 Zf
-BK
-BK
+dH
+dH
 Zf
 Zf
 Zf
@@ -29712,7 +29727,7 @@ mT
 Zf
 mT
 mT
-NV
+BQ
 BQ
 BQ
 mT
@@ -29913,8 +29928,8 @@ mT
 Zf
 Zf
 Zf
-NV
-NV
+BQ
+BQ
 BQ
 BQ
 Zf
@@ -30115,8 +30130,8 @@ mT
 mT
 mT
 mT
-NV
-NV
+BQ
+BQ
 BQ
 aO
 mT

@@ -638,6 +638,16 @@
 		return FALSE
 	if(target.z != user.z)
 		return FALSE
+	var/area/targ_area = get_area(targeted_atom)
+	var/is_outside = FALSE
+	switch(targ_area.ceiling)
+		if(CEILING_NONE)
+			is_outside = TRUE
+		if(CEILING_GLASS)
+			is_outside = TRUE
+	if(!is_outside)
+		to_chat(user, SPAN_WARNING("INVALID TARGET: target must be visible from high altitude."))
+		return
 
 	var/list/modifiers = params2list(params) //Only single clicks.
 	if(modifiers[MIDDLE_CLICK] || modifiers[SHIFT_CLICK] || modifiers[ALT_CLICK] || modifiers[CTRL_CLICK])

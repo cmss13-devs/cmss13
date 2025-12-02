@@ -1,0 +1,5 @@
+author: "cuberound"
+delete-after: True
+changes:
+  - bugfix: "king jump works cross z levels"
+  - bugfix: "king jump no longer tramples marines in path"

@@ -1,0 +1,4 @@
+author: "Detective-Google"
+delete-after: True
+changes:
+  - bugfix: "character previews for non-human jobs work again."

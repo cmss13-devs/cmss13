@@ -6,3 +6,15 @@
   - refactor: Beakers (currently only silver) that act as a catalyst for reagents
       during chemical reactions have their own path instead.
   - imagedel: Removed unnecessary icon states.
+2025-12-02:
+  Blundir:
+  - rscdel: factional patches are commented out in char prefs, CLF patch is removed
+      (none of this affects marines)
+  Detective-Google:
+  - bugfix: character previews for non-human jobs work again.
+  Drathek:
+  - bugfix: Multi-Z stairs remain usable after an explosion
+  Googles-Hands:
+  - bugfix: The Chem-Goons and Bodyguards now spawn properly.
+  Puckaboo2:
+  - bugfix: Fixes a path in one of the previous PR's update scripts.

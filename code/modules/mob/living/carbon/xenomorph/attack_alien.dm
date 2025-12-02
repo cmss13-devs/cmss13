@@ -1141,8 +1141,8 @@
 		playsound(loc, 'sound/effects/Glasshit.ogg', 25, 1)
 	return TAILSTAB_COOLDOWN_NORMAL
 
-/obj/structure/machinery/colony_floodlight/attack_larva(mob/living/carbon/xenomorph/larva/M)
-	M.visible_message("[M] starts biting [src]!","In a rage, we start biting [src], but with no effect!", null, 5, CHAT_TYPE_XENO_COMBAT)
+/obj/structure/machinery/colony_floodlight/attack_larva(mob/living/carbon/xenomorph/larva/xeno)
+	xeno.visible_message("[M] starts biting [src]!","In a rage, we start biting [src], but with no effect!", null, 5, CHAT_TYPE_XENO_COMBAT)
 
 //Digging up snow
 /turf/open/snow/attack_alien(mob/living/carbon/xenomorph/xeno)

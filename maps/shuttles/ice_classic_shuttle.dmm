@@ -8,7 +8,14 @@
 /area/shuttle/trijent_shuttle/elevator)
 "b" = (
 /obj/structure/machinery/power/apc/power/west,
-/turf/open/shuttle/elevator/grating,
+/obj/effect/decal/cleanable/blood,
+/obj/item/tool/wirecutters{
+	pixel_y = -7
+	},
+/obj/item/storage/toolbox/mechanical/green{
+	pixel_y = 8
+	},
+/turf/open/floor/plating,
 /area/shuttle/trijent_shuttle/elevator)
 "f" = (
 /turf/closed/shuttle/elevator{

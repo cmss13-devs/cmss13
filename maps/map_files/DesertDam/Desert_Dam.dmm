@@ -970,6 +970,13 @@
 /obj/effect/blocker/toxic_water,
 /turf/open/desert/desert_shore/shore_corner2/east,
 /area/desert_dam/exterior/river/riverside_east)
+"adY" = (
+/obj/structure/sink{
+	pixel_x = 1;
+	pixel_y = 20
+	},
+/turf/open/desert/dirt/desert_transition_edge1/southwest,
+/area/desert_dam/exterior/valley/valley_security)
 "adZ" = (
 /obj/structure/flora/bush/desert/cactus/multiple{
 	icon_state = "cacti_10"
@@ -4111,7 +4118,10 @@
 /turf/open/floor/prison/darkyellow2/north,
 /area/desert_dam/interior/lab_northeast/east_lab_workshop)
 "arE" = (
-/obj/structure/sink,
+/obj/structure/sink{
+	pixel_x = 1;
+	pixel_y = 20
+	},
 /turf/open/floor/prison/darkyellow2/north,
 /area/desert_dam/interior/lab_northeast/east_lab_workshop)
 "arF" = (
@@ -30843,7 +30853,10 @@
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "cQG" = (
-/obj/structure/sink,
+/obj/structure/sink{
+	pixel_x = 1;
+	pixel_y = 20
+	},
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/bar/bar_restroom)
 "cQH" = (
@@ -48597,8 +48610,11 @@
 /turf/open/gm/river/desert/shallow_corner/west,
 /area/desert_dam/exterior/river/riverside_south)
 "tVX" = (
-/obj/structure/sink,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/structure/sink{
+	pixel_x = 1;
+	pixel_y = 20
+	},
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/bar/bar_restroom)
 "tWp" = (
@@ -64409,7 +64425,7 @@ dTs
 etD
 ljt
 kAq
-vtS
+adY
 hrM
 sup
 nTU

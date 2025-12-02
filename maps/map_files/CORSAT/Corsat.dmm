@@ -3712,7 +3712,9 @@
 /turf/open/floor/corsat/retrosquares,
 /area/corsat/theta/airlock/west)
 "aox" = (
-/obj/structure/sink,
+/obj/structure/sink{
+	pixel_y = 24
+	},
 /turf/open/floor/corsat/whitebluefull/southwest,
 /area/corsat/gamma/residential/researcher)
 "aoy" = (

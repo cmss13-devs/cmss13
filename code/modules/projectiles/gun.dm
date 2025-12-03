@@ -402,6 +402,8 @@
 	//Get default gun config values
 	set_gun_config_values()
 
+	var/hitsound_override = FALSE
+	var/attack_verb_override = FALSE
 	//Add attachment bonuses
 	for(var/slot in attachments)
 		var/obj/item/attachable/R = attachments[slot]
@@ -429,12 +431,22 @@
 		movement_onehanded_acc_penalty_mult += R.movement_onehanded_acc_penalty_mod
 		force += R.melee_mod
 		w_class += R.size_mod
+		if(R.new_hitsound)
+			hitsound = R.new_hitsound
+			hitsound_override = TRUE
+		if(R.attack_verb)
+			attack_verb = R.attack_verb
+			attack_verb_override = TRUE
 		if(!R.hidden)
 			hud_offset += R.hud_offset_mod
 			pixel_x += R.hud_offset_mod
 
 		for(var/trait in R.gun_traits)
 			ADD_TRAIT(src, trait, TRAIT_SOURCE_ATTACHMENT(slot))
+	if(!hitsound_override)
+		hitsound = initial(hitsound)
+	if(!attack_verb_override)
+		attack_verb = initial(attack_verb)
 
 	//Refresh location in HUD.
 	if(ishuman(loc))

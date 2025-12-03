@@ -75,6 +75,7 @@ Defined in conflicts.dm of the #defines folder.
 
 	var/activation_sound = 'sound/weapons/handling/gun_underbarrel_activate.ogg'
 	var/deactivation_sound = 'sound/weapons/handling/gun_underbarrel_deactivate.ogg'
+	var/new_hitsound = null
 
 	var/flags_attach_features = ATTACH_REMOVABLE
 
@@ -323,7 +324,7 @@ Defined in conflicts.dm of the #defines folder.
 	throwforce = MELEE_FORCE_NORMAL
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 6
-	hitsound = 'sound/weapons/slash.ogg'
+	new_hitsound = 'sound/weapons/slash.ogg'
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	attack_speed = 9
 	flags_equip_slot = SLOT_FACE
@@ -669,30 +670,9 @@ Defined in conflicts.dm of the #defines folder.
 	throwforce = MELEE_FORCE_WEAK
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 6
-	hitsound = 'sound/weapons/spike_thunk.ogg'
+	new_hitsound = 'sound/weapons/spike_thunk.ogg'
 	attack_verb = list("bashed", "bludgeoned", "cracked", "smashed", "crushed", "pummeled", "spiked", "rammed")
 	attack_speed = 9
-
-/obj/item/attachable/compensator/m10/spiked/Attach(obj/item/weapon/gun/attaching_gun)
-	if(!istype(attaching_gun, /obj/item/weapon/gun))
-		return ..()
-	attaching_gun.hitsound = 'sound/weapons/spike_thunk.ogg'
-	melee_mod = 20
-	sharp = IS_SHARP_ITEM_SIMPLE
-	force = MELEE_FORCE_STRONG
-	hitsound = 'sound/weapons/spike_thunk.ogg'
-	attack_verb = list("bashed", "bludgeoned", "cracked", "smashed", "crushed", "pummeled", "spiked", "rammed")
-	attack_speed = 9
-	return ..()
-
-/obj/item/attachable/compensator/m10/spiked/Detach(mob/user, obj/item/weapon/gun/detaching_gun)
-	if(!istype(detaching_gun, /obj/item/weapon/gun))
-		return ..()
-	detaching_gun.hitsound = initial(detaching_gun.hitsound)
-	return ..()
-
-/obj/item/attachable/compensator/m10/spiked/New()
-	..()
 
 /obj/item/attachable/shotgun_choke
 	name = "shotgun choke"

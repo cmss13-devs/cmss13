@@ -261,7 +261,7 @@
 	desc = "mend the torn blood vessels in the stump"
 	tools = SURGERY_TOOLS_MEND_BLOODVESSEL
 	time = 4 SECONDS
-	preop_sound = 'sound/surgery/applyobject.ogg'
+	preop_sound = 'sound/handling/clothingrustle1.ogg'
 	success_sound = 'sound/surgery/hemostat2.ogg'
 	failure_sound = 'sound/surgery/organ2.ogg'
 

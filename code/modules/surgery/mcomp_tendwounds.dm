@@ -45,7 +45,7 @@
 	desc = "stabilize the wounds"
 	tools = SURGERY_TOOLS_MEDICOMP_STABILIZE_WOUND
 	time = 5 SECONDS
-	preop_sound = 'sound/surgery/applyobject.ogg'
+	preop_sound = 'sound/handling/clothingrustle1.ogg'
 	success_sound = 'sound/surgery/cautery2.ogg'
 	failure_sound = 'sound/surgery/organ1.ogg'
 

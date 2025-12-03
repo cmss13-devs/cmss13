@@ -36,7 +36,7 @@ and organ transplant code which may come in handy in future but haven't been edi
 	)
 	time = 3 SECONDS
 	repeat_step = TRUE
-	preop_sound = 'sound/surgery/applyobject.ogg'
+	preop_sound = 'sound/handling/clothingrustle1.ogg'
 	//success handled in repeat code
 	failure_sound = 'sound/surgery/organ2.ogg'
 	var/use_stack = 1

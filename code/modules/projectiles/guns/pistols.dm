@@ -1059,7 +1059,7 @@ Unlike other pistols, it can be equipped with limited mods (small muzzle, underb
 		/obj/item/attachable/stock/m10_solid,
 		/obj/item/attachable/lasersight/micro //Underbarrel
 	)
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	start_automatic = TRUE
 	map_specific_decoration = TRUE
 	fire_sound = null

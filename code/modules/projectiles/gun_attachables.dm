@@ -75,6 +75,7 @@ Defined in conflicts.dm of the #defines folder.
 
 	var/activation_sound = 'sound/weapons/handling/gun_underbarrel_activate.ogg'
 	var/deactivation_sound = 'sound/weapons/handling/gun_underbarrel_deactivate.ogg'
+	///Should only be used by muzzle attachments + The same with attack_verb
 	var/new_hitsound = null
 
 	var/flags_attach_features = ATTACH_REMOVABLE

@@ -165,7 +165,7 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 				message += "[pick("you feel nervous as you manipulate your tools", "You feel insecure and unsure of yourself", "You feel the need to triple check your steps")] while operating [pick("on non-sterile surfaces", "on a non-surgical bed", "in an unsanitary environment")]"
 				failure_penalties += 1
 			if(SURGERY_SURFACE_MULT_AWFUL)
-				message += "[pick("one wrong move and you could cause serious harm", "you have never felt more aware of your slow, careful, deliberate movements", "you are terrified of these conditions, but you keep an unbreakable focus and the steadiest of hands", "you compulsively quadruple check your body and hand positioning")] while using your tools [pick("on a patient not lying on a bed", "on an unstable surface", "in an unsanitary environment", "in the worst conditions imaginable")]"
+				message += "[pick("one wrong move and you could cause serious harm", "you have never felt more aware of your slow, careful, deliberate movements", "you are terrified of these conditions, but you keep an unbreakable focus and the steadiest of hands", "you compulsively quadruple check your body and hand positioning")] while using your tools [pick("on a patient not lying on a secure bed", "on an unstable surface", "in an unsanitary environment", "in the worst conditions imaginable")]"
 				failure_penalties += 2
 
 		if(length(message))

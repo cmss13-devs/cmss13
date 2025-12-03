@@ -184,7 +184,7 @@
 				SPAN_NOTICE("[user] begins to set the broken bones in your [surgery.affected_limb.display_name] with [tool]."),
 				SPAN_NOTICE("[user] begins to set the broken bones in [target]'s [surgery.affected_limb.display_name] with [tool]."))
 
-	target.custom_pain("You feel your bones in your [surgery.affected_limb.display_name] shifting around! It feels horrible!", 1)
+	target.custom_pain("You feel your fractured bones shifting around in your [surgery.affected_limb.display_name]! It feels horrible!", 1)
 	log_interact(user, target, "[key_name(user)] attempted to begin setting bones in [key_name(target)]'s [surgery.affected_limb.display_name] with [tool].")
 
 /datum/surgery_step/set_bones/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/bone_repair/surgery)

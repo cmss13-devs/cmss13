@@ -104,7 +104,7 @@
 		SPAN_NOTICE("[user] begins to mend the hematoma in your brain with [tool]."),
 		SPAN_NOTICE("[user] begins to mend the hematoma in [target]'s brain with [tool]."))
 
-	target.custom_pain("You can feel [user] messing around with the swelling in your brain! It hurts so much!", 1)
+	target.custom_pain("You can feel [user] messing around with the swelling in your brain, making it pulse painfully!", 1)
 	log_interact(user, target, "[key_name(user)] started mending a hematoma in [key_name(target)]'s brain with [tool].")
 
 /datum/surgery_step/treat_hematoma/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)

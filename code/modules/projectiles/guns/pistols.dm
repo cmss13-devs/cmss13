@@ -1087,7 +1087,6 @@ Unlike other pistols, it can be equipped with limited mods (small muzzle, underb
 	scatter = SCATTER_AMOUNT_TIER_5
 	scatter_unwielded = SCATTER_AMOUNT_TIER_4
 	recoil_unwielded = RECOIL_AMOUNT_TIER_5
-	damage_mult = BASE_BULLET_DAMAGE_MULT - BULLET_DAMAGE_MULT_TIER_5
 
 //-------------------------------------------------------
 /*

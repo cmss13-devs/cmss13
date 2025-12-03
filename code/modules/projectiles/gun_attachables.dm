@@ -629,7 +629,7 @@ Defined in conflicts.dm of the #defines folder.
 	recoil_mod = -RECOIL_AMOUNT_TIER_4
 	accuracy_unwielded_mod = HIT_ACCURACY_MULT_TIER_4
 	recoil_unwielded_mod = -RECOIL_AMOUNT_TIER_4
-	damage_mod = BULLET_DAMAGE_MULT_TIER_1
+	damage_mod = BULLET_DAMAGE_MULT_TIER_2
 
 /obj/item/attachable/compensator/m10/Initialize(mapload, ...)
 	. = ..()
@@ -693,11 +693,6 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/compensator/m10/spiked/New()
 	..()
-	accuracy_mod = HIT_ACCURACY_MULT_TIER_3
-	recoil_mod = -RECOIL_AMOUNT_TIER_4
-	accuracy_unwielded_mod = HIT_ACCURACY_MULT_TIER_4
-	recoil_unwielded_mod = -RECOIL_AMOUNT_TIER_4
-	damage_mod = BULLET_DAMAGE_MULT_TIER_1
 
 /obj/item/attachable/shotgun_choke
 	name = "shotgun choke"

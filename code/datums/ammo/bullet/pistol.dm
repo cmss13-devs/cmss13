@@ -310,7 +310,7 @@
 
 /datum/ammo/bullet/pistol/m10
 	name = "auto-pistol bullet"
-	damage = 32
+	damage = 24
 	accurate_range = 2
 	effective_range_max = 3
 	penetration = ARMOR_PENETRATION_TIER_1
@@ -321,7 +321,6 @@
 
 /datum/ammo/bullet/pistol/m10/ap
 	name = "armor-piercing auto-pistol bullet"
-
-	damage = 24
+	damage = 18
 	penetration = ARMOR_PENETRATION_TIER_6
 	shell_speed = AMMO_SPEED_TIER_5

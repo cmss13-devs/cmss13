@@ -119,10 +119,10 @@
 	if(B)
 		B.damage = BONECHIPS_MAX_DAMAGE
 
-	to_chat(target, SPAN_NOTICE("The agonizing pressure in your skull ceases. Your mind and ears feel more clear."))
-	target.disabilities &= ~NERVOUS
+	to_chat(target, SPAN_NOTICE("The agonizing pressure in your skull ceases. Your mind and ears feel more clear, but something's rattling and poking around in your skull still!"))
 	target.sdisabilities &= ~DISABILITY_DEAF
 	target.sdisabilities &= ~DISABILITY_MUTE
+	target.pain.recalculate_pain()
 
 /datum/surgery_step/treat_hematoma/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,

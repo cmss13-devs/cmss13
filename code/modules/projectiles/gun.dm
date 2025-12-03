@@ -1494,7 +1494,7 @@ and you're good to go.
 				if(before_fire_cancel & COMPONENT_HARD_CANCEL_GUN_BEFORE_FIRE)
 					return NONE
 
-		if(SEND_SIGNAL(projectile_to_fire.ammo, COMSIG_AMMO_POINT_BLANK, attacked_mob, projectile_to_fire, user, src) & COMPONENT_CANCEL_AMMO_POINT_BLANK)
+		if(SEND_SIGNAL(projectile_to_fire.ammo, COMSIG_AMMO_BATTLEFIELD_EXECUTION, attacked_mob, projectile_to_fire, user, src) & COMPONENT_CANCEL_BATTLEFIELD_EXECUTION)
 			flags_gun_features &= ~GUN_BURST_FIRING
 			return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
 
@@ -2097,10 +2097,8 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 			return
 
 		if(gun_user.Adjacent(object) && gun_user.zone_selected == "head" && ishuman_strict(object) && skillcheck(gun_user, SKILL_EXECUTION, SKILL_EXECUTION_TRAINED))
-			if(src.ammo && src.ammo.signal_procs)
-				if(COMSIG_AMMO_POINT_BLANK in src.ammo.signal_procs[src.ammo])
-					if(src.ammo.signal_procs[src.ammo][COMSIG_AMMO_POINT_BLANK] == "handle_battlefield_execution") //...I hate this actually
-						return
+			if(ammo && (COMSIG_AMMO_BATTLEFIELD_EXECUTION in ammo.comp_lookup))
+				return
 
 	if(QDELETED(object))
 		return

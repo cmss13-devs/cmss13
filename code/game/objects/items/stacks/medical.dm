@@ -19,6 +19,9 @@
 
 /obj/item/stack/medical/attack_self(mob/user)
 	..()
+	handle_attack_self(user)
+
+/obj/item/stack/medical/proc/handle_attack_self(mob/user)
 	attack(user, user)
 
 /obj/item/stack/medical/attack(mob/living/carbon/M as mob, mob/user as mob)
@@ -62,41 +65,72 @@
 	item_state_slots = list(WEAR_AS_GARB = "brutepack (bandages)")
 	stack_id = "bruise pack"
 
-/obj/item/stack/medical/bruise_pack/attack(mob/living/carbon/M as mob, mob/user as mob)
+/obj/item/stack/medical/bruise_pack/get_examine_text(mob/user)
+	. = ..()
+	. += SPAN_NOTICE("Using [src] in your hand will bandage any open, bleeding wounds on you. This will take a bit longer if you're not aiming at the hurt limbs.")
+
+/obj/item/stack/medical/bruise_pack/handle_attack_self(mob/living/carbon/human/user)
+	if(!ishuman(user))
+		return
+
+	if(user.action_busy)
+		return
+
+	// Automatically gauze an open injury if used in your hand
+	var/list/hurt_limbs
+	for(var/obj/limb/limby in user.limbs)
+		for(var/datum/wound/woundy in limby.wounds)
+			if(woundy.internal || woundy.damage_type == BURN)
+				continue
+			if(limby.is_bandaged())
+				continue
+			LAZYADD(hurt_limbs, limby)
+	if(LAZYLEN(hurt_limbs))
+		// So it's not the same one first every time
+		var/obj/limb/chosen_limb = pick(hurt_limbs)
+		// Though it should -probably- affect the one you're actually targeting if it's injured too
+		if(user.get_limb(user.zone_selected) in hurt_limbs)
+			chosen_limb = user.get_limb(user.zone_selected)
+			bandage_wound(user, user, chosen_limb)
+			return
+		// If your aimed limb isn't the picked, wounded one, the delay is forced and slightly slower
+		// Prevents corpsmen+ from spamming the brute kit in their hands without dancing around the numpad
+		bandage_wound(user, user, chosen_limb, force_delay = TRUE, delay_mult = 1.5)
+
+/obj/item/stack/medical/bruise_pack/attack(mob/living/carbon/human/human_target, mob/user)
 	if(..())
 		return 1
 
-	if (istype(M, /mob/living/carbon/human))
-		var/mob/living/carbon/human/H = M
+	if(ishuman(human_target))
+		var/obj/limb/affecting = human_target.get_limb(user.zone_selected)
+		bandage_wound(human_target, user, affecting)
 
-		var/obj/limb/affecting = H.get_limb(user.zone_selected)
-
-		if(user.skills)
-			if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
-				if(!do_after(user, 10, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, M, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
-					return 1
+/obj/item/stack/medical/bruise_pack/proc/bandage_wound(mob/living/carbon/human/human_target, mob/user, obj/limb/affecting, force_delay = FALSE, delay_mult = 1)
+	if((user.skills && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC)) || force_delay)
+		if(!do_after(user, 1 SECONDS * delay_mult, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, human_target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
+			return FALSE
 
 
-		if(affecting.get_incision_depth())
-			to_chat(user, SPAN_NOTICE("[M]'s [affecting.display_name] is cut open, you'll need more than a bandage!"))
+	if(affecting.get_incision_depth())
+		to_chat(user, SPAN_NOTICE("[human_target]'s [affecting.display_name] is cut open, you'll need more than a bandage!"))
+		return FALSE
+
+	var/possessive = "[user == human_target ? "your" : "\the [human_target]'s"]"
+	var/possessive_their = "[user == human_target ? user.p_their() : "\the [human_target]'s"]"
+	switch(affecting.bandage())
+		if(WOUNDS_BANDAGED)
+			user.affected_message(human_target,
+				SPAN_HELPFUL("You <b>bandage</b> [possessive] <b>[affecting.display_name]</b>."),
+				SPAN_HELPFUL("[user] <b>bandages</b> your <b>[affecting.display_name]</b>."),
+				SPAN_NOTICE("[user] bandages [possessive_their] [affecting.display_name]."))
+			use(1)
+			playsound(user, 'sound/handling/bandage.ogg', 25, 1, 2)
+		if(WOUNDS_ALREADY_TREATED)
+			to_chat(user, SPAN_WARNING("The wounds on [possessive] [affecting.display_name] have already been treated."))
 			return TRUE
-
-		var/possessive = "[user == M ? "your" : "\the [M]'s"]"
-		var/possessive_their = "[user == M ? user.p_their() : "\the [M]'s"]"
-		switch(affecting.bandage())
-			if(WOUNDS_BANDAGED)
-				user.affected_message(M,
-					SPAN_HELPFUL("You <b>bandage</b> [possessive] <b>[affecting.display_name]</b>."),
-					SPAN_HELPFUL("[user] <b>bandages</b> your <b>[affecting.display_name]</b>."),
-					SPAN_NOTICE("[user] bandages [possessive_their] [affecting.display_name]."))
-				use(1)
-				playsound(user, 'sound/handling/bandage.ogg', 25, 1, 2)
-			if(WOUNDS_ALREADY_TREATED)
-				to_chat(user, SPAN_WARNING("The wounds on [possessive] [affecting.display_name] have already been treated."))
-				return TRUE
-			else
-				to_chat(user, SPAN_WARNING("There are no wounds on [possessive] [affecting.display_name]."))
-				return TRUE
+		else
+			to_chat(user, SPAN_WARNING("There are no wounds on [possessive] [affecting.display_name]."))
+			return TRUE
 
 /obj/item/stack/medical/bruise_pack/two
 	amount = 2

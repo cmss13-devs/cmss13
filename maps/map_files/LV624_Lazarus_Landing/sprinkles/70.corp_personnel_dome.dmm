@@ -535,7 +535,7 @@
 /obj/effect/decal/lv_decals/red_mud_corner{
 	dir = 8
 	},
-/turf/open/floor/prison/floor_plate_alt/west,
+/turf/open/floor/prison/floor_plate,
 /area/lv624/ground/colony/west_tcomms_road)
 "lO" = (
 /obj/structure/flora/jungle/vines/dead/light_1,
@@ -1916,7 +1916,7 @@
 /obj/effect/decal/lv_decals/red_mud_corner{
 	dir = 1
 	},
-/turf/open/floor/prison/cell_stripe_alt/north,
+/turf/open/floor/prison/cell_stripe/north,
 /area/lv624/ground/colony/west_tcomms_road)
 "Mv" = (
 /turf/closed/wall/lv_outpost/reinforced,
@@ -1975,7 +1975,7 @@
 	dir = 1
 	},
 /obj/item/trash/cigbutt,
-/turf/open/floor/prison/cell_stripe_alt/north,
+/turf/open/floor/prison/cell_stripe/north,
 /area/lv624/ground/colony/west_tcomms_road)
 "Nz" = (
 /obj/structure/bed/sofa/hybrisa/sofa/black{
@@ -2125,7 +2125,7 @@
 /area/lv624/lazarus/secure_storage)
 "Qi" = (
 /obj/effect/decal/lv_decals/red_mud_corner,
-/turf/open/floor/prison/cell_stripe_alt,
+/turf/open/floor/prison/cell_stripe,
 /area/lv624/ground/jungle/south_central_jungle)
 "QE" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -2387,7 +2387,7 @@
 /obj/effect/decal/lv_decals/red_mud_corner{
 	dir = 5
 	},
-/turf/open/floor/prison/floor_plate_alt/west,
+/turf/open/floor/prison/floor_plate,
 /area/lv624/ground/colony/west_tcomms_road)
 "VK" = (
 /obj/structure/bed/hybrisa/bunkbed4{

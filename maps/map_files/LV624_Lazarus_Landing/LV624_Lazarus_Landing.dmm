@@ -828,8 +828,11 @@
 /turf/open/auto_turf/lv_grass/layer0,
 /area/lv624/ground/jungle/south_west_jungle)
 "asf" = (
-/obj/structure/bed/roller,
-/obj/effect/landmark/objective_landmark/science,
+/obj/item/shard,
+/obj/structure/xenoautopsy/tank/broken{
+	pixel_x = -1;
+	pixel_y = 5
+	},
 /turf/open/floor/interior/plastic/grey/alt,
 /area/lv624/lazarus/research)
 "asl" = (
@@ -2553,6 +2556,10 @@
 	pixel_x = -8;
 	pixel_y = 20
 	},
+/obj/item/reagent_container/food/drinks/coffeecup/wy{
+	pixel_x = 2;
+	pixel_y = 3
+	},
 /turf/open/floor/prison/floor_plate_alt,
 /area/lv624/lazarus/main_hall)
 "bbt" = (
@@ -3772,6 +3779,10 @@
 "bFb" = (
 /obj/structure/surface/table{
 	color = "#8B7B5B"
+	},
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_y = 10;
+	pixel_x = -9
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv624/lazarus/main_hall)
@@ -8348,6 +8359,8 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/blood,
+/obj/structure/bed/roller,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/prison/sterile_white,
 /area/lv624/lazarus/research)
 "dIs" = (
@@ -8962,6 +8975,7 @@
 	dir = 10
 	},
 /obj/effect/decal/cleanable/blood,
+/obj/item/shard,
 /turf/open/floor/interior/plastic/grey/alt,
 /area/lv624/lazarus/research)
 "dVR" = (
@@ -9263,6 +9277,9 @@
 "ebm" = (
 /obj/structure/surface/table{
 	color = "#8B7B5B"
+	},
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot{
+	pixel_y = 8
 	},
 /turf/open/floor/prison/floor_plate_alt,
 /area/lv624/lazarus/main_hall)
@@ -14602,6 +14619,7 @@
 	pixel_x = -8;
 	pixel_y = -4
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/floor/ancient_temple/base,
 /area/lv624/ground/caves/north_east_caves)
 "gsO" = (
@@ -17092,6 +17110,7 @@
 	pixel_x = 4;
 	pixel_y = 9
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/floor/ancient_temple/base,
 /area/lv624/ground/caves/north_east_caves)
 "hvx" = (
@@ -26734,6 +26753,15 @@
 /obj/effect/hunter/ancient_temple/deco_border,
 /turf/open/floor/ancient_temple/deco/deco_0,
 /area/lv624/ground/caves/north_east_caves)
+"lFz" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_y = 6
+	},
+/turf/open/floor/prison/brown_bright/north,
+/area/lv624/lazarus/main_hall)
 "lFA" = (
 /turf/open/floor/brown_dirt/random_rocks,
 /area/lv624/ground/jungle/north_east_jungle)
@@ -29854,6 +29882,7 @@
 /obj/effect/decal/strata_decals/grime/grime1{
 	dir = 8
 	},
+/obj/item/clothing/under/shorts/black,
 /turf/open/floor/kutjevo/tan/plate,
 /area/lv624/lazarus/fitness)
 "mRm" = (
@@ -32320,6 +32349,7 @@
 /area/lv624/ground/caves/south_east_caves)
 "nQx" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison/sterile_white,
 /area/lv624/lazarus/research)
 "nQC" = (
@@ -38167,6 +38197,7 @@
 	pixel_y = 11;
 	pixel_x = -9
 	},
+/obj/item/shard,
 /turf/open/floor/prison/sterile_white,
 /area/lv624/lazarus/research)
 "qqJ" = (
@@ -43885,6 +43916,7 @@
 	},
 /obj/effect/landmark/corpsespawner/scientist,
 /obj/effect/decal/cleanable/blood,
+/obj/item/shard,
 /turf/open/floor/prison/sterile_white,
 /area/lv624/lazarus/research)
 "sPd" = (
@@ -47663,6 +47695,7 @@
 	pixel_x = 10;
 	pixel_y = 14
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/floor/ancient_temple/base,
 /area/lv624/ground/caves/north_east_caves)
 "usA" = (
@@ -52707,6 +52740,7 @@
 /area/lv624/ground/caves/west_caves)
 "wED" = (
 /obj/structure/machinery/light/blue,
+/obj/item/shard,
 /turf/open/floor/prison/sterile_white,
 /area/lv624/lazarus/research)
 "wEE" = (
@@ -81734,7 +81768,7 @@ oWW
 hVG
 mLw
 rpZ
-jJI
+lFz
 gkd
 tIr
 liZ
@@ -94127,7 +94161,7 @@ iGF
 uwv
 usx
 mBD
-aCh
+wnF
 tzk
 eas
 mub

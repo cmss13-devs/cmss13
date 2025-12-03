@@ -22591,13 +22591,6 @@
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva/wred/west,
 /area/shiva/interior/colony/medseceng)
-"rqK" = (
-/obj/structure/desertdam/decals/road_stop{
-	icon_state = "road_edge_decal5";
-	pixel_y = -17
-	},
-/turf/closed/wall/shiva/prefabricated/orange,
-/area/shiva/interior/colony/research_hab)
 "rrj" = (
 /obj/item/lightstick/red/variant/planted{
 	pixel_x = -7;
@@ -54126,7 +54119,7 @@ adP
 adL
 rZt
 fir
-rqK
+asz
 asz
 acE
 rZt

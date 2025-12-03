@@ -709,8 +709,12 @@
 
 /turf/open/floor/waterfall
 	icon = 'icons/turf/waterfall_test.dmi'
-
 	icon_state = "waterfall_top"
+	can_bloody = FALSE
+	fishing_allowed = FALSE
+	supports_surgery = FALSE
+	minimap_color = MINIMAP_WATER
+	is_weedable = NOT_WEEDABLE
 
 /turf/open/floor/waterfall/top
 

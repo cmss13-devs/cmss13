@@ -139,7 +139,7 @@
 			SPAN_NOTICE("[user] tries to forcefully rip the larva from your chest."),
 			SPAN_NOTICE("[user] tries to forcefully rip the larva from [target]'s chest."))
 
-	target.custom_pain("IT'S COMING OUT! IT'S COMING OUT! AAAAAAARGH!",1)
+	to_chat(target, SPAN_HIGHDANGER("IT'S COMING OUT! AAAAAAARGH!"))
 	log_interact(user, target, "[key_name(user)] started to remove an embryo from [key_name(target)]'s ribcage.")
 
 /datum/surgery_step/remove_larva/success(mob/living/carbon/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)

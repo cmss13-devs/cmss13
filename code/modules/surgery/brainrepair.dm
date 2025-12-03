@@ -33,7 +33,7 @@
 
 /datum/surgery_step/remove_bone_chips
 	name = "Remove Embedded Bone Chips"
-	desc = "remove shards of bone from the brain"
+	desc = "remove broken bone fragments from the skull"
 	tools = SURGERY_TOOLS_PINCH
 	time = 5 SECONDS
 	preop_sound = 'sound/surgery/hemostat1.ogg'
@@ -42,19 +42,37 @@
 
 /datum/surgery_step/remove_bone_chips/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
-		SPAN_NOTICE("You begin picking chips of bone out of [target]'s brain with [tool]."),
-		SPAN_NOTICE("[user] begins picking chips of bone out of your brain with [tool]."),
-		SPAN_NOTICE("[user] begins picking chips of bone out of [target]'s brain with [tool]."))
+		SPAN_NOTICE("You begin picking chips of bone out of [target]'s skull with [tool]."),
+		SPAN_NOTICE("[user] begins picking chips of bone out of your skull with [tool]."),
+		SPAN_NOTICE("[user] begins picking chips of bone out of [target]'s skull with [tool]."))
 
 	target.custom_pain("You feel [user] picking around your brain! Ow, ouch, owie!", 1)
-	log_interact(user, target, "[key_name(user)] started taking bone chips out of [key_name(target)]'s brain with [tool], possibly beginning [surgery]")
+	log_interact(user, target, "[key_name(user)] started taking bone chips out of [key_name(target)]'s skull with [tool], possibly beginning [surgery].")
 
 /datum/surgery_step/remove_bone_chips/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	user.affected_message(target,
-		SPAN_NOTICE("You finish extracting fragments of bone from [target]'s brain."),
-		SPAN_NOTICE("[user] finishes extracting fragments of bone from your brain."),
-		SPAN_NOTICE("[user] finishes extracting fragments of bone from [target]'s brain."))
 
+	new /obj/item/shard/shrapnel/bone_chips/human(target) //adds bone chips
+	user.affected_message(target, //fixes brain damage
+		SPAN_NOTICE("You finish extracting sharp pieces of bone that were piercing [target]'s brain."),
+		SPAN_NOTICE("[user] finishes extracting sharp pieces of bone that were piercing your brain."),
+		SPAN_NOTICE("[user] finishes extracting sharp pieces of bone that were piercing [target]'s brain."))
+
+	if(target.disabilities &= NERVOUS) //rattlerattlerattlerattlerattle AAAAA MAKE IT STOP!
+		user.affected_message(target,
+			SPAN_NOTICE("After [target] insisted something was still there, you pull out some extra, tiny, loose pieces of bone that were rattling around in \his skull."),
+			SPAN_NOTICE("After you insisted something was still there, [user] pulls out some extra, tiny, loose pieces of bone that were rattling around in your skull."),
+			SPAN_NOTICE("[user] pulls out some extra, tiny, loose pieces of bone that were rattling around in [target]'s skull."))
+	if(target.sdisabilities &= DISABILITY_DEAF) //o shid, I can hear now?
+		user.affected_message(target,
+			SPAN_NOTICE("You finish extracting fragments of bone that were piercing [target]'s auditory cortex and causing severe tinnitus."),
+			SPAN_NOTICE("[user] finishes extracting fragments of bone that were piercing your auditory cortex and causing severe tinnitus."),
+			SPAN_NOTICE("[user] finishes extracting fragments of that were piercing [target]'s auditory cortex and causing severe tinnitus."))
+
+	if(target.sdisabilities &= DISABILITY_MUTE) ////My self esteem emphatically dramatically improved since I was dumb!
+		user.affected_message(target,
+			SPAN_NOTICE("You finish extracting fragments of bone that were piercing [target]'s Broca's and Wernicke's area and prevented speech."),
+			SPAN_NOTICE("[user] finishes extracting fragments of bone that were piercing your Broca's and Wernicke's area and prevented speech."),
+			SPAN_NOTICE("[user] finishes extracting fragments of bone that were piercing [target]'s Broca's and Wernicke's area and prevented speech."))
 	user.count_niche_stat(STATISTICS_NICHE_SURGERY_BRAIN)
 
 	var/datum/internal_organ/brain/B = target.internal_organs_by_name["brain"]
@@ -62,6 +80,10 @@
 		B.heal_damage(B.damage)
 
 	to_chat(target, SPAN_NOTICE("The rattling and piercing feelings in your brain cease. Your mind and ears feel more clear."))
+
+	var/obj/item/shard/shrapnel/bone_chips/human/C = locate() in target
+	if(C)
+		C.forceMove(user.loc)
 	target.disabilities &= ~NERVOUS
 	target.sdisabilities &= ~DISABILITY_DEAF
 	target.sdisabilities &= ~DISABILITY_MUTE
@@ -94,7 +116,7 @@
 	tools = SURGERY_TOOLS_MEND_BLOODVESSEL
 	time = 5 SECONDS
 
-	preop_sound = 'sound/surgery/applyobject.ogg'
+	preop_sound = 'sound/handling/clothingrustle1.ogg'
 	success_sound = 'sound/surgery/hemostat2.ogg'
 	failure_sound = 'sound/surgery/organ2.ogg'
 

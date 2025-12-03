@@ -80,7 +80,7 @@
 		SPAN_NOTICE("[user] has severed the [muscle_type] in [target]'s [surgery.affected_limb.display_name]. This is an amputation! Is this what the patient wants?"))
 
 	to_chat(user, SPAN_WARNING("Please ask if this is what [target] wants before you continue. The muscles in the patient's [surgery.affected_limb.display_name] can be reattached if you've changed your mind, but once you start to cut through the bone you'll have to see it through to the end."))
-	to_chat(target, SPAN_HIGHDANGER("This is an amputation! If this is not what you want, tell [user] to stop!"))
+	to_chat(target, SPAN_HIGHDANGER("This is an amputation. If this is not what you want, tell [user] to stitch your [surgery.affected_limb.display_name] back together! You only have this one chance!"))
 	log_interact(user, target, "[key_name(user)] successfully begins an amputation on [key_name(target)]'s [surgery.affected_limb.display_name] with [tool ? "[tool]" : "their hands"], starting [surgery].")
 
 /datum/surgery_step/cut_muscle/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -89,7 +89,7 @@
 		SPAN_WARNING("[user]'s hand slips, slicing your [surgery.affected_limb.display_name] in the wrong place!"),
 		SPAN_WARNING("[user]'s hand slips, slicing [target]'s [surgery.affected_limb.display_name] in the wrong place!"))
 
-	to_chat(target, SPAN_HIGHDANGER("This is an amputation! If this is not what you want, tell [user] to stop!"))
+	to_chat(target, SPAN_HIGHDANGER("That was a failed an amputation attempt! If that is not what you want, tell [user] to stop!"))
 	target.apply_damage(15, BRUTE, target_zone)
 	log_interact(user, target, "[key_name(user)] failed to begin an amputation on [key_name(target)]'s [surgery.affected_limb.display_name] with [tool ? "[tool]" : "their hands"], aborting [surgery].")
 	return FALSE
@@ -115,7 +115,7 @@
 		SPAN_NOTICE("[user] begins to stitch the [muscle_type] in your [surgery.affected_limb.display_name] back together with [tool]."),
 		SPAN_NOTICE("[user] begins to stitch the [muscle_type] in [target]'s [surgery.affected_limb.display_name] back together with [tool]."))
 
-	target.custom_pain("The tightening of the stitches in your [surgery.affected_limb.display_name] feels unbearable!", 1)
+	target.custom_pain("The tightening of the stitches feels unbearable, but you are thankful your [surgery.affected_limb.display_name] will not be amputated.", 1)
 	log_interact(user, target, "[key_name(user)] attempted to abort an amputation on [key_name(target)]'s [surgery.affected_limb.display_name] with [tool].")
 
 /datum/surgery_step/abort_amputation/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -165,7 +165,7 @@
 		SPAN_NOTICE("[user] starts cutting through the [bone_type] in [target]'s [surgery.affected_limb.display_name] with [tool]! Is this what the patient wants?"))
 
 	target.custom_pain("Your [surgery.affected_limb.display_name] is being hacked away!", 1)
-	to_chat(target, SPAN_HIGHDANGER("If you wanted the doctor to stop, now is too late!"))
+	to_chat(target, SPAN_HIGHDANGER("If you wanted the doctor to stop, now might be too late!"))
 	if(target.stat == CONSCIOUS)
 		target.emote("scream") //MY! ARRRRRRMMMM! - Scout from Team Fortress 2
 	if(tool.hitsound)
@@ -175,11 +175,10 @@
 
 /datum/surgery_step/saw_off_limb/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
-		SPAN_NOTICE("You cut [target]'s [surgery.affected_limb.display_name] off!)"),
+		SPAN_NOTICE("You cut [target]'s [surgery.affected_limb.display_name] off!"),
 		SPAN_WARNING("[user] cuts your [surgery.affected_limb.display_name] off! Your [surgery.affected_limb.display_name], noooo! Now you need a robotic one."),
 		SPAN_NOTICE("[user] cuts [target]'s [surgery.affected_limb.display_name] off! Hope the medbay has some metal on hand for a new [surgery.affected_limb.display_name]."))
 
-	to_chat(user, SPAN_WARNING("If there was nothing wrong with that limb, you should feel VERY ashamed of yourself."))
 	user.count_niche_stat(STATISTICS_NICHE_SURGERY_AMPUTATE)
 	surgery.affected_limb.droplimb(amputation = TRUE, surgery_in_progress = TRUE)
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SURFACE
@@ -193,7 +192,7 @@
 			SPAN_WARNING("[user]'s hand slips, cutting into the wrong part of your [surgery.affected_limb.display_name], shattering it! It's broken, now!"),
 			SPAN_WARNING("[user]'s hand slips, cutting into the wrong part of [target]'s [surgery.affected_limb.display_name], shattering it! It's broken, now!"))
 
-		to_chat(target, SPAN_WARNING("Now's your final chance to tell the doc to stop!"))
+		to_chat(target, SPAN_HIGHDANGER("This is a rare and final opportunity to tell [user] to stitch you back up!"))
 		surgery.affected_limb.fracture(100)
 		if(target.stat == CONSCIOUS)
 			target.emote("pain")
@@ -249,7 +248,7 @@
 	user.affected_message(target,
 		SPAN_WARNING("Your hand slips, cutting the wrong part of [target]'s [surgery.affected_limb.parent.display_name]'s stump open!"),
 		SPAN_WARNING("[user]'s hand slips, cutting the wrong part of your [surgery.affected_limb.parent.display_name]'s stump open!"),
-		SPAN_WARNING("[user]'s hand slips, cutting [target]'s [surgery.affected_limb.parent.display_name] open!"))
+		SPAN_WARNING("[user]'s hand slips, cutting the wrong part of [target]'s [surgery.affected_limb.parent.display_name]'s stump open!"))
 
 	target.apply_damage(10, BRUTE, surgery.affected_limb.parent)
 	log_interact(user, target, "[key_name(user)] failed to clean up the stump of [key_name(target)]'s [surgery.affected_limb.display_name] with [tool], possibly aborting [surgery].")

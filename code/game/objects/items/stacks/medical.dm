@@ -67,7 +67,7 @@
 
 /obj/item/stack/medical/bruise_pack/get_examine_text(mob/user)
 	. = ..()
-	. += SPAN_NOTICE("Using [src] in your hand will bandage any open, bleeding wounds on you. This will take a bit longer if you're not aiming at the hurt limbs.")
+	. += SPAN_NOTICE("Using [src] in your hand will bandage any open, bleeding wounds on you. This will take a longer if you're not targeting the hurt limbs.")
 
 /obj/item/stack/medical/bruise_pack/handle_attack_self(mob/living/carbon/human/user)
 	if(!ishuman(user))
@@ -93,9 +93,9 @@
 			chosen_limb = user.get_limb(user.zone_selected)
 			bandage_wound(user, user, chosen_limb)
 			return
-		// If your aimed limb isn't the picked, wounded one, the delay is forced and slightly slower
+		// If your aimed limb isn't the picked, wounded one, the delay is forced and slower
 		// Prevents corpsmen+ from spamming the brute kit in their hands without dancing around the numpad
-		bandage_wound(user, user, chosen_limb, force_delay = TRUE, delay_mult = 1.5)
+		bandage_wound(user, user, chosen_limb, force_delay = TRUE, delay_mult = 2)
 
 /obj/item/stack/medical/bruise_pack/attack(mob/living/carbon/human/human_target, mob/user)
 	if(..())

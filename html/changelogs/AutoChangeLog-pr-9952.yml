@@ -1,9 +1,0 @@
-author: "Cuberound,  datimesmog, PuckaBoo2"
-delete-after: True
-changes:
-  - rscadd: "New wound type eschar, similar to broken bone but caused by burn damage"
-  - rscadd: "surgery for fixing eschar (medic possible)  Scalpel, hemo, retractor, scalpel then burnkit and close"
-  - balance: "limb with eschar behaves the same as splinted limb"
-  - balance: "eschar gives 10 pain"
-  - balance: "burn damage can not remove splints"
-  - balance: "chemicals stop healing untreated burns (with ointment or kit) on 5 damage on each limb"

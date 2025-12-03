@@ -15,7 +15,11 @@
 
 /datum/surgery/brain_repair/can_start(mob/user, mob/living/carbon/human/patient, obj/limb/L, obj/item/tool)
 	var/datum/internal_organ/brain/B = patient.internal_organs_by_name["brain"]
-	if(!B || B.damage <= dmg_min || B.robotic == ORGAN_ROBOT)
+	if(!B || B.robotic == ORGAN_ROBOT)
+		return FALSE
+	if(B.damage <= dmg_min)
+		if(target.disabilities & NERVOUS || target.sdisabilities & DISABILITY_MUTE || target.sdisabilities & DISABILITY_BLIND) //if people want to start out with disabilities and change their mind later they don't need brain damage to
+			return TRUE
 		return FALSE
 	if(dmg_max && B.damage > dmg_max)
 		return FALSE
@@ -50,11 +54,26 @@
 	log_interact(user, target, "[key_name(user)] started taking bone chips out of [key_name(target)]'s skull with [tool], possibly beginning [surgery].")
 
 /datum/surgery_step/remove_bone_chips/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	new /obj/item/shard/shrapnel/bone_chips/human(target) //adds bone chips
+	if(target.disabilities & NERVOUS) //rattlerattlerattlerattlerattle AAAAA MAKE IT STOP!
+		user.affected_message(target,
+			SPAN_NOTICE("After [target] insisted something was still there, you pull out some extra, tiny, loose pieces of bone that were rattling around in \his skull."),
+			SPAN_NOTICE("After you insisted something was still there, [user] pulls out some extra, tiny, loose pieces of bone that were rattling around in your skull."),
+			SPAN_NOTICE("[user] pulls out some extra, tiny, loose pieces of bone that were rattling around in [target]'s skull."))
+	if(target.sdisabilities & DISABILITY_MUTE) ////My self esteem emphatically dramatically improved since I was dumb!
+		user.affected_message(target,
+			SPAN_NOTICE("You finish extracting fragments of bone that were piercing [target]'s Broca's and Wernicke's area and prevented speech."),
+			SPAN_NOTICE("[user] finishes extracting fragments of bone that were piercing your Broca's and Wernicke's area and prevented speech."),
+			SPAN_NOTICE("[user] finishes extracting fragments of bone that were piercing [target]'s Broca's and Wernicke's area and prevented speech."))
+	if(target.sdisabilities & DISABILITY_DEAF) //o shid, I can hear now?
+		user.affected_message(target,
+			SPAN_NOTICE("You finish extracting fragments of bone that were piercing [target]'s auditory cortex and causing severe tinnitus."),
+			SPAN_NOTICE("[user] finishes extracting fragments of bone that were piercing your auditory cortex and causing severe tinnitus."),
+			SPAN_NOTICE("[user] finishes extracting fragments of that were piercing [target]'s auditory cortex and causing severe tinnitus."))
 	user.affected_message(target,
 		SPAN_NOTICE("You finish extracting sharp pieces of bone that were piercing [target]'s brain."),
 		SPAN_NOTICE("[user] finishes extracting sharp pieces of bone that were piercing your brain."),
 		SPAN_NOTICE("[user] finishes extracting sharp pieces of bone that were piercing [target]'s brain."))
+
 	user.count_niche_stat(STATISTICS_NICHE_SURGERY_BRAIN)
 
 	var/datum/internal_organ/brain/B = target.internal_organs_by_name["brain"]
@@ -63,9 +82,11 @@
 
 	to_chat(target, SPAN_NOTICE("The rattling and piercing feelings in your brain cease. Your mind and ears feel more clear."))
 
+	new /obj/item/shard/shrapnel/bone_chips/human(target) //adds bone chips
 	var/obj/item/shard/shrapnel/bone_chips/human/C = locate() in target
 	if(C)
 		C.forceMove(user.loc)
+
 	target.disabilities &= ~NERVOUS
 	target.sdisabilities &= ~DISABILITY_DEAF
 	target.sdisabilities &= ~DISABILITY_MUTE
@@ -122,10 +143,9 @@
 	var/datum/internal_organ/brain/B = target.internal_organs_by_name["brain"]
 	if(B)
 		B.damage = BONECHIPS_MAX_DAMAGE
+		to_chat(target, SPAN_NOTICE("The agonizing pressure in your skull ceases. Your mind and ears feel more clear, but something's rattling and poking around in your skull still!"))
 
 	to_chat(target, SPAN_NOTICE("The agonizing pressure in your skull ceases. Your mind and ears feel more clear, but something's rattling and poking around in your skull still!"))
-	target.sdisabilities &= ~DISABILITY_DEAF
-	target.sdisabilities &= ~DISABILITY_MUTE
 	target.pain.recalculate_pain()
 
 /datum/surgery_step/treat_hematoma/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)

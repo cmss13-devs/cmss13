@@ -33,7 +33,7 @@
 
 /datum/surgery_step/separate_corneas
 	name = "Separate Corneas"
-	desc = "separate and reshape the corneas"
+	desc = "separate the corneas"
 	tools = SURGERY_TOOLS_INCISION
 	time = 2 SECONDS
 
@@ -43,18 +43,18 @@
 
 /datum/surgery_step/separate_corneas/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
-		SPAN_NOTICE("You start to separate the corneas of [target]'s eyes and reshape them with [tool]."),
-		SPAN_NOTICE("[user] starts to separate the corneas of your eyes and reshape them with [tool]."),
-		SPAN_NOTICE("[user] starts to separate the corneas of [target]'s eyes and reshape them with [tool]."))
+		SPAN_NOTICE("You start to separate the corneas of [target]'s eyes with [tool]."),
+		SPAN_NOTICE("[user] starts to separate the corneas of your eyes with [tool]."),
+		SPAN_NOTICE("[user] starts to separate the corneas of [target]'s eyes with [tool]."))
 
 	target.custom_pain("You feel a searing, piercing pain in your eyeballs as your corneas are being sliced open!",1)
 	log_interact(user, target, "[key_name(user)] started to separate the corneas on [key_name(target)]'s eyes and reshape them with [tool].")
 
 /datum/surgery_step/separate_corneas/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
-		SPAN_NOTICE("You have separated [target]'s corneas and reshaped them."),
-		SPAN_NOTICE("[user] has separated your corneas and reshaped them."),
-		SPAN_NOTICE("[user] has separated [target]'s corneas and reshaped them."))
+		SPAN_NOTICE("You have separated [target]'s corneas."),
+		SPAN_NOTICE("[user] has separated your corneas."),
+		SPAN_NOTICE("[user] has separated [target]'s corneas."))
 
 	log_interact(user, target, "[key_name(user)] separated and reshaped the corneas on [key_name(target)]'s eyes with [tool], starting [surgery].")
 
@@ -177,11 +177,27 @@
 	target.custom_pain("[tool] moving around in your eyeballs feels bizarre and painful!",1)
 	log_interact(user, target, "[key_name(user)] begins to mend the damage to [key_name(target)]'s eyeballs with [tool].")
 
-/datum/surgery_step/mend_eyes/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/mend_eyes/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	var/datum/internal_organ/eyes/E = target.internal_organs_by_name["eyes"]
+	if(target.sdisabilities & DISABILITY_BLIND)
+		user.affected_message(target,
+			SPAN_NOTICE("You finish laying [target]'s detached retinas back into place and mending the damaged optic nerves that caused total blindness."),
+			SPAN_WARNING("[user] finishes laying your detached retinas back into place and mending the damaged optic nerves that caused total blindness."),
+			SPAN_WARNING("[user] finishes laying [target]'s detached retinas back into place and mending the damaged optic nerves that caused total blindness."))
+	if(target.disabilities & NEARSIGHTED)
+		user.affected_message(target,
+			SPAN_NOTICE("You finish reshaping [target]'s corneas so they can focus light accurately again."),
+			SPAN_NOTICE("[user] finishes reshaping your corneas so they can focus light accurately again."),
+			SPAN_WARNING("[user] finishes mending [target]'s corneas so they can focus light accurately again."))
+	if(E && E.damage > 0)
+		user.affected_message(target,
+			SPAN_NOTICE("You finish mending the damaged blood vessels within and the surface damage outside of [target]'s eyes."),
+			SPAN_NOTICE("[user] finishes mending the damaged blood vessels within and the surface damage outside of your eyes."),
+			SPAN_NOTICE("[user] finishes mending the damaged blood vessels within and the surface damage outside of [target]'s eyes."))
 	user.affected_message(target,
-			SPAN_NOTICE("You finish mending the retinas, optic nerves, blood vessels, and surface damage of [target]'s eyes."),
-			SPAN_NOTICE("[user] finishes mending the retinas, optic nerves, blood vessels, and surface damage of your eyes."),
-			SPAN_NOTICE("[user] finishes mending the retinas, optic nerves, blood vessels, and surface damage of [target]'s eyes."))
+			SPAN_NOTICE("You finish mending the damage in [target]'s eyes."),
+			SPAN_NOTICE("[user] finishes mending the damage in your eyes."),
+			SPAN_NOTICE("[user] finishes mending the damage in [target]'s eyes."))
 
 	log_interact(user, target, "[key_name(user)] mended the damage inside [key_name(target)]'s eyes with [tool].")
 

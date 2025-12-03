@@ -75,8 +75,6 @@ Defined in conflicts.dm of the #defines folder.
 
 	var/activation_sound = 'sound/weapons/handling/gun_underbarrel_activate.ogg'
 	var/deactivation_sound = 'sound/weapons/handling/gun_underbarrel_deactivate.ogg'
-	///Should only be used by muzzle attachments + The same with attack_verb
-	var/new_hitsound = null
 
 	var/flags_attach_features = ATTACH_REMOVABLE
 
@@ -325,7 +323,7 @@ Defined in conflicts.dm of the #defines folder.
 	throwforce = MELEE_FORCE_NORMAL
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 6
-	new_hitsound = 'sound/weapons/slash.ogg'
+	hitsound = 'sound/weapons/slash.ogg'
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	attack_speed = 9
 	flags_equip_slot = SLOT_FACE
@@ -671,7 +669,7 @@ Defined in conflicts.dm of the #defines folder.
 	throwforce = MELEE_FORCE_WEAK
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 6
-	new_hitsound = 'sound/weapons/spike_thunk.ogg'
+	hitsound = 'sound/weapons/spike_thunk.ogg'
 	attack_verb = list("bashed", "bludgeoned", "cracked", "smashed", "crushed", "pummeled", "spiked", "rammed")
 	attack_speed = 9
 

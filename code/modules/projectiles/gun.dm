@@ -431,8 +431,8 @@
 		movement_onehanded_acc_penalty_mult += R.movement_onehanded_acc_penalty_mod
 		force += R.melee_mod
 		w_class += R.size_mod
-		if(R.new_hitsound)
-			hitsound = R.new_hitsound
+		if(R.hitsound)
+			hitsound = R.hitsound
 			hitsound_override = TRUE
 		if(R.attack_verb)
 			attack_verb = R.attack_verb

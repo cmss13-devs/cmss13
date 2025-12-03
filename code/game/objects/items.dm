@@ -21,7 +21,7 @@
 	var/embeddable = TRUE //FALSE if unembeddable
 	var/embedded_organ = null
 	var/attack_speed = 11  //+3, Adds up to 10.  Added an extra 4 removed from /mob/proc/do_click()
-	///Used in attackby() to say how something was attacked "[x] has been [z.attack_verb] by [y] with [z]"
+	///Used in attackby() to say how something was attacked "[x] has been [z.attack_verb] by [y] with [z]" (For gun Attachments: Should only be applied to muzzle attachments.)
 	var/list/attack_verb
 	/// A multiplier to an object's force when used against a stucture.
 	var/demolition_mod = 1
@@ -54,7 +54,7 @@
 	///Whether the drop sound will vary in pitch/frequency
 	var/drop_vary = TRUE
 
-	///Play this when you thwack someone with the item
+	///Play this when you thwack someone with the item (For gun Attachments: Should only be applied to muzzle attachments.)
 	var/hitsound
 
 	var/center_of_mass = "x=16;y=16"

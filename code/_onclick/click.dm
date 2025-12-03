@@ -112,7 +112,7 @@
 		return
 
 	//Self-harm preference. isxeno check because xeno clicks on self are redirected to the turf below the pointer.
-	if(atom_clicked == src && client.prefs && client.prefs.toggle_prefs & TOGGLE_IGNORE_SELF && src.a_intent != INTENT_HELP && !isxeno(src))
+	if(atom_clicked == src && client.prefs && client.prefs.toggle_prefs & TOGGLE_IGNORE_SELF && a_intent != INTENT_HELP && !isxeno(src))
 		if(object_used)
 			if(object_used.force && (!object_used || !(object_used.flags_item & (NOBLUDGEON|ITEM_ABSTRACT))))
 				if(world.time % 3)

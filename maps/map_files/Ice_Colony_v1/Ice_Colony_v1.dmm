@@ -35,6 +35,49 @@
 /obj/item/lightstick/planted,
 /turf/open/auto_turf/snow/layer2,
 /area/ice_colony/exterior/surface/valley/southeast)
+"aaj" = (
+/obj/structure/machinery/door/airlock/strata/autoname{
+	dir = 1;
+	locked = 1;
+	name = "\improper Engine Room"
+	},
+/turf/open/floor/icefloor/shuttle_vfloor,
+/area/ice_colony/exterior/underground/caves/dig)
+"aak" = (
+/obj/structure/machinery/door/airlock/strata/autoname{
+	dir = 1;
+	locked = 1;
+	name = "\improper Engine Room"
+	},
+/turf/open/floor/icefloor/shuttle_floor7,
+/area/ice_colony/exterior/underground/caves/dig)
+"aal" = (
+/obj/structure/machinery/door/airlock/strata/autoname{
+	autoname = 0;
+	locked = 1;
+	name = "\improper Engine Room"
+	},
+/turf/open/floor/icefloor/shuttle_floor7,
+/area/ice_colony/exterior/underground/caves/dig)
+"aam" = (
+/obj/structure/machinery/door/airlock/strata/autoname{
+	dir = 1;
+	locked = 1;
+	name = "\improper Engine Room"
+	},
+/obj/structure/machinery/door/airlock/strata/autoname{
+	dir = 1;
+	locked = 1;
+	name = "\improper Engine Room"
+	},
+/turf/closed/shuttle{
+	icon_state = "wall3"
+	},
+/area/ice_colony/exterior/underground/caves/dig)
+"aan" = (
+/obj/structure/machinery/fuelcell_recycler/full,
+/turf/closed/wall/shiva/ice,
+/area/ice_colony/exterior/surface/cliff)
 "aas" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_x = -26
@@ -5220,13 +5263,6 @@
 /area/ice_colony/underground/maintenance/south)
 "jxS" = (
 /obj/structure/inflatable/door,
-/obj{
-	anchored = 1;
-	desc = "This doors looks like it has been made by aliens...";
-	icon = 'icons/obj/structures/doors/hightechsecurity.dmi';
-	icon_state = "door_open";
-	name = "strange airlock"
-	},
 /turf/open/floor/icefloor/shuttle_floor6,
 /area/ice_colony/exterior/underground/caves/dig)
 "jyL" = (
@@ -7111,10 +7147,8 @@
 /turf/open/ice,
 /area/ice_colony/exterior/surface/valley/southeast)
 "mYl" = (
-/obj/structure/machinery/door/poddoor{
-	icon = 'icons/obj/structures/doors/hightechsecurity.dmi';
-	icon_state = "door_closed";
-	name = "Strange Airlock"
+/obj/structure/machinery/door/airlock/strata/autoname{
+	dir = 2
 	},
 /turf/open/floor/icefloor/shuttle_floor7,
 /area/ice_colony/exterior/underground/caves/dig)
@@ -7950,14 +7984,10 @@
 /turf/open/floor/plating/icefloor,
 /area/shuttle/elevator3/ground)
 "orZ" = (
-/obj{
-	anchored = 1;
-	density = 1;
-	desc = "This doors looks like it has been made by aliens...";
-	icon = 'icons/obj/structures/doors/hightechsecurity.dmi';
-	icon_state = "door_closed";
-	name = "strange airlock";
-	opacity = 1
+/obj/structure/machinery/door/airlock/strata/autoname{
+	dir = 1;
+	locked = 1;
+	name = "\improper Engine Room"
 	},
 /turf/open/floor/icefloor/shuttle_floor6,
 /area/ice_colony/exterior/underground/caves/dig)
@@ -8911,6 +8941,10 @@
 /area/ice_colony/surface/engineering)
 "qav" = (
 /obj/structure/surface/table,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
 /turf/open/floor/plating,
 /area/ice_colony/surface/engineering/generator)
 "qaz" = (
@@ -9580,14 +9614,12 @@
 /turf/open/floor/darkgreen2/north,
 /area/ice_colony/underground/reception)
 "rbM" = (
-/obj{
-	anchored = 1;
-	density = 1;
-	desc = "This doors looks like it has been made by aliens...";
-	icon = 'icons/obj/structures/doors/hightechsecurity.dmi';
-	icon_state = "door_closed";
-	name = "strange airlock";
-	opacity = 1
+/obj/structure/machinery/door/airlock/strata/autoname{
+	autoname = 0;
+	dir = 1;
+	icon_state = "door_locked";
+	locked = 1;
+	name = "\improper External Airlock"
 	},
 /turf/open/floor/icefloor/shuttle_floor7,
 /area/ice_colony/exterior/underground/caves/dig)
@@ -10183,14 +10215,8 @@
 /turf/open/floor/dark2,
 /area/ice_colony/surface/garage/one)
 "shJ" = (
-/obj{
-	anchored = 1;
-	density = 1;
-	desc = "This doors looks like it has been made by aliens...";
-	icon = 'icons/obj/structures/doors/hightechsecurity.dmi';
-	icon_state = "door_closed";
-	name = "strange airlock";
-	opacity = 1
+/obj/structure/machinery/door/airlock/strata/autoname{
+	dir = 2
 	},
 /turf/open/floor/icefloor/shuttle_vfloor,
 /area/ice_colony/exterior/underground/caves/dig)
@@ -10216,17 +10242,6 @@
 	},
 /turf/open/floor/vault2/west,
 /area/ice_colony/surface/storage_unit/telecomms)
-"skt" = (
-/obj/structure/inflatable/door,
-/obj{
-	anchored = 1;
-	desc = "This doors looks like it has been made by aliens...";
-	icon = 'icons/obj/structures/doors/hightechsecurity.dmi';
-	icon_state = "door_open";
-	name = "strange airlock"
-	},
-/turf/open/floor/icefloor/shuttle_floor7,
-/area/ice_colony/exterior/underground/caves/dig)
 "sle" = (
 /obj/structure/closet/crate,
 /obj/item/stack/sheet/mineral/phoron{
@@ -10597,6 +10612,7 @@
 	icon_state = "N";
 	pixel_y = 2
 	},
+/obj/structure/machinery/power/apc/power/south,
 /turf/open/floor/plating/icefloor/warnplate/northwest,
 /area/ice_colony/exterior/surface/valley/southeast/apc_support)
 "sTR" = (
@@ -10710,16 +10726,6 @@
 	},
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/underground/maintenance/south)
-"tem" = (
-/obj{
-	anchored = 1;
-	desc = "This doors looks like it has been made by aliens...";
-	icon = 'icons/obj/structures/doors/hightechsecurity.dmi';
-	icon_state = "door_open";
-	name = "strange airlock"
-	},
-/turf/open/floor/icefloor/shuttle_vfloor,
-/area/ice_colony/exterior/underground/caves/dig)
 "ten" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo{
 	dir = 8
@@ -11533,6 +11539,7 @@
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/dorms)
 "uCT" = (
+/obj/structure/machinery/power/apc/power/south,
 /turf/open/floor/plating/icefloor/warnplate/southwest,
 /area/ice_colony/exterior/surface/valley/northeast/apc_support)
 "uDo" = (
@@ -12536,6 +12543,7 @@
 "woD" = (
 /obj/structure/machinery/light,
 /obj/structure/surface/table,
+/obj/structure/machinery/fuelcell_recycler/full,
 /turf/open/floor/plating,
 /area/ice_colony/surface/engineering/generator)
 "woY" = (
@@ -12779,12 +12787,10 @@
 /turf/open/floor/darkyellowcorners2/east,
 /area/ice_colony/surface/dorms/canteen)
 "wJQ" = (
-/obj{
-	anchored = 1;
-	desc = "This doors looks like it has been made by aliens...";
-	icon = 'icons/obj/structures/doors/hightechsecurity.dmi';
-	icon_state = "door_open";
-	name = "strange airlock"
+/obj/structure/machinery/door/airlock/strata/autoname{
+	autoname = 0;
+	locked = 1;
+	name = "\improper Navigation Chamber"
 	},
 /turf/open/floor/icefloor/shuttle_floor7,
 /area/ice_colony/exterior/underground/caves/dig)
@@ -19566,7 +19572,7 @@ qUi
 qUi
 qUi
 qUi
-qUi
+aan
 nBo
 nBo
 nBo
@@ -56043,12 +56049,12 @@ ahn
 gIt
 bQx
 bQx
-tem
+bQx
 tIt
 tIt
 tIt
 tIt
-shJ
+aaj
 bQx
 bQx
 fRY
@@ -56517,8 +56523,8 @@ ahn
 ahn
 ahn
 ahn
-wJQ
-rbM
+tIt
+aal
 ahn
 ahn
 ahn
@@ -56988,10 +56994,10 @@ tIt
 tIt
 tIt
 tIt
-wJQ
 tIt
 tIt
-rbM
+tIt
+aak
 tIt
 tIt
 tIt
@@ -59113,8 +59119,8 @@ jOi
 aQX
 oPG
 ahn
-wJQ
-wJQ
+aal
+aal
 ahn
 aQX
 jOi
@@ -60285,7 +60291,7 @@ ahn
 bQx
 bQx
 bQx
-tem
+shJ
 bQx
 bQx
 bQx
@@ -60521,7 +60527,7 @@ ahn
 bQx
 bQx
 bQx
-tem
+shJ
 bQx
 bQx
 bQx
@@ -60764,7 +60770,7 @@ ahn
 bQx
 bQx
 bQx
-wJQ
+mYl
 tIt
 tIt
 mYl
@@ -61701,7 +61707,7 @@ ahn
 bQx
 bQx
 bQx
-ahn
+aam
 bft
 bft
 ahn
@@ -62884,9 +62890,9 @@ bQx
 ahn
 eXe
 eXe
-skt
+oKf
 tIt
-skt
+oKf
 tIt
 gIM
 tIt
@@ -63363,8 +63369,8 @@ wJQ
 wJQ
 ahn
 ahn
-rbM
-rbM
+tIt
+tIt
 ahn
 ahn
 ahn

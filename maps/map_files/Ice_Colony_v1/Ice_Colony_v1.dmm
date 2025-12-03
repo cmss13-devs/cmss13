@@ -65,11 +65,6 @@
 	locked = 1;
 	name = "\improper Engine Room"
 	},
-/obj/structure/machinery/door/airlock/strata/autoname{
-	dir = 1;
-	locked = 1;
-	name = "\improper Engine Room"
-	},
 /turf/closed/shuttle{
 	icon_state = "wall3"
 	},

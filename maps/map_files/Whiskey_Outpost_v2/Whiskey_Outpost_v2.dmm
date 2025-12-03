@@ -289,6 +289,16 @@
 	},
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/cic)
+"aU" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 8;
+	icon_state = "sandbag_0"
+	},
+/obj/structure/machinery/defenses/sentry/premade{
+	dir = 8
+	},
+/turf/open/floor/asteroidwarning/west,
+/area/whiskey_outpost/outside/north/platform)
 "aV" = (
 /turf/open/floor/whitegreen/southwest,
 /area/whiskey_outpost/inside/hospital)
@@ -1071,6 +1081,10 @@
 "dG" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/whiskey_outpost/outside/south)
+"dH" = (
+/obj/item/flag/plantable/ua,
+/turf/open/floor/prison,
+/area/whiskey_outpost/inside/supply)
 "dI" = (
 /obj/item/lightstick/red/planted,
 /turf/open/gm/dirtgrassborder/south,
@@ -1319,12 +1333,6 @@
 /obj/structure/machinery/power/apc/almayer/north,
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/living)
-"ew" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/gm/dirt,
-/area/whiskey_outpost/outside/north/beach)
 "ex" = (
 /obj/structure/machinery/computer/groundside_operations{
 	pixel_y = -8
@@ -5065,13 +5073,6 @@
 /obj/structure/extinguisher_cabinet,
 /turf/closed/wall/r_wall/unmeltable,
 /area/whiskey_outpost/outside/mortar_pit)
-"uA" = (
-/obj/structure/machinery/light{
-	dir = 4;
-	invisibility = 101
-	},
-/turf/open/gm/dirt,
-/area/whiskey_outpost/outside/north/beach)
 "uB" = (
 /turf/open/floor/prison/darkyellow2/west,
 /area/whiskey_outpost/inside/supply)
@@ -6990,9 +6991,6 @@
 /obj/structure/barricade/sandbags/wired{
 	dir = 1;
 	icon_state = "sandbag_0"
-	},
-/obj/structure/machinery/defenses/sentry/premade{
-	dir = 8
 	},
 /turf/open/floor/asteroidwarning/west,
 /area/whiskey_outpost/outside/north/platform)
@@ -21205,7 +21203,7 @@ fy
 ir
 uc
 DY
-AB
+aU
 EH
 HS
 YG
@@ -22200,7 +22198,7 @@ uh
 kS
 kS
 kS
-kS
+dH
 kS
 vP
 ZH
@@ -29670,10 +29668,10 @@ sV
 hW
 fy
 fy
-ew
 fy
 fy
-ew
+fy
+fy
 fy
 fy
 fy
@@ -30882,10 +30880,10 @@ qW
 ae
 fy
 fy
-uA
 fy
 fy
-uA
+fy
+fy
 fy
 fy
 fy

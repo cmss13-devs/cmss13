@@ -75,8 +75,9 @@ Defined in conflicts.dm of the #defines folder.
 
 	var/activation_sound = 'sound/weapons/handling/gun_underbarrel_activate.ogg'
 	var/deactivation_sound = 'sound/weapons/handling/gun_underbarrel_deactivate.ogg'
-
+	///Should only be TRUE for muzzle attachments that want to change the melee hit sound of the gun.
 	var/sound_override = FALSE
+	///Should only be TRUE for muzzle attachments that want to change the list of attack verbs for the gun.
 	var/verb_override = FALSE
 
 	var/flags_attach_features = ATTACH_REMOVABLE

@@ -76,6 +76,9 @@ Defined in conflicts.dm of the #defines folder.
 	var/activation_sound = 'sound/weapons/handling/gun_underbarrel_activate.ogg'
 	var/deactivation_sound = 'sound/weapons/handling/gun_underbarrel_deactivate.ogg'
 
+	var/sound_override = FALSE
+	var/verb_override = FALSE
+
 	var/flags_attach_features = ATTACH_REMOVABLE
 
 	var/current_rounds = 0 //How much it has.
@@ -325,6 +328,8 @@ Defined in conflicts.dm of the #defines folder.
 	throw_range = 6
 	hitsound = 'sound/weapons/slash.ogg'
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	sound_override = TRUE
+	verb_override = TRUE
 	attack_speed = 9
 	flags_equip_slot = SLOT_FACE
 	flags_armor_protection = SLOT_FACE
@@ -671,6 +676,8 @@ Defined in conflicts.dm of the #defines folder.
 	throw_range = 6
 	hitsound = 'sound/weapons/spike_thunk.ogg'
 	attack_verb = list("bashed", "bludgeoned", "cracked", "smashed", "crushed", "pummeled", "spiked", "rammed")
+	sound_override = TRUE
+	verb_override = TRUE
 	attack_speed = 9
 
 /obj/item/attachable/shotgun_choke

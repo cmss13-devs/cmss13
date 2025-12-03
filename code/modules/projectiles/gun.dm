@@ -431,10 +431,10 @@
 		movement_onehanded_acc_penalty_mult += R.movement_onehanded_acc_penalty_mod
 		force += R.melee_mod
 		w_class += R.size_mod
-		if(R.hitsound)
+		if(R.hitsound && R.sound_override)
 			hitsound = R.hitsound
 			hitsound_override = TRUE
-		if(R.attack_verb)
+		if(R.attack_verb && R.verb_override)
 			attack_verb = R.attack_verb
 			attack_verb_override = TRUE
 		if(!R.hidden)

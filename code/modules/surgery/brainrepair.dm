@@ -50,29 +50,11 @@
 	log_interact(user, target, "[key_name(user)] started taking bone chips out of [key_name(target)]'s skull with [tool], possibly beginning [surgery].")
 
 /datum/surgery_step/remove_bone_chips/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-
 	new /obj/item/shard/shrapnel/bone_chips/human(target) //adds bone chips
-	user.affected_message(target, //fixes brain damage
+	user.affected_message(target,
 		SPAN_NOTICE("You finish extracting sharp pieces of bone that were piercing [target]'s brain."),
 		SPAN_NOTICE("[user] finishes extracting sharp pieces of bone that were piercing your brain."),
 		SPAN_NOTICE("[user] finishes extracting sharp pieces of bone that were piercing [target]'s brain."))
-
-	if(target.disabilities &= NERVOUS) //rattlerattlerattlerattlerattle AAAAA MAKE IT STOP!
-		user.affected_message(target,
-			SPAN_NOTICE("After [target] insisted something was still there, you pull out some extra, tiny, loose pieces of bone that were rattling around in \his skull."),
-			SPAN_NOTICE("After you insisted something was still there, [user] pulls out some extra, tiny, loose pieces of bone that were rattling around in your skull."),
-			SPAN_NOTICE("[user] pulls out some extra, tiny, loose pieces of bone that were rattling around in [target]'s skull."))
-	if(target.sdisabilities &= DISABILITY_DEAF) //o shid, I can hear now?
-		user.affected_message(target,
-			SPAN_NOTICE("You finish extracting fragments of bone that were piercing [target]'s auditory cortex and causing severe tinnitus."),
-			SPAN_NOTICE("[user] finishes extracting fragments of bone that were piercing your auditory cortex and causing severe tinnitus."),
-			SPAN_NOTICE("[user] finishes extracting fragments of that were piercing [target]'s auditory cortex and causing severe tinnitus."))
-
-	if(target.sdisabilities &= DISABILITY_MUTE) ////My self esteem emphatically dramatically improved since I was dumb!
-		user.affected_message(target,
-			SPAN_NOTICE("You finish extracting fragments of bone that were piercing [target]'s Broca's and Wernicke's area and prevented speech."),
-			SPAN_NOTICE("[user] finishes extracting fragments of bone that were piercing your Broca's and Wernicke's area and prevented speech."),
-			SPAN_NOTICE("[user] finishes extracting fragments of bone that were piercing [target]'s Broca's and Wernicke's area and prevented speech."))
 	user.count_niche_stat(STATISTICS_NICHE_SURGERY_BRAIN)
 
 	var/datum/internal_organ/brain/B = target.internal_organs_by_name["brain"]

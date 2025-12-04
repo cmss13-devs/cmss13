@@ -490,8 +490,8 @@
 		/obj/item/ammo_magazine/smg/m39/extended,
 		/obj/item/ammo_magazine/smg/m39/ap,
 		/obj/item/ammo_magazine/smg/m39/ap,
-		/obj/item/ammo_magazine/pistol/m10
-		/obj/item/ammo_magazine/pistol/m10
+		/obj/item/ammo_magazine/pistol/m10,
+		/obj/item/ammo_magazine/pistol/m10,
 		/obj/item/ammo_magazine/pistol/m10/ap/extended,
 		/obj/item/ammo_magazine/pistol/m10/drum,
 		/obj/item/ammo_magazine/pistol/m10/extended,

@@ -867,7 +867,7 @@
 
 /obj/item/clothing/under/marine/dress/skirt
 	name = "marine formal service skirt uniform"
-	desc = "A steel grey skirt paired with a formal shirt typically worn by marines of the USCM. Still practicable while still being more formal than the standard service uniform."
+	desc = "A steel grey skirt paired with a formal shirt typically worn by marines of the USCM. Practical, while still being more formal than the standard service uniform."
 	icon_state = "formal_jumpsuit_skirt"
 	worn_state = "formal_jumpsuit_skirt"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'

@@ -672,7 +672,7 @@
 
 /obj/item/clothing/under/marine/officer/bridge/skirt
 	name = "marine service skirt uniform"
-	desc = "A steel grey skirt paired with a tan shirt worn by members of the USCM. Do the corps proud. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
+	desc = "A steel grey skirt paired with a tan shirt worn by members of the USCM. Do the corps proud. It has pads of light Kevlar to help protect against stabbing weapons and bullets."
 	icon_state = "BO_jumpsuit_skirt"
 	worn_state = "BO_jumpsuit_skirt"
 

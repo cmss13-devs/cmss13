@@ -127,9 +127,7 @@
 	},
 /obj/structure/grille,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "abA" = (
 /obj/item/device/flashlight/lamp/tripod{
 	on = 0
@@ -216,9 +214,7 @@
 "adl" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/auto_turf/lv_sand/layer0,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "adA" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#ae8686";
@@ -314,9 +310,7 @@
 /obj/structure/disposalpipe/junction,
 /obj/structure/grille,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "agf" = (
 /turf/open/gm/dirt/brown/variant_5/east,
 /area/lv624/ground/barrens/west_barrens)
@@ -447,9 +441,7 @@
 "ajv" = (
 /obj/structure/platform_decoration/stone/ancient_temple/east,
 /turf/open/gm/river/soro,
-/area/lv624/ground/river/east_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/east_river)
 "ajw" = (
 /obj/effect/hunter/ancient_temple/deco_border{
 	dir = 4
@@ -689,9 +681,7 @@
 /area/lv624/lazarus/corporate_dome)
 "apm" = (
 /turf/open/gm/coast/dirt/beachcorner2/south_west,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "aps" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -755,9 +745,7 @@
 /area/lv624/ground/caves/south_east_caves)
 "aqa" = (
 /turf/open/gm/dirt/brown/variant_5/west,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "aqc" = (
 /turf/open/auto_turf/lv_grass/layer1,
 /area/lv624/ground/jungle/north_east_jungle)
@@ -861,9 +849,7 @@
 "asE" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/floor/brown_dirt/random_rocks,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "asN" = (
 /obj/structure/tunnel,
 /turf/open/gm/dirt/brown/variant_6,
@@ -1169,9 +1155,7 @@
 	dir = 8
 	},
 /turf/open/gm/river/soro,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "ayx" = (
 /obj/structure/barricade/handrail/wire{
 	layer = 3.1;
@@ -1668,9 +1652,7 @@
 "aKh" = (
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "aKY" = (
 /obj/effect/decal/lv_decals/red_mud_corner{
 	dir = 8
@@ -2712,9 +2694,7 @@
 /area/lv624/ground/jungle/south_central_jungle)
 "bfq" = (
 /turf/open/gm/coast/dirt/beachcorner2,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "bft" = (
 /obj/effect/hunter/ancient_temple/deco_border/bronze/deco_border2{
 	dir = 1
@@ -2866,9 +2846,7 @@
 /area/lv624/lazarus/engineering)
 "bih" = (
 /turf/open/gm/coast/dirt/beachcorner/south_west,
-/area/lv624/ground/river/east_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/east_river)
 "bip" = (
 /obj/effect/hunter/ancient_temple/tile_edge/tile_edge_7,
 /obj/effect/decal/lv_decals/cave_mud_corner{
@@ -3112,9 +3090,7 @@
 	dir = 1
 	},
 /turf/open/gm/river/soro,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "bom" = (
 /obj/structure/platform_decoration/metal/strata/alt,
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
@@ -3288,15 +3264,11 @@
 /obj/structure/platform_decoration/stone/ancient_temple,
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/coast/dirt/north,
-/area/lv624/ground/river/east_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/east_river)
 "bte" = (
 /obj/structure/platform_decoration/stone/ancient_temple/west,
 /turf/open/gm/coast/dirt/beachcorner/north_east,
-/area/lv624/ground/river/east_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/east_river)
 "bti" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /obj/structure/machinery/power/apc{
@@ -3722,9 +3694,7 @@
 /area/lv624/lazarus/robotics)
 "bDo" = (
 /turf/open/auto_turf/lv_sand/layer0,
-/area/lv624/ground/river/west_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/west_river)
 "bDC" = (
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_x = -8;
@@ -3964,9 +3934,7 @@
 "bKY" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/coast/dirt/beachcorner/south_west,
-/area/lv624/ground/river/east_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/east_river)
 "bKZ" = (
 /obj/structure/prop/brazier/frame/full/campfire,
 /turf/open/gm/dirt/brown/variant_6,
@@ -4071,9 +4039,7 @@
 "bMG" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/coast/dirt/beachcorner/south_east,
-/area/lv624/ground/river/east_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/east_river)
 "bMI" = (
 /turf/open/auto_turf/lv_sand/layer0,
 /area/lv624/lazarus/quartstorage/outdoors)
@@ -4130,9 +4096,7 @@
 "bND" = (
 /obj/effect/decal/lv_decals/red_mud_corner,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv624/ground/river/east_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/east_river)
 "bNK" = (
 /obj/structure/machinery/light/small/blue{
 	light_color = "#dae2ff";
@@ -4522,9 +4486,7 @@
 	dir = 4
 	},
 /turf/open/gm/river/soro,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "bWW" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/coast/dirt/beachcorner2/south_west,
@@ -5079,9 +5041,7 @@
 "cjo" = (
 /obj/structure/platform/metal/strata/alt/west,
 /turf/open/gm/coast/dirt/beachcorner/south_east,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "cjA" = (
 /obj/structure/largecrate/supply/ammo/shotgun,
 /obj/item/stack/sheet/wood/large_stack,
@@ -5844,9 +5804,7 @@
 	layer = 2.1
 	},
 /turf/open/gm/river/soro,
-/area/lv624/ground/river/west_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/west_river)
 "cBo" = (
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/floor_plate,
@@ -5929,9 +5887,7 @@
 "cDc" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/coast/dirt/beachcorner2/south_east,
-/area/lv624/ground/river/west_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/west_river)
 "cDg" = (
 /obj/effect/hunter/ancient_temple/tile_edge,
 /turf/open/floor/ancient_temple/damaged/damage_7,
@@ -5969,9 +5925,7 @@
 "cDE" = (
 /obj/structure/platform/metal/strata/alt/west,
 /turf/open/gm/river/soro,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "cDG" = (
 /obj/structure/platform/stone/ancient_temple/west,
 /turf/open/floor/brown_dirt/random_rocks,
@@ -6451,9 +6405,7 @@
 /area/lv624/lazarus/quartstorage)
 "cLk" = (
 /turf/open/gm/coast/dirt/beachcorner/south_west,
-/area/lv624/ground/river/west_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/west_river)
 "cLq" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_2,
 /turf/open/floor/plating/ancient_temple,
@@ -6582,9 +6534,7 @@
 "cNt" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/river/soro,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "cNH" = (
 /obj/structure/bed/chair/comfy,
 /turf/open/floor/hybrisa/carpet/rug_colorable/blue/east,
@@ -7224,9 +7174,7 @@
 /area/lv624/lazarus/research)
 "dfu" = (
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "dfL" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
@@ -7406,9 +7354,7 @@
 /area/lv624/lazarus/landing_zones/lz2)
 "djv" = (
 /turf/open/gm/coast/dirt/beachcorner/north_east,
-/area/lv624/ground/river/west_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/west_river)
 "djz" = (
 /obj/effect/decal/lv_decals/red_mud_corner{
 	dir = 4
@@ -7671,9 +7617,7 @@
 	dir = 1
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "doD" = (
 /obj/structure/closet/secure_closet/personal{
 	pixel_x = -7;
@@ -7836,9 +7780,7 @@
 "dtM" = (
 /obj/structure/flora/jungle/alienplant1,
 /turf/open/gm/river/soro,
-/area/lv624/ground/river/west_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/west_river)
 "dtN" = (
 /turf/open/gm/coast/dirt/west,
 /area/lv624/ground/caves/central_caves)
@@ -8130,9 +8072,7 @@
 	},
 /obj/structure/grille,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "dBa" = (
 /obj/structure/flora/jungle/vines/blue/light_1,
 /turf/open/auto_turf/lv_grass/layer0,
@@ -8186,9 +8126,7 @@
 /area/lv624/lazarus/main_hall)
 "dCq" = (
 /turf/open/gm/coast/dirt/beachcorner2/north_east,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "dCH" = (
 /obj/structure/flora/jungle/planttop1,
 /turf/open/auto_turf/lv_grass/layer0,
@@ -8801,9 +8739,7 @@
 /area/lv624/lazarus/sleep_female)
 "dSt" = (
 /turf/open/gm/coast/dirt/beachcorner/south_east,
-/area/lv624/ground/river/west_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/west_river)
 "dSB" = (
 /obj/structure/platform/wood,
 /turf/open/floor/interior/wood/alt,
@@ -9020,9 +8956,7 @@
 /area/lv624/ground/caves/north_east_caves)
 "dWK" = (
 /turf/open/gm/coast/dirt/beachcorner/south_east,
-/area/lv624/ground/river/east_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/east_river)
 "dWN" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 8
@@ -9290,9 +9224,7 @@
 "eby" = (
 /obj/structure/platform/metal/strata/alt/west,
 /turf/open/gm/coast/dirt/south,
-/area/lv624/ground/river/east_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/east_river)
 "eca" = (
 /obj/effect/decal/lv_decals/cave_mud_corner{
 	dir = 8
@@ -9335,9 +9267,7 @@
 /turf/open/floor/brown_dirt/random_rocks_alt{
 	dir = 6
 	},
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "edb" = (
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 1
@@ -9501,9 +9431,7 @@
 /obj/structure/flora/bush/ausbushes/reedbush,
 /obj/structure/platform/metal/strata/alt/north,
 /turf/open/gm/coast/dirt/north,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "egI" = (
 /obj/structure/machinery/computer/shuttle/dropship/flight/lz2,
 /obj/structure/surface/table/reinforced/prison,
@@ -9707,9 +9635,7 @@
 "ejT" = (
 /obj/structure/platform_decoration/stone/ancient_temple/west,
 /turf/open/gm/river/soro,
-/area/lv624/ground/river/east_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/east_river)
 "ejX" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison/bright_clean2,
@@ -9891,9 +9817,7 @@
 	},
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/ramptop,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "eoa" = (
 /obj/structure/machinery/colony_floodlight{
 	light_color = "#dae2ff"
@@ -9941,9 +9865,7 @@
 "epF" = (
 /obj/structure/platform/metal/strata/alt/east,
 /turf/open/gm/coast/dirt/beachcorner/south_east,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "epR" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 4
@@ -10141,9 +10063,7 @@
 "esD" = (
 /obj/structure/grille,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "esZ" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_5,
 /turf/open/floor/ancient_temple/damaged/damage_7,
@@ -10434,9 +10354,7 @@
 /area/lv624/lazarus/landing_zones/lz2)
 "eAn" = (
 /turf/open/gm/coast/dirt/beachcorner/north_east,
-/area/lv624/ground/river/east_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/east_river)
 "eAB" = (
 /obj/structure/platform_decoration/wood/north,
 /obj/structure/flora/bush/ausbushes/reedbush,
@@ -10766,9 +10684,7 @@
 /area/lv624/ground/caves/north_central_caves)
 "eIv" = (
 /turf/open/gm/coast/dirt/north,
-/area/lv624/ground/river/east_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/east_river)
 "eIx" = (
 /obj/structure/prop/rock/brown{
 	dir = 6;
@@ -10830,9 +10746,7 @@
 "eIT" = (
 /obj/structure/platform/metal/strata/alt/east,
 /turf/open/gm/coast/dirt/beachcorner/north_east,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "eIX" = (
 /obj/item/reagent_container/glass/watertank,
 /obj/structure/surface/table/almayer{
@@ -11408,9 +11322,7 @@
 	dir = 1
 	},
 /turf/open/floor/prison/ramptop,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "eXx" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#ae8686";
@@ -11884,9 +11796,7 @@
 	},
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/cell_stripe/east,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "fhd" = (
 /obj/structure/barricade/handrail/wire,
 /obj/structure/barricade/handrail/wire{
@@ -12560,9 +12470,7 @@
 	dir = 4
 	},
 /turf/open/gm/coast/dirt/south,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "fuN" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#ae8686";
@@ -12670,9 +12578,7 @@
 /area/lv624/lazarus/quartstorage)
 "fxg" = (
 /turf/open/gm/coast/dirt/west,
-/area/lv624/ground/river/west_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/west_river)
 "fxk" = (
 /turf/open/floor/brown_dirt/random_rocks_alt{
 	dir = 6
@@ -13642,9 +13548,7 @@
 /area/lv624/ground/caves/north_east_caves)
 "fVK" = (
 /turf/open/gm/coast/dirt/north,
-/area/lv624/ground/river/west_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/west_river)
 "fVO" = (
 /obj/structure/flora/jungle/vines/blue/light_1,
 /turf/closed/wall/strata_ice/jungle,
@@ -13717,9 +13621,7 @@
 "fWO" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/river/soro,
-/area/lv624/ground/river/west_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/west_river)
 "fXh" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/auto_turf/lv_grass/layer1,
@@ -13778,9 +13680,7 @@
 "fYU" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/river/soro,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "fZg" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#ae8686";
@@ -13899,9 +13799,7 @@
 "gds" = (
 /obj/structure/platform/metal/strata/alt/west,
 /turf/open/gm/river/soro,
-/area/lv624/ground/river/east_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/east_river)
 "gdD" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_4,
 /turf/open/floor/ancient_temple/ruined/east,
@@ -14580,9 +14478,7 @@
 "gsi" = (
 /obj/structure/platform/metal/strata/alt/east,
 /turf/open/gm/coast/dirt/north,
-/area/lv624/ground/river/west_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/west_river)
 "gsk" = (
 /obj/structure/machinery/colony_floodlight{
 	light_color = "#dae2ff"
@@ -15719,9 +15615,7 @@
 	dir = 4
 	},
 /turf/open/gm/river/soro,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "gPO" = (
 /obj/structure/bed/chair/comfy/teal{
 	dir = 8
@@ -15851,9 +15745,7 @@
 /obj/structure/flora/bush/ausbushes/reedbush,
 /obj/structure/platform/metal/strata/alt/east,
 /turf/open/gm/coast/dirt/beachcorner2/south_east,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "gSh" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/floor/brown_dirt/random_rocks_alt{
@@ -15878,9 +15770,7 @@
 "gSx" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/coast/dirt/beachcorner2/north_east,
-/area/lv624/ground/river/west_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/west_river)
 "gSy" = (
 /obj/structure/platform_decoration/stone/ancient_temple/alt/north{
 	pixel_y = -7
@@ -16570,9 +16460,7 @@
 	dir = 1
 	},
 /turf/open/gm/river/soro,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "hij" = (
 /obj/structure/closet/fireaxecabinet{
 	pixel_y = 30
@@ -16619,9 +16507,7 @@
 "hjs" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/coast/dirt/north,
-/area/lv624/ground/river/west_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/west_river)
 "hjE" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/auto_turf/lv_sand/layer0,
@@ -16753,9 +16639,7 @@
 "hok" = (
 /obj/structure/grille,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv624/ground/river/east_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/east_river)
 "hos" = (
 /obj/structure/platform/stone/ancient_temple/alt/north,
 /obj/effect/decal/lv_decals/red_mud_corner{
@@ -17589,9 +17473,7 @@
 /area/lv624/ground/colony/north_tcomms_road)
 "hEZ" = (
 /turf/open/gm/coast/dirt/beachcorner2,
-/area/lv624/ground/river/west_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/west_river)
 "hFb" = (
 /obj/effect/decal/lv_decals/cave_mud_corner{
 	dir = 5
@@ -17831,9 +17713,7 @@
 	},
 /obj/structure/grille,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv624/ground/river/west_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/west_river)
 "hJf" = (
 /turf/open/floor/ancient_temple/floor_13/north,
 /area/lv624/ground/caves/south_east_caves)
@@ -18337,9 +18217,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/grille,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv624/ground/river/east_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/east_river)
 "hSM" = (
 /obj/structure/machinery/computer/emails{
 	dir = 1;
@@ -18659,9 +18537,7 @@
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /obj/structure/platform/metal/strata/alt/west,
 /turf/open/gm/coast/dirt/beachcorner2/south_west,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "iaV" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -18752,9 +18628,7 @@
 "icD" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/river/soro,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "icN" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_3,
 /turf/open/floor/ancient_temple/base,
@@ -18781,9 +18655,7 @@
 /area/lv624/ground/caves/north_east_caves)
 "iev" = (
 /turf/open/gm/coast/dirt/beachcorner,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "ieJ" = (
 /obj/structure/flora/jungle/planttop1,
 /turf/open/auto_turf/lv_grass/layer1,
@@ -18914,9 +18786,7 @@
 /area/lv624/lazarus/main_hall)
 "ijw" = (
 /turf/open/gm/coast/dirt/west,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "ijD" = (
 /obj/structure/flora/jungle/vines/blue/light_2,
 /turf/closed/wall/rock/brown,
@@ -18967,9 +18837,7 @@
 "ikO" = (
 /obj/structure/platform/metal/strata/alt/east,
 /turf/open/gm/coast/dirt/beachcorner2/south_east,
-/area/lv624/ground/river/west_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/west_river)
 "ikU" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/coast/dirt/beachcorner/south_west,
@@ -19379,9 +19247,7 @@
 	layer = 2.1
 	},
 /turf/open/gm/river/soro,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "iwb" = (
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/south_east_caves)
@@ -19507,9 +19373,7 @@
 	color = "#e7d4bd"
 	},
 /turf/open/gm/river/soro,
-/area/lv624/ground/river/east_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/east_river)
 "ixG" = (
 /obj/structure/platform/stone/ancient_temple,
 /turf/open/floor/ancient_temple/floor_19/west,
@@ -19563,9 +19427,7 @@
 	dir = 4
 	},
 /turf/open/gm/river/soro,
-/area/lv624/ground/river/west_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/west_river)
 "iyL" = (
 /obj/structure/prop/hunter/ancient_temple/coffin_base{
 	dir = 8;
@@ -19599,9 +19461,7 @@
 /area/lv624/ground/caves/north_east_caves)
 "iyW" = (
 /turf/open/gm/coast/dirt/west,
-/area/lv624/ground/river/east_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/east_river)
 "izf" = (
 /mob/living/simple_animal/moth,
 /turf/open/floor/ancient_temple/damaged/damage_3,
@@ -19671,9 +19531,7 @@
 /area/lv624/lazarus/quartstorage)
 "iAE" = (
 /turf/open/gm/coast/dirt/beachcorner,
-/area/lv624/ground/river/west_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/west_river)
 "iAQ" = (
 /obj/structure/prop/rock/brown{
 	pixel_x = -5;
@@ -21464,9 +21322,7 @@
 "jpX" = (
 /obj/structure/platform/metal/strata/alt/west,
 /turf/open/gm/coast/dirt/beachcorner2,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "jqf" = (
 /obj/structure/machinery/space_heater/radiator/red{
 	pixel_y = 16
@@ -21858,9 +21714,7 @@
 /turf/open/floor/brown_dirt/random_rocks_alt{
 	dir = 6
 	},
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "jyJ" = (
 /obj/effect/decal/lv_decals/cave_mud_corner{
 	dir = 9
@@ -22093,9 +21947,7 @@
 	layer = 3
 	},
 /turf/open/gm/river/soro,
-/area/lv624/ground/river/east_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/east_river)
 "jED" = (
 /obj/structure/prop/ice_colony/dense/planter_box/plated{
 	color = "#aaaab5"
@@ -22219,9 +22071,7 @@
 "jHh" = (
 /obj/structure/platform/stone/ancient_temple/east,
 /turf/open/gm/river/soro,
-/area/lv624/ground/river/east_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/east_river)
 "jHo" = (
 /obj/effect/decal/strata_decals/grime/grime4,
 /obj/effect/hunter/ancient_temple/deco_border/bronze{
@@ -22747,9 +22597,7 @@
 /turf/open/floor/brown_dirt/random_rocks_alt{
 	dir = 6
 	},
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "jSW" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#ae8686";
@@ -22791,9 +22639,7 @@
 "jTT" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/coast/dirt/beachcorner/north_west,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "jTV" = (
 /obj/effect/hunter/ancient_temple/deco_border/deco_border3{
 	dir = 1
@@ -22907,9 +22753,7 @@
 /area/lv624/lazarus/research)
 "jXr" = (
 /turf/closed/wall/lv_outpost,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "jXu" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_4{
 	pixel_x = -23;
@@ -23300,9 +23144,7 @@
 "kgJ" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/river/soro,
-/area/lv624/ground/river/west_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/west_river)
 "kgK" = (
 /obj/effect/landmark/monkey_spawn,
 /turf/open/auto_turf/lv_grass/layer1,
@@ -23788,9 +23630,7 @@
 "ksr" = (
 /obj/structure/platform/metal/strata/alt/north,
 /turf/open/gm/coast/dirt/north,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "ksy" = (
 /obj/item/stack/sandbags/large_stack,
 /obj/effect/landmark/objective_landmark/close,
@@ -23951,9 +23791,7 @@
 /obj/effect/decal/lv_decals/red_mud_corner,
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/ramptop,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "kvQ" = (
 /obj/structure/platform_decoration/wood/west,
 /turf/open/gm/dirt/brown/variant_5/east,
@@ -24272,9 +24110,7 @@
 	},
 /obj/structure/grille,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv624/ground/river/east_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/east_river)
 "kBO" = (
 /obj/effect/decal/lv_decals/cave_mud_corner{
 	dir = 5
@@ -24392,9 +24228,7 @@
 "kEU" = (
 /obj/effect/decal/lv_decals/red_mud_corner,
 /turf/open/floor/prison/ramptop,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "kEW" = (
 /turf/open/floor/ancient_temple/floor_20/east,
 /area/lv624/ground/caves/sand_temple)
@@ -24653,9 +24487,7 @@
 	light_color = "#dae2ff"
 	},
 /turf/open/auto_turf/lv_sand/layer0,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "kLd" = (
 /obj/structure/platform_decoration/stone/ancient_temple/alt,
 /obj/item/device/flashlight/lamp/tripod{
@@ -24792,9 +24624,7 @@
 	pixel_x = 11
 	},
 /turf/open/gm/river/soro,
-/area/lv624/ground/river/east_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/east_river)
 "kQD" = (
 /obj/effect/decal/lv_decals/cave_mud_corner{
 	dir = 9
@@ -25322,9 +25152,7 @@
 "lch" = (
 /obj/structure/flora/bush/ausbushes,
 /turf/open/gm/coast/dirt/south,
-/area/lv624/ground/river/west_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/west_river)
 "lcl" = (
 /obj/effect/decal/lv_decals/cave_mud_corner{
 	dir = 10
@@ -26881,9 +26709,7 @@
 /area/lv624/ground/caves/south_east_caves)
 "lHE" = (
 /turf/open/gm/coast/dirt/north,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "lHL" = (
 /obj/effect/decal/lv_decals/cave_mud_corner{
 	dir = 9
@@ -26961,9 +26787,7 @@
 "lJH" = (
 /obj/effect/decal/lv_decals/red_mud_corner,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv624/ground/river/west_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/west_river)
 "lJJ" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/effect/decal/hybrisa/dirt,
@@ -26976,9 +26800,7 @@
 "lJV" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/coast/dirt/beachcorner2,
-/area/lv624/ground/river/west_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/west_river)
 "lKc" = (
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/barrens/central_barrens)
@@ -28259,9 +28081,7 @@
 	},
 /obj/structure/grille,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "mmW" = (
 /obj/effect/hunter/ancient_temple/tile_edge_corner,
 /obj/item/prop/torch_frame/ancient{
@@ -28511,9 +28331,7 @@
 /area/lv624/lazarus/landing_zones/lz1)
 "mrK" = (
 /turf/open/gm/coast/dirt/beachcorner2/south_west,
-/area/lv624/ground/river/east_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/east_river)
 "mrR" = (
 /obj/structure/platform/wood{
 	pixel_y = 13
@@ -28759,9 +28577,7 @@
 /area/lv624/ground/colony/west_nexus_road)
 "mwT" = (
 /turf/open/gm/coast/dirt/beachcorner/north_east,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "mxb" = (
 /obj/item/trash/cigbutt,
 /obj/effect/decal/hybrisa/dirt,
@@ -30106,9 +29922,7 @@
 "mWk" = (
 /obj/structure/platform/metal/strata/alt/west,
 /turf/open/auto_turf/lv_sand/layer0,
-/area/lv624/ground/river/east_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/east_river)
 "mWv" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/auto_turf/lv_grass/layer0_mud_alt,
@@ -30117,9 +29931,7 @@
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "mWM" = (
 /obj/structure/platform/stone/ancient_temple/north,
 /turf/open/floor/brown_dirt/random_rocks,
@@ -30566,9 +30378,7 @@
 	},
 /obj/structure/grille,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "ndI" = (
 /obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
 	dir = 8
@@ -30654,9 +30464,7 @@
 "ngm" = (
 /obj/structure/platform/metal/strata/alt/east,
 /turf/open/gm/coast/dirt/beachcorner/south_west,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "ngE" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble,
 /turf/open/floor/ancient_temple/ruined/east,
@@ -30781,9 +30589,7 @@
 	dir = 1
 	},
 /turf/open/gm/coast/dirt/east,
-/area/lv624/ground/river/west_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/west_river)
 "njD" = (
 /turf/open/gm/dirt/brown/variant_5/east,
 /area/lv624/ground/barrens/south_eastern_barrens)
@@ -30828,9 +30634,7 @@
 "nkG" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/coast/dirt/beachcorner2/south_west,
-/area/lv624/ground/river/east_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/east_river)
 "nkP" = (
 /obj/structure/bed/chair{
 	dir = 8;
@@ -30906,9 +30710,7 @@
 	icon_state = "box_1"
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "nmL" = (
 /obj/structure/barricade/handrail/wire{
 	layer = 3.1
@@ -31060,9 +30862,7 @@
 "npz" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/river/soro,
-/area/lv624/ground/river/east_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/east_river)
 "npY" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_7,
 /turf/open/auto_turf/lv_grass/layer0_mud_alt,
@@ -31180,9 +30980,7 @@
 	dir = 1
 	},
 /turf/open/floor/plating/plating_catwalk/strata,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "nrX" = (
 /obj/effect/decal/hybrisa/deco_edging/corner{
 	dir = 8;
@@ -31260,9 +31058,7 @@
 /obj/structure/flora/bush/ausbushes/reedbush,
 /obj/structure/platform/metal/strata/alt/west,
 /turf/open/gm/river/soro,
-/area/lv624/ground/river/east_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/east_river)
 "nuD" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#ae8686";
@@ -31572,9 +31368,7 @@
 /area/lv624/ground/caves/sand_temple)
 "nAx" = (
 /turf/open/auto_turf/lv_sand/layer0,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "nAA" = (
 /obj/structure/flora/jungle/planttop1,
 /turf/open/auto_turf/lv_grass/layer0,
@@ -31861,9 +31655,7 @@
 /obj/structure/disposalpipe/junction,
 /obj/structure/grille,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv624/ground/river/west_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/west_river)
 "nGV" = (
 /turf/open/floor/prison/floor_plate,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -31899,9 +31691,7 @@
 	dir = 8
 	},
 /turf/open/auto_turf/lv_sand/layer0,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "nIS" = (
 /obj/structure/barricade/handrail/wire{
 	layer = 3.5
@@ -32128,9 +31918,7 @@
 	layer = 3
 	},
 /turf/open/gm/river/soro,
-/area/lv624/ground/river/east_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/east_river)
 "nND" = (
 /obj/structure/flora/bush/ausbushes/lavendergrass,
 /turf/open/auto_turf/lv_grass/layer1,
@@ -32626,9 +32414,7 @@
 	layer = 2.1
 	},
 /turf/open/gm/coast/dirt/east,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "nVR" = (
 /obj/structure/platform/stone/ancient_temple/north,
 /obj/structure/flora/jungle/vines/dead/light_1,
@@ -32684,9 +32470,7 @@
 /area/lv624/ground/caves/west_caves)
 "nXD" = (
 /turf/open/gm/coast/dirt/east,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "nXH" = (
 /obj/item/trash/cigbutt,
 /turf/open/auto_turf/lv_sand/layer0,
@@ -33329,9 +33113,7 @@
 "olU" = (
 /obj/structure/flora/jungle/alienplant1,
 /turf/open/gm/river/soro,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "omg" = (
 /turf/closed/wall/ancient_temple/sandstone,
 /area/lv624/ground/caves/south_central_caves)
@@ -33629,9 +33411,7 @@
 "osd" = (
 /obj/structure/platform/stone/ancient_temple/west,
 /turf/open/gm/coast/dirt/north,
-/area/lv624/ground/river/east_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/east_river)
 "osi" = (
 /obj/structure/prop/rock/brown{
 	dir = 9;
@@ -34275,9 +34055,7 @@
 "oFg" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/coast/dirt/west,
-/area/lv624/ground/river/west_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/west_river)
 "oFp" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/item/prop/alien/hugger,
@@ -34299,9 +34077,7 @@
 	layer = 3
 	},
 /turf/open/gm/river/soro,
-/area/lv624/ground/river/east_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/east_river)
 "oFE" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -34952,9 +34728,7 @@
 /area/lv624/ground/jungle/east_central_jungle)
 "oVO" = (
 /turf/open/floor/brown_dirt/random_rocks,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "oVR" = (
 /obj/structure/prop/rock/brown{
 	dir = 1;
@@ -35263,9 +35037,7 @@
 	},
 /obj/structure/grille,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv624/ground/river/east_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/east_river)
 "pcd" = (
 /turf/closed/wall/lv_outpost/reinforced,
 /area/lv624/lazarus/quartstorage)
@@ -35312,9 +35084,7 @@
 /area/lv624/lazarus/medbay)
 "pct" = (
 /turf/open/gm/coast/dirt/beachcorner2/south_east,
-/area/lv624/ground/river/west_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/west_river)
 "pcv" = (
 /obj/structure/prop/ice_colony/ground_wire,
 /obj/effect/decal/remains/xeno,
@@ -35375,9 +35145,7 @@
 "pek" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/coast/dirt/south,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "peo" = (
 /obj/structure/inflatable/popped/door,
 /obj/effect/decal/lv_decals/red_mud_corner{
@@ -35665,9 +35433,7 @@
 	dir = 1
 	},
 /turf/open/gm/river/soro,
-/area/lv624/ground/river/west_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/west_river)
 "piC" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_3,
 /turf/open/floor/ancient_temple/ruined/north,
@@ -36139,9 +35905,7 @@
 "pub" = (
 /obj/structure/flora/jungle/alienplant1,
 /turf/open/gm/coast/dirt/beachcorner2,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "puj" = (
 /obj/item/reagent_container/spray/plantbgone{
 	pixel_x = 4;
@@ -36333,9 +36097,7 @@
 	pixel_x = -11
 	},
 /turf/open/gm/river/soro,
-/area/lv624/ground/river/east_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/east_river)
 "pzl" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/prison/floor_plate,
@@ -36457,9 +36219,7 @@
 "pBZ" = (
 /obj/structure/platform/metal/strata/alt/west,
 /turf/open/auto_turf/lv_sand/layer0,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "pCl" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
@@ -36620,9 +36380,7 @@
 "pHu" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/coast/dirt/north,
-/area/lv624/ground/river/east_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/east_river)
 "pHw" = (
 /obj/effect/decal/lv_decals/cave_mud_corner{
 	dir = 10
@@ -36744,9 +36502,7 @@
 "pKR" = (
 /obj/structure/platform/metal/strata/alt/west,
 /turf/open/floor/brown_dirt/random_rocks,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "pKT" = (
 /obj/structure/barricade/handrail/wire{
 	layer = 3.1;
@@ -37704,9 +37460,7 @@
 "qgw" = (
 /obj/structure/platform/metal/strata/alt/east,
 /turf/open/gm/coast/dirt/north,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "qgC" = (
 /obj/structure/machinery/door/airlock/light_grey_lv/solid{
 	name = "\improper Central Complex Bathroom Stall"
@@ -38609,9 +38363,7 @@
 "qAq" = (
 /obj/structure/platform/metal/strata/alt/east,
 /turf/open/gm/river/soro,
-/area/lv624/ground/river/west_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/west_river)
 "qAr" = (
 /obj/item/clothing/mask/gas/yautja/damaged{
 	pixel_y = -10
@@ -38842,9 +38594,7 @@
 	icon = 'icons/obj/pipes/disposal.dmi'
 	},
 /turf/open/gm/coast/dirt/north,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "qEb" = (
 /obj/structure/machinery/power/apc{
 	cell_type = /obj/item/cell/high;
@@ -38911,9 +38661,7 @@
 "qFT" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/coast/dirt/north,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "qGm" = (
 /obj/structure/platform/stone/ancient_temple/alt/north,
 /obj/structure/platform/stone/ancient_temple/north{
@@ -38948,9 +38696,7 @@
 /area/lv624/ground/jungle/north_east_jungle)
 "qGO" = (
 /turf/open/floor/brown_dirt/random_rocks,
-/area/lv624/ground/river/west_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/west_river)
 "qHb" = (
 /obj/structure/flora/bush/ausbushes/ausbush,
 /turf/open/auto_turf/lv_grass/layer0,
@@ -39162,9 +38908,7 @@
 /area/lv624/ground/jungle/east_jungle)
 "qMo" = (
 /turf/open/gm/coast/dirt/beachcorner/south_east,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "qMs" = (
 /obj/effect/decal/strata_decals/grime/grime2{
 	dir = 1
@@ -39250,9 +38994,7 @@
 "qOi" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/gm/river/soro,
-/area/lv624/ground/river/west_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/west_river)
 "qOr" = (
 /turf/open/gm/dirt/brown/variant_5/south,
 /area/lv624/ground/jungle/east_jungle)
@@ -39814,9 +39556,7 @@
 "rcv" = (
 /obj/structure/grille,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv624/ground/river/west_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/west_river)
 "rcG" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble,
 /turf/open/floor/ancient_temple/damaged/damage_7,
@@ -40086,9 +39826,7 @@
 	},
 /obj/effect/decal/lv_decals/red_mud_corner,
 /turf/open/floor/plating/plating_catwalk/strata,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "riz" = (
 /obj/effect/hunter/ancient_temple/tile_edge/tile_edge_11,
 /turf/open/floor/ancient_temple/damaged/damage_7,
@@ -40222,9 +39960,7 @@
 /area/lv624/ground/caves/north_central_caves)
 "rmk" = (
 /turf/open/floor/brown_dirt/random_rocks,
-/area/lv624/ground/river/east_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/east_river)
 "rmm" = (
 /obj/structure/closet/coffin/predator/ancient_stone{
 	dir = 4;
@@ -40252,9 +39988,7 @@
 	layer = 2.1
 	},
 /turf/open/gm/river/soro,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "rmV" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#ae8686";
@@ -40630,9 +40364,7 @@
 /obj/structure/platform/metal/strata/alt/north,
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/coast/dirt/north,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "rwe" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/platform/metal/strata/alt/north,
@@ -40805,9 +40537,7 @@
 	},
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/cell_stripe/west,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "rAt" = (
 /obj/structure/reagent_dispensers/tank/fuel/gas,
 /turf/open/floor/prison/floor_plate,
@@ -41402,9 +41132,7 @@
 "rNz" = (
 /obj/structure/platform/metal/strata/alt/north,
 /turf/open/gm/coast/dirt/beachcorner,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "rNK" = (
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/green/southeast,
@@ -41835,9 +41563,7 @@
 /obj/structure/platform/metal/strata/alt/east,
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/river/soro,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "rXD" = (
 /obj/effect/hunter/ancient_temple/deco_border{
 	dir = 1
@@ -41980,9 +41706,7 @@
 /area/lv624/ground/caves/central_caves)
 "saA" = (
 /turf/open/gm/coast/dirt/beachcorner2/south_east,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "saE" = (
 /obj/effect/hunter/ancient_temple/tile_edge/tile_edge_7,
 /turf/open/floor/ancient_temple/damaged/damage_4,
@@ -42134,9 +41858,7 @@
 /area/lv624/ground/caves/north_west_caves)
 "sdG" = (
 /turf/open/gm/coast/dirt/beachcorner2/south_west,
-/area/lv624/ground/river/west_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/west_river)
 "sdN" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -42436,9 +42158,7 @@
 "skU" = (
 /obj/structure/platform/metal/strata/alt/east,
 /turf/open/gm/coast/dirt/west,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "skW" = (
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/bright_clean2,
@@ -42555,9 +42275,7 @@
 "snD" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/coast/dirt/north,
-/area/lv624/ground/river/west_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/west_river)
 "snP" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -42586,9 +42304,7 @@
 "sow" = (
 /obj/structure/platform/metal/strata/alt/west,
 /turf/open/gm/coast/dirt/beachcorner/south_west,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "soK" = (
 /obj/effect/decal/lv_decals/cave_mud_corner{
 	dir = 6
@@ -43121,9 +42837,7 @@
 /area/lv624/ground/caves/north_east_caves)
 "syp" = (
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv624/ground/river/east_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/east_river)
 "syy" = (
 /obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
 	dir = 6
@@ -43170,9 +42884,7 @@
 "sAs" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/coast/dirt/beachcorner,
-/area/lv624/ground/river/west_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/west_river)
 "sAx" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/warning_stripes{
@@ -43317,9 +43029,7 @@
 "sEe" = (
 /obj/effect/decal/lv_decals/red_mud_corner,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "sEf" = (
 /obj/structure/bed/hybrisa/bunkbed3{
 	dir = 1
@@ -43636,9 +43346,7 @@
 	},
 /obj/effect/decal/lv_decals/red_mud_corner,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "sIT" = (
 /obj/effect/decal/cleanable/liquid_fuel,
 /turf/open/floor/prison/floor_plate,
@@ -44791,9 +44499,7 @@
 /area/lv624/ground/jungle/west_central_jungle)
 "tgz" = (
 /turf/open/gm/coast/dirt/beachcorner2/south_east,
-/area/lv624/ground/river/east_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/east_river)
 "tgB" = (
 /obj/item/shard,
 /turf/open/auto_turf/lv_grass/layer1,
@@ -44805,9 +44511,7 @@
 /area/lv624/lazarus/corporate_dome)
 "tha" = (
 /turf/open/gm/river/soro,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "thd" = (
 /obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
 	dir = 5
@@ -45455,9 +45159,7 @@
 "tvN" = (
 /obj/structure/flora/jungle/alienplant1,
 /turf/open/gm/river/soro,
-/area/lv624/ground/river/east_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/east_river)
 "tvX" = (
 /obj/structure/machinery/colony_floodlight{
 	light_color = "#dae2ff"
@@ -46067,9 +45769,7 @@
 /area/lv624/ground/jungle/south_central_jungle)
 "tIi" = (
 /turf/open/gm/coast/dirt/beachcorner2/north_east,
-/area/lv624/ground/river/east_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/east_river)
 "tIn" = (
 /turf/open/floor/brown_dirt/random_rocks_alt{
 	dir = 6
@@ -46214,9 +45914,7 @@
 "tMc" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/river/soro,
-/area/lv624/ground/river/west_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/west_river)
 "tMG" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison/floor_marked,
@@ -46264,9 +45962,7 @@
 "tOb" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/coast/dirt/beachcorner2/north_east,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "tOh" = (
 /obj/effect/decal/hybrisa/deco_edging/corner{
 	color = "#e6ac3f"
@@ -47104,9 +46800,7 @@
 /area/lv624/ground/jungle/east_central_jungle)
 "ugg" = (
 /turf/open/gm/coast/dirt/south,
-/area/lv624/ground/river/east_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/east_river)
 "ugJ" = (
 /obj/structure/platform/wood/east,
 /obj/structure/flora/jungle/vines/blue/light_2,
@@ -47130,9 +46824,7 @@
 "uid" = (
 /obj/structure/platform/stone/ancient_temple/north,
 /turf/open/gm/river/soro,
-/area/lv624/ground/river/east_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/east_river)
 "uih" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#ae8686";
@@ -47157,9 +46849,7 @@
 "uiH" = (
 /obj/structure/platform/metal/strata/alt/east,
 /turf/open/gm/coast/dirt/beachcorner2/north_east,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "uiS" = (
 /obj/structure/prop/rock/brown{
 	dir = 5;
@@ -47177,9 +46867,7 @@
 /turf/open/floor/brown_dirt/random_rocks_alt{
 	dir = 6
 	},
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "uje" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#ae8686";
@@ -47236,9 +46924,7 @@
 /area/lv624/ground/caves/north_west_caves)
 "ukZ" = (
 /turf/open/gm/coast/dirt/south,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "ulc" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#ae8686";
@@ -47266,9 +46952,7 @@
 "ule" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/coast/dirt/beachcorner/south_east,
-/area/lv624/ground/river/west_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/west_river)
 "ulf" = (
 /obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/auto_turf/lv_grass/layer1,
@@ -47364,9 +47048,7 @@
 "unf" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/auto_turf/lv_sand/layer0,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "unl" = (
 /obj/effect/decal/lv_decals/red_mud_corner{
 	dir = 8
@@ -47420,9 +47102,7 @@
 "uok" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/coast/dirt/beachcorner2/south_west,
-/area/lv624/ground/river/west_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/west_river)
 "uop" = (
 /obj/structure/machinery/power/smes/buildable/charged,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -47512,9 +47192,7 @@
 	dir = 4
 	},
 /turf/open/floor/prison/cell_stripe/east,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "upQ" = (
 /obj/effect/hunter/ancient_temple/deco_border{
 	dir = 8
@@ -47788,9 +47466,7 @@
 /area/lv624/ground/caves/south_east_caves)
 "uuK" = (
 /turf/open/gm/river/soro,
-/area/lv624/ground/river/east_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/east_river)
 "uuS" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/auto_turf/lv_sand/layer0,
@@ -48353,9 +48029,7 @@
 	layer = 2.1
 	},
 /turf/open/gm/coast/dirt/beachcorner2/south_west,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "uEm" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/auto_turf/lv_grass/layer1,
@@ -48492,9 +48166,7 @@
 /area/lv624/lazarus/landing_zones/lz2)
 "uHH" = (
 /turf/open/gm/coast/dirt/south,
-/area/lv624/ground/river/west_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/west_river)
 "uHL" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#ae8686";
@@ -48647,9 +48319,7 @@
 "uKY" = (
 /obj/structure/platform/metal/strata/alt/east,
 /turf/open/auto_turf/lv_sand/layer0,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "uLo" = (
 /turf/open/floor/ancient_temple/damaged/damage_1,
 /area/lv624/ground/caves/south_east_caves)
@@ -49053,9 +48723,7 @@
 	color = "#e7d4bd"
 	},
 /turf/open/gm/river/soro,
-/area/lv624/ground/river/east_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/east_river)
 "uUc" = (
 /obj/structure/platform/wood/north{
 	pixel_y = 5
@@ -49500,9 +49168,7 @@
 /area/lv624/lazarus/research)
 "veg" = (
 /turf/open/gm/coast/dirt/beachcorner2/north_west,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "vet" = (
 /obj/structure/prop/hunter/ancient_temple/small_statue/base{
 	pixel_y = 4
@@ -50660,9 +50326,7 @@
 "vIR" = (
 /obj/structure/platform/metal/strata/alt/west,
 /turf/open/gm/coast/dirt/beachcorner,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "vIZ" = (
 /obj/structure/platform/metal/strata/alt/north,
 /turf/open/auto_turf/lv_grass/layer1,
@@ -50712,9 +50376,7 @@
 "vKH" = (
 /obj/structure/platform/metal/strata/alt/west,
 /turf/open/gm/coast/dirt/north,
-/area/lv624/ground/river/east_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/east_river)
 "vKP" = (
 /obj/effect/hunter/ancient_temple/tile_edge/tile_edge_11,
 /obj/effect/hunter/ancient_temple/tile_edge/tile_edge_9,
@@ -50906,9 +50568,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/grille,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "vOY" = (
 /obj/effect/hunter/ancient_temple/tile_edge_corner/tile_edge_corner_4,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
@@ -51191,9 +50851,7 @@
 "vVv" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/coast/dirt/beachcorner2/south_east,
-/area/lv624/ground/river/west_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/west_river)
 "vVG" = (
 /obj/item/reagent_container/food/drinks/cans/ale{
 	open = 1;
@@ -51364,9 +51022,7 @@
 "waC" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/coast/dirt/beachcorner2/north_east,
-/area/lv624/ground/river/west_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/west_river)
 "waL" = (
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/north_central_caves)
@@ -51696,9 +51352,7 @@
 	layer = 2.1
 	},
 /turf/open/gm/river/soro,
-/area/lv624/ground/river/west_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/west_river)
 "who" = (
 /obj/structure/platform_decoration/stone/ancient_temple/alt/north,
 /obj/effect/hunter/ancient_temple/rubble/rubble_5{
@@ -51945,9 +51599,7 @@
 	dir = 1
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv624/ground/river/west_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/west_river)
 "wmI" = (
 /obj/structure/machinery/light/small/blue{
 	light_color = "#dae2ff"
@@ -52121,9 +51773,7 @@
 	icon = 'icons/obj/pipes/disposal.dmi'
 	},
 /turf/open/gm/river/soro,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "wqa" = (
 /obj/effect/decal/lv_decals/cave_mud_corner{
 	dir = 6
@@ -52466,9 +52116,7 @@
 /area/lv624/lazarus/sleep_female)
 "wxA" = (
 /turf/open/gm/coast/dirt/east,
-/area/lv624/ground/river/west_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/west_river)
 "wxE" = (
 /obj/item/stack/sheet/wood,
 /turf/open/floor/brown_dirt/random_rocks_alt{
@@ -52530,9 +52178,7 @@
 /area/lv624/ground/barrens/north_east_barrens)
 "wzg" = (
 /turf/open/gm/river/soro,
-/area/lv624/ground/river/west_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/west_river)
 "wzt" = (
 /obj/effect/landmark/xeno_spawn,
 /turf/open/floor/ancient_temple/floor_20/east,
@@ -52705,9 +52351,7 @@
 /area/lv624/ground/caves/north_east_caves)
 "wDU" = (
 /turf/open/gm/coast/dirt/beachcorner2/north_east,
-/area/lv624/ground/river/west_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/west_river)
 "wEz" = (
 /obj/item/device/flashlight/lamp/tripod{
 	on = 0
@@ -53272,9 +52916,7 @@
 	},
 /obj/structure/grille,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv624/ground/river/west_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/west_river)
 "wPq" = (
 /obj/effect/decal/lv_decals/cave_mud_corner{
 	dir = 6
@@ -53304,9 +52946,7 @@
 /area/lv624/ground/jungle/east_central_jungle)
 "wQh" = (
 /turf/open/gm/coast/dirt/east,
-/area/lv624/ground/river/east_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/east_river)
 "wQp" = (
 /obj/effect/decal/lv_decals/red_mud_corner{
 	dir = 8
@@ -53410,9 +53050,7 @@
 "wTt" = (
 /obj/structure/platform/metal/strata/alt/east,
 /turf/open/gm/river/soro,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "wTG" = (
 /obj/structure/platform/stone/ancient_temple/alt/west,
 /obj/effect/hunter/ancient_temple/deco_border{
@@ -53661,9 +53299,7 @@
 /obj/structure/platform_decoration/metal/strata/alt/east,
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/coast/dirt/north,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "wZa" = (
 /turf/open/floor/prison/darkbrown3/west,
 /area/lv624/lazarus/comms)
@@ -54151,9 +53787,7 @@
 "xjY" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/river/soro,
-/area/lv624/ground/river/east_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/east_river)
 "xkg" = (
 /turf/open/floor/prison/cell_stripe/north,
 /area/lv624/ground/jungle/south_east_jungle)
@@ -54255,9 +53889,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/grille,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv624/ground/river/west_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/west_river)
 "xmI" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/effect/decal/hybrisa/deco_edging{
@@ -54795,9 +54427,7 @@
 "xyQ" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/river/soro,
-/area/lv624/ground/river/east_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/east_river)
 "xzo" = (
 /obj/effect/decal/lv_decals/cave_mud_corner{
 	dir = 10
@@ -55624,9 +55254,7 @@
 "xQi" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/coast/dirt/east,
-/area/lv624/ground/river/west_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/west_river)
 "xQp" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_2{
 	pixel_x = 3;
@@ -55642,9 +55270,7 @@
 	dir = 8
 	},
 /turf/open/gm/river/soro,
-/area/lv624/ground/river/east_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/east_river)
 "xQM" = (
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_x = -8;
@@ -55952,9 +55578,7 @@
 /area/lv624/lazarus/corporate_dome)
 "xZT" = (
 /turf/open/gm/coast/dirt/beachcorner/north_west,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "yac" = (
 /obj/structure/platform/stone/ancient_temple/east,
 /obj/structure/platform_decoration/stone/ancient_temple/alt/north,
@@ -55968,9 +55592,7 @@
 /obj/structure/flora/bush/ausbushes/reedbush,
 /obj/structure/platform/metal/strata/alt/west,
 /turf/open/gm/coast/dirt/north,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "yao" = (
 /obj/structure/bed/hybrisa/prisonbed{
 	dir = 10
@@ -56022,9 +55644,7 @@
 /area/lv624/ground/caves/north_east_caves)
 "yba" = (
 /turf/open/gm/coast/dirt/beachcorner/south_west,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "ybe" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -56292,9 +55912,7 @@
 	dir = 8
 	},
 /turf/open/floor/prison/cell_stripe/west,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "yih" = (
 /obj/structure/platform/wood,
 /obj/structure/platform/wood{
@@ -56411,9 +56029,7 @@
 "ykZ" = (
 /obj/structure/platform/metal/strata/alt/west,
 /turf/open/gm/coast/dirt/beachcorner2/south_east,
-/area/lv624/ground/river/central_river{
-	supports_fishing = 1
-	})
+/area/lv624/ground/river/central_river)
 "yll" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/floor/brown_dirt/random_rocks_alt{

@@ -200,7 +200,7 @@
 	wave_number = 7
 	wave_castes = list(XENO_CASTE_BURROWER)
 	wave_type = WO_STATIC_WAVE
-	number_of_xenos = 3
+	number_of_xenos = 4
 	command_announcement = list("This is First Lieutenant Ike Saker, Executive Officer of Captain Naiche. The Captain is still trying to get off world contact. An engineer platoon managed to destroy the main entrance into this valley; this should give you a short break while the aliens find another way in. We are receiving reports of seismic waves occurring nearby, there might be creatures burrowing underground. Keep an eye on your defenses. I have also received word that marines evacuating from an overrun outpost are coming to reinforce you. I used to be stationed with them, those troops are top notch.", "First Lieutenant Ike Saker, 3rd Battalion Command, LV-624 Garrison")
 
 /datum/whiskey_outpost_wave/wave8

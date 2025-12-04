@@ -19456,7 +19456,7 @@
 /turf/open/floor/ancient_temple/deco/dark/deco_0,
 /area/lv624/ground/caves/north_east_caves)
 "iyN" = (
-/obj/structure/mineral_door/wood/open,
+/obj/structure/mineral_door/wood,
 /turf/open/floor/interior/tatami,
 /area/lv624/lazarus/fitness)
 "iyP" = (

@@ -62,15 +62,15 @@
 	dir = 4
 	},
 /obj/effect/decal/hybrisa/dirt,
-/turf/open/floor/plating/prison,
+/turf/open/floor/prison/ramptop/east,
 /area/lv624/lazarus/secure_storage)
 "bd" = (
-/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
-	name = "Corporate Personnel Dome Armory Lockdown Shutter";
-	id = "corp_person_armory";
-	dir = 4
-	},
 /obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door/open{
+	dir = 4;
+	name = "Corporate Personnel Dome Armory Lockdown Shutter";
+	id = "corp_person_armory"
+	},
 /turf/open/floor/plating/prison,
 /area/lv624/lazarus/secure_storage)
 "bu" = (
@@ -115,7 +115,7 @@
 	id = "corp_person_main";
 	dir = 4
 	},
-/turf/open/floor/plating/prison,
+/turf/open/floor/prison/ramptop/east,
 /area/lv624/lazarus/secure_storage)
 "cb" = (
 /obj/structure/machinery/disposal,
@@ -189,7 +189,7 @@
 "cJ" = (
 /obj/structure/machinery/door/airlock/light_grey_lv/solid{
 	dir = 1;
-	name = "\improper Central Complex Bathroom"
+	name = "\improper Corporate Personnel Complex Dorms"
 	},
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/machinery/door/poddoor/almayer/grey/open{
@@ -623,7 +623,7 @@
 	id = "corp_person_main";
 	dir = 4
 	},
-/turf/open/floor/plating/prison,
+/turf/open/floor/prison/ramptop/east,
 /area/lv624/lazarus/secure_storage)
 "nS" = (
 /obj/structure/machinery/door_control/cl{
@@ -658,7 +658,8 @@
 /area/lv624/lazarus/secure_storage)
 "ou" = (
 /obj/structure/machinery/door/airlock/light_grey_lv/glass/autoname{
-	dir = 1
+	dir = 1;
+	name = "\improper Corporate Personnel Complex"
 	},
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/floor_plate,
@@ -706,7 +707,8 @@
 /area/lv624/ground/jungle/south_west_jungle)
 "oI" = (
 /obj/structure/machinery/door/airlock/light_grey_lv/glass/autoname{
-	dir = 1
+	dir = 1;
+	name = "\improper Corporate Personnel Complex Dorms"
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/effect/decal/hybrisa/dirt,
@@ -906,7 +908,8 @@
 "se" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/structure/machinery/door/airlock/light_grey_lv/glass/autoname{
-	dir = 1
+	dir = 1;
+	name = "\improper Corporate Personnel Complex"
 	},
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/floor_plate,
@@ -946,7 +949,8 @@
 /area/lv624/ground/jungle/south_west_jungle)
 "sV" = (
 /obj/structure/machinery/door/airlock/light_grey_lv/glass/autoname{
-	dir = 1
+	dir = 1;
+	name = "\improper Corporate Personnel Complex Waiting Room"
 	},
 /turf/open/floor/prison/floor_plate,
 /area/lv624/lazarus/secure_storage)
@@ -1367,10 +1371,10 @@
 	},
 /area/lv624/ground/colony/west_tcomms_road)
 "Bf" = (
-/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door/open{
+	dir = 4;
 	name = "Corporate Personnel Dome Armory Lockdown Shutter";
-	id = "corp_person_armory";
-	dir = 4
+	id = "corp_person_armory"
 	},
 /turf/open/floor/plating/prison,
 /area/lv624/lazarus/secure_storage)
@@ -1539,7 +1543,8 @@
 /area/lv624/ground/jungle/south_west_jungle)
 "ES" = (
 /obj/structure/machinery/door/airlock/light_grey_lv/glass/autoname{
-	dir = 1
+	dir = 1;
+	name = "\improper Corporate Personnel Complex Waiting Room"
 	},
 /obj/structure/machinery/door/poddoor/almayer/grey/open{
 	name = "Corporate Personnel Dome Lockdown Shutter";
@@ -1589,7 +1594,9 @@
 /turf/open/auto_turf/lv_grass/layer1,
 /area/lv624/ground/jungle/south_central_jungle)
 "GT" = (
-/obj/structure/machinery/door/airlock/light_grey_lv/solid/autoname,
+/obj/structure/machinery/door/airlock/light_grey_lv/solid/autoname{
+	name = "\improper Corporate Personnel Complex Bathroom"
+	},
 /turf/open/floor/prison/floor_plate,
 /area/lv624/lazarus/secure_storage)
 "GV" = (
@@ -2047,7 +2054,8 @@
 /area/lv624/lazarus/landing_zones/lz2)
 "OA" = (
 /obj/structure/machinery/door/airlock/light_grey_lv/glass/autoname{
-	dir = 1
+	dir = 1;
+	name = "\improper Corporate Personnel Complex"
 	},
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/machinery/door/poddoor/almayer/grey/open{
@@ -2096,6 +2104,12 @@
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/south_west_jungle)
 "PD" = (
+/obj/structure/machinery/door_control/cl{
+	pixel_x = -23;
+	pixel_y = 2;
+	id = "corp_person_armory";
+	name = "Corporate Personnel Dome Armory Lockdown Shutter"
+	},
 /turf/open/floor/prison/darkred2/southwest,
 /area/lv624/lazarus/secure_storage)
 "PP" = (
@@ -2243,7 +2257,7 @@
 /area/lv624/ground/jungle/south_west_jungle)
 "Sv" = (
 /obj/structure/machinery/door/airlock/multi_tile/lv_double{
-	name = "\improper Colonial Administration Building"
+	name = "\improper Corporate Personnel Complex Mess"
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/effect/decal/hybrisa/dirt,

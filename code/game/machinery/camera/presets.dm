@@ -198,6 +198,9 @@
 /obj/structure/machinery/camera/wey_yu/unbreakable
 	name = "reinforced weyland-yutani camera"
 
+/obj/structure/machinery/camera/wey_yu/unbreakable/autoname
+	autoname = TRUE
+
 /obj/structure/machinery/camera/wey_yu/unbreakable/attack_alien(mob/living/carbon/xenomorph/M)
 	return
 
@@ -206,9 +209,3 @@
 
 /obj/structure/machinery/camera/wey_yu/unbreakable/liaison_cell
 	network = list(CAMERA_NET_CONTAINMENT_HIDDEN)
-	owner_factions = FACTION_LIST_WY
-
-/// To be removed once not a conflict risk
-/obj/structure/machinery/camera/autoname/almayer/containment/hidden
-	network = list(CAMERA_NET_CONTAINMENT_HIDDEN)
-	owner_factions = FACTION_LIST_WY

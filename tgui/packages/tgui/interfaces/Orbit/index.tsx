@@ -468,20 +468,20 @@ const weyyuSplitter = (members: Array<Observable>) => {
   const whiteout: Array<Observable> = [];
   const wycommando: Array<Observable> = [];
   const pmc: Array<Observable> = [];
-  const goons: Array<Observable> = [];
+  const security: Array<Observable> = [];
   const other: Array<Observable> = [];
 
   members.forEach((x) => {
     if (x.job?.includes('Whiteout')) {
       whiteout.push(x);
-    } else if (x.job?.includes('Death Squad')) {
-      whiteout.push(x);
     } else if (x.job?.includes('W-Y Commando')) {
       wycommando.push(x);
     } else if (x.job?.includes('PMC')) {
       pmc.push(x);
-    } else if (x.job?.includes('Corporate Security')) {
-      goons.push(x);
+    } else if (x.job?.includes('Security')) {
+      security.push(x);
+    } else if (x.job?.includes('Bodyguard')) {
+      security.push(x);
     } else {
       other.push(x);
     }
@@ -489,9 +489,9 @@ const weyyuSplitter = (members: Array<Observable>) => {
 
   const squads = [
     buildSquadObservable('PMCs', 'white', pmc),
-    buildSquadObservable('Goons', 'orange', goons),
+    buildSquadObservable('Security Forces', 'orange', security),
     buildSquadObservable('Corporate', 'white', other),
-    buildSquadObservable('W-Y Commando', 'white', wycommando),
+    buildSquadObservable('W-Y Commandos', 'white', wycommando),
     buildSquadObservable('Whiteout', 'red', whiteout),
   ];
   return squads;

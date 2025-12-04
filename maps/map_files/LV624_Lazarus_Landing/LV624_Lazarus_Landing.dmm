@@ -523,7 +523,8 @@
 /area/lv624/lazarus/comms)
 "alN" = (
 /obj/effect/hunter/bridge_border/brown/corner{
-	dir = 8
+	dir = 8;
+	layer = 2
 	},
 /obj/effect/hunter/ancient_temple/deco_border/bronze{
 	dir = 4
@@ -3204,7 +3205,7 @@
 "bqX" = (
 /obj/effect/landmark/objective_landmark/far,
 /obj/structure/flora/jungle/vines/dead/light_1,
-/turf/open/floor/ancient_temple/base/dark,
+/turf/open/auto_turf/lv_grass/layer0_mud_alt,
 /area/lv624/ground/caves/sand_temple)
 "bra" = (
 /obj/item/stack/sheet/wood,
@@ -6270,7 +6271,8 @@
 "cJE" = (
 /obj/structure/platform/stone/ancient_temple/alt/west,
 /obj/effect/hunter/bridge_border/brown/corner{
-	dir = 4
+	dir = 4;
+	layer = 2
 	},
 /obj/effect/hunter/ancient_temple/deco_border/bronze/deco_border3{
 	dir = 8
@@ -8463,7 +8465,9 @@
 /area/lv624/lazarus/corporate_dome)
 "dLh" = (
 /obj/structure/platform/stone/ancient_temple/alt,
-/obj/effect/hunter/bridge_border/brown/corner,
+/obj/effect/hunter/bridge_border/brown/corner{
+	layer = 2
+	},
 /obj/effect/hunter/ancient_temple/deco_border/bronze/deco_border3,
 /turf/open/floor/ancient_temple/deco/dark,
 /area/lv624/ground/caves/north_east_caves)
@@ -10526,7 +10530,9 @@
 /turf/open/auto_turf/lv_sand_alt/layer0,
 /area/lv624/ground/caves/east_caves)
 "eDI" = (
-/obj/effect/hunter/bridge_border/brown/corner,
+/obj/effect/hunter/bridge_border/brown/corner{
+	layer = 2
+	},
 /obj/effect/hunter/ancient_temple/deco_border/bronze{
 	dir = 4
 	},
@@ -14086,6 +14092,9 @@
 /area/lv624/ground/caves/west_caves)
 "gkh" = (
 /obj/effect/landmark/objective_landmark/science,
+/obj/effect/decal/lv_decals/cave_mud_corner{
+	dir = 6
+	},
 /turf/open/floor/plating/ancient_temple,
 /area/lv624/ground/caves/sand_temple)
 "gkr" = (
@@ -16044,7 +16053,8 @@
 "gWV" = (
 /obj/structure/platform/stone/ancient_temple/alt/north,
 /obj/effect/hunter/bridge_border/brown/corner{
-	dir = 4
+	dir = 4;
+	layer = 2
 	},
 /obj/effect/hunter/ancient_temple/deco_border/bronze/deco_border3{
 	dir = 8
@@ -16426,7 +16436,8 @@
 /area/lv624/ground/caves/central_caves)
 "hhY" = (
 /obj/effect/hunter/bridge_border/brown/corner{
-	dir = 1
+	dir = 1;
+	layer = 2
 	},
 /obj/effect/hunter/ancient_temple/deco_border/bronze{
 	dir = 1
@@ -19084,7 +19095,8 @@
 "irc" = (
 /obj/structure/platform/stone/ancient_temple/alt/west,
 /obj/effect/hunter/bridge_border/brown/corner{
-	dir = 1
+	dir = 1;
+	layer = 2
 	},
 /obj/effect/hunter/ancient_temple/deco_border/bronze/deco_border3{
 	dir = 1
@@ -21454,7 +21466,8 @@
 "jtz" = (
 /obj/structure/platform/stone/ancient_temple/east,
 /obj/effect/hunter/bridge_border/brown/corner{
-	dir = 8
+	dir = 8;
+	layer = 2
 	},
 /obj/effect/hunter/ancient_temple/deco_border/bronze/deco_border3{
 	dir = 4
@@ -23834,7 +23847,9 @@
 /area/lv624/ground/caves/south_central_caves)
 "kxj" = (
 /obj/structure/platform/stone/ancient_temple/east,
-/obj/effect/hunter/bridge_border/brown/corner,
+/obj/effect/hunter/bridge_border/brown/corner{
+	layer = 2
+	},
 /obj/effect/hunter/ancient_temple/deco_border/bronze/deco_border3,
 /turf/open/floor/ancient_temple/deco/dark/deco_0,
 /area/lv624/ground/caves/north_east_caves)
@@ -24636,7 +24651,8 @@
 "kRw" = (
 /obj/structure/platform/stone/ancient_temple/alt/north,
 /obj/effect/hunter/bridge_border/brown/corner{
-	dir = 8
+	dir = 8;
+	layer = 2
 	},
 /obj/effect/hunter/ancient_temple/deco_border/bronze/deco_border3{
 	dir = 4
@@ -29574,7 +29590,8 @@
 "mPx" = (
 /obj/structure/platform/stone/ancient_temple/alt,
 /obj/effect/hunter/bridge_border/brown/corner{
-	dir = 1
+	dir = 1;
+	layer = 2
 	},
 /obj/effect/hunter/ancient_temple/deco_border/bronze/deco_border3{
 	dir = 1
@@ -30031,7 +30048,8 @@
 /area/lv624/ground/jungle/central_jungle)
 "mZv" = (
 /obj/effect/hunter/bridge_border/brown/corner{
-	dir = 8
+	dir = 8;
+	layer = 2
 	},
 /obj/effect/hunter/ancient_temple/deco_border/bronze,
 /turf/open/floor/ancient_temple/deco/dark/deco_alt,
@@ -37432,7 +37450,7 @@
 	dir = 6;
 	icon_state = "p_stair_full"
 	},
-/turf/open/floor/corsat/squares,
+/turf/open/floor/plating/ancient_temple,
 /area/lv624/ground/caves/sand_temple)
 "qgU" = (
 /obj/structure/prop/rock/brown{
@@ -38367,7 +38385,9 @@
 /turf/open/auto_turf/lv_grass/layer0_mud_alt,
 /area/lv624/ground/caves/west_caves)
 "qBj" = (
-/obj/effect/hunter/bridge_border/brown/corner,
+/obj/effect/hunter/bridge_border/brown/corner{
+	layer = 2
+	},
 /obj/effect/hunter/ancient_temple/deco_border/bronze{
 	dir = 1
 	},
@@ -39216,7 +39236,8 @@
 /area/lv624/ground/caves/north_west_caves)
 "qVg" = (
 /obj/effect/hunter/bridge_border/brown/corner{
-	dir = 4
+	dir = 4;
+	layer = 2
 	},
 /obj/effect/hunter/ancient_temple/deco_border/bronze{
 	dir = 8
@@ -43981,7 +44002,8 @@
 /area/lv624/lazarus/comms)
 "sYa" = (
 /obj/effect/hunter/bridge_border/brown/corner{
-	dir = 1
+	dir = 1;
+	layer = 2
 	},
 /obj/effect/hunter/ancient_temple/deco_border/bronze{
 	dir = 8
@@ -47045,10 +47067,11 @@
 "uor" = (
 /obj/structure/stairs/perspective{
 	color = "#6b675e";
-	dir = 4;
+	dir = 1;
 	icon_state = "p_stair_full"
 	},
-/turf/open/floor/corsat/squares,
+/obj/effect/decal/lv_decals/cave_mud_corner,
+/turf/open/floor/ancient_temple/deco/dark/deco_alt,
 /area/lv624/ground/caves/sand_temple)
 "uos" = (
 /turf/open/floor/ancient_temple/base/alt,
@@ -48080,7 +48103,8 @@
 /area/lv624/ground/caves/east_caves)
 "uGS" = (
 /obj/effect/hunter/bridge_border/brown/corner{
-	dir = 4
+	dir = 4;
+	layer = 2
 	},
 /obj/effect/hunter/ancient_temple/deco_border/bronze,
 /turf/open/floor/ancient_temple/deco/dark/deco_alt,
@@ -85230,7 +85254,7 @@ nWH
 nWH
 ntf
 bqX
-ins
+uor
 kJd
 kJd
 kJd
@@ -85455,7 +85479,7 @@ nWH
 vXr
 gkh
 bmg
-uor
+ayq
 qgR
 fHh
 xlb

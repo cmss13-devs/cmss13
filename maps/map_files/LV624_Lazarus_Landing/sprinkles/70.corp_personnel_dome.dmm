@@ -2548,6 +2548,7 @@
 	},
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/objective_landmark/close,
+/obj/item/storage/belt/marine/wy,
 /turf/open/floor/prison/floor_plate,
 /area/lv624/lazarus/secure_storage)
 "Ym" = (

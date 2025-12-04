@@ -198,6 +198,13 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/lv624/lazarus/secure_storage)
+"cN" = (
+/obj/structure/largecrate/random/mini/ammo{
+	pixel_x = -8;
+	pixel_y = -5
+	},
+/turf/open/floor/prison/floor_plate_alt/west,
+/area/lv624/lazarus/secure_storage)
 "cQ" = (
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/cell_stripe_alt/north,
@@ -264,10 +271,10 @@
 /obj/item/ammo_magazine/rifle/m41aMK1,
 /obj/item/ammo_magazine/rifle/m41aMK1,
 /obj/item/ammo_magazine/rifle/m41aMK1,
-/obj/structure/closet/secure_closet/guncabinet/alt/wy/high_access,
 /obj/item/storage/belt/marine/wy,
 /obj/item/ammo_magazine/rifle/m41aMK1,
 /obj/item/ammo_magazine/rifle/m41aMK1,
+/obj/structure/closet/secure_closet/guncabinet/alt,
 /turf/open/floor/prison/darkred2/north,
 /area/lv624/lazarus/secure_storage)
 "eR" = (
@@ -317,10 +324,10 @@
 /area/lv624/lazarus/landing_zones/lz2)
 "fW" = (
 /obj/effect/decal/hybrisa/dirt,
-/obj/structure/closet/secure_closet/marshal/alt/wy_goon{
+/obj/structure/closet/secure_closet/wy/goon{
 	pixel_x = 7
 	},
-/obj/structure/closet/secure_closet/marshal/alt/wy_goon{
+/obj/structure/closet/secure_closet/wy/goon{
 	pixel_x = -7
 	},
 /turf/open/floor/prison/floor_plate_alt/west,
@@ -2191,7 +2198,7 @@
 "Rw" = (
 /obj/structure/prop/hybrisa/vehicles/Armored_Truck/WY_White{
 	dir = 8;
-	pixel_y = 16;
+	pixel_y = 9;
 	pixel_x = 3
 	},
 /obj/effect/hybrisa/misc/fake/wire/red{
@@ -2423,10 +2430,10 @@
 /turf/open/auto_turf/lv_sand/layer0,
 /area/lv624/ground/jungle/south_central_jungle)
 "Wr" = (
-/obj/structure/closet/secure_closet/marshal/alt/wy_goon{
+/obj/structure/closet/secure_closet/wy/goon{
 	pixel_x = 7
 	},
-/obj/structure/closet/secure_closet/marshal/alt/wy_goon{
+/obj/structure/closet/secure_closet/wy/goon{
 	pixel_x = -7
 	},
 /turf/open/floor/prison/floor_plate_alt/west,
@@ -2539,7 +2546,8 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "test_square_red"
 	},
-/obj/item/storage/belt/gun/m39/corporate,
+/obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison/floor_plate,
 /area/lv624/lazarus/secure_storage)
 "Ym" = (
@@ -2850,7 +2858,7 @@ dD
 eJ
 ZW
 CV
-CV
+cN
 cj
 dD
 Kq

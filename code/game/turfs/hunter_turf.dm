@@ -802,6 +802,7 @@
 	if(neighbors_list in list(EAST|WEST))
 		special_icon = TRUE
 		icon_state = "ancient_stone_deco_wall[decoration_type]"
+		return
 	else // Wall connection was broken, return to normality
 		special_icon = FALSE
 	return ..()

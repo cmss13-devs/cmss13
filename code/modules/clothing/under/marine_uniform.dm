@@ -738,7 +738,7 @@
 
 /obj/item/clothing/under/marine/officer/command/skirt
 	name = "\improper USCM officer skirt uniform"
-	desc = "The well-ironed skirt and button-up uniform of a USCM officer. The skirt has rather spacous pockets sewn into it, showning the wearers high rank. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
+	desc = "The well-ironed skirt and button-up uniform of a USCM officer. The skirt has rather spacious pockets sewn into it, showing the wearers high rank. It has pads of light Kevlar to help protect against stabbing weapons and bullets."
 	icon_state = "CO_jumpskirt"
 	worn_state = "CO_jumpskirt"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'

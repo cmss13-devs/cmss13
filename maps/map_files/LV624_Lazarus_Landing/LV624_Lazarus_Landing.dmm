@@ -55715,16 +55715,6 @@
 	},
 /turf/open/floor/ancient_temple/damaged/damage_1,
 /area/lv624/ground/caves/east_caves)
-"ydz" = (
-/obj/structure/window/framed/lv_colony/reinforced,
-/obj/structure/machinery/door/poddoor/almayer/grey/open{
-	name = "Central Complex Lockdown Shutter";
-	dir = 4;
-	id = "nexus_blast"
-	},
-/obj/structure/machinery/prop/almayer/CICmap/upp,
-/turf/open/floor/plating/prison,
-/area/lv624/lazarus/captain)
 "ydA" = (
 /obj/structure/machinery/light/blue{
 	dir = 1
@@ -79356,7 +79346,7 @@ jJa
 tzP
 jJa
 sVF
-ydz
+sVF
 jJa
 leq
 kmM

@@ -2164,6 +2164,7 @@ Defined in conflicts.dm of the #defines folder.
 	pixel_shift_x = 40
 	pixel_shift_y = 14
 	hud_offset_mod = 3
+	size_mod = 1
 	collapsible = TRUE
 	stock_activated = FALSE
 	collapse_delay = 0.5 SECONDS

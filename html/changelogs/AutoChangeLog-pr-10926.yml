@@ -1,9 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - rscadd: "Added the ability for XOs to award ribbons."
-  - rscadd: "Rebranded some medals (legacy kept for tracking purposes)."
-  - admin: "Added admin ability to award USCM Medal of Honor and WY Corporate Service Medal."
-  - imageadd: "Added sprites for half-way medals (bronze-silver, silver-gold etc.)."
-  - imageadd: "Added sprites for Purple Heart, star medals and WY medals from dimdim."
-  - imageadd: "Added onmob sprites for all above."

@@ -28,6 +28,15 @@
 		attack_hand(xeno)
 		return XENO_NONCOMBAT_ACTION
 
+/obj/structure/showcase/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	if(unslashable)
+		return TAILSTAB_COOLDOWN_NONE
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	deconstruct(FALSE)
+	xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
+	SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	return TAILSTAB_COOLDOWN_NORMAL
+
 /obj/structure/showcase/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
@@ -82,7 +91,7 @@
 
 /obj/structure/target
 	name = "shooting target"
-	desc = "A shooting target. Installed on a holographic display mount to help assess the damage done. While being a close replica of real threats a marine would encounter, its not a real target - special firing procedures seen in weapons such as XM88 or Holotarget ammo wont have any effect."
+	desc = "A shooting target. Installed on a holographic display mount to help assess the damage done. While being a close replica of real threats a marine would encounter, its not a real target - special firing procedures seen in weapons such as XM88 or Holotarget ammo won't have any effect."
 	icon = 'icons/obj/structures/props/target_dummies.dmi'
 	icon_state = "target_a"
 	density = FALSE
@@ -228,6 +237,18 @@
 	take_damage(25)
 	return XENO_ATTACK_ACTION
 
+/obj/structure/xenoautopsy/tank/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	if(unslashable || health <= 0)
+		return TAILSTAB_COOLDOWN_NONE
+	playsound(src, 'sound/effects/Glasshit.ogg', 25, 1)
+	if(health <= 0)
+		xeno.visible_message(SPAN_DANGER("[xeno] smashes [src] with its tail!"),
+		SPAN_DANGER("We smash [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	else
+		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
+		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	take_damage(xeno.melee_damage_upper)
+	return TAILSTAB_COOLDOWN_NORMAL
 
 /obj/structure/xenoautopsy/tank/ex_act(severity)
 	switch(severity)
@@ -364,19 +385,22 @@
 /obj/structure/stairs/multiz/Initialize(mapload, ...)
 	. = ..()
 	RegisterSignal(loc, COMSIG_TURF_ENTERED, PROC_REF(on_turf_entered))
+	RegisterSignal(src, COMSIG_ATOM_TURF_CHANGE, PROC_REF(on_turf_changed))
 	for(var/turf/blocked_turf in range(1, src))
 		blockers += new /obj/effect/build_blocker(blocked_turf, src)
 		new /obj/structure/blocker/anti_cade(blocked_turf)
 	return INITIALIZE_HINT_LATELOAD
 
-
-
 /obj/structure/stairs/multiz/Destroy()
 	QDEL_LIST(blockers)
+	return ..()
 
-	. = ..()
+/obj/structure/stairs/multiz/proc/on_turf_changed()
+	SIGNAL_HANDLER
+	RegisterSignal(loc, COMSIG_TURF_ENTERED, PROC_REF(on_turf_entered))
 
 /obj/structure/stairs/multiz/proc/on_turf_entered(turf/source, atom/movable/enterer)
+	SIGNAL_HANDLER
 	if(!istype(enterer, /mob))
 		return
 
@@ -517,7 +541,23 @@
 
 				LAZYADD(from_turf_to_images["\ref[turf]"], destination_turf_images["\ref[to_turf]"])
 				RegisterSignal(turf, COMSIG_TURF_ENTERED, PROC_REF(handle_entered), TRUE)
+				RegisterSignal(turf, COMSIG_PARENT_QDELETING, PROC_REF(on_turf_changing), TRUE)
 
+/datum/staircase/proc/on_turf_changing(turf/source)
+	SIGNAL_HANDLER
+	from_turfs -= source
+	INVOKE_NEXT_TICK(src, PROC_REF(finish_on_turf_changed), source.x, source.y, source.z, "\ref[source]")
+
+/datum/staircase/proc/finish_on_turf_changed(x, y, z, old_ref)
+	var/turf/new_turf = locate(x, y, z)
+	if(!new_turf) // This should never happen but maybe if there's map shrinking??
+		from_turf_to_images -= old_ref
+		return
+	from_turfs += new_turf
+	RegisterSignal(new_turf, COMSIG_TURF_ENTERED, PROC_REF(handle_entered))
+	RegisterSignal(new_turf, COMSIG_PARENT_QDELETING, PROC_REF(on_turf_changing))
+	// Technically from_turf_to_images should change too but the ref should always be reused how we want
+	ASSERT(locate(old_ref) == new_turf, "Ref needs updating for /datum/staircase/proc/finish_on_turf_changed!")
 
 /datum/staircase/proc/handle_entered(turf/originator, atom/what_did_it)
 	SIGNAL_HANDLER
@@ -636,6 +676,14 @@ GLOBAL_DATUM_INIT(above_blackness_backdrop, /atom/movable/above_blackness_backdr
 		attack_hand(xeno)
 		return XENO_NONCOMBAT_ACTION
 
+/obj/structure/ore_box/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	if(unslashable)
+		return TAILSTAB_COOLDOWN_NONE
+	playsound(src, 'sound/effects/woodhit.ogg', 25, 1)
+	deconstruct(FALSE)
+	xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
+	SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	return TAILSTAB_COOLDOWN_NORMAL
 
 /obj/structure/computer3frame
 	density = TRUE

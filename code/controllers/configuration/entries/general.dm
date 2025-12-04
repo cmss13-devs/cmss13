@@ -115,6 +115,8 @@ Administrative related.
 
 /datum/config_entry/flag/log_overwatch
 
+/datum/config_entry/flag/log_garble
+
 /datum/config_entry/flag/log_interact
 
 /datum/config_entry/flag/log_idmod
@@ -731,3 +733,6 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 
 /datum/config_entry/string/sentry_dsn
 	protection = CONFIG_ENTRY_HIDDEN
+
+/datum/config_entry/str_list/ignored_cids
+	protection = CONFIG_ENTRY_LOCKED

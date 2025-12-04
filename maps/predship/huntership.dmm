@@ -2601,7 +2601,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/reagent_container/glass/beaker/silver{
+/obj/item/reagent_container/glass/beaker/catalyst/silver{
 	pixel_x = 6;
 	pixel_y = 9;
 	color = "#9b1818"
@@ -2619,7 +2619,7 @@
 	pixel_y = 7;
 	color = "#9b1818"
 	},
-/obj/item/reagent_container/glass/beaker/silver{
+/obj/item/reagent_container/glass/beaker/catalyst/silver{
 	pixel_y = 0;
 	pixel_x = -5;
 	color = "#9b1818"
@@ -14245,22 +14245,22 @@
 /obj/item/reagent_container/glass/bucket{
 	color = "#6b675e"
 	},
-/obj/item/reagent_container/glass/beaker/silver{
+/obj/item/reagent_container/glass/beaker/catalyst/silver{
 	pixel_x = 6;
 	pixel_y = 9;
 	color = "#9b1818"
 	},
-/obj/item/reagent_container/glass/beaker/silver{
+/obj/item/reagent_container/glass/beaker/catalyst/silver{
 	pixel_x = 6;
 	pixel_y = 9;
 	color = "#9b1818"
 	},
-/obj/item/reagent_container/glass/beaker/silver{
+/obj/item/reagent_container/glass/beaker/catalyst/silver{
 	pixel_x = 6;
 	pixel_y = 9;
 	color = "#9b1818"
 	},
-/obj/item/reagent_container/glass/beaker/silver{
+/obj/item/reagent_container/glass/beaker/catalyst/silver{
 	pixel_x = 6;
 	pixel_y = 9;
 	color = "#9b1818"

@@ -118,7 +118,7 @@
 		if(!current_step.skip_step_criteria(user, target, user.zone_selected, tool, src))
 			if(tool && is_surgery_tool(tool)) //Just because you used the wrong tool doesn't mean you meant to whack the patient with it...
 				to_chat(user, SPAN_WARNING("You can't [current_step.desc] with [tool]."))
-		return FALSE
+			return FALSE
 		// step was optional, try the next if it exists
 		if(++next > length(steps))
 			break

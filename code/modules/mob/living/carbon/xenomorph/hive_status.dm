@@ -1306,7 +1306,7 @@
 		XENO_CASTE_BURROWER,
 		XENO_CASTE_CARRIER,
 		XENO_CASTE_HIVELORD,
-		)
+	)
 
 /datum/hive_status/hunted/can_delay_round_end(mob/living/carbon/xenomorph/xeno)
 	return FALSE

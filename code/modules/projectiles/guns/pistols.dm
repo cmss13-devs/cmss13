@@ -1088,6 +1088,9 @@ Unlike other pistols, it can be equipped with limited mods (small muzzle, underb
 	scatter_unwielded = SCATTER_AMOUNT_TIER_4
 	recoil_unwielded = RECOIL_AMOUNT_TIER_5
 
+
+/obj/item/weapon/gun/pistol/m10/extended
+	current_mag = /obj/item/ammo_magazine/pistol/m10/extended
 //-------------------------------------------------------
 /*
 

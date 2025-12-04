@@ -786,6 +786,10 @@
 	visible_message("[user] scrapes uselessly against [src] with their claws.")
 	return
 
+/turf/closed/wall/ancient_temple/sandstone/Initialize()
+	. = ..()
+	return INITIALIZE_HINT_LATELOAD
+
 /turf/closed/wall/ancient_temple/sandstone/LateInitialize()
 	. = ..()
 	if(prob(80))

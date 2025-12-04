@@ -413,17 +413,11 @@
 	if(card)
 		var/list/access = card.access
 		var/added = FALSE // Whether or not access has been added to be announced.
-		if(!(ACCESS_MARINE_SENIOR in access)) // Needed for announcements, central overwatch console
-			access.Add(ACCESS_MARINE_SENIOR)
-			added = TRUE
-		if(!(ACCESS_MARINE_DATABASE in access)) // For the ID computer.
-			access.Add(ACCESS_MARINE_DATABASE)
-			added = TRUE
-		if(!(ACCESS_MARINE_COMMAND in access)) // Needed to actually get into the CIC.
-			access.Add(ACCESS_MARINE_COMMAND)
-			added = TRUE
-
-		if(added)
+		var/static/to_add = list(ACCESS_MARINE_SENIOR, ACCESS_MARINE_DATABASE, ACCESS_MARINE_COMMAND)
+		
+		var/new_access = access | to_add
+		if(access ~! new_access)
+			access = new_access
 			announce_addendum += "\nSenior Command access added to ID."
 
 	announce_addendum += "\nA Command headset is available in the Command Tablet cabinet."

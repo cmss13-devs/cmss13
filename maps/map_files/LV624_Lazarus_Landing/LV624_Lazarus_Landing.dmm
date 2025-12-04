@@ -3348,7 +3348,7 @@
 /area/lv624/ground/barrens/south_west_barrens)
 "bvb" = (
 /obj/structure/window/framed/lv_colony/white/reinforced,
-/obj/structure/machinery/door/poddoor/almayer/white{
+/obj/structure/machinery/door/poddoor/almayer/white/open{
 	id = "science_blast";
 	name = "Research Complex Shutter"
 	},
@@ -14999,7 +14999,7 @@
 /area/lv624/ground/caves/south_east_caves)
 "gCk" = (
 /obj/structure/window/framed/lv_colony/white/reinforced,
-/obj/structure/machinery/door/poddoor/almayer/white{
+/obj/structure/machinery/door/poddoor/almayer/white/open{
 	id = "science_blast";
 	name = "Research Complex Shutter";
 	dir = 4
@@ -36978,7 +36978,7 @@
 	req_one_access_txt = "103;236;240;241";
 	dir = 1
 	},
-/obj/structure/machinery/door/poddoor/almayer/white{
+/obj/structure/machinery/door/poddoor/almayer/white/open{
 	id = "science_blast";
 	name = "Research Complex Shutter"
 	},
@@ -42802,7 +42802,7 @@
 	name = "\improper Research Storage Dome";
 	req_one_access_txt = "103;236;240;241"
 	},
-/obj/structure/machinery/door/poddoor/almayer/white{
+/obj/structure/machinery/door/poddoor/almayer/white/open{
 	id = "science_blast";
 	name = "Research Complex Shutter"
 	},
@@ -46070,7 +46070,7 @@
 	name = "\improper Research Storage Dome";
 	req_one_access_txt = "103;236;240;241"
 	},
-/obj/structure/machinery/door/poddoor/almayer/white{
+/obj/structure/machinery/door/poddoor/almayer/white/open{
 	id = "science_blast";
 	name = "Research Complex Shutter"
 	},

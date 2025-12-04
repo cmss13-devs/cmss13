@@ -347,7 +347,7 @@
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/security)
 "adE" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/prison/darkbrown2/east,
 /area/fiorina/tumor/aux_engi)
 "aeb" = (
@@ -1098,7 +1098,8 @@
 /area/fiorina/station/telecomm/lz1_cargo)
 "aFp" = (
 /obj/structure/machinery/defenses/tesla_coil/premade/smart{
-	faction_group = list("CLF")
+	faction_group = list("CLF");
+	selected_categories = list("IFF STATUS" = "CLF")
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/fiorina/tumor/ship)
@@ -2001,7 +2002,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/ice_lab)
 "boF" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/medbay)
 "boI" = (
@@ -2964,7 +2965,7 @@
 /turf/open/floor/prison/sterile_white/southwest,
 /area/fiorina/station/medbay)
 "cbd" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/prison,
 /area/fiorina/station/chapel)
 "cbA" = (
@@ -3234,7 +3235,7 @@
 /area/fiorina/station/chapel)
 "cmy" = (
 /obj/structure/sign/prop3{
-	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate popualtions across the colonies. Mostly New Argentina though."
+	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate populations across the colonies."
 	},
 /turf/closed/wall/prison,
 /area/fiorina/station/central_ring)
@@ -3517,7 +3518,7 @@
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/station/medbay)
 "czJ" = (
-/obj/structure/reagent_dispensers/watertank{
+/obj/structure/reagent_dispensers/tank/water{
 	layer = 2.6
 	},
 /obj/structure/machinery/light/double/blue,
@@ -4320,7 +4321,7 @@
 /area/fiorina/tumor/aux_engi)
 "dec" = (
 /obj/structure/sign/prop3{
-	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate popualtions across the colonies. Mostly New Argentina though."
+	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate populations across the colonies."
 	},
 /turf/closed/wall/prison,
 /area/fiorina/tumor/servers)
@@ -4562,7 +4563,7 @@
 /turf/open/floor/prison/yellow/southeast,
 /area/fiorina/station/lowsec)
 "dpH" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/aux_engi)
 "dpZ" = (
@@ -4657,7 +4658,7 @@
 /turf/open/floor/prison/whitegreen/southwest,
 /area/fiorina/station/medbay)
 "duw" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/structure/machinery/light/double/blue{
 	dir = 1;
 	pixel_y = 21
@@ -6108,7 +6109,7 @@
 /area/fiorina/station/research_cells/west)
 "ezn" = (
 /obj/structure/sign/prop3{
-	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate popualtions across the colonies. Mostly New Argentina though."
+	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate populations across the colonies."
 	},
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/station/telecomm/lz1_cargo)
@@ -6167,7 +6168,7 @@
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/station/medbay)
 "eCK" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/prison/floor_marked/southwest,
 /area/fiorina/lz/near_lzII)
 "eDp" = (
@@ -6489,7 +6490,7 @@
 /area/fiorina/station/medbay)
 "eOQ" = (
 /obj/structure/platform/metal/almayer,
-/obj/structure/reagent_dispensers/fueltank/oxygentank{
+/obj/structure/reagent_dispensers/tank/fuel/oxygentank{
 	layer = 2.6
 	},
 /turf/open/floor/prison,
@@ -6582,7 +6583,7 @@
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/station/medbay)
 "eSn" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/prison/greenblue/southeast,
 /area/fiorina/station/botany)
 "eSF" = (
@@ -6718,7 +6719,7 @@
 /area/fiorina/tumor/civres)
 "eWP" = (
 /obj/structure/sign/prop3{
-	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate popualtions across the colonies. Mostly New Argentina though."
+	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate populations across the colonies."
 	},
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/tumor/ice_lab)
@@ -7018,7 +7019,7 @@
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/station/medbay)
 "fjr" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fiorina/station/park)
 "fjI" = (
@@ -7843,7 +7844,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/ice_lab)
 "fUr" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
 "fUz" = (
@@ -9823,7 +9824,7 @@
 /turf/open/floor/prison/darkbrown2,
 /area/fiorina/station/park)
 "htT" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/prison/bluecorner/east,
 /area/fiorina/station/power_ring/reactor)
 "htX" = (
@@ -9921,7 +9922,7 @@
 /obj/structure/platform/metal/almayer/west,
 /obj/structure/platform/metal/almayer,
 /obj/structure/platform_decoration/metal/almayer/southwest,
-/obj/structure/reagent_dispensers/fueltank{
+/obj/structure/reagent_dispensers/tank/fuel{
 	layer = 2.6
 	},
 /turf/open/floor/prison,
@@ -12170,7 +12171,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
 "jji" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/transit_hub)
 "jjp" = (
@@ -12366,7 +12367,7 @@
 /area/fiorina/station/lowsec)
 "jpN" = (
 /obj/structure/sign/prop3{
-	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate popualtions across the colonies. Mostly New Argentina though."
+	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate populations across the colonies."
 	},
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/station/research_cells/west)
@@ -12412,7 +12413,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/disco)
 "jqM" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/prison/blue_plate/east,
 /area/fiorina/station/botany)
 "jqN" = (
@@ -14518,7 +14519,7 @@
 /turf/open/floor/carpet,
 /area/fiorina/station/civres_blue)
 "kZl" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/prison/darkbrownfull2,
 /area/fiorina/tumor/aux_engi)
 "kZu" = (
@@ -14735,7 +14736,7 @@
 /area/fiorina/lz/near_lzII)
 "lhY" = (
 /obj/structure/sign/prop3{
-	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate popualtions across the colonies. Mostly New Argentina though."
+	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate populations across the colonies."
 	},
 /turf/closed/wall/prison,
 /area/fiorina/station/power_ring)
@@ -15550,7 +15551,7 @@
 /turf/open/floor/almayer_hull,
 /area/fiorina/oob)
 "lJf" = (
-/obj/structure/reagent_dispensers/fueltank/gas/hydrogen{
+/obj/structure/reagent_dispensers/tank/fuel/gas/hydrogen{
 	layer = 2.6
 	},
 /obj/structure/machinery/light/double/blue,
@@ -16251,7 +16252,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/park)
 "mpf" = (
-/obj/structure/reagent_dispensers/fueltank/gas/hydrogen{
+/obj/structure/reagent_dispensers/tank/fuel/gas/hydrogen{
 	layer = 2.6
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -16724,7 +16725,7 @@
 /area/fiorina/maintenance)
 "mHR" = (
 /obj/structure/sign/prop3{
-	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate popualtions across the colonies. Mostly New Argentina though."
+	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate populations across the colonies."
 	},
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/tumor/aux_engi)
@@ -19858,7 +19859,7 @@
 /turf/open/ice/noweed,
 /area/fiorina/tumor/ice_lab)
 "oXS" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
 "oXT" = (
@@ -20482,7 +20483,7 @@
 /turf/open/floor/prison/cell_stripe/east,
 /area/fiorina/station/central_ring)
 "pAl" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/prison/blue_plate/west,
 /area/fiorina/station/botany)
 "pAr" = (
@@ -21984,7 +21985,7 @@
 /turf/open/floor/corsat/plate,
 /area/fiorina/station/telecomm/lz1_cargo)
 "qGy" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/prison,
 /area/fiorina/tumor/servers)
 "qGB" = (
@@ -22327,7 +22328,7 @@
 /area/fiorina/station/research_cells/east)
 "qRg" = (
 /obj/structure/sign/prop3{
-	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate popualtions across the colonies. Mostly New Argentina though."
+	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate populations across the colonies."
 	},
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/tumor/servers)
@@ -22919,7 +22920,7 @@
 /turf/open/floor/prison/sterile_white/southwest,
 /area/fiorina/station/medbay)
 "rur" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/prison/darkbrownfull2,
 /area/fiorina/station/park)
 "ruu" = (
@@ -24620,7 +24621,7 @@
 /area/fiorina/station/research_cells/east)
 "sJN" = (
 /obj/structure/sign/prop3{
-	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate popualtions across the colonies. Mostly New Argentina though."
+	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate populations across the colonies."
 	},
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/lz/near_lzI)
@@ -25156,7 +25157,7 @@
 /turf/open/floor/corsat/plate,
 /area/fiorina/station/telecomm/lz1_cargo)
 "teu" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/servers)
 "teE" = (
@@ -25872,7 +25873,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/security)
 "tFo" = (
-/obj/structure/reagent_dispensers/watertank{
+/obj/structure/reagent_dispensers/tank/water{
 	layer = 2.6
 	},
 /turf/open/floor/prison/floor_plate,
@@ -27032,7 +27033,7 @@
 /turf/open/floor/prison/bluefull,
 /area/fiorina/station/power_ring)
 "uEj" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/transit_hub)
 "uEl" = (
@@ -27413,7 +27414,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fiorina/station/transit_hub)
 "uSQ" = (
-/obj/structure/reagent_dispensers/watertank{
+/obj/structure/reagent_dispensers/tank/water{
 	layer = 2.6
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -28415,7 +28416,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/aux_engi)
 "vFn" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
@@ -29669,7 +29670,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/research_cells/east)
 "wId" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/central_ring)
 "wIk" = (
@@ -30121,7 +30122,7 @@
 /turf/open/floor/prison/bluefull,
 /area/fiorina/station/civres_blue)
 "xaO" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/medbay)
 "xbc" = (
@@ -31517,7 +31518,7 @@
 /area/fiorina/station/research_cells/west)
 "yhR" = (
 /obj/structure/sign/prop3{
-	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate popualtions across the colonies. Mostly New Argentina though."
+	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate populations across the colonies."
 	},
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/station/medbay)
@@ -31588,7 +31589,7 @@
 /area/fiorina/station/telecomm/lz2_maint)
 "yli" = (
 /obj/structure/sign/prop3{
-	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate popualtions across the colonies. Mostly New Argentina though."
+	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate populations across the colonies."
 	},
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/station/central_ring)

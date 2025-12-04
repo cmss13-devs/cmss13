@@ -331,6 +331,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	black_market_value = 100
 	flags_item = ITEM_PREDATOR
 	volume_settings = list(RADIO_VOLUME_QUIET_STR, RADIO_VOLUME_RAISED_STR)
+	minimap_flag = MINIMAP_FLAG_YAUTJA
 
 /obj/item/device/radio/headset/yautja/talk_into(mob/living/M as mob, message, channel, verb = "commands", datum/language/speaking)
 	if(!isyautja(M)) //Nope.
@@ -508,7 +509,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	unacidable = TRUE
 	///List of where they can choose to go to
 	var/static/list/potential_hunting_grounds = list()
-	///If one has already been spawned, dont let more be spawned
+	///If one has already been spawned, don't let more be spawned
 	var/static/hunting_ground_activated = FALSE
 
 /obj/structure/machinery/hunting_ground_selection/Initialize(mapload, ...)
@@ -864,79 +865,6 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 		. += true_desc
 	else
 		. += SPAN_WARNING("Scalp-collecting is supposed to be a <i>joke</i>. Has someone been going around doing this shit for real? What next, a necklace of severed ears? Jesus Christ.")
-
-/obj/item/explosive/grenade/spawnergrenade/hellhound
-	name = "hellhound caller"
-	spawner_type = /mob/living/carbon/xenomorph/hellhound
-	deliveryamt = 1
-	desc = "A strange piece of alien technology. It seems to call forth a hellhound."
-	icon = 'icons/obj/items/hunter/pred_gear.dmi'
-	icon_state = "hellnade"
-	w_class = SIZE_TINY
-	det_time = 30
-	var/obj/structure/machinery/camera/current = null
-	var/turf/activated_turf = null
-
-/obj/item/explosive/grenade/spawnergrenade/hellhound/dropped(mob/user)
-	check_eye(user)
-	return ..()
-
-/obj/item/explosive/grenade/spawnergrenade/hellhound/attack_self(mob/living/carbon/human/user)
-	if(!active)
-		if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
-			to_chat(user, SPAN_WARNING("What's this thing?"))
-			return
-		to_chat(user, SPAN_WARNING("You activate the hellhound beacon!"))
-		activate(user)
-		add_fingerprint(user)
-		if(iscarbon(user))
-			var/mob/living/carbon/C = user
-			C.toggle_throw_mode(THROW_MODE_NORMAL)
-	..()
-
-/obj/item/explosive/grenade/spawnergrenade/hellhound/activate(mob/user)
-	if(active)
-		return
-
-	if(user)
-		msg_admin_attack("[key_name(user)] primed \a [src] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
-	icon_state = initial(icon_state) + "_active"
-	active = 1
-	update_icon()
-	addtimer(CALLBACK(src, PROC_REF(prime), user), det_time)
-
-/obj/item/explosive/grenade/spawnergrenade/hellhound/prime(mob/user)
-	if(spawner_type && deliveryamt)
-		// Make a quick flash
-		var/turf/spawn_turf = get_turf(src)
-		if(ispath(spawner_type))
-			var/mob/living/carbon/xenomorph/hellhound/hound = new spawner_type(spawn_turf)
-			var/datum/behavior_delegate/hellhound_base/hound_owner = hound.behavior_delegate
-			hound_owner.pred_owner = user
-			notify_ghosts(header = "Hellhound", message = "A hellhound has been called in [get_area(user)] by [user.real_name] click play as hellhound to play as one.", extra_large = TRUE)
-	return
-
-/obj/item/explosive/grenade/spawnergrenade/hellhound/check_eye(mob/user)
-	if (user.is_mob_incapacitated() || user.blinded )
-		user.unset_interaction()
-	else if ( !current || get_turf(user) != activated_turf || src.loc != user ) //camera doesn't work, or we moved.
-		user.unset_interaction()
-
-/obj/item/explosive/grenade/spawnergrenade/hellhound/New()
-	. = ..()
-
-	force = 20
-	throwforce = 40
-
-/obj/item/explosive/grenade/spawnergrenade/hellhound/on_set_interaction(mob/user)
-	..()
-	user.reset_view(current)
-
-/obj/item/explosive/grenade/spawnergrenade/hellhound/on_unset_interaction(mob/user)
-	..()
-	current = null
-	user.reset_view(null)
-
 
 // Hunting traps
 /obj/item/hunting_trap

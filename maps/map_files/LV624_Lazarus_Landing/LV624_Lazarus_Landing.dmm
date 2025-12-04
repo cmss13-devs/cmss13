@@ -25420,6 +25420,10 @@
 	color = "#8B9490"
 	},
 /obj/effect/landmark/objective_landmark/medium,
+/obj/structure/machinery/prop/almayer/CICmap/pmc{
+	pixel_x = 16;
+	pixel_y = 19
+	},
 /turf/open/floor/prison/floor_plate,
 /area/lv624/lazarus/captain)
 "lip" = (
@@ -39649,11 +39653,6 @@
 	},
 /obj/structure/surface/table/almayer{
 	color = "#8B9490"
-	},
-/obj/structure/machinery/prop/almayer/CICmap/upp{
-	pixel_y = -15;
-	pixel_x = 15;
-	faction = "Colonist"
 	},
 /turf/open/floor/prison/floor_plate,
 /area/lv624/lazarus/captain)
@@ -55716,6 +55715,16 @@
 	},
 /turf/open/floor/ancient_temple/damaged/damage_1,
 /area/lv624/ground/caves/east_caves)
+"ydz" = (
+/obj/structure/window/framed/lv_colony/reinforced,
+/obj/structure/machinery/door/poddoor/almayer/grey/open{
+	name = "Central Complex Lockdown Shutter";
+	dir = 4;
+	id = "nexus_blast"
+	},
+/obj/structure/machinery/prop/almayer/CICmap/upp,
+/turf/open/floor/plating/prison,
+/area/lv624/lazarus/captain)
 "ydA" = (
 /obj/structure/machinery/light/blue{
 	dir = 1
@@ -62105,7 +62114,7 @@ wDh
 wXJ
 wrU
 mll
-ndI
+mll
 qbm
 iVi
 iVi
@@ -62329,7 +62338,7 @@ iVi
 iVi
 rLB
 ndI
-wDh
+etp
 iVi
 iVi
 wDh
@@ -79347,7 +79356,7 @@ jJa
 tzP
 jJa
 sVF
-sVF
+ydz
 jJa
 leq
 kmM

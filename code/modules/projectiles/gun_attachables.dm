@@ -2164,10 +2164,9 @@ Defined in conflicts.dm of the #defines folder.
 	pixel_shift_x = 40
 	pixel_shift_y = 14
 	hud_offset_mod = 3
-	size_mod = 1
+	size_mod = 0
 	collapsible = TRUE
 	stock_activated = FALSE
-	collapse_delay = 0.5 SECONDS
 	wield_delay_mod = WIELD_DELAY_NONE
 	flags_attach_features = ATTACH_REMOVABLE | ATTACH_ACTIVATION
 	attachment_action_type = /datum/action/item_action/toggle

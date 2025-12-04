@@ -410,7 +410,7 @@
 
 		list("STOCK", -1, null, null),
 		list("M10 Solid Stock", 1, /obj/item/attachable/stock/m10_solid, VENDOR_ITEM_REGULAR),
-		list("M10 Folding Stock", 1, /obj/item/attachable/stock/pistol/collapsible, VENDOR_ITEM_REGULAR),
+		list("M10 Folding Stock", 1.5, /obj/item/attachable/stock/pistol/collapsible, VENDOR_ITEM_REGULAR),
 		list("M37A2 Collapsible Stock", 1.5, /obj/item/attachable/stock/synth/collapsible, VENDOR_ITEM_REGULAR),
 		list("M39 Arm Brace", 1.5, /obj/item/attachable/stock/smg/collapsible/brace, VENDOR_ITEM_REGULAR),
 		list("M39 Stock", 1.5, /obj/item/attachable/stock/smg, VENDOR_ITEM_REGULAR),

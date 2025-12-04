@@ -64,6 +64,12 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/auto_turf/lv_sand_alt/layer0,
 /area/lv624/ground/caves/central_caves)
+"aaN" = (
+/obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
+	dir = 1
+	},
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/barrens/south_west_barrens)
 "aaS" = (
 /obj/effect/hunter/ancient_temple/tile_edge_corner/tile_edge_corner_4,
 /obj/effect/hunter/ancient_temple/tile_edge_corner/tile_edge_corner_3,
@@ -6041,6 +6047,10 @@
 /obj/effect/hunter/ancient_temple/rubble/rubble,
 /turf/open/floor/plating/ancient_temple,
 /area/lv624/ground/caves/north_east_caves)
+"cGg" = (
+/obj/structure/platform_decoration/stone/ancient_temple/alt/east,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/barrens/north_east_barrens)
 "cGk" = (
 /obj/structure/platform/stone/ancient_temple/north,
 /obj/structure/platform/stone/ancient_temple/west{
@@ -15107,7 +15117,7 @@
 /turf/open/floor/ancient_temple/floor_2,
 /area/lv624/ground/caves/north_east_caves)
 "gFk" = (
-/mob/living/simple_animal/hostile/retaliate/giant_lizard,
+/obj/effect/landmark/lizard_spawn,
 /turf/open/auto_turf/lv_sand/layer0,
 /area/lv624/ground/barrens/south_west_barrens)
 "gFm" = (
@@ -16645,10 +16655,7 @@
 /area/lv624/ground/river/east_river)
 "hos" = (
 /obj/structure/platform/stone/ancient_temple/alt/north,
-/obj/effect/decal/lv_decals/red_mud_corner{
-	dir = 1
-	},
-/turf/open/auto_turf/lv_grass/layer0,
+/turf/open/auto_turf/lv_grass/layer1,
 /area/lv624/ground/barrens/north_east_barrens)
 "hoy" = (
 /obj/structure/disposalpipe/segment,
@@ -21555,7 +21562,7 @@
 /turf/open/floor/ancient_temple/damaged/damage_6,
 /area/lv624/ground/caves/central_caves)
 "jvB" = (
-/mob/living/simple_animal/hostile/retaliate/giant_lizard,
+/obj/effect/landmark/lizard_spawn,
 /turf/open/floor/brown_dirt/random_rocks,
 /area/lv624/ground/barrens/south_west_barrens)
 "jvN" = (
@@ -24229,7 +24236,7 @@
 /turf/open/floor/ancient_temple/deco/dark/deco_1/east,
 /area/lv624/ground/caves/sand_temple)
 "kFO" = (
-/mob/living/simple_animal/hostile/retaliate/giant_lizard,
+/obj/effect/landmark/lizard_spawn,
 /turf/open/auto_turf/lv_grass/layer1,
 /area/lv624/ground/jungle/south_west_jungle)
 "kFU" = (
@@ -27653,7 +27660,7 @@
 /area/lv624/lazarus/fitness)
 "mdn" = (
 /obj/structure/flora/bush/ausbushes/lavendergrass,
-/mob/living/simple_animal/hostile/retaliate/giant_lizard,
+/obj/effect/landmark/lizard_spawn,
 /turf/open/auto_turf/lv_grass/layer1,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "mdx" = (
@@ -33970,8 +33977,8 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv624/lazarus/security)
 "oDL" = (
-/mob/living/simple_animal/hostile/retaliate/giant_lizard,
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/obj/effect/landmark/lizard_spawn,
 /turf/open/auto_turf/lv_sand/layer0,
 /area/lv624/ground/barrens/south_west_barrens)
 "oDU" = (
@@ -41875,8 +41882,8 @@
 /turf/open/auto_turf/lv_sand_alt/layer0,
 /area/lv624/ground/caves/west_caves)
 "seT" = (
-/mob/living/simple_animal/hostile/retaliate/giant_lizard,
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/obj/effect/landmark/lizard_spawn,
 /turf/open/auto_turf/lv_grass/layer1,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "sfg" = (
@@ -48585,7 +48592,7 @@
 /turf/open/floor/ancient_temple/base,
 /area/lv624/ground/caves/north_west_caves)
 "uRK" = (
-/mob/living/simple_animal/hostile/retaliate/giant_lizard,
+/obj/effect/landmark/lizard_spawn,
 /turf/open/auto_turf/lv_grass/layer1,
 /area/lv624/ground/jungle/south_east_jungle)
 "uRS" = (
@@ -51299,8 +51306,8 @@
 /turf/open/floor/prison/green/southeast,
 /area/lv624/lazarus/hydroponics)
 "wgW" = (
-/mob/living/simple_animal/hostile/retaliate/giant_lizard,
 /obj/structure/flora/jungle/vines/blue/light_1,
+/obj/effect/landmark/lizard_spawn,
 /turf/open/auto_turf/lv_grass/layer1,
 /area/lv624/ground/barrens/south_west_barrens)
 "wgY" = (
@@ -51817,6 +51824,12 @@
 	},
 /turf/open/floor/interior/wood/alt,
 /area/lv624/ground/caves/north_central_caves)
+"wrT" = (
+/obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
+	dir = 10
+	},
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/barrens/south_west_barrens)
 "wrU" = (
 /obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
 	dir = 3
@@ -59525,9 +59538,9 @@ xLg
 nWz
 xLg
 vuf
-bYB
+wrT
 iIm
-rnu
+aaN
 qWt
 xLg
 ptc
@@ -59750,7 +59763,7 @@ xLg
 nWz
 qrD
 xLg
-bYB
+wrT
 lXy
 xLg
 nBI
@@ -62215,7 +62228,7 @@ jVI
 qrD
 xLg
 nBI
-eKD
+dvn
 wYc
 wYc
 wYc
@@ -69586,7 +69599,7 @@ rNp
 rNp
 szh
 wuj
-qgV
+wuj
 jna
 wuj
 agf
@@ -82564,7 +82577,7 @@ dXJ
 mjb
 oOF
 mkH
-wJJ
+iJb
 lAa
 agJ
 udV
@@ -83012,7 +83025,7 @@ dXJ
 dXJ
 htj
 vPC
-gSK
+cGg
 uzG
 agJ
 oqA
@@ -83275,7 +83288,7 @@ ecS
 jyE
 aqc
 aqc
-tmN
+aqc
 tmN
 xYg
 aqc
@@ -83460,7 +83473,7 @@ dXJ
 mjb
 bcU
 mkH
-wJJ
+iJb
 dXJ
 kET
 cje
@@ -83498,8 +83511,8 @@ yba
 oVO
 oVO
 aqc
-tmN
 aqc
+tmN
 tmN
 xYg
 tmN
@@ -85949,7 +85962,7 @@ loR
 loR
 loR
 xoI
-mHh
+xoI
 xoI
 adc
 loR

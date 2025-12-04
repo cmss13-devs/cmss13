@@ -84,8 +84,6 @@
 	color = "#8B7B5B"
 	},
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
-	name = "\improper MinZdrav dispenser";
-	desc = "A wall-mounted medical equipment dispenser. Provided by Ministry of Health of UPP, it contains a small quantity of emergency supplies.";
 	pixel_y = -32
 	},
 /obj/item/reagent_container/food/snacks/eat_bar,
@@ -3994,8 +3992,6 @@
 "bMz" = (
 /obj/structure/pipes/vents/scrubber_hybrisa,
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
-	name = "\improper MinZdrav dispenser";
-	desc = "A wall-mounted medical equipment dispenser. Provided by Ministry of Health of UPP, it contains a small quantity of emergency supplies.";
 	pixel_y = -32
 	},
 /obj/structure/machinery/power/apc{
@@ -4582,8 +4578,6 @@
 	dir = 4
 	},
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
-	name = "\improper MinZdrav dispenser";
-	desc = "A wall-mounted medical equipment dispenser. Provided by Ministry of Health of UPP, it contains a small quantity of emergency supplies.";
 	pixel_y = -32
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -7486,10 +7480,6 @@
 /turf/open/floor/interior/wood_sat,
 /area/lv624/ground/caves/west_caves)
 "dlY" = (
-/obj/item/trash/uscm_mre{
-	name = "\improper crumbled UPP MRE";
-	desc = "It has done its part for the UPP. Have you?"
-	},
 /turf/open/auto_turf/lv_grass/layer0,
 /area/lv624/ground/jungle/south_west_jungle)
 "dmd" = (
@@ -8967,6 +8957,13 @@
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/river/soro,
 /area/lv624/ground/caves/north_central_caves)
+"dWX" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -8
+	},
+/turf/open/auto_turf/lv_sand/layer0,
+/area/lv624/ground/barrens/central_barrens)
 "dXb" = (
 /obj/structure/largecrate/random/barrel/black{
 	pixel_x = 8;
@@ -11124,9 +11121,7 @@
 	light_color = "#dae2ff";
 	dir = 4
 	},
-/obj/structure/largecrate/random/barrel/red{
-	stuff = list(/obj/item/clothing/under/marine/veteran/UPP,/obj/item/clothing/gloves/marine,/obj/item/clothing/gloves/marine/brown,/obj/item/clothing/gloves/marine/joe,/obj/item/clothing/shoes/marine/joe,/obj/item/clothing/shoes/marine/upp/guard,/obj/item/clothing/shoes/marine/upp)
-	},
+/obj/structure/largecrate/random/barrel/red,
 /turf/open/floor/prison/west,
 /area/lv624/lazarus/robotics)
 "eRu" = (
@@ -11825,8 +11820,6 @@
 /area/lv624/ground/caves/east_caves)
 "fhH" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
-	name = "\improper MinZdrav dispenser";
-	desc = "A wall-mounted medical equipment dispenser. Provided by Ministry of Health of UPP, it contains a small quantity of emergency supplies.";
 	pixel_y = -1
 	},
 /turf/closed/wall/wood/teal,
@@ -12069,9 +12062,8 @@
 /turf/open/floor/ancient_temple/damaged/damage_5,
 /area/lv624/ground/caves/central_caves)
 "fmx" = (
-/obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/interior/wood/alt,
+/turf/open/gm/dirt/brown/variant_5/east,
 /area/lv624/ground/barrens/central_barrens)
 "fmM" = (
 /obj/structure/extinguisher_cabinet{
@@ -12227,8 +12219,6 @@
 /area/lv624/ground/barrens/south_west_barrens)
 "fph" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
-	name = "\improper MinZdrav dispenser";
-	desc = "A wall-mounted medical equipment dispenser. Provided by Ministry of Health of UPP, it contains a small quantity of emergency supplies.";
 	pixel_y = -32
 	},
 /turf/open/floor/prison/bright_clean2,
@@ -12503,17 +12493,11 @@
 /obj/structure/surface/table/almayer{
 	color = "#8B9490"
 	},
-/obj/structure/machinery/faxmachine{
-	wrenchable = 1;
-	target_department = "Union of Progress Peoples";
-	department = "Ravdonika Archaeo";
-	can_block_movement = 0;
-	network = "UPP Colonial Network"
-	},
 /obj/item/reagent_container/food/drinks/coffeecup{
 	pixel_y = 14;
 	pixel_x = 9
 	},
+/obj/structure/machinery/faxmachine,
 /turf/open/floor/prison/floor_plate,
 /area/lv624/lazarus/captain)
 "fvS" = (
@@ -17366,8 +17350,6 @@
 /area/lv624/lazarus/medbay)
 "hCq" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
-	name = "\improper MinZdrav dispenser";
-	desc = "A wall-mounted medical equipment dispenser. Provided by Ministry of Health of UPP, it contains a small quantity of emergency supplies.";
 	pixel_y = -32
 	},
 /obj/structure/surface/rack{
@@ -19047,8 +19029,6 @@
 /area/lv624/ground/barrens/south_eastern_barrens)
 "iqb" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
-	name = "\improper MinZdrav dispenser";
-	desc = "A wall-mounted medical equipment dispenser. Provided by Ministry of Health of UPP, it contains a small quantity of emergency supplies.";
 	pixel_y = -32
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -19511,13 +19491,6 @@
 	},
 /turf/open/auto_turf/lv_sand/layer0,
 /area/lv624/ground/caves/north_central_caves)
-"iAq" = (
-/obj/docking_port/stationary/emergency_response/port2{
-	name = "Nexus Cargo Landing Zone";
-	id = "ertupp3"
-	},
-/turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
 "iAt" = (
 /obj/structure/platform/stone/ancient_temple/alt/north,
 /obj/structure/platform/stone/ancient_temple/east,
@@ -19857,12 +19830,7 @@
 	},
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/faxmachine{
-	wrenchable = 1;
-	target_department = "Union of Progress Peoples";
-	department = "Ravdonika Archaeo";
-	can_block_movement = 0;
-	network = "UPP Colonial Network";
-	pixel_x = -3;
+	pixel_x = -2;
 	pixel_y = 5
 	},
 /turf/open/floor/strata/fake_wood,
@@ -20346,9 +20314,6 @@
 "iVa" = (
 /turf/open/floor/hybrisa/carpet/carpetfadedred,
 /area/lv624/lazarus/sleep_female)
-"iVi" = (
-/turf/open/auto_turf/lv_grass/layer0,
-/area/lv624/ground/jungle/south_west_jungle)
 "iVm" = (
 /obj/structure/disposalpipe/junction{
 	dir = 1;
@@ -21402,8 +21367,6 @@
 /area/lv624/ground/barrens/central_barrens)
 "jsl" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
-	name = "\improper MinZdrav dispenser";
-	desc = "A wall-mounted medical equipment dispenser. Provided by Ministry of Health of UPP, it contains a small quantity of emergency supplies.";
 	pixel_y = -32
 	},
 /turf/open/floor/strata/light_purple_edge/east,
@@ -23691,9 +23654,7 @@
 /turf/open/auto_turf/lv_sand_alt/layer0,
 /area/lv624/ground/caves/central_caves)
 "ktF" = (
-/obj/structure/largecrate/random/barrel/red{
-	stuff = list(/obj/item/clothing/under/marine/veteran/UPP,/obj/item/clothing/gloves/marine,/obj/item/clothing/gloves/marine/brown,/obj/item/clothing/gloves/marine/joe,/obj/item/clothing/shoes/marine/joe,/obj/item/clothing/shoes/marine/upp/guard,/obj/item/clothing/shoes/marine/upp)
-	},
+/obj/structure/largecrate/random/barrel/red,
 /turf/open/floor/prison/floor_plate_alt/south,
 /area/lv624/lazarus/robotics)
 "kui" = (
@@ -29287,8 +29248,6 @@
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/lv624/lazarus/toilet)
 "mJc" = (
-/obj/effect/landmark/corpsespawner/scientist,
-/obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_y = 17
 	},
@@ -32788,10 +32747,8 @@
 /turf/open/floor/prison/floor_marked,
 /area/lv624/lazarus/quartstorage)
 "ofH" = (
-/obj/structure/largecrate/random/barrel/red{
-	stuff = list(/obj/item/clothing/under/marine/veteran/UPP,/obj/item/clothing/gloves/marine,/obj/item/clothing/gloves/marine/brown,/obj/item/clothing/gloves/marine/joe,/obj/item/clothing/shoes/marine/joe,/obj/item/clothing/shoes/marine/upp/guard,/obj/item/clothing/shoes/marine/upp)
-	},
 /obj/effect/decal/hybrisa/dirt,
+/obj/structure/largecrate/random/barrel/red,
 /turf/open/floor/prison/floor_marked,
 /area/lv624/lazarus/quartstorage)
 "ofJ" = (
@@ -33327,10 +33284,7 @@
 /obj/structure/surface/table,
 /obj/structure/machinery/faxmachine{
 	wrenchable = 1;
-	target_department = "Union of Progress Peoples";
-	department = "Ravdonika Archaeo";
-	can_block_movement = 0;
-	network = "UPP Colonial Network"
+	target_department = "Union of Progress Peoples"
 	},
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/interior/plastic/alt,
@@ -34171,9 +34125,7 @@
 /turf/open/auto_turf/lv_grass/layer0,
 /area/lv624/lazarus/quartstorage/outdoors)
 "oHo" = (
-/obj/structure/largecrate/random/barrel/red{
-	stuff = list(/obj/item/clothing/under/marine/veteran/UPP,/obj/item/clothing/gloves/marine,/obj/item/clothing/gloves/marine/brown,/obj/item/clothing/gloves/marine/joe,/obj/item/clothing/shoes/marine/joe,/obj/item/clothing/shoes/marine/upp/guard,/obj/item/clothing/shoes/marine/upp)
-	},
+/obj/structure/largecrate/random/barrel/red,
 /turf/open/floor/prison/floor_marked,
 /area/lv624/lazarus/landing_zones/lz1)
 "oHx" = (
@@ -35746,13 +35698,6 @@
 /obj/effect/hunter/ancient_temple/rubble/rubble_1,
 /turf/open/auto_turf/lv_grass_weedable/layer1,
 /area/lv624/ground/caves/west_caves)
-"pqj" = (
-/obj/item/trash/uscm_mre{
-	name = "\improper crumbled UPP MRE";
-	desc = "It has done its part for the UPP. Have you?"
-	},
-/turf/open/auto_turf/lv_grass/layer1,
-/area/lv624/ground/jungle/south_west_jungle)
 "pqB" = (
 /obj/structure/platform_decoration/metal/strata/alt{
 	dir = 8;
@@ -37545,10 +37490,6 @@
 /turf/open/floor/prison/floor_plate,
 /area/lv624/ground/jungle/east_central_jungle)
 "qhE" = (
-/obj/item/trash/uscm_mre{
-	name = "\improper crumbled UPP MRE";
-	desc = "It has done its part for the UPP. Have you?"
-	},
 /obj/effect/decal/cleanable/blood,
 /turf/open/gm/dirt/brown/variant_5/south,
 /area/lv624/ground/jungle/south_west_jungle)
@@ -41293,13 +41234,6 @@
 	},
 /turf/open/auto_turf/lv_grass/layer0_mud_alt,
 /area/lv624/ground/caves/west_caves)
-"rPF" = (
-/obj/docking_port/stationary/emergency_response/port2{
-	name = "Administration Landing Zone";
-	id = "ertupp2"
-	},
-/turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz2)
 "rQn" = (
 /obj/structure/prop/rock/brown{
 	dir = 4;
@@ -42307,6 +42241,9 @@
 /obj/effect/decal/lv_decals/red_mud_corner{
 	dir = 9
 	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_y = 17
+	},
 /turf/open/floor/interior/wood/alt,
 /area/lv624/ground/barrens/central_barrens)
 "sow" = (
@@ -42643,14 +42580,6 @@
 /obj/item/device/assembly/voice,
 /turf/open/floor/prison/cell_stripe/north,
 /area/lv624/lazarus/engineering)
-"suA" = (
-/obj/item/trash/uscm_mre{
-	name = "\improper crumbled UPP MRE";
-	desc = "It has done its part for the UPP. Have you?"
-	},
-/obj/structure/flora/jungle/planttop1,
-/turf/open/auto_turf/lv_grass/layer1,
-/area/lv624/ground/jungle/south_west_jungle)
 "suB" = (
 /obj/structure/morgue,
 /obj/effect/decal/hybrisa/dirt,
@@ -43418,9 +43347,7 @@
 	icon_state = "S"
 	},
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
-	pixel_x = 29;
-	name = "\improper MinZdrav dispenser";
-	desc = "A wall-mounted medical equipment dispenser. Provided by Ministry of Health of UPP, it contains a small quantity of emergency supplies."
+	pixel_x = 29
 	},
 /obj/effect/landmark/objective_landmark/close,
 /obj/structure/closet/secure_closet/marshal/alt{
@@ -47754,9 +47681,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/lv624/lazarus/quartstorage)
 "uyW" = (
-/obj/structure/largecrate/random/barrel/red{
-	stuff = list(/obj/item/clothing/under/marine/veteran/UPP,/obj/item/clothing/gloves/marine,/obj/item/clothing/gloves/marine/brown,/obj/item/clothing/gloves/marine/joe,/obj/item/clothing/shoes/marine/joe,/obj/item/clothing/shoes/marine/upp/guard,/obj/item/clothing/shoes/marine/upp)
-	},
+/obj/structure/largecrate/random/barrel/red,
 /turf/open/floor/prison/floor_marked,
 /area/lv624/lazarus/quartstorage)
 "uzh" = (
@@ -54104,6 +54029,7 @@
 	},
 /obj/effect/decal/cleanable/blood,
 /obj/item/tool/pickaxe,
+/obj/effect/landmark/corpsespawner/scientist,
 /turf/open/floor/brown_dirt/random_rocks_alt{
 	dir = 6
 	},
@@ -55018,8 +54944,6 @@
 /area/lv624/ground/jungle/south_west_jungle)
 "xMn" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
-	name = "\improper MinZdrav dispenser";
-	desc = "A wall-mounted medical equipment dispenser. Provided by Ministry of Health of UPP, it contains a small quantity of emergency supplies.";
 	pixel_y = -32
 	},
 /turf/open/floor/prison/kitchen/alt,
@@ -55579,9 +55503,7 @@
 /area/lv624/lazarus/fitness)
 "xZN" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
-	pixel_x = 29;
-	name = "\improper MinZdrav dispenser";
-	desc = "A wall-mounted medical equipment dispenser. Provided by Ministry of Health of UPP, it contains a small quantity of emergency supplies."
+	pixel_x = 29
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv624/lazarus/corporate_dome)
@@ -56968,14 +56890,14 @@ wDh
 wDh
 dCd
 dCd
-iVi
+dlY
 dCd
 wDh
-iVi
+dlY
 wDh
 wDh
 gdk
-iVi
+dlY
 wDh
 wDh
 tZs
@@ -57191,10 +57113,10 @@ etp
 wDh
 fVO
 tZs
-iVi
+dlY
 nyu
 fVO
-iVi
+dlY
 bWc
 rOb
 mmD
@@ -57408,7 +57330,7 @@ wDh
 tZs
 dCd
 wDh
-iVi
+dlY
 rLB
 etp
 wDh
@@ -57418,7 +57340,7 @@ wGF
 wDh
 wDh
 fVO
-iVi
+dlY
 wDh
 mmD
 rOb
@@ -57630,7 +57552,7 @@ mFV
 fVO
 fVO
 dCd
-iVi
+dlY
 jhu
 wDh
 gdk
@@ -57638,7 +57560,7 @@ mTa
 wDh
 gdk
 gdk
-iVi
+dlY
 wDh
 gdk
 fVO
@@ -58080,7 +58002,7 @@ gdk
 gdk
 gdk
 wDh
-iVi
+dlY
 wDh
 wDh
 fVO
@@ -58093,13 +58015,13 @@ ase
 ase
 wDh
 wDh
-iVi
+dlY
 fXh
 mmD
 wDh
 wDh
-iVi
-iVi
+dlY
+dlY
 fVO
 gdk
 osZ
@@ -58305,25 +58227,25 @@ gdk
 gdk
 wDh
 wDh
-iVi
+dlY
 dCd
 dCd
 wDh
 tZs
-iVi
+dlY
 wDh
 wDh
 wDh
 wDh
-iVi
+dlY
 wDh
 wDh
 wDh
 fXh
 tWO
-iVi
+dlY
 wDh
-iVi
+dlY
 qMH
 gdk
 osZ
@@ -58532,7 +58454,7 @@ wDh
 wDh
 fVO
 wDh
-iVi
+dlY
 tZs
 dCd
 dCd
@@ -58547,7 +58469,7 @@ wDh
 ase
 fXh
 wDh
-iVi
+dlY
 fVO
 gdk
 osZ
@@ -58748,7 +58670,7 @@ tzg
 tyA
 jpo
 tyA
-iVi
+dlY
 wDh
 ase
 ase
@@ -58768,10 +58690,10 @@ wDh
 fVo
 nyu
 wDh
-iVi
+dlY
 mTa
 wDh
-iVi
+dlY
 fVO
 gdk
 osZ
@@ -58989,13 +58911,13 @@ dCd
 wDh
 wDh
 wDh
-iVi
+dlY
 wDh
 mmD
 wDh
 wDh
-iVi
-iVi
+dlY
+dlY
 fVO
 gdk
 osZ
@@ -59202,24 +59124,24 @@ wDh
 wDh
 gdk
 gdk
-iVi
+dlY
 wDh
 fVO
 gdk
 wDh
-iVi
+dlY
 wDh
 tZs
 tZs
 wDh
 wDh
-iVi
-iVi
+dlY
+dlY
 bhI
 mmD
 wDh
 qTo
-iVi
+dlY
 fVO
 gdk
 osZ
@@ -59427,11 +59349,11 @@ wDh
 wDh
 gdk
 wDh
-iVi
+dlY
 wDh
 gdk
 wDh
-iVi
+dlY
 wDh
 gdk
 fVO
@@ -59439,11 +59361,11 @@ wvo
 tkN
 wDh
 wDh
-iVi
+dlY
 wDh
 wDh
-iVi
-iVi
+dlY
+dlY
 fVO
 gdk
 osZ
@@ -59647,7 +59569,7 @@ tyA
 gdk
 wDh
 ase
-iVi
+dlY
 mTa
 wDh
 wDh
@@ -60105,9 +60027,9 @@ gdk
 gdk
 wDh
 wDh
-iVi
-iVi
-iVi
+dlY
+dlY
+dlY
 wDh
 wDh
 fVO
@@ -60547,8 +60469,8 @@ wDh
 wDh
 wDh
 wDh
-iVi
-iVi
+dlY
+dlY
 wDh
 mTa
 wDh
@@ -60774,7 +60696,7 @@ wDh
 wDh
 wDh
 wDh
-iVi
+dlY
 wDh
 odQ
 wDh
@@ -60998,9 +60920,9 @@ dCd
 wDh
 gdk
 fVO
-iVi
-iVi
-iVi
+dlY
+dlY
+dlY
 wDh
 wDh
 fVO
@@ -61214,15 +61136,15 @@ iON
 arO
 gdk
 gdk
-iVi
+dlY
 wDh
 wDh
 wDh
 dCd
 fVO
 fVO
-iVi
-iVi
+dlY
+dlY
 wDh
 gdk
 wDh
@@ -61233,7 +61155,7 @@ rOp
 wDh
 wDh
 wDh
-iVi
+dlY
 wDh
 dCd
 gdk
@@ -61445,7 +61367,7 @@ gdk
 gdk
 fVO
 dCd
-iVi
+dlY
 wDh
 wDh
 wDh
@@ -61458,7 +61380,7 @@ wDh
 mPL
 wDh
 wDh
-iVi
+dlY
 dCd
 fVO
 hKK
@@ -61668,7 +61590,7 @@ nyg
 gdk
 fVO
 dCd
-iVi
+dlY
 wDh
 wDh
 wDh
@@ -61682,8 +61604,8 @@ wDh
 wDh
 mTa
 fVo
-iVi
-iVi
+dlY
+dlY
 dCd
 gdk
 osZ
@@ -61892,7 +61814,7 @@ nyg
 gdk
 gdk
 wDh
-iVi
+dlY
 wDh
 gdk
 wDh
@@ -61902,12 +61824,12 @@ jnN
 mll
 mll
 qbm
-iVi
+dlY
 wDh
 wDh
 wDh
 wDh
-iVi
+dlY
 wDh
 gdk
 osZ
@@ -62125,9 +62047,9 @@ wrU
 mll
 mll
 qbm
-iVi
-iVi
-iVi
+dlY
+dlY
+dlY
 qTo
 lbm
 tkN
@@ -62343,13 +62265,13 @@ gdk
 wDh
 wDh
 wDh
-iVi
-iVi
+dlY
+dlY
 rLB
 ndI
 etp
-iVi
-iVi
+dlY
+dlY
 wDh
 lub
 wDh
@@ -62566,18 +62488,18 @@ gdk
 wDh
 wDh
 wDh
-iVi
+dlY
 wDh
-iVi
-wDh
-wDh
+dlY
 wDh
 wDh
 wDh
 wDh
 wDh
-iVi
-iVi
+wDh
+wDh
+dlY
+dlY
 upD
 wDh
 gdk
@@ -62788,7 +62710,7 @@ nyg
 nyg
 wtt
 wDh
-iVi
+dlY
 wDh
 wDh
 wDh
@@ -62797,12 +62719,12 @@ wDh
 qTo
 wDh
 wDh
-iVi
+dlY
 wDh
 mTa
 wDh
 wDh
-iVi
+dlY
 wDh
 fVO
 gdk
@@ -63013,7 +62935,7 @@ gdk
 fVO
 wwA
 bBJ
-iVi
+dlY
 wDh
 eXi
 rOb
@@ -63021,7 +62943,7 @@ mmD
 wDh
 mmD
 wDh
-iVi
+dlY
 wDh
 wDh
 nyu
@@ -63236,7 +63158,7 @@ nyg
 fVO
 dCd
 wDh
-iVi
+dlY
 wDh
 mmD
 cgk
@@ -63246,10 +63168,10 @@ mmD
 wDh
 upD
 wDh
-iVi
+dlY
 wDh
 wDh
-iVi
+dlY
 wDh
 wDh
 dCd
@@ -63460,7 +63382,7 @@ nyg
 nas
 wwA
 wDh
-iVi
+dlY
 wDh
 mmD
 fZJ
@@ -63468,11 +63390,11 @@ bwx
 cDj
 spe
 mmD
-suA
+lbm
 tkN
 wDh
 ase
-iVi
+dlY
 wDh
 wDh
 wDh
@@ -63670,7 +63592,7 @@ gWh
 gWh
 gWh
 gWh
-rPF
+gWh
 gWh
 gWh
 gWh
@@ -63694,13 +63616,13 @@ cHR
 mmD
 lOa
 wDh
-iVi
-iVi
+dlY
+dlY
 wDh
 wDh
 mTa
 wDh
-iVi
+dlY
 fVO
 osZ
 "}
@@ -63918,13 +63840,13 @@ aXy
 oUC
 wDh
 upD
-iVi
+dlY
 lOg
-iVi
+dlY
 wDh
 wDh
 qTo
-iVi
+dlY
 fVO
 osZ
 "}
@@ -64144,11 +64066,11 @@ wzc
 wDh
 wDh
 wDh
-iVi
+dlY
 wDh
 wDh
-iVi
-iVi
+dlY
+dlY
 fVO
 osZ
 "}
@@ -64371,7 +64293,7 @@ wDh
 xmf
 cxY
 wDh
-iVi
+dlY
 wDh
 fVO
 osZ
@@ -64584,18 +64506,18 @@ wDh
 wDh
 wDh
 wDh
-iVi
+dlY
 lub
 hNo
-pqj
-iVi
-iVi
-iVi
+wDh
+dlY
+dlY
+dlY
 xmf
 jnN
 jnN
 cxY
-iVi
+dlY
 wDh
 gdk
 osZ
@@ -64809,9 +64731,9 @@ mOF
 wDh
 wDh
 wDh
-iVi
-iVi
-iVi
+dlY
+dlY
+dlY
 upD
 qTo
 wDh
@@ -65028,16 +64950,16 @@ nyg
 fVO
 wDh
 wDh
-iVi
-iVi
+dlY
+dlY
 eBL
 wDh
-iVi
-iVi
+dlY
+dlY
 lOg
 wDh
-iVi
-iVi
+dlY
+dlY
 wDh
 rLB
 jts
@@ -65254,16 +65176,16 @@ fVO
 wDh
 bBJ
 upD
-iVi
+dlY
 lub
 wDh
 wDh
 wDh
 wDh
 wDh
-iVi
-iVi
-iVi
+dlY
+dlY
+dlY
 wDh
 qTo
 wDh
@@ -65479,7 +65401,7 @@ wDh
 wDh
 wDh
 lub
-iVi
+dlY
 wDh
 wDh
 wDh
@@ -65489,7 +65411,7 @@ lbm
 tkN
 wDh
 gdk
-iVi
+dlY
 wDh
 wDh
 gdk
@@ -65703,16 +65625,16 @@ fVO
 wDh
 wDh
 wDh
-iVi
+dlY
 wDh
 lub
 wDh
 lub
-iVi
+dlY
 lub
 wDh
 wDh
-iVi
+dlY
 wDh
 wDh
 wDh
@@ -78162,7 +78084,7 @@ hpu
 qKp
 aEg
 lEr
-awR
+fmx
 naj
 nLP
 yar
@@ -78381,11 +78303,11 @@ nYT
 yar
 yar
 mJc
-fmx
+itC
 ary
 nNI
 xqJ
-yar
+dWX
 yar
 mOc
 fwh
@@ -89662,7 +89584,7 @@ snb
 snb
 snb
 snb
-iAq
+snb
 snb
 snb
 snb

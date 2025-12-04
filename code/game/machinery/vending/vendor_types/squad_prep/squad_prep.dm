@@ -381,7 +381,7 @@
 		list("Extended Recoil Compensator", 2.5, /obj/item/attachable/extended_barrel/vented, VENDOR_ITEM_REGULAR),
 		list("Extended Barrel", 2.5, /obj/item/attachable/extended_barrel, VENDOR_ITEM_REGULAR),
 		list("Recoil Compensator", 2.5, /obj/item/attachable/compensator, VENDOR_ITEM_REGULAR),
-		list("M10 Compensator", 1.5, /obj/item/attachable/compensator/m10, VENDOR_ITEM_REGULAR),
+		list("M10 Compensator", 1, /obj/item/attachable/compensator/m10, VENDOR_ITEM_REGULAR),
 		list("Suppressor", 2.5, /obj/item/attachable/suppressor, VENDOR_ITEM_REGULAR),
 		list("Suppressor, Compact", 2.5, /obj/item/attachable/suppressor/sleek, VENDOR_ITEM_REGULAR),
 		list("Shotgun Choke", 1.5, /obj/item/attachable/shotgun_choke, VENDOR_ITEM_REGULAR),

@@ -412,7 +412,6 @@
 	var/obj/item/card/id/card = person_in_charge.get_idcard()
 	if(card)
 		var/list/access = card.access
-		var/added = FALSE // Whether or not access has been added to be announced.
 		var/static/to_add = list(ACCESS_MARINE_SENIOR, ACCESS_MARINE_DATABASE, ACCESS_MARINE_COMMAND)
 		
 		var/new_access = access | to_add

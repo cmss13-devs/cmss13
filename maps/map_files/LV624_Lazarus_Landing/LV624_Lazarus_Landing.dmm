@@ -16481,14 +16481,6 @@
 "hgz" = (
 /turf/open/auto_turf/lv_sand/layer0,
 /area/lv624/ground/jungle/west_jungle)
-"hgE" = (
-/obj/structure/window/framed/lv_colony/reinforced,
-/obj/structure/machinery/door/poddoor/almayer/grey/open{
-	name = "Central Complex Lockdown Shutter";
-	id = "nexus_blast"
-	},
-/turf/closed/wall/lv_outpost,
-/area/lv624/lazarus/canteen)
 "hgN" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
@@ -16906,15 +16898,6 @@
 /obj/effect/hunter/ancient_temple/rubble/rubble_5,
 /turf/open/auto_turf/lv_grass_weedable/layer1,
 /area/lv624/ground/caves/north_east_caves)
-"hrr" = (
-/obj/structure/window/framed/lv_colony/reinforced,
-/obj/structure/machinery/door/poddoor/almayer/grey/open{
-	name = "Central Complex Lockdown Shutter";
-	dir = 4;
-	id = "nexus_blast"
-	},
-/turf/closed/wall/lv_outpost,
-/area/lv624/lazarus/canteen)
 "hrt" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_2,
 /turf/open/floor/ancient_temple/ruined/north,
@@ -32052,13 +32035,6 @@
 	},
 /turf/open/floor/interior/wood/alt,
 /area/lv624/ground/barrens/central_barrens)
-"nMc" = (
-/obj/structure/machinery/light/small/blue{
-	light_color = "#dae2ff";
-	dir = 8
-	},
-/turf/open/auto_turf/lv_grass/layer0,
-/area/lv624/ground/jungle/east_jungle)
 "nMh" = (
 /obj/structure/platform_decoration/stone/ancient_temple/alt,
 /obj/structure/prop/colorable_rock/colorable{
@@ -53872,12 +53848,6 @@
 /obj/effect/decal/hybrisa/dirt_2,
 /turf/open/floor/prison/floor_plate,
 /area/lv624/ground/jungle/east_jungle)
-"xde" = (
-/obj/structure/window/framed/lv_colony/reinforced,
-/turf/open/floor{
-	icon_state = "platebot"
-	},
-/area/lv624/lazarus/engineering)
 "xdo" = (
 /obj/item/shard,
 /obj/item/stack/rods,
@@ -55278,10 +55248,6 @@
 /obj/effect/hunter/ancient_temple/deco_border,
 /turf/open/floor/ancient_temple/damaged/damage_1,
 /area/lv624/ground/caves/central_caves)
-"xIZ" = (
-/obj/effect/alien/weeds/weedwall,
-/turf/open/space/basic,
-/area/lv624/ground/caves/north_east_caves)
 "xJi" = (
 /obj/structure/machinery/light/blue{
 	dir = 4
@@ -59840,7 +59806,7 @@ tkN
 wDh
 wDh
 iVi
-iVi
+wDh
 wDh
 iVi
 iVi
@@ -82720,7 +82686,7 @@ xxR
 xxR
 xxR
 ilH
-hGn
+xxR
 xxR
 xxR
 xxR
@@ -85368,7 +85334,7 @@ bQx
 mFe
 nVC
 taL
-hgE
+jQw
 mYi
 mIu
 lmc
@@ -85592,7 +85558,7 @@ rJs
 fzf
 gsB
 bhv
-hgE
+jQw
 vIZ
 xDP
 vzF
@@ -85730,7 +85696,7 @@ mjL
 mjL
 dMG
 oQw
-xde
+oQw
 oQw
 dMG
 ksr
@@ -85815,7 +85781,7 @@ nPo
 jkp
 tmm
 sDy
-hrr
+mVI
 sDy
 vIZ
 xDP
@@ -90987,7 +90953,7 @@ osZ
 (155,1,1) = {"
 osZ
 gwz
-xIZ
+gwz
 gwz
 vBY
 vDp
@@ -93638,7 +93604,7 @@ tjC
 xPd
 ozp
 auZ
-nMc
+fGW
 ozp
 ozp
 tjC
@@ -94300,8 +94266,8 @@ iMo
 iMo
 xPd
 xPd
-fGW
-fGW
+xPd
+xPd
 gHC
 xPd
 fGW
@@ -94750,7 +94716,7 @@ pNn
 xPd
 fDt
 qMv
-auZ
+ozp
 ozp
 eYf
 iMo

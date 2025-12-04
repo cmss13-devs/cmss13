@@ -11575,6 +11575,11 @@
 "fco" = (
 /obj/structure/pipes/vents/scrubber_hybrisa,
 /obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/door_control/brbutton/alt{
+	name = "Cargo Arrivals Shutters";
+	id = "cargo_arrivals_blast";
+	pixel_y = -21
+	},
 /turf/open/floor/prison/darkbrown2/southwest,
 /area/lv624/lazarus/quartstorage)
 "fcu" = (
@@ -33902,6 +33907,11 @@
 "oBQ" = (
 /obj/item/stack/sheet/cardboard,
 /obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/door_control/brbutton/alt{
+	name = "Cargo Shipping Shutters";
+	id = "cargo_shipping_blast_1";
+	pixel_y = -21
+	},
 /turf/open/floor/prison{
 	icon_state = "darkbrown2"
 	},
@@ -47418,7 +47428,8 @@
 "uul" = (
 /obj/structure/machinery/light/small/blue{
 	light_color = "#dae2ff";
-	dir = 1
+	dir = 1;
+	pixel_x = 26
 	},
 /obj/structure/machinery/big_computers/computerwhite/computer3,
 /obj/structure/machinery/door_control/brbutton/alt{
@@ -55715,6 +55726,15 @@
 	},
 /turf/open/floor/ancient_temple/damaged/damage_1,
 /area/lv624/ground/caves/east_caves)
+"ydz" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/door_control/brbutton{
+	pixel_y = 27;
+	id = "cargo_arrivals_blast";
+	name = "Cargo Arrivals Shutters"
+	},
+/turf/open/floor/prison/floor_plate,
+/area/lv624/lazarus/landing_zones/lz1)
 "ydA" = (
 /obj/structure/machinery/light/blue{
 	dir = 1
@@ -87836,7 +87856,7 @@ svo
 svo
 csG
 qSb
-wve
+ydz
 tSq
 nGV
 cuS

@@ -326,7 +326,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/m10/ap/drum
-	name = "magazine box (Drum AP m10 x 18)"
+	name = "magazine box (Drum AP m10 x 8)"
 	overlay_ammo_type = "_drum_ap"
 	overlay_content = "_ap"
 	num_of_magazines = 8

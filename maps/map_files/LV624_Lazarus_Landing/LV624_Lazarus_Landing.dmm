@@ -3418,7 +3418,6 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/lv624/lazarus/research)
 "bwx" = (
-/mob/living/simple_animal/hostile/retaliate/giant_lizard,
 /turf/open/floor/interior/wood/alt,
 /area/lv624/ground/jungle/south_west_jungle)
 "bwE" = (
@@ -14379,6 +14378,10 @@
 	},
 /turf/open/floor/strata/light_purple_tile,
 /area/lv624/lazarus/research)
+"gpC" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/auto_turf/lv_sand/layer0,
+/area/lv624/ground/jungle/south_west_jungle)
 "gpH" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -25583,7 +25586,6 @@
 /turf/open/floor/prison/darkbrown2/southwest,
 /area/lv624/lazarus/quartstorage)
 "lkS" = (
-/obj/effect/landmark/monkey_spawn,
 /obj/effect/decal/lv_decals/red_mud_corner{
 	dir = 8
 	},
@@ -61161,7 +61163,7 @@ arO
 gdk
 gdk
 dlY
-wDh
+kFO
 wDh
 wDh
 dCd
@@ -63637,7 +63639,7 @@ rSU
 lkS
 jXM
 cHR
-mmD
+gpC
 lOa
 wDh
 dlY

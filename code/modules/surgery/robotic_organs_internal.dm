@@ -91,6 +91,8 @@ and organ transplant code which may come in handy in future but haven't been edi
 		SPAN_WARNING("[user]'s hand slips, bruising your organs and contaminating your [surgery.affected_limb.cavity]!"),
 		SPAN_WARNING("[user]'s hand slips, bruising [target]'s organs and contaminating \his [surgery.affected_limb.cavity]!"))
 
+	if(target.stat == CONSCIOUS)
+		target.emote("pain")
 	var/dam_amt = 5
 	target.apply_damage(10, TOX)
 	target.apply_damage(5, BRUTE, target_zone)

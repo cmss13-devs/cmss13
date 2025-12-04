@@ -54,11 +54,11 @@
 			splash_chance -= 70 //Preds know to avoid the splashback.
 		if(splash_chance > 0 && prob(splash_chance)) //Success!
 			i++
-			victim.visible_message(SPAN_DANGER("\The [victim] is scalded with hissing green blood!"),
+			victim.visible_message(SPAN_DANGER("[victim] is scalded with hissing green blood!"),
 			SPAN_DANGER("You are splattered with sizzling blood! IT BURNS!"))
 			if(prob(60) && !victim.stat && victim.pain.feels_pain)
 				INVOKE_ASYNC(victim, TYPE_PROC_REF(/mob, emote), "scream") //Topkek
-			victim.take_limb_damage(0, 12) //Sizzledam! This automagically burns a random existing body part.
+			victim.take_limb_damage(0, 12) //Sizzledam! This automayically burns a random existing body part.
 			victim.add_blood(BLOOD_COLOR_XENO, BLOOD_BODY)
 			playsound(victim, "acid_sizzle", 25, TRUE)
 			animation_flash_color(victim, "#FF0000") //pain hit flicker
@@ -140,6 +140,8 @@
 			SPAN_NOTICE("[user] tries to forcefully rip the larva from [target]'s chest."))
 
 	to_chat(target, SPAN_HIGHDANGER("IT'S COMING OUT! AAAAAAARGH!"))
+	if(target.stat == CONSCIOUS)
+		target.emote("burstscream")
 	log_interact(user, target, "[key_name(user)] started to remove an embryo from [key_name(target)]'s ribcage.")
 
 /datum/surgery_step/remove_larva/success(mob/living/carbon/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)

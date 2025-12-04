@@ -97,12 +97,14 @@
 
 /datum/surgery_step/remove_bone_chips/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
-		SPAN_WARNING("Your hand slips, tearing a blood vessel in [target]'s [surgery.affected_limb.display_name] with [tool], causing internal bleeding!"),
-		SPAN_WARNING("[user]'s hand slips, tearing a blood vessel in your [surgery.affected_limb.display_name] with [tool], causing internal bleeding!"),
-		SPAN_WARNING("[user]'s hand slips, tearing a blood vessel in [target]'s [surgery.affected_limb.display_name] with [tool], causing internal bleeding!"))
+		SPAN_WARNING("Your hand slips, tearing a blood vessel in [target]'s [surgery.affected_limb.display_name] with [tool], causing internal bleeding! Blood pools everywhere..."),
+		SPAN_WARNING("[user]'s hand slips, tearing a blood vessel in your [surgery.affected_limb.display_name] with [tool], causing internal bleeding! Blood pools everywhere..."),
+		SPAN_WARNING("[user]'s hand slips, tearing a blood vessel in [target]'s [surgery.affected_limb.display_name] with [tool], causing internal bleeding! Blood pools everywhere..."))
 
 	log_interact(user, target, "[key_name(user)] failed to take the bone chips out of [key_name(target)]'s brain with [tool], possibly aborting [surgery].")
 
+	if(target.stat == CONSCIOUS)
+		target.emote("pain")
 	var/datum/wound/internal_bleeding/I = new (0)
 	surgery.affected_limb.add_bleeding(I, TRUE)
 	surgery.affected_limb.wounds += I
@@ -143,9 +145,8 @@
 	var/datum/internal_organ/brain/B = target.internal_organs_by_name["brain"]
 	if(B)
 		B.damage = BONECHIPS_MAX_DAMAGE
-		to_chat(target, SPAN_NOTICE("The agonizing pressure in your skull ceases. Your mind and ears feel more clear, but something's rattling and poking around in your skull still!"))
+		to_chat(target, SPAN_NOTICE("The agonizing pressure in your skull ceases, but something still feels pokey up there!"))
 
-	to_chat(target, SPAN_NOTICE("The agonizing pressure in your skull ceases. Your mind and ears feel more clear, but something's rattling and poking around in your skull still!"))
 	target.pain.recalculate_pain()
 
 /datum/surgery_step/treat_hematoma/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)

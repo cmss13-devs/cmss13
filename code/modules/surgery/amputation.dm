@@ -196,6 +196,7 @@
 		surgery.affected_limb.fracture(100)
 		if(target.stat == CONSCIOUS)
 			target.emote("pain")
+
 		target.apply_damage(20, BRUTE, surgery.affected_limb)
 		log_interact(user, target, "[key_name(user)] failed to cut [key_name(target)]'s [surgery.affected_limb.display_name] off with [tool].")
 		return FALSE

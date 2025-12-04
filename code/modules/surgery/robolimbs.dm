@@ -106,7 +106,7 @@
 		SPAN_WARNING("[user] slips while trying to tighten [target]'s prosthesis, pinching \his [surgery.affected_limb.display_name]'s [nerves_type][pain]!"))
 
 	if(target.stat == CONSCIOUS)
-		target.emote("pain")
+		target.emote("scream")
 	log_interact(user, target, "[key_name(user)] failed to tighten a prosthesis to [key_name(target)]'s [surgery.affected_limb.display_name]'s stump.")
 	return FALSE
 

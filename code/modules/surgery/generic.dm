@@ -201,6 +201,8 @@
 		SPAN_WARNING("[user]'s hand slips, tearing blood vessels in your [surgery.affected_limb.display_name] and causing internal bleeding!"),
 		SPAN_WARNING("[user]'s hand slips, tearing blood vessels in [target]'s [surgery.affected_limb.display_name] and causing internal bleeding!"))
 
+	if(target.stat == CONSCIOUS)
+		target.emote("pain")
 	var/datum/wound/internal_bleeding/I = new (0)
 	surgery.affected_limb.add_bleeding(I, TRUE)
 	surgery.affected_limb.wounds += I
@@ -317,6 +319,8 @@
 				SPAN_WARNING("[user] tears the incision on your [surgery.affected_limb.display_name] open with [tool]!"),
 				SPAN_WARNING("[user] tears the incision on [target]'s [surgery.affected_limb.display_name] open with [tool]!"))
 
+	if(target.stat == CONSCIOUS)
+		target.emote("pain")
 	target.apply_damage(15, BRUTE, target_zone)
 	log_interact(user, target, "[key_name(user)] violently retracted skin in [key_name(target)]'s [surgery.affected_limb.display_name], ending [surgery].")
 	return TRUE //Failing to finish this step doesn't fail it, it just means you do it a lot more violently.

@@ -1043,8 +1043,8 @@ Unlike other pistols, it can be equipped with limited mods (small muzzle, underb
 	icon_state = "m10"
 	item_state = "m10"
 	attachable_allowed = list(
-		/obj/item/attachable/reddot,
-		/obj/item/attachable/reddot/small, //Rail
+		/obj/item/attachable/reddot, //Rail
+		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/magnetic_harness,

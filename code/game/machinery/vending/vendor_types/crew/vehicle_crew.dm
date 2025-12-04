@@ -321,6 +321,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_vehicle_crew, list(
 		list("Laser Sight", 10, /obj/item/attachable/lasersight, null, VENDOR_ITEM_REGULAR),
 		list("Masterkey Shotgun", 10, /obj/item/attachable/attached_gun/shotgun, null, VENDOR_ITEM_REGULAR),
 		list("M10 Solid Stock", 10, /obj/item/attachable/stock/m10_solid, null, VENDOR_ITEM_REGULAR),
+		list("M10 Folding Stock", 10, /obj/item/attachable/stock/pistol/collapsible, null, VENDOR_ITEM_REGULAR),
 		list("M37A2 Collapsible Stock", 10, /obj/item/attachable/stock/synth/collapsible, null, VENDOR_ITEM_REGULAR),
 		list("M39 Stock", 10, /obj/item/attachable/stock/smg, null, VENDOR_ITEM_REGULAR),
 		list("M41A Solid Stock", 10, /obj/item/attachable/stock/rifle, null, VENDOR_ITEM_REGULAR),

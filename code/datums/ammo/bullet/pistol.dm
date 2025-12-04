@@ -314,7 +314,7 @@
 	accurate_range = 2
 	effective_range_max = 3
 	penetration = ARMOR_PENETRATION_TIER_1
-	shell_speed = AMMO_SPEED_TIER_7
+	shell_speed = AMMO_SPEED_TIER_5
 	damage_falloff = DAMAGE_FALLOFF_TIER_4
 	scatter = SCATTER_AMOUNT_TIER_5
 	accuracy = HIT_ACCURACY_TIER_3
@@ -323,4 +323,3 @@
 	name = "armor-piercing auto-pistol bullet"
 	damage = 18
 	penetration = ARMOR_PENETRATION_TIER_6
-	shell_speed = AMMO_SPEED_TIER_5

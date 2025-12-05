@@ -55,3 +55,7 @@
   hry-gh:
   - server: server operators can now configure a list of CIDs that will not be considered
       for stickybans
+2025-12-05:
+  NessiePendragon:
+  - rscadd: Changes Twitch subscribers' OOC chat color, and removes their ability
+      to change their own OOC color.

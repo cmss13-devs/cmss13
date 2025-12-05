@@ -108,16 +108,27 @@
 			to_chat(user, SPAN_WARNING("You can't perform surgery on the same \
 				[user.zone_selected == "r_hand"||user.zone_selected == "l_hand" ? "hand":"arm"] you're using!"))
 			return FALSE
-	var/datum/surgery_step/current_step = GLOB.surgery_step_list[steps[status]]
 	var/next = status
+	var/datum/surgery_step/current_step = GLOB.surgery_step_list[steps[next]]
+	var/list/attempted_steps = list()
 	while(current_step)
 		// attempt the step
-		if(current_step.attempt_step(user, target, user.zone_selected, tool, src, repeating))
+		if(current_step.attempt_step(user, target, user.zone_selected, tool, src, repeating, next-status))
 			return TRUE
+		attempted_steps += current_step
 		// check if its an optional step
 		if(!current_step.skip_step_criteria(user, target, user.zone_selected, tool, src))
 			if(tool && is_surgery_tool(tool)) //Just because you used the wrong tool doesn't mean you meant to whack the patient with it...
-				to_chat(user, SPAN_WARNING("You can't [current_step.desc] with [tool]."))
+				var/hint_msg
+				for(var/datum/surgery_step/step as anything in attempted_steps)
+					if(hint_msg)
+						if(step == current_step)
+							hint_msg += ", or [step.desc]"
+						else
+							hint_msg += ", [step.desc]"
+					else
+						hint_msg = "You can't [step.desc] with [tool]"
+				to_chat(user, SPAN_WARNING("[hint_msg]."))
 			return FALSE
 		// step was optional, try the next if it exists
 		if(++next > length(steps))

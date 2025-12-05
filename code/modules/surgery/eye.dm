@@ -9,7 +9,7 @@
 	possible_locs = list("eyes")
 	invasiveness = list(SURGERY_DEPTH_SURFACE)
 	required_surgery_skill = SKILL_SURGERY_TRAINED
-	pain_reduction_required = PAIN_REDUCTION_HEAVY //Eyes DO have pain receptors... Almost more than any other organ. Ever been poked in the eye? Shit hurts.
+	pain_reduction_required = PAIN_REDUCTION_FULL //Eyes DO have pain receptors... Almost more than any other organ. Ever been poked in the eye? Shit hurts.
 	steps = list(
 		/datum/surgery_step/separate_corneas,
 		/datum/surgery_step/lift_corneas,

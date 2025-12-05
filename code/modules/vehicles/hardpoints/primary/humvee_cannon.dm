@@ -21,7 +21,7 @@
 
 	use_muzzle_flash = TRUE
 	angle_muzzleflash = FALSE
-	muzzleflash_icon_state = "muzzle_flash_double"
+	muzzleflash_icon_state = "muzzle_flash"
 
 	muzzle_flash_pos = list(
 		"1" = list(11, -29),

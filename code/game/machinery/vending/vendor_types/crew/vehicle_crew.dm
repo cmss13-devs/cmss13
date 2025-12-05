@@ -213,7 +213,7 @@ GLOBAL_LIST_INIT(cm_vending_vehicle_crew_humvee, list(
 	list("JTMV Cannon", 0, /obj/item/hardpoint/primary/humvee_cannon, VEHICLE_PRIMARY_AVAILABLE, VENDOR_ITEM_MANDATORY),
 
 	list("SUPPORT MODULE", 0, null, null, null),
-	list("JTMV Flare Launcher", 0, /obj/item/hardpoint/support/flare_launcher, VEHICLE_SECONDARY_AVAILABLE, VENDOR_ITEM_MANDATORY),
+	list("JTMV Flare Launcher", 0, /obj/item/hardpoint/support/humvee_flare_launcher, VEHICLE_SECONDARY_AVAILABLE, VENDOR_ITEM_MANDATORY),
 
 	list("ARMOR", 0, null, null, null),
 	list("Snowplow", 0, /obj/item/hardpoint/armor/humvee_snowplow, VEHICLE_ARMOR_AVAILABLE, VENDOR_ITEM_MANDATORY),

@@ -578,6 +578,19 @@
 
 	icon_state = "small_statue_base"
 
+/obj/structure/prop/hunter/ancient_temple/fountain_head
+	name = "carved stone head"
+	desc = "A huge carved stone head of an unknown creature."
+	icon = 'icons/obj/structures/props/hunter/32x32_hunter_props.dmi'
+	icon_state = "fountain_head_static"
+	anchored = TRUE
+	density = FALSE
+
+/obj/structure/prop/hunter/ancient_temple/fountain_head/flowing
+	name = "carved stone head"
+	desc = "A huge carved stone head of an unknown creature, water flows from it's mouth."
+	icon_state = "fountain_head_flowing"
+
 /obj/structure/prop/hunter/ancient_temple/coffin_base
 	name = null
 	desc = null

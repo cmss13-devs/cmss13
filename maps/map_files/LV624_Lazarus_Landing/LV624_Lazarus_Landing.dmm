@@ -694,9 +694,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/strata{
-	icon_state = "floor3"
-	},
+/turf/open/floor/strata/floor3,
 /area/lv624/lazarus/research)
 "apx" = (
 /obj/structure/machinery/light/small/blue{
@@ -906,9 +904,7 @@
 	pixel_y = 15
 	},
 /obj/effect/decal/hybrisa/dirt,
-/turf/open/floor/strata{
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/strata/multi_tiles,
 /area/lv624/lazarus/security)
 "ato" = (
 /obj/effect/decal/lv_decals/cave_mud_corner{
@@ -1551,6 +1547,13 @@
 /obj/structure/flora/grass/tallgrass/jungle_alt_2,
 /turf/open/auto_turf/lv_grass/layer1,
 /area/lv624/ground/jungle/north_jungle)
+"aHF" = (
+/obj/structure/platform/stone/ancient_temple/north,
+/obj/structure/platform/stone/ancient_temple/alt/north{
+	pixel_y = -15
+	},
+/turf/open/gm/river/soro,
+/area/lv624/ground/river/east_river)
 "aHN" = (
 /obj/structure/closet/secure_closet/personal{
 	pixel_x = 7;
@@ -2565,6 +2568,9 @@
 "bcp" = (
 /obj/structure/platform/stone/ancient_temple/north,
 /obj/structure/flora/jungle/vines/dead/light_1,
+/obj/structure/prop/hunter/ancient_temple/fountain_head{
+	pixel_y = 22
+	},
 /turf/open/gm/coast/dirt/beachcorner2/north_east,
 /area/lv624/ground/caves/south_east_caves)
 "bcB" = (
@@ -2708,9 +2714,7 @@
 /area/lv624/ground/caves/north_east_caves)
 "bfJ" = (
 /obj/structure/machinery/computer3/server/rack,
-/turf/open/floor/almayer{
-	icon_state = "tcomms"
-	},
+/turf/open/floor/almayer/tcomms,
 /area/lv624/lazarus/comms)
 "bfX" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
@@ -3072,6 +3076,7 @@
 "bnS" = (
 /obj/structure/surface/table,
 /obj/structure/platform/stone/ancient_temple,
+/obj/item/clothing/head/hardhat/white,
 /turf/open/auto_turf/lv_sand/layer0,
 /area/lv624/ground/caves/sand_temple)
 "bnX" = (
@@ -3272,6 +3277,9 @@
 /area/lv624/ground/river/east_river)
 "bte" = (
 /obj/structure/platform_decoration/stone/ancient_temple/west,
+/obj/structure/platform_decoration/stone/ancient_temple/alt/west{
+	pixel_y = -15
+	},
 /turf/open/gm/coast/dirt/beachcorner/north_east,
 /area/lv624/ground/river/east_river)
 "bti" = (
@@ -5068,9 +5076,7 @@
 /obj/structure/machinery/door/window{
 	dir = 8
 	},
-/turf/open/floor/almayer{
-	icon_state = "tcomms"
-	},
+/turf/open/floor/almayer/tcomms,
 /area/lv624/lazarus/research)
 "ckd" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_4,
@@ -6010,6 +6016,10 @@
 /area/lv624/ground/caves/central_caves)
 "cFH" = (
 /obj/item/stack/sheet/wood,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 6;
+	pixel_y = 1
+	},
 /turf/open/floor/brown_dirt/random_rocks,
 /area/lv624/ground/caves/sand_temple)
 "cFK" = (
@@ -6177,9 +6187,7 @@
 	pixel_y = 31;
 	pixel_x = 4
 	},
-/turf/open/floor/strata{
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/strata/multi_tiles,
 /area/lv624/lazarus/armory)
 "cIk" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_2{
@@ -6764,6 +6772,13 @@
 	},
 /turf/open/auto_turf/lv_sand_alt/layer0,
 /area/lv624/ground/caves/north_west_caves)
+"cUY" = (
+/obj/item/prop/torch_frame/ancient{
+	anchored = 1
+	},
+/obj/structure/flora/jungle/vines/dead/light_1,
+/turf/closed/wall/ancient_temple/sandstone,
+/area/lv624/ground/caves/sand_temple)
 "cVf" = (
 /turf/open/gm/dirt/brown/variant_5/west,
 /area/lv624/ground/colony/south_medbay_road)
@@ -6798,6 +6813,15 @@
 	},
 /turf/open/floor/ancient_temple/damaged/damage_6,
 /area/lv624/ground/caves/north_central_caves)
+"cWd" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_y = 17
+	},
+/turf/open/auto_turf/lv_sand/layer0,
+/area/lv624/ground/caves/sand_temple)
 "cWn" = (
 /obj/item/reagent_container/food/drinks/cans/ale{
 	open = 1;
@@ -7162,6 +7186,7 @@
 /area/lv624/ground/caves/north_east_caves)
 "deX" = (
 /obj/structure/platform_decoration/stone/ancient_temple/west,
+/obj/structure/flora/jungle/vines/dead/light_3,
 /turf/open/auto_turf/lv_grass/layer1,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "dfc" = (
@@ -8259,6 +8284,27 @@
 /obj/structure/prop/hunter/ancient_temple/collapsed_wall,
 /turf/open/floor/ancient_temple/ruined/east,
 /area/lv624/ground/caves/south_central_caves)
+"dHf" = (
+/obj/structure/surface/table,
+/obj/item/tool/pickaxe,
+/obj/item/tool/pickaxe{
+	pixel_x = -4;
+	pixel_y = 2
+	},
+/turf/open/floor/brown_dirt/random_rocks_alt{
+	dir = 6
+	},
+/area/lv624/ground/caves/sand_temple)
+"dHg" = (
+/obj/structure/platform/stone/ancient_temple/alt/north,
+/obj/structure/platform/stone/ancient_temple/north{
+	pixel_y = -13
+	},
+/obj/structure/prop/hunter/ancient_temple/fountain_head{
+	layer = 3.6
+	},
+/turf/open/gm/river/soro,
+/area/lv624/ground/caves/north_east_caves)
 "dHj" = (
 /obj/structure/platform/wood/north,
 /obj/structure/platform/wood/east,
@@ -9340,6 +9386,7 @@
 /area/lv624/ground/caves/central_caves)
 "eeq" = (
 /obj/structure/platform/stone/ancient_temple/alt/west,
+/obj/structure/flora/jungle/vines/dead/light_2,
 /turf/open/auto_turf/lv_grass/layer1,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "eer" = (
@@ -10332,6 +10379,10 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/auto_turf/lv_sand_alt/layer0,
 /area/lv624/ground/caves/north_east_caves)
+"ezK" = (
+/obj/structure/flora/jungle/vines/dead/light_1,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "ezO" = (
 /obj/effect/decal/lv_decals/cave_mud_corner{
 	dir = 4
@@ -10627,9 +10678,7 @@
 	dir = 4
 	},
 /obj/item/prop/alien/hugger,
-/turf/open/floor/strata{
-	icon_state = "floor3"
-	},
+/turf/open/floor/strata/floor3,
 /area/lv624/lazarus/research)
 "eGr" = (
 /obj/effect/decal/cleanable/liquid_fuel,
@@ -11136,7 +11185,11 @@
 	light_color = "#dae2ff";
 	dir = 4
 	},
-/obj/structure/largecrate/random/barrel/red,
+/obj/item/explosive/plastic{
+	desc = "A compact explosive charge for controlled demolitions. Looks to be made from C4";
+	name = "Mining explosives"
+	},
+/obj/structure/closet/crate,
 /turf/open/floor/prison/west,
 /area/lv624/lazarus/robotics)
 "eRu" = (
@@ -11158,6 +11211,7 @@
 /area/lv624/ground/caves/north_west_caves)
 "eRK" = (
 /obj/structure/prop/hunter/ancient_temple/collapsed_wall,
+/obj/structure/flora/jungle/vines/dead/light_2,
 /turf/open/floor/ancient_temple/ruined,
 /area/lv624/ground/caves/south_east_caves)
 "eRP" = (
@@ -11892,9 +11946,7 @@
 	},
 /obj/structure/barricade/handrail/strata,
 /obj/effect/decal/hybrisa/dirt,
-/turf/open/floor/mech_bay_recharge_floor{
-	color = "#8B9490"
-	},
+/turf/open/floor/mech_bay_recharge_floor,
 /area/lv624/lazarus/quartstorage)
 "fil" = (
 /obj/effect/hunter/ancient_temple/deco_border/deco_border2,
@@ -12167,6 +12219,10 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/auto_turf/lv_sand_alt/layer0,
 /area/lv624/ground/caves/west_caves)
+"fod" = (
+/obj/structure/flora/jungle/vines/dead/light_2,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "fog" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#ae8686";
@@ -13548,6 +13604,10 @@
 /obj/structure/platform/stone/ancient_temple/east{
 	pixel_y = -22
 	},
+/obj/structure/prop/hunter/ancient_temple/fountain_head/flowing{
+	pixel_x = -16;
+	pixel_y = -19
+	},
 /turf/open/gm/river/soro,
 /area/lv624/ground/caves/north_east_caves)
 "fVK" = (
@@ -14257,9 +14317,7 @@
 	pixel_x = -3;
 	pixel_y = -7
 	},
-/turf/open/floor/strata{
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/strata/multi_tiles,
 /area/lv624/lazarus/armory)
 "gmu" = (
 /obj/structure/barricade/handrail/wire,
@@ -15086,6 +15144,9 @@
 /area/lv624/lazarus/corporate_dome)
 "gEx" = (
 /obj/structure/platform/stone/ancient_temple/north,
+/obj/structure/prop/hunter/ancient_temple/fountain_head{
+	pixel_y = 22
+	},
 /turf/open/floor/brown_dirt/random_rocks_alt{
 	dir = 6
 	},
@@ -15414,9 +15475,7 @@
 	pixel_y = 3;
 	pixel_x = -5
 	},
-/turf/open/floor/strata{
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/strata/multi_tiles,
 /area/lv624/lazarus/armory)
 "gKX" = (
 /obj/effect/hunter/ancient_temple/deco_border/deco_border2{
@@ -16604,9 +16663,7 @@
 	dir = 4
 	},
 /obj/effect/decal/hybrisa/dirt,
-/turf/open/floor/mech_bay_recharge_floor{
-	color = "#8B9490"
-	},
+/turf/open/floor/mech_bay_recharge_floor,
 /area/lv624/lazarus/quartstorage)
 "hmf" = (
 /obj/structure/bed/hybrisa/bunkbed3{
@@ -16614,6 +16671,10 @@
 	},
 /turf/open/floor/hybrisa/carpet/carpetblue,
 /area/lv624/lazarus/sleep_male)
+"hmK" = (
+/obj/structure/flora/jungle/vines/dead/light_2,
+/turf/closed/wall/ancient_temple/sandstone,
+/area/lv624/ground/caves/south_east_caves)
 "hmQ" = (
 /obj/structure/machinery/door/airlock/light_grey_lv/glass{
 	dir = 2;
@@ -16829,6 +16890,10 @@
 	color = "#a98361"
 	},
 /obj/effect/landmark/objective_landmark/medium,
+/obj/item/explosive/plastic{
+	desc = "A compact explosive charge for controlled demolitions. Looks to be made from C4";
+	name = "Mining explosives"
+	},
 /turf/open/floor/interior/wood_sat/damage_6,
 /area/lv624/ground/caves/north_central_caves)
 "hse" = (
@@ -17328,6 +17393,11 @@
 	},
 /turf/open/auto_turf/lv_sand/layer0,
 /area/lv624/ground/caves/north_central_caves)
+"hBz" = (
+/obj/effect/landmark/corpsespawner/scientist,
+/obj/effect/decal/cleanable/blood,
+/turf/open/auto_turf/lv_sand/layer0,
+/area/lv624/ground/caves/sand_temple)
 "hCc" = (
 /obj/structure/prop/brazier_ancient/alt/frame,
 /turf/open/floor/ancient_temple/deco,
@@ -18226,6 +18296,14 @@
 /obj/structure/grille,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv624/ground/river/east_river)
+"hSx" = (
+/obj/structure/platform/stone/ancient_temple/north,
+/obj/structure/flora/jungle/vines/dead/light_1,
+/obj/structure/prop/hunter/ancient_temple/fountain_head{
+	pixel_y = 22
+	},
+/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/area/lv624/ground/caves/south_east_caves)
 "hSM" = (
 /obj/structure/machinery/computer/emails{
 	dir = 1;
@@ -19375,9 +19453,12 @@
 "ixF" = (
 /obj/structure/platform/stone/ancient_temple/north,
 /obj/structure/platform_decoration/stone/ancient_temple/east,
-/obj/effect/hybrisa/misc/fake/pipes/pipe1{
-	icon = 'icons/obj/pipes/disposal.dmi';
-	color = "#e7d4bd"
+/obj/structure/platform/stone/ancient_temple/alt/north{
+	pixel_y = -15
+	},
+/obj/structure/prop/hunter/ancient_temple/fountain_head/flowing{
+	pixel_x = 5;
+	pixel_y = -13
 	},
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/east_river)
@@ -21928,14 +22009,8 @@
 /area/lv624/ground/caves/west_caves)
 "jEB" = (
 /obj/structure/platform_decoration/stone/ancient_temple/west,
-/obj/effect/hybrisa/misc/fake/pipes/pipe1{
-	color = "#e7d4bd";
-	icon_state = "pipe-t";
-	icon = 'icons/obj/pipes/disposal.dmi';
-	dir = 1;
-	pixel_x = -11;
-	pixel_y = 11;
-	layer = 3
+/obj/structure/platform_decoration/stone/ancient_temple/alt/west{
+	pixel_y = -15
 	},
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/east_river)
@@ -22245,9 +22320,7 @@
 	layer = 3.5;
 	dir = 1
 	},
-/turf/open/floor/almayer{
-	icon_state = "tcomms"
-	},
+/turf/open/floor/almayer/tcomms,
 /area/lv624/lazarus/comms)
 "jKP" = (
 /obj/structure/blocker/invisible_wall/no_coverage,
@@ -22947,9 +23020,7 @@
 /obj/structure/machinery/light/blue{
 	dir = 1
 	},
-/turf/open/floor/strata{
-	icon_state = "floor3"
-	},
+/turf/open/floor/strata/floor3,
 /area/lv624/lazarus/research)
 "kdA" = (
 /obj/effect/hunter/ancient_temple/tile_edge_corner,
@@ -24608,11 +24679,13 @@
 /area/lv624/ground/jungle/east_jungle)
 "kQx" = (
 /obj/structure/platform/stone/ancient_temple/north,
+/obj/structure/platform/stone/ancient_temple/alt/north{
+	pixel_y = -15
+	},
 /obj/structure/platform/stone/ancient_temple/west,
-/obj/effect/hybrisa/misc/fake/pipes/pipe1{
-	icon = 'icons/obj/pipes/disposal.dmi';
-	color = "#e7d4bd";
-	pixel_x = 11
+/obj/structure/prop/hunter/ancient_temple/fountain_head/flowing{
+	pixel_x = 5;
+	pixel_y = -13
 	},
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/east_river)
@@ -24867,6 +24940,9 @@
 /obj/effect/hunter/ancient_temple/rubble/rubble_5{
 	pixel_x = 5;
 	pixel_y = -2
+	},
+/obj/structure/prop/hunter/ancient_temple/fountain_head{
+	pixel_y = 22
 	},
 /turf/open/auto_turf/lv_grass/layer0_mud_alt,
 /area/lv624/ground/caves/south_east_caves)
@@ -25596,6 +25672,7 @@
 /obj/effect/decal/lv_decals/red_mud_corner{
 	dir = 8
 	},
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/interior/wood/alt,
 /area/lv624/ground/jungle/south_west_jungle)
 "llj" = (
@@ -26128,9 +26205,7 @@
 	dir = 8;
 	layer = 4
 	},
-/turf/open/floor/almayer{
-	icon_state = "tcomms"
-	},
+/turf/open/floor/almayer/tcomms,
 /area/lv624/ground/colony/telecomm/sw_lz2)
 "lxe" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -26386,6 +26461,13 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/lv624/ground/colony/north_tcomms_road)
+"lAD" = (
+/obj/structure/platform/stone/ancient_temple/north,
+/obj/structure/prop/hunter/ancient_temple/fountain_head{
+	pixel_y = 22
+	},
+/turf/open/auto_turf/lv_sand/layer0,
+/area/lv624/ground/caves/sand_temple)
 "lAJ" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/landmark/queen_spawn,
@@ -26861,9 +26943,7 @@
 	layer = 4
 	},
 /obj/effect/landmark/static_comms/net_one,
-/turf/open/floor/almayer{
-	icon_state = "tcomms"
-	},
+/turf/open/floor/almayer/tcomms,
 /area/lv624/lazarus/comms)
 "lLl" = (
 /obj/structure/flora/bush/ausbushes/var3/sunnybush,
@@ -27093,6 +27173,7 @@
 /obj/effect/decal/lv_decals/red_mud_corner{
 	dir = 9
 	},
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/interior/wood/alt,
 /area/lv624/ground/caves/sand_temple)
 "lQv" = (
@@ -27185,6 +27266,13 @@
 	},
 /turf/open/floor/ancient_temple/damaged/damage_7,
 /area/lv624/ground/caves/north_west_caves)
+"lSO" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 6;
+	pixel_y = 1
+	},
+/turf/open/floor/brown_dirt/random_rocks,
+/area/lv624/ground/caves/sand_temple)
 "lSS" = (
 /obj/effect/decal/lv_decals/red_mud_corner{
 	dir = 6
@@ -27212,6 +27300,16 @@
 	},
 /turf/open/floor/ancient_temple/damaged/damage_6,
 /area/lv624/ground/caves/south_east_caves)
+"lTJ" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -8;
+	pixel_y = 17
+	},
+/turf/open/floor/brown_dirt/random_rocks,
+/area/lv624/ground/caves/sand_temple)
 "lTL" = (
 /obj/effect/decal/lv_decals/cave_mud_corner{
 	dir = 10
@@ -27347,9 +27445,7 @@
 	dir = 8;
 	layer = 4
 	},
-/turf/open/floor/almayer{
-	icon_state = "tcomms"
-	},
+/turf/open/floor/almayer/tcomms,
 /area/lv624/ground/colony/telecomm/sw_lz2)
 "lWP" = (
 /obj/structure/barricade/handrail/wire,
@@ -27933,9 +28029,7 @@
 	},
 /obj/item/storage/box/masks,
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor/strata{
-	icon_state = "floor2"
-	},
+/turf/open/floor/strata/floor2,
 /area/lv624/lazarus/research)
 "mjo" = (
 /obj/structure/prop/rock/brown{
@@ -30158,9 +30252,7 @@
 	dir = 1
 	},
 /obj/structure/barricade/handrail/wire,
-/turf/open/floor/almayer{
-	icon_state = "tcomms"
-	},
+/turf/open/floor/almayer/tcomms,
 /area/lv624/lazarus/comms)
 "naZ" = (
 /obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
@@ -31673,6 +31765,11 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/auto_turf/lv_sand_alt/layer0,
 /area/lv624/ground/caves/west_caves)
+"nIk" = (
+/obj/structure/platform/stone/ancient_temple/north,
+/obj/structure/prop/ice_colony/surveying_device/measuring_device,
+/turf/open/floor/brown_dirt/random_rocks,
+/area/lv624/ground/caves/sand_temple)
 "nIo" = (
 /obj/effect/hunter/ancient_temple/deco_border,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -31901,18 +31998,16 @@
 /turf/open/gm/coast/dirt/beachcorner2/north_west,
 /area/lv624/ground/caves/south_central_caves)
 "nNA" = (
-/obj/structure/platform_decoration/stone/ancient_temple/east,
-/obj/effect/hybrisa/misc/fake/pipes/pipe1{
-	color = "#e7d4bd";
-	icon_state = "pipe-t";
-	icon = 'icons/obj/pipes/disposal.dmi';
-	dir = 1;
-	pixel_x = 11;
-	pixel_y = 11;
-	layer = 3
+/obj/structure/platform/stone/ancient_temple/alt/north,
+/obj/structure/platform/stone/ancient_temple/north{
+	pixel_y = -13
+	},
+/obj/structure/platform/stone/ancient_temple/east,
+/obj/structure/prop/hunter/ancient_temple/fountain_head{
+	layer = 3.6
 	},
 /turf/open/gm/river/soro,
-/area/lv624/ground/river/east_river)
+/area/lv624/ground/caves/north_east_caves)
 "nND" = (
 /obj/structure/flora/bush/ausbushes/lavendergrass,
 /turf/open/auto_turf/lv_grass/layer1,
@@ -32412,6 +32507,9 @@
 "nVR" = (
 /obj/structure/platform/stone/ancient_temple/north,
 /obj/structure/flora/jungle/vines/dead/light_1,
+/obj/structure/prop/hunter/ancient_temple/fountain_head{
+	pixel_y = 22
+	},
 /turf/open/gm/coast/dirt/beachcorner2/north_west,
 /area/lv624/ground/caves/south_east_caves)
 "nVZ" = (
@@ -32435,6 +32533,10 @@
 "nWm" = (
 /turf/open/gm/dirt/brown/variant_5/east,
 /area/lv624/ground/colony/south_medbay_road)
+"nWn" = (
+/obj/structure/flora/jungle/vines/dead/heavy,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "nWo" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -33646,9 +33748,7 @@
 /turf/open/floor/hybrisa/carpet/rug_colorable/blue/west,
 /area/lv624/lazarus/corporate_dome)
 "oxQ" = (
-/turf/open/floor/strata{
-	icon_state = "floor2"
-	},
+/turf/open/floor/strata/floor2,
 /area/lv624/lazarus/research)
 "oxX" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble,
@@ -34062,16 +34162,12 @@
 /turf/open/floor/ancient_temple/ruined/north,
 /area/lv624/ground/caves/west_caves)
 "oFC" = (
-/obj/effect/hybrisa/misc/fake/pipes/pipe1{
-	color = "#e7d4bd";
-	icon_state = "pipe-t";
-	icon = 'icons/obj/pipes/disposal.dmi';
-	dir = 1;
-	pixel_y = 11;
-	layer = 3
+/obj/item/prop/torch_frame/ancient{
+	anchored = 1
 	},
-/turf/open/gm/river/soro,
-/area/lv624/ground/river/east_river)
+/obj/structure/flora/jungle/vines/dead/light_2,
+/turf/closed/wall/ancient_temple/sandstone,
+/area/lv624/ground/caves/sand_temple)
 "oFE" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -34334,9 +34430,7 @@
 /obj/item/ammo_magazine/revolver/cmb,
 /obj/item/ammo_magazine/revolver/cmb,
 /obj/item/ammo_magazine/revolver/cmb,
-/turf/open/floor/strata{
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/strata/multi_tiles,
 /area/lv624/lazarus/armory)
 "oLW" = (
 /obj/structure/platform_decoration/stone/ancient_temple/alt/east,
@@ -34916,6 +35010,10 @@
 	},
 /turf/open/floor/ancient_temple/damaged/damage_5,
 /area/lv624/ground/caves/central_caves)
+"oYy" = (
+/obj/structure/flora/jungle/vines/dead/light_2,
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/ground/caves/south_east_caves)
 "oYA" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/auto_turf/lv_grass/layer1,
@@ -35542,6 +35640,7 @@
 /obj/effect/decal/lv_decals/red_mud_corner{
 	dir = 6
 	},
+/obj/item/clothing/head/hardhat/white,
 /turf/open/floor/interior/wood/alt,
 /area/lv624/ground/caves/sand_temple)
 "plj" = (
@@ -36075,11 +36174,13 @@
 /area/lv624/ground/caves/west_caves)
 "pzj" = (
 /obj/structure/platform/stone/ancient_temple/north,
+/obj/structure/platform/stone/ancient_temple/alt/north{
+	pixel_y = -15
+	},
 /obj/structure/platform/stone/ancient_temple/east,
-/obj/effect/hybrisa/misc/fake/pipes/pipe1{
-	icon = 'icons/obj/pipes/disposal.dmi';
-	color = "#e7d4bd";
-	pixel_x = -11
+/obj/structure/prop/hunter/ancient_temple/fountain_head/flowing{
+	pixel_x = -5;
+	pixel_y = -13
 	},
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/east_river)
@@ -36141,12 +36242,6 @@
 /obj/effect/decal/lv_decals/red_mud_corner,
 /turf/open/floor/prison/floor_plate,
 /area/lv624/ground/colony/north_tcomms_road)
-"pAB" = (
-/obj/structure/machinery/light/blue,
-/turf/open/floor/strata{
-	icon_state = "floor3"
-	},
-/area/lv624/lazarus/research)
 "pAH" = (
 /obj/structure/platform/stone/ancient_temple/east{
 	icon_state = "ancient_platform_alt_broken"
@@ -36249,9 +36344,7 @@
 	pixel_y = -1
 	},
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor/strata{
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/strata/multi_tiles,
 /area/lv624/lazarus/armory)
 "pDL" = (
 /obj/structure/platform/stone/ancient_temple,
@@ -36631,6 +36724,7 @@
 /area/lv624/ground/caves/west_caves)
 "pPF" = (
 /obj/structure/platform/stone/ancient_temple/north,
+/obj/structure/flora/jungle/vines/dead/light_1,
 /turf/open/floor/brown_dirt/random_rocks,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "pPJ" = (
@@ -38873,6 +38967,10 @@
 /obj/structure/pipes/vents/scrubber_hybrisa,
 /turf/open/floor/strata/light_purple_edge/east,
 /area/lv624/lazarus/research)
+"qLG" = (
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/auto_turf/lv_sand/layer0,
+/area/lv624/ground/jungle/south_west_jungle)
 "qLI" = (
 /obj/effect/hunter/ancient_temple/deco_border,
 /obj/effect/hunter/ancient_temple/rubble/rubble_6{
@@ -38949,9 +39047,7 @@
 	pixel_y = 32;
 	layer = 2.8
 	},
-/turf/open/floor/strata{
-	icon_state = "floor2"
-	},
+/turf/open/floor/strata/floor2,
 /area/lv624/lazarus/research)
 "qNJ" = (
 /obj/effect/decal/lv_decals/cave_mud_corner{
@@ -40161,6 +40257,17 @@
 /obj/effect/landmark/xeno_spawn,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/north_west_caves)
+"rqQ" = (
+/obj/structure/platform/stone/ancient_temple/alt/north,
+/obj/structure/platform/stone/ancient_temple/north{
+	pixel_y = -13
+	},
+/obj/structure/platform/stone/ancient_temple/alt/west,
+/obj/structure/prop/hunter/ancient_temple/fountain_head{
+	layer = 3.6
+	},
+/turf/open/gm/river/soro,
+/area/lv624/ground/caves/north_east_caves)
 "rqS" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -40837,9 +40944,7 @@
 	layer = 3.1;
 	dir = 4
 	},
-/turf/open/floor/almayer{
-	icon_state = "tcomms"
-	},
+/turf/open/floor/almayer/tcomms,
 /area/lv624/ground/colony/telecomm/sw_lz2)
 "rIu" = (
 /obj/structure/platform_decoration/wood,
@@ -41521,6 +41626,13 @@
 /obj/structure/blocker/invisible_wall/no_coverage,
 /turf/open/gm/river/soro,
 /area/lv624/ground/caves/south_east_caves)
+"rWL" = (
+/obj/effect/hunter/ancient_temple/deco_border,
+/obj/structure/prop/hunter/ancient_temple/fountain_head{
+	pixel_y = 22
+	},
+/turf/open/floor/ancient_temple/floor_2,
+/area/lv624/ground/caves/north_east_caves)
 "rWQ" = (
 /obj/effect/hunter/ancient_temple/deco_border{
 	dir = 1
@@ -41660,9 +41772,7 @@
 	layer = 3.1;
 	dir = 4
 	},
-/turf/open/floor/almayer{
-	icon_state = "tcomms"
-	},
+/turf/open/floor/almayer/tcomms,
 /area/lv624/lazarus/comms)
 "sae" = (
 /obj/structure/disposalpipe/segment,
@@ -42036,6 +42146,12 @@
 /obj/effect/decal/lv_decals/red_mud_corner{
 	dir = 8
 	},
+/obj/item/explosive/plastic{
+	desc = "A compact explosive charge for controlled demolitions. Looks to be made from C4";
+	name = "Mining explosives";
+	pixel_x = -12;
+	pixel_y = 3
+	},
 /turf/open/floor/interior/wood/alt,
 /area/lv624/ground/barrens/central_barrens)
 "siv" = (
@@ -42262,6 +42378,9 @@
 /area/lv624/lazarus/quartstorage/outdoors)
 "sog" = (
 /obj/structure/platform_decoration/stone/ancient_temple/east,
+/obj/structure/platform_decoration/stone/ancient_temple/alt/east{
+	pixel_y = -15
+	},
 /turf/open/auto_turf/lv_sand/layer0,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "sop" = (
@@ -43388,9 +43507,7 @@
 	pixel_x = 5;
 	pixel_y = 15
 	},
-/turf/open/floor/strata{
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/strata/multi_tiles,
 /area/lv624/lazarus/security)
 "sKm" = (
 /turf/open/floor/brown_dirt/random_rocks,
@@ -43498,6 +43615,9 @@
 "sNg" = (
 /obj/effect/hunter/ancient_temple/deco_border{
 	dir = 1
+	},
+/obj/structure/prop/hunter/ancient_temple/fountain_head{
+	pixel_y = 22
 	},
 /turf/open/floor/ancient_temple/damaged/damage_2,
 /area/lv624/ground/caves/east_caves)
@@ -43795,6 +43915,13 @@
 	},
 /turf/open/floor/ancient_temple/damaged/damage_1,
 /area/lv624/ground/barrens/north_east_barrens)
+"sTy" = (
+/obj/structure/platform_decoration/stone/ancient_temple/east,
+/obj/structure/platform_decoration/stone/ancient_temple/alt/east{
+	pixel_y = -15
+	},
+/turf/open/gm/river/soro,
+/area/lv624/ground/river/east_river)
 "sTA" = (
 /obj/structure/surface/table{
 	color = "#8B7B5B"
@@ -44320,8 +44447,13 @@
 /turf/open/auto_turf/lv_sand_alt/layer0,
 /area/lv624/ground/caves/west_caves)
 "tcM" = (
-/obj/structure/platform/stone/ancient_temple/west,
 /obj/structure/platform/stone/ancient_temple/north,
+/obj/structure/platform/stone/ancient_temple/alt/north{
+	pixel_y = -15
+	},
+/obj/structure/platform/stone/ancient_temple/west{
+	pixel_y = -15
+	},
 /turf/open/floor/brown_dirt/random_rocks,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "tcR" = (
@@ -46596,6 +46728,10 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/west_caves)
+"uaN" = (
+/obj/structure/flora/jungle/vines/dead/light_3,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "ubq" = (
 /obj/effect/hunter/ancient_temple/deco_border{
 	dir = 8
@@ -46678,9 +46814,7 @@
 /obj/structure/surface/rack{
 	color = "#8B9490"
 	},
-/turf/open/floor/strata{
-	icon_state = "floor2"
-	},
+/turf/open/floor/strata/floor2,
 /area/lv624/lazarus/research)
 "udO" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -46755,6 +46889,7 @@
 /area/lv624/ground/colony/west_tcomms_road)
 "ufx" = (
 /obj/structure/platform/stone/ancient_temple/alt/west,
+/obj/structure/flora/jungle/vines/dead/heavy,
 /turf/open/auto_turf/lv_grass/layer0,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "ufH" = (
@@ -46927,6 +47062,18 @@
 /obj/item/tool/warning_cone,
 /turf/open/auto_turf/lv_sand/layer0,
 /area/lv624/ground/barrens/central_barrens)
+"ull" = (
+/obj/structure/surface/table,
+/obj/effect/landmark/objective_landmark/science,
+/obj/item/device/camera{
+	pixel_y = 15
+	},
+/obj/item/explosive/plastic{
+	desc = "A compact explosive charge for controlled demolitions. Looks to be made from C4";
+	name = "Mining explosives"
+	},
+/turf/open/floor/brown_dirt/random_rocks,
+/area/lv624/ground/caves/sand_temple)
 "ulq" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/floor/ancient_temple/ruined/north,
@@ -48581,6 +48728,13 @@
 	},
 /turf/open/floor/ancient_temple/damaged/damage_7,
 /area/lv624/ground/caves/sand_temple)
+"uRe" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 6;
+	pixel_y = 1
+	},
+/turf/open/gm/dirt/brown/variant_5/south,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "uRF" = (
 /turf/closed/wall/rock/grey,
 /area/lv624/ground/caves/west_caves)
@@ -48685,9 +48839,12 @@
 "uTZ" = (
 /obj/structure/platform/stone/ancient_temple/north,
 /obj/structure/platform_decoration/stone/ancient_temple/west,
-/obj/effect/hybrisa/misc/fake/pipes/pipe1{
-	icon = 'icons/obj/pipes/disposal.dmi';
-	color = "#e7d4bd"
+/obj/structure/platform/stone/ancient_temple/alt/north{
+	pixel_y = -15
+	},
+/obj/structure/prop/hunter/ancient_temple/fountain_head/flowing{
+	pixel_x = -5;
+	pixel_y = -13
 	},
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/east_river)
@@ -49261,11 +49418,6 @@
 /obj/structure/flora/jungle/vines/blue/light_1,
 /turf/closed/wall/rock/grey,
 /area/lv624/ground/caves/sand_temple)
-"vhD" = (
-/turf/open/floor/strata{
-	icon_state = "floor3"
-	},
-/area/lv624/lazarus/research)
 "vhM" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/strata_decals/grime/grime1{
@@ -49914,9 +50066,7 @@
 	pixel_x = -6;
 	pixel_y = 10
 	},
-/turf/open/floor/almayer{
-	icon_state = "tcomms"
-	},
+/turf/open/floor/almayer/tcomms,
 /area/lv624/lazarus/comms)
 "vBb" = (
 /obj/structure/bed/alien,
@@ -49925,6 +50075,7 @@
 "vBd" = (
 /obj/effect/decal/lv_decals/red_mud_corner,
 /obj/item/stack/sheet/wood,
+/obj/structure/surface/table,
 /turf/open/floor/interior/wood/alt,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "vBi" = (
@@ -50749,9 +50900,7 @@
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/lazarus/landing_zones/lz2)
 "vUh" = (
-/turf/open/floor/strata{
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/strata/multi_tiles,
 /area/lv624/lazarus/armory)
 "vUo" = (
 /obj/effect/decal/lv_decals/cave_mud_corner{
@@ -51017,6 +51166,13 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
 /turf/open/floor/ancient_temple/damaged/damage_7,
 /area/lv624/ground/caves/west_caves)
+"wbn" = (
+/obj/structure/platform/stone/ancient_temple/north,
+/obj/structure/prop/hunter/ancient_temple/fountain_head{
+	pixel_y = 22
+	},
+/turf/open/floor/brown_dirt/random_rocks,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "wbw" = (
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/darkredcorners2,
@@ -51364,6 +51520,11 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/floor/ancient_temple/damaged/damage_2,
 /area/lv624/ground/caves/west_caves)
+"whP" = (
+/obj/structure/platform/stone/ancient_temple/north,
+/obj/structure/flora/jungle/vines/dead/light_2,
+/turf/open/floor/brown_dirt/random_rocks,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "whV" = (
 /turf/open/gm/coast/dirt/beachcorner2/south_west,
 /area/lv624/ground/barrens/east_barrens)
@@ -51786,6 +51947,7 @@
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 1
 	},
+/obj/effect/decal/cleanable/blood,
 /turf/open/auto_turf/lv_sand/layer0,
 /area/lv624/ground/caves/sand_temple)
 "wqH" = (
@@ -52247,9 +52409,7 @@
 	layer = 3.5;
 	dir = 1
 	},
-/turf/open/floor/almayer{
-	icon_state = "tcomms"
-	},
+/turf/open/floor/almayer/tcomms,
 /area/lv624/lazarus/comms)
 "wCq" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -52358,8 +52518,13 @@
 /turf/open/floor/prison/sterile_white,
 /area/lv624/lazarus/captain)
 "wEK" = (
-/obj/structure/platform/stone/ancient_temple/east,
 /obj/structure/platform/stone/ancient_temple/north,
+/obj/structure/platform/stone/ancient_temple/alt/north{
+	pixel_y = -15
+	},
+/obj/structure/platform/stone/ancient_temple/east{
+	pixel_y = -15
+	},
 /turf/open/floor/brown_dirt/random_rocks_alt,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "wEM" = (
@@ -53018,6 +53183,9 @@
 /area/lv624/ground/jungle/east_central_jungle)
 "wTp" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/structure/prop/hunter/ancient_temple/fountain_head{
+	pixel_y = 22
+	},
 /turf/open/floor/ancient_temple/floor_13/north,
 /area/lv624/ground/caves/north_east_caves)
 "wTt" = (
@@ -53306,6 +53474,7 @@
 /area/lv624/ground/caves/north_central_caves)
 "wZJ" = (
 /obj/structure/platform/stone/ancient_temple/east,
+/obj/structure/flora/jungle/vines/dead/light_1,
 /turf/open/auto_turf/lv_grass/layer1,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "wZQ" = (
@@ -55818,6 +55987,10 @@
 	},
 /turf/open/floor/ancient_temple/deco/dark/deco_0,
 /area/lv624/ground/caves/north_east_caves)
+"ygr" = (
+/obj/structure/flora/jungle/vines/dead/light_2,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/lv624/ground/caves/south_east_caves)
 "ygA" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_2,
 /turf/open/floor/ancient_temple/ruined/north,
@@ -55963,9 +56136,8 @@
 /turf/open/auto_turf/lv_sand_alt/layer0,
 /area/lv624/ground/caves/west_caves)
 "ykk" = (
-/obj/item/prop/torch_frame/ancient{
-	pixel_y = 31;
-	anchored = 1
+/obj/structure/prop/hunter/ancient_temple/fountain_head{
+	pixel_y = 22
 	},
 /turf/open/floor/ancient_temple/floor_13/north,
 /area/lv624/ground/caves/east_caves)
@@ -57381,7 +57553,7 @@ wDh
 fVO
 dlY
 wDh
-mmD
+qLG
 rOb
 tUu
 wDh
@@ -76375,13 +76547,13 @@ kdu
 pHX
 jDp
 pHX
-vhD
+bPi
 eGm
 jDp
 xAf
 lSz
 pHX
-pAB
+wdM
 pjS
 qon
 vvV
@@ -85947,9 +86119,9 @@ bnX
 hKX
 sRy
 pQl
-mWM
-gZf
-wYw
+nIk
+dHf
+ull
 kJd
 kJd
 kJd
@@ -86114,7 +86286,7 @@ iFz
 iFz
 kRN
 rsL
-nUN
+ykk
 fBB
 jBS
 nUN
@@ -86377,7 +86549,7 @@ jaf
 phx
 kLU
 kLU
-kLU
+hmK
 eRK
 oph
 gxw
@@ -86401,7 +86573,7 @@ cDi
 mbf
 cFH
 iYP
-wYw
+lSO
 sQe
 loR
 loR
@@ -86600,9 +86772,9 @@ aRa
 uFh
 aRa
 kLU
-lMn
-lMn
-eiR
+oYy
+oYy
+ygr
 fjE
 sQw
 ozF
@@ -86627,7 +86799,7 @@ iYP
 qdq
 iYP
 peo
-tdT
+uRe
 tdT
 loR
 loR
@@ -86823,9 +86995,9 @@ kLU
 xvL
 xvL
 xvL
-kLU
-lMn
-eiR
+hmK
+oYy
+ygr
 fjE
 cRD
 gNv
@@ -86846,7 +87018,7 @@ pQl
 mKQ
 iYP
 wqE
-pWO
+cWd
 kIc
 iYP
 gZf
@@ -87046,7 +87218,7 @@ wFf
 wFf
 lMn
 lMn
-lMn
+oYy
 uQq
 uQq
 eiR
@@ -87068,15 +87240,15 @@ liJ
 liJ
 pQl
 gqN
-iYP
-rRf
+hBz
+lTJ
 lYP
 jPD
 wTZ
 iYP
 vqg
 gFm
-xoI
+uaN
 xoI
 lfL
 loR
@@ -87299,9 +87471,9 @@ pWO
 nGM
 iYP
 kJd
-kJd
-dcA
-xoI
+whr
+iBc
+ezK
 xoI
 fJs
 mSU
@@ -87524,8 +87696,8 @@ lAb
 rZy
 kJd
 kJd
-dcA
-dcA
+iBc
+uay
 wZJ
 deX
 loR
@@ -87740,7 +87912,7 @@ ayq
 rnQ
 qWx
 pQl
-mKQ
+lAD
 dVW
 ekP
 mFk
@@ -87749,8 +87921,8 @@ eWu
 xlb
 xlb
 xlb
-xlb
-hXT
+vss
+cUY
 pPF
 gFm
 njD
@@ -87974,8 +88146,8 @@ xlb
 kJd
 kJd
 kJd
-xlb
-pPF
+cYf
+wbn
 loR
 lXm
 njD
@@ -87987,7 +88159,7 @@ hCc
 wEK
 bsY
 jHh
-ejT
+jEB
 uuK
 uuK
 uuK
@@ -88211,7 +88383,7 @@ eiw
 vtp
 swu
 xlb
-uid
+aHF
 uuK
 npz
 uuK
@@ -88436,7 +88608,7 @@ rkv
 fie
 opT
 ixF
-oFC
+uuK
 uuK
 uuK
 uuK
@@ -88660,7 +88832,7 @@ cds
 stC
 uMM
 pzj
-jEB
+ejT
 uuK
 uuK
 uuK
@@ -89108,7 +89280,7 @@ xaM
 bsb
 ool
 kQx
-nNA
+ajv
 xjY
 uuK
 uuK
@@ -89332,7 +89504,7 @@ ibS
 mPu
 nfK
 uTZ
-oFC
+uuK
 uuK
 uuK
 uuK
@@ -89555,7 +89727,7 @@ fPP
 hPg
 ixG
 xlb
-uid
+aHF
 uuK
 npz
 uuK
@@ -89662,7 +89834,7 @@ jfr
 jfr
 bnQ
 bnQ
-xed
+rWL
 hYH
 mRO
 nqR
@@ -89736,7 +89908,7 @@ usf
 dlA
 aRa
 cRy
-kOJ
+hSx
 hiw
 igz
 igz
@@ -89766,7 +89938,7 @@ xlb
 kJd
 kJd
 kJd
-xlb
+eTM
 gEx
 lXm
 loR
@@ -89779,7 +89951,7 @@ hCc
 tcM
 sHt
 osd
-ajv
+sTy
 uuK
 uuK
 uuK
@@ -89900,7 +90072,7 @@ jhi
 eDI
 alN
 jhi
-hkd
+nNA
 jMc
 jWd
 hGQ
@@ -89990,8 +90162,8 @@ xlb
 xlb
 xlb
 xlb
-hXT
-pPF
+oFC
+whP
 loR
 gFm
 njD
@@ -90350,7 +90522,7 @@ bEM
 iLe
 kRw
 jhi
-xaj
+dHg
 jWd
 hGQ
 pUE
@@ -90436,9 +90608,9 @@ kJd
 kJd
 kJd
 kJd
-kJd
-dcA
-mHh
+liJ
+iBc
+nWn
 xoI
 lfL
 loR
@@ -90660,8 +90832,8 @@ aAq
 gZf
 kJd
 kJd
-dcA
-dcA
+xms
+xms
 xoI
 lfL
 fJs
@@ -90885,7 +91057,7 @@ gZf
 wYw
 kJd
 dcA
-xoI
+fod
 xoI
 xoI
 loR
@@ -91022,7 +91194,7 @@ mDY
 iLe
 gWV
 jhi
-xaj
+dHg
 sYM
 hpV
 jQn
@@ -91468,7 +91640,7 @@ jhi
 sYa
 qVg
 jhi
-kBE
+rqQ
 jmb
 sYM
 hpV

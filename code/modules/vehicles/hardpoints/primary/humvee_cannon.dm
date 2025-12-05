@@ -1,7 +1,7 @@
 // APC cannons
 /obj/item/hardpoint/primary/humvee_cannon
-	name = "\improper PARS-159 Boyars Dualcannon"
-	desc = "A primary two-barrel cannon for the APC that shoots 20mm IFF-compatible rounds."
+	name = "\improper M24-JTMV cannon"
+	desc = "A primary two-barrel cannon for the M24-JTMV that shoots 20mm IFF-compatible rounds."
 	icon = 'icons/obj/vehicles/hardpoints/humvee.dmi'
 
 	icon_state = "humveecannon"
@@ -24,10 +24,10 @@
 	muzzleflash_icon_state = "muzzle_flash"
 
 	muzzle_flash_pos = list(
-		"1" = list(11, -29),
-		"2" = list(-11, 10),
-		"4" = list(-14, 9),
-		"8" = list(14, 9)
+		"1" = list(0, 4),
+		"2" = list(0, 15),
+		"4" = list(-6, 16),
+		"8" = list(6, 16)
 	)
 
 	scatter = 1

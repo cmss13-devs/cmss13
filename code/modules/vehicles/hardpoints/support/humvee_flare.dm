@@ -1,6 +1,6 @@
 /obj/item/hardpoint/support/humvee_flare_launcher
-	name = "\improper M-87F Flare Launcher"
-	desc = "A support module for APCs that shoots flares."
+	name = "\improper M-77F Flare Launcher"
+	desc = "A support module for the M24-JTMV that shoots flares."
 	icon = 'icons/obj/vehicles/hardpoints/humvee.dmi'
 
 	icon_state = "humveelauncher"

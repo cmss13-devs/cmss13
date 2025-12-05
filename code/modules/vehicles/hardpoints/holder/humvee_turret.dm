@@ -1,6 +1,6 @@
 /obj/item/hardpoint/holder/humvee_turret
-	name = "\improper JTMV Turret"
-	desc = "The centerpiece of the JTMV. Designed to support quick installation and deinstallation of various JTMV weapon modules. Has inbuilt smoke screen deployment system."
+	name = "\improper M24-JTMV Turret"
+	desc = "The centerpiece of the M2420 JTMV-HWC. Designed to support quick installation and deinstallation of various JTMV weapon modules. Has inbuilt smoke screen deployment system."
 
 	icon = 'icons/obj/vehicles/humvee.dmi'
 	icon_state = "humveeturret"
@@ -37,10 +37,10 @@
 
 	hdpt_layer = HDPT_LAYER_TURRET
 	px_offsets = list(
-		"1" = list(0, 0),
-		"2" = list(0, 0),
-		"4" = list(0, 0),
-		"8" = list(0, 0)
+		"1" = list(0, 4),
+		"2" = list(0, 15),
+		"4" = list(-6, 16),
+		"8" = list(6, 16)
 	)
 
 	var/gyro = FALSE

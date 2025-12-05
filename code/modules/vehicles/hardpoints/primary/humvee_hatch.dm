@@ -1,6 +1,6 @@
 /obj/item/hardpoint/primary/humvee_hatch
-	name = "\improper JTMV top-hatch"
-	desc = "A simple hatch for the JTMV. Can be removed to acommodate a variety of attachments."
+	name = "\improper M24-JTMV top-hatch"
+	desc = "A simple hatch for the M24-JTMV. Can be removed to acommodate a variety of attachments."
 	icon = 'icons/obj/vehicles/hardpoints/humvee.dmi'
 
 	icon_state = "humveehatch"

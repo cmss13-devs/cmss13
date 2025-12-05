@@ -1,0 +1,4 @@
+author: "NessiePendragon"
+delete-after: True
+changes:
+  - rscadd: "Changes Twitch subscribers' OOC chat color, and removes their ability to change their own OOC color."

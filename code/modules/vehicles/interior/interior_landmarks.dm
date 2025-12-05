@@ -148,6 +148,8 @@
 	icon = 'icons/obj/vehicles/interiors/general_humvee.dmi'
 	icon_state = "car_seat"
 	color = "red"
+	var/buckling_x = -3
+	var/buckling_y = 1
 
 /obj/effect/landmark/interior/spawn/vehicle_driver_seat/armor/humvee/on_load(datum/interior/interior)
 	var/obj/structure/bed/chair/comfy/vehicle/driver/humvee/S = new(loc)

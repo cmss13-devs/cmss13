@@ -1,5 +1,5 @@
 /obj/item/hardpoint/support/humvee_overhead_lights
-	name = "\improper JTMV overhead lights"
+	name = "\improper JTMV Overhead Lights"
 	desc = "Overhead lights for the JTMV. For when you really need to brighten your day."
 	icon = 'icons/obj/vehicles/hardpoints/humvee.dmi'
 

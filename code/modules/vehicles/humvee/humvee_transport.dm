@@ -40,7 +40,7 @@
 	movement_sound = 'sound/vehicles/tank_driving.ogg'
 	honk_sound = 'sound/vehicles/honk_2_truck.ogg'
 
-	luminosity = 8
+	luminosity = 7
 
 	hardpoints_allowed = list(
 		/obj/item/hardpoint/locomotion/humvee_wheels,

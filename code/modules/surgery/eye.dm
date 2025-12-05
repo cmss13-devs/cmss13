@@ -9,7 +9,7 @@
 	possible_locs = list("eyes")
 	invasiveness = list(SURGERY_DEPTH_SURFACE)
 	required_surgery_skill = SKILL_SURGERY_TRAINED
-	pain_reduction_required = PAIN_REDUCTION_HEAVY //Eyes DO have pain receptors... Almost more than any other organ. Ever been poked in the eye? Shit hurts.
+	pain_reduction_required = PAIN_REDUCTION_FULL //Eyes DO have pain receptors... Almost more than any other organ. Ever been poked in the eye? Shit hurts.
 	steps = list(
 		/datum/surgery_step/separate_corneas,
 		/datum/surgery_step/lift_corneas,
@@ -27,7 +27,7 @@
 
 /datum/surgery/eye_repair/can_start(mob/user, mob/living/carbon/human/patient, obj/limb/L, obj/item/tool)
 	var/datum/internal_organ/eyes/E = patient.internal_organs_by_name["eyes"]
-	return E && E.damage > 0 && E.robotic != ORGAN_ROBOT
+	return E.robotic != ORGAN_ROBOT && (patient.sdisabilities & DISABILITY_BLIND || patient.disabilities & NEARSIGHTED || E.damage > 0)
 
 //------------------------------------
 
@@ -92,7 +92,7 @@
 		SPAN_NOTICE("[user] begins lifting the corneas and moving the lenses out of the way from your eyes with [tool]."),
 		SPAN_NOTICE("[user] begins lifting the corneas and moving the lenses out of the way from [target]'s eyes with [tool]."))
 
-	target.custom_pain("You feel pressure on the surface of your eyes!",1)
+	target.custom_pain("You feel pressure and pulling on the surface of your eyes!",1)
 	log_interact(user, target, "[key_name(user)] started lifting the corneas and moving the lenses out of the way from  [key_name(target)]'s eyes with [tool].")
 
 /datum/surgery_step/lift_corneas/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -165,7 +165,7 @@
 	time = 5 SECONDS
 
 	preop_sound = 'sound/handling/clothingrustle1.ogg'
-	success_sound = 'sound/surgery/hemostat2.ogg'
+	success_sound = 'sound/handling/bandage.ogg'
 	failure_sound = 'sound/surgery/organ1.ogg'
 
 /datum/surgery_step/mend_eyes/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -188,7 +188,7 @@
 		user.affected_message(target,
 			SPAN_NOTICE("You finish reshaping [target]'s corneas so they can focus light accurately again."),
 			SPAN_NOTICE("[user] finishes reshaping your corneas so they can focus light accurately again."),
-			SPAN_WARNING("[user] finishes mending [target]'s corneas so they can focus light accurately again."))
+			SPAN_WARNING("[user] finishes reshaping [target]'s corneas so they can focus light accurately again."))
 	if(E && E.damage > 0)
 		user.affected_message(target,
 			SPAN_NOTICE("You finish mending the damaged blood vessels within and the surface damage outside of [target]'s eyes."),

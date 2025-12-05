@@ -37,8 +37,8 @@
 
 	required_skill = SKILL_VEHICLE_LARGE
 
-	movement_sound = 'sound/vehicles/tank_driving.ogg'
-	honk_sound = 'sound/vehicles/honk_2_truck.ogg'
+	movement_sound = 'sound/vehicles/humvee_driving.ogg'
+	honk_sound = 'sound/vehicles/humvee_horn.ogg'
 
 	luminosity = 7
 

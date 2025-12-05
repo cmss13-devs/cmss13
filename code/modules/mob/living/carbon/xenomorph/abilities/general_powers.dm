@@ -457,6 +457,9 @@
 	if(!target)
 		return
 
+	while(istype(target, /turf/open_space))
+		target = SSmapping.get_turf_below(target)
+
 	if(target.layer >= FLY_LAYER)//anything above that shouldn't be pounceable (hud stuff)
 		return
 
@@ -487,23 +490,20 @@
 
 	//everyone gets (extra) timer to pounce up
 	if(target.z != xeno.z)
-		var/list/turf/path = get_line(SSmapping.get_turf_above(xeno), target)
+		var/maximum_z = max(target.z, xeno.z)
+		var/list/turf/path = get_line(locate(xeno.x, xeno.y, maximum_z), locate(target.x, target.y, maximum_z))
 		for(var/turf/turf_in_path in path)
-			if(!istype(turf_in_path, /turf/open_space))
-				continue
+			while(istype(turf_in_path, /turf/open_space))
+				turf_in_path = SSmapping.get_turf_below(turf_in_path)
 
-			var/turf/below = SSmapping.get_turf_below(turf_in_path)
-			while (below)
-				if(below.turf_flags & TURF_HULL)
-					to_chat(xeno, "You can't jump over an object in your path.")
+			if(turf_in_path.turf_flags & TURF_HULL)
+				to_chat(xeno, SPAN_WARNING("You can't jump over an object in your path."))
+				return
+
+			for(var/obj/structure/cur_obj in turf_in_path.contents)
+				if(cur_obj.density && (cur_obj.unslashable || cur_obj.unacidable || cur_obj.explo_proof))
+					to_chat(xeno, SPAN_WARNING("You can't jump over an object in your path."))
 					return
-
-				for(var/obj/structure/cur_obj in below.contents)
-					if(cur_obj.density && (cur_obj.unslashable || cur_obj.unacidable || cur_obj.explo_proof))
-						to_chat(xeno, "You can't jump over an object in your path.")
-						return
-
-				below = SSmapping.get_turf_below(below)
 
 		if (!do_after(xeno, 0.5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 			return

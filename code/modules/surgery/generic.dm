@@ -15,6 +15,8 @@
 		/datum/surgery_step/cauterize/abort,
 		/datum/surgery_step/suture_incision/abort,
 		/datum/surgery_step/clamp_bleeders_step,
+		/datum/surgery_step/cauterize/abort,
+		/datum/surgery_step/suture_incision/abort,
 		/datum/surgery_step/retract_skin,
 	)
 	lying_required = FALSE

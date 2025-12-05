@@ -257,8 +257,8 @@
 	if(!client)
 		return
 
-	if(istype(client?.eye, /mob/hologram))
-		var/mob/hologram/eye = client.eye
+	if(istype(client.get_eye(), /mob/hologram))
+		var/mob/hologram/eye = client.get_eye()
 		eye.change_level()
 		return
 

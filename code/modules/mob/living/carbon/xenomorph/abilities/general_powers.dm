@@ -534,7 +534,7 @@
 			xeno.anchored = FALSE
 		post_windup_effects()
 
-	xeno.visible_message(SPAN_XENOWARNING("\The [xeno] [action_text][findtext(action_text, "e", -1) || findtext(action_text, "p", -1) ? "s" : "es"] at [target]!"), SPAN_XENOWARNING("We [action_text] at [target]!"))
+	xeno.visible_message(SPAN_XENOWARNING("[xeno] [action_text][findtext(action_text, "e", -1) || findtext(action_text, "p", -1) ? "s" : "es"] at [target]!"), SPAN_XENOWARNING("We [action_text] at [target]!"))
 
 	pre_pounce_effects()
 

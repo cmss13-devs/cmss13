@@ -136,10 +136,10 @@
 	else
 		user.affected_message(target,
 			SPAN_NOTICE("You try to forcefully rip the larva from [target]'s chest with your bare hand."),
-			SPAN_NOTICE("[user] tries to forcefully rip the larva from your chest."),
-			SPAN_NOTICE("[user] tries to forcefully rip the larva from [target]'s chest."))
+			SPAN_NOTICE("[user] tries to forcefully rip the larva from your chest with \his bare hand."),
+			SPAN_NOTICE("[user] tries to forcefully rip the larva from [target]'s chest with \his bare hand."))
 
-	to_chat(target, SPAN_HIGHDANGER("IT'S COMING OUT! AAAAAAARGH!"))
+	to_chat(target, SPAN_HIGHDANGER("IT'S COMING OUT! BRACE YOURSELF!"))
 	if(target.stat == CONSCIOUS)
 		target.emote("burstscream")
 	log_interact(user, target, "[key_name(user)] started to remove an embryo from [key_name(target)]'s ribcage.")
@@ -194,8 +194,8 @@
 		SPAN_WARNING("Your hand slips, bruising [target]'s organs and spilling acid in \his [surgery.affected_limb.cavity]!"),
 		SPAN_WARNING("[user]'s hand slips, bruising your organs and spilling acid in your [surgery.affected_limb.cavity]!"),
 		SPAN_WARNING("[user]'s hand slips, bruising [target]'s organs and spilling acid in \his [surgery.affected_limb.cavity]!"))
-
 	var/datum/internal_organ/I = pick(surgery.affected_limb.internal_organs)
+
 	I.take_damage(5,0)
 	if(target.stat == CONSCIOUS)
 		target.emote("scream")

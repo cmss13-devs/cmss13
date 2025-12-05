@@ -256,11 +256,11 @@
 
 	if(!client)
 		return
-    
-  if(istype(client?.eye, /mob/hologram))
+
+	if(istype(client?.eye, /mob/hologram))
 		var/mob/hologram/eye = client.eye
 		eye.change_level()
-    return
+		return
 
 	if(client.view != world.view)
 		to_chat(src, SPAN_WARNING("You cannot look up while zoomed!"))

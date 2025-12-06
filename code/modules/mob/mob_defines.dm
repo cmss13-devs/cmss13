@@ -122,7 +122,6 @@
 	var/festivizer_hits_total = 0
 
 	var/life_value = 1 // when killed, the killee gets this much added to its life_kills_total
-	var/default_honor_value = 1 // when killed by a yautja, this determines the minimum amount of honor gained
 
 	var/bodytemperature = 310.055 //98.7 F
 	var/old_x = 0

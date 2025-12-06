@@ -50,12 +50,15 @@
 	var/minimap_icon
 	///sprite style
 	var/material
+	var/badblood = FALSE
 
 /obj/item/clothing/gloves/yautja/equipped(mob/user, slot)
 	. = ..()
 	if(slot == WEAR_HANDS)
 		START_PROCESSING(SSobj, src)
 		owner = user
+		if(badblood || (owner.faction == FACTION_YAUTJA_BADBLOOD) || (owner.faction == FACTION_YAUTJA_STRANDED))
+			return
 		if(isyautja(owner))
 			minimap_icon = owner.assigned_equipment_preset?.minimap_icon
 		toggle_lock_internal(user, TRUE)
@@ -287,18 +290,41 @@
 	///A list of all intrinsic bracer actions
 	var/list/bracer_actions = list(/datum/action/predator_action/bracer/wristblade, /datum/action/predator_action/bracer/caster, /datum/action/predator_action/bracer/cloak, /datum/action/predator_action/bracer/thwei, /datum/action/predator_action/bracer/capsule, /datum/action/predator_action/bracer/translator, /datum/action/predator_action/bracer/self_destruct, /datum/action/predator_action/bracer/smartdisc)
 
+/obj/item/clothing/gloves/yautja/hunter/badblood
+	badblood = TRUE
+
+/obj/item/clothing/gloves/yautja/hunter/proc/can_get_message(subfaction = ANNOUNCE_YAUTJA_GOOD)
+	switch(subfaction)
+		if(ANNOUNCE_YAUTJA_GOOD)
+			if(badblood)
+				return FALSE
+			return TRUE
+		if(ANNOUNCE_YAUTJA_BAD)
+			if(badblood)
+				return TRUE
+			return FALSE
+		if(ANNOUNCE_YAUTJA_ALL)
+			return TRUE
+	log_debug("Yautja Debug: Bracer message recevied without faction.")
+	return FALSE
+
 /obj/item/clothing/gloves/yautja/hunter/get_examine_text(mob/user)
 	. = ..()
 	if(left_bracer_attachment)
 		. += SPAN_NOTICE("The left bracer attachment is [left_bracer_attachment.attached_weapon].")
 	if(right_bracer_attachment)
 		. += SPAN_NOTICE("The right bracer attachment is [right_bracer_attachment.attached_weapon].")
+	if(HAS_TRAIT(user, TRAIT_YAUTJA_TECH) && badblood)
+		. += SPAN_WARNING("This belongs to a bad-blood!")
 
 /obj/item/clothing/gloves/yautja/hunter/Initialize(mapload, new_translator_type, new_invis_sound, new_caster_material, new_owner_rank, new_bracer_material)
 	. = ..()
 	if(new_owner_rank)
 		owner_rank = new_owner_rank
-	embedded_id = new(src)
+	if(badblood)
+		embedded_id = new /obj/item/card/id/bracer_chip/badblood(src)
+	else
+		embedded_id = new(src)
 	if(new_translator_type)
 		translator_type = new_translator_type
 	if(new_invis_sound)
@@ -955,6 +981,9 @@
 	if(.)
 		return
 
+	var/set_subfaction = ANNOUNCE_YAUTJA_GOOD
+	if(badblood)
+		set_subfaction = ANNOUNCE_YAUTJA_BAD
 	var/mob/living/carbon/human/boomer = user
 	var/area/grounds = get_area(boomer)
 
@@ -1008,7 +1037,7 @@
 						if (!bracer.exploding)
 							bracer.explode(victim)
 						boomer.visible_message(SPAN_WARNING("[boomer] presses a few buttons on [victim]'s wrist bracer."),SPAN_DANGER("You activate the timer. May [victim]'s final hunt be swift."))
-						message_all_yautja("[boomer.real_name] has triggered [victim.real_name]'s bracer's self-destruction sequence.")
+						message_all_yautja("[boomer.real_name] has triggered [victim.real_name]'s bracer's self-destruction sequence.", subfaction = set_subfaction)
 			else
 				to_chat(boomer, SPAN_WARNING("<b>This [victim.species] does not have a bracer attached.</b>"))
 			return
@@ -1028,7 +1057,7 @@
 				return
 			exploding = FALSE
 			to_chat(boomer, SPAN_NOTICE("Your bracers stop beeping."))
-			message_all_yautja("[boomer.real_name] has cancelled their bracer's self-destruction sequence.")
+			message_all_yautja("[boomer.real_name] has cancelled their bracer's self-destruction sequence.", subfaction = set_subfaction)
 			message_admins("[key_name(boomer)] has deactivated their Self-Destruct.")
 
 			var/datum/action/predator_action/bracer/self_destruct/sd_action
@@ -1065,7 +1094,7 @@
 		var/turf/T = get_turf(boomer)
 		message_admins(FONT_SIZE_HUGE("ALERT: [boomer] ([boomer.key]) triggered their predator self-destruct sequence [A ? "in [A.name]":""] [ADMIN_JMP(T)]"))
 		log_attack("[key_name(boomer)] triggered their predator self-destruct sequence in [A ? "in [A.name]":""]")
-		message_all_yautja("[boomer.real_name] has triggered their bracer's self-destruction sequence.")
+		message_all_yautja("[boomer.real_name] has triggered their bracer's self-destruction sequence.", subfaction = set_subfaction)
 		explode(boomer)
 
 		var/datum/action/predator_action/bracer/self_destruct/sd_action
@@ -1119,7 +1148,10 @@
 	var/area/location = get_area(target_youngblood)
 	var/turf/floor = get_turf(target_youngblood)
 	target_youngblood.death(create_cause_data("Youngblood Termination"), TRUE)
-	message_all_yautja("[user.real_name] has terminated [target_youngblood.real_name] for: '[reason]'.")
+	var/set_subfaction = ANNOUNCE_YAUTJA_GOOD
+	if(badblood)
+		set_subfaction = ANNOUNCE_YAUTJA_BAD
+	message_all_yautja("[user.real_name] has terminated [target_youngblood.real_name] for: '[reason]'.", subfaction = set_subfaction)
 	message_admins(FONT_SIZE_LARGE("ALERT: [user.real_name] ([user.key]) Terminated [target_youngblood.real_name] ([target_youngblood.key]) in [location.name] for: '[reason]' [ADMIN_JMP(floor)]</font>"))
 
 #define YAUTJA_CREATE_CRYSTAL_COOLDOWN "yautja_create_crystal_cooldown"
@@ -1296,7 +1328,7 @@
 	. = translate_internal(usr, FALSE)
 
 /obj/item/clothing/gloves/yautja/hunter/proc/translate_internal(mob/living/user, forced = FALSE)
-	if(!user || user.stat)
+	if(!user || user.stat || !user.client)
 		return
 
 	. = check_random_function(user, forced)
@@ -1307,22 +1339,32 @@
 		to_chat(user, SPAN_DANGER("You cannot translate (muted)."))
 		return
 
-	var/list/heard = get_mobs_in_view(7, user)
+	var/mob/source_mob = user.client.get_eye()
+	var/is_local = FALSE
+	if(source_mob == user)
+		is_local = TRUE
+
+	var/list/heard = get_mobs_in_view(7, source_mob)
+	if(!(user in heard))
+		heard += user
 	for(var/mob/heard_mob in heard)
 		if(heard_mob.ear_deaf)
 			heard -= heard_mob
 
 	var/image/translator_bubble = image('icons/mob/effects/talk.dmi', src, "pred_translator", TYPING_LAYER)
-	user.show_speech_bubble(heard, looping_bubble = TRUE, animated = FALSE, speech_bubble = translator_bubble)
+	if(is_local)
+		user.show_speech_bubble(heard, looping_bubble = TRUE, animated = FALSE, speech_bubble = translator_bubble)
 	var/message = tgui_input_text(user, "The bracer beeps and is awaiting to translate", "Translator", multiline = TRUE)
-	user.remove_speech_bubble(translator_bubble)
-	if(!message || !user.client)
+	if(is_local)
+		user.remove_speech_bubble(translator_bubble)
+	if(!message)
 		return
 
 	if(!drain_power(user, 50))
 		return
 
-	user.show_speech_bubble(heard, "pred_translator1")
+	if(is_local)
+		user.show_speech_bubble(heard, "pred_translator1")
 
 	log_say("[user.name != "Unknown" ? user.name : "([user.real_name])"] \[Yautja Translator\]: [message] (CKEY: [user.key]) (JOB: [user.job]) (AREA: [get_area_name(user)])")
 
@@ -1339,10 +1381,11 @@
 		message = replacetext(message, "s", "5")
 		message = replacetext(message, "l", "1")
 
-	user.langchat_speech(message, heard, GLOB.all_languages, overhead_color, TRUE)
+	if(is_local)
+		user.langchat_speech(message, heard, GLOB.all_languages, overhead_color, TRUE)
 
 	var/voice_name = "A strange voice"
-	if(user.name == user.real_name && user.alpha == initial(user.alpha))
+	if((user.name == user.real_name) && (user.alpha == initial(user.alpha)) && is_local)
 		voice_name = "<b>[user.name]</b>"
 	for(var/mob/heard_human as anything in heard)
 		if(heard_human.stat && !isobserver(heard_human))

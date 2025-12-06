@@ -889,7 +889,10 @@
 					if(user.hunter_data.prey == target)
 						to_chat(src, SPAN_YAUTJABOLD("You have claimed the scalp of [target] as your trophy."))
 						user.emote("roar2")
-						message_all_yautja("[user.real_name] has claimed the scalp of [target] as their trophy.")
+						var/set_subfaction = ANNOUNCE_YAUTJA_GOOD
+						if(user.faction == FACTION_YAUTJA_BADBLOOD)
+							set_subfaction = ANNOUNCE_YAUTJA_BAD
+						message_all_yautja("[user.real_name] has claimed the scalp of [target] as their trophy.", subfaction = set_subfaction)
 						user.hunter_data.prey = null
 
 		if(FLAY_STAGE_STRIP)
@@ -1698,7 +1701,7 @@
 /obj/item/weapon/gun/bow
 	name = "hunting bow"
 	desc = "An abnormal-sized weapon with an exeptionally tight string. Requires extraordinary strength to draw."
-	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon = 'icons/obj/items/hunter/bow.dmi'
 	icon_state = "bow"
 	item_state = "bow"
 	item_icons = list(
@@ -1755,9 +1758,9 @@
 			item_state += "_w"
 		return
 	var/datum/ammo/arrow/arrow = ammo
-	if (arrow.activated)
-		icon_state = "bow_expl"
-		item_state = "bow_expl"
+	if(arrow.activated)
+		icon_state = "bow_[arrow.loaded_icon]"
+		item_state = "bow_[arrow.loaded_icon]"
 	else
 		icon_state = "bow_loaded"
 		item_state = "bow_loaded"
@@ -1816,10 +1819,11 @@
 	default_ammo = /datum/ammo/arrow
 
 /obj/item/arrow
-	name = "arrow"
+	name = "inert arrow"
+	desc = "A heavy arrow made of a strange metal. Used by alien hunters with powerful bows."
 	w_class = SIZE_SMALL
-	icon = 'icons/obj/items/hunter/pred_gear.dmi'
-	icon_state = "arrow"
+	icon = 'icons/obj/items/hunter/bow.dmi'
+	icon_state = "arrow_expl"
 	item_state = "arrow"
 	sharp = IS_SHARP_ITEM_ACCURATE
 	edge = TRUE
@@ -1828,28 +1832,72 @@
 	unacidable = TRUE
 
 	var/activated = FALSE
-	var/ammo_datum = /datum/ammo/arrow
+	var/datum/ammo/arrow/ammo_datum = /datum/ammo/arrow
+	var/datum/ammo/arrow/primary_ammo = /datum/ammo/arrow
+	var/datum/ammo/arrow/secondary_ammo = /datum/ammo/arrow/expl
 
-/obj/item/arrow/expl
-	name = "\improper activated arrow"
+/obj/item/arrow/expl_active
+	name = "\improper activated explosive arrow"
 	activated = TRUE
-	icon_state = "arrow_expl"
+	icon_state = "arrow_expl_active"
 	ammo_datum = /datum/ammo/arrow/expl
+
+/obj/item/arrow/emp
+	icon_state = "arrow_emp"
+	secondary_ammo = /datum/ammo/arrow/emp
+
+/obj/item/arrow/emp/active
+	name = "\improper activated emp arrow"
+	activated = TRUE
+	icon_state = "arrow_emp_active"
+	ammo_datum = /datum/ammo/arrow/emp
 
 /obj/item/arrow/attack_self(mob/user)
 	. = ..()
-	if (!isyautja(user))
+	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		to_chat(user, SPAN_NOTICE("You attempt to [activated ? "deactivate" : "activate"] [src], but nothing happens."))
 		return
-	if (activated)
+	change_warhead(user)
+
+/obj/item/arrow/proc/change_warhead(mob/user)
+	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
+		return
+	if(activated)
 		activated = FALSE
-		icon_state = "arrow"
-		ammo_datum = /datum/ammo/arrow
+		ammo_datum = primary_ammo
+		icon_state = ammo_datum.arrow_icon
+		name = ammo_datum.name
 		to_chat(user, SPAN_NOTICE("You deactivate [src]."))
 		return
 	activated = TRUE
-	icon_state = "arrow_expl"
-	ammo_datum = /datum/ammo/arrow/expl
+	ammo_datum = secondary_ammo
+	icon_state = ammo_datum.arrow_icon
+	name = ammo_datum.name
+	to_chat(user, SPAN_NOTICE("You activate [src]."))
+
+/obj/item/arrow/dynamic_warhead
+	name = "inert dynamic arrow"
+
+/obj/item/arrow/dynamic_warhead/change_warhead(mob/user)
+	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
+		return
+	if(activated)
+		activated = FALSE
+		ammo_datum = /datum/ammo/arrow
+		icon_state = "arrow"
+		name = "inert dynamic arrow"
+		to_chat(user, SPAN_NOTICE("You deactivate [src]."))
+		return
+	var/list/warhead_options = list(
+		"Explosive" = /datum/ammo/arrow/expl,
+		"EMP" = /datum/ammo/arrow/emp,
+	)
+	var/choice = tgui_input_list(user, "Which warhead do you wish to use?", "Pick Warhead", warhead_options)
+	var/datum/ammo/arrow/arrow = warhead_options[choice]
+	activated = TRUE
+	ammo_datum = arrow
+	icon_state = arrow.arrow_icon
+	name = "[ammo_datum.name] (D)"
 	to_chat(user, SPAN_NOTICE("You activate [src]."))
 
 /obj/item/storage/belt/gun/quiver
@@ -1861,7 +1909,7 @@
 	item_state = "s_marinebelt"
 	flags_equip_slot = SLOT_WAIST|SLOT_SUIT_STORE|SLOT_BACK // it's a quiver, quivers go on your back
 	max_w_class = SIZE_LARGE
-	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon = 'icons/obj/items/hunter/bow.dmi'
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
 		WEAR_WAIST = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
@@ -1878,6 +1926,11 @@
 	handle_item_insertion(new /obj/item/weapon/gun/bow())
 	for(var/i = 1 to storage_slots - 1)
 		new /obj/item/arrow(src)
+
+/obj/item/storage/belt/gun/quiver/dynamic/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/bow())
+	for(var/i = 1 to storage_slots - 1)
+		new /obj/item/arrow/dynamic_warhead(src)
 
 #undef FLAY_STAGE_SCALP
 #undef FLAY_STAGE_STRIP

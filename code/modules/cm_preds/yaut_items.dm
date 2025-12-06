@@ -348,6 +348,16 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	volume_settings = list(RADIO_VOLUME_QUIET_STR, RADIO_VOLUME_RAISED_STR, RADIO_VOLUME_IMPORTANT_STR, RADIO_VOLUME_CRITICAL_STR)
 	initial_keys = list(/obj/item/device/encryptionkey/yautja/overseer)
 
+/obj/item/device/radio/headset/yautja/badblood
+	name = "\improper Modified Communicator"
+	desc = "A strange Yautja device used for projecting the Yautja's voice to the others in its pack. Similar in function to a standard human radio. This one has been modified in some way."
+	frequency = BADBLOOD_FREQ
+
+/obj/item/device/radio/headset/yautja/stranded
+	name = "\improper Damaged Communicator"
+	desc = "A strange Yautja device used for projecting the Yautja's voice to the others in its pack. Similar in function to a standard human radio. This one seems damaged and is transmitting on a different frequency."
+	frequency = STRANDED_FREQ
+
 /obj/item/device/encryptionkey/yautja
 	name = "\improper Yautja encryption key"
 	desc = "A complicated encryption device."
@@ -1095,16 +1105,42 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	blood_type = human_user.blood_type
 
 	var/list/new_access = list(ACCESS_YAUTJA_SECURE)
+
+	var/the_faction = human_user.faction
+	faction = the_faction
+	if(!(the_faction in faction_group))
+		faction_group = list(the_faction)
+
+	if(the_faction == FACTION_YAUTJA_STRANDED)
+		return
+
 	var/obj/item/clothing/gloves/yautja/hunter/bracer = loc
 	if(istype(bracer) && bracer.owner_rank)
 		switch(bracer.owner_rank)
 			if(CLAN_RANK_ELITE_INT)
 				new_access = list(ACCESS_YAUTJA_SECURE, ACCESS_YAUTJA_ELITE)
-			if(CLAN_RANK_ELDER_INT, CLAN_RANK_LEADER_INT)
-				new_access = list(ACCESS_YAUTJA_SECURE, ACCESS_YAUTJA_ELITE, ACCESS_YAUTJA_ELDER,)
+			if(CLAN_RANK_ELDER_INT)
+				new_access = list(ACCESS_YAUTJA_SECURE, ACCESS_YAUTJA_ELITE, ACCESS_YAUTJA_ELDER)
+			if(CLAN_RANK_LEADER_INT)
+				new_access = list(ACCESS_YAUTJA_SECURE, ACCESS_YAUTJA_ELITE, ACCESS_YAUTJA_ELDER, ACCESS_YAUTJA_LEADER)
 			if(CLAN_RANK_ADMIN_INT)
-				new_access = list(ACCESS_YAUTJA_SECURE, ACCESS_YAUTJA_ELITE, ACCESS_YAUTJA_ELDER, ACCESS_YAUTJA_ANCIENT)
+				new_access = list(ACCESS_YAUTJA_SECURE, ACCESS_YAUTJA_ELITE, ACCESS_YAUTJA_ELDER, ACCESS_YAUTJA_LEADER, ACCESS_YAUTJA_ANCIENT)
 	access = new_access
+
+/obj/item/card/id/bracer_chip/badblood/set_user_data(mob/living/carbon/human/human_user)
+	if(!istype(human_user))
+		return
+
+	registered_name = human_user.real_name
+	registered_ref = WEAKREF(human_user)
+	registered_gid = human_user.gid
+	blood_type = human_user.blood_type
+	access = list(ACCESS_YAUTJA_BADBLOOD)
+
+	var/the_faction = human_user.faction
+	faction = the_faction
+	if(!(the_faction in faction_group))
+		faction_group = list(the_faction)
 
 ///Able to dissolve anything not anchored to the ground or being held, while uncloaked.
 /obj/item/tool/yautja_cleaner
@@ -1177,9 +1213,10 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	icon_state = "medicomp"
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	use_sound = "toolbox"
-	w_class = SIZE_SMALL
+	w_class = SIZE_MEDIUM
 	storage_flags = STORAGE_FLAGS_DEFAULT
 	flags_item = ITEM_PREDATOR
+	flags_equip_slot = SLOT_STORE
 	storage_slots = 12
 	can_hold = list(
 		/obj/item/tool/surgery/stabilizer_gel,
@@ -1188,6 +1225,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 		/obj/item/reagent_container/hypospray/autoinjector/yautja,
 		/obj/item/device/healthanalyzer/alien,
 		/obj/item/tool/surgery/healing_gel,
+		/obj/item/storage/herbal_case,
 	)
 	black_market_value = 10
 
@@ -1202,6 +1240,19 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	new /obj/item/tool/surgery/healing_gel/(src)
 	new /obj/item/tool/surgery/healing_gel/(src)
 	new /obj/item/tool/surgery/healing_gel/(src)
+
+/obj/item/storage/medicomp/survivor/fill_preset_inventory()
+	new /obj/item/tool/surgery/stabilizer_gel(src)
+	new /obj/item/tool/surgery/healing_gun(src)
+	new /obj/item/tool/surgery/wound_clamp(src)
+	new /obj/item/device/healthanalyzer/alien(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/yautja(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/yautja(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/yautja(src)
+	new /obj/item/tool/surgery/healing_gel/(src)
+	new /obj/item/tool/surgery/healing_gel/(src)
+	new /obj/item/tool/surgery/healing_gel/(src)
+	new /obj/item/storage/herbal_case/full(src)
 
 /obj/item/storage/medicomp/update_icon()
 	if(!length(contents))
@@ -1645,3 +1696,27 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 /obj/item/device/houndcam/attack_hand(mob/user)
 	. = ..()
 	internal_camera.tgui_interact(user)
+
+/obj/item/storage/herbal_case
+	name = "herbs case"
+	icon = 'icons/obj/items/storage/medical.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_righthand.dmi',
+	)
+	icon_state = "surgical_case"
+	throw_speed = SPEED_FAST
+	throw_range = 8
+	storage_slots = 4
+	w_class = SIZE_SMALL
+	matter = list("plastic" = 1000)
+	can_hold = list(
+		/obj/item/stack/medical/advanced/ointment/predator,
+		/obj/item/stack/medical/advanced/bruise_pack/predator,
+	)
+
+/obj/item/storage/herbal_case/full/fill_preset_inventory()
+	new /obj/item/stack/medical/advanced/bruise_pack/predator(src)
+	new /obj/item/stack/medical/advanced/bruise_pack/predator(src)
+	new /obj/item/stack/medical/advanced/ointment/predator(src)
+	new /obj/item/stack/medical/advanced/ointment/predator(src)

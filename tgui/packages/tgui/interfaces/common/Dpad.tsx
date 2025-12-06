@@ -42,18 +42,25 @@ export const Dpad = (props) => {
   const min_value = -12;
   const max_value = 12;
   const updateOffset = (e, xValue, yValue) => {
-    if (xValue < min_value || yValue < min_value) {
-      return;
-    }
-    if (xValue > max_value || yValue > max_value) {
-      return;
-    }
-    setFmXOffsetValue(xValue);
-    setFmYOffsetValue(yValue);
+    // Check for modifier keys
+    const multiplier = e?.ctrlKey ? 12 : e?.shiftKey ? 4 : 1;
+    const finalXValue = e
+      ? xValue + (xValue - fmXOffsetValue) * (multiplier - 1)
+      : xValue;
+    const finalYValue = e
+      ? yValue + (yValue - fmYOffsetValue) * (multiplier - 1)
+      : yValue;
+
+    // Clamp values to valid range instead of rejecting
+    const clampedXValue = Math.max(min_value, Math.min(max_value, finalXValue));
+    const clampedYValue = Math.max(min_value, Math.min(max_value, finalYValue));
+
+    setFmXOffsetValue(clampedXValue);
+    setFmYOffsetValue(clampedYValue);
     act('firemission-dual-offset-camera', {
       target_id: selectedTarget,
-      x_offset_value: xValue,
-      y_offset_value: yValue,
+      x_offset_value: clampedXValue,
+      y_offset_value: clampedYValue,
     });
   };
 

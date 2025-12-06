@@ -56,6 +56,10 @@
 			handle_debris(severity, direction)
 			deconstruct(FALSE)
 
+/obj/structure/onZImpact()
+	new/obj/structure/debris()
+	qdel(src)
+
 /obj/structure/proc/handle_debris(severity = 0, direction = 0)
 	if(!LAZYLEN(debris))
 		return

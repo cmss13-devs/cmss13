@@ -731,11 +731,10 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				tacmap_component.show_tacmap(user)
 
 		if("dropbomb")
-			if(isnull(params["x"]) || isnull(params["y"]) || isnull(params["z"]))
+			if(isnull(params["x"]) || isnull(params["y"]))
 				return
 			x_bomb = text2num(params["x"])
 			y_bomb = text2num(params["y"])
-			z_bomb = text2num(params["z"])
 			if(current_orbital_cannon.is_disabled)
 				to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("Orbital bombardment cannon disabled!")]")
 			else if(!COOLDOWN_FINISHED(current_orbital_cannon, ob_firing_cooldown))
@@ -1360,27 +1359,42 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 	var/x_coord = deobfuscate_x(x_bomb)
 	var/y_coord = deobfuscate_y(y_bomb)
-	var/z_coord = deobfuscate_z(z_bomb)
+	var/z_coord = null
+	var/protected_by_pylon = FALSE
+	var/too_deap = FALSE
+	for(var/z in SSmapping.levels_by_trait(ZTRAIT_GROUND))
+		var/turf/turf = locate(x_coord, y_coord, z)
+		if(isnull(turf))
+			continue
 
-	if(!is_ground_level(z_coord))
+		if(protected_by_pylon(TURF_PROTECTION_OB, turf)) //pylon and core protects when on any z level
+			protected_by_pylon = TRUE
+			break
+		if(istype(turf, /turf/open_space)) //we do not detonate in the open
+			continue
+		if(turf.turf_flags & TURF_HULL) //this makes us ignore the walls above caves, might cause issue if someone uses turf with this flag incorrectly like almayer hull being used for roofs
+			continue
+
+		var/area/area = get_area(turf)
+		if(istype(area) && CEILING_IS_PROTECTED(area.ceiling, CEILING_DEEP_UNDERGROUND))
+			too_deap = TRUE
+			continue
+		too_deap = FALSE
+		z_coord = max(z, z_coord)
+
+	if(protected_by_pylon)
+		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("The target zone has strong biological protection. The orbital strike cannot reach here.")]")
+		return
+
+	if(isnull(z_coord))
+		if(too_deap)
+			to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("The target zone is deep underground. The orbital strike cannot reach here.")]")
+			return
+
 		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("The target zone appears to be out of bounds. Please check coordinates.")]")
 		return
 
 	var/turf/T = locate(x_coord, y_coord, z_coord)
-
-	if(isnull(T) || istype(T, /turf/open/space))
-		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("The target zone appears to be out of bounds. Please check coordinates.")]")
-		return
-
-	if(protected_by_pylon(TURF_PROTECTION_OB, T))
-		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("The target zone has strong biological protection. The orbital strike cannot reach here.")]")
-		return
-
-	var/area/A = get_area(T)
-
-	if(istype(A) && CEILING_IS_PROTECTED(A.ceiling, CEILING_DEEP_UNDERGROUND))
-		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("The target zone is deep underground. The orbital strike cannot reach here.")]")
-		return
 
 
 	//All set, let's do this.

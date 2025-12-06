@@ -720,3 +720,4 @@
 /obj/effect/landmark/tutorial_bottom_left
 	name = "tutorial bottom left"
 	icon_state = "new_player"
+

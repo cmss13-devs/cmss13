@@ -10,13 +10,13 @@ SUBSYSTEM_DEF(chat)
 	priority = SS_PRIORITY_CHAT
 	init_order = SS_INIT_CHAT
 
-	/// Assosciates a ckey with a list of messages to send to them.
+	/// Associates a ckey with a list of messages to send to them.
 	var/list/list/datum/chat_payload/client_to_payloads = list()
 
-	/// Associates a ckey with an assosciative list of their last CHAT_RELIABILITY_HISTORY_SIZE messages.
+	/// Associates a ckey with an associative list of their last CHAT_RELIABILITY_HISTORY_SIZE messages.
 	var/list/list/datum/chat_payload/client_to_reliability_history = list()
 
-	/// Assosciates a ckey with their next sequence number.
+	/// Associates a ckey with their next sequence number.
 	var/list/client_to_sequence_number = list()
 
 	/// Keeps track of resends to see how often chat bugs out

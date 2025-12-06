@@ -9,8 +9,8 @@
   - admin: Predator slot adjustment can now go negative (e.g. it can limit it lower
       than starting count)
   Joe Lampost:
-  - balance: Upp hunting ground ert memebers now have medical equipment
-  - code_imp: Lays the foundation for more faction warcrys
+  - balance: Upp hunting ground ert members now have medical equipment
+  - code_imp: Lays the foundation for more faction warcries
   - code_imp: The hunting ground erts now inform preds if nothing spawns and or how
       many humans or xenos spawned in the ert
   - bugfix: The hunting grounds no longer gets effected by weather
@@ -58,7 +58,7 @@
       limb.
 2025-02-03:
   Red-byte3D:
-  - code_imp: Replacces some one letter vars in carbon.dm
+  - code_imp: Replaces some one letter vars in carbon.dm
   - spellcheck: Replaces mentions of "belly" with "stomach" in game the tutorial(s).
   - bugfix: Hellhounds no longer get offered up to the "Join as Hellhound" button
       if the admin inhabiting it aghosts
@@ -94,7 +94,7 @@
       / xenos who died while resting
   - bugfix: Dead huggers can no longer be used to hug people
   - bugfix: You can no longer apply the black holocard to people who are still revivable
-  - bugfix: Extuingishers can no longer be filled by harmful chemicals
+  - bugfix: Extinguishers can no longer be filled by harmful chemicals
   - bugfix: Praetorian's acid ball no longer uses plasma if you cancel / do not use
       it.
   - bugfix: Mutated hive hugger icons work again.
@@ -104,7 +104,7 @@
   ZephyrTFA, san7890, Nivrak:
   - rscadd: Chat Reliability Layer
   - code_imp: TGUI chat messages now track their sequence and will be resent if the
-      client notices a discrepenency
+      client notices a discrepancy
   efzapa:
   - maptweak: Replaced the Security Cabinet in the Security Office on LV624 with a
       regular Cabinet. Almayer Crew Records should no longer spawn.
@@ -160,7 +160,7 @@
   - qol: message added when someone opens a stasis bag
 2025-02-07:
   Red-byte3D:
-  - bugfix: fixes being able to infintely dupe weapon attachements
+  - bugfix: fixes being able to infinitely dupe weapon attachments
   realforest2001:
   - rscadd: Yautja can now track gear relative to their active falcon drone.
   - rscadd: Yautja can now mark through walls and don't need direct line of sight.
@@ -173,7 +173,7 @@
   - maptweak: Corporate Dome nightmare insert now has a medic, engi, and TL.
   Red-byte3D:
   - balance: Reworks warden into the Valkyrie
-  - rscadd: Valkyrie tail stab extuingishes people you stab. This goes for /anything/
+  - rscadd: Valkyrie tail stab extinguishes people you stab. This goes for /anything/
       so you can save caps on fire or your allies.
   - rscadd: Tantrum ; You can click on a xenomorph to give them [15] armor, while
       giving yourself [10] armor, during tantrum your slashes heal more. This lasts
@@ -294,7 +294,7 @@
   - maptweak: tweaked the fighting pit area of the predship.
   - admin: Adds a new roleban relating to youngbloods.
   Red-byte3D:
-  - bugfix: Fixes forecon spotter/marksman being hit by ally bullets while inivsible
+  - bugfix: Fixes forecon spotter/marksman being hit by ally bullets while invisible
   - code_imp: Re-wrote some crusher ability code, changes one letter vars and made
       some byond ticks change seconds macro
   zzzmike:
@@ -346,7 +346,7 @@
   - qol: Updates turf descriptions to account for medevacs+CAS instead of just CAS.
 2025-02-14:
   Weuyn:
-  - balance: doubled pain effects from the paining property and defibrilating/cardiopeutic
+  - balance: doubled pain effects from the paining property and defibrillating/cardiopeutic
       overdose
   - balance: plants now require adequate food and water to grow instead of instantly
       dying at 0 nutrition
@@ -359,7 +359,7 @@
   - bugfix: (hopefully) fixed multiple chemical simulator exploits and bugs (thank
       you kiVts)
   cuberound:
-  - balance: USCM specs on HvH are replced with b18s
+  - balance: USCM specs on HvH are replaced with b18s
   private-tristan:
   - rscadd: Electrogenetic property now triggers with defibrillating.
   - balance: Painkilling and Electrogenetic are twice as powerful per level, halved
@@ -372,7 +372,7 @@
   - bugfix: Fixes fire not negating vampire healing
 2025-02-16:
   Drathek:
-  - maptweak: Removed an erronous nightmare insert on BigRed
+  - maptweak: Removed an erroneous nightmare insert on BigRed
   Red-byte3D:
   - bugfix: You can no longer crush people with unpowered doors via crowbar
   - bugfix: WO commanding officer can now use the sg pamphlet
@@ -427,7 +427,7 @@
   Red-byte3D:
   - bugfix: Carriers can no longer refills morpher from infinite range
   SerheyKr:
-  - qol: Chem master can process several pill bottles
+  - qol: Chemmaster can process several pill bottles
   Zonespace27:
   - rscadd: Valkyries can now see how much damage they have mitigated through use
       of their Tantrum ability.
@@ -520,12 +520,12 @@
   - maptweak: Ocean tiles no longer allow construction
   LC4492:
   - maptweak: Updates Lower Medbay to uh... *different* standards. Updates morgue
-      to allow for more symmetry. Changes the CMO's bunks a little to accomodate the
+      to allow for more symmetry. Changes the CMO's bunks a little to accommodate the
       new set of ladders. Updates research to have more internal space in the containment
       area, including other addons.
   - rscadd: Adds an access define for Field Medical supply room.
   NHC:
-  - bugfix: fixed PO tactical fligthsuit to use the TOGGLEJACKET verb instead of the
+  - bugfix: fixed PO tactical flightsuit to use the TOGGLEJACKET verb instead of the
       ROLL_SLEEVES verb to toggle its jacket
   efzapa:
   - rscadd: Added Sandstone Ceilings.

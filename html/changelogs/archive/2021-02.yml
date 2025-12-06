@@ -32,8 +32,8 @@
       floating point fuckery happens, the OT lab won't explode.
 2021-02-03:
   Segrain:
-  - tweak: Smartgun's armourpiercing bullets now have a distinct name.
-  - bugfix: Reloading a smartgun no longer resets it out of armourpiercing mode.
+  - tweak: Smartgun's armour piercing bullets now have a distinct name.
+  - bugfix: Reloading a smartgun no longer resets it out of armour piercing mode.
   - tweak: Calculations for smartgun's recoil brought in line with intended values.
 2021-02-04:
   Firartix:
@@ -81,12 +81,12 @@
       station maintenance hatches, manually placeable carpet variants, and church
       pews (credit Monkeysfist101)'
   - imageadd: 'Resprited some legacy content, including but not limited to: Minecarts,
-      trashcarts, M16 rifle, MP5 Submachine gun, food processors, gibber machines,
+      trash carts, M16 rifle, MP5 Submachine gun, food processors, gibber machines,
       and DEFCON spawn markers.'
   - rscadd: Added United American Riot Control corpse presets.
 2021-02-09:
   Nanu:
-  - maptweak: New Prison - Fixes the north walls by inflateable area. Can no longer
+  - maptweak: New Prison - Fixes the north walls by inflatable area. Can no longer
       be breached.
   - maptweak: New Prison - Changed Doors by Hannibal to be invincible Structures.
   Segrain:
@@ -126,7 +126,7 @@
       allowing their deletion.
   - bugfix: Reagents code change subsequently means that deleting pills or bottles
       allow them to be garbaged by solving the circular reference.
-  - bugfix: Ingesting things does not create a time-traveling invisible botomless
+  - bugfix: Ingesting things does not create a time-traveling invisible bottomless
       beaker anymore.
   - bugfix: The ubiquitous napalm on every human (???) will now delete with them instead
       of clinging them into this hellish reality.
@@ -146,7 +146,7 @@
   - bugfix: Admins with attack logs turned on now hear 'X has died to Y' deadchat
       messages.
   Firartix:
-  - bugfix: Blood created during map laoding now instantly dries to circumvent deletion
+  - bugfix: Blood created during map loading now instantly dries to circumvent deletion
       issues
   - bugfix: Effects scheduled on deleted objects now delete too
   TheDonkified:

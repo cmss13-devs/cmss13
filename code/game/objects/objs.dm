@@ -32,7 +32,7 @@
 	var/access_modified = FALSE
 
 	var/flags_obj = NO_FLAGS
-	/// set when a player uses a pen on a renamable object
+	/// set when a player uses a pen on a renameable object
 	var/renamedByPlayer = FALSE
 
 	vis_flags = VIS_INHERIT_PLANE

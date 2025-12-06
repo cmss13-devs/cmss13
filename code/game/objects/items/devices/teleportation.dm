@@ -78,7 +78,7 @@
 										direct = "very weak"
 							src.temp += "[W.code]-[dir2text(get_dir(sr, tr))]-[direct]<BR>"
 
-				src.temp += "<B>Extranneous Signals:</B><BR>"
+				src.temp += "<B>Extraneous Signals:</B><BR>"
 				for (var/i in GLOB.tracking_implant_list)
 					var/obj/item/implant/tracking/W = i
 					if (!W.implanted || !(istype(W.loc,/obj/limb) || ismob(W.loc)))

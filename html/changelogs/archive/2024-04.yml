@@ -99,7 +99,7 @@
   Waseemq1235:
   - mapadd: Added an APOLLO maintenance controller to the Warden's Office.
   cuberound:
-  - balance: greatly decreses snow removal time, now it depends on xenomorph size
+  - balance: greatly decreases snow removal time, now it depends on xenomorph size
   - balance: allows movement during tactical reload (to perform tactical reload click
       and drag from a magazine to gun in your hand)
   - balance: reduced GAU spread from 9x9 to 7x7
@@ -200,7 +200,7 @@
       blades to about a knife, pickaxe to about a machete, police baton to a knife)
   - bugfix: adds missing hit sound to pickaxe(slicing)
   - bugfix: adds missing pouch for UPP Synthetic Survivor
-  - spellcheck: properly names reconaissance synthetic in spawn
+  - spellcheck: properly names reconnaissance synthetic in spawn
   - rscdel: removes Detective and Janitor Synthetic from rotation(temporary, until
       I can better reaestheticize their looks)
   Tim Harley cookpet:
@@ -284,7 +284,7 @@
   Ben10083:
   - rscadd: Synthetics when shoved into meat gibber will not be delimbed and spawn
       their own flesh, but would not die (they are spat out as a torso and head)
-  - admin: Adjustment to meatgibber code to notify admins when a synthetic is being
+  - admin: Adjustment to meat gibber code to notify admins when a synthetic is being
       shoved into gibber
   Git-Nivrak:
   - bugfix: You can no longer infinitely extend  facehugger's lifetime by REDACTED
@@ -345,7 +345,7 @@
   - bugfix: You can delete flight logs from ARES Interface again as intended.
 2024-04-26:
   Git-Nivrak:
-  - qol: You can now change the color of pill bottles in the chem master or with a
+  - qol: You can now change the color of pill bottles in the chemmaster or with a
       hand labeler.
   realforest2001:
   - spellcheck: Fixes a typo for M4RA AP Ammo in the ASRS menu.

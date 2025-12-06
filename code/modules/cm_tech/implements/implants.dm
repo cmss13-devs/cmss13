@@ -207,7 +207,7 @@
 	name = "agility implant"
 	desc = "This implant will make you more agile, allowing you to vault over structures extremely quickly and allowing you to fireman carry other people."
 	implant_type = /obj/item/device/internal_implant/agility
-	implant_string = "your heartrate increasing significantly and your pupils dilating."
+	implant_string = "your heart rate increasing significantly and your pupils dilating."
 
 /obj/item/device/implanter/agility/get_examine_text(user)
 	. = ..()

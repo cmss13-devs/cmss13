@@ -1,6 +1,6 @@
 //Hydroponics tank and base code
 /obj/item/reagent_container/glass/watertank
-	name = "backpack watertank"
+	name = "backpack water tank"
 	desc = "A commercially-produced backpack tank, capable of holding and spraying various liquids. Widely used in the agricultural industry on colonies and in space stations."
 	icon = 'icons/obj/items/backpack_sprayers.dmi'
 	icon_state = "backpack_sprayer"
@@ -119,10 +119,10 @@
 	else
 		. += SPAN_NOTICE("Its nozzle is detached.")
 
-// This mister item is intended as an extension of the watertank and always attached to it.
+// This mister item is intended as an extension of the water tank and always attached to it.
 // Therefore, it's designed to be "locked" to the player's hands or extended back onto
-// the watertank backpack. Allowing it to be placed elsewhere or created without a parent
-// watertank object will likely lead to weird behaviour or runtimes.
+// the water tank backpack. Allowing it to be placed elsewhere or created without a parent
+// water tank object will likely lead to weird behaviour or runtimes.
 /obj/item/reagent_container/spray/mister
 	name = "water mister"
 	desc = "A mister nozzle attached to a water tank. This is what your reagents come out of."
@@ -201,8 +201,8 @@
 #define METAL_FOAM 2
 
 /obj/item/reagent_container/glass/watertank/atmos
-	name = "backpack firefighting watertank"
-	desc = "A refrigerated and pressurised backpack tank with an extinguisher nozzle, intended to fight fires and plug hull breaches. Swaps between extinguisher, metal foam launcher and a smaller scale metal foamer."
+	name = "backpack firefighting water tank"
+	desc = "A refrigerated and pressurized backpack tank with an extinguisher nozzle, intended to fight fires and plug hull breaches. Swaps between extinguisher, metal foam launcher and a smaller scale metal foamer."
 	icon_state = "backpack_foamer"
 	item_state = "backpack_foamer"
 	volume = 500

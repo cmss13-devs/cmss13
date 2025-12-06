@@ -103,7 +103,7 @@ SUBSYSTEM_DEF(statpanels)
 			return
 
 /datum/controller/subsystem/statpanels/proc/set_status_tab(client/target)
-	if(!global_data)//statbrowser hasnt fired yet and we were called from immediate_send_stat_data()
+	if(!global_data)//statbrowser hasn't fired yet and we were called from immediate_send_stat_data()
 		return
 
 	target.stat_panel.send_message("update_stat", list(

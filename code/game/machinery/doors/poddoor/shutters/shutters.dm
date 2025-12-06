@@ -47,7 +47,7 @@
 	if(operating != DOOR_OPERATING_OPENING)
 		return
 	if(QDELETED(src))
-		return // Specifically checked because of the possiible addtimer
+		return // Specifically checked because of the possible addtimer
 
 	density = FALSE
 	layer = open_layer
@@ -227,7 +227,7 @@
 	id = "cl_office_door"
 /obj/structure/machinery/door/poddoor/shutters/almayer/cl/office/window
 	id = "cl_office_windows"
-//adding a subtype for CL quarter to use to secure access to cl quarter.(including seperation with the office)
+//adding a subtype for CL quarter to use to secure access to cl quarter.(including separation with the office)
 /obj/structure/machinery/door/poddoor/shutters/almayer/cl/quarter
 /obj/structure/machinery/door/poddoor/shutters/almayer/cl/quarter/backdoor
 	id = "cl_quarter_maintenance"

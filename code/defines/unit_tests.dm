@@ -6,7 +6,7 @@
 /// For advanced cases, fail unconditionally but don't return (so a test can return multiple results)
 #define TEST_FAIL(reason) (Fail(reason || "No reason", __FILE__, __LINE__))
 
-/// For advanced cases, to note a warning to be provied in a seperate group but don't return or fail the test
+/// For advanced cases, to note a warning to be provided in a separate group but don't return or fail the test
 #define TEST_WARN(reason) (Warn(reason || "No reason", __FILE__, __LINE__))
 
 /// Asserts that a condition is true

@@ -205,7 +205,7 @@
 /datum/reagent/toxin/plantbgone
 	name = "Plant-B-Gone"
 	id = "plantbgone"
-	description = "A harmful toxic mixture used to kill plantlife. Very toxic to animals."
+	description = "A harmful toxic mixture used to kill plant life. Very toxic to animals."
 	reagent_state = LIQUID
 	color = "#49002E" // rgb: 73, 0, 46
 	properties = list(PROPERTY_TOXIC = 4)
@@ -268,7 +268,7 @@
 /datum/reagent/toxin/potassium_phorosulfate
 	name = "Potassium Phorosulfate"
 	id = "potassium_phorosulfate"
-	description = "A chemical made from a violent reaction using sulphuric acid. Has specific industrial uses in sterelizing surfaces from biological contamination in non human accessible ares. Not used in other areas due to its long lasting corrosive effects unless treated."
+	description = "A chemical made from a violent reaction using sulphuric acid. Has specific industrial uses in sterilizing surfaces from biological contamination in non human accessible ares. Not used in other areas due to its long lasting corrosive effects unless treated."
 	reagent_state = SOLID
 	color = COLOR_WHITE
 	overdose = 10
@@ -329,7 +329,7 @@
 /datum/reagent/toxin/acid/polyacid
 	name = "Polytrinic acid"
 	id = "pacid"
-	description = "An extremely corrosive acid that's capable of disolving a broad range of materials very quickly."
+	description = "An extremely corrosive acid that's capable of dissolving a broad range of materials very quickly."
 	reagent_state = LIQUID
 	spray_warning = TRUE
 	color = "#8E18A9" // rgb: 142, 24, 169

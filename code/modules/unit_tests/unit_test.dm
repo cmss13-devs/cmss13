@@ -255,7 +255,7 @@ GLOBAL_VAR_INIT(focused_test, focused_test())
 
 	if(stage == TEST_STAGE_GAME)
 		SSticker.force_ending = TRUE
-		//We have to call this manually because del_text can preceed us, and SSticker doesn't fire in the post game
+		//We have to call this manually because del_text can precede us, and SSticker doesn't fire in the post game
 		world.Reboot()
 	else
 		SSticker.delay_start = FALSE

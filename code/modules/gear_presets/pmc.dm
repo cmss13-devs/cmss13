@@ -103,7 +103,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/ap, WEAR_IN_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/ap, WEAR_IN_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/ap, WEAR_IN_BACK)
-		if(2) //Light with a nsg23 rifle (UBS+reflex sight+supressor) / fp9000 pmc version
+		if(2) //Light with a nsg23 rifle (UBS+reflex sight+suppressor) / fp9000 pmc version
 			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/pmc, WEAR_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc, WEAR_HEAD)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/pmc/light, WEAR_JACKET)
@@ -167,7 +167,7 @@
 		list("ARMOR (CHOOSE 1)", 0, null, null, null),
 		list("Standard Armor (no lamp)", 0, /obj/item/clothing/suit/storage/marine/veteran/pmc/no_lamp, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_RECOMMENDED),
 		list("Light Armor", 0, /obj/item/clothing/suit/storage/marine/veteran/pmc/light, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
-		list("Bulletpoof Vest", 0, /obj/item/clothing/suit/storage/marine/veteran/pmc/light/bulletproof, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
+		list("Bulletproof Vest", 0, /obj/item/clothing/suit/storage/marine/veteran/pmc/light/bulletproof, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
 
 		list("BELT (CHOOSE 1)", 0, null, null, null),
 		list("M276 Ammo Load Rig", 0, /obj/item/storage/belt/marine, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
@@ -1746,7 +1746,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		list("Gloves", 0, /obj/item/clothing/gloves/marine/veteran/pmc, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
 		list("Headset", 0, /obj/item/device/radio/headset/distress/pmc/hvh, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
 		list("CFR", 0,  /obj/item/storage/box/mre/pmc, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
-		list("Combat Welder Pack", 0, /obj/item/storage/backpack/marine/engineerpack/ert/pmc, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
+		list("Combat Welderpack", 0, /obj/item/storage/backpack/marine/engineerpack/ert/pmc, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
 		list("Armored Balaclava", 0, /obj/item/clothing/mask/gas/pmc, MARINE_CAN_BUY_MASK, VENDOR_ITEM_MANDATORY),
 		list("Technician Helmet", 0, /obj/item/clothing/head/helmet/marine/veteran/pmc/enclosed/engineer, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
 

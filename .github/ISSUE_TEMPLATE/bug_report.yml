@@ -14,7 +14,7 @@ body:
     id: round-id
     attributes:
       label: Round ID
-      description: If known, what was the Round ID this bug was found on? Can be left blank if unknown or occured across multiple rounds.
+      description: If known, what was the Round ID this bug was found on? Can be left blank if unknown or occurred across multiple rounds.
       placeholder: "12345"
   - type: textarea
     id: what-happened

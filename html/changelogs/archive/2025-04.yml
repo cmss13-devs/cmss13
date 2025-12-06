@@ -14,7 +14,7 @@
   - bugfix: universal speak is working again
 2025-04-02:
   ChampionDragos, detectivegoogle:
-  - rscadd: A new lorebook spawns in the pilot bunks.
+  - rscadd: A new lore book spawns in the pilot bunks.
   Detective-Google:
   - balance: colony boozeomats are no longer always full
   Drathek:
@@ -50,7 +50,7 @@
   - balance: Guns can no longer be deleted when acid is poured into it, instead requiring
       repairs. Zero durability weapons still get deleted if its acided, however.
   Red-byte3D:
-  - bugfix: You can no longer remove documents from a cabinet when youre away from
+  - bugfix: You can no longer remove documents from a cabinet when you're away from
       it
   jupyterkat:
   - bugfix: fixed spec icons on orbit panel
@@ -90,7 +90,7 @@
   - config: Add to Config - Block nuclear device invocation until more marines than
       this percentage are alive. (0-100)
   Red-byte3D:
-  - bugfix: Cant buckle alive xenos to things anymore
+  - bugfix: Can't buckle alive xenos to things anymore
   - bugfix: Hellhound callers can only be called by people with TRAIT_YAUTJA_TECH
   SpypigDev:
   - ui: converts groundside ops console to TGUI
@@ -139,9 +139,9 @@
   - balance: terminator smartgun firerate has been nerfed severely since it's no longer
       whiteout weapon
   - balance: pmc fp9000 scatter on automatic mode has been reduced to a playable number
-  - balance: pmc survivors (big red) now have slighly better gear (engineer has big
+  - balance: pmc survivors (big red) now have slightly better gear (engineer has big
       backpack and welding protection helmet, leader has big backpack, normal pmc
-      has 1/3 chance to spawn with a slighly better helmet and big backpack)
+      has 1/3 chance to spawn with a slightly better helmet and big backpack)
   - balance: pmc balaclava no longer gives hugger protection
   - balance: non deathsquad whiteout droids no longer have insane armor stats
   - balance: es4 been buffed slightly, should now be a bit less useless in cl's hands
@@ -160,7 +160,7 @@
   Doc12693420:
   - spellcheck: fixes a typo in bone-mending chem property, "Re-wowen" to "Re-woven"
   Git-Nivrak:
-  - admin: Added logging for joing as facehugger or lesser drone
+  - admin: Added logging for joining as facehugger or lesser drone
   Steelpoint, Cuberound, Blundir, Zenith, dimdimich1996, .gl0ck, feroxz:
   - mapadd: The SSV Rostock, a UPP warship equivalent to the USS Almayer, has been
       added to the game as an admin-spawnable ship.
@@ -235,7 +235,7 @@
   Aurallianz:
   - bugfix: Fixes Intercom and APC in the Memorial Garden Area
   DoguhanOzgurAkca:
-  - rscadd: Addeded a new area to LV lake house area that isn't underground.
+  - rscadd: Added a new area to LV lake house area that isn't underground.
   MeH0y:
   - bugfix: the yautja bow now counts as one of your two secondary choices
   Red-byte3D:
@@ -294,7 +294,7 @@
   - balance: Lessers and Huggers now have a 5 minute respawn timer for non-lesser/hugger
       deaths/ghosting
   Mikrel0712:
-  - rscadd: Added a laser targetting mode to the M402 Mortar. You can now link a laser
+  - rscadd: Added a laser targeting mode to the M402 Mortar. You can now link a laser
       designator to the mortar, and fire directly on laser targets as an alternative
       to firing on coordinates.
   Stakeyng:
@@ -311,7 +311,7 @@
   cuberound:
   - bugfix: prevents harmful spray during ceasefire
   efzapa:
-  - maptweak: Hunting Ground Evac Shutters are now properly indestructable.
+  - maptweak: Hunting Ground Evac Shutters are now properly indestructible.
 2025-04-18:
   BOBAMAx:
   - bugfix: CO survs on NV will no longer be UASF COs in the CLF insert
@@ -379,7 +379,7 @@
   Detective-Google:
   - bugfix: CO council can vend bomber jackets again
   Lagomorphica:
-  - balance: Security on Hybrisia Prospera have had buget cuts and no longer have
+  - balance: Security on Hybrisa Prospera have had budget cuts and no longer have
       large magazine pouches.
   PhantornRU:
   - bugfix: fix propelled chair when not wheeled chair
@@ -412,7 +412,7 @@
       of gun 32x32 dmi limitations
   - imageadd: moved custom magazine on gun sprite to gun sprite files
   Drathek:
-  - code_imp: Autowiki gun templates now lists unwielded stats as N/A for two handers
+  - code_imp: Autowiki gun templates now lists unwielded stats as N/A for twohanders
   - code_imp: Autowiki xeno comparisons now round to the nearest hundredth
   Willzadl:
   - rscadd: pitchblende extended lore description
@@ -440,18 +440,18 @@
   - bugfix: type47 UPP rig fits on external webbing, mateba rig fits on marine armor
   - bugfix: allows crafting m4ra extended boxes with cardboard
   - rscadd: added m4ra extended magazine box for req to buy
-  - rscadd: adds black insul gloves to CT, FTL, SL and IO, gave it a new icon when
+  - rscadd: adds black insulated gloves to CT, FTL, SL and IO, gave it a new icon when
       its on the floor too
   - bugfix: fixed black gloves not being black
   - bugfix: fixes inhand sprites for m12 helmets, and grenadier helmet
 2025-04-23:
   Aurallianz:
-  - rscadd: After a two-minute post-cryo-wakeup period, ARES will provide an announcement
+  - rscadd: After a two-minute post-cryo-wake-up period, ARES will provide an announcement
       stating the commander.
   - rscadd: ARES will modify your ID and give you senior command access if you don't
       have it.
   - maptweak: Added a command headset to the Command tablet locker.
-  - bugfix: Fixed CE's incorrect wakeup message
+  - bugfix: Fixed CE's incorrect wake up message
   Blundir:
   - bugfix: fixed gun oil not rendering on helmet
   - imageadd: gun repair kit resprite
@@ -556,7 +556,7 @@
   Drathek:
   - bugfix: Fixed a runtime for stat panel examine whenever ghosting/logging out
   - bugfix: Xenos can now bleed out when inside atoms (e.g. pipes)
-  - bugfix: Xenos now always take atleast 1 dmg from queen banishment (rather than
+  - bugfix: Xenos now always take at least 1 dmg from queen banishment (rather than
       healing when in crit)
   - qol: Banished xenos in a tunnel can now exit using alt+click (they could have
       used the exit-tunnel verb however)

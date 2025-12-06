@@ -284,7 +284,7 @@
 
 /obj/item/card/id/marshal
 	name = "\improper CMB marshal gold badge"
-	desc = "A coveted gold badge signifying that the wearer is one of the few CMB Marshals patroling the outer rim. It is a sign of justice, authority, and protection. Protecting those who can't. This badge represents a commitment to a sworn oath always kept."
+	desc = "A coveted gold badge signifying that the wearer is one of the few CMB Marshals patrolling the outer rim. It is a sign of justice, authority, and protection. Protecting those who can't. This badge represents a commitment to a sworn oath always kept."
 	icon_state = "cmbmar"
 	id_type = "Badge"
 	item_state = "cmbmar"
@@ -391,7 +391,7 @@
 	switch(alert("Would you like to display the ID, or retitle it?","Choose.","Rename","Show"))
 		if("Rename")
 			var/new_name = strip_html(input(user, "What name would you like to put on this card?", "Agent card name", ishuman(user) ? user.real_name : user.name),26)
-			if(!new_name || new_name == "Unknown" || new_name == "floor" || new_name == "wall" || new_name == "r-wall") //Same as mob/new_player/prefrences.dm
+			if(!new_name || new_name == "Unknown" || new_name == "floor" || new_name == "wall" || new_name == "r-wall") //Same as mob/new_player/preferences.dm
 				to_chat(user, SPAN_WARNING("Invalid Name."))
 				return
 
@@ -400,7 +400,7 @@
 				to_chat(user, SPAN_WARNING("Invalid Assignment."))
 				return
 
-			var/new_rank = strip_html(input(user, "What paygrade do would you like to put on this card?\nNote: This must be the shorthand version of the grade, I.E CIV for Civillian or ME1 for Marine Private", "Agent card paygrade assignment", PAY_SHORT_CIV))
+			var/new_rank = strip_html(input(user, "What paygrade do would you like to put on this card?\nNote: This must be the shorthand version of the grade, I.E CIV for Civilian or ME1 for Marine Private", "Agent card paygrade assignment", PAY_SHORT_CIV))
 			if(!new_rank || !(new_rank in GLOB.paygrades))
 				to_chat(user, SPAN_WARNING("Invalid Paygrade."))
 				return

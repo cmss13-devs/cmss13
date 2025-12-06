@@ -1,7 +1,7 @@
 2019-07-02:
   RavingManiac:
   - tweak: Turning no longer results in a move delay.
-  - rscadd: 'Macros: "northface" to face north, "northfaceperm" to face north permenantly.
+  - rscadd: 'Macros: "northface" to face north, "northfaceperm" to face north permanently.
       Same for the other directions.'
 2019-07-06:
   Cakey:
@@ -84,7 +84,7 @@
   - rscadd: Added special Elder Predator gear presets for admins to use in their events.
   TobiNerd:
   - maptweak: Old gunrange has been replaced by a larger chapel. Unga bless the USCM.
-  - maptweak: New gunranges has been added east of prep.
+  - maptweak: New gun ranges has been added east of prep.
   - maptweak: The north and south ERT hangars has been moved further west, next to
       the hallways north and south of medbay.
   - maptweak: Tweaked the lower starboard office area to compensate for space.
@@ -144,7 +144,7 @@
   - rscadd: Mob rendering has been overhauled. If you see anything strange, please
       report it on the gitlab.
   - rscadd: Monkeys are now a subtype of human, which means they can now wear more
-      types of clothing. Time to pla dressup monkey!
+      types of clothing. Time to play dressup monkey!
   - rscadd: Monkeys will now randomly pick up, drop, and throw items, as well as occasionally
       shoot guns.
   - rscadd: Overhauled the accessory system to allow for multiple accessories on clothing,
@@ -209,7 +209,7 @@
   - tweak: Nerfed movespeed of Dancer praetorians, increased the cooldown of Dance,
       nerfed its duration.
   - tweak: Nerfed the caste's pheromones further.
-  - tweak: Increased cooldown of Praetorian screeches accross the board.
+  - tweak: Increased cooldown of Praetorian screeches across the board.
   - tweak: Eliminated screenshake for Xeno players from Praetorian screech and reduced
       it for Marine players.
   - bugfix: Fixed the issue where Praes would be spammed with messages after the effects
@@ -236,7 +236,7 @@
   RavingManiac:
   - tweak: Prone mobs receive half the effect from an explosion.
   - tweak: Directional lighting beam made wider.
-  - bugfix: Alt+direction to permanantly face a specific direction now works in hotkey
+  - bugfix: Alt+direction to permanently face a specific direction now works in hotkey
       mode.
   Retrokinesis:
   - bugfix: Fixed some improper computer facing on the Almayer.
@@ -269,7 +269,7 @@
   - bugfix: Fixed cosmetic eye items not showing up in the mask slot.
   - bugfix: Fixed xenos being unable to ventcrawl with a devoured monkey.
   - bugfix: Fixed latex gloves being in the Squad Medic prep vendor.
-  - bugfix: Fixed being able to move in zoom. Sniping is sligtly worse until a more
+  - bugfix: Fixed being able to move in zoom. Sniping is slightly worse until a more
       suitable fix is found.
   - bugfix: Yirens can now withstand the cold on Ice Colony.
   Vicacrov:
@@ -372,15 +372,15 @@
   Vicacrov:
   - bugfix: Yautja - Ceremonial daggers and chain whips are now trackable.
   - rscadd: Added a new surgery chemical, suxamorycin. Details follow.
-  - rscadd: After 5 seconds, it applies a new status effect called paralyis.
+  - rscadd: After 5 seconds, it applies a new status effect called paralysis.
   - rscadd: Paralysis can be seen via examining a mob.
   - rscadd: During paralysis the patient cannot move, see, talk, or feel pain. However,
       they can hear everything around them and on the radio, to keep them in the loop
       during surgery.
-  - rscadd: Paralysed patients can be operated on with a 100% success (minus the surface
+  - rscadd: Paralyzed patients can be operated on with a 100% success (minus the surface
       penalties, of course). Use this to your advantage with lung ruptures.
   - rscadd: Suxamorycin, being an experimental W-Y chemical, may have some... unintended
-      side effects. Nothing permament, however.
+      side effects. Nothing permanent, however.
   - rscadd: Suxamorycin can be made by mixing chloral hydrate, oxygen, and nitrogen.
   - tweak: The Soporific bottles and autoinjectors in medical vendors were replaced
       with suxamorycin ones.

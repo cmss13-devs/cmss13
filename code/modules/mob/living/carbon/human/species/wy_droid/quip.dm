@@ -13,14 +13,8 @@
 	say_message = "Destroy the hunter."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
-/datum/emote/living/carbon/human/synthetic/colonial/wy_droid/quip/elimininate_xenos
-	key = "elimininatexenos"
-	sound = 'sound/voice/wy_droid/voicelines/eliminate_the_xenomorphs.ogg'
-	say_message = "Eliminate the xenomorphs."
-	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-
-/datum/emote/living/carbon/human/synthetic/colonial/wy_droid/quip/elimininate_xenos
-	key = "elimininatexenos"
+/datum/emote/living/carbon/human/synthetic/colonial/wy_droid/quip/eliminate_xenos
+	key = "eliminatexenos"
 	sound = 'sound/voice/wy_droid/voicelines/eliminate_the_xenomorphs.ogg'
 	say_message = "Eliminate the xenomorphs."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE

@@ -231,7 +231,7 @@
 	if(!result)
 		return
 
-	//okay so the standard TGS4 proceedure is: right before rebooting change the port to whatever was sent to us in the above json's data parameter
+	//okay so the standard TGS4 procedure is: right before rebooting change the port to whatever was sent to us in the above json's data parameter
 
 	var/port = result[TGS4_PARAMETER_DATA]
 	if(!isnum(port))

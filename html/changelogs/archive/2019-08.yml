@@ -62,7 +62,7 @@
   - tweak: You can now dump the contents from plant bags directly into chemistry grinders.
       (#7008)
   - tweak: Added a bog of empty spray bottles to research. (#7238)
-  - imageadd: Changed vialbox icons into the sprites left behind by NicBoone.
+  - imageadd: Changed vial box icons into the sprites left behind by NicBoone.
   - maptweak: Added two more monkey cube boxes to Almayer research. One in the lab
       and one in the closet.
   - maptweak: Added boxes with empty vials to Almayer research.
@@ -71,7 +71,7 @@
   - tweak: Added a verb to paper bins for switching the secondary paper type. Paper
       bins on the Almayer have USCM types. Research and the CL office has the company
       type. You can still switch to carbon-copy by using the verb.
-  - tweak: In paperformatting, you can now use [uscm] to make a USCM logo or [wy]
+  - tweak: In paper formatting, you can now use [uscm] to make a USCM logo or [wy]
       for a company logo. [logo] still works so you don't have to redo all your templates.
   - experiment: CHEMICAL RESEARCH UPDATE
   - rscadd: Added a random chemical generator to CM. This can generate random chemicals
@@ -96,7 +96,7 @@
   - rscadd: 'Identifying a new chemical will give DEFCON, with more points from rare
       ones. You know this when the XRF prints: Saved emission spectrum of...'
   - rscadd: 'Note: The XRF does not analyze the properties of a chemical. But will
-      print any infomation it might have in its database.'
+      print any information it might have in its database.'
   - tweak: Updated the description of most chemicals to fit better with the XRF. Not
       like you could see the descriptions before anyway...
   - rscadd: The medical computer can now print scan records onto paper.

@@ -15,7 +15,7 @@
 
 	// Config
 	var/duration = 35
-	var/speed_buff_amount = 0.8 // Go from shit slow to kindafast
+	var/speed_buff_amount = 0.8 // Go from shit slow to kinda fast
 	var/armor_buff_amount = 5 // hopefully-minor buff so they can close the distance
 
 	var/buffs_active = FALSE

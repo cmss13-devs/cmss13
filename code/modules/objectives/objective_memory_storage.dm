@@ -1,4 +1,4 @@
-//A datum for storing objective data in the mind in an organised fashion
+//A datum for storing objective data in the mind in an organized fashion
 /datum/objective_memory_storage
 	var/list/datum/cm_objective/folders = list()
 	var/list/datum/cm_objective/progress_reports = list()

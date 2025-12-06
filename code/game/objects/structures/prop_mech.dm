@@ -54,11 +54,11 @@
 	icon_state = "ripley_r_arm"
 /obj/structure/prop/mech/parts/ripley_left_leg
 	name="P-1000 Left Leg"
-	desc="A P-1000 APLU left leg. Contains somewhat complex servodrives and balance maintaining systems."
+	desc="A P-1000 APLU left leg. Contains somewhat complex servo drives and balance maintaining systems."
 	icon_state = "ripley_l_leg"
 /obj/structure/prop/mech/parts/ripley_right_leg
 	name="P-1000 Right Leg"
-	desc="A P-1000 APLU right leg. Contains somewhat complex servodrives and balance maintaining systems."
+	desc="A P-1000 APLU right leg. Contains somewhat complex servo drives and balance maintaining systems."
 	icon_state = "ripley_r_leg"
 
 //gygax turned into MAX (Mobile Assault Exo-Warrior)look like a gygax from afar
@@ -71,7 +71,7 @@
 	icon_state = "gygax_harness"
 /obj/structure/prop/mech/parts/gygax_head
 	name="MAX Head"
-	desc="A MAX head. Houses advanced surveilance and targeting sensors."
+	desc="A MAX head. Houses advanced surveillance and targeting sensors."
 	icon_state = "gygax_head"
 /obj/structure/prop/mech/parts/gygax_left_arm
 	name="MAX Left Arm"
@@ -164,11 +164,11 @@
 	icon_state = "odysseus_r_arm"
 /obj/structure/prop/mech/parts/odysseus_left_leg
 	name="Odysseus Left Leg"
-	desc="An Odysseus left leg. Contains somewhat complex servodrives and balance maintaining systems."
+	desc="An Odysseus left leg. Contains somewhat complex servo drives and balance maintaining systems."
 	icon_state = "odysseus_l_leg"
 /obj/structure/prop/mech/parts/odysseus_right_leg
 	name="Odysseus Right Leg"
-	desc="A Odysseus right leg. Contains somewhat complex servodrives and balance maintaining systems."
+	desc="A Odysseus right leg. Contains somewhat complex servo drives and balance maintaining systems."
 	icon_state = "odysseus_r_leg"
 /obj/structure/prop/mech/parts/odysseus_armor_plates
 	name="Odysseus Armor Plates"

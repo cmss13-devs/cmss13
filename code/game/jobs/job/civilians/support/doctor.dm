@@ -32,7 +32,7 @@
 		else
 			gear_preset = /datum/equipment_preset/uscm_ship/uscm_medical/doctor
 
-//check what job option you took and generate the corresponding the good texte.
+//check what job option you took and generate the corresponding text.
 /datum/job/civilian/doctor/generate_entry_message(mob/living/carbon/human/target)
 	switch(doctor_variant)
 		if(SURGEON_VARIANT)

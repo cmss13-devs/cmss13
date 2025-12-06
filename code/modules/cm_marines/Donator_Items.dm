@@ -176,7 +176,7 @@
 		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/donator.dmi'
 	)
 
-/obj/item/clothing/gloves/marine/fluff   //MARINE GLOVES TEMPLATE
+/obj/item/clothing/gloves/marine/fluff  //MARINE GLOVES TEMPLATE
 	name = "ITEM NAME"
 	desc = "ITEM DESCRIPTION.  DONOR ITEM" //Add UNIQUE if Unique
 	icon_state = null
@@ -222,7 +222,7 @@
 
 /obj/item/clothing/mask/fluff/balaclava //GENERIC DONOR
 	name = "Balaclava"
-	desc = "A black Balaclava used for hiding your face.  DISCLAIMER: May not actually hide your face... DONOR ITEM"
+	desc = "A black Balaclava used for hiding your face. DISCLAIMER: May not actually hide your face...  DONOR ITEM"
 	item_state = "balaclava"
 	icon_state = "balaclava"
 	icon = 'icons/obj/items/clothing/masks/balaclava.dmi'
@@ -234,7 +234,7 @@
 
 /obj/item/clothing/glasses/fluff/eyepatch //GENERIC DONOR
 	name = "An Eyepatch"
-	desc = "Badass +10.  Donor Item"
+	desc = "Badass +10.  DONOR ITEM"
 	icon = 'icons/obj/items/clothing/glasses/misc.dmi'
 	item_icons = list(
 		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/misc.dmi',
@@ -270,7 +270,7 @@
 
 /obj/item/clothing/suit/storage/marine/fluff/obey //CKEY=obeystylez (UNIQUE)
 	name = "Black Ops Ablative Armor Vest"
-	desc = "Some fancy looking armor.  DONOR ITEM"
+	desc = "Some fancy looking armor.  UNIQUE DONOR ITEM"
 	icon_state = "armor_reflec"
 	item_state = "armor_reflec"
 	icon = 'icons/obj/items/clothing/suits/armor.dmi'
@@ -280,7 +280,7 @@
 
 /obj/item/clothing/suit/storage/marine/fluff/sas_juggernaut //CKEY=sasoperative (UNIQUE)
 	name = "Ranger Jacket"
-	desc = "An old Kevlar Jacket. DONOR ITEM"
+	desc = "An old Kevlar Jacket.  UNIQUE DONOR ITEM"
 	icon_state = "hunkjacket"
 	item_state = "hunkjacket"
 
@@ -299,7 +299,7 @@
 
 /obj/item/clothing/suit/storage/marine/fluff/wright //CKEY=wrightthewrong
 	name = "Swat Armor"
-	desc = "Some fancy looking armor. DONOR ITEM"
+	desc = "Some fancy looking armor.  DONOR ITEM"
 	icon_state = "deathsquad"
 	item_state = "swat_suit"
 
@@ -317,7 +317,7 @@
 
 /obj/item/clothing/suit/storage/marine/light/fluff/sas_legion //CKEY=sasoperative (UNIQUE)
 	name = "M3 Ranger Armor"
-	desc = "A set of M3 Pattern Ranger Armor, There probably are not many of these laying around.  DONOR ITEM."
+	desc = "A set of M3 Pattern Ranger Armor, There probably are not many of these laying around.  UNIQUE DONOR ITEM"
 	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|MAP_COLOR_INDEX
 	icon_state = "rangerarmor"
 	item_state = "rangerarmor"
@@ -347,13 +347,13 @@
 
 /obj/item/clothing/suit/storage/marine/fluff/feodrich //CKEY=feodrich (UNIQUE)
 	name = "Doom Armor"
-	desc = "A uniform, of a famous Earth warrior... Donor Item"
+	desc = "A uniform, of a famous Earth warrior...  UNIQUE DONOR ITEM"
 	item_state = "doom_armor"
 	icon_state = "doom_armor"
 
 /obj/item/clothing/suit/storage/marine/fluff/totalanarchy //CKEY=totalanarchy
 	name = "Leo's Armor"
-	desc = "Used Mercenary armor.  DONOR ITEM."
+	desc = "Used Mercenary armor.  DONOR ITEM"
 	item_state = "merc_armor"
 	icon_state = "merc_armor"
 
@@ -365,7 +365,7 @@
 
 /obj/item/clothing/suit/storage/marine/fluff/vintage //CKEY=vintagepalmer
 	name = "Vintage armor with ripples."
-	desc = "A vintage DONOR ITEM"
+	desc = "A vintage.  DONOR ITEM"
 	icon_state = "bulletproof"
 	item_state = "bulletproof"
 	icon = 'icons/obj/items/clothing/suits/armor.dmi'
@@ -375,7 +375,7 @@
 
 /obj/item/clothing/suit/storage/marine/fluff/john56 //CKEY=johnkilla56
 	name = "A red trench coat"
-	desc = "A special trench coat made famous for instilling fear into greytide everywhere. DONOR ITEM"
+	desc = "A special trench coat made famous for instilling fear into greytide everywhere.  DONOR ITEM"
 	icon_state = "hos"
 	item_state = "hos"
 	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
@@ -386,7 +386,7 @@
 
 /obj/item/clothing/suit/storage/marine/light/fluff/biolock //CKEY=biolock
 	name = "M3-L Custom"
-	desc = "A lighter, cut down version of the standard M3 pattern armor. This armor looks to have heavy modifications and a custom paint-job.  DONOR ITEM."
+	desc = "A lighter, cut down version of the standard M3 pattern armor. This armor looks to have heavy modifications and a custom paint-job.  DONOR ITEM"
 	item_state = "bio_armor"
 	icon_state = "bio_armor"
 
@@ -398,7 +398,7 @@
 
 /obj/item/clothing/suit/storage/marine/fluff/limo //CKEY=limodish (UNIQUE)
 	name = "Blood-Red Hardsuit"
-	desc = "Looks like a hardsuit.  Unique DONOR ITEM"
+	desc = "Looks like a hardsuit.  UNIQUE DONOR ITEM"
 	icon_state = "syndicate"
 	item_state = "syndicate"
 	icon = 'icons/obj/items/clothing/suits/hazard.dmi'
@@ -408,13 +408,13 @@
 
 /obj/item/clothing/suit/storage/marine/fluff/Zynax //CKEY=zynax
 	name = "Gorka Vest"
-	desc = "Russian Camo Vest.  Unique DONOR ITEM"
+	desc = "Russian Camo Vest.  UNIQUE DONOR ITEM"
 	icon_state = "gorkavest_u"
 	item_state = "gorkavest_u"
 
 /obj/item/clothing/suit/storage/marine/fluff/bwoincognito //CKEY=bwoincognito
 	name = "Fallout Jacket"
-	desc = "The Jacket of an ancient wastelander...  Unique DONOR ITEM"
+	desc = "The Jacket of an ancient wastelander...  UNIQUE DONOR ITEM"
 	icon_state = "riotjacket_u"
 	item_state = "riotjacket_u"
 
@@ -450,7 +450,7 @@
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/coats_robes.dmi',
 	)
 
-/obj/item/clothing/suit/storage/marine/fluff/gromi
+/obj/item/clothing/suit/storage/marine/fluff/gromi // (UNIQUE)
 	name = "Hawkeye's Jacket"
 	desc = "A jacket worn by a famous battlefield doctor.  UNIQUE DONOR ITEM"
 	icon_state = "hawkeye_jacket_u"
@@ -484,11 +484,11 @@
 
 /obj/item/clothing/suit/storage/marine/fluff/crazyh206
 	name = "Templar Armor"
-	desc = "Some strange holy armor you don't recognize...  DONOR ITEM" //Add UNIQUE if Unique
+	desc = "Some strange holy armor you don't recognize...  DONOR ITEM"
 	icon_state = "templar"
 	item_state = "templar"
 
-/obj/item/clothing/suit/storage/marine/fluff/tranquill
+/obj/item/clothing/suit/storage/marine/fluff/tranquill // (UNIQUE)
 	name = "Jesse Pinkman's Han Solo Outfit"
 	desc = "Used clothes from a famous smuggler.  UNIQUE DONOR ITEM"
 	item_state = "solo_jumpsuit_u"
@@ -496,19 +496,19 @@
 
 /obj/item/clothing/suit/storage/marine/fluff/oneonethreeeight //CKEY=oneonethreeeight
 	name = "Camouflage Armor"
-	desc = "Woodland Camouflage Armor.  DONOR ITEM" //Add UNIQUE if Unique
+	desc = "Woodland Camouflage Armor.  DONOR ITEM"
 	icon_state = "camo_armor"
 	item_state = "camo_armor"
 
 /obj/item/clothing/suit/storage/marine/fluff/dino //CKEY=dinobubba7
 	name = "Sneaking Suit"
-	desc = "An old suit, used by a famous spy.  Smells like cigarettes...  DONOR ITEM"
+	desc = "An old suit, used by a famous spy. Smells like cigarettes...  DONOR ITEM"
 	icon_state = "snakesuit"
 	item_state = "snakesuit"
 
 /obj/item/clothing/suit/storage/marine/fluff/fickmacher2 //CKEY=fickmacher (UNIQUE)
 	name = "Corporal Hart's Armor"
-	desc = "It looks like the left arm is Robotic, wait what?  DONOR ITEM"
+	desc = "It looks like the left arm is Robotic, wait what?  UNIQUE DONOR ITEM"
 	icon_state = "hartarmor"
 	item_state = "hartarmor"
 
@@ -526,17 +526,17 @@
 
 /obj/item/clothing/suit/storage/marine/fluff/radical
 	name = "Bounty Hunter Armor"
-	desc = "Armor from an ancient Bounty Hunter.  DONOR ITEM" //Add UNIQUE if Unique
+	desc = "Armor from an ancient Bounty Hunter.  DONOR ITEM"
 	icon_state = "boba_armor"
 	item_state = "boba_armor"
 
 /obj/item/clothing/suit/storage/marine/fluff/stobarico //CKEY=stobarico (UNIQUE)
 	name = "British Admiral Uniform"
-	desc = "An ancient uniform of an Admiral.  DONOR ITEM"
+	desc = "An ancient uniform of an Admiral.  UNIQUE DONOR ITEM"
 	icon_state = "lordadmiral"
 	item_state = "lordadmiral"
 
-/obj/item/clothing/suit/storage/marine/fluff/starscream //CKEY=starscream123 (NOT UNIQUE)
+/obj/item/clothing/suit/storage/marine/fluff/starscream //CKEY=starscream123
 	name = "Kardar Hussein's Armor"
 	desc = "Slightly worn and torn.  DONOR ITEM"
 	icon_state = "merc_armor"
@@ -544,7 +544,7 @@
 
 /obj/item/clothing/suit/storage/marine/fluff/steelpoint //CKEY=steelpoint (UNIQUE)
 	name = "M4-X Armor"
-	desc = "A next generation body armor system intended for Marines fighting against xenomorphs, the system is coated in a unique acid resistant polymer coating, as well as enhanced ballistics protection. This prototype version lacks those two features. DONOR ITEM"
+	desc = "A next generation body armor system intended for Marines fighting against xenomorphs, the system is coated in a unique acid resistant polymer coating, as well as enhanced ballistics protection. This prototype version lacks those two features.  UNIQUE DONOR ITEM"
 	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|MAP_COLOR_INDEX
 	icon_state = "steelpoint_armor"
 	item_state = "steelpoint_armor"
@@ -574,7 +574,7 @@
 
 /obj/item/clothing/suit/storage/marine/fluff/valentine //CKEY=markvalentine
 	name = "Shocky's Armor"
-	desc = "Shockingly good armor.   DONOR ITEM"
+	desc = "Shockingly good armor.  DONOR ITEM"
 	icon_state = "ertarmor_sec"
 	item_state = "ertarmor_sec"
 
@@ -593,19 +593,19 @@
 
 /obj/item/clothing/suit/storage/marine/fluff/fairedan //CKEY=fairedan (UNIQUE)
 	name = "Freighter Crew Flight Jacket"
-	desc = "Standard Issue Jacket for crew that serve on Lockmart CM-88B Bison starfreighters.  It has the number 1809246 on the inside tag...  DONOR ITEM"
+	desc = "Standard Issue Jacket for crew that serve on Lockmart CM-88B Bison starfreighters. It has the number 1809246 on the inside tag...  UNIQUE DONOR ITEM"
 	icon_state = "Fairedan_vest"
 	item_state = "Fairedan_vest"
 
 /obj/item/clothing/suit/storage/marine/fluff/jackmcintyre //CKEY=jackmcintyre (UNIQUE)
-	name = "Exo-Suit Jackert"
-	desc = "Some sort of strange Exo-suit jacket.  It has the letters USCM stamped over a faded word that appears to be ATLAS...  UNIQUE DONOR ITEM"
+	name = "Exo-Suit Jacket"
+	desc = "Some sort of strange Exo-suit jacket. It has the letters USCM stamped over a faded word that appears to be ATLAS...  UNIQUE DONOR ITEM"
 	icon_state = "Adam_jacket_u"
 	item_state = "Adam_jacket_u"
 
 /obj/item/clothing/suit/storage/marine/fluff/commissar //used by both ckeys 'hycinth' and 'technokat' (UNIQUE)
 	name = "Omega Commissar Armor"
-	desc = "Armor worn by the feared and respected Comissars of Omega Team.  UNIQUE DONOR ITEM"
+	desc = "Armor worn by the feared and respected Commissars of Omega Team.  UNIQUE DONOR ITEM"
 	icon_state = "commisar_armor_u"
 	item_state = "commisar_armor_u"
 
@@ -615,7 +615,7 @@
 	icon_state = "medicae_armor_u"
 	item_state = "medicae_armor_u"
 
-/obj/item/clothing/suit/storage/marine/fluff/dudewithatude
+/obj/item/clothing/suit/storage/marine/fluff/dudewithatude // (UNIQUE)
 	name = "Rainbow Coat"
 	desc = "Powered by the magic of FRIENDSHIP. (Can be toggled opened or closed)  UNIQUE DONOR ITEM"
 	icon_state = "AlexLermire_u"
@@ -637,19 +637,19 @@
 	update_icon()
 	usr.update_inv_wear_suit()
 
-/obj/item/clothing/suit/storage/marine/fluff/titus
+/obj/item/clothing/suit/storage/marine/fluff/titus // (UNIQUE)
 	name = "ODST Armor"
 	desc = "Strange looking armor with faded ODST lettering...  UNIQUE DONOR ITEM"
 	icon_state = "leviathan13_u"
 	item_state = "leviathan13_u"
 
-/obj/item/clothing/suit/storage/marine/fluff/trblackdragon //CKEY=trblackdragon
+/obj/item/clothing/suit/storage/marine/fluff/trblackdragon //CKEY=trblackdragon (UNIQUE)
 	name = "Strange Looking Armor"
 	desc = "Looks like it's from another time and place...  UNIQUE DONOR ITEM"
 	icon_state = "TR-Donor_u"
 	item_state = "TR-Donor_u"
 
-/obj/item/clothing/suit/storage/marine/fluff/zegara //CKEY=zegara
+/obj/item/clothing/suit/storage/marine/fluff/zegara //CKEY=zegara (UNIQUE)
 	name = "Black and Pink armor"
 	desc = "Shiny black armor with pink accents...  UNIQUE DONOR ITEM"
 	icon_state = "zegara_armor_u"
@@ -685,31 +685,31 @@
 
 /obj/item/clothing/suit/storage/marine/fluff/fridrich
 	name = "Solid Black Lab Coat"
-	desc = "Very stylish. DONOR ITEM"
+	desc = "Very stylish.  DONOR ITEM"
 	icon_state = "Reznoriam"
 	item_state = "Reznoriam"
 
-/obj/item/clothing/suit/storage/marine/fluff/lostmixup
+/obj/item/clothing/suit/storage/marine/fluff/lostmixup // (UNIQUE)
 	name = "peace walker battle dress"
-	desc = "A uniform from an ancient hero.  Has the name Snake written on a tag in the back...  UNIQUE DONOR ITEM."
+	desc = "A uniform from an ancient hero. Has the name Snake written on a tag in the back...  UNIQUE DONOR ITEM"
 	icon_state = "lostmixup_u"
 	item_state = "lostmixup_u"
 
 /obj/item/clothing/suit/storage/marine/fluff/laser243
 	name = "faded ranger armor"
-	desc = "Looks like it was assembled out of several types of armor and cloth, probably somewhere post-apocalyptic...  DONOR ITEM."
+	desc = "Looks like it was assembled out of several types of armor and cloth, probably somewhere post-apocalyptic...  DONOR ITEM"
 	icon_state = "laser243"
 	item_state = "laser243"
 
-/obj/item/clothing/suit/storage/marine/fluff/killaninja12
+/obj/item/clothing/suit/storage/marine/fluff/killaninja12 // (UNIQUE)
 	name = "space cowboy armor"
-	desc = "Some people call you the space cowboy, some people call you the gangster of love...  UNIQUE DONOR ITEM."
+	desc = "Some people call you the space cowboy, some people call you the gangster of love...  UNIQUE DONOR ITEM"
 	icon_state = "killaninja12_u"
 	item_state = "killaninja12_u"
 
-/obj/item/clothing/suit/storage/marine/fluff/forwardslashn
-	name = "prototype ballistric armor"
-	desc = "A prototyped version of fancy ballistic armor.  UNIQUE DONOR ITEM."
+/obj/item/clothing/suit/storage/marine/fluff/forwardslashn // (UNIQUE)
+	name = "prototype ballistic armor"
+	desc = "A prototyped version of fancy ballistic armor.  UNIQUE DONOR ITEM"
 	icon_state = "forwardslashn_u"
 	item_state = "forwardslashn_u"
 
@@ -735,11 +735,11 @@
 	name = "Ranger Beret"
 	icon_state = "hunkberet"
 	item_state = "hunkberet"
-	desc = "An old dusty beret lined with Kevlar. DONOR ITEM"
+	desc = "An old dusty beret lined with Kevlar.  UNIQUE DONOR ITEM"
 
 /obj/item/clothing/head/helmet/marine/fluff/tristan //CKEY=tristan63
 	name = "Fancy Helmet"
-	desc = "That's not red paint. That's real blood. DONOR ITEM"
+	desc = "That's not red paint. That's real blood.  DONOR ITEM"
 	icon_state = "syndicate"
 	icon = 'icons/obj/items/clothing/hats/hazard.dmi'
 	item_icons = list(
@@ -751,7 +751,7 @@
 /obj/item/clothing/head/helmet/marine/fluff/penguin //CKEY=tophatpenguin
 	name = "Top Penguin Hat"
 	icon_state = "petehat"
-	desc = "A hat for a penguin, maybe even the TOP Penguin... DONOR ITEM"
+	desc = "A hat for a penguin, maybe even the TOP Penguin...  DONOR ITEM"
 	icon = 'icons/obj/items/clothing/hats/hats.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats.dmi',
@@ -761,13 +761,13 @@
 /obj/item/clothing/head/helmet/marine/fluff/feodrich //CKEY=feodrich (UNIQUE)
 	name = "Doom Helmet"
 	icon_state = "doom_helmet"
-	desc = "A Helmet, of a famous Earth warrior... Donor Item"
+	desc = "A Helmet, of a famous Earth warrior...  UNIQUE DONOR ITEM"
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR
 
 /obj/item/clothing/head/helmet/marine/fluff/sadokist //CKEY=sadokist
 	name = "Tanya's Beret"
-	desc = "A bright red beret, owned by Tanya Edenia."
+	desc = "A bright red beret, owned by Tanya Edenia.  DONOR ITEM"
 	icon_state = "beret_badge"
 	icon = 'icons/obj/items/clothing/hats/berets.dmi'
 	item_icons = list(
@@ -777,7 +777,7 @@
 
 /obj/item/clothing/head/helmet/marine/fluff/robin //CKEY=robin63
 	name = "Robin Low's Beret"
-	desc = "A bright red beret, owned by Robin Low."
+	desc = "A bright red beret, owned by Robin Low.  DONOR ITEM"
 	icon_state = "beret_badge"
 	icon = 'icons/obj/items/clothing/hats/berets.dmi'
 	item_icons = list(
@@ -787,7 +787,7 @@
 
 /obj/item/clothing/head/helmet/marine/fluff/vintage //CKEY=vintagepalmer
 	name = "Vintage Pimp Hat"
-	desc = "A pimp hat, for the classic pimp. DONOR ITEM"
+	desc = "A pimp hat, for the classic pimp.  DONOR ITEM"
 	icon_state = "petehat"
 	icon = 'icons/obj/items/clothing/hats/hats.dmi'
 	item_icons = list(
@@ -797,7 +797,7 @@
 
 /obj/item/clothing/head/helmet/marine/fluff/john56 //CKEY=johnkilla56
 	name = "Priest hood"
-	desc = "Thought I walk through the valley in the shadow of death... Donor Item"
+	desc = "Thought I walk through the valley in the shadow of death...  DONOR ITEM"
 	icon_state = "chaplain_hood"
 	icon = 'icons/obj/items/clothing/hats/hats.dmi'
 	item_icons = list(
@@ -806,7 +806,7 @@
 
 /obj/item/clothing/head/helmet/marine/fluff/biolock //CKEY=biolock
 	name = "M10-Custom"
-	desc = "A custom M10 Pattern Helmet. The inside of the helmet has smaller, slicker pads. There is a built-in camera on the right side. DONOR ITEM"
+	desc = "A custom M10 Pattern Helmet. The inside of the helmet has smaller, slicker pads. There is a built-in camera on the right side.  DONOR ITEM"
 	icon_state = "bio_helmet"
 	item_state = "bio_helmet"
 
@@ -823,11 +823,11 @@
 /obj/item/clothing/head/helmet/marine/fluff/sas_elite //CKEY=sasoperative (UNIQUE)
 	name = "M3 Blackout helmet"
 	icon_state = "hunkhelmet"
-	desc = "An all black custom M3 helmet designed for night operations. UNIQUE DONOR ITEM"
+	desc = "An all black custom M3 helmet designed for night operations.  UNIQUE DONOR ITEM"
 
 /obj/item/clothing/head/helmet/marine/fluff/sas_legion //CKEY=sasoperative (UNIQUE)
 	name = "M3 Ranger Helmet"
-	desc = "A M3 Ranger helmet, probably not many of these laying around. DONOR ITEM"
+	desc = "A M3 Ranger helmet, probably not many of these laying around.  UNIQUE DONOR ITEM"
 	icon_state = "rangerhelmet"
 	item_state = "rangerhelmet"
 	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|MAP_COLOR_INDEX
@@ -867,32 +867,32 @@
 
 /obj/item/clothing/head/helmet/marine/fluff/ningajai
 	name = "Anthony's helmet"
-	desc = "COG helmet owned by Anthony Carmine"
+	desc = "COG helmet owned by Anthony Carmine.  DONOR ITEM"
 	icon_state = "anthonycarmine"
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR
 
 /obj/item/clothing/head/helmet/marine/fluff/goldshieldberet
 	name = "beret"
-	desc = "A military black beret with a gold shield."
+	desc = "A military black beret with a gold shield.  DONOR ITEM"
 	icon_state = "gberet"
 	flags_inventory = BLOCKSHARPOBJ
 
 /obj/item/clothing/head/helmet/marine/fluff/goldtrimberet
 	name = "beret"
-	desc = "A maroon beret with gold trim"
+	desc = "A maroon beret with gold trim.  DONOR ITEM"
 	icon_state = "gtberet"
 	flags_inventory = BLOCKSHARPOBJ
 
 /obj/item/clothing/head/helmet/marine/fluff/commandercookies //CKEY=commandercookies
 	name = "Elliots Beret"
-	desc = "A dark maroon beret"
+	desc = "A dark maroon beret.  DONOR ITEM"
 	icon_state = "eberet"
 	flags_inventory = BLOCKSHARPOBJ
 
 /obj/item/clothing/head/helmet/marine/fluff/juniho
 	name = "Sheet's Hat"
-	desc = "A hat, very closely affiliated with accusations of people being bad at security...  DONOR ITEM" //Add UNIQUE if Unique
+	desc = "A hat, very closely affiliated with accusations of people being bad at security...  DONOR ITEM"
 	icon_state = "detective"
 	item_state = "detective"
 	icon = 'icons/obj/items/clothing/hats/formal_hats.dmi'
@@ -903,7 +903,7 @@
 
 /obj/item/clothing/head/helmet/marine/fluff/limo //CKEY=limodish (UNIQUE)
 	name = "Blood Red Hardsuit"
-	desc = "It looks like a costume hardsuit helmet.  DONOR ITEM"
+	desc = "It looks like a costume hardsuit helmet.  UNIQUE DONOR ITEM"
 	icon_state = "syndicate"
 	item_state = "syndicate"
 	icon = 'icons/obj/items/clothing/hats/hazard.dmi'
@@ -919,7 +919,7 @@
 	icon_state = "mich"
 	item_state = "mich"
 
-/obj/item/clothing/head/helmet/marine/fluff/bark
+/obj/item/clothing/head/helmet/marine/fluff/bark // (UNIQUE)
 	name = "Judge Helmet"
 	desc = "I AM THE LAW.  UNIQUE DONOR ITEM"
 	icon_state = "judgehelm_u"
@@ -927,7 +927,7 @@
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDEEYES
 
-/obj/item/clothing/head/helmet/marine/fluff/bwoincognito //CKEY=bwoincognito
+/obj/item/clothing/head/helmet/marine/fluff/bwoincognito //CKEY=bwoincognito (UNIQUE)
 	name = "Fallout Helmet"
 	desc = "A helmet from an ancient wastelander...  UNIQUE DONOR ITEM"
 	icon_state = "riothelm_u"
@@ -948,7 +948,7 @@
 
 /obj/item/clothing/head/helmet/marine/fluff/fickmacher //CKEY=fickmacher (UNIQUE)
 	name = "Selena's hat"
-	desc = "A fancy beret.  DONOR ITEM"
+	desc = "A fancy beret.  UNIQUE DONOR ITEM"
 	icon_state = "hosberet"
 	item_state = "hosberet"
 	icon = 'icons/obj/items/clothing/hats/berets.dmi'
@@ -979,7 +979,7 @@
 	)
 	flags_inventory = BLOCKSHARPOBJ
 
-/obj/item/clothing/head/helmet/marine/fluff/lostmixup
+/obj/item/clothing/head/helmet/marine/fluff/lostmixup // (UNIQUE)
 	name = "Infinite Ammo Bandanna"
 	desc = "Disclaimer: Probably doesn't provide infinite ammo.  UNIQUE DONOR ITEM"
 	icon_state = "headband_u"
@@ -1062,7 +1062,7 @@
 
 /obj/item/clothing/head/helmet/marine/fluff/starscream //CKEY=starscream123 (UNIQUE)
 	name = "Kardar Hussein's Helmet"
-	desc = "Slightly worn and torn.  DONOR ITEM"
+	desc = "Slightly worn and torn.  UNIQUE DONOR ITEM"
 	icon_state = "asset_protect"
 	item_state = "asset_protect"
 	flags_inventory = BLOCKSHARPOBJ
@@ -1078,7 +1078,7 @@
 
 /obj/item/clothing/head/helmet/marine/fluff/steelpoint //CKEY=steelpoint (UNIQUE)
 	name = "M4-X Helmet"
-	desc = "A next generation combat helmet intended to be paired with the M4-X armor. The full faced helmet provides complete light ballistic-resistant protection alongside enchanced acid resistance. This prototype version lacks those features. DONOR ITEM"
+	desc = "A next generation combat helmet intended to be paired with the M4-X armor. The full faced helmet provides complete light ballistic-resistant protection alongside enhanced acid resistance. This prototype version lacks those features.  UNIQUE DONOR ITEM"
 	icon_state = "steelpoint_helmet"
 	item_state = "steelpoint_helmet"
 	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|MAP_COLOR_INDEX
@@ -1133,7 +1133,7 @@
 
 /obj/item/clothing/head/helmet/marine/fluff/bibblesless
 	name = "Yellow ERT Helmet"
-	desc = "Standard Emergency Helmet, yellow variety....  DONOR ITEM"
+	desc = "Standard Emergency Helmet, yellow variety...  DONOR ITEM"
 	icon_state = "rig0-ert_engineer"
 	item_state = "rig0-ert_engineer"
 	flags_inventory = BLOCKSHARPOBJ
@@ -1141,7 +1141,7 @@
 
 /obj/item/clothing/head/helmet/marine/fluff/fernkiller
 	name = "White ERT Helmet"
-	desc = "Standard Emergency Helmet, white variety....  DONOR ITEM"
+	desc = "Standard Emergency Helmet, white variety...  DONOR ITEM"
 	icon_state = "rig0-ert_medical"
 	item_state = "rig0-ert_medical"
 	flags_inventory = BLOCKSHARPOBJ
@@ -1149,14 +1149,14 @@
 
 /obj/item/clothing/head/helmet/marine/fluff/jackmcintyre //CKEY=jackmcintyre (UNIQUE)
 	name = "USCM Ball Cap"
-	desc = "USCM Cold Weather Ball Cap...  DONOR ITEM"
+	desc = "USCM Cold Weather Ball Cap...  UNIQUE DONOR ITEM"
 	icon_state = "Adam_hat"
 	item_state = "Adam_hat"
 	flags_inventory = BLOCKSHARPOBJ
 
 /obj/item/clothing/head/helmet/marine/fluff/commissar //used by both ckeys 'hycinth' and 'technokat' (UNIQUE)
 	name = "Omega Commissar Helmet"
-	desc = "Helmet worn by the Comissars of Omega Team.  UNIQUE DONOR ITEM"
+	desc = "Helmet worn by the Commissars of Omega Team.  UNIQUE DONOR ITEM"
 	icon_state = "commissar_helmet_u"
 	item_state = "commissar_helmet_u"
 	flags_inventory = BLOCKSHARPOBJ
@@ -1181,7 +1181,7 @@
 	)
 	flags_inventory = BLOCKSHARPOBJ
 
-/obj/item/clothing/head/helmet/marine/fluff/titus
+/obj/item/clothing/head/helmet/marine/fluff/titus // (UNIQUE)
 	name = "ODST helmet"
 	desc = "An old helmet, with faded ODST lettering.  UNIQUE DONOR ITEM"
 	icon_state = "leviathan13_helm_u"
@@ -1209,7 +1209,7 @@
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR
 
-/obj/item/clothing/head/helmet/marine/fluff/killaninja12
+/obj/item/clothing/head/helmet/marine/fluff/killaninja12 // (UNIQUE)
 	name = "space cowboy hat"
 	desc = "the name 'Maurice' is written inside the hat...  UNIQUE DONOR ITEM"
 	icon_state = "killaninja12_u"
@@ -1218,7 +1218,7 @@
 // UNIFORM/JUMPSUIT COSMETICS  ////////////////////////////////////////////////
 
 /obj/item/clothing/under/marine/fluff/tristan //CKEY=tristan63
-	desc = "It's a blue jumpsuit with some gold markings denoting the rank of \"Captain\"."
+	desc = "It's a blue jumpsuit with some gold markings denoting the rank of \"Captain\".  DONOR ITEM"
 	name = "captain's jumpsuit"
 	icon_state = "camojump"
 	worn_state = "camojump"
@@ -1226,21 +1226,21 @@
 
 /obj/item/clothing/under/marine/fluff/feodrich //CKEY=feodrich (UNIQUE)
 	name = "Doom Uniform"
-	desc = "A uniform, of a famous Earth warrior... Donor Item"
+	desc = "A uniform, of a famous Earth warrior...  UNIQUE DONOR ITEM"
 	icon_state = "doom_suit"
 	worn_state = "doom_suit"
 	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/marine/fluff/totalanarchy //CKEY=totalanarchy
 	name = "Mercenary Jumpsuit Suit"
-	desc = "A uniform from a band of mercenaries...  DONOR ITEM."
+	desc = "A uniform from a band of mercenaries...  DONOR ITEM"
 	icon_state = "merc_jumpsuit"
 	worn_state = "merc_jumpsuit"
 	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/marine/fluff/john56 //CKEY=johnkilla56
 	name = "Pink Pride Jumpsuit"
-	desc = "A jumpsuit for showing your pride in pink... Donor Item"
+	desc = "A jumpsuit for showing your pride in pink...  DONOR ITEM"
 	icon_state = "pink"
 	icon = 'icons/obj/items/clothing/uniforms/jumpsuits.dmi'
 	item_icons = list(
@@ -1251,7 +1251,7 @@
 
 /obj/item/clothing/under/marine/fluff/sas_elite //CKEY=sasoperative (UNIQUE)
 	name = "Ranger Fatigues"
-	desc = "Black camo Fatigues usually used on night operations.  UNIQUE DONOR ITEM."
+	desc = "Black camo Fatigues usually used on night operations.  UNIQUE DONOR ITEM"
 	icon_state = "hunkuni"
 	worn_state = "hunkuni"
 	icon = 'icons/obj/items/clothing/uniforms/donator.dmi'
@@ -1286,14 +1286,14 @@
 
 /obj/item/clothing/under/marine/fluff/leeeverett //CKEY=theflagbearer (UNIQUE)
 	name = "Rugged Outfit"
-	desc = "It's covered in blood and smells terrible. Who died in this?"
+	desc = "It's covered in blood and smells terrible. Who died in this?  UNIQUE DONOR ITEM"
 	icon_state = "rugged"
 	worn_state = "rugged"
 	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/marine/fluff/vintage //CKEY=vintagepalmer
 	name = "Vintage Pink Jumpsuit"
-	desc = "A jumpsuit that was either once red, or once white and washed with a load of colors... Donor Item"
+	desc = "A jumpsuit that was either once red, or once white and washed with a load of colors...  DONOR ITEM"
 	icon_state = "pink"
 	worn_state = "pink"
 	icon = 'icons/obj/items/clothing/uniforms/jumpsuits.dmi'
@@ -1311,21 +1311,21 @@
 
 /obj/item/clothing/under/marine/fluff/Zynax //CKEY=zynax
 	name = "Gorka Suit"
-	desc = "Russian Gamo.   DONOR ITEM"
+	desc = "Russian Gamo.  DONOR ITEM"
 	icon_state = "gorkasuit"
 	worn_state = "gorkasuit"
 	flags_jumpsuit = FALSE
 
-/obj/item/clothing/under/marine/fluff/bwoincognito //CKEY=bwoincognito
+/obj/item/clothing/under/marine/fluff/bwoincognito //CKEY=bwoincognito (UNIQUE)
 	name = "Fallout Suit"
-	desc = "A suit from an ancient group of wastelanders...   UNIQUE DONOR ITEM"
+	desc = "A suit from an ancient group of wastelanders...  UNIQUE DONOR ITEM"
 	icon_state = "riot_u"
 	worn_state = "riot_u"
 	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/marine/fluff/juninho
 	name = "Corporate Security Uniform"
-	desc = "A security jumpsuit, worthy of a Corporate Head of Security.  DONOR ITEM" //Add UNIQUE if Unique
+	desc = "A security jumpsuit, worthy of a Corporate Head of Security.  DONOR ITEM"
 	icon_state = "hos_corporate"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/security.dmi'
 	item_icons = list(
@@ -1336,7 +1336,7 @@
 
 /obj/item/clothing/under/marine/fluff/fickmacher //CKEY=fickmacher (UNIQUE)
 	name = "Selena's Tactical Suit"
-	desc = "A strange looking black jumpsuit.  DONOR ITEM"
+	desc = "A strange looking black jumpsuit.  UNIQUE DONOR ITEM"
 	icon_state = "robotics"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/research.dmi'
 	item_icons = list(
@@ -1344,7 +1344,7 @@
 	)
 	worn_state = "robotics"
 
-/obj/item/clothing/under/marine/fluff/gromi
+/obj/item/clothing/under/marine/fluff/gromi // (UNIQUE)
 	name = "Hawkeye's Clothes"
 	desc = "A uniform worn by a legendary battlefield surgeon.  UNIQUE DONOR ITEM"
 	icon_state = "hawkeye_jumpsuit_u"
@@ -1353,7 +1353,7 @@
 
 /obj/item/clothing/under/marine/fluff/feweh //CKEY=feweh
 	name = "Pink Fatigues"
-	desc = "For fighting breast cancer.  With bullets. Donor Item"
+	desc = "For fighting breast cancer. With bullets.  DONOR ITEM"
 	icon_state = "pink2"
 	worn_state = "pink2"
 	flags_jumpsuit = FALSE
@@ -1367,7 +1367,7 @@
 
 /obj/item/clothing/under/marine/fluff/fickmacher2 //CKEY=fickmacher (UNIQUE)
 	name = "Hart's Suit"
-	desc = "It looks like the Right Arm is robotic.  DONOR ITEM"
+	desc = "It looks like the Right Arm is robotic.  UNIQUE DONOR ITEM"
 	icon_state = "hart_jumpsuit"
 	worn_state = "hart_jumpsuit"
 	flags_jumpsuit = FALSE
@@ -1395,7 +1395,7 @@
 
 /obj/item/clothing/under/marine/fluff/jackmcintyre_alt //CKEY=jackmcintyre
 	name = "Dress Uniform"
-	desc = "A Dress uniform, worn by standard marines. DONOR ITEM"
+	desc = "A Dress uniform, worn by standard marines.  DONOR ITEM"
 	icon_state = "BO_jumpsuit"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
 	item_icons = list(
@@ -1406,7 +1406,7 @@
 
 /obj/item/clothing/under/marine/fluff/starscream //CKEY=starscream123 (UNIQUE)
 	name = "Kardar Hussein's Jumpsuit"
-	desc = "Slightly worn and torn.  DONOR ITEM"
+	desc = "Slightly worn and torn.  UNIQUE DONOR ITEM"
 	icon_state = "merc_jumpsuit2"
 	worn_state = "merc_jumpsuit2"
 	flags_jumpsuit = FALSE
@@ -1455,14 +1455,14 @@
 
 /obj/item/clothing/under/marine/fluff/fairedan //CKEY=fairedan (UNIQUE)
 	name = "Starfreighter Jumpsuit"
-	desc = "Standard Issue Jumpsuit for crew that serve on Lockmart CM-88B Bison starfreighters.  It has the number 1809246 on the inside tag....  DONOR ITEM"
+	desc = "Standard Issue Jumpsuit for crew that serve on Lockmart CM-88B Bison starfreighters. It has the number 1809246 on the inside tag...  UNIQUE DONOR ITEM"
 	icon_state = "Fairedan_jumpsuit"
 	worn_state = "Fairedan_jumpsuit"
 	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/marine/fluff/commissar //used by both ckeys 'hycinth' and 'technokat' (UNIQUE)
 	name = "Omega Commissar Uniform"
-	desc = "Uniform worn by the Comissars of Omega Team.  UNIQUE DONOR ITEM"
+	desc = "Uniform worn by the Commissars of Omega Team.  UNIQUE DONOR ITEM"
 	icon_state = "commisar_jumpsuit_u"
 	worn_state = "commisar_jumpsuit_u"
 	flags_jumpsuit = FALSE
@@ -1474,7 +1474,7 @@
 	worn_state = "medicae_jumpsuit_u"
 	flags_jumpsuit = FALSE
 
-/obj/item/clothing/under/marine/fluff/sailordave //CKEY=sailordave
+/obj/item/clothing/under/marine/fluff/sailordave //CKEY=sailordave (UNIQUE)
 	name = "Eden USCM uniform"
 	desc = "An older model USCM uniform.  UNIQUE DONOR ITEM"
 	icon_state = "syndicate"
@@ -1488,7 +1488,7 @@
 	worn_state = "jensen"
 	flags_jumpsuit = FALSE
 
-/obj/item/clothing/under/marine/fluff/mileswolfe //CKEY=mileswolfe
+/obj/item/clothing/under/marine/fluff/mileswolfe //CKEY=mileswolfe (UNIQUE)
 	name = "tiger striped combat fatigues"
 	desc = "Combat Fatigues that appear to have tiger stripes on them.  UNIQUE DONOR ITEM"
 	icon_state = "mileswolfe_u"
@@ -1500,13 +1500,13 @@
 
 /obj/item/clothing/mask/fluff/john56 //CKEY=johnkilla56
 	name = "Revan Mask"
-	desc = "A mask from a famous sith... Wait what?  DONOR ITEM."
+	desc = "A mask from a famous sith... Wait what?  DONOR ITEM"
 	item_state = "revanmask"
 	icon_state = "revanmask"
 
 /obj/item/clothing/mask/fluff/totalanarchy //CKEY=totalanarchy
 	name = "PMC Mask"
-	desc = "A white colored PMC Mask.  DONOR ITEM."
+	desc = "A white colored PMC Mask.  DONOR ITEM"
 	item_state = "pmc_mask"
 	icon_state = "pmc_mask"
 	icon = 'icons/obj/items/clothing/masks/masks_by_faction/WY.dmi'
@@ -1518,7 +1518,7 @@
 
 /obj/item/clothing/mask/fluff/sas_elite //CKEY=sasoperative (UNIQUE)
 	name = "Compact Gas Mask"
-	desc = "A compact Gas Mask with a pure red tint to it.  UNIQUE  DONOR ITEM."
+	desc = "A compact Gas Mask with a pure red tint to it.  UNIQUE DONOR ITEM"
 	item_state = "hunkmask"
 	icon_state = "hunkmask"
 
@@ -1548,7 +1548,7 @@
 
 /obj/item/clothing/mask/fluff/fickmacher2 //CKEY=fickmacher (UNIQUE)
 	name = "Corporal Hart's Mask"
-	desc = "A robotic looking Armored mask.  DONOR ITEM"
+	desc = "A robotic looking Armored mask.  UNIQUE DONOR ITEM"
 	icon_state = "hartmask"
 	item_state = "hartmask"
 	flags_inventory = ALLOWREBREATH
@@ -1556,7 +1556,7 @@
 
 /obj/item/clothing/mask/fluff/starscream //CKEY=starscream123 (UNIQUE)
 	name = "Kardar Hussein's mask"
-	desc = "Slightly worn and torn.  DONOR ITEM"
+	desc = "Slightly worn and torn.  UNIQUE DONOR ITEM"
 	icon_state = "merc_mask"
 	item_state = "merc_mask"
 	flags_inventory = ALLOWREBREATH
@@ -1564,7 +1564,7 @@
 
 /obj/item/clothing/mask/fluff/lostmixup
 	name = "Phantom Cigar"
-	desc = "It's a g-g-g-g-g-ghost cigar.  DONOR ITEM" //Add UNIQUE if Unique
+	desc = "It's a g-g-g-g-g-ghost cigar.  DONOR ITEM"
 	icon_state = "cigar_on"
 	item_state = "cigar_on"
 	icon = 'icons/obj/items/smoking/cigars.dmi'
@@ -1583,13 +1583,13 @@
 
 /obj/item/clothing/shoes/marine/fluff/feodrich //CKEY=feodrich (UNIQUE)
 	name = "Doom Shoes"
-	desc = "A uniform, of a famous Earth warrior... Donor Item"
+	desc = "A uniform, of a famous Earth warrior...  UNIQUE DONOR ITEM"
 	icon_state = "doom_boots"
 	item_state = "doom_boots"
 
 /obj/item/clothing/shoes/marine/fluff/steelpoint //CKEY=steelpoint (UNIQUE)
 	name = "M4-X Boot"
-	desc = "Standard issue boots issued alongside M4-X armor, features a special coating of acid-resistant layering to allow its operator to move through acid-dretched environments safely. This prototype version lacks that feature.  DONOR ITEM"
+	desc = "Standard issue boots issued alongside M4-X armor, features a special coating of acid-resistant layering to allow its operator to move through acid-drenched environments safely. This prototype version lacks that feature.  UNIQUE DONOR ITEM"
 	icon_state = "marine"
 	item_state = "marine"
 
@@ -1607,7 +1607,7 @@
 
 /obj/item/clothing/glasses/fluff/sadokist //CKEY=sadokist
 	name = "Tanya's Optics"
-	desc = "Custom Optics, owned by Tanya Edenia"
+	desc = "Custom Optics, owned by Tanya Edenia.  DONOR ITEM"
 	icon = 'icons/obj/items/clothing/glasses/goggles.dmi'
 	item_icons = list(
 		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/goggles.dmi',
@@ -1617,7 +1617,7 @@
 
 /obj/item/clothing/glasses/fluff/haveatya //CKEY=haveatya
 	name = "Special Nightvision Goggles"
-	desc = "Disclaimer:  May not provide Night Vision.  DONOR ITEM"
+	desc = "Disclaimer: May not provide Night Vision.  DONOR ITEM"
 	icon = 'icons/obj/items/clothing/glasses/night_vision.dmi'
 	item_icons = list(
 		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/night_vision.dmi',
@@ -1626,14 +1626,14 @@
 	item_state = "glasses"
 
 /obj/item/clothing/gloves/black/obey //CKEY=obeystylez (UNIQUE)
-	desc = "Black gloves, favored by Special Operations teams.  DONOR ITEM"
+	desc = "Black gloves, favored by Special Operations teams.  UNIQUE DONOR ITEM"
 	name = "Black Ops Black Gloves"
 
 //BACKPACKS
 
 /obj/item/storage/backpack/marine/fluff/sadokist //CKEY=sadokist
 	name = "Tanya's Backpack"
-	desc = "A large backpack, used by Tanya Edenia. DONOR ITEM"
+	desc = "A large backpack, used by Tanya Edenia.  DONOR ITEM"
 	icon_state = "securitypack"
 	item_state = "securitypack"
 	flags_atom = parent_type::flags_atom | NO_GAMEMODE_SKIN // same sprite for all gamemodes
@@ -1644,7 +1644,7 @@
 
 /obj/item/storage/backpack/marine/fluff/mitii
 	name = "Mya's Backpack"
-	desc = "A large security backpack, with a radio booster.  Donor Item"
+	desc = "A large security backpack, with a radio booster.  DONOR ITEM"
 	icon_state = "securitypack"
 	item_state = "securitypack"
 	flags_atom = parent_type::flags_atom | NO_GAMEMODE_SKIN // same sprite for all gamemodes
@@ -1655,7 +1655,7 @@
 
 /obj/item/storage/backpack/marine/satchel/fluff/sas_juggernaut //CKEY=sasoperative (UNIQUE)
 	name = "Ranger Pack"
-	desc = "An old camelpack with pouches for extra space. DONOR ITEM"
+	desc = "An old camelpack with pouches for extra space.  UNIQUE DONOR ITEM"
 	icon_state = "hunkpack"
 	item_state = "hunkpack"
 	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|MAP_COLOR_INDEX
@@ -1685,20 +1685,20 @@
 
 /obj/item/storage/backpack/marine/satchel/fluff/sas_legion //CKEY=sasoperative (UNIQUE)
 	name = "M3 Armored Pack"
-	desc = "Plenty of pouches and pockets. DONOR ITEM"
+	desc = "Plenty of pouches and pockets.  UNIQUE DONOR ITEM"
 	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|MAP_COLOR_INDEX
 	icon_state = "skinnerrangerpack"
 	item_state = "skinnerrangerpack"
 
 /obj/item/clothing/glasses/fluff/alexwarhammer
 	name = "Black Jack's Dank Shades"
-	desc = "+20 Badass points.  Donor item"
+	desc = "+20 Badass points.  DONOR ITEM"
 	icon_state = "sun"
 	item_state = "sun"
 
 /obj/item/clothing/gloves/marine/fluff/jedijas //CKEY=jedijasun (UNIQUE)
 	name = "Fists of Mandalore"
-	desc = "If Mandalore was a person, these would be it's fists...  DONOR ITEM"
+	desc = "If Mandalore was a person, these would be it's fists...  UNIQUE DONOR ITEM"
 	icon_state = "marine_white"
 	item_state = "marine_wgloves"
 
@@ -1715,15 +1715,15 @@
 	skip_fullness_overlays = TRUE
 
 //CUSTOM ITEMS - NO TEMPLATES - ALL UNIQUE ////////////////////////
-/obj/item/tool/lighter/zippo/fluff/ghostdex //CKEY=ghostdex
+/obj/item/tool/lighter/zippo/fluff/ghostdex //CKEY=ghostdex (UNIQUE)
 	name = "purple zippo lighter"
-	desc = "A Purple Zippo lighter, engraved with the name John Donable... UNIQUE DONOR ITEM."
+	desc = "A Purple Zippo lighter, engraved with the name John Donable...  UNIQUE DONOR ITEM"
 	icon = 'icons/obj/items/smoking/lighters.dmi'
 	icon_state = "bluezippo"
 
-/obj/item/clothing/mask/cigarette/fluff/ghostdex //CKEY=ghostdex
+/obj/item/clothing/mask/cigarette/fluff/ghostdex //CKEY=ghostdex (UNIQUE)
 	name = "XXX's custom Cigar"
-	desc = "A custom rolled giant, made specifically for John Donable in the best, hottest, and most abusive of Cuban sweat shops.  UNIQUE DONOR ITEM."
+	desc = "A custom rolled giant, made specifically for John Donable in the best, hottest, and most abusive of Cuban sweat shops.  UNIQUE DONOR ITEM"
 	icon = 'icons/obj/items/smoking/cigars.dmi'
 	icon_state = "cigar2_off"
 	icon_on = "cigar2_on"

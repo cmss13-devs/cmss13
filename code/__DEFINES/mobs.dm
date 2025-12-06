@@ -199,7 +199,7 @@
 
 //Language flags.
 #define WHITELISTED (1<<0) // Language is available if the speaker is whitelisted.
-#define RESTRICTED (1<<1) // Language can only be accquired by spawning or an admin.
+#define RESTRICTED (1<<1) // Language can only be acquired by spawning or an admin.
 #define NONVERBAL (1<<2) // Language has a significant non-verbal component. Speech is garbled without line-of-sight
 #define SIGNLANG (1<<3) // Language is completely non-verbal. Speech is displayed through emotes for those who can understand.
 #define HIVEMIND (1<<4)  // Broadcast to all mobs with this language.
@@ -268,7 +268,7 @@
 
 #define EMOTE_ICON_WALLBOOSTING 19
 
-//defins for datum/hud
+//defines for datum/hud
 
 #define HUD_STYLE_STANDARD 1
 #define HUD_STYLE_REDUCED 2

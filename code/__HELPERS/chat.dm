@@ -28,7 +28,7 @@
 /**
  * Sends a message to TGS admin chat channels.
  *
- * category - The category of the mssage.
+ * category - The category of the message.
  * message - The message to send.
  */
 /proc/send2adminchat(category, message, embed_links = FALSE)

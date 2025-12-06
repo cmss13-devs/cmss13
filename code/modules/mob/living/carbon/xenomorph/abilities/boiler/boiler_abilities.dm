@@ -36,7 +36,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_toggle_spit_type
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
-	xeno_cooldown = 1 SECONDS // Spam preventionv
+	xeno_cooldown = 1 SECONDS // Spam prevention
 
 /datum/action/xeno_action/activable/spray_acid/boiler
 	plasma_cost = 40

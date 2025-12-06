@@ -81,7 +81,7 @@
 		if(GAS_TYPE_N2O)
 			if(!isyautja(src)) // Prevent Predator anesthetic memes
 				var/SA_pp = air_info[3]
-				if(SA_pp > 20) // Enough to make us paralysed for a bit
+				if(SA_pp > 20) // Enough to make us paralyzed for a bit
 					apply_effect(3, PARALYZE) // 3 gives them one second to wake up and run away a bit!
 					//Enough to make us sleep as well
 					if(SA_pp > 30)

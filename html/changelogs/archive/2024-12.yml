@@ -1,8 +1,8 @@
 2024-12-02:
   Blundir:
   - rscadd: different joe types have different death sounds
-  - bugfix: hazman joe having emote panel ui with incorrect ui theme
-  - bugfix: hazman joe having voice lines too loud
+  - bugfix: hazmat joe having emote panel ui with incorrect ui theme
+  - bugfix: hazmat joe having voice lines too loud
   - soundadd: added 201 new lines total for hazmat and normal joes combined
   realforest2001:
   - rscadd: Added CO to MP timelocks, and ASO to command timelocks.
@@ -178,7 +178,7 @@
 2024-12-16:
   Adamix147:
   - bugfix: Fixed windoors access at medbay
-  - bugfix: Removed unnecesary APC from Solaris
+  - bugfix: Removed unnecessary APC from Solaris
   Drdodo:
   - rscadd: Added custom HealthMate HUDs to CMO vendor which combine HealthMate and
       Reagent scanner HUDs that requires research skill to use
@@ -204,7 +204,7 @@
   - rscadd: A Type-19 submachinegun gun case has been added to the UPP requisitions
       vendor as a restricted weapon item, which can be issued to UPP soldiers as requested.
   - rscadd: Addition of Type-19 magazines, extended magazines and ammo boxes to UPP
-      requisiton vendors.
+      requisition vendors.
   - rscadd: A PPSh-17b submachinegun gun case has been added to the game. Intended
       to be spawned as a rare weapon, owing to its (in-universe) collectors and old
       firearm enthusiasts value.
@@ -251,7 +251,7 @@
       doing revolver tricks
   - rscadd: revolvers capable of revolver tricks now have a bit of description about
       it
-  - rscadd: M16 ext mags, currenly only used by CMB Riot Control
+  - rscadd: M16 ext mags, currently only used by CMB Riot Control
   - rscadd: CMB version of M51 shotgun, that comes with new rubber buckshot ammo
   - rscadd: M16,XM177,MP5 modernized looking versions to fit better the logic and
       aesthetics
@@ -259,7 +259,7 @@
   - balance: made spearhead normalpoint bullet be more balanced (added 15 damage)
       in relation to the hp variant
   - balance: 'riot grenade launcher can now also shoot: sebb, smokes (non lethal),
-      flahbangs, airburst smoke'
+      flashbangs, airburst smoke'
   - balance: the Colonial Marshal now has the same endurance skill as Deputy (Marshal
       had lower)
   - rscdel: CMB can no longer see marine squad hud by default
@@ -294,7 +294,7 @@
   - rscadd: Adds another console for predators to use to spawn hunting ground lazy
       templates
   - bugfix: Fixed the lighting on lazy templates (thanks harry)
-  - soundadd: added a sound for spawing in as an ERT member on the hunting grounds
+  - soundadd: added a sound for spawning in as an ERT member on the hunting grounds
   - mapadd: added a new type of lazy_template for hunting grounds
   - bugfix: dirtgrassborder now has the correct north and south
   LTNTS:
@@ -313,11 +313,11 @@
       ones
   - qol: Removes the chat notification for Resin Salve going off CD (it's a 0.5 second
       CD)
-  bobama:
+  BOBAMA:
   - balance: solaris pmc insert is less common now
   - bugfix: pmcs actually no longer get all marine announcements
   cuberound:
-  - rscadd: toggleble flag to prevent c4s on human for gamemodes
+  - rscadd: toggleable flag to prevent c4s on human for gamemodes
   - bugfix: anti stripmode flag prevents buckling to roller beds and closing into
       bags to move dead or crit bodies of enemy faction
 2024-12-18:
@@ -344,7 +344,7 @@
   Blundir:
   - rscadd: digital table clock that shows time and date
   - rscadd: cat clock now shows time
-  - mapadd: added digital clock to majority of mpas
+  - mapadd: added digital clock to majority of maps
   Detective-Google:
   - bugfix: fixed duplicate windoors on the reqline
   Drathek:
@@ -459,7 +459,7 @@
   - bugfix: Fixes giant lizard manual pounce keys.
   - bugfix: Giant Lizards can now see in the dark when controlled by a player.
   thevandie:
-  - rscadd: Grey and Beige trenchcoats to the CL vendor
+  - rscadd: Grey and Beige trench coats to the CL vendor
   - rscadd: Brown and Black fedoras to the CL vendor
 2024-12-30:
   Blundir:
@@ -475,7 +475,7 @@
   - rscadd: yautja windows
   - rscadd: yautja new statues
   - rscadd: decorative xeno skulls for yautja locations
-  - bugfix: preds not being able to use chem master and chem dispenser on their ship
+  - bugfix: preds not being able to use chemmaster and chem dispenser on their ship
   - bugfix: preds not having access to vendors on their ship
   - rscdel: unused yautja ship map
   - mapadd: added tons of new assets on LV624, New Varadero, Trijent Dam, Yautja ship
@@ -536,7 +536,7 @@
       code!
   - rscadd: Changes role selection color of WJ to be slightly darker to differentiate
       from Synthetics.
-  - code_imp: restructured lobby role selection menu to accomadate new role
+  - code_imp: restructured lobby role selection menu to accommodate new role
   SASoperative:
   - code_imp: Updated item names, icons, and descriptions
   - imageadd: Replaces old donator sprites

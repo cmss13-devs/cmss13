@@ -130,7 +130,7 @@
 	else
 		RegisterSignal(parent_turf, COMSIG_WEEDNODE_GROWTH, PROC_REF(on_update))
 
-	// We moved, restart or start the proccess
+	// We moved, restart or start the process
 	if(stop() || !merged)
 		start()
 		return
@@ -238,7 +238,7 @@
 		return FALSE
 
 	if(unmerged_time == world.time)
-		return merge_with_weeds() // Weeds upgraded, re-merge now re-using the apperance
+		return merge_with_weeds() // Weeds upgraded, re-merge now re-using the appearance
 	QDEL_NULL(weed_appearance)
 	absorbing_weeds = parent_turf.weeds
 	RegisterSignal(parent_turf.weeds, COMSIG_PARENT_QDELETING, PROC_REF(on_weed_deletion))
@@ -263,7 +263,7 @@
 	return TRUE
 
 /**
- * Finish becomming one with the weeds
+ * Finish becoming one with the weeds
  * Returns TRUE if merged successfully
  */
 /datum/component/weed_food/proc/merge_with_weeds()
@@ -299,7 +299,7 @@
 	if(!absorbing_weeds)
 		return FALSE
 	RegisterSignal(absorbing_weeds, COMSIG_PARENT_QDELETING, PROC_REF(on_weed_deletion))
-	// Technically we could have just left the signal alone, but both because of the posibility of other conditions preventing a merge or weeds somehow changing and on_move didn't catch it, this is less fragile
+	// Technically we could have just left the signal alone, but both because of the possibility of other conditions preventing a merge or weeds somehow changing and on_move didn't catch it, this is less fragile
 
 	active = FALSE
 	merged = TRUE

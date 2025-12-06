@@ -1,6 +1,6 @@
 /datum/effects/neurotoxin
 	effect_name = "neurotoxin gas"
-	/// Duration of the effect. Also used for intensity aswell
+	/// Duration of the effect. Also used for intensity as well
 	duration = 0
 	// We don't want to damage people when they die
 	flags = NO_PROCESS_ON_DEATH | DEL_ON_DEATH
@@ -90,7 +90,7 @@
 			hallucinate = FALSE
 			addtimer(VARSET_CALLBACK(src,hallucinate,TRUE),rand(4 SECONDS,10 SECONDS))
 
-	if(duration > 19) // 4 ticks in smoke, neuro is affecting cereberal activity
+	if(duration > 19) // 4 ticks in smoke, neuro is affecting cerebral activity
 		affected_mob.eye_blind = max(affected_mob.eye_blind, floor(strength/4))
 
 	if(duration >= 27) // 5+ ticks in smoke, you are ODing now
@@ -101,11 +101,11 @@
 	if(duration >= 50) // 10+ ticks, apply some semi-perm damage and end their suffering if they are somehow still alive by now
 		affected_mob.apply_internal_damage(10,"liver")
 		affected_mob.apply_damage(150,OXY)
-	// Applying additonal effects and messages
+	// Applying additional effects and messages
 	if(prob(stumble_prob) && stumble)
 		if(affected_mob.is_mob_incapacitated())
 			return
-		affected_mob.visible_message(SPAN_DANGER("[affected_mob] misteps in their confusion!")
+		affected_mob.visible_message(SPAN_DANGER("[affected_mob] missteps in their confusion!")
 						,SPAN_HIGHDANGER("You stumble!"))
 		step(affected_mob, pick(CARDINAL_ALL_DIRS))
 		affected_mob.apply_effect(5, DAZE) // Unable to talk and weldervision

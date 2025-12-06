@@ -49,3 +49,16 @@
   zzzmike:
   - bugfix: HG MP shows in correct category on manifest, and cryopod item storage
       supports HG
+2025-12-04:
+  Detective-Google:
+  - bugfix: mp hgs no longer spawnable
+  hry-gh:
+  - server: server operators can now configure a list of CIDs that will not be considered
+      for stickybans
+2025-12-05:
+  NessiePendragon:
+  - rscadd: Changes Twitch subscribers' OOC chat color, and removes their ability
+      to change their own OOC color.
+2025-12-06:
+  kalazus:
+  - refactor: static light system optimization.

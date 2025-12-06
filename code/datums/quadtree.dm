@@ -221,7 +221,7 @@
 			continue
 		if(range.contains_coords(quad_player))
 			if(flags & QTREE_SCAN_MOBS)
-				if(quad_player.player.mob != quad_player.weak_mob.resolve())
+				if(!quad_player.player.mob || quad_player.player.mob != quad_player.weak_mob?.resolve())
 					continue
 				found_players.Add(quad_player.player.mob)
 			else

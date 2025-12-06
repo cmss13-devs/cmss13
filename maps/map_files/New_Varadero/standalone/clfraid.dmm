@@ -14,18 +14,61 @@
 /obj/item/flag/plantable/clf,
 /turf/open/floor/platingdmg1,
 /area/varadero/interior/research)
+"ad" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 9
+	},
+/turf/open/floor/shiva/north,
+/area/varadero/interior/research)
+"ae" = (
+/turf/open/floor/shiva/purplecorners,
+/area/varadero/interior/research)
 "af" = (
 /obj/effect/decal/cleanable/blood/oil,
-/obj/item/stack/tile/plasteel{
-	pixel_x = 8;
-	pixel_y = 6
-	},
 /turf/open/floor/shiva/multi_tiles,
+/area/varadero/interior/research)
+"ag" = (
+/turf/open/floor/shiva/purple/north,
+/area/varadero/interior/research)
+"ah" = (
+/obj/structure/pipes/standard/manifold/fourway/hidden/green,
+/turf/open/floor/shiva/north,
+/area/varadero/interior/research)
+"ai" = (
+/obj/item/stool,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva/north,
+/area/varadero/interior/research)
+"aj" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/research)
+"ak" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/engineer,
+/turf/open/floor/plating,
 /area/varadero/interior/research)
 "al" = (
 /obj/structure/closet/secure_closet/scientist,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva/purple/southwest,
+/area/varadero/interior/research)
+"am" = (
+/obj/item/stack/tile/plasteel{
+	pixel_x = 8;
+	pixel_y = 6
+	},
+/turf/open/floor/shiva/purple,
 /area/varadero/interior/research)
 "ar" = (
 /obj/structure/surface/rack,
@@ -573,9 +616,6 @@
 /turf/open/floor/almayer,
 /area/varadero/interior/research/clfship)
 "nq" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
 /obj/structure/barricade/sandbags/wired{
 	dir = 4
 	},
@@ -682,6 +722,9 @@
 /area/varadero/interior/research)
 "qi" = (
 /obj/effect/landmark/objective_landmark/far,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/research)
 "ro" = (
@@ -743,14 +786,18 @@
 	},
 /turf/open/floor/shiva/purplefull/west,
 /area/varadero/interior/research)
-"rP" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor/shiva/purple/southeast,
-/area/varadero/interior/research)
 "rV" = (
-/turf/open/floor/shiva/multi_tiles,
+/obj/item/tool/wrench{
+	pixel_x = -1;
+	pixel_y = -4
+	},
+/obj/item/pipe{
+	color = "green";
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 5
+	},
+/turf/open/floor/plating,
 /area/varadero/interior/research)
 "sz" = (
 /obj/structure/bed/chair/dropship/passenger{
@@ -1023,9 +1070,6 @@
 /turf/open/floor/platingdmg1,
 /area/varadero/interior/maintenance/research)
 "xh" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
 /obj/structure/machinery/light,
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_y = 21;
@@ -1046,14 +1090,6 @@
 	},
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva/purple/east,
-/area/varadero/interior/research)
-"xv" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/effect/landmark/corpsespawner/engineer,
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor/plating,
 /area/varadero/interior/research)
 "xB" = (
 /obj/effect/landmark/survivor_spawner/clf/varadero,
@@ -1146,6 +1182,9 @@
 /area/varadero/interior/maintenance/research)
 "At" = (
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /turf/open/floor/shiva/floor3,
@@ -1348,13 +1387,6 @@
 	},
 /turf/open/floor/shiva/north,
 /area/varadero/interior/research)
-"EM" = (
-/obj/structure/window/framed/colony/reinforced,
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor/shiva/north,
-/area/varadero/interior/research)
 "EV" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -1479,19 +1511,6 @@
 /obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior/caves/north_research)
-"HQ" = (
-/obj/item/pipe{
-	color = "green";
-	dir = 4;
-	pixel_x = -2;
-	pixel_y = 5
-	},
-/obj/item/tool/wrench{
-	pixel_x = -1;
-	pixel_y = -4
-	},
-/turf/open/floor/plating,
-/area/varadero/interior/research)
 "HW" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
@@ -1614,6 +1633,9 @@
 /area/varadero/interior/research)
 "Jn" = (
 /obj/structure/machinery/vending/cola,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/research)
 "Jv" = (
@@ -1630,9 +1652,6 @@
 /turf/open/floor/plating,
 /area/varadero/interior/research)
 "JF" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
 /obj/item/stack/rods,
 /obj/item/stack/sheet/metal,
 /turf/open/floor/shiva/north,
@@ -1739,13 +1758,6 @@
 	pixel_y = 4
 	},
 /turf/open/floor/platingdmg1,
-/area/varadero/interior/research)
-"Ma" = (
-/obj/structure/pipes/standard/manifold/hidden/green,
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor/shiva/north,
 /area/varadero/interior/research)
 "Mr" = (
 /obj/item/stack/sheet/metal,
@@ -2008,12 +2020,6 @@
 	},
 /turf/open/floor/plating,
 /area/varadero/interior/research)
-"Uj" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor/shiva/purplefull/west,
-/area/varadero/interior/research)
 "Uw" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
@@ -2216,16 +2222,6 @@
 	dir = 4
 	},
 /turf/open/floor/shiva/purple/southeast,
-/area/varadero/interior/research)
-"XK" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22";
-	pixel_y = 8
-	},
-/turf/open/floor/shiva/purplefull/west,
 /area/varadero/interior/research)
 "XU" = (
 /obj/item/stack/rods,
@@ -2616,9 +2612,9 @@ Ze
 Zo
 Ze
 Hx
-fs
+ah
 Ze
-bX
+ad
 on
 gZ
 "}
@@ -2646,9 +2642,9 @@ FN
 op
 ll
 hG
-FN
+ai
 ll
-kT
+ll
 jo
 gZ
 "}
@@ -2676,7 +2672,7 @@ ll
 NC
 FN
 Ii
-ll
+kT
 ll
 JF
 RV
@@ -2706,9 +2702,9 @@ LT
 vr
 FN
 LD
-ll
+kT
 xB
-Lm
+ae
 Qe
 Fk
 "}
@@ -2736,9 +2732,9 @@ qf
 aa
 ll
 Sq
-FN
+ai
 ll
-HH
+on
 Fp
 Eg
 "}
@@ -2759,16 +2755,16 @@ ZN
 SJ
 Ze
 vd
-Ma
+bX
 li
 Fl
 ll
 ll
 ll
 ll
+kT
 ll
-ll
-HH
+on
 vz
 gZ
 "}
@@ -2796,9 +2792,9 @@ ay
 tV
 nb
 eG
+kT
 ll
-ll
-rP
+wl
 BK
 gZ
 "}
@@ -2828,7 +2824,7 @@ gZ
 hG
 At
 dE
-Uj
+hG
 MC
 gZ
 "}
@@ -2856,7 +2852,7 @@ Hh
 De
 gZ
 HW
-mK
+aj
 mK
 nq
 BP
@@ -2886,9 +2882,9 @@ ll
 hz
 gZ
 FE
-dE
+OX
 ds
-EM
+FE
 gZ
 gZ
 "}
@@ -2918,7 +2914,7 @@ gZ
 iR
 Jn
 IP
-XK
+iR
 gZ
 Wv
 "}
@@ -2946,9 +2942,9 @@ ay
 OJ
 gZ
 on
-rV
-jj
 Ud
+jj
+ag
 gZ
 Wv
 "}
@@ -2975,10 +2971,10 @@ gZ
 gZ
 gZ
 gZ
-on
+am
 rV
 af
-HQ
+ag
 gZ
 Wv
 "}
@@ -3006,9 +3002,9 @@ Ai
 Ai
 gZ
 on
-rV
+ak
 VQ
-xv
+ag
 gZ
 Wv
 "}

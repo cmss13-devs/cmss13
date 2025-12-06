@@ -220,8 +220,6 @@
 			continue
 		A = obstacle
 		blocking_dir |= A.BlockedPassDirs(mover, fdir)
-		if((fd1 && blocking_dir == fd1) || (fd2 && blocking_dir == fd2))
-			return A
 		if((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
 			return A
 

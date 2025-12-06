@@ -1,4 +1,0 @@
-author: "kalazus"
-delete-after: True
-changes:
-  - refactor: "static light system optimization."

@@ -103,6 +103,10 @@
 	reference_package = /datum/supply_packs/batteries
 	cost = ASRS_VERY_LOW_WEIGHT
 
+/datum/supply_packs_asrs/sandbags
+	reference_package = /datum/supply_packs/sandbags
+	cost = ASRS_LOWEST_WEIGHT
+
 // ============================
 // FOOD POOL - for Mess Tech gradual supplies throughout the round
 /datum/supply_packs_asrs/ingredient

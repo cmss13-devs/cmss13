@@ -18,7 +18,7 @@ GLOBAL_VAR_INIT(med_lockdown_state, LOCKDOWN_READY)
 /obj/structure/machinery/biohazard_lockdown/attack_alien(mob/user as mob)
 	return FALSE
 
-/obj/structure/machinery/biohazard_lockdown/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/machinery/biohazard_lockdown/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	return TAILSTAB_COOLDOWN_NONE
 
 /obj/structure/machinery/biohazard_lockdown/attackby(obj/item/attacking_item, mob/user)

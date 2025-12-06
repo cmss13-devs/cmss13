@@ -2692,21 +2692,15 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/device/healthanalyzer/alien{
-	pixel_x = -7;
-	pixel_y = 13
-	},
 /obj/item/tool/kitchen/tray{
-	pixel_y = 1;
+	pixel_y = 7;
 	layer = 2.9;
 	color = "#9bb1be"
 	},
-/obj/item/tool/surgery/scalpel/predatorscalpel{
-	pixel_x = 1;
-	pixel_y = -5
-	},
-/obj/item/tool/surgery/circular_saw/predatorbonesaw{
-	pixel_y = 2
+/obj/item/tool/wrench/yautja,
+/obj/item/tool/wirecutters/yautja{
+	pixel_x = -1;
+	pixel_y = 5
 	},
 /turf/open/floor/corsat/box,
 /area/yautja)
@@ -3347,10 +3341,19 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/tool/surgery/FixOVein/predatorFixOVein,
-/obj/item/tool/surgery/bonegel/predatorbonegel,
-/obj/item/tool/surgery/bonesetter/predatorbonesetter,
-/obj/item/tool/surgery/surgicaldrill/predatorsurgicaldrill,
+/obj/item/tool/kitchen/tray{
+	pixel_y = 7;
+	layer = 2.9;
+	color = "#9bb1be"
+	},
+/obj/item/tool/yautja_cleaner{
+	pixel_y = 12;
+	pixel_x = 5
+	},
+/obj/item/device/healthanalyzer/alien{
+	pixel_x = -5;
+	pixel_y = 8
+	},
 /turf/open/floor/corsat/box,
 /area/yautja)
 "kY" = (
@@ -10029,10 +10032,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/tool/surgery/cautery/predatorcautery,
-/obj/item/tool/surgery/circular_saw/predatorbonesaw,
-/obj/item/tool/surgery/hemostat/predatorhemostat,
-/obj/item/tool/surgery/retractor/predatorretractor,
+/obj/item/storage/surgical_tray/predator,
 /turf/open/floor/corsat/box,
 /area/yautja)
 "HU" = (
@@ -12045,26 +12045,6 @@
 	},
 /obj/structure/platform_decoration/metal/hunter/east,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
-/area/yautja)
-"PF" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/tool/kitchen/tray{
-	pixel_y = 7;
-	layer = 2.9;
-	color = "#9bb1be"
-	},
-/obj/item/tool/wirecutters/yautja{
-	pixel_x = -1;
-	pixel_y = 5
-	},
-/obj/item/tool/surgery/FixOVein/predatorFixOVein{
-	pixel_x = 8;
-	pixel_y = -1;
-	layer = 2.9
-	},
-/turf/open/floor/corsat/box,
 /area/yautja)
 "PG" = (
 /obj/effect/hunter/catwalk/new_alpha,
@@ -16919,7 +16899,7 @@ Zo
 Zo
 yN
 tA
-PF
+bn
 HS
 aV
 Ia

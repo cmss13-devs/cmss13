@@ -165,7 +165,7 @@
 
 /obj/structure/closet/secure_closet/surgical/Initialize()
 	. = ..()
-	new /obj/item/storage/surgical_tray(src)
+	new /obj/item/storage/surgical_tray/large(src)
 	new /obj/item/roller/surgical(src)
 
 /obj/structure/closet/secure_closet/professor_dummy

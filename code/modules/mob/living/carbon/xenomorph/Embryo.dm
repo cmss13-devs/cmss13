@@ -88,7 +88,7 @@
 	var/is_nested = HAS_TRAIT(affected_mob, TRAIT_NESTED)
 	if(is_nested && !(affected_mob.stat & DEAD) && stage <= 3 && affected_mob.reagents)
 		if(affected_mob.reagents.get_reagent_amount("host_stabilizer") < 1)
-			affected_mob.reagents.add_reagent("host_stabilizer", 1)
+			affected_mob.reagents.add_reagent("host_stabilizer", 1, method = IMPLANTATION)
 		for(var/datum/reagent/generated/stim in affected_mob.reagents.reagent_list)
 			affected_mob.reagents.remove_reagent(stim.id, stim_drain, TRUE)
 

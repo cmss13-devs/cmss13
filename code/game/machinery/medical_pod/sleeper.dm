@@ -391,7 +391,7 @@
 /obj/structure/machinery/medical_pod/sleeper/proc/inject_chemical(mob/living/user as mob, chemical, amount)
 	if(occupant && occupant.reagents)
 		if(occupant.reagents.get_reagent_amount(chemical) + amount <= max_chem)
-			occupant.reagents.add_reagent(chemical, amount, , , user)
+			occupant.reagents.add_reagent(chemical, amount, , , user, method = INJECTION)
 			var/datum/reagent/temp = GLOB.chemical_reagents_list[chemical]
 			to_chat(user, SPAN_NOTICE("[occupant] now has [occupant.reagents.get_reagent_amount(chemical)] units of [temp.name] in \his bloodstream."))
 			return

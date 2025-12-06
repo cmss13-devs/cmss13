@@ -142,7 +142,7 @@
 				if(istype(src.beaker, /obj/item/reagent_container/blood))
 					// speed up transfer on blood packs
 					transfer_amount = 4
-				attached.inject_blood(beaker, transfer_amount)
+				attached.inject_blood(beaker, transfer_amount, method = IMPLANTATION)
 				update_icon()
 
 		// Take blood

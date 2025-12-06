@@ -694,6 +694,23 @@
 	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
 	info = "<center> <img src = [asset.get_url_mappings()["logo_upp.png"]]> <br> <b><small>Union Of Progressive People's Fourth Fleet</b></small> <br> <b><large>Orders For 173rd Airborne Reconnaissance: 2nd Platoon</large></b> <br> <small>No.52</small></center> <hr> <b>Order of Military Officer of the UPP</b><br><b>Kolonel <redacted> Ganbaatar </b><br><b>Commander of MV-35</b> <br> Date: 2182 <br> <b><large>On Special Mission<large></b>  <hr>  The actions of the hostile Weyland-Yutani corporation on the fringes of the Neroid sector have grown increasingly intolerable. However, evidence suggesting they are researching into the creation and deployment of some form of biological weapons program represent an unacceptable risk to the security of UPP interests in this sector. The risk of these items falling into UA/USCM hands is unacceptable. <br><br> Orders for the Boris squad of the 173rd Airborne Recon are as follows. Initiate airborne reconnaissance of WY colony Oxley's Buttle, Trijent Dam, location on planet Raijin  (UA Code: LV-670). Ascertain veracity of onsight biological weapons program. If positive confirmation of the weapons program is identified, authorization for rapid assault and recovery is granted. Avoid all contact with UA/USCM military forces, abort missions if UA/USCM forces are encountered. <hr><center><b>Authorizing Officer: Gaanbatar</b><br>Name and Rank: Kolonel </center>  <hr><small><i>FOR SANCTIONED USE ONLY</i></small>"
 
+/obj/item/paper/abyssal/captain
+	name = "Captains Directive"
+
+/obj/item/paper/abyssal/captain/Initialize(mapload, photo_list)
+	. = ..()
+
+	info = "<center> <br> <b><small>Con-Amalagated Corporation</b></small> <br> <b><large>Orders For Captain: Con-AM 81 'Abyssal'</large></b> <br> <small>No.02</small></center> <hr> <br> Date: 2182 <br> <b><large>On Recovery Of Unidentified Craft<large></b>  <hr> We have recieved your communique regarding the recovery of the possible xenocraft. Its transfer into Con-Am secure custody is considered priority 1. We are dispatching a Con-Am Security Service force to your station to transfer it off-station.<br><br> Your directive is to ensure its safe harbour until the recovery team arrives. You must render every effort to ensure the safety of the craft. You and your crew will be well rewarded for your efforts.  <hr><small><i>FOR SANCTIONED USE ONLY</i></small>"
+
+/obj/item/paper/abyssal/liaison
+	name = "Liaison Directive"
+
+/obj/item/paper/abyssal/liaison/Initialize(mapload, photo_list)
+	. = ..()
+
+	info = "<center> <br> <b><small>Con-Amalagated Corporation</b></small> <br> <b><large>Orders For Liaison: Con-AM 81 'Abyssal'</large></b> <br> <small>No.02</small></center> <hr> <br> Date: 2182 <br> <b><large>On Recovery Of Unidentified Craft<large></b>  <hr> We have recieved your Captains communique regarding the recovery of a possible xenocraft. Its transfer into Con-Am secure custody is considered priority 1. We are dispatching a Con-Am Security Service force to your station to transfer it off-station.<br><br> Your directive is to ensure its safe harbour until the recovery team arrives. You must render every effort to ensure the safety of the craft. You and your crew will be well rewarded for your efforts.  <hr><small><i>FOR SANCTIONED USE ONLY</i></small>"
+
+
 /obj/item/paper/crumpled
 	name = "paper scrap"
 	icon_state = "scrap"

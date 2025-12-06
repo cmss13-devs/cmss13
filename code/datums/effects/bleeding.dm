@@ -86,6 +86,7 @@
 				if(SEND_SIGNAL(affected_human, COMSIG_BLEEDING_PROCESS, FALSE) & COMPONENT_BLEEDING_CANCEL)
 					return FALSE
 		affected_mob.drip(buffer_blood_loss)
+
 		buffer_blood_loss = 0
 
 	return TRUE

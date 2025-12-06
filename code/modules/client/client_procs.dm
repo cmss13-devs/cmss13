@@ -306,6 +306,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		mob = new /mob/unauthenticated(locate(1, 1, 1))
 		return mob
 
+	ticket_panel = new /datum/ticket_panel()
+
 	PreLogin()
 
 	. = ..() //calls mob.Login()
@@ -477,7 +479,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		gc_destroyed = world.time
 		if (!QDELING(src))
 			stack_trace("Client does not purport to be QDELING, this is going to cause bugs in other places!")
-
+		QDEL_NULL(ticket_panel)
 		SEND_SIGNAL(src, COMSIG_PARENT_QDELETING, TRUE)
 		Destroy()
 	return ..()

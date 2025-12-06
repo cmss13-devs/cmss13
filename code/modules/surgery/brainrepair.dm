@@ -18,7 +18,7 @@
 	if(!B || B.robotic == ORGAN_ROBOT)
 		return FALSE
 	if(B.damage <= dmg_min)
-		if(target.disabilities & NERVOUS || target.sdisabilities & DISABILITY_MUTE || target.sdisabilities & DISABILITY_BLIND) //if people want to start out with disabilities and change their mind later they don't need brain damage to
+		if(target.disabilities & NERVOUS || target.sdisabilities & DISABILITY_MUTE || target.sdisabilities & DISABILITY_BLIND) //if people want to start out with disabilities and change their mind later they don't need brain damage to remove them.
 			return TRUE
 		return FALSE
 	if(dmg_max && B.damage > dmg_max)
@@ -149,13 +149,14 @@
 
 	target.pain.recalculate_pain()
 
-/datum/surgery_step/treat_hematoma/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/treat_hematoma/failure(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	var/datum/internal_organ/brain/B = target.internal_organs_by_name["brain"]
 	user.affected_message(target,
 		SPAN_WARNING("Your hand slips, bruising [target]'s brain with [tool]!"),
 		SPAN_WARNING("[user]'s hand slips, bruising your brain with [tool]!"),
 		SPAN_WARNING("[user]'s hand slips, bruising [target]'s brain with [tool]!"))
 
+	B.take_damage(10, FALSE)
 	log_interact(user, target, "[key_name(user)] failed to mend the hematoma in [key_name(target)]'s brain with [tool], aborting [surgery].")
 
-	target.apply_damage(15, BRUTE, target_zone)
 	return FALSE

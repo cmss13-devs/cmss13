@@ -72,6 +72,7 @@
 		victim.visible_message(
 			SPAN_WARNING("[victim] is [pick("covered", "drenched", "soaked")] in the acidic blood that [pick("spurts", "sprays", "bursts")] out from the [target.caste_type]!"),
 			SPAN_HIGHDANGER("You feel agonizing pain as you're drenched in acid!"))
+		victim.emote("scream")
 		victim.apply_damage(rand(75, 125), BURN) // you WILL wear biosuit.
 		playsound(victim, "acid_sizzle", 25, TRUE)
 		animation_flash_color(victim, "#FF0000")
@@ -117,6 +118,7 @@
 		victim.visible_message(
 			SPAN_WARNING("[victim] is [pick("covered", "drenched", "soaked")] in the acidic blood that [pick("spurts", "sprays", "bursts")] out from the [target.caste_type]!"),
 			SPAN_DANGER("You're [pick("covered", "drenched", "soaked")] in the acidic blood that [pick("spurts", "sprays", "bursts")] out from the [target.caste_type]!"))
+		victim.emote("pain")
 		victim.apply_damage(rand(50, 75), BURN) // still dangerous
 		playsound(victim, "acid_sizzle", 25, TRUE)
 		animation_flash_color(victim, "#FF0000")
@@ -169,6 +171,7 @@
 		victim.visible_message(
 			SPAN_WARNING("[victim] is [pick("covered", "drenched", "soaked")] in the acidic blood that [pick("spurts", "sprays", "bursts")] out from the [target.caste_type]!"),
 			SPAN_DANGER("You're [pick("covered", "drenched", "soaked")] in the acidic blood that [pick("spurts", "sprays", "bursts")] out from the [target.caste_type]!"))
+		victim.emote("pain")
 		victim.apply_damage(rand(50, 75), BURN) // not AS dangerous but still is
 		playsound(victim, "acid_sizzle", 25, TRUE)
 		animation_flash_color(victim, "#FF0000")

@@ -18,7 +18,7 @@
 	)
 	requires_bodypart = FALSE
 	requires_bodypart_type = LIMB_DESTROYED
-	pain_reduction_required = NONE
+	pain_reduction_required = NONE //he dead dead
 	var/obj/item/limb/head/synth/patient_head
 	var/no_revive = FALSE
 

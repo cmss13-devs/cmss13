@@ -74,11 +74,15 @@
 
 /datum/surgery_step/cut_larval_pseudoroots/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	if(tool_type == /obj/item/tool/surgery/scalpel/pict_system)
-		user.visible_message(SPAN_NOTICE("[user] severs the last of the pseudoroots with [tool], without spilling any of the larva's acid blood."),
-			SPAN_NOTICE("You sever the last of the pseudoroots with [tool], without spilling any of the larva's acid blood."))
+		user.affected_message(target,
+			SPAN_NOTICE("You sever the last of the pseudoroots with [tool] without spilling any of the larva's acidic blood."),
+			SPAN_NOTICE("[user] severs the last of the pseudoroots with [tool] without spilling any of the larva's acidic blood."),
+			SPAN_NOTICE("[user] severs the last of the pseudoroots with [tool] without spilling any of the larva's acidic blood."))
 	else
-		user.visible_message(SPAN_WARNING("Pressurised acid sprays everywhere as [user] severs the larva's tubes!"),
-			SPAN_WARNING("As you sever the larva's pseudoroots, acid sprays through the air, pools in [target]'s [surgery.affected_limb.cavity], and spills sizzling across \his organs!"))
+		user.affected_message(target,
+			SPAN_WARNING("As you sever the larva's pseudoroots, acid sprays into the air and lands in [target]'s [surgery.affected_limb.cavity], where it pools and sizzles across \his organs!"),
+			SPAN_WARNING("As [user] severs the larva's pseudoroots, acid sprays into the air and lands in your [surgery.affected_limb.cavity], where it pools and sizzles across your organs!"),
+			SPAN_WARNING("As [user] severs the larva's pseudoroots, acid sprays into the air and lands in target's [surgery.affected_limb.cavity], where it pools and sizzles over the exposed organs."))
 
 		if(target.stat == CONSCIOUS)
 			to_chat(target, SPAN_HIGHDANGER("Your organs are melting!"))
@@ -97,8 +101,10 @@
 	log_interact(user, target, "[key_name(user)] cut the roots of a larva in [key_name(target)]'s [surgery.affected_limb.display_name] with [tool], starting [surgery].")
 
 /datum/surgery_step/cut_larval_pseudoroots/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	user.visible_message(SPAN_WARNING("[user]'s hand slips and a jet of acid spurts as \he slices the larva with [tool]!"),
-		SPAN_WARNING("Your hand slips and a jet of acid spurts as you slice the larva with [tool]!"))
+	user.affected_message(target,
+		SPAN_WARNING("Your hand slips and you accidentally slice into the larva! Acid sprays into the air and lands in [target]'s [surgery.affected_limb.cavity], where it pools and sizzles across \his organs!"),
+		SPAN_WARNING("[user]'s hand slips and accidentally slices into the larva! Acid sprays into the air and lands in your [surgery.affected_limb.cavity], where it pools and sizzles across your organs!"),
+		SPAN_WARNING("[user]'s hand slips and accidentally slices into the larva! Acid sprays into the air and lands in target's [surgery.affected_limb.cavity], where it pools and sizzles over the exposed organs."))
 
 	if(target.stat == CONSCIOUS)
 		to_chat(target, SPAN_HIGHDANGER("Your organs are melting!"))
@@ -199,7 +205,7 @@
 	I.take_damage(5,0)
 	if(target.stat == CONSCIOUS)
 		target.emote("scream")
-	to_chat(target, SPAN_WARNING("Your organs in your chest feel like they're in living hell!"))
+	to_chat(target, SPAN_WARNING("Your organs in your [surgery.affected_limb.cavity] feel like they're in living hell!"))
 	target.apply_damage(15, BURN, target_zone)
 	log_interact(user, target, "[key_name(user)] failed to remove an embryo from [key_name(target)]'s ribcage with [tool ? "[tool]" : "their hands"].")
 	return FALSE

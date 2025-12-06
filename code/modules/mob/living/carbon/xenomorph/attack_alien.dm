@@ -131,13 +131,20 @@
 						knock_chance += 2 * attacking_xeno.frenzy_aura
 					if(attacking_xeno.caste && attacking_xeno.caste.is_intelligent)
 						knock_chance += 2
-					knock_chance += min(floor(damage * 0.25), 10) //Maximum of 15% chance.
+					knock_chance += min(floor(damage * 0.25), 10)
+					if(stat)
+						knock_chance = 75 // If you're unconscious, how are you keeping it on so well.
+					else if(HAS_TRAIT(src, TRAIT_YAUTJA_TECH))
+						knock_chance = min(knock_chance, 15) //Maximum of 15% chance.
+					else
+						knock_chance = min(knock_chance, 20)//If they don't know how it works (not Yautja) it's less useful.
+
 					if(prob(knock_chance))
 						playsound(loc, "alien_claw_metal", 25, 1)
 						attacking_xeno.visible_message(SPAN_DANGER("[attacking_xeno] smashes off [src]'s [wear_mask.name]!"),
 						SPAN_DANGER("We smash off [src]'s [wear_mask.name]!"), null, 5)
 						drop_inv_item_on_ground(wear_mask)
-						if(isyautja(src))
+						if(isspeciesyautja(src))
 							emote("roar")
 						else
 							emote("scream")

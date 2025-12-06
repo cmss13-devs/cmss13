@@ -91,7 +91,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_spec_heavy, list(
 		return
 	if(!user.skills.get_skill_level(SKILL_SPEC_WEAPONS) == SKILL_SPEC_TRAINED)
 		return
-	if((!human_user.assigned_squad && squad_tag) || (!human_user.assigned_squad?.omni_squad_vendor && (squad_tag && human_user.assigned_squad.name != squad_tag)))
+	if((!human_user.assigned_squad && squad_tag) || (!human_user.assigned_squad?.omni_squad_vendor && (squad_tag && human_user.assigned_squad.name != squad_tag)) && squad_tag != "null")
 		to_chat(user, SPAN_WARNING("This machine isn't for your squad."))
 		return
 	var/datum/specialist_set/chosen_set = get_specialist_set(user)
@@ -223,26 +223,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_specialist, list(
 
 /obj/structure/machinery/cm_vending/clothing/specialist/get_listed_products(mob/user)
 	return GLOB.cm_vending_clothing_specialist
-
-/obj/structure/machinery/cm_vending/clothing/specialist/alpha
-	squad_tag = SQUAD_MARINE_1
-	req_access = list(ACCESS_MARINE_SPECPREP, ACCESS_MARINE_ALPHA)
-	headset_type = /obj/item/device/radio/headset/almayer/marine/alpha
-
-/obj/structure/machinery/cm_vending/clothing/specialist/bravo
-	squad_tag = SQUAD_MARINE_2
-	req_access = list(ACCESS_MARINE_SPECPREP, ACCESS_MARINE_BRAVO)
-	headset_type = /obj/item/device/radio/headset/almayer/marine/bravo
-
-/obj/structure/machinery/cm_vending/clothing/specialist/charlie
-	squad_tag = SQUAD_MARINE_3
-	req_access = list(ACCESS_MARINE_SPECPREP, ACCESS_MARINE_CHARLIE)
-	headset_type = /obj/item/device/radio/headset/almayer/marine/charlie
-
-/obj/structure/machinery/cm_vending/clothing/specialist/delta
-	squad_tag = SQUAD_MARINE_4
-	req_access = list(ACCESS_MARINE_SPECPREP, ACCESS_MARINE_DELTA)
-	headset_type = /obj/item/device/radio/headset/almayer/marine/delta
 
 //------------ESSENTIAL SETS---------------
 

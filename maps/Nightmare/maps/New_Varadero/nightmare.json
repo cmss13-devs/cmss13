@@ -29,6 +29,6 @@
 		"landmark": "clfraid",
 		"chance": 1.0,
 		"path": "standalone/clfraid.dmm",
-		"when": { "lvevent": "clfraid" }
+		"when": { "lvevent": "clfraid", "$population" : ["Midpop", "Highpop"] }
 	}
 ]

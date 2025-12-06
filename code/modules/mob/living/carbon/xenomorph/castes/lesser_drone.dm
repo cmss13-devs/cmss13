@@ -100,10 +100,11 @@
 		return
 
 	age = XENO_NORMAL
-
 	hud_update()
-
 	xeno_jitter(25)
+
+/mob/living/carbon/xenomorph/lesser_drone/warn_away_timer()
+	return // Ghostizing will just gib
 
 /mob/living/carbon/xenomorph/lesser_drone/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()

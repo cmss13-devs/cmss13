@@ -1,0 +1,4 @@
+author: "PGrayCS"
+delete-after: True
+changes:
+  - qol: "Added 'You hear a click as the phone goes dead' notification when someone hangs up the phone on you"

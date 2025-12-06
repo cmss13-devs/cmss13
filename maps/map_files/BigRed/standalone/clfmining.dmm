@@ -1441,7 +1441,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/cigbutt,
 /obj/structure/barricade/plasteel/wired{
-	icon_state = "plasteel_2";
+	icon_state = "folding_plasteel_2";
 	density = 1;
 	closed = 0;
 	dir = 8
@@ -2362,7 +2362,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/disposalpipe/broken,
 /obj/structure/barricade/plasteel/wired{
-	icon_state = "plasteel_2";
+	icon_state = "folding_plasteel_2";
 	density = 1;
 	closed = 0;
 	dir = 8
@@ -2893,8 +2893,8 @@
 /area/bigredv2/caves/mining)
 "Sw" = (
 /obj/structure/prop/almayer/computers/sensor_computer1{
-	desc = "An old W-Y systems control computer that manages the air enviorment for a large area. Commonly used in mining operations in order to control O2 levels, alert of any dangerous gases and make the heat slightly more bearable.";
-	name = "W-Y Enviorment Control System Control Panel"
+	desc = "An old W-Y systems control computer that manages the air environment for a large area. Commonly used in mining operations in order to control O2 levels, alert of any dangerous gases and make the heat slightly more bearable.";
+	name = "W-Y Environment Control System Control Panel"
 	},
 /obj/structure/cable{
 	icon_state = "11-2"
@@ -3064,7 +3064,7 @@
 "Wm" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/explosive/grenade/high_explosive/frag{
-	desc = "High-Explosive Fragmenting-Antipersonnel. A small, but deceptively strong fragmentation grenade that has been phasing out the M15 fragmentation grenades alongside the M40 HEDP. Capable of being loaded in the M92 Launcher, or thrown by hand. This one seems to have weird insciptions all over it. You can barely make out 'PrAIs3 thE H3f@ G0d'"
+	desc = "High-Explosive Fragmenting-Antipersonnel. A small, but deceptively strong fragmentation grenade that has been phasing out the M15 fragmentation grenades alongside the M40 HEDP. Capable of being loaded in the M92 Launcher, or thrown by hand. This one seems to have weird inscriptions all over it. You can barely make out 'PrAIs3 thE H3f@ G0d'"
 	},
 /obj/item/flag/plantable/clf,
 /turf/open/floor/plating/platingdmg3/west,
@@ -3257,7 +3257,7 @@
 	icon_state = "sandbag_3"
 	},
 /obj/structure/barricade/plasteel/wired{
-	icon_state = "plasteel_2";
+	icon_state = "folding_plasteel_2";
 	density = 1;
 	closed = 0
 	},

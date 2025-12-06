@@ -801,7 +801,7 @@
 	name = "Prospera Grand Hotel - Room"
 	icon_state = "apartments"
 
-// Hosptial
+// Hospital
 
 /area/lv759/indoors/hospital
 	icon_state = "medical"
@@ -1038,7 +1038,7 @@
 	name = "NSPA - Ironbridge Precinct - Maximum Security Ward - Recreation Area & Shower Room"
 
 /area/lv759/indoors/colonial_marshals/garage
-	name = "NSPA - Ironbridge Precinct - Vehicle Deployment & Maintenace"
+	name = "NSPA - Ironbridge Precinct - Vehicle Deployment & Maintenance"
 	linked_lz = DROPSHIP_LZ2
 
 /area/lv759/indoors/colonial_marshals/armory_foyer
@@ -1416,7 +1416,7 @@
 	soundscape_playlist = SCAPE_PL_LV759_INDOORS
 
 /area/lv759/indoors/wy_research_complex/southeastexit
-	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - South East Maintenace & Emergency Exit"
+	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - South East Maintenance & Emergency Exit"
 	icon_state = "wylab"
 	ambience_exterior = AMBIENCE_LAB
 	soundscape_playlist = SCAPE_PL_LV759_INDOORS

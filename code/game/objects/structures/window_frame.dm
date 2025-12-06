@@ -406,7 +406,7 @@
 	unslashable = TRUE
 	unacidable = TRUE
 
-// Hosptial
+// Hospital
 
 /obj/structure/window_frame/hybrisa/colony/hospital
 	icon = 'icons/turf/walls/hybrisa_hospital_colonywindows.dmi'

@@ -2198,7 +2198,7 @@
 "ib" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
-	name = "\improper Millitary Police Armory"
+	name = "\improper Military Police Armory"
 	},
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/sec)
@@ -5160,7 +5160,7 @@
 "uB" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "chinook_umbilical";
-	name = "\improper Chinook Umbillical Airlock";
+	name = "\improper Chinook Umbilical Airlock";
 	unacidable = 1
 	},
 /turf/open/floor/almayer,
@@ -8758,7 +8758,7 @@
 /area/adminlevel/chinook/offices)
 "Ky" = (
 /obj/structure/sign/safety/radio_rad{
-	desc = "Semiotic Standard denoting the nearby presence of a telecommunications roomr.";
+	desc = "Semiotic Standard denoting the nearby presence of a telecommunications room.";
 	name = "telecommunications semiotic";
 	pixel_x = -15;
 	pixel_y = -7

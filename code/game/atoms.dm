@@ -210,7 +210,7 @@ directive is properly returned.
 /atom/proc/HasProximity(atom/movable/AM as mob|obj)
 	return
 
-/atom/proc/emp_act(severity)
+/atom/proc/emp_act(severity, datum/cause_data/cause_data)
 	SHOULD_CALL_PARENT(TRUE)
 
 	if(emp_proof)

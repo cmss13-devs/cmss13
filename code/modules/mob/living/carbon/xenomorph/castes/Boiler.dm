@@ -86,8 +86,6 @@
 	smoke.cause_data = create_cause_data(initial(caste_type), src)
 	see_in_dark = 20
 
-	update_icon_source()
-
 /mob/living/carbon/xenomorph/boiler/Destroy()
 	if(smoke)
 		qdel(smoke)

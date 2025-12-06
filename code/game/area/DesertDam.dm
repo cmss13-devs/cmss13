@@ -230,7 +230,7 @@
 //Substations
 /area/desert_dam/building/substation
 	name = "Substation"
-	icon = 'icons/turf/dam_areas.dmi'
+	icon = 'icons/turf/area_dam.dmi'
 	minimap_color = MINIMAP_AREA_ENGI
 
 /area/desert_dam/building/substation/northwest

@@ -818,9 +818,8 @@
 /turf/open/floor/almayer/test_floor4,
 /area/adminlevel/ert_station/pizza_station)
 "lg" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_1"
-	},
+/obj/structure/shuttle/part/ert/transparent/left_engine,
+/turf/open/mars_dirt/mars_cave_3,
 /area/adminlevel/ert_station/pizza_station)
 "lv" = (
 /obj/structure/surface/table/almayer,
@@ -2514,10 +2513,8 @@
 /turf/open/floor/almayer/test_floor4,
 /area/adminlevel/ert_station/pizza_station)
 "FL" = (
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_1";
-	opacity = 0
-	},
+/obj/structure/shuttle/part/ert/transparent/right_engine,
+/turf/open/mars_dirt/mars_cave_3,
 /area/adminlevel/ert_station/pizza_station)
 "FS" = (
 /obj/structure/machinery/light,
@@ -2639,7 +2636,7 @@
 /area/space)
 "Ha" = (
 /turf/closed/shuttle/ert{
-	icon_state = "stan_leftengine"
+	icon_state = "stan_leftengine_clean"
 	},
 /area/adminlevel/ert_station/pizza_station)
 "Hd" = (
@@ -3055,9 +3052,8 @@
 /turf/open/floor/prison,
 /area/adminlevel/ert_station/pizza_station)
 "NJ" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan20"
-	},
+/obj/structure/shuttle/part/ert/front_left_stan,
+/turf/open/mars_dirt/mars_cave_3,
 /area/adminlevel/ert_station/pizza_station)
 "NN" = (
 /obj/structure/closet/secure_closet/fridge/groceries/stock,
@@ -3611,9 +3607,8 @@
 /turf/open/floor/prison/red/west,
 /area/adminlevel/ert_station/pizza_station)
 "Vt" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan25"
-	},
+/obj/structure/shuttle/part/ert/front_right_stan,
+/turf/open/mars_dirt/mars_cave_3,
 /area/adminlevel/ert_station/pizza_station)
 "Vv" = (
 /obj/docking_port/stationary/emergency_response/idle_port4,
@@ -3916,7 +3911,7 @@
 /turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/ert_station/pizza_station)
 "Yw" = (
-/turf/closed/shuttle/ert{
+/turf/closed/shuttle/ert/transparent{
 	icon_state = "stan27"
 	},
 /area/adminlevel/ert_station/pizza_station)

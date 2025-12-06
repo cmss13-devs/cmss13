@@ -86,17 +86,17 @@
 /area/fiorina/station/clf_ship)
 "an" = (
 /obj/structure/prop/invuln/fire,
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_1";
-	opacity = 0
-	},
+/obj/structure/shuttle/part/ert/transparent/left_engine,
+/turf/open/floor/plating,
 /area/fiorina/station/clf_ship)
 "ao" = (
 /obj/structure/shuttle/engine/router{
 	dir = 1
 	},
 /obj/structure/prop/invuln/fire,
-/turf/closed/wall/almayer,
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "rightengine_2"
+	},
 /area/fiorina/station/clf_ship)
 "ap" = (
 /obj/item/ammo_casing/bullet,
@@ -149,9 +149,8 @@
 /area/fiorina/station/clf_ship)
 "aw" = (
 /obj/structure/prop/invuln/fire,
-/turf/closed/shuttle/ert{
-	icon_state = "stan20"
-	},
+/obj/structure/shuttle/part/ert/front_left_stan,
+/turf/open/floor/platingdmg3,
 /area/fiorina/station/clf_ship)
 "ax" = (
 /obj/structure/machinery/door/poddoor/almayer{
@@ -212,6 +211,10 @@
 /obj/item/defenses/handheld/planted_flag/clf,
 /obj/item/flag/plantable/clf,
 /turf/open/floor/plating/platingdmg3,
+/area/fiorina/station/clf_ship)
+"aH" = (
+/obj/structure/shuttle/part/ert/transparent/right_engine,
+/turf/open/floor/plating,
 /area/fiorina/station/clf_ship)
 "aI" = (
 /turf/open/floor/almayer/blue/southwest,
@@ -446,7 +449,7 @@
 /area/fiorina/station/clf_ship)
 "hr" = (
 /turf/closed/shuttle/ert{
-	icon_state = "stan_leftengine"
+	icon_state = "stan_leftengine_clean"
 	},
 /area/fiorina/station/clf_ship)
 "hC" = (
@@ -811,9 +814,8 @@
 	},
 /area/fiorina/station/clf_ship)
 "si" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_2";
-	opacity = 0
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "leftengine_2"
 	},
 /area/fiorina/station/clf_ship)
 "ss" = (
@@ -826,9 +828,8 @@
 /turf/open/floor/platingdmg1,
 /area/fiorina/station/clf_ship)
 "tz" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan25"
-	},
+/obj/structure/shuttle/part/ert/front_right_stan,
+/turf/open/floor/platingdmg3,
 /area/fiorina/station/clf_ship)
 "tN" = (
 /obj/item/trash/cigbutt,
@@ -906,7 +907,9 @@
 /area/fiorina/station/park)
 "vF" = (
 /obj/structure/shuttle/engine/heater,
-/turf/closed/wall/almayer,
+/turf/closed/shuttle/ert{
+	icon_state = "stan_leftengine_clean"
+	},
 /area/fiorina/station/clf_ship)
 "vZ" = (
 /obj/effect/decal/cleanable/blood,
@@ -971,7 +974,9 @@
 /obj/structure/shuttle/engine/router{
 	dir = 1
 	},
-/turf/closed/wall/almayer,
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "leftengine_2"
+	},
 /area/fiorina/station/clf_ship)
 "yw" = (
 /obj/item/stack/rods,
@@ -983,9 +988,8 @@
 /turf/open/floor/plating/platingdmg3,
 /area/fiorina/station/clf_ship)
 "yJ" = (
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_1"
-	},
+/obj/structure/shuttle/part/ert/transparent/right_engine,
+/turf/open/space/basic,
 /area/fiorina/station/clf_ship)
 "zk" = (
 /obj/item/stack/rods,
@@ -1119,7 +1123,7 @@
 /turf/open/floor/almayer/emerald/north,
 /area/fiorina/station/clf_ship)
 "Da" = (
-/turf/closed/shuttle/ert{
+/turf/closed/shuttle/ert/transparent{
 	icon_state = "rightengine_2"
 	},
 /area/fiorina/station/clf_ship)
@@ -1256,7 +1260,7 @@
 /turf/open/floor/almayer,
 /area/fiorina/station/clf_ship)
 "GW" = (
-/turf/closed/shuttle/ert{
+/turf/closed/shuttle/ert/transparent{
 	icon_state = "rightengine_3"
 	},
 /area/fiorina/station/clf_ship)
@@ -1265,9 +1269,8 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/park)
 "Hn" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_3";
-	opacity = 0
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "leftengine_3_clean"
 	},
 /area/fiorina/station/clf_ship)
 "Hr" = (
@@ -1673,10 +1676,8 @@
 	},
 /area/fiorina/station/clf_ship)
 "RR" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_1";
-	opacity = 0
-	},
+/obj/structure/shuttle/part/ert/transparent/left_engine,
+/turf/open/space/basic,
 /area/fiorina/station/clf_ship)
 "Sc" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic2{
@@ -2660,7 +2661,7 @@ Dx
 vZ
 pg
 ao
-yJ
+aH
 HD
 bn
 HD

@@ -2,6 +2,12 @@
 "aa" = (
 /turf/open/floor/prison/darkbrown2,
 /area/desert_dam/interior/dam_interior/hanger)
+"ab" = (
+/obj/structure/shuttle/part/dropship3/transparent/engine_left_exhaust{
+	name = "\improper Tornado"
+	},
+/turf/open/floor/prison/darkyellow2/east,
+/area/lv522/landing_zone_forecon/UD6_Tornado)
 "ac" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/light{
@@ -9,6 +15,28 @@
 	},
 /turf/open/floor/prison/blue/west,
 /area/desert_dam/interior/dam_interior/tech_storage)
+"ad" = (
+/obj/structure/shuttle/part/dropship3/transparent/engine_right_exhaust{
+	name = "\improper Tornado"
+	},
+/turf/open/floor/prison/darkyellow2/west,
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"ae" = (
+/obj/structure/shuttle/part/dropship3/transparent/engine_left_cap{
+	name = "\improper Tornado"
+	},
+/turf/open/floor/prison/darkyellow2/east,
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"af" = (
+/obj/structure/shuttle/part/dropship3/transparent/engine_right_cap{
+	name = "\improper Tornado"
+	},
+/turf/open/floor/prison/darkyellow2/west,
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"ag" = (
+/obj/structure/machinery/door/airlock/dropship_hatch/two,
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
+/area/lv522/landing_zone_forecon/UD6_Tornado)
 "ak" = (
 /turf/open/desert/dirt/desert_transition_edge1/northeast,
 /area/desert_dam/exterior/landing_pad_one)
@@ -29,9 +57,8 @@
 /turf/open/floor/prison/cell_stripe/east,
 /area/desert_dam/interior/dam_interior/hanger)
 "au" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan25"
-	},
+/obj/structure/shuttle/part/ert/front_right_stan,
+/turf/open/floor/prison/floor_plate/southwest,
 /area/desert_dam/interior/dam_interior/hanger)
 "av" = (
 /obj/structure/barricade/metal/wired{
@@ -227,9 +254,10 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/desert_dam/exterior/landing_pad_one)
 "dw" = (
-/turf/closed/shuttle/dropship3/tornado{
-	icon_state = "102"
+/obj/structure/shuttle/part/dropship3/transparent/nose_top_right{
+	name = "\improper Tornado"
 	},
+/turf/open/floor/prison/floor_plate/southwest,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "dx" = (
 /turf/open/desert/dirt/desert_transition_edge1/southwest,
@@ -255,9 +283,8 @@
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/dam_interior/tech_storage)
 "eb" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan20"
-	},
+/obj/structure/shuttle/part/ert/front_left_stan,
+/turf/open/floor/prison/floor_plate/southwest,
 /area/desert_dam/interior/dam_interior/hanger)
 "ei" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -603,14 +630,8 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/landing_pad_one)
 "jR" = (
-/obj/structure/monorail{
-	name = "launch track"
-	},
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_1";
-	layer = 3;
-	opacity = 0
-	},
+/obj/structure/shuttle/part/ert/transparent/right_engine,
+/turf/open/floor/prison/floor_plate/southwest,
 /area/desert_dam/interior/dam_interior/hanger)
 "jS" = (
 /obj/structure/bed/chair/office/dark{
@@ -624,9 +645,10 @@
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/building/administration/control_room)
 "kc" = (
-/turf/closed/shuttle/dropship3/tornado{
-	icon_state = "61"
+/obj/structure/shuttle/part/dropship3/transparent/lower_left_wing{
+	name = "\improper Tornado"
 	},
+/turf/open/floor/prison/floor_plate/southwest,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "ke" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
@@ -691,9 +713,10 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/landing_pad_one)
 "lk" = (
-/turf/closed/shuttle/dropship3/tornado{
-	icon_state = "100"
+/obj/structure/shuttle/part/dropship3/transparent/nose_top_left{
+	name = "\improper Tornado"
 	},
+/turf/open/floor/prison/floor_plate/southwest,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "lr" = (
 /obj/structure/surface/rack,
@@ -1301,9 +1324,10 @@
 /turf/closed/wall/r_wall,
 /area/desert_dam/building/administration/lobby)
 "wd" = (
-/turf/closed/shuttle/dropship3/tornado{
-	icon_state = "45"
+/obj/structure/shuttle/part/dropship3/transparent/engine_right_cap{
+	name = "\improper Tornado"
 	},
+/turf/open/floor/prison/floor_plate/southwest,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "wf" = (
 /turf/open/floor/prison/southwest,
@@ -1358,9 +1382,10 @@
 /turf/closed/wall/r_wall,
 /area/desert_dam/building/administration/lobby)
 "wU" = (
-/turf/closed/shuttle/dropship3/tornado{
-	icon_state = "74"
+/obj/structure/shuttle/part/dropship3/transparent/upper_right_wing{
+	name = "\improper Tornado"
 	},
+/turf/open/floor/prison/floor_plate/southwest,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "wY" = (
 /turf/open/floor/prison/blue/east,
@@ -1393,9 +1418,10 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/desert_dam/exterior/landing_pad_one)
 "xJ" = (
-/turf/closed/shuttle/dropship3/tornado{
-	icon_state = "15"
+/obj/structure/shuttle/part/dropship3/lower_right_wall{
+	name = "\improper Tornado"
 	},
+/turf/open/floor/prison/floor_plate/southwest,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "xL" = (
 /turf/closed/wall/hangar{
@@ -1406,9 +1432,10 @@
 /turf/open/floor/prison/bluecorner,
 /area/desert_dam/building/administration/lobby)
 "ya" = (
-/turf/closed/shuttle/dropship3/tornado{
-	icon_state = "4"
+/obj/structure/shuttle/part/dropship3/right_outer_wing_connector{
+	name = "\improper Tornado"
 	},
+/turf/open/floor/prison/floor_plate/southwest,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "ye" = (
 /obj/structure/pipes/vents/pump{
@@ -1451,9 +1478,10 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/desert_dam/exterior/landing_pad_one)
 "yX" = (
-/turf/closed/shuttle/dropship3/tornado{
-	icon_state = "71"
+/obj/structure/shuttle/part/dropship3/transparent/upper_left_wing{
+	name = "\improper Tornado"
 	},
+/turf/open/floor/prison/floor_plate/southwest,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "zf" = (
 /obj/structure/bed/chair/dropship/passenger{
@@ -1511,7 +1539,10 @@
 /turf/open/floor/greengrid,
 /area/desert_dam/interior/dam_interior/tech_storage)
 "zy" = (
-/turf/closed/shuttle/dropship3/tornado,
+/obj/structure/shuttle/part/dropship3/transparent/left_outer_bottom_wing{
+	name = "\improper Tornado"
+	},
+/turf/open/floor/prison/floor_plate/southwest,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "zC" = (
 /obj/structure/surface/table/reinforced,
@@ -1681,9 +1712,10 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_northwest)
 "Di" = (
-/turf/closed/shuttle/dropship3/tornado{
-	icon_state = "6"
+/obj/structure/shuttle/part/dropship3/transparent/right_outer_bottom_wing{
+	name = "\improper Tornado"
 	},
+/turf/open/floor/prison/floor_plate/southwest,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "Do" = (
 /obj/structure/prop/dam/truck/cargo,
@@ -1745,9 +1777,10 @@
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/building/administration/hallway)
 "Ei" = (
-/turf/closed/shuttle/dropship3/tornado{
-	icon_state = "95"
+/obj/structure/shuttle/part/dropship3/nose_front_left{
+	name = "\improper Tornado"
 	},
+/turf/open/floor/prison/floor_plate/southwest,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "Ej" = (
 /obj/structure/surface/table,
@@ -1756,14 +1789,16 @@
 /turf/open/floor/prison/darkbrown2/west,
 /area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "En" = (
-/turf/closed/shuttle/dropship3/tornado{
-	icon_state = "99"
+/obj/structure/shuttle/part/dropship3/nose_front_right{
+	name = "\improper Tornado"
 	},
+/turf/open/floor/prison/floor_plate/southwest,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "Ep" = (
-/turf/closed/shuttle/dropship3/tornado{
-	icon_state = "5"
+/obj/structure/shuttle/part/dropship3/transparent/right_inner_bottom_wing{
+	name = "\improper Tornado"
 	},
+/turf/open/floor/prison/floor_plate/southwest,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "Eq" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -1785,9 +1820,10 @@
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/dam_interior/tech_storage)
 "EB" = (
-/turf/closed/shuttle/dropship3/tornado{
-	icon_state = "3"
+/obj/structure/shuttle/part/dropship3/left_outer_wing_connector{
+	name = "\improper Tornado"
 	},
+/turf/open/floor/prison/floor_plate/southwest,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "EC" = (
 /turf/closed/shuttle/dropship3/tornado{
@@ -2146,7 +2182,7 @@
 /area/desert_dam/building/administration/control_room)
 "Kh" = (
 /turf/closed/shuttle/ert{
-	icon_state = "stan_leftengine"
+	icon_state = "stan_leftengine_clean"
 	},
 /area/desert_dam/interior/dam_interior/hanger)
 "Km" = (
@@ -2170,9 +2206,10 @@
 /turf/open/floor/prison/darkyellow2/east,
 /area/desert_dam/interior/dam_interior/hanger)
 "Kz" = (
-/turf/closed/shuttle/dropship3/tornado{
-	icon_state = "101"
+/obj/structure/shuttle/part/dropship3/transparent/nose_center{
+	name = "\improper Tornado"
 	},
+/turf/open/floor/prison/floor_plate/southwest,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "KC" = (
 /obj/effect/decal/cleanable/dirt,
@@ -2458,9 +2495,10 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/desert_dam/exterior/landing_pad_one)
 "Pv" = (
-/turf/closed/shuttle/dropship3/tornado{
-	icon_state = "9"
+/obj/structure/shuttle/part/dropship3/bottom_left_wall{
+	name = "\improper Tornado"
 	},
+/turf/open/floor/prison/floor_plate/southwest,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "PF" = (
 /obj/structure/disposalpipe/segment,
@@ -2470,13 +2508,8 @@
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/building/administration/control_room)
 "PG" = (
-/obj/structure/monorail{
-	name = "launch track"
-	},
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_1";
-	layer = 3
-	},
+/obj/structure/shuttle/part/ert/transparent/left_engine,
+/turf/open/floor/prison/floor_plate/southwest,
 /area/desert_dam/interior/dam_interior/hanger)
 "PH" = (
 /obj/structure/largecrate/random/secure,
@@ -2578,9 +2611,10 @@
 /turf/open/floor/prison/blue,
 /area/desert_dam/building/administration/control_room)
 "Rh" = (
-/turf/closed/shuttle/dropship3/tornado{
-	icon_state = "70"
+/obj/structure/shuttle/part/dropship3/transparent/middle_right_wing{
+	name = "\improper Tornado"
 	},
+/turf/open/floor/prison/floor_plate/southwest,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "Rk" = (
 /turf/closed/shuttle/dropship3/tornado{
@@ -2689,9 +2723,10 @@
 /turf/open/floor/prison/darkyellow2/west,
 /area/desert_dam/interior/dam_interior/hanger)
 "SK" = (
-/turf/closed/shuttle/dropship3/tornado{
-	icon_state = "40"
+/obj/structure/shuttle/part/dropship3/transparent/engine_left_cap{
+	name = "\improper Tornado"
 	},
+/turf/open/floor/prison/floor_plate/southwest,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "SO" = (
 /obj/effect/decal/sand_overlay/sand2{
@@ -2767,7 +2802,7 @@
 /turf/open/floor/prison/darkyellow2/west,
 /area/desert_dam/interior/dam_interior/hanger)
 "Ue" = (
-/turf/closed/shuttle/ert{
+/turf/closed/shuttle/ert/transparent{
 	icon_state = "stan27"
 	},
 /area/desert_dam/interior/dam_interior/hanger)
@@ -2814,9 +2849,10 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
 /area/desert_dam/exterior/landing_pad_one)
 "Vy" = (
-/turf/closed/shuttle/dropship3/tornado{
-	icon_state = "2"
+/obj/structure/shuttle/part/dropship3/transparent/left_outer_inner_wing{
+	name = "\improper Tornado"
 	},
+/turf/open/floor/prison/floor_plate/southwest,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "VJ" = (
 /obj/structure/sign/prop1,
@@ -2881,9 +2917,10 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_northwest)
 "WI" = (
-/turf/closed/shuttle/dropship3/tornado{
-	icon_state = "17"
+/obj/structure/shuttle/part/dropship3/transparent/engine_right_exhaust{
+	name = "\improper Tornado"
 	},
+/turf/open/floor/prison/floor_plate/southwest,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "WT" = (
 /turf/closed/shuttle/dropship3/tornado{
@@ -2931,9 +2968,10 @@
 	},
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "XH" = (
-/turf/closed/shuttle/dropship3/tornado{
-	icon_state = "66"
+/obj/structure/shuttle/part/dropship3/transparent/middle_left_wing{
+	name = "\improper Tornado"
 	},
+/turf/open/floor/prison/floor_plate/southwest,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "XJ" = (
 /obj/structure/bed/chair/office/dark{
@@ -2988,9 +3026,10 @@
 /turf/open/desert/rock/deep/rock3,
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "Yu" = (
-/turf/closed/shuttle/dropship3/tornado{
-	icon_state = "16"
+/obj/structure/shuttle/part/dropship3/transparent/engine_left_exhaust{
+	name = "\improper Tornado"
 	},
+/turf/open/floor/prison/floor_plate/southwest,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "YA" = (
 /obj/structure/surface/rack,
@@ -3015,9 +3054,10 @@
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/building/administration/control_room)
 "Zb" = (
-/turf/closed/shuttle/dropship3/tornado{
-	icon_state = "65"
+/obj/structure/shuttle/part/dropship3/transparent/lower_right_wing{
+	name = "\improper Tornado"
 	},
+/turf/open/floor/prison/floor_plate/southwest,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "Zd" = (
 /obj/effect/decal/warning_stripes{
@@ -3228,10 +3268,10 @@ vC
 vC
 vC
 vC
-SK
+ae
 EC
 gJ
-Yu
+ab
 vC
 vC
 vC
@@ -3336,8 +3376,8 @@ fn
 up
 cm
 IB
-sH
-sH
+ag
+ag
 bJ
 op
 kV
@@ -3778,10 +3818,10 @@ hN
 it
 it
 it
-wd
+af
 Wn
 iQ
-WI
+ad
 it
 it
 it

@@ -3,7 +3,7 @@
 
 /obj/structure/machinery/deployable
 	name = "deployable"
-	desc = "deployable"
+	desc = "Deployable."
 	req_access = list(ACCESS_MARINE_PREP)//I'm changing this until these are properly tested./N
 
 /obj/structure/machinery/deployable/barrier

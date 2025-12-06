@@ -1,7 +1,7 @@
 /obj/structure/pipes/vents
 	icon = 'icons/obj/pipes/vent_scrubber.dmi'
 	icon_state = "map_vent"
-	desc = "Has a valve and pump attached to it"
+	desc = "Has a valve and pump attached to it."
 	valid_directions = list(NORTH, SOUTH, EAST, WEST)
 
 	var/area/initial_loc = null

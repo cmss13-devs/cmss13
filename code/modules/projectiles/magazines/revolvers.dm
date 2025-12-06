@@ -36,13 +36,13 @@
 
 /obj/item/ammo_magazine/revolver/incendiary
 	name = "\improper M44 incendiary speed loader (.44)"
-	desc = "a 7-round .44 revolver speed loader containing incendiary bullets."
+	desc = "A 7-round .44 revolver speed loader containing incendiary bullets."
 	default_ammo = /datum/ammo/bullet/revolver/incendiary
 	ammo_band_color = REVOLVER_TIP_COLOR_INCENDIARY
 
 /obj/item/ammo_magazine/revolver/marksman/toxin
 	name = "\improper M44 toxic speed loader (.44)"
-	desc = "a 7-round .44 revolver speed loader containing toxin bullets."
+	desc = "A 7-round .44 revolver speed loader containing toxin bullets."
 	default_ammo = /datum/ammo/bullet/revolver/marksman/toxin
 	ammo_band_color = REVOLVER_TIP_COLOR_TOXIN
 
@@ -80,7 +80,7 @@
 
 /obj/item/ammo_magazine/revolver/small
 	name = "\improper S&W speed loader (.38)"
-	desc = "a 6-round .38 revolver speed loader."
+	desc = "A 6-round .38 revolver speed loader."
 	default_ammo = /datum/ammo/bullet/revolver/small
 	caliber = ".38"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/revolvers.dmi'

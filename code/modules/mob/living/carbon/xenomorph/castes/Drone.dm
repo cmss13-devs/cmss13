@@ -89,3 +89,8 @@
 
 /mob/living/carbon/xenomorph/drone/tutorial/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
 	death(cause, 1)
+
+/mob/living/carbon/xenomorph/drone/brainlet/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
+	. = ..()
+	ADD_TRAIT(src, TRAIT_XENO_BRAINDEAD, REF(src))
+

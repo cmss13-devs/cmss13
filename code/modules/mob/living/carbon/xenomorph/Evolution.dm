@@ -93,12 +93,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 			to_chat(src, SPAN_WARNING("We must wait before evolving. Currently at: [evolution_stored] / [evolution_threshold]."))
 			return
 
-	var/mob/living/carbon/xenomorph/xeno_type = null
-	xeno_type = GLOB.RoleAuthority.get_caste_by_text(castepick)
 
-	if(isnull(xeno_type))
-		to_chat(src, SPAN_WARNING("[castepick] is not a valid caste! If you're seeing this message, tell a coder!"))
-		return
 
 	// Used for restricting benos to evolve to drone/queen when they're the only potential queen
 	var/potential_queens = hive.get_potential_queen_count()
@@ -106,6 +101,20 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	if(!can_evolve(castepick, potential_queens))
 		return
 	to_chat(src, SPAN_XENONOTICE("It looks like the hive can support our evolution to [SPAN_BOLD(castepick)]!"))
+
+	perform_evolution(castepick, potential_queens)
+
+/mob/living/carbon/xenomorph/proc/perform_evolution(castepick, potential_queens, force_evo)
+
+	var/mob/living/carbon/xenomorph/xeno_type = null
+	xeno_type = GLOB.RoleAuthority.get_caste_by_text(castepick)
+
+	if(isnull(xeno_type))
+		to_chat(src, SPAN_WARNING("[castepick] is not a valid caste! If you're seeing this message, tell a coder!"))
+		return
+
+	if(evolving)
+		return
 
 	visible_message(SPAN_XENONOTICE("[src] begins to twist and contort."),
 	SPAN_XENONOTICE("We begin to twist and contort."))
@@ -122,7 +131,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 
 	if(!isturf(loc)) //qdel'd or moved into something
 		return
-	if(castepick == XENO_CASTE_QUEEN) //Do another check after the tick.
+	if((castepick == XENO_CASTE_QUEEN) && !force_evo) //Do another check after the tick.
 		if(jobban_isbanned(src, XENO_CASTE_QUEEN))
 			to_chat(src, SPAN_WARNING("You are jobbanned from the Queen role."))
 			return
@@ -132,7 +141,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		if(!hive.allow_queen_evolve)
 			to_chat(src, SPAN_WARNING("We can't find the strength to evolve into a Queen"))
 			return
-	else if(!can_evolve(castepick, potential_queens))
+	else if(!can_evolve(castepick, potential_queens) && !force_evo)
 		return
 
 	// subtract the threshold, keep the stored amount
@@ -227,6 +236,9 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 /mob/living/carbon/xenomorph/proc/evolve_checks()
 	if(!check_state(TRUE))
 		return FALSE
+
+	if(HAS_TRAIT(src, TRAIT_XENO_CONTROLLED))
+		to_chat(src, SPAN_WARNING("You have no idea how to influence this thing to 'evolve'."))
 
 	if(is_ventcrawling)
 		to_chat(src, SPAN_WARNING("This place is too constraining to evolve."))

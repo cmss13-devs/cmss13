@@ -168,9 +168,9 @@
 		else
 			to_chat(user, SPAN_WARNING("You don't want to mix different magazines in one box."))
 	else
-		if(istype(W, /obj/item/ammo_magazine/shotgun))
+		if(istype(W, /obj/item/ammo_magazine/shotgun) || istype(W, /obj/item/ammo_magazine/lever_action) )
 			var/obj/item/ammo_magazine/O = W
-			var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine/shotgun) in item_box.contents
+			var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in item_box.contents
 			if(!O || !W)
 				return
 			if(O.default_ammo == AM.default_ammo)
@@ -187,11 +187,11 @@
 					var/S = min(O.current_rounds, AM.max_rounds - AM.current_rounds)
 					AM.current_rounds += S
 					O.current_rounds -= S
-					to_chat(user, SPAN_NOTICE("You transfer shells from [O] into [src]"))
+					to_chat(user, SPAN_NOTICE("You transfer [O.description_ammo] from [O] into [src]."))
 					update_icon()
 					O.update_icon()
 			else
-				to_chat(user, SPAN_WARNING("Wrong type of shells."))
+				to_chat(user, SPAN_WARNING("Wrong type of [O.description_ammo]."))
 
 		if(istype(W, /obj/item/ammo_magazine/handful))
 			var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in item_box.contents

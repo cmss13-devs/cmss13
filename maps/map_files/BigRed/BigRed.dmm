@@ -3219,7 +3219,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves/lambda/xenobiology)
 "anl" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/plating,
 /area/bigredv2/caves/lambda/xenobiology)
 "anm" = (
@@ -6027,7 +6027,7 @@
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/ne)
 "aAM" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/engine,
 /area/bigredv2/caves/lambda/research)
 "aAN" = (
@@ -6375,7 +6375,7 @@
 /turf/open/floor/engine,
 /area/bigredv2/caves/lambda/research)
 "aCr" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/delivery,
 /area/bigredv2/caves/lambda/research)
 "aCs" = (
@@ -7459,7 +7459,7 @@
 /turf/open/floor/carpet15_15/west,
 /area/bigredv2/outside/bar)
 "aIu" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aIv" = (
@@ -8013,7 +8013,7 @@
 /turf/open/floor/freezerfloor,
 /area/bigredv2/outside/hydroponics)
 "aKF" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/freezerfloor,
 /area/bigredv2/outside/hydroponics)
 "aKG" = (
@@ -10234,7 +10234,7 @@
 /turf/open/floor/whitebluefull/northeast,
 /area/bigredv2/outside/general_store)
 "aTQ" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor,
 /area/bigredv2/outside/general_store)
 "aTR" = (
@@ -13368,7 +13368,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bkn" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bko" = (
@@ -13450,7 +13450,7 @@
 /turf/open/floor/darkyellow2/north,
 /area/bigredv2/outside/filtration_plant)
 "bkG" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/darkyellow2/north,
 /area/bigredv2/outside/filtration_plant)
 "bkH" = (
@@ -13586,7 +13586,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "blo" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -14318,7 +14318,7 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/engineering)
 "boL" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/darkyellow2/east,
 /area/bigredv2/outside/engineering)
@@ -14412,14 +14412,14 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/engineering)
 "bpi" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /obj/structure/machinery/light{
 	dir = 8
 	},
 /turf/open/floor/darkyellow2/west,
 /area/bigredv2/outside/engineering)
 "bpj" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/darkyellow2/east,
 /area/bigredv2/outside/engineering)
@@ -14498,7 +14498,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/bigredv2/outside/engineering)
 "bpC" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/darkyellow2/southeast,
 /area/bigredv2/outside/engineering)
 "bpD" = (
@@ -15145,7 +15145,7 @@
 /area/bigredv2/outside/engineering)
 "bti" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/darkyellow2/east,
 /area/bigredv2/outside/engineering)
 "btj" = (
@@ -15182,7 +15182,7 @@
 /area/bigredv2/outside/engineering)
 "btB" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/darkyellow2/east,
 /area/bigredv2/outside/engineering)
 "btD" = (
@@ -15216,7 +15216,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -20614,7 +20614,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
 "eTj" = (
-/obj/structure/reagent_dispensers/fueltank/gas,
+/obj/structure/reagent_dispensers/tank/fuel/gas,
 /turf/open/mars/mars_dirt_14,
 /area/bigredv2/outside/c)
 "eTm" = (
@@ -22763,7 +22763,7 @@
 /turf/open/mars_cave/mars_cave_15,
 /area/bigredv2/caves_sw)
 "hkv" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/plating,
 /area/bigredv2/caves/eta/storage)
 "hkJ" = (
@@ -23098,7 +23098,7 @@
 /turf/open/mars_cave/mars_cave_6,
 /area/bigredv2/outside/lz2_south_cas)
 "hEK" = (
-/obj/structure/reagent_dispensers/fueltank/gas,
+/obj/structure/reagent_dispensers/tank/fuel/gas,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "hEN" = (
@@ -23394,7 +23394,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/office_complex)
 "ian" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/structure/machinery/door_control{
 	id = "Cargonia";
 	name = "Storm Shutters";
@@ -23497,7 +23497,7 @@
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/n)
 "idM" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/darkyellow2/east,
 /area/bigredv2/outside/engineering)
 "idT" = (
@@ -24488,7 +24488,7 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/obj/structure/reagent_dispensers/fueltank/gas,
+/obj/structure/reagent_dispensers/tank/fuel/gas,
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "jlr" = (
@@ -27119,7 +27119,7 @@
 /turf/open/floor/plating/platingdmg2/west,
 /area/bigredv2/caves/mining)
 "lYH" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/darkyellow2,
 /area/bigredv2/outside/filtration_plant)
 "lYP" = (
@@ -29030,7 +29030,7 @@
 /turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "nXS" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /obj/item/reagent_container/food/drinks/cup{
 	pixel_x = -6;
 	pixel_y = 8
@@ -29542,7 +29542,7 @@
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "oxk" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor,
 /area/bigred/ground/garage_workshop)
 "oxp" = (
@@ -32712,7 +32712,7 @@
 /turf/open/floor/asteroidwarning/north,
 /area/bigredv2/outside/lz2_south_cas)
 "rJR" = (
-/obj/structure/reagent_dispensers/fueltank/gas,
+/obj/structure/reagent_dispensers/tank/fuel/gas,
 /turf/open/mars_cave/mars_cave_15,
 /area/bigredv2/caves/mining)
 "rJW" = (
@@ -34856,7 +34856,7 @@
 /turf/open/floor/whitegreen/north,
 /area/bigredv2/outside/marshal_office)
 "tHl" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/mars/mars_dirt_10,
 /area/bigredv2/outside/c)
 "tHM" = (

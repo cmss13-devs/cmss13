@@ -78,7 +78,7 @@
 	var/iff_signal = FACTION_MARINE
 	///Flag for minimap icon
 	var/minimap_flag = MINIMAP_FLAG_USCM
-	actions_types = list(/datum/action/item_action/toggle)
+	actions_types = list(/datum/action/item_action/toggle/motion_detector)
 	var/scanning = FALSE // controls if MD is in process of scan
 	var/datum/shape/rectangle/square/range_bounds
 	var/long_range_locked = FALSE //only long-range MD
@@ -127,6 +127,8 @@
 		overlays += "+[initial(icon_state)]_long_switch"
 	else
 		overlays += "+[initial(icon_state)]_short_switch"
+	for(var/datum/action/item_action as anything in actions)
+		item_action.update_button_icon()
 
 /obj/item/device/motiondetector/verb/toggle_range_mode()
 	set name = "Toggle Range Mode"
@@ -195,6 +197,9 @@
 		to_chat(user, SPAN_NOTICE("You deactivate \the [src]."))
 	scanning = FALSE // safety if MD runtimes in scan and stops scanning
 	icon_state = "[initial(icon_state)]"
+	for(var/button in actions)
+		var/datum/action/action_button = button
+		action_button.update_button_icon()
 	playsound(loc, 'sound/items/detector_turn_off.ogg', 30, FALSE, 5, 2)
 	STOP_PROCESSING(SSobj, src)
 
@@ -261,26 +266,26 @@
 
 	range_bounds.set_shape(cur_turf.x, cur_turf.y, detector_range * 2)
 
-	var/list/ping_candidates = SSquadtree.players_in_range(range_bounds, cur_turf.z, QTREE_EXCLUDE_OBSERVER | QTREE_SCAN_MOBS)
-	if(SSmapping.get_turf_above(cur_turf))
-		ping_candidates += SSquadtree.players_in_range(range_bounds, cur_turf.z+1, QTREE_EXCLUDE_OBSERVER | QTREE_SCAN_MOBS)
-	if(SSmapping.get_turf_below(cur_turf))
-		ping_candidates += SSquadtree.players_in_range(range_bounds, cur_turf.z-1, QTREE_EXCLUDE_OBSERVER | QTREE_SCAN_MOBS)
+	var/list/ping_candidates = SSquadtree.players_in_range(range_bounds, cur_turf.z, QTREE_FILTER_LIVING | QTREE_SCAN_MOBS)
+	var/turf/above = SSmapping.get_turf_above(cur_turf)
+	var/turf/below = SSmapping.get_turf_below(cur_turf)
+	if(above)
+		ping_candidates += SSquadtree.players_in_range(range_bounds, above.z, QTREE_FILTER_LIVING | QTREE_SCAN_MOBS)
+	if(below)
+		ping_candidates += SSquadtree.players_in_range(range_bounds, below.z, QTREE_FILTER_LIVING | QTREE_SCAN_MOBS)
 
-	for(var/A in ping_candidates)
-		var/mob/living/M = A //do this to skip the unnecessary istype() check; everything in ping_candidate is a mob already
-		if(M == loc)
+	for(var/mob/living/current_mob as anything in ping_candidates)
+		if(current_mob == loc)
 			continue //device user isn't detected
-		if(M.get_target_lock(iff_signal))
-			continue
-		if(world.time > M.l_move_time + 20)
+		if(world.time > current_mob.l_move_time + 20)
 			continue //hasn't moved recently
+		if(current_mob.get_target_lock(iff_signal))
+			continue
 
-
-		apply_debuff(M)
+		apply_debuff(current_mob)
 		ping_count++
 		if(human_user)
-			show_blip(human_user, M)
+			show_blip(human_user, current_mob)
 
 	for(var/mob/hologram/holo as anything in GLOB.hologram_list)
 		if(!holo.motion_sensed)
@@ -315,14 +320,14 @@
 		var/view_x_offset = 0
 		var/view_y_offset = 0
 		if(c_view > 7)
-			if(user.client.pixel_x >= 0)
-				view_x_offset = floor(user.client.pixel_x/32)
+			if(user.client.get_pixel_x() >= 0)
+				view_x_offset = floor(user.client.get_pixel_x()/32)
 			else
-				view_x_offset = ceil(user.client.pixel_x/32)
-			if(user.client.pixel_y >= 0)
-				view_y_offset = floor(user.client.pixel_y/32)
+				view_x_offset = ceil(user.client.get_pixel_x()/32)
+			if(user.client.get_pixel_y() >= 0)
+				view_y_offset = floor(user.client.get_pixel_y()/32)
 			else
-				view_y_offset = ceil(user.client.pixel_y/32)
+				view_y_offset = ceil(user.client.get_pixel_y()/32)
 
 		var/diff_dir_x = 0
 		var/diff_dir_y = 0

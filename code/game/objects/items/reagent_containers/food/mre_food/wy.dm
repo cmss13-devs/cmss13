@@ -7,6 +7,10 @@
 /obj/item/reagent_container/food/snacks/mre_food/wy
 	icon = 'icons/obj/items/food/mre_food/wy.dmi'
 
+/obj/item/mre_food_packet/wy/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 ///ENTREE
 
 /obj/item/mre_food_packet/entree/wy
@@ -20,6 +24,10 @@
 		/obj/item/reagent_container/food/snacks/mre_food/wy/entree/ham,
 		/obj/item/reagent_container/food/snacks/mre_food/wy/entree/beefstake,
 	)
+
+/obj/item/mre_food_packet/entree/wy/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/reagent_container/food/snacks/mre_food/wy/entree/bakedfish
 	name = "baked salmon"

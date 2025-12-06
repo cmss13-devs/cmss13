@@ -1303,7 +1303,6 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 				/obj/item/explosive/grenade/phosphorus/clf,
 				/obj/item/explosive/grenade/smokebomb,
 				/obj/item/explosive/grenade/smokebomb/airburst,
-				/obj/item/explosive/grenade/custom/antiweed
 			)
 			for(var/i in 1 to 4)
 				var/picked_type = pick(nades_to_pick)

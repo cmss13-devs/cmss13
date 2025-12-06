@@ -277,9 +277,9 @@
 	storage_slots = 5
 
 /obj/item/storage/pouch/firstaid/ert/fill_preset_inventory()
-	new /obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/skillless/bicaridine(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/skillless/kelotane(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/emergency(src)
 	new /obj/item/stack/medical/bruise_pack(src)
 
@@ -986,8 +986,8 @@
 
 /obj/item/storage/pouch/medkit/full/fill_preset_inventory()
 	new /obj/item/device/healthanalyzer(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/skillless(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/skillless/marine/(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/skillless/marine/tramadol(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/inaprovaline(src)
 	new /obj/item/stack/medical/bruise_pack(src)
 	new /obj/item/stack/medical/ointment(src)
@@ -1062,7 +1062,7 @@
 	new /obj/item/stack/medical/splint(src)
 
 /obj/item/storage/pouch/pressurized_reagent_canister
-	name = "Pressurized Reagent Canister Pouch"
+	name = "\improper Pressurized Reagent Canister Pouch"
 	max_w_class = SIZE_SMALL
 	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD
 	icon_state = "pressurized_reagent_canister"
@@ -1074,28 +1074,28 @@
 
 
 /obj/item/storage/pouch/pressurized_reagent_canister/bicaridine
-	name = "Pressurized Reagent Canister Pouch (Bicaridine)"
-	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser. This one came pre-filled with the reliable brute-mending Bicaridine."
+	name = "\improper Pressurized Reagent Canister Pouch (Bicaridine)"
+	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser. This one carries a 5u custom autoinjector and came pre-filled with the reliable brute-mending Bicaridine."
 
 /obj/item/storage/pouch/pressurized_reagent_canister/kelotane
-	name = "Pressurized Reagent Canister Pouch (Kelotane)"
-	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser. This one came pre-filled with the reliable burn-healing Kelotane."
+	name = "\improper Pressurized Reagent Canister Pouch (Kelotane)"
+	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser. This one carries a 5u custom autoinjector and came pre-filled with the reliable burn-healing Kelotane."
 
 /obj/item/storage/pouch/pressurized_reagent_canister/tricordrazine
-	name = "Pressurized Reagent Canister Pouch (Tricordrazine)"
-	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser. This one came pre-filled with the reliable medicine that slowly heals brute, burn, toxin, and oxy damage, Tricordrazine."
+	name = "\improper Pressurized Reagent Canister Pouch (Tricordrazine)"
+	desc = "\improper A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser. This one carries a 5u custom autoinjector and came pre-filled with the reliable medicine that slowly heals brute, burn, toxin, and oxy damage, Tricordrazine."
 
 /obj/item/storage/pouch/pressurized_reagent_canister/oxycodone
-	name = "Pressurized Reagent Canister Pouch (Field Anesthetic)"
-	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser. This one came pre-filled with the most robust painkiller available from your local chem dispenser, Oxycodone."
+	name = "\improper Pressurized Reagent Canister Pouch (Field Anesthetic)"
+	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser. This one carries a 5u custom autoinjector and came pre-filled with the most robust painkiller available from your local chem dispenser, Oxycodone."
 
 /obj/item/storage/pouch/pressurized_reagent_canister/revival_tricord
-	name = "Pressurized Reagent Canister Pouch (Tricordrazine Revival Mix)"
-	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser. This one came pre-filled with equal-parts Epinephrine, Inaprovaline, and Tricordrazine for stablizing and minimizing damage to defibrillated patients."
+	name = "\improper Pressurized Reagent Canister Pouch (Tricordrazine Revival Mix)"
+	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser. This one carries a heavy 15u custom autoinjector and came pre-filled with equal-parts Epinephrine, Inaprovaline, and Tricordrazine for stablizing and minimizing damage to defibrillated patients."
 
 /obj/item/storage/pouch/pressurized_reagent_canister/revival_peri
-	name = "Pressurized Reagent Canister Pouch (Peridaxon Revival Mix)"
-	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser. This one came pre-filled with equal-parts Epinephrine, Inaprovaline, and Peridaxon to stablize patients and stave off symptoms of post-defibrillation heart damage."
+	name = "\improper Pressurized Reagent Canister Pouch (Peridaxon Revival Mix)"
+	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser. This one carries a heavy 15u custom autoinjector and came pre-filled with equal-parts Epinephrine, Inaprovaline, and Peridaxon to stabilize patients and stave off symptoms of post-defibrillation heart damage."
 
 /obj/item/storage/pouch/pressurized_reagent_canister/Initialize()
 	. = ..()
@@ -1103,7 +1103,7 @@
 	//Only add an autoinjector if the canister is empty
 	//Important for the snowflake /obj/item/storage/pouch/pressurized_reagent_canister/oxycodone
 	if(length(contents) == 0)
-		new /obj/item/reagent_container/hypospray/autoinjector/empty/medic(src)
+		new /obj/item/reagent_container/hypospray/autoinjector/empty/medic/extrasmall(src) // If it has one chemical, it is 5u (medic/extrasmall) 2 chemicals, 10u (medic/small); 3 chemicals, 15u (/medic), for consistency's sake.
 	update_icon()
 
 /obj/item/storage/pouch/pressurized_reagent_canister/proc/fill_with(ragent)
@@ -1114,6 +1114,7 @@
 		A.update_uses_left()
 		A.update_icon()
 	update_icon()
+
 
 /obj/item/storage/pouch/pressurized_reagent_canister/bicaridine/Initialize()
 	. = ..()
@@ -1133,6 +1134,12 @@
 
 /obj/item/storage/pouch/pressurized_reagent_canister/revival_tricord/Initialize()
 	. = ..()
+	if(length(contents))
+		for(var/obj/item/reagent_container/hypospray/autoinjector/empty/autoinjector in contents)
+			qdel(autoinjector) //delete current autoinjector because parent spawned a 5u one and we want a 15u one here. If there's a better way of doing this, let me know, please.
+			new /obj/item/reagent_container/hypospray/autoinjector/empty/medic/(src) // If it has one chemical, it is 5u (medic/extrasmall) 2 chemicals, 10u (medic/small); 3 chemicals, 15u (/medic), for consistency's sake.
+	update_icon()
+
 	//we don't call fill_with because of the complex mix of chemicals we have
 	inner.reagents.add_reagent("adrenaline", inner.volume/3)
 	inner.reagents.add_reagent("inaprovaline", inner.volume/3)
@@ -1148,6 +1155,12 @@
 
 /obj/item/storage/pouch/pressurized_reagent_canister/revival_peri/Initialize()
 	. = ..()
+	if(length(contents))
+		for(var/obj/item/reagent_container/hypospray/autoinjector/empty/autoinjector in contents)
+			qdel(autoinjector) //delete current autoinjector because parent spawned a 5u one and we want a 15u one here. If there's a better way of doing this, let me know, please.
+			new /obj/item/reagent_container/hypospray/autoinjector/empty/medic/(src) // If it has one chemical, it is 5u (medic/extrasmall) 2 chemicals, 10u (medic/small); 3 chemicals, 15u (/medic), for consistency's sake.
+	update_icon()
+
 	//we don't call fill_with because of the complex mix of chemicals we have
 	inner.reagents.add_reagent("adrenaline", inner.volume/3)
 	inner.reagents.add_reagent("inaprovaline", inner.volume/3)
@@ -1327,7 +1340,7 @@
 /obj/item/storage/pouch/pressurized_reagent_canister/verb/remove_canister()
 	set category = "Weapons"
 	set name = "Remove Canister"
-	set desc = "Removes the Pressurized Canister from the pouch."
+	set desc = "Removes the Pressurized Reagent Canister from the pouch."
 	set src in usr
 	if(!inner)
 		to_chat(usr, SPAN_WARNING("There is no container inside this pouch!"))

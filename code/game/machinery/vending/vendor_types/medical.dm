@@ -276,14 +276,14 @@
 		/obj/item/reagent_container/hypospray/autoinjector/tramadol,
 		/obj/item/reagent_container/hypospray/autoinjector/tricord,
 
-		/obj/item/reagent_container/hypospray/autoinjector/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/marine,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/marine/tramadol,
 
-		/obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/antitoxin/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/tricord/skillless,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/bicaridine,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/antitoxin,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/kelotane,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/tricord,
 
 		/obj/item/reagent_container/hypospray/tricordrazine,
 
@@ -295,6 +295,7 @@
 		/obj/item/reagent_container/glass/bottle/oxycodone,
 		/obj/item/reagent_container/glass/bottle/peridaxon,
 		/obj/item/reagent_container/glass/bottle/tramadol,
+		/obj/item/reagent_container/glass/bottle/tricordrazine, //if we ever add this in.
 	)
 
 /obj/structure/machinery/cm_vending/sorted/medical/Destroy()
@@ -360,9 +361,30 @@
 	var/missing_reagents = container.reagents.maximum_volume - container.reagents.total_volume
 	if(missing_reagents <= 0)
 		return TRUE
+
 	if(!LAZYLEN(chem_refill) || !(container.type in chem_refill))
-		to_chat(user, SPAN_WARNING("[src] cannot refill [container]."))
-		return FALSE
+		if(istype(container, /obj/item/reagent_container/hypospray/autoinjector))
+			var/obj/item/reagent_container/hypospray/autoinjector/A = container
+			if(A.mixed_chem)
+				if(istype(A, /obj/item/reagent_container/hypospray/autoinjector/empty)) //Autoinjector says, "Where's my pouch?""
+					to_chat(user, SPAN_WARNING("[A] can only be refilled with a pressurized reagent canister pouch."))
+					return
+				else //some autoinjectors truly are one-use...
+					to_chat(user, SPAN_WARNING("[A] cannot be refilled by any means. It must be disposed of."))
+					return
+
+		if(istype(container, /obj/item/reagent_container/glass/bottle))
+			to_chat(user, SPAN_WARNING("[src] cannot refill [container] because it was not produced and filled by this vendor."))
+			return FALSE
+
+		if(istype(container, /obj/item/reagent_container/hypospray) && (istype(container, /obj/item/reagent_container/hypospray/tricordrazine) || !istype(container, /obj/item/reagent_container/hypospray/autoinjector)))
+			to_chat(user, SPAN_WARNING("[src] cannot refill [container]. It came from this vendor, but its vial did not come with any chemicals."))
+			return FALSE
+
+		else
+			to_chat(user, SPAN_WARNING("[src] cannot refill [container]. This vendor does not produce [container] so it cannot refill it."))
+			return FALSE
+
 	if(chem_refill_volume < missing_reagents)
 		var/auto_refill = allow_supply_link_restock && get_supply_link()
 		to_chat(user, SPAN_WARNING("[src] blinks red and makes a buzzing noise as it rejects [container]. Looks like it doesn't have enough reagents [auto_refill ? "yet" : "left"]."))
@@ -423,6 +445,7 @@
 
 /obj/structure/machinery/cm_vending/sorted/medical/attackby(obj/item/I, mob/user)
 	if(stat != WORKING)
+		to_chat(user, SPAN_WARNING("[src] has no power."))
 		return ..()
 
 	if(istype(I, /obj/item/reagent_container))
@@ -438,11 +461,14 @@
 		var/obj/item/reagent_container/container = I
 		if(istype(I, /obj/item/reagent_container/syringe) || istype(I, /obj/item/reagent_container/dropper))
 			if(!stock(container, user))
+				to_chat(user, SPAN_WARNING("[src] does not allow for the restocking of [container] after vending it."))
 				return ..()
 			return
 
 		if(container.reagents.total_volume == container.reagents.maximum_volume)
 			if(!stock(container, user))
+				if(!LAZYLEN(chem_refill) || !(container.type in chem_refill))
+					to_chat(user, SPAN_WARNING("[container] cannot be refilled because it full. It was also not produced and filled by [src], so it will not be stocked."))
 				return ..()
 			return
 
@@ -526,10 +552,17 @@
 		list("Autoinjector (Tramadol)", floor(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/tramadol, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Tricordrazine)", floor(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/tricord, VENDOR_ITEM_REGULAR),
 
+		list("REAGENT POUCH AUTOINJECTORS", -1, null, null),
+		list("Reagent Pouch Autoinjector (5u)", floor(scale * 3), /obj/item/reagent_container/hypospray/autoinjector/empty/medic/extrasmall, VENDOR_ITEM_REGULAR),
+		list("Reagent Pouch Autoinjector (10u)", floor(scale * 3), /obj/item/reagent_container/hypospray/autoinjector/empty/medic/small, VENDOR_ITEM_REGULAR),
+		list("Reagent Pouch Autoinjector (15u)", floor(scale * 3), /obj/item/reagent_container/hypospray/autoinjector/empty/medic, VENDOR_ITEM_REGULAR),
+		list("Reagent Pouch Autoinjector (20u)", floor(scale * 3), /obj/item/reagent_container/hypospray/autoinjector/empty/medic/medium, VENDOR_ITEM_REGULAR),
+		list("Reagent Pouch Autoinjector (30u)", floor(scale * 3), /obj/item/reagent_container/hypospray/autoinjector/empty/medic/large, VENDOR_ITEM_REGULAR),
+
 		list("LIQUID BOTTLES", -1, null, null),
 		list("Bottle (Bicaridine)", floor(scale * 3), /obj/item/reagent_container/glass/bottle/bicaridine, VENDOR_ITEM_REGULAR),
-		list("Bottle (Dylovene)", floor(scale * 3), /obj/item/reagent_container/glass/bottle/antitoxin, VENDOR_ITEM_REGULAR),
 		list("Bottle (Dexalin)", floor(scale * 3), /obj/item/reagent_container/glass/bottle/dexalin, VENDOR_ITEM_REGULAR),
+		list("Bottle (Dylovene)", floor(scale * 3), /obj/item/reagent_container/glass/bottle/antitoxin, VENDOR_ITEM_REGULAR),
 		list("Bottle (Inaprovaline)", floor(scale * 3), /obj/item/reagent_container/glass/bottle/inaprovaline, VENDOR_ITEM_REGULAR),
 		list("Bottle (Kelotane)", floor(scale * 3), /obj/item/reagent_container/glass/bottle/kelotane, VENDOR_ITEM_REGULAR),
 		list("Bottle (Oxycodone)", floor(scale * 3), /obj/item/reagent_container/glass/bottle/oxycodone, VENDOR_ITEM_REGULAR),
@@ -548,13 +581,15 @@
 
 		list("MEDICAL UTILITIES", -1, null, null),
 		list("Emergency Defibrillator", floor(scale * 3), /obj/item/device/defibrillator, VENDOR_ITEM_REGULAR),
-		list("Surgical Line", floor(scale * 2), /obj/item/tool/surgery/surgical_line, VENDOR_ITEM_REGULAR),
-		list("Synth-Graft", floor(scale * 2), /obj/item/tool/surgery/synthgraft, VENDOR_ITEM_REGULAR),
-		list("Hypospray", floor(scale * 3), /obj/item/reagent_container/hypospray/tricordrazine, VENDOR_ITEM_REGULAR),
 		list("Health Analyzer", floor(scale * 5), /obj/item/device/healthanalyzer, VENDOR_ITEM_REGULAR),
+		list("Hypospray (Empty Vial)", floor(scale * 3), /obj/item/reagent_container/hypospray, VENDOR_ITEM_REGULAR),
+		list("Hypospray (Tricordrazine)", floor(scale * 3), /obj/item/reagent_container/hypospray/tricordrazine, VENDOR_ITEM_REGULAR),
 		list("M276 Pattern Medical Storage Rig", floor(scale * 2), /obj/item/storage/belt/medical, VENDOR_ITEM_REGULAR),
 		list("Medical HUD Glasses", floor(scale * 3), /obj/item/clothing/glasses/hud/health, VENDOR_ITEM_REGULAR),
 		list("Stasis Bag", floor(scale * 3), /obj/item/bodybag/cryobag, VENDOR_ITEM_REGULAR),
+		list("Surgical Bed", floor(scale * 2), /obj/structure/bed/portable_surgery, VENDOR_ITEM_REGULAR),
+		list("Surgical Line", floor(scale * 2), /obj/item/tool/surgery/surgical_line, VENDOR_ITEM_REGULAR),
+		list("Synth-Graft", floor(scale * 2), /obj/item/tool/surgery/synthgraft, VENDOR_ITEM_REGULAR),
 		list("Syringe", floor(scale * 7), /obj/item/reagent_container/syringe, VENDOR_ITEM_REGULAR)
 	)
 
@@ -673,24 +708,28 @@
 		/obj/item/reagent_container/glass/bottle/bicaridine,
 		/obj/item/reagent_container/glass/bottle/antitoxin,
 		/obj/item/reagent_container/glass/bottle/dexalin,
+		/obj/item/reagent_container/glass/bottle/epinephrine,
 		/obj/item/reagent_container/glass/bottle/inaprovaline,
 		/obj/item/reagent_container/glass/bottle/kelotane,
 		/obj/item/reagent_container/glass/bottle/oxycodone,
 		/obj/item/reagent_container/glass/bottle/peridaxon,
 		/obj/item/reagent_container/glass/bottle/tramadol,
+		/obj/item/reagent_container/glass/bottle/tricordrazine,
 	)
 
 /obj/structure/machinery/cm_vending/sorted/medical/chemistry/populate_product_list(scale)
 	listed_products = list(
 		list("LIQUID BOTTLES", -1, null, null),
-		list("Bicaridine Bottle", floor(scale * 6), /obj/item/reagent_container/glass/bottle/bicaridine, VENDOR_ITEM_REGULAR),
-		list("Dylovene Bottle", floor(scale * 6), /obj/item/reagent_container/glass/bottle/antitoxin, VENDOR_ITEM_REGULAR),
-		list("Dexalin Bottle", floor(scale * 6), /obj/item/reagent_container/glass/bottle/dexalin, VENDOR_ITEM_REGULAR),
-		list("Inaprovaline Bottle", floor(scale * 6), /obj/item/reagent_container/glass/bottle/inaprovaline, VENDOR_ITEM_REGULAR),
-		list("Kelotane Bottle", floor(scale * 6), /obj/item/reagent_container/glass/bottle/kelotane, VENDOR_ITEM_REGULAR),
-		list("Oxycodone Bottle", floor(scale * 6), /obj/item/reagent_container/glass/bottle/oxycodone, VENDOR_ITEM_REGULAR),
-		list("Peridaxon Bottle", floor(scale * 6), /obj/item/reagent_container/glass/bottle/peridaxon, VENDOR_ITEM_REGULAR),
-		list("Tramadol Bottle", floor(scale * 6), /obj/item/reagent_container/glass/bottle/tramadol, VENDOR_ITEM_REGULAR),
+		list("Bottle (Bicaridine)", floor(scale * 6), /obj/item/reagent_container/glass/bottle/bicaridine, VENDOR_ITEM_REGULAR),
+		list("Bottle (Dylovene)", floor(scale * 6), /obj/item/reagent_container/glass/bottle/antitoxin, VENDOR_ITEM_REGULAR),
+		list("Bottle (Dexalin)", floor(scale * 6), /obj/item/reagent_container/glass/bottle/dexalin, VENDOR_ITEM_REGULAR),
+		list("Bottle (Epinephrine)", floor(scale * 6), /obj/item/reagent_container/glass/bottle/epinephrine, VENDOR_ITEM_REGULAR),
+		list("Bottle (Inaprovaline)", floor(scale * 6), /obj/item/reagent_container/glass/bottle/inaprovaline, VENDOR_ITEM_REGULAR),
+		list("Bottle (Kelotane)", floor(scale * 6), /obj/item/reagent_container/glass/bottle/kelotane, VENDOR_ITEM_REGULAR),
+		list("Bottle (Oxycodone)", floor(scale * 6), /obj/item/reagent_container/glass/bottle/oxycodone, VENDOR_ITEM_REGULAR),
+		list("Bottle (Peridaxon)", floor(scale * 6), /obj/item/reagent_container/glass/bottle/peridaxon, VENDOR_ITEM_REGULAR),
+		list("Bottle (Tramadol)", floor(scale * 6), /obj/item/reagent_container/glass/bottle/tramadol, VENDOR_ITEM_REGULAR),
+		list("Bottle (Tricordrazine)", floor(scale * 6), /obj/item/reagent_container/glass/bottle/tricordrazine, VENDOR_ITEM_REGULAR),
 
 		list("MISCELLANEOUS", -1, null, null),
 		list("Beaker (60 Units)", floor(scale * 3), /obj/item/reagent_container/glass/beaker, VENDOR_ITEM_REGULAR),
@@ -733,15 +772,15 @@
 	vendor_theme = VENDOR_THEME_USCM
 
 	chem_refill = list(
-		/obj/item/reagent_container/hypospray/autoinjector/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/marine,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/marine/tramadol,
 	)
 
 /obj/structure/machinery/cm_vending/sorted/medical/marinemed/populate_product_list(scale)
 	listed_products = list(
 		list("AUTOINJECTORS", -1, null, null),
-		list("First-Aid Autoinjector", floor(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/skillless, VENDOR_ITEM_REGULAR),
-		list("Pain-Stop Autoinjector", floor(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol, VENDOR_ITEM_REGULAR),
+		list("First-Aid Autoinjector", floor(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/skillless/marine, VENDOR_ITEM_REGULAR),
+		list("Pain-Stop Autoinjector", floor(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/skillless/marine/tramadol, VENDOR_ITEM_REGULAR),
 
 		list("DEVICES", -1, null, null),
 		list("Health Analyzer", floor(scale * 3), /obj/item/device/healthanalyzer, VENDOR_ITEM_REGULAR),
@@ -822,8 +861,8 @@
 
 	listed_products = list(
 		list("SUPPLIES", -1, null, null),
-		list("First-Aid Autoinjector", 2, /obj/item/reagent_container/hypospray/autoinjector/skillless, VENDOR_ITEM_REGULAR),
-		list("Pain-Stop Autoinjector", 2, /obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol, VENDOR_ITEM_REGULAR),
+		list("First-Aid Autoinjector", 2, /obj/item/reagent_container/hypospray/autoinjector/skillless/marine, VENDOR_ITEM_REGULAR),
+		list("Pain-Stop Autoinjector", 2, /obj/item/reagent_container/hypospray/autoinjector/skillless/marine/tramadol, VENDOR_ITEM_REGULAR),
 		list("Roll Of Gauze", 4, /obj/item/stack/medical/bruise_pack, VENDOR_ITEM_REGULAR),
 		list("Ointment", 4, /obj/item/stack/medical/ointment, VENDOR_ITEM_REGULAR),
 		list("Medical Splints", 4, /obj/item/stack/medical/splint, VENDOR_ITEM_REGULAR),
@@ -835,13 +874,13 @@
 	chem_refill_volume = 250
 	chem_refill_volume_max = 250
 	chem_refill = list(
-		/obj/item/reagent_container/hypospray/autoinjector/skillless,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/marine,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/marine/tramadol,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/tricord,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/bicaridine,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/antitoxin,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/kelotane,
 		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol,
-		/obj/item/reagent_container/hypospray/autoinjector/tricord/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/antitoxin/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless,
 	)
 
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited
@@ -850,8 +889,8 @@
 	chem_refill_volume = 150
 	chem_refill_volume_max = 150
 	chem_refill = list(
-		/obj/item/reagent_container/hypospray/autoinjector/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/marine,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/marine/tramadol,
 	)
 
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/lifeboat
@@ -866,8 +905,8 @@
 
 	listed_products = list(
 		list("AUTOINJECTORS", -1, null, null),
-		list("First-Aid Autoinjector", 8, /obj/item/reagent_container/hypospray/autoinjector/skillless, VENDOR_ITEM_REGULAR),
-		list("Pain-Stop Autoinjector", 8, /obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol, VENDOR_ITEM_REGULAR),
+		list("First-Aid Autoinjector", 8, /obj/item/reagent_container/hypospray/autoinjector/skillless/marine, VENDOR_ITEM_REGULAR),
+		list("Pain-Stop Autoinjector", 8, /obj/item/reagent_container/hypospray/autoinjector/skillless/marine/tramadol, VENDOR_ITEM_REGULAR),
 
 		list("DEVICES", -1, null, null),
 		list("Health Analyzer", 8, /obj/item/device/healthanalyzer, VENDOR_ITEM_REGULAR),
@@ -894,8 +933,8 @@
 
 	listed_products = list(
 		list("FIRST AID SUPPLIES", -1, null, null),
-		list("First-Aid Autoinjector", 2, /obj/item/reagent_container/hypospray/autoinjector/skillless, VENDOR_ITEM_REGULAR),
-		list("Pain-Stop Autoinjector", 2, /obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol, VENDOR_ITEM_REGULAR),
+		list("First-Aid Autoinjector", 2, /obj/item/reagent_container/hypospray/autoinjector/skillless/marine, VENDOR_ITEM_REGULAR),
+		list("Pain-Stop Autoinjector", 2, /obj/item/reagent_container/hypospray/autoinjector/skillless/marine/tramadol, VENDOR_ITEM_REGULAR),
 		list("Roll Of Gauze", 4, /obj/item/stack/medical/bruise_pack, VENDOR_ITEM_REGULAR),
 		list("Ointment", 4, /obj/item/stack/medical/ointment, VENDOR_ITEM_REGULAR),
 		list("Medical Splints", 4, /obj/item/stack/medical/splint, VENDOR_ITEM_REGULAR),

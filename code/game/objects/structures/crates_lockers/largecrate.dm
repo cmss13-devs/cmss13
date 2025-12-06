@@ -206,7 +206,7 @@
 		/obj/item/storage/pill_bottle/packet/tricordrazine,
 		/obj/item/tool/crowbar/red,
 		/obj/item/device/flashlight,
-		/obj/item/reagent_container/hypospray/autoinjector/skillless,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/marine,
 		/obj/item/storage/pill_bottle/packet/tramadol,
 		/obj/item/stack/medical/ointment,
 		/obj/item/stack/medical/splint,

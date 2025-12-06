@@ -7,6 +7,7 @@
 	icon_state = "noticeboard"
 	density = FALSE
 	anchored = TRUE
+	plane = TURF_PLANE
 	var/notices = 0
 
 /obj/structure/noticeboard/Initialize(mapload)

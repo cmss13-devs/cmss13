@@ -10,6 +10,7 @@
 	layer = DOOR_OPEN_LAYER
 	minimap_color = MINIMAP_DOOR
 	dir = EAST //So multitile doors are directioned properly
+	plane = TURF_PLANE
 
 	var/open_layer = DOOR_OPEN_LAYER
 	var/closed_layer = DOOR_CLOSED_LAYER

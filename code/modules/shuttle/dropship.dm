@@ -5,6 +5,7 @@
 	unacidable = TRUE
 	breakable = FALSE
 	explo_proof = TRUE
+	plane = TURF_PLANE
 
 /obj/structure/shuttle/part/dropship1
 	name = "\improper Alamo"

@@ -4,6 +4,7 @@
 	opacity = FALSE
 	density = FALSE
 	layer = WALL_OBJ_LAYER
+	plane = TURF_PLANE
 	var/deconstructable = TRUE
 
 /obj/structure/sign/ex_act(severity)

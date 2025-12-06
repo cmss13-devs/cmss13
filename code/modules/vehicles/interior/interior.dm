@@ -46,6 +46,12 @@
 	//revivable corpses slots taken
 	var/revivable_dead_taken_slots = 0
 
+	//vehicles have special slots for perma corpses to prevent dead people from clogging the vehicle and making it un-enterable
+	//perma corpses slots
+	var/perma_dead_slots = 0
+	//perma corpses slots taken
+	var/perma_dead_taken_slots = 0
+
 	//list of stuff we do NOT want to be pulled inside. Taken from exterior's list
 	var/list/forbidden_atoms
 
@@ -133,6 +139,7 @@
 	passengers_slots = V.passengers_slots
 	xenos_slots = V.xenos_slots
 	revivable_dead_slots = V.revivable_dead_slots
+	perma_dead_slots = V.perma_dead_slots
 	passengers_taken_slots = 0
 	xenos_taken_slots = 0
 	revivable_dead_taken_slots = 0
@@ -155,10 +162,13 @@
 			//whether we put human in some category
 			var/role_slot_taken = FALSE
 			var/mob/living/carbon/human/H = M
-			//some vehicles have separate count for non-perma dead corpses
-			if(H.stat == DEAD && H.is_revivable())
-				if(revivable_dead_slots && revivable_dead_taken_slots < revivable_dead_slots)
+			//if a human dies in the vehicle, we don't want him to take up a passenger slot as that could prevent humans from entering it ever again
+			if(H.stat == DEAD)
+				if(H.is_revivable())
 					revivable_dead_taken_slots++
+					role_slot_taken = TRUE
+				else
+					perma_dead_taken_slots++
 					role_slot_taken = TRUE
 
 			//if we have any special roles slots, we check them first
@@ -217,11 +227,16 @@
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		var/role_slot_taken = FALSE
-		if(H.stat == DEAD && H.is_revivable())
-			//this is here to prevent accummulating people in vehicle by bringing in more and more revivable dead and reviving them inside
-			if(revivable_dead_slots && revivable_dead_taken_slots < revivable_dead_slots && passengers_taken_slots < passengers_slots + revivable_dead_slots)
-				revivable_dead_taken_slots++
-				role_slot_taken = TRUE
+		if(H.stat == DEAD)
+			if(H.is_revivable())
+				//this is here to prevent accummulating people in vehicle by bringing in more and more revivable dead and reviving them inside.
+				if(revivable_dead_slots && revivable_dead_taken_slots < revivable_dead_slots && passengers_taken_slots < passengers_slots + revivable_dead_slots)
+					revivable_dead_taken_slots++
+					role_slot_taken = TRUE
+			else //you can always drag perma people in if there is space as they cannot be revived.
+				if(perma_dead_slots && perma_dead_taken_slots < perma_dead_slots)
+					perma_dead_taken_slots++
+					role_slot_taken = TRUE
 
 		if(!role_slot_taken && length(role_reserved_slots))
 			for(var/datum/role_reserved_slots/RRS in role_reserved_slots)

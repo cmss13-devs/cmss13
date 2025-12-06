@@ -32,6 +32,8 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	if(caste_type == XENO_CASTE_DRONE && !SSobjectives.first_drop_complete)
 		castes_available = caste.early_evolves_to.Copy()
 
+	castes_available -= hive.blacklisted_castes
+
 	for(var/caste in castes_available)
 		if(GLOB.xeno_datum_list[caste].minimum_evolve_time > ROUND_TIME)
 			castes_available -= caste
@@ -54,6 +56,10 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 
 	if(SEND_SIGNAL(src, COMSIG_XENO_TRY_EVOLVE, castepick) & COMPONENT_OVERRIDE_EVOLVE)
 		return // Message will be handled by component
+
+	if(castepick in hive.blacklisted_castes)
+		to_chat(src, SPAN_WARNING("The Hive cannot support this caste!"))
+		return
 
 	var/datum/caste_datum/caste_datum = GLOB.xeno_datum_list[castepick]
 	if(caste_datum && caste_datum.minimum_evolve_time > ROUND_TIME)

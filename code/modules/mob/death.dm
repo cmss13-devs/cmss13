@@ -57,6 +57,8 @@
 
 	set_stat(DEAD)
 
+	SEND_SIGNAL(src, COMSIG_DEATH_DATA_UPDATE) //Sent to human.dm to log death data
+
 	dizziness = 0
 	jitteriness = 0
 

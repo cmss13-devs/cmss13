@@ -106,12 +106,6 @@
 	desc = "Lucky for you, but not the rabbit, didn't really do it much good."
 	icon_state = "rabbitsfoot"
 
-/obj/item/prop/helmetgarb/rosary
-	name = "rosary"
-	desc = "Jesus Saves Lives!"
-	icon_state = "rosary"
-	item_state_slots = list(WEAR_AS_GARB = "rosary")
-
 /obj/item/prop/helmetgarb/lucky_feather
 	name = "\improper Red Lucky Feather"
 	desc = "It is a riotous red color, made of really crummy plastic and synthetic threading, you know, the same sort of material every Corporate Liaison's spine is made of."

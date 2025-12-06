@@ -48,10 +48,10 @@
 	if(reagents)
 		. += SPAN_NOTICE("Total volume: [reagents.total_volume] / [reagents.maximum_volume].")
 	if(dispensing)
-		. += SPAN_NOTICE("\nTransfer mode: Dispensing")
+		. += SPAN_NOTICE("\nTransfer mode: Dispensing.")
 	else
-		. += SPAN_NOTICE("\nTransfer mode: Filling")
-	. += SPAN_NOTICE("Transfer rate: [amount_per_transfer_from_this] units")
+		. += SPAN_NOTICE("\nTransfer mode: Filling.")
+	. += SPAN_NOTICE("Transfer rate: [amount_per_transfer_from_this] units.")
 
 /obj/structure/reagent_dispensers/Destroy()
 	playsound(src.loc, 'sound/effects/slosh.ogg', 50, 1, 3)
@@ -99,9 +99,9 @@
 
 	dispensing = !dispensing
 	if(dispensing)
-		to_chat(usr, SPAN_NOTICE("[src] is now dispensing"))
+		to_chat(usr, SPAN_NOTICE("[src] is now dispensing."))
 	else
-		to_chat(usr, SPAN_NOTICE("[src] is now filling"))
+		to_chat(usr, SPAN_NOTICE("[src] is now filling."))
 	update_icon()
 
 /obj/structure/reagent_dispensers/ex_act(severity)
@@ -139,9 +139,9 @@
 	if(mods[ALT_CLICK])
 		dispensing = !dispensing
 		if(dispensing)
-			to_chat(user, SPAN_NOTICE("[src] is now dispensing"))
+			to_chat(user, SPAN_NOTICE("[src] is now dispensing."))
 		else
-			to_chat(user, SPAN_NOTICE("[src] is now filling"))
+			to_chat(user, SPAN_NOTICE("[src] is now filling."))
 		update_icon()
 		return TRUE
 	return ..()

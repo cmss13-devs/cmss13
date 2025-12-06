@@ -54,7 +54,7 @@
 		processing_tray.seed = processing_tray.seed.diverge()
 		processing_tray.seed.potency += rand(1,potency*2)
 		processing_tray.seed.nutrient_consumption += 0.3*(potency*2)
-		c_turf.visible_message(SPAN_NOTICE("\The [processing_tray.seed.display_name] rustles as its branches bow"))
+		c_turf.visible_message(SPAN_NOTICE("\The [processing_tray.seed.display_name] rustles as its branches bow."))
 		processing_tray.potency_counter = 0
 
 /datum/chem_property/neutral/nutritious

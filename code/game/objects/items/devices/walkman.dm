@@ -60,13 +60,13 @@
 	if(istype(tape))
 		if(paused)
 			play()
-			to_chat(user,SPAN_INFO("You press [src]'s 'play' button"))
+			to_chat(user,SPAN_INFO("You press [src]'s 'play' button."))
 		else
 			pause()
 			to_chat(user,SPAN_INFO("You pause [src]"))
 		update_icon()
 	else
-		to_chat(user,SPAN_INFO("There's no tape to play"))
+		to_chat(user,SPAN_INFO("There's no tape to play."))
 	playsound(src,'sound/machines/click.ogg',20,1)
 
 /obj/item/device/walkman/attack_hand(mob/user)
@@ -165,7 +165,7 @@
 	current_song = sound(current_playlist[pl_index], 0, 0, SOUND_CHANNEL_WALKMAN, volume)
 	current_song.status = SOUND_STREAM
 	play()
-	to_chat(user,SPAN_INFO("You change the song"))
+	to_chat(user,SPAN_INFO("You change the song."))
 
 
 /obj/item/device/walkman/update_icon()
@@ -253,7 +253,7 @@
 		return
 
 	update_song(current_song, current_listener, 0)
-	to_chat(user,SPAN_INFO("You restart the song"))
+	to_chat(user,SPAN_INFO("You restart the song."))
 
 /obj/item/device/walkman/verb/restart_current_song()
 	set name = "Restart Song"

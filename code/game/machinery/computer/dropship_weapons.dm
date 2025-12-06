@@ -62,7 +62,7 @@
 
 /obj/structure/machinery/computer/dropship_weapons/on_unset_interaction(mob/user)
 	. = ..()
-	
+
 	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
 	tacmap_component.on_unset_interaction(user)
 
@@ -78,7 +78,7 @@
 		/*to_chat(user, SPAN_WARNING("Weapons modification access denied, attempting to launch simulation."))
 
 		if(!selected_firemission)
-			to_chat(user, SPAN_WARNING("Firemission must be selected before attempting to run the simulation"))
+			to_chat(user, SPAN_WARNING("Firemission must be selected before attempting to run the simulation."))
 			return TRUE
 
 		tgui_interact(user)
@@ -93,7 +93,7 @@
 		if(matrix.state == ASSEMBLY_LOCKED)
 			user.drop_held_item(W, src)
 			W.forceMove(src)
-			to_chat(user, SPAN_NOTICE("You swap the matrix in the dropship guidance camera system, destroying the older part in the process"))
+			to_chat(user, SPAN_NOTICE("You swap the matrix in the dropship guidance camera system, destroying the older part in the process."))
 			upgraded = matrix.upgrade
 			power = matrix.power
 
@@ -278,7 +278,7 @@
 
 		if("execute_simulated_firemission")
 			if(!configuration)
-				to_chat(user, SPAN_WARNING("No configured firemission"))
+				to_chat(user, SPAN_WARNING("No configured firemission."))
 				return
 			simulate_firemission(user)
 			. = TRUE
@@ -286,7 +286,7 @@
 		if("switch_firemission")
 			configuration = tgui_input_list(user, "Select firemission to simulate", "Select firemission", firemission_envelope.missions, 30 SECONDS)
 			if(!selected_firemission)
-				to_chat(user, SPAN_WARNING("No configured firemission"))
+				to_chat(user, SPAN_WARNING("No configured firemission."))
 				return
 			if(!configuration)
 				configuration = selected_firemission
@@ -839,10 +839,10 @@
 	if (!istype(dropship))
 		return FALSE
 	if (!dropship.in_flyby || dropship.mode != SHUTTLE_CALL)
-		to_chat(user, SPAN_WARNING("Has to be in Fly By mode"))
+		to_chat(user, SPAN_WARNING("Has to be in Fly By mode."))
 		return FALSE
 	if (dropship.timer && dropship.timeLeft(1) < firemission_envelope.flyoff_period)
-		to_chat(user, SPAN_WARNING("Not enough time to complete the Fire Mission"))
+		to_chat(user, SPAN_WARNING("Not enough time to complete the Fire Mission."))
 		return FALSE
 	var/datum/cas_signal/recorded_loc = firemission_envelope.recorded_loc
 	var/obj/source = recorded_loc.signal_loc
@@ -930,10 +930,10 @@
 
 /obj/structure/machinery/computer/dropship_weapons/proc/simulate_firemission(mob/living/user)
 	if(!configuration)
-		to_chat(user, SPAN_WARNING("Configure a firemission before attempting to run the simulation"))
+		to_chat(user, SPAN_WARNING("Configure a firemission before attempting to run the simulation."))
 		return
 	if(configuration.check(src) != FIRE_MISSION_ALL_GOOD)
-		to_chat(user, SPAN_WARNING("Configured firemission has errors, fix the errors before attempting to run the simulation"))
+		to_chat(user, SPAN_WARNING("Configured firemission has errors, fix the errors before attempting to run the simulation."))
 		return
 
 	simulation.spawn_mobs(user)

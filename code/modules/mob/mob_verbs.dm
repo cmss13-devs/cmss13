@@ -36,7 +36,7 @@
 	set name = "View Playtimes"
 	set desc = "View your playtimes."
 	if(!SSentity_manager.ready)
-		to_chat(src, "DB is still starting up, please wait")
+		to_chat(src, "DB is still starting up, please wait.")
 		return
 	if(client && client.player_entity)
 		client.player_data.tgui_interact(src)

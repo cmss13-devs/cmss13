@@ -938,7 +938,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			last_hive_checked = hive
 
 	if(!length(hives))
-		to_chat(src, SPAN_ALERT("There seem to be no living hives at the moment"))
+		to_chat(src, SPAN_ALERT("There seem to be no living hives at the moment."))
 		return
 	else if(length(hives) == 1) // Only one hive, don't need an input menu for that
 		last_hive_checked.hive_ui.open_hive_status(src)

@@ -36,7 +36,7 @@
 		value = tgui_input_list(src, "Choose which tree to enter", "Enter Tree", trees)
 
 	if(!value)
-		to_chat(src, SPAN_WARNING("Something went wrong"))
+		to_chat(src, SPAN_WARNING("Something went wrong."))
 		return
 
 	var/datum/techtree/tree = trees[value]
@@ -64,7 +64,7 @@
 		value = tgui_input_list(src, "Choose which tree to give points to", "Give Points", trees)
 
 	if(!value)
-		to_chat(src, SPAN_WARNING("Something went wrong"))
+		to_chat(src, SPAN_WARNING("Something went wrong."))
 		return
 
 	var/datum/techtree/tree = trees[value]

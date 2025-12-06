@@ -1,4 +1,9 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/window_frame/colony,
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/lv624/lazarus/medbay)
 "am" = (
 /obj/item/stack/sheet/metal,
 /turf/open/floor/plating/platingdmg3,
@@ -529,8 +534,8 @@ am
 Df
 gp
 Fk
-Ny
-Ny
+aa
+aa
 Fk
 Be
 xe
@@ -665,7 +670,7 @@ UG
 iq
 fX
 Ed
-Ny
+aa
 og
 og
 "}

@@ -199,7 +199,7 @@
 /turf/open/floor/shiva/purplefull/east,
 /area/shiva/interior/colony/research_hab)
 "vf" = (
-/obj/structure/window/framed/shiva,
+/obj/structure/window/framed/shiva/orange,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/research_hab)
 "vZ" = (
@@ -339,7 +339,7 @@
 /area/shiva/interior/colony/research_hab)
 "Qg" = (
 /turf/closed/wall/shiva/ice,
-/area/shiva/interior/colony/research_hab)
+/area/shiva/interior/oob)
 "Qz" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 8;

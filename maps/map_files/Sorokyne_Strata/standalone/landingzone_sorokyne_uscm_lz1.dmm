@@ -1,7 +1,4 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"aa" = (
-/turf/template_noop,
-/area/space)
 "ab" = (
 /turf/closed/wall/strata_outpost/reinforced,
 /area/strata/interior/landing_zones/near_lz1)
@@ -589,7 +586,7 @@
 	name = "Secure Lockdown"
 	},
 /turf/closed/wall/strata_outpost/reinforced/hull,
-/area/strata/interior/mining_outpost/flight_control)
+/area/strata/interior/out_of_bounds)
 "dg" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -780,7 +777,7 @@
 /area/strata/interior/landing_zones/near_lz1)
 "fZ" = (
 /turf/closed/wall/strata_outpost/reinforced/hull,
-/area/strata/interior/landing_zones/near_lz1)
+/area/strata/interior/out_of_bounds)
 "gn" = (
 /obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/strata/white_cyan2/west,
@@ -2042,9 +2039,6 @@
 /obj/structure/machinery/light,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/landing_zones/near_lz1)
-"JU" = (
-/turf/closed/wall/strata_outpost/reinforced/hull,
-/area/strata/interior/mining_outpost/flight_control)
 "JZ" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/structure/machinery/landinglight/ds1/delaythree{
@@ -2748,13 +2742,6 @@ cV
 cV
 cV
 cV
-JU
-JU
-JU
-JU
-JU
-JU
-JU
 fZ
 fZ
 fZ
@@ -2796,8 +2783,15 @@ fZ
 fZ
 fZ
 fZ
-aa
-aa
+fZ
+fZ
+fZ
+fZ
+fZ
+fZ
+fZ
+cV
+cV
 "}
 (2,1,1) = {"
 cV
@@ -2857,8 +2851,8 @@ KZ
 QK
 QK
 ab
-aa
-aa
+cV
+cV
 "}
 (3,1,1) = {"
 cV
@@ -2918,8 +2912,8 @@ Vh
 Vh
 Vh
 ab
-aa
-aa
+cV
+cV
 "}
 (4,1,1) = {"
 cV
@@ -2979,8 +2973,8 @@ ai
 ai
 JS
 ab
-aa
-aa
+cV
+cV
 "}
 (5,1,1) = {"
 cV
@@ -3172,8 +3166,8 @@ cV
 cV
 cV
 cV
-JU
-JU
+fZ
+fZ
 cG
 uF
 Zw
@@ -3233,7 +3227,7 @@ cV
 cV
 cV
 cV
-JU
+fZ
 cZ
 YI
 Uz
@@ -3294,7 +3288,7 @@ cV
 cV
 cV
 cV
-JU
+fZ
 cZ
 VV
 VV
@@ -3355,7 +3349,7 @@ cV
 cV
 cV
 cV
-JU
+fZ
 cZ
 vs
 dN
@@ -3416,8 +3410,8 @@ cV
 cV
 cV
 cV
-JU
-JU
+fZ
+fZ
 cG
 uF
 Zw

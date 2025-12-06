@@ -107,7 +107,7 @@
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "cT" = (
 /turf/closed/wall/kutjevo/rock/border,
-/area/kutjevo/exterior/scrubland)
+/area/kutjevo/interior/oob)
 "cW" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo{
 	dir = 4
@@ -604,9 +604,6 @@
 	},
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/lz_pad)
-"sz" = (
-/turf/closed/wall/kutjevo/rock,
-/area/kutjevo/exterior/scrubland)
 "sD" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/desert/desert_shore/desert_shore1/east,
@@ -1492,9 +1489,6 @@
 "RG" = (
 /turf/open/desert/desert_shore/shore_edge1/east,
 /area/kutjevo/exterior/lz_pad)
-"So" = (
-/turf/closed/wall/kutjevo/colony/reinforced,
-/area/kutjevo/interior/oob)
 "Sw" = (
 /obj/structure/barricade/metal/wired{
 	dir = 4
@@ -1692,15 +1686,9 @@
 /obj/structure/flora/grass/tallgrass/desert,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/lz_pad)
-"Xe" = (
-/turf/closed/wall/kutjevo/colony,
-/area/kutjevo/interior/oob)
 "Xn" = (
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/complex/Northwest_Dorms)
-"Xo" = (
-/turf/closed/wall/kutjevo/rock,
-/area/kutjevo/exterior/lz_pad)
 "Xt" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/flora/pottedplant{
@@ -1945,11 +1933,11 @@ sb
 sb
 sb
 sb
-So
+CQ
 zy
 zy
 zy
-So
+CQ
 sb
 di
 di
@@ -2762,7 +2750,7 @@ Cv
 xJ
 xJ
 xJ
-Xe
+JV
 sb
 sb
 sb
@@ -4054,8 +4042,8 @@ LB
 LB
 Xx
 Xx
-Xo
-Xo
+sb
+sb
 mH
 Oy
 Oy
@@ -4128,7 +4116,7 @@ LB
 LB
 LB
 LB
-Xo
+sb
 mH
 au
 xJ
@@ -4182,7 +4170,7 @@ sb
 sb
 sb
 sb
-Xe
+UW
 Em
 Fd
 Fd
@@ -4854,7 +4842,7 @@ ZL
 UW
 UW
 UW
-Xe
+UW
 sb
 sb
 Kc
@@ -5546,9 +5534,9 @@ sb
 sb
 jI
 jI
-sz
+sb
 jI
-sz
+sb
 jI
 PG
 Bh
@@ -5704,7 +5692,7 @@ ky
 dI
 dI
 dI
-sz
-sz
+sb
+sb
 SH
 "}

@@ -1,12 +1,48 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/research_hab)
+"ab" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/redfull/west,
+/area/shiva/interior/colony/research_hab)
+"ac" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/multi_tiles/north,
+/area/shiva/interior/colony/research_hab)
+"ad" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/multi_tiles/west,
+/area/shiva/interior/colony/research_hab)
 "ae" = (
 /turf/open/floor/shiva/redfull/west,
 /area/event/underground/dynamic)
+"af" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva,
+/area/shiva/interior/colony/research_hab)
+"ag" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/multi_tiles,
+/area/shiva/interior/colony/research_hab)
 "ah" = (
 /obj/structure/surface/table,
 /obj/item/clothing/suit/armor/hos,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/shiva/redfull/west,
+/area/shiva/interior/colony/research_hab)
+"ai" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/yellowfull,
+/area/shiva/interior/colony/research_hab)
+"aj" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet,
+/area/shiva/interior/colony/research_hab)
+"ak" = (
+/obj/structure/window/framed/shiva/orange,
+/turf/open/floor/plating,
 /area/shiva/interior/colony/research_hab)
 "aQ" = (
 /obj/structure/closet/crate/trashcart,
@@ -39,8 +75,9 @@
 /area/event/dynamic/lit)
 "dC" = (
 /obj/structure/bed/chair/office/dark{
-	dir = 4
+	dir = 8
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/research_hab)
 "dG" = (
@@ -52,6 +89,7 @@
 	dir = 1;
 	pixel_y = 9
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/multi_tiles/north,
 /area/shiva/interior/colony/research_hab)
 "dT" = (
@@ -251,9 +289,6 @@
 "pE" = (
 /turf/open/floor/carpet,
 /area/shiva/interior/colony/research_hab)
-"qd" = (
-/turf/closed/wall/shiva/ice,
-/area/event/underground/dynamic)
 "qG" = (
 /obj/structure/machinery/light/double{
 	dir = 8;
@@ -278,6 +313,7 @@
 /area/event/underground/dynamic)
 "sM" = (
 /obj/structure/machinery/disposal,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/yellow/southeast,
 /area/shiva/interior/colony/research_hab)
 "sX" = (
@@ -309,7 +345,7 @@
 "ut" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/computer/cameras{
-	dir = 8;
+	dir = 4;
 	pixel_y = 6
 	},
 /turf/open/floor/shiva/redfull/west,
@@ -375,6 +411,7 @@
 /area/shiva/interior/caves/research_caves)
 "yG" = (
 /obj/item/tool/warning_cone,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/redfull/west,
 /area/shiva/interior/colony/research_hab)
 "yH" = (
@@ -451,9 +488,6 @@
 /obj/structure/closet/firecloset,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/research_hab)
-"Hd" = (
-/turf/closed/wall/rock,
-/area/shiva/interior/oob)
 "Iu" = (
 /obj/structure/barricade/plasteel/wired,
 /turf/open/auto_turf/ice/layer1,
@@ -469,6 +503,7 @@
 /turf/open/floor/shiva/yellow,
 /area/shiva/interior/colony/research_hab)
 "KW" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/multi_tiles/east,
 /area/shiva/interior/colony/research_hab)
 "Lb" = (
@@ -478,9 +513,6 @@
 "LK" = (
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
-"MA" = (
-/turf/closed/wall/shiva/ice,
-/area/shiva/interior/caves/research_caves)
 "Ny" = (
 /turf/open/floor/plating,
 /area/shiva/interior/colony/research_hab)
@@ -556,7 +588,7 @@
 /turf/open/floor/shiva/redfull/west,
 /area/shiva/interior/colony/research_hab)
 "To" = (
-/obj/structure/window/framed/shiva,
+/obj/structure/window/framed/shiva/red,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/research_hab)
 "Tu" = (
@@ -581,7 +613,7 @@
 /area/shiva/interior/colony/research_hab)
 "Vs" = (
 /obj/structure/bed/chair/office/dark{
-	dir = 8
+	dir = 4
 	},
 /turf/open/floor/shiva/redfull/west,
 /area/shiva/interior/colony/research_hab)
@@ -606,6 +638,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 1
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/research_hab)
 "Zc" = (
@@ -631,9 +664,9 @@ mn
 mn
 mn
 mn
-MA
-MA
-MA
+Fj
+Fj
+Fj
 QW
 QW
 QW
@@ -643,15 +676,15 @@ Zi
 QW
 Zi
 Zi
-MA
-MA
-MA
-MA
-MA
+Fj
+Fj
+Fj
+Fj
+Fj
 gf
 pa
 gf
-qd
+Fj
 Fj
 Fj
 Fj
@@ -667,9 +700,9 @@ LK
 LK
 Ri
 mn
-MA
-MA
-MA
+Fj
+Fj
+Fj
 Zi
 Zi
 Zi
@@ -681,15 +714,15 @@ QW
 Tu
 Tu
 QW
-MA
-MA
-MA
-MA
-qd
+Fj
+Fj
+Fj
+Fj
+Fj
 zn
 Pf
 ep
-qd
+Fj
 Fj
 Fj
 Fj
@@ -720,14 +753,14 @@ Tu
 Tu
 QW
 es
-MA
-MA
-MA
-qd
+Fj
+Fj
+Fj
+Fj
 zn
 ep
 Pf
-qd
+Fj
 Fj
 Fj
 Fj
@@ -758,9 +791,9 @@ Tu
 QW
 QW
 QW
-MA
-MA
-MA
+Fj
+Fj
+Fj
 gi
 Pf
 Pf
@@ -796,9 +829,9 @@ QW
 cu
 Zi
 yl
-MA
-MA
-MA
+Fj
+Fj
+Fj
 gi
 wL
 nG
@@ -833,10 +866,10 @@ Tu
 Zi
 GA
 re
-MA
-MA
-MA
-MA
+Fj
+Fj
+Fj
+Fj
 gi
 uR
 nG
@@ -861,21 +894,21 @@ Ri
 Ri
 cu
 QW
-MA
+Fj
 QW
 QW
 QW
 QW
 QW
 Zi
-qd
+Fj
 yM
 yM
-qd
-qd
-qd
-qd
-qd
+Fj
+Fj
+Fj
+Fj
+Fj
 pg
 nG
 pg
@@ -897,23 +930,23 @@ eY
 eY
 eY
 Ny
+Ri
 QW
-QW
-MA
-MA
+Fj
+Fj
 QW
 Zi
-MA
-MA
-MA
-qd
+Fj
+Fj
+Fj
+Fj
 yM
 yM
-qd
-qd
-qd
-qd
-qd
+Fj
+Fj
+Fj
+Fj
+Fj
 ae
 ae
 ae
@@ -937,21 +970,21 @@ Ny
 Ri
 Ri
 Ri
-QW
-MA
-MA
-MA
-MA
-MA
-MA
-qd
+Ri
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
 yM
 zn
-qd
-qd
+Fj
+Fj
 gi
-qd
-qd
+Fj
+Fj
 pg
 nG
 pg
@@ -975,14 +1008,14 @@ eY
 eY
 Ny
 Ri
-MA
-MA
-MA
-MA
-MA
+Fj
+Fj
+Fj
+Fj
+Fj
 gi
 gi
-qd
+Fj
 wM
 qY
 ae
@@ -1013,11 +1046,11 @@ Ri
 ep
 ep
 Pf
-qd
-qd
-qd
-qd
-MA
+Fj
+Fj
+Fj
+Fj
+Fj
 gi
 or
 ep
@@ -1053,10 +1086,10 @@ cg
 qY
 yM
 IN
-qd
-qd
-MA
-qd
+Fj
+Fj
+Fj
+Fj
 ep
 zn
 zn
@@ -1082,7 +1115,7 @@ Fj
 mn
 CM
 dC
-Fb
+ab
 Fb
 gW
 sX
@@ -1091,10 +1124,10 @@ ep
 nG
 Pf
 yM
-qd
-qd
-qd
-qd
+Fj
+Fj
+Fj
+Fj
 ep
 zn
 zn
@@ -1120,7 +1153,7 @@ Fj
 mn
 Cx
 QM
-eY
+aa
 Fb
 Cx
 Cx
@@ -1158,8 +1191,8 @@ Fj
 Ux
 Cx
 Fb
-eY
-eY
+aa
+aa
 Tm
 Cx
 gi
@@ -1193,12 +1226,12 @@ Fj
 Fj
 "}
 (16,1,1) = {"
-Ux
+ai
 NB
-Fb
+ab
 Vs
 eY
-eY
+aa
 Tm
 gi
 kr
@@ -1307,7 +1340,7 @@ DH
 Fj
 "}
 (19,1,1) = {"
-Ux
+ai
 Cx
 LK
 KW
@@ -1345,11 +1378,11 @@ vJ
 Fj
 "}
 (20,1,1) = {"
-Ux
+ai
 NB
 jD
 iL
-Fb
+ab
 ZY
 Iu
 zn
@@ -1424,7 +1457,7 @@ Fj
 Ux
 To
 jD
-eY
+aa
 Cx
 Cx
 dT
@@ -1461,7 +1494,7 @@ Fj
 (23,1,1) = {"
 pE
 To
-jD
+ac
 Fb
 lP
 Cx
@@ -1499,7 +1532,7 @@ Fj
 (24,1,1) = {"
 pE
 To
-jD
+ac
 eY
 GY
 Cx
@@ -1535,10 +1568,10 @@ eR
 Fj
 "}
 (25,1,1) = {"
-pE
+aj
 To
 LK
-Fb
+ab
 Cx
 Cx
 AQ
@@ -1573,7 +1606,7 @@ Ru
 Fj
 "}
 (26,1,1) = {"
-To
+ak
 Cx
 Vq
 Vq
@@ -1613,7 +1646,7 @@ Fj
 (27,1,1) = {"
 Fb
 Fb
-Fb
+ab
 yG
 Fb
 To
@@ -1650,10 +1683,10 @@ Fj
 "}
 (28,1,1) = {"
 zN
-LK
+af
 LK
 eY
-Fb
+ab
 To
 AQ
 OE
@@ -1687,11 +1720,11 @@ dG
 Fj
 "}
 (29,1,1) = {"
-eY
+aa
 LK
 LK
-eY
-Fb
+aa
+ab
 To
 AQ
 OE
@@ -1727,7 +1760,7 @@ Fj
 (30,1,1) = {"
 Fb
 Fb
-Fb
+ab
 Fb
 el
 Cx
@@ -1764,8 +1797,8 @@ Fj
 "}
 (31,1,1) = {"
 Fb
-vq
-vq
+ad
+ad
 Fb
 WF
 Cx
@@ -1802,10 +1835,10 @@ Fj
 "}
 (32,1,1) = {"
 Fb
-UL
+ag
 UL
 Fb
-Fb
+ab
 Cx
 dT
 zn
@@ -1839,10 +1872,10 @@ Fj
 Fj
 "}
 (33,1,1) = {"
-Fb
+ab
+ad
 vq
-vq
-Fb
+ab
 el
 Cx
 dT
@@ -1911,7 +1944,7 @@ Fj
 Fj
 Fj
 XR
-Hd
+Fj
 Fj
 "}
 (35,1,1) = {"

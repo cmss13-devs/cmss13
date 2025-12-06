@@ -29,6 +29,10 @@
 	},
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/far_north_outpost)
+"ae" = (
+/obj/structure/machinery/iv_drip,
+/turf/open/gm/dirt/brown/variant_5,
+/area/strata/exterior/far_north_outpost)
 "af" = (
 /obj/effect/landmark/survivor_spawner/clf/soro,
 /obj/item/ammo_casing,
@@ -839,7 +843,7 @@
 /area/strata/exterior/far_north_outpost)
 "ci" = (
 /turf/closed/wall/strata_outpost,
-/area/strata/interior/out_of_bounds)
+/area/strata/exterior/far_north_outpost)
 "cj" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = -4;
@@ -1123,7 +1127,7 @@
 /area/strata/interior/outpost/clf_dorms)
 "dG" = (
 /turf/closed/wall/strata_outpost/reinforced/hull,
-/area/strata/exterior/far_north_outpost)
+/area/strata/interior/out_of_bounds)
 "dT" = (
 /obj/structure/platform_decoration/stone/soro/north,
 /obj/effect/blocker/sorokyne_hot_water,
@@ -3105,7 +3109,7 @@ cH
 cH
 cH
 TP
-cD
+ae
 Gg
 cD
 cD

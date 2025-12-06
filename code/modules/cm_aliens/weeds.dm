@@ -668,4 +668,32 @@
 /obj/effect/resin_construct/transparent/weak
 	icon_state = "WeakTransparentConstruct"
 
+/obj/effect/resin_construct/fastweak
+	icon_state = "WeakReflectiveFast"
+
+/obj/effect/resin_construct/speed_node
+	icon_state = "speednode"
+
+/obj/effect/resin_construct/cost_node
+	icon_state = "costnode"
+
+/obj/effect/resin_construct/construct_node
+	icon_state = "constructnode"
+
+/obj/effect/resin_construct/construct_doorslow
+	icon_state = "DoorConstrucSlow"
+
+/obj/effect/resin_construct/construct_wallslow
+	icon_state = "WeakConstructSlow"
+
+/obj/effect/resin_construct/thickfast
+	icon_state = "ThickConstructFast"
+
+/obj/effect/resin_construct/thickdoorfast
+	icon_state = "ThickDoorConstructFast"
+	layer = FIREDOOR_CLOSED_LAYER
+
+/obj/effect/resin_construct/transparent/thickfast
+	icon_state = "WeakTransparentConstructFast"
+
 #undef WEED_BASE_GROW_SPEED

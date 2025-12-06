@@ -162,7 +162,7 @@
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "fertilizer"
 	flags_atom = FPRINT| OPENCONTAINER
-	possible_transfer_amounts = null
+	possible_transfer_amounts = list(1,3,5,10)
 	w_class = SIZE_SMALL
 
 	var/fertilizer //Reagent contained, if any.

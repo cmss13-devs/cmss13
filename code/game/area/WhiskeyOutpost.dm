@@ -18,6 +18,7 @@
 	name = "\improper Hospital"
 	icon_state = "medical"
 	minimap_color = MINIMAP_AREA_MEDBAY_CAVE
+	flags_area = AREA_NOTUNNEL
 
 /area/whiskey_outpost/inside/hospital/triage
 	name = "\improper Triage Center"
@@ -26,6 +27,7 @@
 	name = "\improper Command Information Center"
 	icon_state = "CIC"
 	minimap_color = MINIMAP_AREA_COMMAND_CAVE
+	flags_area = AREA_NOTUNNEL
 
 /area/whiskey_outpost/inside/bunker
 	name = "\improper Bunker"
@@ -59,14 +61,17 @@
 	name = "\improper Engineering"
 	icon_state = "engineering"
 	minimap_color = MINIMAP_AREA_ENGI_CAVE
+	flags_area = AREA_NOTUNNEL
 
 /area/whiskey_outpost/inside/living
 	name = "\improper Living Quarters"
 	icon_state = "livingspace"
+	flags_area = AREA_NOTUNNEL
 
 /area/whiskey_outpost/inside/supply
 	name = "\improper Supply Depot"
 	icon_state = "req"
+	flags_area = AREA_NOTUNNEL
 
 /*
 |***OUTSIDE AREAS***|
@@ -118,6 +123,8 @@
 /area/whiskey_outpost/outside/lane/two_north
 	name = "\improper Western Path North"
 	icon_state = "lane2n"
+	always_unpowered = 0
+	power_equip = TRUE
 
 /area/whiskey_outpost/outside/lane/two_south
 	name = "\improper Western Path South"
@@ -126,6 +133,8 @@
 /area/whiskey_outpost/outside/lane/three_north
 	name = "\improper Eastern Path North"
 	icon_state = "lane3n"
+	always_unpowered = 0
+	power_equip = TRUE
 
 /area/whiskey_outpost/outside/lane/three_south
 	name = "\improper Eastern Path South"
@@ -187,7 +196,7 @@
 /area/whiskey_outpost/inside/caves/tunnel
 	name = "\improper Tunnel"
 	icon_state = "tunnel"
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOBURROW|AREA_NOTUNNEL
 
 /area/whiskey_outpost/inside/caves/caverns
 	name = "\improper Northern Caverns"
@@ -199,3 +208,10 @@
 /area/whiskey_outpost/inside/caves/caverns/east
 	name = "\improper Eastern Caverns"
 	icon_state = "caveseast"
+
+/area/whiskey_outpost/inside/caves/deep
+	name = "\improper Deep Caves"
+	icon_state = "caves"
+	ceiling = CEILING_DEEP_UNDERGROUND
+	unoviable_timer = FALSE
+	flags_area = AREA_NOBURROW

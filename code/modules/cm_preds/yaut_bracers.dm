@@ -264,7 +264,7 @@
 	charge = 3000
 	charge_max = 3000
 
-	cloak_alpha = 10
+	cloak_alpha = 40
 
 	var/exploding = 0
 	var/disc_timer = 0
@@ -786,6 +786,7 @@
 		else
 			M.alpha = new_alpha
 
+		M.plane = DISPLACEMENT_PLATE_RENDER_LAYER
 		var/datum/mob_hud/security/advanced/SA = GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
 		SA.remove_from_hud(M)
 		var/datum/mob_hud/xeno_infection/XI = GLOB.huds[MOB_HUD_XENO_INFECTION]
@@ -837,6 +838,7 @@
 		sound_to_use = 'sound/effects/pred_cloakoff.ogg'
 	playsound(user.loc, sound_to_use, 15, 1, 4)
 	user.alpha = initial(user.alpha)
+	user.plane = initial(user.plane)
 	if(true_cloak)
 		user.invisibility = initial(user.invisibility)
 		user.see_invisible = initial(user.see_invisible)

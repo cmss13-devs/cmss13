@@ -72,7 +72,7 @@
 	..()
 	if (pass_flags)
 		pass_flags.flags_pass = PASS_MOB_THRU|PASS_FLAGS_CRAWLER
-		pass_flags.flags_can_pass_all = PASS_ALL^PASS_OVER_THROW_ITEM
+		pass_flags.flags_can_pass_all = PASS_ALL|PASS_OVER_THROW_ITEM
 
 /mob/living/carbon/xenomorph/larva/corrupted
 	AUTOWIKI_SKIP(TRUE)

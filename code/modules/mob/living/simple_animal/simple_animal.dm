@@ -482,4 +482,21 @@
 		to_chat(user, SPAN_WARNING("You aren't sure how to inject this animal!"))
 	return FALSE
 
+/mob/living/simple_animal/small
+	name = "small animal"
+
+/mob/living/simple_animal/small/initialize_pass_flags(datum/pass_flags_container/pass_flags)
+	..()
+	if(pass_flags)
+		pass_flags.flags_pass = PASS_MOB_THRU|PASS_FLAGS_CRAWLER
+		pass_flags.flags_can_pass_all = PASS_ALL|PASS_OVER_THROW_ITEM
+
+/mob/living/simple_animal/big
+	name = "big animal"
+
+/mob/living/simple_animal/big/initialize_pass_flags(datum/pass_flags_container/pass_flags)
+	..()
+	if(pass_flags)
+		pass_flags.flags_can_pass_all = PASS_OVER_THROW_ITEM
+
 #undef OVERLAY_FIRE_LAYER

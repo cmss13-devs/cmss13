@@ -153,12 +153,12 @@
 	held_item.activate_rail_attachment_verb()
 	return TRUE
 
-/datum/keybinding/human/combat/toggle_frontline_mode
+/datum/keybinding/human/combat/toggle_direct_mode
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")
-	name = "toggle_frontline_mode"
-	full_name = "Toggle Smartgun Frontline Mode"
-	keybind_signal = COMSIG_KB_HUMAN_WEAPON_TOGGLE_FRONTLINE_MODE
+	name = "toggle_direct_mode"
+	full_name = "Toggle Smartgun Direct Mode"
+	keybind_signal = COMSIG_KB_HUMAN_WEAPON_TOGGLE_DIRECT_MODE
 
 /datum/keybinding/human/combat/toggle_iff
 	hotkey_keys = list("Unbound")

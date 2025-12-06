@@ -257,7 +257,7 @@
 		new_xeno = new(affected_mob)
 
 	if(hive)
-		hive.add_xeno(new_xeno)
+		new_xeno.set_hive_and_update(hive.hivenumber)
 		if(!affected_mob.first_xeno && hive.hive_location && !ismonkey(affected_mob))
 			hive.increase_larva_after_burst(is_nested)
 			hive.hive_ui.update_burrowed_larva()

@@ -50,6 +50,7 @@
 	var/hivenumber = XENO_HIVE_NORMAL
 
 	var/stun_duration = 1
+	var/initial_hit_damage = 20
 	var/damage_amount = 20
 	var/fire_level_to_extinguish = 13
 
@@ -57,6 +58,11 @@
 
 /obj/effect/xenomorph/spray/no_stun
 	stun_duration = 0
+
+/obj/effect/xenomorph/spray/no_stun/venator
+	initial_hit_damage = 0
+	damage_amount = 10 //effectivly 4 due to the multipliers
+	time_to_live = 3 SECONDS
 
 /obj/effect/xenomorph/spray/Initialize(mapload, new_cause_data, hive) //Self-deletes
 	. = ..()
@@ -122,7 +128,7 @@
 				if (C.ally_of_hivenumber(hivenumber))
 					continue
 				apply_spray(M)
-				M.apply_armoured_damage(get_xeno_damage_acid(M, damage_amount), ARMOR_BIO, BURN) // Deal extra damage when first placing ourselves down.
+				M.apply_armoured_damage(get_xeno_damage_acid(M, initial_hit_damage), ARMOR_BIO, BURN) // Deal extra damage when first placing ourselves down.
 
 			continue
 
@@ -133,7 +139,7 @@
 		if (istype(loc, /turf/open))
 			var/turf/open/scorch_turf_target = loc
 			if(scorch_turf_target.scorchable)
-				scorch_turf_target.scorch(damage_amount)
+				scorch_turf_target.scorch(initial_hit_damage)
 
 	START_PROCESSING(SSobj, src)
 	addtimer(CALLBACK(src, PROC_REF(die)), time_to_live)

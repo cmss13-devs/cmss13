@@ -406,6 +406,14 @@ Make sure their actual health updates immediately.*/
 			// If the leader exists, and is actually in the leader list.
 			if(leader && (leader in hive.xeno_leader_list))
 				tracking_atom = leader
+		if(TRACKER_MORPHER)
+			tracking_atom = locator.tracking_ref?.resolve()
+		if(TRACKER_CLUSTER)
+			tracking_atom = locator.tracking_ref?.resolve()
+		if(TRACKER_RECOVERY_PYLON)
+			tracking_atom = locator.tracking_ref?.resolve()
+		if(TRACKER_PLASMA_PYLON)
+			tracking_atom = locator.tracking_ref?.resolve()
 		if(TRACKER_TUNNEL)
 			tracking_atom = locator.tracking_ref?.resolve()
 

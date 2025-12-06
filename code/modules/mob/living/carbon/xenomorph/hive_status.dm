@@ -104,6 +104,14 @@
 
 	var/list/tunnels = list()
 
+	var/list/hive_clusters = list()
+
+	var/list/hive_morphers = list()
+
+	var/list/hive_recovery_pylons = list()
+
+	var/list/hive_plasma_pylons = list()
+
 	var/list/allies = list()
 	/// The list of factions this hive is forbidden to ally with.
 	var/list/banned_allies

@@ -39,7 +39,7 @@
 
 	INVOKE_ASYNC(src, PROC_REF(attempt_battlefield_execution), src, execution_target, firing_projectile, user, fired_from)
 
-	return COMPONENT_CANCEL_AMMO_POINT_BLANK
+	return COMPONENT_CANCEL_BATTLEFIELD_EXECUTION
 
 /datum/ammo/bullet/proc/attempt_battlefield_execution(datum/ammo/firing_ammo, mob/living/carbon/human/execution_target, obj/projectile/firing_projectile, mob/living/user, obj/item/weapon/gun/fired_from)
 	user.affected_message(execution_target,

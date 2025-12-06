@@ -90,8 +90,10 @@
 #define CHEM_EFFECT_RESIST_FRACTURE (1<<0)
 #define CHEM_EFFECT_RESIST_NEURO (1<<1)
 #define CHEM_EFFECT_HYPER_THROTTLE (1<<2) //universal understand but not speech
-#define CHEM_EFFECT_ORGAN_STASIS (1<<3) //peri stabiliser
+#define CHEM_EFFECT_ORGAN_BODY_STASIS (1<<3) //peri stabiliser
 #define CHEM_EFFECT_NO_BLEEDING (1<<4) //replacement for quickclot
+#define CHEM_EFFECT_ORGAN_BRAIN_STASIS (1<<5) //Alkysine stabiliser
+#define CHEM_EFFECT_ORGAN_EYE_STASIS (1<<6) //Imidazoline stabiliser
 
 //REACTION FLAGS
 /// reaction that has nothing to it. this is whats making the reaction occur, thus it always must be enabled, or replaced with CHEM_REACTION_ENDOTHERMIC.
@@ -203,7 +205,9 @@
 #define PROPERTY_DISRUPTING "disrupting"
 #define PROPERTY_ANTIPARASITIC "anti-parasitic"
 #define PROPERTY_ELECTROGENETIC "electrogenetic"
-#define PROPERTY_ORGANSTABILIZE "organ-stabilizing"
+#define PROPERTY_ORGANSTABILIZEBODY "body-stabilizing"
+#define PROPERTY_ORGANSTABILIZEBRAIN "brain-stabilizing"
+#define PROPERTY_ORGANSTABILIZEEYE "eye-stabilizing"
 #define PROPERTY_CRITICALSTABILIZE "critical-stabilizing"
 //Rare Combo, made by combining other properties
 #define PROPERTY_DEFIBRILLATING "defibrillating"

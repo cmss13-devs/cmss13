@@ -280,7 +280,7 @@ log transactions
 						T.time = worldtime2text()
 						authenticated_account.transaction_log.Add(T)
 
-						to_chat(usr, SPAN_NOTICE(" [icon2html(src, usr)] Access granted. Welcome user '[authenticated_account.owner_name].'"))
+						to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] Access granted. Welcome user '[authenticated_account.owner_name].'"))
 
 					previous_account_number = tried_account_num
 			if("e_withdrawal")

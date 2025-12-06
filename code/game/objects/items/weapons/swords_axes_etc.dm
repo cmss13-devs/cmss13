@@ -148,16 +148,14 @@
 		icon_state = "eshield[active]"
 		w_class = SIZE_LARGE
 		playsound(user, 'sound/weapons/saberon.ogg', 25, 1)
-		to_chat(user, SPAN_NOTICE(" [src] is now active."))
-		shield_chance = readied_block
+		to_chat(user, SPAN_NOTICE("[src] is now active."))
 
 	else
 		force = 3
 		icon_state = "eshield[active]"
 		w_class = SIZE_TINY
 		playsound(user, 'sound/weapons/saberoff.ogg', 25, 1)
-		to_chat(user, SPAN_NOTICE(" [src] can now be concealed."))
-		shield_chance = SHIELD_CHANCE_NONE
+		to_chat(user, SPAN_NOTICE("[src] can now be concealed."))
 
 	if(istype(user,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = user

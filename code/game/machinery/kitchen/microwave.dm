@@ -97,7 +97,7 @@
 			)
 			if (do_after(user, 2 SECONDS * user.get_skill_duration_multiplier(SKILL_DOMESTIC), INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 				user.visible_message(
-					SPAN_NOTICE("[user]  has cleaned  the microwave."),
+					SPAN_NOTICE("[user] has cleaned  the microwave."),
 					SPAN_NOTICE("You have cleaned the microwave.")
 				)
 				dirty = 0 // It's clean!

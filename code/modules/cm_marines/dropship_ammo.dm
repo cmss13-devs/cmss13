@@ -231,7 +231,7 @@
 /obj/structure/ship_ammo/laser_battery
 	name = "\improper BTU-17/LW Hi-Cap Laser Battery"
 	icon_state = "laser_battery"
-	desc = "A high-capacity laser battery used to power laser beam weapons.  Can be loaded into the LWU-6B Laser Cannon."
+	desc = "A high-capacity laser battery used to power laser beam weapons. Can be loaded into the LWU-6B Laser Cannon."
 	travelling_time = 10
 	ammo_count = 100
 	max_ammo_count = 100

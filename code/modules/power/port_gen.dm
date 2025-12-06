@@ -180,7 +180,7 @@ display floor(lastgen) and phorontank amount
 
 /obj/structure/machinery/power/power_generator/port_gen/pacman/get_examine_text(mob/user)
 	. = ..()
-	. += SPAN_NOTICE(" The generator has [sheets] units of [sheet_name] fuel left, producing [power_gen] per cycle.")
+	. += SPAN_NOTICE("The generator has [sheets] units of [sheet_name] fuel left, producing [power_gen] per cycle.")
 	if(crit_fail) . += SPAN_DANGER("The generator seems to have broken down.")
 
 /obj/structure/machinery/power/power_generator/port_gen/pacman/HasFuel()
@@ -246,9 +246,9 @@ display floor(lastgen) and phorontank amount
 		var/obj/item/stack/addstack = O
 		var/amount = min((max_sheets - sheets), addstack.amount)
 		if(amount < 1)
-			to_chat(user, SPAN_NOTICE(" The [src.name] is full!"))
+			to_chat(user, SPAN_NOTICE("The [src.name] is full!"))
 			return
-		to_chat(user, SPAN_NOTICE(" You add [amount] sheets to the [src.name]."))
+		to_chat(user, SPAN_NOTICE("You add [amount] sheets to the [src.name]."))
 		sheets += amount
 		addstack.use(amount)
 		updateUsrDialog()
@@ -259,10 +259,10 @@ display floor(lastgen) and phorontank amount
 
 			if(!anchored)
 				connect_to_network()
-				to_chat(user, SPAN_NOTICE(" You secure the generator to the floor."))
+				to_chat(user, SPAN_NOTICE("You secure the generator to the floor."))
 			else
 				disconnect_from_network()
-				to_chat(user, SPAN_NOTICE(" You unsecure the generator from the floor."))
+				to_chat(user, SPAN_NOTICE("You unsecure the generator from the floor."))
 
 			playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
 			anchored = !anchored
@@ -271,9 +271,9 @@ display floor(lastgen) and phorontank amount
 			open = !open
 			playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 			if(open)
-				to_chat(user, SPAN_NOTICE(" You open the access panel."))
+				to_chat(user, SPAN_NOTICE("You open the access panel."))
 			else
-				to_chat(user, SPAN_NOTICE(" You close the access panel."))
+				to_chat(user, SPAN_NOTICE("You close the access panel."))
 		else if(HAS_TRAIT(O, TRAIT_TOOL_CROWBAR) && open)
 			var/obj/structure/machinery/constructable_frame/new_frame = new /obj/structure/machinery/constructable_frame(src.loc)
 			for(var/obj/item/I in component_parts)

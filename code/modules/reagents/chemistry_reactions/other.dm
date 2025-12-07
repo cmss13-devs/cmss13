@@ -118,6 +118,13 @@
 	required_reagents = list("hydrogen" = 2, "oxygen" = 1)
 	result_amount = 1
 
+/datum/chemical_reaction/fuel
+	name = "Acetylene (Welding Fuel)"
+	id = "fuel"
+	result = "fuel"
+	required_reagents = list("carbon" = 2, "hydrogen" = 2)
+	result_amount = 1
+
 
 /datum/chemical_reaction/thermite
 	name = "Thermite"

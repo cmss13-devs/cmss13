@@ -642,7 +642,6 @@
 /obj/effect/alien/weeds/node/pylon/hunted
 	hivenumber = XENO_HIVE_HUNTED
 
-
 /obj/effect/alien/weeds/node/pylon/cluster
 	spread_on_semiweedable = TRUE
 

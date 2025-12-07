@@ -239,7 +239,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_cmo, list(
 
 		list("UNIFORM (CHOOSE 1)", 0, null, null, null),
 		list("Chief Medical Officer's Uniform", 0, /obj/item/clothing/under/rank/cmo, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_RECOMMENDED),
-		list("Chief Medical Officer's Scrubs", 0, /obj/item/clothing/under/rank/medical/cmo, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_RECOMMENDED),
+		list("Chief Medical Officer's Scrubs", 0, /obj/item/clothing/under/rank/cmo/scrubs, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_RECOMMENDED),
 		list("Doctor's Uniform", 0, /obj/item/clothing/under/rank/medical, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
 		list("Doctor's Scrubs", 0, /obj/item/clothing/under/rank/medical/blue, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
 		list("Surgeon's Scrubs", 0, /obj/item/clothing/under/rank/medical/green, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
@@ -269,7 +269,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_cmo, list(
 
 		list("HEADWEAR (CHOOSE 1)", 0, null, null, null),
 		list("Chief Medical Officer's Peaked Cap", 0, /obj/item/clothing/head/cmo, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_RECOMMENDED),
-		list("Chief Medical Officer's Surgical Cap", 0, /obj/item/clothing/head/surgery/cmo, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_RECOMMENDED),
+		list("Chief Medical Officer's Surgical Cap", 0, /obj/item/clothing/head/cmo/surgery, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_RECOMMENDED),
 		list("Doctor's Surgical Cap", 0, /obj/item/clothing/head/surgery/blue, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
 		list("Surgeon's Surgical Cap", 0, /obj/item/clothing/head/surgery/green, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
 		list("Pharmaceutical Physician's Surgical Cap", 0, /obj/item/clothing/head/surgery/pharmacist, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),

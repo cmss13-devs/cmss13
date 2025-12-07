@@ -303,7 +303,7 @@
 	flags_jumpsuit = FALSE
 	item_state_slots = list(WEAR_BODY = "scrubspharm")
 
-/obj/item/clothing/under/rank/medical/cmo
+/obj/item/clothing/under/rank/cmo/scrubs
 	name = "chief medical officer's medical scrubs"
 	desc = "They're made of a special fiber that provides minor protection against biohazards. These are jade green and adorned with peach stripes that denote the wearer is the Chief Medical Officer."
 	icon_state = "scrubscmo"

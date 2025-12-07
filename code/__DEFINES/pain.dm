@@ -18,6 +18,7 @@
 
 // Pain amount supplied by the action
 #define PAIN_BONE_BREAK 25
+#define PAIN_ESCHAR 10
 #define PAIN_BONE_BREAK_SPLINTED 15
 #define PAIN_DELIMB 40
 #define PAIN_ORGAN_DAMAGE_MULTIPLIER 2

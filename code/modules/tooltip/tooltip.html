@@ -155,7 +155,7 @@
 				//icon-y
 				var iconY = parseInt(parameters["icon-y"]);
 				//screen-loc
-				var screenLoc = parameters["screen-loc"];
+				var screenLoc = parameters["screen-loc"].replace(/^[a-zA-Z]+:/, '');
 				screenLoc = screenLoc.split(',');
 				if (screenLoc.length < 2) {return false;}
 				var left = screenLoc[0];
@@ -243,7 +243,7 @@
 				}
 
 				if (tooltip.special == 'offset_right') {
-					posX += 508;
+					posX += 128;
 				}
 
 				//Actually size, move and show the tooltip box

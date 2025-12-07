@@ -837,7 +837,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	action_hud.update_hud(user)
 	var/atom/movable/screen/gun/eject_magazine/eject_mag_hud = user?.hud_used.eject_mag
 	eject_mag_hud.update_hud(user)
-	var/atom/movable/screen/gun_ammo_counter/counter = user?.hud_used?.gun_ammo_counter
+	var/atom/movable/screen/gun_ammo_counter/counter = user?.hud_used.gun_ammo_counter
 	if(counter)
 		counter.remove_hud(user)
 

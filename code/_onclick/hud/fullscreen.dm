@@ -260,7 +260,7 @@
 	icon = 'icons/mob/hud/cm_hud/cmhud_marine_background.dmi'
 
 /atom/movable/screen/border
-	icon = 'icons/mob/hud/cm_hud/cmhud_border.dmi'
+	icon = 'icons/mob/hud/cm_hud/cm_hud_border.dmi'
 	screen_loc = "1, 1"
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	plane = FULLSCREEN_PLANE

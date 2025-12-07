@@ -266,6 +266,15 @@
 			wielded_item.unwield(src) //Get rid of it.
 	if(wielded_item && wielded_item.zoom) //Adding this here while we're at it
 		wielded_item.zoom(src)
+	var/atom/movable/screen/gun/toggle_firemode/firemode_hud = hud_used.toggle_burst
+	firemode_hud.update_hud()
+	var/atom/movable/screen/gun/attachment/attachment_hud = hud_used.use_attachment
+	attachment_hud.update_hud()
+	var/atom/movable/screen/gun/attachment/action_hud = hud_used.unique_action
+	action_hud.update_hud()
+	var/atom/movable/screen/gun/eject_magazine/eject_mag_hud = hud_used.eject_mag
+	eject_mag_hud.update_hud()
+	var/atom/movable/screen/gun_ammo_counter/counter = hud_used.gun_ammo_counter
 	..()
 	if(hud_used.l_hand_hud_object && hud_used.r_hand_hud_object)
 		if(hand) //This being 1 means the left hand is in use

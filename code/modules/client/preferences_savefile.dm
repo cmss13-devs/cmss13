@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN 8
-#define SAVEFILE_VERSION_MAX 32
+#define SAVEFILE_VERSION_MAX 33
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -223,6 +223,12 @@
 		pref_toggles |= TOGGLE_LEADERSHIP_SPOKEN_ORDERS // Enables it by default for new saves
 		S["toggle_prefs"] << pref_toggles
 
+	if(savefile_version < 33)
+		var/pref_toggles
+		S["toggle_prefs"] >> pref_toggles
+		pref_toggles |= TOGGLE_COCKING_TO_HAND // enabled by default for new saves
+		S["toggle_prefs"] << pref_toggles
+
 	savefile_version = SAVEFILE_VERSION_MAX
 	return 1
 
@@ -337,6 +343,7 @@
 	S["pred_armor_mat"] >> predator_armor_material
 	S["pred_greave_mat"] >> predator_greave_material
 	S["pred_caster_mat"] >> predator_caster_material
+	S["pred_bracer_mat"] >> predator_bracer_material
 	S["pred_cape_color"] >> predator_cape_color
 	S["pred_h_style"] >> predator_h_style
 	S["pred_skin_color"] >> predator_skin_color
@@ -467,7 +474,7 @@
 
 	synthetic_name = synthetic_name ? sanitize_text(synthetic_name, initial(synthetic_name)) : initial(synthetic_name)
 	synthetic_type = sanitize_inlist(synthetic_type, PLAYER_SYNTHS, initial(synthetic_type))
-	synth_specialisation = sanitize_inlist(synth_specialisation, list("Generalised", "Engineering", "Medical", "Intel", "Command"), initial(synth_specialisation))
+	synth_specialisation = sanitize_inlist(synth_specialisation, list("Generalised", "Engineering", "Medical", "Intel", "Military Police", "Command"), initial(synth_specialisation))
 	predator_name = predator_name ? sanitize_text(predator_name, initial(predator_name)) : initial(predator_name)
 	predator_gender = sanitize_text(predator_gender, initial(predator_gender))
 	predator_age = sanitize_integer(predator_age, 100, 10000, initial(predator_age))
@@ -481,7 +488,8 @@
 	predator_mask_material = sanitize_inlist(predator_mask_material, PRED_MATERIALS, initial(predator_mask_material))
 	predator_armor_material = sanitize_inlist(predator_armor_material, PRED_MATERIALS, initial(predator_armor_material))
 	predator_greave_material = sanitize_inlist(predator_greave_material, PRED_MATERIALS, initial(predator_greave_material))
-	predator_caster_material = sanitize_inlist(predator_caster_material, PRED_MATERIALS + "retro", initial(predator_caster_material))
+	predator_caster_material = sanitize_inlist(predator_caster_material, PRED_RETRO_MATERIALS, initial(predator_caster_material))
+	predator_bracer_material = sanitize_inlist(predator_bracer_material, PRED_RETRO_MATERIALS, initial(predator_bracer_material))
 	predator_cape_color = sanitize_hexcolor(predator_cape_color, initial(predator_cape_color))
 	predator_h_style = sanitize_inlist(predator_h_style, GLOB.yautja_hair_styles_list, initial(predator_h_style))
 	predator_skin_color = sanitize_inlist(predator_skin_color, PRED_SKIN_COLOR, initial(predator_skin_color))
@@ -601,6 +609,7 @@
 	S["pred_armor_mat"] << predator_armor_material
 	S["pred_greave_mat"] << predator_greave_material
 	S["pred_caster_mat"] << predator_caster_material
+	S["pred_bracer_mat"] << predator_bracer_material
 	S["pred_cape_color"] << predator_cape_color
 	S["pred_h_style"] << predator_h_style
 	S["pred_skin_color"] << predator_skin_color

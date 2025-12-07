@@ -13,7 +13,7 @@
 
 
 
-	GLOB.data_core.manifest_modify(real_name, WEAKREF(src), null, null, "*Deceased*")
+	GLOB.data_core.manifest_modify(real_name, WEAKREF(src), null, null, "Deceased")
 
 	if(is_a_synth)
 		spawn_gibs()
@@ -50,7 +50,7 @@
 
 	if(!gibbed)
 		if(HAS_TRAIT(src, TRAIT_HARDCORE) || MODE_HAS_MODIFIER(/datum/gamemode_modifier/permadeath))
-			if(!(species.flags & IS_SYNTHETIC)) // Synths wont perma
+			if(!(species.flags & IS_SYNTHETIC)) // Synths won't perma
 				status_flags |= PERMANENTLY_DEAD
 		if(HAS_TRAIT(src, TRAIT_INTENT_EYES)) //their eyes need to be 'offline'
 			r_eyes = 0

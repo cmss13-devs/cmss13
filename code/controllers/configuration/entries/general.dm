@@ -115,6 +115,8 @@ Administrative related.
 
 /datum/config_entry/flag/log_overwatch
 
+/datum/config_entry/flag/log_garble
+
 /datum/config_entry/flag/log_interact
 
 /datum/config_entry/flag/log_idmod
@@ -158,6 +160,9 @@ Administrative related.
 
 /datum/config_entry/string/ooc_color_maint
 	config_entry_value = "#00ffff"
+
+/datum/config_entry/string/ooc_color_subs
+	config_entry_value = "#8956FB"
 
 /datum/config_entry/string/ooc_color_default
 	config_entry_value = "#b82e00"
@@ -731,3 +736,6 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 
 /datum/config_entry/string/sentry_dsn
 	protection = CONFIG_ENTRY_HIDDEN
+
+/datum/config_entry/str_list/ignored_cids
+	protection = CONFIG_ENTRY_LOCKED

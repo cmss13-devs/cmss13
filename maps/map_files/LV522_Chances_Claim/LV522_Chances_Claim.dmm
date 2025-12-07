@@ -860,10 +860,6 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/lv522/outdoors/colony_streets/containers)
-"adn" = (
-/obj/structure/machinery/cryo_cell,
-/turf/open/floor/strata/white_cyan1/east,
-/area/lv522/indoors/a_block/medical/glass)
 "adG" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/reagent_container/food/condiment/saltshaker,
@@ -37270,6 +37266,10 @@
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/landing_zone_1)
+"tue" = (
+/obj/structure/machinery/cryo_cell,
+/turf/open/floor/strata/white_cyan1/east,
+/area/lv522/indoors/a_block/medical/glass)
 "tum" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison,
@@ -75988,7 +75988,7 @@ rtv
 jeI
 krP
 jbO
-adn
+tue
 tTK
 dCJ
 sKJ
@@ -76606,7 +76606,7 @@ wpg
 puu
 bkf
 qsd
-adn
+tue
 tTK
 dCJ
 rnB

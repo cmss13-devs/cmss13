@@ -3005,7 +3005,7 @@
 /area/varadero/interior_protected/maintenance/south)
 "chU" = (
 /obj/structure/shuttle/engine/propulsion/burst{
-	dir = 8
+	dir = 4
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/vessel)

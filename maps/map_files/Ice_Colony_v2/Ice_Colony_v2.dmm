@@ -851,6 +851,13 @@
 "adz" = (
 /turf/open/space/basic,
 /area/ice_colony/underground/hallway/south_east)
+"adA" = (
+/obj/structure/machinery/light/double{
+	dir = 1;
+	pixel_y = 9
+	},
+/turf/open/floor/dark2,
+/area/ice_colony/underground/hallway/north_west)
 "adB" = (
 /obj/effect/landmark/hunter_secondary,
 /turf/open/auto_turf/snow/layer2,
@@ -1316,6 +1323,13 @@
 "afg" = (
 /turf/open/floor/darkyellow2/northwest,
 /area/ice_colony/surface/engineering)
+"afh" = (
+/obj/structure/machinery/light/double{
+	dir = 4;
+	pixel_y = -5
+	},
+/turf/open/floor/dark2,
+/area/ice_colony/underground/hallway/north_west)
 "afi" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/stack/medical/bruise_pack,
@@ -1797,6 +1811,10 @@
 /obj/structure/machinery/power/apc/no_power/east,
 /turf/open/floor/darkyellow2/east,
 /area/ice_colony/surface/engineering/generator)
+"agN" = (
+/obj/structure/pipes/standard/manifold/hidden/green,
+/turf/open/floor/plating,
+/area/ice_colony/underground/maintenance/research)
 "agO" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/auto_turf/snow/layer2,
@@ -1935,6 +1953,13 @@
 /obj/effect/landmark/crap_item,
 /turf/open/floor/darkyellow2/southeast,
 /area/ice_colony/surface/engineering/generator)
+"ahr" = (
+/obj/structure/machinery/light/double{
+	dir = 4;
+	pixel_y = -5
+	},
+/turf/open/floor/shiva/greencorners/east,
+/area/ice_colony/underground/hallway/north_west)
 "ahA" = (
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/valley/west)
@@ -12180,6 +12205,10 @@
 /area/ice_colony/exterior/underground/caves)
 "aSX" = (
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -5
+	},
 /turf/open/floor/shiva/green,
 /area/ice_colony/underground/hallway/north_west)
 "aSY" = (
@@ -12865,6 +12894,8 @@
 "aVo" = (
 /obj/structure/surface/rack,
 /obj/item/circuitboard/airalarm,
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/dark2,
 /area/ice_colony/underground/engineering)
 "aVp" = (
@@ -18068,13 +18099,6 @@
 	},
 /turf/open/floor/plating/icefloor/warnplate/north,
 /area/ice_colony/surface/requesitions)
-"boo" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
-	pixel_y = -5
-	},
-/turf/open/floor/shiva/green/west,
-/area/ice_colony/underground/hallway/north_west)
 "bop" = (
 /turf/open/floor/shiva/greencorners,
 /area/ice_colony/underground/hallway/north_west)
@@ -18462,15 +18486,6 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
 	name = "\improper Underground Main Hallway"
-	},
-/turf/open/floor/dark2,
-/area/ice_colony/underground/hallway/north_west)
-"bpM" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/structure/disposalpipe/junction{
-	dir = 8
 	},
 /turf/open/floor/dark2,
 /area/ice_colony/underground/hallway/north_west)
@@ -28392,6 +28407,7 @@
 /area/ice_colony/surface/hangar/alpha)
 "gex" = (
 /obj/item/device/flashlight/lamp/tripod,
+/obj/structure/machinery/light/double,
 /turf/open/floor/shiva/green/west,
 /area/ice_colony/underground/hallway/north_west)
 "giH" = (
@@ -28426,13 +28442,6 @@
 	pixel_y = -4
 	},
 /turf/open/floor/shiva/floor3,
-/area/ice_colony/underground/hallway/north_west)
-"gVu" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
-	pixel_y = 9
-	},
-/turf/open/floor/shiva/green/north,
 /area/ice_colony/underground/hallway/north_west)
 "hfj" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -28490,10 +28499,6 @@
 "hXr" = (
 /obj/item/storage/firstaid/adv,
 /turf/open/floor/shiva/green/north,
-/area/ice_colony/underground/hallway/north_west)
-"ijE" = (
-/obj/structure/machinery/light/double,
-/turf/open/floor/shiva/green,
 /area/ice_colony/underground/hallway/north_west)
 "ilp" = (
 /obj/structure/machinery/door/airlock/almayer/secure/colony{
@@ -28920,10 +28925,6 @@
 /turf/open/floor/plating,
 /area/ice_colony/exterior/surface/landing_pad)
 "sJx" = (
-/obj/structure/machinery/alarm{
-	dir = 4;
-	pixel_x = -24
-	},
 /obj/item/tool/weldingtool{
 	pixel_x = 5;
 	pixel_y = 4
@@ -38259,7 +38260,7 @@ bkw
 bkw
 bkw
 blL
-bls
+agN
 bkJ
 bmk
 bmU
@@ -46161,7 +46162,7 @@ bkr
 bkr
 blu
 bkr
-bkr
+afh
 bkr
 bkr
 bpD
@@ -46433,7 +46434,7 @@ aZG
 hwC
 aZG
 gwO
-boo
+aeD
 sJx
 uVf
 aeE
@@ -46443,8 +46444,8 @@ aeD
 aeD
 bnu
 gex
-bkW
-bkr
+bkt
+adA
 bkr
 bpD
 bqq
@@ -47278,7 +47279,7 @@ aZG
 aZG
 nLo
 aZd
-gVu
+bki
 bkp
 qEB
 cKV
@@ -47289,7 +47290,7 @@ aeD
 bkW
 ahB
 bkp
-ijE
+boE
 bkr
 bkr
 bpD
@@ -48688,7 +48689,7 @@ sii
 sii
 nLo
 aZd
-gVu
+bki
 bkp
 qEB
 adH
@@ -48699,7 +48700,7 @@ boj
 aeF
 qEB
 bkp
-ijE
+boE
 bkr
 bkr
 bpD
@@ -49538,7 +49539,7 @@ adH
 boj
 cIH
 boj
-wJF
+ahr
 bop
 boj
 bok
@@ -49828,9 +49829,9 @@ bkE
 bdf
 bkE
 bkE
-boF
-boF
-bpM
+bkr
+bkr
+bMb
 bkr
 brd
 brK
@@ -50942,7 +50943,7 @@ sii
 sii
 sii
 sii
-abk
+nLo
 aYX
 aYX
 bhD
@@ -51224,7 +51225,7 @@ sii
 sii
 sii
 sii
-abk
+nLo
 aYX
 aYX
 bgH
@@ -51506,7 +51507,7 @@ sii
 sii
 sii
 sii
-abk
+nLo
 aYX
 aYX
 bgH

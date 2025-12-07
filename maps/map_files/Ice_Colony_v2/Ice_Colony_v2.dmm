@@ -848,6 +848,9 @@
 /obj/structure/machinery/power/apc/no_power/east,
 /turf/open/floor/darkyellow2/east,
 /area/ice_colony/surface/engineering/electric)
+"adz" = (
+/turf/open/space/basic,
+/area/ice_colony/underground/hallway/south_east)
 "adB" = (
 /obj/effect/landmark/hunter_secondary,
 /turf/open/auto_turf/snow/layer2,
@@ -53203,7 +53206,7 @@ bkI
 bkX
 bkZ
 bkX
-blY
+bkZ
 bmF
 bkZ
 bkX
@@ -61364,7 +61367,7 @@ sii
 sii
 sii
 sii
-sii
+adz
 sii
 sii
 sii
@@ -62785,9 +62788,9 @@ aWc
 aWc
 aWc
 aWc
-box
-box
-box
+bpu
+bpu
+bpu
 bnk
 bnk
 bnk

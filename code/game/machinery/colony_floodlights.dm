@@ -178,6 +178,7 @@ GLOBAL_LIST_INIT(all_breaker_switches, list())
 	layer = ABOVE_XENO_LAYER
 	unslashable = TRUE
 	unacidable = TRUE
+	explo_proof = TRUE
 	use_power = USE_POWER_NONE //It's the switch that uses the actual power, not the lights
 	needs_power = FALSE
 	is_on = FALSE //Whether the floodlight is switched to on or off. Does not necessarily mean it emits light.

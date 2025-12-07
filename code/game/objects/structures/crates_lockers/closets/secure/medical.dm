@@ -92,7 +92,7 @@
 	new /obj/item/clothing/shoes/white(src)
 	new /obj/item/clothing/under/rank/cmo/scrubs(src)
 	new /obj/item/clothing/under/rank/cmo(src)
-	new /obj/item/clothing/head/cmo/surgery(src)
+	new /obj/item/clothing/head/surgery/cmo(src)
 	new /obj/item/clothing/head/cmo(src)
 	new /obj/item/clothing/suit/storage/labcoat/cmo(src)
 	new /obj/item/clothing/mask/breath(src)

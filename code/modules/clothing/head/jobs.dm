@@ -123,7 +123,7 @@
 	desc = "A cap pharmaceutical physicians wear during to protect their scalp from chemical mishaps. It also keeps their hair from tickling your internal organs while they operate. It's white with an orange rim."
 	icon_state = "surgcap_pharm"
 
-/obj/item/clothing/head/cmo/surgery
+/obj/item/clothing/head/surgery/cmo
 	name = "chief medical officer's surgical cap"
 	desc = "A striped cap the Chief Medical Officer wears during operations. Keeps their hair from tickling your internal organs. It's green with peach stripes to match the stripes on their lab coat."
 	icon_state = "surgcap_cmo"

@@ -157,7 +157,7 @@
 
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), new_xeno.client, 'sound/misc/hunt_begin.ogg'), 10 SECONDS)
 	show_blurb(new_xeno, 15, message, null, "center", "center", COLOR_RED, null, null, 1)
-	new /obj/effect/alien/weeds/node/hunted(spawn_loc)
+	new /obj/effect/alien/weeds/node/pylon/hunted(spawn_loc)
 
 /datum/emergency_call/pred/xeno/med
 	name = "Hunting Grounds - Xenos - Medium"

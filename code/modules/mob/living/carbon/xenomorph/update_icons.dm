@@ -51,6 +51,7 @@
 		walking_state_cache[mutation_caste_state] = cache_walking_state
 	has_walking_icon_state = walking_state_cache[mutation_caste_state]
 	update_icons()
+	color = HAS_TRAIT(src, TRAIT_NO_COLOR) ? null : hive.color
 
 /mob/living/carbon/xenomorph/update_icons()
 	if(!caste)

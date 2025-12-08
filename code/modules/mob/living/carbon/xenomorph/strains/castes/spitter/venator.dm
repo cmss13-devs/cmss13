@@ -92,7 +92,7 @@
 
 /datum/action/xeno_action/activable/xeno_spit/bombard/venetor/acid_blob
 	name = "acid blob"
-	action_icon_state = "acid_blob"
+	action_icon_state = "acid_glob"
 	plasma_cost = 65
 	ammo = /datum/ammo/xeno/acid/venator_acid_blob
 

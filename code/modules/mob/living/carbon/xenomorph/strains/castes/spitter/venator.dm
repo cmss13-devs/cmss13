@@ -86,7 +86,7 @@
 
 /datum/action/xeno_action/activable/xeno_spit/bombard/venetor/corosive_spit
 	name = "corosive spit"
-	action_icon_state = "balls"
+	action_icon_state = "xeno_spit"
 	plasma_cost = 45
 	ammo = /datum/ammo/xeno/acid/spatter/venator_corrosive_spit
 
@@ -129,7 +129,7 @@
 	var/datum/behavior_delegate/spitter_venator/delegate = xeno.behavior_delegate
 
 
-	button.overlays.Cut()
+	button.overlays.Cut(2,0)
 	if(!delegate.acid_stored)
 		return
 	button.overlays += image(icon_file, button, "charge_[delegate.acid_stored]")

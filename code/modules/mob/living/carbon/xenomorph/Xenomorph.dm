@@ -367,8 +367,6 @@
 	var/creation_time = 0
 
 /mob/living/carbon/xenomorph/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
-	if(!damage_state_prefix)
-		damage_state_prefix = caste.caste_type
 	if(old_xeno && old_xeno.hivenumber)
 		src.hivenumber = old_xeno.hivenumber
 	else if(hivenumber)
@@ -430,6 +428,8 @@
 	//Set caste stuff
 	if(caste_type && GLOB.xeno_datum_list[caste_type])
 		caste = GLOB.xeno_datum_list[caste_type]
+		if(!damage_state_prefix)
+			damage_state_prefix = caste.caste_type
 
 		//Fire immunity signals
 		if (HAS_FLAG(caste.fire_immunity, FIRE_IMMUNITY_NO_DAMAGE | FIRE_IMMUNITY_NO_IGNITE | FIRE_IMMUNITY_XENO_FRENZY))

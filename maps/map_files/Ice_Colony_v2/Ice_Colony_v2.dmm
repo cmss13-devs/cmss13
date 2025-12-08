@@ -17485,6 +17485,12 @@
 /obj/structure/platform_decoration/stone/strata/north,
 /turf/open_space,
 /area/ice_colony/exterior/surface/valley/west)
+"bie" = (
+/obj/structure/platform/stone/strata,
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/east,
+/turf/open_space,
+/area/ice_colony/exterior/surface/valley/west)
 "bif" = (
 /obj/structure/sign/safety/high_voltage,
 /turf/closed/wall/r_wall,
@@ -101998,7 +102004,7 @@ alJ
 alJ
 byN
 byN
-bhW
+bie
 ahp
 alJ
 bhW

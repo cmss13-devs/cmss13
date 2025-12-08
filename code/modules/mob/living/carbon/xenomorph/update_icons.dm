@@ -340,15 +340,15 @@
 			new_icon_state = "none"
 		else if(body_position == LYING_DOWN)
 			if(!HAS_TRAIT(src, TRAIT_INCAPACITATED) && !HAS_TRAIT(src, TRAIT_FLOORED))
-				new_icon_state = "[caste.caste_type]_rest_[health_threshold]"
+				new_icon_state = "[damage_state_prefix]_rest_[health_threshold]"
 			else
-				new_icon_state = "[caste.caste_type]_downed_[health_threshold]"
+				new_icon_state = "[damage_state_prefix]_downed_[health_threshold]"
 		else if(!handle_special_state())
-			new_icon_state = "[caste.caste_type]_walk_[health_threshold]"
+			new_icon_state = "[damage_state_prefix]_walk_[health_threshold]"
 		else
 			new_icon_state = handle_special_wound_states(health_threshold)
 	if(organ_removed)
-		new_icon_state = "[caste.caste_type]_dissection"
+		new_icon_state = "[damage_state_prefix]_dissection"
 
 	if(new_icon_state != wound_icon_holder.icon_state)
 		wound_icon_holder.icon_state = new_icon_state

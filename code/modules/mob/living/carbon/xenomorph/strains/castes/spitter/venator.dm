@@ -30,6 +30,7 @@
 	spitter.melee_damage_upper = XENO_DAMAGE_TIER_2
 	spitter.plasma_gain = XENO_PLASMA_GAIN_TIER_8
 	spitter.recalculate_everything()
+	spitter.damage_state_prefix = icon_state_prefix
 
 /datum/action/xeno_action/activable/xeno_spit/bombard/venetor
 	xeno_cooldown = 11 SECONDS

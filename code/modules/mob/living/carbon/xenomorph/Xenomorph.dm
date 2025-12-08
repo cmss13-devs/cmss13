@@ -262,6 +262,9 @@
 	var/obj/item/skull/skull = /obj/item/skull
 	var/obj/item/pelt/pelt = /obj/item/pelt
 
+	///For custom strain damage states
+	var/damage_state_prefix
+
 
 	//////////////////////////////////////////////////////////////////
 	//
@@ -364,6 +367,8 @@
 	var/creation_time = 0
 
 /mob/living/carbon/xenomorph/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
+	if(!damage_state_prefix)
+		damage_state_prefix = caste.caste_type
 	if(old_xeno && old_xeno.hivenumber)
 		src.hivenumber = old_xeno.hivenumber
 	else if(hivenumber)

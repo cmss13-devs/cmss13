@@ -17446,6 +17446,10 @@
 "bhV" = (
 /turf/open/floor/plating/icefloor/warnplate/southwest,
 /area/ice_colony/underground/hangar)
+"bhW" = (
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/plating,
+/area/ice_colony/underground/maintenance/north)
 "bhX" = (
 /obj/structure/platform_decoration/stone/strata,
 /obj/structure/platform_decoration/stone/strata/west,
@@ -53755,7 +53759,7 @@ sii
 sii
 sii
 nLo
-bgH
+bhW
 bgH
 alX
 bkI
@@ -67897,7 +67901,7 @@ bCg
 bCg
 bEe
 bCI
-bFH
+bJK
 bmU
 bmU
 bwi
@@ -68179,8 +68183,8 @@ bCI
 bCI
 bEe
 bCI
-bFH
-bFH
+bJK
+bJK
 bCg
 bCg
 bCg

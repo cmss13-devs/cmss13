@@ -2,6 +2,7 @@
 	name = SPITTER_VENATOR
 	description = " fill in later"
 	flavor_description = " fill in later"
+	icon_state_prefix = "Venator"
 	actions_to_remove = list(
 		/datum/action/xeno_action/activable/tail_stab/spitter,
 		/datum/action/xeno_action/activable/xeno_spit/spitter,
@@ -85,22 +86,26 @@
 
 /datum/action/xeno_action/activable/xeno_spit/bombard/venetor/corosive_spit
 	name = "corosive spit"
+	action_icon_state = "balls"
 	plasma_cost = 45
 	ammo = /datum/ammo/xeno/acid/spatter/venator_corrosive_spit
 
 /datum/action/xeno_action/activable/xeno_spit/bombard/venetor/acid_blob
 	name = "acid blob"
+	action_icon_state = "acid_blob"
 	plasma_cost = 65
 	ammo = /datum/ammo/xeno/acid/venator_acid_blob
 
 /datum/action/xeno_action/activable/xeno_spit/bombard/venetor/enzymatic_breath
 	name = "enzymatic breath"
+	action_icon_state = "breath"
 	plasma_cost = 55
 	ammo = /datum/ammo/xeno/acid/spatter/venator_enzymatic_breath
 
 
 /datum/action/xeno_action/onclick/store_acid
 	name = "store acid"
+	action_icon_state = "store_acid_base"
 	xeno_cooldown = 5 SECONDS
 	plasma_cost = 150
 
@@ -115,6 +120,21 @@
 	var/datum/behavior_delegate/spitter_venator/delegate = xeno.behavior_delegate
 	if(delegate.acid_stored >= delegate.max_acid_stored)
 		return FALSE
+
+/datum/action/xeno_action/onclick/store_acid/update_button_icon()
+	. = ..()
+	if(!button || !owner)
+		return
+	var/mob/living/carbon/xenomorph/xeno = owner
+	var/datum/behavior_delegate/spitter_venator/delegate = xeno.behavior_delegate
+
+
+	button.overlays.Cut()
+	if(!delegate.acid_stored)
+		return
+	button.overlays += image(icon_file, button, "charge_[delegate.acid_stored]")
+
+
 
 /datum/action/xeno_action/onclick/store_acid/use_ability(atom/target)
 	. = ..()

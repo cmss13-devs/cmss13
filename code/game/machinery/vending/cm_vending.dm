@@ -1465,11 +1465,6 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 				var/obj/item/device/radio/headset/almayer/marine/self_setting/new_headset = new_item
 				new_headset.self_set()
 
-	if(vend_flags & VEND_TO_HAND)
-		if(user.client?.prefs && (user.client?.prefs?.toggle_prefs & TOGGLE_VEND_ITEM_TO_HAND))
-			if(Adjacent(user))
-				user.put_in_any_hand_if_possible(new_item, disable_warning = TRUE)
-
 
 	new_item.post_vendor_spawn_hook(user)
 

@@ -3392,6 +3392,28 @@
 "amt" = (
 /turf/open/floor/dark2,
 /area/ice_colony/underground/maintenance/north)
+"amu" = (
+/obj/structure/surface/rack,
+/obj/item/circuitboard/airalarm,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 6
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/dark2,
+/area/ice_colony/underground/engineering)
+"amv" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 9
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/dark2,
+/area/ice_colony/underground/engineering)
 "amw" = (
 /obj/item/ammo_magazine/shotgun/incendiary,
 /obj/effect/landmark/corpsespawner/russian,
@@ -3540,11 +3562,12 @@
 	},
 /turf/open/auto_turf/snow/layer2,
 /area/ice_colony/exterior/surface/clearing/north)
-"amV" = (
-/obj/structure/disposalpipe/segment,
-/obj/structure/pipes/standard/manifold/hidden/green{
-	dir = 4
+"amU" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper Underground Power Substation"
 	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/dark2,
 /area/ice_colony/underground/engineering)
 "amW" = (
@@ -4599,11 +4622,9 @@
 /area/ice_colony/surface/requesitions)
 "aqx" = (
 /obj/structure/stairs/multiz/down,
-/obj/structure/stairs/multiz/down,
 /turf/open/floor/darkgreen2/north,
 /area/ice_colony/surface/dorms)
 "aqy" = (
-/obj/structure/machinery/floodlight,
 /obj/structure/machinery/floodlight,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/requesitions)
@@ -7532,6 +7553,13 @@
 	},
 /turf/open/floor/dark2,
 /area/ice_colony/surface/hangar/alpha)
+"aAB" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 10
+	},
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/dark2,
+/area/ice_colony/underground/engineering)
 "aAC" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor/dark2,
@@ -10169,6 +10197,10 @@
 /obj/effect/landmark/hunter_secondary,
 /turf/open/ice,
 /area/ice_colony/exterior/surface/valley/southeast)
+"aJl" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/dark2,
+/area/ice_colony/underground/engineering)
 "aJm" = (
 /obj/effect/landmark/crap_item,
 /obj/structure/machinery/power/apc/no_power/north,
@@ -10205,6 +10237,16 @@
 	},
 /turf/open/floor/dark2,
 /area/ice_colony/surface/hangar/checkpoint)
+"aJs" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/dark2,
+/area/ice_colony/underground/engineering)
 "aJt" = (
 /obj/item/stack/rods,
 /turf/open/floor/dark2,
@@ -10236,6 +10278,9 @@
 	},
 /turf/open/ice,
 /area/ice_colony/exterior/surface/valley/southwest)
+"aJz" = (
+/turf/closed/wall/r_wall/unmeltable,
+/area/ice_colony/surface/excavation)
 "aJB" = (
 /obj/item/stack/rods,
 /turf/open/shuttle/elevator/grating,
@@ -13098,9 +13143,6 @@
 /turf/open/floor/darkyellow2/east,
 /area/ice_colony/underground/engineering)
 "aSV" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	name = "\improper Colony Mining Station"
 	},
@@ -14761,11 +14803,6 @@
 "aYS" = (
 /turf/closed/ice/straight,
 /area/ice_colony/exterior/surface/landing_pad_external)
-"aYT" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/disposalpipe/segment,
-/turf/closed/wall,
-/area/ice_colony/underground/engineering)
 "aYV" = (
 /turf/closed/ice/straight,
 /area/ice_colony/underground/engineering)
@@ -15181,10 +15218,6 @@
 "baG" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
 	},
 /turf/open/floor/dark2,
 /area/ice_colony/underground/engineering)
@@ -18220,7 +18253,10 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/closed/wall/r_wall,
+/obj/structure/machinery/door/airlock/almayer/secure/colony{
+	name = "Underground Morgue"
+	},
+/turf/open/floor/wood,
 /area/ice_colony/underground/crew/chapel)
 "bnu" = (
 /obj/item/stack/barbed_wire,
@@ -22651,7 +22687,6 @@
 /area/ice_colony/underground/research/storage)
 "bEr" = (
 /obj/structure/stairs/multiz/down,
-/obj/structure/stairs/multiz/down,
 /turf/open/floor/darkgreen2/northwest,
 /area/ice_colony/surface/dorms)
 "bEs" = (
@@ -22667,7 +22702,6 @@
 /turf/open/floor/shiva/north,
 /area/ice_colony/underground/research/storage)
 "bEu" = (
-/obj/structure/stairs/multiz/down,
 /obj/structure/stairs/multiz/down,
 /turf/open/floor/darkgreen2/northeast,
 /area/ice_colony/surface/dorms)
@@ -63724,11 +63758,11 @@ box
 bbv
 box
 baG
-aSr
-amV
-aSr
-aYT
-aVo
+boQ
+aRG
+brq
+aYM
+amu
 aVo
 azG
 aUp
@@ -64005,12 +64039,12 @@ bbQ
 box
 aAT
 box
-bqh
-box
-box
-box
-aTC
-box
+aJs
+aJl
+aJl
+aAB
+amU
+amv
 box
 box
 bqh
@@ -121069,7 +121103,7 @@ ayl
 ayQ
 ayQ
 ayC
-bci
+aJz
 bcI
 bcL
 beb

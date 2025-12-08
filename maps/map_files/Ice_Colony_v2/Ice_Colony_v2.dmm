@@ -3129,6 +3129,9 @@
 "alt" = (
 /turf/open/floor/plating,
 /area/ice_colony/underground/hallway/north_west)
+"alu" = (
+/turf/closed/wall/r_wall/unmeltable,
+/area/ice_colony/surface/dorms)
 "alv" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/manifold/hidden/green{
@@ -4427,7 +4430,7 @@
 	dir = 4;
 	pixel_x = -24
 	},
-/turf/open_space,
+/turf/closed/wall/r_wall/unmeltable,
 /area/ice_colony/surface/dorms)
 "apX" = (
 /turf/open_space,
@@ -122375,7 +122378,7 @@ akZ
 alk
 akZ
 akC
-apX
+alu
 apX
 apX
 apX
@@ -124349,13 +124352,13 @@ ala
 alo
 ala
 akD
+alu
 apX
 apX
 apX
 apX
 apX
-apX
-apX
+alu
 arE
 aqW
 apZ

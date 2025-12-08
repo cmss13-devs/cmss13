@@ -166,7 +166,7 @@
 
 /obj/item/reagent_container/food/condiment/chocolate_syrup/Initialize()
 	. = ..()
-	reagents.add_reagent("chocolate", 60)
+	reagents.add_reagent("chocolatesyrup", 60)
 	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/reagent_container/food/condiment/saltshaker //Separate from above since it's a small shaker rather then

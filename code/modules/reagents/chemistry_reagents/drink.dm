@@ -543,7 +543,7 @@
 /datum/reagent/drink/chocolate
 	name = "Chocolate Syrup"
 	description = "Nectar of the gods."
-	id = "chocolate"
+	id = "chocolatesyrup"
 	color = "#7B3F00" // rgb: 123, 163, 0
 
 //*****************************************************************************************************/

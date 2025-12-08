@@ -805,7 +805,7 @@
 	name = "Chocolate Milk"
 	id = "chocolate_milk"
 	result = "chocolate_milk"
-	required_reagents = list("chocolate" = 1, "milk" = 4)
+	required_reagents = list("chocolatesyrup" = 1, "milk" = 4)
 	result_amount = 5
 
 /datum/chemical_reaction/milkshake

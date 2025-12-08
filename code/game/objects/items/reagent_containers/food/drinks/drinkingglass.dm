@@ -50,7 +50,7 @@
 				name = "Glass of cream"
 				desc = "Ewwww..."
 				center_of_mass = "x=16;y=10"
-			if("chocolate")
+			if("chocolatesyrup")
 				icon_state  = "chocolateglass"
 				name = "Glass of chocolate syrup"
 				desc = "So indulgent!"

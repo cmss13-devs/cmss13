@@ -17450,6 +17450,7 @@
 /obj/structure/platform/stone/strata/east,
 /obj/structure/platform/stone/strata,
 /obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/east,
 /turf/open_space,
 /area/ice_colony/exterior/surface/valley/west)
 "bhX" = (

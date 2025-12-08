@@ -1,5 +1,0 @@
-author: "Killfish"
-delete-after: True
-changes:
-  - rscadd: "Adds Tool Drop Pouch, the cooler engineering-themed sibling of Tool Webbing, and makes it an option at vendors that provide the Tool Webbing."
-  - imageadd: "Adds sprites for aforementioned Tool Drop Pouch."

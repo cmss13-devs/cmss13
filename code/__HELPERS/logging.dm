@@ -126,6 +126,14 @@ GLOBAL_VAR_INIT(log_end, world.system_type == UNIX ? ascii2text(13) : "")
 	GLOB.STUI.admin.Add("\[[time]]OVERWATCH: [text]")
 	GLOB.STUI.processing |= STUI_LOG_ADMIN
 
+/proc/log_garble(text)
+	var/time = time_stamp()
+	if (CONFIG_GET(flag/log_garble))
+		WRITE_LOG(GLOB.world_game_log, "GARBLE: [text]")
+		LOG_REDIS("garble", "\[[time]\] [text]")
+	GLOB.STUI.admin.Add("\[[time]]GARBLE: [text]")
+	GLOB.STUI.processing |= STUI_LOG_ADMIN
+
 /proc/log_idmod(obj/item/card/id/target_id, msg, changer)
 	var/time = time_stamp()
 	if (CONFIG_GET(flag/log_idmod))

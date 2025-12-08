@@ -1,5 +1,5 @@
 ///*****************************LV-522 Force Recon Survivors*******************************************************/
-//Nanu told me to put them here so they dont clutter up survivors.dm
+//Nanu told me to put them here so they don't clutter up survivors.dm
 /datum/equipment_preset/survivor/forecon
 	paygrades = list(PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/dogtag
@@ -285,7 +285,7 @@
 				sidearmbelt = /obj/item/storage/belt/gun/mateba/cmateba
 				sidearmammo = /obj/item/ammo_magazine/revolver/mateba
 			if(CO_GUN_MATEBA_CLASSIC)
-				sidearm = /obj/item/weapon/gun/revolver/mateba
+				sidearm = /obj/item/weapon/gun/revolver/mateba/impact
 				sidearmbelt = /obj/item/storage/belt/gun/mateba
 				sidearmammo = /obj/item/ammo_magazine/revolver/mateba
 			if(CO_GUN_2006M)

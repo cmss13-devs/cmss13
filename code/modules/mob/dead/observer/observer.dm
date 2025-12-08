@@ -183,7 +183,7 @@
 	observe_target_mob = null
 	observe_target_client = null
 
-	client.eye = src
+	client.set_eye(src)
 	hud_used.show_hud(hud_used.hud_version, src)
 	UnregisterSignal(src, COMSIG_MOVABLE_MOVED)
 
@@ -279,7 +279,7 @@
 		return
 
 	client.clear_screen()
-	client.eye = carbon_target
+	client.set_eye(carbon_target)
 	observe_target_mob = carbon_target
 
 	carbon_target.auto_observed(src)
@@ -506,8 +506,8 @@ Works together with spawning an observer, noted above.
 	if(ghost.client)
 		ghost.client.init_verbs()
 		ghost.client.change_view(GLOB.world_view_size) //reset view range to default
-		ghost.client.pixel_x = 0 //recenters our view
-		ghost.client.pixel_y = 0
+		ghost.client.set_pixel_x(0) //recenters our view
+		ghost.client.set_pixel_y(0)
 		ghost.set_lighting_alpha_from_pref(ghost.client)
 		if(ghost.client.soundOutput)
 			ghost.client.soundOutput.update_ambience()
@@ -1341,7 +1341,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		var/mob/living/carbon/human/H = mind.original
 		if(istype(H))
 			ref = WEAKREF(H)
-		GLOB.data_core.manifest_modify(name, ref, null, null, "*Deceased*")
+		GLOB.data_core.manifest_modify(name, ref, null, null, "Deceased")
 
 
 /mob/dead/observer/verb/view_kill_feed()

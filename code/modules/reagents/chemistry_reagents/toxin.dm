@@ -80,7 +80,7 @@
 	color = "#CF3600" // rgb: 207, 54, 0
 	custom_metabolism = AMOUNT_PER_TIME(1, 5 SECONDS)
 	chemclass = CHEM_CLASS_HYDRO
-	properties = list(PROPERTY_HYPOXEMIC = 4, PROPERTY_SEDATIVE = 1)
+	properties = list(PROPERTY_HYPOXEMIC = 4, PROPERTY_HYPNOTIC = 1)
 
 /datum/reagent/toxin/gasp_toxin
 	name = "Gasp Toxin"
@@ -238,7 +238,7 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_COMMON
-	properties = list(PROPERTY_SEDATIVE = 2, PROPERTY_PAINKILLING = 5)
+	properties = list(PROPERTY_HYPNOTIC = 2, PROPERTY_PAINKILLING = 5)
 	flags = REAGENT_SCANNABLE
 
 /datum/reagent/toxin/chloralhydrate
@@ -251,7 +251,7 @@
 	overdose = REAGENTS_OVERDOSE/2
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL/2
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_SEDATIVE = 6, PROPERTY_TOXIC = 1)
+	properties = list(PROPERTY_HYPNOTIC = 6, PROPERTY_TOXIC = 1)
 
 /datum/reagent/toxin/potassium_chloride
 	name = "Potassium Chloride"
@@ -265,7 +265,7 @@
 	burncolormod = 5
 	overdose = 30
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_HYPOXEMIC = 2, PROPERTY_RELAXING = 4)
+	properties = list(PROPERTY_HYPOXEMIC = 2, PROPERTY_ANTISPASMODIC = 4)
 
 /datum/reagent/toxin/potassium_chlorophoride
 	name = "Potassium Chlorophoride"
@@ -275,7 +275,7 @@
 	color = COLOR_WHITE
 	overdose = 20
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_RELAXING = 8, PROPERTY_HYPOXEMIC = 4, PROPERTY_TOXIC = 2)
+	properties = list(PROPERTY_ANTISPASMODIC = 8, PROPERTY_HYPOXEMIC = 4, PROPERTY_TOXIC = 2)
 
 /datum/reagent/toxin/potassium_phorosulfate
 	name = "Potassium Phorosulfate"
@@ -285,7 +285,7 @@
 	color = COLOR_WHITE
 	overdose = 10
 	chemclass = CHEM_CLASS_RARE
-	properties = list(PROPERTY_RELAXING = 10, PROPERTY_HYPOXEMIC = 4, PROPERTY_BIOCIDIC = 5)
+	properties = list(PROPERTY_ANTISPASMODIC = 10, PROPERTY_HYPOXEMIC = 4, PROPERTY_BIOCIDIC = 5)
 
 
 /datum/reagent/toxin/beer2 //disguised as normal beer for use by emagged brobots

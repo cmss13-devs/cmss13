@@ -180,10 +180,13 @@
 		else
 			. += SPAN_INFO("It is unloaded.")
 		. += SPAN_INFO("It is set to administer [amount_per_transfer_from_this] units per dose.")
-	if(mode == INJECTOR_MODE_PRECISE)
-		. += SPAN_INFO("It is set to precise injection mode.")
-	if(mode == INJECTOR_MODE_FAST)
-		. += SPAN_INFO("It is set to fast injection mode.")
+	switch(mode)
+		if(INJECTOR_MODE_PRECISE)
+			. += SPAN_INFO("It is set to precise injection mode.")
+		if(INJECTOR_MODE_FAST)
+			. += SPAN_INFO("It is set to fast injection mode.")
+		if(INJECTOR_MODE_SKILLESS)
+			. += SPAN_INFO("It is locked to EZ injection mode.")
 
 /obj/item/reagent_container/hypospray/proc/hyposwitch(mob/user)
 	switch(mode)
@@ -292,7 +295,7 @@
 			return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
 
 		if(INJECTOR_MODE_PRECISE)
-			var/injection_duration = 7.5 SECONDS
+			var/injection_duration = 4.5 SECONDS
 			injection_duration = (injection_duration * user.get_skill_duration_multiplier(SKILL_MEDICAL)) // for some reason, moving while injecting speeds up the duration
 
 			if(M == user) // spamming do_afters results in the null units injected bug which does nothing, but its really fucking annoying and ive got no fucking clue how to fix it, so try not to spam your injector more than the required amount - nihi

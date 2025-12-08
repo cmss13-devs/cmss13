@@ -5650,6 +5650,11 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/wood,
 /area/ice_colony/surface/dorms)
+"atT" = (
+/obj/structure/platform/stone/strata/west,
+/obj/structure/platform/stone/strata,
+/turf/open_space,
+/area/ice_colony/exterior/surface/valley/west)
 "atU" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/auto_turf/snow/layer2,
@@ -10286,6 +10291,10 @@
 	},
 /turf/open/ice,
 /area/ice_colony/exterior/surface/valley/southwest)
+"aJz" = (
+/obj/structure/platform/stone/strata,
+/turf/open_space,
+/area/ice_colony/exterior/surface/valley/west)
 "aJA" = (
 /obj/structure/machinery/cm_vending/sorted/boozeomat/chess,
 /turf/open/floor/plating/icefloor,
@@ -10621,6 +10630,10 @@
 	},
 /turf/open/floor/shiva/purple/east,
 /area/ice_colony/underground/research)
+"aKN" = (
+/obj/structure/platform_decoration/stone/strata/north,
+/turf/open_space,
+/area/ice_colony/exterior/surface/valley/west)
 "aKO" = (
 /obj/structure/bed/chair,
 /turf/open/floor/dark2,
@@ -17237,6 +17250,10 @@
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/north)
+"bhl" = (
+/obj/structure/platform_decoration/stone/strata,
+/turf/open_space,
+/area/ice_colony/exterior/surface/valley/west)
 "bhm" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -17259,12 +17276,32 @@
 	},
 /turf/open/floor/dark2,
 /area/ice_colony/underground/requesition/lobby)
+"bhq" = (
+/obj/structure/platform/stone/strata/east,
+/obj/structure/platform/stone/strata,
+/turf/open_space,
+/area/ice_colony/exterior/surface/valley/west)
+"bhr" = (
+/obj/structure/platform/stone/strata/west,
+/obj/structure/platform/stone/strata/east,
+/obj/structure/platform/stone/strata,
+/turf/open_space,
+/area/ice_colony/exterior/surface/valley/west)
+"bhs" = (
+/obj/structure/platform_decoration/stone/strata/north,
+/obj/structure/platform_decoration/stone/strata,
+/turf/open_space,
+/area/ice_colony/exterior/surface/valley/west)
 "bht" = (
 /turf/open/floor/plating/icefloor/warnplate,
 /area/ice_colony/underground/hangar)
 "bhu" = (
 /turf/open/floor/plating/icefloor/warnplate/southeast,
 /area/ice_colony/underground/hangar)
+"bhv" = (
+/obj/structure/platform/stone/strata/east,
+/turf/open_space,
+/area/ice_colony/exterior/surface/valley/west)
 "bhw" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -17272,6 +17309,10 @@
 /obj/structure/closet/secure_closet/req_officer,
 /turf/open/floor/darkbrown2/west,
 /area/ice_colony/underground/requesition)
+"bhx" = (
+/obj/structure/platform/stone/strata/west,
+/turf/open_space,
+/area/ice_colony/exterior/surface/valley/west)
 "bhy" = (
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/plating,
@@ -17355,6 +17396,35 @@
 	},
 /turf/open/floor/plating/icefloor/warnplate/west,
 /area/ice_colony/underground/hangar)
+"bhM" = (
+/obj/structure/platform_decoration/stone/strata/west,
+/turf/open_space,
+/area/ice_colony/exterior/surface/valley/west)
+"bhN" = (
+/obj/structure/ice/ice_rock/cornerOverlay{
+	dir = 4
+	},
+/obj/structure/platform/stone/strata/north,
+/turf/open_space,
+/area/ice_colony/exterior/surface/valley/west)
+"bhO" = (
+/obj/structure/platform_decoration/stone/strata/east,
+/turf/open_space,
+/area/ice_colony/exterior/surface/valley/west)
+"bhP" = (
+/obj/structure/platform/stone/strata/north,
+/turf/open_space,
+/area/ice_colony/exterior/surface/valley/west)
+"bhQ" = (
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/east,
+/turf/open_space,
+/area/ice_colony/exterior/surface/valley/west)
+"bhR" = (
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/west,
+/turf/open_space,
+/area/ice_colony/exterior/surface/valley/west)
 "bhS" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -17368,9 +17438,25 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/dark2,
 /area/ice_colony/underground/requesition/lobby)
+"bhU" = (
+/obj/structure/platform/stone/strata,
+/obj/structure/platform_decoration/stone/strata/west,
+/turf/open_space,
+/area/ice_colony/exterior/surface/valley/west)
 "bhV" = (
 /turf/open/floor/plating/icefloor/warnplate/southwest,
 /area/ice_colony/underground/hangar)
+"bhW" = (
+/obj/structure/platform/stone/strata/east,
+/obj/structure/platform/stone/strata,
+/obj/structure/platform/stone/strata/north,
+/turf/open_space,
+/area/ice_colony/exterior/surface/valley/west)
+"bhX" = (
+/obj/structure/platform_decoration/stone/strata,
+/obj/structure/platform_decoration/stone/strata/west,
+/turf/open_space,
+/area/ice_colony/exterior/surface/valley/west)
 "bhY" = (
 /obj/structure/machinery/constructable_frame,
 /turf/open/floor/darkbrown2/west,
@@ -17383,10 +17469,21 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/dark2,
 /area/ice_colony/underground/requesition/lobby)
+"bib" = (
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/west,
+/obj/structure/platform/stone/strata,
+/turf/open_space,
+/area/ice_colony/exterior/surface/valley/west)
 "bic" = (
 /obj/structure/surface/rack,
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/north)
+"bid" = (
+/obj/structure/platform_decoration/stone/strata/east,
+/obj/structure/platform_decoration/stone/strata/north,
+/turf/open_space,
+/area/ice_colony/exterior/surface/valley/west)
 "bif" = (
 /obj/structure/sign/safety/high_voltage,
 /turf/closed/wall/r_wall,
@@ -18378,6 +18475,8 @@
 /area/ice_colony/underground/hallway/north_west)
 "bmq" = (
 /obj/item/tool/warning_cone,
+/obj/structure/platform/stone/strata/east,
+/obj/structure/platform/stone/strata,
 /turf/open_space,
 /area/ice_colony/exterior/surface/valley/west)
 "bmr" = (
@@ -100487,7 +100586,7 @@ acm
 aae
 bCp
 bCo
-blN
+bib
 aaR
 aba
 abb
@@ -100768,10 +100867,10 @@ aaS
 acm
 aae
 bCr
-blN
-blN
-blN
-blN
+bhR
+bid
+bhx
+atT
 aaR
 aba
 aba
@@ -101049,12 +101148,12 @@ aaP
 aaZ
 aae
 aae
+bhR
+bhO
 blN
 blN
 blN
-blN
-blN
-blN
+atT
 alJ
 alJ
 alJ
@@ -101331,13 +101430,13 @@ afx
 apg
 bCy
 bCy
-blN
+bhP
 blN
 byH
 blN
 blN
-blN
-blN
+aKN
+atT
 alJ
 alJ
 alJ
@@ -101613,13 +101712,13 @@ abc
 aph
 alJ
 alJ
-blN
-blN
-blN
-blN
-blN
-blN
-blN
+bhQ
+bhv
+bhv
+bhX
+bhv
+bhv
+bhU
 alJ
 alJ
 alJ
@@ -101898,10 +101997,10 @@ alJ
 alJ
 byN
 byN
-blN
+bhW
 ahp
 alJ
-blN
+bhW
 alJ
 alJ
 alJ
@@ -102785,11 +102884,11 @@ alJ
 aaR
 aba
 aaZ
-blN
-blN
-blN
-blN
-blN
+bhR
+bhx
+bhx
+bhx
+atT
 aaR
 abb
 aac
@@ -103067,12 +103166,12 @@ alJ
 alJ
 alJ
 alJ
+bhP
 blN
 blN
 blN
-blN
-blN
-blN
+bhs
+bhr
 aaQ
 aac
 aac
@@ -103349,11 +103448,11 @@ alJ
 alJ
 alJ
 bnc
+bhQ
+bhM
 blN
 blN
-blN
-blN
-blN
+aJz
 aaP
 aaZ
 aac
@@ -103632,10 +103731,10 @@ alJ
 alJ
 alJ
 alJ
-bmI
+bhN
 blN
 blN
-blN
+aJz
 aaQ
 aac
 aac
@@ -103913,11 +104012,11 @@ alJ
 alJ
 alJ
 alJ
+bhR
+bhO
 blN
 blN
-blN
-blN
-blN
+aJz
 aaR
 abb
 aac
@@ -104195,12 +104294,12 @@ alJ
 alJ
 alJ
 bnc
-blN
+bhP
 blN
 bmI
 blN
-blN
-blN
+aKN
+atT
 aaR
 abb
 aac
@@ -104475,15 +104574,15 @@ alJ
 alJ
 alJ
 alJ
+bhR
+bhx
+bhO
 blN
 blN
 blN
 blN
 blN
-blN
-blN
-blN
-blN
+atT
 aaQ
 aac
 aac
@@ -104757,15 +104856,15 @@ alJ
 alJ
 alJ
 bnc
+bhQ
+bhM
 blN
 blN
 blN
 blN
 blN
 blN
-blN
-blN
-blN
+aJz
 aaR
 abb
 aac
@@ -105040,15 +105139,15 @@ alJ
 alJ
 alJ
 alJ
+bhQ
+bhM
 blN
 blN
 blN
 blN
 blN
-blN
-blN
-blN
-blN
+aKN
+atT
 aaQ
 aac
 aac
@@ -105323,13 +105422,13 @@ apR
 alJ
 alJ
 bnc
+bhP
 blN
 blN
 blN
 blN
 blN
-blN
-blN
+bhl
 bmq
 aaQ
 aac
@@ -105605,13 +105704,13 @@ alJ
 alJ
 alJ
 alJ
-blN
+bhP
 blN
 blN
 bmI
 blN
 blN
-blN
+aJz
 aaP
 aaZ
 aac
@@ -105887,13 +105986,13 @@ alJ
 alJ
 alJ
 bnc
-blN
-blN
+bhQ
+bhM
 blN
 blN
 bmI
 blN
-blN
+aJz
 aaQ
 aac
 aac
@@ -106170,12 +106269,12 @@ alJ
 alJ
 alJ
 bnc
+bhP
 blN
 blN
 blN
-blN
-blN
-blN
+bhl
+bhq
 aaQ
 aac
 aac
@@ -106452,10 +106551,10 @@ alJ
 alJ
 aaP
 abb
-blN
-blN
-blN
-blN
+bhQ
+bhv
+bhv
+bhv
 bmq
 aaP
 aaZ

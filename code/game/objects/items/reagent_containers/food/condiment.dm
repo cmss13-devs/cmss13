@@ -262,10 +262,3 @@
 /obj/item/reagent_container/food/condiment/coldsauce/Initialize()
 	. = ..()
 	reagents.add_reagent("frostoil", 60)
-
-
-
-
-
-
-

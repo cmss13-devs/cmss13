@@ -27914,22 +27914,6 @@
 /obj/item/tool/weldingtool,
 /turf/open/ice,
 /area/ice_colony/exterior/underground/caves/open)
-"bWa" = (
-/obj/structure/ladder{
-	height = 1;
-	icon_state = "ladderup";
-	id = "ship_ladder1"
-	},
-/turf/open/ice,
-/area/ice_colony/exterior/underground/caves/open)
-"bWb" = (
-/obj/structure/ladder{
-	height = 1;
-	icon_state = "ladderup";
-	id = "ship_ladder"
-	},
-/turf/open/ice,
-/area/ice_colony/exterior/underground/caves/open)
 "bWc" = (
 /obj/structure/tunnel{
 	id = "north_research_tunnel"
@@ -86273,7 +86257,7 @@ aZF
 aZF
 aZF
 bmQ
-bWa
+bmU
 bmU
 bmU
 bmU
@@ -86555,7 +86539,7 @@ aZF
 aZF
 aZF
 bmQ
-bWb
+bmU
 bmU
 bmU
 bmU

@@ -17521,6 +17521,10 @@
 	},
 /turf/open/floor/dark2,
 /area/ice_colony/underground/requesition)
+"bil" = (
+/obj/effect/stairs/up,
+/turf/open/auto_turf/snow/layer2,
+/area/ice_colony/exterior/underground/caves/open)
 "bim" = (
 /obj/structure/machinery/door_control{
 	id = "req_sec_storage";
@@ -17532,6 +17536,18 @@
 	},
 /turf/open/floor/darkbrown2,
 /area/ice_colony/underground/requesition)
+"bin" = (
+/obj/effect/stairs/up,
+/turf/open/ice,
+/area/ice_colony/exterior/underground/caves/open)
+"bio" = (
+/obj/effect/stairs/up,
+/turf/open/floor/dark2,
+/area/ice_colony/underground/maintenance/engineering)
+"bip" = (
+/obj/effect/stairs/up,
+/turf/open/auto_turf/snow/layer1,
+/area/ice_colony/exterior/underground/caves/open)
 "biq" = (
 /obj/structure/machinery/conveyor_switch,
 /obj/effect/decal/warning_stripes{
@@ -17548,6 +17564,10 @@
 /obj/structure/machinery/autolathe,
 /turf/open/floor/darkbrown2/southeast,
 /area/ice_colony/underground/requesition/lobby)
+"bit" = (
+/obj/effect/stairs/up,
+/turf/open/floor/dark2,
+/area/ice_colony/underground/hallway/south_east)
 "biu" = (
 /obj/structure/machinery/computer3/powermonitor,
 /turf/open/floor/plating/icefloor,
@@ -17555,6 +17575,10 @@
 "biv" = (
 /turf/open/floor/bcircuit,
 /area/ice_colony/underground/hangar)
+"biw" = (
+/obj/effect/stairs/up,
+/turf/open/floor/plating/icefloor,
+/area/ice_colony/underground/requesition)
 "bix" = (
 /obj/structure/closet/secure_closet/engineering_welding,
 /turf/open/floor/plating/icefloor,
@@ -17569,6 +17593,10 @@
 	},
 /turf/open/floor/dark2,
 /area/ice_colony/underground/requesition/sec_storage)
+"biA" = (
+/obj/effect/stairs/down,
+/turf/open_space,
+/area/ice_colony/exterior/surface/valley/west)
 "biB" = (
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/plating,
@@ -17616,6 +17644,10 @@
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/north)
+"biG" = (
+/obj/effect/stairs/down,
+/turf/open_space,
+/area/ice_colony/surface/garage/one)
 "biH" = (
 /obj/structure/machinery/power/smes/buildable{
 	name = "colony distribution SMES"
@@ -17628,6 +17660,10 @@
 	},
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/underground/hangar)
+"biJ" = (
+/obj/effect/stairs/down,
+/turf/open_space,
+/area/ice_colony/surface/dorms)
 "biK" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
@@ -17670,6 +17706,10 @@
 	},
 /turf/open/floor/dark2,
 /area/ice_colony/underground/requesition/sec_storage)
+"biT" = (
+/obj/effect/stairs/down,
+/turf/open_space,
+/area/ice_colony/surface/requesitions)
 "biU" = (
 /obj/structure/machinery/door_control{
 	id = "req_sec_storage";
@@ -37366,7 +37406,7 @@ bba
 ahE
 bdN
 bdN
-bdN
+biw
 bdN
 bdN
 bdN
@@ -39380,7 +39420,7 @@ bmU
 bmU
 ajk
 bmU
-ajk
+bip
 ajk
 bmU
 bmU
@@ -42805,7 +42845,7 @@ aZF
 bmQ
 bmU
 bmU
-bmU
+bin
 bmU
 bmU
 bmU
@@ -56380,7 +56420,7 @@ bPg
 bPg
 arV
 aqB
-amy
+bil
 bmm
 bnT
 bmi
@@ -61639,7 +61679,7 @@ nLo
 bbr
 bpu
 bpu
-bpu
+bit
 buW
 bpu
 aYF
@@ -69567,7 +69607,7 @@ aiU
 aOq
 aOq
 aOq
-aOq
+bio
 aOq
 aOq
 aOq
@@ -99407,7 +99447,7 @@ adZ
 auL
 auL
 auL
-auL
+biT
 auL
 auL
 auL
@@ -104846,7 +104886,7 @@ alJ
 bnc
 bhQ
 bhM
-blN
+biA
 blN
 blN
 blN
@@ -123680,7 +123720,7 @@ ano
 apX
 apX
 apX
-apX
+biJ
 apX
 apX
 apX
@@ -131608,7 +131648,7 @@ aEq
 aEq
 aEq
 aEq
-aEq
+biG
 aEq
 aEq
 aEq

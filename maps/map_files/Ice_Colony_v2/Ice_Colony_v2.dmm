@@ -350,6 +350,8 @@
 /obj/structure/surface/table,
 /obj/item/circuitboard/robot_module/engineering,
 /obj/item/stock_parts/capacitor/super,
+/obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/requesitions)
 "abB" = (
@@ -358,8 +360,17 @@
 /obj/item/stack/sandbags_empty/half,
 /obj/item/stock_parts/scanning_module/adv,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/requesitions)
+"abC" = (
+/obj/structure/toilet{
+	dir = 1
+	},
+/obj/structure/machinery/light/small,
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/white,
+/area/ice_colony/underground/reception/toilet_women)
 "abD" = (
 /turf/closed/wall/r_wall,
 /area/ice_colony/surface/requesitions)
@@ -534,12 +545,36 @@
 /obj/structure/grille,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/requesitions)
+"acp" = (
+/obj/structure/toilet,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/white,
+/area/ice_colony/underground/reception/toilet_men)
 "acq" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "xgibdown1"
 	},
 /turf/open/floor/plating/icefloor/warnplate/southwest,
 /area/ice_colony/surface/requesitions)
+"acr" = (
+/obj/structure/window/reinforced/tinted{
+	dir = 4
+	},
+/obj/structure/surface/table,
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/darkyellow2,
+/area/ice_colony/underground/security/brig)
+"acs" = (
+/obj/structure/surface/table/woodentable,
+/obj/structure/window/reinforced/tinted{
+	dir = 1
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/wood,
+/area/ice_colony/underground/crew/dorm_l)
 "act" = (
 /turf/open/auto_turf/snow/layer2,
 /area/ice_colony/exterior/surface/valley/north)
@@ -589,6 +624,19 @@
 	},
 /turf/closed/ice_rock/corners,
 /area/ice_colony/exterior/surface/cliff)
+"acE" = (
+/obj/structure/surface/table/woodentable,
+/obj/structure/window/reinforced/tinted{
+	dir = 1
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/wood,
+/area/ice_colony/underground/crew/dorm_r)
+"acF" = (
+/obj/structure/surface/table/woodentable,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/wood,
+/area/ice_colony/underground/crew/dorm_r)
 "acG" = (
 /turf/open/floor/plating/icefloor/warnplate/east,
 /area/ice_colony/surface/requesitions)
@@ -633,6 +681,7 @@
 /obj/item/device/assembly/igniter,
 /obj/item/device/assembly/signaller,
 /obj/item/circuitboard/airlock,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/darkyellow2/north,
 /area/ice_colony/surface/engineering/electric)
 "acO" = (
@@ -680,6 +729,13 @@
 	},
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/requesitions)
+"acV" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/plating,
+/area/ice_colony/underground/maintenance/central)
 "acW" = (
 /turf/open/floor/plating/icefloor/warnplate/southwest,
 /area/ice_colony/surface/requesitions)
@@ -694,6 +750,17 @@
 "acZ" = (
 /turf/open/floor/plating/icefloor/warnplate/southeast,
 /area/ice_colony/surface/requesitions)
+"ada" = (
+/obj/structure/window/reinforced/tinted{
+	dir = 4
+	},
+/obj/structure/window/reinforced/tinted,
+/obj/structure/surface/table/reinforced,
+/obj/item/paper_bin,
+/obj/item/tool/pen/blue,
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/dark2,
+/area/ice_colony/underground/command/center)
 "adb" = (
 /obj/structure/ice/thin/junction{
 	dir = 1
@@ -846,6 +913,7 @@
 	name = "Storage Unit Control";
 	pixel_x = 24
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/requesitions)
 "adE" = (
@@ -1057,6 +1125,7 @@
 /obj/effect/spawner/random/tool,
 /obj/structure/machinery/power/apc/no_power/north,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/darkyellow2/north,
 /area/ice_colony/surface/engineering/tool)
 "aep" = (
@@ -1572,6 +1641,7 @@
 "agb" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/darkyellow2/east,
 /area/ice_colony/surface/engineering/generator)
 "agc" = (
@@ -2015,6 +2085,11 @@
 /turf/open/space/basic,
 /turf/open/floor/dark2,
 /area/ice_colony/surface/hangar/hallway)
+"ahG" = (
+/obj/structure/surface/rack,
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/plating,
+/area/ice_colony/underground/maintenance/engineering)
 "ahH" = (
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/plating,
@@ -2132,6 +2207,7 @@
 "ahZ" = (
 /obj/structure/surface/rack,
 /obj/structure/machinery/light/small,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/engineering)
 "aia" = (
@@ -2242,6 +2318,7 @@
 /area/ice_colony/underground/maintenance/engineering)
 "aix" = (
 /obj/structure/surface/table,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/darkyellow2/southwest,
 /area/ice_colony/surface/engineering/generator)
 "aiy" = (
@@ -2796,6 +2873,7 @@
 "akt" = (
 /obj/structure/bookcase/manuals/engineering,
 /obj/item/prop/magazine/book/theartofwar,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/library)
 "aku" = (
@@ -3021,6 +3099,11 @@
 /turf/open/space/basic,
 /turf/open/ice,
 /area/ice_colony/exterior/surface/clearing/north)
+"alj" = (
+/obj/structure/surface/rack,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/plating,
+/area/ice_colony/underground/maintenance/research)
 "alk" = (
 /turf/closed/wall,
 /area/ice_colony/surface/dorms/restroom_w)
@@ -3197,6 +3280,7 @@
 /obj/item/stack/sheet/wood/small_stack,
 /obj/structure/surface/rack,
 /obj/item/storage/box/bodybags,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/north)
 "alV" = (
@@ -3208,6 +3292,7 @@
 "alW" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/wood/large_stack,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/north)
 "alX" = (
@@ -3259,6 +3344,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/freezerfloor,
 /area/ice_colony/surface/dorms/restroom_w)
 "ami" = (
@@ -3587,6 +3673,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/dark2,
 /area/ice_colony/surface/hydroponics/north)
 "ank" = (
@@ -3707,6 +3794,7 @@
 "anB" = (
 /obj/effect/landmark/corpsespawner/scientist,
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/dark2,
 /area/ice_colony/underground/hallway/south_east)
 "anC" = (
@@ -3908,6 +3996,7 @@
 	pixel_y = 2
 	},
 /obj/effect/landmark/crap_item,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor,
 /area/ice_colony/surface/mining)
 "aoi" = (
@@ -4079,6 +4168,7 @@
 	amount = 15
 	},
 /obj/effect/landmark/crap_item,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor,
 /area/ice_colony/surface/mining)
 "aoR" = (
@@ -4146,6 +4236,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
+/obj/item/device/healthanalyzer/objective,
 /turf/open/floor/cafeteria,
 /area/ice_colony/surface/clinic/treatment)
 "apc" = (
@@ -4291,10 +4382,12 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/whitered/northwest,
 /area/ice_colony/surface/clinic/treatment)
 "apF" = (
 /obj/structure/curtain/medical,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/whitered/north,
 /area/ice_colony/surface/clinic/treatment)
 "apG" = (
@@ -4302,6 +4395,7 @@
 /obj/item/storage/toolbox/emergency,
 /obj/structure/surface/table,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/whitered/north,
 /area/ice_colony/surface/clinic/treatment)
 "apH" = (
@@ -4337,6 +4431,7 @@
 	pixel_x = 6;
 	pixel_y = 10
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/whitered/north,
 /area/ice_colony/surface/clinic/storage)
 "apO" = (
@@ -4520,6 +4615,7 @@
 	dir = 8;
 	pixel_x = 24
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/whitered/east,
 /area/ice_colony/surface/clinic/storage)
 "aqs" = (
@@ -4629,6 +4725,7 @@
 	dir = 4;
 	pixel_x = 24
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/whitered/east,
 /area/ice_colony/surface/clinic/storage)
 "aqJ" = (
@@ -4641,6 +4738,7 @@
 /obj/item/stock_parts/scanning_module/phasic,
 /obj/item/stock_parts/manipulator/nano,
 /obj/effect/landmark/good_item,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/requesitions)
 "aqL" = (
@@ -4710,6 +4808,13 @@
 	},
 /turf/open/floor/dark2,
 /area/ice_colony/surface/dorms)
+"aqV" = (
+/obj/structure/bed,
+/obj/item/bedsheet/medical,
+/obj/structure/machinery/light/small,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/whitered,
+/area/ice_colony/underground/medical/treatment)
 "aqW" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -4780,6 +4885,13 @@
 	},
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/clearing/pass)
+"arf" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/darkgreen2,
+/area/ice_colony/underground/crew/bball)
 "arg" = (
 /turf/open/auto_turf/snow/layer2,
 /area/ice_colony/surface/command/control)
@@ -4817,6 +4929,10 @@
 	},
 /turf/open/floor/darkgreen2,
 /area/ice_colony/surface/dorms)
+"arm" = (
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/dark2,
+/area/ice_colony/underground/crew/bball)
 "arn" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment{
@@ -4853,10 +4969,26 @@
 /obj/structure/disposalpipe/junction,
 /turf/open/floor/darkgreencorners2,
 /area/ice_colony/surface/dorms)
+"ars" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/surface/table,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/dark2,
+/area/ice_colony/underground/engineering)
 "art" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/auto_turf/snow/layer2,
 /area/ice_colony/exterior/surface/valley/southeast)
+"aru" = (
+/obj/structure/surface/table,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/dark2,
+/area/ice_colony/underground/engineering)
 "arv" = (
 /obj/structure/fence,
 /turf/open/space/basic,
@@ -4958,6 +5090,8 @@
 /obj/structure/surface/table,
 /obj/item/paper/research_notes,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/objective_landmark/science,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/whitered/east,
 /area/ice_colony/surface/clinic/storage)
 "arP" = (
@@ -5008,6 +5142,7 @@
 "arY" = (
 /obj/structure/bed/chair/wheelchair,
 /obj/structure/machinery/light,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/whitered,
 /area/ice_colony/surface/clinic/treatment)
 "arZ" = (
@@ -5057,6 +5192,10 @@
 	},
 /turf/open/floor/darkgreen2/west,
 /area/ice_colony/surface/hydroponics/north)
+"ash" = (
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/ice,
+/area/ice_colony/exterior/underground/caves/open)
 "asi" = (
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/valley/southwest)
@@ -5079,6 +5218,12 @@
 	},
 /turf/open/floor/cafeteria,
 /area/ice_colony/surface/clinic/storage)
+"asm" = (
+/obj/structure/surface/table,
+/obj/item/storage/box/bodybags,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/dark2,
+/area/ice_colony/underground/crew/morgue)
 "asn" = (
 /turf/closed/wall/r_wall,
 /area/ice_colony/surface/hydroponics/lobby)
@@ -5104,6 +5249,10 @@
 	},
 /turf/open/floor/darkgreen2/northeast,
 /area/ice_colony/surface/hydroponics/lobby)
+"ass" = (
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/wood,
+/area/ice_colony/underground/crew/library)
 "ast" = (
 /obj/structure/bed,
 /turf/open/floor/wood,
@@ -5190,6 +5339,7 @@
 /area/ice_colony/surface/clinic/lobby)
 "asK" = (
 /obj/structure/surface/table,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/whitered/southeast,
 /area/ice_colony/surface/clinic/treatment)
 "asL" = (
@@ -5279,8 +5429,13 @@
 	pixel_x = 24
 	},
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/whitered/east,
 /area/ice_colony/surface/clinic/lobby)
+"atd" = (
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/dark2,
+/area/ice_colony/underground/engineering/locker)
 "ate" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -5354,11 +5509,14 @@
 "ato" = (
 /obj/structure/closet/cabinet,
 /obj/item/clothing/under/schoolgirl,
+/obj/effect/landmark/objective_landmark/far,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/wood,
 /area/ice_colony/surface/dorms)
 "atp" = (
 /obj/structure/closet/cabinet,
 /obj/item/clothing/under/bluepyjamas,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/wood,
 /area/ice_colony/surface/dorms)
 "atq" = (
@@ -5396,6 +5554,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/item/device/reagent_scanner/adv/objective,
 /turf/open/floor/cafeteria,
 /area/ice_colony/surface/clinic/lobby)
 "aty" = (
@@ -5454,6 +5613,7 @@
 	pixel_y = 3
 	},
 /obj/structure/machinery/power/apc/no_power/north,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/whitered/north,
 /area/ice_colony/surface/clinic/storage)
 "atG" = (
@@ -5590,6 +5750,7 @@
 /obj/item/tool/pen/blue,
 /obj/structure/surface/table/reinforced,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/whitered,
 /area/ice_colony/surface/clinic/lobby)
 "auf" = (
@@ -5813,6 +5974,7 @@
 "auS" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/whitered/southwest,
 /area/ice_colony/surface/clinic/lobby)
 "auT" = (
@@ -6126,6 +6288,10 @@
 	},
 /turf/open/floor/darkgreen2/east,
 /area/ice_colony/surface/hydroponics/lobby)
+"avS" = (
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/chapel/north,
+/area/ice_colony/underground/crew/chapel)
 "avT" = (
 /obj/item/stack/rods,
 /turf/open/auto_turf/snow/layer1,
@@ -6444,6 +6610,7 @@
 /obj/structure/closet/cabinet,
 /obj/item/storage/toolbox/emergency,
 /obj/item/clothing/under/colonist,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/wood,
 /area/ice_colony/surface/dorms)
 "awU" = (
@@ -6621,6 +6788,10 @@
 /obj/item/trash/popcorn,
 /turf/open/floor/plating/warnplate,
 /area/ice_colony/surface/disposals)
+"axB" = (
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/shiva/green/southeast,
+/area/ice_colony/underground/hallway/north_west)
 "axC" = (
 /obj/structure/flora/pottedplant,
 /obj/structure/machinery/light,
@@ -6657,10 +6828,12 @@
 "axJ" = (
 /obj/structure/machinery/power/apc/no_power/north,
 /obj/structure/closet/crate/trashcart,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/darkbrown2/north,
 /area/ice_colony/surface/dorms/lavatory)
 "axK" = (
 /obj/structure/closet/crate/trashcart,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/darkbrown2/north,
 /area/ice_colony/surface/dorms/lavatory)
 "axL" = (
@@ -6696,6 +6869,7 @@
 	},
 /obj/item/reagent_container/food/snacks/hotchili,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/darkgreen2/north,
 /area/ice_colony/surface/dorms/canteen)
 "axT" = (
@@ -6944,6 +7118,7 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/whitered/west,
 /area/ice_colony/surface/clinic/treatment)
 "ayM" = (
@@ -7033,6 +7208,7 @@
 /obj/structure/surface/table,
 /obj/item/reagent_container/spray/cleaner,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/darkbrown2,
 /area/ice_colony/surface/dorms/lavatory)
 "azb" = (
@@ -7129,6 +7305,12 @@
 "azs" = (
 /turf/open/floor/dark2,
 /area/ice_colony/surface/disposals)
+"azt" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/device/flashlight/lamp,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/wood,
+/area/ice_colony/underground/crew/library)
 "azu" = (
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor/dark2,
@@ -7150,6 +7332,11 @@
 	},
 /turf/open/floor/dark2,
 /area/ice_colony/surface/dorms/lavatory)
+"azz" = (
+/obj/structure/surface/rack,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/plating,
+/area/ice_colony/underground/maintenance/north)
 "azA" = (
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating,
@@ -7179,6 +7366,14 @@
 	dir = 8
 	},
 /area/ice_colony/exterior/surface/cliff)
+"azG" = (
+/obj/structure/surface/rack,
+/obj/item/circuitboard/airalarm,
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment,
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/dark2,
+/area/ice_colony/underground/engineering)
 "azH" = (
 /obj/item/lightstick/planted,
 /turf/open/auto_turf/snow/layer0,
@@ -7216,10 +7411,22 @@
 "azO" = (
 /turf/open/floor/darkbrowncorners2/north,
 /area/ice_colony/surface/dorms)
+"azP" = (
+/obj/structure/surface/rack,
+/obj/item/circuitboard/apc,
+/obj/item/circuitboard/apc,
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/dark2,
+/area/ice_colony/underground/engineering)
 "azQ" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/dark2,
 /area/ice_colony/surface/dorms)
+"azR" = (
+/obj/structure/surface/rack,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/plating,
+/area/ice_colony/underground/maintenance/north)
 "azS" = (
 /obj/structure/surface/table,
 /obj/item/storage/belt/utility,
@@ -7260,6 +7467,7 @@
 /obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/darkbrown2/north,
 /area/ice_colony/surface/garage/one)
 "aAa" = (
@@ -7273,6 +7481,7 @@
 "aAc" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/crap_item,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/darkbrown2/north,
 /area/ice_colony/surface/garage/two)
 "aAd" = (
@@ -7281,6 +7490,7 @@
 	},
 /obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/space/basic,
 /turf/open/floor/darkbrown2/north,
 /area/ice_colony/surface/garage/two)
@@ -7310,6 +7520,10 @@
 /obj/structure/disposalpipe/trunk,
 /turf/open/floor/darkbrown2/northeast,
 /area/ice_colony/surface/garage/two)
+"aAk" = (
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/plating,
+/area/ice_colony/underground/maintenance/north)
 "aAl" = (
 /obj/structure/surface/table,
 /obj/item/storage/box/lightstick/red,
@@ -7317,6 +7531,10 @@
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/darkbrown2/southwest,
 /area/ice_colony/surface/disposals)
+"aAm" = (
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/dark2,
+/area/ice_colony/underground/requesition/sec_storage)
 "aAn" = (
 /obj/structure/machinery/power/apc/no_power/south,
 /turf/open/floor/darkbrown2,
@@ -7379,6 +7597,11 @@
 	},
 /turf/open/floor/dark2,
 /area/ice_colony/surface/dorms)
+"aAz" = (
+/obj/structure/surface/table/reinforced,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/shiva/floor3,
+/area/ice_colony/underground/hallway/north_west)
 "aAA" = (
 /obj/structure/shuttle/diagonal{
 	icon_state = "swall0"
@@ -7389,10 +7612,28 @@
 /turf/open/space/basic,
 /turf/open/floor/dark2,
 /area/ice_colony/surface/hangar/alpha)
+"aAB" = (
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/space/basic,
+/turf/open/floor/plating,
+/area/ice_colony/underground/maintenance/north)
 "aAC" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor/dark2,
 /area/ice_colony/surface/dorms)
+"aAD" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/dark2,
+/area/ice_colony/underground/requesition/lobby)
+"aAE" = (
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/dark2,
+/area/ice_colony/underground/hallway/south_east)
+"aAF" = (
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/dark2,
+/area/ice_colony/underground/hallway/south_east)
 "aAG" = (
 /obj/structure/shuttle/diagonal{
 	icon_state = "swall0"
@@ -7452,6 +7693,15 @@
 "aAM" = (
 /turf/closed/wall/r_wall/elevator,
 /area/ice_colony/underground/hallway/south_east)
+"aAN" = (
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/darkgreen2/north,
+/area/ice_colony/underground/hallway/south_east)
+"aAO" = (
+/obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/darkgreen2/east,
+/area/ice_colony/underground/maintenance/north)
 "aAP" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -7468,6 +7718,15 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/dark2,
 /area/ice_colony/surface/garage/one)
+"aAT" = (
+/obj/structure/surface/rack,
+/obj/item/stack/sheet/plasteel{
+	amount = 15
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/space/basic,
+/turf/open/floor/dark2,
+/area/ice_colony/underground/engineering)
 "aAU" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/darkbrown2/east,
@@ -7485,6 +7744,13 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/dark2,
 /area/ice_colony/surface/garage/two)
+"aAY" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/freezerfloor,
+/area/ice_colony/underground/requesition/storage)
 "aAZ" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/darkbrowncorners2/east,
@@ -7524,6 +7790,32 @@
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/plating,
 /area/ice_colony/surface/command/checkpoint)
+"aBi" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/dark2,
+/area/ice_colony/underground/requesition)
+"aBj" = (
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/freezerfloor,
+/area/ice_colony/underground/requesition/storage)
+"aBk" = (
+/obj/structure/closet/crate/freezer,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/freezerfloor,
+/area/ice_colony/underground/requesition/storage)
+"aBl" = (
+/obj/structure/surface/table,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/dark2,
+/area/ice_colony/surface/excavation)
+"aBm" = (
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/dark2,
+/area/ice_colony/surface/excavation)
 "aBn" = (
 /obj/vehicle/train/cargo/trolley,
 /turf/open/floor/dark2,
@@ -7533,6 +7825,10 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/dark2,
 /area/ice_colony/surface/garage/one)
+"aBp" = (
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/plating/icefloor,
+/area/ice_colony/surface/excavation/storage)
 "aBq" = (
 /obj/vehicle/train/cargo/trolley,
 /obj/effect/landmark/crap_item,
@@ -7548,6 +7844,7 @@
 "aBs" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/darkbrown2/west,
 /area/ice_colony/surface/garage/two)
 "aBt" = (
@@ -7608,6 +7905,51 @@
 /obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/darkblue2/northeast,
 /area/ice_colony/surface/command/checkpoint)
+"aBG" = (
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/plating/icefloor,
+/area/ice_colony/exterior/surface/container_yard)
+"aBH" = (
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/darkyellow2/west,
+/area/ice_colony/surface/research/tech_storage)
+"aBI" = (
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/dark2,
+/area/ice_colony/surface/research/tech_storage)
+"aBJ" = (
+/obj/item/device/mass_spectrometer/adv/objective,
+/turf/open/floor/dark2,
+/area/ice_colony/surface/research/tech_storage)
+"aBK" = (
+/obj/item/device/reagent_scanner/adv/objective,
+/turf/open/floor/dark2,
+/area/ice_colony/surface/research/tech_storage)
+"aBL" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/dark2,
+/area/ice_colony/surface/research/tech_storage)
+"aBM" = (
+/obj/structure/surface/table,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/darkyellow2/west,
+/area/ice_colony/surface/research/temporary)
+"aBN" = (
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/dark2,
+/area/ice_colony/surface/research/temporary)
+"aBO" = (
+/obj/structure/disposalpipe/segment,
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/dark2,
+/area/ice_colony/surface/research/temporary)
+"aBP" = (
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/darkyellow2/east,
+/area/ice_colony/surface/research/temporary)
 "aBQ" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N-corner"
@@ -7621,6 +7963,10 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/darkbrown2/north,
 /area/ice_colony/surface/garage/one)
+"aBS" = (
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/dark2,
+/area/ice_colony/surface/research/temporary)
 "aBT" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
@@ -7644,6 +7990,10 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/darkbrown2/north,
 /area/ice_colony/surface/garage/two)
+"aBX" = (
+/obj/item/device/reagent_scanner/adv/objective,
+/turf/open/floor/dark2,
+/area/ice_colony/surface/research/temporary)
 "aBY" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N-corner"
@@ -7706,6 +8056,13 @@
 /obj/effect/landmark/corpsespawner/russian,
 /turf/open/floor/darkred2/west,
 /area/ice_colony/surface/command/checkpoint)
+"aCh" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/darkbrown2,
+/area/ice_colony/surface/research)
 "aCi" = (
 /obj/structure/largecrate/random,
 /turf/open/shuttle/elevator,
@@ -7738,6 +8095,15 @@
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/plating,
 /area/ice_colony/surface/garage/one)
+"aCp" = (
+/obj/structure/surface/table/woodentable,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/wood,
+/area/ice_colony/surface/bar/bar)
+"aCq" = (
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/dark2,
+/area/ice_colony/surface/research/field_gear)
 "aCr" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/dark2,
@@ -7833,6 +8199,7 @@
 	pixel_x = 24
 	},
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/whitered/northeast,
 /area/ice_colony/surface/clinic/lobby)
 "aCG" = (
@@ -7854,6 +8221,32 @@
 	dir = 1
 	},
 /area/ice_colony/underground/hallway/south_east)
+"aCK" = (
+/obj/structure/machinery/cm_vending/sorted/medical/chemistry{
+	pixel_x = -1
+	},
+/turf/open/floor/darkpurple2/west,
+/area/ice_colony/surface/research)
+"aCL" = (
+/obj/structure/machinery/cm_vending/sorted/medical/chemistry{
+	pixel_x = -1
+	},
+/turf/open/floor/darkpurple2/east,
+/area/ice_colony/surface/research)
+"aCM" = (
+/obj/structure/surface/table/almayer,
+/obj/item/reagent_container/glass/beaker/bluespace{
+	pixel_y = 20
+	},
+/turf/open/floor/darkpurple2/west,
+/area/ice_colony/surface/research)
+"aCN" = (
+/obj/structure/surface/table/almayer,
+/obj/item/reagent_container/glass/beaker/bluespace{
+	pixel_y = 20
+	},
+/turf/open/floor/darkpurple2/east,
+/area/ice_colony/surface/research)
 "aCO" = (
 /obj/structure/surface/rack,
 /obj/item/frame/table,
@@ -7862,6 +8255,10 @@
 /obj/item/frame/table,
 /turf/open/shuttle/elevator/grating,
 /area/ice_colony/underground/hallway/south_east)
+"aCP" = (
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/plating,
+/area/ice_colony/surface/research)
 "aCQ" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
@@ -7925,6 +8322,7 @@
 /obj/structure/surface/table/reinforced,
 /obj/item/clipboard,
 /obj/item/tool/stamp,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/dark2,
 /area/ice_colony/surface/command/control/office)
 "aDb" = (
@@ -7941,6 +8339,7 @@
 /obj/item/clipboard,
 /obj/item/tool/stamp,
 /obj/effect/landmark/crap_item,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/dark2,
 /area/ice_colony/surface/command/control/office)
 "aDd" = (
@@ -8006,6 +8405,25 @@
 	},
 /turf/open/floor/darkblue2/east,
 /area/ice_colony/surface/command/checkpoint)
+"aDm" = (
+/obj/structure/reagent_dispensers/tank/fuel/custom,
+/turf/open/floor/darkpurple2/north,
+/area/ice_colony/surface/research)
+"aDn" = (
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/vault2/west,
+/area/ice_colony/surface/storage_unit/research)
+"aDo" = (
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/vault2/west,
+/area/ice_colony/surface/storage_unit/research)
+"aDp" = (
+/turf/open/shuttle/elevator/grating,
+/area/ice_colony/surface/hangar/checkpoint)
+"aDq" = (
+/obj/item/weapon/throwing_knife,
+/turf/open/shuttle/elevator/grating,
+/area/ice_colony/surface/hangar/checkpoint)
 "aDr" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
@@ -8103,6 +8521,7 @@
 /obj/item/paper_bin,
 /obj/item/tool/stamp,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/darkred2/west,
 /area/ice_colony/surface/command/checkpoint)
 "aDI" = (
@@ -8124,6 +8543,13 @@
 /obj/structure/window_frame/colony/reinforced,
 /turf/open/floor/plating,
 /area/ice_colony/surface/garage/one)
+"aDM" = (
+/obj/item/weapon/wirerod,
+/turf/open/shuttle/elevator/grating,
+/area/ice_colony/surface/hangar/checkpoint)
+"aDN" = (
+/turf/open/floor/dark2,
+/area/ice_colony/surface/hangar/checkpoint)
 "aDO" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/structure/pipes/standard/manifold/hidden/green{
@@ -8359,6 +8785,27 @@
 "aEq" = (
 /turf/open_space,
 /area/ice_colony/surface/garage/one)
+"aEr" = (
+/obj/structure/prop/structure_lattice{
+	dir = 8;
+	health = 300;
+	icon = 'icons/turf/elevator.dmi';
+	icon_state = "wall_broke"
+	},
+/turf/open/floor/dark2,
+/area/ice_colony/surface/hangar/checkpoint)
+"aEs" = (
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/vault2/west,
+/area/ice_colony/surface/storage_unit/telecomms)
+"aEt" = (
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/ice,
+/area/ice_colony/exterior/surface/valley/west)
+"aEu" = (
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/ice,
+/area/ice_colony/exterior/surface/valley/southeast)
 "aEv" = (
 /obj/structure/stairs/multiz/down{
 	dir = 4
@@ -8510,6 +8957,10 @@
 /obj/structure/window_frame/colony/reinforced,
 /turf/open/floor/plating,
 /area/ice_colony/surface/garage/one)
+"aEX" = (
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/gm/grass/grass1,
+/area/ice_colony/surface/hydroponics/south)
 "aEY" = (
 /obj/structure/surface/table,
 /obj/item/clothing/mask/rebreather,
@@ -8533,6 +8984,10 @@
 	},
 /turf/open/floor/darkbrown2,
 /area/ice_colony/surface/garage/one)
+"aFc" = (
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/gm/grass/grass1,
+/area/ice_colony/surface/hydroponics/south)
 "aFd" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
@@ -9050,6 +9505,7 @@
 /obj/structure/surface/table,
 /obj/item/storage/bag/plants,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/darkgreen2/southwest,
 /area/ice_colony/surface/hydroponics/south)
 "aGK" = (
@@ -9160,6 +9616,7 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/space/basic,
 /turf/open/floor/vault2/west,
 /area/ice_colony/surface/storage_unit/power)
@@ -9287,6 +9744,7 @@
 /area/ice_colony/surface/command/control/pv2)
 "aHu" = (
 /obj/structure/coatrack,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/wood,
 /area/ice_colony/surface/command/control/pv2)
 "aHv" = (
@@ -9442,6 +9900,7 @@
 "aHX" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/ammo_magazine/shotgun/slugs,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/ice_colony/surface/command/crisis)
 "aHY" = (
@@ -9479,6 +9938,7 @@
 /obj/structure/surface/table/woodentable,
 /obj/item/paper_bin,
 /obj/item/tool/stamp,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/wood,
 /area/ice_colony/surface/command/control/pv1)
 "aIe" = (
@@ -9497,6 +9957,7 @@
 /obj/structure/surface/table/woodentable,
 /obj/item/paper_bin,
 /obj/item/tool/stamp,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/ice_colony/surface/command/control/pv2)
 "aIi" = (
@@ -9544,6 +10005,7 @@
 "aIr" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/device/flashlight,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/wood,
 /area/ice_colony/surface/command/crisis)
 "aIs" = (
@@ -9556,6 +10018,7 @@
 /obj/structure/machinery/door_control{
 	name = "Colony Administration Lockdown"
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/wood,
 /area/ice_colony/surface/command/crisis)
 "aIu" = (
@@ -9569,11 +10032,13 @@
 /obj/structure/surface/table/woodentable,
 /obj/item/restraint/handcuffs,
 /obj/item/tool/stamp,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/wood,
 /area/ice_colony/surface/command/crisis)
 "aIw" = (
 /obj/structure/surface/table/woodentable,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/darkgreencorners2/north,
 /area/ice_colony/surface/hydroponics/lobby)
 "aIx" = (
@@ -9788,6 +10253,7 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/vault2/west,
 /area/ice_colony/surface/storage_unit/telecomms)
 "aJi" = (
@@ -9808,9 +10274,6 @@
 /obj/effect/landmark/hunter_secondary,
 /turf/open/ice,
 /area/ice_colony/exterior/surface/valley/southeast)
-"aJl" = (
-/turf/closed/wall/r_wall/unmeltable,
-/area/ice_colony/surface/hangar/checkpoint)
 "aJm" = (
 /obj/effect/landmark/crap_item,
 /obj/structure/machinery/power/apc/no_power/north,
@@ -9837,22 +10300,25 @@
 /turf/closed/shuttle/elevator{
 	dir = 9
 	},
-/area/shuttle/elevator1/ground)
+/area/ice_colony/surface/hangar/checkpoint)
 "aJr" = (
-/turf/closed/shuttle/elevator/gears,
-/area/shuttle/elevator1/ground)
-"aJs" = (
-/turf/closed/shuttle/elevator/button/arrivals,
-/area/shuttle/elevator1/ground)
+/obj/structure/prop/structure_lattice{
+	dir = 4;
+	health = 300;
+	icon = 'icons/turf/elevator.dmi';
+	icon_state = "wall_broke"
+	},
+/turf/open/floor/dark2,
+/area/ice_colony/surface/hangar/checkpoint)
 "aJt" = (
-/turf/closed/shuttle/elevator/arrivals,
-/area/shuttle/elevator1/ground)
+/obj/item/stack/rods,
+/turf/open/floor/dark2,
+/area/ice_colony/surface/hangar/checkpoint)
 "aJu" = (
-/turf/open/space/basic,
 /turf/closed/shuttle/elevator{
 	dir = 5
 	},
-/area/shuttle/elevator1/ground)
+/area/ice_colony/surface/hangar/checkpoint)
 "aJv" = (
 /obj/structure/machinery/storm_siren{
 	pixel_y = 5
@@ -9875,27 +10341,15 @@
 	},
 /turf/open/ice,
 /area/ice_colony/exterior/surface/valley/southwest)
-"aJz" = (
-/turf/closed/shuttle/elevator,
-/area/shuttle/elevator1/ground)
-"aJA" = (
-/turf/open/shuttle/elevator,
-/area/shuttle/elevator1/ground)
 "aJB" = (
+/obj/item/stack/rods,
 /turf/open/shuttle/elevator/grating,
-/area/shuttle/elevator1/ground)
-"aJC" = (
-/obj/structure/machinery/computer/shuttle_control/ice_colony/elevator1{
-	pixel_y = 30
-	},
-/turf/open/shuttle/elevator/grating,
-/area/shuttle/elevator1/ground)
+/area/ice_colony/surface/hangar/checkpoint)
 "aJD" = (
-/turf/open/space/basic,
 /turf/closed/shuttle/elevator{
 	dir = 1
 	},
-/area/shuttle/elevator1/ground)
+/area/ice_colony/surface/hangar/checkpoint)
 "aJE" = (
 /turf/open/floor/plating/warnplate/northeast,
 /area/ice_colony/surface/storage_unit/telecomms)
@@ -10012,34 +10466,29 @@
 /turf/open/floor/shiva/purple/west,
 /area/ice_colony/underground/research)
 "aJY" = (
-/turf/open/space/basic,
 /turf/closed/shuttle/elevator{
 	dir = 10
 	},
-/area/shuttle/elevator1/ground)
+/area/ice_colony/surface/hangar/checkpoint)
 "aJZ" = (
-/turf/open/space/basic,
-/turf/closed/shuttle/elevator{
-	dir = 8
-	},
-/area/shuttle/elevator1/ground)
-"aKa" = (
-/obj/structure/machinery/door/airlock/multi_tile/elevator/arrivals,
-/turf/open/space/basic,
-/turf/open/shuttle/elevator/grating,
-/area/shuttle/elevator1/ground)
-"aKb" = (
-/turf/open/space/basic,
 /turf/closed/shuttle/elevator{
 	dir = 4
 	},
-/area/shuttle/elevator1/ground)
+/area/ice_colony/surface/hangar/checkpoint)
+"aKa" = (
+/obj/structure/machinery/door/airlock/multi_tile/elevator/arrivals,
+/turf/open/floor/corsat/squares,
+/area/ice_colony/surface/hangar/checkpoint)
+"aKb" = (
+/turf/closed/shuttle/elevator{
+	dir = 8
+	},
+/area/ice_colony/surface/hangar/checkpoint)
 "aKc" = (
-/turf/open/space/basic,
 /turf/closed/shuttle/elevator{
 	dir = 6
 	},
-/area/shuttle/elevator1/ground)
+/area/ice_colony/surface/hangar/checkpoint)
 "aKd" = (
 /obj/structure/ice/thin/straight,
 /turf/open/ice,
@@ -10060,11 +10509,6 @@
 "aKh" = (
 /turf/open/space/basic,
 /turf/closed/wall/r_wall,
-/area/ice_colony/surface/hangar/checkpoint)
-"aKi" = (
-/obj/structure/machinery/door/airlock/multi_tile/elevator/access/arrivals,
-/turf/open/space/basic,
-/turf/open/floor/dark2,
 /area/ice_colony/surface/hangar/checkpoint)
 "aKj" = (
 /turf/open/space/basic,
@@ -10271,6 +10715,7 @@
 /obj/item/storage/box/donkpockets,
 /obj/item/storage/box/donkpockets,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/ice_colony/surface/bar/canteen)
 "aKW" = (
@@ -10510,12 +10955,6 @@
 "aLK" = (
 /turf/closed/wall/r_wall,
 /area/ice_colony/surface/research/field_gear)
-"aLL" = (
-/turf/closed/wall/r_wall/unmeltable,
-/area/ice_colony/surface/research/field_gear)
-"aLM" = (
-/turf/closed/wall/r_wall/unmeltable,
-/area/ice_colony/surface/research)
 "aLN" = (
 /turf/closed/wall/r_wall,
 /area/ice_colony/surface/research)
@@ -10703,6 +11142,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/space/basic,
 /turf/open/floor/darkred2/west,
 /area/ice_colony/surface/hangar/checkpoint)
@@ -10754,9 +11194,18 @@
 /obj/structure/fence,
 /turf/open/ice,
 /area/ice_colony/exterior/surface/valley/southeast)
+"aMu" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/paper_bin,
+/obj/item/tool/pen/blue,
+/obj/effect/landmark/objective_landmark/far,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/wood,
+/area/ice_colony/surface/command/crisis)
 "aMv" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/toolbox,
+/obj/item/device/mass_spectrometer/adv/objective,
 /turf/open/floor/darkyellow2/northwest,
 /area/ice_colony/surface/research/field_gear)
 "aMw" = (
@@ -10772,24 +11221,30 @@
 /turf/open/floor/darkbrown2,
 /area/ice_colony/surface/disposals)
 "aMy" = (
-/turf/closed/shuttle/elevator{
-	dir = 9
+/obj/structure/machinery/light{
+	dir = 1
 	},
-/area/shuttle/elevator3/ground)
+/obj/structure/closet/wardrobe/chemistry_white,
+/turf/open/floor/darkpurple2/northwest,
+/area/ice_colony/surface/research)
 "aMz" = (
-/turf/closed/shuttle/elevator/gears,
-/area/shuttle/elevator3/ground)
-"aMA" = (
-/turf/closed/shuttle/elevator/button/research,
-/area/shuttle/elevator3/ground)
-"aMB" = (
-/turf/closed/shuttle/elevator/research,
-/area/shuttle/elevator3/ground)
-"aMC" = (
-/turf/closed/shuttle/elevator{
-	dir = 5
+/obj/structure/sink{
+	pixel_y = 15
 	},
-/area/shuttle/elevator3/ground)
+/turf/open/floor/darkpurple2/north,
+/area/ice_colony/surface/research)
+"aMB" = (
+/obj/structure/reagent_dispensers/tank/fuel/custom,
+/obj/structure/reagent_dispensers/tank/fuel/custom,
+/turf/open/floor/darkpurple2/north,
+/area/ice_colony/surface/research)
+"aMC" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/closet/wardrobe/chemistry_white,
+/turf/open/floor/darkpurple2/northeast,
+/area/ice_colony/surface/research)
 "aMD" = (
 /obj/structure/reagent_dispensers,
 /turf/open/floor/plating,
@@ -10891,6 +11346,7 @@
 	},
 /obj/item/paper_bin,
 /obj/item/tool/stamp,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/space/basic,
 /turf/open/floor/darkred2/west,
 /area/ice_colony/surface/hangar/checkpoint)
@@ -10924,6 +11380,7 @@
 	dir = 4;
 	pixel_x = -24
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/darkyellow2/northwest,
 /area/ice_colony/surface/research/field_gear)
 "aNa" = (
@@ -10936,31 +11393,35 @@
 /turf/open/floor/dark2,
 /area/ice_colony/surface/research/field_gear)
 "aNd" = (
-/turf/closed/shuttle/elevator,
-/area/shuttle/elevator3/ground)
+/obj/structure/machinery/chem_dispenser/medbay{
+	pixel_x = -1
+	},
+/turf/open/floor/darkpurple2/west,
+/area/ice_colony/surface/research)
 "aNe" = (
-/turf/open/shuttle/elevator,
-/area/shuttle/elevator3/ground)
-"aNf" = (
-/turf/open/shuttle/elevator/grating,
-/area/shuttle/elevator3/ground)
+/obj/structure/bed/stool,
+/turf/open/floor/dark2,
+/area/ice_colony/surface/research)
 "aNg" = (
-/obj/structure/machinery/computer/shuttle_control/ice_colony/elevator3{
-	dir = 1;
-	pixel_y = 30
+/obj/structure/surface/table/almayer,
+/obj/item/storage/box/pillbottles{
+	pixel_x = 7;
+	pixel_y = 15
 	},
-/turf/open/shuttle/elevator/grating,
-/area/shuttle/elevator3/ground)
+/turf/open/floor/dark2,
+/area/ice_colony/surface/research)
 "aNh" = (
-/turf/closed/shuttle/elevator{
-	dir = 1
+/obj/structure/machinery/chem_dispenser/medbay{
+	pixel_x = -1
 	},
-/area/shuttle/elevator3/ground)
+/turf/open/floor/darkpurple2/east,
+/area/ice_colony/surface/research)
 "aNi" = (
 /obj/item/tool/shovel/snow,
 /turf/open/floor/plating,
 /area/ice_colony/surface/research)
 "aNj" = (
+/obj/item/device/mass_spectrometer/adv/objective,
 /turf/open/floor/plating,
 /area/ice_colony/surface/research)
 "aNk" = (
@@ -11020,6 +11481,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/freezerfloor,
 /area/ice_colony/surface/bar/canteen)
 "aNt" = (
@@ -11041,6 +11503,7 @@
 /obj/structure/surface/table/reinforced,
 /obj/item/reagent_container/food/snacks/fortunecookie/prefilled,
 /obj/item/tool/kitchen/utensil/fork,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/freezerfloor,
 /area/ice_colony/surface/bar/canteen)
 "aNw" = (
@@ -11306,6 +11769,10 @@
 	dir = 4
 	},
 /area/ice_colony/exterior/surface/cliff)
+"aOv" = (
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/vault2/west,
+/area/ice_colony/surface/storage_unit/power)
 "aOw" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
@@ -11561,29 +12028,17 @@
 /turf/open/floor/darkbrown2/northeast,
 /area/ice_colony/surface/research)
 "aPg" = (
-/turf/closed/shuttle/elevator{
-	dir = 10
+/obj/structure/machinery/chem_master{
+	pixel_x = -1
 	},
-/area/shuttle/elevator3/ground)
-"aPh" = (
-/turf/closed/shuttle/elevator{
-	dir = 8
-	},
-/area/shuttle/elevator3/ground)
-"aPi" = (
-/obj/structure/machinery/door/airlock/multi_tile/elevator/research,
-/turf/open/shuttle/elevator/grating,
-/area/shuttle/elevator3/ground)
-"aPj" = (
-/turf/closed/shuttle/elevator{
-	dir = 4
-	},
-/area/shuttle/elevator3/ground)
+/turf/open/floor/darkpurple2/southwest,
+/area/ice_colony/surface/research)
 "aPk" = (
-/turf/closed/shuttle/elevator{
-	dir = 6
+/obj/structure/machinery/chem_master{
+	pixel_x = -1
 	},
-/area/shuttle/elevator3/ground)
+/turf/open/floor/darkpurple2/southeast,
+/area/ice_colony/surface/research)
 "aPl" = (
 /turf/open/floor/dark2,
 /area/ice_colony/surface/research)
@@ -11671,6 +12126,7 @@
 	pixel_y = 3
 	},
 /obj/structure/machinery/light,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/freezerfloor,
 /area/ice_colony/surface/bar/canteen)
 "aPx" = (
@@ -11837,6 +12293,7 @@
 "aQa" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/darkbrown2/east,
 /area/ice_colony/surface/hangar/beta)
 "aQb" = (
@@ -12244,10 +12701,6 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/computer/shuttle_control/ice_colony/elevator3{
-	dir = 1;
-	pixel_y = 30
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
@@ -12331,11 +12784,13 @@
 "aRn" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/reagent_container/food/snacks/bigbiteburger,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/freezerfloor,
 /area/ice_colony/surface/bar/canteen)
 "aRo" = (
 /obj/item/tool/kitchen/knife/butcher,
 /obj/structure/surface/table/reinforced,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/freezerfloor,
 /area/ice_colony/surface/bar/canteen)
 "aRp" = (
@@ -12678,6 +13133,7 @@
 "aSu" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/darkbrown2/east,
 /area/ice_colony/surface/hangar/beta)
 "aSv" = (
@@ -12718,6 +13174,7 @@
 	},
 /obj/structure/surface/table,
 /obj/effect/landmark/crap_item,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/darkblue2/east,
 /area/ice_colony/surface/command/control/office)
 "aSB" = (
@@ -12747,6 +13204,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/darkpurple2/east,
 /area/ice_colony/surface/research)
 "aSG" = (
@@ -12778,6 +13236,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/darkbrown2/southwest,
 /area/ice_colony/surface/research)
 "aSL" = (
@@ -12839,6 +13298,7 @@
 /obj/effect/spawner/random/powercell,
 /obj/effect/spawner/random/tool,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/space/basic,
 /turf/open/floor/darkbrown2/west,
 /area/ice_colony/surface/hangar/alpha)
@@ -12929,6 +13389,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/darkpurplecorners2/east,
 /area/ice_colony/surface/research)
 "aTj" = (
@@ -12945,6 +13406,7 @@
 /turf/open/floor/darkpurplecorners2/north,
 /area/ice_colony/surface/research)
 "aTl" = (
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/darkpurple2/southwest,
 /area/ice_colony/surface/research)
 "aTm" = (
@@ -12970,10 +13432,12 @@
 "aTr" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/reagentgrinder,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/freezerfloor,
 /area/ice_colony/surface/bar/canteen)
 "aTs" = (
 /obj/structure/machinery/chem_master/condimaster,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/freezerfloor,
 /area/ice_colony/surface/bar/canteen)
 "aTt" = (
@@ -12999,6 +13463,7 @@
 	dir = 8
 	},
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/space/basic,
 /turf/open/floor/darkbrown2/west,
 /area/ice_colony/surface/hangar/alpha)
@@ -13610,6 +14075,7 @@
 /obj/structure/surface/table,
 /obj/item/storage/belt/utility,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/space/basic,
 /turf/open/floor/darkbrown2/east,
 /area/ice_colony/surface/hangar/alpha)
@@ -13632,6 +14098,7 @@
 /obj/structure/surface/table,
 /obj/item/device/flashlight,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/space/basic,
 /turf/open/floor/darkbrown2/west,
 /area/ice_colony/surface/hangar/beta)
@@ -13789,6 +14256,7 @@
 /obj/structure/surface/table,
 /obj/item/device/flashlight,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/space/basic,
 /turf/open/floor/darkbrown2/east,
 /area/ice_colony/surface/hangar/alpha)
@@ -13985,6 +14453,7 @@
 /obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/space/basic,
 /turf/open/floor/darkbrown2/west,
 /area/ice_colony/surface/hangar/beta)
@@ -14052,12 +14521,14 @@
 "aWY" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/tool,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/darkyellow2,
 /area/ice_colony/surface/research/tech_storage)
 "aWZ" = (
 /obj/structure/surface/rack,
 /obj/item/storage/box/lightstick/red,
 /obj/item/storage/box/lightstick/red,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/darkyellow2,
 /area/ice_colony/surface/research/tech_storage)
 "aXa" = (
@@ -14855,6 +15326,10 @@
 /obj/structure/machinery/portable_atmospherics/canister/empty,
 /turf/open/floor/dark2,
 /area/ice_colony/underground/engineering)
+"aZI" = (
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/dark2,
+/area/ice_colony/surface/garage/two)
 "aZJ" = (
 /obj/structure/closet/toolcloset,
 /turf/open/floor/dark2,
@@ -14992,6 +15467,7 @@
 /obj/structure/surface/table/reinforced,
 /obj/item/explosive/grenade/custom/metal_foam,
 /obj/item/explosive/grenade/custom/metal_foam,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/space/basic,
 /turf/open/floor/darkyellow2/southwest,
 /area/ice_colony/underground/engineering)
@@ -15287,6 +15763,11 @@
 /obj/structure/machinery/landinglight/ds1/delaythree,
 /turf/open/floor/plating/icefloor/warnplate,
 /area/ice_colony/exterior/surface/landing_pad)
+"bbn" = (
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/space/basic,
+/turf/open/floor/dark2,
+/area/ice_colony/surface/garage/two)
 "bbo" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo{
 	dir = 4
@@ -15299,6 +15780,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/space/basic,
 /turf/open/floor/darkyellow2/northeast,
 /area/ice_colony/underground/engineering)
@@ -15409,9 +15891,15 @@
 "bbH" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/cell/high/empty,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/space/basic,
 /turf/open/floor/darkyellow2/southwest,
 /area/ice_colony/underground/engineering)
+"bbI" = (
+/obj/structure/disposalpipe/segment,
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/darkgreen2/east,
+/area/ice_colony/surface/hydroponics/south)
 "bbJ" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/space/basic,
@@ -15424,6 +15912,24 @@
 /turf/open/space/basic,
 /turf/open/floor/darkyellow2,
 /area/ice_colony/underground/engineering)
+"bbL" = (
+/obj/structure/window/reinforced/tinted{
+	dir = 4
+	},
+/obj/structure/window/reinforced/tinted,
+/obj/structure/surface/table/reinforced,
+/obj/item/paper_bin,
+/obj/item/tool/pen/blue,
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/dark2,
+/area/ice_colony/surface/command/control/office)
+"bbM" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/darkblue2/east,
+/area/ice_colony/surface/command/checkpoint)
 "bbN" = (
 /obj/structure/machinery/power/smes/buildable{
 	name = "colony distribution SMES"
@@ -15492,6 +15998,34 @@
 /turf/open/space/basic,
 /turf/open/floor/darkyellow2/east,
 /area/ice_colony/underground/engineering)
+"bbW" = (
+/obj/structure/window/reinforced/tinted{
+	dir = 8
+	},
+/obj/structure/window/reinforced/tinted{
+	dir = 1
+	},
+/obj/structure/surface/table/reinforced,
+/obj/item/paper_bin,
+/obj/item/tool/pen/blue,
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/dark2,
+/area/ice_colony/surface/command/control/office)
+"bbX" = (
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/dark2,
+/area/ice_colony/surface/disposals)
+"bbY" = (
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/dark2,
+/area/ice_colony/surface/dorms/canteen)
+"bbZ" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/dark2,
+/area/ice_colony/surface/disposals)
 "bca" = (
 /obj/structure/ice/thin/corner,
 /turf/open/ice,
@@ -15566,6 +16100,19 @@
 /turf/open/space/basic,
 /turf/open/ice,
 /area/ice_colony/exterior/surface/cliff)
+"bcp" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/dark2,
+/area/ice_colony/surface/disposals)
+"bcq" = (
+/obj/structure/closet/cabinet,
+/obj/item/clothing/under/colonist,
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/wood,
+/area/ice_colony/surface/dorms)
 "bcr" = (
 /obj/structure/machinery/power/smes/buildable{
 	name = "colony distribution SMES"
@@ -15752,12 +16299,32 @@
 /turf/open/space/basic,
 /turf/open/floor/darkyellow2/north,
 /area/ice_colony/underground/engineering)
+"bcY" = (
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/wood,
+/area/ice_colony/surface/dorms)
+"bcZ" = (
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/gm/grass/grass1,
+/area/ice_colony/surface/hydroponics/lobby)
+"bda" = (
+/obj/structure/surface/table/woodentable,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/darkgreen2/west,
+/area/ice_colony/surface/hydroponics/lobby)
 "bdb" = (
 /turf/closed/wall/r_wall,
 /area/ice_colony/underground/requesition/storage)
 "bdc" = (
 /turf/closed/wall/r_wall/unmeltable,
 /area/ice_colony/underground/requesition/storage)
+"bdd" = (
+/obj/structure/surface/table/woodentable,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/darkgreen2/east,
+/area/ice_colony/surface/hydroponics/lobby)
 "bde" = (
 /turf/open/floor/darkbrown2/north,
 /area/ice_colony/underground/requesition)
@@ -15815,6 +16382,10 @@
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/dark2,
 /area/ice_colony/surface/excavation)
+"bdr" = (
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/wood,
+/area/ice_colony/surface/dorms)
 "bds" = (
 /turf/closed/ice/corner{
 	dir = 4
@@ -15854,10 +16425,22 @@
 /obj/structure/closet/crate,
 /turf/open/floor/plating/icefloor/warnplate/north,
 /area/ice_colony/underground/requesition)
+"bdB" = (
+/obj/item/device/healthanalyzer/objective,
+/turf/open/floor/cafeteria,
+/area/ice_colony/surface/clinic/treatment)
 "bdC" = (
 /obj/item/tool/warning_cone,
 /turf/open/floor/plating/icefloor/warnplate/west,
 /area/ice_colony/underground/requesition)
+"bdD" = (
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/cafeteria,
+/area/ice_colony/surface/clinic/storage)
+"bdE" = (
+/obj/item/device/healthanalyzer/objective,
+/turf/open/floor/cafeteria,
+/area/ice_colony/surface/clinic/storage)
 "bdF" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
 /obj/structure/machinery/firealarm{
@@ -16001,6 +16584,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/dark2,
 /area/ice_colony/surface/excavation)
 "bee" = (
@@ -16087,6 +16671,11 @@
 /turf/open/space/basic,
 /turf/closed/ice_rock/eastWall,
 /area/ice_colony/exterior/surface/cliff)
+"beq" = (
+/obj/structure/machinery/portable_atmospherics/hydroponics,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/gm/grass/grass1,
+/area/ice_colony/surface/hydroponics/north)
 "ber" = (
 /turf/open/floor/freezerfloor,
 /area/ice_colony/underground/requesition/storage)
@@ -16227,6 +16816,10 @@
 	dir = 1
 	},
 /area/ice_colony/exterior/surface/valley/south)
+"beU" = (
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/freezerfloor,
+/area/ice_colony/surface/dorms/restroom_w)
 "beV" = (
 /obj/structure/reagent_dispensers/beerkeg,
 /obj/structure/machinery/light{
@@ -16234,6 +16827,10 @@
 	},
 /turf/open/floor/freezerfloor,
 /area/ice_colony/underground/requesition/storage)
+"beW" = (
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/cafeteria,
+/area/ice_colony/surface/clinic/treatment)
 "beX" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/dark2,
@@ -16282,6 +16879,10 @@
 "bfh" = (
 /turf/open/floor/darkbrown2/east,
 /area/ice_colony/surface/excavation)
+"bfi" = (
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/freezerfloor,
+/area/ice_colony/surface/dorms/restroom_e)
 "bfj" = (
 /obj/structure/reagent_dispensers/beerkeg,
 /turf/open/floor/freezerfloor,
@@ -16324,6 +16925,7 @@
 /area/ice_colony/surface/excavation/storage)
 "bft" = (
 /obj/structure/surface/rack,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/excavation/storage)
 "bfu" = (
@@ -16338,6 +16940,7 @@
 "bfw" = (
 /obj/structure/surface/table,
 /obj/item/storage/box/donkpockets,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/darkblue2,
 /area/ice_colony/surface/excavation)
 "bfx" = (
@@ -16368,6 +16971,7 @@
 /obj/structure/surface/table,
 /obj/item/device/reagent_scanner,
 /obj/structure/machinery/light,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/darkpurple2,
 /area/ice_colony/surface/excavation)
 "bfE" = (
@@ -16495,6 +17099,14 @@
 	},
 /turf/open/ice,
 /area/ice_colony/exterior/surface/cliff)
+"bgb" = (
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/gm/grass/grass1,
+/area/ice_colony/surface/hydroponics/north)
+"bgc" = (
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/darkyellowcorners2,
+/area/ice_colony/surface/engineering)
 "bgd" = (
 /turf/closed/ice/corner{
 	dir = 8
@@ -16536,6 +17148,10 @@
 	},
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/underground/hangar)
+"bgm" = (
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/gm/grass/grass1,
+/area/ice_colony/surface/hydroponics/north)
 "bgn" = (
 /turf/open/space/basic,
 /turf/closed/wall/r_wall,
@@ -16548,6 +17164,10 @@
 /turf/open/space/basic,
 /turf/open/floor/dark2,
 /area/ice_colony/surface/tcomms)
+"bgq" = (
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/dark2,
+/area/ice_colony/surface/engineering)
 "bgr" = (
 /obj/item/tool/warning_cone,
 /turf/open/auto_turf/snow/layer2,
@@ -16571,6 +17191,14 @@
 /turf/open/space/basic,
 /turf/open/floor/darkyellow2/north,
 /area/ice_colony/surface/tcomms)
+"bgw" = (
+/obj/structure/machinery/conveyor{
+	dir = 4;
+	icon_state = "conveyor-1"
+	},
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/plating/icefloor,
+/area/ice_colony/surface/requesitions)
 "bgx" = (
 /obj/structure/machinery/bot/mulebot,
 /obj/structure/window/reinforced{
@@ -16620,6 +17248,10 @@
 /turf/open/space/basic,
 /turf/closed/wall,
 /area/ice_colony/surface/tcomms)
+"bgG" = (
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/plating/icefloor,
+/area/ice_colony/surface/requesitions)
 "bgH" = (
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/north)
@@ -16644,6 +17276,10 @@
 	},
 /turf/open/floor/plating/icefloor/warnplate,
 /area/ice_colony/underground/hangar)
+"bgL" = (
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/plating/icefloor,
+/area/ice_colony/surface/requesitions)
 "bgM" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E-corner"
@@ -16689,6 +17325,11 @@
 	},
 /turf/open/floor/plating/icefloor/warnplate/north,
 /area/ice_colony/underground/hangar)
+"bgU" = (
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/plating/icefloor,
+/area/ice_colony/surface/requesitions)
 "bgV" = (
 /obj/structure/ice/ice_rock/cornerOverlay{
 	dir = 1
@@ -17583,6 +18224,7 @@
 /obj/structure/surface/table/woodentable,
 /obj/item/device/flashlight/lamp,
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/wood,
 /area/ice_colony/surface/command/crisis)
 "bjY" = (
@@ -17645,6 +18287,10 @@
 "bki" = (
 /turf/open/floor/shiva/green/north,
 /area/ice_colony/underground/hallway/north_west)
+"bkj" = (
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/auto_turf/snow/layer3,
+/area/ice_colony/exterior/surface/valley/northwest)
 "bkk" = (
 /obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/plating,
@@ -17803,10 +18449,12 @@
 "bkX" = (
 /obj/structure/bookcase,
 /obj/item/book/manual/paperwork,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/library)
 "bkY" = (
 /obj/structure/bookcase/manuals/medical,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/library)
 "bkZ" = (
@@ -17969,6 +18617,7 @@
 /area/ice_colony/underground/crew/chapel)
 "blB" = (
 /obj/structure/surface/table/woodentable,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/carpet,
 /area/ice_colony/underground/crew/chapel)
 "blC" = (
@@ -17987,6 +18636,7 @@
 /area/ice_colony/underground/crew/morgue)
 "blF" = (
 /obj/structure/bookcase/manuals/research_and_development,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/library)
 "blG" = (
@@ -18288,6 +18938,7 @@
 /area/ice_colony/underground/hallway/north_west)
 "bmF" = (
 /obj/structure/bookcase/manuals/engineering,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/library)
 "bmG" = (
@@ -18426,12 +19077,14 @@
 /area/ice_colony/exterior/surface/clearing/south)
 "bnf" = (
 /obj/structure/surface/table/woodentable,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/library)
 "bng" = (
 /obj/structure/surface/rack,
 /obj/item/storage/toolbox/electrical,
 /obj/item/storage/toolbox/electrical,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/darkyellow2/west,
 /area/ice_colony/underground/engineering/locker)
 "bnh" = (
@@ -18664,12 +19317,14 @@
 /obj/item/tool/pen/blue{
 	pixel_x = 5
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/wood,
 /area/ice_colony/surface/command/control/pv2)
 "bob" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/drinks/bottle/holywater,
 /obj/structure/machinery/light,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/dark2,
 /area/ice_colony/underground/crew/morgue)
 "boc" = (
@@ -18679,6 +19334,7 @@
 	pixel_y = 2
 	},
 /obj/item/ammo_magazine/pistol/holdout,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/wood,
 /area/ice_colony/surface/command/crisis)
 "bod" = (
@@ -19108,8 +19764,7 @@
 /turf/open/floor/dark2,
 /area/ice_colony/underground/hallway/north_west)
 "bpJ" = (
-/turf/open/space/basic,
-/turf/closed/wall/r_wall/unmeltable,
+/turf/closed/wall/r_wall,
 /area/ice_colony/surface/hangar/checkpoint)
 "bpK" = (
 /turf/open/space/basic,
@@ -19131,9 +19786,8 @@
 /turf/open/floor/dark2,
 /area/ice_colony/underground/hallway/north_west)
 "bpN" = (
-/turf/open/space/basic,
-/turf/open/shuttle/elevator/grating,
-/area/shuttle/elevator1/ground)
+/turf/open/floor/corsat/squares,
+/area/ice_colony/surface/hangar/checkpoint)
 "bpO" = (
 /obj/structure/ice/thin/end{
 	dir = 8
@@ -19142,13 +19796,11 @@
 /turf/open/ice,
 /area/ice_colony/exterior/surface/valley/southeast)
 "bpP" = (
-/turf/open/space/basic,
 /turf/closed/shuttle/elevator,
-/area/shuttle/elevator1/ground)
+/area/ice_colony/surface/hangar/checkpoint)
 "bpQ" = (
-/turf/open/space/basic,
 /turf/open/shuttle/elevator,
-/area/shuttle/elevator1/ground)
+/area/ice_colony/surface/hangar/checkpoint)
 "bpR" = (
 /turf/open/space/basic,
 /turf/open/auto_turf/snow/layer3,
@@ -19166,9 +19818,8 @@
 /turf/open/floor/dark2,
 /area/ice_colony/underground/hallway/south_east)
 "bpU" = (
-/turf/open/space/basic,
 /turf/closed/shuttle/elevator/gears,
-/area/shuttle/elevator1/ground)
+/area/ice_colony/surface/hangar/checkpoint)
 "bpV" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -19742,6 +20393,7 @@
 /area/ice_colony/underground/crew/bball)
 "brU" = (
 /obj/structure/closet/emcloset,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/darkgreen2/northeast,
 /area/ice_colony/underground/crew/bball)
 "brV" = (
@@ -20082,6 +20734,8 @@
 "bth" = (
 /obj/structure/surface/table,
 /obj/item/stack/nanopaste,
+/obj/effect/landmark/objective_landmark/science,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/whitered/west,
 /area/ice_colony/underground/medical/or)
 "bti" = (
@@ -20542,6 +21196,7 @@
 /obj/structure/surface/table/reinforced,
 /obj/item/storage/box/beakers,
 /obj/item/reagent_container/glass/beaker/bluespace,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/whitered/east,
 /area/ice_colony/underground/medical/treatment)
 "buG" = (
@@ -20723,6 +21378,7 @@
 	health = 80
 	},
 /obj/item/tool/stamp,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/whitered/west,
 /area/ice_colony/underground/medical/lobby)
 "bvg" = (
@@ -20892,6 +21548,7 @@
 /obj/item/fuel_cell,
 /obj/item/fuel_cell,
 /obj/item/fuel_cell,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating,
 /area/ice_colony/underground/engineering/substation)
 "bvJ" = (
@@ -21409,6 +22066,7 @@
 	health = 80
 	},
 /obj/item/tool/stamp,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/whitered/southwest,
 /area/ice_colony/underground/medical/lobby)
 "bxl" = (
@@ -21774,6 +22432,7 @@
 /area/ice_colony/underground/maintenance/central)
 "byD" = (
 /obj/structure/machinery/power/apc/no_power/west,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/central)
 "byF" = (
@@ -21931,6 +22590,8 @@
 	pixel_x = 6;
 	pixel_y = 10
 	},
+/obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/whitered/north,
 /area/ice_colony/underground/medical/storage)
 "bzj" = (
@@ -21941,6 +22602,7 @@
 /obj/structure/surface/table,
 /obj/item/bodybag/cryobag,
 /obj/item/storage/box/syringes,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/whitered/north,
 /area/ice_colony/underground/medical/storage)
 "bzl" = (
@@ -21950,6 +22612,7 @@
 	pixel_x = 5;
 	pixel_y = 3
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/whitered/north,
 /area/ice_colony/underground/medical/storage)
 "bzm" = (
@@ -22069,6 +22732,7 @@
 "bzK" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/crap_item,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/darkblue2/northeast,
 /area/ice_colony/underground/command/center)
 "bzL" = (
@@ -22154,6 +22818,7 @@
 "bAa" = (
 /obj/structure/machinery/power/apc/no_power/south,
 /obj/structure/surface/rack,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/whitered,
 /area/ice_colony/underground/medical/storage)
 "bAb" = (
@@ -22220,6 +22885,7 @@
 "bAo" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/boiledspagetti,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/dark2,
 /area/ice_colony/underground/crew/canteen)
 "bAp" = (
@@ -22345,6 +23011,7 @@
 /obj/structure/surface/table/reinforced,
 /obj/item/paper_bin,
 /obj/item/tool/pen/blue,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/dark2,
 /area/ice_colony/underground/command/center)
 "bAK" = (
@@ -22435,6 +23102,7 @@
 /area/ice_colony/underground/security/marshal)
 "bAX" = (
 /obj/structure/surface/rack,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/darkyellow2/north,
 /area/ice_colony/surface/research/field_gear)
 "bAY" = (
@@ -23025,6 +23693,7 @@
 /obj/structure/surface/table,
 /obj/item/paper_bin,
 /obj/item/paper/research_notes,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/darkblue2,
 /area/ice_colony/underground/command/center)
 "bDd" = (
@@ -23613,6 +24282,7 @@
 "bFb" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/circuitboard/computer/atmos_alert,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/darkblue2/west,
 /area/ice_colony/underground/storage/highsec)
 "bFc" = (
@@ -23704,6 +24374,7 @@
 /area/ice_colony/underground/command/pv2)
 "bFs" = (
 /obj/structure/surface/table/woodentable,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/dorm_l)
 "bFt" = (
@@ -23815,11 +24486,13 @@
 "bFT" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/circuitboard/machine/smes,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/darkblue2,
 /area/ice_colony/underground/storage/highsec)
 "bFU" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/storage/box/trackimp,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/darkblue2,
 /area/ice_colony/underground/storage/highsec)
 "bFV" = (
@@ -23879,6 +24552,7 @@
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/paper_bin,
 /obj/item/tool/stamp,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/ice_colony/underground/command/pv1)
 "bGh" = (
@@ -23897,6 +24571,7 @@
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/paper_bin,
 /obj/item/tool/stamp,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/ice_colony/underground/command/pv2)
 "bGk" = (
@@ -24167,6 +24842,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/darkyellow2/north,
 /area/ice_colony/underground/storage)
 "bHm" = (
@@ -27256,6 +27932,7 @@
 	},
 /obj/item/ammo_magazine/pistol/holdout,
 /obj/item/ammo_magazine/pistol/holdout,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/darkred2,
 /area/ice_colony/underground/security/armory)
 "bSy" = (
@@ -27970,6 +28647,7 @@
 /area/ice_colony/underground/reception/checkpoint_south)
 "bVo" = (
 /obj/structure/surface/table,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/darkbrown2/southwest,
 /area/ice_colony/underground/requesition/lobby)
 "bVp" = (
@@ -28598,6 +29276,7 @@
 "bXD" = (
 /obj/structure/surface/table,
 /obj/item/tool/surgery/scalpel,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/dark2,
 /area/ice_colony/underground/crew/morgue)
 "bXE" = (
@@ -28632,6 +29311,7 @@
 /obj/item/tool/soap{
 	pixel_x = 5
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/whitered/west,
 /area/ice_colony/underground/medical/or)
 "bXO" = (
@@ -28640,6 +29320,7 @@
 	dir = 8;
 	health = 80
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/whitered/west,
 /area/ice_colony/underground/medical/lobby)
 "bXQ" = (
@@ -28655,6 +29336,7 @@
 /obj/structure/surface/table/woodentable,
 /obj/item/restraint/handcuffs,
 /obj/item/weapon/baton,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/ice_colony/underground/security/marshal)
 "bXS" = (
@@ -28665,6 +29347,7 @@
 /obj/structure/surface/table/reinforced,
 /obj/item/clipboard,
 /obj/item/tool/stamp,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/dark2,
 /area/ice_colony/underground/command/center)
 "bXU" = (
@@ -28723,6 +29406,7 @@
 "bYh" = (
 /obj/structure/surface/table,
 /obj/item/paper,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/dark2,
 /area/ice_colony/underground/reception)
 "bYi" = (
@@ -28734,6 +29418,7 @@
 "bYj" = (
 /obj/structure/surface/table,
 /obj/item/tool/hand_labeler,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/dark2,
 /area/ice_colony/underground/reception)
 "bYk" = (
@@ -28745,6 +29430,7 @@
 /area/ice_colony/underground/security/brig)
 "bYm" = (
 /obj/structure/surface/table/reinforced,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/ice_colony/underground/reception)
 "bYn" = (
@@ -28752,6 +29438,7 @@
 /turf/open/floor/darkgreen2/west,
 /area/ice_colony/underground/hallway/south_east)
 "bYo" = (
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/darkred2/north,
 /area/ice_colony/underground/reception/checkpoint_south)
 "bYp" = (
@@ -28864,6 +29551,8 @@
 /obj/item/device/flashlight,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /obj/item/stack/sheet/mineral/phoron,
+/obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/space/basic,
 /turf/open/floor/darkyellow2,
 /area/ice_colony/surface/tcomms)
@@ -28974,6 +29663,7 @@
 	pixel_y = 2
 	},
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/space/basic,
 /turf/open/floor/dark2,
 /area/ice_colony/surface/tcomms)
@@ -28998,6 +29688,7 @@
 /area/ice_colony/surface/hangar/hallway)
 "gDb" = (
 /obj/structure/surface/table,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/darkred2/north,
 /area/ice_colony/underground/reception/checkpoint_north)
 "gHI" = (
@@ -29703,6 +30394,7 @@
 /area/ice_colony/exterior/underground/caves/dig)
 "xrT" = (
 /obj/structure/surface/rack,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/darkyellow2/southwest,
 /area/ice_colony/surface/tcomms)
 "xyz" = (
@@ -32917,7 +33609,7 @@ aZF
 aZF
 bmQ
 bmU
-bmU
+ash
 bmU
 bmU
 bmU
@@ -34627,7 +35319,7 @@ bkJ
 bwF
 bls
 blc
-ble
+alj
 bkJ
 aQM
 aOx
@@ -35426,7 +36118,7 @@ aZF
 aZF
 bdb
 bdF
-ber
+aBj
 beV
 bfj
 bfj
@@ -35473,7 +36165,7 @@ bkJ
 bwI
 bls
 blc
-ble
+alj
 bkJ
 aRg
 aQC
@@ -35993,7 +36685,7 @@ bdH
 ber
 ber
 ber
-bfP
+aAY
 bge
 bdb
 bgy
@@ -36019,7 +36711,7 @@ bkJ
 aZF
 bmh
 bmi
-bmU
+ash
 bmU
 boR
 bmU
@@ -36272,7 +36964,7 @@ aZF
 aZF
 bdc
 bdI
-bet
+aBk
 bet
 ber
 bfP
@@ -36301,7 +36993,7 @@ bkJ
 aZF
 bmQ
 bmT
-bmU
+ash
 bmU
 bmU
 bmU
@@ -36572,7 +37264,7 @@ biz
 biS
 bjm
 bjm
-bjm
+aAm
 bjm
 bjm
 bmz
@@ -36839,7 +37531,7 @@ bev
 asM
 cON
 bdw
-bgZ
+aBi
 bgf
 bgs
 bdK
@@ -37981,7 +38673,7 @@ beX
 biC
 biX
 biX
-biX
+aAD
 bjN
 bjF
 bjF
@@ -38556,7 +39248,7 @@ bls
 bkJ
 bmj
 bmU
-bmU
+ash
 bmU
 bmU
 boT
@@ -42491,7 +43183,7 @@ amt
 bkg
 anA
 anA
-anA
+aAO
 anA
 anA
 bhj
@@ -43349,7 +44041,7 @@ bll
 bly
 blP
 bly
-bll
+avS
 bly
 bkR
 bkP
@@ -47570,7 +48262,7 @@ biO
 bji
 aZG
 bjA
-aZd
+aAz
 bki
 bkp
 bnx
@@ -48444,7 +49136,7 @@ btd
 bvm
 bwS
 bxt
-bxQ
+aqV
 bqZ
 bxv
 buL
@@ -48453,7 +49145,7 @@ bzE
 bAg
 bAI
 bBn
-bBR
+ada
 bAg
 bDc
 bDH
@@ -49262,7 +49954,7 @@ sii
 sii
 sii
 nLo
-aZd
+aAz
 bki
 bkp
 qEB
@@ -49271,7 +49963,7 @@ smj
 bki
 boE
 boj
-aeF
+axB
 qEB
 bkp
 boE
@@ -50136,7 +50828,7 @@ brK
 bwv
 bwS
 bxt
-bxQ
+aqV
 bqZ
 btm
 buL
@@ -51811,7 +52503,7 @@ bkS
 bkS
 bna
 bkT
-bnZ
+asm
 bkE
 bkr
 bkr
@@ -51839,7 +52531,7 @@ aZF
 aZF
 aZF
 byp
-buL
+acV
 btm
 bEF
 rKn
@@ -53793,7 +54485,7 @@ bPo
 bqx
 bri
 brR
-brk
+arm
 btt
 btY
 buN
@@ -54349,7 +55041,7 @@ blZ
 aku
 bkZ
 blF
-bkZ
+ass
 boH
 bpc
 bpu
@@ -55794,7 +56486,7 @@ bFs
 bGm
 bGN
 bGm
-bGN
+acs
 bGm
 bGN
 bKj
@@ -56036,7 +56728,7 @@ bgH
 bkI
 bkZ
 blq
-blI
+azt
 bmd
 akJ
 bnf
@@ -56312,9 +57004,9 @@ sii
 sii
 sii
 nLo
-aYX
+aAB
 amv
-bgH
+aAk
 bkI
 bkZ
 bkZ
@@ -56338,7 +57030,7 @@ buR
 bub
 bvZ
 brk
-bwW
+arf
 brh
 buL
 btm
@@ -56358,7 +57050,7 @@ bFw
 bGo
 bGO
 bGo
-bGO
+acE
 bGo
 bGO
 bKm
@@ -57163,8 +57855,8 @@ amU
 bkH
 bgH
 bgH
-bic
-bic
+azR
+azz
 bgH
 bgH
 bgH
@@ -57482,9 +58174,9 @@ bzs
 bzu
 bDS
 bEK
-bFw
+acF
 bGo
-bGO
+acE
 bGo
 bGO
 bGo
@@ -59131,7 +59823,7 @@ sii
 sii
 nLo
 bLH
-bpu
+aAE
 bpu
 buW
 bqA
@@ -59412,7 +60104,7 @@ sii
 sii
 sii
 nLo
-bpc
+aAN
 anB
 bpu
 buW
@@ -59695,7 +60387,7 @@ sii
 sii
 nLo
 bpc
-bpu
+aAF
 bpu
 buW
 bqx
@@ -61116,7 +61808,7 @@ aZF
 bmg
 bmO
 bnh
-bnh
+atd
 bnh
 boM
 bnL
@@ -63659,7 +64351,7 @@ box
 box
 bpn
 bXF
-bqe
+ars
 bqJ
 box
 box
@@ -64496,7 +65188,7 @@ aSr
 aYT
 aVo
 aVo
-aVo
+azG
 aUp
 aTF
 bnk
@@ -64504,7 +65196,7 @@ bnO
 box
 box
 bpn
-bXF
+aru
 bqe
 bqJ
 box
@@ -64769,7 +65461,7 @@ bbe
 baU
 bbQ
 baU
-bbv
+aAT
 baU
 baL
 box
@@ -64846,7 +65538,7 @@ aZF
 aZF
 aZF
 bTN
-bTV
+acp
 bUd
 bUe
 bUv
@@ -64856,7 +65548,7 @@ bVl
 bVw
 bVk
 bVM
-bVU
+abC
 bVa
 bEe
 bCI
@@ -65119,7 +65811,7 @@ bOX
 bRG
 bPx
 bQI
-bYk
+acr
 bOX
 bEe
 bCI
@@ -65906,7 +66598,7 @@ aZJ
 aYU
 aXG
 aVu
-aVu
+azP
 box
 aTU
 bnk
@@ -66215,7 +66907,7 @@ bqP
 brt
 bsf
 bsf
-bse
+ahG
 bqP
 bmU
 bWx
@@ -97181,7 +97873,7 @@ adC
 adV
 abD
 abm
-abE
+bgG
 adV
 abD
 abm
@@ -97735,7 +98427,7 @@ aar
 aaQ
 abi
 aaI
-aaI
+bkj
 aaI
 aaI
 aaI
@@ -98864,7 +99556,7 @@ abl
 aby
 aqy
 aqc
-abT
+bgU
 aco
 abE
 abE
@@ -101443,7 +102135,7 @@ aaQ
 amA
 ane
 apR
-alJ
+aEt
 alJ
 aaP
 aaZ
@@ -102312,7 +103004,7 @@ alJ
 alJ
 alJ
 alJ
-alJ
+aEt
 aaC
 alJ
 alJ
@@ -102531,20 +103223,20 @@ abE
 abE
 abm
 abm
-abE
+bgG
 abm
 abD
 abE
 abE
 adV
 abD
-abE
+bgG
 apY
 adV
 abD
 abm
 abE
-adV
+bgw
 abD
 aem
 aem
@@ -102817,12 +103509,12 @@ abE
 abm
 abD
 abm
-abE
+bgL
 adV
 abD
 abm
 afc
-adV
+bgw
 abD
 abm
 agB
@@ -103095,7 +103787,7 @@ abE
 abE
 abm
 abm
-abE
+bgL
 abm
 abD
 abm
@@ -104583,7 +105275,7 @@ alJ
 alJ
 alJ
 alJ
-alJ
+aEt
 aph
 aaQ
 alJ
@@ -105397,7 +106089,7 @@ ajQ
 atL
 aul
 aul
-aul
+bcZ
 aul
 aul
 aul
@@ -107426,7 +108118,7 @@ aSx
 aTc
 aTH
 aTZ
-aTZ
+aBM
 aUQ
 aSw
 aSw
@@ -107705,10 +108397,10 @@ aQc
 aQR
 aOm
 aSy
-aTd
+aBS
 aTI
 aTd
-aTd
+aBN
 aUR
 aUQ
 aSw
@@ -107980,17 +108672,17 @@ aaC
 aaC
 aLK
 aNa
-aNc
+aCq
 aNc
 aNc
 aQc
 aQR
 aOm
 aSz
-aTd
+aBX
 aTJ
 aUa
-aUa
+aBO
 aUa
 aVh
 aSw
@@ -108272,7 +108964,7 @@ bGU
 aTe
 aTK
 aUb
-aUb
+aBP
 aUS
 aVi
 aSw
@@ -109050,7 +109742,7 @@ ahH
 ahA
 ahA
 ahH
-aig
+beq
 aih
 aih
 aih
@@ -109387,13 +110079,13 @@ asi
 asi
 asi
 aJN
-aLL
-aLL
-aLL
-aLL
-aLL
-aLM
-aLM
+aLN
+aLN
+aLN
+aLN
+aLN
+aLN
+aLN
 aQV
 aRL
 aSE
@@ -109597,7 +110289,7 @@ aey
 afJ
 ahH
 aig
-aih
+bgm
 aih
 aih
 aig
@@ -109607,7 +110299,7 @@ aaI
 ahH
 aig
 aih
-aih
+bgb
 aih
 aig
 ahH
@@ -109647,7 +110339,7 @@ ahA
 ahA
 ayW
 azw
-azx
+aFc
 azx
 azx
 azw
@@ -109669,13 +110361,13 @@ asi
 asi
 asi
 asi
-aLL
+aLN
 aMy
-aNd
-aNd
+aCM
+aCK
 aNd
 aPg
-aLM
+aLN
 aQW
 aRM
 aSF
@@ -109938,7 +110630,7 @@ ahA
 ahA
 ayW
 azx
-azx
+aFc
 azw
 azx
 azx
@@ -109951,13 +110643,13 @@ asi
 asi
 asi
 asi
-aLL
+aLN
 aMz
+aPl
+aPl
 aNe
-aNf
-aNe
-aPh
-aLM
+aTm
+aLN
 aQX
 aRN
 aSG
@@ -110221,7 +110913,7 @@ ahA
 ayW
 azw
 azx
-azx
+aEX
 azx
 azw
 ayW
@@ -110233,12 +110925,12 @@ abn
 aJN
 asi
 asi
-aLL
-aMz
-aNf
-aNf
-aNf
-aPi
+aLN
+aDm
+aPl
+aPl
+aPl
+aTm
 aQg
 aQY
 aRO
@@ -110485,7 +111177,7 @@ ahA
 asn
 ayp
 azL
-azx
+aEX
 azL
 ayp
 asn
@@ -110515,12 +111207,12 @@ aar
 aaC
 uBE
 asi
-aLL
-aMA
+aLN
+aDm
 aNg
-aNe
-aNf
-aNf
+aPl
+aPl
+aTm
 aQh
 aQY
 aRO
@@ -110531,7 +111223,7 @@ aPl
 aUu
 aUX
 aVp
-aVP
+aBK
 aWt
 aWV
 aUZ
@@ -110797,12 +111489,12 @@ aaf
 aar
 uBE
 uBE
-aLM
+aLN
 aMB
-aNf
-aNe
-aNf
-aNf
+aNg
+aPl
+aPl
+aTm
 aQi
 aQZ
 aRP
@@ -111079,12 +111771,12 @@ aac
 aae
 arM
 asi
-aLM
-aMz
-aNf
-aNf
-aNf
-aNf
+aLN
+aDm
+aPl
+aPl
+aPl
+aTm
 aQi
 aRa
 aRQ
@@ -111095,7 +111787,7 @@ aUg
 aUv
 aUY
 aVq
-aVq
+aBL
 aWu
 aWX
 aUZ
@@ -111361,13 +112053,13 @@ aac
 aae
 ats
 asi
-aLM
+aLN
 aMz
+aPl
+aPl
 aNe
-aNf
-aNe
-aPj
-aLM
+aTm
+aLN
 aRb
 aRR
 aSI
@@ -111643,13 +112335,13 @@ aac
 aae
 arM
 asi
-aLM
+aLN
 aMC
-aNh
-aNh
+aCN
+aCL
 aNh
 aPk
-aLM
+aLN
 aRc
 aRS
 aSJ
@@ -111925,13 +112617,13 @@ aad
 aaU
 arM
 atq
-aLM
-aLM
-aLM
-aLM
-aLM
-aLM
-aLM
+aLN
+aLN
+aLN
+aLN
+aLN
+aLN
+aLN
 aRd
 aRT
 aSK
@@ -112164,7 +112856,7 @@ asN
 ati
 atM
 aHV
-auD
+bda
 auZ
 avE
 auD
@@ -112216,7 +112908,7 @@ aPe
 aQj
 aRe
 aRU
-aSL
+aCh
 aTm
 rAm
 aPl
@@ -112507,7 +113199,7 @@ aUX
 aVp
 aVQ
 aVO
-aVO
+aBH
 aVP
 aYf
 aUZ
@@ -112747,8 +113439,8 @@ ayr
 ayr
 ayr
 ayr
-ayr
-ayr
+bbI
+bbI
 ayr
 aFi
 aFI
@@ -112788,8 +113480,8 @@ aUw
 aUX
 aVp
 aVP
-aVP
-aVP
+aBJ
+aBI
 aXB
 aYg
 aUZ
@@ -113055,7 +113747,7 @@ asi
 atq
 aLN
 aMF
-aNj
+aCP
 aNj
 aOo
 aPm
@@ -113574,7 +114266,7 @@ asN
 ati
 atR
 auq
-auI
+bdd
 avg
 avE
 auI
@@ -116719,8 +117411,8 @@ aKf
 aKo
 aKS
 aKR
-aKR
-aKR
+aDn
+aDn
 aNn
 aKf
 auw
@@ -117565,7 +118257,7 @@ aKf
 aKr
 aKr
 aKR
-aKR
+aDo
 aKR
 aNq
 aKf
@@ -121469,7 +122161,7 @@ asu
 arE
 asu
 arQ
-arQ
+bdr
 arF
 avn
 aqS
@@ -121771,7 +122463,7 @@ aBc
 aBw
 aCb
 aCz
-aUk
+bbL
 aDA
 aEj
 aEI
@@ -122018,7 +122710,7 @@ akW
 akW
 akW
 akW
-akW
+beU
 akW
 akW
 akW
@@ -122051,7 +122743,7 @@ aAy
 aAx
 aBc
 aBw
-aCc
+bbW
 aCA
 aDa
 aCa
@@ -122309,7 +123001,7 @@ aqv
 aqO
 ark
 arF
-arQ
+bdr
 arQ
 asu
 arE
@@ -122322,7 +123014,7 @@ aqS
 arF
 arQ
 arQ
-asu
+bcq
 axl
 axJ
 ayt
@@ -122345,7 +123037,7 @@ aGk
 aGL
 aHh
 aHF
-aHW
+aMu
 aIs
 aIK
 aHh
@@ -122388,7 +123080,7 @@ ayC
 bch
 bcC
 bdk
-bdk
+aBp
 bdk
 bdk
 bfs
@@ -122967,7 +123659,7 @@ bci
 bcJ
 bdn
 bee
-waD
+aBl
 bfd
 bfy
 bci
@@ -125142,7 +125834,7 @@ aqS
 arF
 arQ
 arQ
-asu
+bcq
 axn
 axO
 ayx
@@ -125412,7 +126104,7 @@ aqX
 arw
 arE
 arS
-arQ
+bdr
 ast
 arE
 ast
@@ -125423,7 +126115,7 @@ avm
 avW
 arE
 arS
-arQ
+bcY
 ast
 axn
 axP
@@ -125709,7 +126401,7 @@ arE
 arE
 axn
 axQ
-ayz
+bbY
 azg
 azA
 apC
@@ -125960,7 +126652,7 @@ abL
 akD
 ald
 alc
-alc
+bfi
 amj
 alq
 alq
@@ -126349,7 +127041,7 @@ ayl
 ayl
 bci
 bcS
-bcL
+aBm
 bel
 beQ
 bcL
@@ -126529,7 +127221,7 @@ alc
 alc
 anq
 alc
-alc
+bfi
 alc
 api
 alc
@@ -126834,7 +127526,7 @@ aqS
 arF
 arQ
 arQ
-asu
+bcq
 axn
 axU
 ayz
@@ -127128,7 +127820,7 @@ aAx
 aBd
 aBF
 aCm
-aCm
+bbM
 aDl
 aDK
 aBd
@@ -127477,7 +128169,7 @@ aar
 lJQ
 bci
 bcV
-bcL
+aBm
 ben
 beQ
 bfS
@@ -128585,7 +129277,7 @@ aXf
 aVV
 aVV
 aVV
-aVV
+aBG
 aVV
 aVV
 aZs
@@ -129411,10 +130103,10 @@ aLh
 aLi
 aMa
 aML
-qny
+aCp
 qny
 aOD
-qny
+aCp
 aKy
 aKy
 aKy
@@ -130273,7 +130965,7 @@ aui
 aVw
 aVV
 aVV
-aVV
+aBG
 aVV
 biY
 aYx
@@ -134975,7 +135667,7 @@ afo
 agg
 agi
 agZ
-afo
+bgq
 aim
 aeI
 abL
@@ -136720,7 +137412,7 @@ aAW
 aDX
 aAW
 aAW
-aAW
+aZI
 aGb
 aoI
 aoF
@@ -137528,7 +138220,7 @@ aax
 aax
 aob
 aos
-aoV
+bdB
 apk
 aou
 apF
@@ -137818,7 +138510,7 @@ aoV
 aqD
 aoW
 aoV
-aoV
+bdB
 arY
 aou
 asD
@@ -137858,13 +138550,13 @@ aoG
 aoG
 aoG
 aoG
-aaU
-aJl
-aJl
-aJl
-bpJ
-bpJ
-bpJ
+aoG
+acm
+aac
+aac
+aac
+aac
+aac
 bpJ
 aKL
 aKj
@@ -138139,11 +138831,11 @@ aoI
 aoF
 aoG
 aoG
-aCW
-acm
-aJl
+aoG
+aoG
+acj
 aJq
-aJz
+bpP
 bpP
 bpP
 aJY
@@ -138363,7 +139055,7 @@ aeg
 aeg
 aeg
 ajx
-air
+bgc
 ait
 aeI
 aax
@@ -138411,7 +139103,7 @@ bvn
 bwA
 aEb
 bvn
-bvn
+bbn
 aFC
 buZ
 bsF
@@ -138420,13 +139112,13 @@ bsF
 aoG
 aoF
 aoK
-aGC
-aaS
-acm
-aJl
+aoG
+aoG
+aoF
+aDN
 aJr
-aJA
-bpN
+bpQ
+aDp
 bpQ
 aJZ
 bpJ
@@ -138702,16 +139394,16 @@ bsG
 aoG
 aoF
 aoG
-aGD
-aaQ
-acm
-aJl
-aJr
+aoT
+aoG
+aoF
+aDN
+aDN
 aJB
-bpN
-bpN
+aDM
+aDp
 aKa
-aKi
+aKj
 aKj
 aKj
 aLE
@@ -138984,14 +139676,14 @@ bsG
 aoF
 aoF
 aoG
-aGE
-aaQ
-acm
-aJl
-aJs
-aJC
+aoT
+aoG
+aoF
+aDN
+aDN
+aDp
 bpQ
-bpN
+aDp
 bpN
 aKj
 aKj
@@ -139267,13 +139959,13 @@ aoF
 aoG
 aoG
 aoG
-aaQ
-acm
-aJl
+aoG
+aoG
+aDN
 aJt
-aJB
+aDp
 bpQ
-bpN
+aDp
 bpN
 aKj
 aKj
@@ -139549,13 +140241,13 @@ aoG
 aoG
 aoG
 aoG
-abc
-acm
-aJl
-aJr
-aJB
-bpN
-bpN
+aoG
+aoG
+aDN
+aEr
+aDp
+aDp
+aDq
 bpN
 aKj
 aKj
@@ -139791,7 +140483,7 @@ atF
 aqq
 aqq
 aqq
-aqq
+bdD
 aqq
 asd
 apJ
@@ -139832,11 +140524,11 @@ bqs
 bqs
 bqs
 bqs
-bdV
-bpJ
+aoG
+aaU
 bpU
 bpQ
-bpN
+aDp
 bpQ
 aKb
 bpJ
@@ -140066,13 +140758,13 @@ aax
 aax
 aob
 aoA
-aoV
+beW
 apo
 aob
 apN
 aqq
 aqq
-aqq
+bdE
 aqq
 aqq
 asd
@@ -140115,7 +140807,7 @@ bqs
 bqs
 bqs
 bdV
-bpJ
+aac
 aJu
 aJD
 aJD
@@ -140397,12 +141089,12 @@ arv
 arv
 arv
 bdV
-bpJ
-bpJ
-bpJ
-bpJ
-bpJ
-bpJ
+aac
+aac
+aac
+aac
+aac
+aac
 bpJ
 aKP
 aLs
@@ -145182,9 +145874,9 @@ aky
 amm
 aFE
 aGe
+aOv
 aGH
-aGH
-aGH
+aOv
 aHP
 aIn
 aFE
@@ -147448,7 +148140,7 @@ amm
 xfO
 aJi
 aJi
-aJi
+aEs
 aJF
 aJd
 auW
@@ -148269,7 +148961,7 @@ byG
 axc
 axw
 ayn
-ayU
+bbZ
 azs
 azs
 aMx
@@ -148553,7 +149245,7 @@ axx
 ayn
 ayU
 azs
-azs
+bbX
 aAn
 awP
 awL
@@ -149115,7 +149807,7 @@ awP
 axf
 axz
 ayn
-ayU
+bcp
 azs
 azs
 aAp
@@ -151111,8 +151803,8 @@ aaP
 aaZ
 awL
 awL
-awL
-awL
+aEu
+aEu
 awL
 awL
 aca

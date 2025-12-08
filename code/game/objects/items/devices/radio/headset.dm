@@ -1248,7 +1248,7 @@
 	name = "UPP headset"
 	desc = "A special headset used by UPP military. To access the colony channel, use :o."
 	frequency = UPP_FREQ
-	initial_keys = list(/obj/item/device/encryptionkey/upp, /obj/item/device/encryptionkey/colony)
+	initial_keys = list(/obj/item/device/encryptionkey/colony)
 	has_hud = TRUE
 	hud_type = MOB_HUD_FACTION_UPP
 	minimap_flag = MINIMAP_FLAG_UPP
@@ -1289,7 +1289,7 @@
 	name = "CLF headset"
 	desc = "A special headset used by small groups of trained operatives. Or terrorists. To access the colony channel use :o."
 	frequency = CLF_FREQ
-	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/clf)
+	initial_keys = list(/obj/item/device/encryptionkey/colony)
 	minimap_flag = MINIMAP_FLAG_CLF
 	has_hud = TRUE
 	hud_type = MOB_HUD_FACTION_CLF
@@ -1434,7 +1434,7 @@
 	name = "\improper UPP headset"
 	desc = "A special headset used by recon elements of the UPP military."
 	frequency = UPP_FREQ
-	initial_keys = list(/obj/item/device/encryptionkey/upp, /obj/item/device/encryptionkey/colony)
+	initial_keys = list(/obj/item/device/encryptionkey/upp)
 	volume = RADIO_VOLUME_QUIET
 	ignore_z = FALSE
 	has_hud = TRUE

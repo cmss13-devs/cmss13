@@ -296,7 +296,7 @@
 
 		if(INJECTOR_MODE_PRECISE)
 			var/injection_duration = 4.5 SECONDS
-			injection_duration = (injection_duration * user.get_skill_duration_multiplier(SKILL_MEDICAL)) // for some reason, moving while injecting speeds up the duration
+			injection_duration = (injection_duration * user.get_skill_duration_multiplier(SKILL_MEDICAL))
 
 			if(M == user) // spamming do_afters results in the null units injected bug which does nothing, but its really fucking annoying and ive got no fucking clue how to fix it, so try not to spam your injector more than the required amount - nihi
 				user.visible_message(SPAN_WARNING("[user] begins to carefully administer \the [src] to themselves..."), SPAN_WARNING("You begin to carefully administer \the [src] to yourself..."))

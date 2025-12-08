@@ -60,15 +60,12 @@
 /obj/item/reagent_container/blood/proc/update_beam()
 	if(current_beam)
 		QDEL_NULL(current_beam)
-	else if(connected_from && connected_to)
+
+	if(connected_from && connected_to && connected_from != connected_to) // so we dont beam to ourselves
 		current_beam = connected_from.beam(connected_to, "iv_tube")
 
 /obj/item/reagent_container/blood/attack(mob/attacked_mob, mob/user)
 	. = ..()
-
-	if(attacked_mob == user)
-		to_chat(user, SPAN_WARNING("You cannot connect this to yourself!"))
-		return
 
 	if(connected_to == attacked_mob)
 		STOP_PROCESSING(SSobj, src)
@@ -122,6 +119,10 @@
 	if(!(get_dist(src, connected_to) <= 1 && isturf(connected_to.loc)))
 		bad_disconnect()
 		return PROCESS_KILL
+
+	//if we're using it on ourselves, we should be slowed
+	if(connected_to == connected_from)
+		connected_to.set_effect(3, SLOW) //3 ticks, adjust_effect would stack, set_effect just refreshes it, i also didnt want to set the effect to zero upon bad_disconnect or detach due to possible exploity issues - nihi
 
 	//give blood
 	if(mode == BLOOD_BAG_INJECTING)

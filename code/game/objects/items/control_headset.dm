@@ -1,18 +1,43 @@
 
-/obj/item/device/control_headset_xeno
+/obj/item/clothing/head/control_headset_xeno
 	name = "X993A1-X Control Headset"
 	desc = "This disturbing apparatus is designed to be surgically grafted onto live, braindead XX-121 specimen, allowing an user to remotely control their body at will."
 	icon = 'icons/obj/items/clothing/glasses/misc.dmi'
 	icon_state = "cam_gear_off"
+	xeno_icon_state = "headset"
+	xeno_types = list(/mob/living/carbon/xenomorph/drone)
 	var/obj/structure/machinery/camera/camera
 
-/obj/item/device/control_headset_xeno/Initialize(mapload, ...)
+/obj/item/clothing/head/control_headset_xeno/Initialize(mapload, ...)
 	. = ..()
 	camera = new /obj/structure/machinery/camera(src)
 
-/obj/item/device/control_headset_xeno/Destroy()
+/obj/item/clothing/head/control_headset_xeno/Destroy()
 	QDEL_NULL(camera)
 	return ..()
+
+/obj/item/clothing/head/control_headset_xeno/attack(mob/living/M, mob/living/user)
+	if(!isxeno(M))
+		return ..()
+	to_chat(user, SPAN_NOTICE("You can't just shove the headset onto a xenomorph! You need to graft the neural connections in place."))
+	return
+
+/obj/item/clothing/head/control_headset_xeno/equipped(mob/living/carbon/xenomorph/xuser, slot, silent)
+	. = ..()
+	if(!isxeno(xuser))
+		if(!(slot == SLOT_HEAD))
+			return
+		dropped(xuser)
+		xuser.visible_message(SPAN_WARNING("[src] falls off [xuser]'s head."))
+		return
+	playsound(xuser, 'sound/machines/screen_output1.ogg', 50)
+	xuser.visible_message(SPAN_NOTICE("Sensors start to beep and mechanisms whirr as the control headset is grafted onto [xuser]'s head."))
+	xuser.AddComponent(/datum/component/xeno_control_headset)
+	xuser.set_hive_and_update(XENO_HIVE_CONTROLLED)
+	// Create their vis object if needed
+	if(!xuser.head_icon_holder)
+		xuser.head_icon_holder = new(null, xuser)
+		xuser.vis_contents += xuser.head_icon_holder
 
 /obj/item/clothing/head/control_headset_marine
 	name = "X993A1-M Control Headset"
@@ -68,7 +93,7 @@
 		return
 
 	to_chat(owner, SPAN_NOTICE("You start connecting to [picked_xeno]'s headset..."))
-	if(!do_after(owner, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+	if(!do_after(owner, 0.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		to_chat(owner, SPAN_WARNING("You were interrupted!"))
 		return
 
@@ -94,3 +119,10 @@
 /datum/action/lose_control/action_activate()
 	..()
 	SEND_SIGNAL(owner, COMSIG_XENO_CONTROL_HEADSET_UNCONTROL, owner)
+
+/mob/living/carbon/xenomorph/proc/add_hat()
+	ADD_TRAIT(src, TRAIT_XENO_BRAINDEAD, REF(src))
+	var/obj/item/clothing/head/control_headset_xeno/headset = new(src)
+	xeno_put_in_slot(headset, WEAR_HEAD)
+	update_inv_head()
+

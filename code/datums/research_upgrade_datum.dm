@@ -116,7 +116,7 @@
 	minimum_price = 100
 	behavior = RESEARCH_UPGRADE_ITEM
 	upgrade_type = ITEM_ACCESSORY_UPGRADE
-	item_reference = /obj/item/device/control_headset_xeno
+	item_reference = /obj/item/clothing/head/control_headset_xeno
 
 /datum/research_upgrades/item/headset_m
 	name = "X993A1-M Control Headset"

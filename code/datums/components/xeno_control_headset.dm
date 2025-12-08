@@ -79,7 +79,7 @@ GLOBAL_LIST_EMPTY_TYPED(controlled_xenos, /mob/living/carbon/xenomorph)
 	SIGNAL_HANDLER
 
 	var/true_max_range = maximum_range
-	if(controlling_set.connected_tower)
+	if(controlling_set?.connected_tower)
 		true_max_range = maximum_range * controlling_set.connected_tower.range_boost
 
 	// bro
@@ -107,5 +107,9 @@ GLOBAL_LIST_EMPTY_TYPED(controlled_xenos, /mob/living/carbon/xenomorph)
 	controlled_xeno.mind.transfer_to(controlling_human, TRUE)
 	REMOVE_TRAIT(controlled_xeno, TRAIT_XENO_CONTROLLED, REF(src))
 	to_chat(controlling_human, SPAN_NOTICE("You have lost control of [controlled_xeno]!"))
+
+	UnregisterSignal(controlling_human, COMSIG_MOB_DEATH)
+	UnregisterSignal(controlled_xeno, COMSIG_MOVABLE_MOVED)
+
 	being_controlled = FALSE
 	controlling_human = null

@@ -177,6 +177,16 @@
 
 		apply_overlay(X_L_HAND_LAYER)
 
+/mob/living/carbon/xenomorph/update_inv_head()
+	. = ..()
+
+	var/obj/item/clothing/head/headgear = head
+	if(!headgear?.xeno_icon_state)
+		head_icon_holder.icon_state = "none"
+		return
+
+	update_icon_holder(head_icon_holder, headgear.xeno_icon_state)
+
 /mob/living/carbon/xenomorph/update_inv_back()
 	if(!backpack_icon_holder)
 		return // Xenos will only have a vis_obj if they've been equipped with a pack before
@@ -185,6 +195,10 @@
 	if(!backpack?.xeno_icon_state)
 		backpack_icon_holder.icon_state = "none"
 		return
+
+	update_icon_holder(backpack_icon_holder, backpack.xeno_icon_state)
+
+/mob/living/carbon/xenomorph/proc/update_icon_holder(atom/movable/vis_obj/xeno_pack/item_icon_holder, icon_state)
 
 	var/state_modifier = ""
 	if(stat == DEAD)
@@ -197,11 +211,9 @@
 	else if(handle_special_state())
 		state_modifier = handle_special_backpack_states()
 
-	backpack_icon_holder.icon_state = backpack.xeno_icon_state + state_modifier
+	item_icon_holder.icon_state = icon_state + state_modifier
 
-	backpack_icon_holder.layer = -X_BACK_LAYER
-	if(dir == NORTH && (back.flags_item & ITEM_OVERRIDE_NORTHFACE))
-		backpack_icon_holder.layer = -X_BACK_FRONT_LAYER
+	item_icon_holder.layer = -X_BACK_LAYER
 
 /mob/living/carbon/xenomorph/update_inv_legcuffed()
 	remove_overlay(X_LEGCUFF_LAYER)

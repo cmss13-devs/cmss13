@@ -1220,7 +1220,6 @@
 	color = "#828296"
 	ui_color = "#828296"
 
-	hive_flags = XENO_SLASH_ALLOW_ALL|XENO_CONSTRUCTION_QUEEN|XENO_DECONSTRUCTION_QUEEN
 	hive_inherent_traits = list(TRAIT_OPPOSABLE_THUMBS) // what if we were fucking insane
 	dynamic_evolution = FALSE
 	evolution_rate = 0
@@ -1233,11 +1232,13 @@
 	. = ..()
 	xeno.add_language(LANGUAGE_ENGLISH)
 	xeno.remove_language(LANGUAGE_XENOMORPH)
+	xeno.remove_language(LANGUAGE_HIVEMIND)
 
 /datum/hive_status/controlled/remove_xeno(mob/living/carbon/xenomorph/xeno, hard)
 	. = ..()
 	xeno.remove_language(LANGUAGE_ENGLISH)
 	xeno.add_language(LANGUAGE_XENOMORPH)
+	xeno.add_language(LANGUAGE_HIVEMIND)
 
 /datum/hive_status/forsaken
 	name = FACTION_XENOMORPH_FORSAKEN

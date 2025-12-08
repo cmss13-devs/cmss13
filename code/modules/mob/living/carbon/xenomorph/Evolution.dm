@@ -239,6 +239,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 
 	if(HAS_TRAIT(src, TRAIT_XENO_CONTROLLED))
 		to_chat(src, SPAN_WARNING("You have no idea how to influence this thing to 'evolve'."))
+		return FALSE
 
 	if(is_ventcrawling)
 		to_chat(src, SPAN_WARNING("This place is too constraining to evolve."))
@@ -356,6 +357,9 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 
 	if(!check_state())
 		return
+	if(HAS_TRAIT(src, TRAIT_XENO_CONTROLLED))
+		to_chat(src, SPAN_WARNING("You have no idea how to influence this thing to 'evolve'."))
+		return FALSE
 	if(is_ventcrawling)
 		to_chat(src, SPAN_XENOWARNING("You can't deevolve here."))
 		return

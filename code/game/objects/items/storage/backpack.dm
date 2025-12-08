@@ -81,7 +81,8 @@
 		xeno.backpack_icon_holder = new(null, xeno)
 		xeno.vis_contents += xeno.backpack_icon_holder
 
-	target_mob.put_in_back(src)
+	xeno.xeno_put_in_slot(src, WEAR_BACK)
+	xeno.update_inv_back()
 	return FALSE
 
 /obj/item/storage/backpack/proc/toggle_lock(obj/item/card/id/card, mob/living/carbon/human/H)

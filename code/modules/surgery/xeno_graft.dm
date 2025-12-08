@@ -81,7 +81,7 @@
 	name = "Graft Control Headset"
 	desc = "graft the control headset onto the xenomorph"
 	tools = list(
-		/obj/item/device/control_headset_xeno = SURGERY_TOOL_MULT_IDEAL,
+		/obj/item/clothing/head/control_headset_xeno = SURGERY_TOOL_MULT_IDEAL,
 	)
 	time = 15 SECONDS
 	preop_sound = 'sound/surgery/organ1.ogg'
@@ -101,11 +101,10 @@
 		to_chat(user, SPAN_NOTICE("Nothing seems to happen."))
 		return
 
-	playsound(target, 'sound/machines/screen_output1.ogg', 50)
-	target.visible_message(SPAN_NOTICE("Sensors start to beep and mechanisms whirr as the control headset is grafted onto [target]'s head."))
-	target.AddComponent(/datum/component/xeno_control_headset)
-	target.set_hive_and_update(XENO_HIVE_CONTROLLED)
-	qdel(tool)
+
+	var/obj/item/clothing/head/control_headset_xeno/headset = tool
+	target.xeno_put_in_slot(headset, WEAR_HEAD)
+	target.update_inv_head()
 
 /datum/surgery_step/xenomorph/install_headset/failure(mob/living/carbon/human/user, mob/living/carbon/xenomorph/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.visible_message(

@@ -98,8 +98,8 @@
 			W.dropped(src)
 		return FALSE
 
-//Puts the item into our back if possible. Returns 1 on success.
-/mob/proc/put_in_back(obj/item/item)
+//Puts the item into a slot if possible. Returns 1 on success.
+/mob/living/carbon/xenomorph/proc/xeno_put_in_slot(obj/item/item, wear_slot = WEAR_BACK)
 	if(!item)
 		return FALSE
 	if(!istype(item))
@@ -110,12 +110,15 @@
 		item.dropped(src)
 	item.pickup(src)
 	item.forceMove(src)
-	back = item
+	if(wear_slot == WEAR_BACK)
+		back = item
+	if(wear_slot == WEAR_HEAD)
+		head = item
 	item.layer = ABOVE_HUD_LAYER
 	item.plane = ABOVE_HUD_PLANE
-	item.equipped(src, WEAR_BACK)
-	update_inv_back()
+	item.equipped(src, wear_slot)
 	return TRUE
+
 
 /mob/proc/drop_item_v() //this is dumb.
 	if(stat == CONSCIOUS && isturf(loc))

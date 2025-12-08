@@ -358,6 +358,7 @@
 
 	var/atom/movable/vis_obj/wound_icon_holder
 	var/atom/movable/vis_obj/xeno_pack/backpack_icon_holder
+	var/atom/movable/vis_obj/xeno_pack/head_icon_holder
 	/// If TRUE, the xeno cannot slash anything
 	var/cannot_slash = FALSE
 	/// The world.time when the xeno was created. Carries over between strains and evolving

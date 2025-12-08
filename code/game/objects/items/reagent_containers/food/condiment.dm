@@ -83,7 +83,7 @@
 		to_chat(user, SPAN_NOTICE(" You transfer [trans] units of the condiment to [target]."))
 
 /obj/item/reagent_container/food/condiment/on_reagent_change()
-	if(icon_state == "saltshakersmall" || icon_state == "peppermillsmall" || icon_state == "hotsauce_cholula" || icon_state == "hotsauce_franks" || icon_state == "hotsauce_sriracha" || icon_state == "hotsauce_tabasco" || icon_state == "coldsauce_cole")
+	if(icon_state == "saltshakersmall" || icon_state == "peppermillsmall" || icon_state == "hotsauce_cholula" || icon_state == "hotsauce_franks" || icon_state == "hotsauce_sriracha" || icon_state == "hotsauce_tabasco" || icon_state == "coldsauce_cole" || icon_state == "chocolate_syrup")
 		return
 	if(length(reagents.reagent_list) > 0)
 		switch(reagents.get_master_reagent_id())
@@ -155,6 +155,19 @@
 /obj/item/reagent_container/food/condiment/sugar/Initialize()
 	. = ..()
 	reagents.add_reagent("sugar", 50)
+
+/obj/item/reagent_container/food/condiment/chocolate_syrup
+	name = "\improper Chocolate Syrup bottle"
+	desc = "A bottle of chocolate syrup, the foundation of many decadent treats... Or, you can sip it directly from the bottle like the child you are."
+	icon_state = "chocolate_syrup"
+	possible_transfer_amounts = list(1,5,10,15,20,60) //the thought of marines having fisticuffs because somebody drank all the chocolate syrup is beyond hilarious.
+	amount_per_transfer_from_this = 5
+	volume = 60
+
+/obj/item/reagent_container/food/condiment/chocolate_syrup/Initialize()
+	. = ..()
+	reagents.add_reagent("chocolate", 60)
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/reagent_container/food/condiment/saltshaker //Separate from above since it's a small shaker rather then
 	name = "Salt Shaker" // a large one.
@@ -249,3 +262,10 @@
 /obj/item/reagent_container/food/condiment/coldsauce/Initialize()
 	. = ..()
 	reagents.add_reagent("frostoil", 60)
+
+
+
+
+
+
+

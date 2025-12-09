@@ -57,11 +57,12 @@
 	success_sound = 'sound/surgery/scalpel2.ogg'
 	failure_sound = 'sound/surgery/organ2.ogg'
 
-/datum/surgery_step/cut_muscle/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/cut_muscle/preop(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	var/muscle_type = target.get_muscle_type() //Uses the proc in surgery_steps.dm to fetch the correct type for the species.
 	user.affected_message(target,
-		SPAN_NOTICE("You begin to sever the muscles in [target]'s [surgery.affected_limb.display_name] with \the [tool]."),
-		SPAN_WARNING("[user] begins to sever the muscles in your [surgery.affected_limb.display_name]!"),
-		SPAN_NOTICE("[user] begins to sever the muscles in [target]'s [surgery.affected_limb.display_name] with \the [tool]."))
+		SPAN_NOTICE("You begin to sever the [muscle_type] in [target]'s [surgery.affected_limb.display_name] with \the [tool]."),
+		SPAN_WARNING("[user] begins to sever the [muscle_type] in your [surgery.affected_limb.display_name]!"),
+		SPAN_NOTICE("[user] begins to sever the [muscle_type] in [target]'s [surgery.affected_limb.display_name] with \the [tool]."))
 
 	target.custom_pain("Your [surgery.affected_limb.display_name] is being ripped apart!", 1)
 
@@ -69,11 +70,12 @@
 		playsound(target.loc, tool.hitsound, 25, TRUE)
 	log_interact(user, target, "[key_name(user)] attempted an amputation on [key_name(target)]'s [surgery.affected_limb.display_name] with [tool ? "\the [tool]" : "their hands"].")
 
-/datum/surgery_step/cut_muscle/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/cut_muscle/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	var/muscle_type = target.get_muscle_type()
 	user.affected_message(target,
-		SPAN_NOTICE("You finish severing the muscles in [target]'s [surgery.affected_limb.display_name]. They can be reattached if you've changed your mind, but once you start to cut through the bone you'll have to see it through to the end."),
-		SPAN_WARNING("[user] has severed the muscles in your [surgery.affected_limb.display_name]!"),
-		SPAN_NOTICE("[user] has severed the muscles in [target]'s [surgery.affected_limb.display_name]."))
+		SPAN_NOTICE("You finish severing the [muscle_type] in [target]'s [surgery.affected_limb.display_name]. They can be reattached if you've changed your mind, but once you start to cut through the bone you'll have to see it through to the end."),
+		SPAN_WARNING("[user] has severed the [muscle_type] in your [surgery.affected_limb.display_name]!"),
+		SPAN_NOTICE("[user] has severed the [muscle_type] in [target]'s [surgery.affected_limb.display_name]."))
 
 	log_interact(user, target, "[key_name(user)] successfully began an amputation on [key_name(target)]'s [surgery.affected_limb.display_name] with [tool ? "\the [tool]" : "their hands"], starting [surgery].")
 
@@ -101,21 +103,23 @@
 /datum/surgery_step/abort_amputation/skip_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	return TRUE //This is an abort pathway to stop people from being locked into a major and irreversible surgery. It is not yet too late for my mercy.
 
-/datum/surgery_step/abort_amputation/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/abort_amputation/preop(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	var/muscle_type = target.get_muscle_type()
 	user.affected_message(target,
-		SPAN_NOTICE("You begin to stitch the muscles in [target]'s [surgery.affected_limb.display_name] back together with \the [tool]."),
-		SPAN_NOTICE("[user] begins to stitch the muscles in your [surgery.affected_limb.display_name] back together with \the [tool]."),
-		SPAN_NOTICE("[user] begins to stitch the muscles in [target]'s [surgery.affected_limb.display_name] back together \the [tool]."))
+		SPAN_NOTICE("You begin to stitch the [muscle_type] in [target]'s [surgery.affected_limb.display_name] back together with \the [tool]."),
+		SPAN_NOTICE("[user] begins to stitch the [muscle_type] in your [surgery.affected_limb.display_name] back together with \the [tool]."),
+		SPAN_NOTICE("[user] begins to stitch the [muscle_type] in [target]'s [surgery.affected_limb.display_name] back together \the [tool]."))
 
 	target.custom_pain("The pain in your [surgery.affected_limb.display_name] is unbearable!", 1)
 
 	log_interact(user, target, "[key_name(user)] attempted to abort an amputation on [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool].")
 
-/datum/surgery_step/abort_amputation/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/abort_amputation/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	var/muscle_type = target.get_muscle_type()
 	user.affected_message(target,
-		SPAN_NOTICE("You finish reconnecting the muscles in [target]'s [surgery.affected_limb.display_name]."),
-		SPAN_NOTICE("[user] has reconnected the muscles in your [surgery.affected_limb.display_name]."),
-		SPAN_NOTICE("[user] has reconnected the muscles in [target]'s [surgery.affected_limb.display_name]."))
+		SPAN_NOTICE("You finish reconnecting the [muscle_type] in [target]'s [surgery.affected_limb.display_name]."),
+		SPAN_NOTICE("[user] has reconnected the [muscle_type] in your [surgery.affected_limb.display_name]."),
+		SPAN_NOTICE("[user] has reconnected the [muscle_type] in [target]'s [surgery.affected_limb.display_name]."))
 
 	complete(target, surgery)
 	log_interact(user, target, "[key_name(user)] successfully aborted an amputation on [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool], ending [surgery].")
@@ -147,11 +151,12 @@
 	success_sound = 'sound/surgery/organ1.ogg'
 	failure_sound = 'sound/effects/bone_break6.ogg'
 
-/datum/surgery_step/saw_off_limb/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/saw_off_limb/preop(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	var/bone_type = target.get_bone_type()
 	user.affected_message(target,
-		SPAN_NOTICE("You start cutting through the bone in [target]'s [surgery.affected_limb.display_name] with \the [tool]."),
-		SPAN_WARNING("[user] starts cutting through the bone in your [surgery.affected_limb.display_name]!"),
-		SPAN_NOTICE("[user] starts cutting through the bone in [target]'s [surgery.affected_limb.display_name] with \the [tool]."))
+		SPAN_NOTICE("You start cutting through the [bone_type] in [target]'s [surgery.affected_limb.display_name] with \the [tool]."),
+		SPAN_WARNING("[user] starts cutting through the [bone_type] in your [surgery.affected_limb.display_name]!"),
+		SPAN_NOTICE("[user] starts cutting through the [bone_type] in [target]'s [surgery.affected_limb.display_name] with \the [tool]."))
 
 	target.custom_pain("Your [surgery.affected_limb.display_name] is being hacked away!", 1)
 
@@ -208,20 +213,22 @@
 	success_sound = 'sound/surgery/scalpel2.ogg'
 	failure_sound = 'sound/surgery/organ2.ogg'
 
-/datum/surgery_step/carve_amputation/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/carve_amputation/preop(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	var/flesh_type = target.get_flesh_type()
 	user.affected_message(target,
-		SPAN_NOTICE("You begin removing irregular chunks of flesh from the stump of [target]'s [surgery.affected_limb.display_name] with \the [tool]."),
-		SPAN_NOTICE("[user] starts cutting away pieces of flesh from what's left of your [surgery.affected_limb.display_name]."),
-		SPAN_NOTICE("[user] begins to cut irregular chunks of flesh from what's left of [target]'s [surgery.affected_limb.display_name] with \the [tool]."))
+		SPAN_NOTICE("You begin removing irregular chunks of [flesh_type] from the stump of [target]'s [surgery.affected_limb.display_name] with \the [tool]."),
+		SPAN_NOTICE("[user] starts cutting away pieces of [flesh_type] from what's left of your [surgery.affected_limb.display_name]."),
+		SPAN_NOTICE("[user] begins to cut irregular chunks of [flesh_type] from what's left of [target]'s [surgery.affected_limb.display_name] with \the [tool]."))
 
 	target.custom_pain("[user] is carving up your stump like a Christmas roast!", 1)
 	log_interact(user, target, "[key_name(user)] attempted to begin cleaning up the stump of [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool].")
 
-/datum/surgery_step/carve_amputation/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/carve_amputation/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	var/flesh_type = target.get_flesh_type()
 	user.affected_message(target,
-		SPAN_NOTICE("You cut away uneven flesh where [target]'s [surgery.affected_limb.display_name] used to be."),
-		SPAN_NOTICE("[user] cuts away uneven flesh where your [surgery.affected_limb.display_name] used to be."),
-		SPAN_NOTICE("[user] cuts away uneven flesh where [target]'s [surgery.affected_limb.display_name] used to be."))
+		SPAN_NOTICE("You cut away uneven [flesh_type] where [target]'s [surgery.affected_limb.display_name] used to be."),
+		SPAN_NOTICE("[user] cuts away uneven [flesh_type] where your [surgery.affected_limb.display_name] used to be."),
+		SPAN_NOTICE("[user] cuts away uneven [flesh_type] where [target]'s [surgery.affected_limb.display_name] used to be."))
 
 	log_interact(user, target, "[key_name(user)] successfully began cleaning up the stump of [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool], possibly starting [surgery].")
 
@@ -245,25 +252,28 @@
 	success_sound = 'sound/surgery/organ1.ogg'
 	failure_sound =	'sound/surgery/organ2.ogg'
 
-/datum/surgery_step/close_ruptured_veins/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/close_ruptured_veins/preop(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	var/vasculature_type = target.get_vasculature_type()
 	user.affected_message(target,
-		SPAN_NOTICE("You begin to mend torn blood vessels in [target]'s stump with \the [tool]."),
-		SPAN_NOTICE("[user] begins to mend torn blood vessels in your stump with \the [tool]."),
-		SPAN_NOTICE("[user] begins to mend torn blood vessels in [target]'s stump with \the [tool]."))
+		SPAN_NOTICE("You begin to mend torn [vasculature_type] in [target]'s stump with \the [tool]."),
+		SPAN_NOTICE("[user] begins to mend torn [vasculature_type] in your stump with \the [tool]."),
+		SPAN_NOTICE("[user] begins to mend torn [vasculature_type] in [target]'s stump with \the [tool]."))
 
 	target.custom_pain("The pain in the stump of your [surgery.affected_limb.display_name] is bizarre and horrifying!", 1)
-	log_interact(user, target, "[key_name(user)] attempted to mend blood vessels in the stump of [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool].")
+	log_interact(user, target, "[key_name(user)] attempted to mend torn [vasculature_type] in the stump of [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool].")
 
-/datum/surgery_step/close_ruptured_veins/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/close_ruptured_veins/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	var/vasculature_type = target.get_vasculature_type()
 	user.affected_message(target,
-		SPAN_NOTICE("You finish repairing the blood vessels in [target]'s stump."),
-		SPAN_NOTICE("[user] finishes repairing the blood vessels in your stump."),
-		SPAN_NOTICE("[user] finishes repairing the blood vessels in [target]'s stump."))
+		SPAN_NOTICE("You finish repairing the [vasculature_type] in [target]'s stump."),
+		SPAN_NOTICE("[user] finishes repairing the [vasculature_type] in your stump."),
+		SPAN_NOTICE("[user] finishes repairing the [vasculature_type] in [target]'s stump."))
 
 	surgery.affected_limb.remove_all_bleeding()
-	log_interact(user, target, "[key_name(user)] mended blood vessels in the stump of [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool].")
+	log_interact(user, target, "[key_name(user)] mended [vasculature_type] in the stump of [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool].")
 
-/datum/surgery_step/close_ruptured_veins/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/close_ruptured_veins/failure(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	var/vasculature_type = target.get_vasculature_type()
 	if(tool_type == /obj/item/tool/surgery/FixOVein)
 		user.affected_message(target,
 			SPAN_WARNING("Your hand slips, smearing [tool] in the stump of [target]'s [surgery.affected_limb.display_name]!"),
@@ -276,7 +286,7 @@
 			SPAN_WARNING("[user]'s hand slips, damaging [target]'s [surgery.affected_limb.display_name]'s stump with \the [tool]!"))
 
 	target.apply_damage(10, BRUTE, surgery.affected_limb.parent)
-	log_interact(user, target, "[key_name(user)] failed to mend blood vessels in the stump of [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool].")
+	log_interact(user, target, "[key_name(user)] failed to mend [vasculature_type] in the stump of [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool].")
 	return FALSE
 
 //------------------------------------
@@ -290,11 +300,13 @@
 	success_sound = 'sound/surgery/retractor2.ogg'
 	failure_sound = 'sound/surgery/hemostat1.ogg'
 
-/datum/surgery_step/close_amputation/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/close_amputation/preop(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	var/flesh_type = target.get_flesh_type()
+	var/bone_type = target.get_bone_type()
 	user.affected_message(target,
-		SPAN_NOTICE("You begin folding the flesh of [target]'s stump over the bone and stitching it together with \the [tool]."),
-		SPAN_NOTICE("[user] begins folding the flesh of your stump over the bone and stitching it together with \the [tool]."),
-		SPAN_NOTICE("[user] begins folding the flesh of [target]'s stump over the bone and stitching it together with \the [tool]."))
+		SPAN_NOTICE("You begin folding the [flesh_type] of [target]'s stump over the [bone_type] and stitching it together with \the [tool]."),
+		SPAN_NOTICE("[user] begins folding the [flesh_type] of your stump over the [bone_type] and stitching it together with \the [tool]."),
+		SPAN_NOTICE("[user] begins folding the [flesh_type] of [target]'s stump over the [bone_type] and stitching it together with \the [tool]."))
 
 	target.custom_pain("The pain in your [surgery.affected_limb.display_name] is unbearable!", 1)
 	log_interact(user, target, "[key_name(user)] attempted to close the stump of [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool].")
@@ -345,11 +357,12 @@
 
 	log_interact(user, target, "[key_name(user)] successfully began repairing the stump of [key_name(target)]'s severed prosthetic [surgery.affected_limb.display_name] with \the [tool], starting [surgery].")
 
-/datum/surgery_step/sever_prosthetic_clamps/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/sever_prosthetic_clamps/failure(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	var/flesh_type = target.get_flesh_type()
 	user.affected_message(target,
-		SPAN_WARNING("Your hand slips, cutting into the flesh of [target]'s [surgery.affected_limb.display_name]!"),
-		SPAN_WARNING("[user]'s hand slips, cutting into the flesh of your [surgery.affected_limb.display_name]!"),
-		SPAN_WARNING("[user]'s hand slips, cutting into the flesh of [target]'s [surgery.affected_limb.display_name]!"))
+		SPAN_WARNING("Your hand slips, cutting into the [flesh_type] of [target]'s [surgery.affected_limb.display_name]!"),
+		SPAN_WARNING("[user]'s hand slips, cutting into the [flesh_type] of your [surgery.affected_limb.display_name]!"),
+		SPAN_WARNING("[user]'s hand slips, cutting into the [flesh_type] of [target]'s [surgery.affected_limb.display_name]!"))
 
 	target.apply_damage(20, BRUTE, surgery.affected_limb.parent)
 	log_interact(user, target, "[key_name(user)] failed to begin repairing the stump of [key_name(target)]'s severed prosthetic [surgery.affected_limb.display_name] with \the [tool], aborting [surgery].")
@@ -375,9 +388,9 @@
 
 /datum/surgery_step/remove_old_prosthetic/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
-		SPAN_NOTICE("You have revealed the bare stump of [target]'s [surgery.affected_limb.display_name]."),
-		SPAN_NOTICE("[user] has revealed the bare stump of your [surgery.affected_limb.display_name]."),
-		SPAN_NOTICE("[user] has revealed the bare stump of [target]'s [surgery.affected_limb.display_name]."))
+		SPAN_NOTICE("You have revealed the stump of [target]'s [surgery.affected_limb.display_name]."),
+		SPAN_NOTICE("[user] has revealed the stump of your [surgery.affected_limb.display_name]."),
+		SPAN_NOTICE("[user] has revealed the stump of [target]'s [surgery.affected_limb.display_name]."))
 
 	surgery.affected_limb.setAmputatedTree()
 	target.pain.recalculate_pain()

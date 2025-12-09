@@ -299,7 +299,7 @@
 		user.visible_message(SPAN_NOTICE("[user] starts disassembling [src]."),
 		SPAN_NOTICE("You start disassembling [src]."))
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-		if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+		if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 			user.visible_message(SPAN_NOTICE("[user] disassembles [src]."),
 			SPAN_NOTICE("You disassemble [src]."))
 			deconstruct(TRUE)
@@ -590,6 +590,39 @@
 	desc = "A square metal surface resting on four legs. This one has side panels, making it useful as a desk, but impossible to flip."
 	icon_state = "prisontable"
 	table_prefix = "prison"
+
+/obj/structure/surface/table/reinforced/rostock_blend
+	desc = "A square metal surface resting on its fat metal bottom. You can't flip something that doesn't have legs."
+	icon_state = "rostockStable" //instance, this is a static table for req.
+	table_prefix = "rostockS"
+	tiles_with = list(
+		/obj/structure/window/framed/almayer,
+		/obj/structure/machinery/door/airlock,
+		/turf/closed/wall,
+	)
+
+/obj/structure/surface/table/reinforced/rostock_blend/north
+	icon_state = "rostockNtable"
+	table_prefix = "rostockN"
+
+/obj/structure/surface/table/reinforced/rostock_blend/east
+	icon_state = "rostockEtable"
+	table_prefix = "rostockE"
+
+/obj/structure/surface/table/reinforced/rostock_blend/west
+	icon_state = "rostockWtable"
+	table_prefix = "rostockW"
+
+/obj/structure/surface/table/reinforced/rostock_blend/flip(direction)
+	return FALSE
+
+/obj/structure/surface/table/reinforced/rostock_table
+	desc = "A square metal surface resting on its fat metal bottom. You can't flip something that doesn't have legs."
+	icon_state = "rostock_table" //this one actually auto-tiles, but has no flipped state!
+	table_prefix = "rostock_"
+
+/obj/structure/surface/table/reinforced/rostock_table/flip(direction)
+	return FALSE
 
 /obj/structure/surface/table/reinforced/almayer_blend
 	desc = "A square metal surface resting on its fat metal bottom. You can't flip something that doesn't have legs."

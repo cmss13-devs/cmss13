@@ -324,17 +324,6 @@ GLOBAL_LIST_EMPTY(vending_products)
 			if(user)
 				to_chat(user, SPAN_WARNING("\The [H] has something inside it. Empty it before restocking."))
 			return FALSE
-	// repair item handling
-	else if(istype(item_to_stock, /obj/item/stack/repairable/gunkit))
-		var/obj/item/stack/repairable/stack = item_to_stock
-		if(stack.amount != 5)
-			to_chat(user, SPAN_WARNING("\The [stack] isn't full. You need to fill it before you can restock it."))
-			return
-	else if(istype(item_to_stock, /obj/item/stack/repairable/gunlube))
-		var/obj/item/stack/repairable/stack = item_to_stock
-		if(stack.amount != 10)
-			to_chat(user, SPAN_WARNING("The [stack] isn't full. You need to fill it before you can restock it."))
-			return
 	return TRUE //Item IS good to restock!
 
 //------------MAINTENANCE PROCS---------------
@@ -431,6 +420,21 @@ GLOBAL_LIST_EMPTY(vending_products)
 		tip_over()
 	return XENO_NO_DELAY_ACTION
 
+/obj/structure/machinery/cm_vending/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	if(stat & TIPPED_OVER || unslashable)
+		return TAILSTAB_COOLDOWN_NONE
+	if(prob(xeno.melee_damage_upper))
+		playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)
+		xeno.visible_message(SPAN_DANGER("[xeno] smashes [src] with its tail beyond recognition!"),
+		SPAN_DANGER("You enter a frenzy and smash [src] with your tail apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+		malfunction()
+		tip_over()
+	else
+		xeno.visible_message(SPAN_DANGER("[xeno] slashes [src] with its tail!"),
+		SPAN_DANGER("You slash [src] with your tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+		playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)
+	return TAILSTAB_COOLDOWN_NORMAL
+
 /obj/structure/machinery/cm_vending/attack_hand(mob/user)
 	if(stat & TIPPED_OVER)
 		if(user.action_busy)
@@ -453,11 +457,18 @@ GLOBAL_LIST_EMPTY(vending_products)
 		return
 
 	var/has_access = can_access_to_vend(user)
-	if (!has_access)
+	if(!has_access)
 		return
+
+	// Try to automatically vend spec kit if it was already assigned automatically if needed
+	automatic_vend(user)
 
 	user.set_interaction(src)
 	tgui_interact(user)
+
+/// Handles any automatic vending
+/obj/structure/machinery/cm_vending/proc/automatic_vend(mob/user)
+	return
 
 /// Handles redeeming coin tokens.
 /obj/structure/machinery/cm_vending/proc/redeem_token(obj/item/coin/marine/token, mob/user)
@@ -531,13 +542,13 @@ GLOBAL_LIST_EMPTY(vending_products)
 	var/mob/living/carbon/user = ui.user
 
 	if(ishuman(user))
-		human_user = usr
+		human_user = ui.user
 
 	switch (action)
 		if ("vend")
 			if(stat & IN_USE)
 				return
-			var/has_access = can_access_to_vend(usr)
+			var/has_access = can_access_to_vend(user)
 			if (!has_access)
 				vend_fail()
 				return TRUE
@@ -549,12 +560,12 @@ GLOBAL_LIST_EMPTY(vending_products)
 			var/turf/target_turf = get_appropriate_vend_turf(user)
 			if(vend_flags & VEND_CLUTTER_PROTECTION)
 				if(length(target_turf.contents) > 25)
-					to_chat(usr, SPAN_WARNING("The floor is too cluttered, make some space."))
+					to_chat(user, SPAN_WARNING("The floor is too cluttered, make some space."))
 					vend_fail()
 					return FALSE
 			if(HAS_TRAIT(user,TRAIT_OPPOSABLE_THUMBS)) // the big monster 7 ft with thumbs does not care for squads
-				vendor_successful_vend(itemspec, usr)
-				add_fingerprint(usr)
+				vendor_successful_vend(itemspec, user)
+				add_fingerprint(user)
 				return TRUE
 			if((!human_user.assigned_squad && squad_tag) || (!human_user.assigned_squad?.omni_squad_vendor && (squad_tag && human_user.assigned_squad.name != squad_tag)))
 				to_chat(user, SPAN_WARNING("This machine isn't for your squad."))
@@ -600,7 +611,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 								vend_fail()
 								return FALSE
 
-					if(!handle_vend(itemspec, user))
+					if(!handle_vend(itemspec, human_user))
 						to_chat(user, SPAN_WARNING("You can't buy things from this category anymore."))
 						vend_fail()
 						return FALSE
@@ -614,7 +625,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 				// if vendor has no costs and is inventory limited
 				var/inventory_count = itemspec[2]
 				if(inventory_count <= 0) //to avoid dropping more than one product when there's
-					to_chat(usr, SPAN_WARNING("[itemspec[1]] is out of stock."))
+					to_chat(user, SPAN_WARNING("[itemspec[1]] is out of stock."))
 					vend_fail()
 					return TRUE // one left and the player spam click during a lagspike.
 
@@ -756,7 +767,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 		var/obj/item/device/multitool/MT = W
 
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED) && !skillcheckexplicit(user, SKILL_ANTAG, SKILL_ANTAG_AGENT))
-			to_chat(user, SPAN_WARNING("You do not understand how tweak access requirements in [src]."))
+			to_chat(user, SPAN_WARNING("You do not understand how to tweak access requirements in [src]."))
 			return FALSE
 		if(stat != WORKING)
 			to_chat(user, SPAN_WARNING("[src] must be in working condition and powered for you to hack it."))
@@ -855,7 +866,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 	icon_state = "gear"
 	use_points = TRUE
 	vendor_theme = VENDOR_THEME_USCM
-	vend_flags = VEND_CLUTTER_PROTECTION|VEND_CATEGORY_CHECK|VEND_UNIFORM_AUTOEQUIP
+	vend_flags = VEND_CLUTTER_PROTECTION|VEND_CATEGORY_CHECK|VEND_TO_HAND|VEND_UNIFORM_AUTOEQUIP
 
 /obj/structure/machinery/cm_vending/gear/ui_static_data(mob/user)
 	. = ..(user)
@@ -872,7 +883,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 	use_points = TRUE
 	show_points = TRUE
 	vendor_theme = VENDOR_THEME_USCM
-	vend_flags = VEND_CLUTTER_PROTECTION | VEND_UNIFORM_RANKS | VEND_UNIFORM_AUTOEQUIP | VEND_CATEGORY_CHECK
+	vend_flags = VEND_CLUTTER_PROTECTION | VEND_UNIFORM_RANKS | VEND_UNIFORM_AUTOEQUIP | VEND_CATEGORY_CHECK | VEND_TO_HAND
 
 /obj/structure/machinery/cm_vending/clothing/ui_static_data(mob/user)
 	. = ..(user)
@@ -1432,6 +1443,12 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 					underclothes.attach_accessory(user, rank_insignia)
 					underclothes.attach_accessory(user, uscmpatch)
 
+
+	if(vend_flags & VEND_TO_HAND)
+		if(user.client?.prefs && (user.client?.prefs?.toggle_prefs & TOGGLE_VEND_ITEM_TO_HAND))
+			if(Adjacent(user) && !(istype(new_item, /obj/item/clothing/accessory) && (vend_flags & VEND_UNIFORM_AUTOEQUIP))) //istype accessory check is required as its going to duplicate with autoequip otherwise, also means it cant be put in hand if the slot is full, but at this point some sacrifices have gotta be done - nihi
+				user.put_in_any_hand_if_possible(new_item, disable_warning = TRUE)
+
 	if(vend_flags & VEND_UNIFORM_AUTOEQUIP)
 		// autoequip
 		if(istype(new_item, /obj/item) && new_item.flags_equip_slot != NO_FLAGS) //auto-equipping feature here
@@ -1442,11 +1459,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 						clothing.attach_accessory(user, new_item)
 			else
 				user.equip_to_appropriate_slot(new_item)
-
-	if(vend_flags & VEND_TO_HAND)
-		if(user.client?.prefs && (user.client?.prefs?.toggle_prefs & TOGGLE_VEND_ITEM_TO_HAND))
-			if(Adjacent(user))
-				user.put_in_any_hand_if_possible(new_item, disable_warning = TRUE)
+				new_item.update_icon()
 
 	new_item.post_vendor_spawn_hook(user)
 

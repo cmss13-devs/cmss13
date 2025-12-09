@@ -216,12 +216,12 @@
 	if(rangefinder_popup)
 		tgui_interact(user)
 	else
-		to_chat(user, SPAN_NOTICE(FONT_SIZE_LARGE("SIMPLIFIED COORDINATES OF TARGET. LONGITUDE [last_x]. LATITUDE [last_y].")))
+		to_chat(user, SPAN_NOTICE(FONT_SIZE_LARGE("SIMPLIFIED COORDINATES OF TARGET. LONGITUDE [last_x]. LATITUDE [last_y], HEIGHT [last_z].")))
 
 /obj/item/device/binoculars/range/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "Binoculars", "[src.name]")
+		ui = new(user, src, "Binoculars", "[capitalize(name)]")
 		ui.open()
 
 /obj/item/device/binoculars/range/ui_state(mob/user)
@@ -427,7 +427,7 @@
 		overlays += cas_laser_overlay
 
 /datum/action/item_action/specialist/spotter_target
-	ability_primacy = SPEC_PRIMARY_ACTION_1
+	ability_primacy = SPEC_PRIMARY_ACTION_2
 	var/minimum_laze_distance = 2
 
 /datum/action/item_action/specialist/spotter_target/New(mob/living/user, obj/item/holder)
@@ -540,7 +540,13 @@
 
 	COOLDOWN_START(designator, spotting_cooldown, designator.spotting_cooldown_delay)
 	return TRUE
-
+/obj/item/device/binoculars/range/designator/spotter/equipped(mob/living/user, slot)
+	. = ..()
+	//Toggle Spot Target on equip in hands. Avoids toggle in pockets
+	if(slot == WEAR_R_HAND || slot == WEAR_L_HAND)
+		var /datum/action/toggling_action = locate(/datum/action/item_action/specialist/spotter_target) in user.actions
+		if(toggling_action)
+			toggling_action.action_activate()
 //ADVANCED LASER DESIGNATER, was used for WO.
 /obj/item/device/binoculars/designator
 	name = "advanced laser designator" // Make sure they know this will kill people in the desc below.

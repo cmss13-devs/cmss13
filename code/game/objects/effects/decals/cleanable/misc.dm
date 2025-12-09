@@ -37,6 +37,19 @@
 	icon_state = "greenglow"
 	light_range = 1
 	light_color = COLOR_LIGHT_GREEN
+
+/obj/effect/decal/cleanable/dirt/alt_dirt
+	icon_state = "stain"
+
+/obj/effect/decal/cleanable/dirt/alt_dirt/stain
+	icon_state = "stain_alt"
+
+/obj/effect/decal/cleanable/dirt/alt_dirt/goo
+	icon_state = "goo"
+
+/obj/effect/decal/cleanable/dirt/alt_dirt/goo/goo_alt
+	icon_state = "goo_alt"
+
 /obj/effect/decal/cleanable/flour
 	name = "flour"
 	desc = "It's still good. Four second rule!"

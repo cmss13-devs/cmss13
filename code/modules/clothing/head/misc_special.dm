@@ -75,6 +75,16 @@
 		var/datum/action/A = X
 		A.update_button_icon()
 
+/obj/item/clothing/head/welding/painted
+	name = "custom welding helmet"
+	desc = "A head-mounted face cover, painted red with bold white stripes, offering solid protection and a touch of style."
+	icon_state = "weldingpainted"
+	item_state = "weldingpainted"
+	icon = 'icons/obj/items/clothing/hats/hats.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats.dmi'
+	)
+
 /*
  * Cakehat
  */
@@ -86,7 +96,7 @@
 	var/onfire = 0
 	var/status = 0
 	var/fire_resist = T0C+1300 //this is the max temp it can stand before you start to cook. although it might not burn away, you take damage
-	var/processing = 0 //I dont think this is used anywhere.
+	var/processing = 0 //I don't think this is used anywhere.
 	flags_armor_protection = BODY_FLAG_EYES
 
 /obj/item/clothing/head/cakehat/process()

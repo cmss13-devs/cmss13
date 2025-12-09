@@ -19,7 +19,7 @@
 	ground_offset_x = 2
 	ground_offset_y = 6
 
-	actions_types = list(/datum/action/item_action/toggle)
+	actions_types = list(/datum/action/item_action/toggle/flashlight)
 	var/on = FALSE
 	var/raillight_compatible = TRUE //Can this be turned into a rail light ?
 	var/toggleable = TRUE
@@ -407,12 +407,13 @@
 /obj/item/device/flashlight/flare/animation_spin(speed = 5, loop_amount = -1, clockwise = TRUE, sections = 3, angular_offset = 0, pixel_fuzz = 0)
 	pixel_fuzz = 16
 	return ..()
+
 /obj/item/device/flashlight/flare/pickup()
+	. = ..()
 	if(transform)
 		apply_transform(matrix()) // reset rotation
 	pixel_x = 0
 	pixel_y = 0
-	return ..()
 
 /obj/item/device/flashlight/flare/proc/burn_out()
 	turn_off()

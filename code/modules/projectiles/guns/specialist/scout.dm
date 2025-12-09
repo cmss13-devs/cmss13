@@ -20,10 +20,6 @@
 
 	unacidable = TRUE
 	explo_proof = TRUE
-	can_jam = TRUE
-	initial_jam_chance = GUN_JAM_CHANCE_SCOUT
-	unjam_chance = GUN_UNJAM_CHANCE_SCOUT
-	durability_loss = GUN_DURABILITY_LOSS_SCOUT
 	force = 26
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	map_specific_decoration = TRUE
@@ -86,11 +82,9 @@
 /obj/item/weapon/gun/rifle/m4ra_custom/set_gun_config_values()
 	..()
 	set_fire_delay(FIRE_DELAY_TIER_6)
-	set_burst_amount(BURST_AMOUNT_TIER_2)
-	set_burst_delay(FIRE_DELAY_TIER_12)
+	set_burst_amount(0)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_2
 	scatter = SCATTER_AMOUNT_TIER_8
-	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
 	recoil = RECOIL_AMOUNT_TIER_5
 	damage_falloff_mult = 0

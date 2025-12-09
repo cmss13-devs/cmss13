@@ -48,7 +48,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		for(var/caste in castes_available)
 			fancy_caste_list[caste] = hive.evolution_menu_images[caste]
 
-		castepick = show_radial_menu(src, client?.eye, fancy_caste_list)
+		castepick = show_radial_menu(src, client?.get_eye(), fancy_caste_list)
 	if(!castepick) //Changed my mind
 		return
 
@@ -198,6 +198,10 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	transfer_observers_to(new_xeno)
 	new_xeno._status_traits = _status_traits
 
+	// Freshly evolved xenos emerge standing.
+	// This resets density and resting status traits.
+	set_body_position(STANDING_UP)
+
 	qdel(src)
 	new_xeno.xeno_jitter(25)
 
@@ -232,6 +236,10 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		to_chat(src, SPAN_WARNING("We can't evolve here."))
 		return FALSE
 
+	if(HAS_TRAIT(src, TRAIT_HIVEMIND_INTERFERENCE))
+		to_chat(src, SPAN_WARNING("Our link to the hive is being suppressed...we should wait a bit."))
+		return FALSE
+
 	if(hardcore)
 		to_chat(src, SPAN_WARNING("Nuh-uh."))
 		return FALSE
@@ -259,11 +267,11 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		to_chat(src, SPAN_WARNING("We must be at full health to evolve."))
 		return FALSE
 
-	if(agility || fortify || crest_defense)
+	if(agility || fortify || crest_defense || stealth)
 		to_chat(src, SPAN_WARNING("We cannot evolve while in this stance."))
 		return FALSE
 
-	if(world.time < (SSticker.mode.round_time_lobby + XENO_ROUNDSTART_PROGRESS_TIME_2))
+	if(ROUND_TIME < XENO_ROUNDSTART_BOOSTED_EVO_TIME)
 		if(caste_type == XENO_CASTE_LARVA || caste_type == XENO_CASTE_PREDALIEN_LARVA)
 			var/turf/evoturf = get_turf(src)
 			if(!locate(/obj/effect/alien/weeds) in evoturf)
@@ -285,11 +293,17 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	if(!isturf(loc))
 		to_chat(src, SPAN_XENOWARNING("We can't transmute here."))
 		return
+	if(HAS_TRAIT(src, TRAIT_HIVEMIND_INTERFERENCE))
+		to_chat(src, SPAN_WARNING("Our link to the hive is being suppressed...we should wait a bit."))
+		return FALSE
 	if(health < maxHealth)
 		to_chat(src, SPAN_XENOWARNING("We are too weak to transmute, we must regain our health first."))
 		return
 	if(tier == 0 || tier == 4)
 		to_chat(src, SPAN_XENOWARNING("We can't transmute."))
+		return
+	if(agility || fortify || crest_defense || stealth)
+		to_chat(src, SPAN_XENOWARNING("We can't transmute while in this stance."))
 		return
 	if(lock_evolve)
 		if(banished)
@@ -339,6 +353,9 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	if(health < maxHealth)
 		to_chat(src, SPAN_XENOWARNING("We are too weak to deevolve, we must regain our health first."))
 		return
+	if(HAS_TRAIT(src, TRAIT_HIVEMIND_INTERFERENCE))
+		to_chat(src, SPAN_WARNING("Our link to the hive is being suppressed...we should wait a bit."))
+		return FALSE
 	if(length(caste.deevolves_to) < 1)
 		to_chat(src, SPAN_XENOWARNING("We can't deevolve any further."))
 		return
@@ -423,8 +440,8 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		new_xeno.key = key
 		if(new_xeno.client)
 			new_xeno.client.change_view(GLOB.world_view_size)
-			new_xeno.client.pixel_x = 0
-			new_xeno.client.pixel_y = 0
+			new_xeno.client.set_pixel_x(0)
+			new_xeno.client.set_pixel_y(0)
 
 	//Regenerate the new mob's name now that our player is inside
 	if(newcaste == XENO_CASTE_LARVA)

@@ -29,8 +29,8 @@
 	drone.tackle_chance_modifier -= 5
 
 	drone.max_placeable = 3
-	drone.available_fruits = list(/obj/effect/alien/resin/fruit)
-	drone.selected_fruit = /obj/effect/alien/resin/fruit
+	drone.available_fruits = list(/obj/effect/alien/resin/fruit/lesser)
+	drone.selected_fruit = /obj/effect/alien/resin/fruit/lesser
 
 	drone.recalculate_everything()
 
@@ -186,6 +186,7 @@
 
 /datum/behavior_delegate/drone_healer/append_to_stat()
 	. = list()
+	. += "Fruits sustained: [length(bound_xeno.current_fruits)] / [bound_xeno.max_placeable]"
 	. += "Transferred health amount: [transferred_amount]/[required_transferred_amount]"
 	if(transferred_amount >= required_transferred_amount)
 		. += "Sacrifice will grant you new life."
@@ -261,11 +262,15 @@
 
 	xeno.say(";MY LIFE FOR THE QUEEN!!!")
 
+	target.ExtinguishMob() //first, extinguish them from fire so they can be healed.
+
 	if(target.health < 0)
-		target.gain_health(abs(target.health)) // gets them out of crit first
+		target.gain_health(abs(target.health)) //second, get them out of crit.
 
 	target.gain_health(xeno.health * transfer_mod)
 	target.updatehealth()
+
+	target.clear_debuffs() //third, remove debuffs so they can stand up.
 
 	target.xeno_jitter(1 SECONDS)
 	target.flick_heal_overlay(3 SECONDS, "#44253d")

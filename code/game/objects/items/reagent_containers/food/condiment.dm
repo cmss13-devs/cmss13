@@ -22,7 +22,7 @@
 	if(M == user)
 		to_chat(M, SPAN_NOTICE("You swallow some of contents of [src]."))
 
-	else if(istype(M, /mob/living/carbon/human))
+	else if(istype(M, /mob/living/carbon))
 		user.affected_message(M,
 			SPAN_HELPFUL("You <b>start feeding</b> [user == M ? "yourself" : "[M]"] <b>[src]</b>."),
 			SPAN_HELPFUL("[user] <b>starts feeding</b> you <b>[src]</b>."),
@@ -196,6 +196,10 @@
 	icon_state = "hotsauce_cholula"
 	item_state = "hotsauce_cholula"
 
+/obj/item/reagent_container/food/condiment/hotsauce/cholula/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/reagent_container/food/condiment/hotsauce/franks
 	name = "\improper Frank's Red Hot bottle"
 	desc = "A bottle of Weyland-Yutani brand Frank's Red Hot hot sauce."
@@ -203,17 +207,29 @@
 	icon_state = "hotsauce_franks"
 	item_state = "hotsauce_franks"
 
+/obj/item/reagent_container/food/condiment/hotsauce/franks/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/reagent_container/food/condiment/hotsauce/sriracha
 	name = "\improper Sriracha bottle"
 	desc = "A bottle of Weyland-Yutani brand Sriracha hot sauce."
 	icon_state = "hotsauce_sriracha"
 	item_state = "hotsauce_sriracha"
 
+/obj/item/reagent_container/food/condiment/hotsauce/sriracha/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/reagent_container/food/condiment/hotsauce/tabasco
 	name = "\improper Tabasco bottle"
 	desc = "A bottle of Weyland-Yutani brand Tabasco hot sauce."
 	icon_state = "hotsauce_tabasco"
 	item_state = "hotsauce_tabasco"
+
+/obj/item/reagent_container/food/condiment/hotsauce/tabasco/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/reagent_container/food/condiment/hotsauce/franks/macho
 	name = "\improper Frank's ULTRA Hot bottle"

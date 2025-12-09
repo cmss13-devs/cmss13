@@ -1671,7 +1671,7 @@
 /area/adminlevel/ert_station/clf_station)
 "Vk" = (
 /obj/structure/surface/table/woodentable/poor,
-/obj/item/stack/repairable/gunlube,
+/obj/item/prop/helmetgarb/gunoil,
 /obj/item/weapon/baton/cattleprod,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
@@ -1816,11 +1816,7 @@
 	pixel_y = 4;
 	pixel_x = 12
 	},
-/obj/item/reagent_container/glass/beaker/silver,
-/obj/item/reagent_container/glass/beaker/vial/random/good{
-	pixel_x = 18;
-	pixel_y = 5
-	},
+/obj/item/reagent_container/glass/beaker/catalyst/silver,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
 "ZI" = (

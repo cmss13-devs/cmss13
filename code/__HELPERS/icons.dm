@@ -606,7 +606,7 @@ world
 
 /// generates a filename for a given asset.
 /// like generate_asset_name(), except returns the rsc reference and the rsc file hash as well as the asset name (sans extension)
-/// used so that certain asset files dont have to be hashed twice
+/// used so that certain asset files don't have to be hashed twice
 /proc/generate_and_hash_rsc_file(file, dmi_file_path)
 	var/rsc_ref = fcopy_rsc(file)
 	var/hash
@@ -647,7 +647,7 @@ world
 		//if theyre unchanged dmi's then they're stringifiable to "icons/path/to/dmi_file.dmi"
 
 	if(isicon(icon) && isfile(icon))
-		//icons compiled in from 'icons/path/to/dmi_file.dmi' at compile time are weird and arent really /icon objects,
+		//icons compiled in from 'icons/path/to/dmi_file.dmi' at compile time are weird and aren't really /icon objects,
 		///but they pass both isicon() and isfile() checks. theyre the easiest case since stringifying them gives us the path we want
 		var/icon_ref = text_ref(icon)
 		var/locate_icon_string = "[locate(icon_ref)]"
@@ -680,6 +680,61 @@ world
 
 	return FALSE
 
+/// Asks the user for an icon (either from file or as a path) and offers to customize it if possible (e.g. setting icon_state)
+/proc/pick_and_customize_icon(mob/user, pick_only=FALSE)
+	var/icon/icon_result = null
+	if(!user)
+		user = usr
+
+	var/icon_from_file = tgui_alert(user, "Do you wish to pick an icon from file?", "File picker icon", list("Yes", "No"))
+	if(isnull(icon_from_file))
+		return null
+	if(icon_from_file == "Yes")
+		icon_result = input(user, "Pick icon:", "Icon") as null|icon
+		if(!icon_result)
+			return null
+	else if(icon_from_file == "No")
+		var/new_icon = tgui_input_text(user, "Pick icon path", "icon path")
+		if(isnull(new_icon))
+			return null
+		var/regex/regex = regex(@"^.+icons/")
+		new_icon = regex.Replace(replacetext(new_icon, @"\", "/"), "icons/")
+		icon_result = fcopy_rsc(new_icon)
+		if(!icon_result)
+			to_chat(user, SPAN_WARNING("'[new_icon]' is an invalid icon path!"))
+			return null
+
+	var/dmi_path = get_icon_dmi_path(icon_result)
+	if(!dmi_path || pick_only)
+		return icon_result
+
+	var/custom = tgui_alert(user, "Do you wish to specify any arguments for the icon?", "Customize Icon", list("Yes", "No"))
+	if(isnull(custom))
+		return null
+	if(custom == "Yes")
+		var/new_icon_state = tgui_input_text(user, "Pick icon_state", "icon_state")
+		if(isnull(new_icon_state))
+			return null
+		var/new_icon_dir = tgui_input_list(user, "Pick icon dir", "dir", list("North", "East", "South", "West"), default="South")
+		if(isnull(new_icon_dir))
+			return null
+		var/new_icon_frame = tgui_input_number(user, "Pick icon frame", "frame", min_value=0, integer_only=TRUE)
+		if(isnull(new_icon_frame))
+			return null
+		var/new_icon_moving = tgui_input_list(user, "Pick icon moving", "moving", list("Both", "Movement only", "Non-Movement Only"), default="Both")
+		switch(new_icon_moving)
+			if("Both")
+				new_icon_moving = null
+			if("Movement only")
+				new_icon_moving = 1
+			if("Non-Movement Only")
+				new_icon_moving = 0
+			else
+				return null
+		icon_result = new(dmi_path, new_icon_state, text2dir(new_icon_dir), new_icon_frame, new_icon_moving)
+
+	return icon_result
+
 /**
  * generate an asset for the given icon or the icon of the given appearance for [thing], and send it to any clients in target.
  * Arguments:
@@ -693,7 +748,7 @@ world
  * * extra_clases - string of extra css classes to use when returning the icon string
  * * keyonly - if TRUE, only returns the asset key to use get_asset_url manually. Overrides sourceonly.
  */
-/proc/icon2html(atom/thing, client/target, icon_state, dir = SOUTH, frame = 1, moving = FALSE, sourceonly = FALSE, extra_classes = null, keyonly = FALSE)
+/proc/icon2html(atom/thing, client/target, icon_state, dir = SOUTH, frame = 1, moving = FALSE, sourceonly = FALSE, extra_classes = null, keyonly = FALSE, non_standard_size = FALSE)
 	if (!thing)
 		return
 
@@ -713,7 +768,7 @@ world
 	if(!length(targets))
 		return
 
-	//check if the given object is associated with a dmi file in the icons folder. if it is then we dont need to do a lot of work
+	//check if the given object is associated with a dmi file in the icons folder. if it is then we don't need to do a lot of work
 	//for asset generation to get around byond limitations
 	var/icon_path = get_icon_dmi_path(thing)
 
@@ -758,11 +813,12 @@ world
 
 	icon2collapse = icon(icon2collapse, icon_state, dir, frame, moving)
 
-	var/width = icon2collapse.Width()
-	var/height = icon2collapse.Height()
-	if(width != height)
-		var/new_dimension = min(width, height)
-		center_icon(icon2collapse, new_dimension, new_dimension)
+	if(!non_standard_size)
+		var/width = icon2collapse.Width()
+		var/height = icon2collapse.Height()
+		if(width != height)
+			var/new_dimension = min(width, height)
+			center_icon(icon2collapse, new_dimension, new_dimension)
 
 	var/list/name_and_ref = generate_and_hash_rsc_file(icon2collapse, icon_path)//pretend that tuples exist
 

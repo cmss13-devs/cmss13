@@ -6,6 +6,7 @@
 	minimap_icon = "synth"
 	skills = /datum/skills/synthetic
 	var/preset_generation_support = FALSE
+	var/subtype
 
 /datum/equipment_preset/synth/New()
 	. = ..()
@@ -47,78 +48,6 @@
 
 //*****************************************************************************************************/
 
-/datum/equipment_preset/synth/uscm
-	name = "USCM Synthetic"
-	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
-	faction = FACTION_MARINE
-	idtype = /obj/item/card/id/gold
-	assignment = JOB_SYNTH
-	rank = "Synthetic"
-	role_comm_title = "Syn"
-	preset_generation_support = TRUE
-
-	minimap_icon = "synth"
-	paygrades = list(PAY_SHORT_ME8 = JOB_PLAYTIME_TIER_0)
-
-/datum/equipment_preset/synth/uscm/load_gear(mob/living/carbon/human/new_human)
-	var/back_item = /obj/item/storage/backpack/marine/satchel
-	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
-		back_item = /obj/item/storage/backpack/industrial
-
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/synth(new_human), WEAR_L_EAR)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic(new_human), WEAR_BODY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/white(new_human), WEAR_FEET)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(new_human), WEAR_HANDS)
-	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
-
-//*****************************************************************************************************/
-
-/datum/equipment_preset/synth/uscm/councillor
-	name = "USCM Synthetic Councillor"
-	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
-	faction = FACTION_MARINE
-	idtype = /obj/item/card/id/gold
-	assignment = JOB_SYNTH
-	rank = "Synthetic"
-	role_comm_title = "Syn"
-	paygrades = list(PAY_SHORT_ME9 = JOB_PLAYTIME_TIER_0)
-
-/datum/equipment_preset/synth/uscm/councillor/load_gear(mob/living/carbon/human/new_human)
-	var/back_item = /obj/item/storage/backpack/satchel
-	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
-		back_item = /obj/item/storage/backpack/industrial
-
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/synth(new_human), WEAR_L_EAR)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic/councillor(new_human), WEAR_BODY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(new_human), WEAR_HANDS)
-	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
-
-//*****************************************************************************************************/
-
-/datum/equipment_preset/synth/uscm/wo
-	name = "WO Support Synthetic"
-	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
-	paygrades = list(PAY_SHORT_ME8 = JOB_PLAYTIME_TIER_0)
-
-/datum/equipment_preset/synth/uscm/wo/load_gear(mob/living/carbon/human/new_human)
-
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/cm(new_human), WEAR_HEAD)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/synth(new_human), WEAR_L_EAR)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic(new_human), WEAR_BODY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/RO(new_human), WEAR_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(new_human), WEAR_HANDS)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/black_vest/brown_vest(new_human), WEAR_ACCESSORY)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/smartpack/a1/tan(new_human), WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/full(new_human), WEAR_R_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(new_human), WEAR_L_STORE)
-
-//*****************************************************************************************************/
-
 /datum/equipment_preset/synth/survivor
 	name = "Survivor - Synthetic - Classic Joe"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -126,9 +55,10 @@
 	faction_group = list(FACTION_SURVIVOR)
 	idtype = /obj/item/card/id/lanyard
 	assignment = JOB_SYNTH
-	rank = JOB_SYNTH_SURVIVOR
+	job_title = JOB_SYNTH_SURVIVOR
 	skills = /datum/skills/colonial_synthetic
 	preset_generation_support = TRUE
+	origin_override = ORIGIN_CIVILIAN
 
 	var/list/equipment_to_spawn = list(
 		WEAR_BODY = /obj/item/clothing/under/rank/synthetic/joe,
@@ -171,6 +101,7 @@
 	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
 	minimap_icon = "wy_syn"
 	minimap_background = "background_goon"
+	origin_override = ORIGIN_WY
 
 /datum/equipment_preset/synth/survivor/wy/New()
 	. = ..()
@@ -217,7 +148,7 @@
 		WEAR_R_EAR = /obj/item/device/flashlight/pen,
 		WEAR_FACE = /obj/item/clothing/mask/surgical,
 		WEAR_EYES = /obj/item/clothing/glasses/hud/health,
-		WEAR_BODY = /obj/item/clothing/under/rank/chief_medical_officer,
+		WEAR_BODY = /obj/item/clothing/under/rank/cmo,
 		WEAR_ACCESSORY = /obj/item/clothing/accessory/stethoscope,
 		WEAR_BACK = /obj/item/storage/backpack/satchel/med,
 		WEAR_IN_BACK = /obj/item/roller/surgical,
@@ -281,7 +212,7 @@
 		WEAR_EYES = /obj/item/clothing/glasses/science,
 		WEAR_BODY = /obj/item/clothing/under/detective/neutral,
 		WEAR_BACK = /obj/item/storage/backpack/satchel,
-		WEAR_IN_BACK = /obj/item/paper/research_notes/good,
+		WEAR_IN_BACK = /obj/item/paper/research_notes/unique/tier_three,
 		WEAR_JACKET = /obj/item/clothing/suit/storage/labcoat,
 		WEAR_WAIST = /obj/item/storage/belt/medical/lifesaver/full,
 		WEAR_HANDS = /obj/item/clothing/gloves/latex,
@@ -301,7 +232,7 @@
 		WEAR_EYES = /obj/item/clothing/glasses/science,
 		WEAR_BODY = /obj/item/clothing/under/rank/scientist/hybrisa,
 		WEAR_BACK = /obj/item/storage/backpack/satchel/tox,
-		WEAR_IN_BACK = /obj/item/paper/research_notes/good,
+		WEAR_IN_BACK = /obj/item/paper/research_notes/unique/tier_three,
 		WEAR_JACKET = /obj/item/clothing/suit/storage/synthbio,
 		WEAR_WAIST = /obj/item/storage/belt/medical/lifesaver/full,
 		WEAR_HANDS = /obj/item/clothing/gloves/latex,
@@ -583,7 +514,7 @@
 	equipment_to_spawn = list(
 		WEAR_EYES = /obj/item/clothing/glasses/regular/hipster,
 		WEAR_BODY = /obj/item/clothing/under/liaison_suit/black,
-		WEAR_ACCESSORY = /obj/item/clothing/accessory/blue,
+		WEAR_ACCESSORY = /obj/item/clothing/accessory/tie,
 		WEAR_BACK = /obj/item/storage/backpack/satchel,
 		WEAR_IN_BACK = /obj/item/device/taperecorder,
 		WEAR_JACKET = /obj/item/clothing/suit/storage/jacket/marine/corporate/black,
@@ -617,12 +548,13 @@
 	idtype = /obj/item/card/id/deputy
 	role_comm_title = "CMB Syn"
 	assignment = JOB_CMB_SYN
-	rank = JOB_CMB_SYN
+	job_title = JOB_CMB_SYN
 	paygrades = list(PAY_SHORT_CMBS = JOB_PLAYTIME_TIER_0)
 	faction = FACTION_MARSHAL
 	faction_group = list(FACTION_MARSHAL, FACTION_MARINE, FACTION_SURVIVOR)
 	minimap_background = "background_cmb"
 	minimap_icon = "cmb_syn"
+	origin_override = ORIGIN_CMB
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/CMB,
 		WEAR_L_EAR = /obj/item/device/radio/headset/distress/CMB/limited,
@@ -646,9 +578,10 @@
 /datum/equipment_preset/synth/survivor/wy/security_synth
 	name = "Survivor - Synthetic - W-Y Security Guard Synthetic"
 	assignment = JOB_WY_SEC_SYNTH
-	rank = JOB_WY_SEC_SYNTH
+	job_title = JOB_WY_SEC_SYNTH
 	idtype = /obj/item/card/id/silver/cl
 	role_comm_title = "WY Syn"
+	origin_override = ORIGIN_WY_SEC
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/cmcap/wy_cap,
 		WEAR_L_EAR = /obj/item/device/radio/headset/distress/WY,
@@ -681,7 +614,7 @@
 		WEAR_BACK = /obj/item/storage/backpack/satchel/lockable,
 		WEAR_IN_BACK = /obj/item/notepad,
 		WEAR_IN_BACK = /obj/item/folder,
-		WEAR_IN_BACK = /obj/item/paper/research_notes/good,
+		WEAR_IN_BACK = /obj/item/paper/research_notes/unique/tier_three,
 		WEAR_IN_BACK = /obj/item/device/taperecorder,
 		WEAR_WAIST = /obj/item/storage/belt/utility/full,
 		WEAR_HANDS = /obj/item/clothing/gloves/botanic_leather,
@@ -706,7 +639,7 @@
 		WEAR_BACK = /obj/item/storage/backpack/satchel/lockable,
 		WEAR_IN_BACK = /obj/item/notepad,
 		WEAR_IN_BACK = /obj/item/folder,
-		WEAR_IN_BACK = /obj/item/paper/research_notes/good,
+		WEAR_IN_BACK = /obj/item/paper/research_notes/unique/tier_three,
 		WEAR_WAIST = /obj/item/clipboard,
 		WEAR_JACKET = /obj/item/clothing/suit/storage/hazardvest/yellow,
 		WEAR_IN_JACKET = /obj/item/device/taperecorder,
@@ -744,9 +677,9 @@
 	name = "Synthetic - Working Joe"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 	faction = FACTION_MARINE
-	faction_group = list(FACTION_MARINE)
+	faction_group = FACTION_LIST_ARES_MARINE
 	assignment = JOB_WORKING_JOE
-	rank = JOB_WORKING_JOE
+	job_title = JOB_WORKING_JOE
 
 	minimap_icon = "joe"
 
@@ -757,11 +690,12 @@
 
 /datum/equipment_preset/synth/working_joe/New()
 	. = ..()
-	access = get_access(ACCESS_LIST_GLOBAL)
+	access = get_access(ACCESS_LIST_MARINE_ALL)
 
 /datum/equipment_preset/synth/working_joe/load_race(mob/living/carbon/human/new_human)
 	. = ..()
 	new_human.set_species(joe_type)
+	new_human.bubble_icon = "robot"
 	new_human.gender = MALE
 	new_human.flavor_text = ""
 	new_human.h_style = "Bald"
@@ -837,7 +771,7 @@
 /datum/equipment_preset/synth/working_joe/upp
 	name = "Synthetic - Dzho Automaton"
 	assignment = JOB_UPP_JOE
-	rank = JOB_UPP_JOE
+	job_title = JOB_UPP_JOE
 	joe_type = SYNTH_UPP_JOE
 	idtype = /obj/item/card/id/dogtag
 	minimap_background = "background_upp"
@@ -870,8 +804,12 @@
 	. = ..()
 	new_human.allow_gun_usage = TRUE
 
+/datum/equipment_preset/synth/working_joe/upp/load_race(mob/living/carbon/human/new_human)
+	. = ..()
+	new_human.bubble_icon = "syndibot"
+
 /datum/equipment_preset/synth/working_joe/load_name(mob/living/carbon/human/new_human, randomise)
-	if(src.faction == FACTION_UPP)
+	if(faction == FACTION_UPP)
 		new_human.change_real_name(new_human, "Dzho Automaton №[rand(9)][rand(9)][ascii2text(rand(65, 90))][ascii2text(rand(65, 90))]")
 	else
 		new_human.change_real_name(new_human, "Working Joe #[rand(100)][rand(100)]")
@@ -950,7 +888,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	faction = FACTION_NEUTRAL
 	assignment = JOB_COLONIST
-	rank = JOB_COLONIST
+	job_title = JOB_COLONIST
 	skills = /datum/skills/infiltrator_synthetic
 	idtype = /obj/item/card/id/lanyard
 	paygrades = list(PAY_SHORT_CIV = JOB_PLAYTIME_TIER_0)
@@ -960,20 +898,24 @@
 	access = get_access(ACCESS_LIST_GLOBAL)
 
 /datum/equipment_preset/synth/infiltrator/load_name(mob/living/carbon/human/new_human, randomise)
-	new_human.gender = pick(MALE,FEMALE)
-	var/random_name
-	var/first_name
-	var/last_name
+	new_human.gender = pick(MALE, FEMALE)
+
 	var/datum/preferences/A = new()
 	A.randomize_appearance(new_human)
-	if(new_human.gender == MALE)
-		first_name = "[pick(GLOB.first_names_male_colonist)]"
-	else
-		first_name ="[pick(GLOB.first_names_female_colonist)]"
 
-	last_name ="[pick(GLOB.last_names_colonist)]"
-	random_name = "[first_name] [last_name]"
-	new_human.change_real_name(new_human, random_name)
+	var/first_name
+	var/last_name
+	switch(new_human.gender)
+		if(FEMALE)
+			first_name = capitalize(pick(GLOB.first_names_female_colonist))
+		if(PLURAL, NEUTER) // Not currently possible
+			first_name = capitalize(pick(MALE, FEMALE) == MALE ? pick(GLOB.first_names_male_colonist) : pick(GLOB.first_names_female_colonist))
+		else // MALE
+			first_name = capitalize(pick(GLOB.first_names_male_colonist))
+
+	last_name = capitalize(pick(GLOB.last_names_colonist))
+	new_human.change_real_name(new_human, "[first_name] [last_name]")
+
 	var/static/list/colors = list("BLACK" = list(15, 15, 25), "BROWN" = list(102, 51, 0), "AUBURN" = list(139, 62, 19))
 	var/static/list/hair_colors = colors.Copy() + list("BLONDE" = list(197, 164, 30), "CARROT" = list(174, 69, 42))
 	var/hair_color = pick(hair_colors)

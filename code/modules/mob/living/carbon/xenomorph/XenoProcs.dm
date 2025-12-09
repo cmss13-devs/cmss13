@@ -117,28 +117,41 @@
 		else if(!(caste_type == XENO_CASTE_QUEEN))
 			. += "Queen's Location: [hive.living_xeno_queen.loc.loc.name]"
 
-		if(hive.slashing_allowed == XENO_SLASH_ALLOWED)
+		if (CHECK_MULTIPLE_BITFIELDS(hive.hive_flags, XENO_SLASH_ALLOW_ALL))
 			. += "Slashing: PERMITTED"
+		else if (HAS_FLAG(hive.hive_flags, XENO_SLASH_NORMAL))
+			. += "Slashing: RESTRICTED AGAINST INFECTED"
 		else
 			. += "Slashing: FORBIDDEN"
 
-		if(hive.construction_allowed == XENO_LEADER)
-			. += "Construction Placement: LEADERS"
-		else if(hive.construction_allowed == NORMAL_XENO)
-			. += "Construction Placement: ANYONE"
-		else if(hive.construction_allowed == XENO_NOBODY)
-			. += "Construction Placement: NOBODY"
+		var/str_builder = "NOBODY"
+		if (CHECK_MULTIPLE_BITFIELDS(hive.hive_flags, XENO_CONSTRUCTION_ALLOW_ALL))
+			str_builder = "ANYONE"
 		else
-			. += "Construction Placement: QUEEN"
+			if (HAS_FLAG(hive.hive_flags, XENO_CONSTRUCTION_QUEEN))
+				str_builder = "QUEEN"
+				if (HAS_FLAG(hive.hive_flags, XENO_CONSTRUCTION_LEADERS))
+					str_builder += " and "
+			if (HAS_FLAG(hive.hive_flags, XENO_CONSTRUCTION_LEADERS))
+				str_builder += "LEADERS"
+		. += "Special Structure Placement: [str_builder]"
 
-		if(hive.destruction_allowed == XENO_LEADER)
-			. += "Special Structure Destruction: LEADERS"
-		else if(hive.destruction_allowed == NORMAL_XENO)
-			. += "Special Structure Destruction: BUILDERS and LEADERS"
-		else if(hive.construction_allowed == XENO_NOBODY)
-			. += "Construction Placement: NOBODY"
+		str_builder = "NOBODY"
+		if (CHECK_MULTIPLE_BITFIELDS(hive.hive_flags, XENO_DECONSTRUCTION_ALLOW_ALL))
+			str_builder = "ANYONE"
 		else
-			. += "Special Structure Destruction: QUEEN"
+			if (HAS_FLAG(hive.hive_flags, XENO_DECONSTRUCTION_QUEEN))
+				str_builder = "QUEEN"
+				if (HAS_FLAG(hive.hive_flags, XENO_DECONSTRUCTION_LEADERS))
+					str_builder += " and "
+			if (HAS_FLAG(hive.hive_flags, XENO_DECONSTRUCTION_LEADERS))
+				str_builder += "LEADERS"
+		. += "Special Structure Destruction: [str_builder]"
+
+		if (HAS_FLAG(hive.hive_flags, XENO_UNNESTING_RESTRICTED))
+			. += "Unnesting: BUILDERS"
+		else
+			. += "Unnesting: ANYONE"
 
 		if(hive.hive_orders)
 			. += "Hive Orders: [hive.hive_orders]"
@@ -300,10 +313,10 @@
 		throwing = FALSE
 		return
 
-	if (pounceAction.can_be_shield_blocked)
+	if(pounceAction.can_be_shield_blocked)
 		if(ishuman(M) && (M.dir in reverse_nearby_direction(dir)))
 			var/mob/living/carbon/human/H = M
-			if(H.check_shields(15, "the pounce")) //Human shield block.
+			if(H.check_shields("the pounce", get_dir(H, src), attack_type = SHIELD_ATTACK_POUNCE, custom_response = TRUE)) //Human shield block.
 				visible_message(SPAN_DANGER("[src] slams into [H]!"),
 					SPAN_XENODANGER("We slam into [H]!"), null, 5)
 				KnockDown(1)
@@ -312,20 +325,13 @@
 				playsound(H, "bonk", 75, FALSE) //bonk
 				return
 
-			if(isyautja(H))
-				if(H.check_shields(0, "the pounce", 1))
-					visible_message(SPAN_DANGER("[H] blocks the pounce of [src] with the combistick!"), SPAN_XENODANGER("[H] blocks our pouncing form with the combistick!"), null, 5)
-					apply_effect(3, WEAKEN)
-					throwing = FALSE
-					playsound(H, "bonk", 75, FALSE)
-					return
-				else if(prob(75)) //Body slam the fuck out of xenos jumping at your front.
-					visible_message(SPAN_DANGER("[H] body slams [src]!"),
-						SPAN_XENODANGER("[H] body slams us!"), null, 5)
-					KnockDown(3)
-					Stun(3)
-					throwing = FALSE
-					return
+			if(isyautja(H) && prob(75))//Body slam the fuck out of xenos jumping at your front.
+				visible_message(SPAN_DANGER("[H] body slams [src]!"),
+					SPAN_XENODANGER("[H] body slams us!"), null, 5)
+				KnockDown(3)
+				Stun(3)
+				throwing = FALSE
+				return
 			if(iscolonysynthetic(H) && prob(60))
 				visible_message(SPAN_DANGER("[H] withstands being pounced and slams down [src]!"),
 					SPAN_XENODANGER("[H] throws us down after withstanding the pounce!"), null, 5)
@@ -463,6 +469,8 @@
 /mob/living/carbon/xenomorph/proc/check_alien_construction(turf/current_turf, check_blockers = TRUE, silent = FALSE, check_doors = TRUE, ignore_nest = FALSE)
 	var/has_obstacle
 	for(var/obj/O in current_turf)
+		if(istype(O, /obj/effect/alien/resin/design/speed_node) || istype(O, /obj/effect/alien/resin/design/cost_node) || istype(O, /obj/effect/alien/resin/design/construct_node))
+			continue
 		if(check_blockers && istype(O, /obj/effect/build_blocker))
 			var/obj/effect/build_blocker/bb = O
 			if(!silent)
@@ -687,7 +695,7 @@
 	to_chat(src, SPAN_XENONOTICE("We start tracking the [target.mark_meaning.name] resin mark."))
 	to_chat(src, SPAN_INFO("Shift click the compass to watch the mark, alt click to stop tracking"))
 
-/mob/living/carbon/xenomorph/proc/stop_tracking_resin_mark(destroyed, silent = FALSE) //tracked_marker shouldnt be nulled outside this PROC!! >:C
+/mob/living/carbon/xenomorph/proc/stop_tracking_resin_mark(destroyed, silent = FALSE) //tracked_marker shouldn't be nulled outside this PROC!! >:C
 	if(QDELETED(src))
 		return
 

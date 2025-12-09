@@ -42,12 +42,13 @@
 	w_class = SIZE_HUGE
 	flags_equip_slot = SLOT_BACK
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi'
+	icon_state = "M56D_gun_e"
+	item_state = "M56D_gun"
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/machineguns.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/machineguns_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/machineguns_righthand.dmi'
 	)
-	icon_state = "M56D_gun_e"
 	///How many rounds are in the weapon. This is useful if we break down our guns.
 	var/rounds = 0
 	///Indicates whether the M56D will come with its folding mount already attached
@@ -193,6 +194,12 @@
 	w_class = SIZE_MEDIUM
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi'
 	icon_state = "folded_mount"
+	item_state = "folded_mount"
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/machineguns.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/machineguns_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/machineguns_righthand.dmi'
+	)
 
 /// Causes the tripod to unfold
 /obj/item/device/m56d_post/attack_self(mob/user)
@@ -374,7 +381,7 @@
 			transfer_label_component(HMG)
 			var/datum/component/label/label = GetComponent(/datum/component/label)
 			if(label)
-				label.remove_label()
+				label.clear_label()
 			gun_mounted = FALSE
 			gun_rounds = 0
 			gun_health = 0
@@ -995,30 +1002,30 @@
 			if(NORTH)
 				diff_y = -16 + user_old_y
 				if(user.client)
-					user.client.pixel_x = 0
-					user.client.pixel_y = viewoffset
+					user.client.set_pixel_x(0)
+					user.client.set_pixel_y(viewoffset)
 			if(SOUTH)
 				diff_y = 16 + user_old_y
 				if(user.client)
-					user.client.pixel_x = 0
-					user.client.pixel_y = -viewoffset
+					user.client.set_pixel_x(0)
+					user.client.set_pixel_y(-viewoffset)
 			if(EAST)
 				diff_x = -16 + user_old_x
 				if(user.client)
-					user.client.pixel_x = viewoffset
-					user.client.pixel_y = 0
+					user.client.set_pixel_x(viewoffset)
+					user.client.set_pixel_y(0)
 			if(WEST)
 				diff_x = 16 + user_old_x
 				if(user.client)
-					user.client.pixel_x = -viewoffset
-					user.client.pixel_y = 0
+					user.client.set_pixel_x(-viewoffset)
+					user.client.set_pixel_y(0)
 
 		animate(user, pixel_x=diff_x, pixel_y=diff_y, 0.4 SECONDS)
 	else
 		if(user.client)
 			user.client.change_view(GLOB.world_view_size)
-			user.client.pixel_x = 0
-			user.client.pixel_y = 0
+			user.client.set_pixel_x(0)
+			user.client.set_pixel_y(0)
 		animate(user, pixel_x=user_old_x, pixel_y=user_old_y, 4, 1)
 
 /obj/structure/machinery/m56d_hmg/check_eye(mob/living/user)

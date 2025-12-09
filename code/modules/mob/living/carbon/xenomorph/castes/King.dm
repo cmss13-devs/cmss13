@@ -80,6 +80,10 @@
 	. = ..()
 	AddComponent(/datum/component/footstep, 2 , 35, 11, 4, "alien_footstep_large")
 	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(post_move))
+	hive = GLOB.hive_datum[hivenumber]
+	hive.banned_allies = list("All")
+	if(hive.break_all_alliances())
+		xeno_message(SPAN_XENOANNOUNCE("With the arrival of the King, all alliances have been broken."), 3, hivenumber)
 
 /mob/living/carbon/xenomorph/king/initialize_pass_flags(datum/pass_flags_container/pass_flags)
 	. = ..()
@@ -90,6 +94,9 @@
 
 /mob/living/carbon/xenomorph/king/proc/post_move(mob/king)
 	SIGNAL_HANDLER
+
+	if(stat == DEAD)
+		return
 
 	var/turf/new_loc = get_turf(src)
 
@@ -120,15 +127,10 @@
 	icon_xeno = 'icons/mob/xenos/castes/tier_4/rogueking.dmi'
 	icon = 'icons/mob/xenos/castes/tier_4/rogueking.dmi'
 
-/atom/movable/vis_obj/xeno_wounds/rogue
-	icon = 'icons/mob/xenos/castes/tier_4/roguedamage.dmi'
-
-/mob/living/carbon/xenomorph/king/rogue/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
+/mob/living/carbon/xenomorph/king/death(cause, gibbed)
 	. = ..()
-	vis_contents -= wound_icon_holder
-	wound_icon_holder = new /atom/movable/vis_obj/xeno_wounds/rogue(null, src)
-	vis_contents += wound_icon_holder
-
+	if(hive)
+		hive.setup_banned_allies()
 
 /*
 	REND ABILITY
@@ -372,9 +374,8 @@
 	owner.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	SLEEP_CHECK_DEATH(7, owner)
 
-	while(target_turf && owner.loc != target_turf)
-		owner.forceMove(get_step(owner, get_dir(owner, target_turf)))
-		SLEEP_CHECK_DEATH(0.5, owner)
+	SLEEP_CHECK_DEATH(0.5 * (abs(owner.x-target_turf.x) + abs(owner.y - target_turf.y) + abs(owner.z - target_turf.z)), owner)
+	owner.forceMove(target_turf)
 
 	animate(owner, alpha = 100, transform = matrix()*0.7, time = 7)
 	var/descentTime = 5
@@ -418,7 +419,7 @@
 			item.throw_atom(throwtarget, 2, SPEED_REALLY_FAST, owner, TRUE)
 
 	for(var/obj/structure/structure in orange(1, owner))
-		structure.ex_act(1000, get_dir(owner, structure))
+		INVOKE_ASYNC(structure, TYPE_PROC_REF(/atom, ex_act), 1000, get_dir(owner, structure))
 
 	for(var/mob/living in range(7, owner))
 		shake_camera(living, 15, 1)

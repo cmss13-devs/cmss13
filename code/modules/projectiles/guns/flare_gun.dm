@@ -59,10 +59,6 @@
 	update_icon()
 
 /obj/item/weapon/gun/flare/attackby(obj/item/attacking_item, mob/user)
-	if(istype(attacking_item, /obj/item/stack/repairable))
-		attempt_repair(user, attacking_item)
-		return
-
 	if(istype(attacking_item, /obj/item/device/flashlight/flare))
 		var/obj/item/device/flashlight/flare/attacking_flare = attacking_item
 		if(attacking_flare.on)

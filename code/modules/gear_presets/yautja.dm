@@ -2,7 +2,7 @@
 	name = "Yautja"
 	idtype = null //No IDs for Yautja!
 	languages = list(LANGUAGE_YAUTJA)
-	rank = "Predator"
+	job_title = "Predator"
 	faction = FACTION_YAUTJA
 	faction_group = FACTION_LIST_YAUTJA
 	uses_special_name = TRUE
@@ -16,6 +16,7 @@
 /datum/equipment_preset/yautja/load_race(mob/living/carbon/human/new_human, client/mob_client)
 	new_human.set_species(SPECIES_YAUTJA)
 	new_human.skin_color = pick(PRED_SKIN_COLOR)
+	new_human.bubble_icon = "pred"
 	new_human.body_type = "pred" //can be removed in future for body types
 	if(!mob_client)
 		mob_client = new_human.client
@@ -24,7 +25,7 @@
 		new_human.skin_color = mob_client.prefs.predator_skin_color
 
 /datum/equipment_preset/yautja/load_id(mob/living/carbon/human/new_human)
-	new_human.job = rank
+	new_human.job = job_title
 	new_human.faction = faction
 	new_human.faction_group = faction_group
 
@@ -36,6 +37,7 @@
 
 /datum/equipment_preset/yautja/load_gear(mob/living/carbon/human/new_human, client/mob_client)
 	var/caster_material = "ebony"
+	var/bracer_material = "ebony"
 	var/translator_type = PRED_TECH_MODERN
 	var/invisibility_sound = PRED_TECH_MODERN
 
@@ -43,10 +45,11 @@
 		mob_client = new_human.client
 	if(mob_client?.prefs)
 		caster_material = mob_client.prefs.predator_caster_material
+		bracer_material = mob_client.prefs.predator_bracer_material
 		translator_type = mob_client.prefs.predator_translator_type
 		invisibility_sound = mob_client.prefs.predator_invisibility_sound
 
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yautja/hunter(new_human, translator_type, invisibility_sound, caster_material, clan_rank), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yautja/hunter(new_human, translator_type, invisibility_sound, caster_material, clan_rank, bracer_material), WEAR_HANDS)
 
 	if(new_human.client?.check_whitelist_status(WHITELIST_YAUTJA_COUNCIL))
 		new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja/overseer(new_human), WEAR_L_EAR)
@@ -56,7 +59,7 @@
 
 /datum/equipment_preset/yautja/load_name(mob/living/carbon/human/new_human, randomise)
 	var/final_name = capitalize(pick(GLOB.pred_names)) + " " + capitalize(pick(GLOB.pred_last_names))
-	new_human.gender = pick(80;MALE,20;FEMALE) // Female Hunters are rare
+	new_human.gender = pick_weight(list(MALE = 80, FEMALE = 20))// Female Hunters are rare
 	new_human.age = rand(100,150)
 	new_human.flavor_text = ""
 	new_human.flavor_texts["general"] = new_human.flavor_text
@@ -68,7 +71,7 @@
 		new_human.flavor_text = new_human.client.prefs.predator_flavor_text
 		new_human.flavor_texts["general"] = new_human.flavor_text
 		if(!final_name || final_name == "Undefined") //In case they don't have a name set or no prefs, there's a name.
-			final_name = capitalize(pick(GLOB.pred_names)) + " " + capitalize(pick(GLOB.pred_last_names))
+			final_name = "[capitalize(pick(GLOB.pred_names))] [capitalize(pick(GLOB.pred_last_names))]"
 	new_human.change_real_name(new_human, final_name)
 
 /datum/equipment_preset/yautja/youngblood //normal WL youngblood rank
@@ -144,7 +147,7 @@
 /datum/equipment_preset/yautja/non_wl //For hunting grounds ONLY
 	name = "Yautja Young (non-WL)"
 	minimap_icon = "predator_young"
-	rank = "Young Blood"
+	job_title = "Young Blood"
 	faction = FACTION_YAUTJA_YOUNG
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
@@ -156,7 +159,7 @@
 /datum/equipment_preset/yautja/non_wl_leader //The "leader" of the group if a WL player is not on
 	name = "Yautja Youngblood pack leader (non-WL)"
 	minimap_icon = "predator_young"
-	rank = "Young Blood"
+	job_title = "Young Blood"
 	faction = FACTION_YAUTJA_YOUNG
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 

@@ -75,7 +75,7 @@
 	var/rank_display = get_paygrades(id_paygrade, FALSE, gender)
 	var/msg = "<span class='info'>\nThis is "
 
-	if(skipjumpsuit && skipface) //big suits/masks/helmets make it hard to tell their gender
+	if(skipjumpsuit && skipface || gender == PLURAL) //big suits/masks/helmets make it hard to tell their gender
 		t_He = "They"
 		t_his = "their"
 		t_him = "them"
@@ -89,10 +89,12 @@
 				t_He = "He"
 				t_his = "his"
 				t_him = "him"
+				t_is = "is"
 			if(FEMALE)
 				t_He = "She"
 				t_his = "her"
 				t_him = "her"
+				t_is = "is"
 
 	if(id_paygrade)
 		msg += "<EM>[rank_display] </EM>"
@@ -533,15 +535,16 @@
 			temp_msg += " <a href='byond://?src=\ref[src];use_stethoscope=1'>\[Use Stethoscope\]</a>"
 		msg += "\n<span class = 'deptradio'>Medical actions: [temp_msg]\n"
 
-	if(print_flavor_text())
-		msg += "[print_flavor_text()]\n"
+	var/flavor = print_flavor_text()
+	if(flavor)
+		msg += "[flavor]\n"
 
 	msg += "</span>"
 
 	if (pose)
 		if( findtext(pose,".",length(pose)) == 0 && findtext(pose,"!",length(pose)) == 0 && findtext(pose,"?",length(pose)) == 0 )
 			pose = addtext(pose,".") //Makes sure all emotes end with a period.
-		msg += "\n[t_He] is [pose]"
+		msg += "\n[t_He] [t_is] [pose]"
 
 	. += msg
 

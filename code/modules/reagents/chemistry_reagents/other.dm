@@ -72,6 +72,25 @@
 	objective_value = OBJECTIVE_HIGH_VALUE
 	properties = list(PROPERTY_CORROSIVE = 3)
 
+/datum/reagent/blood/xeno_blood/reaction_hydro_tray_reagent(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	processing_tray.toxins += 3*volume
+	processing_tray.plant_health += -volume
+	if(prob(10))
+		var/turf/c_turf = get_turf(processing_tray)
+		var/removed_chem = pick(processing_tray.seed.chems)
+		processing_tray.seed = processing_tray.seed.diverge()
+		if(length(processing_tray.seed.chems) > 1)
+			c_turf.visible_message(SPAN_WARNING("[capitalize_first_letters(processing_tray.seed.display_name)] sizzles and pops!"))
+			processing_tray.seed.chems.Remove(removed_chem)
+		if(length(processing_tray.seed.chems) <= 1)
+			if (!isnull(processing_tray.seed.chems["xenoblood"]))
+				return
+			processing_tray.seed.chems += list("xenoblood" = list(1,2))
+			c_turf.visible_message(SPAN_NOTICE("[capitalize_first_letters(processing_tray.seed.display_name)]'s sizzling sputters out, you smell [lowertext(name)]!"))
+
 /datum/reagent/blood/xeno_blood/royal
 	name = "Dark Acidic Blood"
 	id = "xenobloodroyal"
@@ -79,6 +98,24 @@
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_EXTREME_VALUE
 	properties = list(PROPERTY_CORROSIVE = 6)
+
+/datum/reagent/blood/xeno_blood/royal/reaction_hydro_tray_reagent(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, volume)
+	if(!processing_tray.seed)
+		return
+	processing_tray.toxins += 6*volume
+	processing_tray.plant_health += -4*volume
+	processing_tray.chem_add_counter += 1*volume
+	if(processing_tray.chem_add_counter >= 5 && prob(60))
+		var/turf/c_turf = get_turf(processing_tray)
+		processing_tray.chem_add_counter += -5
+		processing_tray.seed = processing_tray.seed.diverge()
+		if(length(processing_tray.seed.chems) > 10)
+			return
+		if(!isnull(processing_tray.seed.chems["xenoblood"]))
+			var/list/new_chem = list(pick( GLOB.chemical_gen_classes_list["H1"]) = list(1,rand(2,3)))
+			var/datum/reagent/new_chem_datum = GLOB.chemical_reagents_list[new_chem[1]]
+			processing_tray.seed.chems += new_chem
+			c_turf.visible_message(SPAN_NOTICE("[capitalize_first_letters(processing_tray.seed.display_name)] flashes an erie green, you smell [new_chem_datum.name]!"))
 
 /datum/reagent/vaccine
 	//data must contain virus type
@@ -136,6 +173,10 @@
 		if(M.fire_stacks <= 0)
 			M.ExtinguishMob()
 
+/datum/reagent/water/reaction_hydro_tray_reagent(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, volume)
+	. = ..()
+	processing_tray.waterlevel += 0.5*volume
+
 /datum/reagent/water/holywater
 	name = "Holy Water"
 	id = "holywater"
@@ -166,7 +207,7 @@
 /datum/reagent/sleen
 	name = "Sleen"
 	id = "sleen"
-	description = " A favorite of marine medics, it is an illicit mixture of name brand lime soda and oxycodone, known for it's distinct red hue. Overdosing can cause hallucinations, loss of coordination, seizures, brain damage, respiratory failure, and death."
+	description = " A favorite of marine medics, it is an illicit mixture of name brand lime soda and oxycodone, known for its distinct red hue. Overdosing can cause hallucinations, loss of coordination, seizures, brain damage, respiratory failure, and death."
 	reagent_state = LIQUID
 	color = "#C21D24" // rgb: 194, 29, 36
 	overdose = MED_REAGENTS_OVERDOSE
@@ -187,7 +228,7 @@
 /datum/reagent/oxygen
 	name = "Oxygen"
 	id = "oxygen"
-	description = "Chemical element of atomic number 8. It is an oxidizing agent that forms oxides with most elements and many other compounds. Dioxygen is used in cellular respiration and is nessesary to sustain organic life."
+	description = "Chemical element of atomic number 8. It is an oxidizing agent that forms oxides with most elements and many other compounds. Dioxygen is used in cellular respiration and is necessary to sustain organic life."
 	reagent_state = GAS
 	color = COLOR_GRAY
 	chemfiresupp = TRUE
@@ -202,7 +243,7 @@
 /datum/reagent/copper
 	name = "Copper"
 	id = "copper"
-	description = "Chemical element of atomic number 29. A solfe malleable red metal with high thermal and electrical conductivity."
+	description = "Chemical element of atomic number 29. A soft, red malleable metal with high thermal and electrical conductivity."
 	color = "#6E3B08" // rgb: 110, 59, 8
 	chemfiresupp = TRUE
 	burncolor = "#78be5a"
@@ -329,7 +370,7 @@
 /datum/reagent/phosphorus
 	name = "Phosphorus"
 	id = "phosphorus"
-	description = "Chemical element of atomic number 15. A highly reactive element, that is essential for life as a component of DNA, RNA and ATP. White phospherous is used in many types of tracer and incendiary munitions due to its smoke production and high flammability."
+	description = "Chemical element of atomic number 15. A highly reactive element, that is essential for life as a component of DNA, RNA and ATP. White phosphorus is used in many types of tracer and incendiary munitions due to its smoke production and high flammability."
 	reagent_state = SOLID
 	color = "#832828" // rgb: 131, 40, 40
 	chemfiresupp = TRUE
@@ -422,7 +463,7 @@
 	id = "iron"
 	description = "Chemical element of atomic number 26. Has a broad range of uses in multiple industries particularly in engineering and construction. Iron is an important component of hemoglobin, the substance in red blood cells that carries oxygen. Overdosing on iron is extremely toxic."
 	reagent_state = SOLID
-	color = "#C8A5DC" // rgb: 200, 165, 220
+	color = "#a19d94" // rgb: 161, 157, 148
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_BASIC
@@ -569,7 +610,7 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_NEUROTOXIC = 2, PROPERTY_RELAXING = 1)
+	properties = list(PROPERTY_NEUROTOXIC = 2, PROPERTY_ANTISPASMODIC = 1)
 
 //*****************************************************************************************************/
 
@@ -612,7 +653,7 @@
 /datum/reagent/foaming_agent// Metal foaming agent. This is lithium hydride. Add other recipes (e.g. LiH + H2O -> LiOH + H2) eventually.
 	name = "Foaming agent"
 	id = "foaming_agent"
-	description = "An agent that yields metallic foam when mixed with light metal and a strong acid."
+	description = "An agent that yeilds metallic foam when mixed with light metal and a strong acid."
 	reagent_state = SOLID
 	color = "#664B63" // rgb: 102, 75, 99
 	chemclass = CHEM_CLASS_UNCOMMON
@@ -643,6 +684,14 @@
 	color = "#404030" // rgb: 64, 64, 48
 	chemclass = CHEM_CLASS_COMMON
 
+/datum/reagent/ammonia/reaction_hydro_tray_reagent(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	processing_tray.plant_health += 0.5*volume
+	processing_tray.yield_mod += 0.1*volume
+	processing_tray.nutrilevel += 2*volume
+
 /datum/reagent/hexamine
 	name = "Hexamine"
 	id = "hexamine"
@@ -652,7 +701,7 @@
 	chemfiresupp = TRUE
 	durationmod = 0.5
 	burncolor = "#ff9900"
-	chemclass = CHEM_CLASS_UNCOMMON
+	chemclass = CHEM_CLASS_RARE
 
 /datum/reagent/ultraglue
 	name = "Ultra Glue"
@@ -667,6 +716,14 @@
 	reagent_state = LIQUID
 	color = "#604030" // rgb: 96, 64, 48
 	chemclass = CHEM_CLASS_UNCOMMON
+
+/datum/reagent/diethylamine/reaction_hydro_tray_reagent(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	processing_tray.plant_health += 0.8*volume
+	processing_tray.yield_mod += 0.3*volume
+	processing_tray.nutrilevel += 2*volume
 
 /datum/reagent/blackgoo
 	name = "Black goo"
@@ -690,6 +747,18 @@
 		return
 	if(!(locate(/obj/effect/decal/cleanable/blackgoo) in T))
 		new /obj/effect/decal/cleanable/blackgoo(T)
+
+/datum/reagent/viroxeno
+	name = "Xenogenetic Catalyst"
+	id = "xenogenic"
+	description = "A catalyst chemical that is extremely aggresive towards any organic substance before swiftly turning it into itself."
+	reagent_state = LIQUID
+	color = "#a244d8"
+	overdose = 10
+	overdose_critical = 20
+	chemclass = CHEM_CLASS_SPECIAL
+	flags = REAGENT_NO_GENERATION
+	properties = list(PROPERTY_DNA_DISINTEGRATING = 5, PROPERTY_HEMOSITIC = 2)
 
 
 // Chemfire supplements
@@ -775,6 +844,7 @@
 	color = "#00b8ff"
 	burncolor = "#00b8ff"
 	burn_sprite = "blue"
+	flags = REAGENT_TYPE_SPECIALIST
 	properties = list(
 		PROPERTY_INTENSITY = BURN_LEVEL_TIER_7,
 		PROPERTY_DURATION = BURN_TIME_TIER_4,
@@ -790,6 +860,7 @@
 	color = COLOR_GREEN
 	burncolor = COLOR_GREEN
 	burn_sprite = "green"
+	flags = REAGENT_TYPE_SPECIALIST
 	properties = list(
 		PROPERTY_INTENSITY = BURN_LEVEL_TIER_2,
 		PROPERTY_DURATION = BURN_TIME_TIER_5,
@@ -849,7 +920,7 @@
 	chemfiresupp = TRUE
 	burncolor = "#ff9300"
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_CORROSIVE = 8, PROPERTY_TOXIC = 6, PROPERTY_OXIDIZING = 9, PROPERTY_IGNITING = 1)
+	properties = list(PROPERTY_CORROSIVE = 6, PROPERTY_TOXIC = 6, PROPERTY_OXIDIZING = 9, PROPERTY_IGNITING = 1)
 
 /datum/reagent/methane
 	name = "Methane"
@@ -958,7 +1029,7 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_EXTREME_VALUE
-	properties = list(PROPERTY_HALLUCINOGENIC = 8, PROPERTY_NERVESTIMULATING = 6)
+	properties = list(PROPERTY_HALLUCINOGENIC = 8, PROPERTY_NERVESTIMULATING = 3)
 
 /datum/reagent/plasma/chitin
 	name = "Chitin Plasma"
@@ -980,7 +1051,7 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_EXTREME_VALUE
-	properties = list(PROPERTY_PAINING = 2, PROPERTY_MUSCLESTIMULATING = 6)
+	properties = list(PROPERTY_NEUROPATHIC = 2, PROPERTY_MUSCLESTIMULATING = 6)
 
 /datum/reagent/plasma/egg
 	name = "Egg Plasma"
@@ -1035,6 +1106,17 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	properties = list(PROPERTY_NEUROSHIELDING = 1)
 
+/datum/reagent/plasma/nutrient
+	name = "Nutrient Plasma"
+	id = PLASMA_NUTRIENT
+	description = "A tarquise plasma..."
+	color = "#2fbe88"
+	overdose = REAGENTS_OVERDOSE
+	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
+	chemclass = CHEM_CLASS_SPECIAL
+	objective_value = OBJECTIVE_EXTREME_VALUE
+	properties = list(PROPERTY_FUELING = 1, PROPERTY_VISCOUS = 3, PROPERTY_ADDICTIVE = 4, PROPERTY_NUTRITIOUS = 3)
+
 /datum/reagent/plasma/purple
 	name = "Purple Plasma"
 	id = PLASMA_PURPLE
@@ -1046,6 +1128,23 @@
 	objective_value = OBJECTIVE_EXTREME_VALUE
 	properties = list(PROPERTY_BIOCIDIC = 2)
 
+/datum/reagent/plasma/purple/reaction_hydro_tray_reagent(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	processing_tray.pestlevel += 2*volume
+	processing_tray.nutrilevel += -2*volume
+	if(processing_tray.seed.production <= 1)
+		return
+	processing_tray.production_time_counter += volume
+	if (processing_tray.production_time_counter >= 30)
+		var/turf/c_turf = get_turf(processing_tray)
+		processing_tray.seed = processing_tray.seed.diverge()
+		processing_tray.seed.production += -1
+		if(prob(50))
+			c_turf.visible_message(SPAN_NOTICE("[processing_tray.seed.display_name] bristles and sways towards you!"))
+		processing_tray.production_time_counter = 0
+
 /datum/reagent/plasma/royal
 	name = "Royal Plasma"
 	id = PLASMA_ROYAL
@@ -1055,7 +1154,7 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_ABSOLUTE_VALUE
-	properties = list(PROPERTY_BIOCIDIC = 4, PROPERTY_ADDICTIVE = 1, PROPERTY_HALLUCINOGENIC = 4, PROPERTY_CIPHERING = 1)
+	properties = list(PROPERTY_BIOCIDIC = 4, PROPERTY_ADDICTIVE = 1, PROPERTY_HALLUCINOGENIC = 4, PROPERTY_ENCRYPTED = 1)
 
 /datum/reagent/fruit_resin
 	name = "Fruit Resin"

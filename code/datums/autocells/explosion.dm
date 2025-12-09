@@ -43,6 +43,8 @@
 	var/falloff_shape = EXPLOSION_FALLOFF_SHAPE_LINEAR
 	// How much power does the explosion gain (or lose) by bouncing off walls?
 	var/reflection_power_multiplier = 0.4
+	/// Whether the damage is considered to be from an environmental source
+	var/enviro = FALSE
 
 	//Diagonal cells have a small delay when branching off from a non-diagonal cell. This helps the explosion look circular
 	var/delay = 0
@@ -147,13 +149,13 @@
 		resistance += max(0, A.get_explosion_resistance())
 
 	// Blow stuff up
-	INVOKE_ASYNC(in_turf, TYPE_PROC_REF(/atom, ex_act), power, direction, explosion_cause_data)
+	INVOKE_ASYNC(in_turf, TYPE_PROC_REF(/atom, ex_act), power, direction, explosion_cause_data, 0, enviro)
 	for(var/atom/A in in_turf)
 		if(A in exploded_atoms)
 			continue
 		if(A.gc_destroyed)
 			continue
-		INVOKE_ASYNC(A, TYPE_PROC_REF(/atom, ex_act), power, direction, explosion_cause_data)
+		INVOKE_ASYNC(A, TYPE_PROC_REF(/atom, ex_act), power, direction, explosion_cause_data, 0, enviro)
 		exploded_atoms += A
 		log_explosion(A, src)
 
@@ -241,13 +243,13 @@ as having entered the turf.
 	if(A.gc_destroyed)
 		return
 
-	INVOKE_ASYNC(A, TYPE_PROC_REF(/atom, ex_act), power, null, explosion_cause_data)
+	INVOKE_ASYNC(A, TYPE_PROC_REF(/atom, ex_act), power, null, explosion_cause_data, 0, enviro)
 	log_explosion(A, src)
 
 // I'll admit most of the code from here on out is basically just copypasta from DOREC
 
 // Spawns a cellular automaton of an explosion
-/proc/cell_explosion(turf/epicenter, power, falloff, falloff_shape = EXPLOSION_FALLOFF_SHAPE_LINEAR, direction, datum/cause_data/explosion_cause_data)
+/proc/cell_explosion(turf/epicenter, power, falloff, falloff_shape = EXPLOSION_FALLOFF_SHAPE_LINEAR, direction, datum/cause_data/explosion_cause_data, enviro=FALSE)
 	if(!istype(epicenter))
 		epicenter = get_turf(epicenter)
 
@@ -292,57 +294,55 @@ as having entered the turf.
 	E.falloff_shape = falloff_shape
 	E.direction = direction
 	E.explosion_cause_data = explosion_cause_data
+	E.enviro = enviro
 
 	if(power >= 100) // powerful explosions send out some special effects
 		epicenter = get_turf(epicenter) // the ex_acts might have changed the epicenter
 		new /obj/shrapnel_effect(epicenter)
 
-/proc/log_explosion(atom/A, datum/automata_cell/explosion/E)
-	if(isliving(A))
-		var/mob/living/M = A
-		var/turf/T = get_turf(A)
+/// Handle all logging for an automata_cell explosion.
+/proc/log_explosion(mob/living/affected, datum/automata_cell/explosion/explosion)
+	if(!istype(affected))
+		return
 
-		if(QDELETED(M) || QDELETED(T))
-			return
+	var/turf/location = get_turf(affected)
 
-		M.last_damage_data = E.explosion_cause_data
-		var/explosion_source = E.explosion_cause_data?.cause_name
-		var/mob/explosion_source_mob = E.explosion_cause_data?.resolve_mob()
+	if(QDELETED(affected) || !location)
+		return
 
-		if(explosion_source_mob)
-			log_attack("[key_name(M)] was harmed by explosion in [T.loc.name] caused by [explosion_source] at ([T.x],[T.y],[T.z])")
-			if(!ismob(explosion_source_mob))
-				CRASH("Statistics attempted to track a source mob incorrectly: [explosion_source_mob] ([explosion_source])")
-			var/mob/firing_mob = explosion_source_mob
-			var/turf/location_of_mob = get_turf(firing_mob)
-			// who cares about the explosion if it happened nowhere
-			if(!location_of_mob)
-				return
-			var/area/thearea = get_area(M)
-			if(M == firing_mob)
-				M.attack_log += "\[[time_stamp()]\] <b>[key_name(M)]</b> blew himself up with \a <b>[explosion_source]</b> in [get_area(T)]."
-			// One human blew up another, be worried about it but do everything basically the same
-			else if(ishuman(firing_mob) && ishuman(M) && M.faction == firing_mob.faction && !thearea?.statistic_exempt)
-				M.attack_log += "\[[time_stamp()]\] <b>[key_name(firing_mob)]</b> blew up <b>[key_name(M)]</b> with \a <b>[explosion_source]</b> in [get_area(T)]."
+	affected.last_damage_data = explosion.explosion_cause_data
+	var/explosion_source = explosion.explosion_cause_data?.cause_name
+	var/mob/firing_mob = explosion.explosion_cause_data?.resolve_mob()
 
-				firing_mob.attack_log += "\[[time_stamp()]\] <b>[key_name(firing_mob)]</b> blew up <b>[key_name(M)]</b> with \a <b>[explosion_source]</b> in [get_area(T)]."
-				var/ff_msg = "[key_name(firing_mob)] blew up [key_name(M)] with \a [explosion_source] in [get_area(T)] (<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP LOC</a>) (<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[location_of_mob.x];Y=[location_of_mob.y];Z=[location_of_mob.z]'>JMP SRC</a>) [ADMIN_PM(firing_mob)]"
-				var/ff_living = TRUE
-				if(M.stat == DEAD)
-					ff_living = FALSE
-				msg_admin_ff(ff_msg, ff_living)
+	if(!firing_mob)
+		log_attack("[key_name(affected)] was harmed by unknown explosion in [location.loc.name] at ([location.x],[location.y],[location.z])")
+		return
 
-				if(ishuman(firing_mob))
-					var/mob/living/carbon/human/H = firing_mob
-					H.track_friendly_fire(explosion_source)
-			else
-				M.attack_log += "\[[time_stamp()]\] <b>[key_name(firing_mob)]</b> blew up <b>[key_name(M)]</b> with \a <b>[explosion_source]</b> in [get_area(T)]."
+	log_attack("[key_name(affected)] was harmed by explosion in [location.loc.name] caused by [explosion_source] at ([location.x],[location.y],[location.z])")
+	if(!ismob(firing_mob))
+		CRASH("Statistics attempted to track a source mob incorrectly: [firing_mob] ([explosion_source])")
 
-				firing_mob.attack_log += "\[[time_stamp()]\] <b>[key_name(firing_mob)]</b> blew up <b>[key_name(M)]</b> with \a <b>[explosion_source]</b> in [get_area(T)]."
+	var/area/thearea = get_area(affected)
+	if(affected == firing_mob)
+		affected.attack_log += "\[[time_stamp()]\] <b>[key_name(affected)]</b> blew themself up with \a <b>[explosion_source]</b> in [get_area(location)]."
+	// One human blew up another, be worried about it but do everything basically the same
+	else if(ishuman(firing_mob) && ishuman(affected) && affected.faction == firing_mob.faction && !thearea?.statistic_exempt)
+		affected.attack_log += "\[[time_stamp()]\] <b>[key_name(firing_mob)]</b> blew up <b>[key_name(affected)]</b> with \a <b>[explosion_source]</b> in [get_area(location)]."
+		firing_mob.attack_log += "\[[time_stamp()]\] <b>[key_name(firing_mob)]</b> blew up <b>[key_name(affected)]</b> with \a <b>[explosion_source]</b> in [get_area(location)]."
 
-				msg_admin_attack("[key_name(firing_mob)] blew up [key_name(M)] with \a [explosion_source] in [get_area(T)] ([T.x],[T.y],[T.z]).", T.x, T.y, T.z)
-		else
-			log_attack("[key_name(M)] was harmed by unknown explosion in [T.loc.name] at ([T.x],[T.y],[T.z])")
+		var/ff_msg = "[key_name(firing_mob)] blew up [key_name(affected)] with \a [explosion_source] in [get_area(location)] (<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[location.x];Y=[location.y];Z=[location.z]'>JMP LOC</a>) [ADMIN_JMP_USER(firing_mob)] [ADMIN_PM(firing_mob)]"
+		var/ff_living = TRUE
+		if(affected.stat == DEAD)
+			ff_living = FALSE
+		msg_admin_ff(ff_msg, ff_living)
+
+		if(ishuman(firing_mob))
+			var/mob/living/carbon/human/attacking_human = firing_mob
+			attacking_human.track_friendly_fire(explosion_source)
+	else
+		affected.attack_log += "\[[time_stamp()]\] <b>[key_name(firing_mob)]</b> blew up <b>[key_name(affected)]</b> with \a <b>[explosion_source]</b> in [get_area(location)]."
+		firing_mob.attack_log += "\[[time_stamp()]\] <b>[key_name(firing_mob)]</b> blew up <b>[key_name(affected)]</b> with \a <b>[explosion_source]</b> in [get_area(location)]."
+		msg_admin_attack("[key_name(firing_mob)] blew up [key_name(affected)] with \a [explosion_source] in [get_area(location)] ([location.x],[location.y],[location.z]).", location.x, location.y, location.z)
 
 /obj/effect/particle_effect/shockwave
 	name = "shockwave"

@@ -29,6 +29,7 @@
 	)
 	flags_equip_slot = SLOT_WAIST
 	force = MELEE_FORCE_NORMAL
+	shield_flags = CAN_SHIELD_BASH
 
 /obj/item/weapon/classic_baton/attack(mob/M as mob, mob/living/user as mob)
 	. = ..()
@@ -54,6 +55,7 @@
 	flags_equip_slot = SLOT_WAIST
 	w_class = SIZE_SMALL
 	force = MELEE_FORCE_WEAK
+	shield_flags = CAN_SHIELD_BASH
 	var/on = 0
 	var/stun_force = 10
 
@@ -105,10 +107,11 @@
 	return
 
 /obj/item/weapon/telebaton/proc/stun(mob/living/carbon/human/target, mob/living/user)
-	if(target.check_shields(src, 0, "[user]'s [name]"))
+	var/stun_sound = pick('sound/weapons/baton.ogg', 'sound/effects/woodstave.ogg')
+	if(!(flags_item & UNBLOCKABLE) && target.check_shields("[user]'s [name]", get_dir(target, user)))
 		return FALSE
 	// Visuals and sound
-	playsound(target, 'sound/weapons/baton.ogg', 50, TRUE, 7)
+	playsound(target, stun_sound, 50, TRUE, 7)
 	user.animation_attack_on(target)
 	user.flick_attack_overlay(target, "punch")
 	log_interact(user, target, "[key_name(user)] stunned [key_name(target)] with \the [src]")
@@ -135,8 +138,6 @@
 /*
  * Energy Shield
  */
-/obj/item/weapon/shield/energy/IsShield()
-	return active
 
 /obj/item/weapon/shield/energy/attack_self(mob/living/user)
 	..()
@@ -148,6 +149,7 @@
 		w_class = SIZE_LARGE
 		playsound(user, 'sound/weapons/saberon.ogg', 25, 1)
 		to_chat(user, SPAN_NOTICE(" [src] is now active."))
+		shield_chance = readied_block
 
 	else
 		force = 3
@@ -155,6 +157,7 @@
 		w_class = SIZE_TINY
 		playsound(user, 'sound/weapons/saberoff.ogg', 25, 1)
 		to_chat(user, SPAN_NOTICE(" [src] can now be concealed."))
+		shield_chance = SHIELD_CHANCE_NONE
 
 	if(istype(user,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = user

@@ -81,6 +81,9 @@
 
 	last_move_dir = direction
 
+	if(force && (health <= 0)) // Broken and forced movement (currently only xenos)
+		interior.drop_human_bodies(old_turf)
+
 	return TRUE
 
 // Rotates the vehicle by deg degrees if possible

@@ -3,6 +3,8 @@ import { useBackend } from 'tgui/backend';
 import { Button, Input, Section, Stack, Tabs } from 'tgui/components';
 import { Window } from 'tgui/layouts';
 
+import { replaceRegexChars } from './helpers';
+
 type Data = {
   availability: number;
   last_caller: string | null;
@@ -65,7 +67,7 @@ const GeneralPanel = (props) => {
     <Section fill>
       <Stack vertical fill>
         <Stack.Item>
-          <Tabs>
+          <Tabs style={{ flexWrap: 'wrap' }}>
             {categories.map((val) => (
               <Tabs.Tab
                 selected={val === currentCategory}
@@ -90,8 +92,11 @@ const GeneralPanel = (props) => {
             <Tabs vertical>
               {transmitters.map((val) => {
                 if (
-                  val.phone_category !== currentCategory ||
-                  !val.phone_id.toLowerCase().match(currentSearch)
+                  currentSearch
+                    ? !val.phone_id
+                        .toLowerCase()
+                        .match(replaceRegexChars(currentSearch))
+                    : val.phone_category !== currentCategory
                 ) {
                   return;
                 }

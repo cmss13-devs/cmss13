@@ -23,10 +23,11 @@
 	GLOB.living_mob_list += src
 
 /mob/living/Destroy()
+	GLOB.living_player_list -= src
 	GLOB.living_mob_list -= src
 	cleanup_status_effects()
 	pipes_shown = null
-	observed_atom = null
+	QDEL_NULL(observed_atom)
 
 	. = ..()
 
@@ -72,8 +73,7 @@
 		for(var/obj/limb/affecting in H.limbs)
 			if(!affecting)
 				continue
-			if(affecting.take_damage(0, divided_damage+extradam)) //TODO: fix the extradam stuff. Or, ebtter yet...rewrite this entire proc ~Carn
-				H.UpdateDamageIcon()
+			affecting.take_damage(0, divided_damage+extradam) //TODO: fix the extradam stuff. Or, ebtter yet...rewrite this entire proc ~Carn
 		H.updatehealth()
 		return 1
 
@@ -274,6 +274,10 @@
 				grab_level_delay = 6
 			if(GRAB_CHOKE)
 				grab_level_delay = 9
+		if(ismob(pulling))
+			var/mob/pulled_mob = pulling
+			if(pulled_mob.pulling)
+				grab_level_delay = 9 // its a chain pull...
 
 		. += max(pull_speed + (pull_delay + reagent_move_delay_modifier) + grab_level_delay, 0) //harder grab makes you slower
 	move_delay = .
@@ -371,6 +375,14 @@
 					to_chat(src, SPAN_WARNING("[living_mob] is restraining [pulled_mob], you cannot push past."))
 				now_pushing = FALSE
 				return
+		if(!pulling)
+			// treat it as if we're also pulling just for move delay
+			pulling = living_mob.pulling
+			if(client)
+				client.recalculate_move_delay()
+			else
+				movement_delay()
+			pulling = null
 
 	if(ishuman(living_mob))
 		if(!(living_mob.status_flags & CANPUSH))
@@ -465,12 +477,12 @@
 /mob/proc/flash_eyes()
 	return
 
-/mob/living/flash_eyes(intensity = EYE_PROTECTION_FLASH, bypass_checks, flash_timer = 40, type = /atom/movable/screen/fullscreen/flash, dark_type = /atom/movable/screen/fullscreen/flash/dark)
+/mob/living/flash_eyes(intensity = EYE_PROTECTION_FLASH, bypass_checks, flash_timer = 40, light_type = /atom/movable/screen/fullscreen/flash, dark_type = /atom/movable/screen/fullscreen/flash/dark)
 	if(bypass_checks || (get_eye_protection() < intensity && !(sdisabilities & DISABILITY_BLIND)))
 		if(client?.prefs?.flash_overlay_pref == FLASH_OVERLAY_DARK)
 			overlay_fullscreen("flash", dark_type)
 		else
-			overlay_fullscreen("flash", type)
+			overlay_fullscreen("flash", light_type)
 		spawn(flash_timer)
 			clear_fullscreen("flash", 20)
 		return TRUE
@@ -692,12 +704,13 @@
 
 
 // legacy procs
-/mob/living/put_in_l_hand(obj/item/W)
+/mob/living/put_in_l_hand(obj/item/moved_item)
 	if(body_position == LYING_DOWN)
 		if(!HAS_TRAIT(src, TRAIT_HAULED))
 			return
 	return ..()
-/mob/living/put_in_r_hand(obj/item/W)
+
+/mob/living/put_in_r_hand(obj/item/moved_item)
 	if(body_position == LYING_DOWN)
 		if(!HAS_TRAIT(src, TRAIT_HAULED))
 			return

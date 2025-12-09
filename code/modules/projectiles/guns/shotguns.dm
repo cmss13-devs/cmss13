@@ -23,11 +23,6 @@ can cause issues with ammo types getting mixed up during the burst.
 	has_empty_icon = FALSE
 	has_open_icon = FALSE
 	fire_delay_group = list(FIRE_DELAY_GROUP_SHOTGUN)
-	can_jam = TRUE
-	initial_jam_chance = GUN_JAM_CHANCE_LOW
-	unjam_chance = GUN_UNJAM_CHANCE_DEFAULT
-	durability_loss = GUN_DURABILITY_LOSS_MEDIUM
-	jam_threshold = GUN_DURABILITY_MEDIUM
 
 	fire_sound = 'sound/weapons/gun_shotgun.ogg'
 	reload_sound = "shell_load"
@@ -352,6 +347,7 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/combat/Initialize(mapload, spawn_empty)
 	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 	if(current_mag && current_mag.current_rounds > 0)
 		load_into_chamber()
 
@@ -483,6 +479,10 @@ can cause issues with ammo types getting mixed up during the burst.
 	gauge = "8g"
 	starting_attachment_types = list(/obj/item/attachable/stock/type23)
 
+/obj/item/weapon/gun/shotgun/type23/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/norcomm)
+
 /obj/item/weapon/gun/shotgun/type23/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 19,"rail_x" = 13, "rail_y" = 21, "under_x" = 24, "under_y" = 15, "stock_x" = -1, "stock_y" = 17)
 
@@ -496,7 +496,6 @@ can cause issues with ammo types getting mixed up during the burst.
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil = RECOIL_AMOUNT_TIER_1
 	recoil_unwielded = RECOIL_AMOUNT_TIER_1
-	jam_threshold = GUN_DURABILITY_MAX
 
 /obj/item/weapon/gun/shotgun/type23/breacher
 	random_spawn_chance = 100
@@ -621,6 +620,13 @@ can cause issues with ammo types getting mixed up during the burst.
 	civilian_usable_override = TRUE // Come on. It's THE survivor shotgun.
 	additional_fire_group_delay = 1.5 SECONDS
 
+/obj/item/weapon/gun/shotgun/double/Initialize()
+	. = ..()
+	if(istype(src, /obj/item/weapon/gun/shotgun/double/mou53))
+		AddElement(/datum/element/corp_label/henjin_garcia)
+	else
+		AddElement(/datum/element/corp_label/spearhead)
+
 /obj/item/weapon/gun/shotgun/double/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 19,"rail_x" = 11, "rail_y" = 20, "under_x" = 15, "under_y" = 14, "stock_x" = 13, "stock_y" = 14)
 
@@ -636,7 +642,6 @@ can cause issues with ammo types getting mixed up during the burst.
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil = RECOIL_AMOUNT_TIER_4
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
-	jam_threshold = GUN_DURABILITY_MAX
 
 /obj/item/weapon/gun/shotgun/double/get_examine_text(mob/user)
 	. = ..()
@@ -646,12 +651,9 @@ can cause issues with ammo types getting mixed up during the burst.
 	else . += "It's open with [current_mag.current_rounds] shell\s loaded."
 
 /obj/item/weapon/gun/shotgun/double/unique_action(mob/user)
-	if(jammed)
-		jam_unique_action(user)
-	else
-		if(flags_item & WIELDED)
-			unwield(user)
-		open_chamber(user)
+	if(flags_item & WIELDED)
+		unwield(user)
+	open_chamber(user)
 
 /obj/item/weapon/gun/shotgun/double/check_chamber_position()
 	if(!current_mag)
@@ -819,7 +821,6 @@ can cause issues with ammo types getting mixed up during the burst.
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_5
 	recoil = RECOIL_AMOUNT_TIER_2
 	recoil_unwielded = RECOIL_AMOUNT_TIER_3
-	jam_threshold = GUN_DURABILITY_MAX
 
 /obj/item/weapon/gun/shotgun/double/cane/gun_safety_handle(mob/user)
 	if(flags_gun_features & GUN_TRIGGER_SAFETY)
@@ -864,12 +865,10 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/double/mou53
 	name = "\improper MOU53 break action shotgun"
-	desc = "A limited production Kerchner MOU53 triple break action classic. Respectable damage output at medium ranges, while the ARMAT M37 is the king of CQC, the Kerchner MOU53 is what hits the broadside of that barn. This specific model cannot safely fire buckshot shells."
+	desc = "A limited production Henjin-Garcia MOU53 triple break action classic. Respectable damage output at medium ranges, while the Armat M37 is the king of CQC, the Henjin-Garcia MOU53 is what hits the broadside of that barn. This specific model cannot safely fire buckshot shells."
 	icon_state = "mou"
 	item_state = "mou"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/shotguns.dmi'
-	var/max_rounds = 3
-	var/current_rounds = 0
 	fire_sound = 'sound/weapons/gun_mou53.ogg'
 	reload_sound = 'sound/weapons/handling/gun_mou_reload.ogg'//unique shell insert
 	flags_equip_slot = SLOT_BACK
@@ -905,10 +904,12 @@ can cause issues with ammo types getting mixed up during the burst.
 	)
 	map_specific_decoration = TRUE
 	civilian_usable_override = FALSE
+	var/max_rounds = 3
+	var/current_rounds = 0
+	COOLDOWN_DECLARE(breach_action_cooldown)
 
 /obj/item/weapon/gun/shotgun/double/mou53/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 11, "rail_y" = 21, "under_x" = 17, "under_y" = 15, "stock_x" = 10, "stock_y" = 9) //Weird stock values, make sure any new stock matches the old sprite placement in the .dmi
-
 
 /obj/item/weapon/gun/shotgun/double/mou53/set_gun_config_values()
 	..()
@@ -929,6 +930,13 @@ can cause issues with ammo types getting mixed up during the burst.
 		to_chat(user, SPAN_WARNING("\the [src] cannot safely fire this type of shell!"))
 		return
 	..()
+
+/obj/item/weapon/gun/shotgun/double/mou53/unique_action(mob/user)
+	if(!COOLDOWN_FINISHED(src, breach_action_cooldown))
+		to_chat(user, SPAN_WARNING("You must wait before [current_mag.chamber_closed ? "opening" : "closing"] the chamber again."))
+		return
+	COOLDOWN_START(src, breach_action_cooldown, MOU_ACTION_COOLDOWN)
+	. = ..()
 
 
 
@@ -1189,8 +1197,8 @@ can cause issues with ammo types getting mixed up during the burst.
 //Shotguns in this category will need to be pumped each shot.
 
 /obj/item/weapon/gun/shotgun/pump
-	name = "\improper M37A2 pump shotgun"
-	desc = "An Armat Battlefield Systems classic design, the M37A2 combines close-range firepower with long term reliability. Requires a pump, which is a Unique Action."
+	name = "\improper M37 pump shotgun"
+	desc = "An Armat Battlefield Systems classic design, the M37 combines close-range firepower with long term reliability. Requires a pump, which is a Unique Action."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/shotguns.dmi'
 	icon_state = "m37"
 	item_state = "m37"
@@ -1224,7 +1232,6 @@ can cause issues with ammo types getting mixed up during the burst.
 		/obj/item/attachable/flashlight/grip,
 		/obj/item/attachable/gyro,
 		/obj/item/attachable/flashlight,
-		/obj/item/attachable/flashlight/grip,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/compensator,
@@ -1240,6 +1247,10 @@ can cause issues with ammo types getting mixed up during the burst.
 	pump_delay = FIRE_DELAY_TIER_5*2
 	additional_fire_group_delay += pump_delay
 
+	if(istype(src, /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb))
+		AddElement(/datum/element/corp_label/henjin_garcia)
+	else
+		AddElement(/datum/element/corp_label/armat)
 
 /obj/item/weapon/gun/shotgun/pump/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 19,"rail_x" = 10, "rail_y" = 20, "under_x" = 20, "under_y" = 14, "stock_x" = 20, "stock_y" = 14)
@@ -1259,10 +1270,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
 /obj/item/weapon/gun/shotgun/pump/unique_action(mob/user)
-	if(jammed)
-		jam_unique_action(user)
-	else
-		pump_shotgun(user)
+	pump_shotgun(user)
 
 /obj/item/weapon/gun/shotgun/pump/ready_in_chamber() //If there wasn't a shell loaded through pump, this returns null.
 	return
@@ -1322,6 +1330,43 @@ can cause issues with ammo types getting mixed up during the burst.
 	return ..()
 
 //-------------------------------------------------------
+
+/obj/item/weapon/gun/shotgun/pump/m37a
+	name = "\improper M37A2 pump shotgun"
+	desc = "An Armat Battlefield Systems modern take on an all-time classic, combining close range firepower with long-term reliability. Requires a pump, which is a Unique Action."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/shotguns.dmi'
+	icon_state = "m37a"
+	item_state = "m37a"
+	current_mag = /obj/item/ammo_magazine/internal/shotgun
+	attachable_allowed = list(
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonet/upp,
+		/obj/item/attachable/bayonet/co2,
+		/obj/item/attachable/bayonet/antique,
+		/obj/item/attachable/bayonet/wy,
+		/obj/item/attachable/bayonet/custom,
+		/obj/item/attachable/bayonet/custom/red,
+		/obj/item/attachable/bayonet/custom/blue,
+		/obj/item/attachable/bayonet/custom/black,
+		/obj/item/attachable/bayonet/tanto,
+		/obj/item/attachable/bayonet/tanto/blue,
+		/obj/item/attachable/bayonet/rmc_replica,
+		/obj/item/attachable/bayonet/rmc,
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/verticalgrip,
+		/obj/item/attachable/angledgrip,
+		/obj/item/attachable/flashlight/grip,
+		/obj/item/attachable/gyro,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/shotgun_choke,
+		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/attached_gun/extinguisher,
+		/obj/item/attachable/stock/synth/collapsible,
+	)
 
 /obj/item/weapon/gun/shotgun/pump/dual_tube
 	name = "generic dual-tube pump shotgun"
@@ -1426,10 +1471,10 @@ can cause issues with ammo types getting mixed up during the burst.
 
 	if(holder_gun.chamber_swap)
 		to_chat(owner, SPAN_NOTICE("[icon2html(holder_gun, owner)] You will <b>start swapping</b> the chambered shell with the other tube. <b>Your current tube must be underloaded or it will forcefully eject the shell out of the chamber.</b>"))
-		button.icon_state = "template_on"
+		action_icon_state = "chamber_swap_off"
 	else
 		to_chat(owner, SPAN_NOTICE("[icon2html(holder_gun, owner)] You will <b>stop swapping</b> the chambered shell with the other tube."))
-		button.icon_state = "template"
+		action_icon_state = "chamber_swap"
 
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
@@ -1438,7 +1483,7 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb
 	name = "\improper HG 37-12 pump shotgun"
-	desc = "A eight-round pump action shotgun with four-round capacity dual internal tube magazines allowing for quick reloading and highly accurate fire. Used exclusively by Colonial Marshals. You can switch the active internal magazine by toggling the shotgun tube."
+	desc = "A Henjin-Garcia Armaments Company eight-round pump action shotgun with four-round capacity dual internal tube magazines allowing for quick reloading and highly accurate fire. You can switch the active internal magazine by toggling the shotgun tube."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/shotguns.dmi'
 	icon_state = "hg3712"
 	item_state = "hg3712"

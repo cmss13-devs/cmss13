@@ -63,8 +63,7 @@
 	H.attack_log += text("\[[time_stamp()]\] <font color='red'>[s] [key_name(H)]</font>")
 	log_attack("[s] [key_name(H)]")
 
-	if(O.take_damage(1,0,1,1,"teeth marks"))
-		H.UpdateDamageIcon()
+	O.take_damage(1,0,1,1,"teeth marks")
 
 	last_chew = world.time
 
@@ -103,7 +102,7 @@
 		var/mob/living/carbon/xenomorph/xeno = dropping
 		if(xeno.back)
 			var/obj/item/back_item = xeno.back
-			if(xeno.stat != DEAD) // If the Xeno is alive, fight back
+			if((xeno.stat != DEAD) && !xeno.legcuffed) // If the Xeno is alive, fight back
 				var/mob/living/carbon/carbon_user = user
 				if(!carbon_user || !carbon_user.ally_of_hivenumber(xeno.hivenumber))
 					carbon_user.KnockDown(rand(xeno.caste.tacklestrength_min, xeno.caste.tacklestrength_max))

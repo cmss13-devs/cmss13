@@ -20,11 +20,18 @@
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	attack_speed = 9
 
+	shield_chance = SHIELD_CHANCE_LOW
+	shield_projectile_mult = PROJECTILE_BLOCK_PERC_NONE
+	shield_type = SHIELD_DIRECTIONAL
+	shield_sound = 'sound/items/parry.ogg'
+	shield_flags = CAN_SHIELD_BASH
+
 /obj/item/weapon/sword/claymore
 	name = "claymore"
 	desc = "What are you standing around staring at this for? Get to killing!"
 	icon_state = "claymore"
 	item_state = "claymore"
+	shield_chance = SHIELD_CHANCE_MED
 
 /obj/item/weapon/sword/ceremonial
 	name = "Ceremonial Sword"
@@ -61,6 +68,8 @@
 	icon_state = "arnold-machete"
 	item_state = "arnold-machete"
 	force = MELEE_FORCE_TIER_11
+	shield_chance = SHIELD_CHANCE_EXTRAHIGH
+	shield_projectile_mult = PROJECTILE_BLOCK_PERC_50
 
 /obj/item/weapon/sword/hefa
 	name = "HEFA sword"
@@ -68,6 +77,7 @@
 	item_state = "hefasword"
 	desc = "A blade known to be used by the Order of the HEFA, this highly dangerous blade blows up in a shower of shrapnel on impact."
 	attack_verb = list("bapped", "smacked", "clubbed")
+	shield_chance = SHIELD_CHANCE_MEDHIGH
 
 	var/primed = FALSE
 
@@ -109,6 +119,7 @@
 	icon_state = "katana"
 	item_state = "katana"
 	force = MELEE_FORCE_VERY_STRONG
+	shield_chance = SHIELD_CHANCE_EXTRAHIGH
 
 //To do: replace the toys.
 /obj/item/weapon/sword/katana/replica
@@ -116,6 +127,14 @@
 	desc = "A cheap knock-off commonly found in regular knife stores. Can still do some damage."
 	force = MELEE_FORCE_WEAK
 	throwforce = 7
+	shield_chance = SHIELD_CHANCE_MED
+
+/obj/item/weapon/sword/dragon_katana
+	name = "dragon katana"
+	desc = "A finely made Japanese sword, with a cherry colored handle. The blade has been filed to a molecular edge, and is extremely deadly. This one seems to have been handcrafted."
+	icon_state = "dragon_katana"
+	item_state = "dragon_katana"
+	force = MELEE_FORCE_VERY_STRONG
 
 /obj/item/weapon/throwing_knife
 	name ="\improper M11 throwing knife"
@@ -229,9 +248,14 @@
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
 	item_icons = list(
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_righthand.dmi'
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/items_lefthand_64.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/items_righthand_64.dmi'
 	)
+
+	shield_chance = 45
+	shield_projectile_mult = PROJECTILE_BLOCK_PERC_80
+	shield_type = SHIELD_DIRECTIONAL
+	shield_sound = 'sound/items/parry.ogg'
 
 /obj/item/weapon/straight_razor
 	name = "straight razor"

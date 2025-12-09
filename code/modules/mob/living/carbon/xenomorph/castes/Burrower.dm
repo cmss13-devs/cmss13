@@ -65,7 +65,6 @@
 		/datum/action/xeno_action/activable/burrow, //third macro
 		/datum/action/xeno_action/onclick/tremor, //fourth macro
 		/datum/action/xeno_action/active_toggle/toggle_meson_vision,
-		/datum/action/xeno_action/onclick/tacmap,
 		)
 
 	inherent_verbs = list(
@@ -84,7 +83,7 @@
 	skull = /obj/item/skull/burrower
 	pelt = /obj/item/pelt/burrower
 
-/mob/living/carbon/xenomorph/burrower/ex_act(severity)
+/mob/living/carbon/xenomorph/burrower/ex_act(severity, direction, datum/cause_data/cause_data, pierce=0, enviro=FALSE)
 	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
 		return
 	..()
@@ -144,6 +143,7 @@
 		return
 	// TODO Make immune to all damage here.
 	to_chat(src, SPAN_XENOWARNING("We burrow ourselves into the ground."))
+	QDEL_NULL(observed_atom)
 	invisibility = 101
 	alpha = 100
 	anchored = TRUE
@@ -434,3 +434,8 @@
 	var/mob/living/carbon/xenomorph/xenomorph = owner
 	to_chat(xenomorph, SPAN_NOTICE("We are ready to dig a tunnel again."))
 	xenomorph.tunnel_delay = 0
+
+/mob/living/carbon/xenomorph/burrower/try_fill_trap(obj/effect/alien/resin/trap/target)
+	. = ..()
+	if(.)
+		target.set_state(RESIN_TRAP_ACID3)

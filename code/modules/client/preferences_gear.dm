@@ -166,8 +166,12 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	path = /obj/item/clothing/glasses/regular/hippie
 
 /datum/gear/eyewear/aviators
-	display_name = "Aviator shades"
+	display_name = "Aviator shades, gold"
 	path = /obj/item/clothing/glasses/sunglasses/aviator
+
+/datum/gear/eyewear/aviators/silver
+	display_name = "Aviator shades, silver"
+	path = /obj/item/clothing/glasses/sunglasses/aviator/silver
 
 /datum/gear/eyewear/new_bimex/black
 	display_name = "BiMex tactical shades, black"
@@ -235,6 +239,10 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 /datum/gear/mask/gas
 	display_name = "Gas mask"
 	path = /obj/item/clothing/mask/gas
+
+/datum/gear/mask/surgical
+	display_name = "Sterile mask"
+	path = /obj/item/clothing/mask/surgical
 
 /datum/gear/mask/scarf_black
 	display_name = "Scarf, black"
@@ -450,6 +458,10 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 /datum/gear/helmet_garb/helmet_gasmask
 	display_name = "M5 integrated gasmask"
 	path = /obj/item/prop/helmetgarb/helmet_gasmask
+
+/datum/gear/helmet_garb/gunoil
+	display_name = "Gun oil"
+	path = /obj/item/prop/helmetgarb/gunoil
 
 /datum/gear/helmet_garb/netting
 	display_name = "Helmet netting"
@@ -774,10 +786,29 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	slot = WEAR_IN_BACK
 	fluff_cost = 4
 
+/datum/gear/weapon/l54_pistol
+	display_name = "L54 Pistol" // TWE service pistol - same stats as the m4a3
+	path = /obj/item/weapon/gun/pistol/l54
+	allowed_origins = USCM_ORIGINS
+
+/datum/gear/weapon/holdout
+	display_name = "W62 'Whisper'" //22LR ratkiller and/or plinker
+	path = /obj/item/storage/box/plinker
+
+/datum/gear/weapon/action
+	display_name = "AC71 'Action'" //380ACP holdout pistol
+	path = /obj/item/storage/box/action
+
 /datum/gear/weapon/m4a3_custom
 	display_name = "M4A3 Custom Pistol"
 	path = /obj/item/weapon/gun/pistol/m4a3/custom
 	allowed_origins = USCM_ORIGINS
+
+/datum/gear/weapon/m4a4
+	display_name = "M4A4 Service Pistol"
+	path = /obj/item/weapon/gun/pistol/m4a3/m4a4
+	allowed_origins = USCM_ORIGINS
+	fluff_cost = 2
 
 /datum/gear/weapon/m44_custom_revolver
 	display_name = "M44 Custom Revolver"
@@ -1120,7 +1151,7 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 /datum/gear/misc/facepaint_body
 	display_name = "Fullbody paint"
 	path = /obj/item/facepaint/sniper
-	fluff_cost = 4 //To match with the skull paint amount of point, gave this amount of point for the same reason of the skull facepaint (too cool for everyone to be able to constantly use)
+	fluff_cost = 3
 
 /datum/gear/misc/jungle_boots
 	display_name = "Jungle pattern combat boots"
@@ -1135,6 +1166,11 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 /datum/gear/misc/brown_gloves
 	display_name = "brown combat gloves"
 	path = /obj/item/clothing/gloves/marine/brown
+	fluff_cost = 2
+
+/datum/gear/misc/fingerless_gloves
+	display_name = "fingerless combat gloves"
+	path = /obj/item/clothing/gloves/marine/fingerless
 	fluff_cost = 2
 
 /datum/gear/misc/grey_boots
@@ -1217,35 +1253,50 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	category = "Civilian only (restricted)"
 	allowed_origins = list(ORIGIN_CIVILIAN)
 
-/datum/gear/civilian/patch
-	display_name = "Weyland-Yutani shoulder patch, black"
-	path = /obj/item/clothing/accessory/patch/wy
-	fluff_cost = 1
-	slot = WEAR_IN_ACCESSORY
+///Commented out until we have a factional system to restrict these properly
+// /datum/gear/civilian/patch
+// 	display_name = "Weyland-Yutani shoulder patch, black"
+// 	path = /obj/item/clothing/accessory/patch/wy
+// 	fluff_cost = 1
+// 	slot = WEAR_IN_ACCESSORY
 
-/datum/gear/civilian/patch/wysquare
-	display_name = "Weyland-Yutani shoulder patch"
-	path = /obj/item/clothing/accessory/patch/wysquare
+// /datum/gear/civilian/patch/wysquare
+// 	display_name = "Weyland-Yutani shoulder patch"
+// 	path = /obj/item/clothing/accessory/patch/wysquare
 
-/datum/gear/civilian/patch/wy_white
-	display_name = "Weyland-Yutani shoulder patch, white"
-	path = /obj/item/clothing/accessory/patch/wy_white
+// /datum/gear/civilian/patch/wy_white
+// 	display_name = "Weyland-Yutani shoulder patch, white"
+// 	path = /obj/item/clothing/accessory/patch/wy_white
 
-/datum/gear/civilian/patch/wy_fury
-	display_name = "Weyland-Yutani Fury '161' patch"
-	path = /obj/item/clothing/accessory/patch/wyfury
+// /datum/gear/civilian/patch/wy_fury
+// 	display_name = "Weyland-Yutani Fury '161' patch"
+// 	path = /obj/item/clothing/accessory/patch/wyfury
 
-/datum/gear/civilian/patch/twepatch
-	display_name = "Three World Empire shoulder patch"
-	path = /obj/item/clothing/accessory/patch/twe
+// /datum/gear/civilian/patch/twepatch
+// 	display_name = "Three World Empire shoulder patch"
+// 	path = /obj/item/clothing/accessory/patch/twe
 
-/datum/gear/civilian/patch/cec
-	display_name = "Cosmos Exploration Corps shoulder patch"
-	path = /obj/item/clothing/accessory/patch/cec_patch
+// /datum/gear/civilian/patch/cec
+// 	display_name = "Cosmos Exploration Corps shoulder patch"
+// 	path = /obj/item/clothing/accessory/patch/cec_patch
 
-/datum/gear/civilian/patch/clf
-	display_name = "Colonial Liberation Front shoulder patch"
-	path = /obj/item/clothing/accessory/patch/clf_patch
+// /datum/gear/civilian/patch/hyperdyne
+// 	display_name = "Hyperdyne Corporation shoulder patch"
+// 	path = /obj/item/clothing/accessory/patch/hyperdyne_patch
+
+// Misc Headwear
+
+/datum/gear/civilian/headwear
+	fluff_cost = 2
+	slot = WEAR_HEAD
+
+/datum/gear/civilian/headwear/cowboy_hat
+	display_name = "cowboy hat, brown"
+	path = /obj/item/clothing/head/cowboy
+
+/datum/gear/civilian/headwear/cowboy_hat/light
+	display_name = "cowboy hat, light-brown"
+	path = /obj/item/clothing/head/cowboy/light
 
 // Cheap Civilian shades - colorful!
 
@@ -1302,6 +1353,13 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 /datum/gear/eyewear/sunglasses/hippie_shades/bloodred
 	display_name = "Suntex-Sightware rounded shades, bloodred"
 	path = /obj/item/clothing/glasses/sunglasses/hippie/bloodred
+
+// Headband
+
+/datum/gear/civilian/headwear/headband_rebel
+	display_name = "CLF headband"
+	path = /obj/item/clothing/head/headband/rebel
+	fluff_cost = 2
 
 // Civilian shoes
 

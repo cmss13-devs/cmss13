@@ -33,7 +33,7 @@
 	new /obj/item/clothing/suit/storage/marine/M3T(src)
 	new /obj/item/clothing/head/helmet/marine/M3T(src)
 	new /obj/item/storage/backpack/marine/rocketpack(src)
-	new /obj/item/weapon/gun/launcher/rocket(src)
+	new /obj/item/weapon/gun/launcher/rocket/m5(src)
 	new /obj/item/ammo_magazine/rocket(src)
 	new /obj/item/ammo_magazine/rocket(src)
 	new /obj/item/ammo_magazine/rocket/ap(src)
@@ -135,7 +135,7 @@
 
 /obj/item/storage/box/spec/scout/fill_preset_inventory()
 	new /obj/item/clothing/suit/storage/marine/M3S(src)
-	new /obj/item/clothing/head/helmet/marine/scout(src)
+	new /obj/item/clothing/head/helmet/marine/radio_helmet/scout(src)
 	new /obj/item/clothing/glasses/night/M4RA(src)
 	new /obj/item/ammo_magazine/rifle/m4ra/custom(src)
 	new /obj/item/ammo_magazine/rifle/m4ra/custom(src)
@@ -277,7 +277,16 @@
 	squad_assignment_update = FALSE
 	allowed_roles_list = list(JOB_SQUAD_MARINE, JOB_WO_SQUAD_MARINE)
 
-/obj/item/spec_kit/rifleman/jobless
+/obj/item/spec_kit/rifleman/can_use(mob/living/carbon/human/user)
+	for(var/allowed_role in allowed_roles_list)
+		if(user.job == allowed_role)
+			if(!skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_DEFAULT))//Expects no skill in specialist weapons at all.
+				to_chat(user, SPAN_WARNING("You already have specialization, give this kit to someone else!"))
+				return FALSE
+			return TRUE
+
+/obj/item/spec_kit/jobless
+	squad_assignment_update = FALSE
 	allowed_roles_list = list()
 
 /obj/item/spec_kit/cryo
@@ -320,17 +329,6 @@
 	for(var/allowed_role in allowed_roles_list)
 		if(user.job == allowed_role)
 			if(!skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && !skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL))
-				to_chat(user, SPAN_WARNING("You already have specialization, give this kit to someone else!"))
-				return FALSE
-			return TRUE
-
-/obj/item/spec_kit/rifleman/can_use(mob/living/carbon/human/user)
-	if(!length(allowed_roles_list))
-		return TRUE
-
-	for(var/allowed_role in allowed_roles_list)
-		if(user.job == allowed_role)//Alternate check to normal kit as this is distributed to people without SKILL_SPEC_TRAINED.
-			if(skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_KITTED) && !skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL))
 				to_chat(user, SPAN_WARNING("You already have specialization, give this kit to someone else!"))
 				return FALSE
 			return TRUE
@@ -619,6 +617,7 @@
 	new /obj/item/storage/pouch/general/large(src)
 	new /obj/item/ammo_magazine/shotgun/buckshot(src)
 	new /obj/item/ammo_magazine/shotgun/buckshot(src)
+	new /obj/item/pamphlet/skill/honorguard(src)
 
 /obj/item/storage/box/kit/spotter
 	name = "\improper Spotter Kit"
@@ -646,6 +645,7 @@
 	new /obj/item/storage/box/evidence(src)
 	new /obj/item/restraint/handcuffs(src)
 	new /obj/item/reagent_container/spray/pepper(src)
+	new /obj/item/device/defibrillator/synthetic/noskill(src) //unskilled defib in the event that the handler dies
 
 /obj/item/storage/box/kit/k9_handler/corpsman
 	name = "\improper Medical K9 handler Kit"
@@ -659,6 +659,7 @@
 	new /obj/item/device/binoculars(src)
 	new /obj/item/pamphlet/skill/k9_handler(src)
 	new /obj/item/storage/pouch/autoinjector/full(src)
+	new /obj/item/device/defibrillator/synthetic/noskill(src)
 
 /obj/item/storage/box/kit/engineering_supply_kit
 	name = "\improper Engineering Supply Kit"

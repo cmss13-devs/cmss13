@@ -56,7 +56,7 @@
 	for(var/mob/M in src) //Should only be one but whatever.
 		M.forceMove(src.loc)
 		if (M.client)
-			M.client.eye = M.client.mob
+			M.client.set_eye(M.client.mob)
 			M.client.perspective = MOB_PERSPECTIVE
 
 	deconstruct()
@@ -101,7 +101,7 @@
 		/obj/item/toy/sword,
 		/obj/item/reagent_container/food/snacks/grown/ambrosiadeus,
 		/obj/item/reagent_container/food/snacks/grown/ambrosiavulgaris,
-		/obj/item/clothing/accessory/horrible)
+		/obj/item/clothing/accessory/tie/horrible)
 
 	if(!ispath(gift_type,/obj/item))
 		return
@@ -180,7 +180,7 @@
 
 			if (H.client)
 				H.client.perspective = EYE_PERSPECTIVE
-				H.client.eye = present
+				H.client.set_eye(present)
 
 			H.forceMove(present)
 

@@ -69,7 +69,7 @@ of predators), but can be added to include variant game modes (like humans vs. h
 	sleep(2 SECONDS)
 	if(length(GLOB.medal_awards))
 		var/dat = "<br>"
-		dat +=  SPAN_ROUNDBODY("<br>Medal Awards:")
+		dat +=  SPAN_ROUNDBODY("<br>Medal and Ribbon Awards:")
 		for(var/recipient in GLOB.medal_awards)
 			var/datum/recipient_awards/recipient_award = GLOB.medal_awards[recipient]
 			for(var/i in 1 to length(recipient_award.medal_names))
@@ -89,13 +89,21 @@ of predators), but can be added to include variant game modes (like humans vs. h
 	sleep(2 SECONDS)
 	to_chat_spaced(world, margin_bottom = 0, html = SPAN_ROLE_BODY("|______________________|"))
 	to_world(SPAN_ROLE_HEADER("FUN FACTS"))
-	var/list/fact_types = subtypesof(/datum/random_fact)
+	var/list/fact_types = shuffle(subtypesof(/datum/random_fact))
+	var/facts_so_far = 0
 	for(var/fact_type as anything in fact_types)
-		var/datum/random_fact/fact_human = new fact_type(set_check_human = TRUE, set_check_xeno = FALSE)
-		fact_human.announce()
+		var/datum/random_fact/fact_human = new fact_type(check_human=TRUE, check_xeno=FALSE)
+		if(fact_human.announce())
+			facts_so_far++
+		if(facts_so_far >= MAX_FACTION_FACTS_TO_ANNOUNCE)
+			break
+	facts_so_far = 0
 	for(var/fact_type as anything in fact_types)
-		var/datum/random_fact/fact_xeno = new fact_type(set_check_human = FALSE, set_check_xeno = TRUE)
-		fact_xeno.announce()
+		var/datum/random_fact/fact_xeno = new fact_type(check_human=FALSE, check_xeno=TRUE)
+		if(fact_xeno.announce())
+			facts_so_far++
+		if(facts_so_far >= MAX_FACTION_FACTS_TO_ANNOUNCE)
+			break
 	to_chat_spaced(world, margin_top = 0, html = SPAN_ROLE_BODY("|______________________|"))
 
 //===================================================\\
@@ -131,13 +139,39 @@ GLOBAL_VAR_INIT(next_predator_bioscan, 5 MINUTES)
 // 30 minutes in
 GLOBAL_VAR_INIT(next_admin_bioscan, 30 MINUTES)
 
-/datum/game_mode/proc/select_lz(obj/structure/machinery/computer/shuttle/dropship/flight/lz1/console)
+/// Asks the user (optional) to pick the primary LZ if both LZ1 and LZ2 exist and it hasn't been set yet
+/// If only one, or no user, it will pick the first available
+/datum/game_mode/proc/pick_a_lz(mob/user)
+	if(active_lz)
+		return
+
+	var/lz1 = locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz1)
+	var/lz2 = locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz2)
+
+	if(lz1 && lz2 && user)
+		var/lz_choices = list("LZ 1", "LZ 2")
+		var/new_lz = tgui_input_list(user, "Select primary LZ", "LZ Select", lz_choices)
+		if(!new_lz)
+			return
+		if(new_lz == "LZ 1")
+			select_lz(lz1)
+		else
+			select_lz(lz2)
+		return
+
+	if(lz1 || lz2)
+		select_lz(lz1 || lz2)
+		return
+
+	CRASH("No /obj/structure/machinery/computer/shuttle/dropship/flight/lz1 or lz2 found!")
+
+/datum/game_mode/proc/select_lz(obj/structure/machinery/computer/shuttle/dropship/flight/console)
 	if(active_lz)
 		return
 	active_lz = console
 	// The announcement to all Humans.
 	var/name = "[MAIN_AI_SYSTEM] Operation Staging Order"
-	var/input = "Command Order Issued.\n\n[active_lz.loc.loc] has been designated as the primary landing zone."
+	var/input = "Command Order Issued.\n\n[get_area(active_lz)] has been designated as the primary landing zone."
 	marine_announcement(input, name)
 
 /datum/game_mode/proc/announce_bioscans()

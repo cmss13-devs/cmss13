@@ -10,7 +10,7 @@
 	max_w_class = SIZE_LARGE
 	storage_slots = 1
 	max_storage_space = 4
-	storage_flags = STORAGE_FLAGS_DEFAULT|STORAGE_USING_DRAWING_METHOD|STORAGE_ALLOW_QUICKDRAW
+	storage_flags = STORAGE_FLAGS_DEFAULT|STORAGE_USING_DRAWING_METHOD|STORAGE_ALLOW_QUICKDRAW|STORAGE_ALLOW_WHILE_HAULED
 	///Icon/item states change based on contents; this stores base icon state.
 	var/base_icon
 	var/drawSound = 'sound/weapons/gun_rifle_draw.ogg'
@@ -63,7 +63,7 @@
 		playsound(src, drawSound, 15, TRUE)
 
 /obj/item/storage/large_holster/m37
-	name = "\improper L44 M37A2 scabbard"
+	name = "\improper L44 shotgun scabbard"
 	desc = "A large leather holster fitted for USCM-issue shotguns. It has harnesses that allow it to be secured to the back for easy storage."
 	icon_state = "m37_holster"
 	icon = 'icons/obj/items/clothing/backpack/backpacks_by_map/jungle.dmi'
@@ -75,6 +75,7 @@
 		/obj/item/weapon/gun/shotgun/pump,
 		/obj/item/weapon/gun/shotgun/combat,
 		/obj/item/weapon/gun/shotgun/double/mou53,
+		/obj/item/weapon/gun/shotgun/pump/m37a,
 	)
 	flags_atom = FPRINT // has gamemode skin
 
@@ -169,7 +170,7 @@
 
 /obj/item/storage/large_holster/ceremonial_sword
 	name = "ceremonial sword scabbard"
-	desc = "A large, vibrantly colored scabbard used to carry a ceremonial sword."
+	desc = "A large, old-styled scabbard used to carry a ceremonial sword."
 	icon_state = "ceremonial_sword_holster"//object icon is duplicate of katana holster, needs new icon at some point.
 	item_icons = list(
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/scabbards.dmi',
@@ -182,6 +183,24 @@
 
 /obj/item/storage/large_holster/ceremonial_sword/full/fill_preset_inventory()
 	new /obj/item/weapon/sword/ceremonial(src)
+
+/obj/item/storage/large_holster/dragon_katana
+	name = "\improper dragon katana scabbard"
+	desc = "A large, cherry colored katana scabbard with an illustration of a dragon on it. It can be strapped to the back or worn at the belt. Because of the sturdy wood casing of the scabbard, it makes an okay defensive weapon in a pinch."
+	icon_state = "dragon_katana_holster"
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/holster.dmi',
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/scabbards.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi'
+	)
+	force = 12
+	attack_verb = list("bludgeoned", "struck", "cracked")
+	flags_equip_slot = SLOT_WAIST|SLOT_BACK
+	can_hold = list(/obj/item/weapon/sword/dragon_katana)
+
+/obj/item/storage/large_holster/dragon_katana/full/fill_preset_inventory()
+	new /obj/item/weapon/sword/dragon_katana(src)
 
 /obj/item/storage/large_holster/m39
 	name = "\improper M276 pattern M39 holster rig"
@@ -211,7 +230,8 @@
 
 		gun_offset = W.hud_offset
 		W.hud_offset = 0
-		W.pixel_x = 0
+		W.pixel_x = -16
+		W.pixel_y = -13
 		W.transform = turn(matrix(0.82, MATRIX_SCALE), 90) //0.82x is the right size and gives reasonably accurate results with pixel scaling.
 
 		W.vis_flags |= VIS_INHERIT_ID //Means the gun is just visual and doesn't block picking up or clicking on the holster.
@@ -226,7 +246,8 @@
 		W.appearance_flags &= ~PIXEL_SCALE
 
 	W.hud_offset = gun_offset
-	W.pixel_x = gun_offset
+	W.pixel_x = 0
+	W.pixel_y = 0
 	W.transform = null
 
 	W.vis_flags &= ~VIS_INHERIT_ID
@@ -467,3 +488,35 @@
 	if (!istype(FP))
 		return
 	FP.toggle_fuel()
+
+/obj/item/storage/belt/gun/brutepack
+	name = "\improper M271A2 Pattern Launcher Rig"
+	desc = "A special-issue harness designed to allow the user to freely and securely holster a M6H-BRUTE launcher system on their back without impeding movement, while also having several other integrated storage packs for additional ammo and equipment."
+	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/UA.dmi'
+	icon_state = "bruterig"
+	map_specific_decoration = FALSE
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/UA.dmi'
+	)
+	flags_equip_slot = SLOT_BACK //yes we are belt subtype that is worn on back
+	storage_slots = 7
+	max_w_class = SIZE_MEDIUM
+	can_hold = list(
+		/obj/item/ammo_magazine,
+		/obj/item/weapon/gun/launcher/rocket/brute,
+	)
+	bypass_w_limit = list(/obj/item/weapon/gun/launcher/rocket/brute)
+
+
+/obj/item/storage/belt/gun/brutepack/update_icon()
+	. = ..()
+	var/mob/living/carbon/human/user = loc
+	if(istype(user))
+		user.update_inv_back()
+
+/obj/item/storage/belt/gun/brutepack/full/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/launcher/rocket/brute())
+	new /obj/item/ammo_magazine/rocket/brute(src)
+	new /obj/item/ammo_magazine/rocket/brute(src)
+	new /obj/item/ammo_magazine/rocket/brute(src)
+

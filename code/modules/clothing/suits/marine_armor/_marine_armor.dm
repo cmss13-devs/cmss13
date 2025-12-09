@@ -44,6 +44,7 @@
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
+	flags_bodypart_hidden = BODY_FLAG_CHEST
 	min_cold_protection_temperature = HELMET_MIN_COLD_PROT
 	max_heat_protection_temperature = HELMET_MAX_HEAT_PROT
 	blood_overlay_type = "armor"
@@ -51,7 +52,7 @@
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
 	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
 	armor_energy = CLOTHING_ARMOR_LOW
-	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUM
 	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
@@ -82,7 +83,6 @@
 		/obj/item/storage/belt/gun/m10,
 		/obj/item/storage/belt/gun/xm51,
 	)
-	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_PONCHO, ACCESSORY_SLOT_MASK)
 
 	light_power = 3
 	light_range = 4
@@ -92,7 +92,7 @@
 	var/flashlight_cooldown = 0 //Cooldown for toggling the light
 	var/locate_cooldown = 0 //Cooldown for SL locator
 	var/armor_overlays[]
-	actions_types = list(/datum/action/item_action/toggle)
+	actions_types = list(/datum/action/item_action/toggle/lamp)
 	var/flags_marine_armor = ARMOR_SQUAD_OVERLAY|ARMOR_LAMP_OVERLAY
 	var/specialty = "M3 pattern marine" //Same thing here. Give them a specialty so that they show up correctly in vendors. speciality does NOTHING if you have NO_NAME_OVERRIDE
 	w_class = SIZE_HUGE
@@ -137,6 +137,7 @@
 	pockets.max_storage_space = 8
 
 	light_holder = new(src)
+	AddElement(/datum/element/corp_label/armat)
 
 /obj/item/clothing/suit/storage/marine/Destroy()
 	QDEL_NULL(light_holder)
@@ -277,6 +278,7 @@
 	desc = "A well tinkered and crafted hybrid of Smart-Gunner mesh and M3 pattern plates. Robust, yet nimble, with room for all your pouches."
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_rad = CLOTHING_ARMOR_MEDIUM
+	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_LEGS
 	storage_slots = 4
 	light_range = 5 //slightly higher
 	specialty = "M4 pattern marine"
@@ -289,9 +291,9 @@
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
 	armor_laser = CLOTHING_ARMOR_LOW
 	armor_energy = CLOTHING_ARMOR_LOW
-	armor_bomb = CLOTHING_ARMOR_MEDIUM
 	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
+	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_LEGS
 	storage_slots = 2
 	slowdown = SLOWDOWN_ARMOR_LIGHT
 	allowed = list(
@@ -322,6 +324,7 @@
 	desc = "A well-crafted suit of M3 Pattern Armor typically distributed to Wardens. Useful for letting your men know who is in charge."
 	icon_state = "warden"
 	uniform_restricted = list(/obj/item/clothing/under/marine/warden)
+	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_LEGS
 	specialty = "M3 pattern warden MP"
 
 /obj/item/clothing/suit/storage/marine/MP/WO
@@ -329,6 +332,7 @@
 	desc = "A well-crafted suit of M3 Pattern Armor typically distributed to Chief MPs. Useful for letting your men know who is in charge."
 	icon_state = "warrant_officer"
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer/warrant)
+	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_LEGS
 	specialty = "M3 pattern chief MP"
 	black_market_value = 30
 
@@ -349,19 +353,28 @@
 	w_class = SIZE_MEDIUM
 	flags_atom = FPRINT|CONDUCT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
-/obj/item/clothing/suit/storage/marine/MP/SO
+/obj/item/clothing/suit/storage/marine/CIC
 	name = "\improper M3 pattern officer armor"
 	desc = "A well-crafted suit of M3 Pattern Armor typically found in the hands of higher-ranking officers. Useful for letting your men know who is in charge when taking to the field."
 	icon_state = "officer"
 	storage_slots = 3
 	flags_atom = null
-	uniform_restricted = list(/obj/item/clothing/under/marine/officer, /obj/item/clothing/under/rank/qm_suit, /obj/item/clothing/under/rank/chief_medical_officer, /obj/item/clothing/under/marine/dress)
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
+	slowdown = SLOWDOWN_ARMOR_LIGHT
+	uniform_restricted = list(/obj/item/clothing/under/marine/officer, /obj/item/clothing/under/rank/qm_suit, /obj/item/clothing/under/rank/cmo, /obj/item/clothing/under/marine/dress)
 	specialty = "M3 pattern officer"
 	item_state_slots = list(WEAR_JACKET = "officer")
+	black_market_value = 20
 
 //Making a new object because we might want to edit armor values and such.
 //Or give it its own sprite. It's more for the future.
-/obj/item/clothing/suit/storage/marine/MP/CO
+/obj/item/clothing/suit/storage/marine/CIC/CO
 	name = "\improper M3 pattern commanding officer armor"
 	desc = "A robust, well-polished suit of armor for the Commanding Officer. Custom-made to fit its owner with special straps to operate a smartgun. Show those Marines who's really in charge."
 	icon_state = "co"
@@ -372,10 +385,9 @@
 	uniform_restricted = list(/obj/item/clothing/under/marine, /obj/item/clothing/under/rank/qm_suit)
 	specialty = "M3 pattern commanding officer"
 	item_state_slots = list(WEAR_JACKET = "co")
-	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_PONCHO, ACCESSORY_SLOT_MASK)
 	black_market_value = 35
 
-/obj/item/clothing/suit/storage/marine/MP/CO/jacket
+/obj/item/clothing/suit/storage/marine/CIC/CO/jacket
 	name = "\improper M3 pattern commanding officer armored coat"
 	desc = "A robust, well-polished suit of armor for the Commanding Officer. Custom-made to fit its owner with special straps to operate a smartgun. Show those Marines who's really in charge. This one has a coat over it for added warmth."
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
@@ -385,7 +397,6 @@
 	icon_state = "bridge_coat_armored"
 	item_state = "bridge_coat_armored"
 	item_state_slots = list(WEAR_JACKET = "bridge_coat_armored")
-	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_MASK)
 	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/suit/storage/marine/medium/leader
@@ -394,7 +405,6 @@
 	icon_state = "7"
 	armor_variation = 0
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_bomb = CLOTHING_ARMOR_MEDIUM
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_energy = CLOTHING_ARMOR_MEDIUM
@@ -463,7 +473,7 @@
 	slowdown = SLOWDOWN_ARMOR_LIGHT
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
-	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
 	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_internaldamage = CLOTHING_ARMOR_LOW
@@ -598,12 +608,11 @@
 
 /obj/item/clothing/suit/storage/marine/light/recon
 	name = "M3-R pattern light armor"
-	desc = "Special issue light armor for forward econnaissance Marines. Offers similar protection as M3 armor but none of the slowdown."
+	desc = "Special issue light armor for forward reconnaissance Marines. Offers similar protection as M3 armor but none of the slowdown."
 	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
 	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
 	armor_energy = CLOTHING_ARMOR_NONE
-	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
@@ -617,6 +626,7 @@
 	specialty = "\improper M3-EOD pattern"
 	icon_state = "H1"
 	armor_variation = 6
+	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_ARMS|BODY_FLAG_LEGS
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
 	armor_bomb = CLOTHING_ARMOR_HIGHPLUS
@@ -637,10 +647,12 @@
 /obj/item/clothing/suit/storage/marine/heavy/padless
 	icon_state = "H2"
 	armor_variation = 0
+	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_LEGS
 
 /obj/item/clothing/suit/storage/marine/heavy/padless_lines
 	icon_state = "H3"
 	armor_variation = 0
+	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_LEGS
 
 /obj/item/clothing/suit/storage/marine/heavy/carrier
 	icon_state = "H4"
@@ -673,6 +685,7 @@
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
+	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_LEGS
 	slowdown = SLOWDOWN_ARMOR_HEAVY
 	specialty = "B18 defensive"
 	unacidable = TRUE
@@ -716,6 +729,7 @@
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
+	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_ARMS|BODY_FLAG_LEGS
 	slowdown = SLOWDOWN_ARMOR_HEAVY
 	specialty = "M3-G4 grenadier"
 	unacidable = TRUE
@@ -726,6 +740,7 @@
 	desc = "A custom set of M3 armor designed for users of long-ranged explosive weaponry."
 	icon_state = "demolitionist"
 	armor_bomb = CLOTHING_ARMOR_HIGH
+	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_LEGS
 	slowdown = SLOWDOWN_ARMOR_LIGHT
 	specialty = "M3-T light"
 	flags_item = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE
@@ -736,6 +751,7 @@
 	desc = "A custom set of M3 armor designed for USCM Scouts."
 	icon_state = "scout_armor"
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_LEGS
 	slowdown = SLOWDOWN_ARMOR_LIGHT
 	specialty = "M3-S light"
 	flags_item = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE

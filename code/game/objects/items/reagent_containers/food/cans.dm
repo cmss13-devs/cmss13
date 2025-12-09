@@ -132,7 +132,7 @@
 
 		playsound(M.loc, consume_sound, 15, 1)
 		return 1
-	else if( istype(M, /mob/living/carbon/human) )
+	else if( istype(M, /mob/living/carbon) )
 		if (!open)
 			to_chat(user, SPAN_NOTICE("You need to open the [object_fluff]!"))
 			return
@@ -215,7 +215,7 @@
 	L = H.get_limb(H.zone_selected)
 
 	if(src == H.get_inactive_hand())
-		message = "between [user.gender == MALE ? "his" : "her"] hands"
+		message = "between [user.p_their()] hands"
 		to_chat(user, SPAN_NOTICE("You start crushing the [name] between your hands!"))
 		if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC)) //crushing with hands takes great effort and might
 			return
@@ -225,14 +225,13 @@
 				if(!L)
 					to_chat(user, SPAN_WARNING("You don't have a [H.zone_selected], can't crush yer can on nothing!"))
 					return
-				message = "against [user.gender == MALE ? "his" : "her"] head!"
+				message = "against [user.p_their()] head!"
 				L.take_damage(brute = 3) //ouch! but you're a tough badass so it barely hurts
-				H.UpdateDamageIcon()
 			if("l_foot" , "r_foot")
 				if(!L)
 					to_chat(user, SPAN_WARNING("You don't have a [H.zone_selected], can't crush yer can under nothing!"))
 					return
-				message = "under [user.gender == MALE ? "his" : "her"] foot!"
+				message = "under [user.p_their()] foot!"
 
 	crushed = TRUE
 	flags_atom &= ~OPENCONTAINER
@@ -413,6 +412,7 @@
 /obj/item/reagent_container/food/drinks/cans/waterbottle/Initialize()
 	. = ..()
 	reagents.add_reagent("water", 30)
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/reagent_container/food/drinks/cans/waterbottle/upp
 	name = "\improper Gerolsteiner Bottled Sparkling Water"
@@ -420,6 +420,10 @@
 	desc_lore = "After Gerolsteiner company becoming an intergrated state enterprise, their products became a common thing in military rations and in other places."
 	icon_state = "upp_water"
 	crushed_icon = "upp_water_crushed"
+
+/obj/item/reagent_container/food/drinks/cans/waterbottle/upp/Initialize()
+	. = ..()
+	RemoveElement(/datum/element/corp_label/wy)
 
 /obj/item/reagent_container/food/drinks/cans/coconutmilk
 	name = "\improper Weyland-Yutani Bottled Coconut Milk"
@@ -436,6 +440,7 @@
 /obj/item/reagent_container/food/drinks/cans/coconutmilk/Initialize()
 	. = ..()
 	reagents.add_reagent("coconutmilk", 30)
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/reagent_container/food/drinks/cans/soylent
 	name = "\improper Weyland-Yutani Premium Choco Soylent"
@@ -456,6 +461,7 @@
 	reagents.add_reagent("nutriment", 10)
 	reagents.add_reagent("soymilk", 10)
 	reagents.add_reagent("coco_drink", 10)
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/reagent_container/food/drinks/cans/bugjuice
 	name = "\improper Weyland-Yutani Bug Juice Protein Drink"
@@ -474,6 +480,7 @@
 /obj/item/reagent_container/food/drinks/cans/bugjuice/Initialize()
 	. = ..()
 	reagents.add_reagent("bugjuice", 30)
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/reagent_container/food/drinks/cans/beer
 	name = "\improper Weyland-Yutani Lite"
@@ -484,6 +491,7 @@
 /obj/item/reagent_container/food/drinks/cans/beer/Initialize()
 	. = ..()
 	reagents.add_reagent("beer", 30)
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/reagent_container/food/drinks/cans/ale
 	name = "\improper Weyland-Yutani IPA"
@@ -495,6 +503,7 @@
 /obj/item/reagent_container/food/drinks/cans/ale/Initialize()
 	. = ..()
 	reagents.add_reagent("ale", 30)
+	AddElement(/datum/element/corp_label/wy)
 
 //SOUTO
 
@@ -505,6 +514,10 @@
 	item_state = "souto_classic"
 	center_of_mass = "x=16;y=10"
 	embeddable = 1
+
+/obj/item/reagent_container/food/drinks/cans/souto/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/souta)
 
 /obj/item/reagent_container/food/drinks/cans/souto/diet
 	name = "\improper Diet Souto"
@@ -712,3 +725,4 @@
 /obj/item/reagent_container/food/drinks/cans/aspen/Initialize()
 	. = ..()
 	reagents.add_reagent("beer", 50)
+	AddElement(/datum/element/corp_label/wy)

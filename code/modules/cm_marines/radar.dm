@@ -30,7 +30,7 @@
 /datum/radar/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
-		ui = new(user, src, "Radar", "[holder.name]")
+		ui = new(user, src, "Radar", "[capitalize(holder.name)]")
 		ui.open()
 
 /datum/radar/ui_assets(mob/user)

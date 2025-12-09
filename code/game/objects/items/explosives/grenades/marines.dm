@@ -489,6 +489,10 @@
 	/// Post falloff calc damage is multipled by this to get human stamina damage
 	var/human_stam_dam_factor = 0.5
 
+/obj/item/explosive/grenade/sebb/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/armat)
+
 /obj/item/explosive/grenade/sebb/get_examine_text(mob/user)
 	. = ..()
 	. += SPAN_NOTICE("To put into mine mode, plant at feet.")
@@ -634,7 +638,7 @@
 
 		new /obj/effect/overlay/temp/emp_sparks(mob)
 		mob.make_jittery(damage_applied*2)
-	empulse(src, 1, 2) // mini EMP
+	empulse(src, 1, 2, cause_data?.resolve_mob()) // mini EMP
 	qdel(src)
 
 

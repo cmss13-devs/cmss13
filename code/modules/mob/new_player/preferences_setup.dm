@@ -1,10 +1,15 @@
 //The mob should have a gender you want before running this proc. Will run fine without H
 /datum/preferences/proc/randomize_appearance(mob/living/carbon/human/H)
 	if(H)
-		if(H.gender == MALE)
-			gender = MALE
-		else
-			gender = FEMALE
+		switch(H.gender)
+			if(MALE)
+				gender = MALE
+			if(FEMALE)
+				gender = FEMALE
+			if(PLURAL)
+				gender = PLURAL
+			else
+				gender = pick(MALE, FEMALE)
 
 	skin_color = random_skin_color()
 	body_type = random_body_type()
@@ -189,9 +194,6 @@
 	if(isnull(preview_dummy))
 		preview_dummy = new()
 
-	preview_dummy.blocks_emissive = FALSE
-	preview_dummy.update_emissive_block()
-
 	clear_equipment()
 	if(refresh_limb_status)
 		for(var/obj/limb/L in preview_dummy.limbs)
@@ -213,6 +215,10 @@
 		gear.equip_to_user(preview_dummy, override_checks = TRUE, drop_instead_of_del = FALSE)
 
 	arm_equipment(preview_dummy, J, FALSE, FALSE, owner, show_job_gear)
+
+	for(var/obj/limb/L in preview_dummy.limbs)
+		L.blocks_emissive = EMISSIVE_BLOCK_NONE
+	preview_dummy.regenerate_icons()
 
 	// If the dummy was equipped with marine armor.
 	var/jacket = preview_dummy.get_item_by_slot(WEAR_JACKET)
@@ -373,6 +379,8 @@
 		if(JOB_CO_SURVIVOR)
 			if(length(SSmapping.configs[GROUND_MAP].CO_survivor_types))
 				return pick(SSmapping.configs[GROUND_MAP].CO_survivor_types)
+			else if(length(SSmapping.configs[GROUND_MAP].CO_insert_survivor_types))
+				return pick(SSmapping.configs[GROUND_MAP].CO_insert_survivor_types)
 			return /datum/equipment_preset/uscm_co
 		if(JOB_PREDATOR)
 			var/datum/job/J = GLOB.RoleAuthority.roles_by_name[JOB_PREDATOR]

@@ -22,7 +22,7 @@
 
 /obj/item/tool/crew_monitor/dropped(mob/user)
 	. = ..()
-	SStgui.close_uis(src)
+	SStgui.close_uis(radar)
 
 /obj/item/clothing/suit/auto_cpr
 	name = "autocompressor" //autocompressor

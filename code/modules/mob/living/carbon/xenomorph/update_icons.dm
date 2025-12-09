@@ -51,6 +51,7 @@
 		walking_state_cache[mutation_caste_state] = cache_walking_state
 	has_walking_icon_state = walking_state_cache[mutation_caste_state]
 	update_icons()
+	color = HAS_TRAIT(src, TRAIT_NO_COLOR) ? null : hive.color
 
 /mob/living/carbon/xenomorph/update_icons()
 	if(!caste)
@@ -104,6 +105,8 @@
 	. = ..()
 	update_icons()
 	update_wounds()
+	overlays -= acid_overlay
+
 /mob/living/carbon/xenomorph/on_floored_end()
 	. = ..()
 	update_icons()
@@ -326,6 +329,8 @@
 	if(!wound_icon_holder)
 		return
 
+	wound_icon_holder.icon = icon
+
 	var/health_threshold
 	health_threshold = max(ceil((health * 4) / (maxHealth)), 0) //From 0 to 4, in 25% chunks
 
@@ -353,9 +358,6 @@
 /atom/movable/vis_obj
 	vis_flags = VIS_INHERIT_ID|VIS_INHERIT_DIR|VIS_INHERIT_LAYER|VIS_INHERIT_PLANE
 	appearance_flags = RESET_COLOR
-
-/atom/movable/vis_obj/xeno_wounds
-	icon = 'icons/mob/xenos/wounds.dmi'
 
 /atom/movable/vis_obj/xeno_pack/Initialize(mapload, mob/living/carbon/source)
 	. = ..()

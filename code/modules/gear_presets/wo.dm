@@ -16,7 +16,7 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	assignment = JOB_WO_CO
-	rank = JOB_WO_CO
+	job_title = JOB_WO_CO
 	paygrades = list(PAY_SHORT_MO2 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "CDR"
 	skills = /datum/skills/commander
@@ -45,7 +45,7 @@
 	access = get_access(ACCESS_LIST_MARINE_ALL)
 
 /datum/equipment_preset/wo/commander/load_gear(mob/living/carbon/human/new_human)
-	var/sidearm = "Mateba"
+	var/sidearm = "Unica (camo comforting)"
 	var/kit = null
 	var/sidearmpath = /obj/item/storage/belt/gun/mateba/cmateba/full
 	var/back_item = /obj/item/storage/backpack/satchel/lockable
@@ -58,25 +58,40 @@
 				kit = /obj/item/storage/mateba_case/captain
 			if(CO_GUN_MATEBA_SPECIAL)
 				sidearmpath = /obj/item/storage/belt/gun/mateba/cmateba/special
+			if(CO_GUN_MATEBA_CLASSIC)
+				sidearmpath = /obj/item/storage/belt/gun/mateba/full
+			if(CO_GUN_2006M)
+				sidearmpath = /obj/item/storage/belt/gun/mateba/mtr6m/full
+			if(CO_GUN_DEAGLE)
+				sidearmpath = /obj/item/storage/belt/gun/m4a3/heavy/co
+			if(CO_GUN_M1911C)
+				sidearmpath = /obj/item/storage/belt/gun/m4a3/m1911/commander
+			//Council variants
 			if(CO_GUN_MATEBA_COUNCIL)
 				sidearmpath = /obj/item/storage/belt/gun/mateba/council/full
 				kit = /obj/item/storage/mateba_case/captain/council
-			if(CO_GUN_DEAGLE)
-				sidearmpath = /obj/item/storage/belt/gun/m4a3/heavy/co
+			if(CO_GUN_MATEBA_COUNCIL_GOLDEN)
+				sidearmpath = /obj/item/storage/belt/gun/mateba/council/full_golden
+				kit = /obj/item/storage/mateba_case/captain/council_gold
+			if(CO_GUN_2006M_COUNCIL)
+				sidearmpath = /obj/item/storage/belt/gun/mateba/council/mtr6m/full
+			if(CO_GUN_2006MB_COUNCIL)
+				sidearmpath = /obj/item/storage/belt/gun/mateba/council/mtr6m/full_black
+			if(CO_GUN_2006MS_COUNCIL)
+				sidearmpath = /obj/item/storage/belt/gun/mateba/council/mtr6m/full_silver
 			if(CO_GUN_DEAGLE_COUNCIL)
 				sidearmpath = /obj/item/storage/belt/gun/m4a3/heavy/co_golden
-
 	//back
 	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
 	if(kit)
 		new_human.equip_to_slot_or_del(new kit(new_human), WEAR_IN_BACK)
 	//head
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/cm(new_human), WEAR_HEAD)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom/co(new_human), WEAR_L_EAR)
 	//uniform
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/command(new_human), WEAR_BODY)
 	//jacket
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/MP/SO(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/CIC(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/sword/ceremonial(new_human), WEAR_J_STORE)
 	//waist
 	new_human.equip_to_slot_or_del(new sidearmpath(new_human), WEAR_WAIST)
@@ -96,7 +111,7 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	assignment = JOB_WO_XO
-	rank = JOB_WO_XO
+	job_title = JOB_WO_XO
 	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "LCDR"
 	skills = /datum/skills/XO
@@ -120,11 +135,11 @@
 	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
 	//head
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap(new_human), WEAR_HEAD)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom/xo(new_human), WEAR_L_EAR)
 	//uniform
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(new_human), WEAR_BODY)
 	//jacket
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/MP/SO(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/CIC(new_human), WEAR_JACKET)
 	//waist
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/vp78(new_human), WEAR_WAIST)
 	//limbs
@@ -139,9 +154,19 @@
 	name = "WO Honor Guard Squad Leader"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
-	access = list(ACCESS_MARINE_BRIG, ACCESS_MARINE_COMMAND, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_DATABASE, ACCESS_MARINE_PREP, ACCESS_MARINE_CMP, ACCESS_MARINE_MEDBAY)
+	access = list(
+		ACCESS_MARINE_BRIG,
+		ACCESS_MARINE_COMMAND,
+		ACCESS_MARINE_DROPSHIP,
+		ACCESS_MARINE_DATABASE,
+		ACCESS_MARINE_DATABASE_ADMIN,
+		ACCESS_MARINE_GENERAL,
+		ACCESS_MARINE_PREP,
+		ACCESS_MARINE_CMP,
+		ACCESS_MARINE_MEDBAY,
+	)
 	assignment = JOB_WO_CHIEF_POLICE
-	rank = JOB_WO_CHIEF_POLICE
+	job_title = JOB_WO_CHIEF_POLICE
 	paygrades = list(PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "HGSL"
 	skills = /datum/skills/honor_guard/lead
@@ -176,9 +201,9 @@
 	name = "WO Veteran Honor Guard" //SO
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
-	access = list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_BRIG, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_DATABASE)
+	access = list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_BRIG, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_DATABASE, ACCESS_MARINE_GENERAL)
 	assignment = JOB_WO_SO
-	rank = JOB_WO_SO
+	job_title = JOB_WO_SO
 	paygrades = list(PAY_SHORT_ME4 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "VHG"
 	skills = /datum/skills/honor_guard/vet
@@ -219,9 +244,9 @@
 	name = "WO Honor Guard Specialist" //Tank crew
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
-	access = list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_DATABASE)
+	access = list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_GENERAL)
 	assignment = JOB_WO_CREWMAN
-	rank = JOB_WO_CREWMAN
+	job_title = JOB_WO_CREWMAN
 	paygrades = list(PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "HGS"
 	skills = /datum/skills/honor_guard/spec
@@ -260,9 +285,9 @@
 	name = "WO Honor Guard" //MP
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
-	access = list(ACCESS_MARINE_BRIG, ACCESS_MARINE_COMMAND, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_DATABASE, ACCESS_MARINE_PREP, ACCESS_MARINE_MEDBAY)
+	access = list(ACCESS_MARINE_BRIG, ACCESS_MARINE_COMMAND, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_DATABASE, ACCESS_MARINE_GENERAL, ACCESS_MARINE_PREP, ACCESS_MARINE_MEDBAY)
 	assignment = JOB_WO_POLICE
-	rank = JOB_WO_POLICE
+	job_title = JOB_WO_POLICE
 	paygrades = list(PAY_SHORT_ME2 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "HG"
 	skills = /datum/skills/honor_guard
@@ -297,7 +322,7 @@
 
 	access = list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_PILOT)
 	assignment = JOB_WO_PILOT
-	rank = JOB_WO_PILOT
+	job_title = JOB_WO_PILOT
 	paygrades = list(PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "MC"
 	skills = /datum/skills/mortar_crew
@@ -333,7 +358,7 @@
 
 	access = list(ACCESS_MARINE_CARGO, ACCESS_MARINE_RO, ACCESS_MARINE_COMMAND)
 	assignment = JOB_WO_CHIEF_REQUISITION
-	rank = JOB_WO_CHIEF_REQUISITION
+	job_title = JOB_WO_CHIEF_REQUISITION
 	paygrades = list(PAY_SHORT_ME8 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "QM"
 	skills = /datum/skills/RO
@@ -364,7 +389,7 @@
 
 	access = list(ACCESS_MARINE_ENGINEERING, ACCESS_CIVILIAN_ENGINEERING, ACCESS_MARINE_CARGO)
 	assignment = JOB_WO_REQUISITION
-	rank = JOB_WO_REQUISITION
+	job_title = JOB_WO_REQUISITION
 	paygrades = list(PAY_SHORT_ME4 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "BCL"
 	skills = /datum/skills/CE
@@ -399,8 +424,8 @@
 
 	access = list(ACCESS_MARINE_CMO, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_RESEARCH, ACCESS_MARINE_COMMAND, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = JOB_WO_CMO
-	rank = JOB_WO_CMO
-	paygrades = list(PAY_SHORT_CCMO = JOB_PLAYTIME_TIER_0)
+	job_title = JOB_WO_CMO
+	paygrades = list(PAY_SHORT_MO2 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "HS"
 	skills = /datum/skills/CMO
 	idtype = /obj/item/card/id/silver
@@ -443,8 +468,8 @@
 
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = JOB_WO_DOCTOR
-	rank = JOB_WO_DOCTOR
-	paygrades = list(PAY_SHORT_CDOC = JOB_PLAYTIME_TIER_0)
+	job_title = JOB_WO_DOCTOR
+	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "Doc"
 	skills = /datum/skills/doctor
 	idtype = /obj/item/card/id
@@ -484,8 +509,8 @@
 
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_RESEARCH, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = JOB_WO_RESEARCHER
-	rank = JOB_WO_RESEARCHER
-	paygrades = list(PAY_SHORT_CDOC = JOB_PLAYTIME_TIER_0)
+	job_title = JOB_WO_RESEARCHER
+	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "Chem"
 	skills = /datum/skills/researcher
 	idtype = /obj/item/card/id
@@ -523,9 +548,9 @@
 	name = "WO Bunker Crew Master" //CE
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
-	access = list(ACCESS_MARINE_CE, ACCESS_MARINE_ENGINEERING, ACCESS_MARINE_COMMAND, ACCESS_CIVILIAN_ENGINEERING, ACCESS_MARINE_DATABASE)
+	access = list(ACCESS_MARINE_CE, ACCESS_MARINE_ENGINEERING, ACCESS_MARINE_COMMAND, ACCESS_CIVILIAN_ENGINEERING, ACCESS_MARINE_DATABASE, ACCESS_MARINE_GENERAL)
 	assignment = JOB_WO_CHIEF_ENGINEER
-	rank = JOB_WO_CHIEF_ENGINEER
+	job_title = JOB_WO_CHIEF_ENGINEER
 	paygrades = list(PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "BCM"
 	skills = /datum/skills/CE
@@ -560,7 +585,7 @@
 
 	access = list(ACCESS_MARINE_CE, ACCESS_MARINE_ENGINEERING, ACCESS_MARINE_COMMAND, ACCESS_CIVILIAN_ENGINEERING)
 	assignment = JOB_WO_ORDNANCE_TECH
-	rank = JOB_WO_ORDNANCE_TECH
+	job_title = JOB_WO_ORDNANCE_TECH
 	paygrades = list(PAY_SHORT_ME4 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "BC"
 	skills = /datum/skills/OT
@@ -594,7 +619,7 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	assignment = JOB_WO_CORPORATE_LIAISON
-	rank = JOB_WO_CORPORATE_LIAISON
+	job_title = JOB_WO_CORPORATE_LIAISON
 	paygrades = list(PAY_SHORT_WYC2 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "PRESS"
 	skills = /datum/skills/civilian
@@ -639,7 +664,7 @@
 
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP)
 	assignment = JOB_SQUAD_LEADER
-	rank = JOB_SQUAD_LEADER
+	job_title = JOB_SQUAD_LEADER
 	paygrades = list(PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "SL"
 	skills = /datum/skills/SL
@@ -675,7 +700,7 @@
 
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_SPECPREP)
 	assignment = JOB_SQUAD_SPECIALIST
-	rank = JOB_SQUAD_SPECIALIST
+	job_title = JOB_SQUAD_SPECIALIST
 	paygrades = list(PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "Spc"
 	skills = /datum/skills/specialist
@@ -711,7 +736,7 @@
 
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_SMARTPREP)
 	assignment = JOB_SQUAD_SMARTGUN
-	rank = JOB_SQUAD_SMARTGUN
+	job_title = JOB_SQUAD_SMARTGUN
 	paygrades = list(PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "SG"
 	skills = /datum/skills/smartgunner
@@ -736,7 +761,7 @@
 
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_ENGPREP, ACCESS_CIVILIAN_ENGINEERING)
 	assignment = JOB_SQUAD_ENGI
-	rank = JOB_SQUAD_ENGI
+	job_title = JOB_SQUAD_ENGI
 	paygrades = list(PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "ComTech"
 	skills = /datum/skills/combat_engineer
@@ -771,7 +796,7 @@
 
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_MEDPREP, ACCESS_MARINE_MEDBAY)
 	assignment = JOB_SQUAD_MEDIC
-	rank = JOB_SQUAD_MEDIC
+	job_title = JOB_SQUAD_MEDIC
 	paygrades = list(PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "HM"
 	skills = /datum/skills/combat_medic
@@ -810,7 +835,7 @@
 
 	access = list(ACCESS_MARINE_PREP)
 	assignment = JOB_SQUAD_MARINE
-	rank = JOB_SQUAD_MARINE
+	job_title = JOB_SQUAD_MARINE
 	paygrades = list(PAY_SHORT_ME2 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "RFN"
 	skills = /datum/skills/pfc

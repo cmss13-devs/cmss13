@@ -139,7 +139,7 @@
 /obj/item/tool/surgery/scalpel/laser/improved
 	name = "laser scalpel"
 	desc = "A scalpel augmented with a directed laser for controlling bleeding as the incision is made and for functioning as a cautery. This standard model uses a CO2 laser to vaporize tissue and seal blood vessels, but the incisions are not always bloodless."
-	desc_lore = "After figuring out how to make a laser that incises flesh, the prototype and its blade became nothing more than a distant memory and a reminder to not haphazardly slap two independently-functioning tools together and praying to Spess Jesus they will in tandem with one another. This design, hailing from the early 2000s, uses a CO2 laser to create an incision by using an invisible infrared beam that vaporizes tissue while sealing blood vessels. While pinpoint bleeding occurs on occasion, the laser scalpel is a perfect, if not expensive alternative to replacing a standard scalpel and cautery."
+	desc_lore = "After figuring out how to make a laser that incises flesh, the prototype and its blade became nothing more than a distant memory and a reminder to not haphazardly slap two independently-functioning tools together and praying to Spess Jesus they will work in tandem with one another. This design, hailing from the early 2000s, uses a CO2 laser to create an incision by using an invisible infrared beam that vaporizes tissue while sealing blood vessels. While pinpoint bleeding occurs on occasion, the laser scalpel is a perfect, if not expensive alternative to replacing a standard scalpel and cautery."
 	icon_state = "scalpel_laser_2"
 	damtype = "fire"
 	bloodlessprob = 80

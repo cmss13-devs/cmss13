@@ -30,6 +30,7 @@
 	faction_group =	FACTION_LIST_MARINE_WY
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	origin_override = ORIGIN_CIVILIAN
+	selection_categories = list(FACTION_MARINE)
 
 	idtype = /obj/item/card/id/silver/cl
 	access = list(
@@ -79,6 +80,7 @@
 	faction_group =	FACTION_LIST_MARINE_WY
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	origin_override = ORIGIN_CIVILIAN
+	selection_categories = list(FACTION_MARINE)
 
 	idtype = /obj/item/card/id/silver/cl
 	access = list(

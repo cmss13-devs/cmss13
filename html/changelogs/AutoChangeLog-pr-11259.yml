@@ -1,5 +1,0 @@
-author: "larentoun"
-delete-after: True
-changes:
-  - bugfix: "Mutated Queen is now not recoloring."
-  - bugfix: "Recolored Xenomorph morphed to Mutated Xenomorph will now reset their color to none."

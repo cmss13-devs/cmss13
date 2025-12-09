@@ -1,4 +1,0 @@
-author: "cuberound"
-delete-after: True
-changes:
-  - balance: "allows medkit pouch to hold scalpel, hemostat, and retractor"

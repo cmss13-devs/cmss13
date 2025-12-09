@@ -1062,6 +1062,10 @@
 	},
 /turf/open/floor/plating,
 /area/navalis/indoors/logistic/maintenance_starboard)
+"acR" = (
+/obj/structure/window/framed/strata/reinforced,
+/turf/open/floor/corsat/marked,
+/area/navalis/indoors/charon/upper_deck/rear)
 "acS" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/north,
 /obj/structure/prop/structure_lattice{
@@ -18239,35 +18243,6 @@
 	},
 /turf/open/floor/roof_weedable/outerhull_dir/east,
 /area/navalis/outdoors/exterior/com_ext/upper)
-"bbE" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	pixel_y = -1
-	},
-/turf/open/floor/prison/cell_stripe/west,
-/area/navalis/indoors/charon/upper_deck/rear)
-"bbF" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	pixel_y = -1
-	},
-/turf/open/floor/prison/floor_plate,
-/area/navalis/indoors/charon/upper_deck/rear)
-"bbG" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	pixel_y = -1
-	},
-/turf/open/floor/prison/floor_plate,
-/area/navalis/indoors/charon/upper_deck/rear)
-"bbH" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	pixel_y = -1
-	},
-/turf/open/floor/prison/cell_stripe/east,
-/area/navalis/indoors/charon/upper_deck/rear)
 "bbI" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/orange2smooth/east,
@@ -18293,40 +18268,6 @@
 	},
 /turf/open/floor/plating,
 /area/navalis/indoors/residential/access)
-"bbN" = (
-/obj/effect/decal/cleanable/dirt/greenglow{
-	color = "#140400";
-	name = "dirt"
-	},
-/turf/open/floor/prison/cell_stripe/west,
-/area/navalis/indoors/charon/upper_deck/rear)
-"bbO" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/floor_plate,
-/area/navalis/indoors/charon/upper_deck/rear)
-"bbP" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/warning_stripes{
-	icon_state = "cargo_arrow4";
-	dir = 8;
-	pixel_x = 7
-	},
-/turf/open/floor/prison/floor_plate,
-/area/navalis/indoors/charon/upper_deck/rear)
-"bbQ" = (
-/turf/open/floor/prison/floor_plate,
-/area/navalis/indoors/charon/upper_deck/rear)
-"bbR" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "cargo_arrow4";
-	dir = 8;
-	pixel_x = 7
-	},
-/turf/open/floor/prison/floor_plate,
-/area/navalis/indoors/charon/upper_deck/rear)
-"bbS" = (
-/turf/open/floor/prison/cell_stripe/east,
-/area/navalis/indoors/charon/upper_deck/rear)
 "bbT" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/orange2smooth/west,
@@ -18358,39 +18299,6 @@
 "bbX" = (
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/navalis/indoors/med_sci/upper_level/corridor)
-"bbY" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	layer = 3.33;
-	pixel_y = 1
-	},
-/turf/open/floor/prison/cell_stripe/west,
-/area/navalis/indoors/charon/upper_deck/rear)
-"bbZ" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	layer = 3.33;
-	pixel_y = 1
-	},
-/turf/open/floor/prison/floor_plate,
-/area/navalis/indoors/charon/upper_deck/rear)
-"bca" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	layer = 3.33;
-	pixel_y = 1
-	},
-/turf/open/floor/prison/floor_plate,
-/area/navalis/indoors/charon/upper_deck/rear)
-"bcb" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	layer = 3.33;
-	pixel_y = 1
-	},
-/turf/open/floor/prison/cell_stripe/east,
-/area/navalis/indoors/charon/upper_deck/rear)
 "bcd" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -18437,17 +18345,6 @@
 	},
 /turf/open/floor/roof_weedable/outerhull_dir/east,
 /area/navalis/outdoors/exterior/com_ext/upper)
-"bcm" = (
-/obj/effect/decal/cleanable/dirt/greenglow{
-	color = "#140400";
-	name = "dirt"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	pixel_y = -1
-	},
-/turf/open/floor/prison/floor_plate,
-/area/navalis/indoors/charon/upper_deck/rear)
 "bcn" = (
 /obj/structure/barricade/handrail/wire{
 	dir = 4
@@ -18519,26 +18416,6 @@
 	},
 /turf/open/floor/roof_weedable/outerhull_dir/east,
 /area/navalis/outdoors/exterior/com_ext/upper)
-"bcu" = (
-/turf/open/floor/prison/cell_stripe/west,
-/area/navalis/indoors/charon/upper_deck/rear)
-"bcv" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "cargo_arrow4";
-	dir = 4;
-	pixel_x = -7
-	},
-/turf/open/floor/prison/floor_plate,
-/area/navalis/indoors/charon/upper_deck/rear)
-"bcw" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/warning_stripes{
-	icon_state = "cargo_arrow4";
-	dir = 4;
-	pixel_x = -7
-	},
-/turf/open/floor/prison/floor_plate,
-/area/navalis/indoors/charon/upper_deck/rear)
 "bcx" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/orange2smooth/northwest,
@@ -18601,18 +18478,6 @@
 	},
 /turf/open/floor/roof_weedable/outerhull_dir/east,
 /area/navalis/outdoors/exterior/com_ext/upper)
-"bcF" = (
-/obj/effect/decal/cleanable/dirt/greenglow{
-	color = "#140400";
-	name = "dirt"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	layer = 3.33;
-	pixel_y = 1
-	},
-/turf/open/floor/prison/cell_stripe/west,
-/area/navalis/indoors/charon/upper_deck/rear)
 "bcG" = (
 /turf/open/floor/almayer/orangecornersmooth/south,
 /area/navalis/indoors/charon/upper_deck/rear)
@@ -19767,13 +19632,6 @@
 /area/navalis/indoors/residential/starboard)
 "bgX" = (
 /obj/effect/landmark/yautja_teleport,
-/turf/open/floor/plating,
-/area/navalis/indoors/charon/upper_deck/rear)
-"bgY" = (
-/turf/closed/wall/prison,
-/area/navalis/indoors/charon/upper_deck/rear)
-"bgZ" = (
-/obj/structure/window/framed/prison,
 /turf/open/floor/plating,
 /area/navalis/indoors/charon/upper_deck/rear)
 "bhc" = (
@@ -191613,17 +191471,17 @@ tAt
 tAt
 tAt
 tAt
-bgY
-bcF
-bcu
-bbE
-bgY
 tAt
-bgY
-bbY
-bbN
-bbE
-bgY
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
 tAt
 tAt
 tAt
@@ -191777,17 +191635,17 @@ tAt
 tAt
 tAt
 tAt
-bgZ
-bca
-bbQ
-bcm
-bgZ
 tAt
-bgZ
-bbZ
-bbO
-bbF
-bgZ
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
 tAt
 tAt
 tAt
@@ -191941,17 +191799,17 @@ kVD
 kVD
 kVD
 tAt
-bgZ
-bca
-bcv
-bbF
-bgZ
 tAt
-bgZ
-bbZ
-bbP
-bbG
-bgZ
+tAt
+tAt
+kVD
+kVD
+tAt
+tAt
+tAt
+tAt
+kVD
+kVD
 tAt
 tAt
 tAt
@@ -192105,17 +191963,17 @@ tAt
 tAt
 kVD
 kVD
-bgZ
-bca
-bbO
-bbG
-bgZ
+tAt
+tAt
+tAt
 kVD
-bgZ
-bbZ
-bbO
-bbF
-bgZ
+tAt
+kVD
+tAt
+tAt
+tAt
+kVD
+kVD
 kVD
 tAt
 tAt
@@ -192269,22 +192127,22 @@ kVD
 kVD
 kVD
 kVD
-bgY
-bca
-bbQ
-bbF
-bgY
-kVD
-bgY
-bca
-bbQ
-bbG
-bgY
+tAt
+tAt
+tAt
 kVD
 tAt
 kVD
+tAt
+tAt
+tAt
 kVD
+tAt
 kVD
+tAt
+tAt
+tAt
+tAt
 kVD
 tAt
 tAt
@@ -192433,17 +192291,17 @@ tAt
 tAt
 tAt
 kVD
-bgY
-bbZ
-bcv
-bbF
-bgY
+tAt
+tAt
+tAt
 kVD
-bgY
-bca
-bbR
-bbG
-bgY
+tAt
+kVD
+tAt
+tAt
+tAt
+kVD
+tAt
 kVD
 tAt
 tAt
@@ -192597,17 +192455,17 @@ tAt
 tAt
 tAt
 kVD
-bgZ
-bbZ
-bbQ
-bbG
-bgZ
+tAt
+tAt
+tAt
 kVD
-bgZ
-bca
-bbQ
-bbG
-bgZ
+kVD
+kVD
+tAt
+tAt
+tAt
+kVD
+kVD
 kVD
 tAt
 tAt
@@ -192761,17 +192619,17 @@ tAt
 tAt
 tAt
 kVD
-bgZ
-bbZ
-bbQ
-bbG
-bgZ
 tAt
-bgZ
-bbZ
-bbQ
-bbG
-bgZ
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
 tAt
 tAt
 tAt
@@ -192924,23 +192782,23 @@ tAt
 tAt
 tAt
 kVD
-kVD
-bgZ
-bbZ
-bcw
-bbF
-bgZ
-tAt
-bgZ
-bbZ
-bbP
-bbF
-bgZ
 tAt
 tAt
-kVD
-kVD
-kVD
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
 kVD
 kVD
 kVD
@@ -193089,17 +192947,17 @@ tAt
 kVD
 kVD
 tAt
-bgY
-bcb
-bbS
-bbH
-bgY
 tAt
-bgY
-bcb
-bbS
-bbH
-bgY
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
+tAt
 tAt
 tAt
 tAt
@@ -193254,15 +193112,15 @@ kVD
 bcN
 bcN
 bcN
-baN
-baN
-baN
+acR
+acR
+acR
 aZe
 aZe
 aZe
-baN
-baN
-baN
+acR
+acR
+acR
 aZe
 aZe
 aZg

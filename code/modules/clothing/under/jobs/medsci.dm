@@ -305,7 +305,7 @@
 
 /obj/item/clothing/under/rank/cmo/scrubs
 	name = "chief medical officer's medical scrubs"
-	desc = "They're made of a special fiber that provides minor protection against biohazards. These are jade green and adorned with peach stripes that denote the wearer is \"Chief Medical Officer\""
+	desc = "They're made of a special fiber that provides minor protection against biohazards. These are jade green and adorned with peach stripes that denote the wearer is \"Chief Medical Officer\"."
 	icon_state = "scrubscmo"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/medical.dmi'
 	item_icons = list(

@@ -161,7 +161,7 @@
 /obj/item/tool/surgery/scalpel/pict_system
 	name = "\improper PICT system"
 	desc = "The Perivascular Incision and Cauterization Tool uses a high-frequency vibrating blade and suction liquid control system to precisely target and destroy the lymphatic and vascular systems feeding tumors while suctioning fluids that may contain traveling cancerous cells. Due to its specialty in cutting certain tissues, it is much slower than a scalpel in initiating surgeries and it can't create a full-length incision bloodlessly."
-	desc_lore = "The PICT system has humble origins as yet another tool developed for cancer research. Designed to identify, sever and cauterize the lymphatic and vascular systems feeding tumors, it accomplishes goals with aplomb and is the standard tool for cutting and burning off nutrient supplies to tumors before extraction. Due to its mechanisms of targeting specific types of cells while incising and suctioning, it struggles to create a full-length incision bloodlessly."
+	desc_lore = "The PICT system has humble origins as yet another tool developed for cancer research. Designed to identify, sever and cauterize the lymphatic and vascular systems feeding tumors, it accomplishes its goals with aplomb and is the standard tool for cutting and burning off nutrient supplies to tumors before extraction. Due to its mechanisms of targeting specific types of cells while incising and suctioning, it struggles to create a full-length incision bloodlessly."
 	icon_state = "pict_system"
 	force = 15
 	attack_speed = 6
@@ -373,7 +373,7 @@
 
 /obj/item/tool/surgery/bonesetter
 	name = "bone setter"
-	desc = "Known formally as 'bone reduction forceps,' it is a surgical tool used for a procedure called 'fracture reduction,' during which it to repositions fractured bones into their proper positions so they may heal properly."
+	desc = "Known formally as 'bone reduction forceps,' it is a surgical tool used for a procedure called 'fracture reduction,' during which surgeons use it to reposition ractured bones into their proper positions so they may heal properly."
 	icon_state = "bonesetter"
 	hitsound = 'sound/weapons/genhit3.ogg'
 	force = 15

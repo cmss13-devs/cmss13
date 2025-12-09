@@ -92,3 +92,6 @@
 
 /// From /datum/controller/subsystem/hijack/fire()
 #define COMSIG_GLOB_FUEL_PUMP_UPDATE "!fuel_pump_update"
+
+#define COMSIG_GLOB_SEND_RELAY_POINTS "!send_relay_points"
+#define COMSIG_GLOB_BIOMASS_GAIN "!biomass_gain"

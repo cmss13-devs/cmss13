@@ -1,0 +1,11 @@
+author: "cuberound, blundir, datimesmog, fridge, zenith"
+delete-after: True
+changes:
+  - rscadd: "New t3 xeno Despoiler evolves from spitter"
+  - rscadd: "New third stage of lingering acid on humans, extends duration to 80 seconds (first teir is 20 second 40) and reduces mob BIO and BRUTE armor by 15"
+  - rscadd: "Despoiler spit, 5 sec cooldown 35 damage applies acid effect and can upgrade it to level 2, splatters t1 lingering acid on adjacent mobs"
+  - rscadd: "Decomposing enzymes, activate gas around Despoiler, 18 second total cooldown, lasts for 6 seconds upgrades lingering acid to level 2 and drains chemicals"
+  - rscadd: "Despoiler empowered slashes, apply lingering effect and can upgrade it up to stage 3"
+  - rscadd: "Despoiler finishing tailstab with 2 second windup, deals 15 extra burn damage per level of lingering acid on target with 10 extra ap per level"
+  - balance: "Despoiler slash gives t1 lingering acid"
+  - balance: "Xeno acid blood hits mob that they are standing on"

@@ -34,7 +34,7 @@
 	icon_dead = "parrot_dead"
 	mob_size = MOB_SIZE_SMALL
 
-	speak = list("Hi","Hello!","Cracker?","RAWWWWK! GEORGE MELLONS GRIFFING ME!")
+	speak = list("Hi","Hello!","Cracker?","Want a snack?", "Want fresh water?","Good bird.","Handsome boy.","Pretty bird.")
 	speak_emote = list("squawks","says","yells", "calls")
 	emote_hear = list("squawks.","bawks.","calls.","screams.")
 	emote_see = list("flutters its wings.", "clacks its beak.", "preens its feathers.", "pins its eyes.")

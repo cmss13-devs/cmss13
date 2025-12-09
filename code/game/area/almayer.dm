@@ -14,7 +14,6 @@
 	// soundscape_playlist = list('sound/effects/xylophone1.ogg', 'sound/effects/xylophone2.ogg', 'sound/effects/xylophone3.ogg')
 	ambience_exterior = AMBIENCE_ALMAYER
 	ceiling_muffle = FALSE
-	flags_area = AREA_NOSECURECADES
 	weather_enabled = FALSE
 
 	///Whether this area is used for hijack evacuation progress
@@ -81,7 +80,7 @@
 	fake_zlevel = 1 // upperdeck
 	soundscape_playlist = SCAPE_PL_ARES
 	soundscape_interval = 120
-	flags_area = AREA_NOTUNNEL|AREA_UNWEEDABLE
+	flags_area = AREA_NOTUNNEL|AREA_UNWEEDABLE|AREA_NOSECURECADES //Can never be too careful.
 	can_build_special = FALSE
 	is_resin_allowed = FALSE
 	resin_construction_allowed = FALSE
@@ -99,12 +98,6 @@
 /area/almayer/command/telecomms
 	name = "\improper Upper Deck Telecommunications"
 	icon_state = "tcomms"
-	fake_zlevel = 1 // upperdeck
-	flags_area = AREA_NOTUNNEL
-
-/area/almayer/command/self_destruct
-	name = "\improper Upper Deck Self-Destruct Core Room"
-	icon_state = "selfdestruct"
 	fake_zlevel = 1 // upperdeck
 	flags_area = AREA_NOTUNNEL
 
@@ -396,6 +389,7 @@
 	name = "\improper Stairs"
 	icon_state = "stairs_lowerdeck"
 	resin_construction_allowed = FALSE
+	flags_area = AREA_NOSECURECADES
 
 /area/almayer/stair_clone/lower
 	name = "\improper Lower Deck Stairs"
@@ -933,6 +927,7 @@
 	name = "USS Almayer - Middle Deck"
 	allow_construction = FALSE
 	icon_state = "lowerhull"
+	flags_area = AREA_NOSECURECADES
 
 /area/almayer/middeck/hanger
 	name = "Middle Deck - Hangerbay Catwalks"

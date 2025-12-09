@@ -219,6 +219,11 @@
 				playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1)
 				xeno.visible_message(SPAN_WARNING("\The [xeno] shoves \the [src]!"),
 				SPAN_WARNING("We shove \the [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+
+			if(xeno.behavior_delegate)
+				var/datum/behavior_delegate/MD = xeno.behavior_delegate
+				MD.melee_tackle_additional_effects_target(src)
+
 	return XENO_ATTACK_ACTION
 
 /mob/living/carbon/xenomorph/proc/attempt_headbutt(mob/living/carbon/xenomorph/target)

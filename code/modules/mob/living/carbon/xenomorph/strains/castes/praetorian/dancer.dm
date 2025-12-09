@@ -37,7 +37,7 @@
 	// State
 	var/dodge_activated = FALSE
 
-/datum/behavior_delegate/praetorian_dancer/melee_attack_additional_effects_target(mob/living/carbon/target_carbon)
+/datum/behavior_delegate/praetorian_dancer/proc/apply_tag(mob/living/carbon/target_carbon)
 	if(!isxeno_human(target_carbon))
 		return
 
@@ -53,6 +53,12 @@
 	if(ishuman(target_carbon))
 		var/mob/living/carbon/human/target_human = target_carbon
 		target_human.update_xeno_hostile_hud()
+
+/datum/behavior_delegate/praetorian_dancer/melee_attack_additional_effects_target(mob/living/carbon/target_carbon)
+	apply_tag(target_carbon)
+
+/datum/behavior_delegate/praetorian_dancer/melee_tackle_additional_effects_target(mob/living/carbon/target_carbon)
+	apply_tag(target_carbon)
 
 /datum/action/xeno_action/activable/prae_impale/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/dancer_user = owner
@@ -85,12 +91,12 @@
 		return
 
 	if(dist > 1)
-		var/turf/targetTurf = get_step(dancer_user, get_dir(dancer_user, target_carbon))
-		if(targetTurf.density)
-			to_chat(dancer_user, SPAN_WARNING("We can't attack through [targetTurf]!"))
+		var/turf/target_turf = get_step(dancer_user, get_dir(dancer_user, target_carbon))
+		if(target_turf.density)
+			to_chat(dancer_user, SPAN_WARNING("We can't attack through [target_turf]!"))
 			return
 		else
-			for(var/atom/atom_in_turf in targetTurf)
+			for(var/atom/atom_in_turf in target_turf)
 				if(atom_in_turf.density && !atom_in_turf.throwpass && !istype(atom_in_turf, /obj/structure/barricade) && !istype(atom_in_turf, /mob/living))
 					to_chat(dancer_user, SPAN_WARNING("We can't attack through [atom_in_turf]!"))
 					return
@@ -106,8 +112,8 @@
 		break
 
 	if(ishuman(target_carbon))
-		var/mob/living/carbon/human/Hu = target_carbon
-		Hu.update_xeno_hostile_hud()
+		var/mob/living/carbon/human/human_target = target_carbon
+		human_target.update_xeno_hostile_hud()
 
 	// Hmm today visible_message(SPAN_DANGER("\The [dancer_user] violently slices [target_atom] with its tail[buffed?" twice":""]!"),
 	dancer_user.face_atom(target_atom)
@@ -131,7 +137,7 @@
 			"target" = target_carbon,
 			"damage" = damage
 		)
-		addtimer(CALLBACK(src, /datum/action/xeno_action/activable/prae_impale/proc/delayed_impale_strike, attack_data), 4)
+		addtimer(CALLBACK(src, /datum/action/xeno_action/activable/prae_impale/proc/delayed_impale_strike, attack_data), 4 DECISECONDS)
 
 	return ..()
 
@@ -265,7 +271,7 @@
 	afterimage.layer = dodge_user.layer
 	afterimage.dir = dodge_user.dir
 	afterimage.alpha = 200
-	afterimage.mouse_opacity = 0
+	afterimage.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	afterimage.pixel_x = dodge_user.pixel_x + directional_offset_x
 	afterimage.pixel_y = dodge_user.pixel_y + directional_offset_y
 
@@ -294,9 +300,9 @@
 	pixel_x = initial(pixel_x)
 	pixel_y = initial(pixel_y)
 
-/atom/movable/proc/apply_offset(dx, dy)
-	pixel_x += dx
-	pixel_y += dy
+/atom/movable/proc/apply_offset(dir_x, dir_y)
+	pixel_x += dir_x
+	pixel_y += dir_y
 
 /datum/afterimage_state
 	var/mob/living/carbon/xenomorph/owner
@@ -350,12 +356,12 @@
 		return
 
 	if(dist > 1)
-		var/turf/targetTurf = get_step(dancer_user, get_dir(dancer_user, target_carbon))
-		if(targetTurf.density)
-			to_chat(dancer_user, SPAN_WARNING("We can't attack through [targetTurf]!"))
+		var/turf/target_turf = get_step(dancer_user, get_dir(dancer_user, target_carbon))
+		if(target_turf.density)
+			to_chat(dancer_user, SPAN_WARNING("We can't attack through [target_turf]!"))
 			return
 		else
-			for(var/atom/atom_in_turf in targetTurf)
+			for(var/atom/atom_in_turf in target_turf)
 				if(atom_in_turf.density && !atom_in_turf.throwpass && !istype(atom_in_turf, /obj/structure/barricade) && !istype(atom_in_turf, /mob/living))
 					to_chat(dancer_user, SPAN_WARNING("We can't attack through [atom_in_turf]!"))
 					return

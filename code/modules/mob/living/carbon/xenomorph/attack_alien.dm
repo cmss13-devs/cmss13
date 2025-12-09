@@ -221,6 +221,9 @@
 				tackle_min_offset += 2
 				tackle_max_offset += 2
 
+			if(attacking_xeno.behavior_delegate)
+				attacking_xeno.behavior_delegate.melee_tackle_additional_effects_target(src)
+
 			var/knocked_down
 			if(attacking_xeno.attempt_tackle(src, tackle_mult, tackle_min_offset, tackle_max_offset))
 				var/strength = rand(attacking_xeno.tacklestrength_min, attacking_xeno.tacklestrength_max)

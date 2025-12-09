@@ -98,14 +98,12 @@
 	if(istype(inputed_item, /obj/item/storage/box/pillbottles))
 
 		var/obj/item/storage/box/pillbottles/box = inputed_item
-		if(!box)
-			return
 
 		if(length(loaded_pill_bottles) >= max_bottles_count)
 			to_chat(user, SPAN_WARNING("Machine is fully loaded by pill bottles."))
 			return
 
-		if(length(box.contents) == 0)
+		if(length(box.contents) <= 0)
 			to_chat(user, SPAN_WARNING("[box.name] is empty and cannot be unloaded into the [name]."))
 			return
 
@@ -114,17 +112,12 @@
 
 		var/waiting_time = min(length(box.contents), max_bottles_count - length(loaded_pill_bottles)) * box.time_to_empty
 
-		if(waiting_time <= 0) //well, something went wrong
-			return
-
 		if(!do_after(user, waiting_time, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
 			return
 
 		playsound(user.loc, box.use_sound, 25, TRUE, 3)
 
 		for(var/obj/item/storage/pill_bottle/bottle in box.contents)
-			if(!bottle)
-				continue
 			if(length(loaded_pill_bottles) >= max_bottles_count)
 				to_chat(user, SPAN_WARNING("[name] is fully loaded by pill bottles."))
 				return
@@ -134,8 +127,6 @@
 		SStgui.update_uis(src)
 
 /obj/structure/machinery/chem_master/proc/add_pill_bottle(obj/item/storage/pill_bottle/bottle)
-	if(!bottle)
-		return
 
 	loaded_pill_bottles += bottle
 

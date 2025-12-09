@@ -719,7 +719,7 @@
 //Kinda messy proc, but the best solution to prevent shearing of multitile vehicles
 //Alternatives include:
 //1. A ticker that verifies that all multi_tile vics aren't out of wack
-// -Two problems here, intersection of movement and verication would cause issues and this idea is dumb and expensive
+// -Two problems here, intersection of movement and verification would cause issues and this idea is dumb and expensive
 //2. Somewhere in the shuttle_backend, every time you move a multi_tile vic hitbox or root, tell the vic to update when the move completes
 // -Issues here are that this is not atomic at all and vics get left behind unless the entirety of them is on the shuttle/elevator,
 // plus then part of the vic would be in space since elevators leave that behind
@@ -727,7 +727,7 @@
 	for(var/obj/structure/machinery/door/airlock/multi_tile/elevator/E in main_doors)
 		//If there is part of a multitile vic in any of the turfs the door occupies, cancel
 		//An argument can be made for tanks being allowed to block the door, but
-		// that would make this already relatively expensive and inefficent even more so
+		// that would make this already relatively expensive and inefficient even more so
 		// --MadSnailDisease
 		for(var/obj/vehicle/multitile/M in E.loc)
 			if(M)

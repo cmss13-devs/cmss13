@@ -142,7 +142,7 @@
 
 /obj/item/trash/merc_mre
 	name = "\improper crumbled FSR ration"
-	desc = "Who left it in here? Civillians? Hikers? Military collectors? Undercover mercenaries?"
+	desc = "Who left it in here? Civilians? Hikers? Military collectors? Undercover mercenaries?"
 	icon = 'icons/obj/items/storage/mre.dmi'
 	icon_state = "mealpackempty"
 
@@ -158,7 +158,7 @@
 	desc = "An oily empty bag that once held Weyland-Yutani Pepper Chips."
 
 //////////////////////
-///Ciagarette Butts///
+///Cigarette Butts///
 //////////////////////
 
 /obj/item/trash/cigbutt

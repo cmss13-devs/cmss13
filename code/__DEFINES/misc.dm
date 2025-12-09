@@ -247,12 +247,12 @@
 
 //Multiplier for turning points into cash
 #define DEFCON_TO_MONEY_MULTIPLIER 10000
-#define SUPPLY_TO_MONEY_MUPLTIPLIER 100
+#define SUPPLY_TO_MONEY_MULTIPLIER 100
 
 //Force the config directory to be something other than "config"
 #define OVERRIDE_CONFIG_DIRECTORY_PARAMETER "config-directory"
 
-//Gun categories, currently used for firing while dualwielding.
+//Gun categories, currently used for firing while dual wielding.
 #define GUN_CATEGORY_HANDGUN 1
 #define GUN_CATEGORY_SMG 2
 #define GUN_CATEGORY_RIFLE 3

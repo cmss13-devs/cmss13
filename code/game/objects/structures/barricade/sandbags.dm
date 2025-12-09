@@ -3,8 +3,8 @@
 	desc = "A bunch of bags filled with sand, stacked into a small wall. Surprisingly sturdy, albeit labour intensive to set up. Trusted to do the job since 1914."
 	icon_state = "sandbag1"
 	force_level_absorption = 15
-	health = BARRICADE_SANDBAG_TRESHOLD_1
-	maxhealth = BARRICADE_SANDBAG_TRESHOLD_1
+	health = BARRICADE_SANDBAG_THRESHOLD_1
+	maxhealth = BARRICADE_SANDBAG_THRESHOLD_1
 	burn_multiplier = 1.15
 	brute_multiplier = 1
 	stack_type = /obj/item/stack/sandbags
@@ -39,28 +39,28 @@
 
 /obj/structure/barricade/sandbags/update_damage_state()
 	var/changed = FALSE
-	if(health <= BARRICADE_SANDBAG_TRESHOLD_4 && build_stage != BARRICADE_SANDBAG_4)
+	if(health <= BARRICADE_SANDBAG_THRESHOLD_4 && build_stage != BARRICADE_SANDBAG_4)
 		changed = TRUE
 		build_stage = BARRICADE_SANDBAG_4
-		maxhealth = BARRICADE_SANDBAG_TRESHOLD_4
+		maxhealth = BARRICADE_SANDBAG_THRESHOLD_4
 		damage_state = BARRICADE_DMG_NONE
 		stack_amount = 4
-	if(health <= BARRICADE_SANDBAG_TRESHOLD_3 && build_stage != BARRICADE_SANDBAG_3)
+	if(health <= BARRICADE_SANDBAG_THRESHOLD_3 && build_stage != BARRICADE_SANDBAG_3)
 		changed = TRUE
 		build_stage = BARRICADE_SANDBAG_3
-		maxhealth = BARRICADE_SANDBAG_TRESHOLD_3
+		maxhealth = BARRICADE_SANDBAG_THRESHOLD_3
 		damage_state = BARRICADE_DMG_SLIGHT
 		stack_amount = 3
-	if(health <= BARRICADE_SANDBAG_TRESHOLD_2 && build_stage != BARRICADE_SANDBAG_2)
+	if(health <= BARRICADE_SANDBAG_THRESHOLD_2 && build_stage != BARRICADE_SANDBAG_2)
 		changed = TRUE
 		build_stage = BARRICADE_SANDBAG_2
-		maxhealth = BARRICADE_SANDBAG_TRESHOLD_2
+		maxhealth = BARRICADE_SANDBAG_THRESHOLD_2
 		damage_state = BARRICADE_DMG_MODERATE
 		stack_amount = 2
-	if(health <= BARRICADE_SANDBAG_TRESHOLD_1 && build_stage != BARRICADE_SANDBAG_1)
+	if(health <= BARRICADE_SANDBAG_THRESHOLD_1 && build_stage != BARRICADE_SANDBAG_1)
 		changed = TRUE
 		build_stage = BARRICADE_SANDBAG_1
-		maxhealth = BARRICADE_SANDBAG_TRESHOLD_1
+		maxhealth = BARRICADE_SANDBAG_THRESHOLD_1
 		damage_state = BARRICADE_DMG_HEAVY
 		stack_amount = 1
 	if(changed && is_wired)
@@ -117,20 +117,20 @@
 /obj/structure/barricade/sandbags/proc/increment_build_stage()
 	switch(build_stage)
 		if(BARRICADE_SANDBAG_1)
-			health = BARRICADE_SANDBAG_TRESHOLD_2
-			maxhealth = BARRICADE_SANDBAG_TRESHOLD_2
+			health = BARRICADE_SANDBAG_THRESHOLD_2
+			maxhealth = BARRICADE_SANDBAG_THRESHOLD_2
 			stack_amount = 2
 		if(BARRICADE_SANDBAG_2)
-			health = BARRICADE_SANDBAG_TRESHOLD_3
-			maxhealth = BARRICADE_SANDBAG_TRESHOLD_3
+			health = BARRICADE_SANDBAG_THRESHOLD_3
+			maxhealth = BARRICADE_SANDBAG_THRESHOLD_3
 			stack_amount = 3
 		if(BARRICADE_SANDBAG_3)
-			health = BARRICADE_SANDBAG_TRESHOLD_4
-			maxhealth = BARRICADE_SANDBAG_TRESHOLD_4
+			health = BARRICADE_SANDBAG_THRESHOLD_4
+			maxhealth = BARRICADE_SANDBAG_THRESHOLD_4
 			stack_amount = 4
 		if(BARRICADE_SANDBAG_4)
-			health = BARRICADE_SANDBAG_TRESHOLD_5
-			maxhealth = BARRICADE_SANDBAG_TRESHOLD_5
+			health = BARRICADE_SANDBAG_THRESHOLD_5
+			maxhealth = BARRICADE_SANDBAG_THRESHOLD_5
 			stack_amount = 5
 	if(is_wired)
 		maxhealth += 50
@@ -139,8 +139,8 @@
 
 
 /obj/structure/barricade/sandbags/wired/New()
-	health = BARRICADE_SANDBAG_TRESHOLD_5
-	maxhealth = BARRICADE_SANDBAG_TRESHOLD_5
+	health = BARRICADE_SANDBAG_THRESHOLD_5
+	maxhealth = BARRICADE_SANDBAG_THRESHOLD_5
 	maxhealth += 50
 	update_health(-50)
 	stack_amount = 5

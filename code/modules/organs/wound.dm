@@ -173,7 +173,7 @@
 		if(BURN)
 			switch(damage)
 				if(50 to INFINITY)
-					return /datum/wound/burn/carbonised
+					return /datum/wound/burn/carbonized
 				if(40 to 50)
 					return /datum/wound/burn/deep
 				if(30 to 40)
@@ -234,8 +234,8 @@
 	stages = list("ripped deep burn" = 45, "deep burn" = 40, "healing deep burn" = 15,  "large burn scar" = 0)
 	damage_type = BURN
 
-/datum/wound/burn/carbonised
-	stages = list("carbonised area" = 50, "healing carbonised area" = 20, "massive burn scar" = 0)
+/datum/wound/burn/carbonized
+	stages = list("carbonized area" = 50, "healing carbonized area" = 20, "massive burn scar" = 0)
 	damage_type = BURN
 
 /* INTERNAL BLEEDING **/

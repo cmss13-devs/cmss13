@@ -89,5 +89,5 @@
 #define VEND_TOKEN_ENGINEER "Engineer"
 #define VEND_TOKEN_SPEC "Specialist"
 #define VEND_TOKEN_SYNTH "Synthetic"
-/// Token invalid/unrecognised.
+/// Token invalid/unrecognized.
 #define VEND_TOKEN_VOID "Void"

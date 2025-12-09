@@ -150,7 +150,7 @@
 	key = "timewasted"
 	sound = 'sound/voice/joe/time_wasted.ogg'
 	upp_joe_sound = 'sound/voice/joe/upp_joe/zrya_potratil.ogg'
-	say_message = "Hmmm...Time wasted yet again."
+	say_message = "Hmmm... Time wasted yet again."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|UPP_JOE_EMOTE
 

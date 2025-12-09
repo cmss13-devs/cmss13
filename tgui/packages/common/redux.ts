@@ -122,7 +122,7 @@ export const applyMiddleware = (
 
 /**
  * Combines reducers by running them in their own object namespaces as
- * defined in reducersObj paramter.
+ * defined in reducersObj parameter.
  *
  * Main difference from redux/combineReducers is that it preserves keys
  * in the state that are not present in the reducers object. This function
@@ -156,7 +156,7 @@ export const combineReducers = (
  * A utility function to create an action creator for the given action
  * type string. The action creator accepts a single argument, which will
  * be included in the action object as a field called payload. The action
- * creator function will also have its toString() overriden so that it
+ * creator function will also have its toString() overridden so that it
  * returns the action type, allowing it to be used in reducer logic that
  * is looking for that action type.
  *

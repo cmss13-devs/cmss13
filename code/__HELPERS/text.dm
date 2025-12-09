@@ -209,7 +209,7 @@
 	return ""
 
 //Returns a string with reserved characters and spaces after the first and last letters removed
-//Like trim(), but very slightly faster. worth it for niche usecases
+//Like trim(), but very slightly faster. worth it for niche use cases
 /proc/trim_reduced(text)
 	var/starting_coord = 1
 	var/text_len = length(text)
@@ -395,7 +395,7 @@
 #define SMALL_FONTS_COLOR(FONTSIZE, MSG, COLOR) "<span style=\"font-family: 'Small Fonts'; -dm-text-outline: 1 black; font-size: [FONTSIZE]px; color: [COLOR];\">[MSG]</span>"
 
 //finds the first occurrence of one of the characters from needles argument inside haystack
-//it may appear this can be optimised, but it really can't. findtext() is so much faster than anything you can do in byondcode.
+//it may appear this can be optimized, but it really can't. findtext() is so much faster than anything you can do in byondcode.
 //stupid byond :(
 /proc/findchar(haystack, needles, start=1, end=0)
 	var/char = ""

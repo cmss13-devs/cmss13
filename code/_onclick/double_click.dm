@@ -1,4 +1,4 @@
-// Default behavior: ignore double clicks (the second click that makes the doubleclick call already calls for a normal click)
+// Default behavior: ignore double clicks (the second click that makes the double click call already calls for a normal click)
 /mob/proc/DblClickOn(atom/A, params)
 	var/list/modifiers = params2list(params)
 	if(modifiers[SHIFT_CLICK] && modifiers[MIDDLE_CLICK])

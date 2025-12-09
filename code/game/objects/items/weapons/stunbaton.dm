@@ -1,5 +1,5 @@
 /obj/item/weapon/baton
-	name = "stunbaton"
+	name = "stun baton"
 	desc = "A stun baton for incapacitating people with."
 	icon_state = "stunbaton"
 	item_state = "baton"
@@ -132,7 +132,7 @@
 			return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
 
 	else
-		//copied from human_defense.dm - human defence code should really be refactored some time.
+		//copied from human_defense.dm - human defense code should really be refactored some time.
 		if (ishuman(human_target))
 
 			if(!target_zone) //shouldn't ever happen

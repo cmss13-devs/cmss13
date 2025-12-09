@@ -46,7 +46,7 @@ Then reduce `ui_interact` until you finish with something like this:
 Remove all asset code that injects stylesheets by modifying tgui's `basehtml`.
 You no longer need to do that.
 
-Find all occurences of `asset.send(user)` in `ui_interact`, and refactor those
+Find all occurrences of `asset.send(user)` in `ui_interact`, and refactor those
 snippets to the following proc:
 
 ```dm

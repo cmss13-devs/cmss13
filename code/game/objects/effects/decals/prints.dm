@@ -83,7 +83,7 @@
 	return information
 
 /// Toggles between the prints being hidden and shown, including in the context menu
-/obj/effect/decal/prints/proc/set_visiblity(visible = FALSE)
+/obj/effect/decal/prints/proc/set_visibility(visible = FALSE)
 	if(!visible)
 		animate(src, time = 2 SECONDS, alpha = 0)
 		mouse_opacity = MOUSE_OPACITY_TRANSPARENT

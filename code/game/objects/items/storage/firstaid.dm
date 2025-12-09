@@ -517,7 +517,7 @@
 		\nBefore surgery: Verify correct location and patient is adequately numb to pain.\
 		\nStep one: Open an incision at the site with the scalpel.\
 		\nStep two: Clamp bleeders with the hemostat.\
-		\nStep three: Draw back the skin with the retracter.\
+		\nStep three: Draw back the skin with the retractor.\
 		\nStep four: Patch the damaged vein with a surgical line.\
 		\nStep five: Close the incision with a surgical line.\
 		\nTo treat eschar, follow the same procedure as above, but use a scalpel and then SynthGraft or an ointment in step four."
@@ -554,7 +554,7 @@
 		\nBefore surgery: Verify correct location and patient is adequately numb to pain.\
 		\nStep one: Open an incision at the site with the scalpel.\
 		\nStep two: Clamp bleeders with the hemostat.\
-		\nStep three: Draw back the skin with the retracter.\
+		\nStep three: Draw back the skin with the retractor.\
 		\nStep four: Patch the damaged vein with a surgical line.\
 		\nStep five: Close the incision with a surgical line."
 	icon_state = "surgical_case_elite"
@@ -595,7 +595,7 @@
 		\nBefore surgery: Verify correct location and patient is adequately numb to pain.\
 		\nStep one: Open an incision at the site with the scalpel.\
 		\nStep two: Clamp bleeders with the hemostat.\
-		\nStep three: Draw back the skin with the retracter.\
+		\nStep three: Draw back the skin with the retractor.\
 		\nStep four: Patch the damaged vein with a surgical line.\
 		\nStep five: Close the incision with a surgical line."
 	storage_slots = 5
@@ -1076,7 +1076,7 @@
 	for(var/i=1 to max_storage_space)
 		var/pill_to_fill = pick(cool_pills)
 		var/obj/item/reagent_container/pill/P = new pill_to_fill(src)
-		P.identificable = FALSE
+		P.identifiable = FALSE
 
 /obj/item/storage/pill_bottle/mystery/skillless
 	skilllock = SKILL_MEDICAL_DEFAULT

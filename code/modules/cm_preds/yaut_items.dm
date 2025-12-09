@@ -1129,7 +1129,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 		return
 	handle_dissolve(target, user)
 
-///Checks for permission and items dissallowed to be dissolved.
+///Checks for permission and items disallowed to be dissolved.
 /obj/item/tool/yautja_cleaner/proc/can_dissolve(obj/item/target, mob/user)
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		to_chat(user, SPAN_WARNING("You have no idea what this even does."))
@@ -1552,7 +1552,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 
 /obj/item/tool/wirecutters/yautja
 	name = "\improper alien wirecutters"
-	desc = "This cuts wires, also flesh. Made of some razorsharp animal teeth."
+	desc = "This cuts wires, also flesh. Made of some razor sharp animal teeth."
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "wirescutter"
 	item_state = "wirescutter"
@@ -1563,7 +1563,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 
 /obj/item/tool/screwdriver/yautja
 	name = "\improper alien screwdriver"
-	desc = "Some hightech screwing abilities."
+	desc = "Some high tech screwing abilities."
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "screwdriver"
 	item_state = "screwdriver"

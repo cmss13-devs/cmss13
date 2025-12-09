@@ -49,7 +49,7 @@
 	add_filter("shadow_alpha_masking", 4, alpha_mask_filter(render_source = SHADOW_RENDER_TARGET, flags = MASK_INVERSE))
 
 /atom/movable/lighting_mask/Destroy()
-	//Make sure we werent destroyed in init
+	//Make sure we weren't destroyed in init
 	SSlighting.mask_queue -= src
 	//Remove from affecting turfs
 	if(affecting_turfs)
@@ -74,7 +74,7 @@
 	//then recalculate and redraw
 	queue_mask_update()
 
-///if you want the matrix to grow or shrink, you can do that using this proc when applyng it
+///if you want the matrix to grow or shrink, you can do that using this proc when applying it
 /atom/movable/lighting_mask/proc/apply_matrix(matrix/to_apply, transform_time = 0)
 	if(transform_time)
 		animate(src, transform = to_apply, time = transform_time)

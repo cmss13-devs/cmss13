@@ -60,7 +60,7 @@
   - tweak: '''Multiple pills'' in chemmaster now defaults to 16.'
   - tweak: Activating a flare now activates throwmode.
   - tweak: You may now toggle resting while stunned/incapacitated. You will stay on
-      the ground instead of immediatly getting up.
+      the ground instead of immediately getting up.
   - bugfix: Fixed a bug where welding tools would leave you permanently blind.
   - tweak: Buffed/fixed special M44 Revolver ammo. They were previously either broken
       or simply worse than normal ammo.
@@ -81,7 +81,7 @@
   - bugfix: Added DRG-NF & AC3-E Ammunition orders to Requisitions. They can be found
       in the Hardpoint section.
   monkeysfist101:
-  - rscadd: There's now a differece between regular shuttle seats and dropship hotseats.
+  - rscadd: There's now a difference between regular shuttle seats and dropship hotseats.
   - imgageadd: Tweaked original shuttle seats and restored placement.
   - imgadd: Added new adminspawn facepaint.
 2019-04-09:
@@ -184,7 +184,7 @@
       the only attachment it can take.'
   - rscadd: A flare gun holster belt that can hold a flare gun and a whole bunch of
       flares has also been added to the JTAC kit.
-  - tweak: The technician PFC kit now holds a welder pack and a deployable barricade.
+  - tweak: The technician PFC kit now holds a welderpack and a deployable barricade.
   - tweak: Tier 2s and above can now all slash displaced girders.
   - tweak: The M37 no longer needs a scabbard to be holstered.
   - tweak: The surplus uniform vendor now has light/heavy armour.
@@ -411,7 +411,7 @@
   MattAtlas:
   - bugfix: Fixed pipes disappearing.
   Retrokinesis:
-  - bugfix: Added mising floor tiles to the Almayer morgue
+  - bugfix: Added missing floor tiles to the Almayer morgue
   - bugfix: The east lab containment locks on Trijent can now be melted
   - maptweak: Moved the thunderdome so anyone on the predator ship won't hear mysterious
       noises
@@ -443,7 +443,7 @@
       of maximum armor penetration from the backend parent object.
   - rscadd: Added the M-OU53 Break Action shotgun to requisitions. It is found in
       the M-OU53 Sapper Support Kit exclusively. The M-OU53 cannot fire Buckshot shells.
-  - rscadd: 'Added the M-OU53 Sapper Support Kit to requistions. It contains the following:
+  - rscadd: 'Added the M-OU53 Sapper Support Kit to requisitions. It contains the following:
       ''1x M-OU53, 1x M-OU53 stock, 1x M15 Hand Grenade, 2x HSDP Smoke Grenades, 1x
       Explosives Pouch, 1x Shell Rig.'
   - tweak: The Shell Loading Rig (should) be able to hold four extra handfuls of your

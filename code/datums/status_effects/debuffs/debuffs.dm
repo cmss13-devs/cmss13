@@ -1,4 +1,4 @@
-//Largely negative status effects go here, even if they have small benificial effects
+//Largely negative status effects go here, even if they have small beneficial effects
 //STUN EFFECTS
 /datum/status_effect/incapacitating
 	tick_interval = -1

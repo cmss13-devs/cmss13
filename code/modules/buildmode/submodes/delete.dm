@@ -21,7 +21,7 @@
 			qdel(object)
 
 	if(LAZYACCESS(modifiers, RIGHT_CLICK))
-		if(check_rights(R_DEBUG|R_SERVER)) //Prevents buildmoded non-admins from breaking everything.
+		if(check_rights(R_DEBUG|R_SERVER)) //Prevents buildmodded non-admins from breaking everything.
 			if(isturf(object))
 				return
 			var/atom/deleting = object

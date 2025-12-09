@@ -107,7 +107,7 @@
   - bugfix: Admins/mods can now use me in deadchat again. [DonCarrot]
   - bugfix: Deadchat can see predator translated text. [Hylla]
   - tweak: C4 can now only be seen from the side of the wall it was placed on. So
-      it doesnt show up on the other side of the wall.
+      it doesn't show up on the other side of the wall.
   - tweak: C4 now explodes walls/windows/doors in a 3x3 around where it was placed.
       Giving it a little more breach power.
   - bugfix: C4 will now properly delete the whole window if placed on a window, and
@@ -157,7 +157,7 @@
   - maptweak: Removed needless holes and platforms in the Aerodrome.
   - maptweak: Opened up Sorokyne Engineering and added enough generators to power
       the whole map. Backup generators still exist and can be powered.
-  - maptweak: Added some indestructable landmarks to the Sorokyne Deep Jungle, you
+  - maptweak: Added some indestructible landmarks to the Sorokyne Deep Jungle, you
       should be getting lost a bit less.
   - maptweak: Opened up the Personal Storage and Shower block on Sorokyne, it now
       connects to the North Wooden Hospital and Minehead, along with a new entrance
@@ -320,7 +320,7 @@
   - tweak: Increased Quickfire accuracy debuff and scatter debuff.
   - tweak: Xeno maturity rate is now increased in the first 45 minutes and decreases
       gradually.
-  - tweak: Removed the ability to inject phoron into light bulbs and powercells for
+  - tweak: Removed the ability to inject phoron into light bulbs and power cells for
       big explosions.
   Vicacrov:
   - rscadd: Chemistry - You can now label pill bottles inside the Chemmaster 3000.
@@ -355,12 +355,12 @@
       with speed loaders and also can appear in Requisitions Munition vendor during
       highpop.
   - rscadd: Ammo boxes - Clicking big shotgun shell box (100 shells) with box of shotgun
-      shells (25 shells) will start transfering process. [#8555]
+      shells (25 shells) will start transferring process. [#8555]
   - imageadd: Ammo boxes - Added sprites for new ammo boxes.
   - imageadd: Ammo boxes - Added sprite for Type71 ammunition box when worn on back.
   - tweak: Free ASRS crates - Ammunition boxes will appear more often, while magazine
-      boxes will appear less. Aadded M44 Marksman speed loaders crate.
-  - tweak: Cardboard - Added all missing USCM ammo boxes to carboard building menu.
+      boxes will appear less. Added M44 Marksman speed loaders crate.
+  - tweak: Cardboard - Added all missing USCM ammo boxes to cardboard building menu.
       [#8239]
   - rscadd: Cardboard - Activating empty ammo box in hands will unfold it into cardboard
       sheet.
@@ -378,8 +378,8 @@
       shape. Be careful!
   - rscadd: Explosions will now reflect off walls (functionality was already there,
       just only happened in extremely specific circumstances)
-  - tweak: Claymore mines now use non-directional explosions. Sharpnel from the mines
-      remains direcitonal
+  - tweak: Claymore mines now use non-directional explosions. Shrapnel from the mines
+      remains directional
   - bugfix: Fixed parts of large explosions temporarily freezing
   Vampmare:
   - tweak: Queen can now heal extinguished xenos again.

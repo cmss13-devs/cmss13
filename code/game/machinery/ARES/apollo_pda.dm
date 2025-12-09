@@ -49,7 +49,7 @@
 	if(notify_sounds)
 		playsound(src, 'sound/machines/pda_ping.ogg', 25, 0)
 
-/obj/item/device/working_joe_pda/proc/send_notifcation()
+/obj/item/device/working_joe_pda/proc/send_notification()
 	for(var/obj/item/device/working_joe_pda/ticketer as anything in link.ticket_computers)
 		if(ticketer == src)
 			continue
@@ -217,7 +217,7 @@
 					if(priority_report)
 						ares_apollo_talk("Priority Maintenance Report: [maint_type] - ID [maint_ticket.ticket_id]. Seek and resolve.")
 					else
-						send_notifcation()
+						send_notification()
 					log_game("ARES: Maintenance Ticket '\ref[maint_ticket]' created by [key_name(user)] as [last_login] with Category '[maint_type]' and Details of '[details]'.")
 					return TRUE
 			return FALSE
@@ -257,7 +257,7 @@
 			if(ticket.ticket_priority)
 				ares_apollo_talk("Priority [ticket.ticket_type] [ticket.ticket_id] has been cancelled.")
 			else
-				send_notifcation()
+				send_notification()
 			return TRUE
 
 		if("mark_ticket")
@@ -278,7 +278,7 @@
 			if(ticket.ticket_priority)
 				ares_apollo_talk("Priority [ticket.ticket_type] [ticket.ticket_id] has been [choice] by [last_login].")
 			else
-				send_notifcation()
+				send_notification()
 			to_chat(user, SPAN_NOTICE("[ticket.ticket_type] [ticket.ticket_id] marked as [choice]."))
 			return TRUE
 

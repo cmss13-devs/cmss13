@@ -26,7 +26,7 @@
 	else
 		return greet_text
 
-// Return 1 if this holidy should be celebrated today
+// Return 1 if this holiday should be celebrated today
 /datum/holiday/proc/shouldCelebrate(dd, mm, yyyy, ddd)
 	if(always_celebrate)
 		return TRUE

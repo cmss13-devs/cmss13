@@ -329,7 +329,7 @@
 	var/calculate_equasion = time_to_mature / (10 SECONDS + 5 SECONDS) //xeno_cooldown + old_reduce_timer
 	var/calculate_multiplier = calculate_equasion * 5 SECONDS // * old_reduce_timer
 	var/calculate_pre_final = time_to_mature - calculate_multiplier
-	var/calculate_final_cooldown = (calculate_pre_final / 10) * 0.1 //why divided by 10? becouse it don't support SECONDS, it see them as DECISECONDS.
+	var/calculate_final_cooldown = (calculate_pre_final / 10) * 0.1 //why divided by 10? because it don't support SECONDS, it see them as DECISECONDS.
 
 	return calculate_final_cooldown
 

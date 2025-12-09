@@ -102,7 +102,7 @@
   Geevies:
   - rscadd: Cultists now have xenomorph as their default language.
   - bugfix: Cultists now properly get the correct hive faction.
-  - bugfix: Crowbarable item crates now initialize their items correctly.
+  - bugfix: Crowbar-able item crates now initialize their items correctly.
   TeDGamer:
   - bugfix: Flamers should deal non-zero damage to objects appropriately (resin doors,
       barricades, thickbush ).
@@ -133,7 +133,7 @@
   - code_imp: Renamed viewports to External Cameras Terminal and added new sprite
       and description. Functionally identical to viewports, but can be placed on the
       interior wall near wheel without looking weird. Old looking viewpoints are still
-      avaialble for unarmored vehicles.
+      available for unarmored vehicles.
   - imageadd: Added color-coding to APC doors identical to what M56 FPWs have in transport
       APC. RED marks left door, while CYAN marks right door. APC exterior sprites
       also have doors marked. Hopefully, this will help marines to determine which
@@ -146,7 +146,7 @@
   Morrow:
   - rscadd: COs can now add their rank boards to CO Armor.
   SpartanBobby:
-  - rscadd: Added Falling Falcon Challange coins to the USS Almayer.
+  - rscadd: Added Falling Falcon Challenge coins to the USS Almayer.
   - rscadd: Added Wheelchair storage to the medical bay.
   - rscdel: Removed Contraband such as Alcohol from the public spaces of the USS Almayer.
   - bugfix: Fixed the USS Almayer having colony cigarette vendors.
@@ -217,7 +217,7 @@
       hud on spawn, you will no longer get an extra pair of prescription glasses
 2022-07-15:
   BKryth:
-  - balance: Cloaked bell doesnt start cloaked anymore, it slowly becomes invisible
+  - balance: Cloaked bell doesn't start cloaked anymore, it slowly becomes invisible
       when its turned on and instantly visible when turned off
   - balance: Cloaked bell becomes slightly more visible when it rings, more xenos
       around it means more ring and more visible
@@ -329,7 +329,7 @@
       log for staff.
   - balance: Queen can be pushed only from the back now.
   - balance: Acid spray from acid traps and some xenos abilities damages vehicle locomotion
-      (wheels or treads) modules directly. Acid traps are trigggered by vehicles now.
+      (wheels or treads) modules directly. Acid traps are triggered by vehicles now.
       Some locomotion modules can be acid-resistant, which cuts damage received by
       half.
   - balance: T3s overall do more damage to vehicles than before. Queen now also deals
@@ -381,7 +381,7 @@
   - rscadd: me" custom emotes will now appear in above-head chat
 2022-07-26:
   Geevies:
-  - bugfix: Survivors no longer spawn on top of eachother.
+  - bugfix: Survivors no longer spawn on top of each other.
   Jeser:
   - code_imp: Mortar doesn't block flames, acid spray, spits and bullets now.
   - code_imp: Xenos can slash mortar to knock it over.
@@ -413,7 +413,7 @@
       longer give the overwatched xeno the fruit's effects.
   - bugfix: dancer praes can no longer use the impale ability twice in a row, as the
       cooldown on the ability is now applied earlier
-  - bugfix: the CO SG no longer has an autoejector and no longer can switch off full-auto
+  - bugfix: the CO SG no longer has an autoinjector and no longer can switch off full-auto
 2022-07-27:
   Jeser:
   - rscadd: Examining a powerloader clamp will show held object, if there is one.
@@ -424,7 +424,7 @@
       module, ammo and rocket, vehicle module, reagents dispenser, crate, chair stack,
       portable floodlight and large supply crate which also used as default sprite
       for any object outside of aforementioned categories.
-  - rscadd: Powerloaders are able to grab watertanks, beerkegs and empty reagents
+  - rscadd: Powerloaders are able to grab water tanks, beerkegs and empty reagents
       tanks now.
   - rscadd: Big chair stacks can now collapse on grabbing and putting them on floor
       with powerloader clamp.

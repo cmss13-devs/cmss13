@@ -285,7 +285,7 @@
 //Gloves
 /obj/item/clothing/gloves
 	name = "gloves"
-	gender = PLURAL //Carn: for grammarically correct text-parsing
+	gender = PLURAL //Carn: for grammatically correct text-parsing
 	w_class = SIZE_SMALL
 	icon = 'icons/obj/items/clothing/gloves.dmi'
 	item_icons = list(
@@ -313,7 +313,7 @@
 /obj/item/clothing/gloves/emp_act(severity)
 	. = ..()
 	if(cell)
-		//why is this not part of the powercell code?
+		//why is this not part of the power cell code?
 		cell.charge -= 1000 / severity
 		if (cell.charge < 0)
 			cell.charge = 0
@@ -350,7 +350,7 @@
 	set src in usr
 
 	if(!(flags_inventory & ALLOWINTERNALS))
-		to_chat(usr, SPAN_NOTICE("This mask doesnt support internals."))
+		to_chat(usr, SPAN_NOTICE("This mask doesn't support internals."))
 		return
 
 	if(!iscarbon(usr))
@@ -422,7 +422,7 @@
 	name = "shoes"
 	icon = 'icons/obj/items/clothing/shoes.dmi'
 	desc = "Comfortable-looking shoes."
-	gender = PLURAL //Carn: for grammarically correct text-parsing
+	gender = PLURAL //Carn: for grammatically correct text-parsing
 	siemens_coefficient = 0.9
 	flags_armor_protection = BODY_FLAG_FEET
 	flags_bodypart_hidden = BODY_FLAG_FEET

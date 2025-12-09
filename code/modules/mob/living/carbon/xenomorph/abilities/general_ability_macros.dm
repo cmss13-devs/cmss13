@@ -107,7 +107,7 @@
 	var/action_name = "Hide"
 	handle_xeno_macro(src, action_name)
 
-/datum/action/xeno_action/verb/verb_pheremones()
+/datum/action/xeno_action/verb/verb_pheromones()
 	set category = "Alien"
 	set name = "Emit Pheromones"
 	set hidden = TRUE

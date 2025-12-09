@@ -121,7 +121,7 @@ function TextHighlightSetting(props) {
           <Button.Checkbox
             checked={matchWord}
             tooltipPosition="bottom-start"
-            tooltip="If this option is selected, only exact matches (no extra letters before or after) will trigger. Not compatible with punctuation. Overriden if regex is used."
+            tooltip="If this option is selected, only exact matches (no extra letters before or after) will trigger. Not compatible with punctuation. Overridden if regex is used."
             onClick={() =>
               dispatch(
                 updateHighlightSetting({
@@ -209,7 +209,7 @@ const KeywordMenu = (props) => {
               <>
                 <Box color="label">
                   Instances of the following triggers (e.g. $fullName$) in
-                  highlight strings will be replaced with the coresponding
+                  highlight strings will be replaced with the corresponding
                   value, if available.
                 </Box>
                 {/* Tab selection. */}

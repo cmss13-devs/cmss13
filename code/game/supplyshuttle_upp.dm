@@ -22,7 +22,7 @@ GLOBAL_DATUM_INIT(supply_controller_upp, /datum/controller/supply/upp, new())
 /obj/item/paper/manifest/upp
 	name = "UPP Supply Manifest"
 
-/obj/structure/machinery/computer/supply/asrs/upp/attack_hand(mob/user as mob) //does not return when on non alamyer z level
+/obj/structure/machinery/computer/supply/asrs/upp/attack_hand(mob/user as mob) //does not return when on non almayer z level
 	if(!allowed(user))
 		to_chat(user, SPAN_DANGER("Access Denied."))
 		return

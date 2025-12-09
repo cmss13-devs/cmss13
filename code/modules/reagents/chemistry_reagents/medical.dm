@@ -417,7 +417,7 @@
 	properties = list(PROPERTY_CURING = 2)
 
 /datum/reagent/medical/host_stabilizer
-	name = "Xenomorph embryotic secretion"
+	name = "Xenomorph embryonic secretion"
 	id = "host_stabilizer"
 	description = "A strange and unknown concoction of hormones and chemicals that xenomorph embryos secrete as they grow inside hosts to stabilize them."
 	reagent_state = LIQUID

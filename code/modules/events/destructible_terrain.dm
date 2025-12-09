@@ -5,7 +5,7 @@
 		if(!is_ground_level(turf_for_editing.z))
 			//We only want to edit ground turfs!
 			continue
-		//If the initial wall was indestructible, we toggle indestructability
+		//If the initial wall was indestructible, we toggle indestructibility
 		if(initial(turf_for_editing.turf_flags) & TURF_HULL)
 			//Note: wall boundaries are safe since they are /turf/closed/shuttle, so not a subset of /turf/closed/wall!
 			turf_for_editing.turf_flags &= ~TURF_HULL

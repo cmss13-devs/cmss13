@@ -321,7 +321,7 @@
 
 /obj/item/clothing/suit/storage/jacket/marine/service/aso
 	name = "auxiliary support officer jacket"
-	desc = "A comfortable vest for officers who are expected to work long hours staring at rows of numbers and inspecting equipment from knives to torpedos to entire dropships."
+	desc = "A comfortable vest for officers who are expected to work long hours staring at rows of numbers and inspecting equipment from knives to torpedoes to entire dropships."
 	icon_state = "aso_jacket"
 	blood_overlay_type = "coat"
 	flags_armor_protection = BODY_FLAG_CHEST
@@ -333,7 +333,7 @@
 
 /obj/item/clothing/suit/storage/jacket/marine/provost
 	name = "\improper USCM service 'A' officer winter service jacket"
-	desc = "A rarely-seen 'A' service jacket for USCM officers that do want to stay crisp and warm in a snowy warzone, this one coming in black."
+	desc = "A rarely-seen 'A' service jacket for USCM officers that do want to stay crisp and warm in a snowy war zone, this one coming in black."
 	icon_state = "provost_jacket"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
 	item_icons = list(

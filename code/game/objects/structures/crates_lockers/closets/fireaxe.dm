@@ -8,7 +8,7 @@
 	icon_opened = "fireaxe1100"
 	anchored = TRUE
 	density = FALSE
-	var/localopened = 0 //Setting this to keep it from behaviouring like a normal closet and obstructing movement in the map. -Agouri
+	var/localopened = 0 //Setting this to keep it from behaving like a normal closet and obstructing movement in the map. -Agouri
 	opened = 1
 	var/hitstaken = 0
 	var/locked = 1

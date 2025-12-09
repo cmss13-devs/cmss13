@@ -1,4 +1,4 @@
-//------------PILOT OFFICER REQUIPMENT RACK---------------
+//------------PILOT OFFICER EQUIPMENT RACK---------------
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/pilot_officer
 	name = "\improper ColMarTech Dropship Crew Weapons Rack"

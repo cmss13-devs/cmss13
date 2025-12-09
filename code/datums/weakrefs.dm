@@ -20,7 +20,7 @@
 	var/datum/target = resolve()
 	qdel(target)
 	if(!force)
-		return QDEL_HINT_LETMELIVE //Let BYOND autoGC thiswhen nothing is using it anymore.
+		return QDEL_HINT_LETMELIVE //Let BYOND autoGC this when nothing is using it anymore.
 	target?.weak_reference = null
 	return ..()
 

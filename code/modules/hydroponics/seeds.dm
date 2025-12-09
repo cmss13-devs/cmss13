@@ -78,7 +78,7 @@
 
 /obj/item/seeds/poppyseed
 	seed_type = "poppies"
-	name = "pack of poppie seeds"
+	name = "pack of poppy seeds"
 
 /obj/item/seeds/chiliseed
 	seed_type = "chili"
@@ -94,7 +94,7 @@
 
 /obj/item/seeds/greengrapeseed
 	seed_type = "greengrapes"
-	name = "pack of greengrape seeds"
+	name = "pack of green grape seeds"
 
 /obj/item/seeds/peanutseed
 	seed_type = "peanut"
@@ -102,7 +102,7 @@
 
 /obj/item/seeds/cabbageseed
 	seed_type = "cabbage"
-	name = "pack of cabbageseeds"
+	name = "pack of cabbage seeds"
 
 /obj/item/seeds/shandseed
 	seed_type = "shand"
@@ -155,10 +155,6 @@
 /obj/item/seeds/cornseed
 	seed_type = "corn"
 	name = "pack of corn seeds"
-
-/obj/item/seeds/poppyseed
-	seed_type = "poppies"
-	name = "pack of poppie seeds"
 
 /obj/item/seeds/potatoseed
 	seed_type = "potato"

@@ -19,7 +19,7 @@
 	var/translate_apollo = FALSE
 	var/translate_hive = FALSE
 	var/maximum_keys = 3
-	var/list/initial_keys //Typepaths of objects to be created at initialisation.
+	var/list/initial_keys //Typepaths of objects to be created at initialization.
 	var/list/keys //Actual objects.
 	maxf = 1489
 

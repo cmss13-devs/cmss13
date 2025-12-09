@@ -45,7 +45,7 @@
 			continue
 		. += current
 
-//more specialised stuff
+//more specialized stuff
 /proc/sanitize_gender(gender, default = MALE)
 	switch(gender)
 		if(MALE, FEMALE, PLURAL)

@@ -264,7 +264,7 @@
 		to_chat(user, SPAN_WARNING("There's a message on the screen that the data upload finished successfully."))
 		return
 	if(uploading)
-		to_chat(user, SPAN_WARNING("Looks like the terminal is already uploading, better make sure nothing interupts it!"))
+		to_chat(user, SPAN_WARNING("Looks like the terminal is already uploading, better make sure nothing interrupts it!"))
 		return
 
 	return TRUE

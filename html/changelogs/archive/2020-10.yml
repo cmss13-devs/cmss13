@@ -17,7 +17,7 @@
   Carlarc:
   - tweak: Defender fortify is now set to Xeno-Primary-Action-Four, and the HUD button
       was moved to be the last button.
-  - tweak: M44 custom spawns with marskman ammo, since the SEA and RO m44 belts are
+  - tweak: M44 custom spawns with marksman ammo, since the SEA and RO m44 belts are
       full of marksman ammo only, it didn't make sense for it to be loaded with normal
       ammunition.
   - tweak: Moderators+ now bypass timelocks instead of only admin+.
@@ -51,7 +51,7 @@
       Could be useful for extremely focused explosion or to limit friendly fire. Note
       that Mortar and Rocket casings must be toggled on the warhead itself, not the
       full assembly.
-  - bugfix: Transfering a reagent to an Hypospray now displays the correct value.
+  - bugfix: Transferring a reagent to an Hypospray now displays the correct value.
   - bugfix: Anti-parasitic no longer increases the speed at which the larva grows,
       rather than reducing it
   - tweak: Anti-parasitic now reduces base larva growth by an additive 50% per level
@@ -74,7 +74,7 @@
   - rscadd: Added new sprites for predator ship walls
   Firartix:
   - bugfix: spec kits now correctly limit to 2 grenadiers too
-  - bugfix: spec kits doesnt give you skills if you dont choose one anymore
+  - bugfix: spec kits doesn't give you skills if you dont choose one anymore
   Waltermeldron:
   - tweak: Job playtimes have been tweaked. Squad Marine, CL and SEA's fluff ranks
       will now appear at appropriate thresholds.
@@ -160,7 +160,7 @@
   - tweak: Changed xeno to marine roundstart ratio to 1/4.
 2020-10-15:
   Carlarc:
-  - rscadd: SMG has recieved BIG changes!
+  - rscadd: SMG has received BIG changes!
   - tweak: SMG now fires as fast as possible, has increased damage, and doubled bullet
       speed, equal to m41a. In addition, the wield slowdown has been reduced to be
       as slow as worn light armor.
@@ -176,7 +176,7 @@
   - tweak: Setting the AA cannon is now logged for staff.
   - bugfix: Fixed m4ra barrel attachment offset.
   - bugfix: Trapper acid shotgun ability now has standard attack text color instead
-      of the default noncursive black.
+      of the default non cursive black.
   - rscadd: M4A3 Hollowpoint reworked!
   - rscadd: M4A3 HP deals roughly 33% more damage, but is much less effective against
       castes with even light armor. Intended for usage against runners and lurkers.
@@ -320,7 +320,7 @@
   - rscadd: Added UPP Commandos equipment to Antag vendors.
   - tweak: Added UPP Commandos' to the Antag Vendor access list.
   ThePiachu:
-  - rscadd: '"Added Professor DUMMY the Medical Manequin - a training dummy designed
+  - rscadd: '"Added Professor DUMMY the Medical Mannequin - a training dummy designed
       to realistically simulate the human body for medical purposes. Professor DUMMY
       comes with a remote control tablet allowing you to program various forms of
       injuries you can expect to deal with in combat situations. Now new doctors will
@@ -328,7 +328,7 @@
       Currently available under gear preset ''DUMMY''."'
   - tweak: '"Removed some old code around dummy hair species restrictions."'
   TobiNerd:
-  - tweak: You can now make vials from the chemmasters in research as an alternative
+  - tweak: You can now make vials from the chemmaster in research as an alternative
       to bottles.
   - tweak: You can now store bottles and vials directly into a connected smartfridge.
   - tweak: Vials can no longer be made in the autolathe and can no longer be turned
@@ -341,7 +341,7 @@
   alardun:
   - bugfix: The M44 Custom can once again use Speedloaders.
   - bugfix: Equipping a claymore while it's being set no longer prevents the claymore
-      from being properly positionned (#30, Wintermote)
+      from being properly positioned (#30, Wintermote)
   - bugfix: Custom claymore tripwire no longer glitches the mines. Tripwire sensor
       is both no igniter assembly or igniter/igniter assembly.
   - bugfix: It is now possible to defuse a custom Claymore.
@@ -349,7 +349,7 @@
       in the tripwire direction. Fire is still omnidirectional for now.
   - bugfix: Signaler C4 now detonates properly after 3 seconds, rather than defaulting
       to a reagent-less explosion.
-  - bugfix: Knocked out (inconscious) should have a more reliable timer.
+  - bugfix: Knocked out (unconscious) should have a more reliable timer.
   - bugfix: Xenomorph slow duration now applies properly.
   naut:
   - imageadd: Modifies the M4RA magazine sprites to better match the game's style.
@@ -363,7 +363,7 @@
   - tweak: 'Upped xeno to marines roundstart ratio from 1/4 to 1/3. '
   - tweak: The Captain is now the only one with access to the CO office.
   - tweak: Survivor to marines spawn ratio changed to 1/15.
-  - tweak: Buffed stunbaton(2 hits to stun) and taser stamina damage.
+  - tweak: Buffed stun baton (2 hits to stun) and taser stamina damage.
   - tweak: Marine armour now has zero Energy armour. Stamina damage checks for energy
       armour.
   alardun:
@@ -452,7 +452,7 @@
   - tweak: Each comment in a Security Record will now show the user who added it.
   - tweak: Each deletion of a Security Records comment now shows the name and rank
       of the person who deleted it and time of deletion.
-  - tweak: Standarised how Security Records comments are formatted on a HUD, terminals
+  - tweak: Standardized how Security Records comments are formatted on a HUD, terminals
       and printouts.
   - tweak: Added the rank field in the Security Record printout.
   - tweak: Changed the texts for Security Records. Used "Add comments" and "Delete

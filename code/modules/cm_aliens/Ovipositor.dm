@@ -7,7 +7,7 @@
 	unacidable = TRUE
 	var/begin_decay_time = 0
 	health = 50
-	var/decayed = FALSE // This is here so later on we can use the ovpositor molt for research. ~BMC777
+	var/decayed = FALSE // This is here so later on we can use the ovipositor molt for research. ~BMC777
 	var/destroyed = FALSE
 
 /obj/ovipositor/Initialize(mapload, ...)

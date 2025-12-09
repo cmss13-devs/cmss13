@@ -6,7 +6,7 @@
 <br>Currently running: <a href="https://github.com/cmss13-devs/cmss13/">https://github.com/cmss13-devs/cmss13</a>,
 <br>Wiki here: <a href="https://cm-ss13.com/wiki/Main_Page">https://cm-ss13.com/wiki/Main_Page</a>
 <br><br>
-<strong>Isssue Tracker:</strong> <a href="https://github.com/cmss13-devs/cmss13/issues">https://github.com/cmss13-devs/cmss13/issues</a>
+<strong>Issue Tracker:</strong> <a href="https://github.com/cmss13-devs/cmss13/issues">https://github.com/cmss13-devs/cmss13/issues</a>
 <br>
 <br>
-Dont forget to make and set confing/role_whitelist.txt and confing/admins.txt for access to whitelists and other staff ranks, and other settings.
+Don't forget to make and set config/role_whitelist.txt and config/admins.txt for access to whitelists and other staff ranks, and other settings.

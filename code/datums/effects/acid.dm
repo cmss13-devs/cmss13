@@ -110,7 +110,7 @@
 		duration = duration - (duration * (SSweather.weather_event_instance.fire_smothering_strength * 0.1))
 		damage_in_total_human = damage_in_total_human - (damage_in_total_human * (SSweather.weather_event_instance.fire_smothering_strength * 0.1))
 		damage_in_total_obj = damage_in_total_obj - (damage_in_total_obj * (SSweather.weather_event_instance.fire_smothering_strength * 0.1))
-		//ideally this would look like the rain dilutting the acid
+		//ideally this would look like the rain diluting the acid
 		//but since we don't want to check every process if we're in weather etc...
-		//its just a one permenant time stat change
+		//its just a one permanent time stat change
 

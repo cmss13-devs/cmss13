@@ -112,7 +112,7 @@
 	dat += "<p class=\"header-title\">USCM High Command Missive</p>"
 	dat += "<p class=\"header-subtitle\">UAM422</p>"
 	dat += "<hr style=\"margin-top:-15px; margin-bottom:15px;\">"
-	dat += "</div> <!-- /Heasder Info -->"
+	dat += "</div> <!-- /Header Info -->"
 	dat += ""
 	dat += ""
 	dat += "<div class=\"message-body-text\">"

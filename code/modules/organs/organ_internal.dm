@@ -151,7 +151,7 @@
 /datum/internal_organ/lungs/process()
 	. = ..()
 	if(. == PROCESS_KILL)
-		return // Parent implemention qdeleted us
+		return // Parent implementation qdeleted us
 
 	if(owner.chem_effect_flags & CHEM_EFFECT_ORGAN_STASIS)
 		return
@@ -181,7 +181,7 @@
 /datum/internal_organ/liver/process()
 	. = ..()
 	if(. == PROCESS_KILL)
-		return // Parent implemention qdeleted us
+		return // Parent implementation qdeleted us
 
 	if(owner.life_tick % PROCESS_ACCURACY == 0)
 
@@ -241,7 +241,7 @@
 /datum/internal_organ/kidneys/process()
 	. = ..()
 	if(. == PROCESS_KILL)
-		return // Parent implemention qdeleted us
+		return // Parent implementation qdeleted us
 
 	//Deal toxin damage if damaged
 	if(owner.chem_effect_flags & CHEM_EFFECT_ORGAN_STASIS)
@@ -266,7 +266,7 @@
 /datum/internal_organ/brain/process(delta_time)
 	. = ..()
 	if(. == PROCESS_KILL)
-		return // Parent implemention qdeleted us
+		return // Parent implementation qdeleted us
 
 	if(owner.chem_effect_flags & CHEM_EFFECT_ORGAN_STASIS)
 		return
@@ -302,7 +302,7 @@
 /datum/internal_organ/eyes/process() //Eye damage replaces the old eye_stat var.
 	. = ..()
 	if(. == PROCESS_KILL)
-		return // Parent implemention qdeleted us
+		return // Parent implementation qdeleted us
 
 	if(owner.chem_effect_flags & CHEM_EFFECT_ORGAN_STASIS)
 		return

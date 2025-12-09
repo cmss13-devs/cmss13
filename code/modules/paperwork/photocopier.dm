@@ -80,7 +80,7 @@
 				var/j = 0
 				for(var/obj/item/W in bundle)
 					if(toner <= 0)
-						to_chat(usr, SPAN_NOTICE("The photocopier couldn't finish the printjob."))
+						to_chat(usr, SPAN_NOTICE("The photocopier couldn't finish the print job."))
 						break
 					else if(istype(W, /obj/item/paper))
 						W = copy(W)
@@ -266,7 +266,7 @@
 	maxcopies = 30
 	animate_state = "bigscannerpro1"
 
-/// The actual toner cartridge used in photcopiers
+/// The actual toner cartridge used in photocopiers
 /obj/item/device/toner
 	name = "toner cartridge"
 	icon_state = "tonercartridge"

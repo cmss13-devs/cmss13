@@ -93,7 +93,7 @@
   - bugfix: Using lights other than your marine armor light will no longer cause you
       to stop emitting light. Light sources should now work as expected.
   Schalkguy:
-  - tweak: 'Changed tertiary draw hotkey order. Teritary hotkey will now draw from
+  - tweak: 'Changed tertiary draw hotkey order. Tertiary hotkey will now draw from
       shoulder holster before belt. '
   Segrain:
   - rscadd: Improved spawning cookies.
@@ -182,13 +182,13 @@
       other things, such as the hive core or a specific xeno leader.
   Vanagandr:
   - rscadd: Ported a lot of backend procs for colour effects ingame from TG. Added
-      a system for applying these effects screen-wide. These can recolour things,
+      a system for applying these effects screen-wide. These can recolor things,
       saturate or desaturate the screen, inflict terrifying colour distortions etc.
   - rscadd: Added a broken VR headset. Anime is not real. It cannot hurt you. The
       Caramelldansen HUD suffers no such circumscription.
   forest2001:
   - rscadd: Added more UPP ranks, changed a couple of the current ranks to a slightly
-      higher paygrade to accomodate.
+      higher paygrade to accommodate.
   - rscadd: Added UPP command officer skills, for Kolonel+ so they can use their matebas
   - tweak: Master Sergeant changed from ME8 to ME8E, ME8 is now First Sergeant
 2021-09-12:
@@ -212,7 +212,7 @@
       UPP and RESS rep roles.
   - tweak: Marine Commanding Officer headset renamed to Marine Senior Command headset
       as it's in use by the XO and Synthetic and not just the CO.
-  - bugfix: Interstellar Commerce Comission Representative no longer spawns with a
+  - bugfix: Interstellar Commerce Commission Representative no longer spawns with a
       PMC radio, and now spawns with a liaison radio.
   - tweak: In addition to the engineering skill lock, the AA cannon now requires either
       Almayer Engineering access or CIC access to change location.
@@ -407,7 +407,7 @@
   - bugfix: Changing active camera no longer causes issues on the viewing console.
 2021-09-23:
   Frans_Feiffer:
-  - imageadd: Resprites the existing USCM rankboards and pins, updated the onmobs
+  - imageadd: Resprites the existing USCM rank boards and pins, updated the onmobs
       to reflect the changes.
   - imageadd: 'Updates the overlays for when webbing is attached to uniforms. '
   Triiodine:
@@ -422,7 +422,7 @@
   - tweak: Cleaned up a bunch of redundant lines in Freezer.dm
 2021-09-24:
   Firartix:
-  - bugfix: gave CTs their independance back, instead of being internally considered
+  - bugfix: gave CTs their independence back, instead of being internally considered
       OTs. Glory to Cargonia!
   - tweak: CTs will not incorrectly be fenced behind a one hour engineering timelock
       anymore as a result
@@ -470,7 +470,7 @@
   - bugfix: Removing someone else's disco goggles now properly removes the eye overlay
       as well.
   forest2001:
-  - tweak: Mentors are now handled from a seperate file on the server
+  - tweak: Mentors are now handled from a separate file on the server
 2021-09-26:
   Triiodine:
   - bugfix: Stair cut platforms directions now actually match their icon, no more
@@ -485,7 +485,7 @@
   - tweak: The click delay when using reagent containers and assemblies have been
       reduced, meaning you can operate reagent tanks and assemblies faster.
   - tweak: Igniters now start unsecured and ready to be attached.
-  - rscadd: Using a reagent container on a Chem Dispenser, Chem Master, or All-in-One
+  - rscadd: Using a reagent container on a Chem Dispenser, ChemMaster, or All-in-One
       Grinder now swaps the containers if there's one already inserted, instead of
       denying you access.
   - bugfix: Antag vendors now work properly again.

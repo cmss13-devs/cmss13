@@ -78,7 +78,7 @@
   - rscadd: golden Unica, golden Deagle returned as an option for CO council sidearm
       selection
   - rscadd: standard non camo comforting Unica been added to normal CO sidearm selection
-  - imageadd: slightly changed palette of a golden Deagle and sligtly improved inhands
+  - imageadd: slightly changed palette of a golden Deagle and slightly improved inhands
       and inbelt sprites of it
   - code_imp: moves revolver tricks to a core revolver code, revolver tricks are now
       given by a simple var
@@ -87,7 +87,7 @@
   - spellcheck: Most TGUI interfaces will not have a uncapitalized name in the title
       now
   Puckaboo2:
-  - bugfix: Filled Thewi is shiny, again.
+  - bugfix: Filled Thwei is shiny, again.
   - code_imp: Forces Thwei to use a different overlay system than regular autoinjectors.
   - bugfix: Iron is no longer pink.
   jupyterkat:
@@ -126,7 +126,7 @@
   - rscadd: You can only spawn as an event mob once per round, unless an admin overrides
       this.
   - admin: Admins have freedom to setup these landmarks either in a map insert or
-      on-the-fly depending on which type is used. They're fairly customisable and
+      on-the-fly depending on which type is used. They're fairly customizable and
       will allow for overrides of a few features on the preset such as title and paygrade.
   - rscadd: Added categories to Select Equipment.
   - code_imp: Cleaned up backend duplication.
@@ -143,14 +143,14 @@
   - bugfix: fixed character preview hairs always being black
 2025-11-12:
   Puckaboo2:
-  - spellcheck: Renames some chemical properties to sound more scientifi. Balding,
+  - spellcheck: Renames some chemical properties to sound more scientific. Balding,
       Fluffing, Paining, Relaxing, and Sedating have been changed to Atrichogenic,
       Trichogenic, Neuropathic, Antispasmodic, and Hypnotic,  with their codes being
       ATR. TRI, NPT, ASP. And HYP.
 2025-11-13:
   Drathek:
   - bugfix: Fixed various material exploits when deconstructing walls, reinforced
-      floors, computer frames, airlocks, tcoms, closets, fences, tables, windoors,
+      floors, computer frames, airlocks, tcomms, closets, fences, tables, windoors,
       window frames, desk bell, apcs, power monitors, and SMES
   - code_imp: Cleaned up and reworked some logic in various attackby procs that handle
       deconstruction
@@ -161,7 +161,7 @@
   - bugfix: Fixed disabling charging not offering power put aside for charging back
       to the grid
   - bugfix: APCs no longer display charging when main breaker is off
-  - bugfix: Predator ship is now its own powenet
+  - bugfix: Predator ship is now its own powernet
   - bugfix: Power monitor computer now will connect to powernet on construction
   - bugfix: Nightmare inserts that change area now perform Exited and Entered for
       the area

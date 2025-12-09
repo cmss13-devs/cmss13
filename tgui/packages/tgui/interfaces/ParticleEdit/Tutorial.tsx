@@ -170,7 +170,7 @@ const VarExplanation = {
 
   drift: {
     dataunit: 'Vector',
-    desc: 'How much acceleration is added every tick to the particle. This var is re-evalutated every tick. Can use a generator.',
+    desc: 'How much acceleration is added every tick to the particle. This var is re-evaluated every tick. Can use a generator.',
   },
 
   motion: {

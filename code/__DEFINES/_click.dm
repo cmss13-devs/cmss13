@@ -43,7 +43,7 @@
 #define CLICK_CATCHER "click_catcher"
 #define CLICK_CATCHER_ADD_PARAM ";click_catcher=1"
 
-/// From /mob/proc/click_adjacent() : (atom/A, obj/item/W, mods) makes it so the affterattack proc isn't called
+/// From /mob/proc/click_adjacent() : (atom/A, obj/item/W, mods) makes it so the afterattack proc isn't called
 #define ATTACKBY_HINT_NO_AFTERATTACK (1 << 0)
 /// From /mob/proc/click_adjacent() : (atom/A, obj/item/W, mods) applies the click delay to next_move
 #define ATTACKBY_HINT_UPDATE_NEXT_MOVE (1 << 1)

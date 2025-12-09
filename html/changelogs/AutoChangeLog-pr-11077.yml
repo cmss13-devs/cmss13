@@ -1,0 +1,15 @@
+author: "Puckaboo2"
+delete-after: True
+changes:
+  - rscadd: "Gives the laser scalpel variants, FixOVein, and IMS lore."
+  - rscadd: "Gives some surgical tools more descriptions upon attacking."
+  - rscadd: "Adds attacking sounds to surgical tools."
+  - rscadd: "The PICT System is now true to its name; it can finally cauterize incisions. Not well, mind you, but it tries its best!"
+  - balance: "bone setter, PICT, and IMS have a force of 15 and an attack speed of 6."
+  - balance: "bone saw and drill have a force of 25 and an attack speed of 9."
+  - imageadd: "Updated surgical tool sprites; makes IMS glow blue instead of orange when active, and the advanced laser scalpel had its animation tweaked."
+  - imageadd: "Buffed and polished Yautja surgical tools so now they're shiny and have a uniform color palette."
+  - qol: "Updates surgical tools to have accurate and detailed descriptions."
+  - bugfix: "Adds a description to bone setter and adds descriptions to tools that did not have any."
+  - bugfix: "Bone gel visual fill indicators are now more accurate. Centers some inventory sprites."
+  - spellcheck: "Fixes some typos and grammatical errors, removes instances of \\the"

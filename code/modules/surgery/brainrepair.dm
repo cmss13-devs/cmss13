@@ -63,12 +63,9 @@
 		user.affected_message(target,
 			SPAN_NOTICE("You finish extracting fragments of bone that were piercing [target]'s Broca's and Wernicke's area and prevented speech."),
 			SPAN_NOTICE("[user] finishes extracting fragments of bone that were piercing your Broca's and Wernicke's area and prevented speech."),
-			SPAN_NOTICE("[user] finishes extracting fragments of bone that were piercing [target]'s Broca's and Wernicke's area and prevented speech."))
-	if(target.sdisabilities & DISABILITY_DEAF) //o shid, I can hear now?
 		user.affected_message(target,
 			SPAN_NOTICE("You finish extracting fragments of bone that were piercing [target]'s auditory cortex and causing severe tinnitus."),
 			SPAN_NOTICE("[user] finishes extracting fragments of bone that were piercing your auditory cortex and causing severe tinnitus."),
-			SPAN_NOTICE("[user] finishes extracting fragments of that were piercing [target]'s auditory cortex and causing severe tinnitus."))
 	user.affected_message(target,
 		SPAN_NOTICE("You finish extracting sharp pieces of bone that were piercing [target]'s brain."),
 		SPAN_NOTICE("[user] finishes extracting sharp pieces of bone that were piercing your brain."),

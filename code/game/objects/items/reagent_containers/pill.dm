@@ -135,11 +135,15 @@
 	if(!proximity)
 		return
 
-	if(target.is_open_container() != 0 && target.reagents)
+	if(target.is_open_container() && target.reagents)
 		if(!target.reagents.total_volume)
 			to_chat(user, SPAN_DANGER("[target] is empty. Can't dissolve [fluff_text]."))
 			return
-		to_chat(user, SPAN_NOTICE("You dissolve the [fluff_text] in [target]"))
+		var/amount = reagents.total_volume + target.reagents.total_volume
+		var/loss = amount - target.reagents.maximum_volume
+		if(amount > target.reagents.maximum_volume)
+			to_chat(user, SPAN_WARNING("You dissolve [fluff_text], but [target] overflows and takes [loss]u of your pill with it."))
+		to_chat(user, SPAN_NOTICE("You dissolve the [fluff_text] in [target]."))
 
 		var/rgt_list_text = get_reagent_list_text()
 
@@ -148,7 +152,7 @@
 
 		reagents.trans_to(target, reagents.total_volume)
 		for(var/mob/O in viewers(2, user))
-			O.show_message(SPAN_DANGER("[user] puts something in \the [target]."), SHOW_MESSAGE_VISIBLE)
+			O.show_message(SPAN_DANGER("[user] puts something in [target]."), SHOW_MESSAGE_VISIBLE)
 
 		QDEL_IN(src, 5)
 

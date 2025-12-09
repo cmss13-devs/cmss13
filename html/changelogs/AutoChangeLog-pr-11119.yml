@@ -1,0 +1,5 @@
+author: "Nihisohel"
+delete-after: True
+changes:
+  - balance: "Two chefs can now spawn at anytime, regardless of scaling"
+  - code_imp: "Most Job.dm comments are now autodoc'd for convenience"

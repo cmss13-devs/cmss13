@@ -1,0 +1,5 @@
+author: "Cuberound; Zenith"
+delete-after: True
+changes:
+  - rscadd: "U2 flare launcher only for m4ra (scout m4ra can not use it)"
+  - balance: "U2 flare launcher only fits on m4ra, flares from U2 do not ignite mobs, do not have IFF but can be used with scope"

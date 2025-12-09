@@ -275,6 +275,10 @@
 "abj" = (
 /turf/closed/ice/junction,
 /area/ice_colony/exterior/surface/cliff)
+"abk" = (
+/obj/effect/landmark/corpsespawner/security,
+/turf/open/floor/plating,
+/area/ice_colony/underground/maintenance/engineering)
 "abl" = (
 /turf/closed/wall/r_wall/unmeltable,
 /area/ice_colony/surface/requesitions)
@@ -15007,7 +15011,7 @@
 /area/ice_colony/exterior/surface/landing_pad)
 "aZg" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/shuttle_control/dropship1,
+/obj/structure/machinery/computer/shuttle/dropship/flight/lz1,
 /turf/open/floor/plating/icefloor/warnplate/north,
 /area/ice_colony/landing/console)
 "aZh" = (
@@ -15945,7 +15949,7 @@
 /area/ice_colony/underground/engineering)
 "bcv" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/clf/burst,
+/obj/effect/landmark/corpsespawner/miner,
 /turf/open/auto_turf/snow/layer1,
 /area/ice_colony/exterior/surface/valley/northwest)
 "bcw" = (
@@ -17518,6 +17522,14 @@
 	},
 /turf/open/floor/dark2,
 /area/ice_colony/underground/requesition)
+"bil" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/landmark/corpsespawner/security,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/turf/open/floor/plating,
+/area/ice_colony/underground/maintenance/engineering)
 "bim" = (
 /obj/structure/machinery/door_control{
 	id = "req_sec_storage";
@@ -28907,7 +28919,7 @@
 /area/ice_colony/surface/hangar/alpha)
 "jZI" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/shuttle_control/dropship2,
+/obj/structure/machinery/computer/shuttle/dropship/flight/lz2,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/landing/console)
 "kcN" = (
@@ -46738,7 +46750,7 @@ bqP
 bsf
 brt
 byb
-aiE
+abk
 bqP
 aZF
 aZF
@@ -48842,7 +48854,7 @@ bmQ
 ajD
 ajB
 bsf
-brt
+bil
 brv
 bsf
 bqP

@@ -648,6 +648,8 @@
 	maptext_width = 24
 	maptext_x = 4
 	maptext_y = 2
+	//how long to empty a pill bottle into a beaker
+	var/time_to_empty = 3
 
 	var/base_icon = "pill_canister"
 	var/static/list/possible_colors = list(

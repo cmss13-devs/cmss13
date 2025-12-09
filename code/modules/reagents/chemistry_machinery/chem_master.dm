@@ -96,6 +96,7 @@
 		return
 
 	if(istype(inputed_item, /obj/item/storage/box/pillbottles))
+
 		var/obj/item/storage/box/pillbottles/box = inputed_item
 		if(!box)
 			return

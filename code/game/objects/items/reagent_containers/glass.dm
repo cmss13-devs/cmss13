@@ -173,7 +173,8 @@
 			reagents.clear_reagents()
 		return
 
-/obj/item/reagent_container/glass/attackby(obj/item/W, mob/user)
+
+/obj/item/reagent_container/glass/attackby(obj/item/W, obj/item/P, mob/user)
 	if(HAS_TRAIT(W, TRAIT_TOOL_PEN))
 		var/prior_label_text
 		var/datum/component/label/labelcomponent = GetComponent(/datum/component/label)
@@ -201,7 +202,53 @@
 		playsound(src, "paper_writing", 15, TRUE)
 		return
 
+	if(istype(W, /obj/item/storage/pill_bottle))
+		var/obj/item/storage/pill_bottle/X = W
+		var/max_pills_count = 16
+		var/list/pills = list()
+		if(!X)
+			return
+		if(X.bottle_lid)
+			return
+		if(src.has_lid)
+			return
+		user.visible_message(SPAN_NOTICE("[user] starts to empty [X.name] into the [src]..."),
+		SPAN_NOTICE("You start to empty the to empty [X.name] into the [src]..."))
+
+		var/waiting_time = min(length(X.contents), max_pills_count - length(pills)) * 3
+
+		if(waiting_time <= 0) //well, something went wrong
+			return
+		if(!do_after(user, waiting_time, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
+			return
+		for(var/obj/item/storage/pill_bottle/pill in W.contents)
+			var/amount = (pill.reagents.total_volume + src.reagents.total_volume)
+			if(!pill)
+				continue
+			if(X.is_open_container() && src.is_open_container() && src.reagents)
+				if(amount > src.reagents.total_volume)
+					to_chat(user, SPAN_WARNING("[src] is full. You cannot dissolve any more pills."))
+					return FALSE
+			dump_pills(pill)
+			X.forced_item_removal(pill)
 	return ..()
+
+/obj/item/reagent_container/glass/proc/dump_pills(obj/item/reagent_container/pill/pill, mob/user)
+	var/list/pills = list()
+	var/list/pills_to_dump = list()
+	pill.reagents.trans_to(src, reagents.total_volume)
+
+	pills += pill
+
+	if(length(pills) == 1 || length(pills_to_dump) == 0)
+		pills_to_dump += pills
+
+	if(!src.reagents.total_volume)
+		to_chat(user, SPAN_DANGER("[src] is empty. Can't dissolve [pill.name]."))
+		return
+
+	if(!pills)
+		return
 
 /obj/item/reagent_container/glass/beaker
 	name = "beaker"

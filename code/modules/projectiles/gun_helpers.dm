@@ -810,6 +810,7 @@ DEFINES in setup.dm, referenced here.
 
 	else
 		gun_firemode = gun_firemode_list[1]
+		SEND_SIGNAL(src, COMSIG_GUN_FIRE_MODE_TOGGLE, gun_firemode)
 
 /obj/item/weapon/gun/verb/use_toggle_burst()
 	set category = "Weapons"

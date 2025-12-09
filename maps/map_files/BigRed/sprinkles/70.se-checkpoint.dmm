@@ -198,7 +198,7 @@
 /turf/open/floor,
 /area/bigred/ground/security)
 "Lw" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/asphalt/cement/cement9,
 /area/bigredv2/outside/filtration_cave_cas)
@@ -306,7 +306,7 @@
 /turf/open/asphalt/cement,
 /area/bigredv2/outside/filtration_cave_cas)
 "XX" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/asphalt/cement/cement1/north,
 /area/bigredv2/outside/filtration_cave_cas)
 "Ya" = (
@@ -331,7 +331,7 @@
 /turf/open/asphalt/cement,
 /area/bigredv2/outside/filtration_cave_cas)
 "ZK" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/structure/machinery/light{
 	dir = 4
 	},

@@ -143,7 +143,7 @@
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)
 "cR" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "cZ" = (
@@ -453,7 +453,7 @@
 /turf/open/desert/dirt/desert_transition_corner1/north,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "iV" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/plating,
 /area/desert_dam/building/bar/backroom)
 "jf" = (
@@ -1114,7 +1114,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
 	},
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "xm" = (
@@ -1327,7 +1327,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/bar/bar)
 "At" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/building/bar/bar)
 "Aw" = (
@@ -2309,7 +2309,7 @@
 "TH" = (
 /obj/effect/decal/sand_overlay/sand1,
 /obj/item/ammo_casing/bullet,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "TO" = (

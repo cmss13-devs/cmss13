@@ -28,7 +28,7 @@
 /turf/open/floor/dark,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
 "l" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/alien/weeds/node,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/north_east_barrens)
@@ -53,15 +53,15 @@
 /obj/item/stack/sheet/mineral/silver{
 	amount = 20
 	},
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/vault2/west,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
 "q" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/dark,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
 "r" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/north_east_barrens)
 "s" = (
@@ -108,7 +108,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/dark,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
 "I" = (
@@ -144,7 +144,7 @@
 /obj/item/weapon/gun/rifle/mar40{
 	pixel_y = 6
 	},
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/vault2/west,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
 "U" = (

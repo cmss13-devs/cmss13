@@ -52183,7 +52183,7 @@
 /turf/open/gm/dirt/brown/variant_5,
 /area/strata/exterior/parts_storage_cave)
 "tCR" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/floor/plating,
 /area/strata/exterior/landing_zones/lz2)
 "tDw" = (
@@ -53661,10 +53661,6 @@
 	},
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/interior/underground_dorms/med2)
-"vqx" = (
-/obj/effect/landmark/hunter_secondary,
-/turf/open/floor/plating,
-/area/strata/exterior/landing_zones/lz2)
 "vqA" = (
 /obj/structure/platform/metal/strata/west,
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -63925,7 +63921,7 @@ aen
 aen
 eFa
 odB
-vqx
+tCR
 jWs
 jWs
 jWs

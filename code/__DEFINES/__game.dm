@@ -37,6 +37,8 @@
 #define MAP_CHINOOK "Chinook 91 GSO" //admin level
 #define MAP_ROSTOCK "SSV Rostock" //UPP Warship
 
+/// The Hunter Games battle royale mode
+#define GAMEMODE_HUNTER_GAMES "Hunter Games"
 #define GAMEMODE_WHISKEY_OUTPOST "Whiskey Outpost"
 #define GAMEMODE_HIVE_WARS "Hive Wars"
 #define GAMEMODE_FACTION_CLASH_UPP_CM "Faction Clash UPP CM"

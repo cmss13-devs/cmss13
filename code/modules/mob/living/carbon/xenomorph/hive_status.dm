@@ -233,6 +233,8 @@
 	var/castes = castes_available.Join(", ")
 	xeno_message(SPAN_XENOANNOUNCE("The Hive is now strong enough to support: [castes]"))
 	xeno_maptext("The Hive can now support: [castes]", "Hive Strengthening")
+	if(check_hunter_games())
+		return // Stops evo screeches from happening during hunter games, leave evoing on in case of admins etc.
 	evo_screech()
 
 /datum/hive_status/proc/evo_screech()

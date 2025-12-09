@@ -105,7 +105,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/comms1)
 "aQ" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/floor/shiva/multi_tiles/west,
 /area/varadero/interior/hall_N)
 "aR" = (
@@ -458,7 +458,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/cargo)
 "di" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/floor/plating/icefloor,
 /area/varadero/exterior/lz1_near)
 "dz" = (
@@ -578,7 +578,7 @@
 /turf/open/floor/shiva/multi_tiles/west,
 /area/varadero/interior/maintenance/north)
 "eR" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 4
 	},
@@ -824,7 +824,7 @@
 /turf/open/gm/coast/south,
 /area/varadero/exterior/pontoon_beach)
 "gx" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/floor/shiva/green/east,
 /area/varadero/interior/hall_N)
 "gy" = (
@@ -1543,7 +1543,7 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/maintenance/north)
 "mU" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/floor/shiva/multi_tiles/west,
 /area/varadero/interior/cargo)
 "mW" = (
@@ -4384,7 +4384,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/comms1)
 "JZ" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
 "Ka" = (
@@ -4795,7 +4795,7 @@
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/interior/comms1)
 "Nb" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/hall_N)
 "Nk" = (

@@ -4,7 +4,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz1)
 "aZ" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "bk" = (
@@ -122,7 +122,7 @@
 /turf/open/floor/whiteyellow/west,
 /area/lv624/lazarus/main_hall)
 "jL" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor,
 /area/lv624/lazarus/landing_zones/lz1)
 "jX" = (
@@ -170,7 +170,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz1)
 "ll" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/loadingarea/west,
 /area/lv624/lazarus/landing_zones/lz1)
 "lz" = (
@@ -193,7 +193,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz1)
 "nw" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "nI" = (
@@ -226,7 +226,7 @@
 /turf/open/floor,
 /area/lv624/lazarus/landing_zones/lz1)
 "oz" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "oM" = (
@@ -253,7 +253,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "pn" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz1)
 "pO" = (
@@ -295,7 +295,7 @@
 /turf/open/floor/warning/southwest,
 /area/lv624/lazarus/landing_zones/lz1)
 "qK" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "qO" = (
@@ -352,7 +352,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz1)
 "up" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "uz" = (
@@ -379,7 +379,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "uP" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_east_jungle)
 "uY" = (
@@ -543,7 +543,7 @@
 /turf/open/floor/warningcorner/west,
 /area/lv624/lazarus/landing_zones/lz1)
 "CS" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "CT" = (
@@ -701,7 +701,7 @@
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "Ps" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/floor,
 /area/lv624/lazarus/landing_zones/lz1)
 "Pv" = (
@@ -721,7 +721,7 @@
 /turf/open/floor/mech_bay_recharge_floor/shuttle_landing_lights,
 /area/lv624/lazarus/landing_zones/lz1)
 "QA" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 4
 	},
@@ -770,7 +770,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz1)
 "TJ" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/bot/north,
 /area/lv624/lazarus/quartstorage)
 "TT" = (

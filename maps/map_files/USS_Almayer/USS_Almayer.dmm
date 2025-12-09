@@ -40384,7 +40384,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
 "cCL" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 6
 	},
@@ -46073,7 +46073,7 @@
 	pixel_y = 7
 	},
 /obj/item/trash/popcorn,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
 "eTm" = (
@@ -65252,7 +65252,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/upper/u_m_s)
 "mSr" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/almayer,
 /area/almayer/maint/hull/upper/u_f_p)
 "mSs" = (

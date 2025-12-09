@@ -350,7 +350,7 @@
 /area/shiva/interior/colony/research_hab)
 "Ra" = (
 /obj/structure/surface/rack,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/structure/machinery/alarm{
 	dir = 4;
 	pixel_x = -24

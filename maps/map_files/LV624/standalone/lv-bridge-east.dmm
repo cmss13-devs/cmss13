@@ -86,7 +86,7 @@
 /turf/open/floor/plating/warnplate/east,
 /area/lv624/ground/river/central_river)
 "av" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast/north,
 /area/lv624/ground/river/central_river)
@@ -101,7 +101,7 @@
 /turf/open/gm/coast/east,
 /area/lv624/ground/river/central_river)
 "ay" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/gm/river,
 /area/lv624/ground/river/central_river)
 "az" = (
@@ -128,7 +128,7 @@
 /turf/open/gm/coast/south,
 /area/lv624/ground/river/central_river)
 "aF" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/river,
 /area/lv624/ground/river/central_river)
@@ -287,7 +287,7 @@
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/north_jungle)
 "GU" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/plating/asteroidfloor/north,
 /area/lv624/ground/river/central_river)
 "Hi" = (

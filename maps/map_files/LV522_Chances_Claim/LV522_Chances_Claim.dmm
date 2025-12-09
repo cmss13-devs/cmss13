@@ -40081,7 +40081,7 @@
 /turf/open/gm/river,
 /area/lv522/indoors/c_block/mining)
 "uLz" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /obj/structure/machinery/landinglight/ds1{
 	dir = 4
 	},

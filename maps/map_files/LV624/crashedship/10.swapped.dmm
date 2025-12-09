@@ -102,7 +102,7 @@
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship_containers)
 "sq" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/north_east_barrens)
 "sK" = (
@@ -209,7 +209,7 @@
 /turf/open/shuttle/bright_red,
 /area/lv624/lazarus/crashed_ship_containers)
 "KY" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/shuttle/bright_red,
 /area/lv624/lazarus/crashed_ship_containers)
 "My" = (
@@ -223,7 +223,7 @@
 /turf/open/shuttle/bright_red,
 /area/lv624/lazarus/crashed_ship_containers)
 "Pp" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship_containers)
 "Qq" = (
@@ -236,7 +236,7 @@
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/south_east_caves)
 "Sj" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/airless/asteroidfloor/northeast,
 /area/lv624/ground/barrens/north_east_barrens)
 "SS" = (

@@ -62,6 +62,8 @@ em {font-style: normal; font-weight: bold;}
 .bravoradio {color: #C68610;}
 .charlieradio {color: #AA55AA;}
 .deltaradio {color: #007FCF;}
+.kiloradio {color: #059E96;}
+.oscarradio {color: #BDE331;}
 .echoradio {color: #3EB489;}
 .cryoradio {color: #4a4740;}
 .hcradio {color: #318779;}

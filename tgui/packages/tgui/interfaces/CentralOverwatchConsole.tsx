@@ -79,6 +79,7 @@ type Data = {
   time_request: number;
   ob_warhead: string;
   echo_squad_active: Boolean;
+  executive: Boolean;
 };
 
 type Props = Partial<{
@@ -194,33 +195,37 @@ const SecondaryFunctions = (props) => {
             >
               Squad Monitor
             </Tabs.Tab>
-            <Tabs.Tab
-              selected={secondarycategory === 'execpanel'}
-              icon="id-card"
-              onClick={() => setsecondaryCategory('execpanel')}
-              p="3px"
-              bold
-            >
-              Executive Panel
-            </Tabs.Tab>
-            <Tabs.Tab
-              selected={secondarycategory === 'emergencypanel'}
-              icon="exclamation-triangle"
-              onClick={() => setsecondaryCategory('emergencypanel')}
-              p="3px"
-              bold
-            >
-              Emergency Measures
-            </Tabs.Tab>
-            <Tabs.Tab
-              selected={secondarycategory === 'ob'}
-              icon="cog"
-              onClick={() => setsecondaryCategory('ob')}
-              p="3px"
-              bold
-            >
-              Ordnance Systems
-            </Tabs.Tab>
+            {!!data.executive && (
+              <>
+                <Tabs.Tab
+                  selected={secondarycategory === 'execpanel'}
+                  icon="id-card"
+                  onClick={() => setsecondaryCategory('execpanel')}
+                  p="3px"
+                  bold
+                >
+                  Executive Panel
+                </Tabs.Tab>
+                <Tabs.Tab
+                  selected={secondarycategory === 'emergencypanel'}
+                  icon="exclamation-triangle"
+                  onClick={() => setsecondaryCategory('emergencypanel')}
+                  p="3px"
+                  bold
+                >
+                  Emergency Measures
+                </Tabs.Tab>
+                <Tabs.Tab
+                  selected={secondarycategory === 'ob'}
+                  icon="cog"
+                  onClick={() => setsecondaryCategory('ob')}
+                  p="3px"
+                  bold
+                >
+                  Ordnance Systems
+                </Tabs.Tab>
+              </>
+            )}
           </Tabs>
         </Stack.Item>
         <Stack.Item grow>

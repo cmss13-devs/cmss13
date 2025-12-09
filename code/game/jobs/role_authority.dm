@@ -474,6 +474,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 
 	if(new_job.flags_startup_parameters & ROLE_ADD_TO_SQUAD) //Are we a muhreen? Randomize our squad. This should go AFTER IDs. //TODO Robust this later.
 		randomize_squad(new_human)
+
 	if(!late_join)
 		prioritize_specialist(new_human)
 
@@ -556,24 +557,31 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		slot_check = GET_DEFAULT_ROLE(human.job)
 
 	//we make a list of squad that is randomized so alpha isn't always lowest squad.
-	var/list/mixed_squads = list()
+	var/list/usable_squads = list()
 	for(var/datum/squad/squad in squads)
 		if(squad.roundstart && squad.usable && squad.faction == human.faction && squad.name != "Root")
-			mixed_squads += squad
+			usable_squads += squad
 
-	var/preferred_squad = human.client?.prefs?.preferred_squad
-	if(preferred_squad == "None")
-		preferred_squad = null
+	var/has_squad_pref = FALSE
+	var/list/preferred_squads = human.client?.prefs?.preferred_squad
+	if(islist(preferred_squads) && length(preferred_squads))
+		var/list/ordered_squads = list()
+		for(var/squad in preferred_squads)
+			for(var/datum/squad/_squad in usable_squads)
+				if(_squad.name == squad || _squad.equivalent_name == squad)
+					ordered_squads += _squad
+					continue
+		has_squad_pref = TRUE
+		usable_squads = ordered_squads
 
 	var/datum/squad/lowest
-	for(var/datum/squad/squad in mixed_squads)
+	for(var/datum/squad/squad in usable_squads)
 		if(slot_check && !isnull(squad.roles_cap[slot_check]) && !skip_limit)
 			if(squad.roles_in[slot_check] >= squad.roles_cap[slot_check])
 				continue
 
-		if(preferred_squad && (squad.name == preferred_squad || squad.equivalent_name == preferred_squad)) //fav squad or faction equivalent has a spot for us, no more searching needed.
-			if(squad.put_marine_in_squad(human))
-				return
+		if(has_squad_pref && squad.put_marine_in_squad(human))
+			return
 
 		if(!lowest || (slot_check && lowest.roles_in[slot_check] > squad.roles_in[slot_check]))
 			lowest = squad

@@ -310,7 +310,6 @@
 	var/obj/effect/alien/resin/fruit/selected_fruit = null
 	var/list/built_structures = list()
 
-
 	// Designer stuff
 	var/obj/effect/alien/resin/design/selected_design = null
 	var/list/available_design = list()

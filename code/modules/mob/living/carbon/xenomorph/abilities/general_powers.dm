@@ -1147,7 +1147,7 @@
 /datum/action/xeno_action/activable/tail_stab/proc/pre_ability_act(mob/living/carbon/xenomorph/stabbing_xeno, atom/targetted_atom)
 	return
 
-/datum/action/xeno_action/activable/tail_stab/proc/ability_act(mob/living/carbon/xenomorph/stabbing_xeno, mob/living/carbon/target, obj/limb/limb)
+/datum/action/xeno_action/activable/tail_stab/proc/ability_act(mob/living/carbon/xenomorph/stabbing_xeno, mob/living/carbon/target, obj/limb/limb, apply_behavior_delagate = TRUE)
 
 	target.last_damage_data = create_cause_data(initial(stabbing_xeno.caste_type), stabbing_xeno)
 
@@ -1189,7 +1189,7 @@
 
 	var/damage = (stabbing_xeno.melee_damage_upper + stabbing_xeno.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER) * TAILSTAB_MOB_DAMAGE_MULTIPLIER
 
-	if(stabbing_xeno.behavior_delegate)
+	if(stabbing_xeno.behavior_delegate && apply_behavior_delagate)
 		stabbing_xeno.behavior_delegate.melee_attack_additional_effects_target(target)
 		stabbing_xeno.behavior_delegate.melee_attack_additional_effects_self()
 		damage = stabbing_xeno.behavior_delegate.melee_attack_modify_damage(damage, target)

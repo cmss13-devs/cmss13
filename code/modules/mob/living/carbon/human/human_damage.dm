@@ -282,19 +282,24 @@
 		limb.take_damage(brute / amount_of_parts, burn / amount_of_parts, sharp=FALSE, edge=FALSE, used_weapon=used_weapon)
 
 // damage MANY LIMBS, in random order, but consider armor
-/mob/living/carbon/human/proc/take_overall_armored_damage(damage, armour_type = ARMOR_MELEE, damage_type = BRUTE, limb_damage_chance = 80, penetration = 0)
+/mob/living/carbon/human/proc/take_overall_armored_damage(damage, armor_type = ARMOR_MELEE, damage_type = BRUTE, limb_damage_chance = 80, penetration = 0)
 	if(status_flags & GODMODE)
 		return //godmode
 	var/list/obj/limb/parts = get_damageable_limbs(limb_damage_chance)
 	var/amount_of_parts = length(parts)
-	var/armour_config = GLOB.marine_ranged
-	if(armour_type == ARMOR_MELEE)
-		armour_config = GLOB.marine_melee
-	if(armour_type == ARMOR_BOMB)
-		armour_config = GLOB.marine_explosive
+	var/armor_config = GLOB.marine_ranged
+	switch(armor_type)
+		if(ARMOR_MELEE)
+			armor_config = GLOB.marine_melee
+		//if(ARMOR_BULLET, ARMOR_LASER, ARMOR_ENERGY, ARMOR_BIO)
+		//	armor_config = GLOB.marine_ranged
+		if(ARMOR_BOMB)
+			armor_config = GLOB.marine_explosive
+		if(ARMOR_RAD, ARMOR_INTERNALDAMAGE)
+			armor_config = GLOB.marine_organ_damage
 	for(var/obj/limb/L as anything in parts)
-		var/armor = getarmor(L, armour_type)
-		var/modified_damage = armor_damage_reduction(armour_config, damage, armor, penetration, 0, 0)
+		var/armor = getarmor(L, armor_type)
+		var/modified_damage = armor_damage_reduction(armor_config, damage, armor, penetration, 0, 0)
 		if(damage_type == BURN)
 			L.take_damage(burn = modified_damage / amount_of_parts)
 		else
@@ -334,9 +339,9 @@ This function restores all limbs.
 	return (locate(GLOB.limb_types_by_name[zone]) in limbs)
 
 
-/mob/living/carbon/human/apply_armoured_damage(damage = 0, armour_type = ARMOR_MELEE, damage_type = BRUTE, def_zone = null, penetration = 0, armour_break_pr_pen = 0, armour_break_flat = 0)
+/mob/living/carbon/human/apply_armoured_damage(damage = 0, armor_type = ARMOR_MELEE, damage_type = BRUTE, def_zone = null, penetration = 0, armour_break_pr_pen = 0, armour_break_flat = 0)
 	if(damage <= 0)
-		return ..(damage, armour_type, damage_type, def_zone)
+		return ..(damage, armor_type, damage_type, def_zone)
 
 	var/obj/limb/target_limb = null
 	if(def_zone)
@@ -346,13 +351,20 @@ This function restores all limbs.
 	if(isnull(target_limb))
 		return FALSE
 
-	var/armor = getarmor(target_limb, armour_type)
+	var/armor = getarmor(target_limb, armor_type)
 
-	var/armour_config = GLOB.marine_ranged
-	if(armour_type == ARMOR_MELEE)
-		armour_config = GLOB.marine_melee
+	var/armor_config = GLOB.marine_ranged
+	switch(armor_type)
+		if(ARMOR_MELEE)
+			armor_config = GLOB.marine_melee
+		//if(ARMOR_BULLET, ARMOR_LASER, ARMOR_ENERGY, ARMOR_BIO)
+		//	armor_config = GLOB.marine_ranged
+		if(ARMOR_BOMB)
+			armor_config = GLOB.marine_explosive
+		if(ARMOR_RAD, ARMOR_INTERNALDAMAGE)
+			armor_config = GLOB.marine_organ_damage
 
-	var/modified_damage = armor_damage_reduction(armour_config, damage, armor, penetration, 0, 0)
+	var/modified_damage = armor_damage_reduction(armor_config, damage, armor, penetration, 0, 0)
 	apply_damage(modified_damage, damage_type, target_limb)
 
 	return modified_damage

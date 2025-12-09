@@ -89,3 +89,6 @@
   - bugfix: Delimbing now requires to have total limb damage to be maxed out instead
       of all limb damage to be brute. It still requires brute attack for a chance
       to delimb.
+2025-12-09:
+  Git-Nivrak:
+  - bugfix: Fixed an attachment exploit

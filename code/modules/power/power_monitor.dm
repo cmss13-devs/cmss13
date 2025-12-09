@@ -60,7 +60,7 @@
 
 		var/total_demand = 0
 		var/total_actual_usage = 0
-		var/list/status = list("Off","AOff","  On", " AOn")
+		var/list/status = list(" Off"," AOff"," On", " AOn")
 		var/list/charge_status = list("N","C","F")
 
 		for(var/obj/structure/machinery/power/terminal/term in powernet.nodes)

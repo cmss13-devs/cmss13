@@ -17996,7 +17996,7 @@
 	pixel_x = -24
 	},
 /turf/open/floor/darkgreen2/west,
-/area/ice_colony/underground/hallway/north_west)
+/area/ice_colony/underground/hangar)
 "bki" = (
 /turf/open/floor/shiva/green/north,
 /area/ice_colony/underground/hallway/north_west)

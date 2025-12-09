@@ -174,7 +174,7 @@
 		return
 
 
-/obj/item/reagent_container/glass/attackby(obj/item/W, obj/item/P, mob/user)
+/obj/item/reagent_container/glass/attackby(obj/item/W, mob/living/user )
 	if(HAS_TRAIT(W, TRAIT_TOOL_PEN))
 		var/prior_label_text
 		var/datum/component/label/labelcomponent = GetComponent(/datum/component/label)
@@ -208,12 +208,10 @@
 		var/list/pills = list()
 		if(!X)
 			return
-		if(X.bottle_lid)
+		if(!OPENCONTAINER)
 			return
-		if(src.has_lid)
-			return
-		user.visible_message(SPAN_NOTICE("[user] starts to empty [X.name] into the [src]..."),
-		SPAN_NOTICE("You start to empty the to empty [X.name] into the [src]..."))
+		user.visible_message(SPAN_NOTICE("[user] starts to empty [X.name] into [src]..."),
+		SPAN_NOTICE("You start to empty [X.name] into [src]..."))
 
 		var/waiting_time = min(length(X.contents), max_pills_count - length(pills)) * 3
 

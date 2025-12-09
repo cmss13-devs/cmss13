@@ -226,7 +226,7 @@
 			return
 
 		for(var/obj/item/reagent_container/pill/pill in W.contents)
-			var/amount = (pill.reagents.total_volume + src.reagents.total_volume)
+			var/amount = pill.reagents.total_volume + src.reagents.total_volume
 			if(amount > src.reagents.maximum_volume)
 				to_chat(user, SPAN_WARNING("You stop trying to empty [pbottle.name] because [src] cannot contain any more of its pills."))
 				return FALSE

@@ -302,7 +302,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 					xeno_message(SPAN_XENOANNOUNCE("The hive swells with power! You will now steadily gain burrowed larva over time."),2,Q.hivenumber)
 
 					// Notify the yautja too so they stop the hunt
-					message_all_yautja("The serpent Queen has commanded the landing shuttle to depart.")
+					message_all_yautja("The serpent Queen has commanded the landing shuttle to depart.", subfaction = ANNOUNCE_YAUTJA_ALL)
 					playsound(src, 'sound/misc/queen_alarm.ogg')
 
 					Q.count_niche_stat(STATISTICS_NICHE_FLIGHT)

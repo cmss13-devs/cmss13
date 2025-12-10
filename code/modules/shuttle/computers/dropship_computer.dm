@@ -392,7 +392,7 @@
 	addtimer(CALLBACK(hive, TYPE_PROC_REF(/datum/hive_status, override_evilution), original_evilution, FALSE), XENO_HIJACK_EVILUTION_TIME)
 
 	// Notify the yautja too so they stop the hunt
-	message_all_yautja("The serpent Queen has commanded the landing shuttle to depart.")
+	message_all_yautja("The serpent Queen has commanded the landing shuttle to depart.", subfaction = ANNOUNCE_YAUTJA_ALL)
 	playsound(src, 'sound/misc/queen_alarm.ogg')
 
 	if(istype(SSticker.mode, /datum/game_mode/colonialmarines))

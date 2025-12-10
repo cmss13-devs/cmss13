@@ -146,12 +146,18 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 
 #define JOB_MARINE "USCM Marine" //generic marine
 #define JOB_COLONEL "USCM Colonel"
-#define JOB_USCM_OBSV "USCM Observer"
 #define JOB_GENERAL "USCM General"
 #define JOB_ACMC "Assistant Commandant of the Marine Corps"
 #define JOB_CMC "Commandant of the Marine Corps"
 #define JOB_PLT_MED "Platoon Corpsman"
 #define JOB_PLT_SL "Platoon Squad Leader"
+
+/// USCM Observer team / Visiting Officers
+#define JOB_USCM_OBSV "USCM Observer" // Major/LtCol/Col
+#define JOB_USCM_OBSV_JNR "USCM Junior Observer" // Capt
+#define JOB_USCM_HG_SL "USCM Lead Honor Guard"
+#define JOB_USCM_HG "USCM Honor Guard"
+#define JOB_USCM_SEA "USCM Senior Enlisted Advisor"
 
 // Used to add a timelock to a job. Will be passed onto derivatives
 #define AddTimelock(Path, timelockList) \

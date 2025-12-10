@@ -1338,7 +1338,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		var/mob/living/carbon/human/H = mind.original
 		if(istype(H))
 			ref = WEAKREF(H)
-		GLOB.data_core.manifest_modify(name, ref, null, null, "*Deceased*")
+		GLOB.data_core.manifest_modify(name, ref, null, null, "Deceased")
 
 
 /mob/dead/observer/verb/view_kill_feed()

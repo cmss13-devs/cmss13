@@ -170,17 +170,13 @@
 				return FALSE
 
 			if(SSticker.mode.check_xeno_late_join(src))
-				var/mob/new_xeno = SSticker.mode.attempt_to_join_as_xeno(src, FALSE)
+				var/new_xeno = SSticker.mode.attempt_to_join_as_xeno(src, FALSE)
 				if(!new_xeno)
 					lobby_confirmation_message = list(
 						"Are you sure you wish to observe to be a xeno candidate?",
 						"When you observe, you will not be able to join as marine.",
 						"It might also take some time to become a xeno or responder!")
 					execute_on_confirm = CALLBACK(src, PROC_REF(observe_for_xeno))
-
-				else if(!istype(new_xeno, /mob/living/carbon/xenomorph/larva))
-					SSticker.mode.transfer_xeno(src, new_xeno)
-
 				return TRUE
 
 		if("late_join_pred")

@@ -57,6 +57,9 @@
 /datum/config_entry/flag/bones_can_break
 	config_entry_value = TRUE
 
+/datum/config_entry/flag/flesh_can_eschar
+	config_entry_value = TRUE
+
 /datum/config_entry/flag/allow_synthetic_gun_use
 
 /datum/config_entry/flag/remove_gun_restrictions

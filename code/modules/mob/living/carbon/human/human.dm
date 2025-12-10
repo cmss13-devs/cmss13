@@ -210,13 +210,11 @@
 	else
 		return
 
-	var/update = 0
-
 	//Focus half the blast on one organ
 	var/mob/attack_source = last_damage_data?.resolve_mob()
 	var/obj/limb/take_blast = pick(limbs)
 	if(take_blast)
-		update |= take_blast.take_damage(b_loss * 0.5, f_loss * 0.5, used_weapon = "Explosive blast", attack_source = attack_source)
+		take_blast.take_damage(b_loss * 0.5, f_loss * 0.5, used_weapon = "Explosive blast", attack_source = attack_source)
 	pain?.apply_pain(b_loss * 0.5, BRUTE)
 	pain?.apply_pain(f_loss * 0.5, BURN)
 
@@ -248,11 +246,9 @@
 				limb_multiplier = 0.05
 			if("l_arm")
 				limb_multiplier = 0.05
-		update |= temp.take_damage(b_loss * limb_multiplier, f_loss * limb_multiplier, used_weapon = weapon_message, attack_source = attack_source)
+		temp.take_damage(b_loss * limb_multiplier, f_loss * limb_multiplier, used_weapon = weapon_message, attack_source = attack_source)
 		pain.apply_pain(b_loss * limb_multiplier, BRUTE)
 		pain.apply_pain(f_loss * limb_multiplier, BURN)
-	if(update)
-		UpdateDamageIcon()
 	return TRUE
 
 
@@ -650,7 +646,7 @@
 						for(var/datum/data/record/R in GLOB.data_core.general)
 							if(R.fields["id"] == E.fields["id"])
 
-								var/setmedical = tgui_input_list(usr, "Specify a new medical status for this person.", "Medical HUD", R.fields["p_stat"], list("*SSD*", "*Deceased*", "Physically Unfit", "Active", "Disabled", "Cancel"))
+								var/setmedical = tgui_input_list(usr, "Specify a new medical status for this person.", "Medical HUD", R.fields["p_stat"], list("SSD", "Deceased", "Injured", "Inactive", "Active", "Disabled", "Cancel"))
 
 								if(hasHUD(usr,"medical"))
 									if(setmedical != "Cancel")
@@ -1140,6 +1136,13 @@
 	if(tgui_alert(src, "Did it work?", "Confirm", list("Yes", "No"), 10 SECONDS) == "No")
 		for(var/datum/cm_objective/Objective in src.mind.objective_memory.disks)
 			src.mind.objective_memory.disks -= Objective
+
+/mob/living/carbon/human/look_up()
+	if(is_zoomed)
+		to_chat(src, SPAN_WARNING("You cannot look up while zoomed!"))
+		return
+
+	. = ..()
 
 /mob/living/carbon/human/proc/set_species(new_species, default_color)
 	if(!new_species)

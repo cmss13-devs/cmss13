@@ -131,8 +131,7 @@
 				var/mob/living/carbon/human/H = M
 				var/obj/limb/affecting = H.get_limb("head")
 				if(affecting)
-					if(affecting.take_damage(4, 2))
-						H.UpdateDamageIcon()
+					affecting.take_damage(4, 2)
 					if(prob(meltprob))
 						if(H.pain.feels_pain)
 							H.emote("scream")

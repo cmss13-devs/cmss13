@@ -1,0 +1,94 @@
+2025-12-01:
+  Puckaboo2:
+  - bugfix: Certain fill icon states have been modified to look proportionally filled
+      compared to the next step up.
+  - bugfix: Bottle lids aren't so high up on the bottle sprite.
+  - refactor: Beakers (currently only silver) that act as a catalyst for reagents
+      during chemical reactions have their own path instead.
+  - imagedel: Removed unnecessary icon states.
+2025-12-02:
+  Blundir:
+  - rscdel: factional patches are commented out in char prefs, CLF patch is removed
+      (none of this affects marines)
+  Detective-Google:
+  - bugfix: character previews for non-human jobs work again.
+  Drathek:
+  - bugfix: Multi-Z stairs remain usable after an explosion
+  Googles-Hands:
+  - bugfix: The Chem-Goons and Bodyguards now spawn properly.
+  Puckaboo2:
+  - bugfix: Fixes a path in one of the previous PR's update scripts.
+2025-12-03:
+  Comxy:
+  - qol: Medical Physical Status can now be changed to better reflect the status of
+      a marine.
+  Cuberound,  datimesmog, PuckaBoo2:
+  - rscadd: New wound type eschar, similar to broken bone but caused by burn damage
+  - rscadd: surgery for fixing eschar (medic possible)  Scalpel, hemo, retractor,
+      scalpel then burnkit and close
+  - balance: limb with eschar behaves the same as splinted limb
+  - balance: eschar gives 10 pain
+  - balance: burn damage can not remove splints
+  - balance: chemicals stop healing untreated burns (with ointment or kit) on 5 damage
+      on each limb
+  cuberound:
+  - bugfix: king jump works cross z levels
+  - bugfix: king jump no longer tramples marines in path
+  larentoun:
+  - bugfix: Fixed Marine Sorting in Orbit. Now it first sorts by rank, then by name.
+  matttheficus:
+  - rscadd: FTLs now get a free RTO Bag.
+  realforest2001:
+  - rscadd: Added the ability for XOs to award ribbons.
+  - rscadd: Rebranded some medals (legacy kept for tracking purposes).
+  - admin: Added admin ability to award USCM Medal of Honor and WY Corporate Service
+      Medal.
+  - imageadd: Added sprites for half-way medals (bronze-silver, silver-gold etc.).
+  - imageadd: Added sprites for Purple Heart, star medals and WY medals from dimdim.
+  - imageadd: Added onmob sprites for all above.
+  zzzmike:
+  - bugfix: HG MP shows in correct category on manifest, and cryopod item storage
+      supports HG
+2025-12-04:
+  Detective-Google:
+  - bugfix: mp hgs no longer spawnable
+  hry-gh:
+  - server: server operators can now configure a list of CIDs that will not be considered
+      for stickybans
+2025-12-05:
+  NessiePendragon:
+  - rscadd: Changes Twitch subscribers' OOC chat color, and removes their ability
+      to change their own OOC color.
+2025-12-06:
+  kalazus:
+  - refactor: static light system optimization.
+2025-12-07:
+  Detective-Google:
+  - admin: button to manually select the acting commander.
+  Drathek:
+  - rscadd: Added EMP pulse messages to synths
+  - code_imp: Cleaned up explosion logging and empulse code
+  - admin: Explosions from things like SHARP and detrimental EMPs are now entered
+      into a mob's attack logs
+  - admin: FF logs for explosions now can jump to the causing mob rather than where
+      the mob was
+  PGrayCS:
+  - qol: Added 'You hear a click as the phone goes dead' notification when someone
+      hangs up the phone on you
+  Puckaboo2:
+  - bugfix: Using the IMS on the head or chest now applies their open incision overlays.
+  Red-byte3D:
+  - bugfix: Legcuffs switch your intent back to run when your legcuff gets automatically
+      removed
+  cuberound:
+  - balance: allows medkit pouch to hold scalpel, hemostat, and retractor
+  larentoun:
+  - bugfix: Mutated Queen is now not recoloring.
+  - bugfix: Recolored Xenomorph morphed to Mutated Xenomorph will now reset their
+      color to none.
+  - bugfix: Delimbing now requires to have total limb damage to be maxed out instead
+      of all limb damage to be brute. It still requires brute attack for a chance
+      to delimb.
+2025-12-09:
+  Git-Nivrak:
+  - bugfix: Fixed an attachment exploit

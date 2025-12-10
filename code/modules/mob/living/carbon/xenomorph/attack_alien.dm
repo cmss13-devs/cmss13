@@ -8,7 +8,7 @@
  */
 
 // this proc could use refactoring at some point
-/mob/living/carbon/human/attack_alien(mob/living/carbon/xenomorph/attacking_xeno, dam_bonus)
+/mob/living/carbon/human/attack_alien(mob/living/carbon/xenomorph/attacking_xeno, dam_bonus, unblockable = FALSE)
 	if(attacking_xeno.fortify || HAS_TRAIT(attacking_xeno, TRAIT_ABILITY_BURROWED))
 		return XENO_NO_DELAY_ACTION
 
@@ -35,7 +35,7 @@
 			if(attacking_xeno == src || anchored || buckled)
 				return XENO_NO_DELAY_ACTION
 
-			if(check_shields(0, attacking_xeno.name)) // Blocking check
+			if(!unblockable && check_shields(attacking_xeno.name, get_dir(src, attacking_xeno), custom_response = TRUE)) // Blocking check
 				attacking_xeno.visible_message(SPAN_DANGER("[attacking_xeno]'s grab is blocked by [src]'s shield!"),
 				SPAN_DANGER("Our grab was blocked by [src]'s shield!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 				return XENO_ATTACK_ACTION
@@ -88,7 +88,7 @@
 					SPAN_XENONOTICE("We nibble [src], as queen forbade slashing!"))
 					return XENO_ATTACK_ACTION
 
-			if(check_shields(0, attacking_xeno.name)) // Blocking check
+			if(!unblockable && check_shields(attacking_xeno.name, get_dir(src, attacking_xeno), custom_response = TRUE)) // Blocking check
 				attacking_xeno.visible_message(SPAN_DANGER("[attacking_xeno]'s slash is blocked by [src]'s shield!"),
 				SPAN_DANGER("Our slash is blocked by [src]'s shield!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 				return XENO_ATTACK_ACTION
@@ -207,7 +207,7 @@
 				return XENO_NO_DELAY_ACTION
 
 			attacking_xeno.animation_attack_on(src)
-			if(check_shields(0, attacking_xeno.name)) // Blocking check
+			if(!unblockable && check_shields(attacking_xeno.name, get_dir(src, attacking_xeno), custom_response = TRUE)) // Blocking check
 				attacking_xeno.visible_message(SPAN_DANGER("[attacking_xeno]'s tackle is blocked by [src]'s shield!"),
 				SPAN_DANGER("We tackle is blocked by [src]'s shield!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 				return XENO_ATTACK_ACTION
@@ -1086,7 +1086,7 @@
 		set_broken()
 		visible_message(SPAN_DANGER("[src]'s electronics are destroyed!"), null, null, 5)
 	else if(wiresexposed)
-		for(var/wire = 1; wire <= length(get_wire_descriptions()); wire++) // Cut all the wires because xenos don't know any better
+		for(var/wire = 1; wire <= length(GLOB.apc_wire_descriptions); wire++) // Cut all the wires because xenos don't know any better
 			if(!isWireCut(wire)) // Xenos don't need to mend the wires either
 				cut(wire, M, FALSE) // This is XOR so it toggles; FALSE just because we don't want the messages
 		update_icon()

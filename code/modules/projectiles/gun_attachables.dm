@@ -3065,7 +3065,47 @@ Defined in conflicts.dm of the #defines folder.
 		A.update_button_icon()
 	return 1
 
+/obj/item/attachable/attached_gun/flare_launcher
+	name = "U2 flare launcher"
+	desc = "A weapon-mounted reloadable flare launcher."
+	icon_state = "flare"
+	attach_icon = "flare_a"
+	w_class = SIZE_MEDIUM
+	current_rounds = 3
+	max_rounds = 3
+	max_range = 21
+	attachment_action_type = /datum/action/item_action/toggle/flare_launcher
+	slot = "under"
+	fire_sound = 'sound/weapons/gun_flare.ogg'
+	ammo = /datum/ammo/flare/no_ignite
+	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_PROJECTILE|ATTACH_RELOADABLE|ATTACH_WEAPON
 
+/obj/item/attachable/attached_gun/flare_launcher/New()
+	..()
+	attachment_firing_delay = FIRE_DELAY_TIER_4 * 3
+
+/obj/item/attachable/attached_gun/flare_launcher/reload_attachment(obj/item/attacking_item, mob/user)
+	if(istype(attacking_item, /obj/item/device/flashlight/flare))
+		var/obj/item/device/flashlight/flare/attacking_flare = attacking_item
+		if(attacking_flare.on)
+			to_chat(user, SPAN_WARNING("You can't put a lit flare in [src]!"))
+			return
+		if(!attacking_flare.fuel)
+			to_chat(user, SPAN_WARNING("You can't put a burnt out flare in [src]!"))
+			return
+		if(istype(attacking_flare,/obj/item/device/flashlight/flare/signal))
+			to_chat(user, SPAN_WARNING("You can not load signal flare into the launcher."))
+			return
+		if(current_rounds < max_rounds)
+			playsound(user, 'sound/weapons/gun_shotgun_shell_insert.ogg', 25, 1)
+			to_chat(user, SPAN_NOTICE("You load [attacking_flare] into [src]."))
+			current_rounds++
+			qdel(attacking_flare)
+			update_icon()
+		else
+			to_chat(user, SPAN_WARNING("You can not load more flares in."))
+	else
+		to_chat(user, SPAN_WARNING("That's not a flare!"))
 
 //The requirement for an attachable being alt fire is AMMO CAPACITY > 0.
 /obj/item/attachable/attached_gun/grenade
@@ -3352,8 +3392,8 @@ Defined in conflicts.dm of the #defines folder.
 
 		var/datum/reagent/to_remove = fuel_holder.reagents.reagent_list[1]
 
-		var/flamer_chem = "utnapthal"
-		if(!istype(to_remove) || flamer_chem != to_remove.id || length(fuel_holder.reagents.reagent_list) > 1)
+		var/list/flamer_chem = list("utnapthal","fuel")
+		if(!istype(to_remove) ||  !(to_remove.id in flamer_chem) || length(fuel_holder.reagents.reagent_list) > 1)
 			to_chat(user, SPAN_WARNING("You can't mix fuel mixtures!"))
 			return
 

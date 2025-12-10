@@ -1221,3 +1221,13 @@
 
 	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
 	info = replacetext(info, "%%WYLOGO%%", asset.get_url_mappings()["logo_wy.png"])
+
+/obj/item/paper/captain_brief
+	name = "Classified Operations Briefing"
+	desc = "A classified document from USCM high-command about the colony the ship is responding to."
+	icon_state = "paper_uscm_words"
+
+	// important documents should not be turned into hats
+	flags_equip_slot = FALSE
+	flags_armor_protection = FALSE
+

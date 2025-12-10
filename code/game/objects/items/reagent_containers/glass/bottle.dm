@@ -64,7 +64,7 @@
 
 /obj/item/reagent_container/glass/bottle/inaprovaline
 	name = "\improper Inaprovaline bottle"
-	desc = "A small bottle. Contains inaprovaline - used to stabilize critical patients."
+	desc = "A small bottle filled with inaprovaline - used to stabilize critical patients."
 	amount_per_transfer_from_this = 60
 
 /obj/item/reagent_container/glass/bottle/inaprovaline/Initialize()
@@ -74,7 +74,7 @@
 
 /obj/item/reagent_container/glass/bottle/kelotane
 	name = "\improper Kelotane bottle"
-	desc = "A small bottle. Contains kelotane - used to treat burned areas."
+	desc = "A small bottle filled with kelotane - used to treat burned areas."
 	amount_per_transfer_from_this = 60
 
 /obj/item/reagent_container/glass/bottle/kelotane/Initialize()
@@ -84,7 +84,7 @@
 
 /obj/item/reagent_container/glass/bottle/dexalin
 	name = "\improper Dexalin bottle"
-	desc = "A small bottle. Contains dexalin - used to reoxygenate patients."
+	desc = "A small bottle filled with dexalin, a drug used to reoxygenate patients."
 	amount_per_transfer_from_this = 60
 
 /obj/item/reagent_container/glass/bottle/dexalin/Initialize()
@@ -94,7 +94,7 @@
 
 /obj/item/reagent_container/glass/bottle/spaceacillin
 	name = "\improper Spaceacillin bottle"
-	desc = "A small bottle. Contains spaceacillin - used to treat infected wounds."
+	desc = "A small bottle filled with spaceacillin, a common and potent antiviral and antibiotic."
 	amount_per_transfer_from_this = 60
 
 /obj/item/reagent_container/glass/bottle/spaceacillin/Initialize()
@@ -112,7 +112,7 @@
 
 /obj/item/reagent_container/glass/bottle/cyanide
 	name = "cyanide bottle"
-	desc = "A small bottle of cyanide. Bitter almonds?"
+	desc = "A small bottle of cyanide. It smells like bitter almonds. Seriously, do not drink this."
 
 /obj/item/reagent_container/glass/bottle/cyanide/Initialize()
 	. = ..()
@@ -121,7 +121,7 @@
 
 /obj/item/reagent_container/glass/bottle/stoxin
 	name = "Soporific bottle"
-	desc = "A small bottle of soporific. Just the fumes make you sleepy."
+	desc = "A small bottle filled with soporific, otherwise known as 'sleep toxin'. Sniffing its fumes make you sleepy."
 	amount_per_transfer_from_this = 60
 
 /obj/item/reagent_container/glass/bottle/stoxin/Initialize()
@@ -130,8 +130,8 @@
 	update_icon()
 
 /obj/item/reagent_container/glass/bottle/chloralhydrate
-	name = "chloral hydrate bottle"
-	desc = "A small bottle of Choral Hydrate. Mickey's Favorite!"
+	name = "Chloral Hydrate bottle"
+	desc = "A small bottle of Chloral Hydrate, a potent, last-ditch hypnotic drug used to sedate patients when Oxycodone and anesthetic tanks are not available and soporific won't do the job."
 
 /obj/item/reagent_container/glass/bottle/chloralhydrate/Initialize()
 	. = ..()
@@ -140,7 +140,7 @@
 
 /obj/item/reagent_container/glass/bottle/antitoxin
 	name = "\improper Dylovene bottle"
-	desc = "A small bottle of dylovene. Counters poisons and repairs toxin damage. A wonder drug."
+	desc = "A small bottle of dylovene, known for removing toxins from the body. A wonder drug."
 	amount_per_transfer_from_this = 60
 
 /obj/item/reagent_container/glass/bottle/antitoxin/Initialize()
@@ -159,7 +159,7 @@
 
 /obj/item/reagent_container/glass/bottle/ammonia
 	name = "ammonia bottle"
-	desc = "A small bottle."
+	desc = "A small bottle of ammonia."
 
 /obj/item/reagent_container/glass/bottle/ammonia/Initialize()
 	. = ..()
@@ -168,7 +168,7 @@
 
 /obj/item/reagent_container/glass/bottle/diethylamine
 	name = "diethylamine bottle"
-	desc = "A small bottle. Contains a potent fertiliser."
+	desc = "A small bottle of diethylamine, a potent fertilizer."
 
 /obj/item/reagent_container/glass/bottle/diethylamine/Initialize()
 	. = ..()
@@ -353,7 +353,7 @@
 
 /obj/item/reagent_container/glass/bottle/bicaridine
 	name = "\improper Bicaridine bottle"
-	desc = "A small bottle. Contains Bicaridine - Used to treat brute damage."
+	desc = "A small bottle filled with Bicaridine - used to treat brute damage."
 	amount_per_transfer_from_this = 60
 
 /obj/item/reagent_container/glass/bottle/bicaridine/Initialize()
@@ -363,7 +363,7 @@
 
 /obj/item/reagent_container/glass/bottle/peridaxon
 	name = "\improper Peridaxon bottle"
-	desc = "A small bottle. Contains Peridaxon - Used by lazy doctors to temporarily halt the effects of internal organ damage."
+	desc = "A small bottle filled with Peridaxon, used by doctors temporarily halt the effects of internal organ damage during transportation to surgery."
 	volume = 60
 	amount_per_transfer_from_this = 60
 
@@ -374,7 +374,7 @@
 
 /obj/item/reagent_container/glass/bottle/tramadol
 	name = "\improper Tramadol bottle"
-	desc = "A small bottle. Contains Tramadol - Used as a basic painkiller."
+	desc = "A small bottle filled with Tramadol - used as a basic painkiller."
 	volume = 60
 	amount_per_transfer_from_this = 60
 
@@ -385,7 +385,7 @@
 
 /obj/item/reagent_container/glass/bottle/oxycodone
 	name = "\improper Oxycodone bottle"
-	desc = "A small bottle. Contains Oxycodone - Used as an Extreme Painkiller. ILLEGAL TO DISTRIBUTE."
+	desc = "A small bottle filled with Oxycodone - used as an extreme painkiller and for anesthesia when anesthetic tanks are not available."
 	volume = 60
 	amount_per_transfer_from_this = 60
 
@@ -396,7 +396,7 @@
 
 /obj/item/reagent_container/glass/bottle/tricordrazine
 	name = "\improper Tricordrazine bottle"
-	desc = "A small bottle. Contains tricordrazine - A weak but catch-all medicine for treating all sorts of damage."
+	desc = "A small bottle filled with tricordrazine - a weak but catch-all medicine for treating all sorts of damage."
 	volume = 60
 
 /obj/item/reagent_container/glass/bottle/tricordrazine/Initialize()
@@ -406,7 +406,7 @@
 
 /obj/item/reagent_container/glass/bottle/epinephrine
 	name = "\improper Epinephrine bottle"
-	desc = "A small bottle. Contains epinephrine - Used to increase a patients arterial blood pressure, amongst other actions, to assist in cardiopulmonary resuscitation." //"I can't lie to you about your odds of a successful resuscitation, but you have my sympathies"
+	desc = "A small bottle filled with Epinephrine. Also known as adrenaline, it is used to increase a patients arterial blood pressure, amongst other actions, to assist in cardiopulmonary resuscitation." //"I can't lie to you about your odds of a successful resuscitation, but you have my sympathies"
 	volume = 60
 
 /obj/item/reagent_container/glass/bottle/epinephrine/Initialize()

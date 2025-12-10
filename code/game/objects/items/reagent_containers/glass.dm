@@ -68,10 +68,10 @@
 		return
 	if(splashable)
 		if(is_open_container())
-			to_chat(usr, SPAN_NOTICE("You put the lid on \the [src]."))
+			to_chat(usr, SPAN_NOTICE("You put the lid on [src]."))
 			flags_atom ^= OPENCONTAINER
 		else
-			to_chat(usr, SPAN_NOTICE("You take the lid off \the [src]."))
+			to_chat(usr, SPAN_NOTICE("You take the lid off [src]."))
 			flags_atom |= OPENCONTAINER
 		update_icon()
 
@@ -698,7 +698,7 @@
 
 /obj/item/reagent_container/glass/bucket/attackby(obj/item/I, mob/user)
 	if(isprox(I))
-		to_chat(user, "You add \the [I] to \the [src].")
+		to_chat(user, "You add [I] to [src].")
 		qdel(I)
 		user.put_in_hands(new /obj/item/frame/bucket_sensor)
 		user.drop_inv_item_on_ground(src)
@@ -710,7 +710,7 @@
 		else
 			reagents.trans_to(mop, mop.max_reagent_volume)
 			mop.update_icon()
-			to_chat(user, SPAN_NOTICE("You wet \the [mop] in \the [src]."))
+			to_chat(user, SPAN_NOTICE("You wet [mop] in [src]."))
 			playsound(loc, 'sound/effects/slosh.ogg', 25, 1)
 		return
 	else
@@ -791,7 +791,7 @@
 
 /obj/item/reagent_container/glass/rag/attack(atom/target, mob/user)
 	if(ismob(target) && target.reagents && reagents.total_volume)
-		user.visible_message(SPAN_DANGER("\The [target] has been smothered with \the [src] by \the [user]!"), SPAN_DANGER("You smother \the [target] with \the [src]!"), "You hear some struggling and muffled cries of surprise")
+		user.visible_message(SPAN_DANGER("\The [target] has been smothered with [src] by [user]!"), SPAN_DANGER("You smother [target] with [src]!"), "You hear some struggling and muffled cries of surprise")
 		src.reagents.reaction(target, TOUCH)
 		spawn(5) src.reagents.clear_reagents()
 		return

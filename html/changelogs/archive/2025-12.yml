@@ -92,3 +92,70 @@
 2025-12-09:
   Git-Nivrak:
   - bugfix: Fixed an attachment exploit
+2025-12-10:
+  Cuberound; Zenith:
+  - rscadd: U2 flare launcher only for m4ra (scout m4ra can not use it)
+  - balance: U2 flare launcher only fits on m4ra, flares from U2 do not ignite mobs,
+      do not have IFF but can be used with scope
+  DangerRevolution:
+  - balance: The PDT Tracker's (BattleBuddy Kit) uses has been raised from 8 uses
+      to 14.
+  Drathek:
+  - qol: Xenos get a warning in chat (and evolve sfx) when they are inactive and soon
+      to be eligible to be taken over by ghosts
+  - bugfix: Facehuggers/Lessers are no longer listed as inactive xenos to take over
+      because it didn't work anymore anyways
+  - code_imp: Cleaned up some ctrl+click behavior namely with xeno takeover and repossessing
+      corpse is now a tgui_alert
+  Drathek, ori:
+  - rscadd: added a new hive type used in the hunting grounds
+  - balance: you can no longer evolve to drone or drone evolutions in the hunting
+      grounds
+  Harrysno, Spypig23:
+  - rscadd: CO roundstart lore-faxes
+  Nihisohel:
+  - bugfix: Facehuggers no longer has a diet of ray bans and cigarettes, they will
+      no longer eat your glasses or cigarettes on your face slot
+  - balance: Two chefs can now spawn at anytime, regardless of scaling
+  - code_imp: Most Job.dm comments are now autodoc'd for convenience
+  Puckaboo2:
+  - rscadd: Gives the laser scalpel variants, FixOVein, and IMS lore.
+  - rscadd: Gives some surgical tools more descriptions upon attacking.
+  - rscadd: Adds attacking sounds to surgical tools.
+  - rscadd: The PICT System is now true to its name; it can finally cauterize incisions.
+      Not well, mind you, but it tries its best!
+  - balance: bone setter, PICT, and IMS have a force of 15 and an attack speed of
+      6.
+  - balance: bone saw and drill have a force of 25 and an attack speed of 9.
+  - imageadd: Updated surgical tool sprites; makes IMS glow blue instead of orange
+      when active, and the advanced laser scalpel had its animation tweaked.
+  - imageadd: Buffed and polished Yautja surgical tools so now they're shiny and have
+      a uniform color palette.
+  - qol: Updates surgical tools to have accurate and detailed descriptions.
+  - bugfix: Adds a description to bone setter and adds descriptions to tools that
+      did not have any.
+  - bugfix: Bone gel visual fill indicators are now more accurate. Centers some inventory
+      sprites.
+  - spellcheck: Fixes some typos and grammatical errors, removes instances of \the
+  - rscadd: Adds black surgical vests to the game. No, really, they DIDN'T exist.
+      I'm not sure why.
+  - mapadd: Adds chemistry books to the chem lab, receptionist desk, and break room.
+  - mapadd: Adds a black surgical vest to Field Doctor's room.
+  - mapadd: Adds medical, surgery, and chemistry books to Field Doctor's locker.
+  - mapadd: Added an extra large beaker to the chemistry supplies locker, as a treat.
+  - mapadd: Adds surgical beds to medbay storage.
+  - imageadd: Re-sprited the medical, chemistry, and surgery books.
+  cuberound, blundir, datimesmog, fridge, zenith:
+  - rscadd: New t3 xeno Despoiler evolves from spitter
+  - rscadd: New third stage of lingering acid on humans, extends duration to 80 seconds
+      (first teir is 20 second 40) and reduces mob BIO and BRUTE armor by 15
+  - rscadd: Despoiler spit, 5 sec cooldown 35 damage applies acid effect and can upgrade
+      it to level 2, splatters t1 lingering acid on adjacent mobs
+  - rscadd: Decomposing enzymes, activate gas around Despoiler, 18 second total cooldown,
+      lasts for 6 seconds upgrades lingering acid to level 2 and drains chemicals
+  - rscadd: Despoiler empowered slashes, apply lingering effect and can upgrade it
+      up to stage 3
+  - rscadd: Despoiler finishing tailstab with 2 second windup, deals 15 extra burn
+      damage per level of lingering acid on target with 10 extra ap per level
+  - balance: Despoiler slash gives t1 lingering acid
+  - balance: Xeno acid blood hits mob that they are standing on

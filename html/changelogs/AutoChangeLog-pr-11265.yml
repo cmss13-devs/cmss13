@@ -1,5 +1,0 @@
-author: "Drathek, ori"
-delete-after: True
-changes:
-  - rscadd: "added a new hive type used in the hunting grounds"
-  - balance: "you can no longer evolve to drone or drone evolutions in the hunting grounds"

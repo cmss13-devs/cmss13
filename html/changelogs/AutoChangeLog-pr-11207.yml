@@ -1,6 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - qol: "Xenos get a warning in chat (and evolve sfx) when they are inactive and soon to be eligible to be taken over by ghosts"
-  - bugfix: "Facehuggers/Lessers are no longer listed as inactive xenos to take over because it didn't work anymore anyways"
-  - code_imp: "Cleaned up some ctrl+click behavior namely with xeno takeover and repossessing corpse is now a tgui_alert"

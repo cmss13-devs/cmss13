@@ -83,6 +83,8 @@ There are several things that need to be remembered:
 	overlays += images
 
 /mob/living/carbon/human/remove_overlay(cache_index)
+	if(cache_index > length(overlays_standing))
+		return
 	if(overlays_standing[cache_index])
 		var/image/I = overlays_standing[cache_index]
 		SEND_SIGNAL(src, COMSIG_HUMAN_OVERLAY_REMOVED, cache_index, I)

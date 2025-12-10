@@ -17,7 +17,7 @@
 
 	caste_desc = "Ptui!"
 	spit_types = list(/datum/ammo/xeno/acid, /datum/ammo/xeno/acid/spatter)
-	evolves_to = list(XENO_CASTE_PRAETORIAN, XENO_CASTE_BOILER)
+	evolves_to = list(XENO_CASTE_PRAETORIAN, XENO_CASTE_BOILER, XENO_CASTE_DESPOILER)
 	deevolves_to = list(XENO_CASTE_SENTINEL)
 	acid_level = 2
 

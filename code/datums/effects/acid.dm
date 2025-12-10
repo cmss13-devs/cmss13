@@ -33,13 +33,11 @@
 		var/obj/target_object = target_atom
 		if(istype(target_object, /obj/structure/barricade))
 			var/obj/structure/barricade/target_barricade = target_object
-			acid_multiplier = target_barricade.burn_multiplier
+			obj_dmg_multiplier = target_barricade.burn_multiplier
 		if(istype(target_object, /obj/structure/barricade/handrail))
 			var/obj/structure/barricade/handrail/target_handrail = target_object
 			target_handrail.on_acid = TRUE
 		target_object.update_icon()
-
-	original_duration = duration
 
 	handle_weather()
 

@@ -88,7 +88,7 @@
 					SPAN_XENONOTICE("We nibble [src], as queen forbade slashing!"))
 					return XENO_ATTACK_ACTION
 
-			if(check_shields(0, attacking_xeno.name, attacking_xeno.dir)) // Blocking check
+			if(!unblockable && check_shields(attacking_xeno.name, get_dir(src, attacking_xeno), custom_response = TRUE)) // Blocking check
 				attacking_xeno.visible_message(SPAN_DANGER("[attacking_xeno]'s slash is blocked by [src]'s shield!"),
 				SPAN_DANGER("Our slash is blocked by [src]'s shield!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 				return XENO_ATTACK_ACTION

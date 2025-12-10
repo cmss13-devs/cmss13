@@ -57,8 +57,6 @@
 		new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja(new_human), WEAR_L_EAR)
 
 
-
-
 /datum/equipment_preset/yautja/load_name(mob/living/carbon/human/new_human, randomise)
 	var/final_name = capitalize(pick(GLOB.pred_names)) + " " + capitalize(pick(GLOB.pred_last_names))
 	new_human.gender = pick_weight(list(MALE = 80, FEMALE = 20))// Female Hunters are rare

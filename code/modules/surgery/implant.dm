@@ -138,8 +138,10 @@
 	log_interact(user, target, "[key_name(user)] put [tool] inside [key_name(target)]'s [surgery.affected_limb.cavity].")
 
 	if(tool.w_class >= SIZE_SMALL)
-		to_chat(user, SPAN_WARNING("You tear some blood vessels trying to fit such a bulky object in [target]'s [surgery.affected_limb.cavity]."))
-		log_interact(user, target, "[key_name(user)] damages some blood vessels while putting [tool] inside [key_name(target)]'s [surgery.affected_limb.cavity], causing internal bleeding!")
+		user.affected_message(target,
+			SPAN_NOTICE("You tear some blood vessels trying to fit such a bulky object in [target]'s [surgery.affected_limb.cavity]."),
+			SPAN_NOTICE("[user] tears some blood vessels trying to fit such a bulky object in your [surgery.affected_limb.cavity]."),
+			SPAN_NOTICE("[user] tears some blood vessels trying to fit such a bulky object in [target]'s [surgery.affected_limb.cavity]."))
 
 		if(target.stat == CONSCIOUS)
 			target.emote("pain")

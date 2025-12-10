@@ -190,7 +190,7 @@
 		user.affected_message(target,
 			SPAN_WARNING("Your hand slips, cutting into the wrong part of [target]'s [surgery.affected_limb.display_name], shattering it! It's broken, now!"),
 			SPAN_WARNING("[user]'s hand slips, cutting into the wrong part of your [surgery.affected_limb.display_name], shattering it! It's broken, now!"),
-			SPAN_WARNING("[user]'s hand slips, cutting into the wrong part of [target]'s [surgery.affected_limb.display_name], shattering it! It's broken, now!"))
+			SPAN_WARNING("[user]'s hand slips, cutting into the wrong part of [target]'s [surgery.affected_limb.display_name]! It sounds like the bone broke!"))
 
 		to_chat(target, SPAN_HIGHDANGER("This is a rare and final opportunity to tell [user] to stitch you back up!"))
 		surgery.affected_limb.fracture(100)
@@ -281,7 +281,7 @@
 	user.affected_message(target,
 		SPAN_NOTICE("You finish repairing the [vasculature_type] in [target]'s [surgery.affected_limb.parent.display_name]'s stump, stopping any bleeding."),
 		SPAN_NOTICE("[user] finishes repairing the [vasculature_type] in your [surgery.affected_limb.parent.display_name]'s stump, stopping any bleeding."),
-		SPAN_NOTICE("[user] finishes repairing the [vasculature_type] in [target]'s [surgery.affected_limb.parent.display_name]'s stump, stopping any bleeding."))
+		SPAN_NOTICE("[user] finishes repairing the [vasculature_type] in [target]'s [surgery.affected_limb.parent.display_name]'s stump."))
 
 	surgery.affected_limb.remove_all_bleeding()
 	log_interact(user, target, "[key_name(user)] mended torn [vasculature_type] in the stump of [key_name(target)]'s [surgery.affected_limb.display_name] with [tool].")

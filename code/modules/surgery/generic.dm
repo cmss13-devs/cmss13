@@ -199,7 +199,7 @@
 	user.affected_message(target,
 		SPAN_WARNING("Your hand slips, tearing blood vessels in [target]'s [surgery.affected_limb.display_name] and causing internal bleeding!"),
 		SPAN_WARNING("[user]'s hand slips, tearing blood vessels in your [surgery.affected_limb.display_name] and causing internal bleeding!"),
-		SPAN_WARNING("[user]'s hand slips, tearing blood vessels in [target]'s [surgery.affected_limb.display_name] and causing internal bleeding!"))
+		SPAN_WARNING("[user]'s hand slips, tearing blood vessels in [target]'s [surgery.affected_limb.display_name]!"))
 
 	if(target.stat == CONSCIOUS)
 		target.emote("pain")
@@ -470,7 +470,7 @@
 		user.affected_message(target,
 			SPAN_WARNING("You shatter [target]'s [surgery.affected_limb.encased]! It's broken, now! Fix it!"),
 			SPAN_WARNING("[user] shatters your [surgery.affected_limb.encased]! It's broken, now!"),
-			SPAN_WARNING("[user] shatters [target]'s [surgery.affected_limb.encased]! It's broken, now!"))
+			SPAN_WARNING("[user] shatters [target]'s [surgery.affected_limb.encased]! It sounds like the bone broke!"))
 
 		if(target.stat == CONSCIOUS)
 			target.emote("pain")
@@ -545,7 +545,8 @@
 		user.affected_message(target,
 			SPAN_WARNING("Your hand slips, cracking [target]'s [surgery.affected_limb.encased]! It's broken, now! Fix it!"),
 			SPAN_WARNING("[user]'s hand slips, cracking your [surgery.affected_limb.encased]! It's broken, now!"),
-			SPAN_WARNING("[user]'s hand slips, cracking [target]'s [surgery.affected_limb.encased]! It's broken, now!"))
+			SPAN_WARNING("[user]'s hand slips, cracking [target]'s [surgery.affected_limb.encased]! It sounds like the bone broke!"))
+
 
 		surgery.affected_limb.fracture(100)
 		if(target.stat == CONSCIOUS)
@@ -614,7 +615,8 @@
 		user.affected_message(target,
 			SPAN_WARNING("Your hand slips, cracking [target]'s [surgery.affected_limb.encased]! It's broken, now! Fix it!"),
 			SPAN_WARNING("[user]'s hand slips, cracking your [surgery.affected_limb.encased]! It's broken, now!"),
-			SPAN_WARNING("[user]'s hand slips, cracking [target]'s [surgery.affected_limb.encased]! It's broken, now!"))
+			SPAN_WARNING("[user]'s hand slips, cracking [target]'s [surgery.affected_limb.encased]! It sounds like the bone broke!"))
+
 
 		surgery.affected_limb.fracture(100)
 		if(target.stat == CONSCIOUS)
@@ -697,7 +699,8 @@
 		user.affected_message(target,
 			SPAN_WARNING("Your hand slips, cracking [target]'s [surgery.affected_limb.encased]! It's broken, now! Fix it!"),
 			SPAN_WARNING("[user]'s hand slips, cracking your [surgery.affected_limb.encased]! It's broken, now!"),
-			SPAN_WARNING("[user]'s hand slips, cracking [target]'s [surgery.affected_limb.encased]! It's broken, now!"))
+			SPAN_WARNING("[user]'s hand slips, cracking [target]'s [surgery.affected_limb.encased]! It sounds like the bone broke!"))
+
 
 		surgery.affected_limb.fracture(100)
 		if(target.stat == CONSCIOUS)

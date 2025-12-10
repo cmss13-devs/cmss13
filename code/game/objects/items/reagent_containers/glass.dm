@@ -218,10 +218,10 @@
 			return
 		user.visible_message(SPAN_NOTICE("[user] starts to empty [pbottle.name] into [src]..."),
 		SPAN_NOTICE("You start to empty [pbottle.name] into [src]..."))
-		for(var/mob/O in viewers(2, user))
-			O.show_message(SPAN_DANGER("[user] tries to pour the contents of [pbottle.name] into [src]..."), SHOW_MESSAGE_VISIBLE)
+		for(var/mob/others in viewers(2, user))
+			others.show_message(SPAN_DANGER("[user] tries to pour the contents of [pbottle.name] into [src]..."), SHOW_MESSAGE_VISIBLE)
 
-		var/waiting_time = 0.16 SECONDS
+		var/waiting_time = (length(pbottle.contents)) * 0.1 SECONDS
 		if(!do_after(user, waiting_time, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
 			return
 
@@ -230,24 +230,19 @@
 			var/loss = amount - src.reagents.maximum_volume
 			if(amount > src.reagents.maximum_volume)
 				to_chat(user, SPAN_WARNING("You stop trying to pour the contents of [pbottle.name] after [src] overflows and takes [loss]u of the last pill you poured."))
-				dump_pills(pill)
+				pill.reagents.trans_to(src, reagents.total_volume)
 				pbottle.forced_item_removal(pill)
-				for(var/mob/O in viewers(2, user))
-					O.show_message(SPAN_NOTICE("[user] stops emptying [pbottle.name] into [src]."), SHOW_MESSAGE_VISIBLE)
+				for(var/mob/others in viewers(2, user))
+					others.show_message(SPAN_NOTICE("[user] stops emptying [pbottle.name] into [src]."), SHOW_MESSAGE_VISIBLE)
 				return FALSE
-			if(!pill)
-				to_chat(user, SPAN_WARNING("You ran out of pills in [pbottle.name] to pour into [src]."))
-				for(var/mob/O in viewers(2, user))
-					O.show_message(SPAN_NOTICE("[user] stops emptying [pbottle.name] into [src]."), SHOW_MESSAGE_VISIBLE)
-				return FALSE
-			dump_pills(pill)
+			pill.reagents.trans_to(src, reagents.total_volume)
 			pbottle.forced_item_removal(pill)
+		for(var/mob/others in viewers(2, user))
+			others.show_message(SPAN_NOTICE("[user] stops emptying [pbottle.name] into [src]."), SHOW_MESSAGE_VISIBLE)
+			return FALSE
 		return // No call parent AFTER loop is done. Prevents pill bottles from attempting to gather pills.
 
 	return ..()
-
-/obj/item/reagent_container/glass/proc/dump_pills(obj/item/reagent_container/pill/pill, mob/user)
-	pill.reagents.trans_to(src, reagents.total_volume)
 
 /obj/item/reagent_container/glass/beaker
 	name = "beaker"

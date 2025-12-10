@@ -535,9 +535,24 @@
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
 
+/datum/action/item_action/toggle/flare_launcher/New()
+	. = ..()
+	update_button_icon()
+
+/datum/action/item_action/toggle/flare_launcher/update_button_icon()
+	var/obj/item/weapon/gun/firearm = holder_item
+	var/obj/item/attachable/attached_gun/flare_launcher/launcher = firearm.attachments["under"]
+	if(firearm.active_attachable == launcher)
+		action_icon_state = "flarelauncher_off"
+	else
+		action_icon_state = "flarelauncher"
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+
 /datum/action/item_action/toggle/ugl/New()
 	. = ..()
 	update_button_icon()
+
 
 /datum/action/item_action/toggle/ugl/update_button_icon()
 	var/obj/item/weapon/gun/firearm = holder_item

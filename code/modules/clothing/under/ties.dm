@@ -1122,22 +1122,6 @@
 /obj/item/clothing/accessory/storage/surg_vest/equipped
 	hold = /obj/item/storage/internal/accessory/surg_vest/equipped
 
-/obj/item/clothing/accessory/storage/surg_vest/blue
-	name = "blue surgical webbing vest"
-	desc = "A matte blue synthcotton vest purpose-made for holding surgical tools."
-	icon_state = "vest_blue"
-
-/obj/item/clothing/accessory/storage/surg_vest/blue/equipped
-	hold = /obj/item/storage/internal/accessory/surg_vest/equipped
-
-/obj/item/clothing/accessory/storage/surg_vest/drop_blue
-	name = "blue surgical drop pouch"
-	desc = "A matte blue synthcotton drop pouch purpose-made for holding surgical tools."
-	icon_state = "drop_pouch_surgical_blue"
-
-/obj/item/clothing/accessory/storage/surg_vest/drop_blue/equipped
-	hold = /obj/item/storage/internal/accessory/surg_vest/equipped
-
 /obj/item/clothing/accessory/storage/surg_vest/drop_green
 	name = "green surgical drop pouch"
 	desc = "A greenish synthcotton drop pouch purpose-made for holding surgical tools."
@@ -1164,6 +1148,30 @@
 	new /obj/item/tool/surgery/bonegel(src)
 	new /obj/item/tool/surgery/bonegel(src)
 	new /obj/item/reagent_container/blood/OMinus(src)
+
+/obj/item/clothing/accessory/storage/surg_vest/blue
+	name = "blue surgical webbing vest"
+	desc = "A matte blue synthcotton vest purpose-made for holding surgical tools."
+	icon_state = "vest_blue"
+
+/obj/item/clothing/accessory/storage/surg_vest/blue/equipped
+	hold = /obj/item/storage/internal/accessory/surg_vest/equipped
+
+/obj/item/clothing/accessory/storage/surg_vest/drop_blue
+	name = "blue surgical drop pouch"
+	desc = "A matte blue synthcotton drop pouch purpose-made for holding surgical tools."
+	icon_state = "drop_pouch_surgical_blue"
+
+/obj/item/clothing/accessory/storage/surg_vest/drop_blue/equipped
+	hold = /obj/item/storage/internal/accessory/surg_vest/equipped
+
+/obj/item/clothing/accessory/storage/surg_vest/black
+	name = "black surgical webbing vest"
+	desc = "A tactical black synthcotton vest purpose-made for holding surgical tools."
+	icon_state = "vest_black"
+
+/obj/item/clothing/accessory/storage/surg_vest/black/equipped
+	hold = /obj/item/storage/internal/accessory/surg_vest/equipped
 
 /obj/item/clothing/accessory/storage/surg_vest/drop_black
 	name = "black surgical drop pouch"

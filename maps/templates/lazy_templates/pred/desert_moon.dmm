@@ -1713,6 +1713,13 @@
 "hz" = (
 /turf/open/mars_cave/mars_cave_15,
 /area/yautja_grounds/caves/east)
+"hA" = (
+/obj/structure/prop/brazier/torch{
+	alpha = 0;
+	pixel_y = -21
+	},
+/turf/open/mars_cave/mars_dirt_4,
+/area/yautja_grounds/caves/north_west)
 "hB" = (
 /obj/structure/stairs/multiz/up{
 	dir = 8;
@@ -1723,6 +1730,13 @@
 "hC" = (
 /obj/structure/stairs/multiz/up{
 	layer = 1
+	},
+/turf/open/mars_cave/mars_dirt_4,
+/area/yautja_grounds/caves/north_west)
+"hD" = (
+/obj/structure/prop/brazier/torch{
+	alpha = 0;
+	pixel_y = 25
 	},
 /turf/open/mars_cave/mars_dirt_4,
 /area/yautja_grounds/caves/north_west)
@@ -3085,6 +3099,7 @@
 /area/yautja_grounds/desert/north_west)
 "mB" = (
 /obj/structure/flora/grass/desert/lightgrass_1,
+/obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/sand/layer1,
 /area/yautja_grounds/desert/north_west)
 "mC" = (
@@ -3097,6 +3112,13 @@
 /area/yautja_grounds/desert/north_west)
 "mE" = (
 /obj/structure/blocker/invisible_wall,
+/turf/open/auto_turf/sand/layer0,
+/area/yautja_grounds/desert/north_west)
+"mF" = (
+/obj/structure/prop/brazier/torch{
+	alpha = 0;
+	pixel_y = 25
+	},
 /turf/open/auto_turf/sand/layer0,
 /area/yautja_grounds/desert/north_west)
 "mU" = (
@@ -3435,7 +3457,7 @@
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
-/turf/open/auto_turf/sand/layer1,
+/turf/open/floor/strata/grey_multi_tiles/southwest,
 /area/yautja_grounds/temple/entrance/desert)
 "KO" = (
 /turf/open/auto_turf/sand/layer1,
@@ -3452,7 +3474,7 @@
 	dir = 10;
 	icon_state = "p_stair_full"
 	},
-/turf/open/auto_turf/sand/layer1,
+/turf/open/floor/strata/grey_multi_tiles/southwest,
 /area/yautja_grounds/temple/entrance/desert)
 "LO" = (
 /obj/effect/landmark/yautja_teleport,
@@ -3531,7 +3553,7 @@
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
-/turf/open/auto_turf/sand/layer1,
+/turf/open/floor/strata/grey_multi_tiles/southwest,
 /area/yautja_grounds/temple/entrance/desert)
 "Sn" = (
 /obj/structure/prop/hunter/fake_platform/hunter/east,
@@ -3559,7 +3581,7 @@
 	dir = 6;
 	icon_state = "p_stair_full"
 	},
-/turf/open/auto_turf/sand/layer1,
+/turf/open/floor/strata/grey_multi_tiles/southwest,
 /area/yautja_grounds/temple/entrance/desert)
 "Ux" = (
 /turf/open/auto_turf/sand/layer1,
@@ -4714,7 +4736,7 @@ fr
 (12,1,1) = {"
 gs
 gs
-kH
+gs
 gs
 gs
 gs
@@ -4911,9 +4933,9 @@ fr
 "}
 (14,1,1) = {"
 gs
-gH
-gH
-gH
+hD
+gt
+hA
 gs
 gs
 gs
@@ -12628,7 +12650,7 @@ Cj
 MT
 MT
 MT
-ft
+MT
 ft
 "}
 (92,1,1) = {"
@@ -12726,8 +12748,8 @@ fw
 yW
 qr
 qr
+qr
 MT
-ft
 ft
 "}
 (93,1,1) = {"
@@ -15605,7 +15627,7 @@ aB
 (9,1,2) = {"
 op
 op
-ec
+mF
 dZ
 mu
 op
@@ -15802,9 +15824,9 @@ aB
 "}
 (11,1,2) = {"
 op
-im
+mx
 mB
-ec
+mE
 op
 op
 op
@@ -23812,11 +23834,11 @@ iP
 MT
 MT
 lo
-lo
-lo
-lo
-lo
-lo
+MT
+MT
+MT
+MT
+MT
 lo
 "}
 (92,1,2) = {"
@@ -23911,11 +23933,11 @@ uA
 MT
 lo
 lo
-lo
-lo
-lo
-lo
-lo
+MT
+eS
+eS
+eS
+MT
 lo
 "}
 (93,1,2) = {"
@@ -24010,11 +24032,11 @@ iU
 MT
 lo
 lo
-lo
-lo
-lo
-lo
-lo
+MT
+eS
+eS
+eS
+MT
 lo
 "}
 (94,1,2) = {"
@@ -24109,10 +24131,10 @@ iP
 MT
 lo
 lo
-lo
 MT
-MT
-MT
+eS
+eS
+eS
 MT
 lo
 "}
@@ -24208,7 +24230,7 @@ uA
 MT
 lo
 lo
-lo
+MT
 Cj
 eS
 eS

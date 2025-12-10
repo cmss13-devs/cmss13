@@ -64,13 +64,13 @@
 		icon_state = (beaker?"[base_state]1":"[base_state]0")
 
 
-/obj/structure/machinery/chem_master/attackby(obj/item/inputed_item, mob/living/user)
-	if(istype(inputed_item, /obj/item/reagent_container/glass))
+/obj/structure/machinery/chem_master/attackby(obj/item/inputted_item, mob/living/user)
+	if(istype(inputted_item, /obj/item/reagent_container/glass))
 		var/obj/item/old_beaker = beaker
-		beaker = inputed_item
-		user.drop_inv_item_to_loc(inputed_item, src)
+		beaker = inputted_item
+		user.drop_inv_item_to_loc(inputted_item, src)
 		if(old_beaker)
-			to_chat(user, SPAN_NOTICE("You swap out \the [old_beaker] for \the [inputed_item]."))
+			to_chat(user, SPAN_NOTICE("You swap out \the [old_beaker] for \the [inputted_item]."))
 			user.put_in_hands(old_beaker)
 		else
 			to_chat(user, SPAN_NOTICE("You add the beaker to the machine!"))
@@ -81,8 +81,8 @@
 	if(!pill_maker)
 		return
 
-	if(istype(inputed_item, /obj/item/storage/pill_bottle))
-		var/obj/item/storage/pill_bottle/bottle = inputed_item
+	if(istype(inputted_item, /obj/item/storage/pill_bottle))
+		var/obj/item/storage/pill_bottle/bottle = inputted_item
 
 		if(length(loaded_pill_bottles) >= max_bottles_count)
 			to_chat(user, SPAN_WARNING("Machine is fully loaded by pill bottles."))
@@ -95,9 +95,9 @@
 		SStgui.update_uis(src)
 		return
 
-	if(istype(inputed_item, /obj/item/storage/box/pillbottles))
+	if(istype(inputted_item, /obj/item/storage/box/pillbottles))
 
-		var/obj/item/storage/box/pillbottles/box = inputed_item
+		var/obj/item/storage/box/pillbottles/box = inputted_item
 
 		if(length(loaded_pill_bottles) >= max_bottles_count)
 			to_chat(user, SPAN_WARNING("Machine is fully loaded by pill bottles."))
@@ -563,15 +563,15 @@
 				for(var/obj/item/storage/pill_bottle/bottle in loaded_pill_bottles_to_fill)
 					var/obj/item/storage/pill_bottle/main_bottle = loaded_pill_bottles_to_fill[1]
 					var/datum/component/label/label_component_on_main_bottle = main_bottle.GetComponent(/datum/component/label)
-					var/datum/component/label/label_component_on_inputed_bottle = bottle.GetComponent(/datum/component/label)
+					var/datum/component/label/label_component_on_inputted_bottle = bottle.GetComponent(/datum/component/label)
 
-					if(label_component_on_main_bottle != label_component_on_inputed_bottle)
+					if(label_component_on_main_bottle != label_component_on_inputted_bottle)
 						bottle.AddComponent(/datum/component/label, label_component_on_main_bottle.label_name)
 						if(length(main_bottle.maptext_label) < 4)
 							bottle.maptext_label = main_bottle.maptext_label
 							bottle.update_icon()
-					else if(label_component_on_inputed_bottle != label_component_on_main_bottle)
-						qdel(label_component_on_inputed_bottle)
+					else if(label_component_on_inputted_bottle != label_component_on_main_bottle)
+						qdel(label_component_on_inputted_bottle)
 					bottle.icon_state = main_bottle.icon_state
 					for(var/iterator in 1 to to_create)
 						var/obj/item/reagent_container/pill/creating_pill = new(loc)

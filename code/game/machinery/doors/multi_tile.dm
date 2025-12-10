@@ -123,6 +123,7 @@
 	name = "\improper Airlock"
 	icon = 'icons/obj/structures/doors/2x1almayerdoor.dmi' //Tiles with is here FOR SAFETY PURPOSES
 	openspeed = 4 //shorter open animation.
+	var/queen_pryable = TRUE
 	tiles_with = list(
 		/obj/structure/window/framed/almayer,
 		/obj/structure/machinery/door/airlock,
@@ -230,6 +231,38 @@
 	req_access = null
 	req_one_access = list(ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_COLONIAL)
 
+//------Containment 3-tile Doors -----//
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/containment
+	opacity = TRUE
+	width = 3
+	unslashable = TRUE
+	unacidable = TRUE
+	no_panel = 1
+	not_weldable = 1
+	queen_pryable = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/containment/attack_alien(mob/living/carbon/xenomorph/xeno)
+	if(xeno.hive_pos != XENO_QUEEN)
+		return ..()
+
+	if(!queen_pryable)
+		return ..()
+
+	if(xeno.action_busy)
+		return
+
+	to_chat(xeno, SPAN_WARNING("You try and force the doors open!"))
+	if(do_after(xeno, 10 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+		unlock(TRUE)
+		open(TRUE)
+		lock(TRUE)
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/containment/contshutter
+	name = "\improper Containment Door"
+	icon = 'icons/obj/structures/doors/medical_shutter.dmi'
+
+
 //------Dropship Cargo Doors -----//
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear
@@ -239,7 +272,7 @@
 	unacidable = TRUE
 	no_panel = 1
 	not_weldable = 1
-	var/queen_pryable = TRUE
+	queen_pryable = TRUE
 	var/obj/docking_port/mobile/marine_dropship/linked_dropship
 
 

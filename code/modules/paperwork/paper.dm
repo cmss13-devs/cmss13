@@ -930,6 +930,10 @@
 	note_type = "grant"
 	grant = 4
 
+/obj/item/paper/research_notes/grant/cl_special
+	note_type = "grant"
+	grant = 10
+
 /obj/item/paper/research_report
 	icon_state = "paper_wy_words"
 	var/datum/reagent/data

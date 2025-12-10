@@ -1956,7 +1956,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 		var/mob/living/carbon/human/focused_human = user
 		if(focused_human.marksman_aura >= 1) //adjust recoil based on focus aura
-			var/focus_mult = focused_human.marksman_aura * 0.5 //set this by a lot and you wont be getting any camera recoil whatsoever, in fact leadership level 3 is pretty cracked as is
+			var/focus_mult = focused_human.marksman_aura * 0.5 //set this by a lot and you wont be getting any camera recoil whatsoever, in fact leadership level 4 is pretty cracked as is
 			total_recoil -= focus_mult
 
 	if(total_recoil > 0 && (ishuman(user) || HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS)))

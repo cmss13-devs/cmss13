@@ -2461,6 +2461,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 		options[string_to_use] = slot
 
 	owner.mob.sight = BLIND
+	/// This is causing Synthetics to not be on manifest at round start if they have a loadout due to delay in spawning. No idea how to fix it.
 	var/selected = tgui_input_list(owner, "You have loadout available - which slot would you like to use?", "Slot Selection", options, theme = "crtgreen", timeout = timeout)
 	owner.mob.sight = owner.mob::sight
 

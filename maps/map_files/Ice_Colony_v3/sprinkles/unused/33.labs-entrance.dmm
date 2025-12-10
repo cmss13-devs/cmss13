@@ -124,6 +124,10 @@
 /turf/open/floor/plating,
 /area/shiva/interior/colony/research_hab)
 "aq" = (
+/obj/structure/window/framed/shiva/orange,
+/turf/open/floor/plating,
+/area/shiva/interior/colony/research_hab)
+"ar" = (
 /obj/structure/closet/radiation,
 /obj/structure/machinery/light/double{
 	dir = 4;
@@ -132,12 +136,12 @@
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva/purplefull,
 /area/shiva/interior/colony/research_hab)
-"ar" = (
+"as" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
-"as" = (
+"at" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out"
 	},
@@ -150,7 +154,7 @@
 /obj/item/clothing/suit/storage/snow_suit,
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
-"at" = (
+"au" = (
 /obj/structure/surface/rack,
 /obj/item/tool/shovel/snow,
 /obj/item/tool/shovel/snow,
@@ -163,11 +167,11 @@
 	},
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
-"au" = (
+"av" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/shiva/prefabricated/blue,
 /area/shiva/interior/colony/research_hab)
-"av" = (
+"aw" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "labs_ice_1";
 	name = "\improper Research Shutters"
@@ -175,17 +179,14 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/research_hab)
-"aw" = (
-/obj/structure/surface/rack,
-/obj/item/device/motiondetector/hacked,
-/obj/effect/landmark/objective_landmark/science,
-/turf/open/floor/shiva/purplefull/west,
-/area/shiva/interior/colony/research_hab)
 "ax" = (
+/turf/closed/wall/shiva/ice,
+/area/shiva/interior/oob)
+"ay" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/shiva/prefabricated/orange,
 /area/shiva/interior/colony/research_hab)
-"ay" = (
+"az" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
 	req_one_access = null
@@ -319,10 +320,6 @@
 "uJ" = (
 /turf/open/floor/shiva/purplefull/east,
 /area/shiva/interior/colony/research_hab)
-"vf" = (
-/obj/structure/window/framed/shiva/orange,
-/turf/open/floor/plating,
-/area/shiva/interior/colony/research_hab)
 "vZ" = (
 /obj/item/ammo_magazine/rifle/m41aMK1,
 /turf/open/floor/shiva,
@@ -405,8 +402,11 @@
 /turf/open/floor/shiva/purplefull/west,
 /area/shiva/interior/colony/research_hab)
 "Qg" = (
-/turf/closed/wall/shiva/ice,
-/area/shiva/interior/oob)
+/obj/structure/surface/rack,
+/obj/item/device/motiondetector/hacked,
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/shiva/purplefull/west,
+/area/shiva/interior/colony/research_hab)
 "Qz" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 8;
@@ -475,11 +475,11 @@
 /area/shiva/interior/colony/research_hab)
 
 (1,1,1) = {"
-ax
-aw
+ay
+Qg
 uJ
 Ov
-vf
+aq
 KS
 KS
 cn
@@ -491,11 +491,11 @@ ad
 GL
 "}
 (2,1,1) = {"
-ay
+az
 hG
 cn
 ei
-vf
+aq
 KS
 KS
 KS
@@ -507,7 +507,7 @@ ae
 GL
 "}
 (3,1,1) = {"
-au
+av
 qH
 pI
 Ov
@@ -523,7 +523,7 @@ oM
 oM
 "}
 (4,1,1) = {"
-au
+av
 ju
 Xo
 Xo
@@ -539,7 +539,7 @@ oM
 aa
 "}
 (5,1,1) = {"
-au
+av
 ju
 lX
 KS
@@ -555,7 +555,7 @@ oM
 ab
 "}
 (6,1,1) = {"
-au
+av
 ju
 lM
 Xo
@@ -571,11 +571,11 @@ oM
 aa
 "}
 (7,1,1) = {"
-au
+av
 ju
 ju
 pC
-aq
+ar
 tr
 cn
 Xo
@@ -587,7 +587,7 @@ oM
 ac
 "}
 (8,1,1) = {"
-au
+av
 ju
 ju
 ju
@@ -603,10 +603,10 @@ oM
 oM
 "}
 (9,1,1) = {"
-au
-au
-au
-as
+av
+av
+av
+at
 Lk
 an
 cn
@@ -621,7 +621,7 @@ oM
 (10,1,1) = {"
 Vv
 Vv
-av
+aw
 IK
 KS
 KS
@@ -637,9 +637,9 @@ DO
 (11,1,1) = {"
 DE
 Vv
-av
+aw
 Yz
-ar
+as
 KS
 cn
 YI
@@ -653,7 +653,7 @@ yZ
 (12,1,1) = {"
 Vv
 Ro
-av
+aw
 IK
 KS
 cn
@@ -669,7 +669,7 @@ ju
 (13,1,1) = {"
 Hm
 Vv
-av
+aw
 Yz
 cn
 KS
@@ -685,8 +685,8 @@ ju
 (14,1,1) = {"
 Ro
 HR
+av
 au
-at
 nQ
 ao
 cn
@@ -701,7 +701,7 @@ wX
 (15,1,1) = {"
 Vv
 iw
-au
+av
 ju
 ju
 ju
@@ -716,8 +716,8 @@ Wd
 "}
 (16,1,1) = {"
 YD
-Qg
-Qg
+ax
+ax
 ju
 cO
 AC
@@ -732,8 +732,8 @@ kA
 "}
 (17,1,1) = {"
 Vv
-Qg
-Qg
+ax
+ax
 ju
 rA
 ap
@@ -747,9 +747,9 @@ ju
 ni
 "}
 (18,1,1) = {"
-Qg
-Qg
-Qg
+ax
+ax
+ax
 ju
 JI
 AC

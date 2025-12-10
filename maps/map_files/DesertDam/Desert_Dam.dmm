@@ -953,22 +953,22 @@
 /turf/open/gm/river/desert/shallow_edge/southeast,
 /area/desert_dam/exterior/river/riverside_east)
 "adV" = (
+/turf/closed/wall/hangar{
+	name = "reinforced metal wall"
+	},
+/area/desert_dam/exterior/valley/valley_medical)
+"adW" = (
 /turf/closed/wall/r_wall/bunker{
 	name = "reinforced metal wall"
 	},
 /area/desert_dam/exterior/telecomm/lz1_valley)
-"adW" = (
-/turf/open/auto_turf/sand/layer2,
-/area/desert_dam/interior/lab_northeast/east_lab_containment)
 "adX" = (
 /obj/effect/blocker/toxic_water,
 /turf/open/desert/desert_shore/shore_corner2/east,
 /area/desert_dam/exterior/river/riverside_east)
 "adY" = (
-/turf/closed/wall/hangar{
-	name = "reinforced metal wall"
-	},
-/area/desert_dam/exterior/river/riverside_central_north)
+/turf/open/auto_turf/sand/layer2,
+/area/desert_dam/interior/lab_northeast/east_lab_containment)
 "adZ" = (
 /obj/structure/flora/bush/desert/cactus/multiple{
 	icon_state = "cacti_10"
@@ -1038,7 +1038,7 @@
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
 	},
-/area/desert_dam/exterior/valley/valley_medical)
+/area/desert_dam/exterior/river/riverside_central_north)
 "aem" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
@@ -67150,9 +67150,9 @@ bdW
 aiZ
 aUL
 uJj
-adV
-adV
-adV
+adW
+adW
+adW
 dTs
 bkU
 bkU
@@ -67386,7 +67386,7 @@ aiZ
 eKe
 gYT
 oYp
-adV
+adW
 dTs
 bkU
 bBx
@@ -75760,7 +75760,7 @@ dTs
 dTs
 dTs
 dTs
-adY
+ael
 aZg
 bac
 bbK
@@ -77398,7 +77398,7 @@ dTs
 dTs
 dTs
 dTs
-adY
+ael
 aTk
 aUl
 aUl
@@ -84416,12 +84416,12 @@ acu
 afG
 afI
 aag
-adW
+adY
 amZ
 agL
 amq
 afI
-adW
+adY
 amZ
 amZ
 agL
@@ -84649,7 +84649,7 @@ acu
 acu
 afG
 afI
-adW
+adY
 amZ
 amZ
 agL
@@ -96921,17 +96921,17 @@ dib
 dib
 dib
 kRr
-ael
+adV
 ceo
 ceo
 ceo
 ceo
-ael
+adV
 ceo
 ceo
 ceo
 ceo
-ael
+adV
 caH
 dNI
 civ

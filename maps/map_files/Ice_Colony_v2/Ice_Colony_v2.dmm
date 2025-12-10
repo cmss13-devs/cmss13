@@ -24,10 +24,6 @@
 "aag" = (
 /turf/closed/ice_rock/eastWall,
 /area/ice_colony/exterior/surface/cliff)
-"aah" = (
-/obj/structure/mineral_door/resin,
-/turf/open/floor/plating,
-/area/ice_colony/underground/maintenance/east)
 "aak" = (
 /obj/structure/ice/thin/end{
 	dir = 8
@@ -2422,17 +2418,17 @@
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/valley/northeast)
 "aji" = (
-/obj/structure/prop/hybrisa/misc/urinal,
-/turf/closed/wall/r_wall,
-/area/ice_colony/underground/security/brig)
+/obj/structure/mineral_door/resin,
+/turf/open/floor/plating,
+/area/ice_colony/underground/maintenance/east)
 "ajj" = (
 /obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/valley/northeast)
 "ajk" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/plating/icefloor,
-/area/ice_colony/surface/hangar/beta)
+/obj/structure/prop/hybrisa/misc/urinal,
+/turf/closed/wall/r_wall,
+/area/ice_colony/underground/security/brig)
 "ajl" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	name = "\improper Hydroponics North Wing Dome"
@@ -2845,6 +2841,10 @@
 	},
 /turf/open/auto_turf/snow/layer1,
 /area/ice_colony/exterior/surface/clearing/north)
+"akF" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating/icefloor,
+/area/ice_colony/surface/hangar/beta)
 "akG" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -61217,7 +61217,7 @@ bVa
 bVa
 bEe
 bCI
-aah
+aji
 qpn
 bmU
 bmU
@@ -61499,7 +61499,7 @@ bVU
 bVa
 bEe
 bCI
-aah
+aji
 qpn
 bmU
 bmU
@@ -63724,7 +63724,7 @@ bmU
 bmU
 bmm
 bml
-aji
+ajk
 bPG
 bQi
 bQQ
@@ -64585,8 +64585,8 @@ bCI
 bCg
 bCg
 bCg
-aah
-aah
+aji
+aji
 bCg
 bCg
 bCg
@@ -66539,9 +66539,9 @@ bCg
 bCg
 bCg
 bCg
-aah
-aah
-aah
+aji
+aji
+aji
 bCg
 bCg
 bCg
@@ -66553,9 +66553,9 @@ bCg
 bCg
 bCg
 bCg
-aah
-aah
-aah
+aji
+aji
+aji
 bCg
 bmU
 bmU
@@ -73483,16 +73483,16 @@ aOj
 aOj
 aOj
 aOj
-ajk
-ajk
-ajk
-ajk
+akF
+akF
+akF
+akF
 aOj
 aUI
 aOj
 aSo
-ajk
-ajk
+akF
+akF
 aOj
 aOj
 aOj
@@ -77716,11 +77716,11 @@ aOj
 aOj
 aOj
 aOj
-ajk
-ajk
-ajk
-ajk
-ajk
+akF
+akF
+akF
+akF
+akF
 aOj
 aOj
 aOj

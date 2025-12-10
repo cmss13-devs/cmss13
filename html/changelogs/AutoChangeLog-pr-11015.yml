@@ -1,0 +1,10 @@
+author: "Puckaboo2"
+delete-after: True
+changes:
+  - rscadd: "Adds black surgical vests to the game. No, really, they DIDN'T exist. I'm not sure why."
+  - mapadd: "Adds chemistry books to the chem lab, receptionist desk, and break room."
+  - mapadd: "Adds a black surgical vest to Field Doctor's room."
+  - mapadd: "Adds medical, surgery, and chemistry books to Field Doctor's locker."
+  - mapadd: "Added an extra large beaker to the chemistry supplies locker, as a treat."
+  - mapadd: "Adds surgical beds to medbay storage."
+  - imageadd: "Re-sprited the medical, chemistry, and surgery books."

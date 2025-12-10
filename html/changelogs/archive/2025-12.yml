@@ -62,3 +62,33 @@
 2025-12-06:
   kalazus:
   - refactor: static light system optimization.
+2025-12-07:
+  Detective-Google:
+  - admin: button to manually select the acting commander.
+  Drathek:
+  - rscadd: Added EMP pulse messages to synths
+  - code_imp: Cleaned up explosion logging and empulse code
+  - admin: Explosions from things like SHARP and detrimental EMPs are now entered
+      into a mob's attack logs
+  - admin: FF logs for explosions now can jump to the causing mob rather than where
+      the mob was
+  PGrayCS:
+  - qol: Added 'You hear a click as the phone goes dead' notification when someone
+      hangs up the phone on you
+  Puckaboo2:
+  - bugfix: Using the IMS on the head or chest now applies their open incision overlays.
+  Red-byte3D:
+  - bugfix: Legcuffs switch your intent back to run when your legcuff gets automatically
+      removed
+  cuberound:
+  - balance: allows medkit pouch to hold scalpel, hemostat, and retractor
+  larentoun:
+  - bugfix: Mutated Queen is now not recoloring.
+  - bugfix: Recolored Xenomorph morphed to Mutated Xenomorph will now reset their
+      color to none.
+  - bugfix: Delimbing now requires to have total limb damage to be maxed out instead
+      of all limb damage to be brute. It still requires brute attack for a chance
+      to delimb.
+2025-12-09:
+  Git-Nivrak:
+  - bugfix: Fixed an attachment exploit

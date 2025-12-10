@@ -137,6 +137,7 @@
 #define XENO_HIVE_MUTATED "xeno_hive_mutated"
 #define XENO_HIVE_FORSAKEN "xeno_hive_forsaken"
 #define XENO_HIVE_YAUTJA "xeno_hive_yautja"
+#define XENO_HIVE_HUNTED "xeno_hive_hunted"
 #define XENO_HIVE_RENEGADE "xeno_hive_renegade"
 
 #define XENO_HIVE_TUTORIAL "xeno_hive_tutorial"

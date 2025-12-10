@@ -150,12 +150,6 @@
 	},
 /turf/open/floor/plating,
 /area/event/underground/dynamic)
-"gW" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
-	dir = 1
-	},
-/turf/open/floor/shiva,
-/area/shiva/interior/colony/research_hab)
 "hd" = (
 /obj/structure/platform_decoration/metal/strata,
 /obj/effect/decal/warning_stripes{
@@ -194,7 +188,7 @@
 "jB" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/mask/gas,
-/turf/open/floor/shiva/yellow/southwest,
+/turf/open/floor/shiva/yellow/southeast,
 /area/shiva/interior/colony/research_hab)
 "jD" = (
 /turf/open/floor/shiva/multi_tiles/north,
@@ -255,7 +249,7 @@
 	dir = 1
 	},
 /turf/open/floor/shiva/floor3,
-/area/shiva/interior/colony/research_hab)
+/area/event/underground/dynamic)
 "nG" = (
 /turf/open/floor/shiva/multi_tiles/north,
 /area/event/underground/dynamic)
@@ -290,10 +284,6 @@
 /turf/open/floor/carpet,
 /area/shiva/interior/colony/research_hab)
 "qG" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
-	pixel_y = -5
-	},
 /turf/open/floor/shiva/multi_tiles/east,
 /area/shiva/interior/colony/research_hab)
 "qY" = (
@@ -307,19 +297,19 @@
 	dir = 8
 	},
 /turf/open/floor/plating,
-/area/shiva/interior/caves/research_caves)
+/area/event/underground/dynamic)
 "rU" = (
 /turf/open/auto_turf/snow/layer0,
 /area/event/underground/dynamic)
 "sM" = (
 /obj/structure/machinery/disposal,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva/yellow/southeast,
+/turf/open/floor/shiva/yellow/southwest,
 /area/shiva/interior/colony/research_hab)
 "sX" = (
 /obj/structure/barricade/plasteel/wired,
 /turf/open/floor/shiva,
-/area/shiva/interior/colony/research_hab)
+/area/event/underground/dynamic)
 "tq" = (
 /obj/structure/barricade/metal/wired{
 	dir = 1
@@ -333,7 +323,7 @@
 	faction = "UPP"
 	},
 /obj/structure/surface/table/reinforced/prison,
-/turf/open/floor/darkblue2,
+/turf/open/floor/plating,
 /area/event/underground/dynamic)
 "tS" = (
 /obj/structure/machinery/light/double{
@@ -483,7 +473,7 @@
 	dir = 1
 	},
 /turf/open/floor/plating,
-/area/shiva/interior/caves/research_caves)
+/area/event/underground/dynamic)
 "GY" = (
 /obj/structure/closet/firecloset,
 /turf/open/floor/shiva/floor3,
@@ -504,6 +494,10 @@
 /area/shiva/interior/colony/research_hab)
 "KW" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -5
+	},
 /turf/open/floor/shiva/multi_tiles/east,
 /area/shiva/interior/colony/research_hab)
 "Lb" = (
@@ -521,7 +515,7 @@
 	dir = 1;
 	req_one_access = null
 	},
-/turf/open/floor/plating,
+/turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/research_hab)
 "OE" = (
 /turf/open/auto_turf/ice/layer2,
@@ -1043,9 +1037,9 @@ mn
 mn
 LK
 Ri
-ep
-ep
-Pf
+LK
+LK
+Ny
 Fj
 Fj
 Fj
@@ -1117,7 +1111,7 @@ CM
 dC
 ab
 Fb
-gW
+ZY
 sX
 nG
 ep

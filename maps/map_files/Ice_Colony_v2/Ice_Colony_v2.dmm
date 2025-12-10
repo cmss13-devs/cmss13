@@ -24,6 +24,10 @@
 "aag" = (
 /turf/closed/ice_rock/eastWall,
 /area/ice_colony/exterior/surface/cliff)
+"aah" = (
+/obj/structure/mineral_door/resin,
+/turf/open/floor/plating,
+/area/ice_colony/underground/maintenance/east)
 "aak" = (
 /obj/structure/ice/thin/end{
 	dir = 8
@@ -21663,7 +21667,7 @@
 "bIa" = (
 /obj/structure/mineral_door/resin,
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/floor/darkpurple2/northwest,
+/turf/open/ice,
 /area/ice_colony/underground/research)
 "bIb" = (
 /obj/item/stack/sheet/wood,
@@ -61213,7 +61217,7 @@ bVa
 bVa
 bEe
 bCI
-bJK
+aah
 qpn
 bmU
 bmU
@@ -61495,7 +61499,7 @@ bVU
 bVa
 bEe
 bCI
-bJK
+aah
 qpn
 bmU
 bmU
@@ -64581,8 +64585,8 @@ bCI
 bCg
 bCg
 bCg
-bJK
-bJK
+aah
+aah
 bCg
 bCg
 bCg
@@ -66535,9 +66539,9 @@ bCg
 bCg
 bCg
 bCg
-bJK
-bJK
-bJK
+aah
+aah
+aah
 bCg
 bCg
 bCg
@@ -66549,9 +66553,9 @@ bCg
 bCg
 bCg
 bCg
-bJK
-bJK
-bJK
+aah
+aah
+aah
 bCg
 bmU
 bmU

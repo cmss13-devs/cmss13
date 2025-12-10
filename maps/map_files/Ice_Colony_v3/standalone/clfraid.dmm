@@ -116,6 +116,17 @@
 /obj/item/flag/plantable/clf,
 /turf/open/floor/corsat/cargo,
 /area/shiva/interior/colony/clf_shuttle)
+"av" = (
+/obj/structure/machinery/light/double,
+/turf/open/floor/shiva/snow_mat/east,
+/area/shiva/interior/colony/botany)
+"aw" = (
+/obj/structure/machinery/light/double{
+	dir = 1;
+	pixel_y = 9
+	},
+/turf/open/floor/shiva/snow_mat/east,
+/area/shiva/interior/colony/botany)
 "aC" = (
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/junkyard/cp_bar)
@@ -1200,10 +1211,6 @@
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/s_admin)
-"Ff" = (
-/obj/structure/window/framed/shiva,
-/turf/open/floor/shiva/north,
-/area/shiva/interior/colony/botany)
 "Fl" = (
 /obj/structure/machinery/light/double,
 /turf/open/floor/shiva/green/southeast,
@@ -2782,9 +2789,9 @@ wr
 "}
 (27,1,1) = {"
 tY
-CA
-NC
-NC
+Me
+Me
+Me
 DU
 DU
 DU
@@ -2810,9 +2817,9 @@ wr
 "}
 (28,1,1) = {"
 SD
-bL
-Me
-Cb
+aw
+NC
+av
 DU
 DU
 DU
@@ -2839,7 +2846,7 @@ wr
 (29,1,1) = {"
 SD
 oP
-Ff
+tY
 oP
 DU
 DU

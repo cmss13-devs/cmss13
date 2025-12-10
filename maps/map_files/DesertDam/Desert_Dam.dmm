@@ -372,14 +372,6 @@
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_labs)
-"abA" = (
-/obj/structure/floodgate{
-	icon_state = "0,3"
-	},
-/turf/closed/wall/almayer/research/containment/wall/east{
-	name = "reinforced metal wall"
-	},
-/area/desert_dam/exterior/river/riverside_east)
 "abB" = (
 /turf/open/desert/dirt/rock1,
 /area/desert_dam/interior/caves/central_caves)
@@ -1042,6 +1034,11 @@
 	},
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_labs)
+"ael" = (
+/turf/closed/wall/hangar{
+	name = "reinforced metal wall"
+	},
+/area/desert_dam/exterior/valley/valley_medical)
 "aem" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
@@ -1698,10 +1695,6 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_northwest)
-"ahb" = (
-/obj/structure/window/framed/chigusa,
-/turf/open/floor/plating/warnplate/west,
-/area/desert_dam/interior/lab_northeast/east_lab_containment)
 "ahc" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal4"
@@ -4071,10 +4064,6 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/desert_dam/exterior/valley/valley_medical)
-"arw" = (
-/obj/structure/fence,
-/turf/open/desert/dirt,
-/area/desert_dam/exterior/river/riverside_east)
 "arx" = (
 /obj/effect/blocker/toxic_water/Group_2,
 /turf/open/floor/filtrationside/north,
@@ -26844,10 +26833,6 @@
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/wood,
 /area/desert_dam/building/medical/CMO)
-"cyt" = (
-/obj/structure/largecrate/random,
-/turf/open/floor/vault2/west,
-/area/desert_dam/building/mining/workshop)
 "cyv" = (
 /obj/effect/decal/sand_overlay/sand2/corner2{
 	dir = 1
@@ -35841,7 +35826,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor/prison/blue/east,
+/turf/open/floor/prison/blue/west,
 /area/desert_dam/building/dorms/pool)
 "dBD" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -36754,7 +36739,7 @@
 "dJm" = (
 /obj/item/tool/mop,
 /obj/structure/surface/rack,
-/turf/open/floor/prison/blue/east,
+/turf/open/floor/prison/blue/west,
 /area/desert_dam/building/dorms/pool)
 "dJx" = (
 /obj/structure/platform_decoration/metal/almayer/west,
@@ -36837,7 +36822,7 @@
 /area/desert_dam/building/cafeteria/cafeteria)
 "dJX" = (
 /obj/structure/surface/rack,
-/turf/open/floor/prison/blue/east,
+/turf/open/floor/prison/blue/west,
 /area/desert_dam/building/dorms/pool)
 "dJY" = (
 /obj/structure/pipes/vents/pump{
@@ -89115,8 +89100,8 @@ akD
 afG
 afG
 afG
-ahb
-ahb
+agH
+agH
 afG
 afG
 afG
@@ -96936,18 +96921,18 @@ dib
 dib
 dib
 kRr
-abe
-arw
-arw
-arw
-arw
-abe
-arw
-arw
-arw
-arw
-abe
-aWH
+ael
+ceo
+ceo
+ceo
+ceo
+ael
+ceo
+ceo
+ceo
+ceo
+ael
+caH
 dNI
 civ
 aNG
@@ -103354,8 +103339,8 @@ aUt
 aUb
 aUb
 aUt
-cyt
-cyt
+aUV
+aUV
 aUt
 aUt
 cTR
@@ -105588,7 +105573,7 @@ dTs
 dTs
 dTs
 dTs
-abA
+abm
 acd
 acd
 acd

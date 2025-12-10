@@ -139,12 +139,15 @@
 		if(!target.reagents.total_volume)
 			to_chat(user, SPAN_DANGER("[target] is empty. Can't dissolve [fluff_text]."))
 			return
-		to_chat(user, SPAN_NOTICE("You dissolve the [fluff_text] in [target]"))
+		to_chat(user, SPAN_NOTICE("You dissolve the [fluff_text] into [target]"))
 
+		var/rgt_list_text = get_reagent_list_text()
 		reagents.trans_to(target, reagents.total_volume)
-		for(var/mob/O in viewers(2, user))
-			O.show_message(SPAN_DANGER("[user] puts something in \the [target]."), SHOW_MESSAGE_VISIBLE)
 
+		for(var/mob/others in viewers(2, user))
+			others.show_message(SPAN_DANGER("[user] puts something in \the [target]."), SHOW_MESSAGE_VISIBLE)
+
+		log_interact(user, target, "[key_name(user)] dissolved a [fluff_text] with [rgt_list_text] into [src].")
 		QDEL_IN(src, 5)
 
 	return
@@ -155,7 +158,7 @@
 
 //Pills
 /obj/item/reagent_container/pill/antitox
-	pill_desc = "An anti-toxin pill. It neutralizes many common toxins, as well as treating toxin damage"
+	pill_desc = "A Dylovene pill. It neutralizes many common toxins, as well as treating toxin damage"
 	pill_initial_reagents = list("anti_toxin" = 15)
 	pill_icon_class = "atox"
 

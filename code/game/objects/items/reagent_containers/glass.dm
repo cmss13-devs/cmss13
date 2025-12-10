@@ -174,8 +174,8 @@
 		return
 
 
-/obj/item/reagent_container/glass/attackby(obj/item/W, mob/living/user)
-	if(HAS_TRAIT(W, TRAIT_TOOL_PEN))
+/obj/item/reagent_container/glass/attackby(obj/item/attacking_object, mob/living/user)
+	if(HAS_TRAIT(attacking_object, TRAIT_TOOL_PEN))
 		var/prior_label_text
 		var/datum/component/label/labelcomponent = GetComponent(/datum/component/label)
 		if(labelcomponent && labelcomponent.has_label())
@@ -202,13 +202,13 @@
 		playsound(src, "paper_writing", 15, TRUE)
 		return
 
-	if(istype(W, /obj/item/storage/pill_bottle)) //dumping a pill bottle's contents in a container
-		var/obj/item/storage/pill_bottle/pbottle = W
-		if(!src.is_open_container())
-			to_chat(user, SPAN_WARNING("[src]'s lid is on. You can't dump pills on a lid."))
+	if(istype(attacking_object, /obj/item/storage/pill_bottle)) //dumping a pill bottle's contents in a container
+		var/obj/item/storage/pill_bottle/pbottle = attacking_object
+		if(!is_open_container())
+			to_chat(user, SPAN_WARNING("[src] has a lid on. You can't dump pills into [src] with the lid in the way."))
 			return
-		if(!src.reagents)
-			to_chat(user, SPAN_WARNING("[src] needs to have some liquid for you to dissolve the pills in [pbottle.name]."))
+		if(reagents.total_volume <= 0)
+			to_chat(user, SPAN_WARNING("[src] needs to contain some liquid to dissolve the pills in."))
 			return
 		if(src.reagents.total_volume == src.reagents.maximum_volume)
 			to_chat(user, SPAN_WARNING("[src] is full. You cannot dissolve any more pills."))
@@ -217,29 +217,38 @@
 			to_chat(user, SPAN_WARNING("You don't have any pills to dump from [pbottle.name]."))
 			return
 		user.visible_message(SPAN_NOTICE("[user] starts to empty [pbottle.name] into [src]..."),
-		SPAN_NOTICE("You start to empty [pbottle.name] into [src]..."))
-		for(var/mob/others in viewers(2, user))
-			others.show_message(SPAN_DANGER("[user] tries to pour the contents of [pbottle.name] into [src]..."), SHOW_MESSAGE_VISIBLE)
+		SPAN_NOTICE("You start to empty [pbottle.name] into [src]..."),
+		SPAN_NOTICE("You hear the emptying of a pill bottle. The pills bloop into liquid..."), 2)
 
-		var/waiting_time = (length(pbottle.contents)) * 0.1 SECONDS
+		var/waiting_time = (length(pbottle.contents)) * 0.125 SECONDS
 		if(!do_after(user, waiting_time, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
+			user.visible_message(SPAN_NOTICE("[user] stops trying to empty [pbottle.name] into [src]."),
+			SPAN_WARNING("You get distracted and stop trying to empty [pbottle.name] into [src]."))
 			return
 
-		for(var/obj/item/reagent_container/pill/pill in W.contents)
-			var/amount = reagents.total_volume + src.reagents.total_volume
-			var/loss = amount - src.reagents.maximum_volume
-			if(amount > src.reagents.maximum_volume)
-				to_chat(user, SPAN_WARNING("You stop trying to pour the contents of [pbottle.name] after [src] overflows and takes [loss]u of the last pill you poured."))
-				pill.reagents.trans_to(src, reagents.total_volume)
-				pbottle.forced_item_removal(pill)
-				for(var/mob/others in viewers(2, user))
-					others.show_message(SPAN_NOTICE("[user] stops emptying [pbottle.name] into [src]."), SHOW_MESSAGE_VISIBLE)
-				return FALSE
+		var/list/reagent_list_text = list()
+		for(var/obj/item/reagent_container/pill/pill in pbottle.contents)
+			var/temp_reagent_text = pill.get_reagent_list_text()
+			if(temp_reagent_text in reagent_list_text)
+				reagent_list_text[temp_reagent_text]++
+			else
+				reagent_list_text += temp_reagent_text
+
+			var/amount = pill.reagents.total_volume + reagents.total_volume
+			var/loss = amount - reagents.maximum_volume
+
 			pill.reagents.trans_to(src, reagents.total_volume)
 			pbottle.forced_item_removal(pill)
-		for(var/mob/others in viewers(2, user))
-			others.show_message(SPAN_NOTICE("[user] stops emptying [pbottle.name] into [src]."), SHOW_MESSAGE_VISIBLE)
-			return FALSE
+			if(amount > reagents.maximum_volume)
+				user.visible_message(SPAN_WARNING("[user] overflows [src], spilling some of its contents."),
+				SPAN_WARNING("[src] overflows and spills [loss]u of the last pill you dissolved."))
+				break
+
+		var/output_text
+		for(var/reagent_text in reagent_list_text)
+			output_text += "[output_text ? "," : ":" ] [reagent_list_text[reagent_text]+1] Pill[reagent_list_text[reagent_text] > 0 ? "s" : ""] of " + reagent_text
+		user.visible_message(SPAN_NOTICE("[user] finishes emptying [pbottle.name] into [src]."), SPAN_NOTICE("You stop emptying [pbottle.name] into [src]."))
+		log_interact(user, null, "[key_name(user)] dissolved the contents of [pbottle.name] into [src] containing[output_text].")
 		return // No call parent AFTER loop is done. Prevents pill bottles from attempting to gather pills.
 
 	return ..()

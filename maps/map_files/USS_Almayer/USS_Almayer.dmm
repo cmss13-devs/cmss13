@@ -421,10 +421,9 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/upper/p_stern)
 "aba" = (
-/obj/structure/machinery/door/airlock/almayer/secure/reinforced{
-	dir = 2;
+/obj/structure/machinery/door/airlock/almayer/secure/pod/reinforced{
 	name = "\improper Evacuation Airlock SU-3";
-	req_access = null
+	dir = 1
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
@@ -2107,10 +2106,19 @@
 	ring_cooldown_length = 10
 	},
 /obj/item/reagent_container/food/drinks/coffeecup{
-	pixel_x = 6
+	pixel_x = -6;
+	pixel_y = -3
 	},
 /obj/structure/machinery/door/window/eastleft{
 	dir = 8
+	},
+/obj/item/book/manual/chemistry{
+	pixel_x = 4;
+	pixel_y = 0
+	},
+/obj/item/book/manual/medical_diagnostics_manual{
+	pixel_x = 7;
+	pixel_y = 6
 	},
 /turf/open/floor/almayer/sterile_green2,
 /area/almayer/medical/lower_medical_medbay)
@@ -3142,6 +3150,7 @@
 	pixel_x = 10;
 	pixel_y = 3
 	},
+/obj/item/book/manual/chemistry,
 /obj/item/book/manual/medical_diagnostics_manual{
 	pixel_x = -4;
 	pixel_y = 6
@@ -3155,9 +3164,8 @@
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "ahi" = (
-/obj/structure/machinery/door/airlock/almayer/secure/reinforced{
-	name = "\improper Evacuation Airlock SU-2";
-	req_access = null
+/obj/structure/machinery/door/airlock/almayer/secure/pod/reinforced{
+	name = "\improper Evacuation Airlock SU-2"
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
@@ -3693,8 +3701,8 @@
 	pixel_x = -3;
 	pixel_y = 11
 	},
+/obj/item/clothing/accessory/storage/surg_vest/black/equipped,
 /obj/item/clothing/accessory/storage/surg_vest/blue/equipped,
-/obj/item/clothing/accessory/storage/black_vest,
 /obj/item/clothing/accessory/storage/surg_vest/equipped,
 /obj/item/prop{
 	desc = "A blood bag with a hole in it. The rats must have gotten to it first.";
@@ -4582,7 +4590,9 @@
 /area/almayer/hallways/lower/port_midship_hallway)
 "akE" = (
 /obj/structure/machinery/camera/autoname/almayer{
-	name = "ship-grade camera"
+	name = "ship-grade camera";
+	pixel_x = 0;
+	pixel_y = 0
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/secure_closet{
@@ -4596,6 +4606,9 @@
 /obj/item/storage/box/mre,
 /obj/item/device/radio/marine,
 /obj/item/clothing/accessory/patch/medic_patch,
+/obj/item/book/manual/surgery,
+/obj/item/book/manual/chemistry,
+/obj/item/book/manual/medical_diagnostics_manual,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/lower_medical_medbay)
 "akF" = (
@@ -9591,9 +9604,8 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/living/intel)
 "ayo" = (
-/obj/structure/machinery/door/airlock/almayer/secure/reinforced{
-	name = "\improper Evacuation Airlock PU-2";
-	req_access = null
+/obj/structure/machinery/door/airlock/almayer/secure/pod/reinforced{
+	name = "\improper Evacuation Airlock PU-2"
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
@@ -21515,6 +21527,7 @@
 /obj/item/device/mass_spectrometer,
 /obj/item/reagent_container/glass/beaker/large,
 /obj/item/reagent_container/glass/beaker/large,
+/obj/item/reagent_container/glass/beaker/large,
 /obj/item/reagent_container/glass/beaker,
 /obj/item/reagent_container/glass/beaker,
 /obj/item/reagent_container/glass/beaker,
@@ -23013,6 +23026,7 @@
 /area/almayer/hallways/hangar)
 "bgk" = (
 /obj/structure/surface/table/almayer,
+/obj/item/book/manual/chemistry,
 /turf/open/floor/almayer/sterile_green_side/west,
 /area/almayer/medical/chemistry)
 "bgl" = (
@@ -37687,11 +37701,10 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/tankerbunks)
 "bTq" = (
-/obj/structure/machinery/door/airlock/almayer/secure/reinforced{
-	name = "\improper Evacuation Airlock PL-3";
-	req_access = null
+/obj/structure/machinery/door/airlock/almayer/secure/pod/reinforced{
+	name = "\improper Evacuation Airlock PL-3"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
 "bTx" = (
 /turf/open/floor/almayer/plating_stripedcorner/east,
@@ -38038,10 +38051,9 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/upper/u_m_p)
 "bWh" = (
-/obj/structure/machinery/door/airlock/almayer/secure/reinforced{
-	dir = 2;
+/obj/structure/machinery/door/airlock/almayer/secure/pod/reinforced{
 	name = "\improper Evacuation Airlock SU-4";
-	req_access = null
+	dir = 1
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
@@ -38718,10 +38730,9 @@
 /turf/open/floor/almayer/plating,
 /area/almayer/living/starboard_garden)
 "ceD" = (
-/obj/structure/machinery/door/airlock/almayer/secure/reinforced{
-	dir = 2;
+/obj/structure/machinery/door/airlock/almayer/secure/pod/reinforced{
 	name = "\improper Evacuation Airlock PU-3";
-	req_access = null
+	dir = 1
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
@@ -39088,10 +39099,9 @@
 /turf/open/floor/almayer/flooredgesmooth2/south,
 /area/almayer/engineering/upper_engineering)
 "cix" = (
-/obj/structure/machinery/door/airlock/almayer/secure/reinforced{
-	dir = 2;
+/obj/structure/machinery/door/airlock/almayer/secure/pod/reinforced{
 	name = "\improper Evacuation Airlock PU-4";
-	req_access = null
+	dir = 1
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
@@ -39532,10 +39542,9 @@
 /turf/open/floor/almayer/redcorner/north,
 /area/almayer/shipboard/brig/processing)
 "cmC" = (
-/obj/structure/machinery/door/airlock/almayer/secure/reinforced{
-	dir = 2;
+/obj/structure/machinery/door/airlock/almayer/secure/pod/reinforced{
 	name = "\improper Evacuation Airlock SL-1";
-	req_access = null
+	dir = 1
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
@@ -39575,10 +39584,9 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/upper/u_a_p)
 "cnd" = (
-/obj/structure/machinery/door/airlock/almayer/secure/reinforced{
-	dir = 2;
+/obj/structure/machinery/door/airlock/almayer/secure/pod/reinforced{
 	name = "\improper Evacuation Airlock PL-1";
-	req_access = null
+	dir = 1
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
@@ -45836,10 +45844,9 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/lower/port_midship_hallway)
 "eOM" = (
-/obj/structure/machinery/door/airlock/almayer/secure/reinforced{
-	dir = 2;
+/obj/structure/machinery/door/airlock/almayer/secure/pod/reinforced{
 	name = "\improper Evacuation Airlock PU-6";
-	req_access = null
+	dir = 1
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
@@ -58136,10 +58143,9 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/living/briefing)
 "jUx" = (
-/obj/structure/machinery/door/airlock/almayer/secure/reinforced{
-	dir = 2;
+/obj/structure/machinery/door/airlock/almayer/secure/pod/reinforced{
 	name = "\improper Evacuation Airlock SL-2";
-	req_access = null
+	dir = 1
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
@@ -60406,7 +60412,10 @@
 	pixel_y = 31;
 	pixel_x = -1
 	},
-/obj/structure/surface/table/almayer,
+/obj/structure/surface/table/almayer{
+	pixel_x = 0;
+	pixel_y = 0
+	},
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_17";
 	pixel_x = -6;
@@ -60420,6 +60429,7 @@
 	pixel_x = 6;
 	req_one_access_txt = "19;20"
 	},
+/obj/item/book/manual/chemistry,
 /turf/open/floor/almayer/sterile_green_corner/north,
 /area/almayer/medical/chemistry)
 "kPB" = (
@@ -65776,10 +65786,9 @@
 /turf/open/floor/almayer/redfull,
 /area/almayer/shipboard/port_missiles)
 "nec" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	access_modified = 1;
-	req_access_txt = "200";
-	req_one_access = null
+/obj/structure/machinery/door/airlock/almayer/secure/pod/reinforced{
+	name = "\improper Evacuation Airlock PU-CL";
+	dir = 8
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
@@ -67548,9 +67557,8 @@
 /turf/open/floor/almayer/emeraldfull,
 /area/almayer/squads/charlie_delta_shared)
 "nNX" = (
-/obj/structure/machinery/door/airlock/almayer/secure/reinforced{
-	name = "\improper Evacuation Airlock PU-1";
-	req_access = null
+/obj/structure/machinery/door/airlock/almayer/secure/pod/reinforced{
+	name = "\improper Evacuation Airlock PU-1"
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
@@ -67862,6 +67870,10 @@
 	pixel_y = 3;
 	pixel_x = 3
 	},
+/obj/item/roller/surgical,
+/obj/item/roller/surgical,
+/obj/item/roller/surgical,
+/obj/item/roller/surgical,
 /turf/open/floor/almayer/sterile_green_corner,
 /area/almayer/medical/lockerroom)
 "nTs" = (
@@ -73931,7 +73943,7 @@
 /area/almayer/squads/bravo)
 "qoL" = (
 /obj/structure/closet/secure_closet/freezer/industry,
-/obj/item/reagent_container/glass/beaker/silver,
+/obj/item/reagent_container/glass/beaker/catalyst/silver,
 /turf/open/floor/almayer/cargo,
 /area/almayer/engineering/lower/workshop/hangar)
 "qoM" = (
@@ -74904,10 +74916,9 @@
 /turf/open/floor/almayer/cargo_arrow/north,
 /area/almayer/squads/alpha_bravo_shared)
 "qHq" = (
-/obj/structure/machinery/door/airlock/almayer/secure/reinforced{
-	dir = 2;
+/obj/structure/machinery/door/airlock/almayer/secure/pod/reinforced{
 	name = "\improper Evacuation Airlock SU-6";
-	req_access = null
+	dir = 1
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
@@ -84212,9 +84223,8 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
 "uux" = (
-/obj/structure/machinery/door/airlock/almayer/secure/reinforced{
-	name = "\improper Evacuation Airlock SU-1";
-	req_access = null
+/obj/structure/machinery/door/airlock/almayer/secure/pod/reinforced{
+	name = "\improper Evacuation Airlock SU-1"
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
@@ -86002,10 +86012,9 @@
 /turf/open/floor/almayer/emerald/southeast,
 /area/almayer/squads/charlie)
 "vfo" = (
-/obj/structure/machinery/door/airlock/almayer/secure/reinforced{
-	dir = 2;
+/obj/structure/machinery/door/airlock/almayer/secure/pod/reinforced{
 	name = "\improper Evacuation Airlock PL-2";
-	req_access = null
+	dir = 1
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)

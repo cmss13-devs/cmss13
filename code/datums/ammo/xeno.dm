@@ -58,6 +58,9 @@
 	if(!apply_effect)
 		return
 
+	if(!apply_effect)
+		return
+
 	if(!isxeno(M))
 		if(insta_neuro)
 			if(M.GetKnockDownDuration() < 3) // Why are you not using KnockDown(3) ? Do you even know 3 is SIX seconds ? So many questions left unanswered.
@@ -185,12 +188,15 @@
 	damage = 30
 	max_range = 6
 
-/datum/ammo/xeno/acid/spatter/on_hit_mob(mob/M, obj/projectile/P)
+/datum/ammo/xeno/acid/spatter/on_hit_mob(mob/target_mob, obj/projectile/P)
 	. = ..()
 	if(. == FALSE)
 		return
-
-	new /datum/effects/acid(M, P.firer)
+	var/datum/effects/acid/acid_effect = locate() in target_mob.effects_list
+	if(acid_effect)
+		acid_effect.prolong_duration()
+		return
+	new /datum/effects/acid(target_mob, P.firer)
 
 /datum/ammo/xeno/acid/praetorian
 	name = "acid splash"
@@ -231,6 +237,44 @@
 		PAS = new /datum/effects/prae_acid_stacks(human)
 	else
 		PAS.increment_stack_count()
+
+/datum/ammo/xeno/acid/despoiler
+	name = "corrosive spit"
+	icon_state = "xeno_acid_strong"
+	flags_ammo_behavior = AMMO_ACIDIC|AMMO_XENO|AMMO_STOPPED_BY_COVER
+	accuracy = HIT_ACCURACY_TIER_MAX
+	accurate_range = 32
+	max_range = 4
+	damage = 35
+	spit_cost = 50
+	scatter = SCATTER_AMOUNT_TIER_6
+	var/acid_progression = 10
+
+/datum/ammo/xeno/acid/despoiler/on_hit_mob(mob/mob, obj/projectile/projectile)
+	. = ..()
+	if(. == FALSE)
+		return
+	var/datum/effects/acid/acid_effect = locate() in mob.effects_list
+	if(acid_effect)
+		acid_effect.enhance_acid(super_acid = FALSE)
+	else
+		acid_effect = new /datum/effects/acid/(mob, projectile.firer)
+	acid_effect.increment_duration(acid_progression)
+	splatter(mob, 1, projectile)
+
+/datum/ammo/xeno/acid/despoiler/on_hit_obj(obj/target_object, obj/projectile/proj_hit)
+	. = ..()
+	if(istype(target_object, /obj/structure/barricade))
+		var/obj/structure/barricade/barricade = target_object
+		barricade.acid_spray_act()
+
+/datum/ammo/xeno/acid/despoiler/proc/splatter(mob/mob, range = 1, obj/projectile/projectile)
+	for(var/mob/living/carbon/human/victim in range(range, mob))
+		var/datum/effects/acid/acid_effect = locate() in victim.effects_list
+		if(!acid_effect)
+			new /datum/effects/acid/(victim, projectile.firer)
+
+
 
 /datum/ammo/xeno/boiler_gas
 	name = "glob of neuro gas"
@@ -319,8 +363,12 @@
 	to_chat(moob,SPAN_HIGHDANGER("Acid covers your body! Oh fuck!"))
 	playsound(moob,"acid_strike",75,1)
 	INVOKE_ASYNC(moob, TYPE_PROC_REF(/mob, emote), "pain") // why do I need this bullshit
-	new /datum/effects/acid(moob, proj.firer)
 	drop_nade(get_turf(proj), proj,TRUE)
+	var/datum/effects/acid/acid_effect = locate() in moob.effects_list
+	if(acid_effect)
+		acid_effect.prolong_duration()
+		return
+	new /datum/effects/acid(moob, proj.firer)
 
 /datum/ammo/xeno/bone_chips
 	name = "bone chips"

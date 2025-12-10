@@ -576,7 +576,8 @@
 		else
 			visible_message(SPAN_DANGER("[hugger] smashes against [src]'s [W.name] and rips it off!"))
 			drop_inv_item_on_ground(W)
-
+	if(wear_mask)
+		drop_inv_item_on_ground(wear_mask) // drop any item from the face that wasn't handled above (e.g cigs, glasses)
 	return can_infect
 
 /datum/species/proc/handle_hugger_attachment(mob/living/carbon/human/target, obj/item/clothing/mask/facehugger/hugger, mob/living/carbon/xenomorph/facehugger/mob_hugger)

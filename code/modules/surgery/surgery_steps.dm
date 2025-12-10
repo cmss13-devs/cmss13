@@ -220,9 +220,10 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 		msg_admin_niche("[user] failed a [surgery] step on [target] because of [failure_penalties] failure possibility penalties ([surgery_failure_chance]%)")
 
 	else //Help intent.
-		if(do_after(user, step_duration, INTERRUPT_ALL|INTERRUPT_DIFF_INTENT, BUSY_ICON_FRIENDLY,target,INTERRUPT_MOVED,BUSY_ICON_MEDICAL))
+		if(do_after(user, step_duration, INTERRUPT_ALL|INTERRUPT_DIFF_INTENT, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 			success(user, target, target_zone, tool, tool_type, surgery)
-			SEND_SIGNAL(user, COMSIG_HUMAN_SURGERY_STEP_SUCCESS, target, surgery, tool)
+			if(surgery_limb)
+				SEND_SIGNAL(surgery_limb, COMSIG_LIMB_SURGERY_STEP_SUCCESS, user, surgery, tool)
 			advance = TRUE
 			play_success_sound(user, target, target_zone, tool, surgery)
 			if(repeat_step && repeat_step_criteria(user, target, target_zone, tool, tool_type, surgery))

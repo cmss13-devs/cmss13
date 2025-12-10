@@ -89,11 +89,11 @@
 		if(target_human.stat == DEAD)
 			return
 
-	for(var/datum/effects/acid/acid_effect in target_mob.effects_list)
-		qdel(acid_effect)
-		break
-
-	new /datum/effects/acid(target_mob, bound_xeno, initial(bound_xeno.caste_type))
+	var/datum/effects/acid/acid_effect = locate() in target_mob.effects_list
+	if(acid_effect)
+		acid_effect.prolong_duration()
+	else
+		new /datum/effects/acid(target_mob, bound_xeno, initial(bound_xeno.caste_type))
 	if(isxeno_human(target_mob)) //Will the runner get acid stacks
 		var/obj/item/alien_embryo/embryo = locate(/obj/item/alien_embryo) in target_mob.contents
 		if(embryo?.stage >= 4) //very late stage hugged in case the runner unnests them

@@ -135,7 +135,7 @@
 	if(!proximity)
 		return
 
-	if(target.is_open_container() != 0 && target.reagents?.total_volume > 0)
+	if(target.is_open_container() > 0 && target.reagents?.total_volume > 0)
 		if(!target.reagents.total_volume)
 			to_chat(user, SPAN_DANGER("[target] is empty. Can't dissolve [fluff_text]."))
 			return
@@ -145,7 +145,7 @@
 		reagents.trans_to(target, reagents.total_volume)
 
 		for(var/mob/others in viewers(2, user))
-			others.show_message(SPAN_DANGER("[user] puts something in \the [target]."), SHOW_MESSAGE_VISIBLE)
+			others.visual_message(SPAN_DANGER("[user] puts something in \the [target]."), SHOW_MESSAGE_VISIBLE)
 
 		log_interact(user, target, "[key_name(user)] dissolved a [fluff_text] with [rgt_list_text] into [src].")
 		QDEL_IN(src, 5)

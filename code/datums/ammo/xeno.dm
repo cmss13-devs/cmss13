@@ -225,7 +225,7 @@
 	shell_speed = AMMO_SPEED_TIER_2
 	flags_ammo_behavior = AMMO_HITS_TARGET_TURF|AMMO_ACIDIC
 	var/direct_stun = 1
-	var/list/indirect_spreads = list(list(NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST),list(NORTH, WEST, EAST, SOUTH))
+	var/list/indirect_spreads = list(list(NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST), list(NORTH, WEST, EAST, SOUTH))
 	var/list/direct_spread = list(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST)
 
 
@@ -238,6 +238,9 @@
 
 	var/mob/living/carbon/human/human = target_mob
 	human.KnockDown(direct_stun)
+	var/datum/effects/acid/acid_effect = locate() in target_mob.effects_list
+		if(acid_effect)
+			acid_effect.enhance_acid()
 
 
 /datum/ammo/xeno/acid/venator_acid_blob/on_hit_obj(obj/target_object, obj/projectile/proj_hit)

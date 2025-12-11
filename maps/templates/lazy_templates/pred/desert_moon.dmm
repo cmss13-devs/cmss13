@@ -63,15 +63,6 @@
 	},
 /turf/open/floor/strata/grey_multi_tiles/southwest,
 /area/yautja_grounds/temple)
-"ak" = (
-/obj/structure/machinery/door_control/yautja{
-	id = "cavedesertmoonexit";
-	pixel_y = -18;
-	name = "Temple Cave Shutters";
-	req_one_access_txt = "390"
-	},
-/turf/open/mars_cave/mars_cave_2,
-/area/yautja_grounds/caves/south_east)
 "al" = (
 /turf/open/mars_cave/mars_cave_19,
 /area/yautja_grounds/caves/south_west)
@@ -3121,6 +3112,15 @@
 	},
 /turf/open/auto_turf/sand/layer0,
 /area/yautja_grounds/desert/north_west)
+"mG" = (
+/obj/structure/machinery/door_control/yautja{
+	id = "cavedesertmoonexit";
+	pixel_y = -18;
+	name = "Temple Cave Shutters";
+	req_one_access_txt = "390"
+	},
+/turf/open/mars_cave/mars_cave_3,
+/area/yautja_grounds/caves/south_east)
 "mU" = (
 /turf/closed/wall/kutjevo/rock,
 /area/yautja_grounds/temple/entrance/desert)
@@ -12544,9 +12544,9 @@ fw
 fw
 fw
 fw
-fw
-fw
-fw
+ft
+ft
+ft
 ft
 ft
 ft
@@ -12644,9 +12644,9 @@ fw
 fw
 fw
 fw
-fw
-fw
-Cj
+MT
+MT
+MT
 MT
 MT
 MT
@@ -12743,9 +12743,9 @@ fJ
 fJ
 fJ
 fJ
-fw
-fw
-yW
+Cj
+qr
+qr
 qr
 qr
 qr
@@ -12842,13 +12842,13 @@ fJ
 fJ
 fJ
 fJ
-fJ
-ak
+yW
+qr
+qr
+qr
+qr
+qr
 Cj
-aj
-qr
-qr
-MT
 ft
 "}
 (94,1,1) = {"
@@ -12940,10 +12940,10 @@ ft
 fJ
 fJ
 fJ
-fJ
-fJ
-fJ
-MT
+mG
+Cj
+aj
+qr
 qr
 qr
 qr
@@ -13039,9 +13039,9 @@ fw
 fJ
 fJ
 fJ
-ft
-ft
-ft
+fJ
+MT
+MT
 MT
 MT
 qr
@@ -13137,7 +13137,7 @@ fw
 fw
 fw
 fw
-ft
+fJ
 ft
 ft
 ft
@@ -23734,7 +23734,7 @@ iP
 iU
 iP
 MT
-lo
+MT
 lo
 lo
 lo
@@ -23833,7 +23833,7 @@ uA
 iP
 MT
 MT
-lo
+MT
 MT
 MT
 MT
@@ -23931,9 +23931,9 @@ MT
 iP
 uA
 MT
-lo
-lo
 MT
+eS
+eS
 eS
 eS
 eS
@@ -24030,9 +24030,9 @@ Cj
 iP
 iU
 MT
-lo
-lo
 MT
+eS
+eS
 eS
 eS
 eS
@@ -24129,9 +24129,9 @@ iQ
 uA
 iP
 MT
-lo
-lo
 MT
+eS
+eS
 eS
 eS
 eS
@@ -24228,8 +24228,8 @@ iQ
 iP
 uA
 MT
-lo
-lo
+MT
+MT
 MT
 Cj
 eS

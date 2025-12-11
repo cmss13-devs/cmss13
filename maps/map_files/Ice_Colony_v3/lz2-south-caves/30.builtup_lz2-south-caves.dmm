@@ -125,13 +125,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/lz2_habs)
-"G" = (
-/obj/item/shard{
-	icon_state = "large";
-	name = "ice shard"
-	},
-/turf/closed/wall/shiva/prefabricated/pink,
-/area/shiva/interior/lz2_habs)
 "H" = (
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/interior/caves/s_lz2)
@@ -359,11 +352,11 @@ x
 "}
 (10,1,1) = {"
 a
-G
 a
 a
 a
-G
+a
+a
 a
 a
 a

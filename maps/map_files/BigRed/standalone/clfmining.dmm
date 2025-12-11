@@ -244,7 +244,15 @@
 /area/bigredv2/caves/mining)
 "aN" = (
 /obj/structure/machinery/iv_drip,
+/obj/item/reagent_container/blood/OMinus,
 /turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/caves/mining)
+"aO" = (
+/obj/structure/largecrate/random,
+/obj/item/reagent_container/food/drinks/bottle/goldschlager{
+	pixel_y = 15
+	},
+/turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "aP" = (
 /obj/structure/disposalpipe/broken{
@@ -928,8 +936,12 @@
 /area/bigredv2/caves/mining)
 "nB" = (
 /obj/structure/surface/rack,
-/obj/item/reagent_container/food/drinks/bottle/goldschlager,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/storage/backpack/general_belt{
+	pixel_y = 7
+	},
+/obj/item/storage/backpack/general_belt,
+/obj/item/defenses/handheld/planted_flag/clf,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "nI" = (
@@ -1085,10 +1097,11 @@
 /area/bigredv2/caves/mining)
 "qR" = (
 /obj/structure/surface/rack,
-/obj/item/storage/backpack/general_belt,
-/obj/item/storage/backpack/general_belt,
-/obj/item/storage/backpack/general_belt,
-/obj/item/defenses/handheld/planted_flag/clf,
+/obj/item/roller,
+/obj/item/roller{
+	pixel_x = 3;
+	pixel_y = 2
+	},
 /turf/open/mars_cave/mars_cave_13,
 /area/bigredv2/caves/mining)
 "qU" = (
@@ -2251,6 +2264,7 @@
 "Jw" = (
 /obj/structure/machinery/optable,
 /obj/item/tank/anesthetic,
+/obj/item/clothing/mask/breath/medical,
 /turf/open/mars_cave/mars_cave_13,
 /area/bigredv2/caves/mining)
 "JA" = (
@@ -3158,7 +3172,10 @@
 "XQ" = (
 /obj/structure/surface/rack,
 /obj/item/storage/belt/medical/full,
-/obj/item/storage/belt/medical/full,
+/obj/item/storage/belt/medical/full{
+	pixel_x = 2;
+	pixel_y = 4
+	},
 /obj/item/storage/firstaid/regular,
 /turf/open/mars_cave/mars_cave_13,
 /area/bigredv2/caves/mining)
@@ -3630,7 +3647,7 @@ zj
 QF
 EE
 mV
-CO
+aO
 ZM
 Rn
 bc

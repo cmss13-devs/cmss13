@@ -2024,7 +2024,7 @@
 	req_access_txt = "100";
 	req_one_access = null
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/toilets)
 "MS" = (
 /obj/structure/machinery/storm_siren{

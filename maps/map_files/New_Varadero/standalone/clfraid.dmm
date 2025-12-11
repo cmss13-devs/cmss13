@@ -16,6 +16,7 @@
 /area/varadero/interior/research)
 "ad" = (
 /obj/structure/machinery/iv_drip,
+/obj/item/reagent_container/blood/OMinus,
 /turf/open/floor/shiva/purple/east,
 /area/varadero/interior/research)
 "af" = (
@@ -164,7 +165,7 @@
 "dZ" = (
 /obj/structure/window_frame/colony/reinforced,
 /obj/item/shard,
-/turf/open/floor/plating/icefloor/asteroidplating,
+/turf/open/floor/plating,
 /area/varadero/interior/research)
 "eo" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -1296,10 +1297,6 @@
 /obj/structure/machinery/power/apc/power/east,
 /turf/open/floor/shiva/purple/east,
 /area/varadero/interior/research)
-"Eg" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/research)
 "El" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -1350,7 +1347,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor/shiva/north,
+/turf/open/floor/plating,
 /area/varadero/interior/research)
 "EV" = (
 /obj/structure/machinery/light{
@@ -1594,7 +1591,10 @@
 "Jf" = (
 /obj/structure/surface/rack,
 /obj/item/storage/belt/medical/full,
-/obj/item/storage/belt/medical/full,
+/obj/item/storage/belt/medical/full{
+	pixel_x = 2;
+	pixel_y = 4
+	},
 /obj/item/storage/firstaid/regular,
 /turf/open/floor/shiva/north,
 /area/varadero/interior/research)
@@ -2444,7 +2444,7 @@ dZ
 pY
 Ah
 DD
-Eg
+Fk
 tU
 yl
 HL
@@ -2722,7 +2722,7 @@ FN
 ll
 HH
 Fp
-Eg
+Fk
 "}
 (15,1,1) = {"
 gM
@@ -2804,7 +2804,7 @@ ar
 HH
 gZ
 gZ
-Eg
+Fk
 gZ
 gZ
 hG
@@ -2867,7 +2867,7 @@ Sa
 ll
 hz
 gZ
-FE
+Fk
 dE
 ds
 EM
@@ -2950,8 +2950,8 @@ gM
 gZ
 gZ
 gZ
-Eg
-Eg
+Fk
+Fk
 gZ
 gZ
 gZ

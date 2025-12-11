@@ -1882,6 +1882,11 @@
 /area/shiva/exterior/junkyard/cp_bar)
 "XC" = (
 /obj/structure/surface/rack,
+/obj/item/storage/belt/medical/full,
+/obj/item/storage/belt/medical/full{
+	pixel_x = 2;
+	pixel_y = 4
+	},
 /obj/item/storage/firstaid/adv{
 	pixel_x = 3;
 	pixel_y = 5

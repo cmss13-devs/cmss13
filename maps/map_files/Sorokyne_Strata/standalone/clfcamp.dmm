@@ -31,6 +31,7 @@
 /area/strata/exterior/far_north_outpost)
 "ae" = (
 /obj/structure/machinery/iv_drip,
+/obj/item/reagent_container/blood/OMinus,
 /turf/open/gm/dirt/brown/variant_5,
 /area/strata/exterior/far_north_outpost)
 "af" = (
@@ -1475,6 +1476,14 @@
 "qS" = (
 /obj/structure/closet/crate,
 /obj/item/storage/belt/medical/full,
+/obj/item/storage/belt/medical/full{
+	pixel_x = 2;
+	pixel_y = 4
+	},
+/obj/item/storage/firstaid/adv{
+	pixel_x = 3;
+	pixel_y = 5
+	},
 /obj/item/storage/firstaid/adv,
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/interior/outpost/clf_dorms)

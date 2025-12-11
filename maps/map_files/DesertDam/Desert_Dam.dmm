@@ -941,13 +941,6 @@
 /obj/structure/prop/hybrisa/misc/urinal,
 /turf/closed/wall/r_wall/prison,
 /area/desert_dam/building/security/prison)
-"adT" = (
-/obj/structure/sink{
-	pixel_x = 1;
-	pixel_y = 20
-	},
-/turf/open/desert/dirt/desert_transition_edge1/southwest,
-/area/desert_dam/exterior/valley/valley_security)
 "adU" = (
 /obj/effect/blocker/toxic_water,
 /turf/open/gm/river/desert/shallow_edge/southeast,
@@ -64410,7 +64403,7 @@ dTs
 etD
 ljt
 kAq
-adT
+vtS
 hrM
 sup
 nTU

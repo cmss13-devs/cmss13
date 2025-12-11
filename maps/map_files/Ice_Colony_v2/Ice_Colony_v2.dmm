@@ -18874,12 +18874,6 @@
 	},
 /turf/open/floor/white,
 /area/ice_colony/underground/medical/treatment)
-"bwQ" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor/cafeteria,
-/area/ice_colony/underground/medical/treatment)
 "bwR" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor/white,
@@ -21858,7 +21852,7 @@
 /obj/structure/machinery/door/window/eastleft{
 	name = "Security Desk"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/darkred2/west,
 /area/ice_colony/underground/command/checkpoint)
 "bIO" = (
 /obj/structure/pipes/vents/pump,
@@ -23147,17 +23141,13 @@
 /area/ice_colony/underground/crew/leisure)
 "bNB" = (
 /obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/dark2,
+/turf/open/floor/plating,
 /area/ice_colony/underground/crew/leisure)
 "bND" = (
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/leisure)
 "bNE" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/wood,
-/area/ice_colony/underground/crew/leisure)
-"bNF" = (
-/obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/leisure)
 "bNG" = (
@@ -46209,7 +46199,7 @@ bqZ
 bqZ
 bqZ
 bwt
-bwQ
+bwS
 bxt
 bxQ
 bqZ
@@ -52442,7 +52432,7 @@ bME
 bMl
 bpu
 bpu
-bNF
+bNB
 bOn
 bOn
 bOn
@@ -54416,7 +54406,7 @@ bLJ
 bMc
 bpu
 bpu
-bNF
+bNB
 bOn
 bOS
 bPl

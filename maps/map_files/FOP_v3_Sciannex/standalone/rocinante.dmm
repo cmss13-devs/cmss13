@@ -213,6 +213,7 @@
 /area/fiorina/station/clf_ship)
 "aH" = (
 /obj/structure/machinery/iv_drip,
+/obj/item/reagent_container/blood/OMinus,
 /turf/open/floor/almayer/emerald/west,
 /area/fiorina/station/clf_ship)
 "aI" = (
@@ -1243,7 +1244,10 @@
 	},
 /obj/structure/surface/rack,
 /obj/item/storage/belt/medical/full,
-/obj/item/storage/belt/medical/full,
+/obj/item/storage/belt/medical/full{
+	pixel_x = 2;
+	pixel_y = 4
+	},
 /obj/item/storage/firstaid/regular,
 /turf/open/floor/almayer/emerald/southeast,
 /area/fiorina/station/clf_ship)

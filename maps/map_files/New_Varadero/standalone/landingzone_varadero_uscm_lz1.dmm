@@ -50,6 +50,10 @@
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz1_near)
+"ag" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/cargo)
 "ah" = (
 /turf/closed/wall/r_wall/elevator/gears,
 /area/varadero/interior/hall_N)
@@ -656,10 +660,6 @@
 /obj/structure/machinery/power/apc/power/north,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/comms4)
-"ff" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/shiva/yellowfull/west,
-/area/varadero/interior/cargo)
 "fh" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -692,7 +692,7 @@
 /area/varadero/exterior/lz1_near)
 "fw" = (
 /obj/structure/window/framed/colony,
-/turf/open/floor/shiva/floor3,
+/turf/open/floor/plating,
 /area/varadero/interior/hall_N)
 "fx" = (
 /obj/structure/machinery/light/small{
@@ -815,15 +815,6 @@
 /obj/effect/spawner/random/tool,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/lz1_near)
-"gf" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	dir = 1;
-	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
-	req_one_access = null
-	},
-/turf/open/floor/plating,
-/area/varadero/interior/maintenance/north)
 "gh" = (
 /obj/effect/sentry_landmark/lz_1/bottom_right,
 /turf/open/floor/asteroidfloor/north,
@@ -1361,7 +1352,7 @@
 /area/varadero/exterior/lz1_near)
 "kW" = (
 /obj/structure/window/framed/colony,
-/turf/open/floor/wood,
+/turf/open/floor/plating/icefloor,
 /area/varadero/interior/maintenance/north)
 "kX" = (
 /obj/structure/largecrate/random/mini/med{
@@ -1670,10 +1661,6 @@
 	},
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/varadero/exterior/comms4)
-"oe" = (
-/obj/structure/window/framed/colony,
-/turf/open/floor/shiva/floor3,
-/area/varadero/interior/chapel)
 "of" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor/shiva/floor3,
@@ -1702,7 +1689,7 @@
 "ol" = (
 /obj/structure/window/framed/colony,
 /obj/structure/sign/banners/happybirthdaysteve,
-/turf/open/floor/wood,
+/turf/open/floor/plating/icefloor,
 /area/varadero/interior/maintenance/north)
 "oo" = (
 /obj/structure/barricade/plasteel/wired,
@@ -2388,7 +2375,7 @@
 	req_access_txt = "100";
 	req_one_access = null
 	},
-/turf/open/floor/plating,
+/turf/open/floor/asteroidfloor/north,
 /area/varadero/interior/maintenance/north)
 "td" = (
 /obj/effect/decal/warning_stripes{
@@ -3754,7 +3741,7 @@
 	req_one_access = null;
 	req_access = null
 	},
-/turf/open/floor/plating,
+/turf/open/floor/asteroidfloor/north,
 /area/varadero/interior/maintenance/north)
 "DW" = (
 /obj/item/reagent_container/glass/bucket{
@@ -4805,7 +4792,7 @@
 "Ny" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/barricade/plasteel/wired,
-/turf/open/floor/plating,
+/turf/open/floor/dark2,
 /area/varadero/interior/morgue)
 "NE" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
@@ -6197,14 +6184,6 @@
 "Ze" = (
 /turf/open/gm/coast/south,
 /area/varadero/exterior/pontoon_beach)
-"Zh" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
-	req_one_access = null
-	},
-/turf/open/floor/plating,
-/area/varadero/interior/cargo)
 "Zl" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/coast/beachcorner2/south_west,
@@ -6484,9 +6463,9 @@ cF
 um
 cF
 qP
-ff
+sP
 qP
-ff
+sP
 qP
 qP
 fc
@@ -6543,7 +6522,7 @@ qP
 qP
 qP
 qP
-ff
+sP
 qP
 nN
 qP
@@ -6552,7 +6531,7 @@ LK
 QO
 kD
 qP
-ff
+sP
 qP
 eB
 qP
@@ -6627,7 +6606,7 @@ hy
 jo
 ar
 hs
-sP
+ag
 gA
 gA
 gA
@@ -6690,7 +6669,7 @@ qP
 lm
 iW
 NV
-sP
+ag
 gA
 gA
 gA
@@ -7570,7 +7549,7 @@ hy
 qP
 Qf
 LQ
-oe
+pY
 LQ
 FS
 bz
@@ -7626,7 +7605,7 @@ fF
 hy
 qP
 hy
-Zh
+fF
 hy
 qP
 cA
@@ -9843,7 +9822,7 @@ hm
 Xo
 lG
 qI
-gf
+oP
 gI
 gI
 "}

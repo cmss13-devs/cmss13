@@ -21,6 +21,16 @@
         "/datum/equipment_preset/survivor/hybrisa/kelland_miner",
         "/datum/equipment_preset/survivor/hybrisa/fire_fighter"
     ],
+    "synth_survivor_types": [
+        "/datum/equipment_preset/synth/survivor/solaris/civilian",
+        "/datum/equipment_preset/synth/survivor/solaris/engineer",
+        "/datum/equipment_preset/synth/survivor/solaris/medical",
+        "/datum/equipment_preset/synth/survivor/emt_synth_teal",
+        "/datum/equipment_preset/synth/survivor/solaris/ua_peacekeeper",
+        "/datum/equipment_preset/synth/survivor/cmb_synth",
+        "/datum/equipment_preset/synth/survivor/solaris/scientist",
+        "/datum/equipment_preset/synth/survivor/solaris/corporate"
+    ],
     "CO_survivor_types": [
         "/datum/equipment_preset/survivor/solaris_ridge/co_survivor"
     ],

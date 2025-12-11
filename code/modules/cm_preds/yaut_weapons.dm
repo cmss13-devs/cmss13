@@ -990,7 +990,7 @@
 
 	blocks_on_back = FALSE
 
-	var/last_attack = 0
+	COOLDOWN_DECLARE(attack_cooldown)
 	var/cooldown_time = 25 SECONDS
 
 /obj/item/weapon/shield/riot/yautja/raise_shield(mob/user)
@@ -1009,13 +1009,13 @@
 	if(user.l_hand == src)
 		user.update_inv_l_hand()
 
-/obj/item/weapon/shield/riot/yautja/attack(mob/living/M, mob/living/user)
+/obj/item/weapon/shield/riot/yautja/attack(mob/living/target, mob/living/user)
 	. = ..()
-	if(. && (world.time > last_attack + cooldown_time))
-		last_attack = world.time
-		M.throw_atom(get_step(M, user.dir), 1, SPEED_AVERAGE, user, FALSE)
-		M.apply_effect(3, DAZE)
-		M.apply_effect(5, SLOW)
+	if(COOLDOWN_FINISHED(src, attack_cooldown))
+		COOLDOWN_START(src, attack_cooldown, cooldown_time)
+		target.throw_atom(get_step(target, user.dir), 1, SPEED_AVERAGE, user, FALSE)
+		target.apply_effect(3, DAZE)
+		target.apply_effect(5, SLOW)
 
 
 /obj/item/weapon/shield/riot/yautja/ancient

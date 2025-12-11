@@ -501,7 +501,7 @@
 				return
 
 			for(var/obj/structure/cur_obj in turf_in_path.contents)
-				if(cur_obj.density && (cur_obj.unslashable || cur_obj.unacidable || cur_obj.explo_proof))
+				if(cur_obj.density && cur_obj.unslashable && cur_obj.unacidable)
 					to_chat(xeno, SPAN_WARNING("You can't jump over an object in your path."))
 					return
 

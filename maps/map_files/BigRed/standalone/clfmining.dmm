@@ -243,16 +243,16 @@
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "aN" = (
-/obj/structure/machinery/iv_drip,
-/obj/item/reagent_container/blood/OMinus,
-/turf/open/mars_cave/mars_dirt_4,
-/area/bigredv2/caves/mining)
-"aO" = (
 /obj/structure/largecrate/random,
 /obj/item/reagent_container/food/drinks/bottle/goldschlager{
 	pixel_y = 15
 	},
 /turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"aO" = (
+/obj/structure/machinery/iv_drip,
+/obj/item/reagent_container/blood/OMinus,
+/turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/caves/mining)
 "aP" = (
 /obj/structure/disposalpipe/broken{
@@ -3647,7 +3647,7 @@ zj
 QF
 EE
 mV
-aO
+aN
 ZM
 Rn
 bc
@@ -4259,7 +4259,7 @@ kH
 LW
 zb
 uy
-aN
+aO
 DV
 FO
 FO

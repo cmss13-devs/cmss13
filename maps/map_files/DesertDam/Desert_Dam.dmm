@@ -941,27 +941,32 @@
 /obj/structure/prop/hybrisa/misc/urinal,
 /turf/closed/wall/r_wall/prison,
 /area/desert_dam/building/security/prison)
+"adT" = (
+/turf/closed/wall/hangar{
+	name = "reinforced metal wall"
+	},
+/area/desert_dam/exterior/valley/valley_medical)
 "adU" = (
 /obj/effect/blocker/toxic_water,
 /turf/open/gm/river/desert/shallow_edge/southeast,
 /area/desert_dam/exterior/river/riverside_east)
 "adV" = (
-/turf/closed/wall/hangar{
-	name = "reinforced metal wall"
-	},
-/area/desert_dam/exterior/valley/valley_medical)
-"adW" = (
 /turf/closed/wall/r_wall/bunker{
 	name = "reinforced metal wall"
 	},
 /area/desert_dam/exterior/telecomm/lz1_valley)
+"adW" = (
+/turf/open/auto_turf/sand/layer2,
+/area/desert_dam/interior/lab_northeast/east_lab_containment)
 "adX" = (
 /obj/effect/blocker/toxic_water,
 /turf/open/desert/desert_shore/shore_corner2/east,
 /area/desert_dam/exterior/river/riverside_east)
 "adY" = (
-/turf/open/auto_turf/sand/layer2,
-/area/desert_dam/interior/lab_northeast/east_lab_containment)
+/turf/closed/wall/hangar{
+	name = "reinforced metal wall"
+	},
+/area/desert_dam/exterior/river/riverside_central_north)
 "adZ" = (
 /obj/structure/flora/bush/desert/cactus/multiple{
 	icon_state = "cacti_10"
@@ -1027,11 +1032,6 @@
 	},
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_labs)
-"ael" = (
-/turf/closed/wall/hangar{
-	name = "reinforced metal wall"
-	},
-/area/desert_dam/exterior/river/riverside_central_north)
 "aem" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
@@ -67143,9 +67143,9 @@ bdW
 aiZ
 aUL
 uJj
-adW
-adW
-adW
+adV
+adV
+adV
 dTs
 bkU
 bkU
@@ -67379,7 +67379,7 @@ aiZ
 eKe
 gYT
 oYp
-adW
+adV
 dTs
 bkU
 bBx
@@ -75753,7 +75753,7 @@ dTs
 dTs
 dTs
 dTs
-ael
+adY
 aZg
 bac
 bbK
@@ -77391,7 +77391,7 @@ dTs
 dTs
 dTs
 dTs
-ael
+adY
 aTk
 aUl
 aUl
@@ -84409,12 +84409,12 @@ acu
 afG
 afI
 aag
-adY
+adW
 amZ
 agL
 amq
 afI
-adY
+adW
 amZ
 amZ
 agL
@@ -84642,7 +84642,7 @@ acu
 acu
 afG
 afI
-adY
+adW
 amZ
 amZ
 agL
@@ -96914,17 +96914,17 @@ dib
 dib
 dib
 kRr
-adV
+adT
 ceo
 ceo
 ceo
 ceo
-adV
+adT
 ceo
 ceo
 ceo
 ceo
-adV
+adT
 caH
 dNI
 civ

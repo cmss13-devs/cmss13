@@ -91,10 +91,6 @@
 /obj/structure/machinery/power/apc/fully_broken/no_cell/north,
 /turf/open/floor/corsat/squareswood/north,
 /area/varadero/interior_protected/vessel)
-"aar" = (
-/obj/structure/window/framed/colony,
-/turf/open/floor/plating/icefloor,
-/area/varadero/interior/maintenance/north)
 "aas" = (
 /obj/structure/prop/rock/brown,
 /turf/open/gm/dirt,
@@ -22734,6 +22730,10 @@
 	},
 /turf/open/floor/shiva/yellowfull/west,
 /area/varadero/interior/comms3)
+"sid" = (
+/obj/structure/window/framed/colony,
+/turf/open/floor/plating/icefloor,
+/area/varadero/interior/maintenance/north)
 "siw" = (
 /obj/structure/platform/metal/kutjevo_smooth/west{
 	climb_delay = 1
@@ -43566,7 +43566,7 @@ rSA
 wMw
 rSA
 wMw
-aar
+sid
 hyr
 hyr
 hyr
@@ -43927,7 +43927,7 @@ dii
 wMw
 xVQ
 kyz
-aar
+sid
 huF
 huF
 huF
@@ -44112,7 +44112,7 @@ oaO
 wns
 vru
 wfS
-aar
+sid
 giN
 giN
 giN
@@ -44289,12 +44289,12 @@ mrC
 asx
 asx
 asx
-aar
+sid
 aSe
 rFv
 hQP
 iFm
-aar
+sid
 lGD
 giN
 hyr
@@ -44471,7 +44471,7 @@ mrC
 asx
 fZB
 asx
-aar
+sid
 kEB
 sSp
 hlw
@@ -45022,7 +45022,7 @@ hLt
 kUj
 ixw
 rmV
-aar
+sid
 giN
 hyr
 giN
@@ -45204,7 +45204,7 @@ hLt
 rmo
 qfC
 xbm
-aar
+sid
 giN
 hyr
 giN
@@ -45382,8 +45382,8 @@ lTR
 kpe
 msS
 huF
-aar
-aar
+sid
+sid
 bgE
 bgE
 bgE

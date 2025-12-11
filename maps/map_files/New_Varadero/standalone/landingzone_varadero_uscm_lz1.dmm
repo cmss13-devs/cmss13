@@ -1,12 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/obj/structure/machinery/door_control/brbutton{
-	id = "undergroundhangarwest";
-	name = "West Dock Door";
-	pixel_x = 6;
-	pixel_y = 32
-	},
-/turf/open/floor/plating/icefloor/warnplate/west,
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/cargo)
 "ab" = (
 /obj/structure/bed/chair/wood/normal{
@@ -15,6 +10,22 @@
 /turf/open/floor/carpet,
 /area/varadero/interior/library)
 "ac" = (
+/obj/structure/machinery/door_control/brbutton{
+	id = "undergroundhangarwest";
+	name = "West Dock Door";
+	pixel_x = 6;
+	pixel_y = 32
+	},
+/turf/open/floor/plating/icefloor/warnplate/west,
+/area/varadero/interior/cargo)
+"ad" = (
+/obj/structure/machinery/light,
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/floor/shiva/red/west,
+/area/varadero/interior/morgue)
+"ae" = (
 /obj/structure/barricade/plasteel/wired{
 	dir = 8
 	},
@@ -26,21 +37,14 @@
 	},
 /turf/open/floor/plating/icefloor/warnplate/east,
 /area/varadero/exterior/lz1_near)
-"ad" = (
-/obj/structure/machinery/light,
-/obj/structure/barricade/metal/wired{
-	dir = 8
-	},
-/turf/open/floor/shiva/red/west,
-/area/varadero/interior/morgue)
-"ae" = (
+"af" = (
 /obj/structure/machinery/landinglight/ds2/spoke{
 	pixel_x = -1;
 	pixel_y = 54
 	},
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
-"af" = (
+"ag" = (
 /obj/structure/platform/metal/kutjevo_smooth/north{
 	climb_delay = 1
 	},
@@ -50,10 +54,6 @@
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz1_near)
-"ag" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/cargo)
 "ah" = (
 /turf/closed/wall/r_wall/elevator/gears,
 /area/varadero/interior/hall_N)
@@ -6606,7 +6606,7 @@ hy
 jo
 ar
 hs
-ag
+aa
 gA
 gA
 gA
@@ -6669,7 +6669,7 @@ qP
 lm
 iW
 NV
-ag
+aa
 gA
 gA
 gA
@@ -8015,7 +8015,7 @@ BL
 PQ
 PQ
 PQ
-ae
+af
 DS
 Ly
 DS
@@ -8031,7 +8031,7 @@ PQ
 PQ
 PQ
 jB
-aa
+ac
 xk
 xk
 xk
@@ -8157,7 +8157,7 @@ gB
 bi
 In
 jB
-ac
+ae
 Ae
 Ae
 eF
@@ -8447,7 +8447,7 @@ Us
 sl
 Hc
 xe
-af
+ag
 bA
 aF
 gd

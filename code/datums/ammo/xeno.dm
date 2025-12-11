@@ -192,6 +192,12 @@
 	max_range = 8
 	spit_windup = 0.8 SECONDS
 	hits_lying_mobs = TRUE
+	var/acid_speedup_amount = 20
+
+/datum/ammo/xeno/acid/spatter/venator_corrosive_spit/on_hit_mob(mob/target_mob, obj/projectile/P)
+	. = ..()
+	var/datum/effects/acid/acid_effect = locate() in target_mob.effects_list
+	acid_effect.increment_duration(acid_speedup_amount)
 
 /datum/ammo/xeno/acid/spatter/venator_corrosive_spit/on_hit_mob(mob/target_mob, obj/projectile/P)
 	. = ..()

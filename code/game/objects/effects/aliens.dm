@@ -63,6 +63,14 @@
 	initial_hit_damage = 0
 	damage_amount = 10 //effectivly 4 due to the multipliers
 	time_to_live = 3 SECONDS
+	var/acid_speedup_amount = 20
+
+/obj/effect/xenomorph/spray/no_stun/venator/Initialize(mapload, new_cause_data, hive)
+	. = ..()
+	for(var/mob/living/carbon/human/target_mob)
+		var/datum/effects/acid/acid_effect = locate() in target_mob.effects_list
+		if(acid_effect)
+			acid_effect.increment_duration(acid_speedup_amount)
 
 /obj/effect/xenomorph/spray/Initialize(mapload, new_cause_data, hive) //Self-deletes
 	. = ..()

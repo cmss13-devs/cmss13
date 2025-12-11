@@ -35918,8 +35918,7 @@
 	id = "Containment Cell 3";
 	dir = 2;
 	req_one_access = list(28,206,207);
-	queen_pryable = 0;
-	closeOtherId = containment3
+	queen_pryable = 0
 	},
 /turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/medical/containment/cell)
@@ -36281,7 +36280,6 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/containment/contshutter{
 	name = "\improper Umbilical Containment Airlock";
 	req_one_access = list(28,206,207);
-	closeOtherId = containment3;
 	id = "Containment_Cell_Umbilical_B"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom,
@@ -38299,7 +38297,6 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/containment/contshutter{
 	name = "\improper Umbilical Containment Airlock";
 	req_one_access = list(28,206,207);
-	closeOtherId = containment2;
 	id = "Containment_Cell_Umbilical_A"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom,
@@ -38430,8 +38427,7 @@
 	id = "Containment Cell 2";
 	dir = 2;
 	req_one_access = list(28,206,207);
-	queen_pryable = 0;
-	closeOtherId = containment2
+	queen_pryable = 0
 	},
 /turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/medical/containment/cell)

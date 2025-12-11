@@ -56,7 +56,7 @@
 		SPAN_NOTICE("[user] has separated your corneas."),
 		SPAN_NOTICE("[user] has separated [target]'s corneas."))
 
-	log_interact(user, target, "[key_name(user)] separated and reshaped the corneas on [key_name(target)]'s eyes with [tool], starting [surgery].")
+	log_interact(user, target, "[key_name(user)] separated the corneas on [key_name(target)]'s eyes with [tool], starting [surgery].")
 
 	to_chat(target, SPAN_WARNING("Everything goes blurry."))
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SHALLOW
@@ -101,7 +101,7 @@
 		SPAN_NOTICE("[user] has lifted your corneas and moving the lenses."),
 		SPAN_NOTICE("[user] has lifted [target]'s corneas and moving the lenses."))
 
-	log_interact(user, target, "[key_name(user)] lifted the cornea from [key_name(target)]'s eyes with [tool].")
+	log_interact(user, target, "[key_name(user)] lifted the corneas and lenses away from [key_name(target)]'s eyes with [tool].")
 
 /datum/surgery_step/lift_corneas/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/eye_repair/surgery)
 	user.affected_message(target,
@@ -109,7 +109,7 @@
 		SPAN_WARNING("[user]'s hand slips, damaging your eyes with [tool]!"),
 		SPAN_WARNING("[user]'s hand slips, damaging [target]'s eyes with [tool]!"))
 
-	log_interact(user, target, "[key_name(user)] failed to lift the cornea from [key_name(target)]'s eyes with [tool].")
+	log_interact(user, target, "[key_name(user)] failed to lift the corneas and lenses away from [key_name(target)]'s eyes with [tool].")
 
 	target.apply_damage(10, BRUTE, target_zone)
 	surgery.target_eyes.take_damage(5, FALSE)

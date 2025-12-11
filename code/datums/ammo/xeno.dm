@@ -239,8 +239,8 @@
 	var/mob/living/carbon/human/human = target_mob
 	human.KnockDown(direct_stun)
 	var/datum/effects/acid/acid_effect = locate() in target_mob.effects_list
-		if(acid_effect)
-			acid_effect.enhance_acid()
+	if(acid_effect)
+		acid_effect.enhance_acid()
 
 
 /datum/ammo/xeno/acid/venator_acid_blob/on_hit_obj(obj/target_object, obj/projectile/proj_hit)

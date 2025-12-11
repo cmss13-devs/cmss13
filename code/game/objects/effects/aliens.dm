@@ -76,11 +76,11 @@
 /obj/effect/xenomorph/spray/no_stun/venator/Crossed(AM)
 	. = ..()
 	if(!istype(AM, /mob/living/carbon/human))
-	var/mob/living/carbon/human/target_mob
-	for(var/mob/living/carbon/human/target_mob)
-		var/datum/effects/acid/acid_effect = locate() in target_mob.effects_list
-		if(acid_effect)
-			acid_effect.increment_duration(acid_speedup_amount_corssed)
+		return
+	var/mob/living/carbon/human/target_mob = AM
+	var/datum/effects/acid/acid_effect = locate() in target_mob.effects_list
+	if(acid_effect)
+		acid_effect.increment_duration(acid_speedup_amount_corssed)
 
 /obj/effect/xenomorph/spray/Initialize(mapload, new_cause_data, hive) //Self-deletes
 	. = ..()

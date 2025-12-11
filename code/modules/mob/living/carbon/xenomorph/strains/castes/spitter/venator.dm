@@ -90,18 +90,21 @@
 	action_icon_state = "xeno_spit"
 	plasma_cost = 45
 	ammo = /datum/ammo/xeno/acid/spatter/venator_corrosive_spit
+	ability_primacy = XENO_PRIMARY_ACTION_1
 
 /datum/action/xeno_action/activable/xeno_spit/bombard/venetor/acid_blob
 	name = "acid blob"
 	action_icon_state = "acid_glob"
 	plasma_cost = 65
 	ammo = /datum/ammo/xeno/acid/venator_acid_blob
+	ability_primacy = XENO_PRIMARY_ACTION_2
 
 /datum/action/xeno_action/activable/xeno_spit/bombard/venetor/enzymatic_breath
 	name = "enzymatic breath"
 	action_icon_state = "breath"
 	plasma_cost = 55
 	ammo = /datum/ammo/xeno/acid/spatter/venator_enzymatic_breath
+	ability_primacy = XENO_PRIMARY_ACTION_3
 
 
 /datum/action/xeno_action/onclick/store_acid
@@ -109,6 +112,7 @@
 	action_icon_state = "store_acid_base"
 	xeno_cooldown = 5 SECONDS
 	plasma_cost = 150
+	ability_primacy = XENO_PRIMARY_ACTION_4
 
 /datum/action/xeno_action/onclick/store_acid/can_use_action()
 	. = ..()

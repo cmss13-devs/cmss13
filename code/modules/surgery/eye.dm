@@ -60,7 +60,7 @@
 
 	to_chat(target, SPAN_WARNING("Everything goes blurry."))
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SHALLOW
-	target.disabilities |= NEARSIGHTED // code\#define\mobs.dm
+	target.disabilities |= NEARSIGHTED // My corneas! I can't see!
 
 /datum/surgery_step/separate_corneas/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/eye_repair/surgery)
 	user.affected_message(target,

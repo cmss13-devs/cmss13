@@ -204,8 +204,6 @@
 
 	if(istype(attacking_object, /obj/item/storage/pill_bottle)) //dumping a pill bottle's contents in a container
 		var/obj/item/storage/pill_bottle/pbottle = attacking_object
-		if(!istype(src, /obj/item/reagent_container))
-			return
 		if(!is_open_container())
 			to_chat(user, SPAN_WARNING("[src] has a lid on it. You can't dump pills into [src] with the lid in the way."))
 			return

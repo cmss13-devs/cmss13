@@ -17664,8 +17664,7 @@
 "aVi" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/research{
 	dir = 8;
-	name = "\improper Decontamination Lounge Airlock";
-	closeOtherId = containment
+	name = "\improper Decontamination Lounge Airlock"
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/containment)
@@ -22203,8 +22202,7 @@
 "bfN" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/research{
 	dir = 8;
-	name = "\improper Decontamination Lounge Airlock";
-	closeOtherId = containment
+	name = "\improper Decontamination Lounge Airlock"
 	},
 /turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/medical/containment)
@@ -22274,8 +22272,7 @@
 	name = "\improper Containment Stairs";
 	id = "ResearchStairs_A";
 	dir = 2;
-	req_one_access = list(28,206,207);
-	closeOtherId = containment
+	req_one_access = list(28,206,207)
 	},
 /turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/medical/containment)

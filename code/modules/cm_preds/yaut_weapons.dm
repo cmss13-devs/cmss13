@@ -981,7 +981,7 @@
 		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
 	)
 	item_state = "shield"
-	flags_item = NODROP|ITEM_PREDATOR
+	flags_item = ITEM_PREDATOR
 	flags_equip_slot = SLOT_BACK
 
 	shield_type = SHIELD_DIRECTIONAL
@@ -1046,6 +1046,7 @@
 	base_icon_state = "bracer_shield"
 	item_state = "bracer_shield"
 	flags_equip_slot = NO_FLAGS
+	flags_item = NODROP|ITEM_PREDATOR
 
 /*#########################################
 ########### Two Handed Weapons ############

@@ -37097,7 +37097,7 @@
 	pixel_y = 8;
 	req_one_access_txt = "19;28";
 	pixel_x = 6;
-	specialfunctions = BOLTS
+	specialfunctions = 4
 	},
 /turf/open/floor/almayer/flooredge/north,
 /area/almayer/medical/containment)
@@ -37531,7 +37531,7 @@
 	name = "Stairway Entrance Lock";
 	pixel_y = 24;
 	req_one_access_txt = "19;28";
-	specialfunctions = BOLTS
+	specialfunctions = 4
 	},
 /turf/open/floor/almayer/flooredge/southwest,
 /area/almayer/medical/containment)
@@ -37543,7 +37543,7 @@
 	pixel_y = 24;
 	req_one_access_txt = "19;28";
 	pixel_x = -7;
-	specialfunctions = BOLTS
+	specialfunctions = 4
 	},
 /obj/structure/sign/safety/bulkhead_door{
 	pixel_y = 26;
@@ -37746,7 +37746,7 @@
 	pixel_y = 0;
 	req_one_access_txt = "19;28";
 	pixel_x = 6;
-	specialfunctions = BOLTS
+	specialfunctions = 4
 	},
 /turf/open/floor/almayer/flooredge/south,
 /area/almayer/medical/containment)

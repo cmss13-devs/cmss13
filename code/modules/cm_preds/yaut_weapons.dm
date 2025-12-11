@@ -1011,7 +1011,7 @@
 
 /obj/item/weapon/shield/riot/yautja/attack(mob/living/target, mob/living/user)
 	. = ..()
-	if(COOLDOWN_FINISHED(src, attack_cooldown))
+	if(. && (COOLDOWN_FINISHED(src, attack_cooldown)))
 		COOLDOWN_START(src, attack_cooldown, cooldown_time)
 		target.throw_atom(get_step(target, user.dir), 1, SPEED_AVERAGE, user, FALSE)
 		target.apply_effect(3, DAZE)

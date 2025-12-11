@@ -205,12 +205,12 @@
 	if(istype(attacking_object, /obj/item/storage/pill_bottle)) //dumping a pill bottle's contents in a container
 		var/obj/item/storage/pill_bottle/pbottle = attacking_object
 		if(!is_open_container())
-			to_chat(user, SPAN_WARNING("[src] has a lid on. You can't dump pills into [src] with the lid in the way."))
+			to_chat(user, SPAN_WARNING("[src] has a lid on it. You can't dump pills into [src] with the lid in the way."))
 			return
-		if(reagents.total_volume <= 0)
+		if(reagents?.total_volume <= 0)
 			to_chat(user, SPAN_WARNING("[src] needs to contain some liquid to dissolve the pills in."))
 			return
-		if(src.reagents.total_volume == src.reagents.maximum_volume)
+		if(reagents.total_volume == reagents.maximum_volume)
 			to_chat(user, SPAN_WARNING("[src] is full. You cannot dissolve any more pills."))
 			return
 		if(length(pbottle.contents) <= 0)

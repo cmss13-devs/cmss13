@@ -135,10 +135,13 @@
 	if(!proximity)
 		return
 
-	if(!is_open_container())
+	if(!istype(target, /obj/item/reagent_container))
+		return
+
+	if(!target.is_open_container())
 		to_chat(user, SPAN_WARNING("[target] has a lid on it. You can't drop [fluff_text] in [target] with the lid in the way."))
 		return
-	if(reagents?.total_volume <= 0)
+	if(target.reagents?.total_volume <= 0)
 		to_chat(user, SPAN_WARNING("[target] needs to contain some liquid to dissolve [fluff_text] in."))
 		return
 
@@ -146,7 +149,7 @@
 	reagents.trans_to(target, reagents.total_volume)
 
 	user.visible_message(SPAN_WARNING("[user] puts something [fluff_text] in [target]."),
-	SPAN_WARNING("You put [fluff_text] in [target]."))
+	SPAN_WARNING("You put [fluff_text] in [target]."), null, 2)
 
 	log_interact(user, target, "[key_name(user)] dissolved a [fluff_text] with [rgt_list_text] into [src].")
 	QDEL_IN(src, 5)

@@ -135,7 +135,7 @@
 	if(!proximity)
 		return
 
-	if(target.is_open_container() != 0 && target.reagents <= 0)
+	if(target.is_open_container() != 0 && target.reagents?.total_volume > 0)
 		if(!target.reagents.total_volume)
 			to_chat(user, SPAN_DANGER("[target] is empty. Can't dissolve [fluff_text]."))
 			return

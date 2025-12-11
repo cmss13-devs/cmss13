@@ -648,7 +648,7 @@
 /turf/open/floor/strata/floor3,
 /area/strata/interior/mining_outpost/flight_control)
 "dP" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/interior/mining_outpost)
 "dQ" = (
@@ -953,7 +953,7 @@
 /turf/open/asphalt/cement/cement15,
 /area/strata/interior/landing_zones/lz1)
 "le" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
@@ -1530,7 +1530,7 @@
 /turf/open/floor/strata/red1,
 /area/strata/interior/landing_zones/near_lz1)
 "yu" = (
-/obj/structure/reagent_dispensers/fueltank/spacecraft,
+/obj/structure/reagent_dispensers/tank/fuel/spacecraft,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/mining_outpost/hive)
 "yE" = (
@@ -1830,7 +1830,7 @@
 /turf/open/floor/strata/floor3,
 /area/strata/interior/mining_outpost)
 "Fu" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/strata/orange_cover,
 /area/strata/interior/mining_outpost)
 "Fv" = (
@@ -2035,7 +2035,7 @@
 /turf/open/floor/strata/multi_tiles,
 /area/strata/interior/mining_outpost)
 "JI" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/mining_outpost/hive)
 "JS" = (

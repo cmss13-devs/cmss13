@@ -79,6 +79,11 @@
 	if(stacked_size)
 		stack_collapse()
 
+/obj/structure/bed/chair/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	. = ..()
+	if(stacked_size)
+		stack_collapse()
+
 /obj/structure/bed/chair/attackby(obj/item/I, mob/user)
 	if(HAS_TRAIT(I, TRAIT_TOOL_WRENCH) && stacked_size)
 		to_chat(user, SPAN_NOTICE("You'll need to unstack the chairs before you can take one apart."))

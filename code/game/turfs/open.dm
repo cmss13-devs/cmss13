@@ -720,9 +720,9 @@
 			river_slowdown -= 0.7
 			if(isboiler(C))
 				river_slowdown -= 1
+		river_slowdown = max(0, river_slowdown)
 
-		var/new_slowdown = C.next_move_slowdown + river_slowdown
-		C.next_move_slowdown = new_slowdown
+		C.next_move_slowdown += river_slowdown
 
 	if(ishuman(AM))
 		var/mob/living/carbon/human/H = AM

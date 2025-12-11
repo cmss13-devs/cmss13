@@ -86,7 +86,7 @@
 
 	if(!range_bounds)
 		set_range()
-	targets = SSquadtree.players_in_range(range_bounds, z, QTREE_SCAN_MOBS | QTREE_EXCLUDE_OBSERVER)
+	targets = SSquadtree.players_in_range(range_bounds, z, QTREE_SCAN_MOBS | QTREE_FILTER_LIVING)
 	if(!targets)
 		return FALSE
 
@@ -424,21 +424,23 @@
 			continue
 
 		var/blocked = FALSE
-		for(var/turf/T in path)
-			if(T.density || T.opacity)
+		for(var/turf/turf in path)
+			if(turf.density || turf.opacity)
 				blocked = TRUE
 				break
 
-			for(var/obj/structure/S in T)
+			for(var/obj/structure/S in turf)
 				if(S.opacity)
 					blocked = TRUE
 					break
 
-			for(var/obj/vehicle/multitile/V in T)
+			for(var/obj/vehicle/multitile/V in turf)
 				blocked = TRUE
 				break
 
-			for(var/obj/effect/particle_effect/smoke/S in T)
+			for(var/obj/effect/particle_effect/smoke/smoke in turf)
+				if(!smoke.obscuring)
+					continue
 				blocked = TRUE
 				break
 
@@ -657,6 +659,11 @@
 			. += SPAN_INFO("Its battery indicator is flashing red.")
 		if(TURRET_BATTERY_STATE_DEAD)
 			. += SPAN_INFO("It appears to be offline.")
+
+/obj/structure/machinery/defenses/sentry/premade/deployable/colony/landing_zone/handle_vehicle_bump(obj/vehicle/multitile/bumping_vehicle)
+	var/mob/driver = bumping_vehicle.seats[VEHICLE_DRIVER]
+	to_chat(driver, SPAN_WARNING("[src] is in the way!"))
+	return FALSE // Prevent movement over
 
 /obj/structure/machinery/defenses/sentry/premade/deployable/colony/landing_zone/proc/set_battery_state(state)
 	battery_state = state

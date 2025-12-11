@@ -39,6 +39,8 @@
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/flags_embryo = NO_FLAGS
 	var/impregnated = FALSE
+	/// How many units of stims are drained upon hugging
+	var/stim_drain = 30
 
 	/// The timer for the hugger to jump
 	/// at the nearest human
@@ -315,6 +317,8 @@
 	if(!sterile)
 		if(!human.species || !(human.species.flags & IS_SYNTHETIC)) //synthetics aren't paralyzed
 			human.apply_effect(MIN_IMPREGNATION_TIME * 0.5 * knockout_mod, PARALYZE) //THIS MIGHT NEED TWEAKS
+			for(var/datum/reagent/generated/stim in human.reagents.reagent_list) // Banish them stims
+				human.reagents.remove_reagent(stim.id, stim_drain, TRUE)
 
 	var/area/hug_area = get_area(src)
 	var/name = hugger ? "[hugger]" : "\a [src]"
@@ -572,7 +576,8 @@
 		else
 			visible_message(SPAN_DANGER("[hugger] smashes against [src]'s [W.name] and rips it off!"))
 			drop_inv_item_on_ground(W)
-
+	if(wear_mask)
+		drop_inv_item_on_ground(wear_mask) // drop any item from the face that wasn't handled above (e.g cigs, glasses)
 	return can_infect
 
 /datum/species/proc/handle_hugger_attachment(mob/living/carbon/human/target, obj/item/clothing/mask/facehugger/hugger, mob/living/carbon/xenomorph/facehugger/mob_hugger)

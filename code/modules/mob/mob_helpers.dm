@@ -136,16 +136,20 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
  *
  * Arguments:
  * * message - an html string value to be parsed and modified.
+ * * clear_char_probability - the likelihood a character does not get converted into a *
  *
  * Return:
  * returns the parsed and modified html output with the text content being partially scrambled with asteriks
  */
-/proc/stars_decode_html(message)
+/proc/stars_decode_html(message, clear_char_probability = 25)
 	if(!length(message))
-		return
+		return ""
+
+	if(clear_char_probability >= 100)
+		return message
 
 	// boolean value to know if the current indexed element needs to be scrambled.
-	var/parsing_message = FALSE
+	var/parsing_message = TRUE
 
 	// boolean values to know if we are currently inside a double or single quotation.
 	var/in_single_quote = FALSE
@@ -186,7 +190,7 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 			parsing_message = FALSE
 			current_tag = ""
 			if(length(current_string_to_scramble))
-				var/scrambled_string = stars(current_string_to_scramble)
+				var/scrambled_string = stars(current_string_to_scramble, clear_char_probability)
 				output_message += scrambled_string
 				current_string_to_scramble = ""
 
@@ -195,7 +199,43 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 		else
 			output_message += current_char
 			current_tag += current_char
+
+	if(length(current_string_to_scramble))
+		var/scrambled_string = stars(current_string_to_scramble, clear_char_probability)
+		output_message += scrambled_string
+
 	return output_message
+
+GLOBAL_LIST_INIT(last_announcement_time, list(FACTION_MARINE = 0))
+
+/**
+ * Gets a stars_decode_html result with a variable clarity based on message length and optionally the time since last announcement
+ *
+ * Arguments:
+ * * message - The message to garble (its length is used for clarity calculation)
+ * * length_modifier - An optional number to subtract against message length
+ * * faction_for_cooldown - An optional faction define that is used to check for clarity calculation and set in GLOB.last_announcement_time for that faction
+ */
+/proc/get_garbled_announcement(message, length_modifier, faction_for_cooldown)
+	var/length_max_bound = CONFIG_GET(number/announcement_max_bound)
+	var/length_min_bound = CONFIG_GET(number/announcement_min_bound)
+	var/clarity_min = CONFIG_GET(number/announcement_min_clarity)
+	var/clarity_max = CONFIG_GET(number/announcement_max_clarity)
+
+	var/length_clamped = clamp(length(message) - length_modifier, length_min_bound, length_max_bound)
+	var/length_scalar = SCALE(length_clamped, length_min_bound, length_max_bound)
+	var/duration_scalar = 1
+	if(faction_for_cooldown)
+		var/duration_min_bound = CONFIG_GET(number/announcement_duration_min_bound)
+		var/duration_max_bound = CONFIG_GET(number/announcement_duration_max_bound)
+
+		var/duration_clamped = clamp(world.time - GLOB.last_announcement_time[faction_for_cooldown], duration_min_bound, duration_max_bound)
+		duration_scalar = 1 - SCALE(duration_clamped, duration_min_bound, duration_max_bound)
+		GLOB.last_announcement_time[faction_for_cooldown] = world.time
+
+	// Clarity is the better of the two (either a short message, or after a long duration)
+	var/clarity = round(lerp(clarity_max, clarity_min, min(length_scalar, duration_scalar)), 1)
+	return stars_decode_html(message, clarity)
 
 /proc/slur(phrase)
 	phrase = html_decode(phrase)
@@ -330,8 +370,8 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 
 	M.shakecamera = world.time + steps * time_per_step
 	strength = abs(strength)*PIXELS_PER_STRENGTH_VAL
-	var/old_X = M.client.pixel_x
-	var/old_y = M.client.pixel_y
+	var/old_X = M.client.get_pixel_x()
+	var/old_y = M.client.get_pixel_y()
 
 	animate(M.client, pixel_x = old_X + rand(-(strength), strength), pixel_y = old_y + rand(-(strength), strength), easing = CUBIC_EASING | EASE_IN, time = time_per_step, flags = ANIMATION_PARALLEL)
 	var/i = 1

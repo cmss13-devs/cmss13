@@ -46,6 +46,33 @@
 	action_icon_state = "order_focus"
 	order_type = COMMAND_ORDER_FOCUS
 
+/datum/action/human_action/cycle_voice_level
+	name = "Cycle Voice Level"
+	action_icon_state = "leadership_voice_low"
+
+/datum/action/human_action/cycle_voice_level/action_activate()
+	. = ..()
+	if(!ishuman(owner)) // i actually don't know if this is necessary
+		return
+	var/mob/living/carbon/human/my_voice = owner
+	my_voice.cycle_voice_level()
+	update_button_icon()
+
+/datum/action/human_action/cycle_voice_level/update_button_icon()
+	var/mob/living/carbon/human/my_voice = owner
+	switch(my_voice.langchat_styles) // honestly, could probably merge this one with the cycle_voice_level proc
+		if("", null)
+			action_icon_state = "leadership_voice_off"
+
+		if("langchat_smaller_bolded")
+			action_icon_state = "leadership_voice_low"
+
+		if("langchat_bolded")
+			action_icon_state = "leadership_voice_high"
+
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+
 /datum/action/human_action/psychic_whisper
 	name = "Psychic Whisper"
 	action_icon_state = "cultist_channel_hivemind"
@@ -330,7 +357,7 @@ CULT
 		return
 	var/mob/living/carbon/human/Hu = owner
 
-	if(H.skills && (skillcheck(H, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT) || skillcheck(H, SKILL_POLICE, SKILL_POLICE_SKILLED)))
+	if(H.skills && (skillcheck(H, SKILL_LEADERSHIP, SKILL_LEAD_SKILLED) || skillcheck(H, SKILL_POLICE, SKILL_POLICE_SKILLED)))
 		to_chat(Hu, SPAN_WARNING("This mind is too strong to target with your abilities."))
 		return
 
@@ -382,7 +409,7 @@ CULT
 		to_chat(H, SPAN_XENOMINORWARNING("You decide not to convert [chosen]."))
 		return
 
-	var/datum/equipment_preset/preset = GLOB.gear_path_presets_list[/datum/equipment_preset/other/xeno_cultist]
+	var/datum/equipment_preset/preset = GLOB.equipment_presets.gear_path_presets_list[/datum/equipment_preset/other/xeno_cultist]
 	preset.load_race(chosen)
 	preset.load_status(chosen, H.hivenumber)
 
@@ -579,8 +606,8 @@ CULT
 	H.cancel_camera()
 	H.reset_view()
 	H.client.change_view(GLOB.world_view_size, target)
-	H.client.pixel_x = 0
-	H.client.pixel_y = 0
+	H.client.set_pixel_x(0)
+	H.client.set_pixel_y(0)
 
 //Similar to a cancel-camera-view button, but for mobs that were buckled to special vehicle seats.
 //Unbuckles them, which handles the view and offsets resets and other stuff.
@@ -612,8 +639,8 @@ CULT
 
 	H.unset_interaction()
 	H.client.change_view(GLOB.world_view_size, target)
-	H.client.pixel_x = 0
-	H.client.pixel_y = 0
+	H.client.set_pixel_x(0)
+	H.client.set_pixel_y(0)
 	H.reset_view()
 	remove_from(H)
 

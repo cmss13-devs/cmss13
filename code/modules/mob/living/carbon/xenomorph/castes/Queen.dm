@@ -245,9 +245,9 @@
 		M.client.perspective = EYE_PERSPECTIVE
 
 		if(is_watching)
-			M.client.eye = is_watching
+			M.client.set_eye(is_watching)
 		else
-			M.client.eye = src
+			M.client.set_eye(src)
 
 	return COMPONENT_OVERRIDE_VIEW
 
@@ -507,7 +507,6 @@
 
 
 	full_designation = "[name_client_prefix][nicknumber][name_client_postfix]"
-	color = hive.color
 
 	//Update linked data so they show up properly
 	change_real_name(src, name)

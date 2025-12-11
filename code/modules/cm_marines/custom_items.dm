@@ -28,7 +28,7 @@ GLOBAL_LIST_INIT(random_personal_possessions, generate_random_possessions())
 				continue
 			kit_gear += current_path
 
-		if(!length(kit_gear)) //shouldnt let them get empty kits
+		if(!length(kit_gear)) //shouldn't let them get empty kits
 			stack_trace("Missing gear in Donator Gear. [donor_key] has an empty Donator Kit.")
 			continue
 

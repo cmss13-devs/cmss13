@@ -86,6 +86,9 @@
 		3 MINUTES,\
 	)
 
+/mob/living/carbon/xenomorph/facehugger/warn_away_timer()
+	return // Ghostizing will just convert to regular hugger
+
 /mob/living/carbon/xenomorph/facehugger/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
@@ -174,7 +177,7 @@
 	qdel(src)
 	return did_hug
 
-/mob/living/carbon/xenomorph/facehugger/ghostize(can_reenter_corpse, aghosted)
+/mob/living/carbon/xenomorph/facehugger/ghostize(can_reenter_corpse = FALSE, aghosted = FALSE, transfer = FALSE)
 	if(!aghosted && !can_reenter_corpse && !QDELETED(src) && stat != DEAD)
 		// Become a npc once again
 		new /obj/item/clothing/mask/facehugger(loc, hivenumber)

@@ -227,7 +227,6 @@
 					return
 				message = "against [user.p_their()] head!"
 				L.take_damage(brute = 3) //ouch! but you're a tough badass so it barely hurts
-				H.UpdateDamageIcon()
 			if("l_foot" , "r_foot")
 				if(!L)
 					to_chat(user, SPAN_WARNING("You don't have a [H.zone_selected], can't crush yer can under nothing!"))

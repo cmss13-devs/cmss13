@@ -252,7 +252,7 @@
 	behavior.mid_charge = TRUE
 	xeno.visible_message(SPAN_XENODANGER("[xeno] uses its shield to bash [human] as it charges at them!"), SPAN_XENODANGER("We use our shield to bash [human] as we charge at them!"))
 	human.apply_effect(behavior.knockdown_amount, WEAKEN)
-	human.attack_alien(xeno, rand(xeno.melee_damage_lower, xeno.melee_damage_upper))
+	human.attack_alien(xeno, rand(xeno.melee_damage_lower, xeno.melee_damage_upper), unblockable=TRUE)
 	behavior.mid_charge = FALSE
 
 	var/facing = get_dir(xeno, human)

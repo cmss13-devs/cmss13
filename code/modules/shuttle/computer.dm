@@ -189,7 +189,7 @@
 
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
-		ui = new(user, src, "NavigationShuttle", "[ert.name] Navigation Computer")
+		ui = new(user, src, "NavigationShuttle", "[capitalize(ert.name)] Navigation Computer")
 		ui.open()
 
 
@@ -488,3 +488,6 @@
 		return XENO_NO_DELAY_ACTION
 	else
 		return ..()
+
+/obj/structure/machinery/computer/shuttle/lifeboat/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	return TAILSTAB_COOLDOWN_NONE

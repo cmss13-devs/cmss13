@@ -846,7 +846,6 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi'
 	)
 
-
 /obj/item/clothing/head/helmet/marine/jungle
 	icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
@@ -855,7 +854,6 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
 	)
-
 
 /obj/item/clothing/head/helmet/marine/snow
 	name = "\improper M10 marine snow helmet"
@@ -923,6 +921,53 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 	flags_marine_helmet = HELMET_GARB_OVERLAY|HELMET_DAMAGE_OVERLAY
 
+/obj/item/clothing/head/helmet/marine/medic/grey
+	desc = "An M10 marine helmet version worn by marine hospital corpsmen. Has red cross painted on its front. This one has not had a camouflage pattern applied to it yet. There is a built-in camera on the right side."
+	icon = 'icons/obj/items/clothing/hats/hats_by_map/classic.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/classic.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi'
+	)
+
+/obj/item/clothing/head/helmet/marine/medic/jungle
+	icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
+	)
+
+/obj/item/clothing/head/helmet/marine/medic/snow
+	name = "\improper M10 pattern medic snow helmet"
+	icon = 'icons/obj/items/clothing/hats/hats_by_map/snow.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
+
+/obj/item/clothing/head/helmet/marine/medic/desert
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	icon = 'icons/obj/items/clothing/hats/hats_by_map/desert.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/desert.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi'
+	)
+
+/obj/item/clothing/head/helmet/marine/medic/urban
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	icon = 'icons/obj/items/clothing/hats/hats_by_map/urban.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/urban.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
+	)
+
 /obj/item/clothing/head/helmet/marine/covert
 	name = "\improper M10 covert helmet"
 	desc = "An M10 marine helmet version designed for use in darkened environments. It is coated with a special anti-reflective paint."
@@ -972,6 +1017,53 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	name = "\improper XM12 pattern intelligence helmet"
 	desc = "An experimental brain-bucket. A dust ruffle hangs from back. Moderately better at deflecting blunt objects at the cost of humiliation, can also hold a second visor optic. But who will be laughing at the memorial? Not you, you'll be busy getting medals for your intel work."
 	specialty = "XM12 pattern intel"
+
+/obj/item/clothing/head/helmet/marine/rto/intel/grey
+	desc = "An experimental brain-bucket. A dust ruffle hangs from back. Moderately better at deflecting blunt objects at the cost of humiliation, can also hold a second visor optic. But who will be laughing at the memorial? Not you, you'll be busy getting medals for your intel work. This one has not had a camouflage pattern applied to it yet."
+	icon = 'icons/obj/items/clothing/hats/hats_by_map/classic.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/classic.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi'
+	)
+
+/obj/item/clothing/head/helmet/marine/rto/intel/jungle
+	icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
+	)
+
+/obj/item/clothing/head/helmet/marine/rto/intel/snow
+	name = "\improper XM12 pattern intel snow helmet"
+	icon = 'icons/obj/items/clothing/hats/hats_by_map/snow.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
+
+/obj/item/clothing/head/helmet/marine/rto/intel/desert
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	icon = 'icons/obj/items/clothing/hats/hats_by_map/desert.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/desert.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi'
+	)
+
+/obj/item/clothing/head/helmet/marine/rto/intel/urban
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	icon = 'icons/obj/items/clothing/hats/hats_by_map/urban.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/urban.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
+	)
 
 /obj/item/clothing/head/helmet/marine/specialist
 	name = "\improper B18 helmet"
@@ -1186,6 +1278,9 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	inserted_visors = list(new /obj/item/device/helmet_visor/po_visor)
 	max_inserted_visors = 1
 
+/obj/item/clothing/head/helmet/marine/pilot/novisor //For vendors that give sepreate visor options
+	inserted_visors = list()
+
 /obj/item/clothing/head/helmet/marine/pilot/tex
 	name = "\improper Tex's MK30 tactical helmet"
 	desc = "The MK30 tactical helmet has an eyepiece filter used to filter tactical data. It is required to fly the dropships manually and in safety. This one belonged to Tex: the craziest sum'bitch pilot the Almayer ever had. He's not dead or anything, but he did get a medical discharge after he was hit by a car on shore leave last year."
@@ -1259,6 +1354,53 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
 	specialty = "M10 pattern military police"
 	built_in_visors = list(new /obj/item/device/helmet_visor/security)
+
+/obj/item/clothing/head/helmet/marine/MP/grey
+	desc = "A special variant of the M10 Pattern Helmet worn by the Military Police of the USCM. Whether you're facing a crime syndicate or a mutiny, this bucket will keep your brains intact. This one has not had a camouflage pattern applied to it yet."
+	icon = 'icons/obj/items/clothing/hats/hats_by_map/classic.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/classic.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi'
+	)
+
+/obj/item/clothing/head/helmet/marine/MP/jungle
+	icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
+	)
+
+/obj/item/clothing/head/helmet/marine/MP/snow
+	name = "\improper M10 pattern military police snow helmet"
+	icon = 'icons/obj/items/clothing/hats/hats_by_map/snow.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
+
+/obj/item/clothing/head/helmet/marine/MP/desert
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	icon = 'icons/obj/items/clothing/hats/hats_by_map/desert.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/desert.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi'
+	)
+
+/obj/item/clothing/head/helmet/marine/MP/urban
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	icon = 'icons/obj/items/clothing/hats/hats_by_map/urban.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/urban.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
+	)
 
 /obj/item/clothing/head/helmet/marine/MP/WO
 	name = "\improper M3 pattern chief MP helmet"

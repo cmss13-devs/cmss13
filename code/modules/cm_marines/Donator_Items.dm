@@ -285,8 +285,8 @@
 	item_state = "hunkjacket"
 
 /obj/item/clothing/suit/storage/marine/fluff/penguin //CKEY=tophatpenguin
-	name = "Trenchcoat"
-	desc = "An 18th-century trenchcoat. Someone who wears this means serious business.  DONOR ITEM"
+	name = "Trench Coat"
+	desc = "An 18th-century trench coat. Someone who wears this means serious business.  DONOR ITEM"
 	icon_state = "detective"
 	item_state = "det_suit"
 	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
@@ -374,8 +374,8 @@
 	)
 
 /obj/item/clothing/suit/storage/marine/fluff/john56 //CKEY=johnkilla56
-	name = "A red trenchcoat"
-	desc = "A special trenchcoat made famous for instilling fear into greytide everywhere. DONOR ITEM"
+	name = "A red trench coat"
+	desc = "A special trench coat made famous for instilling fear into greytide everywhere. DONOR ITEM"
 	icon_state = "hos"
 	item_state = "hos"
 	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
@@ -419,14 +419,14 @@
 	item_state = "riotjacket_u"
 
 /obj/item/clothing/suit/storage/marine/fluff/adjective
-	name = "HOS Trenchcoat"
-	desc = "A trenchcoat of authority.  DONOR ITEM"
+	name = "HOS Trench Coat"
+	desc = "A trench coat of authority.  DONOR ITEM"
 	icon_state = "jensencoat"
 	item_state = "jensencoat"
 
 /obj/item/clothing/suit/storage/marine/fluff/fickmacher //CKEY=fickmacher (UNIQUE)
-	name = "Selena's Trenchcoat"
-	desc = "A trenchcoat of authority.  DONOR ITEM"
+	name = "Selena's Trench Coat"
+	desc = "A trench coat of authority.  DONOR ITEM"
 	icon_state = "jensencoat"
 	item_state = "jensencoat"
 
@@ -441,8 +441,8 @@
 	)
 
 /obj/item/clothing/suit/storage/marine/fluff/mitii
-	name = "Mya's Trenchcoat"
-	desc = "A trenchcoat of authority.  DONOR ITEM"
+	name = "Mya's Trench Coat"
+	desc = "A trench coat of authority.  DONOR ITEM"
 	icon_state = "hos"
 	item_state = "hos"
 	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
@@ -457,8 +457,8 @@
 	item_state = "hawkeye_jacket_u"
 
 /obj/item/clothing/suit/storage/marine/fluff/chimera //CKEY=theultimatechimera
-	name = "Brett's Trenchcoat"
-	desc = "A trenchcoat of authority.  DONOR ITEM"
+	name = "Brett's Trench Coat"
+	desc = "A trench coat of authority.  DONOR ITEM"
 	icon_state = "hos"
 	item_state = "hos"
 	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
@@ -467,8 +467,8 @@
 	)
 
 /obj/item/clothing/suit/storage/marine/fluff/devilzhand
-	name = "Tank's Trenchcoat"
-	desc = "A trenchcoat of authority.  DONOR ITEM"
+	name = "Tank's Trench Coat"
+	desc = "A trench coat of authority.  DONOR ITEM"
 	icon_state = "jensencoat"
 	item_state = "jensencoat"
 
@@ -684,7 +684,7 @@
 	item_state = "kailas_armor"
 
 /obj/item/clothing/suit/storage/marine/fluff/fridrich
-	name = "Solid Black Labcoat"
+	name = "Solid Black Lab Coat"
 	desc = "Very stylish. DONOR ITEM"
 	icon_state = "Reznoriam"
 	item_state = "Reznoriam"

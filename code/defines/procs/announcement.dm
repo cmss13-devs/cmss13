@@ -31,24 +31,45 @@
 //general marine announcement
 /proc/marine_announcement(message, title = COMMAND_ANNOUNCE, sound_to_play = sound('sound/misc/notice2.ogg'), faction_to_display = FACTION_MARINE, add_PMCs = FALSE, signature, logging = ARES_LOG_MAIN)
 	var/list/targets = GLOB.human_mob_list + GLOB.dead_mob_list
+	var/list/targets_to_garble = list()
+	var/list/coms_zs = SSradio.get_available_tcomm_zs(COMM_FREQ)
+
 	if(faction_to_display == FACTION_MARINE)
-		for(var/mob/M in targets)
-			if(isobserver(M)) //observers see everything
-				continue
-			var/mob/living/carbon/human/H = M
-			if(!istype(H) || H.stat != CONSCIOUS || isyautja(H)) //base human checks
-				targets.Remove(H)
-				continue
-			if(is_mainship_level(H.z) && istype(GLOB.master_mode, /datum/game_mode/extended/faction_clash )) // People on ship see everything, unless it is faction clash
-				continue
+		for(var/mob/current_mob in targets)
+			var/turf/current_turf = get_turf(current_mob)
+			var/is_shipside = is_mainship_level(current_turf?.z)
+
+			if(isobserver(current_mob)) //observers see everything
+				if(current_mob.client?.prefs?.toggles_chat & CHAT_GHOSTANNOUNCECLARITY)
+					continue // Valid target w/o garble
+				if(!is_shipside && !(current_turf?.z in coms_zs))
+					targets_to_garble += current_mob
+				continue // Valid target
+
+			var/mob/living/carbon/human/current_human = current_mob
+			if(!istype(current_human) || current_human.stat != CONSCIOUS || isyautja(current_human)) //base human checks
+				targets -= current_human
+				continue // Invalid target
+
+			if(is_shipside && !(istype(GLOB.master_mode, /datum/game_mode/extended/faction_clash))) // People on ship see everything, unless it is faction clash
+				continue // Valid target w/o garble
+
+			if(!is_shipside && !(current_turf?.z in coms_zs))
+				targets_to_garble += current_human
 
 			// If they have iff AND a marine headset they will recieve announcements
-			var/obj/item/card/id/card = H.get_idcard()
-			if ((FACTION_MARINE in card?.faction_group) && (istype(H.wear_l_ear, /obj/item/device/radio/headset/almayer) || istype(H.wear_r_ear, /obj/item/device/radio/headset/almayer)))
-				continue
+			var/obj/item/card/id/card = current_human.get_idcard()
+			if((FACTION_MARINE in card?.faction_group) && (istype(current_human.wear_l_ear, /obj/item/device/radio/headset/almayer) || istype(current_human.wear_r_ear, /obj/item/device/radio/headset/almayer)))
+				continue // Valid target
 
-			if((H.faction != faction_to_display && !add_PMCs) || (H.faction != faction_to_display && add_PMCs && !(H.faction in FACTION_LIST_WY)) && !(faction_to_display in H.faction_group)) //faction checks
-				targets.Remove(H)
+			/// If they're in a joint-USCM job they'll get announcements regardless.
+			if((current_human.job in USCM_SHARED_JOBS) && (istype(current_human.wear_l_ear, /obj/item/device/radio/headset) || istype(current_human.wear_r_ear, /obj/item/device/radio/headset)))
+				continue // Valid target
+
+			if((current_human.faction != faction_to_display && !add_PMCs) || (current_human.faction != faction_to_display && add_PMCs && !(current_human.faction in FACTION_LIST_WY)) && !(faction_to_display in current_human.faction_group)) //faction checks
+				targets -= current_human
+				targets_to_garble -= current_human
+				continue // Invalid target
 
 		switch(logging)
 			if(ARES_LOG_MAIN)
@@ -57,28 +78,54 @@
 				log_ares_security(title, message, signature)
 
 	else if(faction_to_display == "Everyone (-Yautja)")
-		for(var/mob/M in targets)
-			if(isobserver(M)) //observers see everything
-				continue
-			var/mob/living/carbon/human/H = M
-			if(!istype(H) || H.stat != CONSCIOUS || isyautja(H))
-				targets.Remove(H)
+		for(var/mob/current_mob in targets)
+			var/turf/current_turf = get_turf(current_mob)
+			var/is_shipside = is_mainship_level(current_turf?.z)
+
+			if(isobserver(current_mob)) //observers see everything
+				if(current_mob.client?.prefs?.toggles_chat & CHAT_GHOSTANNOUNCECLARITY)
+					continue // Valid target w/o garble
+				if(!is_shipside && !(current_turf?.z in coms_zs))
+					targets_to_garble += current_mob
+				continue // Valid target
+
+			var/mob/living/carbon/human/current_human = current_mob
+			if(!istype(current_human) || current_human.stat != CONSCIOUS || isyautja(current_human))
+				targets -= current_human
+				continue // Invalid target
+
+			if(!is_shipside && !(current_turf?.z in coms_zs))
+				targets_to_garble += current_human
 
 	else
-		for(var/mob/M in targets)
-			if(isobserver(M)) //observers see everything
-				continue
-			var/mob/living/carbon/human/H = M
-			if(!istype(H) || H.stat != CONSCIOUS || isyautja(H))
-				targets.Remove(H)
-				continue
-			if(H.faction != faction_to_display)
-				targets.Remove(H)
+		for(var/mob/current_mob in targets)
+			var/turf/current_turf = get_turf(current_mob)
+			var/is_shipside = is_mainship_level(current_turf?.z)
 
+			if(isobserver(current_mob)) //observers see everything
+				if(current_mob.client?.prefs?.toggles_chat & CHAT_GHOSTANNOUNCECLARITY)
+					continue // Valid target w/o garble
+				if(!is_shipside && !(current_turf?.z in coms_zs))
+					targets_to_garble += current_mob
+				continue // Valid target
+
+			var/mob/living/carbon/human/current_human = current_mob
+			if(!istype(current_human) || current_human.stat != CONSCIOUS || isyautja(current_human))
+				targets -= current_human
+				continue // Invalid target
+
+			if(current_human.faction != faction_to_display)
+				targets -= current_human
+				continue // Invalid target
+
+			if(!is_shipside && !(current_turf?.z in coms_zs))
+				targets_to_garble += current_human
+
+	var/postfix = ""
 	if(!isnull(signature))
-		message += "<br><br><i> Signed by, <br> [signature]</i>"
+		postfix = "<br><br><i> Signed by, <br> [signature]</i>"
 
-	announcement_helper(message, title, targets, sound_to_play)
+	announcement_helper(message, title, targets, sound_to_play, FALSE, postfix, targets_to_garble, FACTION_MARINE)
 
 //AI announcement that uses talking into comms
 /proc/ai_announcement(message, sound_to_play = sound('sound/misc/interference.ogg'), logging = ARES_LOG_MAIN)
@@ -136,14 +183,26 @@
 /proc/all_hands_on_deck(message, title = MAIN_AI_SYSTEM, sound_to_play = sound('sound/misc/sound_misc_boatswain.ogg'))
 	shipwide_ai_announcement(message, title, sound_to_play, null, ARES_LOG_MAIN, FALSE)
 
-/proc/announcement_helper(message, title, list/targets, sound_to_play, quiet)
+/proc/announcement_helper(message, title, list/targets, sound_to_play, quiet, postfix, list/targets_to_garble, faction_to_garble)
 	if(!message || !title || !targets) //Shouldn't happen
 		return
+
+	message += postfix
+	var/garbled_message
+	var/garbled_count = length(targets_to_garble)
+	if(garbled_count)
+		garbled_message = get_garbled_announcement(message, length(postfix), faction_to_garble)
+		log_garble("[garbled_count] received '[garbled_message]' for faction [faction_to_garble].")
+
 	for(var/mob/target in targets)
 		if(istype(target, /mob/new_player))
 			continue
 
-		to_chat_spaced(target, html = "[SPAN_ANNOUNCEMENT_HEADER(title)]<br><br>[SPAN_ANNOUNCEMENT_BODY(message)]", type = MESSAGE_TYPE_RADIO)
+		if(target in targets_to_garble)
+			to_chat_spaced(target, html = "[SPAN_ANNOUNCEMENT_HEADER(title)]<br><br>[SPAN_ANNOUNCEMENT_BODY(garbled_message)]", type = MESSAGE_TYPE_RADIO)
+		else
+			to_chat_spaced(target, html = "[SPAN_ANNOUNCEMENT_HEADER(title)]<br><br>[SPAN_ANNOUNCEMENT_BODY(message)]", type = MESSAGE_TYPE_RADIO)
+
 		if(!quiet && sound_to_play)
 			if(isobserver(target) && !(target.client?.prefs?.toggles_sound & SOUND_OBSERVER_ANNOUNCEMENTS))
 				continue

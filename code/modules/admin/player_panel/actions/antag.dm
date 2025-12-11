@@ -9,9 +9,9 @@
 		return
 
 	var/mob/living/carbon/human/H = target
-	var/datum/equipment_preset/preset = GLOB.gear_path_presets_list[/datum/equipment_preset/other/mutiny/mutineer]
+	var/datum/equipment_preset/preset = GLOB.equipment_presets.gear_path_presets_list[/datum/equipment_preset/other/mutiny/mutineer]
 	if(params["leader"])
-		preset = GLOB.gear_path_presets_list[/datum/equipment_preset/other/mutiny/mutineer/leader]
+		preset = GLOB.equipment_presets.gear_path_presets_list[/datum/equipment_preset/other/mutiny/mutineer/leader]
 
 
 	preset.load_status(H)
@@ -51,10 +51,10 @@
 		return
 
 	var/mob/living/carbon/human/H = target
-	var/datum/equipment_preset/preset = GLOB.gear_path_presets_list[/datum/equipment_preset/other/xeno_cultist]
+	var/datum/equipment_preset/preset = GLOB.equipment_presets.gear_path_presets_list[/datum/equipment_preset/other/xeno_cultist]
 
 	if(params["leader"])
-		preset = GLOB.gear_path_presets_list[/datum/equipment_preset/other/xeno_cultist/leader]
+		preset = GLOB.equipment_presets.gear_path_presets_list[/datum/equipment_preset/other/xeno_cultist/leader]
 
 	preset.load_race(H)
 	preset.load_status(H, params["hivenumber"])

@@ -109,6 +109,7 @@ GLOBAL_LIST_INIT(cm_vending_young_yautja, list(
 		list("Wrist Blades", 0,list(/obj/item/bracer_attachments/wristblades, /obj/item/bracer_attachments/wristblades), MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_MANDATORY),
 		list("The Fearsome Scimitars", 0, list(/obj/item/bracer_attachments/scimitars, /obj/item/bracer_attachments/scimitars), MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
 		list("The Skewering Scimitars", 0, list(/obj/item/bracer_attachments/scimitars_alt, /obj/item/bracer_attachments/scimitars_alt), MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
+		list("The Chain Gauntlets", 0, list(/obj/item/bracer_attachments/chain_gauntlets, /obj/item/bracer_attachments/chain_gauntlets, /obj/item/yautja/chain), MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
 			))
 
 GLOBAL_LIST_INIT(cm_vending_thrall, list(

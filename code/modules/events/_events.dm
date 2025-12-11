@@ -88,7 +88,7 @@ Runs the event
 */
 /datum/round_event_control/proc/run_event(random = FALSE, announce_chance_override = null, admin_forced = FALSE)
 	/*
-	* We clear our signals first so we dont cancel a wanted event by accident,
+	* We clear our signals first so we don't cancel a wanted event by accident,
 	* the majority of time the admin will probably want to cancel a single midround spawned random events
 	* and not multiple events called by others admins
 	* * In the worst case scenario we can still recall a event which we cancelled by accident, which is much better then to have a unwanted event

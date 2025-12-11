@@ -77,13 +77,13 @@
 #define CHEM_CLASS_COMMON 2
 /// Chemicals which recipe is uncommonly known and made (spacedrugs, foaming agent)
 #define CHEM_CLASS_UNCOMMON 3
-/// Chemicals that are either cant be made or require rare or expandable components.
+/// Chemicals that are either can't be made or require rare or expandable components.
 #define CHEM_CLASS_RARE 4
-/// Chemicals that cant be made
+/// Chemicals that can't be made
 #define CHEM_CLASS_SPECIAL 5
 /// Randomly generated chemicals
 #define CHEM_CLASS_ULTRA 6
-/// Rare chemicals ONLY aquired via hydroponics, Those are mostly useless but very important for hard difficulty on contracts.
+/// Rare chemicals ONLY acquired via hydroponics, Those are mostly useless but very important for hard difficulty on contracts.
 #define CHEM_CLASS_HYDRO 7
 
 //chem_effect_flags, used to quickly check if the mob has a chem that provides a special effect
@@ -100,11 +100,11 @@
 #define CHEM_REACTION_BUBBLING (1<<1)
 /// reaction that glows. nothing to add.
 #define CHEM_REACTION_GLOWING (1<<2)
-/// reaction that sets things around on fire, its still mixed, but everything is on fire. the beaker is set on fire 3 seconds after the reaction. smoke and sound are given immediatly, countered by having water.
+/// reaction that sets things around on fire, its still mixed, but everything is on fire. the beaker is set on fire 3 seconds after the reaction. smoke and sound are given immediately, countered by having water.
 #define CHEM_REACTION_FIRE (1<<3)
 /// reaction that makes smoke from its contents while mixing. spread of smoke is depending on amount mixed. protect yourself with a gas mask or close the lid quick enough before it starts to smoke.
 #define CHEM_REACTION_SMOKING (1<<4)
-/// potential replacment for CHEM_REACTION_CALM. makes the reaction go slower. no longer will stuff mix instantly.
+/// potential replacement for CHEM_REACTION_CALM. makes the reaction go slower. no longer will stuff mix instantly.
 #define CHEM_REACTION_ENDOTHERMIC (1<<5)
 
 //Blood plasma
@@ -133,6 +133,8 @@
 /// Reagent doesn't randomly generate in chemicals
 #define REAGENT_NO_GENERATION (1<<5)
 
+#define REAGENT_TYPE_SPECIALIST (1<<6)
+
 /*
 	properties defines
 */
@@ -142,7 +144,7 @@
 #define PROPERTY_CORROSIVE "corrosive"
 #define PROPERTY_BIOCIDIC "biocidic"
 #define PROPERTY_HEMOLYTIC "hemolytic"
-#define PROPERTY_HEMORRAGING "hemorrhaging"
+#define PROPERTY_HEMORRHAGING "hemorrhaging"
 #define PROPERTY_CARCINOGENIC "carcinogenic"
 #define PROPERTY_HEPATOTOXIC "hepatotoxic"
 #define PROPERTY_INTRAVENOUS "intravenous"
@@ -156,15 +158,15 @@
 //Neutral
 #define PROPERTY_NUTRITIOUS "nutritious"
 #define PROPERTY_KETOGENIC "ketogenic"
-#define PROPERTY_PAINING "paining"
+#define PROPERTY_NEUROPATHIC "neuropathic"
 #define PROPERTY_NEUROINHIBITING "neuroinhibiting"
 #define PROPERTY_ALCOHOLIC "alcoholic"
 #define PROPERTY_HALLUCINOGENIC "hallucinogenic"
-#define PROPERTY_RELAXING "relaxing"
+#define PROPERTY_ANTISPASMODIC "antispasmodic"
 #define PROPERTY_HYPERTHERMIC "hyperthermic"
 #define PROPERTY_HYPOTHERMIC "hypothermic"
-#define PROPERTY_BALDING "balding"
-#define PROPERTY_FLUFFING "fluffing"
+#define PROPERTY_ATRICHOGENIC "atrichogenic"
+#define PROPERTY_TRICHOGENIC "trichogenic"
 #define PROPERTY_ALLERGENIC "allergenic"
 #define PROPERTY_CRYOMETABOLIZING "cryometabolizing"
 #define PROPERTY_EUPHORIC "euphoric"
@@ -173,7 +175,7 @@
 #define PROPERTY_ANTIHALLUCINOGENIC "anti-hallucinogenic"
 #define PROPERTY_EXCRETING "excreting"
 #define PROPERTY_HYPOMETABOLIC "hypometabolic"
-#define PROPERTY_SEDATIVE "sedative"
+#define PROPERTY_HYPNOTIC "hypnotic"
 #define PROPERTY_TRANSFORMATIVE "transformative"
 //Positive
 #define PROPERTY_ANTITOXIC "anti-toxic"
@@ -282,8 +284,8 @@
 #define PROPERTY_TYPE_COMBUSTIBLE 512
 
 // Defines for pain applied pr tick by chems
-#define PROPERTY_PAINING_PAIN 1
-#define PROPERTY_PAINING_PAIN_OD 2
+#define PROPERTY_NEUROPATHIC_PAIN 1
+#define PROPERTY_NEUROPATHIC_PAIN_OD 2
 #define PROPERTY_DEFIBRILLATING_PAIN_OD 2
 #define PROPERTY_CARDIOPEUTIC_PAIN_CRITICAL 3
 

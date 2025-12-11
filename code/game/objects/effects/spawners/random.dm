@@ -248,6 +248,7 @@
 				prob(3);/obj/item/storage/pill_bottle/bicaridine/skillless,\
 				prob(3);/obj/item/storage/pill_bottle/kelotane/skillless,\
 				prob(3);/obj/item/storage/pill_bottle/peridaxon/skillless,\
+				prob(2);/obj/item/storage/pill_bottle/oxycodone/skillless,\
 				prob(2);/obj/item/storage/pill_bottle/packet/oxycodone)
 
 /obj/effect/spawner/random/pills/lowchance

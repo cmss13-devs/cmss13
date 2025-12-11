@@ -286,6 +286,7 @@ CLIENT_VERB(toggle_prefs) // Toggle whether anything will happen when you click 
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/set_crit_type'>Set Crit Type</a><br>",
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/set_flashing_lights_pref'>Set Flashing Lights</a><br>",
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_leadership_spoken_orders'>Toggle Leadership Spoken Orders</a><br>",
+		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_cocking_to_hand'>Toggle Bullet Cocking to hand</a><br>",
 	)
 
 	var/dat = ""
@@ -389,6 +390,15 @@ CLIENT_VERB(toggle_prefs) // Toggle whether anything will happen when you click 
 		to_chat(src, SPAN_BOLDNOTICE("Your leadership orders will no longer be verbally spoken."))
 	else
 		to_chat(src, SPAN_BOLDNOTICE("Your leadership orders will now be verbally spoken."))
+	prefs.save_preferences()
+
+/// Toggles whether cocking a gun should drop its bullet or moves it to your empty hand
+/client/proc/toggle_cocking_to_hand()
+	prefs.toggle_prefs ^= TOGGLE_COCKING_TO_HAND
+	if(prefs.toggle_prefs & TOGGLE_COCKING_TO_HAND)
+		to_chat(src, SPAN_BOLDNOTICE("You will attempt to catch the ejected bullet when cocking a gun."))
+	else
+		to_chat(src, SPAN_BOLDNOTICE("You will now drop the ejected bullet when cocking a gun."))
 	prefs.save_preferences()
 
 ///Toggle whether dual-wielding fires both guns at once or swaps between them.
@@ -680,7 +690,7 @@ CLIENT_VERB(toggle_adaptive_zooming)
 /client/proc/toggle_ghost_ears()
 	set name = "Toggle GhostEars"
 	set category = "Preferences.Ghost"
-	set desc = "Toggle Between seeing all mob speech, and only speech of nearby mobs"
+	set desc = "Toggle between seeing all mob speech, and only speech of nearby mobs"
 	prefs.toggles_chat ^= CHAT_GHOSTEARS
 	to_chat(src, SPAN_BOLDNOTICE("As a ghost, you will now [(prefs.toggles_chat & CHAT_GHOSTEARS) ? "see all speech in the world" : "only see speech from nearby mobs"]."))
 	prefs.save_preferences()
@@ -688,7 +698,7 @@ CLIENT_VERB(toggle_adaptive_zooming)
 /client/proc/toggle_ghost_sight()
 	set name = "Toggle GhostSight"
 	set category = "Preferences.Ghost"
-	set desc = "Toggle Between seeing all mob emotes, and only emotes of nearby mobs"
+	set desc = "Toggle between seeing all mob emotes, and only emotes of nearby mobs"
 	prefs.toggles_chat ^= CHAT_GHOSTSIGHT
 	to_chat(src, SPAN_BOLDNOTICE("As a ghost, you will now [(prefs.toggles_chat & CHAT_GHOSTSIGHT) ? "see all emotes in the world" : "only see emotes from nearby mobs"]."))
 	prefs.save_preferences()
@@ -707,6 +717,14 @@ CLIENT_VERB(toggle_adaptive_zooming)
 	set desc = "Toggle between hearing listening devices or not."
 	prefs.toggles_chat ^= CHAT_LISTENINGBUG
 	to_chat(src,SPAN_BOLDNOTICE( "As a ghost, you will [(prefs.toggles_chat & CHAT_LISTENINGBUG) ? "now" : "no longer"] hear listening devices as a ghost."))
+	prefs.save_preferences()
+
+/client/proc/toggle_ghost_announce_clarity()
+	set name = "Toggle Ghost Announce Clarity"
+	set category = "Preferences.Ghost"
+	set desc = "Toggle between seeing announcements always in full clarity, or with the current clarity for the observed z-level"
+	prefs.toggles_chat ^= CHAT_GHOSTANNOUNCECLARITY
+	to_chat(src, SPAN_BOLDNOTICE("As a ghost, you will now see announcements in [(prefs.toggles_chat & CHAT_GHOSTANNOUNCECLARITY) ? "full clarity always" : "partial clarity if applicable"]."))
 	prefs.save_preferences()
 
 /client/proc/toggle_ghost_hud()
@@ -861,6 +879,7 @@ GLOBAL_LIST_INIT(ghost_prefs_verbs, list(
 	/client/proc/toggle_ghost_sight,
 	/client/proc/toggle_ghost_radio,
 	/client/proc/toggle_ghost_spyradio,
+	/client/proc/toggle_ghost_announce_clarity,
 	/client/proc/toggle_ghost_hivemind,
 	/client/proc/deadchat,
 	/client/proc/toggle_ghost_hud,

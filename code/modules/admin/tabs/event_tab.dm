@@ -869,11 +869,11 @@
 
 /datum/admins/var/create_humans_html = null
 /datum/admins/proc/create_humans(mob/user)
-	if(!GLOB.gear_name_presets_list)
+	if(!GLOB.equipment_presets.categories["All"])
 		return
 
 	if(!create_humans_html)
-		var/equipment_presets = jointext(GLOB.gear_name_presets_list, ";")
+		var/equipment_presets = jointext(GLOB.equipment_presets.categories["All"], ";")
 		create_humans_html = file2text('html/create_humans.html')
 		create_humans_html = replacetext(create_humans_html, "null /* object types */", "\"[equipment_presets]\"")
 		create_humans_html = replacetext(create_humans_html, "/* href token */", RawHrefToken(forceGlobal = TRUE))
@@ -1147,7 +1147,7 @@
 	var/message = "ADMIN TEST"
 	var/text_input = tgui_input_text(usr, "Announcement message", "Message Contents", message, timeout = 5 MINUTES)
 	if(!text_input)
-		return // Early return here so people dont have to go through the whole process just to cancel it.
+		return // Early return here so people don't have to go through the whole process just to cancel it.
 	message = text_input
 	duration = tgui_input_number(usr, "Set the duration of the alert in deci-seconds.", "Duration", 5 SECONDS, 5 MINUTES, 5 SECONDS, 20 SECONDS)
 	var/confirm = tgui_alert(usr, "Are you sure you wish to send '[message]' to all players for [(duration / 10)] seconds?", "Confirm", list("Yes", "No"), 20 SECONDS)
@@ -1155,3 +1155,26 @@
 		return FALSE
 	show_blurb(GLOB.player_list, duration, message, TRUE, "center", "center", "#bd2020", "ADMIN")
 	message_admins("[key_name(usr)] sent an admin blurb alert to all players. Alert reads: '[message]' and lasts [(duration / 10)] seconds.")
+
+/client/proc/setup_delayed_event_spawns()
+	set name = "Setup Delayed Event Spawns"
+	set desc = "Trigger setup for any midround placed event mob spawners."
+	set category = "Admin.Events"
+
+	if(!admin_holder)
+		return FALSE
+
+	if(!SSticker?.mode)
+		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
+		return FALSE
+
+	if(!length(GLOB.event_mob_landmarks_delayed))
+		return FALSE
+
+	var/count = 0
+	for(var/obj/effect/landmark/event_mob_spawn/spawner in GLOB.event_mob_landmarks_delayed)
+		spawner.handle_setup()
+		count++
+
+	to_chat(src, SPAN_NOTICE("Setup [count] landmarks."))
+	return TRUE

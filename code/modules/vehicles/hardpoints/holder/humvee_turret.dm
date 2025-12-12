@@ -32,7 +32,7 @@
 		///obj/item/hardpoint/primary/humvee_grenade_launcher,
 		/obj/item/hardpoint/primary/humvee_cannon,
 		//secondary
-		/obj/item/hardpoint/support/humvee_flare_launcher
+		/obj/item/hardpoint/support/humvee_flare_launcher,
 	)
 
 	hdpt_layer = HDPT_LAYER_TURRET

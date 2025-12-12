@@ -29,6 +29,7 @@
 	var/has_cannon = FALSE
 	var/has_scattergun = TRUE
 	var/has_tow_launcher = FALSE
+	var/has_secondary_chain = FALSE
 	var/markings_color
 	var/markings_specialty
 
@@ -48,6 +49,7 @@
 	desc = "A RX47-EX 'Exterminator' Combat Mechsuit, equipped with a 20mm Chaingun and 50mm IFF-locked explosive cannon"
 	has_cannon = TRUE
 	has_scattergun = FALSE
+	has_secondary_chain = TRUE
 	gun_secondary_path = /obj/item/weapon/gun/mech/cannon
 
 //--------------------GENERAL PROCS-----------------
@@ -79,12 +81,16 @@
 
 	if(has_scattergun)
 		overlays += image(icon_state = "weapon_scatter", layer = MECH_LAYER)
+	else if(has_secondary_chain)
+		overlays += image(icon_state = "weapon_chaingun_left", layer = MECH_LAYER)
 	else
 		overlays += image(icon_state = "weapon_left", layer = MECH_LAYER)
+
 	if(has_cannon)
 		overlays += image(icon_state = "weapon_cannon", layer = MECH_LAYER)
 	else
-		overlays += image(icon_state = "weapon_right", layer = MECH_LAYER)
+		overlays += image(icon_state = "weapon_chaingun_right", layer = MECH_LAYER)
+
 	if(has_tow_launcher)
 		overlays += image(icon_state = "weapon_tow", layer = MECH_LAYER)
 

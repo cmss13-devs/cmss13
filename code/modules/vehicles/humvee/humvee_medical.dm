@@ -13,7 +13,7 @@
 	bound_x = -32
 	bound_y = -32
 
-	health = 800
+	health = 600
 
 	interior_map = /datum/map_template/interior/humvee/humvee_medical
 

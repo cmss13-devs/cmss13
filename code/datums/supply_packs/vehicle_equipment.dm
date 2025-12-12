@@ -37,3 +37,13 @@
 	containertype = /obj/structure/closet/crate/weapon
 	containername = "M24 Series Wheels crate"
 	group = "Vehicle Equipment"
+
+/datum/supply_packs/humvee_overhead_lights
+	name = "M24 Series Overhead Lights (x1)"
+	contains = list(
+		/obj/item/hardpoint/support/humvee_overhead_lights,
+	)
+	cost = 15
+	containertype = /obj/structure/closet/crate/weapon
+	containername = "M24 Series Overhead Lights crate"
+	group = "Vehicle Equipment"

@@ -218,9 +218,6 @@ GLOBAL_LIST_INIT(cm_vending_vehicle_crew_humvee, list(
 	list("ARMOR", 0, null, null, null),
 	list("M24-JTMV Snowplow", 0, /obj/item/hardpoint/armor/humvee_snowplow, VEHICLE_ARMOR_AVAILABLE, VENDOR_ITEM_MANDATORY),
 
-	list("SPECIAL", 0, null, null, null),
-	list("M24-JTMV Overhead Lights", 0, /obj/item/hardpoint/support/humvee_overhead_lights, VEHICLE_SPECIAL_AVAILABLE, VENDOR_ITEM_MANDATORY),
-
 	list("REPLACEMENT WHEELS", 0, null, null, null),
 	list("Replacement M24-JTMV Wheels", 0, /obj/item/hardpoint/locomotion/humvee_wheels, VEHICLE_TREADS_AVAILABLE, VENDOR_ITEM_MANDATORY)))
 

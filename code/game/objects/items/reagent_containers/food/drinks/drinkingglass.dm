@@ -57,7 +57,7 @@
 				center_of_mass = "x=16;y=10"
 			if("chocolate_milk")
 				icon_state  = "chocomilk_glass"
-				name = "Glass of chocolate milk"
+				name = "Chocolate Milk"
 				desc = "A childhood classic that makes even the most hardened marines smile."
 				center_of_mass = "x=16;y=10"
 			if("lemonjuice")

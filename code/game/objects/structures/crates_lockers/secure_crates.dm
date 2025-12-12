@@ -115,7 +115,7 @@
 
 /obj/structure/closet/crate/secure/ammo
 	name = "secure ammunitions crate"
-	desc = "A secure ammunitions crate"
+	desc = "A secure ammunitions crate."
 	icon_state = "secure_locked_ammo"
 	icon_opened = "secure_open_ammo"
 	icon_locked = "secure_locked_ammo"
@@ -123,7 +123,7 @@
 
 /obj/structure/closet/crate/secure/explosives
 	name = "explosives crate"
-	desc = "An explosives crate"
+	desc = "An explosives crate."
 	icon_state = "secure_locked_explosives"
 	icon_opened = "secure_open_explosives"
 	icon_locked = "secure_locked_explosives"

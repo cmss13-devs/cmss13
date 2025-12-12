@@ -2,7 +2,7 @@
 
 /obj/structure/machinery/computer/skills//TODO:SANITY
 	name = "Employment Records"
-	desc = "Used to view personnel's employment records"
+	desc = "Used to view personnel's employment records."
 	icon_state = "medlaptop"
 	req_one_access = list(ACCESS_MARINE_DATABASE)
 	circuit = /obj/item/circuitboard/computer/skills
@@ -372,7 +372,7 @@ What a mess.*/
 					R.fields["criminal"] = pick("None", "*Arrest*", "Incarcerated", "Released")
 					msg_admin_niche("The employment record criminal status of [R.fields["name"]] was scrambled!")
 				if(5)
-					R.fields["p_stat"] = pick("*Unconscious*", "Active", "Physically Unfit")
+					R.fields["p_stat"] = pick("Inactive", "Active", "Unknown")
 					msg_admin_niche("The employment record physical state of [R.fields["name"]] was scrambled!")
 				if(6)
 					R.fields["m_stat"] = pick("*Insane*", "*Unstable*", "*Watch*", "Stable")

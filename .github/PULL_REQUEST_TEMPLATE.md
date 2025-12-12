@@ -43,8 +43,10 @@ ui: changed something relating to user interfaces
 code: changed some code
 refactor: refactored some code
 soundadd: added a new sound thingy
+soundtweak: tweaked a sound thingy
 sounddel: removed an old sound thingy
 imageadd: added some icons and images
+imagetweak: tweaked some icons and images
 imagedel: deleted some icons and images
 mapadd: added a new map or section to a map
 maptweak: tweaked a map

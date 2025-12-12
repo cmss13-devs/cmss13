@@ -64,7 +64,9 @@ validPrefixes = [
     'server',
     'ui',
     'mapadd',
-    'maptweak'
+    'maptweak',
+    'imagetweak',
+    'soundtweak'
 ]
 
 def dictToTuples(inp):

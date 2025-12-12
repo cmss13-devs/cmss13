@@ -244,21 +244,16 @@
 		update_icon()
 
 /obj/item/reagent_container/hypospray/tricordrazine
-	name = "Tricordrazine Hypospray"
+	name = "tricordrazine hypospray"
 	starting_vial = /obj/item/reagent_container/glass/beaker/vial/tricordrazine
 	desc = "The DeForest Medical Corporation hypospray is a sterile, air-needle autoinjector for rapid administration of drugs to patients. This one's vial came pre-filled with tricordrazine and is refillable at Wey-Med vends."
 
-/obj/item/reagent_container/hypospray/depi_plus
-	name = "Depi-Plus Hypospray"
-	starting_vial = /obj/item/reagent_container/glass/beaker/vial/epi_plus
-	desc = "The DeForest Medical Corporation hypospray is a sterile, air-needle autoinjector for rapid administration of drugs to patients. This one's vial came pre-filled with one part Dexalin+ and 5 parts Epinephrine, intended to be set at 5u per injection and is refillable at wey-med vends."
-
 /obj/item/reagent_container/hypospray/epinephrine
 	starting_vial = /obj/item/reagent_container/glass/beaker/vial/epinephrine
-	name = "Epinephrine Hypospray"
-	desc = "The DeForest Medical Corporation hypospray is a sterile, air-needle autoinjector for rapid administration of drugs to patients. This one's vial came pre-filled with epinephrine is refillable at Wey-Med vends."
+	name = "epinephrine hypospray"
+	desc = "The DeForest Medical Corporation hypospray is a sterile, air-needle autoinjector for rapid administration of drugs to patients. This one's vial came pre-filled with epinephrine and is refillable at Wey-Med vends."
 
 /obj/item/reagent_container/hypospray/sedative
-	name = "Sedative Hypospray"
+	name = "sedative hypospray"
 	starting_vial = /obj/item/reagent_container/glass/beaker/vial/sedative
-	desc = "The DeForest Medical Corporation hypospray is a sterile, air-needle autoinjector for rapid administration of drugs to patients. This one's vial came pre-filled chloral hydrate."
+	desc = "The DeForest Medical Corporation hypospray is a sterile, air-needle autoinjector for rapid administration of drugs to patients. This one's vial came pre-filled chloral hydrate. Not refillable at Wey-Med vends."

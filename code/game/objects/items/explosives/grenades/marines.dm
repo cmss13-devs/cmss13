@@ -638,7 +638,7 @@
 
 		new /obj/effect/overlay/temp/emp_sparks(mob)
 		mob.make_jittery(damage_applied*2)
-	empulse(src, 1, 2) // mini EMP
+	empulse(src, 1, 2, cause_data?.resolve_mob()) // mini EMP
 	qdel(src)
 
 

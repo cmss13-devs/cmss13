@@ -703,11 +703,11 @@
 /datum/chem_property/neutral/transformative/process(mob/living/M, potency = 1, delta_time)
 	var/true_heal = heal_amount * potency * delta_time
 	if(M.getBruteLoss())
-		M.apply_damage(-true_heal, BRUTE)
-		M.apply_damage(true_heal * 0.1, TOX)
+		M.apply_damage(-true_heal, BRUTE, chemical=TRUE)
+		M.apply_damage(true_heal * 0.1, TOX, chemical=TRUE)
 	if(M.getFireLoss())
-		M.apply_damage(-true_heal, BURN)
-		M.apply_damage(true_heal * 0.1, TOX)
+		M.apply_damage(-true_heal, BURN, chemical=TRUE)
+		M.apply_damage(true_heal * 0.1, TOX, chemical=TRUE)
 
 /datum/chem_property/neutral/transformative/process_overdose(mob/living/M, potency = 1)
 	M.apply_damage(heal_amount * (potency * POTENCY_MULTIPLIER_LOW), TOX)

@@ -61,6 +61,7 @@ GLOBAL_LIST_INIT(admin_verbs_default, list(
 	/client/proc/toggle_own_ghost_vis,
 	/client/proc/cmd_admin_check_contents,
 	/client/proc/clear_mutineers,
+	/client/proc/set_commander, /*Allows manually choosing an active commander and giving them access to CIC.*/
 	/datum/admins/proc/directnarrateall,
 	/datum/admins/proc/subtlemessageall,
 	/datum/admins/proc/alertall,
@@ -396,7 +397,7 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 /client/proc/set_ooc_color_self()
 	set category = "OOC.OOC"
 	set name = "OOC Text Color - Self"
-	if(!admin_holder && !donator && !SScmtv.is_subscriber(src))
+	if(!admin_holder && !donator)
 		return
 	var/new_ooccolor = input(src, "Please select your OOC color.", "OOC color") as color|null
 	if(new_ooccolor)

@@ -3,26 +3,29 @@ from github import Auth, Github, GithubIntegration, GithubException
 
 # Format - Key: Array[Label, [StringsToIgnore]]
 changelogToPrefix = {
-    'fix': ["Fix", ["fixed a few things"]],
-    'qol': ["Quality of Life", ["made something easier to use"]],
     'add': ["Feature", ["Added new mechanics or gameplay changes", "Added more things"]],
-    'del': ["Removal", ["Removed old things"]],
-    'spellcheck': ["Grammar and Formatting", ["fixed a few typos"]],
+    'admin': ["Admin", ["messed with admin stuff"]],
     'balance': ["Balance", ["rebalanced something"]],
     'code': ["Code Improvement", ["changed some code"]],
-    'refactor': ["Refactor", ["refactored some code"]],
     'config': ["Config", ["changed some config setting"]],
-    'admin': ["Admin", ["messed with admin stuff"]],
-    'server': ["Server", ["something server ops should know"]],
-    'soundadd': ["Sound", ["added a new sound thingy"]],
-    'soundtweak': ["Sound", ["tweaks a sound thingy"]],
-    'sounddel': ["Sound", ["removed an old sound thingy"]],
+    'del': ["Removal", ["Removed old things"]],
+    'expansion' : ["Feature", ["significantly expands upon existing game mechanics"]],
+    'experiment' : ["Feature", ["adds a novelty feature that may be controversial"]],
+    'fix': ["Fix", ["fixed a few things"]],
     'imageadd': ["Sprites", ["added some icons and images"]],
-	'imagetweak': ["Sprites", ["tweaks some icons and images"]],
     'imagedel': ["Sprites", ["deleted some icons and images"]],
+    'imagetweak': ["Sprites", ["tweaks some icons and images"]],
     'mapadd': ["Mapping", ["added a new map or section to a map"]],
     'maptweak': ["Mapping", ["tweaked a map"]],
-    'ui' : ["UI", ["changed something relating to user interfaces"]]
+    'qol': ["Quality of Life", ["made something easier to use"]],
+    'refactor': ["Refactor", ["refactored some code"]],
+    'server': ["Server", ["something server ops should know"]],
+    'soundadd': ["Sound", ["added a new sound thingy"]],
+    'sounddel': ["Sound", ["removed an old sound thingy"]],
+    'soundtweak': ["Sound", ["tweaks a sound thingy"]],
+    'spellcheck': ["Grammar and Formatting", ["fixed a few typos"]],
+    'ui' : ["UI", ["changed something relating to user interfaces"]],
+    'wip' : ["Work in Progress", ["this isn't finished or hasn't been tested yet"]]
 }
 
 fileToPrefix = {

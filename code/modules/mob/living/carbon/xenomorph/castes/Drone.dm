@@ -57,6 +57,7 @@
 	organ_value = 800
 	pixel_x = -12
 	old_x = -12
+	xenonid_pixel_x = -8
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/release_haul,

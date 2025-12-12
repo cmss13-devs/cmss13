@@ -118,32 +118,6 @@
 				continue
 			if(!structure.density && !structure.opacity)
 				continue
-			if(istype(structure, /obj/structure/machinery/portable_atmospherics/hydroponics))
-				continue
-			if(istype(structure, /obj/structure/window_frame))
-				continue
-			if(istype(structure, /obj/structure/closet/crate))
-				continue
-			if(istype(structure, /obj/structure/prop/hybrisa/misc/firehydrant))
-				continue
-			if(istype(structure, /obj/structure/machinery/line_nexter))
-				continue
-			if(istype(structure, /obj/structure/platform))
-				continue
-			if(istype(structure, /obj/structure/prop/hybrisa/misc/trash))
-				continue
-			if(istype(structure, /obj/structure/machinery/disposal))
-				continue
-			if(istype(structure, /obj/structure/janitorialcart))
-				continue
-			if(istype(structure, /obj/structure/largecrate/empty/case/double) || istype(structure, /obj/structure/largecrate/random/case/double))
-				blocked = TRUE
-				continue
-			if(istype(structure, /obj/structure/largecrate/empty/case) || istype(structure, /obj/structure/largecrate/random/case))
-				continue
-			if(istype(structure, /obj/vehicle/multitile))
-				blocked = TRUE
-				continue
 			if(istype(structure, /obj/structure/window/reinforced))
 				var/obj/structure/window/reinforced/pane_glass = structure
 				var/pane_facing = pane_glass.dir
@@ -168,6 +142,8 @@
 					blocked = TRUE
 				else if(cade_facing == facing)
 					allow_one_more_step = TRUE
+				continue
+			if(structure.pass_flags.flags_pass |= PASS_HIGH_OVER)
 				continue
 			blocked = TRUE
 		if(blocked)

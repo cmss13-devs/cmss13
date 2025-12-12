@@ -320,6 +320,17 @@
 /obj/item/weapon/gun/mech/scattergun/set_gun_config_values()
 	fire_delay = FIRE_DELAY_TIER_SHOTGUN_SLOW
 
+/obj/item/weapon/gun/mech/scattergun/attack_self(mob/user)
+	..()
+	activate_attachment_verb()
+	if(!active_attachable)
+		base_gun_icon = "aux_cupola"
+		icon_state = "aux_cupola"
+	else
+		base_gun_icon = "aux_fire"
+		icon_state = "aux_fire"
+	return
+
 /obj/item/weapon/gun/mech/scattergun/handle_starting_attachment()
 	..()
 	var/obj/item/attachable/attached_gun/flamer/advanced/rx47/flamer = new(src)

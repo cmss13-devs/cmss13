@@ -88,8 +88,6 @@
 	desc = "An enormous multi-barreled rotating gatling gun. This thing will no doubt pack a punch."
 	icon = 'icons/obj/vehicles/wymech_guns.dmi'
 	icon_state = "chaingun"
-	mouse_pointer = 'icons/effects/mouse_pointer/lmg_mouse.dmi'
-
 	fire_sound = 'sound/weapons/gun_minigun.ogg'
 	cocked_sound = 'sound/weapons/gun_minigun_cocked.ogg'
 	current_mag = /obj/item/ammo_magazine/rx47_chaingun
@@ -100,6 +98,11 @@
 	. = ..()
 	if(current_mag && current_mag.current_rounds > 0)
 		load_into_chamber()
+
+/obj/item/weapon/gun/mech/chaingun/set_bullet_traits()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY_ID("iff", /datum/element/bullet_trait_iff)
+	))
 
 /obj/item/weapon/gun/mech/chaingun/set_gun_config_values()
 	..()
@@ -165,7 +168,6 @@
 	icon = 'icons/obj/vehicles/wymech_guns.dmi'
 	icon_state = "chaingun"
 	color = "#990000"
-	mouse_pointer = 'icons/effects/mouse_pointer/lmg_mouse.dmi'
 	muzzle_flash = "muzzle_laser"
 	muzzle_flash_color = "#990000"
 	fire_sound = 'sound/weapons/gun_vulture_fire.ogg'
@@ -264,8 +266,6 @@
 	icon = 'icons/obj/vehicles/wymech_guns.dmi'
 	base_gun_icon = "aux_cupola"
 	icon_state = "aux_cupola"
-	mouse_pointer = 'icons/effects/mouse_pointer/smartgun_mouse.dmi'
-
 	fire_sound = "gun_smartgun"
 	fire_rattle = "gun_smartgun_rattle"
 	current_mag = /obj/item/ammo_magazine/rx47_cupola
@@ -290,3 +290,64 @@
 	max_range = 5
 	flags_attach_features = ATTACH_ACTIVATION|ATTACH_RELOADABLE|ATTACH_WEAPON|ATTACH_WIELD_OVERRIDE
 	hidden = TRUE
+
+
+/obj/item/weapon/gun/mech/scattergun
+	name = "\improper RX47 Auxilliary Scattergun"
+	desc = "A large shotgun with undermounted flamethrower."
+	icon = 'icons/obj/vehicles/wymech_guns.dmi'
+	base_gun_icon = "aux_cupola"
+	icon_state = "aux_cupola"
+	mouse_pointer = 'icons/effects/mouse_pointer/smartgun_mouse.dmi'
+
+	fire_sound = 'sound/weapons/gun_type23.ogg'
+	current_mag = /obj/item/ammo_magazine/rx47_scattergun
+	w_class = SIZE_HUGE
+	force = 20
+	gun_category = GUN_CATEGORY_SHOTGUN
+	attachable_allowed = list(
+		/obj/item/attachable/attached_gun/flamer/advanced/rx47,
+	)
+	start_automatic = FALSE
+	start_semiauto = TRUE
+
+/obj/item/weapon/gun/mech/scattergun/set_gun_config_values()
+	fire_delay = FIRE_DELAY_TIER_SHOTGUN_SLOW
+
+/obj/item/weapon/gun/mech/scattergun/handle_starting_attachment()
+	..()
+	var/obj/item/attachable/attached_gun/flamer/advanced/rx47/flamer = new(src)
+	flamer.Attach(src)
+
+/obj/item/weapon/gun/mech/scattergun/set_bullet_traits()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY_ID("turfs", /datum/element/bullet_trait_damage_boost, 5, GLOB.damage_boost_turfs),
+		BULLET_TRAIT_ENTRY_ID("breaching", /datum/element/bullet_trait_damage_boost, 10.8, GLOB.damage_boost_breaching),
+		BULLET_TRAIT_ENTRY_ID("pylons", /datum/element/bullet_trait_damage_boost, 5, GLOB.damage_boost_pylons)
+	))
+
+/obj/item/ammo_magazine/rx47_scattergun
+	name = "rotating shrapnel drum (15x102mm)"
+	desc = "A huge ammo drum for a huge gun."
+	caliber = "15x102mm"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/event.dmi'
+	icon_state = "painless" //PLACEHOLDER
+	color = "#0c5522"
+
+	matter = list("metal" = 10000)
+	default_ammo = /datum/ammo/bullet/shotgun/heavy/buckshot/rx47_scattergun
+	max_rounds = 3000
+	reload_delay = 24 //Hard to reload.
+	gun_type = /obj/item/weapon/gun/mech/scattergun
+	w_class = SIZE_MEDIUM
+
+/datum/ammo/bullet/shotgun/heavy/buckshot/rx47_scattergun
+	name = "scattershot"
+	bonus_projectiles_type = /datum/ammo/bullet/shotgun/heavy/buckshot/spread/rx47_scattergun
+	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_3
+
+/datum/ammo/bullet/shotgun/heavy/buckshot/spread/rx47_scattergun
+	name = "additional scattershot"
+	max_range = 4
+	scatter = SCATTER_AMOUNT_TIER_1
+	bonus_projectiles_amount = 0

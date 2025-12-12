@@ -23,10 +23,11 @@
 	var/obj/item/weapon/gun/mech/gun_primary
 	var/gun_primary_path = /obj/item/weapon/gun/mech/chaingun
 	var/obj/item/weapon/gun/mech/gun_secondary
-	var/gun_secondary_path = /obj/item/weapon/gun/mech/cupola
+	var/gun_secondary_path = /obj/item/weapon/gun/mech/scattergun
 
 	var/helmet_closed = FALSE
 	var/has_cannon = FALSE
+	var/has_scattergun = TRUE
 	var/has_tow_launcher = FALSE
 	var/markings_color
 	var/markings_specialty
@@ -38,12 +39,14 @@
 	name = "\improper RX47-SB Combat Mechsuit"
 	desc = "A RX47-SB 'Siegebreaker' Combat Mechsuit, equipped with a 50mm IFF-locked explosive cannon and support Cupola Smartgun. It has a flamethrower attached to the cupola unit."
 	has_cannon = TRUE
+	has_scattergun = FALSE
 	gun_primary_path = /obj/item/weapon/gun/mech/cannon
 
 /obj/vehicle/rx47_mech/exterminator
 	name = "\improper RX47-EX Combat Mechsuit"
 	desc = "A RX47-EX 'Exterminator' Combat Mechsuit, equipped with a 20mm Chaingun and 50mm IFF-locked explosive cannon"
 	has_cannon = TRUE
+	has_scattergun = FALSE
 	gun_secondary_path = /obj/item/weapon/gun/mech/cannon
 
 //--------------------GENERAL PROCS-----------------
@@ -72,7 +75,11 @@
 		overlays += image(icon_state = "wymech_helmet_open", layer = MECH_LAYER)
 	overlays += image(icon_state = "wymech_arms", layer = MECH_LAYER)
 
-	overlays += image(icon_state = "weapon_left", layer = MECH_LAYER)
+
+	if(has_scattergun)
+		overlays += image(icon_state = "weapon_scatter", layer = MECH_LAYER)
+	else
+		overlays += image(icon_state = "weapon_left", layer = MECH_LAYER)
 	if(has_cannon)
 		overlays += image(icon_state = "weapon_cannon", layer = MECH_LAYER)
 	else

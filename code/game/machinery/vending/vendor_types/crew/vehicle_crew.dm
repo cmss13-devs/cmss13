@@ -210,19 +210,19 @@ GLOBAL_LIST_INIT(cm_vending_vehicle_crew_humvee, list(
 	list("STARTING KIT SELECTION:", 0, null, null, null),
 
 	list("PRIMARY WEAPON", 0, null, null, null),
-	list("M24-JTMV Cannon", 0, /obj/item/hardpoint/primary/humvee_cannon, VEHICLE_PRIMARY_AVAILABLE, VENDOR_ITEM_MANDATORY),
+	list("M24-RC1 Remote Cannon", 0, /obj/item/hardpoint/primary/humvee_cannon, VEHICLE_PRIMARY_AVAILABLE, VENDOR_ITEM_MANDATORY),
 
 	list("SUPPORT MODULE", 0, null, null, null),
-	list("M24-JTMV Flare Launcher", 0, /obj/item/hardpoint/support/humvee_flare_launcher, VEHICLE_SECONDARY_AVAILABLE, VENDOR_ITEM_MANDATORY),
+	list("M-77F Flare Launcher", 0, /obj/item/hardpoint/support/humvee_flare_launcher, VEHICLE_SECONDARY_AVAILABLE, VENDOR_ITEM_MANDATORY),
 
 	list("ARMOR", 0, null, null, null),
-	list("Snowplow", 0, /obj/item/hardpoint/armor/humvee_snowplow, VEHICLE_ARMOR_AVAILABLE, VENDOR_ITEM_MANDATORY),
+	list("M24-JTMV Snowplow", 0, /obj/item/hardpoint/armor/humvee_snowplow, VEHICLE_ARMOR_AVAILABLE, VENDOR_ITEM_MANDATORY),
 
 	list("SPECIAL", 0, null, null, null),
-	list("JTMV Overhead Lights", 0, /obj/item/hardpoint/support/humvee_overhead_lights, VEHICLE_SPECIAL_AVAILABLE, VENDOR_ITEM_MANDATORY),
+	list("M24-JTMV Overhead Lights", 0, /obj/item/hardpoint/support/humvee_overhead_lights, VEHICLE_SPECIAL_AVAILABLE, VENDOR_ITEM_MANDATORY),
 
 	list("REPLACEMENT WHEELS", 0, null, null, null),
-	list("Replacement JTMV Wheels", 0, /obj/item/hardpoint/locomotion/humvee_wheels, VEHICLE_TREADS_AVAILABLE, VENDOR_ITEM_MANDATORY)))
+	list("Replacement M24-JTMV Wheels", 0, /obj/item/hardpoint/locomotion/humvee_wheels, VEHICLE_TREADS_AVAILABLE, VENDOR_ITEM_MANDATORY)))
 
 //------------WEAPONS RACK---------------
 

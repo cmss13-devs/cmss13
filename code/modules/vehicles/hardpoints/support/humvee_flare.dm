@@ -12,7 +12,7 @@
 
 	activatable = TRUE
 
-	health = 500
+	health = 300
 	firing_arc = 120
 
 	ammo = new /obj/item/ammo_magazine/hardpoint/flare_launcher
@@ -23,10 +23,10 @@
 	muzzleflash_icon_state = "muzzle_laser"
 
 	muzzle_flash_pos = list(
-		"1" = list(-4, -28),
-		"2" = list(5, 8),
-		"4" = list(-14, -6),
-		"8" = list(14, -6)
+		"1" = list(-27, -28),
+		"2" = list(-5, -37),
+		"4" = list(-12, -19),
+		"8" = list(-21, -42)
 	)
 
 	scatter = 6

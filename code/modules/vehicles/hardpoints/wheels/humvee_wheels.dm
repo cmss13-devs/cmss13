@@ -9,7 +9,7 @@
 	disp_icon = "humvee"
 	disp_icon_state = "humvee_wheels"
 
-	health = 500
+	health = 300
 
 	move_delay = VEHICLE_SPEED_SUPERFAST
 	move_max_momentum = 2

@@ -25,7 +25,7 @@
 	slot = HDPT_TURRET
 
 	// big beefy chonk of metal
-	health = 450
+	health = 250
 	damage_multiplier = 0.05
 
 	accepted_hardpoints = list(
@@ -46,7 +46,7 @@
 	var/gyro = FALSE
 
 	// How long the windup is before the turret rotates
-	var/rotation_windup = 0.5 SECONDS
+	var/rotation_windup = 0.2 SECONDS
 	// Used during the windup
 	var/rotating = FALSE
 

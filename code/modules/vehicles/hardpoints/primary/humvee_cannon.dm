@@ -1,34 +1,33 @@
 // APC cannons
 /obj/item/hardpoint/primary/humvee_cannon
-	name = "\improper M24-JTMV cannon"
-	desc = "A primary two-barrel cannon for the M24-JTMV that shoots 20mm IFF-compatible rounds."
+	name = "\improper M24-RC1 Remote Cannon"
+	desc = "A single-barrel, remotely operated roof cannon for the M2420 JTMV-HWC. It fires 10x28mm tungsten rounds. Effective against infantry and lightly armored targets."
 	icon = 'icons/obj/vehicles/hardpoints/humvee.dmi'
 
 	icon_state = "humveecannon"
 	disp_icon = "humvee"
 	disp_icon_state = "humveecannon"
-	activation_sounds = list('sound/weapons/vehicles/dual_autocannon_fire.ogg')
+	activation_sounds = list('sound/weapons/humvee_cannon.ogg')
 
 	damage_multiplier = 0.2
 
-	health = 500
-	firing_arc = 60
+	health = 300
+	firing_arc = 80
 
-	origins = list(0, 1)
+	origins = list(0, 0)
 
-	ammo = new /obj/item/ammo_magazine/hardpoint/boyars_dualcannon
-	max_clips = 2
+	ammo = new /obj/item/ammo_magazine/hardpoint/humvee_cannon
+	max_clips = 4
 
 	use_muzzle_flash = TRUE
 	angle_muzzleflash = FALSE
-	var/muzzleflash_icon = 'icons/obj/vehicles/humvee.dmi'
-	muzzleflash_icon_state = "muzzle_flash"
+	muzzleflash_icon_state = "muzzle_flash_small"
 
 	muzzle_flash_pos = list(
-		"1" = list(0, 0),
-		"2" = list(0, 0),
-		"4" = list(0, 0),
-		"8" = list(0, 0)
+		"1" = list(-17, -6),
+		"2" = list(-16, -58),
+		"4" = list(12, -31),
+		"8" = list(-44, -32)
 	)
 
 	scatter = 1

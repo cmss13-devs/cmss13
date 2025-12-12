@@ -7,4 +7,4 @@
 	disp_icon = "humvee"
 	disp_icon_state = "humveehatch"
 
-	health = 500
+	health = 300

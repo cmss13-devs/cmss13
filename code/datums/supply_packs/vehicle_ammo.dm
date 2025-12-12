@@ -69,6 +69,22 @@
 	containername = "PARS-159 Boyars Dualcannon ammo crate"
 	group = "Vehicle Ammo"
 
+/datum/supply_packs/ammo_humvee_ammo
+	name = "M24-RC1 Remote Cannon magazine (x5)"
+	contains = list(
+		/obj/item/ammo_magazine/hardpoint/humvee_cannon,
+		/obj/item/ammo_magazine/hardpoint/humvee_cannon,
+		/obj/item/ammo_magazine/hardpoint/humvee_cannon,
+		/obj/item/ammo_magazine/hardpoint/humvee_cannon,
+		/obj/item/ammo_magazine/hardpoint/humvee_cannon,
+		/obj/item/ammo_magazine/hardpoint/humvee_cannon,
+		/obj/item/ammo_magazine/hardpoint/humvee_cannon,
+	)
+	cost = 30
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "M24-RC1 Remote Cannon ammo crate"
+	group = "Vehicle Ammo"
+
 /datum/supply_packs/ammo_glauncher
 	name = "M92T Grenade Launcher magazines (x5)"
 	contains = list(

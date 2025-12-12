@@ -291,7 +291,7 @@
 		/obj/item/reagent_container/glass/bottle/bicaridine,
 		/obj/item/reagent_container/glass/bottle/antitoxin,
 		/obj/item/reagent_container/glass/bottle/dexalin,
-		/obj/item/reagent_container/glass/bottle/epinephrine //so UPPs can refill their bottles in their vends
+		/obj/item/reagent_container/glass/bottle/epinephrine, //so UPPs can refill their bottles in their vends
 		/obj/item/reagent_container/glass/bottle/inaprovaline,
 		/obj/item/reagent_container/glass/bottle/kelotane,
 		/obj/item/reagent_container/glass/bottle/oxycodone,

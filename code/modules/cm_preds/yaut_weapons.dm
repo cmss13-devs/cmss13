@@ -122,7 +122,7 @@
 /obj/item/weapon/bracer_attachment/chain_gauntlets
 	name = "chain gauntlets"
 	plural_name = "wrist blades"
-	desc = "gauntlets made out of alien alloy, chains wrapped around it imply this was made for hand to hand combat, with some range."
+	desc = "Gauntlets made out of alien alloy, chains wrapped around it imply this was made for hand to hand combat, with some range."
 	icon_state = "metal_gauntlet"
 	hitsound = null
 	item_state = "gauntlet"
@@ -1401,7 +1401,7 @@
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle
 	name = "plasma rifle"
-	desc = "A long-barreled heavy plasma weapon. Intended for combat, not hunting. Has an integrated battery that allows for a functionally unlimited amount of shots to be discharged. Equipped with an internal gyroscopic stabilizer allowing its operator to fire the weapon one-handed if desired"
+	desc = "A long-barreled heavy plasma weapon. Intended for combat, not hunting. Has an integrated battery that allows for a functionally unlimited amount of shots to be discharged. Equipped with an internal gyroscopic stabilizer allowing its operator to fire the weapon one-handed if desired."
 	icon_state = "plasmarifle"
 	item_state = "plasmarifle"
 	unacidable = TRUE

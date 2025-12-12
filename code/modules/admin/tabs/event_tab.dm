@@ -360,7 +360,7 @@
 
 /client/proc/view_faxes()
 	set name = "Reply to Faxes"
-	set desc = "View faxes from this round"
+	set desc = "View faxes from this round."
 	set category = "Admin.Events"
 
 	if(!admin_holder)
@@ -545,7 +545,7 @@
 
 /client/proc/force_hijack()
 	set name = "Force Hijack"
-	set desc = "Force a dropship to be hijacked"
+	set desc = "Force a dropship to be hijacked."
 	set category = "Admin.Shuttles"
 
 	var/list/shuttles = list(DROPSHIP_ALAMO, DROPSHIP_NORMANDY)
@@ -608,7 +608,7 @@
 
 /client/proc/cmd_admin_xeno_report()
 	set name = "Report: Queen Mother"
-	set desc = "Basically a command announcement, but only for selected Xeno's Hive"
+	set desc = "Basically a command announcement, but only for selected Xeno's Hive."
 	set category = "Admin.Factions"
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))

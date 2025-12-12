@@ -400,7 +400,7 @@
 
 /obj/item/clothing/accessory/health/research_plate/anti_decay
 	name = "experimental preservation plate"
-	desc = "preservation plate which activates once the user is dead, uses variety of different substances and sensors to slow down the decay and increase the time before the user is permanently dead to around 9 minutes instead of 5"
+	desc = "Preservation plate which activates once the user is dead, uses variety of different substances and sensors to slow down the decay and increase the time before the user is permanently dead to around 9 minutes instead of 5"
 	var/mob/living/carbon/human/wearer
 
 

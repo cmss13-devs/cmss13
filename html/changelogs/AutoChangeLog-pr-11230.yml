@@ -1,0 +1,5 @@
+author: "larentoun"
+delete-after: True
+changes:
+  - bugfix: "Mutated King is now visible."
+  - bugfix: "Mutated Lesser Drone, Drone, Facehugger, Burrower, Sentinel, Spitter, Lurker and Queen had their icons re-centered."

@@ -168,7 +168,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 			for(var/photo in info.photo_list)
 				usr << browse_rsc(info.photo_list[photo], photo)
 
-		show_browser(usr, "<body class='paper'>[info.data]</body>", "Fax Message", "Fax Message")
+		show_browser(usr, "<body class='paper'>[info.data]</body>", "Fax Message", "Fax Message", width=DEFAULT_PAPER_WIDTH, height=DEFAULT_PAPER_HEIGHT, extra_stylesheets=info.extra_stylesheets, extra_headers=info.extra_headers)
 
 	else if(href_list["medals_panel"])
 		GLOB.medals_panel.tgui_interact(mob)

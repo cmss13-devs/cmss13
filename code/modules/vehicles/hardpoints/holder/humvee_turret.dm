@@ -3,7 +3,7 @@
 	desc = "The centerpiece of the M2420 JTMV-HWC. Designed to support quick installation and deinstallation of various JTMV weapon modules. Has inbuilt smoke screen deployment system."
 
 	icon = 'icons/obj/vehicles/humvee.dmi'
-	icon_state = "humveeturret"
+	icon_state = "humveeturret_0"
 	disp_icon = "humvee"
 	disp_icon_state = "humveeturret"
 	activation_sounds = list('sound/weapons/vehicles/smokelauncher_fire.ogg')

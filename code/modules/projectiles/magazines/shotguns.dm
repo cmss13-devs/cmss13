@@ -51,7 +51,7 @@ GLOBAL_LIST_INIT(shotgun_boxes_12g, list(
 	handful_state = "incendiary_slug"
 
 /obj/item/ammo_magazine/shotgun/incendiarybuck
-	name = "box of incendiary buckshots"
+	name = "box of incendiary buckshot shells"
 	desc = "A box filled with self-detonating buckshot incendiary shotgun rounds. 12 Gauge."
 	icon_state = "incendiarybuck"
 	item_state = "incendiarybuck"

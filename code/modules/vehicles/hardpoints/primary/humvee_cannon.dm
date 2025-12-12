@@ -21,13 +21,14 @@
 
 	use_muzzle_flash = TRUE
 	angle_muzzleflash = FALSE
+	var/muzzleflash_icon = 'icons/obj/vehicles/humvee.dmi'
 	muzzleflash_icon_state = "muzzle_flash"
 
 	muzzle_flash_pos = list(
-		"1" = list(0, 4),
-		"2" = list(0, 15),
-		"4" = list(-6, 16),
-		"8" = list(6, 16)
+		"1" = list(0, 0),
+		"2" = list(0, 0),
+		"4" = list(0, 0),
+		"8" = list(0, 0)
 	)
 
 	scatter = 1

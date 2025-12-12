@@ -13,7 +13,7 @@
 	bound_x = -32
 	bound_y = -32
 
-	health = 850 // more armor to make up for the lack of other options.
+	health = 750 // more armor to make up for the lack of other options.
 
 	interior_map = /datum/map_template/interior/humvee/humvee_transport
 

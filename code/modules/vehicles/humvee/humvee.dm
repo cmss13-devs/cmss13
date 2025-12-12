@@ -47,7 +47,7 @@
 		/obj/item/hardpoint/holder/humvee_turret,
 		/obj/item/hardpoint/armor/humvee_snowplow,
 		/obj/item/hardpoint/support/humvee_overhead_lights,
-		/obj/item/hardpoint/primary/humvee_hatch
+		/obj/item/hardpoint/primary/humvee_hatch,
 	)
 
 	seats = list(

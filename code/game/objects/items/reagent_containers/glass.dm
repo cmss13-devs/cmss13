@@ -310,9 +310,9 @@
 /obj/item/reagent_container/glass/minitank/on_reagent_change()
 	update_icon()
 
-/obj/item/reagent_container/glass/minitank/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/reagent_container/hypospray/autoinjector))
-		var/obj/item/reagent_container/hypospray/autoinjector/autoinjector = W
+/obj/item/reagent_container/glass/minitank/attackby(obj/item/item as obj, mob/user as mob)
+	if(istype(item, /obj/item/reagent_container/hypospray/autoinjector))
+		var/obj/item/reagent_container/hypospray/autoinjector/autoinjector = item
 		var/amount = (autoinjector.reagents.maximum_volume - autoinjector.reagents.total_volume)
 		if(reagents.has_reagent(autoinjector.chemname, amount)) ////The good stuff. Actually handles the filling of chemicals.
 			reagents.trans_id_to(autoinjector, autoinjector.chemname, amount) //fill this bih
@@ -476,6 +476,7 @@
 
 /obj/item/reagent_container/glass/beaker/vial/epinephrine
 	name = "epinephrine vial"
+	desc = "A vial filled with epinephrine to help restart the heart after defibrillation for use in a hypospray."
 
 /obj/item/reagent_container/glass/beaker/vial/epinephrine/Initialize()
 	. = ..()
@@ -484,14 +485,26 @@
 
 /obj/item/reagent_container/glass/beaker/vial/tricordrazine
 	name = "tricordrazine vial"
+	desc = "A vial filled with a wide-spectrum damage healer to be used in a hypospray."
 
 /obj/item/reagent_container/glass/beaker/vial/tricordrazine/Initialize()
 	. = ..()
 	reagents.add_reagent("tricordrazine", 30)
 	update_icon()
 
+/obj/item/reagent_container/glass/beaker/vial/depi_plus/
+	name = "depi-plus vial"
+	desc = "A vial filled with four-part heart-restarter and one-part instant reoxygenator to be used in a hypospray."
+
+/obj/item/reagent_container/glass/beaker/vial/depi_plus/Initialize()
+	. = ..()
+	reagents.add_reagent("dexalinp", 6)
+	reagents.add_reagent("epinephrine", 24)
+	update_icon()
+
 /obj/item/reagent_container/glass/beaker/vial/sedative
 	name = "chloral hydrate vial"
+	desc = "A vial filled with a potent sleep agent to be used in a hypospray."
 
 /obj/item/reagent_container/glass/beaker/vial/sedative/Initialize()
 	. = ..()

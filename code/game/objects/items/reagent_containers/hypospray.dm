@@ -4,7 +4,7 @@
 
 /obj/item/reagent_container/hypospray
 	name = "hypospray"
-	desc = "The DeForest Medical Corporation hypospray is a sterile, air-needle autoinjector for rapid administration of drugs to patients."
+	desc = "The DeForest Medical Corporation hypospray is a sterile, air-needle autoinjector for rapid administration of drugs to patients. This one has an empty vial to be filled with a chemical cocktail of your choice."
 	icon = 'icons/obj/items/syringe.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
@@ -244,11 +244,21 @@
 		update_icon()
 
 /obj/item/reagent_container/hypospray/tricordrazine
+	name = "Tricordrazine Hypospray"
 	starting_vial = /obj/item/reagent_container/glass/beaker/vial/tricordrazine
+	desc = "The DeForest Medical Corporation hypospray is a sterile, air-needle autoinjector for rapid administration of drugs to patients. This one's vial came pre-filled with tricordrazine and is refillable at Wey-Med vends."
+
+/obj/item/reagent_container/hypospray/depi_plus
+	name = "Depi-Plus Hypospray"
+	starting_vial = /obj/item/reagent_container/glass/beaker/vial/epi_plus
+	desc = "The DeForest Medical Corporation hypospray is a sterile, air-needle autoinjector for rapid administration of drugs to patients. This one's vial came pre-filled with one part Dexalin+ and 5 parts Epinephrine, intended to be set at 5u per injection and is refillable at wey-med vends."
 
 /obj/item/reagent_container/hypospray/epinephrine
 	starting_vial = /obj/item/reagent_container/glass/beaker/vial/epinephrine
+	name = "Epinephrine Hypospray"
+	desc = "The DeForest Medical Corporation hypospray is a sterile, air-needle autoinjector for rapid administration of drugs to patients. This one's vial came pre-filled with epinephrine is refillable at Wey-Med vends."
 
 /obj/item/reagent_container/hypospray/sedative
 	name = "Sedative Hypospray"
 	starting_vial = /obj/item/reagent_container/glass/beaker/vial/sedative
+	desc = "The DeForest Medical Corporation hypospray is a sterile, air-needle autoinjector for rapid administration of drugs to patients. This one's vial came pre-filled chloral hydrate."

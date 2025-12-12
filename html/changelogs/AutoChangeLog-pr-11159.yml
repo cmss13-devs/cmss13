@@ -1,0 +1,5 @@
+author: "Puckaboo2"
+delete-after: True
+changes:
+  - spellcheck: "Adds periods to ends of descriptions."
+  - spellcheck: "Capitalizes sentences at the beginning of descriptions."

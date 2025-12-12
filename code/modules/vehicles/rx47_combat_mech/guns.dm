@@ -311,6 +311,12 @@
 	start_automatic = FALSE
 	start_semiauto = TRUE
 
+/obj/item/weapon/gun/mech/scattergun/Initialize(mapload, spawn_empty)
+	. = ..()
+
+	AddComponent(/datum/component/iff_fire_prevention, 5)
+	SEND_SIGNAL(src, COMSIG_GUN_ALT_IFF_TOGGLED, TRUE)
+
 /obj/item/weapon/gun/mech/scattergun/set_gun_config_values()
 	fire_delay = FIRE_DELAY_TIER_SHOTGUN_SLOW
 

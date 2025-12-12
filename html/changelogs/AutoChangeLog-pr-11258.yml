@@ -1,0 +1,6 @@
+author: "Labeo0"
+delete-after: True
+changes:
+  - qol: "Allow .458 ammo transfer from small to big ammo box."
+  - balance: "Allow storing .458 ammo box on back slot."
+  - code_imp: "moved .458 ammo box code to different file"

@@ -7321,7 +7321,7 @@
 /turf/open/floor/almayer/silver/north,
 /area/almayer/command/cic)
 "arQ" = (
-/obj/structure/surface/table/gamblingtable,
+/obj/structure/surface/table/woodentable/gamblingtable,
 /obj/item/spacecash/c10,
 /obj/item/spacecash/c10{
 	pixel_y = 3
@@ -7336,7 +7336,7 @@
 /turf/open/floor/almayer/silver/northeast,
 /area/almayer/command/cic)
 "arS" = (
-/obj/structure/surface/table/gamblingtable,
+/obj/structure/surface/table/woodentable/gamblingtable,
 /obj/item/toy/dice,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/offices/flight)
@@ -7472,7 +7472,7 @@
 /turf/open/floor/almayer/silver/west,
 /area/almayer/hallways/lower/repair_bay)
 "asj" = (
-/obj/structure/surface/table/gamblingtable,
+/obj/structure/surface/table/woodentable/gamblingtable,
 /obj/item/toy/deck,
 /obj/item/toy/deck/uno{
 	pixel_x = 13
@@ -7480,7 +7480,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/offices/flight)
 "ask" = (
-/obj/structure/surface/table/gamblingtable,
+/obj/structure/surface/table/woodentable/gamblingtable,
 /obj/item/reagent_container/food/drinks/cans/beer,
 /obj/item/reagent_container/food/drinks/bottle/sake{
 	pixel_y = 7;
@@ -8509,7 +8509,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "s_umbilical";
-	name = "\improper Umbillical Airlock";
+	name = "\improper Umbilical Airlock";
 	unacidable = 1;
 	explo_proof = 1;
 	emp_proof = 1
@@ -8901,7 +8901,7 @@
 /area/almayer/command/cichallway)
 "awA" = (
 /obj/structure/prop/almayer/computers/sensor_computer3{
-	name = "weapon targetting computer"
+	name = "weapon targeting computer"
 	},
 /obj/structure/sign/safety/terminal{
 	pixel_x = 8;
@@ -12040,7 +12040,7 @@
 	pixel_x = -3
 	},
 /obj/item/dogtag{
-	desc = "A blank marine's information dog tag. The word Ranger and a pawprint is scratched into it."
+	desc = "A blank marine's information dog tag. The word Ranger and a paw-print is scratched into it."
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/auxiliary_officer_office)
@@ -18401,7 +18401,7 @@
 "aVA" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "n_umbilical";
-	name = "\improper Umbillical Airlock";
+	name = "\improper Umbilical Airlock";
 	unacidable = 1;
 	explo_proof = 1;
 	emp_proof = 1
@@ -22637,7 +22637,7 @@
 "bfi" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "s_ert";
-	name = "\improper Umbillical Airlock";
+	name = "\improper Umbilical Airlock";
 	unacidable = 1;
 	explo_proof = 1;
 	emp_proof = 1
@@ -35571,7 +35571,7 @@
 "bIm" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "ert_umbilical";
-	name = "\improper Umbillical Airlock"
+	name = "\improper Umbilical Airlock"
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/port_point_defense)
@@ -35737,7 +35737,7 @@
 "bII" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "n_umbilical";
-	name = "\improper Umbillical Airlock";
+	name = "\improper Umbilical Airlock";
 	unacidable = 1;
 	explo_proof = 1;
 	emp_proof = 1;
@@ -35826,7 +35826,7 @@
 "bIV" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "ert3_umbilical";
-	name = "\improper Umbillical Airlock";
+	name = "\improper Umbilical Airlock";
 	dir = 4
 	},
 /turf/open/floor/almayer/plate,
@@ -35999,7 +35999,7 @@
 "bJv" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "ert2_umbilical";
-	name = "\improper Umbillical Airlock"
+	name = "\improper Umbilical Airlock"
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/starboard_point_defense)
@@ -36537,7 +36537,7 @@
 "bKY" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "s_umbilical";
-	name = "\improper Umbillical Airlock";
+	name = "\improper Umbilical Airlock";
 	unacidable = 1;
 	explo_proof = 1;
 	emp_proof = 1
@@ -44103,7 +44103,7 @@
 "efk" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "s_umbilical";
-	name = "\improper Umbillical Airlock";
+	name = "\improper Umbilical Airlock";
 	unacidable = 1;
 	explo_proof = 1;
 	emp_proof = 1
@@ -68754,7 +68754,7 @@
 "okd" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "n_umbilical";
-	name = "\improper Umbillical Airlock";
+	name = "\improper Umbilical Airlock";
 	unacidable = 1;
 	explo_proof = 1;
 	emp_proof = 1

@@ -11,7 +11,7 @@
 	var/inuse = 0
 	var/grind_duration = 6 SECONDS // 6 seconds
 	var/obj/item/reagent_container/beaker = null
-	var/limit = 10
+	var/limit = 16
 	var/tether_range = 8
 	var/obj/structure/machinery/smartfridge/chemistry/linked_storage //Where we send bottle chemicals
 	var/list/blend_items = list (
@@ -93,7 +93,7 @@
 		to_chat(user, SPAN_WARNING("The machine cannot hold anymore items."))
 		return TRUE
 	if (istype(O, /obj/item/research_upgrades/grinderspeed))
-		if(limit == 10)
+		if(limit == 16)
 			grind_duration = 3 SECONDS
 			limit = 25
 			to_chat(user, SPAN_NOTICE("You insert [O] into [src]"))

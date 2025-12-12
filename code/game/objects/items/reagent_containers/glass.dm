@@ -492,16 +492,6 @@
 	reagents.add_reagent("tricordrazine", 30)
 	update_icon()
 
-/obj/item/reagent_container/glass/beaker/vial/depi_plus/
-	name = "depi-plus vial"
-	desc = "A vial filled with four-part heart-restarter and one-part instant reoxygenator to be used in a hypospray."
-
-/obj/item/reagent_container/glass/beaker/vial/depi_plus/Initialize()
-	. = ..()
-	reagents.add_reagent("dexalinp", 6)
-	reagents.add_reagent("epinephrine", 24)
-	update_icon()
-
 /obj/item/reagent_container/glass/beaker/vial/sedative
 	name = "chloral hydrate vial"
 	desc = "A vial filled with a potent sleep agent to be used in a hypospray."

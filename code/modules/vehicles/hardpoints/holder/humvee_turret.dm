@@ -29,9 +29,7 @@
 	damage_multiplier = 0.05
 
 	accepted_hardpoints = list(
-		///obj/item/hardpoint/primary/humvee_grenade_launcher,
 		/obj/item/hardpoint/primary/humvee_cannon,
-		//secondary
 		/obj/item/hardpoint/support/humvee_flare_launcher,
 	)
 

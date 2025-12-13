@@ -1,6 +1,7 @@
 #define DISPENSER_UNHACKABLE -1
 #define DISPENSER_NOT_HACKED 0
 #define DISPENSER_HACKED 1
+#define FREE_CHEMICALS list("water")
 
 /obj/structure/machinery/chem_dispenser
 	name = "chemical dispenser"
@@ -194,6 +195,8 @@
 				var/space = current_reagent.maximum_volume - current_reagent.total_volume
 
 				current_reagent.add_reagent(reagent_name, min(amount, chem_storage.energy * 10, space))
+				if(reagent_name in FREE_CHEMICALS)
+					return
 				chem_storage.energy = max(chem_storage.energy - min(amount, chem_storage.energy * 10, space) / 10, 0)
 
 			. = TRUE

@@ -1,0 +1,12 @@
+[
+	{ "type": "map_sprinkle", "path": "sprinkles/" },
+	{ "type": "map_variations",   "landmark": "armory",          "path": "armory/",                      "chance": 0.3 },
+    { "type": "map_variations",   "landmark": "nspa",            "path": "nspa/",                        "chance": 0.3 },
+    { "type": "map_variations",   "landmark": "engicheckpoint",  "path": "engicheckpoint/",              "chance": 0.4 },
+    { "type": "map_variations",   "landmark": "workshop",        "path": "workshop/",                    "chance": 0.4 },
+    { "type": "map_variations",   "landmark": "northcheckpoint", "path": "northcheckpoint/",             "chance": 0.4 },
+    { "type": "map_variations",   "landmark": "xenoflora",       "path": "xenoflora/",                   "chance": 0.4 },
+    { "type": "map_variations",   "landmark": "southbridge",     "path": "southbridge/",                 "chance": 0.3 },
+    { "type": "map_variations",   "landmark": "treatmentone",    "path": "treatmentone/",                "chance": 0.3 },
+    { "type": "map_variations",   "landmark": "chapel",          "path": "chapel/",                      "chance": 0.3 }
+]

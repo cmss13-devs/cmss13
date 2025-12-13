@@ -73,7 +73,7 @@ export const CHANGELOG_ENTRIES = [
 		},
 	],
 
-[
+	[
 		["imagetweak"],
 		{
 			placeholders: ["tweaked some icons and images"],

@@ -176,11 +176,14 @@ Defined in conflicts.dm of the #defines folder.
 	if(!istype(detaching_gun))
 		return //Guns only
 
+	if(!user && ishuman(detaching_gun.loc))
+		user = detaching_gun.loc //Specifically for when called by Attach which doesn't pass a user.
+
 	if(user)
 		detaching_gun.on_detach(user, src)
 
 	if(flags_attach_features & ATTACH_ACTIVATION)
-		activate_attachment(detaching_gun, null, TRUE)
+		activate_attachment(detaching_gun, user, TRUE)
 
 	detaching_gun.attachments[slot] = null
 	detaching_gun.recalculate_attachment_bonuses()
@@ -3925,6 +3928,7 @@ Defined in conflicts.dm of the #defines folder.
 	RegisterSignal(gun, COMSIG_ITEM_DROPPED, PROC_REF(handle_drop))
 
 /obj/item/attachable/bipod/Detach(mob/user, obj/item/weapon/gun/detaching_gun)
+	..()
 	UnregisterSignal(detaching_gun, COMSIG_ITEM_DROPPED)
 
 	//clear out anything related to full auto switching
@@ -3938,9 +3942,6 @@ Defined in conflicts.dm of the #defines folder.
 
 	if(bipod_deployed)
 		undeploy_bipod(detaching_gun, user)
-	else
-		UnregisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK)
-	..()
 
 /obj/item/attachable/bipod/update_icon()
 	if(bipod_deployed)

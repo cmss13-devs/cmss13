@@ -216,7 +216,7 @@
 	being_forced = !being_forced
 	return XENO_NO_DELAY_ACTION
 
-/obj/structure/machinery/cryopod/evacuation/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/machinery/cryopod/evacuation/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	return TAILSTAB_COOLDOWN_NONE
 
 /obj/structure/machinery/cryopod/evacuation/proc/move_mob_inside(mob/M)

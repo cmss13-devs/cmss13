@@ -19,7 +19,8 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		return
 	var/mob/living/carbon/human/user = hauled_mob?.resolve()
 	if(user)
-		xenomorph.release_haul(stuns = FALSE)
+		to_chat(src, "Release [user] before evolving!")
+		return
 
 	var/list/castes_available = caste.evolves_to.Copy()
 

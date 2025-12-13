@@ -56,7 +56,7 @@ export const CHANGELOG_ENTRIES = [
 	[
 		["soundtweak"],
 		{
-			placeholders: ["tweaked an old sound thingy"],
+			placeholders: ["tweaked a sound thingy"],
 		},
 	],
 

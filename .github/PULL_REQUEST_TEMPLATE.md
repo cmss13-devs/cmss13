@@ -55,7 +55,6 @@ sounddel: removed an old sound thingy
 soundtweak: tweaked a sound thingy
 spellcheck: fixed a few typos or grammatical errors
 ui: changed something relating to user interfaces
-wip: this isn't finished or hasn't been tested yet
 /:cl:
 
 <!-- Both :cl:'s are required for the changelog to work! -->

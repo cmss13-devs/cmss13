@@ -183,9 +183,9 @@
 #define RESEARCH_UPGRADE_TIER_5 5
 //Value define
 
-#define ITEM_MACHINERY_UPGRADE "Machinery" //*must* be same as category name.
-#define ITEM_ACCESSORY_UPGRADE "Items"
-#define ITEM_ARMOR_UPGRADE "Armor"
+#define ITEM_MACHINERY_UPGRADE "machinery" //*must* be same as category name.
+#define ITEM_ACCESSORY_UPGRADE "items"
+#define ITEM_ARMOR_UPGRADE "armor"
 
 //injector plate stuff
 #define EMERGENCY_PLATE_OD_PROTECTION_OFF 0

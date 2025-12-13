@@ -59,6 +59,7 @@ export const CHANGELOG_ENTRIES = [
 			placeholders: ["tweaked an old sound thingy"],
 		},
 	],
+
 	[
 		["imageadd"],
 		{

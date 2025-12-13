@@ -361,7 +361,7 @@
 
 /obj/structure/stairs
 	name = "Stairs"
-	desc = "Stairs.  You walk up and down them."
+	desc = "Stairs. You walk up and down them."
 	icon = 'icons/obj/structures/structures.dmi'
 	icon_state = "rampbottom"
 	gender = PLURAL

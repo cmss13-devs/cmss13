@@ -547,9 +547,29 @@
 		for(var/mob/living/carbon/xenomorph/leader in user.hive.xeno_leader_list)
 			options["Xeno Leader [leader]"] = list(leader, TRACKER_LEADER)
 
+		var/list/sorted_morphers = sort_list_dist(user.hive.hive_morphers, get_turf(user))
+		for(var/obj/effect/alien/resin/special/eggmorph/placed_morpher as anything in sorted_morphers)
+			options["Egg Morpher [placed_morpher.morpher_desc]"] = list(placed_morpher, TRACKER_MORPHER)
+
+		var/list/sorted_clusters = sort_list_dist(user.hive.hive_clusters, get_turf(user))
+		for(var/obj/effect/alien/resin/special/cluster/placed_cluster as anything in sorted_clusters)
+			options["Cluster [placed_cluster.cluster_desc]"] = list(placed_cluster, TRACKER_CLUSTER)
+
+		var/list/sorted_recovery_pylons = sort_list_dist(user.hive.hive_recovery_pylons, get_turf(user))
+		for(var/obj/effect/alien/resin/special/recovery/placed_recovery_pylon as anything in sorted_recovery_pylons)
+			options["Recovery Pylon [placed_recovery_pylon.recovery_pylons_desc]"] = list(placed_recovery_pylon, TRACKER_RECOVERY_PYLON)
+
+		var/list/sorted_plasma_pylons = sort_list_dist(user.hive.hive_plasma_pylons, get_turf(user))
+		for(var/obj/effect/alien/resin/special/plasma_tree/placed_plasma_pylon as anything in sorted_plasma_pylons)
+			options["Plasma Tree [placed_plasma_pylon.plasma_pylons_desc]"] = list(placed_plasma_pylon, TRACKER_PLASMA_PYLON)
+
 		var/list/sorted_tunnels = sort_list_dist(user.hive.tunnels, get_turf(user))
 		for(var/obj/structure/tunnel/tunnel as anything in sorted_tunnels)
 			options["Tunnel [tunnel.tunnel_desc]"] = list(tunnel, TRACKER_TUNNEL)
+
+		if(length(options) == 0)
+			to_chat(user, SPAN_WARNING("We don't sense any valid tracking targets!"))
+			return
 
 		var/list/selected = tgui_input_list(user, "Select what you want the locator to track.", "Locator Options", options)
 		if(selected)

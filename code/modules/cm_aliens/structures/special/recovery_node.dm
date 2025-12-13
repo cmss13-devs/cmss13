@@ -6,11 +6,27 @@
 	var/replenish_amount = 75
 	COOLDOWN_DECLARE(last_replenish)
 
+	///Contains description for area name and coords.
+	var/plasma_pylons_desc = ""
+	var/datum/hive_status/hive
+
 /obj/effect/alien/resin/special/plasma_tree/Initialize(mapload, hive_ref)
 	. = ..()
+	var/turf/find = get_turf(src)
+	plasma_pylons_desc = find.loc.name + " ([loc.x], [loc.y]) [pick(GLOB.greek_letters)]"
+
+	if(!hive)
+		hive = GLOB.hive_datum[linked_hive.hivenumber]
+		hive.hive_plasma_pylons += src
+
 	update_minimap_icon()
 	RegisterSignal(SSdcs, COMSIG_GLOB_BOOST_XENOMORPH_WALLS, PROC_REF(enable_boost))
 	RegisterSignal(SSdcs, COMSIG_GLOB_STOP_BOOST_XENOMORPH_WALLS, PROC_REF(disable_boost))
+
+/obj/effect/alien/resin/special/plasma_tree/Destroy()
+	. = ..()
+	if(hive)
+		hive.hive_plasma_pylons -= src
 
 /obj/effect/alien/resin/special/plasma_tree/proc/update_minimap_icon()
 	SSminimaps.remove_marker(src)
@@ -67,8 +83,19 @@
 	var/heal_amount = 20
 	COOLDOWN_DECLARE(last_heal)
 
+	///Contains description for area name and coords.
+	var/recovery_pylons_desc = ""
+	var/datum/hive_status/hive
+
 /obj/effect/alien/resin/special/recovery/Initialize(mapload, hive_ref)
 	. = ..()
+	var/turf/find = get_turf(src)
+	recovery_pylons_desc = find.loc.name + " ([loc.x], [loc.y]) [pick(GLOB.greek_letters)]"
+
+	if(!hive)
+		hive = GLOB.hive_datum[linked_hive.hivenumber]
+		hive.hive_recovery_pylons += src
+
 	update_minimap_icon()
 	RegisterSignal(SSdcs, COMSIG_GLOB_BOOST_XENOMORPH_WALLS, PROC_REF(enable_boost))
 	RegisterSignal(SSdcs, COMSIG_GLOB_STOP_BOOST_XENOMORPH_WALLS, PROC_REF(disable_boost))
@@ -79,6 +106,8 @@
 
 /obj/effect/alien/resin/special/recovery/Destroy()
 	. = ..()
+	if(hive)
+		hive.hive_recovery_pylons -= src
 	SSminimaps.remove_marker(src)
 
 /obj/effect/alien/resin/special/recovery/get_examine_text(mob/user)

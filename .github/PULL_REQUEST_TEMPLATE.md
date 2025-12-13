@@ -40,7 +40,6 @@ code: changed some code
 config: changed some config setting
 del: Removed old things
 expansion: adds significantly more content to a game mechanic
-experiment: adds something new and maybe controversial
 fix: fixed a few things
 imageadd: added some icons and images
 imagedel: deleted some icons and images

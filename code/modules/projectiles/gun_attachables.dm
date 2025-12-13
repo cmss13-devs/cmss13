@@ -3938,6 +3938,8 @@ Defined in conflicts.dm of the #defines folder.
 
 	if(bipod_deployed)
 		undeploy_bipod(detaching_gun, user)
+	else
+		UnregisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK)
 	..()
 
 /obj/item/attachable/bipod/update_icon()
@@ -3974,7 +3976,7 @@ Defined in conflicts.dm of the #defines folder.
 	scatter_mod = SCATTER_AMOUNT_TIER_9
 	recoil_mod = RECOIL_AMOUNT_TIER_5
 	burst_scatter_mod = 0
-	delay_mod = FIRE_DELAY_TIER_12
+	delay_mod = FIRE_DELAY_TIER_11
 	//if we are no longer on full auto, don't bother switching back to the old firemode
 	if(full_auto_switch && gun.gun_firemode == GUN_FIREMODE_AUTOMATIC && gun.gun_firemode != old_firemode)
 		gun.do_toggle_firemode(user, null, old_firemode)

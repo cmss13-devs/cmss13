@@ -96,8 +96,10 @@
 #define MOBILE_SHUTTLE_ID_ERT2 "ert_pmc_shuttle"
 #define MOBILE_SHUTTLE_ID_ERT3 "ert_upp_shuttle"
 #define MOBILE_SHUTTLE_ID_ERT4 "ert_twe_shuttle"
+#define MOBILE_SHUTTLE_ID_ERT5 "ert_cia_shuttle"
 #define MOBILE_SHUTTLE_ID_ERT_SMALL "ert_small_shuttle_north"
 #define MOBILE_SHUTTLE_ID_ERT_BIG "ert_shuttle_big"
+#define MOBILE_SHUTTLE_ID_ERT_BIG_CIA "ert_shuttle_big_cia"
 
 #define MOBILE_TRIJENT_ELEVATOR "trijentshuttle2"
 #define STAT_TRIJENT_EMPTY "trijent_empty"

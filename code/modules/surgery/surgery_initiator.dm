@@ -115,7 +115,7 @@
 					else
 						hint_msg += ", [current_step.desc]"
 				else
-					hint_msg = "You can't [current_step.desc] with \the [tool]"
+					hint_msg = "You can't [current_step.desc] with [tool]"
 			if(!isnull(hint_msg))
 				to_chat(user, SPAN_WARNING("[hint_msg]."))
 		return FALSE

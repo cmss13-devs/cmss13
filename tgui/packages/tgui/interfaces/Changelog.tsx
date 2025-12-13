@@ -34,6 +34,7 @@ const changeTypes = {
   spellcheck: { icon: 'spell-check', color: 'green', desc: 'Spellcheck' },
   experiment: { icon: 'radiation', color: 'yellow', desc: 'Experiment' },
   balance: { icon: 'balance-scale-right', color: 'yellow', desc: 'Balance' },
+  code: { icon: 'code', color: 'green', desc: 'Code improvement' },
   code_imp: { icon: 'code', color: 'green', desc: 'Code improvement' },
   refactor: { icon: 'tools', color: 'green', desc: 'Code refactor' },
   config: { icon: 'cogs', color: 'purple', desc: 'Config' },

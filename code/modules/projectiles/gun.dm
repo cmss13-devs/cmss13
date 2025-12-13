@@ -1177,7 +1177,7 @@ and you're good to go.
 	if(!gun_user)
 		gun_user = user
 
-	if(!able_to_fire(user) || !target || !get_turf(user) || !get_turf(target))
+	if(!able_to_fire(user) || !target || !get_turf(user) || !get_turf(target) || user.contains(target))
 		return NONE
 
 	/*
@@ -1351,7 +1351,7 @@ and you're good to go.
 		return TRUE //Nothing else to do here, time to cancel out.
 	return TRUE
 
-#define EXECUTION_CHECK (attacked_mob.stat == UNCONSCIOUS || attacked_mob.is_mob_restrained()) && ((user.a_intent == INTENT_GRAB)||(user.a_intent == INTENT_DISARM))
+#define EXECUTION_CHECK (attacked_mob.stat == UNCONSCIOUS || attacked_mob.is_mob_restrained()) && ((user.zone_selected="head") && (user.a_intent == INTENT_DISARM) || (user.a_intent == INTENT_GRAB))
 
 /obj/item/weapon/gun/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	if(!proximity_flag)
@@ -1460,8 +1460,7 @@ and you're good to go.
 		user.visible_message(SPAN_DANGER("[user] puts [src] up to [attacked_mob], steadying their aim."), SPAN_WARNING("You put [src] up to [attacked_mob], steadying your aim."),null, null, CHAT_TYPE_COMBAT_ACTION)
 		if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|INTERRUPT_DIFF_INTENT, BUSY_ICON_HOSTILE))
 			return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
-
-	else if(user.a_intent != INTENT_HARM) //Thwack them
+	else if(user.a_intent != INTENT_HARM && user.a_intent != INTENT_DISARM) //Thwack them
 		return ..()
 
 	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_attacking_corpses) && attacked_mob.stat == DEAD) // don't shoot dead people
@@ -1524,7 +1523,7 @@ and you're good to go.
 				if(before_fire_cancel & COMPONENT_HARD_CANCEL_GUN_BEFORE_FIRE)
 					return NONE
 
-		if(SEND_SIGNAL(projectile_to_fire.ammo, COMSIG_AMMO_POINT_BLANK, attacked_mob, projectile_to_fire, user, src) & COMPONENT_CANCEL_AMMO_POINT_BLANK)
+		if(SEND_SIGNAL(projectile_to_fire.ammo, COMSIG_AMMO_BATTLEFIELD_EXECUTION, attacked_mob, projectile_to_fire, user, src) & COMPONENT_CANCEL_BATTLEFIELD_EXECUTION)
 			flags_gun_features &= ~GUN_BURST_FIRING
 			return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
 
@@ -2116,7 +2115,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	SIGNAL_HANDLER
 
 	var/list/modifiers = params2list(params)
-	if(modifiers[SHIFT_CLICK] || modifiers[MIDDLE_CLICK] || modifiers[RIGHT_CLICK] || modifiers[BUTTON4] || modifiers[BUTTON5])
+	if(modifiers[CTRL_CLICK] || modifiers[SHIFT_CLICK] || modifiers[MIDDLE_CLICK] || modifiers[RIGHT_CLICK] || modifiers[BUTTON4] || modifiers[BUTTON5])
 		return
 
 	// Don't allow doing anything else if inside a container of some sort, like a locker.
@@ -2133,8 +2132,12 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		if(gun_user.throw_mode)
 			return
 
-		if(gun_user.Adjacent(object)) //Dealt with by attack code
+		if(gun_user.Adjacent(object) && (istype(src, /obj/item/weapon/gun/shotgun) || gun_user.a_intent != INTENT_HARM) || gun_user.loc == get_turf(object)) //Dealt with by attack code
 			return
+
+		if(gun_user.Adjacent(object) && gun_user.zone_selected == "head" && ishuman_strict(object) && skillcheck(gun_user, SKILL_EXECUTION, SKILL_EXECUTION_TRAINED))
+			if(ammo && (COMSIG_AMMO_BATTLEFIELD_EXECUTION in ammo.comp_lookup))
+				return
 
 	if(QDELETED(object))
 		return

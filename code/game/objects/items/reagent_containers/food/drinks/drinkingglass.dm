@@ -50,10 +50,15 @@
 				name = "Glass of cream"
 				desc = "Ewwww..."
 				center_of_mass = "x=16;y=10"
-			if("chocolate")
+			if("chocolatesyrup")
 				icon_state  = "chocolateglass"
-				name = "Glass of chocolate"
-				desc = "Tasty."
+				name = "Glass of chocolate syrup"
+				desc = "So indulgent!"
+				center_of_mass = "x=16;y=10"
+			if("chocolate_milk")
+				icon_state  = "chocomilk_glass"
+				name = "Chocolate Milk"
+				desc = "A childhood classic that makes even the most hardened marines smile."
 				center_of_mass = "x=16;y=10"
 			if("lemonjuice")
 				icon_state  = "lemonglass"
@@ -563,6 +568,11 @@
 				icon_state = "milkshake"
 				name = "Milkshake"
 				desc = "Glorious brainfreezing mixture."
+				center_of_mass = "x=16;y=7"
+			if("chocolate_milkshake")
+				icon_state = "chocolate_milkshake"
+				name = "Chocolate Milkshake"
+				desc = "Glorious brainfreezing mixture in classic chocolate flavor."
 				center_of_mass = "x=16;y=7"
 			if("lemonade")
 				icon_state = "lemonadeglass"

@@ -3,8 +3,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 /obj/item/reagent_container/glass
-	name = ""
-	desc = ""
+	name = " "
+	desc = " "
 	icon = 'icons/obj/items/chemistry.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_lefthand.dmi',

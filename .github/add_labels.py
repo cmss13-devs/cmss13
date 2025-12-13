@@ -23,7 +23,6 @@ changelogToPrefix = {
     'soundtweak': ["Sound", ["tweaked a sound thingy"]],
     'spellcheck': ["Grammar and Formatting", ["fixed a few typos"]],
     'ui': ["UI", ["changed something relating to user interfaces"]],
-    'wip': ["Work in Progress", ["this isn't finished or hasn't been tested yet"]]
 }
 
 fileToPrefix = {

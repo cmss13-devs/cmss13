@@ -1,10 +1,23 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/cargo)
 "ab" = (
 /obj/structure/bed/chair/wood/normal{
 	dir = 1
 	},
 /turf/open/floor/carpet,
 /area/varadero/interior/library)
+"ac" = (
+/obj/structure/machinery/door_control/brbutton{
+	id = "undergroundhangarwest";
+	name = "West Dock Door";
+	pixel_x = 6;
+	pixel_y = 32
+	},
+/turf/open/floor/plating/icefloor/warnplate/west,
+/area/varadero/interior/cargo)
 "ad" = (
 /obj/structure/machinery/light,
 /obj/structure/barricade/metal/wired{
@@ -12,6 +25,35 @@
 	},
 /turf/open/floor/shiva/red/west,
 /area/varadero/interior/morgue)
+"ae" = (
+/obj/structure/barricade/plasteel/wired{
+	dir = 8
+	},
+/obj/structure/machinery/door_control/brbutton{
+	id = "undergroundhangarwest";
+	name = "West Dock Door";
+	pixel_x = 6;
+	pixel_y = 32
+	},
+/turf/open/floor/plating/icefloor/warnplate/east,
+/area/varadero/exterior/lz1_near)
+"af" = (
+/obj/structure/machinery/landinglight/ds2/spoke{
+	pixel_x = -1;
+	pixel_y = 54
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"ag" = (
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
+/obj/structure/machinery/landinglight/ds2/spoke{
+	pixel_x = -1;
+	pixel_y = 54
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz1_near)
 "ah" = (
 /turf/closed/wall/r_wall/elevator/gears,
 /area/varadero/interior/hall_N)
@@ -186,9 +228,6 @@
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/maintenance/north)
-"bm" = (
-/turf/closed/wall/r_wall/unmeltable,
-/area/varadero/exterior/farocean)
 "bp" = (
 /obj/structure/barricade/handrail/wire{
 	layer = 3.01
@@ -467,9 +506,6 @@
 	},
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
-"dC" = (
-/turf/closed/wall/rock/brown,
-/area/varadero/exterior/pontoon_beach)
 "dG" = (
 /obj/structure/prop/rock/brown,
 /obj/structure/machinery/storm_siren{
@@ -624,10 +660,6 @@
 /obj/structure/machinery/power/apc/power/north,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/comms4)
-"ff" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/shiva/yellowfull/west,
-/area/varadero/interior/cargo)
 "fh" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -660,7 +692,7 @@
 /area/varadero/exterior/lz1_near)
 "fw" = (
 /obj/structure/window/framed/colony,
-/turf/open/floor/shiva/floor3,
+/turf/open/floor/plating,
 /area/varadero/interior/hall_N)
 "fx" = (
 /obj/structure/machinery/light/small{
@@ -744,9 +776,6 @@
 "fR" = (
 /turf/open/floor/shiva/yellow,
 /area/varadero/interior/cargo)
-"fS" = (
-/turf/closed/wall/rock/brown,
-/area/varadero/exterior/lz1_near)
 "fT" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
@@ -786,15 +815,6 @@
 /obj/effect/spawner/random/tool,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/lz1_near)
-"gf" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	dir = 1;
-	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
-	req_one_access = null
-	},
-/turf/open/floor/plating,
-/area/varadero/interior/maintenance/north)
 "gh" = (
 /obj/effect/sentry_landmark/lz_1/bottom_right,
 /turf/open/floor/asteroidfloor/north,
@@ -1076,14 +1096,6 @@
 "it" = (
 /turf/open/floor/shiva/red/southeast,
 /area/varadero/interior/morgue)
-"iv" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 8;
-	icon_state = "p_stair_ew_half_cap"
-	},
-/turf/closed/wall/rock/brown,
-/area/varadero/exterior/pontoon_beach)
 "iH" = (
 /obj/structure/machinery/light,
 /obj/structure/closet/toolcloset,
@@ -1096,17 +1108,13 @@
 "iL" = (
 /obj/structure/window/framed/colony/reinforced/hull,
 /turf/open/floor/plating/icefloor,
-/area/varadero/interior/dock_control)
+/area/varadero/interior/oob)
 "iP" = (
 /obj/structure/machinery/landinglight/ds2/delayone{
 	dir = 4
 	},
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
-"iQ" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
-/turf/closed/wall/r_wall/unmeltable,
-/area/varadero/interior/dock_control)
 "iT" = (
 /obj/structure/sign/safety/hazard{
 	pixel_x = 15
@@ -1197,14 +1205,9 @@
 /turf/open/floor/carpet,
 /area/varadero/interior/chapel)
 "jB" = (
-/obj/structure/machinery/door_control/brbutton{
-	id = "undergroundhangarwest";
-	name = "West Dock Door";
-	pixel_x = 8
-	},
 /obj/structure/sign/safety/bulkhead_door,
 /turf/closed/wall/r_wall/unmeltable,
-/area/varadero/interior/cargo)
+/area/varadero/interior/oob)
 "jO" = (
 /turf/open/floor/carpet,
 /area/varadero/interior/library)
@@ -1349,7 +1352,7 @@
 /area/varadero/exterior/lz1_near)
 "kW" = (
 /obj/structure/window/framed/colony,
-/turf/open/floor/wood,
+/turf/open/floor/plating/icefloor,
 /area/varadero/interior/maintenance/north)
 "kX" = (
 /obj/structure/largecrate/random/mini/med{
@@ -1382,14 +1385,12 @@
 /turf/open/floor/shiva/yellow/west,
 /area/varadero/interior/cargo)
 "lv" = (
-/obj/structure/prop/structure_lattice{
-	density = 0;
-	desc = "On closer inspection, everything on these shelves are made of plastic.";
-	icon_state = "book-3";
-	name = "book case"
-	},
 /obj/structure/machinery/light/small{
 	dir = 8
+	},
+/obj/structure/bookcase{
+	density = 0;
+	icon_state = "book-3"
 	},
 /turf/open/floor/wood,
 /area/varadero/interior/library)
@@ -1504,6 +1505,9 @@
 	},
 /obj/structure/machinery/light{
 	dir = 8
+	},
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
+	pixel_x = -28
 	},
 /turf/open/floor/wood,
 /area/varadero/interior/dock_control)
@@ -1657,10 +1661,6 @@
 	},
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/varadero/exterior/comms4)
-"oe" = (
-/obj/structure/window/framed/colony,
-/turf/open/floor/shiva/floor3,
-/area/varadero/interior/chapel)
 "of" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor/shiva/floor3,
@@ -1689,15 +1689,12 @@
 "ol" = (
 /obj/structure/window/framed/colony,
 /obj/structure/sign/banners/happybirthdaysteve,
-/turf/open/floor/wood,
+/turf/open/floor/plating/icefloor,
 /area/varadero/interior/maintenance/north)
 "oo" = (
 /obj/structure/barricade/plasteel/wired,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
-"oq" = (
-/turf/closed/wall/rock/brown,
-/area/varadero/interior/cargo)
 "os" = (
 /obj/item/explosive/mine/active,
 /turf/open/floor/plating/icefloor/asteroidplating,
@@ -1921,9 +1918,6 @@
 /obj/item/tool/pickaxe,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/interior/comms1)
-"pD" = (
-/turf/closed/wall/rock/brown,
-/area/varadero/interior/maintenance/north)
 "pF" = (
 /turf/open/gm/coast/east,
 /area/varadero/exterior/comms4)
@@ -2075,7 +2069,7 @@
 "qR" = (
 /obj/structure/platform_decoration/metal/kutjevo/north,
 /turf/closed/wall/rock/brown,
-/area/varadero/exterior/pontoon_beach)
+/area/varadero/interior/oob)
 "qU" = (
 /obj/structure/stairs/perspective{
 	color = "#b29082";
@@ -2245,11 +2239,9 @@
 /turf/open/floor/shiva/yellow/north,
 /area/varadero/interior/cargo)
 "sb" = (
-/obj/structure/prop/structure_lattice{
+/obj/structure/bookcase{
 	density = 0;
-	desc = "On closer inspection, everything on these shelves are made of plastic.";
-	icon_state = "book-3";
-	name = "book case"
+	icon_state = "book-4"
 	},
 /turf/open/floor/wood,
 /area/varadero/interior/library)
@@ -2383,7 +2375,7 @@
 	req_access_txt = "100";
 	req_one_access = null
 	},
-/turf/open/floor/plating,
+/turf/open/floor/asteroidfloor/north,
 /area/varadero/interior/maintenance/north)
 "td" = (
 /obj/effect/decal/warning_stripes{
@@ -2498,14 +2490,12 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/lz1_near)
 "tT" = (
-/obj/structure/prop/structure_lattice{
-	density = 0;
-	desc = "On closer inspection, everything on these shelves are made of plastic.";
-	icon_state = "book-3";
-	name = "book case"
-	},
 /obj/structure/machinery/light/small{
 	dir = 1
+	},
+/obj/structure/bookcase{
+	density = 0;
+	icon_state = "book-3"
 	},
 /turf/open/floor/wood,
 /area/varadero/interior/library)
@@ -2555,9 +2545,6 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/comms4)
-"ur" = (
-/turf/closed/wall/rock/brown,
-/area/varadero/exterior/pontoon_beach/lz)
 "uv" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/auto_turf/sand_white/layer1,
@@ -2575,14 +2562,12 @@
 /turf/open/floor/shiva/red,
 /area/varadero/interior/morgue)
 "uy" = (
-/obj/structure/prop/structure_lattice{
-	density = 0;
-	desc = "On closer inspection, everything on these shelves are made of plastic.";
-	icon_state = "book-5";
-	name = "book case"
-	},
 /obj/structure/machinery/light/small{
 	dir = 8
+	},
+/obj/structure/bookcase{
+	density = 0;
+	icon_state = "book-5"
 	},
 /turf/open/floor/wood,
 /area/varadero/interior/library)
@@ -2761,7 +2746,7 @@
 	climb_delay = 1
 	},
 /turf/closed/wall/rock/brown,
-/area/varadero/exterior/lz1_near)
+/area/varadero/interior/oob)
 "vF" = (
 /obj/structure/sign/safety/water,
 /turf/closed/wall,
@@ -2896,11 +2881,9 @@
 /turf/open/floor/carpet,
 /area/varadero/interior/chapel)
 "xa" = (
-/obj/structure/prop/structure_lattice{
+/obj/structure/bookcase{
 	density = 0;
-	desc = "On closer inspection, everything on these shelves are made of plastic.";
-	icon_state = "book-3";
-	name = "book case"
+	icon_state = "book-3"
 	},
 /turf/open/floor/carpet,
 /area/varadero/interior/library)
@@ -2911,7 +2894,7 @@
 "xe" = (
 /obj/structure/sign/prop1,
 /turf/closed/wall/r_wall/unmeltable,
-/area/varadero/interior/maintenance/north)
+/area/varadero/interior/oob)
 "xh" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
@@ -3132,9 +3115,6 @@
 	},
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/morgue)
-"zd" = (
-/turf/closed/wall/rock/brown,
-/area/varadero/exterior/farocean)
 "zg" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/river/ocean/deep_ocean,
@@ -3179,15 +3159,6 @@
 	},
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/varadero/exterior/pontoon_beach/lz)
-"zy" = (
-/obj/structure/sign/safety/bulkhead_door,
-/obj/structure/machinery/door_control/brbutton{
-	id = "undergroundhangarwest";
-	name = "West Dock Door";
-	pixel_x = 3
-	},
-/turf/closed/wall/r_wall/unmeltable,
-/area/varadero/exterior/lz1_near)
 "zA" = (
 /obj/structure/machinery/landinglight/ds2/spoke{
 	pixel_x = -1;
@@ -3280,7 +3251,7 @@
 	icon_state = "p_stair_ew_half_cap"
 	},
 /turf/closed/wall/rock/brown,
-/area/varadero/exterior/lz1_near)
+/area/varadero/interior/oob)
 "Ar" = (
 /obj/structure/platform/metal/kutjevo_smooth/north{
 	climb_delay = 1
@@ -3308,9 +3279,6 @@
 /obj/item/tank/emergency_oxygen,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
-"Az" = (
-/turf/closed/wall/r_wall/unmeltable,
-/area/varadero/interior/dock_control)
 "AD" = (
 /obj/structure/barricade/handrail/wire{
 	dir = 4;
@@ -3773,7 +3741,7 @@
 	req_one_access = null;
 	req_access = null
 	},
-/turf/open/floor/plating,
+/turf/open/floor/asteroidfloor/north,
 /area/varadero/interior/maintenance/north)
 "DW" = (
 /obj/item/reagent_container/glass/bucket{
@@ -3821,6 +3789,9 @@
 /area/varadero/interior/cargo)
 "Eq" = (
 /obj/structure/bed/chair/comfy/beige,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
+	pixel_x = -28
+	},
 /turf/open/floor/wood,
 /area/varadero/interior/maintenance/north)
 "Es" = (
@@ -4555,9 +4526,6 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/pontoon_beach)
-"KS" = (
-/turf/closed/wall/r_wall/unmeltable,
-/area/varadero/interior/cargo)
 "KU" = (
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating,
@@ -4798,15 +4766,6 @@
 /obj/effect/landmark/hunter_secondary,
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/hall_N)
-"Nk" = (
-/obj/structure/prop/structure_lattice{
-	density = 0;
-	desc = "On closer inspection, everything on these shelves are made of plastic.";
-	icon_state = "book-4";
-	name = "book case"
-	},
-/turf/open/floor/carpet,
-/area/varadero/interior/library)
 "Nm" = (
 /turf/closed/wall/r_wall/elevator{
 	dir = 10
@@ -4833,7 +4792,7 @@
 "Ny" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/barricade/plasteel/wired,
-/turf/open/floor/plating,
+/turf/open/floor/dark2,
 /area/varadero/interior/morgue)
 "NE" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
@@ -5003,7 +4962,7 @@
 "OZ" = (
 /obj/structure/platform_decoration/metal/kutjevo/east,
 /turf/closed/wall/rock/brown,
-/area/varadero/exterior/pontoon_beach)
+/area/varadero/interior/oob)
 "Pc" = (
 /obj/item/explosive/mine/active{
 	dir = 4
@@ -5251,21 +5210,10 @@
 /obj/effect/landmark/yautja_teleport,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/cargo)
-"Rq" = (
-/obj/structure/machinery/landinglight/ds2/spoke{
-	pixel_x = -1;
-	pixel_y = 22
-	},
-/obj/structure/sign/prop1,
-/turf/closed/wall/r_wall/unmeltable,
-/area/varadero/interior/dock_control)
 "Rr" = (
 /obj/structure/closet/secure_closet/freezer/meat,
 /turf/open/floor/freezerfloor,
 /area/varadero/interior/cargo)
-"Rs" = (
-/turf/closed/wall/rock/brown,
-/area/varadero/interior/caves/north_research)
 "Rv" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1;
@@ -5293,9 +5241,7 @@
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/interior/comms1)
 "Sb" = (
-/obj/structure/surface/table/woodentable{
-	icon_state = "reinf_table"
-	},
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/window/brigdoor/westleft{
 	dir = 1;
 	icon_state = "leftsecure";
@@ -5560,9 +5506,6 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/lz1_near)
-"TW" = (
-/turf/closed/wall/r_wall/unmeltable,
-/area/varadero/interior/maintenance/north)
 "TX" = (
 /obj/structure/closet/secure_closet/cargotech,
 /turf/open/floor/shiva/yellowfull/west,
@@ -5866,11 +5809,9 @@
 /turf/open/gm/dirt/desert2,
 /area/varadero/exterior/pontoon_beach)
 "Wh" = (
-/obj/structure/prop/structure_lattice{
+/obj/structure/bookcase{
 	density = 0;
-	desc = "On closer inspection, everything on these shelves are made of plastic.";
-	icon_state = "book-5";
-	name = "book case"
+	icon_state = "book-5"
 	},
 /turf/open/floor/carpet,
 /area/varadero/interior/library)
@@ -6021,10 +5962,6 @@
 /obj/effect/overlay/palmtree_r,
 /turf/open/gm/dirt,
 /area/varadero/exterior/pontoon_beach)
-"Xn" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
-/turf/closed/wall/r_wall/unmeltable,
-/area/varadero/interior/maintenance/north)
 "Xo" = (
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/north)
@@ -6040,13 +5977,6 @@
 /obj/item/trash/ceramic_plate,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/cargo)
-"Xt" = (
-/obj/structure/machinery/landinglight/ds2/spoke{
-	pixel_x = -1;
-	pixel_y = 22
-	},
-/turf/closed/wall/r_wall/unmeltable,
-/area/varadero/interior/oob)
 "Xx" = (
 /obj/structure/bed/sofa/pews/flipped{
 	dir = 1
@@ -6083,10 +6013,7 @@
 	explo_proof = 1
 	},
 /turf/open/floor/plating/icefloor,
-/area/varadero/interior/maintenance/north)
-"XI" = (
-/turf/closed/wall/r_wall/unmeltable,
-/area/varadero/interior/comms1)
+/area/varadero/interior/oob)
 "XN" = (
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/comms4)
@@ -6116,11 +6043,9 @@
 /turf/open/floor/shiva/north,
 /area/varadero/interior/morgue)
 "XX" = (
-/obj/structure/prop/structure_lattice{
+/obj/structure/bookcase{
 	density = 0;
-	desc = "On closer inspection, everything on these shelves are made of plastic.";
-	icon_state = "book-5";
-	name = "book case"
+	icon_state = "book-5"
 	},
 /turf/open/floor/wood,
 /area/varadero/interior/library)
@@ -6259,14 +6184,6 @@
 "Ze" = (
 /turf/open/gm/coast/south,
 /area/varadero/exterior/pontoon_beach)
-"Zh" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
-	req_one_access = null
-	},
-/turf/open/floor/plating,
-/area/varadero/interior/cargo)
 "Zl" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/coast/beachcorner2/south_west,
@@ -6405,11 +6322,11 @@ BL
 BL
 BL
 BL
-XI
-XI
-XI
-XI
-XI
+PQ
+PQ
+PQ
+PQ
+PQ
 XN
 IS
 MC
@@ -6438,9 +6355,9 @@ Be
 Be
 fH
 tF
-Rs
-Rs
-Rs
+BL
+BL
+BL
 GT
 zS
 "}
@@ -6468,12 +6385,12 @@ BL
 BL
 BL
 PQ
-XI
+PQ
 JX
 MR
 Ot
-XI
-KS
+PQ
+PQ
 XN
 HL
 XN
@@ -6501,9 +6418,9 @@ Be
 Be
 aK
 tF
-Rs
-Rs
-Rs
+BL
+BL
+BL
 gA
 gA
 "}
@@ -6536,36 +6453,36 @@ RQ
 RQ
 RQ
 Xc
-KS
-KS
-KS
-KS
-KS
+PQ
+PQ
+PQ
+PQ
+PQ
 qP
 cF
 um
 cF
 qP
-ff
+sP
 qP
-ff
+sP
 qP
 qP
 fc
 um
 cF
 qP
-KS
-KS
-KS
-KS
-KS
+PQ
+PQ
+PQ
+PQ
+PQ
 Be
 Be
 aK
 tF
-Rs
-Rs
+BL
+BL
 gA
 gA
 uv
@@ -6605,7 +6522,7 @@ qP
 qP
 qP
 qP
-ff
+sP
 qP
 nN
 qP
@@ -6614,7 +6531,7 @@ LK
 QO
 kD
 qP
-ff
+sP
 qP
 eB
 qP
@@ -6627,7 +6544,7 @@ iW
 iW
 Fj
 iY
-Rs
+BL
 sk
 gA
 gA
@@ -6689,7 +6606,7 @@ hy
 jo
 ar
 hs
-sP
+aa
 gA
 gA
 gA
@@ -6752,7 +6669,7 @@ qP
 lm
 iW
 NV
-sP
+aa
 gA
 gA
 gA
@@ -6815,8 +6732,8 @@ QP
 iW
 iW
 Fj
-oq
-Rs
+BL
+BL
 gA
 gA
 gA
@@ -6879,8 +6796,8 @@ iW
 iW
 Fj
 iW
-Rs
-Rs
+BL
+BL
 gA
 gA
 gA
@@ -6943,8 +6860,8 @@ iW
 Fj
 NO
 Ud
-Rs
-Rs
+BL
+BL
 sk
 sk
 "}
@@ -7007,9 +6924,9 @@ Fj
 hD
 iW
 Uo
-Rs
-Rs
-Rs
+BL
+BL
+BL
 "}
 (11,1,1) = {"
 BL
@@ -7070,9 +6987,9 @@ Fj
 wb
 uJ
 dg
-Rs
-Rs
-Rs
+BL
+BL
+BL
 "}
 (12,1,1) = {"
 BL
@@ -7133,9 +7050,9 @@ Fj
 iW
 iW
 zZ
-Rs
-Rs
-Rs
+BL
+BL
+BL
 "}
 (13,1,1) = {"
 BL
@@ -7418,7 +7335,7 @@ PQ
 DP
 PQ
 PQ
-KS
+PQ
 Al
 uV
 fR
@@ -7632,7 +7549,7 @@ hy
 qP
 Qf
 LQ
-oe
+pY
 LQ
 FS
 bz
@@ -7688,7 +7605,7 @@ fF
 hy
 qP
 hy
-Zh
+fF
 hy
 qP
 cA
@@ -7831,7 +7748,7 @@ AP
 LQ
 "}
 (24,1,1) = {"
-zd
+BL
 BL
 BL
 PQ
@@ -7895,8 +7812,8 @@ pY
 "}
 (25,1,1) = {"
 XR
-zd
-zd
+BL
+BL
 PQ
 PQ
 PQ
@@ -7959,11 +7876,11 @@ pY
 (26,1,1) = {"
 XR
 fo
-bm
+PQ
 PQ
 PQ
 BL
-fS
+BL
 fZ
 Tj
 QL
@@ -8022,7 +7939,7 @@ pY
 (27,1,1) = {"
 XR
 fo
-bm
+PQ
 Cq
 PQ
 BL
@@ -8085,7 +8002,7 @@ LQ
 (28,1,1) = {"
 XR
 fo
-bm
+PQ
 Cq
 PQ
 BL
@@ -8097,8 +8014,8 @@ Je
 BL
 PQ
 PQ
-Xt
-DS
+PQ
+af
 DS
 Ly
 DS
@@ -8114,11 +8031,11 @@ PQ
 PQ
 PQ
 jB
+ac
 xk
 xk
 xk
-xk
-KS
+PQ
 Xo
 Xo
 Xo
@@ -8148,7 +8065,7 @@ pY
 (29,1,1) = {"
 XR
 fo
-bm
+PQ
 Cq
 PQ
 PQ
@@ -8176,12 +8093,12 @@ PQ
 PQ
 PQ
 PQ
-KS
+PQ
 LA
 LA
 LA
 LA
-KS
+PQ
 WE
 Xo
 QT
@@ -8211,7 +8128,7 @@ pY
 (30,1,1) = {"
 qc
 hh
-bm
+PQ
 KL
 Dj
 nE
@@ -8239,12 +8156,12 @@ dz
 gB
 bi
 In
-zy
-eF
+jB
+ae
 Ae
 Ae
 eF
-TW
+PQ
 Xo
 pz
 xO
@@ -8273,11 +8190,11 @@ HI
 "}
 (31,1,1) = {"
 fo
-Az
-Az
-iQ
-Az
-Az
+PQ
+PQ
+PQ
+PQ
+PQ
 Fg
 wv
 sy
@@ -8310,7 +8227,7 @@ yD
 xe
 sZ
 OQ
-TW
+PQ
 DV
 OQ
 OQ
@@ -8525,12 +8442,12 @@ HI
 "}
 (35,1,1) = {"
 oZ
-Az
+PQ
 Us
 sl
 Hc
-Rq
-Fg
+xe
+ag
 bA
 aF
 gd
@@ -8822,7 +8739,7 @@ gB
 HG
 DS
 OJ
-TW
+PQ
 wH
 Xo
 Xo
@@ -8885,7 +8802,7 @@ DS
 DS
 vc
 DS
-TW
+PQ
 lx
 Xo
 Xo
@@ -9160,7 +9077,7 @@ sm
 KJ
 mf
 WF
-ur
+BL
 WF
 WF
 AR
@@ -9223,8 +9140,8 @@ TV
 pN
 lB
 WF
-ur
-ur
+BL
+BL
 sG
 AR
 fk
@@ -9406,7 +9323,7 @@ Ve
 pd
 "}
 (49,1,1) = {"
-dC
+BL
 hB
 KJ
 KJ
@@ -9450,9 +9367,9 @@ DS
 SE
 IW
 kW
-Xn
-TW
-TW
+PQ
+PQ
+PQ
 WE
 Wl
 vr
@@ -9469,7 +9386,7 @@ Js
 OF
 "}
 (50,1,1) = {"
-dC
+BL
 qR
 mb
 gK
@@ -9533,14 +9450,14 @@ OF
 "}
 (51,1,1) = {"
 Wy
-dC
-dC
+BL
+BL
 qR
-dC
-dC
-dC
-dC
-dC
+BL
+BL
+BL
+BL
+BL
 KJ
 KJ
 Ui
@@ -9598,12 +9515,12 @@ OP
 hw
 hw
 hw
-dC
+BL
 hw
 hw
-dC
-dC
-dC
+BL
+BL
+BL
 KJ
 Ua
 KJ
@@ -9666,7 +9583,7 @@ hw
 hw
 hw
 hw
-dC
+BL
 KJ
 KJ
 bk
@@ -9729,40 +9646,40 @@ hw
 hw
 hw
 hw
-dC
-dC
-dC
-dC
+BL
+BL
+BL
+BL
 OZ
-dC
-dC
-dC
-dC
-iv
-dC
+BL
+BL
+BL
+BL
+Aq
+BL
 KJ
 KJ
 KJ
-fS
-fS
+BL
+BL
 qU
 WP
 WP
 Aq
-fS
+BL
 KJ
 KJ
 KJ
-fS
-fS
+BL
+BL
 qU
 WP
 WP
 yf
-fS
-fS
-fS
-TW
+BL
+BL
+BL
+PQ
 qG
 oz
 oz
@@ -9793,16 +9710,16 @@ hw
 hw
 Wy
 hw
-dC
-dC
-dC
-dC
-dC
-dC
-dC
+BL
+BL
+BL
+BL
+BL
+BL
+BL
 cM
 XE
-dC
+BL
 KJ
 KJ
 KJ
@@ -9822,10 +9739,10 @@ vp
 vp
 vp
 ri
-fS
+BL
 db
 KJ
-TW
+PQ
 qG
 SQ
 cT
@@ -9888,7 +9805,7 @@ fW
 rA
 Pr
 KJ
-TW
+PQ
 qG
 Mz
 ZE
@@ -9905,7 +9822,7 @@ hm
 Xo
 lG
 qI
-gf
+oP
 gI
 gI
 "}
@@ -9951,13 +9868,13 @@ rk
 Wy
 AK
 fM
-TW
+PQ
 kW
 kW
 Yt
 Yt
 Yt
-TW
+PQ
 lO
 Xo
 Vc
@@ -10012,7 +9929,7 @@ qE
 qE
 rk
 Wy
-dC
+BL
 AK
 Kc
 kO
@@ -10020,7 +9937,7 @@ kO
 HU
 kO
 Wc
-TW
+PQ
 TL
 bl
 VE
@@ -10074,7 +9991,7 @@ Ze
 Pc
 qE
 rk
-dC
+BL
 Wy
 Wy
 Zl
@@ -10131,8 +10048,8 @@ Wy
 pg
 Ts
 Mr
-dC
-dC
+BL
+BL
 Ze
 qE
 uZ
@@ -10194,7 +10111,7 @@ Wy
 pg
 Mr
 Mr
-dC
+BL
 Wy
 Ze
 qE
@@ -10216,7 +10133,7 @@ Xo
 pa
 XX
 jO
-Nk
+xa
 bg
 Wh
 jO
@@ -10242,7 +10159,7 @@ mD
 Wy
 Wy
 hw
-dC
+BL
 hw
 Wy
 Mr
@@ -10272,7 +10189,7 @@ Wy
 Wy
 hS
 Kd
-TW
+PQ
 Xo
 Wl
 mN
@@ -10301,10 +10218,10 @@ hw
 hw
 hw
 hw
-dC
+BL
 hw
 hw
-dC
+BL
 hw
 hw
 Wy
@@ -10326,16 +10243,16 @@ uZ
 qE
 qE
 rk
-dC
-dC
+BL
+BL
 rr
 Wy
 Wy
 hS
 wN
 dG
-pD
-pD
+BL
+BL
 ys
 Xo
 Vc
@@ -10364,10 +10281,10 @@ hw
 hw
 Wy
 hw
-dC
-dC
+BL
+BL
 hw
-dC
+BL
 hw
 lM
 Wy
@@ -10389,15 +10306,15 @@ qE
 Of
 HB
 rk
-dC
+BL
 rr
 Wy
 Wy
 Wy
 Ze
 qE
-pD
-pD
+BL
+BL
 GE
 Bx
 Xo
@@ -10453,14 +10370,14 @@ uZ
 qE
 GV
 vb
-dC
+BL
 Wy
 Wy
 Wy
 Ze
 Pc
-pD
-pD
+BL
+BL
 Bx
 Bx
 Xo
@@ -10519,11 +10436,11 @@ rk
 Wy
 Wy
 Wy
-dC
+BL
 Ze
 uZ
-pD
-pD
+BL
+BL
 Bx
 Bx
 Wl
@@ -10546,7 +10463,7 @@ hw
 Wy
 hw
 hw
-dC
+BL
 hw
 hw
 hw
@@ -10567,7 +10484,7 @@ Wy
 oE
 Wy
 Wy
-dC
+BL
 Wy
 Wy
 Wy
@@ -10585,7 +10502,7 @@ Wy
 Wy
 Ze
 qE
-pD
+BL
 Yt
 wt
 Wl
@@ -10609,7 +10526,7 @@ Wy
 Wy
 Wy
 Wy
-dC
+BL
 hw
 hw
 hw
@@ -10648,7 +10565,7 @@ Wy
 Wy
 Ze
 qE
-pD
+BL
 Yt
 nR
 Nt
@@ -10670,8 +10587,8 @@ hw
 hw
 hw
 hw
-dC
-dC
+BL
+BL
 Wy
 hw
 mD
@@ -10691,9 +10608,9 @@ DH
 Wy
 Wy
 Wy
-dC
-dC
-dC
+BL
+BL
+BL
 Wy
 Wy
 Wy
@@ -10711,7 +10628,7 @@ Wy
 hS
 MV
 Re
-pD
+BL
 Yt
 IL
 VO
@@ -10733,8 +10650,8 @@ hw
 hw
 hw
 Wy
-dC
-dC
+BL
+BL
 hw
 hw
 Wy
@@ -10754,8 +10671,8 @@ DH
 Wy
 Wy
 Wy
-dC
-dC
+BL
+BL
 Wy
 Wy
 Wy
@@ -10774,7 +10691,7 @@ Wy
 Ze
 qE
 uZ
-pD
+BL
 HM
 Xo
 IH

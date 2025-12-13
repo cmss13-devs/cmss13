@@ -18,11 +18,9 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/caves/left_spiders)
 "cf" = (
-/obj/structure/prop/ice_colony/ground_wire{
-	dir = 8
-	},
-/turf/open/auto_turf/ice/layer1,
-/area/shiva/interior/caves/left_spiders)
+/obj/item/lightstick/planted,
+/turf/open/auto_turf/snow/layer2,
+/area/shiva/exterior/valley)
 "cz" = (
 /obj/structure/prop/ice_colony/ground_wire,
 /turf/open/auto_turf/ice/layer2,
@@ -34,19 +32,17 @@
 /area/shiva/interior/caves/left_spiders)
 "fd" = (
 /obj/structure/prop/ice_colony/ground_wire{
-	dir = 8
+	dir = 1
 	},
-/obj/item/lightstick/planted,
-/turf/open/auto_turf/snow/layer0,
-/area/shiva/interior/caves/cp_camp)
+/turf/open/auto_turf/snow/layer2,
+/area/shiva/exterior/valley)
 "ff" = (
 /obj/structure/barricade/handrail/wire,
 /turf/open/auto_turf/ice/layer2,
 /area/shiva/interior/caves/left_spiders)
 "fj" = (
-/obj/structure/prop/ice_colony/ground_wire,
-/turf/open/auto_turf/snow/layer0,
-/area/shiva/interior/caves/cp_camp)
+/turf/template_noop,
+/area/template_noop)
 "gf" = (
 /obj/structure/ice/thin/single{
 	opacity = 1;
@@ -56,14 +52,17 @@
 /turf/open/auto_turf/ice/layer2,
 /area/shiva/interior/caves/left_spiders)
 "hY" = (
-/turf/open/auto_turf/ice/layer2,
-/area/shiva/interior/caves/cp_camp)
+/obj/structure/tunnel{
+	id = "south_tcomms_tunnel"
+	},
+/turf/open/auto_turf/ice/layer1,
+/area/shiva/interior/caves/left_spiders)
 "hZ" = (
 /obj/structure/prop/ice_colony/ground_wire{
-	dir = 1
+	dir = 8
 	},
-/turf/open/auto_turf/snow/layer0,
-/area/shiva/interior/caves/cp_camp)
+/turf/open/auto_turf/snow/layer2,
+/area/shiva/exterior/valley)
 "ia" = (
 /obj/item/tool/pickaxe/diamond{
 	desc = "So we back in the mine, swinging pickaxe from side to side, side side, to side."
@@ -71,23 +70,18 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/left_spiders)
 "jt" = (
-/obj/structure/prop/ice_colony/ground_wire{
-	dir = 4
-	},
-/obj/structure/prop/ice_colony/ground_wire{
-	dir = 4
-	},
-/turf/open/auto_turf/snow/layer0,
-/area/shiva/interior/caves/cp_camp)
+/obj/structure/platform/stone/strata,
+/obj/structure/platform/stone/strata/west,
+/turf/open/gm/river,
+/area/shiva/interior/caves/left_spiders)
 "jP" = (
 /obj/item/device/flashlight/lamp/tripod/grey,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/left_spiders)
 "kW" = (
-/obj/structure/platform/stone/strata/west,
-/obj/structure/platform/stone/strata,
-/turf/open/gm/river,
-/area/shiva/interior/caves/left_spiders)
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/auto_turf/snow/layer2,
+/area/shiva/exterior/valley)
 "lz" = (
 /obj/structure/barricade/handrail/wire{
 	dir = 1
@@ -95,10 +89,16 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/left_spiders)
 "lP" = (
-/obj/item/device/flashlight/lamp/tripod/grey,
+/obj/effect/decal/cleanable/blood/writing{
+	dir = 10
+	},
+/turf/open/auto_turf/ice/layer2,
+/area/shiva/interior/caves/left_spiders)
+"lT" = (
 /obj/structure/barricade/handrail/wire{
 	dir = 1
 	},
+/obj/item/device/flashlight/lamp/tripod/grey,
 /turf/open/auto_turf/ice/layer2,
 /area/shiva/interior/caves/left_spiders)
 "mC" = (
@@ -112,8 +112,24 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/left_spiders)
 "pr" = (
-/turf/open/auto_turf/snow/layer0,
-/area/shiva/interior/caves/cp_camp)
+/obj/structure/surface/rack,
+/obj/item/weapon/ice_axe/red{
+	pixel_y = -4
+	},
+/obj/item/weapon/ice_axe,
+/obj/item/weapon/ice_axe/green{
+	pixel_y = 4
+	},
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/caves/left_spiders)
+"pO" = (
+/obj/structure/prop/ice_colony/ground_wire,
+/obj/item/device/flashlight/lamp/tripod/grey,
+/obj/structure/barricade/handrail/wire{
+	dir = 8
+	},
+/turf/open/auto_turf/ice/layer1,
+/area/shiva/interior/caves/left_spiders)
 "rh" = (
 /obj/structure/barricade/handrail/wire,
 /turf/open/auto_turf/ice/layer1,
@@ -125,11 +141,10 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/left_spiders)
 "tr" = (
-/obj/item/lightstick/red/spoke/planted{
-	pixel_x = -16;
-	pixel_y = -3
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 4
 	},
-/turf/open/auto_turf/ice/layer1,
+/turf/open/auto_turf/ice/layer2,
 /area/shiva/interior/caves/left_spiders)
 "tF" = (
 /obj/effect/spider/cocoon{
@@ -149,32 +164,36 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/left_spiders)
 "vX" = (
-/obj/effect/decal/cleanable/blood/writing{
-	dir = 9
+/obj/structure/prop/ice_colony/dense/planter_box/hydro{
+	density = 0;
+	pixel_x = -16;
+	pixel_y = 13
 	},
-/turf/open/auto_turf/ice/layer2,
-/area/shiva/interior/caves/left_spiders)
-"wj" = (
-/turf/closed/wall/shiva/ice,
+/obj/structure/platform/stone/strata,
+/obj/structure/platform/stone/strata/east,
+/turf/open/gm/river,
 /area/shiva/interior/caves/left_spiders)
 "xx" = (
+/obj/structure/prop/ice_colony/ground_wire,
+/obj/structure/barricade/handrail/wire{
+	dir = 4
+	},
 /turf/open/auto_turf/ice/layer1,
-/area/shiva/interior/caves/cp_camp)
+/area/shiva/interior/caves/left_spiders)
 "xy" = (
 /obj/structure/largecrate/random,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/left_spiders)
-"xF" = (
-/obj/structure/surface/rack,
-/obj/item/weapon/ice_axe/green{
-	pixel_y = 4
+"xE" = (
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = 16;
+	pixel_y = -3
 	},
-/obj/item/weapon/ice_axe,
-/obj/item/weapon/ice_axe/red{
-	pixel_y = -4
-	},
-/turf/open/floor/shiva/floor3,
+/turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/left_spiders)
+"xF" = (
+/turf/open/auto_turf/snow/layer2,
+/area/shiva/exterior/valley)
 "xG" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/shiva/north,
@@ -201,35 +220,41 @@
 /area/shiva/interior/caves/left_spiders)
 "AW" = (
 /obj/structure/barricade/handrail/wire{
+	dir = 1
+	},
+/obj/structure/prop/ice_colony/ground_wire{
 	dir = 4
 	},
-/obj/structure/prop/ice_colony/ground_wire,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/left_spiders)
 "Br" = (
-/obj/effect/decal/cleanable/blood/writing{
-	dir = 6
+/obj/structure/prop/ice_colony/ground_wire,
+/obj/structure/barricade/handrail/wire{
+	dir = 8
 	},
-/turf/open/auto_turf/ice/layer2,
+/turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/left_spiders)
 "By" = (
 /turf/closed/wall/shiva/ice,
 /area/shiva/interior/oob)
 "BH" = (
-/obj/item/lightstick/red/spoke/planted{
-	pixel_x = -16;
-	pixel_y = -3
+/obj/effect/landmark/hunter_primary,
+/turf/open/auto_turf/ice/layer1,
+/area/shiva/interior/caves/left_spiders)
+"BI" = (
+/obj/effect/decal/cleanable/blood/writing{
+	dir = 5
 	},
 /turf/open/auto_turf/ice/layer2,
 /area/shiva/interior/caves/left_spiders)
-"BI" = (
-/obj/effect/decal/cleanable/blood/drip,
-/turf/open/auto_turf/ice/layer1,
-/area/shiva/interior/caves/cp_camp)
+"FD" = (
+/obj/structure/prop/ice_colony/ground_wire,
+/turf/open/auto_turf/snow/layer2,
+/area/shiva/exterior/valley)
 "FF" = (
-/obj/effect/decal/cleanable/blood/drip,
-/turf/open/auto_turf/snow/layer0,
-/area/shiva/interior/caves/cp_camp)
+/obj/effect/landmark/hunter_secondary,
+/turf/open/auto_turf/ice/layer1,
+/area/shiva/interior/caves/left_spiders)
 "FT" = (
 /turf/open/auto_turf/ice/layer2,
 /area/shiva/interior/caves/left_spiders)
@@ -240,9 +265,8 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/left_spiders)
 "Ie" = (
-/obj/item/lightstick/planted,
-/turf/open/auto_turf/snow/layer0,
-/area/shiva/interior/caves/cp_camp)
+/turf/open/auto_turf/snow/layer4,
+/area/shiva/exterior/valley)
 "IQ" = (
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/left_spiders)
@@ -286,60 +310,50 @@
 /area/shiva/interior/caves/left_spiders)
 "On" = (
 /obj/structure/barricade/handrail/wire{
-	dir = 1
-	},
-/obj/structure/prop/ice_colony/ground_wire{
-	dir = 8
+	dir = 4
 	},
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/left_spiders)
 "OD" = (
-/obj/item/device/flashlight/lamp/tripod/grey,
-/obj/structure/barricade/handrail/wire{
-	dir = 4
-	},
-/obj/structure/prop/ice_colony/ground_wire,
-/turf/open/auto_turf/ice/layer1,
+/turf/open/auto_turf/snow/layer2,
 /area/shiva/interior/caves/left_spiders)
 "Qs" = (
 /obj/item/device/flashlight/lamp/tripod/grey,
 /turf/open/auto_turf/ice/layer2,
 /area/shiva/interior/caves/left_spiders)
-"SK" = (
-/obj/structure/barricade/handrail/wire{
-	dir = 8;
-	layer = 2.991
-	},
-/obj/structure/prop/ice_colony/ground_wire,
-/turf/open/auto_turf/ice/layer1,
+"RX" = (
+/turf/open/auto_turf/snow/layer1,
 /area/shiva/interior/caves/left_spiders)
+"SK" = (
+/turf/open/auto_turf/snow/layer1,
+/area/shiva/exterior/valley)
 "Un" = (
-/obj/structure/prop/ice_colony/ground_wire{
-	dir = 8
+/turf/open/auto_turf/ice/layer1,
+/area/shiva/exterior/valley)
+"Vc" = (
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = 16;
+	pixel_y = -3
 	},
 /turf/open/auto_turf/ice/layer2,
-/area/shiva/interior/caves/left_spiders)
-"Vc" = (
-/obj/structure/barricade/handrail/wire{
-	dir = 8;
-	layer = 2.991
-	},
-/turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/left_spiders)
 "Vm" = (
 /obj/item/lightstick/planted,
 /turf/open/auto_turf/ice/layer2,
 /area/shiva/interior/caves/left_spiders)
 "VT" = (
-/obj/structure/platform/stone/strata/east,
-/obj/structure/platform/stone/strata,
-/obj/structure/prop/ice_colony/dense/planter_box/hydro{
-	density = 0;
-	pixel_x = -16;
-	pixel_y = 13
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 4
 	},
-/turf/open/gm/river,
+/turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/left_spiders)
+"XG" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 4
+	},
+/obj/item/lightstick/planted,
+/turf/open/auto_turf/snow/layer2,
+/area/shiva/exterior/valley)
 "Yi" = (
 /obj/item/lightstick/planted,
 /turf/open/auto_turf/ice/layer1,
@@ -350,30 +364,118 @@
 /area/shiva/interior/caves/left_spiders)
 
 (1,1,1) = {"
-By
-By
-By
-By
-By
-By
-By
-By
-yu
-yu
-yu
-By
-By
-By
-By
-By
-By
-By
-By
-By
-By
-By
+xF
+xF
+xF
+xF
+xF
+xF
+xF
+xF
+xF
+xF
+SK
+Un
+Un
+Un
+Un
+Un
+fj
+fj
+fj
+fj
+fj
+fj
+fj
+fj
+fj
 "}
 (2,1,1) = {"
+xF
+hZ
+cf
+xF
+SK
+xF
+xF
+kW
+xF
+By
+FT
+FT
+IQ
+By
+By
+By
+By
+By
+fj
+fj
+fj
+fj
+fj
+fj
+fj
+"}
+(3,1,1) = {"
+FD
+SK
+fd
+xF
+xF
+xF
+xF
+Ie
+By
+By
+IQ
+FT
+IQ
+IQ
+By
+By
+By
+By
+By
+By
+By
+By
+fj
+fj
+fj
+"}
+(4,1,1) = {"
+kW
+XG
+xF
+xF
+kW
+xF
+By
+By
+By
+By
+By
+tr
+oL
+VT
+By
+By
+By
+tF
+sA
+sA
+By
+By
+fj
+fj
+fj
+"}
+(5,1,1) = {"
+xF
+xF
+xF
+xF
 By
 By
 By
@@ -382,22 +484,399 @@ By
 By
 By
 FT
-xF
-yS
-xG
+oL
 IQ
 IQ
-By
-By
-By
-By
-By
-By
-By
 IQ
+By
+tR
+MY
+FT
+mC
+By
+By
+By
 By
 "}
-(3,1,1) = {"
+(6,1,1) = {"
+xF
+Ie
+xF
+By
+By
+By
+By
+By
+By
+dS
+jt
+AW
+FT
+FF
+IQ
+IQ
+JM
+sA
+IQ
+MY
+NP
+MY
+IQ
+By
+By
+"}
+(7,1,1) = {"
+Ie
+xF
+SK
+By
+By
+By
+By
+By
+By
+Kx
+vX
+lz
+FT
+IQ
+IQ
+jP
+JM
+IQ
+sA
+IQ
+sA
+IQ
+sA
+IQ
+ug
+"}
+(8,1,1) = {"
+OD
+RX
+FT
+By
+By
+By
+By
+By
+By
+yu
+bP
+FT
+IQ
+IQ
+Yi
+IQ
+JM
+sA
+af
+sA
+IQ
+NW
+NW
+NW
+NW
+"}
+(9,1,1) = {"
+FT
+IQ
+IQ
+oL
+IQ
+By
+By
+dS
+jt
+yu
+Ar
+IQ
+IQ
+IQ
+IQ
+FT
+JM
+sA
+sA
+IQ
+sA
+NW
+fj
+fj
+fj
+"}
+(10,1,1) = {"
+IQ
+FT
+Yi
+oL
+IQ
+By
+By
+Kx
+vX
+lT
+IQ
+IQ
+IQ
+FT
+FT
+IQ
+JM
+FT
+FT
+MY
+IQ
+NW
+fj
+fj
+fj
+"}
+(11,1,1) = {"
+By
+IQ
+IQ
+oL
+IQ
+IQ
+By
+By
+pO
+IQ
+IQ
+IQ
+IQ
+IQ
+yu
+By
+By
+sA
+sA
+FT
+IQ
+By
+fj
+fj
+fj
+"}
+(12,1,1) = {"
+By
+IQ
+IQ
+IQ
+BH
+IQ
+IQ
+FT
+aL
+IQ
+IQ
+IQ
+FT
+Vc
+yu
+By
+By
+By
+By
+ZL
+ZL
+By
+fj
+fj
+fj
+"}
+(13,1,1) = {"
+By
+IQ
+FT
+bL
+Yi
+IQ
+IQ
+IQ
+IQ
+IQ
+IQ
+IQ
+FT
+ff
+dS
+jt
+By
+By
+By
+By
+By
+By
+fj
+fj
+fj
+"}
+(14,1,1) = {"
+By
+By
+FT
+bL
+IQ
+IQ
+IQ
+xE
+xx
+On
+IQ
+IQ
+FT
+rh
+Kx
+vX
+By
+By
+By
+By
+By
+By
+fj
+fj
+fj
+"}
+(15,1,1) = {"
+By
+By
+By
+IQ
+IQ
+FT
+IQ
+rh
+dS
+jt
+lz
+IQ
+IQ
+xy
+By
+By
+By
+By
+By
+By
+By
+By
+fj
+fj
+fj
+"}
+(16,1,1) = {"
+By
+By
+By
+By
+IQ
+IQ
+IQ
+Ao
+Kx
+vX
+By
+IQ
+FT
+xy
+By
+By
+By
+By
+By
+By
+By
+By
+fj
+fj
+fj
+"}
+(17,1,1) = {"
+By
+By
+By
+By
+By
+IQ
+FT
+IQ
+Br
+By
+By
+IQ
+IQ
+IQ
+IQ
+By
+By
+By
+By
+Am
+ug
+gf
+fj
+fj
+fj
+"}
+(18,1,1) = {"
+By
+By
+By
+By
+By
+By
+IQ
+lP
+aL
+IQ
+IQ
+Kh
+IQ
+Vm
+ia
+JM
+IQ
+sA
+IQ
+sA
+IQ
+gf
+fj
+fj
+fj
+"}
+(19,1,1) = {"
+By
+By
+By
+By
+By
+By
+IQ
+BI
+Kd
+IQ
+IQ
+IQ
+Hm
+IQ
+IQ
+JM
+IQ
+sA
+af
+sA
+IQ
+gf
+fj
+fj
+fj
+"}
+(20,1,1) = {"
 By
 By
 By
@@ -420,436 +899,115 @@ sA
 IQ
 sA
 By
-"}
-(4,1,1) = {"
 By
 By
-By
-By
-By
-By
-IQ
-vX
-Kd
-IQ
-IQ
-IQ
-Hm
-IQ
-IQ
-JM
-IQ
-sA
-af
-sA
-IQ
-gf
-"}
-(5,1,1) = {"
-By
-By
-By
-By
-By
-By
-IQ
-Br
-aL
-IQ
-IQ
-Kh
-IQ
-Vm
-ia
-JM
-IQ
-sA
-IQ
-sA
-IQ
-gf
-"}
-(6,1,1) = {"
-By
-By
-By
-By
-By
-IQ
-FT
-IQ
-AW
-wj
-wj
-IQ
-IQ
-IQ
-IQ
-wj
-wj
-wj
-wj
-Am
-ug
-gf
-"}
-(7,1,1) = {"
-By
-By
-By
-By
-IQ
-IQ
-IQ
-Ao
-dS
-kW
-wj
-IQ
-FT
-xy
-wj
-wj
-wj
-wj
-wj
-wj
-wj
-wj
-"}
-(8,1,1) = {"
-By
-By
-By
-IQ
-IQ
-FT
-IQ
-rh
-Kx
-VT
-lz
-IQ
-IQ
-xy
-wj
-wj
-wj
-wj
-wj
-wj
-wj
-wj
-"}
-(9,1,1) = {"
-By
-By
-FT
-bL
-IQ
-IQ
-IQ
-tr
-SK
-Vc
-IQ
-IQ
-FT
-rh
-dS
-kW
-wj
-wj
-wj
-wj
-wj
-wj
-"}
-(10,1,1) = {"
-By
-IQ
-FT
-bL
-Yi
-IQ
-IQ
-IQ
-IQ
-IQ
-IQ
-IQ
-FT
-ff
-Kx
-VT
-wj
-wj
-wj
-ZL
-ZL
-wj
-"}
-(11,1,1) = {"
-By
-IQ
-IQ
-IQ
-IQ
-IQ
-IQ
-FT
-aL
-IQ
-IQ
-IQ
-FT
-BH
-yu
-wj
-wj
-sA
-sA
-FT
-IQ
-wj
-"}
-(12,1,1) = {"
-By
-IQ
-IQ
-oL
-IQ
-IQ
-wj
-wj
-OD
-IQ
-IQ
-IQ
-IQ
-IQ
-yu
-wj
-JM
-FT
-FT
-MY
-IQ
-NW
-"}
-(13,1,1) = {"
-IQ
-FT
-Yi
-oL
-IQ
-wj
-wj
-dS
-kW
-lP
-IQ
-IQ
-IQ
-FT
-FT
-IQ
-JM
-sA
-sA
-IQ
-sA
-NW
-"}
-(14,1,1) = {"
-FT
-IQ
-IQ
-oL
-IQ
-wj
-wj
-Kx
-VT
-yu
-Ar
-IQ
-IQ
-IQ
-IQ
-FT
-JM
-sA
-af
-sA
-IQ
-NW
-"}
-(15,1,1) = {"
-FT
-FT
-FT
-wj
-wj
-wj
-wj
-wj
-wj
-yu
-bP
-FT
-IQ
-IQ
-Yi
-IQ
-JM
-IQ
-sA
-IQ
-sA
-IQ
-"}
-(16,1,1) = {"
-pr
-xx
-xx
-wj
-wj
-wj
-wj
-wj
-wj
-dS
-kW
-lz
-FT
-IQ
-IQ
-jP
-JM
-sA
-IQ
-MY
-NP
-MY
-"}
-(17,1,1) = {"
-hZ
-xx
-xx
-wj
-wj
-wj
-wj
-wj
-wj
-Kx
-VT
-On
-FT
-IQ
-IQ
-IQ
-wj
-tR
-MY
-FT
-mC
-wj
-"}
-(18,1,1) = {"
-pr
-pr
-xx
-xx
-wj
-wj
-wj
-wj
-wj
-wj
-wj
-FT
-oL
-IQ
-IQ
-IQ
-wj
-tF
-sA
-sA
-wj
-wj
-"}
-(19,1,1) = {"
-FF
-fd
-pr
-xx
-BI
-xx
-wj
-wj
-wj
-wj
-wj
-Un
-oL
-cf
-wj
-wj
-wj
-wj
-wj
-wj
-wj
-wj
-"}
-(20,1,1) = {"
 fj
-hY
-hZ
-xx
-xx
-xx
-xx
-xx
-wj
-wj
-IQ
-FT
-IQ
-IQ
-wj
-wj
-wj
-wj
-wj
-wj
-wj
-wj
 "}
 (21,1,1) = {"
-pr
-jt
-Ie
-pr
-pr
-pr
-xx
-BI
-xx
-wj
+By
+By
+By
+By
+By
+By
+By
 FT
-FT
+pr
+yS
+xG
 IQ
-wj
-wj
-wj
-wj
-wj
-wj
-wj
-wj
-wj
+hY
+By
+By
+By
+By
+By
+By
+By
+IQ
+By
+By
+By
+fj
+"}
+(22,1,1) = {"
+By
+By
+By
+By
+By
+By
+By
+By
+yu
+yu
+yu
+By
+By
+By
+By
+By
+By
+By
+By
+By
+By
+By
+By
+By
+fj
+"}
+(23,1,1) = {"
+fj
+By
+By
+By
+By
+By
+By
+By
+By
+By
+By
+By
+By
+By
+By
+By
+By
+By
+By
+By
+By
+By
+By
+By
+fj
+"}
+(24,1,1) = {"
+fj
+By
+By
+By
+By
+By
+By
+By
+By
+By
+By
+By
+By
+By
+By
+By
+By
+By
+By
+By
+By
+By
+By
+By
+fj
 "}

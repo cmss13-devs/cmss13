@@ -467,6 +467,7 @@
 	icon = 'icons/obj/structures/wall_dispensers.dmi'
 	icon_state = "peppertank"
 	anchored = TRUE
+	plane = TURF_PLANE
 	drag_delay = 3
 	wrenchable =  FALSE
 	density = FALSE
@@ -479,6 +480,7 @@
 	icon = 'icons/obj/structures/wall_dispensers.dmi'
 	icon_state = "forensictank"
 	anchored = TRUE
+	plane = TURF_PLANE
 	drag_delay = 3
 	wrenchable =  FALSE
 	density = FALSE

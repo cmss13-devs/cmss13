@@ -159,3 +159,12 @@
       damage per level of lingering acid on target with 10 extra ap per level
   - balance: Despoiler slash gives t1 lingering acid
   - balance: Xeno acid blood hits mob that they are standing on
+2025-12-12:
+  Nomoresolvalou:
+  - rscadd: Added the yautja shield bracer attachment
+  - balance: shields will no longer lower after blocking an attack
+  - balance: yautja clan shield now has directional block. block chance reduced by
+      50% on attacks from the side, and attacks cannot be blocked from behind.
+  - balance: yautja clan shield raised block chance buffed to 40% (was 30%)
+  - balance: yautja clan shield lowered block chance buffed to 20% (was 15%)
+  - imageadd: Added sprite for yautja shield attachment (sprites by Crowford)

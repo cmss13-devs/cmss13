@@ -459,7 +459,7 @@
 
 /client/proc/generate_sound_queues()
 	set name = "Queue sounds"
-	set desc = "stress test this bich"
+	set desc = "Stress test this bich."
 	set category = "Debug"
 
 	var/ammount = tgui_input_number(usr, "How many sounds to queue?")
@@ -480,7 +480,7 @@
 
 /client/proc/sound_debug_query()
 	set name = "Dump Playing Client Sounds"
-	set desc = "dumps info about locally, playing sounds"
+	set desc = "Dumps info about locally, playing sounds."
 	set category = "Debug"
 
 	for(var/sound/soundin in SoundQuery())

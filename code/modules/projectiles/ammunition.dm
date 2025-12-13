@@ -1,4 +1,4 @@
-//Magazine items, and casings.
+//Magazine items, casings in decals\casings.dm.
 /*
 Boxes of ammo. Certain weapons have internal boxes of ammo that cannot be removed and function as part of the weapon.
 They're all essentially identical when it comes to getting the job done.

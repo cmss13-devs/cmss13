@@ -168,7 +168,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 			for(var/photo in info.photo_list)
 				usr << browse_rsc(info.photo_list[photo], photo)
 
-		show_browser(usr, "<body class='paper'>[info.data]</body>", "Fax Message", "Fax Message")
+		show_browser(usr, "<body class='paper'>[info.data]</body>", "Fax Message", "Fax Message", width=DEFAULT_PAPER_WIDTH, height=DEFAULT_PAPER_HEIGHT, extra_stylesheets=info.extra_stylesheets, extra_headers=info.extra_headers)
 
 	else if(href_list["medals_panel"])
 		GLOB.medals_panel.tgui_interact(mob)
@@ -468,10 +468,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if(CONFIG_GET(flag/ooc_country_flags))
 		spawn if(src)
 			ip2country(address, src)
-
-	spawn(-1)
-		if(SScmtv.is_subscriber(src))
-			add_verb(src, /client/proc/set_ooc_color_self)
 
 	//////////////
 	//DISCONNECT//

@@ -104,6 +104,11 @@
 	if(OT.density || !isturf(OT) || !OT.allow_construction)
 		to_chat(user, SPAN_WARNING("You can't set up \the [src] here."))
 		return FALSE
+	if(isliving(user))
+		var/mob/living/L = user
+		if(L.is_on_tank_hull())
+			to_chat(user, SPAN_WARNING("You can't set up \the [src] here."))
+			return FALSE
 	if(rotate_check.density)
 		to_chat(user, SPAN_WARNING("You can't set up \the [src] that way, there's a wall behind you!"))
 		return FALSE

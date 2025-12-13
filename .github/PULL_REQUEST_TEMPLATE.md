@@ -52,7 +52,7 @@ server: something server ops should know
 soundadd: added a new sound thingy
 sounddel: removed an old sound thingy
 soundtweak: tweaked a sound thingy
-spellcheck: fixed a few typos or grammatical errors
+spellcheck: fixed a few typos
 ui: changed something relating to user interfaces
 /:cl:
 

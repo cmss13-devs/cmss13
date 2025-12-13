@@ -328,16 +328,3 @@ If it is the same and the other stack isn't full, transfer an amount (default 1)
 	if(bullet.handful_color)
 		color = bullet.handful_color
 	update_icon()
-
-//----------------------------------------------------------------//
-
-/obj/item/ammo_box/magazine/lever_action/xm88
-	name = "\improper .458 bullets box (.458 x 300)"
-	icon_state = "base_458"
-	overlay_ammo_type = "_blank"
-	overlay_gun_type = "_458"
-	overlay_content = "_458"
-	magazine_type = /obj/item/ammo_magazine/lever_action/xm88
-
-/obj/item/ammo_box/magazine/lever_action/xm88/empty
-	empty = TRUE

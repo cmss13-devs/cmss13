@@ -1,4 +1,0 @@
-author: "PGrayCS"
-delete-after: True
-changes:
-  - bugfix: "Fixed UPP spawn names displaying with question marks due to special characters (e.g., 'Živka' appearing as '?Ivka')"

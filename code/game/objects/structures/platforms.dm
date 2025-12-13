@@ -16,6 +16,7 @@
 	unacidable = TRUE
 	climb_delay = CLIMB_DELAY_SHORT
 	projectile_coverage = PROJECTILE_COVERAGE_NONE
+	flags_atom = NO_ZFALL
 	var/stat = 0
 	var/creaking_sound
 	var/breaking_sound
@@ -159,6 +160,7 @@
 	breakable = FALSE
 	flags_atom = ON_BORDER
 	unacidable = TRUE
+	flags_atom = NO_ZFALL
 
 /obj/structure/platform_decoration/Initialize()
 	. = ..()

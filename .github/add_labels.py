@@ -3,7 +3,7 @@ from github import Auth, Github, GithubIntegration, GithubException
 
 # Format - Key: Array[Label, [StringsToIgnore]]
 changelogToPrefix = {
-    'add': ["Feature", ["Added new mechanics or gameplay changes", "Added more things"]],
+    'add': ["Feature", ["Added new mechanics or gameplay changes", "Added more things, "Added something"]],
     'admin': ["Admin", ["messed with admin stuff"]],
     'balance': ["Balance", ["rebalanced something"]],
     'code': ["Code Improvement", ["changed some code"]],

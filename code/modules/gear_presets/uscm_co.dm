@@ -352,19 +352,3 @@
 
 	service_extra = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/commander, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber)
 
-/datum/equipment_preset/uscm_co/visitor
-	name = "USCM Observer (Major) (VO)"
-	flags = EQUIPMENT_PRESET_EXTRA
-
-	assignment = JOB_USCM_OBSV
-	job_title = JOB_USCM_OBSV
-	role_comm_title = "VO"
-	minimap_background = "background_medical_WO"
-
-/datum/equipment_preset/uscm_co/visitor/ltcol
-	name = "USCM Observer (Lt. Col.) (VO)"
-	paygrades = list(PAY_SHORT_MO5 = JOB_PLAYTIME_TIER_0)
-
-/datum/equipment_preset/uscm_co/visitor/col
-	name = "USCM Observer (Colonel) (VO)"
-	paygrades = list(PAY_SHORT_MO6 = JOB_PLAYTIME_TIER_0)

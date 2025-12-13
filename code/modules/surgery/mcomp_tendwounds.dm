@@ -20,7 +20,7 @@
 
 	for(var/zone in surgery_limbs) //Loops through the limbs of the patient
 		if(istype(patient.active_surgeries[zone], /datum/surgery/mcomp_wounds)) //Checks if there is already a surgery of this type existing elsewhere.
-			to_chat(user, SPAN_WARNING("The [zone] is already being worked on and you have to finish that first!"))//gives a message to the person trying to perform the action
+			to_chat(user, SPAN_WARNING("The [zone] is already being worked on! Finish what you are doing, first!"))//gives a message to the person trying to perform the action
 			return FALSE
 
 	if(istype(user) && HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
@@ -41,7 +41,7 @@
 //------------------------------------
 
 /datum/surgery_step/mstabilize_wounds
-	name = "stabilize wounds"
+	name = "Stabilize Wounds"
 	desc = "stabilize the wounds"
 	tools = SURGERY_TOOLS_MEDICOMP_STABILIZE_WOUND
 	time = 5 SECONDS
@@ -76,7 +76,7 @@
 		user.affected_message(target,
 			SPAN_HELPFUL("You finish stabilizing [target]'s wounds with [tool]."),
 			SPAN_HELPFUL("[user] finished stabilizing your wounds with [tool]."),
-			SPAN_NOTICE("[user] finished treating [target]'s wounds with [tool]."))
+			SPAN_NOTICE("[user] finished stabilizing [target]'s wounds with [tool]."))
 
 	log_interact(user, target, "[key_name(user)] stabilized some of [key_name(target)]'s wounds with [tool].")
 
@@ -86,7 +86,7 @@
 
 /datum/surgery_step/mtend_wounds
 	name = "Tend Wounds"
-	desc = "tend the wounds"
+	desc = "tend to the wounds"
 	tools = SURGERY_TOOLS_MEDICOMP_MEND_WOUND
 	time = 15 SECONDS
 	preop_sound = 'sound/surgery/retractor1.ogg'
@@ -113,7 +113,7 @@
 			SPAN_NOTICE("[user] begins to treat the stabilized wounds on [target]'s body with [tool]."))
 
 	target.custom_pain("It feels like your body is being stabbed with needles - because it is!")
-	log_interact(user, target, "[key_name(user)] began tending wounds on [key_name(target)] with [tool], starting [surgery].")
+	log_interact(user, target, "[key_name(user)] began treating the stabilized wounds on [key_name(target)] with [tool], starting [surgery].")
 
 /datum/surgery_step/mtend_wounds/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	target.heal_overall_damage(65,65)
@@ -153,6 +153,10 @@
 	desc = "clamp the wounds"
 	tools = SURGERY_TOOLS_MEDICOMP_CLAMP_WOUND
 	time = 10 SECONDS
+	preop_sound = 'sound/surgery/hemostat1.ogg'
+	success_sound = 'sound/surgery/hemostat2.ogg'
+	failure_sound = 'sound/surgery/organ2.ogg'
+
 
 /datum/surgery_step/cauterize/mclamp_wound/tool_check(mob/user, obj/item/tool, datum/surgery/surgery)
 	. = ..()
@@ -167,7 +171,7 @@
 		user.affected_message(target,
 			SPAN_HELPFUL("You begin to close the treated wounds on [target]'s body with [tool]."),
 			SPAN_HELPFUL("[user] begins to clamp the treated wounds on your body with [tool]."),
-			SPAN_NOTICE("[user] begns to clamp the treated wounds on [target]'s body with [tool]."))
+			SPAN_NOTICE("[user] begins to clamp the treated wounds on [target]'s body with [tool]."))
 
 /datum/surgery_step/cauterize/mclamp_wound/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	target.heal_overall_damage(125,125) //makes sure that all damage is healed
@@ -179,7 +183,7 @@
 			limb.status &= ~(LIMB_THIRD_DEGREE_BURNS|LIMB_ESCHAR)
 
 	if(user == target)
-		user.visible_message(SPAN_NOTICE("[user] finshes closing the treated wounds on their body with [tool]."),
+		user.visible_message(SPAN_NOTICE("[user] finishes closing the treated wounds on their body with [tool]."),
 			SPAN_HELPFUL("You finish closing the treated wounds on your body with [tool]"))
 	else
 		user.affected_message(target,
@@ -192,6 +196,7 @@
 	else
 		target.emote("pain")
 
+	to_chat(target, SPAN_NOTICE("You feel better."))
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SURFACE
 	target.pain.recalculate_pain()
 	log_interact(user, target, "[key_name(user)] clamped a wound in [key_name(target)]'s [surgery.affected_limb.display_name], ending [surgery].")

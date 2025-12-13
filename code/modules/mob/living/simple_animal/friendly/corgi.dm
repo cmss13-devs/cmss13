@@ -1,5 +1,5 @@
 //Corgi
-/mob/living/simple_animal/corgi
+/mob/living/simple_animal/big/corgi
 	name = "\improper corgi"
 	real_name = "corgi"
 	desc = "It's a corgi."
@@ -25,7 +25,7 @@
 	var/obj/item/inventory_head
 	var/obj/item/inventory_back
 
-/mob/living/simple_animal/corgi/MouseDrop(atom/over_object)
+/mob/living/simple_animal/big/corgi/MouseDrop(atom/over_object)
 	if(!CAN_PICKUP(usr, src))
 		return ..()
 	var/mob/living/carbon/H = over_object
@@ -39,7 +39,7 @@
 		return ..()
 
 //IAN! SQUEEEEEEEEE~
-/mob/living/simple_animal/corgi/Ian
+/mob/living/simple_animal/big/corgi/Ian
 	name = "Ian"
 	real_name = "Ian" //Intended to hold the name without altering it.
 	gender = MALE
@@ -51,11 +51,11 @@
 	response_disarm = "bops"
 	response_harm   = "kicks"
 
-/mob/living/simple_animal/corgi/Ian/Life(delta_time)
+/mob/living/simple_animal/big/corgi/Ian/Life(delta_time)
 	..()
 	INVOKE_ASYNC(src, PROC_REF(look_for_food))
 
-/mob/living/simple_animal/corgi/Ian/proc/look_for_food()
+/mob/living/simple_animal/big/corgi/Ian/proc/look_for_food()
 	//Feeding, chasing food, FOOOOODDDD
 	if(!stat && !resting && !buckled)
 		turns_since_scan++
@@ -104,7 +104,7 @@
 					setDir(i)
 					sleep(1)
 
-/mob/living/simple_animal/corgi/death()
+/mob/living/simple_animal/big/corgi/death()
 	. = ..()
 	if(!.)
 		return //was already dead
@@ -118,7 +118,7 @@
 	desc = "Tastes like... well you know..."
 
 
-/mob/living/simple_animal/corgi/attackby(obj/item/O as obj, mob/user as mob)  //Marker -Agouri
+/mob/living/simple_animal/big/corgi/attackby(obj/item/O as obj, mob/user as mob)  //Marker -Agouri
 	if(istype(O, /obj/item/newspaper))
 		if(!stat)
 			for(var/mob/M as anything in viewers(user, null))
@@ -131,7 +131,7 @@
 	else
 		..()
 
-/mob/living/simple_animal/corgi/regenerate_icons()
+/mob/living/simple_animal/big/corgi/regenerate_icons()
 	overlays = list()
 
 	if(inventory_head)
@@ -155,16 +155,23 @@
 	return
 
 
-/mob/living/simple_animal/corgi/puppy
+/mob/living/simple_animal/big/corgi/puppy // "big" corgi puppy
 	name = "\improper corgi puppy"
 	real_name = "corgi"
 	desc = "It's a corgi puppy."
 	icon_state = "puppy"
 	icon_living = "puppy"
 	icon_dead = "puppy_dead"
+	density = FALSE
+
+/mob/living/simple_animal/big/corgi/puppy/initialize_pass_flags(datum/pass_flags_container/pass_flags)
+	..()
+	if(pass_flags)
+		pass_flags.flags_pass = PASS_MOB_THRU|PASS_FLAGS_CRAWLER
+		pass_flags.flags_can_pass_all = PASS_ALL^PASS_OVER_THROW_ITEM
 
 //pupplies cannot wear anything.
-/mob/living/simple_animal/corgi/puppy/Topic(href, href_list)
+/mob/living/simple_animal/big/corgi/puppy/Topic(href, href_list)
 	if(href_list["remove_inv"] || href_list["add_inv"])
 		to_chat(usr, SPAN_DANGER("You can't fit this on [src]"))
 		return
@@ -172,7 +179,7 @@
 
 
 //LISA! SQUEEEEEEEEE~
-/mob/living/simple_animal/corgi/Lisa
+/mob/living/simple_animal/big/corgi/Lisa
 	name = "Lisa"
 	real_name = "Lisa"
 	gender = FEMALE
@@ -188,13 +195,13 @@
 	var/puppies = 0
 
 //Lisa already has a cute bow!
-/mob/living/simple_animal/corgi/Lisa/Topic(href, href_list)
+/mob/living/simple_animal/big/corgi/Lisa/Topic(href, href_list)
 	if(href_list["remove_inv"] || href_list["add_inv"])
 		to_chat(usr, SPAN_DANGER("[src] already has a cute bow!"))
 		return
 	..()
 
-/mob/living/simple_animal/corgi/Lisa/Life(delta_time)
+/mob/living/simple_animal/big/corgi/Lisa/Life(delta_time)
 	..()
 
 	if(!stat && !resting && !buckled)
@@ -204,7 +211,7 @@
 			var/alone = 1
 			var/ian = 0
 			for(var/mob/M in oviewers(7, src))
-				if(istype(M, /mob/living/simple_animal/corgi/Ian))
+				if(istype(M, /mob/living/simple_animal/big/corgi/Ian))
 					if(M.client)
 						alone = 0
 						break
@@ -214,7 +221,7 @@
 					alone = 0
 					break
 			if(alone && ian && puppies < 4)
-				new /mob/living/simple_animal/corgi/puppy(loc)
+				new /mob/living/simple_animal/big/corgi/puppy(loc)
 
 
 		if(prob(1))

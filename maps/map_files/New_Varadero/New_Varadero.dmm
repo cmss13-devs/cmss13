@@ -261,7 +261,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
-/mob/living/simple_animal/mouse,
+/mob/living/simple_animal/small/mouse,
 /turf/open/floor/shiva/multi_tiles/southeast,
 /area/varadero/interior/medical)
 "abl" = (
@@ -7103,7 +7103,7 @@
 /turf/open/floor/carpet,
 /area/varadero/interior/chapel)
 "fyZ" = (
-/mob/living/simple_animal/cat{
+/mob/living/simple_animal/small/cat{
 	desc = "A domesticated, feline pet. The collar says 'Orion'.";
 	name = "Orion";
 	real_name = "Orion"
@@ -10608,7 +10608,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance)
 "iwf" = (
-/mob/living/simple_animal/mouse,
+/mob/living/simple_animal/small/mouse,
 /turf/open/floor/wood,
 /area/varadero/interior/hall_SE)
 "iwg" = (

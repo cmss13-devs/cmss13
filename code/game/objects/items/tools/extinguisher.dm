@@ -88,7 +88,7 @@
 			to_chat(user, SPAN_WARNING("You cannot re-fill the extinguisher with the contents of this."))
 			return
 		object.reagents.trans_to(src, 50)
-		to_chat(user, SPAN_NOTICE(" \The [src] is now refilled"))
+		to_chat(user, SPAN_NOTICE(" \The [src] is now refilled."))
 		playsound(user, 'sound/effects/refill.ogg', 25, 1, 3)
 		return
 

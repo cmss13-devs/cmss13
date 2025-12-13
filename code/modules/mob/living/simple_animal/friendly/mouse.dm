@@ -6,9 +6,9 @@
 	icon_living = "mouse_gray"
 	icon_dead = "mouse_gray_dead"
 	speak = list("Squeek!","SQUEEK!","Squeek?")
-	speak_emote = list("squeeks","squeeks","squiks")
-	emote_hear = list("squeeks","squeaks","squiks")
-	emote_see = list("runs in a circle", "shakes", "scritches at something")
+	speak_emote = list("squeeks.","squeeks.","squiks.")
+	emote_hear = list("squeeks.","squeaks.","squiks.")
+	emote_see = list("runs in a circle.", "shakes.", "scritches at something.")
 	mob_size = MOB_SIZE_SMALL
 	speak_chance = 1
 	turns_per_move = 5

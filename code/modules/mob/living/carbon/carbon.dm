@@ -471,7 +471,7 @@
 	set category = "IC"
 
 	if(sleeping)
-		to_chat(usr, SPAN_DANGER("You are already sleeping"))
+		to_chat(usr, SPAN_DANGER("You are already sleeping."))
 		return
 	if(alert(src,"You sure you want to sleep for a while?","Sleep","Yes","No") == "Yes")
 		sleeping = 20 //Short nap

@@ -65,7 +65,7 @@
 		to_chat(M, SPAN_BOLD("You were born [pick(75;"in Europe", 15;"in Asia", 10;"on Mars")] to a [pick(75;"well-off", 15;"well-established", 10;"average")] family."))
 		to_chat(M, SPAN_BOLD("Joining the ranks of Weyland-Yutani has proven to be very profitable for you."))
 		to_chat(M, SPAN_BOLD("While you are officially an employee, much of your work is off the books. You work as a skilled mercenary."))
-		to_chat(M, SPAN_BOLD("You are [pick(50;"unaware of the xenomorph threat", 15;"acutely aware of the xenomorph threat", 10;"well-informed of the xenomorph threat")]"))
+		to_chat(M, SPAN_BOLD("You are [pick(50;"unaware of the xenomorph threat", 15;"acutely aware of the xenomorph threat", 10;"well-informed of the xenomorph threat")]."))
 	else
 		to_chat(M, SPAN_BOLD("You were brought online in a Weyland-Yutani synthetic production facility, knowing only your engineers for the first few weeks for your pseudo-life."))
 		to_chat(M, SPAN_BOLD("You were programmed with standard synthetic skills as per facility and geneva protocol."))

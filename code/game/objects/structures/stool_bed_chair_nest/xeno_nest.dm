@@ -379,7 +379,7 @@
 
 /obj/structure/bed/nest/structure/attack_hand(mob/user)
 	if(!isxeno(user))
-		to_chat(user, SPAN_NOTICE("The sticky resin is too strong for you to do anything to this nest"))
+		to_chat(user, SPAN_NOTICE("The sticky resin is too strong for you to do anything to this nest."))
 		return FALSE
 	. = ..()
 

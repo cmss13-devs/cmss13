@@ -428,7 +428,7 @@
 
 		var/mob/M = locate(href_list["jobban4"])
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob")
+			to_chat(usr, "This can only be used on instances of type /mob.")
 			return
 
 		if(M != usr) //we can jobban ourselves
@@ -513,7 +513,7 @@
 				return
 			var/reason = input("Please enter reason")
 			if(!reason)
-				to_chat_forced(M, SPAN_WARNING("You have been kicked from the server"))
+				to_chat_forced(M, SPAN_WARNING("You have been kicked from the server."))
 			else
 				to_chat_forced(M, SPAN_WARNING("You have been kicked from the server: [reason]"))
 			message_admins("[key_name_admin(usr)] booted [key_name_admin(M)].")
@@ -591,7 +591,7 @@
 
 		var/mob/living/carbon/xenomorph/X = locate(href_list["xenoresetname"])
 		if(!isxeno(X))
-			to_chat(usr, SPAN_WARNING("Not a xeno"))
+			to_chat(usr, SPAN_WARNING("Not a xeno."))
 			return
 
 		if(alert("Are you sure you want to reset xeno name for [X.ckey]?", , "Yes", "No") != "Yes")
@@ -635,7 +635,7 @@
 
 
 		if(!isxeno(X))
-			to_chat(usr, SPAN_WARNING("Not a xeno"))
+			to_chat(usr, SPAN_WARNING("Not a xeno."))
 			return
 
 		if(alert("Are you sure you want to BAN [X.ckey] from ever using any xeno name?", , "Yes", "No") != "Yes")
@@ -708,7 +708,7 @@
 
 		var/mob/living/carbon/human/H = locate(href_list["monkeyone"])
 		if(!istype(H))
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
+			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human.")
 			return
 
 		message_admins("[key_name_admin(usr)] attempting to monkeyize [key_name_admin(H)]")
@@ -720,7 +720,7 @@
 
 		var/mob/M = locate(href_list["forcespeech"])
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob")
+			to_chat(usr, "This can only be used on instances of type /mob.")
 			return
 
 		var/speech = input("What will [key_name(M)] say?.", "Force speech", "")// Don't need to sanitize, since it does that in say(), we also trust our admins.
@@ -735,7 +735,7 @@
 			return
 		var/mob/living/carbon/human/H = locate(href_list["zombieinfect"])
 		if(!istype(H))
-			to_chat(usr, "This can only be used on instances of type /human")
+			to_chat(usr, "This can only be used on instances of type /human.")
 			return
 
 		if(alert(usr, "Are you sure you want to infect them with a ZOMBIE VIRUS? This can trigger a major event!", "Message", "Yes", "No") != "Yes")
@@ -755,7 +755,7 @@
 			return
 		var/mob/living/carbon/human/H = locate(href_list["larvainfect"])
 		if(!istype(H))
-			to_chat(usr, "This can only be used on instances of type /human")
+			to_chat(usr, "This can only be used on instances of type /human.")
 			return
 
 		if(alert(usr, "Are you sure you want to infect them with a xeno larva?", "Message", "Yes", "No") != "Yes")
@@ -770,7 +770,7 @@
 		var/newhive = tgui_input_list(usr,"Select a hive.", "Infect Larva", hives)
 
 		if(!H)
-			to_chat(usr, "This mob no longer exists")
+			to_chat(usr, "This mob no longer exists.")
 			return
 
 		var/obj/item/alien_embryo/embryo = new /obj/item/alien_embryo(H)
@@ -785,7 +785,7 @@
 
 		var/mob/living/carbon/human/H = locate(href_list["makemutineer"])
 		if(!istype(H))
-			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human")
+			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human.")
 			return
 
 		if(H.faction != FACTION_MARINE)
@@ -803,7 +803,7 @@
 
 		var/mob/living/carbon/human/H = locate(href_list["makecultist"]) || locate(href_list["makecultistleader"])
 		if(!istype(H))
-			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human")
+			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human.")
 			return
 
 		var/list/hives = list()
@@ -838,7 +838,7 @@
 
 		var/mob/M = locate(href_list["forceemote"])
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob")
+			to_chat(usr, "This can only be used on instances of type /mob.")
 
 		var/speech = input("What will [key_name(M)] emote?.", "Force emote", "")// Don't need to sanitize, since it does that in say(), we also trust our admins.
 		if(!speech)
@@ -879,7 +879,7 @@
 
 		var/mob/M = locate(href_list["tdome1"])
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob")
+			to_chat(usr, "This can only be used on instances of type /mob.")
 			return
 
 		for(var/obj/item/I in M)
@@ -901,7 +901,7 @@
 
 		var/mob/M = locate(href_list["tdome2"])
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob")
+			to_chat(usr, "This can only be used on instances of type /mob.")
 			return
 
 		for(var/obj/item/I in M)
@@ -923,7 +923,7 @@
 
 		var/mob/M = locate(href_list["tdomeadmin"])
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob")
+			to_chat(usr, "This can only be used on instances of type /mob.")
 			return
 
 		M.apply_effect(5, PARALYZE)
@@ -942,7 +942,7 @@
 
 		var/mob/M = locate(href_list["tdomeobserve"])
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob")
+			to_chat(usr, "This can only be used on instances of type /mob.")
 			return
 
 		for(var/obj/item/I in M)
@@ -965,7 +965,7 @@
 
 		var/mob/living/L = locate(href_list["revive"])
 		if(!istype(L))
-			to_chat(usr, "This can only be used on instances of type /mob/living")
+			to_chat(usr, "This can only be used on instances of type /mob/living.")
 			return
 
 		L.revive()
@@ -977,7 +977,7 @@
 
 		var/mob/living/carbon/human/H = locate(href_list["makealien"])
 		if(!istype(H))
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
+			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human.")
 			return
 
 		usr.client.cmd_admin_alienize(H)
@@ -1051,7 +1051,7 @@
 
 		var/mob/M = locate(href_list["makeanimal"])
 		if(istype(M, /mob/new_player))
-			to_chat(usr, "This cannot be used on instances of type /mob/new_player")
+			to_chat(usr, "This cannot be used on instances of type /mob/new_player.")
 			return
 
 		usr.client.cmd_admin_animalize(M)
@@ -1133,7 +1133,7 @@
 
 		var/mob/living/carbon/human/H = locate(href_list["adminspawncookie"])
 		if(!ishuman(H))
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
+			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human.")
 			return
 
 		var/cookie_type = tgui_input_list(usr, "Choose cookie type:", "Give Cookie", list("cookie", "random fortune cookie", "custom fortune cookie"))
@@ -1183,13 +1183,13 @@
 		var/mob/living/carbon/human/H = locate(href_list["CentcommReply"])
 
 		if(!istype(H))
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
+			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human.")
 			return
 
 		//unanswered_distress -= H
 
 		if(!H.get_type_in_ears(/obj/item/device/radio/headset))
-			to_chat(usr, "The person you are trying to contact is not wearing a headset")
+			to_chat(usr, "The person you are trying to contact is not wearing a headset.")
 			return
 
 		var/input = input(src.owner, "Please enter a message to reply to [key_name(H)] via their headset.","Outgoing message from USCM", "")
@@ -1206,10 +1206,10 @@
 	else if(href_list["SyndicateReply"])
 		var/mob/living/carbon/human/H = locate(href_list["SyndicateReply"])
 		if(!istype(H))
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
+			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human.")
 			return
 		if(!H.get_type_in_ears(/obj/item/device/radio/headset))
-			to_chat(usr, "The person you are trying to contact is not wearing a headset")
+			to_chat(usr, "The person you are trying to contact is not wearing a headset.")
 			return
 
 		var/input = input(src.owner, "Please enter a message to reply to [key_name(H)] via their headset.","Outgoing message from The Syndicate", "")
@@ -2037,7 +2037,7 @@
 		var/mob/living/carbon/human/speaker = locate(href_list["AresReply"])
 
 		if(!istype(speaker))
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
+			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human.")
 			return FALSE
 
 		if((!GLOB.ares_link.interface) || (GLOB.ares_link.interface.inoperable()))
@@ -2059,7 +2059,7 @@
 		var/mob/living/carbon/human/speaker = locate(href_list["AresMark"])
 
 		if(!istype(speaker))
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
+			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human.")
 			return FALSE
 
 		if((!GLOB.ares_link.interface) || (GLOB.ares_link.interface.inoperable()))

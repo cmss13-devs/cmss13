@@ -235,7 +235,7 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 		to_chat(user, SPAN_WARNING("You can't take a dogtag's information tag while its owner is alive."))
 		return
 
-	to_chat(user, SPAN_NOTICE("You take [sourcemob]'s information tag, leaving the ID tag"))
+	to_chat(user, SPAN_NOTICE("You take [sourcemob]'s information tag, leaving the ID tag."))
 	tag.dogtag_taken = TRUE
 	tag.icon_state = tag.tags_taken_icon
 	var/obj/item/dogtag/newtag = new(sourcemob.loc)

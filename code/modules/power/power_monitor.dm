@@ -47,7 +47,7 @@
 	data += "<A href='byond://?src=\ref[src];close=1'>Close</A><HR>"
 
 	if(!powernet)
-		data += SPAN_DANGER("No connection")
+		data += SPAN_DANGER("No connection.")
 	else
 		data += "<PRE>"
 		data += "Total power: [display_power(powernet.avail)]<BR>"

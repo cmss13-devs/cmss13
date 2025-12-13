@@ -206,7 +206,7 @@
 		if(STATE_WIRES)
 			if(HAS_TRAIT(attacking_item, TRAIT_TOOL_SCREWDRIVER))
 				playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
-				to_chat(user, SPAN_NOTICE("You start securing the circuit"))
+				to_chat(user, SPAN_NOTICE("You start securing the circuit."))
 				if(!do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					return
 				playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
@@ -224,7 +224,7 @@
 				if(airlock_type)
 					update_icon()
 				else
-					to_chat(user, SPAN_WARNING("You must choose a type"))
+					to_chat(user, SPAN_WARNING("You must choose a type."))
 					return
 			if(iswelder(attacking_item))
 				if(!HAS_TRAIT(attacking_item, TRAIT_TOOL_BLOWTORCH))

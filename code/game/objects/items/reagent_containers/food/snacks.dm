@@ -88,13 +88,13 @@
 
 		if(M == user)//If you're eating it yourself
 			if (fullness <= NUTRITION_VERYLOW)
-				to_chat(M, SPAN_WARNING("You hungrily chew out a piece of [src] and gobble it!"))
+				to_chat(M, SPAN_WARNING("You ravenously shovel down a hunk of [src] and gobble it whole!"))
 			if (fullness > NUTRITION_VERYLOW && fullness <= NUTRITION_LOW)
-				to_chat(M, SPAN_NOTICE(" You hungrily begin to eat [src]."))
+				to_chat(M, SPAN_NOTICE("You hungrily chomp down on a chunk of [src]."))
 			if (fullness > NUTRITION_LOW && fullness <= NUTRITION_NORMAL)
 				to_chat(M, SPAN_NOTICE(" You take a bite of [src]."))
 			if (fullness > NUTRITION_NORMAL && fullness <= NUTRITION_HIGH)
-				to_chat(M, SPAN_NOTICE(" You unwillingly chew a bit of [src]."))
+				to_chat(M, SPAN_NOTICE("You unwillingly chew a bit of [src]."))
 			if (fullness > NUTRITION_HIGH)
 				to_chat(M, SPAN_WARNING("You reluctantly force more of [src] to go down your throat."))
 		else
@@ -236,7 +236,7 @@
 			if(bitecount >= 5)
 				var/sattisfaction_text = pick("burps from enjoyment", "yaps for more", "woofs twice", "looks at the area where [src] was")
 				if(sattisfaction_text)
-					M.emote("[sattisfaction_text]")
+					M.emote("[sattisfaction_text].")
 				qdel(src)
 		if(ismouse(M))
 			var/mob/living/simple_animal/mouse/N = M

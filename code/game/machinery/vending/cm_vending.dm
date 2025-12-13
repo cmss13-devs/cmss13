@@ -808,7 +808,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 		var/obj/item/card/id/idcard = human_user.get_idcard()
 		if(!idcard)
 			if(display)
-				to_chat(user, SPAN_WARNING("Access denied. No ID card detected"))
+				to_chat(user, SPAN_WARNING("Access denied. No ID card detected."))
 				vend_fail()
 			return FALSE
 

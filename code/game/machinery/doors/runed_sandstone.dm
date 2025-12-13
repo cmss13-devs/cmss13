@@ -18,7 +18,7 @@
 
 /obj/structure/machinery/door/airlock/sandstone/runed/proc/can_use(mob/user as mob, loud = 0)
 	if(!in_range(src, user))
-		to_chat(usr, "You cannot operate the door from this far away")
+		to_chat(usr, "You cannot operate the door from this far away.")
 		return FALSE
 
 /obj/structure/machinery/door/airlock/sandstone/runed/attackby(obj/item/W as obj, mob/user as mob)

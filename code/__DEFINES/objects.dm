@@ -179,6 +179,7 @@ GLOBAL_LIST_INIT(RESTRICTED_CAMERA_NETWORKS, list( //Those networks can only be 
 #define CLEANABLE_BLOOD_GIBS "blood gibs"
 #define CLEANABLE_TRACKS "tracks"
 #define CLEANABLE_JUNK "junk" //Gibs, Robot debris, etcetera
+#define CLEANABLE_IGNITABLE "ignitable" //liquid fuel
 #define CLEANABLE_MISC "misc" //Anything else
 
 //For nuke announcements

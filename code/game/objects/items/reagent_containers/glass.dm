@@ -13,7 +13,7 @@
 	icon_state = null
 	item_state = null
 	amount_per_transfer_from_this = 10
-	possible_transfer_amounts = list(5,10,15,20,30,40,60)
+	possible_transfer_amounts = list(5,10,15,20,25,30,40,50,60)
 	volume = 60
 	flags_atom = FPRINT|OPENCONTAINER
 	transparent = TRUE
@@ -347,7 +347,7 @@
 	matter = list("glass" = 5000)
 	volume = 120
 	amount_per_transfer_from_this = 10
-	possible_transfer_amounts = list(5,10,15,20,30,40,60,80,120)
+	possible_transfer_amounts = list(5,10,15,20,25,30,40,60,80,120)
 
 /obj/item/reagent_container/glass/beaker/catalyst/silver
 	name = "large silver beaker"
@@ -645,7 +645,7 @@
 	matter = list("metal" = 2000)
 	w_class = SIZE_MEDIUM
 	amount_per_transfer_from_this = 20
-	possible_transfer_amounts = list(5,10,15,20,30,40,60,80,120)
+	possible_transfer_amounts = list(5,10,15,20,25,30,40,60,80,120)
 	volume = 120
 	flags_atom = FPRINT|OPENCONTAINER
 

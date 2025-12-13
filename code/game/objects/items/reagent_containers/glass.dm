@@ -13,7 +13,7 @@
 	icon_state = null
 	item_state = null
 	amount_per_transfer_from_this = 10
-	possible_transfer_amounts = list(5,10,15,20,25,30,40,50,60)
+	possible_transfer_amounts = list(5,10,15,20,30,40,60)
 	volume = 60
 	flags_atom = FPRINT|OPENCONTAINER
 	transparent = TRUE
@@ -347,7 +347,7 @@
 	matter = list("glass" = 5000)
 	volume = 120
 	amount_per_transfer_from_this = 10
-	possible_transfer_amounts = list(5,10,15,20,25,30,40,50,60,80,100,120)
+	possible_transfer_amounts = list(5,10,15,20,30,40,60,80,120)
 
 /obj/item/reagent_container/glass/beaker/catalyst/silver
 	name = "large silver beaker"
@@ -357,7 +357,7 @@
 	volume = 240
 	matter = list("silver" = 5000)
 	amount_per_transfer_from_this = 10
-	possible_transfer_amounts = list(5,10,15,20,25,30,40,50,60,80,100,120,150,240)
+	possible_transfer_amounts = list(5,10,15,20,30,40,60,80,120,240)
 	pixel_y = 5
 
 /obj/item/reagent_container/glass/beaker/catalyst/update_icon()
@@ -401,7 +401,7 @@
 	matter = list("glass" = 30000)
 	volume = 500
 	amount_per_transfer_from_this = 10
-	possible_transfer_amounts = list(5,10,15,20,25,30,40,50,60,80,100,120,150,240,300,400,500)
+	possible_transfer_amounts = list(5,10,15,20,30,40,60,120,240,500)
 
 /obj/item/reagent_container/glass/beaker/vial
 	name = "vial"
@@ -411,7 +411,7 @@
 	volume = 30
 	amount_per_transfer_from_this = 10
 	matter = list()
-	possible_transfer_amounts = list(1,5,10,15,20,25,30)
+	possible_transfer_amounts = list(5,10,15,20,25,30)
 	flags_atom = FPRINT|OPENCONTAINER
 	ground_offset_x = 9
 	ground_offset_y = 8
@@ -645,7 +645,7 @@
 	matter = list("metal" = 2000)
 	w_class = SIZE_MEDIUM
 	amount_per_transfer_from_this = 20
-	possible_transfer_amounts = list(5,10,15,20,25,30,40,50,60,80,100,120)
+	possible_transfer_amounts = list(5,10,15,20,30,40,60,80,120)
 	volume = 120
 	flags_atom = FPRINT|OPENCONTAINER
 
@@ -714,7 +714,7 @@
 	matter = list("metal" = 4000)
 	w_class = SIZE_LARGE
 	amount_per_transfer_from_this = 20
-	possible_transfer_amounts = list(5,10,15,20,25,30,40,50,60,80,100,120,150,240)
+	possible_transfer_amounts = list(5,10,15,20,30,40,60,80,120,240)
 	volume = 240
 	flags_atom = FPRINT|OPENCONTAINER
 
@@ -725,7 +725,7 @@
 	item_state = "janibucket"
 	matter = list("metal" = 8000)
 	volume = 300
-	possible_transfer_amounts = list(5,10,15,20,25,30,40,50,60,80,100,120,150,240,300)
+	possible_transfer_amounts = list(5,10,15,20,30,40,60,120,240,300)
 	w_class = SIZE_LARGE
 
 

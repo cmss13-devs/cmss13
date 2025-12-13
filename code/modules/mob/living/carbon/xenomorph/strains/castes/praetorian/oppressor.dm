@@ -143,7 +143,7 @@
 				else if(cade_facing == facing)
 					allow_one_more_step = TRUE
 				continue
-			if(structure.pass_flags.flags_pass |= PASS_HIGH_OVER)
+			if(structure.pass_flags.flags_can_pass_all && PASS_HIGH_OVER)
 				continue
 			blocked = TRUE
 		if(blocked)

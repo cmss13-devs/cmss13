@@ -1,0 +1,8 @@
+author: "Venuska1117"
+delete-after: True
+changes:
+  - balance: "Abduction ability can now be casted at same tile with cade, flipped table and glass window panes, as long as it doesn't face praetorian ability casting direction."
+  - balance: "Abduction ability can now be casted through smoke, such as boiler smoke, explosion smoke, and other related smoke effects."
+  - balance: "Abduction ability can now be casted through small obstacles such as: window frames, small long crates, normal long crates, platform edges, disposal units (bins), hydro trays (plant trays), janitor cart, trash cans (hybrisia) line nexter (hybrisia)."
+  - bugfix: "Abduction ability can no longer be casted through multitile vehicles."
+  - bugfix: "Abduction ability can no longer be casted through glass windows panes.\n/:cl"

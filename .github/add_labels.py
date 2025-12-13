@@ -22,7 +22,7 @@ changelogToPrefix = {
     'server': ["Server", ["something server ops should know"]],
     'soundadd': ["Sound", ["added a new sound thingy"]],
     'sounddel': ["Sound", ["removed an old sound thingy"]],
-    'soundtweak': ["Sound", ["tweaks a sound thingy"]],
+    'soundtweak': ["Sound", ["tweaked a sound thingy"]],
     'spellcheck': ["Grammar and Formatting", ["fixed a few typos"]],
     'ui': ["UI", ["changed something relating to user interfaces"]],
     'wip': ["Work in Progress", ["this isn't finished or hasn't been tested yet"]]

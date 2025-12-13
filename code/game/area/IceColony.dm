@@ -168,10 +168,12 @@
 
 /area/ice_colony/exterior/underground/caves/open
 	icon_state = "explored"
+	unoviable_timer = FALSE
 
 /area/ice_colony/exterior/underground/caves/dig
 	icon_state = "mining_living"
 	ceiling = CEILING_DEEP_UNDERGROUND_METAL
+	unoviable_timer = FALSE
 
 
 /*

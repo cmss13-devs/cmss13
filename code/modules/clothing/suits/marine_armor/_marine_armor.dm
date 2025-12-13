@@ -708,7 +708,7 @@
 		return 0
 
 	to_chat(usr, "You feel a faint hiss and an injector drops into your hand.")
-	var/obj/item/reagent_container/hypospray/autoinjector/skillless/O = new(usr)
+	var/obj/item/reagent_container/hypospray/autoinjector/skillless/marine/O = new(usr)
 	usr.put_in_active_hand(O)
 	injections--
 	playsound(src,'sound/machines/click.ogg', 15, 1)

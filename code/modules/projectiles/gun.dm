@@ -1335,11 +1335,12 @@ and you're good to go.
 	shots_fired++
 
 	if(dual_wield && !fired_by_akimbo)
-		switch(user?.client?.prefs?.dual_wield_pref)
-			if(DUAL_WIELD_FIRE)
-				INVOKE_ASYNC(akimbo, PROC_REF(Fire), target, user, params, 0, TRUE)
-			if(DUAL_WIELD_SWAP)
+		var/preference = user?.client?.prefs?.dual_wield_pref
+		if(!isnull(preference))
+			if(preference == DUAL_WIELD_SWAP && gun_firemode != GUN_FIREMODE_AUTOMATIC)
 				user.swap_hand()
+			if(preference != DUAL_WIELD_NONE) //DUAL_WIELD_FIRE, Akimbo firing. Forced if weapons are automatic because it doesn't make sense.
+				INVOKE_ASYNC(akimbo, PROC_REF(Fire), target, user, params, 0, TRUE)
 
 	//>>POST PROCESSING AND CLEANUP BEGIN HERE.<<
 	var/angle = floor(Get_Angle(user,target)) //Let's do a muzzle flash.

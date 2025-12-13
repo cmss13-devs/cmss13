@@ -64,3 +64,13 @@
 /obj/structure/bed/sofa/vert/white/top //top
 	name = "Couch edge"
 	icon_state = "bench_vet3"
+
+/obj/structure/bed/sofa/diner_e_w
+	name = "Diner Couch"
+	icon = 'icons/obj/structures/props/diner_e_w.dmi'
+	icon_state = "east_west"
+
+/obj/structure/bed/sofa/diner_n_s
+	name = "Diner Couch"
+	icon = 'icons/obj/structures/props/diner_n_s.dmi'
+	icon_state = "north_south"

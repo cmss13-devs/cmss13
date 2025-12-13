@@ -37,6 +37,9 @@ map desert_dam
 	minplayers 130
 endmap
 
+map ice_colony_v1
+endmap
+
 map ice_colony_v2
 	minplayers 130
 	voteweight 0

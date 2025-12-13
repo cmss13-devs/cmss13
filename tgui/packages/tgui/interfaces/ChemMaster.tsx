@@ -250,7 +250,7 @@ export const ChemMaster = () => {
   };
 
   return (
-    <Window width={550} height={600}>
+    <Window width={600} height={600}>
       <Window.Content
         className="ChemMaster"
         onClick={() => setDeletingPreset(null)}
@@ -1598,6 +1598,8 @@ const Reagents = (props: {
               <ReagentButton amount={1} reagent={reagent} type={type} />
               <ReagentButton amount={5} reagent={reagent} type={type} />
               <ReagentButton amount={10} reagent={reagent} type={type} />
+              <ReagentButton amount={15} reagent={reagent} type={type} />
+              <ReagentButton amount={20} reagent={reagent} type={type} />
               <ReagentButton amount={30} reagent={reagent} type={type} />
               <ReagentButton amount={60} reagent={reagent} type={type} />
               <ReagentButton amount={'All'} reagent={reagent} type={type} />

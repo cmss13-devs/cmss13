@@ -28,6 +28,7 @@ const changeTypes = {
   expansion: { icon: 'check-circle', color: 'green', desc: 'Addition' },
   rscadd: { icon: 'check-circle', color: 'green', desc: 'Addition' },
   rscdel: { icon: 'times-circle', color: 'red', desc: 'Removal' },
+  del: { icon: 'times-circle', color: 'red', desc: 'Removal' },
   imageadd: { icon: 'tg-image-plus', color: 'green', desc: 'Sprite add' },
   imagedel: { icon: 'tg-image-minus', color: 'red', desc: 'Sprite del' },
   imagetweak: { icon: 'wrench', color: 'green', desc: 'Sprite tweak' },

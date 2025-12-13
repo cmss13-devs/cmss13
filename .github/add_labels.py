@@ -13,7 +13,7 @@ changelogToPrefix = {
     'fix': ["Fix", ["fixed a few things"]],
     'imageadd': ["Sprites", ["added some icons and images"]],
     'imagedel': ["Sprites", ["deleted some icons and images"]],
-    'imagetweak': ["Sprites", ["tweaks some icons and images"]],
+    'imagetweak': ["Sprites", ["tweaked some icons and images"]],
     'mapadd': ["Mapping", ["added a new map or section to a map"]],
     'maptweak': ["Mapping", ["tweaked a map"]],
     'qol': ["Quality of Life", ["made something easier to use"]],

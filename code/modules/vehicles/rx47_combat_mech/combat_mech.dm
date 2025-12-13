@@ -3,7 +3,7 @@
 /obj/vehicle/rx47_mech
 	name = "\improper RX47 Combat Mechsuit"
 	icon = 'icons/obj/vehicles/wymech.dmi'
-	desc = "A RX47 Combat Mechsuit, equipped with a 20mm Chaingun and support Scattergun. It has a flamethrower attached to the scattergun unit."
+	desc = "An RX47 Combat Mechsuit."
 	icon_state = "wymech"
 	layer = MOB_LAYER
 	anchored = TRUE
@@ -21,46 +21,55 @@
 	var/mouse_pointer = 'icons/effects/mouse_pointer/mecha_mouse.dmi'
 	var/wreckage = /obj/structure/combat_mech_wreckage
 	var/obj/item/weapon/gun/mech/gun_primary
-	var/gun_primary_path = /obj/item/weapon/gun/mech/chaingun
+	var/gun_primary_path
 	var/obj/item/weapon/gun/mech/gun_secondary
-	var/gun_secondary_path = /obj/item/weapon/gun/mech/scattergun
+	var/gun_secondary_path
+
+	var/upgrading = FALSE
 
 	var/helmet_closed = FALSE
-	var/has_cannon = FALSE
-	var/has_scattergun = TRUE
 	var/has_tow_launcher = FALSE
-	var/has_secondary_chain = FALSE
 	var/markings_color
 	var/markings_specialty
 
 	var/played_crit_alert = FALSE
 	var/played_damage_alert = FALSE
 
+/obj/vehicle/rx47_mech/chaingun
+	gun_primary_path = /obj/item/weapon/gun/mech/chaingun
+	gun_secondary_path = /obj/item/weapon/gun/mech/scattergun
+
 /obj/vehicle/rx47_mech/siegebreaker
 	name = "\improper RX47-SB Combat Mechsuit"
-	desc = "A RX47-SB 'Siegebreaker' Combat Mechsuit, equipped with a 50mm IFF-locked explosive cannon and support Cupola Smartgun. It has a flamethrower attached to the cupola unit."
-	has_cannon = TRUE
-	has_scattergun = FALSE
-	gun_primary_path = /obj/item/weapon/gun/mech/cannon
+	desc = "An RX47-SB 'Siegebreaker' Combat Mechsuit."
+	gun_primary_path = /obj/item/weapon/gun/mech/siegebreaker
 	gun_secondary_path = /obj/item/weapon/gun/mech/cupola
 
 /obj/vehicle/rx47_mech/exterminator
 	name = "\improper RX47-EX Combat Mechsuit"
-	desc = "A RX47-EX 'Exterminator' Combat Mechsuit, equipped with a 20mm Chaingun and 50mm IFF-locked explosive cannon"
-	has_cannon = TRUE
-	has_scattergun = FALSE
-	has_secondary_chain = TRUE
-	gun_secondary_path = /obj/item/weapon/gun/mech/cannon
+	desc = "An RX47-EX 'Exterminator' Combat Mechsuit."
+	gun_primary_path = /obj/item/weapon/gun/mech/siegebreaker
+	gun_secondary_path = /obj/item/weapon/gun/mech/chaingun
+
+/obj/vehicle/rx47_mech/recon
+	name = "\improper RX47-RC Combat Mechsuit"
+	desc = "An RX47-RC 'Recon' Combat Mechsuit."
+	gun_primary_path = /obj/item/weapon/gun/mech/cupola
+	gun_secondary_path = /obj/item/weapon/gun/mech/scattergun
 
 //--------------------GENERAL PROCS-----------------
 
 /obj/vehicle/rx47_mech/Initialize()
 	cell = new /obj/item/cell/apc
 
-	gun_primary = new gun_primary_path(src)
-	gun_primary.linked_mech = src
-	gun_secondary = new gun_secondary_path(src)
-	gun_secondary.linked_mech = src
+	if(gun_primary_path)
+		gun_primary = new gun_primary_path(src)
+		gun_primary.linked_mech = src
+		gun_primary.never_linked = FALSE
+	if(gun_secondary_path)
+		gun_secondary = new gun_secondary_path(src)
+		gun_secondary.linked_mech = src
+		gun_secondary.never_linked = FALSE
 
 	rebuild_icon()
 	. = ..()
@@ -79,17 +88,15 @@
 	overlays += image(icon_state = "wymech_arms", layer = MECH_LAYER)
 
 
-	if(has_scattergun)
-		overlays += image(icon_state = "weapon_scatter", layer = MECH_LAYER)
-	else if(has_secondary_chain)
-		overlays += image(icon_state = "weapon_chaingun_left", layer = MECH_LAYER)
-	else
-		overlays += image(icon_state = "weapon_left", layer = MECH_LAYER)
+	if(gun_primary)
+		overlays += image(icon_state = "weapon_[gun_primary.arm_icon]_left", layer = MECH_LAYER)
+	//else
+	//	overlays += image(icon_state = "weapon_chaingun_left", layer = MECH_LAYER)
 
-	if(has_cannon)
-		overlays += image(icon_state = "weapon_cannon", layer = MECH_LAYER)
-	else
-		overlays += image(icon_state = "weapon_chaingun_right", layer = MECH_LAYER)
+	if(gun_secondary)
+		overlays += image(icon_state = "weapon_[gun_secondary.arm_icon]_right", layer = MECH_LAYER)
+	//else
+	//	overlays += image(icon_state = "weapon_chaingun_right", layer = MECH_LAYER)
 
 	if(has_tow_launcher)
 		overlays += image(icon_state = "weapon_tow", layer = MECH_LAYER)
@@ -112,8 +119,10 @@
 	return ..()
 
 /obj/vehicle/rx47_mech/unbuckle()
-	gun_primary.flags_gun_features |= GUN_TRIGGER_SAFETY
-	gun_secondary.flags_gun_features |= GUN_TRIGGER_SAFETY
+	if(gun_primary)
+		gun_primary.flags_gun_features |= GUN_TRIGGER_SAFETY
+	if(gun_secondary)
+		gun_secondary.flags_gun_features |= GUN_TRIGGER_SAFETY
 	clean_driver(buckled_mob)
 	. = ..()
 
@@ -245,10 +254,14 @@
 			playsound(loc, 'sound/mecha/mechmove03.ogg', 25)
 
 /obj/vehicle/rx47_mech/buckle_mob(mob/M, mob/user)
-	if(M != user)
+	if((M != user) || (!ishuman(M)))
 		return
-	if(!ishuman(M))
-		return
+	if(upgrading)
+		to_chat(user, SPAN_WARNING("You cannot enter the RX47 while it is being upgraded!"))
+		return FALSE
+	if(!gun_primary || !gun_secondary)
+		to_chat(user, SPAN_WARNING("You cannot enter the RX47 while it is missing equipment!"))
+		return FALSE
 	var/mob/living/carbon/human/H = M
 	if(!skillcheck(user, SKILL_POWERLOADER, SKILL_POWERLOADER_COMBAT))
 		to_chat(H, SPAN_WARNING("You don't seem to know how to operate \the [src]."))
@@ -266,8 +279,46 @@
 /obj/vehicle/rx47_mech/attackby(obj/item/W, mob/user)
 	. = ..()
 	var/obj/item/weapon/gun/mech/mech_gun = W
+	if(!istype(mech_gun))
+		return FALSE
 	if((mech_gun == gun_secondary) || mech_gun == gun_primary)
 		user.drop_held_item(mech_gun, TRUE)
+		return TRUE
+
+	if(buckled_mob)
+		to_chat(user, SPAN_WARNING("The RX47 cannot be altered while in operation."))
+		return FALSE
+	if(upgrading)
+		to_chat(user, SPAN_WARNING("The RX47 is in the process of being upgraded and cannot be altered further."))
+		return FALSE
+	if(!gun_primary || !gun_secondary)
+		var/attach = tgui_alert(user, "Do you wish to attach this gun to the RX47?", "Attach Weapon", list("Yes","No"))
+		if(attach == "Yes")
+			upgrading = TRUE
+
+			user.visible_message(SPAN_NOTICE("[user] starts to attach [mech_gun] to [src]."),SPAN_NOTICE("You start to attach [mech_gun] to [src]."))
+			if(!do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+				user.visible_message(SPAN_NOTICE("[user] fails to attach [mech_gun] to [src]."),SPAN_NOTICE("You fail to attach [mech_gun] to [src]."))
+				upgrading = FALSE
+				return FALSE
+
+			if(!gun_primary)
+				gun_primary = mech_gun
+			else if(!gun_secondary)
+				gun_secondary = mech_gun
+			else
+				user.visible_message(SPAN_NOTICE("[user] fails to attach [mech_gun] to [src]."),SPAN_NOTICE("You fail to attach [mech_gun] to [src]."))
+				upgrading = FALSE
+				return FALSE
+
+			mech_gun.linked_mech = src
+			mech_gun.never_linked = FALSE
+			user.drop_held_item(mech_gun, TRUE)
+			user.visible_message(SPAN_NOTICE("[user] attaches [mech_gun] to [src]."),SPAN_NOTICE("You attach [mech_gun] to [src]."))
+			upgrading = FALSE
+			rebuild_icon()
+		return
+
 
 /obj/vehicle/rx47_mech/afterbuckle(mob/new_buckled_mob)
 	. = ..()

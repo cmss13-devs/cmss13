@@ -39,8 +39,6 @@ balance: rebalanced something
 code: changed some code
 config: changed some config setting
 del: Removed old things
-expansion: adds significantly more content to a game mechanic
-experiment: adds something new and maybe controversial
 fix: fixed a few things
 imageadd: added some icons and images
 imagedel: deleted some icons and images
@@ -53,9 +51,8 @@ server: something server ops should know
 soundadd: added a new sound thingy
 sounddel: removed an old sound thingy
 soundtweak: tweaked a sound thingy
-spellcheck: fixed a few typos or grammatical errors
+spellcheck: fixed a few typos
 ui: changed something relating to user interfaces
-wip: this isn't finished or hasn't been tested yet
 /:cl:
 
 <!-- Both :cl:'s are required for the changelog to work! -->

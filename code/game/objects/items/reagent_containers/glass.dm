@@ -556,41 +556,35 @@
 	. = ..()
 
 /obj/item/reagent_container/glass/canister/ammonia
-	name = "ammonia canister"
-	name = "ammonia canister"
+	name = "Ammonia canister"
 	desc = "A canister containing pressurized ammonia. Can be used to refill storage tanks."
 	icon_state = "canister_ammonia"
 	item_state = "canister_ammonia"
 	reagent = "ammonia"
 
 /obj/item/reagent_container/glass/canister/methane
-	name = "methane canister"
-	name = "methane canister"
+	name = "Methane canister"
 	desc = "A canister containing pressurized methane. Can be used to refill storage tanks."
 	icon_state = "canister_methane"
 	item_state = "canister_methane"
 	reagent = "methane"
 
 /obj/item/reagent_container/glass/canister/pacid
-	name = "polytrinic acid canister"
-	name = "polytrinic acid canister"
+	name = "Polytrinic acid canister"
 	desc = "A canister containing pressurized polytrinic acid. Can be used to refill storage tanks."
 	icon_state = "canister_pacid"
 	item_state = "canister_pacid"
 	reagent = "pacid"
 
 /obj/item/reagent_container/glass/canister/oxygen
-	name = "oxygen canister"
-	name = "oxygen canister"
+	name = "Oxygen canister"
 	desc = "A canister containing pressurized oxygen. Can be used to refill storage tanks."
 	icon_state = "canister_oxygen"
 	item_state = "canister_oxygen"
 	reagent = "oxygen"
 
 /obj/item/reagent_container/glass/pressurized_canister // See the Pressurized Reagent Canister Pouch
-	name = "pressurized canister"
-	desc = "A pressurized container. The inner part of a pressurized reagent canister pouch. Only compatible with its pouch, machinery or a storage tank."
-	name = "pressurized canister"
+	name = "Pressurized canister"
 	desc = "A pressurized container. The inner part of a pressurized reagent canister pouch. Only compatible with its pouch, machinery or a storage tank."
 	icon = 'icons/obj/items/tank.dmi'
 	icon_state = "pressurized_reagent_container"

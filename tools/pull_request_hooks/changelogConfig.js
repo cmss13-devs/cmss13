@@ -52,7 +52,13 @@ export const CHANGELOG_ENTRIES = [
 			placeholders: ["removed an old sound thingy"],
 		},
 	],
-
+	
+	[
+		["soundtweak"],
+		{
+			placeholders: ["tweaked an old sound thingy"],
+		},
+	],
 	[
 		["imageadd"],
 		{
@@ -67,6 +73,13 @@ export const CHANGELOG_ENTRIES = [
 		},
 	],
 
+[
+		["imagetweak"],
+		{
+			placeholders: ["tweaked some icons and images"],
+		},
+	],
+	
 	[
 		["mapadd"],
 		{

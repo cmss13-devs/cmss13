@@ -15,10 +15,12 @@ a img {border:none;}
 .tweak {background-image:url(wrench-screwdriver.png)}
 .soundadd {background-image:url(music-plus.png)}
 .sounddel {background-image:url(music-minus.png)}
+.soundtweak {background-image:url(wrench.png)}
 .rscdel {background-image:url(cross-circle.png)}
 .rscadd {background-image:url(tick-circle.png)}
 .imageadd {background-image:url(image-plus.png)}
 .imagedel {background-image:url(image-minus.png)}
+.imagetweak {background-image:url(wrench.png)}
 .spellcheck {background-image:url(spell-check.png)}
 .experiment {background-image:url(burn-exclamation.png)}
 .tgs {background-image:url(tg-notif.png)}

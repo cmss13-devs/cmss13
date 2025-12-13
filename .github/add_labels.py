@@ -9,7 +9,6 @@ changelogToPrefix = {
     'code': ["Code Improvement", ["changed some code"]],
     'config': ["Config", ["changed some config setting"]],
     'del': ["Removal", ["Removed old things"]],
-    'experiment': ["Feature", ["adds a novelty feature that may be controversial"]],
     'fix': ["Fix", ["fixed a few things"]],
     'imageadd': ["Sprites", ["added some icons and images"]],
     'imagedel': ["Sprites", ["deleted some icons and images"]],

@@ -1,31 +1,31 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/s_admin)
 "ab" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/plating/platingdmg1,
 /area/shiva/interior/colony/s_admin)
 "ac" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/junkyard/cp_bar)
 "ad" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "ae" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/s_admin)
 "af" = (
@@ -59,54 +59,54 @@
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/shiva/interior/colony/clf_shuttle)
 "ak" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/s_admin)
 "al" = (
 /obj/item/ammo_magazine/smg/fp9000,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/s_admin)
 "am" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "an" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/s_admin)
 "ao" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/s_admin)
 "ap" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/shiva/multi_tiles/southeast,
 /area/shiva/interior/colony/s_admin)
 "aq" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/shiva/multi_tiles/southeast,
 /area/shiva/interior/colony/s_admin)
 "ar" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/s_admin)
 "as" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/plating/platingdmg1,
 /area/shiva/interior/colony/s_admin)
 "at" = (
@@ -444,7 +444,7 @@
 /turf/open/floor/corsat/cargo,
 /area/shiva/interior/colony/clf_shuttle)
 "kN" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/shiva/multi_tiles/southeast,
 /area/shiva/interior/colony/s_admin)
 "kP" = (
@@ -493,9 +493,9 @@
 /turf/open/floor/shiva/redfull/west,
 /area/shiva/interior/colony/s_admin)
 "nc" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/s_admin)
 "ne" = (
@@ -571,7 +571,7 @@
 	icon_state = "gib6"
 	},
 /obj/effect/decal/cleanable/blood/drip,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "pt" = (
@@ -966,10 +966,10 @@
 	dir = 4;
 	pixel_x = 24
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "Ag" = (
@@ -1524,9 +1524,9 @@
 /turf/open/floor/shiva/multi_tiles/west,
 /area/shiva/interior/colony/botany)
 "Mf" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/plating/platingdmg3,
 /area/shiva/interior/colony/s_admin)
 "Ml" = (
@@ -1631,8 +1631,8 @@
 "Qb" = (
 /obj/structure/machinery/light/double,
 /obj/item/weapon/gun/pistol/mod88,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/s_admin)
 "Qe" = (
@@ -1793,8 +1793,8 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/garage)
 "UW" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/platingdmg3,
 /area/shiva/interior/colony/s_admin)
 "Vc" = (

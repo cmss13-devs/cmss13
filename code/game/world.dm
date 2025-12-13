@@ -225,8 +225,9 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 	if(reason == 1 || reason == 2) // host/topic
 		return
 
-	Master.Shutdown()
 	send_reboot_sound()
+	sleep(50) //give sounds time to play
+	Master.Shutdown()
 	var/server = CONFIG_GET(string/server)
 	for(var/thing in GLOB.clients)
 		if(!thing)

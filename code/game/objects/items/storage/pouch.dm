@@ -1364,23 +1364,39 @@
 	set src in usr
 
 	for(var/obj/item/reagent_container/hypospray/autoinjector/empty/autoinjector as anything in contents)
-		if(autoinjector.reagents.total_volume <= 0)
-			to_chat(usr, SPAN_NOTICE("[autoinjector] is already empty."))
-			return
+		if(!inner) //no tank in pouch, so it acts as flushing an autoinjector in your hand
+			if(autoinjector.reagents.total_volume <= 0)
+				to_chat(usr, SPAN_NOTICE("[autoinjector] is already empty."))
+				return
 
-		to_chat(usr, SPAN_NOTICE("You hold down the emergency flush button. Wait 1 second..."))
-		if(!do_after(usr, 1 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-			to_chat(usr, SPAN_WARNING("You get distracted and stop trying to empty [autoinjector]."))
-			return
-		var/amount = autoinjector.reagents.total_volume inner.reagents.total_volume
-		if(amount > reagents.maximum_volume)
-			to_chat(usr,SPAN_WARNING("You dump whatever of [autoinjector]'s contents you can into [inner] and flush the rest.")),
+			to_chat(usr, SPAN_NOTICE("You hold down the emergency flush button. Wait 1 second..."))
+
+			if(!do_after(usr, 1 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+				to_chat(usr, SPAN_WARNING("You get distracted and stop trying to flush [autoinjector]."))
+				return
+
+			to_chat(usr, SPAN_NOTICE("You flush [autoinjector] without a canister to dump its contents in."))
+			autoinjector.reagents.clear_reagents()
+			autoinjector.uses_left = 0
+			update_icon()
 		else
-			to_chat(usr,SPAN_WARNING("You flush [autoinjector]'s contents into [inner].")),
+			if(autoinjector.reagents.total_volume <= 0)
+				to_chat(usr, SPAN_NOTICE("[autoinjector] is already empty."))
+				return
 
-		autoinjector.reagents.trans_to(inner, autoinjector.reagents.total_volume) //dump the reagents in the autoinjector back in the canister, as a treat. They don't overflow the canister.
-		autoinjector.uses_left = 0
-		update_icon()
+			to_chat(usr, SPAN_NOTICE("You hold down the emergency flush button. Wait 1 second..."))
+			if(!do_after(usr, 1 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+				to_chat(usr, SPAN_WARNING("You get distracted and stop trying to flush [autoinjector]."))
+				return
+			var/amount = autoinjector.reagents.total_volume + inner.reagents.total_volume
+			if(amount > inner.reagents.maximum_volume)
+				to_chat(usr,SPAN_WARNING("You dump whatever of [autoinjector]'s contents you can into [inner] and flush the rest."))
+			else
+				to_chat(usr,SPAN_WARNING("You flush [autoinjector]'s contents into [inner]."))
+
+			autoinjector.reagents.trans_to(inner, autoinjector.reagents.total_volume) //dump the reagents in the autoinjector back in the canister, as a treat. They don't overflow the canister.
+			autoinjector.uses_left = 0
+			update_icon()
 
 
 /obj/item/storage/pouch/document

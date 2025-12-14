@@ -37,7 +37,7 @@
 			return
 
 		if(node.hivenumber != xeno.hivenumber)
-			to_chat(xeno, SPAN_WARNING("The other hive's node resists your attempt to uproot it.")
+			to_chat(xeno, SPAN_WARNING("The other hive's node resists your attempt to uproot it."))
 			return
 
 		if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC, node, INTERRUPT_ALL))

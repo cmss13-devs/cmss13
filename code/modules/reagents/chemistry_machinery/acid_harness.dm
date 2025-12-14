@@ -43,13 +43,17 @@
 		/obj/item/reagent_container/glass/beaker,
 		/obj/item/cell,
 	)
-
+	cant_hold = list(
+		/obj/item/reagent_container/glass/beaker/bluespace,
+		/obj/item/reagent_container/glass/beaker/large,
+		/obj/item/reagent_container/glass/beaker/catalyst,
+	)
 /obj/item/clothing/accessory/storage/black_vest/acid_harness
 	name = "A.C.I.D. Harness"
 	desc = "Automated Chemical Integrated Delivery Harness, or really just a franken webbing made by a researcher with poor tailoring skills. Can be configured with a multitool."
 	icon_state = "vest_acid_black"
 	hold = /obj/item/storage/internal/accessory/black_vest/acid_harness
-	var/obj/item/reagent_container/glass/beaker
+	var/obj/item/reagent_container/glass/beaker/beaker
 	var/obj/item/cell/battery
 	var/obj/structure/machinery/acid_core/acid_core
 
@@ -159,42 +163,54 @@
 	. = ..()
 	if(.)
 		return
+	var/mob/living/carbon/human/human_wearer
+	if(ishuman(loc))
+		human_wearer = loc //In hand
+	else if(ishuman(loc.loc))
+		human_wearer = loc.loc //On uniform I hope.
+	if(human_wearer)
+		var/obj/item/right_hand = human_wearer.get_active_hand()
+		var/obj/item/left_hand = human_wearer.get_inactive_hand()
+		if((left_hand && HAS_TRAIT(left_hand, TRAIT_TOOL_MULTITOOL)) || (right_hand && HAS_TRAIT(right_hand, TRAIT_TOOL_MULTITOOL)))
+			switch(action)
+				if("set_inject_amount")
+					var/inject = floor(text2num(params["value"]))
+					if(inject < 1)
+						inject = 1
+					acid_core.inject_amount = inject
+					. = TRUE
+				if("set_inject_damage_threshold")
+					acid_core.inject_damage_threshold = floor(text2num(params["value"]))
+					. = TRUE
+				if("inject_logic")
+					if(acid_core.inject_logic == ACID_LOGIC_OR)
+						acid_core.inject_logic = ACID_LOGIC_AND
+					else
+						acid_core.inject_logic = ACID_LOGIC_OR
+					. = TRUE
+				if("configurate")
+					var/flag_value = params["config_value"]
+					switch(params["config_type"])
+						if("Damage")
+							if(acid_core.inject_damage_types & flag_value)
+								acid_core.inject_damage_types &= ~flag_value
+							else
+								acid_core.inject_damage_types |= flag_value
+						if("Conditions")
+							if(acid_core.inject_conditions & flag_value)
+								acid_core.inject_conditions &= ~flag_value
+							else
+								acid_core.inject_conditions |= flag_value
+						if("Vitals")
+							if(acid_core.inject_vitals & flag_value)
+								acid_core.inject_vitals &= ~flag_value
+							else
+								acid_core.inject_vitals |= flag_value
+					. = TRUE
+		else
+			to_chat(human_wearer, SPAN_WARNING("You need a multi-tool to modify these configurations."))
 
-	switch(action)
-		if("set_inject_amount")
-			var/inject = floor(text2num(params["value"]))
-			if(inject < 1)
-				inject = 1
-			acid_core.inject_amount = inject
-			. = TRUE
-		if("set_inject_damage_threshold")
-			acid_core.inject_damage_threshold = floor(text2num(params["value"]))
-			. = TRUE
-		if("inject_logic")
-			if(acid_core.inject_logic == ACID_LOGIC_OR)
-				acid_core.inject_logic = ACID_LOGIC_AND
-			else
-				acid_core.inject_logic = ACID_LOGIC_OR
-			. = TRUE
-		if("configurate")
-			var/flag_value = params["config_value"]
-			switch(params["config_type"])
-				if("Damage")
-					if(acid_core.inject_damage_types & flag_value)
-						acid_core.inject_damage_types &= ~flag_value
-					else
-						acid_core.inject_damage_types |= flag_value
-				if("Conditions")
-					if(acid_core.inject_conditions & flag_value)
-						acid_core.inject_conditions &= ~flag_value
-					else
-						acid_core.inject_conditions |= flag_value
-				if("Vitals")
-					if(acid_core.inject_vitals & flag_value)
-						acid_core.inject_vitals &= ~flag_value
-					else
-						acid_core.inject_vitals |= flag_value
-			. = TRUE
+#define DEAFUALT_SCAN_INTERVAL 10 SECONDS
 
 /obj/structure/machinery/acid_core
 	name = "A.C.I.D. CORE"
@@ -217,7 +233,9 @@
 	//Current status
 	var/boot_status = FALSE
 	var/battery_level = FALSE
-	var/rechecking = FALSE
+
+	var/scan_interval = DEAFUALT_SCAN_INTERVAL
+	var/last_scan_time
 
 /obj/structure/machinery/acid_core/Initialize(mapload, ...)
 	..()
@@ -300,7 +318,9 @@
 	if(boot_status < 6)
 		addtimer(CALLBACK(src, PROC_REF(boot_sequence), boot_status), 2 SECONDS)
 		return
-	scan()
+	if(world.time > last_scan_time + scan_interval)
+		last_scan_time = world.time
+		scan()
 
 /obj/structure/machinery/acid_core/proc/check_user()
 	if(acid_harness.loc && acid_harness.loc.loc && ishuman(acid_harness.loc.loc))
@@ -327,9 +347,6 @@
 	if(charge + 20 < battery_level || charge > battery_level)
 		battery_level = charge
 		voice("Energy is at, [charge]%.")
-
-/obj/structure/machinery/acid_core/proc/recheck_conditions()
-	rechecking = TRUE
 
 /obj/structure/machinery/acid_core/proc/scan()
 	var/damage_scan = FALSE
@@ -452,11 +469,6 @@
 	//Compare
 	if(vitals_scan != last_vitals_scan)
 		voice(vitals_scan, TRUE)
-	if(rechecking)
-		last_damage_scan = FALSE
-		last_condition_scan = FALSE
-		last_vitals_scan = FALSE
-		rechecking = FALSE
 	compare_scans(damage_scan, condition_scan)
 	last_damage_scan = damage_scan
 	last_condition_scan = condition_scan
@@ -476,11 +488,11 @@
 	for(var/datum/reagent/R in acid_harness.beaker.reagents.reagent_list)
 		if(user.reagents.get_reagent_amount(R.id) + inject_amount > R.overdose) //Don't overdose our boi
 			voice("Notice: Injection trigger cancelled to avoid overdose.")
-			addtimer(CALLBACK(src, PROC_REF(recheck_conditions)), 20 SECONDS * inject_amount)
+			scan_interval += (DEAFUALT_SCAN_INTERVAL*0.1) * inject_amount //Add 10% of scan time per reagent unit ontop of normal scan time for a bigger period inbetween
 			return
+	scan_interval = DEAFUALT_SCAN_INTERVAL
 	if(acid_harness.beaker.reagents.trans_to(user, inject_amount))
 		playsound_client(user.client, 'sound/items/hypospray.ogg', null, ITEM_EQUIP_VOLUME)
 		voice("Medicine administered. [acid_harness.beaker.reagents.total_volume] units remaining.")
-		addtimer(CALLBACK(src, PROC_REF(recheck_conditions)), 20 SECONDS * inject_amount)
 	if(!acid_harness.beaker.reagents.total_volume)
 		voice("Warning: Medicinal container is empty, resupply required.")

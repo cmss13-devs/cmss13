@@ -262,6 +262,10 @@
 		return FALSE
 
 	var/mob/sourcemob = source
+	var/obj/item/weapon/twohanded/offhand/inactive_hand = user.get_inactive_hand()
+	if(inactive_hand) // there might be a better way of doing this, but i dont know
+		inactive_hand.unwield(user)
+
 	sourcemob.equip_to_slot_if_possible(equipping, key)
 
 /datum/strippable_item/mob_item_slot/get_obscuring(atom/source)

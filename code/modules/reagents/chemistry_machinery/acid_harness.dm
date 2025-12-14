@@ -210,7 +210,7 @@
 		else
 			to_chat(human_wearer, SPAN_WARNING("You need a multi-tool to modify these configurations."))
 
-#define DEAFUALT_SCAN_INTERVAL 10 SECONDS
+#define DEAFUALT_SCAN_INTERVAL 20 SECONDS
 
 /obj/structure/machinery/acid_core
 	name = "A.C.I.D. CORE"
@@ -233,6 +233,7 @@
 	//Current status
 	var/boot_status = FALSE
 	var/battery_level = FALSE
+	var/rechecking = FALSE
 
 	var/scan_interval = DEAFUALT_SCAN_INTERVAL
 	var/last_scan_time
@@ -345,7 +346,7 @@
 	battery.charge = max(battery.charge - 10, 0)
 	var/charge = battery.charge / battery.maxcharge * 100
 	if(charge + 20 < battery_level || charge > battery_level)
-		battery_level = charge
+		battery_level = round(charge, 1.1)
 		voice("Energy is at, [charge]%.")
 
 /obj/structure/machinery/acid_core/proc/scan()
@@ -469,6 +470,11 @@
 	//Compare
 	if(vitals_scan != last_vitals_scan)
 		voice(vitals_scan, TRUE)
+	if(rechecking)
+		last_damage_scan = FALSE
+		last_condition_scan = FALSE
+		last_vitals_scan = FALSE
+		rechecking = FALSE
 	compare_scans(damage_scan, condition_scan)
 	last_damage_scan = damage_scan
 	last_condition_scan = condition_scan
@@ -488,11 +494,14 @@
 	for(var/datum/reagent/R in acid_harness.beaker.reagents.reagent_list)
 		if(user.reagents.get_reagent_amount(R.id) + inject_amount > R.overdose) //Don't overdose our boi
 			voice("Notice: Injection trigger cancelled to avoid overdose.")
-			scan_interval += (DEAFUALT_SCAN_INTERVAL*0.1) * inject_amount //Add 10% of scan time per reagent unit ontop of normal scan time for a bigger period inbetween
+			scan_interval += (DEAFUALT_SCAN_INTERVAL*0.15) * inject_amount //Add 15% of scan time per reagent unit ontop of normal scan time for a bigger period inbetween
+			rechecking = TRUE
 			return
 	scan_interval = DEAFUALT_SCAN_INTERVAL
 	if(acid_harness.beaker.reagents.trans_to(user, inject_amount))
 		playsound_client(user.client, 'sound/items/hypospray.ogg', null, ITEM_EQUIP_VOLUME)
 		voice("Medicine administered. [acid_harness.beaker.reagents.total_volume] units remaining.")
+		scan_interval += (DEAFUALT_SCAN_INTERVAL*0.05) * inject_amount
+		rechecking = TRUE
 	if(!acid_harness.beaker.reagents.total_volume)
 		voice("Warning: Medicinal container is empty, resupply required.")

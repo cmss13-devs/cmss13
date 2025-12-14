@@ -494,7 +494,7 @@
 	for(var/datum/reagent/R in acid_harness.beaker.reagents.reagent_list)
 		if(user.reagents.get_reagent_amount(R.id) + inject_amount > R.overdose) //Don't overdose our boi
 			voice("Notice: Injection trigger cancelled to avoid overdose.")
-			scan_interval += (DEAFUALT_SCAN_INTERVAL*0.15) * inject_amount //Add 15% of scan time per reagent unit ontop of normal scan time for a bigger period inbetween
+			scan_interval += (DEAFUALT_SCAN_INTERVAL*0.1) * inject_amount //Add 10% of scan time per reagent unit ontop of normal scan time for a bigger period inbetween
 			rechecking = TRUE
 			return
 	scan_interval = DEAFUALT_SCAN_INTERVAL

@@ -58,7 +58,7 @@
 		VEHICLE_DRIVER = null,
 	)
 
-	vehicle_flags = VEHICLE_CLASS_LIGHT
+	vehicle_flags = VEHICLE_CLASS_WEAK
 
 	mob_size_required_to_hit = MOB_SIZE_XENO
 

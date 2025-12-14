@@ -542,7 +542,6 @@
 		list("Roll of Gauze", floor(scale * 10), /obj/item/stack/medical/bruise_pack, VENDOR_ITEM_REGULAR),
 		list("Splints", floor(scale * 10), /obj/item/stack/medical/splint, VENDOR_ITEM_REGULAR),
 
-
 		list("AUTOINJECTORS", -1, null, null),
 		list("Autoinjector (Bicaridine)", floor(scale * 6), /obj/item/reagent_container/hypospray/autoinjector/bicaridine, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Dexalin+)", floor(scale * 4), /obj/item/reagent_container/hypospray/autoinjector/dexalinp, VENDOR_ITEM_REGULAR),
@@ -559,8 +558,6 @@
 		list("Reagent Pouch Autoinjector (5u)", floor(scale * 3), /obj/item/reagent_container/hypospray/autoinjector/empty/medic/extrasmall, VENDOR_ITEM_REGULAR),
 		list("Reagent Pouch Autoinjector (10u)", floor(scale * 3), /obj/item/reagent_container/hypospray/autoinjector/empty/medic/small, VENDOR_ITEM_REGULAR),
 		list("Reagent Pouch Autoinjector (15u)", floor(scale * 3), /obj/item/reagent_container/hypospray/autoinjector/empty/medic, VENDOR_ITEM_REGULAR),
-		list("Reagent Pouch Autoinjector (20u)", floor(scale * 3), /obj/item/reagent_container/hypospray/autoinjector/empty/medic/medium, VENDOR_ITEM_REGULAR),
-		list("Reagent Pouch Autoinjector (30u)", floor(scale * 3), /obj/item/reagent_container/hypospray/autoinjector/empty/medic/large, VENDOR_ITEM_REGULAR),
 
 		list("LIQUID BOTTLES", -1, null, null),
 		list("Bottle (Bicaridine)", floor(scale * 4), /obj/item/reagent_container/glass/bottle/bicaridine, VENDOR_ITEM_REGULAR),

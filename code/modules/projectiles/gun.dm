@@ -975,21 +975,23 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 /obj/item/weapon/gun/proc/unload_chamber(mob/user)
 	if(!in_chamber)
 		return
-	var/found_handful
+
 	var/ammo_type = get_ammo_type_chambered(user)
-	for(var/obj/item/ammo_magazine/handful/H in user.loc)
-		if(H.default_ammo == ammo_type && H.caliber == caliber && H.current_rounds < H.max_rounds)
-			found_handful = TRUE
-			H.current_rounds++
-			H.update_icon()
+	var/obj/item/ammo_magazine/handful/new_handful = new()
+	new_handful.generate_handful(ammo_type, caliber, 8, 1, type)
+
+	for(var/obj/item/ammo_magazine/handful/hand in user.get_hands())
+		if(hand.default_ammo == new_handful.default_ammo && hand.current_rounds < hand.max_rounds) // fetching the caliber was somewhat redundant, and honestly seemed safer to just fetch default_ammo overall
+			hand.transfer_ammo(new_handful, user, 1)
+			qdel(new_handful)
+			new_handful = null
 			break
-	if(!found_handful)
-		var/obj/item/ammo_magazine/handful/new_handful = new()
+
+	if(new_handful)
 		if(user.client?.prefs?.toggle_prefs & TOGGLE_COCKING_TO_HAND)
 			user.put_in_hands(new_handful)
 		else
 			new_handful.forceMove(get_turf(src)) // just drop it
-		new_handful.generate_handful(ammo_type, caliber, 8, 1, type)
 
 	QDEL_NULL(in_chamber)
 
@@ -2175,7 +2177,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	return gun_user
 
 /obj/item/weapon/gun/proc/fire_into_air(mob/user)
-	if(!user || !isturf(user.loc) || !current_mag || !current_mag.current_rounds)
+	if(!user || !isturf(user.loc) || (!in_chamber && (!current_mag || !current_mag.current_rounds))) // this drove me insane to figure out that unload chamber wasnt the problem
 		return
 
 	var/turf/gun_turf = user.loc
@@ -2193,10 +2195,16 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	if(!do_after(user, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		return
 
-	if(!current_mag || !current_mag.current_rounds)
-		return
-
-	current_mag.current_rounds--
+	// this code block handles when the gun is actually 'fired'
+	if(flags_gun_features & GUN_INTERNAL_MAG)
+		if(!current_mag || !current_mag.current_rounds)
+			return
+		current_mag.current_rounds--
+	else
+		if(!in_chamber && !ready_in_chamber())
+			return
+		in_chamber = null
+		ready_in_chamber() // obviously want to load the next round if any
 
 	if(gun_area.ceiling <= CEILING_GLASS)
 		gun_turf.ceiling_debris()

@@ -17,11 +17,11 @@
 
 	interior_map = /datum/map_template/interior/humvee/humvee_medical
 
-	passengers_slots = 3 // slightly more passenger slots to make up for the lack of other options.
-	xenos_slots = 3
+	passengers_slots = 6
+	xenos_slots = 4
 
 	misc_multipliers = list(
-		"move" = 0.4, // slightly more speed to make up for the lack of other options.
+		"move" = 0.5, // slightly more speed to make up for the lack of other options.
 		"accuracy" = 1,
 		"cooldown" = 1
 	)

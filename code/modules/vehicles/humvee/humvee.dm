@@ -17,11 +17,11 @@
 
 	interior_map = /datum/map_template/interior/humvee
 
-	passengers_slots = 1 // 5 total. Reserved slots are added to passenger slots.
-	xenos_slots = 2
+	passengers_slots =  4
+	xenos_slots = 3
 
 	misc_multipliers = list(
-		"move" = 0.5, // fucking annoying how this is the only way to modify speed
+		"move" = 0.6, // fucking annoying how this is the only way to modify speed
 		"accuracy" = 1,
 		"cooldown" = 1
 	)

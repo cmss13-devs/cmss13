@@ -467,6 +467,24 @@
 	. = ..()
 	. += SPAN_NOTICE("It transfers [amount_per_transfer_from_this]u per injection and has a maximum of [volume/amount_per_transfer_from_this] injections.")
 
+/obj/item/reagent_container/hypospray/autoinjector/empty/verb/flush_autoinjector()
+	set category = "Weapons"
+	set name = "Flush Autoinjector"
+	set desc = "Forces the autoinjector to empty its reagents."
+	set src in usr
+	if(reagents.total_volume <= 0)
+		to_chat(usr, SPAN_NOTICE("[src] autoinjector is already empty."))
+		return
+	else
+		to_chat(usr, SPAN_NOTICE("You hold down the emergency flush button. Wait 1 second..."))
+		if(!do_after(usr, 1 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+			to_chat(usr, SPAN_WARNING("You get distracted and stop trying to empty [src]."))
+			return
+		to_chat(usr, SPAN_NOTICE("You flush [src]."))
+		reagents.clear_reagents()
+		uses_left = 0
+		update_icon()
+
 /obj/item/reagent_container/hypospray/autoinjector/empty/small
 	name = "custom autoinjector (15u)"
 	amount_per_transfer_from_this = 15

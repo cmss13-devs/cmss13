@@ -19,7 +19,7 @@
 			var/obj/item/alien_embryo/embryo = locate() in contents //Check if we have an embryo in us
 			if(embryo)
 				if(prob(25) && embryo.stage >= 2) //Embryo should only be noticed when you are above stage 2 (This is the standard in embryo.dm)
-					to_chat(src, SPAN_NOTICE("As your metabolism slows down, something inside you relaxes")) //Inform the marine the stasis makes it ineffective
+					to_chat(src, SPAN_NOTICE("As your metabolism slows down, something inside you relaxes.")) //Inform the marine the stasis makes it ineffective
 			break// otherwise, stop looping this handling regardless
 
 

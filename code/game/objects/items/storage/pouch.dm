@@ -1364,6 +1364,8 @@
 	set src in usr
 
 	for(var/obj/item/reagent_container/hypospray/autoinjector/empty/autoinjector as anything in contents)
+		if(!autoinjector)
+			to_chat(usr, SPAN_NOTICE("[src] does not have an autoinjector for you to flush."))
 		if(!inner) //no tank in pouch, so it acts as flushing an autoinjector in your hand
 			if(autoinjector.reagents.total_volume <= 0)
 				to_chat(usr, SPAN_NOTICE("[autoinjector] is already empty."))

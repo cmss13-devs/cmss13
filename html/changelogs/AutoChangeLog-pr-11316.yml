@@ -1,0 +1,4 @@
+author: "Detective-Google"
+delete-after: True
+changes:
+  - bugfix: "hostile hives can no longer replant each others' weed nodes."

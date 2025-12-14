@@ -11,7 +11,7 @@
 	wrenchable = TRUE
 	unslashable = FALSE
 	var/amount_per_transfer_from_this = 10
-	var/possible_transfer_amounts = list(5,10,15,20,25,30,40,50,60,80,100,120,150,200,240,300)
+	var/possible_transfer_amounts = list(5,10,15,20,30,40,60,120,240,500)
 	var/chemical = ""
 	var/dispensing = TRUE
 
@@ -508,7 +508,7 @@
 
 /obj/structure/reagent_dispensers/beerkeg
 	name = "beer keg"
-	desc = "A beer keg"
+	desc = "A beer keg."
 	icon = 'icons/obj/structures/kegs.dmi'
 	icon_state = "beertankTEMP"
 	amount_per_transfer_from_this = 10

@@ -105,7 +105,7 @@
 
 /mob/living/carbon/xenomorph/verb/reset_strain()
 	set name = "Reset Strain"
-	set desc = "Reset your strain"
+	set desc = "Reset your strain."
 	set category = "Alien"
 
 	// Firstly, make sure the xeno is actually able to take a strain.

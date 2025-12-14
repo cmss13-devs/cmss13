@@ -763,7 +763,7 @@ GLOBAL_DATUM(action_purple_power_up, /image)
  * numticks: If a value is given, denotes how often the timed action checks for interrupting actions. By default, there are 5 checks every delay/5 deciseconds.
  * Note: 'delay' should be divisible by numticks in order for the timing to work as intended. numticks should also be a whole number.
  */
-/proc/do_after(mob/user, delay, user_flags = INTERRUPT_ALL, show_busy_icon, atom/movable/target, target_flags = INTERRUPT_MOVED, show_target_icon, max_dist = 1, \
+/proc/do_after(mob/user, delay, user_flags = INTERRUPT_ALL, show_busy_icon, atom/movable/target, target_flags = INTERRUPT_MOVED, show_target_icon, max_dist = 1, status_effect = null, \
 		show_remaining_time = FALSE, numticks = DA_DEFAULT_NUM_TICKS) // These args should primarily be named args, since you only modify them in niche situations
 	if(!istype(user) || delay < 0)
 		return FALSE
@@ -801,6 +801,10 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 
 	if(user_flags & BEHAVIOR_IMMOBILE)
 		busy_user.status_flags |= IMMOBILE_ACTION
+
+	// if we wanna apply a status effect to a user
+	if(status_effect && busy_user)
+		busy_user.adjust_effect(delay, status_effect)
 
 	busy_user.action_busy++ // target is not tethered by action, the action is tethered by target though
 	busy_user.resisting = FALSE
@@ -949,6 +953,10 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 	if(target_is_mob)
 		T.resisting = FALSE
 	busy_user.status_flags &= ~IMMOBILE_ACTION
+
+	// remove the effect once we finish
+	if(status_effect && busy_user)
+		busy_user.adjust_effect(-delay, status_effect)
 
 	if (show_remaining_time)
 		return (. ? 0 : time_remaining/expected_total_time) // If action was not interrupted, return 0 for no time left, otherwise return ratio of time remaining

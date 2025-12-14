@@ -262,7 +262,7 @@ DEFINES in setup.dm, referenced here.
 
 	if(istype(attack_item, /obj/item/prop/helmetgarb/gunoil))
 		var/oil_verb = pick("lubes", "oils", "cleans", "tends to", "gently strokes")
-		if(do_after(user, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, user, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
+		if(do_after(user, 3 SECONDS, (INTERRUPT_ALL & (~INTERRUPT_MOVED)), BUSY_ICON_FRIENDLY, status_effect = SLOW))
 			user.visible_message("[user] [oil_verb] [src]. It shines like new.", "You oil up and immaculately clean [src]. It shines like new.")
 			src.clean_blood()
 		else
@@ -436,7 +436,7 @@ DEFINES in setup.dm, referenced here.
 	var/attach_delay = 1.5 SECONDS
 	if(istype(attachment, /obj/item/attachable/bayonet))
 		attach_delay = 0.3 SECONDS
-	if(do_after(user, attach_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, numticks = 2))
+	if(do_after(user, attach_delay, (INTERRUPT_ALL & (~INTERRUPT_MOVED)), BUSY_ICON_FRIENDLY, numticks = 2, status_effect = SLOW))
 		if(attachment && attachment.loc)
 			user.visible_message(SPAN_NOTICE("[user] attaches [attachment] to [src]."),
 			SPAN_NOTICE("You attach [attachment] to [src]."), null, 4)
@@ -723,7 +723,7 @@ DEFINES in setup.dm, referenced here.
 	var/detach_delay = 1.5 SECONDS
 	if(istype(attachment, /obj/item/attachable/bayonet))
 		detach_delay = 0.3 SECONDS
-	if(!do_after(usr, detach_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+	if(!do_after(usr, detach_delay, (INTERRUPT_ALL & (~INTERRUPT_MOVED)), BUSY_ICON_FRIENDLY, status_effect = SLOW))
 		return
 
 	if(!(attachment == attachments[attachment.slot]))

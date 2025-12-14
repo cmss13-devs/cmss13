@@ -112,6 +112,7 @@
 
 	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
 	co_briefing.info = replacetext(co_briefing.info, "%%USCMLOGO%%", asset.get_url_mappings()["logo_uscm.png"])
+	co_briefing.info = replacetext(co_briefing.info, "%%DARKBACKGROUND%%", asset.get_url_mappings()["background_dark2.jpg"])
 
 	var/obj/structure/machinery/faxmachine/receiver
 	for(var/target_machine_code as anything in GLOB.fax_network.all_faxcodes)

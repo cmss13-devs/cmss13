@@ -640,6 +640,11 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	path = /obj/item/device/camera
 	fluff_cost = 2
 
+/datum/gear/toy/camera/disposable
+	display_name = "Old Disposable Camera"
+	path = /obj/item/device/camera/oldcamera
+	fluff_cost = 3
+
 /datum/gear/toy/mags
 	fluff_cost = 1
 

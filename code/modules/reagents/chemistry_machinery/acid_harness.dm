@@ -210,7 +210,7 @@
 		else
 			to_chat(human_wearer, SPAN_WARNING("You need a multi-tool to modify these configurations."))
 
-#define DEAFUALT_SCAN_INTERVAL 20 SECONDS
+#define DEAFUALT_SCAN_INTERVAL 15 SECONDS
 
 /obj/structure/machinery/acid_core
 	name = "A.C.I.D. CORE"
@@ -494,13 +494,13 @@
 	for(var/datum/reagent/R in acid_harness.beaker.reagents.reagent_list)
 		if(user.reagents.get_reagent_amount(R.id) + inject_amount > R.overdose) //Don't overdose our boi
 			voice("Notice: Injection trigger cancelled to avoid overdose.")
-			scan_interval = DEAFUALT_SCAN_INTERVAL + ((DEAFUALT_SCAN_INTERVAL*0.1) * inject_amount) //Add 10% of scan time per reagent unit ontop of normal scan time for a bigger period inbetween
+			scan_interval = DEAFUALT_SCAN_INTERVAL + ((DEAFUALT_SCAN_INTERVAL*0.15) * inject_amount) //Add 15% of scan time per reagent unit ontop of normal scan time for a bigger period inbetween
 			rechecking = TRUE
 			return
 	if(acid_harness.beaker.reagents.trans_to(user, inject_amount))
 		playsound_client(user.client, 'sound/items/hypospray.ogg', null, ITEM_EQUIP_VOLUME)
 		voice("Medicine administered. [acid_harness.beaker.reagents.total_volume] units remaining.")
-		scan_interval = DEAFUALT_SCAN_INTERVAL + ((DEAFUALT_SCAN_INTERVAL*0.05) * inject_amount)
+		scan_interval = DEAFUALT_SCAN_INTERVAL + ((DEAFUALT_SCAN_INTERVAL*0.1) * inject_amount)
 		rechecking = TRUE
 	if(!acid_harness.beaker.reagents.total_volume)
 		voice("Warning: Medicinal container is empty, resupply required.")

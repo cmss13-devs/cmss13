@@ -1,5 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - balance: "Yautja masks now fall off at different rates if human or in crit."
-  - bugfix: "The 15% chance max for Yautja mask fall off is now functional."

@@ -1,5 +1,0 @@
-author: "Puckaboo2"
-delete-after: True
-changes:
-  - rscadd: "Adds 'soundtweak', and 'icontweak' in the changelog."
-  - code_imp: "Alphabetizes changelog flags."

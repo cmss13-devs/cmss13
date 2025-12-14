@@ -1,5 +1,0 @@
-author: "carlarctg"
-delete-after: True
-changes:
-  - rscadd: "Adds a verb for restoring your ghost to your base character, Restore Ghost Character, next to Re-Enter Corpse in the status panel."
-  - code_imp: "Split the ghostize appearance proc"

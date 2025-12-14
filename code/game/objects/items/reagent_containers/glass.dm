@@ -677,6 +677,24 @@
 
 
 
+
+/obj/item/reagent_container/glass/pressurized_canister/verb/flush_container()
+	set category = "Weapons"
+	set name = "Flush Container"
+	set desc = "Forces the container to empty its reagents."
+	set src in usr
+	if(reagents.total_volume <= 0)
+		to_chat(usr, SPAN_NOTICE("[src] is empty, already."))
+		return
+
+	to_chat(usr, SPAN_NOTICE("You hold down the emergency flush button. Wait 3 seconds..."))
+	if(!do_after(usr, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+		to_chat(usr, SPAN_WARNING("You get distracted and stop trying to empty [src]."))
+		return
+	to_chat(usr, SPAN_NOTICE("You flush [src]."))
+	reagents.clear_reagents()
+	update_icon()
+
 /obj/item/reagent_container/glass/bucket
 	name = "bucket"
 	desc = "It's a bucket. Holds 120 units."

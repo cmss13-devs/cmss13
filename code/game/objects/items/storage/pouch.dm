@@ -1323,19 +1323,23 @@
 
 /obj/item/storage/pouch/pressurized_reagent_canister/verb/flush_container()
 	set category = "Weapons"
-	set name = "Flush Container"
-	set desc = "Forces the container to empty its reagents."
+	set name = "Flush Canister"
+	set desc = "Forces the Pressurized Reagent Canister to empty its reagents."
 	set src in usr
 	if(!inner)
-		to_chat(usr, SPAN_WARNING("There is no container inside this pouch!"))
+		to_chat(usr, SPAN_WARNING("There is no canister inside [src]!"))
+		return
+	if(inner.reagents.total_volume <= 0)
+		to_chat(usr, SPAN_NOTICE("The canister inside [src] is empty, already!"))
 		return
 
 	to_chat(usr, SPAN_NOTICE("You hold down the emergency flush button. Wait 3 seconds..."))
-	if(do_after(usr, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-		if(inner)
-			to_chat(usr, SPAN_NOTICE("You flush the [src]."))
-			inner.reagents.clear_reagents()
-			update_icon()
+	if(!do_after(usr, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+		to_chat(usr, SPAN_WARNING("You get distracted and stop trying to empty [inner]."))
+		return
+	to_chat(usr, SPAN_NOTICE("You flush [inner]."))
+	inner.reagents.clear_reagents()
+	update_icon()
 
 /obj/item/storage/pouch/pressurized_reagent_canister/verb/remove_canister()
 	set category = "Weapons"
@@ -1352,6 +1356,32 @@
 
 	inner = null
 	update_icon()
+
+/obj/item/storage/pouch/pressurized_reagent_canister/verb/flush_autoinjector()
+	set category = "Weapons"
+	set name = "Flush Autoinjector"
+	set desc = "Forces the autoinjector inside the reagent canister pouch to dump whatever reagents it can into the canister and flush the rest."
+	set src in usr
+
+	for(var/obj/item/reagent_container/hypospray/autoinjector/empty/autoinjector as anything in contents)
+		if(autoinjector.reagents.total_volume <= 0)
+			to_chat(usr, SPAN_NOTICE("[autoinjector] is already empty."))
+			return
+
+		to_chat(usr, SPAN_NOTICE("You hold down the emergency flush button. Wait 1 second..."))
+		if(!do_after(usr, 1 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+			to_chat(usr, SPAN_WARNING("You get distracted and stop trying to empty [autoinjector]."))
+			return
+		var/amount = autoinjector.reagents.total_volume inner.reagents.total_volume
+		if(amount > reagents.maximum_volume)
+			to_chat(usr,SPAN_WARNING("You dump whatever of [autoinjector]'s contents you can into [inner] and flush the rest.")),
+		else
+			to_chat(usr,SPAN_WARNING("You flush [autoinjector]'s contents into [inner].")),
+
+		autoinjector.reagents.trans_to(inner, autoinjector.reagents.total_volume) //dump the reagents in the autoinjector back in the canister, as a treat. They don't overflow the canister.
+		autoinjector.uses_left = 0
+		update_icon()
+
 
 /obj/item/storage/pouch/document
 	name = "large document pouch"

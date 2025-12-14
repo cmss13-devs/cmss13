@@ -1082,7 +1082,7 @@
 
 	if(display_ammo)
 		var/chambered = in_chamber ? TRUE : FALSE
-		to_chat(operator, SPAN_DANGER("[rounds][chambered ? "+1" : ""] / [rounds_max] ROUNDS REMAINING"))
+		to_chat(operator, SPAN_DANGER("[rounds][chambered ? "+1" : ""] / [rounds_max] ROUNDS REMAINING."))
 
 /// Toggles the gun's firemode one down the list
 /obj/structure/machinery/m56d_hmg/proc/do_toggle_firemode(mob/user, new_firemode)

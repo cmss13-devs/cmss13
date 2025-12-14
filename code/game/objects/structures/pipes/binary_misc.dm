@@ -17,7 +17,7 @@
 	icon = 'icons/obj/pipes/pump.dmi'
 	icon_state = "map_off"
 	name = "gas pump"
-	desc = "A pump"
+	desc = "A pump."
 
 /obj/structure/pipes/binary/pump/on
 	icon_state = "map_on"

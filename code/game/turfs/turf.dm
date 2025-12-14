@@ -494,9 +494,8 @@
 	qdel(src) //Just get the side effects and call Destroy
 	var/turf/W = new path(src)
 
-	for(var/i in W.contents)
-		var/datum/A = i
-		SEND_SIGNAL(A, COMSIG_ATOM_TURF_CHANGE, src)
+	for(var/atom/movable/thing as anything in W.contents)
+		SEND_SIGNAL(thing, COMSIG_ATOM_TURF_CHANGE, src)
 
 	if(new_baseturfs)
 		W.baseturfs = new_baseturfs

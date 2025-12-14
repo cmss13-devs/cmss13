@@ -424,21 +424,23 @@
 			continue
 
 		var/blocked = FALSE
-		for(var/turf/T in path)
-			if(T.density || T.opacity)
+		for(var/turf/turf in path)
+			if(turf.density || turf.opacity)
 				blocked = TRUE
 				break
 
-			for(var/obj/structure/S in T)
+			for(var/obj/structure/S in turf)
 				if(S.opacity)
 					blocked = TRUE
 					break
 
-			for(var/obj/vehicle/multitile/V in T)
+			for(var/obj/vehicle/multitile/V in turf)
 				blocked = TRUE
 				break
 
-			for(var/obj/effect/particle_effect/smoke/S in T)
+			for(var/obj/effect/particle_effect/smoke/smoke in turf)
+				if(!smoke.obscuring)
+					continue
 				blocked = TRUE
 				break
 
@@ -864,7 +866,7 @@
 			return
 
 		var/rounds_used = ammo.inherent_reload(user)
-		to_chat(user, SPAN_WARNING("[src]'s internal magazine was reloaded with [rounds_used] rounds, [ammo.max_inherent_rounds] rounds left in storage"))
+		to_chat(user, SPAN_WARNING("[src]'s internal magazine was reloaded with [rounds_used] rounds, [ammo.max_inherent_rounds] rounds left in storage."))
 		playsound(loc, 'sound/weapons/handling/m40sd_reload.ogg', 25, 1)
 		update_icon()
 		return FALSE

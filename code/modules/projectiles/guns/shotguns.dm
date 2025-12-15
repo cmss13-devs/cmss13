@@ -1321,7 +1321,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	ready_shotgun_tube()
 
 	playsound(user, pump_sound, 10, 1)
-	to_chat(user, SPAN_WARNING("<i>You pump [src] loading a shell into the chamber!<i>"))
+	to_chat(user, SPAN_WARNING("<i>You pump [src], loading a shell into the chamber!<i>"))
 	recent_pump = world.time
 	if (in_chamber)
 		pumped = TRUE

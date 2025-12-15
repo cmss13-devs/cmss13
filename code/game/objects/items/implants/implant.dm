@@ -161,7 +161,7 @@ Implant Specifics:<BR>"}
 	return
 
 /obj/item/implant/explosive/hear(msg)
-	var/list/replacechars = list("'" = "","\"" = "",">" = "","<" = "","("= "",")" = "")
+	var/list/replacechars = list("'" = "","\"" = "",">" = "","<" = "","(" = "",")" = "")
 	msg = sanitize_simple(msg, replacechars)
 	if(findtext(msg,phrase))
 		activate()
@@ -212,7 +212,7 @@ Implant Specifics:<BR>"}
 /obj/item/implant/explosive/implanted(mob/source as mob)
 	elevel = alert("What sort of explosion would you prefer?", "Implant Intent", "Localized Limb", "Destroy Body", "Full Explosion")
 	phrase = input("Choose activation phrase:") as text
-	var/list/replacechars = list("'" = "","\"" = "",">" = "","<" = "","("= "",")" = "")
+	var/list/replacechars = list("'" = "","\"" = "",">" = "","<" = "","(" = "",")" = "")
 	phrase = sanitize_simple(phrase, replacechars)
 	usr.mind.store_memory("Explosive implant in [source] can be activated by saying something containing the phrase ''[src.phrase]'', <B>say [src.phrase]</B> to attempt to activate.", 0, 0)
 	to_chat(usr, "The implanted explosive implant in [source] can be activated by saying something containing the phrase ''[src.phrase]'', <B>say [src.phrase]</B> to attempt to activate.")

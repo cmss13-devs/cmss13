@@ -151,7 +151,7 @@
 		for(var/datum/reagent/R in reagents.reagent_list)
 			. += SPAN_NOTICE("[R.volume] units of [R.name].")
 	else
-		. += SPAN_NOTICE("Nothing.")
+		. += SPAN_NOTICE(" Nothing.")
 
 // This is gellie fuel. Green Flames.
 /obj/item/ammo_magazine/flamer_tank/gellied

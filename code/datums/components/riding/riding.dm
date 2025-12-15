@@ -49,7 +49,6 @@
 		return COMPONENT_INCOMPATIBLE
 
 	handle_specials()
-	riding_mob.updating_glide_size = FALSE
 	ride_check_flags |= args_to_flags(check_loc, lying_buckle, hands_needed, target_hands_needed)//buckle_mob_flags
 
 ///converts buckle args to their flags. We use this proc since I dont want to add a buckle refactor to this riding refactor port
@@ -68,7 +67,6 @@
 	RegisterSignal(parent, COMSIG_ATOM_DIR_CHANGE, .proc/vehicle_turned)
 	RegisterSignal(parent, COMSIG_MOVABLE_UNBUCKLE, .proc/vehicle_mob_unbuckle)
 	RegisterSignal(parent, COMSIG_MOVABLE_MOVED, .proc/vehicle_moved)
-	RegisterSignal(parent, COMSIG_MOVABLE_BUMP, .proc/vehicle_bump)
 
 /**
  * This proc handles all of the proc calls to things like set_vehicle_dir_layer() that a type of riding datum needs to call on creation
@@ -87,7 +85,6 @@
 	var/atom/movable/movable_parent = parent
 	restore_position(rider)
 	unequip_buckle_inhands(rider)
-	rider.updating_glide_size = TRUE
 	if(!LAZYLEN(movable_parent.buckled_mobs))
 		qdel(src)
 
@@ -202,7 +199,7 @@
 		buckled_mob.pixel_x = initial(buckled_mob.pixel_x)//buckled_mob.base_pixel_x
 		buckled_mob.pixel_y = initial(buckled_mob.pixel_y)//buckled_mob.base_pixel_y
 		if(buckled_mob.client)
-			buckled_mob.client.view_size.reset_to_default()
+			buckled_mob.client.view = 7
 
 //MOVEMENT
 /datum/component/riding/proc/turf_check(turf/next, turf/current)
@@ -218,12 +215,12 @@
 	return
 
 /// So we can check all occupants when we bump a door to see if anyone has access
-/datum/component/riding/proc/vehicle_bump(atom/movable/movable_parent, obj/machinery/door/possible_bumped_door)
+/datum/component/riding/proc/vehicle_bump(atom/movable/movable_parent, obj/structure/machinery/door/possible_bumped_door)
 	SIGNAL_HANDLER
 	if(!istype(possible_bumped_door))
 		return
 	for(var/occupant in movable_parent.buckled_mobs)
-		INVOKE_ASYNC(possible_bumped_door, /obj/machinery/door/.proc/bumpopen, occupant)
+		INVOKE_ASYNC(possible_bumped_door, /obj/structure/machinery/door/.proc/bumpopen, occupant)
 
 /datum/component/riding/proc/Unbuckle(atom/movable/M)
 	addtimer(CALLBACK(parent, /atom/movable/.proc/unbuckle_mob, M), 0, TIMER_UNIQUE)

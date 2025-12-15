@@ -967,11 +967,6 @@
 /obj/item/prop/alien/hugger,
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/lazarus/lazarus/research/storage)
-"aua" = (
-/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
-/obj/effect/landmark/big_fog_marker,
-/turf/open/auto_turf/lv_sand/layer0,
-/area/lazarus/ground/barrens/south_west_barrens)
 "auk" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_7{
 	pixel_x = -12;
@@ -11428,10 +11423,6 @@
 	},
 /turf/open/floor/prison/ramptop,
 /area/lazarus/ground/barrens/central_barrens)
-"eXv" = (
-/obj/effect/landmark/big_fog_marker,
-/turf/open/gm/dirt/brown/variant_5/south,
-/area/lazarus/ground/barrens/west_barrens)
 "eXx" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#ae8686";
@@ -16186,6 +16177,10 @@
 /obj/effect/hunter/ancient_temple/tile_edge_corner/tile_edge_corner_2,
 /turf/open/floor/ancient_temple/damaged/damage_6,
 /area/lazarus/ground/caves/sand_temple)
+"gXd" = (
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/dirt/brown/variant_5/south,
+/area/lazarus/ground/barrens/west_barrens)
 "gXs" = (
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 1
@@ -24337,10 +24332,9 @@
 /turf/open/floor/ancient_temple/deco/deco_alt/east,
 /area/lazarus/ground/caves/north_east_caves)
 "kDj" = (
-/obj/structure/platform_decoration/wood,
-/obj/structure/platform/wood/east,
-/turf/open/gm/river/soro,
-/area/lazarus/ground/caves/north_central_caves)
+/obj/effect/landmark/big_fog_marker,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lazarus/ground/barrens/south_west_barrens)
 "kDQ" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_3{
 	pixel_x = 1;
@@ -27141,6 +27135,10 @@
 /obj/effect/landmark/monkey_spawn,
 /turf/open/auto_turf/lv_grass/layer1,
 /area/lazarus/ground/caves/central_caves)
+"lNl" = (
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/dirt/brown/variant_5,
+/area/lazarus/ground/barrens/west_barrens)
 "lNm" = (
 /obj/effect/hunter/ancient_temple/deco_border{
 	dir = 4
@@ -36370,10 +36368,6 @@
 	},
 /turf/open/floor/prison/darkbrown3/southeast,
 /area/lazarus/lazarus/comms)
-"pCB" = (
-/obj/effect/landmark/big_fog_marker,
-/turf/open/auto_turf/lv_grass/layer1,
-/area/lazarus/ground/barrens/south_west_barrens)
 "pDb" = (
 /obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
 	dir = 3
@@ -47619,10 +47613,6 @@
 	},
 /turf/open/auto_turf/lv_sand_alt/layer0,
 /area/lazarus/ground/caves/south_east_caves)
-"utq" = (
-/obj/effect/landmark/big_fog_marker,
-/turf/open/gm/dirt/brown/variant_5,
-/area/lazarus/ground/barrens/west_barrens)
 "utz" = (
 /obj/effect/landmark/big_fog_marker,
 /turf/open/gm/coast/dirt/beachcorner2,
@@ -55961,6 +55951,11 @@
 	},
 /turf/open/auto_turf/lv_grass/layer1,
 /area/lazarus/ground/jungle/north_jungle)
+"ycB" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/obj/effect/landmark/big_fog_marker,
+/turf/open/auto_turf/lv_sand/layer0,
+/area/lazarus/ground/barrens/south_west_barrens)
 "ycL" = (
 /turf/open/floor/brown_dirt/random_rocks_alt,
 /area/lazarus/ground/jungle/north_west_jungle/dense)
@@ -59652,7 +59647,7 @@ bwE
 ptc
 xLg
 xLg
-aua
+ycB
 nWz
 ptc
 fVK
@@ -60546,7 +60541,7 @@ xLg
 ycZ
 fbW
 dvn
-pCB
+kDj
 xLg
 nWz
 nWz
@@ -62112,7 +62107,7 @@ lUV
 moZ
 xLg
 xLg
-pCB
+kDj
 xLg
 nWz
 nWz
@@ -69264,7 +69259,7 @@ yap
 wuj
 wuj
 jna
-pCB
+kDj
 nWz
 nWz
 nWz
@@ -71488,12 +71483,12 @@ mgn
 mgn
 cdo
 mgn
-utq
+lNl
 cdo
 ptB
 mgn
 xKg
-eXv
+gXd
 mAZ
 tRF
 ptB
@@ -74305,7 +74300,7 @@ dah
 ptj
 fqP
 ewd
-kDj
+fqP
 vDT
 ePj
 ePj

@@ -87,6 +87,7 @@ GLOBAL_LIST_INIT(big_fog_tiles, list())
 	icon = 'icons/effects/192x192.dmi'
 	icon_state = "massive_fog"
 	alpha = 0
+	layer = WEATHER_LAYER
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	var/obj/effect/landmark/big_fog_marker/linked_marker
 

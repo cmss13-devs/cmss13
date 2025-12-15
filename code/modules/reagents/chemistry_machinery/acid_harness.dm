@@ -37,17 +37,25 @@
 #define ACID_VITALS_EMERGENCY 32
 #define ACID_VITALS_DEAD 64
 
+#define ACID_CONTAINER_MAXIMUM_VOLUME 60
+
+#define ACID_DEAFUALT_SCAN_INTERVAL 15 SECONDS
+
 /obj/item/storage/internal/accessory/black_vest/acid_harness
 	storage_slots = 2
 	can_hold = list(
 		/obj/item/reagent_container/glass/beaker,
 		/obj/item/cell,
 	)
-	cant_hold = list(
-		/obj/item/reagent_container/glass/beaker/bluespace,
-		/obj/item/reagent_container/glass/beaker/large,
-		/obj/item/reagent_container/glass/beaker/catalyst,
-	)
+
+/obj/item/storage/internal/accessory/black_vest/acid_harness/can_be_inserted(obj/item/object_to_insert, mob/lving/user)
+	if(istype(object_to_insert, /obj/item/reagent_container/glass/beaker))
+		var/obj/item/reagent_container/glass/beaker/beaker_check = object_to_insert
+		if(!beaker_check.reagents || beaker_check.reagents.maximum_volume > ACID_CONTAINER_MAXIMUM_VOLUME)
+			to_chat(user, SPAN_WARNING("[object_to_insert] is too large for [src]."))
+			return
+	. = ..()
+
 /obj/item/clothing/accessory/storage/black_vest/acid_harness
 	name = "A.C.I.D. Harness"
 	desc = "Automated Chemical Integrated Delivery Harness, or really just a franken webbing made by a researcher with poor tailoring skills. Can be configured with a multitool."
@@ -210,8 +218,6 @@
 		else
 			to_chat(human_wearer, SPAN_WARNING("You need a multi-tool to modify these configurations."))
 
-#define DEAFUALT_SCAN_INTERVAL 15 SECONDS
-
 /obj/structure/machinery/acid_core
 	name = "A.C.I.D. CORE"
 	use_power = USE_POWER_NONE
@@ -235,7 +241,7 @@
 	var/battery_level = FALSE
 	var/rechecking = FALSE
 
-	var/scan_interval = DEAFUALT_SCAN_INTERVAL
+	var/scan_interval = ACID_DEAFUALT_SCAN_INTERVAL
 	var/last_scan_time
 
 /obj/structure/machinery/acid_core/Initialize(mapload, ...)
@@ -494,13 +500,13 @@
 	for(var/datum/reagent/R in acid_harness.beaker.reagents.reagent_list)
 		if(R.overdose && user.reagents.get_reagent_amount(R.id) + inject_amount > R.overdose) //Don't overdose our boi
 			voice("Notice: Injection trigger cancelled to avoid overdose.")
-			scan_interval = DEAFUALT_SCAN_INTERVAL + ((DEAFUALT_SCAN_INTERVAL*0.2) * inject_amount) //Add 20% of scan time per reagent unit ontop of normal scan time for a bigger period inbetween
+			scan_interval = ACID_DEAFUALT_SCAN_INTERVAL + ((ACID_DEAFUALT_SCAN_INTERVAL*0.2) * inject_amount) //Add 20% of scan time per reagent unit ontop of normal scan time for a bigger period inbetween
 			rechecking = TRUE
 			return
 	if(acid_harness.beaker.reagents.trans_to(user, inject_amount))
 		playsound_client(user.client, 'sound/items/hypospray.ogg', null, ITEM_EQUIP_VOLUME)
 		voice("Medicine administered. [acid_harness.beaker.reagents.total_volume] units remaining.")
-		scan_interval = DEAFUALT_SCAN_INTERVAL + ((DEAFUALT_SCAN_INTERVAL*0.15) * inject_amount)
+		scan_interval = ACID_DEAFUALT_SCAN_INTERVAL + ((ACID_DEAFUALT_SCAN_INTERVAL*0.15) * inject_amount)
 		rechecking = TRUE
 	if(!acid_harness.beaker.reagents.total_volume)
 		voice("Warning: Medicinal container is empty, resupply required.")

@@ -178,10 +178,10 @@
 		if(first_put && user)
 			user.put_in_hands(new_handful) // only put the first one in their hands
 			first_put = FALSE
-			to_chat(user, SPAN_NOTICE("You remove the [src.name] from it's cylinder."))
+			to_chat(user, SPAN_NOTICE("You remove the [new_handful] from it's cylinder."))
 		else
 			new_handful.forceMove(get_turf(src))
-			to_chat(user, SPAN_NOTICE("...but you drop the rest of the mixed ammunition in the process."))
+			to_chat(user, SPAN_NOTICE("...but you drop the rest of the [new_handful] in the process."))
 
 	return TRUE
 

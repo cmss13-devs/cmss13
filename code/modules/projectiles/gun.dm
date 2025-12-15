@@ -2206,7 +2206,6 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 	if(flags_gun_features & GUN_INTERNAL_MAG)
 		if(!current_mag.chamber_closed)
-			click_empty(user)
 			user.visible_message(SPAN_HIGHDANGER(uppertext("...but the [name] refuses to fire due to the cylinder being open, embarassing...")),
 	SPAN_HIGHDANGER(uppertext("...but your [name] refuses to fire due to the cylinder being open, embarassing...")))
 			return

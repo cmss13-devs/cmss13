@@ -12,8 +12,6 @@
 	/// If we have a user using us, this will be set on. We will check if the user has stopped using us, and thus stop updating and LAGGING EVERYTHING!
 	var/in_use = FALSE
 	var/mob/living/buckled_mob
-	/// Bed-like behaviour, forces mob.lying = buckle_lying if not set to [NO_BUCKLE_LYING].
-	var/buckle_lying = NO_BUCKLE_LYING
 	var/can_buckle = FALSE
 	/**Applied to surgery times for mobs buckled prone to it or lying on the same tile, if the surgery
 	cares about surface conditions. The lowest multiplier of objects on the tile is used.**/

@@ -556,6 +556,20 @@
 	xeno_icon_state = "saddlebags"
 	xeno_types = list(/mob/living/carbon/xenomorph/runner)
 
+/obj/item/storage/backpack/marine/saddle/clicked(mob/user, list/mods)
+	if(mods[ALT_CLICK])
+		to_chat(user, SPAN_NOTICE("You change the style of the saddle."))
+		if(icon_state == "saddlebags")
+			icon_state = "cowboybags"
+			xeno_icon_state = "cowboybags"
+			update_icon()
+			return
+		icon_state = "saddlebags"
+		xeno_icon_state = "saddlebags"
+		update_icon()
+		return
+	return ..()
+
 /obj/item/storage/backpack/marine/k9_synth
 	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/UA.dmi'
 	icon_override = 'icons/mob/humans/species/synth_k9/onmob/synth_k9_overlays.dmi'

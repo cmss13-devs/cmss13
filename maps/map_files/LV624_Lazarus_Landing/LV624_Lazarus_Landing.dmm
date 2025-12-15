@@ -10693,6 +10693,7 @@
 	color = "#d4cfcd"
 	},
 /obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/camera/autoname,
 /turf/open/floor/prison/green/north,
 /area/lazarus/lazarus/hydroponics)
 "eJj" = (
@@ -26236,6 +26237,9 @@
 "lCt" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/item/shard,
+/obj/structure/machinery/camera/autoname{
+	dir = 1
+	},
 /turf/open/floor/prison/floor_plate_alt/south,
 /area/lazarus/lazarus/robotics)
 "lCx" = (
@@ -38724,6 +38728,13 @@
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/floor_plate,
 /area/lazarus/lazarus/captain)
+"qQV" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/camera/autoname{
+	dir = 4
+	},
+/turf/open/floor/prison/floor_plate,
+/area/lazarus/lazarus/landing_zones/lz1)
 "qRi" = (
 /obj/effect/decal/lv_decals/cave_mud_corner{
 	dir = 6
@@ -42445,6 +42456,13 @@
 /obj/item/tool/warning_cone,
 /turf/open/floor/prison/cell_stripe/north,
 /area/lazarus/lazarus/quartstorage)
+"szP" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/machinery/camera/autoname{
+	dir = 4
+	},
+/turf/open/floor/almayer/silverfull,
+/area/lazarus/lazarus/fitness)
 "szR" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -75847,7 +75865,7 @@ qrb
 qrb
 qPR
 rZp
-eTM
+szP
 eTM
 eTM
 eTM
@@ -86864,7 +86882,7 @@ pgA
 nGV
 wve
 xuD
-wve
+qQV
 nGV
 xuK
 xuK

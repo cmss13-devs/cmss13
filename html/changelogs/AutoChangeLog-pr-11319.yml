@@ -1,0 +1,4 @@
+author: "SpypigDev"
+delete-after: True
+changes:
+  - bugfix: "CO lore faxes no longer use invisible ink"

@@ -141,6 +141,7 @@
 	var/pictures_left = 10
 	var/size = 7
 	var/cooldown = 0
+	var/static/list/possible_focus = list(1, 3, 5, 7)
 
 /obj/item/device/camera/unique_action(mob/user)
 	change_size(user)
@@ -163,15 +164,13 @@
 	unwield(user)
 
 /obj/item/device/camera/proc/change_size(mob/user)
-	switch(size)
-		if(1)
-			size = 3
-		if(3)
-			size = 5
-		if(5)
-			size = 7
-		if(7)
-			size = 1
+	var/current_focus = possible_focus.Find(size)
+	if(!current_focus) // just in case lol
+		size = possible_focus[1]
+	else
+		var/next_focus = (current_focus % possible_focus.len) + 1
+		size = possible_focus[next_focus]
+
 	to_chat(user, SPAN_NOTICE("[src] will now take [size]x[size] photos."))
 	playsound(loc, 'sound/weapons/handling/safety_toggle.ogg', 25, 1, 6)
 

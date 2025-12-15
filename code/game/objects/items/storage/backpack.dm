@@ -552,7 +552,7 @@
 /obj/item/storage/backpack/marine/saddle
 	name = "\improper USCM XX-121 Saddle"
 	desc = "A saddle with straps designed to fit around a XX-121 specimen. Not sure who would be stupid enough to try and put this on one."
-	item_state = "marinepack_medic"
+	icon_state = "saddlebags"
 	xeno_icon_state = "saddlebags"
 	xeno_types = list(/mob/living/carbon/xenomorph/runner)
 

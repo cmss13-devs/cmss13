@@ -967,6 +967,11 @@
 /obj/item/prop/alien/hugger,
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/lazarus/lazarus/research/storage)
+"aua" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/obj/effect/landmark/big_fog_marker,
+/turf/open/auto_turf/lv_sand/layer0,
+/area/lazarus/ground/barrens/south_west_barrens)
 "auk" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_7{
 	pixel_x = -12;
@@ -11423,6 +11428,10 @@
 	},
 /turf/open/floor/prison/ramptop,
 /area/lazarus/ground/barrens/central_barrens)
+"eXv" = (
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/dirt/brown/variant_5/south,
+/area/lazarus/ground/barrens/west_barrens)
 "eXx" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#ae8686";
@@ -36361,6 +36370,10 @@
 	},
 /turf/open/floor/prison/darkbrown3/southeast,
 /area/lazarus/lazarus/comms)
+"pCB" = (
+/obj/effect/landmark/big_fog_marker,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lazarus/ground/barrens/south_west_barrens)
 "pDb" = (
 /obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
 	dir = 3
@@ -47606,6 +47619,10 @@
 	},
 /turf/open/auto_turf/lv_sand_alt/layer0,
 /area/lazarus/ground/caves/south_east_caves)
+"utq" = (
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/dirt/brown/variant_5,
+/area/lazarus/ground/barrens/west_barrens)
 "utz" = (
 /obj/effect/landmark/big_fog_marker,
 /turf/open/gm/coast/dirt/beachcorner2,
@@ -59635,7 +59652,7 @@ bwE
 ptc
 xLg
 xLg
-nBI
+aua
 nWz
 ptc
 fVK
@@ -60529,7 +60546,7 @@ xLg
 ycZ
 fbW
 dvn
-xLg
+pCB
 xLg
 nWz
 nWz
@@ -62095,7 +62112,7 @@ lUV
 moZ
 xLg
 xLg
-xLg
+pCB
 xLg
 nWz
 nWz
@@ -63663,7 +63680,7 @@ lUV
 xLg
 xLg
 nWz
-nWz
+xYY
 nWz
 iAE
 fxg
@@ -64556,7 +64573,7 @@ aNR
 aNR
 xLg
 xLg
-nWz
+xYY
 nWz
 nWz
 xYY
@@ -65448,7 +65465,7 @@ aNR
 aNR
 ptc
 qrD
-nWz
+xYY
 ptc
 nWz
 ptc
@@ -66341,7 +66358,7 @@ dpB
 hNK
 xLg
 nBI
-nWz
+xYY
 nWz
 nWz
 nWz
@@ -67460,7 +67477,7 @@ qrD
 xLg
 xLg
 nWz
-nWz
+xYY
 ptc
 nWz
 fVK
@@ -69247,7 +69264,7 @@ yap
 wuj
 wuj
 jna
-xLg
+pCB
 nWz
 nWz
 nWz
@@ -70361,7 +70378,7 @@ wuj
 wuj
 jna
 mgn
-mgn
+qmH
 mgn
 mgn
 mgn
@@ -71243,7 +71260,7 @@ cdo
 mgn
 wuj
 mgn
-mgn
+qmH
 wuj
 mgn
 agf
@@ -71471,12 +71488,12 @@ mgn
 mgn
 cdo
 mgn
-cdo
+utq
 cdo
 ptB
 mgn
 xKg
-xVe
+eXv
 mAZ
 tRF
 ptB

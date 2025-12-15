@@ -10,12 +10,12 @@
 	RegisterSignal(parent, COMSIG_RIDDEN_DRIVER_MOVE, .proc/driver_move)
 
 /datum/component/riding/vehicle/driver_move(atom/movable/movable_parent, mob/living/user, direction)
-	if(!COOLDOWN_CHECK(src, vehicle_move_cooldown))
+	if(!COOLDOWN_FINISHED(src, vehicle_move_cooldown))
 		return COMPONENT_DRIVER_BLOCK_MOVE
 	var/obj/vehicle/vehicle_parent = parent
 
 	if(!keycheck(user))
-		if(COOLDOWN_CHECK(src, message_cooldown))
+		if(COOLDOWN_FINISHED(src, message_cooldown))
 			to_chat(user, "<span class='warning'>[vehicle_parent] has no key inserted!</span>")
 			COOLDOWN_START(src, message_cooldown, 5 SECONDS)
 		return COMPONENT_DRIVER_BLOCK_MOVE
@@ -27,7 +27,7 @@
 			"<span class='danger'>You slip off \the [vehicle_parent] as your body slumps!</span>")
 			user.Stun(3 SECONDS)
 
-		if(COOLDOWN_CHECK(src, message_cooldown))
+		if(COOLDOWN_FINISHED(src, message_cooldown))
 			to_chat(user, "<span class='warning'>You cannot operate \the [vehicle_parent] right now!</span>")
 			COOLDOWN_START(src, message_cooldown, 5 SECONDS)
 		return COMPONENT_DRIVER_BLOCK_MOVE
@@ -39,19 +39,19 @@
 			"<span class='danger'>You fall off \the [vehicle_parent] while trying to operate it while unable to stand!</span>")
 			user.Stun(3 SECONDS)
 
-		if(COOLDOWN_CHECK(src, message_cooldown))
+		if(COOLDOWN_FINISHED(src, message_cooldown))
 			to_chat(user, "<span class='warning'>You can't seem to manage that while unable to stand up enough to move \the [vehicle_parent]...</span>")
 			COOLDOWN_START(src, message_cooldown, 5 SECONDS)
 		return COMPONENT_DRIVER_BLOCK_MOVE
 
-	if(ride_check_flags & RIDER_NEEDS_ARMS && user.restrained())
+	if(ride_check_flags & RIDER_NEEDS_ARMS && user.is_mob_restrained())
 		if(ride_check_flags & UNBUCKLE_DISABLED_RIDER)
 			vehicle_parent.unbuckle_mob(user, TRUE)
 			user.visible_message("<span class='danger'>[user] falls off \the [vehicle_parent].</span>",\
 			"<span class='danger'>You fall off \the [vehicle_parent] while trying to operate it without being able to hold on!</span>")
 			user.Stun(3 SECONDS)
 
-		if(COOLDOWN_CHECK(src, message_cooldown))
+		if(COOLDOWN_FINISHED(src, message_cooldown))
 			to_chat(user, "<span class='warning'>You can't seem to hold onto \the [vehicle_parent] to move it...</span>")
 			COOLDOWN_START(src, message_cooldown, 5 SECONDS)
 		return COMPONENT_DRIVER_BLOCK_MOVE

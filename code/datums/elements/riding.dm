@@ -101,7 +101,7 @@
 
 /obj/item/riding_offhand
 	name = "offhand"
-	icon = 'icons/obj/items/weapons.dmi'
+	icon = 'icons/mob/hud/human_midnight.dmi'
 	icon_state = "offhand"
 	w_class = SIZE_HUGE
 	flags_item = ITEM_ABSTRACT | DELONDROP | NOBLUDGEON

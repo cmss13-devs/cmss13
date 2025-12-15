@@ -672,7 +672,7 @@
 /obj/structure/platform/stone/ancient_temple/west,
 /obj/structure/blocker/invisible_wall/no_coverage,
 /turf/open/gm/river/soro,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "apk" = (
 /obj/structure/sign/safety/galley{
 	pixel_x = -20
@@ -1756,7 +1756,7 @@
 /obj/effect/alien/weeds/weedwall,
 /obj/effect/alien/weeds/weedwall,
 /turf/closed/wall/mineral/bone_resin,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "aNu" = (
 /obj/structure/disposalpipe/junction,
 /obj/structure/pipes/standard/manifold/hidden/cyan{
@@ -1779,7 +1779,7 @@
 /area/lazarus/ground/caves/north_east_caves)
 "aNR" = (
 /turf/closed/wall/rock/brown,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "aNW" = (
 /obj/structure/machinery/door/poddoor/almayer/grey/closed{
 	name = "Cargo Shipping Shutter";
@@ -2341,7 +2341,7 @@
 	anchored = 1
 	},
 /turf/closed/wall/ancient_temple/sandstone/runed/decor,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "aYO" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble,
 /obj/structure/platform/stone/ancient_temple/alt{
@@ -3408,7 +3408,7 @@
 "bwE" = (
 /obj/structure/flora/jungle/vines/blue/light_1,
 /turf/closed/wall/rock/brown,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "bwL" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#ae8686";
@@ -3741,7 +3741,7 @@
 "bFA" = (
 /obj/structure/flora/jungle/vines/dead/light_3,
 /turf/closed/wall/strata_ice/jungle,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "bFG" = (
 /obj/effect/hunter/bridge_border/brown/corner,
 /turf/open/floor/ancient_temple/deco/dark/deco_alt/east,
@@ -4502,7 +4502,7 @@
 /obj/structure/prop/hunter/ancient_temple/large_bars/water,
 /obj/structure/blocker/invisible_wall/no_coverage,
 /turf/open/gm/river/soro,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "bZv" = (
 /obj/structure/closet/cabinet,
 /obj/item/roller/bedroll,
@@ -5729,7 +5729,7 @@
 	emp_proof = 1
 	},
 /turf/open/floor/prison/floor_plate,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "cBm" = (
 /obj/structure/platform/metal/strata/alt/east,
 /obj/effect/hybrisa/misc/fake/pipes/pipe1{
@@ -5923,6 +5923,11 @@
 /obj/effect/decal/lv_decals/red_mud_corner{
 	dir = 1
 	},
+/obj/structure/barricade/handrail/wire{
+	dir = 8;
+	layer = 4
+	},
+/obj/structure/barricade/handrail/wire,
 /turf/open/floor/prison/cell_stripe/north,
 /area/lazarus/ground/jungle/south_east_jungle)
 "cFq" = (
@@ -6678,7 +6683,7 @@
 	},
 /obj/structure/flora/jungle/vines/dead/light_1,
 /turf/closed/wall/ancient_temple/sandstone,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "cVf" = (
 /turf/open/gm/dirt/brown/variant_5/west,
 /area/lazarus/ground/colony/south_medbay_road)
@@ -6760,7 +6765,7 @@
 "cYf" = (
 /obj/structure/flora/jungle/vines/dead/light_1,
 /turf/closed/wall/ancient_temple/sandstone,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "cYi" = (
 /obj/structure/machinery/gibber,
 /obj/effect/decal/strata_decals/grime/grime1{
@@ -7557,7 +7562,7 @@
 "dpB" = (
 /obj/structure/flora/jungle/vines/blue/heavy,
 /turf/closed/wall/strata_ice/jungle,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "dpK" = (
 /obj/effect/decal/lv_decals/red_mud_corner{
 	dir = 6
@@ -8414,7 +8419,7 @@
 "dLT" = (
 /obj/structure/flora/jungle/vines/blue/heavy,
 /turf/closed/wall/rock/grey,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "dLW" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#ae8686";
@@ -9410,7 +9415,7 @@
 "ehq" = (
 /obj/structure/flora/jungle/planttop1,
 /turf/closed/wall/strata_ice/jungle,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "ehu" = (
 /obj/structure/window/framed/wood/reinforced/teal,
 /turf/open/floor/plating/prison,
@@ -9928,7 +9933,7 @@
 	},
 /obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/lv_sand_alt/layer0,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "erO" = (
 /obj/structure/window/framed/lv_colony/reinforced,
 /obj/structure/machinery/door/poddoor/almayer/grey/open{
@@ -10497,7 +10502,7 @@
 "eES" = (
 /obj/structure/flora/jungle/vines/dead/light_3,
 /turf/closed/wall/ancient_temple/sandstone,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "eFs" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#ae8686";
@@ -10604,7 +10609,7 @@
 /obj/structure/platform/stone/ancient_temple/west,
 /obj/structure/blocker/invisible_wall/no_coverage,
 /turf/open/floor/ancient_temple/floor_grille/water,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "eHF" = (
 /turf/open/floor/prison/darkbrowncorners2/north,
 /area/lazarus/lazarus/quartstorage)
@@ -11435,7 +11440,7 @@
 /turf/open/void{
 	name = "darkness"
 	},
-/area/space)
+/area/strata/interior/out_of_bounds)
 "fbk" = (
 /obj/structure/prop/hunter/ancient_temple/giant_statue/base,
 /obj/structure/prop/hunter/ancient_temple/giant_statue{
@@ -11517,7 +11522,7 @@
 "fcS" = (
 /obj/structure/flora/jungle/vines/blue/light_3,
 /turf/closed/wall/strata_ice/jungle,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "fdl" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/item/reagent_container/glass/bucket{
@@ -11686,7 +11691,7 @@
 /turf/closed/wall/ancient_temple/sandstone{
 	opacity = 0
 	},
-/area/space)
+/area/strata/interior/out_of_bounds)
 "fgz" = (
 /obj/structure/platform/wood/west,
 /obj/structure/platform/wood,
@@ -12297,7 +12302,7 @@
 	},
 /obj/structure/blocker/invisible_wall/no_coverage,
 /turf/open/gm/river/soro,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "fsn" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
@@ -13551,7 +13556,7 @@
 "fYx" = (
 /obj/structure/flora/jungle/vines/blue/light_2,
 /turf/closed/wall/rock/grey,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "fYD" = (
 /obj/structure/window/framed/lv_colony/reinforced,
 /turf/open/floor/plating/prison,
@@ -13694,7 +13699,7 @@
 /area/lazarus/ground/caves/south_east_caves)
 "gdk" = (
 /turf/closed/wall/strata_ice/jungle,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "gds" = (
 /obj/structure/platform/metal/strata/alt/west,
 /turf/open/gm/river/soro,
@@ -13881,7 +13886,7 @@
 /obj/effect/decal/strata_decals/grime/grime4,
 /obj/effect/alien/weeds/weedwall,
 /turf/closed/wall/mineral/bone_resin,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "ghX" = (
 /turf/open/floor/hybrisa/carpet/carpetdarkerblue,
 /area/lazarus/lazarus/sleep_male)
@@ -14024,7 +14029,7 @@
 	},
 /obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/lv_sand_alt/layer0,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "gku" = (
 /obj/structure/stairs/perspective{
 	color = "#b6a38f";
@@ -14052,7 +14057,7 @@
 	},
 /obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/lv_sand_alt/layer0,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "gkv" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 5
@@ -14116,7 +14121,7 @@
 /obj/structure/flora/jungle/vines/blue/light_1,
 /obj/structure/flora/jungle/vines/blue/light_1,
 /turf/closed/wall/strata_ice/jungle,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "glO" = (
 /obj/item/prop/torch_frame/ancient{
 	pixel_y = 31;
@@ -14560,7 +14565,7 @@
 "gwz" = (
 /obj/effect/alien/weeds/weedwall,
 /turf/closed/wall/mineral/bone_resin,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "gwN" = (
 /obj/effect/hunter/ancient_temple/deco_border/bronze/deco_border3{
 	dir = 8
@@ -14800,7 +14805,7 @@
 /obj/structure/blocker/invisible_wall/no_coverage,
 /obj/structure/flora/jungle/vines/dead/light_1,
 /turf/open/gm/river/soro,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "gBl" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -15265,6 +15270,18 @@
 	},
 /turf/open/auto_turf/lv_sand_alt/layer0,
 /area/lazarus/ground/caves/west_caves)
+"gKR" = (
+/obj/effect/decal/lv_decals/red_mud_corner,
+/obj/structure/barricade/handrail/wire{
+	dir = 8;
+	layer = 4
+	},
+/obj/structure/barricade/handrail/wire{
+	layer = 3.5;
+	dir = 1
+	},
+/turf/open/floor/prison/cell_stripe,
+/area/lazarus/lazarus/landing_zones/lz1)
 "gKT" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -15985,7 +16002,7 @@
 "had" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/closed/wall/strata_ice/jungle,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "hal" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/disposalpipe/segment{
@@ -16472,7 +16489,7 @@
 "hmK" = (
 /obj/structure/flora/jungle/vines/dead/light_2,
 /turf/closed/wall/ancient_temple/sandstone,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "hmQ" = (
 /obj/structure/machinery/door/airlock/light_grey_lv/glass{
 	dir = 2;
@@ -16833,7 +16850,7 @@
 /obj/structure/platform/stone/ancient_temple/east,
 /obj/structure/blocker/invisible_wall/no_coverage,
 /turf/open/floor/ancient_temple/floor_grille/water,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "hvo" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#ae8686";
@@ -17627,7 +17644,7 @@
 	insert_tag = "corp_personnel_dome"
 	},
 /turf/closed/wall/strata_ice/jungle,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "hKW" = (
 /obj/effect/decal/lv_decals/cave_mud_corner{
 	dir = 9
@@ -17795,7 +17812,7 @@
 "hNK" = (
 /obj/structure/flora/jungle/vines/blue/light_1,
 /turf/closed/wall/strata_ice/jungle,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "hNN" = (
 /obj/structure/platform/wood/north,
 /turf/open/gm/coast/dirt/beachcorner2/north_west,
@@ -18322,7 +18339,7 @@
 	anchored = 1
 	},
 /turf/closed/wall/ancient_temple/sandstone,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "hYa" = (
 /obj/effect/hunter/ancient_temple/deco_border/deco_border3{
 	dir = 8
@@ -18657,7 +18674,7 @@
 "ijD" = (
 /obj/structure/flora/jungle/vines/blue/light_2,
 /turf/closed/wall/rock/brown,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "ijY" = (
 /obj/effect/hunter/ancient_temple/tile_edge_corner/tile_edge_corner_3,
 /obj/effect/hunter/ancient_temple/deco_border{
@@ -18712,7 +18729,7 @@
 "ikZ" = (
 /obj/structure/blocker/invisible_wall,
 /turf/closed/wall/rock/brown,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "ilD" = (
 /turf/open/floor,
 /area/lazarus/ground/caves/north_central_caves)
@@ -19015,7 +19032,7 @@
 "isb" = (
 /obj/structure/flora/jungle/vines/dead/light_1,
 /turf/closed/wall/ancient_temple/sandstone/runed/decor,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "isX" = (
 /obj/effect/decal/lv_decals/red_mud_corner{
 	dir = 9
@@ -19414,7 +19431,7 @@
 "iBc" = (
 /obj/structure/flora/jungle/vines/dead/heavy,
 /turf/closed/wall/strata_ice/jungle,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "iBs" = (
 /obj/structure/surface/table{
 	color = "#8B7B5B"
@@ -19594,7 +19611,7 @@
 	},
 /obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/lv_sand_alt/layer0,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "iGJ" = (
 /obj/structure/barricade/handrail/wire,
 /turf/open/auto_turf/lv_grass/layer1,
@@ -20045,13 +20062,13 @@
 "iRX" = (
 /obj/structure/flora/jungle/vines/dead/light_1,
 /turf/closed/wall/rock/grey,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "iSj" = (
 /obj/structure/platform/stone/ancient_temple/alt/west,
 /obj/structure/prop/hunter/ancient_temple/large_bars/water,
 /obj/structure/blocker/invisible_wall/no_coverage,
 /turf/open/gm/river/soro,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "iSw" = (
 /obj/item/tool/kitchen/knife/butcher,
 /obj/structure/surface/table/reinforced/prison,
@@ -20349,7 +20366,7 @@
 "iZI" = (
 /obj/structure/flora/jungle/vines/blue/light_1,
 /turf/closed/wall/lv_outpost/reinforced/hull,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "iZS" = (
 /obj/structure/bed/chair/wood/wings{
 	dir = 8
@@ -22973,7 +22990,7 @@
 "khx" = (
 /obj/structure/flora/jungle/vines/blue/light_3,
 /turf/closed/wall/rock/brown,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "khY" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -24152,7 +24169,7 @@
 /obj/structure/blocker/invisible_wall/no_coverage,
 /obj/structure/flora/jungle/vines/dead/light_1,
 /turf/open/gm/river/soro,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "kJd" = (
 /turf/closed/wall/rock/brown,
 /area/lazarus/ground/caves/sand_temple)
@@ -24518,11 +24535,11 @@
 	},
 /obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/lv_grass/layer0_mud_alt,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "kTk" = (
 /obj/structure/flora/jungle/vines/dead/heavy,
 /turf/closed/wall/ancient_temple/sandstone/runed/decor,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "kTm" = (
 /obj/effect/hunter/ancient_temple/tile_edge/tile_edge_8,
 /turf/open/floor/ancient_temple/damaged/damage_7,
@@ -24620,7 +24637,7 @@
 /turf/open/void{
 	name = "darkness"
 	},
-/area/space)
+/area/strata/interior/out_of_bounds)
 "kVf" = (
 /obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
 	dir = 9
@@ -24879,7 +24896,7 @@
 /obj/effect/hunter/ancient_temple/rubble/rubble,
 /obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/lv_sand_alt/layer0,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "laO" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/coast/dirt/west,
@@ -26944,7 +26961,7 @@
 /area/lazarus/ground/caves/south_east_caves)
 "lSG" = (
 /turf/closed/wall/rock/grey,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "lSI" = (
 /obj/effect/decal/lv_decals/cave_mud_corner{
 	dir = 6
@@ -27075,7 +27092,7 @@
 "lUV" = (
 /obj/structure/flora/jungle/vines/blue/light_1,
 /turf/closed/wall/rock/grey,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "lVh" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_1,
 /turf/open/auto_turf/strata_grass/layer1,
@@ -27092,7 +27109,7 @@
 /area/lazarus/lazarus/main_hall)
 "lVJ" = (
 /turf/closed/wall/mineral/bone_resin,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "lVT" = (
 /obj/structure/platform/stone/ancient_temple/east,
 /obj/structure/platform/stone/ancient_temple,
@@ -27473,7 +27490,7 @@
 "mec" = (
 /obj/structure/flora/jungle/vines/dead/light_2,
 /turf/closed/wall/rock/brown,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "med" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#ae8686";
@@ -28689,7 +28706,7 @@
 "mDP" = (
 /obj/structure/flora/jungle/vines/dead/light_3,
 /turf/closed/wall/rock/grey,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "mDQ" = (
 /obj/effect/decal/lv_decals/cave_mud_corner{
 	dir = 6
@@ -29830,7 +29847,7 @@
 "mZT" = (
 /obj/structure/flora/jungle/vines/blue/heavy,
 /turf/closed/wall/rock/brown,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "naa" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_1{
 	pixel_x = -2;
@@ -30035,7 +30052,7 @@
 /obj/structure/platform/stone/ancient_temple/east,
 /obj/structure/blocker/invisible_wall/no_coverage,
 /turf/open/gm/river/soro,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "ndg" = (
 /obj/structure/bed/chair{
 	dir = 8;
@@ -30588,7 +30605,7 @@
 /turf/open/floor/ancient_temple/fake_wall_dark{
 	name = "sandstone temple wall"
 	},
-/area/space)
+/area/strata/interior/out_of_bounds)
 "nqr" = (
 /obj/effect/decal/lv_decals/cave_mud_corner{
 	dir = 5
@@ -33132,7 +33149,7 @@
 	dir = 1;
 	icon_state = "pwall"
 	},
-/area/space)
+/area/strata/interior/out_of_bounds)
 "otk" = (
 /obj/effect/decal/lv_decals/cave_mud_corner{
 	dir = 8
@@ -33510,7 +33527,7 @@
 	},
 /obj/structure/blocker/invisible_wall/no_coverage,
 /turf/open/gm/river/soro,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "oBG" = (
 /obj/effect/decal/lv_decals/red_mud_corner{
 	dir = 4
@@ -33713,7 +33730,7 @@
 	},
 /obj/structure/flora/jungle/vines/dead/light_2,
 /turf/closed/wall/ancient_temple/sandstone,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "oFE" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -33866,7 +33883,7 @@
 /obj/structure/blocker/invisible_wall/no_coverage,
 /obj/structure/flora/jungle/vines/dead/light_1,
 /turf/open/gm/river/soro,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "oJD" = (
 /turf/open/auto_turf/lv_sand/layer0,
 /area/lazarus/ground/jungle/west_central_jungle)
@@ -33926,6 +33943,18 @@
 "oKy" = (
 /turf/open/floor/strata/light_purple_edge/north,
 /area/lazarus/lazarus/research/storage)
+"oKE" = (
+/obj/effect/decal/lv_decals/red_mud_corner,
+/obj/structure/barricade/handrail/wire{
+	layer = 3.1;
+	dir = 4
+	},
+/obj/structure/barricade/handrail/wire{
+	layer = 3.5;
+	dir = 1
+	},
+/turf/open/floor/prison/cell_stripe,
+/area/lazarus/lazarus/landing_zones/lz1)
 "oKG" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/prison/ramptop,
@@ -34513,7 +34542,7 @@
 "oXN" = (
 /obj/structure/flora/jungle/vines/blue/light_2,
 /turf/closed/wall/strata_ice/jungle,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "oXW" = (
 /turf/closed/wall/lv_outpost/reinforced,
 /area/lazarus/lazarus/corporate_dome)
@@ -34557,7 +34586,7 @@
 "oYy" = (
 /obj/structure/flora/jungle/vines/dead/light_2,
 /turf/closed/wall/strata_ice/jungle,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "oYA" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/auto_turf/lv_grass/layer1,
@@ -35814,7 +35843,7 @@
 	},
 /obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/lv_sand_alt/layer0,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "pAU" = (
 /obj/structure/platform_decoration/metal/strata/alt{
 	dir = 1
@@ -36310,7 +36339,7 @@
 "pQl" = (
 /obj/structure/flora/jungle/vines/dead,
 /turf/closed/wall/ancient_temple/sandstone,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "pQn" = (
 /obj/structure/fence/dark/overgrown,
 /turf/open/auto_turf/lv_sand/layer0,
@@ -37783,13 +37812,13 @@
 "qvR" = (
 /obj/structure/flora/jungle/vines/dead/light_1,
 /turf/closed/wall/rock/brown,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "qwc" = (
 /obj/effect/decal/lv_decals/cave_mud_corner{
 	dir = 5
 	},
 /turf/closed/wall/rock/brown,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "qwn" = (
 /obj/structure/prop/rock/brown{
 	dir = 9;
@@ -37861,11 +37890,6 @@
 /obj/structure/bed/chair/office/dark,
 /turf/open/floor/strata/fake_wood_red,
 /area/lazarus/lazarus/research)
-"qyc" = (
-/turf/closed/wall/mineral/bone_resin{
-	opacity = 0
-	},
-/area/space)
 "qyk" = (
 /obj/item/device/flashlight/lamp/tripod{
 	on = 0
@@ -38026,7 +38050,7 @@
 	},
 /obj/structure/blocker/invisible_wall/no_coverage,
 /turf/open/gm/river/soro,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "qBP" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#ae8686";
@@ -38058,7 +38082,7 @@
 "qCl" = (
 /obj/structure/flora/bush/ausbushes/palebush,
 /turf/closed/wall/strata_ice/jungle,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "qCy" = (
 /obj/structure/machinery/light/small/blue{
 	light_color = "#dae2ff";
@@ -38444,7 +38468,7 @@
 /area/lazarus/ground/colony/north_tcomms_road)
 "qKN" = (
 /turf/closed/wall/lv_outpost/reinforced/hull,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "qKP" = (
 /obj/effect/hunter/ancient_temple/tile_edge_corner,
 /obj/effect/hunter/ancient_temple/deco_border{
@@ -38518,7 +38542,7 @@
 /obj/structure/flora/jungle/vines/blue/light_1,
 /obj/structure/flora/jungle/vines/blue/light_1,
 /turf/closed/wall/strata_ice/jungle,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "qMO" = (
 /obj/structure/largecrate/supply/ammo/shotgun,
 /obj/structure/largecrate/supply/ammo/shotgun{
@@ -38805,7 +38829,7 @@
 	},
 /obj/structure/blocker/invisible_wall/no_coverage,
 /turf/open/gm/river/soro,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "qTW" = (
 /obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/auto_turf/lv_grass/layer1,
@@ -39905,7 +39929,7 @@
 /obj/structure/platform/stone/ancient_temple/alt/east,
 /obj/structure/blocker/invisible_wall/no_coverage,
 /turf/open/gm/river/soro,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "ruT" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/auto_turf/lv_grass/layer1,
@@ -41088,7 +41112,7 @@
 	},
 /obj/structure/blocker/invisible_wall/no_coverage,
 /turf/open/gm/river/soro,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "rWL" = (
 /obj/effect/hunter/ancient_temple/deco_border,
 /obj/structure/prop/hunter/ancient_temple/fountain_head{
@@ -42654,7 +42678,7 @@
 "sGc" = (
 /obj/structure/flora/jungle/vines/dead/light_1,
 /turf/closed/wall/strata_ice/jungle,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "sGg" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#ae8686";
@@ -42758,7 +42782,7 @@
 /turf/open/floor/ancient_temple/fake_wall_dark{
 	name = "sandstone temple wall"
 	},
-/area/space)
+/area/strata/interior/out_of_bounds)
 "sHt" = (
 /obj/structure/platform/stone/ancient_temple/west,
 /obj/structure/platform_decoration/stone/ancient_temple/north,
@@ -43008,7 +43032,7 @@
 "sLv" = (
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/ancient_temple/deco/dark,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "sMk" = (
 /turf/open/auto_turf/lv_grass/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
@@ -43234,7 +43258,7 @@
 "sRy" = (
 /obj/structure/flora/jungle/vines/dead/heavy,
 /turf/closed/wall/ancient_temple/sandstone,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "sRz" = (
 /obj/effect/decal/lv_decals/cave_mud_corner{
 	dir = 6
@@ -43311,7 +43335,7 @@
 	},
 /obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/lv_sand_alt/layer0,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "sSV" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_5{
 	pixel_x = 4;
@@ -43535,7 +43559,7 @@
 "sWY" = (
 /obj/structure/flora/jungle/vines/dead,
 /turf/closed/wall/rock/brown,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "sXb" = (
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 8
@@ -44564,7 +44588,7 @@
 /area/lazarus/ground/caves/west_caves)
 "tua" = (
 /turf/closed/wall/ancient_temple/sandstone,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "tun" = (
 /obj/structure/machinery/light/small/blue{
 	light_color = "#dae2ff"
@@ -45909,7 +45933,7 @@
 /obj/structure/prop/brazier_ancient/alt/frame,
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/ancient_temple/base/dark/alt,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "tVM" = (
 /obj/effect/hunter/ancient_temple/tile_edge/tile_edge_8,
 /obj/effect/hunter/ancient_temple/deco_border/deco_border3{
@@ -46077,7 +46101,7 @@
 	emp_proof = 1
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "tZI" = (
 /turf/open/floor/prison/brown_bright/angled/west,
 /area/lazarus/lazarus/main_hall)
@@ -47104,7 +47128,7 @@
 	},
 /obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/lv_sand_alt/layer0,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "uww" = (
 /obj/structure/barricade/handrail/wire{
 	layer = 3.1;
@@ -47443,7 +47467,7 @@
 /obj/structure/platform/stone/ancient_temple/west,
 /obj/structure/blocker/invisible_wall/no_coverage,
 /turf/open/floor/ancient_temple/floor_grille/water,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "uBG" = (
 /obj/structure/flora/bush/ausbushes/ausbush,
 /turf/open/auto_turf/lv_grass/layer1,
@@ -47673,7 +47697,7 @@
 /obj/structure/platform/stone/ancient_temple/west,
 /obj/structure/blocker/invisible_wall/no_coverage,
 /turf/open/gm/river/soro,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "uHu" = (
 /obj/structure/flora/bush/ausbushes/var3/sunnybush,
 /turf/open/auto_turf/lv_grass/layer1,
@@ -48503,7 +48527,7 @@
 	},
 /obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/lv_sand_alt/layer0,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "uZZ" = (
 /obj/structure/inflatable/popped/door,
 /obj/effect/decal/lv_decals/red_mud_corner,
@@ -50061,7 +50085,7 @@
 "vOV" = (
 /obj/structure/flora/jungle/vines/dead/heavy,
 /turf/closed/wall/rock/brown,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "vOX" = (
 /turf/open/gm/coast/dirt/beachcorner2,
 /area/lazarus/ground/river/east_river)
@@ -50419,7 +50443,7 @@
 	},
 /obj/structure/blocker/invisible_wall,
 /turf/closed/wall/rock/brown,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "vXr" = (
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 8
@@ -50862,7 +50886,7 @@
 "whr" = (
 /obj/structure/flora/jungle/vines/dead/light_3,
 /turf/closed/wall/rock/brown,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "whv" = (
 /obj/structure/barricade/wooden,
 /turf/open/floor/prison/darkredcorners2,
@@ -51493,7 +51517,7 @@
 	},
 /obj/structure/blocker/invisible_wall/no_coverage,
 /turf/open/gm/river/soro,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "wvE" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -51675,7 +51699,7 @@
 /obj/structure/flora/jungle/vines/blue/light_1,
 /obj/structure/flora/jungle/vines/dead/light_1,
 /turf/closed/wall/strata_ice/jungle,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "wzF" = (
 /obj/structure/bed/hybrisa/prisonbed{
 	dir = 9
@@ -52051,7 +52075,7 @@
 /obj/structure/platform/stone/ancient_temple/east,
 /obj/structure/blocker/invisible_wall/no_coverage,
 /turf/open/floor/ancient_temple/floor_grille/water,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "wHT" = (
 /obj/effect/decal/lv_decals/red_mud_corner{
 	dir = 1
@@ -52979,7 +53003,7 @@
 	},
 /obj/structure/blocker/invisible_wall/no_coverage,
 /turf/open/gm/river/soro,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "xdu" = (
 /obj/effect/decal/lv_decals/cave_mud_corner{
 	dir = 8
@@ -53048,7 +53072,7 @@
 /obj/structure/platform/stone/ancient_temple/east,
 /obj/structure/blocker/invisible_wall/no_coverage,
 /turf/open/gm/river/soro,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "xeF" = (
 /obj/structure/sign/safety/fridge,
 /turf/closed/wall/lv_outpost,
@@ -53265,6 +53289,11 @@
 /turf/open/gm/river/soro,
 /area/lazarus/ground/river/east_river)
 "xkg" = (
+/obj/structure/barricade/handrail/wire{
+	layer = 3.1;
+	dir = 4
+	},
+/obj/structure/barricade/handrail/wire,
 /turf/open/floor/prison/cell_stripe/north,
 /area/lazarus/ground/jungle/south_east_jungle)
 "xkl" = (
@@ -53383,7 +53412,7 @@
 	},
 /obj/structure/blocker/invisible_wall/no_coverage,
 /turf/open/gm/river/soro,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "xnd" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/landmark/xeno_spawn,
@@ -53775,7 +53804,7 @@
 /area/lazarus/ground/caves/sand_temple)
 "xvL" = (
 /turf/closed/wall/ancient_temple/sandstone/runed/decor,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "xvV" = (
 /obj/effect/decal/strata_decals/grime/grime4,
 /obj/effect/hunter/ancient_temple/deco_border{
@@ -54313,7 +54342,7 @@
 	},
 /obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/lv_sand_alt/layer0,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "xHX" = (
 /turf/open/floor/ancient_temple/damaged/damage_1,
 /area/lazarus/ground/caves/east_caves)
@@ -55200,7 +55229,7 @@
 "yen" = (
 /obj/structure/flora/jungle/vines/dead/heavy,
 /turf/closed/wall/rock/grey,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "yeA" = (
 /turf/open/gm/coast/dirt/east,
 /area/lazarus/ground/river/central_river/north)
@@ -55299,7 +55328,7 @@
 /obj/structure/blocker/invisible_wall/no_coverage,
 /obj/structure/flora/jungle/vines/dead/light_1,
 /turf/open/gm/river/soro,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "ygF" = (
 /obj/structure/bed/chair,
 /obj/effect/decal/hybrisa/dirt,
@@ -55369,7 +55398,7 @@
 "yii" = (
 /obj/effect/decal/strata_decals/grime/grime3,
 /turf/closed/wall/ancient_temple/sandstone,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "yiW" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/auto_turf/lv_grass/layer1,
@@ -88201,7 +88230,7 @@ klq
 nnJ
 nnJ
 nYA
-yaE
+gKR
 rRZ
 cFl
 rqk
@@ -88256,7 +88285,7 @@ lVJ
 aNR
 aNR
 tua
-lVJ
+tua
 tua
 xvL
 xvL
@@ -88479,7 +88508,7 @@ gwz
 gwz
 lVJ
 lVJ
-qyc
+tua
 uos
 jik
 pco
@@ -89097,7 +89126,7 @@ hSR
 nnJ
 nnJ
 klq
-yaE
+oKE
 rRZ
 xkg
 xDP
@@ -92063,7 +92092,7 @@ tua
 lVJ
 lVJ
 lVJ
-lVJ
+tua
 tua
 tua
 xvL

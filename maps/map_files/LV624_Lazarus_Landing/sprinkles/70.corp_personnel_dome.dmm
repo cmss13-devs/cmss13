@@ -456,7 +456,7 @@
 "iK" = (
 /obj/structure/flora/jungle/vines/dead/heavy,
 /turf/closed/wall/strata_ice/jungle,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "jc" = (
 /turf/open/auto_turf/lv_grass/layer0,
 /area/lazarus/ground/jungle/south_west_jungle)
@@ -559,7 +559,7 @@
 "lO" = (
 /obj/structure/flora/jungle/vines/dead/light_1,
 /turf/closed/wall/strata_ice/jungle,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "mi" = (
 /obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
 	dir = 9
@@ -757,7 +757,7 @@
 "oY" = (
 /obj/structure/flora/jungle/vines/blue/light_1,
 /turf/closed/wall/strata_ice/jungle,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "pb" = (
 /obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
 	dir = 6
@@ -941,7 +941,7 @@
 /area/lazarus/lazarus/secure_storage)
 "sh" = (
 /turf/closed/wall/lv_outpost/reinforced/hull,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "sk" = (
 /obj/structure/sign/safety/restrictedarea{
 	pixel_y = -24
@@ -1363,7 +1363,7 @@
 /area/lazarus/ground/jungle/south_west_jungle)
 "Ab" = (
 /turf/closed/wall/strata_ice/jungle,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "Aw" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/gm/dirt/brown/variant_5/west,
@@ -1836,7 +1836,7 @@
 "Ky" = (
 /obj/structure/flora/jungle/vines/blue/light_3,
 /turf/closed/wall/strata_ice/jungle,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "KF" = (
 /obj/effect/decal/lv_decals/red_mud_corner{
 	dir = 8
@@ -1950,7 +1950,7 @@
 "Mm" = (
 /obj/structure/flora/jungle/vines/blue/light_1,
 /turf/closed/wall/lv_outpost/reinforced/hull,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "Ms" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/lv_decals/red_mud_corner{
@@ -2139,7 +2139,7 @@
 "Pz" = (
 /obj/structure/flora/jungle/vines/dead/light_2,
 /turf/closed/wall/strata_ice/jungle,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "PD" = (
 /obj/structure/machinery/door_control/cl{
 	pixel_x = -23;
@@ -2545,7 +2545,7 @@
 "Xj" = (
 /obj/structure/flora/jungle/vines/blue/light_2,
 /turf/closed/wall/strata_ice/jungle,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "Xx" = (
 /obj/effect/hybrisa/misc/fake/wire/yellow{
 	dir = 1;
@@ -2563,7 +2563,7 @@
 "XF" = (
 /obj/structure/flora/jungle/vines/dead/light_3,
 /turf/closed/wall/strata_ice/jungle,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "XG" = (
 /turf/open/gm/dirt/brown/variant_5,
 /area/lazarus/ground/jungle/south_central_jungle)
@@ -2638,7 +2638,7 @@
 	emp_proof = 1
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/space)
+/area/strata/interior/out_of_bounds)
 "YR" = (
 /obj/item/tool/warning_cone,
 /turf/open/floor/brown_dirt/random_rocks_alt{

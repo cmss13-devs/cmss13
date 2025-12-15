@@ -469,7 +469,8 @@
 	walltype = WALL_ANCIENT_BASE
 	baseturfs = /turf/open/gm/dirt
 	var/decoration_type
-	blend_turfs = list(/turf/closed/wall/mineral, /turf/closed/wall/mineral/sandstone/runed, /turf/closed/wall/mineral/sandstone/runed/decor, /turf/closed/wall/mineral/sandstone/runed/deco_1, /turf/closed/wall/mineral/sandstone/runed/deco_2)
+	blend_turfs = list(/turf/closed/wall/mineral, /turf/closed/wall/mineral/sandstone/runed, /turf/closed/wall/mineral/sandstone/runed/decor, /turf/closed/wall/mineral/sandstone/runed/deco_1, /turf/closed/wall/mineral/sandstone/runed/deco_2, /turf/closed/wall/ancient_temple/sandstone, /turf/closed/wall/ancient_temple/sandstone/runed)
+	blend_objects = list(/obj/structure/prop/hunter/ancient_temple/collapsed_wall, /obj/structure/machinery/door, /obj/structure/window_frame, /obj/structure/window/framed)
 
 /turf/closed/wall/mineral/sandstone/LateInitialize()
 	. = ..()

@@ -88,6 +88,35 @@
 	if(is_zoomed)
 		zoom_out()
 
+/mob/living/carbon/xenomorph/runner/MouseDrop_T(atom/dropping, mob/user)
+	. = ..()
+	if(!ishuman(user))
+		return
+	if(!back)
+		balloon_alert(user,"This runner isn't wearing a saddle!")
+		return
+	if(!do_after(user, 3 SECONDS, NONE, src))
+		return
+	var/obj/item/storage/backpack/marine/saddle/saddle = back
+	saddle.forceMove(get_turf(src))
+	saddle.layer = initial(saddle.layer)
+	saddle.dropped(src)
+
+/mob/living/carbon/xenomorph/runner/can_mount(mob/living/user, target_mounting = FALSE)
+	if(!target_mounting)
+		user = pulling
+	if(!ishuman(user))
+		return FALSE
+	var/mob/living/carbon/human/human_pulled = user
+	if(human_pulled.stat == DEAD)
+		return FALSE
+	if(!istype(back, /obj/item/storage/backpack/marine/saddle/)) //cant ride without a saddle
+		return FALSE
+	return TRUE
+
+/mob/living/carbon/xenomorph/runner/resisted_against(datum/source)
+	unbuckle_mob(source)
+
 /datum/behavior_delegate/runner_base
 	name = "Base Runner Behavior Delegate"
 

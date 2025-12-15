@@ -48,7 +48,6 @@ GLOBAL_LIST_INIT(admin_verbs_default, list(
 	/client/proc/hide_admin_verbs,
 	/client/proc/vehicle_panel,
 	/client/proc/in_view_panel, /*allows application of aheal/sleep in an AOE*/
-	/client/proc/toggle_lz_resin,
 	/client/proc/strip_all_in_view,
 	/client/proc/rejuvenate_all_in_view,
 	/client/proc/rejuvenate_all_humans_in_view,
@@ -57,12 +56,12 @@ GLOBAL_LIST_INIT(admin_verbs_default, list(
 	/datum/admins/proc/togglesleep,
 	/datum/admins/proc/sleepall,
 	/datum/admins/proc/wakeall,
-	/client/proc/toggle_lz_protection,
 	/client/proc/jump_to_object,
 	/client/proc/jumptomob,
 	/client/proc/toggle_own_ghost_vis,
 	/client/proc/cmd_admin_check_contents,
 	/client/proc/clear_mutineers,
+	/client/proc/set_commander, /*Allows manually choosing an active commander and giving them access to CIC.*/
 	/datum/admins/proc/directnarrateall,
 	/datum/admins/proc/subtlemessageall,
 	/datum/admins/proc/alertall,
@@ -103,6 +102,8 @@ GLOBAL_LIST_INIT(admin_verbs_admin, list(
 GLOBAL_LIST_INIT(admin_verbs_ban, list(
 	/client/proc/unban_panel,
 	/client/proc/stickyban_panel,
+	/client/proc/ipcheck_allow,
+	/client/proc/ipcheck_revoke,
 	// /client/proc/jobbans // Disabled temporarily due to 15-30 second lag spikes.
 ))
 
@@ -114,6 +115,9 @@ GLOBAL_LIST_INIT(admin_verbs_sounds, list(
 
 GLOBAL_LIST_INIT(admin_verbs_minor_event, list(
 	/client/proc/cmd_admin_change_custom_event,
+	/client/proc/summon_thunderdome,
+	/client/proc/dispel_any_thunderdome,
+	/client/proc/clean_thunderdome,
 	/datum/admins/proc/admin_force_distress,
 	/datum/admins/proc/admin_force_ERT_shuttle,
 	/client/proc/enable_event_mob_verbs,
@@ -124,31 +128,18 @@ GLOBAL_LIST_INIT(admin_verbs_minor_event, list(
 	/client/proc/cmd_admin_object_narrate,
 	/client/proc/cmd_admin_create_centcom_report, //Messages from USCM command/other factions.
 	/client/proc/cmd_admin_create_predator_report, //Predator ship AI report
-	/client/proc/toggle_ob_spawn,
-	/client/proc/toggle_sniper_upgrade,
-	/client/proc/toggle_attack_dead,
-	/client/proc/toggle_strip_drag,
-	/client/proc/toggle_disposal_mobs,
-	/client/proc/toggle_uniform_strip,
-	/client/proc/toggle_strong_defibs,
-	/client/proc/toggle_blood_optimization,
-	/client/proc/toggle_combat_cas,
-	/client/proc/toggle_lz_protection, //Mortar hitting LZ
 	/client/proc/cmd_admin_medals_panel, // Marine and Xeno medals editor panel
 	/client/proc/force_event,
 	/client/proc/toggle_events,
-	/client/proc/toggle_shipside_sd,
 	/client/proc/shakeshipverb,
 	/client/proc/adminpanelweapons,
 	/client/proc/admin_general_quarters,
 	/client/proc/admin_biohazard_alert,
 	/client/proc/admin_aicore_alert,
-	/client/proc/toggle_hardcore_perma,
-	/client/proc/toggle_bypass_joe_restriction,
-	/client/proc/toggle_joe_respawns,
-	/client/proc/toggle_lz_hazards,
 	/datum/admins/proc/open_shuttlepanel,
 	/client/proc/get_whitelisted_clients,
+	/client/proc/modifiers_panel,
+	/client/proc/setup_delayed_event_spawns,
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_major_event, list(
@@ -168,7 +159,8 @@ GLOBAL_LIST_INIT(admin_verbs_major_event, list(
 	/client/proc/enable_podlauncher,
 	/client/proc/change_taskbar_icon,
 	/client/proc/change_weather,
-	/client/proc/admin_blurb
+	/client/proc/admin_blurb,
+	/client/proc/change_observed_player
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_spawn, list(
@@ -185,6 +177,7 @@ GLOBAL_LIST_INIT(admin_verbs_server, list(
 	/datum/admins/proc/toggleaban,
 	/datum/admins/proc/end_round,
 	/datum/admins/proc/change_ground_map,
+	/datum/admins/proc/prep_events,
 	/datum/admins/proc/change_ship_map,
 	/datum/admins/proc/vote_ground_map,
 	/datum/admins/proc/override_ground_map,
@@ -226,6 +219,7 @@ GLOBAL_LIST_INIT(admin_verbs_debug, list(
 	/datum/admins/proc/view_tgui_log, /*shows the server TGUI log for this round*/
 	/client/proc/admin_blurb,
 	/datum/admins/proc/open_shuttlepanel,
+	/client/proc/allow_browser_inspect,
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_debug_advanced, list(
@@ -317,11 +311,8 @@ GLOBAL_LIST_INIT(admin_verbs_teleport, list(
 	/client/proc/toggle_noclip
 ))
 
-GLOBAL_LIST_INIT(roundstart_mod_verbs, list(
-	/client/proc/toggle_ob_spawn
-))
-
 GLOBAL_LIST_INIT(mentor_verbs, list(
+	/client/proc/deadmin_self,
 	/client/proc/cmd_mentor_say,
 	/datum/admins/proc/imaginary_friend,
 	/client/proc/toggle_newplayer_ghost_hud,
@@ -406,7 +397,8 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 /client/proc/set_ooc_color_self()
 	set category = "OOC.OOC"
 	set name = "OOC Text Color - Self"
-	if(!admin_holder && !donator) return
+	if(!admin_holder && !donator)
+		return
 	var/new_ooccolor = input(src, "Please select your OOC color.", "OOC color") as color|null
 	if(new_ooccolor)
 		prefs.ooccolor = new_ooccolor
@@ -418,9 +410,11 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 #define AUTOBANTIME 10
 
 /client/proc/warn(warned_ckey)
-	if(!check_rights(R_ADMIN)) return
+	if(!check_rights(R_ADMIN))
+		return
 
-	if(!warned_ckey || !istext(warned_ckey)) return
+	if(!warned_ckey || !istext(warned_ckey))
+		return
 	if(warned_ckey in GLOB.admin_datums)
 		to_chat(usr, "<font color='red'>Error: warn(): You can't warn admins.</font>")
 		return
@@ -455,7 +449,8 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 	for(var/v in GLOB.diseases)
 		disease_names.Add(copytext("[v]", 16, 0))
 	var/datum/disease/D = tgui_input_list(usr, "Choose the disease to give to that guy", "ACHOO", disease_names)
-	if(!D) return
+	if(!D)
+		return
 	var/path = text2path("/datum/disease/[D]")
 	T.contract_disease(new path, 1)
 
@@ -465,7 +460,7 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 /client/proc/object_talk(msg as text) // -- TLE
 	set category = "Admin.Events"
 	set name = "Object Say"
-	set desc = "Display a message to everyone who can hear the target"
+	set desc = "Display a message to everyone who can hear the target."
 	if(mob.control_object)
 		if(!msg)
 			return
@@ -476,7 +471,8 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 /client/proc/toggle_log_hrefs()
 	set name = "Toggle href Logging"
 	set category = "Server"
-	if(!admin_holder) return
+	if(!admin_holder)
+		return
 	if(config)
 		if(CONFIG_GET(flag/log_hrefs))
 			CONFIG_SET(flag/log_hrefs, FALSE)
@@ -490,7 +486,8 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 	set name = "Edit Appearance"
 	set category = null
 
-	if(!check_rights(R_ADMIN)) return
+	if(!check_rights(R_ADMIN))
+		return
 
 	if(!istype(M, /mob/living/carbon/human))
 		to_chat(usr, SPAN_DANGER("You can only do this to humans!"))
@@ -527,12 +524,14 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 	if(new_fstyle)
 		M.f_style = new_fstyle
 
-	var/new_gender = alert(usr, "Please select gender.", "Character Generation", "Male", "Female")
-	if (new_gender)
-		if(new_gender == "Male")
-			M.gender = MALE
-		else
+	var/new_gender = alert(usr, "Please select gender.", "Character Generation", "Male", "Female", "Non-Binary")
+	if(new_gender)
+		if(new_gender == "Female")
 			M.gender = FEMALE
+		else if(new_gender == "Non-Binary")
+			M.gender = PLURAL
+		else
+			M.gender = MALE
 	M.update_hair()
 	M.update_body()
 
@@ -547,6 +546,8 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 	else
 		to_chat(usr, SPAN_BOLDNOTICE("You will no longer get attack log messages."))
 
+	prefs.save_preferences()
+
 
 /client/proc/toggleffattacklogs()
 	set name = "Toggle FF Attack Log Messages"
@@ -558,6 +559,7 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 	else
 		to_chat(usr, SPAN_BOLDNOTICE("You will no longer get friendly fire attack log messages."))
 
+	prefs.save_preferences()
 
 /client/proc/toggledebuglogs()
 	set name = "Toggle Debug Log Messages"
@@ -569,6 +571,8 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 	else
 		to_chat(usr, SPAN_BOLDNOTICE("You will no longer get debug log messages."))
 
+	prefs.save_preferences()
+
 // TODO Port this to Statpanel Options Window probably
 /client/proc/togglestatpanelsplit()
 	set name = "Toggle Split Tabs"
@@ -578,6 +582,8 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 		to_chat(usr, SPAN_BOLDNOTICE("You enabled split admin tabs in Statpanel."))
 	else
 		to_chat(usr, SPAN_BOLDNOTICE("You disabled split admin tabs in Statpanel."))
+
+	prefs.save_preferences()
 
 /client/proc/togglenichelogs()
 	set name = "Toggle Niche Log Messages"
@@ -589,6 +595,7 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 	else
 		to_chat(usr, SPAN_BOLDNOTICE("You will no longer get niche log messages."))
 
+	prefs.save_preferences()
 
 /client/proc/announce_random_fact()
 	set name = "Announce Random Fact"
@@ -612,6 +619,8 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 	else
 		to_chat(usr, SPAN_BOLDNOTICE("You will no longer hear an audio cue for ARES and Prayer messages."))
 
+	prefs.save_preferences()
+
 /client/proc/toggle_admin_stealth()
 	set name = "Toggle Admin Stealth"
 	set category = "Preferences.Admin"
@@ -621,6 +630,8 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 	else
 		to_chat(usr, SPAN_BOLDNOTICE("You disabled admin stealth mode."))
 
+	prefs.save_preferences()
+
 /client/proc/toggle_admin_afk_safety()
 	set name = "Toggle AFK Safety"
 	set category = "Preferences.Admin"
@@ -629,6 +640,8 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 		to_chat(usr, SPAN_BOLDNOTICE("You enabled afk safety. You will no longer be kicked by afk timer."))
 	else
 		to_chat(usr, SPAN_BOLDNOTICE("You disabled afk safety. You will now be auto kicked by the afk timer."))
+
+	prefs.save_preferences()
 
 #undef MAX_WARNS
 #undef AUTOBANTIME

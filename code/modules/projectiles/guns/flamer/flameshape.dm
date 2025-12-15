@@ -78,7 +78,8 @@
 
 		var/turf/prev_T = source_turf
 		for(var/turf/T in turfs)
-			if(istype(T,/turf/open/space)) continue
+			if(istype(T,/turf/open/space))
+				continue
 			if(T == F.loc)
 				prev_T = T
 				continue

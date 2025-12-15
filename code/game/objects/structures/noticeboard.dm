@@ -3,7 +3,7 @@
 /obj/structure/noticeboard
 	name = "notice board"
 	desc = "A board for pinning important notices upon."
-	icon = 'icons/obj/structures/props/stationobjs.dmi'
+	icon = 'icons/obj/structures/props/furniture/noticeboard.dmi'
 	icon_state = "noticeboard"
 	density = FALSE
 	anchored = TRUE
@@ -97,7 +97,8 @@
 			return TRUE
 
 /obj/structure/noticeboard/proc/update_overlays()
-	if(overlays) overlays.Cut()
+	if(overlays)
+		overlays.Cut()
 	if(notices)
 		overlays += image(icon, "notices_[notices]")
 

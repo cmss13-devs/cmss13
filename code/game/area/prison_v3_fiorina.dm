@@ -14,6 +14,7 @@
 /area/fiorina/oob
 	name = "Fiorina - Out Of Bounds"
 	icon_state = "oob"
+	requires_power = FALSE
 	ceiling = CEILING_MAX
 	is_resin_allowed = FALSE
 	flags_area = AREA_NOTUNNEL|AREA_UNWEEDABLE
@@ -160,6 +161,11 @@
 /area/fiorina/station/park
 	name = "Fiorina - Park"
 	icon_state = "station0"
+
+/area/fiorina/station/clf_ship
+	name = "Tramp Freighter \"Rocinante\""
+	icon_state = "security_hub"
+	ceiling = CEILING_METAL
 
 /area/fiorina/station/transit_hub
 	name = "Fiorina - Transit Hub"

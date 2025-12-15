@@ -27,6 +27,11 @@ class DMM:
             return _parse(f.read())
 
     @staticmethod
+    def from_file_bytes(fname):
+        with open(fname, 'r', encoding=ENCODING) as f:
+            return f.read().encode(ENCODING)
+
+    @staticmethod
     def from_bytes(bytes):
         return _parse(bytes.decode(ENCODING))
 

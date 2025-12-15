@@ -122,6 +122,7 @@
 				xeno.eggs_cur++
 				to_chat(xeno, SPAN_XENONOTICE("We generate an egg. Now sheltering: [xeno.eggs_cur] / [xeno.eggs_max]."))
 				xeno.update_icons()
-
+			
 #undef EGGSAC_OFF_WEED_EGGCAP
 #undef EGGSAC_EGG_SUSTAIN_DISTANCE
+

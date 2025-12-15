@@ -113,8 +113,10 @@
 
 /obj/structure/closet/secure_closet/engineering_personal/Initialize()
 	. = ..()
-	if(!is_mainship_level(z) && prob(70)) new /obj/item/clothing/accessory/storage/black_vest/brown_vest(src)
-	else new /obj/item/clothing/accessory/storage/webbing(src)
+	if(!is_mainship_level(z) && prob(70))
+		new /obj/item/clothing/accessory/storage/black_vest/brown_vest(src)
+	else
+		new /obj/item/clothing/accessory/storage/webbing(src)
 	new /obj/item/storage/toolbox/mechanical(src)
 	if(!is_ground_level(z))
 		new /obj/item/device/radio/headset/almayer/mt(src)
@@ -147,7 +149,8 @@
 /obj/structure/closet/secure_closet/atmos_personal/Initialize()
 	. = ..()
 	if (!is_mainship_level(z) && prob(70)) new /obj/item/clothing/accessory/storage/black_vest/brown_vest(src)
-	else new /obj/item/clothing/accessory/storage/webbing(src)
+	else
+		new /obj/item/clothing/accessory/storage/webbing(src)
 	new /obj/item/clothing/suit/fire/firefighter(src)
 	new /obj/item/storage/backpack/industrial(src)
 	new /obj/item/device/flashlight(src)

@@ -70,9 +70,8 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 
 	change_tick_lag(CONFIG_GET(number/ticklag))
 
-	// As of byond 515.1637 time2text now treats 0 like it does negative numbers so the hour is wrong
-	// We could instead use world.timezone but IMO better to not assume lummox will keep time2text in parity with it
-	GLOB.timezoneOffset = text2num(time2text(10,"hh")) * 36000
+	// I hate that this logic keeps having to change
+	GLOB.timezoneOffset = world.timezone * 36000
 
 	Master.Initialize(10, FALSE, TRUE)
 
@@ -87,8 +86,9 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 	update_status()
 
 	//Scramble the coords obsfucator
-	GLOB.obfs_x = rand(-500, 500) //A number between -100 and 100
-	GLOB.obfs_y = rand(-500, 500) //A number between -100 and 100
+	GLOB.obfs_x = rand(-500, 500) //A number between -500 and 500
+	GLOB.obfs_y = rand(-500, 500) //A number between -500 and 500
+	GLOB.obfs_z = rand(-10, 10)   //A number between -10 and 10
 
 	// If the server's configured for local testing, get everything set up ASAP.
 	// Shamelessly stolen from the test manager's host_tests() proc
@@ -222,6 +222,9 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 		return json_encode(response)
 
 /world/Reboot(reason)
+	if(reason == 1 || reason == 2) // host/topic
+		return
+
 	Master.Shutdown()
 	send_reboot_sound()
 	var/server = CONFIG_GET(string/server)
@@ -373,15 +376,28 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 /world/proc/HandleTestRun()
 	// Wait for the game ticker to initialize
 	Master.sleep_offline_after_initializations = FALSE
+
+#ifdef UNIT_TESTS
+	SSticker.delay_start = TRUE
+#else
 	SSticker.start_immediately = TRUE
+#endif
 	UNTIL(SSticker.initialized)
+
+	// Run unit tests on lobby as neeeded
+#ifdef UNIT_TESTS
+	RunUnitTests(TEST_STAGE_PREGAME)
+	UNTIL(!SSticker.delay_start)
+	SSticker.start_immediately = TRUE
+#endif
 
 	//trigger things to run the whole process
 	SSticker.request_start()
 	CONFIG_SET(number/round_end_countdown, 0)
+
 	var/datum/callback/cb
 #ifdef UNIT_TESTS
-	cb = CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(RunUnitTests))
+	cb = CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(RunUnitTests), TEST_STAGE_GAME)
 #else
 	cb = VARSET_CALLBACK(SSticker, force_ending, TRUE)
 #endif

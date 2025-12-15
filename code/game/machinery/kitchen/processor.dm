@@ -119,7 +119,7 @@
 		return 1
 	if(!P.can_use(user))
 		return 1
-	user.visible_message("[user] put [what] into [src].", \
+	user.visible_message("[user] put [what] into [src].",
 		"You put [what] into [src].")
 	user.drop_held_item()
 	what.forceMove(src)
@@ -136,16 +136,20 @@
 	for(var/O in src.contents)
 		var/datum/food_processor_process/P = select_recipe(O)
 		if (!P)
-			log_admin("DEBUG: [O] in processor havent suitable recipe. How do you put it in?") //-rastaf0
+			log_admin("DEBUG: [O] in processor does not have a suitable recipe. How do you put it in?") //-rastaf0
 			continue
 		src.processing = 1
-		user.visible_message(SPAN_NOTICE("[user] turns on [src]."), \
-			"You turn on [src].", \
+		user.visible_message(SPAN_NOTICE("[user] turns on [src]."),
+			"You turn on [src].",
 			"You hear a food processor.")
 		playsound(src.loc, 'sound/machines/blender.ogg', 25, 1)
 		use_power(500)
 		sleep(P.time)
 		P.process(src.loc, O)
 		src.processing = 0
-	src.visible_message(SPAN_NOTICE("\the [src] finished processing."), \
+	src.visible_message(SPAN_NOTICE("\the [src] finished processing."),
 		"You hear the food processor stopping/")
+
+/obj/structure/machinery/processor/yautja
+	name = "food grinder"
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'

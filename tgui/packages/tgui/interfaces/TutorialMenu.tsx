@@ -1,9 +1,8 @@
 import { classes } from 'common/react';
 import { useState } from 'react';
-
-import { useBackend } from '../backend';
-import { Box, Button, Divider, Section, Stack, Tabs } from '../components';
-import { Window } from '../layouts';
+import { useBackend } from 'tgui/backend';
+import { Box, Button, Divider, Section, Stack, Tabs } from 'tgui/components';
+import { Window } from 'tgui/layouts';
 
 type Tutorial = {
   name: string;

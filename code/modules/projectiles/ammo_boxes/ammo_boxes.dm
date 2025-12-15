@@ -3,6 +3,9 @@
 /obj/item/ammo_box
 	name = "\improper generic ammo box"
 	icon = 'icons/obj/items/weapons/guns/ammo_boxes/boxes_and_lids.dmi'
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/ammo_boxes.dmi'
+	)
 	icon_state = "base"
 	w_class = SIZE_HUGE
 	var/empty = FALSE
@@ -217,7 +220,7 @@
 	else
 		for(var/obj/item/ammo_magazine/AM in contents)
 			severity += AM.current_rounds
-		severity = floor(severity / 150)
+		severity = clamp(severity / 150, 0, 20) // explosion caps at 3k bullets
 	return severity
 
 /obj/item/ammo_box/magazine/process_burning(datum/cause_data/flame_cause_data)

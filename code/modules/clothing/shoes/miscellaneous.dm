@@ -3,7 +3,7 @@
 	name = "brown shoes"
 	icon_state = "brown"
 	item_state = "brown"
-	permeability_coefficient = 0.05
+
 	flags_inventory = NOSLIPPING
 
 	var/list/clothing_choices = list()
@@ -30,7 +30,7 @@
 
 /obj/item/clothing/shoes/combat //Basically SWAT shoes combined with galoshes.
 	name = "combat boots"
-	desc = "When you REALLY want to turn up the heat"
+	desc = "When you REALLY want to turn up the heat."
 	icon_state = "swat"
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
@@ -42,27 +42,6 @@
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	flags_inventory = NOSLIPPING
 	siemens_coefficient = 0.6
-
-	flags_cold_protection = BODY_FLAG_FEET
-	min_cold_protection_temperature = SHOE_MIN_COLD_PROT
-	flags_heat_protection = BODY_FLAG_FEET
-	max_heat_protection_temperature = SHOE_MAX_HEAT_PROT
-
-/obj/item/clothing/shoes/space_ninja
-	name = "ninja shoes"
-	desc = "A pair of running shoes. Excellent for running and even better for smashing skulls."
-	icon_state = "s-ninja"
-	permeability_coefficient = 0.01
-	flags_inventory = NOSLIPPING
-	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_laser = CLOTHING_ARMOR_LOW
-	armor_energy = CLOTHING_ARMOR_LOW
-	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
-	armor_bio = CLOTHING_ARMOR_HIGH
-	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
-	siemens_coefficient = 0.2
 
 	flags_cold_protection = BODY_FLAG_FEET
 	min_cold_protection_temperature = SHOE_MIN_COLD_PROT
@@ -82,10 +61,10 @@
 	flags_armor_protection = BODY_FLAG_FEET
 
 /obj/item/clothing/shoes/galoshes
-	desc = "Rubber boots"
+	desc = "Rubber boots."
 	name = "galoshes"
 	icon_state = "galoshes"
-	permeability_coefficient = 0.05
+
 	flags_inventory = NOSLIPPING
 
 /obj/item/clothing/shoes/clown_shoes
@@ -118,7 +97,7 @@
 
 /obj/item/clothing/shoes/cyborg
 	name = "cyborg boots"
-	desc = "Shoes for a cyborg costume"
+	desc = "Shoes for a cyborg costume."
 	icon_state = "boots"
 
 /obj/item/clothing/shoes/slippers
@@ -154,7 +133,7 @@
 
 /obj/item/clothing/shoes/snow
 	name = "snow boots"
-	desc = "When your feet are as cold as your heart"
+	desc = "When your feet are as cold as your heart."
 	icon_state = "swat"
 	siemens_coefficient = 0.6
 	flags_cold_protection = BODY_FLAG_FEET
@@ -164,7 +143,7 @@
 
 /obj/item/clothing/shoes/souto
 	name = "Souto Man boots"
-	desc = "\improper Souto Man's boots. Harder than the kick of Souto Red"
+	desc = "\improper Souto Man's boots. Harder than the kick of Souto Red."
 	icon_state = "souto_man"
 	item_state = "souto_man"
 	flags_inventory = CANTSTRIP|NOSLIPPING

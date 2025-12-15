@@ -15,7 +15,7 @@
 		return
 
 	if(!istype(old_loc, /turf/open/space))
-		var/turf/projected = get_ranged_target_turf(crosser.loc, dir, 10)
+		var/turf/projected = get_ranged_target_turf(crosser, dir, 10)
 
 		INVOKE_ASYNC(crosser, TYPE_PROC_REF(/atom/movable, throw_atom), projected, 50, SPEED_FAST, null, TRUE)
 
@@ -24,7 +24,7 @@
 /turf/open/space/transit/proc/handle_crosser(atom/movable/crosser)
 	if(QDELETED(crosser))
 		return
-	if(crosser.can_paradrop()) //let's not delete people who arent meant to be deleted... This shouldn't happen normally, but if it does, congratulations, you gamed the system
+	if(crosser.can_paradrop()) //let's not delete people who aren't meant to be deleted... This shouldn't happen normally, but if it does, congratulations, you gamed the system
 		return
 	qdel(crosser)
 
@@ -51,6 +51,8 @@
 		var/turf/location = get_turf(dropship.paradrop_signal.signal_loc)
 		for(var/turf/turf as anything in RANGE_TURFS(crosser.get_paradrop_scatter(), location))
 			var/area/turf_area = get_area(turf)
+			if(istype(turf, /turf/open/space))
+				continue
 			if(!turf_area || CEILING_IS_PROTECTED(turf_area.ceiling, CEILING_PROTECTION_TIER_1))
 				continue
 			if(turf.density)
@@ -94,7 +96,7 @@
 				continue
 
 		if(!istype(possible_turf) || is_blocked_turf(possible_turf) || istype(possible_turf, /turf/open/space))
-			continue // couldnt find one in 10 loops, check another area
+			continue // couldn't find one in 10 loops, check another area
 
 		// we found a good turf, lets drop em
 		if(crosser.can_paradrop())
@@ -106,7 +108,7 @@
 	//we didn't find a turf to drop them... This shouldn't happen usually
 	if(crosser.can_paradrop()) //don't delete them if they were supposed to paradrop
 		to_chat(crosser, SPAN_BOLDWARNING("Your harness got stuck and you got thrown back in the dropship."))
-		var/turf/projected = get_ranged_target_turf(crosser.loc, turn(dir, 180), 15)
+		var/turf/projected = get_ranged_target_turf(crosser, turn(dir, 180), 15)
 		INVOKE_ASYNC(crosser, TYPE_PROC_REF(/atom/movable, throw_atom), projected, 50, SPEED_FAST, null, TRUE)
 		return
 	return ..() // they couldn't be dropped, just delete them

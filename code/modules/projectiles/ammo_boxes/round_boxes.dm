@@ -170,3 +170,70 @@
 
 /obj/item/ammo_box/rounds/pistol/incen/empty
 	empty = TRUE
+
+//----------------8.88x51mm round boxes for L23 battle rifles------------------
+
+/obj/item/ammo_box/rounds/l23
+	name = "\improper rifle ammunition box (8.88x51mm)"
+	desc = "A 8.88x51mm ammunition box. Used to refill L23 regular and extended magazines. It comes with a leather strap allowing to wear it on the back."
+	icon_state = "base_l23"
+	overlay_content = "_l23_reg"
+	caliber = "8.88x51mm"
+	default_ammo = /datum/ammo/bullet/rifle/l23
+
+/obj/item/ammo_box/rounds/l23/empty
+	empty = TRUE
+
+/obj/item/ammo_box/rounds/l23/ap
+	name = "\improper rifle ammunition box (8.88x51mm AP)"
+	desc = "A 8.88x51mm ammunition box. Used to refill L23 AP magazines. It comes with a leather strap allowing to wear it on the back."
+	overlay_content = "_l23_ap"
+	default_ammo = /datum/ammo/bullet/rifle/l23/ap
+
+/obj/item/ammo_box/rounds/l23/ap/empty
+	empty = TRUE
+
+/obj/item/ammo_box/rounds/l23/heap
+	name = "\improper rifle ammunition box (8.88x51mm HEAP)"
+	desc = "A 8.88x51mm ammunition box. Used to refill L23 HEAP magazines. It comes with a leather strap allowing to wear it on the back."
+	overlay_content = "_l23_heap"
+	default_ammo = /datum/ammo/bullet/rifle/l23/heap
+
+/obj/item/ammo_box/rounds/l23/heap/empty
+	empty = TRUE
+
+/obj/item/ammo_box/rounds/l23/incendiary
+	name = "\improper rifle ammunition box (8.88x51mm Incendiary)"
+	desc = "A 8.88x51mm ammunition box. Used to refill L23 incendiary magazines. It comes with a leather strap allowing to wear it on the back."
+	overlay_content = "_l23_incen"
+	default_ammo = /datum/ammo/bullet/rifle/l23/incendiary
+	bullet_amount = 420 //Incen is OP
+	max_bullet_amount = 420
+
+/obj/item/ammo_box/rounds/l23/incendiary/empty
+	empty = TRUE
+
+//----------------10x20mm (APC) Ammunition Boxes (for M10 Auto-Pistol)------------------
+
+/obj/item/ammo_box/rounds/pistol/m10
+	name = "\improper pistol ammunition box (10x20mm-APC)"
+	desc = "A 10x20mm-APC ammunition box. Used to refill M10 regular, extended and drum magazines. It comes with a leather strap allowing to wear it on the back."
+	caliber = "10x20mm-APC"
+	icon_state = "base_m10"
+	overlay_content = "_apc"
+	default_ammo = /datum/ammo/bullet/pistol/m10
+	bullet_amount = 984 // M10 mags can hold a LOT, regular size is not enough.
+	max_bullet_amount = 984
+
+/obj/item/ammo_box/rounds/pistol/m10/empty
+	empty = TRUE
+
+/obj/item/ammo_box/rounds/pistol/m10/ap
+	name = "\improper pistol ammunition box (10x20mm-APC (AP))"
+	desc = "A 10x20mm-APC armor-piercing ammunition box. Used to refill M10 regular, extended and drum AP magazines. It comes with a leather strap allowing to wear it on the back."
+	caliber = "10x20mm-APC"
+	overlay_content = "_apc_ap"
+	default_ammo = /datum/ammo/bullet/pistol/m10/ap
+
+/obj/item/ammo_box/rounds/pistol/m10/ap/empty
+	empty = TRUE

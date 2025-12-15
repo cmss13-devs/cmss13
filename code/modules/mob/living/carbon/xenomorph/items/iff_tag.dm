@@ -1,7 +1,7 @@
 /obj/item/iff_tag
 	name = "xenomorph IFF tag"
 	desc = "A tag containing a small IFF computer that gets inserted into the carapace of a xenomorph. You can modify the IFF groups by using an access tuner on it, or on the xeno if it's already implanted."
-	icon = 'icons/obj/items/xeno_tag.dmi'
+	icon = 'icons/obj/items/Marine_Research.dmi'
 	icon_state = "xeno_tag"
 	var/list/faction_groups = list()
 
@@ -61,7 +61,7 @@
 /obj/item/storage/xeno_tag_case
 	name = "xenomorph tag case"
 	desc = "A sturdy case designed to store and charge xenomorph IFF tags. Provided by the Wey-Yu Research and Data(TM) Division."
-	icon = 'icons/obj/items/xeno_tag.dmi'
+	icon = 'icons/obj/items/Marine_Research.dmi'
 	icon_state = "tag_box"
 	use_sound = "toolbox"
 	storage_slots = 8

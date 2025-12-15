@@ -2,26 +2,28 @@
 	return (mob_size < MOB_SIZE_BIG && caste.can_vent_crawl)
 
 /mob/living/carbon/xenomorph/ventcrawl_carry()
-	if(length(stomach_contents))
-		for(var/mob/living/carbon/human/H in stomach_contents)
-			if(!isspeciesmonkey(H))
-				to_chat(src, SPAN_XENOWARNING("You cannot ventcrawl with [H] inside you!"))
-				return FALSE
+	var/mob/living/carbon/human/user = hauled_mob?.resolve()
+	if(user)
+		if(!isspeciesmonkey(user))
+			to_chat(src, SPAN_XENOWARNING("You cannot ventcrawl while hauling [user]!"))
+			return FALSE
 	return TRUE
 
 /mob/living/carbon/xenomorph/can_inject()
 	return FALSE
 
 /mob/living/carbon/xenomorph/proc/can_destroy_special()
-	if(hive)
-		if(IS_XENO_LEADER(src))
-			if(hive.destruction_allowed == NORMAL_XENO || hive.destruction_allowed == XENO_LEADER)
-				return TRUE
-		if(hive.destruction_allowed == NORMAL_XENO && isxeno_builder(src))
+	if(!hive)
+		return FALSE
+	if(isqueen(src))
+		if(HAS_FLAG(hive.hive_flags, XENO_DECONSTRUCTION_QUEEN))
 			return TRUE
-		if(isqueen(src))
+	else if(IS_XENO_LEADER(src))
+		if(HAS_FLAG(hive.hive_flags, XENO_DECONSTRUCTION_LEADERS))
 			return TRUE
-
+	else if(isxeno_builder(src))
+		if(HAS_FLAG(hive.hive_flags, XENO_DECONSTRUCTION_NORMAL))
+			return TRUE
 	return FALSE
 
 /mob/living/carbon/xenomorph/proc/get_plasma_percentage()
@@ -76,3 +78,13 @@
 
 /mob/living/carbon/xenomorph/alter_ghost(mob/dead/observer/ghost)
 	ghost.icon_state = "[get_strain_icon()] [caste.caste_type] Running"
+
+/// Returns an associated list of the caste of xenos provided, to a generic image of the xeno
+/mob/living/carbon/xenomorph/proc/collect_xeno_images(list/list_of_xenos)
+	var/returned_list = list()
+
+	for(var/caste in list_of_xenos)
+		var/image/xeno_image = hive.evolution_menu_images[caste]
+		returned_list[caste] = xeno_image
+
+	return returned_list

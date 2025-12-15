@@ -1,4 +1,3 @@
-/* eslint-disable func-style */
 /**
  * @file
  * @copyright 2020 Aleksej Komarov
@@ -7,7 +6,7 @@
 
 import { classes } from 'common/react';
 
-import { BoxProps, computeBoxClassName, computeBoxProps } from './Box';
+import { type BoxProps, computeBoxClassName, computeBoxProps } from './Box';
 import { Dimmer } from './Dimmer';
 
 export function Modal(props: BoxProps) {

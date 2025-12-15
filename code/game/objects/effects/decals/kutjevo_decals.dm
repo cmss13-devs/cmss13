@@ -1,6 +1,6 @@
 /obj/effect/decal/kutjevo_decals
-	icon = 'icons/effects/kutjevo_decals.dmi'
 	layer = TURF_LAYER
+	anchored = TRUE
 
 /obj/effect/decal/kutjevo_decals/catwalk
 	icon = 'icons/turf/floors/kutjevo/kutjevo_floor.dmi'

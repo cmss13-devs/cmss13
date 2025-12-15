@@ -312,6 +312,7 @@
 	ceiling = CEILING_MAX
 	icon = 'icons/turf/area_kutjevo.dmi'
 	icon_state = "oob"
+	requires_power = FALSE
 	is_resin_allowed = FALSE
 	flags_area = AREA_NOTUNNEL|AREA_UNWEEDABLE
 	can_build_special = FALSE

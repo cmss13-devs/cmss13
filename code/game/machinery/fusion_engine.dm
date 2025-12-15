@@ -7,7 +7,7 @@
 //How often it checks if the reactor has failed
 #define REACTOR_FAIL_CHECK_TICKS 100
 
-/obj/structure/machinery/power/reactor
+/obj/structure/machinery/power/power_generator/reactor
 	name = "\improper S-52 fusion reactor"
 	icon = 'icons/obj/structures/machinery/fusion_eng.dmi'
 	icon_state = "off"
@@ -17,13 +17,13 @@
 	unacidable = TRUE
 	anchored = TRUE
 	density = TRUE
-	power_machine = TRUE
 	throwpass = FALSE
+	power_gen = 50000 //50,000W
 
-	///Whether the reactor is functional
-	var/is_on = TRUE
 	///Whether the reactor is on the ship
 	var/is_ship_reactor = FALSE
+	///Whether the reactor is guaranteed to be fully repaired
+	var/is_reserved_level = FALSE
 	///If the generator is overloaded
 	var/overloaded = FALSE //Only possible during hijack once fuel is at 100%
 
@@ -39,10 +39,6 @@
 	///How many ticks since last fail check
 	var/cur_tick = 0 //Tick updater
 
-	///% of power produced, increases to 100% over time
-	var/power_gen_percent = 0
-	///How much the reactor will generate at max power_gen_percent
-	var/power_generation_max = 50000 //50,000W
 	///All icon states split by power_gen_percent
 	var/list/power_percent_states = list(10, 25, 50, 75, 100) //Easier to add more icon states to one without also adding them to the other
 
@@ -51,7 +47,7 @@
 	///The reactors fuel cell, fail rate increases if empty
 	var/obj/item/fuel_cell/fusion_cell
 
-/obj/structure/machinery/power/reactor/Initialize(mapload, ...)
+/obj/structure/machinery/power/power_generator/reactor/Initialize(mapload, ...)
 	. = ..()
 	if(is_mainship_level(z)) //Only ship reactors can overload
 		is_ship_reactor = TRUE
@@ -65,6 +61,9 @@
 			if(6) //16%
 				buildstate = BUILDSTATE_DAMAGE_WRENCH
 
+	if(!buildstate && is_reserved_level(z))
+		buildstate = BUILDSTATE_FUNCTIONAL
+
 	if(require_fusion_cell) //Set up fuel cell if needed
 		fusion_cell = new /obj/item/fuel_cell/used(src)
 		fusion_cell.fuel_amount = fusion_cell.max_fuel_amount
@@ -77,7 +76,7 @@
 
 	return INITIALIZE_HINT_ROUNDSTART
 
-/obj/structure/machinery/power/reactor/LateInitialize() //Need to wait for powernets to start existing first
+/obj/structure/machinery/power/power_generator/reactor/LateInitialize() //Need to wait for powernets to start existing first
 	. = ..()
 
 	if(QDELETED(src))
@@ -88,11 +87,11 @@
 	if(!connect_to_network()) //Make sure its connected to a powernet
 		CRASH("[src] has failed to connect to a power network. Check that it has been mapped correctly.")
 
-/obj/structure/machinery/power/reactor/Destroy()
+/obj/structure/machinery/power/power_generator/reactor/Destroy()
 	QDEL_NULL(fusion_cell)
 	return ..()
 
-/obj/structure/machinery/power/reactor/get_examine_text(mob/user)
+/obj/structure/machinery/power/power_generator/reactor/get_examine_text(mob/user)
 	. = ..()
 
 	if(!is_on)
@@ -111,7 +110,7 @@
 		if(BUILDSTATE_DAMAGE_WRENCH)
 			. += SPAN_INFO(SPAN_BOLD("Use a wrench to repair it."))
 
-	if(buildstate || require_fusion_cell && (!fusion_cell || fusion_cell.fuel_amount <= 0))
+	if(buildstate || require_fusion_cell && !HasFuel())
 		if(is_on)
 			. += SPAN_INFO("The emergency shutdown button is visible.")
 		else
@@ -143,13 +142,16 @@
 		if(skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			. += SPAN_INFO("You could overload its safeties with a multitool.")
 
-/obj/structure/machinery/power/reactor/power_change()
+/obj/structure/machinery/power/power_generator/reactor/power_change()
 	. = ..()
 	if(overloaded)
 		set_overloading(FALSE)
 		visible_message(SPAN_NOTICE("[src]'s overload suddenly ceases as primary power is lost."))
 
-/obj/structure/machinery/power/reactor/process()
+/obj/structure/machinery/power/power_generator/reactor/HasFuel()
+	return fusion_cell && fusion_cell.fuel_amount > 0
+
+/obj/structure/machinery/power/power_generator/reactor/process()
 	if(!is_on) //if off, turn off
 		start_functioning(FALSE)
 		return
@@ -163,7 +165,7 @@
 			visible_message(SPAN_DANGER("[src] sparks and seizes."))
 			fail_rate += 2.5
 
-	if(require_fusion_cell && (!fusion_cell || fusion_cell.fuel_amount <= 0)) //empty fuel
+	if(require_fusion_cell && !HasFuel()) //empty fuel
 		if(prob(20))
 			visible_message(SPAN_DANGER("[src] flashes that the fuel cell is [fusion_cell ? "empty" : "missing"] as the engine seizes."))
 		fail_rate += 2.5
@@ -179,11 +181,11 @@
 	if(power_gen_percent < 100)
 		power_gen_percent = min(power_gen_percent + 1, 100)
 
-	add_avail(power_generation_max * (power_gen_percent / 100))
-	check_failure(buildstate > BUILDSTATE_DAMAGE_WIRE || require_fusion_cell && (!fusion_cell || fusion_cell.fuel_amount <= 0))
+	add_avail(power_gen * (power_gen_percent / 100))
+	check_failure(buildstate > BUILDSTATE_DAMAGE_WIRE || require_fusion_cell && !HasFuel())
 	update_icon()
 
-/obj/structure/machinery/power/reactor/proc/check_failure(damaged_reactor = FALSE)
+/obj/structure/machinery/power/power_generator/reactor/proc/check_failure(damaged_reactor = FALSE)
 	if(cur_tick < fail_check_ticks) //Nope, not time for it yet
 		cur_tick++
 		if(damaged_reactor)
@@ -200,14 +202,14 @@
 		start_functioning(FALSE)
 	buildstate = clamp(buildstate + 1, BUILDSTATE_FUNCTIONAL, BUILDSTATE_DAMAGE_WELD)
 
-/obj/structure/machinery/power/reactor/attack_hand(mob/user)
+/obj/structure/machinery/power/power_generator/reactor/attack_hand(mob/user)
 	. = TRUE
 	if(overloaded)
 		to_chat(user, SPAN_DANGER("[src] is not responding to your attempt to shut the reactor down."))
 		return FALSE
 	add_fingerprint(user)
 
-	if(buildstate || require_fusion_cell && (!fusion_cell || fusion_cell.fuel_amount <= 0))
+	if(buildstate || require_fusion_cell && !HasFuel())
 		if(is_on)
 			to_chat(user, SPAN_NOTICE("You press [src]'s emergency shutdown button."))
 			visible_message(SPAN_NOTICE("[user] presses [src]'s emergency shutdown button."))
@@ -229,7 +231,7 @@
 	visible_message(SPAN_NOTICE("[src] beeps loudly as [user] starts the reactor."))
 	start_functioning(TRUE)
 
-/obj/structure/machinery/power/reactor/attack_alien(mob/living/carbon/xenomorph/xeno)
+/obj/structure/machinery/power/power_generator/reactor/attack_alien(mob/living/carbon/xenomorph/xeno)
 	. = XENO_NONCOMBAT_ACTION
 	if(buildstate >= BUILDSTATE_DAMAGE_WELD)
 		to_chat(xeno, SPAN_WARNING("You see no reason to attack [src]."))
@@ -242,7 +244,7 @@
 	if(overloaded)
 		xeno.animation_attack_on(src)
 		playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
-		xeno.visible_message(SPAN_DANGER("[xeno] [xeno.slashes_verb] [src], stopping its overload process!"), \
+		xeno.visible_message(SPAN_DANGER("[xeno] [xeno.slashes_verb] [src], stopping its overload process!"),
 		SPAN_DANGER("You [xeno.slash_verb] [src], stopping its overload process!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 		set_overloading(FALSE)
 		return
@@ -267,7 +269,10 @@
 		update_icon()
 		looping = TRUE
 
-/obj/structure/machinery/power/reactor/attackby(obj/item/attacking_item, mob/user)
+/obj/structure/machinery/power/power_generator/reactor/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	return TAILSTAB_COOLDOWN_NONE
+
+/obj/structure/machinery/power/power_generator/reactor/attackby(obj/item/attacking_item, mob/user)
 	//Fuel Cells
 	if(user.action_busy)
 		return
@@ -347,22 +352,22 @@
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			return
 
-		to_chat(user, SPAN_WARNING("You start [overloaded ? "overloading" : "restoring"] the safeties on [src]."))
+		to_chat(user, SPAN_WARNING("You start [overloaded ? "restoring" : "overloading"] the safeties on [src]."))
 		if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
 			return
 
 		if(inoperable())
-			to_chat(user, SPAN_WARNING("[src] needs to be working and have external power in order to be overloaded."))
+			to_chat(user, SPAN_WARNING("[src] needs to be working and have external power in order to be [overloaded ? "restored" : "overloaded"]."))
 			return
 
 		set_overloading(!overloaded)
-		to_chat(user, SPAN_WARNING("You finish [overloaded ? "restoring" : "overloading"] the safeties on [src]."))
-		log_game("[key_name(user)] has [overloaded ? "restored the safeties of" : "overloaded"] a generator.")
+		to_chat(user, SPAN_WARNING("You finish [overloaded ? "overloading" : "restoring"] the safeties on [src]."))
+		log_game("[key_name(user)] has [overloaded ? "overloaded" : "restored the safeties of"] a generator.")
 		return
 
 	. = ..()
 
-/obj/structure/machinery/power/reactor/update_icon()
+/obj/structure/machinery/power/power_generator/reactor/update_icon()
 	switch(buildstate)
 		if(BUILDSTATE_DAMAGE_WELD)
 			icon_state = "weld"
@@ -396,7 +401,7 @@
 			break
 	icon_state = "on-[closest_percent]"
 
-/obj/structure/machinery/power/reactor/ex_act(severity)
+/obj/structure/machinery/power/power_generator/reactor/ex_act(severity)
 	. = FALSE
 	if(severity <= EXPLOSION_THRESHOLD_MLOW)
 		return
@@ -410,7 +415,7 @@
 		return
 	set_overloading(FALSE)
 
-/obj/structure/machinery/power/reactor/bullet_act(obj/projectile/bullet)
+/obj/structure/machinery/power/power_generator/reactor/bullet_act(obj/projectile/bullet)
 	. = ..()
 	if(buildstate >= BUILDSTATE_DAMAGE_WELD)
 		return
@@ -422,7 +427,7 @@
 	buildstate = clamp(buildstate + 1, BUILDSTATE_FUNCTIONAL, BUILDSTATE_DAMAGE_WELD)
 	sparks.start()
 
-/obj/structure/machinery/power/reactor/proc/start_functioning(enabling)
+/obj/structure/machinery/power/power_generator/reactor/proc/start_functioning(enabling)
 	if(enabling)
 		is_on = TRUE
 		start_processing()
@@ -434,7 +439,7 @@
 	set_overloading(FALSE)
 	update_icon()
 
-/obj/structure/machinery/power/reactor/proc/attempt_repair(obj/item/tool, repair_type, mob/user)
+/obj/structure/machinery/power/power_generator/reactor/proc/attempt_repair(obj/item/tool, repair_type, mob/user)
 	if(!tool || !repair_type)
 		return
 	if(!buildstate)
@@ -449,13 +454,21 @@
 	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 		repair_time += 5 SECONDS
 
+	switch(repair_type)
+		if(BUILDSTATE_DAMAGE_WELD)
+			playsound(loc, 'sound/items/Welder.ogg', 25, 1)
+		if(BUILDSTATE_DAMAGE_WIRE)
+			playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
+		if(BUILDSTATE_DAMAGE_WRENCH)
+			playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
+
 	to_chat(user, SPAN_NOTICE("You start repairing [src] with [tool]."))
 	if(!do_after(user, repair_time, INTERRUPT_ALL, BUSY_ICON_BUILD, src))
 		return
 
 	return TRUE
 
-/obj/structure/machinery/power/reactor/proc/set_overloading(new_overloading)
+/obj/structure/machinery/power/power_generator/reactor/proc/set_overloading(new_overloading)
 	if(!is_ship_reactor)
 		return
 	if(overloaded == new_overloading)
@@ -465,14 +478,19 @@
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_GENERATOR_SET_OVERLOADING, overloaded)
 	update_icon()
 
-/obj/structure/machinery/power/reactor/colony
+/obj/structure/machinery/power/power_generator/reactor/colony
 	name = "\improper G-11 geothermal generator"
 	icon = 'icons/obj/structures/machinery/geothermal.dmi'
 	desc = "A thermoelectric generator sitting atop a plasma-filled borehole."
 
 	is_on = FALSE
-	power_generation_max = 100000 //100,000W at full capacity
+	power_gen = 100000 //100,000W at full capacity
 	original_fail_rate = 10
+
+/obj/structure/machinery/power/power_generator/reactor/rostock
+	name = "\improper RDS-168 fusion reactor"
+	desc = "A RDS-168 Fusion Reactor."
+
 
 #undef BUILDSTATE_FUNCTIONAL
 #undef BUILDSTATE_DAMAGE_WELD

@@ -16,8 +16,8 @@
 	unacidable = TRUE   //NOPE.jpg
 	needs_power = FALSE
 	idle_power_usage = 1000
+	is_on = FALSE  //Is this damn thing on or what?
 	var/buildstate = SENSORTOWER_BUILDSTATE_BLOWTORCH //What state of building it are we on, 0-3, 1 is "broken", the default
-	var/is_on = FALSE  //Is this damn thing on or what?
 	var/fail_rate = 15 //% chance of failure each fail_tick check
 	var/fail_check_ticks = 50 //Check for failure every this many ticks
 	//The sensor tower fails more often since it is experimental.
@@ -28,8 +28,7 @@
 
 /obj/structure/machinery/sensortower/Initialize(mapload, ...)
 	. = ..()
-	SSminimaps.add_marker(src, z, MINIMAP_FLAG_ALL, "sensor_tower")
-
+	SSminimaps.add_marker(src, MINIMAP_FLAG_ALL, image('icons/UI_icons/map_blips.dmi', null, "sensor_tower"))
 
 /obj/structure/machinery/sensortower/update_icon()
 	..()
@@ -97,8 +96,10 @@
 	return FALSE
 
 /obj/structure/machinery/sensortower/attack_hand(mob/user as mob)
-	if(!anchored) return FALSE //Shouldn't actually be possible
-	if(user.is_mob_incapacitated()) return FALSE
+	if(!anchored)
+		return FALSE //Shouldn't actually be possible
+	if(user.is_mob_incapacitated())
+		return FALSE
 	if(!ishuman(user))
 		to_chat(user, SPAN_DANGER("You have no idea how to use that.")) //No xenos or mankeys
 		return FALSE
@@ -209,7 +210,7 @@
 	var/turf/cur_loc = M.loc
 
 	playsound(loc, 'sound/effects/metal_creaking.ogg', 25, TRUE)
-	M.visible_message(SPAN_DANGER("[M] starts wrenching apart \the [src]'s panels and reaching inside it!"), \
+	M.visible_message(SPAN_DANGER("[M] starts wrenching apart \the [src]'s panels and reaching inside it!"),
 	SPAN_DANGER("You start wrenching apart \the [src]'s panels and reaching inside it!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	xeno_attack_delay(M)
 	if(do_after(M, 40, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
@@ -225,17 +226,17 @@
 			cur_tick = 0
 			stop_processing()
 		update_icon()
-		M.visible_message(SPAN_DANGER("[M] pulls apart \the [src]'s panels and breaks all its internal wiring and tubing!"), \
+		msg_admin_niche("[key_name(M)] has destroyed the sensor tower.")
+		M.visible_message(SPAN_DANGER("[M] pulls apart \the [src]'s panels and breaks all its internal wiring and tubing!"),
 		SPAN_DANGER("You pull apart \the [src]'s panels and break all its internal wiring and tubing!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 		playsound(loc, 'sound/effects/meteorimpact.ogg', 25, 1)
 	else
-		M.visible_message(SPAN_DANGER("[M] stops destroying \the [src]'s internal machinery!"), \
+		M.visible_message(SPAN_DANGER("[M] stops destroying \the [src]'s internal machinery!"),
 		SPAN_DANGER("You stop destroying \the [src]'s internal machinery!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	return XENO_NO_DELAY_ACTION
 
-/obj/structure/machinery/sensortower/power_change()
-	..()
-	update_icon()
+/obj/structure/machinery/sensortower/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	return TAILSTAB_COOLDOWN_NONE
 
 /* Decreases the buildstate of the sensor tower and switches it off if affected by any explosion.
 Higher severity explosion will damage the sensor tower more

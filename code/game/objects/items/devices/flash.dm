@@ -2,7 +2,7 @@
 	name = "flash"
 	desc = "Used for blinding and being an asshole. Recharges one flash every 30 seconds. You must wait 1 second between uses for the capacitor to recharge."
 	icon_state = "flash"
-	item_state = "flash_device" //Replace me later
+	item_state = "flash_device1" //Replace me later (Yes sir! *Salute*)
 	throwforce = 5
 	w_class = SIZE_SMALL
 	throw_speed = SPEED_VERY_FAST
@@ -21,6 +21,7 @@
 /obj/item/device/flash/update_icon()
 	if(broken)
 		icon_state = "[icon_state]_burnt"
+		item_state = "flashburnt1"
 
 /obj/item/device/flash/get_examine_text(mob/user)
 	. = ..()
@@ -119,8 +120,10 @@
 //targeted flash
 
 /obj/item/device/flash/attack(mob/living/M, mob/user)
-	if(!user || !M) return //sanity
-	if(!istype(M)) return
+	if(!user || !M)
+		return //sanity
+	if(!istype(M))
+		return
 
 	if(check_if_can_use_flash(user))
 		if(isxeno(M))
@@ -132,6 +135,8 @@
 			return
 
 		do_flash(M, user, FALSE)
+
+		return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
 
 //AOE flash
 
@@ -146,7 +151,8 @@
 
 /obj/item/device/flash/emp_act(severity)
 	. = ..()
-	if(broken) return
+	if(broken)
+		return
 	switch(flashes_stored)
 		if(0 to 5)
 			if(prob(20 - (2*flashes_stored)))
@@ -160,25 +166,3 @@
 					M.apply_effect(10, WEAKEN)
 					M.visible_message(SPAN_DISARM("[M] is blinded by \the [src]!"))
 
-/obj/item/device/flash/synthetic
-	name = "synthetic flash"
-	desc = "When a problem arises, SCIENCE is the solution. Only good for one use."
-	icon_state = "sflash"
-
-/obj/item/device/flash/synthetic/attack(mob/living/M as mob, mob/user as mob)
-	..()
-	if(!broken)
-		broken = TRUE
-		to_chat(user, SPAN_DANGER("The bulb has burnt out!"))
-		update_icon()
-
-/obj/item/device/flash/synthetic/attack_self(mob/living/carbon/user as mob, flag = 0, emp = 0)
-	..()
-	if(!broken)
-		broken = TRUE
-		to_chat(user, SPAN_DANGER("The bulb has burnt out!"))
-		update_icon()
-
-/obj/item/device/flash/old
-	name = "old-looking flash"
-	icon_state = "flash_old"

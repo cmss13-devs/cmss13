@@ -5,9 +5,9 @@
  */
 
 import { canRender, classes } from 'common/react';
-import { PropsWithChildren, ReactNode } from 'react';
+import type { PropsWithChildren, ReactNode } from 'react';
 
-import { BoxProps, computeBoxClassName, computeBoxProps } from './Box';
+import { type BoxProps, computeBoxClassName, computeBoxProps } from './Box';
 import { Icon } from './Icon';
 
 type Props = Partial<{
@@ -25,6 +25,7 @@ type TabProps = Partial<{
   icon: string;
   leftSlot: ReactNode;
   onClick: (e?) => void;
+  onFocus: (e?) => void;
   rightSlot: ReactNode;
   selected: boolean;
 }> &

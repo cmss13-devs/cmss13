@@ -1,9 +1,9 @@
-import { KEY } from 'common/keys';
+import { isEscape, KEY } from 'common/keys';
 import { useState } from 'react';
+import { useBackend } from 'tgui/backend';
+import { Box, Button, RestrictedInput, Section, Stack } from 'tgui/components';
+import { Window } from 'tgui/layouts';
 
-import { useBackend } from '../backend';
-import { Box, Button, RestrictedInput, Section, Stack } from '../components';
-import { Window } from '../layouts';
 import { InputButtons } from './common/InputButtons';
 import { Loader } from './common/Loader';
 
@@ -44,7 +44,7 @@ export const NumberInputModal = (props) => {
           if (event.key === KEY.Enter) {
             act('submit', { entry: input });
           }
-          if (event.key === KEY.Escape) {
+          if (isEscape(event.key)) {
             act('cancel');
           }
         }}
@@ -82,8 +82,8 @@ const InputArea = (props) => {
     <Stack fill>
       <Stack.Item>
         <Button
-          disabled={input === min_value}
-          icon="angle-double-left"
+          disabled={input === min_value || min_value === -Infinity}
+          icon={min_value === -Infinity ? 'infinity' : 'angle-double-left'}
           onClick={() => onClick(min_value)}
           tooltip={min_value ? `Min (${min_value})` : 'Min'}
         />
@@ -104,8 +104,8 @@ const InputArea = (props) => {
       </Stack.Item>
       <Stack.Item>
         <Button
-          disabled={input === max_value}
-          icon="angle-double-right"
+          disabled={input === max_value || max_value === Infinity}
+          icon={max_value === Infinity ? 'infinity' : 'angle-double-right'}
           onClick={() => onClick(max_value)}
           tooltip={max_value ? `Max (${max_value})` : 'Max'}
         />

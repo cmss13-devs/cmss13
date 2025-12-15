@@ -41,3 +41,5 @@
 #define WORKING_JOE_EMOTE (1<<0)
 /// Hazard Joe emote
 #define HAZARD_JOE_EMOTE (1<<1)
+/// UPP Joe emote
+#define UPP_JOE_EMOTE (1<<2)

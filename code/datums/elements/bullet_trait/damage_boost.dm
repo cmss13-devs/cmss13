@@ -54,10 +54,13 @@ GLOBAL_LIST_INIT(damage_boost_vehicles, typecacheof(/obj/vehicle/multitile))
 	), PROC_REF(handle_bullet))
 
 /datum/element/bullet_trait_damage_boost/proc/check_type(atom/A)
-	if(istype(A, /obj/structure/machinery/door)) return "door"
-	else if(istype(A, /turf/closed/wall)) return "wall"
+	if(istype(A, /obj/structure/machinery/door))
+		return "door"
+	else if(istype(A, /turf/closed/wall))
+		return "wall"
 	//add more cases for other interactions (switch doesn't seem to work with istype)
-	else return 0
+	else
+		return 0
 
 /datum/element/bullet_trait_damage_boost/proc/handle_bullet(obj/projectile/boosted_projectile, atom/hit_atom)
 	SIGNAL_HANDLER

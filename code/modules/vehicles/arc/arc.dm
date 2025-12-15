@@ -65,6 +65,7 @@
 	move_turn_momentum_loss_factor = 0.8
 
 	vehicle_ram_multiplier = VEHICLE_TRAMPLE_DAMAGE_APC_REDUCTION
+	minimap_icon_state = "arc"
 
 	/// If the ARC has its antenna up, making it unable to move but enabling the turret and sensor wallhack
 	var/antenna_deployed = FALSE
@@ -77,16 +78,11 @@
 
 /obj/vehicle/multitile/arc/Initialize()
 	. = ..()
-
-	var/turf/gotten_turf = get_turf(src)
-	if(gotten_turf?.z)
-		SSminimaps.add_marker(src, gotten_turf.z, MINIMAP_FLAG_USCM, "arc", 'icons/ui_icons/map_blips_large.dmi')
-
 	RegisterSignal(src, COMSIG_ARC_ANTENNA_TOGGLED, PROC_REF(on_antenna_toggle))
 
 /obj/vehicle/multitile/arc/crew_mousedown(datum/source, atom/object, turf/location, control, params)
 	var/list/modifiers = params2list(params)
-	if(modifiers[SHIFT_CLICK] || modifiers[MIDDLE_CLICK] || modifiers[RIGHT_CLICK]) //don't step on examine, point, etc
+	if(modifiers[SHIFT_CLICK] || modifiers[MIDDLE_CLICK] || modifiers[RIGHT_CLICK] || modifiers[BUTTON4] || modifiers[BUTTON5]) //don't step on examine, point, etc
 		return
 
 	switch(get_mob_seat(source))

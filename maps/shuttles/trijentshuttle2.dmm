@@ -1,17 +1,20 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/turf/open/shuttle/escapepod,
+/turf/open/shuttle/escapepod/north,
 /area/shuttle/trijent_shuttle/elevator)
 "b" = (
-/turf/open/shuttle/escapepod/floor8,
+/turf/open/shuttle/escapepod/floor1/east,
 /area/shuttle/trijent_shuttle/elevator)
 "c" = (
-/turf/open/shuttle/escapepod/floor9,
+/turf/open/shuttle/escapepod/floor2/west,
 /area/shuttle/trijent_shuttle/elevator)
 "d" = (
 /turf/closed/shuttle/elevator{
 	dir = 8
 	},
+/area/shuttle/trijent_shuttle/elevator)
+"e" = (
+/turf/open/shuttle/escapepod/floor2,
 /area/shuttle/trijent_shuttle/elevator)
 "h" = (
 /obj/docking_port/mobile/trijent_elevator,
@@ -52,7 +55,7 @@
 	icon_state = "E";
 	dir = 1
 	},
-/turf/open/shuttle/escapepod,
+/turf/open/shuttle/escapepod/north,
 /area/shuttle/trijent_shuttle/elevator)
 "q" = (
 /turf/closed/shuttle/elevator/freight,
@@ -95,7 +98,7 @@
 	pixel_x = 9;
 	pixel_y = 8
 	},
-/turf/open/shuttle/escapepod/floor11,
+/turf/open/shuttle/escapepod/floor1/west,
 /area/shuttle/trijent_shuttle/elevator)
 "A" = (
 /turf/closed/shuttle/elevator{
@@ -107,7 +110,7 @@
 	icon_state = "E";
 	dir = 1
 	},
-/turf/open/shuttle/escapepod,
+/turf/open/shuttle/escapepod/north,
 /area/shuttle/trijent_shuttle/elevator)
 "I" = (
 /obj/item/tool/crowbar/red{
@@ -118,7 +121,7 @@
 	pixel_x = 1;
 	pixel_y = 10
 	},
-/turf/open/shuttle/escapepod,
+/turf/open/shuttle/escapepod/north,
 /area/shuttle/trijent_shuttle/elevator)
 "J" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
@@ -137,10 +140,10 @@
 	pixel_y = 8
 	},
 /obj/item/circuitboard/apc,
-/turf/open/shuttle/escapepod,
+/turf/open/shuttle/escapepod/floor2/east,
 /area/shuttle/trijent_shuttle/elevator)
 "Q" = (
-/turf/open/shuttle/escapepod/floor11,
+/turf/open/shuttle/escapepod/floor1/west,
 /area/shuttle/trijent_shuttle/elevator)
 "R" = (
 /obj/structure/bed/chair/dropship/passenger,
@@ -161,7 +164,7 @@
 	icon_state = "E";
 	dir = 1
 	},
-/turf/open/shuttle/escapepod,
+/turf/open/shuttle/escapepod/north,
 /area/shuttle/trijent_shuttle/elevator)
 "V" = (
 /turf/closed/shuttle/elevator{
@@ -169,10 +172,10 @@
 	},
 /area/shuttle/trijent_shuttle/elevator)
 "W" = (
-/turf/open/shuttle/escapepod/floor12,
+/turf/open/shuttle/escapepod/floor2/east,
 /area/shuttle/trijent_shuttle/elevator)
 "Y" = (
-/turf/open/shuttle/escapepod/floor7,
+/turf/open/shuttle/escapepod/floor0/east,
 /area/shuttle/trijent_shuttle/elevator)
 
 (1,1,1) = {"
@@ -212,7 +215,7 @@ u
 P
 Q
 b
-a
+e
 s
 "}
 (6,1,1) = {"

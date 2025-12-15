@@ -60,7 +60,7 @@
 	j_icon = 'icons/obj/items/weapons/guns/guns_by_map/snow/suit_slot.dmi'
 
 /datum/decorator/weapon_map_decorator/urban
-	camouflage_type = "urban" // Sprites not currently all done!
+	camouflage_type = "urban"
 	c_icon = 'icons/obj/items/weapons/guns/guns_by_map/urban/guns_obj.dmi'
 	l_icon = 'icons/obj/items/weapons/guns/guns_by_map/urban/guns_lefthand.dmi'
 	r_icon = 'icons/obj/items/weapons/guns/guns_by_map/urban/guns_righthand.dmi'

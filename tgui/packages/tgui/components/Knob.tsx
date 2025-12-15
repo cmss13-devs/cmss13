@@ -1,4 +1,3 @@
-/* eslint-disable func-style */
 /**
  * @file
  * @copyright 2020 Aleksej Komarov
@@ -6,9 +5,9 @@
  */
 
 import { keyOfMatchingRange, scale } from 'common/math';
-import { BooleanLike, classes } from 'common/react';
+import { type BooleanLike, classes } from 'common/react';
 
-import { BoxProps, computeBoxClassName, computeBoxProps } from './Box';
+import { type BoxProps, computeBoxClassName, computeBoxProps } from './Box';
 import { DraggableControl } from './DraggableControl';
 
 type Props = {

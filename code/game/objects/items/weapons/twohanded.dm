@@ -12,6 +12,9 @@
 	force_wielded = MELEE_FORCE_VERY_STRONG
 	flags_item = TWOHANDED
 
+	shield_type = SHIELD_DIRECTIONAL_TWOHANDS
+	shield_chance = SHIELD_CHANCE_MED
+
 /obj/item/weapon/twohanded/update_icon()
 	return
 
@@ -24,7 +27,8 @@
 	unwield(user)
 
 /obj/item/proc/wield(mob/user)
-	if( !(flags_item & TWOHANDED) || flags_item & WIELDED ) return
+	if( !(flags_item & TWOHANDED) || flags_item & WIELDED )
+		return
 
 	var/obj/item/I = user.get_inactive_hand()
 	if(I)
@@ -39,9 +43,9 @@
 			return
 
 	flags_item    ^= WIELDED
+	place_offhand(user, name)
 	name    += " (Wielded)"
 	item_state += "_w"
-	place_offhand(user,initial(name))
 	return 1
 
 /obj/item/proc/unwield(mob/user)
@@ -69,22 +73,27 @@
 	to_chat(user, SPAN_NOTICE("You are now carrying [name] with one hand."))
 	user.recalculate_move_delay = TRUE
 	var/obj/item/weapon/twohanded/offhand/offhand = user.get_inactive_hand()
-	if(istype(offhand)) offhand.unwield(user)
+	if(istype(offhand))
+		offhand.unwield(user)
 	user.update_inv_l_hand(0)
 	user.update_inv_r_hand()
 
 /obj/item/weapon/twohanded/wield(mob/user)
 	. = ..()
-	if(!.) return
+	if(!.)
+		return
 	user.recalculate_move_delay = TRUE
-	if(wieldsound) playsound(user, wieldsound, 15, 1)
+	if(wieldsound)
+		playsound(user, wieldsound, 15, 1)
 	force = force_wielded
 
 /obj/item/weapon/twohanded/unwield(mob/user)
 	. = ..()
-	if(!.) return
+	if(!.)
+		return
 	user.recalculate_move_delay = TRUE
-	if(unwieldsound) playsound(user, unwieldsound, 15, 1)
+	if(unwieldsound)
+		playsound(user, unwieldsound, 15, 1)
 	force = initial(force)
 
 /obj/item/weapon/twohanded/attack_self(mob/user)
@@ -93,15 +102,20 @@
 		to_chat(user, SPAN_WARNING("It's too heavy for you to wield fully!"))
 		return
 
-	if(flags_item & WIELDED) unwield(user)
+	if(flags_item & WIELDED)
+		unwield(user)
 	else wield(user)
 
 ///////////OFFHAND///////////////
 /obj/item/weapon/twohanded/offhand
 	w_class = SIZE_HUGE
 	icon_state = "offhand"
+	icon = 'icons/mob/hud/human_midnight.dmi'
 	name = "offhand"
 	flags_item = DELONDROP|TWOHANDED|WIELDED|CANTSTRIP
+
+	shield_type = SHIELD_NONE
+	shield_chance = SHIELD_CHANCE_NONE
 
 /obj/item/weapon/twohanded/offhand/unwield(mob/user)
 	if(flags_item & WIELDED)
@@ -118,7 +132,8 @@
 	//If it is, looks like we got our hand torn off or something.
 	if(!QDESTROYING(src))
 		var/obj/item/main_hand = user.get_active_hand()
-		if(main_hand) main_hand.unwield(user)
+		if(main_hand)
+			main_hand.unwield(user)
 
 /*
  * Fireaxe
@@ -128,6 +143,12 @@
 	desc = "Truly, the weapon of a madman. Who would think to fight fire with an axe?"
 	icon_state = "fireaxe"
 	item_state = "fireaxe"
+	icon = 'icons/obj/items/weapons/melee/axes.dmi'
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/melee_weapons.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/axes_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/axes_righthand.dmi'
+	)
 	sharp = IS_SHARP_ITEM_BIG
 	edge = 1
 	w_class = SIZE_LARGE
@@ -135,28 +156,33 @@
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_item = TWOHANDED
 	attack_verb = list("attacked", "chopped", "cleaved", "torn", "cut")
+	shield_flags = CAN_SHIELD_BASH
 
 /obj/item/weapon/twohanded/fireaxe/wield(mob/user)
 	. = ..()
-	if(!.) return
+	if(!.)
+		return
 	pry_capable = IS_PRY_CAPABLE_SIMPLE
 
 /obj/item/weapon/twohanded/fireaxe/unwield(mob/user)
 	. = ..()
-	if(!.) return
+	if(!.)
+		return
 	pry_capable = 0
 
 /obj/item/weapon/twohanded/fireaxe/afterattack(atom/A as mob|obj|turf|area, mob/user as mob, proximity)
-	if(!proximity) return
+	if(!proximity)
+		return
 	..()
 	if(A && (flags_item & WIELDED) && istype(A,/obj/structure/grille)) //destroys grilles in one hit
 		qdel(A)
 
 /obj/item/weapon/twohanded/sledgehammer
 	name = "sledgehammer"
-	desc = "a large block of metal on the end of a pole. Smashing!"
+	desc = "A large block of metal on the end of a pole. Smashing!"
 	icon_state = "sledgehammer"
 	item_state = "sledgehammer"
+	icon = 'icons/obj/items/weapons/melee/hammers.dmi'
 	sharp = null
 	edge = 0
 	w_class = SIZE_LARGE
@@ -167,7 +193,8 @@
 
 //The following is copypasta and not the sledge being a child of the fireaxe due to the fire axe being able to crowbar airlocks
 /obj/item/weapon/twohanded/sledgehammer/afterattack(atom/A as mob|obj|turf|area, mob/user as mob, proximity)
-	if(!proximity) return
+	if(!proximity)
+		return
 	..()
 	if(A && (flags_item & WIELDED) && istype(A,/obj/structure/grille)) //destroys grilles in one hit
 		qdel(A)
@@ -180,6 +207,11 @@
 	desc = "Handle with care."
 	icon_state = "dualsaber"
 	item_state = "dualsaber"
+	icon = 'icons/obj/items/weapons/melee/energy.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/energy_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/energy_righthand.dmi'
+	)
 	force = 3
 	throwforce = 5
 	throw_speed = SPEED_FAST
@@ -189,11 +221,14 @@
 	wieldsound = 'sound/weapons/saberon.ogg'
 	unwieldsound = 'sound/weapons/saberoff.ogg'
 	flags_atom = FPRINT|QUICK_DRAWABLE|NOBLOODY
-	flags_item = NOSHIELD|TWOHANDED
+	flags_item = UNBLOCKABLE|TWOHANDED
 
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	sharp = IS_SHARP_ITEM_BIG
 	edge = 1
+
+	shield_type = SHIELD_ABSOLUTE_TWOHANDS
+	shield_chance = SHIELD_CHANCE_VHIGH
 
 /obj/item/weapon/twohanded/dualsaber/attack(target as mob, mob/living/user as mob)
 	..()
@@ -203,17 +238,16 @@
 				user.setDir(i)
 				sleep(1)
 
-/obj/item/weapon/twohanded/dualsaber/IsShield()
-	if(flags_item & WIELDED) return 1
-
 /obj/item/weapon/twohanded/dualsaber/wield(mob/user)
 	. = ..()
-	if(!.) return
+	if(!.)
+		return
 	icon_state += "_w"
 
 /obj/item/weapon/twohanded/dualsaber/unwield(mob/user)
 	. = ..()
-	if(!.) return
+	if(!.)
+		return
 	icon_state = copytext(icon_state,1,-2)
 
 /obj/item/weapon/twohanded/spear
@@ -221,27 +255,42 @@
 	desc = "A haphazardly-constructed yet still deadly weapon of ancient design."
 	icon_state = "spearglass"
 	item_state = "spearglass"
+	icon = 'icons/obj/items/weapons/melee/spears.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/spears_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/spears_righthand.dmi',
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/melee_weapons.dmi'
+	)
 	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK
 	throwforce = 35
 	throw_speed = SPEED_VERY_FAST
 	edge = 1
 	sharp = IS_SHARP_ITEM_SIMPLE
-	flags_item = NOSHIELD|TWOHANDED
+	flags_item = TWOHANDED
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("attacked", "stabbed", "jabbed", "torn", "gored")
+	shield_chance = SHIELD_CHANCE_LOW
 
 /obj/item/weapon/twohanded/lungemine
 	name = "lunge mine"
 	icon_state = "lungemine"
 	item_state = "lungemine"
+	icon = 'icons/obj/items/weapons/melee/spears.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/spears_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/spears_righthand.dmi'
+	)
 	desc = "A crude but intimidatingly bulky shaped explosive charge, fixed to the end of a pole. To use it, one must grasp it firmly in both hands, and thrust the prongs of the shaped charge into the target. That the resulting explosion occurs directly in front of the user's face was not an apparent concern of the designer. A true hero's weapon."
 	force = MELEE_FORCE_WEAK
 	force_wielded = 1
 	attack_verb = list("whacked")
 	hitsound = "swing_hit"
+	shield_chance = SHIELD_CHANCE_NONE
+	shield_type = SHIELD_NONE
 
 	var/detonating = FALSE
+	var/gib_user = TRUE
 	var/wielded_attack_verb = list("charged")
 	var/wielded_hitsound = null
 	var/unwielded_attack_verb = list("whacked")
@@ -252,13 +301,15 @@
 
 /obj/item/weapon/twohanded/lungemine/wield(mob/user)
 	. = ..()
-	if(!.) return
+	if(!.)
+		return
 	attack_verb = wielded_attack_verb
 	hitsound = wielded_hitsound
 
 /obj/item/weapon/twohanded/lungemine/unwield(mob/user)
 	. = ..()
-	if(!.) return
+	if(!.)
+		return
 	attack_verb = unwielded_attack_verb
 	hitsound = unwielded_hitsound
 
@@ -290,22 +341,30 @@
 	detonating = TRUE
 	playsound(user, 'sound/items/Wirecutter.ogg', 50, 1)
 
-	sleep(3)
+	addtimer(CALLBACK(src, PROC_REF(lungemine_detonate), target, user), 0.3 SECONDS)
 
+/obj/item/weapon/twohanded/lungemine/proc/lungemine_detonate(atom/target, mob/user)
 	var/turf/epicenter = get_turf(target)
-	target.ex_act(400, null, src, user, 100)
 	cell_explosion(epicenter, detonation_force, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), user))
+	if(gib_user)
+		user.gib()
 	qdel(src)
 
 /obj/item/weapon/twohanded/lungemine/damaged
 	name = "damaged lunge mine"
 	desc = "A crude but intimidatingly bulky shaped explosive charge, fixed to the end of a pole. To use it, one must grasp it firmly in both hands, and thrust the prongs of the shaped charge into the target. That the resulting explosion occurs directly in front of the user's face was not an apparent concern of the designer. A true hero's weapon. This one seems pretty badly damaged, you probably shouldn't even pick it up from the ground."
 	detonation_force = 50
+	gib_user = FALSE
 
 /obj/item/weapon/twohanded/breacher
 	name = "\improper D2 Breaching Hammer"
 	desc = "A much lighter version of the B5 Breaching Hammer, this destructive tool packs enough force in its swings to take down walls with relative ease. It can punch through almost anything, hit like a truck, and unlike its predecessor it can be wielded by most adult humans."
-	icon = 'icons/obj/items/experimental_tools.dmi'
+	icon = 'icons/obj/items/weapons/melee/hammers.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_righthand.dmi',
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/melee_weapons.dmi'
+	)
 	icon_state = "d2_breacher"
 	item_state = "d2_breacher"
 	force = MELEE_FORCE_NORMAL
@@ -323,16 +382,17 @@
 	item_state = "syn_breacher"
 	force_wielded = MELEE_FORCE_VERY_STRONG
 	really_heavy = TRUE
+	shield_chance = SHIELD_CHANCE_MEDHIGH
 	var/move_delay_addition = 1.5
 
 /obj/item/weapon/twohanded/breacher/synth/pickup(mob/user)
+	. = ..()
 	if(!(HAS_TRAIT(user, TRAIT_SUPER_STRONG)))
 		to_chat(user, SPAN_HIGHDANGER("You barely manage to lift [src] above your knees. This thing will probably be useless to you."))
 		user.apply_effect(3, EYE_BLUR)
 		RegisterSignal(user, COMSIG_HUMAN_POST_MOVE_DELAY, PROC_REF(handle_movedelay))
 
 		return
-	..()
 
 /obj/item/weapon/twohanded/breacher/synth/proc/handle_movedelay(mob/living/M, list/movedata)
 	SIGNAL_HANDLER
@@ -346,4 +406,4 @@
 	if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG))
 		to_chat(user, SPAN_WARNING("\The [src] is too heavy for you to use as a weapon!"))
 		return
-	..()
+	. = ..()

@@ -36,7 +36,6 @@
 
 	if(mapload)
 		create_valid_directions()
-
 		search_for_connections()
 
 	if(!is_mainship_level(z))
@@ -150,7 +149,7 @@
 		return
 
 	user.forceMove(next_pipe)
-	user.client.eye = next_pipe //if we don't do this, Byond only updates the eye every tick - required for smooth movement
+	user.client.set_eye(next_pipe) //if we don't do this, Byond only updates the eye every tick - required for smooth movement
 	user.update_pipe_icons(next_pipe)
 
 	if(world.time - user.last_played_vent > VENT_SOUND_DELAY)

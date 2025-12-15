@@ -4,6 +4,10 @@
 	desc = "Some empty sandbags, best to fill them up if you want to use them."
 	singular_name = "sandbag"
 	icon = 'icons/obj/items/marine-items.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/material_stacks_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/material_stacks_righthand.dmi',
+	)
 	icon_state = "sandbag_stack"
 	item_state = "sandbag_stack"
 	w_class = SIZE_SMALL
@@ -58,6 +62,10 @@
 	desc = "Some bags filled with sand. For now, just cumbersome, but soon to be used for fortifications."
 	singular_name = "sandbag"
 	icon = 'icons/obj/items/marine-items.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/material_stacks_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/material_stacks_righthand.dmi',
+	)
 	icon_state = "sandbag_pile"
 	item_state = "sandbag_pile"
 	w_class = SIZE_LARGE
@@ -84,9 +92,10 @@
 	if(istype(user.loc, /turf/open/shuttle))
 		to_chat(user, SPAN_WARNING("No. This area is needed for the dropships and personnel."))
 		return
-	if(!istype(user.loc, /turf/open))
+	if(istype(user.loc, /turf/open))
 		var/turf/open/OT = user.loc
-		if(!OT.allow_construction)
+		var/area/area = get_area(user)
+		if(!OT.allow_construction || !area.allow_construction)
 			to_chat(user, SPAN_WARNING("The sandbag barricade must be constructed on a proper surface!"))
 			return
 

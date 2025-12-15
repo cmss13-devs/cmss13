@@ -8,4 +8,4 @@
 		create_mob_html = replacetext(create_mob_html, "null /* object types */", "\"[mobjs]\"")
 		create_mob_html = replacetext(create_mob_html, "/* href token */", RawHrefToken(forceGlobal = TRUE))
 
-	show_browser(user, replacetext(create_mob_html, "/* ref src */", "\ref[src]"), "Create Mob", "create_mob", "size=450x525")
+	show_browser(user, replacetext(create_mob_html, "/* ref src */", "\ref[src]"), "Create Mob", "create_mob", width = 450, height = 525)

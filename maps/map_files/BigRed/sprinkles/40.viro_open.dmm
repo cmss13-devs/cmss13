@@ -114,7 +114,7 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/bigredv2/outside/virology)
 "re" = (
-/obj/item/weapon/gun/flamer,
+/obj/item/weapon/gun/flamer/survivor,
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/virology)
 "rh" = (

@@ -62,7 +62,7 @@
 
 /datum/action/observer_action/view_crew_manifest/action_activate()
 	. = ..()
-	show_browser(owner, GLOB.data_core.get_manifest(), "Crew Manifest", "manifest", "size=450x750")
+	GLOB.crew_manifest.open_ui(owner)
 
 /datum/action/observer_action/view_hive_status
 	name = "View Hive Status"
@@ -84,6 +84,7 @@
 		return
 
 	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
+		to_chat(owner, SPAN_BOLDNOTICE("The game hasn't started yet!"))
 		owner.balloon_alert(owner, "game must start!")
 		return
 
@@ -101,6 +102,7 @@
 		return
 
 	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
+		to_chat(owner, SPAN_BOLDNOTICE("The game hasn't started yet!"))
 		owner.balloon_alert(owner, "game must start!")
 		return
 

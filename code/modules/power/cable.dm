@@ -20,7 +20,7 @@
 		coil.turf_place(T, user)
 		return
 	else
-		..()
+		. = ..()
 	return
 
 // the power cable object
@@ -29,7 +29,7 @@
 	anchored =1
 	var/datum/powernet/powernet
 	name = "power cable"
-	desc = "A flexible superconducting cable for heavy-duty power transfer"
+	desc = "A flexible superconducting cable for heavy-duty power transfer."
 	icon = 'icons/obj/pipes/power_cond_white.dmi'
 	icon_state = "0-1"
 	var/d1 = 0
@@ -70,7 +70,8 @@
 	d1 = text2num( copytext( icon_state, 1, dash ) )
 	d2 = text2num( copytext( icon_state, dash+1 ) )
 	var/turf/T = src.loc // hide if turf is not intact
-	if(level==1) hide(T.intact_tile)
+	if(level==1)
+		hide(T.intact_tile)
 	update_icon()
 	GLOB.cable_list += src
 

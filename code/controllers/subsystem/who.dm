@@ -46,6 +46,7 @@ SUBSYSTEM_DEF(who)
 		"yautja" = 0,
 		"infected_preds" = 0,
 		"humans" = 0,
+		"hunted" = 0,
 		"infected_humans" = 0,
 		"uscm" = 0,
 		"uscm_marines" = 0,
@@ -55,7 +56,7 @@ SUBSYSTEM_DEF(who)
 	// Running thru all clients and doing some counts
 	for(var/client/client as anything in sortTim(GLOB.clients, GLOBAL_PROC_REF(cmp_ckey_asc)))
 		var/list/client_payload = list()
-		client_payload["text"] = client.key
+		client_payload["text"] = client.username()
 		client_payload["ckey_color"] = "white"
 		if(CLIENT_IS_STEALTHED(client))
 			player_stealthed_additional["total_players"] += list(list(client.key = list(client_payload)))
@@ -134,6 +135,7 @@ SUBSYSTEM_DEF(who)
 	factions_additional += list(list("content" = "Marines: [counted_additional["uscm_marines"]]", "color" = "#5442bd", "text" = "Players playing as Marines"))
 	factions_additional += list(list("content" = "Yautjas: [counted_additional["yautja"]]", "color" = "#7ABA19", "text" = "Players playing as Yautja"))
 	factions_additional += list(list("content" = "Infected Predators: [counted_additional["infected_preds"]]", "color" = "#7ABA19", "text" = "Players playing as Infected Yautja"))
+	factions_additional += list(list("content" = "Hunted In Preserve: [counted_additional["hunted"]]", "color" = "#476816", "text" = "Players playing as hunted in preserve"))
 
 	for(var/i in 1 to length(counted_factions))
 		if(!counted_factions[counted_factions[i]])
@@ -280,14 +282,14 @@ SUBSYSTEM_DEF(who)
 
 
 // VERBS
-/mob/verb/who()
+CLIENT_VERB(who)
 	set category = "OOC"
 	set name = "Who"
 
-	SSwho.who.tgui_interact(src)
+	SSwho.who.tgui_interact(mob)
 
-/mob/verb/staffwho()
+CLIENT_VERB(staffwho)
 	set category = "Admin"
 	set name = "StaffWho"
 
-	SSwho.staff_who.tgui_interact(src)
+	SSwho.staff_who.tgui_interact(mob)

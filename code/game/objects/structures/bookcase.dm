@@ -1,7 +1,7 @@
 
 /obj/structure/bookcase
 	name = "bookcase"
-	icon = 'icons/obj/structures/structures.dmi'
+	icon = 'icons/obj/structures/bookshelf.dmi'
 	icon_state = "book-0"
 	anchored = TRUE
 	density = TRUE
@@ -25,6 +25,15 @@
 		attack_hand(xeno)
 		return XENO_NONCOMBAT_ACTION
 
+/obj/structure/bookcase/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	if(unslashable)
+		return TAILSTAB_COOLDOWN_NONE
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	deconstruct(FALSE)
+	xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
+	SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	return TAILSTAB_COOLDOWN_NORMAL
+
 /obj/structure/bookcase/Initialize()
 	. = ..()
 	for(var/obj/item/I in loc)
@@ -47,11 +56,11 @@
 	else if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 		if(do_after(user, 1 SECONDS, INTERRUPT_MOVED, BUSY_ICON_FRIENDLY, src))
-			user.visible_message("[user] deconstructs [src].", \
+			user.visible_message("[user] deconstructs [src].",
 				"You deconstruct [src].", "You hear a noise.")
 			deconstruct(FALSE)
 	else
-		..()
+		. = ..()
 
 /obj/structure/bookcase/attack_hand(mob/user as mob)
 	if(length(contents))

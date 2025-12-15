@@ -10,6 +10,7 @@
 	var/list/corpses = list()
 	var/list/scored_other_corpses = list()
 	var/list/scored_humansynth_corpses = list()
+	var/max_humans = FALSE
 
 /datum/cm_objective/recover_corpses/New()
 	. = ..()
@@ -109,17 +110,25 @@
 			if(1)
 				if(ispredalien(X))
 					value = OBJECTIVE_ABSOLUTE_VALUE
-				else value = OBJECTIVE_LOW_VALUE
+				else
+					value = OBJECTIVE_LOW_VALUE
 			if(2)
 				value = OBJECTIVE_MEDIUM_VALUE
 			if(3)
 				value = OBJECTIVE_EXTREME_VALUE
+			if(4)
+				value = OBJECTIVE_ABSOLUTE_VALUE
 			else
 				if(isqueen(X)) //Queen is Tier 0 for some reason...
 					value = OBJECTIVE_ABSOLUTE_VALUE
 
-	else if(ishumansynth_strict(target) && length(scored_humansynth_corpses) <= 49) // Limit human corpse recovery to 5 total points (.1 each)
-		return OBJECTIVE_LOW_VALUE
+	else if(ishumansynth_strict(target))
+		if(length(scored_humansynth_corpses) <= 48) // Limit human corpse recovery to 5 total points (.1 each)
+			return OBJECTIVE_LOW_VALUE
+		if(!max_humans)
+			marine_announcement("Maximum intel points for non-xenomorph corpses has been achieved.", "Intel Announcement", 'sound/misc/notice2.ogg')
+			max_humans = TRUE
+			return OBJECTIVE_LOW_VALUE
 
 	return value
 

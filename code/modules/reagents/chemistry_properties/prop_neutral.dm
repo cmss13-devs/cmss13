@@ -12,7 +12,7 @@
 	value = 1
 
 /datum/chem_property/neutral/cryometabolizing/pre_process(mob/living/M)
-	if(M.bodytemperature > 170)
+	if(M.bodytemperature > BODYTEMP_CRYO_LIQUID_THRESHOLD)
 		return list(REAGENT_CANCEL = TRUE)
 	return list(REAGENT_BOOST = POTENCY_MULTIPLIER_LOW * level)
 
@@ -35,12 +35,27 @@
 /datum/chem_property/neutral/excreting
 	name = PROPERTY_EXCRETING
 	code = "EXT"
-	description = "Excretes all chemicals contained in the blood stream by using the kidneys to turn it into urine."
+	description = "Excretes all chemicals contained in the blood stream by using the kidneys to turn it into urine. Upregulates chemical production in plants."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_IRRITANT
 
 /datum/chem_property/neutral/excreting/pre_process(mob/living/M)
 	return list(REAGENT_PURGE = level)
+
+/datum/chem_property/neutral/excreting/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	processing_tray.toxins += 1.5*(potency*2)*volume
+	processing_tray.weedlevel += 1*(potency*2)*volume
+	processing_tray.potency_counter += 5*(potency*2)*volume
+	if (processing_tray.potency_counter >= 100 && rand(0,potency*2) > 0)
+		var/turf/c_turf = get_turf(processing_tray)
+		processing_tray.seed = processing_tray.seed.diverge()
+		processing_tray.seed.potency += rand(1,potency*2)
+		processing_tray.seed.nutrient_consumption += 0.3*(potency*2)
+		c_turf.visible_message(SPAN_NOTICE("\The [processing_tray.seed.display_name] rustles as its branches bow"))
+		processing_tray.potency_counter = 0
 
 /datum/chem_property/neutral/nutritious
 	name = PROPERTY_NUTRITIOUS
@@ -67,6 +82,17 @@
 /datum/chem_property/neutral/nutritious/update_reagent()
 	holder.nutriment_factor += level
 	..()
+
+/datum/chem_property/neutral/nutritious/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	processing_tray.weedlevel += 0.5*(potency*2)*volume
+	processing_tray.pestlevel += 0.5*(potency*2)*volume
+	processing_tray.nutrilevel += 0.5*(potency*2)*volume
+	processing_tray.plant_health += 0.5*(potency*2)*volume
+	processing_tray.yield_mod += 0.05*(potency*2)*volume
+
 
 /datum/chem_property/neutral/ketogenic
 	name = PROPERTY_KETOGENIC
@@ -208,26 +234,26 @@
 	M.apply_damage(0.5 * potency * delta_time, BRAIN)
 	M.apply_effect(20, PARALYZE)
 
-/datum/chem_property/neutral/relaxing
-	name = PROPERTY_RELAXING
-	code = "RLX"
-	description = "Has a sedative effect on neuromuscular junctions depressing the force of muscle contractions. High concentrations can cause respiratory failure and cardiac arrest."
+/datum/chem_property/neutral/antispasmodic
+	name = PROPERTY_ANTISPASMODIC
+	code = "ASP"
+	description = "Relaxes smooth muscles and treats muscle spasms by blocking the neurotransmitter acetylcholine. High concentrations can cause respiratory failure and cardiac arrest."
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_STIMULANT
 
-/datum/chem_property/neutral/relaxing/process(mob/living/M, potency = 1, delta_time)
+/datum/chem_property/neutral/antispasmodic/process(mob/living/M, potency = 1, delta_time)
 	M.reagent_move_delay_modifier += potency
 	if(prob(5 * delta_time))
 		M.emote("yawn")
 	M.recalculate_move_delay = TRUE
 
-/datum/chem_property/neutral/relaxing/process_overdose(mob/living/M, potency = 1, delta_time)
+/datum/chem_property/neutral/antispasmodic/process_overdose(mob/living/M, potency = 1, delta_time)
 	//heart beats slower
 	M.reagent_move_delay_modifier += POTENCY_MULTIPLIER_MEDIUM * potency
 	if(prob(10))
 		to_chat(M, SPAN_WARNING("You feel incredibly weak!"))
 
-/datum/chem_property/neutral/relaxing/process_critical(mob/living/M, potency = 1, delta_time)
+/datum/chem_property/neutral/antispasmodic/process_critical(mob/living/M, potency = 1, delta_time)
 	//heart stops beating, lungs stop working
 	if(prob(7.5 * potency * delta_time))
 		M.apply_effect(potency, PARALYZE)
@@ -248,14 +274,14 @@
 	if(prob(5 * delta_time))
 		M.emote("gasp")
 		to_chat(M, SPAN_DANGER("<b>Your insides feel uncomfortably hot !</b>"))
-	M.bodytemperature = max(M.bodytemperature + POTENCY_MULTIPLIER_MEDIUM * potency,0)
+	M.bodytemperature = min(T120C, M.bodytemperature + POTENCY_MULTIPLIER_MEDIUM * potency)
 	if(potency >= CREATE_MAX_TIER_1)
 		M.make_dizzy(potency * POTENCY_MULTIPLIER_MEDIUM)
 		M.apply_effect(potency,AGONY,0)
 	M.recalculate_move_delay = TRUE
 
 /datum/chem_property/neutral/hyperthermic/process_overdose(mob/living/M, potency = 1)
-	M.bodytemperature = max(M.bodytemperature + POTENCY_MULTIPLIER_VHIGH * potency,0)
+	M.bodytemperature = min(T120C, M.bodytemperature + POTENCY_MULTIPLIER_VHIGH * potency)
 	M.apply_effect(POTENCY_MULTIPLIER_MEDIUM * potency,AGONY,0)
 
 /datum/chem_property/neutral/hyperthermic/process_critical(mob/living/M, potency = 1, delta_time)
@@ -268,29 +294,57 @@
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_METABOLITE
 
-/datum/chem_property/neutral/hypothermic/process(mob/living/M, potency = 1, delta_time)
+/**
+ * For QuickClot removes CHEM_EFFECT_NO_BLEEDING. if above 0C, has no Cryox/Clonex in system. Exception check for cryometabolizing hypothermics
+ *
+ * Affected mob will be evaluated for QuickClot conditions, above 0c, has cryo/clonex no in system and remove the flag regardless of reagent cancel
+ * arguments:
+ * *effected_mob - the effected Mob
+ */
+/datum/chem_property/neutral/hypothermic/pre_process(mob/living/effected_mob)
+	var/mob/living/carbon/human/effected_human = effected_mob
+	//IF are above 0C or no cryo/clonex remove no bleed flag.
+	if (effected_mob.bodytemperature >= T0C || (effected_human.reagents.get_reagent_amount("cryoxadone") == 0 && effected_human.reagents.get_reagent_amount("clonexadone") == 0))
+		effected_human.chem_effect_flags &= CHEM_EFFECT_NO_BLEEDING
+
+/datum/chem_property/neutral/hypothermic/process(mob/living/effected_mob, potency = 1, delta_time)
+	var/mob/living/carbon/human/effected_human = effected_mob
 	if(prob(5 * delta_time))
-		M.emote("shiver")
-	M.bodytemperature = max(M.bodytemperature - POTENCY_MULTIPLIER_MEDIUM * potency,0)
-	M.recalculate_move_delay = TRUE
+		effected_mob.emote("shiver")
+	//IF body temp below 0C AND Cryo or Clonex in system,apply CHEM_EFFECT_NO_BLEEDING
+	if (effected_mob.bodytemperature < T0C && (effected_human.reagents.get_reagent_amount("cryoxadone") || effected_human.reagents.get_reagent_amount("clonexadone")))
+		effected_human.chem_effect_flags |= CHEM_EFFECT_NO_BLEEDING
+	effected_mob.bodytemperature = max(0, effected_mob.bodytemperature - POTENCY_MULTIPLIER_MEDIUM * potency)
+	effected_mob.recalculate_move_delay = TRUE
+
+/**
+ * For QuickClot removes CHEM_EFFECT_NO_BLEEDING. when drug fully metabolized
+ *
+ * Affected mob will have no bleed tag removed when drug metabolized
+ * arguments:
+ * *effected_mob - the effected Mob
+ */
+/datum/chem_property/neutral/hypothermic/on_delete(mob/living/effected_mob)
+	var/mob/living/carbon/human/effected_human = effected_mob
+	effected_human.chem_effect_flags &= CHEM_EFFECT_NO_BLEEDING
 
 /datum/chem_property/neutral/hypothermic/process_overdose(mob/living/M, potency = 1)
-	M.bodytemperature = max(M.bodytemperature - POTENCY_MULTIPLIER_VHIGH * potency,0)
+	M.bodytemperature = max(0, M.bodytemperature - POTENCY_MULTIPLIER_VHIGH * potency)
 	M.drowsyness  = max(M.drowsyness, 30)
 
 /datum/chem_property/neutral/hypothermic/process_critical(mob/living/M, potency = 1, delta_time)
 	M.apply_effect(20, PARALYZE)
 
-/datum/chem_property/neutral/balding
-	name = PROPERTY_BALDING
-	code = "BLD"
-	description = "Damages the hair follicles in the skin causing extreme alopecia, also refered to as baldness."
+/datum/chem_property/neutral/atrichogenic
+	name = PROPERTY_ATRICHOGENIC
+	code = "ATR"
+	description = "Damages the hair follicles in the skin to disrupt the hair growth cycle, causing extreme alopecia, also referred to as baldness."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_IRRITANT
 	value = 0
 	max_level = 2
 
-/datum/chem_property/neutral/balding/process(mob/living/M, potency = 1, delta_time)
+/datum/chem_property/neutral/atrichogenic/process(mob/living/M, potency = 1, delta_time)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if((H.h_style != "Bald" || H.f_style != "Shaved"))
@@ -299,38 +353,50 @@
 			H.f_style = "Shaved"
 			H.update_hair()
 
-/datum/chem_property/neutral/balding/process_overdose(mob/living/M, potency = 1)
+/datum/chem_property/neutral/atrichogenic/process_overdose(mob/living/M, potency = 1)
 	M.adjustCloneLoss(POTENCY_MULTIPLIER_LOW * potency)
 
-/datum/chem_property/neutral/balding/process_critical(mob/living/M, potency = 1, delta_time)
+/datum/chem_property/neutral/atrichogenic/process_critical(mob/living/M, potency = 1, delta_time)
 	M.adjustCloneLoss(0.5 * potency * delta_time)
 
-/datum/chem_property/neutral/fluffing
-	name = PROPERTY_FLUFFING
-	code = "FLF"
-	description = "Accelerates cell division in the hair follicles resulting in random and excessive hairgrowth."
+/datum/chem_property/neutral/trichogenic
+	name = PROPERTY_TRICHOGENIC
+	code = "TRI"
+	description = "Accelerates cell division in the hair follicles resulting in random and excessive hair growth. Found to increase yields in plants."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_IRRITANT
 	value = 0
 
-/datum/chem_property/neutral/fluffing/process(mob/living/M, potency = 1, delta_time)
+/datum/chem_property/neutral/trichogenic/process(mob/living/M, potency = 1, delta_time)
 	if(prob(2.5 * potency * delta_time) && ishuman(M))
 		var/mob/living/carbon/human/H = M
 		H.h_style = "Bald"
 		H.f_style = "Shaved"
 		H.h_style = pick(GLOB.hair_styles_list)
-		H.f_style = pick(GLOB.facial_hair_styles_list)
+		if(H.gender == MALE)
+			H.f_style = pick(GLOB.facial_hair_styles_list)
 		H.update_hair()
 		to_chat(M, SPAN_NOTICE("Your head feels different..."))
 
-/datum/chem_property/neutral/fluffing/process_overdose(mob/living/M, potency = 1, delta_time)
+/datum/chem_property/neutral/trichogenic/process_overdose(mob/living/M, potency = 1, delta_time)
 	if(prob(2.5 * potency * delta_time))
 		to_chat(M, SPAN_WARNING("You feel itchy all over!"))
 		M.take_limb_damage(potency) //Hair growing inside your body
 
-/datum/chem_property/neutral/fluffing/process_critical(mob/living/M, potency = 1, delta_time)
+/datum/chem_property/neutral/trichogenic/process_critical(mob/living/M, potency = 1, delta_time)
 	to_chat(M, SPAN_WARNING("You feel like something is penetrating your skull!"))
 	M.apply_damage(0.5 * potency * delta_time, BRAIN) //Hair growing into brain
+
+/datum/chem_property/neutral/trichogenic/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	processing_tray.yield_mod += 0.2*(potency*2)*volume
+	processing_tray.nutrilevel += -0.5*(potency*2)*volume
+	var/water_added = 0
+	var/water_input = -0.1*(potency*2)*volume
+	water_added += water_input
+	processing_tray.waterlevel += water_input
 
 /datum/chem_property/neutral/allergenic
 	name = PROPERTY_ALLERGENIC
@@ -437,7 +503,7 @@
 /datum/chem_property/neutral/antihallucinogenic
 	name = PROPERTY_ANTIHALLUCINOGENIC
 	code = "AHL"
-	description = "Stabilizes perseptive abnormalities such as hallucinations caused by mindbreaker toxin."
+	description = "Stabilizes perceptive abnormalities such as hallucinations caused by mindbreaker toxin."
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_STIMULANT
 	value = 1
@@ -457,10 +523,10 @@
 /datum/chem_property/neutral/hypometabolic
 	name = PROPERTY_HYPOMETABOLIC
 	code = "OMB"
-	description = "Takes longer for this chemical to metabolize, resulting in it being in the bloodstream for more time per unit."
+	description = "Takes longer for this chemical to metabolize, resulting in it being in the bloodstream for more time per unit. Slows down metabolism of plants."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_METABOLITE
-	value = 2
+	value = 3
 
 /datum/chem_property/neutral/hypometabolic/reset_reagent()
 	holder.custom_metabolism = initial(holder.custom_metabolism)
@@ -470,14 +536,20 @@
 	holder.custom_metabolism = max(holder.custom_metabolism / (1 + 0.35 * level), 0.005)
 	..()
 
-/datum/chem_property/neutral/sedative
-	name = PROPERTY_SEDATIVE
-	code = "SDT"
+/datum/chem_property/neutral/hypometabolic/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	processing_tray.metabolism_adjust += clamp(20*potency, 0, 130)
+
+/datum/chem_property/neutral/hypnotic
+	name = PROPERTY_HYPNOTIC
+	code = "HYP"
 	description = "Causes the body to release melatonin resulting in increased sleepiness."
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_STIMULANT
 
-/datum/chem_property/neutral/sedative/process(mob/living/M, potency = 1, delta_time)
+/datum/chem_property/neutral/hypnotic/process(mob/living/M, potency = 1, delta_time)
 	if(M.confused < 25 && M.sleeping < 20)
 		M.confused += POTENCY_MULTIPLIER_MEDIUM * potency
 	if(M.confused > 25)
@@ -486,10 +558,10 @@
 	else if(prob(25))
 		M.emote("yawn")
 
-/datum/chem_property/neutral/sedative/process_overdose(mob/living/M, potency = 1, delta_time)
+/datum/chem_property/neutral/hypnotic/process_overdose(mob/living/M, potency = 1, delta_time)
 	M.adjust_effect(0.5 * potency * delta_time, PARALYZE)
 
-/datum/chem_property/neutral/sedative/process_critical(mob/living/M, potency = 1)
+/datum/chem_property/neutral/hypnotic/process_critical(mob/living/M, potency = 1)
 	M.apply_damage(POTENCY_MULTIPLIER_VHIGH * potency, OXY)
 
 /datum/chem_property/neutral/hyperthrottling
@@ -535,6 +607,11 @@
 	to_chat(chem_host, SPAN_NOTICE("The pain in your head subsides, and you are left feeling strangely alone."))
 
 /datum/chem_property/neutral/encephalophrasive/reaction_mob(mob/chem_host, method=INGEST, volume, potency)
+	if(method == TOUCH)
+		return
+	if(!ishuman_strict(chem_host))
+		return
+
 	give_action(chem_host, /datum/action/human_action/psychic_whisper)
 	to_chat(chem_host, SPAN_NOTICE("A terrible headache manifests, and suddenly it feels as though your mind is outside of your skull."))
 
@@ -574,11 +651,11 @@
 	value = 1
 
 /datum/chem_property/neutral/thermostabilizing/process(mob/living/M, potency = 1, delta_time)
-	if(M.bodytemperature > 310)
-		M.bodytemperature = max(310, M.bodytemperature - (20 * potency * delta_time * TEMPERATURE_DAMAGE_COEFFICIENT))
+	if(M.bodytemperature > T37C)
+		M.bodytemperature = max(T37C, M.bodytemperature - (20 * potency * delta_time * TEMPERATURE_DAMAGE_COEFFICIENT))
 		M.recalculate_move_delay = TRUE
-	else if(M.bodytemperature < 311)
-		M.bodytemperature = min(310, M.bodytemperature + (20 * potency * delta_time * TEMPERATURE_DAMAGE_COEFFICIENT))
+	else if(M.bodytemperature < T37C)
+		M.bodytemperature = min(T37C, M.bodytemperature + (20 * potency * delta_time * TEMPERATURE_DAMAGE_COEFFICIENT))
 		M.recalculate_move_delay = TRUE
 
 /datum/chem_property/neutral/thermostabilizing/process_overdose(mob/living/M, potency = 1, delta_time)
@@ -626,11 +703,11 @@
 /datum/chem_property/neutral/transformative/process(mob/living/M, potency = 1, delta_time)
 	var/true_heal = heal_amount * potency * delta_time
 	if(M.getBruteLoss())
-		M.apply_damage(-true_heal, BRUTE)
-		M.apply_damage(true_heal * 0.1, TOX)
+		M.apply_damage(-true_heal, BRUTE, chemical=TRUE)
+		M.apply_damage(true_heal * 0.1, TOX, chemical=TRUE)
 	if(M.getFireLoss())
-		M.apply_damage(-true_heal, BURN)
-		M.apply_damage(true_heal * 0.1, TOX)
+		M.apply_damage(-true_heal, BURN, chemical=TRUE)
+		M.apply_damage(true_heal * 0.1, TOX, chemical=TRUE)
 
 /datum/chem_property/neutral/transformative/process_overdose(mob/living/M, potency = 1)
 	M.apply_damage(heal_amount * (potency * POTENCY_MULTIPLIER_LOW), TOX)

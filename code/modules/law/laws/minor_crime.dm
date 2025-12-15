@@ -1,6 +1,3 @@
-/datum/law/minor_law
-	severity = MINOR_CRIME
-
 /datum/law/minor_law/contraband
 	name = "Contraband"
 	desc = "Possessing items or weapons from the Area of Operations not authorized by someone with the rank of SSGT or higher."
@@ -10,7 +7,7 @@
 /datum/law/minor_law/damage_to_government_property
 	name = "Damage to Government Property"
 	desc = "Damaging the ship or making any unauthorized modifications to it as outlined in Standard Operating Procedure on a minor level, such as breaking a window or damaging a wall."
-	special_punishment = "Repairations"
+	special_punishment = "Reparation"
 	brig_time = 7.5
 
 /datum/law/minor_law/insubordination

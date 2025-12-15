@@ -30,7 +30,7 @@
 /datum/radar/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
-		ui = new(user, src, "Radar", "[holder.name]")
+		ui = new(user, src, "Radar", "[capitalize(holder.name)]")
 		ui.open()
 
 /datum/radar/ui_assets(mob/user)
@@ -177,7 +177,7 @@
 /datum/radar/advanced_pdtl/scan()
 	. = ..()
 	objects = list()
-	var/obj/item/clothing/accessory/pdt_bracelet/bracelet = typed_holder.linked_bracelet
+	var/obj/item/clothing/accessory/wrist/pdt_bracelet/bracelet = typed_holder.linked_bracelet
 	if(!bracelet)
 		return
 	objects += list(list(

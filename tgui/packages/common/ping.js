@@ -96,7 +96,7 @@ export class Ping {
       }
     };
 
-    self.img.src = source + self.favicon + '?' + +new Date(); // Trigger image load with cache buster
+    self.img.src = source + self.favicon + '?' + new Date(); // Trigger image load with cache buster
   }
 
   /**

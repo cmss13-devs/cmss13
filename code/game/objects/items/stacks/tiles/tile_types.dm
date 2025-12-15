@@ -9,6 +9,12 @@
 	name = "abstract tile"
 	singular_name = "abstract tile"
 	desc = "If you're seeing this, then a Dev made a mistake. Report it on Github."
+	icon = 'icons/obj/items/floor_tiles.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/construction_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/construction_righthand.dmi',
+	)
+	item_state = "tile"
 	w_class = SIZE_MEDIUM
 	force = 1
 	throwforce = 1

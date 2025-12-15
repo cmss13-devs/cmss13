@@ -103,17 +103,17 @@
 	user.set_interaction(src)
 	var/dat
 	if(mybag)
-		dat += "<a href='?src=\ref[src];garbage=1'>[mybag.name]</a><br>"
+		dat += "<a href='byond://?src=\ref[src];garbage=1'>[mybag.name]</a><br>"
 	if(mymop)
-		dat += "<a href='?src=\ref[src];mop=1'>[mymop.name]</a><br>"
+		dat += "<a href='byond://?src=\ref[src];mop=1'>[mymop.name]</a><br>"
 	if(myspray)
-		dat += "<a href='?src=\ref[src];spray=1'>[myspray.name]</a><br>"
+		dat += "<a href='byond://?src=\ref[src];spray=1'>[myspray.name]</a><br>"
 	if(myreplacer)
-		dat += "<a href='?src=\ref[src];replacer=1'>[myreplacer.name]</a><br>"
+		dat += "<a href='byond://?src=\ref[src];replacer=1'>[myreplacer.name]</a><br>"
 	if(mybucket)
-		dat += "<a href='?src=\ref[src];bucket=1'>[mybucket.name]</a><br>"
+		dat += "<a href='byond://?src=\ref[src];bucket=1'>[mybucket.name]</a><br>"
 	if(signs)
-		dat += "<a href='?src=\ref[src];sign=1'>[signs] sign\s</a><br>"
+		dat += "<a href='byond://?src=\ref[src];sign=1'>[signs] sign\s</a><br>"
 	show_browser(user, dat, name, "janicart")
 
 /obj/structure/janitorialcart/Topic(href, href_list)
@@ -183,8 +183,16 @@
 /obj/structure/janitorialcart/attack_alien(mob/living/carbon/xenomorph/xeno_attacker)
 	xeno_attacker.animation_attack_on(src)
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
-	xeno_attacker.visible_message(SPAN_DANGER("[xeno_attacker] slices \the [src] apart!"),
-	SPAN_DANGER("You slice \the [src] apart!"), max_distance = 5, message_flags = CHAT_TYPE_XENO_COMBAT)
+	xeno_attacker.visible_message(SPAN_DANGER("[xeno_attacker] slices [src] apart!"),
+	SPAN_DANGER("You slice [src] apart!"), max_distance = 5, message_flags = CHAT_TYPE_XENO_COMBAT)
 	qdel(src)
 	return XENO_ATTACK_ACTION
 
+/obj/structure/janitorialcart/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	if(unslashable)
+		return TAILSTAB_COOLDOWN_NONE
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
+	SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	qdel(src)
+	return TAILSTAB_COOLDOWN_NORMAL

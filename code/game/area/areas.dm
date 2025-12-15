@@ -41,6 +41,7 @@
 	var/pressure = ONE_ATMOSPHERE
 	var/can_build_special = FALSE
 	var/is_resin_allowed = TRUE // can xenos weed, place resin holes or dig tunnels at said areas
+	var/allow_construction = TRUE // whether or not you can build things like barricades in this area
 	var/is_landing_zone = FALSE // primarily used to prevent mortars from hitting this location
 	var/resin_construction_allowed = TRUE // Allow construction of resin walls, and other special
 
@@ -89,6 +90,10 @@
 	/// How long this area should be un-oviable
 	var/unoviable_timer = 25 MINUTES
 
+	/// How many potentially open turfs can exist in this area
+	var/openable_turf_count = 0
+	/// How much destroyable resin currently exists in this area
+	var/current_resin_count = 0
 
 /area/New()
 	// This interacts with the map loader, so it needs to be set immediately
@@ -119,6 +124,17 @@
 		is_resin_allowed = FALSE
 		log_mapping("[src] has AREA_UNWEEDABLE flag but has is_resin_allowed as true! Forcing is_resin_allowed false...")
 
+	if(!(flags_area & AREA_UNWEEDABLE))
+		for(var/turf/current in src)
+			if(!current.density)
+				openable_turf_count++
+				continue
+			if(istype(current, /turf/closed/wall))
+				var/turf/closed/wall/current_wall = current
+				if(!(current_wall.turf_flags & TURF_HULL))
+					openable_turf_count++
+					continue
+
 /area/proc/initialize_power(override_power)
 	if(requires_power)
 		if(override_power) //Reset everything if you want to override.
@@ -134,7 +150,7 @@
 
 /// Returns the correct ambience sound track for a client in this area
 /area/proc/get_sound_ambience(client/target)
-	if(SSweather.is_weather_event && SSweather.map_holder.should_affect_area(src))
+	if(SSweather.is_weather_event && SSweather.map_holder.should_affect_area(src) && weather_enabled)
 		return SSweather.weather_event_instance.ambience
 	return ambience_exterior
 
@@ -288,13 +304,19 @@
 /area/proc/updateicon()
 	var/I //More important == bottom. Fire normally takes priority over everything.
 	if(flags_alarm_state && (!requires_power || power_environ)) //It either doesn't require power or the environment is powered. And there is an alarm.
-		if(flags_alarm_state & ALARM_WARNING_READY) I = "alarm_ready" //Area is ready for something.
-		if(flags_alarm_state & ALARM_WARNING_EVAC) I = "alarm_evac" //Evacuation happening.
-		if(flags_alarm_state & ALARM_WARNING_ATMOS) I = "alarm_atmos" //Atmos breach.
-		if(flags_alarm_state & ALARM_WARNING_FIRE) I = "alarm_fire" //Fire happening.
-		if(flags_alarm_state & ALARM_WARNING_DOWN) I = "alarm_down" //Area is shut down.
+		if(flags_alarm_state & ALARM_WARNING_READY)
+			I = "alarm_ready" //Area is ready for something.
+		if(flags_alarm_state & ALARM_WARNING_EVAC)
+			I = "alarm_evac" //Evacuation happening.
+		if(flags_alarm_state & ALARM_WARNING_ATMOS)
+			I = "alarm_atmos" //Atmos breach.
+		if(flags_alarm_state & ALARM_WARNING_FIRE)
+			I = "alarm_fire" //Fire happening.
+		if(flags_alarm_state & ALARM_WARNING_DOWN)
+			I = "alarm_down" //Area is shut down.
 
-	if(icon_state != I) icon_state = I //If the icon state changed, change it. Otherwise do nothing.
+	if(icon_state != I)
+		icon_state = I //If the icon state changed, change it. Otherwise do nothing.
 
 /area/proc/powered(chan) // return true if the area has power to given channel
 	if(!requires_power)
@@ -353,7 +375,7 @@
 
 	return used
 
-/area/proc/use_power(amount, chan)
+/area/proc/use_power(amount, chan = POWER_CHANNEL_ONEOFF)
 	switch(chan)
 		if(POWER_CHANNEL_EQUIP)
 			used_equip += amount
@@ -364,35 +386,52 @@
 		if(POWER_CHANNEL_ONEOFF)
 			used_oneoff += amount
 
-/area/Entered(A,atom/OldLoc)
-	if(ismob(A))
+#if defined(UNIT_TESTS)
+	switch(chan)
+		if(POWER_CHANNEL_EQUIP)
+			if(used_equip < 0)
+				stack_trace("[src] ([type]) now has [used_equip] used_equip after use_power([amount],...)!")
+		if(POWER_CHANNEL_LIGHT)
+			if(used_light < 0)
+				stack_trace("[src] ([type]) now has [used_light] used_light after use_power([amount],...)!")
+		if(POWER_CHANNEL_ENVIRON)
+			if(used_environ < 0)
+				stack_trace("[src] ([type]) now has [used_environ] used_environ after use_power([amount],...)!")
+		if(POWER_CHANNEL_ONEOFF)
+			if(used_oneoff < 0)
+				stack_trace("[src] ([type]) now has [used_oneoff] used_oneoff after use_power([amount],...)!")
+#endif
+
+/area/Entered(atom/movable/thing, atom/OldLoc)
+	if(ismob(thing))
 		if(!OldLoc)
 			return
-		var/mob/M = A
+		var/mob/mob_thing = thing
 		var/area/old_area = get_area(OldLoc)
 		if(old_area == src)
 			return
-		M?.client?.soundOutput?.update_ambience(src, null, TRUE)
-	else if(istype(A, /obj/structure/machinery))
-		add_machine(A)
+		mob_thing?.client?.soundOutput?.update_ambience(src, null, TRUE)
+	else if(istype(thing, /obj/structure/machinery))
+		add_machine(thing)
 
-/area/Exited(A)
-	if(istype(A, /obj/structure/machinery))
-		remove_machine(A)
-	else if(ismob(A))
-		var/mob/exiting_mob = A
+/area/Exited(atom/movable/thing)
+	if(istype(thing, /obj/structure/machinery))
+		remove_machine(thing)
+	else if(ismob(thing))
+		var/mob/exiting_mob = thing
 		exiting_mob?.client?.soundOutput?.update_ambience(target_area = null, ambience_override = null, force_update = TRUE)
 
-/area/proc/add_machine(obj/structure/machinery/M)
+/area/proc/add_machine(obj/structure/machinery/machine)
 	SHOULD_NOT_SLEEP(TRUE)
-	if(istype(M))
-		use_power(M.calculate_current_power_usage(), M.power_channel)
-		M.power_change()
+	if(!machine.last_power_usage)
+		machine.update_use_power(-1)
+	else
+		use_power(machine.last_power_usage, machine.power_channel)
+	machine.power_change()
 
-/area/proc/remove_machine(obj/structure/machinery/M)
+/area/proc/remove_machine(obj/structure/machinery/machine)
 	SHOULD_NOT_SLEEP(TRUE)
-	if(istype(M))
-		use_power(-M.calculate_current_power_usage(), M.power_channel)
+	use_power(-machine.last_power_usage, machine.power_channel)
 
 //atmos related procs
 
@@ -443,3 +482,8 @@
 /// From roundstart, sets a timer to make an area oviable.
 /area/proc/handle_ovi_timer()
 	addtimer(VARSET_CALLBACK(src, unoviable_timer, FALSE), unoviable_timer)
+
+/area/sky
+	name = "Sky"
+	icon_state = "lv-626"
+	flags_area = AREA_UNWEEDABLE

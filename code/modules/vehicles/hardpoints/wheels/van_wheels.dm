@@ -1,6 +1,6 @@
 /obj/item/hardpoint/locomotion/van_wheels
-	name = "Van wheels"
-	desc = "Integral to the movement of the van"
+	name = "vehicle wheels"
+	desc = "Integral to the movement of the van."
 	icon = 'icons/obj/vehicles/hardpoints/van.dmi'
 
 	icon_state = "tires"

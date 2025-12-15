@@ -14,10 +14,53 @@
 /obj/effect/detector_blip/m717
 	icon_state = "tracker_blip"
 
+/obj/effect/temp_visual//ported (pasted) from TG13
+	icon_state = null
+	anchored = TRUE
+	layer = ABOVE_MOB_LAYER
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	var/duration = 1 SECONDS
+	///if true, will pick a random direction when created.
+	var/randomdir = TRUE
+	///id of the deletion timer
+	var/timerid
+
+/obj/effect/temp_visual/Initialize(mapload)
+	. = ..()
+	if(randomdir)
+		setDir(pick(GLOB.cardinals))
+
+	timerid = QDEL_IN(src, duration)
+
+/obj/effect/temp_visual/minimap_pulse
+	icon = null
+	duration = 0.75 SECONDS
+
+/obj/effect/temp_visual/minimap_pulse/Initialize(mapload, minimap_flag = MINIMAP_FLAG_ALL, type)
+	. = ..()
+	var/pulse_icon
+	if(type == MOTION_DETECTOR_LONG)
+		pulse_icon = "motion_long_pulse"
+	else
+		pulse_icon = "motion_short_pulse"
+	SSminimaps.add_marker(src, minimap_flag, image('icons/ui_icons/map_blips_larger.dmi', null, pulse_icon), -28.25, -28.25)
+
+/obj/effect/temp_visual/minimap_blip
+	icon = null
+	duration = 1 SECONDS
+
+/obj/effect/temp_visual/minimap_blip/Initialize(mapload, minimap_flags = MINIMAP_FLAG_ALL)
+	. = ..()
+	SSminimaps.add_marker(src, minimap_flags, image('icons/ui_icons/map_blips.dmi', null, "motion", HIGH_FLOAT_LAYER))
+
 /obj/item/device/motiondetector
 	name = "motion detector"
 	desc = "A device that detects movement, but ignores marines. Can also be used to scan a vehicle interior from outside, but accuracy of such scanning is low and there is no way to differentiate friends from foes."
 	icon = 'icons/obj/items/marine-items.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_righthand.dmi',
+	)
 	icon_state = "detector"
 	item_state = "motion_detector"
 	flags_atom = FPRINT| CONDUCT
@@ -33,7 +76,9 @@
 	var/long_range_cooldown = 2
 	var/blip_type = "detector"
 	var/iff_signal = FACTION_MARINE
-	actions_types = list(/datum/action/item_action/toggle)
+	///Flag for minimap icon
+	var/minimap_flag = MINIMAP_FLAG_USCM
+	actions_types = list(/datum/action/item_action/toggle/motion_detector)
 	var/scanning = FALSE // controls if MD is in process of scan
 	var/datum/shape/rectangle/square/range_bounds
 	var/long_range_locked = FALSE //only long-range MD
@@ -52,8 +97,13 @@
 	update_icon()
 
 /obj/item/device/motiondetector/Destroy()
-	. = ..()
+	STOP_PROCESSING(SSobj, src)
+	for(var/to_delete in blip_pool)
+		qdel(blip_pool[to_delete])
+		blip_pool.Remove(to_delete)
+	blip_pool = null
 	range_bounds = null
+	return ..()
 
 /obj/item/device/motiondetector/update_icon()
 	//clear overlays
@@ -77,6 +127,8 @@
 		overlays += "+[initial(icon_state)]_long_switch"
 	else
 		overlays += "+[initial(icon_state)]_short_switch"
+	for(var/datum/action/item_action as anything in actions)
+		item_action.update_button_icon()
 
 /obj/item/device/motiondetector/verb/toggle_range_mode()
 	set name = "Toggle Range Mode"
@@ -104,7 +156,7 @@
 /obj/item/device/motiondetector/clicked(mob/user, list/mods)
 	if (isobserver(user) || isxeno(user)) return
 
-	if (mods["alt"])
+	if (mods[ALT_CLICK])
 		if(!CAN_PICKUP(user, src))
 			return ..()
 		if(!long_range_locked)
@@ -145,16 +197,11 @@
 		to_chat(user, SPAN_NOTICE("You deactivate \the [src]."))
 	scanning = FALSE // safety if MD runtimes in scan and stops scanning
 	icon_state = "[initial(icon_state)]"
+	for(var/button in actions)
+		var/datum/action/action_button = button
+		action_button.update_button_icon()
 	playsound(loc, 'sound/items/detector_turn_off.ogg', 30, FALSE, 5, 2)
 	STOP_PROCESSING(SSobj, src)
-
-/obj/item/device/motiondetector/Destroy()
-	STOP_PROCESSING(SSobj, src)
-	for(var/to_delete in blip_pool)
-		qdel(blip_pool[to_delete])
-		blip_pool.Remove(to_delete)
-	blip_pool = null
-	return ..()
 
 /obj/item/device/motiondetector/process()
 	if(isturf(loc))
@@ -169,8 +216,10 @@
 
 	if(!detector_mode)
 		long_range_cooldown--
-		if(long_range_cooldown) return
-		else long_range_cooldown = initial(long_range_cooldown)
+		if(long_range_cooldown)
+			return
+		else
+			long_range_cooldown = initial(long_range_cooldown)
 
 	scan()
 
@@ -217,24 +266,31 @@
 
 	range_bounds.set_shape(cur_turf.x, cur_turf.y, detector_range * 2)
 
-	var/list/ping_candidates = SSquadtree.players_in_range(range_bounds, cur_turf.z, QTREE_EXCLUDE_OBSERVER | QTREE_SCAN_MOBS)
+	var/list/ping_candidates = SSquadtree.players_in_range(range_bounds, cur_turf.z, QTREE_FILTER_LIVING | QTREE_SCAN_MOBS)
+	var/turf/above = SSmapping.get_turf_above(cur_turf)
+	var/turf/below = SSmapping.get_turf_below(cur_turf)
+	if(above)
+		ping_candidates += SSquadtree.players_in_range(range_bounds, above.z, QTREE_FILTER_LIVING | QTREE_SCAN_MOBS)
+	if(below)
+		ping_candidates += SSquadtree.players_in_range(range_bounds, below.z, QTREE_FILTER_LIVING | QTREE_SCAN_MOBS)
 
-	for(var/A in ping_candidates)
-		var/mob/living/M = A //do this to skip the unnecessary istype() check; everything in ping_candidate is a mob already
-		if(M == loc) continue //device user isn't detected
-		if(world.time > M.l_move_time + 20) continue //hasn't moved recently
-		if(M.get_target_lock(iff_signal))
+	for(var/mob/living/current_mob as anything in ping_candidates)
+		if(current_mob == loc)
+			continue //device user isn't detected
+		if(world.time > current_mob.l_move_time + 20)
+			continue //hasn't moved recently
+		if(current_mob.get_target_lock(iff_signal))
 			continue
 
-		apply_debuff(M)
+		apply_debuff(current_mob)
 		ping_count++
 		if(human_user)
-			show_blip(human_user, M)
+			show_blip(human_user, current_mob)
 
 	for(var/mob/hologram/holo as anything in GLOB.hologram_list)
 		if(!holo.motion_sensed)
 			continue
-		if(holo.z != cur_turf.z || !(range_bounds.contains_atom(holo)))
+		if(holo.z != cur_turf.z || !(range_bounds.contains_atom(holo))) //I do not think marines need queen eye ping from other z level
 			continue
 		ping_count++
 		if(human_user)
@@ -264,16 +320,22 @@
 		var/view_x_offset = 0
 		var/view_y_offset = 0
 		if(c_view > 7)
-			if(user.client.pixel_x >= 0) view_x_offset = floor(user.client.pixel_x/32)
-			else view_x_offset = ceil(user.client.pixel_x/32)
-			if(user.client.pixel_y >= 0) view_y_offset = floor(user.client.pixel_y/32)
-			else view_y_offset = ceil(user.client.pixel_y/32)
+			if(user.client.get_pixel_x() >= 0)
+				view_x_offset = floor(user.client.get_pixel_x()/32)
+			else
+				view_x_offset = ceil(user.client.get_pixel_x()/32)
+			if(user.client.get_pixel_y() >= 0)
+				view_y_offset = floor(user.client.get_pixel_y()/32)
+			else
+				view_y_offset = ceil(user.client.get_pixel_y()/32)
 
 		var/diff_dir_x = 0
 		var/diff_dir_y = 0
-		if(target.x - user.x > c_view + view_x_offset) diff_dir_x = 4
+		if(target.x - user.x > c_view + view_x_offset)
+			diff_dir_x = 4
 		else if(target.x - user.x < -c_view + view_x_offset) diff_dir_x = 8
-		if(target.y - user.y > c_view + view_y_offset) diff_dir_y = 1
+		if(target.y - user.y > c_view + view_y_offset)
+			diff_dir_y = 1
 		else if(target.y - user.y < -c_view + view_y_offset) diff_dir_y = 2
 		if(diff_dir_x || diff_dir_y)
 			DB.icon_state = "[blip_icon]_blip_dir"
@@ -282,8 +344,19 @@
 			DB.icon_state = "[blip_icon]_blip"
 			DB.setDir(initial(DB.dir))
 
+		DB.overlays.Cut()
+		if(user.z != target.z)
+			var/image/new_overlay = image('icons/mob/hud/screen1.dmi', icon_state = "big_arrow_grey")
+			new_overlay.color = "#BDFDFE"
+
+			if(target.z > user.z)
+				new_overlay.transform = turn(matrix(), 180)
+
+			DB.overlays += new_overlay
+
 		DB.screen_loc = "[clamp(c_view + 1 - view_x_offset + (target.x - user.x), 1, 2*c_view+1)],[clamp(c_view + 1 - view_y_offset + (target.y - user.y), 1, 2*c_view+1)]"
 		user.client.add_to_screen(DB)
+		new /obj/effect/temp_visual/minimap_blip(get_turf(target), minimap_flag)
 		addtimer(CALLBACK(src, PROC_REF(clear_pings), user, DB), 1 SECONDS)
 
 /obj/item/device/motiondetector/proc/clear_pings(mob/user, obj/effect/detector_blip/DB)
@@ -305,11 +378,18 @@
 	name = "modified M717 pocket motion detector"
 	desc = "This prototype motion detector sacrifices versatility, having only the long-range mode, for size, being so small it can even fit in pockets. This one has been modified with an after-market IFF sensor to filter out Vanguard's Arrow Incorporated signals instead of USCM ones. Fight fire with fire!"
 	iff_signal = FACTION_CONTRACTOR
+	minimap_flag = MINIMAP_FLAG_CLF
 
 /obj/item/device/motiondetector/hacked
 	name = "hacked motion detector"
 	desc = "A device that usually picks up non-USCM signals, but this one's been hacked to detect all non-UPP movement instead. Fight fire with fire!"
 	iff_signal = FACTION_UPP
+	minimap_flag = MINIMAP_FLAG_UPP
+
+/obj/item/device/motiondetector/hacked/clf
+	name = "hacked motion detector"
+	desc = "A device that usually picks up non-USCM signals, but this one's been reprogrammed to detect all non-CLF movement instead."
+	iff_signal = FACTION_CLF
 
 /obj/item/device/motiondetector/hacked/elite_merc
 	name = "hacked motion detector"
@@ -320,6 +400,7 @@
 	name = "corporate motion detector"
 	desc = "A device that usually picks up non-USCM signals, but this one's been reprogrammed to detect all non-PMC movement instead. Very corporate."
 	iff_signal = FACTION_PMC
+	minimap_flag = MINIMAP_FLAG_PMC
 
 /obj/item/device/motiondetector/hacked/dutch
 	name = "hacked motion detector"

@@ -207,6 +207,7 @@
 	var/stored_index = 1
 	var/list/regexOutput
 	//multiz lool
+	dmm_regex.next = stored_index // CM addition: Neccessary to reset start position in case of loading the same file concurrently. Putting it in Find() below is NOT enough!
 	while(dmm_regex.Find(tfile, stored_index))
 		stored_index = dmm_regex.next
 		// Datum var lookup is expensive, this isn't
@@ -933,6 +934,11 @@ GLOBAL_LIST_EMPTY(map_model_default)
 //			old_area.turfs_to_uncontain += crds
 //			area_instance.contained_turfs.Add(crds)
 		area_instance.contents.Add(crds)
+		if(old_area)
+			// Make sure atoms leave their old area and enter the new area
+			for(var/atom/turf_atom as anything in crds.GetAllTurfStrictContents())
+				old_area.Exited(turf_atom)
+				area_instance.Entered(turf_atom, crds)
 
 		if(GLOB.use_preloader)
 			world.preloader_load(area_instance)

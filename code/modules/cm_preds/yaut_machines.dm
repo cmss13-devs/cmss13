@@ -4,9 +4,8 @@
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 	icon_state = "globe"
 	breakable = FALSE
-
-	minimap_type = MINIMAP_FLAG_ALL
-	faction = FACTION_YAUTJA
+	minimap_flag = MINIMAP_FLAG_ALL
+	drawing = FALSE
 
 /obj/structure/machinery/autolathe/yautja
 	name = "yautja autolathe"
@@ -34,6 +33,9 @@
 /obj/structure/machinery/prop/yautja/bubbler/attackby(obj/potential_limb, mob/living/user)
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		to_chat(user, SPAN_NOTICE("You have no idea what this does, and you figure it is not time to find out."))
+		return
+
+	if(user.action_busy)
 		return
 
 	if(!istype(potential_limb, /obj/item/limb))

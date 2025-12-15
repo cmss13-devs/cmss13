@@ -7,6 +7,13 @@
 #define VENDING_WIRE_SHOCK 3
 #define VENDING_WIRE_SHOOT_INV 4
 
+GLOBAL_LIST_INIT(vending_wire_descriptions, flatten_numeric_alist(alist(
+		VENDING_WIRE_EXTEND = "Inventory control computer",
+		VENDING_WIRE_IDSCAN = "ID scanner",
+		VENDING_WIRE_SHOCK = "Ground safety",
+		VENDING_WIRE_SHOOT_INV = "Dispenser motor control",
+	)))
+
 #define VEND_HAND 1
 
 /datum/data/vending_product
@@ -150,7 +157,8 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 	for(var/typepath in productlist)
 		var/amount = productlist[typepath]
 		var/price = prices[typepath]
-		if(isnull(amount)) amount = 1
+		if(isnull(amount))
+			amount = 1
 
 		var/obj/item/temp_path = typepath
 		var/datum/data/vending_product/product = new /datum/data/vending_product()
@@ -298,10 +306,12 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 			to_chat(user, SPAN_WARNING("[msg]"))
 			return
 	else if(HAS_TRAIT(item, TRAIT_TOOL_WRENCH))
-		if(!wrenchable) return
+		if(!wrenchable)
+			return
 
 		if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-			if(!src) return
+			if(!src)
+				return
 			playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 			switch (anchored)
 				if (0)
@@ -333,10 +343,11 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 		tgui_interact(user)
 		return
 
-	..()
+	. = ..()
 
 /obj/structure/machinery/vending/proc/scan_card(obj/item/card/card)
-	if(!currently_vending) return
+	if(!currently_vending)
+		return
 	if (istype(card, /obj/item/card/id))
 		visible_message(SPAN_INFO("[usr] swipes a card through [src]."))
 		var/datum/money_account/CH = get_account(card.associated_account_number)
@@ -716,7 +727,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 		.["user"] = null
 
 	.["stock"] = list()
-	for (var/datum/data/vending_product/product_record in product_records + coin_records + hidden_records)
+	for(var/datum/data/vending_product/product_record in product_records + coin_records + hidden_records)
 		var/list/product_data = list(
 			name = product_record.product_name,
 			amount = product_record.amount,
@@ -726,10 +737,9 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 
 	.["extended_inventory"] = extended_inventory
 
-	var/list/wire_descriptions = get_wire_descriptions()
 	var/list/panel_wires = list()
-	for(var/wire = 1 to length(wire_descriptions))
-		panel_wires += list(list("desc" = wire_descriptions[wire], "cut" = isWireCut(wire)))
+	for(var/wire in 1 to length(GLOB.vending_wire_descriptions))
+		panel_wires += list(list("desc" = GLOB.vending_wire_descriptions[wire], "cut" = isWireCut(wire)))
 
 	.["electrical"] = list(
 		"electrified" = seconds_electrified > 0,
@@ -919,13 +929,6 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 		mob.show_message("<span class='game say'><span class='name'>[src]</span> beeps, \"[message]\"</span>", SHOW_MESSAGE_AUDIBLE)
 	return
 
-/obj/structure/machinery/vending/power_change()
-	..()
-	if(stat & NOPOWER)
-		addtimer(CALLBACK(src, PROC_REF(update_icon)), rand(1, 15))
-		return
-	update_icon()
-
 //Oh no we're malfunctioning!  Dump out some product and break.
 /obj/structure/machinery/vending/proc/malfunction()
 	if(stat & BROKEN)
@@ -970,14 +973,6 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 	visible_message(SPAN_WARNING("[src] launches [throw_item] at [target]!"))
 	playsound(src, "sound/machines/vending.ogg", 40, TRUE)
 	return 1
-
-/obj/structure/machinery/vending/proc/get_wire_descriptions()
-	return list(
-		VENDING_WIRE_EXTEND = "Inventory control computer",
-		VENDING_WIRE_IDSCAN = "ID scanner",
-		VENDING_WIRE_SHOCK  = "Ground safety",
-		VENDING_WIRE_SHOOT_INV = "Dispenser motor control"
-	)
 
 /obj/structure/machinery/vending/proc/isWireCut(wire)
 	return !(wires & getWireFlag(wire))

@@ -62,12 +62,18 @@
 /datum/tgui_say/proc/load()
 	window_open = FALSE
 
-	winset(client, "tgui_say", "pos=700,500;size=380,30;is-visible=0;")
+	winset(client, "tgui_say", "pos=700,500;is-visible=0;")
+
+	var/list/languages = list()
+	for(var/datum/language/language as anything in client.mob?.languages)
+		languages += lowertext(language.name)
 
 	window.send_message("props", list(
-		lightMode = client.prefs?.tgui_say_light_mode,
-		maxLength = max_length,
-		extraChannels = client.admin_holder?.get_tgui_say_extra_channels()
+		"lightMode" = client.prefs?.tgui_say_light_mode,
+		"scale" = client.prefs?.window_scale,
+		"maxLength" = max_length,
+		"extraChannels" = client.admin_holder?.get_tgui_say_extra_channels(),
+		"languages" = languages
 	))
 
 	stop_thinking()

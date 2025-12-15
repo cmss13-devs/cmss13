@@ -58,8 +58,8 @@
 
 	if(do_after(user, 300, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD)) // 30s for non-AIs as humans have to manually reprogram it and rapid switching may cause some lag / powernet updates flood. If AIs spam it they can be easily traced.
 		set_state(!on)
-		user.visible_message(\
-		SPAN_NOTICE("[user.name] [on ? "enabled" : "disabled"] the breaker box!"),\
+		user.visible_message(
+		SPAN_NOTICE("[user.name] [on ? "enabled" : "disabled"] the breaker box!"),
 		SPAN_NOTICE("You [on ? "enabled" : "disabled"] the breaker box!"))
 	busy = FALSE
 

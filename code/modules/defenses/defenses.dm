@@ -50,7 +50,12 @@
 	connect()
 
 /obj/structure/machinery/defenses/Destroy()
-	if(!QDESTROYING(HD))
+	owner_mob = null
+	HD = null // FIXME: Might also need to delete. Unsure.
+	if(linked_laptop)
+		linked_laptop.unpair_sentry(src)
+		linked_laptop = null
+	if(!QDELETED(HD))
 		QDEL_NULL(HD)
 	return ..()
 
@@ -309,6 +314,10 @@
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 			return
 		else
+			var/area/area = get_area(src)
+			if(!area.allow_construction)
+				to_chat(user, SPAN_WARNING("You cannot secure \the [src] here, find a more secure surface!"))
+				return
 			var/turf/open/floor = get_turf(src)
 			if(!floor.allow_construction)
 				to_chat(user, SPAN_WARNING("You cannot secure \the [src] here, find a more secure surface!"))
@@ -378,7 +387,7 @@
 
 	if(!turned_on)
 		if(!can_be_near_defense)
-			for(var/obj/structure/machinery/defenses/def in urange(defense_check_range, loc))
+			for(var/obj/structure/machinery/defenses/def in long_range(defense_check_range, loc))
 				if(def != src && def.turned_on && !def.can_be_near_defense)
 					to_chat(user, SPAN_WARNING("This is too close to \a [def]!"))
 					return
@@ -469,15 +478,6 @@
 //Fixes a bug with power changes in the area.
 /obj/structure/machinery/defenses/power_change()
 	return
-
-/obj/structure/machinery/defenses/Destroy()
-	if(owner_mob)
-		owner_mob = null
-	HD = null // FIXME: Might also need to delete. Unsure.
-	if(linked_laptop)
-		linked_laptop.unpair_sentry(src)
-		linked_laptop = null
-	. = ..()
 
 /obj/structure/machinery/defenses/verb/toggle_turret_locks_verb()
 	set name = "Toggle Turret Lock"

@@ -40,7 +40,7 @@
 			newlight = new /obj/structure/machinery/light_construct(constrloc)
 	newlight.setDir(constrdir)
 	transfer_fingerprints_to(newlight)
-	usr.visible_message("[usr.name] attaches [src] to the wall.", \
+	usr.visible_message("[usr.name] attaches [src] to the wall.",
 		"You attach [src] to the wall.")
 	qdel(src)
 

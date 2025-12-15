@@ -40,8 +40,9 @@
 			layer = initial(layer) - 0.01
 		else
 			layer = initial(layer)
+	pixel_y = initial(pixel_y)
 	if(!anchored)
-		layer = initial(layer)
+		pixel_y += 2
 	if(build_state == BARRICADE_BSTATE_FORTIFIED)
 		if(reinforced)
 			overlays += image('icons/obj/structures/handrail.dmi', icon_state = "[barricade_type]_reinforced_[damage_state]")
@@ -71,6 +72,9 @@
 
 		var/mob/living/climber = movable
 		if(climber.a_intent != INTENT_HARM)
+			return ..()
+
+		if(climber.action_busy)
 			return ..()
 
 		climber.client?.move_delay += 3 DECISECONDS
@@ -126,7 +130,8 @@
 					to_chat(user, SPAN_WARNING("You are not trained to unsecure [src]..."))
 					return
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src)) return
+				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
+					return
 				user.visible_message(SPAN_NOTICE("[user] loosens [src]'s anchor bolts."),
 				SPAN_NOTICE("You loosen [src]'s anchor bolts."))
 				anchored = FALSE
@@ -160,7 +165,8 @@
 					to_chat(user, SPAN_WARNING("You are not trained to secure [src]..."))
 					return
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src)) return
+				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
+					return
 				user.visible_message(SPAN_NOTICE("[user] tightens [src]'s anchor bolts."),
 				SPAN_NOTICE("You tighten [src]'s anchor bolts."))
 				anchored = TRUE
@@ -176,7 +182,8 @@
 				user.visible_message(SPAN_NOTICE("[user] starts unscrewing [src]'s panels."),
 				SPAN_NOTICE("You remove [src]'s panels and start taking it apart."))
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
-				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src)) return
+				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
+					return
 				user.visible_message(SPAN_NOTICE("[user] takes apart [src]."),
 				SPAN_NOTICE("You take apart [src]."))
 				playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
@@ -192,7 +199,8 @@
 						to_chat(user, SPAN_WARNING("You are not trained to unreinforce [src]..."))
 						return
 					playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
-					if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src)) return
+					if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
+						return
 					user.visible_message(SPAN_NOTICE("[user] pries off [src]'s extra metal panel."),
 					SPAN_NOTICE("You pry off [src]'s extra metal panel."))
 					build_state = BARRICADE_BSTATE_SECURED
@@ -209,12 +217,16 @@
 						to_chat(user, SPAN_WARNING("You are not trained to reinforce [src]..."))
 						return
 					playsound(src.loc, 'sound/items/Welder.ogg', 25, 1)
-					if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src)) return
+					if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
+						return
 					user.visible_message(SPAN_NOTICE("[user] secures [src]'s metal panel."),
 					SPAN_NOTICE("You secure [src]'s metal panel."))
 					reinforce()
 					return
 	. = ..()
+
+/obj/structure/barricade/handrail/no_vault
+	autoclimb = FALSE
 
 /obj/structure/barricade/handrail/type_b
 	icon_state = "handrail_b_0"
@@ -243,6 +255,12 @@
 /obj/structure/barricade/handrail/sandstone/b
 	icon_state = "hr_sandstone_b"
 
+/obj/structure/barricade/handrail/sandstone/dark
+	color = "#2E1E21"
+
+/obj/structure/barricade/handrail/sandstone/b/dark
+	color = "#2E1E21"
+
 /obj/structure/barricade/handrail/pizza
 	name = "\improper diner half-wall"
 	icon_state = "hr_sandstone" //temp, getting sprites soontm
@@ -250,3 +268,102 @@
 	can_be_reinforced = FALSE
 	projectile_coverage = PROJECTILE_COVERAGE_LOW
 	layer = MOB_LAYER + 0.01
+
+/obj/structure/barricade/handrail/pizza
+	name = "\improper diner half-wall"
+	icon_state = "hr_sandstone" //temp, getting sprites soontm
+	color = "#b51c0b"
+	can_be_reinforced = FALSE
+	projectile_coverage = PROJECTILE_COVERAGE_LOW
+	layer = MOB_LAYER + 0.01
+
+
+// Hybrisa Barricades
+
+/obj/structure/barricade/handrail/hybrisa
+	icon_state = "plasticroadbarrierred"
+	stack_amount = 0 //we do not want it to drop any stuff when destroyed
+	destroyed_stack_amount = 0
+
+// Plastic
+/obj/structure/barricade/handrail/hybrisa/road/plastic
+	name = "plastic road barrier"
+	icon_state = "plasticroadbarrierred"
+	barricade_hitsound = 'sound/effects/thud.ogg'
+	health = 10
+	maxhealth = 10
+
+/obj/structure/barricade/handrail/hybrisa/road/plastic/red
+	name = "plastic road barrier"
+	icon_state = "plasticroadbarrierred"
+
+/obj/structure/barricade/handrail/hybrisa/road/plastic/blue
+	name = "plastic road barrier"
+	icon_state = "plasticroadbarrierblue"
+
+/obj/structure/barricade/handrail/hybrisa/road/plastic/black
+	name = "plastic road barrier"
+	icon_state = "plasticroadbarrierblack"
+
+//Wood
+
+/obj/structure/barricade/handrail/hybrisa/road/wood
+	name = "wood road barrier"
+	icon_state = "roadbarrierwood"
+	barricade_hitsound = 'sound/effects/woodhit.ogg'
+	health = 10
+	maxhealth = 10
+
+/obj/structure/barricade/handrail/hybrisa/road/wood/orange
+	name = "wood road barrier"
+	icon_state = "roadbarrierwood"
+
+/obj/structure/barricade/handrail/hybrisa/road/wood/blue
+	name = "wood road barrier"
+	icon_state = "roadbarrierpolice"
+
+// Metal Road Barrier
+
+/obj/structure/barricade/handrail/hybrisa/road/metal
+	name = "metal road barrier"
+	icon_state = "centerroadbarrier"
+
+/obj/structure/barricade/handrail/hybrisa/road/metal/metaltan
+	name = "metal road barrier"
+	icon_state = "centerroadbarrier"
+
+/obj/structure/barricade/handrail/hybrisa/road/metal/metaltan/middle
+	name = "metal road barrier"
+	icon_state = "centerroadbarrier_middle"
+
+/obj/structure/barricade/handrail/hybrisa/road/metal/metaldark
+	name = "metal road barrier"
+	icon_state = "centerroadbarrier2"
+
+/obj/structure/barricade/handrail/hybrisa/road/metal/metaldark/offset
+	pixel_y = -2
+	layer = BETWEEN_OBJECT_ITEM_LAYER
+
+/obj/structure/barricade/handrail/hybrisa/road/metal/metaldark/middle
+	name = "metal road barrier"
+	icon_state = "centerroadbarrier2_middle"
+
+/obj/structure/barricade/handrail/hybrisa/road/metal/metaldark2
+	name = "metal road barrier"
+	icon_state = "centerroadbarrier3"
+
+/obj/structure/barricade/handrail/hybrisa/road/metal/metaldark2/middle
+	name = "metal road barrier"
+	icon_state = "centerroadbarrier3_middle"
+
+/obj/structure/barricade/handrail/hybrisa/road/metal/double
+	name = "metal road barrier"
+	icon_state = "centerroadbarrierdouble"
+	layer = BETWEEN_OBJECT_ITEM_LAYER
+
+/obj/structure/barricade/handrail/hybrisa/road/metal/double/offset
+	pixel_y = -5
+
+/obj/structure/barricade/handrail/hybrisa/handrail
+	name = "handrail"
+	icon_state = "handrail_hybrisa"

@@ -53,6 +53,7 @@ em {font-style: normal; font-weight: bold;}
 .jtacradio {color: #702963;}
 .intelradio {color: #027D02;}
 .wyradio {color: #FE9B24;}
+.hdcradio {color: #FEE6C24;}
 .pmcradio {color: #A13852;}
 
 .clfradio {color: #6f679c}
@@ -65,6 +66,7 @@ em {font-style: normal; font-weight: bold;}
 .cryoradio {color: #4a4740;}
 .hcradio {color: #318779;}
 .pvstradio {color: #9b0612;}
+.ciaradio {color: #e6754c;}
 
 .medium { font-size: 2}
 .big { font-size: 2}

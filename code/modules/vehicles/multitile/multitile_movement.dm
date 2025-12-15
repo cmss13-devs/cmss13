@@ -71,14 +71,18 @@
 	var/turf/old_turf = get_turf(src)
 	forceMove(get_step(src, direction))
 
+	var/turf/current_loc = get_turf(src)
 	for(var/obj/item/hardpoint/H in hardpoints)
-		H.on_move(old_turf, get_turf(src), direction)
+		H.on_move(old_turf, current_loc, direction)
 
 	if(movement_sound && world.time > move_next_sound_play)
 		playsound(src, movement_sound, vol = 20, sound_range = 30)
 		move_next_sound_play = world.time + 10
 
 	last_move_dir = direction
+
+	if(force && (health <= 0)) // Broken and forced movement (currently only xenos)
+		interior.drop_human_bodies(old_turf)
 
 	return TRUE
 
@@ -98,7 +102,7 @@
 	rotate_hardpoints(deg)
 	rotate_entrances(deg)
 	rotate_bounds(deg)
-	setDir(turn(dir, deg))
+	setDir(turn(dir, deg), TRUE)
 
 	last_move_dir = dir
 
@@ -109,6 +113,11 @@
 	update_icon()
 
 	return TRUE
+
+/obj/vehicle/multitile/setDir(newdir, real_rotate = FALSE)
+	if(!real_rotate)
+		return
+	. = ..()
 
 // Increases/decreases the vehicle's momentum according to whether or not the user is steppin' on the gas or not
 /obj/vehicle/multitile/proc/update_momentum(direction)

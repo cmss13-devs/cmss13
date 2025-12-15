@@ -127,7 +127,6 @@ Each var depends on others
 	if(isliving(A))
 		var/mob/living/M = A
 
-		// Inside a xeno for example
 		if(!istype(M.loc, /turf))
 			return
 
@@ -135,6 +134,9 @@ Each var depends on others
 			if(M.pulling)
 				to_chat(M, SPAN_WARNING("The current forces you to release [M.pulling]!"))
 				M.stop_pulling()
+
+		if(HAS_TRAIT(M, TRAIT_HAULED))
+			return
 
 		cause_damage(M)
 		START_PROCESSING(SSobj, src)
@@ -174,33 +176,34 @@ Each var depends on others
 	if(targets_present < 1)
 		STOP_PROCESSING(SSobj, src)
 
-/obj/effect/blocker/toxic_water/proc/cause_damage(mob/living/M)
-	if(M.stat == DEAD)
+/obj/effect/blocker/toxic_water/proc/cause_damage(mob/living/target)
+	if(target.stat == DEAD)
 		return
-	M.last_damage_data = create_cause_data("toxic water")
-	if(islarva(M))
-		M.apply_damage(2,BURN)
-	else if(isxeno(M) && !islarva(M))
-		M.apply_damage(34,BURN)
-	else if(isyautja(M))
-		M.apply_damage(0.5,BURN)
+	target.last_damage_data = create_cause_data("toxic water")
+	if(islarva(target))
+		target.apply_damage(2, BURN, enviro=TRUE)
+	else if(isxeno(target) && !islarva(target))
+		target.apply_damage(34, BURN, enviro=TRUE)
+	else if(isyautja(target))
+		target.apply_damage(0.5, BURN, enviro=TRUE)
 	else
 		var/dam_amount = 3
-		if(M.body_position == LYING_DOWN)
-			M.apply_damage(dam_amount,BURN)
-			M.apply_damage(dam_amount,BURN)
-			M.apply_damage(dam_amount,BURN)
-			M.apply_damage(dam_amount,BURN)
-			M.apply_damage(dam_amount,BURN)
+		if(target.body_position == LYING_DOWN)
+			target.apply_damage(dam_amount, BURN, enviro=TRUE)
+			target.apply_damage(dam_amount, BURN, enviro=TRUE)
+			target.apply_damage(dam_amount, BURN, enviro=TRUE)
+			target.apply_damage(dam_amount, BURN, enviro=TRUE)
+			target.apply_damage(dam_amount, BURN, enviro=TRUE)
 		else
-			M.apply_damage(dam_amount,BURN,"l_leg")
-			M.apply_damage(dam_amount,BURN,"l_foot")
-			M.apply_damage(dam_amount,BURN,"r_leg")
-			M.apply_damage(dam_amount,BURN,"r_foot")
-			M.apply_damage(dam_amount,BURN,"groin")
-		M.apply_effect(20,IRRADIATE,0)
-		if( !issynth(M) ) to_chat(M, SPAN_DANGER("The water burns!"))
-	playsound(M, 'sound/bullets/acid_impact1.ogg', 10, 1)
+			target.apply_damage(dam_amount, BURN, "l_leg", enviro=TRUE)
+			target.apply_damage(dam_amount, BURN, "l_foot", enviro=TRUE)
+			target.apply_damage(dam_amount, BURN, "r_leg", enviro=TRUE)
+			target.apply_damage(dam_amount, BURN, "r_foot", enviro=TRUE)
+			target.apply_damage(dam_amount, BURN, "groin", enviro=TRUE)
+		target.apply_effect(20,IRRADIATE,0)
+		if( !issynth(target) )
+			to_chat(target, SPAN_DANGER("The water burns!"))
+	playsound(target, 'sound/bullets/acid_impact1.ogg', 10, 1)
 
 
 /obj/effect/blocker/toxic_water/proc/disperse_spread(from_dir = 0)
@@ -208,7 +211,8 @@ Each var depends on others
 		return
 
 	for(var/direction in GLOB.alldirs)
-		if(direction == from_dir) continue //doesn't check backwards
+		if(direction == from_dir)
+			continue //doesn't check backwards
 
 		var/effective_spread_delay
 		switch(direction)
@@ -263,7 +267,7 @@ Each var depends on others
 
 /obj/structure/machinery/filtration_button
 	name = "\improper Filtration Activation"
-	icon = 'icons/obj/objects.dmi'
+	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "launcherbtt"
 	desc = "Activates the filtration mechanism."
 	var/id = null

@@ -187,7 +187,8 @@
 	// If parent returned 1:
 	// - Hatch is open, so we can modify the SMES
 	// - No action was taken in parent function (terminal de/construction atm).
-	if (..())
+	. = ..()
+	if (.)
 
 		// Charged above 1% and safeties are enabled.
 		if((charge > (capacity/100)) && safeties_enabled && !HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL))

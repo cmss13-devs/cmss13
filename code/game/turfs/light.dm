@@ -15,14 +15,14 @@
 
 /turf/open/floor/light/get_examine_text(mob/user)
 	. = ..()
-	. += "[src] is [broken ? "broken, and requires a replacement lightbulb":"[on ? "on" : "off"]"]."
+	. += "[src] is [turf_flags & TURF_BROKEN ? "broken, and requires a replacement lightbulb":"[on ? "on" : "off"]"]."
 
 /turf/open/floor/light/is_light_floor()
 	return TRUE
 
 /turf/open/floor/light/update_icon()
 	. = ..()
-	if(on && !broken) //manages color, I feel like this switch is a sin.
+	if(on && !(turf_flags & TURF_BROKEN)) //manages color, I feel like this switch is a sin.
 		switch(state)
 			if(LIGHT_FLOOR_COLOR_BLUE)
 				icon_state = "light_on"
@@ -46,7 +46,7 @@
 			else
 				return //Should never happen ever but what if... returns into the other else which close the light
 
-	else if(broken)
+	else if(turf_flags & TURF_BROKEN)
 		icon_state = "light_broken" //It's the same sprite as light off, my artistic skill stops at stickmans anyone feel free to make a better one!
 		set_light(0)
 	else
@@ -57,9 +57,9 @@
 /turf/open/floor/light/attackby(obj/item/item_in_hand, mob/user)
 	. = ..()
 	if(istype(item_in_hand, /obj/item/light_bulb/bulb)) //changing the light by smacking a bulb on it, voices in my head told me to be kind and not reset the state
-		if(broken)
+		if(turf_flags & TURF_BROKEN)
 			qdel(item_in_hand)
-			broken = FALSE
+			turf_flags &= ~TURF_BROKEN
 			update_icon()
 			playsound(src, 'sound/machines/click.ogg', 25, 1)
 			to_chat(user, SPAN_NOTICE("You replace the light bulb."))
@@ -68,7 +68,7 @@
 		return
 
 	if(istype(item_in_hand, /obj/item/device/multitool)) //changing the light color with multitool, can't do if bulb broken, can do while it's off
-		if(!broken)
+		if(!(turf_flags & TURF_BROKEN))
 			state++
 			update_icon()
 			to_chat(user, SPAN_NOTICE("You alter the glass panel's settings, changing its color."))
@@ -77,7 +77,7 @@
 
 
 /turf/open/floor/light/attack_hand(mob/user as mob) //turning the light on and off
-	if(!broken)
+	if(!(turf_flags & TURF_BROKEN))
 		on = !on
 		update_icon()
 		to_chat(user, SPAN_NOTICE("You turn the light [on ? "on" : "off"]."))
@@ -87,19 +87,28 @@
 	return ..()
 
 /turf/open/floor/light/attack_alien(mob/living/carbon/xenomorph/xeno_attacker) //Xeno breaking light, this makes them basically flashlight that needs a new bulb to go back on
-	if(!broken)
+	if(!(turf_flags & TURF_BROKEN))
 		playsound(src, "windowshatter", 25, 1)
 		xeno_attacker.animation_attack_on(src)
-		xeno_attacker.visible_message(SPAN_DANGER("\The [xeno_attacker] smashes \the [src]!"), \
-		SPAN_DANGER("You smash \the [src]!"), \
+		xeno_attacker.visible_message(SPAN_DANGER("\The [xeno_attacker] smashes \the [src]!"),
+		SPAN_DANGER("You smash \the [src]!"),
 		SPAN_DANGER("You hear broken glass!"), 5)
-		broken = TRUE
+		turf_flags |= TURF_BROKEN
 		update_icon()
 		return XENO_ATTACK_ACTION
 
 /turf/open/floor/light/red
 	icon_state = "light_on-r"
 	state = LIGHT_FLOOR_COLOR_RED
+
+/turf/open/floor/light/red/darker
+	icon_state = "light_on-r"
+	state = LIGHT_FLOOR_COLOR_RED
+	color = "#c27e7e"
+	light_on = TRUE
+	light_power = 1
+	light_range = 2
+	light_color = "#ff0000"
 
 /turf/open/floor/light/green
 	icon_state = "light_on-g"
@@ -138,7 +147,7 @@
 
 /turf/open/floor/light/broken
 	icon_state = "light_broken"
-	broken = TRUE
+	turf_flags = parent_type::turf_flags|TURF_BROKEN
 
 /turf/open/floor/light/broken/red
 	state = LIGHT_FLOOR_COLOR_RED

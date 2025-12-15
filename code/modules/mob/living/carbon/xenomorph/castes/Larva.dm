@@ -44,7 +44,6 @@
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/onclick/xenohide,
-		/datum/action/xeno_action/onclick/tacmap,
 	)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
@@ -54,9 +53,10 @@
 	var/state_override
 	/// Whether we're bloody, normal, or mature
 	var/larva_state = LARVA_STATE_BLOODY
+	var/last_roar_time = 0
 
-	icon_xeno = 'icons/mob/xenos/larva.dmi'
-	icon_xenonid = 'icons/mob/xenonids/larva.dmi'
+	icon_xeno = 'icons/mob/xenos/castes/tier_0/larva.dmi'
+	icon_xenonid = 'icons/mob/xenonids/castes/tier_0/larva.dmi'
 
 /mob/living/carbon/xenomorph/larva/Life()
 	// Check if no longer bloody or mature
@@ -67,6 +67,20 @@
 		larva_state = LARVA_STATE_MATURE
 		generate_name()
 	return ..()
+
+/mob/living/carbon/xenomorph/larva/warn_away_timer()
+	if(away_timer != XENO_LEAVE_TIMER_LARVA - XENO_AVAILABLE_TIMER)
+		return
+	if(aghosted)
+		return
+	if(health <= 0)
+		return
+	var/area/area = get_area(src)
+	if(should_block_game_interaction(src) && (!area || !(area.flags_area & AREA_ALLOW_XENO_JOIN)))
+		return //xenos on admin z level don't count
+
+	to_chat(client, SPAN_ALERTWARNING("You are inactive and will be available to ghosts in [XENO_AVAILABLE_TIMER] second\s!"))
+	playsound_client(client, sound('sound/effects/xeno_evolveready.ogg'))
 
 /mob/living/carbon/xenomorph/larva/initialize_pass_flags(datum/pass_flags_container/pass_flags)
 	..()
@@ -107,7 +121,7 @@
 /mob/living/carbon/xenomorph/larva/predalien
 	AUTOWIKI_SKIP(TRUE)
 
-	icon_xeno = 'icons/mob/xenos/predalien_larva.dmi'
+	icon_xeno = 'icons/mob/xenos/castes/tier_0/predalien_larva.dmi'
 	icon_state = "Predalien Larva"
 	caste_type = XENO_CASTE_PREDALIEN_LARVA
 	burrowable = FALSE //Not interchangeable with regular larvas in the hive core.
@@ -121,7 +135,7 @@
 	hud_set_hunter()
 
 /mob/living/carbon/xenomorph/larva/evolve_message()
-	to_chat(src, SPAN_XENODANGER("Strength ripples through your small form. You are ready to be shaped to the Queen's will. <a href='?src=\ref[src];evolve=1;'>Evolve</a>"))
+	to_chat(src, SPAN_XENODANGER("Strength ripples through your small form. You are ready to be shaped to the Queen's will. <a href='byond://?src=\ref[src];evolve=1;'>Evolve</a>"))
 	playsound_client(client, sound('sound/effects/xeno_evolveready.ogg'))
 
 	var/datum/action/xeno_action/onclick/evolve/evolve_action = new()
@@ -197,6 +211,12 @@
 			return FALSE
 
 	// Otherwise, ""roar""!
+	var/current_time = world.time
+	if(current_time - last_roar_time < 1 SECONDS)
+		to_chat(src, SPAN_WARNING("You must wait before roaring again."))
+		return FALSE
+
+	last_roar_time = current_time
 	playsound(loc, "alien_roar_larva", 15)
 	return TRUE
 

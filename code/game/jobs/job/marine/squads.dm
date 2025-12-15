@@ -1,8 +1,6 @@
 //This datum keeps track of individual squads. New squads can be added without any problem but to give them
 //access you must add them individually to access.dm with the other squads. Just look for "access_alpha" and add the new one
 
-//Note: some important procs are held by the job controller, in job_controller.dm.
-//In particular, get_lowest_squad() and randomize_squad()
 /datum/squad_type //Majority of this is for a follow-on PR to fully flesh the system out and add more bits for other factions.
 	var/name = "Squad Type"
 	var/lead_name
@@ -95,9 +93,14 @@
 	var/mob/living/carbon/human/overwatch_officer = null //Who's overwatching this squad?
 	COOLDOWN_DECLARE(next_supplydrop)
 
-	///Text strings, not HTML safe so don't use it without encoding
+	/// The ungarbled primary objective string
 	var/primary_objective = null
+	/// The ungarbled secondary objective string
 	var/secondary_objective = null
+	/// The garbled primary objective string
+	var/primary_objective_garbled = null
+	/// The garbled secondary objective string
+	var/secondary_objective_garbled = null
 
 	var/obj/item/device/squad_beacon/sbeacon = null
 	var/obj/item/device/squad_beacon/bomb/bbeacon = null
@@ -276,24 +279,28 @@
 	equivalent_name = SQUAD_MARINE_1
 	equipment_color = "#e61919"
 	chat_color = "#e67d7d"
+	background_icon = "background_upp_alpha"
 
 /datum/squad/upp/two
 	name = SQUAD_UPP_2
 	equivalent_name = SQUAD_MARINE_2
 	equipment_color = "#ffc32d"
 	chat_color = "#ffe650"
+	background_icon = "background_upp_bravo"
 
 /datum/squad/upp/three
 	name = SQUAD_UPP_3
 	equivalent_name = SQUAD_MARINE_3
 	equipment_color = "#c864c8"
 	chat_color = "#ff96ff"
+	background_icon = "background_upp_charlie"
 
 /datum/squad/upp/four
 	name = SQUAD_UPP_4
 	equivalent_name = SQUAD_MARINE_4
 	equipment_color = "#4148c8"
 	chat_color = "#828cff"
+	background_icon = "background_upp_delta"
 
 /datum/squad/upp/kdo
 	name = SQUAD_UPP_5
@@ -449,42 +456,124 @@
 	to_chat(targets, html = message, type = MESSAGE_TYPE_RADIO)
 
 /// Displays a message to squad members directly on the game map
-/datum/squad/proc/send_maptext(text = "", title_text = "", only_leader = 0)
+/datum/squad/proc/send_maptext(text="", title_text="", only_leader=FALSE, list/targets_to_garble=null, garbled_text="")
 	var/message_color = chat_color
+
 	if(only_leader)
-		if(squad_leader)
-			if(!squad_leader.stat && squad_leader.client)
-				playsound_client(squad_leader.client, 'sound/effects/radiostatic.ogg', squad_leader.loc, 25, FALSE)
-				squad_leader.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /atom/movable/screen/text/screen_text/command_order, message_color)
-	else
-		for(var/mob/living/carbon/human/marine in marines_list)
-			if(!marine.stat && marine.client) //Only living and connected people in our squad
-				playsound_client(marine.client, 'sound/effects/radiostatic.ogg', marine.loc, 25, FALSE)
-				marine.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /atom/movable/screen/text/screen_text/command_order, message_color)
+		if(squad_leader && squad_leader.stat == CONSCIOUS && squad_leader.client)
+			playsound_client(squad_leader.client, 'sound/effects/radiostatic.ogg', squad_leader.loc, 25, FALSE)
+			if(squad_leader in targets_to_garble)
+				squad_leader.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>[garbled_text]", /atom/movable/screen/text/screen_text/command_order, message_color)
+			else
+				squad_leader.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>[text]", /atom/movable/screen/text/screen_text/command_order, message_color)
+		return
+
+	for(var/mob/living/carbon/human/marine in marines_list)
+		if(marine.stat == CONSCIOUS && marine.client) //Only living and connected people in our squad
+			playsound_client(marine.client, 'sound/effects/radiostatic.ogg', marine.loc, 25, FALSE)
+			if(marine in targets_to_garble)
+				marine.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>[garbled_text]", /atom/movable/screen/text/screen_text/command_order, message_color)
+			else
+				marine.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>[text]", /atom/movable/screen/text/screen_text/command_order, message_color)
 
 /// Displays a message to the squad members in chat
-/datum/squad/proc/send_message(text = "", plus_name = 0, only_leader = 0)
+/datum/squad/proc/send_message(text="", transmitter=null, only_leader=FALSE, list/targets_to_garble=null, garbled_text="")
 	var/nametext = ""
-	if(plus_name)
-		nametext = "[usr.name] transmits: "
+	if(transmitter)
+		nametext = "[transmitter] transmits: "
 		text = "[FONT_SIZE_LARGE("<b>[text]<b>")]"
 
 	if(only_leader)
-		if(squad_leader)
-			var/mob/living/carbon/human/SL = squad_leader
-			if(!SL.stat && SL.client)
-				if(plus_name)
-					SL << sound('sound/effects/tech_notification.ogg')
-				to_chat(SL, "[SPAN_BLUE("<B>SL Overwatch:</b> [nametext][text]")]", type = MESSAGE_TYPE_RADIO)
-				return
+		if(squad_leader && squad_leader.stat == CONSCIOUS && squad_leader.client)
+			if(transmitter)
+				squad_leader << sound('sound/effects/tech_notification.ogg')
+			if(squad_leader in targets_to_garble)
+				to_chat(squad_leader, "[SPAN_BLUE("<B>SL Overwatch:</b> [nametext][garbled_text]")]", type = MESSAGE_TYPE_RADIO)
+			else
+				to_chat(squad_leader, "[SPAN_BLUE("<B>SL Overwatch:</b> [nametext][text]")]", type = MESSAGE_TYPE_RADIO)
+		return
+
+	for(var/mob/living/carbon/human/marine in marines_list)
+		if(marine.stat == CONSCIOUS && marine.client) //Only living and connected people in our squad
+			if(transmitter)
+				marine << sound('sound/effects/tech_notification.ogg')
+			if(marine in targets_to_garble)
+				to_chat(marine, "[SPAN_BLUE("<B>Overwatch:</b> [nametext][garbled_text]")]", type = MESSAGE_TYPE_RADIO)
+			else
+				to_chat(marine, "[SPAN_BLUE("<B>Overwatch:</b> [nametext][text]")]", type = MESSAGE_TYPE_RADIO)
+
+/// Displays a message to squad members in chat and directly on the game map with potential coms garble for only the text argument
+/datum/squad/proc/transmit_alert(prefix="", text="", postfix="", maptext_title="", transmitter=null, only_leader=FALSE)
+	var/garbled_text = get_garbled_announcement(text, faction)
+	var/list/targets_to_garble = get_garbled_targets(only_leader)
+
+	send_message("[prefix][text][postfix]", transmitter, only_leader, targets_to_garble, "[prefix][garbled_text][postfix]")
+	send_maptext(text, maptext_title, only_leader, targets_to_garble, garbled_text)
+
+	var/garbled_count = length(targets_to_garble)
+	if(garbled_count)
+		log_garble("[garbled_count] received '[garbled_text]' in squad [src].")
+
+/// Displays and sets an objective for squad members in chat and directly on the game map with potential coms garble for only the text argument
+/datum/squad/proc/transmit_objective(text="", transmitter=null, primary=TRUE)
+	var/prefix = "Your primary objective has been changed to '"
+	var/postfix = "'. See Status pane for details."
+	var/maptext_title = "Primary Objective Updated:"
+	if(!primary)
+		prefix = "Your secondary objective has been changed to '"
+		maptext_title = "Secondary Objective Updated:"
+
+	var/garbled_text = get_garbled_announcement(text, faction)
+	var/list/targets_to_garble = get_garbled_targets(only_leader=FALSE)
+
+	send_message("[prefix][text][postfix]", transmitter, FALSE, targets_to_garble, "[prefix][garbled_text][postfix]")
+	send_maptext(text, maptext_title, FALSE, targets_to_garble, garbled_text)
+
+	var/garbled_count = length(targets_to_garble)
+	if(garbled_count)
+		log_garble("[garbled_count] received '[garbled_text]' in squad [src].")
+
+	if(primary)
+		primary_objective = "[text] ([worldtime2text()])"
+		primary_objective_garbled = "[garbled_text] ([worldtime2text()])"
+		for(var/mob/living/carbon/human/marine in marines_list)
+			marine.squad_primary_objective_ungarbled = !(marine in targets_to_garble)
 	else
-		for(var/mob/living/carbon/human/target_mob in marines_list)
-			if(!target_mob.stat && target_mob.client) //Only living and connected people in our squad
-				if(plus_name)
-					target_mob << sound('sound/effects/tech_notification.ogg')
-				to_chat(target_mob, "[SPAN_BLUE("<B>Overwatch:</b> [nametext][text]")]", type = MESSAGE_TYPE_RADIO)
+		secondary_objective = "[text] ([worldtime2text()])"
+		secondary_objective_garbled = "[garbled_text] ([worldtime2text()])"
+		for(var/mob/living/carbon/human/marine in marines_list)
+			marine.squad_secondary_objective_ungarbled = !(marine in targets_to_garble)
 
+/datum/squad/proc/remind_objective(transmitter=null, primary=TRUE)
+	var/prefix = "Your primary objective is '"
+	var/postfix = "'. See Status pane for details."
+	var/maptext_title = "Primary Objective:"
+	var/text = primary_objective
+	var/garbled_text = primary_objective_garbled
+	if(!primary)
+		prefix = "Your secondary objective is '"
+		maptext_title = "Secondary Objective:"
+		text = secondary_objective
+		garbled_text = secondary_objective_garbled
 
+	var/list/targets_to_garble = get_garbled_targets(only_leader=FALSE)
+
+	send_message("[prefix][text][postfix]", transmitter, FALSE, targets_to_garble, "[prefix][garbled_text][postfix]")
+	send_maptext(text, maptext_title, FALSE, targets_to_garble, garbled_text)
+
+/// Returns a list of squad members that are without coms
+/datum/squad/proc/get_garbled_targets(only_leader=FALSE)
+	var/list/targets = only_leader ? list(squad_leader) : marines_list
+	var/list/targets_to_garble = list()
+	var/list/coms_zs = SSradio.get_available_tcomm_zs(COMM_FREQ)
+
+	for(var/mob/current_mob in targets)
+		var/turf/current_turf = get_turf(current_mob)
+		var/is_shipside = is_mainship_level(current_turf?.z)
+		if(!is_shipside && !(current_turf?.z in coms_zs))
+			targets_to_garble += current_mob
+
+	return targets_to_garble
 
 //Straight-up insert a marine into a squad.
 //This sets their ID, increments the total count, and so on. Everything else is done in job_controller.dm.
@@ -525,6 +614,12 @@
 		if(JOB_SQUAD_TEAM_LEADER)
 			assignment = JOB_SQUAD_TEAM_LEADER
 			target_mob.important_radio_channels += radio_freq
+			for(var/lead in 1 to roles_cap[JOB_SQUAD_TEAM_LEADER])
+				if(!fireteam_leaders["FT[lead]"])
+					assign_fireteam("FT[lead]", target_mob)
+					assign_ft_leader("FT[lead]", target_mob)
+					break
+
 		if(JOB_SQUAD_SMARTGUN)
 			assignment = JOB_SQUAD_SMARTGUN
 		if(JOB_SQUAD_LEADER)
@@ -558,10 +653,14 @@
 		if(JOB_MARINE_RAIDER)
 			assignment = JOB_MARINE_RAIDER
 			if(name == JOB_MARINE_RAIDER)
+				assignment = "Smartgunner Specialist"
+		if(JOB_MARINE_RAIDER_SG)
+			assignment = JOB_MARINE_RAIDER_SG
+			if(name == JOB_MARINE_RAIDER_SG)
 				assignment = "Special Operator"
 		if(JOB_MARINE_RAIDER_SL)
 			assignment = JOB_MARINE_RAIDER_SL
-			if(name == JOB_MARINE_RAIDER)
+			if(name == JOB_MARINE_RAIDER || name == JOB_MARINE_RAIDER_SG)
 				if(squad_leader && GET_DEFAULT_ROLE(squad_leader.job) != JOB_MARINE_RAIDER_SL) //field promoted SL
 					var/old_lead = squad_leader
 					demote_squad_leader() //replaced by the real one
@@ -573,7 +672,7 @@
 				mob_role = JOB_SQUAD_LEADER
 		if(JOB_MARINE_RAIDER_CMD)
 			assignment = JOB_MARINE_RAIDER_CMD
-			if(name == JOB_MARINE_RAIDER)
+			if(name == JOB_MARINE_RAIDER || name == JOB_MARINE_RAIDER_SG)
 				assignment = "Officer"
 
 	if(mob_role in roles_cap)
@@ -600,7 +699,7 @@
 
 	if(paygrade)
 		id_card.paygrade = paygrade
-	id_card.name = "[id_card.registered_name]'s ID Card ([id_card.assignment])"
+	id_card.name = "[id_card.registered_name]'s [id_card.id_type] ([id_card.assignment])"
 
 	var/obj/item/device/radio/headset/almayer/marine/headset = locate() in list(target_mob.wear_l_ear, target_mob.wear_r_ear)
 	if(headset && radio_freq)
@@ -621,7 +720,7 @@
 
 	id_card.access -= src.access
 	id_card.assignment = target_mob.job
-	id_card.name = "[id_card.registered_name]'s ID Card ([id_card.assignment])"
+	id_card.name = "[id_card.registered_name]'s [id_card.id_type] ([id_card.assignment])"
 
 	forget_marine_in_squad(target_mob)
 
@@ -696,12 +795,15 @@
 						old_lead.comm_title = "Sgt"
 				if(JOB_MARINE_RAIDER)
 					old_lead.comm_title = "Op."
+				if(JOB_MARINE_RAIDER_SG)
+					old_lead.comm_title = "SG."
 				if(JOB_MARINE_RAIDER_SL)
 					old_lead.comm_title = "TL."
 				if(JOB_MARINE_RAIDER_CMD)
 					old_lead.comm_title = "CMD."
 				else
-					old_lead.comm_title = "RFN"
+					var/datum/job/job = GLOB.RoleAuthority.roles_for_mode[GET_DEFAULT_ROLE(old_lead.job)]
+					old_lead.comm_title = job.gear_preset.role_comm_title
 			if(GET_DEFAULT_ROLE(old_lead.job) != JOB_SQUAD_LEADER || !leader_killed)
 				var/obj/item/device/radio/headset/almayer/marine/headset = old_lead.get_type_in_ears(/obj/item/device/radio/headset/almayer/marine)
 				if(headset)
@@ -717,6 +819,10 @@
 	old_lead.update_inv_head() //updating marine helmet leader overlays
 	old_lead.update_inv_wear_suit()
 	to_chat(old_lead, FONT_SIZE_BIG(SPAN_BLUE("You're no longer the [squad_type] Leader for [src]!")))
+
+	var/obj/item/device/radio/headset/earpiece = old_lead.get_type_in_ears(/obj/item/device/radio/headset)
+	if(earpiece)
+		earpiece.locate_setting = TRACKER_SL
 
 //Not a safe proc. Returns null if squads or jobs aren't set up.
 //Mostly used in the marine squad console in marine_consoles.dm.
@@ -780,6 +886,11 @@
 			to_chat(fireteam_leaders[fireteam], FONT_SIZE_BIG(SPAN_BLUE("[H.mind ? H.comm_title : ""] [H] was assigned to your fireteam.")))
 		if(H.stat == CONSCIOUS)
 			to_chat(H, FONT_SIZE_HUGE(SPAN_BLUE("You were assigned to [fireteam].")))
+
+	var/obj/item/device/radio/headset/earpiece = H.get_type_in_ears(/obj/item/device/radio/headset)
+	if(earpiece)
+		earpiece.locate_setting = TRACKER_FTL
+
 	H.hud_set_squad()
 
 /datum/squad/proc/unassign_fireteam(mob/living/carbon/human/H, upd_ui = TRUE)
@@ -794,6 +905,10 @@
 		to_chat(fireteam_leaders[ft], FONT_SIZE_HUGE(SPAN_BLUE("[H.mind ? H.comm_title : ""] [H] was unassigned from your fireteam.")))
 	if(!H.stat)
 		to_chat(H, FONT_SIZE_HUGE(SPAN_BLUE("You were unassigned from [ft].")))
+
+	var/obj/item/device/radio/headset/earpiece = H.get_type_in_ears(/obj/item/device/radio/headset)
+	if(earpiece)
+		earpiece.locate_setting = TRACKER_SL
 	H.hud_set_squad()
 
 /datum/squad/proc/assign_ft_leader(fireteam, mob/living/carbon/human/H, upd_ui = TRUE)
@@ -807,6 +922,10 @@
 	if(H.stat == CONSCIOUS)
 		to_chat(H, FONT_SIZE_HUGE(SPAN_BLUE("You were assigned as [fireteam] Team Leader.")))
 
+	var/obj/item/device/radio/headset/earpiece = H.get_type_in_ears(/obj/item/device/radio/headset)
+	if(earpiece)
+		earpiece.locate_setting = TRACKER_SL
+
 /datum/squad/proc/unassign_ft_leader(fireteam, clear_group_id, upd_ui = TRUE)
 	if(!fireteam_leaders[fireteam])
 		return
@@ -819,6 +938,11 @@
 	if(!H.stat)
 		to_chat(H, FONT_SIZE_HUGE(SPAN_BLUE("You were unassigned as [fireteam] Team Leader.")))
 
+	var/obj/item/device/radio/headset/earpiece = H.get_type_in_ears(/obj/item/device/radio/headset)
+	if(earpiece)
+		earpiece.locate_setting = TRACKER_FTL
+
+// this proc is defunct too
 /datum/squad/proc/unassign_all_ft_leaders()
 	for(var/team in fireteam_leaders)
 		if(fireteam_leaders[team])
@@ -842,11 +966,16 @@
 		if(squad_leader.is_mob_incapacitated() || !hasHUD(squad_leader,"squadleader"))
 			return //if SL got knocked out or demoted while choosing
 		switch(choice)
-			if("Unassign Fireteam 1 Leader") unassign_ft_leader("FT1", TRUE)
-			if("Unassign Fireteam 2 Leader") unassign_ft_leader("FT2", TRUE)
-			if("Unassign Fireteam 3 Leader") unassign_ft_leader("FT3", TRUE)
-			if("Unassign all Team Leaders") unassign_all_ft_leaders()
-			else return
+			if("Unassign Fireteam 1 Leader")
+				unassign_ft_leader("FT1", TRUE)
+			if("Unassign Fireteam 2 Leader")
+				unassign_ft_leader("FT2", TRUE)
+			if("Unassign Fireteam 3 Leader")
+				unassign_ft_leader("FT3", TRUE)
+			if("Unassign all Team Leaders")
+				unassign_all_ft_leaders()
+			else
+				return
 		target_mob.hud_set_squad()
 		return
 	if(target_mob.assigned_fireteam)
@@ -867,12 +996,18 @@
 		if(squad_leader.is_mob_incapacitated() || !hasHUD(squad_leader,"squadleader"))
 			return
 		switch(choice)
-			if("Remove from Fireteam") unassign_fireteam(target_mob)
-			if("Assign to Fireteam 1") assign_fireteam("FT1", target_mob)
-			if("Assign to Fireteam 2") assign_fireteam("FT2", target_mob)
-			if("Assign to Fireteam 3") assign_fireteam("FT3", target_mob)
-			if("Assign as Team Leader") assign_ft_leader(target_mob.assigned_fireteam, target_mob)
-			else return
+			if("Remove from Fireteam")
+				unassign_fireteam(target_mob)
+			if("Assign to Fireteam 1")
+				assign_fireteam("FT1", target_mob)
+			if("Assign to Fireteam 2")
+				assign_fireteam("FT2", target_mob)
+			if("Assign to Fireteam 3")
+				assign_fireteam("FT3", target_mob)
+			if("Assign as Team Leader")
+				assign_ft_leader(target_mob.assigned_fireteam, target_mob)
+			else
+				return
 		target_mob.hud_set_squad()
 		return
 
@@ -882,14 +1017,19 @@
 	if(squad_leader.is_mob_incapacitated() || !hasHUD(squad_leader,"squadleader"))
 		return
 	switch(choice)
-		if("Assign to Fireteam 1") assign_fireteam("FT1", target_mob)
-		if("Assign to Fireteam 2") assign_fireteam("FT2", target_mob)
-		if("Assign to Fireteam 3") assign_fireteam("FT3", target_mob)
-		else return
+		if("Assign to Fireteam 1")
+			assign_fireteam("FT1", target_mob)
+		if("Assign to Fireteam 2")
+			assign_fireteam("FT2", target_mob)
+		if("Assign to Fireteam 3")
+			assign_fireteam("FT3", target_mob)
+		else
+			return
 	target_mob.hud_set_squad()
 	return
 
 //Managing MIA and KIA statuses for marines
+//this is currently defunct, but theres probably something to salvage here
 /datum/squad/proc/change_squad_status(mob/living/carbon/human/target_mob)
 	if(target_mob == squad_leader)
 		return //you can't mark yourself KIA
@@ -899,7 +1039,8 @@
 	if(squad_leader.is_mob_incapacitated() || !hasHUD(squad_leader,"squadleader"))
 		return //if SL got knocked out or demoted while choosing
 	switch(choice)
-		if("Remove status") target_mob.squad_status = null
+		if("Remove status")
+			target_mob.squad_status = null
 		if("M.I.A.")
 			target_mob.squad_status = choice
 			to_chat(squad_leader, FONT_SIZE_BIG(SPAN_BLUE("You set [target_mob]'s status as Missing In Action.")))
@@ -914,7 +1055,8 @@
 			to_chat(squad_leader, FONT_SIZE_BIG(SPAN_BLUE("You set [target_mob]'s status as Killed In Action. If they were Team Leader or in fireteam, they were demoted and unassigned.")))
 			if(target_mob.stat == CONSCIOUS)
 				to_chat(target_mob, FONT_SIZE_HUGE(SPAN_BLUE("You were marked as Killed In Action by Squad Leader.")))
-		else return
+		else
+			return
 	if(target_mob.assigned_fireteam)
 		update_fireteam(target_mob.assigned_fireteam)
 	else

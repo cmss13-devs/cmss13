@@ -10,7 +10,8 @@
 	var/list/debris
 	var/unslashable = FALSE
 	var/wrenchable = FALSE
-	health = 100
+	blocks_emissive = EMISSIVE_BLOCK_GENERIC
+	health = STRUCTURE_HEALTH_BASE
 	anchored = TRUE
 	projectile_coverage = PROJECTILE_COVERAGE_MEDIUM
 	can_block_movement = TRUE
@@ -43,7 +44,7 @@
 			return TRUE
 		toggle_anchored(W, user)
 		return TRUE
-	..()
+	. = ..()
 
 /obj/structure/ex_act(severity, direction)
 	if(explo_proof)
@@ -111,6 +112,12 @@
 /obj/structure/proc/do_climb(mob/living/user, mods)
 	if(!can_climb(user))
 		return FALSE
+
+	if(istype(loc, /turf/open_space) && user.a_intent != INTENT_HARM)
+		var/turf/open_space/open = loc
+		open.climb_down(user)
+		return FALSE
+
 
 	var/list/climbdata = list("climb_delay" = climb_delay)
 	SEND_SIGNAL(user, COMSIG_LIVING_CLIMB_STRUCTURE, climbdata)
@@ -188,9 +195,6 @@
 			else
 				to_chat(H, SPAN_DANGER("You land heavily!"))
 				H.apply_damage(damage, BRUTE)
-
-			H.UpdateDamageIcon()
-			H.updatehealth()
 	return
 
 /obj/structure/proc/can_touch(mob/living/user)
@@ -233,3 +237,8 @@
 		return -1
 
 	return 4 SECONDS
+
+/obj/structure/Collided(atom/movable/AM)
+	..()
+	// NOTE: We aren't requiring a parent call to ensure this signal is sent
+	SEND_SIGNAL(src, COMSIG_STRUCTURE_COLLIDED, AM)

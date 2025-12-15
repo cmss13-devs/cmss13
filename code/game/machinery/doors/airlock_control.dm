@@ -21,6 +21,12 @@
 /obj/structure/machinery/door/airlock/process()
 	..()
 	if (arePowerSystemsOn())
+		//sparks for shocks
+		if (secondsElectrified != 0 && prob(25))
+			var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
+			sparks.set_up(5, 1, src)
+			sparks.start()
+		//do command
 		execute_current_command()
 	else
 		stop_processing()
@@ -30,9 +36,11 @@
 
 	if (!can_radio()) return //no radio
 
-	if(!signal || signal.encryption) return
+	if(!signal || signal.encryption)
+		return
 
-	if(id_tag != signal.data["tag"] || !signal.data["command"]) return
+	if(id_tag != signal.data["tag"] || !signal.data["command"])
+		return
 
 	cur_command = signal.data["command"]
 	start_processing()
@@ -42,7 +50,7 @@
 	if(operating)
 		return //emagged or busy doing something else
 
-	if (isnull(cur_command) || inoperable())
+	if ((isnull(cur_command) || inoperable()) && secondsElectrified == 0) //dont stop processing if electrified because we need to spark
 		//Nothing to do, stop processing!
 		//Or power out, in case we also stop doing stuff
 		stop_processing()
@@ -52,7 +60,8 @@
 	if (command_completed(cur_command))
 		cur_command = null
 		//Nothing to do, stop processing!
-		stop_processing()
+		if (secondsElectrified == 0)
+			stop_processing()
 
 /obj/structure/machinery/door/airlock/proc/do_command(command)
 	switch(command)
@@ -122,33 +131,11 @@
 
 		radio_connection.post_signal(src, signal, range = AIRLOCK_CONTROL_RANGE, filter = RADIO_AIRLOCK)
 
-
-/obj/structure/machinery/door/airlock/open(forced)
-	. = ..()
-	if(!forced)
-		send_status()
-
-
-/obj/structure/machinery/door/airlock/close(forced)
-	. = ..()
-	if(!forced)
-		send_status()
-
-
 /obj/structure/machinery/door/airlock/proc/set_frequency(new_frequency)
 	SSradio.remove_object(src, frequency)
 	if(new_frequency)
 		frequency = new_frequency
 		radio_connection = SSradio.add_object(src, frequency, RADIO_AIRLOCK)
-
-
-/obj/structure/machinery/door/airlock/Initialize()
-	. = ..()
-	if(frequency)
-		set_frequency(frequency)
-
-	update_icon()
-	start_processing()
 
 /obj/structure/machinery/airlock_sensor
 	icon = 'icons/obj/structures/machinery/airlock_machines.dmi'
@@ -257,7 +244,7 @@
 	if (istype(I, /obj/item/card/id))
 		attack_hand(user)
 		return
-	..()
+	. = ..()
 
 /obj/structure/machinery/access_button/attack_hand(mob/user)
 	add_fingerprint(usr)

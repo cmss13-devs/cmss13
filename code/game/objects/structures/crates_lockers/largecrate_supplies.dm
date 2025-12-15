@@ -112,7 +112,7 @@
 /obj/structure/largecrate/supply/weapons/shotgun
 	name = "\improper M37A2 pump action shotgun weapons chest (x10)"
 	desc = "A weapons chest containing ten M37A2 pump shotguns."
-	supplies = list(/obj/item/weapon/gun/shotgun/pump = 10)
+	supplies = list(/obj/item/weapon/gun/shotgun/pump/m37a = 10)
 
 /obj/structure/largecrate/supply/weapons/m39
 	name = "\improper M39 sub machinegun weapons chest (x8)"
@@ -127,7 +127,7 @@
 /obj/structure/largecrate/supply/weapons/flamers
 	name = "\improper M240A1 incinerator weapons chest (x4)"
 	desc = "A weapons chest containing four M240A1 incinerator units."
-	supplies = list(/obj/item/weapon/gun/flamer = 4)
+	supplies = list(/obj/item/weapon/gun/flamer/m240 = 4)
 
 /obj/structure/largecrate/supply/weapons/hpr
 	name = "\improper M41AE2 heavy pulse rifle weapons chest (x2)"
@@ -262,6 +262,21 @@
 	desc = "A supply crate containing sixty USCM MRE packets."
 	supplies = list(/obj/item/ammo_box/magazine/misc/mre = 5)
 
+/obj/structure/largecrate/supply/supplies/mre/wy
+	name = "\improper W-Y brand rations crate (x60)"
+	desc = "A supply crate containing sixty W-Y brand ration packets."
+	supplies = list(/obj/item/ammo_box/magazine/misc/mre/wy = 5)
+
+/obj/structure/largecrate/supply/supplies/mre/twe
+	name = "\improper TWE ORP rations crate (x60)"
+	desc = "A supply crate containing sixty TWE ORP ration packets."
+	supplies = list(/obj/item/ammo_box/magazine/misc/mre/twe = 5)
+
+/obj/structure/largecrate/supply/supplies/wy_emergency_food
+	name = "\improper WY emergency nutrition briquettes crate (x100)"
+	desc = "A supply crate containing one hundred WY emergency nutrition briquettes."
+	supplies = list(/obj/item/ammo_box/magazine/misc/mre/emergency = 5)
+
 /obj/structure/largecrate/supply/supplies/water
 	name = "\improper WY Bottled Water crate (x50)"
 	desc = "A crate containing fifty Weyland-Yutani Bottled Spring Water bottles."
@@ -283,7 +298,7 @@
 /obj/structure/largecrate/supply/generator
 	name = "\improper P.A.C.M.A.N. crate"
 	desc = "A crate containing a P.A.C.M.A.N. generator, some fuel, and some cable coil to get your power up and going."
-	supplies = list(/obj/structure/machinery/power/port_gen/pacman = 1, /obj/item/stack/sheet/mineral/phoron/medium_stack = 1, /obj/item/stack/cable_coil/yellow = 3)
+	supplies = list(/obj/structure/machinery/power/power_generator/port_gen/pacman = 1, /obj/item/stack/sheet/mineral/phoron/medium_stack = 1, /obj/item/stack/cable_coil/yellow = 3)
 
 /obj/structure/largecrate/supply/medicine
 	name = "medical crate"
@@ -459,3 +474,49 @@
 
 	qdel(src)
 	return TRUE
+
+// Empty
+
+/obj/structure/largecrate/empty/secure
+	name = "secure supply crate"
+	desc = "A secure crate."
+	icon_state = "secure_crate_strapped"
+	var/strapped = TRUE
+
+/obj/structure/largecrate/empty/secure/attackby(obj/item/W as obj, mob/user as mob)
+	if (!strapped)
+		..()
+		return
+
+	if (!W.sharp)
+		to_chat(user, SPAN_NOTICE("You need something sharp to cut off the straps."))
+		return
+
+	to_chat(user, SPAN_NOTICE("You begin to cut the straps off [src]..."))
+
+	if (do_after(user, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+		playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
+		to_chat(user, SPAN_NOTICE("You cut the straps away."))
+		icon_state = "secure_crate"
+		strapped = FALSE
+
+/obj/structure/largecrate/empty/case
+	name = "storage case"
+	desc = "A black storage case."
+	icon_state = "case"
+
+/obj/structure/largecrate/empty/case/double
+	name = "cases"
+	desc = "A stack of black storage cases."
+	icon_state = "case_double"
+
+/obj/structure/largecrate/empty/case/double/unpack()
+	if(parts_type)
+		new parts_type(loc, 2)
+	for(var/obj/thing in contents)
+		thing.forceMove(loc)
+	new /obj/structure/largecrate/empty/case(loc)
+	playsound(src, unpacking_sound, 35)
+	qdel(src)
+
+//----------------------------------------------------//

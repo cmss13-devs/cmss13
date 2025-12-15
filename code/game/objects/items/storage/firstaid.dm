@@ -10,7 +10,12 @@
 	name = "first-aid kit"
 	desc = "It's an emergency medical kit for those serious boo-boos. With medical training you can fit this in a backpack."
 	icon = 'icons/obj/items/storage/medical.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_righthand.dmi',
+	)
 	icon_state = "firstaid"
+	var/empty_icon = "kit_empty"
 	throw_speed = SPEED_FAST
 	throw_range = 8
 	use_sound = "toolbox"
@@ -31,6 +36,7 @@
 		/obj/item/roller,
 		/obj/item/bodybag,
 		/obj/item/reagent_container/blood,
+		/obj/item/tool/surgery/FixOVein,
 	)
 	storage_flags = STORAGE_FLAGS_BOX
 	required_skill_for_nest_opening = SKILL_MEDICAL
@@ -38,6 +44,21 @@
 
 	var/icon_full //icon state to use when kit is full
 	var/possible_icons_full
+	/// List of types and their corresponding overlay icon state for appearing inside the item.
+	var/list/types_and_overlays = list(
+		/obj/item/reagent_container/hypospray/autoinjector/tricord = "tricord_injector_overlay",
+		/obj/item/stack/medical/advanced/bruise_pack = "brute_kit_overlay",
+		/obj/item/stack/medical/advanced/ointment = "burn_kit_overlay",
+		/obj/item/stack/medical/splint = "splints_overlay",
+		/obj/item/storage/syringe_case = "syringe_case_overlay",
+		/obj/item/tool/surgery/synthgraft = "synthgraft_overlay",
+		/obj/item/tool/surgery/surgical_line = "surgical_line_overlay",
+		/obj/item/tool/surgery/FixOVein = "fixovein_overlay",
+		/obj/item/reagent_container/blood = "bloodpack_overlay",
+		/obj/item/storage/surgical_case = "surgical_case_overlay",
+	)
+	/// Whether this kit has content overlays or not
+	var/has_overlays = TRUE
 
 /obj/item/storage/firstaid/Initialize()
 	. = ..()
@@ -50,8 +71,17 @@
 	update_icon()
 
 /obj/item/storage/firstaid/update_icon()
-	if(content_watchers || !length(contents))
-		icon_state = "kit_empty"
+	overlays.Cut()
+	if(content_watchers)
+		icon_state = empty_icon
+		if(!has_overlays)
+			return
+		for(var/obj/item/overlayed_item in contents)
+			if(types_and_overlays[overlayed_item.type])
+				overlays += types_and_overlays[overlayed_item.type]
+	else if(!length(contents))
+		icon_state = empty_icon
+		return
 	else
 		icon_state = icon_full
 
@@ -85,6 +115,7 @@
 
 /obj/item/storage/firstaid/regular
 	icon_state = "firstaid"
+	item_state = "firstaid"
 	desc = "It's an emergency medical kit containing basic medication and equipment. No training required to use. With medical training you can fit this in a backpack."
 
 /obj/item/storage/firstaid/regular/fill_preset_inventory()
@@ -128,9 +159,11 @@
 /obj/item/storage/firstaid/toxin/fill_preset_inventory()
 	new /obj/item/device/healthanalyzer(src)
 	new /obj/item/storage/pill_bottle/antitox(src)
-	new /obj/item/reagent_container/pill/antitox(src)
-	new /obj/item/reagent_container/pill/antitox(src)
-	new /obj/item/reagent_container/pill/antitox(src)
+	new /obj/item/storage/pill_bottle/antitox(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/antitoxin(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/antitoxin(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/antitoxin(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/inaprovaline(src)
 
 /obj/item/storage/firstaid/toxin/empty/fill_preset_inventory()
 	return
@@ -205,6 +238,101 @@
 /obj/item/storage/firstaid/synth/empty/fill_preset_inventory()
 	return
 
+/obj/item/storage/firstaid/whiteout
+	name = "elite repair kit"
+	desc = "An expensive looking, carbon finish kit box, has a big W-Y logo on front. Contains advanced equipment for repairing a damaged synthetic, including a reset key."
+	icon_state = "whiteout"
+	empty_icon = "whiteout_empty"
+	item_state = "whiteout"
+	has_overlays = FALSE //different formfactor
+	can_hold = list(
+		/obj/item/device/healthanalyzer,
+		/obj/item/reagent_container/dropper,
+		/obj/item/reagent_container/pill,
+		/obj/item/reagent_container/glass/bottle,
+		/obj/item/reagent_container/syringe,
+		/obj/item/storage/pill_bottle,
+		/obj/item/stack/medical,
+		/obj/item/reagent_container/hypospray,
+		/obj/item/storage/syringe_case,
+		/obj/item/tool/surgery/surgical_line,
+		/obj/item/tool/surgery/synthgraft,
+		/obj/item/stack/nanopaste,
+		/obj/item/stack/cable_coil,
+		/obj/item/tool/weldingtool,
+		/obj/item/device/defibrillator/synthetic,
+	)
+
+/obj/item/storage/firstaid/whiteout/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
+/obj/item/storage/firstaid/whiteout/fill_preset_inventory()
+	new /obj/item/stack/nanopaste(src)
+	new /obj/item/stack/nanopaste(src)
+	new /obj/item/stack/nanopaste(src)
+	new /obj/item/stack/nanopaste(src)
+	new /obj/item/stack/cable_coil/white(src)
+	new /obj/item/device/defibrillator/synthetic/noskill(src)
+	new /obj/item/tool/weldingtool/largetank(src)
+
+/obj/item/storage/firstaid/whiteout/empty/fill_preset_inventory()
+	return
+
+/obj/item/storage/firstaid/whiteout/medical
+	name = "elite field revival kit"
+	desc = "An expensive looking, carbon finish kit box, has a big W-Y logo on front. Contains advanced medical tools for providing medical aid to high priority figures."
+	icon_state = "whiteout_medical"
+	empty_icon = "whiteout_empty"
+	item_state = "whiteout"
+	can_hold = list(
+		/obj/item/device/healthanalyzer,
+		/obj/item/reagent_container/dropper,
+		/obj/item/reagent_container/pill,
+		/obj/item/reagent_container/glass/bottle,
+		/obj/item/reagent_container/syringe,
+		/obj/item/storage/pill_bottle,
+		/obj/item/stack/medical,
+		/obj/item/reagent_container/hypospray,
+		/obj/item/storage/syringe_case,
+		/obj/item/tool/surgery/surgical_line,
+		/obj/item/tool/surgery/synthgraft,
+		/obj/item/stack/nanopaste,
+		/obj/item/stack/cable_coil,
+		/obj/item/tool/weldingtool,
+		/obj/item/device/defibrillator,
+		/obj/item/tool/surgery/scalpel/manager,
+		/obj/item/storage/box/czsp/medic_upgraded_kits/full,
+		/obj/item/storage/surgical_case,
+		/obj/item/roller,
+	)
+
+/obj/item/storage/firstaid/whiteout/medical/fill_preset_inventory()
+	new /obj/item/storage/box/czsp/medic_upgraded_kits/full(src)
+	new /obj/item/storage/box/czsp/medic_upgraded_kits/full(src)
+	new /obj/item/stack/medical/splint/nano(src)
+	new /obj/item/storage/surgical_case/elite/whiteout(src)
+	new /obj/item/storage/syringe_case/whiteout(src)
+	new /obj/item/device/defibrillator/compact(src)
+	new /obj/item/roller/surgical(src)
+
+/obj/item/storage/firstaid/whiteout/medical/commando/fill_preset_inventory()
+	new /obj/item/storage/box/czsp/medic_upgraded_kits/full(src)
+	new /obj/item/storage/box/czsp/medic_upgraded_kits/full(src)
+	new /obj/item/stack/medical/splint/nano(src)
+	new /obj/item/reagent_container/blood/OMinus(src)
+	new /obj/item/storage/syringe_case/commando(src)
+	new /obj/item/storage/surgical_case/elite/commando(src)
+	new /obj/item/roller/surgical(src)
+
+/obj/item/storage/firstaid/whiteout/medical/commando/looted/fill_preset_inventory() //for commando insert
+	new /obj/item/storage/box/czsp/medic_upgraded_kits/looted(src)
+	new /obj/item/storage/box/czsp/medic_upgraded_kits/looted(src)
+	new /obj/item/stack/medical/splint/nano(src, rand(1,2))
+	new /obj/item/storage/syringe_case/commando/looted(src)
+	new /obj/item/storage/surgical_case/elite/commando/looted(src)
+	new /obj/item/roller(src)
+
 /obj/item/storage/firstaid/rad
 	name = "radiation first-aid kit"
 	desc = "Contains treatment for radiation exposure. With medical training you can fit this in a backpack."
@@ -256,6 +384,10 @@
 	name = "syringe case"
 	desc = "It's a medical case for storing syringes and bottles."
 	icon = 'icons/obj/items/storage/medical.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_righthand.dmi',
+	)
 	icon_state = "syringe_case"
 	throw_speed = SPEED_FAST
 	throw_range = 8
@@ -298,19 +430,102 @@
 	new /obj/item/reagent_container/glass/bottle/inaprovaline( src )
 	new /obj/item/reagent_container/glass/bottle/dexalin( src )
 
+/obj/item/storage/syringe_case/rmc
+
+/obj/item/storage/syringe_case/rmc/fill_preset_inventory()
+	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone( src )
+	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone( src )
+	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone( src )
+
+/obj/item/storage/syringe_case/whiteout
+
+/obj/item/storage/syringe_case/whiteout/fill_preset_inventory()
+	new /obj/item/reagent_container/hypospray/autoinjector/stimulant/redemption_stimulant( src )
+	new /obj/item/reagent_container/hypospray/autoinjector/emergency( src )
+	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone( src )
+
+/obj/item/storage/syringe_case/commando
+
+/obj/item/storage/syringe_case/commando/fill_preset_inventory()
+	new /obj/item/reagent_container/hypospray/autoinjector/emergency( src )
+	new /obj/item/reagent_container/hypospray/autoinjector/inaprovaline( src )
+	new /obj/item/reagent_container/hypospray/autoinjector/adrenaline( src )
+
+/obj/item/storage/syringe_case/commando/looted //for surv insert
+
+/obj/item/storage/syringe_case/commando/looted/fill_preset_inventory()
+	new /obj/item/reagent_container/hypospray/autoinjector/ultrazine/empty( src )
+	new /obj/item/reagent_container/hypospray/autoinjector/inaprovaline( src )
+	new /obj/item/reagent_container/hypospray/autoinjector/adrenaline( src )
+
+/obj/item/storage/box/czsp/first_aid
+	name = "first-aid combat support kit"
+	desc = "Contains upgraded medical kits, nanosplints and an upgraded defibrillator."
+	icon = 'icons/obj/items/storage/kits.dmi'
+	icon_state = "medicbox"
+	storage_slots = 3
+
+/obj/item/storage/box/czsp/first_aid/Initialize()
+	. = ..()
+	new /obj/item/stack/medical/bruise_pack(src)
+	new /obj/item/stack/medical/ointment(src)
+	if(prob(5))
+		new /obj/item/device/healthanalyzer(src)
+
+/obj/item/storage/box/czsp/medical
+	name = "medical combat support kit"
+	desc = "Contains upgraded medical kits, nanosplints and an upgraded defibrillator."
+	icon = 'icons/obj/items/storage/kits.dmi'
+	icon_state = "medicbox"
+	storage_slots = 4
+
+/obj/item/storage/box/czsp/medical/Initialize()
+	. = ..()
+	new /obj/item/stack/medical/advanced/bruise_pack/upgraded(src)
+	new /obj/item/stack/medical/advanced/ointment/upgraded(src)
+	new /obj/item/stack/medical/splint/nano(src)
+	new /obj/item/device/defibrillator/upgraded(src)
+
+/obj/item/storage/box/czsp/medic_upgraded_kits
+	name = "medical upgrade kit"
+	icon = 'icons/obj/items/storage/kits.dmi'
+	icon_state = "upgradedkitbox"
+	desc = "This kit holds upgraded trauma and burn kits, for critical injuries."
+	w_class = SIZE_SMALL
+	max_w_class = SIZE_MEDIUM
+	storage_slots = 2
+
+/obj/item/storage/box/czsp/medic_upgraded_kits/full/Initialize()
+	. = ..()
+	new /obj/item/stack/medical/advanced/bruise_pack/upgraded(src)
+	new /obj/item/stack/medical/advanced/ointment/upgraded(src)
+
+/obj/item/storage/box/czsp/medic_upgraded_kits/looted/Initialize()
+	. = ..()
+	if(prob(35))
+		new /obj/item/stack/medical/advanced/bruise_pack/upgraded(src, rand(1,4))
+	if(prob(35))
+		new /obj/item/stack/medical/advanced/ointment/upgraded(src, rand(1,4))
+
+
 //---------SURGICAL CASE---------
 
 
 /obj/item/storage/surgical_case
 	name = "surgical case"
-	desc = "It's a medical case for storing basic surgical tools. It comes with a brief description for treating common internal bleeds.\
+	desc = "It's a medical case for storing basic surgical tools. It comes with a brief description for treating common internal bleeds and eschar wounds.\
 		\nBefore surgery: Verify correct location and patient is adequately numb to pain.\
 		\nStep one: Open an incision at the site with the scalpel.\
 		\nStep two: Clamp bleeders with the hemostat.\
 		\nStep three: Draw back the skin with the retracter.\
 		\nStep four: Patch the damaged vein with a surgical line.\
-		\nStep five: Close the incision with a surgical line."
+		\nStep five: Close the incision with a surgical line.\
+		\nTo treat eschar, follow the same procedure as above, but use a scalpel and then SynthGraft or an ointment in step four."
 	icon = 'icons/obj/items/storage/medical.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_righthand.dmi',
+	)
 	icon_state = "surgical_case"
 	throw_speed = SPEED_FAST
 	throw_range = 8
@@ -333,6 +548,74 @@
 	new /obj/item/tool/surgery/hemostat(src)
 	new /obj/item/tool/surgery/retractor(src)
 
+/obj/item/storage/surgical_case/elite
+	name = "elite surgical case"
+	desc = "It's an expensive looking medical case for storing compactly placed field surgical tools. Has a bright reflective W-Y logo on it.\
+		\nBefore surgery: Verify correct location and patient is adequately numb to pain.\
+		\nStep one: Open an incision at the site with the scalpel.\
+		\nStep two: Clamp bleeders with the hemostat.\
+		\nStep three: Draw back the skin with the retracter.\
+		\nStep four: Patch the damaged vein with a surgical line.\
+		\nStep five: Close the incision with a surgical line."
+	icon_state = "surgical_case_elite"
+	storage_slots = 5
+
+/obj/item/storage/surgical_case/elite/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
+/obj/item/storage/surgical_case/elite/commando/fill_preset_inventory()
+	new /obj/item/tool/surgery/scalpel(src)
+	new /obj/item/tool/surgery/hemostat(src)
+	new /obj/item/tool/surgery/retractor(src)
+	new /obj/item/tool/surgery/surgical_line(src)
+	new /obj/item/tool/surgery/synthgraft(src)
+
+/obj/item/storage/surgical_case/elite/commando/looted/fill_preset_inventory()
+	if(prob(65))
+		new /obj/item/tool/surgery/scalpel(src)
+	if(prob(65))
+		new /obj/item/tool/surgery/hemostat(src)
+	if(prob(65))
+		new /obj/item/tool/surgery/retractor(src)
+	new /obj/item/tool/surgery/surgical_line(src)
+	new /obj/item/tool/surgery/synthgraft(src)
+
+/obj/item/storage/surgical_case/elite/whiteout
+	storage_slots = 3
+
+/obj/item/storage/surgical_case/elite/whiteout/fill_preset_inventory()
+	new /obj/item/tool/surgery/scalpel/manager(src)
+	new /obj/item/tool/surgery/surgical_line(src)
+	new /obj/item/tool/surgery/synthgraft(src)
+
+/obj/item/storage/surgical_case/rmc_surgical_case
+	name = "\improper RMC surgical case"
+	desc = "It's a medical case for storing basic surgical tools. It comes with a brief description for treating common internal bleeds. This one was made specifically for Royal Marine Commandos, allowing them to suture their wounds during prolonged operations.\
+		\nBefore surgery: Verify correct location and patient is adequately numb to pain.\
+		\nStep one: Open an incision at the site with the scalpel.\
+		\nStep two: Clamp bleeders with the hemostat.\
+		\nStep three: Draw back the skin with the retracter.\
+		\nStep four: Patch the damaged vein with a surgical line.\
+		\nStep five: Close the incision with a surgical line."
+	storage_slots = 5
+	can_hold = list(
+		/obj/item/tool/surgery/scalpel,
+		/obj/item/tool/surgery/hemostat,
+		/obj/item/tool/surgery/retractor,
+		/obj/item/tool/surgery/surgical_line,
+		/obj/item/tool/surgery/synthgraft,
+		/obj/item/tool/surgery/FixOVein,
+	)
+
+/obj/item/storage/surgical_case/rmc_surgical_case/full/fill_preset_inventory()
+	new /obj/item/tool/surgery/scalpel(src)
+	new /obj/item/tool/surgery/hemostat(src)
+	new /obj/item/tool/surgery/retractor(src)
+	new /obj/item/tool/surgery/surgical_line(src)
+	new /obj/item/tool/surgery/synthgraft(src)
+
+
 //---------PILL BOTTLES---------
 
 /obj/item/storage/pill_bottle
@@ -340,7 +623,11 @@
 	desc = "It's an airtight container for storing medication."
 	icon_state = "pill_canister"
 	icon = 'icons/obj/items/chemistry.dmi'
-	item_state = "contsolid"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_righthand.dmi'
+	)
+	item_state = "pill_canister"
 	w_class = SIZE_SMALL
 	matter = list("plastic" = 500)
 	can_hold = list(
@@ -358,9 +645,9 @@
 	var/display_maptext = TRUE
 	var/maptext_label
 	maptext_height = 16
-	maptext_width = 16
-	maptext_x = 18
-	maptext_y = 3
+	maptext_width = 24
+	maptext_x = 4
+	maptext_y = 2
 
 	var/base_icon = "pill_canister"
 	var/static/list/possible_colors = list(
@@ -381,12 +668,12 @@
 
 /obj/item/storage/pill_bottle/Initialize()
 	. = ..()
-	if(display_maptext == FALSE)
+	if(!display_maptext)
 		verbs -= /obj/item/storage/pill_bottle/verb/set_maptext
 
 /obj/item/storage/pill_bottle/fill_preset_inventory()
 	if(pill_type_to_fill)
-		for(var/i=1 to max_storage_space)
+		for(var/i in 1 to max_storage_space)
 			new pill_type_to_fill(src)
 
 /obj/item/storage/pill_bottle/update_icon()
@@ -428,7 +715,7 @@
 	if(user.get_inactive_hand())
 		to_chat(user, SPAN_WARNING("You need an empty hand to take out a pill."))
 		return
-	if(skilllock && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
+	if(!can_storage_interact(user))
 		error_idlock(user)
 		return
 	if(length(contents))
@@ -445,6 +732,11 @@
 		to_chat(user, SPAN_WARNING("The [name] is empty."))
 		return
 
+/obj/item/storage/pill_bottle/shake(mob/user, turf/tile)
+	if(!can_storage_interact(user))
+		error_idlock(user)
+		return
+	return ..()
 
 /obj/item/storage/pill_bottle/attackby(obj/item/storage/pill_bottle/W, mob/user)
 	if(istype(W))
@@ -457,7 +749,7 @@
 
 
 /obj/item/storage/pill_bottle/open(mob/user)
-	if(skilllock && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
+	if(!can_storage_interact(user))
 		error_idlock(user)
 		return
 	..()
@@ -465,19 +757,24 @@
 /obj/item/storage/pill_bottle/can_be_inserted(obj/item/W, mob/user, stop_messages = FALSE)
 	. = ..()
 	if(.)
-		if(skilllock && !skillcheck(usr, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
+		if(!can_storage_interact(user))
 			error_idlock(usr)
 			return
+
+
 
 /obj/item/storage/pill_bottle/clicked(mob/user, list/mods)
 	if(..())
 		return TRUE
-	if(!istype(loc, /obj/item/storage/belt/medical))
+	// Only proceed with instant pill grab if we're in a storage container
+	if(!isstorage(loc))
 		return FALSE
-	var/obj/item/storage/belt/medical/M = loc
-	if(!M.mode)
+	var/obj/item/storage/container_holding_pill = loc
+	if(!container_holding_pill.instant_pill_grabbable)
 		return FALSE
-	if(skilllock && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
+	if(!container_holding_pill.instant_pill_grab_mode)
+		return FALSE
+	if(!can_storage_interact(user))
 		error_idlock(user)
 		return FALSE
 	if(user.get_active_hand())
@@ -517,13 +814,13 @@
 	if(loc != user)
 		return ..()
 
-	if(!mods || !mods["alt"])
+	if(!mods || !mods[ALT_CLICK])
 		return ..()
 
 	if(!ishuman(user))
 		return ..()
 
-	if(skilllock && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
+	if(!can_storage_interact(user))
 		error_idlock(user)
 		return FALSE
 
@@ -552,7 +849,7 @@
 	set src in usr
 
 	if(src && ishuman(usr))
-		var/str = copytext(reject_bad_text(input(usr,"Label text? (2 CHARACTERS MAXIMUM)", "Set \the [src]'s on-sprite label", "")), 1, 3)
+		var/str = copytext(reject_bad_text(input(usr,"Label text? (3 CHARACTERS MAXIMUM)", "Set \the [src]'s on-sprite label", "")), 1, 4)
 		if(!str || !length(str))
 			to_chat(usr, SPAN_NOTICE("You clear the label off \the [src]."))
 			maptext_label = null
@@ -562,9 +859,16 @@
 		to_chat(usr, SPAN_NOTICE("You label \the [src] with '[str]' in big, blocky letters."))
 		update_icon()
 
+/obj/item/storage/pill_bottle/can_storage_interact(mob/user)
+	if(skilllock && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
+		return FALSE
+	return ..()
+
 /obj/item/storage/pill_bottle/kelotane
 	name = "\improper Kelotane pill bottle"
+	desc = "A pill bottle filled with Kelotane pills for treating burns. Do not take more than two pills in a short period."
 	icon_state = "pill_canister2"
+	item_state = "pill_canister2"
 	pill_type_to_fill = /obj/item/reagent_container/pill/kelotane
 	maptext_label = "Kl"
 
@@ -573,7 +877,9 @@
 
 /obj/item/storage/pill_bottle/antitox
 	name = "\improper Dylovene pill bottle"
+	desc = "A pill bottle filled with Dylovene pills for treating toxin damage. Do not take more than two pills in a short period."
 	icon_state = "pill_canister6"
+	item_state = "pill_canister6"
 	pill_type_to_fill = /obj/item/reagent_container/pill/antitox
 	maptext_label = "Dy"
 
@@ -583,7 +889,9 @@
 
 /obj/item/storage/pill_bottle/inaprovaline
 	name = "\improper Inaprovaline pill bottle"
+	desc = "A pill bottle filled with Inaprovaline pills for stabilizing critical patients. Do not take more than two pills in a short period."
 	icon_state = "pill_canister3"
+	item_state = "pill_canister3"
 	pill_type_to_fill = /obj/item/reagent_container/pill/inaprovaline
 	maptext_label = "In"
 
@@ -592,16 +900,31 @@
 
 /obj/item/storage/pill_bottle/tramadol
 	name = "\improper Tramadol pill bottle"
+	desc = "A pill bottle filled with Tramadol. Treats pain."
 	icon_state = "pill_canister5"
+	item_state = "pill_canister5"
 	pill_type_to_fill = /obj/item/reagent_container/pill/tramadol
 	maptext_label = "Tr"
 
 /obj/item/storage/pill_bottle/tramadol/skillless
 	skilllock = SKILL_MEDICAL_DEFAULT
 
+/obj/item/storage/pill_bottle/oxycodone
+	name = "\improper Oxycodone pill bottle"
+	desc = "This contains pills that treat severe pain, even during live surgery. Do not take more than two pills in a short period."
+	icon_state = "pill_canister9"
+	item_state = "pill_canister9"
+	pill_type_to_fill = /obj/item/reagent_container/pill/oxycodone
+	maptext_label = "Ox"
+
+/obj/item/storage/pill_bottle/oxycodone/skillless
+	skilllock = SKILL_MEDICAL_DEFAULT
+
 /obj/item/storage/pill_bottle/spaceacillin
 	name = "\improper Spaceacillin pill bottle"
+	desc = "A pill bottle filled with Spaceacillin pills for treating space illnesses. Do not take more than two pills in a short period."
 	icon_state = "pill_canister4"
+	item_state = "pill_canister4"
 	pill_type_to_fill = /obj/item/reagent_container/pill/spaceacillin
 	maptext_label = "Sp"
 
@@ -610,7 +933,9 @@
 
 /obj/item/storage/pill_bottle/bicaridine
 	name = "\improper Bicaridine pill bottle"
+	desc = "A pill bottle filled with Bicaridine pills for treating brute damage. Do not take more than two pills in a short period."
 	icon_state = "pill_canister11"
+	item_state = "pill_canister11"
 	pill_type_to_fill = /obj/item/reagent_container/pill/bicaridine
 	maptext_label = "Bi"
 
@@ -619,7 +944,9 @@
 
 /obj/item/storage/pill_bottle/dexalin
 	name = "\improper Dexalin pill bottle"
+	desc = "A pill bottle filled with Dexalin pills for reoxygenating patients. Do not take more than two pills in a short period."
 	icon_state = "pill_canister1"
+	item_state = "pill_canister1"
 	pill_type_to_fill = /obj/item/reagent_container/pill/dexalin
 	maptext_label = "Dx"
 
@@ -629,7 +956,9 @@
 //Alkysine
 /obj/item/storage/pill_bottle/alkysine
 	name = "\improper Alkysine pill bottle"
+	desc = "A pill bottle filled with Alkysine pills for treating brain damage. Do not take more than two pills in a short period."
 	icon_state = "pill_canister7"
+	item_state = "pill_canister7"
 	pill_type_to_fill = /obj/item/reagent_container/pill/alkysine
 	maptext_label = "Al"
 
@@ -639,17 +968,28 @@
 //imidazoline
 /obj/item/storage/pill_bottle/imidazoline
 	name = "\improper Imidazoline pill bottle"
+	desc = "A pill bottle filled with Imidazoline pills for treating eye damage. Do not take more than two pills in a short period."
 	icon_state = "pill_canister9"
+	item_state = "pill_canister9"
 	pill_type_to_fill = /obj/item/reagent_container/pill/imidazoline
 	maptext_label = "Im"
 
 /obj/item/storage/pill_bottle/imidazoline/skillless
 	skilllock = SKILL_MEDICAL_DEFAULT
 
+/obj/item/storage/pill_bottle/imialky
+	name = "\improper Imidazoline-Alkysine pill bottle"
+	desc = "A pill bottle filled with Imidazoline-Alkysine combo pills to treat brain and eye damage simultaneously. Do not take more than two pills in a short period."
+	icon_state = "pill_canister9"
+	pill_type_to_fill = /obj/item/reagent_container/pill/imialky
+	maptext_label = "IA"
+
 //PERIDAXON
 /obj/item/storage/pill_bottle/peridaxon
 	name = "\improper Peridaxon pill bottle"
+	desc = "A pill bottle filled with Peridaxon pills to halt most effects of organ damage. Do not take more than two pills in a short period."
 	icon_state = "pill_canister10"
+	item_state = "pill_canister10"
 	pill_type_to_fill = /obj/item/reagent_container/pill/peridaxon
 	maptext_label = "Pr"
 
@@ -659,7 +999,9 @@
 //RUSSIAN RED ANTI-RAD
 /obj/item/storage/pill_bottle/russianRed
 	name = "\improper Russian red pill bottle"
+	desc = "A pill bottle filled with pills that reduce radiation damage."
 	icon_state = "pill_canister"
+	item_state = "pill_canister"
 	pill_type_to_fill = /obj/item/reagent_container/pill/russianRed
 	maptext_label = "Rr"
 
@@ -670,6 +1012,7 @@
 /obj/item/storage/pill_bottle/ultrazine
 	name = "pill bottle"
 	icon_state = "pill_canister11"
+	item_state = "pill_canister11"
 	max_storage_space = 5
 	skilllock = SKILL_MEDICAL_DEFAULT //CL can open it
 	var/idlock = TRUE
@@ -714,6 +1057,7 @@
 
 /obj/item/storage/pill_bottle/ultrazine/skillless
 	name = "\improper Ultrazine pill bottle"
+	desc = "This contains pills that are like Adderall on steroids. Makes you go fast as fuck, boy. Highly addictive."
 	idlock = FALSE
 	display_maptext = TRUE
 	maptext_label = "Uz"
@@ -739,9 +1083,11 @@
 
 /obj/item/storage/pill_bottle/stimulant
 	name = "\improper Stimulant pill bottle"
+	desc = "This contains pills that send the nervous and muscular system into overdrive. Makes you unga faster and harder."
 	icon_state = "pill_canister12"
+	item_state = "pill_canister12"
 	pill_type_to_fill = /obj/item/reagent_container/pill/stimulant
-	maptext_label = "ST"
+	maptext_label = "St"
 
 /obj/item/storage/pill_bottle/stimulant/skillless
 	skilllock = SKILL_MEDICAL_DEFAULT
@@ -749,7 +1095,7 @@
 //NOT FOR USCM USE!!!!
 /obj/item/storage/pill_bottle/paracetamol
 	name = "\improper Paracetamol pill bottle"
-	desc = "This is probably someone's prescription bottle."
+	desc = "This is probably someone's prescription pain pill bottle."
 	icon_state = "pill_canister7"
 	pill_type_to_fill = /obj/item/reagent_container/pill/paracetamol
 	skilllock = SKILL_MEDICAL_DEFAULT
@@ -760,6 +1106,10 @@
 	name = "\improper pill packet"
 	desc = "Contains pills. Once you take them out, they don't go back in."
 	icon_state = "pill_packet"
+	item_state_slots = list(WEAR_AS_GARB = "brutepack (bandages)")
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/medical.dmi',
+	)
 	bottle_lid = FALSE
 	storage_slots = 4
 	max_w_class = 0
@@ -786,32 +1136,52 @@
 	to_chat(user, SPAN_NOTICE("You throw away [src]."))
 	qdel(src)
 
+/obj/item/storage/pill_bottle/packet/fill_preset_inventory()
+	. = ..()
+	update_icon()
+
+/obj/item/storage/pill_bottle/packet/attack_hand(mob/user, mods)
+	. = ..()
+	update_icon()
+
+/obj/item/storage/pill_bottle/packet/empty(mob/user, turf/T)
+	. = ..()
+	update_icon()
+
+/obj/item/storage/pill_bottle/packet/update_icon()
+	overlays.Cut()
+	var/obj/item/reagent_container/pill/current = locate() in contents //access the pills inside the packet
+	if(current)
+		var/datum/reagents/current_reagents = current.reagents
+		var/datum/reagent/current_reagent = locate() in current_reagents.reagent_list //reagent color is in here
+		if(current_reagent)
+			var/image/filling = image('icons/obj/items/chemistry.dmi', src, "[icon_state]_[length(contents)]")
+			filling.color = current_reagent.color
+			overlays += filling
+			return
+
+//icon states are handled by update_icon
 /obj/item/storage/pill_bottle/packet/tricordrazine
 	name = "Tricordazine pill packet"
-	icon_state = "tricordrazine_packet"
 	desc = "This packet contains tricordazine pills. Heals all types of damage slightly. Once you take them out, they don't go back in. Don't take more than 2 pills in a short period."
 	pill_type_to_fill = /obj/item/reagent_container/pill/tricordrazine
 
 /obj/item/storage/pill_bottle/packet/tramadol
 	name = "Tramadol pill packet"
-	icon_state = "tramadol_packet"
-	desc = "This packet contains tramadol pills, a mild painkiller. Once you take them out, they don't go back in. Don't take more than 2 pills in a short period."
+	desc = "This packet contains tramadol pills, mild painkillers. Once you take them out, they don't go back in. Don't take more than 2 pills in a short period."
 	pill_type_to_fill = /obj/item/reagent_container/pill/tramadol
 
 /obj/item/storage/pill_bottle/packet/bicaridine
 	name = "Bicaridine pill packet"
-	icon_state = "bicaridine_packet"
 	desc = "This packet contains bicaridine pills. Heals brute damage effectively. Once you take them out, they don't go back in. Don't take more than 2 pills in a short period."
 	pill_type_to_fill = /obj/item/reagent_container/pill/bicaridine
 
 /obj/item/storage/pill_bottle/packet/kelotane
-	name = "kelotane pill packet"
-	icon_state = "kelotane_packet"
+	name = "Kelotane pill packet"
 	desc = "This packet contains kelotane pills. Heals burn damage effectively. Once you take them out, they don't go back in. Don't take more than 2 pills in a short period."
 	pill_type_to_fill = /obj/item/reagent_container/pill/kelotane
 
 /obj/item/storage/pill_bottle/packet/oxycodone
-	name = "oxycodone pill packet"
-	icon_state = "oxycodone_packet"
-	desc = "This packet contains oxycodone pills. A highly effective painkiller. Once you take them out, they don't go back in. Don't take more than 1 pill in a short period."
+	name = "Oxycodone pill packet"
+	desc = "This packet contains oxycodone pills, highly effective painkillers. Once you take them out, they don't go back in. Don't take more than 2 pill in a short period."
 	pill_type_to_fill = /obj/item/reagent_container/pill/oxycodone

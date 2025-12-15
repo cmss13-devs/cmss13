@@ -6,7 +6,7 @@
 
 import {
   hexToHsva,
-  HsvaColor,
+  type HsvaColor,
   hsvaToHex,
   hsvaToHslString,
   hsvaToRgba,
@@ -18,15 +18,13 @@ import { clamp } from 'common/math';
 import { classes } from 'common/react';
 import {
   Component,
-  FocusEvent,
-  FormEvent,
-  KeyboardEvent,
-  ReactNode,
+  type FocusEvent,
+  type FormEvent,
+  type KeyboardEvent,
+  type ReactNode,
   useState,
 } from 'react';
-import { Interaction, Interactive } from 'tgui/components/Interactive';
-
-import { useBackend } from '../backend';
+import { useBackend } from 'tgui/backend';
 import {
   Autofocus,
   Box,
@@ -37,8 +35,10 @@ import {
   Section,
   Stack,
   Tooltip,
-} from '../components';
-import { Window } from '../layouts';
+} from 'tgui/components';
+import { type Interaction, Interactive } from 'tgui/components/Interactive';
+import { Window } from 'tgui/layouts';
+
 import { InputButtons } from './common/InputButtons';
 import { Loader } from './common/Loader';
 

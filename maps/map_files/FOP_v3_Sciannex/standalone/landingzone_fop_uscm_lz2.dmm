@@ -1,0 +1,27 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/open/floor/plating/prison,
+/area/fiorina/lz/near_lzI)
+"p" = (
+/obj/docking_port/stationary/marine_dropship/lz1{
+	name = "LZ1: Hangar Landing Zone";
+	faction = "Yautja"
+	},
+/turf/open/floor/plating/prison,
+/area/fiorina/lz/near_lzI)
+
+(1,1,1) = {"
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+p
+a
+"}
+(3,1,1) = {"
+a
+a
+a
+"}

@@ -1,7 +1,7 @@
 /obj/structure/reagent_dispensers
 	name = "dispenser"
 	desc = "..."
-	icon = 'icons/obj/objects.dmi'
+	icon = 'icons/obj/structures/liquid_tanks.dmi'
 	icon_state = "watertank"
 	density = TRUE
 	anchored = FALSE
@@ -11,12 +11,13 @@
 	wrenchable = TRUE
 	unslashable = FALSE
 	var/amount_per_transfer_from_this = 10
-	var/possible_transfer_amounts = list(5,10,20,30,40,50,60,100,200,300)
+	var/possible_transfer_amounts = list(5,10,15,20,25,30,40,50,60,80,100,120,150,200,240,300)
 	var/chemical = ""
 	var/dispensing = TRUE
 
 /obj/structure/reagent_dispensers/Initialize(mapload, reagent_amount = 1000)
 	. = ..()
+	ADD_TRAIT(src, TRAIT_REACTS_UNSAFELY, TRAIT_SOURCE_INHERENT)
 	create_reagents(reagent_amount)
 	if(!possible_transfer_amounts)
 		verbs -= /obj/structure/reagent_dispensers/verb/set_APTFT
@@ -25,6 +26,10 @@
 	if(!anchored && is_ground_level(z) && prob(70))
 		anchored = TRUE
 
+/obj/structure/reagent_dispensers/tank/Initialize(mapload)
+	. = ..()
+	update_icon()
+
 /obj/structure/reagent_dispensers/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
@@ -32,7 +37,8 @@
 
 /obj/structure/reagent_dispensers/get_examine_text(mob/user)
 	. = ..()
-	if(get_dist(user, src) > 2 && user != loc) return
+	if(get_dist(user, src) > 2 && user != loc)
+		return
 	. += SPAN_NOTICE("It contains:")
 	if(reagents && length(reagents.reagent_list))
 		for(var/datum/reagent/R in reagents.reagent_list)
@@ -80,18 +86,6 @@
 	healthcheck()
 	return TRUE
 
-/obj/structure/reagent_dispensers/attack_alien(mob/living/carbon/xenomorph/user)
-	if(unslashable)
-		return XENO_NO_DELAY_ACTION
-	user.animation_attack_on(src)
-	health -= (rand(user.melee_damage_lower, user.melee_damage_upper))
-	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
-	user.visible_message(SPAN_DANGER("[user] slashes \the [src]!"), \
-	SPAN_DANGER("You slash \the [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-	healthcheck()
-	return XENO_ATTACK_ACTION
-
-
 /obj/structure/reagent_dispensers/verb/set_transfer_direction() //set amount_per_transfer_from_this
 	set name = "Set transfer direction"
 	set category = "Object"
@@ -108,6 +102,7 @@
 		to_chat(usr, SPAN_NOTICE("[src] is now dispensing"))
 	else
 		to_chat(usr, SPAN_NOTICE("[src] is now filling"))
+	update_icon()
 
 /obj/structure/reagent_dispensers/ex_act(severity)
 	switch(severity)
@@ -141,71 +136,104 @@
 	if(!reagents || reagents.locked)
 		return ..()
 
-	if(mods["alt"])
+	if(mods[ALT_CLICK])
 		dispensing = !dispensing
 		if(dispensing)
 			to_chat(user, SPAN_NOTICE("[src] is now dispensing"))
 		else
 			to_chat(user, SPAN_NOTICE("[src] is now filling"))
+		update_icon()
 		return TRUE
 	return ..()
 
 /obj/structure/reagent_dispensers/attackby(obj/item/hit_item, mob/living/user)
 	if(istype(hit_item, /obj/item/reagent_container))
 		return
-	..()
+	. = ..()
 
 //Dispensers
-/obj/structure/reagent_dispensers/watertank
-	name = "watertank"
-	desc = "A water tank"
-	icon = 'icons/obj/objects.dmi'
+/obj/structure/reagent_dispensers/tank/water
+	name = "water tank"
+	desc = "A tank filled with water."
 	icon_state = "watertank"
 	chemical = "water"
 
-/obj/structure/reagent_dispensers/ammoniatank
-	name = "ammoniatank"
-	desc = "An ammonia tank"
-	icon = 'icons/obj/objects.dmi'
+/obj/structure/reagent_dispensers/tank/water/yautja
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+
+/obj/structure/reagent_dispensers/tank/ammonia
+	name = "ammonia tank"
+	desc = "A tank filled with ammonia gas."
 	icon_state = "ammoniatank"
 	chemical = "ammonia"
 
-/obj/structure/reagent_dispensers/acidtank
-	name = "sulfuric acid tank"
-	desc = "A sulfuric acid tank"
-	icon = 'icons/obj/objects.dmi'
+/obj/structure/reagent_dispensers/tank/sacid
+	name = "sulphuric acid tank"
+	desc = "A tank filled with sulphuric acid."
 	icon_state = "sacidtank"
 	chemical = "sulphuric acid"
 
-/obj/structure/reagent_dispensers/pacidtank
+/obj/structure/reagent_dispensers/tank/pacid
 	name = "polytrinic acid tank"
-	desc = "A polytrinic acid tank"
-	icon = 'icons/obj/objects.dmi'
+	desc = "A tank filled with polytrinic acid."
 	icon_state = "pacidtank"
 	chemical = "pacid"
 
-/obj/structure/reagent_dispensers/ethanoltank
+/obj/structure/reagent_dispensers/tank/ethanol
 	name = "ethanol tank"
-	desc = "An ethanol tank."
-	icon = 'icons/obj/objects.dmi'
+	desc = "A tank filled with ethanol. Command hopes you do not drink it all."
 	icon_state = "ethanoltank"
 	chemical = "ethanol"
 
-/obj/structure/reagent_dispensers/fueltank
-	name = "fueltank"
-	desc = "A fuel tank"
-	icon = 'icons/obj/objects.dmi'
+/obj/structure/reagent_dispensers/tank/fuel
+	name = "fuel tank"
+	desc = "A tank filled with fuel."
 	icon_state = "weldtank"
 	amount_per_transfer_from_this = 10
 	chemical = "fuel"
 	black_market_value = 25
+
 	var/modded = 0
 	var/obj/item/device/assembly_holder/rig = null
 	var/exploding = 0
 	var/reinforced = FALSE
 	var/datum/weakref/source_mob
 
-/obj/structure/reagent_dispensers/fueltank/get_examine_text(mob/user)
+/obj/structure/reagent_dispensers/tank/update_icon()
+	overlays.Cut()
+	. = ..()
+	if(reagents && reagents.total_volume)
+		var/image/meter = image(icon, src, "t-25")
+
+		var/percent = floor((reagents.total_volume / reagents.maximum_volume * 100))
+		switch(percent)
+			if(1 to 20)
+				meter.icon_state = "t_20"
+			if(21 to 40)
+				meter.icon_state = "t_40"
+			if(41 to 60)
+				meter.icon_state = "t_60"
+			if(61 to 80)
+				meter.icon_state = "t_80"
+			if(81 to INFINITY)
+				meter.icon_state = "t_100"
+			else
+				return
+
+		overlays += meter
+
+	if(dispensing)
+		var/image/dispensing = image(icon, src, "dispensing")
+		overlays += dispensing
+	else
+		var/image/not_dispensing = image(icon, src, "filling")
+		overlays += not_dispensing
+
+/obj/structure/reagent_dispensers/tank/on_reagent_change()
+	. = ..()
+	update_icon()
+
+/obj/structure/reagent_dispensers/tank/fuel/get_examine_text(mob/user)
 	. = ..()
 	if(user != loc)
 		return
@@ -215,8 +243,7 @@
 		. += SPAN_NOTICE("There is some kind of device rigged to the tank.")
 	if(reinforced)
 		. += SPAN_NOTICE("It seems to be reinforced with metal shielding.")
-
-/obj/structure/reagent_dispensers/fueltank/attack_hand()
+/obj/structure/reagent_dispensers/tank/fuel/attack_hand()
 	if(rig)
 		usr.visible_message("[usr] begins to detach [rig] from \the [src].", "You begin to detach [rig] from \the [src]")
 		if(do_after(usr, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -226,22 +253,13 @@
 			update_icon()
 	else
 		. = ..()
-
-/obj/structure/reagent_dispensers/fueltank/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/reagent_dispensers/tank/fuel/attackby(obj/item/W as obj, mob/user as mob)
 	src.add_fingerprint(user)
 
 	if(user.action_busy)
-		to_chat(user, SPAN_WARNING("You're already peforming an action!"))
+		to_chat(user, SPAN_WARNING("You're already performing an action!"))
 		return
 
-	/*if (HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
-		user.visible_message("[user] wrenches [src]'s faucet [modded ? "closed" : "open"].", \
-			"You wrench [src]'s faucet [modded ? "closed" : "open"]")
-		modded = modded ? 0 : 1
-		if (modded)
-			message_admins("[key_name_admin(user)] opened fueltank at [loc.loc.name] ([loc.x],[loc.y],[loc.z]), leaking fuel. [ADMIN_JMP(loc)]")
-			log_game("[key_name(user)] opened fueltank at [loc.loc.name] ([loc.x],[loc.y],[loc.z]), leaking fuel.")
-			leak_fuel(amount_per_transfer_from_this)*/
 	if(istype(W,/obj/item/device/assembly_holder))
 
 		if(rig)
@@ -275,7 +293,7 @@
 			to_chat(user, SPAN_WARNING("You don't have enough of [M] to reinforce [src]."))
 			return
 
-		user.visible_message(SPAN_NOTICE("[user] begins reinforcing the exterior of [src] with [M]."),\
+		user.visible_message(SPAN_NOTICE("[user] begins reinforcing the exterior of [src] with [M]."),
 		SPAN_NOTICE("You begin reinforcing [src] with [M]."))
 
 		if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD, src, INTERRUPT_ALL) || reinforced)
@@ -285,7 +303,7 @@
 			to_chat(user, SPAN_WARNING("You don't have enough of [M] to reinforce [src]."))
 			return
 
-		user.visible_message(SPAN_NOTICE("[user] reinforces the exterior of [src] with [M]."),\
+		user.visible_message(SPAN_NOTICE("[user] reinforces the exterior of [src] with [M]."),
 		SPAN_NOTICE("You reinforce [src] with [M]."))
 
 		reinforced = TRUE
@@ -293,13 +311,13 @@
 
 	else if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 
-		user.visible_message(SPAN_DANGER("[user] begins to remove the shielding from [src]."),\
+		user.visible_message(SPAN_DANGER("[user] begins to remove the shielding from [src]."),
 		SPAN_NOTICE("You begin to remove the shielding from [src]."))
 
 		if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD, src, INTERRUPT_ALL) || !reinforced)
 			return
 
-		user.visible_message(SPAN_DANGER("[user] removes the shielding from [src]."),\
+		user.visible_message(SPAN_DANGER("[user] removes the shielding from [src]."),
 		SPAN_NOTICE("You remove the shielding from [src]."))
 		new /obj/item/stack/sheet/plasteel(loc, STACK_10)
 
@@ -308,9 +326,9 @@
 
 	return ..()
 
-
-/obj/structure/reagent_dispensers/fueltank/bullet_act(obj/projectile/Proj)
-	if(exploding) return 0
+/obj/structure/reagent_dispensers/tank/fuel/bullet_act(obj/projectile/Proj)
+	if(exploding)
+		return 0
 	if(ismob(Proj.firer))
 		source_mob = WEAKREF(Proj.firer)
 
@@ -322,9 +340,9 @@
 		explode()
 
 	return TRUE
-
-/obj/structure/reagent_dispensers/fueltank/ex_act(severity)
-	if(exploding) return
+/obj/structure/reagent_dispensers/tank/fuel/ex_act(severity)
+	if(exploding)
+		return
 
 	if(severity >= EXPLOSION_THRESHOLD_HIGH)
 		exploding = TRUE
@@ -335,8 +353,7 @@
 
 	if(src)
 		return ..()
-
-/obj/structure/reagent_dispensers/fueltank/proc/explode(force)
+/obj/structure/reagent_dispensers/tank/fuel/proc/explode(force)
 	reagents.source_mob = source_mob
 	if(reagents.handle_volatiles() || force)
 		deconstruct(FALSE)
@@ -345,8 +362,7 @@
 	exploding = FALSE
 	update_icon()
 
-
-/obj/structure/reagent_dispensers/fueltank/update_icon(cut_overlays = TRUE)
+/obj/structure/reagent_dispensers/tank/fuel/update_icon(cut_overlays = TRUE)
 	if(cut_overlays)
 		overlays.Cut()
 	. = ..()
@@ -362,61 +378,63 @@
 
 	if(reinforced)
 		overlays += image(icon, icon_state = "t_reinforced")
-
-/obj/structure/reagent_dispensers/fueltank/fire_act(temperature, volume)
+/obj/structure/reagent_dispensers/tank/fuel/fire_act(temperature, volume)
 	if(temperature > T0C+500 && !reinforced)
 		explode()
 	return ..()
-
-/obj/structure/reagent_dispensers/fueltank/Move()
+/obj/structure/reagent_dispensers/tank/fuel/Move()
 	. = ..()
 	if(. && modded && reagents && !reagents.locked)
 		leak_fuel(amount_per_transfer_from_this/10.0)
-
-/obj/structure/reagent_dispensers/fueltank/proc/leak_fuel(amount)
+/obj/structure/reagent_dispensers/tank/fuel/proc/leak_fuel(amount)
 	if(reagents.total_volume == 0)
 		return
 
 	amount = min(amount, reagents.total_volume)
 	reagents.remove_reagent(chemical,amount)
 	new /obj/effect/decal/cleanable/liquid_fuel(src.loc, amount)
-
-/obj/structure/reagent_dispensers/fueltank/flamer_fire_act(damage, datum/cause_data/flame_cause_data)
+/obj/structure/reagent_dispensers/tank/fuel/flamer_fire_act(damage, datum/cause_data/flame_cause_data)
 	if(!reinforced)
 		reagents.source_mob = flame_cause_data?.weak_mob
 		explode()
+/obj/structure/reagent_dispensers/tank/fuel/yautja
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 
-/obj/structure/reagent_dispensers/fueltank/gas
-	name = "gastank"
-	desc = "A gas tank"
+/obj/structure/reagent_dispensers/tank/fuel/gas
+	name = "gas tank"
+	desc = "A gas tank."
 
-/obj/structure/reagent_dispensers/fueltank/gas/leak_fuel(amount)
+/obj/structure/reagent_dispensers/tank/fuel/spacecraft
+	name = "spacecraft fuel-mix tank"
+	desc = "A fuel tank mix with fuel designed for various spacecraft, very combustible."
+	icon_state = "weldtank_alt"
+
+/obj/structure/reagent_dispensers/tank/fuel/gas/leak_fuel(amount)
 	if(reagents.total_volume == 0)
 		return
 
 	amount = min(amount, reagents.total_volume)
 	reagents.remove_reagent(chemical,amount)
 
-/obj/structure/reagent_dispensers/fueltank/gas/methane
-	name = "methanetank"
-	desc = "A methane tank"
+/obj/structure/reagent_dispensers/tank/fuel/gas/methane
+	name = "methane tank"
+	desc = "A tank filled with methane gas. Does not smell like farts."
 	icon_state = "methanetank"
 	chemical = "methane"
 
-/obj/structure/reagent_dispensers/fueltank/gas/hydrogen
-	name = "hydrogentank"
-	desc = "A hydrogen tank"
+/obj/structure/reagent_dispensers/tank/fuel/gas/hydrogen
+	name = "hydrogen tank"
+	desc = "A tank filled with hydrogen gas."
 	icon_state = "hydrogentank"
 	chemical = "hydrogen"
 
-/obj/structure/reagent_dispensers/fueltank/oxygentank
-	name = "oxygentank"
-	desc = "An oxygen tank"
-	icon = 'icons/obj/objects.dmi'
+/obj/structure/reagent_dispensers/tank/fuel/oxygentank
+	name = "oxygen tank"
+	desc = "A tank filled with sweet, sweet oxygen."
 	icon_state = "oxygentank"
 	chemical = "oxygen"
 
-/obj/structure/reagent_dispensers/fueltank/custom
+/obj/structure/reagent_dispensers/tank/fuel/custom
 	name = "reagent tank"
 	desc = "A reagent tank, typically used to store large quantities of chemicals."
 
@@ -424,15 +442,11 @@
 	dispensing = FALSE //Empty fuel tanks start by accepting chemicals by default. Can't dispense nothing!
 	icon_state = "tank_normal"
 
-/obj/structure/reagent_dispensers/fueltank/custom/Initialize(mapload, volume)
+/obj/structure/reagent_dispensers/tank/fuel/custom/Initialize(mapload, volume)
 	. = ..()
 	update_icon()
 
-/obj/structure/reagent_dispensers/fueltank/custom/on_reagent_change()
-	. = ..()
-	update_icon()
-
-/obj/structure/reagent_dispensers/fueltank/custom/update_icon()
+/obj/structure/reagent_dispensers/tank/fuel/custom/update_icon()
 	. = ..()
 
 	var/set_icon_state = "tn_color"
@@ -447,11 +461,10 @@
 
 	overlays += I
 
-
 /obj/structure/reagent_dispensers/peppertank
 	name = "pepper spray refiller"
 	desc = "Refill pepper spray canisters."
-	icon = 'icons/obj/objects.dmi'
+	icon = 'icons/obj/structures/wall_dispensers.dmi'
 	icon_state = "peppertank"
 	anchored = TRUE
 	drag_delay = 3
@@ -459,6 +472,18 @@
 	density = FALSE
 	amount_per_transfer_from_this = 45
 	chemical = "condensedcapsaicin"
+
+/obj/structure/reagent_dispensers/forensictank
+	name = "forensic spray refiller"
+	desc = "Refill forensic spray bottles."
+	icon = 'icons/obj/structures/wall_dispensers.dmi'
+	icon_state = "forensictank"
+	anchored = TRUE
+	drag_delay = 3
+	wrenchable =  FALSE
+	density = FALSE
+	amount_per_transfer_from_this = 45
+	chemical = "forensic_spray"
 
 /obj/structure/reagent_dispensers/water_cooler
 	name = "water cooler"
@@ -471,6 +496,10 @@
 	drag_delay = 3
 	chemical = "water"
 
+/obj/structure/reagent_dispensers/water_cooler/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/structure/reagent_dispensers/water_cooler/walk_past
 	density = FALSE
 
@@ -479,8 +508,8 @@
 
 /obj/structure/reagent_dispensers/beerkeg
 	name = "beer keg"
-	desc = "A beer keg"
-	icon = 'icons/obj/objects.dmi'
+	desc = "A beer keg."
+	icon = 'icons/obj/structures/kegs.dmi'
 	icon_state = "beertankTEMP"
 	amount_per_transfer_from_this = 10
 	chemical = "beer"
@@ -495,7 +524,7 @@
 /obj/structure/reagent_dispensers/virusfood
 	name = "virus food dispenser"
 	desc = "A dispenser of virus food."
-	icon = 'icons/obj/objects.dmi'
+	icon = 'icons/obj/structures/wall_dispensers.dmi'
 	icon_state = "virusfoodtank"
 	amount_per_transfer_from_this = 10
 	anchored = TRUE

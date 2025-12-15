@@ -33,6 +33,10 @@
 	for(var/action_path in actions_to_add)
 		give_action(xeno, action_path)
 
+	var/datum/action/minimap/ref = xeno.minimap_ref.resolve()
+	ref.remove_from(xeno)
+	ref.give_to(xeno, ref)
+
 	// Update the xeno's behavior delegate.
 	if(behavior_delegate_type)
 		if(xeno.behavior_delegate)
@@ -61,7 +65,6 @@
 	// Override with custom behaviour.
 	return
 
-
 /mob/living/carbon/xenomorph/verb/purchase_strain()
 	set name = "Purchase Strain"
 	set desc = "Purchase a strain for yourself"
@@ -86,7 +89,7 @@
 	if(!can_take_strain())
 		return
 	// Show the user the strain's description, and double check that they want it.
-	if(alert(usr, "[initial(chosen_strain.description)]\n\nConfirm mutation?", "Choose Strain", "Yes", "No") != "Yes")
+	if(tgui_alert(usr, "[initial(chosen_strain.description)]", "Choose Strain", list("Mutate", "Cancel")) != "Mutate")
 		return
 	// One more time after they confirm.
 	if(!can_take_strain())
@@ -95,17 +98,61 @@
 	// Create the strain datum and apply it to the xeno.
 	var/datum/xeno_strain/strain_instance = new chosen_strain()
 	if(strain_instance._add_to_xeno(src))
+		overlays -= acid_overlay
 		xeno_jitter(1.5 SECONDS)
 		// If it applied successfully, add it to the logs.
 		log_strain("[name] purchased strain '[strain_instance.type]'")
 
+/mob/living/carbon/xenomorph/verb/reset_strain()
+	set name = "Reset Strain"
+	set desc = "Reset your strain."
+	set category = "Alien"
+
+	// Firstly, make sure the xeno is actually able to take a strain.
+	if(!can_take_strain(reset = TRUE))
+		return
+
+	if(!COOLDOWN_FINISHED(src, next_strain_reset))
+		to_chat(src, SPAN_WARNING("We lack the strength to reset our strain. We will be able to reset it in [round((next_strain_reset - world.time) / 600, 1)] minutes"))
+		return
+
+	// Show the user the strain's description, and double check that they want it.
+	if(tgui_alert(src, "Are you sure?", "Reset Strain", list("Yes", "No")) != "Yes")
+		return
+
+	// One more time after they confirm.
+	if(!can_take_strain(reset = TRUE))
+		return
+
+	var/mob/living/carbon/xenomorph/new_xeno = transmute(caste_type)
+	if(!new_xeno)
+		return
+
+	new_xeno.xeno_jitter(1.5 SECONDS)
+	if(evolution_stored == evolution_threshold)
+		if(new_xeno.caste_type == XENO_CASTE_FACEHUGGER)
+			return
+		give_action(new_xeno, /datum/action/xeno_action/onclick/evolve)
+
+	// If it applied successfully, add it to the logs.
+	log_strain("[new_xeno.name] reset their strain.")
+	COOLDOWN_START(new_xeno, next_strain_reset, 40 MINUTES)
+
 /// Is this xeno currently able to take a strain?
-/mob/living/carbon/xenomorph/proc/can_take_strain()
+/mob/living/carbon/xenomorph/proc/can_take_strain(reset=FALSE)
 	if(!length(caste.available_strains) || !check_state(TRUE))
 		return FALSE
 
-	if(strain)
+	if(strain && !reset)
 		to_chat(src, SPAN_WARNING("We have already chosen a strain."))
+		return FALSE
+
+	if(!strain && reset)
+		to_chat(src, SPAN_WARNING("You must first pick a strain before resetting it."))
+		return FALSE
+
+	if(is_zoomed)
+		to_chat(src, SPAN_WARNING("We can't do that while looking far away."))
 		return FALSE
 
 	if(is_ventcrawling)

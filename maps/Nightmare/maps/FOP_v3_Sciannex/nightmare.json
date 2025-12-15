@@ -6,5 +6,33 @@
     "chance": 0.5,
     "path": "standalone/riot_in_progress.dmm",
     "when": { "riot_in_progress": "true" }
+},
+{
+    "type": "map_insert",
+    "landmark": "hvhupplz1",
+    "chance": 1.0,
+    "path": "standalone/landingzone_fop_upp_lz1.dmm",
+    "when": { "$gamemode": "Faction Clash UPP CM" }
+},
+{
+    "type": "map_insert",
+    "landmark": "hvhuscmlz1",
+    "chance": 1.0,
+    "path": "standalone/landingzone_fop_uscm_lz1.dmm",
+    "when": { "$gamemode": "Faction Clash UPP CM" }
+},
+{
+    "type": "map_insert",
+    "landmark": "hvhuscmlz2",
+    "chance": 1.0,
+    "path": "standalone/landingzone_fop_uscm_lz2.dmm",
+    "when": { "$gamemode": "Faction Clash UPP CM" }
+},
+{
+    "type": "map_insert",
+    "landmark": "rocinante",
+    "chance": 1.0,
+    "path": "standalone/rocinante.dmm",
+    "when": { "riot_in_progress": "rocinante" }
 }
 ]

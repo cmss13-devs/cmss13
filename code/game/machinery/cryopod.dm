@@ -48,7 +48,12 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 
 /obj/structure/machinery/computer/cryopod/yautja
 	cryotype = "Yautja"
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+	icon_state = "terminal"
 	z_restricted = FALSE
+
+/obj/structure/machinery/computer/cryopod/upp
+	cryotype = FACTION_UPP
 
 /obj/structure/machinery/computer/cryopod/attack_remote()
 	src.attack_hand()
@@ -67,10 +72,10 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	var/dat
 
 	dat += "<i>Welcome, [user.real_name].</i><br/><br/><hr/>"
-	dat += "<a href='?src=\ref[src];log=1'>View storage log</a>.<br>"
-	dat += "<a href='?src=\ref[src];view=1'>View objects</a>.<br>"
-	dat += "<a href='?src=\ref[src];item=1'>Recover object</a>.<br>"
-	dat += "<a href='?src=\ref[src];allitems=1'>Recover all objects</a>.<br>"
+	dat += "<a href='byond://?src=\ref[src];log=1'>View storage log</a>.<br>"
+	dat += "<a href='byond://?src=\ref[src];view=1'>View objects</a>.<br>"
+	dat += "<a href='byond://?src=\ref[src];item=1'>Recover object</a>.<br>"
+	dat += "<a href='byond://?src=\ref[src];allitems=1'>Recover all objects</a>.<br>"
 
 	show_browser(user, dat, "Cryogenic Oversight Control for [cryotype]", "cryopod_console")
 
@@ -231,14 +236,16 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	if(ishuman(occupant))
 		var/mob/living/carbon/human/cryo_human = occupant
 		switch(cryo_human.job)
-			if(JOB_POLICE, JOB_WARDEN, JOB_CHIEF_POLICE)
+			if(JOB_POLICE, JOB_POLICE_HG, JOB_WARDEN, JOB_CHIEF_POLICE)
 				dept_console = GLOB.frozen_items["MP"]
-			if(JOB_NURSE, JOB_DOCTOR, JOB_RESEARCHER, JOB_CMO)
+			if(JOB_NURSE, JOB_DOCTOR, JOB_FIELD_DOCTOR, JOB_RESEARCHER, JOB_CMO)
 				dept_console = GLOB.frozen_items["Med"]
 			if(JOB_MAINT_TECH, JOB_ORDNANCE_TECH, JOB_CHIEF_ENGINEER)
 				dept_console = GLOB.frozen_items["Eng"]
-			if(JOB_PREDATOR)
-				dept_console = GLOB.frozen_items["Yautja"]
+
+
+		if(cryo_human.faction != FACTION_MARINE)
+			dept_console = GLOB.frozen_items[cryo_human.faction]
 
 		if(cryo_human.job in FAX_RESPONDER_JOB_LIST)
 			cryo_human.despawn_fax_responder()
@@ -418,8 +425,10 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 			visible_message(SPAN_NOTICE("[user] starts putting [M] into [src]."),
 			SPAN_NOTICE("You start putting [M] into [src]."))
 
-			if(!do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC)) return
-			if(!M || !G || !G.grabbed_thing) return
+			if(!do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+				return
+			if(!M || !G || !G.grabbed_thing)
+				return
 			if(occupant)
 				to_chat(user, SPAN_WARNING("[src] is occupied."))
 				return FALSE
@@ -464,8 +473,10 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 		message_admins("[key_name_admin(M)], [M.job], has left [src] at [location].")
 
 	var/list/items = src.contents //-Removes items from the chamber
-	if(occupant) items -= occupant
-	if(announce) items -= announce
+	if(occupant)
+		items -= occupant
+	if(announce)
+		items -= announce
 
 	for(var/obj/item/W in items)
 		W.forceMove(get_turf(src))
@@ -517,7 +528,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 			to_chat(mob, SPAN_NOTICE("You feel cool air surround you. You go numb as your senses turn inward."))
 			to_chat(mob, SPAN_BOLDNOTICE("If you log out or close your client now, your character will permanently removed from the round in 10 minutes. If you ghost, timer will be decreased to 2 minutes."))
 			if(!should_block_game_interaction(src)) // Set their queue time now because the client has to actually leave to despawn and at that point the client is lost
-				mob.client.player_details.larva_queue_time = max(mob.client.player_details.larva_queue_time, world.time)
+				mob.client.player_details.larva_pool_time = max(mob.client.player_details.larva_pool_time, world.time)
 		var/area/location = get_area(src)
 		if(mob.job != GET_MAPPED_ROLE(JOB_SQUAD_MARINE))
 			message_admins("[key_name_admin(mob)], [mob.job], has entered \a [src] at [location] after playing for [duration2text(world.time - mob.life_time_start)].")
@@ -558,6 +569,8 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 		return TRUE
 	if(no_store_pod)
 		return TRUE
+	if(occupant.faction != FACTION_MARINE)
+		return TRUE
 	return FALSE
 
 
@@ -596,3 +609,10 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 
 	occupant.mind.transfer_to(new_player)
 	SEND_SIGNAL(occupant, COMSIG_MOB_END_TUTORIAL)
+
+/obj/structure/machinery/cryopod/no_store/yautja
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+
+/obj/structure/machinery/cryopod/no_store/right/yautja
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+	dir = WEST

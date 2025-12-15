@@ -1,4 +1,8 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/obj/structure/machinery/power/apc/no_power/west,
+/turf/open/floor/plating,
+/area/bigredv2/outside/nw)
 "b" = (
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/nw)
@@ -184,7 +188,7 @@ q
 j
 u
 j
-j
+a
 b
 "}
 (3,1,1) = {"

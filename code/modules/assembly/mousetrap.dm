@@ -1,6 +1,10 @@
 /obj/item/device/assembly/mousetrap
 	name = "mousetrap"
 	desc = "A handy little spring-loaded trap for catching pesty rodents."
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/janitor_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/janitor_righthand.dmi',
+	)
 	icon_state = "mousetrap"
 	matter = list("metal" = 100, "waste" = 10)
 
@@ -38,14 +42,13 @@
 					affecting = H.get_limb(type)
 					H.apply_effect(3, STUN)
 		if(affecting)
-			if(affecting.take_damage(1, 0))
-				H.UpdateDamageIcon()
-			H.updatehealth()
+			affecting.take_damage(1, 0)
 	else if(ismouse(target))
 		var/mob/living/simple_animal/mouse/M = target
 		visible_message(SPAN_DANGER("<b>SPLAT!</b>"))
 		M.splat()
-	if(!target) return
+	if(!target)
+		return
 	playsound(target.loc, 'sound/effects/snap.ogg', 25, 1)
 	layer = MOB_LAYER - 0.2
 	armed = 0

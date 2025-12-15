@@ -213,6 +213,10 @@
 	icon_state = "res1"
 	minimap_color = MINIMAP_AREA_RESEARCH
 
+/area/shiva/interior/colony/clf_shuttle
+	name = "Shiva's Snowball - Disabled Cargo Shuttle"
+	icon_state = "res0"
+
 /area/shiva/interior/colony/s_admin
 	name = "Shiva's Snowball - MegaStruct(TM) Crisis Center"
 	icon_state = "res2"

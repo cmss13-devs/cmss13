@@ -10,6 +10,7 @@
 	name = "sandwich"
 	desc = "The best thing since sliced bread."
 	icon_state = "breadslice"
+	icon = 'icons/obj/items/food/bread.dmi'
 	trash = /obj/item/trash/plate
 	bitesize = 2
 
@@ -28,6 +29,9 @@
 
 	if(length(src.contents) > sandwich_limit)
 		to_chat(user, SPAN_DANGER("If you put anything else on \the [src] it's going to collapse."))
+		return
+	if(length(src.contents) >= 15)
+		to_chat(user, SPAN_DANGER("\The [src] is already massive! You can't add more without ruining it."))
 		return
 	else if(istype(W,/obj/item/shard))
 		to_chat(user, SPAN_NOTICE(" You hide [W] in \the [src]."))
@@ -73,7 +77,8 @@
 	overlays += T
 
 	name = lowertext("[fullname] sandwich")
-	if(length(name) > 80) name = "[pick(list("absurd","colossal","enormous","ridiculous"))] sandwich"
+	if(length(name) > 80)
+		name = "[pick(list("absurd","colossal","enormous","ridiculous"))] sandwich"
 	w_class = ceil(clamp((length(ingredients)/2),1,3))
 
 /obj/item/reagent_container/food/snacks/csandwich/Destroy()

@@ -1,0 +1,13 @@
+.PredPicker {
+  .Stack--horizontal > .Picker:first-of-type {
+    margin-left: 6px;
+  }
+
+  .Picker.Active {
+    outline: 4px solid hsl(0, 62%, 41%);
+  }
+
+  .Picker img {
+    background: hsl(0, 54%, 32%);
+  }
+}

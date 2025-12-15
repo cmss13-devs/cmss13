@@ -2,7 +2,13 @@
 	name = "combat sword"
 	desc = "A dusty sword commonly seen in historical museums. Where you got this is a mystery, for sure. Only a mercenary would be nuts enough to carry one of these. Sharpened to deal massive damage."
 	icon_state = "mercsword"
-	item_state = "machete"
+	item_state = "mercsword"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/swords_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/swords_righthand.dmi',
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/misc.dmi'
+	)
+	icon = 'icons/obj/items/weapons/melee/swords.dmi'
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_equip_slot = SLOT_WAIST
 	force = MELEE_FORCE_STRONG
@@ -14,21 +20,30 @@
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	attack_speed = 9
 
+	shield_chance = SHIELD_CHANCE_LOW
+	shield_projectile_mult = PROJECTILE_BLOCK_PERC_NONE
+	shield_type = SHIELD_DIRECTIONAL
+	shield_sound = 'sound/items/parry.ogg'
+	shield_flags = CAN_SHIELD_BASH
+
 /obj/item/weapon/sword/claymore
 	name = "claymore"
 	desc = "What are you standing around staring at this for? Get to killing!"
 	icon_state = "claymore"
 	item_state = "claymore"
+	shield_chance = SHIELD_CHANCE_MED
 
 /obj/item/weapon/sword/ceremonial
 	name = "Ceremonial Sword"
 	desc = "A fancy ceremonial sword passed down from generation to generation. Despite this, it has been very well cared for, and is in top condition."
 	icon_state = "ceremonial"
+	item_state = "ceremonial"
 
 /obj/item/weapon/sword/machete
 	name = "\improper M2132 machete"
 	desc = "Latest issue of the USCM Machete. Great for clearing out jungle or brush on outlying colonies. Found commonly in the hands of scouts and trackers, but difficult to carry with the usual kit."
 	icon_state = "machete"
+	item_state = "machete"
 
 /obj/item/weapon/sword/machete/attack_self(mob/user)
 	if(user.action_busy)
@@ -51,7 +66,10 @@
 	name = "\improper M2100 \"Ngájhe\" machete"
 	desc = "An older issue USCM machete, never left testing. Designed in the Central African Republic. The notching made it hard to clean, and as such the USCM refused to adopt it - despite the superior bludgeoning power offered. Difficult to carry with the usual kit."
 	icon_state = "arnold-machete"
+	item_state = "arnold-machete"
 	force = MELEE_FORCE_TIER_11
+	shield_chance = SHIELD_CHANCE_EXTRAHIGH
+	shield_projectile_mult = PROJECTILE_BLOCK_PERC_50
 
 /obj/item/weapon/sword/hefa
 	name = "HEFA sword"
@@ -59,6 +77,7 @@
 	item_state = "hefasword"
 	desc = "A blade known to be used by the Order of the HEFA, this highly dangerous blade blows up in a shower of shrapnel on impact."
 	attack_verb = list("bapped", "smacked", "clubbed")
+	shield_chance = SHIELD_CHANCE_MEDHIGH
 
 	var/primed = FALSE
 
@@ -100,6 +119,7 @@
 	icon_state = "katana"
 	item_state = "katana"
 	force = MELEE_FORCE_VERY_STRONG
+	shield_chance = SHIELD_CHANCE_EXTRAHIGH
 
 //To do: replace the toys.
 /obj/item/weapon/sword/katana/replica
@@ -107,12 +127,25 @@
 	desc = "A cheap knock-off commonly found in regular knife stores. Can still do some damage."
 	force = MELEE_FORCE_WEAK
 	throwforce = 7
+	shield_chance = SHIELD_CHANCE_MED
+
+/obj/item/weapon/sword/dragon_katana
+	name = "dragon katana"
+	desc = "A finely made Japanese sword, with a cherry colored handle. The blade has been filed to a molecular edge, and is extremely deadly. This one seems to have been handcrafted."
+	icon_state = "dragon_katana"
+	item_state = "dragon_katana"
+	force = MELEE_FORCE_VERY_STRONG
 
 /obj/item/weapon/throwing_knife
 	name ="\improper M11 throwing knife"
-	icon='icons/obj/items/weapons/weapons.dmi'
+	icon = 'icons/obj/items/weapons/melee/knives.dmi'
+	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/objects.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_righthand.dmi'
+	)
 	icon_state = "throwing_knife"
-	item_state = "combat_knife"
+	item_state = "throwing_knife"
 	desc = "A military knife designed to be thrown at the enemy. Much quieter than a firearm, but requires a steady hand to be used optimally, although you should probably just use a gun instead."
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	sharp = IS_SHARP_ITEM_ACCURATE
@@ -126,17 +159,6 @@
 	flags_equip_slot = SLOT_STORE|SLOT_FACE
 	flags_armor_protection = SLOT_FACE
 	flags_item = CAN_DIG_SHRAPNEL
-
-/obj/item/weapon/unathiknife
-	name = "duelling knife"
-	desc = "A length of leather-bound wood studded with razor-sharp teeth. How crude."
-	icon = 'icons/obj/items/weapons/weapons.dmi'
-	icon_state = "unathiknife"
-	hitsound = 'sound/weapons/bladeslice.ogg'
-	attack_verb = list("ripped", "torn", "cut")
-	force = MELEE_FORCE_STRONG
-	throwforce = MELEE_FORCE_STRONG
-	edge = 1
 
 ///For digging shrapnel out of OTHER people, not yourself. Triggered by human/attackby() so target is definitely human. User might not be.
 /obj/item/proc/dig_out_shrapnel_check(mob/living/carbon/human/target, mob/living/carbon/human/user)
@@ -165,7 +187,7 @@
 			to_chat(user, SPAN_NOTICE("You were interrupted!"))
 			return
 	else
-		user.visible_message(SPAN_NOTICE("[user] starts checking \his body for shrapnel."), \
+		user.visible_message(SPAN_NOTICE("[user] starts checking \his body for shrapnel."),
 			SPAN_NOTICE("You begin searching your body for shrapnel."))
 		address_mode = "out of your"
 		if(!do_after(embedded_human, 20, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
@@ -211,9 +233,10 @@
 // Demo and example of a 64x64 weapon.
 /obj/item/weapon/ritual
 	name = "cool knife"
-	desc = "It shines with awesome coding power"
+	desc = "It shines with awesome coding power."
 	icon_state = "dark_blade"
 	item_state = "dark_blade"
+	icon = 'icons/obj/items/weapons/melee/misc.dmi'
 	force = MELEE_FORCE_VERY_STRONG
 	throwforce = MELEE_FORCE_WEAK
 	sharp = IS_SHARP_ITEM_BIG
@@ -225,14 +248,20 @@
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
 	item_icons = list(
-		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_64.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_64.dmi'
-		)
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/items_lefthand_64.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/items_righthand_64.dmi'
+	)
+
+	shield_chance = 45
+	shield_projectile_mult = PROJECTILE_BLOCK_PERC_80
+	shield_type = SHIELD_DIRECTIONAL
+	shield_sound = 'sound/items/parry.ogg'
 
 /obj/item/weapon/straight_razor
 	name = "straight razor"
 	desc = "The commandant's favorite weapon against marines who dare break the grooming standards."
 	icon_state = "razor"
+	icon = 'icons/obj/items/weapons/melee/knives.dmi'
 	hitsound = 'sound/weapons/genhit3.ogg'
 	force = MELEE_FORCE_TIER_1
 	throwforce = MELEE_FORCE_TIER_1
@@ -304,7 +333,7 @@
 
 /obj/item/weapon/straight_razor/verb/change_hair_style()
 	set name = "Change Hair Style"
-	set desc = "Change your hair style"
+	set desc = "Change your hair style."
 	set category = "Object"
 	set src in usr
 

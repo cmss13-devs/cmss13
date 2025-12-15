@@ -164,8 +164,6 @@
 	else
 		if(HAS_TRAIT(moving_human, TRAIT_BIMEX))
 			visible_message(SPAN_NOTICE("[moving_human]'s BiMex© personal shades shine as \the [src] passes over them."), SPAN_NOTICE("Your BiMex© personal shades as \the [src] passes over them."))
-			//drip = bonus balloonchat
-			moving_human.balloon_alert_to_viewers("the laser bounces off [moving_human.gender == MALE ? "his" : "her"] BiMex© personal shades!", "the laser bounces off your BiMex© personal shades!")
 		else
 			visible_message(SPAN_NOTICE("[moving_human]'s headgear protects them from \the [src]."), SPAN_NOTICE("Your headgear protects you from  \the [src]."))
 
@@ -187,7 +185,7 @@
 
 /obj/effect/overlay/beam //Not actually a projectile, just an effect.
 	name="beam"
-	icon='icons/effects/beam.dmi'
+	icon = 'icons/effects/beam.dmi'
 	icon_state="b_beam"
 	mouse_opacity = FALSE
 
@@ -209,7 +207,7 @@
  * maxdistance: how far the beam will go before stopping itself. Used mainly for two things: preventing lag if the beam may go in that direction and setting a range to abilities that use beams.
  * beam_type: The type of your custom beam. This is for adding other wacky stuff for your beam only. Most likely, you won't (and shouldn't) change it.
  */
-/atom/proc/beam(atom/BeamTarget, icon_state="b_beam", icon='icons/effects/beam.dmi', time = BEAM_INFINITE_DURATION, maxdistance = INFINITY, beam_type=/obj/effect/ebeam, always_turn = TRUE)
+/atom/proc/beam(atom/BeamTarget, icon_state="b_beam", icon = 'icons/effects/beam.dmi', time = BEAM_INFINITE_DURATION, maxdistance = INFINITY, beam_type=/obj/effect/ebeam, always_turn = TRUE)
 	var/datum/beam/newbeam = new(src, BeamTarget, icon, icon_state, time, maxdistance, beam_type, always_turn)
 	INVOKE_ASYNC(newbeam, TYPE_PROC_REF(/datum/beam, Start))
 	return newbeam

@@ -4,17 +4,23 @@
 
 /obj/item/reagent_container/glass
 	name = " "
-	var/base_name = " "
 	desc = " "
 	icon = 'icons/obj/items/chemistry.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_righthand.dmi'
+	)
 	icon_state = null
 	item_state = null
 	amount_per_transfer_from_this = 10
-	possible_transfer_amounts = list(5,10,15,25,30,60)
+	possible_transfer_amounts = list(5,10,15,20,25,30,40,50,60)
 	volume = 60
-	var/splashable = TRUE
 	flags_atom = FPRINT|OPENCONTAINER
 	transparent = TRUE
+	var/splashable = TRUE
+	var/has_lid = TRUE
+	var/base_name = " "
+
 
 	var/list/can_be_placed_into = list(
 		/obj/structure/machinery/chem_master/,
@@ -47,6 +53,7 @@
 /obj/item/reagent_container/glass/Initialize()
 	. = ..()
 	base_name = name
+	ADD_TRAIT(src, TRAIT_REACTS_UNSAFELY, TRAIT_SOURCE_INHERENT)
 
 /obj/item/reagent_container/glass/get_examine_text(mob/user)
 	. = ..()
@@ -57,6 +64,8 @@
 
 /obj/item/reagent_container/glass/attack_self()
 	..()
+	if(!has_lid)
+		return
 	if(splashable)
 		if(is_open_container())
 			to_chat(usr, SPAN_NOTICE("You put the lid on \the [src]."))
@@ -164,30 +173,35 @@
 			reagents.clear_reagents()
 		return
 
-/obj/item/reagent_container/glass/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/reagent_container/glass/attackby(obj/item/W, mob/user)
 	if(HAS_TRAIT(W, TRAIT_TOOL_PEN))
 		var/prior_label_text
-		var/datum/component/label/labelcomponent = src.GetComponent(/datum/component/label)
-		if(labelcomponent)
+		var/datum/component/label/labelcomponent = GetComponent(/datum/component/label)
+		if(labelcomponent && labelcomponent.has_label())
 			prior_label_text = labelcomponent.label_name
-		var/tmp_label = sanitize(input(user, "Enter a label for [name]","Label", prior_label_text))
-		if(tmp_label == "" || !tmp_label)
-			if(labelcomponent)
-				labelcomponent.remove_label()
-				user.visible_message(SPAN_NOTICE("[user] removes the label from \the [src]."), \
-				SPAN_NOTICE("You remove the label from \the [src]."))
-				return
-			else
-				return
+		var/tmp_label = tgui_input_text(user, "Enter a label for [src] (or nothing to remove)", "Label", prior_label_text, MAX_NAME_LEN, ui_state=GLOB.not_incapacitated_state)
+		if(isnull(tmp_label))
+			return // Canceled
+		if(!tmp_label)
+			if(prior_label_text)
+				log_admin("[key_name(usr)] has removed label from [src].")
+				user.visible_message(SPAN_NOTICE("[user] removes label from [src]."),
+									SPAN_NOTICE("You remove the label from [src]."))
+				labelcomponent.clear_label()
+			return
 		if(length(tmp_label) > MAX_NAME_LEN)
 			to_chat(user, SPAN_WARNING("The label can be at most [MAX_NAME_LEN] characters long."))
-		else
-			user.visible_message(SPAN_NOTICE("[user] labels [src] as \"[tmp_label]\"."), \
-			SPAN_NOTICE("You label [src] as \"[tmp_label]\"."))
-			AddComponent(/datum/component/label, tmp_label)
-			playsound(src, "paper_writing", 15, TRUE)
-	else
-		. = ..()
+			return
+		if(prior_label_text == tmp_label)
+			to_chat(user, SPAN_WARNING("The label already says \"[tmp_label]\"."))
+			return
+		user.visible_message(SPAN_NOTICE("[user] labels [src] as \"[tmp_label]\"."),
+		SPAN_NOTICE("You label [src] as \"[tmp_label]\"."))
+		AddComponent(/datum/component/label, tmp_label)
+		playsound(src, "paper_writing", 15, TRUE)
+		return
+
+	return ..()
 
 /obj/item/reagent_container/glass/beaker
 	name = "beaker"
@@ -202,7 +216,7 @@
 	update_icon()
 
 /obj/item/reagent_container/glass/beaker/pickup(mob/user)
-	..()
+	. = ..()
 	update_icon()
 
 /obj/item/reagent_container/glass/beaker/dropped(mob/user)
@@ -221,12 +235,18 @@
 
 		var/percent = floor((reagents.total_volume / volume) * 100)
 		switch(percent)
-			if(0) filling.icon_state = null
-			if(1 to 20) filling.icon_state = "[icon_state]-20"
-			if(21 to 40) filling.icon_state = "[icon_state]-40"
-			if(41 to 60) filling.icon_state = "[icon_state]-60"
-			if(61 to 80) filling.icon_state = "[icon_state]-80"
-			if(81 to INFINITY) filling.icon_state = "[icon_state]-100"
+			if(0)
+				filling.icon_state = null
+			if(1 to 20)
+				filling.icon_state = "[icon_state]-20"
+			if(21 to 40)
+				filling.icon_state = "[icon_state]-40"
+			if(41 to 60)
+				filling.icon_state = "[icon_state]-60"
+			if(61 to 80)
+				filling.icon_state = "[icon_state]-80"
+			if(81 to INFINITY)
+				filling.icon_state = "[icon_state]-100"
 
 		filling.color = mix_color_from_reagents(reagents.reagent_list)
 		overlays += filling
@@ -289,16 +309,18 @@
 			return
 		to_chat(user, SPAN_INFO("You successfully refill [A] with [src]!"))
 
-/obj/item/reagent_container/glass/minitank/verb/flush_tank(mob/user)
+/obj/item/reagent_container/glass/minitank/verb/flush_tank()
 	set category = "Object"
-	set name = "flush tank"
+	set name = "Flush Tank"
 	set src in usr
-	if(usr.is_mob_incapacitated()) return
+
+	if(usr.is_mob_incapacitated())
+		return
 	if(src.reagents.total_volume == 0)
-		to_chat(user, SPAN_WARNING("It's already empty!"))
+		to_chat(usr, SPAN_WARNING("It's already empty!"))
 		return
 	playsound(src.loc, 'sound/effects/slosh.ogg', 25, 1, 3)
-	to_chat(user, SPAN_WARNING("You work the flush valve and successfully flush [src]'s contents!"))
+	to_chat(usr, SPAN_WARNING("You work the flush valve and successfully flush [src]'s contents!"))
 	reagents.clear_reagents()
 	update_icon() // just to be sure
 	return
@@ -309,8 +331,10 @@
 		var/image/filling = image('icons/obj/items/reagentfillings.dmi', src, "[icon_state]10")
 		var/percent = floor((reagents.total_volume / volume) * 100)
 		var/round_percent = 0
-		if(percent > 24) round_percent = round(percent, 25)
-		else round_percent = 10
+		if(percent > 24)
+			round_percent = round(percent, 25)
+		else
+			round_percent = 10
 		filling.icon_state = "[icon_state][round_percent]"
 		filling.color = mix_color_from_reagents(reagents.reagent_list)
 		overlays += filling
@@ -319,20 +343,45 @@
 	name = "large beaker"
 	desc = "A large beaker. Can hold up to 120 units."
 	icon_state = "beakerlarge"
+	item_state = "beakerlarge"
 	matter = list("glass" = 5000)
 	volume = 120
 	amount_per_transfer_from_this = 10
-	possible_transfer_amounts = list(5,10,15,25,30,60,120)
+	possible_transfer_amounts = list(5,10,15,20,25,30,40,50,60,80,100,120)
 
-/obj/item/reagent_container/glass/beaker/silver
+/obj/item/reagent_container/glass/beaker/catalyst/silver
 	name = "large silver beaker"
 	desc = "A large silver beaker. Can hold up to 240 units. The beaker itself acts as a silver catalyst."
 	icon_state = "beakersilver"
+	item_state = "beakersilver"
 	volume = 240
 	matter = list("silver" = 5000)
 	amount_per_transfer_from_this = 10
-	possible_transfer_amounts = list(5,10,15,25,30,60,120,240)
+	possible_transfer_amounts = list(5,10,15,20,25,30,40,50,60,80,100,120,150,240)
 	pixel_y = 5
+
+/obj/item/reagent_container/glass/beaker/catalyst/update_icon()
+	overlays.Cut()
+
+	if(reagents && reagents.total_volume)
+		var/image/filling = image('icons/obj/items/reagentfillings.dmi', src, "beakerlarge-10") //If we make another type of large beaker that acts as a catalyst for reagents, it will always use the beakerlarge fill icon.
+
+		var/percent = floor((reagents.total_volume / volume) * 100)
+		switch(percent)
+			if(0)
+				filling.icon_state = null
+			if(1 to 20)
+				filling.icon_state = "beakerlarge-20"
+			if(21 to 40)
+				filling.icon_state = "beakerlarge-40"
+			if(41 to 60)
+				filling.icon_state = "beakerlarge-60"
+			if(61 to 80)
+				filling.icon_state = "beakerlarge-80"
+			if(81 to INFINITY)
+				filling.icon_state = "beakerlarge-100"
+		filling.color = mix_color_from_reagents(reagents.reagent_list)
+		overlays += filling
 
 /obj/item/reagent_container/glass/beaker/noreact
 	name = "cryostasis beaker"
@@ -341,29 +390,48 @@
 	matter = list("glass" = 500)
 	volume = 60
 	amount_per_transfer_from_this = 10
+
 	flags_atom = FPRINT|OPENCONTAINER|NOREACT
 
 /obj/item/reagent_container/glass/beaker/bluespace
 	name = "high-capacity beaker"
-	desc = "A beaker with an enlarged holding capacity, made with blue-tinted plexiglass in order to withstand greater pressure. Can hold up to 300 units."
+	desc = "A beaker with an enlarged holding capacity, made with blue-tinted plexiglass in order to withstand greater pressure. Can hold up to 500 units."
 	icon_state = "beakerbluespace"
-	matter = list("glass" = 10000)
-	volume = 300
+	item_state = "beakerbluespace"
+	matter = list("glass" = 30000)
+	volume = 500
 	amount_per_transfer_from_this = 10
-	possible_transfer_amounts = list(5,10,15,20,25,30,40,60,80,120,300)
-
+	possible_transfer_amounts = list(5,10,15,20,25,30,40,50,60,80,100,120,150,240,300)
 
 /obj/item/reagent_container/glass/beaker/vial
 	name = "vial"
 	desc = "A small glass vial. Can hold up to 30 units."
 	icon_state = "vial"
+	item_state = "vial"
 	volume = 30
 	amount_per_transfer_from_this = 10
 	matter = list()
-	possible_transfer_amounts = list(5,10,15,25,30)
+	possible_transfer_amounts = list(5,10,15,20,25,30)
 	flags_atom = FPRINT|OPENCONTAINER
 	ground_offset_x = 9
 	ground_offset_y = 8
+
+
+/obj/item/reagent_container/glass/beaker/vial/random
+	var/tier
+
+/obj/item/reagent_container/glass/beaker/vial/random/Initialize()
+	. = ..()
+	var/random_chem
+	if(tier)
+		random_chem = pick(GLOB.chemical_gen_classes_list[tier])
+	else
+		random_chem = pick(GLOB.chemical_gen_classes_list["C5"])
+	if(prob(4))
+		random_chem = "xenogenic"
+	if(random_chem)
+		reagents.add_reagent(random_chem, 30)
+		update_icon()
 
 /obj/item/reagent_container/glass/beaker/vial/epinephrine
 	name = "epinephrine vial"
@@ -388,40 +456,20 @@
 	. = ..()
 	reagents.add_reagent("chloralhydrate", 30)
 	update_icon()
-
-/obj/item/reagent_container/glass/beaker/vial/random
-	var/tier
-
-/obj/item/reagent_container/glass/beaker/vial/random/Initialize()
-	. = ..()
-	var/random_chem
-	if(tier)
-		random_chem = pick(GLOB.chemical_gen_classes_list[tier])
-	else
-		random_chem = pick( prob(3);pick(GLOB.chemical_gen_classes_list["C1"]),\
-							prob(5);pick(GLOB.chemical_gen_classes_list["C2"]),\
-							prob(7);pick(GLOB.chemical_gen_classes_list["C3"]),\
-							prob(10);pick(GLOB.chemical_gen_classes_list["C4"]),\
-							prob(15);pick(GLOB.chemical_gen_classes_list["C5"]),\
-							prob(25);pick(GLOB.chemical_gen_classes_list["T1"]),\
-							prob(15);pick(GLOB.chemical_gen_classes_list["T2"]),\
-							prob(10);pick(GLOB.chemical_gen_classes_list["T3"]),\
-							prob(5);pick(GLOB.chemical_gen_classes_list["T4"]),\
-							prob(15);"")
-	if(random_chem)
-		reagents.add_reagent(random_chem, 30)
-		update_icon()
-
-/obj/item/reagent_container/glass/beaker/vial/random/good/Initialize()
-	tier = pick("C5","T4")
-	. = ..()
-
 /obj/item/reagent_container/glass/beaker/cryoxadone
 	name = "cryoxadone beaker"
 
 /obj/item/reagent_container/glass/beaker/cryoxadone/Initialize()
 	. = ..()
 	reagents.add_reagent("cryoxadone", 30)
+	update_icon()
+
+/obj/item/reagent_container/glass/beaker/phoron
+	name = "phoron beaker"
+
+/obj/item/reagent_container/glass/beaker/phoron/Initialize()
+	. = ..()
+	reagents.add_reagent("phoron", 30)
 	update_icon()
 
 /obj/item/reagent_container/glass/beaker/cryopredmix
@@ -485,8 +533,13 @@
 	name = "Hydrogen canister"
 	desc = "A canister containing pressurized hydrogen. Can be used to refill storage tanks."
 	icon = 'icons/obj/items/tank.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tanks_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tanks_righthand.dmi',
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/misc.dmi'
+	)
 	icon_state = "canister_hydrogen"
-	item_state = "anesthetic"
+	item_state = "canister_hydrogen"
 	amount_per_transfer_from_this = 100
 	possible_transfer_amounts = list(50,100,200,300,400)
 	volume = 400
@@ -506,24 +559,28 @@
 	name = "Ammonia canister"
 	desc = "A canister containing pressurized ammonia. Can be used to refill storage tanks."
 	icon_state = "canister_ammonia"
+	item_state = "canister_ammonia"
 	reagent = "ammonia"
 
 /obj/item/reagent_container/glass/canister/methane
 	name = "Methane canister"
 	desc = "A canister containing pressurized methane. Can be used to refill storage tanks."
 	icon_state = "canister_methane"
+	item_state = "canister_methane"
 	reagent = "methane"
 
 /obj/item/reagent_container/glass/canister/pacid
 	name = "Polytrinic acid canister"
 	desc = "A canister containing pressurized polytrinic acid. Can be used to refill storage tanks."
 	icon_state = "canister_pacid"
+	item_state = "canister_pacid"
 	reagent = "pacid"
 
 /obj/item/reagent_container/glass/canister/oxygen
 	name = "Oxygen canister"
 	desc = "A canister containing pressurized oxygen. Can be used to refill storage tanks."
 	icon_state = "canister_oxygen"
+	item_state = "canister_oxygen"
 	reagent = "oxygen"
 
 /obj/item/reagent_container/glass/pressurized_canister // See the Pressurized Reagent Canister Pouch
@@ -544,27 +601,46 @@
 	. = ..()
 	update_icon()
 
-/obj/item/reagent_container/glass/pressurized_canister/attackby(obj/item/I, mob/user)
-	return
+/obj/item/reagent_container/glass/pressurized_canister/on_reagent_change()
+	update_icon()
 
 /obj/item/reagent_container/glass/pressurized_canister/afterattack(obj/target, mob/user, flag)
 	if(!istype(target, /obj/structure/reagent_dispensers))
 		return
 	. = ..()
 
-/obj/item/reagent_container/glass/pressurized_canister/on_reagent_change()
-	update_icon()
+/obj/item/reagent_container/glass/pressurized_canister/update_icon() 	 //Canister now has a clear indicator on what's inside and how much.
+	overlays.Cut()
 
-/obj/item/reagent_container/glass/pressurized_canister/update_icon()
-	color = COLOR_WHITE
-	if(reagents)
-		color = mix_color_from_reagents(reagents.reagent_list)
+	if(reagents && reagents.total_volume)
+		var/image/filling
+		var/percent = floor((reagents.total_volume / volume) * 100)
+		switch(percent)
+			if(1 to 25)
+				filling = image('icons/obj/items/reagentfillings.dmi', src, "[icon_state]-25")
+			if(26 to 50)
+				filling = image('icons/obj/items/reagentfillings.dmi', src, "[icon_state]-50")
+			if(51 to 75)
+				filling = image('icons/obj/items/reagentfillings.dmi', src, "[icon_state]-75")
+			if(76 to INFINITY)
+				filling = image('icons/obj/items/reagentfillings.dmi', src, "[icon_state]-100")
+			else
+				return ..()
+
+		filling.color = mix_color_from_reagents(reagents.reagent_list)
+		overlays += filling
 	..()
+
+
 
 /obj/item/reagent_container/glass/bucket
 	desc = "It's a bucket. Holds 120 units."
 	name = "bucket"
 	icon = 'icons/obj/janitor.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/janitor_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/janitor_righthand.dmi',
+	)
 	icon_state = "bucket"
 	item_state = "bucket"
 	matter = list("metal" = 2000)
@@ -598,7 +674,7 @@
 	update_icon()
 
 /obj/item/reagent_container/glass/bucket/pickup(mob/user)
-	..()
+	. = ..()
 	update_icon()
 
 /obj/item/reagent_container/glass/bucket/dropped(mob/user)
@@ -617,9 +693,12 @@
 
 		var/percent = floor((reagents.total_volume / volume) * 100)
 		switch(percent)
-			if(0 to 33) filling.icon_state = "[icon_state]-00-33"
-			if(34 to 65) filling.icon_state = "[icon_state]-34-65"
-			if(66 to INFINITY) filling.icon_state = "[icon_state]-66-100"
+			if(0 to 33)
+				filling.icon_state = "[icon_state]-00-33"
+			if(34 to 65)
+				filling.icon_state = "[icon_state]-34-65"
+			if(66 to INFINITY)
+				filling.icon_state = "[icon_state]-66-100"
 
 		filling.color = mix_color_from_reagents(reagents.reagent_list)
 		overlays += filling
@@ -630,8 +709,9 @@
 
 /obj/item/reagent_container/glass/bucket/mopbucket
 	name = "mop bucket"
-	desc = "A larger bucket, typically used with a mop. Holds 240 units"
+	desc = "A larger bucket, typically used with a mop. Holds 240 units."
 	icon_state = "mopbucket"
+	item_state = "mopbucket"
 	matter = list("metal" = 4000)
 	w_class = SIZE_LARGE
 	amount_per_transfer_from_this = 20
@@ -641,17 +721,19 @@
 
 /obj/item/reagent_container/glass/bucket/janibucket
 	name = "janitorial bucket"
-	desc = "It's a large bucket that fits in a janitorial cart. Holds 500 units."
+	desc = "It's a large bucket that fits in a janitorial cart. Holds 300 units."
 	icon_state = "janibucket"
+	item_state = "janibucket"
 	matter = list("metal" = 8000)
-	volume = 500
+	volume = 300
+	w_class = SIZE_LARGE
 
 
 /obj/item/reagent_container/glass/rag
 	name = "damp rag"
 	desc = "For cleaning up messes, you suppose."
 	w_class = SIZE_TINY
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/janitor.dmi'
 	icon_state = "rag"
 	amount_per_transfer_from_this = 5
 	possible_transfer_amounts = list(5)
@@ -659,6 +741,7 @@
 	can_be_placed_into = null
 	flags_atom = FPRINT|OPENCONTAINER
 	flags_item = NOBLUDGEON
+	has_lid = FALSE
 
 /obj/item/reagent_container/glass/rag/attack(atom/target, mob/user)
 	if(ismob(target) && target.reagents && reagents.total_volume)

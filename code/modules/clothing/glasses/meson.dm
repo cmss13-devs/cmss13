@@ -4,10 +4,14 @@
 /obj/item/clothing/glasses/meson
 	name = "optical meson scanner"
 	desc = "Used to shield the user's eyes from harmful electromagnetic emissions, also used as general safety goggles. Not adequate as welding protection."
+	icon = 'icons/obj/items/clothing/glasses/huds.dmi'
+	item_icons = list(
+		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/huds.dmi',
+	)
 	icon_state = "meson"
 	item_state = "glasses"
 	deactive_state = "degoggles"
-	actions_types = list(/datum/action/item_action/toggle)
+	actions_types = list(/datum/action/item_action/toggle/hudgoggles)
 	toggleable = TRUE
 	fullscreen_vision = /atom/movable/screen/fullscreen/meson
 
@@ -22,7 +26,7 @@
 	icon_state = "refurb_meson"
 	item_state = "glasses"
 	darkness_view = 12
-	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+	lighting_alpha = LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE
 	vision_flags = SEE_TURFS
 	flags_inventory = COVEREYES
 	flags_item = MOB_LOCK_ON_EQUIP

@@ -7,11 +7,23 @@
 /// CNUR, Nurse
 #define PAY_SHORT_CNUR "CNUR"
 
+///CPARA, Paramedic
+#define PAY_SHORT_CPARA "CPARA"
+
 /// CDOC, Doctor
 #define PAY_SHORT_CDOC "CDOC"
 
-/// CCMO, Professor
-#define PAY_SHORT_CCMO "CCMO"
+/// CCMOA, Assistant Professor
+#define PAY_SHORT_CCMOA "CCMOA"
+
+/// CCMOB, Associate Professor
+#define PAY_SHORT_CCMOB "CCMOB"
+
+/// CCMOC, Professor
+#define PAY_SHORT_CCMOC "CCMOC"
+
+/// CCMOD, Regents Professor
+#define PAY_SHORT_CCMOD "CCMOD"
 
 /// CREP, Representative
 #define PAY_SHORT_CREP "CREP"
@@ -34,5 +46,8 @@
 /// REB, Rebel
 #define PAY_SHORT_REB "REB"
 
-/// REBC, Rebel Commander "REBC"
+/// REBC, Rebel Commander
 #define PAY_SHORT_REBC "REBC"
+
+/// CADMIN, Administrator
+#define PAY_SHORT_CADMIN "CADMIN"

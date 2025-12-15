@@ -72,6 +72,11 @@ K9 SCANNER
 	name = "\improper HF2 health analyzer"
 	icon_state = "health"
 	item_state = "analyzer"
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/tools.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/devices_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/devices_righthand.dmi'
+	)
 	desc = "A hand-held body scanner able to distinguish vital signs of the subject. The front panel is able to provide the basic readout of the subject's status."
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
@@ -91,18 +96,21 @@ K9 SCANNER
 	QDEL_NULL(last_health_display)
 	return ..()
 
-/obj/item/device/healthanalyzer/attack(mob/living/M, mob/living/user)
+/obj/item/device/healthanalyzer/attack(mob/living/target_mob, mob/living/user)
+	if(!istype(target_mob, /mob/living/carbon) || isxeno(target_mob))
+		to_chat(user, SPAN_WARNING("[src] can't make sense of this creature."))
+		return
 	if(!popup_window)
-		last_scan = M.health_scan(user, FALSE, TRUE, popup_window, alien)
+		last_scan = target_mob.health_scan(user, FALSE, TRUE, popup_window, alien)
 	else
 		if (!last_health_display)
-			last_health_display = new(M)
+			last_health_display = new(target_mob)
 		else
-			last_health_display.target_mob = M
+			last_health_display.target_mob = target_mob
 		SStgui.close_user_uis(user, src)
 		last_scan = last_health_display.ui_data(user, DETAIL_LEVEL_HEALTHANALYSER)
 		last_health_display.look_at(user, DETAIL_LEVEL_HEALTHANALYSER, bypass_checks = FALSE, ignore_delay = FALSE, alien = alien)
-	to_chat(user, SPAN_NOTICE("[user] has analyzed [M]'s vitals."))
+	to_chat(user, SPAN_NOTICE("[user] has analyzed [target_mob]'s vitals."))
 	playsound(src.loc, 'sound/items/healthanalyzer.ogg', 50)
 	src.add_fingerprint(user)
 	return
@@ -439,7 +447,7 @@ K9 SCANNER
 /obj/item/device/black_market_scanner/update_icon(scan_value = 0, scanning = FALSE)
 	. = ..()
 	overlays.Cut()
-	overlays += image('icons/obj/items/devices.dmi', "+mendoza_scanner_value_flash")
+	overlays += image('icons/obj/items/devices.dmi', "+mendoza_scanner_flash")
 	if(scanning)
 		overlays += image('icons/obj/items/devices.dmi', "+mendoza_scanner_clamp_on")
 		switch(scan_value)
@@ -478,6 +486,7 @@ K9 SCANNER
 	desc = "A security access tuner with wires and electrical pins sticking out at odd angles. A handwritten label on the bottom says something about the ASRS system."
 	icon_state = "bm_hacker"
 	item_state = "analyzer"
+	icon = 'icons/obj/items/tools.dmi'
 	w_class = SIZE_SMALL
 	flags_atom = FPRINT
 	flags_equip_slot = SLOT_WAIST

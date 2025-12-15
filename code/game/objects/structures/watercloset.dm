@@ -132,7 +132,8 @@
 			return
 
 	if(istype(I, /obj/item/grab))
-		if(isxeno(user)) return
+		if(isxeno(user))
+			return
 		var/obj/item/grab/G = I
 
 		if(isliving(G.grabbed_thing))
@@ -156,7 +157,7 @@
 			else
 				to_chat(user, SPAN_NOTICE("You need a tighter grip."))
 
-	if(cistern && !istype(user,/mob/living/silicon/robot)) //STOP PUTTING YOUR MODULES IN THE TOILET.
+	if(cistern)
 		if(I.w_class > SIZE_MEDIUM)
 			to_chat(user, SPAN_NOTICE("\The [I] does not fit."))
 			return

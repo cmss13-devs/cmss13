@@ -63,10 +63,6 @@ GLOBAL_LIST_INIT(nato_phonetic_alphabet, list("Alpha", "Bravo", "Charlie", "Delt
 GLOBAL_VAR_INIT(distress_cancel, FALSE)
 GLOBAL_VAR_INIT(destroy_cancel, FALSE)
 
-// Which lobby art is on display
-// This is updated by the lobby art turf when it initializes
-GLOBAL_VAR_INIT(displayed_lobby_art, -1)
-
 // Last global ID that was assigned to a mob (for round recording purposes)
 GLOBAL_VAR_INIT(last_mob_gid, 0)
 
@@ -108,10 +104,6 @@ GLOBAL_VAR_INIT(xeno_flatten_map_icon_cooldown, 0)
 GLOBAL_VAR(uscm_unannounced_map)
 GLOBAL_VAR(xeno_unannounced_map)
 
-//global tacmaps for action button access
-GLOBAL_DATUM_INIT(uscm_tacmap_status, /datum/tacmap/drawing/status_tab_view, new)
-GLOBAL_DATUM_INIT(xeno_tacmap_status, /datum/tacmap/drawing/status_tab_view/xeno, new)
-
 /// List of roles that can be setup for each gamemode
 GLOBAL_LIST_EMPTY(gamemode_roles)
 
@@ -126,8 +118,8 @@ GLOBAL_VAR_INIT(time_offset, setup_offset())
 /proc/setup_offset()
 	return rand(10 MINUTES, 24 HOURS)
 
-/// The last count of possible candidates in the xeno larva queue (updated via get_alien_candidates)
-GLOBAL_VAR(xeno_queue_candidate_count)
+/// The last count of possible candidates in the xeno larva pool (updated via get_alien_candidates)
+GLOBAL_VAR(larva_pool_candidate_count)
 
 //Coordinate obsfucator
 //Used by the rangefinders and linked systems to prevent coords collection/prefiring
@@ -135,6 +127,8 @@ GLOBAL_VAR(xeno_queue_candidate_count)
 GLOBAL_VAR(obfs_x)
 /// A number between -500 and 500.
 GLOBAL_VAR(obfs_y)
+/// A number between -10 and 10
+GLOBAL_VAR(obfs_z)
 
-/// The current amount of giant lizards that are alive.
-GLOBAL_VAR_INIT(giant_lizards_alive, 0)
+/// List of giant lizards that are alive.
+GLOBAL_LIST_EMPTY(giant_lizards_alive)

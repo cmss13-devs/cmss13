@@ -17,7 +17,7 @@
 	icon = 'icons/obj/pipes/pump.dmi'
 	icon_state = "map_off"
 	name = "gas pump"
-	desc = "A pump"
+	desc = "A pump."
 
 /obj/structure/pipes/binary/pump/on
 	icon_state = "map_on"
@@ -93,7 +93,7 @@
 			else if(dir & (EAST|WEST))
 				valid_directions = list(EAST, WEST)
 	else
-		..()
+		. = ..()
 
 /obj/structure/pipes/binary/circulator/verb/rotate_clockwise()
 	set category = "Object"

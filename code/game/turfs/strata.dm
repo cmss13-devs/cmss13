@@ -1,29 +1,21 @@
 //Special Strata (Carp Lake) Weedable Jungle/Grass turfs.//
 
-/turf/open/gm/grass/weedable/ //inherit from general turfs
-
-/turf/open/gm/grass/weedable/is_weedable()
-	return FULLY_WEEDABLE
+/turf/open/gm/grass/weedable //inherit from general turfs
+	is_weedable = FULLY_WEEDABLE
 
 //just in case
 
 /turf/open/gm/grass/grass1/weedable //inherit from general turfs
-
-/turf/open/gm/grass/grass1/weedable/is_weedable()
-	return FULLY_WEEDABLE
+	is_weedable = FULLY_WEEDABLE
 
 /turf/open/gm/dirtgrassborder/weedable
-
-/turf/open/gm/dirtgrassborder/weedable/is_weedable() //Gotta have our sexy grass borders be weedable.
-	return FULLY_WEEDABLE
+	is_weedable = FULLY_WEEDABLE
 
 /turf/open/gm/dirtgrassborder/weedable/grass1
 	icon_state = "grass1"
 
 /turf/closed/gm/dense/weedable
-
-/turf/closed/gm/dense/weedable/is_weedable() //Weed-able jungle walls. Notably crushers can slam through this, so that might cause overlay issues. 3 months later, yeah it causes overlay issues, so return FALSE!
-	return NOT_WEEDABLE
+	is_weedable = NOT_WEEDABLE
 
 /turf/open/floor/strata //Instance me!
 	icon = 'icons/turf/floors/strata_floor.dmi'
@@ -113,6 +105,12 @@
 /turf/open/floor/strata/cyan4
 	icon_state = "cyan4"
 
+/turf/open/floor/strata/cyan4/north
+	dir = NORTH
+
+/turf/open/floor/strata/cyan4/west
+	dir = WEST
+
 /turf/open/floor/strata/cyan4/east
 	dir = EAST
 
@@ -133,14 +131,14 @@
 /turf/open/floor/strata/orange_edge
 	icon_state = "orange_edge"
 
+/turf/open/floor/strata/orange_edge/north
+	dir = NORTH
+
 /turf/open/floor/strata/orange_edge/east
 	dir = EAST
 
 /turf/open/floor/strata/orange_edge/west
 	dir = WEST
-
-/turf/open/floor/strata/orange_edge/north
-	dir = NORTH
 
 /turf/open/floor/strata/orange_edge/northeast
 	dir = NORTHEAST
@@ -171,9 +169,6 @@
 
 //------------//
 
-/turf/open/floor/strata/orange_tile
-	icon_state = "orange_tile"
-
 /turf/open/floor/strata/white_cyan1
 	icon_state = "white_cyan1"
 
@@ -195,8 +190,32 @@
 /turf/open/floor/strata/white_cyan3/southeast
 	dir = SOUTHEAST
 
+/turf/open/floor/strata/blue3/west
+	dir = WEST
+
+/turf/open/floor/strata/cyan3/west
+	dir = WEST
+
+/turf/open/floor/strata/cyan3/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/strata/cyan3/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/strata/cyan3/northwest
+	dir = NORTHWEST
+
 /turf/open/floor/strata/multi_tiles/west
 	dir = WEST
+
+/turf/open/floor/strata/orange_edge/west
+	dir = WEST
+
+/turf/open/floor/strata/orange_edge/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/strata/orange_edge/southeast
+	dir = SOUTHEAST
 
 /turf/open/floor/strata/white_cyan2
 	icon_state = "white_cyan2"
@@ -316,6 +335,9 @@
 /turf/open/floor/strata/green4/west
 	dir = WEST
 
+/turf/open/floor/strata/orange_tile
+	icon_state = "orange_tile"
+
 ////strata - purple////
 
 /turf/open/floor/strata/purp1
@@ -406,3 +428,27 @@
 
 /turf/open/floor/strata/red4/west
 	dir = WEST
+
+/turf/open/floor/strata/yellow3
+	icon_state = "yellow3"
+
+/turf/open/floor/strata/yellow3/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/strata/yellow3/north
+	dir = NORTH
+
+/turf/open/floor/strata/yellow3/east
+	dir = EAST
+
+/turf/open/floor/strata/yellow3/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/strata/yellow3/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/strata/yellow3/west
+	dir = WEST
+
+/turf/open/floor/strata/yellow3/northwest
+	dir = NORTHWEST

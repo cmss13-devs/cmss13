@@ -68,16 +68,23 @@
 
 //Returns null if there is any bad text in the string
 /proc/reject_bad_text(text, max_length=512)
-	if(length(text) > max_length) return //message too long
+	if(length(text) > max_length)
+		return //message too long
 	var/non_whitespace = 0
 	for(var/i=1, i<=length(text), i++)
 		switch(text2ascii(text,i))
-			if(62,60,92,47) return //rejects the text if it contains these bad characters: <, >, \ or /
-			if(127 to 255) return //rejects weird letters like �
-			if(0 to 31) return //more weird stuff
-			if(32) continue //whitespace
-			else non_whitespace = 1
-	if(non_whitespace) return text //only accepts the text if it has some non-spaces
+			if(62,60,92,47)
+				return //rejects the text if it contains these bad characters: <, >, \ or /
+			if(127 to 255)
+				return //rejects weird letters like �
+			if(0 to 31)
+				return //more weird stuff
+			if(32)
+				continue //whitespace
+			else
+				non_whitespace = 1
+	if(non_whitespace)
+		return text //only accepts the text if it has some non-spaces
 
 // Used to get a sanitized input.
 /proc/stripped_input(mob/user, message = "", title = "", default = "", max_length=MAX_MESSAGE_LEN)
@@ -335,7 +342,7 @@
 		message = "Invalid location"
 	else
 		if(include_jmp_link)
-			message = "<a HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[A.x];Y=[A.y];Z=[A.z]'>[get_area(A)]</a> ([A.x], [A.y], [A.z])"
+			message = "<a href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[A.x];Y=[A.y];Z=[A.z]'>[get_area(A)]</a> ([A.x], [A.y], [A.z])"
 		else
 			message = "[get_area(A)] ([A.x], [A.y], [A.z])"
 	return message

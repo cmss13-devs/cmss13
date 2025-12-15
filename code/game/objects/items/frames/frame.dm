@@ -8,8 +8,8 @@
 
 /obj/item/frame/apc
 	name = "\improper APC frame"
-	desc = "Used for repairing or building APCs"
-	icon = 'icons/obj/structures/machinery/apc_repair.dmi'
+	desc = "Used for repairing or building APCs."
+	icon = 'icons/obj/structures/machinery/apc.dmi'
 	icon_state = "apc_frame"
 	flags_atom = FPRINT|CONDUCT
 

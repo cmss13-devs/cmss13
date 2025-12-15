@@ -74,6 +74,7 @@
 	)
 
 	explosive_resistance = 400
+	minimap_icon_state = "tank"
 
 /obj/vehicle/multitile/tank/initialize_cameras(change_tag = FALSE)
 	if(!camera)
@@ -115,7 +116,6 @@
 		add_verb(M.client, list(
 			/obj/vehicle/multitile/proc/cycle_hardpoint,
 			/obj/vehicle/multitile/proc/toggle_gyrostabilizer,
-			/obj/vehicle/multitile/proc/toggle_shift_click,
 		))
 
 
@@ -138,13 +138,16 @@
 		remove_verb(M.client, list(
 			/obj/vehicle/multitile/proc/cycle_hardpoint,
 			/obj/vehicle/multitile/proc/toggle_gyrostabilizer,
-			/obj/vehicle/multitile/proc/toggle_shift_click,
 		))
 
 //Called when players try to move vehicle
 //Another wrapper for try_move()
 /obj/vehicle/multitile/tank/relaymove(mob/user, direction)
 	if(user == seats[VEHICLE_DRIVER])
+		// Check if treads are installed
+		if(!(locate(/obj/item/hardpoint/locomotion/treads) in hardpoints))
+			return FALSE
+
 		return ..()
 
 	if(user != seats[VEHICLE_GUNNER])

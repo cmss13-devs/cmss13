@@ -9,10 +9,7 @@
 	flags_marine_armor = ARMOR_LAMP_OVERLAY
 	flags_item = MOB_LOCK_ON_EQUIP
 	specialty = "M45 pattern ghillie"
-	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_PONCHO)
-	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND)
 	unacidable = TRUE
-
 	var/camo_active = FALSE
 	var/hide_in_progress = FALSE
 	var/full_camo_alpha = FULL_CAMOUFLAGE_ALPHA
@@ -22,13 +19,19 @@
 	var/camouflage_enter_delay = 4 SECONDS
 	var/can_camo = TRUE
 
-	actions_types = list(/datum/action/item_action/toggle, /datum/action/item_action/specialist/prepare_position)
+	actions_types = list(/datum/action/item_action/toggle/lamp, /datum/action/item_action/specialist/prepare_position)
 
 /obj/item/clothing/suit/storage/marine/ghillie/dropped(mob/user)
 	if(ishuman(user) && !issynth(user))
 		deactivate_camouflage(user, FALSE)
 
 	. = ..()
+
+/obj/item/clothing/suit/storage/marine/ghillie/select_gamemode_skin()
+	. = ..()
+	if(SSmapping.configs[GROUND_MAP].camouflage_type == "urban" || "classic")
+		name = "\improper M3-LS pattern sniper armor"
+		desc = "A lightweight version of M3 pattern armor, with an integrated thermal signature dampering device, used by USCM snipers on urban recon missions. Very lightweight, but doesn't protect much."
 
 /obj/item/clothing/suit/storage/marine/ghillie/verb/camouflage()
 	set name = "Prepare Position"
@@ -161,4 +164,8 @@
 	name = "UDEP Thermal Poncho"
 	desc = "UDEP or the Ultra Diffusive Environmental Poncho is a camouflaged rain-cover worn to protect against the elements and chemical spills. It's commonly treated with an infrared absorbing coating, making a marine almost invisible in the rain. Favoured by USCM specialists for it's comfort and practicality."
 	icon_state = "mercenary_miner_armor"
-	flags_atom = MOB_LOCK_ON_EQUIP|NO_SNOW_TYPE|NO_NAME_OVERRIDE
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/CLF.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/CLF.dmi'
+	)
+	flags_atom = MOB_LOCK_ON_EQUIP|NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE

@@ -97,7 +97,8 @@ DOCUMENTATION ON HOW TO ADD A NEW SHUTTLE: Fourkhan, 6/7/19
 	var/datum/coords/C
 	for(i in L)
 		C = i
-		if(!istype(C)) continue
+		if(!istype(C))
+			continue
 		var/turf/T = locate(ref.x + C.x_pos, ref.y + C.y_pos, ref.z) //Who is in the designated area?
 		source += T //We're taking you with us
 		source[T] = C //Remember which exact /datum/coords that you used though
@@ -106,8 +107,10 @@ DOCUMENTATION ON HOW TO ADD A NEW SHUTTLE: Fourkhan, 6/7/19
 
 /proc/rotate_shuttle_turfs(list/L, deg = 0)
 
-	if((deg % 90) != 0) return //Not a right or straight angle, don't do anything
-	if(!istype(L) || !length(L)) return null
+	if((deg % 90) != 0)
+		return //Not a right or straight angle, don't do anything
+	if(!istype(L) || !length(L))
+		return null
 
 	var/i //iterator
 	var/x //Placeholder while we do math
@@ -117,7 +120,8 @@ DOCUMENTATION ON HOW TO ADD A NEW SHUTTLE: Fourkhan, 6/7/19
 	var/list/toReturn = list()
 	for(i in L)
 		C = L[i]
-		if(!istype(C)) continue
+		if(!istype(C))
+			continue
 		C1 = new
 		x = C.x_pos
 		y = C.y_pos
@@ -133,7 +137,8 @@ DOCUMENTATION ON HOW TO ADD A NEW SHUTTLE: Fourkhan, 6/7/19
 /proc/move_shuttle_to(turf/reference, turftoleave = null, list/source, iselevator = 0, deg = 0, datum/shuttle/ferry/marine/shuttle)
 	//var/list/turfsToUpdate = list()
 
-	if(shuttle.sound_misc) playsound(source[shuttle.sound_target], shuttle.sound_misc, 75, 1)
+	if(shuttle.sound_misc)
+		playsound(source[shuttle.sound_target], shuttle.sound_misc, 75, 1)
 
 	var/area/departure_area = get_area(source[shuttle.sound_target])
 	var/area/landing_area
@@ -233,7 +238,8 @@ DOCUMENTATION ON HOW TO ADD A NEW SHUTTLE: Fourkhan, 6/7/19
 		var/turf/updating
 		for(i in turfsToUpdate)
 			updating = i
-			if(!istype(updating)) continue
+			if(!istype(updating))
+				continue
 			updating.relativewall()
 	*/
 
@@ -242,6 +248,7 @@ DOCUMENTATION ON HOW TO ADD A NEW SHUTTLE: Fourkhan, 6/7/19
 		var/turf/T
 		for(i in update_air)
 			T = i
-			if(!istype(T)) continue
+			if(!istype(T))
+				continue
 			air_master.mark_for_update(T)
 */

@@ -1,11 +1,22 @@
-/client/proc/discord_connect()
+CLIENT_VERB(discord_connect)
 	set name = "Discord Certify"
 	set category = "OOC"
+
+	if(IsGuestKey(key, TRUE))
+		to_chat(src, SPAN_WARNING("You must be connected as a BYOND key to connect to Discord."))
+		return FALSE
 
 	var/total_playtime = get_total_xeno_playtime(skip_cache = TRUE) + get_total_human_playtime(skip_cache = TRUE)
 
 	if(total_playtime < CONFIG_GET(number/certification_minutes))
 		to_chat(src, SPAN_ALERTWARNING("You don't have enough minutes - [CONFIG_GET(number/certification_minutes) - total_playtime] remaining."))
+		return
+
+	if(!player_data)
+		load_player_data()
+
+	if(player_data.discord_link)
+		to_chat(src, SPAN_ALERTWARNING("You already have a linked Discord. Ask an Admin to remove it."))
 		return
 
 	var/datum/view_record/discord_identifier/ident = locate() in DB_VIEW(/datum/view_record/discord_identifier, DB_AND(

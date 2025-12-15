@@ -7,15 +7,12 @@
 /obj/item/reagent_container/food/condiment
 	name = "Condiment Container"
 	desc = "Just your average condiment container."
-	icon = 'icons/obj/items/food.dmi'
+	icon = 'icons/obj/items/food/condiments.dmi'
 	icon_state = "emptycondiment"
 	flags_atom = FPRINT|OPENCONTAINER
 	possible_transfer_amounts = list(1,5,10)
 	center_of_mass = "x=16;y=6"
 	volume = 50
-
-/obj/item/reagent_container/food/condiment/attackby(obj/item/W, mob/user)
-	return
 
 /obj/item/reagent_container/food/condiment/attack(mob/M, mob/user)
 	if(!reagents?.total_volume)
@@ -25,7 +22,7 @@
 	if(M == user)
 		to_chat(M, SPAN_NOTICE("You swallow some of contents of [src]."))
 
-	else if(istype(M, /mob/living/carbon/human))
+	else if(istype(M, /mob/living/carbon))
 		user.affected_message(M,
 			SPAN_HELPFUL("You <b>start feeding</b> [user == M ? "yourself" : "[M]"] <b>[src]</b>."),
 			SPAN_HELPFUL("[user] <b>starts feeding</b> you <b>[src]</b>."),
@@ -52,7 +49,7 @@
 	playsound(M.loc,'sound/items/drink.ogg', 15, 1)
 	return TRUE
 
-/obj/item/reagent_container/food/condiment/attackby(obj/item/I as obj, mob/user as mob)
+/obj/item/reagent_container/food/condiment/attackby(obj/item/W, mob/living/user, list/mods)
 	return
 
 /obj/item/reagent_container/food/condiment/afterattack(obj/target, mob/user , flag)
@@ -123,7 +120,7 @@
 			if("cornoil")
 				name = "Corn Oil"
 				desc = "A delicious oil used in cooking. Made from corn."
-				icon_state = "oliveoil"
+				icon_state = "cornoil"
 				center_of_mass = "x=16;y=6"
 			if("sugar")
 				name = "Sugar"
@@ -184,7 +181,7 @@
 	reagents.add_reagent("blackpepper", 20)
 
 /obj/item/reagent_container/food/condiment/hotsauce
-	icon = 'icons/obj/items/food.dmi'
+	icon = 'icons/obj/items/food/condiments.dmi'
 	name = "hotsauce parent object"
 	possible_transfer_amounts = list(1,5,60) //60 allows marines to chug the bottle in one go.
 	volume = 60
@@ -199,6 +196,10 @@
 	icon_state = "hotsauce_cholula"
 	item_state = "hotsauce_cholula"
 
+/obj/item/reagent_container/food/condiment/hotsauce/cholula/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/reagent_container/food/condiment/hotsauce/franks
 	name = "\improper Frank's Red Hot bottle"
 	desc = "A bottle of Weyland-Yutani brand Frank's Red Hot hot sauce."
@@ -206,17 +207,29 @@
 	icon_state = "hotsauce_franks"
 	item_state = "hotsauce_franks"
 
+/obj/item/reagent_container/food/condiment/hotsauce/franks/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/reagent_container/food/condiment/hotsauce/sriracha
 	name = "\improper Sriracha bottle"
 	desc = "A bottle of Weyland-Yutani brand Sriracha hot sauce."
 	icon_state = "hotsauce_sriracha"
 	item_state = "hotsauce_sriracha"
 
+/obj/item/reagent_container/food/condiment/hotsauce/sriracha/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/reagent_container/food/condiment/hotsauce/tabasco
 	name = "\improper Tabasco bottle"
 	desc = "A bottle of Weyland-Yutani brand Tabasco hot sauce."
 	icon_state = "hotsauce_tabasco"
 	item_state = "hotsauce_tabasco"
+
+/obj/item/reagent_container/food/condiment/hotsauce/tabasco/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/reagent_container/food/condiment/hotsauce/franks/macho
 	name = "\improper Frank's ULTRA Hot bottle"

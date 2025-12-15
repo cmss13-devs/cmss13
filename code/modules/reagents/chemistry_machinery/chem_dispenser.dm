@@ -20,10 +20,11 @@
 	var/network = "Ground"
 	var/amount = 30
 	var/accept_beaker_only = TRUE
-	var/pressurized_only = FALSE
 	var/obj/item/reagent_container/beaker = null
 	var/ui_check = 0
 	var/static/list/possible_transfer_amounts = list(5,10,20,30,40)
+	/// List of typepaths for reagent containers that a chem dispenser will accept; all containers allowed if empty.
+	var/list/whitelisted_containers = list()
 	var/list/dispensable_reagents = list(
 		"hydrogen",
 		"lithium",
@@ -58,18 +59,18 @@
 /obj/structure/machinery/chem_dispenser/research
 	network = "Research"
 
-/obj/structure/machinery/chem_dispenser/process()
-	if(!chem_storage)
-		chem_storage = GLOB.chemical_data.connect_chem_storage(network)
 
 /obj/structure/machinery/chem_dispenser/Initialize()
-	. = ..()
+	..()
 	dispensable_reagents = sortList(dispensable_reagents)
-	start_processing()
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/structure/machinery/chem_dispenser/LateInitialize()
+	chem_storage = GLOB.chemical_data.connect_chem_storage(network)
 
 /obj/structure/machinery/chem_dispenser/Destroy()
-	if(!chem_storage)
-		chem_storage = GLOB.chemical_data.disconnect_chem_storage(network)
+	GLOB.chemical_data.disconnect_chem_storage(network)
+	chem_storage = null
 	return ..()
 
 /obj/structure/machinery/chem_dispenser/ex_act(severity)
@@ -116,7 +117,7 @@
 	return TRUE
 
 /obj/structure/machinery/chem_dispenser/clicked(mob/user, list/mods)
-	if(mods["alt"])
+	if(mods[ALT_CLICK])
 		if(!CAN_PICKUP(user, src))
 			return ..()
 		replace_beaker(user)
@@ -214,8 +215,10 @@
 		if(accept_beaker_only && istype(attacking_object,/obj/item/reagent_container/food))
 			to_chat(user, SPAN_NOTICE("This machine only accepts beakers"))
 			return
-		if(pressurized_only && !istype(attacking_object, /obj/item/reagent_container/glass/pressurized_canister))
-			to_chat(user, SPAN_NOTICE("This machine only accepts pressurized canisters"))
+		//If the dispenser has a whitelist with stuff in it, and the attacking object ain't in there, don't accept it.
+		if(length(whitelisted_containers) && !(attacking_object.type in whitelisted_containers))
+			//Currently this is only used for pressurized disepnsers
+			to_chat(user, SPAN_WARNING("This machine doesn't accept that container."))
 			return
 		if(user.drop_inv_item_to_loc(attacking_object, src))
 			var/obj/item/old_beaker = beaker
@@ -279,20 +282,30 @@
 	ui_title = "Chem Dispenser 4000"
 	req_skill_level = SKILL_MEDICAL_MEDIC
 	accept_beaker_only = FALSE
-	pressurized_only = TRUE
+	whitelisted_containers = list(
+		/obj/item/reagent_container/glass/pressurized_canister,
+		/obj/item/reagent_container/glass/minitank //MS-11 Smart Refill Tank
+	)
 	dispensable_reagents = list(
 		"bicaridine",
 		"kelotane",
 		"anti_toxin",
 		"dexalin",
+		"dexalinp",
 		"inaprovaline",
 		"adrenaline",
 		"peridaxon",
 		"tramadol",
+		"oxycodone",
 		"tricordrazine",
 	)
-	
+
 	var/base_state = "mixer"
+
+/obj/structure/machinery/chem_dispenser/yauja
+
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+	breakable = FALSE
 
 /obj/structure/machinery/chem_dispenser/soda
 	icon_state = "soda_dispenser"
@@ -334,6 +347,10 @@
 		"soymilk",
 	)
 
+/obj/structure/machinery/chem_dispenser/soda/yautja
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+	breakable = FALSE
+
 /obj/structure/machinery/chem_dispenser/soda/beer
 	icon_state = "booze_dispenser"
 	name = "booze dispenser"
@@ -365,6 +382,10 @@
 		"patron",
 		"absinthe",
 	)
+
+/obj/structure/machinery/chem_dispenser/soda/beer/yautja
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+	breakable = FALSE
 
 #undef DISPENSER_UNHACKABLE
 #undef DISPENSER_NOT_HACKED

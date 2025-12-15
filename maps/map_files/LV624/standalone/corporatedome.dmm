@@ -1,4 +1,52 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon_engi,
+/turf/open/floor/plating/platingdmg2,
+/area/lv624/lazarus/corporate_dome)
+"ab" = (
+/obj/item/ammo_casing/cartridge,
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
+"ac" = (
+/obj/structure/largecrate/random/case/small{
+	pixel_y = -3;
+	pixel_x = 1
+	},
+/obj/structure/largecrate/random/mini/ammo{
+	pixel_y = 12;
+	pixel_x = 6
+	},
+/turf/open/floor/dark,
+/area/lv624/lazarus/corporate_dome)
+"ad" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/largecrate/random/case/small,
+/obj/structure/largecrate/random/mini/small_case/c{
+	pixel_y = 8;
+	pixel_x = 4
+	},
+/turf/open/floor/whiteblue/southeast,
+/area/lv624/lazarus/corporate_dome)
+"ae" = (
+/obj/structure/largecrate/random/mini/med{
+	pixel_x = -8;
+	pixel_y = 7
+	},
+/turf/open/floor/whiteblue/west,
+/area/lv624/lazarus/corporate_dome)
+"af" = (
+/obj/structure/largecrate/random/mini/ammo{
+	pixel_x = 7;
+	pixel_y = 3
+	},
+/turf/open/floor/whiteblue/east,
+/area/lv624/lazarus/corporate_dome)
+"ag" = (
+/obj/item/ammo_casing/cartridge,
+/turf/open/gm/dirt,
+/area/lv624/lazarus/landing_zones/lz2)
 "aQ" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Corporation Dome";
@@ -59,8 +107,8 @@
 	pixel_y = 20
 	},
 /obj/effect/decal/cleanable/blood/drip,
-/turf/open/floor/plating/asteroidfloor/north,
-/area/lv624/lazarus/landing_zones/lz2)
+/turf/template_noop,
+/area/template_noop)
 "dq" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/folder/white{
@@ -92,9 +140,6 @@
 /obj/item/shard,
 /turf/open/floor/whiteyellow/east,
 /area/lv624/lazarus/corporate_dome)
-"dY" = (
-/turf/open/floor/plating/asteroidwarning,
-/area/lv624/lazarus/landing_zones/lz2)
 "ev" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/effect/landmark/objective_landmark/close,
@@ -120,12 +165,6 @@
 "ft" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/dark,
-/area/lv624/lazarus/corporate_dome)
-"fF" = (
-/obj/item/ammo_casing/bullet{
-	icon_state = "casing_9_1"
-	},
-/turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
 "fH" = (
 /turf/open/floor/whiteblue/east,
@@ -164,7 +203,8 @@
 	name = "Display synthetic"
 	},
 /obj/item/clothing/under/marine/veteran/pmc/corporate{
-	pixel_y = -2
+	icon = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/WY.dmi';
+	anchored = 1
 	},
 /turf/open/floor/whiteblue/northeast,
 /area/lv624/lazarus/corporate_dome)
@@ -213,6 +253,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
+/obj/item/ammo_casing/cartridge,
 /turf/open/floor/whiteblue/east,
 /area/lv624/lazarus/corporate_dome)
 "kU" = (
@@ -223,11 +264,19 @@
 	},
 /obj/effect/landmark/corpsespawner/colonist,
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/plating/asteroidwarning,
-/area/lv624/lazarus/landing_zones/lz2)
+/turf/template_noop,
+/area/template_noop)
 "ln" = (
 /obj/structure/machinery/light{
 	dir = 8
+	},
+/obj/structure/largecrate/random/mini/med{
+	pixel_x = 9;
+	pixel_y = 1
+	},
+/obj/structure/largecrate/random/mini/med{
+	pixel_y = -4;
+	pixel_x = -9
 	},
 /turf/open/floor/whiteblue/northwest,
 /area/lv624/lazarus/corporate_dome)
@@ -248,6 +297,7 @@
 /area/lv624/lazarus/corporate_dome)
 "mg" = (
 /obj/effect/decal/cleanable/blood,
+/obj/item/ammo_casing/cartridge,
 /turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
 "mi" = (
@@ -264,7 +314,7 @@
 /area/lv624/lazarus/corporate_dome)
 "mw" = (
 /obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon,
-/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/cartridge,
 /turf/open/floor/dark,
 /area/lv624/lazarus/corporate_dome)
 "mK" = (
@@ -305,9 +355,17 @@
 	icon_state = "Synthetic_Template";
 	name = "Display synthetic"
 	},
-/obj/item/clothing/under/liaison_suit/blazer,
+/obj/item/clothing/under/liaison_suit/blazer{
+	icon = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/WY.dmi';
+	anchored = 1
+	},
 /obj/item/clothing/head/manager{
-	pixel_y = 13
+	icon = 'icons/mob/humans/onmob/clothing/head/formal_hats.dmi';
+	anchored = 1
+	},
+/obj/item/clothing/shoes/laceup{
+	anchored = 1;
+	icon = 'icons/mob/humans/onmob/clothing/feet.dmi'
 	},
 /turf/open/floor/whiteblue,
 /area/lv624/lazarus/corporate_dome)
@@ -370,7 +428,7 @@
 /turf/open/floor/whitebluecorner/north,
 /area/lv624/lazarus/corporate_dome)
 "sm" = (
-/obj/structure/machinery/vending/cigarette,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
 "sH" = (
@@ -420,6 +478,9 @@
 	pixel_x = -8;
 	pixel_y = 16
 	},
+/obj/structure/largecrate/random/mini/ammo{
+	pixel_x = -6
+	},
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/whiteblue/northeast,
 /area/lv624/lazarus/corporate_dome)
@@ -428,9 +489,6 @@
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
-"yc" = (
-/turf/open/floor/plating/asteroidwarning/north,
-/area/lv624/lazarus/landing_zones/lz2)
 "yJ" = (
 /turf/open/floor/plating/platingdmg2,
 /area/lv624/lazarus/corporate_dome)
@@ -464,6 +522,7 @@
 /area/lv624/lazarus/corporate_dome)
 "zx" = (
 /obj/effect/decal/cleanable/blood/gibs/xeno,
+/obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon_medic,
 /turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
 "zz" = (
@@ -501,12 +560,6 @@
 	name = "\improper Garage"
 	},
 /turf/open/floor/dark,
-/area/lv624/lazarus/corporate_dome)
-"BZ" = (
-/obj/item/ammo_casing/bullet{
-	icon_state = "cartridge_6_1"
-	},
-/turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
 "Ct" = (
 /obj/structure/window_frame/colony/reinforced,
@@ -580,8 +633,8 @@
 /area/lv624/lazarus/corporate_dome)
 "Fk" = (
 /obj/effect/decal/cleanable/blood/drip,
-/turf/open/floor/plating/asteroidwarning/north,
-/area/lv624/lazarus/landing_zones/lz2)
+/turf/template_noop,
+/area/template_noop)
 "Fl" = (
 /turf/open/floor/whitebluecorner/north,
 /area/lv624/lazarus/corporate_dome)
@@ -608,12 +661,6 @@
 "Gi" = (
 /obj/structure/prop/server_equipment/yutani_server/broken,
 /turf/open/floor/greengrid,
-/area/lv624/lazarus/corporate_dome)
-"Go" = (
-/obj/item/ammo_casing/bullet{
-	icon_state = "cartridge_10_1"
-	},
-/turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
 "Gt" = (
 /obj/structure/machinery/light_construct/small{
@@ -690,9 +737,6 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/gm/dirt,
 /area/lv624/ground/colony/west_tcomms_road)
-"KC" = (
-/turf/open/floor/whiteyellowcorner/east,
-/area/lv624/lazarus/corporate_dome)
 "KG" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/white,
@@ -725,9 +769,6 @@
 "LZ" = (
 /turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/corporate_dome)
-"Me" = (
-/turf/open/floor/plating/asteroidfloor/north,
-/area/lv624/lazarus/landing_zones/lz2)
 "Ml" = (
 /obj/structure/machinery/atm{
 	name = "Weyland-Yutani Automatic Teller Machine";
@@ -751,9 +792,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/corporate_dome)
 "Pr" = (
-/obj/item/ammo_casing/bullet{
-	icon_state = "casing_9_1"
-	},
+/obj/item/ammo_casing/cartridge,
 /turf/open/floor/whiteyellowcorner/east,
 /area/lv624/lazarus/corporate_dome)
 "Qi" = (
@@ -774,20 +813,15 @@
 	icon_state = "Synthetic_Template";
 	name = "Display synthetic"
 	},
-/obj/item/clothing/head/helmet/marine/veteran/pmc{
-	pixel_y = 11;
-	pixel_x = -1
-	},
 /obj/item/clothing/under/marine/veteran/pmc{
-	pixel_y = -2
+	icon = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/WY.dmi';
+	anchored = 1
+	},
+/obj/item/clothing/mask/gas/pmc{
+	icon = 'icons/mob/humans/onmob/clothing/masks/masks_by_faction/WY.dmi';
+	anchored = 1
 	},
 /turf/open/floor/whiteblue/northwest,
-/area/lv624/lazarus/corporate_dome)
-"RD" = (
-/obj/item/ammo_casing/bullet{
-	icon_state = "casing_1_1"
-	},
-/turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
 "RF" = (
 /obj/effect/decal/cleanable/blood/drip,
@@ -821,13 +855,6 @@
 /obj/item/frame/table/wood/fancy,
 /turf/open/floor/whiteyellow/northeast,
 /area/lv624/lazarus/corporate_dome)
-"TF" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/obj/structure/largecrate/supply/medicine,
-/turf/open/floor/whiteblue/southwest,
-/area/lv624/lazarus/corporate_dome)
 "Uo" = (
 /obj/item/shard,
 /turf/open/floor/plating/asteroidfloor/north,
@@ -853,6 +880,7 @@
 /area/lv624/lazarus/corporate_dome)
 "Wx" = (
 /obj/effect/decal/cleanable/blood/drip,
+/obj/item/ammo_casing/cartridge,
 /turf/open/floor/whiteyellowcorner,
 /area/lv624/lazarus/corporate_dome)
 "Xc" = (
@@ -860,6 +888,7 @@
 	dir = 4;
 	health = 200
 	},
+/obj/item/ammo_casing/cartridge,
 /turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
 "Xf" = (
@@ -883,19 +912,18 @@
 	name = "Display synthetic"
 	},
 /obj/item/clothing/under/colonist{
-	pixel_y = -2
+	icon = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/WY.dmi';
+	anchored = 1
+	},
+/obj/item/clothing/shoes/stompers{
+	icon = 'icons/mob/humans/onmob/clothing/feet.dmi';
+	anchored = 1
 	},
 /turf/open/floor/whiteblue/southwest,
 /area/lv624/lazarus/corporate_dome)
 "Xt" = (
 /turf/template_noop,
 /area/template_noop)
-"Xz" = (
-/obj/item/ammo_casing/bullet{
-	icon_state = "cartridge_3_1"
-	},
-/turf/open/floor/white,
-/area/lv624/lazarus/corporate_dome)
 "XC" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -935,7 +963,7 @@
 /turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
 "ZT" = (
-/obj/effect/landmark/survivor_spawner/lv624_corporate_dome_cl,
+/obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon_lead,
 /turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
 
@@ -944,8 +972,8 @@ Xt
 Xt
 Xt
 Fk
-Me
-dY
+Xt
+Xt
 Xt
 Xt
 Xt
@@ -965,9 +993,9 @@ Xt
 Xt
 Xt
 Xt
-yc
+Xt
 da
-dY
+Xt
 Xt
 Xt
 Xt
@@ -987,8 +1015,8 @@ Xt
 Xt
 Xt
 Xt
-yc
-Me
+Xt
+Xt
 kU
 XG
 XG
@@ -1063,7 +1091,7 @@ Bh
 Bh
 qH
 Uo
-yJ
+aa
 LZ
 mi
 Xt
@@ -1082,7 +1110,7 @@ wW
 qn
 OH
 Bh
-Bh
+ac
 XG
 Yv
 Aj
@@ -1119,9 +1147,9 @@ Xt
 YN
 XG
 ln
+ae
 GV
-GV
-TF
+cn
 XG
 Rn
 Fl
@@ -1143,15 +1171,15 @@ Lh
 hf
 ev
 cA
-cA
+ab
 Jq
 cA
 cA
-Go
+ab
 cA
 cA
 aQ
-cA
+ab
 Hn
 Ln
 aQ
@@ -1164,16 +1192,16 @@ YN
 mp
 sm
 RF
-fF
+ab
 KG
 cA
 cA
 cA
 Sb
+ab
 cA
 cA
 cA
-RD
 Sb
 AG
 cA
@@ -1182,12 +1210,12 @@ dI
 mK
 "}
 (12,1,1) = {"
-YN
+ag
 XG
 xk
+af
 fH
-fH
-UF
+ad
 XG
 hc
 Dn
@@ -1236,7 +1264,7 @@ bm
 FZ
 gx
 cA
-cA
+ab
 cn
 XG
 Gi
@@ -1257,8 +1285,8 @@ Fl
 ZT
 ms
 IM
-cA
-BZ
+ab
+ab
 cA
 qJ
 SV
@@ -1362,13 +1390,13 @@ Xt
 Xt
 XG
 zm
-KC
+Pr
 zx
 Dp
 JL
 oq
 cA
-Xz
+cA
 cA
 Ho
 FP

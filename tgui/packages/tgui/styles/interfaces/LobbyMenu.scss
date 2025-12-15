@@ -1,0 +1,195 @@
+.LobbyScreen.crtTheme {
+  &.filterEnabled {
+    box-shadow: 0 0 15px;
+  }
+
+  .typeEffect {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 0;
+    animation: typing 1s steps(20, end) forwards;
+    animation-delay: 1.3s;
+  }
+
+  .buttonEffect {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 0;
+    animation: typing 1s steps(20, end) forwards;
+  }
+
+  .loadEffect {
+    height: 0;
+    animation: loading 1s steps(20, end) forwards;
+    animation-delay: 1.3s;
+  }
+
+  .sectionLoad {
+    animation: section-loading 1s forwards;
+    box-shadow: 0 0 15px;
+    background-color: hsla(120, 100%, 3%, 0.7);
+  }
+
+  .dividerEffect {
+    animation: typing 1s steps(20, end) forwards;
+    width: 0;
+  }
+
+  .bgLoad {
+    opacity: 0;
+    animation: bg-load 10s forwards;
+    animation-delay: 5s;
+  }
+
+  @keyframes bg-load {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+  @keyframes loading {
+    from {
+      height: 0;
+    }
+    to {
+      height: 100%;
+    }
+  }
+
+  @keyframes section-loading {
+    from {
+      transform: scaleY(0);
+    }
+    to {
+      transform: scaleY(1);
+    }
+  }
+
+  &.filterEnabled {
+    .crt {
+      &::before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background:
+          linear-gradient(hsla(0, 6%, 7%, 0) 50%, hsla(0, 0%, 0%, 0.25) 50%),
+          linear-gradient(
+            90deg,
+            hsla(0, 100%, 50%, 0.06),
+            hsla(120, 100%, 50%, 0.02),
+            hsla(240, 100%, 50%, 0.06)
+          );
+        z-index: 2;
+        background-size:
+          100% 8px,
+          6px 100%;
+        pointer-events: none;
+      }
+
+      &::after {
+        content: ' ';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: hsla(0, 6%, 7%, 0.1);
+        opacity: 0;
+        z-index: 2;
+        pointer-events: none;
+      }
+
+      @supports (not (-webkit-hyphens: none)) and (not (-moz-appearance: none)) {
+        box-shadow: 0 0 500px 25px hsla(0, 0%, 0%, 0.9) inset;
+      }
+    }
+  }
+
+  .pred {
+    background-image: url('../assets/pred-dark.svg');
+  }
+}
+
+.theme-weyland_yutani {
+  .LobbyScreen {
+    .loadEffect {
+      height: 67px;
+    }
+
+    .sectionLoad {
+      border: 3px solid hsl(213, 30%, 31%);
+      background-color: hsla(0, 0%, 0%, 0.7);
+    }
+
+    .dividerEffect {
+      border-color: hsl(213, 30%, 31%);
+    }
+  }
+}
+
+.LobbyScreen {
+  font-family: chakrapetch-bold;
+  line-height: 100%;
+  font-size: large;
+
+  background-position: 'center';
+  background-size: 'cover';
+
+  .bgBackground {
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+  }
+
+  .authorAttrib {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    padding: 5px;
+  }
+
+  .pred {
+    background-image: url('../assets/pred-light.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 24px 24px;
+    width: 24px;
+    height: 24px;
+    margin-left: -0.25em;
+    margin-top: 0.25em;
+    margin-right: 0.25em;
+    margin-bottom: -0.25em;
+  }
+
+  .Button__content {
+    .Icon {
+      vertical-align: middle;
+      margin-bottom: 3px;
+    }
+  }
+
+  .messageHolder {
+    pointer-events: none;
+  }
+}
+
+.noAnimation {
+  animation-delay: 0s !important;
+}

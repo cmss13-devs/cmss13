@@ -24,11 +24,11 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 	name = "commanding officer's secure box"
 	req_access = list(ACCESS_MARINE_CO)
 	desc = "A safe for the Commanding Officer to store any equipment they need to have ready at a moment's notice. There's a note inside saying that whatever was inside it before was moved out."
-	icon = 'icons/obj/structures/marine_closet.dmi'
-	icon_state = "commander_safe"
-	icon_opened = "commander_safe_open"
-	icon_closed = "commander_safe"
-	icon_locked = "commander_safe"
+	icon = 'icons/obj/structures/safes.dmi'
+	icon_state = "safe"
+	icon_opened = "safe-open"
+	icon_closed = "safe"
+	icon_locked = "safe"
 
 /obj/structure/closet/secure_closet/securecom/Initialize()
 	. = ..()
@@ -74,8 +74,8 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 	. = ..()
 	new /obj/item/clothing/head/helmet/marine/MP/SO(src)
 	new /obj/item/clothing/head/helmet/marine/MP/SO(src)
-	new /obj/item/clothing/suit/storage/marine/MP/SO(src)
-	new /obj/item/clothing/suit/storage/marine/MP/SO(src)
+	new /obj/item/clothing/suit/storage/marine/CIC(src)
+	new /obj/item/clothing/suit/storage/marine/CIC(src)
 	new /obj/item/device/radio/headset/almayer/mcom(src)
 	new /obj/item/clothing/gloves/marine(src)
 	new /obj/item/clothing/gloves/marine(src)
@@ -133,7 +133,7 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 	new /obj/item/clothing/head/helmet/marine/pilot(src)
 	new /obj/item/clothing/under/marine/officer/pilot(src)
 	new /obj/item/clothing/shoes/marine(src)
-	new /obj/item/clothing/suit/armor/vest/pilot(src)
+	new /obj/item/clothing/suit/storage/jacket/marine/pilot/armor(src)
 	new /obj/item/storage/belt/gun/m39(src)
 	new /obj/item/storage/backpack/marine/satchel(src)
 	new /obj/item/clothing/gloves/yellow(src)
@@ -249,18 +249,18 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 	new /obj/item/storage/backpack/marine/satchel(src)
 	if(!is_ground_level(z))
 		new /obj/item/device/radio/headset/almayer/doc(src)
+	new /obj/item/clothing/under/rank/medical(src)
+	new /obj/item/clothing/suit/storage/labcoat(src)
+	new /obj/item/clothing/suit/storage/labcoat/short(src)
+	new /obj/item/clothing/suit/storage/labcoat/long(src)
 	new /obj/item/clothing/shoes/white(src)
-	new /obj/item/clothing/shoes/white(src)
-	new /obj/item/storage/belt/medical/full(src)
-	new /obj/item/clothing/under/rank/medical/green(src)
-	new /obj/item/clothing/under/rank/medical/blue(src)
-	new /obj/item/clothing/under/rank/medical/lightblue(src)
-	new /obj/item/clothing/under/rank/medical/purple(src)
+	new /obj/item/clothing/mask/breath(src)
 	new /obj/item/clothing/mask/surgical(src)
-	new /obj/item/clothing/head/surgery/green(src)
-	new /obj/item/clothing/head/surgery/blue(src)
-	new /obj/item/clothing/head/surgery/purple(src)
 	new /obj/item/clothing/glasses/hud/health(src)
+	new /obj/item/storage/pouch/medical(src)
+	new /obj/item/storage/pouch/syringe(src)
+	new /obj/item/storage/pouch/medkit(src)
+	new /obj/item/storage/pouch/chem(src)
 
 /obj/structure/closet/secure_closet/medical_doctor/select_gamemode_equipment(gamemode)
 	if (SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
@@ -360,7 +360,7 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 	desc = "A bulletproof cabinet containing the command tablet for usage by the CO and XO. Opens only to them and department heads."
 	density = FALSE
 	store_mobs = FALSE
-	req_access = list(ACCESS_MARINE_SENIOR)
+	req_one_access = list(ACCESS_MARINE_SENIOR)
 	icon_state = "secure_locked_cmdcabinet"
 	icon_closed = "secure_unlocked_cmdcabinet"
 	icon_locked = "secure_locked_cmdcabinet"
@@ -369,3 +369,28 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 	icon_off = "secure_unlocked_cmdcabinet"
 	wall_mounted = TRUE
 
+/obj/structure/closet/secure_closet/cmdcabinet/comms_mp
+	name = "communications cabinet"
+	desc = "A bulletproof cabinet containing communications equipment."
+	req_one_access = list(ACCESS_MARINE_BRIG)
+
+/obj/structure/closet/secure_closet/cmdcabinet/comms_mp/Initialize()
+	. = ..()
+	new /obj/item/device/radio(src)
+	new /obj/item/device/radio/listening_bug/radio_linked/mp(src)
+	new /obj/item/device/radio/listening_bug/radio_linked/mp(src)
+	new /obj/item/device/motion_sensor/mp(src)
+	new /obj/item/device/motion_sensor/mp(src)
+	new /obj/item/device/motion_sensor/mp(src)
+
+/obj/structure/closet/secure_closet/cmdcabinet/comms_cl
+	name = "communications cabinet"
+	desc = "A bulletproof cabinet containing communications equipment."
+	req_one_access = list(ACCESS_WY_EXEC, ACCESS_WY_SECURITY)
+
+/obj/structure/closet/secure_closet/cmdcabinet/comms_cl/Initialize()
+	. = ..()
+	new /obj/item/device/radio(src)
+	new /obj/item/device/radio/listening_bug/radio_linked/wy(src)
+	new /obj/item/device/radio/listening_bug/radio_linked/wy(src)
+	new /obj/item/device/motion_sensor/wy(src)

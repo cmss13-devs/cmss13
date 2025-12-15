@@ -1,6 +1,15 @@
+/// How many smallhosts to preassigned players to spawn?
+#define MONKEYS_TO_TOTAL_RATIO 1/32
+/// When to start opening the podlocks identified as "map_lockdown" (takes 30s)
+#define PODLOCKS_OPEN_WAIT (45 MINUTES) // CORSAT pod doors drop at 12:45
+/// How many pipes explode at a time during hijack?
 #define HIJACK_EXPLOSION_COUNT 5
+/// What percent do we consider a 'majority?' to win
+#define MAJORITY 0.5
+/// How long to delay the round completion (command is immediately notified)
 #define MARINE_MAJOR_ROUND_END_DELAY (3 MINUTES)
-#define LZ_HAZARD_START (3 MINUTES)
+/// The ratio of forsaken to groundside humans before calling more forsaken xenos
+#define GROUNDSIDE_XENO_MULTIPLIER 1.0
 
 /datum/game_mode/colonialmarines
 	name = "Distress Signal"
@@ -12,9 +21,6 @@
 	flags_round_type = MODE_INFESTATION|MODE_FOG_ACTIVATED|MODE_NEW_SPAWN
 	static_comms_amount = 1
 	var/round_status_flags
-
-	var/research_allocation_interval = 10 MINUTES
-	var/next_research_allocation = 0
 	var/next_stat_check = 0
 	var/list/running_round_stats = list()
 	var/list/lz_smoke = list()
@@ -127,7 +133,10 @@
 
 	addtimer(CALLBACK(src, PROC_REF(ares_online)), 5 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(map_announcement)), 20 SECONDS)
-	addtimer(CALLBACK(src, PROC_REF(start_lz_hazards)), LZ_HAZARD_START)
+	addtimer(CALLBACK(src, PROC_REF(start_lz_hazards)), DISTRESS_LZ_HAZARD_START)
+	addtimer(CALLBACK(src, PROC_REF(ares_command_check)), 2 MINUTES)
+	addtimer(CALLBACK(SSentity_manager, TYPE_PROC_REF(/datum/controller/subsystem/entity_manager, select), /datum/entity/survivor_survival), 7 MINUTES)
+	GLOB.chemical_data.reroll_chemicals()
 
 	return ..()
 
@@ -212,7 +221,7 @@
 /datum/game_mode/colonialmarines/proc/start_lz_hazards()
 	if(SSobjectives.first_drop_complete)
 		return // Just for sanity
-	if(!MODE_HAS_TOGGLEABLE_FLAG(MODE_LZ_HAZARD_ACTIVATED))
+	if(!MODE_HAS_MODIFIER(/datum/gamemode_modifier/lz_roundstart_miasma))
 		return
 
 	log_game("Distress Signal LZ hazards active!")
@@ -251,7 +260,7 @@
 				if(!istype(turf, /turf/closed/wall))
 					continue
 				var/turf/closed/wall/wall = turf
-				if(wall.hull)
+				if(wall.turf_flags & TURF_HULL)
 					continue
 			lz_smoke += new /obj/effect/particle_effect/smoke/miasma(turf, null, new_cause_data)
 
@@ -263,6 +272,10 @@
 
 /// Called during the dropship flight, clears resin and indicates to those in flight that resin near the LZ has been cleared.
 /datum/game_mode/colonialmarines/proc/warn_resin_clear(obj/docking_port/mobile/marine_dropship)
+	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/lz_weeding))
+		msg_admin_niche("Skipped weed killer event due to lz_weeding modifier already getting set")
+		return
+
 	clear_proximity_resin()
 
 	var/list/announcement_mobs = list()
@@ -279,6 +292,9 @@
  */
 /datum/game_mode/colonialmarines/proc/clear_proximity_resin()
 	var/datum/cause_data/cause_data = create_cause_data(/obj/effect/particle_effect/smoke/weedkiller::name)
+
+	if(!active_lz)
+		pick_a_lz()
 
 	for(var/area/near_area as anything in GLOB.all_areas)
 		var/area_lz = near_area.linked_lz
@@ -297,7 +313,7 @@
 				if(!istype(turf, /turf/closed/wall))
 					continue
 				var/turf/closed/wall/wall = turf
-				if(wall.hull)
+				if(wall.turf_flags & TURF_HULL)
 					continue
 			new /obj/effect/particle_effect/smoke/weedkiller(turf, null, cause_data)
 
@@ -323,9 +339,6 @@
 
 		near_area.is_resin_allowed = TRUE
 
-
-#define MONKEYS_TO_TOTAL_RATIO 1/32
-
 /datum/game_mode/colonialmarines/proc/spawn_smallhosts()
 	if(!GLOB.players_preassigned)
 		return
@@ -347,6 +360,72 @@
 		var/rendered_announce_text = replacetext(SSmapping.configs[GROUND_MAP].announce_text, "###SHIPNAME###", MAIN_SHIP_NAME)
 		marine_announcement(rendered_announce_text, "[MAIN_SHIP_NAME]")
 
+/datum/game_mode/proc/ares_command_check(mob/living/carbon/human/commander = null, force = FALSE)
+	/// Job of the person being auto-promoted.
+	var/role_in_charge
+	/// human being auto-promoted.
+	var/mob/living/carbon/human/person_in_charge
+	/// Extra info to add to the ARES announcement announcing the promotion.
+	var/announce_addendum
+
+	//Basically this follows the list of command staff in order of CoC,
+	//then if the role lacks senior command access it gives the person that access
+
+	if(SSticker.mode.acting_commander && !force) // If there's already an aCO; don't set a new one, unless forced.
+		return
+
+	if((GLOB.marine_leaders[JOB_CO] || GLOB.marine_leaders[JOB_XO]) && !force)
+		return
+	//If we have a CO or XO, we're good no need to announce anything.
+
+	for(var/job_by_chain in CHAIN_OF_COMMAND_ROLES)
+		role_in_charge = job_by_chain
+
+		if(job_by_chain == JOB_SO && GLOB.marine_leaders[JOB_SO])
+			person_in_charge = pick(GLOB.marine_leaders[JOB_SO])
+			break
+		if(job_by_chain == JOB_INTEL && GLOB.marine_officers[JOB_INTEL])
+			person_in_charge = pick(GLOB.marine_officers[JOB_INTEL])
+			break
+		if(job_by_chain == JOB_DOCTOR && GLOB.marine_officers[JOB_DOCTOR])
+			person_in_charge = pick(GLOB.marine_officers[JOB_DOCTOR])
+			break
+
+		//If the job is a list we have to stop here
+		if(person_in_charge)
+			break
+
+		var/datum/job/job_datum = GLOB.RoleAuthority.roles_for_mode[job_by_chain]
+		person_in_charge = job_datum?.get_active_player_on_job()
+		if(!isnull(person_in_charge))
+			break
+
+	if(commander) // pre-provided commander overrides the automatic selection.
+		person_in_charge = commander
+		role_in_charge = person_in_charge.job
+
+	if(!person_in_charge)
+		return log_admin("No valid commander found for automatic promotion.")
+
+	SSticker.mode.acting_commander = person_in_charge // Prevents double-dipping.
+
+	var/obj/item/card/id/card = person_in_charge.get_idcard()
+	if(card)
+		var/static/to_add = list(ACCESS_MARINE_SENIOR, ACCESS_MARINE_DATABASE, ACCESS_MARINE_COMMAND)
+		
+		var/new_access = card.access | to_add
+		if(card.access ~! new_access)
+			card.access = new_access
+			announce_addendum += "\nSenior Command access added to ID."
+
+	announce_addendum += "\nA Command headset is available in the Command Tablet cabinet."
+
+	//does an announcement to the crew about the commander & alerts admins to that change for logs.
+	shipwide_ai_announcement("Acting Commander authority has been transferred to: [role_in_charge] [person_in_charge], who will assume command until further notice. Please direct all inquiries and follow instructions accordingly. [announce_addendum]", MAIN_AI_SYSTEM, 'sound/misc/interference.ogg')
+	message_admins("[key_name(person_in_charge, TRUE)] [ADMIN_JMP_USER(person_in_charge)] has been designated the operation commander.")
+	return
+
+
 /datum/game_mode/colonialmarines/proc/ares_conclude()
 	ai_silent_announcement("Bioscan complete. No unknown lifeform signature detected.", ".V")
 	ai_silent_announcement("Saving operational report to archive.", ".V")
@@ -354,8 +433,6 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
-
-#define PODLOCKS_OPEN_WAIT (45 MINUTES) // CORSAT pod doors drop at 12:45
 
 //This is processed each tick, but check_win is only checked 5 ticks, so we don't go crazy with scanning for mobs.
 /datum/game_mode/colonialmarines/process()
@@ -367,9 +444,8 @@
 		check_hijack_explosions()
 		check_ground_humans()
 
-	if(next_research_allocation < world.time)
-		GLOB.chemical_data.update_credits(GLOB.chemical_data.research_allocation_amount)
-		next_research_allocation = world.time + research_allocation_interval
+	if(GLOB.chemical_data.next_reroll < world.time)
+		GLOB.chemical_data.reroll_chemicals()
 
 	if(!round_finished)
 		var/datum/hive_status/hive
@@ -377,12 +453,17 @@
 			hive = GLOB.hive_datum[hivenumber]
 			if(!hive.xeno_queen_timer)
 				continue
-
 			if(!hive.living_xeno_queen && hive.xeno_queen_timer < world.time)
-				xeno_message("The Hive is ready for a new Queen to evolve.", 3, hive.hivenumber)
+				var/time_remaining = (QUEEN_DEATH_COUNTDOWN + hive.xeno_queen_timer) - world.time
+				if(time_remaining <= 59 SECONDS)
+					var/seconds_left = round(time_remaining / 10)
+					xeno_message("The Hive is ready for a new Queen to evolve. The Hive will collapse in [seconds_left] seconds without a Queen.", 3, hive.hivenumber)
+				else
+					xeno_message("The Hive is ready for a new Queen to evolve. The Hive can only survive for a limited time without a Queen!", 3, hive.hivenumber)
 
-		if(!active_lz && world.time > lz_selection_timer)
-			select_lz(locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz1))
+
+		if(!active_lz && ROUND_TIME > lz_selection_timer)
+			pick_a_lz()
 
 		// Automated bioscan / Queen Mother message
 		if(world.time > bioscan_current_interval) //If world time is greater than required bioscan time.
@@ -410,7 +491,7 @@
 				check_win()
 			round_checkwin = 0
 
-		if(!evolution_ovipositor_threshold && world.time >= SSticker.round_start_time + round_time_evolution_ovipositor)
+		if(!evolution_ovipositor_threshold && ROUND_TIME >= round_time_evolution_ovipositor)
 			for(var/hivenumber in GLOB.hive_datum)
 				hive = GLOB.hive_datum[hivenumber]
 				hive.evolution_without_ovipositor = FALSE
@@ -419,8 +500,8 @@
 			evolution_ovipositor_threshold = TRUE
 			msg_admin_niche("Xenomorphs now require the queen's ovipositor for evolution progress.")
 
-		if(!GLOB.resin_lz_allowed && world.time >= SSticker.round_start_time + round_time_resin)
-			set_lz_resin_allowed(TRUE)
+		if(!MODE_HAS_MODIFIER(/datum/gamemode_modifier/lz_weeding) && world.time >= SSticker.round_start_time + round_time_resin)
+			MODE_SET_MODIFIER(/datum/gamemode_modifier/lz_weeding, TRUE)
 
 		if(next_stat_check <= world.time)
 			add_current_round_status_to_end_results((next_stat_check ? "" : "Round Start"))
@@ -442,8 +523,6 @@
 
 	addtimer(CALLBACK(src, PROC_REF(shake_ship)), 5 SECONDS)
 	TIMER_COOLDOWN_START(src, COOLDOWN_HIJACK_BARRAGE, 15 SECONDS)
-
-#define GROUNDSIDE_XENO_MULTIPLIER 1.0
 
 ///Checks for humans groundside after hijack, spawns forsaken if requirements met
 /datum/game_mode/colonialmarines/proc/check_ground_humans()
@@ -470,8 +549,6 @@
 
 	TIMER_COOLDOWN_START(src, COOLDOWN_HIJACK_GROUND_CHECK, 1 MINUTES)
 
-#undef GROUNDSIDE_XENO_MULTIPLIER
-
 /**
  * Makes the mainship shake, along with playing a klaxon sound effect.
  */
@@ -483,13 +560,20 @@
 
 	playsound_z(SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP)), 'sound/effects/double_klaxon.ogg', volume = 10)
 
-#undef PODLOCKS_OPEN_WAIT
-
 // Resource Towers
 
 /datum/game_mode/colonialmarines/ds_first_drop(obj/docking_port/mobile/marine_dropship)
+	if(!active_lz)
+		var/dest_id = marine_dropship.destination?.id
+		if(dest_id == DROPSHIP_LZ1)
+			select_lz(locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz1))
+		else if (dest_id == DROPSHIP_LZ2)
+			select_lz(locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz2))
+
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(show_blurb_uscm)), DROPSHIP_DROP_MSG_DELAY)
 	addtimer(CALLBACK(src, PROC_REF(warn_resin_clear), marine_dropship), DROPSHIP_DROP_FIRE_DELAY)
+	DB_ENTITY(/datum/entity/survivor_survival) // Record surv survival right now
+	addtimer(CALLBACK(SSentity_manager, TYPE_PROC_REF(/datum/controller/subsystem/entity_manager, select), /datum/entity/survivor_survival), 7 MINUTES) // And 7 minutes after drop. By then, marines will have found them, most likely
 
 	add_current_round_status_to_end_results("First Drop")
 	clear_lz_hazards()
@@ -500,7 +584,8 @@
 /datum/game_mode/colonialmarines/check_win()
 	if(SSticker.current_state != GAME_STATE_PLAYING)
 		return
-
+	if(ROUND_TIME < 10 MINUTES)
+		return
 	var/living_player_list[] = count_humans_and_xenos(get_affected_zlevels())
 	var/num_humans = living_player_list[1]
 	var/num_xenos = living_player_list[2]
@@ -521,36 +606,61 @@
 	else if(!num_humans && !num_xenos)
 		round_finished = MODE_INFESTATION_DRAW_DEATH //Both were somehow destroyed.
 
-/datum/game_mode/colonialmarines/check_queen_status(hivenumber)
-	set waitfor = 0
-	if(!(flags_round_type & MODE_INFESTATION)) return
-	xeno_queen_deaths++
-	var/num_last_deaths = xeno_queen_deaths
-	sleep(QUEEN_DEATH_COUNTDOWN)
-	//We want to make sure that another queen didn't die in the interim.
+/datum/game_mode/colonialmarines/count_humans_and_xenos(list/z_levels)
+	. = ..()
+	if(.[2] != 0) // index 2 = num_xenos
+		return .
 
-	if(xeno_queen_deaths == num_last_deaths && !round_finished)
-		var/datum/hive_status/HS
-		for(var/HN in GLOB.hive_datum)
-			HS = GLOB.hive_datum[HN]
-			if(HS.living_xeno_queen && !should_block_game_interaction(HS.living_xeno_queen.loc))
-				//Some Queen is alive, we shouldn't end the game yet
-				return
-		if(length(HS.totalXenos) <= 3)
-			round_finished = MODE_INFESTATION_M_MAJOR
-		else
-			round_finished = MODE_INFESTATION_M_MINOR
+	// Ensure there is no queen
+	var/datum/hive_status/hive
+	for(var/cur_number in GLOB.hive_datum)
+		hive = GLOB.hive_datum[cur_number]
+		if(hive.need_round_end_check && !hive.can_delay_round_end())
+			continue
+		if(hive.living_xeno_queen && !should_block_game_interaction(hive.living_xeno_queen.loc))
+			//Some Queen is alive, we shouldn't end the game yet
+			.[2]++
+	return .
+
+/datum/game_mode/colonialmarines/check_queen_status(hivenumber, immediately = FALSE)
+	if(!(flags_round_type & MODE_INFESTATION))
+		return
+
+	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
+	if(hive.need_round_end_check && !hive.can_delay_round_end())
+		return
+
+	if(!immediately)
+		//We want to make sure that another queen didn't die in the interim.
+		addtimer(CALLBACK(src, PROC_REF(check_queen_status), hivenumber, TRUE), QUEEN_DEATH_COUNTDOWN, TIMER_UNIQUE|TIMER_OVERRIDE)
+		return
+
+	if(round_finished)
+		return
+
+	for(var/cur_number in GLOB.hive_datum)
+		hive = GLOB.hive_datum[cur_number]
+		if(hive.need_round_end_check && !hive.can_delay_round_end())
+			continue
+		if(hive.living_xeno_queen && !should_block_game_interaction(hive.living_xeno_queen.loc))
+			//Some Queen is alive, we shouldn't end the game yet
+			return
+
+	if(length(hive.totalXenos) <= 3)
+		round_finished = MODE_INFESTATION_M_MAJOR
+	else
+		round_finished = MODE_INFESTATION_M_MINOR
 
 ///////////////////////////////
 //Checks if the round is over//
 ///////////////////////////////
 /datum/game_mode/colonialmarines/check_finished()
-	if(round_finished) return 1
+	if(round_finished)
+		return 1
 
 //////////////////////////////////////////////////////////////////////
 //Announces the end of the game with all relevant information stated//
 //////////////////////////////////////////////////////////////////////
-#define MAJORITY 0.5 // What percent do we consider a 'majority?'
 
 /datum/game_mode/colonialmarines/declare_completion()
 	announce_ending()
@@ -571,26 +681,29 @@
 				GLOB.round_statistics.current_map.total_marine_majors++
 		if(MODE_INFESTATION_X_MINOR)
 			var/list/living_player_list = count_humans_and_xenos(get_affected_zlevels())
+			end_icon = "xeno_minor"
 			if(living_player_list[1] && !living_player_list[2]) // If Xeno Minor but Xenos are dead and Humans are alive, see which faction is the last standing
 				var/headcount = count_per_faction()
 				var/living = headcount["total_headcount"]
 				if ((headcount["WY_headcount"] / living) > MAJORITY)
 					musical_track = pick('sound/theme/lastmanstanding_wy.ogg')
+					end_icon = "wy_major"
 					log_game("3rd party victory: Weyland-Yutani")
 					message_admins("3rd party victory: Weyland-Yutani")
 				else if ((headcount["UPP_headcount"] / living) > MAJORITY)
 					musical_track = pick('sound/theme/lastmanstanding_upp.ogg')
+					end_icon = "upp_major"
 					log_game("3rd party victory: Union of Progressive Peoples")
 					message_admins("3rd party victory: Union of Progressive Peoples")
 				else if ((headcount["CLF_headcount"] / living) > MAJORITY)
 					musical_track = pick('sound/theme/lastmanstanding_clf.ogg')
+					end_icon = "upp_major"
 					log_game("3rd party victory: Colonial Liberation Front")
 					message_admins("3rd party victory: Colonial Liberation Front")
 				else if ((headcount["marine_headcount"] / living) > MAJORITY)
 					musical_track = pick('sound/theme/neutral_melancholy2.ogg') //This is the theme song for Colonial Marines the game, fitting
 			else
 				musical_track = pick('sound/theme/neutral_melancholy1.ogg')
-			end_icon = "xeno_minor"
 			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
 				GLOB.round_statistics.current_map.total_xeno_victories++
 		if(MODE_INFESTATION_M_MINOR)
@@ -603,9 +716,12 @@
 			musical_track = 'sound/theme/neutral_hopeful2.ogg'
 			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
 				GLOB.round_statistics.current_map.total_draws++
-	var/sound/S = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)
-	S.status = SOUND_STREAM
-	sound_to(world, S)
+		else
+			end_icon = "draw"
+			musical_track = 'sound/theme/neutral_hopeful2.ogg'
+	var/sound/theme = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)
+	theme.status = SOUND_STREAM
+	sound_to(world, theme)
 	if(GLOB.round_statistics)
 		GLOB.round_statistics.game_mode = name
 		GLOB.round_statistics.round_length = world.time
@@ -626,6 +742,8 @@
 
 	add_current_round_status_to_end_results("Round End")
 	handle_round_results_statistics_output()
+
+	GLOB.round_statistics?.save()
 
 	return 1
 
@@ -796,6 +914,9 @@
 		addtimer(CALLBACK(request, TYPE_PROC_REF(/datum/http_request, begin_async)), (2 * incrementer) SECONDS)
 		incrementer++
 
+#undef MONKEYS_TO_TOTAL_RATIO
+#undef PODLOCKS_OPEN_WAIT
 #undef HIJACK_EXPLOSION_COUNT
-#undef MARINE_MAJOR_ROUND_END_DELAY
 #undef MAJORITY
+#undef MARINE_MAJOR_ROUND_END_DELAY
+#undef GROUNDSIDE_XENO_MULTIPLIER

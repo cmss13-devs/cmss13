@@ -5,7 +5,7 @@
 /obj/structure/machinery/power/smes/batteryrack
 	name = "Substation PSU"//"power cell rack PSU"
 	desc = "A rack of power cells working as a PSU."
-	charge = 0 //you dont really want to make a potato PSU which already is overloaded
+	charge = 0 //you don't really want to make a potato PSU which already is overloaded
 	outputting = 0
 	input_level = 0
 	output_level = 0
@@ -80,7 +80,8 @@
 
 /obj/structure/machinery/power/smes/batteryrack/updateicon()
 	overlays.Cut()
-	if(stat & BROKEN) return
+	if(stat & BROKEN)
+		return
 
 	if (outputting)
 		overlays += image('icons/obj/structures/machinery/power.dmi', "gsmes_outputting")
@@ -98,7 +99,7 @@
 
 
 /obj/structure/machinery/power/smes/batteryrack/attackby(obj/item/W as obj, mob/user as mob) //these can only be moved by being reconstructed, solves having to remake the powernet.
-	..() //SMES attackby for now handles screwdriver, cable coils and wirecutters, no need to repeat that here
+	. = ..() //SMES attackby for now handles screwdriver, cable coils and wirecutters, no need to repeat that here
 	if(open_hatch)
 		if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 			if (charge < (capacity / 100))
@@ -149,7 +150,8 @@
 
 /obj/structure/machinery/power/smes/batteryrack/makeshift/updateicon()
 	overlays.Cut()
-	if(stat & BROKEN) return
+	if(stat & BROKEN)
+		return
 
 	if (outputting)
 		overlays += image('icons/obj/structures/machinery/power.dmi', "gsmes_outputting")
@@ -183,7 +185,7 @@
 				return
 			if (overcharge_percent >= 140)
 				if (prob(1))
-					empulse(src.loc, 1, 2, 0)
+					empulse(loc, 1, 2)
 		if ((2.4e6+1) to 3.6e6)
 			if (overcharge_percent >= 115)
 				if (prob(7))
@@ -192,10 +194,10 @@
 				return
 			if (overcharge_percent >= 130)
 				if (prob(1))
-					empulse(src.loc, 1, 3, 0)
+					empulse(loc, 1, 3)
 			if (overcharge_percent >= 150)
 				if (prob(1))
-					explosion(src.loc, 0, 0, 1, 3)
+					explosion(loc, 0, 0, 1, 3)
 		if ((3.6e6+1) to INFINITY)
 			if (overcharge_percent >= 115)
 				if (prob(8))
@@ -204,17 +206,18 @@
 				return
 			if (overcharge_percent >= 125)
 				if (prob(2))
-					empulse(src.loc, 4, 10, 1)
+					empulse(loc, 4, 10)
 			if (overcharge_percent >= 140)
 				if (prob(1))
-					explosion(src.loc, 0, 1, 2, 4)
+					explosion(loc, 0, 1, 2, 4)
 		else //how the hell was this proc called for negative charge
 			charge = 0
 
 
 #define SMESRATE 0.05 // rate of internal charge to external power
 /obj/structure/machinery/power/smes/batteryrack/makeshift/process()
-	if(stat & BROKEN) return
+	if(stat & BROKEN)
+		return
 
 	//store machine state to see if we need to update the icon overlays
 	var/last_disp = chargedisplay()

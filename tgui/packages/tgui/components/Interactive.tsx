@@ -13,7 +13,7 @@
  */
 
 import { clamp } from 'common/math';
-import { Component, createRef, ReactNode, RefObject } from 'react';
+import { Component, createRef, type ReactNode, type RefObject } from 'react';
 
 export interface Interaction {
   left: number;

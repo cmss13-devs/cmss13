@@ -29,7 +29,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
 "gb" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
 "hq" = (
@@ -55,7 +55,7 @@
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/south_west_jungle)
 "lR" = (
-/obj/item/weapon/unathiknife{
+/obj/item/weapon/yautja/duelknife{
 	desc = "A curved blade made of a strange material. It looks both old and very sharp.";
 	force = 30;
 	name = "\improper alien blade";
@@ -166,10 +166,10 @@
 /area/lv624/ground/jungle/south_west_jungle)
 "Ge" = (
 /obj/structure/flora/jungle/vines/light_2,
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/jungle/south_west_jungle)
 "Gi" = (
-/turf/open/gm/dirtgrassborder/north,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/jungle/south_west_jungle)
 "IP" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
@@ -242,7 +242,7 @@
 /area/lv624/ground/jungle/south_west_jungle)
 "RS" = (
 /obj/structure/flora/jungle/vines/light_1,
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/jungle/south_west_jungle)
 "Sj" = (
 /obj/structure/flora/jungle/vines/light_2,

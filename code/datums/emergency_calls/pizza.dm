@@ -9,7 +9,7 @@
 	shuttle_id = MOBILE_SHUTTLE_ID_ERT_SMALL
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_pizza
 	home_base = /datum/lazy_template/ert/pizza_station
-	probability = 1
+	probability = 2
 
 /datum/emergency_call/pizza/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
@@ -37,3 +37,4 @@
 
 /obj/effect/landmark/ert_spawns/distress_pizza
 	name = "Distress_Pizza"
+	icon_state = "spawn_distress_pizza"

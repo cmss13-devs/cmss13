@@ -2,8 +2,8 @@
 	name = "\improper Souto Slinger Supremo"
 	desc = "This appears to be a T-shirt cannon modified to fire cans of Souto at speeds fast enough to get them up into the top stands of a stadium. This can't be safe. Cobbled together in Havana."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/event.dmi'
-	icon_state = "supremo_w"
-	item_state = "supremo_w"
+	icon_state = "supremo"
+	item_state = "supremo"
 	w_class = SIZE_SMALL
 	fire_sound = 'sound/items/syringeproj.ogg'
 	attachable_allowed = list()
@@ -16,6 +16,10 @@
 	auto_retrieval_slot = WEAR_IN_BACK
 	start_automatic = TRUE
 	autofire_slow_mult = 0.8 //Fires FASTER when in Full Auto, that is the power of Souta
+
+/obj/item/weapon/gun/souto/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/souta)
 
 /obj/item/weapon/gun/souto/set_gun_config_values()
 	. = ..()

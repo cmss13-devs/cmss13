@@ -136,7 +136,7 @@
 	if(istype(O, /obj/vehicle/multitile))
 		var/obj/vehicle/multitile/R = O
 		R.take_damage_type(40 / A.acid_delay, "acid", src)
-		visible_message(SPAN_XENOWARNING("[src] vomits globs of vile stuff at \the [O]. It sizzles under the bubbling mess of acid!"), \
+		visible_message(SPAN_XENOWARNING("[src] vomits globs of vile stuff at \the [O]. It sizzles under the bubbling mess of acid!"),
 			SPAN_XENOWARNING("We vomit globs of vile stuff at [O]. It sizzles under the bubbling mess of acid!"), null, 5)
 		playsound(loc, "sound/bullets/acid_impact1.ogg", 25)
 		QDEL_IN(A, 20)
@@ -156,7 +156,7 @@
 	if(!isturf(O))
 		msg_admin_attack("[src.name] ([src.ckey]) spat acid on [O] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
 		attack_log += text("\[[time_stamp()]\] <font color='green'>Spat acid on [O]</font>")
-	visible_message(SPAN_XENOWARNING("[src] vomits globs of vile stuff all over [O]. It begins to sizzle and melt under the bubbling mess of acid!"), \
+	visible_message(SPAN_XENOWARNING("[src] vomits globs of vile stuff all over [O]. It begins to sizzle and melt under the bubbling mess of acid!"),
 	SPAN_XENOWARNING("We vomit globs of vile stuff all over [O]. It begins to sizzle and melt under the bubbling mess of acid!"), null, 5)
 	playsound(loc, "sound/bullets/acid_impact1.ogg", 25)
 
@@ -182,22 +182,23 @@
 		return
 	if(!client)
 		return
+	QDEL_NULL(observed_atom)
 	is_zoomed = 1
 	client.change_view(viewsize)
 	var/viewoffset = 32 * tileoffset
 	switch(dir)
 		if(NORTH)
-			client.pixel_x = 0
-			client.pixel_y = viewoffset
+			client.set_pixel_x(0)
+			client.set_pixel_y(viewoffset)
 		if(SOUTH)
-			client.pixel_x = 0
-			client.pixel_y = -viewoffset
+			client.set_pixel_x(0)
+			client.set_pixel_y(-viewoffset)
 		if(EAST)
-			client.pixel_x = viewoffset
-			client.pixel_y = 0
+			client.set_pixel_x(viewoffset)
+			client.set_pixel_y(0)
 		if(WEST)
-			client.pixel_x = -viewoffset
-			client.pixel_y = 0
+			client.set_pixel_x(-viewoffset)
+			client.set_pixel_y(0)
 
 	for (var/datum/action/xeno_action/onclick/toggle_long_range/action in actions)
 		action.on_zoom_in()
@@ -207,8 +208,8 @@
 	if(!client)
 		return
 	client.change_view(GLOB.world_view_size)
-	client.pixel_x = 0
-	client.pixel_y = 0
+	client.set_pixel_x(0)
+	client.set_pixel_y(0)
 	is_zoomed = 0
 	// Since theres several ways we can get here, we need to update the ability button state and handle action's specific effects
 	for (var/datum/action/xeno_action/onclick/toggle_long_range/action in actions)

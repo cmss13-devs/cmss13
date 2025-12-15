@@ -13,6 +13,7 @@
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
+	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_LEGS
 	flags_item = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE
 	specialty = "M35 pyrotechnician"
 	actions_types = list(/datum/action/item_action/toggle, /datum/action/item_action/specialist/fire_shield)
@@ -129,7 +130,7 @@
 	name = "Activate Fire Shield"
 	button.name = name
 	button.overlays.Cut()
-	var/image/IMG = image('icons/obj/items/clothing/cm_suits.dmi', button, "pyro_armor")
+	var/image/IMG = image('icons/obj/items/clothing/suits/suits_by_map/jungle.dmi', button, "pyro_armor")
 	button.overlays += IMG
 
 /datum/action/item_action/specialist/fire_shield/action_cooldown_check()
@@ -137,7 +138,7 @@
 	if (!istype(armor))
 		return FALSE
 
-	return !armor.can_activate
+	return armor.can_activate
 
 /datum/action/item_action/specialist/fire_shield/can_use_action()
 	var/mob/living/carbon/human/H = owner

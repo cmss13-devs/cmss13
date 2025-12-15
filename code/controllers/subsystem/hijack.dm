@@ -212,6 +212,10 @@ SUBSYSTEM_DEF(hijack)
 	current_run_progress_additive = 0
 	current_run_progress_multiplicative = 1
 
+///Called when the dropship has been called by the xenos
+/datum/controller/subsystem/hijack/proc/call_shuttle()
+	hijack_status = HIJACK_OBJECTIVES_SHIP_INBOUND
+
 ///Called when the xeno dropship crashes into the Almayer and announces the current status of various objectives to marines
 /datum/controller/subsystem/hijack/proc/announce_status_on_crash()
 	var/message = ""
@@ -267,14 +271,13 @@ SUBSYSTEM_DEF(hijack)
 
 	switch(announce)
 		if(1)
-			marine_announcement("Emergency fuel replenishment is at 50 percent. Tachyon field accelerators currently charging.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
+			marine_announcement("Emergency fuel replenishment is at 50%. Tachyon field accelerators currently charging.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
 		if(2)
-			marine_announcement("Emergency fuel replenishment is at 100 percent. Tachyon field accelerators fully charged, quantum jump initiating. Ensure constant supply of fuel to the tachyon field accelerators.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
+			marine_announcement("Emergency fuel replenishment is at 100%. Tachyon field accelerators fully charged, quantum jump initiating. Ensure constant supply of fuel to the tachyon field accelerators.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
 		if(3)
 			marine_announcement("Tachyon quantum jump progress at 50 percent. Ensure constant supply of fuel to the tachyon field accelerators.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
 		if(4)
 			marine_announcement("Tachyon quantum jump complete. Initiating docking procedures with [spaceport.name].", HIJACK_ANNOUNCE)
-
 
 /// Passes the ETA for status panels
 /datum/controller/subsystem/hijack/proc/get_evac_eta()
@@ -349,7 +352,7 @@ SUBSYSTEM_DEF(hijack)
 	sd_unlocked = TRUE
 	marine_announcement("Hyperdrive tachyon shunt no longer operable. Remaining fuel transferred to emergency escape vessels and on board fusion generators to permit scuttling.", HIJACK_ANNOUNCE)
 
-/datum/controller/subsystem/hijack/proc/on_generator_overload(obj/structure/machinery/power/reactor/source, new_overloading)
+/datum/controller/subsystem/hijack/proc/on_generator_overload(obj/structure/machinery/power/power_generator/reactor/source, new_overloading)
 	SIGNAL_HANDLER
 
 	if(!generator_ever_overloaded)

@@ -1642,18 +1642,18 @@
 /area/adminlevel/ert_station/pizza_station)
 "vI" = (
 /obj/structure/disposalpipe/segment,
-/obj/item/storage/backpack/marine/satchel{
+/obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	pixel_x = -1;
 	pixel_y = 6
 	},
-/obj/item/storage/backpack/marine/satchel{
+/obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	pixel_x = 3;
 	pixel_y = -2
@@ -2405,7 +2405,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/adminlevel/ert_station/pizza_station)
 "EH" = (
-/obj/structure/machinery/vending/cigarette{
+/obj/structure/machinery/vending/cigarette/koorlander/free{
 	pixel_y = 18;
 	layer = 3.01;
 	density = 0
@@ -3143,7 +3143,7 @@
 /turf/open/floor/solarpanel,
 /area/space)
 "OK" = (
-/obj/structure/machinery/vending/cigarette{
+/obj/structure/machinery/vending/cigarette/koorlander/free{
 	pixel_y = 3;
 	layer = 4.15
 	},

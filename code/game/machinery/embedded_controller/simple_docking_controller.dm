@@ -19,7 +19,7 @@
 
 /datum/computer/file/embedded_program/docking/simple/New(obj/structure/machinery/embedded_controller/M)
 	..(M)
-	memory["door_status"] = list(state = "closed", lock = "locked") //assume closed and locked in case the doors dont report in
+	memory["door_status"] = list(state = "closed", lock = "locked") //assume closed and locked in case the doors don't report in
 
 	if (istype(M, /obj/structure/machinery/embedded_controller/radio/simple_docking_controller))
 		var/obj/structure/machinery/embedded_controller/radio/simple_docking_controller/controller = M
@@ -33,7 +33,8 @@
 /datum/computer/file/embedded_program/docking/simple/receive_signal(datum/signal/signal, receive_method, receive_param)
 	var/receive_tag = signal.data["tag"]
 
-	if(!receive_tag) return
+	if(!receive_tag)
+		return
 
 	if(receive_tag==tag_door)
 		memory["door_status"]["state"] = signal.data["door_status"]

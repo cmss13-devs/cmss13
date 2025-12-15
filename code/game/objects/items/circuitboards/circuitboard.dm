@@ -2,8 +2,12 @@
 	w_class = SIZE_SMALL
 	name = "Circuit board"
 	icon = 'icons/obj/items/circuitboards.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/devices_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/devices_righthand.dmi',
+	)
 	icon_state = "id_mod"
-	item_state = "electronic"
+	item_state = "circuitboard"
 	flags_atom = FPRINT|CONDUCT
 	matter = list("metal" = 50, "glass" = 50)
 	var/build_path = null

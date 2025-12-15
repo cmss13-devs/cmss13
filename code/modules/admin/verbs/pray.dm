@@ -1,9 +1,10 @@
-/mob/verb/pray(msg as text)
+/mob/living/verb/pray(msg as text)
 	set category = "IC"
 	set name = "Pray"
 
 	msg = strip_html(msg)
-	if(!msg) return
+	if(!msg)
+		return
 
 	if(usr.client)
 		if(usr.client.prefs.muted & MUTE_PRAY)

@@ -2,7 +2,7 @@
 	name = "Faction Clash"
 	config_tag = "Faction Clash"
 	flags_round_type = MODE_THUNDERSTORM|MODE_FACTION_CLASH
-	toggleable_flags = MODE_NO_SNIPER_SENTRY|MODE_NO_ATTACK_DEAD|MODE_NO_STRIPDRAG_ENEMY|MODE_STRONG_DEFIBS|MODE_BLOOD_OPTIMIZATION|MODE_NO_COMBAT_CAS|MODE_INDESTRUCTIBLE_SPLINTS|MODE_MORTAR_LASER_WARNING
+	starting_round_modifiers = list(/datum/gamemode_modifier/blood_optimization, /datum/gamemode_modifier/defib_past_armor, /datum/gamemode_modifier/disable_combat_cas, /datum/gamemode_modifier/disable_ib, /datum/gamemode_modifier/disable_attacking_corpses, /datum/gamemode_modifier/disable_long_range_sentry, /datum/gamemode_modifier/disable_stripdrag_enemy, /datum/gamemode_modifier/indestructible_splints, /datum/gamemode_modifier/mortar_laser_warning, /datum/gamemode_modifier/no_body_c4)
 
 /datum/game_mode/extended/faction_clash/get_roles_list()
 	return GLOB.ROLES_FACTION_CLASH

@@ -206,10 +206,12 @@
 	// If we were to send to a channel we don't have, drop it.
 	return null
 
-/obj/item/device/radio/talk_into(mob/living/M as mob, message, channel, verb = "says", datum/language/speaking = null, listening_device = FALSE)
-	if(!on) return // the device has to be on
+/obj/item/device/radio/talk_into(mob/living/M as mob, message, channel, verb = "says", datum/language/speaking = null, listening_device = NOT_LISTENING_BUG)
+	if(!on)
+		return // the device has to be on
 	//  Fix for permacell radios, but kinda eh about actually fixing them.
-	if(!M || !message) return
+	if(!M || !message)
+		return
 
 	//  Uncommenting this. To the above comment:
 	// The permacell radios aren't suppose to be able to transmit, this isn't a bug and this "fix" is just making radio wires useless. -Giacom
@@ -226,6 +228,9 @@
 		the signal gets processed and logged, and an audible transmission gets sent
 		to each individual headset.
 	*/
+
+	if(should_block_game_interaction(M))
+		return
 
 	//#### Grab the connection datum ####//
 	var/datum/radio_frequency/connection = handle_message_mode(M, message, channel)
@@ -278,10 +283,14 @@
 	var/filter_type = RADIO_FILTER_TYPE_INTERCOM_AND_BOUNCER
 	if(subspace_transmission)
 		filter_type = RADIO_FILTER_TYPE_ALL
-		if(!src.ignore_z)
+		if(!ignore_z)
 			target_zs = get_target_zs(connection.frequency)
-			if (isnull(target_zs))
-				//We don't have a radio connection on our Z-level, abort!
+			if(isnull(target_zs))
+				//We don't have a radio connection on our Z-level, abort for all but maybe ghosts
+				for(var/mob/dead/observer as anything in GLOB.observer_list)
+					// Ghosts that listen to radio normally ignore radio whispers, but this radio transmission failed
+					if(CHECK_MULTIPLE_BITFIELDS(observer?.client?.prefs?.toggles_chat, CHAT_GHOSTEARS|CHAT_GHOSTRADIO))
+						observer.hear_say(message, verb, speaking, italics=TRUE, speaker=M) // Intentionally omitting message_mode
 				return
 
 	/* --- Intercoms can only broadcast to other intercoms, but shortwave radios can broadcast to shortwave radios and intercoms --- */
@@ -416,7 +425,8 @@
 			//Foreach goto(83)
 		add_fingerprint(user)
 		return
-	else return
+	else
+		return
 
 /obj/item/device/radio/emp_act(severity)
 	. = ..()

@@ -3,7 +3,7 @@
 /obj/item/handheld_distress_beacon
 	name = "\improper PMC handheld distress beacon"
 	desc = "A standard handheld distress beacon. Generally used by teams who may be out of regular communications range but must signal for assistance. This one is branded with a Weyland Yutani symbol and sold en masse to colonies across the Neroid Sector."
-	icon = 'icons/obj/items/handheld_distress_beacon.dmi'
+	icon = 'icons/obj/items/devices.dmi'
 	icon_state = "beacon_inactive"
 	w_class = SIZE_SMALL
 
@@ -51,12 +51,12 @@
 
 	var/beacon_call_buttons
 	for(var/current_ert_num in 1 to length(ert_paths))
-		beacon_call_buttons += "(<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distress_handheld=\ref[user];ert_name=[ert_paths[current_ert_num]]'>[ert_short_names[current_ert_num]]</A>) "
+		beacon_call_buttons += "(<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distress_handheld=\ref[user];ert_name=[ert_paths[current_ert_num]]'>[ert_short_names[current_ert_num]]</A>) "
 
 	for(var/client/admin_client in GLOB.admins)
 		if((R_ADMIN|R_MOD) & admin_client.admin_holder.rights)
-			playsound_client(admin_client,'sound/effects/sos-morse-code.ogg',10)
-	message_admins("[key_name(user)] has used a [beacon_type] for the reason '[SPAN_ORANGE(reason)]'! [CC_MARK(user)] [beacon_call_buttons](<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];deny_distress_handheld=\ref[user]'>DENY</A>) [ADMIN_JMP_USER(user)] [CC_REPLY(user)]")
+			playsound_client(admin_client,'sound/effects/sos-morse-code.ogg', 10)
+	message_admins("[key_name(user)] has used a [beacon_type] for the reason '[SPAN_ORANGE(reason)]'! [CC_MARK(user)] [beacon_call_buttons](<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];deny_distress_handheld=\ref[user]'>DENY</A>) [ADMIN_JMP_USER(user)] [CC_REPLY(user)]")
 	to_chat(user, SPAN_NOTICE("A distress beacon request has been sent to [recipient]."))
 
 /// CMB distress beacon held by CMB Marshal for signalling distress to Anchorpoint Station
@@ -66,9 +66,9 @@
 
 	beacon_type = "CMB beacon"
 	recipient = "Anchorpoint Station"
-	// "CMB - Patrol Team - Marshals in Distress (Friendly)", "CMB - Anchorpoint Station Colonial Marine QRF (Friendly)"
-	ert_paths = list(/datum/emergency_call/cmb/alt, /datum/emergency_call/cmb/anchorpoint)
-	ert_short_names = list("SEND CMB", "SEND QRF")
+	// "CMB - Patrol Team - Marshals in Distress (Friendly)", "CMB - Anchorpoint Station Colonial Marine QRF (Friendly)", "CMB - Riot Control Unit - Marshals in Distress (Friendly)"
+	ert_paths = list(/datum/emergency_call/cmb/alt, /datum/emergency_call/cmb/anchorpoint, /datum/emergency_call/cmb/riot_control/alt)
+	ert_short_names = list("SEND CMB", "SEND QRF", "SEND CMB RIOT")
 
 // Corporate Lawyer beacon available for 50 points at the CLs briefcase
 /obj/item/handheld_distress_beacon/lawyer
@@ -87,8 +87,8 @@
 
 	beacon_type = "Bodyguard beacon"
 	recipient = "the Corporate Security Division"
-	ert_paths = list(/datum/emergency_call/goon/bodyguard) // "Weyland-Yutani Goon (Executive Bodyguard Detail)"
-	ert_short_names = list("SEND BODYGUARD")
+	ert_paths = list(/datum/emergency_call/wy_bodyguard, /datum/emergency_call/wy_bodyguard/goon, /datum/emergency_call/wy_bodyguard/pmc/sec, /datum/emergency_call/wy_bodyguard/pmc, /datum/emergency_call/wy_bodyguard/commando, /datum/emergency_call/wy_bodyguard/android) // "Weyland-Yutani Goon (Executive Bodyguard Detail)"
+	ert_short_names = list("SEND W-Y GUARD", "SEND GOON", "SEND PMC RIOT", "SEND PMC", "SEND COMMANDO", "SEND COMBAT ANDROID")
 
 // Provost office distress beacon held by Inspectors+
 /obj/item/handheld_distress_beacon/provost

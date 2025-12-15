@@ -295,7 +295,7 @@
 /turf/open/floor/whitepurplecorner/east,
 /area/lv624/lazarus/fitness)
 "Vb" = (
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/colony/south_medbay_road)
 "Vo" = (
 /obj/structure/window/framed/colony,
@@ -319,7 +319,7 @@
 /area/lv624/lazarus/fitness)
 "ZM" = (
 /obj/structure/fence,
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/colony/south_medbay_road)
 
 (1,1,1) = {"

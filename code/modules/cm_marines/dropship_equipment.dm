@@ -3,7 +3,7 @@
 /obj/structure/dropship_equipment
 	density = TRUE
 	anchored = TRUE
-	icon = 'icons/obj/structures/props/dropship_equipment.dmi'
+	icon = 'icons/obj/structures/props/dropship/dropship_equipment.dmi'
 	climbable = TRUE
 	layer = ABOVE_OBJ_LAYER //so they always appear above attach points when installed
 	var/shorthand
@@ -47,6 +47,19 @@
 	SPAN_DANGER("You slash at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
 	return XENO_ATTACK_ACTION
+
+/obj/structure/dropship_equipment/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	if(unslashable || health <= 0)
+		return TAILSTAB_COOLDOWN_NONE
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	update_health(xeno.melee_damage_upper)
+	if(health <= 0)
+		xeno.visible_message(SPAN_DANGER("[xeno] smashes [src] with its tail!"),
+		SPAN_DANGER("We smash [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	else
+		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
+		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	return TAILSTAB_COOLDOWN_NORMAL
 
 /obj/structure/dropship_equipment/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/powerloader_clamp))
@@ -116,7 +129,9 @@
 	if(ship_base)
 		duration_time = 70 //uninstalling equipment takes more time
 		point_loc = ship_base.loc
-	if(!do_after(user, duration_time * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+	if(user.action_busy)
+		return
+	if(!do_after(user, duration_time * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, target_flags = INTERRUPT_DIFF_LOC, target = src))
 		return
 	if(point_loc && ship_base && ship_base.loc != point_loc) //dropship flew away
 		return
@@ -149,7 +164,8 @@
 
 /obj/structure/dropship_equipment/proc/equipment_interact(mob/user)
 	if(is_interactable)
-		if(linked_console.selected_equipment) return
+		if(linked_console.selected_equipment)
+			return
 		linked_console.selected_equipment = src
 		to_chat(user, SPAN_NOTICE("You select [src]."))
 
@@ -319,7 +335,7 @@
 
 /obj/structure/dropship_equipment/sentry_holder/Destroy()
 	if(deployed_turret)
-		QDEL_NULL(deployed_turret.linked_cam)
+		QDEL_NULL(deployed_turret)
 	. = ..()
 
 
@@ -467,7 +483,7 @@
 //================= FUEL EQUIPMENT =================//
 
 /obj/structure/dropship_equipment/fuel
-	icon = 'icons/obj/structures/props/dropship_equipment64.dmi'
+	icon = 'icons/obj/structures/props/dropship/dropship_equipment64.dmi'
 	equip_categories = list(DROPSHIP_FUEL_EQP)
 
 
@@ -632,7 +648,7 @@
 /// CAS Dropship weaponry, used for aerial bombardment
 /obj/structure/dropship_equipment/weapon
 	name = "abstract weapon"
-	icon = 'icons/obj/structures/props/dropship_equipment64.dmi'
+	icon = 'icons/obj/structures/props/dropship/dropship_equipment64.dmi'
 	equip_categories = list(DROPSHIP_WEAPON)
 	bound_width = 32
 	bound_height = 64
@@ -757,7 +773,7 @@
 
 /obj/structure/dropship_equipment/weapon/heavygun
 	name = "\improper GAU-21 30mm cannon"
-	desc = "A dismounted GAU-21 'Rattler' 30mm rotary cannon. It seems to be missing its feed links and has exposed connection wires. Capable of firing 5200 rounds a minute, feared by many for its power. Earned the nickname 'Rattler' from the vibrations it would cause on dropships in its initial production run. Accepts PGU-100/PGU-105 ammo crates"
+	desc = "A dismounted GAU-21 'Rattler' 30mm rotary cannon. It seems to be missing its feed links and has exposed connection wires. Capable of firing 5200 rounds a minute, feared by many for its power. Earned the nickname 'Rattler' from the vibrations it would cause on dropships in its initial production run. Accepts PGU-100/PGU-105 ammo crates."
 	icon_state = "30mm_cannon"
 	firing_sound = 'sound/effects/gau_incockpit.ogg'
 	point_cost = 400
@@ -769,8 +785,10 @@
 	if(ammo_equipped)
 		icon_state = "30mm_cannon_loaded[ammo_equipped.ammo_count?"1":"0"]"
 	else
-		if(ship_base) icon_state = "30mm_cannon_installed"
-		else icon_state = "30mm_cannon"
+		if(ship_base)
+			icon_state = "30mm_cannon_installed"
+		else
+			icon_state = "30mm_cannon"
 
 
 /obj/structure/dropship_equipment/weapon/rocket_pod
@@ -790,8 +808,10 @@
 	if(ammo_equipped && ammo_equipped.ammo_count)
 		icon_state = "rocket_pod_loaded[ammo_equipped.ammo_id]"
 	else
-		if(ship_base) icon_state = "rocket_pod_installed"
-		else icon_state = "rocket_pod"
+		if(ship_base)
+			icon_state = "rocket_pod_installed"
+		else
+			icon_state = "rocket_pod"
 
 
 /obj/structure/dropship_equipment/weapon/minirocket_pod
@@ -811,8 +831,10 @@
 		if (ammo_equipped.ammo_count == ammo_equipped.max_ammo_count)
 			icon_state = "[initial(icon_state)]_loaded"
 	else
-		if(ship_base) icon_state = "minirocket_pod_installed"
-		else icon_state = "minirocket_pod"
+		if(ship_base)
+			icon_state = "minirocket_pod_installed"
+		else
+			icon_state = "minirocket_pod"
 
 /obj/structure/dropship_equipment/weapon/minirocket_pod/deplete_ammo()
 	..()
@@ -834,14 +856,16 @@
 	if(ammo_equipped && ammo_equipped.ammo_count)
 		icon_state = "laser_beam_loaded"
 	else
-		if(ship_base) icon_state = "laser_beam_installed"
-		else icon_state = "laser_beam"
+		if(ship_base)
+			icon_state = "laser_beam_installed"
+		else
+			icon_state = "laser_beam"
 
 /obj/structure/dropship_equipment/weapon/launch_bay
 	name = "\improper LAG-14 Internal Sentry Launcher"
 	icon_state = "launch_bay"
 	desc = "A launch bay to drop special ordnance. Fits inside the dropship's crew weapon emplacement. Moving this will require some sort of lifter. Accepts the A/C-49-P Air Deployable Sentry as ammunition."
-	icon = 'icons/obj/structures/props/dropship_equipment.dmi'
+	icon = 'icons/obj/structures/props/dropship/dropship_equipment.dmi'
 	firing_sound = 'sound/weapons/gun_flare_explode.ogg'
 	firing_delay = 10 //1 seconds
 	bound_height = 32
@@ -1083,8 +1107,15 @@
 		target_data["ref"] = stretcher_ref
 
 		var/mob/living/carbon/human/occupant = stretcher.buckled_mob
+		var/obj/structure/closet/bodybag/cryobag = stretcher.buckled_bodybag
+		if(!occupant && cryobag)
+			occupant = locate(/mob/living/carbon/human) in cryobag
+			target_data["occupant"] = "(Empty stasis bag)"
 		if(occupant)
-			target_data["occupant"] = occupant.name
+			if(cryobag)
+				target_data["occupant"] = "(Stasis bag) " + occupant.name
+			else
+				target_data["occupant"] = occupant.name
 			target_data["time_of_death"] = occupant.tod
 			target_data["damage"] = list(
 				"hp" = occupant.health,
@@ -1105,7 +1136,7 @@
 	busy_winch = TRUE
 	playsound(loc, 'sound/machines/medevac_extend.ogg', 40, 1)
 	flick("medevac_system_active", src)
-	user.visible_message(SPAN_NOTICE("[user] activates [src]'s winch."), \
+	user.visible_message(SPAN_NOTICE("[user] activates [src]'s winch."),
 						SPAN_NOTICE("You activate [src]'s winch."))
 	sleep(30)
 
@@ -1249,7 +1280,7 @@
 			continue
 		var/recovery_object
 		if(fulton.attached_atom)
-			recovery_object = fulton.attached_atom.name
+			recovery_object = strip_improper(fulton.attached_atom.name)
 		else
 			recovery_object = "Empty"
 		.["[recovery_object]"] = fulton
@@ -1306,7 +1337,7 @@
 	busy_winch = TRUE
 	playsound(loc, 'sound/machines/medevac_extend.ogg', 40, 1)
 	flick("fulton_system_active", src)
-	user.visible_message(SPAN_NOTICE("[user] activates [src]'s winch."), \
+	user.visible_message(SPAN_NOTICE("[user] activates [src]'s winch."),
 						SPAN_NOTICE("You activate [src]'s winch."))
 	sleep(30)
 
@@ -1368,7 +1399,8 @@
 	// no warning sound and no travel time
 	last_fired = world.time
 
-	if(locate(/obj/structure/dropship_equipment/electronics/targeting_system) in linked_shuttle.equipments) ammo_accuracy_range = max(ammo_accuracy_range - 2, 0)
+	if(locate(/obj/structure/dropship_equipment/electronics/targeting_system) in linked_shuttle.equipments)
+		ammo_accuracy_range = max(ammo_accuracy_range - 2, 0)
 
 	ammo_accuracy_range /= 2 //buff for basically pointblanking the ground
 

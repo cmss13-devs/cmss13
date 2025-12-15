@@ -549,6 +549,14 @@
 	xeno_icon_state = "medicpack"
 	xeno_types = list(/mob/living/carbon/xenomorph/runner, /mob/living/carbon/xenomorph/praetorian, /mob/living/carbon/xenomorph/drone, /mob/living/carbon/xenomorph/warrior, /mob/living/carbon/xenomorph/defender, /mob/living/carbon/xenomorph/sentinel, /mob/living/carbon/xenomorph/spitter)
 
+/obj/item/storage/backpack/marine/saddle
+	name = "\improper USCM XX-121 Saddle"
+	desc = "A saddle with straps designed to fit around a XX-121 specimen. Not sure who would be stupid enough to try and put this on one."
+	item_state = "marinepack_medic"
+	xeno_icon_state = "saddlebags"
+	xeno_types = list(/mob/living/carbon/xenomorph/runner)
+
+
 /obj/item/storage/backpack/marine/k9_synth
 	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/UA.dmi'
 	icon_override = 'icons/mob/humans/species/synth_k9/onmob/synth_k9_overlays.dmi'

@@ -418,7 +418,7 @@
 
 /obj/item/computer3_part
 	name = "computer part"
-	desc = "Holy jesus you donnit now"
+	desc = "Holy jesus you donnit now."
 	gender = PLURAL
 	icon = 'icons/obj/structures/machinery/stock_parts.dmi'
 	icon_state = "hdd1"
@@ -490,7 +490,7 @@
 
 /obj/item/toy/plush
 	name = "generic plushie"
-	desc = "perfectly generic"
+	desc = "Perfectly generic."
 	icon = 'icons/obj/items/toy.dmi'
 	icon_state = "debug"
 	w_class = SIZE_SMALL
@@ -535,12 +535,12 @@
 
 /obj/item/toy/plush/gnarp
 	name = "gnarp plush"
-	desc = "gnarp gnarp."
+	desc = "Gnarp gnarp."
 	icon_state = "gnarp"
 
 /obj/item/toy/plush/gnarp/alt
 	name = "gnarp plush"
-	desc = "gnarp gnarp."
+	desc = "Gnarp gnarp."
 	icon_state = "gnarp_alt"
 
 /obj/item/toy/plush/therapy

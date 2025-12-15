@@ -593,4 +593,19 @@ GLOBAL_LIST_INIT(cm_vending_clothing_researcher, list(
 		/obj/item/clothing/accessory/patch/medic_patch,
 	)
 
+/obj/effect/essentials_set/medical/doctor/field
+	spawned_gear_list = list(
+		/obj/item/device/defibrillator,
+		/obj/item/storage/firstaid/adv,
+		/obj/item/device/healthanalyzer,
+		/obj/item/tool/surgery/surgical_line,
+		/obj/item/tool/surgery/synthgraft,
+		/obj/item/clothing/accessory/stethoscope,
+		/obj/item/device/flashlight/pen,
+		/obj/item/storage/syringe_case,
+		/obj/structure/bed/portable_surgery,
+		/obj/structure/bed/roller,
+	)
+
+
 

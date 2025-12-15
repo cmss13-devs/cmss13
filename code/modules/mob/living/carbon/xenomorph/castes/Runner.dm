@@ -115,8 +115,8 @@
 		return FALSE
 	return TRUE
 
-/mob/living/carbon/xenomorph/runner/resisted_against(datum/source)
-	unbuckle_mob(source)
+///mob/living/carbon/xenomorph/runner/resist(datum/source)
+//	unbuckle_mob(source)
 
 /datum/behavior_delegate/runner_base
 	name = "Base Runner Behavior Delegate"

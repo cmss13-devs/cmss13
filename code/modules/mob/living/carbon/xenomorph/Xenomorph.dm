@@ -1149,6 +1149,16 @@
 		//If we somehow use all 999 numbers fallback on 0
 		nicknumber = 0
 
+/**
+ * Checks if user can mount src
+ *
+ * Arguments:
+ * * user - The mob trying to mount
+ * * target_mounting - Is the target initiating the mounting process?
+ */
+/mob/living/carbon/xenomorph/proc/can_mount(mob/living/user, target_mounting = FALSE)
+	return FALSE
+
 /proc/setup_xenomorph(mob/living/carbon/xenomorph/target, mob/new_player/new_player, is_late_join = FALSE)
 	new_player.spawning = TRUE
 	new_player.close_spawn_windows()
@@ -1157,3 +1167,4 @@
 	if(new_player.mind)
 		new_player.mind_initialize()
 		new_player.mind.transfer_to(target, TRUE)
+

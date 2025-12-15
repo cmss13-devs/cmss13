@@ -230,12 +230,9 @@
 	item_state = "labcoatg"
 
 	//I mean, it says it is sturdy.
-	armor_melee = CLOTHING_ARMOR_LOW
-	armor_bullet = CLOTHING_ARMOR_LOW
-	armor_laser = CLOTHING_ARMOR_VERYLOW
-	armor_energy = CLOTHING_ARMOR_VERYLOW
 	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_LOW
 
 /obj/item/clothing/suit/storage/labcoat/wy
 	name = "W-Y researcher's lab coat"
@@ -247,8 +244,7 @@
 	)
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_LOW
-	armor_laser = CLOTHING_ARMOR_VERYLOW
-	armor_energy = CLOTHING_ARMOR_VERYLOW
+	armor_laser = CLOTHING_ARMOR_LOW
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bomb = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_LOW

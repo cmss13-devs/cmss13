@@ -556,7 +556,6 @@
 	xeno_icon_state = "saddlebags"
 	xeno_types = list(/mob/living/carbon/xenomorph/runner)
 
-
 /obj/item/storage/backpack/marine/k9_synth
 	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/UA.dmi'
 	icon_override = 'icons/mob/humans/species/synth_k9/onmob/synth_k9_overlays.dmi'

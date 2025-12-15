@@ -103,9 +103,8 @@
 	name = "offhand"
 	icon = 'icons/obj/items/weapons.dmi'
 	icon_state = "offhand"
-	w_class = WEIGHT_CLASS_HUGE
+	w_class = SIZE_HUGE
 	flags_item = ITEM_ABSTRACT | DELONDROP | NOBLUDGEON
-	resistance_flags = INDESTRUCTIBLE | UNACIDABLE
 	var/mob/living/carbon/rider
 	var/mob/living/parent
 	var/selfdeleting = FALSE

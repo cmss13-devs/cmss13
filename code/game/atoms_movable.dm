@@ -11,6 +11,7 @@
 	var/mob/pulledby = null
 	var/rebounds = FALSE
 	var/rebounding = FALSE // whether an object that was launched was rebounded (to prevent infinite recursive loops from wall bouncing)
+	var/list/mob/living/buckled_mobs // mobs buckled to this mob
 
 	var/acid_damage = 0 //Counter for stomach acid damage. At ~60 ticks, dissolved
 
@@ -355,3 +356,14 @@
 	if(HAS_TRAIT(src, TRAIT_HAULED)) //we do not spin houled humans
 		return
 	INVOKE_ASYNC(src, PROC_REF(SpinAnimation), 5, 2)
+
+/atom/movable/proc/unbuckle_mob(mob/living/buckled_mob)
+	SIGNAL_HANDLER
+	if(buckled_mob && buckled_mob.buckled == src)
+		buckled_mob.clear_alert(ALERT_BUCKLED)
+		buckled_mob.set_buckled(null)
+		buckled_mob.anchored = initial(buckled_mob.anchored)
+
+		var/mob = buckled_mob
+		REMOVE_TRAITS_IN(buckled_mob, TRAIT_SOURCE_BUCKLE)
+		buckled_mob = null

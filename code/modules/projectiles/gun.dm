@@ -2177,7 +2177,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	return gun_user
 
 /obj/item/weapon/gun/proc/fire_into_air(mob/user)
-	if(!user || !isturf(user.loc) || (!in_chamber && (!current_mag || !current_mag.current_rounds))) // this drove me insane to figure out that unload chamber wasnt the problem
+	if(!user || !isturf(user.loc))
 		return
 
 	var/turf/gun_turf = user.loc
@@ -2189,20 +2189,42 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	if(!skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_MASTER)) // XO and CO
 		return TRUE
 
+	user.visible_message(SPAN_DANGER(uppertext("[user] AIMS THEIR [name] INTO THE AIR...")),
+	SPAN_DANGER(uppertext("YOU AIM YOUR [name] INTO THE AIR...")))
+
 	if(user.action_busy)
 		return
 
-	if(!do_after(user, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+	if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		return
 
 	// this code block handles when the gun is actually 'fired'
+	if(flags_gun_features & GUN_TRIGGER_SAFETY) // i mean it HAS to be a deliberate action to be on safety like this right
+		user.visible_message(SPAN_HIGHDANGER(uppertext("...but [user] just leaves the [name] raised in the air...")),
+	SPAN_HIGHDANGER(uppertext("...but you leave the [name] raised in the air as a warning, not like you can fire it when it's on safety anyway...")))
+		return
+
 	if(flags_gun_features & GUN_INTERNAL_MAG)
-		if(!current_mag || !current_mag.current_rounds)
+		if(!current_mag.chamber_closed)
+			click_empty(user)
+			user.visible_message(SPAN_HIGHDANGER(uppertext("...but the [name] refuses to fire due to the cylinder being open, embarassing...")),
+	SPAN_HIGHDANGER(uppertext("...but your [name] refuses to fire due to the cylinder being open, embarassing...")))
 			return
+
+		if(!current_mag || !current_mag.current_rounds)
+			click_empty(user)
+			user.visible_message(SPAN_HIGHDANGER(uppertext("...but the [name] dry fires with a resolute click! Embarassing...")),
+	SPAN_HIGHDANGER(uppertext("...but your [name] dry fires with quite the authoratitively embarassing click...")))
+			return
+
 		current_mag.current_rounds--
 	else
 		if(!in_chamber && !ready_in_chamber())
+			click_empty(user)
+			user.visible_message(SPAN_HIGHDANGER(uppertext("...but the [name] dry fires with a resolute click! Embarassing...")),
+	SPAN_HIGHDANGER(uppertext("...but your [name] dry fires with quite the authoratitively embarassing click...")))
 			return
+
 		in_chamber = null
 		ready_in_chamber() // obviously want to load the next round if any
 

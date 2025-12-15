@@ -13,6 +13,7 @@
 	possible_transfer_amounts = list(1,5,10)
 	center_of_mass = "x=16;y=6"
 	volume = 50
+	var/static_container_icon = FALSE //do I change my icon when a different reagent is inside me? Right now, yes.
 
 /obj/item/reagent_container/food/condiment/attack(mob/M, mob/user)
 	if(!reagents?.total_volume)
@@ -83,7 +84,7 @@
 		to_chat(user, SPAN_NOTICE(" You transfer [trans] units of the condiment to [target]."))
 
 /obj/item/reagent_container/food/condiment/on_reagent_change()
-	if(icon_state == "saltshakersmall" || icon_state == "peppermillsmall" || icon_state == "hotsauce_cholula" || icon_state == "hotsauce_franks" || icon_state == "hotsauce_sriracha" || icon_state == "hotsauce_tabasco" || icon_state == "coldsauce_cole" || icon_state == "chocolate_syrup")
+	if(static_container_icon) //Noooo, don't turn me into a marketable enzyme/condiment bottle, I have my own icon and description!
 		return
 	if(length(reagents.reagent_list) > 0)
 		switch(reagents.get_master_reagent_id())
@@ -158,8 +159,9 @@
 
 /obj/item/reagent_container/food/condiment/chocolate_syrup
 	name = "\improper Chocolate Syrup bottle"
-	desc = "A bottle of chocolate syrup, the foundation of many decadent treats... Or, you can sip it directly from the bottle like the child you are."
+	desc = "A bottle of Weyland-Yutani brand chocolate syrup for adding chocolate flavor to space treats, or for sipping directly from the nozzle like a little kid."
 	icon_state = "chocolate_syrup"
+	static_container_icon = TRUE //Yes, I do have my own sprite.
 	possible_transfer_amounts = list(1,5,10,15,20,60) //the thought of marines having fisticuffs because somebody drank all the chocolate syrup is beyond hilarious.
 	amount_per_transfer_from_this = 5
 	volume = 60
@@ -173,6 +175,7 @@
 	name = "Salt Shaker" // a large one.
 	desc = "Salt. From space oceans, presumably."
 	icon_state = "saltshakersmall"
+	static_container_icon = TRUE
 	possible_transfer_amounts = list(1,20) //for clown turning the lid off
 	amount_per_transfer_from_this = 1
 	volume = 20
@@ -185,6 +188,7 @@
 	name = "Pepper Mill"
 	desc = "Often used to flavor food or make people sneeze."
 	icon_state = "peppermillsmall"
+	static_container_icon = TRUE
 	possible_transfer_amounts = list(1,20) //for clown turning the lid off
 	amount_per_transfer_from_this = 1
 	volume = 20
@@ -196,6 +200,7 @@
 /obj/item/reagent_container/food/condiment/hotsauce
 	icon = 'icons/obj/items/food/condiments.dmi'
 	name = "hotsauce parent object"
+	static_container_icon = TRUE
 	possible_transfer_amounts = list(1,5,60) //60 allows marines to chug the bottle in one go.
 	volume = 60
 
@@ -258,6 +263,7 @@
 	name = "Cole's Cold bottle"
 	desc = "A bottle of cold sauce locally produced in Shivas Snowball. You probably shouldn't drink this on its own."
 	icon_state = "coldsauce_cole"
+	static_container_icon = TRUE
 
 /obj/item/reagent_container/food/condiment/coldsauce/Initialize()
 	. = ..()

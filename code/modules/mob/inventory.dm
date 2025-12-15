@@ -38,9 +38,9 @@
  * * typepath: typepath to check for
  */
 /mob/proc/is_holding_item_of_type(typepath)
-	if(istype(get_active_held_item(), typepath))
+	if(istype(get_held_item(), typepath))
 		return TRUE
-	if(istype(get_inactive_held_item(), typepath))
+	if(istype(get_inactive_hand(), typepath))
 		return TRUE
 	return FALSE
 

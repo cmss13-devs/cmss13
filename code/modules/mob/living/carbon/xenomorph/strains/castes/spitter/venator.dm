@@ -83,8 +83,6 @@
 	xeno.ammo = GLOB.ammo_list[ammo]
 
 
-
-
 /datum/action/xeno_action/activable/xeno_spit/bombard/venetor/corosive_spit
 	name = "corosive spit"
 	action_icon_state = "xeno_spit"

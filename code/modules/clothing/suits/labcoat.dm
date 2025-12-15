@@ -1,6 +1,6 @@
 /obj/item/clothing/suit/storage/labcoat
 	name = "lab coat"
-	desc = "A suit that protects against minor chemical spills."
+	desc = "A suit that protects against minor chemical spills and biological hazards."
 	icon_state = "labcoat"
 	item_state = "labcoat" //Is this even used for anything?
 	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
@@ -52,11 +52,11 @@
 		/obj/item/device/motiondetector,
 
 	)
-	armor_melee = CLOTHING_ARMOR_NONE
-	armor_bullet = CLOTHING_ARMOR_NONE
+	armor_melee = CLOTHING_ARMOR_VERYLOW //better than nekked
+	armor_bullet = CLOTHING_ARMOR_VERYLOW //better than nekked
 	armor_laser = CLOTHING_ARMOR_NONE
 	armor_energy = CLOTHING_ARMOR_NONE
-	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_VERYLOW //I mean, chemical mishaps happen.
 	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
@@ -86,31 +86,31 @@
 
 /obj/item/clothing/suit/storage/labcoat/red
 	name = "red lab coat"
-	desc = "A suit that protects against minor chemical spills. This one is red."
+	desc = "A suit that protects against minor chemical spills and biological hazards. This one is red."
 	icon_state = "red_labcoat"
 	item_state = "red_labcoat"
 
 /obj/item/clothing/suit/storage/labcoat/blue
 	name = "blue lab coat"
-	desc = "A suit that protects against minor chemical spills. This one is blue."
+	desc = "A suit that protects against minor chemical spills and biological hazards. This one is blue."
 	icon_state = "blue_labcoat"
 	item_state = "blue_labcoat"
 
 /obj/item/clothing/suit/storage/labcoat/purple
 	name = "purple lab coat"
-	desc = "A suit that protects against minor chemical spills. This one is purple."
+	desc = "A suit that protects against minor chemical spills and biological hazards. This one is purple."
 	icon_state = "purple_labcoat"
 	item_state = "purple_labcoat"
 
 /obj/item/clothing/suit/storage/labcoat/orange
 	name = "orange lab coat"
-	desc = "A suit that protects against minor chemical spills. This one is orange."
+	desc = "A suit that protects against minor chemical spills and biological hazards. This one is orange."
 	icon_state = "orange_labcoat"
 	item_state = "orange_labcoat"
 
 /obj/item/clothing/suit/storage/labcoat/green
 	name = "green lab coat"
-	desc = "A suit that protects against minor chemical spills. This one is green."
+	desc = "A suit that protects against minor chemical spills and biological hazards. This one is green."
 	icon_state = "green_labcoat"
 	item_state = "green_labcoat"
 
@@ -122,30 +122,105 @@
 
 /obj/item/clothing/suit/storage/labcoat/genetics
 	name = "Geneticist's lab coat"
-	desc = "A suit that protects against minor chemical spills. Has a blue stripe on the shoulder."
+	desc = "A suit that protects against minor chemical spills and biological hazards. Has a blue stripe on the shoulder."
 	icon_state = "labcoat_gen"
+
+
+/obj/item/clothing/suit/storage/labcoat/doctor
+	name = "doctor's lab coat"
+	desc = "A suit that protects against minor chemical spills and biological hazards. Its collar and shoulders are colored navy blue to match the doctor's scrubs."
+	icon_state = "d_labcoat"
+
+/obj/item/clothing/suit/storage/labcoat/doctor/short
+	name = "high-cut doctor's lab coat"
+	desc = "A suit that protects against minor chemical spills and biological hazards. Its collar and shoulders are colored navy blue to match the doctor's scrubs. It also cuts off at the waist."
+	icon_state = "d_labcoat_short"
+
+/obj/item/clothing/suit/storage/labcoat/doctor/long
+	name = "low-cut doctor's lab coat"
+	desc = "A suit that protects against minor chemical spills and biological hazards. Its collar and shoulders are colored navy blue to match the doctor's scrubs. It also drapes down quite low."
+	icon_state = "d_labcoat_long"
+
+/obj/item/clothing/suit/storage/labcoat/surgeon
+	name = "surgeon's lab coat"
+	desc = "A suit that protects against minor chemical spills and biological hazards. Its collar and shoulders are colored jade green to match the surgeon's scrubs."
+	icon_state = "s_labcoat"
+
+/obj/item/clothing/suit/storage/labcoat/surgeon/short
+	name = "high-cut surgeon's lab coat"
+	desc = "A suit that protects against minor chemical spills and biological hazards. Its collar and shoulders are colored jade green to match the surgeon's scrubs. It also cuts off at the waist."
+	icon_state = "s_labcoat_short"
+
+/obj/item/clothing/suit/storage/labcoat/surgeon/long
+	name = "low-cut doctor's lab coat"
+	desc = "A suit that protects against minor chemical spills and biological hazards. Its collar and shoulders are colored jade green to match the surgeon's scrubs. It also drapes down quite low."
+	icon_state = "s_labcoat_long"
 
 /obj/item/clothing/suit/storage/labcoat/pharmacist
 	name = "pharmaceutical physician's lab coat"
-	desc = "A suit that protects against minor chemical spills. Has an orange stripe on each shoulder."
-	icon_state = "labcoat_pharm"
+	desc = "A suit that protects against minor chemical spills and biological hazards. Its collar and shoulders are colored orange to match the pharmacist's scrubs."
+	icon_state = "ph_labcoat"
+
+/obj/item/clothing/suit/storage/labcoat/pharmacist/short
+	name = "high-cut pharmaceutical physician's lab coat"
+	desc = "A suit that protects against minor chemical spills and biological hazards. Its collar and shoulders are colored orange to match the pharmacist's scrubs. It also cuts off at the waist."
+	icon_state = "ph_labcoat_short"
+
+/obj/item/clothing/suit/storage/labcoat/pharmacist/long
+	name = "low-cut pharmaceutical physician's lab coat"
+	desc = "A suit that protects against minor chemical spills and biological hazards. Its collar and shoulders are colored orange to match the pharmacist's scrubs. It also drapes down quite low."
+	icon_state = "ph_labcoat_long"
+
+/obj/item/clothing/suit/storage/labcoat/nurse
+	name = "nurse's lab coat"
+	desc = "A suit that protects against minor chemical spills and biological hazards. Its collar and shoulders are colored sky blue to match the nurse's scrubs."
+	icon_state = "ph_labcoat"
+
+/obj/item/clothing/suit/storage/labcoat/nurse/short
+	name = "high-cut nurse's lab coat"
+	desc = "A suit that protects against minor chemical spills and biological hazards. Its collar and shoulders are colored sky blue to match the nurse's scrubs. It also cuts off at the waist."
+	icon_state = "ph_labcoat_short"
+
+/obj/item/clothing/suit/storage/labcoat/nurse/long
+	name = "low-cut nurse's lab coat"
+	desc = "A suit that protects against minor chemical spills and biological hazards. Its collar and shoulders are colored sky blue to match the nurse's scrubs. It also drapes down quite low."
+	icon_state = "ph_labcoat_long"
+
+/obj/item/clothing/suit/storage/labcoat/researcher
+	name = "researcher's lab coat"
+	desc = "A high-quality lab coat, seemingly worn by scholars and researchers alike. It has a distinct leathery feel to it, and goads you towards adventure."
+	icon_state = "sciencecoat_medium"
+	item_state = "sciencecoat_medium"
+
+/obj/item/clothing/suit/storage/labcoat/researcher/short
+	name = "short, brown researcher's lab coat"
+	desc = "A high-quality lab coat, seemingly worn by scholars and researchers alike. It has a distinct leathery feel to it, and goads you towards adventure. It is a little short."
+	icon_state = "sciencecoat"
+	item_state = "sciencecoat"
+
+/obj/item/clothing/suit/storage/labcoat/researcher/white
+	name = "white researcher's lab coat"
+	desc = "A suit that protects against minor chemical spills and biological hazards. Its collar and shoulders are colored a rich purple to differentiate it from those of medical staff."
+	icon_state = "sci_labcoat"
+
+/obj/item/clothing/suit/storage/labcoat/researcher/white/short
+	name = "white, high-cut researcher's lab coat"
+	desc = "A suit that protects against minor chemical spills and biological hazards. Its collar and shoulders are colored a rich purple to differentiate it from those of medical staff. It also cuts off at the waist."
+	icon_state = "sci_labcoat_short"
+
+/obj/item/clothing/suit/storage/labcoat/researcher/white/long
+	name = "white, low-cut researcher's lab coat"
+	desc = "A suit that protects against minor chemical spills and biological hazards. Its collar and shoulders are colored a rich purple to differentiate it from those of medical staff. It also drapes down quite low."
+	icon_state = "sci_labcoat_long"
 
 /obj/item/clothing/suit/storage/labcoat/virologist
 	name = "virologist's lab coat"
-	desc = "A suit that protects against minor chemical spills. Offers slightly more protection against biohazards than the standard model. Has a green stripe on the shoulder."
+	desc = "A suit that protects against minor chemical spills and biological hazards. Offers slightly more protection against biohazards than the standard model. Has a green stripe on the shoulder."
 	icon_state = "labcoat_vir"
-	armor_melee = CLOTHING_ARMOR_NONE
-	armor_bullet = CLOTHING_ARMOR_NONE
-	armor_laser = CLOTHING_ARMOR_NONE
-	armor_energy = CLOTHING_ARMOR_NONE
-	armor_bomb = CLOTHING_ARMOR_NONE
-	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
-	armor_rad = CLOTHING_ARMOR_NONE
-	armor_internaldamage = CLOTHING_ARMOR_LOW
 
 /obj/item/clothing/suit/storage/labcoat/science
 	name = "scientist's lab coat"
-	desc = "A suit that protects against minor chemical spills. Has a purple stripe on the shoulder."
+	desc = "A suit that protects against minor chemical spills and biological hazards. Has a purple stripe on the shoulder."
 	icon_state = "labcoat_tox"
 
 /obj/item/clothing/suit/storage/labcoat/cmo
@@ -153,13 +228,14 @@
 	desc = "A long, green, sleek, and sturdy lab coat designed to distinguish a higher ranking medical personnel. The fabric provides extra protection against chemical and biological hazards."
 	icon_state = "labcoatg"
 	item_state = "labcoatg"
-	armor_bio = CLOTHING_ARMOR_MEDIUM
 
-/obj/item/clothing/suit/storage/labcoat/researcher
-	name = "researcher's lab coat"
-	desc = "A high-quality lab coat, seemingly worn by scholars and researchers alike. It has a distinct leathery feel to it, and goads you towards adventure."
-	icon_state = "sciencecoat"
-	item_state = "sciencecoat"
+	//I mean, it says it is sturdy.
+	armor_melee = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_VERYLOW
+	armor_energy = CLOTHING_ARMOR_VERYLOW
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_bomb = CLOTHING_ARMOR_LOW
 
 /obj/item/clothing/suit/storage/labcoat/wy
 	name = "W-Y researcher's lab coat"
@@ -169,9 +245,13 @@
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/WY.dmi'
 	)
+	armor_melee = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_VERYLOW
+	armor_energy = CLOTHING_ARMOR_VERYLOW
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_laser = CLOTHING_ARMOR_LOW
-	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_LOW
 
 /obj/item/clothing/suit/storage/labcoat/wy/Initialize()
 	. = ..()
@@ -376,19 +456,19 @@
 
 /obj/item/clothing/suit/storage/labcoat/brown
 	name = "brown lab coat"
-	desc = "A suit that protects against minor chemical spills. This one is brown."
+	desc = "A suit that protects against minor chemical spills and biological hazards. This one is brown."
 	icon_state = "labcoat_brown"
 	item_state = "labcoat_brown"
 
 /obj/item/clothing/suit/storage/labcoat/short
 	name = "high-cut lab coat"
-	desc = "A suit that protects against minor chemical spills. This one exposes the legs a little more."
+	desc = "A suit that protects against minor chemical spills and biological hazards. This one exposes the legs a little more."
 	icon_state = "labcoat_short"
 	item_state = "labcoat_short"
 
 /obj/item/clothing/suit/storage/labcoat/long
 	name = "low-cut lab coat"
-	desc = "A suit that protects against minor chemical spills. This one drapes down quite low."
+	desc = "A suit that protects against minor chemical spills and biological hazards. This one drapes down quite low."
 	icon_state = "labcoat_long"
 	item_state = "labcoat_long"
 

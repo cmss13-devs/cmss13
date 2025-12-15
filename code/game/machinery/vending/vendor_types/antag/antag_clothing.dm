@@ -255,7 +255,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth_upp, list(
 	list("Windbreaker, Exploration", 12, /obj/item/clothing/suit/storage/windbreaker/windbreaker_covenant, null, VENDOR_ITEM_REGULAR),
 	list("Lab Coat", 12, /obj/item/clothing/suit/storage/labcoat, null, VENDOR_ITEM_REGULAR),
 	list("Lab Coat, Researcher", 12, /obj/item/clothing/suit/storage/labcoat/researcher, null, VENDOR_ITEM_REGULAR),
-	list("Lab Coat, Pharmaceutical Physician", 12, /obj/item/clothing/suit/storage/labcoat/pharmacist, null, VENDOR_ITEM_REGULAR),
 	list("High-Cut Lab Coat", 12, /obj/item/clothing/suit/storage/labcoat/short, null, VENDOR_ITEM_REGULAR),
 	list("Low-Cut Lab Coat", 12, /obj/item/clothing/suit/storage/labcoat/long, null, VENDOR_ITEM_REGULAR),
 	list("Medical's Apron", 12, /obj/item/clothing/suit/chef/classic/medical, null, VENDOR_ITEM_REGULAR),

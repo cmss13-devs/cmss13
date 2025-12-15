@@ -82,6 +82,10 @@
 		xeno.backpack_icon_holder = new(null, xeno)
 		xeno.vis_contents += xeno.backpack_icon_holder
 
+	if(src == /obj/item/storage/backpack/marine/saddle && isrunner(xeno))
+		ENABLE_BITFIELD(xeno.buckle_flags, CAN_BUCKLE)
+		xeno.AddElement(/datum/element/ridable, /datum/component/riding/creature/runner)
+
 	target_mob.put_in_back(src)
 	return FALSE
 

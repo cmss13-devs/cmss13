@@ -13,6 +13,7 @@
 	var/rebounding = FALSE // whether an object that was launched was rebounded (to prevent infinite recursive loops from wall bouncing)
 	var/list/mob/living/buckled_mobs // mobs buckled to this mob
 	var/buckle_lying = NO_BUCKLE_LYING/// Bed-like behaviour, forces mob.lying = buckle_lying if not set to [NO_BUCKLE_LYING].
+	var/buckle_flags = NONE
 
 	var/acid_damage = 0 //Counter for stomach acid damage. At ~60 ticks, dissolved
 

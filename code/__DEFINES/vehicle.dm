@@ -66,3 +66,10 @@
 #define UNBUCKLE_DISABLED_RIDER (1<<3)
 // For fireman carries, the carrying human needs an arm
 #define CARRIER_NEEDS_ARM (1<<4)
+
+#define CAN_BUCKLE (1<<0)
+#define CAN_BE_BUCKLED (1<<1)
+#define BUCKLE_REQUIRES_RESTRAINTS (1<<2)
+#define BUCKLE_PREVENTS_PULL (1<<3)
+#define BUCKLE_NEEDS_HAND (1<<4)
+#define BUCKLE_NEEDS_TWO_HANDS (1<<5)

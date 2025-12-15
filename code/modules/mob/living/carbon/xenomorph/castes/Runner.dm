@@ -38,6 +38,7 @@
 	icon = 'icons/mob/xenos/castes/tier_1/runner.dmi'
 	icon_state = "Runner Walking"
 	icon_size = 64
+	buckle_flags = CAN_BUCKLE
 	layer = MOB_LAYER
 	plasma_types = list(PLASMA_CATECHOLAMINE)
 	tier = 1

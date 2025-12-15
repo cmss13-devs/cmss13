@@ -168,7 +168,7 @@
 			DAMAGE PROCS
 */
 
-/obj/limb/emp_act(severity)
+/obj/limb/emp_act(severity, datum/cause_data/cause_data)
 	. = ..()
 	if(!(status & (LIMB_ROBOT|LIMB_SYNTHSKIN))) //meatbags do not care about EMP
 		return
@@ -178,9 +178,12 @@
 		probability = 1
 		damage = 3
 	if(can_emp_delimb() && prob(probability))
-		droplimb(0, 0, "EMP")
+		if(cause_data)
+			droplimb(0, 0, cause=cause_data)
+		else
+			droplimb(0, 0, cause="EMP")
 	else
-		take_damage(damage, 0, 1, 1, used_weapon = "EMP")
+		take_damage(damage, 0, 1, 1, used_weapon="EMP", damage_source=cause_data, attack_source=cause_data?.resolve_mob())
 		for(var/datum/internal_organ/internal_organ in internal_organs)
 			if(internal_organ.robotic == FALSE)
 				continue
@@ -293,8 +296,9 @@
  * for all cases.
  */
 /obj/limb/proc/take_damage(brute, burn, sharp, edge, used_weapon = null,\
-							list/forbidden_limbs = list(),
-							no_limb_loss, damage_source = create_cause_data("amputation"),\
+							list/forbidden_limbs = list(),\
+							no_limb_loss,\
+							damage_source = create_cause_data("amputation"),\
 							mob/attack_source = null,\
 							brute_reduced_by = -1, burn_reduced_by = -1)
 	if((brute > 0 || burn > 0) && owner && MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_attacking_corpses) && owner.stat == DEAD) //if they take positive damage (not healing) we prevent it
@@ -407,7 +411,7 @@
 	var/no_perma_damage = owner.status_flags & NO_PERMANENT_DAMAGE
 	var/no_bone_break = owner.chem_effect_flags & CHEM_EFFECT_RESIST_FRACTURE
 	if(previous_brute > 0 && !is_ff && body_part != BODY_FLAG_CHEST && body_part != BODY_FLAG_GROIN && !no_limb_loss && !no_perma_damage && !no_bone_break)
-		if(CONFIG_GET(flag/limbs_can_break) && brute_dam >= max_damage * CONFIG_GET(number/organ_health_multiplier) && (previous_bonebreak || (status & (LIMB_ROBOT|LIMB_SYNTHSKIN)))) //delimbable only if broken before this hit or we're a robot limb (synths do not fracture)
+		if(CONFIG_GET(flag/limbs_can_break) && (brute_dam + burn_dam) >= max_damage * CONFIG_GET(number/organ_health_multiplier) && (previous_bonebreak || (status & (LIMB_ROBOT|LIMB_SYNTHSKIN)))) //delimbable only if broken before this hit or we're a robot limb (synths do not fracture)
 			var/cut_prob = brute/max_damage * 5
 			if(prob(cut_prob))
 				limb_delimb(damage_source)
@@ -1596,12 +1600,6 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	. = ..()
 
 	return "[.]-[eyes_r]-[eyes_g]-[eyes_b]-[lip_style]"
-
-/obj/limb/head/take_damage(brute, burn, sharp, edge, used_weapon = null,\
-							list/forbidden_limbs = list(), no_limb_loss,\
-							mob/attack_source = null,\
-							brute_reduced_by = -1, burn_reduced_by = -1)
-	. = ..()
 
 /obj/limb/head/reset_limb_surgeries()
 	for(var/zone in list("head", "eyes", "mouth"))

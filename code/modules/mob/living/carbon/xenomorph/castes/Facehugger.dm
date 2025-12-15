@@ -29,6 +29,8 @@
 	pixel_y = -6
 	old_x = -8
 	old_y = -6
+	xenonid_pixel_x = -1
+	xenonid_pixel_y = 0
 	layer = MOB_LAYER
 	mob_flags = NOBIOSCAN
 	see_in_dark = 8
@@ -85,6 +87,9 @@
 		"We feel old enough to be able to vocalize now.",\
 		3 MINUTES,\
 	)
+
+/mob/living/carbon/xenomorph/facehugger/warn_away_timer()
+	return // Ghostizing will just convert to regular hugger
 
 /mob/living/carbon/xenomorph/facehugger/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()

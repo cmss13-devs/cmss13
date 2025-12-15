@@ -1159,6 +1159,38 @@
 /mob/living/carbon/xenomorph/proc/can_mount(mob/living/user, target_mounting = FALSE)
 	return FALSE
 
+/**
+ * Handles the target trying to ride src
+ *
+ * Arguments:
+ * * target - The mob being put on the back
+ * * target_mounting - Is the target initiating the mounting process?
+ */
+/mob/living/carbon/xenomorph/proc/carry_target(mob/living/carbon/target, target_mounting = FALSE)
+	if(target.is_mob_incapacitated())
+		if(target_mounting)
+			to_chat(target, SPAN_XENOWARNING("You cannot mount [src]!"))
+			return
+		to_chat(src, SPAN_XENOWARNING("[target] cannot mount you!"))
+		return
+	visible_message(SPAN_NOTICE("[target_mounting ? "[target] starts to mount [src]" : "[src] starts hoisting [target] onto [p_their()] back..."]"),
+	SPAN_NOTICE("[target_mounting ? "[target] starts to mount on your back" : "You start to lift [target] onto your back..."]"))
+	if(!do_after(target_mounting ? target : src, 5 SECONDS, NONE, BUSY_ICON_HOSTILE, target_mounting ? src : target))
+		visible_message(SPAN_WARNING("[target_mounting ? "[target] fails to mount on [src]" : "[src] fails to carry [target]!"]"))
+		return
+	//Second check to make sure they're still valid to be carried
+	if(target.is_mob_incapacitated())
+		return
+	buckle_mob(target, src)
+
+/mob/living/carbon/xenomorph/MouseDrop_T(atom/dropping, mob/user)
+	. = ..()
+	if(isxeno(user))
+		return
+	if(!can_mount(user, TRUE))
+		return
+	INVOKE_ASYNC(src, PROC_REF(carry_target), user, TRUE)
+
 /proc/setup_xenomorph(mob/living/carbon/xenomorph/target, mob/new_player/new_player, is_late_join = FALSE)
 	new_player.spawning = TRUE
 	new_player.close_spawn_windows()

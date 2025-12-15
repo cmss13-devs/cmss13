@@ -85,7 +85,7 @@
 	var/atom/movable/movable_parent = parent
 	restore_position(rider)
 	unequip_buckle_inhands(rider)
-	if(!LAZYLEN(movable_parent.buckled_mobs))
+	if(!LAZYLEN(movable_parent.buckled_mob))
 		qdel(src)
 
 /// Some ridable atoms may want to only show on top of the rider in certain directions, like wheelchairs
@@ -131,10 +131,10 @@
 	var/atom/movable/AM = parent
 	var/AM_dir = "[dir]"
 	var/passindex = 0
-	if(!LAZYLEN(AM.buckled_mobs))
+	if(!LAZYLEN(AM.buckled_mob))
 		return
 
-	for(var/m in AM.buckled_mobs)
+	for(var/m in AM.buckled_mob)
 		passindex++
 		var/mob/living/buckled_mob = m
 		var/list/offsets = get_offsets(passindex)
@@ -219,7 +219,7 @@
 	SIGNAL_HANDLER
 	if(!istype(possible_bumped_door))
 		return
-	for(var/occupant in movable_parent.buckled_mobs)
+	for(var/occupant in movable_parent.buckled_mob)
 		INVOKE_ASYNC(possible_bumped_door, /obj/structure/machinery/door/.proc/bumpopen, occupant)
 
 /datum/component/riding/proc/Unbuckle(atom/movable/M)

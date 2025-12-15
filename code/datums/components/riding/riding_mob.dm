@@ -103,55 +103,10 @@
 		"<span class='warning'>You're thrown violently from [movable_parent]!</span>")
 		rider.throw_atom(target, 14, 5, movable_parent)
 
-/*
-/datum/component/riding/creature/crusher
-	can_be_driven = FALSE
-
-/datum/component/riding/creature/crusher/handle_specials()
-	. = ..()
-	set_riding_offsets(RIDING_OFFSET_ALL, list(TEXT_NORTH = list(0, 12), TEXT_SOUTH = list(0, 20), TEXT_EAST = list(-5, 10), TEXT_WEST = list(10, 10)))
-	set_vehicle_dir_layer(SOUTH, ABOVE_MOB_LAYER)
-	set_vehicle_dir_layer(NORTH, ABOVE_LYING_MOB_LAYER)
-	set_vehicle_dir_layer(EAST, ABOVE_LYING_MOB_LAYER)
-	set_vehicle_dir_layer(WEST, ABOVE_LYING_MOB_LAYER)
-
-/datum/component/riding/creature/crusher/Initialize(mob/living/riding_mob, force = FALSE, check_loc, lying_buckle, hands_needed, target_hands_needed, silent)
-	. = ..()
-	riding_mob.density = FALSE
-
-/datum/component/riding/creature/crusher/RegisterWithParent()
-	. = ..()
-	RegisterSignal(parent, COMSIG_LIVING_SET_LYING_ANGLE, .proc/check_carrier_fall_over)
-
-/datum/component/riding/creature/crusher/log_riding(mob/living/living_parent, mob/living/rider)
-	if(!istype(living_parent) || !istype(rider))
-		return
-
-	//living_parent.log_message("started carrying [rider] on their back", LOG_ATTACK, color="pink")
-	//rider.log_message("started being carried on [living_parent]'s back", LOG_ATTACK, color="pink")
-
-/datum/component/riding/creature/crusher/vehicle_mob_unbuckle(datum/source, mob/living/former_rider, force = FALSE)
-	unequip_buckle_inhands(parent)
-	former_rider.density = TRUE
-	return ..()
-
-
-/// If the crusher gets knocked over, force the riding rounys off and see if someone got hurt
-/datum/component/riding/creature/crusher/proc/check_carrier_fall_over(mob/living/carbon/xenomorph/crusher/carrying_crusher)
-	SIGNAL_HANDLER
-
-	for(var/mob/living/rider AS in carrying_crusher.buckled_mobs)
-		carrying_crusher.unbuckle_mob(rider)
-		rider.Knockdown(1 SECONDS)
-		carrying_crusher.visible_message("<span class='danger'>[rider] topples off of [carrying_crusher] as they both fall to the ground!</span>", \
-					"<span class='warning'>You fall to the ground, bringing [rider] with you!</span>", "<span class='hear'>You hear two consecutive thuds.</span>")
-		to_chat(rider, "<span class='danger'>[carrying_crusher] falls to the ground, bringing you with [carrying_crusher.p_them()]!</span>")
-*/
-
 /datum/component/riding/creature/proc/check_carrier_fall_over(mob/living/carbon/carrying)
 	SIGNAL_HANDLER
 
-	for(var/mob/living/rider in carrying.buckled_mobs)
+	for(var/mob/living/rider in carrying.buckled_mob)
 		carrying.unbuckle_mob(rider)
 		rider.KnockDown(1)
 		carrying.visible_message("<span class='danger'>[rider] topples off of [carrying] as they both fall to the ground!</span>", \
@@ -171,7 +126,7 @@
 	set_vehicle_dir_layer(WEST, ABOVE_MOB_LAYER)
 
 /datum/component/riding/creature/runner/check_carrier_fall_over(mob/living/carbon/xenomorph/runner/carrying_runner)
-	for(var/mob/living/rider in carrying_runner.buckled_mobs)
+	for(var/mob/living/rider in carrying_runner.buckled_mob)
 		carrying_runner.unbuckle_mob(rider)
 		rider.KnockDown(1)
 		carrying_runner.visible_message(SPAN_DANGER("[rider] topples off of [carrying_runner] as they both fall to the ground!"), \

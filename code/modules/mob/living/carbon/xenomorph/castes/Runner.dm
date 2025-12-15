@@ -99,9 +99,6 @@
 	if(!do_after(user, 3 SECONDS, NONE, src))
 		return
 	var/obj/item/storage/backpack/marine/saddle/saddle = back
-	saddle.forceMove(get_turf(src))
-	saddle.layer = initial(saddle.layer)
-	saddle.dropped(src)
 
 /mob/living/carbon/xenomorph/runner/can_mount(mob/living/user, target_mounting = FALSE)
 	if(!target_mounting)
@@ -115,8 +112,7 @@
 		return FALSE
 	return TRUE
 
-///mob/living/carbon/xenomorph/runner/resist(datum/source)
-//	unbuckle_mob(source)
+
 
 /datum/behavior_delegate/runner_base
 	name = "Base Runner Behavior Delegate"

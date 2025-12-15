@@ -11,7 +11,7 @@
 	var/throwforce = 1
 	/// If we have a user using us, this will be set on. We will check if the user has stopped using us, and thus stop updating and LAGGING EVERYTHING!
 	var/in_use = FALSE
-	var/mob/living/buckled_mob
+	//var/mob/living/buckled_mob
 	var/can_buckle = FALSE
 	/**Applied to surgery times for mobs buckled prone to it or lying on the same tile, if the surgery
 	cares about surface conditions. The lowest multiplier of objects on the tile is used.**/
@@ -219,9 +219,9 @@
 		manual_unbuckle(user)
 	else . = ..()
 
-/obj/proc/handle_rotation()
+/*/obj/proc/handle_rotation()
 	return
-
+*/
 /obj/MouseDrop(atom/over_object)
 	if(!can_buckle)
 		. = ..()
@@ -233,6 +233,7 @@
 		buckle_mob(M, user)
 	else . = ..()
 
+/*
 /obj/proc/afterbuckle(mob/M as mob) // Called after somebody buckled / unbuckled
 	handle_rotation() // To be removed when we have full dir support in set_buckled
 	SEND_SIGNAL(src, COMSIG_OBJ_AFTER_BUCKLE, buckled_mob)
@@ -241,6 +242,7 @@
 	else
 		RegisterSignal(buckled_mob, COMSIG_PARENT_QDELETING, PROC_REF(unbuckle))
 	return buckled_mob
+
 
 /obj/proc/unbuckle()
 	SIGNAL_HANDLER
@@ -345,6 +347,7 @@
 			SPAN_NOTICE("[M] is buckled in to [src] by [user]!"),
 			SPAN_NOTICE("You are buckled in to [src] by [user]."),
 			SPAN_NOTICE("You hear metal clanking"))
+*/
 
 /obj/Move(NewLoc, direct)
 	. = ..()

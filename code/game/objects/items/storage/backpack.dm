@@ -82,7 +82,7 @@
 		xeno.backpack_icon_holder = new(null, xeno)
 		xeno.vis_contents += xeno.backpack_icon_holder
 
-	if(src == /obj/item/storage/backpack/marine/saddle && isrunner(xeno))
+	if(src.type == /obj/item/storage/backpack/marine/saddle && isrunner(xeno))
 		ENABLE_BITFIELD(xeno.buckle_flags, CAN_BUCKLE)
 		xeno.AddElement(/datum/element/ridable, /datum/component/riding/creature/runner)
 
@@ -114,6 +114,9 @@
 	if(slot == WEAR_BACK)
 		if(use_sound && !silent)
 			playsound(loc, use_sound, 15, TRUE, 6)
+		if(src.type == /obj/item/storage/backpack/marine/saddle && isrunner(user))
+			DISABLE_BITFIELD(user.buckle_flags, CAN_BUCKLE)
+			user.RemoveElement(/datum/element/ridable, /datum/component/riding/creature/runner)
 	..()
 
 /obj/item/storage/backpack/dropped(mob/user)

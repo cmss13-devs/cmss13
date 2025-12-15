@@ -38,8 +38,6 @@
 /// From /obj/item/reagent_container/hypospray/attack() : (obj/item/reagent_container/hypospray/injector)
 #define COMSIG_LIVING_HYPOSPRAY_INJECTED "living_hypospray_injected"
 
-#define COMSIG_MOVABLE_PREBUCKLE "prebuckle" // this is the last chance to interrupt and block a buckle before it finishes
-	#define COMPONENT_BLOCK_BUCKLE	(1<<0)
 ///from base of mob/living/set_buckled(): (new_buckled)
 #define COMSIG_LIVING_SET_BUCKLED "living_set_buckled"
 /// From /obj/structure/bed/buckle_mob() : (mob/living/carbon/human/mob)

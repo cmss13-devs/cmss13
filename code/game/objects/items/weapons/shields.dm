@@ -62,6 +62,8 @@
 		lower_shield(user)
 	..()
 
+
+
 /obj/item/weapon/shield/riot
 	name = "riot shield"
 	desc = "A shield adept at blocking blunt objects from connecting with the torso of the shield wielder."

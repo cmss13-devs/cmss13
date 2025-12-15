@@ -160,7 +160,7 @@
 
 //Pills
 /obj/item/reagent_container/pill/antitox
-	pill_desc = "An anti-toxin pill. It neutralizes many common toxins, as well as treating toxin damage"
+	pill_desc = "An anti-toxin pill. It neutralizes many common toxins, as well as treating toxin damage."
 	pill_initial_reagents = list("anti_toxin" = 15)
 	pill_icon_class = "atox"
 

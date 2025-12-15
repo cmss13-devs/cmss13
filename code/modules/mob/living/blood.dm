@@ -210,24 +210,8 @@
 		return "greyblood"
 	return "blood"
 
-/mob/living/simple_animal/small/mouse/get_blood_id()
+/mob/living/simple_animal/get_blood_id()
 	return "blood"
-
-/mob/living/simple_animal/small/cat/get_blood_id()
-	return "blood"
-
-/mob/living/simple_animal/big/cow/get_blood_id()
-	return "blood"
-
-/mob/living/simple_animal/small/parrot/get_blood_id()
-	return "blood"
-
-/mob/living/simple_animal/big/corgi/get_blood_id()
-	return "blood"
-
-/mob/living/simple_animal/hostile/retaliate/goat/get_blood_id()
-	return "blood"
-
 
 // This is has more potential uses, and is probably faster than the old proc.
 /proc/get_safe_blood(bloodtype)

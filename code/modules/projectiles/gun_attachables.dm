@@ -1296,14 +1296,14 @@ Defined in conflicts.dm of the #defines folder.
 		zoom_offset = 11
 		zoom_viewsize = 12
 		allows_movement = 0
-		to_chat(usr, SPAN_NOTICE("Zoom level switched to 4x"))
+		to_chat(usr, SPAN_NOTICE("Zoom level switched to 4x."))
 		return
 	else
 		zoom_level = ZOOM_LEVEL_2X
 		zoom_offset = 6
 		zoom_viewsize = 7
 		allows_movement = 1
-		to_chat(usr, SPAN_NOTICE("Zoom level switched to 2x"))
+		to_chat(usr, SPAN_NOTICE("Zoom level switched to 2x."))
 		return
 
 /datum/action/item_action/toggle_zoom_level
@@ -2738,7 +2738,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/stock/smg
 	name = "submachinegun stock"
-	desc = "A rare Armat stock distributed in small numbers to USCM forces. Compatible with the M39, this stock reduces recoil and improves accuracy, but at a reduction to handling and agility. Seemingly a bit more effective in a brawl"
+	desc = "A rare Armat stock distributed in small numbers to USCM forces. Compatible with the M39, this stock reduces recoil and improves accuracy, but at a reduction to handling and agility. Seemingly a bit more effective in a brawl."
 	slot = "stock"
 	melee_mod = 15
 	size_mod = 1
@@ -3155,7 +3155,7 @@ Defined in conflicts.dm of the #defines folder.
 	if(!istype(G) && G != null)
 		G = user.get_active_hand()
 	if(!G)
-		to_chat(user, SPAN_WARNING("You need to hold \the [src] to do that"))
+		to_chat(user, SPAN_WARNING("You need to hold \the [src] to do that."))
 		return
 
 	pump(user)

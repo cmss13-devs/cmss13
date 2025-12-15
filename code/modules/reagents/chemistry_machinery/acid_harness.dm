@@ -48,7 +48,7 @@
 		/obj/item/cell,
 	)
 
-/obj/item/storage/internal/accessory/black_vest/acid_harness/can_be_inserted(obj/item/object_to_insert, mob/lving/user)
+/obj/item/storage/internal/accessory/black_vest/acid_harness/can_be_inserted(obj/item/object_to_insert, mob/living/user)
 	if(istype(object_to_insert, /obj/item/reagent_container/glass/beaker))
 		var/obj/item/reagent_container/glass/beaker/beaker_check = object_to_insert
 		if(!beaker_check.reagents || beaker_check.reagents.maximum_volume > ACID_CONTAINER_MAXIMUM_VOLUME)

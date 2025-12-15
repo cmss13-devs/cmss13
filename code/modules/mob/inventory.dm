@@ -31,6 +31,19 @@
 	var/list/handen = get_hands()
 	return handen.Find(I)
 
+/**
+ * Checks if this mob is holding a certain type of item in hands
+ * returns TRUEif found FALSE if not
+ * Args:
+ * * typepath: typepath to check for
+ */
+/mob/proc/is_holding_item_of_type(typepath)
+	if(istype(get_active_held_item(), typepath))
+		return TRUE
+	if(istype(get_inactive_held_item(), typepath))
+		return TRUE
+	return FALSE
+
 //Puts the item into your l_hand if possible and calls all necessary triggers/updates. returns 1 on success.
 /mob/proc/put_in_l_hand(obj/item/moved_item)
 	if(!istype(moved_item))

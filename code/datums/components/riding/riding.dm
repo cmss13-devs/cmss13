@@ -190,7 +190,7 @@
 	if(!keytype)
 		return TRUE
 
-	//if(isvehicle(parent))
+	//if(isVehicle(parent))
 	//	var/obj/vehicle/vehicle_parent = parent
 	//	return istype(vehicle_parent.inserted_key, keytype)
 

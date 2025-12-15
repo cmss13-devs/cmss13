@@ -38,12 +38,20 @@
 /// From /obj/item/reagent_container/hypospray/attack() : (obj/item/reagent_container/hypospray/injector)
 #define COMSIG_LIVING_HYPOSPRAY_INJECTED "living_hypospray_injected"
 
+#define COMSIG_MOVABLE_PREBUCKLE "prebuckle" // this is the last chance to interrupt and block a buckle before it finishes
+	#define COMPONENT_BLOCK_BUCKLE	(1<<0)
 ///from base of mob/living/set_buckled(): (new_buckled)
 #define COMSIG_LIVING_SET_BUCKLED "living_set_buckled"
 /// From /obj/structure/bed/buckle_mob() : (mob/living/carbon/human/mob)
 #define COMSIG_LIVING_BED_BUCKLED "living_bed_buckled"
 ///from base of mob/living/set_body_position()
 #define COMSIG_LIVING_SET_BODY_POSITION  "living_set_body_position"
+
+#define COMSIG_RIDDEN_DRIVER_MOVE "driver_move"
+	#define COMPONENT_DRIVER_BLOCK_MOVE (1<<0)
+
+///from /mob/living/proc/set_lying_angle
+#define COMSIG_LIVING_SET_LYING_ANGLE "living_set_lying_angle"
 
 /// from base of /mob/living/apply_status_effect(): (datum/status_effect/new_effect)
 #define COMSIG_LIVING_APPLY_EFFECT "living_apply_effect"

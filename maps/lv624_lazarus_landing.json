@@ -4,7 +4,7 @@
     "map_file": "LV624_Lazarus_Landing.dmm",
     "short_name": "LV-624",
     "webmap_url": "LV624",
-    "weather_holder": "/datum/weather_ss_map_holder/lv624",
+    "weather_holder": "/datum/weather_ss_map_holder/lv624_lazarus_landing",
     "survivor_types": [
         "/datum/equipment_preset/survivor/scientist/lv",
         "/datum/equipment_preset/survivor/doctor/lv",

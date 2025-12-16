@@ -573,7 +573,7 @@
 			if(prob(15)) //15% chance the hugger will go idle after ripping off a mask. Otherwise it will keep going.
 				hugger.go_idle()
 				return FALSE
-			can_infect = FALSE
+			return FALSE
 		else
 			visible_message(SPAN_DANGER("[hugger] smashes against [src]'s [W.name] and rips it off!"))
 			drop_inv_item_on_ground(W)

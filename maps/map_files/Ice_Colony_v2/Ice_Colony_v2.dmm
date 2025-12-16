@@ -1653,50 +1653,9 @@
 	},
 /turf/open/floor/dark2,
 /area/ice_colony/surface/engineering)
-"ago" = (
-/obj/item/lightstick/planted,
-/obj/structure/disposalpipe/segment,
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/auto_turf/snow/layer1,
-/area/ice_colony/exterior/surface/clearing/south)
-"agp" = (
-/obj/item/lightstick/red/planted,
-/obj/structure/disposalpipe/segment,
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/auto_turf/snow/layer0,
-/area/ice_colony/exterior/surface/clearing/south)
-"agq" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 6
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
-	},
-/turf/open/auto_turf/snow/layer0,
-/area/ice_colony/exterior/surface/clearing/pass)
-"agr" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 5
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
-	},
-/turf/open/auto_turf/snow/layer1,
-/area/ice_colony/exterior/surface/clearing/pass)
 "ags" = (
 /turf/open/floor/darkbrown2/west,
 /area/ice_colony/surface/hangar/hallway)
-"agt" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/auto_turf/snow/layer1,
-/area/ice_colony/exterior/surface/clearing/pass)
 "agv" = (
 /obj/structure/pipes/vents/pump{
 	dir = 8
@@ -1748,19 +1707,6 @@
 	},
 /turf/open/floor/darkyellow2/west,
 /area/ice_colony/surface/engineering)
-"agE" = (
-/obj/item/lightstick/planted,
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/auto_turf/snow/layer2,
-/area/ice_colony/exterior/surface/valley/northwest)
-"agF" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 10
-	},
-/turf/open/auto_turf/snow/layer2,
-/area/ice_colony/exterior/surface/clearing/north)
 "agG" = (
 /obj/structure/surface/table,
 /obj/item/clipboard,
@@ -4426,15 +4372,6 @@
 	},
 /turf/open/floor/freezerfloor,
 /area/ice_colony/surface/dorms/restroom_w)
-"aqw" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/structure/disposalpipe/junction{
-	dir = 8
-	},
-/turf/open/auto_turf/snow/layer0,
-/area/ice_colony/exterior/surface/clearing/pass)
 "aqx" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/dark2,
@@ -4634,7 +4571,9 @@
 /turf/open/floor/darkgreen2/southwest,
 /area/ice_colony/surface/dorms)
 "arj" = (
-/obj/structure/pipes/standard/manifold/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /obj/structure/disposalpipe/junction{
 	dir = 8
 	},
@@ -6055,7 +5994,7 @@
 	},
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/clearing/south)
-"awG" = (
+"awF" = (
 /obj/structure/disposalpipe/junction{
 	dir = 1;
 	icon_state = "pipe-j2"
@@ -6075,6 +6014,12 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/dark2,
 /area/ice_colony/underground/command/center)
+"awJ" = (
+/obj/item/lightstick/planted,
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/auto_turf/snow/layer1,
+/area/ice_colony/exterior/surface/clearing/south)
 "awK" = (
 /obj/structure/ice/ice_rock/cornerOverlay{
 	dir = 1
@@ -7790,10 +7735,11 @@
 /turf/open/floor/darkblue2/west,
 /area/ice_colony/surface/command/control/office)
 "aCZ" = (
+/obj/item/lightstick/red/planted,
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/dark2,
-/area/ice_colony/surface/hangar/checkpoint)
+/turf/open/auto_turf/snow/layer0,
+/area/ice_colony/exterior/surface/clearing/south)
 "aDa" = (
 /obj/structure/window/reinforced/tinted{
 	dir = 8
@@ -8116,9 +8062,8 @@
 /turf/open/floor/dark2,
 /area/ice_colony/surface/garage/two)
 "aDZ" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 6
-	},
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/dark2,
 /area/ice_colony/surface/hangar/checkpoint)
 "aEa" = (
@@ -8150,9 +8095,9 @@
 /area/ice_colony/surface/hydroponics/south)
 "aEf" = (
 /obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
+	dir = 6
 	},
-/turf/open/floor/darkred2/east,
+/turf/open/floor/dark2,
 /area/ice_colony/surface/hangar/checkpoint)
 "aEg" = (
 /obj/structure/machinery/vending/hydronutrients,
@@ -8209,14 +8154,10 @@
 /turf/open/floor/plating,
 /area/ice_colony/surface/command/control/office)
 "aEo" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
-	},
 /obj/structure/pipes/standard/simple/hidden/green{
-	dir = 10
+	dir = 4
 	},
-/turf/open/floor/dark2,
+/turf/open/floor/darkred2/east,
 /area/ice_colony/surface/hangar/checkpoint)
 "aEp" = (
 /obj/item/stack/rods,
@@ -8425,14 +8366,15 @@
 /turf/open/floor/darkbrown2/southeast,
 /area/ice_colony/surface/garage/two)
 "aFh" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
 /obj/structure/disposalpipe/segment{
-	dir = 4
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 10
 	},
 /turf/open/floor/dark2,
-/area/ice_colony/surface/command/control)
+/area/ice_colony/surface/hangar/checkpoint)
 "aFi" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -8499,10 +8441,11 @@
 /area/ice_colony/surface/command/control)
 "aFq" = (
 /obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
+	dir = 6
 	},
 /obj/structure/disposalpipe/segment{
-	dir = 4
+	dir = 4;
+	icon_state = "pipe-c"
 	},
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/clearing/pass)
@@ -8523,26 +8466,37 @@
 /turf/open/floor/dark2,
 /area/ice_colony/surface/command/control)
 "aFu" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/darkgreen2/west,
-/area/ice_colony/surface/hydroponics/south)
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 5
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/turf/open/auto_turf/snow/layer1,
+/area/ice_colony/exterior/surface/clearing/pass)
 "aFv" = (
 /obj/structure/machinery/vending/snack,
 /turf/open/floor/darkblue2/east,
 /area/ice_colony/surface/command/control)
 "aFw" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/dark2,
-/area/ice_colony/surface/command/control/office)
+/turf/open/auto_turf/snow/layer0,
+/area/ice_colony/exterior/surface/clearing/pass)
 "aFx" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/darkblue2,
-/area/ice_colony/surface/command/control/office)
+/turf/open/auto_turf/snow/layer1,
+/area/ice_colony/exterior/surface/clearing/pass)
 "aFy" = (
 /turf/open/floor/darkbrown2,
 /area/ice_colony/surface/garage/one)
@@ -8569,24 +8523,29 @@
 /turf/open/floor/darkbrown2,
 /area/ice_colony/surface/garage/two)
 "aFD" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/dark2,
-/area/ice_colony/surface/command/checkpoint)
+/obj/structure/pipes/standard/manifold/hidden/green,
+/obj/structure/disposalpipe/junction{
+	dir = 8
+	},
+/turf/open/auto_turf/snow/layer0,
+/area/ice_colony/exterior/surface/clearing/pass)
 "aFE" = (
 /turf/closed/wall/r_wall,
 /area/ice_colony/surface/storage_unit/power)
 "aFF" = (
 /obj/structure/pipes/standard/simple/hidden/green{
-	dir = 6
-	},
-/turf/open/floor/dark2,
-/area/ice_colony/surface/command/checkpoint)
-"aFG" = (
-/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor/darkred2/east,
-/area/ice_colony/surface/command/checkpoint)
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/dark2,
+/area/ice_colony/surface/command/control)
+"aFG" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/darkgreen2/west,
+/area/ice_colony/surface/hydroponics/south)
 "aFH" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/darkgreen2/west,
@@ -8630,12 +8589,11 @@
 /turf/open/floor/dark2,
 /area/ice_colony/surface/command/control)
 "aFP" = (
-/obj/structure/disposalpipe/segment,
-/obj/structure/pipes/standard/manifold/hidden/green{
+/obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /turf/open/floor/dark2,
-/area/ice_colony/surface/command/checkpoint)
+/area/ice_colony/surface/command/control/office)
 "aFS" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -8712,10 +8670,11 @@
 /turf/open/floor/darkbrown2/north,
 /area/ice_colony/surface/garage/one)
 "aGa" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/disposalpipe/segment,
-/turf/open/auto_turf/snow/layer0,
-/area/ice_colony/exterior/surface/clearing/north)
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/darkblue2,
+/area/ice_colony/surface/command/control/office)
 "aGb" = (
 /obj/structure/machinery/door/airlock/almayer/secure/colony{
 	dir = 2;
@@ -8810,22 +8769,50 @@
 /turf/open/floor/dark2,
 /area/ice_colony/surface/command/control)
 "aGt" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor/darkbrown2/north,
-/area/ice_colony/surface/dorms)
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/dark2,
+/area/ice_colony/surface/command/checkpoint)
 "aGu" = (
 /obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/darkblue2/southeast,
 /area/ice_colony/surface/command/control)
 "aGv" = (
 /obj/structure/pipes/standard/simple/hidden/green{
+	dir = 6
+	},
+/turf/open/floor/dark2,
+/area/ice_colony/surface/command/checkpoint)
+"aGw" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/darkred2/east,
+/area/ice_colony/surface/command/checkpoint)
+"aGx" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/dark2,
+/area/ice_colony/surface/command/checkpoint)
+"aGy" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment,
+/turf/open/auto_turf/snow/layer0,
+/area/ice_colony/exterior/surface/clearing/north)
+"aGz" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/darkbrown2/north,
+/area/ice_colony/surface/dorms)
+"aGA" = (
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /turf/open/floor/darkgreencorners2/east,
 /area/ice_colony/surface/dorms)
-"aGw" = (
+"aGB" = (
 /obj/structure/pipes/standard/manifold/fourway/hidden/green,
 /obj/structure/disposalpipe/junction{
 	dir = 4;
@@ -8833,47 +8820,6 @@
 	},
 /turf/open/floor/dark2,
 /area/ice_colony/surface/dorms)
-"aGx" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/darkgreen2/north,
-/area/ice_colony/surface/dorms)
-"aGy" = (
-/obj/structure/disposalpipe/segment,
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 6
-	},
-/turf/open/auto_turf/snow/layer2,
-/area/ice_colony/exterior/surface/valley/southeast)
-"aGz" = (
-/obj/item/lightstick/red/planted,
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/auto_turf/snow/layer2,
-/area/ice_colony/exterior/surface/valley/southeast)
-"aGA" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/darkgreen2,
-/area/ice_colony/surface/hydroponics/lobby)
-"aGB" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/dark2,
-/area/ice_colony/surface/hydroponics/lobby)
 "aGC" = (
 /obj/structure/ice/thin/end{
 	dir = 8
@@ -8898,8 +8844,14 @@
 /turf/open/floor/vault2/west,
 /area/ice_colony/surface/storage_unit/power)
 "aGG" = (
-/turf/open/floor/whitered/east,
-/area/ice_colony/surface/clinic/lobby)
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/darkgreen2/north,
+/area/ice_colony/surface/dorms)
 "aGH" = (
 /turf/open/floor/vault2/west,
 /area/ice_colony/surface/storage_unit/power)
@@ -8997,27 +8949,28 @@
 /turf/closed/wall/r_wall,
 /area/ice_colony/surface/command/control/pv2)
 "aGW" = (
-/obj/structure/pipes/standard/manifold/hidden/green{
-	dir = 8
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 6
 	},
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/dark2,
-/area/ice_colony/surface/dorms)
+/turf/open/auto_turf/snow/layer2,
+/area/ice_colony/exterior/surface/valley/southeast)
 "aGX" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/darkgreen2/west,
-/area/ice_colony/surface/hydroponics/north)
+/obj/item/lightstick/red/planted,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/auto_turf/snow/layer2,
+/area/ice_colony/exterior/surface/valley/southeast)
 "aGY" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
+	dir = 4
 	},
-/turf/open/floor/dark2,
-/area/ice_colony/surface/engineering)
+/turf/open/floor/darkgreen2,
+/area/ice_colony/surface/hydroponics/lobby)
 "aGZ" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -9026,7 +8979,7 @@
 	dir = 4
 	},
 /turf/open/floor/dark2,
-/area/ice_colony/surface/engineering)
+/area/ice_colony/surface/hydroponics/lobby)
 "aHa" = (
 /obj/structure/ice/thin/end{
 	dir = 1
@@ -9042,9 +8995,8 @@
 /turf/open/floor/vault2/west,
 /area/ice_colony/surface/storage_unit/power)
 "aHc" = (
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/darkyellow2/west,
-/area/ice_colony/surface/engineering)
+/turf/open/floor/whitered/east,
+/area/ice_colony/surface/clinic/lobby)
 "aHd" = (
 /obj/structure/machinery/door_control{
 	id = "st_17";
@@ -9057,9 +9009,12 @@
 /turf/open/floor/vault2/west,
 /area/ice_colony/surface/storage_unit/power)
 "aHe" = (
-/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 8
+	},
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/dark2,
-/area/ice_colony/surface/engineering/generator)
+/area/ice_colony/surface/dorms)
 "aHf" = (
 /turf/closed/ice/end{
 	dir = 4
@@ -9198,26 +9153,29 @@
 /turf/open/floor/whitered/east,
 /area/ice_colony/surface/clinic/lobby)
 "aHA" = (
-/obj/structure/machinery/door/airlock/almayer/engineering/colony{
-	name = "\improper Colony Engineering Generator Room"
-	},
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor/dark2,
-/area/ice_colony/surface/engineering/generator)
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/darkgreen2/west,
+/area/ice_colony/surface/hydroponics/north)
 "aHB" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
 /turf/open/floor/dark2,
-/area/ice_colony/surface/engineering/generator)
+/area/ice_colony/surface/engineering)
 "aHC" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor/darkyellowcorners2,
-/area/ice_colony/surface/engineering/generator)
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/dark2,
+/area/ice_colony/surface/engineering)
 "aHD" = (
 /obj/structure/closet/secure_closet/guncabinet,
 /obj/structure/machinery/firealarm{
@@ -9292,11 +9250,12 @@
 /turf/open/floor/vault2/west,
 /area/ice_colony/surface/storage_unit/power)
 "aHR" = (
+/obj/item/lightstick/planted,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor/darkyellowcorners2/west,
-/area/ice_colony/surface/engineering/generator)
+/turf/open/auto_turf/snow/layer2,
+/area/ice_colony/exterior/surface/valley/northwest)
 "aHS" = (
 /obj/structure/ice/thin/straight,
 /turf/open/ice,
@@ -9371,8 +9330,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
-/turf/open/floor/darkyellowcorners2/east,
-/area/ice_colony/surface/engineering/generator)
+/turf/open/auto_turf/snow/layer2,
+/area/ice_colony/exterior/surface/clearing/north)
 "aIf" = (
 /obj/structure/filingcabinet,
 /turf/open/floor/wood,
@@ -9388,6 +9347,10 @@
 /obj/item/tool/stamp,
 /turf/open/floor/wood,
 /area/ice_colony/surface/command/control/pv2)
+"aIi" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/darkyellow2/west,
+/area/ice_colony/surface/engineering)
 "aIj" = (
 /obj/structure/filingcabinet,
 /turf/open/floor/wood,
@@ -9507,12 +9470,25 @@
 	},
 /turf/open/ice,
 /area/ice_colony/exterior/surface/clearing/pass)
+"aIF" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/dark2,
+/area/ice_colony/surface/engineering/generator)
 "aIG" = (
 /obj/structure/ice/ice_rock/cornerOverlay{
 	dir = 1
 	},
 /turf/closed/ice_rock/eastWall,
 /area/ice_colony/exterior/surface/cliff)
+"aIH" = (
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	name = "\improper Colony Engineering Generator Room"
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/dark2,
+/area/ice_colony/surface/engineering/generator)
 "aII" = (
 /obj/structure/filingcabinet,
 /turf/open/floor/wood,
@@ -9565,6 +9541,12 @@
 	},
 /turf/open/ice,
 /area/ice_colony/exterior/surface/clearing/pass)
+"aIR" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/dark2,
+/area/ice_colony/surface/engineering/generator)
 "aIS" = (
 /obj/structure/machinery/light,
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -9635,6 +9617,12 @@
 "aJd" = (
 /turf/closed/wall/r_wall,
 /area/ice_colony/surface/storage_unit/telecomms)
+"aJe" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/darkyellowcorners2,
+/area/ice_colony/surface/engineering/generator)
 "aJf" = (
 /turf/closed/wall/r_wall,
 /area/ice_colony/exterior/surface/valley/southeast)
@@ -9674,6 +9662,18 @@
 /obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/vault2/west,
 /area/ice_colony/surface/storage_unit/telecomms)
+"aJn" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/darkyellowcorners2/west,
+/area/ice_colony/surface/engineering/generator)
+"aJo" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 10
+	},
+/turf/open/floor/darkyellowcorners2/east,
+/area/ice_colony/surface/engineering/generator)
 "aJp" = (
 /obj/structure/largecrate/random,
 /turf/open/floor/vault2/west,
@@ -45721,18 +45721,18 @@ ajG
 ajG
 ajG
 anf
-aGX
-aGX
-aGX
-aGX
-aGX
-aGX
-aGX
-aGX
+aHA
+aHA
+aHA
+aHA
+aHA
+aHA
+aHA
+aHA
 aqL
-aGX
-aGX
-aGX
+aHA
+aHA
+aHA
 asg
 asp
 asP
@@ -45749,18 +45749,18 @@ awQ
 asP
 axD
 ayq
-aFu
-aFu
-aFu
+aFG
+aFG
+aFG
 aAu
-aFu
-aFu
-aFu
-aFu
-aFu
-aFu
-aFu
-aFu
+aFG
+aFG
+aFG
+aFG
+aFG
+aFG
+aFG
+aFG
 ueV
 aFH
 aFH
@@ -46271,7 +46271,7 @@ ace
 aaJ
 aaJ
 aaJ
-agE
+aHR
 aem
 aaJ
 ahG
@@ -46587,7 +46587,7 @@ atR
 auq
 auI
 auZ
-aGA
+aGY
 auI
 aIw
 atQ
@@ -46835,7 +46835,7 @@ aax
 aax
 aax
 abL
-agF
+aIe
 agO
 agW
 agO
@@ -46869,7 +46869,7 @@ ati
 atQ
 auJ
 auZ
-aGA
+aGY
 awp
 atQ
 ati
@@ -47433,7 +47433,7 @@ atl
 aur
 asR
 ati
-aGB
+aGZ
 awq
 aur
 atl
@@ -55903,7 +55903,7 @@ axK
 ayt
 azc
 axl
-aGt
+aGz
 apZ
 tue
 aBc
@@ -56163,7 +56163,7 @@ ann
 ann
 alk
 alk
-aGx
+aGG
 arw
 arE
 arP
@@ -56185,7 +56185,7 @@ axL
 ayt
 azc
 axl
-aGt
+aGz
 apZ
 aAx
 aBc
@@ -56467,7 +56467,7 @@ axM
 ayw
 azd
 axl
-aGt
+aGz
 apZ
 aAx
 aBc
@@ -56475,11 +56475,11 @@ aBx
 aCa
 aCy
 aCa
-aFw
+aFP
 aEk
 aEJ
 aEJ
-aFh
+aFF
 aGk
 aGL
 aHk
@@ -56749,7 +56749,7 @@ axl
 axl
 axl
 axl
-aGt
+aGz
 apZ
 aAx
 aBc
@@ -56757,11 +56757,11 @@ aBw
 aCb
 aCD
 aUk
-aFw
+aFP
 aEl
 aEJ
 aEJ
-aFh
+aFF
 aGn
 aGP
 aHl
@@ -57039,11 +57039,11 @@ aBw
 aCc
 aCE
 aDc
-aFx
+aGa
 aEh
 aEI
 aEJ
-aFh
+aFF
 aGj
 aGQ
 aHm
@@ -57296,7 +57296,7 @@ kKZ
 kKZ
 kKZ
 kKZ
-aGW
+aHe
 kKZ
 kKZ
 kKZ
@@ -57321,11 +57321,11 @@ aBw
 aCa
 aCB
 aCa
-aFx
+aGa
 aEh
 aEI
 aEJ
-aFh
+aFF
 aGp
 aGL
 aHn
@@ -57607,7 +57607,7 @@ aDD
 aEh
 aEM
 aEJ
-aFh
+aFF
 aGq
 aGL
 aHo
@@ -57877,7 +57877,7 @@ aws
 aws
 aws
 aws
-aGv
+aGA
 apZ
 aAx
 aBd
@@ -57903,21 +57903,21 @@ aoG
 aoF
 aoI
 asV
-agq
+aFq
 aoJ
 atu
 awW
-agp
+aCZ
 atu
 atu
 atu
 awW
 awW
-ago
+awJ
 atu
-awG
+awF
 atu
-ago
+awJ
 awW
 awW
 awW
@@ -58446,8 +58446,8 @@ apZ
 aAx
 aBd
 aBA
-aFF
-aFD
+aGv
+aGt
 aDf
 aDF
 aBd
@@ -58701,7 +58701,7 @@ anp
 anp
 alo
 alo
-aGx
+aGG
 arw
 arE
 arS
@@ -58728,7 +58728,7 @@ apZ
 aAx
 aBd
 aBB
-aFG
+aGw
 aCH
 aDg
 aDG
@@ -59569,12 +59569,12 @@ axS
 ayA
 azi
 azC
-aGw
+aGB
 kKZ
 kKZ
 aBf
 aBD
-aFP
+aGx
 aBD
 aDj
 aBD
@@ -59851,7 +59851,7 @@ axT
 ayz
 azj
 azA
-aGx
+aGG
 apZ
 apZ
 aBg
@@ -59863,7 +59863,7 @@ aBg
 aBg
 aEJ
 aEJ
-aFh
+aFF
 aGj
 aGT
 aHu
@@ -60133,7 +60133,7 @@ axU
 ayz
 azj
 azA
-aGx
+aGG
 apZ
 aAx
 aBh
@@ -60415,7 +60415,7 @@ axV
 ayB
 azk
 axn
-aGx
+aGG
 apZ
 aAx
 aBd
@@ -62950,11 +62950,11 @@ ahk
 ahk
 ahk
 amH
-aGa
+aGy
 ahk
 ahk
 aoE
-aGa
+aGy
 ahk
 aoH
 aoJ
@@ -62966,7 +62966,7 @@ aoJ
 aoJ
 aoJ
 aql
-agr
+aFu
 aoI
 aoI
 aoI
@@ -63248,7 +63248,7 @@ aoI
 aoI
 aoI
 aoI
-aFq
+aFw
 aoI
 aoI
 aoI
@@ -63530,7 +63530,7 @@ azR
 aoI
 aoI
 aoI
-aFq
+aFw
 aoI
 aoI
 aoI
@@ -63812,7 +63812,7 @@ azR
 aoG
 aoF
 aoI
-aFq
+aFw
 aoF
 aoI
 aoF
@@ -64094,7 +64094,7 @@ aEW
 aoF
 aoF
 aoI
-aFq
+aFw
 aoI
 aoI
 aIk
@@ -64376,7 +64376,7 @@ azR
 aoI
 aoI
 aoI
-aFq
+aFw
 aoI
 aoI
 aGE
@@ -64658,7 +64658,7 @@ aEX
 apy
 apy
 apy
-aqw
+arj
 aoI
 aoF
 aoF
@@ -64940,7 +64940,7 @@ azR
 apM
 aoI
 aoI
-aFq
+aFw
 aoI
 aoF
 aoG
@@ -65222,7 +65222,7 @@ azR
 aoF
 aoF
 aoI
-aFq
+aFw
 aoI
 aoI
 aoG
@@ -65504,7 +65504,7 @@ azR
 azR
 aoG
 aoI
-agt
+aFx
 aoI
 aoI
 aoF
@@ -65786,7 +65786,7 @@ aEY
 azD
 aoF
 aoI
-aFq
+aFw
 aoF
 aoI
 aoI
@@ -66068,7 +66068,7 @@ aEZ
 azD
 azD
 aoI
-aFq
+aFw
 aoI
 aoI
 aoI
@@ -66350,7 +66350,7 @@ aEw
 aEw
 aFY
 aoJ
-arj
+aFD
 aoI
 aoI
 aoI
@@ -69113,8 +69113,8 @@ aed
 afU
 afn
 agD
-aHc
-aGY
+aIi
+aHB
 aio
 aeI
 abL
@@ -69396,7 +69396,7 @@ afV
 afo
 afo
 afo
-aGZ
+aHC
 agf
 aeI
 aeI
@@ -71160,7 +71160,7 @@ aJl
 aJl
 aJl
 aKL
-aDZ
+aEf
 aMW
 aMk
 aKj
@@ -71442,7 +71442,7 @@ aJz
 aJY
 aJl
 buG
-aEf
+aEo
 aLD
 aMl
 aLD
@@ -71646,7 +71646,7 @@ adQ
 aeg
 aeg
 aeg
-aHA
+aIH
 afG
 afG
 afG
@@ -71928,7 +71928,7 @@ adS
 aeg
 aev
 aeS
-aHB
+aIR
 aeS
 aeS
 aeS
@@ -71961,7 +71961,7 @@ aqG
 asb
 aou
 asG
-aGG
+aHc
 atB
 aud
 asZ
@@ -72210,7 +72210,7 @@ adT
 aeg
 aew
 aeT
-aHC
+aJe
 afH
 afH
 afH
@@ -72570,8 +72570,8 @@ aJB
 aJB
 aKj
 aKj
-aEo
-aCZ
+aFh
+aDZ
 aMp
 aCX
 aCX
@@ -72774,7 +72774,7 @@ adj
 aeh
 doO
 aeU
-aHB
+aIR
 aeU
 aeU
 aeU
@@ -73338,7 +73338,7 @@ adj
 aei
 aez
 aeT
-aHR
+aJn
 aeS
 aeS
 aeS
@@ -73620,9 +73620,9 @@ adj
 aeh
 aeh
 aeX
-aIe
-aHe
-aHe
+aJo
+aIF
+aIF
 agv
 afq
 afr
@@ -78742,7 +78742,7 @@ awO
 amn
 amE
 amE
-aGy
+aGW
 aof
 aoD
 aoD
@@ -79306,7 +79306,7 @@ amm
 amo
 aky
 amm
-aGz
+aGX
 amm
 amm
 alI

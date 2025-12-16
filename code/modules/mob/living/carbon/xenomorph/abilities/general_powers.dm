@@ -496,7 +496,7 @@
 			while(istype(turf_in_path, /turf/open_space))
 				turf_in_path = SSmapping.get_turf_below(turf_in_path)
 
-			if(turf_in_path.turf_flags & TURF_HULL)
+			if(turf_in_path.density && turf_in_path.turf_flags & TURF_HULL)
 				to_chat(xeno, SPAN_WARNING("You can't jump over an object in your path."))
 				return
 

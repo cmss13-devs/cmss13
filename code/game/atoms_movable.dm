@@ -368,11 +368,9 @@
 		buckled_mob.set_buckled(null)
 		buckled_mob.anchored = initial(buckled_mob.anchored)
 
-		if(!density)
-			density = TRUE
-
 		REMOVE_TRAITS_IN(buckled_mob, TRAIT_SOURCE_BUCKLE)
 		buckled_mob = null
+		buckled_mobs = list()
 
 //trying to buckle a mob
 /atom/movable/proc/buckle_mob(mob/user, mob/buckle_target)
@@ -403,7 +401,7 @@
 			. = buckle_mob(buckle_target)
 	if (buckle_target.mob_size <= MOB_SIZE_XENO)
 		if (isrunner(buckle_target) && buckle_target.stat != DEAD)
-			density = FALSE
+			user.start_pulling(user)
 			do_buckle(user, buckle_target) //don't need to check for a saddle, if we're at this point it should have been checked already
 			return
 		if ((buckle_target.stat == DEAD && istype(src, /obj/structure/bed/roller) || HAS_TRAIT(buckle_target, TRAIT_OPPOSABLE_THUMBS)))
@@ -432,6 +430,7 @@
 		target.forceMove(src.loc)
 		target.setDir(dir)
 		src.buckled_mob = target
+		src.buckled_mobs = list(target)
 		src.add_fingerprint(user)
 		afterbuckle(target)
 		return TRUE
@@ -470,6 +469,7 @@
 		var/mob = buckled_mob
 		REMOVE_TRAITS_IN(buckled_mob, TRAIT_SOURCE_BUCKLE)
 		buckled_mob = null
+		buckled_mobs = list()
 
 		afterbuckle(mob)
 
@@ -491,3 +491,21 @@
 			return 1
 
 	return 0
+
+/atom/movable/proc/handle_buckled_mob_movement(NewLoc, direct)
+	if(!buckled_mob.Move(NewLoc, direct))
+		forceMove(buckled_mob.loc)
+		last_move_dir = buckled_mob.last_move_dir
+		buckled_mob.inertia_dir = last_move_dir
+		return FALSE
+
+	// Even if the movement is entirely managed by the object, notify the buckled mob that it's moving for its handler.
+	//It won't be called otherwise because it's a function of client_move or pulled mob, neither of which accounts for this.
+	SEND_SIGNAL(buckled_mob, COMSIG_MOB_MOVE_OR_LOOK, TRUE, direct, direct)
+	return TRUE
+
+/atom/movable/BlockedPassDirs(atom/movable/mover, target_dir)
+	if(mover == buckled_mob) //can't collide with the thing you're buckled to
+		return NO_BLOCKED_MOVEMENT
+
+	return ..()

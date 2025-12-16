@@ -75,6 +75,10 @@
 	if (.)
 		Moved(oldloc, direct)
 
+	handle_rotation()
+	if(. && buckled_mob && !handle_buckled_mob_movement(loc,direct)) //movement fails if buckled mob's move fails.
+		. = FALSE
+
 /// Called when a movable atom has hit an atom via movement
 /atom/movable/proc/Collide(atom/A)
 	if (throwing)
@@ -107,6 +111,10 @@
 		. = doMove(destination)
 	else
 		CRASH("No valid destination passed into forceMove")
+
+	// Bring the buckled_mob with us. No Move(), on_move callbacks, or any of this bullshit, we just got teleported
+	if(buckled_mob && loc == destination)
+		buckled_mob.forceMove(destination)
 
 
 /atom/movable/proc/moveToNullspace()

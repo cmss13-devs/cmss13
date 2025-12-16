@@ -98,7 +98,6 @@
 		return
 	if(!do_after(user, 3 SECONDS, NONE, src))
 		return
-	var/obj/item/storage/backpack/marine/saddle/saddle = back
 
 /mob/living/carbon/xenomorph/runner/can_mount(mob/living/user, target_mounting = FALSE)
 	if(!target_mounting)

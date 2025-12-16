@@ -117,6 +117,26 @@
 /datum/component/riding/creature/runner
 	can_be_driven = FALSE
 
+/datum/component/riding/creature/runner/Initialize(mob/living/riding_mob, force = FALSE, check_loc, lying_buckle, hands_needed, target_hands_needed, silent)
+	. = ..()
+	riding_mob.density = FALSE
+
+/datum/component/riding/creature/runner/RegisterWithParent()
+	. = ..()
+	RegisterSignal(parent, COMSIG_LIVING_SET_LYING_ANGLE, PROC_REF(check_carrier_fall_over))
+
+/datum/component/riding/creature/runner/vehicle_mob_unbuckle(datum/source, mob/living/former_rider, force = FALSE)
+	unequip_buckle_inhands(parent)
+	former_rider.density = TRUE
+	return ..()
+
+/datum/component/riding/creature/runner/get_offsets(pass_index, mob_type) // list(dir = x, y, layer)
+	. = list(TEXT_NORTH = list(0, 0), TEXT_SOUTH = list(0, 0), TEXT_EAST = list(0, 0), TEXT_WEST = list(0, 0))
+	if (riding_offsets["[mob_type]"])
+		. = riding_offsets["[mob_type]"]
+	else if(riding_offsets["[RIDING_OFFSET_ALL]"])
+		. = riding_offsets["[RIDING_OFFSET_ALL]"]
+
 /datum/component/riding/creature/runner/handle_specials()
 	. = ..()
 	set_riding_offsets(RIDING_OFFSET_ALL, list(TEXT_NORTH = list(0, 8), TEXT_SOUTH = list(0, 6), TEXT_EAST = list(5, 8), TEXT_WEST = list(-5, 8)))
@@ -126,7 +146,7 @@
 	set_vehicle_dir_layer(WEST, ABOVE_MOB_LAYER)
 
 /datum/component/riding/creature/runner/check_carrier_fall_over(mob/living/carbon/xenomorph/runner/carrying_runner)
-	for(var/mob/living/rider in carrying_runner.buckled_mob)
+	for(var/mob/living/rider in carrying_runner.buckled_mobs)
 		carrying_runner.unbuckle_mob(rider)
 		rider.KnockDown(1)
 		carrying_runner.visible_message(SPAN_DANGER("[rider] topples off of [carrying_runner] as they both fall to the ground!"), \

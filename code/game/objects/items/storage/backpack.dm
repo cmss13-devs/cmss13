@@ -575,7 +575,7 @@
 	return ..()
 
 /obj/item/storage/backpack/marine/saddle/equipped(mob/user, slot, silent)
-	if(!isrunner())
+	if(!isrunner(user))
 		return
 	return ..()
 

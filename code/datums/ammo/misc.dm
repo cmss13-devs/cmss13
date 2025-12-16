@@ -201,6 +201,11 @@
 	var/loaded_icon = "loaded"
 	var/arrow_icon = "arrow_expl"
 
+/datum/ammo/arrow/dynamic
+	name = "inert dynamic arrow"
+	shrapnel_type = /obj/item/arrow/dynamic_warhead
+	handful_type = /obj/item/arrow/dynamic_warhead
+
 /datum/ammo/arrow/on_embed(mob/embedded_mob, obj/limb/target_organ, silent = FALSE)
 	if(!ishumansynth_strict(embedded_mob) || !istype(target_organ))
 		return

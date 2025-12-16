@@ -574,9 +574,9 @@
 		return
 	return ..()
 
-/obj/item/storage/backpack/marine/saddle/equipped(mob/user, slot, silent)
-	if(!isrunner(user))
-		return
+/obj/item/storage/backpack/marine/saddle/mob_can_equip(mob/equipping_mob, slot, disable_warning)
+	if(!isrunner(equipping_mob))
+		return FALSE
 	return ..()
 
 /obj/item/storage/backpack/marine/saddle/unequipped(mob/user, slot, silent)

@@ -1608,12 +1608,6 @@
 /obj/item/stack/sheet/mineral/phoron,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/requesitions)
-"agd" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 10
-	},
-/turf/open/auto_turf/snow/layer1,
-/area/ice_colony/exterior/surface/valley/northwest)
 "age" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/drinks/cans/thirteenloko,
@@ -1659,15 +1653,50 @@
 	},
 /turf/open/floor/dark2,
 /area/ice_colony/surface/engineering)
-"ags" = (
-/turf/open/floor/darkbrown2/west,
-/area/ice_colony/surface/hangar/hallway)
-"agu" = (
+"ago" = (
+/obj/item/lightstick/planted,
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/auto_turf/snow/layer1,
+/area/ice_colony/exterior/surface/clearing/south)
+"agp" = (
+/obj/item/lightstick/red/planted,
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/auto_turf/snow/layer0,
+/area/ice_colony/exterior/surface/clearing/south)
+"agq" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 6
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/turf/open/auto_turf/snow/layer0,
+/area/ice_colony/exterior/surface/clearing/pass)
+"agr" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
-/turf/open/auto_turf/snow/layer2,
-/area/ice_colony/exterior/surface/valley/northwest)
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/turf/open/auto_turf/snow/layer1,
+/area/ice_colony/exterior/surface/clearing/pass)
+"ags" = (
+/turf/open/floor/darkbrown2/west,
+/area/ice_colony/surface/hangar/hallway)
+"agt" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/auto_turf/snow/layer1,
+/area/ice_colony/exterior/surface/clearing/pass)
 "agv" = (
 /obj/structure/pipes/vents/pump{
 	dir = 8
@@ -1719,6 +1748,19 @@
 	},
 /turf/open/floor/darkyellow2/west,
 /area/ice_colony/surface/engineering)
+"agE" = (
+/obj/item/lightstick/planted,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/auto_turf/snow/layer2,
+/area/ice_colony/exterior/surface/valley/northwest)
+"agF" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 10
+	},
+/turf/open/auto_turf/snow/layer2,
+/area/ice_colony/exterior/surface/clearing/north)
 "agG" = (
 /obj/structure/surface/table,
 /obj/item/clipboard,
@@ -4315,13 +4357,8 @@
 /turf/open/floor/cafeteria,
 /area/ice_colony/surface/clinic/treatment)
 "aql" = (
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
-	},
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 5
-	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment,
 /turf/open/auto_turf/snow/layer1,
 /area/ice_colony/exterior/surface/clearing/pass)
 "aqm" = (
@@ -4380,16 +4417,6 @@
 /obj/item/storage/bag/plants,
 /turf/open/gm/grass/grass1,
 /area/ice_colony/surface/hydroponics/north)
-"aqu" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/structure/disposalpipe/junction{
-	dir = 8;
-	icon_state = "pipe-j2"
-	},
-/turf/open/auto_turf/snow/layer0,
-/area/ice_colony/exterior/surface/clearing/pass)
 "aqv" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
@@ -4573,14 +4600,6 @@
 	},
 /turf/open/floor/dark2,
 /area/ice_colony/surface/dorms)
-"ara" = (
-/obj/structure/pipes/standard/manifold/hidden/green,
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
-	},
-/turf/open/auto_turf/snow/layer0,
-/area/ice_colony/exterior/surface/clearing/pass)
 "arb" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
@@ -4597,12 +4616,6 @@
 /obj/structure/machinery/iv_drip,
 /turf/open/floor/whitered/east,
 /area/ice_colony/surface/clinic/storage)
-"are" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 10
-	},
-/turf/open/auto_turf/snow/layer0,
-/area/ice_colony/exterior/surface/clearing/pass)
 "arf" = (
 /obj/structure/ice/thin/corner{
 	dir = 8
@@ -4620,24 +4633,20 @@
 	},
 /turf/open/floor/darkgreen2/southwest,
 /area/ice_colony/surface/dorms)
-"ari" = (
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
-	},
-/turf/open/auto_turf/snow/layer0,
-/area/ice_colony/exterior/surface/clearing/pass)
 "arj" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
+/obj/structure/pipes/standard/manifold/hidden/green,
+/obj/structure/disposalpipe/junction{
+	dir = 8
 	},
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/clearing/pass)
 "arn" = (
-/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment{
 	dir = 2;
 	icon_state = "pipe-c"
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 10
 	},
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/clearing/pass)
@@ -5085,16 +5094,6 @@
 	dir = 4
 	},
 /area/ice_colony/exterior/surface/valley/northeast)
-"ate" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
-	},
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 6
-	},
-/turf/open/auto_turf/snow/layer0,
-/area/ice_colony/exterior/surface/clearing/pass)
 "atf" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -6440,6 +6439,8 @@
 /area/ice_colony/exterior/surface/valley/southwest)
 "ayd" = (
 /obj/item/lightstick/red/planted,
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/auto_turf/snow/layer1,
 /area/ice_colony/exterior/surface/clearing/south)
 "aye" = (
@@ -44014,8 +44015,8 @@ aaJ
 aaJ
 aem
 aem
-agd
-agu
+afJ
+aaJ
 ahG
 aif
 ajl
@@ -44296,8 +44297,8 @@ rxQ
 aaJ
 aem
 aem
-aem
-afK
+afJ
+aaJ
 aaJ
 ahH
 ajm
@@ -44578,8 +44579,8 @@ aaJ
 aaJ
 aaJ
 aaJ
-aem
 afJ
+aem
 aey
 ahH
 ajm
@@ -44860,8 +44861,8 @@ abh
 rxQ
 abH
 aaJ
-aem
 afJ
+aem
 aem
 ahH
 ajm
@@ -45142,8 +45143,8 @@ afy
 ace
 acv
 abN
-aaJ
-afJ
+afK
+aem
 aem
 aif
 ajm
@@ -45424,8 +45425,8 @@ aaC
 acv
 abg
 abh
-aaJ
-afJ
+afK
+aem
 aem
 aif
 ajn
@@ -45706,8 +45707,8 @@ aaG
 abg
 aaC
 abi
-aaJ
-afJ
+afK
+aem
 aem
 aif
 ajo
@@ -45988,8 +45989,8 @@ aaB
 aaC
 aaJ
 aaJ
-aaJ
-afJ
+afK
+aem
 aem
 aif
 ajp
@@ -46270,8 +46271,8 @@ ace
 aaJ
 aaJ
 aaJ
-agj
-afJ
+agE
+aem
 aaJ
 ahG
 aif
@@ -46552,14 +46553,14 @@ abL
 adB
 aax
 aax
+ahf
+agP
 aax
-agC
-agO
-agO
-agW
-agO
-agW
-ahb
+aax
+agP
+aax
+agP
+aax
 aax
 aif
 apl
@@ -46834,14 +46835,14 @@ aax
 aax
 aax
 abL
-aax
-aax
-agP
-aax
-agP
-agP
-agP
-ahf
+agF
+agO
+agW
+agO
+agW
+agW
+agW
+ahb
 agP
 aif
 alN
@@ -57902,31 +57903,31 @@ aoG
 aoF
 aoI
 asV
-aoI
-aoI
-att
-atI
-auu
-att
-att
-att
-atI
-atI
-awd
-att
-awE
-att
-awd
-atI
-atI
-atI
-atI
-atI
-atI
-atV
+agq
+aoJ
+atu
+awW
+agp
+atu
+atu
+atu
+awW
+awW
+ago
+atu
+awG
+atu
+ago
+awW
+awW
+awW
+axp
+awW
+awW
+axY
 ayd
-atI
-atI
+awW
+aye
 atI
 atV
 atI
@@ -58184,31 +58185,31 @@ aoG
 aoF
 aoI
 aoI
-ate
-aoJ
-atu
-atu
-atu
-atu
-atu
-atu
-atu
-atu
-atu
-atu
-awG
-atu
-awW
-awW
-axY
-axY
-axp
-awW
-awW
-awW
-awW
-awW
-aye
+aqp
+aoI
+att
+att
+att
+att
+att
+att
+att
+att
+att
+att
+att
+att
+atI
+atI
+atV
+atV
+axq
+atI
+atI
+atI
+atI
+atI
+ayf
 atI
 atV
 atV
@@ -62965,7 +62966,7 @@ aoJ
 aoJ
 aoJ
 aql
-aoF
+agr
 aoI
 aoI
 aoI
@@ -63246,8 +63247,8 @@ aoI
 aoI
 aoI
 aoI
-aqp
 aoI
+aFq
 aoI
 aoI
 aoI
@@ -63528,8 +63529,8 @@ azR
 azR
 aoI
 aoI
-aqp
 aoI
+aFq
 aoI
 aoI
 aoI
@@ -63810,8 +63811,8 @@ aEq
 azR
 aoG
 aoF
-aqp
 aoI
+aFq
 aoF
 aoI
 aoF
@@ -64092,8 +64093,8 @@ aEr
 aEW
 aoF
 aoF
-aqp
 aoI
+aFq
 aoI
 aoI
 aIk
@@ -64374,8 +64375,8 @@ aEs
 azR
 aoI
 aoI
-aFq
 aoI
+aFq
 aoI
 aoI
 aGE
@@ -64656,8 +64657,8 @@ aDp
 aEX
 apy
 apy
+apy
 aqw
-aoI
 aoI
 aoF
 aoF
@@ -64938,8 +64939,8 @@ aEt
 azR
 apM
 aoI
-aFq
 aoI
+aFq
 aoI
 aoF
 aoG
@@ -65220,8 +65221,8 @@ aEu
 azR
 aoF
 aoF
-aqp
 aoI
+aFq
 aoI
 aoI
 aoG
@@ -65502,8 +65503,8 @@ azR
 azR
 azR
 aoG
-aqp
-aoF
+aoI
+agt
 aoI
 aoI
 aoF
@@ -65784,8 +65785,8 @@ aEv
 aEY
 azD
 aoF
-aqp
 aoI
+aFq
 aoF
 aoI
 aoI
@@ -66066,8 +66067,8 @@ aAR
 aEZ
 azD
 azD
-aqu
-ari
+aoI
+aFq
 aoI
 aoI
 aoI
@@ -66348,7 +66349,7 @@ aEw
 aEw
 aEw
 aFY
-ara
+aoJ
 arj
 aoI
 aoI
@@ -66630,7 +66631,7 @@ aAR
 aAR
 aFy
 azD
-are
+aoI
 arn
 aoJ
 aoJ

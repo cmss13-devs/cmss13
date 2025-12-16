@@ -40,3 +40,6 @@
 	#define COMPONENT_MOVABLE_BUCKLE_STOPPED (1<<0)
 
 #define COMSIG_MOVABLE_UNBUCKLE "unbuckle"
+
+/// Called when a movable atom enters an obj's contents (obj/entered, atom/old_loc)
+#define COMSIG_MOVABLE_ENTERED_OBJ "atom_entered"

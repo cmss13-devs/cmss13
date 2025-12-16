@@ -399,11 +399,10 @@
 			if(buckle_target.loc != src.loc)
 				return
 			. = buckle_mob(buckle_target)
+	if (CHECK_BITFIELD(buckle_target.buckle_flags, CAN_BUCKLE))
+		do_buckle(user, buckle_target)
+		return
 	if (buckle_target.mob_size <= MOB_SIZE_XENO)
-		if (isrunner(buckle_target) && buckle_target.stat != DEAD)
-			user.start_pulling(user)
-			do_buckle(user, buckle_target) //don't need to check for a saddle, if we're at this point it should have been checked already
-			return
 		if ((buckle_target.stat == DEAD && istype(src, /obj/structure/bed/roller) || HAS_TRAIT(buckle_target, TRAIT_OPPOSABLE_THUMBS)))
 			do_buckle(buckle_target, user)
 			return

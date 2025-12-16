@@ -4,6 +4,7 @@
 	/// If TRUE, this creature's movements can be controlled by the rider while mounted (as opposed to riding cyborgs and humans, which is passive)
 	var/can_be_driven = TRUE
 
+
 /datum/component/riding/creature/Initialize(mob/living/riding_mob, force = FALSE, check_loc, lying_buckle, hands_needed, target_hands_needed, silent)
 	if(!isliving(parent))
 		return COMPONENT_INCOMPATIBLE
@@ -106,7 +107,7 @@
 /datum/component/riding/creature/proc/check_carrier_fall_over(mob/living/carbon/carrying)
 	SIGNAL_HANDLER
 
-	for(var/mob/living/rider in carrying.buckled_mob)
+	for(var/mob/living/rider in carrying.buckled_mobs)
 		carrying.unbuckle_mob(rider)
 		rider.KnockDown(1)
 		carrying.visible_message("<span class='danger'>[rider] topples off of [carrying] as they both fall to the ground!</span>", \

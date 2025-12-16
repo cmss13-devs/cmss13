@@ -17005,8 +17005,8 @@
 /turf/open/gm/dirtgrassborder/east,
 /area/lv624/ground/jungle/south_west_jungle)
 "oXI" = (
-/turf/closed/wall/r_wall/unmeltable,
-/area/lv624/lazarus/landing_zones/lz2)
+/turf/closed/wall/r_wall,
+/area/lv624/ground/colony/telecomm/sw_lz2)
 "oXS" = (
 /turf/open/gm/coast/west,
 /area/lv624/ground/river/central_river)
@@ -21200,7 +21200,7 @@
 /turf/open/gm/dirtgrassborder/west,
 /area/lv624/ground/jungle/east_central_jungle)
 "xDw" = (
-/turf/closed/wall/r_wall/unmeltable,
+/turf/closed/wall/r_wall,
 /area/lv624/ground/colony/telecomm/cargo)
 "xDR" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner,

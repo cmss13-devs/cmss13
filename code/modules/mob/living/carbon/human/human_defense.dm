@@ -74,6 +74,9 @@ Contains most of the procs that are called when a mob is attacked by something
 			var/obj/item/clothing/C = gear
 			if(C.flags_armor_protection & def_zone.body_part)
 				protection += C.get_armor(type)
+	var/datum/effects/acid/acid_effect = locate() in effects_list
+	if(acid_effect)
+		protection = acid_effect.adjust_armor(protection, type)
 	return protection
 
 /mob/living/carbon/human/get_sharp_obj_blocker(obj/limb/limb)

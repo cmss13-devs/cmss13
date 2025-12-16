@@ -114,9 +114,6 @@
 	if(slot == WEAR_BACK)
 		if(use_sound && !silent)
 			playsound(loc, use_sound, 15, TRUE, 6)
-		if(src.type == /obj/item/storage/backpack/marine/saddle && isrunner(user))
-			DISABLE_BITFIELD(user.buckle_flags, CAN_BUCKLE)
-			user.RemoveElement(/datum/element/ridable, /datum/component/riding/creature/runner)
 	..()
 
 /obj/item/storage/backpack/dropped(mob/user)
@@ -576,6 +573,11 @@
 		update_icon()
 		return
 	return ..()
+
+/obj/items/storage/backpack/marine/saddle/unequipped(mob/user, slot, silent)
+	if(src.type == /obj/item/storage/backpack/marine/saddle && isrunner(user))
+		DISABLE_BITFIELD(user.buckle_flags, CAN_BUCKLE)
+		user.RemoveElement(/datum/element/ridable, /datum/component/riding/creature/runner)
 
 /obj/item/storage/backpack/marine/k9_synth
 	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/UA.dmi'

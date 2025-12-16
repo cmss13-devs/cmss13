@@ -46,6 +46,9 @@
 		if(bottom_left_turfs[i].x < turf.x && bottom_left_turfs[i].y < turf.y && top_right_turfs[i].x > turf.x &&  top_right_turfs[i].y > turf.y)
 			return i
 
+/datum/turf_reservation/proc/is_below(turf/turf_below, turf/turf_above)
+	return get_turf_z(turf_above) > get_turf_z(turf_below)
+
 /datum/turf_reservation/transit
 	turf_type = /turf/open/space/transit
 	pre_cordon_distance = 7

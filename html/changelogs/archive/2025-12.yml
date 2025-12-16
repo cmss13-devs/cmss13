@@ -259,3 +259,9 @@
       max.
   - ui: Increased the size of the Chemmaster 3000 window to 600x600 from 550x600 to
       fit the new buttons without distorting text too much.
+2025-12-16:
+  Drathek:
+  - bugfix: Fix Restore Ghost Character verb causing ghosts to be visible to living
+      players
+  SpypigDev:
+  - bugfix: CO lore faxes no longer use invisible ink

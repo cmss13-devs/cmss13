@@ -221,6 +221,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_field_doctor, list(
 		list("Prescription Medical HUD Glasses", 0, /obj/item/clothing/glasses/hud/health/prescription, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_MANDATORY),
 
 		list("HEADWEAR (CHOOSE 1)", 0, null, null, null),
+		list("M10 Corpsman Helmet", 0, /obj/item/clothing/head/helmet/marine/medic, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
 		list("Surgeon's Surgical Cap", 0, /obj/item/clothing/head/surgery/green, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_RECOMMENDED),
 		list("Purple Surgical Cap", 0, /obj/item/clothing/head/surgery/purple, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
 		list("Olive Surgical Cap", 0, /obj/item/clothing/head/surgery/olive, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
@@ -590,7 +591,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_researcher, list(
 		/obj/item/storage/syringe_case,
 		/obj/item/clothing/suit/storage/marine/light/vest,
 		/obj/item/clothing/shoes/marine,
-		/obj/item/clothing/head/helmet/marine/medic,
 		/obj/item/storage/box/mre,
 		/obj/item/device/radio/marine,
 		/obj/item/clothing/accessory/patch/medic_patch,

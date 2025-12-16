@@ -593,6 +593,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_researcher, list(
 		/obj/item/clothing/shoes/marine,
 		/obj/item/storage/box/mre,
 		/obj/item/device/radio/marine,
+//		/obj/item/clothing/head/helmet/marine/medic,
 		/obj/item/clothing/accessory/patch/medic_patch,
 	)
 

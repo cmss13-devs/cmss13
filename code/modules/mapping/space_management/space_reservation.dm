@@ -41,6 +41,11 @@
 	///Distance away from the cordon where we can put a "sort-cordon" and run some extra code (see make_repel). 0 makes nothing happen
 	var/pre_cordon_distance = 0
 
+/datum/turf_reservation/proc/get_turf_z(var/turf/turf)
+	for(var/i in 1 to length(bottom_left_turfs))
+		if(bottom_left_turfs[i].x < turf.x && bottom_left_turfs[i].y < turf.y && top_right_turfs[i].x > turf.x &&  top_right_turfs[i].y > turf.y)
+			return i
+
 /datum/turf_reservation/transit
 	turf_type = /turf/open/space/transit
 	pre_cordon_distance = 7

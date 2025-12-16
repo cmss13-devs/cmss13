@@ -1181,8 +1181,12 @@
 	//Second check to make sure they're still valid to be carried
 	if(target.is_mob_incapacitated())
 		return
-	target.layer = ABOVE_MOB_LAYER
+	src.layer = ABOVE_MOB_LAYER
 	buckle_mob(target, src)
+
+/mob/living/carbon/xenomorph/unbuckle()
+	. = ..()
+	layer = MOB_LAYER
 
 /mob/living/carbon/xenomorph/MouseDrop_T(atom/dropping, mob/user)
 	. = ..()

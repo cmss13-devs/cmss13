@@ -208,6 +208,7 @@
 	name = YAUTJA_BADBLOOD
 	minimap_icon = "predator"
 	job_title = JOB_BADBLOOD
+	role_comm_title = "Bad Blood"
 	faction = FACTION_YAUTJA_BADBLOOD
 	faction_group = list(FACTION_YAUTJA_BADBLOOD)
 	flags = EQUIPMENT_PRESET_START_OF_ROUND

@@ -1047,7 +1047,9 @@
 /area/ice_colony/surface/requesitions)
 "adZ" = (
 /obj/effect/decal/cleanable/blood,
-/obj/structure/stairs/multiz/down,
+/obj/structure/stairs/multiz/down{
+	dir = 1
+	},
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/requesitions)
 "aea" = (
@@ -2064,7 +2066,9 @@
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/requesitions)
 "ahE" = (
-/obj/structure/stairs/multiz/up,
+/obj/structure/stairs/multiz/up{
+	dir = 1
+	},
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/underground/requesition)
 "ahF" = (
@@ -4656,7 +4660,9 @@
 /turf/open/ice,
 /area/ice_colony/exterior/surface/clearing/north)
 "aqB" = (
-/obj/structure/stairs/multiz/up,
+/obj/structure/stairs/multiz/up{
+	dir = 1
+	},
 /turf/open/ice,
 /area/ice_colony/exterior/underground/caves/open)
 "aqC" = (
@@ -5028,7 +5034,9 @@
 /area/ice_colony/surface/dorms)
 "arI" = (
 /obj/item/tool/warning_cone,
-/obj/structure/stairs/multiz/up,
+/obj/structure/stairs/multiz/up{
+	dir = 1
+	},
 /turf/open/ice,
 /area/ice_colony/exterior/underground/caves/open)
 "arJ" = (
@@ -16991,7 +16999,9 @@
 /turf/open/floor/plating,
 /area/ice_colony/underground/requesition)
 "bgu" = (
-/obj/structure/stairs/multiz/down,
+/obj/structure/stairs/multiz/down{
+	dir = 1
+	},
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/valley/south)
 "bgv" = (
@@ -28723,11 +28733,6 @@
 	},
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/requesitions)
-"fkj" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/stairs/multiz/down,
-/turf/open/floor/plating/icefloor,
-/area/ice_colony/surface/requesitions)
 "fkY" = (
 /obj/structure/machinery/light,
 /turf/open/shuttle/can_surgery/red,
@@ -29039,7 +29044,9 @@
 /turf/open/floor/darkblue2/southwest,
 /area/ice_colony/surface/dorms)
 "nqp" = (
-/obj/structure/stairs/multiz/down,
+/obj/structure/stairs/multiz/down{
+	dir = 1
+	},
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/requesitions)
 "nup" = (
@@ -69863,7 +69870,7 @@ abE
 acY
 acg
 abE
-fkj
+nqp
 auL
 auL
 auL

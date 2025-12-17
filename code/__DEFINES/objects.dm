@@ -226,3 +226,6 @@ GLOBAL_LIST_INIT(RESTRICTED_CAMERA_NETWORKS, list( //Those networks can only be 
 #define REMOVE_CROWBAR  (1<<0)
 #define BREAK_CROWBAR   (1<<1)
 #define REMOVE_SCREWDRIVER (1<<2)
+
+/// How many fields maximum are allowed on papers
+#define PAPER_MAX_FIELDS 51

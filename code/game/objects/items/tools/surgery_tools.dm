@@ -1,5 +1,3 @@
-
-
 // Surgery Tools
 /obj/item/tool/surgery
 	icon = 'icons/obj/items/surgery_tools.dmi'
@@ -7,7 +5,6 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_righthand.dmi',
 	)
-	/// reduced
 	attack_speed = 4
 
 /*
@@ -16,15 +13,18 @@
  */
 /obj/item/tool/surgery/retractor
 	name = "retractor"
-	desc = "Retracts stuff."
+	desc = "A tool for surgery used to hold skin, tissues, or organs apart to expose and access the surgical site."
 	icon_state = "retractor"
+	hitsound = 'sound/weapons/genhit3.ogg'
+	force = 10
+	throwforce = 1
 	matter = list("metal" = 10000, "glass" = 5000)
 	flags_atom = FPRINT|CONDUCT
 	w_class = SIZE_SMALL
+	attack_verb = list("attacked", "hit", "bludgeoned", "pummeled", "beat")
 
 /obj/item/tool/surgery/retractor/predatorretractor
 	name = "opener"
-	desc = "Retracts stuff."
 	icon_state = "predator_retractor"
 
 /*
@@ -33,17 +33,18 @@
  */
 /obj/item/tool/surgery/hemostat
 	name = "hemostat"
-	desc = "You think you have seen this before."
+	desc = "A tool for surgery used to control bleeding by pinching blood vessels closed. It can also be used to remove foreign objects and manipulate and lift small organs and tissues."
 	icon_state = "hemostat"
+	hitsound = 'sound/weapons/pierce.ogg'
 	matter = list("metal" = 5000, "glass" = 2500)
+	force = 10
+	sharp = IS_SHARP_ITEM_SIMPLE
 	flags_atom = FPRINT|CONDUCT
 	w_class = SIZE_SMALL
-
-	attack_verb = list("attacked", "pinched")
+	attack_verb = list("attacked", "pinched", "pierced", "punctured")
 
 /obj/item/tool/surgery/hemostat/predatorhemostat
 	name = "pincher"
-	desc = "You think you have seen this before."
 	icon_state = "predator_hemostat"
 
 /*
@@ -52,18 +53,20 @@
  */
 /obj/item/tool/surgery/cautery
 	name = "cautery"
-	desc = "This stops bleeding."
+	desc = "A tool for surgery that uses extreme heat to stop bleeding, seal blood vessels, and remove unwanted tissue. Closes incisions by burning things, in this case."
 	icon_state = "cautery"
 	matter = list("metal" = 5000, "glass" = 2500)
+	force = 10
+	throwforce = 1
+	damtype = "fire"
+	hitsound = 'sound/surgery/cautery2.ogg'
 	flags_atom = FPRINT|CONDUCT
 	w_class = SIZE_TINY
 	flags_item = ANIMATED_SURGICAL_TOOL
-
-	attack_verb = list("burnt")
+	attack_verb = list("burned", "seared", "scorched", "singed")
 
 /obj/item/tool/surgery/cautery/predatorcautery
 	name = "cauterizer"
-	desc = "This stops bleeding."
 	icon_state = "predator_cautery"
 	flags_item = NO_FLAGS
 
@@ -73,19 +76,20 @@
  */
 /obj/item/tool/surgery/surgicaldrill
 	name = "surgical drill"
-	desc = "You can drill using this item. You dig?"
+	desc = "A surgical tool used to drill through bone to make a cavity for implantation purposes."
 	icon_state = "drill"
 	hitsound = 'sound/weapons/circsawhit.ogg'
 	matter = list("metal" = 15000, "glass" = 10000)
 	flags_atom = FPRINT|CONDUCT
-	force = 0
+	force = 25
+	attack_speed = 9
+	throwforce = 9
+	sharp = IS_SHARP_ITEM_ACCURATE //it makes holes in skin and bone... Yes, sharp.
 	w_class = SIZE_SMALL
-
-	attack_verb = list("drilled")
+	attack_verb = list("drilled", "bored", "gored", "perforated")
 
 /obj/item/tool/surgery/surgicaldrill/predatorsurgicaldrill
 	name = "bone drill"
-	desc = "You can drill using this item. You dig?"
 	icon_state = "predator_drill"
 
 /*
@@ -94,7 +98,7 @@
  */
 /obj/item/tool/surgery/scalpel
 	name = "scalpel"
-	desc = "Cut, cut, and once more cut."
+	desc = "A surgical tool used to create incisions, debride diseased flesh, and separate muscles and organs via a cutting motion. Can also remove foreign objects. Begins most surgeries."
 	icon_state = "scalpel"
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
@@ -112,12 +116,10 @@
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
 	matter = list("metal" = 10000, "glass" = 5000)
-
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 
 /obj/item/tool/surgery/scalpel/predatorscalpel
 	name = "cutter"
-	desc = "Cut, cut, and once more cut."
 	icon_state = "predator_scalpel"
 
 /*
@@ -125,30 +127,32 @@
  */
 /obj/item/tool/surgery/scalpel/laser
 	name = "prototype laser scalpel"
-	desc = "A scalpel augmented with a directed laser, for controlling bleeding as the incision is made. Also functions as a cautery. This one looks like an unreliable early model."
+	desc = "A scalpel augmented with a directed laser for controlling bleeding as the incision is made and for functioning as a cautery. Sadly, this is only a prototype that looks like a superheated laser crudely slapped on a modified scalpel, so don't expect any miracles."
+	desc_lore = "The prototype laser scalpel was developed during the mid-1900s, a time where scientists had yet to solve their quandary of developing a laser that could cut through flesh and and burn the blood vessels closed simultaneously; they settled on a compromise: slapping a superheated directed laser beneath the blade of the scalpel and hoping the laser burns the incision the blade makes. While the prototype ironically functioned perfectly as a cautery, it left something to be desired where bloodless incisions were a concern. Somehow, the big heads in research forgot to calibrate the width of the laser to be equivalent to the precise width of the incision made by the blade, leaving some blood vessels untouched in the process."
 	icon_state = "scalpel_laser"
 	damtype = "fire"
 	flags_item = ANIMATED_SURGICAL_TOOL
 	///The likelihood an incision made with this will be bloodless.
 	var/bloodlessprob = 60
-	black_market_value = 25
+	black_market_value = 15
 
 /obj/item/tool/surgery/scalpel/laser/improved
 	name = "laser scalpel"
-	desc = "A scalpel augmented with a directed laser, for controlling bleeding as the incision is made. Also functions as a cautery. This one looks trustworthy, though it could be better."
+	desc = "A scalpel augmented with a directed laser for controlling bleeding as the incision is made and for functioning as a cautery. This standard model uses a CO2 laser to vaporize tissue and seal blood vessels, but the incisions are not always bloodless."
+	desc_lore = "After figuring out how to make a laser that incises flesh, the prototype and its blade became nothing more than a distant memory and a reminder to not haphazardly slap two independently-functioning tools together and praying to Spess Jesus they will in tandem with one another. This design, hailing from the early 2000s, uses a CO2 laser to create an incision by using an invisible infrared beam that vaporizes tissue while sealing blood vessels. While pinpoint bleeding occurs on occasion, the laser scalpel is a perfect, if not expensive alternative to replacing a standard scalpel and cautery."
 	icon_state = "scalpel_laser_2"
 	damtype = "fire"
-	force = 12
 	bloodlessprob = 80
-	black_market_value = 35
+	black_market_value = 20
 
 /obj/item/tool/surgery/scalpel/laser/advanced
 	name = "advanced laser scalpel"
-	desc = "A scalpel augmented with a directed laser, for controlling bleeding as the incision is made. Also functions as a cautery. This one looks to be the pinnacle of precision energy cutlery!"
+	desc = "A scalpel augmented with a directed laser for controlling bleeding as the incision is made and for functioning as a cautery. This one's laser has smart detection technology to target and burn every blood vessel in its vicinity and represents the pinnacle of precision energy cutlery!"
+	desc_lore = "Scientists perfected the standard model by using a much stronger type of laser that creates explosions on the microscopic scale to vaporize any tissue and blood vessels in its way as it makes an incision. With a 100% success rate in creating bloodless incision, these scalpels have no issue taking the place of scalpels and cauteries, despite their exorbitant price tags."
 	icon_state = "scalpel_laser_3"
 	damtype = "fire"
-	force = 15
 	bloodlessprob = 100
+	black_market_value = 25
 
 /*
  * Special Variants
@@ -156,17 +160,21 @@
 
 /obj/item/tool/surgery/scalpel/pict_system
 	name = "\improper PICT system"
-	desc = "The Precision Incision and Cauterization Tool uses a high-frequency vibrating blade, laser cautery, and suction liquid control system to precisely sever target tissues while preventing all fluid leakage. Despite its troubled development program and horrifying price tag, outside of complex experimental surgeries it isn't any better than an ordinary twenty-dollar scalpel and can't create a full-length incision bloodlessly."
+	desc = "The Perivascular Incision and Cauterization Tool uses a high-frequency vibrating blade and suction liquid control system to precisely target and destroy the lymphatic and vascular systems feeding tumors while suctioning fluids that may contain traveling cancerous cells. Due to its specialty in cutting certain tissues, it is much slower than a scalpel in initiating surgeries and it can't create a full-length incision bloodlessly."
+	desc_lore = "The PICT system has humble origins as yet another tool developed for cancer research. Designed to identify, sever and cauterize the lymphatic and vascular systems feeding tumors, it accomplishes goals with aplomb and is the standard tool for cutting and burning off nutrient supplies to tumors before extraction. Due to its mechanisms of targeting specific types of cells while incising and suctioning, it struggles to create a full-length incision bloodlessly."
 	icon_state = "pict_system"
+	force = 15
+	attack_speed = 6
 	w_class = SIZE_SMALL
-	force = 7.5
 	black_market_value = 25
 
 /obj/item/tool/surgery/scalpel/manager
 	name = "incision management system"
-	desc = "A true extension of the surgeon's body, this marvel instantly and completely prepares an incision allowing for the immediate commencement of therapeutic steps."
+	desc = "A true extension of the surgeon's body, this marvel instantly and completely prepares and widens incisions simultaneously and bloodlessly, allowing for the immediate commencement of therapeutic steps. It can only be used to begin surgeries."
+	desc_lore = "Thousands of surgeons across the galaxy can only dream of holding one of these in their hands. With the technology of an advanced laser scalpel and a mechanical retractor all in one tool, a surgeon can incise, seal blood vessels, and widen incisions all in one step. Sadly, the tool is overhyped, aiding in its unconscionable price tag; it cannot function as a retractor, hemostat, cautery in any circumstances other than making an incision."
+	force = 15
+	attack_speed = 6
 	icon_state = "scalpel_manager"
-	force = 7.5
 	flags_item = ANIMATED_SURGICAL_TOOL
 	black_market_value = 25
 
@@ -177,25 +185,24 @@
 
 /obj/item/tool/surgery/circular_saw
 	name = "circular saw"
-	desc = "For heavy-duty cutting."
+	desc = "A surgical tool used to saw through thick bone in the skull and ribcage prior to prying them apart, or for amputating diseased limbs."
 	icon_state = "saw"
 	hitsound = 'sound/weapons/circsawhit.ogg'
 	flags_atom = FPRINT|CONDUCT
-	force = 0
+	force = 25
+	attack_speed = 9
+	sharp = IS_SHARP_ITEM_BIG
 	w_class = SIZE_SMALL
 	throwforce = 9
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
 	matter = list("metal" = 20000,"glass" = 10000)
 	flags_item = ANIMATED_SURGICAL_TOOL
-
-	attack_verb = list("attacked", "slashed", "sawed", "cut")
-	sharp = IS_SHARP_ITEM_BIG
+	attack_verb = list("attacked", "slashed", "sawed", "cut", "maimed", "gored")
 	edge = 1
 
 /obj/item/tool/surgery/circular_saw/predatorbonesaw
 	name = "bone saw"
-	desc = "For heavy-duty cutting."
 	icon_state = "predator_bonesaw"
 	flags_item = NO_FLAGS
 
@@ -206,8 +213,8 @@
 
 /obj/item/tool/surgery/bonegel
 	name = "bottle of bone gel"
-	desc = "A container for bone gel that often needs to be refilled from a specialized machine."
-	desc_lore = "Bone gel is a biological synthetic bone-analogue with the consistency of clay. It is capable of fixing hairline fractures and complex fractures alike. Bone gel should not be used to fix missing bone, as it does not replace the body's bone marrow. Overuse in a short period may cause acute immunodeficiency or anemia."
+	desc = "A container for bone gel, a substance capable of fixing fractures using an analogue that mimics bone. It needs to be refilled from a specialized machine."
+	desc_lore = "Bone gel is a biological synthetic bone-analogue with the consistency of clay. It is capable of fixing hairline fractures and complex fractures alike by sealing cracks through adhesion to compact bone and solidifying; the gel then naturally erodes away as the bone remodels itself. Bone gel should not be used to fix missing bone, as it does not replace the body's bone marrow. Overuse in a short period may cause acute immunodeficiency or anemia."
 	icon_state = "bone-gel"
 	w_class = SIZE_SMALL
 	matter = list("plastic" = 7500)
@@ -230,13 +237,13 @@
 /obj/item/tool/surgery/bonegel/update_icon(mob/user)
 	. = ..()
 	switch(remaining_gel)
-		if(100 to INFINITY)
+		if(76 to INFINITY)
 			icon_state = base_icon_state
-		if(60 to 99)
+		if(51 to 75)
 			icon_state = "[base_icon_state]_75"
-		if(30 to 59)
+		if(26 to 50)
 			icon_state = "[base_icon_state]_50"
-		if(5 to 29)
+		if(5 to 25)
 			icon_state = "[base_icon_state]_25"
 		if(0 to 4)
 			icon_state = "[base_icon_state]_0"
@@ -254,8 +261,8 @@
 
 	if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_DOCTOR)) //Know how much you will be using if you can use it
 		return
-	. += SPAN_NOTICE("You would need to use [fracture_fix_cost]% of the bone gel to repair a fracture.")
-	. += SPAN_NOTICE("You would need to use [mend_bones_fix_cost]% of the bone gel to mend bones.")
+	. += SPAN_NOTICE("You will need to use [fracture_fix_cost]% of the bone gel to repair a fracture.")
+	. += SPAN_NOTICE("You will need to use [mend_bones_fix_cost]% of the bone gel to mend bones.")
 
 /obj/item/tool/surgery/bonegel/proc/refill_gel(obj/refilling_obj, mob/user)
 	if(unlimited_gel)
@@ -308,14 +315,13 @@
  */
 
 /obj/item/tool/surgery/FixOVein
-	name = "FixOVein"
+	name = "\improper FixOVein"
 	icon_state = "fixovein"
-	desc = "Used for fixing torn blood vessels. Could also be used to reconnect other tissues, in a pinch."
-
+	desc = "A surgical tool used to repair broken blood vessels using a synthetic membrane. The tool can also be used to reconnect other ligaments and tissues in a pinch."
+	desc_lore = "Hemophilics everywhere can thank a likewise hemophilic surgeon and their love for birds for the development of this tool. Inspired by the protective keratin sheath surrounding blood feathers as they grow and the crumbling of pin feather sheaths after the feather finishes growing, they worked with scientists to develop a tool that secretes a membrane of synthetic connective tissue to provide a framework and protective casing for the healing blood vessel until it naturally repairs itself, after which is sloughs off and dissolves. Since the membrane operates on a cellular level, it is practically infinite. With patients having been operated on experiencing a 100% recovery rate, the FixOVein has earned it a spot on every surgeon's surgical tray."
 	force = 0
 	throwforce = 1
 	matter = list("plastic" = 5000)
-
 	w_class = SIZE_SMALL
 	var/usage_amount = 10
 
@@ -329,7 +335,7 @@
  */
 
 /obj/item/tool/surgery/surgical_line
-	name = "\proper surgical line"
+	name = "surgical line"
 	desc = "A roll of military-grade surgical line, able to seamlessly sew up any wound. Also works as a robust fishing line for maritime deployments."
 	icon_state = "line_brute"
 	item_state = "line_brute"
@@ -347,9 +353,9 @@
  */
 
 /obj/item/tool/surgery/synthgraft
-	name = "Synth-Graft"
-	desc = "An applicator for synthetic skin field grafts. The stuff reeks, itches like the dickens, hurts going on, and the color is \
-		a perfectly averaged multiethnic tone that doesn't blend with <i>anyone's</i> complexion. But at least you don't have to stay in sickbay."
+	name = "synth-graft"
+	desc = "An applicator for synthetic skin field grafts. The stuff reeks like processed space carp skin, itches like the dickens, stings like hell when applied, and the color is \
+		a perfectly averaged multi-ethnic tone that doesn't blend with <i>anyone's</i> complexion. But at least you don't have to stay in sickbay for skin graft surgery."
 	icon_state = "line_burn"
 	item_state = "line_burn"
 	force = 0
@@ -367,13 +373,16 @@
 
 /obj/item/tool/surgery/bonesetter
 	name = "bone setter"
+	desc = "Known formally as 'bone reduction forceps,' it is a surgical tool used for a procedure called 'fracture reduction,' during which it to repositions fractured bones into their proper positions so they may heal properly."
 	icon_state = "bonesetter"
-	force = 0
-	throwforce = 9
+	hitsound = 'sound/weapons/genhit3.ogg'
+	force = 15
+	attack_speed = 6
+	throwforce = 5
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
 	w_class = SIZE_SMALL
-	attack_verb = list("attacked", "hit", "bludgeoned")
+	attack_verb = list("grasped", "pinched", "pulled", "yanked")
 	matter = list("plastic" = 7500)
 
 /obj/item/tool/surgery/bonesetter/predatorbonesetter
@@ -387,20 +396,20 @@ t. optimisticdude
 
 /obj/item/tool/surgery/handheld_pump
 	name = "handheld surgical pump"
-	desc = "This sucks. Literally"
+	desc = "This sucks. Literally."
 	icon_state = "pump"
 	force = 0
 	throwforce = 9
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
 	w_class = SIZE_SMALL
-	attack_verb = list("attacked", "hit", "bludgeoned")
+	attack_verb = list("attacked", "hit", "bludgeoned", "pummeled", "beat")
 	matter = list("plastic" = 7500)
 */
 
 /obj/item/tool/surgery/drapes //Does nothing at present. Might be useful for increasing odds of success.
 	name = "surgical drapes"
-	desc = "Used to cover a limb prior to the beginning of a surgical procedure"
+	desc = "Used to cover a limb prior to the beginning of a surgical procedure."
 	icon_state = "drapes"
 	gender = PLURAL
 	w_class = SIZE_SMALL
@@ -439,13 +448,13 @@ t. optimisticdude
 
 /obj/item/tool/surgery/healing_gun/attackby(obj/item/O, mob/user)
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
-		to_chat(user, SPAN_WARNING("You have no idea how to put \the [O] into \the [src]!"))
+		to_chat(user, SPAN_WARNING("You have no idea how to put [O] into [src]!"))
 		return
 	if(istype(O, /obj/item/tool/surgery/healing_gel))
 		if(loaded)
 			to_chat(user, SPAN_WARNING("There's already a capsule inside the healing gun!"))
 			return
-		user.visible_message(SPAN_NOTICE("[user] loads \the [src] with \a [O].") ,SPAN_NOTICE("You load \the [src] with \a [O]."))
+		user.visible_message(SPAN_NOTICE("[user] loads [src] with \a [O].") ,SPAN_NOTICE("You load [src] with \a [O]."))
 		playsound(loc, 'sound/items/air_release.ogg',25)
 		loaded = TRUE
 		update_icon()
@@ -467,7 +476,7 @@ t. optimisticdude
 	name = "wound clamp"
 	desc = "Used for clamping wounds after treatment."
 	icon_state = "wound_clamp"
-	force = 0
+	force = 10
 	throwforce = 1
 	w_class = SIZE_SMALL
 	flags_item = ITEM_PREDATOR|ANIMATED_SURGICAL_TOOL
@@ -478,10 +487,11 @@ t. optimisticdude
 
 /obj/item/tool/surgery/WYautopsy
 	name = "\improper Weyland Brand Automatic Autopsy System(TM)"
-	desc = "Putting the FUN back in Autopsy.  This little gadget performs an entire autopsy of whatever strange life form you've found in about 30 seconds."
+	desc = "Putting the FUN back in Autopsy. This little gadget performs an entire autopsy of whatever strange life form you've found in about 30 seconds."
 	icon_state = "scalpel_laser_2"
 	damtype = "fire"
-	force = 0
+	force = 10
+	throwforce = 1
 	flags_item = ANIMATED_SURGICAL_TOOL
 	var/active = 0
 	var/resetting = 0//For the reset, to prevent macro-spam abuse
@@ -493,17 +503,17 @@ t. optimisticdude
 	set src in usr
 
 	if(!active)
-		to_chat(usr, "System appears to be working fine...")
+		to_chat(usr, "The system appears to be working fine...")
 		return
 	if(active)
 		resetting = 1
-		to_chat(usr, "Resetting tool, This will take a few seconds...  Do not attempt to use the tool during the reset or it may malfunction.")
+		to_chat(usr, "Resetting tool. This will take a few seconds...  Do not attempt to use the tool during the reset or it may malfunction.")
 		while(active) //While keep running until it's reset (in case of lag-spam)
 			active = 0 //Sets it to not active
 			to_chat(usr, "Processing...")
 			spawn(60) // runs a timer before the final check.  timer is longer than autopsy timers.
 				if(!active)
-					to_chat(usr, "System Reset completed")
+					to_chat(usr, "System Reset completed!")
 					resetting = 0
 
 /obj/item/tool/surgery/WYautopsy/attack(mob/living/carbon/xenomorph/T as mob, mob/living/user as mob)
@@ -511,27 +521,27 @@ t. optimisticdude
 	set name = "Perform Alien Autopsy"
 	set src in usr*/
 	if(resetting)
-		to_chat(usr, "Tool is currently returning to factory default.  If you have been waiting, try running the reset again.")
+		to_chat(usr, "This tool is currently returning to its factory default settings. If you have been waiting, try running the reset again.")
 	if(!isxeno(T))
 		to_chat(usr, "What are you, some sort of fucking MONSTER?")
 		return
 	if(T.health > 0)
-		to_chat(usr, "Nope.")
+		to_chat(usr, "The fuck are you doing!? Kill it!")
 		return
 	if(active)
-		to_chat(usr, "Your already performing an autopsy")
+		to_chat(usr, "You are already performing an autopsy.")
 		return
 	if(istype(T, /mob/living/carbon/xenomorph/larva))
-		to_chat(usr, "It's too young... (This will be in a future update)")
+		to_chat(usr, "The larva has not developed any useful biomass for you to extract.") //It will in a future update, I guess.
 		return
 	active = 1
 	var CHECK = user.loc
 	playsound(loc, 'sound/weapons/pierce.ogg', 25)
 	to_chat(usr, "You begin to cut into the alien... This might take some time...")
 	if(T.health >-100)
-		to_chat(usr, "HOLY SHIT IT'S STILL ALIVE.  It knocks you down as it jumps up.")
+		to_chat(usr, "HOLY SHIT! IT'S STILL ALIVE! It springs to life and uses its body weight to knock you down!")
 		usr.apply_effect(20, WEAKEN)
-		to_chat(T, "You feel TREMENDOUS pain and jump back up to use the last of your strength to kill [usr] with your final moments of life. (~10 seconds)")
+		to_chat(T, "Though you feel a monumental amount of pain, you jump back up to use the last of your strength to kill [usr] with your final moments of life.") ///~10 seconds
 		T.health = T.maxHealth*2 //It's hulk levels of angry.
 		active = 0
 		spawn (1000) //Around 10 seconds
@@ -542,9 +552,9 @@ t. optimisticdude
 		if(0)
 			spawn(50)
 				if(CHECK != user.loc)
-					to_chat(usr, "This is difficult, you probably shouldn't move")
+					to_chat(usr, "This procedure requires uninterrupted focus; you need to remain still.")
 					return
-				to_chat(usr, "You've cut through the outer layers of Chitin")
+				to_chat(usr, "You've cut through the outer layers of Chitin.")
 				new /obj/item/oldresearch/Chitin(T.loc) //This will be 1-3 Chitin eventually (depending on tier)
 				new /obj/item/oldresearch/Chitin(T.loc) //This will be 1-3 Chitin eventually (depending on tier)
 				T.butchery_progress++
@@ -552,26 +562,26 @@ t. optimisticdude
 		if(1)
 			spawn(50)
 				if(CHECK != user.loc)
-					to_chat(usr, "This is difficult, you probably shouldn't move.")
+					to_chat(usr, "This procedure requires uninterrupted focus; you need to remain still.")
 					return
-				to_chat(usr, "You've cut into the chest cavity and retreived a sample of blood.")
+				to_chat(usr, "You've cut into the chest cavity and retrieved a sample of blood.")
 				new /obj/item/oldresearch/Blood(T.loc)//This will be a sample of blood eventually
 				T.butchery_progress++
 				active = 0
 		if(2)
 			spawn(50)
 				if(CHECK != user.loc)
-					to_chat(usr, "This is difficult, you probably shouldn't move.")
+					to_chat(usr, "This procedure requires uninterrupted focus; you need to remain still.")
 					return
 				//to_chat(usr, "You've cut out an intact organ.")
-				to_chat(usr, "You've cut out some Biomass...")
+				to_chat(usr, "You've cut out some biomass...")
 				new /obj/item/oldresearch/Resin(T.loc)//This will be an organ eventually, based on the caste.
 				T.butchery_progress++
 				active = 0
 		if(3)
 			spawn(50)
 				if(CHECK != user.loc)
-					to_chat(usr, "This is difficult, you probably shouldn't move.")
+					to_chat(usr, "This procedure requires uninterrupted focus; you need to remain still.")
 					return
 				to_chat(usr, "You scrape out the remaining biomass.")
 				active = 0

@@ -161,6 +161,9 @@ Administrative related.
 /datum/config_entry/string/ooc_color_maint
 	config_entry_value = "#00ffff"
 
+/datum/config_entry/string/ooc_color_subs
+	config_entry_value = "#8956FB"
+
 /datum/config_entry/string/ooc_color_default
 	config_entry_value = "#b82e00"
 

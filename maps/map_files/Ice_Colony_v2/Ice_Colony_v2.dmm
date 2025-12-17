@@ -1908,7 +1908,7 @@
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/requesitions)
 "ahE" = (
-/obj/structure/stairs/multiz/down{
+/obj/structure/stairs/multiz/up{
 	dir = 1
 	},
 /turf/open/floor/plating/icefloor,
@@ -4255,7 +4255,7 @@
 /turf/open/ice,
 /area/ice_colony/exterior/surface/clearing/north)
 "aqB" = (
-/obj/structure/stairs/multiz/down{
+/obj/structure/stairs/multiz/up{
 	dir = 1
 	},
 /turf/open/ice,
@@ -4589,7 +4589,7 @@
 /area/ice_colony/surface/dorms)
 "arI" = (
 /obj/item/tool/warning_cone,
-/obj/structure/stairs/multiz/down{
+/obj/structure/stairs/multiz/up{
 	dir = 1
 	},
 /turf/open/ice,

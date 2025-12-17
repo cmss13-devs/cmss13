@@ -236,6 +236,26 @@
 /datum/ammo/arrow/do_at_max_range(obj/projectile/projectile, mob/firer)
 	drop_arrow(get_turf(projectile), projectile)
 
+/datum/ammo/arrow/snare
+	name = "snare arrow"
+	damage = 30
+	penetration = 15
+	max_range = 7
+	shrapnel_type = /obj/item/arrow/snare
+	handful_type = /obj/item/arrow/snare
+	loaded_icon = "trap"
+	arrow_icon = "arrow_trap"
+
+/datum/ammo/arrow/snare/on_hit_mob(mob/mob,obj/projectile/projectile)
+	mob.apply_effect(1, STUN)
+	mob.apply_effect(3, DAZE)
+	var/obj/item/arrow/snare/arrow = new(get_turf(mob))
+	var/matrix/rotation = matrix()
+	rotation.Turn(projectile.angle - 90)
+	arrow.apply_transform(rotation)
+	arrow.trigger_snare(mob)
+	pushback(mob, projectile, 2)
+
 /datum/ammo/arrow/expl
 	name = "activated explosive arrow"
 	activated = TRUE
@@ -246,6 +266,9 @@
 	loaded_icon = "expl"
 	arrow_icon = "arrow_expl_active"
 	var/datum/effect_system/smoke_spread/smoke
+
+/datum/ammo/arrow/expl/dynamic
+	handful_type = /obj/item/arrow/dynamic_warhead
 
 /datum/ammo/arrow/expl/New()
 	. = ..()
@@ -284,6 +307,9 @@
 	shrapnel_chance = 0
 	loaded_icon = "emp"
 	arrow_icon = "arrow_emp_active"
+
+/datum/ammo/arrow/emp/dynamic
+	handful_type = /obj/item/arrow/dynamic_warhead
 
 /datum/ammo/arrow/emp/on_hit_mob(mob/mob,obj/projectile/projectile)
 	empulse(projectile, 1, 4)

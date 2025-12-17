@@ -70,7 +70,7 @@
 		beaker = inputted_item
 		user.drop_inv_item_to_loc(inputted_item, src)
 		if(old_beaker)
-			to_chat(user, SPAN_NOTICE("You swap out \the [old_beaker] for \the [inputted_item]."))
+			to_chat(user, SPAN_NOTICE("You swap out [old_beaker] for [inputted_item]."))
 			user.put_in_hands(old_beaker)
 		else
 			to_chat(user, SPAN_NOTICE("You add the beaker to the machine!"))

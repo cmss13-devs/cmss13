@@ -709,7 +709,7 @@
 	else if(istype(I, /obj/item/tool/mop))
 		var/obj/item/tool/mop/mop = I
 		if(reagents.total_volume < 1)
-			to_chat(user, SPAN_WARNING("\The [src] is out of water!"))
+			to_chat(user, SPAN_WARNING("[src] is out of water!"))
 		else
 			reagents.trans_to(mop, mop.max_reagent_volume)
 			mop.update_icon()

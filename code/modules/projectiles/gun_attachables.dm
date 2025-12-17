@@ -870,7 +870,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/flashlight
 	name = "rail flashlight"
-	desc = "A flashlight, for rails, on guns. Can be toggled on and off. A better light source than standard M3 pattern armor lights. This one is set to be mounted to the rail."
+	desc = "A flashlight, for rails, on guns. Can be toggled on and off. A better light source than standard M3 pattern armor lights. This one is set to be mounted to the rail, press unique-action to switch its mount."
 	icon = 'icons/obj/items/weapons/guns/attachments/rail.dmi'
 	icon_state = "flashlight"
 	item_icons = list(
@@ -1022,7 +1022,7 @@ Defined in conflicts.dm of the #defines folder.
 		. = ..()
 
 /obj/item/attachable/flashlight/under_barrel
-	desc = "A flashlight, for rails, on guns. Can be toggled on and off. A better light source than standard M3 pattern armor lights. This one is set to be mounted to the underbarrel."
+	desc = "A flashlight, for rails, on guns. Can be toggled on and off. A better light source than standard M3 pattern armor lights. This one is set to be mounted to the underbarrel, press unique-action to switch its mount."
 	slot = "under"
 	pixel_shift_x = 15
 	pixel_shift_y = 18

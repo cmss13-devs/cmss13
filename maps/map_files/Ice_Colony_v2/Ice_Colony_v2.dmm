@@ -5,6 +5,10 @@
 	icon_state = "pwall"
 	},
 /area/space)
+"aab" = (
+/obj/effect/stairs/up,
+/turf/open/auto_turf/snow/layer2,
+/area/ice_colony/exterior/underground/caves/open)
 "aac" = (
 /turf/closed/ice_rock/corners,
 /area/ice_colony/exterior/surface/cliff)
@@ -11871,9 +11875,6 @@
 	icon_state = "swall3"
 	},
 /area/ice_colony/surface/hangar/alpha)
-"aRz" = (
-/turf/open/auto_turf/snow/layer4,
-/area/ice_colony/underground/engineering)
 "aRA" = (
 /turf/closed/wall,
 /area/ice_colony/underground/maintenance/engineering)
@@ -43758,7 +43759,7 @@ bPg
 bPg
 arV
 aqB
-amy
+aab
 bmm
 bnT
 bmi
@@ -49345,7 +49346,7 @@ bnk
 aSV
 bnk
 bnk
-aRz
+bnk
 brs
 bnk
 bnk

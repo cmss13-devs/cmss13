@@ -1,4 +1,0 @@
-author: "MistChristmas"
-delete-after: True
-changes:
-  - qol: "Give Obj Confirmation box now has Yes listed as the highlighted Option on the right. A few other similar confirmation boxes got this treatment. Including some Admin Verbs."

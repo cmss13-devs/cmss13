@@ -1,4 +1,0 @@
-author: "cuberound"
-delete-after: True
-changes:
-  - bugfix: "tacmap multiz stair icons (unused) get displayed correctly"

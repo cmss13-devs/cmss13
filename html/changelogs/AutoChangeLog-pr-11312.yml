@@ -1,6 +1,0 @@
-author: "MistChristmas"
-delete-after: True
-changes:
-  - bugfix: "Bipods don't erroneously buff the gun after first undeploy. Bipods don't apply forever slow."
-  - bugfix: "Using akimbo simultaneous fire and then switching to alternate fire doesn't break shooting."
-  - qol: "Akimbo defaults to simultaneous fire if you use automatic weapons for autofire."

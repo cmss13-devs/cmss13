@@ -265,3 +265,23 @@
       players
   SpypigDev:
   - bugfix: CO lore faxes no longer use invisible ink
+2025-12-17:
+  MistChristmas:
+  - bugfix: Bipods don't erroneously buff the gun after first undeploy. Bipods don't
+      apply forever slow.
+  - bugfix: Using akimbo simultaneous fire and then switching to alternate fire doesn't
+      break shooting.
+  - qol: Akimbo defaults to simultaneous fire if you use automatic weapons for autofire.
+  - qol: Tracker no longer needs empty active hand to be accessed with a normal left
+      click, but needs intent other than harm if something is in hands
+  - qol: Give Obj Confirmation box now has Yes listed as the highlighted Option on
+      the right. A few other similar confirmation boxes got this treatment. Including
+      some Admin Verbs.
+  - bugfix: Acid Harness no longer accepts larger beakers than normal, + needs a multi
+      tool to change configurations, + doesn't protect against reagents that actually
+      have no OD limit
+  - balance: Acid Harness no longer scans so frequently, instead scans every 15 Seconds
+      further modified for successful injection(+15% per U) or OD Warning(+20% per
+      U)
+  cuberound:
+  - bugfix: tacmap multiz stair icons (unused) get displayed correctly

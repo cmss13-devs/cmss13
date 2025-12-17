@@ -1,4 +1,0 @@
-author: "MistChristmas"
-delete-after: True
-changes:
-  - qol: "Tracker no longer needs empty active hand to be accessed with a normal left click, but needs intent other than harm if something is in hands"

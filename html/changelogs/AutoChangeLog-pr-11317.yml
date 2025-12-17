@@ -1,5 +1,0 @@
-author: "MistChristmas"
-delete-after: True
-changes:
-  - bugfix: "Acid Harness no longer accepts larger beakers than normal, + needs a multi tool to change configurations, + doesn't protect against reagents that actually have no OD limit"
-  - balance: "Acid Harness no longer scans so frequently, instead scans every 15 Seconds further modified for successful injection(+15% per U) or OD Warning(+20% per U)"

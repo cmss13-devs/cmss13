@@ -2077,31 +2077,31 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 	var/list/modifiers = params2list(params)
 	if(modifiers[CTRL_CLICK] || modifiers[SHIFT_CLICK] || modifiers[MIDDLE_CLICK] || modifiers[RIGHT_CLICK] || modifiers[BUTTON4] || modifiers[BUTTON5])
-		return
+		return FALSE
 
 	// Don't allow doing anything else if inside a container of some sort, like a locker.
 	if(!isturf(gun_user.loc))
-		return
+		return FALSE
 
 	if(istype(object, /atom/movable/screen))
-		return
+		return FALSE
 
 	if(!bypass_checks)
 		if(gun_user.hand && !isgun(gun_user.l_hand) || !gun_user.hand && !isgun(gun_user.r_hand)) // If the object in our active hand is not a gun, abort
-			return
+			return FALSE
 
 		if(gun_user.throw_mode)
-			return
+			return FALSE
 
-		if(gun_user.Adjacent(object) && (istype(src, /obj/item/weapon/gun/shotgun) || gun_user.a_intent != INTENT_HARM) || gun_user.loc == get_turf(object)) //Dealt with by attack code
-			return
+		if(gun_user.Adjacent(object) && (istype(src, /obj/item/weapon/gun/shotgun) || gun_user.a_intent != INTENT_HARM) || gun_user.loc == get_turf(object)) //Dealt with by click.adjacent/attack code
+			return FALSE
 
 		if(gun_user.Adjacent(object) && skillcheck(gun_user, SKILL_EXECUTION, SKILL_EXECUTION_TRAINED) && gun_user.zone_selected == "head" && ishuman_strict(object))
 			if(ammo && (COMSIG_AMMO_BATTLEFIELD_EXECUTION in ammo.comp_lookup))
-				return
+				return FALSE
 
 	if(QDELETED(object))
-		return
+		return FALSE
 
 	if(gun_user.client?.prefs?.toggle_prefs & TOGGLE_HELP_INTENT_SAFETY && (gun_user.a_intent == INTENT_HELP))
 		if(world.time % 3) // Limits how often this message pops up, saw this somewhere else and thought it was clever
@@ -2115,7 +2115,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		Fire(object, gun_user, modifiers)
 		reset_fire()
 		display_ammo()
-		return
+		return COMSIG_MOB_CLICK_HANDLED
 	SEND_SIGNAL(src, COMSIG_GUN_FIRE)
 
 /// Wrapper proc for the autofire subsystem to ensure the important args aren't null

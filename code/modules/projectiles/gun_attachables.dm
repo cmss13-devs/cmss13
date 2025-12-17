@@ -893,6 +893,12 @@ Defined in conflicts.dm of the #defines folder.
 	var/datum/action/item_action/activation
 	var/obj/item/attached_item
 
+/obj/item/attachable/flashlight/unique_action(mob/user)
+	to_chat(user, SPAN_NOTICE("You reconfigure [src] for an underbarrel mount."))
+	playsound(user, 'sound/machines/click.ogg', 25, 1)
+	user.put_in_hands(new /obj/item/attachable/flashlight/under_barrel(user))
+	qdel(src)
+
 /obj/item/attachable/flashlight/on_enter_storage(obj/item/storage/internal/S)
 	..()
 
@@ -1020,6 +1026,12 @@ Defined in conflicts.dm of the #defines folder.
 	slot = "under"
 	pixel_shift_x = 15
 	pixel_shift_y = 18
+
+/obj/item/attachable/flashlight/under_barrel/unique_action(mob/user)
+	to_chat(user, SPAN_NOTICE("You reconfigure [src] for a rail mount."))
+	playsound(user, 'sound/machines/click.ogg', 25, 1)
+	user.put_in_hands(new /obj/item/attachable/flashlight(user))
+	qdel(src)
 
 /obj/item/attachable/flashlight/grip //Grip Light is here because it is a child object. Having it further down might cause a future coder a headache.
 	name = "underbarrel flashlight grip"

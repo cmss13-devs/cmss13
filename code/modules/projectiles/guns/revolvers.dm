@@ -543,7 +543,6 @@
 		/obj/item/attachable/reddot, // Rail
 		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
-		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/scope,
 		/obj/item/attachable/scope/mini,
@@ -553,6 +552,7 @@
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/extended_barrel/vented,
 		/obj/item/attachable/lasersight, // Underbarrel
+		/obj/item/attachable/flashlight/under_barrel,
 		)
 
 /obj/item/weapon/gun/revolver/upp/Initialize()
@@ -916,11 +916,11 @@
 		/obj/item/attachable/reddot, // Rail
 		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
-		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/scope/mini,
 		/obj/item/attachable/gyro, // Under
 		/obj/item/attachable/lasersight,
+		/obj/item/attachable/flashlight/under_barrel,
 	)
 
 /obj/item/weapon/gun/revolver/cmb/Initialize(mapload)

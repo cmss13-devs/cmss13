@@ -31,7 +31,8 @@
 	mouse_trace_history = null
 	LAZYADD(mouse_trace_history, A)
 
-	if(SEND_SIGNAL(mob, COMSIG_MOB_MOUSEDOWN, A, T, skin_ctl, params) & COMSIG_MOB_CLICK_CANCELED|COMSIG_MOB_CLICK_HANDLED)
+	if(SEND_SIGNAL(mob, COMSIG_MOB_MOUSEDOWN, A, T, skin_ctl, params) & (COMSIG_MOB_CLICK_CANCELED|COMSIG_MOB_CLICK_HANDLED))
+		ignore_next_click = TRUE
 		return
 
 	var/list/mods = params2list(params)
@@ -66,7 +67,7 @@
 		params += CLICK_CATCHER_ADD_PARAM
 	holding_click = FALSE
 
-	if(SEND_SIGNAL(mob, COMSIG_MOB_MOUSEUP, A, T, skin_ctl, params) & COMSIG_MOB_CLICK_CANCELED|COMSIG_MOB_CLICK_HANDLED)
+	if(SEND_SIGNAL(mob, COMSIG_MOB_MOUSEUP, A, T, skin_ctl, params) & (COMSIG_MOB_CLICK_CANCELED|COMSIG_MOB_CLICK_HANDLED) || ignore_next_click)
 		return
 
 	var/list/mods = params2list(params)

@@ -171,6 +171,9 @@
 
 /obj/item/arrow/dynamic_warhead
 	name = "inert dynamic arrow"
+	ammo_datum = /datum/ammo/arrow/dynamic
+	primary_ammo = /datum/ammo/arrow/dynamic
+	secondary_ammo = /datum/ammo/arrow/dynamic
 
 /obj/item/arrow/dynamic_warhead/change_warhead(mob/user)
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
@@ -189,6 +192,8 @@
 	)
 	var/choice = tgui_input_list(user, "Which warhead do you wish to use?", "Pick Warhead", warhead_options)
 	var/datum/ammo/arrow/arrow = warhead_options[choice]
+	if(!istype(arrow))
+		return
 	activated = TRUE
 	ammo_datum = arrow
 	icon_state = arrow.arrow_icon

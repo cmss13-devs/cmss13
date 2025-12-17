@@ -268,6 +268,7 @@
 	var/datum/effect_system/smoke_spread/smoke
 
 /datum/ammo/arrow/expl/dynamic
+	name = "explosive dynamic arrow"
 	handful_type = /obj/item/arrow/dynamic_warhead
 
 /datum/ammo/arrow/expl/New()
@@ -299,7 +300,7 @@
 	smoke.start()
 
 /datum/ammo/arrow/emp
-	name = "activated emp arrow"
+	name = "activated EMP arrow"
 	activated = TRUE
 	handful_type = /obj/item/arrow/emp/active
 	damage_type = BURN
@@ -309,6 +310,7 @@
 	arrow_icon = "arrow_emp_active"
 
 /datum/ammo/arrow/emp/dynamic
+	name = "EMP dynamic arrow"
 	handful_type = /obj/item/arrow/dynamic_warhead
 
 /datum/ammo/arrow/emp/on_hit_mob(mob/mob,obj/projectile/projectile)

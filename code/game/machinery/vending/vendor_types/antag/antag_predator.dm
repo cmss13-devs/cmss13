@@ -226,10 +226,13 @@ GLOBAL_LIST_INIT(cm_vending_equipment_badblood, list(
 		list("Secondary Equipment (CHOOSE 2)", 0, null, null, null),
 		list("The Fleeting Spike Launcher", 0, /obj/item/weapon/gun/launcher/spike, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("The Agile Drone", 0, /obj/item/falcon_drone/badblood, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("The Purifying Smart-Disc", 0, /obj/item/explosive/grenade/spawnergrenade/smartdisc, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("The Steadfast Shield", 0, /obj/item/weapon/shield/riot/yautja, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("The Formidable Plate Armor", 0, /obj/item/clothing/suit/armor/yautja/hunter/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("The Firm Bow", 0, /obj/item/storage/belt/gun/quiver/dynamic, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+
+		list("Special Equipment (CHOOSE 2)", 0, null, null, null),
+		list("The Purifying Smart-Disc", 0, /obj/item/explosive/grenade/spawnergrenade/smartdisc, CIVILIAN_CAN_BUY_GLASSES, VENDOR_ITEM_REGULAR),
+		list("The Snare Arrow", 0, /obj/item/arrow/snare, CIVILIAN_CAN_BUY_GLASSES, VENDOR_ITEM_REGULAR),
 
 		list("Clothing Accessory (CHOOSE 1)", 0, null, null, null),
 		list("Quarter-Cape", 0, /obj/item/clothing/yautja_cape/quarter, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),

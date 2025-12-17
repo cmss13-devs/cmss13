@@ -1322,7 +1322,7 @@ and you're good to go.
 		return TRUE //Nothing else to do here, time to cancel out.
 	return TRUE
 
-#define EXECUTION_CHECK (attacked_mob.stat == UNCONSCIOUS || attacked_mob.is_mob_restrained()) && ((user.zone_selected="head") && (user.a_intent == INTENT_DISARM) || (user.a_intent == INTENT_GRAB))
+#define EXECUTION_CHECK (attacked_mob.stat == UNCONSCIOUS || attacked_mob.is_mob_restrained()) && (user.zone_selected="head") && ((user.a_intent == INTENT_DISARM) || (user.a_intent == INTENT_GRAB))
 
 /obj/item/weapon/gun/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	if(!proximity_flag)

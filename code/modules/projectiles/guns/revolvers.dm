@@ -355,6 +355,7 @@
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/extended_barrel,
@@ -425,6 +426,7 @@
 	attachable_allowed = list(
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/lasersight,
+		/obj/item/attachable/flashlight/under_barrel,
 	)
 
 	item_icons = list(
@@ -452,6 +454,7 @@
 	attachable_allowed = list(
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/lasersight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
@@ -472,6 +475,7 @@
 	attachable_allowed = list(
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/lasersight,
+		/obj/item/attachable/flashlight/under_barrel,
 	)
 
 /obj/item/weapon/gun/revolver/m44/custom/pkd_special/l_series/set_gun_attachment_offsets()
@@ -539,6 +543,7 @@
 		/obj/item/attachable/reddot, // Rail
 		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/scope,
 		/obj/item/attachable/scope/mini,
@@ -645,6 +650,7 @@
 		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/mateba,
@@ -728,6 +734,7 @@
 		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/mateba/gold,
@@ -771,6 +778,7 @@
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/mateba/silver,
@@ -790,6 +798,7 @@
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/mateba/gold,
@@ -822,6 +831,7 @@
 		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/compensator,
 	)
@@ -855,6 +865,7 @@
 		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/compensator,
 	)
@@ -905,6 +916,7 @@
 		/obj/item/attachable/reddot, // Rail
 		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/scope/mini,
 		/obj/item/attachable/gyro, // Under

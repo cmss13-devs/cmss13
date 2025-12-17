@@ -28,6 +28,7 @@
 		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/extended_barrel,
@@ -68,6 +69,7 @@
 		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/extended_barrel,
@@ -256,6 +258,7 @@
 		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/lasersight,
@@ -330,6 +333,7 @@
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/flashlight,
 	)
 
@@ -386,6 +390,7 @@
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/suppressor,
@@ -493,6 +498,7 @@
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/lasersight,
 	)
 
@@ -544,6 +550,7 @@
 	attachable_allowed = list(
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/extended_barrel,
@@ -584,6 +591,7 @@
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/suppressor/sleek,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/flashlight,
 	)
 
@@ -633,6 +641,7 @@
 		/obj/item/attachable/bayonet/rmc,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/reddot, // Rail
 		/obj/item/attachable/reddot/small,
@@ -736,6 +745,7 @@
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reddot/small,
@@ -797,6 +807,7 @@
 	attachable_allowed = list(
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/lasersight,
@@ -840,7 +851,8 @@
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
-		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight, // look its kinda strange why you would list these as allowed when the vp-78 has an integrated flashlight, but flashlight attachment code does have a warning for this so yknow whatever really
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/flashlight/laser_light_combo,
 		/obj/item/attachable/extended_barrel,
@@ -1005,6 +1017,7 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/suppressor, //Muzzle
 		/obj/item/attachable/suppressor/sleek,
 		/obj/item/attachable/compensator,
@@ -1047,6 +1060,7 @@ Unlike other pistols, it can be equipped with limited mods (small muzzle, underb
 		/obj/item/attachable/reddot/small, //Rail
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/suppressor, //Muzzle
 		/obj/item/attachable/suppressor/sleek,
@@ -1114,6 +1128,7 @@ L54 service pistol
 		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/extended_barrel,
@@ -1146,6 +1161,7 @@ L54 service pistol
 		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/burstfire_assembly,
 	)

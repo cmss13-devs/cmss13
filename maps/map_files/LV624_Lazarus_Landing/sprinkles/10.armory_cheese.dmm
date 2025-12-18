@@ -1,0 +1,201 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/closed/wall/lv_outpost/reinforced,
+/area/lazarus/lazarus/armory)
+"b" = (
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lazarus/lazarus/armory)
+"e" = (
+/obj/effect/landmark/objective_landmark/medium,
+/obj/item/reagent_container/food/snacks/cheesewedge/verymature{
+	pixel_y = 9;
+	pixel_x = 5
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lazarus/lazarus/armory)
+"k" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/structure/machinery/light/red{
+	dir = 8;
+	pixel_y = -15
+	},
+/obj/structure/surface/rack{
+	color = "#aaaab5"
+	},
+/obj/structure/sign/poster/pimp{
+	pixel_y = 33
+	},
+/obj/item/clothing/accessory/storage/black_vest,
+/obj/item/clothing/accessory/storage/black_vest,
+/obj/item/clothing/accessory/storage/black_vest,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/turf/open/floor/strata/multi_tiles,
+/area/lazarus/lazarus/armory)
+"B" = (
+/obj/structure/stairs/perspective{
+	color = "#838987";
+	dir = 4
+	},
+/obj/structure/platform/metal/stair_cut/strata_left/alt,
+/obj/structure/machinery/door/poddoor/almayer/grey/closed{
+	name = "\improper Secure Armory";
+	id = "cmbarmory";
+	dir = 8
+	},
+/turf/open/floor/plating/prison,
+/area/lazarus/lazarus/armory)
+"F" = (
+/turf/open/floor/strata/multi_tiles,
+/area/lazarus/lazarus/armory)
+"H" = (
+/turf/template_noop,
+/area/template_noop)
+"K" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/surface/rack{
+	color = "#aaaab5"
+	},
+/obj/structure/machinery/light/red{
+	dir = 1
+	},
+/obj/item/reagent_container/food/snacks/sliceable/cheesewheel/verymature{
+	pixel_y = -2
+	},
+/obj/item/reagent_container/food/snacks/sliceable/cheesewheel/verymature{
+	pixel_y = 7
+	},
+/turf/open/floor/strata/multi_tiles,
+/area/lazarus/lazarus/armory)
+"L" = (
+/obj/structure/surface/rack{
+	color = "#aaaab5"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/item/reagent_container/food/snacks/sliceable/cheesewheel/verymature{
+	pixel_y = -2
+	},
+/obj/item/reagent_container/food/snacks/cheesewedge/verymature{
+	pixel_y = 9;
+	pixel_x = 5
+	},
+/obj/item/reagent_container/food/snacks/cheesewedge/verymature{
+	pixel_y = 10;
+	pixel_x = -5
+	},
+/turf/open/floor/strata/multi_tiles,
+/area/lazarus/lazarus/armory)
+"M" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/surface/rack{
+	color = "#aaaab5"
+	},
+/obj/item/reagent_container/food/snacks/sliceable/cheesewheel/verymature{
+	pixel_y = -1
+	},
+/obj/item/reagent_container/food/snacks/sliceable/cheesewheel/verymature{
+	pixel_y = 8
+	},
+/turf/open/floor/strata/multi_tiles,
+/area/lazarus/lazarus/armory)
+"N" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/closed/wall/lv_outpost/reinforced,
+/area/lazarus/lazarus/armory)
+"T" = (
+/obj/structure/surface/table/almayer{
+	color = "#8B9490"
+	},
+/obj/item/storage/box/mousetraps{
+	pixel_x = -7;
+	pixel_y = 7
+	},
+/obj/item/storage/box/mousetraps{
+	pixel_x = -5
+	},
+/obj/item/paper/lv_624/cheese{
+	pixel_x = 8;
+	pixel_y = 1
+	},
+/obj/item/reagent_container/food/snacks/cheesewedge/verymature{
+	pixel_y = 9;
+	pixel_x = 9
+	},
+/turf/open/floor/strata/multi_tiles,
+/area/lazarus/lazarus/armory)
+"X" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/structure/surface/rack{
+	color = "#aaaab5"
+	},
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
+	pixel_x = -3;
+	pixel_y = -6
+	},
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/item/reagent_container/food/snacks/cheesewedge/verymature{
+	pixel_y = 14;
+	pixel_x = 4
+	},
+/turf/open/floor/strata/multi_tiles,
+/area/lazarus/lazarus/armory)
+
+(1,1,1) = {"
+H
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+a
+k
+X
+a
+"}
+(3,1,1) = {"
+a
+M
+b
+b
+a
+"}
+(4,1,1) = {"
+a
+K
+e
+b
+a
+"}
+(5,1,1) = {"
+a
+L
+T
+F
+N
+"}
+(6,1,1) = {"
+a
+a
+a
+B
+a
+"}

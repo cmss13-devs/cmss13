@@ -1,0 +1,1567 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aV" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison/panelscorched,
+/area/template_noop)
+"be" = (
+/obj/structure/girder,
+/turf/open/floor/prison/platingdmg1,
+/area/template_noop)
+"bJ" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/shard,
+/turf/open/floor/prison/green/northeast,
+/area/template_noop)
+"cq" = (
+/obj/structure/prop/ice_colony/dense/planter_box/plated{
+	color = "#aaaab5"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/panelscorched,
+/area/template_noop)
+"cy" = (
+/obj/item/stack/sheet/metal,
+/obj/item/explosive/mine/pmc/active{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/stack/rods{
+	amount = 15
+	},
+/turf/open/floor/prison/platingdmg1,
+/area/template_noop)
+"cA" = (
+/obj/effect/decal/cleanable/blood,
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/obj/item/weapon/gun/rifle/nsg23/no_lock,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/platingdmg2,
+/area/template_noop)
+"cB" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/auto_turf/lv_sand/layer0,
+/area/template_noop)
+"cM" = (
+/obj/item/shard,
+/turf/open/floor/plating/prison,
+/area/template_noop)
+"cP" = (
+/obj/item/tool/extinguisher,
+/obj/effect/decal/cleanable/blood/tracks/footprints{
+	dir = 1
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/platingdmg1,
+/area/template_noop)
+"cS" = (
+/obj/effect/decal/large_stain,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/platingdmg2,
+/area/template_noop)
+"cY" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/plating/prison,
+/area/template_noop)
+"dr" = (
+/obj/item/stack/folding_barricade,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/clothing/gloves/marine/veteran/pmc{
+	armor_bio = 10;
+	armor_bomb = 10;
+	armor_bullet = 15;
+	armor_energy = 15;
+	armor_internaldamage = 15;
+	armor_laser = 15;
+	armor_melee = 15;
+	armor_rad = 10;
+	name = "damaged WY PMC gloves";
+	pixel_y = 9
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/plating/prison,
+/area/template_noop)
+"dS" = (
+/obj/item/tool/weldingtool/simple,
+/obj/item/stack/sheet/wood,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/plating/prison,
+/area/template_noop)
+"dT" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/panelscorched,
+/area/template_noop)
+"dV" = (
+/obj/item/stack/sheet/metal,
+/obj/effect/spawner/random/claymore/midchance{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/panelscorched,
+/area/template_noop)
+"ea" = (
+/obj/item/shard,
+/obj/item/stack/rods{
+	amount = 15
+	},
+/turf/open/floor/plating/prison,
+/area/template_noop)
+"eF" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/decal/large_stain,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/plating/prison,
+/area/template_noop)
+"fc" = (
+/obj/item/stack/sheet/metal,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/platingdmg1,
+/area/template_noop)
+"fl" = (
+/obj/item/device/analyzer/plant_analyzer,
+/turf/open/floor/prison/platingdmg1,
+/area/template_noop)
+"gl" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison/platingdmg1,
+/area/template_noop)
+"gu" = (
+/obj/effect/decal/large_stain,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/stack/rods{
+	amount = 15
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison,
+/area/template_noop)
+"gA" = (
+/obj/item/shard,
+/obj/effect/decal/large_stain{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/plating/prison,
+/area/template_noop)
+"gK" = (
+/turf/open/auto_turf/lv_grass/layer0,
+/area/template_noop)
+"gW" = (
+/obj/item/tool/hatchet{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/obj/structure/prop/ice_colony/dense/planter_box/plated{
+	color = "#aaaab5"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/platingdmg2,
+/area/template_noop)
+"ii" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/auto_turf/lv_sand/layer0,
+/area/template_noop)
+"iv" = (
+/obj/structure/flora/jungle/planttop1,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/template_noop)
+"iA" = (
+/obj/item/shard,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/plating/prison,
+/area/template_noop)
+"iM" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/shard,
+/obj/item/stack/rods{
+	amount = 15
+	},
+/turf/open/floor/plating/prison,
+/area/template_noop)
+"jC" = (
+/obj/structure/barricade/deployable{
+	damage_state = 3;
+	health = 50;
+	icon_state = "folding_3"
+	},
+/obj/item/ammo_magazine/rifle/nsg23,
+/obj/item/ammo_magazine/rifle/nsg23,
+/obj/item/ammo_magazine/rifle/nsg23,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison/panelscorched,
+/area/template_noop)
+"jJ" = (
+/obj/item/stack/rods{
+	amount = 15
+	},
+/obj/item/shard,
+/turf/open/floor/plating/prison,
+/area/template_noop)
+"jU" = (
+/obj/structure/surface/rack{
+	color = "#aaaab5"
+	},
+/obj/item/clothing/suit/apron,
+/obj/item/tool/shovel,
+/obj/item/clothing/gloves/botanic_leather,
+/obj/effect/decal/large_stain,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/panelscorched,
+/area/template_noop)
+"lk" = (
+/obj/structure/prop/ice_colony/dense/planter_box/plated{
+	color = "#aaaab5"
+	},
+/obj/effect/decal/large_stain,
+/turf/open/floor/prison/platingdmg2,
+/area/template_noop)
+"lM" = (
+/obj/effect/decal/cleanable/blood/tracks/footprints{
+	dir = 1
+	},
+/obj/effect/decal/large_stain{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison/platingdmg2,
+/area/template_noop)
+"mG" = (
+/obj/structure/prop/ice_colony/dense/planter_box/plated{
+	color = "#aaaab5"
+	},
+/turf/open/floor/prison/platingdmg2,
+/area/template_noop)
+"mQ" = (
+/obj/item/stack/sheet/metal,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/shard,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison/platingdmg2,
+/area/template_noop)
+"nk" = (
+/obj/structure/flora/bush/ausbushes/genericbush,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/template_noop)
+"nq" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/gm/dirt/brown/variant_5/south,
+/area/template_noop)
+"nO" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/shard,
+/turf/open/floor/plating/prison,
+/area/template_noop)
+"og" = (
+/obj/item/reagent_container/glass/bucket,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/shard,
+/turf/open/floor/prison/platingdmg2,
+/area/template_noop)
+"ot" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/template_noop)
+"pb" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/stack/rods{
+	amount = 15
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison/platingdmg2,
+/area/template_noop)
+"pu" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/plating/prison,
+/area/template_noop)
+"pF" = (
+/obj/structure/window_frame/lv_colony,
+/turf/open/floor/plating/prison,
+/area/template_noop)
+"qQ" = (
+/obj/structure/fence/dark,
+/turf/open/auto_turf/lv_sand/layer0,
+/area/template_noop)
+"qY" = (
+/obj/item/stack/sheet/metal,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/platingdmg2,
+/area/template_noop)
+"ri" = (
+/obj/item/stack/sheet/metal,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/stack/rods{
+	amount = 15
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison/green/southeast,
+/area/template_noop)
+"rj" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/green,
+/area/template_noop)
+"rA" = (
+/obj/structure/window_frame/lv_colony,
+/obj/item/shard,
+/obj/item/stack/rods{
+	amount = 15
+	},
+/turf/open/floor/plating/prison,
+/area/template_noop)
+"sf" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison/platingdmg2,
+/area/template_noop)
+"sh" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/platingdmg1,
+/area/template_noop)
+"sn" = (
+/obj/effect/spawner/random/claymore/lowchance{
+	dir = 8
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/shard,
+/turf/open/floor/prison/platingdmg2,
+/area/template_noop)
+"so" = (
+/obj/item/clothing/shoes/veteran/pmc{
+	armor_bio = 15;
+	armor_bomb = 5;
+	armor_bullet = 15;
+	armor_energy = 5;
+	armor_internaldamage = 5;
+	armor_laser = 5;
+	armor_melee = 15;
+	desc = "The height of fashion, but these look to be woven with protective fiber. This pair seems heavily damaged, especially around the soles...";
+	name = "scuffed shoes";
+	pixel_x = -14;
+	pixel_y = -10;
+	slowdown = 0.5
+	},
+/obj/item/shard,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/plating/prison,
+/area/template_noop)
+"sw" = (
+/obj/structure/window_frame/lv_colony,
+/obj/item/shard,
+/turf/open/floor/prison/platingdmg1,
+/area/template_noop)
+"sZ" = (
+/obj/item/reagent_container/glass/fertilizer,
+/obj/item/stack/sheet/metal,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/stack/rods{
+	amount = 15
+	},
+/turf/open/floor/plating/prison,
+/area/template_noop)
+"tp" = (
+/obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
+	dir = 6
+	},
+/turf/open/auto_turf/lv_grass/layer1,
+/area/template_noop)
+"tB" = (
+/obj/item/stack/rods{
+	amount = 15
+	},
+/obj/item/shard,
+/turf/open/floor/prison/platingdmg1,
+/area/template_noop)
+"tO" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 1
+	},
+/obj/item/stack/sheet/metal,
+/obj/item/shard,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/template_noop)
+"vr" = (
+/obj/structure/machinery/colony_floodlight{
+	light_color = "#dae2ff"
+	},
+/turf/open/auto_turf/lv_grass/layer0,
+/area/template_noop)
+"vB" = (
+/obj/structure/flora/grass/tallgrass/jungle_alt_2,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/template_noop)
+"wa" = (
+/obj/item/stack/rods{
+	amount = 15
+	},
+/obj/item/shard,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/template_noop)
+"wj" = (
+/obj/structure/surface/rack{
+	color = "#aaaab5"
+	},
+/obj/item/tool/crowbar,
+/obj/item/reagent_container/glass/bucket{
+	pixel_y = -3
+	},
+/obj/item/reagent_container/glass/bucket,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/shard,
+/turf/open/floor/prison/platingdmg1,
+/area/template_noop)
+"wk" = (
+/obj/item/storage/firstaid,
+/obj/item/explosive/grenade/high_explosive/pmc{
+	pixel_x = 6
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison/platingdmg2,
+/area/template_noop)
+"wp" = (
+/obj/structure/flora/jungle/plantbot1,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/template_noop)
+"ws" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/stack/rods{
+	amount = 15
+	},
+/turf/open/floor/prison/floor_plate,
+/area/template_noop)
+"wE" = (
+/obj/item/device/analyzer/plant_analyzer,
+/obj/effect/spawner/random/claymore,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison,
+/area/template_noop)
+"wY" = (
+/obj/structure/surface/rack{
+	color = "#aaaab5"
+	},
+/obj/item/tool/shovel/spade,
+/obj/item/tool/hatchet{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/obj/item/tool/hatchet{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/obj/item/tool/minihoe{
+	pixel_y = -2
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/platingdmg2,
+/area/template_noop)
+"xt" = (
+/obj/structure/flora/bush/ausbushes/pointybush,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/template_noop)
+"xv" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/plating/prison,
+/area/template_noop)
+"xK" = (
+/obj/effect/decal/large_stain,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/stack/rods{
+	amount = 15
+	},
+/turf/open/floor/prison/platingdmg2,
+/area/template_noop)
+"yd" = (
+/obj/item/stack/rods{
+	amount = 15
+	},
+/turf/open/floor/prison/platingdmg1,
+/area/template_noop)
+"yf" = (
+/turf/open/auto_turf/lv_grass/layer1,
+/area/template_noop)
+"yV" = (
+/obj/item/reagent_container/glass/watertank,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison/platingdmg1,
+/area/template_noop)
+"zr" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison/greencorner,
+/area/template_noop)
+"zC" = (
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/plating/prison,
+/area/template_noop)
+"zL" = (
+/obj/item/shard,
+/obj/item/shard,
+/turf/open/floor/plating/prison,
+/area/template_noop)
+"As" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison/platingdmg1,
+/area/template_noop)
+"AA" = (
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/large_stain,
+/turf/open/floor/prison/cell_stripe/north,
+/area/template_noop)
+"BY" = (
+/obj/structure/barricade/handrail/wire,
+/obj/structure/barricade/handrail/wire{
+	layer = 3.1;
+	dir = 4
+	},
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/large_stain{
+	dir = 1
+	},
+/turf/open/floor/prison/floor_plate,
+/area/template_noop)
+"Cf" = (
+/obj/item/clothing/gloves/marine/veteran/pmc{
+	armor_bio = 10;
+	armor_bomb = 10;
+	armor_bullet = 15;
+	armor_energy = 15;
+	armor_internaldamage = 15;
+	armor_laser = 15;
+	armor_melee = 15;
+	armor_rad = 10;
+	name = "damaged WY PMC gloves"
+	},
+/turf/open/floor/prison/platingdmg1,
+/area/template_noop)
+"Cm" = (
+/obj/item/reagent_container/spray/plantbgone{
+	pixel_x = 4;
+	pixel_y = 6
+	},
+/obj/item/stack/sheet/metal,
+/obj/effect/spawner/random/claymore/midchance{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/platingdmg1,
+/area/template_noop)
+"Cp" = (
+/obj/effect/decal/cleanable/blood,
+/obj/item/clothing/under/marine/veteran/pmc{
+	pixel_x = -7;
+	pixel_y = 9
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison/panelscorched,
+/area/template_noop)
+"CD" = (
+/obj/item/stack/rods{
+	amount = 15
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/template_noop)
+"CF" = (
+/obj/structure/closet/crate/hydroponics/prespawned,
+/obj/effect/landmark/objective_landmark/close,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/shard,
+/turf/open/floor/prison/platingdmg1,
+/area/template_noop)
+"Df" = (
+/obj/item/stack/sheet/metal,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/shard,
+/turf/open/floor/prison/platingdmg1,
+/area/template_noop)
+"Dn" = (
+/turf/open/floor/plating/prison,
+/area/template_noop)
+"DF" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/floor_plate,
+/area/template_noop)
+"Ea" = (
+/obj/effect/decal/cleanable/blood/tracks/footprints{
+	dir = 1
+	},
+/turf/open/floor/prison/panelscorched,
+/area/template_noop)
+"Eb" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/plating/prison,
+/area/template_noop)
+"FF" = (
+/obj/structure/barricade/deployable{
+	damage_state = 3;
+	dir = 1;
+	health = 45;
+	icon_state = "folding_3"
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/item/weapon/gun/smg/fp9000,
+/obj/item/clothing/under/marine/veteran/pmc/leader{
+	pixel_x = -7
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison/platingdmg2,
+/area/template_noop)
+"FW" = (
+/obj/item/stack/sheet/metal,
+/obj/item/robot_parts/leg/l_leg,
+/turf/open/floor/prison/panelscorched,
+/area/template_noop)
+"Ga" = (
+/obj/item/stack/sheet/metal,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/platingdmg1,
+/area/template_noop)
+"Gl" = (
+/obj/structure/window_frame/lv_colony,
+/obj/item/shard,
+/obj/item/shard,
+/turf/open/floor/plating/prison,
+/area/template_noop)
+"Gy" = (
+/obj/item/reagent_container/glass/fertilizer{
+	pixel_x = 6;
+	pixel_y = 2
+	},
+/obj/item/reagent_container/glass/fertilizer,
+/obj/item/stack/sheet/metal,
+/obj/effect/spawner/random/claymore/midchance,
+/turf/open/floor/prison/platingdmg1,
+/area/template_noop)
+"GU" = (
+/obj/item/tool/minihoe{
+	pixel_x = 1;
+	pixel_y = -1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison/green/southwest,
+/area/template_noop)
+"Hk" = (
+/turf/open/floor/prison/platingdmg1,
+/area/template_noop)
+"HH" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/shard,
+/turf/open/floor/prison/platingdmg2,
+/area/template_noop)
+"HI" = (
+/obj/item/shard,
+/obj/item/stack/rods{
+	amount = 15
+	},
+/turf/open/floor/prison/platingdmg1,
+/area/template_noop)
+"HK" = (
+/obj/structure/barricade/deployable{
+	damage_state = 1;
+	dir = 1;
+	health = 245;
+	icon_state = "folding_1"
+	},
+/obj/effect/landmark/corpsespawner/wy/manager,
+/obj/item/weapon/gun/pistol/vp78{
+	current_mag = null;
+	name = "dented VP78 pistol";
+	pixel_x = -5;
+	pixel_y = -4
+	},
+/obj/item/ammo_magazine/pistol/vp78{
+	current_rounds = 4;
+	name = "scratched VP78 magazine (9mm)";
+	pixel_x = 6
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/platingdmg2,
+/area/template_noop)
+"HR" = (
+/turf/open/auto_turf/lv_sand/layer0,
+/area/template_noop)
+"HT" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/prison/platingdmg1,
+/area/template_noop)
+"It" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/stack/rods{
+	amount = 15
+	},
+/turf/open/floor/prison/platingdmg1,
+/area/template_noop)
+"ID" = (
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_magazine/rifle/nsg23{
+	current_rounds = 2
+	},
+/obj/effect/spawner/gibspawner/human,
+/obj/item/clothing/under/marine/veteran/pmc{
+	pixel_x = 6;
+	pixel_y = 8
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/platingdmg2,
+/area/template_noop)
+"IL" = (
+/obj/item/clothing/head/helmet/marine/veteran/pmc{
+	pixel_x = -13;
+	pixel_y = 11
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/plating/prison,
+/area/template_noop)
+"IU" = (
+/obj/item/ammo_magazine/rifle/nsg23/extended,
+/obj/effect/landmark/objective_landmark/medium,
+/obj/item/stack/sheet/wood,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison/panelscorched,
+/area/template_noop)
+"Jo" = (
+/obj/item/stack/rods{
+	amount = 15
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/plating/prison,
+/area/template_noop)
+"JW" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison/platingdmg1,
+/area/template_noop)
+"Kn" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison/platingdmg2,
+/area/template_noop)
+"Ko" = (
+/obj/item/shard,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/template_noop)
+"Lh" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/floor_plate,
+/area/template_noop)
+"Li" = (
+/obj/structure/machinery/power/apc/no_power/north,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/plating/prison,
+/area/template_noop)
+"LU" = (
+/obj/effect/decal/large_stain{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/plating/prison,
+/area/template_noop)
+"Ma" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/template_noop)
+"Mo" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/plating/prison,
+/area/template_noop)
+"Mr" = (
+/obj/item/stack/rods{
+	amount = 15
+	},
+/turf/open/floor/plating/prison,
+/area/template_noop)
+"Mx" = (
+/obj/structure/window_frame/lv_colony,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/shard,
+/turf/open/floor/plating/prison,
+/area/template_noop)
+"Mz" = (
+/turf/open/floor/brown_dirt/random_rocks,
+/area/template_noop)
+"MZ" = (
+/obj/item/shard,
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/plating/prison,
+/area/template_noop)
+"Nl" = (
+/obj/item/shard,
+/turf/open/floor/prison/platingdmg2,
+/area/template_noop)
+"Oz" = (
+/obj/item/stack/rods{
+	amount = 15
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/plating/prison,
+/area/template_noop)
+"OE" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/cell_stripe/north,
+/area/template_noop)
+"OM" = (
+/obj/item/stack/sheet/metal,
+/obj/effect/spawner/random/claymore/midchance,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/panelscorched,
+/area/template_noop)
+"OT" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/template_noop)
+"Pd" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/template_noop)
+"Po" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/plating/prison,
+/area/template_noop)
+"Pr" = (
+/obj/item/stack/sheet/metal,
+/obj/effect/decal/cleanable/blood/tracks/footprints{
+	dir = 1
+	},
+/turf/open/floor/prison/platingdmg2,
+/area/template_noop)
+"Py" = (
+/obj/effect/decal/lv_decals/red_mud_corner,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/cell_stripe,
+/area/template_noop)
+"PM" = (
+/obj/effect/decal/cleanable/blood/tracks/footprints{
+	dir = 1
+	},
+/turf/open/floor/prison/platingdmg1,
+/area/template_noop)
+"PO" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/obj/item/shard,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/template_noop)
+"PQ" = (
+/obj/effect/decal/cleanable/blood,
+/obj/item/weapon/gun/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000{
+	pixel_x = 1
+	},
+/obj/item/ammo_magazine/smg/fp9000{
+	pixel_x = -3
+	},
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison/panelscorched,
+/area/template_noop)
+"PZ" = (
+/obj/effect/decal/large_stain{
+	dir = 1
+	},
+/obj/item/stack/rods{
+	amount = 15
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison/panelscorched,
+/area/template_noop)
+"Qc" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/platingdmg2,
+/area/template_noop)
+"QY" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/platingdmg2,
+/area/template_noop)
+"Rl" = (
+/obj/item/shard,
+/obj/item/stack/sheet/metal,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/template_noop)
+"Rt" = (
+/obj/item/stack/rods{
+	amount = 15
+	},
+/turf/open/auto_turf/lv_grass/layer0,
+/area/template_noop)
+"RA" = (
+/obj/item/stack/sheet/metal,
+/obj/effect/spawner/random/claymore/lowchance,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/shard,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/plating/prison,
+/area/template_noop)
+"RE" = (
+/obj/item/clothing/suit/storage/marine/veteran/pmc/light/synth{
+	desc = "A serious modification of the standard Armat Systems M3 armor. This variant was designed for PMC Support Units in the field, with every armor insert removed. It's designed with the idea of a high speed lifesaver in mind. This set seems damaged...";
+	name = "damaged M4 Synthetic PMC armor";
+	pixel_x = -5;
+	pixel_y = -5
+	},
+/obj/effect/spawner/gibspawner/robot,
+/obj/item/limb/head/synth{
+	desc = "This appears to be the head of a synthetic, though it it is so destroyed there is no way in hell anyone is going to bring it back to even basic functionality.";
+	name = "shattered synthetic head";
+	pixel_x = 9;
+	pixel_y = 3;
+	icon_state = "scandinavian_head_m"
+	},
+/obj/item/robot_parts/arm/l_arm,
+/turf/open/floor/prison/green/southwest,
+/area/template_noop)
+"Sb" = (
+/obj/structure/barricade/deployable{
+	damage_state = 2;
+	dir = 8;
+	health = 140;
+	icon_state = "folding_2"
+	},
+/obj/item/weapon/gun/rifle/nsg23/no_lock,
+/obj/item/ammo_magazine/rifle/nsg23,
+/turf/open/floor/prison/panelscorched,
+/area/template_noop)
+"Si" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/shard,
+/turf/open/floor/plating/prison,
+/area/template_noop)
+"Sm" = (
+/obj/item/shard,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/template_noop)
+"Sx" = (
+/obj/effect/decal/cleanable/blood/tracks/footprints{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/platingdmg1,
+/area/template_noop)
+"Sy" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/platingdmg1,
+/area/template_noop)
+"SJ" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/plating/prison,
+/area/template_noop)
+"SL" = (
+/obj/item/stack/sheet/metal,
+/obj/item/shard,
+/turf/open/floor/prison/panelscorched,
+/area/template_noop)
+"SV" = (
+/obj/item/tool/crowbar,
+/obj/effect/spawner/random/claymore/midchance{
+	dir = 4
+	},
+/obj/effect/decal/large_stain,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison/panelscorched,
+/area/template_noop)
+"Tm" = (
+/obj/structure/closet/crate/hydroponics/prespawned,
+/obj/effect/landmark/objective_landmark/close,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/platingdmg1,
+/area/template_noop)
+"Tq" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/shard,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/plating/prison,
+/area/template_noop)
+"Tv" = (
+/turf/closed/wall/strata_ice/jungle,
+/area/template_noop)
+"Ud" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/stack/rods{
+	amount = 15
+	},
+/turf/open/floor/plating/prison,
+/area/template_noop)
+"Ux" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/platingdmg2,
+/area/template_noop)
+"UI" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/plating/prison,
+/area/template_noop)
+"UM" = (
+/obj/item/stack/sheet/metal,
+/obj/effect/spawner/random/claymore/lowchance,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/platingdmg1,
+/area/template_noop)
+"UT" = (
+/obj/item/shard,
+/obj/item/shard,
+/obj/item/stack/rods{
+	amount = 15
+	},
+/obj/effect/decal/large_stain,
+/turf/open/floor/prison/platingdmg1,
+/area/template_noop)
+"UX" = (
+/obj/effect/decal/large_stain{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison,
+/area/template_noop)
+"Vf" = (
+/obj/effect/decal/large_stain{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/stack/rods{
+	amount = 15
+	},
+/turf/open/floor/prison/platingdmg1,
+/area/template_noop)
+"Wa" = (
+/obj/item/stack/folding_barricade,
+/obj/item/ammo_magazine/rifle/nsg23{
+	current_rounds = 17
+	},
+/obj/effect/spawner/gibspawner/human,
+/obj/item/clothing/head/helmet/marine/veteran/pmc/leader,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/plating/prison,
+/area/template_noop)
+"Wi" = (
+/obj/effect/decal/large_stain{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/closed/wall/lv_outpost,
+/area/template_noop)
+"Wk" = (
+/obj/structure/girder,
+/turf/open/floor/plating/prison,
+/area/template_noop)
+"WA" = (
+/obj/item/stack/sheet/metal,
+/obj/effect/decal/large_stain,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison/platingdmg1,
+/area/template_noop)
+"WQ" = (
+/obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
+	dir = 4
+	},
+/turf/open/auto_turf/lv_grass/layer0,
+/area/template_noop)
+"WR" = (
+/obj/item/stack/sheet/metal,
+/obj/effect/spawner/random/claymore/midchance{
+	dir = 4
+	},
+/turf/open/floor/plating/prison,
+/area/template_noop)
+"WV" = (
+/obj/item/stack/sheet/wood{
+	amount = 16
+	},
+/obj/item/ammo_magazine/rifle/nsg23{
+	current_rounds = 13
+	},
+/obj/effect/spawner/gibspawner/human,
+/obj/item/clothing/head/helmet/marine/veteran/pmc{
+	pixel_x = -6;
+	pixel_y = 8
+	},
+/obj/effect/decal/large_stain,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/platingdmg2,
+/area/template_noop)
+"Xi" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison/platingdmg2,
+/area/template_noop)
+"XA" = (
+/obj/item/stack/sheet/metal,
+/obj/effect/decal/large_stain{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/platingdmg2,
+/area/template_noop)
+"Yi" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/prison/platingdmg1,
+/area/template_noop)
+"YE" = (
+/obj/item/stack/sheet/metal,
+/obj/effect/spawner/random/claymore/lowchance{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/platingdmg1,
+/area/template_noop)
+"Zj" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison/platingdmg2,
+/area/template_noop)
+"Zq" = (
+/obj/structure/fence/dark/overgrown,
+/turf/open/auto_turf/lv_sand/layer0,
+/area/template_noop)
+"ZG" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/panelscorched,
+/area/template_noop)
+"ZK" = (
+/obj/item/clothing/gloves/botanic_leather,
+/obj/item/stack/sheet/metal,
+/obj/item/shard,
+/turf/open/floor/prison/panelscorched,
+/area/template_noop)
+
+(1,1,1) = {"
+gK
+yf
+gK
+PO
+yf
+gK
+gK
+gK
+gK
+gK
+gK
+yf
+Ko
+gK
+nk
+yf
+Zq
+"}
+(2,1,1) = {"
+yf
+yf
+gK
+Sm
+Rl
+yd
+be
+fc
+Mo
+WR
+Wk
+Rl
+gK
+Rt
+Ko
+yf
+Zq
+"}
+(3,1,1) = {"
+yf
+gK
+Wk
+rA
+Nl
+Wi
+Li
+SV
+Yi
+Dn
+be
+iM
+Df
+jJ
+gK
+yf
+Zq
+"}
+(4,1,1) = {"
+yf
+ot
+YE
+Vf
+sn
+JW
+xv
+sh
+xv
+Si
+Tm
+CF
+wj
+be
+gK
+yf
+Zq
+"}
+(5,1,1) = {"
+Ma
+ot
+Ga
+pu
+zC
+zr
+og
+Zj
+UX
+UI
+nO
+WR
+jU
+be
+CD
+tO
+qQ
+"}
+(6,1,1) = {"
+ot
+pu
+ea
+Kn
+Po
+ri
+cq
+Sb
+PQ
+mG
+gu
+QY
+wY
+Tq
+iA
+OT
+HR
+"}
+(7,1,1) = {"
+DF
+UT
+Dn
+Cf
+xK
+dV
+FF
+Wa
+IU
+ID
+cq
+xv
+OM
+GU
+cY
+ws
+Mz
+"}
+(8,1,1) = {"
+Py
+Sx
+cP
+PM
+Ea
+Pr
+lM
+wk
+dr
+jC
+xK
+Dn
+pb
+WA
+MZ
+AA
+nq
+"}
+(9,1,1) = {"
+Py
+so
+pu
+PZ
+mG
+IL
+Cp
+HK
+WV
+lk
+wE
+Qc
+pu
+As
+Jo
+OE
+ii
+"}
+(10,1,1) = {"
+Lh
+gA
+bJ
+ZG
+rj
+Ud
+Xi
+gW
+cA
+dS
+Dn
+Dn
+RA
+It
+Hk
+BY
+cB
+"}
+(11,1,1) = {"
+gK
+Mr
+cy
+yV
+dT
+RE
+xv
+cS
+xv
+Qc
+HH
+XA
+sZ
+Wk
+Wk
+yf
+yf
+"}
+(12,1,1) = {"
+yf
+gK
+sw
+fl
+FW
+sf
+Ux
+UI
+nO
+aV
+qY
+eF
+Gy
+HI
+yf
+tp
+WQ
+"}
+(13,1,1) = {"
+yf
+gK
+Mx
+ZK
+Cm
+gl
+LU
+nO
+xv
+Sy
+SJ
+mQ
+SL
+Gl
+wa
+Tv
+vB
+"}
+(14,1,1) = {"
+yf
+Sm
+Oz
+cM
+HT
+Hk
+ea
+Eb
+yd
+UM
+Dn
+cM
+tB
+Wk
+yf
+Tv
+Tv
+"}
+(15,1,1) = {"
+yf
+yf
+Rl
+Rt
+Sm
+zL
+Dn
+ea
+cM
+pF
+Wk
+Ko
+yf
+Ko
+yf
+yf
+yf
+"}
+(16,1,1) = {"
+yf
+gK
+Pd
+yf
+yf
+Sm
+Rt
+gK
+Sm
+gK
+yf
+yf
+Ko
+vr
+iv
+wp
+xt
+"}

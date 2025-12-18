@@ -1,0 +1,163 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/obj/effect/decal/large_stain,
+/obj/item/stack/rods{
+	amount = 15
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/brown_dirt/random_rocks,
+/area/lazarus/ground/jungle/east_central_jungle)
+"c" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/stack/rods{
+	amount = 15
+	},
+/turf/open/floor/prison/platingdmg3,
+/area/lazarus/lazarus/captain)
+"d" = (
+/turf/closed/wall/lv_outpost/reinforced,
+/area/lazarus/lazarus/security)
+"e" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/girder,
+/turf/open/floor/prison/platingdmg1,
+/area/lazarus/lazarus/captain)
+"g" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/tool/kitchen/utensil/pfork,
+/obj/structure/sink/kitchen{
+	pixel_y = 25;
+	pixel_x = 1
+	},
+/obj/structure/prop/invuln/pipe_water{
+	pixel_x = 1;
+	pixel_y = 9
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lazarus/lazarus/security)
+"h" = (
+/obj/structure/bed/hybrisa/prisonbed,
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lazarus/lazarus/security)
+"l" = (
+/turf/template_noop,
+/area/template_noop)
+"q" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/auto_turf/lv_sand/layer0,
+/area/lazarus/ground/jungle/east_central_jungle)
+"w" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/brown_dirt/random_rocks,
+/area/lazarus/ground/jungle/east_central_jungle)
+"x" = (
+/obj/effect/decal/large_stain{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/auto_turf/lv_sand/layer0,
+/area/lazarus/ground/jungle/east_central_jungle)
+"z" = (
+/obj/structure/machinery/light/small,
+/obj/effect/landmark/monkey_spawn,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/panelscorched,
+/area/lazarus/lazarus/security)
+"A" = (
+/turf/closed/wall/lv_outpost/reinforced,
+/area/lazarus/lazarus/armory)
+"E" = (
+/turf/closed/wall/lv_outpost/reinforced,
+/area/lazarus/lazarus/captain)
+"J" = (
+/obj/item/stack/sheet/metal,
+/turf/open/auto_turf/lv_sand/layer0,
+/area/lazarus/ground/jungle/east_central_jungle)
+"O" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/closed/wall/lv_outpost/reinforced,
+/area/lazarus/lazarus/armory)
+"Q" = (
+/obj/effect/decal/large_stain{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/stack/sheet/metal,
+/turf/open/floor/prison/panelscorched,
+/area/lazarus/lazarus/security)
+"T" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/brown_dirt/random_rocks_alt{
+	dir = 6
+	},
+/area/lazarus/ground/jungle/east_central_jungle)
+"U" = (
+/obj/structure/machinery/door/airlock/light_grey_lv/utility{
+	dir = 8;
+	name = "\improper Secure Cell"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/plating/prison,
+/area/lazarus/lazarus/security)
+"V" = (
+/obj/item/stack/rods{
+	amount = 15
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/platingdmg1,
+/area/lazarus/lazarus/security)
+"Z" = (
+/obj/item/trash/USCMtray{
+	name = "\improper Meal Tray";
+	pixel_y = 8
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lazarus/lazarus/security)
+
+(1,1,1) = {"
+l
+w
+q
+J
+"}
+(2,1,1) = {"
+l
+T
+a
+x
+"}
+(3,1,1) = {"
+l
+V
+Q
+c
+"}
+(4,1,1) = {"
+A
+g
+z
+e
+"}
+(5,1,1) = {"
+A
+Z
+h
+E
+"}
+(6,1,1) = {"
+O
+U
+d
+E
+"}

@@ -1,0 +1,630 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"au" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 6
+	},
+/turf/open/floor/ancient_temple/damaged/damage_1,
+/area/lazarus/ground/jungle/south_east_jungle)
+"bL" = (
+/obj/structure/flora/jungle/vines/dead/light_1,
+/turf/closed/wall/mineral/sandstone/runed,
+/area/strata/interior/out_of_bounds)
+"bS" = (
+/obj/structure/flora/jungle/vines/blue/light_1,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lazarus/lazarus/landing_zones/lz1)
+"dg" = (
+/obj/effect/hunter/ancient_temple/tile_edge/tile_edge_8,
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 10
+	},
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 9
+	},
+/turf/open/floor/ancient_temple/damaged/damage_7,
+/area/lazarus/ground/jungle/south_east_jungle)
+"ef" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/floor/ancient_temple/damaged/damage_1,
+/area/lazarus/ground/jungle/south_east_jungle)
+"fv" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lazarus/ground/jungle/south_east_jungle)
+"fy" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 5
+	},
+/turf/open/floor/ancient_temple/damaged/damage_7,
+/area/lazarus/ground/jungle/south_east_jungle)
+"gm" = (
+/obj/structure/flora/jungle/vines/dead/heavy,
+/turf/closed/wall/mineral/sandstone/runed,
+/area/strata/interior/out_of_bounds)
+"gB" = (
+/obj/effect/landmark/yautja_teleport,
+/obj/structure/flora/jungle/vines/blue/light_1,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lazarus/ground/jungle/south_east_jungle)
+"iL" = (
+/turf/open/floor/brown_dirt/random_rocks_alt,
+/area/lazarus/ground/jungle/south_east_jungle)
+"kt" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 10
+	},
+/turf/open/floor/ancient_temple/damaged/damage_1,
+/area/lazarus/ground/jungle/south_east_jungle)
+"kA" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 9
+	},
+/turf/open/floor/ancient_temple/damaged/damage_2,
+/area/lazarus/ground/jungle/south_east_jungle)
+"kP" = (
+/obj/structure/flora/jungle/vines/blue/light_2,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lazarus/ground/jungle/south_east_jungle)
+"mj" = (
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lazarus/ground/jungle/south_east_jungle)
+"mm" = (
+/obj/structure/flora/jungle/vines/dead/light_1,
+/turf/closed/wall/strata_ice/jungle,
+/area/strata/interior/out_of_bounds)
+"ok" = (
+/obj/structure/flora/jungle/vines/dead/light_2,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lazarus/ground/jungle/south_east_jungle)
+"oH" = (
+/turf/open/gm/dirt/brown/variant_5/east,
+/area/lazarus/ground/jungle/south_east_jungle)
+"pf" = (
+/obj/effect/landmark/monkey_spawn,
+/obj/structure/flora/jungle/vines/dead/light_2,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lazarus/ground/jungle/south_east_jungle)
+"py" = (
+/obj/effect/hunter/ancient_temple/tile_edge_corner/tile_edge_corner_4,
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 1
+	},
+/turf/open/floor/ancient_temple/damaged/damage_7,
+/area/lazarus/ground/jungle/south_east_jungle)
+"pE" = (
+/turf/open/auto_turf/lv_sand/layer0,
+/area/lazarus/ground/jungle/south_east_jungle)
+"pP" = (
+/obj/effect/hunter/ancient_temple/tile_edge/tile_edge_8,
+/obj/effect/hunter/ancient_temple/rubble/rubble_3{
+	pixel_x = 12;
+	pixel_y = 22
+	},
+/turf/open/floor/ancient_temple/damaged/damage_7,
+/area/lazarus/ground/jungle/south_east_jungle)
+"pX" = (
+/obj/structure/flora/bush/ausbushes/genericbush,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lazarus/ground/jungle/south_east_jungle)
+"rZ" = (
+/obj/effect/landmark/lizard_spawn,
+/turf/open/floor/ancient_temple/damaged/damage_2,
+/area/lazarus/ground/jungle/south_east_jungle)
+"sP" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/floor/brown_dirt/random_rocks_alt,
+/area/lazarus/ground/jungle/south_east_jungle)
+"tj" = (
+/turf/closed/wall/mineral/sandstone/runed/decor,
+/area/strata/interior/out_of_bounds)
+"tz" = (
+/obj/structure/flora/jungle/vines/dead/light_3,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lazarus/ground/jungle/south_east_jungle)
+"uR" = (
+/turf/open/gm/dirt/brown/variant_5/south,
+/area/lazarus/ground/jungle/south_east_jungle)
+"vb" = (
+/obj/structure/flora/jungle/vines/blue/light_2,
+/turf/closed/wall/strata_ice/jungle,
+/area/strata/interior/out_of_bounds)
+"vw" = (
+/obj/effect/hunter/ancient_temple/tile_edge/tile_edge_8,
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 9
+	},
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 6
+	},
+/turf/open/floor/ancient_temple/damaged/damage_7,
+/area/lazarus/ground/jungle/south_east_jungle)
+"vy" = (
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lazarus/ground/jungle/south_east_jungle)
+"vO" = (
+/obj/effect/hunter/ancient_temple/tile_edge_corner/tile_edge_corner_2,
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 6
+	},
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 9
+	},
+/turf/open/floor/ancient_temple/damaged/damage_7,
+/area/lazarus/ground/jungle/south_east_jungle)
+"yt" = (
+/turf/open/floor/brown_dirt/random_rocks,
+/area/lazarus/ground/jungle/south_east_jungle)
+"yJ" = (
+/obj/structure/flora/jungle/vines/blue/light_2,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lazarus/ground/jungle/south_east_jungle)
+"ze" = (
+/obj/effect/decal/lv_decals/red_mud_corner,
+/turf/open/floor/ancient_temple/damaged/damage_1,
+/area/lazarus/ground/jungle/south_east_jungle)
+"Af" = (
+/obj/structure/flora/jungle/vines/dead/light_1,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lazarus/ground/jungle/south_east_jungle)
+"Br" = (
+/obj/effect/hunter/ancient_temple/tile_edge_corner/tile_edge_corner_2,
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 5
+	},
+/turf/open/floor/ancient_temple/damaged/damage_7,
+/area/lazarus/ground/jungle/south_east_jungle)
+"BB" = (
+/turf/closed/wall/strata_ice/jungle,
+/area/strata/interior/out_of_bounds)
+"CH" = (
+/obj/structure/flora/jungle/vines/dead/light_1,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lazarus/ground/jungle/south_east_jungle)
+"DG" = (
+/obj/structure/flora/jungle/vines/blue/light_3,
+/turf/closed/wall/strata_ice/jungle,
+/area/strata/interior/out_of_bounds)
+"Eu" = (
+/obj/structure/flora/bush/ausbushes/grassybush,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lazarus/ground/jungle/south_east_jungle)
+"ET" = (
+/obj/structure/flora/jungle/vines/blue/light_1,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lazarus/ground/jungle/south_east_jungle)
+"GB" = (
+/obj/effect/hunter/ancient_temple/tile_edge/tile_edge_8,
+/obj/effect/hunter/ancient_temple/tile_edge/tile_edge_11,
+/obj/effect/landmark/lizard_spawn,
+/turf/open/floor/ancient_temple/damaged/damage_7,
+/area/lazarus/ground/jungle/south_east_jungle)
+"GH" = (
+/obj/structure/flora/jungle/vines/dead/light_1,
+/turf/closed/wall/mineral/sandstone/runed/decor,
+/area/strata/interior/out_of_bounds)
+"Io" = (
+/obj/structure/flora/jungle/vines/dead/light_2,
+/turf/closed/wall/strata_ice/jungle,
+/area/strata/interior/out_of_bounds)
+"IY" = (
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/ancient_temple/damaged/damage_2,
+/area/lazarus/ground/jungle/south_east_jungle)
+"Kd" = (
+/obj/effect/hunter/ancient_temple/tile_edge/tile_edge_12,
+/obj/effect/hunter/ancient_temple/rubble/rubble_2{
+	pixel_x = -18;
+	pixel_y = 3
+	},
+/turf/open/floor/ancient_temple/damaged/damage_7,
+/area/lazarus/ground/jungle/south_east_jungle)
+"Lc" = (
+/obj/effect/hunter/ancient_temple/tile_edge_corner,
+/turf/open/floor/ancient_temple/damaged/damage_7,
+/area/lazarus/ground/jungle/south_east_jungle)
+"LF" = (
+/obj/structure/flora/jungle/vines/dead/light_3,
+/turf/closed/wall/mineral/sandstone/runed/decor,
+/area/strata/interior/out_of_bounds)
+"LG" = (
+/obj/structure/flora/jungle/vines/dead/light_3,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lazarus/ground/jungle/south_east_jungle)
+"LN" = (
+/obj/effect/hunter/ancient_temple/tile_edge_corner/tile_edge_corner_2,
+/turf/open/floor/ancient_temple/damaged/damage_7,
+/area/lazarus/ground/jungle/south_east_jungle)
+"LR" = (
+/turf/open/floor/ancient_temple/damaged/damage_2,
+/area/lazarus/ground/jungle/south_east_jungle)
+"Ma" = (
+/obj/structure/flora/jungle/vines/dead/heavy,
+/turf/closed/wall/strata_ice/jungle,
+/area/strata/interior/out_of_bounds)
+"Mx" = (
+/obj/structure/flora/jungle/vines/dead/light_1,
+/turf/open/floor/ancient_temple/damaged/damage_1,
+/area/lazarus/ground/jungle/south_east_jungle)
+"MG" = (
+/obj/structure/flora/jungle/vines/blue/light_1,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lazarus/ground/jungle/south_east_jungle)
+"MZ" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/obj/structure/flora/jungle/vines/blue/light_2,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lazarus/ground/jungle/south_east_jungle)
+"OM" = (
+/obj/effect/hunter/ancient_temple/tile_edge_corner/tile_edge_corner_4,
+/obj/effect/hunter/ancient_temple/tile_edge/tile_edge_8,
+/obj/effect/hunter/ancient_temple/rubble/rubble_4{
+	pixel_x = 23;
+	pixel_y = 13
+	},
+/turf/open/floor/ancient_temple/damaged/damage_7,
+/area/lazarus/ground/jungle/south_east_jungle)
+"Pg" = (
+/obj/effect/hunter/ancient_temple/tile_edge/tile_edge_8,
+/turf/open/floor/ancient_temple/damaged/damage_7,
+/area/lazarus/ground/jungle/south_east_jungle)
+"Pp" = (
+/obj/structure/flora/jungle/vines/blue/light_1,
+/turf/closed/wall/strata_ice/jungle,
+/area/strata/interior/out_of_bounds)
+"Pt" = (
+/obj/structure/flora/jungle/vines/dead/light_2,
+/obj/structure/flora/jungle/vines/blue/light_1,
+/turf/closed/wall/strata_ice/jungle,
+/area/strata/interior/out_of_bounds)
+"PF" = (
+/obj/effect/hunter/ancient_temple/tile_edge_corner/tile_edge_corner_4,
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 5
+	},
+/obj/structure/flora/jungle/vines/dead/light_1,
+/turf/open/floor/ancient_temple/damaged/damage_7,
+/area/lazarus/ground/jungle/south_east_jungle)
+"Qf" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/obj/structure/flora/jungle/vines/dead/light_1,
+/turf/open/auto_turf/lv_sand/layer0,
+/area/lazarus/ground/jungle/south_east_jungle)
+"QN" = (
+/turf/closed/wall/mineral/sandstone/runed,
+/area/strata/interior/out_of_bounds)
+"SK" = (
+/obj/structure/flora/jungle/vines/dead/light_3,
+/turf/open/floor/ancient_temple/damaged/damage_1,
+/area/lazarus/ground/jungle/south_east_jungle)
+"Te" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 9
+	},
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 6
+	},
+/turf/open/floor/ancient_temple/damaged/damage_1,
+/area/lazarus/ground/jungle/south_east_jungle)
+"TL" = (
+/turf/open/floor/ancient_temple/damaged/damage_3,
+/area/lazarus/ground/jungle/south_east_jungle)
+"TV" = (
+/obj/structure/flora/bush/ausbushes/ausbush,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lazarus/ground/jungle/south_east_jungle)
+"Uy" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/auto_turf/lv_sand/layer0,
+/area/lazarus/ground/jungle/south_east_jungle)
+"Vx" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/obj/structure/flora/jungle/vines/dead/light_1,
+/turf/open/floor/brown_dirt/random_rocks,
+/area/lazarus/ground/jungle/south_east_jungle)
+"VW" = (
+/obj/effect/hunter/ancient_temple/tile_edge_corner/tile_edge_corner_4,
+/turf/open/floor/ancient_temple/damaged/damage_7,
+/area/lazarus/ground/jungle/south_east_jungle)
+"We" = (
+/obj/effect/hunter/ancient_temple/tile_edge/tile_edge_11,
+/obj/effect/landmark/objective_landmark/medium,
+/obj/structure/flora/jungle/vines/dead/light_1,
+/turf/open/floor/ancient_temple/damaged/damage_7,
+/area/lazarus/ground/jungle/south_east_jungle)
+"WF" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/obj/structure/flora/jungle/vines/dead/light_2,
+/turf/open/floor/brown_dirt/random_rocks_alt,
+/area/lazarus/ground/jungle/south_east_jungle)
+"XP" = (
+/obj/effect/hunter/ancient_temple/tile_edge_corner,
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 8
+	},
+/turf/open/floor/ancient_temple/damaged/damage_7,
+/area/lazarus/ground/jungle/south_east_jungle)
+"XQ" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/obj/structure/flora/jungle/vines/dead/light_1,
+/turf/open/floor/brown_dirt/random_rocks_alt,
+/area/lazarus/ground/jungle/south_east_jungle)
+"YE" = (
+/obj/structure/tunnel{
+	desc = "A tunnel entrance. Where the hell does it go?"
+	},
+/turf/open/gm/dirt/brown/variant_6,
+/area/lazarus/ground/jungle/south_east_jungle)
+"Zb" = (
+/turf/open/floor/ancient_temple/damaged/damage_1,
+/area/lazarus/ground/jungle/south_east_jungle)
+
+(1,1,1) = {"
+Pp
+DG
+DG
+Pp
+BB
+vy
+mj
+BB
+mj
+oH
+mj
+mj
+vy
+"}
+(2,1,1) = {"
+bS
+DG
+ET
+pf
+BB
+BB
+vy
+pX
+mj
+oH
+Eu
+mj
+vy
+"}
+(3,1,1) = {"
+Pp
+Pp
+ok
+mj
+vy
+BB
+vy
+mj
+oH
+mj
+mj
+vy
+BB
+"}
+(4,1,1) = {"
+bS
+BB
+Ma
+ok
+mj
+mj
+mj
+mj
+mj
+vy
+mj
+CH
+Pp
+"}
+(5,1,1) = {"
+Pp
+BB
+BB
+gm
+QN
+Uy
+oH
+QN
+ok
+ok
+ok
+Io
+Pp
+"}
+(6,1,1) = {"
+BB
+Pp
+BB
+gm
+PF
+oH
+vO
+QN
+gm
+gm
+CH
+Io
+Pp
+"}
+(7,1,1) = {"
+Pp
+kP
+Pp
+GH
+Lc
+Br
+au
+Lc
+SK
+gm
+mj
+LG
+Pp
+"}
+(8,1,1) = {"
+ET
+MG
+vb
+bL
+IY
+TL
+OM
+LR
+Zb
+LF
+tz
+ok
+Pp
+"}
+(9,1,1) = {"
+vy
+yJ
+Pp
+bL
+Mx
+VW
+LN
+GB
+py
+iL
+mj
+Af
+mm
+"}
+(10,1,1) = {"
+mj
+Uy
+BB
+tj
+Pg
+LN
+ef
+Zb
+Lc
+fy
+sP
+mj
+BB
+"}
+(11,1,1) = {"
+mj
+mj
+mj
+QN
+Kd
+rZ
+VW
+pP
+TL
+QN
+mj
+vy
+BB
+"}
+(12,1,1) = {"
+uR
+mj
+uR
+iL
+ze
+VW
+LN
+XP
+We
+bL
+vy
+mj
+BB
+"}
+(13,1,1) = {"
+mj
+mj
+sP
+pE
+kt
+LN
+kA
+Te
+bL
+bL
+CH
+Af
+Pp
+"}
+(14,1,1) = {"
+fv
+Uy
+mj
+Uy
+yt
+dg
+vw
+XQ
+Vx
+Af
+CH
+MG
+Pp
+"}
+(15,1,1) = {"
+TV
+yJ
+Pp
+QN
+QN
+QN
+GH
+bL
+Af
+CH
+MG
+ET
+BB
+"}
+(16,1,1) = {"
+MZ
+kP
+Pp
+Pp
+Pt
+YE
+yt
+Af
+Qf
+gB
+ET
+Pp
+BB
+"}
+(17,1,1) = {"
+Pp
+Pp
+BB
+BB
+Pp
+Io
+WF
+CH
+ET
+ET
+Pp
+Pp
+BB
+"}
+(18,1,1) = {"
+BB
+BB
+BB
+BB
+BB
+BB
+BB
+BB
+BB
+BB
+BB
+BB
+BB
+"}

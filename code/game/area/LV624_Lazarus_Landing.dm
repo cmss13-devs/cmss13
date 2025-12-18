@@ -153,6 +153,10 @@
 	icon_state = "purple"
 // ambience = list('sound/ambience/jungle_amb1.ogg')
 
+/area/lazarus/ground/river/central_river/lake
+	name = "\improper Lake"
+	icon_state = "purple"
+
 /area/lazarus/ground/river/central_river/north
 	name = "\improper Central River - North"
 	icon_state = "purple"

@@ -1,0 +1,310 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/closed/wall/lv_outpost/reinforced,
+/area/lazarus/lazarus/armory)
+"d" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/stack/sheet/metal,
+/turf/open/floor/strata/multi_tiles,
+/area/lazarus/lazarus/armory)
+"g" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/brown_bright/north,
+/area/lazarus/lazarus/main_hall)
+"h" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/large_stain,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_3";
+	pixel_y = 10
+	},
+/turf/open/floor/strata/multi_tiles,
+/area/lazarus/lazarus/armory)
+"j" = (
+/obj/item/stack/rods{
+	amount = 15
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lazarus/lazarus/armory)
+"l" = (
+/obj/item/trash/cigbutt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_3";
+	pixel_y = 10
+	},
+/turf/open/floor/prison/floorscorched1,
+/area/lazarus/lazarus/main_hall)
+"m" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/stack/rods{
+	amount = 15
+	},
+/turf/open/floor/prison/brown_bright/north,
+/area/lazarus/lazarus/main_hall)
+"n" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/stack/sheet/metal,
+/turf/open/floor/prison/floor_plate,
+/area/lazarus/lazarus/main_hall)
+"p" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/closed/wall/lv_outpost/reinforced,
+/area/lazarus/lazarus/armory)
+"s" = (
+/obj/effect/decal/large_stain{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/girder,
+/obj/item/stack/rods{
+	amount = 15
+	},
+/turf/open/floor/prison/platingdmg1,
+/area/lazarus/lazarus/armory)
+"w" = (
+/obj/structure/stairs/perspective{
+	color = "#838987";
+	dir = 4
+	},
+/obj/structure/platform/metal/stair_cut/strata_left/alt,
+/obj/structure/machinery/door/poddoor/almayer/grey/closed{
+	name = "\improper Secure Armory";
+	id = "cmbarmory";
+	dir = 8
+	},
+/turf/open/floor/plating/prison,
+/area/lazarus/lazarus/armory)
+"x" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/brown_bright/corner/north,
+/area/lazarus/lazarus/main_hall)
+"z" = (
+/obj/item/frame/rack{
+	color = "#aaaab5"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/strata/multi_tiles,
+/area/lazarus/lazarus/armory)
+"A" = (
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/prison/platingdmg1,
+/area/lazarus/lazarus/armory)
+"B" = (
+/turf/open/floor/prison/cell_stripe/west,
+/area/lazarus/lazarus/main_hall)
+"C" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/stack/rods{
+	amount = 15
+	},
+/obj/structure/girder,
+/turf/open/floor/prison/platingdmg1,
+/area/lazarus/lazarus/armory)
+"D" = (
+/obj/effect/decal/large_stain,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/stack/sheet/metal,
+/turf/open/floor/prison/platingdmg1,
+/area/lazarus/lazarus/armory)
+"H" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/structure/machinery/light/red{
+	dir = 8;
+	pixel_y = -15
+	},
+/obj/structure/surface/rack{
+	color = "#aaaab5"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_magazine/smg/mp5,
+/turf/open/floor/strata/multi_tiles,
+/area/lazarus/lazarus/armory)
+"K" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/stack/rods{
+	amount = 15
+	},
+/obj/structure/girder/displaced,
+/turf/open/floor/prison/platingdmg1,
+/area/lazarus/lazarus/armory)
+"L" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/frame/rack{
+	color = "#aaaab5"
+	},
+/turf/open/floor/strata/multi_tiles,
+/area/lazarus/lazarus/armory)
+"M" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/strata/multi_tiles,
+/area/lazarus/lazarus/armory)
+"N" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/cell_stripe/west,
+/area/lazarus/lazarus/main_hall)
+"O" = (
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/trash{
+	pixel_x = 7;
+	pixel_y = -11
+	},
+/obj/item/shard,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/prison/floor_plate,
+/area/lazarus/lazarus/main_hall)
+"P" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_magazine/smg/mp5,
+/turf/open/floor/prison/floorscorched2,
+/area/lazarus/lazarus/main_hall)
+"Q" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/stack/sheet/metal,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lazarus/lazarus/armory)
+"R" = (
+/obj/structure/disposalpipe/junction{
+	dir = 4;
+	icon_state = "pipe-j2"
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 5
+	},
+/turf/open/floor/prison/brown_bright/north,
+/area/lazarus/lazarus/main_hall)
+"S" = (
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_2";
+	pixel_y = -2;
+	pixel_x = -9
+	},
+/turf/open/floor/prison/floorscorched1,
+/area/lazarus/lazarus/main_hall)
+"U" = (
+/obj/structure/machinery/camera/autoname{
+	dir = 1
+	},
+/obj/item/shard,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lazarus/lazarus/main_hall)
+"W" = (
+/obj/effect/decal/large_stain{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lazarus/lazarus/armory)
+"X" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/bright_clean2,
+/area/lazarus/lazarus/main_hall)
+"Y" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/stack/rods{
+	amount = 15
+	},
+/turf/open/floor/prison/floor_plate,
+/area/lazarus/lazarus/main_hall)
+
+(1,1,1) = {"
+B
+N
+U
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+X
+O
+S
+a
+H
+L
+a
+"}
+(3,1,1) = {"
+x
+n
+s
+C
+W
+Q
+a
+"}
+(4,1,1) = {"
+g
+l
+D
+h
+A
+j
+a
+"}
+(5,1,1) = {"
+m
+P
+K
+d
+z
+M
+p
+"}
+(6,1,1) = {"
+R
+Y
+a
+a
+a
+w
+a
+"}

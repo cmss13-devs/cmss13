@@ -1,3 +1,13 @@
 [
-	{ "type": "map_sprinkle", "path": "sprinkles/" }
+    {
+        "type": "map_sprinkle",
+        "path": "sprinkles/"
+    },
+    {
+		"type": "map_insert",
+		"landmark": "corporate_dome_goon",
+		"chance": 0.5,
+		"path": "standalone/corporate_dome_goon.dmm",
+		"when": { "lvevent": "asset_protection" }
+    }
 ]

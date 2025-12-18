@@ -1,0 +1,8 @@
+author: "itus2k"
+delete-after: True
+changes:
+  - rscadd: "added a few lines to Rank_pins.dm, mostly ones to make them use the new sprites."
+  - rscadd: "A army section to rank_pins.dm, to make it easier to change and add stuff for that faction once it's implemented."
+  - imageadd: "Added a few icons to the Ranks.dmi"
+  - imageadd: "Added a few icons to the Onmob ranks.dmi"
+  - imageadd: "Added a few icons to the  Inventory ranks.dmi"

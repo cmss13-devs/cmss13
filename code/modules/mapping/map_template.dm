@@ -111,9 +111,10 @@
  * * delete - Whether to replace atoms
  * * allow_cropping - Whether to fail loading if the template is larger than current world size
  * * crop_within_type - A strict typepath to limit x_upper and y_upper further when in allow_cropping mode
- * * crop_within_border - An extra extra distance to crop within for crop_within_type
+ * * crop_within_border - An extra extra distance to crop within for crop_within_type and expand_type
+ * * expand_type - Specifying this typepath will allow expansion mode filling in space tiles with this type
  */
-/datum/map_template/proc/load(turf/target_turf, centered=FALSE, delete=FALSE, allow_cropping=FALSE, crop_within_type=null, crop_within_border=1)
+/datum/map_template/proc/load(turf/target_turf, centered=FALSE, delete=FALSE, allow_cropping=FALSE, crop_within_type=null, crop_within_border=1, expand_type=null)
 	if(centered)
 		target_turf = locate(target_turf.x - floor(width/2), target_turf.y - floor(height/2), target_turf.z)
 	if(!target_turf)
@@ -121,25 +122,44 @@
 
 	var/x_upper = INFINITY
 	var/y_upper = INFINITY
+	var/expand_x_start = 0
+	var/expand_y_start = 0
 	if(!allow_cropping)
-		if((target_turf.x+width) - 1 > world.maxx)
+		if((target_turf.x + width) - 1 > world.maxx)
 			return
-		if((target_turf.y+height) - 1 > world.maxy)
+		if((target_turf.y + height) - 1 > world.maxy)
 			return
-	else if(ispath(crop_within_type))
+	else if(ispath(crop_within_type) && !ispath(expand_type))
 		// Check the horizontal line for the strict type
-		for(var/turf/x_turf in block(target_turf.x, target_turf.y, target_turf.z, world.maxx, target_turf.y, target_turf.z))
+		// ASSUMPTION: Square border shape
+		for(var/turf/x_turf in block(target_turf.x, target_turf.y, target_turf.z, min(world.maxx, target_turf.x + width), target_turf.y, target_turf.z))
 			if(x_turf.type == crop_within_type)
 				x_upper = x_turf.x - 1 - crop_within_border
 				if(x_upper < target_turf.x)
 					return
 				break
 		// Check the vertical line for the strict type
-		for(var/turf/y_turf in block(target_turf.x, target_turf.y, target_turf.z, target_turf.x, world.maxy, target_turf.z))
+		// ASSUMPTION: Square border shape
+		for(var/turf/y_turf in block(target_turf.x, target_turf.y, target_turf.z, target_turf.x, min(world.maxy, target_turf.y + height), target_turf.z))
 			if(y_turf.type == crop_within_type)
 				y_upper = y_turf.y - 1 - crop_within_border
 				if(y_upper < target_turf.y)
 					return
+				break
+	else if(ispath(expand_type))
+		if(!ispath(crop_within_type))
+			crop_within_type = /turf/closed/cordon
+		// Check the horizontal line for the strict type
+		// ASSUMPTION: Square border shape
+		for(var/turf/x_turf in block(target_turf.x, target_turf.y, target_turf.z, min(world.maxx, target_turf.x + width), target_turf.y, target_turf.z))
+			if(x_turf.type == crop_within_type)
+				expand_x_start = x_turf.x
+				break
+		// Check the vertical line for the strict type
+		// ASSUMPTION: Square border shape
+		for(var/turf/y_turf in block(target_turf.x, target_turf.y, target_turf.z, target_turf.x, min(world.maxy, target_turf.y + height), target_turf.z))
+			if(y_turf.type == crop_within_type)
+				expand_y_start = y_turf.y
 				break
 
 	// Accept cached maps, but don't save them automatically - we don't want
@@ -169,6 +189,75 @@
 	if(!bounds)
 		return
 
+	if(expand_x_start || expand_y_start)
+		if(expand_x_start)
+			// Eastward expansion minus borders
+			for(var/turf/current in block(expand_x_start, target_turf.y, target_turf.z, target_turf.x + width - 1, target_turf.y + height - 1, target_turf.z))
+				if(current.type == crop_within_type || istype(current, /turf/open/space))
+					current.ChangeTurf(expand_type)
+					CHECK_TICK
+			// Southern strip cordon
+			for(var/turf/current in block(expand_x_start, target_turf.y - 1, target_turf.z, target_turf.x + width, target_turf.y - 1, target_turf.z))
+				if(current.type != crop_within_type)
+					current.ChangeTurf(crop_within_type)
+					CHECK_TICK
+			// Force border w/o additional expansion
+			if(crop_within_border > 0)
+				// Southern strip inner border
+				for(var/turf/current in block(expand_x_start, target_turf.y, target_turf.z, target_turf.x + width - 1, target_turf.y + crop_within_border - 1, target_turf.z))
+					if(current.type != expand_type)
+						current.ChangeTurf(expand_type)
+						CHECK_TICK
+
+		if(expand_y_start)
+			// Northward expansion minus borders
+			var/end_x = expand_x_start ? expand_x_start : target_turf.x + width
+			for(var/turf/current in block(target_turf.x, expand_y_start, target_turf.z, end_x - 1, target_turf.y + height - 1, target_turf.z))
+				if(current.type == crop_within_type || istype(current, /turf/open/space))
+					current.ChangeTurf(expand_type)
+					CHECK_TICK
+			// Western strip cordon
+			for(var/turf/current in block(target_turf.x - 1, expand_y_start, target_turf.z, target_turf.x - 1, target_turf.y + height, target_turf.z))
+				if(current.type != crop_within_type)
+					current.ChangeTurf(crop_within_type)
+					CHECK_TICK
+			// Force border w/o additional expansion
+			if(crop_within_border > 0)
+				// Western strip inner border
+				for(var/turf/current in block(target_turf.x + crop_within_border - 1, expand_y_start, target_turf.z, target_turf.x, target_turf.y + height - crop_within_border - 1, target_turf.z))
+					if(current.type != expand_type)
+						current.ChangeTurf(expand_type)
+						CHECK_TICK
+
+		if(expand_x_start && expand_y_start)
+			expand_x_start = target_turf.x
+			expand_y_start = target_turf.y
+		else
+			expand_x_start = max(target_turf.x, expand_x_start)
+			expand_y_start = max(target_turf.y, expand_y_start)
+		// East strip cordon
+		for(var/turf/current in block(target_turf.x + width, expand_y_start, target_turf.z, target_turf.x + width, target_turf.y + height - 1, target_turf.z))
+			if(current.type != crop_within_type)
+				current.ChangeTurf(crop_within_type)
+				CHECK_TICK
+		// North strip cordon
+		for(var/turf/current in block(expand_x_start, target_turf.y + height, target_turf.z, target_turf.x + width, target_turf.y + height, target_turf.z))
+			if(current.type != crop_within_type)
+				current.ChangeTurf(crop_within_type)
+				CHECK_TICK
+		// Force border w/o additional expansion
+		if(crop_within_border > 0)
+			// East strip inner border
+			for(var/turf/current in block(target_turf.x + width - crop_within_border, expand_y_start + crop_within_border, target_turf.z, target_turf.x + width - 1, target_turf.y + height - crop_within_border - 1, target_turf.z))
+				if(current.type != expand_type)
+					current.ChangeTurf(expand_type)
+					CHECK_TICK
+			// North strip inner border
+			for(var/turf/current in block(expand_x_start, target_turf.y + height - 1, target_turf.z, target_turf.x + width - 1, target_turf.y + height - crop_within_border, target_turf.z))
+				if(current.type != expand_type)
+					current.ChangeTurf(expand_type)
+					CHECK_TICK
+
 	repopulate_sorted_areas()
 
 	//initialize things that are normally initialized after map load
@@ -183,36 +272,71 @@
 /datum/map_template/proc/update_blacklist(turf/T, list/input_blacklist)
 	return
 
-/datum/map_template/proc/get_affected_turfs(turf/target_turf, centered=FALSE, allow_cropping=FALSE, crop_within_type=null, crop_within_border=1)
+/datum/map_template/proc/get_affected_turfs(turf/target_turf, centered=FALSE, allow_cropping=FALSE, crop_within_type=null, crop_within_border=1, expand_type=null)
+	. = list()
 	if(centered)
 		target_turf = locate(target_turf.x - floor(width/2), target_turf.y - floor(height/2), target_turf.z)
 	if(!target_turf)
-		return list()
+		return .
 
 	var/x_upper = INFINITY
 	var/y_upper = INFINITY
 	if(!allow_cropping)
 		if((target_turf.x+width) - 1 > world.maxx)
-			return list()
+			return .
 		if((target_turf.y+height) - 1 > world.maxy)
-			return list()
-	else if(ispath(crop_within_type))
+			return .
+	else if(ispath(crop_within_type) && !ispath(expand_type))
 		// Check the horizontal line for the strict type
 		for(var/turf/x_turf in block(target_turf.x, target_turf.y, target_turf.z, world.maxx, target_turf.y, target_turf.z))
 			if(x_turf.type == crop_within_type)
 				x_upper = x_turf.x - 1 - crop_within_border
 				if(x_upper < target_turf.x)
-					return list()
+					return .
 				break
 		// Check the vertical line for the strict type
 		for(var/turf/y_turf in block(target_turf.x, target_turf.y, target_turf.z, target_turf.x, world.maxy, target_turf.z))
 			if(y_turf.type == crop_within_type)
 				y_upper = y_turf.y - 1 - crop_within_border
 				if(y_upper < target_turf.y)
-					return list()
+					return .
 				break
+	else if(ispath(expand_type))
+		// Check the horizontal line for the strict type
+		// ASSUMPTION: Square border shape
+		var/expand_x_start = 0
+		for(var/turf/x_turf in block(target_turf.x, target_turf.y, target_turf.z, min(world.maxx, target_turf.x + width), target_turf.y, target_turf.z))
+			if(x_turf.type == crop_within_type)
+				expand_x_start = x_turf.x
+				break
+		if(expand_x_start)
+			// Southern strip cordon
+			. += block(expand_x_start, target_turf.y - 1, target_turf.z, target_turf.x + width, target_turf.y - 1, target_turf.z)
 
-	return CORNER_BLOCK(target_turf, min(width, x_upper - target_turf.x + 1), min(height, y_upper - target_turf.y + 1))
+		// Check the vertical line for the strict type
+		// ASSUMPTION: Square border shape
+		var/expand_y_start = 0
+		for(var/turf/y_turf in block(target_turf.x, target_turf.y, target_turf.z, target_turf.x, min(world.maxy, target_turf.y + height), target_turf.z))
+			if(y_turf.type == crop_within_type)
+				expand_y_start = y_turf.y
+				break
+		if(expand_y_start)
+			// Western strip cordon
+			. += block(target_turf.x - 1, expand_y_start, target_turf.z, target_turf.x - 1, target_turf.y + height, target_turf.z)
+
+		if(expand_x_start || expand_y_start)
+			if(expand_x_start && expand_y_start)
+				expand_x_start = target_turf.x
+				expand_y_start = target_turf.y
+			else
+				expand_x_start = max(target_turf.x, expand_x_start)
+				expand_y_start = max(target_turf.y, expand_y_start)
+			// East strip cordon
+			. += block(target_turf.x + width, expand_y_start, target_turf.z, target_turf.x + width, target_turf.y + height - 1, target_turf.z)
+			// North strip cordon
+			. += block(expand_x_start, target_turf.y + height, target_turf.z, target_turf.x + width, target_turf.y + height, target_turf.z)
+
+	return . + CORNER_BLOCK(target_turf, min(width, x_upper - target_turf.x + 1), min(height, y_upper - target_turf.y + 1))
 
 //for your ever biggening badminnery kevinz000
 //❤ - Cyberboss

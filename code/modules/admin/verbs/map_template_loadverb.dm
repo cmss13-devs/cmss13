@@ -21,14 +21,16 @@
 	if(isnull(delete))
 		return
 	delete = delete == "Yes"
-	var/allow_cropping = tgui_alert(src, "Do you want to allow cropping if the template is larger than world bounds?", "Allow cropping", list("Fail if larger", "Crop", "Crop to border"))
+	var/allow_cropping = tgui_alert(src, "Do you want to allow cropping if the template is larger than world bounds?", "Allow cropping", list("Fail if larger", "Expand border", "Crop", "Crop to border"))
 	if(isnull(allow_cropping))
 		return
-	var/crop_border_type = allow_cropping == "Crop to border" ? /turf/closed/shuttle : null
+	var/expand_border = allow_cropping == "Expand border"
+	var/expand_border_type = expand_border ? /turf/closed/wall/strata_ice/jungle : null // TODO: Detect this
+	var/crop_border_type = (allow_cropping == "Crop to border" || expand_border) ? /turf/closed/cordon : null
 	allow_cropping = allow_cropping != "Fail if larger"
 
 	var/list/preview = list()
-	for(var/preview_turf in template.get_affected_turfs(target_turf, centered, allow_cropping, crop_border_type))
+	for(var/preview_turf in template.get_affected_turfs(target_turf, centered, allow_cropping, crop_border_type, 1, expand_border_type))
 		var/image/item = image('icons/turf/overlays.dmi', preview_turf, "greenOverlay")
 		item.plane = ABOVE_LIGHTING_PLANE
 		preview += item
@@ -40,7 +42,7 @@
 	images += preview
 
 	if(tgui_alert(src, "Confirm location?", "Template Confirm", list("Yes", "No")) == "Yes")
-		if(template.load(target_turf, centered, delete, allow_cropping, crop_border_type))
+		if(template.load(target_turf, centered, delete, allow_cropping, crop_border_type, 1, expand_border_type))
 			/*var/affected = template.get_affected_turfs(target_turf, centered=TRUE)
 			for(var/current in affected)
 				for(var/obj/docking_port/mobile/port in current)

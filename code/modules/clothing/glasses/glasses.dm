@@ -345,7 +345,7 @@
 
 /obj/item/clothing/glasses/jensen
 	name = "Augmented sunglasses"
-	desc = "Augmented sunglasses with the HUD removed"
+	desc = "Augmented sunglasses with the HUD removed."
 	icon = 'icons/obj/items/clothing/glasses/misc.dmi'
 	item_icons = list(
 		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/misc.dmi',

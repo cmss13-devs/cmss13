@@ -48,11 +48,12 @@
 	icon_size = 64
 	icon_state = "Burrower Walking"
 	layer = MOB_LAYER
+	claw_type = CLAW_TYPE_VERY_SHARP
 	plasma_stored = 100
 	plasma_types = list(PLASMA_PURPLE)
 	pixel_x = -12
 	old_x = -12
-	claw_type = CLAW_TYPE_VERY_SHARP
+	xenonid_pixel_x = -16
 	base_pixel_x = 0
 	base_pixel_y = -20
 	tier = 2

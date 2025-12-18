@@ -87,7 +87,7 @@
 			if(4)
 				o += "WEST: "
 		if(tile_info[index] == null)
-			o += SPAN_WARNING("DATA UNAVAILABLE")
+			o += SPAN_WARNING("DATA UNAVAILABLE.")
 			. += o
 			continue
 		var/celsius = convert_k2c(tile_info[index][1])

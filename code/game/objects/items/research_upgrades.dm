@@ -1,7 +1,7 @@
 //prop items
 /obj/item/oldresearch
 	name = "Alien Organ"
-	desc = "Looking at it makes you want to vomit"
+	desc = "Looking at it makes you want to vomit."
 	icon = 'icons/obj/items/Marine_Research.dmi'
 	icon_state = "biomass"
 	black_market_value = 50
@@ -9,19 +9,19 @@
 
 /obj/item/oldresearch/Resin
 	name = "Alien Resin"
-	desc = "A piece of alien Resin"
+	desc = "A piece of alien Resin."
 	icon_state = "biomass"
 
 
 /obj/item/oldresearch/Chitin
 	name = "Chunk of Chitin"
-	desc = "A chunk of alien Chitin"
+	desc = "A chunk of alien Chitin."
 	icon_state = "chitin-chunk"
 
 
 /obj/item/oldresearch/Blood
 	name = "Blood Vial"
-	desc = "A sample of alien Blood"
+	desc = "A sample of alien Blood."
 	icon_state = "blood-vial"
 
 //prop items end

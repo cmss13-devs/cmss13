@@ -18,7 +18,7 @@
 	if(!B || B.robotic == ORGAN_ROBOT)
 		return FALSE
 	if(B.damage <= dmg_min)
-		if(target.disabilities & NERVOUS || target.sdisabilities & DISABILITY_MUTE || target.sdisabilities & DISABILITY_BLIND) //if people want to start out with disabilities and change their mind later they don't need brain damage to remove them.
+		if(target.disabilities & NERVOUS || target.sdisabilities & DISABILITY_MUTE || target.sdisabilities & DISABILITY_DEAF) //if people want to start out with disabilities and change their mind later they don't need brain damage to remove them.
 			return TRUE
 		return FALSE
 	if(dmg_max && B.damage > dmg_max)

@@ -259,7 +259,7 @@
 	name = "medical's apron"
 	icon_state = "apron_medical"
 	desc = "A basic and sterile white apron, good for surgical and, of course, other medical practices."
-	armor_bio = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_VERYLOW //not as much as a lab coat, but still better than nothing.
 
 /obj/item/clothing/suit/chef/classic/medical/doctor
 	name = "doctor's medical apron"

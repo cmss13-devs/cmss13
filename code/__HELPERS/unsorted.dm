@@ -1308,12 +1308,11 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
 
 	var/datum/turf_reservation/reservation = SSmapping.used_turfs[start_turf]
 	if(reservation)
-		var/start_reserved_z = reservation.get_turf_z(start_turf)
-		var/end_reserved_z = reservation.get_turf_z(end_turf)
-		if(start_reserved_z < end_reserved_z)
+		if(reservation.is_below(start_turf, end_turf))
 			start_turf = SSmapping.get_turf_above(start_turf)
-		if(start_reserved_z > end_reserved_z)
-			end_turf = SSmapping.get_turf_above(end_turf)
+		else
+			if(reservation.is_below(end_turf, start_turf))
+				end_turf = SSmapping.get_turf_above(end_turf)
 
 	var/list/line = list()
 	if(include_start_atom)

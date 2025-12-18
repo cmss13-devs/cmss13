@@ -42,12 +42,21 @@
 	var/pre_cordon_distance = 0
 
 /datum/turf_reservation/proc/get_turf_z(turf/turf)
+	var/turf/bottom_left_turf
+	var/turf/top_right_turf
 	for(var/i in 1 to length(bottom_left_turfs))
-		if(bottom_left_turfs[i].x < turf.x && bottom_left_turfs[i].y < turf.y && top_right_turfs[i].x > turf.x &&  top_right_turfs[i].y > turf.y)
+		bottom_left_turf = bottom_left_turfs[i]
+		top_right_turf = top_right_turfs[i]
+		if(bottom_left_turf.x < turf.x && bottom_left_turf.y < turf.y && top_right_turf.x > turf.x &&  top_right_turf.y > turf.y)
 			return i
+	return null
 
 /datum/turf_reservation/proc/is_below(turf/turf_below, turf/turf_above)
-	return get_turf_z(turf_above) > get_turf_z(turf_below)
+	var/turf_above_z = get_turf_z(turf_above)
+	var/turf_below_z = get_turf_z(turf_below)
+	if(isnull(turf_above_z) || isnull(turf_below_z))
+		return FALSE
+	return turf_above_z > turf_below_z
 
 /datum/turf_reservation/transit
 	turf_type = /turf/open/space/transit

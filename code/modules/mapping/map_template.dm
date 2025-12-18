@@ -102,15 +102,45 @@
 
 	return level
 
-/datum/map_template/proc/load(turf/T, centered = FALSE, delete = FALSE)
+/**
+ * Loads the map template.
+ *
+ * Arguments:
+ * * target_turf - The starting position to load the template
+ * * centered - Whether to adjust the starting position to center the template (otherwise target_turf is the bottom left)
+ * * delete - Whether to replace atoms
+ * * allow_cropping - Whether to fail loading if the template is larger than current world size
+ * * crop_within_type - A strict typepath to limit x_upper and y_upper further when in allow_cropping mode
+ * * crop_within_border - An extra extra distance to crop within for crop_within_type
+ */
+/datum/map_template/proc/load(turf/target_turf, centered=FALSE, delete=FALSE, allow_cropping=FALSE, crop_within_type=null, crop_within_border=1)
 	if(centered)
-		T = locate(T.x - floor(width/2) , T.y - floor(height/2) , T.z)
-	if(!T)
+		target_turf = locate(target_turf.x - floor(width/2), target_turf.y - floor(height/2), target_turf.z)
+	if(!target_turf)
 		return
-	if((T.x+width) - 1 > world.maxx)
-		return
-	if((T.y+height) - 1 > world.maxy)
-		return
+
+	var/x_upper = INFINITY
+	var/y_upper = INFINITY
+	if(!allow_cropping)
+		if((target_turf.x+width) - 1 > world.maxx)
+			return
+		if((target_turf.y+height) - 1 > world.maxy)
+			return
+	else if(ispath(crop_within_type))
+		// Check the horizontal line for the strict type
+		for(var/turf/x_turf in block(target_turf.x, target_turf.y, target_turf.z, world.maxx, target_turf.y, target_turf.z))
+			if(x_turf.type == crop_within_type)
+				x_upper = x_turf.x - 1 - crop_within_border
+				if(x_upper < target_turf.x)
+					return
+				break
+		// Check the vertical line for the strict type
+		for(var/turf/y_turf in block(target_turf.x, target_turf.y, target_turf.z, target_turf.x, world.maxy, target_turf.z))
+			if(y_turf.type == crop_within_type)
+				y_upper = y_turf.y - 1 - crop_within_border
+				if(y_upper < target_turf.y)
+					return
+				break
 
 	// Accept cached maps, but don't save them automatically - we don't want
 	// ruins clogging up memory for the whole round.
@@ -118,16 +148,18 @@
 	cached_map = keep_cached_map ? parsed : null
 
 	var/list/turf_blacklist = list()
-	update_blacklist(T, turf_blacklist)
+	update_blacklist(target_turf, turf_blacklist)
 
 	UNSETEMPTY(turf_blacklist)
 	parsed.turf_blacklist = turf_blacklist
 	if(!parsed.load(
-		T.x,
-		T.y,
-		T.z,
+		target_turf.x,
+		target_turf.y,
+		target_turf.z,
 		crop_map = TRUE,
 		no_changeturf = (SSatoms.initialized == INITIALIZATION_INSSATOMS),
+		x_upper = x_upper,
+		y_upper = y_upper,
 		place_on_top = should_place_on_top,
 		delete = delete
 	))
@@ -142,7 +174,7 @@
 	//initialize things that are normally initialized after map load
 	initTemplateBounds(bounds)
 
-	log_game("[name] loaded at [T.x],[T.y],[T.z]")
+	log_game("[name] loaded at [target_turf.x],[target_turf.y],[target_turf.z]")
 	return bounds
 
 /datum/map_template/proc/post_load()
@@ -151,11 +183,36 @@
 /datum/map_template/proc/update_blacklist(turf/T, list/input_blacklist)
 	return
 
-/datum/map_template/proc/get_affected_turfs(turf/T, centered = FALSE)
+/datum/map_template/proc/get_affected_turfs(turf/target_turf, centered=FALSE, allow_cropping=FALSE, crop_within_type=null, crop_within_border=1)
 	if(centered)
-		return RECT_TURFS(floor(width / 2), floor(height / 2), T)
-	return CORNER_BLOCK(T, width, height)
+		target_turf = locate(target_turf.x - floor(width/2), target_turf.y - floor(height/2), target_turf.z)
+	if(!target_turf)
+		return list()
 
+	var/x_upper = INFINITY
+	var/y_upper = INFINITY
+	if(!allow_cropping)
+		if((target_turf.x+width) - 1 > world.maxx)
+			return list()
+		if((target_turf.y+height) - 1 > world.maxy)
+			return list()
+	else if(ispath(crop_within_type))
+		// Check the horizontal line for the strict type
+		for(var/turf/x_turf in block(target_turf.x, target_turf.y, target_turf.z, world.maxx, target_turf.y, target_turf.z))
+			if(x_turf.type == crop_within_type)
+				x_upper = x_turf.x - 1 - crop_within_border
+				if(x_upper < target_turf.x)
+					return list()
+				break
+		// Check the vertical line for the strict type
+		for(var/turf/y_turf in block(target_turf.x, target_turf.y, target_turf.z, target_turf.x, world.maxy, target_turf.z))
+			if(y_turf.type == crop_within_type)
+				y_upper = y_turf.y - 1 - crop_within_border
+				if(y_upper < target_turf.y)
+					return list()
+				break
+
+	return CORNER_BLOCK(target_turf, min(width, x_upper - target_turf.x + 1), min(height, y_upper - target_turf.y + 1))
 
 //for your ever biggening badminnery kevinz000
 //❤ - Cyberboss

@@ -2094,7 +2094,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 			return FALSE
 
 		if(gun_user.Adjacent(object))
-			if((gun_user.a_intent != INTENT_HARM) || gun_user.loc == get_turf(object) || istype(src, /obj/item/weapon/gun/shotgun)) //Dealt with by click.adjacent/attack code
+			if((gun_user.a_intent != INTENT_HARM) || gun_user.loc == get_turf(object)) //Dealt with by click.adjacent/attack code
 				return FALSE
 
 			if(skillcheck(gun_user, SKILL_EXECUTION, SKILL_EXECUTION_TRAINED) && gun_user.zone_selected == "head" && ishuman_strict(object))

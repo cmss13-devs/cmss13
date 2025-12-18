@@ -276,7 +276,7 @@
 				sidearmbelt = /obj/item/storage/belt/gun/mateba/cmateba
 				sidearmammo = /obj/item/ammo_magazine/revolver/mateba
 			if(CO_GUN_MATEBA_CLASSIC)
-				sidearm = /obj/item/weapon/gun/revolver/mateba
+				sidearm = /obj/item/weapon/gun/revolver/mateba/impact
 				sidearmbelt = /obj/item/storage/belt/gun/mateba
 				sidearmammo = /obj/item/ammo_magazine/revolver/mateba
 			if(CO_GUN_2006M)

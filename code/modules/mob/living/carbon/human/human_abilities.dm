@@ -210,7 +210,7 @@ CULT
 
 	if(assigned_droppod)
 		if(tgui_alert(H, "Do you want to recall the current pod?",\
-			"Recall Droppod", list("No", "Yes")) == "Yes")
+			"Recall Droppod", list("Yes", "No")) == "Yes")
 			if(!assigned_droppod)
 				return
 
@@ -357,7 +357,7 @@ CULT
 		return
 	var/mob/living/carbon/human/Hu = owner
 
-	if(H.skills && (skillcheck(H, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT) || skillcheck(H, SKILL_POLICE, SKILL_POLICE_SKILLED)))
+	if(H.skills && (skillcheck(H, SKILL_LEADERSHIP, SKILL_LEAD_SKILLED) || skillcheck(H, SKILL_POLICE, SKILL_POLICE_SKILLED)))
 		to_chat(Hu, SPAN_WARNING("This mind is too strong to target with your abilities."))
 		return
 

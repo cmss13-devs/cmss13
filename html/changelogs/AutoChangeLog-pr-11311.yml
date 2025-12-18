@@ -1,0 +1,5 @@
+author: "Puckaboo2"
+delete-after: True
+changes:
+  - rscadd: "Adds inhand sprites for the new chemistry, medical, and surgery books."
+  - bugfix: "Chemistry book is no longer purple inhand."

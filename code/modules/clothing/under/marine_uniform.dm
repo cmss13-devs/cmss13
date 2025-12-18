@@ -116,6 +116,7 @@
 	worn_state = "marine_medic"
 	specialty = "USCM Hospital Corpsman"
 
+
 /obj/item/clothing/under/marine/medic/jungle
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 
@@ -154,6 +155,59 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
 	)
+
+/obj/item/clothing/under/marine/field_doctor
+	name = "\improper USCM field doctor uniform"
+	desc = "Standard-issue Marine field doctor fatigues. They have shards of very light Kevlar to help protect against stabbing weapons and bullets and a stripe on the collar to differentiate it from the similar hospital corpman uniform. It also provides very minor protection against biohazards and radiation."
+	icon_state = "marine_medic_field"
+	worn_state = "marine_medic_field"
+	specialty = "USCM Field Doctor"
+
+	//Field Doctor trades some of the luxury of bio and rad resist on surgical scrubs for a little bit of melee and bullet armor.
+	armor_melee = CLOTHING_ARMOR_VERYLOW
+	armor_bullet = CLOTHING_ARMOR_VERYLOW
+	armor_bio = CLOTHING_ARMOR_LOW
+	armor_rad = CLOTHING_ARMOR_VERYLOW
+
+/obj/item/clothing/under/marine/field_doctor/jungle
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+
+/obj/item/clothing/under/marine/field_doctor/desert
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/desert.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/desert.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi'
+	)
+
+/obj/item/clothing/under/marine/field_doctor/classic
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/classic.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/classic.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi'
+	)
+
+/obj/item/clothing/under/marine/field_doctor/snow
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/snow.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/snow.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
+
+/obj/item/clothing/under/marine/field_doctor/urban
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/urban.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/urban.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
+	)
+
 
 /obj/item/clothing/under/marine/engineer
 	name = "\improper USCM ComTech uniform"

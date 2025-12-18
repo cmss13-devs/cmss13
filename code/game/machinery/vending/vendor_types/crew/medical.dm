@@ -601,6 +601,3 @@ GLOBAL_LIST_INIT(cm_vending_clothing_researcher, list(
 		/obj/item/device/radio/marine,
 		/obj/item/clothing/accessory/patch/medic_patch,
 	)
-
-
-

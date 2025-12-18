@@ -330,6 +330,9 @@
 
 	bubble_icon = "alien"
 
+	/// Custom action mouse cursor
+	var/active_action_cursor
+
 	/////////////////////////////////////////////////////////////////////
 	//
 	// Phero related vars
@@ -603,6 +606,28 @@
 		. |= COMPONENT_NO_IGNITE
 	if(caste.fire_immunity & FIRE_IMMUNITY_XENO_FRENZY)
 		. |= COMPONENT_XENO_FRENZY
+
+/mob/living/carbon/xenomorph/proc/set_action_cursor(mouse_pointer)
+	if(!client)
+		return
+	if(active_action_cursor)
+		UnregisterSignal(client, COMSIG_CLIENT_RESET_VIEW)
+	active_action_cursor = mouse_pointer
+	client.mouse_pointer_icon = mouse_pointer
+	RegisterSignal(client, COMSIG_CLIENT_RESET_VIEW, PROC_REF(handle_view))
+
+/mob/living/carbon/xenomorph/proc/clear_action_cursor()
+	if(!client)
+		return
+	active_action_cursor = null
+	client.mouse_pointer_icon = null
+	UnregisterSignal(client, COMSIG_CLIENT_RESET_VIEW)
+
+/mob/living/carbon/xenomorph/proc/handle_view(client/user)
+	SIGNAL_HANDLER
+	if(active_action_cursor)
+		if(user?.prefs?.custom_cursors)
+			user.mouse_pointer_icon = active_action_cursor
 
 //Off-load this proc so it can be called freely
 //Since Xenos change names like they change shoes, we need somewhere to hammer in all those legos

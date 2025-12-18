@@ -68,6 +68,30 @@
 	ability_primacy = XENO_NOT_PRIMARY_ACTION
 	delay = 0
 
+/datum/action/xeno_action/proc/update_mouse_pointer()
+	var/mob/living/carbon/xenomorph/xeno = owner
+
+	if(xeno.selected_design == /obj/effect/alien/resin/design/speed_node)
+		if(xeno.selected_design_mark == /datum/design_mark/resin_wall)
+			xeno.set_action_cursor('icons/effects/mouse_pointer/designer/spd_wall_mouse.dmi')
+		else
+			xeno.set_action_cursor('icons/effects/mouse_pointer/designer/spd_door_mouse.dmi')
+
+	if(xeno.selected_design == /obj/effect/alien/resin/design/cost_node)
+		if(xeno.selected_design_mark == /datum/design_mark/resin_wall)
+			xeno.set_action_cursor('icons/effects/mouse_pointer/designer/cost_wall_mouse.dmi')
+		else
+			xeno.set_action_cursor('icons/effects/mouse_pointer/designer/cost_door_mouse.dmi')
+
+	if(xeno.selected_design == /obj/effect/alien/resin/design/construct_node)
+		if(xeno.selected_design_mark == /datum/design_mark/resin_wall)
+			xeno.set_action_cursor('icons/effects/mouse_pointer/designer/const_wall_mouse.dmi')
+		else
+			xeno.set_action_cursor('icons/effects/mouse_pointer/designer/const_door_mouse.dmi')
+
+	if(xeno.selected_design == /obj/effect/alien/resin/design/upgrade || xeno.selected_design == /obj/effect/alien/resin/design/remove)
+		xeno.clear_action_cursor()
+
 //////////////////////////
 ///   Change Design    ///
 //////////////////////////
@@ -128,6 +152,7 @@
 	if(rem)
 		to_chat(xeno, SPAN_NOTICE("We will now remotely <b>[xeno.selected_design.name]</b>."))
 
+	update_mouse_pointer()
 	xeno.update_icons()
 	button.overlays.Cut()
 	button.overlays += image(icon_file, button, xeno.selected_design.icon_state)
@@ -234,6 +259,10 @@
 	var/max_reach = 10
 	/// Toggle state for design icon.
 	var/design_toggle = TRUE
+
+/datum/action/xeno_action/activable/place_design/action_activate()
+	. = ..()
+	update_mouse_pointer()
 
 /datum/action/xeno_action/activable/place_design/use_ability(atom/target_atom, mods, use_plasma = TRUE, message = TRUE)
 	var/mob/living/carbon/xenomorph/xeno = owner
@@ -557,6 +586,7 @@
 		to_chat(xeno, SPAN_INFO("We will now place door markers."))
 		xeno.selected_design_mark = /datum/design_mark/resin_door
 
+	update_mouse_pointer()
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, action_icon_result)
 	return ..()
@@ -776,7 +806,7 @@
 //-----// Design Speed Node //-----//
 
 /obj/effect/alien/resin/design/speed_node
-	name = "Design Optimized Node (50)"
+	name = "Optimized Design Node (50)"
 	icon_state = "static_speednode"
 	plasma_cost = 50
 
@@ -804,7 +834,7 @@
 //-----// Design Cost Node //-----//
 
 /obj/effect/alien/resin/design/cost_node
-	name = "Design Flexible Node (60)"
+	name = "Flexible Design Node (60)"
 	icon_state = "static_costnode"
 	plasma_cost = 60
 
@@ -832,7 +862,7 @@
 //-----// Design Construct Node //-----//
 
 /obj/effect/alien/resin/design/construct_node
-	name = "Design Construct Node (70)"
+	name = "Construct Design Node (70)"
 	icon_state = "static_constructnode"
 	plasma_cost = 70
 	/// Amount of plasma to donate when interacting with node.

@@ -497,6 +497,13 @@ SUBSYSTEM_DEF(hijack)
 	for(var/turf/open/space/space_turf as anything in ftl_turfs)
 		space_turf.icon_state = "[((space_turf.x + space_turf.y) ^ ~(space_turf.x * space_turf.y) + space_turf.z) % 25]"
 
+/datum/controller/subsystem/hijack/proc/convert_ftl_to_openspace(turf/origin)
+	var/offset_x = origin.x - 1 + 33
+	var/offset_y = origin.y - 1 + 52
+	for(var/turf/open/space/space_turf as anything in ftl_turfs)
+		space_turf.ChangeTurf(/turf/open_space/ground_level, null, null, offset_x, offset_y)
+		CHECK_TICK
+
 /datum/controller/subsystem/hijack/proc/initiate_docking_procedures()
 	marine_announcement(spaceport.docking_message, spaceport.name)
 	hijack_status = HIJACK_OBJECTIVES_DOCKED

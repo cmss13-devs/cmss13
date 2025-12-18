@@ -107,3 +107,55 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	ADD_TRAIT(src, TURF_Z_TRANSPARENT_TRAIT, TRAIT_SOURCE_INHERENT)
 	icon_state = "transparent"
 	return INITIALIZE_HINT_LATELOAD
+
+/// A variant of open_space intended for say the shipmap to fake the below turf as the groundmap
+/turf/open_space/ground_level
+	/// A negative offset in x to adjust what it deemed the below turf
+	var/offset_x = 0
+	/// A negative offset in y to adjust what it deemed the below turf
+	var/offset_y = 0
+	var/static/alist/z_mapping
+
+/turf/open_space/ground_level/Initialize(mapload, list/arguments)
+	if(length(arguments) >= 2)
+		offset_x = arguments[1]
+		offset_y = arguments[2]
+	return ..()
+
+/turf/open_space/ground_level/LateInitialize(mapload)
+	if(!z_mapping)
+		z_mapping = alist()
+
+	return ..()
+
+/turf/open_space/ground_level/update_vis_contents()
+	//if(!istransparentturf(src))
+		//return
+
+	vis_contents.Cut()
+	for(var/obj/vis_contents_holder/holder in src)
+		qdel(holder)
+
+	var/list/ground_zs = SSmapping.levels_by_trait(ZTRAIT_GROUND)
+	//if(z in ground_zs)
+		//CRASH("[src] at [x],[y],[z] is already on the ground level so should be handled using /turf/open_space instead!")
+
+	// Figure out how high up we are already
+	var/height = 1
+	var/current_z = z
+	var/lower_offset = SSmapping.level_trait(current_z, ZTRAIT_DOWN)
+	while(lower_offset)
+		height++
+		current_z += lower_offset
+		lower_offset = SSmapping.level_trait(current_z, ZTRAIT_DOWN)
+
+	// Assumption: ground_zs are ordered from lowest to highest already
+	var/starting_z = ground_zs[min(height, length(ground_zs))]
+	var/turf/below = locate(x - offset_x, y - offset_y, starting_z)
+	var/depth = 0
+	while(below)
+		new /obj/vis_contents_holder(src, below, depth)
+		if(!istransparentturf(below))
+			break
+		below = SSmapping.get_turf_below(below)
+		depth++

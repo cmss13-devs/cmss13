@@ -257,7 +257,28 @@
 
 /obj/item/clothing/suit/chef/classic/medical
 	name = "medical's apron"
+	icon_state = "apron_medical"
 	desc = "A basic and sterile white apron, good for surgical and, of course, other medical practices."
+	armor_bio = CLOTHING_ARMOR_LOW
+
+/obj/item/clothing/suit/chef/classic/medical/doctor
+	name = "doctor's medical apron"
+	desc = "A basic and sterile white apron, good for surgical and, of course, other medical practices. This one has a blue cross on the front."
+	icon_state = "apron_doctor"
+
+/obj/item/clothing/suit/chef/classic/medical/nurse
+	name = "nurse's medical apron"
+	desc = "A basic and sterile white apron, good for surgical and, of course, other medical practices. This one has a sky blue cross on the front."
+	icon_state = "apron_nurse"
+
+/obj/item/clothing/suit/chef/classic/medical/surgeon
+	name = "surgeon's medical apron"
+	desc = "A basic and sterile white apron, good for surgical and, of course, other medical practices. This one has a jade green cross on the front."
+	icon_state = "apron_surgeon"
+
+/obj/item/clothing/suit/chef/classic/medical/pharmacist
+	name = "pharmacist's apron"
+	desc = "A basic and sterile white apron, good for surgical and, of course, other medical practices. This one has an orange cross on the front."
 
 /obj/item/clothing/suit/storage/snow_suit
 	name = "snow suit"

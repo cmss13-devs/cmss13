@@ -18,3 +18,270 @@
   - bugfix: The Chem-Goons and Bodyguards now spawn properly.
   Puckaboo2:
   - bugfix: Fixes a path in one of the previous PR's update scripts.
+2025-12-03:
+  Comxy:
+  - qol: Medical Physical Status can now be changed to better reflect the status of
+      a marine.
+  Cuberound,  datimesmog, PuckaBoo2:
+  - rscadd: New wound type eschar, similar to broken bone but caused by burn damage
+  - rscadd: surgery for fixing eschar (medic possible)  Scalpel, hemo, retractor,
+      scalpel then burnkit and close
+  - balance: limb with eschar behaves the same as splinted limb
+  - balance: eschar gives 10 pain
+  - balance: burn damage can not remove splints
+  - balance: chemicals stop healing untreated burns (with ointment or kit) on 5 damage
+      on each limb
+  cuberound:
+  - bugfix: king jump works cross z levels
+  - bugfix: king jump no longer tramples marines in path
+  larentoun:
+  - bugfix: Fixed Marine Sorting in Orbit. Now it first sorts by rank, then by name.
+  matttheficus:
+  - rscadd: FTLs now get a free RTO Bag.
+  realforest2001:
+  - rscadd: Added the ability for XOs to award ribbons.
+  - rscadd: Rebranded some medals (legacy kept for tracking purposes).
+  - admin: Added admin ability to award USCM Medal of Honor and WY Corporate Service
+      Medal.
+  - imageadd: Added sprites for half-way medals (bronze-silver, silver-gold etc.).
+  - imageadd: Added sprites for Purple Heart, star medals and WY medals from dimdim.
+  - imageadd: Added onmob sprites for all above.
+  zzzmike:
+  - bugfix: HG MP shows in correct category on manifest, and cryopod item storage
+      supports HG
+2025-12-04:
+  Detective-Google:
+  - bugfix: mp hgs no longer spawnable
+  hry-gh:
+  - server: server operators can now configure a list of CIDs that will not be considered
+      for stickybans
+2025-12-05:
+  NessiePendragon:
+  - rscadd: Changes Twitch subscribers' OOC chat color, and removes their ability
+      to change their own OOC color.
+2025-12-06:
+  kalazus:
+  - refactor: static light system optimization.
+2025-12-07:
+  Detective-Google:
+  - admin: button to manually select the acting commander.
+  Drathek:
+  - rscadd: Added EMP pulse messages to synths
+  - code_imp: Cleaned up explosion logging and empulse code
+  - admin: Explosions from things like SHARP and detrimental EMPs are now entered
+      into a mob's attack logs
+  - admin: FF logs for explosions now can jump to the causing mob rather than where
+      the mob was
+  PGrayCS:
+  - qol: Added 'You hear a click as the phone goes dead' notification when someone
+      hangs up the phone on you
+  Puckaboo2:
+  - bugfix: Using the IMS on the head or chest now applies their open incision overlays.
+  Red-byte3D:
+  - bugfix: Legcuffs switch your intent back to run when your legcuff gets automatically
+      removed
+  cuberound:
+  - balance: allows medkit pouch to hold scalpel, hemostat, and retractor
+  larentoun:
+  - bugfix: Mutated Queen is now not recoloring.
+  - bugfix: Recolored Xenomorph morphed to Mutated Xenomorph will now reset their
+      color to none.
+  - bugfix: Delimbing now requires to have total limb damage to be maxed out instead
+      of all limb damage to be brute. It still requires brute attack for a chance
+      to delimb.
+2025-12-09:
+  Git-Nivrak:
+  - bugfix: Fixed an attachment exploit
+2025-12-10:
+  Cuberound; Zenith:
+  - rscadd: U2 flare launcher only for m4ra (scout m4ra can not use it)
+  - balance: U2 flare launcher only fits on m4ra, flares from U2 do not ignite mobs,
+      do not have IFF but can be used with scope
+  DangerRevolution:
+  - balance: The PDT Tracker's (BattleBuddy Kit) uses has been raised from 8 uses
+      to 14.
+  Drathek:
+  - qol: Xenos get a warning in chat (and evolve sfx) when they are inactive and soon
+      to be eligible to be taken over by ghosts
+  - bugfix: Facehuggers/Lessers are no longer listed as inactive xenos to take over
+      because it didn't work anymore anyways
+  - code_imp: Cleaned up some ctrl+click behavior namely with xeno takeover and repossessing
+      corpse is now a tgui_alert
+  Drathek, ori:
+  - rscadd: added a new hive type used in the hunting grounds
+  - balance: you can no longer evolve to drone or drone evolutions in the hunting
+      grounds
+  Harrysno, Spypig23:
+  - rscadd: CO roundstart lore-faxes
+  Nihisohel:
+  - bugfix: Facehuggers no longer has a diet of ray bans and cigarettes, they will
+      no longer eat your glasses or cigarettes on your face slot
+  - balance: Two chefs can now spawn at anytime, regardless of scaling
+  - code_imp: Most Job.dm comments are now autodoc'd for convenience
+  Puckaboo2:
+  - rscadd: Gives the laser scalpel variants, FixOVein, and IMS lore.
+  - rscadd: Gives some surgical tools more descriptions upon attacking.
+  - rscadd: Adds attacking sounds to surgical tools.
+  - rscadd: The PICT System is now true to its name; it can finally cauterize incisions.
+      Not well, mind you, but it tries its best!
+  - balance: bone setter, PICT, and IMS have a force of 15 and an attack speed of
+      6.
+  - balance: bone saw and drill have a force of 25 and an attack speed of 9.
+  - imageadd: Updated surgical tool sprites; makes IMS glow blue instead of orange
+      when active, and the advanced laser scalpel had its animation tweaked.
+  - imageadd: Buffed and polished Yautja surgical tools so now they're shiny and have
+      a uniform color palette.
+  - qol: Updates surgical tools to have accurate and detailed descriptions.
+  - bugfix: Adds a description to bone setter and adds descriptions to tools that
+      did not have any.
+  - bugfix: Bone gel visual fill indicators are now more accurate. Centers some inventory
+      sprites.
+  - spellcheck: Fixes some typos and grammatical errors, removes instances of \the
+  - rscadd: Adds black surgical vests to the game. No, really, they DIDN'T exist.
+      I'm not sure why.
+  - mapadd: Adds chemistry books to the chem lab, receptionist desk, and break room.
+  - mapadd: Adds a black surgical vest to Field Doctor's room.
+  - mapadd: Adds medical, surgery, and chemistry books to Field Doctor's locker.
+  - mapadd: Added an extra large beaker to the chemistry supplies locker, as a treat.
+  - mapadd: Adds surgical beds to medbay storage.
+  - imageadd: Re-sprited the medical, chemistry, and surgery books.
+  cuberound, blundir, datimesmog, fridge, zenith:
+  - rscadd: New t3 xeno Despoiler evolves from spitter
+  - rscadd: New third stage of lingering acid on humans, extends duration to 80 seconds
+      (first teir is 20 second 40) and reduces mob BIO and BRUTE armor by 15
+  - rscadd: Despoiler spit, 5 sec cooldown 35 damage applies acid effect and can upgrade
+      it to level 2, splatters t1 lingering acid on adjacent mobs
+  - rscadd: Decomposing enzymes, activate gas around Despoiler, 18 second total cooldown,
+      lasts for 6 seconds upgrades lingering acid to level 2 and drains chemicals
+  - rscadd: Despoiler empowered slashes, apply lingering effect and can upgrade it
+      up to stage 3
+  - rscadd: Despoiler finishing tailstab with 2 second windup, deals 15 extra burn
+      damage per level of lingering acid on target with 10 extra ap per level
+  - balance: Despoiler slash gives t1 lingering acid
+  - balance: Xeno acid blood hits mob that they are standing on
+2025-12-12:
+  Nomoresolvalou:
+  - rscadd: Added the yautja shield bracer attachment
+  - balance: shields will no longer lower after blocking an attack
+  - balance: yautja clan shield now has directional block. block chance reduced by
+      50% on attacks from the side, and attacks cannot be blocked from behind.
+  - balance: yautja clan shield raised block chance buffed to 40% (was 30%)
+  - balance: yautja clan shield lowered block chance buffed to 20% (was 15%)
+  - imageadd: Added sprite for yautja shield attachment (sprites by Crowford)
+2025-12-13:
+  Drathek Blundir:
+  - rscadd: Added rolling encryption Caesar cipher minigame to maintain comms clarity
+      without a comms tower.
+  - rscadd: Added punch card papers which can be used to copy values for the minigame
+      that can also be written on, bundled, faxed that actually visually display the
+      punched data. Using blank punch cards on one of the computer restocks 5 punch
+      cards. Some can be randomly found with intel loot.
+  - balance: Comms clarity now degrades over time (only matters if comms are down)
+      but can be reset back to near full clarity using the cipher minigame.
+  - qol: Fax windows now open with the same dimensions as papers (larger).
+  - bugfix: USCM and WY paper item icons are now properly set on Initialize.
+  - bugfix: The photocopier now sets the correct amount of papers when copying a bundle.
+  - bugfix: The objectives_controller no longer adds items to object contents twice.
+  - ui: 'Added 3 interfaces: Decoder computer, Cipher computer, and Encoder computer.'
+  - code_imp: Papers and faxes now support adding additional stylesheets and header
+      data (used to accommodate punch cards and give them flavor of a white background
+      when faxed).
+  - refactor: Reworked stars_decode_html to use a regex and is much faster at parsing.
+  - imageadd: Added punch card assets including two background and two logos used
+      (WY and Hyperdyne).
+  - maptweak: Changed 3 of the computers in CIC and placed a few blank punch cards
+      on the table next to them.
+  - config: Various configs changed to accommodate this, namely that challenge words
+      can be configured for the minigame. The first word determines the length of
+      all.
+  Labeo0:
+  - qol: Allow .458 ammo transfer from small to big ammo box.
+  - balance: Allow storing .458 ammo box on back slot.
+  - code_imp: moved .458 ammo box code to different file
+  PGrayCS:
+  - bugfix: "Fixed UPP spawn names displaying with question marks due to special characters\
+      \ (e.g., '\u017Divka' appearing as '?Ivka')"
+  Puckaboo2:
+  - spellcheck: Adds periods to ends of descriptions.
+  - spellcheck: Capitalizes sentences at the beginning of descriptions.
+  - balance: Reagent grinders can now hold 16 items, up from 10.
+  larentoun:
+  - bugfix: Mutated King is now visible.
+  - bugfix: Mutated Lesser Drone, Drone, Facehugger, Burrower, Sentinel, Spitter,
+      Lurker and Queen had their icons re-centered.
+  - bugfix: Mutated Facehugger items now use Mutated icons.
+2025-12-14:
+  Blundir:
+  - bugfix: fixed some cases of double manufacturer logo being applied
+  Nihisohel:
+  - bugfix: Flamers can now fire past some corners again
+  Puckaboo2:
+  - rscadd: Adds 'soundtweak', and 'icontweak' in the changelog.
+  - code_imp: Alphabetizes changelog flags.
+  Venuska1117:
+  - balance: Abduction ability can now be casted at same tile with cade, flipped table
+      and glass window panes, as long as it doesn't face praetorian ability casting
+      direction.
+  - balance: Abduction ability can now be casted through smoke, such as boiler smoke,
+      explosion smoke, and other related smoke effects.
+  - balance: 'Abduction ability can now be casted through small obstacles such as:
+      window frames, small long crates, normal long crates, platform edges, disposal
+      units (bins), hydro trays (plant trays), janitor cart, trash cans (hybrisia)
+      line nexter (hybrisia).'
+  - bugfix: Abduction ability can no longer be casted through multitile vehicles.
+  - bugfix: 'Abduction ability can no longer be casted through glass windows panes.
+
+      /:cl'
+  carlarctg:
+  - rscadd: Adds a verb for restoring your ghost to your base character, Restore Ghost
+      Character, next to Re-Enter Corpse in the status panel.
+  - code_imp: Split the ghostize appearance proc
+  realforest2001:
+  - balance: Yautja masks now fall off at different rates if human or in crit.
+  - bugfix: The 15% chance max for Yautja mask fall off is now functional.
+2025-12-15:
+  Detective-Google:
+  - bugfix: hostile hives can no longer replant each others' weed nodes.
+  Puckaboo2:
+  - spellcheck: Adds periods to most to_chats and SPANs.
+  - rscadd: Animals have more varied emotes and sounds, changed some descriptions.
+  - rscadd: Adds better descriptions of eating if you're starving.
+  - bugfix: Removed outdated Bay code Poly lines and made them more CM-appropriate.
+  - rscadd: Adds some reagent transfer options.
+  - rscdel: All 100u, 150u, and 200u reagent transfer options were nuked, while some
+      25u, 50u, and 80u options were nuked.
+  - balance: Limits set reagent transfer options to no more than 10 options per list.
+      Many options were added; some were nuked.
+  - balance: Adds 15 and 60 unit Dispense and Beaker options for the Chemical Dispenser
+      and its derivatives.
+  - balance: Adds 15 and 20 unit options for the ChemMaster 3000 and its derivatives.
+  - bugfix: Bluespace beakers can dump their entire contents of 500 instead of 300
+      max.
+  - ui: Increased the size of the Chemmaster 3000 window to 600x600 from 550x600 to
+      fit the new buttons without distorting text too much.
+2025-12-16:
+  Drathek:
+  - bugfix: Fix Restore Ghost Character verb causing ghosts to be visible to living
+      players
+  SpypigDev:
+  - bugfix: CO lore faxes no longer use invisible ink
+2025-12-17:
+  MistChristmas:
+  - bugfix: Bipods don't erroneously buff the gun after first undeploy. Bipods don't
+      apply forever slow.
+  - bugfix: Using akimbo simultaneous fire and then switching to alternate fire doesn't
+      break shooting.
+  - qol: Akimbo defaults to simultaneous fire if you use automatic weapons for autofire.
+  - qol: Tracker no longer needs empty active hand to be accessed with a normal left
+      click, but needs intent other than harm if something is in hands
+  - qol: Give Obj Confirmation box now has Yes listed as the highlighted Option on
+      the right. A few other similar confirmation boxes got this treatment. Including
+      some Admin Verbs.
+  - bugfix: Acid Harness no longer accepts larger beakers than normal, + needs a multi
+      tool to change configurations, + doesn't protect against reagents that actually
+      have no OD limit
+  - balance: Acid Harness no longer scans so frequently, instead scans every 15 Seconds
+      further modified for successful injection(+15% per U) or OD Warning(+20% per
+      U)
+  cuberound:
+  - bugfix: tacmap multiz stair icons (unused) get displayed correctly

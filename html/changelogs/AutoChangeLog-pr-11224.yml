@@ -1,4 +1,0 @@
-author: "zzzmike"
-delete-after: True
-changes:
-  - bugfix: "HG MP shows in correct category on manifest, and cryopod item storage supports HG"

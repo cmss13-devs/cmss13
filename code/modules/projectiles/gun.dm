@@ -2117,6 +2117,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		display_ammo()
 		return COMSIG_MOB_CLICK_HANDLED
 	SEND_SIGNAL(src, COMSIG_GUN_FIRE)
+	return COMSIG_MOB_CLICK_HANDLED
 
 /// Wrapper proc for the autofire subsystem to ensure the important args aren't null
 /obj/item/weapon/gun/proc/fire_wrapper(atom/target, mob/living/user, params, reflex = FALSE, dual_wield)

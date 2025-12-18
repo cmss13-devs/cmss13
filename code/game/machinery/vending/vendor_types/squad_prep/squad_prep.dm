@@ -274,8 +274,6 @@
 	hackable = TRUE
 	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_TO_HAND | VEND_STOCK_DYNAMIC
 
-	vend_x_offset = 2
-
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad/ui_state(mob/user)
 	return GLOB.not_incapacitated_and_adjacent_strict_state
 

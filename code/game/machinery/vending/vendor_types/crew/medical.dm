@@ -593,7 +593,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_researcher, list(
 		/obj/item/clothing/shoes/marine,
 		/obj/item/storage/box/mre,
 		/obj/item/device/radio/marine,
-//		/obj/item/clothing/head/helmet/marine/medic,  this caused '/obj/item/device/helmet_visor/medical/advanced was unable to be GC'd'. Don't remove it. Somebody figure out why it happened - Puckaboo2
 		/obj/item/clothing/accessory/patch/medic_patch,
 	)
 

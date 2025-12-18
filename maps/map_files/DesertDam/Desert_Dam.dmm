@@ -1,10 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aaa" = (
 /obj/effect/decal/sand_overlay/sand1/corner1,
-/turf/closed/shuttle{
-	dir = 1;
-	icon_state = "pwall"
-	},
+/turf/closed/cordon,
 /area/desert_dam/exterior/rock)
 "aab" = (
 /obj/effect/blocker/toxic_water,
@@ -589,10 +586,7 @@
 /turf/closed/wall/r_wall/prison,
 /area/desert_dam/building/security/lobby)
 "acu" = (
-/turf/closed/shuttle{
-	dir = 1;
-	icon_state = "pwall"
-	},
+/turf/closed/cordon,
 /area/desert_dam/exterior/rock)
 "acv" = (
 /turf/open/floor/plating/warnplate/west,
@@ -6041,10 +6035,7 @@
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 8
 	},
-/turf/closed/shuttle{
-	dir = 1;
-	icon_state = "pwall"
-	},
+/turf/closed/cordon,
 /area/desert_dam/exterior/rock)
 "aAD" = (
 /obj/effect/decal/sand_overlay/sand2/corner2{
@@ -40658,10 +40649,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/water_treatment_one/hallway)
 "eei" = (
-/turf/closed/shuttle{
-	dir = 1;
-	icon_state = "pwall"
-	},
+/turf/closed/cordon,
 /area/desert_dam/exterior/river_mouth/southern)
 "eeo" = (
 /obj/structure/window/framed/hangar,

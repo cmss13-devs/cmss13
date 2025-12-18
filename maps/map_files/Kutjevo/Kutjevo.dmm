@@ -190,10 +190,7 @@
 /obj/effect/landmark/nightmare{
 	insert_tag = "lz1_alternative"
 	},
-/turf/closed/shuttle{
-	dir = 1;
-	icon_state = "pwall"
-	},
+/turf/closed/cordon,
 /area/kutjevo/interior/oob)
 "aaV" = (
 /obj/structure/tunnel,
@@ -16632,10 +16629,7 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/Northwest_Colony)
 "ybY" = (
-/turf/closed/shuttle{
-	dir = 1;
-	icon_state = "pwall"
-	},
+/turf/closed/cordon,
 /area/kutjevo/interior/oob)
 "ycq" = (
 /obj/item/prop/alien/hugger,

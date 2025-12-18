@@ -1803,10 +1803,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/desert_dam/exterior/valley/valley_civilian)
 "DN" = (
-/turf/closed/shuttle{
-	dir = 1;
-	icon_state = "pwall"
-	},
+/turf/closed/cordon,
 /area/desert_dam/exterior/rock)
 "DO" = (
 /obj/effect/decal/warning_stripes{

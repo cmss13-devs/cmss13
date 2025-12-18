@@ -8,10 +8,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/north_east_caves)
 "aac" = (
-/turf/closed/shuttle{
-	dir = 1;
-	icon_state = "pwall"
-	},
+/turf/closed/cordon,
 /area/space)
 "aad" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{

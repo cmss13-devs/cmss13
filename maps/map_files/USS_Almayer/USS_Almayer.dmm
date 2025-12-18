@@ -5067,6 +5067,12 @@
 	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/living/tankerbunks)
+"alZ" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/support{
+	req_access = list(10)
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/squads/support)
 "ama" = (
 /obj/structure/stairs/perspective{
 	dir = 4
@@ -7775,6 +7781,12 @@
 /obj/item/flag/plantable/ua,
 /turf/open/floor/almayer/redfull,
 /area/almayer/command/cic)
+"asR" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/support{
+	req_access = list(11)
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/squads/support)
 "asS" = (
 /obj/structure/machinery/cryopod/right{
 	pixel_y = 6
@@ -8387,6 +8399,12 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/p_bow)
+"auT" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/support{
+	req_access = list(32)
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/squads/support)
 "auU" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/plating_striped/west,
@@ -36778,7 +36796,9 @@
 /turf/open/floor/almayer/cargo,
 /area/almayer/squads/req)
 "bLY" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/support,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/support{
+	req_access = list(12)
+	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/squads/support)
 "bLZ" = (
@@ -36808,6 +36828,12 @@
 /obj/item/tool/hand_labeler,
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
+	},
+/obj/item/tool/hand_labeler{
+	pixel_x = -10
+	},
+/obj/item/tool/hand_labeler{
+	pixel_x = 10
 	},
 /turf/open/floor/almayer/green/southwest,
 /area/almayer/squads/support)
@@ -145518,7 +145544,7 @@ aQL
 abb
 bMN
 cli
-bLY
+alZ
 bLV
 bLE
 bLg
@@ -146033,7 +146059,7 @@ aQL
 dpO
 bMN
 loS
-bLY
+asR
 bLV
 bLE
 bLg
@@ -146548,7 +146574,7 @@ aQL
 dpO
 bMN
 loS
-bLY
+auT
 bLV
 bLE
 bLg

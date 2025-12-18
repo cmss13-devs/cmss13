@@ -627,7 +627,9 @@
 		"Delta SL" = TRACKER_DSL,
 		"Echo SL" = TRACKER_ESL,
 		"Foxtrot SL" = TRACKER_FSL,
-		"Intel SL" = TRACKER_ISL
+		"Intel SL" = TRACKER_ISL,
+		"Kilo SL" = TRACKER_KSL,
+		"Oscar SL" = TRACKER_OSL,
 	)
 
 /obj/item/device/radio/headset/almayer/mcom/alt
@@ -698,7 +700,9 @@
 		"Delta SL" = TRACKER_DSL,
 		"Echo SL" = TRACKER_ESL,
 		"Foxtrot SL" = TRACKER_FSL,
-		"Intel SL" = TRACKER_ISL
+		"Intel SL" = TRACKER_ISL,
+		"Kilo SL" = TRACKER_KSL,
+		"Oscar SL" = TRACKER_OSL,
 	)
 
 /obj/item/device/radio/headset/almayer/mcom/cdrcom/co
@@ -713,7 +717,9 @@
 		"Delta SL" = TRACKER_DSL,
 		"Echo SL" = TRACKER_ESL,
 		"Foxtrot SL" = TRACKER_FSL,
-		"Intel SL" = TRACKER_ISL
+		"Intel SL" = TRACKER_ISL,
+		"Kilo SL" = TRACKER_KSL,
+		"Oscar SL" = TRACKER_OSL,
 	)
 
 /obj/item/device/radio/headset/almayer/mcom/sea
@@ -777,7 +783,9 @@
 		"Delta SL" = TRACKER_DSL,
 		"Echo SL" = TRACKER_ESL,
 		"Foxtrot SL" = TRACKER_FSL,
-		"Intel SL" = TRACKER_ISL
+		"Intel SL" = TRACKER_ISL,
+		"Kilo SL" = TRACKER_KSL,
+		"Oscar SL" = TRACKER_OSL,
 	)
 
 /obj/item/device/radio/headset/almayer/marine/alpha/tl
@@ -821,7 +829,9 @@
 		"Delta SL" = TRACKER_DSL,
 		"Echo SL" = TRACKER_ESL,
 		"Foxtrot SL" = TRACKER_FSL,
-		"Intel SL" = TRACKER_ISL
+		"Intel SL" = TRACKER_ISL,
+		"Kilo SL" = TRACKER_KSL,
+		"Oscar SL" = TRACKER_OSL,
 	)
 
 /obj/item/device/radio/headset/almayer/marine/bravo/tl
@@ -865,7 +875,9 @@
 		"Delta SL" = TRACKER_DSL,
 		"Echo SL" = TRACKER_ESL,
 		"Foxtrot SL" = TRACKER_FSL,
-		"Intel SL" = TRACKER_ISL
+		"Intel SL" = TRACKER_ISL,
+		"Kilo SL" = TRACKER_KSL,
+		"Oscar SL" = TRACKER_OSL,
 	)
 
 /obj/item/device/radio/headset/almayer/marine/charlie/tl
@@ -909,7 +921,9 @@
 		"Charlie SL" = TRACKER_CSL,
 		"Echo SL" = TRACKER_ESL,
 		"Foxtrot SL" = TRACKER_FSL,
-		"Intel SL" = TRACKER_ISL
+		"Intel SL" = TRACKER_ISL,
+		"Kilo SL" = TRACKER_KSL,
+		"Oscar SL" = TRACKER_OSL,
 	)
 
 /obj/item/device/radio/headset/almayer/marine/delta/tl
@@ -953,7 +967,9 @@
 		"Charlie SL" = TRACKER_CSL,
 		"Delta SL" = TRACKER_DSL,
 		"Foxtrot SL" = TRACKER_FSL,
-		"Intel SL" = TRACKER_ISL
+		"Intel SL" = TRACKER_ISL,
+		"Kilo SL" = TRACKER_KSL,
+		"Oscar SL" = TRACKER_OSL,
 	)
 
 /obj/item/device/radio/headset/almayer/marine/echo/tl
@@ -998,7 +1014,9 @@
 		"Charlie SL" = TRACKER_CSL,
 		"Delta SL" = TRACKER_DSL,
 		"Echo SL" = TRACKER_ESL,
-		"Intel SL" = TRACKER_ISL
+		"Intel SL" = TRACKER_ISL,
+		"Kilo SL" = TRACKER_KSL,
+		"Oscar SL" = TRACKER_OSL,
 	)
 
 /obj/item/device/radio/headset/almayer/marine/cryo/tl

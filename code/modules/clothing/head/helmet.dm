@@ -1549,6 +1549,10 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_marine_helmet = HELMET_GARB_OVERLAY|HELMET_DAMAGE_OVERLAY
 	camera_factions = list(FACTION_DUTCH)
 
+/obj/item/clothing/head/helmet/marine/veteran/dutch/vietnam
+	name = "\improper M1 pattern army helmet"
+	desc = "A protective helmet worn by US Army Riflemen during the peak of the Vietnam War."
+
 /obj/item/clothing/head/helmet/marine/veteran/dutch/cap
 	name = "\improper Dutch's Dozen cap"
 	desc = "A protective cap worn by some seriously experienced mercs."

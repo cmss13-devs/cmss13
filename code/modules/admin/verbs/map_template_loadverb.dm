@@ -25,7 +25,11 @@
 	if(isnull(allow_cropping))
 		return
 	var/expand_border = allow_cropping == "Expand border"
-	var/expand_border_type = expand_border ? /turf/closed/wall/strata_ice/jungle : null // TODO: Detect this
+	var/expand_border_type = null
+	if(expand_border)
+		expand_border_type = tgui_input_list(src, "Pick the inner border type:", "Inner border type", typesof(/turf/closed/wall), default=/turf/closed/wall/strata_ice/jungle)
+		if(!expand_border_type)
+			return
 	var/crop_border_type = (allow_cropping == "Crop to border" || expand_border) ? /turf/closed/cordon : null
 	allow_cropping = allow_cropping != "Fail if larger"
 

@@ -1,0 +1,98 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/obj/structure/surface/rack,
+/obj/item/stack/folding_barricade,
+/obj/item/facepaint/skull,
+/turf/open/floor/prison/floor_marked,
+/area/template_noop)
+"i" = (
+/obj/structure/surface/rack,
+/obj/item/tool/shovel/etool{
+	pixel_x = 6
+	},
+/obj/item/tool/shovel/etool{
+	pixel_x = -6
+	},
+/obj/item/tool/shovel/etool,
+/turf/open/floor/prison/floor_marked,
+/area/template_noop)
+"j" = (
+/obj/structure/surface/rack,
+/obj/item/stack/folding_barricade,
+/obj/item/stack/folding_barricade,
+/obj/item/explosive/grenade/high_explosive/frag,
+/obj/item/explosive/grenade/high_explosive/frag{
+	pixel_x = 6
+	},
+/turf/open/floor/prison/floor_marked,
+/area/template_noop)
+"w" = (
+/obj/structure/surface/rack,
+/obj/effect/landmark/wo_supplies/storage/webbing,
+/obj/effect/landmark/wo_supplies/storage/webbing,
+/obj/effect/landmark/wo_supplies/storage/webbing,
+/obj/item/poster,
+/obj/item/clothing/glasses/sunglasses,
+/turf/open/floor/prison/floor_marked,
+/area/template_noop)
+"E" = (
+/obj/structure/surface/rack,
+/obj/item/stack/sheet/metal{
+	amount = 50
+	},
+/obj/item/stack/sheet/metal{
+	amount = 30;
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/prison/floor_marked,
+/area/template_noop)
+"K" = (
+/turf/open/floor/prison/floor_marked,
+/area/template_noop)
+"M" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/shoes/veteran/pmc,
+/obj/item/clothing/shoes/veteran/pmc{
+	pixel_x = -3;
+	pixel_y = 4
+	},
+/obj/item/clothing/shoes/veteran/pmc{
+	pixel_x = 4;
+	pixel_y = 3
+	},
+/obj/item/poster,
+/obj/item/clothing/glasses/sunglasses,
+/turf/open/floor/prison/floor_marked,
+/area/template_noop)
+"O" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/accessory/storage/black_vest/brown_vest,
+/obj/item/clothing/accessory/storage/black_vest/brown_vest,
+/turf/open/floor/prison/floor_marked,
+/area/template_noop)
+"S" = (
+/turf/template_noop,
+/area/template_noop)
+
+(1,1,1) = {"
+w
+K
+j
+"}
+(2,1,1) = {"
+O
+K
+M
+"}
+(3,1,1) = {"
+E
+K
+i
+"}
+(4,1,1) = {"
+S
+K
+a
+"}

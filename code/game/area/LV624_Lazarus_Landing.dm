@@ -83,6 +83,15 @@
 	icon_state = "east"
 	//ambience = list('sound/ambience/jungle_amb1.ogg')
 
+//The Barrens
+
+/area/lazarus/ground/cove
+	name = "\improper Fisherman's Cove"
+	icon_state = "green"
+	//ambience = list('sound/ambience/ambimine.ogg','sound/ambience/ambigen10.ogg','sound/ambience/ambigen4.ogg','sound/ambience/ambisin4.ogg')
+
+/area/lazarus/ground/cove/south
+	name = "\improper Fisherman's Cove - South"
 
 //The Barrens
 /area/lazarus/ground/barrens
@@ -139,6 +148,16 @@
 	icon_state = "southeast"
 // ambience = list('sound/ambience/ambimine.ogg','sound/ambience/ambigen10.ogg','sound/ambience/ambigen4.ogg','sound/ambience/ambisin4.ogg')
 
+/area/lazarus/ground/barrens/north_barrens
+	name = "\improper Northern Barrens"
+	icon_state = "north"
+// ambience = list('sound/ambience/ambimine.ogg','sound/ambience/ambigen10.ogg','sound/ambience/ambigen4.ogg','sound/ambience/ambisin4.ogg')
+
+/area/lazarus/ground/barrens/north_eastern_jungle_barrens
+	name = "\improper North East Barrens Jungle"
+	icon_state = "northeast"
+// ambience = list('sound/ambience/ambimine.ogg','sound/ambience/ambigen10.ogg','sound/ambience/ambigen4.ogg','sound/ambience/ambisin4.ogg')
+
 /area/lazarus/ground/river
 	name = "\improper River"
 	icon_state = "blueold"
@@ -154,18 +173,26 @@
 // ambience = list('sound/ambience/jungle_amb1.ogg')
 
 /area/lazarus/ground/river/central_river/lake
-	name = "\improper Lake"
-	icon_state = "purple"
+	name = "\improper Fisherman's Cove - Lake"
+	icon_state = "bluenew"
 
 /area/lazarus/ground/river/central_river/north
 	name = "\improper Central River - North"
 	icon_state = "purple"
+
+/area/lazarus/ground/river/central_river/north/cove
+	name = "\improper Fisherman's Cove - Central River"
+	icon_state = "bluenew"
 
 /area/lazarus/ground/river/east_river
 	name = "\improper Eastern River"
 	icon_state = "bluenew"
 // ambience = list('sound/ambience/jungle_amb1.ogg')
 
+/area/lazarus/ground/river/north_east_temple_river
+	name = "\improper North Eastern River"
+	icon_state = "purple"
+// ambience = list('sound/ambience/jungle_amb1.ogg')
 
 //Colony Areas
 /area/lazarus/ground/colony
@@ -421,6 +448,11 @@
 	icon_state = "tcomsatcham"
 	minimap_color = MINIMAP_AREA_ENGI
 
+/area/lazarus/lazarus/comms/lz2_north
+	name = "\improper North-West LZ2 Communications Relay"
+	icon_state = "tcomsatcham"
+	minimap_color = MINIMAP_AREA_ENGI
+
 /area/lazarus/lazarus/secure_storage
 	name = "\improper Weyland-Yutani - Corporate Personnel Complex"
 	icon_state = "storage"
@@ -450,6 +482,14 @@
 	name = "\improper Hydroponics Dome"
 	icon_state = "hydro"
 	ceiling = CEILING_GLASS
+
+/area/lazarus/lazarus/lodge
+	name = "\improper Fisherman's Cove - Lodge"
+	icon_state = "hydro"
+
+/area/lazarus/lazarus/shack
+	name = "\improper Fisherman's Cove - Shack"
+	icon_state = "hydro"
 
 /area/lazarus/landing/console
 	name = "\improper LZ1 'Nexus'"

@@ -68,12 +68,6 @@
 /obj/item/stack/sheet/metal,
 /turf/open/floor/prison/floor_plate,
 /area/lazarus/lazarus/main_hall)
-"p" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
-/turf/closed/wall/lv_outpost/reinforced,
-/area/lazarus/lazarus/armory)
 "s" = (
 /obj/effect/decal/large_stain{
 	dir = 1
@@ -297,7 +291,7 @@ K
 d
 z
 M
-p
+a
 "}
 (6,1,1) = {"
 R

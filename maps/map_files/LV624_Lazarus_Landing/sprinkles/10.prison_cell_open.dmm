@@ -6,7 +6,7 @@
 	},
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/brown_dirt/random_rocks,
-/area/lazarus/ground/jungle/east_central_jungle)
+/area/template_noop)
 "c" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
@@ -14,15 +14,12 @@
 	amount = 15
 	},
 /turf/open/floor/prison/platingdmg3,
-/area/lazarus/lazarus/captain)
-"d" = (
-/turf/closed/wall/lv_outpost/reinforced,
-/area/lazarus/lazarus/security)
+/area/template_noop)
 "e" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/girder,
 /turf/open/floor/prison/platingdmg1,
-/area/lazarus/lazarus/captain)
+/area/template_noop)
 "g" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
@@ -36,12 +33,12 @@
 	pixel_y = 9
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lazarus/lazarus/security)
+/area/template_noop)
 "h" = (
 /obj/structure/bed/hybrisa/prisonbed,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lazarus/lazarus/security)
+/area/template_noop)
 "l" = (
 /turf/template_noop,
 /area/template_noop)
@@ -49,11 +46,11 @@
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/auto_turf/lv_sand/layer0,
-/area/lazarus/ground/jungle/east_central_jungle)
+/area/template_noop)
 "w" = (
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/brown_dirt/random_rocks,
-/area/lazarus/ground/jungle/east_central_jungle)
+/area/template_noop)
 "x" = (
 /obj/effect/decal/large_stain{
 	dir = 1
@@ -61,30 +58,21 @@
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/auto_turf/lv_sand/layer0,
-/area/lazarus/ground/jungle/east_central_jungle)
+/area/template_noop)
 "z" = (
 /obj/structure/machinery/light/small,
 /obj/effect/landmark/monkey_spawn,
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/panelscorched,
-/area/lazarus/lazarus/security)
-"A" = (
-/turf/closed/wall/lv_outpost/reinforced,
-/area/lazarus/lazarus/armory)
-"E" = (
-/turf/closed/wall/lv_outpost/reinforced,
-/area/lazarus/lazarus/captain)
+/area/template_noop)
 "J" = (
 /obj/item/stack/sheet/metal,
 /turf/open/auto_turf/lv_sand/layer0,
-/area/lazarus/ground/jungle/east_central_jungle)
+/area/template_noop)
 "O" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
 /turf/closed/wall/lv_outpost/reinforced,
-/area/lazarus/lazarus/armory)
+/area/template_noop)
 "Q" = (
 /obj/effect/decal/large_stain{
 	dir = 1
@@ -94,14 +82,14 @@
 /obj/effect/decal/hybrisa/dirt,
 /obj/item/stack/sheet/metal,
 /turf/open/floor/prison/panelscorched,
-/area/lazarus/lazarus/security)
+/area/template_noop)
 "T" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/brown_dirt/random_rocks_alt{
 	dir = 6
 	},
-/area/lazarus/ground/jungle/east_central_jungle)
+/area/template_noop)
 "U" = (
 /obj/structure/machinery/door/airlock/light_grey_lv/utility{
 	dir = 8;
@@ -109,21 +97,21 @@
 	},
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/plating/prison,
-/area/lazarus/lazarus/security)
+/area/template_noop)
 "V" = (
 /obj/item/stack/rods{
 	amount = 15
 	},
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/platingdmg1,
-/area/lazarus/lazarus/security)
+/area/template_noop)
 "Z" = (
 /obj/item/trash/USCMtray{
 	name = "\improper Meal Tray";
 	pixel_y = 8
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lazarus/lazarus/security)
+/area/template_noop)
 
 (1,1,1) = {"
 l
@@ -144,20 +132,20 @@ Q
 c
 "}
 (4,1,1) = {"
-A
+O
 g
 z
 e
 "}
 (5,1,1) = {"
-A
+O
 Z
 h
-E
+O
 "}
 (6,1,1) = {"
 O
 U
-d
-E
+O
+O
 "}

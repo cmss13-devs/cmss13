@@ -1,0 +1,112 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/stack/sheet/wood,
+/obj/item/stack/sheet/cardboard,
+/turf/open/floor/prison/floor_plate,
+/area/template_noop)
+"b" = (
+/turf/open/auto_turf/lv_grass/layer1,
+/area/template_noop)
+"e" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/largecrate,
+/turf/open/floor/prison/floor_plate_alt/west,
+/area/template_noop)
+"h" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/stack/sheet/wood,
+/turf/open/floor/prison/cell_stripe,
+/area/template_noop)
+"x" = (
+/turf/closed/wall/lv_outpost/reinforced,
+/area/template_noop)
+"z" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/closet/crate,
+/obj/item/defenses/handheld/sentry/flamer,
+/turf/open/floor/prison/darkbrown2/northeast,
+/area/template_noop)
+"B" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/largecrate/supply/weapons/hpr,
+/turf/open/floor/prison/darkbrown2/north,
+/area/template_noop)
+"G" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/floor_plate,
+/area/template_noop)
+"H" = (
+/turf/open/floor/prison/floor_plate_alt/west,
+/area/template_noop)
+"K" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/largecrate/supply/explosives/mines{
+	unacidable = 1;
+	unslashable = 1
+	},
+/turf/open/floor/prison/darkbrown2/north,
+/area/template_noop)
+"M" = (
+/obj/structure/machinery/light/small/blue{
+	light_color = "#dae2ff";
+	dir = 1
+	},
+/obj/structure/largecrate,
+/turf/open/floor/prison/darkbrown2/north,
+/area/template_noop)
+"P" = (
+/turf/open/floor/prison/cell_stripe,
+/area/template_noop)
+"R" = (
+/obj/structure/pipes/vents/scrubber_hybrisa,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/darkbrown2/east,
+/area/template_noop)
+"X" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/largecrate,
+/turf/open/floor/prison/darkbrown2/east,
+/area/template_noop)
+"Y" = (
+/obj/structure/window/framed/lv_colony/reinforced,
+/turf/open/floor/plating/prison,
+/area/template_noop)
+
+(1,1,1) = {"
+x
+x
+M
+e
+h
+"}
+(2,1,1) = {"
+b
+Y
+K
+H
+P
+"}
+(3,1,1) = {"
+b
+Y
+B
+a
+G
+"}
+(4,1,1) = {"
+b
+Y
+z
+R
+X
+"}
+(5,1,1) = {"
+b
+x
+Y
+Y
+Y
+"}

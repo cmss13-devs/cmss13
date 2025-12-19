@@ -468,12 +468,14 @@
 
 	else
 		user.affected_message(target,
-			SPAN_WARNING("You shatter [target]'s [surgery.affected_limb.encased]! It's broken, now! Fix it!"),
-			SPAN_WARNING("[user] shatters your [surgery.affected_limb.encased]! It's broken, now!"),
-			SPAN_WARNING("[user] shatters [target]'s [surgery.affected_limb.encased]! It sounds like the bone broke!"))
+			SPAN_WARNING("You shatter [target]'s [surgery.affected_limb.encased]!"),
+			SPAN_WARNING("[user] shatters your [surgery.affected_limb.encased]!"),
+			SPAN_WARNING("[user] shatters [target]'s [surgery.affected_limb.encased]!"))
 
-		if(target.stat == CONSCIOUS)
-			target.emote("pain")
+		if(target.stat == CONSCIOUS && target.pain.reduction_pain >= PAIN_REDUCTION_HEAVY) //if patient is under the proper anesthesia
+			target.emote("pain") //aw shit, doctor, watch it!
+		else
+			target.emote("scream")//FUUUUUUCK!
 		surgery.affected_limb.fracture(100)
 
 	user.animation_attack_on(target)
@@ -511,13 +513,16 @@
 /datum/surgery_step/open_encased_step/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	var/brain = surgery.affected_limb.body_part == BODY_FLAG_HEAD ? TRUE : FALSE
 	if(prob(10)) //RNG break chance.
-		surgery.affected_limb.fracture(100)
 		user.affected_message(target,
 			SPAN_NOTICE("[target]'s [surgery.affected_limb.encased] cracked after you exposed \his [brain ? "brain" : "vital organs"] with [tool]! It wasn't anybody's fault. It happens, rarely."),
 			SPAN_NOTICE("Your [surgery.affected_limb.encased] cracked after [user] exposed your [brain ? "brain" : "vital organs"] with [tool]! It wasn't anybody's fault. It happens, rarely."),
 			SPAN_NOTICE("[target]'s [surgery.affected_limb.encased] cracked after [user]exposed \his [brain ? "brain" : "vital organs"] with [tool]! It wasn't anybody's fault. It happens, rarely."))
-		if(target.stat == CONSCIOUS)
-			target.emote("pain")
+
+		surgery.affected_limb.fracture(100)
+		if(target.stat == CONSCIOUS && target.pain.reduction_pain >= PAIN_REDUCTION_HEAVY) //if patient is under the proper anesthesia
+			target.emote("pain") //aw shit, doctor, watch it!
+		else
+			target.emote("scream")//FUUUUUUCK!
 	else
 		user.affected_message(target,
 			SPAN_NOTICE("You use [tool] to hold [target]'s [surgery.affected_limb.encased] open, exposing \his [brain ? "brain" : "vital organs"]."),
@@ -543,14 +548,17 @@
 			SPAN_WARNING("[user]'s hand slips, damaging [target]'s [surgery.affected_limb.encased] even more!"))
 	else
 		user.affected_message(target,
-			SPAN_WARNING("Your hand slips, cracking [target]'s [surgery.affected_limb.encased]! It's broken, now! Fix it!"),
-			SPAN_WARNING("[user]'s hand slips, cracking your [surgery.affected_limb.encased]! It's broken, now!"),
-			SPAN_WARNING("[user]'s hand slips, cracking [target]'s [surgery.affected_limb.encased]! It sounds like the bone broke!"))
+			SPAN_WARNING("Your hand slips, cracking [target]'s [surgery.affected_limb.encased]!"),
+			SPAN_WARNING("[user]'s hand slips, cracking your [surgery.affected_limb.encased]!"),
+			SPAN_WARNING("[user]'s hand slips, cracking [target]'s [surgery.affected_limb.encased]!"))
 
 
+		if(target.stat == CONSCIOUS && target.pain.reduction_pain >= PAIN_REDUCTION_HEAVY) //if patient is under the proper anesthesia
+			target.emote("pain") //aw shit, doctor, watch it!
+		else
+			target.emote("scream")//FUUUUUUCK!
 		surgery.affected_limb.fracture(100)
-		if(target.stat == CONSCIOUS)
-			target.emote("pain")
+
 	target.apply_damage(15, BRUTE, target_zone)
 	log_interact(user, target, "[key_name(user)] failed to open [key_name(target)]'s [surgery.affected_limb.encased].")
 
@@ -613,14 +621,17 @@
 			SPAN_WARNING("[user]'s hand slips, damaging [target]'s [surgery.affected_limb.encased] even more!"))
 	else
 		user.affected_message(target,
-			SPAN_WARNING("Your hand slips, cracking [target]'s [surgery.affected_limb.encased]! It's broken, now! Fix it!"),
-			SPAN_WARNING("[user]'s hand slips, cracking your [surgery.affected_limb.encased]! It's broken, now!"),
-			SPAN_WARNING("[user]'s hand slips, cracking [target]'s [surgery.affected_limb.encased]! It sounds like the bone broke!"))
+			SPAN_WARNING("Your hand slips, cracking [target]'s [surgery.affected_limb.encased]!"),
+			SPAN_WARNING("[user]'s hand slips, cracking your [surgery.affected_limb.encased]!"),
+			SPAN_WARNING("[user]'s hand slips, cracking [target]'s [surgery.affected_limb.encased]!"))
 
 
+		if(target.stat == CONSCIOUS && target.pain.reduction_pain >= PAIN_REDUCTION_HEAVY) //if patient is under the proper anesthesia
+			target.emote("pain") //aw shit, doctor, watch it!
+		else
+			target.emote("scream")//FUUUUUUCK!
 		surgery.affected_limb.fracture(100)
-		if(target.stat == CONSCIOUS)
-			target.emote("pain")
+
 	target.apply_damage(15, BRUTE, target_zone)
 	log_interact(user, target, "[key_name(user)] failed to close [key_name(target)]'s [surgery.affected_limb.encased], aborting [surgery].")
 
@@ -697,14 +708,17 @@
 			SPAN_WARNING("[user]'s hand slips, damaging [target]'s [surgery.affected_limb.encased] even more!"))
 	else
 		user.affected_message(target,
-			SPAN_WARNING("Your hand slips, cracking [target]'s [surgery.affected_limb.encased]! It's broken, now! Fix it!"),
-			SPAN_WARNING("[user]'s hand slips, cracking your [surgery.affected_limb.encased]! It's broken, now!"),
-			SPAN_WARNING("[user]'s hand slips, cracking [target]'s [surgery.affected_limb.encased]! It sounds like the bone broke!"))
+			SPAN_WARNING("Your hand slips, cracking [target]'s [surgery.affected_limb.encased]!"),
+			SPAN_WARNING("[user]'s hand slips, cracking your [surgery.affected_limb.encased]!"),
+			SPAN_WARNING("[user]'s hand slips, cracking [target]'s [surgery.affected_limb.encased]!"))
 
 
+		if(target.stat == CONSCIOUS && target.pain.reduction_pain >= PAIN_REDUCTION_HEAVY) //if patient is under the proper anesthesia
+			target.emote("pain") //aw shit, doctor, watch it!
+		else
+			target.emote("scream")//FUUUUUUCK!
 		surgery.affected_limb.fracture(100)
-		if(target.stat == CONSCIOUS)
-			target.emote("pain")
+
 	target.apply_damage(10, BRUTE, target_zone)
 	log_interact(user, target, "[key_name(user)] failed to mend [key_name(target)]'s [surgery.affected_limb.encased].")
 

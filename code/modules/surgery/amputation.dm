@@ -188,14 +188,17 @@
 
 	if(tool_type in cannot_hack) //Some tools are not cool enough to instantly hack off a limb.
 		user.affected_message(target,
-			SPAN_WARNING("Your hand slips, cutting into the wrong part of [target]'s [surgery.affected_limb.display_name], shattering it! It's broken, now!"),
-			SPAN_WARNING("[user]'s hand slips, cutting into the wrong part of your [surgery.affected_limb.display_name], shattering it! It's broken, now!"),
-			SPAN_WARNING("[user]'s hand slips, cutting into the wrong part of [target]'s [surgery.affected_limb.display_name]! It sounds like the bone broke!"))
+			SPAN_WARNING("Your hand slips, cutting into the wrong part of [target]'s [surgery.affected_limb.display_name], shattering to pieces!"),
+			SPAN_WARNING("[user]'s hand slips, cutting into the wrong part of your [surgery.affected_limb.display_name], shattering it!"),
+			SPAN_WARNING("[user]'s hand slips, cutting into the wrong part of [target]'s [surgery.affected_limb.display_name]!"))
 
 		to_chat(target, SPAN_HIGHDANGER("This is a rare and final opportunity to tell [user] to stitch you back up!"))
+
+		if(target.stat == CONSCIOUS && target.pain.reduction_pain >= PAIN_REDUCTION_FULL) //if patient is under the proper anesthesia
+			target.emote("pain") //aw shit, doctor, watch it!
+		else
+			target.emote("scream")//FUUUUUUCK!
 		surgery.affected_limb.fracture(100)
-		if(target.stat == CONSCIOUS)
-			target.emote("pain")
 
 		target.apply_damage(20, BRUTE, surgery.affected_limb)
 		log_interact(user, target, "[key_name(user)] failed to cut [key_name(target)]'s [surgery.affected_limb.display_name] off with [tool].")
@@ -416,9 +419,9 @@
 
 /datum/surgery_step/remove_old_prosthetic/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
-		SPAN_WARNING("You can't quite get a grip on [target]'s prosthesis."),
-		SPAN_WARNING("[user] can't quite get a grip on your prosthesis."),
-		SPAN_WARNING("[user] can't quite get a grip on [target]'s prosthesis."))
+		SPAN_WARNING("Your hands slip off [target]'s prosthesis a resounding clunk."),
+		SPAN_WARNING("[user]'s hands slip off your prosthesis with a resounding clunk."),
+		SPAN_WARNING("[user] can't quite get a grip on [target]'s prosthesis with a resounding clunk."))
 
 	log_interact(user, target, "[key_name(user)] failed to remove the last of [key_name(target)]'s severed prosthetic [surgery.affected_limb.display_name].")
 	return FALSE

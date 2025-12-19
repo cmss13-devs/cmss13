@@ -195,17 +195,24 @@
 
 		log_interact(user, target, "[key_name(user)] removed an embryo from [key_name(target)]'s ribcage with [tool ? "[tool]" : "their hands"], ending [surgery].")
 
-/datum/surgery_step/remove_larva/failure(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/remove_larva/failure(mob/living/carbon/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
-		SPAN_WARNING("Your hand slips, bruising [target]'s organs and spilling acid in \his [surgery.affected_limb.cavity]!"),
-		SPAN_WARNING("[user]'s hand slips, bruising your organs and spilling acid in your [surgery.affected_limb.cavity]!"),
-		SPAN_WARNING("[user]'s hand slips, bruising [target]'s organs and spilling acid in \his [surgery.affected_limb.cavity]!"))
-	var/datum/internal_organ/I = pick(surgery.affected_limb.internal_organs)
+		SPAN_WARNING("Your hands slip, bruising [target]'s organs and wounding the larva, which spills acid over your hands and into \his [surgery.affected_limb.cavity]."),
+		SPAN_WARNING("[user]'s hands slip, bruising your organs and wounding the larva, which spills acid over \his hands and into your [surgery.affected_limb.cavity]!"),
+		SPAN_WARNING("[user]'s hands slip, bruising [target]'s organs and spilling acid in \his [surgery.affected_limb.cavity]!"))
 
+	var/datum/internal_organ/I = pick(surgery.affected_limb.internal_organs)
 	I.take_damage(5,0)
 	if(target.stat == CONSCIOUS)
 		target.emote("scream")
 	to_chat(target, SPAN_WARNING("Your organs in your [surgery.affected_limb.cavity] feel like they're in living hell!"))
 	target.apply_damage(15, BURN, target_zone)
+
+	user.emote("pain")
+	if(user.hand)
+		user.apply_damage(15, BURN, "l_hand")
+	else
+		user.apply_damage(15, BURN, "r_hand")
+
 	log_interact(user, target, "[key_name(user)] failed to remove an embryo from [key_name(target)]'s ribcage with [tool ? "[tool]" : "their hands"].")
 	return FALSE

@@ -188,7 +188,7 @@
 
 	if(tool_type in cannot_hack) //Some tools are not cool enough to instantly hack off a limb.
 		user.affected_message(target,
-			SPAN_WARNING("Your hand slips, cutting into the wrong part of [target]'s [surgery.affected_limb.display_name], shattering to pieces!"),
+			SPAN_WARNING("Your hand slips, cutting into the wrong part of [target]'s [surgery.affected_limb.display_name], shattering it!"),
 			SPAN_WARNING("[user]'s hand slips, cutting into the wrong part of your [surgery.affected_limb.display_name], shattering it!"),
 			SPAN_WARNING("[user]'s hand slips, cutting into the wrong part of [target]'s [surgery.affected_limb.display_name]!"))
 

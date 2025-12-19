@@ -1037,7 +1037,7 @@
 
 /datum/equipment_preset/other/hunted/gladiator
 	name = "Gladiator (Hunted)"
-	languages = list(LANGUAGE_SPANISH)
+	languages = list(LANGUAGE_FORGOTTEN)
 	idtype = null
 	skills = /datum/skills/gladiator/hunted
 	assignment = "Gladiator"
@@ -1060,6 +1060,9 @@
 
 	new_human.change_real_name(new_human, random_name)
 	new_human.age = rand(21,45)
+
+/datum/equipment_preset/other/hunted/gladiator/load_languages(mob/living/carbon/human/new_human, client/mob_client)
+	new_human.set_languages(LANGUAGE_FORGOTTEN)
 
 /datum/equipment_preset/other/hunted/gladiator/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/gladiator, WEAR_HEAD)

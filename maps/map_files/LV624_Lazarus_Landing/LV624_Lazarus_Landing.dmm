@@ -8771,6 +8771,10 @@
 /mob/living/simple_animal/moth,
 /turf/open/auto_turf/lv_grass/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
+"dQc" = (
+/obj/effect/landmark/big_fog_marker,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lazarus/ground/barrens/west_barrens)
 "dQe" = (
 /obj/structure/machinery/cell_charger,
 /obj/structure/surface/table/almayer{
@@ -68320,7 +68324,7 @@ aNR
 aNR
 qgV
 yap
-wuj
+dQc
 mgn
 mgn
 nWz
@@ -69656,7 +69660,7 @@ wuj
 qgV
 bKm
 qgV
-wuj
+dQc
 bKm
 qgV
 yap
@@ -73657,7 +73661,7 @@ oVG
 rLu
 wIH
 nUt
-wUO
+uuy
 wUO
 lfo
 wUO
@@ -80604,7 +80608,7 @@ rLu
 tWH
 rLu
 rLu
-rLu
+aph
 rLu
 hvf
 rLu
@@ -81047,7 +81051,7 @@ rLu
 cYA
 rLu
 rLu
-rLu
+aph
 rLu
 loW
 aBd
@@ -81954,7 +81958,7 @@ oct
 sDf
 sDf
 gsr
-sKt
+lWn
 oHx
 fQo
 fQo

@@ -1,6 +1,6 @@
-/obj/item/device/whistle
+/obj/item/clothing/accessory/device/whistle
 	name = "\improper whistle"
-	desc = "A metal pea-whistle. Can be blown while held, or worn in the mouth."
+	desc = "A metal pea-whistle. Can be blown while held, or worn in the mouth. It can also be worn as an accessory."
 	icon_state = "whistle"
 	icon = 'icons/obj/items/tools.dmi'
 	w_class = SIZE_TINY
@@ -10,38 +10,42 @@
 	item_icons = list(
 		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/objects.dmi'
 	)
+	worn_accessory_slot = ACCESSORY_SLOT_UTILITY
+	high_visibility = TRUE
+	var/whistle_sound = 'sound/items/whistles/whistle.ogg'
 	var/volume = 60
 	var/spam_cooldown_time = 10 SECONDS
+	var/leader_whistle = FALSE
 	COOLDOWN_DECLARE(spam_cooldown)
 
-/obj/item/device/whistle/attack_self(mob/user)
+/obj/item/clothing/accessory/device/whistle/attack_self(mob/user)
 	..()
 	whistle_playsound(user)
 	add_fingerprint(user)
 
-/obj/item/device/whistle/attackby(obj/item/W, mob/user)
+/obj/item/clothing/accessory/device/whistle/attackby(obj/item/W, mob/user)
 	if(user.wear_mask == src)
 		whistle_playsound(user)
 	else
 		..()
 
-/obj/item/device/whistle/attack_hand(mob/user)
+/obj/item/clothing/accessory/device/whistle/attack_hand(mob/user)
 	if(user.wear_mask == src)
 		whistle_playsound(user)
 	else
 		..()
 
-/obj/item/device/whistle/proc/whistle_playsound(mob/user)
-	if(!COOLDOWN_FINISHED(src, spam_cooldown))
+/obj/item/clothing/accessory/device/whistle/proc/whistle_playsound(mob/user, bypass_cooldown = FALSE, custom_sound)
+	if(!COOLDOWN_FINISHED(src, spam_cooldown) && !bypass_cooldown)
 		to_chat(user, SPAN_DANGER("You are out of breath after using [src]! Wait [COOLDOWN_SECONDSLEFT(src, spam_cooldown)] second\s."))
 		return
 
 	user.visible_message(SPAN_WARNING("[user] blows into [src]!"))
-	playsound(get_turf(src), 'sound/items/whistle.ogg', volume, 1, vary = 0)
+	playsound(get_turf(src), custom_sound ? custom_sound : whistle_sound, volume, 1, vary = 0)
 
 	COOLDOWN_START(src, spam_cooldown, spam_cooldown_time)
 
-/obj/item/device/whistle/MouseDrop(obj/over_object)
+/obj/item/clothing/accessory/device/whistle/MouseDrop(obj/over_object)
 	if(ishuman(usr))
 
 		if(!usr.is_mob_restrained() && !usr.stat && usr.wear_mask == src)
@@ -53,6 +57,16 @@
 					if(usr.drop_inv_item_on_ground(src))
 						usr.put_in_l_hand(src)
 			add_fingerprint(usr)
+
+/obj/item/clothing/accessory/device/whistle/trench
+	name = "trench whistle"
+	desc = "A nickle-plated brass whistle. Can be blown while held, or worn in the mouth. It can also be worn as an accessory."
+	icon_state = "whistle"
+	icon = 'icons/obj/items/tools.dmi'
+	whistle_sound = 'sound/items/whistles/trench_whistle.ogg'
+	leader_whistle = TRUE
+
+/obj/item/clothing/accessory/device/whistle/yautja
 
 /obj/item/device/hailer
 	name = "hailer"

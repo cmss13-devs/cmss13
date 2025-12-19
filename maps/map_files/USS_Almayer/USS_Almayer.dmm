@@ -10992,7 +10992,7 @@
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/ashtray/glass,
 /obj/item/storage/fancy/cigarettes/kpack,
-/obj/item/device/whistle,
+/obj/item/clothing/accessory/device/whistle,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/command/cic)
 "aBS" = (
@@ -42600,7 +42600,7 @@
 "dyj" = (
 /obj/structure/closet/secure_closet/commander,
 /obj/item/clothing/suit/storage/marine/light/vest,
-/obj/item/device/whistle,
+/obj/item/clothing/accessory/device/whistle,
 /obj/item/device/megaphone,
 /obj/item/device/radio,
 /obj/item/clothing/shoes/laceup,
@@ -54290,7 +54290,7 @@
 /area/almayer/shipboard/brig/cryo)
 "irr" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/device/whistle{
+/obj/item/clothing/accessory/device/whistle{
 	pixel_y = 4
 	},
 /obj/structure/machinery/status_display{
@@ -72172,7 +72172,7 @@
 "pFq" = (
 /obj/structure/surface/table/almayer,
 /obj/item/device/binoculars,
-/obj/item/device/whistle{
+/obj/item/clothing/accessory/device/whistle{
 	pixel_y = 5
 	},
 /turf/open/floor/almayer/plate,
@@ -87289,7 +87289,7 @@
 "vBJ" = (
 /obj/structure/surface/table/almayer,
 /obj/item/tool/pen,
-/obj/item/device/whistle,
+/obj/item/clothing/accessory/device/whistle,
 /obj/item/device/megaphone,
 /obj/item/paper_bin/uscm{
 	pixel_y = 7

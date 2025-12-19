@@ -135,6 +135,12 @@
 					openable_turf_count++
 					continue
 
+	// If map_holder exists for SSweather, its already done its one-time setup
+	if(weather_enabled && SSweather.map_holder?.should_affect_area(src))
+		SSweather.weather_areas += src
+		if(SSweather.is_weather_event)
+			overlays += SSweather.curr_master_turf_overlay
+
 /area/proc/initialize_power(override_power)
 	if(requires_power)
 		if(override_power) //Reset everything if you want to override.

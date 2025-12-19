@@ -53158,6 +53158,12 @@
 	},
 /turf/open/floor/ancient_temple/ruined/north,
 /area/lazarus/ground/caves/sand_temple)
+"wFO" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "south_west_jungle_shack"
+	},
+/turf/closed/wall/strata_ice/jungle,
+/area/strata/interior/out_of_bounds)
 "wFQ" = (
 /obj/structure/window/framed/lv_colony/reinforced,
 /turf/open/floor/plating/prison,
@@ -57331,7 +57337,7 @@ gdk
 gdk
 gdk
 gdk
-gdk
+wFO
 oXN
 ijD
 ijD

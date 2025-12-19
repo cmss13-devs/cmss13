@@ -487,6 +487,10 @@
 	name = "\improper Fisherman's Cove - Lodge"
 	icon_state = "hydro"
 
+/area/lazarus/lazarus/shack_alt
+	name = "\improper Shack"
+	icon_state = "hydro"
+
 /area/lazarus/lazarus/shack
 	name = "\improper Fisherman's Cove - Shack"
 	icon_state = "hydro"

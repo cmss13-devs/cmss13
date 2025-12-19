@@ -310,5 +310,5 @@
 	base_lighting_alpha = 180
 
 /area/yautja/badblood
-	name = "\improper Badblood Preparation"
+	name = "\improper Yautja Survivor Preparation"
 	base_lighting_alpha = 105

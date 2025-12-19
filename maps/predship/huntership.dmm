@@ -2920,10 +2920,15 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/storage/belt/utility/pred/full{
-	pixel_y = 11
+/obj/item/device/yautja_teleporter{
+	pixel_y = 8
 	},
-/obj/item/stack/cable_coil,
+/obj/item/device/yautja_teleporter{
+	pixel_y = 3
+	},
+/obj/item/device/yautja_teleporter{
+	pixel_y = -2
+	},
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "jg" = (
@@ -11770,6 +11775,7 @@
 	pixel_x = 1;
 	pixel_y = 4
 	},
+/obj/item/stack/cable_coil,
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "Og" = (
@@ -13684,6 +13690,7 @@
 	pixel_x = -1;
 	pixel_y = 4
 	},
+/obj/item/stack/cable_coil,
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "UB" = (

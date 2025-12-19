@@ -149,16 +149,16 @@
 	else if(ispath(expand_type))
 		if(!ispath(crop_within_type))
 			crop_within_type = /turf/closed/cordon
-		// Check the horizontal line for the strict type
+		// Check the horizontal line for the strict type or space
 		// ASSUMPTION: Square border shape
 		for(var/turf/x_turf in block(target_turf.x, target_turf.y, target_turf.z, min(world.maxx, target_turf.x + width), target_turf.y, target_turf.z))
-			if(x_turf.type == crop_within_type)
+			if(x_turf.type == crop_within_type || istype(x_turf, /turf/open/space))
 				expand_x_start = x_turf.x
 				break
-		// Check the vertical line for the strict type
+		// Check the vertical line for the strict type or space
 		// ASSUMPTION: Square border shape
 		for(var/turf/y_turf in block(target_turf.x, target_turf.y, target_turf.z, target_turf.x, min(world.maxy, target_turf.y + height), target_turf.z))
-			if(y_turf.type == crop_within_type)
+			if(y_turf.type == crop_within_type || istype(y_turf, /turf/open/space))
 				expand_y_start = y_turf.y
 				break
 
@@ -302,22 +302,22 @@
 					return .
 				break
 	else if(ispath(expand_type))
-		// Check the horizontal line for the strict type
+		// Check the horizontal line for the strict type or space
 		// ASSUMPTION: Square border shape
 		var/expand_x_start = 0
 		for(var/turf/x_turf in block(target_turf.x, target_turf.y, target_turf.z, min(world.maxx, target_turf.x + width), target_turf.y, target_turf.z))
-			if(x_turf.type == crop_within_type)
+			if(x_turf.type == crop_within_type || istype(x_turf, /turf/open/space))
 				expand_x_start = x_turf.x
 				break
 		if(expand_x_start)
 			// Southern strip cordon
 			. += block(expand_x_start, target_turf.y - 1, target_turf.z, target_turf.x + width, target_turf.y - 1, target_turf.z)
 
-		// Check the vertical line for the strict type
+		// Check the vertical line for the strict type or space
 		// ASSUMPTION: Square border shape
 		var/expand_y_start = 0
 		for(var/turf/y_turf in block(target_turf.x, target_turf.y, target_turf.z, target_turf.x, min(world.maxy, target_turf.y + height), target_turf.z))
-			if(y_turf.type == crop_within_type)
+			if(y_turf.type == crop_within_type || istype(y_turf, /turf/open/space))
 				expand_y_start = y_turf.y
 				break
 		if(expand_y_start)

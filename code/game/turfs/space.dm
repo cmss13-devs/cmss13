@@ -24,6 +24,14 @@
 
 	if(is_mainship_level(z))
 		SShijack.ftl_turfs += src
+		if(SShijack.in_ftl)
+			SShijack.set_ftl_turf(src)
+		else if(SShijack.crashed)
+			SShijack.set_ftl_turf_open(src)
+
+/turf/open/space/Destroy(force)
+	SShijack.ftl_turfs -= src
+	return ..()
 
 /turf/open/space/attack_hand(mob/user)
 	if ((user.is_mob_restrained() || !( user.pulling )))

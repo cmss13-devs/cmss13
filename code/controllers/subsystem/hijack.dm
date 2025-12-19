@@ -89,7 +89,16 @@ SUBSYSTEM_DEF(hijack)
 	/// If the ship is currently transiting in FTL
 	var/in_ftl = FALSE
 
-	/// Where this ship is currently transiting to
+	/// If the ship has crashed onto a ground map and the ftl_turfs are now turf/open_space
+	var/crashed = FALSE
+
+	/// The x offset for open_space turfs when crashed
+	var/crashed_offset_x = 0
+
+	/// The y offset for open_space turfs when crashed
+	var/crashed_offset_y = 0
+
+	/// Where the ship is currently transiting to
 	var/datum/spaceport/spaceport
 
 	/// A list of turfs to edit to FTL-ness
@@ -487,22 +496,65 @@ SUBSYSTEM_DEF(hijack)
 
 	if(in_ftl)
 		for(var/turf/open/space/space_turf as anything in ftl_turfs)
-			var/which_turf = ((space_turf.x - 9 * space_turf.y) % 15) + 1
-			if(which_turf < 1)
-				which_turf += 15
+			set_ftl_turf(space_turf)
+	else
+		for(var/turf/open/space/space_turf as anything in ftl_turfs)
+			unset_ftl_turf(space_turf)
 
-			space_turf.icon_state = "speedspace_ew_[which_turf]"
-		return
+/datum/controller/subsystem/hijack/proc/crash_onto_ground()
+	// Figure out the main Z by assuming the LZs are on that Z
+	var/obj/lz = locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz1)
+	if(!lz)
+		lz = locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz2)
+	var/ground_z = lz.z
 
+	// Figure out the bottom left of playable space with 1 extra border
+	var/turf/ground_origin
+	var/border_type = /turf/closed/wall/strata_ice/jungle
+	for(var/turf/closed/current_turf in Z_TURFS(ground_z))
+		if(istype(current_turf, /turf/closed/cordon))
+			var/turf/border_turf = locate(current_turf.x + 1, current_turf.y + 1, current_turf.z)
+			if(istype(border_turf, /turf/closed))
+				border_type = border_turf.type
+			ground_origin = locate(current_turf.x + 2, current_turf.y + 2, current_turf.z)
+			break
+		border_type = current_turf.type
+		ground_origin = locate(current_turf.x + 1, current_turf.y + 1, current_turf.z)
+		break
+
+	message_admins("Crashing almayer to [ADMIN_COORDJMP(ground_origin)]") // TODO: Remove this
+
+	// Place the crash template
+	var/datum/map_template/template = SSmapping.map_templates["USS_Almayer_crash.dmm"]
+	if(!template?.load(ground_origin, centered=FALSE, delete=TRUE, allow_cropping=TRUE, crop_within_type=/turf/closed/cordon, crop_within_border=1, expand_type=border_type))
+		stack_trace("Hijack mainship crash template failed to load!")
+
+	// Figure out the offset for open_space turfs to peer down to ground aligned to the wreck
+	var/shipmap_z = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)[1]
+	var/list/ship_bounds = SSmapping.z_list[shipmap_z].bounds
+	crashed_offset_x = -ship_bounds[MAP_MINX] + 1 - 37 // Horizontal difference between shipmap and template
+	crashed_offset_y = -ship_bounds[MAP_MINY] + 1 - 2 // Vertical difference between shipmap and template
+	crashed_offset_x += ground_origin.x - 1
+	crashed_offset_y += ground_origin.y - 1
+
+	// Update shipside space turfs to open_space
+	crashed = TRUE
 	for(var/turf/open/space/space_turf as anything in ftl_turfs)
-		space_turf.icon_state = "[((space_turf.x + space_turf.y) ^ ~(space_turf.x * space_turf.y) + space_turf.z) % 25]"
-
-/datum/controller/subsystem/hijack/proc/convert_ftl_to_openspace(turf/origin)
-	var/offset_x = origin.x - 1 + 33
-	var/offset_y = origin.y - 1 + 52
-	for(var/turf/open/space/space_turf as anything in ftl_turfs)
-		space_turf.ChangeTurf(/turf/open_space/ground_level, null, null, offset_x, offset_y)
+		set_ftl_turf_open(space_turf)
 		CHECK_TICK
+
+/datum/controller/subsystem/hijack/proc/set_ftl_turf(turf/open/space/space_turf)
+	var/which_turf = ((space_turf.x - 9 * space_turf.y) % 15) + 1
+	if(which_turf < 1)
+		which_turf += 15
+	space_turf.icon_state = "speedspace_ew_[which_turf]"
+
+/datum/controller/subsystem/hijack/proc/unset_ftl_turf(turf/open/space/space_turf)
+	space_turf.icon_state = "[((space_turf.x + space_turf.y) ^ ~(space_turf.x * space_turf.y) + space_turf.z) % 25]"
+
+/datum/controller/subsystem/hijack/proc/set_ftl_turf_open(turf/open/space/space_turf)
+	space_turf.ChangeTurf(/turf/open_space/ground_level, null, null, crashed_offset_x, crashed_offset_y)
+
 
 /datum/controller/subsystem/hijack/proc/initiate_docking_procedures()
 	marine_announcement(spaceport.docking_message, spaceport.name)

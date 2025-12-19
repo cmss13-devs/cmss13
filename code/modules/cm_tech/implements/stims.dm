@@ -20,14 +20,17 @@
 		new stimulant_type(src)
 
 /obj/item/storage/pouch/stimulant_injector/speed
+	name = "speed stimulant pouch"
 	desc = "A pouch that holds speed stimulant injectors."
 	stimulant_type = /obj/item/reagent_container/hypospray/autoinjector/stimulant/speed_stimulant
 
 /obj/item/storage/pouch/stimulant_injector/brain
+	name = "brain stimulant pouch"
 	stimulant_type = /obj/item/reagent_container/hypospray/autoinjector/stimulant/brain_stimulant
 	desc = "A pouch that holds brain stimulant injectors."
 
 /obj/item/storage/pouch/stimulant_injector/redemption
+	name = "redemption stimulant pouch"
 	desc = "A pouch that holds redemption stimulant injectors."
 	storage_slots = 1
 	stimulant_type = /obj/item/reagent_container/hypospray/autoinjector/stimulant/redemption_stimulant
@@ -63,7 +66,7 @@
 	maptext_label = "StSp"
 
 /obj/item/reagent_container/hypospray/autoinjector/stimulant/brain_stimulant
-	name = "brain stimulant stimpack"
+	name = "brain stimulant autoinjector"
 	chemname = "brain_stimulant"
 	desc = "A stimpack loaded with an experimental CNS stimulant. Extremely nerve-stimulating. Lasts 5 minutes."
 	maptext_label = "StBr"

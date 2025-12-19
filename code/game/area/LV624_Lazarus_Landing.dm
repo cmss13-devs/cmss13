@@ -341,7 +341,7 @@
 	linked_lz = DROPSHIP_LZ1
 
 /area/lazarus/lazarus/landing_zones/lz2
-	name = "\improper Weyland-Yutani - Corporate Landing Zone"
+	name = "\improper Weyland-Yutani - Corporate Administration - Landing Zone"
 	linked_lz = DROPSHIP_LZ2
 
 /area/lazarus/lazarus
@@ -350,7 +350,7 @@
 	ceiling = CEILING_METAL
 
 /area/lazarus/lazarus/corporate_dome
-	name = "\improper Weyland-Yutani - Corporate Complex"
+	name = "\improper Weyland-Yutani - Corporate Administration Complex"
 	icon_state = "green"
 	linked_lz = DROPSHIP_LZ2
 
@@ -496,12 +496,12 @@
 	icon_state = "hydro"
 
 /area/lazarus/landing/console
-	name = "\improper LZ1 'Nexus'"
+	name = "\improper LZ1 - Nexus Dome - Landing Zone"
 	icon_state = "tcomsatcham"
 	requires_power = FALSE
 
 /area/lazarus/landing/console2
-	name = "\improper LZ2 'Robotics'"
+	name = "\improper LZ2 - Weyland-Yutani - Corporate Administration - Landing Zone"
 	icon_state = "tcomsatcham"
 	requires_power = FALSE
 

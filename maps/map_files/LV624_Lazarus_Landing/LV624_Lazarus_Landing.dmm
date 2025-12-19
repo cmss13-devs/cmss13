@@ -731,10 +731,22 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/foamed_metal,
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 1
 	},
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 1;
+	pixel_x = 5
+	},
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 1;
+	pixel_x = -3
+	},
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 1;
+	pixel_x = -7
+	},
+/obj/structure/foamed_metal,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lazarus/lazarus/engineering)
 "apZ" = (
@@ -817,7 +829,7 @@
 /area/lazarus/ground/jungle/south_central_jungle)
 "asc" = (
 /obj/docking_port/stationary/marine_dropship/lz2{
-	name = "Administration Landing Zone"
+	name = "Weyland-Yutani - Corporate Administration - Landing Zone"
 	},
 /turf/open/floor/plating,
 /area/lazarus/lazarus/landing_zones/lz2)
@@ -22987,6 +22999,21 @@
 "jUF" = (
 /turf/open/auto_turf/lv_grass/layer0_mud_alt,
 /area/lazarus/ground/caves/east_caves)
+"jUG" = (
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 1;
+	pixel_x = -7
+	},
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 1;
+	pixel_x = -3
+	},
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 1;
+	pixel_x = 5
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lazarus/lazarus/engineering)
 "jUL" = (
 /obj/effect/sentry_landmark/lz_2/top_right,
 /turf/open/auto_turf/lv_sand/layer0,
@@ -31340,6 +31367,23 @@
 	},
 /turf/open/floor/ancient_temple/damaged/damage_6,
 /area/lazarus/ground/caves/east_caves)
+"nqM" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 1;
+	pixel_x = -7
+	},
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 1;
+	pixel_x = -3
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lazarus/lazarus/engineering)
 "nqP" = (
 /obj/effect/decal/lv_decals/red_mud_corner,
 /obj/effect/decal/lv_decals/red_mud_corner{
@@ -36145,7 +36189,7 @@
 /area/lazarus/lazarus/corporate_dome)
 "poL" = (
 /obj/docking_port/stationary/marine_dropship/lz1{
-	name = "Nexus Cargo Landing Zone"
+	name = "Nexus Dome - Landing Zone"
 	},
 /turf/open/floor/plating,
 /area/lazarus/lazarus/landing_zones/lz1)
@@ -42399,6 +42443,7 @@
 /obj/structure/closet/crate/trashcart/alt,
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
+/obj/item/hardpoint/locomotion/van_wheels,
 /turf/open/floor/prison/darkbrown2/northwest,
 /area/lazarus/lazarus/quartstorage)
 "sdF" = (
@@ -49734,6 +49779,17 @@
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/floor_plate,
 /area/lazarus/lazarus/captain)
+"vbk" = (
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 1;
+	pixel_x = -3
+	},
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 1;
+	pixel_x = -7
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lazarus/lazarus/engineering)
 "vbn" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#ae8686";
@@ -76167,9 +76223,9 @@ jVx
 qGB
 imY
 rbl
-kAX
-kAX
-kAX
+jUG
+jUG
+jUG
 gzY
 apQ
 bJa
@@ -76839,11 +76895,11 @@ sKJ
 qGB
 imY
 rbl
-kAX
-kAX
-kAX
+vbk
+vbk
+vbk
 elf
-alB
+nqM
 dRE
 imY
 jbz

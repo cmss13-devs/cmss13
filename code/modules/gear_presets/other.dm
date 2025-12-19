@@ -1061,7 +1061,7 @@
 	new_human.change_real_name(new_human, random_name)
 	new_human.age = rand(21,45)
 
-/datum/equipment_preset/other/hunted_gladiator/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/other/hunted/gladiator/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/gladiator, WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/chainshirt/hunter, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/gladiator, WEAR_JACKET)

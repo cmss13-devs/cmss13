@@ -535,9 +535,7 @@
 	desc = "A giant statue"
 	anchored = TRUE
 	layer = BIG_XENO_LAYER
-	density = TRUE
-	bound_height = 94
-	bound_width = 64
+	density = FALSE
 
 /obj/structure/prop/hunter/ancient_temple/giant_statue/base
 	icon = 'icons/obj/structures/props/hunter/ancientsatuebase.dmi'

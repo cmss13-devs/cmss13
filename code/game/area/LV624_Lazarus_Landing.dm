@@ -464,6 +464,10 @@
 	icon_state = "ass_line"
 	linked_lz = DROPSHIP_LZ2
 
+/area/lazarus/lazarus/crashed_shuttle
+	name = "\improper Crashed PMC ERT Shuttle"
+	icon_state = "ass_line"
+
 /area/lazarus/lazarus/research
 	name = "\improper Xenoarchaeology Research Dome - Lab"
 	icon_state = "toxlab"

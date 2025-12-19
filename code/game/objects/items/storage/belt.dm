@@ -1055,6 +1055,15 @@
 	)
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
+/obj/item/storage/belt/shotgun/black/full/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/handful/shotgun/slug(src)
+
+/obj/item/storage/belt/shotgun/black/full/random/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		var/random_shell_type = pick(GLOB.shotgun_handfuls_12g)
+		new random_shell_type(src)
+
 /obj/item/storage/belt/shotgun/upp
 	name = "\improper Type 42 pattern shotgun shell loading rig"
 	desc = "An ammunition belt designed to hold shotgun shells, primarily for the Type 23 shotgun."

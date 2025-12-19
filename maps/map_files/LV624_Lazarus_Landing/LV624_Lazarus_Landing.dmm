@@ -3903,7 +3903,7 @@
 "bIu" = (
 /obj/structure/transmitter/colony_net/rotary{
 	phone_id = "Nexus Dome - Kitchen";
-	phone_category = "Ravdonika Archaeo";
+	phone_category = "Lazarus Landing";
 	pixel_x = -6;
 	pixel_y = 9
 	},
@@ -8809,6 +8809,12 @@
 /obj/structure/flora/jungle/vines/blue/light_2,
 /turf/open/floor/interior/wood_sat/alt,
 /area/lazarus/ground/jungle/north_west_jungle/dense)
+"dQX" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "crashed_pmc_ship"
+	},
+/turf/open/auto_turf/lv_sand/layer0,
+/area/lazarus/ground/barrens/central_barrens)
 "dRg" = (
 /obj/item/stack/sheet/wood,
 /turf/open/floor/prison/floor_plate,
@@ -11718,6 +11724,7 @@
 	pixel_x = -16;
 	pixel_y = 19
 	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/ancient_temple/base,
 /area/lazarus/ground/barrens/north_barrens)
 "fbt" = (
@@ -13842,6 +13849,7 @@
 	pixel_y = 25
 	},
 /obj/structure/flora/jungle/vines/dead/light_1,
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/ancient_temple/base,
 /area/lazarus/ground/barrens/north_barrens)
 "fXJ" = (
@@ -18966,6 +18974,7 @@
 /obj/structure/prop/hunter/ancient_temple/small_statue{
 	pixel_y = 25
 	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/ancient_temple/base,
 /area/lazarus/ground/barrens/north_barrens)
 "ieh" = (
@@ -21289,6 +21298,7 @@
 	dir = 4;
 	pixel_y = 22
 	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/ancient_temple/base/alt,
 /area/lazarus/ground/caves/north_east_caves)
 "jin" = (
@@ -27732,6 +27742,7 @@
 	pixel_x = -16;
 	pixel_y = 22
 	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/ancient_temple/base/alt,
 /area/lazarus/ground/caves/north_east_caves)
 "lUV" = (
@@ -31169,7 +31180,7 @@
 "nmZ" = (
 /obj/structure/transmitter/colony_net/rotary{
 	phone_id = "Cargo Commisary";
-	phone_category = "Ravdonika Archaeo";
+	phone_category = "Lazarus Landing";
 	pixel_x = -3;
 	pixel_y = 2
 	},
@@ -33214,6 +33225,7 @@
 	dir = 1;
 	pixel_y = 25
 	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/ancient_temple/base,
 /area/lazarus/ground/barrens/north_barrens)
 "ofp" = (
@@ -43602,6 +43614,7 @@
 /turf/open/floor/ancient_temple/base,
 /area/lazarus/ground/caves/north_west_caves)
 "sDf" = (
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/ancient_temple/base,
 /area/lazarus/ground/barrens/north_barrens)
 "sDy" = (
@@ -44991,7 +45004,7 @@
 /area/lazarus/lazarus/yggdrasil)
 "tcX" = (
 /obj/item/storage/backpack/marine/satchel/rto{
-	phone_category = "Ravdonika Archaeo";
+	phone_category = "Lazarus Landing";
 	name = "\improper Military Surplus Radio Telephone Pack";
 	networks_receive = list("Colonist");
 	networks_transmit = list("Colonist")
@@ -45690,7 +45703,7 @@
 "tuv" = (
 /obj/structure/transmitter/colony_net/rotary{
 	phone_id = "Health and Wellness Facility";
-	phone_category = "Ravdonika Archaeo";
+	phone_category = "Lazarus Landing";
 	pixel_x = -9;
 	pixel_y = 7
 	},
@@ -47812,6 +47825,7 @@
 /turf/open/floor/ancient_temple/deco/dark/deco_alt,
 /area/lazarus/ground/caves/sand_temple)
 "uos" = (
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/ancient_temple/base/alt,
 /area/lazarus/ground/caves/north_east_caves)
 "uoH" = (
@@ -49378,6 +49392,7 @@
 	pixel_y = 19
 	},
 /obj/structure/prop/hunter/ancient_temple/giant_statue/base,
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/ancient_temple/base,
 /area/lazarus/ground/barrens/north_barrens)
 "uSJ" = (
@@ -72989,7 +73004,7 @@ sKt
 sKI
 pQT
 qFM
-yar
+dQX
 qKp
 yar
 yar

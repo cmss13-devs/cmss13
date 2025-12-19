@@ -1,9 +1,0 @@
-author: "Puckaboo2"
-delete-after: True
-changes:
-  - rscadd: "Adds chocolate milk, and chocolate milkshakes."
-  - rscadd: "Grind chocolate bars to make chocolate syrup."
-  - rscadd: "Adds Chocolate Syrup to soda fountains."
-  - rscadd: "Adds chocolate syrup to some fridges."
-  - imageadd: "Adds a WY-brand chocolate syrup bottle filled with chocolate syrup, adds chocolate milk glass and chocolate milkshake glass"
-  - code_imp: "Renames 'chocolate' to 'chocolatesyrup' and renames 'glass of chocolate' to 'glass of chocolate syrup'"

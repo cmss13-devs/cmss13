@@ -73,7 +73,7 @@
 		var/hunted_type = pick(hunted_types)
 		arm_equipment(hunted, hunted_type , TRUE, TRUE)
 		to_chat(hunted, SPAN_BOLD("You were one of the best on Weyland-Yutani's payroll, or so they told you. Working under the corporate overlords for years, you had a comfortable and cushy job. If you got hurt, the excellent healthcare never got you close to death. You were recently sent to guard a corporate site's premises off the grid on an unfamiliar planet. They didn't tell what were you guarding, all that you managed to see was a couple of elite units and some scientists moving a heavy duty roller with a heavily disfigured alien body on it covered by a tarp. What you were doing was an easy task..or so you thought. Suddenly you witnessed an explosion in the facility and your fellow units being vaporized by some kind of plasma projectiles, you tried to run but a net has suddenly launched infront of you and knocked you out down to the ground. You wake up here with most of your gear intact. For the first time, you are on your own."))
-	else if(misc < max_misc && HAS_FLAG(hunted.client.prefs.toggles_ert_pred, PLAY_MISC))
+	else if(misc < max_misc && HAS_FLAG(hunted.client.prefs.toggles_ert_pred, PLAY_HUNT_MISC))
 		misc++
 		var/list/hunted_types = list(/datum/equipment_preset/other/hunted/gladiator, /datum/equipment_preset/other/hunted/vietnam)
 		var/hunted_type = pick(hunted_types)

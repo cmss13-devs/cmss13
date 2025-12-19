@@ -1,7 +1,0 @@
-author: "Puckaboo2"
-delete-after: True
-changes:
-  - spellcheck: "Adds periods to most to_chats and SPANs."
-  - rscadd: "Animals have more varied emotes and sounds, changed some descriptions."
-  - rscadd: "Adds better descriptions of eating if you're starving."
-  - bugfix: "Removed outdated Bay code Poly lines and made them more CM-appropriate."

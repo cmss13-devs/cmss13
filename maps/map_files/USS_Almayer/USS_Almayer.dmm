@@ -49874,7 +49874,7 @@
 /obj/structure/closet/hydrant{
 	pixel_x = 30
 	},
-/obj/item/reagent_container/hypospray/autoinjector/skillless/marine,
+/obj/item/reagent_container/hypospray/autoinjector/marine,
 /turf/open/floor/almayer,
 /area/almayer/command/lifeboat)
 "gzM" = (

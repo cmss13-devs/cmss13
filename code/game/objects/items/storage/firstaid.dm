@@ -108,7 +108,7 @@
 	new /obj/item/reagent_container/hypospray/autoinjector/kelotane(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/kelotane(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/kelotane(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/skillless/marine/tramadol(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/marine/tramadol(src)
 
 /obj/item/storage/firstaid/fire/empty/fill_preset_inventory()
 	return
@@ -120,8 +120,8 @@
 
 /obj/item/storage/firstaid/regular/fill_preset_inventory()
 	new /obj/item/device/healthanalyzer(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/skillless/marine/(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/skillless/marine/tramadol(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/marine/(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/marine/tramadol(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/inaprovaline(src)
 	new /obj/item/stack/medical/bruise_pack(src)
 	new /obj/item/stack/medical/ointment(src)

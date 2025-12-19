@@ -14,8 +14,7 @@
 	hackable = FALSE
 
 	chem_refill = list(
-		/obj/item/reagent_container/hypospray/autoinjector/skillless/marine,
-		/obj/item/reagent_container/hypospray/autoinjector/skillless/marine/tramadol,
+		/obj/item/reagent_container/hypospray/autoinjector/marine, //remember, this includes marine/tramadol
 	)
 
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/vehicle/wy
@@ -50,14 +49,9 @@
 		/obj/item/reagent_container/hypospray/autoinjector/tramadol,
 		/obj/item/reagent_container/hypospray/autoinjector/tricord,
 
-		/obj/item/reagent_container/hypospray/autoinjector/skillless/marine,
-		/obj/item/reagent_container/hypospray/autoinjector/skillless/marine/tramadol,
+		/obj/item/reagent_container/hypospray/autoinjector/ez, //remember, all ez autoinjectors are skillless
+		/obj/item/reagent_container/hypospray/autoinjector/marine, //remember, this includes marine/tramadol
 
-		/obj/item/reagent_container/hypospray/autoinjector/skillless/bicaridine,
-		/obj/item/reagent_container/hypospray/autoinjector/skillless/antitoxin,
-		/obj/item/reagent_container/hypospray/autoinjector/skillless/kelotane,
-		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol,
-		/obj/item/reagent_container/hypospray/autoinjector/skillless/tricord,
 		)
 
 /obj/structure/machinery/cm_vending/sorted/medical/vehicle/populate_product_list(scale)

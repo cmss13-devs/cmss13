@@ -304,8 +304,9 @@
 		/obj/item/reagent_container/hypospray/autoinjector/black_goo_cure,
 		/obj/item/reagent_container/hypospray/autoinjector/ultrazine,
 
-		//Includes EVERY skillless autoinjector, including skillless/one_use and skillless/marine. The refill tank is unique in that it is the only means of refilling EZ autoinjectors that aren't skillless/marine.
-		/obj/item/reagent_container/hypospray/autoinjector/skillless,
+		/obj/item/reagent_container/hypospray/autoinjector/ez, //remember, all ez autoinjectors are skillless
+		/obj/item/reagent_container/hypospray/autoinjector/marine, //remember, this includes marine/tramadol
+
 	)
 /obj/item/reagent_container/glass/minitank/on_reagent_change()
 	update_icon()
@@ -316,7 +317,7 @@
 		var/amount = (autoinjector.reagents.maximum_volume - autoinjector.reagents.total_volume)
 		if(reagents.has_reagent(autoinjector.chemname, amount)) ////The good stuff. Actually handles the filling of chemicals.
 			reagents.trans_id_to(autoinjector, autoinjector.chemname, amount) //fill this bih
-			if(istype(autoinjector, /obj/item/reagent_container/hypospray/autoinjector/skillless/one_use) || istype(autoinjector, /obj/item/reagent_container/hypospray/autoinjector/skillless/marine)) //Added for differentiation between autoinjectors that have 1 vs 3 uses since it did not have this function before.
+			if(istype(autoinjector, /obj/item/reagent_container/hypospray/autoinjector/ez/tutorial) || istype(autoinjector, /obj/item/reagent_container/hypospray/autoinjector/marine)) //Added for differentiation between autoinjectors that have 1 vs 3 uses since it did not have this function before.
 				autoinjector.uses_left = 1 //one_use and marine are EZs.
 			else
 				autoinjector.uses_left = 3 //other autoinjectors.

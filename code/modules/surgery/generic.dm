@@ -58,6 +58,13 @@
 			SPAN_NOTICE("[user] has constructed a prepared incision in [target]'s [surgery.affected_limb.display_name]."))
 
 		surgery.status += 2 //IMS completes all steps.
+
+		switch(target_zone) //forces application of overlays
+			if("chest")
+				target.overlays += image('icons/mob/humans/dam_human.dmi', "chest_surgery_closed")
+			if("head")
+				target.overlays += image('icons/mob/humans/dam_human.dmi', "skull_surgery_closed")
+
 	else if(tool_type == /obj/item/tool/surgery/scalpel/laser && prob(las_scalpel.bloodlessprob))
 		user.affected_message(target,
 			SPAN_NOTICE("You finish making a bloodless incision on [target]'s [surgery.affected_limb.display_name] with \the [tool]."),

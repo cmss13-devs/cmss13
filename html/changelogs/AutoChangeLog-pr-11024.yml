@@ -1,9 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - balance: "Command announcements and overwatch are now garbled if coms are down (applies to ghosts too based on their position). The garble strength depends on message length (<= 20 good, 120+ bad) without signature and in the case of announcements the duration between them (30s bad <-> 3min+ good). Whichever variable is better wins."
-  - bugfix: "Fixed some logic for marine announcements not handling people in cryopods"
-  - bugfix: "Fixed some logic for stars_decode_html (xeno paper viewing)"
-  - bugfix: "Fixed remind objectives in overwatch not working"
-  - rscadd: "Ghosts now have a preference to force full clarity for announcements"
-  - config: "Added config for garbling settings (see game_options.txt example) and log_garble flag"

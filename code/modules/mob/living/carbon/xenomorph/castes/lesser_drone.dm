@@ -44,6 +44,7 @@
 	icon = 'icons/mob/xenos/castes/tier_1/drone.dmi'
 	icon_size = 48
 	icon_state = "Lesser Drone Walking"
+	xenonid_pixel_x = -9
 	plasma_types = list(PLASMA_PURPLE)
 	tier = 0
 	mob_flags = NOBIOSCAN
@@ -100,10 +101,11 @@
 		return
 
 	age = XENO_NORMAL
-
 	hud_update()
-
 	xeno_jitter(25)
+
+/mob/living/carbon/xenomorph/lesser_drone/warn_away_timer()
+	return // Ghostizing will just gib
 
 /mob/living/carbon/xenomorph/lesser_drone/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
@@ -111,7 +113,7 @@
 		PF.flags_pass = PASS_MOB_IS_XENO|PASS_MOB_THRU_XENO
 		PF.flags_can_pass_all = PASS_MOB_IS_XENO|PASS_MOB_THRU_XENO
 
-/mob/living/carbon/xenomorph/lesser_drone/ghostize(can_reenter_corpse = FALSE, aghosted = FALSE)
+/mob/living/carbon/xenomorph/lesser_drone/ghostize(can_reenter_corpse = FALSE, aghosted = FALSE, transfer = FALSE)
 	. = ..()
 	if(. && !aghosted && !QDELETED(src))
 		gib()

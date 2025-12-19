@@ -974,8 +974,8 @@
 		apply_stamina_damage(P.ammo.stamina_damage, P.def_zone, ARMOR_ENERGY) // Stamina damage is energy
 
 	//Shields
-	if( !(ammo_flags & AMMO_ROCKET) ) //No, you can't block rockets.
-		if(prob(75) && check_shields(damage * 0.65, "[P]") ) // Lower chance to block bullets
+	if(!(ammo_flags & AMMO_ROCKET)) //No, you can't block rockets.
+		if(check_shields("[P]", get_dir(src, P.firer), attack_type = SHIELD_ATTACK_PROJECTILE)) // Lower chance to block bullets
 			P.ammo.on_shield_block(src)
 			bullet_ping(P)
 			return

@@ -532,8 +532,8 @@ SUBSYSTEM_DEF(hijack)
 	// Figure out the offset for open_space turfs to peer down to ground aligned to the wreck
 	var/shipmap_z = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)[1]
 	var/list/ship_bounds = SSmapping.z_list[shipmap_z].bounds
-	crashed_offset_x = -ship_bounds[MAP_MINX] + 1 - 37 // Horizontal difference between shipmap and template
-	crashed_offset_y = -ship_bounds[MAP_MINY] + 1 - 2 // Vertical difference between shipmap and template
+	crashed_offset_x = -ship_bounds[MAP_MINX] + 1 - 17 // Horizontal difference between shipmap and template
+	crashed_offset_y = -ship_bounds[MAP_MINY] + 1 // 0 Vertical difference between shipmap and template
 	crashed_offset_x += ground_origin.x - 1
 	crashed_offset_y += ground_origin.y - 1
 

@@ -11,8 +11,10 @@
 /area/lazarus/ground/jungle/south_west_jungle)
 "cJ" = (
 /obj/structure/flora/jungle/vines/dead/light_2,
-/obj/structure/platform/stone/ancient_temple/alt,
 /obj/effect/hunter/ancient_temple/tile_edge_corner/tile_edge_corner_2,
+/obj/structure/platform/stone/ancient_temple/alt{
+	icon_state = "ancient_platform_broken"
+	},
 /turf/open/floor/ancient_temple/damaged/damage_7,
 /area/lazarus/ground/jungle/south_west_jungle)
 "cY" = (
@@ -79,11 +81,11 @@
 /area/lazarus/ground/jungle/south_west_jungle)
 "kV" = (
 /obj/structure/flora/jungle/vines/blue/light_1,
-/turf/closed/wall/mineral/sandstone/runed,
+/turf/closed/wall/ancient_temple/sandstone/runed/decor,
 /area/strata/interior/out_of_bounds)
 "lf" = (
 /obj/structure/flora/jungle/vines/blue/light_3,
-/turf/closed/wall/mineral/sandstone/runed,
+/turf/closed/wall/ancient_temple/sandstone/runed/decor,
 /area/lazarus/ground/jungle/south_west_jungle)
 "lX" = (
 /obj/effect/hunter/ancient_temple/tile_edge_corner/tile_edge_corner_4,
@@ -98,10 +100,12 @@
 /turf/open/floor/ancient_temple/damaged/damage_1,
 /area/lazarus/ground/jungle/south_west_jungle)
 "nn" = (
-/obj/structure/platform/stone/ancient_temple/alt,
 /obj/effect/hunter/ancient_temple/tile_edge_corner/tile_edge_corner_2,
 /obj/effect/decal/lv_decals/red_mud_corner{
 	dir = 5
+	},
+/obj/structure/platform/stone/ancient_temple/alt{
+	icon_state = "ancient_platform_broken"
 	},
 /turf/open/floor/ancient_temple/damaged/damage_7,
 /area/lazarus/ground/jungle/south_west_jungle)
@@ -128,11 +132,11 @@
 /area/lazarus/ground/jungle/south_west_jungle)
 "ra" = (
 /obj/structure/flora/jungle/vines/dead/light_3,
-/turf/closed/wall/mineral/sandstone/runed,
+/turf/closed/wall/ancient_temple/sandstone/runed/decor,
 /area/lazarus/ground/jungle/south_west_jungle)
 "rG" = (
 /obj/structure/flora/jungle/vines/blue/light_1,
-/turf/closed/wall/mineral/sandstone/runed,
+/turf/closed/wall/ancient_temple/sandstone/runed/decor,
 /area/lazarus/ground/jungle/south_west_jungle)
 "rQ" = (
 /obj/structure/platform_decoration/stone/ancient_temple/alt,
@@ -165,10 +169,6 @@
 /obj/effect/landmark/yautja_teleport,
 /obj/structure/flora/jungle/vines/blue/light_3,
 /turf/open/auto_turf/lv_grass/layer0,
-/area/lazarus/ground/jungle/south_west_jungle)
-"xd" = (
-/obj/structure/flora/jungle/vines/dead/light_1,
-/turf/closed/wall/mineral/sandstone/runed/decor,
 /area/lazarus/ground/jungle/south_west_jungle)
 "xf" = (
 /turf/open/floor/ancient_temple/damaged/damage_2,
@@ -227,13 +227,13 @@
 /area/strata/interior/out_of_bounds)
 "CU" = (
 /obj/structure/flora/jungle/vines/dead/light_1,
-/turf/closed/wall/mineral/sandstone/runed,
+/turf/closed/wall/ancient_temple/sandstone/runed/decor,
 /area/lazarus/ground/jungle/south_west_jungle)
 "Dj" = (
 /obj/structure/tunnel{
 	desc = "A tunnel entrance. Where the hell does it go?"
 	},
-/turf/closed/wall/mineral/sandstone/runed,
+/turf/closed/wall/ancient_temple/sandstone/runed/decor,
 /area/lazarus/ground/jungle/south_west_jungle)
 "Fq" = (
 /obj/structure/flora/jungle/vines/dead/light_2,
@@ -285,10 +285,6 @@
 "Le" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/auto_turf/lv_grass/layer1,
-/area/lazarus/ground/jungle/south_west_jungle)
-"Li" = (
-/obj/structure/flora/jungle/vines/blue/light_3,
-/turf/closed/wall/mineral/sandstone/runed/decor,
 /area/lazarus/ground/jungle/south_west_jungle)
 "LP" = (
 /obj/structure/flora/jungle/vines/dead/light_1,
@@ -346,11 +342,11 @@
 /area/lazarus/ground/jungle/south_west_jungle)
 "Qi" = (
 /obj/structure/flora/jungle/vines/dead/heavy,
-/turf/closed/wall/mineral/sandstone/runed,
+/turf/closed/wall/ancient_temple/sandstone/runed/decor,
 /area/lazarus/ground/jungle/south_west_jungle)
 "RE" = (
 /obj/structure/flora/jungle/vines/dead/light_2,
-/turf/closed/wall/mineral/sandstone/runed,
+/turf/closed/wall/ancient_temple/sandstone/runed/decor,
 /area/lazarus/ground/jungle/south_west_jungle)
 "RK" = (
 /obj/structure/flora/bush/ausbushes/ywflowers,
@@ -365,7 +361,7 @@
 /turf/open/auto_turf/lv_grass/layer1,
 /area/lazarus/ground/jungle/south_west_jungle)
 "SQ" = (
-/turf/closed/wall/mineral/sandstone/runed,
+/turf/closed/wall/ancient_temple/sandstone/runed/decor,
 /area/lazarus/ground/jungle/south_west_jungle)
 "Tl" = (
 /turf/open/gm/grass/grass1,
@@ -407,9 +403,6 @@
 	},
 /obj/structure/platform/stone/ancient_temple/east,
 /turf/open/floor/ancient_temple/damaged/damage_7,
-/area/lazarus/ground/jungle/south_west_jungle)
-"ZY" = (
-/turf/closed/wall/mineral/sandstone/runed/decor,
 /area/lazarus/ground/jungle/south_west_jungle)
 
 (1,1,1) = {"
@@ -512,7 +505,7 @@ PS
 Bv
 nn
 RE
-Li
+lf
 lf
 WL
 tp
@@ -525,7 +518,7 @@ VY
 jC
 AP
 kN
-Li
+lf
 Bq
 iX
 Kq
@@ -557,7 +550,7 @@ WL
 LW
 "}
 (9,1,1) = {"
-AP
+Le
 zb
 Le
 dQ
@@ -621,7 +614,7 @@ tP
 nK
 Nz
 BL
-ZY
+SQ
 MB
 uD
 fv
@@ -639,7 +632,7 @@ zS
 rQ
 ou
 LP
-xd
+CU
 uD
 vi
 qf
@@ -671,7 +664,7 @@ uD
 LW
 LW
 RE
-ZY
+SQ
 SQ
 Qi
 WL

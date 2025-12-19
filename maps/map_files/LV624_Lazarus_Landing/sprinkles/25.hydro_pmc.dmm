@@ -640,6 +640,10 @@
 "DF" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
+/obj/structure/barricade/handrail/wire{
+	layer = 3.1;
+	dir = 8
+	},
 /turf/open/floor/prison/floor_plate,
 /area/template_noop)
 "Ea" = (
@@ -827,6 +831,10 @@
 /area/template_noop)
 "Lh" = (
 /obj/effect/decal/hybrisa/dirt,
+/obj/structure/barricade/handrail/wire{
+	layer = 3.5;
+	dir = 1
+	},
 /turf/open/floor/prison/floor_plate,
 /area/template_noop)
 "Li" = (

@@ -4968,9 +4968,7 @@
 /obj/structure/machinery/light/blue{
 	dir = 4
 	},
-/obj/structure/barricade/metal/wired{
-	health = 300
-	},
+/obj/structure/barricade/deployable,
 /turf/open/floor/prison/darkred2/southeast,
 /area/lazarus/lazarus/corporate_dome)
 "chk" = (
@@ -11225,12 +11223,12 @@
 /area/lazarus/ground/jungle/south_central_jungle)
 "ePR" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/barricade/metal/wired{
-	health = 300;
-	icon_state = "metal_2"
-	},
 /obj/item/ammo_casing/bullet,
 /obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/barricade/metal{
+	health = 250;
+	icon_state = "metal_2"
+	},
 /turf/open/floor/prison/floor_plate,
 /area/lazarus/lazarus/corporate_dome)
 "ePX" = (
@@ -19087,7 +19085,8 @@
 /area/lazarus/lazarus/robotics)
 "ijm" = (
 /obj/structure/sign/safety/bridge{
-	pixel_x = -24
+	pixel_x = -17;
+	pixel_y = -7
 	},
 /obj/structure/bed/chair{
 	dir = 4
@@ -24434,9 +24433,7 @@
 /obj/structure/machinery/light/blue{
 	dir = 8
 	},
-/obj/structure/barricade/metal/wired{
-	health = 300
-	},
+/obj/structure/barricade/deployable,
 /turf/open/floor/prison/darkred2/southwest,
 /area/lazarus/lazarus/corporate_dome)
 "kBE" = (
@@ -26844,7 +26841,8 @@
 /area/lazarus/ground/barrens/south_eastern_barrens)
 "lCL" = (
 /obj/structure/sign/safety/bridge{
-	pixel_x = -24
+	pixel_x = -17;
+	pixel_y = 7
 	},
 /obj/structure/machinery/light/small/blue{
 	light_color = "#dae2ff";
@@ -38582,7 +38580,8 @@
 /area/lazarus/ground/barrens/east_barrens)
 "qtB" = (
 /obj/structure/sign/safety/security{
-	pixel_x = -24
+	pixel_x = -17;
+	pixel_y = 7
 	},
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/darkred2/west,
@@ -52981,7 +52980,7 @@
 "wCg" = (
 /obj/structure/fence/dark/overgrown,
 /obj/effect/landmark/nightmare{
-	insert_tag = "hyrdro_pmc"
+	insert_tag = "hydro_pmc"
 	},
 /turf/open/auto_turf/lv_sand/layer0,
 /area/lazarus/ground/colony/north_nexus_road)
@@ -53161,6 +53160,9 @@
 "wFO" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "south_west_jungle_shack"
+	},
+/obj/effect/landmark/nightmare{
+	insert_tag = "south_west_jungle"
 	},
 /turf/closed/wall/strata_ice/jungle,
 /area/strata/interior/out_of_bounds)

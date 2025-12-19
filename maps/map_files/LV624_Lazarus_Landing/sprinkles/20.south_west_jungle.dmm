@@ -1,0 +1,1119 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aN" = (
+/turf/open/gm/coast/dirt/beachcorner/south_east,
+/area/lazarus/ground/river/west_river)
+"bs" = (
+/obj/structure/flora/jungle/vines/blue/light_2,
+/turf/closed/wall/strata_ice/jungle,
+/area/strata/interior/out_of_bounds)
+"bu" = (
+/turf/open/auto_turf/lv_sand/layer0,
+/area/lazarus/ground/jungle/west_jungle)
+"cf" = (
+/obj/structure/flora/jungle/plantbot1,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lazarus/ground/jungle/west_jungle)
+"cJ" = (
+/turf/open/floor/brown_dirt/random_rocks_alt{
+	dir = 6
+	},
+/area/lazarus/ground/jungle/west_jungle)
+"cR" = (
+/obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
+	dir = 5
+	},
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lazarus/ground/jungle/west_jungle)
+"dl" = (
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/coast/dirt/south,
+/area/lazarus/ground/river/west_river)
+"dn" = (
+/obj/structure/flora/jungle/plantbot1,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lazarus/ground/jungle/west_jungle)
+"ew" = (
+/obj/structure/flora/jungle/planttop1,
+/turf/open/auto_turf/lv_sand/layer0,
+/area/lazarus/ground/jungle/west_jungle)
+"gJ" = (
+/obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
+	dir = 1
+	},
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lazarus/ground/jungle/west_jungle)
+"he" = (
+/obj/structure/flora/bush/ausbushes/genericbush,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lazarus/ground/jungle/west_jungle)
+"hE" = (
+/obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
+	dir = 3
+	},
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lazarus/ground/jungle/west_jungle)
+"if" = (
+/obj/structure/flora/bush/ausbushes/grassybush,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lazarus/ground/jungle/west_jungle)
+"iN" = (
+/obj/structure/flora/jungle/vines/blue/light_1,
+/turf/closed/wall/strata_ice/jungle,
+/area/strata/interior/out_of_bounds)
+"jg" = (
+/obj/structure/flora/bush/ausbushes/var3/sunnybush,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lazarus/ground/jungle/west_jungle)
+"jZ" = (
+/turf/open/gm/coast/dirt/south,
+/area/lazarus/ground/river/west_river)
+"kl" = (
+/obj/structure/flora/grass/tallgrass/jungle_alt_2,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lazarus/ground/jungle/west_jungle)
+"lA" = (
+/obj/structure/flora/jungle/planttop1,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lazarus/ground/jungle/west_jungle)
+"lR" = (
+/obj/structure/flora/bush/ausbushes/pointybush,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lazarus/ground/jungle/west_jungle)
+"mx" = (
+/obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
+	dir = 6
+	},
+/obj/effect/landmark/big_fog_marker,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lazarus/ground/jungle/west_jungle)
+"mC" = (
+/obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
+	dir = 4
+	},
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lazarus/ground/jungle/west_jungle)
+"mW" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lazarus/ground/jungle/west_jungle)
+"nT" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/river/soro,
+/area/lazarus/ground/river/west_river)
+"ou" = (
+/obj/structure/flora/bush/ausbushes/ausbush,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lazarus/ground/jungle/west_jungle)
+"pr" = (
+/obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
+	dir = 10
+	},
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lazarus/ground/jungle/west_jungle)
+"pG" = (
+/turf/open/gm/coast/dirt/beachcorner2/south_west,
+/area/lazarus/ground/river/west_river)
+"pI" = (
+/obj/structure/flora/jungle/vines/blue/light_3,
+/turf/closed/wall/strata_ice/jungle,
+/area/strata/interior/out_of_bounds)
+"pW" = (
+/obj/structure/flora/bush/ausbushes,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lazarus/ground/jungle/west_jungle)
+"qW" = (
+/turf/open/gm/coast/dirt/beachcorner/south_west,
+/area/lazarus/ground/river/west_river)
+"rM" = (
+/obj/effect/landmark/big_fog_marker,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lazarus/ground/jungle/west_jungle)
+"sl" = (
+/turf/open/floor/brown_dirt/random_rocks,
+/area/lazarus/ground/jungle/west_jungle)
+"sV" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/auto_turf/lv_sand/layer0,
+/area/lazarus/ground/jungle/west_jungle)
+"sW" = (
+/obj/structure/flora/bush/ausbushes/ausbush,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lazarus/ground/jungle/west_jungle)
+"te" = (
+/obj/structure/flora/bush/ausbushes/lavendergrass,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lazarus/ground/jungle/west_jungle)
+"tn" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/floor/brown_dirt/random_rocks_alt,
+/area/lazarus/ground/jungle/west_jungle)
+"uD" = (
+/obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
+	dir = 8
+	},
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lazarus/ground/jungle/west_jungle)
+"vk" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lazarus/ground/jungle/west_jungle)
+"vN" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/obj/effect/decal/lv_decals/red_mud_corner,
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 4
+	},
+/turf/open/floor/interior/wood/alt,
+/area/lazarus/ground/jungle/west_jungle)
+"wd" = (
+/obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
+	dir = 1
+	},
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lazarus/ground/jungle/west_jungle)
+"wo" = (
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lazarus/ground/jungle/west_jungle)
+"wq" = (
+/obj/structure/flora/jungle/vines/blue/light_3,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lazarus/ground/jungle/west_jungle)
+"wI" = (
+/obj/structure/flora/bush/ausbushes/lavendergrass,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lazarus/ground/jungle/west_jungle)
+"yh" = (
+/obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
+	dir = 4
+	},
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lazarus/ground/jungle/west_jungle)
+"yB" = (
+/obj/structure/flora/jungle/vines/blue/light_2,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lazarus/ground/jungle/west_jungle)
+"zX" = (
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/coast/dirt/east,
+/area/lazarus/ground/river/west_river)
+"Ai" = (
+/obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
+	dir = 9
+	},
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lazarus/ground/jungle/west_jungle)
+"Ar" = (
+/obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
+	dir = 10
+	},
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lazarus/ground/jungle/west_jungle)
+"Au" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lazarus/ground/jungle/west_jungle)
+"By" = (
+/obj/effect/landmark/big_fog_marker,
+/turf/open/auto_turf/lv_sand/layer0,
+/area/lazarus/ground/jungle/west_jungle)
+"BS" = (
+/obj/structure/flora/jungle/vines/blue/heavy,
+/turf/closed/wall/strata_ice/jungle,
+/area/strata/interior/out_of_bounds)
+"Co" = (
+/obj/structure/flora/grass/tallgrass/jungle_alt_2,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lazarus/ground/jungle/west_jungle)
+"Dd" = (
+/obj/structure/flora/jungle/vines/blue/light_2,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lazarus/ground/jungle/west_jungle)
+"Dr" = (
+/turf/open/gm/river/soro,
+/area/lazarus/ground/river/west_river)
+"DP" = (
+/obj/item/storage/bag/trash,
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 9
+	},
+/turf/open/floor/interior/wood/alt,
+/area/lazarus/ground/jungle/west_jungle)
+"DZ" = (
+/turf/closed/wall/rock/brown,
+/area/strata/interior/out_of_bounds)
+"Es" = (
+/obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
+	dir = 6
+	},
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lazarus/ground/jungle/west_jungle)
+"Fw" = (
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lazarus/ground/jungle/west_jungle)
+"FP" = (
+/obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
+	dir = 6
+	},
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lazarus/ground/jungle/west_jungle)
+"GA" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/obj/structure/flora/jungle/vines/blue/light_2,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lazarus/ground/jungle/west_jungle)
+"GD" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/obj/structure/flora/jungle/vines/blue/light_3,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lazarus/ground/jungle/west_jungle)
+"GO" = (
+/obj/structure/flora/bush/ausbushes/var3/leafybush,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lazarus/ground/jungle/west_jungle)
+"Is" = (
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/coast/dirt/west,
+/area/lazarus/ground/river/west_river)
+"Jv" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lazarus/ground/jungle/west_jungle)
+"JC" = (
+/obj/structure/flora/jungle/vines/blue/light_3,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lazarus/ground/jungle/west_jungle)
+"Ka" = (
+/obj/structure/flora/jungle/vines/blue/heavy,
+/turf/closed/wall/rock/brown,
+/area/strata/interior/out_of_bounds)
+"Kg" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/obj/structure/flora/jungle/vines/blue/light_3,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lazarus/ground/jungle/west_jungle)
+"Lv" = (
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lazarus/ground/jungle/west_jungle)
+"MZ" = (
+/turf/open/floor/brown_dirt/random_rocks_alt,
+/area/lazarus/ground/jungle/west_jungle)
+"NY" = (
+/obj/effect/landmark/big_fog_marker,
+/turf/open/floor/brown_dirt/random_rocks,
+/area/lazarus/ground/jungle/west_jungle)
+"Pl" = (
+/turf/closed/wall/strata_ice/jungle,
+/area/strata/interior/out_of_bounds)
+"Pm" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/obj/structure/flora/jungle/vines/blue/light_1,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lazarus/ground/jungle/west_jungle)
+"Pn" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 10
+	},
+/turf/open/floor/interior/wood/alt,
+/area/lazarus/ground/jungle/west_jungle)
+"PU" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lazarus/ground/jungle/west_jungle)
+"Qo" = (
+/obj/structure/flora/grass/tallgrass/jungle_alt_2/corner,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lazarus/ground/jungle/west_jungle)
+"Ru" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lazarus/ground/jungle/west_jungle)
+"Sm" = (
+/obj/structure/flora/jungle/vines/blue/light_1,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lazarus/ground/jungle/west_jungle)
+"SV" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/obj/structure/flora/jungle/vines/blue/light_2,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lazarus/ground/jungle/west_jungle)
+"TK" = (
+/obj/structure/flora/jungle/vines/blue/light_1,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lazarus/ground/jungle/west_jungle)
+"Ux" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/floor/brown_dirt/random_rocks,
+/area/lazarus/ground/jungle/west_jungle)
+"UL" = (
+/obj/structure/flora/jungle/planttop1,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lazarus/ground/jungle/west_jungle)
+"UR" = (
+/obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
+	dir = 8
+	},
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lazarus/ground/jungle/west_jungle)
+"Vz" = (
+/turf/open/gm/coast/dirt/east,
+/area/lazarus/ground/river/west_river)
+"VD" = (
+/obj/structure/flora/jungle/planttop1,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lazarus/ground/jungle/west_jungle)
+"VF" = (
+/obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
+	dir = 9
+	},
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lazarus/ground/jungle/west_jungle)
+"VW" = (
+/obj/structure/flora/bush/ausbushes/grassybush,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lazarus/ground/jungle/west_jungle)
+"Wu" = (
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lazarus/ground/jungle/west_jungle)
+"WU" = (
+/obj/structure/flora/jungle/vines/blue/light_3,
+/turf/closed/wall/rock/brown,
+/area/strata/interior/out_of_bounds)
+"Xr" = (
+/obj/item/reagent_container/glass/bucket/mopbucket{
+	pixel_y = 4
+	},
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 4
+	},
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 1
+	},
+/turf/open/floor/interior/wood/alt,
+/area/lazarus/ground/jungle/west_jungle)
+"Zk" = (
+/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lazarus/ground/jungle/west_jungle)
+"Zx" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/obj/structure/flora/jungle/vines/blue/light_2,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lazarus/ground/jungle/west_jungle)
+"ZA" = (
+/obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
+	dir = 5
+	},
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lazarus/ground/jungle/west_jungle)
+
+(1,1,1) = {"
+iN
+Pl
+Pl
+Pl
+iN
+iN
+Pl
+Pl
+Pl
+Pl
+Pl
+Pl
+Pl
+Pl
+Pl
+Pl
+Pl
+iN
+iN
+iN
+Pl
+Pl
+Pl
+Pl
+Pl
+Pl
+Pl
+Pl
+Pl
+Pl
+"}
+(2,1,1) = {"
+Fw
+Fw
+Fw
+Fw
+Fw
+Fw
+Fw
+jg
+DZ
+DZ
+DZ
+Pl
+Pl
+Pl
+sW
+Fw
+Au
+Fw
+wo
+iN
+Pl
+sW
+Fw
+Fw
+Ru
+Pl
+Pl
+Pl
+iN
+bs
+"}
+(3,1,1) = {"
+Fw
+Fw
+DZ
+Lv
+Lv
+Fw
+Fw
+Pl
+Ka
+DZ
+Pl
+Pl
+Pl
+FP
+ZA
+Lv
+Jv
+Lv
+Lv
+TK
+he
+Fw
+FP
+cR
+Fw
+Jv
+Pl
+iN
+TK
+TK
+"}
+(4,1,1) = {"
+lR
+DZ
+DZ
+Fw
+Fw
+if
+Fw
+GA
+bs
+bs
+bs
+Fw
+FP
+kl
+kl
+cR
+Fw
+Fw
+Lv
+Sm
+Fw
+Fw
+hE
+kl
+ZA
+Fw
+GO
+Fw
+Fw
+cJ
+"}
+(5,1,1) = {"
+Fw
+Fw
+Fw
+Au
+Pl
+Fw
+Fw
+Lv
+vk
+yB
+Fw
+Lv
+Ar
+UR
+uD
+Ai
+Pl
+Lv
+wI
+iN
+Pl
+Ru
+pr
+UR
+Ai
+bu
+Fw
+bu
+Fw
+Jv
+"}
+(6,1,1) = {"
+Fw
+FP
+yh
+cR
+Fw
+VD
+cf
+Fw
+GO
+Lv
+Lv
+Fw
+PU
+Lv
+Jv
+wI
+FP
+yh
+yh
+ZA
+Lv
+Fw
+Pl
+Pl
+Lv
+VW
+Pl
+Fw
+Ru
+Ru
+"}
+(7,1,1) = {"
+Es
+kl
+kl
+gJ
+Lv
+Fw
+Fw
+Zk
+Fw
+Zx
+Fw
+vk
+lA
+dn
+Fw
+Es
+Co
+Co
+kl
+Co
+cR
+Ru
+Lv
+Ru
+Jv
+Jv
+Fw
+Pl
+Ru
+Fw
+"}
+(8,1,1) = {"
+Ar
+kl
+kl
+VF
+Lv
+Pl
+Fw
+Fw
+Lv
+bs
+Dd
+Fw
+sW
+Fw
+FP
+kl
+VF
+pr
+kl
+Co
+kl
+ZA
+Ru
+wI
+Jv
+Ux
+Jv
+Pl
+Fw
+sV
+"}
+(9,1,1) = {"
+Wu
+Qo
+wd
+Lv
+he
+Fw
+wI
+Fw
+Pl
+bs
+bs
+Dd
+Jv
+Lv
+pr
+VF
+Lv
+Lv
+pr
+UR
+UR
+VF
+UL
+cf
+Lv
+Fw
+bu
+Fw
+bu
+cJ
+"}
+(10,1,1) = {"
+mx
+Co
+uD
+yh
+cR
+Fw
+Fw
+vk
+DZ
+Ka
+SV
+Fw
+wI
+PU
+Ru
+Fw
+Pl
+Fw
+Lv
+Fw
+Fw
+Lv
+pW
+Ru
+Fw
+bu
+Fw
+sV
+Fw
+bu
+"}
+(11,1,1) = {"
+Ar
+Ai
+Pl
+Ar
+Ai
+Fw
+Jv
+vk
+DZ
+Ka
+Ka
+SV
+Ru
+Jv
+Fw
+MZ
+Fw
+sW
+Fw
+sl
+sV
+Fw
+wI
+Fw
+sV
+Fw
+Pl
+Pl
+Lv
+he
+"}
+(12,1,1) = {"
+GO
+Fw
+Fw
+rM
+wI
+Fw
+Jv
+Jv
+Lv
+DZ
+SV
+Fw
+Jv
+MZ
+Jv
+Fw
+tn
+sl
+Fw
+sV
+Fw
+MZ
+Au
+sl
+Fw
+sV
+Fw
+iN
+Lv
+Fw
+"}
+(13,1,1) = {"
+sV
+bu
+sV
+Fw
+Fw
+Pl
+Lv
+Fw
+Jv
+vk
+Lv
+Fw
+sl
+Fw
+sV
+Jv
+Fw
+wI
+Fw
+Fw
+Lv
+Fw
+Lv
+Fw
+Lv
+Fw
+Jv
+TK
+wI
+Pl
+"}
+(14,1,1) = {"
+Is
+qW
+NY
+sV
+Fw
+Lv
+Fw
+PU
+mW
+Fw
+Fw
+sl
+tn
+Fw
+Jv
+PU
+vk
+Ru
+Pl
+Lv
+Pl
+Pl
+Lv
+ou
+Jv
+Ux
+TK
+TK
+Lv
+Au
+"}
+(15,1,1) = {"
+Dr
+pG
+qW
+bu
+rM
+Fw
+Jv
+Lv
+Pl
+Fw
+Lv
+Fw
+Jv
+lA
+cf
+Ru
+JC
+pI
+Pl
+Pl
+Pl
+Pl
+Pl
+Lv
+Ru
+Jv
+iN
+Lv
+Fw
+Lv
+"}
+(16,1,1) = {"
+Dr
+nT
+jZ
+MZ
+Fw
+Fw
+Lv
+Jv
+Fw
+tn
+Fw
+sl
+Fw
+Ru
+wq
+JC
+BS
+Pl
+DZ
+Pl
+DZ
+Pl
+Lv
+Ru
+Fw
+sV
+Pl
+Pl
+Lv
+Fw
+"}
+(17,1,1) = {"
+Dr
+Dr
+jZ
+MZ
+Fw
+sV
+Fw
+MZ
+Fw
+Jv
+Lv
+Jv
+Lv
+GD
+JC
+BS
+Pl
+DZ
+DZ
+DZ
+DZ
+Lv
+Fw
+wI
+Lv
+Fw
+Pl
+Pl
+Lv
+Wu
+"}
+(18,1,1) = {"
+Dr
+Dr
+dl
+sl
+NY
+Fw
+sl
+Jv
+Lv
+Ru
+Fw
+te
+Jv
+Lv
+iN
+Pl
+DZ
+DZ
+DZ
+DZ
+wd
+Fw
+Lv
+Jv
+Lv
+Fw
+Pl
+ou
+Fw
+Lv
+"}
+(19,1,1) = {"
+zX
+Vz
+aN
+sV
+Fw
+Lv
+Fw
+Lv
+FP
+mC
+cR
+he
+Lv
+Pm
+iN
+Pl
+DZ
+DZ
+kl
+kl
+VF
+Jv
+Ru
+Lv
+Fw
+bu
+Fw
+Fw
+Lv
+Fw
+"}
+(20,1,1) = {"
+bu
+MZ
+sV
+Fw
+Fw
+rM
+Lv
+Pl
+Pl
+Co
+VF
+Ru
+VW
+Lv
+Kg
+pI
+WU
+kl
+kl
+VF
+Lv
+Lv
+wo
+Fw
+Lv
+Jv
+Fw
+ew
+dn
+Lv
+"}
+(21,1,1) = {"
+vN
+Xr
+By
+sV
+VD
+dn
+Fw
+pr
+UR
+Ai
+Ru
+Pl
+Ru
+wo
+Jv
+JC
+Ru
+pr
+VF
+Lv
+VD
+cf
+Ru
+Jv
+Lv
+wI
+sV
+Fw
+Lv
+Fw
+"}
+(22,1,1) = {"
+Pn
+DP
+sl
+MZ
+sV
+Fw
+Fw
+Fw
+Jv
+Jv
+Fw
+Fw
+Jv
+Jv
+wI
+Jv
+JC
+Jv
+Fw
+sW
+Jv
+Jv
+Lv
+Jv
+Fw
+bu
+Fw
+bu
+Fw
+VW
+"}

@@ -369,10 +369,8 @@
 /obj/structure/machinery/light/blue{
 	dir = 8
 	},
-/obj/structure/barricade/metal/wired{
-	health = 300
-	},
 /obj/effect/decal/hybrisa/dirt,
+/obj/structure/barricade/deployable,
 /turf/open/floor/prison/darkred2/southwest,
 /area/lazarus/lazarus/corporate_dome)
 "iB" = (
@@ -531,12 +529,9 @@
 /area/lazarus/lazarus/corporate_dome)
 "mf" = (
 /obj/effect/decal/hybrisa/dirt,
-/obj/structure/barricade/metal/wired{
-	health = 300;
-	icon_state = "metal_2"
-	},
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
+/obj/structure/barricade/wooden,
 /turf/open/floor/prison/panelscorched,
 /area/lazarus/lazarus/corporate_dome)
 "mp" = (
@@ -587,14 +582,14 @@
 /area/lazarus/lazarus/corporate_dome)
 "nE" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/barricade/metal/wired{
-	health = 300;
-	icon_state = "metal_2"
-	},
 /obj/item/ammo_casing/bullet,
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
+/obj/structure/barricade/metal{
+	health = 250;
+	icon_state = "metal_2"
+	},
 /turf/open/floor/prison/floor_plate,
 /area/lazarus/lazarus/corporate_dome)
 "nU" = (
@@ -613,7 +608,7 @@
 	pixel_x = -13;
 	pixel_y = 7
 	},
-/obj/structure/barricade/sandbags{
+/obj/structure/barricade/wooden{
 	dir = 4
 	},
 /turf/open/floor/prison/darkred2/east,
@@ -627,7 +622,7 @@
 	pixel_x = 9;
 	pixel_y = 8
 	},
-/obj/structure/barricade/wooden,
+/obj/structure/barricade/deployable,
 /turf/open/floor/prison/darkred2/southwest,
 /area/lazarus/lazarus/corporate_dome)
 "pa" = (
@@ -695,13 +690,13 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/lazarus/lazarus/corporate_dome)
 "pR" = (
-/obj/structure/barricade/sandbags{
-	dir = 4
-	},
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /obj/effect/decal/hybrisa/dirt,
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
 /turf/open/floor/prison/darkred2/southeast,
 /area/lazarus/lazarus/corporate_dome)
 "qy" = (
@@ -951,9 +946,6 @@
 /area/lazarus/lazarus/corporate_dome)
 "xj" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/barricade/wooden{
-	dir = 4
-	},
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/darkredcorners2,
 /area/lazarus/lazarus/corporate_dome)
@@ -1001,11 +993,8 @@
 /area/lazarus/lazarus/corporate_dome)
 "yb" = (
 /obj/structure/barricade/metal/wired{
-	dir = 8
-	},
-/obj/structure/barricade/metal/wired{
 	health = 300;
-	icon_state = "metal_2"
+	icon_state = "metal_1"
 	},
 /turf/open/floor/prison/platingdmg3,
 /area/lazarus/lazarus/corporate_dome)
@@ -1136,12 +1125,12 @@
 "Bf" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/item/trash/cigbutt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing/bullet,
 /obj/structure/barricade/metal/wired{
 	health = 300;
 	icon_state = "metal_1"
 	},
-/obj/effect/decal/hybrisa/dirt,
-/obj/item/ammo_casing/bullet,
 /turf/open/floor/prison/floor_plate,
 /area/lazarus/lazarus/corporate_dome)
 "Bz" = (
@@ -1331,7 +1320,7 @@
 /area/lazarus/lazarus/corporate_dome)
 "Gp" = (
 /obj/effect/decal/hybrisa/dirt,
-/obj/structure/barricade/wooden,
+/obj/structure/barricade/deployable,
 /turf/open/floor/prison/darkred2,
 /area/lazarus/lazarus/corporate_dome)
 "GJ" = (
@@ -1865,10 +1854,8 @@
 /obj/structure/machinery/light/blue{
 	dir = 4
 	},
-/obj/structure/barricade/metal/wired{
-	health = 300
-	},
 /obj/effect/decal/hybrisa/dirt,
+/obj/structure/barricade/deployable,
 /turf/open/floor/prison/darkred2/southeast,
 /area/lazarus/lazarus/corporate_dome)
 "Uw" = (
@@ -2047,7 +2034,10 @@
 /area/lazarus/lazarus/corporate_dome)
 "Xp" = (
 /obj/effect/decal/hybrisa/dirt,
-/obj/structure/barricade/sandbags{
+/obj/structure/barricade/deployable{
+	damage_state = 1;
+	health = 245;
+	icon_state = "folding_1";
 	dir = 4
 	},
 /turf/open/floor/prison/darkred2/northeast,

@@ -1,10 +1,10 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aak" = (
 /turf/template_noop,
-/area/template_noop)
+/area/template_noop/conditional/mainship_crashsite_outside)
 "bdH" = (
 /turf/open/floor/plating/hybrisa_rock,
-/area/template_noop)
+/area/template_noop/conditional/mainship_crashsite_outside)
 "bCX" = (
 /turf/closed/wall/almayer/outer/internal,
 /area/mainship_crashsite)

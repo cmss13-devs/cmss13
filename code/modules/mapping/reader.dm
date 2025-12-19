@@ -914,7 +914,7 @@ GLOBAL_LIST_EMPTY(map_model_default)
 	//first instance the /area and remove it from the members list
 	index = length(members)
 	var/area/old_area
-	if(members[index] != /area/template_noop)
+	if(!ispath(members[index], /area/template_noop)) // CM Edit for /area/template_noop/conditional support
 		if(members_attributes[index] != default_list)
 			world.preloader_setup(members_attributes[index], members[index])//preloader for assigning  set variables on atom creation
 		var/area/area_instance = loaded_areas[members[index]]
@@ -942,6 +942,37 @@ GLOBAL_LIST_EMPTY(map_model_default)
 
 		if(GLOB.use_preloader)
 			world.preloader_load(area_instance)
+	else if(ispath(members[index], /area/template_noop/conditional)) // CM Edit for /area/template_noop/conditional support START
+		if(!new_z)
+			old_area = crds.loc
+		var/area/template_noop/conditional/template_area = members[index]
+		if(!old_area || istype(old_area, template_area::trigger_area_type))
+			var/area_type = template_area::resulting_area_type
+			if(members_attributes[index] != default_list)
+				world.preloader_setup(members_attributes[index], area_type)//preloader for assigning  set variables on atom creation
+			var/area/area_instance = loaded_areas[area_type]
+			if(!area_instance)
+				// If this parsed map doesn't have that area already, we check the global cache
+				area_instance = GLOB.areas_by_type[area_type]
+				// If the global list DOESN'T have this area it's either not a unique area, or it just hasn't been created yet
+				if(!area_instance)
+					area_instance = new area_type(null)
+					if(!area_instance)
+						CRASH("[area_type] failed to be new'd, what'd you do?")
+				loaded_areas[area_type] = area_instance
+
+//			if(!new_z)
+//				old_area.turfs_to_uncontain += crds
+//				area_instance.contained_turfs.Add(crds)
+			area_instance.contents.Add(crds)
+			if(old_area)
+				// Make sure atoms leave their old area and enter the new area
+				for(var/atom/turf_atom as anything in crds.GetAllTurfStrictContents())
+					old_area.Exited(turf_atom)
+					area_instance.Entered(turf_atom, crds)
+
+			if(GLOB.use_preloader)
+				world.preloader_load(area_instance) // CM Edit for /area/template_noop/conditional support END
 
 	// Index right before /area is /turf
 	index--

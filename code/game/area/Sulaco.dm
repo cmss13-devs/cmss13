@@ -5,15 +5,6 @@
 	ambience_exterior = AMBIENCE_ALMAYER
 	ceiling_muffle = FALSE
 
-/area/mainship_crashsite
-	ceiling = CEILING_REINFORCED_METAL
-	icon_state = "shuttle"
-	always_unpowered = TRUE
-
-/area/mainship_crashsite/Initialize(mapload, ...)
-	. = ..()
-	name = "\improper [MAIN_SHIP_NAME] crash site"
-
 //Drop Pods
 /area/shuttle/drop1
 	//soundscape_playlist = list('sound/soundscape/drum1.ogg')

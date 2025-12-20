@@ -200,7 +200,7 @@
 		translator_type = mob_client.prefs.predator_translator_type
 		invisibility_sound = mob_client.prefs.predator_invisibility_sound
 
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yautja/hunter(new_human, translator_type, invisibility_sound, caster_material, clan_rank, bracer_material), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yautja/hunter/stranded(new_human, translator_type, invisibility_sound, caster_material, clan_rank, bracer_material), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja/stranded(new_human), WEAR_L_EAR)
 
 // BAD BLOOD

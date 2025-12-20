@@ -135,15 +135,12 @@
 
 	set_predator_status(dead_yautja, gibbed ? "Gibbed" : "Dead")
 
-	var/set_subfaction = ANNOUNCE_YAUTJA_GOOD
-	if(dead_yautja.faction == FACTION_YAUTJA_BADBLOOD)
-		set_subfaction = ANNOUNCE_YAUTJA_BAD
 	// Notify all yautja so they start the gear recovery
-	message_all_yautja("[dead_yautja.real_name] has died at \the [get_area_name(dead_yautja)].", subfaction = set_subfaction)
+	message_all_yautja("[dead_yautja.real_name] has died at \the [get_area_name(dead_yautja)].", list(dead_yautja.faction))
 
 	if(dead_yautja.hunter_data.thrall)
 		var/mob/living/carbon/T = dead_yautja.hunter_data.thrall
-		message_all_yautja("[dead_yautja.real_name]'s Thrall, [T.real_name] is now masterless.", subfaction = set_subfaction)
+		message_all_yautja("[dead_yautja.real_name]'s Thrall, [T.real_name] is now masterless.", list(dead_yautja.faction))
 		dead_yautja.message_thrall("Your master has fallen!")
 		dead_yautja.hunter_data.thrall = null
 

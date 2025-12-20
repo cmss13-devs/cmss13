@@ -137,7 +137,9 @@
 /datum/species/human/hero/thrall/handle_death(mob/living/carbon/human/thrall)
 	GLOB.yautja_mob_list -= thrall
 
-	message_all_yautja("[thrall.real_name] has died at \the [get_area_name(thrall)].", subfaction = ANNOUNCE_YAUTJA_GOOD)
+	var/obj/item/clothing/gloves/yautja/hunter/bracer = thrall.gloves
+	if(istype(bracer))
+		message_all_yautja("[thrall.real_name] has died at \the [get_area_name(thrall)].", bracer.received_networks)
 
 //Various horrors that spawn in and haunt the living.
 /datum/species/human/spook

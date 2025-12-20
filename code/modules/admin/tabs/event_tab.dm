@@ -728,14 +728,18 @@
 	var/input = tgui_input_text(usr, "This is a message from the Yautja Elder Overseer. They are not an AI, but they have witnessed everything that has happened this round through the eyes of all predators, both alive and dead. This message will appear on the screens of all living predator mobs. Check with online staff before sending.", "What Will The Elder Say?")
 	if(!input)
 		return FALSE
-	var/for_badbloods = ANNOUNCE_YAUTJA_GOOD
-	var/choice = tgui_alert(usr, "Is this announcement for Bad Bloods?", "For Badbloods?", list("Yes", "No", "Both"))
+	var/new_broadcast_network = YAUTJA_NET_HUNTING
+	var/choice = tgui_alert(usr, "Who is this announcement for?", "Target Network?", list("Hunting Party", "Bad-Bloods", "Stranded", "All"))
 	switch(choice)
-		if("Yes")
-			for_badbloods = ANNOUNCE_YAUTJA_BAD
-		if("Both")
-			for_badbloods = ANNOUNCE_YAUTJA_ALL
-	elder_overseer_message(input, elder_user = "[key_name(src)]", is_badblood = for_badbloods)
+		if("Hunting Party")
+			new_broadcast_network = YAUTJA_NET_HUNTING
+		if("Bad-Bloods")
+			new_broadcast_network = YAUTJA_NET_BADBLOOD
+		if("Stranded")
+			new_broadcast_network = YAUTJA_NET_STRANDED
+		if("All")
+			new_broadcast_network = YAUTJA_NET_ALL
+	elder_overseer_message(input, elder_user = "[key_name(src)]", broadcast_network = new_broadcast_network)
 
 /client/proc/cmd_admin_world_narrate() // Allows administrators to fluff events a little easier -- TLE
 	set name = "Narrate to Everyone"

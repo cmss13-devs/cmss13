@@ -483,24 +483,25 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	set src in usr
 	if(!usr || usr.stat || !is_ground_level(usr.z))
 		return FALSE
+	var/mob/user = usr
 
-	if(istype(usr.buckled, /obj/structure/bed/nest/))
+	if(istype(user.buckled, /obj/structure/bed/nest/))
 		return FALSE
 
-	if(!HAS_TRAIT(usr, TRAIT_YAUTJA_TECH))
-		to_chat(usr, SPAN_WARNING("You have no idea how this thing works!"))
+	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
+		to_chat(user, SPAN_WARNING("You have no idea how this thing works!"))
 		return FALSE
 
-	if(loc && istype(usr.loc, /turf))
-		var/turf/location = usr.loc
+	if(loc && istype(user.loc, /turf))
+		var/turf/location = user.loc
 		GLOB.yautja_teleports += location
 		var/name = input("What would you like to name this location?", "Text") as null|text
 		if(!name)
 			return FALSE
 		GLOB.yautja_teleport_descs[name + location.loc_to_string()] = location
-		to_chat(usr, SPAN_WARNING("You can now teleport to this location!"))
-		log_game("[usr] ([usr.key]) has created a new teleport location at [get_area(usr)]")
-		message_all_yautja("[usr.real_name] has created a new teleport location, [name], at [usr.loc] in [get_area(usr)]")
+		to_chat(user, SPAN_WARNING("You can now teleport to this location!"))
+		log_game("[user] ([user.key]) has created a new teleport location at [get_area(user)]")
+		message_all_yautja("[user.real_name] has created a new teleport location, [name], at [user.loc] in [get_area(user)]", broadcast_networks = list(user.faction))
 		return TRUE
 
 
@@ -893,6 +894,8 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	var/disarm_timer
 	layer = LOWER_ITEM_LAYER
 	flags_item = ITEM_PREDATOR
+	/// Who armed this trap? Only updates if done by Yautja.
+	var/armed_faction = FACTION_YAUTJA
 
 /obj/item/hunting_trap/Destroy()
 	cleanup_tether()
@@ -910,7 +913,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 			icon_state = "yauttrap1"
 	..()
 
-/obj/item/hunting_trap/attack_self(mob/user as mob)
+/obj/item/hunting_trap/attack_self(mob/living/carbon/human/user as mob)
 	..()
 	if(ishuman(user) && !user.stat && !user.is_mob_restrained())
 		if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
@@ -923,6 +926,8 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 		anchored = TRUE
 		icon_state = "yauttrap[armed]"
 		to_chat(user, SPAN_NOTICE("[src] is now armed."))
+		if(isspeciesyautja(user))
+			armed_faction = user.faction
 		user.attack_log += text("\[[time_stamp()]\] <font color='orange'>[key_name(user)] has armed \the [src] at [get_location_in_text(user)].</font>")
 		log_attack("[key_name(user)] has armed \a [src] at [get_location_in_text(user)].")
 		user.drop_held_item()
@@ -964,7 +969,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 		C.emote("needhelp")
 		xeno.AddComponent(/datum/component/status_effect/interference, 100) // Some base interference to give pred time to get some damage in, if it cannot land a single hit during this time pred is cheeks
 		RegisterSignal(xeno, COMSIG_XENO_PRE_HEAL, PROC_REF(block_heal))
-	message_all_yautja("A hunting trap has caught something in [get_area_name(loc)]!")
+	message_all_yautja("A hunting trap has caught something in [get_area_name(loc)]!", broadcast_networks = list(armed_faction))
 	disarm_timer = addtimer(CALLBACK(src, PROC_REF(disarm)), duration, TIMER_UNIQUE|TIMER_STOPPABLE)
 
 /obj/item/hunting_trap/proc/block_heal(mob/living/carbon/xenomorph/xeno)

@@ -889,10 +889,9 @@
 					if(user.hunter_data.prey == target)
 						to_chat(src, SPAN_YAUTJABOLD("You have claimed the scalp of [target] as your trophy."))
 						user.emote("roar2")
-						var/set_subfaction = ANNOUNCE_YAUTJA_GOOD
-						if(user.faction == FACTION_YAUTJA_BADBLOOD)
-							set_subfaction = ANNOUNCE_YAUTJA_BAD
-						message_all_yautja("[user.real_name] has claimed the scalp of [target] as their trophy.", subfaction = set_subfaction)
+						var/obj/item/clothing/gloves/yautja/hunter/bracer = user.gloves
+						if(istype(bracer))
+							message_all_yautja("[user.real_name] has claimed the scalp of [target] as their trophy.", broadcast_networks = bracer.received_networks)
 						user.hunter_data.prey = null
 
 		if(FLAY_STAGE_STRIP)

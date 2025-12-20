@@ -290,23 +290,15 @@
 	///A list of all intrinsic bracer actions
 	var/list/bracer_actions = list(/datum/action/predator_action/bracer/wristblade, /datum/action/predator_action/bracer/caster, /datum/action/predator_action/bracer/cloak, /datum/action/predator_action/bracer/thwei, /datum/action/predator_action/bracer/capsule, /datum/action/predator_action/bracer/translator, /datum/action/predator_action/bracer/self_destruct, /datum/action/predator_action/bracer/smartdisc)
 
+	/// A list of networks the bracer is listening to for messages.
+	var/list/received_networks = list(YAUTJA_NET_HUNTING)
+
 /obj/item/clothing/gloves/yautja/hunter/badblood
 	badblood = TRUE
+	received_networks = list(YAUTJA_NET_BADBLOOD)
 
-/obj/item/clothing/gloves/yautja/hunter/proc/can_get_message(subfaction = ANNOUNCE_YAUTJA_GOOD)
-	switch(subfaction)
-		if(ANNOUNCE_YAUTJA_GOOD)
-			if(badblood)
-				return FALSE
-			return TRUE
-		if(ANNOUNCE_YAUTJA_BAD)
-			if(badblood)
-				return TRUE
-			return FALSE
-		if(ANNOUNCE_YAUTJA_ALL)
-			return TRUE
-	log_debug("Yautja Debug: Bracer message recevied without faction.")
-	return FALSE
+/obj/item/clothing/gloves/yautja/hunter/stranded
+	received_networks = list(YAUTJA_NET_STRANDED)
 
 /obj/item/clothing/gloves/yautja/hunter/get_examine_text(mob/user)
 	. = ..()
@@ -942,8 +934,9 @@
 
 	exploding = 1
 	var/turf/T = get_turf(victim)
-	if(explosion_type == SD_TYPE_BIG && (is_ground_level(T.z) || MODE_HAS_MODIFIER(/datum/gamemode_modifier/yautja_shipside_large_sd)))
-		playsound(src, 'sound/voice/pred_deathlaugh.ogg', 100, 0, 17, status = 0)
+	if(!victim.stat)
+		if(explosion_type == SD_TYPE_BIG && (is_ground_level(T.z) || MODE_HAS_MODIFIER(/datum/gamemode_modifier/yautja_shipside_large_sd)))
+			playsound(src, 'sound/voice/pred_deathlaugh.ogg', 100, 0, 17, status = 0)
 
 	playsound(src, 'sound/effects/pred_countdown.ogg', 100, 0, 17, status = 0)
 	message_admins(FONT_SIZE_XL("<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];admincancelpredsd=1;bracer=\ref[src];victim=\ref[victim]'>CLICK TO CANCEL THIS PRED SD</a>"))
@@ -991,9 +984,6 @@
 	if(.)
 		return
 
-	var/set_subfaction = ANNOUNCE_YAUTJA_GOOD
-	if(badblood)
-		set_subfaction = ANNOUNCE_YAUTJA_BAD
 	var/mob/living/carbon/human/boomer = user
 	var/area/grounds = get_area(boomer)
 
@@ -1023,11 +1013,11 @@
 	if(istype(G))
 		var/mob/living/carbon/human/victim = G.grabbed_thing
 		if(victim.stat == DEAD)
-			var/obj/item/clothing/gloves/yautja/hunter/bracer = victim.gloves
+			var/obj/item/clothing/gloves/yautja/hunter/victim_bracer = victim.gloves
 			var/message = "Are you sure you want to detonate this [victim.species]'s bracer?"
 			if(isspeciesyautja(victim))
 				message = "Are you sure you want to send this [victim.species] into the great hunting grounds?"
-			if(istype(bracer))
+			if(istype(victim_bracer))
 				if(forced || tgui_alert(boomer, message, "Explosive Bracers", list("Yes", "No"), 20 SECONDS) == "Yes")
 					if(boomer.stat == DEAD)
 						to_chat(boomer, SPAN_WARNING("Little too late for that now!"))
@@ -1038,16 +1028,16 @@
 					if(boomer.is_mob_incapacitated() || HAS_TRAIT(boomer, TRAIT_HAULED))
 						to_chat(boomer, SPAN_WARNING("You cannot do this in your current state."))
 						return
-					if(boomer.get_active_hand() == G && victim && victim.gloves == bracer && !bracer.exploding)
+					if(boomer.get_active_hand() == G && victim && victim.gloves == victim_bracer && !victim_bracer.exploding)
 						var/area/A = get_area(boomer)
 						var/turf/T = get_turf(boomer)
 						if(A)
 							message_admins(FONT_SIZE_HUGE("ALERT: [boomer] ([boomer.key]) triggered the predator self-destruct sequence of [victim] ([victim.key]) in [A.name] [ADMIN_JMP(T)]</font>"))
 							log_attack("[key_name(boomer)] triggered the predator self-destruct sequence of [victim] ([victim.key]) in [A.name]")
-						if (!bracer.exploding)
-							bracer.explode(victim)
+						if (!victim_bracer.exploding)
+							victim_bracer.explode(victim)
 						boomer.visible_message(SPAN_WARNING("[boomer] presses a few buttons on [victim]'s wrist bracer."),SPAN_DANGER("You activate the timer. May [victim]'s final hunt be swift."))
-						message_all_yautja("[boomer.real_name] has triggered [victim.real_name]'s bracer's self-destruction sequence.", subfaction = set_subfaction)
+						message_all_yautja("[boomer.real_name] has triggered [victim.real_name]'s bracer's self-destruction sequence.", broadcast_networks = victim_bracer.received_networks)
 			else
 				to_chat(boomer, SPAN_WARNING("<b>This [victim.species] does not have a bracer attached.</b>"))
 			return
@@ -1067,7 +1057,7 @@
 				return
 			exploding = FALSE
 			to_chat(boomer, SPAN_NOTICE("Your bracers stop beeping."))
-			message_all_yautja("[boomer.real_name] has cancelled their bracer's self-destruction sequence.", subfaction = set_subfaction)
+			message_all_yautja("[boomer.real_name] has cancelled their bracer's self-destruction sequence.", broadcast_networks = received_networks)
 			message_admins("[key_name(boomer)] has deactivated their Self-Destruct.")
 
 			var/datum/action/predator_action/bracer/self_destruct/sd_action
@@ -1104,7 +1094,7 @@
 		var/turf/T = get_turf(boomer)
 		message_admins(FONT_SIZE_HUGE("ALERT: [boomer] ([boomer.key]) triggered their predator self-destruct sequence [A ? "in [A.name]":""] [ADMIN_JMP(T)]"))
 		log_attack("[key_name(boomer)] triggered their predator self-destruct sequence in [A ? "in [A.name]":""]")
-		message_all_yautja("[boomer.real_name] has triggered their bracer's self-destruction sequence.", subfaction = set_subfaction)
+		message_all_yautja("[boomer.real_name] has triggered their bracer's self-destruction sequence.", broadcast_networks = received_networks)
 		explode(boomer)
 
 		var/datum/action/predator_action/bracer/self_destruct/sd_action
@@ -1126,7 +1116,7 @@
 	if(!user.loc || user.is_mob_incapacitated() || !ishuman(user))
 		return
 
-	if(user.faction == FACTION_YAUTJA_YOUNG)
+	if(user.faction != FACTION_YAUTJA)
 		to_chat(user, SPAN_WARNING("This button is not for you."))
 		return
 
@@ -1158,10 +1148,7 @@
 	var/area/location = get_area(target_youngblood)
 	var/turf/floor = get_turf(target_youngblood)
 	target_youngblood.death(create_cause_data("Youngblood Termination"), TRUE)
-	var/set_subfaction = ANNOUNCE_YAUTJA_GOOD
-	if(badblood)
-		set_subfaction = ANNOUNCE_YAUTJA_BAD
-	message_all_yautja("[user.real_name] has terminated [target_youngblood.real_name] for: '[reason]'.", subfaction = set_subfaction)
+	message_all_yautja("[user.real_name] has terminated [target_youngblood.real_name] for: '[reason]'.", broadcast_networks = received_networks)
 	message_admins(FONT_SIZE_LARGE("ALERT: [user.real_name] ([user.key]) Terminated [target_youngblood.real_name] ([target_youngblood.key]) in [location.name] for: '[reason]' [ADMIN_JMP(floor)]</font>"))
 
 #define YAUTJA_CREATE_CRYSTAL_COOLDOWN "yautja_create_crystal_cooldown"

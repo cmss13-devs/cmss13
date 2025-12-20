@@ -215,18 +215,20 @@
 	if(!ismob(source))
 		return FALSE
 
-	if(ishuman(source))
-		var/mob/living/carbon/human/human_source = source
-		if(!human_source.has_limb_for_slot(key))
-			to_chat(user, SPAN_WARNING("[source] is missing the limb for this slot!"))
-			return FALSE
+
+	var/mob/living/carbon/human/human_source = source
+	if(!human_source.has_limb_for_slot(key))
+		to_chat(user, SPAN_WARNING("[source] is missing the limb for this slot!"))
+		return FALSE
+
+	if(!equipping.mob_can_equip(source, key))
+		to_chat(user, SPAN_WARNING("[equipping] doesn't fit in that place!"))
+		return FALSE
 
 	if(user.action_busy)
 		to_chat(user, SPAN_WARNING("You can't do this right now."))
 		return FALSE
-	if(!equipping.mob_can_equip(source, key))
-		to_chat(user, SPAN_WARNING("\The [equipping] doesn't fit in that place!"))
-		return FALSE
+
 	if(equipping.flags_item & WIELDED)
 		equipping.unwield(user)
 	return TRUE

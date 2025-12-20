@@ -204,10 +204,20 @@
 	probability = 0
 	mob_max = 3
 	mob_min = 1
-	objectives = "Hunt down and defeat prey within the hunting grounds to earn your mark. You may not: Stun hit prey, hit prey in cloak or excessively run away to heal."
 	ert_message = "A group of Yautja Youngbloods are being awakened for a hunt"
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress/hunt_spawner/pred
 	shuttle_id = ""
+	var/checked_objective = FALSE
+
+/datum/emergency_call/young_bloods/New()
+	. = ..()
+	objectives = "Hunt down and defeat prey within the hunting grounds to earn your mark. You may not: Stun hit prey, hit prey in cloak or excessively run away to heal."
+
+/datum/emergency_call/young_bloods/proc/check_objective_info()
+	if(objective_info)
+		objectives = "Hunt down and defeat prey within the hunting grounds to earn your mark."
+	objectives += "While hunting, you are not allowed to: Stun hit prey, hit prey while cloaked, excessively run away to heal and steal hunted marks of your fellow youngbloods!"
+	checked_objective = TRUE
 
 /datum/emergency_call/young_bloods/remove_nonqualifiers(list/datum/mind/candidates_list)
 	var/list/datum/mind/youngblood_candidates_clean = list()
@@ -240,6 +250,9 @@
 
 	if(!istype(spawn_loc))  //Didn't find a useable spawn point.
 		return
+
+	if(!checked_objective)
+		check_objective_info()
 
 	var/mob/living/carbon/human/hunter = new(spawn_loc)
 

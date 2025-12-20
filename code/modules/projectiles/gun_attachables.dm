@@ -4016,7 +4016,7 @@ Defined in conflicts.dm of the #defines folder.
 				scatter_mod = -SCATTER_AMOUNT_TIER_10
 				recoil_mod = -RECOIL_AMOUNT_TIER_4
 				burst_scatter_mod = -SCATTER_AMOUNT_TIER_8
-				if(istype(gun, /obj/item/weapon/gun/rifle/sniper/M42A))
+				if(istype(gun, /obj/item/weapon/gun/rifle/sniper/M42A || /obj/item/weapon/gun/rifle/sniper/halo))
 					delay_mod = -FIRE_DELAY_TIER_7
 				else
 					delay_mod = -FIRE_DELAY_TIER_12

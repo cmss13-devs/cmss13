@@ -41,21 +41,12 @@ GLOBAL_LIST_INIT(cm_vending_clothing_military_police_chief, list(
 		list("Marine Combat Boots", 0, /obj/item/clothing/shoes/marine/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
 
 		list("ARMOR (TAKE ALL)", 0, null, null, null),
-		list("Military Police Chief M3 Armor", 0, /obj/item/clothing/suit/storage/marine/MP/WO, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_RECOMMENDED),
-		list("Chief MP M10 Helmet", 0, /obj/item/clothing/head/helmet/marine/MP/WO, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
 		list("CMP Beret", 0, /obj/item/clothing/head/beret/marine/mp/cmp, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
-
-		list("HANDGUN CASE (CHOOSE 1)", 0, null, null, null),
-		list("88 mod 4 Combat Pistol Case", 0, /obj/item/storage/box/guncase/mod88, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_MANDATORY),
-		list("M44 Combat Revolver Case", 0, /obj/item/storage/box/guncase/m44, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_MANDATORY),
-		list("M4A4 Service Pistol Case", 0, /obj/item/storage/box/guncase/m4a4, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_MANDATORY),
 
 		list("BACKPACK (CHOOSE 1)", 0, null, null, null),
 		list("Military Police Satchel", 0, /obj/item/storage/backpack/satchel/sec, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
 
 		list("BELT (CHOOSE 1)", 0, null, null, null),
-		list("M276 General Pistol Holster Rig", 0, /obj/item/storage/belt/gun/m4a3, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
-		list("M276 General Revolver Holster Rig", 0, /obj/item/storage/belt/gun/m44, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
 		list("M276 G8-A General Utility Pouch", 0, /obj/item/storage/backpack/general_belt, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
 
 		list("POUCHES (CHOOSE 2)", 0, null, null, null),
@@ -63,8 +54,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_military_police_chief, list(
 		list("First-Aid Pouch (Refillable Autoinjectors)", 0, /obj/item/storage/pouch/firstaid/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
 		list("First-Aid Pouch (Splints, Gauze, Ointment)", 0, /obj/item/storage/pouch/firstaid/full/alternate, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
 		list("First-Aid Pouch (Pill Packets)", 0, /obj/item/storage/pouch/firstaid/full/pills, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
-		list("Pistol Magazine Pouch", 0, /obj/item/storage/pouch/magazine/pistol, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("Pistol Pouch", 0, /obj/item/storage/pouch/pistol, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Large General Pouch", 0, /obj/item/storage/pouch/general/large, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 
 		list("MASK (CHOOSE 1)", 0, null, null, null),
@@ -132,16 +121,10 @@ GLOBAL_LIST_INIT(cm_vending_clothing_chief_engineer, list(
 		list("Electronics Pouch (Full)", 0, /obj/item/storage/pouch/electronics/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Magazine Pouch", 0, /obj/item/storage/pouch/magazine, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Shotgun Shell Pouch", 0, /obj/item/storage/pouch/shotgun, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("Sidearm Pouch", 0, /obj/item/storage/pouch/pistol, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Flare Pouch (Full)", 0, /obj/item/storage/pouch/flare/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Fuel Tank Strap Pouch", 0, /obj/item/storage/pouch/flamertank, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Engineer kit Pouch", 0, /obj/item/storage/pouch/engikit, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Sling Pouch", 0, /obj/item/storage/pouch/sling, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-
-		list("PERSONAL SIDEARM (CHOOSE 1)", 0, null, null, null),
-		list("M4A3 Service Pistol", 0, /obj/item/storage/belt/gun/m4a3/full, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
-		list("Mod 88 Pistol", 0, /obj/item/storage/belt/gun/m4a3/mod88, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
-		list("M44 Revolver", 0, /obj/item/storage/belt/gun/m44/mp, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
 
 		list("ACCESSORIES (CHOOSE 1)", 0, null, null, null),
 		list("Black Webbing Vest", 0, /obj/item/clothing/accessory/storage/black_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
@@ -158,19 +141,13 @@ GLOBAL_LIST_INIT(cm_vending_clothing_chief_engineer, list(
 		list("DEPLOYMENT GEAR", 0, null, null, null),
 
 		list("COMBAT EQUIPMENT (TAKE ALL)", 0, null, null, null),
-		list("Officer Deployment Gear", 0, list(/obj/item/clothing/gloves/marine/insulated/black, /obj/item/clothing/suit/storage/marine/CIC, /obj/item/device/binoculars/range/designator,), MARINE_CAN_BUY_COMBAT_ARMOR, VENDOR_ITEM_REGULAR),
-
-		list("COMBAT HELMET (CHOOSE 1)", 0, null, null, null),
-		list("Officer M10 Helmet", 0, /obj/item/clothing/head/helmet/marine/MP/SO/basic, MARINE_CAN_BUY_COMBAT_HELMET, VENDOR_ITEM_REGULAR),
-		list("M10 Technician Helmet", 0, /obj/item/clothing/head/helmet/marine/tech, MARINE_CAN_BUY_COMBAT_HELMET, VENDOR_ITEM_REGULAR),
+		list("Officer Deployment Gear", 0, list(/obj/item/clothing/gloves/marine/insulated/black, /obj/item/device/binoculars/range/designator,), MARINE_CAN_BUY_COMBAT_ARMOR, VENDOR_ITEM_REGULAR),
 
 		list("MASK (CHOOSE 1)", 0, null, null, null),
 		list("Gas Mask", 0, /obj/item/clothing/mask/gas, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
 		list("Heat Absorbent Coif", 0, /obj/item/clothing/mask/rebreather/scarf, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
 
 		list("PRIMARY FIREARMS (CHOOSE 1)", 0, null, null, null),
-		list("M37A2 Pump Shotgun", 0, /obj/item/storage/box/guncase/pumpshotgun, MARINE_CAN_BUY_KIT, VENDOR_ITEM_REGULAR),
-		list("M41A Pulse Rifle MK2", 0, /obj/item/storage/box/guncase/m41a, MARINE_CAN_BUY_KIT, VENDOR_ITEM_REGULAR),
 		list("M240 Incinerator Unit", 0, /obj/item/storage/box/guncase/flamer, MARINE_CAN_BUY_KIT, VENDOR_ITEM_REGULAR),
 
 		list("Spare Equipment", 0, null, null, null),
@@ -195,14 +172,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_req_officer, list(
 		list("Quartermaster Beret", 0, /obj/item/clothing/head/beret/marine/ro, MARINE_CAN_BUY_MASK, VENDOR_ITEM_RECOMMENDED),
 		list("Requisitions Cap", 0, /obj/item/clothing/head/cmcap/req, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
 
-		list("PERSONAL SIDEARM (CHOOSE 1)", 0, null, null, null),
-		list("M4A3 Service Pistol", 0, /obj/item/storage/belt/gun/m4a3/full, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
-		list("Mod 88 Pistol", 0, /obj/item/storage/belt/gun/m4a3/mod88, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
-		list("M44 Custom Revolver", 0, /obj/item/storage/belt/gun/m44/custom, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
-
 		list("COMBAT EQUIPMENT (TAKE ALL)", 0, null, null, null),
-		list("Officer M3 Armor", 0, /obj/item/clothing/suit/storage/marine/CIC, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
-		list("Officer M10 Helmet", 0, /obj/item/clothing/head/helmet/marine/MP/SO/basic, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
 		list("Marine Combat Boots", 0, /obj/item/clothing/shoes/marine/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
 
 		list("POUCHES (CHOOSE 2)", 0, null, null, null),
@@ -291,14 +261,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_cmo, list(
 		list("M276 Lifesaver Bag (Full)", 0, /obj/item/storage/belt/medical/lifesaver/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
 		list("M276 Medical Storage Rig (Full)", 0, /obj/item/storage/belt/medical/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
 
-		list("PERSONAL SIDEARM (CHOOSE 1)", 0, null, null, null),
-		list("M4A3 Service Pistol", 0, /obj/item/storage/belt/gun/m4a3/full, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_REGULAR),
-		list("Mod 88 Pistol", 0, /obj/item/storage/belt/gun/m4a3/mod88, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_REGULAR),
-		list("M44 Revolver", 0, /obj/item/storage/belt/gun/m44/mp, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
-
 		list("COMBAT EQUIPMENT (COMBAT USE ONLY)", 0, null, null, null),
-		list("Officer M3 Armor", 0, /obj/item/clothing/suit/storage/marine/CIC, MARINE_CAN_BUY_COMBAT_ARMOR, VENDOR_ITEM_MANDATORY),
-		list("Officer M10 Helmet", 0, /obj/item/clothing/head/helmet/marine/MP/SO, MARINE_CAN_BUY_COMBAT_HELMET, VENDOR_ITEM_MANDATORY),
 		list("Marine Combat Boots", 0, /obj/item/clothing/shoes/marine/knife, MARINE_CAN_BUY_COMBAT_SHOES, VENDOR_ITEM_MANDATORY),
 
 		list("POUCHES (CHOOSE 2)", 0, null, null, null),
@@ -349,17 +312,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_cmo, list(
 
 //------------WEAPON VENDOR---------------
 GLOBAL_LIST_INIT(cm_vending_gear_xo, list(
-		list("CAPTAIN'S PRIMARY (CHOOSE 1)", 0, null, null, null),
-		list("M41A MK1 Pulse Rifle", 0, /obj/item/storage/box/guncase/m41aMK1AP, MARINE_CAN_BUY_KIT, VENDOR_ITEM_MANDATORY),
-		list("MK221 Tactical Shotgun", 0, /obj/effect/essentials_set/xo/shotgunpreset, MARINE_CAN_BUY_KIT, VENDOR_ITEM_MANDATORY),
-
-		list("PRIMARY AMMUNITION", 0, null, null, null),
-		list("M41A MK1 Magazine", 40, /obj/item/ammo_magazine/rifle/m41aMK1, null, VENDOR_ITEM_RECOMMENDED),
-		list("M41A MK1 AP Magazine", 60, /obj/item/ammo_magazine/rifle/m41aMK1/ap, null, VENDOR_ITEM_RECOMMENDED),
-		list("Buckshot Shells", 20, /obj/item/ammo_magazine/shotgun/buckshot, null, VENDOR_ITEM_REGULAR),
-		list("Shotgun Slugs", 20, /obj/item/ammo_magazine/shotgun/slugs, null, VENDOR_ITEM_REGULAR),
-		list("Flechette Shells", 20, /obj/item/ammo_magazine/shotgun/flechette, null, VENDOR_ITEM_REGULAR),
-
 		list("SPECIALISATION KIT (CHOOSE 1)", 0, null, null, null),
 		list("Essential Engineer Set", 0, /obj/effect/essentials_set/engi, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_RECOMMENDED),
 		list("Essential Medical Set", 0, /obj/effect/essentials_set/medic, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_RECOMMENDED),
@@ -432,8 +384,6 @@ GLOBAL_LIST_INIT(cm_vending_gear_xo, list(
 //------------UNIFORM/GEAR VENDOR---------------
 GLOBAL_LIST_INIT(cm_vending_clothing_xo, list(
 		list("COMBAT EQUIPMENT (TAKE ALL)", 0, null, null, null),
-		list("Officer M3 Armor", 0, /obj/item/clothing/suit/storage/marine/CIC, MARINE_CAN_BUY_COMBAT_ARMOR, VENDOR_ITEM_MANDATORY),
-		list("Officer M10 Helmet", 0, /obj/item/clothing/head/helmet/marine/MP/SO, MARINE_CAN_BUY_COMBAT_HELMET, VENDOR_ITEM_MANDATORY),
 		list("Marine Combat Boots", 0, /obj/item/clothing/shoes/marine/knife, MARINE_CAN_BUY_COMBAT_SHOES, VENDOR_ITEM_MANDATORY),
 		list("Marine Combat Gloves", 0, /obj/item/clothing/gloves/marine, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
 
@@ -447,12 +397,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_xo, list(
 		list("Operations Uniform", 0, /obj/item/clothing/under/marine/officer/boiler, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_RECOMMENDED),
 		list("Formal Uniform", 0, /obj/effect/essentials_set/xoformal, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_RECOMMENDED),
 
-		list("PERSONAL WEAPON (CHOOSE 1)", 0, null, null, null),
-		list("VP78 Pistol", 0, /obj/item/storage/belt/gun/m4a3/vp78, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
-		list("M4A3 Service Pistol", 0, /obj/item/storage/belt/gun/m4a3/commander, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_REGULAR),
-		list("Mod 88 Pistol", 0, /obj/item/storage/belt/gun/m4a3/mod88, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_REGULAR),
-		list("M44 Revolver", 0, /obj/item/storage/belt/gun/m44/mp, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_REGULAR),
-
 		list("EYEWEAR (CHOOSE 1)", 0, null, null, null),
 		list("Medical HUD Glasses", 0, /obj/item/clothing/glasses/hud/health, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_RECOMMENDED),
 		list("Security HUD Glasses", 0, /obj/item/clothing/glasses/sunglasses/sechud, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_REGULAR),
@@ -465,15 +409,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_xo, list(
 		list("Patrol Cap", 0, /obj/item/clothing/head/cmcap, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
 		list("Officer Cap", 0, /obj/item/clothing/head/cmcap/bridge, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
 
-		list("PATCHES", 0, null, null, null),
-		list("Falling Falcons Shoulder Patch", 1, /obj/item/clothing/accessory/patch/falcon, null, VENDOR_ITEM_REGULAR),
-		list("Falling Falcons UA Shoulder Patch", 1, /obj/item/clothing/accessory/patch/falconalt, null, VENDOR_ITEM_REGULAR),
-		list("USCM Large Chest Patch", 1, /obj/item/clothing/accessory/patch/uscmlarge, null, VENDOR_ITEM_REGULAR),
-		list("USCM Shoulder Patch", 1, /obj/item/clothing/accessory/patch, null, VENDOR_ITEM_REGULAR),
-		list("United Americas Shoulder patch", 1, /obj/item/clothing/accessory/patch/ua, null, VENDOR_ITEM_REGULAR),
-		list("United Americas Flag Shoulder patch", 1, /obj/item/clothing/accessory/patch/uasquare, null, VENDOR_ITEM_REGULAR),
-
-
 		list("BELT (CHOOSE 1)", 0, null, null, null),
 		list("G8-A General Utility Pouch", 0, /obj/item/storage/backpack/general_belt, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
 		list("M276 Ammo Load Rig", 0, /obj/item/storage/belt/marine, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
@@ -482,7 +417,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_xo, list(
 		list("M276 Holster Toolrig (Full)", 0, /obj/item/storage/belt/gun/utility/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
 		list("M276 Lifesaver Bag (Full)", 0, /obj/item/storage/belt/medical/lifesaver/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
 		list("M276 Medical Storage Rig (Full)", 0, /obj/item/storage/belt/medical/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
-		list("M276 M39 Holster Rig", 0, /obj/item/storage/belt/gun/m39, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
 		list("M276 M82F Holster Rig", 0, /obj/item/storage/belt/gun/flaregun, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
 		list("M276 M40 Grenade Rig", 0, /obj/item/storage/belt/grenade, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
 		list("Military Police Belt", 0, /obj/item/storage/belt/security/MP/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
@@ -494,10 +428,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_xo, list(
 		list("Large General Pouch", 0, /obj/item/storage/pouch/general/large, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
 		list("Large Magazine Pouch", 0, /obj/item/storage/pouch/magazine/large, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
 		list("Large Shotgun Shell Pouch", 0, /obj/item/storage/pouch/shotgun/large, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
-		list("Large Pistol Magazine Pouch", 0, /obj/item/storage/pouch/magazine/pistol/large, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Medical Pouch", 0, /obj/item/storage/pouch/medical, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Medical Kit Pouch", 0, /obj/item/storage/pouch/medkit, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("Pistol Pouch", 0, /obj/item/storage/pouch/pistol, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Sling Pouch", 0, /obj/item/storage/pouch/sling, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Tools Pouch (Full)", 0, /obj/item/storage/pouch/tools/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
 		list("Construction Pouch", 0, /obj/item/storage/pouch/construction, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
@@ -525,13 +457,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_auxiliary_officer, list(
 		list("Auxiliary Support Officer Jacket", 0, /obj/item/clothing/suit/storage/jacket/marine/service/aso, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 
 		list("BAG (CHOOSE 1)", 0, null, null, null),
-		list("USCM Technician Chestrig", 0, /obj/item/storage/backpack/marine/satchel/tech, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
 		list("Leather Satchel", 0, /obj/item/storage/backpack/satchel, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
-
-		list("PERSONAL SIDEARM (CHOOSE 1)", 0, null, null, null),
-		list("M4A3 Service Pistol", 0, /obj/item/storage/belt/gun/m4a3/full, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
-		list("Mod 88 Pistol", 0, /obj/item/storage/belt/gun/m4a3/mod88, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
-		list("M44 Custom Revolver", 0, /obj/item/storage/belt/gun/m44/custom, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
 
 		list("HAT (CHOOSE 1)", 0, null, null, null),
 		list("Beret, Green", 0, /obj/item/clothing/head/beret/cm, MARINE_CAN_BUY_MASK, VENDOR_ITEM_RECOMMENDED),
@@ -541,8 +467,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_auxiliary_officer, list(
 		list("Service Peaked Cap", 0, /obj/item/clothing/head/marine/peaked/service, MARINE_CAN_BUY_MASK, VENDOR_ITEM_RECOMMENDED),
 
 		list("COMBAT EQUIPMENT (TAKE ALL)", 0, null, null, null),
-		list("Officer M3 Armor", 0, /obj/item/clothing/suit/storage/marine/CIC, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
-		list("Officer M10 Helmet", 0, /obj/item/clothing/head/helmet/marine/MP/SO, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
 		list("Marine Combat Boots", 0, /obj/item/clothing/shoes/marine/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
 
 		list("POUCHES (CHOOSE 2)", 0, null, null, null),
@@ -566,7 +490,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_auxiliary_officer, list(
 	spawned_gear_list = list(
 		/obj/item/clothing/glasses/sunglasses/sechud,
 		/obj/item/storage/belt/security/MP/full,
-		/obj/item/clothing/head/helmet/marine/MP/WO,
 	)
 
 /obj/effect/essentials_set/xoformal

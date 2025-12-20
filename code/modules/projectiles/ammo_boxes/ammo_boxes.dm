@@ -18,6 +18,7 @@
 	var/handfuls_icon = 'icons/obj/items/weapons/guns/ammo_boxes/handfuls.dmi'
 	var/magazines_icon = 'icons/obj/items/weapons/guns/ammo_boxes/magazines.dmi'
 	var/flames_icon = 'icons/obj/items/weapons/guns/ammo_boxes/misc.dmi'
+	var/deployed_object = /obj/structure/magazine_box
 
 //---------------------GENERAL PROCS
 
@@ -177,7 +178,7 @@
 			to_chat(user, SPAN_WARNING("You can't cram any more boxes in here!"))
 			return
 
-	var/obj/structure/magazine_box/M = new /obj/structure/magazine_box(T)
+	var/obj/structure/magazine_box/M = new deployed_object(T)
 	M.icon_state = icon_state_deployed ? icon_state_deployed : icon_state
 	M.name = name
 	M.desc = desc

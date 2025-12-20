@@ -11,7 +11,7 @@
 	var/pool = ASRS_POOL_MAIN
 	/// What supply pack would this dispense
 	var/datum/supply_packs/reference_package
-
+/*
 //===================================
 // Rounds
 /datum/supply_packs_asrs/ammo_rounds_box_rifle
@@ -69,7 +69,7 @@
 /datum/supply_packs_asrs/ammo_shell_box_flechette
 	reference_package = /datum/supply_packs/ammo_shell_box_flechette
 	cost = ASRS_VERY_LOW_WEIGHT
-
+*/
 /datum/supply_packs_asrs/ammo_smartgun
 	reference_package = /datum/supply_packs/ammo_smartgun
 

@@ -1,3 +1,4 @@
+/*
 /datum/supply_packs/rail_reddot
 	name = "red-dot sight attachment crate (x8)"
 	contains = list(
@@ -281,3 +282,4 @@
 	containertype = /obj/structure/closet/crate
 	containername = "stock smg attachment crate"
 	group = "Attachments"
+*/

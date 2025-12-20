@@ -1,9 +1,139 @@
 //*******************************************************************************
 //AMMO
 //*******************************************************************************/
+/datum/supply_packs/ammo_mag_ma5c
+	name = "MA5C ICWS Assault Rifle Magazines (x48)"
+	contains = list(
+		/obj/item/ammo_box/magazine/unsc/ma5c
+	)
+	cost = 20
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "\improper Ammo Crate"
+	group = "Ammo"
+
+/datum/supply_packs/ammo_mag_br55
+	name = "BR55 Battle Rifle Magazines (x32)"
+	contains = list(
+		/obj/item/ammo_box/magazine/unsc/br55
+	)
+	cost = 20
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "\improper Ammo Crate"
+	group = "Ammo"
+
+/datum/supply_packs/ammo_mag_br55_ext
+	name = "BR55 Battle Rifle Extended Magazines (x32)"
+	contains = list(
+		/obj/item/ammo_box/magazine/unsc/br55/extended
+	)
+	cost = 40
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "\improper Ammo Crate"
+	group = "Ammo"
+
+/datum/supply_packs/ammo_mag_m7_pack
+	name = "M7 SMG Ammo Packets (16x2)"
+	contains = list(
+		/obj/item/ammo_box/magazine/misc/unsc/m7_ammo
+	)
+	cost = 20
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "\improper Ammo Crate"
+	group = "Ammo"
+
+/datum/supply_packs/ammo_mag_m6c
+	name = "M6C Service Magnum Magazines (x22)"
+	contains = list(
+		/obj/item/ammo_box/magazine/unsc/small/m6c
+	)
+	cost = 10
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "\improper Ammo Crate"
+	group = "Ammo"
+
+/datum/supply_packs/ammo_mag_m6c_socom
+	name = "M6C Service Magnum SOCOM Magazines (x22)"
+	contains = list(
+		/obj/item/ammo_box/magazine/unsc/small/m6c/socom
+	)
+	cost = 40
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "\improper Ammo Crate"
+	group = "Ammo"
+
+/datum/supply_packs/ammo_mag_m6g
+	name = "M6G Heavy Magnum Magazines (x22)"
+	contains = list(
+		/obj/item/ammo_box/magazine/unsc/small/m6g
+	)
+	cost = 10
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "\improper Ammo Crate"
+	group = "Ammo"
+
+/datum/supply_packs/unsc_mre
+	name = "UNSC MRE Crate (x14)"
+	contains = list(
+		/obj/item/ammo_box/magazine/misc/unsc/mre
+	)
+	cost = 5
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "\improper MRE Crate"
+	group = "Ammo"
+
+/datum/supply_packs/unsc_flare
+	name = "UNSC Flare Crate (x14)"
+	contains = list(
+		/obj/item/ammo_box/magazine/misc/unsc/flare
+	)
+	cost = 5
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "\improper Flare Crate"
+	group = "Ammo"
+
+/datum/supply_packs/unsc_flare
+	name = "UNSC CAS Flare Crate (x14)"
+	contains = list(
+		/obj/item/ammo_box/magazine/misc/unsc/flare/signal
+	)
+	cost = 10
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "\improper Flare Crate"
+	group = "Ammo"
+
+/datum/supply_packs/unsc_grenade_launch
+	name = "UNSC Launchable Grenades Crate (x30)"
+	contains = list(
+		/obj/item/ammo_box/magazine/misc/unsc/grenade/launchable
+	)
+	cost = 85
+	containertype = /obj/structure/closet/crate/explosives
+	containername = "\improper Grenade Crate"
+	group = "Ammo"
+
+/datum/supply_packs/unsc_grenade
+	name = "UNSC Grenades Crate (x9)"
+	contains = list(
+		/obj/item/ammo_box/magazine/misc/unsc/grenade
+	)
+	cost = 35
+	containertype = /obj/structure/closet/crate/explosives
+	containername = "\improper Grenade Crate"
+	group = "Ammo"
+
+/datum/supply_packs/unsc_grenade
+	name = "UNSC Medical Packets (x10)"
+	contains = list(
+		/obj/item/ammo_box/magazine/misc/unsc/medical_packets
+	)
+	cost = 5
+	containertype = /obj/structure/closet/crate/medical
+	containername = "\improper Medical Crate"
+	group = "Ammo"
+
 
 //------------------------Ammunition Boxes crates----------------
-
+/*
 /datum/supply_packs/ammo_rounds_box_smg
 	name = "SMG ammo box crate (10x20mm) (x600 rounds)"
 	contains = list(/obj/item/ammo_box/rounds/smg)
@@ -338,7 +468,7 @@
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "\improper M10 AP extended magazines crate"
 	group = "Ammo"
-
+*/
 //------------------------Smartgunner stuff----------------
 
 /datum/supply_packs/ammo_smartgun_battery_pack
@@ -461,7 +591,7 @@
 	cost = 40
 	containertype = /obj/structure/closet/crate/ammo/alt/flame
 	group = "Ammo"
-
+/*
 //------------------------Mounted guns ammo----------------
 /datum/supply_packs/ammo_m2c
 	name = "M2C ammunition crate (x2)"
@@ -564,3 +694,4 @@
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "\improper L54 HP magazines crate"
 	group = "Ammo"
+*/

@@ -29788,10 +29788,6 @@
 	},
 /turf/open/auto_turf/lv_sand_alt/layer0,
 /area/lazarus/ground/caves/west_caves)
-"mJW" = (
-/mob/living/simple_animal/bat,
-/turf/open/auto_turf/lv_grass/layer0,
-/area/lazarus/ground/cove)
 "mKJ" = (
 /obj/effect/decal/lv_decals/cave_mud_corner,
 /obj/effect/hunter/ancient_temple/rubble/rubble,
@@ -40723,7 +40719,8 @@
 "rqn" = (
 /obj/structure/largecrate/random/mini/wooden{
 	pixel_x = 6;
-	pixel_y = 7
+	pixel_y = 7;
+	layer = 3.1
 	},
 /turf/open/floor/brown_dirt/random_rocks_alt{
 	dir = 6
@@ -69784,14 +69781,14 @@ qze
 xxR
 xxR
 wUz
-xxR
+aWu
 xxR
 pmz
 xxR
 ilH
 qkS
 fKV
-xxR
+aWu
 ntv
 qjL
 qjL
@@ -70460,7 +70457,7 @@ xxR
 hGn
 xxR
 ilH
-xxR
+aWu
 xxR
 xxR
 ilH
@@ -81003,7 +81000,7 @@ xxR
 qkS
 hGn
 xoE
-hGn
+opU
 xxR
 gdk
 gdk
@@ -81674,7 +81671,7 @@ xxR
 xxR
 qPP
 xoE
-mJW
+hGn
 xxR
 xxR
 gdk
@@ -82118,7 +82115,7 @@ kni
 hGn
 xxR
 wUz
-xxR
+aWu
 ilH
 xxR
 qkS
@@ -83003,7 +83000,7 @@ xxR
 fKV
 xxR
 xxR
-wUz
+cYH
 xxR
 hGn
 xxR

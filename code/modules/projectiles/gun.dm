@@ -2219,15 +2219,18 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	SPAN_HIGHDANGER(uppertext("...but your [name] refuses to fire due to the cylinder being open, embarassing...")))
 			return
 
-		if(!current_mag || !current_mag.current_rounds)
+		if(!current_mag || !current_mag.current_rounds || (current_mag.chamber_contents[current_mag.chamber_position] in list("empty", "blank"))) // pain in my ass
 			click_empty(user)
 			user.visible_message(SPAN_HIGHDANGER(uppertext("...but the [name] dry fires with a resolute click! Embarassing...")),
 	SPAN_HIGHDANGER(uppertext("...but your [name] dry fires with quite the authoratitively embarassing click...")))
+			var/obj/item/weapon/gun/revolver/revolver = src // snowflake check but whatever, revolvers are pretty snowflakey for most implementations anyway
+			if(revolver)
+				revolver.rotate_cylinder(user)
 			return
 
-		current_mag.current_rounds--
+		reload_into_chamber(user)
 	else
-		if(!in_chamber && !ready_in_chamber())
+		if(!has_ammunition())
 			click_empty(user)
 			user.visible_message(SPAN_HIGHDANGER(uppertext("...but the [name] dry fires with a resolute click! Embarassing...")),
 	SPAN_HIGHDANGER(uppertext("...but your [name] dry fires with quite the authoratitively embarassing click...")))

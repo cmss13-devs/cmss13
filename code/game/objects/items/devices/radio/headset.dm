@@ -622,7 +622,9 @@
 	locate_setting = TRACKER_LZ // mostly just in case
 
 	inbuilt_tracking_options = list(
-		"Landing Zone" = TRACKER_LZ
+		"Landing Zone" = TRACKER_LZ,
+		"Squad Leader" = TRACKER_SL,
+		"Fireteam Leader" = TRACKER_FTL
 	)
 
 /obj/item/device/radio/headset/almayer/mcom/io

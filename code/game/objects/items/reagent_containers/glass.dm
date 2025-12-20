@@ -305,7 +305,7 @@
 		/obj/item/reagent_container/hypospray/autoinjector/ultrazine,
 
 		/obj/item/reagent_container/hypospray/autoinjector/ez, //remember, all ez autoinjectors are skillless
-		/obj/item/reagent_container/hypospray/autoinjector/marine, //remember, this includes marine/tramadol
+		/obj/item/reagent_container/hypospray/autoinjector/skillless, //remember, this includes marine/tramadol
 
 	)
 /obj/item/reagent_container/glass/minitank/on_reagent_change()

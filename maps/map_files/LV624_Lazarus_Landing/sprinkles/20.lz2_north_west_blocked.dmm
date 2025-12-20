@@ -32,6 +32,7 @@
 /turf/open/gm/dirt/brown/variant_5/south,
 /area/lazarus/ground/jungle/west_jungle)
 "j" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/auto_turf/lv_sand/layer0,
 /area/lazarus/ground/jungle/west_jungle)
 "k" = (
@@ -96,7 +97,9 @@
 /turf/open/auto_turf/lv_grass/layer1,
 /area/lazarus/lazarus/landing_zones/lz2)
 "F" = (
-/turf/open/gm/dirt/brown/variant_5/west,
+/obj/structure/flora/jungle/vines/blue/light_3,
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/auto_turf/lv_sand/layer0,
 /area/lazarus/ground/jungle/west_jungle)
 "G" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
@@ -106,7 +109,7 @@
 /obj/item/reagent_container/food/drinks/cans/beer{
 	icon_state = "beer_crushed"
 	},
-/turf/open/gm/dirt/brown/variant_5/west,
+/turf/open/auto_turf/lv_sand/layer0,
 /area/lazarus/ground/jungle/west_jungle)
 "K" = (
 /obj/structure/flora/jungle/vines/blue/heavy,
@@ -140,7 +143,7 @@
 (1,1,1) = {"
 J
 j
-Q
+F
 K
 K
 p
@@ -148,7 +151,7 @@ m
 C
 "}
 (2,1,1) = {"
-F
+j
 c
 p
 q

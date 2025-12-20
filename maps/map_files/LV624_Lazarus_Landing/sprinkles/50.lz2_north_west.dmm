@@ -118,7 +118,7 @@
 /area/lazarus/lazarus/comms/lz2_north)
 "Q" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/auto_turf/lv_grass/layer1,
+/turf/open/auto_turf/lv_sand/layer0,
 /area/lazarus/ground/jungle/west_jungle)
 "V" = (
 /turf/open/gm/dirt/brown/variant_5/south,

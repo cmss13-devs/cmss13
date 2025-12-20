@@ -161,6 +161,7 @@
 /area/lazarus/ground/river
 	name = "\improper River"
 	icon_state = "blueold"
+	allow_construction = FALSE
 // ambience = list('sound/ambience/jungle_amb1.ogg')
 
 /area/lazarus/ground/river/west_river

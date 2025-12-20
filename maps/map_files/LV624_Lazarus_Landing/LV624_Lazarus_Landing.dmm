@@ -872,7 +872,7 @@
 "asE" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/floor/brown_dirt/random_rocks,
-/area/lazarus/ground/river/central_river)
+/area/lazarus/ground/barrens/central_barrens)
 "asN" = (
 /obj/structure/flora/jungle/vines/dead/light_1,
 /turf/open/floor/brown_dirt/random_rocks_alt,
@@ -13853,7 +13853,6 @@
 	pixel_y = 25
 	},
 /obj/structure/flora/jungle/vines/dead/light_1,
-/obj/structure/blocker/invisible_wall,
 /turf/open/floor/ancient_temple/base,
 /area/lazarus/ground/barrens/north_barrens)
 "fXJ" = (
@@ -18978,7 +18977,6 @@
 /obj/structure/prop/hunter/ancient_temple/small_statue{
 	pixel_y = 25
 	},
-/obj/structure/blocker/invisible_wall,
 /turf/open/floor/ancient_temple/base,
 /area/lazarus/ground/barrens/north_barrens)
 "ieh" = (
@@ -31681,6 +31679,10 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/lazarus/lazarus/engineering)
+"nxk" = (
+/obj/structure/flora/bush/ausbushes/lavendergrass,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lazarus/ground/barrens/north_barrens)
 "nxl" = (
 /obj/structure/machinery/optable,
 /obj/item/tank/anesthetic,
@@ -33225,7 +33227,6 @@
 	dir = 1;
 	pixel_y = 25
 	},
-/obj/structure/blocker/invisible_wall,
 /turf/open/floor/ancient_temple/base,
 /area/lazarus/ground/barrens/north_barrens)
 "ofp" = (
@@ -38356,6 +38357,10 @@
 /obj/structure/plasticflaps/mining,
 /turf/open/floor/prison/floor_plate,
 /area/lazarus/lazarus/quart)
+"qnP" = (
+/obj/structure/flora/bush/ausbushes/grassybush,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lazarus/ground/barrens/north_barrens)
 "qnQ" = (
 /obj/structure/machinery/landinglight/ds2/delayone{
 	dir = 4
@@ -81054,7 +81059,7 @@ loW
 aBd
 rLu
 rLu
-rLu
+wUO
 rLu
 sQI
 rLu
@@ -81499,10 +81504,10 @@ umm
 vXf
 nep
 rLu
-eRP
+nxk
 rLu
 rbS
-rLu
+wUO
 dFv
 mkH
 umm
@@ -81723,7 +81728,7 @@ sDf
 fbk
 sTe
 rLu
-rLu
+wUO
 rLu
 tWH
 rLu
@@ -83070,7 +83075,7 @@ rLu
 xoG
 rLu
 rLu
-rbS
+kkl
 vsI
 fwy
 gSK
@@ -83294,7 +83299,7 @@ xwK
 rLu
 tWH
 rbS
-loW
+qnP
 rLu
 sQI
 rLu
@@ -83515,7 +83520,7 @@ bcU
 vXf
 xql
 rLu
-rLu
+wUO
 rLu
 rLu
 rbS
@@ -84186,7 +84191,7 @@ rLu
 rLu
 rLu
 rLu
-eRP
+nxk
 rLu
 xwK
 rLu

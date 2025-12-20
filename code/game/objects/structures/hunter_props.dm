@@ -531,8 +531,8 @@
 /obj/structure/prop/hunter/ancient_temple/giant_statue
 	icon = 'icons/obj/structures/props/hunter/ancientstatue.dmi'
 	icon_state = "ancient_statue"
-	name = "giant statue"
-	desc = "A giant statue"
+	name = "colossal warrior statue"
+	desc = "A towering stone effigy of an unknown warrior, clutching a spear-like weapon. It's made from a smooth dark stone, seemingly unweathered from the passage of time."
 	anchored = TRUE
 	layer = BIG_XENO_LAYER
 	density = FALSE
@@ -540,8 +540,8 @@
 /obj/structure/prop/hunter/ancient_temple/giant_statue/base
 	icon = 'icons/obj/structures/props/hunter/ancientsatuebase.dmi'
 	icon_state = "statue_base_big"
-	name = "giant statue base"
-	desc = "A giant statue base"
+	name = "colossal statue base"
+	desc = "An ornate statue base, carved with elaborate decorative runes and symbols."
 	anchored = TRUE
 	layer = BELOW_MOB_LAYER
 	density = FALSE
@@ -553,20 +553,14 @@
 /obj/structure/prop/hunter/ancient_temple/small_statue
 	icon = 'icons/obj/structures/props/hunter/ancientsmallstatue.dmi'
 	icon_state = "statue_ancient"
-	name = "statue"
-	desc = "statue"
+	name = "stone statue"
+	desc = "A tall stone effigy of an unknown warrior."
 	anchored = TRUE
 	layer = BIG_XENO_LAYER
 	density = TRUE
 
 /obj/structure/prop/hunter/ancient_temple/small_statue/grey
-
 	icon_state = "statue_grey"
-	name = "statue"
-	desc = "statue"
-	anchored = TRUE
-	layer = BIG_XENO_LAYER
-	density = TRUE
 
 /obj/structure/prop/hunter/ancient_temple/small_statue/sandstone
 
@@ -575,6 +569,8 @@
 /obj/structure/prop/hunter/ancient_temple/small_statue/base
 
 	icon_state = "small_statue_base"
+	name = "stone statue base"
+	desc = "A stone statue base, ordorned with unknown symbols and runes."
 
 /obj/structure/prop/hunter/ancient_temple/fountain_head
 	name = "carved stone head"

@@ -257,7 +257,7 @@
 
 /obj/item/reagent_container/glass/minitank
 	name = "\improper MS-11 Smart Refill Tank"
-	desc = "A robust little tank capable of refilling autoinjectors that previously required a nanomed system to refill. Using the wonders of microchips, it automatically sorts the correct chemicals into most single reagent autoinjectors. A valve exists on the top to transfer reagents to another container or to flush it entirely."
+	desc = "A robust little tank capable of refilling autoinjectors that previously required a nanomed system to refill. Using the wonders of microchips, it automatically sorts the correct chemicals into most single reagent autoinjectors. It is unable to partially fill them however. A valve exists on the top to transfer reagents to another container or to flush it entirely."
 	icon = 'icons/obj/items/tank.dmi'
 	icon_state = "mini_reagent_tank"
 	matter = list("metal" = 500)
@@ -345,7 +345,7 @@
 			return FALSE
 
 		else //Autoinjector says, "Where's the chemical I want?"
-			to_chat(user, SPAN_WARNING("A small LED on [src] blinks. The [autoinjector] could not find enough [autoinjector.chemname] in the tank. Fill the tank with at least [amount]u of [autoinjector.chemname] and try again."))
+			to_chat(user, SPAN_WARNING("A small LED on [src] blinks. The [autoinjector] could not find enough [autoinjector.chemname] in the tank for a complete refill. Fill the tank with at least [amount]u of [autoinjector.chemname] and try again."))
 			return FALSE
 
 		to_chat(user, SPAN_INFO("You successfully refill [autoinjector] with [src]!"))

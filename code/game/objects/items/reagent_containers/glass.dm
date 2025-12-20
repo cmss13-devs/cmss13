@@ -720,7 +720,7 @@
 	else if(istype(Item, /obj/item/tool/mop))
 		var/obj/item/tool/mop/mop = Item
 		if(reagents.total_volume < 1)
-			to_chat(user, SPAN_WARNING("\The [src] is out of water!"))
+			to_chat(user, SPAN_WARNING("[src] is out of water!"))
 		else
 			reagents.trans_to(mop, mop.max_reagent_volume)
 			mop.update_icon()
@@ -806,7 +806,7 @@
 
 /obj/item/reagent_container/glass/rag/attack(atom/target, mob/user)
 	if(ismob(target) && target.reagents && reagents.total_volume)
-		user.visible_message(SPAN_DANGER("\The [target] has been smothered with [src] by [user]!"), SPAN_DANGER("You smother [target] with [src]!"), "You hear some struggling and muffled cries of surprise!")
+		user.visible_message(SPAN_DANGER("[target] has been smothered with [src] by [user]!"), SPAN_DANGER("You smother [target] with [src]!"), "You hear some struggling and muffled cries of surprise!")
 		src.reagents.reaction(target, TOUCH)
 		spawn(5) src.reagents.clear_reagents()
 		return

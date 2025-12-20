@@ -1,4 +1,0 @@
-author: "larentoun"
-delete-after: True
-changes:
-  - bugfix: "Fixed Marine Sorting in Orbit. Now it first sorts by rank, then by name."

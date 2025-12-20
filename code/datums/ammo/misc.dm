@@ -203,6 +203,7 @@
 
 /datum/ammo/arrow/dynamic
 	name = "inert dynamic arrow"
+	arrow_icon = "arrow_inert"
 	shrapnel_type = /obj/item/arrow/dynamic_warhead
 	handful_type = /obj/item/arrow/dynamic_warhead
 

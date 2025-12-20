@@ -171,6 +171,7 @@
 
 /obj/item/arrow/dynamic_warhead
 	name = "inert dynamic arrow"
+	icon_state = "arrow_inert"
 	ammo_datum = /datum/ammo/arrow/dynamic
 	primary_ammo = /datum/ammo/arrow/dynamic
 	secondary_ammo = /datum/ammo/arrow/dynamic
@@ -192,13 +193,14 @@
 	)
 	var/choice = tgui_input_list(user, "Which warhead do you wish to use?", "Pick Warhead", warhead_options)
 	var/datum/ammo/arrow/arrow = warhead_options[choice]
-	if(!istype(arrow))
+	if(!ispath(arrow, /datum/ammo/arrow))
+		to_chat(user, SPAN_WARNING("There was an error with the warhead. Arrow remains inert."))
 		return
 	activated = TRUE
 	ammo_datum = arrow
 	icon_state = arrow.arrow_icon
-	name = "[ammo_datum.name] (D)"
-	to_chat(user, SPAN_NOTICE("You activate [src]."))
+	name = ammo_datum.name
+	to_chat(user, SPAN_NOTICE("You change the warhead to [choice]."))
 
 /obj/item/storage/belt/gun/quiver
 	name = "quiver strap"

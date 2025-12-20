@@ -1375,84 +1375,8 @@ and you're good to go.
 		return ..()
 
 	if(attacked_mob == user && user.zone_selected == "mouth" && ishuman(user))
-		var/mob/living/carbon/human/HM = user
-		if(!able_to_fire(user))
-			return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
-
-
-		var/ffl = " [ADMIN_JMP(user)] [ADMIN_PM(user)]"
-
-		var/obj/item/weapon/gun/revolver/current_revolver = src
-		if(istype(current_revolver) && current_revolver.russian_roulette)
-			attacked_mob.visible_message(SPAN_WARNING("[user] puts their revolver to their head, ready to pull the trigger."))
-		else
-			attacked_mob.visible_message(SPAN_WARNING("[user] sticks their gun in their mouth, ready to pull the trigger."))
-
-		flags_gun_features ^= GUN_CAN_POINTBLANK //If they try to click again, they're going to hit themselves.
-		if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || !able_to_fire(user))
-			attacked_mob.visible_message(SPAN_NOTICE("[user] decided life was worth living."))
-			flags_gun_features ^= GUN_CAN_POINTBLANK //Reset this.
-			return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
-
-
-		if(active_attachable && !(active_attachable.flags_attach_features & ATTACH_PROJECTILE))
-			active_attachable.activate_attachment(src, null, TRUE)//We're not firing off a nade into our mouth.
-		var/obj/projectile/projectile_to_fire = load_into_chamber(user)
-		if(projectile_to_fire) //We actually have a projectile, let's move on.
-			user.visible_message(SPAN_WARNING("[user] pulls the trigger!"))
-			var/actual_sound
-			if(active_attachable && active_attachable.fire_sound)
-				actual_sound = active_attachable.fire_sound
-			else if(!isnull(fire_sound))
-				actual_sound = fire_sound
-			else actual_sound = pick(fire_sounds)
-			var/sound_volume = (flags_gun_features & GUN_SILENCED && !active_attachable) ? 25 : 60
-			playsound(user, actual_sound, sound_volume, 1)
-			simulate_recoil(2, user)
-			var/t
-			var/datum/cause_data/cause_data
-			if(projectile_to_fire.ammo.damage == 0)
-				t += "\[[time_stamp()]\] <b>[key_name(user)]</b> tried to commit suicide with a [name]"
-				cause_data = create_cause_data("failed suicide by [initial(name)]")
-				to_chat(user, SPAN_DANGER("Ow..."))
-				msg_admin_ff("[key_name(user)] tried to commit suicide with a [name] in [get_area(user)] [ffl]")
-				user.apply_damage(200, HALLOSS)
-			else
-				t += "\[[time_stamp()]\] <b>[key_name(user)]</b> committed suicide with <b>[src]</b>" //Log it.
-				cause_data = create_cause_data("suicide by [initial(name)]")
-				if(istype(current_revolver) && current_revolver.russian_roulette) //If it's a revolver set to Russian Roulette.
-					t += " after playing Russian Roulette"
-					HM.apply_damage(projectile_to_fire.damage * 3, projectile_to_fire.ammo.damage_type, "head", used_weapon = "An unlucky pull of the trigger during Russian Roulette!", no_limb_loss = TRUE, permanent_kill = TRUE)
-					HM.apply_damage(200, OXY) //Fill out the rest of their healthbar.
-					HM.death(create_cause_data("russian roulette with \a [name]", user)) //Make sure they're dead. permanent_kill above will make them unrevivable.
-					HM.update_headshot_overlay(projectile_to_fire.ammo.headshot_state) //Add headshot overlay.
-					msg_admin_ff("[key_name(user)] lost at Russian Roulette with \a [name] in [get_area(user)] [ffl]")
-					to_chat(user, SPAN_HIGHDANGER("Your life flashes before you as your spirit is torn from your body!"))
-					user.ghostize(0) //No return.
-				else
-					HM.apply_damage(projectile_to_fire.damage * 2.5, projectile_to_fire.ammo.damage_type, "head", used_weapon = "Point blank shot in the mouth with \a [projectile_to_fire]", no_limb_loss = TRUE, permanent_kill = TRUE)
-					HM.apply_damage(200, OXY) //Fill out the rest of their healthbar.
-					HM.death(cause_data) //Make sure they're dead. permanent_kill above will make them unrevivable.
-					HM.update_headshot_overlay(projectile_to_fire.ammo.headshot_state) //Add headshot overlay.
-					msg_admin_ff("[key_name(user)] committed suicide with \a [name] in [get_area(user)] [ffl]")
-			attacked_mob.last_damage_data = cause_data
-			user.attack_log += t //Apply the attack log.
-			last_fired = world.time //This is incorrect if firing an attached undershotgun, but the user is too dead to care.
-			SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src)
-
-			projectile_to_fire.play_hit_effect(user)
-			// No projectile code to handhold us, we do the cleaning ourselves:
-			QDEL_NULL(projectile_to_fire)
-			in_chamber = null
-			reload_into_chamber(user) //Reload the sucker.
-		else
-			click_empty(user)//If there's no projectile, we can't do much.
-			if(istype(current_revolver) && current_revolver.russian_roulette && current_revolver.current_mag && current_revolver.current_mag.current_rounds)
-				msg_admin_niche("[key_name(user)] played live Russian Roulette with \a [name] in [get_area(user)] [ffl]") //someone might want to know anyway...
-
-		flags_gun_features ^= GUN_CAN_POINTBLANK //Reset this.
-		return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
-
+		handle_suicide(user)
+		return
 
 	if(EXECUTION_CHECK) //Execution
 		if(!able_to_fire(user)) //Can they actually use guns in the first place?
@@ -1643,6 +1567,91 @@ and you're good to go.
 
 
 #undef EXECUTION_CHECK
+
+/obj/item/weapon/gun/proc/handle_suicide(mob/living/carbon/human/user)
+	if(!able_to_fire(user))
+		return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
+
+	var/ffl = " [ADMIN_JMP(user)] [ADMIN_PM(user)]"
+
+	var/obj/item/weapon/gun/revolver/current_revolver = src
+	if(istype(current_revolver) && current_revolver.russian_roulette)
+		user.visible_message(SPAN_WARNING("[user] puts their [name] to their head, ready to pull the trigger."))
+	else
+		user.visible_message(SPAN_WARNING("[user] sticks their [name] in their mouth, ready to pull the trigger."))
+
+	flags_gun_features ^= GUN_CAN_POINTBLANK //If they try to click again, they're going to hit themselves.
+	if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || !able_to_fire(user))
+		user.visible_message(SPAN_NOTICE("[user] decided life was worth living."))
+		flags_gun_features ^= GUN_CAN_POINTBLANK //Reset this.
+		return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
+
+	// suicide code block
+	if(active_attachable && !(active_attachable.flags_attach_features & ATTACH_PROJECTILE))
+		active_attachable.activate_attachment(src, null, TRUE)//We're not firing off a nade into our mouth.
+	var/obj/projectile/projectile_to_fire = load_into_chamber(user)
+	if(projectile_to_fire) //We actually have a projectile, let's move on.
+		user.visible_message(SPAN_WARNING("[user] pulls the trigger!"))
+		var/actual_sound
+		if(active_attachable && active_attachable.fire_sound)
+			actual_sound = active_attachable.fire_sound
+		else if(!isnull(fire_sound))
+			actual_sound = fire_sound
+		else actual_sound = pick(fire_sounds)
+		var/sound_volume = (flags_gun_features & GUN_SILENCED && !active_attachable) ? 25 : 60
+		playsound(user, actual_sound, sound_volume, 1)
+		simulate_recoil(2, user)
+		var/time
+		var/datum/cause_data/cause_data
+		if(projectile_to_fire.ammo.damage <= 0)
+			time += "\[[time_stamp()]\] <b>[key_name(user)]</b> tried to commit suicide with a [name]"
+			cause_data = create_cause_data("failed suicide by [initial(name)]")
+			to_chat(user, SPAN_HIGHDANGER("Ow..."))
+			msg_admin_ff("[key_name(user)] tried to commit suicide with a [name] in [get_area(user)] [ffl]")
+			user.apply_damage(200, HALLOSS)
+		else
+			time += "\[[time_stamp()]\] <b>[key_name(user)]</b> committed suicide with <b>[src]</b>" //Log it.
+			cause_data = create_cause_data("suicide by [initial(name)]")
+			var/used_weapon_text = "Point blank shot in the mouth with \a [projectile_to_fire]"
+			var/admin_msg = "[key_name(user)] committed suicide with \a [name] in [get_area(user)] [ffl]"
+
+			if(istype(current_revolver) && current_revolver.russian_roulette) //If it's a revolver set to Russian Roulette.
+				time += " after playing Russian Roulette"
+				used_weapon_text = "An unlucky pull of the trigger during Russian Roulette!"
+				cause_data = create_cause_data("russian roulette with \a [name]", user)
+				admin_msg = "[key_name(user)] lost at Russian Roulette with \a [name] in [get_area(user)] [ffl]"
+
+			var/obj/limb/head = user.get_limb("head") // carnage
+			if(projectile_to_fire.ammo.bonus_projectiles_type || projectile_to_fire.ammo.flags_ammo_behavior == AMMO_EXPLOSIVE || projectile_to_fire.ammo.damage >= 80)
+				user.visible_message(SPAN_HIGHDANGER(uppertext("[user]'s head explodes into a cloud of blood and bone from their [name], oh God.")))
+				head.droplimb(FALSE, TRUE)
+				user.spawn_gibs()
+			else
+				user.update_headshot_overlay(projectile_to_fire.ammo.headshot_state) //Add headshot overlay.
+			playsound(user, 'sound/effects/crackandbleed.ogg', 50, 1) // replace this with another eventually
+			user.apply_damage(projectile_to_fire.damage * 3, projectile_to_fire.ammo.damage_type, "head", used_weapon = used_weapon_text, no_limb_loss = TRUE, permanent_kill = TRUE)
+			user.apply_damage(200, OXY) //Fill out the rest of their healthbar.
+			user.death(cause_data) //Make sure they're dead. permanent_kill above will make them unrevivable.
+			msg_admin_ff(admin_msg)
+			to_chat(user, SPAN_HIGHDANGER("Your life flashes before you as your spirit is torn from your body!"))
+
+		user.last_damage_data = cause_data
+		user.attack_log += time //Apply the attack log.
+		last_fired = world.time //This is incorrect if firing an attached undershotgun, but the user is too dead to care.
+		SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src)
+
+		projectile_to_fire.play_hit_effect(user)
+		// No projectile code to handhold us, we do the cleaning ourselves:
+		QDEL_NULL(projectile_to_fire)
+		in_chamber = null
+		reload_into_chamber(user) //Reload the sucker.
+	else
+		click_empty(user)//If there's no projectile, we can't do much.
+		if(istype(current_revolver) && current_revolver.russian_roulette && current_revolver.current_mag && current_revolver.current_mag.current_rounds)
+			msg_admin_niche("[key_name(user)] played live Russian Roulette with \a [name] in [get_area(user)] [ffl]") //someone might want to know anyway...
+
+	flags_gun_features ^= GUN_CAN_POINTBLANK //Reset this.
+	return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
 //----------------------------------------------------------
 				// \\
 				// FIRE CYCLE RELATED PROCS \\

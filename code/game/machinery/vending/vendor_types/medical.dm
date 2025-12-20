@@ -276,8 +276,8 @@
 		/obj/item/reagent_container/hypospray/autoinjector/tramadol,
 		/obj/item/reagent_container/hypospray/autoinjector/tricord,
 
-		/obj/item/reagent_container/glass/beaker/vial/epinephrine
-		/obj/item/reagent_container/glass/beaker/vial/tricordrazine
+		/obj/item/reagent_container/glass/beaker/vial/epinephrine,
+		/obj/item/reagent_container/glass/beaker/vial/tricordrazine,
 
 		/obj/item/reagent_container/hypospray/autoinjector/ez, // All EZ autoinjectors
 		/obj/item/reagent_container/hypospray/autoinjector/skillless, //includes skillless/tramadol

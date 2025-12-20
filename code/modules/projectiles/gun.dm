@@ -1375,6 +1375,10 @@ and you're good to go.
 		return ..()
 
 	if(attacked_mob == user && user.zone_selected == "mouth" && ishuman(user))
+		if(user.action_busy)
+			to_chat(user, SPAN_WARNING("You are a bit preoccupied to commit suicide at the moment."))
+			return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
+
 		handle_suicide(user)
 		return
 
@@ -1580,10 +1584,8 @@ and you're good to go.
 	else
 		user.visible_message(SPAN_WARNING("[user] sticks their [name] in their mouth, ready to pull the trigger."))
 
-	flags_gun_features ^= GUN_CAN_POINTBLANK //If they try to click again, they're going to hit themselves.
 	if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || !able_to_fire(user))
 		user.visible_message(SPAN_NOTICE("[user] decided life was worth living."))
-		flags_gun_features ^= GUN_CAN_POINTBLANK //Reset this.
 		return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
 
 	// suicide code block
@@ -1650,7 +1652,6 @@ and you're good to go.
 		if(istype(current_revolver) && current_revolver.russian_roulette && current_revolver.current_mag && current_revolver.current_mag.current_rounds)
 			msg_admin_niche("[key_name(user)] played live Russian Roulette with \a [name] in [get_area(user)] [ffl]") //someone might want to know anyway...
 
-	flags_gun_features ^= GUN_CAN_POINTBLANK //Reset this.
 	return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
 //----------------------------------------------------------
 				// \\

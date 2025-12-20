@@ -475,38 +475,12 @@
 	if(add_medal_recommendation(usr))
 		to_chat(usr, SPAN_NOTICE("Recommendation successfully submitted."))
 
-/obj/item/device/radio/headset/almayer/ce
-	name = "chief engineer's headset"
-	desc = "The headset of the guy in charge of spooling engines, managing MTs, and tearing up the floor for scrap metal. Of robust and sturdy construction. Channels are as follows: :n - engineering, :v - marine command, :m - medical, :u - requisitions, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
-	icon_state = "ce_headset"
-	initial_keys = list(/obj/item/device/encryptionkey/ce)
-	volume = RADIO_VOLUME_CRITICAL
-	multibroadcast_cooldown = LOW_MULTIBROADCAST_COOLDOWN
-	misc_tracking = TRUE
-
-	inbuilt_tracking_options = list(
-		"Landing Zone" = TRACKER_LZ,
-		"Alpha SL" = TRACKER_ASL,
-		"Bravo SL" = TRACKER_BSL,
-		"Charlie SL" = TRACKER_CSL,
-		"Delta SL" = TRACKER_DSL,
-		"Echo SL" = TRACKER_ESL,
-		"Foxtrot SL" = TRACKER_FSL,
-		"Intel SL" = TRACKER_ISL
-	)
-
-/obj/item/device/radio/headset/almayer/cmo
-	name = "chief medical officer's headset"
-	desc = "A headset issued to the top brass of medical professionals. Channels are as follows: :m - medical, :v - marine command."
-	icon_state = "cmo_headset"
-	initial_keys = list(/obj/item/device/encryptionkey/cmo)
-	volume = RADIO_VOLUME_CRITICAL
-	multibroadcast_cooldown = LOW_MULTIBROADCAST_COOLDOWN
 
 /obj/item/device/radio/headset/almayer/mt
 	name = "engineering radio headset"
 	desc = "Useful for coordinating maintenance bars and orbital bombardments. Of robust and sturdy construction. To access the engineering channel, use :n."
 	icon_state = "eng_headset"
+	frequency = ENG_FREQ
 	initial_keys = list(/obj/item/device/encryptionkey/engi)
 
 /obj/item/device/radio/headset/almayer/chef
@@ -519,12 +493,14 @@
 	name = "medical radio headset"
 	desc = "A headset used by the highly trained staff of the medbay. To access the medical channel, use :m."
 	icon_state = "med_headset"
+	frequency = MED_FREQ
 	initial_keys = list(/obj/item/device/encryptionkey/med)
 
 /obj/item/device/radio/headset/almayer/research
 	name = "researcher radio headset"
 	desc = "A headset used by medbay's skilled researchers. Channels are as follows: :m - medical, :t - intel."
 	icon_state = "med_headset"
+	frequency = MED_FREQ
 	initial_keys = list(/obj/item/device/encryptionkey/medres)
 	additional_hud_types = list(MOB_HUD_FACTION_WY)
 
@@ -532,15 +508,8 @@
 	name = "supply radio headset"
 	desc = "Used by the lowly Cargo Technicians of the USCM, light weight and portable. To access the supply channel, use :u."
 	icon_state = "req_headset"
+	frequency = REQ_FREQ
 	initial_keys = list(/obj/item/device/encryptionkey/req/ct)
-
-/obj/item/device/radio/headset/almayer/qm
-	desc = "A headset used by the quartermaster for controlling their slave(s). Channels are as follows: :u - requisitions, :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
-	name = "requisition officer radio headset"
-	icon_state = "ro_headset"
-	initial_keys = list(/obj/item/device/encryptionkey/qm)
-	volume = RADIO_VOLUME_CRITICAL
-	multibroadcast_cooldown = LOW_MULTIBROADCAST_COOLDOWN
 
 /obj/item/device/radio/headset/almayer/mmpo
 	name = "marine military police radio headset"
@@ -548,6 +517,7 @@
 	icon_state = "sec_headset"
 	additional_hud_types = list(MOB_HUD_FACTION_CMB)
 	initial_keys = list(/obj/item/device/encryptionkey/mmpo)
+	frequency = SEC_FREQ
 	locate_setting = TRACKER_CMP
 	misc_tracking = TRUE
 
@@ -562,6 +532,7 @@
 	icon_state = "sec_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/mmpo)
 	additional_hud_types = list(MOB_HUD_FACTION_CMB)
+	frequency = SEC_FREQ
 	volume = RADIO_VOLUME_RAISED
 	locate_setting = TRACKER_CO
 	misc_tracking = TRUE
@@ -573,38 +544,7 @@
 		"Military Warden" = TRACKER_WARDEN,
 	)
 
-/obj/item/device/radio/headset/almayer/mwcom
-	name = "marine Military Warden radio headset"
-	desc = "It seems oddly similar to the CMPs'... Smells like donuts too. Channels are as follows: :v - marine command, :p - military police, :n - engineering, :m - medbay, :u - requisitions, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
-	icon_state = "sec_headset"
-	additional_hud_types = list(MOB_HUD_FACTION_CMB, MOB_HUD_FACTION_WY)
-	initial_keys = list(/obj/item/device/encryptionkey/cmpcom)
-	volume = RADIO_VOLUME_CRITICAL
-	locate_setting = TRACKER_CMP
-	misc_tracking = TRUE
-
-	inbuilt_tracking_options = list(
-		"Commanding Officer" = TRACKER_CO,
-		"Executive Officer" = TRACKER_XO,
-		"Chief MP" = TRACKER_CMP,
-	)
-
-/obj/item/device/radio/headset/almayer/cmpcom
-	name = "marine chief MP radio headset"
-	desc = "For discussing the purchase of donuts and arresting of hooligans. Channels are as follows: :v - marine command, :p - military police, :n - engineering, :m - medbay, :u - requisitions, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
-	icon_state = "sec_headset"
-	additional_hud_types = list(MOB_HUD_FACTION_CMB, MOB_HUD_FACTION_WY)
-	initial_keys = list(/obj/item/device/encryptionkey/cmpcom)
-	volume = RADIO_VOLUME_CRITICAL
-	locate_setting = TRACKER_CO
-	misc_tracking = TRUE
-
-	inbuilt_tracking_options = list(
-		"Commanding Officer" = TRACKER_CO,
-		"Executive Officer" = TRACKER_XO,
-		"Military Warden" = TRACKER_WARDEN,
-	)
-
+// junior command headsets
 /obj/item/device/radio/headset/almayer/mcom
 	name = "marine command radio headset"
 	desc = "Used by CIC staff and higher-ups, features a non-standard brace. Channels are as follows: :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC, :t - intel."
@@ -631,24 +571,101 @@
 /obj/item/device/radio/headset/almayer/mcom/alt
 	initial_keys = list(/obj/item/device/encryptionkey/mcom/alt)
 
+/obj/item/device/radio/headset/almayer/mcom/qm
+	desc = "A headset used by the quartermaster for controlling their slave(s). Channels are as follows: :u - requisitions, :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
+	name = "requisition officer radio headset"
+	icon_state = "ro_headset"
+	initial_keys = list(/obj/item/device/encryptionkey/qm)
+	frequency = REQ_FREQ
+	misc_tracking = FALSE
+
+	inbuilt_tracking_options = list(
+		"Squad Leader" = TRACKER_SL,
+		"Fireteam Leader" = TRACKER_FTL,
+		"Landing Zone" = TRACKER_LZ
+	)
+
+/obj/item/device/radio/headset/almayer/mcom/ce
+	name = "chief engineer's headset"
+	desc = "The headset of the guy in charge of spooling engines, managing MTs, and tearing up the floor for scrap metal. Of robust and sturdy construction. Channels are as follows: :n - engineering, :v - marine command, :m - medical, :u - requisitions, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
+	icon_state = "ce_headset"
+	initial_keys = list(/obj/item/device/encryptionkey/ce)
+	frequency = ENG_FREQ
+	misc_tracking = TRUE
+	locate_setting = TRACKER_LZ // for selene
+
+	inbuilt_tracking_options = list(
+		"Landing Zone" = TRACKER_LZ
+	)
+
+/obj/item/device/radio/headset/almayer/mcom/cmo
+	name = "chief medical officer's headset"
+	desc = "A headset issued to the top brass of medical professionals. Channels are as follows: :m - medical, :v - marine command."
+	icon_state = "cmo_headset"
+	initial_keys = list(/obj/item/device/encryptionkey/cmo)
+	frequency = MED_FREQ
+	misc_tracking = FALSE
+
+	inbuilt_tracking_options = list(
+		"Squad Leader" = TRACKER_SL,
+		"Fireteam Leader" = TRACKER_FTL,
+		"Landing Zone" = TRACKER_LZ
+	)
+
+/obj/item/device/radio/headset/almayer/mcom/po
+	name = "marine pilot radio headset"
+	desc = "Used by Pilot Officers. Channels are as follows: :v - marine command, :n - engineering, :m - medical, :j - JTAC, :t - intel."
+	initial_keys = list(/obj/item/device/encryptionkey/po)
+	frequency = JTAC_FREQ
+	volume = RADIO_VOLUME_RAISED // raised for DCCs, POs already have their volume boosted with their leadership
+	misc_tracking = TRUE
+	locate_setting = TRACKER_LZ // mostly just in case
+
+	inbuilt_tracking_options = list(
+		"Landing Zone" = TRACKER_LZ
+	)
+
+/obj/item/device/radio/headset/almayer/mcom/io
+	name = "marine intel radio headset"
+	desc = "Used by Intelligence Officers. Channels are as follows: :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medical, :j - JTAC, :t - intel."
+	initial_keys = list(/obj/item/device/encryptionkey/io)
+	frequency = INTEL_FREQ
+
+/obj/item/device/radio/headset/almayer/mcom/mw
+	name = "marine Military Warden radio headset"
+	desc = "It seems oddly similar to the CMPs'... Smells like donuts too. Channels are as follows: :v - marine command, :p - military police, :n - engineering, :m - medbay, :u - requisitions, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
+	icon_state = "sec_headset"
+	additional_hud_types = list(MOB_HUD_FACTION_CMB, MOB_HUD_FACTION_WY)
+	initial_keys = list(/obj/item/device/encryptionkey/cmpcom)
+	frequency = SEC_FREQ
+	locate_setting = TRACKER_CMP
+
+	inbuilt_tracking_options = list(
+		"Commanding Officer" = TRACKER_CO,
+		"Executive Officer" = TRACKER_XO,
+		"Chief MP" = TRACKER_CMP,
+	)
+
+/obj/item/device/radio/headset/almayer/mcom/cmp
+	name = "marine chief MP radio headset"
+	desc = "For discussing the purchase of donuts and arresting of hooligans. Channels are as follows: :v - marine command, :p - military police, :n - engineering, :m - medbay, :u - requisitions, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
+	icon_state = "sec_headset"
+	additional_hud_types = list(MOB_HUD_FACTION_CMB, MOB_HUD_FACTION_WY)
+	initial_keys = list(/obj/item/device/encryptionkey/cmpcom)
+	frequency = SEC_FREQ
+	locate_setting = TRACKER_CO
+
+	inbuilt_tracking_options = list(
+		"Commanding Officer" = TRACKER_CO,
+		"Executive Officer" = TRACKER_XO,
+		"Military Warden" = TRACKER_WARDEN,
+	)
+
 /obj/item/device/radio/headset/almayer/marine/mp_honor/com
 	name = "marine honor guard command radio headset"
 	desc = "Given to highly trusted marine honor guard only. It features a non-standard brace. Channels are as follows: :v - marine command, :p - military police, :n - engineering, :m - medbay, :u - requisitions, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
 	icon_state = "mcom_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/cmpcom)
-
-/obj/item/device/radio/headset/almayer/po
-	name = "marine pilot radio headset"
-	desc = "Used by Pilot Officers. Channels are as follows: :v - marine command, :n - engineering, :m - medical, :j - JTAC, :t - intel."
-	initial_keys = list(/obj/item/device/encryptionkey/po)
-	volume = RADIO_VOLUME_CRITICAL
-	multibroadcast_cooldown = LOW_MULTIBROADCAST_COOLDOWN
-
-/obj/item/device/radio/headset/almayer/intel
-	name = "marine intel radio headset"
-	desc = "Used by Intelligence Officers. Channels are as follows: :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medical, :j - JTAC, :t - intel."
-	initial_keys = list(/obj/item/device/encryptionkey/io)
-	frequency = INTEL_FREQ
 
 /obj/item/device/radio/headset/almayer/mcl
 	name = "corporate liaison radio headset"
@@ -675,13 +692,13 @@
 	icon_state = "wy_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/mcom/rep)
 
+// senior (mostly) command headsets
 /obj/item/device/radio/headset/almayer/mcom/cdrcom
 	name = "marine senior command headset"
 	desc = "Issued only to senior command staff. Channels are as follows: :v - marine command, :p - military police, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC,  :t - intel."
 	icon_state = "mco_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/cmpcom/cdrcom)
 	additional_hud_types = list(MOB_HUD_FACTION_WY, MOB_HUD_FACTION_CMB)
-	volume = RADIO_VOLUME_CRITICAL
 	minimap_type = /datum/action/minimap/marine/live
 
 /obj/item/device/radio/headset/almayer/mcom/cdrcom/xo
@@ -719,7 +736,6 @@
 	desc = "Issued only to senior enlisted advisors. Channels are as follows: :v - marine command, :p - military police, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC,  :t - intel."
 	icon_state = "mco_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/cmpcom/cdrcom)
-	volume = RADIO_VOLUME_CRITICAL
 	misc_tracking = TRUE
 	locate_setting = TRACKER_CO
 
@@ -734,11 +750,9 @@
 	desc = "Issued only to USCM synthetics. Channels are as follows: :v - marine command, :p - military police, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC,  :t - intel."
 	icon_state = "ms_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/cmpcom/synth)
-	volume = RADIO_VOLUME_CRITICAL
 
 /obj/item/device/radio/headset/almayer/mcom/ai
 	initial_keys = list(/obj/item/device/encryptionkey/cmpcom/synth/ai)
-	volume = RADIO_VOLUME_CRITICAL
 
 /obj/item/device/radio/headset/almayer/marine
 	initial_keys = list(/obj/item/device/encryptionkey/public)

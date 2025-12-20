@@ -82,7 +82,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_military_police_chief, list(
 
 		list("Spare Equipment", 0, null, null, null),
 		list("Officer's Headset", 15, /obj/item/device/radio/headset/almayer/mmpo, null, VENDOR_ITEM_REGULAR),
-		list("Warden's Headset", 30, /obj/item/device/radio/headset/almayer/mwcom, null, VENDOR_ITEM_REGULAR),
+		list("Warden's Headset", 30, /obj/item/device/radio/headset/almayer/mcom/mw, null, VENDOR_ITEM_REGULAR),
 	))
 
 

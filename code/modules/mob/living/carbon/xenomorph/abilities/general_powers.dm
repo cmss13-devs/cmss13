@@ -35,6 +35,11 @@
 		if(node.weed_strength > xeno.weed_level)
 			to_chat(xeno, SPAN_WARNING("The node here is too strong to uproot."))
 			return
+
+		if(node.hivenumber != xeno.hivenumber)
+			to_chat(xeno, SPAN_WARNING("The other hive's node resists your attempt to uproot it."))
+			return
+
 		if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC, node, INTERRUPT_ALL))
 			to_chat(xeno, SPAN_WARNING("There's a pod here already! You decide to not replace it."))
 			return

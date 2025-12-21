@@ -47,7 +47,7 @@
 	to_chat(M, SPAN_BOLD("You were born [pick(75;"in Europe", 15;"in Asia", 10;"on Mars")] to a [pick(75;"well-off", 15;"well-established", 10;"average")] family."))
 	to_chat(M, SPAN_BOLD("Joining the ranks of Weyland-Yutani has proven to be very profitable for you."))
 	to_chat(M, SPAN_BOLD("While you are officially an employee, much of your work is off the books. You work as a skilled mercenary."))
-	to_chat(M, SPAN_BOLD("You are well-informed of the xenomorph threat"))
+	to_chat(M, SPAN_BOLD("You are well-informed of the xenomorph threat."))
 	to_chat(M, SPAN_BOLD("You are part of  Weyland-Yutani Task Force Oberon that arrived in 2182 following the UA withdrawl of the Neroid Sector."))
 	to_chat(M, SPAN_BOLD("Task-force Titan is stationed aboard the USCSS Nisshoku, a weaponized science Weyland-Yutani vessel that is stationed at the edge of the Neroid Sector. "))
 	to_chat(M, SPAN_BOLD("Under the directive of Weyland-Yutani board member Johan Almric, you act as private security for Weyland-Yutani science teams."))

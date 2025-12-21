@@ -1203,6 +1203,8 @@
  * * target_mounting - Is the target initiating the mounting process?
  */
 /mob/living/carbon/xenomorph/proc/carry_target(mob/living/carbon/target, target_mounting = FALSE)
+	if(!ismob(target))
+		return
 	if(target.is_mob_incapacitated())
 		if(target_mounting)
 			to_chat(target, SPAN_XENOWARNING("You cannot mount [src]!"))
@@ -1217,7 +1219,7 @@
 	//Second check to make sure they're still valid to be carried
 	if(target.is_mob_incapacitated())
 		return
-	buckle_mob(usr, target)
+	buckle_mob(usr, target, hands_needed = 1)
 
 /mob/living/carbon/xenomorph/unbuckle()
 	. = ..()
@@ -1228,4 +1230,4 @@
 		return
 	if(!can_mount(user, TRUE))
 		return
-	INVOKE_ASYNC(src, PROC_REF(carry_target), dropping, FALSE) // target_mounting is always false, the runner should never be buckling someone to itself
+	INVOKE_ASYNC(src, PROC_REF(carry_target), dropping, TRUE) // target_mounting is always true, the runner should never be buckling someone to itself (unless someone wants to make it happen)

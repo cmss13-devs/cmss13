@@ -61,7 +61,7 @@
 
 /// Try putting the appropriate number of [riding offhand items][/obj/item/riding_offhand] into the target's hands, return FALSE if we can't
 /datum/element/ridable/proc/equip_buckle_inhands(mob/living/carbon/human/user, amount_required = 1, atom/movable/target_movable, riding_target_override = null)
-	var/atom/movable/AM = target_movable
+	var/atom/movable/Atom = target_movable
 	var/amount_equipped = 0
 	for(var/amount_needed = amount_required, amount_needed > 0, amount_needed--)
 		var/obj/item/riding_offhand/inhand = new /obj/item/riding_offhand(user)
@@ -69,7 +69,7 @@
 			inhand.rider = user
 		else
 			inhand.rider = riding_target_override
-		inhand.parent = AM
+		inhand.parent = Atom
 
 		if(user.put_in_hands(inhand))
 			amount_equipped++
@@ -86,14 +86,11 @@
 
 /// Remove all of the relevant [riding offhand items][/obj/item/riding_offhand] from the target
 /datum/element/ridable/proc/unequip_buckle_inhands(mob/living/carbon/user, atom/movable/target_movable)
-	var/atom/movable/AM = target_movable
-	for(var/obj/item/riding_offhand/O in user.contents)
-		if(O.parent != AM)
-			CRASH("RIDING OFFHAND ON WRONG MOB")
-		if(O.selfdeleting)
+	for(var/obj/item/riding_offhand/Obj in user.contents)
+		if(Obj.selfdeleting)
 			continue
 		else
-			qdel(O)
+			qdel(Obj)
 	return TRUE
 
 
@@ -109,6 +106,10 @@
 	var/mob/living/parent
 	var/selfdeleting = FALSE
 
+/obj/item/riding_offhand/Initialize()
+	. = ..()
+	rider = loc
+
 /obj/item/riding_offhand/dropped()
 	selfdeleting = TRUE
 	return ..()
@@ -122,12 +123,6 @@
 /obj/item/riding_offhand/Destroy()
 	var/atom/movable/Atom = parent
 	if(selfdeleting)
-		if(rider in Atom.buckled_mob)
+		if(rider in Atom.buckled_mobs)
 			Atom.unbuckle(rider)
 	return ..()
-/*
-/obj/item/riding_offhand/on_thrown(mob/living/carbon/user, atom/target)
-	if(rider == user)
-		return //Piggyback user.
-	user.unbuckle(rider)
-	return rider*/

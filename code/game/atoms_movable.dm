@@ -425,8 +425,7 @@
 			if(buckle_target.loc != src.loc)
 				return
 			. = buckle_mob(buckle_target)
-	if (!SEND_SIGNAL(src, COMSIG_MOVABLE_PREBUCKLE, buckle_target, user, force, check_loc, lying_buckle, hands_needed, target_hands_needed, silent))
-		do_buckle(buckle_target, user)
+	if (SEND_SIGNAL(src, COMSIG_MOVABLE_PREBUCKLE, buckle_target, user, force, check_loc, lying_buckle, hands_needed, target_hands_needed, silent))
 		return
 	if (buckle_target.mob_size <= MOB_SIZE_XENO)
 		if ((buckle_target.stat == DEAD && istype(src, /obj/structure/bed/roller) || HAS_TRAIT(buckle_target, TRAIT_OPPOSABLE_THUMBS)))
@@ -455,7 +454,7 @@
 		target.forceMove(src.loc)
 		target.setDir(dir)
 		src.buckled_mob = target
-		src.buckled_mobs = list(target)
+		LAZYADD(src.buckled_mobs, target)
 		src.add_fingerprint(user)
 		afterbuckle(target)
 		return TRUE
@@ -491,11 +490,11 @@
 		buckled_mob.set_buckled(null)
 		buckled_mob.anchored = initial(buckled_mob.anchored)
 
-		var/mob = buckled_mob
-		REMOVE_TRAITS_IN(buckled_mob, TRAIT_SOURCE_BUCKLE)
+		var/mob/living/mob = buckled_mob
 		buckled_mob = null
-		LAZYREMOVE(buckled_mobs, buckled_mob)
-		SEND_SIGNAL(src, COMSIG_MOVABLE_UNBUCKLE, buckled_mob)
+		REMOVE_TRAITS_IN(mob, TRAIT_SOURCE_BUCKLE)
+		LAZYREMOVE(src.buckled_mobs, mob)
+		SEND_SIGNAL(src, COMSIG_MOVABLE_UNBUCKLE, mob)
 		afterbuckle(mob)
 
 /atom/movable/proc/manual_unbuckle(mob/user as mob)

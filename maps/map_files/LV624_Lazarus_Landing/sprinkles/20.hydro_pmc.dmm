@@ -84,15 +84,6 @@
 /obj/item/ammo_magazine/smg/fp9000,
 /obj/item/ammo_magazine/smg/fp9000,
 /obj/item/clothing/gloves/marine/veteran/pmc{
-	armor_bio = 10;
-	armor_bomb = 10;
-	armor_bullet = 15;
-	armor_energy = 15;
-	armor_internaldamage = 15;
-	armor_laser = 15;
-	armor_melee = 15;
-	armor_rad = 10;
-	name = "damaged WY PMC gloves";
 	pixel_y = 9
 	},
 /obj/item/ammo_casing/bullet,
@@ -362,15 +353,7 @@
 /area/template_noop)
 "so" = (
 /obj/item/clothing/shoes/veteran/pmc{
-	armor_bio = 15;
-	armor_bomb = 5;
-	armor_bullet = 15;
-	armor_energy = 5;
-	armor_internaldamage = 5;
-	armor_laser = 5;
-	armor_melee = 15;
 	desc = "The height of fashion, but these look to be woven with protective fiber. This pair seems heavily damaged, especially around the soles...";
-	name = "scuffed shoes";
 	pixel_x = -14;
 	pixel_y = -10;
 	slowdown = 0.5
@@ -577,14 +560,6 @@
 /area/template_noop)
 "Cf" = (
 /obj/item/clothing/gloves/marine/veteran/pmc{
-	armor_bio = 10;
-	armor_bomb = 10;
-	armor_bullet = 15;
-	armor_energy = 15;
-	armor_internaldamage = 15;
-	armor_laser = 15;
-	armor_melee = 15;
-	armor_rad = 10;
 	name = "damaged WY PMC gloves"
 	},
 /turf/open/floor/prison/platingdmg1,

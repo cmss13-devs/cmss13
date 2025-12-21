@@ -54,6 +54,7 @@
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/cleanable/dirt/alt_dirt,
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/brown_dirt/random_rocks,
 /area/lazarus/ground/barrens/north_barrens)
 "aR" = (
@@ -117,6 +118,7 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/auto_turf/lv_sand/layer0,
 /area/lazarus/ground/barrens/north_barrens)
 "bE" = (
@@ -851,12 +853,13 @@
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/platingdmg1,
 /area/lazarus/ground/barrens/north_barrens)
 "mC" = (
 /obj/effect/decal/large_stain{
-	pixel_x = 3;
-	pixel_y = -9;
+	pixel_x = -36;
+	pixel_y = -39;
 	layer = 2.1
 	},
 /turf/closed/shuttle/ert{
@@ -907,6 +910,7 @@
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/cleanable/dirt/alt_dirt,
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/auto_turf/lv_sand/layer0,
 /area/lazarus/ground/barrens/north_barrens)
 "ni" = (
@@ -951,6 +955,7 @@
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/platingdmg1,
 /area/lazarus/ground/barrens/north_barrens)
 "nZ" = (
@@ -1281,6 +1286,7 @@
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/platingdmg3,
 /area/lazarus/ground/barrens/north_barrens)
 "sX" = (
@@ -1445,6 +1451,7 @@
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/plating/platingdmg2,
 /area/lazarus/ground/barrens/north_barrens)
 "wL" = (
@@ -1674,6 +1681,7 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/auto_turf/lv_sand/layer0,
 /area/lazarus/ground/barrens/central_barrens)
 "zJ" = (
@@ -2078,6 +2086,7 @@
 	},
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/platingdmg3,
 /area/lazarus/ground/barrens/north_barrens)
 "EB" = (
@@ -2352,6 +2361,7 @@
 	},
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/platingdmg3,
 /area/lazarus/ground/barrens/north_barrens)
 "IK" = (
@@ -2547,6 +2557,7 @@
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/auto_turf/lv_sand/layer0,
 /area/lazarus/ground/barrens/north_barrens)
 "Kw" = (
@@ -2763,6 +2774,7 @@
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/cleanable/dirt/alt_dirt,
 /obj/effect/decal/cleanable/dirt/alt_dirt,
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/auto_turf/lv_sand/layer0,
 /area/lazarus/ground/barrens/north_barrens)
 "Pv" = (
@@ -2779,6 +2791,7 @@
 "Pw" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/brown_dirt/random_rocks_alt,
 /area/lazarus/ground/barrens/north_barrens)
 "PJ" = (
@@ -2860,6 +2873,7 @@
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/plating/platingdmg2,
 /area/lazarus/ground/barrens/north_barrens)
 "QT" = (
@@ -3075,6 +3089,7 @@
 	layer = 2.1
 	},
 /obj/item/shard,
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/platingdmg1,
 /area/lazarus/lazarus/crashed_shuttle)
 "UD" = (
@@ -3174,6 +3189,7 @@
 	layer = 2.1;
 	dir = 1
 	},
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/brown_dirt/random_rocks,
 /area/lazarus/ground/barrens/north_barrens)
 "Wb" = (
@@ -3321,6 +3337,7 @@
 	},
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/auto_turf/lv_sand/layer0,
 /area/lazarus/ground/barrens/north_barrens)
 "Yi" = (
@@ -3463,14 +3480,18 @@
 /turf/open/auto_turf/lv_grass/layer1,
 /area/lazarus/ground/barrens/north_barrens)
 "ZY" = (
-/obj/structure/machinery/door/airlock/almayer/generic/autoname{
-	dir = 8
-	},
-/obj/structure/machinery/door/poddoor/hybrisa/white{
-	name = "\improper Lockdown";
-	dir = 4
-	},
 /obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/large_stain{
+	pixel_x = -12;
+	pixel_y = 12;
+	layer = 2.1;
+	dir = 1
+	},
+/obj/item/stack/rods{
+	amount = 15
+	},
+/obj/structure/girder/displaced,
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/platingdmg3,
 /area/lazarus/lazarus/crashed_shuttle)
 

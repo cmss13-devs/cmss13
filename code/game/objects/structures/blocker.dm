@@ -35,9 +35,6 @@
 	..()
 	icon_state = null
 
-/obj/structure/blocker/invisible_wall/no_coverage
-	projectile_coverage = PROJECTILE_COVERAGE_NONE
-
 /obj/structure/blocker/invisible_wall/water
 	desc = "You cannot wade out any further"
 	icon_state = "map_blocker"
@@ -175,3 +172,9 @@
 	desc = "It is a machine that pumps fuel around the ship."
 	invisibility = 101
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+/obj/structure/blocker/forcefield/all
+	types = list(/mob/living/carbon/human, /mob/living/carbon/xenomorph, /obj/item/weapon, /mob/living/simple_animal/hostile/retaliate/giant_lizard)
+	icon_state = "purple_line"
+	alpha = 0
+	visible = TRUE

@@ -37,15 +37,15 @@
 	if(!istype(living_parent) || !istype(rider))
 		return
 
-	msg_admin_attack("[living_parent] is now being ridden by [rider]", living_parent.loc.x, living_parent.loc.y, living_parent.loc.z)
-	msg_admin_attack("[rider] started riding [living_parent]", rider.loc.x, rider.loc.y, rider.loc.z)
+	msg_admin_attack("[living_parent] is now being ridden by [usr]", living_parent.loc.x, living_parent.loc.y, living_parent.loc.z)
+	msg_admin_attack("[usr] started riding [living_parent]", rider.loc.x, rider.loc.y, rider.loc.z)
 
 // this applies to humans and most creatures, but is replaced again for cyborgs
 /datum/component/riding/creature/ride_check(mob/living/rider)
 	var/mob/living/living_parent = parent
 
 	var/kick_us_off
-	if(LYING_DOWN_TRAIT in living_parent._status_traits) // if we move while on the ground, the rider falls off
+	if(HAS_TRAIT_FROM(living_parent, TRAIT_UNDENSE, LYING_DOWN_TRAIT)) // if we move while on the ground, the rider falls off
 		kick_us_off = TRUE
 	// for piggybacks and (redundant?) borg riding, check if the rider is stunned/restrained
 	else if((ride_check_flags & RIDER_NEEDS_ARMS) && (rider.grab_level == GRAB_CHOKE || rider.is_mob_incapacitated(TRUE)))
@@ -63,10 +63,9 @@
 	rider.KnockDown(4)
 	living_parent.unbuckle(rider)
 
-/datum/component/riding/creature/vehicle_mob_unbuckle(mob/living/living_parent, mob/living/former_rider, force = FALSE)
-	if(istype(living_parent) && istype(former_rider))
-		msg_admin_attack("[living_parent] is no longer being ridden by [former_rider]", living_parent.loc.x, living_parent.loc.y, living_parent.loc.z)
-		msg_admin_attack("[former_rider] is no longer riding [living_parent]", former_rider.loc.x, former_rider.loc.y, former_rider.loc.z)
+/datum/component/riding/creature/vehicle_mob_unbuckle(mob/living/living_parent, force = FALSE)
+	msg_admin_attack("[living_parent] is no longer being ridden by [usr]", living_parent.loc.x, living_parent.loc.y, living_parent.loc.z)
+	msg_admin_attack("[usr] is no longer riding [living_parent]", usr.loc.x, usr.loc.y, usr.loc.z)
 	return ..()
 
 /datum/component/riding/creature/driver_move(atom/movable/movable_parent, mob/living/user, direction)
@@ -126,9 +125,10 @@
 	. = ..()
 	RegisterSignal(parent, COMSIG_LIVING_SET_LYING_ANGLE, PROC_REF(check_carrier_fall_over))
 
-/datum/component/riding/creature/runner/vehicle_mob_unbuckle(datum/source, mob/living/former_rider, force = FALSE)
-	unequip_buckle_inhands(parent)
-	former_rider.density = TRUE
+/datum/component/riding/creature/runner/vehicle_mob_unbuckle(datum/source, force = FALSE)
+	var/mob/living/ridden = parent
+	unequip_buckle_inhands(usr)
+	ridden.density = TRUE
 	return ..()
 
 /datum/component/riding/creature/runner/get_offsets(pass_index, mob_type) // list(dir = x, y, layer)

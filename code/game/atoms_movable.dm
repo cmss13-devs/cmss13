@@ -494,7 +494,8 @@
 		var/mob = buckled_mob
 		REMOVE_TRAITS_IN(buckled_mob, TRAIT_SOURCE_BUCKLE)
 		buckled_mob = null
-		buckled_mobs = list()
+		LAZYREMOVE(buckled_mobs, buckled_mob)
+		SEND_SIGNAL(src, COMSIG_MOVABLE_UNBUCKLE, buckled_mob)
 		afterbuckle(mob)
 
 /atom/movable/proc/manual_unbuckle(mob/user as mob)

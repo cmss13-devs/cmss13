@@ -79,25 +79,25 @@
 	return
 
 /// This proc is called when a rider unbuckles, whether they chose to or not. If there's no more riders, this will be the riding component's death knell.
-/datum/component/riding/proc/vehicle_mob_unbuckle(datum/source, mob/living/rider, force = FALSE)
+/datum/component/riding/proc/vehicle_mob_unbuckle(datum/source, force = FALSE)
 	SIGNAL_HANDLER
 
 	var/atom/movable/movable_parent = parent
-	restore_position(rider)
-	unequip_buckle_inhands(rider)
-	if(!LAZYLEN(movable_parent.buckled_mob))
+	restore_position(usr)
+	unequip_buckle_inhands(usr)
+	if(!LAZYLEN(movable_parent.buckled_mobs))
 		qdel(src)
 
 /// Some ridable atoms may want to only show on top of the rider in certain directions, like wheelchairs
 /datum/component/riding/proc/handle_vehicle_layer(dir)
-	var/atom/movable/AM = parent
+	var/atom/movable/Atom = parent
 	var/static/list/defaults = list(TEXT_NORTH = OBJ_LAYER, TEXT_SOUTH = ABOVE_MOB_LAYER, TEXT_EAST = ABOVE_MOB_LAYER, TEXT_WEST = ABOVE_MOB_LAYER)
 	. = defaults["[dir]"]
 	if(directional_vehicle_layers["[dir]"])
 		. = directional_vehicle_layers["[dir]"]
 	if(isnull(.)) //you can set it to null to not change it.
-		. = AM.layer
-	AM.layer = .
+		. = Atom.layer
+	Atom.layer = .
 
 /datum/component/riding/proc/set_vehicle_dir_layer(dir, layer)
 	directional_vehicle_layers["[dir]"] = layer
@@ -228,11 +228,11 @@
 /// currently replicated from ridable because we need this behavior here too, see if we can deal with that
 /datum/component/riding/proc/unequip_buckle_inhands(mob/living/carbon/user)
 	var/atom/movable/Atom = parent
-	for(var/obj/item/riding_offhand/O in user.contents)
-		if(O.parent != Atom)
+	for(var/obj/item/riding_offhand/Obj in user.contents)
+		if(Obj.parent != Atom)
 			CRASH("RIDING OFFHAND ON WRONG MOB")
-		if(O.selfdeleting)
+		if(Obj.selfdeleting)
 			continue
 		else
-			qdel(O)
+			qdel(Obj)
 	return TRUE

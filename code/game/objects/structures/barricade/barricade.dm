@@ -369,8 +369,7 @@
 	update_icon()
 
 /obj/structure/barricade/acid_spray_act()
-	var/damage_taken = 25 * burn_multiplier
-	take_damage(damage_taken, TRUE)
+	take_damage((25 * burn_multiplier), TRUE)
 	visible_message(SPAN_WARNING("[src] is hit by the acid spray!"))
 	new /datum/effects/acid(src, null, null)
 
@@ -388,8 +387,7 @@
 	update_health(damage)
 
 /obj/structure/barricade/proc/take_acid_damage(damage)
-	take_damage(damage * burn_multiplier)
-	take_damage(acided = TRUE)
+	take_damage((damage * burn_multiplier), TRUE)
 
 /obj/structure/barricade/update_health(damage, nomessage)
 	health -= damage

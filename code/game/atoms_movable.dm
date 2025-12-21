@@ -399,7 +399,7 @@
 	INVOKE_ASYNC(src, PROC_REF(SpinAnimation), 5, 2)
 
 //trying to buckle a mob
-/atom/movable/proc/buckle_mob(mob/user, mob/buckle_target)
+/atom/movable/proc/buckle_mob(mob/user, mob/buckle_target, force = FALSE, check_loc = TRUE, lying_buckle = FALSE, hands_needed = 0, target_hands_needed = 0, silent = FALSE)
 	if (!ismob(buckle_target) || (get_dist(src, user) > 1) || user.stat || buckled_mob || buckle_target.buckled || !isturf(user.loc))
 		return
 
@@ -425,7 +425,7 @@
 			if(buckle_target.loc != src.loc)
 				return
 			. = buckle_mob(buckle_target)
-	if (!SEND_SIGNAL(src, COMSIG_MOVABLE_PREBUCKLE, buckle_target, user, FALSE, TRUE, FALSE, 0, 0, FALSE)) //todo let these be set by the caller
+	if (!SEND_SIGNAL(src, COMSIG_MOVABLE_PREBUCKLE, buckle_target, user, force, check_loc, lying_buckle, hands_needed, target_hands_needed, silent))
 		do_buckle(buckle_target, user)
 		return
 	if (buckle_target.mob_size <= MOB_SIZE_XENO)

@@ -92,11 +92,17 @@ SUBSYSTEM_DEF(hijack)
 	/// If the ship has crashed onto a ground map and the ftl_turfs are now turf/open_space
 	var/crashed = FALSE
 
-	/// The x offset for open_space turfs when crashed
+	/// The x offset for open_space turfs to ground when crashed
 	var/crashed_offset_x = 0
 
-	/// The y offset for open_space turfs when crashed
+	/// The y offset for open_space turfs to ground when crashed
 	var/crashed_offset_y = 0
+
+	/// The x origin for the mainship map
+	var/ship_origin_x = 0
+
+	/// The y origin for the mainship map
+	var/ship_origin_y = 0
 
 	/// Where the ship is currently transiting to
 	var/datum/spaceport/spaceport
@@ -532,8 +538,10 @@ SUBSYSTEM_DEF(hijack)
 	// Figure out the offset for open_space turfs to peer down to ground aligned to the wreck
 	var/shipmap_z = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)[1]
 	var/list/ship_bounds = SSmapping.z_list[shipmap_z].bounds
-	crashed_offset_x = -ship_bounds[MAP_MINX] + 1 - 17 // Horizontal difference between shipmap and template
-	crashed_offset_y = -ship_bounds[MAP_MINY] + 1 // 0 Vertical difference between shipmap and template
+	ship_origin_x = ship_bounds[MAP_MINX]
+	ship_origin_y = ship_bounds[MAP_MINY]
+	crashed_offset_x = -ship_origin_x + 1 - 17 // Horizontal difference between shipmap and template
+	crashed_offset_y = -ship_origin_y + 1 // 0 Vertical difference between shipmap and template
 	crashed_offset_x += ground_origin.x - 1
 	crashed_offset_y += ground_origin.y - 1
 
@@ -553,6 +561,12 @@ SUBSYSTEM_DEF(hijack)
 	space_turf.icon_state = "[((space_turf.x + space_turf.y) ^ ~(space_turf.x * space_turf.y) + space_turf.z) % 25]"
 
 /datum/controller/subsystem/hijack/proc/set_ftl_turf_open(turf/open/space/space_turf)
+	var/adjusted_x = space_turf.x - ship_origin_x
+	var/adjusted_y = space_turf.y - ship_origin_y
+	if(adjusted_x < 22 || adjusted_x > 311 || adjusted_y < -13 || adjusted_y > 113) // approx 15 each direction of empty space
+		// Don't bother with open_space further out
+		space_turf.icon_state = "black"
+		return
 	space_turf.ChangeTurf(/turf/open_space/ground_level, null, null, crashed_offset_x, crashed_offset_y)
 
 

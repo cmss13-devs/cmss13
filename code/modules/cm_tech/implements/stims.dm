@@ -31,14 +31,13 @@
 	desc = "A pouch that can hold up to 3 speed stimulant injectors."
 	icon_state = "stimulant_speed"
 	stimulant_type = /obj/item/reagent_container/hypospray/autoinjector/stimulant/speed_stimulant
-	cant_hold = list(/obj/item/reagent_container/hypospray/autoinjector/stimulant/brain_stimulant, /obj/item/reagent_container/hypospray/autoinjector/stimulant/redemption_stimulant)
+	can_hold = list(/obj/item/reagent_container/hypospray/autoinjector/speed_stimulant)
 
 /obj/item/storage/pouch/stimulant_injector/brain
 	name = "brain stimulant pouch"
 	icon_state = "stimulant_brain"
 	desc = "A pouch that can hold up to 3 brain stimulant injectors."
-	stimulant_type = /obj/item/reagent_container/hypospray/autoinjector/stimulant/brain_stimulant
-	cant_hold = list(/obj/item/reagent_container/hypospray/autoinjector/stimulant/speed_stimulant, /obj/item/reagent_container/hypospray/autoinjector/stimulant/redemption_stimulant)
+	can_hold = list(/obj/item/reagent_container/hypospray/autoinjector/brain_stimulant)
 
 /obj/item/storage/pouch/stimulant_injector/redemption
 	name = "redemption stimulant pouch"
@@ -46,7 +45,7 @@
 	icon_state = "stimulant_redemption"
 	storage_slots = 1
 	stimulant_type = /obj/item/reagent_container/hypospray/autoinjector/stimulant/redemption_stimulant
-	cant_hold = list(/obj/item/reagent_container/hypospray/autoinjector/stimulant/speed_stimulant, /obj/item/reagent_container/hypospray/autoinjector/stimulant/brain_stimulant)
+	can_hold = list(/obj/item/reagent_container/hypospray/autoinjector/redemption_stimulant)
 
 /obj/item/reagent_container/hypospray/autoinjector/stimulant
 	icon_state = "stimpack"

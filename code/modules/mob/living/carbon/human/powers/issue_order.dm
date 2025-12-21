@@ -96,7 +96,7 @@
 		visible_message(SPAN_BOLDNOTICE("[src] gives an order to [order]!"), SPAN_BOLDNOTICE("You give an order to [order]!"))
 
 	if(whistling)
-		whistling.whistle_playsound(src, bypass_cooldown = TRUE, custom_sound = leader_sound)
+		whistling.whistle_playsound(src, bypass_cooldown = TRUE, custom_sound = leader_sound, leader_slowdown = TRUE)
 
 /mob/living/carbon/human/proc/make_aura_available()
 	to_chat(src, SPAN_NOTICE("You can issue an order again."))

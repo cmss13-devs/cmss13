@@ -19,7 +19,7 @@
 	inv_overlay_icon = 'icons/obj/items/clothing/accessory/inventory_overlays/misc.dmi'
 	var/whistle_sound = 'sound/items/whistles/whistle.ogg'
 	var/volume = 60
-	var/spam_cooldown_time = 10 SECONDS
+	var/spam_cooldown_time = 5 SECONDS
 	var/leader_whistle = FALSE
 	COOLDOWN_DECLARE(spam_cooldown)
 
@@ -40,12 +40,16 @@
 	else
 		..()
 
-/obj/item/clothing/accessory/device/whistle/proc/whistle_playsound(mob/user, bypass_cooldown = FALSE, custom_sound)
+/obj/item/clothing/accessory/device/whistle/proc/whistle_playsound(mob/user, bypass_cooldown = FALSE, custom_sound, leader_slowdown = FALSE)
 	if(!COOLDOWN_FINISHED(src, spam_cooldown) && !bypass_cooldown)
 		to_chat(user, SPAN_DANGER("You are out of breath after using [src]! Wait [COOLDOWN_SECONDSLEFT(src, spam_cooldown)] second\s."))
 		return
 
-	user.visible_message(SPAN_WARNING("[user] blows into [src]!"))
+	if(leader_slowdown)
+		user.visible_message(SPAN_WARNING("[user] rouses everyone around as they blow [src]!"), SPAN_WARNING("You rouse everyone around you as you blow into [src], slowing yourself down as you do!"))
+		user.set_effect(5, SLOW) // 5 ticks, yes
+	else
+		user.visible_message(SPAN_WARNING("[user] blows into [src]!"))
 	playsound(get_turf(src), custom_sound ? custom_sound : whistle_sound, volume, 1, vary = 0)
 
 	COOLDOWN_START(src, spam_cooldown, spam_cooldown_time)
@@ -65,7 +69,8 @@
 
 /obj/item/clothing/accessory/device/whistle/trench
 	name = "trench whistle"
-	desc = "A nickle-plated brass whistle. Can be blown while held, or worn in the mouth. It can also be worn as an accessory."
+	desc = "A metallic field whistle, popularized back in the early 20th century. Can be blown while held, or worn in the mouth. It can also be worn as an accessory."
+	desc_lore = "While these trench whistles had fallen out of fashion in favor for the smaller and ligher pea whistles, they are still favored by certain military leaders for their authorative and distinct sound. It had regained its popularity in recent years during the various campaigns held against the UPP at the tail-end of the Dog War on the year 2162, where such whistles were used to coordinate squad movements and issue audible orders on the battlefield by both sides while under constant, heavy fire. During which most engagements were fielded out in the open, and long-range radio communications relied through vulnerable radio-men, whose equipment had faults within the aging technology most typically due to hostile jamming of the communications network among other issues, which further reinforced the necessity of these whistles."
 	icon_state = "trench_whistle"
 	icon = 'icons/obj/items/tools.dmi'
 	whistle_sound = 'sound/items/whistles/trench_whistle.ogg'

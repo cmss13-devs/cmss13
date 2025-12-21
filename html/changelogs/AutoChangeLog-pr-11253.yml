@@ -1,7 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - rscadd: "Added EMP pulse messages to synths"
-  - code_imp: "Cleaned up explosion logging and empulse code"
-  - admin: "Explosions from things like SHARP and detrimental EMPs are now entered into a mob's attack logs"
-  - admin: "FF logs for explosions now can jump to the causing mob rather than where the mob was"

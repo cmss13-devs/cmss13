@@ -1,4 +1,0 @@
-author: "Red-byte3D"
-delete-after: True
-changes:
-  - bugfix: "Legcuffs switch your intent back to run when your legcuff gets automatically removed"

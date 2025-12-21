@@ -122,7 +122,7 @@
 /obj/item/weapon/bracer_attachment/chain_gauntlets
 	name = "chain gauntlets"
 	plural_name = "wrist blades"
-	desc = "gauntlets made out of alien alloy, chains wrapped around it imply this was made for hand to hand combat, with some range."
+	desc = "Gauntlets made out of alien alloy, chains wrapped around it imply this was made for hand to hand combat, with some range."
 	icon_state = "metal_gauntlet"
 	hitsound = null
 	item_state = "gauntlet"
@@ -969,6 +969,85 @@
 	to_chat(user, SPAN_WARNING("You finish flaying [current_limb]."))
 	current_limb.flayed = TRUE
 
+/obj/item/weapon/shield/riot/yautja
+	name = "clan shield"
+	desc = "A large tribal shield made of a strange metal alloy. The face of the shield bears three skulls, two human, one alien."
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "shield"
+	base_icon_state = "shield"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi',
+		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
+	)
+	item_state = "shield"
+	flags_item = ITEM_PREDATOR
+	flags_equip_slot = SLOT_BACK
+
+	shield_type = SHIELD_DIRECTIONAL
+	readied_block = SHIELD_CHANCE_VHIGH
+	passive_block = SHIELD_CHANCE_MED
+
+	blocks_on_back = FALSE
+
+	COOLDOWN_DECLARE(attack_cooldown)
+	var/cooldown_time = 25 SECONDS
+
+/obj/item/weapon/shield/riot/yautja/raise_shield(mob/user)
+	..()
+	item_state = "[base_icon_state]_ready"
+	if(user.r_hand == src)
+		user.update_inv_r_hand()
+	if(user.l_hand == src)
+		user.update_inv_l_hand()
+
+/obj/item/weapon/shield/riot/yautja/lower_shield(mob/user)
+	..()
+	item_state = base_icon_state
+	if(user.r_hand == src)
+		user.update_inv_r_hand()
+	if(user.l_hand == src)
+		user.update_inv_l_hand()
+
+/obj/item/weapon/shield/riot/yautja/attack(mob/living/target, mob/living/user)
+	. = ..()
+	if(. && (COOLDOWN_FINISHED(src, attack_cooldown)))
+		COOLDOWN_START(src, attack_cooldown, cooldown_time)
+		target.throw_atom(get_step(target, user.dir), 1, SPEED_AVERAGE, user, FALSE)
+		target.apply_effect(3, DAZE)
+		target.apply_effect(5, SLOW)
+
+
+/obj/item/weapon/shield/riot/yautja/ancient
+	name = "ancient shield"
+	desc = "A large, ancient shield forged from an unknown golden alloy, gleaming with a luminous brilliance. Its worn surface and masterful craftsmanship hint at a forgotten purpose and a history lost to time."
+	icon = 'icons/obj/items/weapons/melee/shields.dmi'
+	icon_state = "ancient_shield"
+	base_icon_state = "ancient_shield"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/shields_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/shields_righthand.dmi',
+		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
+	)
+	item_state = "ancient_shield"
+
+/obj/item/weapon/shield/riot/yautja/ancient/alt
+	name = "ancient shield"
+	desc = "A large, ornately crafted shield forged from an unknown alloy. The colossal metal skull of a Xenomorph dominates the center, its jagged edges and hollow eyes giving it a fearsome presence. The masterful craftsmanship and weathered battle scars whisper of long-forgotten hunts and a legacy etched in blood."
+	icon_state = "ancient_shield_alt"
+	base_icon_state = "ancient_shield_alt"
+	item_state = "ancient_shield_alt"
+
+/obj/item/weapon/shield/riot/yautja/bracer_shield
+	name = "bracer shield"
+	desc = "A shield made of concentric metal alloy plates. The plates fold into one another for compact storage while still providing superior protection."
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "bracer_shield"
+	base_icon_state = "bracer_shield"
+	item_state = "bracer_shield"
+	flags_equip_slot = NO_FLAGS
+	flags_item = NODROP|ITEM_PREDATOR
+
 /*#########################################
 ########### Two Handed Weapons ############
 #########################################*/
@@ -1322,7 +1401,7 @@
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle
 	name = "plasma rifle"
-	desc = "A long-barreled heavy plasma weapon. Intended for combat, not hunting. Has an integrated battery that allows for a functionally unlimited amount of shots to be discharged. Equipped with an internal gyroscopic stabilizer allowing its operator to fire the weapon one-handed if desired"
+	desc = "A long-barreled heavy plasma weapon. Intended for combat, not hunting. Has an integrated battery that allows for a functionally unlimited amount of shots to be discharged. Equipped with an internal gyroscopic stabilizer allowing its operator to fire the weapon one-handed if desired."
 	icon_state = "plasmarifle"
 	item_state = "plasmarifle"
 	unacidable = TRUE
@@ -1624,7 +1703,7 @@
 	switch(mode)
 		if("stun")
 			mode = "lethal"
-			to_chat(usr, SPAN_YAUTJABOLD("[src.source] beeps: [src] is now set to [mode] mode"))
+			to_chat(usr, SPAN_YAUTJABOLD("[src.source] beeps: [src] is now set to [mode] mode."))
 			strength = "plasma bolt"
 			charge_cost = 100
 			set_fire_delay(FIRE_DELAY_TIER_6 * 3)
@@ -1634,7 +1713,7 @@
 
 		if("lethal")
 			mode = "stun"
-			to_chat(usr, SPAN_YAUTJABOLD("[src.source] beeps: [src] is now set to [mode] mode"))
+			to_chat(usr, SPAN_YAUTJABOLD("[src.source] beeps: [src] is now set to [mode] mode."))
 			strength = "stun bolts"
 			charge_cost = 30
 			set_fire_delay(FIRE_DELAY_TIER_6)

@@ -122,7 +122,7 @@
 /obj/item/riding_offhand/Destroy()
 	var/atom/movable/Atom = parent
 	if(selfdeleting)
-		if(rider in AM.buckled_mob)
+		if(rider in Atom.buckled_mob)
 			Atom.unbuckle(rider)
 	return ..()
 /*

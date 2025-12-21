@@ -93,7 +93,7 @@
 	if(!ishuman(user))
 		return
 	if(!back)
-		balloon_alert(user,"This runner isn't wearing a saddle!")
+		balloon_alert(user,"this runner isn't wearing a saddle!")
 		return
 	if(!do_after(user, 3 SECONDS, NONE, src))
 		return

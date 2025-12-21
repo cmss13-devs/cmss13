@@ -64,9 +64,9 @@
 
 /datum/component/riding/RegisterWithParent()
 	. = ..()
-	RegisterSignal(parent, COMSIG_ATOM_DIR_CHANGE, .proc/vehicle_turned)
-	RegisterSignal(parent, COMSIG_MOVABLE_UNBUCKLE, .proc/vehicle_mob_unbuckle)
-	RegisterSignal(parent, COMSIG_MOVABLE_MOVED, .proc/vehicle_moved)
+	RegisterSignal(parent, COMSIG_ATOM_DIR_CHANGE, PROC_REF(vehicle_turned))
+	RegisterSignal(parent, COMSIG_MOVABLE_UNBUCKLE, PROC_REF(vehicle_mob_unbuckle))
+	RegisterSignal(parent, COMSIG_MOVABLE_MOVED, PROC_REF(vehicle_moved))
 
 /**
  * This proc handles all of the proc calls to things like set_vehicle_dir_layer() that a type of riding datum needs to call on creation
@@ -220,16 +220,16 @@
 	if(!istype(possible_bumped_door))
 		return
 	for(var/occupant in movable_parent.buckled_mob)
-		INVOKE_ASYNC(possible_bumped_door, /obj/structure/machinery/door/.proc/bumpopen, occupant)
+		INVOKE_ASYNC(possible_bumped_door, TYPE_PROC_REF(/obj/structure/machinery/door, bumpopen), occupant)
 
-/datum/component/riding/proc/Unbuckle(atom/movable/M)
-	addtimer(CALLBACK(parent, /atom/movable/.proc/unbuckle_mob, M), 0, TIMER_UNIQUE)
+/datum/component/riding/proc/Unbuckle(atom/movable/Mob)
+	addtimer(CALLBACK(parent, TYPE_PROC_REF(/atom/movable, unbuckle_mob), Mob), 0, TIMER_UNIQUE)
 
 /// currently replicated from ridable because we need this behavior here too, see if we can deal with that
 /datum/component/riding/proc/unequip_buckle_inhands(mob/living/carbon/user)
-	var/atom/movable/AM = parent
+	var/atom/movable/Atom = parent
 	for(var/obj/item/riding_offhand/O in user.contents)
-		if(O.parent != AM)
+		if(O.parent != Atom)
 			CRASH("RIDING OFFHAND ON WRONG MOB")
 		if(O.selfdeleting)
 			continue

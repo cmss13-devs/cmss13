@@ -860,7 +860,6 @@
 	chem_refill_volume = 150
 	chem_refill_volume_max = 150
 	chem_refill = list(
-		/obj/item/reagent_container/hypospray/autoinjector/ez, //all ez autoinjectors
 		/obj/item/reagent_container/hypospray/autoinjector/skillless, //pain-stop and first-aid
 	)
 

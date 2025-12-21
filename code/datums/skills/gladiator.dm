@@ -34,8 +34,8 @@
 		SKILL_JTAC = SKILL_JTAC_MASTER,
 	)
 
-/datum/skills/gladiator/hunted
-	name = "Gladiator (Hunted)"
+/datum/skills/gladiator/legionary
+	name = "Roman Legionary"
 	skills = list(
 		SKILL_CQC = SKILL_CQC_EXPERT,
 		SKILL_FIREMAN = SKILL_FIREMAN_EXPERT,
@@ -43,4 +43,16 @@
 		SKILL_FIREARMS = SKILL_FIREARMS_CIVILIAN,
 		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
 		SKILL_ENDURANCE = SKILL_ENDURANCE_MAX,
+	)
+
+/datum/skills/gladiator/legionary/eaglebearer
+	name = "Roman Eaglebearer"
+	skills = list(
+		SKILL_CQC = SKILL_CQC_EXPERT,
+		SKILL_FIREMAN = SKILL_FIREMAN_MASTER,
+		SKILL_MELEE_WEAPONS = SKILL_MELEE_SUPER,
+		SKILL_FIREARMS = SKILL_FIREARMS_CIVILIAN,
+		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
+		SKILL_ENDURANCE = SKILL_ENDURANCE_MAX,
+		SKILL_LEADERSHIP = SKILL_LEAD_MASTER,
 	)

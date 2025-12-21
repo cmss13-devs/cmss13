@@ -678,16 +678,17 @@
 	var/datum/preferences/A = new
 	A.randomize_appearance(new_human)
 
-	var/random_name
+	var/first_name
+	var/last_name = capitalize(pick(GLOB.last_names_gladiator))
 	switch(new_human.gender)
 		if(FEMALE)
-			random_name = capitalize(pick(GLOB.first_names_female_gladiator))
+			first_name = capitalize(pick(GLOB.first_names_female_gladiator))
 		if(PLURAL, NEUTER) // Not currently possible
-			random_name = capitalize(pick(MALE, FEMALE) == MALE ? pick(GLOB.first_names_male_gladiator) : pick(GLOB.first_names_female_gladiator))
+			first_name = capitalize(pick(MALE, FEMALE) == MALE ? pick(GLOB.first_names_male_gladiator) : pick(GLOB.first_names_female_gladiator))
 		else // MALE
-			random_name = capitalize(pick(GLOB.first_names_male_gladiator))
+			first_name = capitalize(pick(GLOB.first_names_male_gladiator))
 
-	new_human.change_real_name(new_human, random_name)
+	new_human.change_real_name(new_human, "[first_name] [last_name]")
 	new_human.age = rand(21,45)
 
 /datum/equipment_preset/other/gladiator/load_gear(mob/living/carbon/human/new_human)
@@ -1035,45 +1036,77 @@
 	faction_group = FACTION_LIST_HUNTED
 	flags = EQUIPMENT_PRESET_EXTRA
 
-/datum/equipment_preset/other/hunted/gladiator
-	name = "Gladiator (Hunted)"
+/datum/equipment_preset/other/hunted/roman
+	name = "Roman Legionary (Hunted)"
 	languages = list(LANGUAGE_FORGOTTEN)
 	idtype = null
-	skills = /datum/skills/gladiator/hunted
-	assignment = "Gladiator"
-	job_title = FACTION_GLADIATOR
+	skills = /datum/skills/gladiator/legionary
+	assignment = "Legionary"
+	job_title = "Legionnaire"
 
-/datum/equipment_preset/other/hunted/gladiator/load_name(mob/living/carbon/human/new_human, randomise)
+/datum/equipment_preset/other/hunted/roman/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = pick(MALE, FEMALE)
 
 	var/datum/preferences/A = new
 	A.randomize_appearance(new_human)
 
-	var/random_name
+	var/first_name
+	var/last_name = capitalize(pick(GLOB.last_names_gladiator))
 	switch(new_human.gender)
 		if(FEMALE)
-			random_name = capitalize(pick(GLOB.first_names_female_gladiator))
+			first_name = capitalize(pick(GLOB.first_names_female_gladiator))
 		if(PLURAL, NEUTER) // Not currently possible
-			random_name = capitalize(pick(MALE, FEMALE) == MALE ? pick(GLOB.first_names_male_gladiator) : pick(GLOB.first_names_female_gladiator))
+			first_name = capitalize(pick(MALE, FEMALE) == MALE ? pick(GLOB.first_names_male_gladiator) : pick(GLOB.first_names_female_gladiator))
 		else // MALE
-			random_name = capitalize(pick(GLOB.first_names_male_gladiator))
+			first_name = capitalize(pick(GLOB.first_names_male_gladiator))
 
-	new_human.change_real_name(new_human, random_name)
+	new_human.change_real_name(new_human, "[first_name] [last_name]")
 	new_human.age = rand(21,45)
 
-/datum/equipment_preset/other/hunted/gladiator/load_languages(mob/living/carbon/human/new_human, client/mob_client)
+/datum/equipment_preset/other/hunted/roman/load_languages(mob/living/carbon/human/new_human, client/mob_client)
 	new_human.set_languages(list(LANGUAGE_FORGOTTEN))
 
-/datum/equipment_preset/other/hunted/gladiator/load_traits(mob/living/carbon/human/new_human, client/mob_client)
+/datum/equipment_preset/other/hunted/roman/load_traits(mob/living/carbon/human/new_human, client/mob_client)
 	return
 
-/datum/equipment_preset/other/hunted/gladiator/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/gladiator, WEAR_HEAD)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/chainshirt/hunter, WEAR_BODY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/gladiator, WEAR_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/ress, WEAR_FEET)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/shield/riot/yautja/ancient, WEAR_R_HAND)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/sword, WEAR_L_HAND)
+/datum/equipment_preset/other/hunted/roman/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/roman, WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/tunic, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/roman, WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/footwrap_sandals, WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/shield/riot/roman, WEAR_R_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/sword/gladius, WEAR_L_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/hunted, WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight/lantern, WEAR_R_STORE)
+
+/datum/equipment_preset/other/hunted/roman/centurion
+	name = "Roman Centurion (Hunted)"
+	assignment = "Centurion"
+	job_title = "Legionnaire"
+
+/datum/equipment_preset/other/hunted/roman/centurion/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/roman/centurion, WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/tunic, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/roman/centurion, WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/footwrap_sandals, WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/shield/riot/roman, WEAR_R_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/javelin, WEAR_L_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/sword/gladius, WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/hunted, WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight/lantern, WEAR_R_STORE)
+
+/datum/equipment_preset/other/hunted/roman/eaglebearer
+	name = "Roman Aquilifer (Hunted)"
+	assignment = "Aquilifer"
+	job_title = "Legionnaire"
+	skills = /datum/skills/gladiator/legionary/eaglebearer
+
+/datum/equipment_preset/other/hunted/roman/eaglebearer/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/roman/eaglebearer, WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/tunic, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/roman/centurion, WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/footwrap_sandals, WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/aquilastaff, WEAR_R_HAND)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/hunted, WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight/lantern, WEAR_R_STORE)
 

@@ -97,7 +97,7 @@
 	max_upp = 2
 	max_royal_marines = 1
 	max_pmc = 1
-	max_misc = 1
+	max_misc = 2
 	max_mercs = 1
 
 
@@ -110,7 +110,7 @@
 	max_upp = 1
 	max_royal_marines = 2
 	max_pmc = 1
-	max_misc = 1
+	max_misc = 2
 	max_mercs = 2
 
 /datum/emergency_call/pred/mixed/harder
@@ -122,7 +122,7 @@
 	max_upp = 2
 	max_royal_marines = 3
 	max_pmc = 1
-	max_misc = 1
+	max_misc = 2
 	max_mercs = 2
 
 /datum/emergency_call/pred/xeno

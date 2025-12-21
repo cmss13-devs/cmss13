@@ -27,7 +27,7 @@
 	tgui_alert(user, "Unable to create a bug report at this time, please create the issue directly through our GitHub repository instead")
 	var/url = CONFIG_GET(string/githuburl)
 	if(!url)
-		to_chat(user, SPAN_WARNING("The configuration is not properly set, unable to open external link"))
+		to_chat(user, SPAN_WARNING("The configuration is not properly set, unable to open external link."))
 		return
 
 	if(tgui_alert(user, "This will open the GitHub in your browser. Are you sure?", "Confirm", list("Yes", "No")) == "Yes")

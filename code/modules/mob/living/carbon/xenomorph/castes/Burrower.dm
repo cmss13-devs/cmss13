@@ -47,6 +47,7 @@
 	plasma_types = list(PLASMA_PURPLE)
 	pixel_x = -12
 	old_x = -12
+	xenonid_pixel_x = -16
 	base_pixel_x = 0
 	base_pixel_y = -20
 	tier = 2

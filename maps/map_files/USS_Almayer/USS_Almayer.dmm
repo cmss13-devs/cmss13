@@ -2113,8 +2113,7 @@
 	dir = 8
 	},
 /obj/item/book/manual/chemistry{
-	pixel_x = 4;
-	pixel_y = 0
+	pixel_x = 4
 	},
 /obj/item/book/manual/medical_diagnostics_manual{
 	pixel_x = 7;
@@ -4590,9 +4589,7 @@
 /area/almayer/hallways/lower/port_midship_hallway)
 "akE" = (
 /obj/structure/machinery/camera/autoname/almayer{
-	name = "ship-grade camera";
-	pixel_x = 0;
-	pixel_y = 0
+	name = "ship-grade camera"
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/secure_closet{
@@ -51980,14 +51977,6 @@
 "hrI" = (
 /turf/open/floor/almayer,
 /area/almayer/maint/hull/upper/u_f_p)
-"hrU" = (
-/obj/structure/prop/invuln/overhead_pipe{
-	dir = 4;
-	pixel_x = -16;
-	pixel_y = 13
-	},
-/turf/closed/wall/almayer/outer,
-/area/almayer/underdeck)
 "hsc" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/light{
@@ -60414,10 +60403,7 @@
 	pixel_y = 31;
 	pixel_x = -1
 	},
-/obj/structure/surface/table/almayer{
-	pixel_x = 0;
-	pixel_y = 0
-	},
+/obj/structure/surface/table/almayer,
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_17";
 	pixel_x = -6;
@@ -118847,7 +118833,7 @@ aHU
 aHU
 xXs
 xXs
-hrU
+xXs
 xXs
 xXs
 xXs

@@ -82,10 +82,6 @@
 		xeno.backpack_icon_holder = new(null, xeno)
 		xeno.vis_contents += xeno.backpack_icon_holder
 
-	if(src.type == /obj/item/storage/backpack/marine/saddle && isrunner(xeno))
-		ENABLE_BITFIELD(xeno.buckle_flags, CAN_BUCKLE)
-		xeno.AddElement(/datum/element/ridable, /datum/component/riding/creature/runner)
-
 	target_mob.put_in_back(src)
 	return FALSE
 
@@ -588,6 +584,12 @@
 	if(src.type == /obj/item/storage/backpack/marine/saddle && isrunner(user))
 		DISABLE_BITFIELD(user.buckle_flags, CAN_BUCKLE)
 		user.RemoveElement(/datum/element/ridable, /datum/component/riding/creature/runner)
+
+/obj/item/storage/backpack/marine/saddle/attack(mob/living/target_mob, mob/living/user)
+	. = ..()
+	if(src.type == /obj/item/storage/backpack/marine/saddle && isrunner(target_mob))
+		ENABLE_BITFIELD(target_mob.buckle_flags, CAN_BUCKLE)
+		target_mob.AddElement(/datum/element/ridable, /datum/component/riding/creature/runner)
 
 /obj/item/storage/backpack/marine/k9_synth
 	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/UA.dmi'

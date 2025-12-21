@@ -1,7 +1,7 @@
 /obj/item/clothing/accessory/device/whistle
 	name = "\improper whistle"
 	desc = "A metal pea-whistle. Can be blown while held, or worn in the mouth. It can also be worn as an accessory."
-	icon_state = "whistle"
+	icon_state = "whistle_generic"
 	icon = 'icons/obj/items/tools.dmi'
 	w_class = SIZE_TINY
 	flags_atom = FPRINT|CONDUCT
@@ -12,6 +12,11 @@
 	)
 	worn_accessory_slot = ACCESSORY_SLOT_UTILITY
 	high_visibility = TRUE
+	accessory_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/misc.dmi',
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/misc.dmi'
+	)
+	inv_overlay_icon = 'icons/obj/items/clothing/accessory/inventory_overlays/misc.dmi'
 	var/whistle_sound = 'sound/items/whistles/whistle.ogg'
 	var/volume = 60
 	var/spam_cooldown_time = 10 SECONDS
@@ -61,12 +66,10 @@
 /obj/item/clothing/accessory/device/whistle/trench
 	name = "trench whistle"
 	desc = "A nickle-plated brass whistle. Can be blown while held, or worn in the mouth. It can also be worn as an accessory."
-	icon_state = "whistle"
+	icon_state = "trench_whistle"
 	icon = 'icons/obj/items/tools.dmi'
 	whistle_sound = 'sound/items/whistles/trench_whistle.ogg'
 	leader_whistle = TRUE
-
-/obj/item/clothing/accessory/device/whistle/yautja
 
 /obj/item/device/hailer
 	name = "hailer"

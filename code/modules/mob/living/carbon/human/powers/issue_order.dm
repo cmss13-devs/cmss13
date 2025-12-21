@@ -54,7 +54,7 @@
 
 	var/leader_sound = null
 	if(whistling && whistling.leader_whistle)
-		command_aura_strength += 1.5 // just a minor buff :)
+		command_aura_strength += 1.25 // just a minor buff :)
 		command_aura_cooldown += 800 //deciseconds, equivalent to 240 seconds with the default cooldown
 		command_aura_range += 3
 		switch(order)

@@ -152,7 +152,7 @@
 	var/list/static/default_vehicle_pixel_offsets = list(TEXT_NORTH = list(0, 0), TEXT_SOUTH = list(0, 0), TEXT_EAST = list(0, 0), TEXT_WEST = list(0, 0))
 	var/pixelx = default_vehicle_pixel_offsets[Atom_dir]
 	var/pixely = default_vehicle_pixel_offsets[Atom_dir]
-	if(directional_vehicle_offsets[AM_dir])
+	if(directional_vehicle_offsets[Atom_dir])
 		if(isnull(directional_vehicle_offsets[Atom_dir]))
 			pixelx = Atom.pixel_x
 			pixely = Atom.pixel_y

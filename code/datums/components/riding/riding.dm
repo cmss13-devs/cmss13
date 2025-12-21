@@ -114,7 +114,6 @@
 		ride_check(buckled_mob)
 	if(QDELETED(src))
 		return // runtimed with piggy's without this, look into this more
-	handle_vehicle_offsets(dir)
 	handle_vehicle_layer(dir)
 
 /// Turning is like moving
@@ -126,57 +125,6 @@
 /// Check to see if we have all of the necessary bodyparts and not-falling-over statuses we need to stay onboard
 /datum/component/riding/proc/ride_check(mob/living/rider)
 	return
-
-/datum/component/riding/proc/handle_vehicle_offsets(dir)
-	var/atom/movable/Atom = parent
-	var/Atom_dir = "[dir]"
-	var/passindex = 0
-	if(!LAZYLEN(Atom.buckled_mobs))
-		return
-
-	for(var/mobs in Atom.buckled_mobs)
-		passindex++
-		var/mob/living/buckled_mob = mobs
-		var/list/offsets = get_offsets(passindex)
-		buckled_mob.setDir(dir)
-		dir_loop:
-			for(var/offsetdir in offsets)
-				if(offsetdir == Atom_dir)
-					var/list/diroffsets = offsets[offsetdir]
-					buckled_mob.pixel_x = diroffsets[1]
-					if(diroffsets.len >= 2)
-						buckled_mob.pixel_y = diroffsets[2]
-					if(diroffsets.len == 3)
-						buckled_mob.layer = diroffsets[3]
-					break dir_loop
-	var/list/static/default_vehicle_pixel_offsets = list(TEXT_NORTH = list(0, 0), TEXT_SOUTH = list(0, 0), TEXT_EAST = list(0, 0), TEXT_WEST = list(0, 0))
-	var/pixelx = default_vehicle_pixel_offsets[Atom_dir]
-	var/pixely = default_vehicle_pixel_offsets[Atom_dir]
-	if(directional_vehicle_offsets[Atom_dir])
-		if(isnull(directional_vehicle_offsets[Atom_dir]))
-			pixelx = Atom.pixel_x
-			pixely = Atom.pixel_y
-		else
-			pixelx = directional_vehicle_offsets[Atom_dir][1]
-			pixely = directional_vehicle_offsets[Atom_dir][2]
-	Atom.pixel_x = pixelx
-	Atom.pixel_y = pixely
-
-/datum/component/riding/proc/set_vehicle_dir_offsets(dir, x, y)
-	directional_vehicle_offsets["[dir]"] = list(x, y)
-
-//Override this to set your vehicle's various pixel offsets
-/datum/component/riding/proc/get_offsets(pass_index) // list(dir = x, y, layer)
-	. = list(TEXT_NORTH = list(0, 0), TEXT_SOUTH = list(0, 0), TEXT_EAST = list(0, 0), TEXT_WEST = list(0, 0))
-	if(riding_offsets["[pass_index]"])
-		. = riding_offsets["[pass_index]"]
-	else if(riding_offsets["[RIDING_OFFSET_ALL]"])
-		. = riding_offsets["[RIDING_OFFSET_ALL]"]
-
-/datum/component/riding/proc/set_riding_offsets(index, list/offsets)
-	if(!islist(offsets))
-		return FALSE
-	riding_offsets["[index]"] = offsets
 
 /**
  * This proc is used to see if we have the appropriate key to drive this atom, if such a key is needed. Returns FALSE if we don't have what we need to drive.

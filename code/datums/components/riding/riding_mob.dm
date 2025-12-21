@@ -14,7 +14,6 @@
 	living_parent.stop_pulling() // was only used on humans previously, may change some other behavior
 	log_riding(living_parent, riding_mob)
 	riding_mob.glide_size = living_parent.glide_size
-	handle_vehicle_offsets(living_parent.dir)
 
 	if(isanimal(parent))
 		var/mob/living/simple_animal/simple_parent = parent
@@ -131,16 +130,8 @@
 	ridden.density = TRUE
 	return ..()
 
-/datum/component/riding/creature/runner/get_offsets(pass_index, mob_type) // list(dir = x, y, layer)
-	. = list(TEXT_NORTH = list(0, 0), TEXT_SOUTH = list(0, 0), TEXT_EAST = list(0, 0), TEXT_WEST = list(0, 0))
-	if (riding_offsets["[mob_type]"])
-		. = riding_offsets["[mob_type]"]
-	else if(riding_offsets["[RIDING_OFFSET_ALL]"])
-		. = riding_offsets["[RIDING_OFFSET_ALL]"]
-
 /datum/component/riding/creature/runner/handle_specials()
 	. = ..()
-	set_riding_offsets(RIDING_OFFSET_ALL, list(TEXT_NORTH = list(0, 8), TEXT_SOUTH = list(0, 6), TEXT_EAST = list(5, 8), TEXT_WEST = list(-5, 8)))
 	set_vehicle_dir_layer(SOUTH, ABOVE_MOB_LAYER)
 	set_vehicle_dir_layer(NORTH, ABOVE_MOB_LAYER)
 	set_vehicle_dir_layer(EAST, ABOVE_LYING_MOB_LAYER)

@@ -79,6 +79,5 @@
 	if(QDELETED(src))
 		return
 	handle_vehicle_layer(movable_parent.dir)
-	handle_vehicle_offsets(movable_parent.dir)
 	return TRUE
 

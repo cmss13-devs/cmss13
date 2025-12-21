@@ -11,6 +11,10 @@
 	var/mob/pulledby = null
 	var/rebounds = FALSE
 	var/rebounding = FALSE // whether an object that was launched was rebounded (to prevent infinite recursive loops from wall bouncing)
+	var/list/mob/living/buckled_mobs
+	var/mob/living/buckled_mob // mob buckled to this mob
+	var/buckle_lying = NO_BUCKLE_LYING/// Bed-like behaviour, forces mob.lying = buckle_lying if not set to [NO_BUCKLE_LYING].
+	var/buckle_flags = NONE
 
 	var/acid_damage = 0 //Counter for stomach acid damage. At ~60 ticks, dissolved
 
@@ -393,3 +397,150 @@
 	if(HAS_TRAIT(src, TRAIT_HAULED)) //we do not spin houled humans
 		return
 	INVOKE_ASYNC(src, PROC_REF(SpinAnimation), 5, 2)
+
+/atom/movable/proc/unbuckle_mob(mob/living/buckled_mob)
+	SIGNAL_HANDLER
+	if(buckled_mob && buckled_mob.buckled == src)
+		buckled_mob.clear_alert(ALERT_BUCKLED)
+		buckled_mob.set_buckled(null)
+		buckled_mob.anchored = initial(buckled_mob.anchored)
+
+		REMOVE_TRAITS_IN(buckled_mob, TRAIT_SOURCE_BUCKLE)
+		buckled_mob = null
+		buckled_mobs = list()
+
+//trying to buckle a mob
+/atom/movable/proc/buckle_mob(mob/user, mob/buckle_target)
+	if (!ismob(buckle_target) || (get_dist(src, user) > 1) || user.stat || buckled_mob || buckle_target.buckled || !isturf(user.loc))
+		return
+
+	if (user.is_mob_incapacitated() || HAS_TRAIT(user, TRAIT_IMMOBILIZED) || HAS_TRAIT(user, TRAIT_FLOORED))
+		to_chat(user, SPAN_WARNING("You can't do this right now."))
+		return
+
+	if (isxeno(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
+		to_chat(user, SPAN_WARNING("You don't have the dexterity to do that, try a nest."))
+		return
+	if (iszombie(user))
+		return
+
+	if(density)
+		density = FALSE
+		if(!step(buckle_target, get_dir(buckle_target, src)) && loc != buckle_target.loc)
+			density = TRUE
+			return
+		density = TRUE
+	else
+		if(buckle_target.loc != src.loc)
+			step_towards(buckle_target, src) //buckle if you're right next to it
+			if(buckle_target.loc != src.loc)
+				return
+			. = buckle_mob(buckle_target)
+	if (CHECK_BITFIELD(buckle_target.buckle_flags, CAN_BUCKLE))
+		do_buckle(user, buckle_target)
+		return
+	if (buckle_target.mob_size <= MOB_SIZE_XENO)
+		if ((buckle_target.stat == DEAD && istype(src, /obj/structure/bed/roller) || HAS_TRAIT(buckle_target, TRAIT_OPPOSABLE_THUMBS)))
+			do_buckle(buckle_target, user)
+			return
+	if ((buckle_target.mob_size > MOB_SIZE_HUMAN))
+		if(istype(src, /obj/structure/bed/roller))
+			var/obj/structure/bed/roller/roller = src
+			if(!roller.can_carry_big)
+				to_chat(user, SPAN_WARNING("[buckle_target] is too big to buckle in."))
+				return
+			if(buckle_target.stat != DEAD)
+				to_chat(user, SPAN_WARNING("[buckle_target] resists your attempt to buckle!"))
+				return
+		if(buckle_target.stat != DEAD)
+			return
+	do_buckle(buckle_target, user)
+
+// the actual buckling proc
+// Yes I know this is not style but its unreadable otherwise
+/atom/movable/proc/do_buckle(mob/living/target, mob/user)
+	send_buckling_message(target, user)
+	if (src && src.loc)
+		target.throw_alert(ALERT_BUCKLED, /atom/movable/screen/alert/buckled)
+		target.set_buckled(src)
+		target.forceMove(src.loc)
+		target.setDir(dir)
+		src.buckled_mob = target
+		src.buckled_mobs = list(target)
+		src.add_fingerprint(user)
+		afterbuckle(target)
+		return TRUE
+
+/atom/movable/proc/send_buckling_message(mob/buckle_target, mob/user)
+	if (buckle_target == user)
+		buckle_target.visible_message(
+			SPAN_NOTICE("[buckle_target] buckles in!"),
+			SPAN_NOTICE("You buckle yourself to [src]."),
+			SPAN_NOTICE("You hear metal clanking."))
+	else
+		buckle_target.visible_message(
+			SPAN_NOTICE("[buckle_target] is buckled in to [src] by [user]!"),
+			SPAN_NOTICE("You are buckled in to [src] by [user]."),
+			SPAN_NOTICE("You hear metal clanking"))
+
+/atom/movable/proc/afterbuckle(mob/buckle_target as mob) // Called after somebody buckled / unbuckled
+	handle_rotation() // To be removed when we have full dir support in set_buckled
+	SEND_SIGNAL(src, COMSIG_OBJ_AFTER_BUCKLE, buckled_mob)
+	if(!buckled_mob)
+		UnregisterSignal(buckle_target, COMSIG_PARENT_QDELETING)
+	else
+		RegisterSignal(buckled_mob, COMSIG_PARENT_QDELETING, PROC_REF(unbuckle))
+	return buckled_mob
+
+/atom/movable/proc/handle_rotation()
+	return
+
+/atom/movable/proc/unbuckle()
+	SIGNAL_HANDLER
+	if(buckled_mob && buckled_mob.buckled == src)
+		buckled_mob.clear_alert(ALERT_BUCKLED)
+		buckled_mob.set_buckled(null)
+		buckled_mob.anchored = initial(buckled_mob.anchored)
+
+		var/mob = buckled_mob
+		REMOVE_TRAITS_IN(buckled_mob, TRAIT_SOURCE_BUCKLE)
+		buckled_mob = null
+		buckled_mobs = list()
+		afterbuckle(mob)
+
+/atom/movable/proc/manual_unbuckle(mob/user as mob)
+	if(buckled_mob)
+		if(buckled_mob.buckled == src)
+			if(buckled_mob != user)
+				buckled_mob.visible_message(
+					SPAN_NOTICE("[buckled_mob.name] was unbuckled by [user.name]!"),
+					SPAN_NOTICE("You were unbuckled from [src] by [user.name]."),
+					SPAN_NOTICE("You hear metal clanking."))
+			else
+				buckled_mob.visible_message(
+					SPAN_NOTICE("[buckled_mob.name] unbuckled [buckled_mob.p_them()]self!"),
+					SPAN_NOTICE("You unbuckle yourself from [src]."),
+					SPAN_NOTICE("You hear metal clanking"))
+			unbuckle(buckled_mob)
+			add_fingerprint(user)
+			return 1
+
+	return 0
+
+/atom/movable/proc/handle_buckled_mob_movement(NewLoc, direct)
+	if(!buckled_mob.Move(NewLoc, direct))
+		forceMove(buckled_mob.loc)
+		last_move_dir = buckled_mob.last_move_dir
+		buckled_mob.inertia_dir = last_move_dir
+		return FALSE
+
+	// Even if the movement is entirely managed by the object, notify the buckled mob that it's moving for its handler.
+	//It won't be called otherwise because it's a function of client_move or pulled mob, neither of which accounts for this.
+	SEND_SIGNAL(buckled_mob, COMSIG_MOB_MOVE_OR_LOOK, TRUE, direct, direct)
+	return TRUE
+
+/atom/movable/BlockedPassDirs(atom/movable/mover, target_dir)
+	if(mover == buckled_mob) //can't collide with the thing you're buckled to
+		return NO_BLOCKED_MOVEMENT
+
+	return ..()

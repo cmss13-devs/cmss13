@@ -82,6 +82,10 @@
 		xeno.backpack_icon_holder = new(null, xeno)
 		xeno.vis_contents += xeno.backpack_icon_holder
 
+	if(src.type == /obj/item/storage/backpack/marine/saddle && isrunner(xeno))
+		ENABLE_BITFIELD(xeno.buckle_flags, CAN_BUCKLE)
+		xeno.AddElement(/datum/element/ridable, /datum/component/riding/creature/runner)
+
 	target_mob.put_in_back(src)
 	return FALSE
 
@@ -552,6 +556,38 @@
 	item_state = "marinepack_medic"
 	xeno_icon_state = "medicpack"
 	xeno_types = list(/mob/living/carbon/xenomorph/runner, /mob/living/carbon/xenomorph/praetorian, /mob/living/carbon/xenomorph/drone, /mob/living/carbon/xenomorph/warrior, /mob/living/carbon/xenomorph/defender, /mob/living/carbon/xenomorph/sentinel, /mob/living/carbon/xenomorph/spitter)
+
+/obj/item/storage/backpack/marine/saddle
+	name = "\improper USCM XX-121 Saddle"
+	desc = "A saddle with straps designed to fit around a XX-121 specimen. Not sure who would be stupid enough to try and put this on one."
+	icon_state = "saddlebags"
+	xeno_icon_state = "saddlebags"
+	xeno_types = list(/mob/living/carbon/xenomorph/runner)
+
+/obj/item/storage/backpack/marine/saddle/clicked(mob/user, list/mods)
+	if(mods[ALT_CLICK])
+		to_chat(user, SPAN_NOTICE("You change the style of the saddle."))
+		if(icon_state == "saddlebags")
+			icon_state = "cowboybags"
+			xeno_icon_state = "cowboybags"
+			update_icon()
+			return
+		icon_state = "saddlebags"
+		xeno_icon_state = "saddlebags"
+		update_icon()
+		return
+	return ..()
+
+/obj/item/storage/backpack/marine/saddle/mob_can_equip(mob/equipping_mob, slot, disable_warning)
+	if(!isrunner(equipping_mob))
+		return FALSE
+	return ..()
+
+/obj/item/storage/backpack/marine/saddle/unequipped(mob/user, slot, silent)
+	. = ..()
+	if(src.type == /obj/item/storage/backpack/marine/saddle && isrunner(user))
+		DISABLE_BITFIELD(user.buckle_flags, CAN_BUCKLE)
+		user.RemoveElement(/datum/element/ridable, /datum/component/riding/creature/runner)
 
 /obj/item/storage/backpack/marine/k9_synth
 	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/UA.dmi'

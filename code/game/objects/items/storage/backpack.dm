@@ -587,9 +587,15 @@
 
 /obj/item/storage/backpack/marine/saddle/attack(mob/living/target_mob, mob/living/user)
 	. = ..()
-	if(src.type == /obj/item/storage/backpack/marine/saddle && isrunner(target_mob))
-		ENABLE_BITFIELD(target_mob.buckle_flags, CAN_BUCKLE)
-		target_mob.AddElement(/datum/element/ridable, /datum/component/riding/creature/runner)
+	var/mob/living/carbon/xenomorph/xeno = target_mob
+	if(!user || !user.ally_of_hivenumber(xeno.hivenumber))
+		user.KnockDown(rand(xeno.caste.tacklestrength_min, xeno.caste.tacklestrength_max))
+		playsound(user.loc, 'sound/weapons/pierce.ogg', 25, TRUE)
+		user.visible_message(SPAN_WARNING("\The [user] tried to strap \the [src] onto [xeno] but instead gets a tail swipe to the head!"))
+		return FALSE
+	if(src.type == /obj/item/storage/backpack/marine/saddle && isrunner(xeno))
+		ENABLE_BITFIELD(xeno.buckle_flags, CAN_BUCKLE)
+		xeno.AddElement(/datum/element/ridable, /datum/component/riding/creature/runner)
 
 /obj/item/storage/backpack/marine/k9_synth
 	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/UA.dmi'

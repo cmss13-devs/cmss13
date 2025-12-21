@@ -45,7 +45,7 @@
 	var/mob/living/living_parent = parent
 
 	var/kick_us_off
-	if(living_parent.lying_angle) // if we move while on the ground, the rider falls off
+	if(LYING_DOWN_TRAIT in living_parent._status_traits) // if we move while on the ground, the rider falls off
 		kick_us_off = TRUE
 	// for piggybacks and (redundant?) borg riding, check if the rider is stunned/restrained
 	else if((ride_check_flags & RIDER_NEEDS_ARMS) && (rider.grab_level == GRAB_CHOKE || rider.is_mob_incapacitated(TRUE)))
@@ -84,7 +84,7 @@
 	COOLDOWN_START(src, vehicle_move_cooldown, (last_move_diagonal? 2 : 1) * vehicle_move_delay)
 
 /// Yeets the rider off, used for animals and cyborgs, redefined for humans who shove their piggyback rider off
-/datum/component/riding/creature/proc/force_dismount(mob/living/rider, gentle = FALSE)
+/datum/component/riding/creature/proc/force_dismount(mob/living/rider, gentle = FALSE) // this does not work properly, rider keeps following after falling off!! fix tomorrow!!
 	var/atom/movable/movable_parent = parent
 	movable_parent.unbuckle_mob(rider)
 
@@ -104,7 +104,7 @@
 		"<span class='warning'>You're thrown violently from [movable_parent]!</span>")
 		rider.throw_atom(target, 14, 5, movable_parent)
 
-/datum/component/riding/creature/proc/check_carrier_fall_over(mob/living/carbon/carrying)
+/datum/component/riding/creature/proc/check_carrier_fall_over(mob/living/carbon/carrying) // this does not work properly, rider keeps following after falling off!! fix tomorrow!!
 	SIGNAL_HANDLER
 
 	for(var/mob/living/rider in carrying.buckled_mobs)

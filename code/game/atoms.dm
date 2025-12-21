@@ -269,8 +269,8 @@ directive is properly returned.
 
 // called by mobs when e.g. having the atom as their machine, pulledby, loc (AKA mob being inside the atom) or buckled var set.
 // see code/modules/mob/mob_movement.dm for more.
-/atom/proc/relaymove()
-	return
+/atom/proc/relaymove(mob/living/user, direction)
+	return !(SEND_SIGNAL(src, COMSIG_RIDDEN_DRIVER_MOVE, user, direction) & COMPONENT_DRIVER_BLOCK_MOVE)
 
 /atom/proc/contents_explosion(severity)
 	for(var/atom/A in contents)

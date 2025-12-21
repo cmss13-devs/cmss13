@@ -152,7 +152,6 @@ GLOBAL_LIST_INIT(cm_vending_gear_staff_officer_armory, list(
 		/obj/item/explosive/plastic,
 		/obj/item/device/binoculars/range/designator,
 		/obj/item/map/current_map,
-		/obj/item/storage/backpack/marine/satchel/rto,
 		/obj/item/stack/fulton,
 		/obj/item/device/megaphone,
 		/obj/item/storage/box/m94/signal,

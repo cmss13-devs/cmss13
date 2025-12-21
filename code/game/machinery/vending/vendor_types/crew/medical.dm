@@ -75,7 +75,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_doctor, list(
 		list("Lab Coat", 0, /obj/item/clothing/suit/storage/labcoat, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
 		list("Lab Coat, Short", 0, /obj/item/clothing/suit/storage/labcoat/short, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
 		list("Lab Coat, Long", 0, /obj/item/clothing/suit/storage/labcoat/long, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
-		list("Medical's Apron", 0, /obj/item/clothing/suit/chef/classic/medical, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
+		list("Medical Apron", 0, /obj/item/clothing/suit/chef/classic/medical, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
 
 		list("SNOW GEAR (SNOW USE ONLY)", 0, null, null, null),
 		list("Snow Coat", 0, /obj/item/clothing/suit/storage/snow_suit/doctor, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
@@ -155,7 +155,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_surgeon, list(
 		list("Lab Coat", 0, /obj/item/clothing/suit/storage/labcoat, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
 		list("Lab Coat, Short", 0, /obj/item/clothing/suit/storage/labcoat/short, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
 		list("Lab Coat, Long", 0, /obj/item/clothing/suit/storage/labcoat/long, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
-		list("Medical's Apron", 0, /obj/item/clothing/suit/chef/classic/medical, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
+		list("Medical Apron", 0, /obj/item/clothing/suit/chef/classic/medical, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
 
 		list("SNOW GEAR (SNOW USE ONLY)", 0, null, null, null),
 		list("Snow Coat", 0, /obj/item/clothing/suit/storage/snow_suit/doctor, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
@@ -237,7 +237,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_field_doctor, list(
 		list("Lab Coat", 0, /obj/item/clothing/suit/storage/labcoat, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
 		list("Lab Coat, Short", 0, /obj/item/clothing/suit/storage/labcoat/short, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
 		list("Lab Coat, Long", 0, /obj/item/clothing/suit/storage/labcoat/long, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
-		list("Medical's Apron", 0, /obj/item/clothing/suit/chef/classic/medical, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
+		list("Medical Apron", 0, /obj/item/clothing/suit/chef/classic/medical, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
 
 		list("SNOW GEAR (SNOW USE ONLY)", 0, null, null, null),
 		list("Snow Coat", 0, /obj/item/clothing/suit/storage/snow_suit/doctor, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
@@ -317,7 +317,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_pharmacist, list(
 		list("Lab Coat", 0, /obj/item/clothing/suit/storage/labcoat, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
 		list("Lab Coat, Short", 0, /obj/item/clothing/suit/storage/labcoat/short, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
 		list("Lab Coat, Long", 0, /obj/item/clothing/suit/storage/labcoat/long, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
-		list("Medical's Apron", 0, /obj/item/clothing/suit/chef/classic/medical, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
+		list("Medical Apron", 0, /obj/item/clothing/suit/chef/classic/medical, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
 
 		list("SNOW GEAR (SNOW USE ONLY)", 0, null, null, null),
 		list("Snow Coat", 0, /obj/item/clothing/suit/storage/snow_suit/doctor, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
@@ -397,7 +397,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_nurse, list(
 		list("Lab Coat", 0, /obj/item/clothing/suit/storage/labcoat, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
 		list("Lab Coat, Short", 0, /obj/item/clothing/suit/storage/labcoat/short, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
 		list("Lab Coat, Long", 0, /obj/item/clothing/suit/storage/labcoat/long, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
-		list("Medical's Apron", 0, /obj/item/clothing/suit/chef/classic/medical, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
+		list("Medical Apron", 0, /obj/item/clothing/suit/chef/classic/medical, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
 
 		list("SNOW GEAR (SNOW USE ONLY)", 0, null, null, null),
 		list("Snow Coat", 0, /obj/item/clothing/suit/storage/snow_suit/doctor, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
@@ -471,13 +471,13 @@ GLOBAL_LIST_INIT(cm_vending_clothing_researcher, list(
 
 		list("SUIT (CHOOSE 1)", 0, null, null, null),
 		list("Researcher's Lab Coat, Brown", 0, /obj/item/clothing/suit/storage/labcoat/researcher, MARINE_CAN_BUY_MRE, VENDOR_ITEM_RECOMMENDED),
-		list("Researcher's High-Cut Lab Coat, Brown Short)", 0, /obj/item/clothing/suit/storage/labcoat/researcher/short, MARINE_CAN_BUY_MRE, VENDOR_ITEM_RECOMMENDED),
-		list("Researcher's White Lab Coat", 0, /obj/item/clothing/suit/storage/labcoat/surgeon, MARINE_CAN_BUY_MRE, VENDOR_ITEM_RECOMMENDED),
-		list("Researcher's White High-Cut Lab Coat", 0, /obj/item/clothing/suit/storage/labcoat/surgeon/short, MARINE_CAN_BUY_MRE, VENDOR_ITEM_RECOMMENDED),
-		list("Researcher's White Low-Cut Lab Coat", 0, /obj/item/clothing/suit/storage/labcoat/surgeon/long, MARINE_CAN_BUY_MRE, VENDOR_ITEM_RECOMMENDED),
+		list("Researcher's Lab Coat, Brown (Short)", 0, /obj/item/clothing/suit/storage/labcoat/researcher/short, MARINE_CAN_BUY_MRE, VENDOR_ITEM_RECOMMENDED),
+		list("Researcher's Lab Coat, White", 0, /obj/item/clothing/suit/storage/labcoat/surgeon, MARINE_CAN_BUY_MRE, VENDOR_ITEM_RECOMMENDED),
+		list("Researcher's Lab Coat, White (Short)", 0, /obj/item/clothing/suit/storage/labcoat/surgeon/short, MARINE_CAN_BUY_MRE, VENDOR_ITEM_RECOMMENDED),
+		list("Researcher's Lab Coat, White (Long)", 0, /obj/item/clothing/suit/storage/labcoat/surgeon/long, MARINE_CAN_BUY_MRE, VENDOR_ITEM_RECOMMENDED),
 		list("Lab Coat", 0, /obj/item/clothing/suit/storage/labcoat, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
-		list("High-Cut Lab Coat", 0, /obj/item/clothing/suit/storage/labcoat/short, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
-		list("Low-Cut Lab Coat", 0, /obj/item/clothing/suit/storage/labcoat/long, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
+		list("Lab Coat (Short)", 0, /obj/item/clothing/suit/storage/labcoat/short, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
+		list("Lab Coat (Long)", 0, /obj/item/clothing/suit/storage/labcoat/long, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
 
 		list("SNOW GEAR (SNOW USE ONLY)", 0, null, null, null),
 		list("Snow Coat", 0, /obj/item/clothing/suit/storage/snow_suit/doctor, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),

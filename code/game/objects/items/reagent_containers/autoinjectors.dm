@@ -21,7 +21,7 @@
 	starting_vial = null
 	transparent = FALSE
 	var/uses_left = 3
-	var/mixed_chem = FALSE
+	var/mixed_chem = FALSE //mini tank will not accept mixed_chem autoinjector types
 	var/display_maptext = FALSE
 	var/maptext_label
 	maptext_height = 16
@@ -209,7 +209,7 @@
 /obj/item/reagent_container/hypospray/autoinjector/ez //only here to set up pathing
 	name = "tricordrazine EZ autoinjector"
 	chemname = "tricordrazine"
-	desc = "An EZ autoinjector loaded with 3 doses of 30u of Inaprovaline, an emergency stabilization medicine for patients in critical condition by halting further oxy damage. You can refill it at Wey-Med vending machines and it does not require any training to use."
+	desc = "An EZ autoinjector loaded with 3 doses of 15u tricordrazine, a common-spectrum damage healer. You can refill it at Wey-Med vending machines and it does not require any training to use."
 	amount_per_transfer_from_this = REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 	volume = (REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 	icon_state = "emptyskill"
@@ -221,7 +221,7 @@
 /obj/item/reagent_container/hypospray/autoinjector/ez/tricord
 	name = "tricordrazine EZ autoinjector"
 	chemname = "tricordrazine"
-	desc = "An EZ autoinjector loaded with 3 doses of 15u of Tricordrazine, a weak general use medicine for treating damage. You can refill it at Wey-Med vending machines and it does not require any training to use."
+	desc = "An EZ autoinjector loaded with 3 doses of 15u of Tricordrazine, a common-spectrum damage healer. You can refill it at Wey-Med vending machines and it does not require any training to use."
 	maptext_label = "EzTc"
 
 /obj/item/reagent_container/hypospray/autoinjector/ez/tramadol
@@ -320,7 +320,7 @@
 	volume = 30
 	mixed_chem = TRUE
 	display_maptext = TRUE
-	maptext_label = "ChSa"
+	maptext_label = "Zzz"
 
 /obj/item/reagent_container/hypospray/autoinjector/chloralhydrate/Initialize()
 	. = ..()
@@ -447,7 +447,7 @@
 	amount_per_transfer_from_this = 5
 	volume = 15
 	uses_left = 0
-	display_maptext = TRUE
+	display_maptext = FALSE
 
 /obj/item/reagent_container/hypospray/autoinjector/empty/get_examine_text(mob/user)
 	. = ..()

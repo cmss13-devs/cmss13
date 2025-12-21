@@ -61,7 +61,7 @@
 					"<span class='warning'>You fall off of [living_parent]!</span>")
 	rider.KnockOut(1)
 	rider.KnockDown(4)
-	living_parent.unbuckle_mob(rider)
+	living_parent.unbuckle(rider)
 
 /datum/component/riding/creature/vehicle_mob_unbuckle(mob/living/living_parent, mob/living/former_rider, force = FALSE)
 	if(istype(living_parent) && istype(former_rider))
@@ -84,9 +84,9 @@
 	COOLDOWN_START(src, vehicle_move_cooldown, (last_move_diagonal? 2 : 1) * vehicle_move_delay)
 
 /// Yeets the rider off, used for animals and cyborgs, redefined for humans who shove their piggyback rider off
-/datum/component/riding/creature/proc/force_dismount(mob/living/rider, gentle = FALSE) // this does not work properly, rider keeps following after falling off!! fix tomorrow!!
+/datum/component/riding/creature/proc/force_dismount(mob/living/rider, gentle = FALSE)
 	var/atom/movable/movable_parent = parent
-	movable_parent.unbuckle_mob(rider)
+	movable_parent.unbuckle(rider)
 
 	if(!isanimal(movable_parent))
 		return
@@ -104,11 +104,11 @@
 		"<span class='warning'>You're thrown violently from [movable_parent]!</span>")
 		rider.throw_atom(target, 14, 5, movable_parent)
 
-/datum/component/riding/creature/proc/check_carrier_fall_over(mob/living/carbon/carrying) // this does not work properly, rider keeps following after falling off!! fix tomorrow!!
+/datum/component/riding/creature/proc/check_carrier_fall_over(mob/living/carbon/carrying)
 	SIGNAL_HANDLER
 
 	for(var/mob/living/rider in carrying.buckled_mobs)
-		carrying.unbuckle_mob(rider)
+		carrying.unbuckle(rider)
 		rider.KnockDown(1)
 		carrying.visible_message("<span class='danger'>[rider] topples off of [carrying] as they both fall to the ground!</span>", \
 					"<span class='warning'>You fall to the ground, bringing [rider] with you!</span>", "<span class='hear'>You hear two consecutive thuds.</span>")
@@ -143,12 +143,12 @@
 	set_riding_offsets(RIDING_OFFSET_ALL, list(TEXT_NORTH = list(0, 8), TEXT_SOUTH = list(0, 6), TEXT_EAST = list(5, 8), TEXT_WEST = list(-5, 8)))
 	set_vehicle_dir_layer(SOUTH, ABOVE_MOB_LAYER)
 	set_vehicle_dir_layer(NORTH, ABOVE_MOB_LAYER)
-	set_vehicle_dir_layer(EAST, ABOVE_MOB_LAYER)
-	set_vehicle_dir_layer(WEST, ABOVE_MOB_LAYER)
+	set_vehicle_dir_layer(EAST, ABOVE_LYING_MOB_LAYER)
+	set_vehicle_dir_layer(WEST, ABOVE_LYING_MOB_LAYER)
 
 /datum/component/riding/creature/runner/check_carrier_fall_over(mob/living/carbon/xenomorph/runner/carrying_runner)
 	for(var/mob/living/rider in carrying_runner.buckled_mobs)
-		carrying_runner.unbuckle_mob(rider)
+		carrying_runner.unbuckle(rider)
 		rider.KnockDown(1)
 		carrying_runner.visible_message(SPAN_DANGER("[rider] topples off of [carrying_runner] as they both fall to the ground!"), \
 					SPAN_DANGER("You fall to the ground, bringing [rider] with you!"), SPAN_NOTICE("You hear two consecutive thuds."))

@@ -398,17 +398,6 @@
 		return
 	INVOKE_ASYNC(src, PROC_REF(SpinAnimation), 5, 2)
 
-/atom/movable/proc/unbuckle_mob(mob/living/buckled_mob)
-	SIGNAL_HANDLER
-	if(buckled_mob && buckled_mob.buckled == src)
-		buckled_mob.clear_alert(ALERT_BUCKLED)
-		buckled_mob.set_buckled(null)
-		buckled_mob.anchored = initial(buckled_mob.anchored)
-
-		REMOVE_TRAITS_IN(buckled_mob, TRAIT_SOURCE_BUCKLE)
-		buckled_mob = null
-		buckled_mobs = list()
-
 //trying to buckle a mob
 /atom/movable/proc/buckle_mob(mob/user, mob/buckle_target)
 	if (!ismob(buckle_target) || (get_dist(src, user) > 1) || user.stat || buckled_mob || buckle_target.buckled || !isturf(user.loc))

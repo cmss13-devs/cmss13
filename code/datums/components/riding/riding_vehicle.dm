@@ -22,7 +22,7 @@
 
 	if(HAS_TRAIT(user, TRAIT_INCAPACITATED))
 		if(ride_check_flags & UNBUCKLE_DISABLED_RIDER)
-			vehicle_parent.unbuckle_mob(user, TRUE)
+			vehicle_parent.unbuckle(user, TRUE)
 			user.visible_message("<span class='danger'>[user] falls off \the [vehicle_parent].</span>",\
 			"<span class='danger'>You slip off \the [vehicle_parent] as your body slumps!</span>")
 			user.Stun(3 SECONDS)
@@ -34,7 +34,7 @@
 
 	if(ride_check_flags & RIDER_NEEDS_LEGS && HAS_TRAIT(user, TRAIT_FLOORED))
 		if(ride_check_flags & UNBUCKLE_DISABLED_RIDER)
-			vehicle_parent.unbuckle_mob(user, TRUE)
+			vehicle_parent.unbuckle(user, TRUE)
 			user.visible_message("<span class='danger'>[user] falls off \the [vehicle_parent].</span>",\
 			"<span class='danger'>You fall off \the [vehicle_parent] while trying to operate it while unable to stand!</span>")
 			user.Stun(3 SECONDS)
@@ -46,7 +46,7 @@
 
 	if(ride_check_flags & RIDER_NEEDS_ARMS && user.is_mob_restrained())
 		if(ride_check_flags & UNBUCKLE_DISABLED_RIDER)
-			vehicle_parent.unbuckle_mob(user, TRUE)
+			vehicle_parent.unbuckle(user, TRUE)
 			user.visible_message("<span class='danger'>[user] falls off \the [vehicle_parent].</span>",\
 			"<span class='danger'>You fall off \the [vehicle_parent] while trying to operate it without being able to hold on!</span>")
 			user.Stun(3 SECONDS)

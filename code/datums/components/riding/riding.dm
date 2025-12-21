@@ -223,7 +223,7 @@
 		INVOKE_ASYNC(possible_bumped_door, TYPE_PROC_REF(/obj/structure/machinery/door, bumpopen), occupant)
 
 /datum/component/riding/proc/Unbuckle(atom/movable/Mob)
-	addtimer(CALLBACK(parent, TYPE_PROC_REF(/atom/movable, unbuckle_mob), Mob), 0, TIMER_UNIQUE)
+	addtimer(CALLBACK(parent, TYPE_PROC_REF(/atom/movable, unbuckle), Mob), 0, TIMER_UNIQUE)
 
 /// currently replicated from ridable because we need this behavior here too, see if we can deal with that
 /datum/component/riding/proc/unequip_buckle_inhands(mob/living/carbon/user)

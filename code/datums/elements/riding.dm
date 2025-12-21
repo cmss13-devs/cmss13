@@ -120,14 +120,14 @@
 	return ..()
 
 /obj/item/riding_offhand/Destroy()
-	var/atom/movable/AM = parent
+	var/atom/movable/Atom = parent
 	if(selfdeleting)
 		if(rider in AM.buckled_mob)
-			AM.unbuckle_mob(rider)
+			Atom.unbuckle(rider)
 	return ..()
 /*
 /obj/item/riding_offhand/on_thrown(mob/living/carbon/user, atom/target)
 	if(rider == user)
 		return //Piggyback user.
-	user.unbuckle_mob(rider)
+	user.unbuckle(rider)
 	return rider*/

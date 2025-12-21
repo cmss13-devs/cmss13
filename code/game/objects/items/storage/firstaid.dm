@@ -513,13 +513,14 @@
 
 /obj/item/storage/surgical_case
 	name = "surgical case"
-	desc = "It's a medical case for storing basic surgical tools. It comes with a brief description for treating common internal bleeds.\
+	desc = "It's a medical case for storing basic surgical tools. It comes with a brief description for treating common internal bleeds and eschar wounds.\
 		\nBefore surgery: Verify correct location and patient is adequately numb to pain.\
 		\nStep one: Open an incision at the site with the scalpel.\
 		\nStep two: Clamp bleeders with the hemostat.\
 		\nStep three: Draw back the skin with the retracter.\
 		\nStep four: Patch the damaged vein with a surgical line.\
-		\nStep five: Close the incision with a surgical line."
+		\nStep five: Close the incision with a surgical line.\
+		\nTo treat eschar, follow the same procedure as above, but use a scalpel and then SynthGraft or an ointment in step four."
 	icon = 'icons/obj/items/storage/medical.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',

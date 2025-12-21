@@ -72,7 +72,7 @@
 
 /mob/dead/observer/verb/toggle_ghostsee()
 	set name = "Toggle Ghost Vision"
-	set desc = "Toggles your ability to see things only ghosts can see, like other ghosts"
+	set desc = "Toggles your ability to see things only ghosts can see, like other ghosts."
 	set category = "Ghost.Settings"
 	ghostvision = !ghostvision
 	if(ghostvision)
@@ -183,7 +183,7 @@
 	observe_target_mob = null
 	observe_target_client = null
 
-	client.eye = src
+	client.set_eye(src)
 	hud_used.show_hud(hud_used.hud_version, src)
 	UnregisterSignal(src, COMSIG_MOVABLE_MOVED)
 
@@ -279,7 +279,7 @@
 		return
 
 	client.clear_screen()
-	client.eye = carbon_target
+	client.set_eye(carbon_target)
 	observe_target_mob = carbon_target
 
 	carbon_target.auto_observed(src)
@@ -503,8 +503,8 @@ Works together with spawning an observer, noted above.
 	if(ghost.client)
 		ghost.client.init_verbs()
 		ghost.client.change_view(GLOB.world_view_size) //reset view range to default
-		ghost.client.pixel_x = 0 //recenters our view
-		ghost.client.pixel_y = 0
+		ghost.client.set_pixel_x(0) //recenters our view
+		ghost.client.set_pixel_y(0)
 		ghost.set_lighting_alpha_from_pref(ghost.client)
 		if(ghost.client.soundOutput)
 			ghost.client.soundOutput.update_ambience()
@@ -669,7 +669,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 /mob/dead/observer/verb/teleport_z_up()
 	set category = "Ghost.Movement"
 	set name = "Move Up"
-	set desc = "Move up a z level"
+	set desc = "Move up a z level."
 
 	var/turf/above = SSmapping.get_turf_above(get_turf(src))
 
@@ -679,7 +679,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 /mob/dead/observer/verb/teleport_z_down()
 	set category = "Ghost.Movement"
 	set name = "Move Down"
-	set desc = "Move down a z level"
+	set desc = "Move down a z level."
 
 	var/turf/below = SSmapping.get_turf_below(get_turf(src))
 
@@ -746,7 +746,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 /mob/dead/observer/verb/follow_local(mob/target in GLOB.mob_list)
 	set category = "Ghost.Follow"
 	set name = "Follow Local Mob"
-	set desc = "Follow on-screen mob"
+	set desc = "Follow on-screen mob."
 
 	do_observe(target)
 
@@ -804,7 +804,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 /mob/dead/observer/verb/dead_teleport_mob() //Moves the ghost instead of just changing the ghosts's eye -Nodrak
 	set category = "Ghost"
 	set name = "Teleport to Mob"
-	set desc = "Teleport to a mob"
+	set desc = "Teleport to a mob."
 
 	if(istype(usr, /mob/dead/observer)) //Make sure they're an observer!
 
@@ -952,7 +952,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 /mob/dead/observer/verb/view_faxes()
 	set name = "View Sent Faxes"
-	set desc = "View faxes from this round"
+	set desc = "View faxes from this round."
 	set category = "Ghost.View"
 
 	var/list/options = list(
@@ -1338,7 +1338,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		var/mob/living/carbon/human/H = mind.original
 		if(istype(H))
 			ref = WEAKREF(H)
-		GLOB.data_core.manifest_modify(name, ref, null, null, "*Deceased*")
+		GLOB.data_core.manifest_modify(name, ref, null, null, "Deceased")
 
 
 /mob/dead/observer/verb/view_kill_feed()

@@ -161,7 +161,7 @@
 #define TRAIT_MERGED_WITH_WEEDS "merged_with_weeds"
 /// Apply this to identify a mob as temporarily muted
 #define TRAIT_TEMPORARILY_MUTED "temporarily_muted"
-/// Mob wont get hit by stray projectiles
+/// Mob won't get hit by stray projectiles
 #define TRAIT_NO_STRAY "trait_no_stray"
 /// When a Xeno hauls us. We can take out our knife or gun if hauled though we are immobilized, also shielded from most damage.
 #define TRAIT_HAULED "hauled"
@@ -215,6 +215,8 @@
 #define TRAIT_CHARGING "t_charging"
 /// If the mob has leadership abilities (giving orders).
 #define TRAIT_LEADERSHIP "t_leadership"
+/// If the mob is a acting squad leader (incapable of the leadership abilities).
+#define TRAIT_ACTING_LEAD "t_acting_leader"
 /// If the mob can see the reagents contents of stuff
 #define TRAIT_REAGENT_SCANNER "reagent_scanner"
 /// If the mob cannot eat/be fed

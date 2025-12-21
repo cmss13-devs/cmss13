@@ -86,7 +86,7 @@
 
 	if(!range_bounds)
 		set_range()
-	targets = SSquadtree.players_in_range(range_bounds, z, QTREE_SCAN_MOBS | QTREE_EXCLUDE_OBSERVER)
+	targets = SSquadtree.players_in_range(range_bounds, z, QTREE_SCAN_MOBS | QTREE_FILTER_LIVING)
 	if(!targets)
 		return FALSE
 
@@ -424,21 +424,23 @@
 			continue
 
 		var/blocked = FALSE
-		for(var/turf/T in path)
-			if(T.density || T.opacity)
+		for(var/turf/turf in path)
+			if(turf.density || turf.opacity)
 				blocked = TRUE
 				break
 
-			for(var/obj/structure/S in T)
+			for(var/obj/structure/S in turf)
 				if(S.opacity)
 					blocked = TRUE
 					break
 
-			for(var/obj/vehicle/multitile/V in T)
+			for(var/obj/vehicle/multitile/V in turf)
 				blocked = TRUE
 				break
 
-			for(var/obj/effect/particle_effect/smoke/S in T)
+			for(var/obj/effect/particle_effect/smoke/smoke in turf)
+				if(!smoke.obscuring)
+					continue
 				blocked = TRUE
 				break
 

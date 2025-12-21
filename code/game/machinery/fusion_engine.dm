@@ -269,6 +269,9 @@
 		update_icon()
 		looping = TRUE
 
+/obj/structure/machinery/power/power_generator/reactor/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	return TAILSTAB_COOLDOWN_NONE
+
 /obj/structure/machinery/power/power_generator/reactor/attackby(obj/item/attacking_item, mob/user)
 	//Fuel Cells
 	if(user.action_busy)
@@ -450,6 +453,14 @@
 	repair_time *= user.get_skill_duration_multiplier(SKILL_ENGINEER)
 	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 		repair_time += 5 SECONDS
+
+	switch(repair_type)
+		if(BUILDSTATE_DAMAGE_WELD)
+			playsound(loc, 'sound/items/Welder.ogg', 25, 1)
+		if(BUILDSTATE_DAMAGE_WIRE)
+			playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
+		if(BUILDSTATE_DAMAGE_WRENCH)
+			playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 
 	to_chat(user, SPAN_NOTICE("You start repairing [src] with [tool]."))
 	if(!do_after(user, repair_time, INTERRUPT_ALL, BUSY_ICON_BUILD, src))

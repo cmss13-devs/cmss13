@@ -624,7 +624,7 @@ GLOBAL_DATUM_INIT(above_blackness_backdrop, /atom/movable/above_blackness_backdr
 
 /obj/effect/stairs/Initialize(mapload, ...)
 	. = ..()
-	SSminimaps.add_marker(src, z, MINIMAP_FLAG_ALL, "stairs_[direction]")
+	SSminimaps.add_marker(src, MINIMAP_FLAG_ALL, image('icons/UI_icons/map_blips.dmi', null,"stairs_[direction]", HIGH_FLOAT_LAYER))
 
 /obj/effect/stairs/up
 	direction = "up"

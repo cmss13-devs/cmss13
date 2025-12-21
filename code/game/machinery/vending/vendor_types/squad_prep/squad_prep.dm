@@ -115,6 +115,7 @@
 
 		list("ARMOR", -1, null, null),
 		list("CH252 Combat Helmet", floor(scale * 15), /obj/item/clothing/head/helmet/marine/unsc, VENDOR_ITEM_MANDATORY),
+		list("CH252 Helmet Mounted Light", floor(scale * 15), /obj/item/attachable/flashlight, VENDOR_ITEM_MANDATORY),
 		list("M52B Combat Armor Chestplate", floor(scale * 15), /obj/item/clothing/suit/marine/unsc, VENDOR_ITEM_MANDATORY),
 		list("UNSC Shooting Shades", floor(scale * 15), /obj/item/clothing/glasses/sunglasses/big/unsc, VENDOR_ITEM_RECOMMENDED),
 

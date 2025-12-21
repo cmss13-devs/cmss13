@@ -24,7 +24,7 @@
 	unload_sound = 'sound/weapons/halo/gun_ma5c_unload.ogg'
 	empty_sound = null
 
-	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_AUTO_EJECTOR
 	start_automatic = TRUE
 	map_specific_decoration = FALSE
 
@@ -64,7 +64,6 @@
 	fa_max_scatter = 2
 
 /obj/item/weapon/gun/rifle/halo/ma5c/unloaded
-	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_TRIGGER_SAFETY
 	current_mag = null
 
 /obj/item/weapon/gun/rifle/halo/ma3a
@@ -120,7 +119,6 @@
 	fa_max_scatter = 2
 
 /obj/item/weapon/gun/rifle/halo/ma3a/unloaded
-	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_TRIGGER_SAFETY
 	current_mag = null
 
 /obj/item/weapon/gun/rifle/halo/vk78
@@ -178,7 +176,6 @@
 
 
 /obj/item/weapon/gun/rifle/halo/vk78/unloaded
-	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_TRIGGER_SAFETY
 	current_mag = null
 
 
@@ -195,7 +192,7 @@
 	unload_sound = 'sound/weapons/halo/gun_br55_unload.ogg'
 	empty_sound = null
 
-	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_AUTO_EJECTOR
 	start_automatic = FALSE
 	map_specific_decoration = FALSE
 
@@ -234,7 +231,6 @@
 	fa_max_scatter = 2
 
 /obj/item/weapon/gun/rifle/halo/br55/unloaded
-	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_TRIGGER_SAFETY
 	current_mag = null
 
 /obj/item/weapon/gun/rifle/halo/dmr
@@ -253,7 +249,7 @@
 	empty_sound = null
 
 
-	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_AUTO_EJECTOR
 	start_automatic = FALSE
 	map_specific_decoration = FALSE
 
@@ -273,8 +269,9 @@
 
 /obj/item/weapon/gun/rifle/halo/dmr/set_gun_config_values()
 	..()
-	set_fire_delay(FIRE_DELAY_TIER_5)
-	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_3
+	set_fire_delay(FIRE_DELAY_TIER_6)
+	set_burst_amount(0)
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_5
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_6
 	scatter_unwielded = SCATTER_AMOUNT_TIER_5
@@ -286,7 +283,6 @@
 
 
 /obj/item/weapon/gun/rifle/halo/dmr/unloaded
-	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_TRIGGER_SAFETY
 	current_mag = null
 
 // SMGs
@@ -318,7 +314,7 @@
 	empty_sound = null
 	w_class = SIZE_LARGE
 
-	flags_gun_features = GUN_CAN_POINTBLANK
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AUTO_EJECTOR
 	start_automatic = TRUE
 	map_specific_decoration = FALSE
 	current_mag = /obj/item/ammo_magazine/smg/halo/m7
@@ -423,7 +419,6 @@
 
 /obj/item/weapon/gun/shotgun/pump/halo/m90/unloaded
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/m90/unloaded
-	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG|GUN_TRIGGER_SAFETY
 
 /obj/item/weapon/gun/shotgun/pump/halo/m90/police
 	name = "\improper WMT Law Enforcement Shotgun"
@@ -465,7 +460,7 @@
 	zoomdevicename = "scope"
 	attachable_allowed = list(/obj/item/attachable/srs_assembly, /obj/item/attachable/scope/variable_zoom/oracle, /obj/item/attachable/srs_barrel, /obj/item/attachable/bipod/srs_bipod)
 	starting_attachment_types = list(/obj/item/attachable/scope/variable_zoom/oracle, /obj/item/attachable/srs_barrel, /obj/item/attachable/bipod/srs_bipod)
-	flags_gun_features = GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER
+	flags_gun_features = GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER|GUN_AUTO_EJECTOR
 	map_specific_decoration = FALSE
 	skill_locked = FALSE
 	flags_item = TWOHANDED
@@ -499,7 +494,6 @@
 	recoil = RECOIL_AMOUNT_TIER_5
 
 /obj/item/weapon/gun/rifle/sniper/halo/unloaded
-	flags_gun_features = GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER|GUN_TRIGGER_SAFETY
 	current_mag = null
 
 /obj/item/weapon/mateba_key/halo_sniper
@@ -651,7 +645,7 @@
 	cocked_sound = 'sound/weapons/halo/gun_magnum_cocked.ogg'
 	drop_sound = 'sound/items/halo/drop_lightweapon.ogg'
 	pickup_sound = 'sound/items/halo/grab_lightweapon.ogg'
-	flags_gun_features = GUN_CAN_POINTBLANK
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AUTO_EJECTOR
 	empty_sound = null
 
 /obj/item/weapon/gun/pistol/halo/m6c
@@ -663,7 +657,7 @@
 	current_mag = /obj/item/ammo_magazine/pistol/halo/m6c
 	attachable_allowed = list(/obj/item/attachable/scope/mini/smartscope/m6c, /obj/item/attachable/flashlight/m6)
 	fire_sound = "gun_m6c"
-	flags_gun_features = GUN_CAN_POINTBLANK
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AUTO_EJECTOR
 
 /obj/item/weapon/gun/pistol/halo/m6c/unloaded
 	current_mag = null
@@ -813,7 +807,7 @@
 	ammo_band_icon_empty = "+ma5c_band_e"
 
 /obj/item/ammo_magazine/rifle/halo/ma5c/shredder
-	name = "\improper MA5C magazine (7.62x51mm Shredder)"
+	name = "\improper Armor Piercing MA5C magazine (7.62x51mm Shredder)"
 	desc = "A rectangular box magazine for the MA5C holding 60 rounds of 7.62x51 shredder ammunitions, a specialized ammunition that pierces armor and splinters in the target."
 	max_rounds = 48
 	gun_type = /obj/item/weapon/gun/rifle/halo/ma5c
@@ -1186,7 +1180,7 @@
 
 /obj/item/attachable/br55_barrel/New()
 	..()
-	scatter_mod = -9
+	scatter_mod = -5
 	burst_scatter_mod = -SCATTER_AMOUNT_TIER_3
 
 /obj/item/attachable/dmr_barrel
@@ -1755,8 +1749,8 @@
 
 /datum/ammo/bullet/rifle/ma5c/shredder
 	name = "shredder bullet"
-	damage = 52
-	penetration = ARMOR_PENETRATION_TIER_2
+	damage = 30
+	penetration = ARMOR_PENETRATION_TIER_8
 
 /datum/ammo/bullet/rifle/ma3a
 	name = "FMJ bullet"
@@ -1787,7 +1781,7 @@
 /datum/ammo/bullet/rifle/dmr
 	name = "FMJ bullet"
 	headshot_state = HEADSHOT_OVERLAY_HEAVY
-	damage = 50
+	damage = 55
 	penetration = ARMOR_PENETRATION_TIER_4
 	accurate_range = 24
 	scatter = SCATTER_AMOUNT_TIER_10
@@ -2027,7 +2021,7 @@
 	num_of_magazines = 48
 
 /obj/item/ammo_box/magazine/unsc/ma5c/shredder
-	name = "UNSC magazine box (MA5C x 48, shredder)"
+	name = "UNSC magazine box (MA5C x 48, AP shredder)"
 	desc = "An ammo box storing 48 magazines of MA5C ammunition"
 	overlay_ammo_type = "_shred"
 	magazine_type = /obj/item/ammo_magazine/rifle/halo/ma5c/shredder

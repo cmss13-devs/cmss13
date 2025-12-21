@@ -884,8 +884,8 @@ Defined in conflicts.dm of the #defines folder.
 	var/original_state = "flashlight"
 	var/original_attach = "flashlight_a"
 
-	var/helm_mounted_light_power = 2
-	var/helm_mounted_light_range = 3
+	var/helm_mounted_light_power = 3
+	var/helm_mounted_light_range = 4
 
 	var/datum/action/item_action/activation
 	var/obj/item/attached_item

@@ -11,6 +11,16 @@
 	containername = "\improper Ammo Crate"
 	group = "Ammo"
 
+/datum/supply_packs/ammo_mag_ma5c_ap
+	name = "MA5C ICWS Assault Rifle AP Shredder Magazines (x48)"
+	contains = list(
+		/obj/item/ammo_box/magazine/unsc/ma5c/shredder,
+	)
+	cost = 100
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "\improper Ammo Crate"
+	group = "Ammo"
+
 /datum/supply_packs/ammo_mag_br55
 	name = "BR55 Battle Rifle Magazines (x32)"
 	contains = list(
@@ -106,7 +116,7 @@
 	contains = list(
 		/obj/item/ammo_box/magazine/misc/unsc/grenade/launchable,
 	)
-	cost = 85
+	cost = 100
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper Grenade Crate"
 	group = "Ammo"
@@ -116,12 +126,12 @@
 	contains = list(
 		/obj/item/ammo_box/magazine/misc/unsc/grenade,
 	)
-	cost = 35
+	cost = 45
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper Grenade Crate"
 	group = "Ammo"
 
-/datum/supply_packs/unsc_grenade
+/datum/supply_packs/unsc_med
 	name = "UNSC Medical Packets (x10)"
 	contains = list(
 		/obj/item/ammo_box/magazine/misc/unsc/medical_packets,

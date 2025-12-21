@@ -524,7 +524,7 @@
 	flags_cold_protection = ICE_PLANET_MIN_COLD_PROT
 	specialty = "pilot officer"
 	snow_name = " snow bodysuit"
-	suit_restricted = list(/obj/item/clothing/suit/storage/jacket/marine/pilot/armor, /obj/item/clothing/suit/storage/marine/light/vest/dcc, /obj/item/clothing/suit/storage/jacket/marine/pilot, /obj/item/clothing/suit/storage/marine/light/vest)
+	suit_restricted = list(/obj/item/clothing/suit/storage/jacket/marine/pilot/armor, /obj/item/clothing/suit/storage/marine/light/vest/dcc, /obj/item/clothing/suit/storage/jacket/marine/pilot, /obj/item/clothing/suit/storage/marine/light/vest, /obj/item/clothing/suit/marine/unsc)
 	flags_atom = FPRINT
 
 /obj/item/clothing/under/marine/officer/pilot/jungle

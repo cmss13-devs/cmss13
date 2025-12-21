@@ -12,13 +12,17 @@
 	w_class = SIZE_LARGE //Should not fit in backpacks
 	storage_slots = 19
 	max_storage_space = 24
-	use_sound = "ruffle"
+	use_sound = "toolbox"
 	matter = list("plastic" = 3000)
 	// Set in init
 	can_hold = list()
 	var/list/types_and_overlays = list(
 		/obj/item/tool/surgery/scalpel = "tray_scalpel",
 		/obj/item/tool/surgery/scalpel/laser = "tray_scalpel_laser",
+		/obj/item/tool/surgery/scalpel/laser/improved = "tray_scalpel_laser_2",
+		/obj/item/tool/surgery/scalpel/laser/advanced = "tray_scalpel_laser_3",
+		/obj/item/tool/surgery/scalpel/manager = "tray_ims",
+		/obj/item/tool/surgery/scalpel/pict_system = "tray_pict",
 		/obj/item/tool/surgery/hemostat = "tray_hemostat",
 		/obj/item/tool/surgery/retractor = "tray_retractor",
 		/obj/item/tool/surgery/cautery = "tray_cautery",
@@ -28,10 +32,8 @@
 		/obj/item/tool/surgery/bonesetter = "tray_bonesetter",
 		/obj/item/tool/surgery/FixOVein = "tray_fixovein",
 		/obj/item/tool/surgery/surgical_line = "tray_surgical_line",
-		/obj/item/tool/surgery/synthgraft = "tray_synthgraft",
 		/obj/item/stack/medical/advanced/bruise_pack = "tray_bruise_pack",
 		/obj/item/stack/nanopaste = "tray_nanopaste",
-		/obj/item/tool/surgery/scalpel/pict_system = "tray_pict",
 		/obj/item/device/autopsy_scanner = "tray_autopsy_scanner",
 		/obj/item/device/mass_spectrometer = "tray_mass_spectrometer",
 		/obj/item/device/mass_spectrometer/adv = "tray_adv_mass_spectrometer",
@@ -90,14 +92,6 @@
 	new /obj/item/tool/surgery/FixOVein(src)
 	new /obj/item/stack/nanopaste(src)
 	new /obj/item/tool/surgery/surgical_line(src)
-	new /obj/item/tool/surgery/synthgraft(src)
-
-/obj/item/storage/surgical_tray/stuffed/fill_preset_inventory()
-	for(var/type in types_and_overlays)
-		// only 'dupe'
-		if(type == /obj/item/tool/surgery/scalpel/laser)
-			continue
-		new type(src)
 
 /obj/item/storage/surgical_tray/empty/fill_preset_inventory()
 	return

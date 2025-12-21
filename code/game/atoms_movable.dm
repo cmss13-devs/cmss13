@@ -426,7 +426,7 @@
 				return
 			. = buckle_mob(buckle_target)
 	if (!SEND_SIGNAL(src, COMSIG_MOVABLE_PREBUCKLE, buckle_target, user, FALSE, TRUE, FALSE, 0, 0, FALSE)) //todo let these be set by the caller
-		do_buckle(user, buckle_target)
+		do_buckle(buckle_target, user)
 		return
 	if (buckle_target.mob_size <= MOB_SIZE_XENO)
 		if ((buckle_target.stat == DEAD && istype(src, /obj/structure/bed/roller) || HAS_TRAIT(buckle_target, TRAIT_OPPOSABLE_THUMBS)))

@@ -1217,7 +1217,7 @@
 	//Second check to make sure they're still valid to be carried
 	if(target.is_mob_incapacitated())
 		return
-	buckle_mob(target, src)
+	buckle_mob(usr, target)
 
 /mob/living/carbon/xenomorph/unbuckle()
 	. = ..()
@@ -1228,4 +1228,4 @@
 		return
 	if(!can_mount(user, TRUE))
 		return
-	INVOKE_ASYNC(src, PROC_REF(carry_target), user, TRUE)
+	INVOKE_ASYNC(src, PROC_REF(carry_target), dropping, FALSE) // target_mounting is always false, the runner should never be buckling someone to itself

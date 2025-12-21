@@ -37,8 +37,8 @@
 	if(!istype(living_parent) || !istype(rider))
 		return
 
-	msg_admin_attack("[living_parent] is now being ridden by [usr]", living_parent.loc.x, living_parent.loc.y, living_parent.loc.z)
-	msg_admin_attack("[usr] started riding [living_parent]", rider.loc.x, rider.loc.y, rider.loc.z)
+	msg_admin_attack("[living_parent] is now being ridden by [rider]", living_parent.loc.x, living_parent.loc.y, living_parent.loc.z)
+	msg_admin_attack("[rider] started riding [living_parent]", rider.loc.x, rider.loc.y, rider.loc.z)
 
 // this applies to humans and most creatures, but is replaced again for cyborgs
 /datum/component/riding/creature/ride_check(mob/living/rider)

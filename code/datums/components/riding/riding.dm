@@ -227,10 +227,7 @@
 
 /// currently replicated from ridable because we need this behavior here too, see if we can deal with that
 /datum/component/riding/proc/unequip_buckle_inhands(mob/living/carbon/user)
-	var/atom/movable/Atom = parent
 	for(var/obj/item/riding_offhand/Obj in user.contents)
-		if(Obj.parent != Atom)
-			CRASH("RIDING OFFHAND ON WRONG MOB")
 		if(Obj.selfdeleting)
 			continue
 		else

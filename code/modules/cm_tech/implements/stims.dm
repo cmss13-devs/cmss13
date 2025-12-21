@@ -20,7 +20,11 @@
 		new stimulant_type(src)
 
 /obj/item/storage/pouch/stimulant_injector/update_icon()
-	. = ..()
+	overlays.Cut()
+	if(!length(contents))
+		return TRUE //For the pistol pouch to know it's empty.
+	if(content_watchers && flap) //If it has a flap and someone's looking inside it, don't close the flap.
+		return
 
 	if(storage_slots > 0 && length(contents) <= storage_slots)
 		var/number = length(contents)

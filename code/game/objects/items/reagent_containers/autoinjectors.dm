@@ -206,7 +206,7 @@
 
 //EZ AUTOINJECTORS
 
-/obj/item/reagent_container/hypospray/autoinjector/ez
+/obj/item/reagent_container/hypospray/autoinjector/ez //only here to set up pathing
 	name = "tricordrazine EZ autoinjector"
 	chemname = "tricordrazine"
 	desc = "An EZ autoinjector loaded with 3 doses of 30u of Inaprovaline, an emergency stabilization medicine for patients in critical condition by halting further oxy damage. You can refill it at Wey-Med vending machines and it does not require any training to use."
@@ -250,10 +250,10 @@
 
 
 //ONE-USE EZ AUTOINJECTORS
-/obj/item/reagent_container/hypospray/autoinjector/ez/tutorial/
-	name = "dylovene EZ autoinjector (FOR TRAINING USE ONLY)"
-	chemname = "anti_toxin"
-	desc = "An EZ autoinjector loaded with a single dose of 15u of Dylovene, a common toxin damage medicine. To use it, click the autoinjector while it is in your hand. You can also click any person one tile near you, or yourself, to inject its contents. Most autoinjectors can be refilled with a Wey-Med vending machine."
+/obj/item/reagent_container/hypospray/autoinjector/ez/tutorial/ //only here to set up pathing
+	name = "tricordrazine EZ autoinjector (FOR TRAINING USE ONLY)"
+	chemname = "tricordrazine"
+	desc = "An EZ autoinjector loaded with a single dose of 15u of tricordrazine, a common wide-spectrum damage healer. To use it, click the autoinjector while it is in your hand. You can also click any person one tile near you, or yourself, to inject its contents. Most autoinjectors can be refilled with a Wey-Med vending machine."
 	icon_state = "empty_oneuse"
 	autoinjector_type = "autoinjector_oneuse"
 	display_maptext = TRUE
@@ -261,13 +261,13 @@
 	volume = 15
 	amount_per_transfer_from_this = 15
 	uses_left = 1
-	maptext_label = "OuDy"
+	maptext_label = "OuTr"
 
 /obj/item/reagent_container/hypospray/autoinjector/ez/tutorial/kelotane
 	name = "kelotane EZ autoinjector (FOR TRAINING USE ONLY)"
 	chemname = "kelotane"
 	desc = "An EZ autoinjector loaded with a single dose of 15u of Kelotane, a common burn medicine. To use it, click the autoinjector while it is in your hand. You can also click any person one tile near you, or yourself, to inject its contents. Most autoinjectors can be refilled with a Wey-Med vending machine."
-	maptext_label = "OuKl"
+	maptext_label = "TrKl"
 
 /obj/item/reagent_container/hypospray/autoinjector/ez/tutorial/bicaridine
 	name = "bicaridine EZ autoinjector (FOR TRAINING USE ONLY)"
@@ -275,25 +275,18 @@
 	desc = "An EZ autoinjector loaded with a single dose of 15u of Bicaridine, a common brute and circulatory damage medicine. To use it, click the autoinjector while it is in your hand. You can also click any person one tile near you, or yourself, to inject its contents. Most autoinjectors can be refilled with a Wey-Med vending machine."
 	maptext_label = "OuBi"
 
-/obj/item/reagent_container/hypospray/autoinjector/ez/tutorial/dexalinp
+/obj/item/reagent_container/hypospray/autoinjector/ez/tutorial/dexalinp //in case we ever want to add oxygen damage to the medical tutorial
 	name = "dexalin plus EZ autoinjector (FOR TRAINING USE ONLY)"
 	chemname = "dexalinp"
 	desc = "An EZ autoinjector loaded with a single dose of 1u of Dexalin Plus, an instant oxygen damage killer. To use it, click the autoinjector while it is in your hand. You can also click any person one tile near you, or yourself, to inject its contents. Most autoinjectors can be refilled with a Wey-Med vending machine."
 	volume = 1
 	amount_per_transfer_from_this = 1
-	uses_left = 1
 	maptext_label = "OuD+"
 
+/obj/item/reagent_container/hypospray/autoinjector/ez/tutorial/antitoxin //in case we ever want to add toxin damage to the medical tutorial
 	name = "dylovene EZ autoinjector (FOR TRAINING USE ONLY)"
 	chemname = "anti_toxin"
 	desc = "An EZ autoinjector loaded with a single dose of 15u of Dylovene, a common toxin damage medicine. To use it, click the autoinjector while it is in your hand. You can also click any person one tile near you, or yourself, to inject its contents. Most autoinjectors can be refilled with a Wey-Med vending machine."
-	icon_state = "empty_oneuse"
-	autoinjector_type = "autoinjector_oneuse"
-	display_maptext = TRUE
-	skilllock = SKILL_MEDICAL_DEFAULT
-	volume = 15
-	amount_per_transfer_from_this = 15
-	uses_left = 1
 	maptext_label = "OuDy"
 
 //MARINE AUTOINJECTORS

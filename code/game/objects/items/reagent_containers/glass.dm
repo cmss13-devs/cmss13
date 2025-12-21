@@ -324,7 +324,7 @@
 			autoinjector.update_icon()
 			playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
 
-		else if(autoinjector.mixed_chem) //Mobixed chem autoinjectors like emergency and sleep are too complicated for the tank.
+		else if(autoinjector.mixed_chem) //Mixed chem autoinjectors like emergency and sleep are too complicated for the tank.
 			if(istype(autoinjector, /obj/item/reagent_container/hypospray/autoinjector/empty)) //Autoinjector says, "Where's my pouch?"
 				to_chat(user, SPAN_WARNING("A small LED on [src] blinks. [autoinjector] can only be refilled with a pressurized reagent canister pouch."))
 				return FALSE

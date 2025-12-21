@@ -496,6 +496,7 @@
 	icon_state = "empty_research_oneuse"
 	autoinjector_type = "autoinjector_oneuse"
 	amount_per_transfer_from_this = 15
+	skilllock = SKILL_MEDICAL_DEFAULT
 	volume = 15
 	uses_left = 0
 
@@ -550,7 +551,7 @@
 	volume = 60
 	amount_per_transfer_from_this = 10
 
-/obj/item/reagent_container/hypospray/autoinjector/empty/medic/medium //specifically for reagent canister pouches with four chemicals inside. Unused, but will still throw them in the weymed.
+/obj/item/reagent_container/hypospray/autoinjector/empty/medic/medium //specifically for reagent canister pouches with four chemicals inside. Unused, but will still throw it here.
 	name = "reagent canister pouch autoinjector (20u)"
 	volume = 100
 	amount_per_transfer_from_this = 20

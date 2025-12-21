@@ -109,8 +109,8 @@
 	var/atom/movable/movable_parent = parent
 	if (isnull(dir))
 		dir = movable_parent.dir
-	for (var/m in movable_parent.buckled_mobs)
-		var/mob/buckled_mob = m
+	for (var/mobs in movable_parent.buckled_mobs)
+		var/mob/buckled_mob = mobs
 		ride_check(buckled_mob)
 	if(QDELETED(src))
 		return // runtimed with piggy's without this, look into this more
@@ -128,20 +128,20 @@
 	return
 
 /datum/component/riding/proc/handle_vehicle_offsets(dir)
-	var/atom/movable/AM = parent
-	var/AM_dir = "[dir]"
+	var/atom/movable/Atom = parent
+	var/Atom_dir = "[dir]"
 	var/passindex = 0
-	if(!LAZYLEN(AM.buckled_mob))
+	if(!LAZYLEN(Atom.buckled_mobs))
 		return
 
-	for(var/m in AM.buckled_mob)
+	for(var/mobs in Atom.buckled_mobs)
 		passindex++
-		var/mob/living/buckled_mob = m
+		var/mob/living/buckled_mob = mobs
 		var/list/offsets = get_offsets(passindex)
 		buckled_mob.setDir(dir)
 		dir_loop:
 			for(var/offsetdir in offsets)
-				if(offsetdir == AM_dir)
+				if(offsetdir == Atom_dir)
 					var/list/diroffsets = offsets[offsetdir]
 					buckled_mob.pixel_x = diroffsets[1]
 					if(diroffsets.len >= 2)
@@ -150,17 +150,17 @@
 						buckled_mob.layer = diroffsets[3]
 					break dir_loop
 	var/list/static/default_vehicle_pixel_offsets = list(TEXT_NORTH = list(0, 0), TEXT_SOUTH = list(0, 0), TEXT_EAST = list(0, 0), TEXT_WEST = list(0, 0))
-	var/px = default_vehicle_pixel_offsets[AM_dir]
-	var/py = default_vehicle_pixel_offsets[AM_dir]
+	var/pixelx = default_vehicle_pixel_offsets[Atom_dir]
+	var/pixely = default_vehicle_pixel_offsets[Atom_dir]
 	if(directional_vehicle_offsets[AM_dir])
-		if(isnull(directional_vehicle_offsets[AM_dir]))
-			px = AM.pixel_x
-			py = AM.pixel_y
+		if(isnull(directional_vehicle_offsets[Atom_dir]))
+			pixelx = Atom.pixel_x
+			pixely = Atom.pixel_y
 		else
-			px = directional_vehicle_offsets[AM_dir][1]
-			py = directional_vehicle_offsets[AM_dir][2]
-	AM.pixel_x = px
-	AM.pixel_y = py
+			pixelx = directional_vehicle_offsets[Atom_dir][1]
+			pixely = directional_vehicle_offsets[Atom_dir][2]
+	Atom.pixel_x = pixelx
+	Atom.pixel_y = pixely
 
 /datum/component/riding/proc/set_vehicle_dir_offsets(dir, x, y)
 	directional_vehicle_offsets["[dir]"] = list(x, y)

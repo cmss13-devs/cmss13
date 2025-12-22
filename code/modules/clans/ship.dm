@@ -9,7 +9,9 @@
 
 /obj/effect/landmark/badblood_spawn
 	name = "badblood spawn"
+	icon = 'icons/temp_landmark.dmi' // Change before merge
 	icon_state = "badblood_spawn"
+
 /obj/effect/landmark/badblood_spawn/New()
 	. = ..()
 	var/turf/location_turf = get_turf(src)

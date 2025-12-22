@@ -164,15 +164,20 @@
 	desc = "An extremely old helmet that was used by Roman heavy infantry units called the Legionares. This one has a crest indicating it was used by Centurions."
 	icon_state = "centurion_helm"
 	item_state = "centurion_helm"
+	worn_x_dimension = 64
+	worn_y_dimension = 64
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/head_64.dmi'
 	)
+
 
 /obj/item/clothing/head/helmet/roman/eaglebearer
 	name = "\improper Aquilifier's bear pelt mask"
 	desc = "a bear pelt and mask that was worn by a Roman Aquilifier, a prestigious role meant to inspire troops in battles."
 	icon_state = "eaglebearer_hat"
 	item_state = "eaglebearer_hat"
+	worn_x_dimension = 64
+	worn_y_dimension = 64
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/head_64.dmi'
 	)

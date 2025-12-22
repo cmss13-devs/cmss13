@@ -94,6 +94,8 @@
 	icon = 'icons/obj/items/weapons/melee/misc_64.dmi'
 	icon_state = "aquilastaff"
 	item_state = "aquilastaff"
+	inhand_x_dimension = 64
+	inhand_y_dimension = 64
 	item_icons = list(
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/64_weapons_righthand.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/64_weapons_lefthand.dmi'
@@ -118,6 +120,8 @@
 	icon = 'icons/obj/items/weapons/melee/spears.dmi'
 	icon_state = "javelin"
 	item_state = "javelin"
+	inhand_x_dimension = 64
+	inhand_y_dimension = 64
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/64_weapons_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/64_weapons_righthand.dmi'

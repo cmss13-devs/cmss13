@@ -122,6 +122,8 @@
 	var/datum/squad/assigned_squad //the squad this human is assigned to
 	var/assigned_fireteam = 0 //the fireteam this human is assigned to
 	var/squad_status = null //var for squad info window. Can be null, "M.I.A" and "K.I.A"
+	var/squad_primary_objective_ungarbled = TRUE
+	var/squad_secondary_objective_ungarbled = TRUE
 
 	//moved from IDs to prevent some exploits and to make points more flexible
 	var/marine_points = MARINE_TOTAL_BUY_POINTS

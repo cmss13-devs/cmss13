@@ -92,6 +92,11 @@ jobs:
         uses: ./.github/actions/setup_bun
       - name: Restore BYOND from Cache
         uses: ./.github/actions/restore_or_install_byond
+      - name: Install curl
+        run: |
+          sudo dpkg --add-architecture i386
+          sudo apt update || true
+          sudo apt install -o APT::Immediate-Configure=false curl:i386
       - name: Compile All Maps
         run: |
           source $HOME/BYOND/byond/bin/byondsetup

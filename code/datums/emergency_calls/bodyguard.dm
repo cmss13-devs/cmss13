@@ -2,7 +2,9 @@
 	name = "Weyland-Yutani Public Security (Executive Bodyguard Detail)"
 	mob_max = 1
 	mob_min = 1
+	shuttle_id = MOBILE_SHUTTLE_ID_ERT2
 	home_base = /datum/lazy_template/ert/weyland_station
+	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_pmc
 	ert_message = "A corporate security beacon has been activated!"
 	var/equipment_preset = /datum/equipment_preset/wy/security
 	var/equipment_preset_leader = /datum/equipment_preset/wy/security
@@ -62,7 +64,7 @@
 		to_chat(response_mob, SPAN_BOLD("You were born [pick(75;"in Europe", 15;"in Asia", 10;"on Mars")] to a [pick(75;"well-off", 15;"well-established", 10;"average")] family."))
 		to_chat(response_mob, SPAN_BOLD("Joining the ranks of Weyland-Yutani has proven to be very profitable for you."))
 		to_chat(response_mob, SPAN_BOLD("While you are officially an employee, much of your work is off the books. You work as a skilled mercenary."))
-		to_chat(response_mob, SPAN_BOLD("You are [pick(50;"unaware of the xenomorph threat", 15;"acutely aware of the xenomorph threat", 10;"well-informed of the xenomorph threat")]"))
+		to_chat(response_mob, SPAN_BOLD("You are [pick(50;"unaware of the xenomorph threat", 15;"acutely aware of the xenomorph threat", 10;"well-informed of the xenomorph threat")]."))
 
 /datum/emergency_call/wy_bodyguard/pmc/sec
 	name = "Weyland-Yutani PMC Enforcer (Executive Bodyguard Detail)"
@@ -82,7 +84,7 @@
 	to_chat(response_mob, SPAN_BOLD("You were born [pick(75;"in Europe", 15;"in Asia", 10;"on Mars")] to a [pick(75;"well-off", 15;"well-established", 10;"average")] family."))
 	to_chat(response_mob, SPAN_BOLD("Joining the ranks of Weyland-Yutani has proven to be very profitable for you."))
 	to_chat(response_mob, SPAN_BOLD("While you are officially an employee, much of your work is off the books. You work as a skilled mercenary."))
-	to_chat(response_mob, SPAN_BOLD("You are well-informed of the xenomorph threat"))
+	to_chat(response_mob, SPAN_BOLD("You are well-informed of the xenomorph threat."))
 	to_chat(response_mob, SPAN_BOLD("You are part of  Weyland-Yutani Task Force Oberon that arrived in 2182 following the UA withdrawl of the Neroid Sector."))
 	to_chat(response_mob, SPAN_BOLD("Task-force Titan is stationed aboard the USCSS Nisshoku, a weaponized science Weyland-Yutani vessel that is stationed at the edge of the Neroid Sector. "))
 	to_chat(response_mob, SPAN_BOLD("Under the directive of Weyland-Yutani board member Johan Almric, you act as private security for Weyland-Yutani Corporate Liaison."))

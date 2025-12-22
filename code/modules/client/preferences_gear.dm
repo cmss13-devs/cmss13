@@ -67,11 +67,11 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 /// Attempt to wear this equipment, in the given slot if possible. If not, any slot is used.
 /datum/gear/proc/equip_to_user(mob/living/carbon/human/user, override_checks = FALSE, drop_instead_of_del = TRUE)
 	if(!override_checks && allowed_roles && !(user.job in allowed_roles))
-		to_chat(user, SPAN_WARNING("Gear [display_name] cannot be equipped: Invalid Role"))
+		to_chat(user, SPAN_WARNING("Gear [display_name] cannot be equipped: Invalid Role."))
 		return
 
 	if(!override_checks && allowed_origins && !(user.origin in allowed_origins))
-		to_chat(user, SPAN_WARNING("Gear [display_name] cannot be equipped: Invalid Origin"))
+		to_chat(user, SPAN_WARNING("Gear [display_name] cannot be equipped: Invalid Origin."))
 		return
 
 	if(!(slot && user.equip_to_slot_or_del(new path, slot)))
@@ -1151,7 +1151,7 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 /datum/gear/misc/facepaint_body
 	display_name = "Fullbody paint"
 	path = /obj/item/facepaint/sniper
-	fluff_cost = 4 //To match with the skull paint amount of point, gave this amount of point for the same reason of the skull facepaint (too cool for everyone to be able to constantly use)
+	fluff_cost = 3
 
 /datum/gear/misc/jungle_boots
 	display_name = "Jungle pattern combat boots"
@@ -1253,39 +1253,36 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	category = "Civilian only (restricted)"
 	allowed_origins = list(ORIGIN_CIVILIAN)
 
-/datum/gear/civilian/patch
-	display_name = "Weyland-Yutani shoulder patch, black"
-	path = /obj/item/clothing/accessory/patch/wy
-	fluff_cost = 1
-	slot = WEAR_IN_ACCESSORY
+///Commented out until we have a factional system to restrict these properly
+// /datum/gear/civilian/patch
+// 	display_name = "Weyland-Yutani shoulder patch, black"
+// 	path = /obj/item/clothing/accessory/patch/wy
+// 	fluff_cost = 1
+// 	slot = WEAR_IN_ACCESSORY
 
-/datum/gear/civilian/patch/wysquare
-	display_name = "Weyland-Yutani shoulder patch"
-	path = /obj/item/clothing/accessory/patch/wysquare
+// /datum/gear/civilian/patch/wysquare
+// 	display_name = "Weyland-Yutani shoulder patch"
+// 	path = /obj/item/clothing/accessory/patch/wysquare
 
-/datum/gear/civilian/patch/wy_white
-	display_name = "Weyland-Yutani shoulder patch, white"
-	path = /obj/item/clothing/accessory/patch/wy_white
+// /datum/gear/civilian/patch/wy_white
+// 	display_name = "Weyland-Yutani shoulder patch, white"
+// 	path = /obj/item/clothing/accessory/patch/wy_white
 
-/datum/gear/civilian/patch/wy_fury
-	display_name = "Weyland-Yutani Fury '161' patch"
-	path = /obj/item/clothing/accessory/patch/wyfury
+// /datum/gear/civilian/patch/wy_fury
+// 	display_name = "Weyland-Yutani Fury '161' patch"
+// 	path = /obj/item/clothing/accessory/patch/wyfury
 
-/datum/gear/civilian/patch/twepatch
-	display_name = "Three World Empire shoulder patch"
-	path = /obj/item/clothing/accessory/patch/twe
+// /datum/gear/civilian/patch/twepatch
+// 	display_name = "Three World Empire shoulder patch"
+// 	path = /obj/item/clothing/accessory/patch/twe
 
-/datum/gear/civilian/patch/cec
-	display_name = "Cosmos Exploration Corps shoulder patch"
-	path = /obj/item/clothing/accessory/patch/cec_patch
+// /datum/gear/civilian/patch/cec
+// 	display_name = "Cosmos Exploration Corps shoulder patch"
+// 	path = /obj/item/clothing/accessory/patch/cec_patch
 
-/datum/gear/civilian/patch/clf
-	display_name = "Colonial Liberation Front shoulder patch"
-	path = /obj/item/clothing/accessory/patch/clf_patch
-
-/datum/gear/civilian/patch/hyperdyne
-	display_name = "Hyperdyne Corporation shoulder patch"
-	path = /obj/item/clothing/accessory/patch/hyperdyne_patch
+// /datum/gear/civilian/patch/hyperdyne
+// 	display_name = "Hyperdyne Corporation shoulder patch"
+// 	path = /obj/item/clothing/accessory/patch/hyperdyne_patch
 
 // Misc Headwear
 

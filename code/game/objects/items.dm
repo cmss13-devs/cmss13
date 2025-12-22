@@ -207,9 +207,9 @@
 
 	return ..()
 
-/obj/item/ex_act(severity, explosion_direction)
+/obj/item/ex_act(severity, direction, datum/cause_data/cause_data, pierce=0, enviro=FALSE)
 	var/msg = pick("is destroyed by the blast!", "is obliterated by the blast!", "shatters as the explosion engulfs it!", "disintegrates in the blast!", "perishes in the blast!", "is mangled into uselessness by the blast!")
-	explosion_throw(severity, explosion_direction)
+	explosion_throw(severity, direction)
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(5))
@@ -855,10 +855,6 @@
 	if(src in usr)
 		attack_self(usr)
 
-
-/obj/item/proc/IsShield()
-	return FALSE
-
 /obj/item/proc/get_loc_turf()
 	var/atom/L = loc
 	while(L && !istype(L, /turf/))
@@ -884,6 +880,7 @@
 /obj/item/proc/zoom(mob/living/user, tileoffset = 11, viewsize = 12, keep_zoom = 0) //tileoffset is client view offset in the direction the user is facing. viewsize is how far out this thing zooms. 7 is normal view
 	if(!user)
 		return
+	QDEL_NULL(user.observed_atom)
 	var/zoom_device = zoomdevicename ? "\improper [zoomdevicename] of [src]" : "\improper [src]"
 
 	for(var/obj/item/I in user.contents)
@@ -923,8 +920,8 @@
 	//General reset in case anything goes wrong, the view will always reset to default unless zooming in.
 	if(user.client)
 		user.client.change_view(GLOB.world_view_size, src)
-		user.client.pixel_x = 0
-		user.client.pixel_y = 0
+		user.client.set_pixel_x(0)
+		user.client.set_pixel_y(0)
 
 /obj/item/proc/zoom_handle_mob_move_or_look(mob/living/mover, actually_moving, direction, specific_direction)
 	SIGNAL_HANDLER
@@ -961,17 +958,17 @@
 
 		switch(user.dir)
 			if(NORTH)
-				user.client.pixel_x = 0
-				user.client.pixel_y = viewoffset
+				user.client.set_pixel_x(0)
+				user.client.set_pixel_y(viewoffset)
 			if(SOUTH)
-				user.client.pixel_x = 0
-				user.client.pixel_y = -viewoffset
+				user.client.set_pixel_x(0)
+				user.client.set_pixel_y(-viewoffset)
 			if(EAST)
-				user.client.pixel_x = viewoffset
-				user.client.pixel_y = 0
+				user.client.set_pixel_x(viewoffset)
+				user.client.set_pixel_y(0)
 			if(WEST)
-				user.client.pixel_x = -viewoffset
-				user.client.pixel_y = 0
+				user.client.set_pixel_x(-viewoffset)
+				user.client.set_pixel_y(0)
 
 	SEND_SIGNAL(src, COMSIG_ITEM_ZOOM, user)
 	var/zoom_device = zoomdevicename ? "\improper [zoomdevicename] of [src]" : "\improper [src]"

@@ -62,7 +62,7 @@ export const DmMapsIncludeTarget = new Juke.Target({
   executes: async () => {
     const folders = [...Juke.glob("maps/**/*.dmm")];
     const content = `${folders
-      .map((file) => file.replace('_maps/', ''))
+      .map((file) => file.replace('maps/', ''))
       .map((file) => `#include "${file}"`)
       .join('\n')}\n`;
     fs.writeFileSync("maps/templates.dm", content);

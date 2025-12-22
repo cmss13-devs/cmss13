@@ -565,9 +565,6 @@ SUBSYSTEM_DEF(hijack)
 	cancel_evacuation(silent=TRUE)
 	change_dropship_availability(FALSE)
 
-	if(!admin_sd_blocked)
-		addtimer(CALLBACK(src, PROC_REF(unlock_self_destruct), FALSE), 35 SECONDS)
-
 	// Figure out the main Z by assuming the LZs are on that Z
 	var/obj/lz = locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz1)
 	if(!lz)
@@ -652,9 +649,8 @@ SUBSYSTEM_DEF(hijack)
 	crashed_offset_x += ground_origin.x - 1
 	crashed_offset_y += ground_origin.y - 1
 
-	playsound_z(SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP), 'sound/effects/dropship_crash.ogg', volume=75)
 	shakeship(
-		sstrength = 2,
+		sstrength = 3,
 		stime = 3,
 		drop = FALSE,
 	)
@@ -666,10 +662,13 @@ SUBSYSTEM_DEF(hijack)
 		CHECK_TICK
 
 	shakeship(
-		sstrength = 5,
+		sstrength = 8,
 		stime = 3,
 		drop = TRUE,
 	)
+
+	if(!admin_sd_blocked)
+		unlock_self_destruct(FALSE)
 
 
 //~~~~~~~~~~~~~~~~~~~~~~~~ FTL STUFF ~~~~~~~~~~~~~~~~~~~~~~~~//

@@ -242,8 +242,8 @@
 	warhead.clear_falloff = 400
 	warhead.standard_power = 0
 	warhead.standard_falloff = 30
-	warhead.clear_delay = 3
-	warhead.double_explosion_delay = 6
+	warhead.clear_delay = 0
+	warhead.double_explosion_delay = 0 // No third explosion please
 	warhead.warhead_impact(target) // This is a blocking call
 	playsound(target, 'sound/effects/smoke.ogg', vol=50, vary=1, sound_range=75)
 
@@ -412,7 +412,7 @@
 	var/obj/item/card/id/card = person_in_charge.get_idcard()
 	if(card)
 		var/static/to_add = list(ACCESS_MARINE_SENIOR, ACCESS_MARINE_DATABASE, ACCESS_MARINE_COMMAND)
-		
+
 		var/new_access = card.access | to_add
 		if(card.access ~! new_access)
 			card.access = new_access

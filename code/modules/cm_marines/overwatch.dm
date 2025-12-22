@@ -663,7 +663,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			if(!selected_squad)
 				return
 
-			if(selected_squad.assume_overwatch(user))
+			if(selected_squad.assume_overwatch(user) || can_override_overwatch_officer)
 				current_squad = selected_squad
 				operator = user
 				if(current_squad.name == "Root")

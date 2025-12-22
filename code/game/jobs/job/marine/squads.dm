@@ -386,7 +386,7 @@ SQUAD_DROPPAD(echo, Echo)
 		JOB_SQUAD_TEAM_LEADER = 1,
 		JOB_SQUAD_LEADER = 1,
 	)
-	pop_lock = 80
+	pop_lock = 90
 	squad_role = SQUAD_ROLE_SUPPORT
 	dynamic_scaling = FALSE
 
@@ -416,7 +416,7 @@ SQUAD_DROPPAD(kilo, Kilo)
 		JOB_SQUAD_LEADER = 1,
 	)
 	dynamic_scaling = FALSE
-	pop_lock = 120
+	pop_lock = 130
 	squad_role = SQUAD_ROLE_SUPPORT
 
 SQUAD_LANDMARKS(oscar, Oscar)

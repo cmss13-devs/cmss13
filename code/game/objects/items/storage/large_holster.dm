@@ -202,15 +202,19 @@
 /obj/item/storage/large_holster/dragon_katana/full/fill_preset_inventory()
 	new /obj/item/weapon/sword/dragon_katana(src)
 
-/obj/item/storage/large_holster/m39
-	name = "\improper M276 pattern M39 holster rig"
-	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This holster features a larger frame and stiff backboard to support a submachinegun. It's designed for the M39, but the clips are adjustable enough to fit most compact submachineguns. Due to its unorthodox design, it isn't a very common sight, and is only specially issued."
+/obj/item/storage/large_holster/smg
+	name = "\improper M276-B pattern Submachine gun holster rig"
+	desc = "The M276 is the standard load-bearing equipment of the USCM. The B-pattern consists of a modular belt with various clips capable of even mounting on the wielders back. This holster features a larger frame and stiff backboard to support a submachinegun. While initially designed for the M39, the clips are adjustable enough to fit most compact submachineguns. Due to its unorthodox design, it isn't a very common sight, and is only specially issued to certain USCM vessels."
 	icon_state = "m39_holster"
 	icon = 'icons/obj/items/clothing/belts/belts.dmi'
-	flags_equip_slot = SLOT_WAIST
+	flags_equip_slot = SLOT_WAIST|SLOT_BACK
 	max_w_class = 5
 	can_hold = list(
 		/obj/item/weapon/gun/smg/m39,
+		/obj/item/weapon/gun/smg/mp5,
+		/obj/item/weapon/gun/smg/ppsh,
+		/obj/item/weapon/gun/smg/pps43,
+		/obj/item/weapon/gun/smg/bizon,
 		/obj/item/weapon/gun/smg/mp27,
 		/obj/item/weapon/gun/smg/mac15,
 		/obj/item/weapon/gun/pistol/skorpion,
@@ -221,7 +225,7 @@
 	///Whether the gun had pixel scaling set before being holstered.
 	var/gun_scaling = FALSE
 
-/obj/item/storage/large_holster/m39/_item_insertion(obj/item/W, prevent_warning)
+/obj/item/storage/large_holster/smg/_item_insertion(obj/item/W, prevent_warning)
 	if(istype(W)) //Doing this before calling parent so that the gun isn't misaligned in the inventory screen.
 		if(W.appearance_flags & PIXEL_SCALE)
 			gun_scaling = TRUE
@@ -239,7 +243,7 @@
 
 	..()
 
-/obj/item/storage/large_holster/m39/_item_removal(obj/item/W, atom/new_location)
+/obj/item/storage/large_holster/smg/_item_removal(obj/item/W, atom/new_location)
 	if(gun_scaling)
 		gun_scaling = FALSE
 	else
@@ -255,17 +259,17 @@
 
 	..()
 
-/obj/item/storage/large_holster/m39/update_icon()
+/obj/item/storage/large_holster/smg/update_icon()
 	item_state = length(contents) ? "[base_icon]_full" : base_icon
 
 	var/mob/living/carbon/human/user = loc
 	if(istype(user))
 		user.update_inv_belt()
 
-/obj/item/storage/large_holster/m39/full/fill_preset_inventory()
+/obj/item/storage/large_holster/smg/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/smg/m39())
 
-/obj/item/storage/large_holster/m39/full/elite/fill_preset_inventory()
+/obj/item/storage/large_holster/smg/full/elite/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/smg/m39/elite/compact())
 
 /obj/item/storage/large_holster/fuelpack

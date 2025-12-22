@@ -1798,12 +1798,13 @@
 		new /obj/item/ammo_magazine/smg/nailgun(src)
 
 /obj/item/storage/belt/gun/m39
-	name = "\improper M276 pattern M39 holster rig"
-	desc = "Special issue variant of the M276 designed to holster a M39 submachine gun and two spare magazines. Uncommonly issued to USCM support and specialist personnel."
-	icon_state = "m39_armor"
+	name = "\improper M276-C pattern M39 belt rig"
+	desc = "Special issue variant of the M276 designed to holster a M39 submachine gun and two spare magazines. While specially designed to supercede its predecessor, the M276-B Submachine gun holster, both variants still remain in service to the marines that may prefer the versatility the previous model provided over the combat-comfort the M276-C belt rig provides."
+	icon_state = "m39_belt_holster"
 	item_state = "marinebelt"
 	icon = 'icons/obj/items/clothing/belts/belts.dmi'
 	item_icons = list(
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/belts.dmi',
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'

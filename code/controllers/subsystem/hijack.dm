@@ -158,7 +158,7 @@ SUBSYSTEM_DEF(hijack)
 		emergency_call.name_of_spawn = /obj/effect/landmark/ert_spawns/umbilical
 		emergency_call.activate(TRUE, FALSE)
 
-		TIMER_COOLDOWN_START(src, COOLDOWN_POSTHIJACK_ERT, 5 MINUTES)
+		TIMER_COOLDOWN_START(src, COOLDOWN_POSTHIJACK_ERT, 2.5 MINUTES)
 		return
 
 	if(hijack_status == HIJACK_OBJECTIVES_FTL_CRASH || hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH)

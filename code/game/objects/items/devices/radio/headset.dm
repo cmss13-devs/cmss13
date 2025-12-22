@@ -1077,6 +1077,7 @@
 						"Oscar SL" = TRACKER_OSL
 					)
 					inbuilt_tracking_options -= "[H.assigned_squad.name] SL"
+					locate_setting = TRACKER_LZ
 					volume = RADIO_VOLUME_CRITICAL
 				if(JOB_SQUAD_MEDIC)
 					name = "marine hospital corpsman " + name

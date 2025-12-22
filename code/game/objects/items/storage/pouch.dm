@@ -186,7 +186,7 @@
 
 /obj/item/storage/pouch/survival/synth
 	name = "synth survival pouch"
-	desc = "An emergency pouch with six pockets given, to synthetics in the event of an emergency."
+	desc = "An emergency pouch with six pockets, given to synthetics in the event of an emergency."
 	icon_state = "tools"
 	storage_slots = 6
 	max_w_class = SIZE_MEDIUM
@@ -251,7 +251,7 @@
 /obj/item/storage/pouch/firstaid/full/alternate
 
 	name = "filled first-aid pouch"
-	desc = "A four-pocket pouch that contains first-aid autoinjector, bandages, ointment, and splints."
+	desc = "A four-pocket pouch that contains a first-aid autoinjector, bandages, ointment, and splints."
 
 /obj/item/storage/pouch/firstaid/full/alternate/fill_preset_inventory()
 	new /obj/item/reagent_container/hypospray/autoinjector/tricord(src)

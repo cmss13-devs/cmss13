@@ -37772,14 +37772,14 @@
 /turf/open/floor/almayer/blue/north,
 /area/almayer/squads/delta)
 "bOH" = (
+/obj/structure/bed/chair/comfy/kilo{
+	dir = 1
+	},
+/turf/open/floor/almayer/tealfull,
+/area/almayer/living/briefing)
+"bOI" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/platoon1_shared)
-"bOI" = (
-/obj/structure/bed/chair/comfy/charlie{
-	dir = 8
-	},
-/turf/open/floor/almayer/purplefull,
-/area/almayer/living/briefing)
 "bOJ" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/glass{
@@ -37806,7 +37806,6 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/req)
 "bOL" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/bed/chair/comfy/charlie{
 	dir = 8
 	},
@@ -37840,12 +37839,12 @@
 /turf/open/floor/almayer/red/north,
 /area/almayer/shipboard/weapon_room)
 "bOP" = (
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/bed/chair/comfy/charlie{
+	dir = 8
 	},
-/obj/structure/window/framed/almayer,
-/turf/open/floor/plating,
-/area/almayer/squads/delta)
+/turf/open/floor/almayer/purplefull,
+/area/almayer/living/briefing)
 "bOQ" = (
 /obj/structure/surface/table/almayer,
 /obj/item/reagent_container/food/condiment/hotsauce/sriracha{
@@ -37867,19 +37866,26 @@
 /turf/open/floor/almayer/green/west,
 /area/almayer/squads/req)
 "bOS" = (
-/obj/effect/landmark/late_join/delta,
-/obj/effect/landmark/start/marine/delta,
-/turf/open/floor/plating/plating_catwalk,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/obj/structure/window/framed/almayer,
+/turf/open/floor/plating,
 /area/almayer/squads/delta)
 "bOT" = (
 /turf/open/floor/carpet,
 /area/almayer/shipboard/sea_office)
 "bOU" = (
 /obj/effect/landmark/late_join/delta,
-/obj/effect/landmark/start/marine/engineer/delta,
+/obj/effect/landmark/start/marine/delta,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/delta)
 "bOV" = (
+/obj/effect/landmark/late_join/delta,
+/obj/effect/landmark/start/marine/engineer/delta,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/squads/delta)
+"bOW" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/effect/decal/warning_stripes{
@@ -37892,18 +37898,13 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/delta)
-"bOW" = (
+"bOX" = (
 /obj/effect/landmark/late_join/delta,
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/squads/delta)
-"bOX" = (
-/obj/structure/bed/chair,
-/turf/open/floor/almayer,
 /area/almayer/squads/delta)
 "bOY" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/late_join/delta,
-/turf/open/floor/plating/plating_catwalk,
+/obj/structure/bed/chair,
+/turf/open/floor/almayer,
 /area/almayer/squads/delta)
 "bOZ" = (
 /obj/structure/machinery/light{
@@ -37918,6 +37919,11 @@
 /turf/open/floor/almayer/orangecornersmooth/west,
 /area/almayer/squads/bravo)
 "bPb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/late_join/delta,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/squads/delta)
+"bPc" = (
 /obj/structure/machinery/cryopod{
 	pixel_y = 6
 	},
@@ -37926,17 +37932,17 @@
 	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/squads/delta)
-"bPc" = (
+"bPd" = (
 /obj/effect/landmark/late_join/delta,
 /obj/effect/landmark/start/marine/leader/delta,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/delta)
-"bPd" = (
+"bPe" = (
 /obj/effect/landmark/late_join/delta,
 /obj/effect/landmark/start/marine/medic/delta,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/delta)
-"bPe" = (
+"bPf" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/effect/decal/warning_stripes{
@@ -50428,10 +50434,8 @@
 /turf/open/floor/almayer/green,
 /area/almayer/living/grunt_rnr)
 "gAj" = (
-/obj/structure/bed/chair/comfy/kilo{
-	dir = 1
-	},
-/turf/open/floor/almayer/tealfull,
+/obj/structure/bed/chair/comfy/kilo,
+/turf/open/floor/almayer,
 /area/almayer/living/briefing)
 "gAk" = (
 /turf/open/floor/almayer/plate,
@@ -80142,10 +80146,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/underdeck/hangar)
-"sMu" = (
-/obj/structure/bed/chair/comfy/kilo,
-/turf/open/floor/almayer,
-/area/almayer/living/briefing)
 "sMK" = (
 /obj/vehicle/powerloader,
 /obj/structure/prop/invuln/lattice_prop{
@@ -135144,7 +135144,7 @@ pcl
 gHZ
 nfF
 fgE
-bOH
+bOI
 btO
 btO
 btO
@@ -143173,16 +143173,16 @@ bgO
 vGG
 vGG
 bgO
-bOI
-bOI
+bOL
+bOL
 xRw
 bPO
 whA
 xRJ
 xRJ
 bgO
-gAj
-gAj
+bOH
+bOH
 bgO
 cab
 bdd
@@ -143193,7 +143193,7 @@ oSM
 bdg
 jLS
 car
-sMu
+gAj
 dBI
 beH
 beH
@@ -143276,16 +143276,16 @@ bgO
 vGG
 vGG
 bgO
-bOI
-bOI
+bOL
+bOL
 viO
 gMU
 ksN
 xRJ
 xRJ
 bgO
-gAj
-gAj
+bOH
+bOH
 bgO
 bqZ
 bdd
@@ -143298,7 +143298,7 @@ bOy
 car
 kNX
 mZf
-sMu
+gAj
 beH
 jUq
 bdd
@@ -143379,8 +143379,8 @@ qMR
 rwv
 rwv
 dRT
-bOL
-bOL
+bOP
+bOP
 bUb
 dRT
 dqD
@@ -143482,16 +143482,16 @@ beH
 vGG
 vGG
 beH
-bOI
-bOI
-bOI
+bOL
+bOL
+bOL
 beH
 xRJ
 xRJ
 xRJ
 beH
-gAj
-gAj
+bOH
+bOH
 beH
 bqZ
 bdg
@@ -144180,15 +144180,15 @@ div
 jeb
 vlX
 thA
-bOH
-bOH
+bOI
+bOI
 bfn
 oMH
 coB
 rSj
 bfn
-bOH
-bOH
+bOI
+bOI
 fFD
 vlX
 jeb
@@ -144695,7 +144695,7 @@ atj
 jeb
 tkN
 qHg
-bOH
+bOI
 beP
 bfn
 pkz
@@ -144703,7 +144703,7 @@ qfh
 ipE
 bfn
 moI
-bOH
+bOI
 cGV
 tkN
 jeb
@@ -147488,7 +147488,7 @@ sDM
 hMX
 uqA
 bES
-bOP
+bOS
 bqc
 ubQ
 uPX
@@ -147591,7 +147591,7 @@ bJE
 bTA
 hSV
 bES
-bOP
+bOS
 bqc
 ubQ
 slo
@@ -147687,14 +147687,14 @@ bfx
 bgY
 mdo
 mJj
-bPc
+bPd
 mUP
 cll
 bJH
 bTA
 hSV
 bES
-bOP
+bOS
 bqc
 sUk
 kwi
@@ -147996,7 +147996,7 @@ tig
 nex
 aPi
 aLT
-bPb
+bPc
 gip
 uTv
 bKC
@@ -148101,7 +148101,7 @@ aLT
 aLT
 hWr
 gip
-bOX
+bOY
 uuj
 bRg
 dEk
@@ -148209,7 +148209,7 @@ tAN
 jOi
 aVf
 bES
-bOP
+bOS
 bqc
 qIf
 bqc
@@ -148307,12 +148307,12 @@ mdo
 mJj
 pWb
 pWb
-bOU
-bOU
+bOV
+bOV
 vfx
 aVf
 bES
-bOP
+bOS
 lhs
 uvh
 lhs
@@ -148415,7 +148415,7 @@ scy
 bRV
 bSe
 bES
-bOP
+bOS
 bqc
 qIf
 apv
@@ -148719,11 +148719,11 @@ dII
 mLF
 mLF
 viS
-bOU
-bOU
+bOV
+bOV
 vil
 clg
-bOS
+bOU
 kbc
 apV
 ubQ
@@ -148819,11 +148819,11 @@ bxB
 uWY
 wEd
 jvp
-bPe
-bOV
-bOV
-bOV
-bOV
+bPf
+bOW
+bOW
+bOW
+bOW
 ngA
 koC
 koC
@@ -148923,13 +148923,13 @@ iDf
 cjc
 aLT
 lDV
-bPd
+bPe
 hEb
-bOY
-bOW
+bPb
+bOX
 jOx
 clg
-bOS
+bOU
 bSJ
 nYR
 bww
@@ -149234,7 +149234,7 @@ ikT
 jEM
 bSJ
 hcI
-bPb
+bPc
 hcI
 aSE
 clg
@@ -149338,10 +149338,10 @@ jEM
 bSJ
 dlu
 dlu
-bOS
+bOU
 aSE
 bUN
-bOS
+bOU
 bTb
 bqc
 ubQ
@@ -149440,8 +149440,8 @@ ikT
 jEM
 bSJ
 dlu
-bOS
-bOS
+bOU
+bOU
 osA
 bcH
 cHl
@@ -149545,7 +149545,7 @@ bSJ
 kPJ
 kPJ
 rou
-bOS
+bOU
 dlu
 dlu
 bTb

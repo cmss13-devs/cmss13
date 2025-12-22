@@ -339,6 +339,16 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 		return
 
 	for(var/mob/living/carbon/xenomorph/hellhound/hellhound as anything in GLOB.hellhound_list)
+		// Check that it should actually be hearing this stuff.
+		if((channel == RADIO_CHANNEL_YAUTJA) && !(hellhound.faction == FACTION_YAUTJA))
+			continue
+		if((channel == RADIO_CHANNEL_YAUTJA_OVERSEER) && !(hellhound.faction == FACTION_YAUTJA))
+			continue
+		if((channel == RADIO_CHANNEL_YAUTJA_STRANDED) && !(hellhound.faction == FACTION_YAUTJA_STRANDED))
+			continue
+		if((channel == RADIO_CHANNEL_YAUTJA_BADBLOOD) && !(hellhound.faction == FACTION_YAUTJA_BADBLOOD))
+			continue
+
 		if(!hellhound.stat)
 			to_chat(hellhound, "\[Radio\]: [M.real_name] [verb], '<B>[message]</b>'.")
 	..()
@@ -1736,3 +1746,84 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	new /obj/item/stack/medical/advanced/bruise_pack/predator(src)
 	new /obj/item/stack/medical/advanced/ointment/predator(src)
 	new /obj/item/stack/medical/advanced/ointment/predator(src)
+
+/obj/item/device/badblood_enthraller
+	name = "hivebreaker"
+	desc = "A device used by fallen Yautja to break a Xenomorph Hivemind and enthrall a serpent."
+
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "emitter-xeno"
+
+	flags_item = ITEM_PREDATOR
+	flags_atom = FPRINT|CONDUCT
+	w_class = SIZE_TINY
+	force = 1
+	throwforce = 1
+	unacidable = TRUE
+	explo_proof = TRUE
+	black_market_value = 200
+
+/obj/item/device/badblood_enthraller/attack(mob/living/target, mob/living/user)
+	. = ..()
+	if(!isxeno(target))
+		return FALSE
+	var/mob/living/carbon/xenomorph/thrall_target = target
+
+	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH) || !(user.faction == FACTION_YAUTJA_BADBLOOD))
+		to_chat(user, SPAN_WARNING("You have no idea what you're doing with this thing."))
+		return FALSE
+
+	if((thrall_target.hivenumber == XENO_HIVE_YAUTJA_BADBLOOD) || (thrall_target.faction == FACTION_YAUTJA_BADBLOOD))
+		to_chat(user, SPAN_WARNING("This serpent is already enthralled... what are you doing?"))
+		return FALSE
+
+	if(!thrall_target.client)
+		to_chat(user, SPAN_WARNING("This serpent seems defective. It is unresponsive."))
+		return FALSE
+
+	if(isqueen(thrall_target) || isking(thrall_target) || ispredalien(thrall_target))
+		to_chat(user, SPAN_WARNING("You cannot enthrall this serpent!"))
+		return FALSE
+
+	if(thrall_target.stat != UNCONSCIOUS)
+		to_chat(user, SPAN_WARNING("The target must be in a defeated state before you can enthrall them!"))
+		return FALSE
+
+	user.visible_message(SPAN_WARNING("[user] starts fiddling with a strange device pointed at [thrall_target]!"),
+				SPAN_WARNING("You start to enthrall [thrall_target]."))
+	if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, thrall_target, INTERRUPT_OUT_OF_RANGE, BUSY_ICON_HOSTILE))
+		user.visible_message(SPAN_WARNING("[user] stops pressing buttons on the strange device!"),
+				SPAN_WARNING("You decide not to enthrall [thrall_target]."))
+		return FALSE
+
+	thrall_target.enthrall(user)
+	return TRUE
+
+/mob/living/carbon/xenomorph/proc/enthrall(mob/living/user, force = FALSE)
+	if((hivenumber == XENO_HIVE_YAUTJA_BADBLOOD) || (faction == FACTION_YAUTJA_BADBLOOD))
+		return FALSE
+
+	set_hive_and_update(XENO_HIVE_YAUTJA_BADBLOOD)
+	set_languages(list(LANGUAGE_XENOMORPH, LANGUAGE_YAUTJA))
+
+	lock_evolve = TRUE
+	hunter_data.dishonored = TRUE
+	hunter_data.dishonored_reason = "Enthralled to [user ? "the Bad Blood [user.real_name]" : "a Bad Blood"]!"
+	hunter_data.dishonored_set = src
+	hud_set_hunter()
+
+	GLOB.xeno_mob_list -= src
+	SSmob.living_misc_mobs += src
+	GLOB.hellhound_list += src
+	RegisterSignal(src, COMSIG_MOB_WEED_SLOWDOWN, PROC_REF(handle_weed_slowdown))
+	RegisterSignal(src, COMSIG_MOB_DEATH, PROC_REF(handle_enthralled_death))
+
+	to_chat(src, SPAN_XENOANNOUNCE("You have been enthralled by a Yautja Bad Blood!"))
+	to_chat(src, SPAN_XENOHIGHDANGER("Your connection to the hivemind has been lost! You are now subservient to your master. Obey their commands."))
+	to_chat(src, SPAN_XENOHIGHDANGER("You are no longer able to evolve, or to harm your master."))
+	return TRUE
+
+/mob/living/carbon/xenomorph/proc/handle_enthralled_death()
+	GLOB.hellhound_list -= src
+	SSmob.living_misc_mobs -= src
+	UnregisterSignal(src, COMSIG_MOB_WEED_SLOWDOWN, PROC_REF(handle_weed_slowdown))

@@ -129,6 +129,10 @@
 	if(!wearer_turf)
 		return
 
+	var/minimap_flag = MINIMAP_FLAG_YAUTJA
+	if(badblood)
+		minimap_flag = MINIMAP_FLAG_YAUTJA_BADBLOOD
+
 	if(!isyautja(owner))
 		var/image/underlay = image('icons/ui_icons/map_blips.dmi', null, "bracer_stolen")
 		var/overlay_icon_state
@@ -142,13 +146,13 @@
 		if(overlay_icon_state)
 			var/image/overlay = image('icons/ui_icons/map_blips.dmi', null, overlay_icon_state)
 			underlay.overlays += overlay
-		SSminimaps.add_marker(owner, MINIMAP_FLAG_YAUTJA, underlay)
+		SSminimaps.add_marker(owner, minimap_flag, underlay)
 	else
 		var/image/underlay = image('icons/ui_icons/map_blips.dmi', null, minimap_icon)
 		if(owner?.stat >= DEAD)
 			var/image/overlay = image('icons/ui_icons/map_blips.dmi', null, "undefibbable")
 			underlay.overlays += overlay
-		SSminimaps.add_marker(owner, MINIMAP_FLAG_YAUTJA, underlay)
+		SSminimaps.add_marker(owner, minimap_flag, underlay)
 /*
 *This is the main proc for checking AND draining the bracer energy. It must have human passed as an argument.
 *It can take a negative value in amount to restore energy.

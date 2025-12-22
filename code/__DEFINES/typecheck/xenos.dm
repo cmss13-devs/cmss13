@@ -17,6 +17,7 @@
 #define islesserdrone(A) (istype(A, /mob/living/carbon/xenomorph/lesser_drone))
 #define ispraetorian(A) (istype(A, /mob/living/carbon/xenomorph/praetorian))
 #define isqueen(A) (istype(A, /mob/living/carbon/xenomorph/queen))
+#define isking(A) (istype(A, /mob/living/carbon/xenomorph/king))
 #define isravager(A) (istype(A, /mob/living/carbon/xenomorph/ravager))
 #define isrunner(A) (istype(A, /mob/living/carbon/xenomorph/runner))
 #define issentinel(A) (istype(A, /mob/living/carbon/xenomorph/sentinel))

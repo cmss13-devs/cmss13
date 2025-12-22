@@ -319,7 +319,7 @@
 			return
 
 		var/list/active_lzs = list()
-		var/list/z_levels = SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP))
+		var/list/z_levels = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
 		for(var/obj/docking_port/stationary/dock as anything in lzs)
 			// filter for almayer only
 			if(!(dock.z in z_levels))

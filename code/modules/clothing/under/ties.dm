@@ -172,7 +172,7 @@
 						if(ORGAN_BROKEN)
 							sound += "<font color='red'>barely hear any respiration sounds</font> and a lot of difficulty to breath, [being.p_their()] lungs are <font color='red'>heavily failing</font>"
 						else
-							sound += "hear <font color='green'>normal respiration sounds</font> aswell, that means [being.p_their()] lungs are <font color='green'>healthy</font>, probably"
+							sound += "hear <font color='green'>normal respiration sounds</font> as well, that means [being.p_their()] lungs are <font color='green'>healthy</font>, probably"
 				else
 					sound = "can't hear. Really, anything at all, how weird"
 			else
@@ -307,6 +307,7 @@
 		citation_to_read = "The citation reads \'[medal_citation]\'."
 
 	. += "Awarded to: \'[recipient_rank] [recipient_name]\'. [citation_to_read]"
+
 
 /obj/item/clothing/accessory/medal/ribbon
 	name = "award ribbon"
@@ -486,7 +487,7 @@
 
 /obj/item/clothing/accessory/armband/squad
 	name = "squad armband"
-	desc = "An armband in squad colors, worn for ease of idenfication."
+	desc = "An armband in squad colors, worn for ease of identification."
 	icon_state = "armband_squad"
 	var/dummy_icon_state = "armband_%SQUAD%"
 	var/static/list/valid_icon_states
@@ -875,6 +876,7 @@
 		C.w_class = initial(C.w_class)
 		C.verbs -= /obj/item/clothing/suit/storage/verb/toggle_draw_mode
 
+
 /obj/item/storage/internal/accessory/webbing
 	bypass_w_limit = list(
 		/obj/item/ammo_magazine/rifle,
@@ -884,33 +886,36 @@
 
 /obj/item/clothing/accessory/storage/webbing
 	name = "webbing"
-	desc = "A sturdy mess of synthcotton belts and buckles, ready to share your burden."
+	desc = "A sturdy mess of synthcotton belts and buckles, ready to share your burden of three items."
 	icon_state = "webbing"
 	hold = /obj/item/storage/internal/accessory/webbing
 
 /obj/item/clothing/accessory/storage/webbing/black
 	name = "black webbing"
+	desc = "A sturdy mess of synthcotton belts and buckles, ready to share your burden with three pockets. This one is black as coal."
 	icon_state = "webbing_black"
 	item_state = "webbing_black"
 
 /obj/item/clothing/accessory/storage/webbing/iasf
 	name = "IASF airborne webbing"
-	desc = "A durable harness system issued to IASF airborne forces, designed to distribute weight evenly for comfort and mobility. Fitted with reinforced pouches for carrying essential gear during high-risk insertions."
+	desc = "A durable harness system issued to IASF airborne forces, designed to distribute weight evenly for comfort and mobility. Fitted with three reinforced pockets for carrying essential gear during high-risk insertions."
 	icon_state = "webbing_twe"
 	item_state = "webbing_twe"
 
-/obj/item/clothing/accessory/storage/webbing/five_slots
-	hold = /obj/item/storage/internal/accessory/webbing/five_slots
-
 /obj/item/storage/internal/accessory/webbing/five_slots
 	storage_slots = 5
+
+/obj/item/clothing/accessory/storage/webbing/five_slots
+	name = "large webbing"
+	desc = "A larger variant of the standard webbing model with five pockets to carry your burden."
+	hold = /obj/item/storage/internal/accessory/webbing/five_slots
 
 /obj/item/storage/internal/accessory/black_vest
 	storage_slots = 5
 
 /obj/item/clothing/accessory/storage/black_vest
 	name = "black webbing vest"
-	desc = "Robust black synthcotton vest with lots of pockets to hold whatever you need, but cannot hold in hands."
+	desc = "Robust black synthcotton vest with five pockets to hold whatever you need, but cannot hold in hands."
 	icon_state = "vest_black"
 	hold = /obj/item/storage/internal/accessory/black_vest
 
@@ -949,23 +954,23 @@
 
 /obj/item/clothing/accessory/storage/black_vest/brown_vest
 	name = "brown webbing vest"
-	desc = "Worn brownish synthcotton vest with lots of pockets to unload your hands."
+	desc = "Worn brownish synthcotton vest with five pockets to hold whatever you need,"
 	icon_state = "vest_brown"
+
+/obj/item/clothing/accessory/storage/black_vest/owlf_vest
+	name = "\improper OWLF agent vest"
+	desc = "This is a fancy-looking ballistics vest with five pockets. It is meant to be attached to a uniform."
+	icon_state = "owlf_vest"
+	item_state = "owlf_vest"
 
 /obj/item/clothing/accessory/storage/black_vest/waistcoat
 	name = "tactical waistcoat"
-	desc = "A stylish black waistcoat with plenty of discreet pouches, to be both utilitarian and fashionable without compromising looks."
+	desc = "A stylish black waistcoat with five discreet pouches, to be both utilitarian and fashionable without compromising looks."
 	icon_state = "waistcoat"
 
-/obj/item/clothing/accessory/storage/tool_webbing
-	name = "Tool Webbing"
-	desc = "A brown synthcotton webbing that is similar in function to civilian tool aprons, but is more durable for field usage."
-	hold = /obj/item/storage/internal/accessory/tool_webbing
-	icon_state = "vest_brown"
-
 /obj/item/clothing/accessory/storage/black_vest/leg_pouch
-	name = "Leg Pouch"
-	desc = "A camo conforming leg pouch usually worn by hunters, military and people who dream of being military."
+	name = "leg pouch"
+	desc = "A camo-conforming leg pouch with five pockets usually worn by hunters, military and people who dream of being military."
 	icon = 'icons/obj/items/clothing/accessory/legpouch.dmi'
 	icon_state = "leg_pouch"
 	inv_overlay_icon = 'icons/obj/items/clothing/accessory/inventory_overlays/legpouch.dmi'
@@ -997,7 +1002,7 @@
 			icon_state = "u_leg_pouch"
 
 /obj/item/clothing/accessory/storage/black_vest/black_leg_pouch
-	name = "Black Leg Pouch"
+	name = "black leg pouch"
 	desc = "A black leg pouch usually worn by hunters, military and people who dream of being military."
 	icon = 'icons/obj/items/clothing/accessory/legpouch.dmi'
 	icon_state = "leg_pouch_black"
@@ -1007,10 +1012,6 @@
 	)
 	flags_atom = NO_GAMEMODE_SKIN
 
-/obj/item/clothing/accessory/storage/tool_webbing/small
-	name = "Small Tool Webbing"
-	desc = "A brown synthcotton webbing that is similar in function to civilian tool aprons, but is more durable for field usage. This is the small low-budget version."
-	hold = /obj/item/storage/internal/accessory/tool_webbing/small
 
 /obj/item/storage/internal/accessory/tool_webbing
 	storage_slots = 7
@@ -1026,24 +1027,14 @@
 		/obj/item/weapon/gun/smg/nailgun/compact,
 		/obj/item/device/defibrillator/synthetic,
 		/obj/item/stack/rods,
+
+
 	)
-
-/obj/item/storage/internal/accessory/tool_webbing/small
-	storage_slots = 6
-
-/obj/item/clothing/accessory/storage/tool_webbing/small/equipped
-	hold = /obj/item/storage/internal/accessory/tool_webbing/small/equipped
-
-/obj/item/storage/internal/accessory/tool_webbing/small/equipped/fill_preset_inventory()
-	new /obj/item/tool/screwdriver(src)
-	new /obj/item/tool/wrench(src)
-	new /obj/item/tool/weldingtool(src)
-	new /obj/item/tool/crowbar(src)
-	new /obj/item/tool/wirecutters(src)
-	new /obj/item/device/multitool(src)
-
-/obj/item/clothing/accessory/storage/tool_webbing/equipped
-	hold = /obj/item/storage/internal/accessory/tool_webbing/equipped
+/obj/item/clothing/accessory/storage/tool_webbing
+	name = "tool webbing"
+	desc = "A brown synthcotton webbing with seven pockets that is similar in function to civilian tool aprons, but is more durable for field usage."
+	hold = /obj/item/storage/internal/accessory/tool_webbing
+	icon_state = "vest_brown"
 
 /obj/item/storage/internal/accessory/tool_webbing/equipped/fill_preset_inventory()
 	new /obj/item/tool/screwdriver(src)
@@ -1054,18 +1045,40 @@
 	new /obj/item/stack/cable_coil(src)
 	new /obj/item/device/multitool(src)
 
-/obj/item/clothing/accessory/storage/tool_webbing/yellow_drop
-	name = "Tool Drop Pouch"
-	desc = "A durable pair of drop pouches purpose-made for carrying tools."
-	icon_state = "drop_pouch_engineering"
+/obj/item/clothing/accessory/storage/tool_webbing/equipped
+	hold = /obj/item/storage/internal/accessory/tool_webbing/equipped
 
-/obj/item/clothing/accessory/storage/tool_webbing/yellow_drop/small
-	name = "Small Tool Drop Pouch"
-	desc = "A durable pair of drop pouches purpose-made for carrying tools. These are the slightly smaller budget-version."
+/obj/item/storage/internal/accessory/tool_webbing/small
+	storage_slots = 6
+
+/obj/item/storage/internal/accessory/tool_webbing/small/equipped/fill_preset_inventory()
+	new /obj/item/tool/screwdriver(src)
+	new /obj/item/tool/wrench(src)
+	new /obj/item/tool/weldingtool(src)
+	new /obj/item/tool/crowbar(src)
+	new /obj/item/tool/wirecutters(src)
+	new /obj/item/device/multitool(src)
+
+/obj/item/clothing/accessory/storage/tool_webbing/small
+	name = "small tool webbing"
+	desc = "A brown synthcotton webbing that is similar in function to civilian tool aprons, but is more durable for field usage. This is the small low-budget version with only six pockets."
 	hold = /obj/item/storage/internal/accessory/tool_webbing/small
+
+/obj/item/clothing/accessory/storage/tool_webbing/small/equipped
+	hold = /obj/item/storage/internal/accessory/tool_webbing/small/equipped
+
+/obj/item/clothing/accessory/storage/tool_webbing/yellow_drop
+	name = "tool drop pouch"
+	desc = "A durable pair of yellow-colored drop pouches with enough space for carrying seven tools."
+	icon_state = "drop_pouch_engineering"
 
 /obj/item/clothing/accessory/storage/tool_webbing/yellow_drop/equipped
 	hold = /obj/item/storage/internal/accessory/tool_webbing/equipped
+
+/obj/item/clothing/accessory/storage/tool_webbing/yellow_drop/small
+	name = "small tool drop pouch"
+	desc = "A durable pair of yellow-colored drop pouches purpose-made for carrying tools. These are the slightly smaller budget-version that can only carry six tools."
+	hold = /obj/item/storage/internal/accessory/tool_webbing/small
 
 /obj/item/clothing/accessory/storage/tool_webbing/yellow_drop/small/equipped
 	hold = /obj/item/storage/internal/accessory/tool_webbing/small/equipped
@@ -1115,7 +1128,7 @@
 
 /obj/item/clothing/accessory/storage/surg_vest
 	name = "surgical webbing vest"
-	desc = "Greenish synthcotton vest purpose-made for holding surgical tools."
+	desc = "Greenish synthcotton vest with fourteen pockets purpose-made for holding surgical tools."
 	icon_state = "vest_surg"
 	hold = /obj/item/storage/internal/accessory/surg_vest
 
@@ -1124,7 +1137,7 @@
 
 /obj/item/clothing/accessory/storage/surg_vest/drop_green
 	name = "green surgical drop pouch"
-	desc = "A greenish synthcotton drop pouch purpose-made for holding surgical tools."
+	desc = "A greenish synthcotton drop pouch with fourteen pockets purpose-made for holding surgical tools."
 	icon_state = "drop_pouch_surgical_green"
 
 /obj/item/clothing/accessory/storage/surg_vest/drop_green/equipped
@@ -1151,7 +1164,7 @@
 
 /obj/item/clothing/accessory/storage/surg_vest/blue
 	name = "blue surgical webbing vest"
-	desc = "A matte blue synthcotton vest purpose-made for holding surgical tools."
+	desc = "A matte blue synthcotton vest with fourteen pockets purpose-made for holding surgical tools."
 	icon_state = "vest_blue"
 
 /obj/item/clothing/accessory/storage/surg_vest/blue/equipped
@@ -1159,7 +1172,7 @@
 
 /obj/item/clothing/accessory/storage/surg_vest/drop_blue
 	name = "blue surgical drop pouch"
-	desc = "A matte blue synthcotton drop pouch purpose-made for holding surgical tools."
+	desc = "A matte blue synthcotton drop pouch with fourteen pockets purpose-made for holding surgical tools."
 	icon_state = "drop_pouch_surgical_blue"
 
 /obj/item/clothing/accessory/storage/surg_vest/drop_blue/equipped
@@ -1167,7 +1180,7 @@
 
 /obj/item/clothing/accessory/storage/surg_vest/black
 	name = "black surgical webbing vest"
-	desc = "A tactical black synthcotton vest purpose-made for holding surgical tools."
+	desc = "A tactical black synthcotton vest with fourteen pockets purpose-made for holding surgical tools."
 	icon_state = "vest_black"
 
 /obj/item/clothing/accessory/storage/surg_vest/black/equipped
@@ -1175,7 +1188,7 @@
 
 /obj/item/clothing/accessory/storage/surg_vest/drop_black
 	name = "black surgical drop pouch"
-	desc = "A tactical black synthcotton drop pouch purpose-made for holding surgical tools."
+	desc = "A tactical black synthcotton drop pouch with fourteen pockets purpose-made for holding surgical tools."
 	icon_state = "drop_pouch_surgical_black"
 
 /obj/item/clothing/accessory/storage/surg_vest/drop_black/equipped
@@ -1230,17 +1243,6 @@
 	..()
 	playsound(src, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
 
-/obj/item/clothing/accessory/storage/droppouch
-	name = "drop pouch"
-	desc = "A convenient pouch to carry loose items around."
-	icon_state = "drop_pouch"
-
-	hold = /obj/item/storage/internal/accessory/drop_pouch
-
-/obj/item/clothing/accessory/storage/droppouch/black
-	name = "black drop pouch"
-	icon_state = "drop_pouch_black"
-
 /obj/item/storage/internal/accessory/drop_pouch
 	w_class = SIZE_LARGE //Allow storage containers that's medium or below
 	storage_slots = null
@@ -1253,13 +1255,17 @@
 		)
 	storage_flags = STORAGE_ALLOW_DRAWING_METHOD_TOGGLE
 
-/obj/item/clothing/accessory/storage/holster
-	name = "shoulder holster"
-	desc = "A handgun holster with an attached pouch, allowing two magazines or speedloaders to be stored along with it."
-	icon_state = "holster"
-	worn_accessory_slot = ACCESSORY_SLOT_STORAGE
-	high_visibility = TRUE
-	hold = /obj/item/storage/internal/accessory/holster
+/obj/item/clothing/accessory/storage/droppouch
+	name = "drop pouch"
+	desc = "A convenient pouch with five pockets to carry loose items around."
+	icon_state = "drop_pouch"
+
+	hold = /obj/item/storage/internal/accessory/drop_pouch
+
+/obj/item/clothing/accessory/storage/droppouch/black
+	name = "black drop pouch"
+	desc = "A convenient, coal-black pouch with five pockets to carry loose items around."
+	icon_state = "drop_pouch_black"
 
 /obj/item/storage/internal/accessory/holster
 	w_class = SIZE_LARGE
@@ -1279,6 +1285,14 @@
 	/obj/item/weapon/gun/flare,
 	/obj/item/device/flashlight/flare
 	)
+
+/obj/item/clothing/accessory/storage/holster
+	name = "shoulder holster"
+	desc = "A handgun holster with an attached pouch, allowing two magazines or speedloaders to be stored along with it."
+	icon_state = "holster"
+	worn_accessory_slot = ACCESSORY_SLOT_STORAGE
+	high_visibility = TRUE
+	hold = /obj/item/storage/internal/accessory/holster
 
 /obj/item/storage/internal/accessory/holster/on_stored_atom_del(atom/movable/AM)
 	if(AM == current_gun)
@@ -1414,12 +1428,6 @@
 	new /obj/item/clothing/accessory/holobadge/cord(src)
 	..()
 	return
-
-/obj/item/clothing/accessory/storage/owlf_vest
-	name = "\improper OWLF agent vest"
-	desc = "This is a fancy-looking ballistics vest, meant to be attached to a uniform." //No stats for these yet, just placeholder implementation.
-	icon_state = "owlf_vest"
-	item_state = "owlf_vest"
 
 /*
 Wrist Accessories

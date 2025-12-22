@@ -42875,7 +42875,8 @@
 /area/almayer/hallways/lower/starboard_aft_hallway)
 "dpO" = (
 /obj/structure/machinery/cm_vending/clothing/marine/support{
-	pixel_y = 16
+	pixel_y = 16;
+	density = 0
 	},
 /turf/open/floor/almayer/cargo_arrow/north,
 /area/almayer/squads/support)
@@ -60621,7 +60622,8 @@
 /area/almayer/engineering/upper_engineering/port)
 "kLk" = (
 /obj/structure/machinery/cm_vending/clothing/tl/delta{
-	pixel_x = 32
+	pixel_x = 32;
+	density = 0
 	},
 /turf/open/floor/almayer/blue/south,
 /area/almayer/squads/delta)

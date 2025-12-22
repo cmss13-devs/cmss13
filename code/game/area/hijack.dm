@@ -13,3 +13,8 @@
 
 /area/template_noop/conditional/mainship_crashsite_outside
 	resulting_area_type = /area/mainship_crashsite/outside
+
+/// Use this to force a specific location for the mainship crash origin
+/obj/effect/landmark/mainship_crashsite
+	name = "Mainship crash site origin"
+	icon_state = "arrow"

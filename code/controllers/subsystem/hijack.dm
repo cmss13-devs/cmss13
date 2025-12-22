@@ -23,8 +23,11 @@ SUBSYSTEM_DEF(hijack)
 	///Areas that are marked as having progress, assoc list that is progress_area = boolean, the boolean indicating if it was progressing or not on the last fire()
 	var/list/area/progress_areas = list()
 
-	///The areas that need cycled through currently
+	///The areas that need to be cycled through currently
 	var/list/area/current_run = list()
+
+	///The mobs that need to be cycled through currently
+	var/list/area/current_run_mobs = list()
 
 	///The progress of the current run that needs to be added at the end of the current run
 	var/current_run_progress_additive = 0
@@ -86,6 +89,9 @@ SUBSYSTEM_DEF(hijack)
 	/// If ARES has announced the 50% point yet for SD
 	var/ares_sd_announced = FALSE
 
+	/// At what world.time the ship is currently entered FTL
+	var/in_ftl_time = INFINITY
+
 	/// If the ship is currently transiting in FTL
 	var/in_ftl = FALSE
 
@@ -140,7 +146,6 @@ SUBSYSTEM_DEF(hijack)
 		hijack_status = HIJACK_OBJECTIVES_STARTED
 		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_FUEL_PUMP_UPDATE)
 
-
 	if(hijack_status == HIJACK_OBJECTIVES_DOCKED)
 		if(TIMER_COOLDOWN_CHECK(src, COOLDOWN_POSTHIJACK_ERT))
 			return
@@ -156,14 +161,7 @@ SUBSYSTEM_DEF(hijack)
 		TIMER_COOLDOWN_START(src, COOLDOWN_POSTHIJACK_ERT, 5 MINUTES)
 		return
 
-	if(current_progress >= required_progress)
-		if(hijack_status < HIJACK_OBJECTIVES_COMPLETE)
-			hijack_status = HIJACK_OBJECTIVES_COMPLETE
-			leave_ftl()
-			addtimer(CALLBACK(src, PROC_REF(initiate_docking_procedures)), 10 SECONDS)
-		return
-
-	if(hijack_status == HIJACK_OBJECTIVES_FTL_CRASH)
+	if(hijack_status == HIJACK_OBJECTIVES_FTL_CRASH || hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH)
 		if(sd_unlocked && overloaded_generators)
 			sd_time_remaining -= wait
 			if(!engine_room_heated && (sd_time_remaining <= (max((1 - round(overloaded_generators / maximum_overload_generators, 0.01)) * sd_max_time, sd_min_time) * 0.66)))
@@ -177,16 +175,24 @@ SUBSYSTEM_DEF(hijack)
 
 			if((sd_time_remaining <= 0) && !sd_detonated)
 				detonate_sd()
+		return
 
+	if(current_progress >= required_progress)
+		if(hijack_status <= HIJACK_OBJECTIVES_STARTED)
+			hijack_status = HIJACK_OBJECTIVES_COMPLETE
+			leave_ftl()
+			addtimer(CALLBACK(src, PROC_REF(initiate_docking_procedures)), 10 SECONDS)
 		return
 
 	if(!SSticker.mode.count_marines(SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)))
-		marine_announcement("No USCM life signs detected on board. [in_ftl ? "Maintaining course to [spaceport.name]." : "Deactivating hyperdrive charge cycle."]")
+		shipwide_ai_announcement("No USCM life signs detected on board. [in_ftl ? "Maintaining course to [spaceport.name]." : "Deactivating hyperdrive charge cycle."]")
 		can_fire = FALSE
 		return
 
 	if(!resumed)
 		current_run = progress_areas.Copy()
+		if(in_ftl && world.time - in_ftl_time >= 30 SECONDS)
+			current_run_mobs = GLOB.mob_list.Copy()
 
 	for(var/area/almayer/cycled_area as anything in current_run)
 		current_run -= cycled_area
@@ -202,8 +208,32 @@ SUBSYSTEM_DEF(hijack)
 				if(EVACUATION_TYPE_MULTIPLICATIVE)
 					current_run_progress_multiplicative *= cycled_area.hijack_evacuation_weight
 
-		if (MC_TICK_CHECK)
+		if(MC_TICK_CHECK)
 			return
+
+	if(in_ftl)
+		// Scalar between 30s and 5min for 1-25% chance of a hallucination
+		var/duration_clamped = clamp(world.time - in_ftl_time, 30 SECONDS, 5 MINUTES)
+		var/chance_haullucinate = SCALE(duration_clamped, 1, 25)
+		var/list/ship_zs = SSmapping.levels_by_trait(ZTRAITS_MAIN_SHIP)
+		for(var/mob/living/carbon/human/current_mob as anything in current_run_mobs)
+			current_run_mobs -= current_mob
+
+			if(!current_mob || current_mob.stat == DEAD)
+				continue
+			var/turf/mob_turf = get_turf(current_mob)
+			if(!mob_turf || !(mob_turf.z in ship_zs))
+				continue
+			if(istype(current_mob.loc, /obj/structure/machinery/cryopod))
+				continue
+			if(!ishuman_strict(current_mob))
+				continue
+
+			if(prob(chance_haullucinate))
+				current_mob.process_hallucination()
+
+			if(MC_TICK_CHECK)
+				return
 
 	last_run_progress_change = current_run_progress_additive * current_run_progress_multiplicative
 	current_progress += last_run_progress_change
@@ -212,9 +242,11 @@ SUBSYSTEM_DEF(hijack)
 		estimated_time_left = ((required_progress - current_progress) / last_run_progress_change) * wait
 	else
 		estimated_time_left = INFINITY
-
 		if(in_ftl)
 			initiate_ftl_crash()
+		else
+			initiate_ground_crash()
+		return
 
 	if(current_progress >= announce_checkpoint)
 		announce_progress()
@@ -239,7 +271,7 @@ SUBSYSTEM_DEF(hijack)
 		message += "[cycled_area] - [cycled_area.power_equip ? "Online" : "Offline"]\n"
 		progress_areas[cycled_area] = cycled_area.power_equip
 
-	message += "\nCritical damage sustained to ship systems. Initiating sublight burn to exit AO.\nMaintain fueling functionality to initiate quantum jump to [spaceport.name]."
+	message += "\nCritical damage sustained to ship systems. Altitude rapidly decreasing. Initiating sublight burn to exit AO.\nMaintain fueling functionality to initiate quantum jump to [spaceport.name]."
 
 	marine_announcement(message, HIJACK_ANNOUNCE)
 
@@ -247,7 +279,7 @@ SUBSYSTEM_DEF(hijack)
 /datum/controller/subsystem/hijack/proc/announce_area_power_change(area/changed_area)
 	var/message = "[changed_area] - [changed_area.power_equip ? "Online" : "Offline"]"
 
-	marine_announcement(message, HIJACK_ANNOUNCE)
+	shipwide_ai_announcement(message, HIJACK_ANNOUNCE, sound('sound/misc/notice2.ogg'))
 
 ///Called to announce to xenos the state of evacuation progression
 /datum/controller/subsystem/hijack/proc/announce_progress()
@@ -290,9 +322,9 @@ SUBSYSTEM_DEF(hijack)
 		if(2)
 			marine_announcement("Emergency fuel replenishment is at 100%. Tachyon field accelerators fully charged, quantum jump initiating. Ensure constant supply of fuel to the tachyon field accelerators.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
 		if(3)
-			marine_announcement("Tachyon quantum jump progress at 50 percent. Ensure constant supply of fuel to the tachyon field accelerators.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
+			shipwide_ai_announcement("Tachyon quantum jump progress at 50 percent. Ensure constant supply of fuel to the tachyon field accelerators.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE, sound('sound/misc/notice2.ogg'))
 		if(4)
-			marine_announcement("Tachyon quantum jump complete. Initiating docking procedures with [spaceport.name].", HIJACK_ANNOUNCE)
+			shipwide_ai_announcement("Tachyon quantum jump complete. Initiating docking procedures with [spaceport.name].", HIJACK_ANNOUNCE, sound('sound/misc/notice2.ogg'))
 
 /// Passes the ETA for status panels
 /datum/controller/subsystem/hijack/proc/get_evac_eta()
@@ -305,6 +337,7 @@ SUBSYSTEM_DEF(hijack)
 		if(HIJACK_OBJECTIVES_COMPLETE)
 			return "Complete"
 
+/// Passes the SD ETA for status panels
 /datum/controller/subsystem/hijack/proc/get_sd_eta()
 	if(sd_detonated)
 		return "Complete"
@@ -318,32 +351,39 @@ SUBSYSTEM_DEF(hijack)
 
 /// Initiates evacuation by announcing and then prepping all lifepods/lifeboats
 /datum/controller/subsystem/hijack/proc/initiate_evacuation()
-	if(evac_status == EVACUATION_STATUS_NOT_INITIATED && !(evac_admin_denied & FLAGS_EVACUATION_DENY))
-		evac_status = EVACUATION_STATUS_INITIATED
-		ai_announcement("Attention. Emergency. All personnel must evacuate immediately.", 'sound/AI/evacuate.ogg')
+	if(evac_status == EVACUATION_STATUS_INITIATED || (evac_admin_denied & FLAGS_EVACUATION_DENY))
+		return FALSE
+	if(in_ftl || hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH || hijack_status == HIJACK_OBJECTIVES_FTL_CRASH)
+		return FALSE
 
-		for(var/obj/structure/machinery/status_display/cycled_status_display in GLOB.machines)
-			if(is_mainship_level(cycled_status_display.z))
-				cycled_status_display.set_picture("evac")
-		for(var/obj/docking_port/mobile/crashable/escape_shuttle/shuttle in SSshuttle.mobile)
-			shuttle.prepare_evac()
-		activate_lifeboats()
-		return TRUE
+	evac_status = EVACUATION_STATUS_INITIATED
+	ai_announcement("Attention. Emergency. All personnel must evacuate immediately.", 'sound/AI/evacuate.ogg')
+
+	for(var/obj/structure/machinery/status_display/cycled_status_display in GLOB.machines)
+		if(is_mainship_level(cycled_status_display.z))
+			cycled_status_display.set_picture("evac")
+	for(var/obj/docking_port/mobile/crashable/escape_shuttle/shuttle in SSshuttle.mobile)
+		shuttle.prepare_evac()
+	activate_lifeboats()
+	return TRUE
 
 /// Cancels evacuation, tells lifepods/lifeboats and status_displays
-/datum/controller/subsystem/hijack/proc/cancel_evacuation()
-	if(evac_status == EVACUATION_STATUS_INITIATED)
-		evac_status = EVACUATION_STATUS_NOT_INITIATED
-		deactivate_lifeboats()
+/datum/controller/subsystem/hijack/proc/cancel_evacuation(silent = FALSE)
+	if(evac_status == EVACUATION_STATUS_NOT_INITIATED)
+		return FALSE
+
+	evac_status = EVACUATION_STATUS_NOT_INITIATED
+	deactivate_lifeboats()
+	if(!silent)
 		ai_announcement("Evacuation has been cancelled.", 'sound/AI/evacuate_cancelled.ogg')
 
-		for(var/obj/structure/machinery/status_display/cycled_status_display in GLOB.machines)
-			if(is_mainship_level(cycled_status_display.z))
-				cycled_status_display.set_sec_level_picture()
+	for(var/obj/structure/machinery/status_display/cycled_status_display in GLOB.machines)
+		if(is_mainship_level(cycled_status_display.z))
+			cycled_status_display.set_sec_level_picture()
 
-		for(var/obj/docking_port/mobile/crashable/escape_shuttle/shuttle in SSshuttle.mobile)
-			shuttle.cancel_evac()
-		return TRUE
+	for(var/obj/docking_port/mobile/crashable/escape_shuttle/shuttle in SSshuttle.mobile)
+		shuttle.cancel_evac()
+	return TRUE
 
 /// Opens the lifeboat doors and gets them ready to launch
 /datum/controller/subsystem/hijack/proc/activate_lifeboats()
@@ -360,13 +400,15 @@ SUBSYSTEM_DEF(hijack)
 		if(lifeboat && lifeboat.available)
 			lifeboat.status = LIFEBOAT_INACTIVE
 
+//~~~~~~~~~~~~~~~~~~~~~~~~ SD STUFF ~~~~~~~~~~~~~~~~~~~~~~~~//
 
-/// Once refueling is done, marines can optionally hold SD for a time for a stalemate instead of a xeno minor
-/datum/controller/subsystem/hijack/proc/unlock_self_destruct()
+/// After a crash, marines can optionally hold SD for a time for a stalemate instead of a xeno minor
+/datum/controller/subsystem/hijack/proc/unlock_self_destruct(from_ftl = FALSE)
 	sd_time_remaining = sd_max_time
 	sd_unlocked = TRUE
-	marine_announcement("Hyperdrive tachyon shunt no longer operable. Remaining fuel transferred to emergency escape vessels and on board fusion generators to permit scuttling.", HIJACK_ANNOUNCE)
+	shipwide_ai_announcement("[from_ftl ? "Hyperdrive tachyon shunt no longer operable. " : ""]Remaining fuel transferred to on board fusion generators to permit scuttling.", HIJACK_ANNOUNCE, sound('sound/misc/notice2.ogg'))
 
+/// Signal handler for COMSIG_GLOB_GENERATOR_SET_OVERLOADING
 /datum/controller/subsystem/hijack/proc/on_generator_overload(obj/structure/machinery/power/power_generator/reactor/source, new_overloading)
 	SIGNAL_HANDLER
 
@@ -396,7 +438,9 @@ SUBSYSTEM_DEF(hijack)
 	var/area/engine_room = GLOB.areas_by_type[/area/almayer/engineering/lower/engine_core]
 	engine_room.firealert()
 	engine_room.temperature = T90C
-	for(var/mob/current_mob as anything in GLOB.mob_list)
+	for(var/mob/current_mob as anything in GLOB.living_player_list)
+		if(current_mob?.stat != CONSCIOUS)
+			continue
 		var/area/mob_area = get_area(current_mob)
 		if(istype(mob_area, /area/almayer/engineering/lower/engine_core))
 			to_chat(current_mob, SPAN_BOLDWARNING("You feel the heat of the room increase as the fusion engines whirr louder."))
@@ -406,14 +450,16 @@ SUBSYSTEM_DEF(hijack)
 	var/area/engine_room = GLOB.areas_by_type[/area/almayer/engineering/lower/engine_core]
 	engine_room.firealert()
 	engine_room.temperature = T120C //slowly deals burn at this temp
-	for(var/mob/current_mob as anything in GLOB.mob_list)
+	for(var/mob/current_mob as anything in GLOB.living_player_list)
+		if(current_mob?.stat != CONSCIOUS)
+			continue
 		var/area/mob_area = get_area(current_mob)
 		if(istype(mob_area, /area/almayer/engineering/lower/engine_core))
 			to_chat(current_mob, SPAN_BOLDWARNING("The room feels incredibly hot, you can't take much more of this!"))
 
 /datum/controller/subsystem/hijack/proc/announce_sd_halfway()
 	ares_sd_announced = TRUE
-	marine_announcement("ALERT: Fusion reactor meltdown has reached fifty percent.", HIJACK_ANNOUNCE)
+	shipwide_ai_announcement("ALERT: Fusion reactor meltdown has reached fifty percent.", HIJACK_ANNOUNCE, sound('sound/misc/notice2.ogg'))
 
 /datum/controller/subsystem/hijack/proc/detonate_sd()
 	set waitfor = FALSE
@@ -421,16 +467,16 @@ SUBSYSTEM_DEF(hijack)
 	var/creak_picked = pick('sound/effects/creak1.ogg', 'sound/effects/creak2.ogg', 'sound/effects/creak3.ogg')
 	for(var/mob/current_mob as anything in GLOB.mob_list)
 		var/turf/current_turf = get_turf(current_mob)
-		if(!current_mob?.loc || !current_mob.client || !current_turf || !is_mainship_level(current_turf.z))
+		if(!current_turf || !current_mob.client || !is_mainship_level(current_turf.z))
 			continue
 
 		to_chat(current_mob, SPAN_BOLDWARNING("The ship's deck worryingly creaks underneath you."))
-		playsound_client(current_mob.client, creak_picked, vol = 50)
+		playsound_client(current_mob.client, creak_picked, vol=50)
 
 	sleep(7 SECONDS)
 	shakeship(2, 10, TRUE)
 
-	marine_announcement("ALERT: Fusion reactors dangerously overloaded. Runaway meltdown in reactor core imminent.", HIJACK_ANNOUNCE)
+	shipwide_ai_announcement("ALERT: Fusion reactors dangerously overloaded. Runaway meltdown in reactor core imminent.", HIJACK_ANNOUNCE, sound('sound/misc/notice2.ogg'))
 	sleep(5 SECONDS)
 
 	var/sound_picked = pick('sound/theme/nuclear_detonation1.ogg','sound/theme/nuclear_detonation2.ogg')
@@ -441,7 +487,7 @@ SUBSYSTEM_DEF(hijack)
 	var/list/dead_mobs = list() //Everyone who only needs to see the cinematic.
 	for(var/mob/current_mob as anything in GLOB.mob_list) //This only does something cool for the people about to die, but should prove pretty interesting.
 		var/turf/current_turf = get_turf(current_mob)
-		if(!current_mob?.loc || !current_turf)
+		if(!current_turf)
 			continue
 
 		if(current_mob.stat == DEAD)
@@ -497,17 +543,17 @@ SUBSYSTEM_DEF(hijack)
 		world.Reboot()
 
 
-/datum/controller/subsystem/hijack/proc/toggle_ftl_status()
-	in_ftl = !in_ftl
+//~~~~~~~~~~~~~~~~~~~~~~~~ GROUND CRASH STUFF ~~~~~~~~~~~~~~~~~~~~~~~~//
 
-	if(in_ftl)
-		for(var/turf/open/space/space_turf as anything in ftl_turfs)
-			set_ftl_turf(space_turf)
-	else
-		for(var/turf/open/space/space_turf as anything in ftl_turfs)
-			unset_ftl_turf(space_turf)
+/// Called when pumps failed before FTL initiated to crash onto the ground map
+/datum/controller/subsystem/hijack/proc/initiate_ground_crash()
+	hijack_status = HIJACK_OBJECTIVES_GROUND_CRASH
+	marine_announcement("Tachyon quantum jump drive deactivated due to insufficient fueling. Entry into atmosphere imminent.", HIJACK_ANNOUNCE, sound('sound/mecha/internaldmgalarm.ogg'))
+	cancel_evacuation(silent=TRUE)
 
-/datum/controller/subsystem/hijack/proc/crash_onto_ground()
+	if(!admin_sd_blocked)
+		addtimer(CALLBACK(src, PROC_REF(unlock_self_destruct), FALSE), 35 SECONDS)
+
 	// Figure out the main Z by assuming the LZs are on that Z
 	var/obj/lz = locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz1)
 	if(!lz)
@@ -515,25 +561,116 @@ SUBSYSTEM_DEF(hijack)
 	var/ground_z = lz.z
 
 	// Figure out the bottom left of playable space with 1 extra border
-	var/turf/ground_origin
+	var/obj/effect/landmark/mainship_crashsite/origin_landmark = locate() in GLOB.landmarks_list
+	var/turf/ground_origin = get_turf(origin_landmark)
 	var/border_type = /turf/closed/wall/strata_ice/jungle
-	for(var/turf/closed/current_turf in Z_TURFS(ground_z))
-		if(istype(current_turf, /turf/closed/cordon))
-			var/turf/border_turf = locate(current_turf.x + 1, current_turf.y + 1, current_turf.z)
-			if(istype(border_turf, /turf/closed))
-				border_type = border_turf.type
-			ground_origin = locate(current_turf.x + 2, current_turf.y + 2, current_turf.z)
+	var/cordon_type = FALSE
+	if(ground_origin)
+		if(istype(ground_origin, /turf/closed))
+			if(istype(ground_origin, /turf/closed/cordon))
+				cordon_type = /turf/closed/cordon
+				var/turf/border_turf = locate(ground_origin.x + 1, ground_origin.y + 1, ground_origin.z)
+				if(istype(border_turf, /turf/closed))
+					border_type = border_turf.type
+				ground_origin = locate(ground_origin.x + 2, ground_origin.y + 2, ground_origin.z)
+			border_type = ground_origin.type
+			ground_origin = locate(ground_origin.x + 1, ground_origin.y + 1, ground_origin.z)
+	else
+		for(var/turf/closed/current_turf in block(1, 1, ground_z, 50, 50, ground_z))
+			if(istype(current_turf, /turf/closed/cordon))
+				cordon_type = /turf/closed/cordon
+				var/turf/border_turf = locate(current_turf.x + 1, current_turf.y + 1, current_turf.z)
+				if(istype(border_turf, /turf/closed))
+					border_type = border_turf.type
+				ground_origin = locate(current_turf.x + 2, current_turf.y + 2, current_turf.z)
+				break
+			border_type = current_turf.type
+			ground_origin = locate(current_turf.x + 1, current_turf.y + 1, current_turf.z)
 			break
-		border_type = current_turf.type
-		ground_origin = locate(current_turf.x + 1, current_turf.y + 1, current_turf.z)
-		break
 
-	message_admins("Crashing almayer to [ADMIN_COORDJMP(ground_origin)]") // TODO: Remove this
+	// Explosive reentry
+	if(ground_origin)
+		INVOKE_ASYNC(src, PROC_REF(ground_reentry_hazard), locate(ground_origin.x + 50, ground_origin.y + 50, ground_origin.z))
+		INVOKE_ASYNC(src, PROC_REF(ground_reentry_hazard), locate(ground_origin.x + 100, ground_origin.y + 50, ground_origin.z))
+		INVOKE_ASYNC(src, PROC_REF(ground_reentry_hazard), locate(ground_origin.x + 150, ground_origin.y + 50, ground_origin.z))
+		INVOKE_ASYNC(src, PROC_REF(ground_reentry_hazard), locate(ground_origin.x + 200, ground_origin.y + 50, ground_origin.z))
+	addtimer(CALLBACK(src, PROC_REF(crash_onto_ground), ground_origin, border_type, cordon_type), 20 SECONDS)
+
+
+// TODO: REMOVE THIS
+/datum/controller/subsystem/hijack/proc/test_explosions()
+	// Figure out the main Z by assuming the LZs are on that Z
+	var/obj/lz = locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz1)
+	if(!lz)
+		lz = locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz2)
+	var/ground_z = lz.z
+
+	// Figure out the bottom left of playable space with 1 extra border
+	var/obj/effect/landmark/mainship_crashsite/origin_landmark = locate() in GLOB.landmarks_list
+	var/turf/ground_origin = get_turf(origin_landmark)
+	var/border_type = /turf/closed/wall/strata_ice/jungle
+	var/cordon_type = FALSE
+	if(ground_origin)
+		if(istype(ground_origin, /turf/closed))
+			if(istype(ground_origin, /turf/closed/cordon))
+				cordon_type = /turf/closed/cordon
+				var/turf/border_turf = locate(ground_origin.x + 1, ground_origin.y + 1, ground_origin.z)
+				if(istype(border_turf, /turf/closed))
+					border_type = border_turf.type
+				ground_origin = locate(ground_origin.x + 2, ground_origin.y + 2, ground_origin.z)
+			border_type = ground_origin.type
+			ground_origin = locate(ground_origin.x + 1, ground_origin.y + 1, ground_origin.z)
+	else
+		for(var/turf/closed/current_turf in block(1, 1, ground_z, 50, 50, ground_z))
+			if(istype(current_turf, /turf/closed/cordon))
+				cordon_type = /turf/closed/cordon
+				var/turf/border_turf = locate(current_turf.x + 1, current_turf.y + 1, current_turf.z)
+				if(istype(border_turf, /turf/closed))
+					border_type = border_turf.type
+				ground_origin = locate(current_turf.x + 2, current_turf.y + 2, current_turf.z)
+				break
+			border_type = current_turf.type
+			ground_origin = locate(current_turf.x + 1, current_turf.y + 1, current_turf.z)
+			break
+
+	// Explosive reentry
+	if(ground_origin)
+		INVOKE_ASYNC(src, PROC_REF(ground_reentry_hazard), locate(ground_origin.x + 50, ground_origin.y + 50, ground_origin.z))
+		INVOKE_ASYNC(src, PROC_REF(ground_reentry_hazard), locate(ground_origin.x + 100, ground_origin.y + 50, ground_origin.z))
+		INVOKE_ASYNC(src, PROC_REF(ground_reentry_hazard), locate(ground_origin.x + 150, ground_origin.y + 50, ground_origin.z))
+		INVOKE_ASYNC(src, PROC_REF(ground_reentry_hazard), locate(ground_origin.x + 200, ground_origin.y + 50, ground_origin.z))
+
+/// Creates a warhead at the provided location for mainship reentry
+/datum/controller/subsystem/hijack/proc/ground_reentry_hazard(turf/target)
+	if(!target)
+		return
+	var/obj/structure/ob_ammo/warhead/explosive/warhead = new
+	warhead.name = "mainship reentry explosion"
+	warhead.clear_power = 0
+	warhead.clear_falloff = 30
+	warhead.standard_power = 1200
+	warhead.standard_falloff = 30
+	warhead.clear_delay = 0
+	warhead.double_explosion_delay = 0 // No third explosion please
+	warhead.warhead_impact(target) // This is a blocking call
+
+/// Actually places the crash template onto the ground map, updates space turfs, and performs some effects
+/datum/controller/subsystem/hijack/proc/crash_onto_ground(turf/ground_origin, border_type, cordon_type, template_name="USS_Almayer_crash.dmm")
+	if(!ground_origin)
+		CRASH("Unable to determine origin location on groundmap for hijack ground crash! Origin can be manually specified with a /obj/effect/landmark/mainship_crashsite")
+
+	msg_admin_niche("Crashing mainship to[ADMIN_COORDJMP(ground_origin)]")
+
+	shakeship(
+		sstrength = 1,
+		stime = 3,
+		drop = FALSE,
+	)
 
 	// Place the crash template
-	var/datum/map_template/template = SSmapping.map_templates["USS_Almayer_crash.dmm"]
-	if(!template?.load(ground_origin, centered=FALSE, delete=TRUE, allow_cropping=TRUE, crop_within_type=/turf/closed/cordon, crop_within_border=1, expand_type=border_type))
-		stack_trace("Hijack mainship crash template failed to load!")
+	var/datum/map_template/template = SSmapping.map_templates[template_name]
+	if(!template?.load(ground_origin, centered=FALSE, delete=TRUE, allow_cropping=TRUE, crop_within_type=cordon_type, crop_within_border=1, expand_type=border_type))
+		stack_trace("Hijack crash template '[template_name]' failed to load!")
 
 	// Figure out the offset for open_space turfs to peer down to ground aligned to the wreck
 	var/shipmap_z = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)[1]
@@ -545,21 +682,51 @@ SUBSYSTEM_DEF(hijack)
 	crashed_offset_x += ground_origin.x - 1
 	crashed_offset_y += ground_origin.y - 1
 
+	playsound_z(SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP), 'sound/effects/dropship_crash.ogg', volume=75)
+	shakeship(
+		sstrength = 2,
+		stime = 3,
+		drop = FALSE,
+	)
+
 	// Update shipside space turfs to open_space
 	crashed = TRUE
 	for(var/turf/open/space/space_turf as anything in ftl_turfs)
 		set_ftl_turf_open(space_turf)
 		CHECK_TICK
 
+	shakeship(
+		sstrength = 5,
+		stime = 3,
+		drop = TRUE,
+	)
+
+
+//~~~~~~~~~~~~~~~~~~~~~~~~ FTL STUFF ~~~~~~~~~~~~~~~~~~~~~~~~//
+
+/// Toggles the state of in_ftl and updates all space turfs on the main ship levels
+/datum/controller/subsystem/hijack/proc/toggle_ftl_status()
+	in_ftl = !in_ftl
+
+	if(in_ftl)
+		for(var/turf/open/space/space_turf as anything in ftl_turfs)
+			set_ftl_turf(space_turf)
+	else
+		for(var/turf/open/space/space_turf as anything in ftl_turfs)
+			unset_ftl_turf(space_turf)
+
+/// Updates a specific space turf to have the speedspace animation
 /datum/controller/subsystem/hijack/proc/set_ftl_turf(turf/open/space/space_turf)
 	var/which_turf = ((space_turf.x - 9 * space_turf.y) % 15) + 1
 	if(which_turf < 1)
 		which_turf += 15
 	space_turf.icon_state = "speedspace_ew_[which_turf]"
 
+/// Updates a specific space turf to return back to regular space
 /datum/controller/subsystem/hijack/proc/unset_ftl_turf(turf/open/space/space_turf)
 	space_turf.icon_state = "[((space_turf.x + space_turf.y) ^ ~(space_turf.x * space_turf.y) + space_turf.z) % 25]"
 
+/// Updates a specific space turf to either become black or an open_space turf depending on distance to the main ship
 /datum/controller/subsystem/hijack/proc/set_ftl_turf_open(turf/open/space/space_turf)
 	var/adjusted_x = space_turf.x - ship_origin_x
 	var/adjusted_y = space_turf.y - ship_origin_y
@@ -569,39 +736,7 @@ SUBSYSTEM_DEF(hijack)
 		return
 	space_turf.ChangeTurf(/turf/open_space/ground_level, null, null, crashed_offset_x, crashed_offset_y)
 
-
-/datum/controller/subsystem/hijack/proc/initiate_docking_procedures()
-	marine_announcement(spaceport.docking_message, spaceport.name)
-	hijack_status = HIJACK_OBJECTIVES_DOCKED
-
-	var/obj/docking_port/stationary/dock_at = pick(/obj/docking_port/stationary/emergency_response/external/hangar_port, /obj/docking_port/stationary/emergency_response/external/hangar_starboard)
-	var/stationary = SSshuttle.getDock(dock_at::id)
-	var/datum/map_template/shuttle
-
-	switch(dock_at)
-		if(/obj/docking_port/stationary/emergency_response/external/hangar_port)
-			shuttle = SSmapping.shuttle_templates[/datum/map_template/shuttle/port_umbilical_cord::shuttle_id]
-		if(/obj/docking_port/stationary/emergency_response/external/hangar_starboard)
-			shuttle = SSmapping.shuttle_templates[/datum/map_template/shuttle/starboard_umbilical_cord::shuttle_id]
-
-	if(!shuttle || !stationary)
-		return
-
-	SSshuttle.action_load(shuttle, stationary)
-
-/datum/controller/subsystem/hijack/proc/initiate_ftl_crash()
-	marine_announcement("Tachyon quantum jump drive deactivated due to insufficient fueling. Brace for destabilization of hyperdrive field.", HIJACK_ANNOUNCE, sound('sound/mecha/internaldmgalarm.ogg'))
-	hijack_status = HIJACK_OBJECTIVES_FTL_CRASH
-
-	addtimer(CALLBACK(src, PROC_REF(leave_ftl), TRUE), 5 SECONDS)
-
-	if(!admin_sd_blocked)
-		addtimer(CALLBACK(src, PROC_REF(unlock_self_destruct)), 30 SECONDS)
-
-/datum/controller/subsystem/hijack/proc/charge_ftl()
-	marine_announcement("Initiating quantum jump. Opening virtual mass field.", HIJACK_ANNOUNCE, sound('sound/mecha/powerup.ogg'))
-	addtimer(CALLBACK(src, PROC_REF(enter_ftl)), 5 SECONDS)
-
+/// Called to enter FTP warp
 /datum/controller/subsystem/hijack/proc/enter_ftl()
 	shakeship(
 		sstrength = 2,
@@ -611,9 +746,33 @@ SUBSYSTEM_DEF(hijack)
 	)
 
 	toggle_ftl_status()
+	cancel_evacuation(silent=TRUE)
 
-/datum/controller/subsystem/hijack/proc/leave_ftl(unintentionally)
+	in_ftl_time = world.time
+	shipwide_ai_announcement("ALERT: Prolonged exposure outside hypersleep chambers during a tachyon quantum jump can be fatal. Seek hypersleep chambers if possible.", HIJACK_ANNOUNCE)
+
+/// Called when FTL has failed
+/datum/controller/subsystem/hijack/proc/initiate_ftl_crash()
+	hijack_status = HIJACK_OBJECTIVES_FTL_CRASH
+	shipwide_ai_announcement("Tachyon quantum jump drive deactivated due to insufficient fueling. Brace for destabilization of hyperdrive field.", HIJACK_ANNOUNCE, sound('sound/mecha/internaldmgalarm.ogg'))
+	cancel_evacuation(silent=TRUE)
+
+	addtimer(CALLBACK(src, PROC_REF(leave_ftl), TRUE), 5 SECONDS)
+
+	if(!admin_sd_blocked)
+		addtimer(CALLBACK(src, PROC_REF(unlock_self_destruct), TRUE), 30 SECONDS)
+
+	// TODO: Planet crash?
+
+/// Delayed call to enter_ftl with announcement
+/datum/controller/subsystem/hijack/proc/charge_ftl()
+	marine_announcement("Initiating quantum jump. Opening virtual mass field.", HIJACK_ANNOUNCE, sound('sound/mecha/powerup.ogg'))
+	addtimer(CALLBACK(src, PROC_REF(enter_ftl)), 5 SECONDS)
+
+/// Called to leave FTL warp potentionally unintentionally with more destructive effects
+/datum/controller/subsystem/hijack/proc/leave_ftl(unintentionally = FALSE)
 	toggle_ftl_status()
+	current_run_mobs.Cut()
 
 	if(!unintentionally)
 		shakeship(
@@ -633,16 +792,36 @@ SUBSYSTEM_DEF(hijack)
 	for(var/mob/mob as anything in GLOB.player_list)
 		if(!is_mainship_level(mob.z))
 			continue
-
 		playsound_client(mob.client, get_sfx("bigboom"))
 
-	marine_announcement("Alert: Build up detected within pumping systems. Overload in 10 seconds.", HIJACK_ANNOUNCE)
+	shipwide_ai_announcement("ALERT: Build up detected within pumping systems. Overload in 10 seconds.", HIJACK_ANNOUNCE)
 	addtimer(CALLBACK(src, PROC_REF(explode_pumps)), 10 SECONDS)
 
+/// Called when performing leave_ftl unintentionally to explode the fuel pumps
 /datum/controller/subsystem/hijack/proc/explode_pumps()
 	var/datum/space_weapon_ammo/rocket_launcher/swing_rockets/rockets = new
 	for(var/obj/structure/machinery/fuelpump/pump as anything in fuelpumps)
-		rockets.hit_target(get_turf(pump), shake = FALSE)
+		rockets.hit_target(get_turf(pump), shake=FALSE)
+
+/// Called when FTL is completed successfully to load in shuttles
+/datum/controller/subsystem/hijack/proc/initiate_docking_procedures()
+	hijack_status = HIJACK_OBJECTIVES_DOCKED
+	shipwide_ai_announcement(spaceport.docking_message, spaceport.name, sound('sound/misc/notice2.ogg'))
+
+	var/obj/docking_port/stationary/dock_at = pick(/obj/docking_port/stationary/emergency_response/external/hangar_port, /obj/docking_port/stationary/emergency_response/external/hangar_starboard)
+	var/stationary = SSshuttle.getDock(dock_at::id)
+	var/datum/map_template/shuttle
+
+	switch(dock_at)
+		if(/obj/docking_port/stationary/emergency_response/external/hangar_port)
+			shuttle = SSmapping.shuttle_templates[/datum/map_template/shuttle/port_umbilical_cord::shuttle_id]
+		if(/obj/docking_port/stationary/emergency_response/external/hangar_starboard)
+			shuttle = SSmapping.shuttle_templates[/datum/map_template/shuttle/starboard_umbilical_cord::shuttle_id]
+
+	if(!shuttle || !stationary)
+		return
+
+	SSshuttle.action_load(shuttle, stationary)
 
 /obj/docking_port/mobile/port_umbilical_cord
 	name = "Port Umbilical Cord"

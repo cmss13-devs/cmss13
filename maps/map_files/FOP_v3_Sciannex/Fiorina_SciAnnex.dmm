@@ -296,6 +296,10 @@
 /obj/item/weapon/shield/riot,
 /turf/open/floor/prison,
 /area/fiorina/station/medbay)
+"abc" = (
+/obj/effect/landmark/mainship_crashsite,
+/turf/closed/wall/mineral/bone_resin,
+/area/fiorina/tumor/aux_engi)
 "abG" = (
 /obj/item/trash/chunk,
 /turf/open/floor/prison/whitegreen/north,
@@ -37508,7 +37512,7 @@ yhu
 yhu
 uNM
 jlk
-jlk
+abc
 rZP
 ble
 hvL

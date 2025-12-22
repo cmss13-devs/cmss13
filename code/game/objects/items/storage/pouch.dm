@@ -1418,7 +1418,6 @@
 	can_hold = list(
 		/obj/item/paper,
 		/obj/item/clipboard,
-		/obj/item/folder,
 		/obj/item/document_objective/paper,
 		/obj/item/document_objective/report,
 		/obj/item/document_objective/folder,

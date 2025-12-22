@@ -596,50 +596,6 @@ SUBSYSTEM_DEF(hijack)
 		INVOKE_ASYNC(src, PROC_REF(ground_reentry_hazard), locate(ground_origin.x + 200, ground_origin.y + 50, ground_origin.z))
 	addtimer(CALLBACK(src, PROC_REF(crash_onto_ground), ground_origin, border_type, cordon_type), 20 SECONDS)
 
-
-// TODO: REMOVE THIS
-/datum/controller/subsystem/hijack/proc/test_explosions()
-	// Figure out the main Z by assuming the LZs are on that Z
-	var/obj/lz = locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz1)
-	if(!lz)
-		lz = locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz2)
-	var/ground_z = lz.z
-
-	// Figure out the bottom left of playable space with 1 extra border
-	var/obj/effect/landmark/mainship_crashsite/origin_landmark = locate() in GLOB.landmarks_list
-	var/turf/ground_origin = get_turf(origin_landmark)
-	var/border_type = /turf/closed/wall/strata_ice/jungle
-	var/cordon_type = FALSE
-	if(ground_origin)
-		if(istype(ground_origin, /turf/closed))
-			if(istype(ground_origin, /turf/closed/cordon))
-				cordon_type = /turf/closed/cordon
-				var/turf/border_turf = locate(ground_origin.x + 1, ground_origin.y + 1, ground_origin.z)
-				if(istype(border_turf, /turf/closed))
-					border_type = border_turf.type
-				ground_origin = locate(ground_origin.x + 2, ground_origin.y + 2, ground_origin.z)
-			border_type = ground_origin.type
-			ground_origin = locate(ground_origin.x + 1, ground_origin.y + 1, ground_origin.z)
-	else
-		for(var/turf/closed/current_turf in block(1, 1, ground_z, 50, 50, ground_z))
-			if(istype(current_turf, /turf/closed/cordon))
-				cordon_type = /turf/closed/cordon
-				var/turf/border_turf = locate(current_turf.x + 1, current_turf.y + 1, current_turf.z)
-				if(istype(border_turf, /turf/closed))
-					border_type = border_turf.type
-				ground_origin = locate(current_turf.x + 2, current_turf.y + 2, current_turf.z)
-				break
-			border_type = current_turf.type
-			ground_origin = locate(current_turf.x + 1, current_turf.y + 1, current_turf.z)
-			break
-
-	// Explosive reentry
-	if(ground_origin)
-		INVOKE_ASYNC(src, PROC_REF(ground_reentry_hazard), locate(ground_origin.x + 50, ground_origin.y + 50, ground_origin.z))
-		INVOKE_ASYNC(src, PROC_REF(ground_reentry_hazard), locate(ground_origin.x + 100, ground_origin.y + 50, ground_origin.z))
-		INVOKE_ASYNC(src, PROC_REF(ground_reentry_hazard), locate(ground_origin.x + 150, ground_origin.y + 50, ground_origin.z))
-		INVOKE_ASYNC(src, PROC_REF(ground_reentry_hazard), locate(ground_origin.x + 200, ground_origin.y + 50, ground_origin.z))
-
 /// Creates a warhead at the provided location for mainship reentry
 /datum/controller/subsystem/hijack/proc/ground_reentry_hazard(turf/target)
 	if(!target)

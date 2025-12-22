@@ -731,6 +731,10 @@ SUBSYSTEM_DEF(hijack)
 			drop = FALSE,
 			osound = FALSE
 		)
+		for(var/mob/mob as anything in GLOB.player_list)
+			if(!is_mainship_level(mob.z))
+				continue
+			playsound_client(mob.client, sound('sound/effects/supercapacitors_uncharging.ogg'))
 		return
 
 	shakeship(

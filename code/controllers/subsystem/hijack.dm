@@ -353,7 +353,7 @@ SUBSYSTEM_DEF(hijack)
 /datum/controller/subsystem/hijack/proc/initiate_evacuation()
 	if(evac_status == EVACUATION_STATUS_INITIATED || (evac_admin_denied & FLAGS_EVACUATION_DENY))
 		return FALSE
-	if(in_ftl || hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH || hijack_status == HIJACK_OBJECTIVES_FTL_CRASH)
+	if(in_ftl || hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH /*|| hijack_status == HIJACK_OBJECTIVES_FTL_CRASH*/) // TODO: Planet crash?
 		return FALSE
 
 	evac_status = EVACUATION_STATUS_INITIATED
@@ -384,6 +384,19 @@ SUBSYSTEM_DEF(hijack)
 	for(var/obj/docking_port/mobile/crashable/escape_shuttle/shuttle in SSshuttle.mobile)
 		shuttle.cancel_evac()
 	return TRUE
+
+/// Changes whether the docking_ports on the mainship are operating
+/datum/controller/subsystem/hijack/proc/change_dropship_availability(allow=TRUE)
+	if(allow)
+		for(var/obj/docking_port/mobile/shuttle as anything in SSshuttle.mobile)
+			if(istype(shuttle, /obj/docking_port/mobile/marine_dropship))
+				var/obj/docking_port/mobile/marine_dropship/dropship = shuttle
+				if(dropship.is_hijacked)
+					continue
+			shuttle.set_mode(SHUTTLE_IDLE)
+	else
+		for(var/obj/docking_port/mobile/shuttle as anything in SSshuttle.mobile)
+			shuttle.set_mode(SHUTTLE_CRASHED)
 
 /// Opens the lifeboat doors and gets them ready to launch
 /datum/controller/subsystem/hijack/proc/activate_lifeboats()
@@ -550,6 +563,7 @@ SUBSYSTEM_DEF(hijack)
 	hijack_status = HIJACK_OBJECTIVES_GROUND_CRASH
 	marine_announcement("Tachyon quantum jump drive deactivated due to insufficient fueling. Entry into atmosphere imminent.", HIJACK_ANNOUNCE, sound('sound/mecha/internaldmgalarm.ogg'))
 	cancel_evacuation(silent=TRUE)
+	change_dropship_availability(FALSE)
 
 	if(!admin_sd_blocked)
 		addtimer(CALLBACK(src, PROC_REF(unlock_self_destruct), FALSE), 35 SECONDS)
@@ -665,6 +679,7 @@ SUBSYSTEM_DEF(hijack)
 	in_ftl = TRUE
 	in_ftl_time = world.time
 	cancel_evacuation(silent=TRUE)
+	change_dropship_availability(FALSE)
 	marine_announcement("Initiating quantum jump. Opening virtual mass field.", HIJACK_ANNOUNCE, sound('sound/mecha/powerup.ogg'))
 	addtimer(CALLBACK(src, PROC_REF(enter_ftl)), 5 SECONDS)
 
@@ -707,7 +722,6 @@ SUBSYSTEM_DEF(hijack)
 /datum/controller/subsystem/hijack/proc/initiate_ftl_crash()
 	hijack_status = HIJACK_OBJECTIVES_FTL_CRASH
 	shipwide_ai_announcement("Tachyon quantum jump drive deactivated due to insufficient fueling. Brace for destabilization of hyperdrive field.", HIJACK_ANNOUNCE, sound('sound/mecha/internaldmgalarm.ogg'))
-	cancel_evacuation(silent=TRUE)
 
 	addtimer(CALLBACK(src, PROC_REF(leave_ftl), TRUE), 5 SECONDS)
 
@@ -715,11 +729,14 @@ SUBSYSTEM_DEF(hijack)
 		addtimer(CALLBACK(src, PROC_REF(unlock_self_destruct), TRUE), 30 SECONDS)
 
 	// TODO: Planet crash?
+	//cancel_evacuation(silent=TRUE)
+	//change_dropship_availability(FALSE)
 
 /// Called to leave FTL warp potentionally unintentionally with more destructive effects
 /datum/controller/subsystem/hijack/proc/leave_ftl(unintentionally = FALSE)
 	in_ftl = FALSE
 	current_run_mobs.Cut()
+	change_dropship_availability(TRUE) // TODO: Planet crash?
 
 	for(var/turf/open/space/space_turf as anything in ftl_turfs)
 		unset_ftl_turf(space_turf)

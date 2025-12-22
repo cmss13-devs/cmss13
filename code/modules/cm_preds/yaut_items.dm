@@ -1762,6 +1762,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	unacidable = TRUE
 	explo_proof = TRUE
 	black_market_value = 200
+	var/uses = 1
 
 /obj/item/device/badblood_enthraller/attack(mob/living/target, mob/living/user)
 	. = ..()
@@ -1797,6 +1798,9 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 		return FALSE
 
 	thrall_target.enthrall(user)
+	uses--
+	if(uses <= 0)
+		qdel(src)
 	return TRUE
 
 /mob/living/carbon/xenomorph/proc/enthrall(mob/living/user, force = FALSE)

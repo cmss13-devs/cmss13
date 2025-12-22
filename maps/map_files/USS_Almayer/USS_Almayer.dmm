@@ -37526,8 +37526,8 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_a_p)
 "bNZ" = (
-/obj/structure/bed/chair/comfy/teal,
 /obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/bed/chair/comfy/oscar,
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
 "bOa" = (
@@ -37596,15 +37596,15 @@
 /turf/open/floor/almayer/cargo,
 /area/almayer/maint/hull/lower/l_a_p)
 "bOk" = (
-/obj/structure/bed/chair/comfy/teal,
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/chair/comfy/oscar,
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
 "bOl" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/bed/chair/comfy/blue,
+/obj/structure/bed/chair/comfy/kilo,
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
 "bOm" = (
@@ -43382,7 +43382,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/bed/chair/comfy/blue,
+/obj/structure/bed/chair/comfy/kilo,
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
 "dBO" = (
@@ -50428,10 +50428,10 @@
 /turf/open/floor/almayer/green,
 /area/almayer/living/grunt_rnr)
 "gAj" = (
-/obj/structure/bed/chair/comfy{
+/obj/structure/bed/chair/comfy/kilo{
 	dir = 1
 	},
-/turf/open/floor/almayer/plate,
+/turf/open/floor/almayer/tealfull,
 /area/almayer/living/briefing)
 "gAk" = (
 /turf/open/floor/almayer/plate,
@@ -60746,7 +60746,7 @@
 /area/almayer/hallways/upper/starboard)
 "kNX" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/bed/chair/comfy/blue,
+/obj/structure/bed/chair/comfy/kilo,
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
 "kNY" = (
@@ -65789,7 +65789,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/bed/chair/comfy/blue,
+/obj/structure/bed/chair/comfy/kilo,
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
 "mZq" = (
@@ -69885,7 +69885,7 @@
 /turf/open/floor/almayer/orange,
 /area/almayer/engineering/upper_engineering/port)
 "oCl" = (
-/obj/structure/bed/chair/comfy/teal,
+/obj/structure/bed/chair/comfy/oscar,
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
 "oCK" = (
@@ -75775,7 +75775,7 @@
 /area/almayer/living/grunt_rnr)
 "qXp" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/bed/chair/comfy/teal,
+/obj/structure/bed/chair/comfy/oscar,
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
 "qXE" = (
@@ -76987,8 +76987,8 @@
 /area/almayer/command/corporateliaison)
 "rwv" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/bed/chair/comfy,
-/turf/open/floor/almayer/plate,
+/obj/structure/bed/chair/comfy/oscar,
+/turf/open/floor/almayer/limefull,
 /area/almayer/living/briefing)
 "rwB" = (
 /obj/structure/machinery/alarm/almayer{
@@ -80143,7 +80143,7 @@
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/underdeck/hangar)
 "sMu" = (
-/obj/structure/bed/chair/comfy/blue,
+/obj/structure/bed/chair/comfy/kilo,
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
 "sMK" = (
@@ -83024,10 +83024,10 @@
 /area/almayer/maint/upper/u_m_s)
 "tXb" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/bed/chair/comfy{
+/obj/structure/bed/chair/comfy/kilo{
 	dir = 1
 	},
-/turf/open/floor/almayer/plate,
+/turf/open/floor/almayer/tealfull,
 /area/almayer/living/briefing)
 "tXc" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -87394,8 +87394,8 @@
 /turf/open/floor/almayer/silver/north,
 /area/almayer/shipboard/brig/cic_hallway)
 "vGG" = (
-/obj/structure/bed/chair/comfy,
-/turf/open/floor/almayer/plate,
+/obj/structure/bed/chair/comfy/oscar,
+/turf/open/floor/almayer/limefull,
 /area/almayer/living/briefing)
 "vGQ" = (
 /obj/structure/machinery/light{
@@ -94043,7 +94043,7 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/bed/chair/comfy/blue,
+/obj/structure/bed/chair/comfy/kilo,
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
 "ykd" = (
@@ -142577,7 +142577,7 @@ car
 bqZ
 oCl
 oCl
-oCl
+beH
 beH
 vMM
 bdd
@@ -143195,7 +143195,7 @@ jLS
 car
 sMu
 dBI
-sMu
+beH
 beH
 vMM
 bdd

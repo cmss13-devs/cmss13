@@ -254,7 +254,7 @@ SUBSYSTEM_DEF(hijack)
 		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_FUEL_PUMP_UPDATE)
 
 	if(current_progress >= ftl_required_progress && !in_ftl)
-		charge_ftl()
+		initiate_charge_ftl()
 
 	current_run_progress_additive = 0
 	current_run_progress_multiplicative = 1
@@ -660,16 +660,13 @@ SUBSYSTEM_DEF(hijack)
 
 //~~~~~~~~~~~~~~~~~~~~~~~~ FTL STUFF ~~~~~~~~~~~~~~~~~~~~~~~~//
 
-/// Toggles the state of in_ftl and updates all space turfs on the main ship levels
-/datum/controller/subsystem/hijack/proc/toggle_ftl_status()
-	in_ftl = !in_ftl
-
-	if(in_ftl)
-		for(var/turf/open/space/space_turf as anything in ftl_turfs)
-			set_ftl_turf(space_turf)
-	else
-		for(var/turf/open/space/space_turf as anything in ftl_turfs)
-			unset_ftl_turf(space_turf)
+/// Delayed call to enter_ftl with announcement
+/datum/controller/subsystem/hijack/proc/initiate_charge_ftl()
+	in_ftl = TRUE
+	in_ftl_time = world.time
+	cancel_evacuation(silent=TRUE)
+	marine_announcement("Initiating quantum jump. Opening virtual mass field.", HIJACK_ANNOUNCE, sound('sound/mecha/powerup.ogg'))
+	addtimer(CALLBACK(src, PROC_REF(enter_ftl)), 5 SECONDS)
 
 /// Updates a specific space turf to have the speedspace animation
 /datum/controller/subsystem/hijack/proc/set_ftl_turf(turf/open/space/space_turf)
@@ -701,10 +698,9 @@ SUBSYSTEM_DEF(hijack)
 		osound = FALSE
 	)
 
-	toggle_ftl_status()
-	cancel_evacuation(silent=TRUE)
+	for(var/turf/open/space/space_turf as anything in ftl_turfs)
+		set_ftl_turf(space_turf)
 
-	in_ftl_time = world.time
 	shipwide_ai_announcement("ALERT: Prolonged exposure outside hypersleep chambers during a tachyon quantum jump can be fatal. Seek hypersleep chambers if possible.", HIJACK_ANNOUNCE)
 
 /// Called when FTL has failed
@@ -720,15 +716,13 @@ SUBSYSTEM_DEF(hijack)
 
 	// TODO: Planet crash?
 
-/// Delayed call to enter_ftl with announcement
-/datum/controller/subsystem/hijack/proc/charge_ftl()
-	marine_announcement("Initiating quantum jump. Opening virtual mass field.", HIJACK_ANNOUNCE, sound('sound/mecha/powerup.ogg'))
-	addtimer(CALLBACK(src, PROC_REF(enter_ftl)), 5 SECONDS)
-
 /// Called to leave FTL warp potentionally unintentionally with more destructive effects
 /datum/controller/subsystem/hijack/proc/leave_ftl(unintentionally = FALSE)
-	toggle_ftl_status()
+	in_ftl = FALSE
 	current_run_mobs.Cut()
+
+	for(var/turf/open/space/space_turf as anything in ftl_turfs)
+		unset_ftl_turf(space_turf)
 
 	if(!unintentionally)
 		shakeship(

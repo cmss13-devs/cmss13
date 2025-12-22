@@ -1797,6 +1797,13 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 				SPAN_WARNING("You decide not to enthrall [thrall_target]."))
 		return FALSE
 
+	if(!tgui_alert(thrall_target, "Do you wish to be Enthralled by the Bad Blood?", "Submit?", list("Yes", "No",), 10 SECONDS) == "Yes")
+		to_chat(user, SPAN_WARNING("The hivemind resists your attempt to break the connection!"))
+		to_chat(user, SPAN_WARNING("(This player does not wish to be a thrall.)"))
+		return FALSE
+
+	to_chat(user, SPAN_YAUTJABOLD("You have enthralled [thrall_target]!"))
+
 	thrall_target.enthrall(user)
 	uses--
 	if(uses <= 0)

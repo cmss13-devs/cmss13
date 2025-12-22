@@ -128,7 +128,7 @@
 	)
 	flags_equip_slot = NO_FLAGS
 	force = MELEE_FORCE_TIER_4
-	throwforce = MELEE_FORCE_TIER_6
+	throwforce = 100 //Does high damage but can't be spammed
 	flags_item = ADJACENT_CLICK_DELAY
 	sharp = IS_SHARP_ITEM_SIMPLE
 	embeddable = FALSE
@@ -137,13 +137,13 @@
 	attack_verb = list("speared", "stabbed", "impaled")
 	attack_speed = 1 SECONDS
 	throw_speed = SPEED_VERY_FAST
-	throw_range = 1
+	throw_range = 0
 	shield_type = SHIELD_NONE
 	shield_flags = CAN_SHIELD_BASH
 	var/javelin_readied = FALSE
 
 /obj/item/weapon/javelin/proc/raise_javelin(mob/user as mob)
-	user.visible_message(SPAN_BLUE("\The [user] raises the [src]."))
+	user.visible_message(SPAN_RED("\The [user] raises the [src]."))
 	javelin_readied = TRUE
 	item_state = "javelin_w"
 	force = MELEE_FORCE_TIER_6
@@ -154,7 +154,7 @@
 	javelin_readied = FALSE
 	item_state = "javelin"
 	force = MELEE_FORCE_TIER_4
-	throw_range = 1
+	throw_range = 0
 
 /obj/item/weapon/javelin/proc/toggle_javelin(mob/user as mob)
 	if(javelin_readied)
@@ -162,6 +162,12 @@
 	else
 		raise_javelin(user)
 
-/obj/item/weapon/javelin/attack_self(mob/user)
+/obj/item/weapon/javelin/equipped(mob/user, slot)
+	if(javelin_readied)
+		lower_javelin(user)
 	..()
-	toggle_javelin(user)
+
+/obj/item/weapon/javelin/attack_self(mob/user)
+	if(do_after(user, 3.5 SECONDS, (INTERRUPT_ALL & (~INTERRUPT_MOVED)) , BUSY_ICON_HOSTILE))
+		toggle_javelin(user)
+	..()

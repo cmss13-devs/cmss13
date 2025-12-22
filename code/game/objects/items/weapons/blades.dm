@@ -443,6 +443,16 @@
 	else
 		raise_gladius(user)
 
+/obj/item/weapon/sword/gladius/dropped(mob/user as mob)
+	if(gladius_readied)
+		lower_gladius(user)
+	..()
+
+/obj/item/weapon/sword/gladius/equipped(mob/user, slot)
+	if(gladius_readied)
+		lower_gladius(user)
+	..()
+
 /obj/item/weapon/sword/gladius/attack_self(mob/user)
 	..()
 	toggle_gladius(user)

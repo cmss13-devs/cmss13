@@ -26,8 +26,8 @@ SUBSYSTEM_DEF(hijack)
 	///The areas that need to be cycled through currently
 	var/list/area/current_run = list()
 
-	///The mobs that need to be cycled through currently
-	var/list/area/current_run_mobs = list()
+	///The living human mobs that need to be cycled through currently
+	var/list/mob/living/carbon/human/current_run_mobs = list()
 
 	///The progress of the current run that needs to be added at the end of the current run
 	var/current_run_progress_additive = 0
@@ -212,10 +212,10 @@ SUBSYSTEM_DEF(hijack)
 			return
 
 	if(in_ftl)
-		// Scalar between 30s and 5min for 1-25% chance of a hallucination
+		// Scalar between 30s and 5min for 1-25% chance of a hallucination when in FTL outside a pod
 		var/duration_clamped = clamp(world.time - in_ftl_time, 30 SECONDS, 5 MINUTES)
-		var/chance_haullucinate = SCALE(duration_clamped, 1, 25)
-		var/list/ship_zs = SSmapping.levels_by_trait(ZTRAITS_MAIN_SHIP)
+		var/chance_haullucinate = SCALE(duration_clamped, 30 SECONDS, 20 MINUTES) * 100 // so approx 0-25
+		var/list/ship_zs = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
 		for(var/mob/living/carbon/human/current_mob as anything in current_run_mobs)
 			current_run_mobs -= current_mob
 

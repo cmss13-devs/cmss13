@@ -427,6 +427,10 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
+"abb" = (
+/obj/docking_port/stationary/emergency_response/external/hangar_starboard,
+/turf/open/space,
+/area/space)
 "abc" = (
 /obj/structure/machinery/power/apc/almayer/east,
 /turf/open/floor/plating/plating_catwalk,
@@ -14465,12 +14469,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/lower_astronav)
-"aLE" = (
-/obj/docking_port/stationary/emergency_response/external/hangar_starboard{
-	dwidth = 8
-	},
-/turf/open/space,
-/area/space)
 "aLF" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/surface/table/almayer,
@@ -132123,7 +132121,7 @@ aaa
 aaa
 aaa
 aaa
-bIc
+aaa
 aaa
 aaa
 aaa
@@ -132162,7 +132160,7 @@ aaa
 aaa
 aaa
 aaa
-aLE
+aaa
 aaa
 aaa
 aaa
@@ -132886,12 +132884,12 @@ aaa
 aaa
 aaa
 aaa
+abb
 aaa
 aaa
 aaa
 aaa
-aaa
-aaa
+bdH
 fwK
 cZB
 uaG
@@ -132939,7 +132937,7 @@ rgt
 rgt
 ctw
 hAh
-aaa
+bIc
 aaa
 aaa
 aaa
@@ -132993,7 +132991,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+bdH
 aaa
 fwK
 elY

@@ -286,8 +286,10 @@
 	name = "Almayer hanger port external airlock"
 	dir = EAST
 	id = "almayer-ert-hangar-port"
-	width  = 17
-	height = 29
+	width   = 6
+	height  = 25
+	dheight = 12
+	dwidth  = 0
 	airlock_id = "s_umbilical"
 	airlock_area = /area/almayer/hallways/lower/port_umbilical
 
@@ -295,8 +297,10 @@
 	name = "Almayer hanger starboard external airlock"
 	dir = EAST
 	id = "almayer-ert-hangar-starboard"
-	width  = 17
-	height = 29
+	width   = 6
+	height  = 25
+	dheight = 12
+	dwidth  = 0
 	airlock_id = "n_umbilical"
 	airlock_area = /area/almayer/hallways/lower/starboard_umbilical
 

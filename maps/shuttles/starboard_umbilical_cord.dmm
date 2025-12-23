@@ -11,10 +11,8 @@
 /turf/open/floor/plating/almayer,
 /area/shuttle/ert)
 "l" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	id = "s_umbilical";
-	name = "\improper Umbillical Airlock";
-	unacidable = 1
+/obj/structure/machinery/door/poddoor/almayer/locked{
+	name = "\improper Umbillical Airlock"
 	},
 /turf/open/floor/almayer/plate,
 /area/shuttle/ert)
@@ -34,10 +32,8 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
-/obj/structure/machinery/door/poddoor/almayer{
-	id = "s_umbilical";
-	name = "\improper Umbillical Airlock";
-	unacidable = 1
+/obj/structure/machinery/door/poddoor/almayer/locked{
+	name = "\improper Umbillical Airlock"
 	},
 /turf/open/floor/plating/almayer,
 /area/shuttle/ert)
@@ -73,6 +69,14 @@
 	},
 /turf/open/floor/plating/almayer,
 /area/shuttle/ert)
+"P" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	dir = 1
+	},
+/obj/effect/landmark/ert_spawns/umbilical,
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert)
 "Q" = (
 /turf/closed/wall/almayer/white,
 /area/shuttle/ert)
@@ -81,19 +85,14 @@
 	icon_state = "W";
 	dir = 1
 	},
-/obj/structure/machinery/door/poddoor/almayer{
-	id = "s_umbilical";
-	name = "\improper Umbillical Airlock";
-	unacidable = 1
+/obj/structure/machinery/door/poddoor/almayer/locked{
+	name = "\improper Umbillical Airlock"
 	},
 /turf/open/floor/plating/almayer,
 /area/shuttle/ert)
 
 (1,1,1) = {"
-A
-a
-a
-a
+Q
 a
 a
 a
@@ -107,15 +106,9 @@ a
 a
 a
 a
-a
-a
-a
 "}
 (3,1,1) = {"
 Q
-a
-a
-a
 a
 a
 a
@@ -129,9 +122,6 @@ a
 a
 a
 a
-a
-a
-a
 "}
 (5,1,1) = {"
 Q
@@ -140,15 +130,9 @@ a
 a
 a
 a
-a
-a
-a
 "}
 (6,1,1) = {"
-Q
-a
-a
-a
+A
 a
 a
 a
@@ -157,97 +141,70 @@ a
 "}
 (7,1,1) = {"
 Q
-a
-a
-a
-a
-a
-a
-a
-a
+Q
+Q
+Q
+Q
+Q
 "}
 (8,1,1) = {"
-Q
-a
-a
-a
-a
-a
-a
-a
-a
-"}
-(9,1,1) = {"
-Q
-Q
-Q
-Q
-Q
-Q
-Q
-Q
-Q
-"}
-(10,1,1) = {"
 l
 m
 M
 m
 M
 M
-M
-M
-M
 "}
-(11,1,1) = {"
+(9,1,1) = {"
 Z
 r
 r
-r
+P
 r
 k
-r
-r
-r
 "}
-(12,1,1) = {"
+(10,1,1) = {"
 s
 y
 H
 H
 N
 H
-H
-H
-H
 "}
-(13,1,1) = {"
+(11,1,1) = {"
 l
 m
 m
 M
 m
-M
-M
-M
-M
+m
+"}
+(12,1,1) = {"
+Q
+Q
+Q
+Q
+Q
+Q
+"}
+(13,1,1) = {"
+Q
+a
+a
+a
+a
+a
 "}
 (14,1,1) = {"
 Q
-Q
-Q
-Q
-Q
-Q
-Q
-Q
-Q
+a
+a
+a
+a
+a
 "}
 (15,1,1) = {"
 Q
-a
-a
-a
 a
 a
 a
@@ -261,9 +218,6 @@ a
 a
 a
 a
-a
-a
-a
 "}
 (17,1,1) = {"
 Q
@@ -272,59 +226,9 @@ a
 a
 a
 a
-a
-a
-a
 "}
 (18,1,1) = {"
 Q
-a
-a
-a
-a
-a
-a
-a
-a
-"}
-(19,1,1) = {"
-Q
-a
-a
-a
-a
-a
-a
-a
-a
-"}
-(20,1,1) = {"
-Q
-a
-a
-a
-a
-a
-a
-a
-a
-"}
-(21,1,1) = {"
-Q
-a
-a
-a
-a
-a
-a
-a
-a
-"}
-(22,1,1) = {"
-Q
-a
-a
-a
 a
 a
 a

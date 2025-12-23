@@ -60,6 +60,7 @@
 /obj/structure/machinery/door/poddoor/almayer/locked
 	unslashable = TRUE
 	unacidable = TRUE
+	heavy = TRUE
 
 /obj/structure/machinery/door/poddoor/almayer/locked/attackby(obj/item/C as obj, mob/user as mob)
 	if(HAS_TRAIT(C, TRAIT_TOOL_CROWBAR))

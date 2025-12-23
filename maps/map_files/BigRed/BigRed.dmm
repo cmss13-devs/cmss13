@@ -1406,6 +1406,10 @@
 /obj/effect/landmark/spycam_start,
 /turf/open/floor/asteroidwarning/west,
 /area/bigredv2/outside/space_port)
+"afq" = (
+/obj/item/clothing/suit/storage/labcoat/science,
+/turf/open/floor/whitepurplefull,
+/area/bigredv2/caves/lambda/research)
 "afr" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 4
@@ -78617,7 +78621,7 @@ anI
 anI
 aAm
 aAl
-xWm
+afq
 xWm
 aDk
 aEp

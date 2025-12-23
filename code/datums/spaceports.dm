@@ -12,5 +12,5 @@
 	name = "Mont-Blanc 41 LG Station"
 	docking_message = "Attention, USCM vessel. We are launching umbilical cords and deploying a squad to investigate the nature of your distress."
 	allies = list(
-		/datum/emergency_call/solar_devils_full
+		/datum/emergency_call/solar_devils_full,
 	)

@@ -50,7 +50,9 @@
 	..()
 	var/turf/location = get_turf(src)
 	if(!location)
-		stack_trace("[type] with identifier '[link]' has an invalid location!")
+		stack_trace("[src] ([type]) with identifier '[link]' has an invalid location!")
+	else if(!link)
+		stack_trace("[src] ([type]) at [x],[y],[z] has no identifier!")
 	else
 		GLOB.projector_links[link] = location
 	return INITIALIZE_HINT_QDEL

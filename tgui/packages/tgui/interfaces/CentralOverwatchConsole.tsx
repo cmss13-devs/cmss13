@@ -548,6 +548,26 @@ const CombinedSquadPanel = (props: Props) => {
                                     inline
                                     width="100%"
                                     icon="envelope"
+                                    onClick={() => act('set_primary')}
+                                  >
+                                    SET PRIMARY
+                                  </Button>
+                                </Stack.Item>
+                                <Stack.Item>
+                                  <Button
+                                    inline
+                                    width="100%"
+                                    icon="envelope"
+                                    onClick={() => act('set_secondary')}
+                                  >
+                                    SET SECONDARY
+                                  </Button>
+                                </Stack.Item>
+                                <Stack.Item>
+                                  <Button
+                                    inline
+                                    width="100%"
+                                    icon="envelope"
                                     onClick={() => act('message')}
                                   >
                                     MESSAGE SQUAD

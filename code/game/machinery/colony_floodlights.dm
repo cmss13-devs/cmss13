@@ -107,7 +107,7 @@ GLOBAL_LIST_INIT(all_breaker_switches, list())
 	var/machinepower = calculate_current_power_usage()
 
 	if(is_on)
-		// Make sure any linked switch isn't on simultaniously with us
+		// Make sure any linked switch isn't on simultaneously with us
 		for(var/obj/structure/machinery/colony_floodlight_switch/linked_switch as anything in linked_switches)
 			if(linked_switch.is_on)
 				linked_switch.set_is_on(FALSE)

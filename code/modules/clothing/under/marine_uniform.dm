@@ -202,12 +202,22 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
 
 	)
-/obj/item/clothing/under/marine/field_doctor/scrubs //but I wanna be sterile, Puck!
+/obj/item/clothing/under/marine/field_doctor/scrubs
 	name = "\improper USCM field doctor camo scrubs"
-	desc = "Standard-issue field doctor scrubs. While they do not have shards of light kevlar for protection, they are made of a special fiber that provides minor protection against biohazards and radiation, with the added bonus of being camo."
+	desc = "Standard-issue field doctor scrubs. While they do not have shards of light kevlar for protection, they are made of a special fiber that provides minor protection against biohazards and radiation, with the added bonus of coming in camo."
 	icon_state = "marine_medic_field_scrubs"
 	worn_state = "marine_medic_field_scrubs"
 	specialty = "USCM Field Doctor"
+
+	//No robustness for you if you want sterile clothes.
+	armor_melee = CLOTHING_ARMOR_NONE
+	armor_bullet = CLOTHING_ARMOR_NONE
+	armor_laser = CLOTHING_ARMOR_NONE
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
+	armor_rad = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_LOW
 	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/marine/field_doctor/scrubs/jungle

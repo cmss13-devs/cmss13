@@ -359,8 +359,9 @@ SUBSYSTEM_DEF(hijack)
 	evac_status = EVACUATION_STATUS_INITIATED
 	ai_announcement("Attention. Emergency. All personnel must evacuate immediately.", 'sound/AI/evacuate.ogg')
 
+	var/list/ship_zs = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
 	for(var/obj/structure/machinery/status_display/cycled_status_display in GLOB.machines)
-		if(is_mainship_level(cycled_status_display.z))
+		if(cycled_status_display.z in ship_zs)
 			cycled_status_display.set_picture("evac")
 	for(var/obj/docking_port/mobile/crashable/escape_shuttle/shuttle in SSshuttle.mobile)
 		shuttle.prepare_evac()
@@ -377,8 +378,9 @@ SUBSYSTEM_DEF(hijack)
 	if(!silent)
 		ai_announcement("Evacuation has been cancelled.", 'sound/AI/evacuate_cancelled.ogg')
 
+	var/list/ship_zs = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
 	for(var/obj/structure/machinery/status_display/cycled_status_display in GLOB.machines)
-		if(is_mainship_level(cycled_status_display.z))
+		if(cycled_status_display.z in ship_zs)
 			cycled_status_display.set_sec_level_picture()
 
 	for(var/obj/docking_port/mobile/crashable/escape_shuttle/shuttle in SSshuttle.mobile)
@@ -387,8 +389,13 @@ SUBSYSTEM_DEF(hijack)
 
 /// Changes whether the docking_ports on the mainship are operating
 /datum/controller/subsystem/hijack/proc/change_dropship_availability(allow=TRUE)
+	var/list/ship_zs = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
 	if(allow)
 		for(var/obj/docking_port/mobile/shuttle as anything in SSshuttle.mobile)
+			var/turf/location = get_turf(shuttle)
+			if(!location || !(location.z in ship_zs))
+				continue
+			// ASSUMPTION: Only a hijacked marine_dropship would possibly be something permanently disabled
 			if(istype(shuttle, /obj/docking_port/mobile/marine_dropship))
 				var/obj/docking_port/mobile/marine_dropship/dropship = shuttle
 				if(dropship.is_hijacked)
@@ -396,6 +403,9 @@ SUBSYSTEM_DEF(hijack)
 			shuttle.set_mode(SHUTTLE_IDLE)
 	else
 		for(var/obj/docking_port/mobile/shuttle as anything in SSshuttle.mobile)
+			var/turf/location = get_turf(shuttle)
+			if(!location || !(location.z in ship_zs))
+				continue
 			shuttle.set_mode(SHUTTLE_CRASHED)
 
 /// Opens the lifeboat doors and gets them ready to launch
@@ -476,11 +486,14 @@ SUBSYSTEM_DEF(hijack)
 
 /datum/controller/subsystem/hijack/proc/detonate_sd()
 	set waitfor = FALSE
+
 	sd_detonated = TRUE
+
+	var/list/ship_zs = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
 	var/creak_picked = pick('sound/effects/creak1.ogg', 'sound/effects/creak2.ogg', 'sound/effects/creak3.ogg')
 	for(var/mob/current_mob as anything in GLOB.mob_list)
 		var/turf/current_turf = get_turf(current_mob)
-		if(!current_turf || !current_mob.client || !is_mainship_level(current_turf.z))
+		if(!current_turf || !current_mob.client || !(current_turf.z in ship_zs))
 			continue
 
 		to_chat(current_mob, SPAN_BOLDWARNING("The ship's deck worryingly creaks underneath you."))
@@ -507,10 +520,9 @@ SUBSYSTEM_DEF(hijack)
 			dead_mobs |= current_mob
 			continue
 
-		if(is_mainship_level(current_turf.z))
+		if(current_turf.z in ship_zs)
 			alive_mobs |= current_mob
 			shake_camera(current_mob, 110, 4)
-
 
 	sleep(10 SECONDS)
 	/*Hardcoded for now, since this was never really used for anything else.
@@ -527,13 +539,12 @@ SUBSYSTEM_DEF(hijack)
 	sleep(3.5 SECONDS)
 	for(var/mob/current_mob as anything in alive_mobs)
 		var/turf/current_mob_turf = get_turf(current_mob)
-		if(!current_mob?.loc || !current_mob_turf) //Who knows, maybe they escaped, or don't exist anymore.
+		if(!current_mob_turf) //Who knows, maybe they escaped, or don't exist anymore.
 			continue
 
-		if(is_mainship_level(current_mob_turf.z))
+		if(current_mob_turf.z in ship_zs)
 			if(istype(current_mob.loc, /obj/structure/closet/secure_closet/freezer/fridge))
 				continue
-
 			current_mob.death(create_cause_data("nuclear explosion"))
 		else
 			current_mob.client.remove_from_screen(explosive_cinematic) //those who managed to escape the z level at last second shouldn't have their view obstructed.
@@ -740,6 +751,8 @@ SUBSYSTEM_DEF(hijack)
 	for(var/turf/open/space/space_turf as anything in ftl_turfs)
 		unset_ftl_turf(space_turf)
 
+	var/list/ship_zs = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
+
 	if(!unintentionally)
 		shakeship(
 			sstrength = 2,
@@ -748,9 +761,8 @@ SUBSYSTEM_DEF(hijack)
 			osound = FALSE
 		)
 		for(var/mob/mob as anything in GLOB.player_list)
-			if(!is_mainship_level(mob.z))
-				continue
-			playsound_client(mob.client, sound('sound/effects/supercapacitors_uncharging.ogg'))
+			if(mob.z in ship_zs)
+				playsound_client(mob.client, sound('sound/effects/supercapacitors_uncharging.ogg'))
 		return
 
 	shakeship(
@@ -760,9 +772,8 @@ SUBSYSTEM_DEF(hijack)
 	)
 
 	for(var/mob/mob as anything in GLOB.player_list)
-		if(!is_mainship_level(mob.z))
-			continue
-		playsound_client(mob.client, get_sfx("bigboom"))
+		if(mob.z in ship_zs)
+			playsound_client(mob.client, sound('sound/effects/supercapacitors_uncharging.ogg'))
 
 	shipwide_ai_announcement("ALERT: Build up detected within pumping systems. Overload in 10 seconds.", HIJACK_ANNOUNCE)
 	addtimer(CALLBACK(src, PROC_REF(explode_pumps)), 10 SECONDS)

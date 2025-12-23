@@ -140,21 +140,6 @@
 	desc = "A suit that protects against minor chemical spills and biological hazards. Its shoulders are colored a cool blue."
 	icon_state = "labcoat_gen"
 
-/obj/item/clothing/suit/storage/labcoat/medical
-	name = "medical's lab coat"
-	desc = "A suit that protects against minor chemical spills and biological hazards. Its shoulders are colored jade green to match the medical bay's color scheme."
-	icon_state = "medical_labcoat"
-
-/obj/item/clothing/suit/storage/labcoat/medical/short
-	name = "medical's short lab coat"
-	desc = "A suit that protects against minor chemical spills and biological hazards. Its shoulders are colored jade green to match the medical bay's color scheme. It is a little short."
-	icon_state = "medical_labcoat_short"
-
-/obj/item/clothing/suit/storage/labcoat/medical/long
-	name = "medical's long lab coat"
-	desc = "A suit that protects against minor chemical spills and biological hazards. Its e colored jade green to match the medical bay's color scheme. It drapes down quite low."
-	icon_state = "surg_labcoat_long"
-
 /obj/item/clothing/suit/storage/labcoat/researcher
 	name = "researcher's lab coat"
 	desc = "A high-quality lab coat, seemingly worn by scholars and researchers alike. It has a distinct leathery feel to it, and goads you towards adventure."

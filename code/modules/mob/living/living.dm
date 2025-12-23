@@ -262,7 +262,7 @@
 		. += 10
 		do_bump_delay = 0
 
-	if (drowsyness > 0)
+	if (drowsiness > 0)
 		. += 6
 
 	if(pulling && pulling.drag_delay && get_pull_miltiplier()) //Dragging stuff can slow you down a bit.

@@ -287,7 +287,7 @@
 	dir = EAST
 	id = "almayer-ert-hangar-port"
 	width   = 17
-	height  = 59
+	height  = 43
 	dheight = 21
 	dwidth  = 0
 	airlock_id = "s_umbilical"
@@ -344,16 +344,16 @@
 	name = "Response Station Landing Pad 5"
 	dir = EAST
 	id = ADMIN_LANDING_PAD_5
-	width  = 17
-	height = 29
+	width   = 17
+	height  = 43
+	dheight = 21
+	dwidth  = 0
 	roundstart_template = /datum/map_template/shuttle/big_ert
 
 /obj/docking_port/stationary/emergency_response/idle_port6
 	name = "Response Station Landing Pad 6"
 	dir = NORTH
 	id = ADMIN_LANDING_PAD_5
-	width  = 17
-	height = 29
 	roundstart_template = /datum/map_template/shuttle/twe_ert
 
 /obj/docking_port/stationary/emergency_response/chinook_port

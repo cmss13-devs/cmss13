@@ -160,6 +160,10 @@
 			if(!SSticker.mode)
 				return FALSE //Not a game mode?
 
+			if(SShijack.in_ftl)
+				to_chat(user, SPAN_WARNING("The ship's hyperdrive is currently active - a beacon cannot be launched."))
+				return FALSE
+
 			if(GLOB.security_level == SEC_LEVEL_DELTA)
 				to_chat(user, SPAN_WARNING("The ship is already undergoing self destruct procedures!"))
 				return FALSE

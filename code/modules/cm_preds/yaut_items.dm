@@ -337,20 +337,32 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	if(!isyautja(M)) //Nope.
 		to_chat(M, SPAN_WARNING("You try to talk into the headset, but just get a horrible shrieking in your ears!"))
 		return
+	var/check_channel = channel
+	if(check_channel == RADIO_CHANNEL_HEADSET)
+		check_channel = default_freq
+
+	if((check_channel == RADIO_CHANNEL_YAUTJA_OVERSEER) || (!(channel == RADIO_CHANNEL_HEADSET) && !(check_channel in channels)))
+		return ..()
 
 	for(var/mob/living/carbon/xenomorph/hellhound/hellhound as anything in GLOB.hellhound_list)
+		if(hellhound.stat)
+			continue
 		// Check that it should actually be hearing this stuff.
-		if((channel == RADIO_CHANNEL_YAUTJA) && !(hellhound.faction == FACTION_YAUTJA))
+		if((check_channel == RADIO_CHANNEL_YAUTJA) && !(hellhound.faction == FACTION_YAUTJA))
 			continue
-		if((channel == RADIO_CHANNEL_YAUTJA_OVERSEER) && !(hellhound.faction == FACTION_YAUTJA))
+		if((check_channel == RADIO_CHANNEL_YAUTJA_STRANDED) && !(hellhound.faction == FACTION_YAUTJA_STRANDED))
 			continue
-		if((channel == RADIO_CHANNEL_YAUTJA_STRANDED) && !(hellhound.faction == FACTION_YAUTJA_STRANDED))
+		if((check_channel == RADIO_CHANNEL_YAUTJA_BADBLOOD) && !(hellhound.faction == FACTION_YAUTJA_BADBLOOD))
 			continue
-		if((channel == RADIO_CHANNEL_YAUTJA_BADBLOOD) && !(hellhound.faction == FACTION_YAUTJA_BADBLOOD))
-			continue
+		to_chat(hellhound, SPAN_YAUTJABOLD("\[Radio\]: [M.real_name] [verb], '<B>[message]</b>'."))
 
-		if(!hellhound.stat)
-			to_chat(hellhound, "\[Radio\]: [M.real_name] [verb], '<B>[message]</b>'.")
+	if((check_channel == RADIO_CHANNEL_YAUTJA_BADBLOOD))
+		var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_YAUTJA_BADBLOOD]
+		if(istype(hive))
+			for(var/mob/living/carbon/xenomorph/enthralled in hive.totalXenos)
+				if(enthralled.stat)
+					continue
+				to_chat(enthralled, SPAN_YAUTJABOLD("\[Radio\]: [M.real_name] [verb], '<B>[message]</b>'."))
 	..()
 
 /obj/item/device/radio/headset/yautja/overseer //for council
@@ -1812,6 +1824,8 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 /mob/living/carbon/xenomorph/proc/enthrall(mob/living/user, force = FALSE)
 	if((hivenumber == XENO_HIVE_YAUTJA_BADBLOOD) || (faction == FACTION_YAUTJA_BADBLOOD))
 		return FALSE
+	if(!force && (isqueen(src) || isking(src) || ispredalien(src)))
+		return FALSE
 
 	set_hive_and_update(XENO_HIVE_YAUTJA_BADBLOOD)
 	set_languages(list(LANGUAGE_XENOMORPH, LANGUAGE_YAUTJA))
@@ -1823,18 +1837,9 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	hunter_data.dishonored_set = src
 	hud_set_hunter()
 
-	GLOB.xeno_mob_list -= src
-	SSmob.living_misc_mobs += src
-	GLOB.hellhound_list += src
 	RegisterSignal(src, COMSIG_MOB_WEED_SLOWDOWN, PROC_REF(handle_weed_slowdown))
-	RegisterSignal(src, COMSIG_MOB_DEATH, PROC_REF(handle_enthralled_death))
 
-	to_chat(src, SPAN_XENOANNOUNCE("You have been enthralled by a Yautja Bad Blood!"))
-	to_chat(src, SPAN_XENOHIGHDANGER("Your connection to the hivemind has been lost! You are now subservient to your master. Obey their commands."))
-	to_chat(src, SPAN_XENOHIGHDANGER("You are no longer able to evolve, or to harm your master."))
+	to_chat(src, SPAN_XENOHIGHDANGER("You have been enthralled by a Yautja Bad Blood!"))
+	to_chat(src, SPAN_XENOANNOUNCE("Your connection to the hivemind has been lost! You are now subservient to your master. Obey their commands."))
+	to_chat(src, SPAN_XENOANNOUNCE("You are no longer able to evolve, or to harm your master."))
 	return TRUE
-
-/mob/living/carbon/xenomorph/proc/handle_enthralled_death()
-	GLOB.hellhound_list -= src
-	SSmob.living_misc_mobs -= src
-	UnregisterSignal(src, COMSIG_MOB_WEED_SLOWDOWN, PROC_REF(handle_weed_slowdown))

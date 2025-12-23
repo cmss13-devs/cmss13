@@ -1291,6 +1291,8 @@
 	hivenumber = XENO_HIVE_YAUTJA_BADBLOOD
 	internal_faction = FACTION_YAUTJA_BADBLOOD
 
+	prefix = "Enthralled "
+
 	color = "#cccc00"
 	ui_color = "#135029"
 	dynamic_evolution = FALSE

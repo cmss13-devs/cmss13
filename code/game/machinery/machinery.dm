@@ -401,7 +401,7 @@ Class Procs:
 	RegisterSignal(SSdcs, COMSIG_GLOB_FUEL_PUMP_UPDATE, PROC_REF(on_pump_update))
 	SShijack.fuelpumps += src
 
-/obj/stucture/machinery/fuelpump/Destroy(force)
+/obj/structure/machinery/fuelpump/Destroy(force)
 	SShijack.fuelpumps -= src
 	return ..()
 

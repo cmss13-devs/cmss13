@@ -232,7 +232,7 @@
 		return
 	var/mob/living/carbon/C = M
 	C.blood_volume = max(C.blood_volume - 4 * potency *  delta_time, 0)
-	M.drowsiness = min(M.drowsiness + 0.5 * potency * delta_time, 15 * potency)
+	M.drowsyness = min(M.drowsyness + 0.5 * potency * delta_time, 15 * potency)
 	M.reagent_move_delay_modifier += potency
 	M.recalculate_move_delay = TRUE
 	if(prob(5 * delta_time))
@@ -506,7 +506,7 @@
 	M.apply_damage(POTENCY_MULTIPLIER_HIGH * potency, BRAIN)
 	M.jitteriness = min(M.jitteriness + potency, POTENCY_MULTIPLIER_HIGH * potency)
 	if(prob(50))
-		M.drowsiness = min(M.drowsiness + potency, POTENCY_MULTIPLIER_HIGH * potency)
+		M.drowsyness = min(M.drowsyness + potency, POTENCY_MULTIPLIER_HIGH * potency)
 	if(prob(10))
 		M.emote("drool")
 

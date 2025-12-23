@@ -626,7 +626,7 @@
 	idtype = /obj/item/card/id/silver/cl
 
 	minimap_icon = "correspondent"
-	minimap_background = "background_civillian"
+	minimap_background = "background_civilian"
 
 /datum/equipment_preset/wo/reporter/New()
 	. = ..()

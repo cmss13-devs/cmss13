@@ -575,7 +575,7 @@ GLOBAL_LIST_INIT(uniform_categories, list(
 /// Whether the storage object groups contents of the same type and displays them as a number. Only works for slot-based storage objects.
 #define STORAGE_CONTENT_NUM_DISPLAY (1<<9)
 /// Whether the storage object can pick up all the items in a tile
-#define STORAGE_GATHER_SIMULTAENOUSLY (1<<10)
+#define STORAGE_GATHER_SIMULTANEOUSLY (1<<10)
 /// Whether the storage can be drawn with E or Holster verb
 #define STORAGE_ALLOW_QUICKDRAW (1<<11)
 /// Whether using this item will try not to empty it if possible
@@ -583,7 +583,7 @@ GLOBAL_LIST_INIT(uniform_categories, list(
 /// Whether the user can withdraw the items in storage while being hauled by a xeno
 #define STORAGE_ALLOW_WHILE_HAULED (1<<13)
 
-#define STORAGE_FLAGS_DEFAULT (STORAGE_SHOW_FULLNESS|STORAGE_GATHER_SIMULTAENOUSLY|STORAGE_ALLOW_EMPTY)
+#define STORAGE_FLAGS_DEFAULT (STORAGE_SHOW_FULLNESS|STORAGE_GATHER_SIMULTANEOUSLY|STORAGE_ALLOW_EMPTY)
 #define STORAGE_FLAGS_BOX (STORAGE_FLAGS_DEFAULT)
 #define STORAGE_FLAGS_BAG (STORAGE_QUICK_GATHER|STORAGE_QUICK_EMPTY|STORAGE_CLICK_GATHER|STORAGE_FLAGS_DEFAULT)
 #define STORAGE_FLAGS_POUCH (STORAGE_FLAGS_DEFAULT|STORAGE_ALLOW_DRAWING_METHOD_TOGGLE)

@@ -249,7 +249,7 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(new_human), WEAR_FEET)
 
 	add_survivor_weapon_civilian(new_human) //40 percent chance to equip a weapon in hand with ammo in belt slot
-	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST) //Attempt to equip a toolbelt in belt slot. Will delete itself if the above proc equipped an ammo belt.
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST) //Attempt to equip a toolbelt in belt slot. Will delete itself if the above proc equiped an ammo belt.
 
 	add_ice_colony_survivor_equipment(new_human)
 	..()

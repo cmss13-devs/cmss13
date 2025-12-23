@@ -60,6 +60,7 @@
 	var/list/intercept_sound = list()
 	var/list/hit_sound = list()
 	var/interceptable = TRUE
+	var/datum/cause_data
 
 /datum/space_weapon_ammo/proc/miss_target(picked_atom, intercepted)
 	return
@@ -86,9 +87,11 @@
 		shipwide_ai_announcement("[capitalize(name)] [intercepted ? "INTERCEPTED" : "MISSED"]!", MAIN_AI_SYSTEM, 'sound/effects/double_klaxon.ogg')
 
 /datum/space_weapon_ammo/rail_gun/hit_target(picked_atom, announce)
+	if(!cause_data)
+		cause_data = create_cause_data(name)
 	var/list/echo_list = new /list(18)
 	echo_list[ECHO_OBSTRUCTION] = -500
-	cell_explosion(picked_atom, 1000, 200, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, create_cause_data(name))
+	cell_explosion(picked_atom, 1000, 200, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, cause_data)
 	shakeship(5, 5, FALSE, FALSE)
 	playsound(picked_atom, "bigboom", 50, 1, 200, echo = echo_list)
 	playsound(picked_atom, pick(hit_sound), 50, 1, 200, echo = echo_list)
@@ -120,9 +123,11 @@
 		shipwide_ai_announcement("[capitalize(name)] [intercepted ? "INTERCEPTED" : "MISSED"]!", MAIN_AI_SYSTEM, 'sound/effects/double_klaxon.ogg')
 
 /datum/space_weapon_ammo/rocket_launcher/hit_target(picked_atom, announce)
+	if(!cause_data)
+		cause_data = create_cause_data(name)
 	var/list/echo_list = new(18)
 	echo_list[ECHO_OBSTRUCTION] = -500
-	cell_explosion(picked_atom, 500, 10, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, create_cause_data(name))
+	cell_explosion(picked_atom, 500, 10, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, cause_data)
 	shakeship(5, 5, FALSE, FALSE)
 	playsound(picked_atom, "bigboom", 50, 1, 200, echo = echo_list)
 	playsound(picked_atom, pick(hit_sound), 50, 1, 200, echo = echo_list)
@@ -136,6 +141,8 @@
 	base_miss_chance = 0
 
 /datum/space_weapon_ammo/rocket_launcher/swing_rockets/hit_target(picked_atom, announce, shake = TRUE)
+	if(!cause_data)
+		cause_data = create_cause_data(name)
 	var/list/echo_list = new /list(18)
 	echo_list[ECHO_OBSTRUCTION] = -500
 	var/list/turf_list = list()
@@ -147,7 +154,7 @@
 	playsound(picked_atom, "bigboom", 50, 1, 200, echo = echo_list)
 	for(var/i = 1 to 12)
 		var/turf/turf = pick(turf_list)
-		cell_explosion(turf, 100, 10, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, create_cause_data(name))
+		cell_explosion(turf, 100, 10, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, cause_data)
 		playsound(turf, "bigboom", 40, 1, 20, echo = echo_list)
 		if(shake)
 			shakeship(2, 2, FALSE, FALSE)

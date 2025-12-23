@@ -801,8 +801,10 @@ SUBSYSTEM_DEF(hijack)
 /// Called to explode the fuel pumps
 /datum/controller/subsystem/hijack/proc/explode_pumps()
 	var/datum/space_weapon_ammo/rocket_launcher/swing_rockets/rockets = new
+	rockets.name = "ship explosion"
 	for(var/obj/structure/machinery/fuelpump/pump as anything in fuelpumps)
 		rockets.hit_target(get_turf(pump), shake=FALSE)
+	qdel(rockets)
 
 /// Called when FTL is completed successfully to load in shuttles
 /datum/controller/subsystem/hijack/proc/initiate_docking_procedures()

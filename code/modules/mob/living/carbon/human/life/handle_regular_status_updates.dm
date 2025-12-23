@@ -123,10 +123,10 @@
 			pain.apply_pain_reduction(PAIN_REDUCTION_FULL)
 			paralyzed--
 
-		if(drowsyness)
-			drowsyness = max(0,drowsyness - 2)
+		if(drowsiness)
+			drowsiness = max(0,drowsiness - 2)
 			EyeBlur(2)
-			if(drowsyness > 10 && prob(5))
+			if(drowsiness > 10 && prob(5))
 				sleeping++
 				apply_effect(5, PARALYZE)
 

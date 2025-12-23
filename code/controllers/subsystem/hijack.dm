@@ -371,7 +371,9 @@ SUBSYSTEM_DEF(hijack)
 /datum/controller/subsystem/hijack/proc/initiate_evacuation()
 	if(evac_status == EVACUATION_STATUS_INITIATED || (evac_admin_denied & FLAGS_EVACUATION_DENY))
 		return FALSE
-	if(in_ftl || hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH /*|| hijack_status == HIJACK_OBJECTIVES_FTL_CRASH*/) // TODO: Planet crash?
+	if(in_ftl)
+		return FALSE
+	if(!crashed && (hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH || hijack_status == HIJACK_OBJECTIVES_FTL_CRASH))
 		return FALSE
 
 	evac_status = EVACUATION_STATUS_INITIATED
@@ -696,10 +698,10 @@ SUBSYSTEM_DEF(hijack)
 		set_security_level(SEC_LEVEL_RED, no_sound = TRUE, announce = FALSE)
 
 	// Update shipside space turfs to open_space
-	crashed = TRUE
 	for(var/turf/open/space/space_turf as anything in ftl_turfs)
 		set_ftl_turf_open(space_turf)
 		CHECK_TICK
+	crashed = TRUE
 
 	shakeship(
 		sstrength = 8,

@@ -60,15 +60,15 @@
 ///Nothing happens
 #define INITIALIZE_HINT_NORMAL 0
 /**
- * call LateInitialize at the end of all atom Initalization
+ * call LateInitialize at the end of all atom Initialization
  *
  * The item will be added to the late_loaders list, this is iterated over after
- * initalization of subsystems is complete and calls LateInitialize on the atom
- * see [this file for the LateIntialize proc](atom.html#proc/LateInitialize)
+ * initialization of subsystems is complete and calls LateInitialize on the atom
+ * see [this file for the LateInitialize proc](atom.html#proc/LateInitialize)
  */
 #define INITIALIZE_HINT_LATELOAD 1
 
-///Call qdel on the atom after intialization
+///Call qdel on the atom after initialization
 #define INITIALIZE_HINT_QDEL 2
 
 ///Call LateInitialize on roundstart

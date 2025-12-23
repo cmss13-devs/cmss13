@@ -152,6 +152,9 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	if(z in ground_zs)
 		CRASH("[src] at [x],[y],[z] is already on the ground level so should be handled using /turf/open_space instead!")
 
+	if(!length(ground_zs))
+		return ..() // There is no ground z level (probably unit testing)
+
 	// Figure out how high up we are already
 	// Assumption: Going ZTRAIT_DOWN keeps you within this ZTRAIT
 	var/height = 0

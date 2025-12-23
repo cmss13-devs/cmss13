@@ -116,7 +116,11 @@ SUBSYSTEM_DEF(hijack)
 	/// A list of turfs to edit to FTL-ness
 	var/list/ftl_turfs = list()
 
+	/// A list of all fuel pumps
 	var/list/obj/structure/machinery/fuelpump/fuelpumps = list()
+
+	/// A list of all APCs on the main ship
+	var/list/obj/structure/machinery/power/apc/almayer/apcs = list()
 
 /datum/controller/subsystem/hijack/Initialize(timeofday)
 	RegisterSignal(SSdcs, COMSIG_GLOB_GENERATOR_SET_OVERLOADING, PROC_REF(on_generator_overload))
@@ -665,6 +669,9 @@ SUBSYSTEM_DEF(hijack)
 		stime = 3,
 		drop = FALSE,
 	)
+	shipwide_ai_announcement("ALERT: Altitude rapidly decreasing. Brace for impact.", HIJACK_ANNOUNCE, sound('sound/effects/GQfullcall.ogg'))
+	if(GLOB.security_level < SEC_LEVEL_RED)
+		set_security_level(SEC_LEVEL_RED, no_sound = TRUE, announce = FALSE)
 
 	// Update shipside space turfs to open_space
 	crashed = TRUE
@@ -674,12 +681,23 @@ SUBSYSTEM_DEF(hijack)
 
 	shakeship(
 		sstrength = 8,
-		stime = 3,
+		stime = 5,
 		drop = TRUE,
 	)
+	explode_pumps()
+	explode_apcs(50)
 
 	if(!admin_sd_blocked)
-		unlock_self_destruct(FALSE)
+		addtimer(CALLBACK(src, PROC_REF(unlock_self_destruct), FALSE), 15 SECONDS)
+
+/// Called to explode the apcs with probability (so more shipwide damage)
+/datum/controller/subsystem/hijack/proc/explode_apcs(chance=50, warning=TRUE)
+	var/cause_data = create_cause_data("ship explosion")
+	for(var/obj/structure/machinery/power/apc/apc as anything in apcs)
+		var/turf/apc_turf = get_turf(apc)
+		if(apc_turf && prob(chance))
+			cell_explosion(apc_turf, 30, 5, explosion_cause_data=cause_data, enviro=TRUE)
+			CHECK_TICK
 
 
 //~~~~~~~~~~~~~~~~~~~~~~~~ FTL STUFF ~~~~~~~~~~~~~~~~~~~~~~~~//
@@ -734,6 +752,8 @@ SUBSYSTEM_DEF(hijack)
 	shipwide_ai_announcement("Tachyon quantum jump drive deactivated due to insufficient fueling. Brace for destabilization of hyperdrive field.", HIJACK_ANNOUNCE, sound('sound/mecha/internaldmgalarm.ogg'))
 
 	addtimer(CALLBACK(src, PROC_REF(leave_ftl), TRUE), 5 SECONDS)
+	if(GLOB.security_level < SEC_LEVEL_RED)
+		set_security_level(SEC_LEVEL_RED, no_sound = TRUE, announce = FALSE)
 
 	if(!admin_sd_blocked)
 		addtimer(CALLBACK(src, PROC_REF(unlock_self_destruct), TRUE), 30 SECONDS)
@@ -775,10 +795,10 @@ SUBSYSTEM_DEF(hijack)
 		if(mob.z in ship_zs)
 			playsound_client(mob.client, sound('sound/effects/supercapacitors_uncharging.ogg'))
 
-	shipwide_ai_announcement("ALERT: Build up detected within pumping systems. Overload in 10 seconds.", HIJACK_ANNOUNCE)
+	shipwide_ai_announcement("ALERT: Build up detected within pumping systems. Overload in 10 seconds.", HIJACK_ANNOUNCE, sound('sound/effects/double_klaxon.ogg'))
 	addtimer(CALLBACK(src, PROC_REF(explode_pumps)), 10 SECONDS)
 
-/// Called when performing leave_ftl unintentionally to explode the fuel pumps
+/// Called to explode the fuel pumps
 /datum/controller/subsystem/hijack/proc/explode_pumps()
 	var/datum/space_weapon_ammo/rocket_launcher/swing_rockets/rockets = new
 	for(var/obj/structure/machinery/fuelpump/pump as anything in fuelpumps)

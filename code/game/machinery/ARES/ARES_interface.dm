@@ -403,6 +403,10 @@
 				to_chat(user, SPAN_WARNING("The ship's hyperdrive is currently active - a beacon cannot be launched."))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
+			if(SShijack.crashed || SShijack.hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH)
+				to_chat(user, SPAN_WARNING("The ship's systems are unresponsive - a beacon cannot be launched."))
+				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
+				return FALSE
 			if(!COOLDOWN_FINISHED(datacore, ares_distress_cooldown))
 				to_chat(user, SPAN_WARNING("The distress launcher is cooling down!"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)

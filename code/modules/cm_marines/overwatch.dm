@@ -977,6 +977,10 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				to_chat(user, SPAN_WARNING("The ship's hyperdrive is currently active - a beacon cannot be launched."))
 				return FALSE
 
+			if(SShijack.crashed || SShijack.hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH)
+				to_chat(user, SPAN_WARNING("The ship's systems are unresponsive - a beacon cannot be launched."))
+				return FALSE
+
 			if(GLOB.security_level == SEC_LEVEL_DELTA)
 				to_chat(user, SPAN_WARNING("The ship is already undergoing self destruct procedures!"))
 				return FALSE

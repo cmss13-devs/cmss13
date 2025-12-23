@@ -413,6 +413,10 @@ SUBSYSTEM_DEF(hijack)
 			var/turf/location = get_turf(shuttle)
 			if(!location || !(location.z in ship_zs))
 				continue
+			if(istype(shuttle, /obj/docking_port/mobile/crashable))
+				continue
+			if(istype(shuttle, /obj/docking_port/mobile/vehicle_elevator))
+				continue
 			// ASSUMPTION: Only a hijacked marine_dropship would possibly be something permanently disabled
 			if(istype(shuttle, /obj/docking_port/mobile/marine_dropship))
 				var/obj/docking_port/mobile/marine_dropship/dropship = shuttle
@@ -423,6 +427,10 @@ SUBSYSTEM_DEF(hijack)
 		for(var/obj/docking_port/mobile/shuttle as anything in SSshuttle.mobile)
 			var/turf/location = get_turf(shuttle)
 			if(!location || !(location.z in ship_zs))
+				continue
+			if(istype(shuttle, /obj/docking_port/mobile/crashable))
+				continue
+			if(istype(shuttle, /obj/docking_port/mobile/vehicle_elevator))
 				continue
 			shuttle.set_mode(SHUTTLE_CRASHED)
 
@@ -592,7 +600,6 @@ SUBSYSTEM_DEF(hijack)
 /datum/controller/subsystem/hijack/proc/initiate_ground_crash()
 	hijack_status = HIJACK_OBJECTIVES_GROUND_CRASH
 	marine_announcement("Tachyon quantum jump drive deactivated due to insufficient fueling. Entry into atmosphere imminent.", HIJACK_ANNOUNCE, sound('sound/mecha/internaldmgalarm.ogg'))
-	cancel_evacuation(silent=TRUE)
 	change_dropship_availability(FALSE)
 
 	// Figure out the main Z by assuming the LZs are on that Z
@@ -721,8 +728,6 @@ SUBSYSTEM_DEF(hijack)
 /datum/controller/subsystem/hijack/proc/initiate_charge_ftl()
 	in_ftl = TRUE
 	in_ftl_time = world.time
-	cancel_evacuation(silent=TRUE)
-	change_dropship_availability(FALSE)
 	marine_announcement("Initiating quantum jump. Opening virtual mass field.", HIJACK_ANNOUNCE, sound('sound/mecha/powerup.ogg'))
 	addtimer(CALLBACK(src, PROC_REF(enter_ftl)), 5 SECONDS)
 
@@ -774,14 +779,12 @@ SUBSYSTEM_DEF(hijack)
 		addtimer(CALLBACK(src, PROC_REF(unlock_self_destruct), TRUE), 30 SECONDS)
 
 	// TODO: Planet crash?
-	//cancel_evacuation(silent=TRUE)
 	//change_dropship_availability(FALSE)
 
 /// Called to leave FTL warp potentionally unintentionally with more destructive effects
 /datum/controller/subsystem/hijack/proc/leave_ftl(unintentionally = FALSE)
 	in_ftl = FALSE
 	current_run_mobs.Cut()
-	change_dropship_availability(TRUE) // TODO: Planet crash?
 
 	for(var/turf/open/space/space_turf as anything in ftl_turfs)
 		unset_ftl_turf(space_turf)

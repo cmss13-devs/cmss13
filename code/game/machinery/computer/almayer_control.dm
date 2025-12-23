@@ -240,6 +240,10 @@
 				to_chat(user, SPAN_WARNING("The ship's hyperdrive is currently active - a beacon cannot be launched."))
 				return
 
+			if(SShijack.crashed || SShijack.hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH)
+				to_chat(user, SPAN_WARNING("The ship's systems are unresponsive - a beacon cannot be launched."))
+				return FALSE
+
 			if(!COOLDOWN_FINISHED(src, cooldown_request))
 				to_chat(user, SPAN_WARNING("The distress beacon has recently broadcast a message. Please wait."))
 				return FALSE

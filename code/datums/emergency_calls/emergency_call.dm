@@ -260,7 +260,7 @@
 			marine_announcement("The distress signal has not received a response, the launch tubes are now recalibrating.", "Distress Beacon", logging = ARES_LOG_SECURITY)
 		return
 
-	if(SShijack.in_ftl)
+	if(SShijack.in_ftl || SShijack.crashed || SShijack.hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH)
 		members = list()
 		candidates = list()
 		return

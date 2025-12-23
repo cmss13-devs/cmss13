@@ -429,6 +429,11 @@
 
 				if(SShijack.in_ftl)
 					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unable to launch, hyperdrive active\"."))
+					return
+
+				if(SShijack.crashed || SShijack.hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH)
+					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unable to launch, systems damaged\"."))
+					return
 
 				if(SShijack.current_progress < SShijack.early_launch_required_progress)
 					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unable to launch, fuel insufficient\"."))

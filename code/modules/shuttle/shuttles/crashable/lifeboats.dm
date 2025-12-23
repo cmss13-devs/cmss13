@@ -62,7 +62,7 @@
 /obj/docking_port/mobile/crashable/lifeboat/crash_check()
 	. = ..()
 
-	if(SShijack.hijack_status == HIJACK_OBJECTIVES_COMPLETE)
+	if(SShijack.hijack_status >= HIJACK_OBJECTIVES_FTL_CRASH)
 		return FALSE
 
 	if(prob(abs((SShijack.current_progress - SShijack.required_progress) / SShijack.required_progress) * 100))

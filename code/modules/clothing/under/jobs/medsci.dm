@@ -34,7 +34,7 @@
 	armor_laser = CLOTHING_ARMOR_NONE
 	armor_energy = CLOTHING_ARMOR_NONE
 	armor_bomb = CLOTHING_ARMOR_NONE
-	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bio = CLOTHING_ARMOR_LOW
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	flags_jumpsuit = FALSE
@@ -78,7 +78,7 @@
 	armor_laser = CLOTHING_ARMOR_NONE
 	armor_energy = CLOTHING_ARMOR_NONE
 	armor_bomb = CLOTHING_ARMOR_NONE
-	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bio = CLOTHING_ARMOR_LOW
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 
@@ -303,9 +303,9 @@
 	flags_jumpsuit = FALSE
 	item_state_slots = list(WEAR_BODY = "scrubspharm")
 
-/obj/item/clothing/under/rank/cmo/scrubs
+/obj/item/clothing/under/rank/medical/cmo
 	name = "chief medical officer's medical scrubs"
-	desc = "They're made of a special fiber that provides minor protection against biohazards. These are jade green and adorned with peach stripes that denote the wearer is \"Chief Medical Officer\"."
+	desc = "They're made of a special fiber that provides minor protection against biohazards. These are jade green and adorned with peach stripes that denote the wearer is the Chief Medical Officer."
 	icon_state = "scrubscmo"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/medical.dmi'
 	item_icons = list(

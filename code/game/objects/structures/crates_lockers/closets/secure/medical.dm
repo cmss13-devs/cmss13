@@ -90,7 +90,7 @@
 	new /obj/item/clothing/suit/radiation(src)
 	new /obj/item/clothing/head/radiation(src)
 	new /obj/item/clothing/shoes/white(src)
-	new /obj/item/clothing/under/rank/cmo/scrubs(src)
+	new /obj/item/clothing/under/rank/medical/cmo(src)
 	new /obj/item/clothing/under/rank/cmo(src)
 	new /obj/item/clothing/head/surgery/cmo(src)
 	new /obj/item/clothing/head/cmo(src)

@@ -237,6 +237,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_field_doctor, list(
 		list("Medical Scrubs, White", 0, /obj/item/clothing/under/rank/medical/white, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
 
 		list("SUIT (CHOOSE 1)", 0, null, null, null),
+		list("M3-VL Pattern Ballistics Vest", 0,/obj/item/clothing/suit/storage/marine/light/vest, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 		list("Lab Coat", 0, /obj/item/clothing/suit/storage/labcoat, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
 		list("Lab Coat, Short", 0, /obj/item/clothing/suit/storage/labcoat/short, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
 		list("Lab Coat, Long", 0, /obj/item/clothing/suit/storage/labcoat/long, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
@@ -566,7 +567,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_researcher, list(
 		/obj/item/clothing/accessory/stethoscope,
 		/obj/item/device/flashlight/pen,
 		/obj/item/storage/syringe_case,
-		/obj/item/clothing/suit/storage/marine/light/vest,
 		/obj/item/clothing/shoes/marine,
 		/obj/item/storage/box/mre,
 		/obj/item/device/radio/marine,

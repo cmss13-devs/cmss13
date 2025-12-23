@@ -305,3 +305,25 @@
   - imageadd: Added a few icons to the Ranks.dmi
   - imageadd: Added a few icons to the Onmob ranks.dmi
   - imageadd: Added a few icons to the  Inventory ranks.dmi
+2025-12-23:
+  Drathek:
+  - rscadd: Added ignition and evaporation to liquid fuel spills (its duration might
+      be reduced if there is little fuel present and it only does greenfire damage);
+      also randomized its spread and marked it as harmful (checked for synths and
+      extinguishers)
+  - balance: Removed the weed removal aspect of the toxic property (since now toxic
+      welding fuel is ignitable)
+  - balance: Spray bottles volume reduced from 250->150 but default amount per transfer
+      reduced from 10->5 (25 uses->30 uses; 10 is no longer an option)
+  - balance: Water backpack sprayer volume reduced from 500->250 (100 uses->50 uses)
+  - balance: Spray bottles use delay increased from 0.5/0.25 seconds->1.5 seconds
+  - balance: Water backpack sprayer delay increased from 0 seconds->3.5 seconds
+  - balance: Chem smoke now spreads 4x less reagents and smoke flamer range was reduced
+      from 5 to 4
+  - rscdel: Removed antiweed grenades and loadouts (replaced a survivor loadout with
+      a fuel filled watertank instead)
+  - bugfix: Fixed some potential ways for sprayers to be used to spray harmful substances
+      by synths
+  - bugfix: Fixed liquid fuel stacking extra amounts depending on the quantity of
+      objects in the turf
+  - refactor: Refactored logic for chem sprayer and synth foam backpack sprayer

@@ -147,10 +147,13 @@ SUBSYSTEM_DEF(hijack)
 		return
 
 	if(hijack_status < HIJACK_OBJECTIVES_STARTED)
+		// First fire
 		hijack_status = HIJACK_OBJECTIVES_STARTED
 		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_FUEL_PUMP_UPDATE)
+		return
 
 	if(hijack_status == HIJACK_OBJECTIVES_DOCKED)
+		// Post FTL dock to repeatedly spawn ERTs
 		if(TIMER_COOLDOWN_CHECK(src, COOLDOWN_POSTHIJACK_ERT))
 			return
 
@@ -166,6 +169,7 @@ SUBSYSTEM_DEF(hijack)
 		return
 
 	if(hijack_status == HIJACK_OBJECTIVES_FTL_CRASH || hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH)
+		// Crashed state to handle SD
 		if(sd_unlocked && overloaded_generators)
 			sd_time_remaining -= wait
 			if(!engine_room_heated && (sd_time_remaining <= (max((1 - round(overloaded_generators / maximum_overload_generators, 0.01)) * sd_max_time, sd_min_time) * 0.66)))
@@ -181,44 +185,22 @@ SUBSYSTEM_DEF(hijack)
 				detonate_sd()
 		return
 
-	if(current_progress >= required_progress)
-		if(hijack_status <= HIJACK_OBJECTIVES_STARTED)
-			hijack_status = HIJACK_OBJECTIVES_COMPLETE
-			leave_ftl()
-			addtimer(CALLBACK(src, PROC_REF(initiate_docking_procedures)), 10 SECONDS)
-		return
-
 	if(!SSticker.mode.count_marines(SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)))
-		shipwide_ai_announcement("No USCM life signs detected on board. [in_ftl ? "Maintaining course to [spaceport.name]." : "Deactivating hyperdrive charge cycle."]")
+		// All marines dead, stop objective progression
+		if(in_ftl || hijack_status == HIJACK_OBJECTIVES_STARTED)
+			shipwide_ai_announcement("No USCM life signs detected on board. [in_ftl ? "Maintaining course to [spaceport.name]." : "Deactivating hyperdrive charge cycle."]")
 		can_fire = FALSE
 		return
 
 	if(!resumed)
 		current_run = progress_areas.Copy()
 		if(in_ftl && world.time - in_ftl_time >= 30 SECONDS)
-			current_run_mobs = GLOB.mob_list.Copy()
-
-	for(var/area/almayer/cycled_area as anything in current_run)
-		current_run -= cycled_area
-
-		if(progress_areas[cycled_area] != cycled_area.power_equip)
-			progress_areas[cycled_area] = !progress_areas[cycled_area]
-			announce_area_power_change(cycled_area)
-
-		if(progress_areas[cycled_area])
-			switch(cycled_area.hijack_evacuation_type)
-				if(EVACUATION_TYPE_ADDITIVE)
-					current_run_progress_additive += cycled_area.hijack_evacuation_weight
-				if(EVACUATION_TYPE_MULTIPLICATIVE)
-					current_run_progress_multiplicative *= cycled_area.hijack_evacuation_weight
-
-		if(MC_TICK_CHECK)
-			return
+			current_run_mobs = GLOB.alive_human_list.Copy()
 
 	if(in_ftl)
-		// Scalar between 30s and 5min for 1-25% chance of a hallucination when in FTL outside a pod
+		// Scalar between 30s and 5min for ~0-25% chance of a hallucination when in FTL outside a pod
 		var/duration_clamped = clamp(world.time - in_ftl_time, 30 SECONDS, 5 MINUTES)
-		var/chance_haullucinate = SCALE(duration_clamped, 30 SECONDS, 20 MINUTES) * 100 // so approx 0-25
+		var/chance_haullucinate = SCALE(duration_clamped, 30 SECONDS, 20 MINUTES) * 100 // max actually seems to be like ~23% because byond floats
 		var/list/ship_zs = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
 		for(var/mob/living/carbon/human/current_mob as anything in current_run_mobs)
 			current_run_mobs -= current_mob
@@ -239,29 +221,60 @@ SUBSYSTEM_DEF(hijack)
 			if(MC_TICK_CHECK)
 				return
 
-	last_run_progress_change = current_run_progress_additive * current_run_progress_multiplicative
-	current_progress += last_run_progress_change
+	if(hijack_status == HIJACK_OBJECTIVES_STARTED)
+		if(current_progress >= required_progress)
+			// Progress is now complete to leave FTL
+			if(hijack_status <= HIJACK_OBJECTIVES_STARTED)
+				hijack_status = HIJACK_OBJECTIVES_COMPLETE
+				leave_ftl()
+				addtimer(CALLBACK(src, PROC_REF(initiate_docking_procedures)), 10 SECONDS)
+			return
 
-	if(last_run_progress_change)
-		estimated_time_left = ((required_progress - current_progress) / last_run_progress_change) * wait
-	else
-		estimated_time_left = INFINITY
-		if(in_ftl)
-			initiate_ftl_crash()
+		if(current_progress >= ftl_required_progress && !in_ftl)
+			// Progress is now able to enter FTL
+			initiate_charge_ftl()
+
+		// Calculate new progression
+		for(var/area/almayer/cycled_area as anything in current_run)
+			current_run -= cycled_area
+
+			if(progress_areas[cycled_area] != cycled_area.power_equip)
+				progress_areas[cycled_area] = !progress_areas[cycled_area]
+				announce_area_power_change(cycled_area)
+
+			if(progress_areas[cycled_area])
+				switch(cycled_area.hijack_evacuation_type)
+					if(EVACUATION_TYPE_ADDITIVE)
+						current_run_progress_additive += cycled_area.hijack_evacuation_weight
+					if(EVACUATION_TYPE_MULTIPLICATIVE)
+						current_run_progress_multiplicative *= cycled_area.hijack_evacuation_weight
+
+			if(MC_TICK_CHECK)
+				return
+
+		last_run_progress_change = current_run_progress_additive * current_run_progress_multiplicative
+		current_progress += last_run_progress_change
+
+		if(last_run_progress_change)
+			// There was progress, update time left
+			estimated_time_left = ((required_progress - current_progress) / last_run_progress_change) * wait
 		else
-			initiate_ground_crash()
-		return
+			// Failure!
+			estimated_time_left = INFINITY
+			if(in_ftl)
+				initiate_ftl_crash()
+			else
+				initiate_ground_crash()
+			return
 
-	if(current_progress >= announce_checkpoint)
-		announce_progress()
-		announce_checkpoint += initial(announce_checkpoint)
-		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_FUEL_PUMP_UPDATE)
+		if(current_progress >= announce_checkpoint)
+			// Announce the progress checkpoint
+			announce_progress()
+			announce_checkpoint += initial(announce_checkpoint)
+			SEND_GLOBAL_SIGNAL(COMSIG_GLOB_FUEL_PUMP_UPDATE)
 
-	if(current_progress >= ftl_required_progress && !in_ftl)
-		initiate_charge_ftl()
-
-	current_run_progress_additive = 0
-	current_run_progress_multiplicative = 1
+		current_run_progress_additive = 0
+		current_run_progress_multiplicative = 1
 
 ///Called when the dropship has been called by the xenos
 /datum/controller/subsystem/hijack/proc/call_shuttle()
@@ -351,6 +364,7 @@ SUBSYSTEM_DEF(hijack)
 
 	return "[duration2text_sec(sd_time_remaining)]"
 
+
 //~~~~~~~~~~~~~~~~~~~~~~~~ EVAC STUFF ~~~~~~~~~~~~~~~~~~~~~~~~//
 
 /// Initiates evacuation by announcing and then prepping all lifepods/lifeboats
@@ -426,6 +440,7 @@ SUBSYSTEM_DEF(hijack)
 		var/obj/docking_port/mobile/crashable/lifeboat/lifeboat = lifeboat_dock.get_docked()
 		if(lifeboat && lifeboat.available)
 			lifeboat.status = LIFEBOAT_INACTIVE
+
 
 //~~~~~~~~~~~~~~~~~~~~~~~~ SD STUFF ~~~~~~~~~~~~~~~~~~~~~~~~//
 

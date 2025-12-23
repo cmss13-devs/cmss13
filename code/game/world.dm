@@ -384,7 +384,7 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 #endif
 	UNTIL(SSticker.initialized)
 
-	// Run unit tests on lobby as neeeded
+	// Run unit tests on lobby as needed
 #ifdef UNIT_TESTS
 	RunUnitTests(TEST_STAGE_PREGAME)
 	UNTIL(!SSticker.delay_start)

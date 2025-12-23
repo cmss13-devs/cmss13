@@ -19,7 +19,7 @@
 * Timing should be based on how timing progresses on clients, not the server.
 *
 * Tracking this is more expensive,
-* should only be used in conjuction with things that have to progress client side, such as
+* should only be used in conjunction with things that have to progress client side, such as
 * animate() or sound()
 */
 #define TIMER_CLIENT_TIME (1<<2)
@@ -88,7 +88,7 @@
 
 //! ### SS initialization hints
 /**
- * Negative values incidate a failure or warning of some kind, positive are good.
+ * Negative values indicate a failure or warning of some kind, positive are good.
  * 0 and 1 are unused so that TRUE and FALSE are guaranteed to be invalid values.
  */
 
@@ -98,7 +98,7 @@
 /// The default return value which must be overridden. Will succeed with a warning.
 #define SS_INIT_NONE -1
 
-/// Subsystem initialized sucessfully.
+/// Subsystem initialized successfully.
 #define SS_INIT_SUCCESS 2
 
 /// Successful, but don't print anything. Useful if subsystem was disabled.

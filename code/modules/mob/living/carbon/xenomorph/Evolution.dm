@@ -181,7 +181,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	new_xeno.generate_name()
 	if(new_xeno.client)
 		new_xeno.set_lighting_alpha(level_to_switch_to)
-	if(new_xeno.health - getBruteLoss(src) - getFireLoss(src) > 0) //Cmon, don't kill the new one! Shouldnt be possible though
+	if(new_xeno.health - getBruteLoss(src) - getFireLoss(src) > 0) //Cmon, don't kill the new one! Shouldn't be possible though
 		new_xeno.bruteloss = bruteloss //Transfers the damage over.
 		new_xeno.fireloss = fireloss //Transfers the damage over.
 		new_xeno.updatehealth()

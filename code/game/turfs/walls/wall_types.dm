@@ -834,6 +834,7 @@
 		area?.current_resin_count--
 	if(upper_wall)
 		upper_wall.dismantle_wall()
+		upper_wall = null
 
 /turf/closed/wall/resin/process()
 	. = ..()

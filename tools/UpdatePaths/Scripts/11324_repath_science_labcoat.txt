@@ -1,1 +1,0 @@
-/obj/item/clothing/suit/storage/labcoat/science/@SUBTYPES : /obj/item/clothing/suit/storage/labcoat/researcher/white/@SUBTYPES{@OLD}

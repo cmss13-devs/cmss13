@@ -6123,8 +6123,7 @@
 /turf/open/floor/whitepurplefull,
 /area/bigredv2/caves/lambda/research)
 "aBC" = (
-/obj/item/clothing/suit/storage/labcoat/researcher/white,
-/turf/open/floor/whitepurplefull,
+/obj/item/clothing/suit/storage/labcoat/scientist/turf/open/floor/whitepurplefull,
 /area/bigredv2/caves/lambda/research)
 "aBD" = (
 /obj/item/tool/weldingtool/experimental,

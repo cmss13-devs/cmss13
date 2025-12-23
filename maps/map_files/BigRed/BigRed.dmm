@@ -6122,9 +6122,6 @@
 /obj/item/device/multitool,
 /turf/open/floor/whitepurplefull,
 /area/bigredv2/caves/lambda/research)
-"aBC" = (
-/obj/item/clothing/suit/storage/labcoat/scientist/turf/open/floor/whitepurplefull,
-/area/bigredv2/caves/lambda/research)
 "aBD" = (
 /obj/item/tool/weldingtool/experimental,
 /turf/open/floor/whitepurplefull,
@@ -78620,7 +78617,7 @@ anI
 anI
 aAm
 aAl
-aBC
+xWm
 xWm
 aDk
 aEp

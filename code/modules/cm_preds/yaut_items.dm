@@ -1798,8 +1798,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 		return FALSE
 
 	if(!tgui_alert(thrall_target, "Do you wish to be Enthralled by the Bad Blood?", "Submit?", list("Yes", "No",), 10 SECONDS) == "Yes")
-		to_chat(user, SPAN_WARNING("The hivemind resists your attempt to break the connection!"))
-		to_chat(user, SPAN_WARNING("(This player does not wish to be a thrall.)"))
+		to_chat(user, SPAN_WARNING("The hivemind resists your attempt to break the connection! (This player does not wish to be a thrall.)"))
 		return FALSE
 
 	to_chat(user, SPAN_YAUTJABOLD("You have enthralled [thrall_target]!"))
@@ -1817,6 +1816,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	set_hive_and_update(XENO_HIVE_YAUTJA_BADBLOOD)
 	set_languages(list(LANGUAGE_XENOMORPH, LANGUAGE_YAUTJA))
 
+	need_weeds = FALSE
 	lock_evolve = TRUE
 	hunter_data.dishonored = TRUE
 	hunter_data.dishonored_reason = "Enthralled to [user ? "the Bad Blood [user.real_name]" : "a Bad Blood"]!"

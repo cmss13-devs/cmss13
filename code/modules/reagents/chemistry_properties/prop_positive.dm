@@ -410,8 +410,8 @@
 		return
 	if (processing_tray.mutation_controller["Potency"] < 1)
 		processing_tray.mutation_controller["Potency"] = 1
-	if(processing_tray.mutation_controller["Bioluminecence"] < 1)
-		processing_tray.mutation_controller["Bioluminecence"] = 1
+	if(processing_tray.mutation_controller["Bioluminescence"] < 1)
+		processing_tray.mutation_controller["Bioluminescence"] = 1
 	if (processing_tray.mutation_controller["Flowers"] < 1)
 		processing_tray.mutation_controller["Flowers"] = 1
 
@@ -523,7 +523,7 @@
 /datum/chem_property/positive/fluxing
 	name = PROPERTY_FLUXING
 	code = "FLX"
-	description = "Liquifies large crystalline and metallic structures under bodytemperature in the body and allows it to migrate to and be excreted through the skin."
+	description = "Liquefies large crystalline and metallic structures under bodytemperature in the body and allows it to migrate to and be excreted through the skin."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_REACTANT
 

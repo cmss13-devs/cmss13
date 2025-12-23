@@ -456,8 +456,8 @@
 		return
 	if (processing_tray.mutation_controller["Potency"] > potency*-2)
 		processing_tray.mutation_controller["Potency"] = potency*-2
-	if (processing_tray.mutation_controller["Bioluminecence"] > potency*-2)
-		processing_tray.mutation_controller["Bioluminecence"] = potency*-2
+	if (processing_tray.mutation_controller["Bioluminescence"] > potency*-2)
+		processing_tray.mutation_controller["Bioluminescence"] = potency*-2
 	if (processing_tray.mutation_controller["Flowers"] > potency*-2)
 		processing_tray.mutation_controller["Flowers"] = potency*-2
 

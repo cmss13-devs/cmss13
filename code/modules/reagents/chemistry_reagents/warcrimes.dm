@@ -37,6 +37,18 @@
 	burn_sprite = "red"
 	properties = list(PROPERTY_OXIDIZING = 6, PROPERTY_FUELING = 7, PROPERTY_FLOWING = 1)
 
+// Weaker liquid fuel
+/datum/reagent/napalm/weak
+	name = "Napthal Fuel"
+	id = "napthal"
+	description = "Known as Napthal Fuel, a combustible liquid chemical."
+	burncolor = "#EE6515"
+	properties = list(
+		PROPERTY_INTENSITY = BURN_LEVEL_TIER_2,
+		PROPERTY_DURATION = BURN_TIME_TIER_2,
+		PROPERTY_RADIUS = 5,
+	)
+
 /datum/reagent/napalm/sticky
 	name = "Sticky-Napalm"
 	id = "stickynapalm"

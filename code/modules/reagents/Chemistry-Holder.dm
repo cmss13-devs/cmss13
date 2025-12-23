@@ -167,7 +167,7 @@
 		if(RG.flags & REAGENT_NOT_INGESTIBLE)
 			V.del_reagent(RG.id)
 
-	addtimer(CALLBACK(V, TYPE_PROC_REF(/datum/reagents/vessel, inject_vessel), target, NONE, TRUE, 0.5 SECONDS, delivery_method), 9.5 SECONDS)
+	addtimer(CALLBACK(V, TYPE_PROC_REF(/datum/reagents/vessel, inject_vessel), target, TRUE, 0.5 SECONDS, delivery_method), 9.5 SECONDS)
 	return amount
 
 ///You can search for specific reagents using the specific reagents arg.

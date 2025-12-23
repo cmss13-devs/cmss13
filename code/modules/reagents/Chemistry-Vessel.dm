@@ -4,7 +4,7 @@
 	..()
 
 /// Injects all contents into an object
-/datum/reagents/vessel/proc/inject_vessel(atom/target, interaction = NONE, reactions = TRUE, delay, method = NO_DELIVERY)
+/datum/reagents/vessel/proc/inject_vessel(atom/target, reactions = TRUE, delay, method = NO_DELIVERY)
 	var/delivery_method = method
 	reaction(target, method, reactions)
 	if(delay)

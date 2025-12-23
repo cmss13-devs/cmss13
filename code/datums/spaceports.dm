@@ -1,5 +1,4 @@
 /datum/spaceport
-
 	/// The name that will be displayed while on route to this destination
 	var/name = ""
 

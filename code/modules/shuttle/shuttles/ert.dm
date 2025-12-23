@@ -286,9 +286,9 @@
 	name = "Almayer hanger port external airlock"
 	dir = EAST
 	id = "almayer-ert-hangar-port"
-	width   = 6
-	height  = 25
-	dheight = 12
+	width   = 17
+	height  = 59
+	dheight = 21
 	dwidth  = 0
 	airlock_id = "s_umbilical"
 	airlock_area = /area/almayer/hallways/lower/port_umbilical
@@ -393,3 +393,13 @@
 /datum/map_template/shuttle/starboard_umbilical_cord
 	name = "Starboard Umbilical Cord"
 	shuttle_id = /obj/docking_port/mobile/starboard_umbilical_cord::id
+
+/obj/docking_port/mobile/port_umbilical_cord
+	name = "Port Umbilical Cord"
+	id = "port_umbilical_cord"
+
+/obj/docking_port/mobile/starboard_umbilical_cord
+	name = "Starboard Umbilical Cord"
+	id = "starboard_umbilical_cord"
+
+/obj/effect/landmark/ert_spawns/umbilical

@@ -194,7 +194,7 @@
 	faction_group =	FACTION_LIST_MARINE_WY
 	origin_override = ORIGIN_CIVILIAN
 
-	minimap_icon = "researcher"
+	minimap_icon = "goon_sci"
 	minimap_background = "background_goon"
 	utility_under = list(/obj/item/clothing/under/marine/officer/researcher)
 	utility_hat = list()

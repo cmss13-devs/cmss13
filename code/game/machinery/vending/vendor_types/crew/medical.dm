@@ -72,9 +72,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_doctor, list(
 		list("Medical Scrubs, White", 0, /obj/item/clothing/under/rank/medical/white, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
 
 		list("SUIT (CHOOSE 1)", 0, null, null, null),
-		list("Medical Lab Coat", 0, /obj/item/clothing/suit/storage/labcoat/medical, MARINE_CAN_BUY_MRE, VENDOR_ITEM_RECOMMENDED),
-		list("Medical Lab Coat, Short", 0, /obj/item/clothing/suit/storage/labcoat/medical/short, MARINE_CAN_BUY_MRE, VENDOR_ITEM_RECOMMENDED),
-		list("Medical Lab Coat, Long", 0, /obj/item/clothing/suit/storage/labcoat/medical/long, MARINE_CAN_BUY_MRE, VENDOR_ITEM_RECOMMENDED),
 		list("Lab Coat", 0, /obj/item/clothing/suit/storage/labcoat, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
 		list("Lab Coat, Short", 0, /obj/item/clothing/suit/storage/labcoat/short, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
 		list("Lab Coat, Long", 0, /obj/item/clothing/suit/storage/labcoat/long, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
@@ -105,6 +102,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_doctor, list(
 		list("Pressurized Reagent Canister Pouch (Kelotane)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/kelotane, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Pressurized Reagent Canister Pouch (Tricordrazine)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/tricordrazine, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Chemistry Pouch", 0, /obj/item/storage/pouch/chem, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+		list("Large General Pouch", 0, /obj/item/storage/pouch/general/large, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Sling Pouch", 0, /obj/item/storage/pouch/sling, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 
 		list("ACCESSORIES (CHOOSE 1)", 0, null, null, null),
@@ -155,9 +153,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_surgeon, list(
 		list("Medical Scrubs, White", 0, /obj/item/clothing/under/rank/medical/white, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
 
 		list("SUIT (CHOOSE 1)", 0, null, null, null),
-		list("Medical Lab Coat", 0, /obj/item/clothing/suit/storage/labcoat/medical, MARINE_CAN_BUY_MRE, VENDOR_ITEM_RECOMMENDED),
-		list("Medical Lab Coat, Short", 0, /obj/item/clothing/suit/storage/labcoat/medical/short, MARINE_CAN_BUY_MRE, VENDOR_ITEM_RECOMMENDED),
-		list("Medical Lab Coat, Long", 0, /obj/item/clothing/suit/storage/labcoat/medical/long, MARINE_CAN_BUY_MRE, VENDOR_ITEM_RECOMMENDED),
 		list("Lab Coat", 0, /obj/item/clothing/suit/storage/labcoat, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
 		list("Lab Coat, Short", 0, /obj/item/clothing/suit/storage/labcoat/short, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
 		list("Lab Coat, Long", 0, /obj/item/clothing/suit/storage/labcoat/long, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
@@ -188,6 +183,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_surgeon, list(
 		list("Pressurized Reagent Canister Pouch (Kelotane)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/kelotane, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Pressurized Reagent Canister Pouch (Tricordrazine)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/tricordrazine, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Chemistry Pouch", 0, /obj/item/storage/pouch/chem, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+		list("Large General Pouch", 0, /obj/item/storage/pouch/general/large, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Sling Pouch", 0, /obj/item/storage/pouch/sling, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 
 		list("ACCESSORIES (CHOOSE 1)", 0, null, null, null),
@@ -241,9 +237,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_field_doctor, list(
 		list("Medical Scrubs, White", 0, /obj/item/clothing/under/rank/medical/white, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
 
 		list("SUIT (CHOOSE 1)", 0, null, null, null),
-		list("Medical Lab Coat", 0, /obj/item/clothing/suit/storage/labcoat/medical, MARINE_CAN_BUY_MRE, VENDOR_ITEM_RECOMMENDED),
-		list("Medical Lab Coat, Short", 0, /obj/item/clothing/suit/storage/labcoat/medical/short, MARINE_CAN_BUY_MRE, VENDOR_ITEM_RECOMMENDED),
-		list("Medical Lab Coat, Long", 0, /obj/item/clothing/suit/storage/labcoat/medical/long, MARINE_CAN_BUY_MRE, VENDOR_ITEM_RECOMMENDED),
 		list("Lab Coat", 0, /obj/item/clothing/suit/storage/labcoat, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
 		list("Lab Coat, Short", 0, /obj/item/clothing/suit/storage/labcoat/short, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
 		list("Lab Coat, Long", 0, /obj/item/clothing/suit/storage/labcoat/long, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
@@ -274,6 +267,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_field_doctor, list(
 		list("Pressurized Reagent Canister Pouch (Kelotane)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/kelotane, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Pressurized Reagent Canister Pouch (Tricordrazine)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/tricordrazine, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Chemistry Pouch", 0, /obj/item/storage/pouch/chem, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+		list("Large General Pouch", 0, /obj/item/storage/pouch/general/large, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Sling Pouch", 0, /obj/item/storage/pouch/sling, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 
 		list("ACCESSORIES (CHOOSE 1)", 0, null, null, null),
@@ -324,9 +318,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_pharmacist, list(
 		list("Medical Scrubs, Purple", 0, /obj/item/clothing/under/rank/medical/purple, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
 
 		list("SUIT (CHOOSE 1)", 0, null, null, null),
-		list("Medical Lab Coat", 0, /obj/item/clothing/suit/storage/labcoat/medical, MARINE_CAN_BUY_MRE, VENDOR_ITEM_RECOMMENDED),
-		list("Medical Lab Coat, Short", 0, /obj/item/clothing/suit/storage/labcoat/medical/short, MARINE_CAN_BUY_MRE, VENDOR_ITEM_RECOMMENDED),
-		list("Medical Lab Coat, Long", 0, /obj/item/clothing/suit/storage/labcoat/medical/long, MARINE_CAN_BUY_MRE, VENDOR_ITEM_RECOMMENDED),
 		list("Lab Coat", 0, /obj/item/clothing/suit/storage/labcoat, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
 		list("Lab Coat, Short", 0, /obj/item/clothing/suit/storage/labcoat/short, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
 		list("Lab Coat, Long", 0, /obj/item/clothing/suit/storage/labcoat/long, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
@@ -357,6 +348,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_pharmacist, list(
 		list("Pressurized Reagent Canister Pouch (Bicaridine)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/bicaridine, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Pressurized Reagent Canister Pouch (Kelotane)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/kelotane, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Pressurized Reagent Canister Pouch (Tricordrazine)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/tricordrazine, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+		list("Large General Pouch", 0, /obj/item/storage/pouch/general/large, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Sling Pouch", 0, /obj/item/storage/pouch/sling, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 
 		list("ACCESSORIES (CHOOSE 1)", 0, null, null, null),
@@ -407,9 +399,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_nurse, list(
 		list("Medical Scrubs, White", 0, /obj/item/clothing/under/rank/medical/white, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
 
 		list("SUIT (CHOOSE 1)", 0, null, null, null),
-		list("Medical Lab Coat", 0, /obj/item/clothing/suit/storage/labcoat/medical, MARINE_CAN_BUY_MRE, VENDOR_ITEM_RECOMMENDED),
-		list("Medical Lab Coat, Short", 0, /obj/item/clothing/suit/storage/labcoat/medical/short, MARINE_CAN_BUY_MRE, VENDOR_ITEM_RECOMMENDED),
-		list("Medical Lab Coat, Long", 0, /obj/item/clothing/suit/storage/labcoat/medical/long, MARINE_CAN_BUY_MRE, VENDOR_ITEM_RECOMMENDED),
 		list("Lab Coat", 0, /obj/item/clothing/suit/storage/labcoat, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
 		list("Lab Coat, Short", 0, /obj/item/clothing/suit/storage/labcoat/short, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
 		list("Lab Coat, Long", 0, /obj/item/clothing/suit/storage/labcoat/long, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
@@ -440,6 +429,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_nurse, list(
 		list("Pressurized Reagent Canister Pouch (Kelotane)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/kelotane, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Pressurized Reagent Canister Pouch (Tricordrazine)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/tricordrazine, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Chemistry Pouch", 0, /obj/item/storage/pouch/chem, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+		list("Large General Pouch", 0, /obj/item/storage/pouch/general/large, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Sling Pouch", 0, /obj/item/storage/pouch/sling, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 
 		list("ACCESSORIES (CHOOSE 1)", 0, null, null, null),
@@ -491,13 +481,9 @@ GLOBAL_LIST_INIT(cm_vending_clothing_researcher, list(
 		list("SUIT (CHOOSE 1)", 0, null, null, null),
 		list("Researcher's Lab Coat, Brown", 0, /obj/item/clothing/suit/storage/labcoat/researcher, MARINE_CAN_BUY_MRE, VENDOR_ITEM_RECOMMENDED),
 		list("Researcher's Lab Coat, Brown (Short)", 0, /obj/item/clothing/suit/storage/labcoat/researcher/short, MARINE_CAN_BUY_MRE, VENDOR_ITEM_RECOMMENDED),
-		list("Medical Lab Coat", 0, /obj/item/clothing/suit/storage/labcoat/medical, MARINE_CAN_BUY_MRE, VENDOR_ITEM_RECOMMENDED),
-		list("Medical Lab Coat, Short", 0, /obj/item/clothing/suit/storage/labcoat/medical/short, MARINE_CAN_BUY_MRE, VENDOR_ITEM_RECOMMENDED),
-		list("Medical Lab Coat, Long", 0, /obj/item/clothing/suit/storage/labcoat/medical/long, MARINE_CAN_BUY_MRE, VENDOR_ITEM_RECOMMENDED),
 		list("Lab Coat", 0, /obj/item/clothing/suit/storage/labcoat, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
 		list("Lab Coat, Short", 0, /obj/item/clothing/suit/storage/labcoat/short, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
 		list("Lab Coat, Long", 0, /obj/item/clothing/suit/storage/labcoat/long, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
-		list("Medical Apron", 0, /obj/item/clothing/suit/chef/classic/medical, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
 
 		list("SNOW GEAR (SNOW USE ONLY)", 0, null, null, null),
 		list("Balaclava", 0, /obj/item/clothing/mask/balaclava, MARINE_CAN_BUY_MASK, VENDOR_ITEM_MANDATORY),
@@ -525,7 +511,9 @@ GLOBAL_LIST_INIT(cm_vending_clothing_researcher, list(
 		list("Pressurized Reagent Canister Pouch (Bicaridine)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/bicaridine, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Pressurized Reagent Canister Pouch (Kelotane)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/kelotane, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Pressurized Reagent Canister Pouch (Tricordrazine)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/tricordrazine, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+		list("Large General Pouch", 0, /obj/item/storage/pouch/general/large, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Sling Pouch", 0, /obj/item/storage/pouch/sling, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+
 
 		list("ACCESSORIES (CHOOSE 1)", 0, null, null, null),
 		list("Webbing Vest, Black", 0, /obj/item/clothing/accessory/storage/black_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_RECOMMENDED),

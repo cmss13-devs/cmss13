@@ -1406,10 +1406,6 @@
 /obj/effect/landmark/spycam_start,
 /turf/open/floor/asteroidwarning/west,
 /area/bigredv2/outside/space_port)
-"afq" = (
-/obj/item/clothing/suit/storage/labcoat/science,
-/turf/open/floor/whitepurplefull,
-/area/bigredv2/caves/lambda/research)
 "afr" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 4
@@ -6124,6 +6120,10 @@
 /area/bigredv2/caves/eta/research)
 "aBB" = (
 /obj/item/device/multitool,
+/turf/open/floor/whitepurplefull,
+/area/bigredv2/caves/lambda/research)
+"aBC" = (
+/obj/item/clothing/suit/storage/labcoat/science,
 /turf/open/floor/whitepurplefull,
 /area/bigredv2/caves/lambda/research)
 "aBD" = (
@@ -78621,7 +78621,7 @@ anI
 anI
 aAm
 aAl
-afq
+aBC
 xWm
 aDk
 aEp

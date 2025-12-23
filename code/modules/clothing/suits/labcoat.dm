@@ -125,7 +125,7 @@
 	desc = "A suit that protects against minor chemical spills and biological hazards. Its shoulders are colored a fiery orange."
 	icon_state = "labcoat_chem"
 
-/obj/item/clothing/suit/storage/labcoat/scientist
+/obj/item/clothing/suit/storage/labcoat/science
 	name = "scientist's lab coat"
 	desc = "A suit that protects against minor chemical spills and biological hazards. Its shoulders are colored a rich purple."
 	icon_state = "labcoat_sci"

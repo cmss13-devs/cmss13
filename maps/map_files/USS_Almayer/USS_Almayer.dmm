@@ -3930,7 +3930,7 @@
 /turf/open/floor/almayer/flooredge/north,
 /area/almayer/hallways/upper/midship_hallway)
 "aiP" = (
-/turf/open/floor/almayer/flooredgesmooth2/south,
+/turf/open/floor/almayer/flooredge/south,
 /area/almayer/hallways/upper/midship_hallway)
 "aiQ" = (
 /obj/structure/bed/chair/office/dark{
@@ -4109,13 +4109,6 @@
 "ajl" = (
 /turf/closed/wall/almayer/white,
 /area/almayer/medical/upper_medical)
-"ajm" = (
-/obj/structure/sign/safety/ladder{
-	pixel_x = 23;
-	pixel_y = 28
-	},
-/turf/closed/wall/almayer/white/reinforced,
-/area/almayer/medical/medical_science)
 "ajn" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -7133,7 +7126,7 @@
 "arp" = (
 /obj/structure/sign/safety/ladder{
 	pixel_x = 23;
-	pixel_y = -28
+	pixel_y = 28
 	},
 /turf/closed/wall/almayer/white/reinforced,
 /area/almayer/medical/medical_science)
@@ -7360,9 +7353,6 @@
 "arO" = (
 /turf/open/floor/wood/ship,
 /area/almayer/living/offices/flight)
-"arP" = (
-/turf/open/floor/almayer/flooredge/south,
-/area/almayer/hallways/upper/midship_hallway)
 "arQ" = (
 /obj/structure/surface/table/gamblingtable,
 /obj/item/spacecash/c10,
@@ -9940,6 +9930,9 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/hallways/lower/starboard_fore_hallway)
+"azb" = (
+/turf/open/floor/almayer/flooredgesmooth2/south,
+/area/almayer/hallways/upper/midship_hallway)
 "azc" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -79369,6 +79362,13 @@
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/almayer/no_build,
 /area/almayer/shipboard/navigation)
+"str" = (
+/obj/structure/sign/safety/ladder{
+	pixel_x = 23;
+	pixel_y = -28
+	},
+/turf/closed/wall/almayer/white/reinforced,
+/area/almayer/medical/medical_science)
 "sty" = (
 /obj/structure/platform/metal/almayer,
 /turf/open/floor/almayer/plate,
@@ -204862,9 +204862,9 @@ aNi
 aNi
 pLE
 lGh
-arP
+aiP
 vOy
-arp
+str
 vOy
 ajB
 apR
@@ -204876,7 +204876,7 @@ aqS
 uoi
 aiZ
 vOy
-ajm
+arp
 vOy
 aiO
 yiu
@@ -204965,7 +204965,7 @@ tob
 fkK
 ayY
 lGh
-aiP
+azb
 vOy
 vOy
 vOy
@@ -204983,7 +204983,7 @@ vOy
 vOy
 ayY
 yiu
-aiP
+azb
 mRU
 jtU
 jtU

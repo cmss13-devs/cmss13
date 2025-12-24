@@ -41,6 +41,9 @@
 		mob.put_in_hands(src)
 
 /obj/item/desk_bell/attackby(obj/item/item, mob/user)
+	if(user.action_busy)
+		return
+
 	//Repair the desk bell if its broken and we're using a screwdriver.
 	if(HAS_TRAIT(item, TRAIT_TOOL_SCREWDRIVER))
 		if(broken_ringer)
@@ -62,7 +65,7 @@
 		if(user.a_intent == INTENT_HARM)
 			visible_message(SPAN_NOTICE("[user] begins taking apart [src]..."), SPAN_NOTICE("You begin taking apart [src]..."))
 			playsound(src, 'sound/items/deconstruct.ogg', 35)
-			if(do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+			if(do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC, src))
 				visible_message(SPAN_NOTICE("[user] takes apart [src]."), SPAN_NOTICE("You take apart [src]."))
 				new /obj/item/stack/sheet/metal(get_turf(src))
 				qdel(src)

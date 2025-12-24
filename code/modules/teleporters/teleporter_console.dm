@@ -35,6 +35,9 @@
 	attack_hand(X)
 	return XENO_ATTACK_ACTION
 
+/obj/structure/machinery/computer/teleporter_console/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	return TAILSTAB_COOLDOWN_NONE
+
 // Try to find and add a teleporter from the globals.
 /obj/structure/machinery/computer/teleporter_console/proc/attempt_teleporter_link()
 	if(linked_teleporter) // Maybe should debug log this because it's indicative of bad logic, but I'll leave it out for the sake of (potential) spam

@@ -616,45 +616,53 @@
 	if(!QDELETED(source) && (new_stat >= UNCONSCIOUS && old_stat <= UNCONSCIOUS))
 		post_attack()
 
-/datum/action/xeno_action/onclick/place_trap/use_ability(atom/A)
-	var/mob/living/carbon/xenomorph/X = owner
-	if(!X.check_state())
+/datum/action/xeno_action/onclick/place_trap/use_ability(atom/target)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!xeno.check_state())
 		return
 
-	if (istype(X, /mob/living/carbon/xenomorph/burrower))
-		var/mob/living/carbon/xenomorph/burrower/B = X
-		if (HAS_TRAIT(B, TRAIT_ABILITY_BURROWED))
+	if(HAS_TRAIT(xeno, TRAIT_ABILITY_BURROWED))
+		return
+
+	var/turf/turf = get_turf(xeno)
+	if(!istype(turf))
+		to_chat(xeno, SPAN_XENOWARNING("We can't do that here."))
+		return
+
+	var/area/area = turf.loc
+	if(!area?.is_resin_allowed)
+		if(!area || area.flags_area & AREA_UNWEEDABLE)
+			to_chat(xeno, SPAN_XENOWARNING("We sense this is not a suitable area for creating a resin hole."))
 			return
+		to_chat(xeno, SPAN_XENOWARNING("It's too early to spread the hive this far."))
+		return
+	if(istype(area,/area/shuttle/drop1/lz1) || istype(area,/area/shuttle/drop2/lz2) || SSinterior.in_interior(owner))
+		to_chat(xeno, SPAN_WARNING("We sense this is not a suitable area for creating a resin hole."))
+		return
 
-	var/turf/T = get_turf(X)
-	if(!istype(T))
-		to_chat(X, SPAN_XENOWARNING("We can't do that here."))
-		return
-	var/area/AR = get_area(T)
-	if(istype(AR,/area/shuttle/drop1/lz1) || istype(AR,/area/shuttle/drop2/lz2) || SSinterior.in_interior(owner))
-		to_chat(X, SPAN_WARNING("We sense this is not a suitable area for creating a resin hole."))
-		return
-	var/obj/effect/alien/weeds/alien_weeds = T.check_xeno_trap_placement(X)
+	var/obj/effect/alien/weeds/alien_weeds = turf.check_xeno_trap_placement(xeno)
 	if(!alien_weeds)
 		return
+
 	if(istype(alien_weeds, /obj/effect/alien/weeds/node))
-		to_chat(X, SPAN_NOTICE("We start uprooting the node so we can put the resin hole in its place..."))
-		if(!do_after(X, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC, target, INTERRUPT_ALL))
+		to_chat(xeno, SPAN_NOTICE("We start uprooting the node so we can put the resin hole in its place..."))
+		if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC, target, INTERRUPT_ALL))
 			return
-		if(!T.check_xeno_trap_placement(X))
+		if(!turf.check_xeno_trap_placement(xeno))
 			return
-		var/obj/effect/alien/weeds/the_replacer = new /obj/effect/alien/weeds(T)
-		the_replacer.hivenumber = X.hivenumber
-		the_replacer.linked_hive = X.hive
-		set_hive_data(the_replacer, X.hivenumber)
+		var/obj/effect/alien/weeds/the_replacer = new /obj/effect/alien/weeds(turf)
+		the_replacer.hivenumber = xeno.hivenumber
+		the_replacer.linked_hive = xeno.hive
+		set_hive_data(the_replacer, xeno.hivenumber)
 		qdel(alien_weeds)
 
-	if(!X.check_plasma(plasma_cost))
+	if(!xeno.check_plasma(plasma_cost))
 		return
-	X.use_plasma(plasma_cost)
-	playsound(X.loc, "alien_resin_build", 25)
-	new /obj/effect/alien/resin/trap(T, X)
-	to_chat(X, SPAN_XENONOTICE("We place a resin hole on the weeds, it still needs a sister to fill it with acid."))
+
+	xeno.use_plasma(plasma_cost)
+	playsound(xeno.loc, "alien_resin_build", 25)
+	new /obj/effect/alien/resin/trap(turf, xeno)
+	to_chat(xeno, SPAN_XENONOTICE("We place a resin hole on the weeds, it still needs a sister to fill it with acid."))
 	return ..()
 
 /turf/proc/check_xeno_trap_placement(mob/living/carbon/xenomorph/xeno)

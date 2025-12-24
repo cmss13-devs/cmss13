@@ -5,7 +5,7 @@
 	/// The message that will be sent when docking is initiated
 	var/docking_message = ""
 
-	/// The allies that will be spawned by arriving at this station
+	/// The allies that will be spawned by arriving at this station (only one entry chosen randomly per call)
 	var/list/allies
 
 /datum/spaceport/uscm

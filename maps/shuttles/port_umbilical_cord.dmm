@@ -7,18 +7,18 @@
 	name = "\improper Umbillical Airlock"
 	},
 /turf/open/floor/almayer/plate,
-/area/shuttle/ert)
+/area/shuttle/ert/no_defenses)
 "m" = (
 /obj/effect/landmark/ert_spawns/umbilical,
 /turf/open/floor/almayer/plate,
-/area/shuttle/ert)
+/area/shuttle/ert/no_defenses)
 "r" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
 	dir = 1
 	},
 /turf/open/floor/plating/almayer,
-/area/shuttle/ert)
+/area/shuttle/ert/no_defenses)
 "s" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -28,7 +28,7 @@
 	name = "\improper Umbillical Airlock"
 	},
 /turf/open/floor/plating/almayer,
-/area/shuttle/ert)
+/area/shuttle/ert/no_defenses)
 "y" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -36,7 +36,7 @@
 	},
 /obj/effect/landmark/ert_spawns/umbilical,
 /turf/open/floor/plating/almayer,
-/area/shuttle/ert)
+/area/shuttle/ert/no_defenses)
 "A" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -44,20 +44,20 @@
 	},
 /obj/effect/landmark/ert_spawns/umbilical,
 /turf/open/floor/plating/almayer,
-/area/shuttle/ert)
+/area/shuttle/ert/no_defenses)
 "H" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 1
 	},
 /turf/open/floor/plating/almayer,
-/area/shuttle/ert)
+/area/shuttle/ert/no_defenses)
 "M" = (
 /turf/open/floor/almayer/plate,
-/area/shuttle/ert)
+/area/shuttle/ert/no_defenses)
 "Q" = (
-/turf/closed/wall/almayer/white,
-/area/shuttle/ert)
+/turf/closed/wall/almayer/white/hull,
+/area/shuttle/ert/no_defenses)
 "S" = (
 /obj/docking_port/mobile/port_umbilical_cord{
 	dir = 4
@@ -73,7 +73,7 @@
 	name = "\improper Umbillical Airlock"
 	},
 /turf/open/floor/plating/almayer,
-/area/shuttle/ert)
+/area/shuttle/ert/no_defenses)
 
 (1,1,1) = {"
 a

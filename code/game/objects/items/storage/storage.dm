@@ -42,6 +42,12 @@
 	/// The required level of a skill for opening this storage if it is inside another storage type
 	var/required_skill_level_for_nest_opening = null
 
+	/// Can this storage be used to instantly grab pills from
+	var/instant_pill_grabbable = FALSE
+
+	/// What mode is the storage instant grab mode in if you are grabbing pills from it
+	var/instant_pill_grab_mode = 1 //On by default
+
 /obj/item/storage/MouseDrop(obj/over_object as obj)
 	if(CAN_PICKUP(usr, src) && !HAS_TRAIT(usr, TRAIT_HAULED))
 		if(over_object == usr) // this must come before the screen objects only block
@@ -865,6 +871,8 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 		verbs -= /obj/item/storage/verb/empty_verb
 		verbs -= /obj/item/storage/verb/toggle_click_empty
 		verbs -= /obj/item/storage/verb/shake_verb
+	if (!instant_pill_grabbable) // For removing pills from bottles quickly
+		verbs -= /obj/item/storage/verb/toggle_pill_bottle_mode
 
 	boxes = new
 	boxes.name = "storage"
@@ -1012,3 +1020,11 @@ Returns FALSE if no top level turf (a loc was null somewhere, or a non-turf atom
 
 	if(!cur_atom)
 		return FALSE
+
+/obj/item/storage/verb/toggle_pill_bottle_mode() //A verb that can (should) only be used if in hand/equipped
+	set category = "Object"
+	set name = "Toggle pill bottle mode"
+	set src in usr
+	if(src && ishuman(usr))
+		instant_pill_grab_mode = !instant_pill_grab_mode
+		to_chat(usr, SPAN_NOTICE("You will now [instant_pill_grab_mode ? "take pills directly from bottles": "no longer take pills directly from bottles"]."))

@@ -31,9 +31,21 @@
 		return
 
 	var/obj/effect/alien/weeds/node/node = locate() in turf
-	if(node && node.weed_strength >= xeno.weed_level)
-		to_chat(xeno, SPAN_WARNING("There's a pod here already!"))
-		return
+	if(node)
+		if(node.weed_strength > xeno.weed_level)
+			to_chat(xeno, SPAN_WARNING("The node here is too strong to uproot."))
+			return
+
+		if(node.hivenumber != xeno.hivenumber)
+			to_chat(xeno, SPAN_WARNING("The other hive's node resists your attempt to uproot it."))
+			return
+
+		if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC, node, INTERRUPT_ALL))
+			to_chat(xeno, SPAN_WARNING("There's a pod here already! You decide to not replace it."))
+			return
+		to_chat(xeno, SPAN_NOTICE("We uproot and replace the weed node."))
+		playsound(xeno.loc, "alien_resin_break", 25)
+		qdel(node)
 
 	var/obj/effect/alien/resin/trap/resin_trap = locate() in turf
 	if(resin_trap)
@@ -255,11 +267,11 @@
 	switch(xeno_owner.build_resin(target, thick, make_message, plasma_cost != 0, build_speed_mod))
 		if(SECRETE_RESIN_INTERRUPT)
 			if(xeno_cooldown)
-				apply_cooldown_override(xeno_cooldown * 3)
+				apply_cooldown_override(xeno_cooldown * xeno_cooldown_interrupt_modifier)
 			return FALSE
 		if(SECRETE_RESIN_FAIL)
 			if(xeno_cooldown)
-				apply_cooldown_override(1)
+				apply_cooldown_override(xeno_cooldown_fail)
 			return FALSE
 	return TRUE
 
@@ -424,7 +436,7 @@
 					return
 			else
 				var/static/list/phero_selections = list("Help" = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_help"), "Frenzy" = image(icon = 'icons/mob/radial.dmi', icon_state = "phero_frenzy"), "Warding" = image(icon = 'icons/mob/radial.dmi', icon_state = "phero_warding"), "Recovery" = image(icon = 'icons/mob/radial.dmi', icon_state = "phero_recov"))
-				pheromone = lowertext(show_radial_menu(src, src.client?.eye, phero_selections))
+				pheromone = lowertext(show_radial_menu(src, src.client?.get_eye(), phero_selections))
 				if(pheromone == "help")
 					to_chat(src, SPAN_XENONOTICE("<br>Pheromones provide a buff to all Xenos in range at the cost of some stored plasma every second, as follows:<br><B>Frenzy (Red)</B> - Increased run speed, damage and chance to knock off headhunter masks.<br><B>Warding (Green)</B> - While in critical state, increased maximum negative health and slower off weed bleedout.<br><B>Recovery (Blue)</B> - Increased plasma and health regeneration.<br>"))
 					return
@@ -1014,7 +1026,7 @@
 
 	return TRUE
 
-/mob/living/carbon/xenomorph/proc/can_bombard_turf(atom/target, range = 5, atom/bombard_source) // I couldnt be arsed to do actual raycasting :I This is horribly inaccurate.
+/mob/living/carbon/xenomorph/proc/can_bombard_turf(atom/target, range = 5, atom/bombard_source) // I couldn't be arsed to do actual raycasting :I This is horribly inaccurate.
 	if(!bombard_source || !isturf(bombard_source.loc))
 		to_chat(src, SPAN_XENODANGER("That target is obstructed!"))
 		return FALSE
@@ -1068,9 +1080,15 @@
 		return FALSE
 
 	if(stabbing_xeno.z != targetted_atom.z)
-		return
+		var/turf/xeno_turf = get_turf(stabbing_xeno)
+		var/turf/xeno_turf_above = SSmapping.get_turf_above(xeno_turf)
+		var/turf/xeno_turf_below = SSmapping.get_turf_below(xeno_turf)
+		if(xeno_turf_above?.z != targetted_atom.z && xeno_turf_below?.z != targetted_atom.z)
+			return
 
 	var/distance = get_dist(stabbing_xeno, targetted_atom)
+	if(stabbing_xeno.z != targetted_atom.z)
+		distance++
 	if(distance > stab_range)
 		return FALSE
 
@@ -1134,7 +1152,7 @@
 /datum/action/xeno_action/activable/tail_stab/proc/pre_ability_act(mob/living/carbon/xenomorph/stabbing_xeno, atom/targetted_atom)
 	return
 
-/datum/action/xeno_action/activable/tail_stab/proc/ability_act(mob/living/carbon/xenomorph/stabbing_xeno, mob/living/carbon/target, obj/limb/limb)
+/datum/action/xeno_action/activable/tail_stab/proc/ability_act(mob/living/carbon/xenomorph/stabbing_xeno, mob/living/carbon/target, obj/limb/limb, apply_behavior_delagate = TRUE)
 
 	target.last_damage_data = create_cause_data(initial(stabbing_xeno.caste_type), stabbing_xeno)
 
@@ -1176,7 +1194,7 @@
 
 	var/damage = (stabbing_xeno.melee_damage_upper + stabbing_xeno.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER) * TAILSTAB_MOB_DAMAGE_MULTIPLIER
 
-	if(stabbing_xeno.behavior_delegate)
+	if(stabbing_xeno.behavior_delegate && apply_behavior_delagate)
 		stabbing_xeno.behavior_delegate.melee_attack_additional_effects_target(target)
 		stabbing_xeno.behavior_delegate.melee_attack_additional_effects_self()
 		damage = stabbing_xeno.behavior_delegate.melee_attack_modify_damage(damage, target)

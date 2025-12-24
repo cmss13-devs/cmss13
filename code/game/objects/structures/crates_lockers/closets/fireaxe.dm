@@ -1,4 +1,4 @@
-//I still dont think this should be a closet but whatever
+//I still don't think this should be a closet but whatever
 /obj/structure/closet/fireaxecabinet
 	name = "Fire Axe Cabinet"
 	desc = "There is small label that reads \"For Emergency use only\" along with details for safe use of the axe. As if."

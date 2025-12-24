@@ -226,7 +226,7 @@
 /datum/reagent/frostoil
 	name = "Frost Oil"
 	id = "frostoil"
-	description = "A special oil that noticably chills the body. Extracted from Ice Peppers."
+	description = "A special oil that noticeably chills the body. Extracted from Ice Peppers."
 	reagent_state = LIQUID
 	color = "#B31008" // rgb: 139, 166, 233
 	chemclass = CHEM_CLASS_RARE
@@ -252,10 +252,10 @@
 	chemclass = CHEM_CLASS_HYDRO
 	properties = list(PROPERTY_ANTIPARASITIC = 0.5)
 
-/datum/reagent/psoralen //cabbage, doesnt make sense but eh
+/datum/reagent/psoralen //cabbage, doesn't make sense but eh
 	name = "Psoralen"
 	id = "psoralen"
-	description = "Naturally occuring carcinogenic, used commonly as mutagen for DNA research."
+	description = "Naturally occurring carcinogenic, used commonly as mutagen for DNA research."
 	reagent_state = LIQUID
 	color = "#c9ca75" // rgb: 139, 166, 233
 
@@ -271,7 +271,7 @@
 	overdose_critical = LOW_REAGENTS_OVERDOSE_CRITICAL
 	color = "#8f947b" // rgb: 139, 166, 233
 	chemclass = CHEM_CLASS_HYDRO
-	properties = list(PROPERTY_SEDATIVE = 5)
+	properties = list(PROPERTY_HYPNOTIC = 5)
 
 /datum/reagent/zygacine
 	name = "Zygacine"
@@ -293,12 +293,12 @@
 	overdose_critical = LOWM_REAGENTS_OVERDOSE_CRITICAL
 	color = "#9ec265" // rgb: 139, 166, 233
 	chemclass = CHEM_CLASS_HYDRO
-	properties = list(PROPERTY_CARDIOPEUTIC = 3, PROPERTY_FLUFFING = 1)
+	properties = list(PROPERTY_CARDIOPEUTIC = 3, PROPERTY_TRICHOGENIC = 1)
 
 /datum/reagent/urishiol
 	name = "Urishiol"
 	id = "urishiol"
-	description = "Potent skin and tissue irratant causing burns which lasts weeks after the contact is made, commonly encountered in plants like Poision Ivy, Poison Oak, and simular"
+	description = "Potent skin and tissue irritant causing burns which lasts weeks after the contact is made, commonly encountered in plants like Poison Ivy, Poison Oak, and similar toxicodendrons."
 	overdose = LOW_REAGENTS_OVERDOSE
 	overdose_critical = LOW_REAGENTS_OVERDOSE_CRITICAL
 	custom_metabolism = AMOUNT_PER_TIME(15, 20 MINUTES)
@@ -406,7 +406,7 @@
 /datum/reagent/enzyme
 	name = "Universal Enzyme"
 	id = "enzyme"
-	description = "A universal enzyme used in the preperation of certain chemicals and foods."
+	description = "A universal enzyme used in the preparation of certain chemicals and foods."
 	reagent_state = LIQUID
 	color = "#365E30" // rgb: 54, 94, 48
 	overdose = REAGENTS_OVERDOSE

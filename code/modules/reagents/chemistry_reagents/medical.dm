@@ -119,7 +119,7 @@
 	id = "dexalinp"
 	description = "Dexalin Plus is an upgraded form of Dexalin with added iron and carbon to expedite the rate at which oxygen binds to the hemoglobin in red blood cells. One unit can immediately and completely cleanse the body of excessive carbon dioxide. However, overdoses are toxic and can severely damage skin and muscle tissues."
 	reagent_state = LIQUID
-	color = "#293fff" // rgb: 41, 63, 255
+	color = "#4d5cdb" // rgb: 77, 92, 219
 	overdose = LOWH_REAGENTS_OVERDOSE
 	overdose_critical = LOWH_REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
@@ -291,7 +291,7 @@
 	id = "ultrazine"
 	description = "A highly-potent, long-lasting combination CNS and muscle stimulant. Extremely addictive. Overdosing on Ultrazine is cardiotoxic and will cause heart damage."
 	reagent_state = LIQUID
-	color = "#ffec43" // rgb: 255, 236, 67
+	color = "#ffe043" // rgb: 255, 224, 67
 	custom_metabolism = 0.0167 //5 units will last approximately 10 minutes
 	overdose = LOWM_REAGENTS_OVERDOSE
 	overdose_critical = LOWM_REAGENTS_OVERDOSE_CRITICAL
@@ -304,7 +304,7 @@
 	id = "antag_stimulant"
 	description = "A highly-potent, long-lasting combination CNS and muscle stimulant."
 	reagent_state = LIQUID
-	color = "#00ffff" // rgb: 0, 255, 255
+	color = "#2bd4d4" // rgb: 43, 212, 212
 	custom_metabolism = AMOUNT_PER_TIME(1, 40 SECONDS) // 4x longer
 	overdose = LOWH_REAGENTS_OVERDOSE
 	overdose_critical = LOWH_REAGENTS_OVERDOSE_CRITICAL

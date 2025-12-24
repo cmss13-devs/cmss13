@@ -1,7 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Colony floodlight switches (includes electric fence switches) can now share machines (support for duplicate switches) but toggling one on will untoggle the other(s)"
-  - bugfix: "Colony floodlight switches now correctly initialize their machines if nightmare inserts changed them"
-  - bugfix: "Colony floodlights now only draw power if not broken (and on)"
-  - bugfix: "Colony floodlights now properly handle switch spamming"

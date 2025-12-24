@@ -335,3 +335,70 @@
 	data["roles"] = get_whitelisted_roles(player.ckey)
 	statuscode = 200
 	response = "Lookup successful."
+
+/datum/world_topic/cmtv
+	key = "cmtv"
+	required_params = list("command")
+
+/datum/world_topic/cmtv/Run(list/input)
+	. = ..()
+
+	var/datum/cmtv_command/selected_command = GLOB.cmtv_commands[input["command"]]
+	if(!selected_command)
+		statuscode = 404
+		response = "Invalid command! Use !help to view all commands."
+		return
+
+	var/cannot_run = selected_command.cannot_run(input)
+	if(cannot_run)
+		statuscode = 401
+		response = cannot_run
+		return
+
+	selected_command.pre_execute(input)
+
+	response = selected_command.execute(input)
+	statuscode = selected_command.successful ? 200 : 303
+
+	selected_command.post_execute(input)
+
+/datum/world_topic/active_mobs
+	key = "active_mobs"
+
+/datum/world_topic/active_mobs/Run(list/input)
+	var/to_follow = SScmtv.get_most_active_list()
+	if(!length(to_follow))
+		statuscode = 404
+		response = "No active mobs available."
+		return
+
+	var/list/mobs = list()
+
+	for(var/datum/weakref/weakref in to_follow)
+		var/mob/living/living_mob = weakref.resolve()
+		if(!living_mob)
+			continue
+
+		var/minimap_icon
+		var/background
+
+		if(isxeno(living_mob))
+			var/mob/living/carbon/xenomorph/xeno = living_mob
+			minimap_icon = xeno.caste.minimap_icon
+			background = xeno.caste.minimap_background
+		else if(ishuman(living_mob))
+			var/mob/living/carbon/human/human = living_mob
+			if(human.assigned_squad)
+				background = human.assigned_squad.background_icon
+			else
+				background = human.assigned_equipment_preset?.minimap_background
+
+			minimap_icon = human.assigned_equipment_preset?.minimap_icon || "private"
+
+		mobs += list(
+			list("name" = living_mob.real_name, "job" = minimap_icon, "background" = background)
+		)
+
+	data = mobs
+	statuscode = 200
+	response = "Active mobs available."

@@ -1,0 +1,5 @@
+author: "Kashargul"
+delete-after: True
+changes:
+  - code_imp: "Update tgui dependencies again"
+  - ui: "Updated some stylesheets to meet new SASS expectations"

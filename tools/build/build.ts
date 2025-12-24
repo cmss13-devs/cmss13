@@ -328,8 +328,8 @@ export const TguiCleanTarget = new Juke.Target({
     Juke.rm("tgui/public/*.map");
     Juke.rm("tgui/public/*.{chunk,bundle,hot-update}.*");
     Juke.rm("tgui/packages/tgfont/dist", { recursive: true });
-    Juke.rm("tgui/node_modules", { recursive: true, force: true });
-    Juke.rm('tgui/packages/**/node_modules', { recursive: true, force: true });
+    Juke.rm("tgui/node_modules", { recursive: true });
+    Juke.rm('tgui/packages/*/node_modules', { recursive: true });
   },
 });
 

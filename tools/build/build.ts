@@ -348,7 +348,7 @@ export const CleanAllTarget = new Juke.Target({
   dependsOn: [CleanTarget],
   executes: async () => {
     Juke.logger.info("Cleaning up data/logs");
-    Juke.rm("data/logs", { recursive: true, force: true  });
+    Juke.rm("data/logs", { recursive: true });
   },
 });
 

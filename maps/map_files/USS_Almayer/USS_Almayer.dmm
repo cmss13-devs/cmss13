@@ -3186,9 +3186,6 @@
 	pixel_x = -1
 	},
 /obj/item/reagent_container/glass/beaker/bluespace,
-/obj/structure/machinery/chem_dispenser/medbay{
-	pixel_x = -1
-	},
 /obj/item/reagent_container/glass/beaker/bluespace{
 	pixel_y = 20
 	},

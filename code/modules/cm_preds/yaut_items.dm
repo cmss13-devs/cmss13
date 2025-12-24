@@ -1759,6 +1759,17 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	new /obj/item/stack/medical/advanced/ointment/predator(src)
 	new /obj/item/stack/medical/advanced/ointment/predator(src)
 
+GLOBAL_LIST_INIT(hivebreaker_banned_castes, list(
+	XENO_CASTE_QUEEN,
+	XENO_CASTE_KING,
+	XENO_CASTE_PREDALIEN,
+	XENO_CASTE_DRONE,
+	XENO_CASTE_CARRIER,
+	XENO_CASTE_BURROWER,
+	XENO_CASTE_HIVELORD,
+	XENO_CASTE_HELLHOUND,
+))
+
 /obj/item/device/badblood_enthraller
 	name = "hivebreaker"
 	desc = "A device used by fallen Yautja to break a Xenomorph Hivemind and enthrall a serpent."
@@ -1794,7 +1805,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 		to_chat(user, SPAN_WARNING("This serpent seems defective. It is unresponsive."))
 		return FALSE
 
-	if(isqueen(thrall_target) || isking(thrall_target) || ispredalien(thrall_target))
+	if((thrall_target.caste_type in XENO_T0_CASTES) || (thrall_target.caste_type in GLOB.hivebreaker_banned_castes))
 		to_chat(user, SPAN_WARNING("You cannot enthrall this serpent!"))
 		return FALSE
 
@@ -1824,7 +1835,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 /mob/living/carbon/xenomorph/proc/enthrall(mob/living/user, force = FALSE)
 	if((hivenumber == XENO_HIVE_YAUTJA_BADBLOOD) || (faction == FACTION_YAUTJA_BADBLOOD))
 		return FALSE
-	if(!force && (isqueen(src) || isking(src) || ispredalien(src)))
+	if(!force && ((caste_type in XENO_T0_CASTES) || (caste_type in GLOB.hivebreaker_banned_castes)))
 		return FALSE
 
 	set_hive_and_update(XENO_HIVE_YAUTJA_BADBLOOD)

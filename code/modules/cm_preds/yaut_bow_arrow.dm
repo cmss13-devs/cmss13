@@ -183,7 +183,7 @@
 	if(activated)
 		activated = FALSE
 		ammo_datum = /datum/ammo/arrow/dynamic
-		icon_state = "arrow"
+		icon_state = ammo_datum.arrow_icon
 		name = "inert dynamic arrow"
 		to_chat(user, SPAN_NOTICE("You deactivate [src]."))
 		return

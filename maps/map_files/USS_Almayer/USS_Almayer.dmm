@@ -2126,8 +2126,7 @@
 	dir = 8
 	},
 /obj/item/book/manual/chemistry{
-	pixel_x = 4;
-	pixel_y = 0
+	pixel_x = 4
 	},
 /obj/item/book/manual/medical_diagnostics_manual{
 	pixel_x = 7;
@@ -3930,6 +3929,9 @@
 "aiO" = (
 /turf/open/floor/almayer/flooredge/north,
 /area/almayer/hallways/upper/midship_hallway)
+"aiP" = (
+/turf/open/floor/almayer/flooredgesmooth2/south,
+/area/almayer/hallways/upper/midship_hallway)
 "aiQ" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 8
@@ -3947,6 +3949,13 @@
 	},
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
+"aiS" = (
+/obj/structure/sign/safety/ladder{
+	pixel_x = 8;
+	pixel_y = 28
+	},
+/turf/open/floor/almayer/blue/north,
+/area/almayer/hallways/upper/midship_hallway)
 "aiT" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/almayer/dark_sterile2,
@@ -4100,6 +4109,13 @@
 "ajl" = (
 /turf/closed/wall/almayer/white,
 /area/almayer/medical/upper_medical)
+"ajm" = (
+/obj/structure/sign/safety/ladder{
+	pixel_x = 23;
+	pixel_y = 28
+	},
+/turf/closed/wall/almayer/white/reinforced,
+/area/almayer/medical/medical_science)
 "ajn" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -4594,9 +4610,7 @@
 /area/almayer/hallways/lower/port_midship_hallway)
 "akE" = (
 /obj/structure/machinery/camera/autoname/almayer{
-	name = "ship-grade camera";
-	pixel_x = 0;
-	pixel_y = 0
+	name = "ship-grade camera"
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/secure_closet{
@@ -7116,6 +7130,13 @@
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/almayer/silver/north,
 /area/almayer/hallways/lower/repair_bay)
+"arp" = (
+/obj/structure/sign/safety/ladder{
+	pixel_x = 23;
+	pixel_y = -28
+	},
+/turf/closed/wall/almayer/white/reinforced,
+/area/almayer/medical/medical_science)
 "arq" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -7339,6 +7360,9 @@
 "arO" = (
 /turf/open/floor/wood/ship,
 /area/almayer/living/offices/flight)
+"arP" = (
+/turf/open/floor/almayer/flooredge/south,
+/area/almayer/hallways/upper/midship_hallway)
 "arQ" = (
 /obj/structure/surface/table/gamblingtable,
 /obj/item/spacecash/c10,
@@ -60451,10 +60475,7 @@
 	pixel_y = 31;
 	pixel_x = -1
 	},
-/obj/structure/surface/table/almayer{
-	pixel_x = 0;
-	pixel_y = 0
-	},
+/obj/structure/surface/table/almayer,
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_17";
 	pixel_x = -6;
@@ -204754,7 +204775,7 @@ aiY
 vOy
 vOy
 vOy
-lXl
+aiS
 lGh
 bBH
 mRU
@@ -204841,9 +204862,9 @@ aNi
 aNi
 pLE
 lGh
-bBH
+arP
 vOy
-vOy
+arp
 vOy
 ajB
 apR
@@ -204855,9 +204876,9 @@ aqS
 uoi
 aiZ
 vOy
+ajm
 vOy
-vOy
-lXl
+aiO
 yiu
 bBH
 mRU
@@ -204944,7 +204965,7 @@ tob
 fkK
 ayY
 lGh
-bBH
+aiP
 vOy
 vOy
 vOy
@@ -204960,9 +204981,9 @@ aja
 vOy
 vOy
 vOy
-lXl
+ayY
 yiu
-bBH
+aiP
 mRU
 jtU
 jtU

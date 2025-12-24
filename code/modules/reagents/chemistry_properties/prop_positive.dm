@@ -336,7 +336,7 @@
 /datum/chem_property/positive/nephropeutic/process_critical(mob/living/M, potency = 1, delta_time)
 	M.apply_damage(2.5 * potency * delta_time, TOX)
 
-//Applies mutation enable onto hydrotray plants, enables tolerance adjustment, parasitic and carnivorus
+//Applies mutation enable onto hydrotray plants, enables tolerance adjustment, parasitic and carnivorous
 /datum/chem_property/positive/nephropeutic/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
 	. = ..()
 	if(!processing_tray.seed)
@@ -523,7 +523,7 @@
 /datum/chem_property/positive/fluxing
 	name = PROPERTY_FLUXING
 	code = "FLX"
-	description = "Liquefies large crystalline and metallic structures under bodytemperature in the body and allows it to migrate to and be excreted through the skin."
+	description = "Liquefies large crystalline and metallic structures the body and allows them to migrate to and be excreted through the skin."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_REACTANT
 

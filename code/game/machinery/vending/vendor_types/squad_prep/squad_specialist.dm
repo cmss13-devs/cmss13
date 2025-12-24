@@ -122,8 +122,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_specialist, list(
 		list("Map", 0, /obj/item/map/current_map, MARINE_CAN_BUY_MAP, VENDOR_ITEM_MANDATORY),
 
 		list("SPECIALIST KIT (PICK ONE)", 0, null, null, null),
-		list("SPNKr Rocket Launcher Kit", 0, /obj/item/storage/unsc_speckit/spnkr, MARINE_CAN_BUY_PILOT_VISOR, VENDOR_ITEM_MANDATORY),
-		list("SRS99-AM Antimaterial Rifle Kit", 0, /obj/item/storage/unsc_speckit/srs99, MARINE_CAN_BUY_PILOT_VISOR, VENDOR_ITEM_MANDATORY),
+		list("(NO IFF)SPNKr Rocket Launcher Kit", 0, /obj/item/storage/unsc_speckit/spnkr, MARINE_CAN_BUY_PILOT_VISOR, VENDOR_ITEM_MANDATORY),
+		list("(NO IFF)SRS99-AM Antimaterial Rifle Kit", 0, /obj/item/storage/unsc_speckit/srs99, MARINE_CAN_BUY_PILOT_VISOR, VENDOR_ITEM_MANDATORY),
 
 		list("BELT (CHOOSE 1)", 0, null, null, null),
 		list("G8-A General Utility Pouch", 0, /obj/item/storage/backpack/general_belt, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),

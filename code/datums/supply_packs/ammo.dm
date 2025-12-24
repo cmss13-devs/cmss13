@@ -12,11 +12,11 @@
 	group = "Ammo"
 
 /datum/supply_packs/ammo_mag_ma5c_ap
-	name = "MA5C ICWS Assault Rifle AP Shredder Magazines (x48)"
+	name = "MA5C ICWS Assault Rifle AP Shredder Magazines (x24)"
 	contains = list(
 		/obj/item/ammo_box/magazine/unsc/ma5c/shredder,
 	)
-	cost = 100
+	cost = 50
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "\improper Ammo Crate"
 	group = "Ammo"

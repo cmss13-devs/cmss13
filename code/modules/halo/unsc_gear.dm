@@ -204,6 +204,10 @@
 		/obj/item/attachable/scope/mini/br55,
 	)
 
+/obj/item/weapon/gun/rifle/halo/br55/Initialize()
+	. = ..()
+	do_toggle_firemode(null, null, GUN_FIREMODE_BURSTFIRE)
+
 /obj/item/weapon/gun/rifle/halo/br55/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 16,"rail_x" = 22, "rail_y" = 20, "under_x" = 32, "under_y" = 16, "stock_x" = 0, "stock_y" = 0, "special_x" = 32, "special_y" = 16)
 
@@ -453,6 +457,8 @@
 	unload_sound = 'sound/weapons/halo/gun_srs99_unload.ogg'
 	empty_sound = null
 
+	unacidable = TRUE
+	explo_proof = TRUE
 	current_mag = /obj/item/ammo_magazine/rifle/halo/sniper
 	force = 12
 	wield_delay = WIELD_DELAY_HORRIBLE
@@ -462,7 +468,7 @@
 	starting_attachment_types = list(/obj/item/attachable/scope/variable_zoom/oracle, /obj/item/attachable/srs_barrel, /obj/item/attachable/bipod/srs_bipod)
 	flags_gun_features = GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER|GUN_AUTO_EJECTOR
 	map_specific_decoration = FALSE
-	skill_locked = FALSE
+	skill_locked = TRUE
 	flags_item = TWOHANDED
 	var/can_change_barrel = TRUE
 
@@ -539,8 +545,10 @@
 	desc = "The M41 SPNKr is a reusable rocket launcher system with multi-role capabilities, including the ability to lock onto air and ground targets. Commonly referred to as the Jackhammer by the UNSC forces equipped with it."
 	icon_state = "spnkr"
 	item_state = "spnkr"
+	unacidable = TRUE
+	explo_proof = TRUE
 	layer = ABOVE_OBJ_LAYER
-	flags_equip_slot = SLOT_BLOCK_SUIT_STORE|SLOT_BACK
+	flags_equip_slot = SLOT_BACK
 	bonus_overlay_x = -2
 	bonus_overlay_y = 1
 	var/cover_open = FALSE
@@ -552,10 +560,12 @@
 	unload_sound = 'sound/weapons/halo/gun_spnkr_unload.ogg'
 	item_icons = list(
 		WEAR_BACK = 'icons/halo/mob/humans/onmob/clothing/back/guns_by_type/heavy_weapons_32.dmi',
-		WEAR_J_STORE = 'icons/halo/mob/humans/onmob/clothing/suit_storage/suit_storage_by_faction/suit_slot_unsc.dmi',
+		WEAR_J_STORE = 'icons/halo/mob/humans/onmob/clothing/back/guns_by_type/heavy_weapons_32.dmi',
 		WEAR_L_HAND = 'icons/halo/mob/humans/onmob/items_lefthand_halo.dmi',
 		WEAR_R_HAND = 'icons/halo/mob/humans/onmob/items_righthand_halo.dmi'
 	)
+	var/skill_locked = TRUE
+	w_class = SIZE_LARGE
 
 /obj/item/weapon/gun/halo_launcher/spnkr/set_gun_config_values()
 	..()
@@ -622,6 +632,11 @@
 		if(cover_open)
 			to_chat(user, SPAN_WARNING("You can't fire [src] with the feed cover open! <b>(alt-click to close)</b>"))
 			return FALSE
+		if(istype(user) && skill_locked)
+			if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_SNIPER)
+				to_chat(user, SPAN_WARNING("You don't know how to use \the [src]..."))
+				return FALSE
+
 
 /obj/item/weapon/gun/halo_launcher/spnkr/unloaded
 	current_mag = null
@@ -766,16 +781,17 @@
 
 // Grenades
 
-/obj/item/explosive/grenade/high_explosive/m15/unsc
+/obj/item/explosive/grenade/high_explosive/unsc
 	name = "M9 fragmentation grenade"
 	desc = "A high explosive fragmentation grenade utilized by the UNSC."
 	desc_lore = "Rumors spread about how every new posting someone gets, the design of the M9 fragmentation grenade looks different from the last ones they held."
 	icon = 'icons/halo/obj/items/weapons/grenades.dmi'
 	icon_state = "m9"
 	item_state = "m9"
-	falloff_mode = EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL_HALF
+	shrapnel_count = 12
+	underslug_launchable = FALSE
 
-/obj/item/explosive/grenade/high_explosive/m15/unsc/launchable
+/obj/item/explosive/grenade/high_explosive/unsc/launchable
 	name = "40mm explosive grenade"
 	desc = "A 40mm explosive grenade. It's unable to be primed by hand and must be loaded into the bottom of a rifle's grenade launcher."
 	icon = 'icons/halo/obj/items/weapons/grenades.dmi'
@@ -808,7 +824,7 @@
 
 /obj/item/ammo_magazine/rifle/halo/ma5c/shredder
 	name = "\improper Armor Piercing MA5C magazine (7.62x51mm Shredder)"
-	desc = "A rectangular box magazine for the MA5C holding 60 rounds of 7.62x51 shredder ammunitions, a specialized ammunition that pierces armor and splinters in the target."
+	desc = "A rectangular box magazine for the MA5C holding 48 rounds of 7.62x51 shredder ammunitions, a specialized ammunition that pierces armor and splinters in the target."
 	max_rounds = 48
 	gun_type = /obj/item/weapon/gun/rifle/halo/ma5c
 	default_ammo = /datum/ammo/bullet/rifle/ma5c/shredder
@@ -939,12 +955,14 @@
 	default_ammo = /datum/ammo/rocket/spnkr
 	gun_type = /obj/item/weapon/gun/halo_launcher/spnkr
 	reload_delay = 30
+	w_class = SIZE_LARGE
 
 /obj/item/ammo_magazine/spnkr/update_icon()
 	..()
 	if(current_rounds <= 0)
 		name = "\improper spent M19 SSM tube assembly"
 		desc = "A spent 102mm dual-tubed rocket assembly previously loaded into a spnkr. Of no use to you now..."
+		icon_state = "spnkr_rockets_e"
 
 // pistol magazines
 
@@ -1664,6 +1682,7 @@
 		WEAR_L_HAND = 'icons/halo/mob/humans/onmob/items_lefthand_halo.dmi',
 		WEAR_R_HAND = 'icons/halo/mob/humans/onmob/items_righthand_halo.dmi')
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN
+	bypass_w_limit = list(/obj/item/ammo_magazine/spnkr)
 
 /obj/item/storage/backpack/marine/ammo_rack/spnkr/filled/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
@@ -1961,7 +1980,7 @@
 	name = "\improper UNSC storage crate - (Grenades x 9)"
 	desc = "A generic storage crate for the UNSC holding fragmentation grenades."
 	icon_state = "base_frag"
-	magazine_type = /obj/item/explosive/grenade/high_explosive/m15/unsc
+	magazine_type = /obj/item/explosive/grenade/high_explosive/unsc
 	num_of_magazines = 9
 	overlay_content = "_frag"
 
@@ -1972,7 +1991,7 @@
 	name = "\improper UNSC storage crate - (40mm Grenades x 30)"
 	desc = "A generic storage crate for the UNSC holding 40MM grenades."
 	icon_state = "base_40mm"
-	magazine_type = /obj/item/explosive/grenade/high_explosive/m15/unsc/launchable
+	magazine_type = /obj/item/explosive/grenade/high_explosive/unsc/launchable
 	num_of_magazines = 30
 	overlay_content = "_40mm"
 
@@ -2021,10 +2040,11 @@
 	num_of_magazines = 48
 
 /obj/item/ammo_box/magazine/unsc/ma5c/shredder
-	name = "UNSC magazine box (MA5C x 48, AP shredder)"
-	desc = "An ammo box storing 48 magazines of MA5C ammunition"
+	name = "UNSC magazine box (MA5C x 24, AP shredder)"
+	desc = "An ammo box storing 24 magazines of MA5C ammunition"
 	overlay_ammo_type = "_shred"
 	magazine_type = /obj/item/ammo_magazine/rifle/halo/ma5c/shredder
+	num_of_magazines = 24
 
 /obj/item/ammo_box/magazine/unsc/br55
 	name = "UNSC magazine box (BR55 x 32)"
@@ -2164,11 +2184,11 @@
 	hold = /obj/item/storage/internal/accessory/black_vest/m3grenade/unsc
 
 /obj/item/storage/internal/accessory/black_vest/m3grenade/unsc/fill_preset_inventory()
-	new /obj/item/explosive/grenade/high_explosive/m15/unsc(src)
-	new /obj/item/explosive/grenade/high_explosive/m15/unsc(src)
-	new /obj/item/explosive/grenade/high_explosive/m15/unsc(src)
-	new /obj/item/explosive/grenade/high_explosive/m15/unsc(src)
-	new /obj/item/explosive/grenade/high_explosive/m15/unsc(src)
+	new /obj/item/explosive/grenade/high_explosive/unsc(src)
+	new /obj/item/explosive/grenade/high_explosive/unsc(src)
+	new /obj/item/explosive/grenade/high_explosive/unsc(src)
+	new /obj/item/explosive/grenade/high_explosive/unsc(src)
+	new /obj/item/explosive/grenade/high_explosive/unsc(src)
 
 /obj/item/clothing/accessory/storage/webbing/m52b/recon
 	name = "\improper M52B-R Pattern Magazine Webbing"
@@ -2350,6 +2370,7 @@
 		/obj/item/storage/belt/gun/xm51,
 		/obj/item/storage/belt/gun/m6,
 		/obj/item/storage/belt/gun/m7,
+		/obj/item/weapon/gun/halo_launcher/spnkr
 	)
 
 /obj/item/clothing/suit/marine/unsc/police

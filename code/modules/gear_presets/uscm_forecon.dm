@@ -4,6 +4,7 @@
 	paygrades = list(PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/dogtag
 	role_comm_title = "FORECON"
+	minimap_background = "background_forecon"
 	faction_group = list(FACTION_MARINE)
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	auto_squad_name = SQUAD_FORECON
@@ -84,7 +85,7 @@
 	assignment = JOB_FORECON_RIFLEMAN
 	job_title = JOB_SQUAD_MARINE
 	role_comm_title = "RFN"
-	minimap_icon = ""
+	minimap_icon = "private"
 	skills = /datum/skills/military/survivor/forecon_standard
 
 /datum/equipment_preset/uscm/forecon/standard/load_gear(mob/living/carbon/human/new_human)
@@ -249,6 +250,7 @@
 	assignment = JOB_FORECON_SL
 	job_title = JOB_SQUAD_LEADER
 	role_comm_title = "SL"
+	minimap_icon = "leader"
 	skills = /datum/skills/military/survivor/forecon_squad_leader
 	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_0)
 

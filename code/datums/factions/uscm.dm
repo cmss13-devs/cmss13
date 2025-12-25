@@ -95,6 +95,19 @@
 		else if(ID)
 			_role = ID.rank
 		switch(_role)
+			if(JOB_CMC)
+				marine_rk = "cmc"
+				border_rk = "command"
+			if(JOB_ACMC)
+				marine_rk = "acmc"
+				border_rk = "command"
+			if(JOB_GENERAL)
+				marine_rk = "general"
+				border_rk = "command"
+			if(JOB_COLONEL)
+				marine_rk = "col"
+				border_rk = "command"
+
 			if(JOB_XO)
 				marine_rk = "xo"
 				border_rk = "command"
@@ -109,9 +122,6 @@
 				border_rk = "command"
 			if(JOB_AUXILIARY_OFFICER)
 				marine_rk = "aso"
-				border_rk = "command"
-			if(JOB_GENERAL, JOB_COLONEL, JOB_ACMC, JOB_CMC)
-				marine_rk = "general"
 				border_rk = "command"
 			if(JOB_PLT_MED)
 				marine_rk = "med"
@@ -141,7 +151,6 @@
 				marine_rk = "tc"
 			if(JOB_WARDEN)
 				marine_rk = "warden"
-				border_rk = "command"
 			if(JOB_CHIEF_REQUISITION)
 				marine_rk = "ro"
 			if(JOB_CARGO_TECH)
@@ -153,18 +162,21 @@
 				marine_rk = "mt"
 			if(JOB_ORDNANCE_TECH)
 				marine_rk = "ot"
+			if(JOB_COMBAT_REPORTER)
+				marine_rk = "comcor"
 			if(JOB_CMO)
 				marine_rk = "cmo"
 				border_rk = "command"
 			if(JOB_DOCTOR)
 				marine_rk = "doctor"
-				border_rk = "command"
+			if(JOB_SURGEON)
+				marine_rk = "surgeon"
+			if(JOB_PHARMACIST)
+				marine_rk = "pharmacist"
 			if(JOB_FIELD_DOCTOR)
 				marine_rk = "field_doctor"
-				border_rk = "command"
 			if(JOB_RESEARCHER)
 				marine_rk = "researcher"
-				border_rk = "command"
 			if(JOB_NURSE)
 				marine_rk = "nurse"
 			if(JOB_SEA)

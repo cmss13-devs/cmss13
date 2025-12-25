@@ -806,6 +806,7 @@
 	job_title = JOB_MARINE_RAIDER
 	role_comm_title = "Op."
 	languages = list(LANGUAGE_TSL, LANGUAGE_ENGLISH)
+	minimap_background = "background_sof"
 	skills = /datum/skills/commando/deathsquad
 	auto_squad_name = SQUAD_SOF
 	ert_squad = TRUE

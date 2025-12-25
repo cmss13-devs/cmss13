@@ -18,6 +18,8 @@
 	job_title = JOB_COLONEL
 	paygrades = list(PAY_SHORT_MO6 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "COL"
+	minimap_icon = "so"
+	minimap_background = "background_hc_com"
 	minimum_age = 40
 	skills = /datum/skills/general
 	languages = ALL_HUMAN_LANGUAGES //Know your enemy.
@@ -64,8 +66,8 @@
 	paygrades = list(PAY_SHORT_MO7 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "GEN"
 	minimum_age = 50
-	minimap_icon = "deputy"
-	minimap_background = "background_command"
+	minimap_icon = "aso"
+	minimap_background = "background_hc_com"
 	skills = /datum/skills/general
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE, LANGUAGE_CHINESE, LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_SCANDINAVIAN, LANGUAGE_SPANISH, LANGUAGE_TSL) //Know your enemy.
 
@@ -114,20 +116,24 @@
 /datum/equipment_preset/uscm_event/general/o8
 	name = "USCM O-8 - Major General (High Command)"
 	paygrades = list(PAY_SHORT_MO8 = JOB_PLAYTIME_TIER_0)
+	minimap_icon = "general1"
 
 /datum/equipment_preset/uscm_event/general/o9
 	name = "USCM O-9 - Lieutenant General (High Command)"
 	paygrades = list(PAY_SHORT_MO9 = JOB_PLAYTIME_TIER_0)
+	minimap_icon = "general2"
 
 /datum/equipment_preset/uscm_event/general/o10
 	name = "USCM O-10 - General (High Command)"
 	paygrades = list(PAY_SHORT_MO10 = JOB_PLAYTIME_TIER_0)
+	minimap_icon = "general3"
 
 /datum/equipment_preset/uscm_event/general/o10c
 	name = "USCM O-10C - Assistant Commandant of the Marine Corps (High Command)"
 	paygrades = list(PAY_SHORT_MO10C = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_ACMC
 	job_title = JOB_ACMC
+	minimap_icon = "xo"
 	role_comm_title = "ACMC"
 
 /datum/equipment_preset/uscm_event/general/o10s
@@ -135,6 +141,7 @@
 	paygrades = list(PAY_SHORT_MO10S = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_CMC
 	job_title = JOB_CMC
+	minimap_icon = "co"
 	role_comm_title = "CMC"
 
 /*****************************************************************************************************/
@@ -211,7 +218,7 @@
 	role_comm_title = "PvE"
 	flags = EQUIPMENT_PRESET_EXTRA
 	minimap_icon = "pve"
-	
+
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues)
 	dress_hat = list(/obj/item/clothing/head/marine/dress_cover)

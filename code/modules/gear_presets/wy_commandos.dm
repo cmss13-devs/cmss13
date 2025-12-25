@@ -325,7 +325,7 @@
 	job_title = JOB_WY_COMMANDO_DOGCATHER
 	paygrades = list(PAY_SHORT_WY_DOG = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "DOG"
-	minimap_icon = "dogcather"
+	minimap_icon = "dogcatcher"
 	skills = /datum/skills/pmc/commando/dogcatcher
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE, LANGUAGE_XENOMORPH)
 	headset_type = /obj/item/device/radio/headset/distress/pmc/commando

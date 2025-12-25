@@ -94,7 +94,7 @@
 	assignment = JOB_COMBAT_REPORTER
 	job_title = JOB_COMBAT_REPORTER
 	paygrades = list(PAY_SHORT_CIV = JOB_PLAYTIME_TIER_0)
-	role_comm_title = "PRESS"
+	role_comm_title = "CC PRESS"
 	skills = /datum/skills/civilian
 	idtype = /obj/item/card/id/silver/cl
 

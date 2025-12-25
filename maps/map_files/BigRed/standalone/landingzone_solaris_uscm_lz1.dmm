@@ -1660,7 +1660,7 @@
 /turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/nw)
 "Lj" = (
-/obj/item/prop/helmetgarb/rosary{
+/obj/item/clothing/accessory/rosary{
 	pixel_y = 7;
 	pixel_x = 12
 	},

@@ -606,9 +606,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 /datum/gear/synthetic/helmet/marine_intel_desert
 	path = /obj/item/clothing/head/helmet/marine/rto/intel/desert
 
-/datum/gear/synthetic/helmet/marine_intel_urban
-	path = /obj/item/clothing/head/helmet/marine/rto/intel/urban
-
 /datum/gear/synthetic/helmet/marine_mp
 	path = /obj/item/clothing/head/helmet/marine/MP
 

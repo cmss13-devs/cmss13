@@ -319,6 +319,8 @@
 
 	var/icon_xeno
 	var/icon_xenonid
+	var/xenonid_pixel_x
+	var/xenonid_pixel_y
 	/// Stores the overlay icon for spitting/drooling when acid-based abilities are selected
 	var/acid_overlay
 
@@ -627,8 +629,6 @@
 		name_client_postfix = client.xeno_postfix ? ("-"+client.xeno_postfix) : ""
 		age_xeno()
 	full_designation = "[name_client_prefix][nicknumber][name_client_postfix]"
-	if(!HAS_TRAIT(src, TRAIT_NO_COLOR))
-		color = in_hive.color
 
 	var/age_display = show_age_prefix ? age_prefix : ""
 	var/name_display = ""

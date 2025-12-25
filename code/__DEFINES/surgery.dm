@@ -104,6 +104,7 @@ See also /datum/surgery_step/cut_larval_pseudoroots, /datum/surgery_step/retract
 	/obj/item/tool/surgery/cautery = SURGERY_TOOL_MULT_IDEAL,\
 	/obj/item/tool/surgery/wound_clamp = SURGERY_TOOL_MULT_IDEAL,\
 	/obj/item/tool/surgery/scalpel/laser = SURGERY_TOOL_MULT_IDEAL,\
+	/obj/item/tool/surgery/scalpel/pict_system = SURGERY_TOOL_MULT_SUBOPTIMAL,\
 	/obj/item/clothing/mask/cigarette = SURGERY_TOOL_MULT_SUBOPTIMAL,\
 	/obj/item/tool/lighter = SURGERY_TOOL_MULT_SUBSTITUTE,\
 	/obj/item/tool/weldingtool = SURGERY_TOOL_MULT_BAD_SUBSTITUTE\

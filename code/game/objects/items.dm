@@ -207,9 +207,9 @@
 
 	return ..()
 
-/obj/item/ex_act(severity, explosion_direction)
+/obj/item/ex_act(severity, direction, datum/cause_data/cause_data, pierce=0, enviro=FALSE)
 	var/msg = pick("is destroyed by the blast!", "is obliterated by the blast!", "shatters as the explosion engulfs it!", "disintegrates in the blast!", "perishes in the blast!", "is mangled into uselessness by the blast!")
-	explosion_throw(severity, explosion_direction)
+	explosion_throw(severity, direction)
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(5))
@@ -854,10 +854,6 @@
 /obj/item/proc/ui_action_click()
 	if(src in usr)
 		attack_self(usr)
-
-
-/obj/item/proc/IsShield()
-	return FALSE
 
 /obj/item/proc/get_loc_turf()
 	var/atom/L = loc

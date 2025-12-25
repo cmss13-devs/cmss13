@@ -19,7 +19,7 @@
 	M.apply_internal_damage(0.5 * potency * delta_time, "eyes")
 
 /datum/chem_property/positive/antitoxic/process_critical(mob/living/M, potency = 1, delta_time)
-	M.drowsyness  = max(M.drowsyness, 30)
+	M.drowsiness  = max(M.drowsiness, 30)
 
 /datum/chem_property/positive/antitoxic/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
 	. = ..()
@@ -209,7 +209,7 @@
 		M.stuttering = max(M.stuttering - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 		M.confused = max(M.confused - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 		M.ReduceEyeBlur(POTENCY_MULTIPLIER_MEDIUM * potency)
-		M.drowsyness = max(M.drowsyness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
+		M.drowsiness = max(M.drowsiness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 		M.dizziness = max(M.dizziness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 		M.jitteriness = max(M.jitteriness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 
@@ -336,7 +336,7 @@
 /datum/chem_property/positive/nephropeutic/process_critical(mob/living/M, potency = 1, delta_time)
 	M.apply_damage(2.5 * potency * delta_time, TOX)
 
-//Applies mutation enable onto hydrotray plants, enables tolerance adjustment, parasitic and carnivorus
+//Applies mutation enable onto hydrotray plants, enables tolerance adjustment, parasitic and carnivorous
 /datum/chem_property/positive/nephropeutic/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
 	. = ..()
 	if(!processing_tray.seed)
@@ -410,8 +410,8 @@
 		return
 	if (processing_tray.mutation_controller["Potency"] < 1)
 		processing_tray.mutation_controller["Potency"] = 1
-	if(processing_tray.mutation_controller["Bioluminecence"] < 1)
-		processing_tray.mutation_controller["Bioluminecence"] = 1
+	if(processing_tray.mutation_controller["Bioluminescence"] < 1)
+		processing_tray.mutation_controller["Bioluminescence"] = 1
 	if (processing_tray.mutation_controller["Flowers"] < 1)
 		processing_tray.mutation_controller["Flowers"] = 1
 
@@ -523,7 +523,7 @@
 /datum/chem_property/positive/fluxing
 	name = PROPERTY_FLUXING
 	code = "FLX"
-	description = "Liquifies large crystalline and metallic structures under bodytemperature in the body and allows it to migrate to and be excreted through the skin."
+	description = "Liquefies large crystalline and metallic structures the body and allows them to migrate to and be excreted through the skin."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_REACTANT
 

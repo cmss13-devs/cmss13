@@ -67,7 +67,7 @@
 		"Lifespan" = 0,
 		"Potency" = 0,
 		"Maturity" = 0,
-		"Bioluminecence" = 0,
+		"Bioluminescence" = 0,
 		"Flowers" = 0,
 		"New Chems" = 0,
 		"New Chems2" = 0,

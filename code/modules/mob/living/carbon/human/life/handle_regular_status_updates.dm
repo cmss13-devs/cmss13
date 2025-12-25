@@ -97,7 +97,7 @@
 		else if(ear_damage)
 			ear_damage = max(ear_damage - 0.05, 0)
 
-		// This should be done only on updates abvoe, or even better in the AdjsutEarDeafnes handlers
+		// This should be done only on updates above, or even better in the AdjustEarDeafness handlers
 		if(!ear_deaf && (client?.soundOutput?.status_flags & EAR_DEAF_MUTE))
 			client.soundOutput.status_flags ^= EAR_DEAF_MUTE
 			client.soundOutput.apply_status()
@@ -123,10 +123,10 @@
 			pain.apply_pain_reduction(PAIN_REDUCTION_FULL)
 			paralyzed--
 
-		if(drowsyness)
-			drowsyness = max(0,drowsyness - 2)
+		if(drowsiness)
+			drowsiness = max(0,drowsiness - 2)
 			EyeBlur(2)
-			if(drowsyness > 10 && prob(5))
+			if(drowsiness > 10 && prob(5))
 				sleeping++
 				apply_effect(5, PARALYZE)
 

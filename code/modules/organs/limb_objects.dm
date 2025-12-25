@@ -57,40 +57,40 @@
 
 /obj/item/limb/arm/l_arm
 	name = "left arm"
-	icon_state = "l_arm"
+	icon_state = "pale0_left_arm"
 	bone_type = /obj/item/clothing/accessory/limb/skeleton/l_arm
 /obj/item/limb/foot/l_foot
 	name = "left foot"
-	icon_state = "l_foot"
+	icon_state = "pale0_left_foot"
 	bone_type = /obj/item/clothing/accessory/limb/skeleton/l_foot
 /obj/item/limb/hand/l_hand
 	name = "left hand"
-	icon_state = "l_hand"
+	icon_state = "pale0_left_hand"
 	bone_type = /obj/item/clothing/accessory/limb/skeleton/l_hand
 /obj/item/limb/leg/l_leg
 	name = "left leg"
-	icon_state = "l_leg"
+	icon_state = "pale0_left_leg"
 	bone_type = /obj/item/clothing/accessory/limb/skeleton/l_leg
 /obj/item/limb/arm/r_arm
 	name = "right arm"
-	icon_state = "r_arm"
+	icon_state = "pale0_right_arm"
 	bone_type = /obj/item/clothing/accessory/limb/skeleton/r_arm
 /obj/item/limb/foot/r_foot
 	name = "right foot"
-	icon_state = "r_foot"
+	icon_state = "pale0_right_foot"
 	bone_type = /obj/item/clothing/accessory/limb/skeleton/r_foot
 /obj/item/limb/hand/r_hand
 	name = "right hand"
-	icon_state = "r_hand"
+	icon_state = "pale0_right_hand"
 	bone_type = /obj/item/clothing/accessory/limb/skeleton/r_hand
 /obj/item/limb/leg/r_leg
 	name = "right leg"
-	icon_state = "r_leg"
+	icon_state = "pale0_right_leg"
 	bone_type = /obj/item/clothing/accessory/limb/skeleton/r_leg
 
 /obj/item/limb/head
 	name = "head"
-	icon_state = "head_m"
+	icon_state = "pale0_head"
 	bone_type = /obj/item/clothing/accessory/limb/skeleton/head
 	unacidable = TRUE
 	var/mob/living/brain/brainmob

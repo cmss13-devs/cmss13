@@ -1,0 +1,1668 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"at" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/reagent_container/glass/bucket{
+	layer = 7;
+	pixel_x = -8;
+	pixel_y = 6
+	},
+/obj/item/trash/eat,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/brown_bright/angled,
+/area/template_noop)
+"bd" = (
+/obj/effect/landmark/corpsespawner/colonist/random,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/gibs/limb,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing,
+/obj/effect/decal/large_stain{
+	dir = 8;
+	color = "#390000";
+	pixel_x = -8;
+	pixel_y = -12
+	},
+/turf/open/floor/prison/platingdmg3,
+/area/template_noop)
+"ck" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/large_stain,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/panelscorched,
+/area/template_noop)
+"dO" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/barricade/wooden,
+/obj/effect/decal/large_stain{
+	pixel_x = 3;
+	pixel_y = -9
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/brown_bright/corner/west,
+/area/template_noop)
+"eq" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -8
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/brown/corner/west,
+/area/template_noop)
+"ex" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/surface/table{
+	color = "#8B7B5B";
+	flipped = 1
+	},
+/turf/open/floor/prison/floor_plate,
+/area/template_noop)
+"ez" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/landmark/objective_landmark/far,
+/obj/item/limb/foot/l_foot,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing,
+/obj/effect/decal/large_stain{
+	dir = 4;
+	color = "#390000"
+	},
+/turf/open/floor/interior/sun_emblem{
+	desc = "The emblem of the sun etched in gold, a radiant seal that crowns the dome's foundation. At its center lies a block engraved with Weyland-Yutani's insignia and the purpose of this place."
+	},
+/area/template_noop)
+"eV" = (
+/obj/structure/disposalpipe/junction{
+	dir = 4;
+	icon_state = "pipe-j2"
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_y = 6
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 5;
+	pixel_y = 16
+	},
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/brown_bright/corner/west,
+/area/template_noop)
+"fT" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/item/shard,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison/brown_bright/corner/north,
+/area/template_noop)
+"gr" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/deco_edging{
+	color = "#e6ac3f"
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/item/frame/table{
+	color = "#8B7B5B"
+	},
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/brown/angled/east,
+/area/template_noop)
+"gw" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/large_stain,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/platingdmg1,
+/area/template_noop)
+"gO" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/barricade/metal{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/brown_bright/east,
+/area/template_noop)
+"hd" = (
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_10";
+	pixel_x = 13;
+	pixel_y = 8
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/west,
+/area/template_noop)
+"he" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/decal/hybrisa/deco_edging{
+	dir = 8;
+	color = "#e6ac3f"
+	},
+/obj/structure/disposalpipe/segment,
+/obj/item/ammo_casing,
+/obj/structure/surface/table{
+	color = "#8B7B5B";
+	flipped = 1;
+	dir = 4
+	},
+/turf/open/floor/prison/brown/angled/east,
+/area/template_noop)
+"hK" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/frame/table{
+	color = "#8B7B5B"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/brown/corner/east,
+/area/template_noop)
+"hL" = (
+/obj/effect/decal/cleanable/blood,
+/obj/item/stack/sheet/metal,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/turf/open/floor/prison/bright_clean2,
+/area/template_noop)
+"hW" = (
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_y = 6
+	},
+/obj/effect/decal/large_stain{
+	pixel_x = 3;
+	pixel_y = -9;
+	layer = 2.1;
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/platingdmg1,
+/area/template_noop)
+"ik" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -19;
+	pixel_y = 2
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/effect/decal/large_stain{
+	pixel_x = 3;
+	pixel_y = -9;
+	layer = 2.1;
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/platingdmg2,
+/area/template_noop)
+"ix" = (
+/obj/structure/barricade/metal{
+	health = 250;
+	icon_state = "metal_2"
+	},
+/obj/effect/decal/large_stain{
+	pixel_x = 3;
+	pixel_y = -9
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/shard,
+/turf/open/floor/prison/platingdmg2,
+/area/template_noop)
+"jb" = (
+/obj/structure/machinery/light/blue,
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/barricade/wooden,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/brown_bright/angled/east,
+/area/template_noop)
+"jd" = (
+/obj/effect/decal/hybrisa/deco_edging{
+	dir = 4;
+	color = "#e6ac3f"
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/item/frame/table{
+	color = "#8B7B5B"
+	},
+/obj/item/ammo_casing,
+/turf/open/floor/prison/brown/angled/west,
+/area/template_noop)
+"jg" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/decal/hybrisa/deco_edging{
+	dir = 4;
+	color = "#e6ac3f"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_y = 17
+	},
+/obj/item/frame/table{
+	color = "#8B7B5B"
+	},
+/obj/effect/decal/cleanable/blood/gibs,
+/obj/effect/decal/large_stain{
+	pixel_x = 3;
+	pixel_y = -9;
+	layer = 2.1;
+	dir = 1
+	},
+/obj/item/ammo_casing,
+/turf/open/floor/prison/brown/northeast,
+/area/template_noop)
+"jk" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/brown_bright/southwest,
+/area/template_noop)
+"jF" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 6;
+	pixel_y = 1
+	},
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_y = 6
+	},
+/obj/effect/decal/large_stain{
+	pixel_x = 3;
+	pixel_y = -9
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/panelscorched,
+/area/template_noop)
+"kH" = (
+/obj/structure/machinery/camera/autoname{
+	dir = 8
+	},
+/obj/structure/barricade/wooden{
+	dir = 1
+	},
+/turf/open/floor/prison/floor_plate,
+/area/template_noop)
+"ll" = (
+/obj/effect/decal/large_stain{
+	pixel_x = 3;
+	pixel_y = -9;
+	layer = 2.1;
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/panelscorched,
+/area/template_noop)
+"lW" = (
+/obj/structure/surface/table{
+	color = "#8B7B5B"
+	},
+/obj/item/stack/sheet/wood,
+/turf/open/floor/hybrisa/metal/bluemetal1/north,
+/area/template_noop)
+"mO" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/large_stain{
+	pixel_x = -13;
+	pixel_y = -5
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/platingdmg2,
+/area/template_noop)
+"mP" = (
+/obj/item/ashtray/glass{
+	pixel_y = 4;
+	pixel_x = 3
+	},
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/obj/effect/decal/large_stain{
+	pixel_x = 3;
+	pixel_y = -9;
+	layer = 2.1;
+	dir = 1
+	},
+/obj/item/shard,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/brown/corner,
+/area/template_noop)
+"nn" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/item/stack/sheet/wood,
+/obj/effect/decal/large_stain{
+	pixel_x = 11;
+	pixel_y = -20
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/brown_bright/northeast,
+/area/template_noop)
+"nI" = (
+/obj/effect/decal/hybrisa/deco_edging/corner{
+	dir = 8;
+	color = "#e6ac3f"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/disposalpipe/junction{
+	dir = 4;
+	icon_state = "pipe-y"
+	},
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 8
+	},
+/obj/item/stack/sheet/wood,
+/obj/item/ammo_casing,
+/obj/structure/surface/table{
+	color = "#8B7B5B";
+	flipped = 1
+	},
+/turf/open/floor/prison/brown/corner/west,
+/area/template_noop)
+"oG" = (
+/obj/effect/decal/hybrisa/deco_edging{
+	dir = 1;
+	color = "#e6ac3f"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/item/limb/leg/r_leg,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_casing,
+/obj/structure/surface/table{
+	color = "#8B7B5B";
+	flipped = 1
+	},
+/turf/open/floor/prison/brown/angled,
+/area/template_noop)
+"oZ" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/gibs,
+/obj/effect/decal/large_stain{
+	pixel_x = 3;
+	pixel_y = -9;
+	layer = 2.1;
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/interior/sun_emblem{
+	dir = 4;
+	desc = "The emblem of the sun etched in gold, a radiant seal that crowns the dome's foundation. At its center lies a block engraved with Weyland-Yutani's insignia and the purpose of this place."
+	},
+/area/template_noop)
+"qq" = (
+/obj/effect/decal/hybrisa/deco_edging/corner{
+	color = "#e6ac3f"
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 6
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing,
+/obj/structure/surface/table{
+	color = "#8B7B5B";
+	flipped = 1;
+	dir = 8
+	},
+/turf/open/floor/prison/brown/corner,
+/area/template_noop)
+"rn" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/brown_bright/east,
+/area/template_noop)
+"rC" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 5;
+	pixel_y = 16
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/decal/large_stain{
+	pixel_x = 3;
+	pixel_y = -9;
+	layer = 2.1;
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/brown_bright/angled,
+/area/template_noop)
+"rH" = (
+/obj/effect/decal/hybrisa/deco_edging{
+	color = "#e6ac3f"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/item/frame/table{
+	color = "#8B7B5B"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/brown/angled/west,
+/area/template_noop)
+"sh" = (
+/obj/effect/landmark/corpsespawner/chef,
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_casing,
+/obj/effect/decal/large_stain{
+	dir = 4;
+	color = "#390000";
+	pixel_x = -11;
+	pixel_y = -15
+	},
+/turf/open/floor/prison/brown/corner/west,
+/area/template_noop)
+"st" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_magazine/smg/mac15,
+/turf/open/floor/prison/brown_bright/corner/west,
+/area/template_noop)
+"sN" = (
+/turf/template_noop,
+/area/template_noop)
+"tq" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/deco_edging{
+	dir = 1;
+	color = "#e6ac3f"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/structure/surface/table{
+	color = "#8B7B5B";
+	flipped = 1
+	},
+/turf/open/floor/prison/brown/angled/north,
+/area/template_noop)
+"tt" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/interior/sun_emblem{
+	dir = 10
+	},
+/area/template_noop)
+"tK" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/decal/hybrisa/deco_edging{
+	dir = 8;
+	color = "#e6ac3f"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood,
+/obj/structure/disposalpipe/segment,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/structure/surface/table{
+	color = "#8B7B5B";
+	flipped = 1;
+	dir = 4
+	},
+/turf/open/floor/prison/brown/southwest,
+/area/template_noop)
+"tO" = (
+/obj/structure/bed/chair/comfy/teal,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_5";
+	pixel_x = -12;
+	pixel_y = -17
+	},
+/obj/item/ammo_casing,
+/turf/open/floor/prison/west,
+/area/template_noop)
+"ue" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/large_stain{
+	pixel_x = 3;
+	pixel_y = -9;
+	layer = 2.1;
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/platingdmg1,
+/area/template_noop)
+"uI" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/stack/sheet/wood,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/shard,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/platingdmg3,
+/area/template_noop)
+"uJ" = (
+/obj/structure/barricade/metal{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/brown_bright/north,
+/area/template_noop)
+"uS" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_casing,
+/obj/item/ammo_magazine/smg/mac15,
+/turf/open/floor/prison/platingdmg2,
+/area/template_noop)
+"xU" = (
+/obj/structure/disposalpipe/segment,
+/obj/item/weapon/twohanded/spear,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/shard,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/brown_bright/corner,
+/area/template_noop)
+"yJ" = (
+/obj/structure/barricade/metal{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/gibs,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/template_noop)
+"yX" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/stack/sheet/wood,
+/turf/open/floor/prison/brown/corner,
+/area/template_noop)
+"za" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/item/tool/mop,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/brown_bright/corner/east,
+/area/template_noop)
+"zf" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/janitorialcart,
+/turf/open/floor/prison/brown/corner/east,
+/area/template_noop)
+"zk" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/stack/sheet/wood,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_y = 17
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/brown_bright/angled/north,
+/area/template_noop)
+"AC" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/shard,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/brown_bright/corner/east,
+/area/template_noop)
+"AM" = (
+/obj/structure/machinery/light/small/blue{
+	light_color = "#dae2ff";
+	dir = 1
+	},
+/obj/structure/surface/table{
+	color = "#8B7B5B";
+	flipped = 1;
+	dir = 4
+	},
+/turf/open/floor/prison/floor_plate,
+/area/template_noop)
+"AU" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/brown_bright/corner,
+/area/template_noop)
+"AY" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/platingdmg2,
+/area/template_noop)
+"Bb" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/brown_bright/north,
+/area/template_noop)
+"Bi" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing,
+/obj/item/shard,
+/obj/item/weapon/broken_bottle,
+/turf/open/floor/prison/brown/corner/west,
+/area/template_noop)
+"Ci" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood/gibs,
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/interior/sun_emblem{
+	dir = 5
+	},
+/area/template_noop)
+"Ck" = (
+/obj/effect/decal/hybrisa/deco_edging{
+	dir = 4;
+	color = "#e6ac3f"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 4
+	},
+/obj/item/tool/crowbar,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/structure/surface/table{
+	color = "#8B7B5B";
+	flipped = 1;
+	dir = 8
+	},
+/turf/open/floor/prison/brown/angled/north,
+/area/template_noop)
+"Cn" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 6;
+	pixel_y = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/shard,
+/obj/item/ammo_casing,
+/obj/item/weapon/broken_bottle,
+/turf/open/floor/prison/platingdmg1,
+/area/template_noop)
+"Du" = (
+/obj/item/weapon/twohanded/fireaxe,
+/obj/effect/decal/cleanable/blood,
+/obj/item/limb/hand/l_hand,
+/turf/open/floor/prison/brown_bright/corner/north,
+/area/template_noop)
+"Ec" = (
+/obj/effect/decal/cleanable/blood,
+/obj/structure/barricade/wooden,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/brown_bright/corner/east,
+/area/template_noop)
+"Fu" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/weapon/gun/smg/mac15,
+/turf/open/floor/prison/brown_bright/angled/east,
+/area/template_noop)
+"Gg" = (
+/obj/effect/decal/hybrisa/deco_edging{
+	dir = 1;
+	color = "#e6ac3f"
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 5;
+	pixel_y = 16
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing,
+/obj/structure/prop/hybrisa/misc/blood/blood1{
+	pixel_y = 32;
+	pixel_x = -7
+	},
+/obj/effect/decal/large_stain{
+	dir = 4;
+	color = "#390000"
+	},
+/obj/structure/surface/table{
+	color = "#8B7B5B";
+	flipped = 1
+	},
+/turf/open/floor/prison/platingdmg1,
+/area/template_noop)
+"Gl" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/shard,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/item/ammo_casing,
+/turf/open/floor/prison/brown_bright/angled/north,
+/area/template_noop)
+"Hb" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_y = 17
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_magazine/smg/mac15,
+/turf/open/floor/prison/bright_clean2,
+/area/template_noop)
+"Hu" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/shard,
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_magazine/smg/mac15,
+/turf/open/floor/prison/brown_bright/angled,
+/area/template_noop)
+"Hx" = (
+/obj/effect/decal/hybrisa/deco_edging/corner{
+	dir = 4;
+	color = "#e6ac3f"
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 9
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/structure/surface/table{
+	color = "#8B7B5B";
+	flipped = 1
+	},
+/turf/open/floor/prison/brown/corner/east,
+/area/template_noop)
+"Ik" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 6;
+	pixel_y = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/shard,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/brown_bright/corner/north,
+/area/template_noop)
+"IN" = (
+/obj/item/ammo_casing,
+/turf/closed/wall/mineral/gold{
+	desc = "The emblem of the sun etched in gold, a radiant seal that crowns the dome's foundation. At its center lies a block engraved with the Weyland-Yutani insignia, the names of the founders and contributors and the purpose of this place.";
+	name = "Solar Nexus Pillar"
+	},
+/area/template_noop)
+"IT" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/brown_bright/corner/west,
+/area/template_noop)
+"IX" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/barricade/wooden,
+/turf/open/floor/prison/brown/corner/north,
+/area/template_noop)
+"Jb" = (
+/obj/structure/barricade/wooden,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/brown/corner,
+/area/template_noop)
+"Jk" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/stack/sheet/metal,
+/obj/item/trash/burger,
+/obj/item/shard,
+/turf/open/floor/prison/west,
+/area/template_noop)
+"JJ" = (
+/obj/item/frame/table{
+	color = "#8B7B5B"
+	},
+/obj/effect/decal/large_stain{
+	pixel_x = 3;
+	pixel_y = -9;
+	layer = 2.1;
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 5;
+	pixel_y = 16
+	},
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/template_noop)
+"JN" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood/gibs,
+/obj/item/stack/sheet/metal,
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/brown_bright/north,
+/area/template_noop)
+"JQ" = (
+/obj/structure/extinguisher_cabinet{
+	pixel_x = -32
+	},
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_3";
+	pixel_x = -8;
+	pixel_y = 11
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_29"
+	},
+/turf/open/floor/prison/west,
+/area/template_noop)
+"Kt" = (
+/obj/structure/barricade/metal{
+	health = 250;
+	icon_state = "metal_2"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/brown_bright/corner/west,
+/area/template_noop)
+"Lz" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_y = 17
+	},
+/obj/item/limb/hand/l_hand,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/colonist/random,
+/turf/open/floor/interior/sun_emblem{
+	dir = 1
+	},
+/area/template_noop)
+"LP" = (
+/obj/effect/decal/large_stain,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/platingdmg3,
+/area/template_noop)
+"LT" = (
+/obj/effect/decal/hybrisa/trash{
+	pixel_x = -9;
+	pixel_y = -10
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/trash/c_tube,
+/obj/item/prop{
+	desc = "An issue of The Pioneer's Standard, the newspaper circulating in UA-controlled space.";
+	icon = 'icons/obj/items/paper.dmi';
+	icon_state = "newspaper";
+	name = "The Pioneer's Standard";
+	pixel_x = 6;
+	pixel_y = 3
+	},
+/obj/item/stack/sheet/wood,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/west,
+/area/template_noop)
+"LU" = (
+/obj/structure/machinery/light/blue{
+	dir = 1
+	},
+/obj/structure/bed/chair/comfy/teal,
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/west,
+/area/template_noop)
+"ML" = (
+/obj/structure/machinery/light/small/blue{
+	light_color = "#dae2ff"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/surface/table{
+	color = "#8B7B5B"
+	},
+/obj/item/stack/sheet/wood,
+/turf/open/floor/prison/floor_plate,
+/area/template_noop)
+"MN" = (
+/obj/structure/machinery/light/blue{
+	dir = 1
+	},
+/obj/structure/machinery/vending/coffee,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/west,
+/area/template_noop)
+"Na" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_y = 6
+	},
+/obj/effect/decal/large_stain{
+	pixel_x = 3;
+	pixel_y = -9;
+	layer = 2.1;
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/platingdmg2,
+/area/template_noop)
+"NQ" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/item/frame/table{
+	color = "#8B7B5B"
+	},
+/obj/effect/decal/large_stain{
+	pixel_x = 3;
+	pixel_y = -9;
+	layer = 2.1;
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/platingdmg2,
+/area/template_noop)
+"OB" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/brown_bright/corner/north,
+/area/template_noop)
+"Pn" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/gibs,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/interior/sun_emblem{
+	dir = 8
+	},
+/area/template_noop)
+"Ps" = (
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/obj/structure/barricade/wooden,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/brown/corner/north,
+/area/template_noop)
+"PP" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/large_stain{
+	pixel_x = 3;
+	pixel_y = -9
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/brown_bright/angled/east,
+/area/template_noop)
+"PS" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/large_stain,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/shard,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/platingdmg1,
+/area/template_noop)
+"PX" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/barricade/wooden{
+	dir = 1
+	},
+/obj/effect/decal/large_stain,
+/turf/open/floor/prison/floor_plate,
+/area/template_noop)
+"Qe" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 5;
+	pixel_y = 16
+	},
+/obj/item/stack/sheet/wood,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/effect/decal/large_stain{
+	dir = 4;
+	color = "#390000"
+	},
+/turf/open/floor/interior/sun_emblem{
+	dir = 9
+	},
+/area/template_noop)
+"Qj" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/platingdmg1,
+/area/template_noop)
+"Qn" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 6;
+	pixel_y = 1
+	},
+/obj/effect/decal/cleanable/blood/gibs,
+/obj/item/limb/foot/l_foot,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/interior/sun_emblem{
+	dir = 6
+	},
+/area/template_noop)
+"QW" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -8
+	},
+/obj/effect/decal/large_stain{
+	pixel_x = 3;
+	pixel_y = -9;
+	layer = 2.1;
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/brown_bright/angled,
+/area/template_noop)
+"Rf" = (
+/obj/item/stack/sheet/wood,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/brown_bright/angled/west,
+/area/template_noop)
+"RF" = (
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/barricade/wooden{
+	dir = 1
+	},
+/obj/item/ammo_casing,
+/turf/open/floor/prison/brown_bright/southwest,
+/area/template_noop)
+"RR" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_y = 17
+	},
+/obj/effect/decal/large_stain{
+	pixel_x = 3;
+	pixel_y = -9;
+	layer = 2.1;
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_magazine/smg/mac15,
+/turf/open/floor/prison/platingdmg1,
+/area/template_noop)
+"Sc" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/brown_bright/angled/north,
+/area/template_noop)
+"Sz" = (
+/obj/structure/disposalpipe/segment,
+/obj/item/stack/sheet/wood,
+/obj/effect/decal/large_stain{
+	pixel_x = 3;
+	pixel_y = -9;
+	layer = 2.1;
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/platingdmg2,
+/area/template_noop)
+"Ua" = (
+/obj/effect/decal/hybrisa/deco_edging/corner{
+	dir = 1;
+	color = "#e6ac3f"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_y = 17
+	},
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 4
+	},
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/limb/head,
+/obj/structure/surface/table{
+	color = "#8B7B5B";
+	flipped = 1;
+	dir = 4
+	},
+/turf/open/floor/prison/brown/corner/north,
+/area/template_noop)
+"Ug" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/platingdmg2,
+/area/template_noop)
+"Uh" = (
+/obj/item/stack/sheet/wood,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/bright_clean2,
+/area/template_noop)
+"UZ" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/stack/sheet/metal,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison/floor_plate_alt/west,
+/area/template_noop)
+"Vc" = (
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 8
+	},
+/obj/effect/decal/hybrisa/deco_edging{
+	dir = 8;
+	color = "#e6ac3f"
+	},
+/obj/structure/disposalpipe/junction{
+	dir = 4;
+	icon_state = "pipe-y"
+	},
+/obj/item/ammo_casing,
+/obj/item/weapon/gun/revolver/m44/custom,
+/obj/structure/surface/table{
+	color = "#8B7B5B";
+	flipped = 1;
+	dir = 4
+	},
+/turf/open/floor/prison/brown/angled,
+/area/template_noop)
+"Vi" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/deco_edging{
+	color = "#e6ac3f"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/frame/table{
+	color = "#8B7B5B"
+	},
+/obj/effect/decal/large_stain{
+	pixel_x = 3;
+	pixel_y = -9;
+	layer = 2.1;
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/brown/west,
+/area/template_noop)
+"Vw" = (
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/trash/buritto,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_4";
+	pixel_x = 4;
+	pixel_y = 17
+	},
+/turf/open/floor/prison/brown/corner/east,
+/area/template_noop)
+"VM" = (
+/obj/structure/machinery/light/blue,
+/obj/structure/bed/chair/comfy/teal{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/turf/open/floor/prison/west,
+/area/template_noop)
+"VR" = (
+/obj/item/reagent_container/glass/bucket{
+	layer = 7;
+	pixel_x = -12;
+	pixel_y = 13
+	},
+/obj/effect/decal/large_stain,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood,
+/obj/item/limb/leg/r_leg,
+/turf/open/floor/prison/brown_bright/corner/east,
+/area/template_noop)
+"Wi" = (
+/obj/structure/machinery/camera/autoname{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/obj/effect/decal/large_stain,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/brown_bright/angled/east,
+/area/template_noop)
+"Wz" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/decal/large_stain{
+	pixel_x = 3;
+	pixel_y = -9;
+	layer = 2.1;
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/bright_clean2,
+/area/template_noop)
+"XO" = (
+/obj/effect/decal/large_stain,
+/obj/structure/surface/table{
+	color = "#8B7B5B";
+	flipped = 1;
+	dir = 8
+	},
+/turf/open/floor/prison/floor_plate,
+/area/template_noop)
+"YM" = (
+/obj/structure/bed/chair/comfy/teal{
+	dir = 8
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/barricade/wooden,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 6;
+	pixel_y = 1
+	},
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/west,
+/area/template_noop)
+"YN" = (
+/obj/structure/sign/safety/security{
+	pixel_x = -17;
+	pixel_y = 7
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/stack/sheet/metal,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/darkred2/west,
+/area/template_noop)
+"ZO" = (
+/obj/structure/barricade/wooden{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/brown_bright/northeast,
+/area/template_noop)
+"ZP" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/item/ammo_casing,
+/turf/open/floor/prison/brown_bright/angled/west,
+/area/template_noop)
+
+(1,1,1) = {"
+sN
+sN
+sN
+lW
+AY
+JJ
+Bb
+XO
+sN
+sN
+sN
+"}
+(2,1,1) = {"
+sN
+hd
+JQ
+Vw
+xU
+Sz
+eV
+IX
+sN
+sN
+sN
+"}
+(3,1,1) = {"
+sN
+MN
+zf
+Hu
+Wz
+ck
+ik
+jb
+sN
+sN
+sN
+"}
+(4,1,1) = {"
+PX
+hK
+at
+za
+bd
+uS
+Sc
+OB
+Wi
+Ps
+YN
+"}
+(5,1,1) = {"
+ZO
+PS
+VR
+qq
+jd
+jg
+Ck
+nI
+NQ
+dO
+nn
+"}
+(6,1,1) = {"
+uI
+ll
+Na
+rH
+tt
+Pn
+ez
+tq
+hW
+Kt
+LP
+"}
+(7,1,1) = {"
+UZ
+Ug
+Uh
+Vi
+Ci
+IN
+Lz
+Gg
+Hb
+hL
+mO
+"}
+(8,1,1) = {"
+JN
+Du
+Fu
+gr
+Qe
+Qn
+oZ
+oG
+QW
+ix
+rn
+"}
+(9,1,1) = {"
+RF
+fT
+st
+Ua
+he
+tK
+Vc
+Hx
+Cn
+Ec
+jk
+"}
+(10,1,1) = {"
+kH
+Bi
+Gl
+IT
+PP
+gw
+rC
+AU
+Rf
+Jb
+ex
+"}
+(11,1,1) = {"
+sN
+LU
+sh
+zk
+RR
+jF
+ue
+ZP
+mP
+VM
+sN
+"}
+(12,1,1) = {"
+sN
+LT
+YM
+eq
+Ik
+Qj
+AC
+yX
+tO
+Jk
+sN
+"}
+(13,1,1) = {"
+sN
+sN
+sN
+AM
+uJ
+yJ
+gO
+ML
+sN
+sN
+sN
+"}

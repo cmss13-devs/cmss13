@@ -1,0 +1,556 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ak" = (
+/obj/structure/machinery/colony_floodlight,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/template_noop)
+"aE" = (
+/turf/open/floor/brown_dirt/random_rocks_alt{
+	dir = 6
+	},
+/area/template_noop)
+"aL" = (
+/turf/open/auto_turf/lv_grass/layer1,
+/area/template_noop)
+"aU" = (
+/obj/structure/flora/jungle/vines/blue/light_2,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/template_noop)
+"bv" = (
+/obj/structure/flora/jungle/vines/dead/heavy,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/template_noop)
+"cG" = (
+/turf/template_noop,
+/area/space)
+"dV" = (
+/turf/open/auto_turf/lv_sand/layer0,
+/area/template_noop)
+"ef" = (
+/turf/open/floor/brown_dirt/random_rocks,
+/area/template_noop)
+"eW" = (
+/obj/structure/flora/jungle/vines/dead/light_1,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/template_noop)
+"fw" = (
+/obj/structure/fence/dark/overgrown,
+/turf/open/floor/brown_dirt/random_rocks_alt{
+	dir = 6
+	},
+/area/template_noop)
+"he" = (
+/obj/structure/flora/jungle/vines/blue/heavy,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/template_noop)
+"hI" = (
+/obj/structure/flora/bush/ausbushes/lavendergrass,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/template_noop)
+"iO" = (
+/obj/structure/fence/dark/overgrown,
+/turf/open/auto_turf/lv_sand/layer0,
+/area/template_noop)
+"kH" = (
+/obj/structure/flora/jungle/planttop1,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/template_noop)
+"lc" = (
+/turf/closed/wall/strata_ice/jungle,
+/area/template_noop)
+"lq" = (
+/turf/open/gm/dirt/brown/variant_5/east,
+/area/template_noop)
+"lJ" = (
+/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/obj/structure/flora/jungle/vines/blue/light_3,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/template_noop)
+"lR" = (
+/obj/structure/flora/jungle/plantbot1,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/template_noop)
+"nx" = (
+/obj/structure/flora/grass/tallgrass/jungle_alt_2,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/template_noop)
+"oW" = (
+/turf/open/floor/brown_dirt/random_rocks_alt,
+/area/template_noop)
+"pp" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/obj/structure/flora/jungle/vines/blue/heavy,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/template_noop)
+"qt" = (
+/obj/structure/fence/dark,
+/turf/open/auto_turf/lv_sand/layer0,
+/area/template_noop)
+"qL" = (
+/obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
+	dir = 9
+	},
+/turf/open/auto_turf/lv_grass/layer0,
+/area/template_noop)
+"ri" = (
+/obj/structure/flora/jungle/vines/blue/heavy,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/template_noop)
+"rM" = (
+/obj/structure/fence/dark/overgrown,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/template_noop)
+"sP" = (
+/obj/structure/fence/dark,
+/turf/open/floor/brown_dirt/random_rocks,
+/area/template_noop)
+"sR" = (
+/obj/structure/flora/jungle/vines/dead/light_3,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/template_noop)
+"tH" = (
+/obj/structure/flora/bush/ausbushes/grassybush,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/template_noop)
+"wR" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/auto_turf/lv_sand/layer0,
+/area/template_noop)
+"xo" = (
+/obj/structure/flora/jungle/vines/blue/light_3,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/template_noop)
+"yb" = (
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/obj/structure/flora/jungle/vines/blue/light_3,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/template_noop)
+"zB" = (
+/obj/structure/flora/jungle/vines/blue/light_3,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/template_noop)
+"zC" = (
+/obj/structure/flora/bush/ausbushes/ausbush,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/template_noop)
+"zI" = (
+/obj/structure/flora/jungle/vines/blue/light_2,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/template_noop)
+"zT" = (
+/obj/structure/machinery/colony_floodlight,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/template_noop)
+"Az" = (
+/obj/structure/flora/jungle/vines/dead/light_1,
+/turf/closed/wall/strata_ice/jungle,
+/area/template_noop)
+"Dw" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -8;
+	pixel_y = 17
+	},
+/obj/structure/fence/dark/overgrown,
+/turf/open/gm/dirt/brown/variant_5/east,
+/area/template_noop)
+"Eh" = (
+/obj/structure/flora/jungle/vines/blue/heavy,
+/obj/structure/flora/jungle/vines/blue/light_3,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/template_noop)
+"Eu" = (
+/obj/structure/flora/bush/ausbushes/lavendergrass,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/template_noop)
+"ER" = (
+/obj/structure/flora/jungle/vines/dead/light_2,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/template_noop)
+"EU" = (
+/obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
+	dir = 5
+	},
+/turf/open/auto_turf/lv_grass/layer0,
+/area/template_noop)
+"HI" = (
+/obj/structure/flora/jungle/vines/blue/light_3,
+/turf/closed/wall/strata_ice/jungle,
+/area/template_noop)
+"Mu" = (
+/obj/structure/fence/dark,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/template_noop)
+"ML" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/obj/structure/flora/jungle/vines/blue/light_2,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/template_noop)
+"NW" = (
+/obj/structure/flora/bush/ausbushes/var3/sunnybush,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/template_noop)
+"TQ" = (
+/obj/structure/machinery/colony_floodlight{
+	light_color = "#dae2ff"
+	},
+/turf/open/auto_turf/lv_grass/layer1,
+/area/template_noop)
+"Ua" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/template_noop)
+"Ud" = (
+/turf/open/gm/dirt/brown/variant_5/south,
+/area/template_noop)
+"UD" = (
+/obj/structure/flora/jungle/vines/dead/light_1,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/template_noop)
+"UP" = (
+/turf/open/auto_turf/lv_grass/layer0,
+/area/template_noop)
+"Vm" = (
+/obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
+	dir = 6
+	},
+/turf/open/auto_turf/lv_grass/layer1,
+/area/template_noop)
+"Xx" = (
+/obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
+	dir = 5
+	},
+/turf/open/auto_turf/lv_grass/layer1,
+/area/template_noop)
+"XD" = (
+/obj/structure/flora/jungle/vines/dead/light_3,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/template_noop)
+"Zp" = (
+/obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
+	dir = 1
+	},
+/turf/open/auto_turf/lv_grass/layer0,
+/area/template_noop)
+
+(1,1,1) = {"
+dV
+rM
+rM
+Mu
+Mu
+rM
+rM
+rM
+rM
+rM
+rM
+rM
+Mu
+rM
+iO
+"}
+(2,1,1) = {"
+aL
+aL
+UP
+UP
+aL
+aL
+UP
+aL
+UP
+UP
+NW
+aL
+UP
+aL
+rM
+"}
+(3,1,1) = {"
+aL
+UP
+lc
+lc
+eW
+zB
+lc
+kH
+lR
+xo
+UP
+UP
+aL
+lc
+rM
+"}
+(4,1,1) = {"
+aL
+zT
+UP
+lc
+zI
+UD
+he
+ri
+aL
+hI
+lc
+ak
+aL
+UP
+rM
+"}
+(5,1,1) = {"
+aL
+aL
+UD
+aU
+aU
+he
+lc
+zI
+ri
+aU
+UP
+aL
+Eu
+UP
+aL
+"}
+(6,1,1) = {"
+aL
+aL
+eW
+he
+zB
+he
+Az
+Az
+zI
+UD
+aL
+aL
+UP
+lc
+aL
+"}
+(7,1,1) = {"
+aL
+eW
+lc
+HI
+HI
+zB
+yb
+zB
+pp
+bv
+eW
+HI
+UP
+zC
+aL
+"}
+(8,1,1) = {"
+aL
+UP
+zB
+sR
+he
+ri
+ri
+zI
+Eh
+lJ
+xo
+UP
+aL
+Ua
+aL
+"}
+(9,1,1) = {"
+Eu
+aL
+sR
+zB
+he
+lc
+he
+lc
+zB
+ri
+sR
+cG
+cG
+cG
+cG
+"}
+(10,1,1) = {"
+UP
+aL
+zT
+XD
+ML
+Az
+zB
+ri
+ri
+UP
+tH
+cG
+cG
+cG
+cG
+"}
+(11,1,1) = {"
+EU
+UP
+hI
+xo
+ER
+lc
+lc
+ri
+UP
+xo
+aL
+cG
+cG
+cG
+cG
+"}
+(12,1,1) = {"
+Zp
+UP
+aL
+aL
+aL
+aL
+aL
+aL
+aL
+aL
+UP
+cG
+cG
+cG
+cG
+"}
+(13,1,1) = {"
+qL
+aL
+rM
+fw
+iO
+Dw
+iO
+iO
+iO
+iO
+cG
+cG
+cG
+cG
+cG
+"}
+(14,1,1) = {"
+UP
+aL
+qt
+ef
+ef
+dV
+dV
+dV
+oW
+dV
+cG
+cG
+cG
+cG
+cG
+"}
+(15,1,1) = {"
+aL
+aL
+qt
+oW
+lq
+dV
+Ud
+dV
+Ud
+Ud
+cG
+cG
+cG
+cG
+cG
+"}
+(16,1,1) = {"
+UP
+aL
+qt
+dV
+lq
+dV
+oW
+dV
+ef
+aE
+cG
+cG
+cG
+cG
+cG
+"}
+(17,1,1) = {"
+aL
+aL
+qt
+dV
+dV
+aE
+qt
+qt
+qt
+wR
+cG
+cG
+cG
+cG
+cG
+"}
+(18,1,1) = {"
+aL
+aL
+qt
+dV
+lq
+ef
+aL
+Vm
+Xx
+aL
+aL
+cG
+cG
+cG
+cG
+"}
+(19,1,1) = {"
+aL
+ef
+sP
+lq
+dV
+qt
+Vm
+nx
+Zp
+TQ
+UP
+cG
+cG
+cG
+cG
+"}

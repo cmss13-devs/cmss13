@@ -1,0 +1,359 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/obj/structure/barricade/handrail/wire,
+/obj/structure/barricade/handrail/wire{
+	layer = 3.1;
+	dir = 4
+	},
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 9
+	},
+/turf/open/floor/prison/floor_plate,
+/area/template_noop)
+"b" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/item/device/flashlight/lamp/tripod{
+	on = 0;
+	pixel_x = 10;
+	pixel_y = -3
+	},
+/turf/open/auto_turf/lv_sand/layer0,
+/area/template_noop)
+"c" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/gm/dirt/brown/variant_5,
+/area/template_noop)
+"e" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/floor/brown_dirt/random_rocks,
+/area/template_noop)
+"f" = (
+/turf/open/floor/brown_dirt/random_rocks,
+/area/template_noop)
+"h" = (
+/obj/structure/sign/safety/analysis_lab{
+	pixel_x = 7;
+	pixel_y = 32
+	},
+/obj/structure/largecrate/random/case/double,
+/turf/open/auto_turf/lv_sand/layer0,
+/area/template_noop)
+"j" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/auto_turf/lv_sand/layer0,
+/area/template_noop)
+"m" = (
+/obj/structure/largecrate/random/case/small{
+	pixel_y = 9
+	},
+/obj/structure/largecrate/random/mini/small_case{
+	pixel_y = 16;
+	pixel_x = 6
+	},
+/obj/structure/largecrate/random/case/small,
+/obj/structure/largecrate/random/mini/small_case{
+	pixel_y = 9;
+	pixel_x = -7
+	},
+/turf/open/floor/brown_dirt/random_rocks_alt{
+	dir = 6
+	},
+/area/template_noop)
+"n" = (
+/obj/effect/landmark/corpsespawner/scientist,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/brown_dirt/random_rocks,
+/area/template_noop)
+"o" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/auto_turf/lv_sand/layer0,
+/area/template_noop)
+"q" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/hybrisa/metal/stripe_red/north,
+/area/template_noop)
+"s" = (
+/obj/structure/cargo_container/hybrisa/containersextended/lightgreywyleft,
+/turf/open/auto_turf/lv_sand/layer0,
+/area/template_noop)
+"t" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 5;
+	pixel_y = 16
+	},
+/turf/open/gm/dirt/brown/variant_5/east,
+/area/template_noop)
+"u" = (
+/obj/structure/window/framed/lv_colony/white/reinforced,
+/obj/structure/machinery/door/poddoor/almayer/white/open{
+	id = "science_blast";
+	name = "Research Complex Shutter"
+	},
+/turf/open/floor/plating/prison,
+/area/template_noop)
+"v" = (
+/obj/structure/largecrate/random/barrel/black,
+/turf/open/auto_turf/lv_sand/layer0,
+/area/template_noop)
+"w" = (
+/obj/structure/closet/crate/science,
+/obj/effect/landmark/objective_landmark/science,
+/obj/item/paper/research_notes/grant/high,
+/obj/item/pamphlet/skill/science,
+/obj/effect/landmark/objective_landmark/science,
+/obj/effect/landmark/objective_landmark/science,
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/brown_dirt/random_rocks,
+/area/template_noop)
+"x" = (
+/turf/closed/wall/lv_outpost/white,
+/area/template_noop)
+"z" = (
+/obj/structure/cargo_container/hybrisa/containersextended/whitewyright,
+/turf/open/auto_turf/lv_sand/layer0,
+/area/template_noop)
+"A" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 9
+	},
+/obj/structure/prop/ice_colony/surveying_device/measuring_device{
+	pixel_x = -8
+	},
+/turf/open/auto_turf/lv_sand/layer0,
+/area/template_noop)
+"B" = (
+/obj/structure/largecrate/random/case/double,
+/turf/open/auto_turf/lv_sand/layer0,
+/area/template_noop)
+"C" = (
+/turf/open/auto_turf/lv_grass/layer1,
+/area/template_noop)
+"E" = (
+/obj/item/prop/alien/hugger,
+/turf/open/auto_turf/lv_sand/layer0,
+/area/template_noop)
+"F" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 5;
+	pixel_y = 16
+	},
+/turf/open/auto_turf/lv_sand/layer0,
+/area/template_noop)
+"G" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/gm/dirt/brown/variant_5/east,
+/area/template_noop)
+"H" = (
+/obj/structure/sign/safety/analysis_lab{
+	pixel_x = 7;
+	pixel_y = 32
+	},
+/turf/open/floor/brown_dirt/random_rocks,
+/area/template_noop)
+"I" = (
+/obj/structure/barricade/handrail/wire,
+/obj/structure/barricade/handrail/wire{
+	dir = 8;
+	layer = 4
+	},
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 1
+	},
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 4
+	},
+/turf/open/floor/prison/floor_plate,
+/area/template_noop)
+"J" = (
+/obj/structure/cargo_container/hybrisa/containersextended/lightgreywyright,
+/turf/open/auto_turf/lv_sand/layer0,
+/area/template_noop)
+"K" = (
+/turf/open/auto_turf/lv_sand/layer0,
+/area/template_noop)
+"M" = (
+/obj/structure/fence/dark/overgrown,
+/turf/open/auto_turf/lv_sand/layer0,
+/area/template_noop)
+"N" = (
+/obj/structure/largecrate/random/mini/small_case{
+	pixel_x = 8;
+	pixel_y = -2
+	},
+/turf/open/auto_turf/lv_sand/layer0,
+/area/template_noop)
+"O" = (
+/turf/open/gm/dirt/brown/variant_5/east,
+/area/template_noop)
+"P" = (
+/obj/structure/largecrate/random/mini/small_case{
+	pixel_x = 8;
+	pixel_y = 10
+	},
+/obj/item/device/flashlight/lamp/tripod{
+	on = 0;
+	pixel_x = -3
+	},
+/turf/open/auto_turf/lv_sand/layer0,
+/area/template_noop)
+"R" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -19;
+	pixel_y = 2
+	},
+/turf/open/gm/dirt/brown/variant_5/south,
+/area/template_noop)
+"S" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/prop/ice_colony/surveying_device{
+	dir = 1;
+	pixel_x = 8
+	},
+/turf/open/auto_turf/lv_sand/layer0,
+/area/template_noop)
+"T" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 5;
+	pixel_y = 16
+	},
+/turf/open/auto_turf/lv_sand/layer0,
+/area/template_noop)
+"U" = (
+/turf/open/gm/dirt/brown/variant_5/south,
+/area/template_noop)
+"V" = (
+/obj/structure/cargo_container/hybrisa/containersextended/whitewyleft,
+/turf/open/auto_turf/lv_sand/layer0,
+/area/template_noop)
+"W" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/template_noop)
+"X" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/auto_turf/lv_sand/layer0,
+/area/template_noop)
+"Y" = (
+/turf/open/floor/brown_dirt/random_rocks_alt{
+	dir = 6
+	},
+/area/template_noop)
+"Z" = (
+/obj/structure/machinery/door/airlock/hybrisa/medical/autoname{
+	name = "\improper Research Dome";
+	req_one_access_txt = "103;236;240;241";
+	dir = 1
+	},
+/obj/structure/machinery/door/poddoor/almayer/white/open{
+	id = "science_blast";
+	name = "Research Complex Shutter"
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/strata/floor3,
+/area/template_noop)
+
+(1,1,1) = {"
+W
+m
+e
+K
+G
+T
+K
+"}
+(2,1,1) = {"
+s
+n
+F
+U
+t
+Y
+K
+"}
+(3,1,1) = {"
+J
+U
+R
+X
+j
+K
+K
+"}
+(4,1,1) = {"
+w
+P
+f
+O
+j
+N
+M
+"}
+(5,1,1) = {"
+x
+h
+K
+O
+b
+B
+M
+"}
+(6,1,1) = {"
+u
+I
+K
+E
+S
+V
+M
+"}
+(7,1,1) = {"
+Z
+q
+c
+c
+A
+z
+M
+"}
+(8,1,1) = {"
+u
+a
+K
+K
+K
+v
+M
+"}
+(9,1,1) = {"
+x
+H
+o
+Y
+K
+o
+M
+"}
+(10,1,1) = {"
+C
+C
+C
+o
+o
+C
+C
+"}

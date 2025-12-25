@@ -1,0 +1,347 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"c" = (
+/turf/closed/wall/lv_outpost/reinforced,
+/area/lazarus/lazarus/security)
+"d" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 9
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/prison/brown/corner/east,
+/area/lazarus/lazarus/main_hall)
+"e" = (
+/turf/open/floor/prison/brown/corner,
+/area/lazarus/lazarus/main_hall)
+"f" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/bright_clean2,
+/area/lazarus/lazarus/main_hall)
+"g" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/prison/brown/southwest,
+/area/lazarus/lazarus/main_hall)
+"h" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/brown_bright/angled/north,
+/area/lazarus/lazarus/main_hall)
+"i" = (
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/prison/brown/southwest,
+/area/lazarus/lazarus/main_hall)
+"j" = (
+/turf/open/floor/prison/brown_bright/angled/west,
+/area/lazarus/lazarus/main_hall)
+"k" = (
+/obj/structure/disposalpipe/junction{
+	dir = 4;
+	icon_state = "pipe-y"
+	},
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 8
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/brown/corner/west,
+/area/lazarus/lazarus/main_hall)
+"l" = (
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 8
+	},
+/obj/structure/disposalpipe/junction{
+	dir = 4;
+	icon_state = "pipe-y"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/brown/northeast,
+/area/lazarus/lazarus/main_hall)
+"m" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 6
+	},
+/turf/open/floor/prison/brown/corner,
+/area/lazarus/lazarus/main_hall)
+"n" = (
+/turf/open/floor/prison/brown_bright/corner,
+/area/lazarus/lazarus/main_hall)
+"o" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/west,
+/area/lazarus/lazarus/main_hall)
+"p" = (
+/turf/open/floor/prison/brown/corner/west,
+/area/lazarus/lazarus/main_hall)
+"q" = (
+/turf/open/floor/prison/brown_bright/angled/north,
+/area/lazarus/lazarus/main_hall)
+"t" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/brown_bright/angled,
+/area/lazarus/lazarus/main_hall)
+"u" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/brown/corner,
+/area/lazarus/lazarus/main_hall)
+"v" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/prison/brown_bright/angled/north,
+/area/lazarus/lazarus/main_hall)
+"w" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/prison/bright_clean2,
+/area/lazarus/lazarus/main_hall)
+"x" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/brown_bright/angled/west,
+/area/lazarus/lazarus/main_hall)
+"y" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/prison/brown/corner/north,
+/area/lazarus/lazarus/main_hall)
+"z" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/brown/southwest,
+/area/lazarus/lazarus/main_hall)
+"A" = (
+/turf/open/floor/prison/brown_bright/angled,
+/area/lazarus/lazarus/main_hall)
+"B" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/brown_bright/angled/east,
+/area/lazarus/lazarus/main_hall)
+"C" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/brown/corner/east,
+/area/lazarus/lazarus/main_hall)
+"D" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/decal/hybrisa/wy_huge_logo/lines{
+	pixel_x = 16;
+	pixel_y = -16
+	},
+/turf/open/floor/prison/brown/northeast,
+/area/lazarus/lazarus/main_hall)
+"E" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/prison/brown_bright/corner/west,
+/area/lazarus/lazarus/main_hall)
+"F" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/brown/corner/west,
+/area/lazarus/lazarus/main_hall)
+"G" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/prison/brown/west,
+/area/lazarus/lazarus/main_hall)
+"H" = (
+/obj/structure/machinery/camera/autoname{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/brown_bright/angled/east,
+/area/lazarus/lazarus/main_hall)
+"I" = (
+/turf/open/floor/prison/bright_clean2,
+/area/lazarus/lazarus/main_hall)
+"J" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/brown/corner/north,
+/area/lazarus/lazarus/main_hall)
+"K" = (
+/turf/open/floor/prison/brown_bright/corner/west,
+/area/lazarus/lazarus/main_hall)
+"M" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/brown/west,
+/area/lazarus/lazarus/main_hall)
+"N" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/prison/brown/southeast,
+/area/lazarus/lazarus/main_hall)
+"O" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/prison/brown_bright/angled,
+/area/lazarus/lazarus/main_hall)
+"P" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/prison/brown/southeast,
+/area/lazarus/lazarus/main_hall)
+"Q" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/west,
+/area/lazarus/lazarus/main_hall)
+"R" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/prison/brown/west,
+/area/lazarus/lazarus/main_hall)
+"T" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/brown/southeast,
+/area/lazarus/lazarus/main_hall)
+"U" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/prison/brown_bright/corner/north,
+/area/lazarus/lazarus/main_hall)
+"V" = (
+/obj/structure/machinery/light/blue,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/brown_bright/angled/east,
+/area/lazarus/lazarus/main_hall)
+"W" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/prison/bright_clean2,
+/area/lazarus/lazarus/main_hall)
+"X" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/prison/brown/northeast,
+/area/lazarus/lazarus/main_hall)
+"Y" = (
+/turf/open/floor/prison/brown_bright/corner/north,
+/area/lazarus/lazarus/main_hall)
+"Z" = (
+/turf/open/floor/prison/brown_bright/corner/east,
+/area/lazarus/lazarus/main_hall)
+
+(1,1,1) = {"
+C
+A
+f
+I
+w
+V
+c
+"}
+(2,1,1) = {"
+t
+Z
+j
+f
+v
+Y
+H
+"}
+(3,1,1) = {"
+Z
+m
+z
+D
+i
+k
+U
+"}
+(4,1,1) = {"
+x
+N
+u
+Q
+F
+R
+q
+"}
+(5,1,1) = {"
+I
+M
+o
+o
+o
+P
+f
+"}
+(6,1,1) = {"
+B
+T
+J
+o
+C
+G
+A
+"}
+(7,1,1) = {"
+E
+y
+X
+g
+l
+d
+n
+"}
+(8,1,1) = {"
+q
+K
+B
+f
+O
+n
+j
+"}
+(9,1,1) = {"
+p
+h
+I
+I
+W
+j
+e
+"}

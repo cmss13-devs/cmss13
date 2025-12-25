@@ -122,11 +122,16 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 			if(!(reagent.flags & REAGENT_SCANNABLE) && detail_level == DETAIL_LEVEL_HEALTHANALYSER)
 				data["has_unknown_chemicals"] = TRUE
 				continue
+
+			var/reagent_name = reagent.name
+			reagent_name += reagent.delivery_method_to_string(reagent.delivery_method)
+
 			chemicals_lists["[reagent.id]"] = list(
-				"name" = reagent.name,
+				"name" = reagent_name,
 				"amount" = round(reagent.volume, 0.1),
 				"od" = reagent.overdose != 0 && reagent.volume > reagent.overdose && !(reagent.flags & REAGENT_CANNOT_OVERDOSE),
 				"dangerous" = reagent.overdose != 0 && reagent.volume > reagent.overdose && !(reagent.flags & REAGENT_CANNOT_OVERDOSE) || istype(reagent, /datum/reagent/toxin),
+				"improper" = reagent.calc_delivery_spectrum(reagent.delivery_method) == DELIVERY_NEGATIVE_EFFECT,
 				"color" = reagent.color
 			)
 

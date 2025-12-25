@@ -83,7 +83,7 @@
 
 	var/obj/effect/decal/chempuff/puff = new /obj/effect/decal/chempuff(get_turf(src))
 	puff.create_reagents(amount_per_transfer_from_this)
-	reagents.trans_to(puff, amount_per_transfer_from_this, 1 / spray_size)
+	reagents.trans_to(puff, amount_per_transfer_from_this, 1 / spray_size, method = TOUCH)
 	puff.color = mix_color_from_reagents(puff.reagents.reagent_list)
 	puff.source_user = user
 	puff.move_towards(target, 3 DECISECONDS, spray_size)
@@ -210,7 +210,7 @@
 		var/amount_to_transfer = min(amount_per_transfer_from_this, reagents.total_volume)
 		var/obj/effect/decal/chempuff/puff = new/obj/effect/decal/chempuff(my_turf)
 		puff.create_reagents(amount_to_transfer)
-		reagents.trans_to(puff, amount_to_transfer, 1 / spray_size)
+		reagents.trans_to(puff, amount_to_transfer, 1 / spray_size, method = TOUCH)
 		puff.color = mix_color_from_reagents(puff.reagents.reagent_list)
 		puff.source_user = user
 		puff.move_towards(target_turfs[i], 2 DECISECONDS, spray_size)

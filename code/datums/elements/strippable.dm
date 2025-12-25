@@ -209,20 +209,26 @@
 
 /datum/strippable_item/mob_item_slot/try_equip(atom/source, obj/item/equipping, mob/user)
 	. = ..()
-	if (!.)
+	if(!.)
 		return
 
-	if (!ismob(source))
+	if(!ismob(source))
 		return FALSE
-	if (user.action_busy)
+
+
+	var/mob/living/carbon/human/human_source = source
+	if(!human_source.has_limb_for_slot(key))
+		to_chat(user, SPAN_WARNING("[source] is missing the limb for this slot!"))
+		return FALSE
+
+	if(!equipping.mob_can_equip(source, key))
+		to_chat(user, SPAN_WARNING("[equipping] doesn't fit in that place!"))
+		return FALSE
+
+	if(user.action_busy)
 		to_chat(user, SPAN_WARNING("You can't do this right now."))
 		return FALSE
-	if (!equipping.mob_can_equip(
-		source,
-		key
-	))
-		to_chat(user, SPAN_WARNING("\The [equipping] doesn't fit in that place!"))
-		return FALSE
+
 	if(equipping.flags_item & WIELDED)
 		equipping.unwield(user)
 	return TRUE
@@ -262,6 +268,10 @@
 		return FALSE
 
 	var/mob/sourcemob = source
+	var/obj/item/weapon/twohanded/offhand/inactive_hand = user.get_inactive_hand()
+	if(inactive_hand) // there might be a better way of doing this, but i dont know
+		inactive_hand.unwield(user)
+
 	sourcemob.equip_to_slot_if_possible(equipping, key)
 
 /datum/strippable_item/mob_item_slot/get_obscuring(atom/source)

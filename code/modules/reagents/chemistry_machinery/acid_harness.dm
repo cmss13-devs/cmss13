@@ -263,7 +263,7 @@
 				return
 			text += SPAN_NOTICE("Welcome, to the Automated Chemical Integrated Delivery harness.")
 		if(1)
-			text += SPAN_NOTICE("Standby for Main Systems initilization...")
+			text += SPAN_NOTICE("Standby for Main Systems initialization...")
 		if(2)
 			text += SPAN_NOTICE("Communication interface, online.")
 			playsound_client(user.client, 'sound/handling/toggle_nv1.ogg', null, ITEM_EQUIP_VOLUME)

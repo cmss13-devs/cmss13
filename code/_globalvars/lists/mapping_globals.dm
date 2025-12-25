@@ -10,6 +10,7 @@ GLOBAL_LIST_EMPTY(queen_spawns)
 GLOBAL_LIST_EMPTY(xeno_spawns)
 GLOBAL_LIST_EMPTY(xeno_hive_spawns)
 GLOBAL_LIST_EMPTY(survivor_spawns_by_priority)
+GLOBAL_LIST_EMPTY(generic_survivor_spawns)
 GLOBAL_LIST_EMPTY(corpse_spawns)
 
 GLOBAL_LIST_EMPTY(mainship_yautja_teleports)

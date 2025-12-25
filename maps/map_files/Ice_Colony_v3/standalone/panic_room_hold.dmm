@@ -7,6 +7,10 @@
 /obj/effect/landmark/survivor_spawner/shivas_panic_room_doc/medium_priority,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
+"ac" = (
+/obj/effect/landmark/survivor_spawner/shivas_panic_room_synth,
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
 "ai" = (
 /obj/structure/largecrate/random/barrel/red,
 /turf/open/auto_turf/snow/layer2,
@@ -1737,7 +1741,7 @@ XP
 sy
 ce
 YS
-dF
+ac
 dF
 cL
 bi

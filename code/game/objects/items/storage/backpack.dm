@@ -54,9 +54,8 @@
 	if(HAS_TRAIT(target_mob, TRAIT_XENONID))
 		return ..() // We don't have backpack sprites for xenoids (yet?)
 	var/mob/living/carbon/xenomorph/xeno = target_mob
-	if((target_mob.stat != DEAD) && !xeno.legcuffed) // If the Xeno is alive, fight back
-		var/mob/living/carbon/carbon_user = user
-		if(!carbon_user || !carbon_user.ally_of_hivenumber(xeno.hivenumber))
+	if((target_mob.stat != DEAD) && !xeno.legcuffed && !HAS_TRAIT(xeno, TRAIT_XENO_BRAINDEAD)) // If the Xeno is alive, fight back
+		if(!user.ally_of_hivenumber(xeno.hivenumber))
 			user.KnockDown(rand(xeno.caste.tacklestrength_min, xeno.caste.tacklestrength_max))
 			playsound(user.loc, 'sound/weapons/pierce.ogg', 25, TRUE)
 			user.visible_message(SPAN_WARNING("\The [user] tried to strap \the [src] onto [target_mob] but instead gets a tail swipe to the head!"))
@@ -82,7 +81,8 @@
 		xeno.backpack_icon_holder = new(null, xeno)
 		xeno.vis_contents += xeno.backpack_icon_holder
 
-	target_mob.put_in_back(src)
+	xeno.xeno_put_in_slot(src, WEAR_BACK)
+	xeno.update_inv_back()
 	return FALSE
 
 /obj/item/storage/backpack/proc/toggle_lock(obj/item/card/id/card, mob/living/carbon/human/H)

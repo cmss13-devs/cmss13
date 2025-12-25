@@ -142,9 +142,9 @@
 			for(var/datum/hive_status/permit_hive as anything in permit_hives)
 				//Give or remove the trait from newly-born xenos in this hive.
 				if(grant == "Grant")
-					LAZYADD(permit_hive.hive_inherant_traits, TRAIT_OPPOSABLE_THUMBS)
+					LAZYADD(permit_hive.hive_inherent_traits, TRAIT_OPPOSABLE_THUMBS)
 				else
-					LAZYREMOVE(permit_hive.hive_inherant_traits, TRAIT_OPPOSABLE_THUMBS)
+					LAZYREMOVE(permit_hive.hive_inherent_traits, TRAIT_OPPOSABLE_THUMBS)
 
 			if(!length(handled_xenos) && !length(permit_hives))
 				return
@@ -198,9 +198,9 @@
 			for(var/datum/hive_status/permit_hive as anything in permit_hives)
 				//Give or remove the trait from newly-born xenos in this hive.
 				if(grant == "Grant")
-					LAZYADD(permit_hive.hive_inherant_traits, TRAIT_CARDPLAYING_THUMBS)
+					LAZYADD(permit_hive.hive_inherent_traits, TRAIT_CARDPLAYING_THUMBS)
 				else
-					LAZYREMOVE(permit_hive.hive_inherant_traits, TRAIT_CARDPLAYING_THUMBS)
+					LAZYREMOVE(permit_hive.hive_inherent_traits, TRAIT_CARDPLAYING_THUMBS)
 
 			if(!length(handled_xenos) && !length(permit_hives))
 				return

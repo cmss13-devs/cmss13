@@ -28,6 +28,7 @@
 #define XENO_EXECUTE "28" // Execute thershold, vampire
 #define NEW_PLAYER_HUD "29" //Makes it easy to see new players.
 #define SPYCAM_HUD "30" //Remote control spy cameras.
+#define XENO_HOSTILE_FLOORED "31" //xeno-inflicted "floored" status.
 
 //data HUD (medhud, sechud) defines
 #define MOB_HUD_SECURITY_BASIC 1

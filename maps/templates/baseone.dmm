@@ -736,7 +736,7 @@
 /turf/open/floor/prison/sterile_white/south,
 /area/adminlevel/bunker01/kitchen)
 "cg" = (
-/mob/living/simple_animal/chicken{
+/mob/living/simple_animal/small/chicken{
 	desc = "A chubby and friendly chicken, often sticking to the person being on kitchen duty. She looks somewhat lonely.";
 	emote_see = list("pecks at the ground","flaps its wings","clucks happily");
 	faction = list("CLF","UPP");

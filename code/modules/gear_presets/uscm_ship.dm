@@ -99,7 +99,7 @@
 	idtype = /obj/item/card/id/silver/cl
 
 	minimap_icon = "correspondent"
-	minimap_background = "background_civillian"
+	minimap_background = "background_civilian"
 	dress_under = list()
 	dress_over = list()
 	dress_hat = list()
@@ -134,7 +134,7 @@
 	idtype = /obj/item/card/id/dogtag
 
 	minimap_icon = "correspondent"
-	minimap_background = "background_civillian"
+	minimap_background = "background_civilian"
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/nco)
 	dress_hat = list(/obj/item/clothing/head/marine/dress_cover)
 

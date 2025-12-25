@@ -89,7 +89,7 @@
 
 /datum/equipment_preset/synth/survivor/New()
 	. = ..()
-	access = get_access(ACCESS_LIST_COLONIAL_ALL) + get_region_accesses(2) + get_region_accesses(4) + ACCESS_MARINE_RESEARCH //Access to civillians stuff + medbay stuff + engineering stuff + research
+	access = get_access(ACCESS_LIST_COLONIAL_ALL) + get_region_accesses(2) + get_region_accesses(4) + ACCESS_MARINE_RESEARCH //Access to civilians stuff + medbay stuff + engineering stuff + research
 
 /datum/equipment_preset/synth/survivor/pmc/New()
 	. = ..()

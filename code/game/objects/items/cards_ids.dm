@@ -400,7 +400,7 @@
 				to_chat(user, SPAN_WARNING("Invalid Assignment."))
 				return
 
-			var/new_rank = strip_html(input(user, "What paygrade do would you like to put on this card?\nNote: This must be the shorthand version of the grade, I.E CIV for Civillian or ME1 for Marine Private", "Agent card paygrade assignment", PAY_SHORT_CIV))
+			var/new_rank = strip_html(input(user, "What paygrade do would you like to put on this card?\nNote: This must be the shorthand version of the grade, I.E CIV for Civilian or ME1 for Marine Private", "Agent card paygrade assignment", PAY_SHORT_CIV))
 			if(!new_rank || !(new_rank in GLOB.paygrades))
 				to_chat(user, SPAN_WARNING("Invalid Paygrade."))
 				return

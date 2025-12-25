@@ -68,9 +68,9 @@
 
 /datum/emergency_call/wy_bodyguard/pmc/sec
 	name = "Weyland-Yutani PMC Enforcer (Executive Bodyguard Detail)"
-	equipment_preset = /datum/equipment_preset/pmc/pmc_detainer
+	equipment_preset = /datum/equipment_preset/pmc/pmc_security
 	equipment_preset_leader = /datum/equipment_preset/pmc/pmc_lead_investigator
-	spawn_header = "You are a Weyland-Yutani PMC Detainer!"
+	spawn_header = "You are a Weyland-Yutani PMC Security Enforcer!"
 	spawn_header_leader = "You are a Weyland-Yutani PMC Lead Investigator!"
 
 /datum/emergency_call/wy_bodyguard/commando

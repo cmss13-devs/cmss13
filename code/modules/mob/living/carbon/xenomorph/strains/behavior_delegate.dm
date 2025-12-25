@@ -63,6 +63,9 @@
 /datum/behavior_delegate/proc/melee_attack_additional_effects_target(mob/living/carbon/A)
 	return
 
+/datum/behavior_delegate/proc/melee_tackle_additional_effects_target(mob/living/carbon/A)
+	return
+
 /datum/behavior_delegate/proc/melee_attack_additional_effects_self()
 	SEND_SIGNAL(bound_xeno, COMSIG_XENO_SLASH_ADDITIONAL_EFFECTS_SELF)
 

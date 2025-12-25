@@ -241,27 +241,24 @@
 /// Floor plane, self explanatory. Used for Ambient Occlusion filter
 #define FLOOR_PLANE -7
 
-#define TURF_PLANE -6
+/// Game Plane, where most of the game objects reside
+#define GAME_PLANE -5
+
+/// Above Game Plane. For things which are above game objects, but below screen effects.
+#define ABOVE_GAME_PLANE -4
+
+///Slightly above the game plane but does not catch mouse clicks. Useful for certain visuals that should be clicked through, like seethrough trees
+#define SEETHROUGH_PLANE -3
+
+/// Roof plane, disappearing when entering buildings
+#define ROOF_PLANE -2
 
 /// To keep from conflicts with SEE_BLACKNESS internals
 #define BLACKNESS_PLANE 0
 
-
-/// Game Plane, where most of the game objects reside
-#define GAME_PLANE 1
-
-/// Above Game Plane. For things which are above game objects, but below screen effects.
-#define ABOVE_GAME_PLANE 2
-
-///Slightly above the game plane but does not catch mouse clicks. Useful for certain visuals that should be clicked through, like seethrough trees
-#define SEETHROUGH_PLANE 3
-
-/// Roof plane, disappearing when entering buildings
-#define ROOF_PLANE 4
-
 /// For turfs and things we want to appear *over* blackness
-#define ABOVE_BLACKNESS_PLANE 5
-#define ABOVE_BLACKNESS_BACKDROP_PLANE 6
+#define ABOVE_BLACKNESS_PLANE 1
+#define ABOVE_BLACKNESS_BACKDROP_PLANE 2
 
 #define GHOST_PLANE 80
 

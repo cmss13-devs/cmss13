@@ -182,6 +182,8 @@
 	item_state = "m4a3"
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
 	current_mag = /obj/item/ammo_magazine/pistol/m1911/highimpact
+	unacidable = TRUE
+	explo_proof = TRUE
 
 /obj/item/weapon/gun/pistol/m1911/custom/set_gun_config_values()
 	..()

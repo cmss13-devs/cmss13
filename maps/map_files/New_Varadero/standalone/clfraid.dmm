@@ -14,6 +14,11 @@
 /obj/item/flag/plantable/clf,
 /turf/open/floor/platingdmg1,
 /area/varadero/interior/research)
+"ad" = (
+/obj/structure/machinery/iv_drip,
+/obj/item/reagent_container/blood/OMinus,
+/turf/open/floor/shiva/purple/east,
+/area/varadero/interior/research)
 "af" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/item/stack/tile/plasteel{
@@ -160,7 +165,7 @@
 "dZ" = (
 /obj/structure/window_frame/colony/reinforced,
 /obj/item/shard,
-/turf/open/floor/plating/icefloor/asteroidplating,
+/turf/open/floor/plating,
 /area/varadero/interior/research)
 "eo" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -1136,9 +1141,6 @@
 /obj/item/ammo_casing/bullet,
 /turf/open/floor/shiva/north,
 /area/varadero/interior/research)
-"Ai" = (
-/turf/closed/wall/rock/brown,
-/area/varadero/interior/caves/north_research)
 "Al" = (
 /obj/item/stack/rods,
 /obj/item/stack/sheet/metal,
@@ -1151,10 +1153,6 @@
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/research)
 "Aw" = (
-/obj/item/stack/tile/plasteel{
-	pixel_x = 8;
-	pixel_y = 6
-	},
 /obj/item/stack/tile/plasteel{
 	pixel_x = 8;
 	pixel_y = 6
@@ -1299,10 +1297,6 @@
 /obj/structure/machinery/power/apc/power/east,
 /turf/open/floor/shiva/purple/east,
 /area/varadero/interior/research)
-"Eg" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/research)
 "El" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -1353,7 +1347,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor/shiva/north,
+/turf/open/floor/plating,
 /area/varadero/interior/research)
 "EV" = (
 /obj/structure/machinery/light{
@@ -1550,11 +1544,6 @@
 	pixel_x = 16;
 	pixel_y = 24
 	},
-/obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice2";
-	pixel_x = 16;
-	pixel_y = 24
-	},
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
 	dir = 4
 	},
@@ -1602,7 +1591,10 @@
 "Jf" = (
 /obj/structure/surface/rack,
 /obj/item/storage/belt/medical/full,
-/obj/item/storage/belt/medical/full,
+/obj/item/storage/belt/medical/full{
+	pixel_x = 2;
+	pixel_y = 4
+	},
 /obj/item/storage/firstaid/regular,
 /turf/open/floor/shiva/north,
 /area/varadero/interior/research)
@@ -1739,13 +1731,6 @@
 	pixel_y = 4
 	},
 /turf/open/floor/platingdmg1,
-/area/varadero/interior/research)
-"Ma" = (
-/obj/structure/pipes/standard/manifold/hidden/green,
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor/shiva/north,
 /area/varadero/interior/research)
 "Mr" = (
 /obj/item/stack/sheet/metal,
@@ -2172,9 +2157,6 @@
 /obj/item/ammo_magazine/smg/fp9000,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/research)
-"Wv" = (
-/turf/closed/wall/rock/brown,
-/area/varadero/interior_protected/caves)
 "Wx" = (
 /obj/item/frame/table/reinforced,
 /turf/open/floor/plating,
@@ -2339,12 +2321,12 @@ KG
 fL
 SO
 oL
-Ai
-Ai
-Ai
-Ai
-Ai
-Ai
+nv
+nv
+nv
+nv
+nv
+nv
 KG
 vR
 vR
@@ -2462,7 +2444,7 @@ dZ
 pY
 Ah
 DD
-Eg
+Fk
 tU
 yl
 HL
@@ -2473,7 +2455,7 @@ Fk
 MD
 "}
 (6,1,1) = {"
-Ai
+nv
 vi
 Kk
 Al
@@ -2740,7 +2722,7 @@ FN
 ll
 HH
 Fp
-Eg
+Fk
 "}
 (15,1,1) = {"
 gM
@@ -2759,7 +2741,7 @@ ZN
 SJ
 Ze
 vd
-Ma
+bX
 li
 Fl
 ll
@@ -2773,7 +2755,7 @@ vz
 gZ
 "}
 (16,1,1) = {"
-Ai
+nv
 gM
 sB
 nN
@@ -2803,7 +2785,7 @@ BK
 gZ
 "}
 (17,1,1) = {"
-Ai
+nv
 gM
 Ms
 PN
@@ -2822,7 +2804,7 @@ ar
 HH
 gZ
 gZ
-Eg
+Fk
 gZ
 gZ
 hG
@@ -2833,7 +2815,7 @@ MC
 gZ
 "}
 (18,1,1) = {"
-Ai
+nv
 gM
 gM
 gM
@@ -2864,12 +2846,12 @@ gZ
 "}
 (19,1,1) = {"
 KG
-Ai
-Ai
-Ai
-Ai
-Ai
-Ai
+nv
+nv
+nv
+nv
+nv
+nv
 gM
 Kk
 lf
@@ -2885,7 +2867,7 @@ Sa
 ll
 hz
 gZ
-FE
+Fk
 dE
 ds
 EM
@@ -2898,8 +2880,8 @@ vi
 vi
 vi
 nF
-Ai
-Ai
+nv
+nv
 gM
 IE
 eS
@@ -2920,7 +2902,7 @@ Jn
 IP
 XK
 gZ
-Wv
+nv
 "}
 (21,1,1) = {"
 UO
@@ -2929,7 +2911,7 @@ hC
 Xb
 KG
 oL
-Ai
+nv
 gM
 ul
 ts
@@ -2942,7 +2924,7 @@ dq
 XJ
 gZ
 vw
-ay
+ad
 OJ
 gZ
 on
@@ -2950,7 +2932,7 @@ rV
 jj
 Ud
 gZ
-Wv
+nv
 "}
 (22,1,1) = {"
 KG
@@ -2959,7 +2941,7 @@ KG
 KG
 KG
 KG
-Ai
+nv
 gM
 Dy
 Ie
@@ -2968,8 +2950,8 @@ gM
 gZ
 gZ
 gZ
-Eg
-Eg
+Fk
+Fk
 gZ
 gZ
 gZ
@@ -2980,7 +2962,7 @@ rV
 af
 HQ
 gZ
-Wv
+nv
 "}
 (23,1,1) = {"
 KG
@@ -2996,21 +2978,21 @@ Pc
 Dy
 bm
 Jd
-Ai
-Ai
+nv
+nv
 KG
 KG
 KG
-Ai
-Ai
-Ai
+nv
+nv
+nv
 gZ
 on
 rV
 VQ
 xv
 gZ
-Wv
+nv
 "}
 (24,1,1) = {"
 SO
@@ -3032,13 +3014,13 @@ KG
 KG
 KG
 oL
-Ai
-Ai
+nv
+nv
 gZ
 UP
 qi
 zB
 xh
 gZ
-Wv
+nv
 "}

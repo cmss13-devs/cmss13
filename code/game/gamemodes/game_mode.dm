@@ -29,7 +29,7 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 	var/is_in_endgame = FALSE //Set it to TRUE when we trigger DELTA alert or dropship crashes
 	/// When set and this gamemode is selected, the taskbar icon will change to the png selected here
 	var/taskbar_icon = 'icons/taskbar/gml_distress.png'
-	var/static_comms_amount = 0
+	var/static_comms_amount = 1
 	var/obj/structure/machinery/computer/shuttle/dropship/flight/active_lz = null
 
 	var/datum/entity/statistic/round/round_stats = null
@@ -274,16 +274,16 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 
 /datum/game_mode/proc/spawn_static_comms()
 	for(var/i = 1 to static_comms_amount)
-		var/obj/effect/landmark/static_comms/SCO = pick_n_take(GLOB.comm_tower_landmarks_net_one)
-		var/obj/effect/landmark/static_comms/SCT = pick_n_take(GLOB.comm_tower_landmarks_net_two)
-		if(!SCO)
-			break
-		SCO.spawn_tower()
-		if(!SCT)
-			break
-		SCT.spawn_tower()
-	QDEL_NULL_LIST(GLOB.comm_tower_landmarks_net_one)
-	QDEL_NULL_LIST(GLOB.comm_tower_landmarks_net_two)
+		var/obj/effect/landmark/static_comms/tower
+		if(i % 2)
+			tower = pick_n_take(GLOB.comm_tower_landmarks_net_one)
+		else
+			tower = pick_n_take(GLOB.comm_tower_landmarks_net_two)
+		if(!tower)
+			continue
+		tower.spawn_tower()
+	QDEL_LIST(GLOB.comm_tower_landmarks_net_one)
+	QDEL_LIST(GLOB.comm_tower_landmarks_net_two)
 
 //////////////////////////
 //Reports player logouts//

@@ -90,8 +90,8 @@
 
 /datum/equipment_preset/uscm_ship/uscm_medical/doctor/surgeon
 	name = "USCM Surgeon"
-	assignment = JOB_SURGEON
 
+	assignment = JOB_SURGEON
 	job_title = JOB_SURGEON
 	role_comm_title = "Sgn"
 	minimap_icon = "surgeon"
@@ -109,6 +109,7 @@
 
 /datum/equipment_preset/uscm_ship/uscm_medical/doctor/pharmacist
 	name = "USCM Pharmaceutical Physician"
+
 	assignment = JOB_PHARMACIST
 	job_title = JOB_PHARMACIST
 	role_comm_title = "Phm"
@@ -158,7 +159,7 @@
 	assignment = JOB_NURSE
 	job_title = JOB_NURSE
 	paygrades = list(PAY_SHORT_ME4 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_1)
-	role_comm_title = "Nurse"
+	role_comm_title = "Nrs"
 	skills = /datum/skills/nurse
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE, ACCESS_MARINE_DATABASE)
 
@@ -192,11 +193,11 @@
 	skills = /datum/skills/researcher
 
 	faction = FACTION_WY
-	faction_group =	FACTION_LIST_MARINE_WY
+	faction_group =	FACTION_LIST_MARINE_WY //WY personnel, they're just working on the Almayer.
 	origin_override = ORIGIN_CIVILIAN
 
-	minimap_icon = "goon_sci"
-	minimap_background = "background_goon"
+	minimap_icon = "goon_sci" //WY personnel, they're just working on the Almayer.
+	minimap_background = "background_goon" //WY personnel, they're just working on the Almayer.
 	utility_under = list(/obj/item/clothing/under/marine/officer/researcher)
 	utility_hat = list()
 	utility_gloves = list()

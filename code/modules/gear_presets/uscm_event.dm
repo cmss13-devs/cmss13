@@ -394,19 +394,18 @@
 	paygrades = list(PAY_SHORT_PVDM = JOB_PLAYTIME_TIER_0)
 	role_comm_title = PAY_SHORT_PVDM
 	flags = EQUIPMENT_PRESET_EXTRA
-	minimap_icon = "deputy"
+	minimap_icon = "general1"
 
 /datum/equipment_preset/uscm_event/provost/marshal
 	name = "Provost Marshal (MO7)"
 	minimum_age = 45
 	skills = /datum/skills/general
-
+	minimap_icon = "general2"
 	assignment = JOB_PROVOST_MARSHAL
 	job_title = JOB_PROVOST_MARSHAL
 	paygrades = list(PAY_SHORT_PVM = JOB_PLAYTIME_TIER_0)
 	role_comm_title = PAY_SHORT_PVM
 	flags = EQUIPMENT_PRESET_EXTRA
-	minimap_icon = "deputy"
 
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues/general)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer)
@@ -434,7 +433,7 @@
 /datum/equipment_preset/uscm_event/provost/marshal/sector
 	name = "Provost Sector Marshal (MO9)"
 	minimum_age = 50
-
+	minimap_icon = "general3"
 	assignment = JOB_PROVOST_SMARSHAL
 	job_title = JOB_PROVOST_SMARSHAL
 	paygrades = list(PAY_SHORT_PVSM = JOB_PLAYTIME_TIER_0)
@@ -443,7 +442,7 @@
 /datum/equipment_preset/uscm_event/provost/marshal/chief
 	name = "Provost Chief Marshal (PvCM)"
 	minimum_age = 60
-
+	minimap_icon = "pve_leader"
 	assignment = JOB_PROVOST_CMARSHAL
 	job_title = JOB_PROVOST_CMARSHAL
 	paygrades = list(PAY_SHORT_PVCM = JOB_PLAYTIME_TIER_0)

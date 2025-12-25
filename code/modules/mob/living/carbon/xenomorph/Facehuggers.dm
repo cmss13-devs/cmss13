@@ -554,11 +554,14 @@
 					m_helmet.add_hugger_damage()
 				update_inv_head()
 
-	if(!wear_mask)
+	/// Don't need to continue if no mask or already can't infect.
+	if(!wear_mask || !can_infect)
 		return can_infect
 
 	var/obj/item/clothing/mask/W = wear_mask
-	if(istype(W))
+	if(!istype(W))
+		drop_inv_item_on_ground(wear_mask) // drop any item from the face that isn't being checked for anti-hug.
+	else
 		if(W.flags_item & NODROP)
 			return FALSE
 
@@ -577,8 +580,6 @@
 		else
 			visible_message(SPAN_DANGER("[hugger] smashes against [src]'s [W.name] and rips it off!"))
 			drop_inv_item_on_ground(W)
-	if(wear_mask)
-		drop_inv_item_on_ground(wear_mask) // drop any item from the face that wasn't handled above (e.g cigs, glasses)
 	return can_infect
 
 /datum/species/proc/handle_hugger_attachment(mob/living/carbon/human/target, obj/item/clothing/mask/facehugger/hugger, mob/living/carbon/xenomorph/facehugger/mob_hugger)

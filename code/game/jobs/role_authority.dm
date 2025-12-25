@@ -229,6 +229,8 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	// Assign the roles, this time for real, respecting limits we have established.
 	var/list/roles_left = assign_roles(temp_roles_for_mode, unassigned_players)
 
+	test_squads()
+
 	var/alternate_option_assigned = 0;
 	for(var/mob/new_player/M in unassigned_players)
 		switch(M.client.prefs.alternate_option)
@@ -259,6 +261,22 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 
 	/*===============================================================*/
 
+// Assigns players to squads to check if they should be returned to lobby
+/datum/authority/branch/role/proc/test_squads()
+	var/list/random_players = shuffle(GLOB.player_list)
+	for(var/mob/new_player/player in random_players)
+		var/mob/living/carbon/human/test_human = new
+		var/datum/job/job = GLOB.RoleAuthority.roles_for_mode[player.job]
+		var/datum/equipment_preset/preset = new job.gear_preset
+		test_human.faction = preset.faction
+		test_human.job = job.title
+		if(job.flags_startup_parameters & ROLE_ADD_TO_SQUAD)
+			GLOB.RoleAuthority.randomize_squad(test_human, force_client=player.client)
+			if(istype(test_human.assigned_squad, /datum/squad/marine/cryo))
+				test_human.assigned_squad.forget_marine_in_squad(test_human)
+				free_role(job, force = TRUE)
+				unassigned_players += player
+				player.job = null
 /**
 * Assign roles to the players. Return roles that are still avialable.
 * If count is true, return role balancing weight instead.
@@ -386,8 +404,8 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 
 	return TRUE
 
-/datum/authority/branch/role/proc/free_role(datum/job/J, latejoin = 1) //Want to make sure it's a job, and nothing like a MODE or special role.
-	if(istype(J) && J.total_positions != -1 && J.get_total_positions(latejoin) >= J.current_positions)
+/datum/authority/branch/role/proc/free_role(datum/job/J, latejoin = 1, force = FALSE) //Want to make sure it's a job, and nothing like a MODE or special role.
+	if((istype(J) && J.total_positions != -1 && J.get_total_positions(latejoin) >= J.current_positions) || force)
 		J.current_positions--
 		return 1
 
@@ -532,7 +550,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	SSround_recording.recorder.track_player(new_human)
 
 //This proc is a bit of a misnomer, since there's no actual randomization going on.
-/datum/authority/branch/role/proc/randomize_squad(mob/living/carbon/human/human, skip_limit = FALSE)
+/datum/authority/branch/role/proc/randomize_squad(mob/living/carbon/human/human, skip_limit = FALSE, client/force_client = null)
 	if(!human)
 		return
 
@@ -563,7 +581,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 			usable_squads += squad
 
 	var/has_squad_pref = FALSE
-	var/list/preferred_squads = human.client?.prefs?.preferred_squad
+	var/list/preferred_squads = force_client ? force_client.prefs?.preferred_squad : human.client?.prefs?.preferred_squad
 	if(islist(preferred_squads) && length(preferred_squads))
 		var/list/ordered_squads = list()
 		for(var/squad in preferred_squads)

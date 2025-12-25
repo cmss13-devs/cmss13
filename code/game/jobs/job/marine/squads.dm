@@ -878,7 +878,7 @@ SQUAD_VENDORS(support, ACCESS_MARINE_SUPPORT, null)
 			id_card = target_mob.get_active_hand()
 
 	if(!istype(id_card))
-		return FALSE //No ID found
+		id_card = new
 
 	var/assignment = target_mob.job
 	var/paygrade
@@ -1000,7 +1000,7 @@ SQUAD_VENDORS(support, ACCESS_MARINE_SUPPORT, null)
 	if(!istype(id_card))
 		id_card = target_mob.get_idcard()
 	if(!istype(id_card))
-		return FALSE //Abort, no ID found
+		return FALSE
 
 	id_card.access -= src.access
 	id_card.assignment = target_mob.job

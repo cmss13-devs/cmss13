@@ -32,8 +32,12 @@ export const PriorityInput = (props) => {
   // The full order of items as displayed. Reordering mutates this.
   const [itemsOrder, setItemsOrder] = useState<string[]>(items);
 
+  // Which items are checked/selected. Default to all items checked.
+  const [selections, setSelections] = useState<string[]>(items);
+
   // Keep itemsOrder in sync if `items` prop changes.
   useEffect(() => setItemsOrder(items), [items]);
+  useEffect(() => setSelections(items), [items]);
 
   const [searchQuery, setSearchQuery] = useState('');
   const search = createSearch(searchQuery, (item: string) => item);
@@ -70,7 +74,18 @@ export const PriorityInput = (props) => {
                   return (
                     <TableRow className="candystripe" key={item}>
                       <TableCell>
-                        <Button fluid>{item}</Button>
+                        <Button.Checkbox
+                          checked={selections.includes(item)}
+                          onClick={() => {
+                            const newSelections = selections.includes(item)
+                              ? selections.filter((s) => s !== item)
+                              : [...selections, item];
+                            setSelections(newSelections);
+                          }}
+                          fluid
+                        >
+                          {item}
+                        </Button.Checkbox>
                       </TableCell>
                       <TableCell>
                         <Stack>
@@ -125,7 +140,9 @@ export const PriorityInput = (props) => {
           </Stack>
           <Stack.Item mt={0.7}>
             <Section>
-              <InputButtons input={itemsOrder} />
+              <InputButtons
+                input={itemsOrder.filter((i) => selections.includes(i))}
+              />
             </Section>
           </Stack.Item>
         </Stack>

@@ -10,6 +10,7 @@
 	use_power = USE_POWER_NONE
 	flags_atom = ON_BORDER
 	opacity = FALSE
+	plane = GAME_PLANE
 	var/obj/item/circuitboard/airlock/electronics = null
 
 /obj/structure/machinery/door/window/Initialize()

@@ -17,5 +17,10 @@
 
 #define PAPER_CATEGORY_PRESS_HC "PRESS HC"
 
+#define PAPER_CATEGORY_UACQS "UACQS"
+
+/// For prefab papers not intended to appear in document cabinets.
+#define PAPER_CATEGORY_INACCESSIBLE "INACCESSIBLE"
+
 #define DEFAULT_PAPER_WIDTH 700
 #define DEFAULT_PAPER_HEIGHT 900

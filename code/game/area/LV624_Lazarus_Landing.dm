@@ -191,9 +191,10 @@
 // ambience = list('sound/ambience/jungle_amb1.ogg')
 
 /area/lazarus/ground/river/north_east_temple_river
-	name = "\improper North Eastern River"
+	name = "\improper Ancient Temple - River Passthrough"
 	icon_state = "purple"
-// ambience = list('sound/ambience/jungle_amb1.ogg')
+	ambience_exterior = AMBIENCE_ANCIENT_TEMPLE_SURFACE
+	ceiling_muffle = FALSE
 
 //Colony Areas
 /area/lazarus/ground/colony
@@ -263,6 +264,47 @@
 
 // ambience = list('sound/ambience/jungle_amb1.ogg')
 
+//The Caves
+/area/lazarus/ground/ancient_temple
+	name ="\improper Ancient Temple"
+	icon_state = "cave"
+	//ambience = list('sound/ambience/ambimine.ogg','sound/ambience/ambigen10.ogg','sound/ambience/ambigen12.ogg','sound/ambience/ambisin4.ogg')
+	ambience_exterior = AMBIENCE_ANCIENT_TEMPLE_DEEP
+	soundscape_playlist = SCAPE_PL_CAVE
+	soundscape_interval = 25
+	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
+	sound_environment = SOUND_ENVIRONMENT_AUDITORIUM
+	minimap_color = MINIMAP_AREA_CAVES
+	unoviable_timer = FALSE
+	ceiling_muffle = FALSE
+
+/area/lazarus/ground/ancient_temple/north_east
+	name ="\improper Ancient Temple - North East"
+	icon_state = "cave"
+
+/area/lazarus/ground/ancient_temple/north_east/surface
+	ambience_exterior = AMBIENCE_ANCIENT_TEMPLE_SURFACE
+
+/area/lazarus/ground/ancient_temple/east
+	name ="\improper Ancient Temple - East"
+	icon_state = "away"
+
+/area/lazarus/ground/ancient_temple/east/surface
+	ambience_exterior = AMBIENCE_ANCIENT_TEMPLE_SURFACE
+
+/area/lazarus/ground/ancient_temple/south
+	name ="\improper Ancient Temple - South"
+	icon_state = "away2"
+
+/area/lazarus/ground/ancient_temple/south/surface
+	ambience_exterior = AMBIENCE_ANCIENT_TEMPLE_SURFACE
+
+/area/lazarus/ground/ancient_temple/south_east
+	name ="\improper Ancient Temple - South East"
+	icon_state = "red"
+
+/area/lazarus/ground/ancient_temple/south_east/surface
+	ambience_exterior = AMBIENCE_ANCIENT_TEMPLE_SURFACE
 
 //The Caves
 /area/lazarus/ground/caves //Does not actually exist
@@ -276,6 +318,7 @@
 	sound_environment = SOUND_ENVIRONMENT_AUDITORIUM
 	minimap_color = MINIMAP_AREA_CAVES
 	unoviable_timer = FALSE
+	ceiling_muffle = FALSE
 
 /area/lazarus/ground/caves/west_caves
 	name ="\improper Western Caves"
@@ -328,175 +371,175 @@
 	requires_power = FALSE
 
 //Lazarus landing
-/area/lazarus/lazarus
+/area/lazarus
 	name = "\improper Lazarus"
 	icon_state = "green"
 	ceiling = CEILING_METAL
 
-/area/lazarus/lazarus/landing_zones
+/area/lazarus/landing_zones
 	ceiling = CEILING_NONE
 	is_landing_zone = TRUE
 
-/area/lazarus/lazarus/landing_zones/lz1
+/area/lazarus/landing_zones/lz1
 	name = "\improper Nexus Dome - Landing Zone"
 	linked_lz = DROPSHIP_LZ1
 
-/area/lazarus/lazarus/landing_zones/lz2
+/area/lazarus/landing_zones/lz2
 	name = "\improper Weyland-Yutani - Corporate Administration - Landing Zone"
 	linked_lz = DROPSHIP_LZ2
 
-/area/lazarus/lazarus
+/area/lazarus
 	name = "\improper Lazarus"
 	icon_state = "green"
 	ceiling = CEILING_METAL
 
-/area/lazarus/lazarus/corporate_dome
+/area/lazarus/corporate_dome
 	name = "\improper Weyland-Yutani - Corporate Administration Complex"
 	icon_state = "green"
 	linked_lz = DROPSHIP_LZ2
 
-/area/lazarus/lazarus/yggdrasil
+/area/lazarus/yggdrasil
 	name = "\improper Yggdrasil Tree"
 	icon_state = "atmos"
 	ceiling = CEILING_GLASS
 
-/area/lazarus/lazarus/medbay
+/area/lazarus/medbay
 	name = "\improper Health and Wellness Facility - Medbay"
 	icon_state = "medbay"
 	minimap_color = MINIMAP_AREA_MEDBAY
 
-/area/lazarus/lazarus/armory
+/area/lazarus/armory
 	name = "\improper Nexus Dome - Colonial Marshals Office - Armory"
 	icon_state = "armory"
 	minimap_color = MINIMAP_AREA_SEC
 
-/area/lazarus/lazarus/security
+/area/lazarus/security
 	name = "\improper Nexus Dome - Colonial Marshals Office"
 	icon_state = "security"
 	minimap_color = MINIMAP_AREA_SEC
 
-/area/lazarus/lazarus/captain
+/area/lazarus/captain
 	name = "\improper Nexus Dome -  Command Center"
 	icon_state = "captain"
 	minimap_color = MINIMAP_AREA_COMMAND
 
-/area/lazarus/lazarus/hop
+/area/lazarus/hop
 	name = "\improper Head of Personnel's Office"
 	icon_state = "head_quarters"
 	minimap_color = MINIMAP_AREA_COMMAND
 
-/area/lazarus/lazarus/kitchen
+/area/lazarus/kitchen
 	name = "\improper Nexus Dome - Kitchen"
 	icon_state = "kitchen"
 	linked_lz = DROPSHIP_LZ1
 
-/area/lazarus/lazarus/canteen
+/area/lazarus/canteen
 	name = "\improper Nexus Dome - Canteen"
 	icon_state = "cafeteria"
 	linked_lz = DROPSHIP_LZ1
 
-/area/lazarus/lazarus/main_hall
+/area/lazarus/main_hall
 	name = "\improper Nexus Dome - Main Hallway"
 	icon_state = "hallC1"
 	linked_lz = DROPSHIP_LZ1
 
-/area/lazarus/lazarus/toilet
+/area/lazarus/toilet
 	name = "\improper Dormitory Toilet"
 	icon_state = "toilet"
 
-/area/lazarus/lazarus/chapel
+/area/lazarus/chapel
 	name = "\improper Chapel"
 	icon_state = "chapel"
 	//ambience = list('sound/ambience/ambicha1.ogg','sound/ambience/ambicha2.ogg','sound/ambience/ambicha3.ogg','sound/ambience/ambicha4.ogg')
 
-/area/lazarus/lazarus/toilet
+/area/lazarus/toilet
 	name = "\improper Nexus Dome - Dormitory Toilet"
 	icon_state = "toilet"
 
-/area/lazarus/lazarus/sleep_male
+/area/lazarus/sleep_male
 	name = "\improper Nexus Dome - Male Dorm"
 	icon_state = "Sleep"
 
-/area/lazarus/lazarus/sleep_female
+/area/lazarus/sleep_female
 	name = "\improper Nexus Dome - Female Dorm"
 	icon_state = "Sleep"
 	linked_lz = DROPSHIP_LZ1
 
-/area/lazarus/lazarus/quart
+/area/lazarus/quart
 	name = "\improper Nexus Dome - Quartermasters"
 	icon_state = "quart"
 	linked_lz = DROPSHIP_LZ1
 
-/area/lazarus/lazarus/quartstorage
+/area/lazarus/quartstorage
 	name = "\improper Cargo Bay"
 	icon_state = "quartstorage"
 	linked_lz = DROPSHIP_LZ1
 
-/area/lazarus/lazarus/quartstorage/outdoors
+/area/lazarus/quartstorage/outdoors
 	name = "\improper Cargo Bay Area"
 	icon_state = "purple"
 	ceiling = CEILING_NONE
 	linked_lz = DROPSHIP_LZ1
 	always_unpowered = TRUE
 
-/area/lazarus/lazarus/engineering
+/area/lazarus/engineering
 	name = "\improper Water Treatment"
 	icon_state = "engine_smes"
 	minimap_color = MINIMAP_AREA_ENGI
 
-/area/lazarus/lazarus/comms
+/area/lazarus/comms
 	name = "\improper Communications Relay"
 	icon_state = "tcomsatcham"
 	minimap_color = MINIMAP_AREA_ENGI
 
-/area/lazarus/lazarus/comms/lz2_north
+/area/lazarus/comms/lz2_north
 	name = "\improper North-West LZ2 Communications Relay"
 	icon_state = "tcomsatcham"
 	minimap_color = MINIMAP_AREA_ENGI
 
-/area/lazarus/lazarus/secure_storage
+/area/lazarus/secure_storage
 	name = "\improper Weyland-Yutani - Corporate Personnel Complex"
 	icon_state = "storage"
 	flags_area = AREA_NOTUNNEL
 	linked_lz = DROPSHIP_LZ2
 
-/area/lazarus/lazarus/robotics
+/area/lazarus/robotics
 	name = "\improper Maintenance Dome"
 	icon_state = "ass_line"
 	linked_lz = DROPSHIP_LZ2
 
-/area/lazarus/lazarus/crashed_shuttle
+/area/lazarus/crashed_shuttle
 	name = "\improper Crashed PMC ERT Shuttle"
 	icon_state = "ass_line"
 
-/area/lazarus/lazarus/research
+/area/lazarus/research
 	name = "\improper Xenoarchaeology Research Dome - Lab"
 	icon_state = "toxlab"
 	minimap_color = MINIMAP_AREA_RESEARCH
 
-/area/lazarus/lazarus/research/storage
+/area/lazarus/research/storage
 	name = "\improper Xenoarchaeology Research Dome - Storage"
 	icon_state = "toxlab"
 	minimap_color = MINIMAP_AREA_RESEARCH
 
-/area/lazarus/lazarus/fitness
+/area/lazarus/fitness
 	name = "\improper Health and Wellness Facility - Physical Readiness Wing"
 	icon_state = "fitness"
 
-/area/lazarus/lazarus/hydroponics
+/area/lazarus/hydroponics
 	name = "\improper Hydroponics Dome"
 	icon_state = "hydro"
 	ceiling = CEILING_GLASS
 
-/area/lazarus/lazarus/lodge
+/area/lazarus/lodge
 	name = "\improper Fisherman's Cove - Lodge"
 	icon_state = "hydro"
 
-/area/lazarus/lazarus/shack_alt
+/area/lazarus/shack_alt
 	name = "\improper Shack"
 	icon_state = "hydro"
 
-/area/lazarus/lazarus/shack
+/area/lazarus/shack
 	name = "\improper Fisherman's Cove - Shack"
 	icon_state = "hydro"
 
@@ -510,10 +553,10 @@
 	icon_state = "tcomsatcham"
 	requires_power = FALSE
 
-/area/lazarus/lazarus/crashed_ship
+/area/lazarus/crashed_ship
 	name = "\improper Crashed Ship"
 	icon_state = "syndie-ship"
 
-/area/lazarus/lazarus/crashed_ship_containers
+/area/lazarus/crashed_ship_containers
 	name = "\improper Crashed Ship Containers"
 	icon_state = "syndie-ship"

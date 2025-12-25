@@ -29,7 +29,7 @@
 	pixel_y = -3
 	},
 /turf/closed/wall/wood/plain,
-/area/lazarus/lazarus/shack_alt)
+/area/lazarus/shack_alt)
 "cv" = (
 /obj/effect/decal/lv_decals/red_mud_corner{
 	dir = 9
@@ -137,7 +137,7 @@
 	pixel_y = 2
 	},
 /turf/open/floor/interior/wood_sat,
-/area/lazarus/lazarus/shack_alt)
+/area/lazarus/shack_alt)
 "iI" = (
 /obj/structure/flora/bush/ausbushes/ausbush,
 /turf/open/auto_turf/lv_grass/layer1,
@@ -151,7 +151,7 @@
 	dir = 1
 	},
 /turf/open/floor/interior/wood_sat,
-/area/lazarus/lazarus/shack_alt)
+/area/lazarus/shack_alt)
 "jP" = (
 /obj/structure/flora/bush/ausbushes/genericbush,
 /turf/open/auto_turf/lv_grass/layer0,
@@ -226,7 +226,7 @@
 /obj/effect/landmark/objective_landmark/far,
 /obj/item/clothing/suit/storage/jacket/marine/vest,
 /turf/open/floor/interior/wood_sat/damage_6,
-/area/lazarus/lazarus/shack_alt)
+/area/lazarus/shack_alt)
 "lX" = (
 /obj/structure/flora/grass/tallgrass/jungle_alt_2,
 /turf/open/auto_turf/lv_grass/layer0,
@@ -267,7 +267,7 @@
 	},
 /obj/item/clothing/head/cmcap/boonie,
 /turf/open/floor/interior/wood_sat/damage_1,
-/area/lazarus/lazarus/shack_alt)
+/area/lazarus/shack_alt)
 "nS" = (
 /obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
 	dir = 6
@@ -302,7 +302,7 @@
 	pixel_y = 7
 	},
 /turf/open/floor/interior/wood_sat,
-/area/lazarus/lazarus/shack_alt)
+/area/lazarus/shack_alt)
 "oK" = (
 /obj/structure/stairs/perspective{
 	color = "#9f7b5c";
@@ -315,7 +315,7 @@
 /obj/item/bedsheet/blue,
 /obj/item/weapon/gun/shotgun/double/sawn,
 /turf/open/floor/interior/wood_sat/damage_2,
-/area/lazarus/lazarus/shack_alt)
+/area/lazarus/shack_alt)
 "pD" = (
 /obj/structure/flora/bush/ausbushes,
 /turf/open/auto_turf/lv_grass/layer1,
@@ -422,7 +422,7 @@
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/interior/wood_sat/damage_5,
-/area/lazarus/lazarus/shack_alt)
+/area/lazarus/shack_alt)
 "tp" = (
 /obj/structure/platform/wood/west,
 /obj/item/stack/sheet/wood{
@@ -475,7 +475,7 @@
 	color = "#657280"
 	},
 /turf/open/floor/interior/wood_sat/alt,
-/area/lazarus/lazarus/shack_alt)
+/area/lazarus/shack_alt)
 "vX" = (
 /turf/open/gm/coast/dirt/beachcorner2/south_west,
 /area/lazarus/ground/river/west_river)
@@ -539,7 +539,7 @@
 	},
 /obj/structure/barricade/handrail/kutjevo,
 /turf/open/floor/interior/wood/alt,
-/area/lazarus/lazarus/shack_alt)
+/area/lazarus/shack_alt)
 "zc" = (
 /turf/open/gm/coast/dirt/beachcorner/south_east,
 /area/lazarus/ground/river/west_river)
@@ -567,7 +567,7 @@
 	},
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/interior/wood_sat/alt,
-/area/lazarus/lazarus/shack_alt)
+/area/lazarus/shack_alt)
 "Ai" = (
 /obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
 	dir = 4
@@ -585,7 +585,7 @@
 /area/lazarus/ground/jungle/west_jungle)
 "Aw" = (
 /turf/closed/wall/wood/blue,
-/area/lazarus/lazarus/shack_alt)
+/area/lazarus/shack_alt)
 "AI" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/auto_turf/lv_grass/layer1,
@@ -616,14 +616,14 @@
 	dir = 8
 	},
 /turf/open/floor/interior/wood_sat,
-/area/lazarus/lazarus/shack_alt)
+/area/lazarus/shack_alt)
 "By" = (
 /obj/structure/window_frame/wood/plain,
 /obj/structure/curtain/colorable{
 	color = "#657280"
 	},
 /turf/open/floor/interior/wood_sat/damage_4,
-/area/lazarus/lazarus/shack_alt)
+/area/lazarus/shack_alt)
 "Bz" = (
 /obj/effect/decal/lv_decals/red_mud_corner{
 	dir = 8
@@ -684,7 +684,7 @@
 	pixel_y = 32
 	},
 /turf/open/floor/interior/wood_sat,
-/area/lazarus/lazarus/shack_alt)
+/area/lazarus/shack_alt)
 "Eu" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /obj/structure/flora/jungle/vines/blue/light_1,
@@ -696,7 +696,7 @@
 	pixel_y = -6
 	},
 /turf/open/floor/interior/wood_sat/alt,
-/area/lazarus/lazarus/shack_alt)
+/area/lazarus/shack_alt)
 "ET" = (
 /obj/structure/barricade/wooden{
 	dir = 1;
@@ -747,14 +747,14 @@
 /area/lazarus/ground/river/west_river)
 "GJ" = (
 /turf/open/floor/interior/wood_sat,
-/area/lazarus/lazarus/shack_alt)
+/area/lazarus/shack_alt)
 "GS" = (
 /obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/auto_turf/lv_grass/layer0,
 /area/lazarus/ground/jungle/west_jungle)
 "Ii" = (
 /turf/open/floor/interior/wood/alt,
-/area/lazarus/lazarus/shack_alt)
+/area/lazarus/shack_alt)
 "Iv" = (
 /obj/structure/stairs/perspective{
 	color = "#9f7b5c";
@@ -790,7 +790,7 @@
 /area/lazarus/ground/jungle/west_jungle)
 "JE" = (
 /turf/closed/wall/wood/plain,
-/area/lazarus/lazarus/shack_alt)
+/area/lazarus/shack_alt)
 "JJ" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /obj/structure/flora/bush/ausbushes/ywflowers,
@@ -803,7 +803,7 @@
 "JN" = (
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor/interior/wood_sat,
-/area/lazarus/lazarus/shack_alt)
+/area/lazarus/shack_alt)
 "Ka" = (
 /turf/open/floor/brown_dirt/random_rocks_alt{
 	dir = 6
@@ -844,7 +844,7 @@
 	},
 /obj/effect/landmark/monkey_spawn,
 /turf/open/floor/interior/wood_sat/damage,
-/area/lazarus/lazarus/shack_alt)
+/area/lazarus/shack_alt)
 "Mn" = (
 /obj/structure/platform/wood/north,
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
@@ -878,14 +878,14 @@
 	pixel_y = 6
 	},
 /turf/open/floor/interior/wood_sat/alt,
-/area/lazarus/lazarus/shack_alt)
+/area/lazarus/shack_alt)
 "Nz" = (
 /obj/structure/window_frame/wood/plain,
 /obj/structure/curtain/colorable{
 	color = "#657280"
 	},
 /turf/open/floor/interior/wood_sat/damage_6,
-/area/lazarus/lazarus/shack_alt)
+/area/lazarus/shack_alt)
 "Pf" = (
 /obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
 	dir = 9
@@ -952,7 +952,7 @@
 "QW" = (
 /obj/effect/landmark/monkey_spawn,
 /turf/open/floor/interior/wood_sat,
-/area/lazarus/lazarus/shack_alt)
+/area/lazarus/shack_alt)
 "Rr" = (
 /obj/structure/platform/wood,
 /turf/open/auto_turf/lv_grass/layer1,
@@ -979,7 +979,7 @@
 	},
 /obj/structure/barricade/handrail/kutjevo,
 /turf/open/floor/interior/wood/alt,
-/area/lazarus/lazarus/shack_alt)
+/area/lazarus/shack_alt)
 "RT" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /obj/effect/landmark/big_fog_marker,
@@ -1039,13 +1039,13 @@
 "Uz" = (
 /obj/structure/barricade/handrail/kutjevo,
 /turf/open/floor/interior/wood/alt,
-/area/lazarus/lazarus/shack_alt)
+/area/lazarus/shack_alt)
 "UB" = (
 /obj/structure/mineral_door/wood{
 	dir = 1
 	},
 /turf/open/floor/interior/wood_sat/damage_6,
-/area/lazarus/lazarus/shack_alt)
+/area/lazarus/shack_alt)
 "UT" = (
 /obj/effect/decal/lv_decals/red_mud_corner{
 	dir = 8
@@ -1096,7 +1096,7 @@
 	dir = 4
 	},
 /turf/open/floor/interior/wood_sat,
-/area/lazarus/lazarus/shack_alt)
+/area/lazarus/shack_alt)
 "YT" = (
 /obj/item/stack/sheet/wood{
 	layer = 3.01;

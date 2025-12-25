@@ -715,6 +715,7 @@
 	supports_surgery = FALSE
 	minimap_color = MINIMAP_WATER
 	is_weedable = NOT_WEEDABLE
+	baseturfs = /turf/open/floor/waterfall
 
 /turf/open/floor/waterfall/top
 

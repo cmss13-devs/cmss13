@@ -12,7 +12,7 @@
 "bS" = (
 /obj/structure/flora/jungle/vines/blue/light_1,
 /turf/open/auto_turf/lv_grass/layer1,
-/area/lazarus/lazarus/landing_zones/lz1)
+/area/lazarus/landing_zones/lz1)
 "dg" = (
 /obj/effect/hunter/ancient_temple/tile_edge/tile_edge_8,
 /obj/effect/decal/lv_decals/red_mud_corner{

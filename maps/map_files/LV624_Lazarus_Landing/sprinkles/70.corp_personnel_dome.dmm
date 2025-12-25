@@ -5,14 +5,14 @@
 	layer = 2.9
 	},
 /turf/open/floor/plating/prison,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "al" = (
 /obj/effect/decal/lv_decals/red_mud_corner{
 	dir = 8
 	},
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/cell_stripe/west,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "au" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -23,17 +23,17 @@
 	pixel_y = 2
 	},
 /turf/open/floor/prison/cell_stripe_alt,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "av" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/prison/floor_plate_alt/west,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "ax" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
 /turf/open/floor/prison/floor_plate_alt/west,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "aA" = (
 /obj/structure/pipes/vents/scrubber_hybrisa,
 /obj/structure/machinery/light/blue,
@@ -42,7 +42,7 @@
 	pixel_y = 4
 	},
 /turf/open/floor/prison/floor_plate_alt/west,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "aF" = (
 /obj/effect/decal/hybrisa/colorable_rug{
 	color = "#3d3d3d";
@@ -54,7 +54,7 @@
 	},
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/floor_plate_alt/west,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "aQ" = (
 /obj/structure/machinery/door/poddoor/almayer/grey/open{
 	name = "Corporate Personnel Dome Lockdown Shutter";
@@ -63,7 +63,7 @@
 	},
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/ramptop/east,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "bd" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/machinery/door/poddoor/hybrisa/secure_red_door/open{
@@ -72,7 +72,7 @@
 	id = "corp_person_armory"
 	},
 /turf/open/floor/plating/prison,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "bu" = (
 /turf/open/auto_turf/lv_grass/layer1,
 /area/lazarus/ground/jungle/west_central_jungle)
@@ -99,14 +99,14 @@
 	dir = 6
 	},
 /turf/open/floor/prison/floor_plate,
-/area/lazarus/lazarus/landing_zones/lz2)
+/area/lazarus/landing_zones/lz2)
 "bY" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/structure/disposalpipe/segment{
 	dir = 1
 	},
 /turf/open/floor/prison/cell_stripe_alt/north,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "ca" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -122,7 +122,7 @@
 	dir = 4
 	},
 /turf/open/floor/prison/ramptop/east,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "cb" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
@@ -135,7 +135,7 @@
 /obj/effect/decal/strata_decals/grime/grime3,
 /obj/item/trash/cigbutt,
 /turf/open/floor/prison/floor_plate_alt/west,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "ch" = (
 /obj/structure/fence/dark/overgrown,
 /obj/structure/flora/jungle/vines/blue/light_1,
@@ -156,7 +156,7 @@
 	},
 /obj/item/weapon/gun/flamer/survivor,
 /turf/open/floor/prison/floor_plate,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "ck" = (
 /obj/structure/flora/grass/tallgrass/jungle_alt_2,
 /turf/open/auto_turf/lv_grass/layer1,
@@ -174,7 +174,7 @@
 	layer = 4
 	},
 /turf/open/floor/prison/floor_plate_alt/west,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "cz" = (
 /obj/structure/platform_decoration/metal/strata/alt{
 	dir = 4
@@ -187,11 +187,11 @@
 	dir = 6
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "cF" = (
 /obj/structure/window/framed/lv_colony/reinforced,
 /turf/open/floor/plating/prison,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "cJ" = (
 /obj/structure/machinery/door/airlock/light_grey_lv/solid{
 	dir = 1;
@@ -203,23 +203,23 @@
 	id = "corp_person_outer"
 	},
 /turf/open/floor/prison/floor_plate,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "cN" = (
 /obj/structure/largecrate/random/mini/ammo{
 	pixel_x = -8;
 	pixel_y = -5
 	},
 /turf/open/floor/prison/floor_plate_alt/west,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "cQ" = (
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/cell_stripe_alt/north,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "cU" = (
 /obj/structure/pipes/vents/scrubber_hybrisa,
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/floor_plate_alt/west,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "ds" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/auto_turf/lv_grass/layer1,
@@ -235,10 +235,10 @@
 	},
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "dD" = (
 /turf/closed/wall/lv_outpost/reinforced,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "dF" = (
 /obj/structure/flora/jungle/vines/dead/heavy{
 	pixel_y = 30
@@ -254,7 +254,7 @@
 /obj/item/reagent_container/food/drinks/coffeecup,
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/brown/north,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "eg" = (
 /obj/structure/flora/jungle/vines/dead/light_3,
 /turf/open/auto_turf/lv_grass/layer0,
@@ -262,7 +262,7 @@
 "ek" = (
 /obj/structure/bed/hybrisa/bunkbed4,
 /turf/open/floor/hybrisa/carpet/carpetblack,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "ey" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/floor/brown_dirt/random_rocks_alt{
@@ -279,7 +279,7 @@
 /obj/item/ammo_magazine/rifle/m41aMK1,
 /obj/structure/closet/secure_closet/guncabinet/alt,
 /turf/open/floor/prison/darkred2/north,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "eR" = (
 /obj/structure/largecrate/random/mini/small_case{
 	pixel_x = -7;
@@ -287,7 +287,7 @@
 	},
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/floor_plate_alt/west,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "fa" = (
 /obj/structure/flora/jungle/planttop1,
 /turf/open/auto_turf/lv_grass/layer1,
@@ -333,7 +333,7 @@
 /turf/open/floor/brown_dirt/random_rocks_alt{
 	dir = 6
 	},
-/area/lazarus/lazarus/landing_zones/lz2)
+/area/lazarus/landing_zones/lz2)
 "fW" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/closet/secure_closet/wy/goon{
@@ -343,14 +343,14 @@
 	pixel_x = -7
 	},
 /turf/open/floor/prison/floor_plate_alt/west,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "fX" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
 /obj/item/ammo_casing/bullet,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "gl" = (
 /obj/structure/disposalpipe/junction{
 	dir = 4;
@@ -367,7 +367,7 @@
 /obj/structure/largecrate/random/barrel/black,
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/darkred2/north,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "gz" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -388,7 +388,7 @@
 /turf/open/floor/brown_dirt/random_rocks_alt{
 	dir = 6
 	},
-/area/lazarus/lazarus/landing_zones/lz2)
+/area/lazarus/landing_zones/lz2)
 "gO" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -401,7 +401,7 @@
 	dir = 1
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "gY" = (
 /obj/structure/flora/bush/ausbushes/ausbush,
 /obj/structure/flora/jungle/vines/blue/light_3,
@@ -418,7 +418,7 @@
 	},
 /obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "hn" = (
 /obj/structure/platform/metal/strata/alt/west,
 /obj/structure/flora/jungle/vines/dead/light_1{
@@ -431,7 +431,7 @@
 /obj/effect/decal/hybrisa/dirt,
 /obj/item/trash/cigbutt,
 /turf/open/floor/prison/cell_stripe_alt/north,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "hN" = (
 /obj/item/tool/warning_cone{
 	pixel_x = -10;
@@ -452,7 +452,7 @@
 "iI" = (
 /obj/structure/pipes/vents/scrubber_hybrisa,
 /turf/open/floor/hybrisa/carpet/carpetblack,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "iK" = (
 /obj/structure/flora/jungle/vines/dead/heavy,
 /turf/closed/wall/strata_ice/jungle,
@@ -469,7 +469,7 @@
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /turf/open/floor/prison/white2,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "jO" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -494,7 +494,7 @@
 	dir = 8
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "kj" = (
 /obj/structure/sink{
 	dir = 4;
@@ -504,12 +504,12 @@
 	dir = 8
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "lg" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/item/prop/alien/hugger,
 /turf/open/gm/dirt/brown/variant_5,
-/area/lazarus/lazarus/landing_zones/lz2)
+/area/lazarus/landing_zones/lz2)
 "ll" = (
 /turf/open/gm/dirt/brown/variant_5,
 /area/lazarus/ground/colony/west_tcomms_road)
@@ -541,7 +541,7 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "lK" = (
 /obj/structure/barricade/handrail/wire,
 /obj/structure/barricade/handrail/wire{
@@ -574,7 +574,7 @@
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/item/prop/alien/hugger,
 /turf/open/floor/prison/floor_plate_alt/west,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "mK" = (
 /obj/structure/platform/metal/strata/alt/east,
 /turf/open/auto_turf/lv_grass/layer1,
@@ -600,7 +600,7 @@
 	dir = 4
 	},
 /turf/open/floor/prison/floor_plate,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "mZ" = (
 /turf/open/auto_turf/lv_grass/layer0,
 /area/lazarus/ground/colony/west_tcomms_road)
@@ -633,7 +633,7 @@
 	},
 /obj/item/trash/cigbutt,
 /turf/open/floor/prison/floor_plate_alt/west,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "nK" = (
 /obj/structure/flora/jungle/vines/dead/light_2,
 /turf/open/auto_turf/lv_grass/layer1,
@@ -646,7 +646,7 @@
 	dir = 4
 	},
 /turf/open/floor/prison/ramptop/east,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "nS" = (
 /obj/structure/machinery/door_control/cl{
 	pixel_x = 25;
@@ -656,7 +656,7 @@
 	},
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/floor_plate_alt/west,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "nW" = (
 /obj/structure/cargo_container/hybrisa/containersextended/whitewyright,
 /turf/open/floor/brown_dirt/random_rocks_alt{
@@ -666,18 +666,18 @@
 "od" = (
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/darkred2/southeast,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "oq" = (
 /obj/structure/machinery/light/small/blue,
 /turf/open/auto_turf/lv_sand/layer0,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "ot" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 10
 	},
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/floor_plate_alt/west,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "ou" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/machinery/door/airlock/light_grey_lv/glass{
@@ -685,7 +685,7 @@
 	name = "\improper Corporate Personnel Complex"
 	},
 /turf/open/floor/prison/floor_plate,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "oD" = (
 /obj/structure/transmitter/colony_net{
 	phone_category = "Lazarus Landing";
@@ -702,7 +702,7 @@
 	pixel_x = 9
 	},
 /turf/open/floor/prison/brown/north,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "oE" = (
 /obj/structure/window/framed/lv_colony/reinforced,
 /obj/structure/machinery/door/poddoor/almayer/grey/open{
@@ -711,7 +711,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating/prison,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "oF" = (
 /obj/structure/window/framed/lv_colony/reinforced,
 /obj/structure/machinery/door/poddoor/almayer/grey/open{
@@ -719,7 +719,7 @@
 	id = "corp_person_outer"
 	},
 /turf/open/floor/plating/prison,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "oG" = (
 /turf/open/gm/dirt/brown/variant_5/south,
 /area/lazarus/ground/colony/west_tcomms_road)
@@ -736,7 +736,7 @@
 	name = "\improper Corporate Personnel Complex"
 	},
 /turf/open/floor/prison/floor_plate,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "oQ" = (
 /obj/structure/flora/jungle/vines/dead/light_3,
 /turf/open/auto_turf/lv_grass/layer1,
@@ -753,7 +753,7 @@
 	},
 /obj/effect/spawner/random/tool,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "oY" = (
 /obj/structure/flora/jungle/vines/blue/light_1,
 /turf/closed/wall/strata_ice/jungle,
@@ -792,7 +792,7 @@
 	pixel_y = 30
 	},
 /turf/open/floor/prison/floor_plate_alt/west,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "pz" = (
 /obj/effect/decal/hybrisa/WY/WY1{
 	pixel_x = 15;
@@ -807,7 +807,7 @@
 	pixel_y = 17
 	},
 /turf/open/floor/prison/white2/southwest,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "pD" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -820,7 +820,7 @@
 	needs_power = 0
 	},
 /turf/open/floor/prison/cell_stripe/east,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "pJ" = (
 /obj/structure/flora/jungle/vines/blue/light_3,
 /turf/open/auto_turf/lv_grass/layer0,
@@ -841,7 +841,7 @@
 	},
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/brown/north,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "qa" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/auto_turf/lv_grass/layer1,
@@ -849,7 +849,7 @@
 "qn" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/prison/cell_stripe/north,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "qp" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/auto_turf/lv_grass/layer0,
@@ -870,7 +870,7 @@
 	dir = 8
 	},
 /turf/open/floor/prison/white2/east,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "qN" = (
 /obj/structure/fence/dark,
 /turf/open/floor/brown_dirt/random_rocks,
@@ -892,7 +892,7 @@
 	pixel_y = 14
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "qX" = (
 /turf/open/auto_turf/lv_grass/layer0,
 /area/lazarus/ground/jungle/south_central_jungle)
@@ -902,7 +902,7 @@
 "rq" = (
 /obj/structure/flora/jungle/vines/blue/light_2,
 /turf/closed/wall/lv_outpost/reinforced,
-/area/lazarus/lazarus/landing_zones/lz2)
+/area/lazarus/landing_zones/lz2)
 "rv" = (
 /obj/structure/surface/table{
 	color = "#8B7B5B"
@@ -913,7 +913,7 @@
 	pixel_y = 21
 	},
 /turf/open/floor/prison/white2/west,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "rz" = (
 /turf/open/floor/brown_dirt/random_rocks,
 /area/lazarus/ground/jungle/south_central_jungle)
@@ -929,7 +929,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "se" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/effect/decal/hybrisa/dirt,
@@ -938,7 +938,7 @@
 	name = "\improper Corporate Personnel Complex"
 	},
 /turf/open/floor/prison/floor_plate,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "sh" = (
 /turf/closed/wall/lv_outpost/reinforced/hull,
 /area/strata/interior/out_of_bounds)
@@ -951,7 +951,7 @@
 	pixel_y = -24
 	},
 /turf/open/floor/brown_dirt/random_rocks,
-/area/lazarus/lazarus/landing_zones/lz2)
+/area/lazarus/landing_zones/lz2)
 "sr" = (
 /obj/structure/flora/jungle/vines/blue/light_1,
 /turf/closed/wall/lv_outpost,
@@ -981,7 +981,7 @@
 	name = "\improper Corporate Personnel Complex"
 	},
 /turf/open/floor/prison/floor_plate,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "sY" = (
 /obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
 	dir = 8
@@ -1022,12 +1022,12 @@
 /obj/item/trash/cigbutt,
 /obj/item/trash/cigbutt,
 /turf/open/floor/prison/cell_stripe/west,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "tz" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/item/prop/alien/hugger,
 /turf/open/floor/prison/darkred2,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "tG" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
@@ -1036,18 +1036,18 @@
 	pixel_y = 32
 	},
 /turf/open/floor/prison/darkred2/north,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "tR" = (
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/cell_stripe,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "tW" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/bed/chair/comfy{
 	dir = 8
 	},
 /turf/open/floor/prison/white2/east,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "ug" = (
 /obj/effect/decal/cleanable/blood,
 /obj/item/ammo_casing/bullet,
@@ -1065,7 +1065,7 @@
 /area/lazarus/ground/colony/west_tcomms_road)
 "uu" = (
 /turf/open/auto_turf/lv_sand/layer0,
-/area/lazarus/lazarus/landing_zones/lz2)
+/area/lazarus/landing_zones/lz2)
 "ux" = (
 /obj/structure/platform/metal/strata/alt/north,
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent2{
@@ -1094,7 +1094,7 @@
 	},
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/brown/north,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "uz" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/auto_turf/lv_sand/layer0,
@@ -1117,7 +1117,7 @@
 	},
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "uS" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/auto_turf/lv_sand/layer0,
@@ -1142,7 +1142,7 @@
 /obj/item/trash/cigbutt,
 /obj/item/trash/cigbutt,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "uX" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/effect/decal/hybrisa/dirt,
@@ -1151,7 +1151,7 @@
 	icon_state = "pipe-c"
 	},
 /turf/open/floor/prison/floor_plate_alt/west,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "uY" = (
 /obj/structure/flora/jungle/vines/dead/heavy{
 	pixel_y = 30
@@ -1176,14 +1176,14 @@
 	},
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/floor_plate_alt/west,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "vo" = (
 /obj/effect/decal/strata_decals/grime/grime4{
 	dir = 8
 	},
 /obj/item/ammo_magazine/smg/mp5,
 /turf/open/floor/prison/white2/northeast,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "vC" = (
 /obj/effect/decal/lv_decals/red_mud_corner,
 /obj/effect/decal/lv_decals/red_mud_corner{
@@ -1199,7 +1199,7 @@
 	},
 /obj/item/trash/cigbutt,
 /turf/open/floor/prison/floor_plate,
-/area/lazarus/lazarus/landing_zones/lz2)
+/area/lazarus/landing_zones/lz2)
 "vU" = (
 /obj/item/prop/alien/hugger,
 /turf/open/auto_turf/lv_sand/layer0,
@@ -1227,7 +1227,7 @@
 /obj/item/trash/cigbutt,
 /obj/item/trash/cigbutt,
 /turf/open/floor/prison/white2/west,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "wG" = (
 /obj/structure/platform/metal/strata/alt/west,
 /obj/structure/flora/jungle/vines/dead/light_2,
@@ -1241,7 +1241,7 @@
 /obj/effect/decal/hybrisa/dirt,
 /obj/item/weapon/twohanded/folded_metal_chair,
 /turf/open/floor/prison/floor_plate_alt/west,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "xe" = (
 /obj/structure/flora/jungle/vines/dead/heavy{
 	pixel_y = 30
@@ -1278,25 +1278,25 @@
 	},
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "xP" = (
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 1
 	},
 /turf/open/floor/prison/cell_stripe_alt,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "xQ" = (
 /obj/effect/decal/lv_decals/red_mud_corner,
 /turf/open/floor/prison/floor_plate,
-/area/lazarus/lazarus/landing_zones/lz2)
+/area/lazarus/landing_zones/lz2)
 "xU" = (
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/hybrisa/metal/stripe_red/west,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "yd" = (
 /obj/item/prop/alien/hugger,
 /turf/open/floor/prison/floor_plate_alt/west,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "ym" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/item/trash/cigbutt,
@@ -1304,7 +1304,7 @@
 	dir = 8
 	},
 /turf/open/floor/prison/white2/east,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "ys" = (
 /obj/structure/fence/dark/overgrown,
 /turf/open/auto_turf/lv_sand/layer0,
@@ -1318,20 +1318,20 @@
 	},
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/hybrisa/carpet/carpetblack,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "yy" = (
 /obj/structure/machinery/meter{
 	pixel_y = 32
 	},
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/darkred2/north,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "yT" = (
 /obj/effect/decal/lv_decals/red_mud_corner,
 /obj/effect/decal/hybrisa/dirt,
 /obj/item/trash/cigbutt,
 /turf/open/floor/prison/cell_stripe,
-/area/lazarus/lazarus/landing_zones/lz2)
+/area/lazarus/landing_zones/lz2)
 "zd" = (
 /obj/structure/flora/bush/ausbushes/lavendergrass,
 /turf/open/auto_turf/lv_grass/layer1,
@@ -1356,7 +1356,7 @@
 	pixel_y = 2
 	},
 /turf/open/floor/hybrisa/carpet/carpetblack,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "zI" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/auto_turf/lv_grass/layer0,
@@ -1386,7 +1386,7 @@
 	pixel_y = 2
 	},
 /turf/open/floor/prison/floor_plate,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "AF" = (
 /obj/structure/flora/jungle/plantbot1,
 /turf/open/auto_turf/lv_grass/layer0,
@@ -1404,7 +1404,7 @@
 	id = "corp_person_armory"
 	},
 /turf/open/floor/plating/prison,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "Bl" = (
 /obj/effect/hybrisa/misc/fake/wire/blue{
 	dir = 4;
@@ -1427,7 +1427,7 @@
 	pixel_x = 1
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "Bx" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "test_square_red"
@@ -1441,10 +1441,10 @@
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison/floor_plate,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "Ci" = (
 /turf/open/floor/brown_dirt/random_rocks,
-/area/lazarus/lazarus/landing_zones/lz2)
+/area/lazarus/landing_zones/lz2)
 "Cj" = (
 /obj/structure/flora/jungle/vines/dead/light_2,
 /turf/open/auto_turf/lv_grass/layer1,
@@ -1464,19 +1464,19 @@
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /turf/open/floor/prison/cell_stripe/east,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "CI" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/prison/floor_plate_alt/west,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "CN" = (
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/white2/north,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "CV" = (
 /turf/open/floor/prison/floor_plate_alt/west,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "Dt" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -1510,14 +1510,14 @@
 	pixel_y = -8
 	},
 /turf/open/floor/prison/darkred2/northwest,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "DN" = (
 /obj/effect/decal/lv_decals/red_mud_corner{
 	dir = 8
 	},
 /obj/structure/machinery/light/small/blue,
 /turf/open/floor/prison/cell_stripe/west,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "El" = (
 /obj/effect/hybrisa/misc/fake/wire/yellow{
 	dir = 1;
@@ -1536,7 +1536,7 @@
 	},
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "Et" = (
 /obj/structure/barricade/handrail/wire{
 	dir = 8;
@@ -1551,7 +1551,7 @@
 	dir = 4
 	},
 /turf/open/floor/prison/floor_plate,
-/area/lazarus/lazarus/landing_zones/lz2)
+/area/lazarus/landing_zones/lz2)
 "EH" = (
 /obj/structure/surface/table{
 	color = "#8B7B5B"
@@ -1562,7 +1562,7 @@
 	},
 /obj/item/reagent_container/food/drinks/coffeecup,
 /turf/open/floor/prison/white2/west,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "EO" = (
 /obj/structure/platform/metal/strata/alt/north,
 /obj/structure/platform/metal/strata/alt/west,
@@ -1582,7 +1582,7 @@
 	id = "corp_person_outer"
 	},
 /turf/open/floor/prison/floor_plate,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "Fg" = (
 /obj/structure/flora/bush/ausbushes/pointybush,
 /turf/open/auto_turf/lv_grass/layer1,
@@ -1598,7 +1598,7 @@
 /obj/item/trash/cigbutt,
 /obj/item/trash/cigbutt,
 /turf/open/floor/prison/brown/north,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "Fy" = (
 /obj/structure/bed/chair{
 	dir = 8;
@@ -1608,13 +1608,13 @@
 	buckling_y = 7
 	},
 /turf/open/floor/prison/floor_plate_alt/west,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "FD" = (
 /obj/effect/decal/lv_decals/red_mud_corner,
 /obj/item/trash/cigbutt,
 /obj/item/trash/cigbutt,
 /turf/open/floor/prison/cell_stripe,
-/area/lazarus/lazarus/landing_zones/lz2)
+/area/lazarus/landing_zones/lz2)
 "FX" = (
 /obj/structure/platform/metal/strata/alt/north,
 /turf/open/auto_turf/lv_grass/layer1,
@@ -1629,7 +1629,7 @@
 	name = "\improper Corporate Personnel Complex Bathroom"
 	},
 /turf/open/floor/prison/floor_plate,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "GV" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -1638,7 +1638,7 @@
 	dir = 1
 	},
 /turf/open/floor/prison/floor_plate_alt/west,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "GY" = (
 /turf/open/auto_turf/lv_grass/layer0,
 /area/lazarus/ground/jungle/west_central_jungle)
@@ -1651,12 +1651,12 @@
 	dir = 1
 	},
 /turf/open/floor/hybrisa/carpet/carpetblack,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "Hg" = (
 /obj/effect/decal/lv_decals/red_mud_corner,
 /obj/item/trash/cigbutt,
 /turf/open/floor/prison/cell_stripe,
-/area/lazarus/lazarus/landing_zones/lz2)
+/area/lazarus/landing_zones/lz2)
 "Hu" = (
 /obj/structure/machinery/light/small/blue{
 	light_color = "#dae2ff";
@@ -1667,7 +1667,7 @@
 	dir = 4
 	},
 /turf/open/floor/prison/floor_plate,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "Hv" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/auto_turf/lv_grass/layer1,
@@ -1693,16 +1693,16 @@
 	},
 /obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "Ii" = (
 /obj/effect/landmark/corpsespawner/wygoon,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "Im" = (
 /obj/structure/window/framed/lv_colony/reinforced,
 /turf/open/floor/prison/floor_plate,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "In" = (
 /obj/structure/surface/table{
 	color = "#8B7B5B"
@@ -1714,14 +1714,14 @@
 	pixel_y = 12
 	},
 /turf/open/floor/prison/floor_plate_alt/west,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "Io" = (
 /obj/structure/machinery/light/small/blue,
 /obj/effect/decal/hybrisa/dirt,
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /turf/open/floor/prison/darkred2,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "Iz" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -1739,10 +1739,10 @@
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "IF" = (
 /turf/open/gm/dirt/brown/variant_5/east,
-/area/lazarus/lazarus/landing_zones/lz2)
+/area/lazarus/landing_zones/lz2)
 "II" = (
 /obj/structure/flora/jungle/vines/blue/light_1,
 /turf/open/auto_turf/lv_grass/layer0,
@@ -1755,7 +1755,7 @@
 	pixel_y = 8
 	},
 /turf/open/floor/prison/floor_plate_alt/west,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "IX" = (
 /obj/structure/sign/safety/storage{
 	pixel_x = 23;
@@ -1772,7 +1772,7 @@
 	dir = 4
 	},
 /turf/open/floor/prison/floor_plate_alt/west,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "Jr" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -1783,7 +1783,7 @@
 	dir = 4
 	},
 /turf/open/floor/prison/darkred2/east,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "Jw" = (
 /obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
 	dir = 5
@@ -1806,7 +1806,7 @@
 	},
 /obj/item/trash/cigbutt,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "JT" = (
 /turf/open/auto_turf/lv_grass/layer1,
 /area/lazarus/ground/jungle/south_west_jungle)
@@ -1832,7 +1832,7 @@
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/strata_decals/grime/grime2,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "Ky" = (
 /obj/structure/flora/jungle/vines/blue/light_3,
 /turf/closed/wall/strata_ice/jungle,
@@ -1851,7 +1851,7 @@
 	dir = 4
 	},
 /turf/open/floor/prison/cell_stripe/west,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "KK" = (
 /obj/structure/machinery/space_heater/radiator/red{
 	dir = 8;
@@ -1862,7 +1862,7 @@
 	pixel_x = 9
 	},
 /turf/open/floor/prison/brown/north,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "KL" = (
 /obj/item/ammo_magazine/smg/mp5,
 /turf/open/auto_turf/lv_sand/layer0,
@@ -1889,7 +1889,7 @@
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "KX" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "test_square_red"
@@ -1903,7 +1903,7 @@
 /obj/item/ammo_magazine/rifle/extended,
 /obj/item/weapon/gun/rifle/m41a/corporate/no_lock,
 /turf/open/floor/prison/floor_plate,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "Ld" = (
 /obj/structure/flora/jungle/vines/blue/light_2,
 /turf/open/auto_turf/lv_grass/layer0,
@@ -1926,7 +1926,7 @@
 	pixel_y = 10
 	},
 /turf/open/floor/prison/brown/north,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "LI" = (
 /obj/structure/cargo_container/hybrisa/containersextended/whitewyleft,
 /turf/open/floor/brown_dirt/random_rocks,
@@ -1961,12 +1961,12 @@
 /area/lazarus/ground/colony/west_tcomms_road)
 "Mv" = (
 /turf/closed/wall/lv_outpost/reinforced,
-/area/lazarus/lazarus/corporate_dome)
+/area/lazarus/corporate_dome)
 "Mw" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/item/ammo_casing/bullet,
 /turf/open/floor/prison/white2/southeast,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "MC" = (
 /turf/open/gm/dirt/brown/variant_5/west,
 /area/lazarus/ground/colony/west_tcomms_road)
@@ -1978,7 +1978,7 @@
 /obj/effect/decal/hybrisa/dirt,
 /obj/item/ammo_casing/bullet,
 /turf/open/floor/prison/darkred2/north,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "MS" = (
 /obj/structure/platform/metal/strata/alt/north,
 /obj/structure/platform/metal/strata/alt/east,
@@ -1996,7 +1996,7 @@
 	},
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/floor_plate_alt/west,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "Nk" = (
 /obj/structure/flora/jungle/plantbot1,
 /turf/open/auto_turf/lv_grass/layer1,
@@ -2041,10 +2041,10 @@
 	pixel_y = 12
 	},
 /turf/open/floor/prison/brown/north,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "ND" = (
 /turf/open/floor/prison/floor_plate,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "NN" = (
 /obj/structure/largecrate/random/barrel/black,
 /turf/open/auto_turf/lv_sand/layer0,
@@ -2059,13 +2059,13 @@
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "NR" = (
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /turf/open/floor/hybrisa/metal/stripe_red/west,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "Ob" = (
 /obj/structure/platform/metal/strata/alt/north,
 /obj/structure/flora/jungle/vines/dead/heavy{
@@ -2088,7 +2088,7 @@
 	dir = 1
 	},
 /turf/open/floor/prison/floor_plate,
-/area/lazarus/lazarus/landing_zones/lz2)
+/area/lazarus/landing_zones/lz2)
 "OA" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/machinery/door/airlock/light_grey_lv/glass{
@@ -2100,10 +2100,10 @@
 	id = "corp_person_outer"
 	},
 /turf/open/floor/prison/floor_plate,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "OC" = (
 /turf/open/auto_turf/lv_grass/layer1,
-/area/lazarus/lazarus/landing_zones/lz2)
+/area/lazarus/landing_zones/lz2)
 "OF" = (
 /obj/structure/flora/jungle/planttop1,
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
@@ -2135,7 +2135,7 @@
 	},
 /obj/structure/largecrate/random/barrel/black,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "Pz" = (
 /obj/structure/flora/jungle/vines/dead/light_2,
 /turf/closed/wall/strata_ice/jungle,
@@ -2148,7 +2148,7 @@
 	name = "Corporate Personnel Dome Armory Lockdown Shutter"
 	},
 /turf/open/floor/prison/darkred2/southwest,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "PP" = (
 /obj/structure/bed/sofa/hybrisa/sofa/black{
 	icon_state = "couch_hori1_black";
@@ -2156,7 +2156,7 @@
 	},
 /obj/item/trash/cigbutt,
 /turf/open/floor/prison/brown/north,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "Qa" = (
 /obj/structure/flora/jungle/vines/blue/light_1,
 /turf/open/auto_turf/lv_grass/layer1,
@@ -2169,7 +2169,7 @@
 	dir = 5
 	},
 /turf/open/floor/prison/floor_plate_alt/west,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "Qi" = (
 /obj/effect/decal/lv_decals/red_mud_corner,
 /turf/open/floor/prison/cell_stripe,
@@ -2179,12 +2179,12 @@
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /turf/open/floor/prison/white2/northwest,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "QT" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/item/trash/cigbutt,
 /turf/open/floor/prison/floor_plate_alt/west,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "QV" = (
 /obj/structure/platform/metal/strata/alt/north,
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
@@ -2248,7 +2248,7 @@
 	},
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "RA" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/effect/decal/hybrisa/dirt,
@@ -2256,7 +2256,7 @@
 	dir = 1
 	},
 /turf/open/floor/prison/cell_stripe,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "RZ" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/tiretrack{
@@ -2265,11 +2265,11 @@
 	},
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison/darkred2/east,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "Sf" = (
 /obj/structure/machinery/light/small/blue,
 /turf/open/floor/prison/darkred2,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "Sj" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/auto_turf/lv_grass/layer1,
@@ -2291,7 +2291,7 @@
 	},
 /obj/item/ammo_magazine/smg/mp5,
 /turf/open/floor/prison/cell_stripe/north,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "St" = (
 /obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
 	dir = 3
@@ -2308,7 +2308,7 @@
 	dir = 1
 	},
 /turf/open/floor/prison/floor_plate,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "Sx" = (
 /obj/structure/machinery/light/blue,
 /obj/effect/decal/hybrisa/dirt,
@@ -2316,7 +2316,7 @@
 	dir = 4
 	},
 /turf/open/floor/prison/floor_plate_alt/west,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "SB" = (
 /obj/structure/platform/metal/strata/alt/east,
 /turf/open/auto_turf/lv_grass/layer0,
@@ -2349,7 +2349,7 @@
 /obj/effect/decal/strata_decals/grime/grime2,
 /obj/item/tool/soap/weyland_yutani,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "Td" = (
 /obj/structure/flora/bush/ausbushes/lavendergrass,
 /turf/open/auto_turf/lv_grass/layer1,
@@ -2376,7 +2376,7 @@
 	dir = 4
 	},
 /turf/open/floor/prison/cell_stripe/east,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "Tp" = (
 /obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
 	dir = 6
@@ -2396,7 +2396,7 @@
 	},
 /obj/structure/machinery/light/blue,
 /turf/open/floor/prison/floor_plate_alt/west,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "Uz" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/item/prop/alien/hugger,
@@ -2404,7 +2404,7 @@
 /area/lazarus/ground/colony/west_tcomms_road)
 "UG" = (
 /turf/closed/wall/lv_outpost/reinforced,
-/area/lazarus/lazarus/landing_zones/lz2)
+/area/lazarus/landing_zones/lz2)
 "UH" = (
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_x = -8;
@@ -2422,7 +2422,7 @@
 /obj/effect/decal/hybrisa/dirt,
 /obj/item/trash/cigbutt,
 /turf/open/floor/prison/darkred2,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "Vl" = (
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
@@ -2434,7 +2434,7 @@
 	pixel_y = 7
 	},
 /turf/open/floor/prison/floor_plate_alt/west,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "Vx" = (
 /obj/structure/machinery/colony_floodlight{
 	light_color = "#dae2ff"
@@ -2461,7 +2461,7 @@
 	pixel_y = 8
 	},
 /turf/open/floor/hybrisa/carpet/carpetblack,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "VP" = (
 /obj/structure/platform/metal/strata/alt/west,
 /obj/structure/flora/jungle/vines/dead/light_3,
@@ -2479,7 +2479,7 @@
 	pixel_x = -7
 	},
 /turf/open/floor/prison/floor_plate_alt/west,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "WI" = (
 /obj/structure/fence/dark/overgrown,
 /obj/structure/flora/jungle/vines/dead/light_3,
@@ -2495,7 +2495,7 @@
 	pixel_y = 12
 	},
 /turf/open/floor/prison/cell_stripe/east,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "WU" = (
 /obj/structure/largecrate/random/barrel/blue,
 /turf/open/floor/brown_dirt/random_rocks_alt{
@@ -2541,7 +2541,7 @@
 	},
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/floor_plate_alt/west,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "Xj" = (
 /obj/structure/flora/jungle/vines/blue/light_2,
 /turf/closed/wall/strata_ice/jungle,
@@ -2555,7 +2555,7 @@
 	dir = 1
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "Xz" = (
 /obj/structure/platform/metal/strata/alt/west,
 /turf/open/auto_turf/lv_grass/layer0,
@@ -2578,7 +2578,7 @@
 	dir = 1
 	},
 /turf/open/floor/prison/floor_plate,
-/area/lazarus/lazarus/landing_zones/lz2)
+/area/lazarus/landing_zones/lz2)
 "XT" = (
 /obj/structure/prop/hybrisa/misc/redmeter{
 	pixel_y = 32
@@ -2593,14 +2593,14 @@
 /obj/effect/landmark/objective_landmark/close,
 /obj/item/storage/belt/marine/wy,
 /turf/open/floor/prison/floor_plate,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "Ym" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 9
 	},
 /obj/item/weapon/twohanded/folded_metal_chair,
 /turf/open/floor/prison/floor_plate_alt/west,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "Yn" = (
 /obj/structure/sign/safety/debark_lounge{
 	pixel_x = 16;
@@ -2611,7 +2611,7 @@
 /turf/open/floor/brown_dirt/random_rocks_alt{
 	dir = 6
 	},
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "Yp" = (
 /obj/structure/platform/metal/strata/alt/north,
 /obj/structure/flora/jungle/vines/dead/heavy{
@@ -2624,7 +2624,7 @@
 /obj/effect/decal/lv_decals/red_mud_corner,
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/cell_stripe,
-/area/lazarus/lazarus/landing_zones/lz2)
+/area/lazarus/landing_zones/lz2)
 "Yr" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/auto_turf/lv_grass/layer0,
@@ -2644,7 +2644,7 @@
 /turf/open/floor/brown_dirt/random_rocks_alt{
 	dir = 6
 	},
-/area/lazarus/lazarus/landing_zones/lz2)
+/area/lazarus/landing_zones/lz2)
 "Zb" = (
 /obj/structure/flora/bush/ausbushes/var3/sunnybush,
 /turf/open/auto_turf/lv_grass/layer1,
@@ -2655,7 +2655,7 @@
 	},
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/darkred2/northeast,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "ZN" = (
 /obj/structure/toilet{
 	dir = 4;
@@ -2688,11 +2688,11 @@
 	dir = 4
 	},
 /turf/open/floor/prison/floor_plate,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "ZW" = (
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/floor_plate_alt/west,
-/area/lazarus/lazarus/secure_storage)
+/area/lazarus/secure_storage)
 "ZX" = (
 /obj/effect/decal/lv_decals/red_mud_corner,
 /obj/structure/barricade/handrail/wire{
@@ -2705,7 +2705,7 @@
 	},
 /obj/item/trash/cigbutt,
 /turf/open/floor/prison/floor_plate,
-/area/lazarus/lazarus/landing_zones/lz2)
+/area/lazarus/landing_zones/lz2)
 
 (1,1,1) = {"
 Ab

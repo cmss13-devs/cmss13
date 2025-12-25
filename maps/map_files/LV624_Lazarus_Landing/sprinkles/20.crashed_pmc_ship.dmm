@@ -155,7 +155,7 @@
 	},
 /obj/item/shard,
 /turf/open/floor/platingdmg1,
-/area/lazarus/lazarus/crashed_shuttle)
+/area/lazarus/crashed_shuttle)
 "cc" = (
 /obj/effect/landmark/big_fog_marker,
 /turf/open/auto_turf/lv_grass/layer0,
@@ -189,7 +189,7 @@
 /obj/item/ammo_casing/bullet,
 /obj/item/shard,
 /turf/open/floor/platingdmg3,
-/area/lazarus/lazarus/crashed_shuttle)
+/area/lazarus/crashed_shuttle)
 "cx" = (
 /obj/item/ammo_casing/bullet,
 /obj/effect/decal/large_stain{
@@ -201,7 +201,7 @@
 /obj/item/stack/sheet/metal,
 /obj/item/shard,
 /turf/open/floor/almayer/test_floor5,
-/area/lazarus/lazarus/crashed_shuttle)
+/area/lazarus/crashed_shuttle)
 "cB" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
@@ -251,7 +251,7 @@
 	icon_state = "hotseat_destroyed"
 	},
 /turf/open/floor/almayer/plate,
-/area/lazarus/lazarus/crashed_shuttle)
+/area/lazarus/crashed_shuttle)
 "dg" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#d4a88e";
@@ -278,7 +278,7 @@
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_left_to_right,
-/area/lazarus/lazarus/crashed_shuttle)
+/area/lazarus/crashed_shuttle)
 "dU" = (
 /obj/effect/decal/lv_decals/cave_mud_corner,
 /obj/effect/decal/hybrisa/dirt,
@@ -325,7 +325,7 @@
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/shuttle/dropship/can_surgery/light_grey_bottom_left,
-/area/lazarus/lazarus/crashed_shuttle)
+/area/lazarus/crashed_shuttle)
 "ew" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/prop/colorable_rock/colorable{
@@ -734,7 +734,7 @@
 	layer = 2.1
 	},
 /turf/open/floor/plating/platingdmg2,
-/area/lazarus/lazarus/crashed_shuttle)
+/area/lazarus/crashed_shuttle)
 "jE" = (
 /turf/open/auto_turf/lv_grass/layer0,
 /area/lazarus/ground/barrens/central_barrens)
@@ -749,7 +749,7 @@
 /obj/effect/landmark/objective_landmark/far,
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/almayer/plate,
-/area/lazarus/lazarus/crashed_shuttle)
+/area/lazarus/crashed_shuttle)
 "jL" = (
 /turf/open/auto_turf/lv_grass/layer0_mud_alt,
 /area/lazarus/ground/barrens/north_barrens)
@@ -780,7 +780,7 @@
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /turf/open/floor/platingdmg1,
-/area/lazarus/lazarus/crashed_shuttle)
+/area/lazarus/crashed_shuttle)
 "kQ" = (
 /turf/open/gm/coast/dirt/beachcorner2/north_west,
 /area/lazarus/ground/river/central_river/north)
@@ -827,7 +827,7 @@
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /turf/open/floor/platingdmg1,
-/area/lazarus/lazarus/crashed_shuttle)
+/area/lazarus/crashed_shuttle)
 "lY" = (
 /turf/open/gm/river/soro,
 /area/lazarus/ground/river/central_river/north)
@@ -925,7 +925,7 @@
 /obj/effect/decal/hybrisa/dirt,
 /obj/item/storage/belt/medical/lifesaver/wy,
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
-/area/lazarus/lazarus/crashed_shuttle)
+/area/lazarus/crashed_shuttle)
 "nw" = (
 /obj/structure/flora/jungle/planttop1,
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
@@ -942,7 +942,7 @@
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /turf/open/floor/platingdmg1,
-/area/lazarus/lazarus/crashed_shuttle)
+/area/lazarus/crashed_shuttle)
 "nL" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
@@ -969,7 +969,7 @@
 	},
 /obj/item/shard,
 /turf/open/floor/plating/platingdmg2,
-/area/lazarus/lazarus/crashed_shuttle)
+/area/lazarus/crashed_shuttle)
 "oh" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
@@ -996,7 +996,7 @@
 /obj/item/shard,
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/almayer/test_floor5,
-/area/lazarus/lazarus/crashed_shuttle)
+/area/lazarus/crashed_shuttle)
 "oK" = (
 /obj/structure/prop/colorable_rock/boulder/small/boulder3{
 	color = "#8d6d6d";
@@ -1034,7 +1034,7 @@
 /obj/item/storage/firstaid/regular,
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/almayer/test_floor5,
-/area/lazarus/lazarus/crashed_shuttle)
+/area/lazarus/crashed_shuttle)
 "oY" = (
 /turf/closed/shuttle/ert{
 	icon_state = "wy13"
@@ -1067,7 +1067,7 @@
 	},
 /obj/item/shard,
 /turf/open/floor/plating/platingdmg2,
-/area/lazarus/lazarus/crashed_shuttle)
+/area/lazarus/crashed_shuttle)
 "pR" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /obj/effect/landmark/big_fog_marker,
@@ -1085,7 +1085,7 @@
 /obj/effect/spawner/random/sentry/midchance,
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/almayer/test_floor5,
-/area/lazarus/lazarus/crashed_shuttle)
+/area/lazarus/crashed_shuttle)
 "qd" = (
 /obj/effect/decal/large_stain{
 	pixel_x = 3;
@@ -1117,7 +1117,7 @@
 	layer = 2.1
 	},
 /turf/open/floor/plating/platingdmg2,
-/area/lazarus/lazarus/crashed_shuttle)
+/area/lazarus/crashed_shuttle)
 "qp" = (
 /obj/effect/decal/cleanable/blood,
 /obj/item/ammo_casing/bullet,
@@ -1126,7 +1126,7 @@
 	},
 /obj/item/explosive/grenade/high_explosive/pmc,
 /turf/open/floor/platingdmg3,
-/area/lazarus/lazarus/crashed_shuttle)
+/area/lazarus/crashed_shuttle)
 "qr" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
@@ -1153,7 +1153,7 @@
 	},
 /obj/item/shard,
 /turf/open/floor/almayer/test_floor4,
-/area/lazarus/lazarus/crashed_shuttle)
+/area/lazarus/crashed_shuttle)
 "qL" = (
 /turf/open/gm/coast/dirt/beachcorner/north_west,
 /area/lazarus/ground/river/central_river/north)
@@ -1299,7 +1299,7 @@
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/plating/platingdmg2,
-/area/lazarus/lazarus/crashed_shuttle)
+/area/lazarus/crashed_shuttle)
 "tz" = (
 /obj/effect/decal/cleanable/liquid_fuel,
 /obj/effect/decal/hybrisa/dirt,
@@ -1322,7 +1322,7 @@
 	dir = 1
 	},
 /turf/open/floor/almayer/test_floor5,
-/area/lazarus/lazarus/crashed_shuttle)
+/area/lazarus/crashed_shuttle)
 "tW" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#d4a88e";
@@ -1339,7 +1339,7 @@
 /obj/effect/decal/cleanable/blood/drip,
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
-/area/lazarus/lazarus/crashed_shuttle)
+/area/lazarus/crashed_shuttle)
 "uv" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/prop/colorable_rock/colorable{
@@ -1399,7 +1399,7 @@
 	dir = 4
 	},
 /turf/open/floor/almayer/plate,
-/area/lazarus/lazarus/crashed_shuttle)
+/area/lazarus/crashed_shuttle)
 "vW" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
@@ -1426,7 +1426,7 @@
 "wA" = (
 /obj/structure/girder,
 /turf/open/floor/platingdmg1,
-/area/lazarus/lazarus/crashed_shuttle)
+/area/lazarus/crashed_shuttle)
 "wB" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
@@ -1439,7 +1439,7 @@
 	},
 /obj/item/storage/belt/shotgun/black,
 /turf/open/floor/plating/platingdmg2,
-/area/lazarus/lazarus/crashed_shuttle)
+/area/lazarus/crashed_shuttle)
 "wK" = (
 /obj/effect/decal/large_stain{
 	pixel_x = 3;
@@ -1528,7 +1528,7 @@
 	pixel_y = 16
 	},
 /turf/open/floor/almayer/test_floor4,
-/area/lazarus/lazarus/crashed_shuttle)
+/area/lazarus/crashed_shuttle)
 "xQ" = (
 /obj/item/stack/rods{
 	amount = 15
@@ -1581,7 +1581,7 @@
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/platingdmg3,
-/area/lazarus/lazarus/crashed_shuttle)
+/area/lazarus/crashed_shuttle)
 "yo" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#d4a88e";
@@ -1624,7 +1624,7 @@
 	},
 /obj/item/shard,
 /turf/open/floor/platingdmg3,
-/area/lazarus/lazarus/crashed_shuttle)
+/area/lazarus/crashed_shuttle)
 "yB" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#d4a88e";
@@ -1725,7 +1725,7 @@
 	icon_state = "shuttle_chair_destroyed"
 	},
 /turf/open/floor/plating/platingdmg2,
-/area/lazarus/lazarus/crashed_shuttle)
+/area/lazarus/crashed_shuttle)
 "Af" = (
 /obj/effect/decal/large_stain{
 	pixel_x = 3;
@@ -1797,7 +1797,7 @@
 /obj/effect/landmark/objective_landmark/far,
 /obj/item/shard,
 /turf/open/floor/platingdmg3,
-/area/lazarus/lazarus/crashed_shuttle)
+/area/lazarus/crashed_shuttle)
 "AJ" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
@@ -1899,7 +1899,7 @@
 	dir = 1
 	},
 /turf/closed/wall/rock/brown,
-/area/lazarus/lazarus/crashed_shuttle)
+/area/lazarus/crashed_shuttle)
 "BB" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#ae8686";
@@ -1948,7 +1948,7 @@
 	},
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/platingdmg1,
-/area/lazarus/lazarus/crashed_shuttle)
+/area/lazarus/crashed_shuttle)
 "BT" = (
 /obj/structure/girder,
 /obj/structure/prop/hybrisa/misc/fire/fire2{
@@ -1967,7 +1967,7 @@
 	layer = 2.1
 	},
 /turf/open/floor/platingdmg1,
-/area/lazarus/lazarus/crashed_shuttle)
+/area/lazarus/crashed_shuttle)
 "BV" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
@@ -2206,7 +2206,7 @@
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/shuttle/dropship/can_surgery/light_grey_bottom_right,
-/area/lazarus/lazarus/crashed_shuttle)
+/area/lazarus/crashed_shuttle)
 "Gf" = (
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/gm/coast/dirt/beachcorner/north_west,
@@ -2268,7 +2268,7 @@
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/platingdmg3,
-/area/lazarus/lazarus/crashed_shuttle)
+/area/lazarus/crashed_shuttle)
 "GV" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
@@ -2465,7 +2465,7 @@
 	dir = 1
 	},
 /turf/closed/wall/rock/brown,
-/area/lazarus/lazarus/crashed_shuttle)
+/area/lazarus/crashed_shuttle)
 "JF" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#d4a88e";
@@ -2523,7 +2523,7 @@
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
-/area/lazarus/lazarus/crashed_shuttle)
+/area/lazarus/crashed_shuttle)
 "Kq" = (
 /obj/effect/decal/cleanable/blood{
 	layer = 3;
@@ -2537,7 +2537,7 @@
 /obj/item/ammo_casing/bullet,
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
-/area/lazarus/lazarus/crashed_shuttle)
+/area/lazarus/crashed_shuttle)
 "Kt" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/prop/colorable_rock/colorable{
@@ -2589,7 +2589,7 @@
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/almayer/plate,
-/area/lazarus/lazarus/crashed_shuttle)
+/area/lazarus/crashed_shuttle)
 "LU" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#d4a88e";
@@ -2745,7 +2745,7 @@
 /obj/item/ammo_casing/bullet,
 /obj/item/shard,
 /turf/open/floor/platingdmg1,
-/area/lazarus/lazarus/crashed_shuttle)
+/area/lazarus/crashed_shuttle)
 "OY" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/auto_turf/lv_grass/layer0,
@@ -2813,14 +2813,14 @@
 /obj/structure/girder,
 /obj/effect/decal/large_stain,
 /turf/open/floor/platingdmg1,
-/area/lazarus/lazarus/crashed_shuttle)
+/area/lazarus/crashed_shuttle)
 "Qu" = (
 /obj/structure/bed/chair/dropship/passenger,
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /turf/open/floor/almayer/plate,
-/area/lazarus/lazarus/crashed_shuttle)
+/area/lazarus/crashed_shuttle)
 "Qx" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#d4a88e";
@@ -2938,7 +2938,7 @@
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/almayer/plate,
-/area/lazarus/lazarus/crashed_shuttle)
+/area/lazarus/crashed_shuttle)
 "Ru" = (
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
@@ -2950,7 +2950,7 @@
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/almayer/plate,
-/area/lazarus/lazarus/crashed_shuttle)
+/area/lazarus/crashed_shuttle)
 "RM" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/prop/colorable_rock/colorable{
@@ -3077,7 +3077,7 @@
 /obj/item/shard,
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
-/area/lazarus/lazarus/crashed_shuttle)
+/area/lazarus/crashed_shuttle)
 "Uu" = (
 /obj/effect/decal/large_stain,
 /obj/item/stack/rods{
@@ -3091,7 +3091,7 @@
 /obj/item/shard,
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/platingdmg1,
-/area/lazarus/lazarus/crashed_shuttle)
+/area/lazarus/crashed_shuttle)
 "UD" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
@@ -3099,7 +3099,7 @@
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/platingdmg3,
-/area/lazarus/lazarus/crashed_shuttle)
+/area/lazarus/crashed_shuttle)
 "UE" = (
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 8;
@@ -3107,7 +3107,7 @@
 	},
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/almayer/plate,
-/area/lazarus/lazarus/crashed_shuttle)
+/area/lazarus/crashed_shuttle)
 "VG" = (
 /turf/open/gm/coast/dirt/beachcorner2/south_west,
 /area/lazarus/ground/river/central_river)
@@ -3205,7 +3205,7 @@
 /obj/structure/bed/chair/dropship/passenger,
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/almayer/plate,
-/area/lazarus/lazarus/crashed_shuttle)
+/area/lazarus/crashed_shuttle)
 "WL" = (
 /obj/item/stack/rods{
 	amount = 15
@@ -3379,7 +3379,7 @@
 	dir = 1
 	},
 /turf/open/floor/platingdmg1,
-/area/lazarus/lazarus/crashed_shuttle)
+/area/lazarus/crashed_shuttle)
 "YD" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
@@ -3493,7 +3493,7 @@
 /obj/structure/girder/displaced,
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/platingdmg3,
-/area/lazarus/lazarus/crashed_shuttle)
+/area/lazarus/crashed_shuttle)
 
 (1,1,1) = {"
 fK

@@ -146,7 +146,7 @@
 			qdel(test_human)
 			return
 		test_human.assigned_squad.forget_marine_in_squad(test_human)
-		qdel(test_human)
+	qdel(test_human)
 
 	spawning = TRUE
 	close_spawn_windows()

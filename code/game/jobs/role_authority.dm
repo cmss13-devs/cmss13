@@ -277,7 +277,8 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 				free_role(job, force = TRUE)
 				unassigned_players += player
 				player.job = null
-			test_human.assigned_squad.forget_marine_in_squad(test_human)
+			else
+				test_human.assigned_squad.forget_marine_in_squad(test_human)
 		qdel(test_human)
 /**
 * Assign roles to the players. Return roles that are still avialable.

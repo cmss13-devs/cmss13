@@ -567,7 +567,7 @@
 	)
 
 	//multiplier to time required to empty the box into chem master
-	var/time_to_empty = 3
+	var/time_to_empty = 0.3 SECONDS
 
 
 /obj/item/storage/box/pillbottles/fill_preset_inventory()

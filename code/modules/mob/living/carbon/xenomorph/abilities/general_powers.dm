@@ -1156,7 +1156,7 @@
 
 	if(blunt)
 		// The xeno smashes the target with their tail, moving it to the side and thus their direction as well.
-		stab_direction = turn(dir, pick(90, -90))
+		stab_direction = turn(get_dir(src, target), pick(90, -90))
 	else
 		// The xeno flips around for a second to impale the target with their tail. These look awsome.
 		stab_direction = turn(get_dir(src, target), 180)

@@ -99,7 +99,7 @@
 /obj/docking_port/mobile/crashable/proc/check_crash_point(obj/docking_port/stationary/crashable/checked_crashable_port)
 	for(var/turf/found_turf as anything in checked_crashable_port.return_turfs())
 		var/area/found_area = get_area(found_turf)
-		if(found_area.flags_area & AREA_NOTUNNEL)
+		if(found_area.flags_area & AREA_NOBURROW)
 			return FALSE
 
 		if(!found_area.can_build_special)

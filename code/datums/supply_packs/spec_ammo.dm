@@ -1,7 +1,31 @@
 //------------------------Specialists ammunition crates----------------
 
 //M5 RPG
+/datum/supply_packs/ammo_spnkr
+	name = "SPNKr Rocket launcher refill tubes (Dual Rocket Tube x3)"
+	contains = list(
+		/obj/item/ammo_magazine/spnkr,
+		/obj/item/ammo_magazine/spnkr,
+		/obj/item/ammo_magazine/spnkr,
+	)
+	cost = 20
+	containertype = /obj/structure/closet/crate/explosives
+	containername = "\improper SPNKr Rocket Tube Crate"
+	group = "Weapons Specialist Ammo"
 
+/datum/supply_packs/ammo_srs
+	name = "SRS99-AM Anti Material Rifle Magazines (SRS99-AM Magazine x3)"
+	contains = list(
+		/obj/item/ammo_magazine/rifle/halo/sniper,
+		/obj/item/ammo_magazine/rifle/halo/sniper,
+		/obj/item/ammo_magazine/rifle/halo/sniper,
+	)
+	cost = 20
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "SRS99-AM Magazines Crate"
+	group = "Weapons Specialist Ammo"
+
+/*
 /datum/supply_packs/ammo_rpg_regular
 	name = "M5 RPG Rocket Crate (HE x1, AP x1, WP x1)"
 	contains = list(
@@ -280,3 +304,4 @@
 	containertype = /obj/structure/closet/crate/ammo/alt/flame
 	containername = "M240-T Type-X Fuel Tank Crate"
 	group = "Weapons Specialist Ammo"
+*/

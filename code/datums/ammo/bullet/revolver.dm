@@ -139,7 +139,7 @@
 
 /datum/ammo/bullet/revolver/mateba/New()
 	..()
-	RegisterSignal(src, COMSIG_AMMO_POINT_BLANK, PROC_REF(handle_battlefield_execution))
+	RegisterSignal(src, COMSIG_AMMO_BATTLEFIELD_EXECUTION, PROC_REF(handle_battlefield_execution))
 
 /datum/ammo/bullet/revolver/mateba/highimpact
 	name = ".454 heavy high-impact revolver bullet"

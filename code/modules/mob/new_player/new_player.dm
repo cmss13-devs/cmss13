@@ -144,6 +144,7 @@
 			job = null
 			to_chat(src, SPAN_WARNING("[rank] is not available with your current squad preferences."))
 			return
+		test_human.assigned_squad.forget_marine_in_squad(test_human)
 
 	spawning = TRUE
 	close_spawn_windows()

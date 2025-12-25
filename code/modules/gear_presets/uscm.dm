@@ -1428,7 +1428,7 @@
 	minimap_icon = "tl"
 
 /datum/equipment_preset/uscm/hunted/tl/load_status(mob/living/carbon/human/new_human)
-	new_human.nutrition = NUTRITION_NORMAL
+	new_human.nutrition = NUTRITION_MAX
 
 /datum/equipment_preset/uscm/hunted/tl/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine(new_human), WEAR_BODY)
@@ -1469,6 +1469,9 @@
 	skills = /datum/skills/smartgunner_pve
 
 	minimap_icon = "smartgunner"
+
+/datum/equipment_preset/uscm/hunted/sg/load_status(mob/living/carbon/human/new_human)
+	new_human.nutrition = NUTRITION_MAX
 
 /datum/equipment_preset/uscm/hunted/sg/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine(new_human), WEAR_BODY)

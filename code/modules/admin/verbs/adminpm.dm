@@ -69,7 +69,7 @@
 
 	if(AH)
 		message_admins("[key_name_admin(src)] has started replying to [key_name_admin(C, 0, 0)]'s admin help.")
-		if(length(AH.ticket_interactions) == 1) // add the admin who is currently responding to the list of people responding
+		if(LAZYLEN(AH.ticket_interactions) == 1)
 			LAZYADD(AH.opening_responders, src)
 
 	var/msg = input(src, message_prompt, "Private message to [C.admin_holder?.fakekey ? "an Administrator" : key_name(C, 0, 0)].") as message|null
@@ -92,7 +92,8 @@
 				type = MESSAGE_TYPE_ADMINPM,
 				html = "[SPAN_DANGER("<b>Message not sent:</b>")]<br>[msg]",
 				confidential = TRUE)
-			AH.AddInteraction("<b>No client found, message not sent:</b><br>[msg]")
+			AH.AddInteraction("<b>No client found, message not sent:</b><br>[msg]",
+			plain_message = "No client found, message not sent: [msg]")
 			return
 	cmd_admin_pm(whom, msg)
 
@@ -157,7 +158,8 @@
 					html = "[SPAN_DANGER("<b>Message not sent:</b>")]<br>[msg]",
 					confidential = TRUE)
 				if(recipient_ticket)
-					recipient_ticket.AddInteraction("<b>No client found, message not sent:</b><br>[msg]")
+					recipient_ticket.AddInteraction("<b>No client found, message not sent:</b><br>[msg]",
+					plain_message = "No client found, message not sent: [msg]")
 				return
 			else
 				current_ticket.MessageNoRecipient(msg)
@@ -204,16 +206,23 @@
 			//omg this is dumb, just fill in both their tickets
 			var/interaction_message = "<font color='green'>PM from-<b>[key_name(src, recipient, TRUE)]</b> to-<b>[key_name(recipient, src, TRUE)]</b>: [msg]</font>"
 			var/player_interaction_message = "<font color='green'>PM from-<b>[key_name(src, recipient, FALSE)]</b> to-<b>[key_name(recipient, src, FALSE)]</b>: [msg]</font>"
-			admin_ticket_log(src, interaction_message, log_in_blackbox = FALSE, player_message = player_interaction_message)
+			var/interaction_message_raw = "[msg]"
+			var/player_interaction_raw = "[msg]"
+			admin_ticket_log(src, interaction_message, log_in_blackbox = FALSE, player_message = player_interaction_message,
+				raw_message = interaction_message_raw, raw_player_message = player_interaction_raw)
 			if(recipient != src) //reeee
-				admin_ticket_log(recipient, interaction_message, log_in_blackbox = FALSE, player_message = player_interaction_message)
+				admin_ticket_log(recipient, interaction_message, log_in_blackbox = FALSE, player_message = player_interaction_message,
+				raw_message = interaction_message_raw, raw_player_message = player_interaction_raw)
 			log_ahelp(current_ticket.id, "Reply", msg, recipient.ckey, src.ckey)
 		else //recipient is an admin but sender is not
 			current_ticket.player_replied = TRUE
 			SEND_SIGNAL(current_ticket, COMSIG_ADMIN_HELP_REPLIED)
 			var/replymsg = "Reply PM from-<b>[key_name(src, recipient, TRUE)]</b>: <span class='linkify'>[msg]</span>"
 			var/player_replymsg = "Reply PM from-<b>[key_name(src, recipient, FALSE)]</b>: <span class='linkify'>[msg]</span>"
-			admin_ticket_log(src, "<font color='red'>[replymsg]</font>", log_in_blackbox = FALSE, player_message = player_replymsg)
+			var/replymsg_raw = "[msg]"
+			var/player_replymsg_raw = "[msg]"
+			admin_ticket_log(src, "<font color='red'>[replymsg]</font>", log_in_blackbox = FALSE, player_message = player_replymsg,
+				raw_message = replymsg_raw, raw_player_message = player_replymsg_raw)
 			to_chat(recipient,
 				type = MESSAGE_TYPE_ADMINPM,
 				html = SPAN_DANGER("\n[replymsg]\n"),
@@ -254,7 +263,10 @@
 				html = SPAN_NOTICE("Admin PM to-<b>[key_name(recipient, src, 1)]</b>: <span class='linkify'>[msg]</span>"),
 				confidential = TRUE)
 
-			admin_ticket_log(recipient, "<font color='green'>PM From [key_name_admin(src)]: [msg]</font>", log_in_blackbox = FALSE, player_message = "<font color='green'>PM From [key_name_admin(src, include_name = FALSE)]: [msg]</font>")
+			admin_ticket_log(recipient, "<font color='green'>PM From [key_name_admin(src)]: [msg]</font>", log_in_blackbox = FALSE,
+				player_message = "<font color='green'>PM From [key_name_admin(src, include_name = FALSE)]: [msg]</font>",
+				raw_message = "PM from-[src.key] to-[recipient.key]: [msg]",
+				raw_player_message = "[msg]")
 
 			if(!already_logged) //Reply to an existing ticket
 				log_ahelp(recipient.current_ticket.id, "Reply", msg, recipient.ckey, src.ckey)

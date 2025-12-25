@@ -1570,3 +1570,13 @@
 
 /turf/open/shuttle/vehicle/floor_3_9_1
 	icon_state = "floor_3_9_1"
+
+/turf/open/walkable_lattice
+	desc = "A support lattice."
+	name = "lattice"
+	icon = 'icons/obj/structures/structures.dmi'
+	icon_state = "latticefull"
+
+/turf/open/walkable_lattice/Initialize(mapload, ...)
+	ADD_TRAIT(src, TURF_Z_TRANSPARENT_TRAIT, TRAIT_SOURCE_INHERENT)
+	return ..()

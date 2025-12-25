@@ -709,13 +709,14 @@ SUBSYSTEM_DEF(hijack)
 		drop = TRUE,
 	)
 	explode_pumps()
+	crack_open_ship(174)
 	explode_apcs(50)
 
 	if(!admin_sd_blocked)
 		addtimer(CALLBACK(src, PROC_REF(unlock_self_destruct), FALSE), 15 SECONDS)
 
 /// Called to explode the apcs with probability (so more shipwide damage)
-/datum/controller/subsystem/hijack/proc/explode_apcs(chance=50, warning=TRUE)
+/datum/controller/subsystem/hijack/proc/explode_apcs(chance=50)
 	var/cause_data = create_cause_data("ship explosion")
 	for(var/obj/structure/machinery/power/apc/apc as anything in apcs)
 		var/turf/apc_turf = get_turf(apc)
@@ -723,6 +724,124 @@ SUBSYSTEM_DEF(hijack)
 			cell_explosion(apc_turf, 30, 5, explosion_cause_data=cause_data, enviro=TRUE)
 			CHECK_TICK
 
+/// Called to crack open turfs (including hull) on the mainship level at a particular x to open_space
+/datum/controller/subsystem/hijack/proc/crack_open_ship(x)
+	// Figure out bottom of the ship
+	var/current_z = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)[1]
+	var/offset = SSmapping.level_trait(current_z, ZTRAIT_DOWN)
+	while(offset)
+		current_z += offset
+		offset = SSmapping.level_trait(current_z, ZTRAIT_DOWN)
+
+	// Go up one and iterate (first floor may open up bottom floor)
+	var/first_floor = /turf/open/floor/almayer/fake_outerhull
+	var/second_floor = null
+	offset = SSmapping.level_trait(current_z, ZTRAIT_UP)
+	while(offset)
+		current_z += offset
+		offset = SSmapping.level_trait(current_z, ZTRAIT_UP)
+
+		// For every turf in the line:
+		for(var/turf/current in block(x, 1, current_z, x, world.maxy, current_z))
+			if(istype(current, /turf/open_space))
+				continue
+			if(istype(current, /turf/open/space))
+				continue
+			if(locate(/obj/structure/machinery/door/airlock/evacuation) in current)
+				continue
+
+			// Creak if its a wall (but abort this iteration if its a shuttle)
+			if(istype(current, /turf/closed))
+				if(istype(current, /turf/closed/shuttle))
+					continue
+				var/creak_picked = pick('sound/effects/creak1.ogg', 'sound/effects/creak2.ogg', 'sound/effects/creak3.ogg')
+				playsound(current, creak_picked)
+
+			// Break center
+			current = crack_open_turf(current, first_floor, second_floor)
+
+			// Break left
+			var/turf/side = current
+			do
+				side = get_step(side, WEST)
+				if(istype(side, /turf/open_space))
+					break
+				if(istype(side, /turf/open/space))
+					break
+				if(istype(side, /turf/closed/shuttle))
+					break
+				if(locate(/obj/structure/machinery/door/airlock/evacuation) in side)
+					break
+				side = crack_open_turf(side, first_floor, second_floor)
+			while(prob(25))
+
+			// Break right
+			side = current
+			do
+				side = get_step(side, EAST)
+				if(istype(side, /turf/open_space))
+					break
+				if(istype(side, /turf/open/space))
+					break
+				if(istype(side, /turf/closed/shuttle))
+					break
+				if(locate(/obj/structure/machinery/door/airlock/evacuation) in side)
+					break
+				side = crack_open_turf(side, first_floor, second_floor)
+			while(prob(25))
+
+			CHECK_TICK
+
+		second_floor = null
+		if(first_floor)
+			// second floor might be walkable
+			second_floor = /turf/open/walkable_lattice
+		first_floor = null
+
+/// Helper proc for crack_open_ship to handle a particular turf
+/datum/controller/subsystem/hijack/proc/crack_open_turf(turf/target, make_below_walkable_type, make_current_walkable_type)
+	// Delete stuff that would be weird to fall
+	for(var/obj/structure/machinery/machine in target)
+		qdel(machine)
+	for(var/obj/structure/platform/platform in target)
+		qdel(platform)
+	for(var/obj/structure/window/window in target)
+		qdel(window)
+	for(var/obj/structure/mineral_door/door in target)
+		qdel(door)
+	for(var/obj/structure/bed/nest in target)
+		qdel(nest)
+	for(var/obj/effect/alien/resin in target)
+		qdel(resin)
+	for(var/obj/structure/pipes/pipe in target)
+		qdel(pipe)
+	for(var/obj/structure/sign/sign in target)
+		qdel(sign)
+	for(var/obj/structure/sink/sink in target)
+		qdel(sink)
+	for(var/obj/structure/toilet/toilet in target)
+		qdel(toilet)
+	for(var/obj/structure/prop/almayer/computers/prop_computer in target)
+		qdel(prop_computer)
+
+	// Optionally make closed turfs below target walkable
+	if(make_below_walkable_type)
+		var/turf/below = SSmapping.get_turf_below(target)
+		if(istype(below, /turf/closed))
+			below.ChangeTurf(make_below_walkable_type)
+
+	// Optionally make target walkable instead of open_space
+	if(make_current_walkable_type && prob(90) && istype(target, /turf/open))
+		target = target.ChangeTurf(make_current_walkable_type)
+		return target
+
+	// Make target open_space and chuck stuff down
+	var/turf/open_space/space = target.ChangeTurf(/turf/open_space)
+	for(var/atom/movable/thing in space)
+		if(istype(thing, /obj/vis_contents_holder))
+			continue
+		space.check_fall(thing)
+	return space
 
 //~~~~~~~~~~~~~~~~~~~~~~~~ FTL STUFF ~~~~~~~~~~~~~~~~~~~~~~~~//
 

@@ -123,3 +123,69 @@ GLOBAL_LIST_INIT(cm_vending_clothing_military_police_warden, list(
 		/obj/item/storage/belt/security/MP/full,
 		/obj/item/clothing/head/helmet/marine/MP,
 	)
+
+//------------ Honorguard ARMORY ---------------
+
+/obj/structure/machinery/cm_vending/gear/honor_guard
+	name = "\improper ColMarTech Honor Guard Armory Equipment Rack"
+	desc = "An automated combat equipment vendor for Honorguards, usually chosen from Military Police."
+	req_access = list(ACCESS_MARINE_BRIG)
+	icon_state = "mar_rack"
+	vendor_role = list(JOB_POLICE,JOB_POLICE_HG)
+
+/obj/structure/machinery/cm_vending/gear/honor_guard/get_listed_products(mob/user)
+	return GLOB.cm_vending_gear_honor_guard
+
+GLOBAL_LIST_INIT(cm_vending_gear_honor_guard, list(
+		list("COMBAT EQUIPMENT (TAKE ALL)", 0, null, null, null),
+		list("Honor Guard Pamphlet", 0, /obj/item/pamphlet/skill/honorguard, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
+		list("Honor Guard Headset", 0, /obj/item/device/radio/headset/almayer/marine/mp_honor, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
+		list("Military Police M2 Armor", 0, /obj/item/clothing/suit/storage/marine/MP, MARINE_CAN_BUY_COMBAT_ARMOR, VENDOR_ITEM_MANDATORY),
+		list("Military Police M10 Helmet", 0, /obj/item/clothing/head/helmet/marine/MP, MARINE_CAN_BUY_COMBAT_HELMET, VENDOR_ITEM_MANDATORY),
+		list("Marine Combat Boots", 0, /obj/item/clothing/shoes/marine/knife, MARINE_CAN_BUY_COMBAT_SHOES, VENDOR_ITEM_MANDATORY),
+		list("Marine Combat Gloves", 0, /obj/item/clothing/gloves/marine, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
+		list("MRE", 0, /obj/item/storage/box/mre, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
+
+		list("WEAPONS KIT (CHOOSE 1)", 0, null, null, null),
+		list("M41A Standard Kit", 0, /obj/item/storage/box/kit/honor_m41a, MARINE_CAN_BUY_KIT, VENDOR_ITEM_RECOMMENDED),
+		list("M39 Standard Kit", 0, /obj/item/storage/box/kit/honor_m39, MARINE_CAN_BUY_KIT, VENDOR_ITEM_REGULAR),
+		list("M4RA Standard Kit", 0, /obj/item/storage/box/kit/honor_m4ra, MARINE_CAN_BUY_KIT, VENDOR_ITEM_REGULAR),
+		list("MK221 Standard Kit", 0, /obj/item/storage/box/kit/honor_mk221, MARINE_CAN_BUY_KIT, VENDOR_ITEM_REGULAR),
+
+		list("BELT (CHOOSE 1)", 0, null, null, null),
+		list("G8-A General Utility Pouch", 0, /obj/item/storage/backpack/general_belt, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
+		list("M276 Ammo Load Rig", 0, /obj/item/storage/belt/marine, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
+		list("M276 Shotgun Shell Loading Rig", 0, /obj/item/storage/belt/shotgun, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
+		list("M276 M39 Holster Rig", 0, /obj/item/storage/belt/gun/m39, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
+
+		list("POUCHES (CHOOSE 2)", 0, null, null, null),
+		list("Autoinjector Pouch", 0, /obj/item/storage/pouch/autoinjector/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
+		list("First-Aid Pouch (Splints, Gauze, Ointment)", 0, /obj/item/storage/pouch/firstaid/full/alternate, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+		list("First-Aid Pouch (Pill Packets)", 0, /obj/item/storage/pouch/firstaid/full/pills, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+		list("Large General Pouch", 0, /obj/item/storage/pouch/general/large, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+		list("Large Magazine Pouch", 0, /obj/item/storage/pouch/magazine/large, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
+		list("Large Shotgun Shell Pouch", 0, /obj/item/storage/pouch/shotgun/large, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+		list("Flare Pouch (Full)", 0, /obj/item/storage/pouch/flare/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+
+		list("MASK (CHOOSE 1)", 0, null, null, null),
+		list("Gas Mask", 0, /obj/item/clothing/mask/gas, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
+		list("Heat Absorbent Coif", 0, /obj/item/clothing/mask/rebreather/scarf, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
+
+		list("EXTRA AMMO", 0, null, null, null),
+		list("M41A Mk2 Magazine (10x24)", 5, /obj/item/ammo_magazine/rifle, null, VENDOR_ITEM_RECOMMENDED),
+		list("M41A Mk2 AP Magazine (10x24)", 20, /obj/item/ammo_magazine/rifle/ap, null, VENDOR_ITEM_RECOMMENDED),
+		list("M39 HV Magazine (10x20)", 5, /obj/item/ammo_magazine/smg/m39, null, VENDOR_ITEM_REGULAR),
+		list("M39 AP Magazine (10x20)", 20, /obj/item/ammo_magazine/smg/m39/ap, null, VENDOR_ITEM_REGULAR),
+		list("M4RA Magazine (10x24)", 5, /obj/item/ammo_magazine/rifle/m4ra, null, VENDOR_ITEM_REGULAR),
+		list("M4RA AP Magazine (10x24)", 20, /obj/item/ammo_magazine/rifle/m4ra/ap, null, VENDOR_ITEM_REGULAR),
+		list("Box of Buckshot Shells (12g)", 5, /obj/item/ammo_magazine/shotgun/buckshot, null, VENDOR_ITEM_REGULAR),
+		list("Box of Shotgun Slugs (12g)", 5, /obj/item/ammo_magazine/shotgun/slugs, null, VENDOR_ITEM_REGULAR),
+		list("Box of Flechette Shells (12g)", 5, /obj/item/ammo_magazine/shotgun/flechette, null, VENDOR_ITEM_REGULAR),
+
+		list("OTHER SUPPLIES", 0, null, null, null),
+		list("Magnetic Harness", 12, /obj/item/attachable/magnetic_harness, null, VENDOR_ITEM_RECOMMENDED),
+		list("Motion Detector", 5, /obj/item/device/motiondetector, null, VENDOR_ITEM_RECOMMENDED),
+		list("Machete Scabbard (Full)", 5, /obj/item/storage/large_holster/machete/full, null, VENDOR_ITEM_REGULAR),
+		list("Binoculars", 5,/obj/item/device/binoculars, null, VENDOR_ITEM_REGULAR),
+		list("Whistle", 5, /obj/item/device/whistle, null, VENDOR_ITEM_REGULAR),
+	))

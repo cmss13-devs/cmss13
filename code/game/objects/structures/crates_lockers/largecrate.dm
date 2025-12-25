@@ -52,12 +52,13 @@
 					  SPAN_DANGER("We smash [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	return XENO_ATTACK_ACTION
 
-/obj/structure/largecrate/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/largecrate/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	if(unslashable)
 		return TAILSTAB_COOLDOWN_NONE
 	unpack()
 	xeno.visible_message(SPAN_DANGER("[xeno] smashes [src] apart with its tail!"),
 	SPAN_DANGER("We smash [src] apart with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
 
 /obj/structure/largecrate/ex_act(power)

@@ -396,8 +396,8 @@ SQUAD_DROPPAD(kilo, Kilo)
 
 /datum/squad/marine/oscar
 	name = SQUAD_MARINE_7
-	equipment_color = "#bde331"
-	chat_color = "#c2ee22"
+	equipment_color = "#d6ffb2"
+	chat_color = "#678650"
 	access = list(ACCESS_MARINE_SUPPORT)
 	radio_freq = OSCAR_FREQ
 	minimap_color = MINIMAP_SQUAD_OSCAR

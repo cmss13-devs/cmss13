@@ -616,7 +616,7 @@
 	to_chat(chem_host, SPAN_NOTICE("A terrible headache manifests, and suddenly it feels as though your mind is outside of your skull."))
 
 /datum/chem_property/neutral/encephalophrasive/process(mob/living/chem_host, potency = 1, delta_time)
-	chem_host.pain.apply_pain(1 * potency)
+	chem_host.pain.apply_pain_reduction(-1 * potency)
 
 /datum/chem_property/neutral/encephalophrasive/process_overdose(mob/living/chem_host, potency = 1, delta_time)
 	chem_host.apply_damage(0.5 * potency * POTENCY_MULTIPLIER_VHIGH * delta_time, BRAIN)

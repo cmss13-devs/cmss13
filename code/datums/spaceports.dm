@@ -3,14 +3,13 @@
 	var/name = ""
 
 	/// The message that will be sent when docking is initiated
-	var/docking_message = ""
+	var/docking_message = "Attention, USCM vessel. We are launching umbilical cords and deploying a squad to investigate the nature of your distress."
 
 	/// The allies that will be spawned by arriving at this station (only one entry chosen randomly per call)
 	var/list/allies
 
 /datum/spaceport/uscm
 	name = "Mont-Blanc 41 LG Station"
-	docking_message = "Attention, USCM vessel. We are launching umbilical cords and deploying a squad to investigate the nature of your distress."
 	allies = list(
 		/datum/emergency_call/solar_devils_full,
 	)

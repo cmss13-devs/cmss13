@@ -33,6 +33,7 @@
 	layer = ABOVE_FLY_LAYER
 	stat = DEAD
 	mob_flags = KNOWS_TECHNOLOGY
+	flags_atom = FPRINT|NO_ZFALL
 
 	/// If the observer is an admin, are they excluded from the xeno queue?
 	var/admin_larva_protection = TRUE // Enabled by default

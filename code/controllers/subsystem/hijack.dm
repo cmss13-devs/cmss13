@@ -519,6 +519,7 @@ SUBSYSTEM_DEF(hijack)
 	sd_detonated = TRUE
 
 	var/list/ship_zs = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
+	var/list/ground_zs = SSmapping.levels_by_trait(ZTRAIT_GROUND)
 	var/creak_picked = pick('sound/effects/creak1.ogg', 'sound/effects/creak2.ogg', 'sound/effects/creak3.ogg')
 	for(var/mob/current_mob as anything in GLOB.mob_list)
 		var/turf/current_turf = get_turf(current_mob)
@@ -549,7 +550,7 @@ SUBSYSTEM_DEF(hijack)
 			dead_mobs |= current_mob
 			continue
 
-		if(current_turf.z in ship_zs)
+		if((current_turf.z in ship_zs) || hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH && (current_turf.z in ground_zs))
 			alive_mobs |= current_mob
 			shake_camera(current_mob, 110, 4)
 
@@ -571,7 +572,7 @@ SUBSYSTEM_DEF(hijack)
 		if(!current_mob_turf) //Who knows, maybe they escaped, or don't exist anymore.
 			continue
 
-		if(current_mob_turf.z in ship_zs)
+		if((current_mob_turf.z in ship_zs) || hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH && (current_mob_turf.z in ground_zs))
 			if(istype(current_mob.loc, /obj/structure/closet/secure_closet/freezer/fridge))
 				continue
 			current_mob.death(create_cause_data("nuclear explosion"))

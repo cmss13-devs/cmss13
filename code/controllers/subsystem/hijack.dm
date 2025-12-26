@@ -158,14 +158,17 @@ SUBSYSTEM_DEF(hijack)
 			return
 
 		var/to_spawn = pick(spaceport.allies)
-		var/datum/emergency_call/emergency_call = new to_spawn
-		if(!emergency_call)
+		if(!ispath(to_spawn))
+			stack_trace("Failed to instantiate emergency call ally '[to_spawn]' for spaceport [spaceport]!")
+			TIMER_COOLDOWN_START(src, COOLDOWN_POSTHIJACK_ERT, 30 SECONDS)
 			return
 
+		var/datum/emergency_call/emergency_call = new to_spawn
 		emergency_call.name_of_spawn = /obj/effect/landmark/ert_spawns/umbilical
+		emergency_call.shuttle_id = null
 		emergency_call.activate(TRUE, FALSE)
 
-		TIMER_COOLDOWN_START(src, COOLDOWN_POSTHIJACK_ERT, 2.5 MINUTES)
+		TIMER_COOLDOWN_START(src, COOLDOWN_POSTHIJACK_ERT, 5 MINUTES)
 		return
 
 	if(hijack_status == HIJACK_OBJECTIVES_FTL_CRASH || hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH)

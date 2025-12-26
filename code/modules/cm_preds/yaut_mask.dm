@@ -199,8 +199,14 @@
 			remove_action(user, action)
 
 		for(var/listed_hud in mask_huds)
-			var/datum/mob_hud/H = GLOB.huds[listed_hud]
-			H.remove_hud_from(user, src)
+			if(listed_hud == MOB_HUD_XENO_STATUS)
+				for(var/datum/mob_hud/hud_iter in GLOB.huds)
+					if(!istype(hud_iter, /datum/mob_hud/xeno))
+						continue
+					hud_iter.remove_hud_from(user, src)
+			else
+				var/datum/mob_hud/H = GLOB.huds[listed_hud]
+				H.remove_hud_from(user, src)
 		var/obj/item/visor = user.glasses
 		if(visor) //make your hud fuck off
 			if(istype(visor, /obj/item/clothing/glasses/night/yautja))
@@ -217,8 +223,14 @@
 
 		START_PROCESSING(SSobj, src)
 		for(var/listed_hud in mask_huds)
-			var/datum/mob_hud/H = GLOB.huds[listed_hud]
-			H.add_hud_to(user, src)
+			if(listed_hud == MOB_HUD_XENO_STATUS)
+				for(var/datum/mob_hud/hud_iter in GLOB.huds)
+					if(!istype(hud_iter, /datum/mob_hud/xeno))
+						continue
+					hud_iter.add_hud_to(user, src)
+			else
+				var/datum/mob_hud/H = GLOB.huds[listed_hud]
+				H.add_hud_to(user, src)
 		if(current_goggles)
 			var/obj/item/clothing/gloves/yautja/bracer = user.gloves
 			if(!bracer || !istype(bracer))

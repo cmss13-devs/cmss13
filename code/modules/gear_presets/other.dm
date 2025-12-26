@@ -815,7 +815,13 @@
 
 	for(var/hud_to_add in huds_to_add)
 		var/datum/mob_hud/hud = GLOB.huds[hud_to_add]
-		hud.add_hud_to(new_human, new_human)
+		if(hud_to_add == MOB_HUD_XENO_STATUS)
+			for(var/datum/mob_hud/hud_tier in GLOB.huds)
+				if(!istype(hud_tier, /datum/mob_hud/xeno))
+					continue
+				hud_tier.add_hud_to(new_human, new_human)
+		else
+			hud.add_hud_to(new_human, new_human)
 
 	var/list/actions_to_add = subtypesof(/datum/action/human_action/activable/cult)
 

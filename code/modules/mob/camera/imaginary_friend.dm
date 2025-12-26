@@ -162,13 +162,25 @@
 	)
 
 	var/hud_choice = tgui_input_list(usr, "Choose a HUD to toggle", "Toggle HUD prefs", hud_options)
-	var/datum/mob_hud/hud = GLOB.huds[hud_options[hud_choice]]
-
 	if(hud_choice in current_huds)
-		hud.remove_hud_from(src, src)
+		if(hud_choice == "Xeno Status HUD")
+			for(var/datum/mob_hud/hud_iter in GLOB.huds)
+				if(!istype(hud_iter, /datum/mob_hud/xeno))
+					continue
+				hud_iter.remove_hud_from(src, src)
+		else
+			var/datum/mob_hud/hud = GLOB.huds[hud_options[hud_choice]]
+			hud.remove_hud_from(src, src)
 		current_huds -= hud_choice
 	else
-		hud.add_hud_to(src, src)
+		if(hud_choice == "Xeno Status HUD")
+			for(var/datum/mob_hud/hud_iter in GLOB.huds)
+				if(!istype(hud_iter, /datum/mob_hud/xeno))
+					continue
+				hud_iter.add_hud_to(src, src)
+		else
+			var/datum/mob_hud/hud = GLOB.huds[hud_options[hud_choice]]
+			hud.add_hud_to(src, src)
 		current_huds += hud_choice
 
 /mob/camera/imaginary_friend/say(message, bubble_type, list/spans = list(), sanitize = TRUE, datum/language/language, ignore_spam = FALSE, forced)

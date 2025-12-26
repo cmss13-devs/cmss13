@@ -13,6 +13,8 @@
 	else if(ID)
 		_role = ID.rank
 	switch(_role)
+		if(JOB_CLF)
+			hud_icon_state = "mil"
 		if(JOB_CLF_ENGI)
 			hud_icon_state = "engi"
 		if(JOB_CLF_MEDIC)

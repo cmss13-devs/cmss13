@@ -22,7 +22,7 @@
 		if(JOB_HC_EXECUTIVE)
 			hud_icon_state = "liaison"
 		if(JOB_HC_SENIOR_EXECUTIVE)
-			hud_icon_state = "senior_exec"
+			hud_icon_state = "exec"
 		if(JOB_HC_EXECUTIVE_SPECIALIST, JOB_HC_LEGAL_SPECIALIST)
 			hud_icon_state = "exec_spec"
 		if(JOB_HC_EXECUTIVE_SUPERVISOR, JOB_HC_LEGAL_SUPERVISOR)

@@ -329,15 +329,15 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 
 //-------- NSPA --------//
 #define JOB_NSPA_CST "NSPA Constable"
-#define JOB_NSPA_SC "NSPA Senior Constable"
+#define JOB_NSPA_SCST "NSPA Senior Constable"
 #define JOB_NSPA_SGT "NSPA Sergeant"
 #define JOB_NSPA_INSP "NSPA Inspector"
 #define JOB_NSPA_CINSP "NSPA Chief Inspector"
 #define JOB_NSPA_CMD "NSPA Commander"
-#define JOB_NSPA_DCO "NSPA Deputy Commissioner"
+#define JOB_NSPA_DCOM "NSPA Deputy Commissioner"
 #define JOB_NSPA_COM "NSPA Commissioner"
 
-#define NSPA_GRUNT_LIST list(JOB_NSPA_CST, JOB_NSPA_SC, JOB_NSPA_SGT)
+#define NSPA_GRUNT_LIST list(JOB_NSPA_CST, JOB_NSPA_SCST, JOB_NSPA_SGT)
 
 //-------- FORECON --------//
 

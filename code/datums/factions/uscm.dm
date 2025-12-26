@@ -216,6 +216,8 @@
 			if(JOB_PROVOST_CMARSHAL)
 				marine_rk = "pvcm"
 			//CIA
+			if(JOB_CIA)
+				marine_rk = "cia"
 			if(JOB_CIA_LIAISON)
 				marine_rk = "cialo"
 			if(JOB_CIA_UACQS_ADMN)
@@ -250,6 +252,10 @@
 				marine_rk = "wo_chemist"
 			if(JOB_WO_CHIEF_REQUISITION)
 				marine_rk = "wo_ro"
+			if(JOB_WO_CHIEF_ENGINEER)
+				marine_rk = "wo_ce"
+			if(JOB_WO_ORDNANCE_TECH)
+				marine_rk = "wo_ot"
 			if(JOB_WO_PILOT)
 				marine_rk = "wo_mcrew"
 			// Check squad marines here too, for the unique ones

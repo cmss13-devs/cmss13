@@ -849,10 +849,14 @@ SUBSYSTEM_DEF(hijack)
 		glass_junk++
 	for(var/obj/structure/mineral_door/door in target)
 		qdel(door)
-	for(var/obj/structure/bed/nest in target)
-		qdel(nest)
-	for(var/obj/effect/alien/resin in target)
-		qdel(resin)
+	for(var/obj/structure/bed/bed in target)
+		if(prob(75))
+			qdel(bed)
+			metal_junk++
+		else if(istype(bed, /obj/structure/bed/nest))
+			qdel(bed)
+	for(var/obj/effect/alien/alien_stuff in target)
+		qdel(alien_stuff)
 	for(var/obj/structure/pipes/pipe in target)
 		qdel(pipe)
 		metal_junk++

@@ -70,7 +70,6 @@
 	paygrades = list(PAY_SHORT_ME1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME2 = JOB_PLAYTIME_TIER_1, PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_3)
 	role_comm_title = "RFN"
 	skills = /datum/skills/pfc
-
 	minimap_icon = "private"
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues)
@@ -85,7 +84,6 @@
 /datum/equipment_preset/uscm/pfc/cryo
 	name = "USCM Cryo Squad Rifleman"
 	auto_squad_name = SQUAD_MARINE_CRYO
-
 /datum/equipment_preset/uscm/pfc/cryo/load_gear(mob/living/carbon/human/new_human)
 	..()
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/cryo(new_human), WEAR_L_EAR)
@@ -102,7 +100,6 @@
 	paygrades = list(PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME4 = JOB_PLAYTIME_TIER_1, PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_3)
 	role_comm_title = "SG"
 	skills = /datum/skills/smartgunner
-
 	minimap_icon = "smartgunner"
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues)
@@ -117,7 +114,6 @@
 /datum/equipment_preset/uscm/sg/cryo
 	name = "USCM Cryo Squad Smartgunner"
 	auto_squad_name = SQUAD_MARINE_CRYO
-
 /datum/equipment_preset/uscm/sg/cryo/load_gear(mob/living/carbon/human/new_human)
 	..()
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/cryo(new_human), WEAR_L_EAR)
@@ -162,9 +158,7 @@
 	role_comm_title = "CRMN"
 	minimum_age = 30
 	skills = /datum/skills/tank_crew
-
 	minimap_icon = "vc"
-	minimap_background = "background_intel"
 
 /datum/equipment_preset/uscm/tank/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel
@@ -280,7 +274,6 @@
 	paygrades = list(PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME4 = JOB_PLAYTIME_TIER_1, PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_3)
 	role_comm_title = "Spc"
 	skills = /datum/skills/specialist
-
 	minimap_icon = "spec"
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues)
@@ -416,7 +409,6 @@
 		back_item = /obj/item/storage/backpack/marine/tech
 
 	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
-
 /datum/equipment_preset/uscm/engineer/cryo
 	name = "USCM Cryo Squad Combat Technician"
 	auto_squad_name = SQUAD_MARINE_CRYO
@@ -806,13 +798,10 @@
 	job_title = JOB_MARINE_RAIDER
 	role_comm_title = "Op."
 	languages = list(LANGUAGE_TSL, LANGUAGE_ENGLISH)
-	minimap_background = "background_sof"
 	skills = /datum/skills/commando/deathsquad
 	auto_squad_name = SQUAD_SOF
 	ert_squad = TRUE
 	paygrades = list(PAY_SHORT_ME6 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME7 = JOB_PLAYTIME_TIER_3)
-
-	minimap_icon = "sof_sg"
 
 /datum/equipment_preset/uscm/marsoc/load_status(mob/living/carbon/human/new_human)
 	new_human.nutrition = NUTRITION_NORMAL
@@ -864,7 +853,6 @@
 	name = "Marine Raider Smartgunner (!DEATHSQUAD!)"
 	assignment = "Marine Raider Smartgunner"
 	job_title = JOB_MARINE_RAIDER_SG
-
 	minimap_icon = "sof_sg"
 
 /datum/equipment_preset/uscm/marsoc/sg/load_gear(mob/living/carbon/human/new_human)
@@ -946,7 +934,6 @@
 /datum/equipment_preset/uscm/marsoc/covert
 	name = "Marine Raider (!DEATHSQUAD! Covert)"
 	uses_special_name = TRUE
-
 /datum/equipment_preset/uscm/marsoc/covert/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = MALE
 	new_human.change_real_name(new_human, capitalize(pick(GLOB.nato_phonetic_alphabet)))
@@ -958,7 +945,6 @@
 /datum/equipment_preset/uscm/marsoc/sg/covert
 	name = "Marine Raider Smartgunner (!DEATHSQUAD! Covert)"
 	uses_special_name = TRUE
-
 /datum/equipment_preset/uscm/marsoc/sg/covert/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = MALE
 	new_human.change_real_name(new_human, capitalize(pick(GLOB.nato_phonetic_alphabet)))
@@ -975,7 +961,6 @@
 	role_comm_title = "TL."
 	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_MO2 = JOB_PLAYTIME_TIER_3)
 	skills = /datum/skills/commando/deathsquad/leader
-
 	minimap_icon = "sof_sl"
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer)

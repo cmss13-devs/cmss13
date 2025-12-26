@@ -365,7 +365,7 @@
 	idtype = /obj/item/card/id/silver
 
 	minimap_icon = "cargo"
-	minimap_background = "background_medical"
+	minimap_background = "background_enlisted"
 
 /datum/equipment_preset/wo/quartermaster/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel/tech

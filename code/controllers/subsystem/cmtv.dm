@@ -202,7 +202,14 @@ SUBSYSTEM_DEF(cmtv)
 
 	for(var/hud in list(MOB_HUD_MEDICAL_OBSERVER, MOB_HUD_XENO_STATUS, MOB_HUD_FACTION_OBSERVER))
 		var/datum/mob_hud/hud_datum = GLOB.huds[hud]
-		hud_datum.add_hud_to(camera_mob, camera_mob)
+
+		if(hud == MOB_HUD_XENO_STATUS)
+			for(var/datum/mob_hud/hud_iter in GLOB.huds)
+				if(!istype(hud_iter, /datum/mob_hud/xeno))
+					continue
+				hud_iter.add_hud_to(camera_mob, camera_mob)
+		else
+			hud_datum.add_hud_to(camera_mob, camera_mob)
 
 /// For events we want to occur at the beginning of the round - eg, when the map becomes actually visible
 /datum/controller/subsystem/cmtv/proc/handle_roundstart()

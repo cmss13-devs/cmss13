@@ -70,20 +70,27 @@
 
 	var/list/listed_huds = list("Medical HUD", "Security HUD", "Squad HUD", "Xeno Status HUD")
 	var/hud_choice = tgui_input_list(usr, "Choose a HUD to toggle", "Toggle HUD", listed_huds)
-	var/datum/mob_hud/H
-	switch(hud_choice)
-		if("Medical HUD")
-			H = GLOB.huds[MOB_HUD_MEDICAL_ADVANCED]
-		if("Security HUD")
-			H = GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
-		if("Squad HUD")
-			H = GLOB.huds[MOB_HUD_FACTION_OBSERVER]
-		if("Xeno Status HUD")
-			H = GLOB.huds[MOB_HUD_XENO_STATUS]
-		else
-			return
+	if(!hud_choice)
+		return
 
-	H.add_hud_to(M, HUD_SOURCE_ADMIN)
+	if(hud_choice == "Xeno Status HUD")
+		for(var/datum/mob_hud/hud_iter in GLOB.huds)
+			if(!istype(hud_iter, /datum/mob_hud/xeno))
+				continue
+			hud_iter.add_hud_to(M, HUD_SOURCE_ADMIN)
+	else
+		var/datum/mob_hud/H
+		switch(hud_choice)
+			if("Medical HUD")
+				H = GLOB.huds[MOB_HUD_MEDICAL_ADVANCED]
+			if("Security HUD")
+				H = GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
+			if("Squad HUD")
+				H = GLOB.huds[MOB_HUD_FACTION_OBSERVER]
+			else
+				return
+		H.add_hud_to(M, HUD_SOURCE_ADMIN)
+
 	to_chat(src, SPAN_INFO("[hud_choice] enabled."))
 	message_admins(SPAN_INFO("[key_name(usr)] has given a [hud_choice] to [M]."))
 

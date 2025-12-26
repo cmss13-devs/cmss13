@@ -136,7 +136,7 @@
 	var/datum/equipment_preset/preset = new player_rank.gear_preset
 	test_human.faction = preset.faction
 	test_human.job = player_rank.title
-	if(player_rank.flags_startup_parameters & ROLE_ADD_TO_SQUAD)
+	if(player_rank.flags_startup_parameters & ROLE_ADD_TO_SQUAD && test_human.job != JOB_INTEL)
 		GLOB.RoleAuthority.randomize_squad(test_human, force_client=client)
 		if(istype(test_human.assigned_squad, /datum/squad/marine/cryo))
 			test_human.assigned_squad.forget_marine_in_squad(test_human)

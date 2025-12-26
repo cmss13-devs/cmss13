@@ -348,7 +348,7 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 
 /obj/structure/closet/secure_closet/sea/Initialize()
 	. = ..()
-	new /obj/item/device/whistle(src)
+	new /obj/item/clothing/accessory/device/whistle(src)
 	new /obj/item/device/binoculars/range(src)
 	new /obj/item/clothing/suit/armor/bulletproof/badge(src)
 	new /obj/item/clothing/under/marine/officer/bridge(src)

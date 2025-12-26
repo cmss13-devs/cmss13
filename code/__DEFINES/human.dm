@@ -111,7 +111,7 @@
 
 // ORDERS
 #define COMMAND_ORDER_RANGE 7
-#define COMMAND_ORDER_COOLDOWN 800
+#define COMMAND_ORDER_COOLDOWN 800 // 1 minute 20 seconds
 #define COMMAND_ORDER_MOVE "move"
 #define COMMAND_ORDER_FOCUS "focus"
 #define COMMAND_ORDER_HOLD "hold"

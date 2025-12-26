@@ -9,6 +9,8 @@ import {
   Divider,
   Flex,
   Input,
+  LabeledControls,
+  NumberInput,
   Section,
   Stack,
   Table,
@@ -80,6 +82,14 @@ type Data = {
   ob_warhead: string;
   echo_squad_active: Boolean;
   executive: Boolean;
+  has_crate_loaded: BooleanLike;
+  saved_coordinates: {
+    x: number;
+    y: number;
+    z: number;
+    comment: string;
+    index: number;
+  }[];
 };
 
 type Props = Partial<{
@@ -92,7 +102,7 @@ export const CentralOverwatchConsole = (props) => {
   return (
     <Window
       width={850}
-      height={700}
+      height={800}
       theme={data.theme ? data.theme : 'crtblue'}
     >
       <Window.Content>
@@ -195,6 +205,29 @@ const SecondaryFunctions = (props) => {
             >
               Squad Monitor
             </Tabs.Tab>
+            <Tabs.Tab
+              selected={secondarycategory === 'oblaunch'}
+              icon="bomb"
+              onClick={() => setsecondaryCategory('oblaunch')}
+              p="3px"
+              bold
+            >
+              Orbital Bombardment
+            </Tabs.Tab>
+            <Tabs.Tab
+              selected={secondarycategory === 'supplydrop'}
+              icon="wrench"
+              onClick={() => setsecondaryCategory('supplydrop')}
+              p="3px"
+              bold
+            >
+              Supply Drop
+            </Tabs.Tab>
+            {!data.executive && (
+              <Tabs.Tab icon="map" onClick={() => act('tacmap_unpin')}>
+                Tactical Map
+              </Tabs.Tab>
+            )}
             {!!data.executive && (
               <>
                 <Tabs.Tab
@@ -238,6 +271,8 @@ const SecondaryFunctions = (props) => {
             ) : (
               <CommandMonitor />
             ))}
+          {secondarycategory === 'oblaunch' && <OrbitalBombardmentLaunch />}
+          {secondarycategory === 'supplydrop' && <SupplyDrop />}
           {secondarycategory === 'execpanel' && <ExecutivePanel />}
           {secondarycategory === 'emergencypanel' && <EmergencyPanel />}
         </Stack.Item>
@@ -1130,6 +1165,16 @@ const SquadMonitor = (props) => {
                         <Table.Cell p="2px" collapsing>
                           {marine.distance}
                         </Table.Cell>
+                        <Table.Cell p="2px" collapsing>
+                          <Button
+                            icon="arrow-up"
+                            color="green"
+                            tooltip="Promote marine to Squad Leader"
+                            onClick={() =>
+                              act('replace_lead', { ref: marine.ref })
+                            }
+                          />
+                        </Table.Cell>
                       </Table.Row>
                     );
                   })
@@ -1359,5 +1404,267 @@ const OrbitalBombardment = (props) => {
       </Stack>
       <Divider />
     </Section>
+  );
+};
+
+const SupplyDrop = (props) => {
+  const { act, data } = useBackend<Data>();
+
+  const [supplyX, setSupplyX] = useSharedState('supplyx', 0);
+  const [supplyY, setSupplyY] = useSharedState('supply', 0);
+  const [supplyZ, setSupplyZ] = useSharedState('supplyz', 0);
+
+  let crate_status = 'Crate Loaded';
+  let crate_color = 'green';
+  if (data.supply_cooldown) {
+    crate_status = 'Cooldown - ' + data.supply_cooldown / 10 + ' seconds';
+    crate_color = 'yellow';
+  } else if (!data.has_crate_loaded) {
+    crate_status = 'No crate loaded';
+    crate_color = 'red';
+  }
+
+  return (
+    <Section fill fontSize="14px" title="Supply Drop">
+      <Stack vertical fill justify={'space-between'} m="10px">
+        <Stack.Item fontSize="14px">
+          <LabeledControls mb="5px">
+            <LabeledControls.Item label="LONGITUDE">
+              <NumberInput
+                step={1}
+                value={supplyX}
+                minValue={-Infinity}
+                maxValue={Infinity}
+                onChange={(value) => setSupplyX(value)}
+                width="75px"
+              />
+            </LabeledControls.Item>
+            <LabeledControls.Item label="LATITUDE">
+              <NumberInput
+                step={1}
+                value={supplyY}
+                minValue={-Infinity}
+                maxValue={Infinity}
+                onChange={(value) => setSupplyY(value)}
+                width="75px"
+              />
+            </LabeledControls.Item>
+            <LabeledControls.Item label="HEIGHT">
+              <NumberInput
+                step={1}
+                value={supplyZ}
+                minValue={-Infinity}
+                maxValue={Infinity}
+                onChange={(value) => setSupplyZ(value)}
+                width="75px"
+              />
+            </LabeledControls.Item>
+            <LabeledControls.Item label="STATUS">
+              <Box color={crate_color} bold>
+                {crate_status}
+              </Box>
+            </LabeledControls.Item>
+          </LabeledControls>
+          <Box textAlign="center">
+            <Button
+              fontSize="20px"
+              width="100%"
+              icon="box"
+              color="yellow"
+              onClick={() =>
+                act('dropsupply', { x: supplyX, y: supplyY, z: supplyZ })
+              }
+            >
+              Launch
+            </Button>
+            <Button
+              fontSize="20px"
+              width="100%"
+              icon="save"
+              color="yellow"
+              onClick={() =>
+                act('save_coordinates', { x: supplyX, y: supplyY, z: supplyZ })
+              }
+            >
+              Save
+            </Button>
+          </Box>
+        </Stack.Item>
+        <Stack.Item>
+          <Divider vertical />
+        </Stack.Item>
+        <SavedCoordinates forSupply />
+      </Stack>
+      <Divider />
+    </Section>
+  );
+};
+
+const OrbitalBombardmentLaunch = (props) => {
+  const { act, data } = useBackend<Data>();
+
+  const [OBX, setOBX] = useSharedState('obx', 0);
+  const [OBY, setOBY] = useSharedState('oby', 0);
+  const [OBZ, setOBZ] = useSharedState('obz', 0);
+
+  let ob_status = 'Ready';
+  let ob_color = 'green';
+  if (data.ob_cooldown) {
+    ob_status = 'Cooldown - ' + data.ob_cooldown / 10 + ' seconds';
+    ob_color = 'yellow';
+  } else if (data.ob_safety) {
+    ob_status = 'Cannon Safety Engaged';
+    ob_color = 'red';
+  } else if (!data.ob_loaded) {
+    ob_status = 'Not chambered';
+    ob_color = 'red';
+  }
+
+  return (
+    <Section fill fontSize="14px" title="Orbital Bombardment">
+      <Stack vertical fill justify={'space-between'} m="10px">
+        <Stack.Item fontSize="14px">
+          <LabeledControls mb="5px">
+            <LabeledControls.Item label="LONGITUDE">
+              <NumberInput
+                step={1}
+                value={OBX}
+                minValue={-Infinity}
+                maxValue={Infinity}
+                onChange={(value) => setOBX(value)}
+                width="75px"
+              />
+            </LabeledControls.Item>
+            <LabeledControls.Item label="LATITUDE">
+              <NumberInput
+                step={1}
+                value={OBY}
+                minValue={-Infinity}
+                maxValue={Infinity}
+                onChange={(value) => setOBY(value)}
+                width="75px"
+              />
+            </LabeledControls.Item>
+            <LabeledControls.Item label="HEIGHT">
+              <NumberInput
+                step={1}
+                value={OBZ}
+                minValue={-Infinity}
+                maxValue={Infinity}
+                onChange={(value) => setOBZ(value)}
+                width="75px"
+              />
+            </LabeledControls.Item>
+
+            <LabeledControls.Item label="STATUS">
+              <Box color={ob_color} bold>
+                {ob_status}
+              </Box>
+            </LabeledControls.Item>
+          </LabeledControls>
+          <Box textAlign="center">
+            <Button
+              fontSize="20px"
+              width="100%"
+              icon={data.ob_safety ? 'ban' : 'bomb'}
+              color={data.ob_safety ? 'transperant' : 'red'}
+              onClick={() => act('dropbomb', { x: OBX, y: OBY, z: OBZ })}
+            >
+              Fire
+            </Button>
+            <Button
+              fontSize="20px"
+              width="100%"
+              icon="save"
+              color="yellow"
+              onClick={() =>
+                act('save_coordinates', { x: OBX, y: OBY, z: OBZ })
+              }
+            >
+              Save
+            </Button>
+          </Box>
+        </Stack.Item>
+        <Stack.Item>
+          <Divider vertical />
+        </Stack.Item>
+        <SavedCoordinates forOB />
+      </Stack>
+      <Divider />
+    </Section>
+  );
+};
+
+const SavedCoordinates = (props) => {
+  const { act, data } = useBackend<Data>();
+
+  const [OBX, setOBX] = useSharedState('obx', 0);
+  const [OBY, setOBY] = useSharedState('oby', 0);
+  const [OBZ, setOBZ] = useSharedState('obz', 0);
+  const [supplyX, setSupplyX] = useSharedState('supplyx', 0);
+  const [supplyY, setSupplyY] = useSharedState('supply', 0);
+  const [supplyZ, setSupplyZ] = useSharedState('supplyz', 0);
+
+  const { forOB, forSupply } = props;
+
+  let transferCoords = (x, y, z) => {
+    if (forSupply) {
+      setSupplyX(x);
+      setSupplyY(y);
+      setSupplyZ(z);
+    } else if (forOB) {
+      setOBX(x);
+      setOBY(y);
+      setOBZ(z);
+    }
+  };
+
+  return (
+    <Stack.Item>
+      <Box bold textAlign="center">
+        Max 3 stored coordinates. Will overwrite oldest first.
+      </Box>
+      <Table>
+        <Table.Row bold>
+          <Table.Cell p="5px" collapsing>
+            LONG.
+          </Table.Cell>
+          <Table.Cell p="5px" collapsing>
+            LAT.
+          </Table.Cell>
+          <Table.Cell p="5px" collapsing>
+            HEIGHT
+          </Table.Cell>
+          <Table.Cell p="5px">COMMENT</Table.Cell>
+          <Table.Cell p="5px" collapsing />
+        </Table.Row>
+        {data.saved_coordinates.map((coords, index) => (
+          <Table.Row key={index}>
+            <Table.Cell p="6px">{coords.x}</Table.Cell>
+            <Table.Cell p="5px">{coords.y}</Table.Cell>
+            <Table.Cell p="4px">{coords.z}</Table.Cell>
+            <Table.Cell p="5px">
+              <Input
+                width="100%"
+                value={coords.comment}
+                onChange={(e, value) =>
+                  act('change_coordinate_comment', {
+                    comment: value,
+                    index: coords.index,
+                  })
+                }
+              />
+            </Table.Cell>
+            <Table.Cell p="5px">
+              <Button
+                color="yellow"
+                icon="arrow-left"
+                onClick={() => transferCoords(coords.x, coords.y, coords.z)}
+              />
+            </Table.Cell>
+          </Table.Row>
+        ))}
+      </Table>
+    </Stack.Item>
   );
 };

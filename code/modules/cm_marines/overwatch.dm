@@ -75,11 +75,13 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	show_command_squad = TRUE
 	tgui_interaction_distance = 3
 	can_override_overwatch_officer = TRUE
+	var/role
 
 /obj/structure/machinery/computer/overwatch/groundside_operations/support
-	name = "Support Overwatch Console"
+	name = "Combined Overwatch Console"
 	no_skill_req = FALSE
 	req_access = null
+	role = SQUAD_ROLE_SUPPORT
 
 /obj/structure/machinery/computer/overwatch/Initialize()
 	. = ..()
@@ -525,20 +527,20 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 /obj/structure/machinery/computer/overwatch/groundside_operations/ui_data(mob/user)
 	var/list/data = list()
-	data["executive"] = TRUE
+	data["executive"] = isnull(role)
 	data["theme"] = ui_theme
 
 	if(!current_squad)
 		data["squad_list"] = list()
 		for(var/datum/squad/current_squad in GLOB.RoleAuthority.squads)
-			if(current_squad.active && !current_squad.overwatch_officer && current_squad.faction == faction && current_squad.name != "Root")
+			if(current_squad.active && (role ? current_squad.squad_role == role : TRUE) &&!current_squad.overwatch_officer && current_squad.faction == faction && current_squad.name != "Root")
 				data["squad_list"] += current_squad.name
 		return data
 
 	data["current_squad"] = current_squad.name
 
 	for(var/datum/squad/index_squad in GLOB.RoleAuthority.squads)
-		if(index_squad.active && index_squad.faction == faction && index_squad.name != "Root")
+		if(index_squad.active && (role ? index_squad.squad_role == role : TRUE) && index_squad.faction == faction && index_squad.name != "Root")
 			var/list/squad_data = list(list("name" = index_squad.name, "primary_objective" = index_squad.primary_objective, "secondary_objective" = index_squad.secondary_objective, "overwatch_officer" = index_squad.overwatch_officer, "ref" = REF(index_squad)))
 			data["squad_data"] += squad_data
 
@@ -571,56 +573,17 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	var/datum/squad/marine/echo/echo_squad = locate() in GLOB.RoleAuthority.squads
 	data["echo_squad_active"] = echo_squad.active
 
-	return data
+	var/has_supply_pad = FALSE
+	var/obj/structure/closet/crate/supply_crate
+	if(current_squad.drop_pad)
+		supply_crate = locate() in current_squad.drop_pad.loc
+		has_supply_pad = TRUE
+	data["can_launch_crates"] = has_supply_pad
+	data["has_crate_loaded"] = supply_crate
 
-/obj/structure/machinery/computer/overwatch/groundside_operations/support/ui_data(mob/user)
-	var/list/data = list()
-
-	data["theme"] = ui_theme
-	data["executive"] = FALSE
-
-	if(!current_squad)
-		data["squad_list"] = list()
-		for(var/datum/squad/current_squad in GLOB.RoleAuthority.squads)
-			if(current_squad.active && current_squad.squad_role == SQUAD_ROLE_SUPPORT && !current_squad.overwatch_officer && current_squad.faction == faction && current_squad.name != "Root")
-				data["squad_list"] += current_squad.name
-		return data
-
-	data["current_squad"] = current_squad.name
-
-	for(var/datum/squad/index_squad in GLOB.RoleAuthority.squads)
-		if(index_squad.active && index_squad.squad_role == SQUAD_ROLE_SUPPORT && index_squad.faction == faction && index_squad.name != "Root")
-			var/list/squad_data = list(list("name" = index_squad.name, "primary_objective" = index_squad.primary_objective, "secondary_objective" = index_squad.secondary_objective, "overwatch_officer" = index_squad.overwatch_officer, "ref" = REF(index_squad)))
-			data["squad_data"] += squad_data
-
-	data["z_hidden"] = z_hidden
-
-	data["can_launch_obs"] = current_orbital_cannon
-	if(current_orbital_cannon)
-		data["ob_cooldown"] = COOLDOWN_TIMELEFT(current_orbital_cannon, ob_firing_cooldown)
-		data["ob_loaded"] = current_orbital_cannon.chambered_tray
-		data["ob_safety"] = ob_cannon_safety
-		if(current_orbital_cannon.tray.warhead)
-			data["ob_warhead"] = current_orbital_cannon.tray.warhead.warhead_kind
-	if(GLOB.almayer_aa_cannon.protecting_section)
-		data["aa_targeting"] = GLOB.almayer_aa_cannon.protecting_section
-
-	data["marines"] = list()
-	data = count_marines(data, current_squad)
-
-	if(operator)
-		data["operator"] = operator.name
-
-	if(SSticker.mode.active_lz)
-		data["primary_lz"] = SSticker.mode.active_lz
-	data["alert_level"] = GLOB.security_level
-	data["evac_status"] = SShijack.evac_status
-	data["world_time"] = world.time
-
-	data["time_request"] = cooldown_request
-
-	var/datum/squad/marine/echo/echo_squad = locate() in GLOB.RoleAuthority.squads
-	data["echo_squad_active"] = echo_squad.active
+	data["saved_coordinates"] = list()
+	for(var/i in 1 to length(saved_coordinates))
+		data["saved_coordinates"] += list(list("x" = saved_coordinates[i]["x"], "y" = saved_coordinates[i]["y"], "z" = saved_coordinates[i]["z"], "comment" = saved_coordinates[i]["comment"], "index" = i))
 
 	return data
 

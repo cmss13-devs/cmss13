@@ -4,7 +4,6 @@
 	paygrades = list(PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/dogtag
 	role_comm_title = "FORECON"
-	minimap_background = "background_forecon"
 	job_title = JOB_SURVIVOR
 	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
 	origin_override = ORIGIN_USCM
@@ -253,6 +252,7 @@
 	idtype = /obj/item/card/id/gold
 	role_comm_title = "FORECON CO"
 	minimap_icon = "co"
+	minimap_background = "background_forecon"
 
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer)

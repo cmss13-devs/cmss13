@@ -749,6 +749,8 @@ SUBSYSTEM_DEF(hijack)
 				continue
 			if(locate(/obj/structure/machinery/door/airlock/evacuation) in current)
 				continue
+			if(locate(/obj/structure/ladder/multiz) in current)
+				continue
 
 			// Creak if its a wall (but abort this iteration if its a shuttle)
 			if(istype(current, /turf/closed))
@@ -757,39 +759,11 @@ SUBSYSTEM_DEF(hijack)
 				var/creak_picked = pick('sound/effects/creak1.ogg', 'sound/effects/creak2.ogg', 'sound/effects/creak3.ogg')
 				playsound(current, creak_picked)
 
-			// Break center
+			// Crack open turfs
+			var/leak = prob(5)
 			current = crack_open_turf(current, first_floor, second_floor)
-
-			// Break left
-			var/turf/side = current
-			do
-				side = get_step(side, WEST)
-				if(istype(side, /turf/open_space))
-					break
-				if(istype(side, /turf/open/space))
-					break
-				if(istype(side, /turf/closed/shuttle))
-					break
-				if(locate(/obj/structure/machinery/door/airlock/evacuation) in side)
-					break
-				side = crack_open_turf(side, first_floor, second_floor)
-			while(prob(25))
-
-			// Break right
-			side = current
-			do
-				side = get_step(side, EAST)
-				if(istype(side, /turf/open_space))
-					break
-				if(istype(side, /turf/open/space))
-					break
-				if(istype(side, /turf/closed/shuttle))
-					break
-				if(locate(/obj/structure/machinery/door/airlock/evacuation) in side)
-					break
-				side = crack_open_turf(side, first_floor, second_floor)
-			while(prob(25))
-
+			crack_open_side(current, WEST, leak, first_floor, second_floor)
+			crack_open_side(current, EAST, leak, first_floor, second_floor)
 			CHECK_TICK
 
 		second_floor = null
@@ -798,15 +772,81 @@ SUBSYSTEM_DEF(hijack)
 			second_floor = /turf/open/walkable_lattice
 		first_floor = null
 
+/// Helper proc for crack_open_ship to handle a particular side to spread a crack
+/datum/controller/subsystem/hijack/proc/crack_open_side(turf/target, direction, leak, first_floor, second_floor)
+	// Check and then spread crack if possible
+	var/turf/current_turf = target
+	do
+		var/previous_turf = current_turf
+		current_turf = get_step(current_turf, direction)
+		if(istype(current_turf, /turf/open_space))
+			current_turf = previous_turf
+			break
+		if(istype(current_turf, /turf/open/space))
+			current_turf = previous_turf
+			break
+		if(istype(current_turf, /turf/closed/shuttle))
+			current_turf = previous_turf
+			break
+		if(locate(/obj/structure/machinery/door/airlock/evacuation) in current_turf)
+			current_turf = previous_turf
+			break
+		if(locate(/obj/structure/ladder/multiz) in current_turf)
+			current_turf = previous_turf
+			break
+		current_turf = crack_open_turf(current_turf, first_floor, second_floor)
+		var/turf/below_previous = SSmapping.get_turf_below(previous_turf)
+		if(istype(below_previous, /turf/closed))
+			below_previous.ScrapeAway() // Try not to trap people that fall on walls
+	while(prob(25))
+
+	// Optionally leak water
+	if(leak)
+		var/opposite_dir = GLOB.reverse_dir[direction]
+		var/x_adjust = 0
+		var/y_adjust = 0
+		switch(opposite_dir)
+			if(NORTH)
+				y_adjust = 5
+			if(SOUTH)
+				y_adjust = -5
+			if(WEST)
+				x_adjust = 5
+			if(EAST)
+				x_adjust = -5
+		var/obj/structure/prop/invuln/pipe_water/water = new(current_turf)
+		water.dir = opposite_dir
+		water.pixel_x += x_adjust
+		water.pixel_y += y_adjust
+		var/turf/below = SSmapping.get_turf_below(current_turf)
+		var/transparent = TRUE
+		while(below && transparent)
+			water = new(below)
+			water.pixel_x += x_adjust
+			water.pixel_y += y_adjust
+			transparent = istransparentturf(below)
+			below = SSmapping.get_turf_below(below)
+
+	return current_turf
+
 /// Helper proc for crack_open_ship to handle a particular turf
 /datum/controller/subsystem/hijack/proc/crack_open_turf(turf/target, make_below_walkable_type, make_current_walkable_type)
 	// Delete stuff that would be weird to fall
+	var/metal_junk = 0
+	var/glass_junk = 0
 	for(var/obj/structure/machinery/machine in target)
 		qdel(machine)
+		metal_junk++
+		glass_junk++
 	for(var/obj/structure/platform/platform in target)
 		qdel(platform)
+		metal_junk++
+	for(var/obj/structure/platform_decoration/deco in target)
+		qdel(deco)
+		metal_junk++
 	for(var/obj/structure/window/window in target)
 		qdel(window)
+		glass_junk++
 	for(var/obj/structure/mineral_door/door in target)
 		qdel(door)
 	for(var/obj/structure/bed/nest in target)
@@ -815,14 +855,31 @@ SUBSYSTEM_DEF(hijack)
 		qdel(resin)
 	for(var/obj/structure/pipes/pipe in target)
 		qdel(pipe)
+		metal_junk++
 	for(var/obj/structure/sign/sign in target)
 		qdel(sign)
 	for(var/obj/structure/sink/sink in target)
 		qdel(sink)
+		metal_junk++
 	for(var/obj/structure/toilet/toilet in target)
 		qdel(toilet)
 	for(var/obj/structure/prop/almayer/computers/prop_computer in target)
 		qdel(prop_computer)
+		metal_junk++
+
+	// Spawn some junk
+	if(metal_junk)
+		var/obj/metal = new /obj/item/stack/sheet/metal(target)
+		metal.pixel_x = rand(-8, 8)
+		metal.pixel_y = rand(-8, 8)
+	if(glass_junk || prob(15))
+		new /obj/item/shard(target)
+
+	// Spawn some effects
+	if(prob(15))
+		new /obj/effect/particle_effect/smoke(target)
+	if(prob(15))
+		new /obj/flamer_fire(target)
 
 	// Optionally make closed turfs below target walkable
 	if(make_below_walkable_type)

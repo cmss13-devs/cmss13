@@ -13,3 +13,25 @@
 	allies = list(
 		/datum/emergency_call/solar_devils_full,
 	)
+
+/datum/spaceport/cmb
+	name = "Anchorpoint Station"
+	docking_message = "This is the Anchorpoint Colonial Marshals Bureau, we're initiating boarding procedure to investigate your distress signal."
+	allies = list(
+		/datum/emergency_call/cmb,
+	)
+
+/datum/spaceport/upp
+	name = "Znoy Outpost"
+	docking_message = "Attention, USCM vessel. You have encroached on UPP territory. We are launching umbilical cords and deploying a squad to investigate the nature of your distress."
+	allies = list(
+		/datum/emergency_call/upp/friendly,
+	)
+
+/datum/spaceport/freelancers
+	name = "Irkala Station"
+	docking_message = "Attention, USCM vessel. We are launching umbilical cords and deploying a squad to investigate the nature of your distress in accordance with the Military Aid Act of 2177."
+	allies = list(
+		/datum/emergency_call/contractors,
+		/datum/emergency_call/heavy_mercs/friendly,
+	)

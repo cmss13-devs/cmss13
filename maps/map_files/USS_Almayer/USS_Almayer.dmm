@@ -63290,12 +63290,6 @@
 /area/almayer/maint/hull/upper/u_f_p)
 "lVX" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/overwatch/almayer{
-	dir = 8;
-	layer = 3.2;
-	pixel_x = -17;
-	pixel_y = 16
-	},
 /obj/structure/transmitter/rotary/no_dnd{
 	name = "Alpha Overwatch Telephone";
 	phone_category = "Command";
@@ -63441,6 +63435,11 @@
 /obj/structure/machinery/firealarm{
 	pixel_x = 8;
 	pixel_y = 28
+	},
+/obj/structure/machinery/computer/overwatch/groundside_operations/section{
+	dir = 8;
+	pixel_x = -17;
+	pixel_y = -17
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
@@ -79064,10 +79063,10 @@
 	pixel_x = -17;
 	pixel_y = 7
 	},
-/obj/structure/machinery/computer/overwatch/groundside_operations/support{
-	dir = 4;
+/obj/structure/machinery/computer/overwatch/groundside_operations/section{
+	dir = 8;
 	pixel_x = -17;
-	pixel_y = -13
+	pixel_y = -17
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
@@ -79504,6 +79503,11 @@
 	},
 /obj/item/device/flashlight/lamp,
 /obj/item/clothing/glasses/hud/health,
+/obj/structure/machinery/computer/overwatch/groundside_operations/section{
+	dir = 8;
+	pixel_x = -17;
+	pixel_y = -17
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
 "swM" = (
@@ -80377,12 +80381,6 @@
 /area/almayer/squads/support)
 "sSG" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/overwatch/almayer{
-	dir = 8;
-	layer = 3.2;
-	pixel_x = -17;
-	pixel_y = -17
-	},
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -80394,6 +80392,11 @@
 /obj/structure/sign/safety/terminal{
 	pixel_x = -17;
 	pixel_y = 7
+	},
+/obj/structure/machinery/computer/overwatch/groundside_operations/section{
+	dir = 8;
+	pixel_x = -17;
+	pixel_y = -17
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
@@ -83323,12 +83326,6 @@
 /area/almayer/maint/hull/lower/l_a_p)
 "ucz" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/overwatch/almayer{
-	dir = 8;
-	layer = 3.2;
-	pixel_x = -17;
-	pixel_y = 15
-	},
 /obj/structure/machinery/light,
 /obj/structure/transmitter/rotary/no_dnd{
 	name = "Bravo Overwatch Telephone";

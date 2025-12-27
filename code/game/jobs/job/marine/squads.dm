@@ -362,6 +362,7 @@ SQUAD_DROPPAD(delta, Delta)
 	roundstart = FALSE
 	locked = TRUE
 	add_to_glob_squad_list = TRUE
+	squad_role = SQUAD_ROLE_SECURITY
 
 SQUAD_DROPPAD(echo, Echo)
 
@@ -464,6 +465,7 @@ SQUAD_VENDORS(support, ACCESS_MARINE_SUPPORT, null)
 		JOB_SQUAD_LEADER = 0,
 	)
 
+	squad_role = SQUAD_ROLE_SECURITY
 	add_to_glob_squad_list = TRUE
 
 /datum/squad/marine/sof

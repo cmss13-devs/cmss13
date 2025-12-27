@@ -77,11 +77,11 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	can_override_overwatch_officer = TRUE
 	var/role
 
-/obj/structure/machinery/computer/overwatch/groundside_operations/support
-	name = "Combined Overwatch Console"
+/obj/structure/machinery/computer/overwatch/groundside_operations/section
+	name = "Section Overwatch Console"
+	icon_state = "overwatch"
 	no_skill_req = FALSE
 	req_access = null
-	role = SQUAD_ROLE_SUPPORT
 
 /obj/structure/machinery/computer/overwatch/Initialize()
 	. = ..()
@@ -607,6 +607,13 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	// if none of the above were true, something is very wrong
 	return UI_CLOSE
 
+/obj/structure/machinery/computer/overwatch/proc/pick_section()
+	return
+
+/obj/structure/machinery/computer/overwatch/groundside_operations/section/pick_section(mob/user)
+	var/section = tgui_input_list(user, "Choose a section to overwatch:", "Section Selection", list(SQUAD_ROLE_ASSAULT, SQUAD_ROLE_SUPPORT, SQUAD_ROLE_SECURITY))
+	role = section
+
 /obj/structure/machinery/computer/overwatch/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
@@ -617,6 +624,8 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		if("pick_squad")
 			if(current_squad)
 				return
+
+			pick_section(user)
 			var/datum/squad/selected_squad
 			for(var/datum/squad/searching_squad in GLOB.RoleAuthority.squads)
 				if(searching_squad.active && (!searching_squad.overwatch_officer || can_override_overwatch_officer) && searching_squad.faction == faction && searching_squad.name == params["squad"])

@@ -16,7 +16,8 @@
 #define MINIMAP_FLAG_XENO_FORSAKEN (1<<15)
 #define MINIMAP_FLAG_XENO_RENEGADE (1<<16)
 #define MINIMAP_FLAG_XENO_HUNTED (1<<17)
-#define MINIMAP_FLAG_ALL (1<<18) - 1
+#define MINIMAP_FLAG_XENO_PATHOGEN (1<<18)
+#define MINIMAP_FLAG_ALL (1<<19) - 1
 
 ///The minimap zoom scale
 #define MINIMAP_SCALE 2

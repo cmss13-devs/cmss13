@@ -56,6 +56,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_EXECUTIVE
 	job_title = JOB_EXECUTIVE
+	minimap_icon = "cl"
 	paygrades = list(PAY_SHORT_WYC3 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/wy/senior_exec

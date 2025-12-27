@@ -17,9 +17,9 @@
 	assignment = JOB_COLONEL
 	job_title = JOB_COLONEL
 	paygrades = list(PAY_SHORT_MO6 = JOB_PLAYTIME_TIER_0)
-	role_comm_title = "COL"
+	role_comm_title = "Col"
 	minimap_icon = "so"
-	minimap_background = "background_hc_com"
+	minimap_background = "background_hc_com" //now we're talking
 	minimum_age = 40
 	skills = /datum/skills/general
 	languages = ALL_HUMAN_LANGUAGES //Know your enemy.
@@ -64,12 +64,12 @@
 	assignment = JOB_GENERAL
 	job_title = JOB_GENERAL
 	paygrades = list(PAY_SHORT_MO7 = JOB_PLAYTIME_TIER_0)
-	role_comm_title = "GEN"
+	role_comm_title = "BGen"
 	minimum_age = 50
 	minimap_icon = "aso"
 	minimap_background = "background_hc_com"
 	skills = /datum/skills/general
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE, LANGUAGE_CHINESE, LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_SCANDINAVIAN, LANGUAGE_SPANISH, LANGUAGE_TSL) //Know your enemy.
+	languages = ALL_HUMAN_LANGUAGES //Know your enemy.
 
 	service_under = list(/obj/item/clothing/under/marine/officer/general, /obj/item/clothing/under/marine/officer/bridge)
 	service_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/general, /obj/item/clothing/suit/storage/jacket/marine/service, /obj/item/clothing/suit/storage/jacket/marine/service/mp)
@@ -117,17 +117,17 @@
 	name = "USCM O-8 - Major General (High Command)"
 	paygrades = list(PAY_SHORT_MO8 = JOB_PLAYTIME_TIER_0)
 	minimap_icon = "general1"
-
+	role_comm_title = "MajGen"
 /datum/equipment_preset/uscm_event/general/o9
 	name = "USCM O-9 - Lieutenant General (High Command)"
 	paygrades = list(PAY_SHORT_MO9 = JOB_PLAYTIME_TIER_0)
 	minimap_icon = "general2"
-
+	role_comm_title = "LtGen"
 /datum/equipment_preset/uscm_event/general/o10
 	name = "USCM O-10 - General (High Command)"
 	paygrades = list(PAY_SHORT_MO10 = JOB_PLAYTIME_TIER_0)
 	minimap_icon = "general3"
-
+	role_comm_title = "Gen"
 /datum/equipment_preset/uscm_event/general/o10c
 	name = "USCM O-10C - Assistant Commandant of the Marine Corps (High Command)"
 	paygrades = list(PAY_SHORT_MO10C = JOB_PLAYTIME_TIER_0)

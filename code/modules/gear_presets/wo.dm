@@ -365,7 +365,7 @@
 	idtype = /obj/item/card/id/silver
 
 	minimap_icon = "cargo"
-	minimap_background = "background_enlisted"
+	minimap_background = "background_shipside"
 
 /datum/equipment_preset/wo/quartermaster/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel/tech
@@ -557,7 +557,7 @@
 	idtype = /obj/item/card/id/silver
 
 	minimap_icon = "ce"
-	minimap_background = "background_medical"
+	minimap_background = "background_command"
 
 /datum/equipment_preset/wo/bcm/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel/tech
@@ -839,6 +839,7 @@
 	paygrades = list(PAY_SHORT_ME2 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "RFN"
 	skills = /datum/skills/pfc
+	minimap_icon = "private"
 
 /datum/equipment_preset/wo/marine/pfc/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel

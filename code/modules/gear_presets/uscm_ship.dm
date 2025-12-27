@@ -98,7 +98,7 @@
 	skills = /datum/skills/civilian
 	idtype = /obj/item/card/id/silver/cl
 
-	minimap_icon = "correspondent"
+	minimap_icon = "press"
 	minimap_background = "background_civillian"
 	dress_under = list()
 	dress_over = list()
@@ -302,7 +302,7 @@
 	minimum_age = 25
 	skills = /datum/skills/RO
 
-	minimap_icon = "cargo"
+	minimap_icon = "qm"
 	minimap_background = "background_command"
 
 	utility_under = list(/obj/item/clothing/under/rank/qm_suit)
@@ -496,7 +496,7 @@
 	skills = /datum/skills/auxiliary_officer
 
 	minimap_icon = "aso"
-	minimap_background = "background_auxiliary"
+	minimap_background = "background_command"
 
 /datum/equipment_preset/uscm_ship/auxiliary_officer/New()
 	. = ..()
@@ -714,6 +714,8 @@
 	role_comm_title = "Cpt"
 	minimum_age = 25
 	skills = /datum/skills/commander
+	minimap_icon = "co"
+	minimap_background = "background_command"
 
 	utility_hat = list(/obj/item/clothing/head/beret/cm)
 	utility_gloves = list(/obj/item/clothing/gloves/marine)

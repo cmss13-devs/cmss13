@@ -4741,10 +4741,7 @@
 /turf/open/floor/shiva/blue,
 /area/varadero/interior/technical_storage)
 "dGr" = (
-/turf/closed/shuttle{
-	dir = 1;
-	icon_state = "pwall"
-	},
+/turf/closed/cordon,
 /area/space)
 "dGu" = (
 /obj/effect/decal/cleanable/blood,
@@ -28833,10 +28830,7 @@
 /turf/open/gm/dirt,
 /area/varadero/exterior/eastbeach)
 "wUU" = (
-/turf/closed/shuttle{
-	dir = 1;
-	icon_state = "pwall"
-	},
+/turf/closed/cordon,
 /area/varadero/interior/oob)
 "wVa" = (
 /obj/structure/pipes/standard/manifold/hidden/green,

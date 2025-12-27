@@ -1414,6 +1414,15 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, flatten_numeric_alist(alist(
 /obj/structure/machinery/power/apc/almayer
 	cell_type = /obj/item/cell/high
 
+/obj/structure/machinery/power/apc/almayer/Initialize(mapload, ndir, building)
+	. = ..()
+	if(is_mainship_level(z))
+		SShijack.apcs += src
+
+/obj/structure/machinery/power/apc/almayer/Destroy()
+	SShijack.apcs -= src
+	return ..()
+
 /obj/structure/machinery/power/apc/almayer/north
 	pixel_y = 32
 	dir = 1

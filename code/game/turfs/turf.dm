@@ -466,7 +466,7 @@
 
 // Creates a new turf
 // new_baseturfs can be either a single type or list of types, formated the same as baseturfs. see turf.dm
-/turf/proc/ChangeTurf(path, list/new_baseturfs, flags)
+/turf/proc/ChangeTurf(path, list/new_baseturfs, flags, ...)
 	switch(path)
 		if(null)
 			return
@@ -492,7 +492,7 @@
 
 	changing_turf = TRUE
 	qdel(src) //Just get the side effects and call Destroy
-	var/turf/W = new path(src)
+	var/turf/W = new path(src, args.Copy(4))
 
 	for(var/atom/movable/thing as anything in W.contents)
 		SEND_SIGNAL(thing, COMSIG_ATOM_TURF_CHANGE, src)

@@ -303,6 +303,9 @@
 	if(auto_space_icon)
 		icon_state = "speedspace_ns_[get_transit_state(src)]"
 		transform = turn(matrix(), get_transit_angle(src))
+	else
+		// Undo change in /turf/open/space/Initialize
+		icon_state = initial(icon_state)
 
 /proc/get_transit_state(turf/T)
 	var/p = 9

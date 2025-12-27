@@ -3,10 +3,7 @@
 /turf/open/space,
 /area/space)
 "aab" = (
-/turf/closed/shuttle{
-	dir = 1;
-	icon_state = "pwall"
-	},
+/turf/closed/cordon,
 /area/space)
 "aac" = (
 /obj/structure/pipes/standard/simple/hidden/green,

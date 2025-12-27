@@ -425,6 +425,9 @@
 		addtimer(VARSET_CALLBACK(mover, plane, GAME_PLANE), 0.5 SECONDS)
 
 	if(actual_turf)
+		if(actual_turf.check_blocked())
+			to_chat(mover, SPAN_WARNING("Something is blocking the way."))
+			return COMPONENT_CANCEL_MOVE
 		if(istype(mover, /mob))
 			var/mob/mover_mob = mover
 			mover_mob.trainteleport(actual_turf)

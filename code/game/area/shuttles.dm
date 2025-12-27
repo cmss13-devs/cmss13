@@ -47,6 +47,7 @@
 /area/shuttle/ert
 	icon = 'icons/turf/area_almayer.dmi'
 	icon_state = "lifeboat"
+	flags_area = AREA_NOTUNNEL
 
 /area/shuttle/ert/no_defenses
 	flags_area = AREA_NOTUNNEL|AREA_UNWEEDABLE|AREA_NOSECURECADES

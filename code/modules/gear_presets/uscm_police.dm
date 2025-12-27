@@ -34,7 +34,7 @@
 	skills = /datum/skills/MP
 
 	minimap_icon = "mp"
-	
+
 	utility_under = list(/obj/item/clothing/under/marine/mp)
 	utility_hat = list(/obj/item/clothing/head/beret/marine/mp)
 	utility_extra = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/cm/tan)
@@ -140,7 +140,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/uscm_police/cmp
-	name = "USCM Chief MP (CMP)"
+	name = "USCM Chief Military Police (CMP)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 	idtype = /obj/item/card/id/silver
 
@@ -257,7 +257,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/uscm_police/riot_mp/riot_cmp
-	name = "USCM Riot Chief MP (RCMP)"
+	name = "USCM Riot Chief Military Police (RCMP)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	minimap_icon = "crmp"

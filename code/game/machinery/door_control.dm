@@ -317,6 +317,10 @@
 /obj/structure/machinery/door_control/automatic/use_button(mob/living/user, force)
 	return
 
+/obj/structure/machinery/door_control/automatic/power_change()
+	..()
+	icon_state = desiredstate ? "launcheract" : "launcherbtt"
+
 /obj/structure/machinery/door_control/automatic/process()
 	var/area/my_area = get_area(src)
 	for(var/mob/creature in my_area)
@@ -332,6 +336,7 @@
 		return
 
 	icon_state = triggered ? "launcheract" : "launcherbtt"
+	use_power(5)
 
 	switch(normaldoorcontrol)
 		if(CONTROL_NORMAL_DOORS)

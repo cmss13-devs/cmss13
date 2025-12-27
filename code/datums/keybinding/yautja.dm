@@ -46,7 +46,7 @@
 	full_name = "Toggle mark for hunt"
 	keybind_signal = COMSIG_KB_YAUTJA_TOGGLE_MARK_FOR_HUNT
 
-/datum/keybinding/yautja/translate
+/datum/keybinding/yautja/leap
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")
 	name = "leap"

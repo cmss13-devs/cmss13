@@ -36305,10 +36305,6 @@
 /turf/open/auto_turf/lv_sand/layer0,
 /area/lazarus/ground/barrens/central_barrens)
 "pfG" = (
-/obj/structure/reagent_dispensers/water_cooler/stacks{
-	pixel_y = 15;
-	pixel_x = -10
-	},
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 6
 	},
@@ -38358,6 +38354,9 @@
 "qda" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 8
+	},
+/obj/structure/reagent_dispensers/water_cooler/walk_past{
+	pixel_x = 9
 	},
 /turf/open/floor/strata/light_purple_edge/east,
 /area/lazarus/research)
@@ -74596,7 +74595,7 @@ sVR
 hse
 hse
 hse
-hse
+erP
 pjS
 pjS
 pjS
@@ -74817,11 +74816,11 @@ dZN
 adC
 ahE
 sVR
-hse
+erP
 nWm
+cVf
 hse
-hse
-pjS
+bvb
 clw
 aAN
 wcq
@@ -75045,7 +75044,7 @@ bpe
 hse
 hse
 hse
-pjS
+bvb
 pfG
 wGd
 xSx
@@ -75265,11 +75264,11 @@ boI
 bja
 eaH
 sVR
-hse
+erP
 hse
 nWm
 hse
-pjS
+bvb
 qLs
 qda
 wcq
@@ -79745,7 +79744,7 @@ jpd
 uqb
 ehu
 sQl
-hse
+erP
 hse
 vMX
 nWm

@@ -126,9 +126,9 @@
 	var/squad_secondary_objective_ungarbled = TRUE
 
 	//moved from IDs to prevent some exploits and to make points more flexible
-	var/marine_points = MARINE_TOTAL_BUY_POINTS
-	var/marine_snowflake_points = MARINE_TOTAL_SNOWFLAKE_POINTS
-	var/marine_buyable_categories = MARINE_CAN_BUY_ALL
+	var/vendor_points = MARINE_TOTAL_BUY_POINTS
+	var/vendor_snowflake_points = MARINE_TOTAL_SNOWFLAKE_POINTS
+	var/vendor_buyable_categories = MARINE_CAN_BUY_ALL
 
 	var/spawned_corpse = FALSE // For the corpse spawner
 	//taken from blood.dm

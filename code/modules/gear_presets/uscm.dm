@@ -28,6 +28,10 @@
 /datum/equipment_preset/uscm/load_status(mob/living/carbon/human/new_human)
 	new_human.nutrition = rand(NUTRITION_VERYLOW, NUTRITION_LOW)
 
+/datum/equipment_preset/uscm/load_vendor_points(mob/living/carbon/human/new_human, client/mob_client)
+	. = ..()
+	new_human.vendor_buyable_categories[MARINE_CAN_BUY_EAR] = 0
+
 /datum/equipment_preset/uscm/load_preset(mob/living/carbon/human/new_human, randomise, count_participant)
 	. = ..()
 	if(!auto_squad_name || (should_block_game_interaction(new_human) && !ert_squad))
@@ -45,7 +49,6 @@
 	if(!ert_squad && !auto_squad.active)
 		auto_squad.engage_squad(FALSE)
 
-	new_human.marine_buyable_categories[MARINE_CAN_BUY_EAR] = 0
 	new_human.sec_hud_set_ID()
 	new_human.hud_set_squad()
 

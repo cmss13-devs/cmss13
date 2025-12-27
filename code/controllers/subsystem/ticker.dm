@@ -244,9 +244,10 @@ SUBSYSTEM_DEF(ticker)
 		var/roles_to_roll = null
 		if(length(mode.roles_to_roll))
 			roles_to_roll = mode.roles_to_roll
-		GLOB.RoleAuthority.setup_candidates_and_roles(roles_to_roll) //Distribute jobs
+		var/list/random_players = shuffle(GLOB.player_list)
+		GLOB.RoleAuthority.setup_candidates_and_roles(roles_to_roll, random_players) //Distribute jobs
 		if(mode.flags_round_type & MODE_NEW_SPAWN)
-			create_characters() // Create and equip characters
+			create_characters(random_players) // Create and equip characters
 		else
 			old_create_characters() //Create player characters and transfer them
 			equip_characters()
@@ -404,11 +405,10 @@ SUBSYSTEM_DEF(ticker)
 
 	world.Reboot()
 
-/datum/controller/subsystem/ticker/proc/create_characters()
+/datum/controller/subsystem/ticker/proc/create_characters(list/random_players)
 	if(!GLOB.RoleAuthority)
 		return
 
-	var/list/random_players = shuffle(GLOB.player_list)
 	for(var/mob/new_player/player in random_players)
 		if(!player || !player.ready || !player.mind || !player.job)
 			continue

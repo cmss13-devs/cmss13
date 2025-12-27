@@ -120,7 +120,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
  */
 
 
-/datum/authority/branch/role/proc/setup_candidates_and_roles(list/overwritten_roles_for_mode)
+/datum/authority/branch/role/proc/setup_candidates_and_roles(list/overwritten_roles_for_mode, list/random_players)
 	//===============================================================\\
 	//PART I: Get roles relevant to the mode
 
@@ -229,7 +229,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	// Assign the roles, this time for real, respecting limits we have established.
 	var/list/roles_left = assign_roles(temp_roles_for_mode, unassigned_players)
 
-	test_squads()
+	test_squads(random_players)
 
 	var/alternate_option_assigned = 0;
 	for(var/mob/new_player/M in unassigned_players)
@@ -262,8 +262,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	/*===============================================================*/
 
 // Assigns players to squads to check if they should be returned to lobby
-/datum/authority/branch/role/proc/test_squads()
-	var/list/random_players = shuffle(GLOB.player_list)
+/datum/authority/branch/role/proc/test_squads(list/random_players)
 	for(var/mob/new_player/player in random_players)
 		var/mob/living/carbon/human/test_human = new
 		var/datum/job/job = GLOB.RoleAuthority.roles_for_mode[player.job]

@@ -29,6 +29,11 @@
 	new_human.faction = faction
 	new_human.faction_group = faction_group
 
+/datum/equipment_preset/yautja/load_vendor_points(mob/living/carbon/human/new_yautja, client/mob_client)
+	. = ..()
+	new_yautja.vendor_points = YAUTJA_TOTAL_BUY_POINTS
+	new_yautja.vendor_buyable_categories = YAUTJA_CAN_BUY_ALL
+
 /datum/equipment_preset/yautja/load_vanity(mob/living/carbon/human/new_human)
 	return //No vanity items for Yautja!
 

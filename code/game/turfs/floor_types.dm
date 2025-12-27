@@ -4897,3 +4897,9 @@
 
 /turf/open/gm/grass/grass2/pred
 	icon_state = "grass2"
+
+/turf/open/floor/almayer/tealfull
+	icon_state = "tealfull"
+
+/turf/open/floor/almayer/limefull
+	icon_state = "limefull"

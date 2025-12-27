@@ -1,3 +1,100 @@
+// These defines add the peripheral objects needed for a squad so you don't have to do it each time you define a new squad in 20 different files
+#define SQUAD_LANDMARKS(_name, _tag) \
+/obj/effect/landmark/start/marine/engineer/_name {\
+	icon_state = "engi_spawn_" + #_name; \
+	squad = #_tag; \
+}\
+\
+/obj/effect/landmark/start/marine/medic/_name{\
+	icon_state = "medic_spawn_"  + #_name;\
+	squad = #_tag; \
+}\
+\
+/obj/effect/landmark/start/marine/leader/_name{\
+	icon_state = "leader_spawn_"  + #_name;\
+	squad = #_tag; \
+}\
+\
+/obj/effect/landmark/start/marine/smartgunner/_name{\
+	icon_state = "smartgunner_spawn_"  + #_name;\
+	squad = #_tag; \
+}\
+\
+/obj/effect/landmark/start/marine/spec/_name{\
+	icon_state = "spec_spawn_"  + #_name;\
+	squad = #_tag; \
+}\
+\
+/obj/effect/landmark/start/marine/_name{\
+	icon_state = "marine_spawn_"  + #_name;\
+	squad = #_tag; \
+}\
+\
+/obj/effect/landmark/start/marine/tl/_name{\
+	icon_state = "tl_spawn_"  + #_name;\
+	squad = #_tag;\
+}\
+/obj/effect/landmark/late_join/_name{\
+	name = #_name + " late join";\
+	icon_state = "late_join_" + #_name;\
+	squad = #_tag;\
+}
+
+
+#define SQUAD_CRYOSTORAGE(_name, _tag) \
+/obj/structure/machinery/computer/cryopod/_name {\
+	cryotype = #_tag;\
+}
+
+#define SQUAD_DROPPAD(_name, _tag) \
+/obj/structure/supply_drop/_name{\
+	icon_state = #_name + "drop";\
+	squad = #_tag;\
+}
+
+#define SQUAD_VENDORS(_name, _access, _tag) \
+/obj/structure/machinery/cm_vending/clothing/engi/_name {\
+	squad_tag = #_tag;\
+	req_access = list(ACCESS_MARINE_ENGPREP, _access);\
+	headset_type = /obj/item/device/radio/headset/almayer/marine/self_setting;\
+}\
+\
+/obj/structure/machinery/cm_vending/clothing/leader/_name{\
+	squad_tag = #_tag;\
+	req_access = list(ACCESS_MARINE_LEADER, _access);\
+	headset_type = /obj/item/device/radio/headset/almayer/marine/self_setting;\
+}\
+\
+/obj/structure/machinery/cm_vending/clothing/medic/_name{\
+	squad_tag = #_tag;\
+	req_access = list(ACCESS_MARINE_MEDPREP, _access);\
+	headset_type = /obj/item/device/radio/headset/almayer/marine/self_setting;\
+}\
+\
+/obj/structure/machinery/cm_vending/clothing/marine/_name{\
+	squad_tag = #_tag;\
+	req_access = list(_access);\
+	headset_type = /obj/item/device/radio/headset/almayer/marine/self_setting;\
+}\
+\
+/obj/structure/machinery/cm_vending/clothing/smartgun/_name{\
+	squad_tag = #_tag;\
+	req_access = list(ACCESS_MARINE_SMARTPREP, _access);\
+	headset_type = /obj/item/device/radio/headset/almayer/marine/self_setting;\
+}\
+\
+/obj/structure/machinery/cm_vending/clothing/specialist/_name{\
+	squad_tag = #_tag;\
+	req_access = list(ACCESS_MARINE_SPECPREP, _access);\
+	headset_type = /obj/item/device/radio/headset/almayer/marine/self_setting;\
+}\
+\
+/obj/structure/machinery/cm_vending/clothing/tl/_name{\
+	squad_tag = #_tag;\
+	req_access = list(ACCESS_MARINE_TL_PREP, _access);\
+	headset_type = /obj/item/device/radio/headset/almayer/marine/self_setting;\
+}
+
 //This datum keeps track of individual squads. New squads can be added without any problem but to give them
 //access you must add them individually to access.dm with the other squads. Just look for "access_alpha" and add the new one
 
@@ -53,6 +150,12 @@
 		JOB_SQUAD_TEAM_LEADER = 2,
 		JOB_SQUAD_LEADER = 1,
 	)
+	/// Saves the initial roles cap, since byond doesn't like initial() on lists
+	var/list/initial_roles_cap
+	/// Do this squad's roles scale with pop
+	var/dynamic_scaling = TRUE
+	/// At which amount of clients does this squad become playable
+	var/pop_lock = 0
 	/// Squad roles actual number of players list
 	var/list/roles_in = list()
 	/// Squad headsets default radio frequency
@@ -114,7 +217,17 @@
 	///Should we add the name of our squad in front of their name? Ex: Alpha Hospital Corpsman
 	var/prepend_squad_name_to_assignment = TRUE
 
+	///Will it have a category in cryostorage
+	var/has_cryostorage = FALSE
 
+	///Add to role squad glob list (adds it to the manifest)
+	var/add_to_glob_squad_list = FALSE
+
+	///Flavor desc found on the squad specific beret
+	var/beret_flavortext
+
+	///The squad's role from Assault / Support / Security
+	var/squad_role = SQUAD_ROLE_ASSAULT
 
 /datum/squad/marine
 	name = "Root"
@@ -131,6 +244,22 @@
 	radio_freq = ALPHA_FREQ
 	minimap_color = MINIMAP_SQUAD_ALPHA
 	background_icon = "background_alpha"
+	has_cryostorage = TRUE
+	add_to_glob_squad_list = TRUE
+	beret_flavortext = "Often found atop heads, slightly less found on those still attached."
+	roles_cap = list(
+		JOB_SQUAD_MARINE = null,
+		JOB_SQUAD_ENGI = 3,
+		JOB_SQUAD_MEDIC = 4,
+		JOB_SQUAD_SMARTGUN = 2,
+		JOB_SQUAD_SPECIALIST = 2,
+		JOB_SQUAD_TEAM_LEADER = 2,
+		JOB_SQUAD_LEADER = 1,
+	)
+SQUAD_LANDMARKS(alpha, Alpha)
+SQUAD_CRYOSTORAGE(alpha, Alpha)
+SQUAD_VENDORS(alpha, ACCESS_MARINE_ALPHA, Alpha)
+SQUAD_DROPPAD(alpha, Alpha)
 
 /datum/squad/marine/bravo
 	name = SQUAD_MARINE_2
@@ -140,15 +269,56 @@
 	radio_freq = BRAVO_FREQ
 	minimap_color = MINIMAP_SQUAD_BRAVO
 	background_icon = "background_bravo"
+	has_cryostorage = TRUE
+	add_to_glob_squad_list = TRUE
+	beret_flavortext = "It has quite a lot of debris on it, the person wearing this probably moves less than a wall."
+
+	roles_cap = list(
+		JOB_SQUAD_MARINE = 8,
+		JOB_SQUAD_ENGI = 2,
+		JOB_SQUAD_MEDIC = 2,
+		JOB_SQUAD_SMARTGUN = 0,
+		JOB_SQUAD_SPECIALIST = 0,
+		JOB_SQUAD_TEAM_LEADER = 1,
+		JOB_SQUAD_LEADER = 1,
+	)
+	dynamic_scaling = FALSE
+
+	squad_role = SQUAD_ROLE_SECURITY
+
+
+SQUAD_LANDMARKS(bravo, Bravo)
+SQUAD_CRYOSTORAGE(bravo, Bravo)
+SQUAD_VENDORS(bravo, ACCESS_MARINE_BRAVO, Bravo)
+SQUAD_DROPPAD(bravo, Bravo)
 
 /datum/squad/marine/charlie
 	name = SQUAD_MARINE_3
 	equipment_color = "#c864c8"
 	chat_color = "#ff96ff"
-	access = list(ACCESS_MARINE_CHARLIE)
+	access = list(ACCESS_MARINE_SUPPORT)
 	radio_freq = CHARLIE_FREQ
 	minimap_color = MINIMAP_SQUAD_CHARLIE
 	background_icon = "background_charlie"
+	has_cryostorage = TRUE
+	add_to_glob_squad_list = TRUE
+	beret_flavortext = "Still has some morning toast crumbs on it."
+
+	roles_cap = list(
+		JOB_SQUAD_MARINE = 4,
+		JOB_SQUAD_ENGI = 1,
+		JOB_SQUAD_MEDIC = 1,
+		JOB_SQUAD_SMARTGUN = 0,
+		JOB_SQUAD_SPECIALIST = 0,
+		JOB_SQUAD_TEAM_LEADER = 1,
+		JOB_SQUAD_LEADER = 1,
+	)
+	dynamic_scaling = FALSE
+	squad_role = SQUAD_ROLE_SUPPORT
+
+SQUAD_LANDMARKS(charlie, Charlie)
+SQUAD_CRYOSTORAGE(charlie, Charlie)
+SQUAD_DROPPAD(charlie, Charlie)
 
 /datum/squad/marine/delta
 	name = SQUAD_MARINE_4
@@ -158,28 +328,112 @@
 	radio_freq = DELTA_FREQ
 	minimap_color = MINIMAP_SQUAD_DELTA
 	background_icon = "background_delta"
+	has_cryostorage = TRUE
+	add_to_glob_squad_list = TRUE
+	beret_flavortext = "Hard to consider protection, but these types of people don't seek protection."
+
+	roles_cap = list(
+		JOB_SQUAD_MARINE = null,
+		JOB_SQUAD_ENGI = 3,
+		JOB_SQUAD_MEDIC = 4,
+		JOB_SQUAD_SMARTGUN = 2,
+		JOB_SQUAD_SPECIALIST = 2,
+		JOB_SQUAD_TEAM_LEADER = 2,
+		JOB_SQUAD_LEADER = 1,
+	)
+
+SQUAD_LANDMARKS(delta, Delta)
+SQUAD_CRYOSTORAGE(delta, Delta)
+SQUAD_VENDORS(delta, ACCESS_MARINE_DELTA, Delta)
+SQUAD_DROPPAD(delta, Delta)
 
 /datum/squad/marine/echo
 	name = SQUAD_MARINE_5
 	equipment_color = "#67d692"
 	chat_color = "#67d692"
-	access = list(ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_DELTA)
+	access = list(ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO, ACCESS_MARINE_SUPPORT, ACCESS_MARINE_DELTA)
 	radio_freq = ECHO_FREQ
 	omni_squad_vendor = TRUE
 	minimap_color = MINIMAP_SQUAD_ECHO
 	background_icon = "background_echo"
+	beret_flavortext = "Tightly Woven, as it should be."
 
 	active = FALSE
 	roundstart = FALSE
 	locked = TRUE
+	add_to_glob_squad_list = TRUE
+	squad_role = SQUAD_ROLE_SECURITY
+
+SQUAD_DROPPAD(echo, Echo)
+
+/datum/squad/marine/kilo
+	name = SQUAD_MARINE_6
+	equipment_color = "#059e96"
+	chat_color = "#059e96"
+	access = list(ACCESS_MARINE_SUPPORT)
+	radio_freq = KILO_FREQ
+	minimap_color = MINIMAP_SQUAD_KILO
+	background_icon = "background_kilo"
+	has_cryostorage = TRUE
+	add_to_glob_squad_list = TRUE
+	beret_flavortext = "Still has some morning toast crumbs on it."
+
+	roles_cap = list(
+		JOB_SQUAD_MARINE = 4,
+		JOB_SQUAD_ENGI = 1,
+		JOB_SQUAD_MEDIC = 1,
+		JOB_SQUAD_SMARTGUN = 0,
+		JOB_SQUAD_SPECIALIST = 0,
+		JOB_SQUAD_TEAM_LEADER = 1,
+		JOB_SQUAD_LEADER = 1,
+	)
+	pop_lock = 90
+	squad_role = SQUAD_ROLE_SUPPORT
+	dynamic_scaling = FALSE
+
+SQUAD_LANDMARKS(kilo, Kilo)
+SQUAD_CRYOSTORAGE(kilo, Kilo)
+SQUAD_DROPPAD(kilo, Kilo)
+
+/datum/squad/marine/oscar
+	name = SQUAD_MARINE_7
+	equipment_color = "#d6ffb2"
+	chat_color = "#678650"
+	access = list(ACCESS_MARINE_SUPPORT)
+	radio_freq = OSCAR_FREQ
+	minimap_color = MINIMAP_SQUAD_OSCAR
+	background_icon = "background_oscar"
+	has_cryostorage = TRUE
+	add_to_glob_squad_list = TRUE
+	beret_flavortext = "Still has some morning toast crumbs on it."
+
+	roles_cap = list(
+		JOB_SQUAD_MARINE = 4,
+		JOB_SQUAD_ENGI = 1,
+		JOB_SQUAD_MEDIC = 1,
+		JOB_SQUAD_SMARTGUN = 0,
+		JOB_SQUAD_SPECIALIST = 0,
+		JOB_SQUAD_TEAM_LEADER = 1,
+		JOB_SQUAD_LEADER = 1,
+	)
+	dynamic_scaling = FALSE
+	pop_lock = 130
+	squad_role = SQUAD_ROLE_SUPPORT
+
+SQUAD_LANDMARKS(oscar, Oscar)
+SQUAD_CRYOSTORAGE(oscar, Oscar)
+SQUAD_DROPPAD(oscar, Oscar)
+
+SQUAD_VENDORS(support, ACCESS_MARINE_SUPPORT, null)
 
 /datum/squad/marine/cryo
 	name = SQUAD_MARINE_CRYO
 	equipment_color = "#c47a50"
 	chat_color = "#c47a50"
-	access = list(ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_DELTA)
+	access = list(ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO, ACCESS_MARINE_SUPPORT, ACCESS_MARINE_DELTA)
 	minimap_color = MINIMAP_SQUAD_FOXTROT
 	background_icon = "background_foxtrot"
+	beret_flavortext = "Looks and feels starched, cold to the touch."
 
 	omni_squad_vendor = TRUE
 	radio_freq = CRYO_FREQ
@@ -187,6 +441,7 @@
 	active = FALSE
 	roundstart = FALSE
 	locked = TRUE
+	add_to_glob_squad_list = TRUE
 
 /datum/squad/marine/intel
 	name = SQUAD_MARINE_INTEL
@@ -195,6 +450,7 @@
 	minimap_color = MINIMAP_SQUAD_INTEL
 	radio_freq = INTEL_FREQ
 	background_icon = "background_intel"
+	beret_flavortext = "Looks more intellegent than the person wearing it."
 
 	roundstart = FALSE
 	prepend_squad_name_to_assignment = FALSE
@@ -208,6 +464,9 @@
 		JOB_SQUAD_TEAM_LEADER = 0,
 		JOB_SQUAD_LEADER = 0,
 	)
+
+	squad_role = SQUAD_ROLE_SECURITY
+	add_to_glob_squad_list = TRUE
 
 /datum/squad/marine/sof
 	name = SQUAD_SOF
@@ -361,6 +620,33 @@
 	SStracking.setup_trackers(null, "FT3")
 	update_all_squad_info()
 
+	if(pop_lock > 0)
+		initial_roles_cap = roles_cap.Copy()
+		roles_cap = list(
+			JOB_SQUAD_MARINE = 0,
+			JOB_SQUAD_ENGI = 0,
+			JOB_SQUAD_MEDIC = 0,
+			JOB_SQUAD_SMARTGUN = 0,
+			JOB_SQUAD_SPECIALIST = 0,
+			JOB_SQUAD_TEAM_LEADER = 0,
+			JOB_SQUAD_LEADER = 0,
+		)
+
+	if (!(name in GLOB.radiochannels))
+		var/found = FALSE
+		for(var/name in GLOB.radiochannels)
+			if(GLOB.radiochannels[name] == radio_freq)
+				found = TRUE
+				break
+
+		if(!found)
+			GLOB.radiochannels[name] = radio_freq
+
+	if(has_cryostorage && !(name in GLOB.frozen_items))
+		GLOB.frozen_items[name] = list()
+
+	if(add_to_glob_squad_list && !(name in GLOB.ROLES_SQUAD_ALL))
+		GLOB.ROLES_SQUAD_ALL += name
 	RegisterSignal(SSdcs, COMSIG_GLOB_MODE_POSTSETUP, PROC_REF(setup_supply_drop_list))
 
 /datum/squad/proc/setup_supply_drop_list()
@@ -594,7 +880,7 @@
 			id_card = target_mob.get_active_hand()
 
 	if(!istype(id_card))
-		return FALSE //No ID found
+		id_card = new
 
 	var/assignment = target_mob.job
 	var/paygrade
@@ -716,7 +1002,7 @@
 	if(!istype(id_card))
 		id_card = target_mob.get_idcard()
 	if(!istype(id_card))
-		return FALSE //Abort, no ID found
+		return FALSE
 
 	id_card.access -= src.access
 	id_card.assignment = target_mob.job

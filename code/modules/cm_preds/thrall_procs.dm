@@ -161,7 +161,7 @@
 	var/turf/turf = get_turf(thrall)
 	message_admins(FONT_SIZE_HUGE("ALERT: [master] ([master.key]) triggered their thrall's self-destruct sequence [area ? "in [area.name]":""] [ADMIN_JMP(turf)]"))
 	log_attack("[key_name(master)] triggered their thrall's self-destruct sequence in [area ? "in [area.name]":""]")
-	message_all_yautja("[master.real_name] has triggered their thrall's self-destruction sequence.")
+	message_all_yautja("[master.real_name] has triggered their thrall's self-destruction sequence.", broadcast_networks = received_networks)
 	to_chat(master, SPAN_DANGER("You set the timer. They have failed you."))
 	explode(thrall)
 	exploding = FALSE

@@ -160,8 +160,12 @@ most of them are tied into map-placed objects. This should be reworked in the fu
 #define ACCESS_YAUTJA_ELITE 391
 /// Elders+ only
 #define ACCESS_YAUTJA_ELDER 392
+/// Clan Leaders+ only
+#define ACCESS_YAUTJA_LEADER 393
 /// Ancients only
-#define ACCESS_YAUTJA_ANCIENT 393
+#define ACCESS_YAUTJA_ANCIENT 394
+/// Badbloods
+#define ACCESS_YAUTJA_BADBLOOD 395
 
 /// Anything in a tutorial sequence that shouldn't be accessed
 #define ACCESS_TUTORIAL_LOCKED 998

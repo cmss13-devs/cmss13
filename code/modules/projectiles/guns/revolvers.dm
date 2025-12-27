@@ -64,7 +64,7 @@
 
 /obj/item/weapon/gun/revolver/display_ammo(mob/user) // revolvers don't *really* have a chamber, at least in a way that matters for ammo displaying
 	if(flags_gun_features & GUN_AMMO_COUNTER && !(flags_gun_features & GUN_BURST_FIRING) && current_mag)
-		to_chat(user, SPAN_DANGER("[current_mag.current_rounds] / [current_mag.max_rounds] ROUNDS REMAINING"))
+		to_chat(user, SPAN_DANGER("[current_mag.current_rounds] / [current_mag.max_rounds] ROUNDS REMAINING."))
 
 /obj/item/weapon/gun/revolver/proc/rotate_cylinder(mob/user) //Cylinder moves backward.
 	if(current_mag)
@@ -587,7 +587,7 @@
 	fire_sound = 'sound/weapons/gun_44mag2.ogg'
 	current_mag = /obj/item/ammo_magazine/internal/revolver/small
 	force = 6
-	flags_gun_features = GUN_ANTIQUE|GUN_ONE_HAND_WIELDED|GUN_CAN_POINTBLANK
+	flags_gun_features = GUN_ANTIQUE|GUN_ONE_HAND_WIELDED|GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG
 	trickster_gun = TRUE
 
 /obj/item/weapon/gun/revolver/small/set_gun_attachment_offsets()
@@ -837,7 +837,7 @@
 
 /obj/item/weapon/gun/revolver/mateba/mtr6m
 	name = "\improper Spearhead 2006M autorevolver"
-	desc = "The Spearhead 2006M is a powerful, fast-firing revolver that uses its own recoil to rotate the cylinders. It fires heavy .454 rounds. It is compatible with more commonly found Unica 6 speedloaders"
+	desc = "The Spearhead 2006M is a powerful, fast-firing revolver that uses its own recoil to rotate the cylinders. It fires heavy .454 rounds. It is compatible with more commonly found Unica 6 speedloaders."
 	desc_lore = "Originally an Italian design, during the middle 21st century, Mateba company had many severe financial issues as well as violation of local firearm laws. \
 	After numerous court cases, they went bankrupt and few years later, Spearhead Armaments aquired the rights to the Mateba designs, and re-introduced the 2006M as the 'Spearhead 2006M', \
 	as well as many other Mateba revolvers. The new design featured a few changes, like rechambered variation for .454 rounds, attachment rail and other attachments support, but overall, design intentionally remained the same, \

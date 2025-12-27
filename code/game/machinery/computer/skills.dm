@@ -2,7 +2,7 @@
 
 /obj/structure/machinery/computer/skills//TODO:SANITY
 	name = "Employment Records"
-	desc = "Used to view personnel's employment records"
+	desc = "Used to view personnel's employment records."
 	icon_state = "medlaptop"
 	req_one_access = list(ACCESS_MARINE_DATABASE)
 	circuit = /obj/item/circuitboard/computer/skills
@@ -69,7 +69,6 @@
 </tr>"}
 					if(!isnull(GLOB.data_core.general))
 						for(var/datum/data/record/R in sortRecord(GLOB.data_core.general, sortBy, order))
-							for(var/datum/data/record/E in GLOB.data_core.security)
 							dat += "<tr><td><A href='byond://?src=\ref[src];choice=Browse Record;d_rec=\ref[R]'>[R.fields["name"]]</a></td>"
 							dat += "<td>[R.fields["id"]]</td>"
 							dat += "<td>[R.fields["rank"]]</td>"
@@ -228,7 +227,6 @@ What a mess.*/
 				if (!( GLOB.data_core.general.Find(R) ))
 					temp = "Record Not Found!"
 				else
-					for(var/datum/data/record/E in GLOB.data_core.security)
 					active1 = R
 					screen = 3
 
@@ -374,7 +372,7 @@ What a mess.*/
 					R.fields["criminal"] = pick("None", "*Arrest*", "Incarcerated", "Released")
 					msg_admin_niche("The employment record criminal status of [R.fields["name"]] was scrambled!")
 				if(5)
-					R.fields["p_stat"] = pick("*Unconscious*", "Active", "Physically Unfit")
+					R.fields["p_stat"] = pick("Inactive", "Active", "Unknown")
 					msg_admin_niche("The employment record physical state of [R.fields["name"]] was scrambled!")
 				if(6)
 					R.fields["m_stat"] = pick("*Insane*", "*Unstable*", "*Watch*", "Stable")

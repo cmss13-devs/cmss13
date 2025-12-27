@@ -55,7 +55,7 @@
 		if(test_client.check_whitelist_status(GLOB.bitfields["whitelist_status"][flag]))
 			ckeys += test_client.ckey
 	if(!length(ckeys))
-		to_chat(src, SPAN_NOTICE("There are no players with that whitelist online"))
+		to_chat(src, SPAN_NOTICE("There are no players with that whitelist online."))
 		return
 	to_chat(src, SPAN_NOTICE("Whitelist holders: [ckeys.Join(", ")]."))
 
@@ -360,7 +360,7 @@
 
 /client/proc/view_faxes()
 	set name = "Reply to Faxes"
-	set desc = "View faxes from this round"
+	set desc = "View faxes from this round."
 	set category = "Admin.Events"
 
 	if(!admin_holder)
@@ -505,7 +505,7 @@
 	var/encrypt = tgui_alert(src, "Do you want the nuke to be already decrypted?", "Nuke Type", list("Encrypted", "Decrypted"), 20 SECONDS)
 	if(encrypt == "Encrypted")
 		nukename = "Encrypted Operational Blockbuster"
-	var/prompt = tgui_alert(src, "THIS CAN BE USED TO END THE ROUND. Are you sure you want to spawn a nuke? The nuke will be put onto the ASRS Lift.", "DEFCON 1", list("No", "Yes"), 30 SECONDS)
+	var/prompt = tgui_alert(src, "THIS CAN BE USED TO END THE ROUND. Are you sure you want to spawn a nuke? The nuke will be put onto the ASRS Lift.", "DEFCON 1", list("Yes", "No"), 30 SECONDS)
 	if(prompt != "Yes")
 		return
 
@@ -545,7 +545,7 @@
 
 /client/proc/force_hijack()
 	set name = "Force Hijack"
-	set desc = "Force a dropship to be hijacked"
+	set desc = "Force a dropship to be hijacked."
 	set category = "Admin.Shuttles"
 
 	var/list/shuttles = list(DROPSHIP_ALAMO, DROPSHIP_NORMANDY)
@@ -608,7 +608,7 @@
 
 /client/proc/cmd_admin_xeno_report()
 	set name = "Report: Queen Mother"
-	set desc = "Basically a command announcement, but only for selected Xeno's Hive"
+	set desc = "Basically a command announcement, but only for selected Xeno's Hive."
 	set category = "Admin.Factions"
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))

@@ -21,7 +21,7 @@
 /area/template_noop)
 "cG" = (
 /turf/template_noop,
-/area/space)
+/area/template_noop)
 "dV" = (
 /turf/open/auto_turf/lv_sand/layer0,
 /area/template_noop)

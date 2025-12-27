@@ -57,6 +57,11 @@
 	name ="\improper Northwest - Dense Jungle"
 	icon_state = "northwest"
 
+/area/lazarus/ground/jungle/north_west_jungle/dense/roof
+	name ="\improper Northwest - Dense Jungle - Ruins"
+	icon_state = "northwest"
+	ceiling = CEILING_METAL
+
 /area/lazarus/ground/jungle/north_jungle
 	name ="\improper Northern Jungle"
 	icon_state = "north"

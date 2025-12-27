@@ -688,6 +688,10 @@
 	name = "TOP SECRET: FOR CELL LEAD ONLY"
 	info = "Your request for extraction has been recieved. We have no assets in the region available. Await further instruction."
 
+/obj/item/paper/lazarus/clf
+	name = "Log Entry"
+	info = "We've secured a foothold deep in the north-western jungle, within the bones of some ancient alien ruin. The company's colony festers south of our position, attacked by some unknown enemy. The jungle shields us, the ruins fortify us, and time is our ally. We wait. We prepare. When the moment comes, we will strike. We will liberate this colony when the time is right. We wait. We prepare. Liberation will come. We wait. We prepare. Liberation will come... We wait. We prepare. Liberation will come...\ncontinues until the end of the page\n"
+
 /obj/item/paper/bigred/upp/Initialize(mapload, photo_list)
 	. = ..()
 

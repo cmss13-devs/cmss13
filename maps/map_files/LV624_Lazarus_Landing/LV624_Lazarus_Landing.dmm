@@ -161,7 +161,7 @@
 	pixel_y = -18
 	},
 /obj/structure/platform_decoration/wood,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "abX" = (
 /obj/effect/decal/lv_decals/cave_mud_corner{
@@ -217,7 +217,7 @@
 	pixel_x = 7;
 	pixel_y = -2
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "adC" = (
 /obj/structure/machinery/body_scanconsole,
@@ -231,7 +231,7 @@
 /area/lazarus/ground/ancient_temple/south/surface)
 "adU" = (
 /obj/structure/platform_decoration/stone/ancient_temple/alt/north,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "aea" = (
 /obj/effect/hunter/ancient_temple/tile_edge/tile_edge_12,
@@ -294,7 +294,7 @@
 	pixel_x = 4;
 	pixel_y = 11
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "afH" = (
 /obj/effect/hunter/ancient_temple/tile_edge/tile_edge_11,
@@ -348,7 +348,7 @@
 /turf/open/floor/interior/wood_sat,
 /area/lazarus/lodge)
 "agO" = (
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/river/north_east_temple_river)
 "agY" = (
 /obj/structure/disposalpipe/segment,
@@ -461,7 +461,7 @@
 	pixel_x = -8;
 	pixel_y = 1
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "ajK" = (
 /obj/structure/largecrate/random/case/double,
@@ -868,7 +868,7 @@
 	dir = 8;
 	pixel_y = -16
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "asE" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
@@ -989,7 +989,7 @@
 	pixel_x = -12;
 	pixel_y = 11
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "auq" = (
 /obj/structure/machinery/colony_floodlight{
@@ -999,7 +999,7 @@
 /area/lazarus/ground/barrens/south_west_barrens)
 "auz" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "auK" = (
 /obj/item/tool/warning_cone,
@@ -1193,7 +1193,7 @@
 /obj/effect/hunter/ancient_temple/rubble/rubble_7{
 	pixel_y = 20
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "ayG" = (
 /obj/structure/window/framed/wood/reinforced/plain,
@@ -1210,7 +1210,7 @@
 	pixel_x = -12;
 	pixel_y = -15
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/east/surface)
 "azd" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
@@ -1258,7 +1258,7 @@
 	pixel_x = 9;
 	pixel_y = -6
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "aAq" = (
 /obj/structure/prop/ice_colony/ground_wire,
@@ -1850,7 +1850,7 @@
 /area/lazarus/ground/jungle/south_east_jungle)
 "aOy" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_1,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "aOF" = (
 /obj/effect/landmark/big_fog_marker,
@@ -1872,7 +1872,7 @@
 	pixel_x = 17;
 	pixel_y = -11
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "aPh" = (
 /obj/structure/surface/table/woodentable/poor,
@@ -2070,7 +2070,7 @@
 	pixel_y = -7;
 	pixel_x = 13
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "aTp" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_5,
@@ -2181,7 +2181,7 @@
 /area/lazarus/main_hall)
 "aUR" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_2,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "aUW" = (
 /obj/structure/platform/wood/north,
@@ -2711,7 +2711,7 @@
 	pixel_x = 10;
 	pixel_y = -10
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/cove)
 "bdZ" = (
 /obj/structure/prop/colorable_rock/colorable{
@@ -2767,7 +2767,7 @@
 	pixel_x = -6;
 	pixel_y = 5
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "bfb" = (
 /turf/open/floor/interior/wood_sat/damage_5,
@@ -2853,7 +2853,7 @@
 	pixel_x = 23;
 	pixel_y = -4
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/north_east)
 "bgJ" = (
 /obj/structure/machinery/disposal,
@@ -3177,7 +3177,7 @@
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/south_east/surface)
 "bof" = (
 /obj/structure/machinery/camera/autoname{
@@ -3223,7 +3223,7 @@
 /area/lazarus/ground/jungle/south_west_jungle)
 "bpa" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_7,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/north_east/surface)
 "bpe" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
@@ -3307,7 +3307,7 @@
 "bqX" = (
 /obj/effect/landmark/objective_landmark/far,
 /obj/structure/flora/jungle/vines/dead/light_1,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/south_east/surface)
 "bra" = (
 /obj/item/stack/sheet/wood,
@@ -3442,7 +3442,7 @@
 	pixel_x = -9;
 	pixel_y = -9
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "buZ" = (
 /obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
@@ -3564,7 +3564,7 @@
 	pixel_x = 5;
 	pixel_y = 10
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "bxw" = (
 /obj/structure/flora/jungle/alienplant1,
@@ -3701,7 +3701,7 @@
 	pixel_x = -9;
 	pixel_y = 14
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/east/surface)
 "bAr" = (
 /turf/open/auto_turf/lv_grass_weedable/layer1,
@@ -3758,7 +3758,7 @@
 	pixel_y = -4
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "bCa" = (
 /obj/structure/prop/server_equipment,
@@ -3922,7 +3922,7 @@
 	pixel_x = -3;
 	pixel_y = 16
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/south/surface)
 "bHq" = (
 /obj/effect/hunter/ancient_temple/deco_border{
@@ -4014,7 +4014,7 @@
 /area/lazarus/medbay)
 "bJW" = (
 /obj/effect/landmark/objective_landmark/medium,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "bJY" = (
 /obj/effect/decal/lv_decals/cave_mud_corner{
@@ -4099,7 +4099,7 @@
 /turf/open/floor/prison/cell_stripe/east,
 /area/lazarus/ground/colony/north_east_nexus_road)
 "bLW" = (
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/south/surface)
 "bLY" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -4113,7 +4113,7 @@
 /area/lazarus/lodge)
 "bMg" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/north_east/surface)
 "bMz" = (
 /obj/structure/pipes/vents/scrubber_hybrisa,
@@ -4406,7 +4406,7 @@
 	pixel_x = 15;
 	pixel_y = 13
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "bRU" = (
 /obj/effect/hunter/ancient_temple/tile_edge_corner/tile_edge_corner_4,
@@ -4819,7 +4819,7 @@
 "ccu" = (
 /obj/structure/platform/wood/east,
 /obj/structure/platform/wood,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "ccO" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
@@ -5118,7 +5118,7 @@
 	dir = 1
 	},
 /obj/effect/decal/remains/xeno,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/strata/interior/out_of_bounds)
 "cim" = (
 /obj/structure/machinery/disposal,
@@ -5169,7 +5169,7 @@
 	pixel_x = -4;
 	pixel_y = 14
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/north_east/surface)
 "cjo" = (
 /obj/structure/platform/metal/strata/alt/west,
@@ -5371,7 +5371,7 @@
 	pixel_y = 10
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "coe" = (
 /obj/effect/hunter/ancient_temple/deco_border{
@@ -5438,7 +5438,7 @@
 	pixel_x = -15;
 	pixel_y = -9
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "cpm" = (
 /obj/structure/flora/bush/ausbushes/ausbush,
@@ -5572,7 +5572,7 @@
 /area/lazarus/ground/river/central_river/lake)
 "csG" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "csJ" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_3{
@@ -5592,7 +5592,7 @@
 	pixel_x = 5;
 	pixel_y = -9
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "ctl" = (
 /turf/open/gm/coast/dirt/south,
@@ -5664,7 +5664,7 @@
 	pixel_x = 32;
 	pixel_y = 4
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "cuc" = (
 /obj/structure/disposalpipe/segment,
@@ -5989,7 +5989,7 @@
 /area/lazarus/ground/jungle/north_west_jungle)
 "cBs" = (
 /obj/structure/flora/jungle/vines/dead/light_1,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/south/surface)
 "cBv" = (
 /obj/effect/hunter/ancient_temple/deco_border{
@@ -6152,7 +6152,7 @@
 	},
 /obj/effect/hunter/ancient_temple/rubble/rubble_7,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "cEU" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -6333,7 +6333,7 @@
 /area/lazarus/ground/ancient_temple/east)
 "cHK" = (
 /obj/structure/platform_decoration/stone/ancient_temple/west,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/river/north_east_temple_river)
 "cHR" = (
 /turf/open/gm/dirt/brown/variant_5/east,
@@ -6454,7 +6454,7 @@
 	pixel_x = 9;
 	pixel_y = 9
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/north_east/surface)
 "cIR" = (
 /turf/closed/wall/lv_outpost,
@@ -6697,7 +6697,7 @@
 "cMJ" = (
 /obj/structure/platform/stone/ancient_temple/east,
 /obj/effect/hunter/ancient_temple/rubble/rubble_3,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "cMP" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -6817,7 +6817,7 @@
 /turf/open/auto_turf/lv_grass/layer1,
 /area/lazarus/ground/jungle/north_east_jungle)
 "cRD" = (
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/south)
 "cSo" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -6944,7 +6944,7 @@
 	pixel_x = -8;
 	pixel_y = 1
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "cUK" = (
 /obj/structure/platform_decoration/stone/ancient_temple/alt/west,
@@ -7548,7 +7548,7 @@
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/lazarus/kitchen)
 "djb" = (
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/north_east/surface)
 "djc" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_4,
@@ -7660,7 +7660,7 @@
 	pixel_x = -7;
 	pixel_y = 12
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "dkt" = (
 /obj/structure/flora/bush/ausbushes/lavendergrass,
@@ -7739,7 +7739,7 @@
 	pixel_x = 7;
 	pixel_y = 15
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/east)
 "dms" = (
 /obj/structure/surface/table/almayer{
@@ -7926,7 +7926,7 @@
 "drf" = (
 /obj/structure/platform_decoration/stone/ancient_temple/alt/west,
 /obj/effect/hunter/ancient_temple/rubble/rubble_3,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "drk" = (
 /obj/effect/landmark/monkey_spawn,
@@ -8794,7 +8794,7 @@
 	pixel_x = -3;
 	pixel_y = -17
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "dMm" = (
 /obj/structure/disposalpipe/junction{
@@ -8923,7 +8923,7 @@
 /area/lazarus/ground/ancient_temple/north_east)
 "dPW" = (
 /mob/living/simple_animal/moth,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "dQc" = (
 /obj/effect/landmark/big_fog_marker,
@@ -8960,7 +8960,7 @@
 	pixel_x = 1;
 	pixel_y = -16
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "dQV" = (
 /obj/structure/mineral_door/wood,
@@ -9091,7 +9091,7 @@
 	pixel_y = 17;
 	pixel_x = -17
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "dSL" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -9444,7 +9444,7 @@
 /turf/open/floor/ancient_temple/base,
 /area/lazarus/ground/caves/north_west_caves)
 "dZF" = (
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "dZN" = (
 /obj/structure/machinery/body_scanconsole,
@@ -9575,7 +9575,7 @@
 	pixel_x = -1;
 	pixel_y = -16
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "ecH" = (
 /obj/effect/hunter/ancient_temple/tile_edge_corner/tile_edge_corner_2,
@@ -9586,7 +9586,7 @@
 /obj/effect/hunter/ancient_temple/rubble/rubble_5{
 	pixel_y = -5
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "ecR" = (
 /obj/structure/barricade/handrail/wire,
@@ -9648,7 +9648,7 @@
 	},
 /obj/effect/hunter/ancient_temple/rubble/rubble_6,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/north_east/surface)
 "eeb" = (
 /obj/effect/hunter/ancient_temple/tile_edge_corner/tile_edge_corner_4,
@@ -9706,7 +9706,7 @@
 	pixel_x = 2;
 	pixel_y = 14
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "efj" = (
 /obj/structure/disposalpipe/segment,
@@ -9785,7 +9785,7 @@
 	icon_state = "ancient_platform_broken"
 	},
 /obj/structure/flora/jungle/vines/dead/light_1,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/river/central_river)
 "ehf" = (
 /obj/structure/stairs/perspective{
@@ -9839,7 +9839,7 @@
 /obj/item/device/flashlight/lamp/tripod{
 	on = 0
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "ehS" = (
 /obj/structure/prop/rock/brown{
@@ -10046,7 +10046,7 @@
 /area/lazarus/engineering)
 "ell" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_6,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/north_east/surface)
 "eln" = (
 /obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
@@ -10191,7 +10191,7 @@
 /area/lazarus/ground/jungle/north_west_jungle/dense)
 "eoq" = (
 /obj/effect/landmark/big_fog_marker,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/south/surface)
 "eos" = (
 /obj/structure/machinery/landinglight/ds1{
@@ -10249,7 +10249,7 @@
 	pixel_x = -14;
 	pixel_y = 2
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "equ" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_4{
@@ -10434,7 +10434,7 @@
 	pixel_x = 1;
 	pixel_y = 8
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/north_east/surface)
 "etp" = (
 /obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
@@ -10559,7 +10559,7 @@
 	pixel_x = 14;
 	pixel_y = 15
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/south/surface)
 "evy" = (
 /obj/structure/platform/metal/strata/alt/west,
@@ -10678,7 +10678,7 @@
 	dir = 6;
 	pixel_x = 13
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "eyW" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_5,
@@ -10782,7 +10782,7 @@
 /area/lazarus/ground/ancient_temple/east/surface)
 "eBv" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = "30.center_science_containers"
+	insert_tag = "center_science_containers"
 	},
 /turf/open/auto_turf/lv_sand/layer0,
 /area/lazarus/ground/colony/north_tcomms_road)
@@ -10883,7 +10883,7 @@
 	pixel_x = -5;
 	pixel_y = -9
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "eDn" = (
 /obj/structure/barricade/handrail/wire{
@@ -10948,7 +10948,7 @@
 	pixel_x = 11;
 	pixel_y = 11
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "eES" = (
 /obj/structure/flora/jungle/vines/dead/light_3,
@@ -10961,7 +10961,7 @@
 	pixel_x = -2;
 	pixel_y = 16
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "eFB" = (
 /obj/structure/barricade/handrail/strata,
@@ -11285,7 +11285,7 @@
 "eNj" = (
 /obj/structure/flora/jungle/vines/dead/light_3,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/north_east/surface)
 "eNE" = (
 /obj/structure/transmitter/colony_net{
@@ -11370,7 +11370,7 @@
 	pixel_x = -4;
 	pixel_y = -18
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "eOI" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
@@ -11731,7 +11731,7 @@
 	pixel_x = -11;
 	pixel_y = -2
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "eXD" = (
 /obj/structure/prop/colorable_rock/colorable{
@@ -11763,7 +11763,7 @@
 "eYd" = (
 /obj/structure/platform/stone/ancient_temple/east,
 /obj/effect/hunter/ancient_temple/rubble/rubble,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/south)
 "eYf" = (
 /turf/open/floor/brown_dirt/random_rocks,
@@ -12063,7 +12063,7 @@
 	pixel_x = 7;
 	pixel_y = 7
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "feW" = (
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -12288,7 +12288,7 @@
 /area/lazarus/toilet)
 "fiJ" = (
 /obj/effect/landmark/queen_spawn,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "fiY" = (
 /obj/structure/flora/jungle/vines/blue/light_1,
@@ -12352,7 +12352,7 @@
 	pixel_x = 3;
 	pixel_y = -15
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "fkM" = (
 /obj/effect/decal/lv_decals/cave_mud_corner{
@@ -12548,7 +12548,7 @@
 	pixel_x = -9;
 	pixel_y = 6
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "foh" = (
 /obj/structure/barricade/handrail/wire,
@@ -12649,7 +12649,7 @@
 	pixel_x = -14;
 	pixel_y = 2
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "fqq" = (
 /obj/structure/prop/hunter/ancient_temple/collapsed_wall{
@@ -12671,7 +12671,7 @@
 	pixel_y = -3
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/north_east/surface)
 "fqx" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_5{
@@ -12682,7 +12682,7 @@
 	pixel_x = 6;
 	pixel_y = -4
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "fqO" = (
 /obj/structure/bed/chair/comfy/beige{
@@ -12695,7 +12695,7 @@
 /turf/open/gm/river/soro,
 /area/lazarus/ground/river/central_river/lake)
 "fqY" = (
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/cove/south)
 "fqZ" = (
 /obj/effect/decal/lv_decals/cave_mud_corner{
@@ -12739,7 +12739,7 @@
 	},
 /obj/structure/platform_decoration/stone/ancient_temple/alt/east,
 /obj/structure/flora/jungle/vines/dead/light_3,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/south_east/surface)
 "fsb" = (
 /obj/structure/prop/colorable_rock/colorable{
@@ -12783,7 +12783,7 @@
 "fsn" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "fsK" = (
 /obj/effect/hunter/ancient_temple/deco_border{
@@ -13168,7 +13168,7 @@
 	pixel_x = 4;
 	pixel_y = 14
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "fBS" = (
 /obj/effect/decal/lv_decals/red_mud_corner{
@@ -13240,7 +13240,7 @@
 	pixel_y = -5;
 	pixel_x = -19
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/south_east/surface)
 "fDZ" = (
 /obj/structure/prop/colorable_rock/colorable{
@@ -13385,7 +13385,7 @@
 /area/lazarus/ground/barrens/north_barrens)
 "fGE" = (
 /obj/effect/landmark/xeno_spawn,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "fGH" = (
 /obj/structure/machinery/light/small/blue{
@@ -13726,7 +13726,7 @@
 	pixel_y = -4
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "fQk" = (
 /obj/structure/disposalpipe/junction{
@@ -14228,7 +14228,7 @@
 /obj/effect/hunter/ancient_temple/rubble/rubble_6{
 	pixel_y = -16
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "gcL" = (
 /obj/structure/disposalpipe/segment{
@@ -14400,7 +14400,7 @@
 /turf/open/gm/coast/dirt/east,
 /area/lazarus/ground/river/central_river/lake)
 "ghp" = (
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/south_east/surface)
 "ghq" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -14797,7 +14797,7 @@
 /area/lazarus/medbay)
 "goN" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_core,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "goY" = (
 /obj/structure/machinery/colony_floodlight{
@@ -15101,7 +15101,7 @@
 	pixel_x = 21;
 	pixel_y = -8
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "gvr" = (
 /turf/open/floor/prison/cell_stripe,
@@ -15433,7 +15433,7 @@
 	pixel_x = 2;
 	pixel_y = -5
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "gBQ" = (
 /turf/open/gm/coast/dirt/beachcorner2/south_east,
@@ -15536,7 +15536,7 @@
 /area/lazarus/ground/barrens/south_west_barrens)
 "gDE" = (
 /obj/effect/landmark/monkey_spawn,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "gDK" = (
 /obj/effect/hybrisa/misc/fake/wire/blue{
@@ -15672,7 +15672,7 @@
 	pixel_y = -1
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "gGI" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -15709,7 +15709,7 @@
 /area/lazarus/ground/cove)
 "gHz" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/east/surface)
 "gHC" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
@@ -15771,7 +15771,7 @@
 	pixel_x = -10;
 	pixel_y = -18
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "gIR" = (
 /obj/structure/largecrate/random/barrel/blue,
@@ -16078,12 +16078,12 @@
 /area/lazarus/ground/ancient_temple/north_east)
 "gPi" = (
 /obj/effect/landmark/xeno_spawn,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/south)
 "gPk" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "gPo" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_5{
@@ -16094,7 +16094,7 @@
 	pixel_x = -10;
 	pixel_y = -11
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "gPq" = (
 /obj/structure/machinery/floodlight/landing{
@@ -16161,7 +16161,7 @@
 	pixel_x = 3;
 	pixel_y = 1
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "gQI" = (
 /obj/structure/prop/colorable_rock/colorable{
@@ -16466,7 +16466,7 @@
 /area/lazarus/kitchen)
 "gVK" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/east/surface)
 "gWb" = (
 /obj/structure/prop/colorable_rock/colorable{
@@ -16857,7 +16857,7 @@
 /area/lazarus/ground/caves/south_west_caves)
 "hfl" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/north_east/surface)
 "hfn" = (
 /obj/effect/hunter/ancient_temple/tile_edge/tile_edge_8,
@@ -17383,7 +17383,7 @@
 	pixel_y = 16
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/south)
 "hsI" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -18184,7 +18184,7 @@
 /obj/structure/platform/stone/ancient_temple/east{
 	icon_state = "ancient_platform_alt_broken"
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "hHt" = (
 /obj/structure/toilet{
@@ -18368,7 +18368,7 @@
 	icon_state = "p_stair_full"
 	},
 /obj/structure/platform/stone/ancient_temple/alt,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/south_east/surface)
 "hLf" = (
 /obj/item/device/flashlight/lamp/tripod{
@@ -18377,7 +18377,7 @@
 /turf/open/auto_turf/lv_grass/layer1,
 /area/lazarus/ground/barrens/north_barrens)
 "hLq" = (
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/cove)
 "hLy" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
@@ -18391,7 +18391,7 @@
 	pixel_y = 14
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/north_east/surface)
 "hLK" = (
 /obj/effect/decal/lv_decals/red_mud_corner{
@@ -18699,7 +18699,7 @@
 	pixel_x = -3;
 	pixel_y = 16
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/south_east/surface)
 "hRx" = (
 /obj/structure/prop/colorable_rock/colorable{
@@ -18802,7 +18802,7 @@
 /obj/structure/prop/hunter/ancient_temple/fountain_head{
 	pixel_y = 22
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/river/north_east_temple_river)
 "hSM" = (
 /obj/structure/machinery/computer/emails{
@@ -18883,7 +18883,7 @@
 /area/lazarus/ground/barrens/central_barrens)
 "hUw" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "hUC" = (
 /obj/effect/hunter/ancient_temple/tile_edge/tile_edge_8,
@@ -18923,7 +18923,7 @@
 	pixel_y = -11
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "hVS" = (
 /obj/structure/flora/bush/ausbushes/pointybush,
@@ -18961,7 +18961,7 @@
 	pixel_x = 5;
 	pixel_y = -10
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "hWt" = (
 /obj/structure/largecrate/random/mini/small_case{
@@ -19159,7 +19159,7 @@
 "ibJ" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_4,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "ibK" = (
 /obj/effect/hunter/ancient_temple/tile_edge,
@@ -19320,7 +19320,7 @@
 /area/lazarus/ground/jungle/north_west_jungle/dense)
 "ihW" = (
 /obj/structure/platform/wood,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "iih" = (
 /obj/effect/decal/lv_decals/cave_mud_corner{
@@ -19429,7 +19429,7 @@
 "ikK" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "ikO" = (
 /obj/structure/platform/metal/strata/alt/east,
@@ -19542,7 +19542,7 @@
 	pixel_x = -15;
 	pixel_y = -9
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/south)
 "inB" = (
 /obj/structure/machinery/door/poddoor/almayer/grey/closed{
@@ -20022,7 +20022,7 @@
 /area/lazarus/ground/barrens/east_barrens)
 "iyi" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "iym" = (
 /obj/effect/hybrisa/misc/fake/pipes/pipe1{
@@ -20597,7 +20597,7 @@
 	pixel_x = -8;
 	pixel_y = 15
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "iNh" = (
 /obj/effect/decal/lv_decals/cave_mud_corner{
@@ -20640,7 +20640,7 @@
 "iNy" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_1,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "iNE" = (
 /obj/structure/barricade/handrail/wire{
@@ -20679,7 +20679,7 @@
 "iPc" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "iPk" = (
 /obj/structure/platform/stone/ancient_temple/alt/north,
@@ -20773,7 +20773,7 @@
 /area/lazarus/ground/ancient_temple/south_east/surface)
 "iRC" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "iRE" = (
 /obj/effect/decal/warning_stripes{
@@ -20921,7 +20921,7 @@
 /area/lazarus/ground/colony/north_east_nexus_road)
 "iUw" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/south/surface)
 "iUC" = (
 /obj/structure/prop/colorable_rock/colorable{
@@ -20998,7 +20998,7 @@
 	anchored = 1
 	},
 /obj/structure/platform/stone/ancient_temple/west,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/river/north_east_temple_river)
 "iWU" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -21052,7 +21052,7 @@
 	pixel_y = -11
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/north_east/surface)
 "iYi" = (
 /obj/structure/machinery/big_computers/computerblack/computer3,
@@ -21176,7 +21176,7 @@
 /area/lazarus/ground/caves/north_west_caves)
 "jaP" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/east)
 "jbz" = (
 /obj/structure/closet,
@@ -21458,7 +21458,7 @@
 "jgB" = (
 /obj/structure/platform/wood,
 /obj/item/stack/sheet/wood,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "jgD" = (
 /obj/effect/decal/lv_decals/cave_mud_corner{
@@ -21562,7 +21562,7 @@
 	pixel_x = 5;
 	pixel_y = 10
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "jik" = (
 /obj/structure/prop/hunter/ancient_temple/giant_statue/base/small,
@@ -22083,7 +22083,7 @@
 	pixel_x = -6;
 	pixel_y = -5
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/north_east/surface)
 "jtv" = (
 /obj/structure/disposalpipe/segment{
@@ -22208,7 +22208,7 @@
 "jwj" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_3,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "jwk" = (
 /obj/structure/disposalpipe/segment{
@@ -22225,11 +22225,11 @@
 /area/lazarus/ground/jungle/south_east_jungle)
 "jwI" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_1,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "jwJ" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "jwN" = (
 /obj/effect/decal/lv_decals/cave_mud_corner,
@@ -22247,7 +22247,7 @@
 /obj/effect/hunter/ancient_temple/rubble/rubble_2{
 	pixel_y = 14
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "jxo" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_5{
@@ -22255,7 +22255,7 @@
 	pixel_y = -1
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/north_east/surface)
 "jxr" = (
 /obj/effect/hunter/ancient_temple/tile_edge/tile_edge_12,
@@ -22414,7 +22414,7 @@
 /area/lazarus/kitchen)
 "jAv" = (
 /obj/structure/blocker/forcefield/vehicles,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/cove)
 "jAF" = (
 /obj/structure/disposalpipe/segment{
@@ -22659,7 +22659,7 @@
 "jGB" = (
 /obj/structure/platform/wood/west,
 /obj/structure/platform/wood,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "jGF" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble,
@@ -23078,7 +23078,7 @@
 /obj/effect/decal/lv_decals/cave_mud_corner{
 	dir = 1
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "jOV" = (
 /turf/open/gm/coast/dirt/east,
@@ -23221,7 +23221,7 @@
 "jSC" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_7,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/north_east/surface)
 "jSI" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
@@ -23236,7 +23236,7 @@
 	pixel_x = -5;
 	pixel_y = 15
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/south/surface)
 "jTe" = (
 /obj/structure/prop/colorable_rock/colorable{
@@ -23301,7 +23301,7 @@
 /turf/open/floor/prison/floor_marked,
 /area/lazarus/quartstorage)
 "jUF" = (
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/east)
 "jUG" = (
 /obj/effect/hybrisa/misc/fake/wire/yellow{
@@ -23419,7 +23419,7 @@
 	},
 /obj/effect/hunter/ancient_temple/rubble/rubble_7,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "jXx" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -23670,7 +23670,7 @@
 /turf/open/auto_turf/lv_sand_alt/layer0,
 /area/lazarus/ground/caves/south_west_caves)
 "kec" = (
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "keu" = (
 /obj/effect/hunter/ancient_temple/tile_edge_corner/tile_edge_corner_2,
@@ -24220,6 +24220,16 @@
 /obj/structure/fence/dark,
 /turf/open/auto_turf/lv_sand/layer0,
 /area/lazarus/ground/jungle/east_central_jungle)
+"kqq" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "north_west_jungle_ruins"
+	},
+/obj/effect/landmark/nightmare{
+	insert_tag = "north_west_jungle_ruins_clf"
+	},
+/obj/structure/flora/jungle/vines/blue/light_1,
+/turf/closed/wall/strata_ice/jungle,
+/area/strata/interior/out_of_bounds)
 "kqt" = (
 /turf/open/auto_turf/lv_grass/layer1,
 /area/lazarus/landing_zones/lz2)
@@ -24484,7 +24494,7 @@
 	pixel_x = -17;
 	pixel_y = -17
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "kwq" = (
 /obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
@@ -24603,7 +24613,7 @@
 	pixel_x = 9;
 	pixel_y = 7
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/south/surface)
 "kyp" = (
 /obj/structure/prop/colorable_rock/colorable{
@@ -24716,7 +24726,7 @@
 	pixel_x = -1;
 	pixel_y = 12
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "kzK" = (
 /turf/open/floor/interior/wood_sat/damage,
@@ -24780,6 +24790,10 @@
 "kAX" = (
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lazarus/engineering)
+"kBj" = (
+/obj/structure/flora/jungle/vines/dead/light_2,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lazarus/ground/jungle/north_west_jungle/dense)
 "kBA" = (
 /obj/structure/machinery/light/blue{
 	dir = 8
@@ -24824,7 +24838,7 @@
 	pixel_y = 6
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "kCi" = (
 /obj/effect/hunter/ancient_temple/tile_edge/tile_edge_11,
@@ -24860,7 +24874,7 @@
 "kCM" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_2,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "kCQ" = (
 /turf/open/floor/ancient_temple/floor_19/west,
@@ -25136,7 +25150,7 @@
 	pixel_y = -1
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/north_east/surface)
 "kKa" = (
 /obj/structure/bed/stool,
@@ -25281,7 +25295,7 @@
 "kOJ" = (
 /obj/structure/platform/stone/ancient_temple/north,
 /obj/structure/flora/jungle/vines/dead/light_1,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/river/north_east_temple_river)
 "kPh" = (
 /obj/structure/machinery/light/blue{
@@ -25384,7 +25398,7 @@
 	pixel_y = 6;
 	pixel_x = 4
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "kRs" = (
 /obj/structure/barricade/handrail/wire{
@@ -25468,7 +25482,7 @@
 	pixel_y = 8
 	},
 /obj/structure/blocker/invisible_wall,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/strata/interior/out_of_bounds)
 "kTk" = (
 /obj/structure/flora/jungle/vines/dead/heavy,
@@ -25620,7 +25634,7 @@
 /obj/structure/prop/hunter/ancient_temple/fountain_head{
 	pixel_y = 22
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/river/north_east_temple_river)
 "kWl" = (
 /obj/effect/hunter/ancient_temple/tile_edge/tile_edge_12,
@@ -25879,7 +25893,7 @@
 "lbJ" = (
 /obj/structure/platform_decoration/stone/ancient_temple/alt/west,
 /obj/effect/hunter/ancient_temple/rubble/rubble_6,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "lbY" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -26077,7 +26091,7 @@
 	pixel_y = -14
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/east)
 "lfL" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
@@ -26171,7 +26185,7 @@
 "lhz" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_5,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/north_east/surface)
 "lhH" = (
 /obj/structure/pipes/vents/scrubber_hybrisa,
@@ -26346,7 +26360,7 @@
 /obj/effect/hunter/ancient_temple/rubble/rubble_6{
 	pixel_y = -18
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "lkD" = (
 /obj/effect/landmark/big_fog_marker,
@@ -26485,7 +26499,7 @@
 /area/lazarus/ground/river/central_river/north/cove)
 "lnt" = (
 /obj/structure/platform_decoration/wood/north,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "lnz" = (
 /obj/effect/hunter/ancient_temple/tile_edge_corner,
@@ -26549,7 +26563,7 @@
 	anchored = 1
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "lop" = (
 /obj/effect/hunter/ancient_temple/deco_border/deco_border3{
@@ -26601,7 +26615,7 @@
 	pixel_x = 5;
 	pixel_y = -20
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "lpv" = (
 /obj/effect/decal/lv_decals/red_mud_corner{
@@ -26754,7 +26768,7 @@
 /turf/open/floor/ancient_temple/deco/dark/deco_alt/east,
 /area/lazarus/ground/barrens/north_barrens)
 "ltO" = (
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/jungle/north_west_jungle/dense)
 "ltT" = (
 /obj/item/storage/bag/trash,
@@ -27290,7 +27304,7 @@
 /obj/effect/decal/lv_decals/cave_mud_corner{
 	dir = 6
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/east)
 "lEr" = (
 /obj/item/device/flashlight/lamp/tripod{
@@ -27385,7 +27399,7 @@
 	pixel_x = -6;
 	pixel_y = 14
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "lFO" = (
 /turf/open/floor/ancient_temple/floor_13/north,
@@ -27431,14 +27445,14 @@
 /turf/open/auto_turf/lv_grass/layer1,
 /area/lazarus/ground/jungle/south_east_jungle)
 "lGG" = (
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/east/surface)
 "lGI" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_5{
 	pixel_x = -7;
 	pixel_y = -5
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "lGQ" = (
 /obj/structure/machinery/photocopier{
@@ -27548,7 +27562,7 @@
 	pixel_x = -20;
 	pixel_y = 6
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/east)
 "lIz" = (
 /obj/effect/decal/lv_decals/red_mud_corner{
@@ -28082,7 +28096,7 @@
 	pixel_x = 8;
 	pixel_y = 13
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "lUG" = (
 /obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
@@ -28202,7 +28216,7 @@
 	pixel_x = -7;
 	pixel_y = -1
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "lXa" = (
 /obj/structure/prop/hunter/ancient_temple/collapsed_wall,
@@ -28672,7 +28686,7 @@
 /area/lazarus/fitness)
 "mgL" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "mgS" = (
 /obj/structure/disposalpipe/segment{
@@ -28737,7 +28751,7 @@
 /area/lazarus/ground/river/north_east_temple_river)
 "miC" = (
 /obj/structure/platform_decoration/wood,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "miS" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
@@ -29110,7 +29124,7 @@
 "mqM" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_6,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/north_east/surface)
 "mqT" = (
 /obj/structure/flora/jungle/vines/dead/light_1,
@@ -29230,7 +29244,7 @@
 	pixel_x = -11;
 	pixel_y = -13
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/east/surface)
 "muh" = (
 /obj/structure/stairs/perspective{
@@ -29543,7 +29557,7 @@
 	pixel_x = 14;
 	pixel_y = -9
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "mAd" = (
 /obj/effect/landmark/monkey_spawn,
@@ -29562,7 +29576,7 @@
 	pixel_y = 12;
 	pixel_x = 11
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "mAu" = (
 /obj/structure/prop/rock/brown{
@@ -30046,7 +30060,7 @@
 	pixel_y = 11
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/north_east/surface)
 "mIp" = (
 /obj/structure/prop/colorable_rock/colorable{
@@ -30299,7 +30313,7 @@
 	pixel_y = 1
 	},
 /obj/effect/hunter/ancient_temple/rubble/rubble_1,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/north_east)
 "mMU" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
@@ -30400,7 +30414,7 @@
 	pixel_y = 9
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "mOF" = (
 /obj/structure/flora/jungle/plantbot1,
@@ -30511,7 +30525,7 @@
 	pixel_x = 1;
 	pixel_y = 14
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "mQE" = (
 /obj/structure/platform/stone/ancient_temple/alt,
@@ -30575,7 +30589,7 @@
 	},
 /obj/structure/flora/jungle/vines/dead/light_1,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/north_east/surface)
 "mSF" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -30699,7 +30713,7 @@
 	pixel_x = -11;
 	pixel_y = -7
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "mUT" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_5,
@@ -30707,7 +30721,7 @@
 	pixel_x = 8;
 	pixel_y = 10
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "mUY" = (
 /obj/structure/barricade/wooden{
@@ -30746,7 +30760,7 @@
 	dir = 4;
 	pixel_x = -9
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "mVO" = (
 /obj/effect/decal/cleanable/liquid_fuel,
@@ -30772,7 +30786,7 @@
 /area/lazarus/ground/river/east_river)
 "mWv" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/north_east/surface)
 "mWH" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -31055,7 +31069,7 @@
 "nbD" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_4,
 /obj/effect/landmark/queen_spawn,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/north_east/surface)
 "nbF" = (
 /obj/structure/surface/rack{
@@ -31242,7 +31256,7 @@
 	pixel_x = 14;
 	pixel_y = -14
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "nep" = (
 /obj/structure/platform_decoration/stone/ancient_temple/west,
@@ -31359,7 +31373,7 @@
 	pixel_x = 13;
 	pixel_y = 9
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/south_east/surface)
 "nhr" = (
 /obj/structure/largecrate/supply/supplies/sandbags,
@@ -31395,7 +31409,7 @@
 	pixel_x = -9
 	},
 /obj/item/tool/shovel,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "nie" = (
 /obj/effect/landmark/big_fog_marker,
@@ -31403,7 +31417,7 @@
 /area/lazarus/ground/river/east_river)
 "nir" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "niv" = (
 /obj/structure/machinery/prop/almayer/computer/PC{
@@ -31563,7 +31577,7 @@
 	pixel_x = -2;
 	pixel_y = 13
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "nmC" = (
 /obj/structure/machinery/constructable_frame{
@@ -31721,7 +31735,7 @@
 /area/lazarus/ground/river/east_river)
 "npY" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_7,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "nqa" = (
 /obj/effect/hunter/ancient_temple/deco_border{
@@ -31947,7 +31961,7 @@
 "nuE" = (
 /obj/structure/platform/stone/ancient_temple/alt/west,
 /obj/effect/hunter/ancient_temple/rubble/rubble_1,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "nuL" = (
 /obj/structure/platform_decoration/wood/west,
@@ -32056,7 +32070,7 @@
 /area/lazarus/quartstorage)
 "nwi" = (
 /obj/effect/landmark/xeno_spawn,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "nwp" = (
 /obj/structure/platform/stone/ancient_temple,
@@ -32093,7 +32107,7 @@
 	pixel_x = 13;
 	pixel_y = -3
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "nxb" = (
 /obj/structure/machinery/portable_atmospherics/powered/pump{
@@ -32295,7 +32309,7 @@
 "nBo" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "nBv" = (
 /obj/item/reagent_container/food/drinks/cans/beer{
@@ -32655,7 +32669,7 @@
 	pixel_x = 22;
 	pixel_y = 13
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "nKL" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble,
@@ -32675,7 +32689,7 @@
 	pixel_x = -18;
 	pixel_y = -19
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "nLI" = (
 /obj/effect/hunter/ancient_temple/tile_edge_corner/tile_edge_corner_2,
@@ -32707,7 +32721,7 @@
 	pixel_y = 16;
 	pixel_x = 1
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "nMp" = (
 /obj/effect/hunter/ancient_temple/deco_border{
@@ -32974,7 +32988,7 @@
 	pixel_x = -13;
 	pixel_y = 6
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "nPY" = (
 /turf/open/floor/prison/darkbrowncorners2/east,
@@ -33244,7 +33258,7 @@
 	pixel_x = -8;
 	pixel_y = -9
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "nVq" = (
 /obj/structure/machinery/recharger,
@@ -33257,7 +33271,7 @@
 "nVr" = (
 /obj/structure/prop/ice_colony/ground_wire,
 /obj/structure/flora/jungle/vines/dead/light_1,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/south_east/surface)
 "nVs" = (
 /obj/structure/disposalpipe/segment,
@@ -33337,7 +33351,7 @@
 /area/lazarus/ground/barrens/south_west_barrens)
 "nWH" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/south)
 "nWX" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
@@ -33357,7 +33371,7 @@
 	pixel_y = 31;
 	anchored = 1
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "nXD" = (
 /turf/open/gm/coast/dirt/east,
@@ -33500,7 +33514,7 @@
 /area/lazarus/ground/ancient_temple/east)
 "oaY" = (
 /mob/living/simple_animal/moth,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "obb" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_1,
@@ -33642,7 +33656,7 @@
 /area/lazarus/engineering)
 "oeG" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_3,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "oeH" = (
 /turf/open/floor/prison/greencorner,
@@ -33717,7 +33731,7 @@
 	pixel_y = -17
 	},
 /obj/effect/landmark/xeno_spawn,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "ofT" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_1,
@@ -33828,7 +33842,7 @@
 	pixel_x = 6
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "oiB" = (
 /obj/structure/platform_decoration/stone/runed_sandstone/east,
@@ -33883,7 +33897,7 @@
 /obj/effect/hunter/ancient_temple/rubble/rubble_1{
 	pixel_x = 2
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "ojj" = (
 /obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
@@ -33974,7 +33988,7 @@
 	dir = 4;
 	pixel_x = -9
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/south/surface)
 "ola" = (
 /obj/structure/closet/crate/trashcart/alt,
@@ -34157,7 +34171,7 @@
 	color = "#ae8686";
 	dir = 6
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/east)
 "opg" = (
 /obj/structure/machinery/door/airlock/light_grey_lv/glass{
@@ -34308,7 +34322,7 @@
 /area/lazarus/ground/ancient_temple/east/surface)
 "orI" = (
 /obj/effect/landmark/queen_spawn,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "orL" = (
 /obj/effect/hunter/ancient_temple/deco_border{
@@ -34381,7 +34395,7 @@
 /area/lazarus/ground/colony/west_nexus_road)
 "osE" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_3,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "osF" = (
 /turf/open/auto_turf/lv_grass/layer0,
@@ -34420,7 +34434,7 @@
 /area/lazarus/ground/ancient_temple/east/surface)
 "otH" = (
 /obj/item/tool/shovel/spade,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/south_east/surface)
 "otK" = (
 /obj/structure/platform/wood/north,
@@ -34659,7 +34673,7 @@
 	pixel_y = 16
 	},
 /obj/effect/landmark/big_fog_marker,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/river/north_east_temple_river)
 "ozK" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_1,
@@ -34760,7 +34774,7 @@
 	icon_state = "p_stair_full"
 	},
 /obj/structure/platform/stone/ancient_temple/alt/north,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/south_east/surface)
 "oBz" = (
 /turf/open/floor/prison/darkbrowncorners2/southwest,
@@ -35042,7 +35056,7 @@
 	pixel_x = -12;
 	pixel_y = -5
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "oGy" = (
 /obj/effect/hunter/ancient_temple/deco_border/deco_border2{
@@ -35283,7 +35297,7 @@
 "oLW" = (
 /obj/structure/platform_decoration/stone/ancient_temple/alt/east,
 /obj/effect/hunter/ancient_temple/rubble/rubble_7,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "oLX" = (
 /obj/effect/hunter/ancient_temple/deco_border{
@@ -35318,7 +35332,7 @@
 "oMY" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /obj/structure/blocker/forcefield/vehicles,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "oNg" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_4{
@@ -35452,7 +35466,7 @@
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /obj/structure/blocker/forcefield/vehicles,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "oRj" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
@@ -35545,7 +35559,7 @@
 	pixel_x = -4;
 	pixel_y = 6
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "oTk" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -35589,7 +35603,7 @@
 	pixel_x = -14;
 	pixel_y = 5
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "oTW" = (
 /obj/effect/hunter/ancient_temple/deco_border{
@@ -35645,7 +35659,7 @@
 /area/lazarus/ground/river/central_river/north/cove)
 "oUP" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_2,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "oUT" = (
 /turf/open/auto_turf/lv_sand/layer0,
@@ -35760,7 +35774,7 @@
 	pixel_x = 8;
 	pixel_y = 8
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "oWI" = (
 /obj/structure/machinery/light/small/blue{
@@ -36025,7 +36039,7 @@
 "pce" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "pch" = (
 /obj/effect/hunter/ancient_temple/tile_edge/tile_edge_8,
@@ -36073,7 +36087,7 @@
 "pcv" = (
 /obj/structure/prop/ice_colony/ground_wire,
 /obj/effect/decal/remains/xeno,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/south_east/surface)
 "pdb" = (
 /obj/structure/transmitter/colony_net{
@@ -36098,7 +36112,7 @@
 /area/lazarus/ground/ancient_temple/east)
 "pdM" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_3,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "pdX" = (
 /turf/open/auto_turf/lv_grass/layer0,
@@ -36106,7 +36120,7 @@
 "peg" = (
 /obj/item/storage/briefcase/inflatable{
 	pixel_x = -3;
-	pixel_y = 4
+	pixel_y = 11
 	},
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
@@ -36114,6 +36128,10 @@
 /obj/item/storage/fancy/vials/random{
 	pixel_x = 16;
 	pixel_y = 8
+	},
+/obj/item/storage/briefcase/inflatable{
+	pixel_x = -3;
+	pixel_y = 5
 	},
 /turf/open/floor/strata/light_purple_edge/north,
 /area/lazarus/research)
@@ -36207,7 +36225,7 @@
 	pixel_x = 10;
 	pixel_y = 11
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "peR" = (
 /obj/structure/prop/hunter/ancient_temple/collapsed_wall{
@@ -36352,7 +36370,7 @@
 	anchored = 1
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "phb" = (
 /obj/structure/flora/jungle/vines/blue/light_1,
@@ -36846,7 +36864,7 @@
 /area/lazarus/ground/jungle/west_central_jungle)
 "psN" = (
 /obj/effect/landmark/xeno_spawn,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "psU" = (
 /obj/effect/decal/lv_decals/red_mud_corner{
@@ -36890,7 +36908,7 @@
 	pixel_x = -4;
 	pixel_y = 15
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/north_east/surface)
 "ptw" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -36956,7 +36974,7 @@
 	pixel_x = 12;
 	pixel_y = 11
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "pva" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
@@ -37015,7 +37033,7 @@
 /area/lazarus/comms)
 "pxr" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "pxs" = (
 /obj/structure/bed/roller/hospital_empty/bigrollerempty{
@@ -37096,7 +37114,7 @@
 	pixel_x = -9;
 	pixel_y = 14
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/south/surface)
 "pyY" = (
 /turf/open/floor/ancient_temple/damaged/damage_5,
@@ -37139,7 +37157,7 @@
 "pzC" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_1,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "pzM" = (
 /obj/structure/blocker/forcefield/vehicles,
@@ -37619,7 +37637,7 @@
 	pixel_y = 16
 	},
 /obj/effect/hunter/ancient_temple/rubble/rubble_6,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "pNZ" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -37675,7 +37693,7 @@
 	pixel_x = -15;
 	pixel_y = -9
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "pPF" = (
 /obj/structure/platform/stone/ancient_temple/north,
@@ -37733,7 +37751,7 @@
 /area/lazarus/ground/barrens/central_barrens)
 "pRc" = (
 /obj/structure/platform/wood/east,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "pRg" = (
 /obj/structure/stairs/perspective{
@@ -37764,7 +37782,7 @@
 /area/lazarus/ground/river/central_river/lake)
 "pRC" = (
 /obj/item/tool/shovel,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "pRD" = (
 /obj/structure/flora/bush/ausbushes/palebush,
@@ -38719,7 +38737,7 @@
 	pixel_x = -12;
 	pixel_y = -2
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "qkI" = (
 /obj/structure/cargo_container/wy2/right{
@@ -39073,7 +39091,7 @@
 "qsl" = (
 /obj/structure/platform/stone/ancient_temple/alt/west,
 /obj/effect/hunter/ancient_temple/rubble/rubble_6,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "qst" = (
 /obj/item/device/multitool,
@@ -39173,7 +39191,7 @@
 /area/lazarus/main_hall)
 "qtI" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_1,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/north_east/surface)
 "que" = (
 /obj/effect/landmark/monkey_spawn,
@@ -39267,7 +39285,7 @@
 /area/strata/interior/out_of_bounds)
 "qwg" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "qwn" = (
 /obj/structure/prop/rock/brown{
@@ -39471,7 +39489,7 @@
 	pixel_x = -1;
 	pixel_y = 14
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "qBj" = (
 /obj/effect/hunter/bridge_border/brown/corner{
@@ -39709,7 +39727,7 @@
 /obj/effect/decal/lv_decals/cave_mud_corner{
 	dir = 9
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/north_east/surface)
 "qFa" = (
 /obj/structure/machinery/light/blue{
@@ -40027,7 +40045,7 @@
 	color = "#ae8686";
 	dir = 4
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/east)
 "qNI" = (
 /obj/item/tool/soap/syndie{
@@ -40231,7 +40249,7 @@
 	pixel_y = -17;
 	pixel_x = 5
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "qRr" = (
 /obj/effect/landmark/monkey_spawn,
@@ -40339,7 +40357,7 @@
 	pixel_x = 1;
 	pixel_y = -12
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/east/surface)
 "qTT" = (
 /obj/structure/platform/stone/ancient_temple/west{
@@ -40435,7 +40453,7 @@
 	dir = 4;
 	pixel_x = -9
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/south)
 "qWt" = (
 /obj/item/stack/sheet/wood,
@@ -40870,7 +40888,7 @@
 /area/lazarus/ground/cove)
 "rfV" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_5,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "rfY" = (
 /obj/structure/bed/chair{
@@ -41265,7 +41283,7 @@
 	pixel_x = -15;
 	pixel_y = 6
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/south_east/surface)
 "rpA" = (
 /obj/effect/decal/lv_decals/red_mud_corner{
@@ -41432,7 +41450,7 @@
 /area/lazarus/ground/caves/south_west_caves)
 "rtr" = (
 /obj/structure/platform/wood/west,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "rtB" = (
 /obj/effect/decal/lv_decals/cave_mud_corner{
@@ -41597,7 +41615,7 @@
 "rxH" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/east)
 "rxI" = (
 /obj/structure/blocker/forcefield/all,
@@ -41717,7 +41735,7 @@
 	pixel_x = -5;
 	pixel_y = 8
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "rBs" = (
 /obj/effect/decal/lv_decals/cave_mud_corner{
@@ -41772,12 +41790,12 @@
 /area/lazarus/ground/ancient_temple/north_east/surface)
 "rCE" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_1,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "rCR" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "rDc" = (
 /obj/effect/decal/lv_decals/cave_mud_corner{
@@ -41802,7 +41820,7 @@
 	pixel_y = -14
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "rDg" = (
 /obj/effect/decal/lv_decals/red_mud_corner{
@@ -41834,7 +41852,7 @@
 "rEm" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /obj/structure/blocker/forcefield/vehicles,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "rEN" = (
 /obj/effect/decal/cleanable/blood,
@@ -41927,7 +41945,7 @@
 	pixel_x = -3;
 	pixel_y = 7
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "rGT" = (
 /obj/effect/decal/warning_stripes{
@@ -42134,7 +42152,7 @@
 	pixel_x = -13;
 	pixel_y = 7
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "rKx" = (
 /obj/effect/decal/lv_decals/red_mud_corner{
@@ -42177,7 +42195,7 @@
 	pixel_x = -17;
 	pixel_y = -17
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/east)
 "rKX" = (
 /obj/structure/machinery/light/small/blue{
@@ -42431,7 +42449,7 @@
 	pixel_y = 13
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/east)
 "rPr" = (
 /obj/structure/surface/table/woodentable/poor,
@@ -42466,7 +42484,7 @@
 	pixel_y = -4;
 	pixel_x = 6
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "rQa" = (
 /obj/item/prop/torch_frame/ancient{
@@ -42710,7 +42728,7 @@
 /turf/open/auto_turf/lv_grass/layer1,
 /area/lazarus/ground/jungle/south_east_jungle)
 "rVx" = (
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/barrens/north_barrens)
 "rVy" = (
 /obj/structure/closet/secure_closet/personal{
@@ -43449,7 +43467,7 @@
 	on = 0
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "slL" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
@@ -43849,6 +43867,10 @@
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/auto_turf/lv_sand/layer0,
 /area/lazarus/ground/barrens/central_barrens)
+"stV" = (
+/obj/structure/flora/jungle/vines/dead/light_2,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lazarus/ground/barrens/south_west_barrens)
 "sub" = (
 /obj/structure/flora/jungle/vines/dead/light_1,
 /turf/open/auto_turf/strata_grass/layer1,
@@ -43893,7 +43915,7 @@
 /area/lazarus/medbay)
 "suD" = (
 /mob/living/simple_animal/moth,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/north_east/surface)
 "suR" = (
 /obj/item/ammo_casing/bullet,
@@ -44167,7 +44189,7 @@
 /area/lazarus/ground/caves/west_caves)
 "sBk" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_3,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/east/surface)
 "sBm" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -44340,7 +44362,7 @@
 /area/lazarus/landing_zones/lz2)
 "sEX" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_6,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/cove)
 "sFm" = (
 /obj/effect/hunter/ancient_temple/tile_edge_corner/tile_edge_corner_4,
@@ -44730,7 +44752,7 @@
 /turf/open/floor/ancient_temple/deco/dark,
 /area/strata/interior/out_of_bounds)
 "sMk" = (
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "sMp" = (
 /obj/effect/hunter/ancient_temple/tile_edge/tile_edge_7,
@@ -44853,7 +44875,7 @@
 /area/lazarus/research)
 "sPd" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_6,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "sPh" = (
 /obj/structure/flora/jungle/vines/dead/light_1,
@@ -44923,7 +44945,7 @@
 	pixel_x = 1;
 	pixel_y = 6
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/river/north_east_temple_river)
 "sQF" = (
 /obj/item/shard,
@@ -45159,7 +45181,7 @@
 	dir = 8;
 	pixel_x = 11
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "sUB" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
@@ -45877,7 +45899,7 @@
 /obj/structure/tunnel{
 	id = "hole1"
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "tje" = (
 /obj/structure/barricade/handrail/wire{
@@ -46061,7 +46083,7 @@
 	pixel_x = -4;
 	pixel_y = 10
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "tpI" = (
 /obj/structure/closet/coffin/woodencrate/old/alt,
@@ -46255,7 +46277,7 @@
 	pixel_y = -18
 	},
 /obj/structure/platform_decoration/wood/north,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "tsL" = (
 /obj/structure/machinery/floodlight{
@@ -46306,7 +46328,7 @@
 /obj/structure/platform/stone/ancient_temple/west{
 	icon_state = "ancient_platform_alt_broken"
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "ttB" = (
 /obj/effect/decal/lv_decals/cave_mud_corner{
@@ -46422,7 +46444,7 @@
 /area/lazarus/ground/ancient_temple/east/surface)
 "tvq" = (
 /obj/structure/platform_decoration/stone/ancient_temple/alt,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "tvD" = (
 /obj/structure/prop/colorable_rock/colorable{
@@ -46559,7 +46581,7 @@
 	pixel_y = 12
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/north_east/surface)
 "tyv" = (
 /obj/effect/decal/remains/xeno,
@@ -46826,7 +46848,7 @@
 	pixel_x = 9;
 	pixel_y = -10
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/north_east/surface)
 "tDW" = (
 /obj/structure/prop/colorable_rock/colorable{
@@ -47369,7 +47391,7 @@
 	pixel_x = 7;
 	pixel_y = 14
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "tPy" = (
 /obj/structure/tunnel,
@@ -47430,7 +47452,7 @@
 /area/lazarus/quartstorage)
 "tPU" = (
 /obj/effect/landmark/xeno_spawn,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/north_east/surface)
 "tQc" = (
 /obj/structure/machinery/door/airlock/light_grey_lv/glass{
@@ -47480,7 +47502,7 @@
 	pixel_x = -1;
 	pixel_y = 13
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "tQK" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
@@ -47784,7 +47806,7 @@
 "tXo" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "tXs" = (
 /obj/structure/platform/wood/north,
@@ -47831,7 +47853,7 @@
 	dir = 5
 	},
 /obj/effect/decal/lv_decals/cave_mud_corner,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "tYq" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
@@ -48046,7 +48068,7 @@
 /area/lazarus/ground/jungle/north_west_jungle)
 "ucQ" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "uda" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_7,
@@ -48128,7 +48150,7 @@
 "ufl" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_1,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "ufr" = (
 /obj/item/trash/cigbutt,
@@ -48483,7 +48505,7 @@
 	pixel_x = -6;
 	pixel_y = -1
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "uok" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
@@ -48524,7 +48546,7 @@
 	pixel_x = -8;
 	pixel_y = 10
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "uoJ" = (
 /turf/open/gm/coast/dirt/beachcorner2/south_west,
@@ -49139,7 +49161,7 @@
 /area/lazarus/ground/caves/north_west_caves)
 "uyp" = (
 /mob/living/simple_animal/moth,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "uyr" = (
 /obj/item/clothing/head/hardhat/white,
@@ -49219,7 +49241,7 @@
 	pixel_y = -2
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/north_east/surface)
 "uAb" = (
 /obj/structure/prop/colorable_rock/colorable{
@@ -49273,7 +49295,7 @@
 	pixel_x = -6;
 	pixel_y = -14
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "uAM" = (
 /obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
@@ -49307,7 +49329,7 @@
 	pixel_y = 14
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "uBq" = (
 /turf/open/auto_turf/lv_sand/layer0,
@@ -49676,7 +49698,7 @@
 	pixel_x = -11;
 	pixel_y = 11
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "uJA" = (
 /obj/item/cell/hyper{
@@ -50392,11 +50414,11 @@
 	pixel_y = 31;
 	anchored = 1
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "uYv" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/cove/south)
 "uYR" = (
 /obj/structure/platform/stone/ancient_temple/west,
@@ -50416,7 +50438,7 @@
 	dir = 4;
 	pixel_x = -10
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "uZw" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -50537,7 +50559,7 @@
 	pixel_y = -19
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "vbq" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
@@ -50546,7 +50568,7 @@
 "vbv" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_2,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/north_east/surface)
 "vbP" = (
 /obj/structure/disposalpipe/segment{
@@ -51008,7 +51030,7 @@
 	pixel_y = 15;
 	pixel_x = 2
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "vpa" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -51029,7 +51051,7 @@
 	dir = 4;
 	pixel_x = -9
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/south)
 "vqb" = (
 /obj/effect/landmark/big_fog_marker,
@@ -51090,7 +51112,7 @@
 	pixel_y = -2
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/north_east/surface)
 "vrB" = (
 /obj/effect/landmark/xeno_spawn,
@@ -51677,7 +51699,7 @@
 	pixel_x = -9;
 	pixel_y = 14
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/east)
 "vFb" = (
 /obj/item/device/flashlight/lamp/tripod{
@@ -52171,7 +52193,7 @@
 /area/lazarus/robotics)
 "vQa" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "vQf" = (
 /obj/structure/machinery/light/small/blue{
@@ -52218,7 +52240,7 @@
 	pixel_y = -18
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/north_east/surface)
 "vRk" = (
 /obj/effect/decal/lv_decals/red_mud_corner{
@@ -52765,7 +52787,7 @@
 /area/lazarus/fitness)
 "wfb" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "wfq" = (
 /obj/structure/sink{
@@ -52840,7 +52862,7 @@
 /area/lazarus/ground/ancient_temple/south_east/surface)
 "wfU" = (
 /obj/structure/blocker/forcefield/vehicles,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/cove/south)
 "wgl" = (
 /obj/effect/hunter/ancient_temple/deco_border{
@@ -53201,7 +53223,7 @@
 	pixel_y = -6
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "wnL" = (
 /obj/structure/disposalpipe/segment,
@@ -53762,7 +53784,7 @@
 	pixel_x = 6;
 	pixel_y = 12
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "wzR" = (
 /obj/structure/prop/ice_colony/surveying_device/measuring_device,
@@ -53852,7 +53874,7 @@
 /area/lazarus/quartstorage)
 "wCG" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_4,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "wCI" = (
 /obj/effect/decal/cleanable/blood,
@@ -53904,7 +53926,7 @@
 	pixel_y = -3
 	},
 /obj/effect/landmark/xeno_spawn,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/north_east/surface)
 "wDT" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
@@ -53965,7 +53987,7 @@
 "wEL" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /obj/structure/blocker/forcefield/vehicles,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "wEM" = (
 /obj/effect/decal/lv_decals/cave_mud_corner{
@@ -54463,7 +54485,7 @@
 	pixel_x = 14;
 	pixel_y = 15
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/north_east/surface)
 "wOr" = (
 /obj/structure/blocker/forcefield/all,
@@ -54916,7 +54938,7 @@
 /area/lazarus/ground/river/east_river)
 "wYS" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/east/surface)
 "wYY" = (
 /obj/effect/hunter/ancient_temple/tile_edge_corner/tile_edge_corner_2,
@@ -55255,7 +55277,7 @@
 	pixel_x = 2;
 	pixel_y = 13
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "xfX" = (
 /obj/structure/prop/rock/brown{
@@ -55407,7 +55429,7 @@
 	pixel_x = -5;
 	pixel_y = 8
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "xjw" = (
 /obj/structure/surface/table/almayer{
@@ -55572,7 +55594,7 @@
 "xnd" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/landmark/xeno_spawn,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/south)
 "xnm" = (
 /obj/effect/decal/lv_decals/red_mud_corner{
@@ -55614,7 +55636,7 @@
 	pixel_x = 9;
 	pixel_y = 15
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "xoh" = (
 /obj/effect/hunter/ancient_temple/tile_edge/tile_edge_11,
@@ -55872,7 +55894,7 @@
 	pixel_x = 18;
 	pixel_y = 12
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/south_west_caves)
 "xtV" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_1{
@@ -56109,7 +56131,7 @@
 	pixel_y = 16
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "xyQ" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
@@ -56199,7 +56221,7 @@
 	pixel_x = 6;
 	pixel_y = 6
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "xAv" = (
 /obj/structure/prop/colorable_rock/colorable{
@@ -56260,7 +56282,7 @@
 	dir = 1
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "xBP" = (
 /obj/structure/bed/chair/comfy/beige{
@@ -56287,7 +56309,7 @@
 	pixel_x = 9;
 	pixel_y = 8
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "xCs" = (
 /obj/structure/platform/wood/west,
@@ -56307,7 +56329,7 @@
 	pixel_x = -2;
 	pixel_y = -8
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/east/surface)
 "xCW" = (
 /obj/structure/flora/jungle/vines/blue/light_1,
@@ -56621,7 +56643,7 @@
 	pixel_x = 12;
 	pixel_y = -1
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/ancient_temple/east)
 "xKr" = (
 /obj/effect/hunter/ancient_temple/deco_border{
@@ -56646,7 +56668,7 @@
 	pixel_x = -10;
 	pixel_y = 9
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/north_west_caves)
 "xKV" = (
 /obj/structure/machinery/space_heater/radiator/red{
@@ -56704,7 +56726,7 @@
 /obj/structure/platform/stone/ancient_temple/east{
 	icon_state = "ancient_platform_alt_broken"
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/river/north_east_temple_river)
 "xMh" = (
 /obj/item/tool/pickaxe,
@@ -56829,7 +56851,7 @@
 /area/lazarus/research)
 "xOp" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "xOr" = (
 /obj/structure/machinery/cm_vending/sorted/boozeomat,
@@ -57001,7 +57023,7 @@
 	pixel_x = -4;
 	pixel_y = -16
 	},
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lazarus/ground/caves/west_caves)
 "xRG" = (
 /obj/effect/decal/remains/xeno,
@@ -58220,7 +58242,7 @@ hNK
 gdk
 hNK
 hNK
-hNK
+kqq
 hNK
 gdk
 gdk
@@ -58436,15 +58458,15 @@ gdk
 hNK
 hNK
 udA
-moZ
+udA
+xxQ
+stV
+xxQ
 xLg
 xLg
 xLg
-xLg
-xLg
-xLg
-xLg
-xLg
+stV
+stV
 xLg
 xLg
 xLg
@@ -58659,10 +58681,10 @@ moZ
 moZ
 moZ
 moZ
-udA
+kBj
 jRy
-xLg
-xLg
+stV
+xxQ
 nWz
 xLg
 qrD
@@ -70740,7 +70762,7 @@ yap
 wuj
 wuj
 nBI
-kDj
+xYY
 nWz
 nWz
 nWz

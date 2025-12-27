@@ -702,6 +702,10 @@
 	color = "#826161"
 	baseturfs = /turf/open/gm/dirt
 
+/turf/closed/wall/rock/brown/mud
+	color = "#826161"
+	baseturfs = /turf/open/auto_turf/lv_grass/layer0_mud_alt
+
 /turf/closed/wall/rock/grey
 	color = "#645e5f"
 	baseturfs = /turf/open/gm/dirt

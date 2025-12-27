@@ -234,7 +234,7 @@
 
 /obj/item/clothing/glasses/fluff/eyepatch //GENERIC DONOR
 	name = "An Eyepatch"
-	desc = "Badass +10.  Donor Item"
+	desc = "Badass +10.  Donor Item."
 	icon = 'icons/obj/items/clothing/glasses/misc.dmi'
 	item_icons = list(
 		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/misc.dmi',
@@ -285,8 +285,8 @@
 	item_state = "hunkjacket"
 
 /obj/item/clothing/suit/storage/marine/fluff/penguin //CKEY=tophatpenguin
-	name = "Trenchcoat"
-	desc = "An 18th-century trenchcoat. Someone who wears this means serious business.  DONOR ITEM"
+	name = "Trench Coat"
+	desc = "An 18th-century trench coat. Someone who wears this means serious business.  DONOR ITEM"
 	icon_state = "detective"
 	item_state = "det_suit"
 	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
@@ -347,7 +347,7 @@
 
 /obj/item/clothing/suit/storage/marine/fluff/feodrich //CKEY=feodrich (UNIQUE)
 	name = "Doom Armor"
-	desc = "A uniform, of a famous Earth warrior... Donor Item"
+	desc = "A uniform, of a famous Earth warrior... Donor Item."
 	item_state = "doom_armor"
 	icon_state = "doom_armor"
 
@@ -374,8 +374,8 @@
 	)
 
 /obj/item/clothing/suit/storage/marine/fluff/john56 //CKEY=johnkilla56
-	name = "A red trenchcoat"
-	desc = "A special trenchcoat made famous for instilling fear into greytide everywhere. DONOR ITEM"
+	name = "A red trench coat"
+	desc = "A special trench coat made famous for instilling fear into greytide everywhere. DONOR ITEM"
 	icon_state = "hos"
 	item_state = "hos"
 	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
@@ -419,14 +419,14 @@
 	item_state = "riotjacket_u"
 
 /obj/item/clothing/suit/storage/marine/fluff/adjective
-	name = "HOS Trenchcoat"
-	desc = "A trenchcoat of authority.  DONOR ITEM"
+	name = "HOS Trench Coat"
+	desc = "A trench coat of authority.  DONOR ITEM"
 	icon_state = "jensencoat"
 	item_state = "jensencoat"
 
 /obj/item/clothing/suit/storage/marine/fluff/fickmacher //CKEY=fickmacher (UNIQUE)
-	name = "Selena's Trenchcoat"
-	desc = "A trenchcoat of authority.  DONOR ITEM"
+	name = "Selena's Trench Coat"
+	desc = "A trench coat of authority.  DONOR ITEM"
 	icon_state = "jensencoat"
 	item_state = "jensencoat"
 
@@ -441,8 +441,8 @@
 	)
 
 /obj/item/clothing/suit/storage/marine/fluff/mitii
-	name = "Mya's Trenchcoat"
-	desc = "A trenchcoat of authority.  DONOR ITEM"
+	name = "Mya's Trench Coat"
+	desc = "A trench coat of authority.  DONOR ITEM"
 	icon_state = "hos"
 	item_state = "hos"
 	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
@@ -457,8 +457,8 @@
 	item_state = "hawkeye_jacket_u"
 
 /obj/item/clothing/suit/storage/marine/fluff/chimera //CKEY=theultimatechimera
-	name = "Brett's Trenchcoat"
-	desc = "A trenchcoat of authority.  DONOR ITEM"
+	name = "Brett's Trench Coat"
+	desc = "A trench coat of authority.  DONOR ITEM"
 	icon_state = "hos"
 	item_state = "hos"
 	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
@@ -467,8 +467,8 @@
 	)
 
 /obj/item/clothing/suit/storage/marine/fluff/devilzhand
-	name = "Tank's Trenchcoat"
-	desc = "A trenchcoat of authority.  DONOR ITEM"
+	name = "Tank's Trench Coat"
+	desc = "A trench coat of authority.  DONOR ITEM"
 	icon_state = "jensencoat"
 	item_state = "jensencoat"
 
@@ -684,7 +684,7 @@
 	item_state = "kailas_armor"
 
 /obj/item/clothing/suit/storage/marine/fluff/fridrich
-	name = "Solid Black Labcoat"
+	name = "Solid Black Lab Coat"
 	desc = "Very stylish. DONOR ITEM"
 	icon_state = "Reznoriam"
 	item_state = "Reznoriam"
@@ -761,7 +761,7 @@
 /obj/item/clothing/head/helmet/marine/fluff/feodrich //CKEY=feodrich (UNIQUE)
 	name = "Doom Helmet"
 	icon_state = "doom_helmet"
-	desc = "A Helmet, of a famous Earth warrior... Donor Item"
+	desc = "A Helmet, of a famous Earth warrior... Donor Item."
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR
 
@@ -797,7 +797,7 @@
 
 /obj/item/clothing/head/helmet/marine/fluff/john56 //CKEY=johnkilla56
 	name = "Priest hood"
-	desc = "Thought I walk through the valley in the shadow of death... Donor Item"
+	desc = "Thought I walk through the valley in the shadow of death... Donor Item."
 	icon_state = "chaplain_hood"
 	icon = 'icons/obj/items/clothing/hats/hats.dmi'
 	item_icons = list(
@@ -867,7 +867,7 @@
 
 /obj/item/clothing/head/helmet/marine/fluff/ningajai
 	name = "Anthony's helmet"
-	desc = "COG helmet owned by Anthony Carmine"
+	desc = "COG helmet owned by Anthony Carmine."
 	icon_state = "anthonycarmine"
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR
@@ -880,13 +880,13 @@
 
 /obj/item/clothing/head/helmet/marine/fluff/goldtrimberet
 	name = "beret"
-	desc = "A maroon beret with gold trim"
+	desc = "A maroon beret with gold trim."
 	icon_state = "gtberet"
 	flags_inventory = BLOCKSHARPOBJ
 
 /obj/item/clothing/head/helmet/marine/fluff/commandercookies //CKEY=commandercookies
 	name = "Elliots Beret"
-	desc = "A dark maroon beret"
+	desc = "A dark maroon beret."
 	icon_state = "eberet"
 	flags_inventory = BLOCKSHARPOBJ
 
@@ -1211,7 +1211,7 @@
 
 /obj/item/clothing/head/helmet/marine/fluff/killaninja12
 	name = "space cowboy hat"
-	desc = "the name 'Maurice' is written inside the hat...  UNIQUE DONOR ITEM"
+	desc = "The name 'Maurice' is written inside the hat...  UNIQUE DONOR ITEM"
 	icon_state = "killaninja12_u"
 	item_state = "killaninja12_u"
 
@@ -1226,7 +1226,7 @@
 
 /obj/item/clothing/under/marine/fluff/feodrich //CKEY=feodrich (UNIQUE)
 	name = "Doom Uniform"
-	desc = "A uniform, of a famous Earth warrior... Donor Item"
+	desc = "A uniform, of a famous Earth warrior... Donor Item."
 	icon_state = "doom_suit"
 	worn_state = "doom_suit"
 	flags_jumpsuit = FALSE
@@ -1240,7 +1240,7 @@
 
 /obj/item/clothing/under/marine/fluff/john56 //CKEY=johnkilla56
 	name = "Pink Pride Jumpsuit"
-	desc = "A jumpsuit for showing your pride in pink... Donor Item"
+	desc = "A jumpsuit for showing your pride in pink... Donor Item."
 	icon_state = "pink"
 	icon = 'icons/obj/items/clothing/uniforms/jumpsuits.dmi'
 	item_icons = list(
@@ -1293,7 +1293,7 @@
 
 /obj/item/clothing/under/marine/fluff/vintage //CKEY=vintagepalmer
 	name = "Vintage Pink Jumpsuit"
-	desc = "A jumpsuit that was either once red, or once white and washed with a load of colors... Donor Item"
+	desc = "A jumpsuit that was either once red, or once white and washed with a load of colors... Donor Item."
 	icon_state = "pink"
 	worn_state = "pink"
 	icon = 'icons/obj/items/clothing/uniforms/jumpsuits.dmi'
@@ -1353,7 +1353,7 @@
 
 /obj/item/clothing/under/marine/fluff/feweh //CKEY=feweh
 	name = "Pink Fatigues"
-	desc = "For fighting breast cancer.  With bullets. Donor Item"
+	desc = "For fighting breast cancer.  With bullets. Donor Item."
 	icon_state = "pink2"
 	worn_state = "pink2"
 	flags_jumpsuit = FALSE
@@ -1583,7 +1583,7 @@
 
 /obj/item/clothing/shoes/marine/fluff/feodrich //CKEY=feodrich (UNIQUE)
 	name = "Doom Shoes"
-	desc = "A uniform, of a famous Earth warrior... Donor Item"
+	desc = "A uniform, of a famous Earth warrior... Donor Item."
 	icon_state = "doom_boots"
 	item_state = "doom_boots"
 
@@ -1607,7 +1607,7 @@
 
 /obj/item/clothing/glasses/fluff/sadokist //CKEY=sadokist
 	name = "Tanya's Optics"
-	desc = "Custom Optics, owned by Tanya Edenia"
+	desc = "Custom Optics, owned by Tanya Edenia."
 	icon = 'icons/obj/items/clothing/glasses/goggles.dmi'
 	item_icons = list(
 		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/goggles.dmi',
@@ -1644,7 +1644,7 @@
 
 /obj/item/storage/backpack/marine/fluff/mitii
 	name = "Mya's Backpack"
-	desc = "A large security backpack, with a radio booster.  Donor Item"
+	desc = "A large security backpack, with a radio booster.  Donor Item."
 	icon_state = "securitypack"
 	item_state = "securitypack"
 	flags_atom = parent_type::flags_atom | NO_GAMEMODE_SKIN // same sprite for all gamemodes
@@ -1692,7 +1692,7 @@
 
 /obj/item/clothing/glasses/fluff/alexwarhammer
 	name = "Black Jack's Dank Shades"
-	desc = "+20 Badass points.  Donor item"
+	desc = "+20 Badass points.  Donor item."
 	icon_state = "sun"
 	item_state = "sun"
 

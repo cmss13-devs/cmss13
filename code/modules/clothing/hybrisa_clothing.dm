@@ -584,7 +584,7 @@
 
 /obj/item/clothing/suit/storage/synthbio/wy_bio
 	name = "WY-TSS MK I - bio suit"
-	desc = "The 'Weyland-Yutani TerraScientia bio-suit MK I'. An advanced light-weight bio-suit developed in-house by Weyland-Yutani. A Synthetic compliant bio-hazard suit. Intended to allow a synthetic to offer the illusion of infection control to humans. Has had most of the internal protective lining removed, allowing it to hold equipment and be lighter to move in."
+	desc = "The 'Weyland-Yutani TerraScientia bio-suit MK I'. An advanced light-weight bio-suit developed in-house by Weyland-Yutani. A Synthetic compliant biohazard suit. Intended to allow a synthetic to offer the illusion of infection control to humans. Has had most of the internal protective lining removed, allowing it to hold equipment and be lighter to move in."
 	icon = 'icons/obj/items/clothing/suits/hazard.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/hazard.dmi',
@@ -653,6 +653,10 @@
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
 	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROT
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
+
+/obj/item/clothing/suit/storage/marine/light/vest/fire_light/Initialize(mapload)
+	. = ..()
+	RemoveElement(/datum/element/corp_label/armat)
 
 /obj/item/clothing/suit/storage/marine/light/vest/fire_light/equipped(mob/user, slot)
 	if(slot == WEAR_JACKET)
@@ -775,6 +779,7 @@
 
 /obj/item/clothing/suit/storage/marine/light/vest/hybrisa_kelland/Initialize()
 	. = ..()
+	RemoveElement(/datum/element/corp_label/armat)
 	AddElement(/datum/element/corp_label/kelland)
 
 /obj/item/clothing/suit/storage/marine/light/vest/hybrisa_kelland_alt
@@ -820,6 +825,7 @@
 
 /obj/item/clothing/suit/storage/marine/light/vest/hybrisa_kelland_alt/Initialize()
 	. = ..()
+	RemoveElement(/datum/element/corp_label/armat)
 	AddElement(/datum/element/corp_label/kelland)
 
 // EMT - Paramedic

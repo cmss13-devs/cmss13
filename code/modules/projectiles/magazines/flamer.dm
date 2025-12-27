@@ -82,7 +82,7 @@
 /obj/item/ammo_magazine/flamer_tank/afterattack(obj/target, mob/user , flag) //refuel at fueltanks when we run out of ammo.
 	if(get_dist(user,target) > 1)
 		return ..()
-	if(!istype(target, /obj/structure/reagent_dispensers/fueltank) && !istype(target, /obj/item/tool/weldpack) && !istype(target, /obj/item/storage/backpack/marine/engineerpack) && !istype(target, /obj/item/ammo_magazine/flamer_tank))
+	if(!istype(target, /obj/structure/reagent_dispensers/tank/fuel) && !istype(target, /obj/item/tool/weldpack) && !istype(target, /obj/item/storage/backpack/marine/engineerpack) && !istype(target, /obj/item/ammo_magazine/flamer_tank))
 		return ..()
 
 	if(!target.reagents || length(target.reagents.reagent_list) < 1)
@@ -188,12 +188,12 @@
 	if(!set_pressure)
 		to_chat(usr, SPAN_WARNING("You can't find that setting on the regulator!"))
 	else
-		to_chat(usr, SPAN_NOTICE("You set the pressure regulator to [set_pressure] U/t"))
+		to_chat(usr, SPAN_NOTICE("You set the pressure regulator to [set_pressure] U/t."))
 		fuel_pressure = set_pressure
 
 /obj/item/ammo_magazine/flamer_tank/custom/get_examine_text(mob/user)
 	. = ..()
-	. += SPAN_NOTICE("The pressure regulator is set to: [src.fuel_pressure] U/t")
+	. += SPAN_NOTICE("The pressure regulator is set to: [src.fuel_pressure] U/t.")
 
 // Pyro regular flamer tank just bigger than the base flamer tank.
 /obj/item/ammo_magazine/flamer_tank/large

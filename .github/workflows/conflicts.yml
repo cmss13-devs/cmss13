@@ -9,7 +9,7 @@ jobs:
   triage:
     runs-on: ubuntu-latest
     steps:
-      - uses: eps1lon/actions-label-merge-conflict@v2.1.0
+      - uses: eps1lon/actions-label-merge-conflict@v3.0.3
         with:
           dirtyLabel: 'Merge Conflict'
           commentOnDirty: "This pull request has conflicts, please resolve those before we can evaluate the pull request."

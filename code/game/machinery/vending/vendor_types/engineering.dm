@@ -190,7 +190,7 @@
 /obj/structure/machinery/cm_vending/sorted/tech/robotics/populate_product_list(scale)
 	listed_products = list(
 		list("EQUIPMENT", -1, null, null),
-		list("Labcoat", 2, /obj/item/clothing/suit/storage/labcoat, VENDOR_ITEM_REGULAR),
+		list("Lab Coat", 2, /obj/item/clothing/suit/storage/labcoat, VENDOR_ITEM_REGULAR),
 		list("Medical Mask", 2, /obj/item/clothing/mask/breath/medical, VENDOR_ITEM_REGULAR),
 		list("Roboticist's Jumpsuit", 2, /obj/item/clothing/under/rank/roboticist, VENDOR_ITEM_REGULAR),
 

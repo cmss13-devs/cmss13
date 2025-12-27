@@ -271,6 +271,8 @@
 				marine_rk = "tl"
 			if(JOB_SQUAD_LEADER)
 				marine_rk = "leader"
+
+
 		if(current_human.rank_override)
 			marine_rk = current_human.rank_override
 

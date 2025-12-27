@@ -58,6 +58,7 @@
 	weather_enabled = FALSE
 	ceiling = CEILING_METAL
 	requires_power = FALSE
+	base_lighting_alpha = 0
 
 /area/shuttle/trijent_shuttle
 	name = "Trijent Elevator"

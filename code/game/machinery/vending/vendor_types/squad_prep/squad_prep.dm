@@ -321,8 +321,6 @@
 		list("M39 Extended Magazine (10x20mm)", 1.8, /obj/item/ammo_magazine/smg/m39/extended, VENDOR_ITEM_REGULAR),
 		list("M41A Extended Magazine (10x24mm)", 1.9, /obj/item/ammo_magazine/rifle/extended, VENDOR_ITEM_REGULAR),
 		list("M10 HV extended magazine (10x20mm)", floor(scale * 5), /obj/item/ammo_magazine/pistol/m10/extended , VENDOR_ITEM_REGULAR),
-		list("M10 HV drum magazine (10x20mm)", floor(scale * 5), /obj/item/ammo_magazine/pistol/m10/drum , VENDOR_ITEM_REGULAR),
-
 
 		list("SPECIAL AMMUNITION", -1, null, null),
 		list("M56 Smartgun Drum", 2, /obj/item/ammo_magazine/smartgun, VENDOR_ITEM_REGULAR),
@@ -353,8 +351,6 @@
 		list("M39 Extended Magazine (10x20mm)", 1.8, /obj/item/ammo_magazine/smg/m39/extended, VENDOR_ITEM_REGULAR),
 		list("M41A Extended Magazine (10x24mm)", 1.9, /obj/item/ammo_magazine/rifle/extended, VENDOR_ITEM_REGULAR),
 		list("M10 HV extended magazine (10x20mm)", floor(scale * 5), /obj/item/ammo_magazine/pistol/m10/extended , VENDOR_ITEM_REGULAR),
-		list("M10 HV drum magazine (10x20mm)", floor(scale * 5), /obj/item/ammo_magazine/pistol/m10/drum , VENDOR_ITEM_REGULAR),
-
 
 		list("SPECIAL AMMUNITION", -1, null, null),
 		list("M44 Heavy Speed Loader (.44)", floor(scale * 2), /obj/item/ammo_magazine/revolver/heavy, VENDOR_ITEM_REGULAR),

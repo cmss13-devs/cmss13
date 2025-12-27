@@ -128,6 +128,9 @@
 #define DROPSHIP_LZ1 "dropship-lz1"
 #define DROPSHIP_LZ2 "dropship-lz2"
 
+#define YAUTJA_HANGAR_A "yautja-hangar-a"
+#define YAUTJA_HANGAR_B "yautja-hangar-b"
+
 #define ESCAPE_SHUTTLE "escape-shuttle"
 #define ESCAPE_SHUTTLE_EAST "escape_shuttle_e"
 #define ESCAPE_SHUTTLE_EAST_CL "escape_shuttle_e_cl"

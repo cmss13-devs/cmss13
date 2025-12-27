@@ -2,6 +2,45 @@
 "a" = (
 /turf/template_noop,
 /area/template_noop)
+"b" = (
+/obj/effect/landmark/ert_spawns/umbilical,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/almayer/plate,
+/area/shuttle/ert/no_defenses)
+"c" = (
+/obj/effect/landmark/ert_spawns/umbilical,
+/obj/structure/machinery/door_control/automatic/umbilical{
+	pixel_x = -22
+	},
+/turf/open/floor/almayer/plate,
+/area/shuttle/ert/no_defenses)
+"d" = (
+/obj/effect/landmark/ert_spawns/umbilical,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer/plate,
+/area/shuttle/ert/no_defenses)
+"e" = (
+/obj/structure/machinery/door/poddoor/almayer/locked{
+	name = "\improper Umbillical Airlock";
+	id = "hangar_umbilical_ert"
+	},
+/turf/open/floor/almayer/plate,
+/area/shuttle/ert/no_defenses)
+"f" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	dir = 1
+	},
+/obj/structure/machinery/door/poddoor/almayer/locked{
+	name = "\improper Umbillical Airlock";
+	id = "hangar_umbilical_ert"
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert/no_defenses)
 "l" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	name = "\improper Umbillical Airlock"
@@ -11,13 +50,6 @@
 "m" = (
 /obj/effect/landmark/ert_spawns/umbilical,
 /turf/open/floor/almayer/plate,
-/area/shuttle/ert/no_defenses)
-"r" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	dir = 1
-	},
-/turf/open/floor/plating/almayer,
 /area/shuttle/ert/no_defenses)
 "s" = (
 /obj/effect/decal/warning_stripes{
@@ -50,9 +82,18 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
+/obj/structure/machinery/door/poddoor/almayer/locked{
+	name = "\improper Umbillical Airlock";
+	id = "hangar_umbilical_ert"
+	},
 /turf/open/floor/plating/almayer,
 /area/shuttle/ert/no_defenses)
 "M" = (
+/obj/effect/landmark/ert_spawns/umbilical,
+/obj/structure/machinery/light{
+	dir = 4;
+	invisibility = 101
+	},
 /turf/open/floor/almayer/plate,
 /area/shuttle/ert/no_defenses)
 "Q" = (
@@ -132,17 +173,17 @@ Q
 Q
 "}
 (8,1,1) = {"
-M
+e
+b
+c
+b
 m
-M
-m
-M
 l
 "}
 (9,1,1) = {"
+f
 A
-r
-r
+A
 A
 A
 Z
@@ -151,13 +192,13 @@ Z
 H
 y
 y
-H
-H
+y
+y
 s
 "}
 (11,1,1) = {"
-m
-M
+e
+d
 m
 M
 m

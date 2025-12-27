@@ -403,3 +403,6 @@
 	id = "starboard_umbilical_cord"
 
 /obj/effect/landmark/ert_spawns/umbilical
+
+/obj/structure/machinery/door_control/automatic/umbilical
+	id = "hangar_umbilical_ert"

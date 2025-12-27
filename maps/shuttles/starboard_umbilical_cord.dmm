@@ -2,11 +2,36 @@
 "a" = (
 /turf/template_noop,
 /area/template_noop)
-"k" = (
+"b" = (
 /obj/effect/landmark/ert_spawns/umbilical,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/almayer/plate,
+/area/shuttle/ert/no_defenses)
+"c" = (
+/obj/effect/landmark/ert_spawns/umbilical,
+/obj/structure/machinery/light{
+	dir = 4;
+	invisibility = 101
+	},
+/turf/open/floor/almayer/plate,
+/area/shuttle/ert/no_defenses)
+"d" = (
+/obj/effect/landmark/ert_spawns/umbilical,
+/obj/structure/machinery/door_control/automatic/umbilical{
+	pixel_x = 22
+	},
+/turf/open/floor/almayer/plate,
+/area/shuttle/ert/no_defenses)
+"k" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
 	dir = 1
+	},
+/obj/structure/machinery/door/poddoor/almayer/locked{
+	name = "\improper Umbillical Airlock";
+	id = "hangar_umbilical_ert"
 	},
 /turf/open/floor/plating/almayer,
 /area/shuttle/ert/no_defenses)
@@ -19,13 +44,6 @@
 "m" = (
 /obj/effect/landmark/ert_spawns/umbilical,
 /turf/open/floor/almayer/plate,
-/area/shuttle/ert/no_defenses)
-"r" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	dir = 1
-	},
-/turf/open/floor/plating/almayer,
 /area/shuttle/ert/no_defenses)
 "s" = (
 /obj/effect/decal/warning_stripes{
@@ -56,9 +74,17 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
+/obj/structure/machinery/door/poddoor/almayer/locked{
+	name = "\improper Umbillical Airlock";
+	id = "hangar_umbilical_ert"
+	},
 /turf/open/floor/plating/almayer,
 /area/shuttle/ert/no_defenses)
 "M" = (
+/obj/structure/machinery/door/poddoor/almayer/locked{
+	name = "\improper Umbillical Airlock";
+	id = "hangar_umbilical_ert"
+	},
 /turf/open/floor/almayer/plate,
 /area/shuttle/ert/no_defenses)
 "N" = (
@@ -150,34 +176,34 @@ Q
 (8,1,1) = {"
 l
 m
-M
+b
 m
-M
+b
 M
 "}
 (9,1,1) = {"
 Z
-r
-r
 P
-r
+P
+P
+P
 k
 "}
 (10,1,1) = {"
 s
 y
-H
-H
+y
+y
 N
 H
 "}
 (11,1,1) = {"
 l
 m
-m
+c
+d
+c
 M
-m
-m
 "}
 (12,1,1) = {"
 Q

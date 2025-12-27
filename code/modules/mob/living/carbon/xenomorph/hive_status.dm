@@ -1298,6 +1298,7 @@
 	dynamic_evolution = FALSE
 	allow_no_queen_actions = TRUE
 	allow_no_queen_evo = FALSE
+	evolution_rate = 0
 	allow_queen_evolve = FALSE
 	latejoin_burrowed = FALSE
 	tacmap_requires_queen_ovi = FALSE

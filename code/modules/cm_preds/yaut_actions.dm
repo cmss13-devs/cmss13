@@ -385,9 +385,13 @@
 
 	user.face_dir(get_cardinal_dir(user, target_atom))
 	user.visible_message(SPAN_WARNING("\The [user] prepares to leap at [target_atom]!"), SPAN_WARNING("You get ready to leap at [target_atom]!"))
-	if(!do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+
+	/// Default delay
+	if(!do_after(user, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 		qdel(warning)
 		return FALSE
+
+	/// Extra if you're going upwards
 	if((target_atom.z > user.z) && !do_after(user, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 		qdel(warning)
 		return FALSE

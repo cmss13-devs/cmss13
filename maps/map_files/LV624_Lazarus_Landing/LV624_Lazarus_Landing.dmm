@@ -1054,7 +1054,7 @@
 "avN" = (
 /obj/structure/inflatable/door,
 /turf/open/floor/interior/plastic/alt,
-/area/lazarus/ground/river/north_east_temple_river)
+/area/lazarus/ground/ancient_temple/south_east/surface)
 "avU" = (
 /obj/structure/machinery/landinglight/ds1/delaythree{
 	dir = 8
@@ -16862,7 +16862,7 @@
 "hfn" = (
 /obj/effect/hunter/ancient_temple/tile_edge/tile_edge_8,
 /turf/open/floor/ancient_temple/damaged/damage_4,
-/area/lazarus/ground/barrens/east_barrens)
+/area/lazarus/ground/ancient_temple/south_east/surface)
 "hfY" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/auto_turf/lv_sand/layer0,
@@ -23000,7 +23000,7 @@
 "jNs" = (
 /obj/structure/inflatable/popped/door,
 /turf/open/floor/interior/plastic/alt,
-/area/lazarus/ground/barrens/east_barrens)
+/area/lazarus/ground/ancient_temple/south_east/surface)
 "jNz" = (
 /obj/structure/platform/stone/ancient_temple/east{
 	icon_state = "ancient_platform_alt_broken"
@@ -36162,7 +36162,7 @@
 	},
 /obj/effect/decal/lv_decals/red_mud_corner,
 /turf/open/floor/interior/plastic/alt,
-/area/lazarus/ground/barrens/east_barrens)
+/area/lazarus/ground/ancient_temple/south_east/surface)
 "peq" = (
 /obj/structure/prop/rock/brown{
 	dir = 5;
@@ -44764,10 +44764,7 @@
 	dir = 1
 	},
 /turf/open/floor/interior/plastic/alt,
-/area/lazarus/ground/barrens/south_eastern_barrens)
-"sMz" = (
-/turf/closed/wall/ancient_temple/sandstone,
-/area/lazarus/ground/barrens/east_barrens)
+/area/lazarus/ground/ancient_temple/south_east/surface)
 "sMM" = (
 /obj/effect/hunter/ancient_temple/deco_border/deco_border2{
 	dir = 8
@@ -44926,7 +44923,7 @@
 	dir = 6
 	},
 /turf/open/floor/interior/plastic/alt,
-/area/lazarus/ground/barrens/east_barrens)
+/area/lazarus/ground/ancient_temple/south_east/surface)
 "sQg" = (
 /obj/structure/machinery/vending/cigarette/free{
 	pixel_y = 17;
@@ -48527,10 +48524,6 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/ancient_temple/base/alt,
 /area/lazarus/ground/ancient_temple/north_east)
-"uou" = (
-/obj/structure/inflatable/door,
-/turf/open/floor/interior/plastic/alt,
-/area/lazarus/ground/barrens/east_barrens)
 "uow" = (
 /obj/effect/decal/lv_decals/cave_mud_corner{
 	dir = 6
@@ -49105,7 +49098,7 @@
 "uxr" = (
 /obj/effect/hunter/ancient_temple/tile_edge/tile_edge_11,
 /turf/open/floor/ancient_temple/damaged/damage_4,
-/area/lazarus/ground/barrens/east_barrens)
+/area/lazarus/ground/ancient_temple/south_east/surface)
 "uxt" = (
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_x = 6;
@@ -50473,7 +50466,7 @@
 	dir = 1
 	},
 /turf/open/floor/interior/plastic/alt,
-/area/lazarus/ground/barrens/south_eastern_barrens)
+/area/lazarus/ground/ancient_temple/south_east/surface)
 "vae" = (
 /obj/effect/decal/lv_decals/red_mud_corner{
 	dir = 5
@@ -51063,7 +51056,7 @@
 	},
 /obj/effect/decal/lv_decals/red_mud_corner,
 /turf/open/floor/interior/plastic/alt,
-/area/lazarus/ground/barrens/east_barrens)
+/area/lazarus/ground/ancient_temple/south_east/surface)
 "vqk" = (
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 1
@@ -54085,7 +54078,7 @@
 	dir = 4
 	},
 /turf/open/floor/ancient_temple/floor_2,
-/area/lazarus/ground/barrens/east_barrens)
+/area/lazarus/ground/ancient_temple/south_east/surface)
 "wGD" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/hybrisa/dirt,
@@ -90232,7 +90225,7 @@ lNm
 nqa
 vFb
 wGt
-uou
+avN
 tPd
 tPd
 olS
@@ -90680,7 +90673,7 @@ uim
 stC
 viI
 uxr
-sMz
+tua
 rQj
 rQj
 eeb
@@ -90903,8 +90896,8 @@ dEZ
 stC
 aaS
 eQO
-rQj
-uou
+stC
+avN
 xOO
 mZA
 dgW
@@ -93142,7 +93135,7 @@ jjj
 msn
 lAb
 iYP
-lXm
+wYw
 uZZ
 loR
 loR
@@ -93366,7 +93359,7 @@ ahS
 khZ
 qIi
 iYP
-loR
+iYP
 sMu
 gFm
 loR
@@ -93590,7 +93583,7 @@ hKB
 wVm
 wYw
 iYP
-loR
+iYP
 sMu
 loR
 loR
@@ -93814,7 +93807,7 @@ whr
 mQe
 iYP
 iYP
-lXm
+wYw
 uZZ
 loR
 loR

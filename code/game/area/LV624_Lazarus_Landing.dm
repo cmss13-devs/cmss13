@@ -15,6 +15,7 @@
 /area/lazarus/ground/jungle
 	minimap_color = MINIMAP_AREA_JUNGLE
 	flags_area = AREA_YAUTJA_HANGABLE
+	ceiling = CEILING_NONE
 
 /area/lazarus/ground/jungle/south_east_jungle
 	name ="\improper Southeast Jungle"
@@ -94,6 +95,7 @@
 	name = "\improper Fisherman's Cove"
 	icon_state = "green"
 	//ambience = list('sound/ambience/ambimine.ogg','sound/ambience/ambigen10.ogg','sound/ambience/ambigen4.ogg','sound/ambience/ambisin4.ogg')
+	ceiling = CEILING_NONE
 
 /area/lazarus/ground/cove/south
 	name = "\improper Fisherman's Cove - South"
@@ -103,6 +105,7 @@
 	name = "\improper Barrens"
 	icon_state = "yellow"
 	//ambience = list('sound/ambience/ambimine.ogg','sound/ambience/ambigen10.ogg','sound/ambience/ambigen4.ogg','sound/ambience/ambisin4.ogg')
+	ceiling = CEILING_NONE
 
 /area/lazarus/ground/barrens/west_barrens
 	name = "\improper Western Barrens"
@@ -167,6 +170,7 @@
 	name = "\improper River"
 	icon_state = "blueold"
 	allow_construction = FALSE
+	ceiling = CEILING_NONE
 // ambience = list('sound/ambience/jungle_amb1.ogg')
 
 /area/lazarus/ground/river/west_river
@@ -209,32 +213,39 @@
 /area/lazarus/ground/colony/north_nexus_road
 	name = "\improper North Nexus Road"
 	icon_state = "north"
+	ceiling = CEILING_NONE
 
 /area/lazarus/ground/colony/south_medbay_road
 	name = "\improper South Medbay Road"
 	icon_state = "south"
+	ceiling = CEILING_NONE
 
 /area/lazarus/ground/colony/south_nexus_road
 	name = "\improper South Nexus Road"
 	icon_state = "south"
+	ceiling = CEILING_NONE
 
 /area/lazarus/ground/colony/west_nexus_road
 	name = "\improper West Nexus Road"
 	icon_state = "west"
+	ceiling = CEILING_NONE
 
 /area/lazarus/ground/colony/north_tcomms_road
 	name = "\improper North T-Comms Road"
 	icon_state = "north"
 	linked_lz = DROPSHIP_LZ2
+	ceiling = CEILING_NONE
 
 /area/lazarus/ground/colony/west_tcomms_road
 	name = "\improper West T-Comms Road"
 	icon_state = "west"
 	linked_lz = DROPSHIP_LZ2
+	ceiling = CEILING_NONE
 
 /area/lazarus/ground/colony/north_east_nexus_road
 	name = "\improper North East Nexus Road"
 	icon_state = "north"
+	ceiling = CEILING_NONE
 
 /area/lazarus/ground/colony/telecomm
 	name = "\improper LZ1 Communications Relay"

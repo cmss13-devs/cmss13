@@ -77,12 +77,6 @@
 	update_connections(FALSE)
 	update_icon()
 
-/turf/closed/wall/afterShuttleMove(turf/oldT, rotation)
-	. = ..()
-	// Check if setDir already would handle it
-	if(!rotation)
-		update_connections(FALSE)
-		update_icon()
 
 /turf/closed/wall/setDir(newDir)
 	..()

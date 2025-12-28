@@ -608,11 +608,16 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	return UI_CLOSE
 
 /obj/structure/machinery/computer/overwatch/proc/pick_section()
-	return
+	return TRUE
 
 /obj/structure/machinery/computer/overwatch/groundside_operations/section/pick_section(mob/user)
 	var/section = tgui_input_list(user, "Choose a section to overwatch:", "Section Selection", list(SQUAD_ROLE_ASSAULT, SQUAD_ROLE_SUPPORT, SQUAD_ROLE_SECURITY))
+
+	if(!section)
+		return FALSE
+
 	role = section
+	return TRUE
 
 /obj/structure/machinery/computer/overwatch/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
@@ -625,7 +630,9 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			if(current_squad)
 				return
 
-			pick_section(user)
+			if(!pick_section(user))
+				return
+
 			var/datum/squad/selected_squad
 			for(var/datum/squad/searching_squad in GLOB.RoleAuthority.squads)
 				if(searching_squad.active && (!searching_squad.overwatch_officer || can_override_overwatch_officer) && searching_squad.faction == faction && searching_squad.name == params["squad"])

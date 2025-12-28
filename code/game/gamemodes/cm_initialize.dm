@@ -110,7 +110,8 @@ Additional game mode variables.
 	var/round_modifiers = list()
 	///List of typepaths of all /datum/gamemode_modifiers that start enabled
 	var/starting_round_modifiers = list()
-
+	/// The current acting commander; set by ares_command_check()
+	var/acting_commander
 
 /datum/game_mode/proc/get_roles_list()
 	return GLOB.ROLES_USCM
@@ -484,6 +485,8 @@ Additional game mode variables.
 		var/required_leave_time = islarva(cur_xeno) ? XENO_LEAVE_TIMER_LARVA : XENO_LEAVE_TIMER
 		var/min_time = instant_join ? 0 : XENO_AVAILABLE_TIMER
 		if(required_leave_time - cur_xeno.away_timer > min_time)
+			continue
+		if(isfacehugger(cur_xeno) || islesserdrone(cur_xeno))
 			continue
 		available_xenos += cur_xeno
 

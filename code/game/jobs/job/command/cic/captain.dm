@@ -81,10 +81,56 @@
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(all_hands_on_deck), "Attention all hands, [H.get_paygrade(0)] [H.real_name] on deck!"), 1.5 SECONDS)
 	return ..()
 
-/datum/job/command/commander/generate_entry_conditions(mob/living/M, whitelist_status)
+/datum/job/command/commander/generate_entry_conditions(mob/living/player, whitelist_status, late_join = FALSE)
 	. = ..()
-	GLOB.marine_leaders[JOB_CO] = M
-	RegisterSignal(M, COMSIG_PARENT_QDELETING, PROC_REF(cleanup_leader_candidate))
+	GLOB.marine_leaders[JOB_CO] = player
+	RegisterSignal(player, COMSIG_PARENT_QDELETING, PROC_REF(cleanup_leader_candidate))
+	if(!late_join)
+		addtimer(CALLBACK(src, PROC_REF(handle_entry_fax), player, whitelist_status), 15 SECONDS)
+
+/// handles the sending of the CO lore faxes upon roundstart
+/datum/job/command/commander/proc/handle_entry_fax(mob/living/player, whitelist_status)
+	var/list/co_briefing_files = SSmapping.configs[GROUND_MAP].co_briefing_files
+	var/faction_alignment = "Unaligned"
+
+	if(!co_briefing_files)	// ground map has no defined briefing faxes
+		return
+
+	if(!player.client)	// our CO has ghosted or DC'd within the 15 seconds
+		return
+
+	if(player.client.prefs.affiliation)
+		faction_alignment = player.client.prefs.affiliation
+
+	var/obj/item/paper/captain_brief/co_briefing = new /obj/item/paper/captain_brief
+
+	if(co_briefing_files[faction_alignment])
+		co_briefing.info = file2text(co_briefing_files[faction_alignment])
+	else
+		qdel(co_briefing)
+		return
+
+	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
+	co_briefing.info = replacetext(co_briefing.info, "%%USCMLOGO%%", asset.get_url_mappings()["logo_uscm.png"])
+	co_briefing.info = replacetext(co_briefing.info, "%%DARKBACKGROUND%%", asset.get_url_mappings()["background_dark2.jpg"])
+
+	var/obj/structure/machinery/faxmachine/receiver
+	for(var/target_machine_code as anything in GLOB.fax_network.all_faxcodes)
+		var/obj/structure/machinery/faxmachine/target_machine = GLOB.fax_network.all_faxcodes[target_machine_code]
+		if(target_machine.sub_name == "Commanding Officer")
+			receiver = target_machine
+			break
+	if(!receiver)
+		return
+	if(receiver.inoperable())
+		return
+	co_briefing.forceMove(receiver.loc)
+	playsound(receiver.loc, "sound/machines/twobeep.ogg", 45)
+	receiver.langchat_speech("beeps with a priority message", get_mobs_in_view(GLOB.world_view_size, receiver), GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_small", "emote"))
+	receiver.visible_message("[SPAN_BOLD(receiver)] beeps with a priority message.")
+	if(!receiver.radio_alert_tag)
+		return
+	ai_silent_announcement("COMMUNICATIONS REPORT: Fax Machine [receiver.machine_id_tag], [receiver.sub_name ? "[receiver.sub_name]" : ""], now receiving priority fax.", "[receiver.radio_alert_tag]")
 
 /datum/job/command/commander/proc/cleanup_leader_candidate(mob/M)
 	SIGNAL_HANDLER

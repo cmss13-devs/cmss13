@@ -885,6 +885,9 @@
 	durationmod_per_level = 0.2
 	radiusmod_per_level = 0.01
 
+/datum/chem_property/positive/fire/fueling/can_cause_harm()
+	return TRUE
+
 /datum/chem_property/positive/fire/fueling/reaction_mob(mob/M, method = TOUCH, volume, potency = 1)
 	var/mob/living/L = M
 	if(istype(L) && method == TOUCH)//makes you more flammable if sprayed/splashed on you
@@ -892,12 +895,6 @@
 
 /datum/chem_property/positive/fire/fueling/reaction_turf(turf/T, volume, potency = 1)
 	new /obj/effect/decal/cleanable/liquid_fuel(T, volume)
-
-/datum/chem_property/positive/fire/fueling/reaction_obj(obj/O, volume, potency)
-	var/turf/the_turf = get_turf(O) //tries to splash fuel on object's turf
-	if(!the_turf)
-		return
-	new /obj/effect/decal/cleanable/liquid_fuel(the_turf, volume)
 
 /datum/chem_property/positive/fire/oxidizing
 	name = PROPERTY_OXIDIZING

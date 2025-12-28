@@ -14,6 +14,10 @@
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 	minimap_color = MINIMAP_AREA_CAVES
 
+/area/whiskey_outpost/inside/hallway
+	name = "\improper Bunker Hallway"
+	flags_area = AREA_NOTUNNEL
+
 /area/whiskey_outpost/inside/hospital
 	name = "\improper Hospital"
 	icon_state = "medical"
@@ -22,6 +26,7 @@
 
 /area/whiskey_outpost/inside/hospital/triage
 	name = "\improper Triage Center"
+	flags_area = NO_FLAGS
 
 /area/whiskey_outpost/inside/cic
 	name = "\improper Command Information Center"
@@ -32,9 +37,11 @@
 /area/whiskey_outpost/inside/bunker
 	name = "\improper Bunker"
 	icon_state = "bunker"
+	flags_area = AREA_NOTUNNEL
 
 /area/whiskey_outpost/inside/bunker/pillbox
 	ceiling = CEILING_METAL
+	flags_area = NO_FLAGS
 
 /area/whiskey_outpost/inside/bunker/pillbox/one
 	name = "Pillbox Bourbon"
@@ -55,6 +62,7 @@
 /area/whiskey_outpost/inside/bunker/bunker/front
 	name = "Pillbox Beer"
 	icon_state = "p5"
+	flags_area = NO_FLAGS
 
 
 /area/whiskey_outpost/inside/engineering

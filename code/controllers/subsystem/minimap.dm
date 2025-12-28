@@ -423,7 +423,7 @@ SUBSYSTEM_DEF(minimaps)
  * * zlevel: zlevel to fetch map for
  * * flags: map flags to fetch from
  */
-/datum/controller/subsystem/minimaps/proc/fetch_minimap_object(zlevel, flags, live=TRUE, popup=FALSE, drawing = TRUE)
+/datum/controller/subsystem/minimaps/proc/fetch_minimap_object(zlevel, flags, live, popup, drawing)
 	var/hash = "[zlevel]-[flags]-[live]-[popup]-[drawing]"
 	if(hashed_minimaps[hash])
 		return hashed_minimaps[hash]
@@ -799,11 +799,11 @@ SUBSYSTEM_DEF(minimaps)
 	if(default_overwatch_level)
 		if(!SSminimaps.minimaps_by_z["[default_overwatch_level]"] || !SSminimaps.minimaps_by_z["[default_overwatch_level]"].hud_image)
 			return
-		map = SSminimaps.fetch_minimap_object(default_overwatch_level, minimap_flags, live, drawing=drawing)
+		map = SSminimaps.fetch_minimap_object(default_overwatch_level, minimap_flags, live=live, popup=FALSE, drawing=drawing)
 		return
 	if(!SSminimaps.minimaps_by_z["[tracking.z]"] || !SSminimaps.minimaps_by_z["[tracking.z]"].hud_image)
 		return
-	map = SSminimaps.fetch_minimap_object(tracking.z, minimap_flags, live, drawing=drawing)
+	map = SSminimaps.fetch_minimap_object(tracking.z, minimap_flags, live=live, popup=FALSE, drawing=drawing)
 
 /datum/action/minimap/remove_from(mob/mob)
 	toggle_minimap(FALSE)
@@ -826,7 +826,7 @@ SUBSYSTEM_DEF(minimaps)
 				locator.UnregisterSignal(tracking, COMSIG_MOVABLE_MOVED)
 				minimap_displayed = FALSE
 			return
-		map = SSminimaps.fetch_minimap_object(default_overwatch_level, minimap_flags, live, drawing=drawing)
+		map = SSminimaps.fetch_minimap_object(default_overwatch_level, minimap_flags, live=live, popup=FALSE, drawing=drawing)
 		if(minimap_displayed)
 			if(owner.client)
 				owner.client.screen += map
@@ -839,7 +839,7 @@ SUBSYSTEM_DEF(minimaps)
 			locator.UnregisterSignal(tracking, COMSIG_MOVABLE_MOVED)
 			minimap_displayed = FALSE
 		return
-	map = SSminimaps.fetch_minimap_object(newz, minimap_flags, live, drawing=drawing)
+	map = SSminimaps.fetch_minimap_object(newz, minimap_flags, live=live, popup=FALSE, drawing=drawing)
 	if(minimap_displayed)
 		if(owner.client)
 			owner.client.screen += map
@@ -1335,7 +1335,7 @@ SUBSYSTEM_DEF(minimaps)
 	var/label_text = MAPTEXT(tgui_input_text(source, title = "Label Name", max_length = 35))
 	if(!label_text)
 		return
-	var/atom/movable/screen/minimap/mini = SSminimaps.fetch_minimap_object(zlevel, minimap_flag, TRUE)
+	var/atom/movable/screen/minimap/mini = SSminimaps.fetch_minimap_object(zlevel, minimap_flag, live=TRUE, popup=FALSE, drawing=FALSE)
 	if(!locate(mini) in source.client?.screen)
 		return
 
@@ -1432,7 +1432,7 @@ SUBSYSTEM_DEF(minimaps)
 /atom/movable/screen/minimap_tool/update/proc/announce_human(mob/user)
 	playsound_client(user.client, "sound/effects/data-transmission.ogg")
 
-	var/atom/movable/screen/minimap/minimap_to_update = SSminimaps.fetch_minimap_object(2, MINIMAP_FLAG_USCM, FALSE)
+	var/atom/movable/screen/minimap/minimap_to_update = SSminimaps.fetch_minimap_object(2, MINIMAP_FLAG_USCM, live=FALSE, popup=FALSE, drawing=FALSE)
 	minimap_to_update.update()
 
 	user.client.images += drawn_image

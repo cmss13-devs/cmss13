@@ -138,7 +138,7 @@ GLOBAL_LIST_INIT(tacmap_holders, list())
 
 /datum/tacmap_holder/New(loc, zlevel, flags, drawing)
 	map_ref = "tacmap_[REF(src)]_map"
-	map = SSminimaps.fetch_minimap_object(zlevel, flags, TRUE, TRUE, TRUE, drawing=drawing)
+	map = SSminimaps.fetch_minimap_object(zlevel, flags, live=TRUE, popup=TRUE, drawing=drawing)
 
 	map.screen_loc = "[map_ref]:1,1"
 	map.assigned_map = map_ref

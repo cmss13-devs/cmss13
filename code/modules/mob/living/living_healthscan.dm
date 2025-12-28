@@ -56,7 +56,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 	if(!ui)
 		ui = new(user, src, "HealthScan", "Health Scan")
 		ui.open()
-		ui.set_autoupdate(FALSE)
+		ui.set_autoupdate(isobserver(user))
 
 /**
  * Returns TRUE if the target is either dead or appears to be dead.
@@ -184,9 +184,16 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 				bleeding_check = TRUE
 				break
 
-			if((!limb.brute_dam && !limb.burn_dam && !(limb.status & LIMB_DESTROYED)) && !bleeding_check && !internal_bleeding_check && !(implant && detail_level >= DETAIL_LEVEL_BODYSCAN ) && !(limb.status & LIMB_UNCALIBRATED_PROSTHETIC) && !(limb.status & LIMB_BROKEN) && !(limb.status & LIMB_SPLINTED) && !(limb.status & LIMB_SPLINTED_INDESTRUCTIBLE) && !(limb.get_incision_depth()))
+			if(!limb.brute_dam && !limb.burn_dam && !(limb.status & (LIMB_THIRD_DEGREE_BURNS|LIMB_ESCHAR|LIMB_DESTROYED|LIMB_UNCALIBRATED_PROSTHETIC|LIMB_BROKEN|LIMB_SPLINTED|LIMB_SPLINTED_INDESTRUCTIBLE)) && !bleeding_check && !internal_bleeding_check && !(implant && detail_level >= DETAIL_LEVEL_BODYSCAN) && !(limb.get_incision_depth()))
 				continue
+
 			var/list/core_body_parts = list("head", "chest", "groin")
+			var/eschar = null
+			if(limb.status & LIMB_ESCHAR)
+				eschar = "Eschar"
+			var/third_degree_burns = null
+			if(limb.status & LIMB_THIRD_DEGREE_BURNS)
+				third_degree_burns = "Severe burns"
 			var/list/current_list = list(
 				"name" = limb.display_name,
 				"brute" = floor(limb.brute_dam),
@@ -195,6 +202,8 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 				"salved" = limb.is_salved(),
 				"missing" = (limb.status & LIMB_DESTROYED),
 				"limb_status" = null,
+				"limb_third_degree_burns" = third_degree_burns,
+				"limb_eschar" = eschar,
 				"bleeding" = bleeding_check,
 				"implant" = implant,
 				"internal_bleeding" = internal_bleeding_check
@@ -392,7 +401,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 						advice += temp_advice
 				if(human_target_mob.getFireLoss(organic_only = TRUE) > 30)
 					temp_advice = list(list(
-						"advice" = "Administer a single dose of kelotane.",
+						"advice" = "Administer a single dose of kelotane and apply kits to areas with severe burns.",
 						"icon" = "syringe",
 						"color" = "yellow"
 						))
@@ -489,14 +498,16 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 			if(ishuman(target_mob))
 				var/mob/living/carbon/human/target_human = target_mob
 				target_human.change_holo_card(ui.user)
-				return TRUE
+				ui.send_update(list("holocard" = get_holo_card_color(target_mob)))
+				return FALSE
 		if("change_ui_mode")
 			switch(ui_mode)
 				if(UI_MODE_CLASSIC)
 					ui_mode = UI_MODE_MINIMAL
 				if(UI_MODE_MINIMAL)
 					ui_mode = UI_MODE_CLASSIC
-			return TRUE
+			ui.send_update(list("ui_mode" = ui_mode))
+			return FALSE
 
 /// legacy proc for to_chat messages on health analysers
 /mob/living/proc/health_scan(mob/living/carbon/human/user, ignore_delay = FALSE, show_limb_damage = TRUE, show_browser = TRUE, alien = FALSE, do_checks = TRUE) // ahem. FUCK WHOEVER CODED THIS SHIT AS NUMBERS AND NOT DEFINES.

@@ -1327,13 +1327,6 @@
 	else
 		return ..()
 
-/obj/item/storage/belt/grenade/bugkiller
-
-/obj/item/storage/belt/grenade/bugkiller/fill_preset_inventory()
-	new /obj/item/explosive/grenade/custom/antiweed(src)
-	new /obj/item/explosive/grenade/custom/antiweed(src)
-	new /obj/item/explosive/grenade/custom/antiweed(src)
-
 ////////////////////////////// GUN BELTS /////////////////////////////////////
 
 /obj/item/storage/belt/gun
@@ -2102,7 +2095,7 @@
 			"icon_y" = -3))
 
 /obj/item/storage/belt/gun/mateba/full/fill_preset_inventory()
-	handle_item_insertion(new /obj/item/weapon/gun/revolver/mateba())
+	handle_item_insertion(new /obj/item/weapon/gun/revolver/mateba/impact())
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)

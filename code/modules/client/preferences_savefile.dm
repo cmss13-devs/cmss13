@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN 8
-#define SAVEFILE_VERSION_MAX 32
+#define SAVEFILE_VERSION_MAX 33
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -221,6 +221,12 @@
 		var/pref_toggles
 		S["toggle_prefs"] >> pref_toggles
 		pref_toggles |= TOGGLE_LEADERSHIP_SPOKEN_ORDERS // Enables it by default for new saves
+		S["toggle_prefs"] << pref_toggles
+
+	if(savefile_version < 33)
+		var/pref_toggles
+		S["toggle_prefs"] >> pref_toggles
+		pref_toggles |= TOGGLE_COCKING_TO_HAND // enabled by default for new saves
 		S["toggle_prefs"] << pref_toggles
 
 	savefile_version = SAVEFILE_VERSION_MAX
@@ -967,7 +973,7 @@
 	to_chat(owner, SPAN_ALERTWARNING("<u>Keybinding Conflict</u>"))
 	to_chat(owner, SPAN_ALERTWARNING("There are new <a href='byond://?_src_=prefs;preference=viewmacros'>keybindings</a> that default to keys you've already bound. The new ones will be unbound."))
 	for(var/datum/keybinding/conflicted as anything in notadded)
-		to_chat(owner, SPAN_DANGER("[conflicted.category]: [conflicted.full_name] needs updating"))
+		to_chat(owner, SPAN_DANGER("[conflicted.category]: [conflicted.full_name] needs updating."))
 
 		if(hotkeys)
 			for(var/entry in conflicted.hotkey_keys)

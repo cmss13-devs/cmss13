@@ -58,7 +58,7 @@
 /obj/docking_port/mobile/starboard_umbilical_cord{
 	dir = 4
 	},
-/turf/closed/wall/almayer/white/hull,
+/turf/closed/wall/almayer/white/hull/blend_pod,
 /area/shuttle/ert/no_defenses)
 "H" = (
 /obj/effect/decal/warning_stripes{
@@ -97,7 +97,7 @@
 /turf/open/floor/plating/almayer,
 /area/shuttle/ert/no_defenses)
 "Q" = (
-/turf/closed/wall/almayer/white/hull,
+/turf/closed/wall/almayer/white/hull/blend_pod,
 /area/shuttle/ert/no_defenses)
 "Z" = (
 /obj/effect/decal/warning_stripes{

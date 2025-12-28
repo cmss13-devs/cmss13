@@ -91,7 +91,7 @@
 /turf/open/floor/plating/almayer,
 /area/shuttle/ert/no_defenses)
 "Q" = (
-/turf/closed/wall/almayer/white/hull,
+/turf/closed/wall/almayer/white/hull/blend_pod,
 /area/shuttle/ert/no_defenses)
 "S" = (
 /obj/docking_port/mobile/port_umbilical_cord{

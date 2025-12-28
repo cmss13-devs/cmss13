@@ -117,6 +117,11 @@
 	desc = "An extremely reinforced metal wall used to isolate potentially dangerous areas."
 	icon_state = "hull"
 	turf_flags = TURF_HULL
+	noblend_turfs = list(/turf/closed/wall/mineral, /turf/closed/wall/almayer/research/containment, /turf/closed/wall/almayer/outer)
+	noblend_objects = list(/obj/structure/machinery/door/window, /obj/structure/machinery/door/poddoor/almayer)
+
+/turf/closed/wall/almayer/white/hull/blend_pod
+	noblend_objects = list(/obj/structure/machinery/door/window)
 
 /turf/closed/wall/almayer/research/can_be_dissolved()
 	return 0

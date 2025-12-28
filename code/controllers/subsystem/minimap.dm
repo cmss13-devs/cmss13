@@ -1043,6 +1043,9 @@ SUBSYSTEM_DEF(minimaps)
 	/// Width of the lines this is going to draw
 	var/width = 0
 
+	/// Whether we're drawing right now. Used to no-op clickdrag macros that we want to blackhole without deleting the verb from the client
+	var/drawing
+
 /atom/movable/screen/minimap_tool/draw_tool/clicked(location, list/modifiers)
 	. = ..()
 	if(LAZYACCESS(modifiers, MIDDLE_CLICK))
@@ -1064,6 +1067,12 @@ SUBSYSTEM_DEF(minimaps)
 	set hidden = TRUE
 	set name = ".mouse-draw"
 
+	if(!active_draw_tool)
+		return
+
+	if (!active_draw_tool.drawing)
+		return
+
 	mouse_y = size_y - mouse_y
 
 	var/horizontal_letterbox = size_x - view_size_x
@@ -1079,9 +1088,6 @@ SUBSYSTEM_DEF(minimaps)
 	mouse_y = floor(mouse_y * (SCREEN_PIXEL_SIZE / view_size_y))
 
 	if(mouse_x < 0 || mouse_y < 0)
-		return
-
-	if(!active_draw_tool)
 		return
 
 	active_draw_tool.freedraw_queue += vector(mouse_x, mouse_y)
@@ -1105,7 +1111,6 @@ SUBSYSTEM_DEF(minimaps)
 
 	if(!plane_master)
 		return
-
 
 	if(!last_coords)
 		var/vector/first_in_queue = freedraw_queue[1]
@@ -1137,16 +1142,12 @@ SUBSYSTEM_DEF(minimaps)
 	if(!.)
 		return
 
-	log_debug("XXX draw_tool_mousedown")
-	log_debug("obj")
-	log_debug(object)
-	log_debug("ctl")
-	log_debug(control)
-
 	// N.B. popup tacmap is a different control; we never want to recieve drawing inputs from it.
 	if (control != "mapwindow.map")
-		log_debug("XXX early_return draw")
+		drawing = FALSE
 		return COMSIG_MOB_CLICK_CANCELED
+	else
+		drawing = TRUE
 
 	var/atom/movable/screen/plane_master/minimap/plane_master = source.hud_used.plane_masters["[TACMAP_PLANE]"]
 
@@ -1297,7 +1298,6 @@ SUBSYSTEM_DEF(minimaps)
 
 	// N.B. popup tacmap is a different control; we never want to recieve drawing inputs from it.
 	if (control != "mapwindow.map")
-		log_debug("XXX early_return label")
 		return COMSIG_MOB_CLICK_CANCELED
 
 	INVOKE_ASYNC(src, PROC_REF(async_mousedown), source, object, location, control, params)

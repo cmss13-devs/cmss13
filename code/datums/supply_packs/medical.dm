@@ -130,12 +130,12 @@
 /datum/supply_packs/surgery/beds
 	name = "surgery crate (surgical beds)"
 	contains = list(
-	/obj/item/roller/surgical,
-	/obj/item/roller/surgical,
-	/obj/item/roller/surgical,
-	/obj/item/roller/surgical,
-	/obj/item/roller/surgical,
-	/obj/item/roller/surgical,
+		/obj/item/roller/surgical,
+		/obj/item/roller/surgical,
+		/obj/item/roller/surgical,
+		/obj/item/roller/surgical,
+		/obj/item/roller/surgical,
+		/obj/item/roller/surgical,
 	)
 	cost = 25
 	containertype = /obj/structure/closet/crate/secure/surgery

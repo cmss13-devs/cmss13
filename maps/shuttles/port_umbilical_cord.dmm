@@ -88,14 +88,6 @@
 	},
 /turf/open/floor/plating/almayer,
 /area/shuttle/ert/no_defenses)
-"M" = (
-/obj/effect/landmark/ert_spawns/umbilical,
-/obj/structure/machinery/light{
-	dir = 4;
-	invisibility = 101
-	},
-/turf/open/floor/almayer/plate,
-/area/shuttle/ert/no_defenses)
 "Q" = (
 /turf/closed/wall/almayer/white/hull,
 /area/shuttle/ert/no_defenses)
@@ -200,7 +192,7 @@ s
 e
 d
 m
-M
+d
 m
 l
 "}

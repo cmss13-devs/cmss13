@@ -12,8 +12,7 @@
 "c" = (
 /obj/effect/landmark/ert_spawns/umbilical,
 /obj/structure/machinery/light{
-	dir = 4;
-	invisibility = 101
+	dir = 4
 	},
 /turf/open/floor/almayer/plate,
 /area/shuttle/ert/no_defenses)

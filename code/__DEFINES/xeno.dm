@@ -200,7 +200,7 @@
 #define XENO_BURIED_LARVA_TIME_LIMIT (30 MINUTES)
 
 /// The time when xenos can start taking over comm towers
-#define XENO_COMM_ACQUISITION_TIME (30 MINUTES)
+#define XENO_COMM_ACQUISITION_TIME (25 MINUTES)
 
 /// The time it takes for a pylon to give one royal resin while activated
 #define XENO_PYLON_ACTIVATION_COOLDOWN (5 MINUTES)

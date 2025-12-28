@@ -54,14 +54,6 @@
 	},
 /turf/open/floor/plating/almayer,
 /area/shuttle/ert/no_defenses)
-"y" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/effect/landmark/ert_spawns/umbilical,
-/turf/open/floor/plating/almayer,
-/area/shuttle/ert/no_defenses)
 "A" = (
 /obj/docking_port/mobile/starboard_umbilical_cord{
 	dir = 4
@@ -90,16 +82,18 @@
 /obj/effect/landmark/ert_spawns/umbilical,
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	pixel_x = 1
+	pixel_x = 1;
+	keep_as_object = 1
 	},
 /turf/open/floor/plating/almayer,
 /area/shuttle/ert/no_defenses)
 "P" = (
+/obj/effect/landmark/ert_spawns/umbilical,
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	dir = 1
+	dir = 1;
+	keep_as_object = 1
 	},
-/obj/effect/landmark/ert_spawns/umbilical,
 /turf/open/floor/plating/almayer,
 /area/shuttle/ert/no_defenses)
 "Q" = (
@@ -190,9 +184,9 @@ k
 "}
 (10,1,1) = {"
 s
-y
-y
-y
+N
+N
+N
 N
 H
 "}

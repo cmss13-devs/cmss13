@@ -11156,10 +11156,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/caperiver/outdoors/mining_base_exterior/north)
-"aIk" = (
-/obj/effect/spawner/random/sentry/lowchance,
-/turf/open/auto_turf/sand/layer2,
-/area/caperiver/outdoors/bushlands)
 "aIl" = (
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 1
@@ -79567,7 +79563,7 @@ ozt
 ozt
 bcH
 ozt
-aIk
+wxr
 tcv
 igM
 aEs

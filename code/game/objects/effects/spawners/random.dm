@@ -540,7 +540,9 @@
 /obj/effect/spawner/random/gun/cmb
 	name = "cmb gun loot spawner"
 	desc = "spawns a surv cmb gun and some ammo"
-	icon_state = "loot_cmb"
+	//icon_state = "loot_cmb"
+	icon_state = "loot_shotgun"
+	//TODO: re-add icons after removing for ASS test
 	guns = list(
 		/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb = null,
 		/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb = null,
@@ -560,20 +562,24 @@
 
 /obj/effect/spawner/random/gun/cmb/lowchance
 	spawn_nothing_percentage = 80
-	icon_state = "loot_cmb_20"
+	//icon_state = "loot_cmb_20"
+	icon_state = "loot_shotgun_20"
 
 /obj/effect/spawner/random/gun/cmb/midchance
 	spawn_nothing_percentage = 50
-	icon_state = "loot_cmb_50"
+	//icon_state = "loot_cmb_50"
+	icon_state = "loot_shotgun_50"
 
 /obj/effect/spawner/random/gun/cmb/highchance
 	spawn_nothing_percentage = 20
-	icon_state = "loot_cmb_80"
+	//icon_state = "loot_cmb_80"
+	icon_state = "loot_shotgun_80"
 
 /obj/effect/spawner/random/gun/corporate
 	name = "corporate gun loot spawner"
 	desc = "spawns a surv corporate gun and some ammo"
-	icon_state = "loot_corporate"
+	//icon_state = "loot_corporate"
+	icon_state = "loot_smg"
 	guns = list(
 		/obj/item/weapon/gun/rifle/m41a/corporate/no_lock = /obj/item/ammo_magazine/rifle,
 		/obj/item/weapon/gun/rifle/m41a/corporate/no_lock = /obj/item/ammo_magazine/rifle,
@@ -589,22 +595,26 @@
 
 /obj/effect/spawner/random/gun/corporate/lowchance
 	spawn_nothing_percentage = 80
-	icon_state = "loot_corporate_20"
+	//icon_state = "loot_corporate_20"
+	icon_state = "loot_smg_20"
 
 /obj/effect/spawner/random/gun/corporate/midchance
 	spawn_nothing_percentage = 50
-	icon_state = "loot_corporate_50"
+	//icon_state = "loot_corporate_50"
+	icon_state = "loot_smg_50"
 
 /obj/effect/spawner/random/gun/corporate/highchance
 	spawn_nothing_percentage = 20
-	icon_state = "loot_corporate_80"
+	//icon_state = "loot_corporate_80"
+	icon_state = "loot_smg_80"
 
 /obj/effect/spawner/random/gun/civ
 	name = "civilian gun loot spawner"
 	desc = "spawns a surv civ gun and some ammo"
 	mags_min = 1
 	mags_max = 3
-	icon_state = "loot_civ"
+	//icon_state = "loot_civ"
+	icon_state = "loot_rifle"
 	guns = list(
 		/obj/item/weapon/gun/boltaction = /obj/item/ammo_magazine/rifle/boltaction,
 		/obj/item/weapon/gun/boltaction = /obj/item/ammo_magazine/rifle/boltaction,
@@ -622,15 +632,18 @@
 
 /obj/effect/spawner/random/gun/civ/lowchance
 	spawn_nothing_percentage = 80
-	icon_state = "loot_civ_20"
+	//icon_state = "loot_civ_20"
+	icon_state = "loot_rifle_20"
 
 /obj/effect/spawner/random/gun/civ/midchance
 	spawn_nothing_percentage = 50
-	icon_state = "loot_civ_50"
+	//icon_state = "loot_civ_50"
+	icon_state = "loot_rifle_50"
 
 /obj/effect/spawner/random/gun/civ/highchance
 	spawn_nothing_percentage = 20
-	icon_state = "loot_civ_80"
+	//icon_state = "loot_civ_80"
+	icon_state = "loot_rifle_80"
 
 /*
 // claymore spawners

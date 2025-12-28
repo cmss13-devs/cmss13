@@ -42,7 +42,7 @@
 /turf/closed/wall/almayer/update_icon()
 	if(decoration_type == null)
 		return ..()
-	if(neighbors_list in list(EAST|WEST))
+	if(neighbors_bitfield == (EAST|WEST))
 		special_icon = TRUE
 		icon_state = "almayer_deco_wall[decoration_type]"
 	else // Wall connection was broken, return to normality
@@ -562,7 +562,7 @@
 	..()
 	if(special_icon)
 		return
-	if(neighbors_list in list(EAST|WEST))
+	if(neighbors_bitfield == (EAST|WEST))
 		var/r1 = rand(0,10) //Make a random chance for this to happen
 		if(r1 >= 9)
 			overlays += image(icon, icon_state = "wood_variant")

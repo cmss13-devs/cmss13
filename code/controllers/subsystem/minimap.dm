@@ -1137,8 +1137,15 @@ SUBSYSTEM_DEF(minimaps)
 	if(!.)
 		return
 
+	log_debug("XXX draw_tool_mousedown")
+	log_debug("obj")
+	log_debug(object)
+	log_debug("ctl")
+	log_debug(control)
+
 	// N.B. popup tacmap is a different control; we never want to recieve drawing inputs from it.
 	if (control != "mapwindow.map")
+		log_debug("XXX early_return draw")
 		return COMSIG_MOB_CLICK_CANCELED
 
 	var/atom/movable/screen/plane_master/minimap/plane_master = source.hud_used.plane_masters["[TACMAP_PLANE]"]
@@ -1290,6 +1297,7 @@ SUBSYSTEM_DEF(minimaps)
 
 	// N.B. popup tacmap is a different control; we never want to recieve drawing inputs from it.
 	if (control != "mapwindow.map")
+		log_debug("XXX early_return label")
 		return COMSIG_MOB_CLICK_CANCELED
 
 	INVOKE_ASYNC(src, PROC_REF(async_mousedown), source, object, location, control, params)

@@ -84,7 +84,7 @@
 
 /datum/component/tacmap/proc/show_tacmap(mob/user)
 	if(!map)
-		map = SSminimaps.fetch_minimap_object(targetted_zlevel, minimap_flag, TRUE, drawing=drawing)
+		map = SSminimaps.fetch_minimap_object(targetted_zlevel, minimap_flag, live=TRUE, popup=FALSE, drawing=drawing)
 		map_holder = new(null, targetted_zlevel, minimap_flag, drawing=drawing)
 		close_button = new /atom/movable/screen/exit_map(null, src)
 		var/list/atom/movable/screen/actions = list()
@@ -138,13 +138,14 @@ GLOBAL_LIST_INIT(tacmap_holders, list())
 
 /datum/tacmap_holder/New(loc, zlevel, flags, drawing)
 	map_ref = "tacmap_[REF(src)]_map"
-	map = SSminimaps.fetch_minimap_object(zlevel, flags, TRUE, TRUE, TRUE, drawing=drawing)
+	map = SSminimaps.fetch_minimap_object(zlevel, flags, TRUE, TRUE, TRUE, drawing=FALSE)
+
 	map.screen_loc = "[map_ref]:1,1"
+	map.assigned_map = map_ref
+	map.appearance_flags = NONE
 	var/matrix/transform = matrix()
 	transform.Translate(-32, 64)
 	map.transform = transform
-	map.assigned_map = map_ref
-	map.appearance_flags = NONE
 
 /datum/tacmap_holder/Destroy()
 	map = null

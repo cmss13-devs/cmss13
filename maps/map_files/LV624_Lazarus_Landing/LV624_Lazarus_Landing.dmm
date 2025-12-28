@@ -11902,6 +11902,7 @@
 /obj/structure/platform/stone/ancient_temple/alt,
 /obj/structure/platform/stone/ancient_temple/alt/west,
 /obj/structure/blocker/forcefield/all,
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/void{
 	name = "darkness"
 	},
@@ -25582,6 +25583,7 @@
 /obj/structure/platform/stone/ancient_temple/alt,
 /obj/structure/platform/stone/ancient_temple/alt/east,
 /obj/structure/blocker/forcefield/all,
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/void{
 	name = "darkness"
 	},
@@ -31757,6 +31759,7 @@
 /obj/structure/platform/stone/ancient_temple/alt/north,
 /obj/structure/platform/stone/ancient_temple/alt/east,
 /obj/structure/blocker/forcefield/all,
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/floor/ancient_temple/fake_wall_dark{
 	name = "sandstone temple wall"
 	},
@@ -38284,7 +38287,7 @@
 /obj/effect/landmark/nightmare{
 	insert_tag = "center_jungle"
 	},
-/turf/open/auto_turf/lv_sand/layer0,
+/turf/open/gm/dirt/brown/variant_5,
 /area/lazarus/ground/colony/north_tcomms_road)
 "qbI" = (
 /obj/structure/prop/colorable_rock/colorable{
@@ -44494,6 +44497,7 @@
 	pixel_y = -6;
 	icon_state = "rope_flipped"
 	},
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/floor/ancient_temple/fake_wall_dark{
 	name = "sandstone temple wall"
 	},
@@ -73952,7 +73956,7 @@ uBq
 uBq
 uBq
 dKr
-dKr
+qbH
 dKr
 uBq
 uBq
@@ -74176,7 +74180,7 @@ jjx
 jjx
 uBq
 uBq
-qbH
+uBq
 uBq
 dKr
 uBq

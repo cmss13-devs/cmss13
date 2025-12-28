@@ -86,10 +86,7 @@
 /turf/open/auto_turf/lv_sand/layer0,
 /area/template_noop)
 "qL" = (
-/obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
-	dir = 9
-	},
-/turf/open/auto_turf/lv_grass/layer0,
+/turf/open/gm/dirt/brown/variant_5,
 /area/template_noop)
 "ri" = (
 /obj/structure/flora/jungle/vines/blue/heavy,
@@ -150,7 +147,7 @@
 	pixel_y = 17
 	},
 /obj/structure/fence/dark/overgrown,
-/turf/open/gm/dirt/brown/variant_5/east,
+/turf/open/auto_turf/lv_grass/layer1,
 /area/template_noop)
 "Eh" = (
 /obj/structure/flora/jungle/vines/blue/heavy,
@@ -163,12 +160,6 @@
 /area/template_noop)
 "ER" = (
 /obj/structure/flora/jungle/vines/dead/light_2,
-/turf/open/auto_turf/lv_grass/layer0,
-/area/template_noop)
-"EU" = (
-/obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
-	dir = 5
-	},
 /turf/open/auto_turf/lv_grass/layer0,
 /area/template_noop)
 "HI" = (
@@ -233,23 +224,37 @@
 
 (1,1,1) = {"
 dV
-rM
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+qL
+qL
+"}
+(2,1,1) = {"
+iO
 rM
 Mu
-Mu
+qt
+iO
+rM
+iO
 rM
 rM
-rM
-rM
-rM
-rM
+iO
 rM
 Mu
 rM
 iO
 "}
-(2,1,1) = {"
-aL
+(3,1,1) = {"
 aL
 UP
 UP
@@ -265,8 +270,7 @@ UP
 aL
 rM
 "}
-(3,1,1) = {"
-aL
+(4,1,1) = {"
 UP
 lc
 lc
@@ -282,8 +286,7 @@ aL
 lc
 rM
 "}
-(4,1,1) = {"
-aL
+(5,1,1) = {"
 zT
 UP
 lc
@@ -299,8 +302,7 @@ aL
 UP
 rM
 "}
-(5,1,1) = {"
-aL
+(6,1,1) = {"
 aL
 UD
 aU
@@ -316,8 +318,7 @@ Eu
 UP
 aL
 "}
-(6,1,1) = {"
-aL
+(7,1,1) = {"
 aL
 eW
 he
@@ -333,8 +334,7 @@ UP
 lc
 aL
 "}
-(7,1,1) = {"
-aL
+(8,1,1) = {"
 eW
 lc
 HI
@@ -350,8 +350,7 @@ UP
 zC
 aL
 "}
-(8,1,1) = {"
-aL
+(9,1,1) = {"
 UP
 zB
 sR
@@ -367,8 +366,7 @@ aL
 Ua
 aL
 "}
-(9,1,1) = {"
-Eu
+(10,1,1) = {"
 aL
 sR
 zB
@@ -384,8 +382,7 @@ cG
 cG
 cG
 "}
-(10,1,1) = {"
-UP
+(11,1,1) = {"
 aL
 zT
 XD
@@ -401,8 +398,7 @@ cG
 cG
 cG
 "}
-(11,1,1) = {"
-EU
+(12,1,1) = {"
 UP
 hI
 xo
@@ -418,42 +414,39 @@ cG
 cG
 cG
 "}
-(12,1,1) = {"
-Zp
-UP
-aL
-aL
-aL
-aL
-aL
-aL
-aL
-aL
-UP
-cG
-cG
-cG
-cG
-"}
 (13,1,1) = {"
-qL
+UP
 aL
-rM
-fw
-iO
-Dw
-iO
-iO
-iO
-iO
-cG
+aL
+aL
+aL
+aL
+aL
+aL
+aL
+UP
 cG
 cG
 cG
 cG
 "}
 (14,1,1) = {"
-UP
+aL
+rM
+fw
+rM
+Dw
+rM
+rM
+iO
+iO
+cG
+cG
+cG
+cG
+cG
+"}
+(15,1,1) = {"
 aL
 qt
 ef
@@ -469,8 +462,7 @@ cG
 cG
 cG
 "}
-(15,1,1) = {"
-aL
+(16,1,1) = {"
 aL
 qt
 oW
@@ -486,8 +478,7 @@ cG
 cG
 cG
 "}
-(16,1,1) = {"
-UP
+(17,1,1) = {"
 aL
 qt
 dV
@@ -503,8 +494,7 @@ cG
 cG
 cG
 "}
-(17,1,1) = {"
-aL
+(18,1,1) = {"
 aL
 qt
 dV
@@ -520,8 +510,7 @@ cG
 cG
 cG
 "}
-(18,1,1) = {"
-aL
+(19,1,1) = {"
 aL
 qt
 dV
@@ -537,8 +526,7 @@ cG
 cG
 cG
 "}
-(19,1,1) = {"
-aL
+(20,1,1) = {"
 ef
 sP
 lq

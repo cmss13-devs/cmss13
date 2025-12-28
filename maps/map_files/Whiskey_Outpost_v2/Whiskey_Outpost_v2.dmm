@@ -289,9 +289,6 @@
 	},
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/cic)
-"aU" = (
-/turf/closed/wall/rock/brown,
-/area/whiskey_outpost/inside/hallway)
 "aV" = (
 /turf/open/floor/whitegreen/southwest,
 /area/whiskey_outpost/inside/hospital)
@@ -1379,10 +1376,8 @@
 /turf/open/floor/prison/floor_plate,
 /area/whiskey_outpost/inside/supply)
 "eI" = (
-/obj/structure/machinery/cm_vending/gear/engi,
-/obj/structure/machinery/light/small,
-/turf/open/floor/prison,
-/area/whiskey_outpost/inside/living)
+/turf/closed/wall/rock/brown,
+/area/whiskey_outpost/inside/hallway)
 "eJ" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -1394,7 +1389,8 @@
 /turf/open/gm/river,
 /area/whiskey_outpost/outside/river/east)
 "eL" = (
-/obj/effect/landmark/start/whiskey/engineer,
+/obj/structure/machinery/cm_vending/gear/engi,
+/obj/structure/machinery/light/small,
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/living)
 "eM" = (
@@ -1423,7 +1419,7 @@
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/living)
 "eQ" = (
-/obj/structure/machinery/cm_vending/clothing/engi,
+/obj/effect/landmark/start/whiskey/engineer,
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/living)
 "eR" = (
@@ -1456,7 +1452,7 @@
 /turf/open/floor/prison/floor_marked/southwest,
 /area/whiskey_outpost/inside/supply)
 "eV" = (
-/obj/structure/machinery/cm_vending/gear/engi,
+/obj/structure/machinery/cm_vending/clothing/engi,
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/living)
 "eW" = (
@@ -1483,10 +1479,7 @@
 /turf/open/floor/whitegreen/east,
 /area/whiskey_outpost/inside/hospital)
 "fa" = (
-/obj/structure/machinery/cm_vending/sorted/tech/comtech_tools,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/cm_vending/gear/engi,
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/living)
 "fb" = (
@@ -1517,7 +1510,7 @@
 "fg" = (
 /obj/structure/machinery/cm_vending/sorted/tech/comtech_tools,
 /obj/structure/machinery/light/small{
-	dir = 4
+	dir = 8
 	},
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/living)
@@ -1540,10 +1533,9 @@
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/bunker)
 "fk" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper ComTech Preparations";
-	req_access = list(11);
-	req_one_access = list()
+/obj/structure/machinery/cm_vending/sorted/tech/comtech_tools,
+/obj/structure/machinery/light/small{
+	dir = 4
 	},
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/living)
@@ -1552,6 +1544,14 @@
 /obj/item/ammo_magazine/sentry,
 /turf/open/floor/prison/floor_plate,
 /area/whiskey_outpost/inside/supply)
+"fm" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper ComTech Preparations";
+	req_access = list(11);
+	req_one_access = list()
+	},
+/turf/open/floor/prison,
+/area/whiskey_outpost/inside/living)
 "fo" = (
 /obj/structure/curtain,
 /turf/open/floor/prison,
@@ -19965,7 +19965,7 @@ mT
 kh
 kh
 kh
-aU
+eI
 mG
 lZ
 mh
@@ -28445,11 +28445,11 @@ fr
 fr
 Ys
 pq
-fa
-eQ
+fg
 eV
-eQ
-eI
+fa
+eV
+eL
 pq
 mT
 mT
@@ -28646,12 +28646,12 @@ Ys
 fr
 fr
 sI
-fk
+fm
 jM
-eL
-eL
-eL
-eL
+eQ
+eQ
+eQ
+eQ
 pq
 mT
 mT
@@ -28850,10 +28850,10 @@ fr
 sI
 Ys
 jM
-eL
-eL
-eL
-eL
+eQ
+eQ
+eQ
+eQ
 pq
 mT
 oE
@@ -29051,11 +29051,11 @@ fr
 fr
 Ys
 pq
-fg
-eQ
+fk
 eV
-eQ
-eI
+fa
+eV
+eL
 pq
 mT
 oE

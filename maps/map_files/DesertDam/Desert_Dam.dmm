@@ -58618,11 +58618,6 @@
 /obj/structure/machinery/light,
 /turf/open/floor/prison/green,
 /area/desert_dam/building/dorms/hallway_westwing)
-"qID" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light,
-/turf/open/floor/prison/green,
-/area/desert_dam/building/dorms/hallway_northwing)
 "qIV" = (
 /obj/structure/platform/metal/almayer/west,
 /turf/open/desert/dirt,
@@ -77217,6 +77212,7 @@
 "xXb" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/structure/machinery/light,
 /turf/open/floor/prison/green,
 /area/desert_dam/building/dorms/hallway_northwing)
 "xXi" = (
@@ -177425,7 +177421,7 @@ chl
 uTO
 ylU
 qxI
-qID
+xmx
 bDa
 bzp
 tto
@@ -177901,7 +177897,7 @@ tto
 tto
 tto
 bDa
-qOj
+shM
 rAU
 rbz
 rYG
@@ -178135,7 +178131,7 @@ tto
 paK
 paK
 rYG
-shM
+qOj
 qvq
 rbz
 rYG

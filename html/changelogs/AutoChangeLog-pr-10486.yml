@@ -1,5 +1,0 @@
-author: "Killfish"
-delete-after: True
-changes:
-  - balance: "Huggers purge 30u of stims upon hugging someone."
-  - balance: "Being nested while infected and below stage 4 purges 2u of stims per tick."

@@ -350,3 +350,23 @@
   - imageadd: Restock carts now have proper icons with fill overlays that add and
       remove a little box every 5 units of supplies.
   - code_imp: Repaths reagent tanks for consistency.
+2025-10-31:
+  Jesters-Ballad:
+  - balance: Dough costs adjusted, burger buns buffed significantly
+  Killfish:
+  - balance: Huggers purge 30u of stims upon hugging someone.
+  - balance: Being nested while infected and below stage 4 purges 2u of stims per
+      tick.
+  Lagomorphica:
+  - bugfix: peridaxon autoinjector no longer overdoses you
+  NHC:
+  - rscadd: replaced the pilot helmet in the PO and DCC vendor with a version that
+      has no pilot visor pre-installed.
+  - rscadd: adds binoculars and some other minor items to the pilot vendors.
+  - rscadd: adds the tactical pilot officer flight suit and its armor as a free option
+      to the PO uniform vendor.
+  - qol: sorts PO and DCC clothing vendor subcategories.
+  forest2001, lagomorphica:
+  - rscadd: Adds Synthetic Specialisation presets.
+  neeshacark:
+  - spellcheck: fixed a typo in vendors for high-cut labcoats

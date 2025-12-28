@@ -362,6 +362,24 @@
 
 	return XENO_NONCOMBAT_ACTION
 
+/obj/structure/powerloader_wreckage/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	if(unslashable || health <= 0)
+		return TAILSTAB_COOLDOWN_NONE
+	if(xeno.mob_size < MOB_SIZE_XENO)
+		to_chat(xeno, SPAN_XENOWARNING("You're too small to do any significant damage to this vehicle!"))
+		return XENO_NO_DELAY_ACTION
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	var/damage = (xeno.melee_vehicle_damage + rand(-5,5))
+	health -= damage
+	if(health <= 0)
+		xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
+		SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+		deconstruct(FALSE)
+	else
+		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
+		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	return TAILSTAB_COOLDOWN_NORMAL
+
 /obj/structure/powerloader_wreckage/jd
 	name = "\improper John Deere 4300 Power Loader wreckage"
 	icon_state = "wreck_jd"

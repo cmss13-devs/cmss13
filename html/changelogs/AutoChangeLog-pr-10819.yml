@@ -1,7 +1,0 @@
-author: "NHC"
-delete-after: True
-changes:
-  - rscadd: "replaced the pilot helmet in the PO and DCC vendor with a version that has no pilot visor pre-installed."
-  - rscadd: "adds binoculars and some other minor items to the pilot vendors."
-  - rscadd: "adds the tactical pilot officer flight suit and its armor as a free option to the PO uniform vendor."
-  - qol: "sorts PO and DCC clothing vendor subcategories."

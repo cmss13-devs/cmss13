@@ -5,7 +5,7 @@
 /obj/structure/machinery/power/smes/batteryrack
 	name = "Substation PSU"//"power cell rack PSU"
 	desc = "A rack of power cells working as a PSU."
-	charge = 0 //you dont really want to make a potato PSU which already is overloaded
+	charge = 0 //you don't really want to make a potato PSU which already is overloaded
 	outputting = 0
 	input_level = 0
 	output_level = 0
@@ -185,7 +185,7 @@
 				return
 			if (overcharge_percent >= 140)
 				if (prob(1))
-					empulse(src.loc, 1, 2, 0)
+					empulse(loc, 1, 2)
 		if ((2.4e6+1) to 3.6e6)
 			if (overcharge_percent >= 115)
 				if (prob(7))
@@ -194,10 +194,10 @@
 				return
 			if (overcharge_percent >= 130)
 				if (prob(1))
-					empulse(src.loc, 1, 3, 0)
+					empulse(loc, 1, 3)
 			if (overcharge_percent >= 150)
 				if (prob(1))
-					explosion(src.loc, 0, 0, 1, 3)
+					explosion(loc, 0, 0, 1, 3)
 		if ((3.6e6+1) to INFINITY)
 			if (overcharge_percent >= 115)
 				if (prob(8))
@@ -206,10 +206,10 @@
 				return
 			if (overcharge_percent >= 125)
 				if (prob(2))
-					empulse(src.loc, 4, 10, 1)
+					empulse(loc, 4, 10)
 			if (overcharge_percent >= 140)
 				if (prob(1))
-					explosion(src.loc, 0, 1, 2, 4)
+					explosion(loc, 0, 1, 2, 4)
 		else //how the hell was this proc called for negative charge
 			charge = 0
 

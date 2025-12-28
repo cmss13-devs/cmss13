@@ -25,11 +25,7 @@
 /turf/open/floor/interior/wood_sat/alt,
 /area/lazarus/ground/jungle/north_west_jungle/dense)
 "aau" = (
-/obj/structure/machinery/power/apc{
-	cell_type = /obj/item/cell/high;
-	dir = 1;
-	pixel_y = 28
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/prison/darkbrown3/north,
 /area/lazarus/comms)
 "aaA" = (
@@ -1162,14 +1158,10 @@
 /turf/open/floor/interior/wood_sat/damage_3,
 /area/lazarus/lodge)
 "ayu" = (
-/obj/structure/machinery/power/apc{
-	cell_type = /obj/item/cell/high;
-	dir = 8;
-	pixel_x = -28
-	},
 /obj/structure/closet/cabinet/hybrisa/metal,
 /obj/effect/landmark/objective_landmark/close,
 /obj/item/roller/bedroll/comfy/pink,
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/strata/fake_wood,
 /area/lazarus/sleep_female)
 "ayv" = (
@@ -3210,11 +3202,7 @@
 /turf/open/gm/river/soro,
 /area/lazarus/ground/ancient_temple/north_east)
 "boI" = (
-/obj/structure/machinery/power/apc{
-	cell_type = /obj/item/cell/high;
-	dir = 1;
-	pixel_y = 28
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/almayer/silverfull,
 /area/lazarus/medbay)
 "boZ" = (
@@ -3375,12 +3363,8 @@
 /area/lazarus/ground/river/east_river)
 "bti" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
-/obj/structure/machinery/power/apc{
-	cell_type = /obj/item/cell/high;
-	dir = 4;
-	pixel_x = 28
-	},
 /obj/structure/machinery/light/blue,
+/obj/structure/machinery/power/apc/no_power/east,
 /turf/open/auto_turf/lv_grass/layer1,
 /area/lazarus/yggdrasil)
 "btu" = (
@@ -4120,11 +4104,7 @@
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_y = -32
 	},
-/obj/structure/machinery/power/apc{
-	cell_type = /obj/item/cell/high;
-	dir = 8;
-	pixel_x = -28
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/prison/bright_clean2,
 /area/lazarus/captain)
 "bMC" = (
@@ -8480,12 +8460,8 @@
 /turf/open/auto_turf/lv_grass/layer1,
 /area/lazarus/ground/barrens/north_barrens)
 "dFO" = (
-/obj/structure/machinery/power/apc{
-	cell_type = /obj/item/cell/high;
-	dir = 4;
-	pixel_x = 28
-	},
 /obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/power/apc/no_power/east,
 /turf/open/floor/prison/kitchen/alt,
 /area/lazarus/kitchen)
 "dGb" = (
@@ -10965,12 +10941,8 @@
 /area/lazarus/ground/caves/north_west_caves)
 "eFB" = (
 /obj/structure/barricade/handrail/strata,
-/obj/structure/machinery/power/apc{
-	cell_type = /obj/item/cell/high;
-	dir = 8;
-	pixel_x = -28
-	},
 /obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/prison/darkbrown2/west,
 /area/lazarus/quartstorage)
 "eFW" = (
@@ -11412,11 +11384,7 @@
 /turf/open/floor/brown_dirt/random_rocks_alt,
 /area/lazarus/ground/barrens/east_barrens)
 "ePA" = (
-/obj/structure/machinery/power/apc{
-	cell_type = /obj/item/cell/high;
-	dir = 8;
-	pixel_x = -28
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/prison/sterile_white,
 /area/lazarus/canteen)
 "ePN" = (
@@ -19420,11 +19388,7 @@
 	wrenchable = 1;
 	dir = 8
 	},
-/obj/structure/machinery/power/apc{
-	cell_type = /obj/item/cell/high;
-	dir = 1;
-	pixel_y = 28
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/prison/bright_clean2,
 /area/lazarus/security)
 "ikK" = (
@@ -25062,11 +25026,6 @@
 /turf/open/floor/prison/green,
 /area/lazarus/hydroponics)
 "kIt" = (
-/obj/structure/machinery/power/apc{
-	cell_type = /obj/item/cell/high;
-	dir = 8;
-	pixel_x = -28
-	},
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_3";
 	pixel_x = -7;
@@ -25075,6 +25034,7 @@
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
 /obj/item/prop/alien/hugger,
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/prison/brown_bright/east,
 /area/lazarus/sleep_male)
 "kIw" = (
@@ -26461,12 +26421,8 @@
 /turf/open/floor/ancient_temple/damaged/damage_2,
 /area/lazarus/ground/ancient_temple/north_east)
 "lmP" = (
-/obj/structure/machinery/power/apc{
-	cell_type = /obj/item/cell/high;
-	dir = 1;
-	pixel_y = 28
-	},
 /obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/interior/tatami,
 /area/lazarus/fitness)
 "lnd" = (
@@ -31658,11 +31614,6 @@
 	},
 /area/lazarus/ground/colony/west_tcomms_road)
 "nnM" = (
-/obj/structure/machinery/power/apc{
-	cell_type = /obj/item/cell/high;
-	dir = 8;
-	pixel_x = -28
-	},
 /obj/structure/bedsheetbin{
 	pixel_y = 7;
 	pixel_x = -2
@@ -31671,6 +31622,7 @@
 	color = "#d4cfcd"
 	},
 /obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/lazarus/toilet)
 "nnQ" = (
@@ -32819,11 +32771,7 @@
 /turf/open/auto_turf/lv_sand/layer0,
 /area/lazarus/ground/barrens/central_barrens)
 "nNO" = (
-/obj/structure/machinery/power/apc{
-	cell_type = /obj/item/cell/high;
-	dir = 1;
-	pixel_y = 28
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/prison/floor_plate,
 /area/lazarus/engineering)
 "nNT" = (
@@ -34888,11 +34836,7 @@
 /turf/open/floor/ancient_temple/damaged/damage_7,
 /area/lazarus/ground/caves/west_caves)
 "oDt" = (
-/obj/structure/machinery/power/apc{
-	cell_type = /obj/item/cell/high;
-	dir = 1;
-	pixel_y = 28
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/strata/light_purple_edge/east,
 /area/lazarus/research)
 "oDw" = (
@@ -39689,12 +39633,8 @@
 /turf/open/gm/coast/dirt/north,
 /area/lazarus/ground/river/east_river)
 "qEb" = (
-/obj/structure/machinery/power/apc{
-	cell_type = /obj/item/cell/high;
-	dir = 1;
-	pixel_y = 28
-	},
 /obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/prison/west,
 /area/lazarus/engineering)
 "qEm" = (
@@ -41323,12 +41263,8 @@
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/lazarus/kitchen)
 "rqr" = (
-/obj/structure/machinery/power/apc{
-	cell_type = /obj/item/cell/high;
-	dir = 8;
-	pixel_x = -28
-	},
 /obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/prison/darkbrown2/west,
 /area/lazarus/quart)
 "rqv" = (
@@ -55259,11 +55195,7 @@
 /turf/open/floor/ancient_temple/damaged/damage_7,
 /area/lazarus/ground/caves/west_caves)
 "xfn" = (
-/obj/structure/machinery/power/apc{
-	cell_type = /obj/item/cell/high;
-	dir = 1;
-	pixel_y = 28
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lazarus/main_hall)
 "xfI" = (
@@ -57243,13 +57175,13 @@
 /turf/open/gm/coast/dirt/beachcorner2/north_east,
 /area/lazarus/ground/river/central_river/north)
 "xYy" = (
-/obj/structure/machinery/power/apc/power/north,
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_3";
 	pixel_x = 22;
 	pixel_y = 12
 	},
 /obj/item/ammo_magazine/smg/mp5,
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/strata/fake_wood,
 /area/lazarus/corporate_dome)
 "xYA" = (

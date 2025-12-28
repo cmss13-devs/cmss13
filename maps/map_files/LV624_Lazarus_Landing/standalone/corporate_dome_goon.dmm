@@ -252,7 +252,7 @@
 /obj/item/tool/screwdriver,
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
-/obj/structure/machinery/power/apc/no_power/north,
+/obj/structure/machinery/power/apc/power/north,
 /turf/open/floor/strata/fake_wood,
 /area/lazarus/corporate_dome)
 "fI" = (

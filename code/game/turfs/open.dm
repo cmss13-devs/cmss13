@@ -15,7 +15,10 @@
 
 /turf/open/Initialize(mapload, ...)
 	. = ..()
+	update_icon()
 
+/turf/open/afterShuttleMove(turf/oldT, rotation)
+	. = ..()
 	update_icon()
 
 /turf/open/update_icon()

@@ -158,14 +158,13 @@
 				border_rk = "command"
 			if(JOB_DOCTOR)
 				marine_rk = "doctor"
-			if(JOB_SURGEON)
-				marine_rk = "surgeon"
-			if(JOB_PHARMACIST)
-				marine_rk = "pharmacist"
+				border_rk = "command"
 			if(JOB_FIELD_DOCTOR)
 				marine_rk = "field_doctor"
+				border_rk = "command"
 			if(JOB_RESEARCHER)
 				marine_rk = "researcher"
+				border_rk = "command"
 			if(JOB_NURSE)
 				marine_rk = "nurse"
 			if(JOB_SEA)

@@ -269,6 +269,10 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 
 		var/mob/living/carbon/human/test_human = new
 		var/datum/job/job = GLOB.RoleAuthority.roles_for_mode[player.job]
+
+		if(!job || !job.gear_preset)
+			continue
+
 		var/datum/equipment_preset/preset = new job.gear_preset
 		test_human.faction = preset.faction
 		test_human.job = job.title

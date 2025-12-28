@@ -240,7 +240,6 @@
 			xeno.overlays -= xeno.acid_overlay
 	else
 		xeno.overlays -= xeno.acid_overlay
-
 	xeno.overlays += xeno.acid_overlay
 
 

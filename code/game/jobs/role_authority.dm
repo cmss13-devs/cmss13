@@ -286,6 +286,9 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 			else
 				test_human.assigned_squad.forget_marine_in_squad(test_human)
 		qdel(test_human)
+
+	for(var/datum/squad/squad in squads)
+		squad.roles_in = list()
 /**
 * Assign roles to the players. Return roles that are still avialable.
 * If count is true, return role balancing weight instead.

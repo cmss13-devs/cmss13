@@ -125,7 +125,7 @@
 
 /obj/item/storage/belt/utility/construction
 	name = "\improper M277 pattern construction rig"
-	desc = "The M277 is a common rig used by Combat Technicians to carry around materials and other supplies. It consists of a modular belt with various clips. This version sarafices storage space for specialized material loading clips."
+	desc = "The M277 is a common rig used by Combat Technicians to carry around materials and other supplies. It consists of a modular belt with various clips. This version sacrifices storage space for specialized material loading clips."
 	storage_slots = 6
 	can_hold = list(
 		/obj/item/tool/crowbar,
@@ -1326,13 +1326,6 @@
 		dump_into(attacked_item, user)
 	else
 		return ..()
-
-/obj/item/storage/belt/grenade/bugkiller
-
-/obj/item/storage/belt/grenade/bugkiller/fill_preset_inventory()
-	new /obj/item/explosive/grenade/custom/antiweed(src)
-	new /obj/item/explosive/grenade/custom/antiweed(src)
-	new /obj/item/explosive/grenade/custom/antiweed(src)
 
 ////////////////////////////// GUN BELTS /////////////////////////////////////
 

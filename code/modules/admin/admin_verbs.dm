@@ -602,7 +602,7 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 	set desc = "Tells everyone about a random statistic in the round."
 	set category = "OOC"
 
-	var/prompt = tgui_alert(usr, "Are you sure you want to do this?", "Announce Random Fact", list("No", "Yes"))
+	var/prompt = tgui_alert(usr, "Are you sure you want to do this?", "Announce Random Fact", list("Yes", "No"))
 	if(prompt != "Yes")
 		return
 

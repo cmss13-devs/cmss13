@@ -600,7 +600,7 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 		dump_body()
 	return ..()
 
-/obj/structure/bed/roller/hospital/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/bed/roller/hospital/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	if(body)
 		dump_body()
 	return ..()

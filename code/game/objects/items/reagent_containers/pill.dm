@@ -135,8 +135,16 @@
 	if(!proximity)
 		return
 
-	if(!istype(target, /obj/item/reagent_container))
-		return
+	if(target.is_open_container() && target.reagents)
+		if(!target.reagents.total_volume)
+			to_chat(user, SPAN_DANGER("[target] is empty. Can't dissolve [fluff_text]."))
+			return
+		var/amount = reagents.total_volume + target.reagents.total_volume
+		var/loss = amount - target.reagents.maximum_volume
+		if(amount > target.reagents.maximum_volume)
+			to_chat(user, SPAN_WARNING("You dissolve [fluff_text], but [target] overflows and takes [loss]u of your pill with it."))
+		else
+			to_chat(user, SPAN_NOTICE("You dissolve the [fluff_text] in [target]."))
 
 	if(!target.is_open_container())
 		to_chat(user, SPAN_WARNING("[target] has a lid on it. You can't drop [fluff_text] in [target] with the lid in the way."))

@@ -89,6 +89,12 @@
 /turf/open/shuttle/dropship/predship/mainfloor/corner/west
 	dir = WEST
 
+/turf/open/shuttle/dropship/predship/mainfloor/borderless_vertical
+	icon_state = "borderless_v"
+
+/turf/open/shuttle/dropship/predship/mainfloor/borderless_horizontal
+	icon_state = "borderless_h"
+
 // Upper platform
 
 /turf/open/shuttle/dropship/predship/mainfloor/upper

@@ -19,6 +19,7 @@
 
 /area/yautja_ship/lower_deck/training_center
 	name = "\improper Yautja Ship - Lower Deck - Training Center"
+	icon_state = "training"
 
 /area/yautja_ship/lower_deck/houndchamber
 	name = "\improper Yautja Ship - Lower Deck - Hound Chamber"
@@ -39,6 +40,7 @@
 
 /area/yautja_ship/middle_deck/research
 	name = "\improper Yautja Ship - Middle Deck - Research Chamber"
+	icon_state = "research"
 
 /area/yautja_ship/middle_deck/medical
 	name = "\improper Yautja Ship - Middle Deck - Healing Chamber"
@@ -63,10 +65,12 @@
 
 /area/yautja_ship/upper_deck/prison
 	name = "\improper Yautja Ship - Upper Deck - Prison Wing"
+	icon_state = "prison"
 
 /area/yautja_ship/upper_deck/throne
 	name = "\improper Yautja Ship - Upper Deck - Throne Room"
 	icon_state = "bridge"
+
 
 ///Predator Hunting Grounds stuff
 /area/yautja_grounds

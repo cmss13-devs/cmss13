@@ -676,10 +676,10 @@
 		overlays += filling
 	..()
 
-/obj/item/reagent_container/glass/pressurized_canister/verb/flush_container()
+/obj/item/reagent_container/glass/pressurized_canister/verb/flush_canister()
 	set category = "Weapons"
-	set name = "Flush Container"
-	set desc = "Forces the container to empty its reagents."
+	set name = "Flush Canister"
+	set desc = "Forces the reagent canister to empty its reagents while outside of its pouch."
 	set src in usr
 	if(reagents.total_volume <= 0)
 		to_chat(usr, SPAN_NOTICE("[src] is empty, already."))

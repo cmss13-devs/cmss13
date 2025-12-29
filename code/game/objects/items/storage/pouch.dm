@@ -1352,10 +1352,10 @@
 	else
 		. = "No reagents"
 
-/obj/item/storage/pouch/pressurized_reagent_canister/verb/flush_container()
+/obj/item/storage/pouch/pressurized_reagent_canister/verb/flush_canister_in_pouch()
 	set category = "Weapons"
-	set name = "Flush Canister"
-	set desc = "Forces the Pressurized Reagent Canister to empty its reagents."
+	set name = "Flush Canister In Pouch"
+	set desc = "Forces the reagent canister inside the pouch to empty its reagents."
 	set src in usr
 	if(!inner)
 		to_chat(usr, SPAN_WARNING("There is no canister inside [src]!"))

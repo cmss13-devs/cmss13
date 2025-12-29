@@ -43133,9 +43133,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/platoon1_shared)
 "cbE" = (
-/obj/structure/machinery/door/airlock/almayer/marine/delta/engineer{
-	req_access = list(10,18)
-	},
+/obj/structure/machinery/door/airlock/almayer/marine/delta/medic,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/squads/delta)
 "cbF" = (
@@ -43276,9 +43274,8 @@
 /turf/open/floor/almayer/mono,
 /area/almayer/squads/delta)
 "cbS" = (
-/obj/structure/machinery/door/airlock/almayer/marine/delta/medic{
-	dir = 8;
-	req_access = list(11,18)
+/obj/structure/machinery/door/airlock/almayer/marine/delta/engineer{
+	dir = 4
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/squads/delta)

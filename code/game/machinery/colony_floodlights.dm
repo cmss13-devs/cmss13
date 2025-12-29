@@ -10,6 +10,7 @@ GLOBAL_LIST_INIT(all_breaker_switches, list())
 	use_power = USE_POWER_IDLE
 	unslashable = TRUE
 	unacidable = TRUE
+	explo_proof = TRUE
 	power_machine = TRUE
 	idle_power_usage = 0
 	is_on = FALSE

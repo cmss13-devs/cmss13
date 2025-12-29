@@ -50,7 +50,7 @@
 /obj/structure/machinery/door_control/attack_alien(mob/user as mob)
 	return
 
-/obj/structure/machinery/door_control/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/machinery/door_control/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	return TAILSTAB_COOLDOWN_NONE
 
 /obj/structure/machinery/door_control/attackby(obj/item/W, mob/user as mob)
@@ -128,7 +128,7 @@
 		return
 
 	if(!allowed(user) && (wires & 1) && !force )
-		to_chat(user, SPAN_DANGER("Access Denied"))
+		to_chat(user, SPAN_DANGER("Access Denied."))
 		flick(initial(icon_state) + "-denied",src)
 		return
 
@@ -175,7 +175,7 @@
 		return
 
 	if(!allowed(user) && (wires & 1) && !force)
-		to_chat(user, SPAN_DANGER("Access Denied"))
+		to_chat(user, SPAN_DANGER("Access Denied."))
 		flick(initial(icon_state) + "-denied",src)
 		return
 

@@ -197,11 +197,25 @@
 	description = "A rich, sweet, non-alcoholic beverage traditionally consumed around Christmastime."
 	color = "#DFD7AF" // rgb: 223, 215, 175
 
+/datum/reagent/drink/milk/chocolate
+	name = "Chocolate Milk"
+	id = "chocolate_milk"
+	description = "Nectar of the gods and nectar of the cow. Fucking delicious."
+	color = "#AD8F70" // rgb: 123, 63, 0
+
 /datum/reagent/drink/cold/milkshake
 	name = "Milkshake"
 	description = "Glorious brainfreezing mixture."
 	id = "milkshake"
-	color = "#AEE5E4" // rgb" 174, 229, 228
+	color = "#AEE5E4" // rgb: 174, 229, 228
+	adj_temp = -2
+	target_temp = T0C
+
+/datum/reagent/drink/cold/milkshake/chocolate
+	name = "Chocolate Milkshake"
+	description = "Glorious brainfreezing mixture in classic chocolate flavor."
+	id = "chocolate_milkshake"
+	color = "#AF9B86" // rgb: 175, 155, 134
 	adj_temp = -2
 	target_temp = T0C
 
@@ -525,6 +539,12 @@
 	description = "Oh the nostalgia..."
 	id = "lemonade"
 	color = COLOR_YELLOW
+
+/datum/reagent/drink/chocolate
+	name = "Chocolate Syrup"
+	description = "Nectar of the gods."
+	id = "chocolatesyrup"
+	color = "#7B3F00" // rgb: 123, 163, 0
 
 //*****************************************************************************************************/
 //***************************************Remove When Safe**********************************************/

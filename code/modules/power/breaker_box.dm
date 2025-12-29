@@ -31,7 +31,7 @@
 	if(on)
 		. += SPAN_XENOWARNING("It seems to be online.")
 	else
-		. += SPAN_DANGER("It seems to be offline")
+		. += SPAN_DANGER("It seems to be offline.")
 
 /obj/structure/machinery/power/breakerbox/attack_remote(mob/user)
 	if(busy)

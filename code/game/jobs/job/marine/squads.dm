@@ -504,7 +504,7 @@
 
 /// Displays a message to squad members in chat and directly on the game map with potential coms garble for only the text argument
 /datum/squad/proc/transmit_alert(prefix="", text="", postfix="", maptext_title="", transmitter=null, only_leader=FALSE)
-	var/garbled_text = get_garbled_announcement(text)
+	var/garbled_text = get_garbled_announcement(text, faction)
 	var/list/targets_to_garble = get_garbled_targets(only_leader)
 
 	send_message("[prefix][text][postfix]", transmitter, only_leader, targets_to_garble, "[prefix][garbled_text][postfix]")
@@ -523,7 +523,7 @@
 		prefix = "Your secondary objective has been changed to '"
 		maptext_title = "Secondary Objective Updated:"
 
-	var/garbled_text = get_garbled_announcement(text)
+	var/garbled_text = get_garbled_announcement(text, faction)
 	var/list/targets_to_garble = get_garbled_targets(only_leader=FALSE)
 
 	send_message("[prefix][text][postfix]", transmitter, FALSE, targets_to_garble, "[prefix][garbled_text][postfix]")

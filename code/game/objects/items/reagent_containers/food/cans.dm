@@ -521,7 +521,7 @@
 
 /obj/item/reagent_container/food/drinks/cans/souto/diet
 	name = "\improper Diet Souto"
-	desc = "Now with 0% fruit juice! Canned in Havana"
+	desc = "Now with 0% fruit juice! Canned in Havana."
 	icon_state = "souto_diet_classic"
 	item_state = "souto_diet_classic"
 
@@ -541,7 +541,7 @@
 
 /obj/item/reagent_container/food/drinks/cans/souto/diet/classic
 	name = "\improper Diet Souto"
-	desc = "Now with 0% fruit juice! Canned in Havana"
+	desc = "Now with 0% fruit juice! Canned in Havana."
 	icon_state = "souto_diet_classic"
 	item_state = "souto_diet_classic"
 
@@ -551,7 +551,7 @@
 
 /obj/item/reagent_container/food/drinks/cans/souto/cherry
 	name = "\improper Cherry Souto"
-	desc = "Now with more artificial flavors! Canned in Havana"
+	desc = "Now with more artificial flavors! Canned in Havana."
 	icon_state = "souto_cherry"
 	item_state = "souto_cherry"
 

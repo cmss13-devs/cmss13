@@ -928,7 +928,7 @@ SUBSYSTEM_DEF(minimaps)
 
 /atom/movable/screen/exit_map
 	name = "Close Minimap"
-	desc = "Close the minimap"
+	desc = "Close the minimap."
 	icon = 'icons/ui_icons/minimap_buttons.dmi'
 	icon_state = "close"
 	screen_loc = "RIGHT,TOP"
@@ -1347,7 +1347,7 @@ SUBSYSTEM_DEF(minimaps)
 
 /atom/movable/screen/minimap_tool/update
 	icon_state = "update"
-	desc = "Send a tacmap update"
+	desc = "Send a tacmap update."
 	screen_loc = "15,7"
 
 /atom/movable/screen/minimap_tool/update/proc/cooldown_finished()
@@ -1495,7 +1495,7 @@ SUBSYSTEM_DEF(minimaps)
 
 /atom/movable/screen/minimap_tool/up
 	icon_state = "up"
-	desc = "Move up a level"
+	desc = "Move up a level."
 	screen_loc = "15,6"
 
 /atom/movable/screen/minimap_tool/up/clicked(location, list/modifiers)
@@ -1506,7 +1506,7 @@ SUBSYSTEM_DEF(minimaps)
 
 /atom/movable/screen/minimap_tool/down
 	icon_state = "down"
-	desc = "Move down a level"
+	desc = "Move down a level."
 	screen_loc = "15,5"
 
 /atom/movable/screen/minimap_tool/down/clicked(location, list/modifiers)
@@ -1519,7 +1519,7 @@ SUBSYSTEM_DEF(minimaps)
 
 /atom/movable/screen/minimap_tool/popout
 	icon_state = "popout"
-	desc = "Pop the minimap to a window"
+	desc = "Pop the minimap to a window."
 	screen_loc = "15,4"
 
 /atom/movable/screen/minimap_tool/popout/clicked(location, list/modifiers)
@@ -1592,6 +1592,8 @@ SUBSYSTEM_DEF(minimaps)
 			return MINIMAP_FLAG_XENO_FORSAKEN
 		if(XENO_HIVE_YAUTJA)
 			return MINIMAP_FLAG_YAUTJA
+		if(XENO_HIVE_HUNTED)
+			return MINIMAP_FLAG_XENO_HUNTED
 		if(XENO_HIVE_RENEGADE)
 			return MINIMAP_FLAG_XENO_RENEGADE
 	return 0

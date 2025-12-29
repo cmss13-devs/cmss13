@@ -222,7 +222,7 @@
 	var/debilitate = TRUE // Do we apply neg. status effects to the target?
 
 	if (carbon.mob_size >= MOB_SIZE_BIG)
-		to_chat(xeno, SPAN_XENOWARNING("We creature is too massive to target"))
+		to_chat(xeno, SPAN_XENOWARNING("We creature is too massive to target."))
 		return
 
 	if (carbon.stat == DEAD)

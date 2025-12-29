@@ -7,7 +7,7 @@
 	icon_state = "bottle-1"
 	item_state = "bottle-1"
 	amount_per_transfer_from_this = 10
-	possible_transfer_amounts = list(5, 10, 15, 25, 30, 40, 60)
+	possible_transfer_amounts = list(5,10,15,20,25,30,40,50,60)
 	flags_atom = FPRINT|OPENCONTAINER
 	volume = 60
 	attack_speed = 4
@@ -405,7 +405,7 @@
 
 /obj/item/reagent_container/glass/bottle/epinephrine
 	name = "\improper Epinephrine bottle"
-	desc = "A small bottle. Contains epinephrine - Used to increase a patients arterial blood pressure, amongst other actions, to assist in cardiopulmonary resuscitation." //"I can't lie to you about your odds of a successful resuscitation, but you have my sympathies"
+	desc = "A small bottle. Contains epinephrine - Used to increase a patients arterial blood pressure, amongst other actions, to assist in cardiopulmonary resuscitation." //"I can't lie to you about your odds of a successful resuscitation, but you have my sympathies."
 	volume = 60
 
 /obj/item/reagent_container/glass/bottle/epinephrine/Initialize()

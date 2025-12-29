@@ -635,7 +635,7 @@
 	var/broken_on_spawn = FALSE
 
 /obj/effect/landmark/static_comms/proc/spawn_tower()
-	var/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/commstower = new /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms(loc)
+	var/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/commstower = new (loc)
 	if(broken_on_spawn)
 		commstower.update_health(damage = health) //fuck it up
 	qdel(src)

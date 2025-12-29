@@ -1,0 +1,5 @@
+author: "carlarctg"
+delete-after: True
+changes:
+  - code_imp: "Tail stabbing objects now does the mob-stab animation"
+  - imageadd: "Added a new sprite for tail slam that shows its blunt, because i don't know."

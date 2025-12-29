@@ -380,8 +380,6 @@
 	S["key_bindings"] >> key_bindings
 	S["custom_keybinds"] >> custom_keybinds
 
-//	custom_keybinds = sanitize_list(custom_keybinds, default = new /list(KEYBIND_CUSTOM_MAX))
-
 	if(!islist(custom_keybinds))
 		custom_keybinds = new /list(KEYBIND_CUSTOM_MAX)
 

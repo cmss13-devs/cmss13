@@ -18175,13 +18175,11 @@
 /turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/middeck/req)
 "aUY" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad{
-	req_access = null;
-	req_one_access = null;
-	req_one_access_txt = "17;16;21";
-	vend_x_offset = 0
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad/platoon1{
+	req_access = list();
+	req_one_access = list(15.18)
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/platoon1_shared)
 "aUZ" = (
@@ -28098,10 +28096,9 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/req)
 "brn" = (
-/obj/structure/machinery/cm_vending/clothing/marine/support{
-	pixel_y = 0;
-	pixel_x = 26;
-	density = 0
+/obj/structure/machinery/cm_vending/clothing/marine/alpha{
+	density = 0;
+	pixel_x = 26
 	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/squads/alpha)
@@ -42513,9 +42510,8 @@
 /area/almayer/squads/platoon1_shared)
 "caa" = (
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad{
-	req_access = null;
-	req_one_access = null;
-	req_one_access_txt = "17;16;21";
+	req_access = list();
+	req_one_access = list(15.18);
 	vend_x_offset = 0;
 	vend_y_offset = 0
 	},
@@ -43089,11 +43085,9 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/platoon1_shared)
 "cbx" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad{
-	req_access = null;
-	req_one_access = null;
-	req_one_access_txt = "17;16;21";
-	vend_x_offset = 0
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad/platoon1{
+	req_access = list();
+	req_one_access = list(15.18)
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/platoon1_shared)
@@ -43258,7 +43252,8 @@
 /area/almayer/squads/delta)
 "cbO" = (
 /obj/structure/machinery/door/airlock/almayer/marine/delta/medic{
-	dir = 8
+	dir = 8;
+	req_access = list(11,18)
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/squads/delta)
@@ -45204,11 +45199,10 @@
 /area/almayer/squads/bravo)
 "cgr" = (
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad{
-	req_access = null;
-	req_one_access = null;
-	req_one_access_txt = "17;16;21";
+	req_one_access = list(16,17);
 	vend_x_offset = 0;
-	vend_y_offset = 0
+	vend_y_offset = 0;
+	req_access = list()
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/platoon2_shared)
@@ -45595,7 +45589,9 @@
 /turf/open/floor/almayer/aicore/glowing/no_build/ai_floor3,
 /area/almayer/command/airoom)
 "clF" = (
-/obj/structure/machinery/door/airlock/almayer/marine/delta/engineer,
+/obj/structure/machinery/door/airlock/almayer/marine/delta/engineer{
+	req_access = list(10,18)
+	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/squads/delta)
 "clG" = (
@@ -85131,13 +85127,6 @@
 	},
 /turf/open/floor/almayer/silver/northeast,
 /area/almayer/command/combat_correspondent)
-"tEL" = (
-/obj/structure/machinery/cm_vending/clothing/marine/alpha{
-	density = 0;
-	pixel_x = 26
-	},
-/turf/open/floor/almayer/cargo,
-/area/almayer/squads/alpha)
 "tFe" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -147563,8 +147552,8 @@ bZC
 bjs
 blA
 bZC
-tEL
-tEL
+brn
+brn
 aRT
 aLT
 aLT

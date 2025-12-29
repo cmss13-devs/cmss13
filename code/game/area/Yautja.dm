@@ -1,3 +1,51 @@
+/area/yautja_ship
+	name = "\improper Yautja Ship"
+	icon = 'icons/turf/areas.dmi'
+	icon_state = "hunter"
+	//music = "signal"
+	ambience_exterior = AMBIENCE_YAUTJA
+	ceiling = CEILING_METAL
+	powernet_name = "yautja_ship"
+	requires_power = FALSE
+	base_lighting_alpha = 155
+	base_lighting_color = "#ffc49c"
+	flags_area = AREA_YAUTJA_GROUNDS
+
+/// Bottom Deck
+/area/yautja_ship/lower_deck
+	name = "\improper Yautja Ship - Lower Deck"
+	base_lighting_alpha = 105
+
+/area/yautja_ship/lower_deck/training_center
+	name = "\improper Yautja Ship - Lower Deck - Training Center"
+
+/area/yautja_ship/lower_deck/houndchamber
+	name = "\improper Yautja Ship - Lower Deck - Hound Chamber"
+
+/// Mid Deck
+/area/yautja_ship/middle_deck
+	name = "\improper Yautja Ship - Middle Deck"
+
+/area/yautja_ship/middle_deck/bridge
+	name = "\improper Yautja Ship - Middle Deck - Bridge"
+
+/area/yautja_ship/middle_deck/trophy_hall
+	name = "\improper Yautja Ship - Middle Deck - Trophy Hall"
+
+/// Top Deck
+/area/yautja_ship/upper_deck
+	name = "\improper Yautja Ship - Upper Deck"
+	base_lighting_alpha = 180
+
+/area/yautja_ship/upper_deck/hangar_a
+	name = "\improper Yautja Ship - Upper Deck - Hangar A"
+
+/area/yautja_ship/upper_deck/hangar_b
+	name = "\improper Yautja Ship - Upper Deck - Hangar B"
+
+/area/yautja_ship/upper_deck/prison
+	name = "\improper Yautja Ship - Upper Deck - Prison Wing"
+
 
 ///Predator Hunting Grounds stuff
 /area/yautja_grounds

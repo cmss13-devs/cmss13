@@ -101,6 +101,10 @@
 	concurrent_users += WEAKREF(user)
 	onclose(user, "groundside_operations")
 
+/obj/structure/machinery/computer/groundside_operations/ui_close(mob/user as mob)
+	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
+	tacmap_component.close_popout_tacmaps(user)
+
 /obj/structure/machinery/computer/groundside_operations/proc/get_overwatch_info()
 	var/dat = ""
 	dat += {"

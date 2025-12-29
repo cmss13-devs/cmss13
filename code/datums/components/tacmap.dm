@@ -52,21 +52,29 @@
 	var/list/_interactees = interactees.Copy()
 	for(var/mob/interactee in _interactees)
 		on_unset_interaction(interactee)
+		close_popout_tacmaps()
 	map = null
 	for(var/mob/interactee in _interactees)
 		show_tacmap(interactee)
+		tgui_interact(interactee)
 
 /datum/component/tacmap/proc/move_tacmap_down()
 	targetted_zlevel--
 	var/list/_interactees = interactees.Copy()
 	for(var/mob/interactee in _interactees)
-		on_unset_interaction(interactee)
+		tgui_interact(interactee)
+		close_popout_tacmaps()
 	map = null
 	for(var/mob/interactee in _interactees)
 		show_tacmap(interactee)
+		tgui_interact(interactee)
 
 /datum/component/tacmap/proc/popout()
-	tgui_interact(usr)
+	var/datum/tgui/maybe_ui = SStgui.get_open_ui(usr, src)
+	if (maybe_ui == null)
+		tgui_interact(usr)
+	else
+		close_popout_tacmaps()
 
 /datum/component/tacmap/proc/on_unset_interaction(mob/user)
 	interactees -= user
@@ -121,6 +129,11 @@
 
 	.["isXeno"] = isxeno(user)
 	.["canChangeZ"] = FALSE
+
+/datum/component/tacmap/proc/close_popout_tacmaps()
+	var/datum/tgui/maybe_ui = SStgui.get_open_ui(usr, src)
+	if (maybe_ui != null)
+		maybe_ui.close()
 
 /datum/component/tacmap/ui_close(mob/user)
 	. = ..()

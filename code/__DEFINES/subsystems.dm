@@ -19,7 +19,7 @@
 * Timing should be based on how timing progresses on clients, not the server.
 *
 * Tracking this is more expensive,
-* should only be used in conjuction with things that have to progress client side, such as
+* should only be used in conjunction with things that have to progress client side, such as
 * animate() or sound()
 */
 #define TIMER_CLIENT_TIME (1<<2)
@@ -60,15 +60,15 @@
 ///Nothing happens
 #define INITIALIZE_HINT_NORMAL 0
 /**
- * call LateInitialize at the end of all atom Initalization
+ * call LateInitialize at the end of all atom Initialization
  *
  * The item will be added to the late_loaders list, this is iterated over after
- * initalization of subsystems is complete and calls LateInitialize on the atom
- * see [this file for the LateIntialize proc](atom.html#proc/LateInitialize)
+ * initialization of subsystems is complete and calls LateInitialize on the atom
+ * see [this file for the LateInitialize proc](atom.html#proc/LateInitialize)
  */
 #define INITIALIZE_HINT_LATELOAD 1
 
-///Call qdel on the atom after intialization
+///Call qdel on the atom after initialization
 #define INITIALIZE_HINT_QDEL 2
 
 ///Call LateInitialize on roundstart
@@ -88,7 +88,7 @@
 
 //! ### SS initialization hints
 /**
- * Negative values incidate a failure or warning of some kind, positive are good.
+ * Negative values indicate a failure or warning of some kind, positive are good.
  * 0 and 1 are unused so that TRUE and FALSE are guaranteed to be invalid values.
  */
 
@@ -98,7 +98,7 @@
 /// The default return value which must be overridden. Will succeed with a warning.
 #define SS_INIT_NONE -1
 
-/// Subsystem initialized sucessfully.
+/// Subsystem initialized successfully.
 #define SS_INIT_SUCCESS 2
 
 /// Successful, but don't print anything. Useful if subsystem was disabled.

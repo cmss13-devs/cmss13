@@ -43,7 +43,7 @@
 /// Whether or not the object uses hearing
 #define USES_HEARING (1<<17)
 /// Should we use the initial icon for display? Mostly used by overlay only objects
-#define HTML_USE_INITAL_ICON (1<<18)
+#define HTML_USE_INITIAL_ICON (1<<18)
 // Whether or not the object sees emotes
 #define USES_SEEING (1<<19)
 // Can be quick drawn
@@ -84,7 +84,7 @@
 #define NO_CRYO_STORE (1<<9)
 /// For backpacks if they should have unique layering functions
 #define ITEM_OVERRIDE_NORTHFACE (1<<10)
-/// whether activating it digs shrapnel out of the user and striking others with medical skills can dig shapnel out of other people.
+/// whether activating it digs shrapnel out of the user and striking others with medical skills can dig shrapnel out of other people.
 #define CAN_DIG_SHRAPNEL (1<<11)
 /// whether it has an animated icon state of "[icon_state]_on" to be used during surgeries.
 #define ANIMATED_SURGICAL_TOOL (1<<12)

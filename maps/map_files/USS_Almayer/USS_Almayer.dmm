@@ -41714,6 +41714,7 @@
 	pixel_x = 15;
 	pixel_y = 26
 	},
+/obj/structure/machinery/power/apc/almayer/north,
 /turf/open/floor/almayer/plate,
 /area/almayer/living/grunt_rnr)
 "bXZ" = (

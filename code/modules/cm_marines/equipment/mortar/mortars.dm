@@ -352,7 +352,7 @@
 /obj/structure/mortar/attackby(obj/item/item, mob/user)
 	if(istype(item, /obj/item/device/binoculars/range/designator))
 		if(!skillcheck(user, SKILL_JTAC, SKILL_JTAC_TRAINED))
-			to_chat(user, SPAN_WARNING("You don't know how to link your laser designator to the [src]."))
+			to_chat(user, SPAN_WARNING("You don't know how to link your laser designator to [src]."))
 			return
 		if(!lase_mode)
 			to_chat(user, SPAN_WARNING("You need to switch [src] to laser targeting before linking your laser designator!"))

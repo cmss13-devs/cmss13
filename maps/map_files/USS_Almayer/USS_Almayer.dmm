@@ -18178,7 +18178,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad/platoon1{
 	req_access = list();
-	req_one_access = list(15.18)
+	req_one_access = list(15,18)
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/platoon1_shared)
@@ -42511,7 +42511,7 @@
 "caa" = (
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad{
 	req_access = list();
-	req_one_access = list(15.18);
+	req_one_access = list(15,18);
 	vend_x_offset = 0;
 	vend_y_offset = 0
 	},
@@ -43087,7 +43087,7 @@
 "cbx" = (
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad/platoon1{
 	req_access = list();
-	req_one_access = list(15.18)
+	req_one_access = list(15,18)
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/platoon1_shared)
@@ -51695,6 +51695,14 @@
 "eQR" = (
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/s_bow)
+"eQY" = (
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad{
+	req_access = list();
+	req_one_access = list(16,17);
+	vend_x_offset = 0
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/squads/platoon2_shared)
 "eRi" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/folder/black{
@@ -61867,6 +61875,20 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/lower/starboard_midship_hallway)
+"jqb" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/machinery/door_control{
+	id = "laddernorthwest";
+	name = "North West Ladders Shutters";
+	pixel_x = 9;
+	req_one_access_txt = "2;3;12;19";
+	throw_range = 15;
+	pixel_y = 33
+	},
+/turf/open/floor/almayer,
+/area/almayer/hallways/lower/starboard_fore_hallway)
 "jqu" = (
 /obj/structure/largecrate/random{
 	pixel_x = -6;
@@ -88008,6 +88030,18 @@
 	},
 /turf/open/floor/almayer/red/north,
 /area/almayer/hallways/upper/port)
+"uSi" = (
+/obj/structure/machinery/light,
+/obj/structure/machinery/door_control{
+	id = "laddersouthwest";
+	name = "South West Ladders Shutters";
+	pixel_x = 5;
+	req_one_access_txt = "2;3;12;19";
+	throw_range = 15;
+	pixel_y = -28
+	},
+/turf/open/floor/almayer,
+/area/almayer/hallways/lower/port_fore_hallway)
 "uSk" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -142098,7 +142132,7 @@ jXR
 aaI
 aaI
 wDr
-kgt
+jqb
 hKe
 qqf
 aiv
@@ -142124,7 +142158,7 @@ byc
 abJ
 tzw
 jZe
-qPU
+uSi
 wDr
 sai
 sai
@@ -148309,7 +148343,7 @@ bTu
 cgr
 bRL
 cgr
-bRL
+eQY
 chP
 bQW
 bQu

@@ -320,7 +320,7 @@
 
 /obj/structure/mortar/proc/handle_dial(mob/user, temp_dial_x = 0, temp_dial_y = 0, manual = FALSE)
 	if(lase_mode)
-		user.visible_message(SPAN_WARNING("The [strip_improper(name)] is set to laser targeting mode, switch to coordinate targeting in order to dial coordinates!"))
+		user.visible_message(SPAN_WARNING("[src] is set to laser targeting mode, switch to coordinate targeting in order to dial coordinates!"))
 		return
 	if(manual)
 		temp_dial_x = tgui_input_number(user, "Set longitude adjustement from -10 to 10.", "Longitude", 0, 10, -10)

@@ -38129,17 +38129,8 @@
 /area/almayer/living/briefing)
 "bPO" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/reagent_container/food/drinks/coffeecup{
-	pixel_x = 6;
-	pixel_y = 3
-	},
-/obj/item/reagent_container/food/drinks/coffeecup{
-	pixel_x = -6;
-	pixel_y = -3
-	},
-/obj/item/reagent_container/food/drinks/coffeecup{
-	pixel_y = 12;
-	pixel_x = -5
+/obj/structure/mug_rack{
+	pixel_y = 9
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/briefing)

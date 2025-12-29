@@ -1,7 +1,7 @@
 /area/yautja_ship
 	name = "\improper Yautja Ship"
-	icon = 'icons/turf/areas.dmi'
-	icon_state = "hunter"
+	icon = 'icons/turf/area_yautja.dmi'
+	icon_state = "middeck"
 	//music = "signal"
 	ambience_exterior = AMBIENCE_YAUTJA
 	ceiling = CEILING_METAL
@@ -15,6 +15,7 @@
 /area/yautja_ship/lower_deck
 	name = "\improper Yautja Ship - Lower Deck"
 	base_lighting_alpha = 105
+	icon_state = "lowerdeck"
 
 /area/yautja_ship/lower_deck/training_center
 	name = "\improper Yautja Ship - Lower Deck - Training Center"
@@ -28,14 +29,31 @@
 
 /area/yautja_ship/middle_deck/bridge
 	name = "\improper Yautja Ship - Middle Deck - Bridge"
+	icon_state = "bridge"
 
 /area/yautja_ship/middle_deck/trophy_hall
 	name = "\improper Yautja Ship - Middle Deck - Trophy Hall"
+
+/area/yautja_ship/middle_deck/armory
+	name = "\improper Yautja Ship - Middle Deck - Armory"
+
+/area/yautja_ship/middle_deck/research
+	name = "\improper Yautja Ship - Middle Deck - Research Chamber"
+
+/area/yautja_ship/middle_deck/medical
+	name = "\improper Yautja Ship - Middle Deck - Healing Chamber"
+	icon_state = "medical"
+
+/area/yautja_ship/middle_deck/morgue
+	name = "\improper Yautja Ship - Middle Deck - Hall of the Fallen"
+	icon_state = "medical"
+
 
 /// Top Deck
 /area/yautja_ship/upper_deck
 	name = "\improper Yautja Ship - Upper Deck"
 	base_lighting_alpha = 180
+	icon_state = "topdeck"
 
 /area/yautja_ship/upper_deck/hangar_a
 	name = "\improper Yautja Ship - Upper Deck - Hangar A"
@@ -46,6 +64,9 @@
 /area/yautja_ship/upper_deck/prison
 	name = "\improper Yautja Ship - Upper Deck - Prison Wing"
 
+/area/yautja_ship/upper_deck/throne
+	name = "\improper Yautja Ship - Upper Deck - Throne Room"
+	icon_state = "bridge"
 
 ///Predator Hunting Grounds stuff
 /area/yautja_grounds

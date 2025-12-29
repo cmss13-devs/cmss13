@@ -1,0 +1,4 @@
+author: "zzzmike"
+delete-after: True
+changes:
+  - bugfix: "Larva that chestburst onto a tile that already has fire on it will no longer ignite"

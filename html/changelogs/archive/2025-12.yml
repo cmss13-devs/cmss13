@@ -259,3 +259,78 @@
       max.
   - ui: Increased the size of the Chemmaster 3000 window to 600x600 from 550x600 to
       fit the new buttons without distorting text too much.
+2025-12-16:
+  Drathek:
+  - bugfix: Fix Restore Ghost Character verb causing ghosts to be visible to living
+      players
+  SpypigDev:
+  - bugfix: CO lore faxes no longer use invisible ink
+2025-12-17:
+  MistChristmas:
+  - bugfix: Bipods don't erroneously buff the gun after first undeploy. Bipods don't
+      apply forever slow.
+  - bugfix: Using akimbo simultaneous fire and then switching to alternate fire doesn't
+      break shooting.
+  - qol: Akimbo defaults to simultaneous fire if you use automatic weapons for autofire.
+  - qol: Tracker no longer needs empty active hand to be accessed with a normal left
+      click, but needs intent other than harm if something is in hands
+  - qol: Give Obj Confirmation box now has Yes listed as the highlighted Option on
+      the right. A few other similar confirmation boxes got this treatment. Including
+      some Admin Verbs.
+  - bugfix: Acid Harness no longer accepts larger beakers than normal, + needs a multi
+      tool to change configurations, + doesn't protect against reagents that actually
+      have no OD limit
+  - balance: Acid Harness no longer scans so frequently, instead scans every 15 Seconds
+      further modified for successful injection(+15% per U) or OD Warning(+20% per
+      U)
+  cuberound:
+  - bugfix: tacmap multiz stair icons (unused) get displayed correctly
+2025-12-19:
+  Puckaboo2:
+  - rscadd: Adds inhand sprites for the new chemistry, medical, and surgery books.
+  - bugfix: Chemistry book is no longer purple inhand.
+  - rscadd: Adds chocolate milk, and chocolate milkshakes.
+  - rscadd: Grind chocolate bars to make chocolate syrup.
+  - rscadd: Adds Chocolate Syrup to soda fountains.
+  - rscadd: Adds chocolate syrup to some fridges.
+  - imageadd: Adds a WY-brand chocolate syrup bottle filled with chocolate syrup,
+      adds chocolate milk glass and chocolate milkshake glass
+  - code_imp: Renames 'chocolate' to 'chocolatesyrup' and renames 'glass of chocolate'
+      to 'glass of chocolate syrup'
+  itus2k:
+  - rscadd: added a few lines to Rank_pins.dm, mostly ones to make them use the new
+      sprites.
+  - rscadd: A army section to rank_pins.dm, to make it easier to change and add stuff
+      for that faction once it's implemented.
+  - imageadd: Added a few icons to the Ranks.dmi
+  - imageadd: Added a few icons to the Onmob ranks.dmi
+  - imageadd: Added a few icons to the  Inventory ranks.dmi
+2025-12-23:
+  Drathek:
+  - rscadd: Added ignition and evaporation to liquid fuel spills (its duration might
+      be reduced if there is little fuel present and it only does greenfire damage);
+      also randomized its spread and marked it as harmful (checked for synths and
+      extinguishers)
+  - balance: Removed the weed removal aspect of the toxic property (since now toxic
+      welding fuel is ignitable)
+  - balance: Spray bottles volume reduced from 250->150 but default amount per transfer
+      reduced from 10->5 (25 uses->30 uses; 10 is no longer an option)
+  - balance: Water backpack sprayer volume reduced from 500->250 (100 uses->50 uses)
+  - balance: Spray bottles use delay increased from 0.5/0.25 seconds->1.5 seconds
+  - balance: Water backpack sprayer delay increased from 0 seconds->3.5 seconds
+  - balance: Chem smoke now spreads 4x less reagents and smoke flamer range was reduced
+      from 5 to 4
+  - rscdel: Removed antiweed grenades and loadouts (replaced a survivor loadout with
+      a fuel filled watertank instead)
+  - bugfix: Fixed some potential ways for sprayers to be used to spray harmful substances
+      by synths
+  - bugfix: Fixed liquid fuel stacking extra amounts depending on the quantity of
+      objects in the turf
+  - refactor: Refactored logic for chem sprayer and synth foam backpack sprayer
+2025-12-25:
+  Drathek:
+  - code_imp: rust_g updated from 3.3.0 to 4.2.0
+  Kashargul:
+  - code_imp: update tgui dependencies
+  - code_imp: Update tgui dependencies again
+  - ui: Updated some stylesheets to meet new SASS expectations

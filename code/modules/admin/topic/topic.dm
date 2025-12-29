@@ -1909,7 +1909,7 @@
 		var/prompt = tgui_alert(usr, "Do you want the nuke to be Encrypted?", "Nuke Type", list("Encrypted", "Decrypted"), 20 SECONDS)
 		if(prompt == "Decrypted")
 			nukename = "Decrypted Operational Blockbuster"
-		prompt = tgui_alert(usr, "Are you sure you want to authorize '[nukename]' to the marines? This will greatly affect the round!", "DEFCON 1", list("No", "Yes"))
+		prompt = tgui_alert(usr, "Are you sure you want to authorize '[nukename]' to the marines? This will greatly affect the round!", "DEFCON 1", list("Yes", "No"))
 		if(prompt != "Yes")
 			return
 

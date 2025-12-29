@@ -1,0 +1,6 @@
+author: "Puckaboo2"
+delete-after: True
+changes:
+  - spellcheck: "If 'Civilian' was misspelled anywhere, now it isn't."
+  - spellcheck: "Spellchecks modified files."
+  - imagetweak: "Respelled 'background_civillian' to 'background_civilian'."

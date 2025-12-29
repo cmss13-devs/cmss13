@@ -1071,37 +1071,35 @@
 	max_w_class = SIZE_SMALL
 	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD
 	icon_state = "pressurized_reagent_canister"
-	desc = "A pouch that can carry one custom autoinjector and one pressurized reagent canister that ou can fill with a reagent tank or chemical dispenser."
+	desc = "A pouch that can carry one custom autoinjector and one pressurized reagent canister that you can fill with a reagent tank or chemical dispenser."
 	can_hold = list(/obj/item/reagent_container/hypospray/autoinjector/empty)
 	var/obj/item/reagent_container/glass/pressurized_canister/inner
 	matter = list("plastic" = 2000, "glass" = 2000)
 	flags_item = NOBLUDGEON
 
-
-/obj/item/storage/pouch/pressurized_reagent_canister/bicaridine
-	name = "\improper Pressurized Reagent Canister Pouch (Bicaridine)"
-	desc = "A pouch that carries a 5u reagent pouch autoinector and a pressurized reagent canister filled with the common brute-mending medicine, bicaridine, that you can refill with a reagent tank or chemical dispenser."
-
-/obj/item/storage/pouch/pressurized_reagent_canister/kelotane
-	name = "\improper Pressurized Reagent Canister Pouch (Kelotane)"
-	desc = "A pouch that carries a 5u reagent pouch autoinector and a pressurized reagent canister filled with the common burn-salving medicine, kelotane, that you can refill with a reagent tank or chemical dispenser."
-
-/obj/item/storage/pouch/pressurized_reagent_canister/tricordrazine
-	name = "\improper Pressurized Reagent Canister Pouch (Tricordrazine)"
-	desc = "A pouch that carries a 5u reagent pouch autoinector and a pressurized reagent canister filled with the common wide-spectrum damage mender, Tricordrazine, that you can refill with a reagent tank or chemical dispenser."
+/obj/item/storage/pouch/pressurized_reagent_canister/damage_mend
+	name = "\improper Pressurized Reagent Canister Pouch (Damage Mending Mix)"
+	desc = "A pouch that carries a 15u reagent pouch autoinjector and a pressurized reagent canister filled with equal parts Bicaridine, Kelotane, and Tricordrazine to quickly heal brute and burn damage accumulated on the field. You can refill 160 units of each reagent with a reagent tank or chemical dispenser."
 
 /obj/item/storage/pouch/pressurized_reagent_canister/oxycodone
 	name = "\improper Pressurized Reagent Canister Pouch (Field Anesthetic)"
-	desc = "A pouch that carries a 5u reagent pouch autoinector and a pressurized reagent canister filled with the most robust painkiller, Oxycodone, that you can refill with a reagent tank or chemical dispenser."
+	desc = "A pouch that carries a 5u reagent pouch autoinjector and a pressurized reagent canister filled with the most robust painkiller, Oxycodone, that you can refill with a reagent tank or chemical dispenser. The dosage is small to gauge the amount of anesthetic needed for minor or complicated surgeries, and to reduce the occurrences of overdoses."
 
-/obj/item/storage/pouch/pressurized_reagent_canister/revival_tricord
-	name = "\improper Pressurized Reagent Canister Pouch (Tricordrazine Revival Mix)"
-	desc = "A pouch that carries a heavy 15u custom autoinjector and a pressurized reagent canister filled with equal-parts Epinephrine, Inaprovaline, and Tricordrazine for stablizing and minimizing damage to defibrillated patients. You can refill 160 units of each reagent with a reagent tank or chemical dispenser."
-
+/obj/item/storage/pouch/pressurized_reagent_canister/revival_oxy
+	name = "\improper Pressurized Reagent Canister Pouch (Oxycodone Revival Mix)"
+	desc = "A pouch that carries a chunky 20u custom autoinjector and a pressurized reagent canister filled with equal-parts Oxycodone, Inaprovaline, and Epinephrine for quickly getting marines in pain crit up and back on their feet. You can refill 160 units of each reagent with a reagent tank or chemical dispenser."
 
 /obj/item/storage/pouch/pressurized_reagent_canister/revival_peri
 	name = "\improper Pressurized Reagent Canister Pouch (Peridaxon Revival Mix)"
-	desc = "A pouch that carries a heavy 15u custom autoinjector and a pressurized reagent canister filled with equal-parts Epinephrine, Inaprovaline, and  Peridaxon for stabilizing and staving off effects of defibrillation-related heart damage. You can refill 160 units of each reagent with a reagent tank or chemical dispenser."
+	desc = "A pouch that carries a heavy 15u custom autoinjector and a pressurized reagent canister filled with equal-parts Epinephrine, Inaprovaline, and Peridaxon for stabilizing and staving off effects of defibrillation-related heart damage. You can refill 160 units of each reagent with a reagent tank or chemical dispenser."
+
+/obj/item/storage/pouch/pressurized_reagent_canister/revival_tricord
+	name = "\improper Pressurized Reagent Canister Pouch (Tricordrazine Revival Mix)"
+	desc = "A pouch that carries a 15u custom autoinjector and a pressurized reagent canister filled with equal-parts Epinephrine, Inaprovaline, and Tricordrazine for stabilizing and minimizing damage to defibrillated patients. You can refill 160 units of each reagent with a reagent tank or chemical dispenser."
+
+/obj/item/storage/pouch/pressurized_reagent_canister/surgery_prep
+	name = "\improper Pressurized Reagent Canister Pouch (Surgery Prep Mix)"
+	desc = "A pouch that carries a heavy 15u custom autoinjector and a pressurized reagent canister filled with equal-parts Oxycodone, Peridaxon, and Dexalin+ to locally anesthetize patients and prevent them from dying on the table due to the effects of organ damage or suffocating from low blood. You can refill 160 units of each reagent with a reagent tank or chemical dispenser."
 
 /obj/item/storage/pouch/pressurized_reagent_canister/Initialize()
 	. = ..()
@@ -1109,7 +1107,7 @@
 	//Only add an autoinjector if the canister is empty
 	//Important for the snowflake /obj/item/storage/pouch/pressurized_reagent_canister/oxycodone
 	if(length(contents) == 0)
-		new /obj/item/reagent_container/hypospray/autoinjector/empty/medic/extrasmall(src) // If it has one chemical, it is 5u (medic/extrasmall) 2 chemicals, 10u (medic/small); 3 chemicals, 15u (/medic), for consistency's sake.
+		new /obj/item/reagent_container/hypospray/autoinjector/empty/medic(src)
 	update_icon()
 
 /obj/item/storage/pouch/pressurized_reagent_canister/proc/fill_with(ragent)
@@ -1121,31 +1119,48 @@
 		A.update_icon()
 	update_icon()
 
-
-/obj/item/storage/pouch/pressurized_reagent_canister/bicaridine/Initialize()
+/obj/item/storage/pouch/pressurized_reagent_canister/damage_mend/Initialize()
 	. = ..()
-	fill_with("bicaridine")
 
-/obj/item/storage/pouch/pressurized_reagent_canister/kelotane/Initialize()
-	. = ..()
-	fill_with("kelotane")
+	//we don't call fill_with because of the complex mix of chemicals we have
+	inner.reagents.add_reagent("bicaridine", inner.volume/3)
+	inner.reagents.add_reagent("kelotane", inner.volume/3)
+	inner.reagents.add_reagent("tricordrazine", inner.volume/3)
+	if(length(contents) > 0)
+		var/obj/item/reagent_container/hypospray/autoinjector/empty/medic/A = contents[1]
+		A.reagents.add_reagent("bicaridine", A.volume/3)
+		A.reagents.add_reagent("kelotane", A.volume/3)
+		A.reagents.add_reagent("tricordrazine", A.volume/3)
+		A.update_uses_left()
+		A.update_icon()
+	update_icon()
 
 /obj/item/storage/pouch/pressurized_reagent_canister/oxycodone/Initialize()
 	. = ..()
+	if(length(contents))
+		for(var/obj/item/reagent_container/hypospray/autoinjector/empty/autoinjector in contents)
+			qdel(autoinjector) //delete current autoinjector because parent spawned a 15u one and we want a 5u one here. If there's a better way of doing this, let me know, please.
+			new /obj/item/reagent_container/hypospray/autoinjector/empty/medic/extrasmall(src)
 	fill_with("oxycodone")
+	update_icon()
 
-/obj/item/storage/pouch/pressurized_reagent_canister/tricordrazine/Initialize()
+/obj/item/storage/pouch/pressurized_reagent_canister/revival_oxy/Initialize()
 	. = ..()
-	fill_with("tricordrazine")
+	//we don't call fill_with because of the complex mix of chemicals we have
+	inner.reagents.add_reagent("adrenaline", inner.volume/3)
+	inner.reagents.add_reagent("inaprovaline", inner.volume/3)
+	inner.reagents.add_reagent("oxycodone", inner.volume/3)
+	if(length(contents) > 0)
+		var/obj/item/reagent_container/hypospray/autoinjector/empty/medic/A = contents[1]
+		A.reagents.add_reagent("adrenaline", A.volume/3)
+		A.reagents.add_reagent("inaprovaline", A.volume/3)
+		A.reagents.add_reagent("oxycodone", A.volume/3)
+		A.update_uses_left()
+		A.update_icon()
+	update_icon()
 
 /obj/item/storage/pouch/pressurized_reagent_canister/revival_tricord/Initialize()
 	. = ..()
-	if(length(contents))
-		for(var/obj/item/reagent_container/hypospray/autoinjector/empty/autoinjector in contents)
-			qdel(autoinjector) //delete current autoinjector because parent spawned a 5u one and we want a 15u one here. If there's a better way of doing this, let me know, please.
-			new /obj/item/reagent_container/hypospray/autoinjector/empty/medic/(src) // If it has one chemical, it is 5u (medic/extrasmall) 2 chemicals, 10u (medic/small); 3 chemicals, 15u (/medic), for consistency's sake.
-	update_icon()
-
 	//we don't call fill_with because of the complex mix of chemicals we have
 	inner.reagents.add_reagent("adrenaline", inner.volume/3)
 	inner.reagents.add_reagent("inaprovaline", inner.volume/3)
@@ -1161,12 +1176,6 @@
 
 /obj/item/storage/pouch/pressurized_reagent_canister/revival_peri/Initialize()
 	. = ..()
-	if(length(contents))
-		for(var/obj/item/reagent_container/hypospray/autoinjector/empty/autoinjector in contents)
-			qdel(autoinjector) //delete current autoinjector because parent spawned a 5u one and we want a 15u one here. If there's a better way of doing this, let me know, please.
-			new /obj/item/reagent_container/hypospray/autoinjector/empty/medic/(src) // If it has one chemical, it is 5u (medic/extrasmall) 2 chemicals, 10u (medic/small); 3 chemicals, 15u (/medic), for consistency's sake.
-	update_icon()
-
 	//we don't call fill_with because of the complex mix of chemicals we have
 	inner.reagents.add_reagent("adrenaline", inner.volume/3)
 	inner.reagents.add_reagent("inaprovaline", inner.volume/3)
@@ -1175,6 +1184,22 @@
 		var/obj/item/reagent_container/hypospray/autoinjector/empty/medic/A = contents[1]
 		A.reagents.add_reagent("adrenaline", A.volume/3)
 		A.reagents.add_reagent("inaprovaline", A.volume/3)
+		A.reagents.add_reagent("peridaxon", A.volume/3)
+		A.update_uses_left()
+		A.update_icon()
+	update_icon()
+
+/obj/item/storage/pouch/pressurized_reagent_canister/surgery_prep/Initialize()
+	. = ..()
+
+	//we don't call fill_with because of the complex mix of chemicals we have
+	inner.reagents.add_reagent("oxycodone", inner.volume/3)
+	inner.reagents.add_reagent("dexalinp", inner.volume/3)
+	inner.reagents.add_reagent("peridaxon", inner.volume/3)
+	if(length(contents) > 0)
+		var/obj/item/reagent_container/hypospray/autoinjector/empty/medic/A = contents[1]
+		A.reagents.add_reagent("oxycodone", A.volume/3)
+		A.reagents.add_reagent("dexalinp", A.volume/3)
 		A.reagents.add_reagent("peridaxon", A.volume/3)
 		A.update_uses_left()
 		A.update_icon()
@@ -1302,9 +1327,9 @@
 	if(isxeno(user))
 		return
 	if(!inner)
-		return "This [src] has no container inside!"
+		return "[src] has no container inside!"
 	if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_TRAINED))
-		return "This [src] contains: [get_reagent_list_text()]"
+		return "[src] contains: [get_reagent_list_text()]"
 	else
 		return "You don't know what's in it."
 

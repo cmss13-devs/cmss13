@@ -463,7 +463,7 @@
 // The actual Machinegun itself, going to borrow some stuff from current sentry code to make sure it functions. Also because they're similiar.
 /obj/structure/machinery/m56d_hmg
 	name = "\improper M56D heavy machine gun"
-	desc = "A deployable, heavy machine gun. While it is capable of taking the same rounds as the M56, it fires specialized tungsten rounds for increased armor penetration.<br>Drag its sprite onto yourself to man it. Ctrl-click it to cycle through firemodes."
+	desc = "A deployable, heavy machine gun. While it is capable of taking the same rounds as the M56, it fires specialized tungsten rounds for increased armor penetration.<br>Drag its sprite onto yourself to man it."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi'
 	icon_state = "M56D"
 	anchored = TRUE

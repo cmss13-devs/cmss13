@@ -1,0 +1,5 @@
+author: "Puckaboo2"
+delete-after: True
+changes:
+  - spellcheck: "All instances of 'simultaneously' have been spellchecked."
+  - spellcheck: "Spellchecks modified files."

@@ -5559,8 +5559,8 @@
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/stair_clone/upper/port_aft)
 "ank" = (
-/obj/structure/closet/secure_closet/fridge/dry,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/secure_closet/fridge/meat,
 /turf/open/floor/almayer/plate,
 /area/almayer/living/grunt_rnr)
 "anl" = (
@@ -15240,7 +15240,10 @@
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/sp)
 "aNI" = (
-/obj/structure/machinery/door/airlock/almayer/marine/alpha/tl,
+/obj/structure/machinery/door/airlock/almayer/marine/alpha/tl{
+	req_access = list(32,15);
+	req_one_access = list()
+	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/squads/alpha)
 "aNJ" = (
@@ -16877,12 +16880,11 @@
 /turf/open/floor/almayer/sterile_green_corner/west,
 /area/almayer/medical/upper_medical)
 "aRT" = (
-/obj/structure/machinery/cm_vending/clothing/marine/support{
-	pixel_y = 0;
-	pixel_x = 26;
-	density = 0
-	},
 /obj/structure/machinery/light,
+/obj/structure/machinery/cm_vending/clothing/marine/alpha{
+	density = 0;
+	pixel_x = 26
+	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/squads/alpha)
 "aRV" = (
@@ -18173,13 +18175,11 @@
 /turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/middeck/req)
 "aUY" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad{
-	req_access = null;
-	req_one_access = null;
-	req_one_access_txt = "17;16;21";
-	vend_x_offset = 0
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad/platoon1{
+	req_access = list();
+	req_one_access = list(15,18)
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/platoon1_shared)
 "aUZ" = (
@@ -22458,7 +22458,7 @@
 	icon_state = "S";
 	pixel_y = 0
 	},
-/obj/structure/machinery/cm_vending/clothing/medic/support{
+/obj/structure/machinery/cm_vending/clothing/medic/alpha{
 	density = 0;
 	pixel_y = 16;
 	pixel_x = -1
@@ -28096,10 +28096,9 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/req)
 "brn" = (
-/obj/structure/machinery/cm_vending/clothing/marine/support{
-	pixel_y = 0;
-	pixel_x = 26;
-	density = 0
+/obj/structure/machinery/cm_vending/clothing/marine/alpha{
+	density = 0;
+	pixel_x = 26
 	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/squads/alpha)
@@ -28824,12 +28823,11 @@
 /turf/open/floor/almayer/green/east,
 /area/almayer/living/offices)
 "bsS" = (
-/obj/structure/machinery/cm_vending/clothing/marine/support{
-	pixel_y = 0;
+/obj/structure/machinery/light,
+/obj/structure/machinery/cm_vending/clothing/marine/delta{
 	density = 0;
 	pixel_x = -26
 	},
-/obj/structure/machinery/light,
 /turf/open/floor/almayer/cargo,
 /area/almayer/squads/delta)
 "bsT" = (
@@ -28838,13 +28836,13 @@
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/req)
 "bsU" = (
-/obj/structure/machinery/cm_vending/clothing/tl/alpha{
-	density = 0;
-	pixel_x = -1;
-	pixel_y = 16
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
+	},
+/obj/structure/machinery/cm_vending/clothing/tl/delta{
+	density = 0;
+	pixel_y = 16;
+	pixel_x = -1
 	},
 /turf/open/floor/almayer/flooredge,
 /area/almayer/squads/delta)
@@ -37582,8 +37580,8 @@
 "bOu" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/marine/shared{
 	name = "\improper Support Squad Preparations";
-	req_one_access = list(2,21,17);
-	req_access = list(11)
+	req_one_access = list();
+	req_access = list(11,17)
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/squads/support)
@@ -38959,7 +38957,9 @@
 /area/almayer/hallways/lower/starboard_umbilical)
 "bRu" = (
 /obj/structure/machinery/door/airlock/almayer/marine/bravo/tl{
-	dir = 4
+	dir = 4;
+	req_access = list(32,16);
+	req_one_access = list()
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/squads/bravo)
@@ -39077,8 +39077,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/briefing)
 "bRH" = (
-/obj/structure/machinery/cm_vending/clothing/marine/support{
-	pixel_y = 0;
+/obj/structure/machinery/cm_vending/clothing/marine/bravo{
 	density = 0;
 	pixel_x = -26
 	},
@@ -39193,12 +39192,12 @@
 	icon_state = "S";
 	pixel_y = 0
 	},
-/obj/structure/machinery/cm_vending/clothing/medic/support{
-	density = 0;
-	pixel_y = 16;
-	pixel_x = -1
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/cm_vending/clothing/medic/delta{
+	density = 0;
+	pixel_x = -1;
+	pixel_y = 16
+	},
 /turf/open/floor/almayer/flooredge/north,
 /area/almayer/squads/delta)
 "bRW" = (
@@ -39285,12 +39284,11 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/lower/port_midship_hallway)
 "bSi" = (
-/obj/structure/machinery/cm_vending/clothing/marine/support{
-	pixel_y = 0;
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/cm_vending/clothing/marine/bravo{
 	density = 0;
 	pixel_x = -26
 	},
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/cargo,
 /area/almayer/squads/bravo)
 "bSj" = (
@@ -39320,7 +39318,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/marine/shared{
 	name = "\improper Support Squad Preparations";
 	req_one_access = list(2,21,17);
-	req_access = list(32)
+	req_access = list(32,17)
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/squads/support)
@@ -39418,12 +39416,11 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/machinery/cm_vending/clothing/marine/support{
-	pixel_y = 0;
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/cm_vending/clothing/marine/bravo{
 	density = 0;
 	pixel_x = -26
 	},
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/cargo,
 /area/almayer/squads/bravo)
 "bSD" = (
@@ -39461,10 +39458,9 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/machinery/cm_vending/clothing/marine/support{
-	pixel_y = 0;
-	pixel_x = 26;
-	density = 0
+/obj/structure/machinery/cm_vending/clothing/marine/bravo{
+	density = 0;
+	pixel_x = 26
 	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/squads/bravo)
@@ -39618,8 +39614,8 @@
 "bSZ" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/marine/shared{
 	name = "\improper Support Squad Preparations";
-	req_one_access = list(2,21,17);
-	req_access = list(10)
+	req_one_access = list();
+	req_access = list(10,17)
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/squads/support)
@@ -39641,9 +39637,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/hallways/lower/port_midship_hallway)
 "bTe" = (
-/obj/structure/machinery/cm_vending/clothing/marine/support{
-	pixel_y = 0
-	},
+/obj/structure/machinery/cm_vending/clothing/marine/bravo,
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/bravo)
 "bTf" = (
@@ -41338,7 +41332,7 @@
 	dir = 4
 	},
 /obj/structure/surface/table/almayer,
-/turf/open/floor/plating/almayer,
+/turf/open/floor/almayer/plate,
 /area/almayer/living/grunt_rnr)
 "bXp" = (
 /obj/structure/machinery/light{
@@ -42497,9 +42491,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/lower/starboard_midship_hallway)
 "bZX" = (
-/obj/structure/machinery/cm_vending/clothing/marine/support{
-	pixel_y = 0
-	},
+/obj/structure/machinery/cm_vending/clothing/marine/alpha,
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/alpha)
 "bZY" = (
@@ -42518,9 +42510,8 @@
 /area/almayer/squads/platoon1_shared)
 "caa" = (
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad{
-	req_access = null;
-	req_one_access = null;
-	req_one_access_txt = "17;16;21";
+	req_access = list();
+	req_one_access = list(15,18);
 	vend_x_offset = 0;
 	vend_y_offset = 0
 	},
@@ -42608,10 +42599,7 @@
 /turf/open/floor/almayer/flooredge/southwest,
 /area/almayer/squads/platoon1_shared)
 "can" = (
-/obj/structure/machinery/cm_vending/clothing/marine/support{
-	pixel_y = 0;
-	pixel_x = -1
-	},
+/obj/structure/machinery/cm_vending/clothing/marine/delta,
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/delta)
 "cao" = (
@@ -42668,21 +42656,20 @@
 /turf/open/floor/almayer/redfull2,
 /area/almayer/squads/alpha)
 "caw" = (
+/obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/cm_vending/clothing/tl/alpha{
 	density = 0;
 	pixel_x = 26;
 	pixel_y = 1
 	},
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/flooredge/west,
 /area/almayer/squads/alpha)
 "cax" = (
-/obj/structure/machinery/cm_vending/clothing/marine/support{
-	pixel_y = 0;
+/obj/structure/machinery/light,
+/obj/structure/machinery/cm_vending/clothing/marine/alpha{
 	density = 0;
 	pixel_x = -26
 	},
-/obj/structure/machinery/light,
 /turf/open/floor/almayer/cargo,
 /area/almayer/squads/alpha)
 "cay" = (
@@ -42779,12 +42766,11 @@
 /turf/open/floor/almayer/flooredge/west,
 /area/almayer/squads/delta)
 "caJ" = (
-/obj/structure/machinery/cm_vending/clothing/marine/support{
-	pixel_y = 0;
-	pixel_x = 26;
-	density = 0
-	},
 /obj/structure/machinery/light,
+/obj/structure/machinery/cm_vending/clothing/marine/delta{
+	density = 0;
+	pixel_x = 26
+	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/squads/delta)
 "caK" = (
@@ -42947,8 +42933,7 @@
 /turf/open/floor/almayer/red2/northeast,
 /area/almayer/squads/alpha)
 "cbe" = (
-/obj/structure/machinery/cm_vending/clothing/marine/support{
-	pixel_y = 0;
+/obj/structure/machinery/cm_vending/clothing/marine/alpha{
 	density = 0;
 	pixel_x = -26
 	},
@@ -42990,21 +42975,19 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/platoon1_shared)
 "cbk" = (
-/obj/structure/machinery/cm_vending/clothing/marine/support{
-	pixel_y = 0;
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/cm_vending/clothing/marine/delta{
 	density = 0;
 	pixel_x = -26
 	},
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/cargo,
 /area/almayer/squads/delta)
 "cbl" = (
-/obj/structure/machinery/cm_vending/clothing/marine/support{
-	pixel_y = 0;
-	pixel_x = 26;
-	density = 0
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/cm_vending/clothing/marine/delta{
+	density = 0;
+	pixel_x = 26
+	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/squads/delta)
 "cbm" = (
@@ -43102,11 +43085,9 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/platoon1_shared)
 "cbx" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad{
-	req_access = null;
-	req_one_access = null;
-	req_one_access_txt = "17;16;21";
-	vend_x_offset = 0
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad/platoon1{
+	req_access = list();
+	req_one_access = list(15,18)
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/platoon1_shared)
@@ -43271,7 +43252,8 @@
 /area/almayer/squads/delta)
 "cbO" = (
 /obj/structure/machinery/door/airlock/almayer/marine/delta/medic{
-	dir = 8
+	dir = 8;
+	req_access = list(11,18)
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/squads/delta)
@@ -43792,12 +43774,11 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/lower/starboard_midship_hallway)
 "ccV" = (
-/obj/structure/machinery/cm_vending/clothing/marine/support{
-	pixel_y = 16;
-	pixel_x = -1;
-	density = 0
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/cm_vending/clothing/marine/alpha{
+	density = 0;
+	pixel_y = 16
+	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/squads/alpha)
 "ccW" = (
@@ -44121,9 +44102,8 @@
 	layer = 3.33;
 	pixel_x = 1
 	},
-/obj/structure/machinery/cm_vending/clothing/medic/support{
+/obj/structure/machinery/cm_vending/clothing/medic/alpha{
 	density = 0;
-	pixel_y = 1;
 	pixel_x = -26
 	},
 /turf/open/floor/almayer/flooredge/west,
@@ -44293,17 +44273,19 @@
 	icon_state = "S";
 	pixel_y = 0
 	},
-/obj/structure/machinery/cm_vending/clothing/medic/support{
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/cm_vending/clothing/medic/alpha{
 	density = 0;
 	pixel_y = 16;
 	pixel_x = -1
 	},
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/flooredge/north,
 /area/almayer/squads/alpha)
 "cee" = (
 /obj/structure/machinery/door/airlock/almayer/marine/delta/tl{
-	dir = 4
+	dir = 4;
+	req_access = list(32,18);
+	req_one_access = list()
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/squads/delta)
@@ -44607,12 +44589,12 @@
 	icon_state = "S";
 	pixel_y = 0
 	},
-/obj/structure/machinery/cm_vending/clothing/engi/support{
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/cm_vending/clothing/engi/alpha{
 	density = 0;
 	pixel_y = 16;
 	pixel_x = -1
 	},
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/flooredge/north,
 /area/almayer/squads/alpha)
 "ceP" = (
@@ -44620,7 +44602,7 @@
 	icon_state = "S";
 	pixel_y = 0
 	},
-/obj/structure/machinery/cm_vending/clothing/engi/support{
+/obj/structure/machinery/cm_vending/clothing/engi/alpha{
 	density = 0;
 	pixel_y = 16;
 	pixel_x = -1
@@ -44913,10 +44895,9 @@
 /turf/closed/wall/almayer/reinforced,
 /area/almayer/squads/alpha)
 "cfo" = (
-/obj/structure/machinery/cm_vending/clothing/marine/support{
-	pixel_y = 0;
-	pixel_x = 26;
-	density = 0
+/obj/structure/machinery/cm_vending/clothing/marine/bravo{
+	density = 0;
+	pixel_x = 26
 	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/squads/bravo)
@@ -45218,11 +45199,10 @@
 /area/almayer/squads/bravo)
 "cgr" = (
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad{
-	req_access = null;
-	req_one_access = null;
-	req_one_access_txt = "17;16;21";
+	req_one_access = list(16,17);
 	vend_x_offset = 0;
-	vend_y_offset = 0
+	vend_y_offset = 0;
+	req_access = list()
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/platoon2_shared)
@@ -45609,7 +45589,9 @@
 /turf/open/floor/almayer/aicore/glowing/no_build/ai_floor3,
 /area/almayer/command/airoom)
 "clF" = (
-/obj/structure/machinery/door/airlock/almayer/marine/delta/engineer,
+/obj/structure/machinery/door/airlock/almayer/marine/delta/engineer{
+	req_access = list(10,18)
+	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/squads/delta)
 "clG" = (
@@ -45640,7 +45622,10 @@
 /turf/open/floor/almayer/mono,
 /area/almayer/squads/support)
 "clI" = (
-/obj/structure/machinery/door/airlock/almayer/marine/delta/smart,
+/obj/structure/machinery/door/airlock/almayer/marine/delta/smart{
+	req_access = list(14,18);
+	req_one_access = list()
+	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/squads/delta)
 "clJ" = (
@@ -49145,12 +49130,12 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/obj/structure/machinery/cm_vending/clothing/specialist/alpha{
-	density = 0;
-	pixel_y = 16;
-	pixel_x = -1
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/cm_vending/clothing/specialist/delta{
+	density = 0;
+	pixel_x = -1;
+	pixel_y = 16
+	},
 /turf/open/floor/almayer/blue2/northwest,
 /area/almayer/squads/delta)
 "dJe" = (
@@ -51710,6 +51695,14 @@
 "eQR" = (
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/s_bow)
+"eQY" = (
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad{
+	req_access = list();
+	req_one_access = list(16,17);
+	vend_x_offset = 0
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/squads/platoon2_shared)
 "eRi" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/folder/black{
@@ -55398,12 +55391,12 @@
 	icon_state = "S";
 	pixel_y = 0
 	},
-/obj/structure/machinery/cm_vending/clothing/engi/support{
-	density = 0;
-	pixel_y = 16;
-	pixel_x = -1
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/cm_vending/clothing/engi/delta{
+	density = 0;
+	pixel_x = -1;
+	pixel_y = 16
+	},
 /turf/open/floor/almayer/flooredge/north,
 /area/almayer/squads/delta)
 "gBd" = (
@@ -58071,8 +58064,7 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/underdeck/vehicle)
 "hMX" = (
-/obj/structure/machinery/cm_vending/clothing/marine/support{
-	pixel_y = 0;
+/obj/structure/machinery/cm_vending/clothing/marine/delta{
 	density = 0;
 	pixel_x = -26
 	},
@@ -61194,7 +61186,7 @@
 /turf/open/floor/almayer/plating_striped,
 /area/almayer/engineering/upper_engineering/starboard)
 "jdm" = (
-/obj/structure/machinery/cm_vending/clothing/leader/alpha,
+/obj/structure/machinery/cm_vending/clothing/leader/delta,
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/delta)
 "jdn" = (
@@ -61883,6 +61875,20 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/lower/starboard_midship_hallway)
+"jqb" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/machinery/door_control{
+	id = "laddernorthwest";
+	name = "North West Ladders Shutters";
+	pixel_x = 9;
+	req_one_access_txt = "2;3;12;19";
+	throw_range = 15;
+	pixel_y = 33
+	},
+/turf/open/floor/almayer,
+/area/almayer/hallways/lower/starboard_fore_hallway)
 "jqu" = (
 /obj/structure/largecrate/random{
 	pixel_x = -6;
@@ -63891,9 +63897,8 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/obj/structure/machinery/cm_vending/clothing/medic/support{
+/obj/structure/machinery/cm_vending/clothing/medic/delta{
 	density = 0;
-	pixel_y = 1;
 	pixel_x = 26
 	},
 /turf/open/floor/almayer/flooredge/east,
@@ -66661,10 +66666,9 @@
 /turf/closed/wall/almayer/outer/internal,
 /area/almayer/maint/hull/lower/l_m_p)
 "lAl" = (
-/obj/structure/machinery/cm_vending/clothing/marine/support{
-	pixel_y = 0;
-	pixel_x = 26;
-	density = 0
+/obj/structure/machinery/cm_vending/clothing/marine/delta{
+	density = 0;
+	pixel_x = 26
 	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/squads/delta)
@@ -71850,12 +71854,11 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/obj/structure/machinery/cm_vending/clothing/smartgun/alpha{
-	density = 0;
-	pixel_x = 26;
-	pixel_y = 1
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/cm_vending/clothing/smartgun/delta{
+	pixel_x = 26;
+	density = 0
+	},
 /turf/open/floor/almayer/blue2/southeast,
 /area/almayer/squads/delta)
 "nTo" = (
@@ -73495,14 +73498,14 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/starboard_hallway)
 "oyG" = (
-/obj/structure/machinery/cm_vending/clothing/specialist/alpha{
-	density = 0;
-	pixel_x = -1;
-	pixel_y = -29
-	},
 /obj/structure/machinery/light{
 	dir = 4;
 	pixel_y = 16
+	},
+/obj/structure/machinery/cm_vending/clothing/specialist/delta{
+	density = 0;
+	pixel_x = -1;
+	pixel_y = -29
 	},
 /turf/open/floor/almayer/blue2/southeast,
 /area/almayer/squads/delta)
@@ -75383,10 +75386,10 @@
 	icon_state = "S";
 	pixel_y = 0
 	},
-/obj/structure/machinery/cm_vending/clothing/engi/support{
+/obj/structure/machinery/cm_vending/clothing/engi/delta{
 	density = 0;
-	pixel_y = 16;
-	pixel_x = -1
+	pixel_x = -1;
+	pixel_y = 16
 	},
 /turf/open/floor/almayer/flooredge/north,
 /area/almayer/squads/delta)
@@ -80117,10 +80120,9 @@
 /turf/open/floor/almayer/aicore/no_build/ai_silver/west,
 /area/almayer/command/airoom)
 "rtA" = (
-/obj/structure/machinery/cm_vending/clothing/marine/support{
-	pixel_y = 16;
-	pixel_x = -1;
-	density = 0
+/obj/structure/machinery/cm_vending/clothing/marine/alpha{
+	density = 0;
+	pixel_y = 16
 	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/squads/alpha)
@@ -80685,6 +80687,7 @@
 	pixel_x = 7;
 	pixel_y = -26
 	},
+/obj/structure/ladder/multiz,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/l_m_s)
 "rHr" = (
@@ -83875,12 +83878,11 @@
 	layer = 3.33;
 	pixel_x = 1
 	},
-/obj/structure/machinery/cm_vending/clothing/engi/support{
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/cm_vending/clothing/engi/alpha{
 	density = 0;
-	pixel_y = 1;
 	pixel_x = -26
 	},
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/flooredge/west,
 /area/almayer/squads/alpha)
 "tdI" = (
@@ -85821,10 +85823,9 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
-/obj/structure/machinery/cm_vending/clothing/smartgun/alpha{
+/obj/structure/machinery/cm_vending/clothing/smartgun/delta{
 	density = 0;
-	pixel_x = -26;
-	pixel_y = 1
+	pixel_x = -26
 	},
 /turf/open/floor/almayer/blue2/northwest,
 /area/almayer/squads/delta)
@@ -86817,13 +86818,12 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/upper/u_m_s)
 "uqA" = (
-/obj/structure/machinery/cm_vending/clothing/marine/support{
-	pixel_y = 0;
+/obj/structure/machinery/light,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/cm_vending/clothing/marine/delta{
 	density = 0;
 	pixel_x = -26
 	},
-/obj/structure/machinery/light,
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/cargo,
 /area/almayer/squads/delta)
 "uqI" = (
@@ -87142,8 +87142,8 @@
 "uxp" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/marine/shared{
 	name = "\improper Support Squad Preparations";
-	req_one_access = list(2,21,17);
-	req_access = list(12)
+	req_one_access = list();
+	req_access = list(12,17)
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/squads/support)
@@ -87754,7 +87754,7 @@
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
 "uMl" = (
-/obj/structure/machinery/cm_vending/clothing/tl/alpha{
+/obj/structure/machinery/cm_vending/clothing/tl/delta{
 	density = 0;
 	pixel_x = -1;
 	pixel_y = -29
@@ -88030,6 +88030,18 @@
 	},
 /turf/open/floor/almayer/red/north,
 /area/almayer/hallways/upper/port)
+"uSi" = (
+/obj/structure/machinery/light,
+/obj/structure/machinery/door_control{
+	id = "laddersouthwest";
+	name = "South West Ladders Shutters";
+	pixel_x = 5;
+	req_one_access_txt = "2;3;12;19";
+	throw_range = 15;
+	pixel_y = -28
+	},
+/turf/open/floor/almayer,
+/area/almayer/hallways/lower/port_fore_hallway)
 "uSk" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -88799,10 +88811,10 @@
 	icon_state = "S";
 	pixel_y = 0
 	},
-/obj/structure/machinery/cm_vending/clothing/medic/support{
+/obj/structure/machinery/cm_vending/clothing/medic/delta{
 	density = 0;
-	pixel_y = 16;
-	pixel_x = -1
+	pixel_x = -1;
+	pixel_y = 16
 	},
 /turf/open/floor/almayer/flooredge/north,
 /area/almayer/squads/delta)
@@ -92067,10 +92079,9 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/obj/structure/machinery/cm_vending/clothing/engi/support{
-	density = 0;
-	pixel_y = 1;
-	pixel_x = 26
+/obj/structure/machinery/cm_vending/clothing/engi/delta{
+	pixel_x = 26;
+	density = 0
 	},
 /turf/open/floor/almayer/flooredge/east,
 /area/almayer/squads/delta)
@@ -94762,7 +94773,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/squads/req)
 "xCb" = (
-/obj/structure/closet/secure_closet/fridge/dry,
+/obj/structure/closet/secure_closet/fridge/fish,
 /turf/open/floor/almayer/plate,
 /area/almayer/living/grunt_rnr)
 "xCf" = (
@@ -142121,7 +142132,7 @@ jXR
 aaI
 aaI
 wDr
-kgt
+jqb
 hKe
 qqf
 aiv
@@ -142147,7 +142158,7 @@ byc
 abJ
 tzw
 jZe
-qPU
+uSi
 wDr
 sai
 sai
@@ -148332,7 +148343,7 @@ bTu
 cgr
 bRL
 cgr
-bRL
+eQY
 chP
 bQW
 bQu

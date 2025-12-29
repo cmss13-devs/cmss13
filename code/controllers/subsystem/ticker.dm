@@ -413,10 +413,8 @@ SUBSYSTEM_DEF(ticker)
 		if(!player || !player.ready || !player.mind || !player.job)
 			continue
 
-		if((player.job in GLOB.roles_with_gear))
-			INVOKE_ASYNC(src, PROC_REF(spawn_and_equip_char), player)
-		else
-			spawn_and_equip_char(player)
+		INVOKE_ASYNC(src, PROC_REF(spawn_and_equip_char), player)
+
 
 /datum/controller/subsystem/ticker/proc/spawn_and_equip_char(mob/new_player/player)
 	var/datum/job/J = GLOB.RoleAuthority.roles_for_mode[player.job]

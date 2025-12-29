@@ -232,7 +232,7 @@
 		return
 	var/mob/living/carbon/C = M
 	C.blood_volume = max(C.blood_volume - 4 * potency *  delta_time, 0)
-	M.drowsyness = min(M.drowsyness + 0.5 * potency * delta_time, 15 * potency)
+	M.drowsiness = min(M.drowsiness + 0.5 * potency * delta_time, 15 * potency)
 	M.reagent_move_delay_modifier += potency
 	M.recalculate_move_delay = TRUE
 	if(prob(5 * delta_time))
@@ -456,8 +456,8 @@
 		return
 	if (processing_tray.mutation_controller["Potency"] > potency*-2)
 		processing_tray.mutation_controller["Potency"] = potency*-2
-	if (processing_tray.mutation_controller["Bioluminecence"] > potency*-2)
-		processing_tray.mutation_controller["Bioluminecence"] = potency*-2
+	if (processing_tray.mutation_controller["Bioluminescence"] > potency*-2)
+		processing_tray.mutation_controller["Bioluminescence"] = potency*-2
 	if (processing_tray.mutation_controller["Flowers"] > potency*-2)
 		processing_tray.mutation_controller["Flowers"] = potency*-2
 
@@ -506,7 +506,7 @@
 	M.apply_damage(POTENCY_MULTIPLIER_HIGH * potency, BRAIN)
 	M.jitteriness = min(M.jitteriness + potency, POTENCY_MULTIPLIER_HIGH * potency)
 	if(prob(50))
-		M.drowsyness = min(M.drowsyness + potency, POTENCY_MULTIPLIER_HIGH * potency)
+		M.drowsiness = min(M.drowsiness + potency, POTENCY_MULTIPLIER_HIGH * potency)
 	if(prob(10))
 		M.emote("drool")
 

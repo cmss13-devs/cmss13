@@ -1852,7 +1852,7 @@
 		cup.forceMove(user.loc)
 		user.put_in_hands(cup)
 		to_chat(user, SPAN_NOTICE("You take [cup] out of [src]."))
-		update_iocn()
+		update_icon()
 
 /obj/structure/machinery/hybrisa/coffee_machine
 	icon = 'icons/obj/structures/machinery/coffee_machine.dmi'

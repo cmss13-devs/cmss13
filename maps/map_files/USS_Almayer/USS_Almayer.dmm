@@ -38914,11 +38914,6 @@
 	layer = 3.3
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/prop/almayer/CICmap{
-	pixel_x = 15;
-	pixel_y = 17;
-	density = 0
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = -16;
@@ -38935,6 +38930,11 @@
 	layer = 3.33;
 	pixel_y = -15;
 	pixel_x = 19
+	},
+/obj/structure/machinery/prop/almayer/CICmap/dumb{
+	pixel_x = 15;
+	pixel_y = 16;
+	density = 0
 	},
 /turf/open/floor/almayer/flooredge/south,
 /area/almayer/living/briefing)

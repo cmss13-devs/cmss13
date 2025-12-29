@@ -278,9 +278,9 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		var/datum/equipment_preset/preset = new job.gear_preset
 		test_human.faction = preset.faction
 		test_human.job = job.title
-		test_humans += test_human
-		player_refs[test_human] = player
 		if(job.flags_startup_parameters & ROLE_ADD_TO_SQUAD && test_human.job != JOB_INTEL)
+			test_humans += test_human
+			player_refs[test_human] = player
 			GLOB.RoleAuthority.randomize_squad(test_human, force_client=player.client)
 
 	for(var/mob/living/carbon/human/test_human in test_humans)

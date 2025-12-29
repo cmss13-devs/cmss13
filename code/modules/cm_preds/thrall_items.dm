@@ -155,7 +155,6 @@
 		return
 
 	var/mob/living/carbon/human/H = user
-	var/ship_to_tele = -1
 
 	if(!HAS_TRAIT(H, TRAIT_YAUTJA_TECH) || should_block_game_interaction(H))
 		to_chat(user, SPAN_WARNING("You fiddle with it, but nothing happens!"))
@@ -165,24 +164,9 @@
 		to_chat(user, SPAN_WARNING("You have not been shown how to use the relay beacon, best not fiddle with it."))
 		return
 
-	if(isthrall(user))
-		var/datum/entity/clan_player/clan_info = H.client.clan_info
-		if(clan_info.permissions & CLAN_PERMISSION_ADMIN_VIEW)
-			var/list/datum/view_record/clan_view/clan_perm_view = DB_VIEW(/datum/view_record/clan_view/)
-			for(var/datum/view_record/clan_view/clan_view in clan_perm_view)
-				if(!SSpredships.is_clanship_loaded(clan_view?.clan_id))
-					continue
-				ship_to_tele += list("[clan_view.name]" = "[clan_view.clan_id]: [clan_view.name]")
-		if(SSpredships.is_clanship_loaded(clan_info?.clan_id))
-			ship_to_tele += list("Your clan" = "[clan_info.clan_id]")
-
-	var/clan = ship_to_tele
-	if(clan != "Human" && !SSpredships.is_clanship_loaded(clan))
-		return // Checking ship is valid
-
 	// Getting an arrival point
 	var/turf/target_turf
-	target_turf = SAFEPICK(SSpredships.get_clan_spawnpoints(clan))
+	target_turf = SAFEPICK(GLOB.yautja_spawnpoints)
 	if(!istype(target_turf))
 		return
 

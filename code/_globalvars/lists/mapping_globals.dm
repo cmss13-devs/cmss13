@@ -12,6 +12,7 @@ GLOBAL_LIST_EMPTY(xeno_hive_spawns)
 GLOBAL_LIST_EMPTY(survivor_spawns_by_priority)
 GLOBAL_LIST_EMPTY(corpse_spawns)
 
+GLOBAL_LIST_EMPTY(yautja_spawnpoints)
 GLOBAL_LIST_EMPTY(mainship_yautja_teleports)
 GLOBAL_LIST_EMPTY(mainship_yautja_desc)
 GLOBAL_LIST_EMPTY(yautja_teleports)

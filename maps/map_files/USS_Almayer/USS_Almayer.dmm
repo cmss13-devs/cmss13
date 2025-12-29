@@ -45244,7 +45244,6 @@
 "cgp" = (
 /obj/effect/decal/heavy_cable/cable_horizontal,
 /obj/structure/machinery/vending/hydronutrients,
-/obj/structure/machinery/vending/hydronutrients,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/briefing)
 "cgr" = (

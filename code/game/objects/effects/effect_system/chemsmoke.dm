@@ -64,14 +64,14 @@
 	FOR_DVIEW_END
 
 	//make secondary list for reagents that affect walls
-	if(chemholder.reagents.has_reagent("thermite") || chemholder.reagents.has_reagent("plantbgone"))
+	if(chemholder.reagents.has_reagent("thermite"))
 		wallList = new()
 
 	//pathing check
 	smokeFlow(location, targetTurfs, wallList)
 
 	//set the density of the cloud - for diluting reagents
-	density = max(1, length(targetTurfs) / 4) //clamp the cloud density minimum to 1 so it can't multiply the reagents
+	density = max(1, length(targetTurfs)) //clamp the cloud density minimum to 1 so it can't multiply the reagents
 
 	//Admin messaging
 	var/contained = ""
@@ -121,7 +121,7 @@
 			chemholder.reagents.update_total()
 
 			//apply wall affecting reagents to walls
-			if(R.id in list("thermite", "plantbgone"))
+			if(R.id in list("thermite"))
 				for(var/turf/T in wallList)
 					R.reaction_turf(T, R.volume)
 

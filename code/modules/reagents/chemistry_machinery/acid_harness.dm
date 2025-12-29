@@ -37,6 +37,10 @@
 #define ACID_VITALS_EMERGENCY 32
 #define ACID_VITALS_DEAD 64
 
+#define ACID_CONTAINER_MAXIMUM_VOLUME 60
+
+#define ACID_DEAFUALT_SCAN_INTERVAL 15 SECONDS
+
 /obj/item/storage/internal/accessory/black_vest/acid_harness
 	storage_slots = 2
 	can_hold = list(
@@ -44,12 +48,20 @@
 		/obj/item/cell,
 	)
 
+/obj/item/storage/internal/accessory/black_vest/acid_harness/can_be_inserted(obj/item/object_to_insert, mob/living/user, stop_messages = FALSE)
+	if(istype(object_to_insert, /obj/item/reagent_container/glass/beaker))
+		var/obj/item/reagent_container/glass/beaker/beaker_check = object_to_insert
+		if(!beaker_check.reagents || beaker_check.reagents.maximum_volume > ACID_CONTAINER_MAXIMUM_VOLUME)
+			to_chat(user, SPAN_WARNING("[object_to_insert] is too large for [src]."))
+			return
+	. = ..()
+
 /obj/item/clothing/accessory/storage/black_vest/acid_harness
 	name = "A.C.I.D. Harness"
 	desc = "Automated Chemical Integrated Delivery Harness, or really just a franken webbing made by a researcher with poor tailoring skills. Can be configured with a multitool."
 	icon_state = "vest_acid_black"
 	hold = /obj/item/storage/internal/accessory/black_vest/acid_harness
-	var/obj/item/reagent_container/glass/beaker
+	var/obj/item/reagent_container/glass/beaker/beaker
 	var/obj/item/cell/battery
 	var/obj/structure/machinery/acid_core/acid_core
 
@@ -159,42 +171,52 @@
 	. = ..()
 	if(.)
 		return
-
-	switch(action)
-		if("set_inject_amount")
-			var/inject = floor(text2num(params["value"]))
-			if(inject < 1)
-				inject = 1
-			acid_core.inject_amount = inject
-			. = TRUE
-		if("set_inject_damage_threshold")
-			acid_core.inject_damage_threshold = floor(text2num(params["value"]))
-			. = TRUE
-		if("inject_logic")
-			if(acid_core.inject_logic == ACID_LOGIC_OR)
-				acid_core.inject_logic = ACID_LOGIC_AND
-			else
-				acid_core.inject_logic = ACID_LOGIC_OR
-			. = TRUE
-		if("configurate")
-			var/flag_value = params["config_value"]
-			switch(params["config_type"])
-				if("Damage")
-					if(acid_core.inject_damage_types & flag_value)
-						acid_core.inject_damage_types &= ~flag_value
+	var/mob/living/carbon/human/human_wearer
+	if(ishuman(loc))
+		human_wearer = loc //In hand
+	else if(ishuman(loc.loc))
+		human_wearer = loc.loc //On uniform I hope.
+	if(human_wearer)
+		var/obj/item/right_hand = human_wearer.get_active_hand()
+		var/obj/item/left_hand = human_wearer.get_inactive_hand()
+		if((left_hand && HAS_TRAIT(left_hand, TRAIT_TOOL_MULTITOOL)) || (right_hand && HAS_TRAIT(right_hand, TRAIT_TOOL_MULTITOOL)))
+			switch(action)
+				if("set_inject_amount")
+					var/inject = floor(text2num(params["value"]))
+					if(inject < 1)
+						inject = 1
+					acid_core.inject_amount = inject
+					. = TRUE
+				if("set_inject_damage_threshold")
+					acid_core.inject_damage_threshold = floor(text2num(params["value"]))
+					. = TRUE
+				if("inject_logic")
+					if(acid_core.inject_logic == ACID_LOGIC_OR)
+						acid_core.inject_logic = ACID_LOGIC_AND
 					else
-						acid_core.inject_damage_types |= flag_value
-				if("Conditions")
-					if(acid_core.inject_conditions & flag_value)
-						acid_core.inject_conditions &= ~flag_value
-					else
-						acid_core.inject_conditions |= flag_value
-				if("Vitals")
-					if(acid_core.inject_vitals & flag_value)
-						acid_core.inject_vitals &= ~flag_value
-					else
-						acid_core.inject_vitals |= flag_value
-			. = TRUE
+						acid_core.inject_logic = ACID_LOGIC_OR
+					. = TRUE
+				if("configurate")
+					var/flag_value = params["config_value"]
+					switch(params["config_type"])
+						if("Damage")
+							if(acid_core.inject_damage_types & flag_value)
+								acid_core.inject_damage_types &= ~flag_value
+							else
+								acid_core.inject_damage_types |= flag_value
+						if("Conditions")
+							if(acid_core.inject_conditions & flag_value)
+								acid_core.inject_conditions &= ~flag_value
+							else
+								acid_core.inject_conditions |= flag_value
+						if("Vitals")
+							if(acid_core.inject_vitals & flag_value)
+								acid_core.inject_vitals &= ~flag_value
+							else
+								acid_core.inject_vitals |= flag_value
+					. = TRUE
+		else
+			to_chat(human_wearer, SPAN_WARNING("You need a multi-tool to modify these configurations."))
 
 /obj/structure/machinery/acid_core
 	name = "A.C.I.D. CORE"
@@ -218,6 +240,9 @@
 	var/boot_status = FALSE
 	var/battery_level = FALSE
 	var/rechecking = FALSE
+
+	var/scan_interval = ACID_DEAFUALT_SCAN_INTERVAL
+	var/last_scan_time
 
 /obj/structure/machinery/acid_core/Initialize(mapload, ...)
 	..()
@@ -300,7 +325,9 @@
 	if(boot_status < 6)
 		addtimer(CALLBACK(src, PROC_REF(boot_sequence), boot_status), 2 SECONDS)
 		return
-	scan()
+	if(world.time > last_scan_time + scan_interval)
+		last_scan_time = world.time
+		scan()
 
 /obj/structure/machinery/acid_core/proc/check_user()
 	if(acid_harness.loc && acid_harness.loc.loc && ishuman(acid_harness.loc.loc))
@@ -325,11 +352,8 @@
 	battery.charge = max(battery.charge - 10, 0)
 	var/charge = battery.charge / battery.maxcharge * 100
 	if(charge + 20 < battery_level || charge > battery_level)
-		battery_level = charge
+		battery_level = round(charge, 1.1)
 		voice("Energy is at, [charge]%.")
-
-/obj/structure/machinery/acid_core/proc/recheck_conditions()
-	rechecking = TRUE
 
 /obj/structure/machinery/acid_core/proc/scan()
 	var/damage_scan = FALSE
@@ -474,13 +498,15 @@
 		voice("Warning: Medicinal container missing.")
 		return
 	for(var/datum/reagent/R in acid_harness.beaker.reagents.reagent_list)
-		if(user.reagents.get_reagent_amount(R.id) + inject_amount > R.overdose) //Don't overdose our boi
+		if(R.overdose && user.reagents.get_reagent_amount(R.id) + inject_amount > R.overdose) //Don't overdose our boi
 			voice("Notice: Injection trigger cancelled to avoid overdose.")
-			addtimer(CALLBACK(src, PROC_REF(recheck_conditions)), 20 SECONDS * inject_amount)
+			scan_interval = ACID_DEAFUALT_SCAN_INTERVAL + ((ACID_DEAFUALT_SCAN_INTERVAL*0.2) * inject_amount) //Add 20% of scan time per reagent unit ontop of normal scan time for a bigger period inbetween
+			rechecking = TRUE
 			return
 	if(acid_harness.beaker.reagents.trans_to(user, inject_amount))
 		playsound_client(user.client, 'sound/items/hypospray.ogg', null, ITEM_EQUIP_VOLUME)
 		voice("Medicine administered. [acid_harness.beaker.reagents.total_volume] units remaining.")
-		addtimer(CALLBACK(src, PROC_REF(recheck_conditions)), 20 SECONDS * inject_amount)
+		scan_interval = ACID_DEAFUALT_SCAN_INTERVAL + ((ACID_DEAFUALT_SCAN_INTERVAL*0.15) * inject_amount)
+		rechecking = TRUE
 	if(!acid_harness.beaker.reagents.total_volume)
 		voice("Warning: Medicinal container is empty, resupply required.")

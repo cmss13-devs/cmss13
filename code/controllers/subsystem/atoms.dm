@@ -52,7 +52,7 @@ SUBSYSTEM_DEF(atoms)
 	InitializeLateLoaders()
 
 /// Processes all late_loaders, checking the length each iteration and prevents duplicate calls
-/// This is necessary because of an edge case where there might be simultanious calls to InitializeAtoms
+/// This is necessary because of an edge case where there might be simultaneous calls to InitializeAtoms
 /datum/controller/subsystem/atoms/proc/InitializeLateLoaders()
 	if(processing_late_loaders) // If we still manage to double this proc, try a ++ here, or solve the root of the problem
 		#ifdef TESTING

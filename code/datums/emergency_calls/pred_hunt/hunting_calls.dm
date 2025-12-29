@@ -9,6 +9,18 @@
 	ert_message = "Prey is being set loose in the Yautja Hunting Grounds"
 	var/hunt_name
 	var/message = "You are still expected to uphold the RP of the standard as this character!"
+	var/mercs = 0
+	var/royal_marines= 0
+	var/upp = 0
+	var/clf = 0
+	var/pmc = 0
+	var/misc = 0
+	var/max_mercs = 1
+	var/max_royal_marines= 1
+	var/max_upp = 1
+	var/max_clf = 1
+	var/max_pmc = 1
+	var/max_misc = 1
 
 /datum/emergency_call/pred/mixed
 	name = "Hunting Grounds - Multi Faction - Small"

@@ -151,9 +151,6 @@
 	faction = FACTION_YAUTJA_YOUNG
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
-/datum/equipment_preset/yautja/non_wl/load_traits(mob/living/carbon/human/new_human, client/mob_client)
-	return
-
 /datum/equipment_preset/yautja/non_wl/load_name(mob/living/carbon/human/new_human, randomise)
 	. = ..()
 	var/new_name = "Young [new_human.real_name]"

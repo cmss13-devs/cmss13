@@ -219,7 +219,6 @@
 	ert_message = "A group of Yautja Youngbloods are being awakened for a hunt"
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress/hunt_spawner/pred
 	shuttle_id = ""
-	var/checked_objective = FALSE
 
 /datum/emergency_call/young_bloods/New()
 	. = ..()

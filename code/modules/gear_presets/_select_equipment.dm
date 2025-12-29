@@ -25,6 +25,7 @@
 
 	var/minimap_icon = "private"
 	var/minimap_background = "background"
+	var/minimap_extra = "command"
 	var/always_minimap_visible = TRUE
 
 	//Uniform data

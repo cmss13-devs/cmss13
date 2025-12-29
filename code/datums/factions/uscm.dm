@@ -134,10 +134,7 @@
 			if(JOB_INTEL)
 				marine_rk = "io"
 				border_rk = "auxiliary"
-			if(JOB_CAS_PILOT)
-				marine_rk = "gp"
-				border_rk = "auxiliary"
-			if(JOB_DROPSHIP_PILOT)
+			if(JOB_CAS_PILOT, JOB_DROPSHIP_PILOT)
 				marine_rk = "dp"
 				border_rk = "auxiliary"
 			if(JOB_DROPSHIP_CREW_CHIEF)

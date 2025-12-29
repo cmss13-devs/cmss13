@@ -224,7 +224,8 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 	if(current_squad.squad_leader)
 		var/turf/SL_turf = get_turf(current_squad.squad_leader)
-		SL_z = SL_turf.z
+		if(SL_turf)
+			SL_z = SL_turf.z
 
 	for(var/marine in current_squad.marines_list)
 		if(!marine)
@@ -280,7 +281,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 					else if(marine_human.job != JOB_SQUAD_LEADER)
 						acting_sl = " (acting SL)"
 					is_squad_leader = TRUE
-				else if(current_turf && (current_turf.z == SL_z))
+				else if(current_turf && SL_z && (current_turf.z == SL_z))
 					distance = "[get_dist(marine_human, current_squad.squad_leader)] ([dir2text_short(Get_Compass_Dir(current_squad.squad_leader, marine_human))])"
 
 

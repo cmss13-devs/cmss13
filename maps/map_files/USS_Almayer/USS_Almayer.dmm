@@ -15805,8 +15805,7 @@
 "aPj" = (
 /obj/structure/machinery/cm_vending/sorted/attachments/squad{
 	req_access = null;
-	req_one_access = null;
-	req_one_access_txt = "17;16;21";
+	req_one_access = list(15,18);
 	vend_y_offset = 0
 	},
 /turf/open/floor/almayer/plate,

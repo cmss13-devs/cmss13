@@ -264,7 +264,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 // Assigns players to squads to check if they should be returned to lobby
 /datum/authority/branch/role/proc/test_squads(list/random_players)
 	var/list/mob/living/carbon/human/test_humans = list()
-	var/alist/mob/new_player/player_refs = alist()
+	var/list/mob/new_player/player_refs = alist()
 	for(var/mob/new_player/player in random_players)
 		if(!player || !player.ready || !player.mind || !player.job)
 			continue

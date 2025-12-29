@@ -378,6 +378,17 @@
 	S["adaptive_zoom"] >> adaptive_zoom
 	S["tooltips"] >> tooltips
 	S["key_bindings"] >> key_bindings
+	S["custom_keybinds"] >> custom_keybinds
+
+//	custom_keybinds = sanitize_list(custom_keybinds, default = new /list(KEYBIND_CUSTOM_MAX))
+
+	if(!islist(custom_keybinds))
+		custom_keybinds = new /list(KEYBIND_CUSTOM_MAX)
+
+	if(length(custom_keybinds) != KEYBIND_CUSTOM_MAX)
+		custom_keybinds.len = KEYBIND_CUSTOM_MAX
+
+	load_custom_keybinds()
 
 	S["tgui_lock"] >> tgui_lock
 	S["tgui_fancy"] >> tgui_fancy
@@ -660,6 +671,8 @@
 	S["show_cooldown_messages"] << show_cooldown_messages
 
 	S["chem_presets"] << chem_presets
+
+	S["custom_keybinds"] << custom_keybinds
 
 	return TRUE
 
@@ -983,6 +996,19 @@
 				LAZYREMOVE(key_bindings[entry], conflicted.name)
 
 		LAZYADD(key_bindings["Unbound"], conflicted.name) // set it to unbound to prevent this from opening up again in the future
+
+/datum/preferences/proc/load_custom_keybinds()
+	key_to_custom_keybind = list()
+
+	for(var/keybind in custom_keybinds)
+		if(!("keybinding" in keybind))
+			continue // unbound
+
+		var/datum/keybinding/custom/custom_key = new
+		custom_key.keybind_type = keybind["type"]
+		custom_key.stored_message = keybind["contents"]
+
+		key_to_custom_keybind[keybind["keybinding"]] = custom_key
 
 #undef SAVEFILE_VERSION_MAX
 #undef SAVEFILE_VERSION_MIN

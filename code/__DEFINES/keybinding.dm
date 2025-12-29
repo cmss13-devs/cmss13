@@ -1,3 +1,9 @@
+#define KEYBIND_TYPE_SAY "say"
+#define KEYBIND_TYPE_ME "me"
+#define KEYBIND_TYPE_PICKSAY "picksay"
+
+#define KEYBIND_CUSTOM_MAX 20
+
 //Signals
 
 //General

@@ -292,23 +292,23 @@
 
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa
 	name = "\improper WY corporate security helmet"
-	desc = "A basic skull-helm with a orange safety vision fitted. Worn by corporate security assets, graded to protect your head from an unruly scientist armed with a crowbar."
+	desc = "A basic skull-helm with a orange safety visor fitted. Worn by corporate security assets, graded to protect your head from an unruly scientist armed with a crowbar."
 	icon_state = "sec_helmet_hybrisa"
 	item_state = "sec_helmet_hybrisa"
 
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa/lead
-	desc = "A basic skull-helm with a orange safety vision fitted. Worn by corporate security assets. This variant is worn by low-level guards that have too much brainmatter to fit into the old one. Or so they say."
+	desc = "A basic skull-helm with a orange safety visor fitted. Worn by corporate security assets. This variant is worn by low-level guards that have too much brainmatter to fit into the old one. Or so they say."
 	icon_state = "sec_lead_helmet_hybrisa"
 	item_state = "sec_lead_helmet_hybrisa"
 
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa/brown
 	name = "\improper WY corporate security helmet"
-	desc = "A basic skull-helm with a orange safety vision fitted. Worn by corporate security assets, graded to protect your head from an unruly scientist armed with a crowbar."
+	desc = "A basic skull-helm with a orange safety visor fitted. Worn by corporate security assets, graded to protect your head from an unruly scientist armed with a crowbar."
 	icon_state = "sec_brown_helmet_hybrisa"
 	item_state = "sec_brown_helmet_hybrisa"
 
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa/medic
-	desc = "A basic skull-helm with a orange safety vision fitted. Worn by corporate security assets, graded to protect your head from an unruly scientist armed with a crowbar. A medical cross is emblazoned across the front."
+	desc = "A basic skull-helm with a orange safety visor fitted. Worn by corporate security assets, graded to protect your head from an unruly scientist armed with a crowbar. A medical cross is emblazoned across the front."
 	icon_state = "sec_medic_helmet_hybrisa"
 	item_state = "sec_medic_helmet_hybrisa"
 

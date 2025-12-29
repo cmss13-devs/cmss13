@@ -106,7 +106,7 @@
 	M.overeatduration = 0
 	if(M.reagents.remove_all_type(/datum/reagent/ethanol, potency, 0, 1)) //Ketosis causes rapid metabolization of alcohols
 		M.confused = min(M.confused + potency,10*potency)
-		M.drowsyness = min(M.drowsyness + potency,15*potency)
+		M.drowsiness = min(M.drowsiness + potency,15*potency)
 
 /datum/chem_property/neutral/ketogenic/process_overdose(mob/living/M, potency = 1, delta_time)
 	M.nutrition = max(M.nutrition - 5 * potency * delta_time, 0)
@@ -163,7 +163,7 @@
 			return
 
 	mob.dizziness = min(mob.dizziness + POTENCY_MULTIPLIER_VVLOW * potency * delta_time, POTENCY_MULTIPLIER_VHIGH * potency)
-	mob.drowsyness = min(mob.drowsyness + POTENCY_MULTIPLIER_LOW * potency * delta_time, POTENCY_MULTIPLIER_VHIGH * potency)
+	mob.drowsiness = min(mob.drowsiness + POTENCY_MULTIPLIER_LOW * potency * delta_time, POTENCY_MULTIPLIER_VHIGH * potency)
 
 	if(prob(50 * delta_time) || potency >= 5)
 		mob.confused = min(mob.confused + POTENCY_MULTIPLIER_LOW * potency * delta_time, POTENCY_MULTIPLIER_VHIGH * potency)
@@ -174,7 +174,7 @@
 	mob.apply_damage(POTENCY_MULTIPLIER_LOW * potency * delta_time, OXY)
 
 	mob.dizziness = min(mob.dizziness + POTENCY_MULTIPLIER_VLOW * potency * delta_time, POTENCY_MULTIPLIER_HIGHEXTREMEINTER * potency)
-	mob.drowsyness = min(mob.drowsyness + potency * delta_time, POTENCY_MULTIPLIER_HIGHEXTREMEINTER * potency)
+	mob.drowsiness = min(mob.drowsiness + potency * delta_time, POTENCY_MULTIPLIER_HIGHEXTREMEINTER * potency)
 
 	if(prob(POTENCY_MULTIPLIER_MEDIUM * delta_time))
 		mob.sleeping = min(mob.sleeping + POTENCY_MULTIPLIER_LOW * potency * delta_time, POTENCY_MULTIPLIER_HIGHEXTREMEINTER * potency)
@@ -193,7 +193,7 @@
 
 	mob.confused = min(mob.confused + POTENCY_MULTIPLIER_MEDIUM * potency * delta_time, POTENCY_MULTIPLIER_EXTREME * potency)
 	mob.dizziness = min(mob.dizziness + POTENCY_MULTIPLIER_LOW * potency * delta_time, POTENCY_MULTIPLIER_EXTREME * potency)
-	mob.drowsyness = min(mob.drowsyness + POTENCY_MULTIPLIER_MEDIUM * potency * delta_time, POTENCY_MULTIPLIER_EXTREME * potency)
+	mob.drowsiness = min(mob.drowsiness + POTENCY_MULTIPLIER_MEDIUM * potency * delta_time, POTENCY_MULTIPLIER_EXTREME * potency)
 	mob.slurring = min(mob.slurring + potency * delta_time, POTENCY_MULTIPLIER_EXTREME * potency)
 
 	if(prob(POTENCY_MULTIPLIER_VHIGH * potency * delta_time))
@@ -330,7 +330,7 @@
 
 /datum/chem_property/neutral/hypothermic/process_overdose(mob/living/M, potency = 1)
 	M.bodytemperature = max(0, M.bodytemperature - POTENCY_MULTIPLIER_VHIGH * potency)
-	M.drowsyness  = max(M.drowsyness, 30)
+	M.drowsiness  = max(M.drowsiness, 30)
 
 /datum/chem_property/neutral/hypothermic/process_critical(mob/living/M, potency = 1, delta_time)
 	M.apply_effect(20, PARALYZE)
@@ -662,7 +662,7 @@
 	M.apply_effect(20, PARALYZE)
 
 /datum/chem_property/neutral/thermostabilizing/process_critical(mob/living/M, potency = 1, delta_time)
-	M.drowsyness  = max(M.drowsyness, 30)
+	M.drowsiness  = max(M.drowsiness, 30)
 
 /datum/chem_property/neutral/focusing
 	name = PROPERTY_FOCUSING
@@ -677,7 +677,7 @@
 	M.stuttering = max(M.stuttering - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 	M.confused = max(M.confused - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 	M.ReduceEyeBlur(POTENCY_MULTIPLIER_MEDIUM * potency)
-	M.drowsyness = max(M.drowsyness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
+	M.drowsiness = max(M.drowsiness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 	M.dizziness = max(M.dizziness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 	M.jitteriness = max(M.jitteriness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 	if(potency >= POTENCY_MAX_TIER_1)

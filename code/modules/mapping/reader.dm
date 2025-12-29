@@ -28,7 +28,7 @@
 #define MAP_DMM "dmm"
 /**
  * TGM SPEC:
- * TGM is a derivation of DMM, with restrictions placed on it
+ * TGM is a derivative of DMM, with restrictions placed on it
  * to make it easier to parse and to reduce merge conflicts/ease their resolution
  *
  * Requirements:
@@ -339,12 +339,12 @@
 	// Loading used to be done in this proc
 	// We make the assumption that if the inner procs runtime, we WANT to do cleanup on them, but we should still tell our parents we failed
 	// Since well, we did
-	var/sucessful = FALSE
+	var/successful = FALSE
 	switch(map_format)
 		if(MAP_TGM)
-			sucessful = _tgm_load(x_offset, y_offset, z_offset, crop_map, no_changeturf, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, place_on_top, new_z, delete)
+			successful = _tgm_load(x_offset, y_offset, z_offset, crop_map, no_changeturf, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, place_on_top, new_z, delete)
 		else
-			sucessful = _dmm_load(x_offset, y_offset, z_offset, crop_map, no_changeturf, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, place_on_top, new_z, delete)
+			successful = _dmm_load(x_offset, y_offset, z_offset, crop_map, no_changeturf, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, place_on_top, new_z, delete)
 
 	// And we are done lads, call it off
 	SSatoms.map_loader_stop(REF(src))
@@ -368,7 +368,7 @@
 		testing("Skipped loading [turfsSkipped] default turfs")
 	#endif
 
-	return sucessful
+	return successful
 
 // Wanna clear something up about maps, talking in 255x255 here
 // In the tgm format, each gridset contains 255 lines, each line representing one tile, with 255 total gridsets

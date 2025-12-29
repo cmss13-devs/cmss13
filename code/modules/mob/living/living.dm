@@ -73,7 +73,7 @@
 		for(var/obj/limb/affecting in H.limbs)
 			if(!affecting)
 				continue
-			affecting.take_damage(0, divided_damage+extradam) //TODO: fix the extradam stuff. Or, ebtter yet...rewrite this entire proc ~Carn
+			affecting.take_damage(0, divided_damage+extradam) //TODO: fix the extradam stuff. Or, better yet...rewrite this entire proc ~Carn
 		H.updatehealth()
 		return 1
 
@@ -107,7 +107,7 @@
 
 	if(passed_object)
 		if(recursion > 8)
-			debug_log("Recursion went long for get_contents() for [src] ending at the object [passed_object]. Likely object_one is holding object_two which is holding object_one ad naseum.")
+			debug_log("Recursion went long for get_contents() for [src] ending at the object [passed_object]. Likely object_one is holding object_two which is holding object_one ad nauseum.")
 			return total_contents
 
 		total_contents += passed_object.contents
@@ -262,7 +262,7 @@
 		. += 10
 		do_bump_delay = 0
 
-	if (drowsyness > 0)
+	if (drowsiness > 0)
 		. += 6
 
 	if(pulling && pulling.drag_delay && get_pull_multiplier()) //Dragging stuff can slow you down a bit.

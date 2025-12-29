@@ -263,6 +263,8 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 
 // Assigns players to squads to check if they should be returned to lobby
 /datum/authority/branch/role/proc/test_squads(list/random_players)
+	var/list/mob/living/carbon/human/test_humans = list()
+	var/alist/mob/new_player/player_refs = alist()
 	for(var/mob/new_player/player in random_players)
 		if(!player || !player.ready || !player.mind || !player.job)
 			continue
@@ -276,15 +278,19 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		var/datum/equipment_preset/preset = new job.gear_preset
 		test_human.faction = preset.faction
 		test_human.job = job.title
+		test_humans += test_human
+		player_refs[test_human] = player
 		if(job.flags_startup_parameters & ROLE_ADD_TO_SQUAD && test_human.job != JOB_INTEL)
 			GLOB.RoleAuthority.randomize_squad(test_human, force_client=player.client)
-			if(istype(test_human.assigned_squad, /datum/squad/marine/cryo))
-				test_human.assigned_squad.forget_marine_in_squad(test_human)
-				free_role(job, force = TRUE)
-				unassigned_players += player
-				player.job = null
-			else
-				test_human.assigned_squad.forget_marine_in_squad(test_human)
+
+	for(var/mob/living/carbon/human/test_human in test_humans)
+		if(istype(test_human.assigned_squad, /datum/squad/marine/cryo))
+			test_human.assigned_squad.forget_marine_in_squad(test_human)
+			free_role(GLOB.RoleAuthority.roles_for_mode[test_human.job], force = TRUE)
+			unassigned_players += player_refs[test_human]
+			player_refs[test_human].job = null
+		else
+			test_human.assigned_squad.forget_marine_in_squad(test_human)
 		qdel(test_human)
 
 	for(var/datum/squad/squad in squads)

@@ -150,7 +150,10 @@ GLOBAL_LIST_EMPTY(ui_data_keybindings)
 			for(var/i in GLOB._kbMap)
 				keybind = replacetext(keybind, i, GLOB._kbMap[i])
 
-			prefs.custom_keybinds[index] = list("type" = keybind_type, "keybinding" = keybind, "contents" = contents)
+			var/when_human = sanitize_integer(params["when_human"], FALSE, TRUE, TRUE)
+			var/when_xeno = sanitize_integer(params["when_xeno"], FALSE, TRUE, TRUE)
+
+			prefs.custom_keybinds[index] = list("type" = keybind_type, "keybinding" = keybind, "contents" = contents, "when_human" = when_human, "when_xeno" = when_xeno)
 			prefs.load_custom_keybinds()
 
 			prefs.save_preferences()

@@ -60,6 +60,8 @@ type CustomKeybind = {
   keybinding?: string;
   type?: string;
   contents?: string | string[];
+  when_xeno?: boolean;
+  when_human?: boolean;
 };
 
 export const KeyBinds = (props) => {
@@ -457,6 +459,56 @@ const CustomKeybinds = (props: {
           />
         </Flex.Item>
       </Flex>
+      <Flex align="center" mt={1}>
+        <Flex.Item grow>
+          <Button.Checkbox
+            checked={pendingKeybind?.when_xeno ?? keybind?.when_xeno}
+            fluid
+            onClick={() => {
+              setPendingKeybind((pending) => {
+                const currentValue =
+                  pending?.when_xeno ?? keybind?.when_xeno ?? false;
+                if (!pending) {
+                  return {
+                    ...keybind,
+                    when_xeno: !currentValue,
+                  };
+                }
+                return {
+                  ...pending,
+                  when_xeno: !currentValue,
+                };
+              });
+            }}
+          >
+            Xenomorphs
+          </Button.Checkbox>
+        </Flex.Item>
+        <Flex.Item ml={1} grow>
+          <Button.Checkbox
+            checked={pendingKeybind?.when_human ?? keybind?.when_human}
+            fluid
+            onClick={() => {
+              setPendingKeybind((pending) => {
+                const currentValue =
+                  pending?.when_human ?? keybind?.when_human ?? false;
+                if (!pending) {
+                  return {
+                    ...keybind,
+                    when_human: !currentValue,
+                  };
+                }
+                return {
+                  ...pending,
+                  when_human: !currentValue,
+                };
+              });
+            }}
+          >
+            Humans
+          </Button.Checkbox>
+        </Flex.Item>
+      </Flex>
       {pendingKeybind && (
         <Flex align="center" mt={1}>
           <Flex.Item grow>
@@ -477,6 +529,8 @@ const CustomKeybinds = (props: {
                   keybind: pendingKeybind.keybinding,
                   keybind_type: pendingKeybind.type?.toLowerCase(),
                   contents: pendingKeybind.contents,
+                  when_xeno: pendingKeybind.when_xeno ?? false,
+                  when_human: pendingKeybind.when_human ?? false,
                 });
                 setPendingKeybind(undefined);
               }}

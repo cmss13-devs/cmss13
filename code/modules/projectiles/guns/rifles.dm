@@ -905,6 +905,7 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/machineguns_righthand.dmi'
 	)
 	mouse_pointer = 'icons/effects/mouse_pointer/lmg_mouse.dmi'
+	flags_xeno_examine = EXAMINE_FLAG_MACHINEGUN
 
 	fire_sound = 'sound/weapons/gun_mar40.ogg'
 	reload_sound = 'sound/weapons/handling/gun_mar40_reload.ogg'

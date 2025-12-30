@@ -188,12 +188,12 @@
 	if(!set_pressure)
 		to_chat(usr, SPAN_WARNING("You can't find that setting on the regulator!"))
 	else
-		to_chat(usr, SPAN_NOTICE("You set the pressure regulator to [set_pressure] U/t"))
+		to_chat(usr, SPAN_NOTICE("You set the pressure regulator to [set_pressure] U/t."))
 		fuel_pressure = set_pressure
 
 /obj/item/ammo_magazine/flamer_tank/custom/get_examine_text(mob/user)
 	. = ..()
-	. += SPAN_NOTICE("The pressure regulator is set to: [src.fuel_pressure] U/t")
+	. += SPAN_NOTICE("The pressure regulator is set to: [src.fuel_pressure] U/t.")
 
 // Pyro regular flamer tank just bigger than the base flamer tank.
 /obj/item/ammo_magazine/flamer_tank/large

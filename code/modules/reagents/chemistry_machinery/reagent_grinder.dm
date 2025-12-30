@@ -30,7 +30,7 @@
 		/obj/item/reagent_container/food/snacks/grown/ricestalk = list("rice" = -5),
 		/obj/item/reagent_container/food/snacks/grown/cherries = list("cherryjelly" = 0),
 		/obj/item/reagent_container/food/snacks/grown/plastellium = list("plasticide" = 5),
-
+		/obj/item/reagent_container/food/snacks/chocolatebar = list("chocolatesyrup" = 0),
 
 		//All types that you can put into the grinder to transfer the reagents to the beaker. !Put all recipes above this.!
 		/obj/item/reagent_container/pill = list(),
@@ -53,7 +53,6 @@
 		/obj/item/reagent_container/food/snacks/watermelonslice = list("watermelonjuice" = 0),
 		/obj/item/reagent_container/food/snacks/grown/grapes = list("grapejuice" = 0),
 		/obj/item/reagent_container/food/snacks/grown/poisonberries = list("poisonberryjuice" = 0),
-
 	)
 
 

@@ -512,7 +512,7 @@ SQUAD_VENDORS(support, ACCESS_MARINE_SUPPORT, null)
 	chat_color = "#5a2c2c"
 	radio_freq = SOF_FREQ
 	minimap_color = "#5a2c2c"
-	background_icon = "background_civillian"
+	background_icon = "background_civilian"
 
 	active = FALSE
 	roundstart = FALSE

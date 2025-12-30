@@ -196,8 +196,6 @@
 	new /obj/item/tool/portadialysis(src)
 	new /obj/item/tool/portadialysis(src)
 
-	RegisterSignal(SSdcs, COMSIG_GLOB_UNSCHEDULED_DROPSHIP_DEPARTURE_DETECTED, PROC_REF(all_docs_are_field_docs))
-	return
 
 /obj/structure/closet/secure_closet/surgical/emergency/togglelock(mob/living/user)
 	if(hijack == FALSE)
@@ -211,10 +209,11 @@
 		to_chat(user, SPAN_WARNING("You do not have access."))
 
 /obj/structure/closet/secure_closet/surgical/emergency/proc/all_docs_are_field_docs() //A DROPSHIP HAS BEEN HIJACKED! OPEN DIS BITCH UP!
-	hijack = TRUE
-	locked = FALSE //OPEN THE LOCKERRRR
-	update_icon() // to show the locker is unlocked after it unlocked itself.
-	req_access = list(ACCESS_MARINE_MEDBAY) //ALL Y'ALL FOB MEDICS NOW!
+	if(SShijack.evac_status == EVACUATION_STATUS_INITIATED)
+		hijack = TRUE
+		locked = FALSE //OPEN THE LOCKERRRR
+		update_icon() // to show the locker is unlocked after it unlocked itself.
+		req_access = list(ACCESS_MARINE_MEDBAY) //ALL Y'ALL FOB MEDICS NOW!
 
 /obj/structure/closet/secure_closet/professor_dummy
 	name = "professor dummy cabinet"

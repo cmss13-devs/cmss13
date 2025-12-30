@@ -48,7 +48,7 @@
 		SPAN_NOTICE("[user] starts to separate the corneas of [target]'s eyes with [tool]."))
 
 	target.custom_pain("You feel a searing, piercing pain in your eyeballs as your corneas are being sliced open!",1)
-	log_interact(user, target, "[key_name(user)] started to separate the corneas on [key_name(target)]'s eyes and reshape them with [tool].")
+	log_interact(user, target, "[key_name(user)] started to separate the corneas on [key_name(target)]'s eyes with [tool].")
 
 /datum/surgery_step/separate_corneas/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
@@ -68,7 +68,7 @@
 		SPAN_WARNING("[user]'s hand slips, slicing your eyes with [tool]!"),
 		SPAN_WARNING("[user]'s hand slips, slicing [target]'s eyes with [tool]!"))
 
-	log_interact(user, target, "[key_name(user)] failed to separate and reshape the corneas on [key_name(target)]'s eyes with [tool], aborting [surgery].")
+	log_interact(user, target, "[key_name(user)] failed to separate the corneas on [key_name(target)]'s eyes with [tool], aborting [surgery].")
 
 	target.apply_damage(10, BRUTE, target_zone)
 	surgery.target_eyes.take_damage(5, FALSE)

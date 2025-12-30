@@ -672,7 +672,7 @@
 		final_message += "a strange, exotic spitter."
 
 	if(held_weapon.flags_xeno_examine & EXAMINE_FLAG_GENERICDANGER)
-		final_message += " We can sense it is dangerous!"
+		final_message += SPAN_ALERT(" We can sense it is dangerous!")
 	if(held_weapon.flags_xeno_examine & EXAMINE_FLAG_UNIQUEDANGER)
 		final_message += SPAN_DANGER(" We can sense it is very dangerous!")
 	if(held_weapon.flags_xeno_examine & EXAMINE_FLAG_EXPLODES)

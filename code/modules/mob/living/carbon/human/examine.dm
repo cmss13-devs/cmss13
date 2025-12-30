@@ -678,8 +678,8 @@
 	if(held_weapon.flags_xeno_examine & EXAMINE_FLAG_EXPLODES)
 		final_message += SPAN_DANGER(" We can sense it is explosive!")
 	if(held_weapon.flags_xeno_examine & EXAMINE_FLAG_NONCOMBAT)
-		final_message += " We can sense it is not meant for killing!"
+		final_message += SPAN_XENONOTICE(" We can sense it is not meant for killing!")
 	if(held_weapon.flags_xeno_examine & EXAMINE_FLAG_YAUTJA)
-		final_message += " We can sense this belongs to Headhunters!"
+		final_message += SPAN_YAUTJABOLD(" We can sense this is of Headhunter origin!")
 
 	return final_message

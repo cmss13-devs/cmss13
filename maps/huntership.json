@@ -1,7 +1,7 @@
 {
     "map_name": "Hunter Ship",
-    "map_path": "predship",
-    "map_file": "huntership_mz.dmm",
+    "map_path": "map_files/Hunter_Ship",
+    "map_file": "Hunter_Ship_MZ.dmm",
     "webmap_url": "Huntership",
     "traits": [
         {

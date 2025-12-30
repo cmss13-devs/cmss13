@@ -10402,6 +10402,29 @@
 /obj/structure/platform_decoration/metal/hunter,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja_ship)
+"xZ" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 3.2;
+	color = "#bccab4"
+	},
+/obj/effect/decal/strata_decals/grime/grime4{
+	dir = 4
+	},
+/obj/item/reagent_container/food/snacks/stew{
+	pixel_x = -4;
+	pixel_y = 5
+	},
+/obj/item/tool/kitchen/knife{
+	pixel_x = 10;
+	pixel_y = 5;
+	color = "#c1a384";
+	layer = 2.9
+	},
+/turf/open/floor/corsat/squares,
+/area/yautja_ship/lower_deck/training_center)
 "ya" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -12732,6 +12755,16 @@
 	},
 /turf/open/shuttle/dropship/predship/red_glow/on,
 /area/yautja_ship)
+"KN" = (
+/obj/effect/decal/cleanable/dirt{
+	layer = 3.2;
+	color = "#bccab4"
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/turf/open/floor/corsat/squares,
+/area/yautja_ship/lower_deck/training_center)
 "KR" = (
 /obj/effect/hunter/bridge_border/corner{
 	dir = 4
@@ -13728,6 +13761,9 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/yautja_ship)
+"Qk" = (
+/turf/open_space,
+/area/yautja_ship/upper_deck)
 "Ql" = (
 /obj/structure/surface/rack{
 	color = "#6b675e";
@@ -13781,6 +13817,9 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/shuttle/dropship/predship,
 /area/yautja_ship/lower_deck)
+"QC" = (
+/turf/open/shuttle/dropship/predship/hunter_catwalk,
+/area/yautja_ship/upper_deck)
 "QD" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -13967,6 +14006,13 @@
 /obj/item/weapon/harpoon/yautja,
 /turf/open/shuttle/dropship/predship/tile/red,
 /area/yautja_ship)
+"Sr" = (
+/obj/effect/decal/cleanable/dirt{
+	layer = 3.2;
+	color = "#bccab4"
+	},
+/turf/open/floor/corsat/squares,
+/area/yautja_ship/lower_deck/training_center)
 "St" = (
 /obj/structure/machinery/door/poddoor/yautja/armory{
 	id = "armory"
@@ -14607,6 +14653,33 @@
 /obj/structure/machinery/cm_vending/clothing/yautja/hunter/elder,
 /turf/open/floor/corsat,
 /area/yautja_ship)
+"WA" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 3.2;
+	color = "#bccab4"
+	},
+/obj/structure/sink{
+	pixel_y = 6;
+	color = "#c1a384";
+	dir = 4;
+	pixel_x = 12
+	},
+/obj/item/trash/snack_bowl{
+	color = "#6b675e";
+	name = "Bowl"
+	},
+/obj/item/trash/snack_bowl{
+	color = "#6b675e";
+	desc = "A simple bowl.";
+	name = "Bowl";
+	pixel_x = -4;
+	pixel_y = 17
+	},
+/turf/open/floor/corsat/squares,
+/area/yautja_ship/lower_deck/training_center)
 "WC" = (
 /obj/structure/showcase{
 	desc = null;
@@ -14833,6 +14906,32 @@
 /obj/effect/hunter/bridge_border/brown/corner,
 /turf/open/shuttle/bright_red/glow,
 /area/yautja_ship)
+"XH" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/decal/cleanable/dirt{
+	layer = 3.2;
+	color = "#bccab4"
+	},
+/obj/item/reagent_container/food/snacks/meat{
+	pixel_y = 5
+	},
+/obj/item/tool/kitchen/tray{
+	pixel_y = 9;
+	color = "#9bb1be";
+	layer = 3
+	},
+/obj/item/trash/snack_bowl{
+	color = "#6b675e";
+	desc = "A simple bowl.";
+	name = "Bowl";
+	pixel_x = -2;
+	pixel_y = -8
+	},
+/turf/open/floor/corsat/squares,
+/area/yautja_ship/lower_deck/training_center)
 "XJ" = (
 /obj/effect/hunter/bridge_border/brown,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_5/north,
@@ -18399,10 +18498,10 @@ SG
 kN
 kc
 jK
-jO
-jO
-jO
-jO
+jQ
+jQ
+jQ
+jQ
 jO
 jO
 jO
@@ -18494,10 +18593,10 @@ jK
 jO
 jO
 jO
-jO
-jO
-jO
-jO
+jQ
+jQ
+jQ
+jQ
 jO
 jO
 jO
@@ -18589,7 +18688,7 @@ jO
 jO
 jO
 jO
-jO
+jQ
 jO
 jO
 jO
@@ -18681,7 +18780,7 @@ jO
 jO
 jO
 jO
-jO
+jQ
 jO
 jO
 jO
@@ -18773,12 +18872,12 @@ jO
 jO
 jO
 jO
-jO
-jO
-jO
-jO
-jO
-jO
+jQ
+jQ
+jQ
+jQ
+jQ
+jQ
 jO
 jO
 jO
@@ -18870,7 +18969,7 @@ jO
 jO
 jO
 jO
-jO
+jQ
 jO
 jO
 jO
@@ -18962,7 +19061,7 @@ jO
 jO
 jO
 jO
-jO
+jQ
 jO
 jO
 jO
@@ -19054,7 +19153,7 @@ jO
 jO
 jO
 jO
-jO
+jQ
 jO
 jO
 jO
@@ -21626,7 +21725,7 @@ kL
 kL
 kv
 gD
-aB
+am
 aB
 aB
 am
@@ -21718,7 +21817,7 @@ kL
 kL
 kv
 gE
-cR
+am
 aB
 aB
 gh
@@ -21824,10 +21923,10 @@ aj
 aL
 dE
 dk
+dl
+dm
+Sr
 aj
-bY
-bY
-bY
 aj
 aj
 aj
@@ -21915,11 +22014,11 @@ eR
 eA
 as
 dF
-dl
+Sr
+Sr
+Sr
+Sr
 aj
-bY
-bY
-bY
 aj
 aj
 aj
@@ -22007,11 +22106,11 @@ eS
 eB
 dW
 dG
-dm
+XH
+xZ
+WA
+KN
 aj
-bY
-bY
-bY
 kv
 kv
 kv
@@ -34901,12 +35000,12 @@ oU
 oU
 oU
 oU
-pF
-pF
-pF
-pF
-pF
-pF
+Qk
+Qk
+Qk
+oU
+Qk
+Qk
 mV
 mV
 mV
@@ -34993,13 +35092,13 @@ pg
 qA
 qp
 oU
-pF
-pF
-pF
-pF
-pF
-pF
-pF
+QC
+QC
+QC
+QC
+Qk
+Qk
+Qk
 mV
 mV
 mV
@@ -35085,13 +35184,13 @@ qu
 qF
 qu
 ql
-pF
-pF
-pF
-pF
-pF
-pF
-pF
+QC
+QC
+QC
+QC
+Qk
+Qk
+Qk
 mV
 nr
 ng
@@ -35177,18 +35276,18 @@ oU
 oU
 oU
 oU
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
+QC
+QC
+QC
+QC
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
 mV
 nE
 mV
@@ -35264,23 +35363,23 @@ pF
 pF
 vd
 uP
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
+QC
+QC
+QC
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
 mV
 mV
 mV
@@ -35356,23 +35455,23 @@ pF
 pF
 vd
 uP
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
+QC
+QC
+QC
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
 oU
 pg
 oU
@@ -35448,23 +35547,23 @@ pF
 pF
 vd
 uP
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
+Qk
+Qk
+Qk
+np
+Qk
+Qk
+QC
+QC
+QC
+Qk
+np
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
 oU
 pi
 oU
@@ -35540,23 +35639,23 @@ pF
 pF
 vd
 uP
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
+QC
+QC
+QC
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
 pr
 pj
 oV
@@ -35632,23 +35731,23 @@ pF
 pF
 vd
 uP
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
+QC
+QC
+QC
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
 pr
 pk
 oW
@@ -35724,23 +35823,23 @@ pF
 pF
 vd
 uP
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
+np
+Qk
+Qk
+np
+np
+Qk
+QC
+QC
+QC
+np
+np
+Qk
+Qk
+np
+Qk
+Qk
+Qk
 np
 np
 oY
@@ -35816,23 +35915,23 @@ pF
 pF
 vd
 uP
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
+Qk
+Qk
+Qk
+np
+Qk
+Qk
+QC
+QC
+QC
+Qk
+np
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
 pt
 np
 pa
@@ -35908,23 +36007,23 @@ pF
 pF
 uY
 uO
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
+QC
+QC
+QC
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
 pu
 pl
 pb
@@ -36184,23 +36283,23 @@ pF
 pF
 vd
 uP
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
+QC
+QC
+QC
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
 pB
 pq
 pe
@@ -36276,23 +36375,23 @@ pF
 pF
 vd
 uP
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
+Qk
+Qk
+Qk
+np
+Qk
+Qk
+QC
+QC
+QC
+Qk
+np
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
 pE
 np
 pa
@@ -36368,23 +36467,23 @@ pF
 pF
 vd
 uP
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
+np
+Qk
+Qk
+np
+np
+Qk
+QC
+QC
+QC
+np
+np
+Qk
+Qk
+np
+Qk
+Qk
+Qk
 np
 np
 oY
@@ -36460,23 +36559,23 @@ pF
 pF
 vd
 uP
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
+QC
+QC
+QC
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
 pr
 pj
 oV
@@ -36552,23 +36651,23 @@ pF
 pF
 vd
 uP
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
+QC
+QC
+QC
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
 pr
 pk
 oW
@@ -36644,23 +36743,23 @@ pF
 pF
 vd
 uP
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
+Qk
+Qk
+Qk
+np
+Qk
+Qk
+QC
+QC
+QC
+Qk
+np
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
 oU
 pi
 oU
@@ -36736,23 +36835,23 @@ pF
 pF
 vd
 uP
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
+QC
+QC
+QC
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
 oU
 pg
 oU
@@ -36828,23 +36927,23 @@ pF
 pF
 vd
 uP
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
+QC
+QC
+QC
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
 mV
 mV
 mV
@@ -36925,18 +37024,18 @@ oU
 oU
 oU
 oU
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
-pF
+QC
+QC
+QC
+QC
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
 mV
 nE
 mV
@@ -37017,13 +37116,13 @@ qo
 qz
 qo
 ql
-pF
-pF
-pF
-pF
-pF
-pF
-pF
+QC
+QC
+QC
+QC
+Qk
+Qk
+Qk
 mV
 pV
 pR
@@ -37109,13 +37208,13 @@ qN
 qC
 qt
 oU
-pF
-pF
-pF
-pF
-pF
-pF
-pF
+QC
+QC
+QC
+QC
+Qk
+Qk
+Qk
 mV
 mV
 mV
@@ -37201,12 +37300,12 @@ oU
 oU
 oU
 oU
-pF
-pF
-pF
-pF
-pF
-pF
+Qk
+Qk
+Qk
+oU
+Qk
+Qk
 mV
 mV
 mV

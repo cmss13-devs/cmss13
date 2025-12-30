@@ -6,10 +6,10 @@
 	icon_state = "cat2"
 	icon_living = "cat2"
 	icon_dead = "cat2_dead"
-	speak = list("Meow!","Esp!","Purr!","HSSSSS")
+	speak = list("Meow!","Esp!","Purr!","HSSSSS!")
 	speak_emote = list("purrs", "meows")
-	emote_hear = list("meows","mews")
-	emote_see = list("shakes their head", "shivers")
+	emote_hear = list("meows.","mews.", "mrrps.")
+	emote_see = list("shakes their head.", "shivers.", "licks their paw.")
 	speak_chance = 1
 	turns_per_move = 5
 	meat_type = /obj/item/reagent_container/food/snacks/meat

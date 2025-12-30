@@ -51,7 +51,7 @@
 			var/obj/item/weapon_l_hand = l_hand
 			if(weapon_l_hand && weapon_l_hand.flags_xeno_examine != NO_FLAGS)
 				if(had_gun)
-					weapon_message += " They are also holding "
+					weapon_message += "\nThey are also holding "
 				weapon_message += xeno_weapon_identification(weapon_l_hand)
 
 			if(weapon_message == "They are holding ") // This is incase what is held has no examine flags
@@ -65,7 +65,7 @@
 				weapon_message += "They have on their back "
 				weapon_message += xeno_weapon_identification(weapon_back)
 
-		msg += SPAN_ALERT("[weapon_message]")
+		msg += "[weapon_message]"
 
 		var/mob/living/carbon/xenomorph/xeno_user = user
 		if(xeno_user.behavior_delegate.delegate_examine_text() != FALSE)
@@ -633,7 +633,7 @@
 	else
 		return FALSE
 
-/proc/xeno_weapon_identification(obj/item/held_weapon)
+/mob/living/carbon/proc/xeno_weapon_identification(obj/item/held_weapon)
 	var/final_message
 
 	if(held_weapon.flags_xeno_examine & EXAMINE_FLAG_SMALLBLADE)

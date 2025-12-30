@@ -83,6 +83,13 @@
 	},
 /turf/open/shuttle/dropship/predship/tile/red3,
 /area/yautja)
+"ai" = (
+/obj/structure/bed/chair/hunter{
+	pixel_x = -15;
+	buckling_x = -15
+	},
+/turf/open/floor/corsat/squares,
+/area/yautja)
 "aj" = (
 /obj/effect/hunter/bridge_border/brown/edge{
 	dir = 1
@@ -430,13 +437,6 @@
 	dir = 4
 	},
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
-/area/yautja)
-"aZ" = (
-/obj/structure/bed/chair/hunter{
-	pixel_x = 16;
-	buckling_x = -15
-	},
-/turf/open/floor/corsat/squares,
 /area/yautja)
 "ba" = (
 /obj/structure/machinery/cm_vending/clothing/yautja/hunter/elder,
@@ -1885,7 +1885,7 @@
 	id = "armory";
 	pixel_y = 23;
 	name = "Armory Lockdown";
-	req_one_access_txt = "392"
+	req_one_access_txt = "391"
 	},
 /obj/effect/hunter/rune{
 	dir = 1
@@ -2829,15 +2829,10 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/device/yautja_teleporter{
-	pixel_y = 8
+/obj/item/storage/belt/utility/pred/full{
+	pixel_y = 11
 	},
-/obj/item/device/yautja_teleporter{
-	pixel_y = 3
-	},
-/obj/item/device/yautja_teleporter{
-	pixel_y = -2
-	},
+/obj/item/stack/cable_coil,
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "jg" = (
@@ -11684,7 +11679,6 @@
 	pixel_x = 1;
 	pixel_y = 4
 	},
-/obj/item/stack/cable_coil,
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "Og" = (
@@ -13599,7 +13593,6 @@
 	pixel_x = -1;
 	pixel_y = 4
 	},
-/obj/item/stack/cable_coil,
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "UB" = (
@@ -14120,7 +14113,7 @@
 	pixel_y = 23;
 	name = "Secure Armory Lockdown";
 	pixel_x = -9;
-	req_one_access_txt = "393"
+	req_one_access_txt = "391"
 	},
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
@@ -15343,18 +15336,18 @@ aa
 aa
 aa
 aa
-dI
-dI
-dI
-dI
-dI
-dI
-dI
-dI
-dI
-dI
-dI
-dI
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 "}
 (2,1,1) = {"
 dI
@@ -18626,7 +18619,7 @@ dI
 dI
 dI
 dI
-dI
+aa
 dI
 lv
 hH
@@ -19406,7 +19399,7 @@ Si
 Si
 hm
 Qo
-aZ
+Qo
 FM
 sy
 Tk
@@ -19508,7 +19501,7 @@ Si
 Si
 cP
 Qo
-Qo
+ai
 Ae
 sy
 Tk

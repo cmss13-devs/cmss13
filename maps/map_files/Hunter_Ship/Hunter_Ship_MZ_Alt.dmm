@@ -11238,9 +11238,6 @@
 	pixel_x = 3;
 	pixel_y = 1
 	},
-/obj/structure/machinery/power/apc/almayer/east{
-	pixel_y = 25
-	},
 /turf/open/floor/corsat,
 /area/yautja_ship)
 "Lk" = (

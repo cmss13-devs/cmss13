@@ -494,7 +494,7 @@
 	desc = "A headset used by the highly trained staff of the medbay. To access the medical channel, use :m."
 	icon_state = "med_headset"
 	frequency = MED_FREQ
-	initial_keys = list(/obj/item/device/encryptionkey/almayer, /obj/item/device/encryptionkey/med)
+	initial_keys = list(/obj/item/device/encryptionkey/almayer)
 
 /obj/item/device/radio/headset/almayer/research
 	name = "researcher radio headset"

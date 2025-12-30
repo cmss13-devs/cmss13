@@ -79,6 +79,13 @@
 	},
 /turf/open/floor/corsat/squareswood/north,
 /area/desert_dam/interior/caves/temple)
+"an" = (
+/obj/structure/machinery/door/airlock/sandstone/runed{
+	name = "Strange Temple";
+	dir = 1
+	},
+/turf/open/floor/sandstone/runed,
+/area/desert_dam/interior/caves/temple)
 "av" = (
 /obj/structure/xenoautopsy/tank/hugger/yautja,
 /turf/open/shuttle/red,
@@ -1000,7 +1007,7 @@ mB
 mB
 mB
 mB
-uK
+an
 mB
 "}
 (13,1,1) = {"
@@ -1026,7 +1033,7 @@ AU
 mB
 Gz
 mB
-uK
+an
 mB
 "}
 (14,1,1) = {"
@@ -1039,7 +1046,7 @@ MH
 WV
 am
 mB
-uK
+an
 mB
 mB
 YH
@@ -1177,7 +1184,7 @@ mB
 mB
 mB
 mB
-uK
+an
 AU
 AU
 fl

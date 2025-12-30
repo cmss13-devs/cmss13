@@ -24,6 +24,10 @@
 /area/yautja_ship/lower_deck/houndchamber
 	name = "\improper Yautja Ship - Lower Deck - Hound Chamber"
 
+/area/yautja_ship/lower_deck/temple
+	name = "\improper Yautja Ship - Lower Deck - Temple"
+	icon_state = "bridge"
+
 /// Mid Deck
 /area/yautja_ship/middle_deck
 	name = "\improper Yautja Ship - Middle Deck"
@@ -50,6 +54,16 @@
 	name = "\improper Yautja Ship - Middle Deck - Hall of the Fallen"
 	icon_state = "medical"
 
+/area/yautja_ship/middle_deck/food
+	name = "\improper Yautja Ship - Middle Deck - Feed Hall"
+
+/area/yautja_ship/middle_deck/elder
+	name = "\improper Yautja Ship - Middle Deck - Elder Quarters"
+	icon_state = "training"
+
+/area/yautja_ship/middle_deck/prep
+	name = "\improper Yautja Ship - Middle Deck - Sleeping Chamber"
+	icon_state = "bridge"
 
 /// Top Deck
 /area/yautja_ship/upper_deck

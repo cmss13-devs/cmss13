@@ -266,6 +266,7 @@ SUBSYSTEM_DEF(hijack)
 		for(var/obj/docking_port/mobile/crashable/escape_shuttle/shuttle in SSshuttle.mobile)
 			shuttle.prepare_evac()
 		activate_lifeboats()
+		unlock_closet()
 		return TRUE
 
 /// Cancels evacuation, tells lifepods/lifeboats and status_displays
@@ -281,6 +282,7 @@ SUBSYSTEM_DEF(hijack)
 
 		for(var/obj/docking_port/mobile/crashable/escape_shuttle/shuttle in SSshuttle.mobile)
 			shuttle.cancel_evac()
+		lock_closet()
 		return TRUE
 
 /// Opens the lifeboat doors and gets them ready to launch
@@ -298,6 +300,17 @@ SUBSYSTEM_DEF(hijack)
 		if(lifeboat && lifeboat.available)
 			lifeboat.status = LIFEBOAT_INACTIVE
 
+/datum/controller/subsystem/hijack/proc/lock_closet()
+//for when you want the locker to lock itself without user input
+	for(var/obj/structure/closet/secure_closet/emergency/emergency in GLOB.closet_list)
+		emergency.close()
+		emergency.lock()
+
+/datum/controller/subsystem/hijack/proc/unlock_closet()
+//for when you want the locker to lock itself without user input
+	for(var/obj/structure/closet/secure_closet/emergency/emergency in GLOB.closet_list)
+		emergency.unlock()
+		emergency.open()
 
 /// Once refueling is done, marines can optionally hold SD for a time for a stalemate instead of a xeno minor
 /datum/controller/subsystem/hijack/proc/unlock_self_destruct()

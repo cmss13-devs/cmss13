@@ -1,0 +1,152 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/obj/structure/closet/yautja/big{
+	pixel_x = 1;
+	pixel_y = 24;
+	wall_mounted = 1
+	},
+/obj/item/stack/yautja_rope,
+/obj/item/stack/yautja_rope,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/large_stack,
+/turf/open/shuttle/dropship/predship/hunter_grille,
+/area/yautja/badblood)
+"e" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/reagent_container/food/snacks/stew,
+/obj/item/reagent_container/food/snacks/stew,
+/turf/open/shuttle/dropship/predship/hunter_grille,
+/area/yautja/badblood)
+"g" = (
+/obj/structure/machinery/cm_vending/clothing/yautja/hunter/survivor,
+/turf/open/shuttle/dropship/predship/hunter_grille,
+/area/yautja/badblood)
+"i" = (
+/turf/open/space/basic,
+/area/space)
+"t" = (
+/obj/effect/landmark/badblood_spawn,
+/turf/open/shuttle/dropship/predship/hunter_grille,
+/area/yautja/badblood)
+"w" = (
+/obj/effect/hunter/bridge_border/corner,
+/obj/effect/hunter/bridge_border/corner{
+	dir = 4
+	},
+/obj/effect/step_trigger/teleporter/yautja_survivor,
+/obj/effect/hunter/catwalk/new_alpha,
+/obj/structure/showcase{
+	desc = "A console used for Yautja teleportation.";
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "terminal";
+	name = "Teleporter Control Console";
+	pixel_y = 24;
+	density = 0
+	},
+/turf/open/floor/light/red/darker,
+/area/yautja/badblood)
+"E" = (
+/turf/closed/wall/huntership,
+/area/yautja/badblood)
+"G" = (
+/turf/open/shuttle/dropship/predship/hunter_grille,
+/area/yautja/badblood)
+"K" = (
+/obj/structure/machinery/door/airlock/yautja{
+	name = "\improper Teleporter";
+	dir = 1
+	},
+/turf/open/shuttle/dropship/predship/hunter_grille,
+/area/yautja/badblood)
+"Q" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/tool/kitchen/utensil/fork{
+	pixel_x = 10;
+	pixel_y = 3
+	},
+/obj/item/tool/kitchen/utensil/spoon{
+	pixel_y = 3;
+	pixel_x = 3
+	},
+/obj/item/device/flashlight/lantern/yautja{
+	pixel_x = -7;
+	pixel_y = 2
+	},
+/turf/open/shuttle/dropship/predship/hunter_grille,
+/area/yautja/badblood)
+"V" = (
+/obj/structure/machinery/cm_vending/clothing/yautja/hunter/survivor/right,
+/turf/open/shuttle/dropship/predship/hunter_grille,
+/area/yautja/badblood)
+"W" = (
+/obj/structure/bed/alien/yautja{
+	pixel_x = 6;
+	pixel_y = 7;
+	buckling_x = 6;
+	buckling_y = 7
+	},
+/turf/open/shuttle/dropship/predship/hunter_grille,
+/area/yautja/badblood)
+
+(1,1,1) = {"
+E
+E
+E
+E
+E
+E
+"}
+(2,1,1) = {"
+E
+g
+G
+G
+W
+E
+"}
+(3,1,1) = {"
+E
+V
+G
+G
+t
+E
+"}
+(4,1,1) = {"
+E
+E
+E
+a
+G
+E
+"}
+(5,1,1) = {"
+E
+w
+K
+G
+G
+E
+"}
+(6,1,1) = {"
+E
+E
+E
+e
+Q
+E
+"}
+(7,1,1) = {"
+i
+i
+E
+E
+E
+E
+"}

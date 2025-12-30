@@ -243,6 +243,15 @@ Additional game mode variables.
 	else
 		return FALSE
 
+/datum/game_mode/proc/load_predsurv_base()
+	loaded_predsurv_base = "loading"
+	loaded_predsurv_base = SSmapping.lazy_load_template(/datum/lazy_template/predsurv_base, force = TRUE)
+	if(!loaded_predsurv_base || (loaded_predsurv_base == "loading"))
+		log_debug("Error loading pred survivor base!")
+		loaded_predsurv_base = null
+		return FALSE
+	return TRUE
+
 /datum/game_mode/proc/transform_predator(mob/pred_candidate)
 	set waitfor = FALSE
 
@@ -290,7 +299,10 @@ Additional game mode variables.
 		log_debug("Null client attempted to transform_badblood")
 		return
 
-	badblood_candidate.client.prefs.find_assigned_slot(JOB_PRED_SURVIVOR) // Probably does not do anything relevant, predator preferences are not tied to specific slot.
+	if(!loaded_predsurv_base)
+		load_predsurv_base()
+		if(!loaded_predsurv_base)
+			return FALSE
 
 	var/turf/spawn_point = pick(GLOB.badblood_spawns)
 	if(!isturf(spawn_point))
@@ -323,7 +335,10 @@ Additional game mode variables.
 		log_debug("Null client attempted to transform_stranded_pred")
 		return
 
-	stranded_candidate.client.prefs.find_assigned_slot(JOB_PRED_SURVIVOR) // Probably does not do anything relevant, predator preferences are not tied to specific slot.
+	if(!loaded_predsurv_base)
+		load_predsurv_base()
+		if(!loaded_predsurv_base)
+			return FALSE
 
 	//var/obj/effect/landmark/yautja_teleport/position = pick(GLOB.yautja_teleports)
 	//var/turf/spawn_point = get_turf(position)

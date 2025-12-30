@@ -382,7 +382,7 @@
 /turf/closed/wall/mineral
 	name = "mineral wall"
 	desc = "This shouldn't exist."
-	icon = 'icons/turf/walls/stone.dmi'
+	icon = 'icons/turf/walls/mineral_wall.dmi'
 	icon_state = "stone"
 	walltype = WALL_STONE
 	var/mineral
@@ -428,24 +428,53 @@
 /turf/closed/wall/mineral/sandstone/runed
 	name = "sandstone temple wall"
 	desc = "A heavy wall of sandstone."
+	icon = 'icons/turf/walls/hunter/hunter_temple.dmi'
+	icon_state = "ancient_stone"
 	mineral = "runed sandstone"
-	color = "#b29082"
+	color = null
 	damage_cap = HEALTH_WALL_REINFORCED//Strong, but only available to Hunters, can can still be blown up or melted by boilers.
 	baseturfs = /turf/open/floor/sandstone/runed
+	walltype = WALL_ANCIENT_BASE
+	var/decoration_type
+	blend_turfs = list(/turf/closed/wall/mineral, /turf/closed/wall/mineral/sandstone/runed, /turf/closed/wall/ancient_temple)
+	blend_objects = list(/obj/structure/prop/hunter/ancient_temple/collapsed_wall, /obj/structure/machinery/door, /obj/structure/window_frame, /obj/structure/window/framed)
 
 /turf/closed/wall/mineral/sandstone/runed/attack_alien(mob/living/carbon/xenomorph/user)
 	visible_message("[user] scrapes uselessly against [src] with their claws.")
 	return
 
-/turf/closed/wall/mineral/sandstone/runed/decor
-	name = "runed sandstone temple wall"
-	desc = "A heavy wall of sandstone, with elegant carvings and runes inscribed upon its face."
-	icon = 'icons/turf/walls/runedstone.dmi'
-	icon_state = "runedstone"
-	walltype = "runedstone"
+/turf/closed/wall/mineral/sandstone/runed/LateInitialize()
+	. = ..()
+	if(prob(20))
+		decoration_type = rand(0,3)
+	update_icon()
+
+/turf/closed/wall/mineral/sandstone/runed/update_icon()
+	if(decoration_type == null)
+		return ..()
+	if(neighbors_list in list(EAST|WEST))
+		special_icon = TRUE
+		icon_state = "ancient_stone_deco_wall[decoration_type]"
+	else // Wall connection was broken, return to normality
+		special_icon = FALSE
+	return ..()
 
 /turf/closed/wall/mineral/sandstone/runed/can_be_dissolved()
 	return 2
+
+/turf/closed/wall/mineral/sandstone/runed/decor
+	name = "decorated sandstone temple wall"
+	desc = "A heavy wall of sandstone, with elegant carvings and runes inscribed upon its face."
+	icon = 'icons/turf/walls/hunter/hunter_temple_deco.dmi'
+
+/turf/closed/wall/mineral/sandstone/runed/decor_2
+	icon = 'icons/turf/walls/hunter/hunter_temple_deco_2.dmi'
+
+/turf/closed/wall/mineral/sandstone/runed/decor_3
+	icon = 'icons/turf/walls/hunter/hunter_temple_deco_3.dmi'
+
+
+
 
 /turf/closed/wall/mineral/uranium
 	name = "uranium wall"
@@ -508,12 +537,19 @@
 //Misc walls
 
 /turf/closed/wall/cult
-	name = "wall"
-	desc = "The patterns engraved on the wall seem to shift as you try to focus on them. You feel sick."
-	icon = 'icons/turf/walls/cult.dmi'
-	icon_state = "cult"
+	name = "dark temple wall"
+	desc = "Dark temple walls, the bricks look ancient - made of a rare type of stone."
+	icon = 'icons/turf/walls/hunter/runedstone.dmi'
+	icon_state = "runedstone"
 	walltype = WALL_CULT
-	color = "#3c3434"
+	color = "#524e49"
+
+/turf/closed/wall/cult/attack_alien(mob/living/carbon/xenomorph/user)
+	visible_message("[user] scrapes uselessly against [src] with their claws.")
+	return
+
+/turf/closed/wall/cult/can_be_dissolved()
+	return 2
 
 /turf/closed/wall/cult/hunting_grounds
 	name = "wall"
@@ -579,6 +615,7 @@
 	turf_flags = TURF_HULL
 	baseturfs = /turf/open/gm/dirt
 	minimap_color = MINIMAP_BLACK
+	noblend_turfs = list(/turf/closed/wall/ancient_temple, /turf/closed/wall/mineral/bone_resin)
 
 /turf/closed/wall/rock/Initialize(mapload)
 	. = ..()

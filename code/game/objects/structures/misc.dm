@@ -80,11 +80,14 @@
 /obj/structure/showcase/yautja
 	name = "alien warrior statue"
 	desc = "A statue of some armored alien humanoid."
-	icon = 	'icons/obj/structures/machinery/yautja_machines.dmi'
+	icon = 	'icons/obj/structures/props/hunter/ancientsmallstatue.dmi'
 	icon_state = "statue_sandstone"
 
 /obj/structure/showcase/yautja/alt
 	icon_state = "statue_grey"
+
+/obj/structure/showcase/yautja/ancient
+	icon_state = "statue_ancient"
 
 /obj/structure/target
 	name = "shooting target"

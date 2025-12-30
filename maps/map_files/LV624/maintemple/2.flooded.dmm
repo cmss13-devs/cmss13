@@ -3,13 +3,20 @@
 /obj/structure/bed/alien/yautja/leader,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
+"ab" = (
+/obj/structure/machinery/door/airlock/sandstone/runed{
+	name = "Strange Temple";
+	dir = 1
+	},
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/caves/sand_temple)
 "ai" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/sand_temple)
 "aj" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
@@ -38,7 +45,7 @@
 /area/lv624/ground/caves/sand_temple)
 "aH" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
@@ -73,7 +80,7 @@
 /area/lv624/ground/caves/sand_temple)
 "aT" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
@@ -152,7 +159,7 @@
 /area/lv624/ground/caves/sand_temple)
 "eb" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
@@ -175,7 +182,7 @@
 /area/lv624/ground/barrens/south_eastern_barrens)
 "eM" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 1;
 	icon_state = "p_stair_full"
 	},
@@ -212,7 +219,7 @@
 /area/lv624/ground/caves/sand_temple)
 "fT" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 5;
 	icon_state = "p_stair_full"
 	},
@@ -225,7 +232,7 @@
 /area/lv624/ground/caves/sand_temple)
 "gq" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 10;
 	icon_state = "p_stair_full"
 	},
@@ -248,7 +255,7 @@
 /area/lv624/ground/caves/sand_temple)
 "gJ" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
@@ -280,7 +287,7 @@
 /area/lv624/ground/caves/sand_temple)
 "hX" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
@@ -431,7 +438,7 @@
 /area/lv624/ground/caves/sand_temple)
 "oR" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 5;
 	icon_state = "p_stair_full"
 	},
@@ -485,7 +492,7 @@
 /area/lv624/ground/caves/sand_temple)
 "sE" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
 	},
@@ -530,7 +537,7 @@
 /area/lv624/ground/caves/sand_temple)
 "un" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
@@ -556,7 +563,7 @@
 /area/lv624/ground/caves/sand_temple)
 "vB" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
 	},
@@ -650,7 +657,7 @@
 /area/lv624/ground/caves/sand_temple)
 "xy" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
@@ -719,7 +726,7 @@
 /area/lv624/ground/barrens/south_eastern_barrens)
 "Ba" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 9;
 	icon_state = "p_stair_full"
 	},
@@ -758,7 +765,7 @@
 /area/lv624/ground/barrens/south_eastern_barrens)
 "Df" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
@@ -798,7 +805,7 @@
 /area/lv624/ground/barrens/south_eastern_barrens)
 "DT" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 10;
 	icon_state = "p_stair_full"
 	},
@@ -987,7 +994,7 @@
 /area/lv624/ground/caves/sand_temple)
 "Jz" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
@@ -1106,7 +1113,7 @@
 /area/lv624/ground/caves/sand_temple)
 "PK" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 9;
 	icon_state = "p_stair_full"
 	},
@@ -1154,13 +1161,14 @@
 /obj/structure/flora/jungle/vines/heavy,
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/machinery/door/airlock/sandstone/runed/destroyable{
-	name = "\improper Strange Temple"
+	name = "\improper Strange Temple";
+	dir = 1
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "Rr" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 9;
 	icon_state = "p_stair_full"
 	},
@@ -1175,7 +1183,7 @@
 /area/lv624/ground/caves/sand_temple)
 "RV" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
@@ -1192,7 +1200,7 @@
 /area/lv624/ground/caves/sand_temple)
 "Sg" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 6;
 	icon_state = "p_stair_full"
 	},
@@ -1202,7 +1210,7 @@
 "SL" = (
 /obj/structure/platform/stone/runed_sandstone/north,
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 5;
 	icon_state = "p_stair_full"
 	},
@@ -1250,7 +1258,7 @@
 /area/lv624/ground/caves/sand_temple)
 "Uj" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 8;
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
@@ -1260,7 +1268,7 @@
 /area/lv624/ground/caves/sand_temple)
 "Uk" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
@@ -1294,7 +1302,7 @@
 "VP" = (
 /obj/structure/platform/stone/runed_sandstone,
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 6;
 	icon_state = "p_stair_full"
 	},
@@ -1365,7 +1373,7 @@
 /area/lv624/ground/barrens/south_eastern_barrens)
 "ZH" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 8;
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
@@ -2181,7 +2189,7 @@ ZX
 ZX
 ZX
 OR
-PA
+ab
 Ai
 Ai
 mv

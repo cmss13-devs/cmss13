@@ -28,13 +28,14 @@
 		attack_hand(xeno)
 		return XENO_NONCOMBAT_ACTION
 
-/obj/structure/showcase/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/showcase/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	if(unslashable)
 		return TAILSTAB_COOLDOWN_NONE
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
 	deconstruct(FALSE)
 	xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
 	SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
 
 /obj/structure/showcase/initialize_pass_flags(datum/pass_flags_container/PF)
@@ -233,7 +234,7 @@
 	take_damage(25)
 	return XENO_ATTACK_ACTION
 
-/obj/structure/xenoautopsy/tank/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/xenoautopsy/tank/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	if(unslashable || health <= 0)
 		return TAILSTAB_COOLDOWN_NONE
 	playsound(src, 'sound/effects/Glasshit.ogg', 25, 1)
@@ -243,6 +244,7 @@
 	else
 		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
 		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno.tail_stab_animation(src, blunt_stab)
 	take_damage(xeno.melee_damage_upper)
 	return TAILSTAB_COOLDOWN_NORMAL
 
@@ -624,7 +626,7 @@ GLOBAL_DATUM_INIT(above_blackness_backdrop, /atom/movable/above_blackness_backdr
 
 /obj/effect/stairs/Initialize(mapload, ...)
 	. = ..()
-	SSminimaps.add_marker(src, z, MINIMAP_FLAG_ALL, "stairs_[direction]")
+	SSminimaps.add_marker(src, MINIMAP_FLAG_ALL, image('icons/UI_icons/map_blips.dmi', null,"stairs_[direction]", HIGH_FLOAT_LAYER))
 
 /obj/effect/stairs/up
 	direction = "up"
@@ -672,13 +674,14 @@ GLOBAL_DATUM_INIT(above_blackness_backdrop, /atom/movable/above_blackness_backdr
 		attack_hand(xeno)
 		return XENO_NONCOMBAT_ACTION
 
-/obj/structure/ore_box/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/ore_box/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	if(unslashable)
 		return TAILSTAB_COOLDOWN_NONE
 	playsound(src, 'sound/effects/woodhit.ogg', 25, 1)
 	deconstruct(FALSE)
 	xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
 	SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
 
 /obj/structure/computer3frame

@@ -637,49 +637,49 @@
 	var/final_message
 
 	if(held_weapon.flags_xeno_examine & EXAMINE_FLAG_SMALLBLADE)
-		final_message += "a small blade."
+		final_message += "a small bladed weapon."
 	if(held_weapon.flags_xeno_examine & EXAMINE_FLAG_SMALLBLUNT)
-		final_message += "a small bludgeon."
+		final_message += "a small bludgeoning weapon."
 	if(held_weapon.flags_xeno_examine & EXAMINE_FLAG_MEDIUMBLADE)
-		final_message += "a large blade."
+		final_message += "a large bladed weapon."
 	if(held_weapon.flags_xeno_examine & EXAMINE_FLAG_MEDIUMBLUNT)
-		final_message += "a large bludgeon."
+		final_message += "a large bludgeoning weapon."
 	if(held_weapon.flags_xeno_examine & EXAMINE_FLAG_HEAVYBLADE)
-		final_message += "a heavy blade."
+		final_message += "a heavy bladed weapon."
 	if(held_weapon.flags_xeno_examine & EXAMINE_FLAG_HEAVYBLUNT)
-		final_message += "a heavy bludgeon."
+		final_message += "a heavy bludgeoning weapon."
 	if(held_weapon.flags_xeno_examine & EXAMINE_FLAG_SPEAR)
-		final_message += "a fighting rod."
+		final_message += "a spear-like weapon."
 	if(held_weapon.flags_xeno_examine & EXAMINE_FLAG_PISTOL)
-		final_message += "a hand spitter."
+		final_message += "a pistol."
 	if(held_weapon.flags_xeno_examine & EXAMINE_FLAG_SMG)
-		final_message += "a rapid spitter."
+		final_message += "a submachine gun."
 	if(held_weapon.flags_xeno_examine & EXAMINE_FLAG_RIFLE)
-		final_message += "a medium spitter."
+		final_message += "a rifle of sorts."
 	if(held_weapon.flags_xeno_examine & EXAMINE_FLAG_SHOTGUN)
-		final_message += "a scatter spitter."
+		final_message += "a shotgun."
 	if(held_weapon.flags_xeno_examine & EXAMINE_FLAG_MACHINEGUN)
-		final_message += "a heavy spitter."
+		final_message += "a machine gun."
 	if(held_weapon.flags_xeno_examine & EXAMINE_FLAG_FLAMER)
-		final_message += "a fire spitter."
+		final_message += "a flamethrower."
 	if(held_weapon.flags_xeno_examine & EXAMINE_FLAG_SNIPER)
-		final_message += "a long-range spitter."
+		final_message += "a high-powered rifle."
 	if(held_weapon.flags_xeno_examine & EXAMINE_FLAG_GRENADELAUNCHER)
-		final_message += "an explosive thrower."
+		final_message += "a grenade launcher."
 	if(held_weapon.flags_xeno_examine & EXAMINE_FLAG_ROCKETLAUNCHER)
-		final_message += "an explosive tube."
+		final_message += "a rocket launcher."
 	if(held_weapon.flags_xeno_examine & EXAMINE_FLAG_EXOTIC)
-		final_message += "a strange, exotic spitter."
+		final_message += "an exotic weapon of sorts."
 
 	if(held_weapon.flags_xeno_examine & EXAMINE_FLAG_GENERICDANGER)
-		final_message += SPAN_ALERT(" We can sense it is dangerous!")
+		final_message += SPAN_ALERT(" We can tell it is dangerous!")
 	if(held_weapon.flags_xeno_examine & EXAMINE_FLAG_UNIQUEDANGER)
-		final_message += SPAN_DANGER(" We can sense it is very dangerous!")
+		final_message += SPAN_DANGER(" We can tell it is very dangerous!")
 	if(held_weapon.flags_xeno_examine & EXAMINE_FLAG_EXPLODES)
-		final_message += SPAN_DANGER(" We can sense it is explosive!")
+		final_message += SPAN_DANGER(" We can tell it is explosive!")
 	if(held_weapon.flags_xeno_examine & EXAMINE_FLAG_NONCOMBAT)
-		final_message += SPAN_XENONOTICE(" We can sense it is not meant for killing!")
+		final_message += SPAN_XENONOTICE(" We can tell it is not meant for killing!")
 	if(held_weapon.flags_xeno_examine & EXAMINE_FLAG_YAUTJA)
-		final_message += SPAN_YAUTJABOLD(" We can sense this is of Headhunter origin!")
+		final_message += SPAN_YAUTJABOLD(" We can tell this is of Headhunter origin!")
 
 	return final_message

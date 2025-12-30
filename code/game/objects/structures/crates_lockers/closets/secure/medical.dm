@@ -175,11 +175,11 @@
 	icon_locked = "e-surgical_wall_locked"
 	icon_opened = "e-surgical_wall_open"
 	icon_broken = "e-surgical_wall_spark"
+	wall_mounted = TRUE
 	req_access = null //a proc handles it unlocking itself
 	health = null	// Unbreakable. This is guaranteed to give doctors a last chance to do their job during hijack.
 	unacidable = TRUE //fuck you, acid rouny
 	unslashable = TRUE //fuck you, rav
-	var/hijack = FALSE //can't open this when it's not hijack
 
 /obj/structure/closet/secure_closet/surgical/emergency/Initialize()
 	. = ..()
@@ -196,25 +196,18 @@
 	new /obj/item/tool/portadialysis(src)
 	new /obj/item/tool/portadialysis(src)
 
-
 /obj/structure/closet/secure_closet/surgical/emergency/togglelock(mob/living/user)
-	if(hijack == FALSE)
-		if(user.job in JOB_DOCTOR_ROLES_LIST) //Nobody can open this if hijack == FALSE.
-			to_chat(user, SPAN_WARNING("As medical staff, you may only toggle this lock during Code Delta."))
-		else
-			to_chat(user, SPAN_WARNING("You do not have access."))
-	else
-		if(user.job in JOB_DOCTOR_ROLES_LIST)
-			return ..()
-		to_chat(user, SPAN_WARNING("You do not have access."))
-
-/obj/structure/closet/secure_closet/surgical/emergency/proc/all_docs_are_field_docs() //A DROPSHIP HAS BEEN HIJACKED! OPEN DIS BITCH UP!
-	if(SShijack.evac_status == EVACUATION_STATUS_INITIATED)
-		hijack = TRUE
-		locked = FALSE //OPEN THE LOCKERRRR
-		update_icon() // to show the locker is unlocked after it unlocked itself.
-		req_access = list(ACCESS_MARINE_MEDBAY) //ALL Y'ALL FOB MEDICS NOW!
-
+	switch(SShijack.evac_status)
+		if(EVACUATION_STATUS_NOT_INITIATED)
+			if(user.job in JOB_DOCTOR_ROLES_LIST) //Nobody can open this if hijack == FALSE.
+				to_chat(user, SPAN_WARNING("As medical staff, you may only toggle this lock during evacuation."))
+			else
+				to_chat(user, SPAN_WARNING("You do not have access."))
+		if(EVACUATION_STATUS_INITIATED)
+			if(user.job in JOB_DOCTOR_ROLES_LIST) //Nobody can open this if hijack == FALSE.
+				return ..()
+			else
+				to_chat(user, SPAN_WARNING("You do not have access."))
 /obj/structure/closet/secure_closet/professor_dummy
 	name = "professor dummy cabinet"
 	desc = "An ultrasafe cabinet containing Professor DUMMY and its tablet. Only accessible by Chief Medical Officers and Senior Listed Advisors."

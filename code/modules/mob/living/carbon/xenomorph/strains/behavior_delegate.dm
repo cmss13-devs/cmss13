@@ -108,3 +108,7 @@
 /// Used to do something when a xeno collides with a movable atom
 /datum/behavior_delegate/proc/on_collide(atom/movable/movable_atom)
 	return
+
+/// Used to add extra examine text
+/datum/behavior_delegate/proc/delegate_examine_text(mob/living/examine_target)
+	return

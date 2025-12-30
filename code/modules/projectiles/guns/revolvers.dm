@@ -11,6 +11,7 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/revolvers_righthand.dmi'
 	)
 	mouse_pointer = 'icons/effects/mouse_pointer/pistol_mouse.dmi'
+	flags_xeno_examine = EXAMINE_FLAG_PISTOL
 
 	matter = list("metal" = 2000)
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG|GUN_ONE_HAND_WIELDED
@@ -409,6 +410,7 @@
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/revolvers.dmi'
 	icon_state = "lapd_2019"
 	item_state = "highpower" //placeholder
+	flags_xeno_examine = EXAMINE_FLAG_PISTOL|EXAMINE_FLAG_UNIQUEDANGER
 
 	fire_sound = "gun_pkd"
 	fire_rattle = 'sound/weapons/gun_pkd_fire01_rattle.ogg'
@@ -636,6 +638,7 @@
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/revolvers.dmi'
 	icon_state = "mateba"
 	item_state = "mateba"
+	flags_xeno_examine = EXAMINE_FLAG_PISTOL|EXAMINE_FLAG_UNIQUEDANGER
 
 	fire_sound = 'sound/weapons/gun_mateba.ogg'
 	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba

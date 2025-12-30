@@ -10,29 +10,68 @@
 		observer = user
 
 	if(isxeno(user))
-		var/msg = "<span class='info'>This is "
+		var/msg = "This is "
 
 		if(icon)
 			msg += "[icon2html(icon, user)] "
 		msg += "<EM>[src]</EM>!\n"
 
 		if(species && species.flags & IS_SYNTHETIC)
-			msg += "<span style='font-weight: bold; color: purple;'>You sense this creature is not organic.\n</span>"
+			msg += SPAN_XENOBOLD("We sense this creature is not organic.\n")
 
 		if(status_flags & XENO_HOST)
 			msg += "This creature is impregnated.\n"
 		else if(chestburst == 2)
 			msg += "A larva escaped from this creature.\n"
+
 		if(istype(wear_mask, /obj/item/clothing/mask/facehugger))
 			msg += "It has a little one on its face.\n"
+
 		if(on_fire)
 			msg += "It is on fire!\n"
+
 		if(stat == DEAD)
-			msg += "<span style='font-weight: bold; color: purple;'>You sense this creature is dead.\n</span>"
+			msg += SPAN_XENOBOLD("We sense this creature is dead.\n")
 		else if(stat || !client)
 			msg += SPAN_XENOWARNING("It doesn't seem responsive.\n")
-		msg += "</span>"
-		return list(msg)
+
+		// The following code is weapon examination for Xenos
+		// Xenos don't know exactly what guns or melees are what, but they can vaguely identify whatever they have on them and *especially* the dangerous/important ones
+		// Xenos can identify them if they are inhand or on back but not in holster (definitely not because I am lazy, although why would they be able to if I wasn't?)
+		var/weapon_message
+		if(((istype(r_hand, /obj/item) || istype(l_hand, /obj/item))))
+			weapon_message += "They are holding "
+			var/had_gun = FALSE
+
+			var/obj/item/weapon_r_hand = r_hand
+			if(weapon_r_hand && weapon_r_hand.flags_xeno_examine != NO_FLAGS)
+				weapon_message += xeno_weapon_identification(weapon_r_hand)
+				had_gun = TRUE
+
+			var/obj/item/weapon_l_hand = l_hand
+			if(weapon_l_hand && weapon_l_hand.flags_xeno_examine != NO_FLAGS)
+				if(had_gun)
+					weapon_message += " They are also holding "
+				weapon_message += xeno_weapon_identification(weapon_l_hand)
+
+			if(weapon_message == "They are holding ") // This is incase what is held has no examine flags
+				weapon_message = null
+			else
+				weapon_message += "\n"
+
+		if(istype(back, /obj/item))
+			var/obj/item/weapon/weapon_back = back
+			if(weapon_back && weapon_back.flags_xeno_examine != NO_FLAGS)
+				weapon_message += "They have on their back "
+				weapon_message += xeno_weapon_identification(weapon_back)
+
+		msg += SPAN_ALERT("[weapon_message]")
+
+		var/mob/living/carbon/xenomorph/xeno_user = user
+		if(xeno_user.behavior_delegate.delegate_examine_text() != FALSE)
+			msg += "\n"
+			msg += xeno_user.behavior_delegate.delegate_examine_text(src)
+		return list(SPAN_INFO(msg))
 
 	. = list()
 
@@ -593,3 +632,54 @@
 				return FALSE
 	else
 		return FALSE
+
+/proc/xeno_weapon_identification(obj/item/held_weapon)
+	var/final_message
+
+	if(held_weapon.flags_xeno_examine & EXAMINE_FLAG_SMALLBLADE)
+		final_message += "a small blade."
+	if(held_weapon.flags_xeno_examine & EXAMINE_FLAG_SMALLBLUNT)
+		final_message += "a small bludgeon."
+	if(held_weapon.flags_xeno_examine & EXAMINE_FLAG_MEDIUMBLADE)
+		final_message += "a large blade."
+	if(held_weapon.flags_xeno_examine & EXAMINE_FLAG_MEDIUMBLUNT)
+		final_message += "a large bludgeon."
+	if(held_weapon.flags_xeno_examine & EXAMINE_FLAG_HEAVYBLADE)
+		final_message += "a heavy blade."
+	if(held_weapon.flags_xeno_examine & EXAMINE_FLAG_HEAVYBLUNT)
+		final_message += "a heavy bludgeon."
+	if(held_weapon.flags_xeno_examine & EXAMINE_FLAG_SPEAR)
+		final_message += "a fighting rod."
+	if(held_weapon.flags_xeno_examine & EXAMINE_FLAG_PISTOL)
+		final_message += "a hand spitter."
+	if(held_weapon.flags_xeno_examine & EXAMINE_FLAG_SMG)
+		final_message += "a rapid spitter."
+	if(held_weapon.flags_xeno_examine & EXAMINE_FLAG_RIFLE)
+		final_message += "a medium spitter."
+	if(held_weapon.flags_xeno_examine & EXAMINE_FLAG_SHOTGUN)
+		final_message += "a scatter spitter."
+	if(held_weapon.flags_xeno_examine & EXAMINE_FLAG_MACHINEGUN)
+		final_message += "a heavy spitter."
+	if(held_weapon.flags_xeno_examine & EXAMINE_FLAG_FLAMER)
+		final_message += "a fire spitter."
+	if(held_weapon.flags_xeno_examine & EXAMINE_FLAG_SNIPER)
+		final_message += "a long-range spitter."
+	if(held_weapon.flags_xeno_examine & EXAMINE_FLAG_GRENADELAUNCHER)
+		final_message += "an explosive thrower."
+	if(held_weapon.flags_xeno_examine & EXAMINE_FLAG_ROCKETLAUNCHER)
+		final_message += "an explosive tube."
+	if(held_weapon.flags_xeno_examine & EXAMINE_FLAG_EXOTIC)
+		final_message += "a strange, exotic spitter."
+
+	if(held_weapon.flags_xeno_examine & EXAMINE_FLAG_GENERICDANGER)
+		final_message += " We can sense it is dangerous!"
+	if(held_weapon.flags_xeno_examine & EXAMINE_FLAG_UNIQUEDANGER)
+		final_message += SPAN_DANGER(" We can sense it is very dangerous!")
+	if(held_weapon.flags_xeno_examine & EXAMINE_FLAG_EXPLODES)
+		final_message += SPAN_DANGER(" We can sense it is explosive!")
+	if(held_weapon.flags_xeno_examine & EXAMINE_FLAG_NONCOMBAT)
+		final_message += " We can sense it is not meant for killing!"
+	if(held_weapon.flags_xeno_examine & EXAMINE_FLAG_YAUTJA)
+		final_message += " We can sense this belongs to Headhunters!"
+
+	return final_message

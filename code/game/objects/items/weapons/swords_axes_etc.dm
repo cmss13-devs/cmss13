@@ -28,6 +28,7 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/non_lethal_righthand.dmi'
 	)
 	flags_equip_slot = SLOT_WAIST
+	flags_xeno_examine = EXAMINE_FLAG_MEDIUMBLUNT
 	force = MELEE_FORCE_NORMAL
 	shield_flags = CAN_SHIELD_BASH
 
@@ -54,6 +55,7 @@
 	item_state = "telebaton_0"
 	flags_equip_slot = SLOT_WAIST
 	w_class = SIZE_SMALL
+	flags_xeno_examine = EXAMINE_FLAG_MEDIUMBLUNT|EXAMINE_FLAG_GENERICDANGER
 	force = MELEE_FORCE_WEAK
 	shield_flags = CAN_SHIELD_BASH
 	var/on = 0

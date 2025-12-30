@@ -69,6 +69,8 @@
 	var/flags_equip_slot = NO_FLAGS
 	///Last slot that item was equipped to (aka sticky slot)
 	var/last_equipped_slot
+	/// This flag is used by get_examine_text to determine Xeno Examine descriptions. Currently only for weapons
+	var/flags_xeno_examine = NO_FLAGS
 
 	//Since any item can now be a piece of clothing, this has to be put here so all items share it.
 	/// This flag is used for various clothing/equipment item stuff

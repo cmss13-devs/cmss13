@@ -16,6 +16,7 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/flamers_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/flamers_righthand.dmi'
 	)
+	flags_xeno_examine = EXAMINE_FLAG_FLAMER
 	mouse_pointer = 'icons/effects/mouse_pointer/flamer_mouse.dmi'
 
 	unload_sound = 'sound/weapons/handling/flamer_unload.ogg'
@@ -428,6 +429,7 @@
 	desc = "An improved version of the M240A1 incinerator unit, the M240-T model is capable of dispersing a larger variety of fuel types."
 	icon_state = "m240t"
 	item_state = "m240t"
+	flags_xeno_examine = EXAMINE_FLAG_SHOTGUN|EXAMINE_FLAG_UNIQUEDANGER
 	unacidable = TRUE
 	explo_proof = TRUE
 	current_mag = null

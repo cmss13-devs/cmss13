@@ -3,6 +3,7 @@
 	name = "banhammer"
 	icon = 'icons/obj/items/toy.dmi'
 	icon_state = "toyhammer"
+	flags_xeno_examine = EXAMINE_FLAG_SMALLBLUNT|EXAMINE_FLAG_NONCOMBAT
 	flags_equip_slot = SLOT_WAIST
 	throwforce = 0
 	w_class = SIZE_SMALL
@@ -20,6 +21,7 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/misc_weapons_righthand.dmi'
 	)
 	icon = 'icons/obj/items/weapons/melee/misc.dmi'
+	flags_xeno_examine = EXAMINE_FLAG_SMALLBLUNT
 	flags_equip_slot = SLOT_WAIST
 	force = 15
 	throw_speed = SPEED_FAST
@@ -35,6 +37,7 @@
 	icon_state = "harpoon"
 	item_state = "harpoon"
 	icon = 'icons/obj/items/weapons/melee/spears.dmi'
+	flags_xeno_examine = EXAMINE_FLAG_MEDIUMBLADE
 	force = 20
 	throwforce = 15
 	w_class = SIZE_MEDIUM
@@ -53,6 +56,7 @@
 	sharp = IS_SHARP_ITEM_ACCURATE
 	flags_equip_slot = SLOT_WAIST
 	w_class = SIZE_SMALL
+	flags_xeno_examine = EXAMINE_FLAG_SMALLBLADE
 	force = 25
 	throw_speed = SPEED_FAST
 	throw_range = 2
@@ -77,6 +81,7 @@
 	sharp = 0
 	edge = 0
 	w_class = SIZE_MEDIUM
+	flags_xeno_examine = EXAMINE_FLAG_MEDIUMBLUNT
 	force = MELEE_FORCE_NORMAL
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 7
@@ -106,6 +111,7 @@
 	hitsound = null
 	var/active = 0
 	w_class = SIZE_TINY
+	flags_xeno_examine = EXAMINE_FLAG_SMALLBLADE
 	force = MELEE_FORCE_WEAK
 	sharp = 0
 	edge = 0
@@ -197,6 +203,7 @@
 <p>Ever wonder why medieval Europe never bothered conquering Japan? That's right, they were too scared to fight the disciplined Samurai and their katanas of destruction. Even in World War II, American soldiers targeted the men with the katanas first because their killing power was feared and respected.</p>"
 	icon_state = "katana"
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
+	flags_xeno_examine = EXAMINE_FLAG_MEDIUMBLADE|EXAMINE_FLAG_UNIQUEDANGER
 	force = 4444
 	throwforce = MELEE_FORCE_VERY_STRONG
 	sharp = IS_SHARP_ITEM_BIG

@@ -535,7 +535,7 @@
 		list("Sentry Gun Network Encryption Key", 8, /obj/item/device/encryptionkey/sentry_laptop, VENDOR_ITEM_REGULAR),
 
 		list("ALMAYER SPARE RADIOS", -1, null, null),
-		list("Almayer Radio Encryption Key", 2.5, /obj/item/device/encryptionkey/almayer, VENDOR_ITEM_REGULAR),
+		list("Almayer Radio Encryption Key", 3, /obj/item/device/encryptionkey/almayer, VENDOR_ITEM_REGULAR),
 		list("Marine Radio Headset", 5, /obj/item/device/radio/headset/almayer, VENDOR_ITEM_REGULAR),
 
 		list("MASKS", -1, null, null, null),

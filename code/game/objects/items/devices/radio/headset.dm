@@ -481,7 +481,7 @@
 	desc = "Useful for coordinating maintenance bars and orbital bombardments. Of robust and sturdy construction. To access the engineering channel, use :n."
 	icon_state = "eng_headset"
 	frequency = ENG_FREQ
-	initial_keys = list(/obj/item/device/encryptionkey/almayer, /obj/item/device/encryptionkey/engi)
+	initial_keys = list(/obj/item/device/encryptionkey/almayer)
 
 /obj/item/device/radio/headset/almayer/chef
 	name = "kitchen radio headset"

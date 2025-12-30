@@ -1122,6 +1122,7 @@
 	icon = 'icons/obj/structures/props/dropship/dropship_equipment.dmi'
 	icon_state = "rope"
 	density = FALSE
+	flags_atom = NO_ZFALL
 
 /obj/structure/prop/pred_flight
 	name = "hunter flight console"

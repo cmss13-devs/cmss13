@@ -459,7 +459,7 @@
 	for(var/j=0; j<explonum; j++)
 		sploded = locate(T_trg.x + rand(-5, 15), T_trg.y + rand(-5, 25), T_trg.z)
 		//Fucking. Kaboom.
-		cell_explosion(sploded, 250, 10, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("dropship crash")) //Clears out walls
+		cell_explosion(sploded, 250, 10, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("dropship crash"), floor_destroying = TRUE) //Clears out walls
 		sleep(3)
 
 	// Break the ultra-reinforced windows.
@@ -537,6 +537,7 @@
 		if(istype(SSticker.mode, /datum/game_mode/colonialmarines))
 			var/datum/game_mode/colonialmarines/colonial_marines = SSticker.mode
 			colonial_marines.add_current_round_status_to_end_results("Hijack")
+
 
 /datum/shuttle/ferry/marine/proc/disable_latejoin()
 	GLOB.enter_allowed = FALSE

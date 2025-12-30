@@ -788,16 +788,6 @@ const OrbitalBombardment = (props) => {
                 width="75px"
               />
             </LabeledControls.Item>
-            <LabeledControls.Item label="HEIGHT">
-              <NumberInput
-                step={1}
-                value={OBZ}
-                minValue={-Infinity}
-                maxValue={Infinity}
-                onChange={(value) => setOBZ(value)}
-                width="75px"
-              />
-            </LabeledControls.Item>
 
             <LabeledControls.Item label="STATUS">
               <Box color={ob_color} bold>

@@ -95,6 +95,7 @@
 	/// How much destroyable resin currently exists in this area
 	var/current_resin_count = 0
 
+
 /area/New()
 	// This interacts with the map loader, so it needs to be set immediately
 	// rather than waiting for atoms to initialize.

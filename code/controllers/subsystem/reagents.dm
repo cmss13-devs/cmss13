@@ -4,7 +4,7 @@ SUBSYSTEM_DEF(reagents)
 	flags = SS_NO_FIRE
 
 /datum/controller/subsystem/reagents/Initialize()
-	// Initalize to create the global chemistry lists:
+	// Initialize to create the global chemistry lists:
 	// Must be before SSatoms.InitializeAtoms and SSmapping
 	prepare_properties()
 	prepare_reagents()

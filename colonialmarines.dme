@@ -1465,6 +1465,8 @@
 #include "code\game\objects\structures\crates_lockers\closets\utility_closets.dm"
 #include "code\game\objects\structures\crates_lockers\closets\wall_locker.dm"
 #include "code\game\objects\structures\crates_lockers\closets\wardrobe.dm"
+#include "code\game\objects\structures\crates_lockers\closets\secure\emergency\emergency_closets.dm"
+#include "code\game\objects\structures\crates_lockers\closets\secure\emergency\medical.dm"
 #include "code\game\objects\structures\crates_lockers\closets\secure\bar.dm"
 #include "code\game\objects\structures\crates_lockers\closets\secure\cargo.dm"
 #include "code\game\objects\structures\crates_lockers\closets\secure\cm_closets.dm"

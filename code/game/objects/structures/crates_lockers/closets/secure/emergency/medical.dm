@@ -1,6 +1,6 @@
 /obj/structure/closet/secure_closet/emergency/surgery
 	name = "emergency surgical equipment cabinet"
-	desc = "A hyper-safe, self-sterilizing, wall-mounted cabinet containing extra surgical beds, surgical webbing vests, and portable dialysis machines. It unlocks and opens itself during evac, then closes and locks itself back up if evac is cancelled."
+	desc = "A hyper-safe, self-sterilizing, wall-mounted cabinet containing extra surgical beds, surgical webbing vests, and portable dialysis machines. It unlocks and opens itself when the ship is threatened by a hostile force."
 	icon_state = "e-surgical_wall_locked"
 	icon_closed = "e-surgical_wall_unlocked"
 	icon_locked = "e-surgical_wall_locked"

@@ -1,3 +1,10 @@
+// State tracking for users using tacmaps - they can't use more than one at once.
+/client/var/using_main_tacmap = FALSE
+/client/var/using_popout_tacmap = FALSE
+
+/client/proc/using_tacmap()
+	return using_main_tacmap || using_popout_tacmap
+
 /**
 	Tacmap component
 
@@ -62,7 +69,7 @@
 	targetted_zlevel--
 	var/list/_interactees = interactees.Copy()
 	for(var/mob/interactee in _interactees)
-		tgui_interact(interactee)
+		on_unset_interaction(interactee)
 		close_popout_tacmaps()
 	map = null
 	for(var/mob/interactee in _interactees)
@@ -89,8 +96,13 @@
 	user.client.active_draw_tool = null
 	map.active_draw_tool = null
 	winset(user, "drawingtools", "reset=true")
+	user.client.using_main_tacmap = FALSE
 
 /datum/component/tacmap/proc/show_tacmap(mob/user)
+	if (user.client.using_tacmap())
+		to_chat(user.client, SPAN_WARNING("You're already using a tacmap. Close it to open another one."))
+		return
+
 	if(!map)
 		map = SSminimaps.fetch_minimap_object(targetted_zlevel, minimap_flag, live=TRUE, popup=FALSE, drawing=drawing)
 		map_holder = new(null, targetted_zlevel, minimap_flag, drawing=drawing)
@@ -100,11 +112,11 @@
 			actions += new path(null, targetted_zlevel, minimap_flag, map, src)
 		drawing_actions = actions
 
-
 	user.client.add_to_screen(drawing_actions)
 	user.client.add_to_screen(close_button)
 	user.client.add_to_screen(map)
 	interactees += user
+	user.client.using_main_tacmap = TRUE
 
 
 /datum/component/tacmap/ui_status(mob/user, datum/ui_state/state)
@@ -120,6 +132,7 @@
 		user.client.register_map_obj(map_holder.map)
 		ui = new(user, src, "TacticalMap")
 		ui.open()
+	user.client.using_popout_tacmap = TRUE
 
 /datum/component/tacmap/ui_data(mob/user)
 	. = ..()
@@ -142,6 +155,7 @@
 		return
 
 	user.client.remove_from_screen(map_holder.map)
+	user.client.using_popout_tacmap = FALSE
 
 GLOBAL_LIST_INIT(tacmap_holders, list())
 

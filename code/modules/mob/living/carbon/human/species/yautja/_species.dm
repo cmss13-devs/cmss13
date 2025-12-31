@@ -14,6 +14,7 @@
 		TRAIT_DEXTROUS,
 		TRAIT_EMOTE_CD_EXEMPT,
 		TRAIT_IRON_TEETH,
+		TRAIT_UNSTRIPPABLE,
 	)
 	unarmed_type = /datum/unarmed_attack/punch/strong
 	secondary_unarmed_type = /datum/unarmed_attack/bite/strong

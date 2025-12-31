@@ -2267,7 +2267,7 @@
 "ez" = (
 /obj/structure/bed/chair/hunter{
 	pixel_x = 17;
-	buckling_x = -15
+	buckling_x = 17
 	},
 /turf/open/floor/corsat/squares,
 /area/yautja_ship/middle_deck/bridge)

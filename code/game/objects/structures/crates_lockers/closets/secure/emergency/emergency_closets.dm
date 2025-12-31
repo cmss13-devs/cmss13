@@ -10,13 +10,13 @@
 	RegisterSignal(SSdcs, COMSIG_GLOB_HIJACK_INBOUND, PROC_REF(open_up))
 	return
 
-/obj/structure/closet/secure_closet/can_open()
+/obj/structure/closet/secure_closet/emergency/can_open()
 	. = ..()
 
-/obj/structure/closet/secure_closet/close()
+/obj/structure/closet/secure_closet/emergency/close()
 	. = ..()
 
-/obj/structure/closet/secure_closet/emp_act(severity)
+/obj/structure/closet/secure_closet/emergency/(severity)
 	. = ..()
 
 /obj/structure/closet/secure_closet/emergency/togglelock(mob/living/user)

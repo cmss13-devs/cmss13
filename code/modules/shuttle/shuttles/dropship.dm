@@ -330,11 +330,13 @@
 	name = "Yautja Hangar A"
 	id = YAUTJA_HANGAR_A
 	auto_open = TRUE
+	faction = FACTION_YAUTJA
 
 /obj/docking_port/stationary/marine_dropship/yautja_hangar_2
 	name = "Yautja Hangar B"
 	id = YAUTJA_HANGAR_B
 	auto_open = TRUE
+	faction = FACTION_YAUTJA
 
 /obj/docking_port/stationary/marine_dropship/crash_site
 	auto_open = TRUE

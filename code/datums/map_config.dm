@@ -346,7 +346,7 @@
 	traits = json["traits"]
 	if(islist(traits))
 		for(var/list/ztraits in traits) // Defaults to ground map if not specified
-			if(!ztraits[ZTRAIT_GROUND] && !ztraits[ZTRAIT_MARINE_MAIN_SHIP])
+			if(!ztraits[ZTRAIT_GROUND] && !ztraits[ZTRAIT_MARINE_MAIN_SHIP] && !ztraits[ZTRAIT_BACKGROUND_MAP])
 				ztraits[ZTRAIT_GROUND] = TRUE
 	else if(traits)
 		log_world("map_config traits is not a list!")

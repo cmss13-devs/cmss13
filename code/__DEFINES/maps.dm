@@ -28,6 +28,8 @@ require only minor tweaks.
 #define ZTRAIT_AWAY  "Away"
 #define ZTRAIT_INTERIORS "Interiors"
 #define ZTRAIT_TECHTREE "TechTree"
+/// Exists outside the mainstream round, like pred ship.
+#define ZTRAIT_BACKGROUND_MAP "Background Map"
 
 #define ZTRAIT_FOG "Fog"
 #define ZTRAIT_LOCKDOWN "Lockdown"

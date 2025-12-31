@@ -1,0 +1,4 @@
+author: "MistChristmas"
+delete-after: True
+changes:
+  - bugfix: "Ghosts no longer able to move items out of open inventories when orbiting"

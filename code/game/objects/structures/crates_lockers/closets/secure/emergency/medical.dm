@@ -9,8 +9,8 @@
 	health = null	// Unbreakable
 	unacidable = TRUE
 	unslashable = TRUE
-	store_mobs = TRUE
 	wall_mounted = TRUE
+	store_mobs = FALSE
 
 /obj/structure/closet/secure_closet/emergency/surgery/Initialize()
 	. = ..()

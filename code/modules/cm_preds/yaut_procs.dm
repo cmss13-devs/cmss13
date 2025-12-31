@@ -338,7 +338,3 @@
 /area/yautja/hangar
 	name = "\improper Yautja Ship - Hangar"
 	base_lighting_alpha = 180
-
-/area/yautja/badblood
-	name = "\improper Yautja Survivor Preparation"
-	base_lighting_alpha = 105

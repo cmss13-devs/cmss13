@@ -5,13 +5,19 @@
     "webmap_url": "Huntership",
     "traits": [
         {
+            "Marine Main Ship": true,
+            "Admin": true,
             "Up": 1
         },
         {
+            "Marine Main Ship": true,
+            "Admin": true,
             "Up": 1,
             "Down": -1
         },
         {
+            "Marine Main Ship": true,
+            "Admin": true,
             "Down": -1
         }
     ],

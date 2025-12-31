@@ -16,7 +16,7 @@
 /obj/structure/closet/secure_closet/emergency/close()
 	. = ..()
 
-/obj/structure/closet/secure_closet/emergency/(severity)
+/obj/structure/closet/secure_closet/emergency/emp_act(severity)
 	. = ..()
 
 /obj/structure/closet/secure_closet/emergency/togglelock(mob/living/user)

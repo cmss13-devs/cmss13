@@ -672,7 +672,7 @@
 
 /obj/item/clothing/under/marine/officer/bridge/skirt
 	name = "marine service skirt uniform"
-	desc = "A steel grey skirt paired with a tan shirt worn by members of the USCM. Do the corps proud. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
+	desc = "A steel grey skirt paired with a tan shirt worn by members of the USCM. Do the corps proud. It has pads of light Kevlar to help protect against stabbing weapons and bullets."
 	icon_state = "BO_jumpsuit_skirt"
 	worn_state = "BO_jumpsuit_skirt"
 
@@ -738,7 +738,7 @@
 
 /obj/item/clothing/under/marine/officer/command/skirt
 	name = "\improper USCM officer skirt uniform"
-	desc = "The well-ironed skirt and button-up uniform of a USCM officer. The skirt has rather spacous pockets sewn into it, showning the wearers high rank. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
+	desc = "The well-ironed skirt and button-up uniform of a USCM officer. The skirt has rather spacious pockets sewn into it, showing the wearers high rank. It has pads of light Kevlar to help protect against stabbing weapons and bullets."
 	icon_state = "CO_jumpskirt"
 	worn_state = "CO_jumpskirt"
 
@@ -861,7 +861,7 @@
 
 /obj/item/clothing/under/marine/dress/skirt
 	name = "marine formal service skirt uniform"
-	desc = "A steel grey skirt paired with a formal shirt typically worn by marines of the USCM. Still practicable while still being more formal than the standard service uniform."
+	desc = "A steel grey skirt paired with a formal shirt typically worn by marines of the USCM. Practical, while still being more formal than the standard service uniform."
 	icon_state = "formal_jumpsuit_skirt"
 	worn_state = "formal_jumpsuit_skirt"
 

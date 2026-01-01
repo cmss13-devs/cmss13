@@ -559,7 +559,7 @@
 /turf/closed/wall/cult/dark_temple/can_be_dissolved()
 	return 2
 
-/turf/closed/wall/cult/dark_temple
+/turf/closed/wall/cult/dark_temple/hunting_grounds
 	name = "wall"
 	turf_flags = TURF_HULL
 

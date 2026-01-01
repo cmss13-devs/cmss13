@@ -259,11 +259,11 @@
 /area/yautja_grounds/jungle/south)
 "bu" = (
 /obj/structure/prop/brazier/torch,
-/turf/closed/wall/cult/dark_temple,
+/turf/closed/wall/cult/dark_temple/hunting_grounds,
 /area/yautja_grounds/prep_room)
 "bv" = (
 /obj/item/skull/warrior,
-/turf/closed/wall/cult/dark_temple,
+/turf/closed/wall/cult/dark_temple/hunting_grounds,
 /area/yautja_grounds/prep_room)
 "bw" = (
 /obj/structure/curtain/leather/alt_2,
@@ -279,7 +279,7 @@
 /area/yautja_grounds/jungle)
 "bA" = (
 /obj/item/skull/deacon,
-/turf/closed/wall/cult/dark_temple,
+/turf/closed/wall/cult/dark_temple/hunting_grounds,
 /area/yautja_grounds/prep_room)
 "bB" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
@@ -897,17 +897,17 @@
 	layer = 2.9;
 	pixel_x = 1
 	},
-/turf/closed/wall/cult/dark_temple,
+/turf/closed/wall/cult/dark_temple/hunting_grounds,
 /area/yautja_grounds/prep_room)
 "eg" = (
 /obj/structure/prop/hunter/trophy_display,
 /obj/structure/blocker/invisible_wall,
-/turf/closed/wall/cult/dark_temple,
+/turf/closed/wall/cult/dark_temple/hunting_grounds,
 /area/yautja_grounds/prep_room)
 "eh" = (
 /obj/structure/prop/hunter/trophy_display/top_center,
 /obj/structure/blocker/invisible_wall,
-/turf/closed/wall/cult/dark_temple,
+/turf/closed/wall/cult/dark_temple/hunting_grounds,
 /area/yautja_grounds/prep_room)
 "ej" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
@@ -916,7 +916,7 @@
 "ek" = (
 /obj/structure/prop/hunter/trophy_display/top_right,
 /obj/structure/blocker/invisible_wall,
-/turf/closed/wall/cult/dark_temple,
+/turf/closed/wall/cult/dark_temple/hunting_grounds,
 /area/yautja_grounds/prep_room)
 "el" = (
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
@@ -3303,7 +3303,7 @@
 /turf/open/auto_turf/strata_grass/layer0,
 /area/yautja_grounds/jungle/north_west)
 "Ld" = (
-/turf/closed/wall/cult/dark_temple,
+/turf/closed/wall/cult/dark_temple/hunting_grounds,
 /area/yautja_grounds/prep_room)
 "LW" = (
 /obj/structure/flora/jungle/vines{

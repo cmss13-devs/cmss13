@@ -144,6 +144,8 @@
 	new /obj/item/ammo_magazine/rifle/m4ra/custom(src)
 	new /obj/item/ammo_magazine/rifle/m4ra/custom/incendiary(src)
 	new /obj/item/ammo_magazine/rifle/m4ra/custom/incendiary(src)
+	new /obj/item/ammo_magazine/rifle/m4ra/custom/incendiary(src)
+	new /obj/item/ammo_magazine/rifle/m4ra/custom/impact(src)
 	new /obj/item/ammo_magazine/rifle/m4ra/custom/impact(src)
 	new /obj/item/ammo_magazine/rifle/m4ra/custom/impact(src)
 	new /obj/item/weapon/gun/pistol/vp78(src)

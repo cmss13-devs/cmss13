@@ -273,9 +273,9 @@
 				to_chat(user, SPAN_WARNING("[H] took off \his [U.name] before you could finish pinning [src] to \him."))
 				return
 			user.affected_message(H,
-			SPAN_DANGER("You slam the [src.name]'s pin through [H]'s [U.name] and into \his chest."),
-			SPAN_DANGER("[user] slams the [src.name]'s pin through your [U.name] and into your chest!"),
-			SPAN_DANGER("[user] slams the [src.name]'s pin through [H]'s [U.name] and into \his chest."))
+			SPAN_DANGER("You slam [src]'s pin through [H]'s [U.name] and into \his chest."),
+			SPAN_DANGER("[user] slams [src]'s pin through your [U.name] and into your chest!"),
+			SPAN_DANGER("[user] slams [src]'s pin through [H]'s [U.name] and into \his chest."))
 
 			/*Some duplication from punch code due to attack message and damage stats.
 			This does cut damage and awarding multiple medals like this to the same person will cause bleeding.*/

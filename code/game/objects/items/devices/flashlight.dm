@@ -59,7 +59,7 @@
 	..()
 
 	if(!toggleable)
-		to_chat(user, SPAN_WARNING("You cannot toggle \the [src.name] on or off."))
+		to_chat(user, SPAN_WARNING("You cannot toggle \[src] on or off."))
 		return FALSE
 
 	if(!isturf(user.loc))

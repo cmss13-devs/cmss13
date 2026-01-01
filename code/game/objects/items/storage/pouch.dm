@@ -1241,7 +1241,7 @@
 
 	playsound(loc, 'sound/effects/refill.ogg', 25, TRUE, 3)
 
-	to_chat(user, SPAN_NOTICE("You refill the [src]."))
+	to_chat(user, SPAN_NOTICE("You refill [src]."))
 	update_icon()
 
 /obj/item/storage/pouch/pressurized_reagent_canister/get_examine_text(mob/user)
@@ -1320,7 +1320,7 @@
 	to_chat(usr, SPAN_NOTICE("You hold down the emergency flush button. Wait 3 seconds..."))
 	if(do_after(usr, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		if(inner)
-			to_chat(usr, SPAN_NOTICE("You flush the [src]."))
+			to_chat(usr, SPAN_NOTICE("You flush [src]."))
 			inner.reagents.clear_reagents()
 			update_icon()
 

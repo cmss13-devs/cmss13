@@ -1595,6 +1595,10 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_1.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_1.dmi')
 
+	bypass_w_limit = list(
+		/obj/item/weapon/gun/smg/halo/m7,
+	)
+
 /obj/item/storage/belt/gun/m7/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/smg/halo/m7/folded_up())
 	for(var/i = 1 to storage_slots - 1)

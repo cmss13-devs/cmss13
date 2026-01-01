@@ -1248,10 +1248,6 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	path = /obj/item/clothing/accessory/wrist/watch
 	fluff_cost = 1 // Cheap and crappy
 
-/datum/gear/misc/random_plushie
-	display_name = "Well loved toy"
-	path = /obj/item/toy/plush/random_plushie
-	fluff_cost = 1 // Debug - REMOVE THIS
 // Civilian only
 
 /datum/gear/civilian

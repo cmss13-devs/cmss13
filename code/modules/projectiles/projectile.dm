@@ -362,12 +362,13 @@
 	if(istype(hardpoint))
 		LAZYOR(ignore_list, hardpoint.owner) //if fired from a vehicle, exclude the vehicle's body from the adjacency check
 
-	var/area/area = get_area(next_turf)
-	if((area.ceiling >= CEILING_PROTECTION_TIER_4) || (area.flags_area & AREA_PROJECTILE_CEILING))
-		ammo.on_hit_turf(current_turf, src)
-		current_turf.bullet_act(src)
-		qdel(src)
-		return
+	if(next_turf.z < current_turf.z)
+		var/area/area = get_area(next_turf)
+		if((area.ceiling >= CEILING_PROTECTION_TIER_4) || (area.flags_area & AREA_PROJECTILE_CEILING))
+			ammo.on_hit_turf(current_turf, src)
+			current_turf.bullet_act(src)
+			qdel(src)
+			return
 
 	// Check we can reach the turf at all based on pathed grid
 	if(check_canhit(current_turf, next_turf, ignore_list))

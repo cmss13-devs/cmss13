@@ -10,7 +10,7 @@
 /area/shuttle/drop1
 	//soundscape_playlist = list('sound/soundscape/drum1.ogg')
 	soundscape_interval = 30 //seconds
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOTUNNEL|AREA_PROJECTILE_CEILING
 	is_landing_zone = TRUE
 	ceiling = CEILING_REINFORCED_METAL
 	base_lighting_alpha = 0
@@ -66,7 +66,7 @@
 /area/shuttle/drop2
 	//soundscape_playlist = list('sound/soundscape/drum1.ogg')
 	soundscape_interval = 30 //seconds
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOTUNNEL|AREA_PROJECTILE_CEILING
 	is_landing_zone = TRUE
 	ceiling = CEILING_REINFORCED_METAL
 	base_lighting_alpha = 0
@@ -119,7 +119,7 @@
 /area/shuttle/drop3
 	//soundscape_playlist = list('sound/soundscape/drum1.ogg')
 	soundscape_interval = 30 //seconds
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOTUNNEL|AREA_PROJECTILE_CEILING
 	is_landing_zone = TRUE
 	ceiling = CEILING_REINFORCED_METAL
 	base_lighting_alpha = 0
@@ -177,7 +177,7 @@
 
 /area/shuttle/drop_upp
 	soundscape_interval = 30 //seconds
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOTUNNEL|AREA_PROJECTILE_CEILING
 	is_landing_zone = TRUE
 	ceiling = CEILING_REINFORCED_METAL
 	base_lighting_alpha = 0
@@ -222,6 +222,12 @@
 	icon_state = "away2"
 
 ////
+/area/shuttle/drop_upp2
+	soundscape_interval = 30 //seconds
+	flags_area = AREA_NOTUNNEL|AREA_PROJECTILE_CEILING
+	is_landing_zone = TRUE
+	ceiling = CEILING_REINFORCED_METAL
+	base_lighting_alpha = 0
 
 /area/shuttle/drop_upp2/devana
 	name = "\improper Dropship Devana"
@@ -267,6 +273,7 @@
 /area/shuttle/distress
 	base_lighting_alpha = 255
 	unique = TRUE
+	flags_area = AREA_NOTUNNEL|AREA_PROJECTILE_CEILING
 
 /area/shuttle/distress/start
 	name = "\improper Distress Shuttle"

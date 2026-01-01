@@ -100,11 +100,11 @@
 			// Otherwise the preview dummy will runtime
 			// because atoms aren't initialized yet
 			if(SSticker.current_state < GAME_STATE_PREGAME)
-				to_chat(src, SPAN_WARNING("Game is still starting up, please wait"))
+				to_chat(src, SPAN_WARNING("Game is still starting up, please wait."))
 				return FALSE
 
 			if(!SSentity_manager.ready)
-				to_chat(src, SPAN_WARNING("DB is still starting up, please wait"))
+				to_chat(src, SPAN_WARNING("DB is still starting up, please wait."))
 				return FALSE
 
 			client.prefs.ShowChoices(src)
@@ -112,7 +112,7 @@
 
 		if("playtimes")
 			if(!SSentity_manager.ready)
-				to_chat(src, SPAN_WARNING("DB is still starting up, please wait"))
+				to_chat(src, SPAN_WARNING("DB is still starting up, please wait."))
 				return FALSE
 
 			if(client.player_data)

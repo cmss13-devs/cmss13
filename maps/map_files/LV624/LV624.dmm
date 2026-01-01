@@ -16653,10 +16653,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/east_barrens)
 "off" = (
-/obj/structure/morgue/sarcophagus{
-	pixel_y = -16;
-	pixel_x = -12
-	},
+/obj/structure/morgue/sarcophagus,
 /obj/item/weapon/twohanded/yautja/glaive/damaged{
 	name = "damaged war glaive"
 	},

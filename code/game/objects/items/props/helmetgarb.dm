@@ -634,6 +634,8 @@
 	item_state_slots = list(WEAR_AS_GARB = "paper") //PLACEHOLDER
 	///The human who spawns with the photo
 	var/datum/weakref/owner
+	///Have we Registered a signal already
+	var/register_attempted
 	///The belonging human name
 	var/owner_name
 	///The belonging human faction
@@ -643,14 +645,34 @@
 
 /obj/item/prop/helmetgarb/family_photo/pickup(mob/user, silent)
 	. = ..()
-	if(!owner)
-		RegisterSignal(user, COMSIG_POST_SPAWN_UPDATE, PROC_REF(set_owner), override = TRUE)
+	if(!register_attempted)
+		register_attempted = TRUE
+		RegisterSignal(user, COMSIG_POST_VANITY_UPDATE, PROC_REF(set_owner), override = TRUE)
 
+/obj/item/prop/helmetgarb/family_photo/on_enter_storage(obj/item/storage/inventory)
+	. = ..()
+	if(!register_attempted)
+		register_attempted = TRUE
+		var/mob/living/carbon/human/human_user
+		if(ishuman(inventory.loc))
+			human_user = inventory.loc
+		else if(ishuman(inventory.loc?.loc))
+			human_user = inventory.loc.loc
+		else if(ishuman(inventory.loc?.loc?.loc))
+			human_user = inventory.loc.loc.loc
+		if(human_user)
+			RegisterSignal(human_user, COMSIG_POST_VANITY_UPDATE, PROC_REF(set_owner), override = TRUE)
+
+/obj/item/prop/helmetgarb/family_photo/dropped(mob/user)
+	. = ..()
+	if(!register_attempted)
+		register_attempted = TRUE
+		RegisterSignal(user, COMSIG_POST_VANITY_UPDATE, PROC_REF(set_owner), override = TRUE)
 
 ///Sets the owner of the family photo to the human it spawns with, needs var/source for signals
 /obj/item/prop/helmetgarb/family_photo/proc/set_owner(datum/source)
 	SIGNAL_HANDLER
-	UnregisterSignal(source, COMSIG_POST_SPAWN_UPDATE)
+	UnregisterSignal(source, COMSIG_POST_VANITY_UPDATE)
 	var/mob/living/carbon/human/user = source
 	owner = WEAKREF(user)
 	owner_name = user.name

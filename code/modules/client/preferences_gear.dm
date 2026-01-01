@@ -75,7 +75,7 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 		return
 
 	if(!(slot && user.equip_to_slot_or_del(new path, slot)))
-		var/obj/equipping_gear = new path
+		var/obj/item/equipping_gear = new path
 		if(user.equip_to_appropriate_slot(equipping_gear))
 			return
 
@@ -84,6 +84,7 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 
 		if(drop_instead_of_del)
 			equipping_gear.forceMove(get_turf(user))
+			equipping_gear.dropped(user)
 			return
 
 		qdel(equipping_gear)
@@ -1247,6 +1248,10 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	path = /obj/item/clothing/accessory/wrist/watch
 	fluff_cost = 1 // Cheap and crappy
 
+/datum/gear/misc/random_plushie
+	display_name = "Well loved toy"
+	path = /obj/item/toy/plush/random_plushie
+	fluff_cost = 1 // Debug - REMOVE THIS
 // Civilian only
 
 /datum/gear/civilian

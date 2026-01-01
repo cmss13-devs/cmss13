@@ -107,7 +107,7 @@
 			if(SYNTH_GEN_ONE)
 				new_human.set_species(SYNTH_COLONY_GEN_ONE)
 			else
-				new_human.set_species(SYNTH_GEN_THREE)
+				new_human.set_species(SYNTH_COLONY)
 	else
 		new_human.set_species(SYNTH_COLONY_GEN_ONE)
 

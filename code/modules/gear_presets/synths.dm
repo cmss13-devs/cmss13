@@ -59,9 +59,9 @@
 		if(new_human.client)
 			switch(new_human.client?.prefs?.synthetic_type)
 				if(SYNTH_GEN_ONE)
-					new_human.set_skills(/datum/skills/colonial_synthetic/gen_one)
+					new_human.set_skills(/datum/skills/synthetic/gen_one)
 				if(SYNTH_GEN_TWO)
-					new_human.set_skills(/datum/skills/colonial_synthetic)
+					new_human.set_skills(/datum/skills/synthetic/gen_two)
 				else
 					new_human.set_skills(/datum/skills/synthetic)
 		else

@@ -13,16 +13,19 @@
 	access = get_access(ACCESS_LIST_GLOBAL)
 
 /datum/equipment_preset/synth/load_race(mob/living/carbon/human/new_human)
-	var/generation_selection = SYNTH_GEN_THREE
+	var/generation_selection
+	if(!preset_generation_support)
+		new_human.set_species(SYNTH_GEN_THREE)
+		return
 	if(new_human.client?.prefs?.synthetic_type)
 		generation_selection = new_human.client.prefs.synthetic_type
 	switch(generation_selection)
 		if(SYNTH_GEN_THREE)
 			new_human.set_species(SYNTH_GEN_THREE)
 		if(SYNTH_GEN_TWO)
-			new_human.set_species(SYNTH_COLONY_GEN_TWO)
+			new_human.set_species(SYNTH_GEN_TWO)
 		if(SYNTH_GEN_ONE)
-			new_human.set_species(SYNTH_COLONY_GEN_ONE)
+			new_human.set_species(SYNTH_GEN_ONE)
 		else
 			new_human.set_species(SYNTH_GEN_THREE)
 
@@ -34,17 +37,35 @@
 			final_name = "David"
 	new_human.change_real_name(new_human, final_name)
 
-/datum/equipment_preset/synth/load_skills(mob/living/carbon/human/new_human, client/mob_client)
+/datum/equipment_preset/synth/load_skills(mob/living/carbon/human/new_human)
 	new_human.allow_gun_usage = FALSE
-
-	if(preset_generation_support && new_human.client)
-		switch(new_human.client?.prefs?.synthetic_type)
-			if(SYNTH_GEN_ONE, SYNTH_GEN_TWO)
+	if(!preset_generation_support)
+		new_human.set_skills(skills)
+		return
+	var/synth_type = new_human.species
+	if(synth_type in SYNTH_TYPES)
+		switch(synth_type)
+			if(SYNTH_COLONY_GEN_ONE)
+				new_human.set_skills(/datum/skills/colonial_synthetic/gen_one)
+			if(SYNTH_COLONY_GEN_TWO)
 				new_human.set_skills(/datum/skills/colonial_synthetic)
+			if(SYNTH_GEN_ONE)
+				new_human.set_skills(/datum/skills/synthetic/gen_one)
+			if(SYNTH_GEN_TWO)
+				new_human.set_skills(/datum/skills/synthetic/gen_two)
 			else
 				new_human.set_skills(/datum/skills/synthetic)
 	else
-		new_human.set_skills(skills)
+		if(new_human.client)
+			switch(new_human.client?.prefs?.synthetic_type)
+				if(SYNTH_GEN_ONE)
+					new_human.set_skills(/datum/skills/colonial_synthetic/gen_one)
+				if(SYNTH_GEN_TWO)
+					new_human.set_skills(/datum/skills/colonial_synthetic)
+				else
+					new_human.set_skills(/datum/skills/synthetic)
+		else
+			new_human.set_skills(skills)
 
 //*****************************************************************************************************/
 
@@ -74,18 +95,21 @@
 
 /datum/equipment_preset/synth/survivor/load_race(mob/living/carbon/human/new_human)
 	//Switch to check client for synthetic generation preference, and set the subspecies of colonial synth
-	var/generation_selection = SYNTH_COLONY_GEN_ONE
-	if(new_human.client?.prefs?.synthetic_type)
-		generation_selection = new_human.client.prefs.synthetic_type
-	switch(generation_selection)
-		if(SYNTH_GEN_THREE)
-			new_human.set_species(SYNTH_GEN_THREE)
-		if(SYNTH_GEN_TWO)
-			new_human.set_species(SYNTH_COLONY_GEN_TWO)
-		if(SYNTH_GEN_ONE)
-			new_human.set_species(SYNTH_COLONY_GEN_ONE)
-		else
-			new_human.set_species(SYNTH_GEN_THREE)
+	var/generation_selection
+	if(preset_generation_support)
+		if(new_human.client?.prefs?.synthetic_type)
+			generation_selection = new_human.client.prefs.synthetic_type
+		switch(generation_selection)
+			if(SYNTH_GEN_THREE)
+				new_human.set_species(SYNTH_COLONY)
+			if(SYNTH_GEN_TWO)
+				new_human.set_species(SYNTH_COLONY_GEN_TWO)
+			if(SYNTH_GEN_ONE)
+				new_human.set_species(SYNTH_COLONY_GEN_ONE)
+			else
+				new_human.set_species(SYNTH_GEN_THREE)
+	else
+		new_human.set_species(SYNTH_COLONY_GEN_ONE)
 
 /datum/equipment_preset/synth/survivor/New()
 	. = ..()

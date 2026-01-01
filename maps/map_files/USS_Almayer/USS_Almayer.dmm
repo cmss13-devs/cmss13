@@ -96837,6 +96837,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/upper/midship_hallway)
 "yiW" = (
+/obj/structure/disposalpipe/segment,
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1;
 	name = "\improper Tool Closet"
@@ -142124,7 +142125,7 @@ nmY
 nmY
 nmY
 lFp
-xFt
+uKH
 bUQ
 bSf
 cml

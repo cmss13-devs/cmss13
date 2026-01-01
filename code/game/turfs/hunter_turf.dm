@@ -316,7 +316,7 @@
 	icon_state = "platingdmg3"
 
 /turf/open/floor/plating/ancient_temple/damage_4
-	icon_state = "damage_plating_4"
+	icon_state = "platingdmg4"
 
 /turf/open/floor/ancient_temple
 	name = "floor"

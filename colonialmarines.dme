@@ -1391,6 +1391,7 @@
 #include "code\game\objects\items\weapons\weapon.dm"
 #include "code\game\objects\items\weapons\weaponry.dm"
 #include "code\game\objects\structures\airlock_assembly.dm"
+#include "code\game\objects\structures\ancient_brazier.dm"
 #include "code\game\objects\structures\barsign.dm"
 #include "code\game\objects\structures\bedsheet_bin.dm"
 #include "code\game\objects\structures\blocker.dm"

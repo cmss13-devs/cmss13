@@ -436,7 +436,21 @@
 	baseturfs = /turf/open/floor/sandstone/runed
 	walltype = WALL_ANCIENT_BASE
 	var/decoration_type
-	blend_turfs = list(/turf/closed/wall/mineral, /turf/closed/wall/mineral/sandstone/runed, /turf/closed/wall/ancient_temple)
+	blend_turfs = list(
+		/turf/closed/wall/mineral,
+		/turf/closed/wall/mineral/sandstone,
+		/turf/closed/wall/mineral/sandstone/runed,
+		/turf/closed/wall/mineral/sandstone/runed/decor,
+		/turf/closed/wall/mineral/sandstone/runed/decor_2,
+		/turf/closed/wall/mineral/sandstone/runed/decor_3,
+		/turf/closed/wall/cult/dark_temple,
+		/turf/closed/wall/cult/dark_temple/hunting_grounds,
+		/turf/closed/wall/ancient_temple,
+		/turf/closed/wall/ancient_temple/unbreakable,
+		/turf/closed/wall/ancient_temple/runed,
+		/turf/closed/wall/ancient_temple/runed/alt,
+		/turf/closed/wall/ancient_temple/runed/alt2,
+	)
 	blend_objects = list(/obj/structure/prop/hunter/ancient_temple/collapsed_wall, /obj/structure/machinery/door, /obj/structure/window_frame, /obj/structure/window/framed)
 
 /turf/closed/wall/mineral/sandstone/runed/attack_alien(mob/living/carbon/xenomorph/user)
@@ -551,6 +565,21 @@
 	icon_state = "runedstone"
 	walltype = WALL_RUNEDSTONE
 	color = "#524e49"
+	blend_turfs = list(
+		/turf/closed/wall/mineral,
+		/turf/closed/wall/mineral/sandstone,
+		/turf/closed/wall/mineral/sandstone/runed,
+		/turf/closed/wall/mineral/sandstone/runed/decor,
+		/turf/closed/wall/mineral/sandstone/runed/decor_2,
+		/turf/closed/wall/mineral/sandstone/runed/decor_3,
+		/turf/closed/wall/cult/dark_temple,
+		/turf/closed/wall/cult/dark_temple/hunting_grounds,
+		/turf/closed/wall/ancient_temple,
+		/turf/closed/wall/ancient_temple/unbreakable,
+		/turf/closed/wall/ancient_temple/runed,
+		/turf/closed/wall/ancient_temple/runed/alt,
+		/turf/closed/wall/ancient_temple/runed/alt2,
+	)
 
 /turf/closed/wall/cult/dark_temple/attack_alien(mob/living/carbon/xenomorph/user)
 	visible_message("[user] scrapes uselessly against [src] with their claws.")

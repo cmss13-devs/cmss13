@@ -383,7 +383,6 @@
 	return
 
 /// Ancient Temple Props & Effects
-
 /obj/structure/prop/hunter/ancient_temple
 	icon = 'icons/obj/structures/props/hunter/ancientstatue.dmi'
 	icon_state = "ancient_statue"

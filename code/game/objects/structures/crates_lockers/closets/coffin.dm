@@ -32,7 +32,6 @@
 	close_sound = 'sound/effects/stonedoor_openclose.ogg'
 
 /// Ancient Stone Sarcophagus
-
 /obj/structure/closet/coffin/predator/ancient_stone
 	name = "ancient stone sarcophagus"
 	desc = "A colossal stone sarcophagus, its surface scarred with the glyphs of the Hunt. Time and tradition have sealed whatever lies within..."

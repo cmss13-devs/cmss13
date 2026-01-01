@@ -2955,9 +2955,6 @@
 /obj/structure/barricade/handrail/sandstone/b/dark{
 	dir = 4
 	},
-/obj/structure/barricade/handrail/sandstone/b/dark{
-	dir = 4
-	},
 /turf/open/floor/corsat/squares,
 /area/yautja_ship/upper_deck)
 "gt" = (

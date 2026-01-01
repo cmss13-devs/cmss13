@@ -276,6 +276,10 @@
 /obj/item/clothing/mask/gas/yautja/hunter/ancient
 	name = "ornate ancient alien mask"
 	desc = "An ornate ancient faceplate of an aged alloy, once worn by a revered hunter. Though tarnished by time, its craftsmanship remains exquisite - a fusion of artistry and deadly function."
+	icon = 'icons/obj/items/hunter/ancient_mask.dmi'
+	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/hunter/ancient_mask.dmi'
+	)
 	icon_state = "pred_mask_ancient_redglow"
 	item_state = "helmet"
 	item_state_slots = list(WEAR_FACE = "pred_mask_ancient_redglow")

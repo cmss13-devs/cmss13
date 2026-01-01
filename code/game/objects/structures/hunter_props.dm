@@ -77,7 +77,6 @@
 	icon_state = "large_stair"
 
 // Ancient Temple
-
 /obj/effect/hunter/ancient_temple
 	name = null
 	desc = null
@@ -157,7 +156,6 @@
 	icon_state = "bronze_deco_border7"
 
 // Floor tile edges
-
 /obj/effect/hunter/ancient_temple/tile_edge
 	icon_state = "floor_edges_1"
 	name = "tile edge"
@@ -523,7 +521,6 @@
 	return
 
 /// Ancient Temple Props & Effects
-
 /obj/structure/prop/hunter/ancient_temple
 	icon = 'icons/obj/structures/props/hunter/ancientstatue.dmi'
 	icon_state = "ancient_statue"
@@ -602,8 +599,7 @@
 /obj/structure/prop/hunter/ancient_temple/coffin_base/deco
 	icon_state = "ancient_coffin_base_deco"
 
-// Large Bars
-
+/// Large Bars
 /obj/structure/prop/hunter/ancient_temple/large_bars
 	icon = 'icons/obj/structures/props/hunter/ancientsatuebase.dmi'
 	icon_state = "temple_large_bars"
@@ -634,8 +630,7 @@
 	bound_width = 64
 	bound_height = 64
 
-// Breakable Ancient-Temple Walls
-
+/// Breakable Ancient-Temple Walls
 /obj/structure/prop/hunter/ancient_temple/collapsed_wall
 	name = "damaged sandstone temple wall"
 	desc = "A damaged heavy wall of sandstone."

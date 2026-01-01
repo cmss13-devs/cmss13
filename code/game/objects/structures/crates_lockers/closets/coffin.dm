@@ -90,7 +90,6 @@
 	gas_holder.set_up(radius, 0, get_turf(src), null, 10)
 	gas_holder.start()
 
-
 /obj/structure/closet/coffin/woodencrate //Subtyped here so Req doesn't sell them
 	name = "wooden crate"
 	desc = "A wooden crate. Shoddily assembled, spacious and worthless on the ASRS"

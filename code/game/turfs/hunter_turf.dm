@@ -677,28 +677,28 @@
 	dir = WEST
 
 /turf/open/floor/ancient_temple/damaged
-	icon_state = "damage1"
+	icon_state = "damaged1"
 
 /turf/open/floor/ancient_temple/damaged/damage_1
-	icon_state = "damage1"
+	icon_state = "damaged1"
 
 /turf/open/floor/ancient_temple/damaged/damage_2
-	icon_state = "damage2"
+	icon_state = "damaged2"
 
 /turf/open/floor/ancient_temple/damaged/damage_3
-	icon_state = "damage3"
+	icon_state = "damaged3"
 
 /turf/open/floor/ancient_temple/damaged/damage_4
-	icon_state = "damage4"
+	icon_state = "damaged4"
 
 /turf/open/floor/ancient_temple/damaged/damage_5
-	icon_state = "damage5"
+	icon_state = "damaged5"
 
 /turf/open/floor/ancient_temple/damaged/damage_6
-	icon_state = "damage6"
+	icon_state = "damaged6"
 
 /turf/open/floor/ancient_temple/damaged/damage_7
-	icon_state = "damage7"
+	icon_state = "damaged7"
 
 // Misc
 

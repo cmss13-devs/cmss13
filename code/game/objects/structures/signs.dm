@@ -730,7 +730,7 @@
 
 /obj/structure/sign/catclock/get_examine_text(mob/user)
 	. = ..()
-	. += SPAN_NOTICE("The [src] reads: [worldtime2text()]")
+	. += SPAN_NOTICE("[src] reads: [worldtime2text()]")
 
 /obj/structure/sign/calendar/get_examine_text(mob/user)
 	. = ..()

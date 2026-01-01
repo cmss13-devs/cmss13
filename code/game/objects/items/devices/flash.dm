@@ -77,8 +77,8 @@
 		playsound(src.loc, 'sound/weapons/flash.ogg', 25, 1)
 		flick("[icon_state]_flashing", src)
 		user.visible_message(SPAN_DANGER("[user] activates \the [src]'s bulb, emitting a brilliant light!"))
-		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] in hand to flash everyone around them in [src.loc.name] ([src.loc.x],[src.loc.y],[src.loc.z])</font>")
-		msg_admin_attack("[key_name(user)] used the [src.name] to flash everyone around them in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
+		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used [src] in hand to flash everyone around them in [src.loc.name] ([src.loc.x],[src.loc.y],[src.loc.z])</font>")
+		msg_admin_attack("[key_name(user)] used [src] to flash everyone around them in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
 		for(var/mob/living/carbon/human/victim in oviewers(3, null))
 			if(prob(50))
 				if (locate(/obj/item/device/chameleon, victim))
@@ -114,8 +114,8 @@
 
 		if(!flashfail)
 			M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been flashed (attempt) with [src.name] by [key_name(user)]</font>")
-			user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to flash [key_name(M)]</font>")
-			msg_admin_attack("[key_name(user)] used the [src.name] to flash [key_name(M)] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
+			user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used [src] to flash [key_name(M)]</font>")
+			msg_admin_attack("[key_name(user)] used [src] to flash [key_name(M)] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
 
 //targeted flash
 

@@ -39035,26 +39035,6 @@
 	density = 0;
 	pixel_x = 26
 	},
-/obj/structure/surface/rack{
-	pixel_y = 23;
-	layer = 2.98;
-	density = 0;
-	pixel_x = -3
-	},
-/obj/item/clothing/accessory/poncho/purple{
-	name = "USCM Charlie Squad Poncho";
-	pixel_y = 23;
-	pixel_x = -2
-	},
-/obj/item/clothing/accessory/poncho/green{
-	name = "USCM Oscar Squad Poncho";
-	pixel_y = 23
-	},
-/obj/item/clothing/accessory/poncho/black{
-	name = "USCM Kilo Squad Poncho";
-	pixel_y = 23;
-	pixel_x = 2
-	},
 /turf/open/floor/almayer/flooredge/northeast,
 /area/almayer/squads/support)
 "bRF" = (

@@ -59,13 +59,13 @@
 	icon_opened = "ancient_coffin_mumified_open"
 
 /obj/structure/closet/coffin/predator/ancient_stone/mummy/deco
+	desc = "An ornate colossal stone sarcophagus, its surface scarred with the glyphs of the Hunt. Time and tradition have sealed whatever lies within..."
 	icon_state = "ancient_coffin_deco"
 	icon_closed = "ancient_coffin_deco"
 	icon_opened = "ancient_coffin_mumified_deco_open"
 
 /obj/structure/closet/coffin/predator/ancient_stone/mummy/deco/gas
 	name = "ornate ancient stone sarcophagus"
-	desc = "An ornate colossal stone sarcophagus, its surface scarred with the glyphs of the Hunt. Time and tradition have sealed whatever lies within..."
 	anchored = TRUE
 	unacidable = TRUE
 	unslashable = TRUE

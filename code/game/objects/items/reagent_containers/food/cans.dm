@@ -121,7 +121,7 @@
 		if(M == user && M.a_intent == INTENT_HARM && M.zone_selected == "head" && crushable)
 			crush_can(M)
 			return
-		to_chat(user, SPAN_DANGER([src] is empty!"))
+		to_chat(user, SPAN_DANGER("The [src.name] is empty!"))
 		return 0
 
 	if(M == user)

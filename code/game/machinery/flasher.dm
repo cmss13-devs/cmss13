@@ -37,9 +37,9 @@
 		add_fingerprint(user)
 		src.disable = !src.disable
 		if (src.disable)
-			user.visible_message(SPAN_DANGER("[user] has disconnected [src]'s flashbulb!"), SPAN_DANGER("You disconnect [src]'s flashbulb!"))
+			user.visible_message(SPAN_DANGER("[user] has disconnected the [src]'s flashbulb!"), SPAN_DANGER("You disconnect the [src]'s flashbulb!"))
 		if (!src.disable)
-			user.visible_message(SPAN_DANGER("[user] has connected [src]'s flashbulb!"), SPAN_DANGER("You connect [src]'s flashbulb!"))
+			user.visible_message(SPAN_DANGER("[user] has connected the [src]'s flashbulb!"), SPAN_DANGER("You connect the [src]'s flashbulb!"))
 
 //Let the AI trigger them directly.
 /obj/structure/machinery/flasher/attack_remote()
@@ -144,6 +144,6 @@
 	icon_state = "launcherbtt"
 	active = 0
 
-	msg_admin_attack("[key_name(user)] used [src] to flash everyone in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
+	msg_admin_attack("[key_name(user)] used the [src.name] to flash everyone in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
 
 	return

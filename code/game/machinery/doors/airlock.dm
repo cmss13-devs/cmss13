@@ -914,7 +914,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, flatten_numeric_alist(alist(
 		for(var/i in resin_smushables)
 			if(istype(x,i)) //I would like to just use a if(locate() in ) here but Im not gonna add every child to GLOB.resin_smushables so it works
 				playsound(loc, "alien_resin_break", 25)
-				visible_message(SPAN_WARNING("[src] closes on [x], smushing it!"))
+				visible_message(SPAN_WARNING("The [src.name] closes on [x], smushing it!"))
 				if(isturf(x))
 					var/turf/closed/wall/resin_wall_to_destroy = x
 					resin_wall_to_destroy.dismantle_wall()

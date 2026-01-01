@@ -283,8 +283,8 @@
 					"You hear twisting metal.")
 
 	if(!damage_dealt)
-		user.visible_message(SPAN_WARNING("[user] beats against [src] to no avail."),
-					SPAN_WARNING("[user] beats against [src]."),
+		user.visible_message(SPAN_WARNING("[user] beats against the [src] to no avail."),
+					SPAN_WARNING("[user] beats against the [src]."),
 					"You hear twisting metal.")
 
 /obj/structure/cargo_container/horizontal

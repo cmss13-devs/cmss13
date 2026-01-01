@@ -48,7 +48,7 @@
 		return
 	if(istype(attacked_item, /obj/item/organ/xeno))
 		if(busy)
-			to_chat(user, SPAN_WARNING("[src] is currently busy!"))
+			to_chat(user, SPAN_WARNING("The [src] is currently busy!"))
 		if(organ)
 			to_chat(user, SPAN_WARNING("Organ slot is already full!"))
 			return

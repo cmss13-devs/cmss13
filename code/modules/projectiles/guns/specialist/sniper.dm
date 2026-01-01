@@ -474,7 +474,7 @@
 /obj/item/weapon/gun/rifle/sniper/M42B/afterattack(atom/target, mob/user, flag)
 	if(able_to_fire(user))
 		if(get_dist(target,user) <= 8)
-			to_chat(user, SPAN_WARNING("[src] beeps, indicating that the target is within an unsafe proximity to the rifle, refusing to fire."))
+			to_chat(user, SPAN_WARNING("The [src.name] beeps, indicating that the target is within an unsafe proximity to the rifle, refusing to fire."))
 			return
 		else ..()
 */
@@ -530,7 +530,7 @@
 	if(.)
 		var/mob/living/carbon/human/PMC_sniper = user
 		if(PMC_sniper.body_position == STANDING_UP && !istype(PMC_sniper.wear_suit,/obj/item/clothing/suit/storage/marine/smartgunner/veteran/pmc) && !istype(PMC_sniper.wear_suit,/obj/item/clothing/suit/storage/marine/veteran))
-			PMC_sniper.visible_message(SPAN_WARNING("[PMC_sniper] is blown backwards from the recoil of [src]!"),SPAN_HIGHDANGER("You are knocked prone by the blowback!"))
+			PMC_sniper.visible_message(SPAN_WARNING("[PMC_sniper] is blown backwards from the recoil of the [src.name]!"),SPAN_HIGHDANGER("You are knocked prone by the blowback!"))
 			step(PMC_sniper,turn(PMC_sniper.dir,180))
 			PMC_sniper.KnockDown(5)
 			PMC_sniper.Stun(5)

@@ -24,4 +24,4 @@
 
 /obj/structure/machinery/weather_siren/proc/weather_warning()
 	playsound(loc, 'sound/effects/weather_warning.ogg', 50, 0)
-	visible_message(SPAN_DANGER("[src] blares. ATTENTION. POTENTIALLY HAZARDOUS WEATHER ANOMALY DETECTED. SEEK SHELTER IMMEDIATELY."))
+	visible_message(SPAN_DANGER("The [src] blares. ATTENTION. POTENTIALLY HAZARDOUS WEATHER ANOMALY DETECTED. SEEK SHELTER IMMEDIATELY."))

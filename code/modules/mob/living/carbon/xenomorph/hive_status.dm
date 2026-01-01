@@ -1044,7 +1044,7 @@
 
 	for(var/mob_name in banished_ckeys)
 		if(banished_ckeys[mob_name] == user.ckey)
-			to_chat(user, SPAN_WARNING("You are banished from [src], you may not rejoin unless the Queen re-admits you or dies."))
+			to_chat(user, SPAN_WARNING("You are banished from the [src], you may not rejoin unless the Queen re-admits you or dies."))
 			return FALSE
 
 	var/mob/living/carbon/human/original_human = user.mind?.original

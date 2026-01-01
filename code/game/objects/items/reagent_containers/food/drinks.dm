@@ -25,7 +25,7 @@
 	var/datum/reagents/R = src.reagents
 
 	if(!R.total_volume || !R)
-		to_chat(user, SPAN_DANGER("[src] is empty!"))
+		to_chat(user, SPAN_DANGER("The [src.name] is empty!"))
 		return FALSE
 
 	if(HAS_TRAIT(M, TRAIT_CANNOT_EAT))

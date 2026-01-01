@@ -189,7 +189,7 @@
 
 // Show a message to all mobs in sight of this atom
 // Use for objects performing visible actions
-// message is output to anyone who can see, e.g. "[src] does something!"
+// message is output to anyone who can see, e.g. "The [src] does something!"
 // blind_message (optional) is what blind people will hear e.g. "You hear something!"
 /atom/proc/visible_message(message, blind_message, max_distance, message_flags = CHAT_TYPE_OTHER)
 	if(HAS_TRAIT(src, TRAIT_CLOAKED))
@@ -203,7 +203,7 @@
 
 // Show a message to all mobs in earshot of this atom
 // Use for objects performing only audible actions
-// message is output to anyone who can see, e.g. "[src] does something!"
+// message is output to anyone who can see, e.g. "The [src] does something!"
 // deaf_message (optional) is what deaf people will see e.g. "[X] shouts something silently."
 /atom/proc/audible_message(message, deaf_message, max_distance, message_flags = CHAT_TYPE_OTHER)
 	var/hear_dist = 7

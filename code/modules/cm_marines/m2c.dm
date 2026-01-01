@@ -489,7 +489,7 @@
 
 	if(over_object == user && in_range(src, user))
 		if(stationary)
-			to_chat(user, SPAN_WARNING("You cannot disassemble [src], it is stationary!"))
+			to_chat(user, SPAN_WARNING("You cannot disassemble the [src], it is stationary!"))
 			return
 		if((rounds > 0) && (user.a_intent & (INTENT_GRAB)))
 			playsound(src.loc, 'sound/items/m56dauto_load.ogg', 75, 1)

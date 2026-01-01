@@ -248,7 +248,7 @@ display floor(lastgen) and phorontank amount
 		if(amount < 1)
 			to_chat(user, SPAN_NOTICE(" The [src.name] is full!"))
 			return
-		to_chat(user, SPAN_NOTICE(" You add [amount] sheets to [src]."))
+		to_chat(user, SPAN_NOTICE(" You add [amount] sheets to the [src.name]."))
 		sheets += amount
 		addstack.use(amount)
 		updateUsrDialog()

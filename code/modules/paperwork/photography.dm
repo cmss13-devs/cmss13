@@ -281,7 +281,7 @@
 
 /obj/item/device/camera/afterattack(atom/target as mob|obj|turf|area, mob/user as mob, flag)
 	if(pictures_left <= 0)
-		to_chat(user, SPAN_WARNING("There isn't enough film in [src] to take a photo."))
+		to_chat(user, SPAN_WARNING("There isn't enough film in the [src] to take a photo."))
 		return
 	if(ismob(target.loc) || isstorage(target.loc) || user.contains(target) || istype(target, /atom/movable/screen))
 		return

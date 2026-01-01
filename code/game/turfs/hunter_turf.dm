@@ -716,21 +716,7 @@
 	baseturfs = /turf/open/gm/dirt
 	var/decoration_type
 	var/list/debris
-	blend_turfs = list(
-		/turf/closed/wall/mineral,
-		/turf/closed/wall/mineral/sandstone,
-		/turf/closed/wall/mineral/sandstone/runed,
-		/turf/closed/wall/mineral/sandstone/runed/decor,
-		/turf/closed/wall/mineral/sandstone/runed/decor_2,
-		/turf/closed/wall/mineral/sandstone/runed/decor_3,
-		/turf/closed/wall/cult/dark_temple,
-		/turf/closed/wall/cult/dark_temple/hunting_grounds,
-		/turf/closed/wall/ancient_temple,
-		/turf/closed/wall/ancient_temple/unbreakable,
-		/turf/closed/wall/ancient_temple/runed,
-		/turf/closed/wall/ancient_temple/runed/alt,
-		/turf/closed/wall/ancient_temple/runed/alt2,
-	)
+	blend_turfs = list(/turf/closed/wall)
 	blend_objects = list(/obj/structure/prop/hunter/ancient_temple/collapsed_wall, /obj/structure/machinery/door, /obj/structure/window_frame, /obj/structure/window/framed)
 	debris = list(/obj/item/stack/sheet/mineral/sandstone, /obj/effect/hunter/ancient_temple/rubble/rubble)
 

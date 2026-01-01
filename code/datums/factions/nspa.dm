@@ -15,7 +15,7 @@
 	switch(_role)
 		if(JOB_NSPA_CST)
 			hud_icon_state = "con"
-		if(JOB_NSPA_SCST)
+		if(JOB_NSPA_SC)
 			hud_icon_state = "scon"
 		if(JOB_NSPA_SGT)
 			hud_icon_state = "sgt"
@@ -25,7 +25,7 @@
 			hud_icon_state = "cinsp"
 		if(JOB_NSPA_CMD)
 			hud_icon_state = "cmd"
-		if(JOB_NSPA_DCOM)
+		if(JOB_NSPA_DCO)
 			hud_icon_state = "dcom"
 		if(JOB_NSPA_COM)
 			hud_icon_state = "com"

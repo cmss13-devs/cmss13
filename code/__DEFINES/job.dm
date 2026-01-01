@@ -58,8 +58,9 @@ GLOBAL_LIST_INIT(job_squad_roles, JOB_SQUAD_ROLES_LIST)
 #define JOB_SURGEON "Surgeon"
 #define JOB_PHARMACIST "Pharmaceutical Physician"
 #define JOB_FIELD_DOCTOR "Field Doctor"
-#define JOB_RESEARCHER "Researcher"
+
 #define JOB_NURSE "Nurse"
+#define JOB_RESEARCHER "Researcher"
 #define JOB_MEDIC_ROLES /datum/timelock/medic
 #define JOB_MEDIC_ROLES_LIST list(JOB_SQUAD_MEDIC, JOB_CMO, JOB_DOCTOR, JOB_FIELD_DOCTOR, JOB_NURSE, JOB_RESEARCHER, JOB_SURGEON, JOB_PHARMACIST)
 #define JOB_DOCTOR_ROLES /datum/timelock/doctor
@@ -171,27 +172,27 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 
 //-------------WO roles---------------
 
-#define JOB_WO_CO "Dust Raider Ground Commander"
-#define JOB_WO_XO "Dust Raider Lieutenant Commander"
-#define JOB_WO_CHIEF_POLICE "Dust Raider Honor Guard Squad Leader"
-#define JOB_WO_SO "Dust Raider Veteran Honor Guard"
-#define JOB_WO_CREWMAN "Dust Raider Honor Guard Weapons Specialist"
-#define JOB_WO_POLICE "Dust Raider Honor Guard"
+#define JOB_WO_CO "Ground Commander"
+#define JOB_WO_XO "Lieutenant Commander"
+#define JOB_WO_CHIEF_POLICE "Honor Guard Squad Leader"
+#define JOB_WO_SO "Veteran Honor Guard"
+#define JOB_WO_CREWMAN "Honor Guard Weapons Specialist"
+#define JOB_WO_POLICE "Honor Guard"
 
-#define JOB_WO_PILOT "Dust Raider Mortar Crew"
+#define JOB_WO_PILOT "Mortar Crew"
 
-#define JOB_WO_CHIEF_ENGINEER "Dust Raider Bunker Crew Master"
-#define JOB_WO_ORDNANCE_TECH "Dust Raider Bunker Crew"
+#define JOB_WO_CHIEF_ENGINEER "Bunker Crew Master"
+#define JOB_WO_ORDNANCE_TECH "Bunker Crew"
 
-#define JOB_WO_CHIEF_REQUISITION "Dust Raider Bunker Quartermaster"
-#define JOB_WO_REQUISITION "Dust Raider Bunker Crew Logistics"
+#define JOB_WO_CHIEF_REQUISITION "Bunker Quartermaster"
+#define JOB_WO_REQUISITION "Bunker Crew Logistics"
 
-#define JOB_WO_CMO "Dust Raider Head Surgeon"
-#define JOB_WO_DOCTOR "Dust Raider Field Surgeon"
-#define JOB_WO_RESEARCHER "Dust Raider Chemist"
+#define JOB_WO_CMO "Head Surgeon"
+#define JOB_WO_DOCTOR "Field Surgeon"
+#define JOB_WO_RESEARCHER "Chemist"
 
-#define JOB_WO_CORPORATE_LIAISON "Dust Raider Combat Reporter"
-#define JOB_WO_SYNTH "Dust Raider Support Synthetic"
+#define JOB_WO_CORPORATE_LIAISON "Combat Reporter"
+#define JOB_WO_SYNTH "Support Synthetic"
 
 #define JOB_WO_SQUAD_MARINE "Dust Raider Squad Rifleman"
 #define JOB_WO_SQUAD_MEDIC "Dust Raider Squad Hospital Corpsman"
@@ -236,17 +237,17 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 
 #define JOB_WY_SEC "W-Y Security Guard"
 #define JOB_WY_SEC_SYNTH "W-Y Security Guard Synthetic"
-#define JOB_TRAINEE "W-Y Corporate Trainee"
-#define JOB_JUNIOR_EXECUTIVE "W-Y Corporate Junior Executive"
-#define JOB_EXECUTIVE "W-Y Corporate Executive"
-#define JOB_SENIOR_EXECUTIVE "W-Y Corporate Senior Executive"
-#define JOB_EXECUTIVE_SPECIALIST "W-Y Corporate Executive Specialist"
-#define JOB_LEGAL_SPECIALIST "W-Y Corporate Legal Specialist"
-#define JOB_EXECUTIVE_SUPERVISOR "W-Y Corporate Executive Supervisor"
-#define JOB_LEGAL_SUPERVISOR "W-Y Corporate Legal Supervisor"
-#define JOB_ASSISTANT_MANAGER "W-Y Corporate Assistant Manager"
-#define JOB_DIVISION_MANAGER "W-Y Corporate Division Manager"
-#define JOB_CHIEF_EXECUTIVE "W-Y Corporate Chief Executive"
+#define JOB_TRAINEE "Corporate Trainee"
+#define JOB_JUNIOR_EXECUTIVE "Corporate Junior Executive"
+#define JOB_EXECUTIVE "Corporate Executive"
+#define JOB_SENIOR_EXECUTIVE "Corporate Senior Executive"
+#define JOB_EXECUTIVE_SPECIALIST "Corporate Executive Specialist"
+#define JOB_LEGAL_SPECIALIST "Corporate Legal Specialist"
+#define JOB_EXECUTIVE_SUPERVISOR "Corporate Executive Supervisor"
+#define JOB_LEGAL_SUPERVISOR "Corporate Legal Supervisor"
+#define JOB_ASSISTANT_MANAGER "Corporate Assistant Manager"
+#define JOB_DIVISION_MANAGER "Corporate Division Manager"
+#define JOB_CHIEF_EXECUTIVE "Corporate Chief Executive"
 #define JOB_DEPUTY_DIRECTOR "W-Y Deputy Director"
 #define JOB_DIRECTOR "W-Y Director"
 
@@ -278,18 +279,18 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 
 #define JOB_HC_SEC "HC Security Guard"
 #define JOB_HC_SEC_SYNTH "HC Security Guard Synthetic"
-#define JOB_HC_TRAINEE "HC Corporate Trainee"
-#define JOB_HC_JUNIOR_EXECUTIVE "HC Corporate Junior Executive"
-#define JOB_HC_CORPORATE_LIAISON "HC Corporate Liaison"
-#define JOB_HC_EXECUTIVE "HC Corporate Executive"
-#define JOB_HC_SENIOR_EXECUTIVE "HC Corporate Senior Executive"
-#define JOB_HC_EXECUTIVE_SPECIALIST "HC Corporate Executive Specialist"
-#define JOB_HC_LEGAL_SPECIALIST "HC Corporate Legal Specialist"
-#define JOB_HC_EXECUTIVE_SUPERVISOR "HC Corporate Executive Supervisor"
-#define JOB_HC_LEGAL_SUPERVISOR "HC Corporate Legal Supervisor"
-#define JOB_HC_ASSISTANT_MANAGER "HC Corporate Assistant Manager"
-#define JOB_HC_DIVISION_MANAGER "HC Corporate Division Manager"
-#define JOB_HC_CHIEF_EXECUTIVE "HC Corporate Chief Executive"
+#define JOB_HC_TRAINEE "Corporate Trainee"
+#define JOB_HC_JUNIOR_EXECUTIVE "Corporate Junior Executive"
+#define JOB_HC_CORPORATE_LIAISON "Corporate Liaison"
+#define JOB_HC_EXECUTIVE "Corporate Executive"
+#define JOB_HC_SENIOR_EXECUTIVE "Corporate Senior Executive"
+#define JOB_HC_EXECUTIVE_SPECIALIST "Corporate Executive Specialist"
+#define JOB_HC_LEGAL_SPECIALIST "Corporate Legal Specialist"
+#define JOB_HC_EXECUTIVE_SUPERVISOR "Corporate Executive Supervisor"
+#define JOB_HC_LEGAL_SUPERVISOR "Corporate Legal Supervisor"
+#define JOB_HC_ASSISTANT_MANAGER "Corporate Assistant Manager"
+#define JOB_HC_DIVISION_MANAGER "Corporate Division Manager"
+#define JOB_HC_CHIEF_EXECUTIVE "Corporate Chief Executive"
 #define JOB_HC_DEPUTY_DIRECTOR "HC Deputy Director"
 #define JOB_HC_DIRECTOR "HC Director"
 
@@ -315,8 +316,8 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_CMB "CMB Deputy"
 #define JOB_CMB_TL "CMB Marshal"
 #define JOB_CMB_SYN "CMB Investigative Synthetic"
-#define JOB_CMB_ICC "CMB Interstellar Commerce Commission Corporate Liaison"
-#define JOB_CMB_OBS "CMB Interstellar Human Rights Observer"
+#define JOB_CMB_ICC "Interstellar Commerce Commission Corporate Liaison"
+#define JOB_CMB_OBS "Interstellar Human Rights Observer"
 #define JOB_CMB_RIOT "CMB Riot Control Officer"
 #define JOB_CMB_MED "CMB Medical Technician"
 #define JOB_CMB_ENG "CMB Breaching Technician"
@@ -328,15 +329,15 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 
 //-------- NSPA --------//
 #define JOB_NSPA_CST "NSPA Constable"
-#define JOB_NSPA_SCST "NSPA Senior Constable"
+#define JOB_NSPA_SC "NSPA Senior Constable"
 #define JOB_NSPA_SGT "NSPA Sergeant"
 #define JOB_NSPA_INSP "NSPA Inspector"
 #define JOB_NSPA_CINSP "NSPA Chief Inspector"
 #define JOB_NSPA_CMD "NSPA Commander"
-#define JOB_NSPA_DCOM "NSPA Deputy Commissioner"
+#define JOB_NSPA_DCO "NSPA Deputy Commissioner"
 #define JOB_NSPA_COM "NSPA Commissioner"
 
-#define NSPA_GRUNT_LIST list(JOB_NSPA_CST, JOB_NSPA_SCST, JOB_NSPA_SGT)
+#define NSPA_GRUNT_LIST list(JOB_NSPA_CST, JOB_NSPA_SC, JOB_NSPA_SGT)
 
 //-------- FORECON --------//
 
@@ -514,7 +515,7 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_FAX_RESPONDER_WY "WY Communications Executive"
 #define JOB_FAX_RESPONDER_UPP "UPP Communications Officer"
 #define JOB_FAX_RESPONDER_TWE "TWE Communications Officer"
-#define JOB_FAX_RESPONDER_CLF "CLF Information Correspondent"
+#define JOB_FAX_RESPONDER_CLF "CLF Information Correspondant"
 #define JOB_FAX_RESPONDER_CMB "CMB Deputy Operations Officer"
 #define JOB_FAX_RESPONDER_PRESS "Free Press Relay Operator"
 

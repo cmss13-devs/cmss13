@@ -133,16 +133,12 @@
 				border_rk = "forecon"
 			if(JOB_INTEL)
 				marine_rk = "io"
-				border_rk = "auxiliary"
 			if(JOB_CAS_PILOT, JOB_DROPSHIP_PILOT)
 				marine_rk = "dp"
-				border_rk = "auxiliary"
 			if(JOB_DROPSHIP_CREW_CHIEF)
 				marine_rk = "dcc"
-				border_rk = "auxiliary"
 			if(JOB_TANK_CREW)
 				marine_rk = "tc"
-				border_rk = "auxiliary"
 			if(JOB_CHIEF_POLICE)
 				marine_rk = "cmp"
 			if(JOB_POLICE)

@@ -297,6 +297,14 @@
 	tray_path = /obj/structure/morgue_tray/sarcophagus
 	update_name = FALSE
 
+/obj/structure/morgue/sarcophagus/stone
+	name = "sarcophagus"
+	desc = "Used to store fallen warriors."
+	icon = 'icons/obj/structures/props/hunter/sarcophagus.dmi'
+	icon_state = "sarcophagus1"
+	morgue_type = "sarcophagus"
+	tray_path = /obj/structure/morgue_tray/sarcophagus/stone
+	update_name = FALSE
 
 /*
  * Sarcophagus tray
@@ -305,4 +313,10 @@
 /obj/structure/morgue_tray/sarcophagus
 	name = "sarcophagus tray"
 	desc = "Apply corpse before closing."
+	icon_state = "sarcomat"
+
+/obj/structure/morgue_tray/sarcophagus/stone
+	name = "sarcophagus tray"
+	desc = "Apply corpse before closing."
+	icon = 'icons/obj/structures/props/hunter/sarcophagus.dmi'
 	icon_state = "sarcomat"

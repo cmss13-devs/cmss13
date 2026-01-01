@@ -159,7 +159,6 @@
 		/obj/item/ammo_magazine/rifle/m4ra/custom/incendiary,
 		/obj/item/ammo_magazine/rifle/m4ra/custom/incendiary,
 		/obj/item/ammo_magazine/rifle/m4ra/custom/incendiary,
-
 	)
 	cost = 30
 	containertype = /obj/structure/closet/crate/ammo

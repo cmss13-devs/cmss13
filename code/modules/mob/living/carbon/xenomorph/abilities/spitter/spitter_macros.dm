@@ -1,6 +1,6 @@
 /datum/action/xeno_action/verb/verb_charge_spit()
 	set category = "Alien"
-	set name = "Spitter Frenzy"
+	set name = "Charge Spit"
 	set hidden = TRUE
-	var/action_name = "Dodge"
+	var/action_name = "Charge Spit"
 	handle_xeno_macro(src, action_name)

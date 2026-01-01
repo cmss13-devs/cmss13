@@ -85,7 +85,7 @@
 		var/obj/item/storage/pill_bottle/bottle = inputted_item
 
 		if(length(loaded_pill_bottles) >= max_bottles_count)
-			to_chat(user, SPAN_WARNING("[src] is fully loaded by pill bottles."))
+			to_chat(user, SPAN_WARNING("[src] is fully loaded with pill bottles."))
 			return
 
 		add_pill_bottle(bottle)
@@ -100,32 +100,32 @@
 		var/obj/item/storage/box/pillbottles/box = inputted_item
 
 		if(length(loaded_pill_bottles) >= max_bottles_count)
-			to_chat(user, SPAN_WARNING("[src] is fully loaded by pill bottles."))
+			to_chat(user, SPAN_WARNING("[src] is fully loaded with pill bottles."))
 			return
 
 		if(length(box.contents) <= 0)
-			to_chat(user, SPAN_WARNING("[box.name] is empty and cannot be unloaded into the [name]."))
+			to_chat(user, SPAN_WARNING("\The [box] is empty and cannot be unloaded into [src]."))
 			return
 
-		user.visible_message(SPAN_NOTICE("[user] starts to empty [box.name] into the [name]..."),
-		SPAN_NOTICE("You start to empty the [box.name] into the [name]..."))
+		user.visible_message(SPAN_NOTICE("[user] starts to empty \the [box] into [src]..."),
+		SPAN_NOTICE("You start to empty \the [box] into [src]..."))
 
-		user.visible_message(SPAN_NOTICE("[user] starts to empty [box.name] into the [name]..."),
-		SPAN_NOTICE("You start to empty the [box.name] into the [name]..."))
+		user.visible_message(SPAN_NOTICE("[user] starts to empty \the [box] into [src]..."),
+		SPAN_NOTICE("You start to empty \the [box] into [src]..."))
 
 
 		var/waiting_time = min(length(box.contents), max_bottles_count - length(loaded_pill_bottles)) * box.time_to_empty
 
 		if(!do_after(user, waiting_time, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
-			user.visible_message(SPAN_NOTICE("[user] stops trying to empty [box.name] into [name]."),
-			SPAN_WARNING("You get distracted and stop trying to empty [box.name] into [src]."))
+			user.visible_message(SPAN_NOTICE("[user] stops trying to empty \the [box] into [src]."),
+			SPAN_WARNING("You get distracted and stop trying to empty \the [box] into [src]."))
 			return
 
 		playsound(user.loc, box.use_sound, 25, TRUE, 3)
 
 		for(var/obj/item/storage/pill_bottle/bottle in box.contents)
 			if(length(loaded_pill_bottles) >= max_bottles_count)
-				to_chat(user, SPAN_WARNING("[name] is fully loaded by pill bottles."))
+				to_chat(user, SPAN_WARNING("[src] is fully loaded with pill bottles."))
 				return
 			add_pill_bottle(bottle)
 			box.forced_item_removal(bottle)

@@ -3492,14 +3492,6 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/yautja_ship/middle_deck/food)
-"hg" = (
-/obj/effect/hunter/rune{
-	dir = 4
-	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_3,
-/area/yautja_ship/lower_deck/temple{
-	base_lighting_alpha = 0
-	})
 "hh" = (
 /obj/effect/hunter/catwalk/hunter_grate,
 /obj/structure/prop/hunter/fake_platform/hunter,
@@ -27313,7 +27305,7 @@ vU
 vU
 vU
 vU
-hg
+vU
 vP
 Yh
 Ir

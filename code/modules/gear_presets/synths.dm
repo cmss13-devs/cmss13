@@ -35,7 +35,7 @@
 	if(locked_generation)
 		new_human.set_skills(skills)
 		return
-	var/synth_type = new_human.species
+	var/synth_type = new_human.species.name
 	if(synth_type in SYNTH_TYPES)
 		switch(synth_type)
 			if(SYNTH_GEN_ONE)

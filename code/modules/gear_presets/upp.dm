@@ -33,6 +33,10 @@
 /datum/equipment_preset/upp
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
+/datum/equipment_preset/upp/New()
+	.=..()
+	access = get_access(ACCESS_LIST_UPP_ALL)
+
 /datum/equipment_preset/upp/load_gear(mob/living/carbon/human/new_human)
 	.=..()
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/upp, WEAR_BACK)
@@ -106,10 +110,6 @@
 	name = "UPP Soldier"
 	flags = EQUIPMENT_PRESET_EXTRA
 	skills = /datum/skills/upp
-
-/datum/equipment_preset/upp/soldier/dressed/New()
-	.=..()
-	access = get_access(ACCESS_LIST_UPP_ALL)
 
 /datum/equipment_preset/upp/soldier/dressed/load_gear(mob/living/carbon/human/new_human)
 	//face
@@ -342,10 +342,6 @@
 	skills = /datum/skills/upp/combat_medic
 	flags = EQUIPMENT_PRESET_EXTRA
 
-/datum/equipment_preset/upp/medic/dressed/New()
-	.=..()
-	access = get_access(ACCESS_LIST_UPP_ALL)
-
 /datum/equipment_preset/upp/medic/dressed/load_gear(mob/living/carbon/human/new_human)
 	//back
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/upp, WEAR_BACK)
@@ -555,10 +551,6 @@
 	skills = /datum/skills/upp/combat_engineer
 	flags = EQUIPMENT_PRESET_EXTRA
 
-/datum/equipment_preset/upp/sapper/dressed/New()
-	.=..()
-	access = get_access(ACCESS_LIST_UPP_ALL)
-
 /datum/equipment_preset/upp/sapper/dressed/load_gear(mob/living/carbon/human/new_human)
 	//Sappers should have lots of gear and whatnot that helps them attack or siege marines
 	//But that'll need a lot of effort so for now they are just soldiers with a toolbox.
@@ -724,10 +716,6 @@
 	name = "UPP Specialist"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-/datum/equipment_preset/upp/specialist/dressed/New()
-	.=..()
-	access = get_access(ACCESS_LIST_UPP_ALL)
-
 /datum/equipment_preset/upp/specialist/dressed/load_gear(mob/living/carbon/human/new_human)
 	//back
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/upp, WEAR_BACK)
@@ -867,10 +855,6 @@
 /datum/equipment_preset/upp/machinegunner/dressed
 	name = "UPP Machinegunner"
 	flags = EQUIPMENT_PRESET_EXTRA
-
-/datum/equipment_preset/upp/machinegunner/dressed/New()
-	.=..()
-	access = get_access(ACCESS_LIST_UPP_ALL)
 
 /datum/equipment_preset/upp/machinegunner/dressed/load_gear(mob/living/carbon/human/new_human)
 	//back
@@ -1028,10 +1012,6 @@
 
 	skills = /datum/skills/upp/SL
 	flags = EQUIPMENT_PRESET_EXTRA
-
-/datum/equipment_preset/upp/leader/dressed/New()
-	.=..()
-	access = get_access(ACCESS_LIST_UPP_ALL)
 
 /datum/equipment_preset/upp/leader/dressed/load_gear(mob/living/carbon/human/new_human)
 	var/UPPleadsidearm = rand(1,4)
@@ -1254,10 +1234,6 @@
 	name = "UPP Military Police"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-/datum/equipment_preset/upp/military_police/dressed/New()
-	.=..()
-	access = get_access(ACCESS_LIST_UPP_ALL)
-
 /datum/equipment_preset/upp/military_police/dressed/load_gear(mob/living/carbon/human/new_human)
 	//back
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/upp, WEAR_BACK)
@@ -1448,10 +1424,6 @@
 	name = "UPP Doctor"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-/datum/equipment_preset/upp/doctor/dressed/New()
-	.=..()
-	access = get_access(ACCESS_LIST_UPP_ALL)
-
 /datum/equipment_preset/upp/doctor/dressed/load_gear(mob/living/carbon/human/new_human)
 	//back
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/upp, WEAR_BACK)
@@ -1629,10 +1601,6 @@
 	name = "UPP Logistics Technician"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-/datum/equipment_preset/upp/supply/dressed/New()
-	.=..()
-	access = get_access(ACCESS_LIST_UPP_ALL)
-
 /datum/equipment_preset/upp/supply/dressed/load_gear(mob/living/carbon/human/new_human)
 	//back
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/engineerpack/upp, WEAR_BACK)
@@ -1747,10 +1715,6 @@
 /datum/equipment_preset/upp/officer/dressed
 	name = "UPP Lieutenant"
 	flags = EQUIPMENT_PRESET_EXTRA
-
-/datum/equipment_preset/upp/officer/dressed/New()
-	.=..()
-	access = get_access(ACCESS_LIST_UPP_ALL)
 
 /datum/equipment_preset/upp/officer/dressed/load_gear(mob/living/carbon/human/new_human)
 	//back
@@ -1938,10 +1902,6 @@
 /datum/equipment_preset/upp/officer/senior/dressed
 	name = "UPP Senior Lieutenant"
 
-/datum/equipment_preset/upp/officer/senior/dressed/New()
-	.=..()
-	access = get_access(ACCESS_LIST_UPP_ALL)
-
 /datum/equipment_preset/upp/officer/senior/dressed/load_gear(mob/living/carbon/human/new_human)
 	//back
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/upp, WEAR_BACK)
@@ -2104,10 +2064,6 @@
 
 /datum/equipment_preset/upp/officer/kapitan/dressed
 	name = "UPP Kapitan"
-
-/datum/equipment_preset/upp/officer/kapitan/dressed/New()
-	.=..()
-	access = get_access(ACCESS_LIST_UPP_ALL)
 
 /datum/equipment_preset/upp/officer/kapitan/load_gear(mob/living/carbon/human/new_human)
 	//back
@@ -2305,10 +2261,6 @@
 /datum/equipment_preset/upp/officer/major/dressed
 	name = "UPP Major"
 
-/datum/equipment_preset/upp/officer/major/dressed/New()
-	.=..()
-	access = get_access(ACCESS_LIST_UPP_ALL)
-
 /datum/equipment_preset/upp/officer/major/dressed/load_gear(mob/living/carbon/human/new_human)
 	//back
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/upp, WEAR_BACK)
@@ -2498,10 +2450,6 @@
 	role_comm_title = "Lt. Kol."
 	minimap_icon = "upp_co"
 	paygrades = list(PAY_SHORT_UO5 = JOB_PLAYTIME_TIER_0)
-
-/datum/equipment_preset/upp/officer/flag/dressed/podpolkovnik/New()
-	.=..()
-	access = get_access(ACCESS_LIST_UPP_ALL)
 
 //*****************************************************************************************************/
 /datum/equipment_preset/upp/officer/flag
@@ -2733,10 +2681,6 @@
 	minimap_icon = "upp_co"
 	paygrades = list(PAY_SHORT_UO8 = JOB_PLAYTIME_TIER_0)
 
-/datum/equipment_preset/upp/officer/flag/may_gen/dressed/New()
-	.=..()
-	access = get_access(ACCESS_LIST_UPP_ALL)
-
 //*****************************************************************************************************/
 /datum/job/antag/upp/officer/ley_gen
 	title = JOB_UPP_LT_GENERAL
@@ -2759,10 +2703,6 @@
 	role_comm_title = "Lt. Gen."
 	minimap_icon = "upp_co"
 
-/datum/equipment_preset/upp/officer/flag/ley_gen/dressed/New()
-	.=..()
-	access = get_access(ACCESS_LIST_UPP_ALL)
-
 //*****************************************************************************************************/
 /datum/job/antag/upp/officer/gen
 	title = JOB_UPP_GENERAL
@@ -2783,10 +2723,6 @@
 	job_title = JOB_UPP_GENERAL
 	role_comm_title = "Gen."
 	minimap_icon = "upp_co"
-
-/datum/equipment_preset/upp/officer/flag/gen/dressed/New()
-	.=..()
-	access = get_access(ACCESS_LIST_UPP_ALL)
 
 //*****************************************************************************************************/
 /datum/equipment_preset/upp/sapper/survivor
@@ -3093,11 +3029,6 @@
 	name = "UPP Combat Synthetic"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-/datum/equipment_preset/synth/upp/combat/dressed/New()
-	.=..()
-	access = get_access(ACCESS_LIST_UPP_ALL)
-
-
 /datum/equipment_preset/synth/upp/combat/load_skills(mob/living/carbon/human/new_human)
 	. = ..()
 	new_human.allow_gun_usage = TRUE
@@ -3161,10 +3092,6 @@
 	minimap_icon = "upp_com"
 
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH, LANGUAGE_TSL, LANGUAGE_SPANISH, LANGUAGE_CHINESE)
-
-/datum/equipment_preset/upp/commando/New() //commando has full access
-	. = ..()
-	access = get_access(ACCESS_LIST_GLOBAL)
 
 /datum/equipment_preset/upp/commando/dressed
 	name = "UPP Commando (!DEATHSQUAD!)"
@@ -3749,11 +3676,6 @@
 /datum/equipment_preset/upp/tank/dressed
 	name = "UPP Vehicle Crewman (TANK)"
 
-/datum/equipment_preset/upp/tank/dressed/New()
-	.=..()
-	access = get_access(ACCESS_LIST_UPP_ALL)
-
-
 /datum/equipment_preset/upp/tank/dressed/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp, WEAR_ACCESSORY)
@@ -3960,10 +3882,6 @@
 /datum/equipment_preset/upp/commissar/dressed
 	name = "UPP Political Commissar"
 	flags = EQUIPMENT_PRESET_EXTRA
-
-/datum/equipment_preset/upp/commissar/dressed/New()
-	.=..()
-	access = get_access(ACCESS_LIST_UPP_ALL)
 
 /datum/equipment_preset/upp/commissar/load_gear(mob/living/carbon/human/new_human)
 	. = ..()

@@ -189,7 +189,7 @@
 	faction = FACTION_CLF
 	faction_group = list(FACTION_CLF, FACTION_SURVIVOR)
 	skills = /datum/skills/synthetic/gen_two/gen_one
-	preset_generation_support = FALSE
+	locked_generation = SYNTH_GEN_ONE
 	assignment = JOB_CLF_SYNTH
 	job_title = JOB_CLF_SYNTH
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)

@@ -1901,7 +1901,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	minimap_background = "background_pmc"
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "WY Syn"
-	preset_generation_support = FALSE
+	locked_generation = SYNTH_GEN_THREE
 
 	var/headset_type = /obj/item/device/radio/headset/distress/pmc/command
 

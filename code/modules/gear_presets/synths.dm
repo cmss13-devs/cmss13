@@ -5,9 +5,7 @@
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 	minimap_icon = "synth"
 	skills = /datum/skills/synthetic
-	///Whether or not player's generation preferences work for this preset
-	var/preset_generation_support = FALSE
-	///If there is a specific generation other than Three as the defualt. Set as Generation Define required. Needs preset_generation_support to be FALSE
+	///If there is a specific generation required. Set as Generation Define required.
 	var/locked_generation = FALSE
 	var/subtype
 
@@ -17,23 +15,28 @@
 
 /datum/equipment_preset/synth/load_race(mob/living/carbon/human/new_human)
 	var/generation_selection = SYNTH_GEN_THREE
-	if(!preset_generation_support)
-		if(!locked_generation)
-			new_human.set_species(SYNTH_GEN_THREE)
-			return
-		new_human.set_species(locked_generation)
-		return
-	if(new_human.client?.prefs?.synthetic_type)
-		generation_selection = new_human.client.prefs.synthetic_type
-	switch(generation_selection)
-		if(SYNTH_GEN_THREE)
-			new_human.set_species(SYNTH_GEN_THREE)
-		if(SYNTH_GEN_TWO)
-			new_human.set_species(SYNTH_GEN_TWO)
-		if(SYNTH_GEN_ONE)
-			new_human.set_species(SYNTH_GEN_ONE)
-		else
-			new_human.set_species(SYNTH_GEN_THREE)
+	if(locked_generation)
+		switch(locked_generation)
+			if(SYNTH_GEN_THREE)
+				new_human.set_species(SYNTH_GEN_THREE)
+			if(SYNTH_GEN_TWO)
+				new_human.set_species(SYNTH_GEN_TWO)
+			if(SYNTH_GEN_ONE)
+				new_human.set_species(SYNTH_GEN_ONE)
+			else
+				new_human.set_species(SYNTH_GEN_THREE)
+	else
+		if(new_human.client?.prefs?.synthetic_type)
+			generation_selection = new_human.client.prefs.synthetic_type
+		switch(generation_selection)
+			if(SYNTH_GEN_THREE)
+				new_human.set_species(SYNTH_GEN_THREE)
+			if(SYNTH_GEN_TWO)
+				new_human.set_species(SYNTH_GEN_TWO)
+			if(SYNTH_GEN_ONE)
+				new_human.set_species(SYNTH_GEN_ONE)
+			else
+				new_human.set_species(SYNTH_GEN_THREE)
 
 /datum/equipment_preset/synth/load_name(mob/living/carbon/human/new_human, randomise)
 	var/final_name = "David"
@@ -45,7 +48,7 @@
 
 /datum/equipment_preset/synth/load_skills(mob/living/carbon/human/new_human)
 	new_human.allow_gun_usage = FALSE
-	if(!preset_generation_support)
+	if(locked_generation)
 		new_human.set_skills(skills)
 		return
 	var/synth_type = new_human.species
@@ -79,7 +82,6 @@
 	idtype = /obj/item/card/id/lanyard
 	assignment = JOB_SYNTH
 	job_title = JOB_SYNTH_SURVIVOR
-	preset_generation_support = TRUE
 	origin_override = ORIGIN_CIVILIAN
 
 	var/list/equipment_to_spawn = list(
@@ -674,7 +676,7 @@
 		WEAR_FEET = /obj/item/clothing/shoes/dress,
 		WEAR_L_HAND = /obj/item/weapon/telebaton
 	)
-	preset_generation_support = FALSE
+	locked_generation = SYNTH_GEN_THREE
 	survivor_variant = CORPORATE_SURVIVOR
 
 //*****************************************************************************************************/

@@ -2792,7 +2792,7 @@
 	minimap_background = "background_upp"
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/dogtag/upp
-	preset_generation_support = FALSE
+	locked_generation = SYNTH_GEN_THREE
 
 /datum/equipment_preset/synth/upp/New()
 	.=..()

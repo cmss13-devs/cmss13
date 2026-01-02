@@ -375,7 +375,7 @@
 	job_title = JOB_CONTRACTOR_SYN
 	faction = FACTION_CONTRACTOR
 	languages = ALL_SYNTH_LANGUAGES
-	preset_generation_support = FALSE
+	locked_generation = SYNTH_GEN_THREE
 
 /datum/equipment_preset/synth/contractor/New()
 	. = ..()
@@ -772,7 +772,7 @@
 	skills = /datum/skills/synthetic
 	faction = FACTION_CONTRACTOR
 	languages = ALL_SYNTH_LANGUAGES
-	preset_generation_support = FALSE
+	locked_generation = SYNTH_GEN_THREE
 
 /datum/equipment_preset/synth/contractor/covert/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = pick(MALE, FEMALE)

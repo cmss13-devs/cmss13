@@ -533,7 +533,6 @@
 	job_title = JOB_CMB_SYN
 	languages = ALL_SYNTH_LANGUAGES
 
-	preset_generation_support = FALSE
 	locked_generation = SYNTH_GEN_TWO
 
 	var/headset_type = /obj/item/device/radio/headset/distress/CMB

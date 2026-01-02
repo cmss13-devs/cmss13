@@ -184,7 +184,7 @@
 	faction = FACTION_UPP
 	faction_group = list(FACTION_UPP, FACTION_SURVIVOR)
 	origin_override = ORIGIN_UPP
-	preset_generation_support = FALSE
+	locked_generation = SYNTH_GEN_THREE
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/dogtag/upp
 	role_comm_title = "173/RECON Syn"

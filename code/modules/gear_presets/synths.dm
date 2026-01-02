@@ -6,7 +6,7 @@
 	minimap_icon = "synth"
 	skills = /datum/skills/synthetic
 	///If there is a specific generation required. Set as Generation Define required.
-	var/locked_generation = FALSE
+	var/locked_generation = SYNTH_GEN_THREE
 	var/subtype
 
 /datum/equipment_preset/synth/New()
@@ -83,6 +83,7 @@
 	assignment = JOB_SYNTH
 	job_title = JOB_SYNTH_SURVIVOR
 	origin_override = ORIGIN_CIVILIAN
+	locked_generation = FALSE
 
 	var/list/equipment_to_spawn = list(
 		WEAR_BODY = /obj/item/clothing/under/rank/synthetic/joe,

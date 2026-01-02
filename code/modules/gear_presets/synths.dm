@@ -7,7 +7,7 @@
 	skills = /datum/skills/synthetic
 	///Whether or not player's generation preferences work for this preset
 	var/preset_generation_support = FALSE
-	///If there is a specific generation other than Three as the defualt. Set as Generation Define required.
+	///If there is a specific generation other than Three as the defualt. Set as Generation Define required. Needs preset_generation_support to be FALSE
 	var/locked_generation = FALSE
 	var/subtype
 

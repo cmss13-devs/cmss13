@@ -1,4 +1,4 @@
-/datum/emote/living/carbon/human/synthetic/gen_two/wy_droid
+/datum/emote/living/carbon/human/synthetic/gen_two/gen_one/wy_droid
 	species_type_allowed_typecache = list(/datum/species/synthetic/gen_two/gen_one/wy_droid)
 	keybind_category = CATEGORY_SYNTH_EMOTE
 	volume = 50

@@ -79,7 +79,7 @@
 	data["categories"] = GLOB.wy_droid_categories
 	data["emotes"] = list()
 
-	for(var/datum/emote/living/carbon/human/synthetic/gen_two/wy_droid/emote as anything in GLOB.wy_droid_emotes)
+	for(var/datum/emote/living/carbon/human/synthetic/gen_two/gen_one/wy_droid/emote as anything in GLOB.wy_droid_emotes)
 		data["emotes"] += list(list(
 			"id" = initial(emote.key),
 			"text" = (initial(emote.override_say) || initial(emote.say_message)),
@@ -96,7 +96,7 @@
 
 	switch(action)
 		if("emote")
-			var/datum/emote/living/carbon/human/synthetic/gen_two/wy_droid/path
+			var/datum/emote/living/carbon/human/synthetic/gen_two/gen_one/wy_droid/path
 			if(!params["emotePath"])
 				return
 
@@ -105,7 +105,7 @@
 			if(!path || !COOLDOWN_FINISHED(src, panel_emote_cooldown))
 				return
 
-			if(!(path in subtypesof(/datum/emote/living/carbon/human/synthetic/gen_two/wy_droid)))
+			if(!(path in subtypesof(/datum/emote/living/carbon/human/synthetic/gen_two/gen_one/wy_droid)))
 				return
 
 			COOLDOWN_START(src, panel_emote_cooldown, 2.5 SECONDS)

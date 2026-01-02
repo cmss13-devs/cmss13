@@ -24,7 +24,7 @@
 	. = ..()
 
 	if(light_on)
-		set_light(light_range, light_color)
+		set_light(light_range, light_power)
 	else
 		set_light(0)
 
@@ -94,6 +94,7 @@
 
 /obj/structure/prop/brazier_ancient/tall/frame/full
 	icon_state = "tall_small_brazier_frame_filled"
+	frame_type = /obj/structure/prop/brazier_ancient/tall
 	state = STATE_IGNITE
 
 /obj/structure/prop/brazier/torch/ancient
@@ -109,7 +110,7 @@
 	. = ..()
 
 	if(light_on)
-		set_light(light_range, light_color)
+		set_light(light_range, light_power)
 	else
 		set_light(0)
 

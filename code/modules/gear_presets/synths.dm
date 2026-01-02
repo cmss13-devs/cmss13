@@ -14,7 +14,7 @@
 	access = get_access(ACCESS_LIST_GLOBAL)
 
 /datum/equipment_preset/synth/load_race(mob/living/carbon/human/new_human)
-	var/generation_selection = SYNTH_GEN_THREE
+	var/generation_selection
 	if(locked_generation)
 		switch(locked_generation)
 			if(SYNTH_GEN_THREE)

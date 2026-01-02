@@ -16144,7 +16144,7 @@
 /area/yautja_ship/middle_deck/trophy_hall)
 "JW" = (
 /turf/open_space,
-/area/yautja_ship/upper_deck/corridors)
+/area/yautja_ship/middle_deck/mainhall)
 "JX" = (
 /obj/item/skull/spitter{
 	anchored = 1;
@@ -17418,7 +17418,7 @@
 	dir = 8;
 	color = "#6b675e"
 	},
-/turf/open_space,
+/turf/open/shuttle/dropship/predship/tile/red3,
 /area/yautja_ship/middle_deck/corridors)
 "MP" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -21952,7 +21952,7 @@
 /area/yautja_ship/middle_deck/food)
 "Xv" = (
 /turf/open_space,
-/area/yautja_ship/middle_deck/corridors)
+/area/yautja_ship/lower_deck/elites)
 "Xw" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"

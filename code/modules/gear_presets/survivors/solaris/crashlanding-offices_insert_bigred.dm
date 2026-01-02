@@ -287,13 +287,6 @@
 	minimap_background = "background_pmc"
 	origin_override = ORIGIN_WY_PMC
 
-/datum/equipment_preset/synth/survivor/pmc/load_race(mob/living/carbon/human/new_human)
-	new_human.set_species(SYNTH_GEN_THREE)
-
-/datum/equipment_preset/synth/survivor/pmc/load_skills(mob/living/carbon/human/new_human)
-	new_human.set_skills(/datum/skills/synthetic)
-	new_human.allow_gun_usage = FALSE
-
 /datum/equipment_preset/synth/survivor/pmc/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/droppouch/black(new_human), WEAR_ACCESSORY)

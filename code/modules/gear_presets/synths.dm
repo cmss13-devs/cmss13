@@ -5,7 +5,10 @@
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 	minimap_icon = "synth"
 	skills = /datum/skills/synthetic
+	///Whether or not player's generation preferences work for this preset
 	var/preset_generation_support = FALSE
+	///If there is a specific generation other than Three as the defualt. Set as Generation Define required.
+	var/locked_generation = FALSE
 	var/subtype
 
 /datum/equipment_preset/synth/New()
@@ -13,9 +16,12 @@
 	access = get_access(ACCESS_LIST_GLOBAL)
 
 /datum/equipment_preset/synth/load_race(mob/living/carbon/human/new_human)
-	var/generation_selection
+	var/generation_selection = SYNTH_GEN_THREE
 	if(!preset_generation_support)
-		new_human.set_species(SYNTH_GEN_THREE)
+		if(!locked_generation)
+			new_human.set_species(SYNTH_GEN_THREE)
+			return
+		new_human.set_species(locked_generation)
 		return
 	if(new_human.client?.prefs?.synthetic_type)
 		generation_selection = new_human.client.prefs.synthetic_type

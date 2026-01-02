@@ -1903,6 +1903,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	role_comm_title = "WY Syn"
 	preset_generation_support = FALSE
 
+	var/headset_type = /obj/item/device/radio/headset/distress/pmc/command
 
 /datum/equipment_preset/synth/pmc/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = pick(MALE, FEMALE)
@@ -1940,7 +1941,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/wy_faction, WEAR_ACCESSORY)
 
 		new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc/leader, WEAR_HEAD)
-		new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/pmc/command, WEAR_L_EAR)
+		new_human.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
 		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/experimental_mesons, WEAR_EYES)
 
 		new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/pmc, WEAR_HANDS)

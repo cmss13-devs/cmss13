@@ -769,7 +769,7 @@
 	origin_override = ORIGIN_CIVILIAN
 	languages = ALL_SYNTH_LANGUAGES
 
-	skills = /datum/skills/synthetic/
+	skills = /datum/skills/synthetic/gen_two/gen_one
 	assignment = JOB_CLF_SYNTH
 	job_title = JOB_CLF_SYNTH
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)

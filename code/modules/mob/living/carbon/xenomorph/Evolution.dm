@@ -136,7 +136,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 			to_chat(src, SPAN_WARNING("There already is a Queen."))
 			return
 		if(!hive.allow_queen_evolve)
-			to_chat(src, SPAN_WARNING("We can't find the strength to evolve into a Queen"))
+			to_chat(src, SPAN_WARNING("We can't find the strength to evolve into a Queen."))
 			return
 	else if(!can_evolve(castepick, potential_queens))
 		return
@@ -288,7 +288,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 
 /mob/living/carbon/xenomorph/proc/transmute_verb()
 	set name = "Transmute"
-	set desc = "Transmute into a different caste of the same tier"
+	set desc = "Transmute into a different caste of the same tier."
 	set category = "Alien"
 
 	if(!check_state())

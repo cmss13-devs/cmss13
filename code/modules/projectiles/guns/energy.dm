@@ -176,7 +176,7 @@
 
 /obj/item/weapon/gun/energy/laser_top
 	name = "'LAZ-TOP'"
-	desc = "The 'LAZ-TOP', aka the Laser Anode something something"//finish this later
+	desc = "The 'LAZ-TOP', aka the Laser Anode something something."//finish this later
 
 /obj/item/weapon/gun/energy/laz_uzi
 	name = "laser UZI"

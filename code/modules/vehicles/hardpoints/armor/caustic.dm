@@ -1,6 +1,6 @@
 /obj/item/hardpoint/armor/caustic
 	name = "\improper Caustic Armor"
-	desc = "Protects vehicles from most types of acid"
+	desc = "Protects vehicles from most types of acid."
 
 	icon_state = "caustic_armor"
 	disp_icon = "tank"

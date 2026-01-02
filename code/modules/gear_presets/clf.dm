@@ -768,7 +768,7 @@
 
 	languages = ALL_SYNTH_LANGUAGES
 
-	skills = /datum/skills/colonial_synthetic
+	skills = /datum/skills/synthetic/
 	assignment = JOB_CLF_SYNTH
 	job_title = JOB_CLF_SYNTH
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
@@ -809,7 +809,7 @@
 	idtype = /obj/item/card/id/data
 
 /datum/equipment_preset/clf/synth/load_race(mob/living/carbon/human/new_human)
-	new_human.set_species(SYNTH_COLONY_GEN_ONE)
+	new_human.set_species(SYNTH_GEN_ONE)
 
 /datum/equipment_preset/clf/synth/load_skills(mob/living/carbon/human/new_human)
 	. = ..()

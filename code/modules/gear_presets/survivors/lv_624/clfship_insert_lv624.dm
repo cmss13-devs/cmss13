@@ -188,7 +188,7 @@
 	languages = ALL_SYNTH_LANGUAGES
 	faction = FACTION_CLF
 	faction_group = list(FACTION_CLF, FACTION_SURVIVOR)
-	skills = /datum/skills/colonial_synthetic
+	skills = /datum/skills/synthetic/gen_two/gen_one
 	preset_generation_support = FALSE
 	assignment = JOB_CLF_SYNTH
 	job_title = JOB_CLF_SYNTH
@@ -198,7 +198,7 @@
 	minimap_background = "background_clf"
 
 /datum/equipment_preset/synth/survivor/clf/load_race(mob/living/carbon/human/new_human)
-	new_human.set_species(SYNTH_COLONY_GEN_ONE)
+	new_human.set_species(SYNTH_GEN_ONE)
 
 /datum/equipment_preset/synth/survivor/clf/load_skills(mob/living/carbon/human/new_human)
 	. = ..()

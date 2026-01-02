@@ -568,7 +568,7 @@
 	new_human.b_eyes = colors[eye_color][3]
 
 /datum/equipment_preset/cmb/synth/load_race(mob/living/carbon/human/new_human)
-	new_human.set_species(SYNTH_COLONY)
+	new_human.set_species(SYNTH_GEN_THREE)
 
 /datum/equipment_preset/cmb/synth/load_gear(mob/living/carbon/human/new_human)
 	//backpack

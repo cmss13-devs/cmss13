@@ -1193,6 +1193,8 @@
 		g_hair = hex2num(copytext(species.hair_color, 4, 6))
 		b_hair = hex2num(copytext(species.hair_color, 6, 8))
 
+	if(species.no_grad_style)
+		grad_style = "None"
 	// Switches old pain and stamina over
 	species.initialize_pain(src)
 	species.initialize_stamina(src)
@@ -1584,7 +1586,7 @@
 	. = ..(mapload, SYNTH_GEN_THREE)
 
 /mob/living/carbon/human/synthetic/old/Initialize(mapload)
-	. = ..(mapload, SYNTH_COLONY)
+	. = ..(mapload, SYNTH_GEN_TWO)
 
 /mob/living/carbon/human/synthetic/combat/Initialize(mapload)
 	. = ..(mapload, SYNTH_COMBAT)

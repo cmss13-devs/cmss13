@@ -184,7 +184,6 @@
 	faction = FACTION_UPP
 	faction_group = list(FACTION_UPP, FACTION_SURVIVOR)
 	origin_override = ORIGIN_UPP
-	skills = /datum/skills/colonial_synthetic
 	preset_generation_support = FALSE
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/dogtag/upp

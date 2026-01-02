@@ -45,12 +45,8 @@
 	var/synth_type = new_human.species
 	if(synth_type in SYNTH_TYPES)
 		switch(synth_type)
-			if(SYNTH_COLONY_GEN_ONE)
-				new_human.set_skills(/datum/skills/colonial_synthetic/gen_one)
-			if(SYNTH_COLONY_GEN_TWO)
-				new_human.set_skills(/datum/skills/colonial_synthetic)
 			if(SYNTH_GEN_ONE)
-				new_human.set_skills(/datum/skills/synthetic/gen_one)
+				new_human.set_skills(/datum/skills/synthetic/gen_two/gen_one)
 			if(SYNTH_GEN_TWO)
 				new_human.set_skills(/datum/skills/synthetic/gen_two)
 			else
@@ -59,7 +55,7 @@
 		if(new_human.client)
 			switch(new_human.client?.prefs?.synthetic_type)
 				if(SYNTH_GEN_ONE)
-					new_human.set_skills(/datum/skills/synthetic/gen_one)
+					new_human.set_skills(/datum/skills/synthetic/gen_two/gen_one)
 				if(SYNTH_GEN_TWO)
 					new_human.set_skills(/datum/skills/synthetic/gen_two)
 				else
@@ -77,7 +73,6 @@
 	idtype = /obj/item/card/id/lanyard
 	assignment = JOB_SYNTH
 	job_title = JOB_SYNTH_SURVIVOR
-	skills = /datum/skills/colonial_synthetic
 	preset_generation_support = TRUE
 	origin_override = ORIGIN_CIVILIAN
 
@@ -92,24 +87,6 @@
 	)
 
 	var/survivor_variant = CIVILIAN_SURVIVOR
-
-/datum/equipment_preset/synth/survivor/load_race(mob/living/carbon/human/new_human)
-	//Switch to check client for synthetic generation preference, and set the subspecies of colonial synth
-	var/generation_selection
-	if(preset_generation_support)
-		if(new_human.client?.prefs?.synthetic_type)
-			generation_selection = new_human.client.prefs.synthetic_type
-		switch(generation_selection)
-			if(SYNTH_GEN_THREE)
-				new_human.set_species(SYNTH_COLONY)
-			if(SYNTH_GEN_TWO)
-				new_human.set_species(SYNTH_COLONY_GEN_TWO)
-			if(SYNTH_GEN_ONE)
-				new_human.set_species(SYNTH_COLONY_GEN_ONE)
-			else
-				new_human.set_species(SYNTH_COLONY)
-	else
-		new_human.set_species(SYNTH_COLONY_GEN_ONE)
 
 /datum/equipment_preset/synth/survivor/New()
 	. = ..()
@@ -691,7 +668,6 @@
 		WEAR_FEET = /obj/item/clothing/shoes/dress,
 		WEAR_L_HAND = /obj/item/weapon/telebaton
 	)
-	skills = /datum/skills/synthetic
 	preset_generation_support = FALSE
 	survivor_variant = CORPORATE_SURVIVOR
 

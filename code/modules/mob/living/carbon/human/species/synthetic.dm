@@ -71,6 +71,7 @@
 /datum/species/synthetic/gen_two
 	name = SYNTH_GEN_TWO
 
+	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES, TRAIT_IRON_TEETH, TRAIT_POUNCE_RESISTANT)
 	slowdown = 0.2
 	total_health = 200 //But more durable
 	burn_mod = 0.8
@@ -80,7 +81,7 @@
 	name = SYNTH_GEN_ONE
 	flags = parent_type::flags & ~HAS_SKIN_COLOR
 	special_body_types = FALSE
-	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES, TRAIT_IRON_TEETH)
+	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES, TRAIT_IRON_TEETH, TRAIT_POUNCE_RESISTANT)
 
 	no_grad_style = TRUE
 	hair_color = "#000000"

@@ -341,22 +341,22 @@
 				return
 
 
-	visible_message(SPAN_DANGER("[src] [pounceAction.action_text] onto [M]!"), SPAN_XENODANGER("We [pounceAction.action_text] onto [M]!"), null, 5)
+	visible_message(SPAN_DANGER("[src] [pounceAction.action_text] onto [carbon_mob]!"), SPAN_XENODANGER("We [pounceAction.action_text] onto [carbon_mob]!"), null, 5)
 
 	if (pounceAction.knockdown)
-		M.KnockDown(pounceAction.knockdown_duration)
-		M.Stun(pounceAction.knockdown_duration) // To replicate legacy behavior. Otherwise M39 Armbrace users for example can still shoot
-		step_to(src, M)
+		carbon_mob.KnockDown(pounceAction.knockdown_duration)
+		carbon_mob.Stun(pounceAction.knockdown_duration) // To replicate legacy behavior. Otherwise M39 Armbrace users for example can still shoot
+		step_to(src, carbon_mob)
 
 	if (pounceAction.freeze_self)
 		if(pounceAction.freeze_play_sound)
 			playsound(loc, rand(0, 100) < 95 ? 'sound/voice/alien_pounce.ogg' : 'sound/voice/alien_pounce2.ogg', 25, 1)
 		ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))
 		pounceAction.freeze_timer_id = addtimer(CALLBACK(src, PROC_REF(unfreeze_pounce)), pounceAction.freeze_time, TIMER_STOPPABLE)
-	pounceAction.additional_effects(M)
+	pounceAction.additional_effects(carbon_mob)
 
 	if(pounceAction.slash)
-		M.attack_alien(src, pounceAction.slash_bonus_damage)
+		carbon_mob.attack_alien(src, pounceAction.slash_bonus_damage)
 
 	throwing = FALSE //Reset throwing since something was hit.
 

@@ -230,10 +230,16 @@
 /obj/effect/overlay/temp/ob_impact
 	name = "ob impact animation"
 	effect_duration = 12
+	var/atom/shell
 
 /obj/effect/overlay/temp/ob_impact/Initialize(mapload, atom/owner)
 	. = ..()
-	appearance = owner.appearance
+	if (!owner)
+		log_debug("Created a [type] without `owner`")
+		qdel(src)
+		return
+	shell = owner
+	appearance = shell.appearance
 	transform = matrix().Turn(-90)
 	layer = initial(layer)
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT

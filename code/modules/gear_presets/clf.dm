@@ -774,7 +774,7 @@
 	job_title = JOB_CLF_SYNTH
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "Syn"
-	locked_genration = SYNTH_GEN_ONE
+	locked_generation = SYNTH_GEN_ONE
 
 	minimap_background = "background_clf"
 	minimap_icon = "clf_synth"

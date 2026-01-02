@@ -168,3 +168,231 @@
   - balance: yautja clan shield raised block chance buffed to 40% (was 30%)
   - balance: yautja clan shield lowered block chance buffed to 20% (was 15%)
   - imageadd: Added sprite for yautja shield attachment (sprites by Crowford)
+2025-12-13:
+  Drathek Blundir:
+  - rscadd: Added rolling encryption Caesar cipher minigame to maintain comms clarity
+      without a comms tower.
+  - rscadd: Added punch card papers which can be used to copy values for the minigame
+      that can also be written on, bundled, faxed that actually visually display the
+      punched data. Using blank punch cards on one of the computer restocks 5 punch
+      cards. Some can be randomly found with intel loot.
+  - balance: Comms clarity now degrades over time (only matters if comms are down)
+      but can be reset back to near full clarity using the cipher minigame.
+  - qol: Fax windows now open with the same dimensions as papers (larger).
+  - bugfix: USCM and WY paper item icons are now properly set on Initialize.
+  - bugfix: The photocopier now sets the correct amount of papers when copying a bundle.
+  - bugfix: The objectives_controller no longer adds items to object contents twice.
+  - ui: 'Added 3 interfaces: Decoder computer, Cipher computer, and Encoder computer.'
+  - code_imp: Papers and faxes now support adding additional stylesheets and header
+      data (used to accommodate punch cards and give them flavor of a white background
+      when faxed).
+  - refactor: Reworked stars_decode_html to use a regex and is much faster at parsing.
+  - imageadd: Added punch card assets including two background and two logos used
+      (WY and Hyperdyne).
+  - maptweak: Changed 3 of the computers in CIC and placed a few blank punch cards
+      on the table next to them.
+  - config: Various configs changed to accommodate this, namely that challenge words
+      can be configured for the minigame. The first word determines the length of
+      all.
+  Labeo0:
+  - qol: Allow .458 ammo transfer from small to big ammo box.
+  - balance: Allow storing .458 ammo box on back slot.
+  - code_imp: moved .458 ammo box code to different file
+  PGrayCS:
+  - bugfix: "Fixed UPP spawn names displaying with question marks due to special characters\
+      \ (e.g., '\u017Divka' appearing as '?Ivka')"
+  Puckaboo2:
+  - spellcheck: Adds periods to ends of descriptions.
+  - spellcheck: Capitalizes sentences at the beginning of descriptions.
+  - balance: Reagent grinders can now hold 16 items, up from 10.
+  larentoun:
+  - bugfix: Mutated King is now visible.
+  - bugfix: Mutated Lesser Drone, Drone, Facehugger, Burrower, Sentinel, Spitter,
+      Lurker and Queen had their icons re-centered.
+  - bugfix: Mutated Facehugger items now use Mutated icons.
+2025-12-14:
+  Blundir:
+  - bugfix: fixed some cases of double manufacturer logo being applied
+  Nihisohel:
+  - bugfix: Flamers can now fire past some corners again
+  Puckaboo2:
+  - rscadd: Adds 'soundtweak', and 'icontweak' in the changelog.
+  - code_imp: Alphabetizes changelog flags.
+  Venuska1117:
+  - balance: Abduction ability can now be casted at same tile with cade, flipped table
+      and glass window panes, as long as it doesn't face praetorian ability casting
+      direction.
+  - balance: Abduction ability can now be casted through smoke, such as boiler smoke,
+      explosion smoke, and other related smoke effects.
+  - balance: 'Abduction ability can now be casted through small obstacles such as:
+      window frames, small long crates, normal long crates, platform edges, disposal
+      units (bins), hydro trays (plant trays), janitor cart, trash cans (hybrisia)
+      line nexter (hybrisia).'
+  - bugfix: Abduction ability can no longer be casted through multitile vehicles.
+  - bugfix: 'Abduction ability can no longer be casted through glass windows panes.
+
+      /:cl'
+  carlarctg:
+  - rscadd: Adds a verb for restoring your ghost to your base character, Restore Ghost
+      Character, next to Re-Enter Corpse in the status panel.
+  - code_imp: Split the ghostize appearance proc
+  realforest2001:
+  - balance: Yautja masks now fall off at different rates if human or in crit.
+  - bugfix: The 15% chance max for Yautja mask fall off is now functional.
+2025-12-15:
+  Detective-Google:
+  - bugfix: hostile hives can no longer replant each others' weed nodes.
+  Puckaboo2:
+  - spellcheck: Adds periods to most to_chats and SPANs.
+  - rscadd: Animals have more varied emotes and sounds, changed some descriptions.
+  - rscadd: Adds better descriptions of eating if you're starving.
+  - bugfix: Removed outdated Bay code Poly lines and made them more CM-appropriate.
+  - rscadd: Adds some reagent transfer options.
+  - rscdel: All 100u, 150u, and 200u reagent transfer options were nuked, while some
+      25u, 50u, and 80u options were nuked.
+  - balance: Limits set reagent transfer options to no more than 10 options per list.
+      Many options were added; some were nuked.
+  - balance: Adds 15 and 60 unit Dispense and Beaker options for the Chemical Dispenser
+      and its derivatives.
+  - balance: Adds 15 and 20 unit options for the ChemMaster 3000 and its derivatives.
+  - bugfix: Bluespace beakers can dump their entire contents of 500 instead of 300
+      max.
+  - ui: Increased the size of the Chemmaster 3000 window to 600x600 from 550x600 to
+      fit the new buttons without distorting text too much.
+2025-12-16:
+  Drathek:
+  - bugfix: Fix Restore Ghost Character verb causing ghosts to be visible to living
+      players
+  SpypigDev:
+  - bugfix: CO lore faxes no longer use invisible ink
+2025-12-17:
+  MistChristmas:
+  - bugfix: Bipods don't erroneously buff the gun after first undeploy. Bipods don't
+      apply forever slow.
+  - bugfix: Using akimbo simultaneous fire and then switching to alternate fire doesn't
+      break shooting.
+  - qol: Akimbo defaults to simultaneous fire if you use automatic weapons for autofire.
+  - qol: Tracker no longer needs empty active hand to be accessed with a normal left
+      click, but needs intent other than harm if something is in hands
+  - qol: Give Obj Confirmation box now has Yes listed as the highlighted Option on
+      the right. A few other similar confirmation boxes got this treatment. Including
+      some Admin Verbs.
+  - bugfix: Acid Harness no longer accepts larger beakers than normal, + needs a multi
+      tool to change configurations, + doesn't protect against reagents that actually
+      have no OD limit
+  - balance: Acid Harness no longer scans so frequently, instead scans every 15 Seconds
+      further modified for successful injection(+15% per U) or OD Warning(+20% per
+      U)
+  cuberound:
+  - bugfix: tacmap multiz stair icons (unused) get displayed correctly
+2025-12-19:
+  Puckaboo2:
+  - rscadd: Adds inhand sprites for the new chemistry, medical, and surgery books.
+  - bugfix: Chemistry book is no longer purple inhand.
+  - rscadd: Adds chocolate milk, and chocolate milkshakes.
+  - rscadd: Grind chocolate bars to make chocolate syrup.
+  - rscadd: Adds Chocolate Syrup to soda fountains.
+  - rscadd: Adds chocolate syrup to some fridges.
+  - imageadd: Adds a WY-brand chocolate syrup bottle filled with chocolate syrup,
+      adds chocolate milk glass and chocolate milkshake glass
+  - code_imp: Renames 'chocolate' to 'chocolatesyrup' and renames 'glass of chocolate'
+      to 'glass of chocolate syrup'
+  itus2k:
+  - rscadd: added a few lines to Rank_pins.dm, mostly ones to make them use the new
+      sprites.
+  - rscadd: A army section to rank_pins.dm, to make it easier to change and add stuff
+      for that faction once it's implemented.
+  - imageadd: Added a few icons to the Ranks.dmi
+  - imageadd: Added a few icons to the Onmob ranks.dmi
+  - imageadd: Added a few icons to the  Inventory ranks.dmi
+2025-12-23:
+  Drathek:
+  - rscadd: Added ignition and evaporation to liquid fuel spills (its duration might
+      be reduced if there is little fuel present and it only does greenfire damage);
+      also randomized its spread and marked it as harmful (checked for synths and
+      extinguishers)
+  - balance: Removed the weed removal aspect of the toxic property (since now toxic
+      welding fuel is ignitable)
+  - balance: Spray bottles volume reduced from 250->150 but default amount per transfer
+      reduced from 10->5 (25 uses->30 uses; 10 is no longer an option)
+  - balance: Water backpack sprayer volume reduced from 500->250 (100 uses->50 uses)
+  - balance: Spray bottles use delay increased from 0.5/0.25 seconds->1.5 seconds
+  - balance: Water backpack sprayer delay increased from 0 seconds->3.5 seconds
+  - balance: Chem smoke now spreads 4x less reagents and smoke flamer range was reduced
+      from 5 to 4
+  - rscdel: Removed antiweed grenades and loadouts (replaced a survivor loadout with
+      a fuel filled watertank instead)
+  - bugfix: Fixed some potential ways for sprayers to be used to spray harmful substances
+      by synths
+  - bugfix: Fixed liquid fuel stacking extra amounts depending on the quantity of
+      objects in the turf
+  - refactor: Refactored logic for chem sprayer and synth foam backpack sprayer
+2025-12-25:
+  Drathek:
+  - code_imp: rust_g updated from 3.3.0 to 4.2.0
+  Kashargul:
+  - code_imp: update tgui dependencies
+  - code_imp: Update tgui dependencies again
+  - ui: Updated some stylesheets to meet new SASS expectations
+2025-12-30:
+  Drathek:
+  - spellcheck: Redacted a lorebook
+  - rscadd: Static comms are available to more gamemodes including extended
+  - code_imp: static_comms_amount variable on a gamemode is now per individual tower
+      vs pairs of towers
+  Itus:
+  - imageadd: 5 new two handed sprites to the MP27, Skorpion, SU6, KT42 and Auto9
+  Labeo0:
+  - bugfix: meson scanner vision effect is now removed when it's unequipped
+  Nihisohel:
+  - rscadd: Adds an underbarrel flashlight mount, switch to it via unique-action on
+      the rail light
+  - balance: Rail lights and by extension, the underbarrel rail light, has their light
+      modifier buffed by a single point
+  - balance: Most non-combatant marine roles start with a headset now.
+  - balance: Rebalance the cost of the researcher spare headset in the CMO vendors
+  - balance: CMPs are now able to buy spare MP headsets in their personal vendors
+  - rscdel: Most spare headset choices are removed; you may still find spares in certain
+      places, such as the MP lockers, or CIC Armory Lockers.
+  - code_imp: Cleans up the paths of the headsets, made them all subtypes of command
+      headsets, cleans up redundant variables
+  - qol: Arguably QOL, but departmental headsets now default to their department frequency
+  - rscadd: Pilots can now track the LZ with their headset
+  - rscdel: CE tracking options has been gutted, they have no need to track anything
+      but the LZ for building, anyhow
+  Puckaboo2:
+  - soundtweak: Renamed files where 'acquired' was misspelled.
+  - spellcheck: The word 'acquired' is no longer misspelled anywhere.
+  - spellcheck: All instances of 'simultaneously' have been spellchecked.
+  - spellcheck: Spellchecks modified files.
+  - spellcheck: Fixed a typo.
+  - bugfix: Spec kits cannot be acided.
+  - bugfix: The portable composite barricade no longer shrinks when damaged on the
+      west state.
+  - bugfix: Xeno spit overlays no longer linger on dead/fallen/ghost xenomorphs
+  - bugfix: Youngbloods can no longer spawn with bad eyesight.
+  - bugfix: Floodlight switches cannot be destroyed by explosions.
+  - bugfix: Fixes inconsistencies with bottle fills.
+  - bugfix: Fixes blinking line on surgical drill.
+  - bugfix: Removes two blue pixels from Fix-O-Vein.
+  - qol: If you drop a pill in a beaker that is full or nearly full, it will overflow
+      and you will know how much of your pill you lost.
+  - imagetweak: Adjusts glass bottle fills again.
+  - ui: Increases the window height for modifying skills in a skillset from 550 to
+      600 so the entire list can be accessed without the need for scrolling.
+  - spellcheck: Spellchecks the word 'initial'.
+  - spellcheck: All instances of 'drowsiness' have been spellchecked.
+  - spellcheck: If 'Civilian' was misspelled anywhere, now it isn't.
+  - imagetweak: Respelled 'background_civillian' to 'background_civilian'.
+  carlarctg:
+  - code_imp: Tail stabbing objects now does the mob-stab animation
+  - imageadd: Added a new sprite for tail slam that shows its blunt, because i don't
+      know.
+  realforest2001:
+  - bugfix: Fixes facehuggers bypassing hug resistant masks.
+  zzzmike:
+  - bugfix: Larva that chestburst onto a tile that already has fire on it will no
+      longer ignite
+2025-12-31:
+  DangerRevolution:
+  - spellcheck: Fixed several duplicate "the" with Mortar interactions

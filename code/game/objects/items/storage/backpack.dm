@@ -94,7 +94,7 @@
 			to_chat(H, SPAN_NOTICE("You unlock \the [src]!"))
 			locking_id = null
 		else
-			to_chat(H, SPAN_NOTICE("The ID lock rejects your ID"))
+			to_chat(H, SPAN_NOTICE("The ID lock rejects your ID."))
 	update_icon()
 
 /obj/item/storage/backpack/equipped(mob/user, slot, silent)

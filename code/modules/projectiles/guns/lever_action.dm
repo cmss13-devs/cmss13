@@ -321,6 +321,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/scope/mini,
 		/obj/item/attachable/gyro, // Under
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/magnetic_harness/lever_sling,
 		/obj/item/attachable/stock/r4t, // Stock
@@ -383,6 +384,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/scope/mini/xm88,
 		/obj/item/attachable/gyro, // Under
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/stock/xm88, // Stock
 		)

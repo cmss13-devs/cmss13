@@ -1305,6 +1305,14 @@
 
 	need_round_end_check = TRUE
 
+/datum/hive_status/yautja_bad/add_xeno(mob/living/carbon/xenomorph/xeno)
+	. = ..()
+	xeno.handle_enthrall()
+
+/datum/hive_status/yautja_bad/remove_xeno(mob/living/carbon/xenomorph/xeno, hard)
+	. = ..()
+	xeno.handle_dethrall()
+
 /datum/hive_status/yautja_bad/can_delay_round_end(mob/living/carbon/xenomorph/xeno)
 	return FALSE
 

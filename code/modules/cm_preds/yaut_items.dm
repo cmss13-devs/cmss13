@@ -1837,20 +1837,36 @@ GLOBAL_LIST_INIT(hivebreaker_banned_castes, list(
 		return FALSE
 	if(!force && ((caste_type in XENO_T0_CASTES) || (caste_type in GLOB.hivebreaker_banned_castes)))
 		return FALSE
-
 	set_hive_and_update(XENO_HIVE_YAUTJA_BADBLOOD)
+	hunter_data.dishonored_reason = "Enthralled to the Bad Blood [user.real_name]!"
+	return TRUE
+
+/mob/living/carbon/xenomorph/proc/handle_enthrall()
 	set_languages(list(LANGUAGE_XENOMORPH, LANGUAGE_YAUTJA))
 
 	need_weeds = FALSE
-	lock_evolve = TRUE
 	hunter_data.dishonored = TRUE
-	hunter_data.dishonored_reason = "Enthralled to [user ? "the Bad Blood [user.real_name]" : "a Bad Blood"]!"
+	hunter_data.dishonored_reason = "Enthralled to a Bad Blood!"
 	hunter_data.dishonored_set = src
 	hud_set_hunter()
 
 	RegisterSignal(src, COMSIG_MOB_WEED_SLOWDOWN, PROC_REF(handle_weed_slowdown))
 
-	to_chat(src, SPAN_XENOHIGHDANGER("You have been enthralled by a Yautja Bad Blood!"))
-	to_chat(src, SPAN_XENOANNOUNCE("Your connection to the hivemind has been lost! You are now subservient to your master. Obey their commands."))
-	to_chat(src, SPAN_XENOANNOUNCE("You are no longer able to evolve, or to harm your master."))
+	to_chat(src, SPAN_XENOHIGHDANGER("We have been enthralled by a Yautja Bad Blood!"))
+	to_chat(src, SPAN_XENOANNOUNCE("Our connection to the hivemind has been lost! We are now subservient to our master. Obey their commands."))
+	to_chat(src, SPAN_XENOANNOUNCE("We are no longer able to evolve, or to harm our master."))
+
+	return TRUE
+
+/mob/living/carbon/xenomorph/proc/handle_dethrall(automatic = TRUE)
+	set_languages(list(LANGUAGE_XENOMORPH, LANGUAGE_HIVEMIND))
+	need_weeds = TRUE
+	hunter_data.dishonored = FALSE
+	hunter_data.dishonored_reason = null
+	hunter_data.dishonored_set = null
+	UnregisterSignal(src, COMSIG_MOB_WEED_SLOWDOWN)
+
+	if(automatic)
+		to_chat(src, SPAN_XENOHIGHDANGER("We are no longer enthralled by a Yautja Bad Blood!"))
+		to_chat(src, SPAN_XENOANNOUNCE("Our connection to the hivemind has been restored!"))
 	return TRUE

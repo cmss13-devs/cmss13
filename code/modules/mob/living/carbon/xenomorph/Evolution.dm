@@ -234,6 +234,10 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	if(!check_state(TRUE))
 		return FALSE
 
+	if(hivenumber == XENO_HIVE_YAUTJA_BADBLOOD)
+		to_chat(src, SPAN_WARNING("Our connection to the hive was broken! We cannot evolve!"))
+		return FALSE
+
 	if(is_ventcrawling)
 		to_chat(src, SPAN_WARNING("This place is too constraining to evolve."))
 		return FALSE

@@ -1,35 +1,30 @@
 // Synth used for W-Y Deathsquads
-/datum/species/synthetic/gen_two/wy_droid
+/datum/species/synthetic/gen_two/gen_one/wy_droid
 	name = SYNTH_COMBAT
 	name_plural = "WY Combat Androids"
 	flags = parent_type::flags & ~(HAS_SKIN_COLOR|HAS_UNDERWEAR)
-	special_body_types = FALSE
 	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_EMOTE_CD_EXEMPT, TRAIT_UNSTRIPPABLE, TRAIT_POUNCE_RESISTANT) //No IRON_TEETH because they have no teeth (literally)
 
 	burn_mod = 0.6 //made for combat
 	total_health = 250 //made for combat
 
-	hair_color = "#000000"
-	icobase = 'icons/mob/humans/species/r_wy_combat_android.dmi'
-	deform = 'icons/mob/humans/species/r_wy_combat_android.dmi'
-
 	knock_down_reduction = 5
 	stun_reduction = 5
 	weed_slowdown_mult = 0 // no slowdown!
 
-/datum/species/synthetic/gen_two/wy_droid/handle_post_spawn(mob/living/carbon/human/wy_droid)
+/datum/species/synthetic/gen_two/gen_one/wy_droid/handle_post_spawn(mob/living/carbon/human/wy_droid)
 	. = ..()
 	give_action(wy_droid, /datum/action/wy_droid_emote_panel)
 	wy_droid.AddElement(/datum/element/corp_label/wy)
 
-/datum/species/synthetic/gen_two/wy_droid/handle_death(mob/living/carbon/human/dying_droid)
+/datum/species/synthetic/gen_two/gen_one/wy_droid/handle_death(mob/living/carbon/human/dying_droid)
 	playsound(get_turf(dying_droid),"wy_droid_death", 25, FALSE)
 
-/datum/species/synthetic/gen_two/wy_droid/handle_on_fire(humanoidmob)
+/datum/species/synthetic/gen_two/gen_one/wy_droid/handle_on_fire(humanoidmob)
 	. = ..()
 	INVOKE_ASYNC(humanoidmob, TYPE_PROC_REF(/mob, emote), "pain")
 
-/datum/species/synthetic/gen_two/wy_droid/open_emote_panel()
+/datum/species/synthetic/gen_two/gen_one/wy_droid/open_emote_panel()
 	var/datum/wy_droid_emote_panel/ui = new(usr)
 	ui.ui_interact(usr)
 
@@ -53,7 +48,7 @@
 		return
 
 	var/mob/living/carbon/human/human_owner = owner
-	var/datum/species/synthetic/gen_two/wy_droid/wy_droid_species = human_owner.species
+	var/datum/species/synthetic/gen_two/gen_one/wy_droid/wy_droid_species = human_owner.species
 
 	wy_droid_species.open_emote_panel()
 
@@ -117,19 +112,19 @@
 			usr.emote(initial(path.key))
 			return TRUE
 
-/datum/species/synthetic/gen_two/wy_droid/cloaker
+/datum/species/synthetic/gen_two/gen_one/wy_droid/cloaker
 	name = "W-Y Combat Android Cloaker"
 
-/datum/species/synthetic/gen_two/wy_droid/cloaker/handle_death(mob/living/carbon/human/dying_droid)
+/datum/species/synthetic/gen_two/gen_one/wy_droid/cloaker/handle_death(mob/living/carbon/human/dying_droid)
 	playsound(get_turf(dying_droid),"wy_droid_cloaker_death", 25, FALSE)
 
-/datum/species/synthetic/gen_two/wy_droid/non_deathsquad
+/datum/species/synthetic/gen_two/gen_one/wy_droid/non_deathsquad
 	name = "W-Y Combat Android (Weaker)"
 	burn_mod = 0.8
 	brute_mod = 0.8
 	total_health = 150
 
-/datum/species/synthetic/gen_two/wy_droid/cloaker/non_deathsquad
+/datum/species/synthetic/gen_two/gen_one/wy_droid/cloaker/non_deathsquad
 	name = "W-Y Combat Android Cloaker (Weaker)"
 	burn_mod = 0.8
 	brute_mod = 0.8

@@ -17,7 +17,7 @@
 #define isworkingjoe(A) (ishuman(A) && istype(A?:species, /datum/species/synthetic/gen_two/gen_one/working_joe))
 #define ishazardjoe(A) (ishuman(A) && istype(A?:species, /datum/species/synthetic/gen_two/gen_one/working_joe/hazard))
 #define isuppjoe(A) (ishuman(A) && istype(A?:species, /datum/species/synthetic/gen_two/gen_one/working_joe/upp))
-#define iswydroid(A) (ishuman(A) && istype(A?:species, /datum/species/synthetic/gen_two/wy_droid))
+#define iswydroid(A) (ishuman(A) && istype(A?:species, /datum/species/synthetic/gen_two/gen_one/wy_droid))
 #define isinfiltratorsynthetic(A) (ishuman(A) && istype(A?:species, /datum/species/synthetic/infiltrator))
 #define isk9synth(A) (ishuman(A) && istype(A?:species, /datum/species/synthetic/synth_k9))
 

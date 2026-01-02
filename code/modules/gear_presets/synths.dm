@@ -14,29 +14,13 @@
 	access = get_access(ACCESS_LIST_GLOBAL)
 
 /datum/equipment_preset/synth/load_race(mob/living/carbon/human/new_human)
-	var/generation_selection
+	var/generation_selection = SYNTH_GEN_THREE
 	if(locked_generation)
-		switch(locked_generation)
-			if(SYNTH_GEN_THREE)
-				new_human.set_species(SYNTH_GEN_THREE)
-			if(SYNTH_GEN_TWO)
-				new_human.set_species(SYNTH_GEN_TWO)
-			if(SYNTH_GEN_ONE)
-				new_human.set_species(SYNTH_GEN_ONE)
-			else
-				new_human.set_species(SYNTH_GEN_THREE)
+		new_human.set_species(locked_generation, defualt_species = SYNTH_GEN_THREE)
 	else
 		if(new_human.client?.prefs?.synthetic_type)
 			generation_selection = new_human.client.prefs.synthetic_type
-		switch(generation_selection)
-			if(SYNTH_GEN_THREE)
-				new_human.set_species(SYNTH_GEN_THREE)
-			if(SYNTH_GEN_TWO)
-				new_human.set_species(SYNTH_GEN_TWO)
-			if(SYNTH_GEN_ONE)
-				new_human.set_species(SYNTH_GEN_ONE)
-			else
-				new_human.set_species(SYNTH_GEN_THREE)
+		new_human.set_species(generation_selection, defualt_species = SYNTH_GEN_THREE)
 
 /datum/equipment_preset/synth/load_name(mob/living/carbon/human/new_human, randomise)
 	var/final_name = "David"

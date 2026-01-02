@@ -3092,6 +3092,10 @@
 
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH, LANGUAGE_TSL, LANGUAGE_SPANISH, LANGUAGE_CHINESE)
 
+/datum/equipment_preset/upp/commando/New() //commando has full access
+	. = ..()
+	access = get_access(ACCESS_LIST_GLOBAL)
+
 /datum/equipment_preset/upp/commando/dressed
 	name = "UPP Commando (!DEATHSQUAD!)"
 	flags = EQUIPMENT_PRESET_EXTRA

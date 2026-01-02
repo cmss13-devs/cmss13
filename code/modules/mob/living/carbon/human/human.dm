@@ -1144,7 +1144,7 @@
 
 	. = ..()
 
-/mob/living/carbon/human/proc/set_species(new_species, default_color)
+/mob/living/carbon/human/proc/set_species(new_species, default_color, defualt_species = "Human")
 	if(!new_species)
 		new_species = "Human"
 
@@ -1159,8 +1159,10 @@
 
 	species = GLOB.all_species[new_species]
 
-	// If an invalid new_species value is passed, just default to human
-	if (!istype(species))
+	// If an invalid new_species value is passed, defualt to set defualt, if that fails fallback just default to human
+	if(!istype(species))
+		species = GLOB.all_species[defualt_species]
+	if(!istype(species))
 		species = GLOB.all_species["Human"]
 
 	if(oldspecies)

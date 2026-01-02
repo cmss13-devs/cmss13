@@ -1904,6 +1904,10 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 
 	var/headset_type = /obj/item/device/radio/headset/distress/pmc/command
 
+/datum/equipment_preset/synth/pmc/New()
+    . = ..()
+    access = get_access(ACCESS_LIST_WY_PMC)
+
 /datum/equipment_preset/synth/pmc/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = pick(MALE, FEMALE)
 

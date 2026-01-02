@@ -8,6 +8,9 @@
 	burn_mod = 0.6 //made for combat
 	total_health = 250 //made for combat
 
+	icobase = 'icons/mob/humans/species/r_wy_combat_android.dmi'
+	deform = 'icons/mob/humans/species/r_wy_combat_android.dmi'
+
 	knock_down_reduction = 5
 	stun_reduction = 5
 	weed_slowdown_mult = 0 // no slowdown!

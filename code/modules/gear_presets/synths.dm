@@ -677,7 +677,7 @@
 		WEAR_FEET = /obj/item/clothing/shoes/dress,
 		WEAR_L_HAND = /obj/item/weapon/telebaton
 	)
-	locked_generation = SYNTH_GEN_THREE
+
 	survivor_variant = CORPORATE_SURVIVOR
 
 //*****************************************************************************************************/

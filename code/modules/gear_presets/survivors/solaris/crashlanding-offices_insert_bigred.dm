@@ -282,7 +282,7 @@
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "WY Syn"
 	skills = /datum/skills/synthetic
-	locked_generation = SYNTH_GEN_THREE
+
 	minimap_icon = "pmc_syn"
 	minimap_background = "background_pmc"
 	origin_override = ORIGIN_WY_PMC

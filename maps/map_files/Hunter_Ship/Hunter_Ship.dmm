@@ -4955,6 +4955,12 @@
 /obj/structure/prop/hunter/fake_platform/hunter/east,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_2/west,
 /area/yautja_ship/middle_deck/trophy_hall)
+"kr" = (
+/obj/structure/prop/brazier/torch/ancient{
+	pixel_y = -20
+	},
+/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/east,
+/area/yautja_ship/lower_deck/temple)
 "ks" = (
 /obj/effect/hunter/bridge_border/brown,
 /obj/effect/hunter/rune/small_arrow{
@@ -5736,6 +5742,12 @@
 	},
 /turf/open/shuttle/dropship/predship,
 /area/yautja_ship/middle_deck/trophy_hall)
+"mj" = (
+/obj/structure/prop/brazier/torch/ancient{
+	pixel_y = -20
+	},
+/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/west,
+/area/yautja_ship/lower_deck/temple)
 "mk" = (
 /obj/effect/hunter/rune{
 	dir = 1
@@ -27028,7 +27040,7 @@ WZ
 wg
 wg
 vV
-vZ
+kr
 po
 pd
 Lq
@@ -27488,7 +27500,7 @@ WZ
 wg
 Tp
 vV
-VF
+mj
 po
 pd
 Lq

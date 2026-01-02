@@ -508,7 +508,9 @@
 	desc = "A towering stone effigy of an unknown warrior, clutching a spear-like weapon. It's made from a smooth dark stone, seemingly unweathered from the passage of time."
 	anchored = TRUE
 	layer = BIG_XENO_LAYER
-	density = FALSE
+	density = TRUE
+	bound_height = 64
+	bound_width = 64
 
 /obj/structure/prop/hunter/ancient_temple/giant_statue/base
 	icon = 'icons/obj/structures/props/hunter/ancientsatuebase.dmi'
@@ -517,7 +519,9 @@
 	desc = "An ornate statue base, carved with elaborate decorative runes and symbols."
 	anchored = TRUE
 	layer = BELOW_MOB_LAYER
-	density = FALSE
+	density = TRUE
+	bound_height = 64
+	bound_width = 64
 
 /obj/structure/prop/hunter/ancient_temple/giant_statue/base/small
 

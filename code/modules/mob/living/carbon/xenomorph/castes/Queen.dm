@@ -282,6 +282,7 @@
 	wall_smash = 0
 	pixel_x = -29 //new offsets for the much bigger sprite.
 	old_x = -29
+	xenonid_pixel_x = -16
 	mob_size = MOB_SIZE_IMMOBILE
 	drag_delay = 6 //pulling a big dead xeno is hard
 	tier = 0 //Queen doesn't count towards population limit.
@@ -510,7 +511,6 @@
 
 
 	full_designation = "[name_client_prefix][nicknumber][name_client_postfix]"
-	color = hive.color
 
 	//Update linked data so they show up properly
 	change_real_name(src, name)
@@ -696,7 +696,7 @@
 /mob/living/carbon/xenomorph/queen/proc/hive_message()
 	set category = "Alien"
 	set name = "Word of the Queen (50)"
-	set desc = "Send a message to all aliens in the hive that is big and visible"
+	set desc = "Send a message to all aliens in the hive that is big and visible."
 	if(client.prefs.muted & MUTE_IC)
 		to_chat(src, SPAN_DANGER("You cannot send Announcements (muted)."))
 		return

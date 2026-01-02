@@ -1,4 +1,0 @@
-author: "Kashargul"
-delete-after: True
-changes:
-  - bugfix: "init order for chem dispensers, round spawned dispensers now should directly get their storage"

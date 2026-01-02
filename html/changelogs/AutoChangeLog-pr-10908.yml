@@ -1,0 +1,5 @@
+author: "Git-Nivrak"
+delete-after: True
+changes:
+  - bugfix: "You can no longer pounce up a zlevel into places which would get you stuck"
+  - bugfix: "You can no longer pounce over indestructible obstacles (e.g fog)"

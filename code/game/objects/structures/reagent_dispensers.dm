@@ -11,7 +11,7 @@
 	wrenchable = TRUE
 	unslashable = FALSE
 	var/amount_per_transfer_from_this = 10
-	var/possible_transfer_amounts = list(5,10,15,20,25,30,40,50,60,80,100,120,150,200,240,300)
+	var/possible_transfer_amounts = list(5,10,15,20,30,40,60,120,240,500)
 	var/chemical = ""
 	var/dispensing = TRUE
 
@@ -48,10 +48,10 @@
 	if(reagents)
 		. += SPAN_NOTICE("Total volume: [reagents.total_volume] / [reagents.maximum_volume].")
 	if(dispensing)
-		. += SPAN_NOTICE("\nTransfer mode: Dispensing")
+		. += SPAN_NOTICE("\nTransfer mode: Dispensing.")
 	else
-		. += SPAN_NOTICE("\nTransfer mode: Filling")
-	. += SPAN_NOTICE("Transfer rate: [amount_per_transfer_from_this] units")
+		. += SPAN_NOTICE("\nTransfer mode: Filling.")
+	. += SPAN_NOTICE("Transfer rate: [amount_per_transfer_from_this] units.")
 
 /obj/structure/reagent_dispensers/Destroy()
 	playsound(src.loc, 'sound/effects/slosh.ogg', 50, 1, 3)
@@ -99,9 +99,9 @@
 
 	dispensing = !dispensing
 	if(dispensing)
-		to_chat(usr, SPAN_NOTICE("[src] is now dispensing"))
+		to_chat(usr, SPAN_NOTICE("[src] is now dispensing."))
 	else
-		to_chat(usr, SPAN_NOTICE("[src] is now filling"))
+		to_chat(usr, SPAN_NOTICE("[src] is now filling."))
 	update_icon()
 
 /obj/structure/reagent_dispensers/ex_act(severity)
@@ -139,9 +139,9 @@
 	if(mods[ALT_CLICK])
 		dispensing = !dispensing
 		if(dispensing)
-			to_chat(user, SPAN_NOTICE("[src] is now dispensing"))
+			to_chat(user, SPAN_NOTICE("[src] is now dispensing."))
 		else
-			to_chat(user, SPAN_NOTICE("[src] is now filling"))
+			to_chat(user, SPAN_NOTICE("[src] is now filling."))
 		update_icon()
 		return TRUE
 	return ..()
@@ -508,7 +508,7 @@
 
 /obj/structure/reagent_dispensers/beerkeg
 	name = "beer keg"
-	desc = "A beer keg"
+	desc = "A beer keg."
 	icon = 'icons/obj/structures/kegs.dmi'
 	icon_state = "beertankTEMP"
 	amount_per_transfer_from_this = 10

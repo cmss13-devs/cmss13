@@ -924,7 +924,7 @@
 			throwing = FALSE
 			playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
 			return
-		if(iscolonysynthetic(human) && prob(60))
+		if(HAS_TRAIT(human, TRAIT_POUNCE_RESISTANT) && prob(60))
 			visible_message(SPAN_DANGER("[human] withstands being pounced and slams down [src]!"))
 			KnockDown(1.5)
 			Stun(1.5)

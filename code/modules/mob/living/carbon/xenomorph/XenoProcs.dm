@@ -300,7 +300,7 @@
 	move_delay = .
 
 
-/mob/living/carbon/xenomorph/proc/pounced_mob(mob/living/L)
+/mob/living/carbon/xenomorph/proc/pounced_mob(mob/living/pounced_mob)
 	// This should only be called back by a mob that has pounce, so no need to check
 	var/datum/action/xeno_action/activable/pounce/pounceAction = get_action(src, /datum/action/xeno_action/activable/pounce)
 
@@ -308,33 +308,33 @@
 	if(!check_state() || (!throwing && !pounceAction.action_cooldown_check()))
 		return
 
-	var/mob/living/carbon/M = L
-	if(M.stat == DEAD || M.mob_size >= MOB_SIZE_BIG || can_not_harm(L) || M == src)
+	var/mob/living/carbon/carbon_mob = pounced_mob
+	if(carbon_mob.stat == DEAD || carbon_mob.mob_size >= MOB_SIZE_BIG || can_not_harm(pounced_mob) || carbon_mob == src)
 		throwing = FALSE
 		return
 
 	if(pounceAction.can_be_shield_blocked)
-		if(ishuman(M) && (M.dir in reverse_nearby_direction(dir)))
-			var/mob/living/carbon/human/H = M
-			if(H.check_shields("the pounce", get_dir(H, src), attack_type = SHIELD_ATTACK_POUNCE, custom_response = TRUE)) //Human shield block.
-				visible_message(SPAN_DANGER("[src] slams into [H]!"),
-					SPAN_XENODANGER("We slam into [H]!"), null, 5)
+		if(ishuman(carbon_mob) && (carbon_mob.dir in reverse_nearby_direction(dir)))
+			var/mob/living/carbon/human/human_mob = carbon_mob
+			if(human_mob.check_shields("the pounce", get_dir(human_mob, src), attack_type = SHIELD_ATTACK_POUNCE, custom_response = TRUE)) //Human shield block.
+				visible_message(SPAN_DANGER("[src] slams into [human_mob]!"),
+					SPAN_XENODANGER("We slam into [human_mob]!"), null, 5)
 				KnockDown(1)
 				Stun(1)
 				throwing = FALSE //Reset throwing manually.
-				playsound(H, "bonk", 75, FALSE) //bonk
+				playsound(human_mob, "bonk", 75, FALSE) //bonk
 				return
 
-			if(isyautja(H) && prob(75))//Body slam the fuck out of xenos jumping at your front.
-				visible_message(SPAN_DANGER("[H] body slams [src]!"),
-					SPAN_XENODANGER("[H] body slams us!"), null, 5)
+			if(isyautja(human_mob) && prob(75))//Body slam the fuck out of xenos jumping at your front.
+				visible_message(SPAN_DANGER("[human_mob] body slams [src]!"),
+					SPAN_XENODANGER("[human_mob] body slams us!"), null, 5)
 				KnockDown(3)
 				Stun(3)
 				throwing = FALSE
 				return
-			if(iscolonysynthetic(H) && prob(60))
-				visible_message(SPAN_DANGER("[H] withstands being pounced and slams down [src]!"),
-					SPAN_XENODANGER("[H] throws us down after withstanding the pounce!"), null, 5)
+			if(HAS_TRAIT(human_mob, TRAIT_POUNCE_RESISTANT) && prob(60))
+				visible_message(SPAN_DANGER("[human_mob] withstands being pounced and slams down [src]!"),
+					SPAN_XENODANGER("[human_mob] throws us down after withstanding the pounce!"), null, 5)
 				KnockDown(1.5)
 				Stun(1.5)
 				throwing = FALSE

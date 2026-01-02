@@ -48,7 +48,7 @@
 		SPAN_NOTICE("[user] starts to separate the corneas of [target]'s eyes with [tool]."))
 
 	target.custom_pain("You feel a searing, piercing pain in your eyeballs as your corneas are being sliced open!",1)
-	log_interact(user, target, "[key_name(user)] started to separate the corneas on [key_name(target)]'s eyes and reshape them with [tool].")
+	log_interact(user, target, "[key_name(user)] started to separate the corneas on [key_name(target)]'s eyes with [tool].")
 
 /datum/surgery_step/separate_corneas/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
@@ -56,11 +56,11 @@
 		SPAN_NOTICE("[user] has separated your corneas."),
 		SPAN_NOTICE("[user] has separated [target]'s corneas."))
 
-	log_interact(user, target, "[key_name(user)] separated and reshaped the corneas on [key_name(target)]'s eyes with [tool], starting [surgery].")
+	log_interact(user, target, "[key_name(user)] separated the corneas on [key_name(target)]'s eyes with [tool], starting [surgery].")
 
 	to_chat(target, SPAN_WARNING("Everything goes blurry."))
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SHALLOW
-	target.disabilities |= NEARSIGHTED // code\#define\mobs.dm
+	target.disabilities |= NEARSIGHTED // My corneas! I can't see!
 
 /datum/surgery_step/separate_corneas/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/eye_repair/surgery)
 	user.affected_message(target,
@@ -68,7 +68,7 @@
 		SPAN_WARNING("[user]'s hand slips, slicing your eyes with [tool]!"),
 		SPAN_WARNING("[user]'s hand slips, slicing [target]'s eyes with [tool]!"))
 
-	log_interact(user, target, "[key_name(user)] failed to separate and reshape the corneas on [key_name(target)]'s eyes with [tool], aborting [surgery].")
+	log_interact(user, target, "[key_name(user)] failed to separate the corneas on [key_name(target)]'s eyes with [tool], aborting [surgery].")
 
 	target.apply_damage(10, BRUTE, target_zone)
 	surgery.target_eyes.take_damage(5, FALSE)
@@ -101,7 +101,7 @@
 		SPAN_NOTICE("[user] has lifted your corneas and moving the lenses."),
 		SPAN_NOTICE("[user] has lifted [target]'s corneas and moving the lenses."))
 
-	log_interact(user, target, "[key_name(user)] lifted the cornea from [key_name(target)]'s eyes with [tool].")
+	log_interact(user, target, "[key_name(user)] lifted the corneas and lenses away from [key_name(target)]'s eyes with [tool].")
 
 /datum/surgery_step/lift_corneas/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/eye_repair/surgery)
 	user.affected_message(target,
@@ -109,7 +109,7 @@
 		SPAN_WARNING("[user]'s hand slips, damaging your eyes with [tool]!"),
 		SPAN_WARNING("[user]'s hand slips, damaging [target]'s eyes with [tool]!"))
 
-	log_interact(user, target, "[key_name(user)] failed to lift the cornea from [key_name(target)]'s eyes with [tool].")
+	log_interact(user, target, "[key_name(user)] failed to lift the corneas and lenses away from [key_name(target)]'s eyes with [tool].")
 
 	target.apply_damage(10, BRUTE, target_zone)
 	surgery.target_eyes.take_damage(5, FALSE)
@@ -165,7 +165,7 @@
 	time = 5 SECONDS
 
 	preop_sound = 'sound/handling/clothingrustle1.ogg'
-	success_sound = 'sound/handling/bandage.ogg'
+	success_sound = 'sound/surgery/organ2.ogg'
 	failure_sound = 'sound/surgery/organ1.ogg'
 
 /datum/surgery_step/mend_eyes/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)

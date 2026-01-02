@@ -19,8 +19,9 @@
 		// Delimbed
 		if((O.status & LIMB_DESTROYED) && !(O.status & LIMB_AMPUTATED))
 			apply_pain(PAIN_DELIMB)
+			continue //we take no extra pain from destroyed limb
 		// Broken bones
-		else if(O.status & LIMB_BROKEN || H.incision_depths[O.name] != SURGERY_DEPTH_SURFACE)
+		if(O.status & LIMB_BROKEN || H.incision_depths[O.name] != SURGERY_DEPTH_SURFACE)
 			// Splinted else non-splinted
 			if(O.status & LIMB_SPLINTED)
 				apply_pain(PAIN_BONE_BREAK - PAIN_BONE_BREAK_SPLINTED)
@@ -28,6 +29,9 @@
 				apply_pain(PAIN_BONE_BREAK)
 		else if((O.status & LIMB_SPLINTED) && !(O.status & LIMB_BROKEN))
 			apply_pain(PAIN_BONE_BREAK_SPLINTED)
+
+		if(O.status & LIMB_ESCHAR)
+			apply_pain(PAIN_ESCHAR)
 
 	//Internal organs
 	for(var/datum/internal_organ/O in H.internal_organs)

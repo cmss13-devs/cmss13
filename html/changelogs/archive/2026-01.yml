@@ -1,0 +1,10 @@
+2026-01-01:
+  MistChristmas:
+  - bugfix: Ghosts no longer able to move items out of open inventories when orbiting
+  Nihisohel:
+  - rscadd: Adds spare almayer general keys to requisitions for non-marines such as
+      survivors
+  - bugfix: Fixes intel headsets losing their almayer general comms when their intel
+      key is removed
+  - code_imp: Repaths all instances of encryptionkey/public to encryptionkey/almayer
+      for less confusion

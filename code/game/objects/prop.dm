@@ -195,7 +195,7 @@
 
 /obj/item/prop/almayer/box
 	name = "metal crate"
-	desc = "A metal crate used often for storing small electronics that go into dropships"
+	desc = "A metal crate used often for storing small electronics that go into dropships."
 	icon_state = "hangarbox"
 	w_class = SIZE_LARGE
 
@@ -225,7 +225,7 @@
 
 /obj/item/prop/almayer/handheld1
 	name = "small handheld"
-	desc = "A small piece of electronic doodads"
+	desc = "A small piece of electronic doodads."
 	icon_state = "handheld1"
 	w_class = SIZE_SMALL
 

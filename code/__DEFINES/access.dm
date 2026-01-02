@@ -154,7 +154,6 @@ most of them are tied into map-placed objects. This should be reworked in the fu
 //=================================================
 
 // Yautja Access Levels
-/// Requires a visible ID chip to open
 #define ACCESS_YAUTJA_SECURE 390
 /// Elites+ only
 #define ACCESS_YAUTJA_ELITE 391

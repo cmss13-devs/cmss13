@@ -1091,6 +1091,8 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 				new_access = list(ACCESS_YAUTJA_SECURE, ACCESS_YAUTJA_ELITE, ACCESS_YAUTJA_ELDER,)
 			if(CLAN_RANK_ADMIN_INT)
 				new_access = list(ACCESS_YAUTJA_SECURE, ACCESS_YAUTJA_ELITE, ACCESS_YAUTJA_ELDER, ACCESS_YAUTJA_ANCIENT)
+	if(human_user.job == ERT_JOB_YOUNGBLOOD)
+		new_access = list()
 	access = new_access
 
 ///Able to dissolve anything not anchored to the ground or being held, while uncloaked.

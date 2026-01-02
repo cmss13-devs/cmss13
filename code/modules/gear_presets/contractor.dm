@@ -377,6 +377,8 @@
 	languages = ALL_SYNTH_LANGUAGES
 	locked_generation = SYNTH_GEN_THREE
 
+	var/headset_type = /obj/item/device/radio/headset/distress/contractor
+
 /datum/equipment_preset/synth/contractor/New()
 	. = ..()
 	access = get_access(ACCESS_LIST_EMERGENCY_RESPONSE)
@@ -773,6 +775,8 @@
 	faction = FACTION_CONTRACTOR
 	languages = ALL_SYNTH_LANGUAGES
 	locked_generation = SYNTH_GEN_THREE
+
+	var/headset_type = /obj/item/device/radio/headset/distress/contractor
 
 /datum/equipment_preset/synth/contractor/covert/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = pick(MALE, FEMALE)

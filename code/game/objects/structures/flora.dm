@@ -807,11 +807,12 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
 	return XENO_ATTACK_ACTION
 
-/obj/structure/flora/jungle/thickbush/large_jungle_bush/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/flora/jungle/thickbush/large_jungle_bush/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	if(unslashable)
 		return TAILSTAB_COOLDOWN_NONE
 	playsound(src, 'sound/effects/vegetation_hit.ogg', 25, 1)
 	xeno.visible_message(SPAN_DANGER("[xeno] slashes at [src] with its tail!"),
 	SPAN_DANGER("We slash at [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	update_health(xeno.melee_damage_upper)
+	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL

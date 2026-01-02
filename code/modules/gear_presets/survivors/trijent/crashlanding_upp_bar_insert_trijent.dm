@@ -192,6 +192,8 @@
 	minimap_background = "background_upp"
 	minimap_icon = "upp_synth"
 
+	locked_generation = SYNTH_GEN_THREE
+
 /datum/equipment_preset/synth/survivor/upp/load_gear(mob/living/carbon/human/new_human)
 	var/obj/item/clothing/under/marine/veteran/UPP/medic/uniform = new()
 	var/random_number = rand(1,2)

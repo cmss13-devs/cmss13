@@ -71,7 +71,7 @@
 /datum/species/synthetic/gen_two
 	name = SYNTH_GEN_TWO
 
-	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES, TRAIT_IRON_TEETH, TRAIT_POUNCE_RESISTANT)
+	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_IRON_TEETH, TRAIT_POUNCE_RESISTANT)
 	slowdown = 0.2
 	total_health = 200 //But more durable
 	burn_mod = 0.8

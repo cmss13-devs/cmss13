@@ -197,13 +197,6 @@
 	minimap_icon = "clf_synth"
 	minimap_background = "background_clf"
 
-/datum/equipment_preset/synth/survivor/clf/load_race(mob/living/carbon/human/new_human)
-	new_human.set_species(SYNTH_GEN_ONE)
-
-/datum/equipment_preset/synth/survivor/clf/load_skills(mob/living/carbon/human/new_human)
-	. = ..()
-	new_human.allow_gun_usage = FALSE
-
 /datum/equipment_preset/synth/survivor/clf/load_gear(mob/living/carbon/human/new_human)
 	//back
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/engineerpack/ert, WEAR_BACK)

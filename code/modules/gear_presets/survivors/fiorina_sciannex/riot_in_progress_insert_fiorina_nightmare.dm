@@ -101,13 +101,7 @@
 	skills = /datum/skills/synthetic/cmb
 	minimap_icon = "cmb_syn"
 	minimap_background = "background_cmb"
-
-/datum/equipment_preset/synth/survivor/cmb/riotsynth/load_race(mob/living/carbon/human/new_human)
-	new_human.set_species(SYNTH_GEN_TWO)
-
-/datum/equipment_preset/synth/survivor/cmb/riotsynth/load_skills(mob/living/carbon/human/new_human)
-		new_human.set_skills(/datum/skills/synthetic/cmb)
-		new_human.allow_gun_usage = FALSE
+	locked_generation = SYNTH_GEN_TWO
 
 /datum/equipment_preset/synth/survivor/cmb/riotsynth/load_gear(mob/living/carbon/human/new_human)
 	//backpack

@@ -532,7 +532,7 @@
 	assignment = "CMB Investigative Synthetic"
 	job_title = JOB_CMB_SYN
 	languages = ALL_SYNTH_LANGUAGES
-
+	skills = /datum/skills/synthetic/cmb
 	locked_generation = SYNTH_GEN_TWO
 
 	var/headset_type = /obj/item/device/radio/headset/distress/CMB
@@ -540,10 +540,6 @@
 /datum/equipment_preset/synth/cmb/New()
 	. = ..()
 	access = get_access(ACCESS_LIST_UA)
-
-/datum/equipment_preset/synth/cmb/load_skills(mob/living/carbon/human/new_human)
-		new_human.set_skills(/datum/skills/synthetic/cmb)
-		new_human.allow_gun_usage = FALSE
 
 /datum/equipment_preset/synth/cmb/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = pick(MALE, FEMALE)

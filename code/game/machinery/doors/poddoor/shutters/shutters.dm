@@ -157,7 +157,7 @@
 //transit shutters used by marine dropships
 /obj/structure/machinery/door/poddoor/shutters/transit
 	name = "Transit shutters"
-	desc = "Safety shutters to prevent dangerous depressurization during flight"
+	desc = "Safety shutters to prevent dangerous depressurization during flight."
 	icon = 'icons/obj/structures/doors/blastdoors_shutters.dmi'
 	unacidable = TRUE
 

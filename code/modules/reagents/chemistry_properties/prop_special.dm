@@ -2,7 +2,7 @@
 	rarity = PROPERTY_DISABLED
 	category = PROPERTY_TYPE_ANOMALOUS
 	value = 8
-//IF YOU ADD A NEW LEGENADRY INTENDED FOR RESEARCH NORMAL LOOP, MAKE SURE TO ADD TO LEGENDARY PROPERTY LIST DEFINE
+//IF YOU ADD A NEW LEGENDARY INTENDED FOR RESEARCH NORMAL LOOP, MAKE SURE TO ADD TO LEGENDARY PROPERTY LIST DEFINE
 /datum/chem_property/special/boosting
 	name = PROPERTY_BOOSTING
 	code = "BST"
@@ -16,7 +16,7 @@
 /datum/chem_property/special/optimized
 	name = PROPERTY_OPTIMIZED
 	code = "OPM"
-	description = "Chemical molecule is structured diffrently, resulting in more efficient and easy synthesis process."
+	description = "Chemical molecule is structured differently, resulting in more efficient and easy synthesis process."
 	rarity = PROPERTY_LEGENDARY
 	category = PROPERTY_TYPE_METABOLITE
 
@@ -164,7 +164,7 @@
 	if((E.flags_embryo & FLAG_EMBRYO_PREDATOR) && E.hivenumber == GLOB.hive_datum[level])
 		return
 
-	E.visible_message(SPAN_DANGER("\the [E] rapidly mutates"))
+	E.visible_message(SPAN_DANGER("\the [E] rapidly mutates."))
 
 	playsound(E, 'sound/effects/attackblob.ogg', 25, TRUE)
 
@@ -289,7 +289,7 @@
 	M.set_effect(0, PARALYZE)
 	M.silent = 0
 	M.dizziness = 0
-	M.drowsyness = 0
+	M.drowsiness = 0
 	M.stuttering = 0
 	M.confused = 0
 	M.sleeping = 0

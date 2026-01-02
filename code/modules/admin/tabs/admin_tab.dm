@@ -127,7 +127,7 @@
 
 /datum/admins/proc/announce()
 	set name = "Admin Announcement"
-	set desc = "Announce your desires to the world"
+	set desc = "Announce your desires to the world."
 	set category = "Admin.Game"
 
 	if(!check_rights(0))

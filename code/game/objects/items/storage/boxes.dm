@@ -36,7 +36,7 @@
 	foldable = TRUE
 	storage_slots = null
 	max_w_class = SIZE_SMALL //Changed because of in-game abuse
-	w_class = SIZE_LARGE //Changed becuase of in-game abuse
+	w_class = SIZE_LARGE //Changed because of in-game abuse
 	storage_flags = STORAGE_FLAGS_BOX
 
 /obj/item/storage/box/pride
@@ -117,7 +117,7 @@
 /obj/item/storage/box/syringes
 	name = "box of syringes"
 	desc = "A box full of syringes."
-	desc = "A biohazard alert warning is printed on the box"
+	desc = "A biohazard alert warning is printed on the box."
 	can_hold = list(/obj/item/reagent_container/syringe)
 	icon_state = "syringe"
 	item_state = "syringe"
@@ -562,7 +562,7 @@
 	icon_state = "pillbox"
 	item_state = "pillbox"
 
-	storage_flags = STORAGE_FLAGS_BOX|STORAGE_CLICK_GATHER|STORAGE_GATHER_SIMULTAENOUSLY
+	storage_flags = STORAGE_FLAGS_BOX|STORAGE_CLICK_GATHER|STORAGE_GATHER_SIMULTANEOUSLY
 	can_hold = list(
 		/obj/item/storage/pill_bottle,
 	)

@@ -73,7 +73,7 @@
 	if(W)
 		var/mob/living/carbon/xenomorph/X = src
 		if(!istype(X) || X.hivenumber != W.linked_hive.hivenumber)
-			to_chat(src, SPAN_WARNING("The weeds are blocking the entrance of this vent"))
+			to_chat(src, SPAN_WARNING("The weeds are blocking the entrance of this vent."))
 			return
 
 	if(length(vent_found.connected_to))

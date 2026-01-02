@@ -1162,8 +1162,8 @@
 	// If an invalid new_species value is passed, defualt to set defualt, if that fails fallback just default to human
 	if(!istype(species))
 		species = GLOB.all_species[defualt_species]
-	if(!istype(species))
-		species = GLOB.all_species["Human"]
+		if(!istype(species))
+			species = GLOB.all_species["Human"]
 
 	if(oldspecies)
 		//additional things to change when we're no longer that species

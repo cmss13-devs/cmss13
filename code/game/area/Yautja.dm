@@ -31,6 +31,8 @@
 /area/yautja_ship/lower_deck/temple
 	name = "\improper Yautja Ship - Lower Deck - Temple"
 	icon_state = "blue"
+	base_lighting_alpha = 0
+	base_lighting_color = "#ffffff"
 
 /area/yautja_ship/lower_deck/scribe
 	name = "\improper Yautja Ship - Lower Deck - Scribe Chamber"
@@ -145,6 +147,8 @@
 /area/yautja_ship/upper_deck/throne
 	name = "\improper Yautja Ship - Upper Deck - Throne Room"
 	icon_state = "blue"
+	base_lighting_alpha = 0
+	base_lighting_color = "#ffffff"
 
 /area/yautja_ship/upper_deck/ancient
 	name = "\improper Yautja Ship - Upper Deck - Ancient Quarters"

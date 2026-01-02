@@ -10555,7 +10555,7 @@
 	pixel_x = -1;
 	color = "#ffd65c";
 	desc = "An expertly crafted Yautja blade carried by hunters who wish to fight up close, used as an icon for the Ring of Genesis.";
-	name = "blesesd sword"
+	name = "blessed sword"
 	},
 /obj/item/weapon/yautja/scythe{
 	pixel_y = 3;
@@ -43320,7 +43320,7 @@ uP
 pr
 Vu
 Vu
-nX
+Vu
 zd
 zb
 vo
@@ -44332,7 +44332,7 @@ uP
 pr
 Vu
 Vu
-nX
+Vu
 zd
 zc
 vo

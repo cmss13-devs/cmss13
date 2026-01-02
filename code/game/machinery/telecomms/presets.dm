@@ -289,7 +289,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 					freq_listening |= PMC_FREQS
 				if(FACTION_TWE)
 					freq_listening |= RMC_FREQ
-				if(FACTION_YAUTJA)
+				if(FACTION_YAUTJA, FACTION_YAUTJA_YOUNG, FACTION_YAUTJA_BADBLOOD, FACTION_YAUTJA_STRANDED)
 					to_chat(user, SPAN_WARNING("You decide to leave the human machine alone."))
 					return
 				else

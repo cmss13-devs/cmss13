@@ -1,0 +1,4 @@
+author: "Puckaboo2"
+delete-after: True
+changes:
+  - bugfix: "Xeno spit overlays should return to their original function."

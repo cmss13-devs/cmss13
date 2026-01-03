@@ -210,7 +210,7 @@ directive is properly returned.
 /atom/proc/HasProximity(atom/movable/AM as mob|obj)
 	return
 
-/atom/proc/emp_act(severity)
+/atom/proc/emp_act(severity, datum/cause_data/cause_data)
 	SHOULD_CALL_PARENT(TRUE)
 
 	if(emp_proof)
@@ -638,7 +638,7 @@ Parameters are passed from New.
 
 // returns a modifier for how much the tail stab should be cooldowned by
 // returning a 0 makes it do nothing
-/atom/proc/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/atom/proc/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	return TAILSTAB_COOLDOWN_NONE
 
 /atom/proc/handle_flamer_fire(obj/flamer_fire/fire, damage, delta_time)

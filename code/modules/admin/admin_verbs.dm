@@ -61,6 +61,7 @@ GLOBAL_LIST_INIT(admin_verbs_default, list(
 	/client/proc/toggle_own_ghost_vis,
 	/client/proc/cmd_admin_check_contents,
 	/client/proc/clear_mutineers,
+	/client/proc/set_commander, /*Allows manually choosing an active commander and giving them access to CIC.*/
 	/datum/admins/proc/directnarrateall,
 	/datum/admins/proc/subtlemessageall,
 	/datum/admins/proc/alertall,
@@ -459,7 +460,7 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 /client/proc/object_talk(msg as text) // -- TLE
 	set category = "Admin.Events"
 	set name = "Object Say"
-	set desc = "Display a message to everyone who can hear the target"
+	set desc = "Display a message to everyone who can hear the target."
 	if(mob.control_object)
 		if(!msg)
 			return
@@ -601,7 +602,7 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 	set desc = "Tells everyone about a random statistic in the round."
 	set category = "OOC"
 
-	var/prompt = tgui_alert(usr, "Are you sure you want to do this?", "Announce Random Fact", list("No", "Yes"))
+	var/prompt = tgui_alert(usr, "Are you sure you want to do this?", "Announce Random Fact", list("Yes", "No"))
 	if(prompt != "Yes")
 		return
 

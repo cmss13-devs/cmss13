@@ -289,7 +289,7 @@
 //	SEND_SIGNAL(src, COMSIG_LIVING_RESTING, new_resting, silent, instant)
 //	update_resting() // HUD icons
 
-/mob/living/carbon/human/proc/toggle_inherent_nightvison()
+/mob/living/carbon/human/proc/toggle_inherent_nightvision()
 	set category = "Synthetic"
 	set name = "Toggle Nightvision"
 	set desc = "Toggles inherent nightvision."

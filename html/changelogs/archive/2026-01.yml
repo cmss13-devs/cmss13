@@ -1,0 +1,31 @@
+2026-01-01:
+  MistChristmas:
+  - bugfix: Ghosts no longer able to move items out of open inventories when orbiting
+  Nihisohel:
+  - rscadd: Adds spare almayer general keys to requisitions for non-marines such as
+      survivors
+  - bugfix: Fixes intel headsets losing their almayer general comms when their intel
+      key is removed
+  - code_imp: Repaths all instances of encryptionkey/public to encryptionkey/almayer
+      for less confusion
+2026-01-03:
+  Doc12693420:
+  - bugfix: UPP Serzhant survivors can now use their QYJ-42
+  Git-Nivrak:
+  - bugfix: You can no longer pounce up a zlevel into places which would get you stuck
+  - bugfix: You can no longer pounce over indestructible obstacles (e.g fog)
+  Puckaboo2:
+  - bugfix: All steps in eye surgeries now have sounds.
+  - bugfix: If the patient is blind or nearsighted and has 0 eye damage, you can still
+      initiate eye surgery. A patient now needs to either have eye damage or be blind/nearsighted
+      to need surgery.
+  - qol: Makes eye surgery steps more descriptive.
+  - qol: If you cured blindness or nearsightedness, you get extra flavor text and
+      a pat on the back (from Puck)
+  - balance: Changes eye surgery steps. It's now Scalpel, Hemostat, Retractor, FixoVein,
+      Cautery. Pretend you're doing internal bleeding on the eyes and you will be
+      fine.
+  - balance: Eye surgery now requires Oxycodone instead of getting away with inaprovaline.
+      Eyes have some of the greatest concentrations of nociceptive nerves in the human
+      body and must be fully numbed for LASIK or to be be completely anesthetized
+      in real life for an operation to commence.

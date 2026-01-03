@@ -412,7 +412,6 @@
 	var/obj/item/card/id/card = person_in_charge.get_idcard()
 	if(card)
 		var/static/to_add = list(ACCESS_MARINE_SENIOR, ACCESS_MARINE_DATABASE, ACCESS_MARINE_COMMAND)
-
 		var/new_access = card.access | to_add
 		if(card.access ~! new_access)
 			card.access = new_access

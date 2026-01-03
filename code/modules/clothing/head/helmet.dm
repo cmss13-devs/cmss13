@@ -149,7 +149,7 @@
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/misc_ert_colony.dmi'
 	)
 	flags_inventory = COVEREYES|BLOCKSHARPOBJ
-	flags_inv_hide = HIDEMASK|HIDEEARS|HIDEEYES
+	flags_inv_hide = HIDEEARS|HIDEEYES
 	siemens_coefficient = 1
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_LOW
@@ -181,6 +181,7 @@
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/head_64.dmi'
 	)
+	flags_inv_hide = HIDEMASK|HIDEEARS|HIDEEYES
 	anti_hug = 1
 
 //===========================//MARINES HELMETS\\=================================\\

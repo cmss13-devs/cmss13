@@ -1075,9 +1075,13 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/roman, WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/footwrap_sandals, WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/shield/riot/roman, WEAR_R_HAND)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/sword/gladius, WEAR_L_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/sword/gladius, WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/hunted, WEAR_L_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight/lantern, WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight/lantern/on, WEAR_R_STORE)
+	new_human.set_species("Human Hero")
+	new_human.universal_understand = FALSE
+	new_human.status_flags &= ~NO_PERMANENT_DAMAGE
+	new_human.status_flags |= STATUS_FLAGS_DEBILITATE
 
 /datum/equipment_preset/other/hunted/roman/centurion
 	name = "Roman Centurion (Hunted)"
@@ -1093,7 +1097,11 @@
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/javelin, WEAR_L_HAND)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/sword/gladius, WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/hunted, WEAR_L_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight/lantern, WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight/lantern/on, WEAR_R_STORE)
+	new_human.set_species("Human Hero")
+	new_human.universal_understand = FALSE
+	new_human.status_flags &= ~NO_PERMANENT_DAMAGE
+	new_human.status_flags |= STATUS_FLAGS_DEBILITATE
 
 /datum/equipment_preset/other/hunted/roman/eaglebearer
 	name = "Roman Aquilifer (Hunted)"
@@ -1108,7 +1116,11 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/footwrap_sandals, WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/aquilastaff, WEAR_R_HAND)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/hunted, WEAR_L_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight/lantern, WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight/lantern/on, WEAR_R_STORE)
+	new_human.set_species("Human Hero")
+	new_human.universal_understand = FALSE
+	new_human.status_flags &= ~NO_PERMANENT_DAMAGE
+	new_human.status_flags |= STATUS_FLAGS_DEBILITATE
 
 /datum/equipment_preset/other/hunted/vietnam
 	name = "Vietnam US Army Rifleman (Hunted)"

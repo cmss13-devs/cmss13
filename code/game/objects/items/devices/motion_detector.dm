@@ -187,6 +187,9 @@
 		visible_message(SPAN_NOTICE("\The [src] turns on."), SPAN_NOTICE("You hear a beep."), 3)
 	else if(user)
 		to_chat(user, SPAN_NOTICE("You activate \the [src]."))
+	for(var/button in actions)
+		var/datum/action/action_button = button
+		action_button.update_button_icon()
 	playsound(loc, 'sound/items/detector_turn_on.ogg', 30, FALSE, 5, 2)
 	START_PROCESSING(SSobj, src)
 

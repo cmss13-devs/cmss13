@@ -305,17 +305,18 @@
 	update_button_icon()
 
 /datum/action/item_action/toggle/motion_detector/update_button_icon()
+	var/obj/item/device/motiondetector/detector = holder_item
 	if(!holder_item)
 		return
-	var/obj/item/device/motiondetector/detector = holder_item
 	if(!detector.active)
 		if(istype(detector, /obj/item/device/motiondetector/intel))
 			action_icon_state = "data_detector"
 		else
 			action_icon_state = "motion_detector"
+
 	else
 		if(istype(detector, /obj/item/device/motiondetector/intel))
-			action_icon_state = "data_detector_on"
+			action_icon_state = "data_detector_off"
 		else
 			action_icon_state = "motion_detector_off"
 	button.overlays.Cut()

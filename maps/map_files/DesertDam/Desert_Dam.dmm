@@ -4640,7 +4640,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/floodgate_control)
 "aua" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 1
 	},
 /turf/open/floor/vault2/northeast,
@@ -8895,7 +8895,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/desert_dam/exterior/valley/valley_medical)
 "aNk" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 1
 	},
 /turf/open/floor/prison,
@@ -14979,7 +14979,7 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_east_wing)
 "bri" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 1
 	},
 /turf/open/floor/plating/warnplate,
@@ -15299,7 +15299,7 @@
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/building/administration/hallway)
 "bsK" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -17994,7 +17994,7 @@
 /turf/open/floor/prison/whitered/north,
 /area/desert_dam/building/medical/chemistry)
 "bGQ" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -18766,11 +18766,11 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/smes_backup)
 "bKE" = (
-/obj/structure/machinery/power/terminal,
+/obj/structure/terminal,
 /turf/open/floor/plating/warnplate/northwest,
 /area/desert_dam/interior/dam_interior/smes_backup)
 "bKF" = (
-/obj/structure/machinery/power/terminal,
+/obj/structure/terminal,
 /turf/open/floor/plating/warnplate/northeast,
 /area/desert_dam/interior/dam_interior/smes_backup)
 "bKG" = (
@@ -23306,7 +23306,7 @@
 /turf/open/floor/plating/warnplate/southwest,
 /area/desert_dam/building/substation/west)
 "cgZ" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 1
 	},
 /turf/open/floor/plating/warnplate,
@@ -27230,7 +27230,7 @@
 /turf/open/floor/prison/darkyellow2/west,
 /area/desert_dam/building/substation/central)
 "cAx" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 1
 	},
 /turf/open/floor/prison,
@@ -30953,7 +30953,7 @@
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/desert_dam/building/substation/southwest)
 "cRj" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 1
 	},
 /turf/open/floor/prison/bright_clean2/southwest,

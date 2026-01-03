@@ -163,7 +163,7 @@
 	if (!src.powernet)
 		return
 
-	for(var/obj/structure/machinery/power/terminal/T in src.powernet.nodes)
+	for(var/obj/structure/terminal/T in src.powernet.nodes)
 		if(istype(T.master, /obj/structure/machinery/power/apc))
 			var/obj/structure/machinery/power/apc/A = T.master
 			if (prob(overload_chance))

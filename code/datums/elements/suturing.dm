@@ -91,11 +91,9 @@ YOU TO 200 DAMAGE. I ASK NOT FOR MY OWN MEDIC EGOSTROKING, BUT FOR THE GOOD OF T
 				to_chat(user, SPAN_WARNING("There are no [description_wounds] on [user == target ? "your" : "\the [target]'s"] [target_limb.display_name]."))
 				return
 		if(FULLY_SUTURED) //Datum exist, all suturable damage types have been fully sutured.
-			if(target_limb.status & LIMB_THIRD_DEGREE_BURNS && suture_burn)
-				to_chat(user, SPAN_WARNING("The [description_wounds] on [user == target ? "your" : "\the [target]'s"] [target_limb.display_name] have already been treated, but there are somehow severe burns remaining, so you will attempt to treat them.")) //can't believe I had to do this - Puckaboo2
-			else
-				to_chat(user, SPAN_WARNING("The [description_wounds] on [user == target ? "your" : "\the [target]'s"] [target_limb.display_name] have already been treated."))
-				return
+			to_chat(user, SPAN_WARNING("The [description_wounds] on [user == target ? "your" : "\the [target]'s"] [target_limb.display_name] have already been treated."))
+			return
+
 		if(0) //No datum.
 			//Stitch in 10 damage increments. Balance between flexibility, spam, performance, and opportunities for people to mess about during do_afters.
 			if(suture_brute)
@@ -103,7 +101,7 @@ YOU TO 200 DAMAGE. I ASK NOT FOR MY OWN MEDIC EGOSTROKING, BUT FOR THE GOOD OF T
 			if(suture_burn)
 				suturable_damage += min(10, target_limb.burn_dam * 0.5)
 			if(!suturable_damage) //This stuff would be much tidier if datum stuff is moved to the limb.
-				if(target_limb.status & LIMB_THIRD_DEGREE_BURNS && suture_burn)
+				if(target_limb.status & LIMB_THIRD_DEGREE_BURNS)
 					to_chat(user, SPAN_WARNING("There are no [description_wounds] on [user == target ? "your" : "\the [target]'s"] [target_limb.display_name], but there are severe burns, so you will attempt to treat them.")) //can't believe I had to do this - Puckaboo2
 				else
 					to_chat(user, SPAN_WARNING("There are no [description_wounds] on [user == target ? "your" : "\the [target]'s"] [target_limb.display_name]."))

@@ -334,6 +334,7 @@
 	active = FALSE
 	var/max_distance = 7
 	var/leap_speed = 5
+	var/cooldown_duration = 15 SECONDS
 	COOLDOWN_DECLARE(leap_cooldown)
 
 /datum/action/predator_action/leap/can_use_action()
@@ -396,7 +397,7 @@
 		qdel(warning)
 		return FALSE
 
-	COOLDOWN_START(src, leap_cooldown, 5 SECONDS)
+	COOLDOWN_START(src, leap_cooldown, cooldown_duration)
 	if(isspeciesyautja(user))
 		var/sound_file = pick('sound/effects/pred_leap1.ogg', 'sound/effects/pred_leap2.ogg')
 		playsound(user, sound_file, 25, TRUE)

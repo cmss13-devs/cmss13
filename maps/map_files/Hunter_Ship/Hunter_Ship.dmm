@@ -6189,7 +6189,7 @@
 "nm" = (
 /obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/prop/hunter/fake_platform/hunter/west,
-/turf/open/gm/river/pool,
+/turf/open/gm/river/pool/no_overlay,
 /area/yautja_ship/lower_deck/temple)
 "nn" = (
 /obj/effect/hunter/catwalk/hunter_grate,
@@ -12084,7 +12084,7 @@
 "AH" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/prop/hunter/fake_platform/hunter/east,
-/turf/open/gm/river/pool,
+/turf/open/gm/river/pool/no_overlay,
 /area/yautja_ship/lower_deck/temple)
 "AI" = (
 /obj/structure/xenoautopsy/tank/hugger/yautja,
@@ -12593,7 +12593,7 @@
 /obj/structure/platform_decoration/metal/hunter{
 	pixel_y = 26
 	},
-/turf/open/gm/river/pool,
+/turf/open/gm/river/pool/no_overlay,
 /area/yautja_ship/lower_deck/temple)
 "BW" = (
 /turf/open/shuttle/dropship/predship/tile/red3,
@@ -15258,7 +15258,7 @@
 /obj/structure/platform_decoration/metal/hunter{
 	pixel_y = 26
 	},
-/turf/open/gm/river/pool,
+/turf/open/gm/river/pool/no_overlay,
 /area/yautja_ship/lower_deck/temple)
 "Il" = (
 /obj/effect/hunter/bridge_border/brown/small_stair{
@@ -22326,7 +22326,7 @@
 /obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter,
-/turf/open/gm/river/pool,
+/turf/open/gm/river/pool/no_overlay,
 /area/yautja_ship/lower_deck/temple)
 "Yo" = (
 /obj/structure/platform_decoration/metal/hunter/east{
@@ -22693,7 +22693,7 @@
 /obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter/north,
-/turf/open/gm/river/pool,
+/turf/open/gm/river/pool/no_overlay,
 /area/yautja_ship/lower_deck/temple)
 "Zg" = (
 /obj/structure/machinery/door/airlock/yautja/secure{

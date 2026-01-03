@@ -38,6 +38,7 @@
 		thrall_gloves.owner = thrall
 		thrall.client?.init_verbs()
 		thrall.set_species("Thrall")
+		thrall.vendor_buyable_categories = YAUTJA_CAN_BUY_ALL
 		thrall.allow_gun_usage = FALSE
 		to_chat(user, SPAN_YAUTJABOLD("[icon2html(src)] \The <b>[src]</b> beeps: Your bracer is now linked to your thrall."))
 		if(notification_sound)

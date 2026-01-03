@@ -1301,9 +1301,16 @@
 	evolution_rate = 0
 	allow_queen_evolve = FALSE
 	latejoin_burrowed = FALSE
-	tacmap_requires_queen_ovi = FALSE
 
 	need_round_end_check = TRUE
+
+	blacklisted_castes = list(
+		XENO_CASTE_DRONE,
+		XENO_CASTE_QUEEN,
+		XENO_CASTE_BURROWER,
+		XENO_CASTE_CARRIER,
+		XENO_CASTE_HIVELORD,
+	)
 
 /datum/hive_status/yautja_bad/add_xeno(mob/living/carbon/xenomorph/xeno)
 	. = ..()

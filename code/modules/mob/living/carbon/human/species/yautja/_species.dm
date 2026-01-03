@@ -158,7 +158,7 @@
 	var/datum/job/pred_job = GLOB.RoleAuthority.roles_by_name[JOB_PREDATOR]
 	if(!pred_job)
 		return
-	var/pred_rank = pred_job.get_whitelist_status(pred_candidate.client)
+	var/pred_rank = pred_job.get_whitelist_status(predator.client)
 	if(pred_rank == CLAN_RANK_LEADER)
 		return FALSE
 	return TRUE

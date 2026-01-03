@@ -200,10 +200,8 @@
 
 		for(var/listed_hud in mask_huds)
 			if(listed_hud == MOB_HUD_XENO_STATUS)
-				for(var/datum/mob_hud/hud_iter in GLOB.huds)
-					if(!istype(hud_iter, /datum/mob_hud/xeno))
-						continue
-					hud_iter.remove_hud_from(user, src)
+				for(var/datum/mob_hud/xeno/xeno_hud in GLOB.huds)
+					xeno_hud.remove_hud_from(user, src)
 			else
 				var/datum/mob_hud/H = GLOB.huds[listed_hud]
 				H.remove_hud_from(user, src)
@@ -224,10 +222,8 @@
 		START_PROCESSING(SSobj, src)
 		for(var/listed_hud in mask_huds)
 			if(listed_hud == MOB_HUD_XENO_STATUS)
-				for(var/datum/mob_hud/hud_iter in GLOB.huds)
-					if(!istype(hud_iter, /datum/mob_hud/xeno))
-						continue
-					hud_iter.add_hud_to(user, src)
+				for(var/datum/mob_hud/xeno/xeno_hud in GLOB.huds)
+					xeno_hud.add_hud_to(user, src)
 			else
 				var/datum/mob_hud/H = GLOB.huds[listed_hud]
 				H.add_hud_to(user, src)

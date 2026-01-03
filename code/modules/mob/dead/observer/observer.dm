@@ -388,10 +388,8 @@
 	for(var/i in HUD_toggled)
 		if(HUD_toggled[i])
 			if(i == "Xeno Status HUD")
-				for(var/datum/mob_hud/hud_iter in GLOB.huds)
-					if(!istype(hud_iter, /datum/mob_hud/xeno))
-						continue
-					hud_iter.add_hud_to(src, src)
+				for(var/datum/mob_hud/xeno/xeno_hud in GLOB.huds)
+					xeno_hud.add_hud_to(src, src)
 			else
 				switch(i)
 					if("Medical HUD")

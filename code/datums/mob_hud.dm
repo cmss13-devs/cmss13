@@ -369,8 +369,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 		if("xeno_hive_tutorial")
 			hud = GLOB.huds[MOB_HUD_XENO_HIVE_TUTORIAL]
 	if(!hive_choice)
-		hud = GLOB.huds[MOB_HUD_XENO_STATUS]
-		to_chat(src, SPAN_WARNING("This hive HUD is not yet defined, please define new hive hud, loading backup HUD."))
+		CRASH("The hive_choice '[hive_choice]' is not defined. Please define a new hive HUD.")
 	if(!choose_verb)
 		hud.add_hud_to(src, src)
 		hud.add_to_hud(src)

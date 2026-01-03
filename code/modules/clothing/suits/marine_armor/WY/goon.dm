@@ -56,7 +56,7 @@
 	item_state_slots = list(WEAR_JACKET = "ppo_armor_strong")
 	storage_slots = 2
 
-	armor_melee = CLOTHING_ARMOR_LOW
+	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_energy = CLOTHING_ARMOR_MEDIUM
 	armor_bio = CLOTHING_ARMOR_LOW

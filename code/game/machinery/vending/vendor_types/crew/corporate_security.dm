@@ -33,40 +33,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_corporate_security, list(
 	list("Shoulder Holster", 0, /obj/item/clothing/accessory/storage/holster, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 ))
 
-GLOBAL_LIST_INIT(cm_vending_gear_corporate_security_non_lethal, list(
-	list("HEADGEAR (CHOOSE 1)", 0, null, null, null),
-	list("Corporate Security Cap", 0, /obj/item/clothing/head/helmet/marine/veteran/pmc/guard/ppo, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
-
-	list("MASK (CHOOSE 1)", 0, null, null, null),
-	list("Gas Mask", 0, /obj/item/clothing/mask/gas, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
-	list("Rebreather", 0, /obj/item/clothing/mask/rebreather, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
-
-	list("ARMOR (CHOOSE 1)", 0, null, null, null),
-	list("Corporate Security Armor", 0, /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate/ppo, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
-
-	list("GLOVES (CHOOSE 1)", 0, null, null, null),
-	list("Corporate Security Gloves", 0, /obj/item/clothing/gloves/marine/veteran/ppo, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
-
-	list("POUCHES (CHOOSE 2)", 0, null, null, null),
-	list("First-Aid Pouch (Refillable Injectors)", 0, /obj/item/storage/pouch/firstaid/full/black, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
-	list("First-Aid Pouch (Splints, Gauze, Ointment)", 0, /obj/item/storage/pouch/firstaid/full/alternate/wy, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-	list("First-Aid Pouch (Pill Packets)", 0, /obj/item/storage/pouch/firstaid/full/pills/wy, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-	list("Magazine Pouch", 0, /obj/item/storage/pouch/magazine/wy, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-	list("Medium General Pouch", 0, /obj/item/storage/pouch/general/medium, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-
-	list("SIDEARM (CHOOSE 1)", 0, null, null, null),
-	list("ES-4 Electrostatic Pistol", 0, /obj/item/storage/belt/gun/m4a3/wy/es4, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
-
-	list("SIDEARM AMMUNITION", 0, null, null, null),
-	list("ES-4 Stun Magazine (9mm)", 4, /obj/item/ammo_magazine/pistol/es4, null, VENDOR_ITEM_REGULAR),
-
-	list("SPARE EQUIPMENT", 0, null, null, null),
-	list("Handheld Flash", 2, /obj/item/device/flash, null, VENDOR_ITEM_REGULAR),
-	list("Pepper Spray", 4, /obj/item/reagent_container/spray/pepper, null, VENDOR_ITEM_REGULAR),
-	list("Stun Baton", 4, /obj/item/weapon/baton, null, VENDOR_ITEM_REGULAR),
-	list("Box of Zipties", 4, /obj/item/storage/box/zipcuffs/small, null, VENDOR_ITEM_REGULAR),
-))
-
 GLOBAL_LIST_INIT(cm_vending_gear_corporate_security_full, list(
 	list("HEADGEAR (CHOOSE 1)", 0, null, null, null),
 	list("Security Guard Armored Cap", 0, /obj/item/clothing/head/helmet/marine/veteran/pmc/guard/ppo, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
@@ -77,8 +43,8 @@ GLOBAL_LIST_INIT(cm_vending_gear_corporate_security_full, list(
 	list("Rebreather", 0, /obj/item/clothing/mask/rebreather, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
 
 	list("ARMOR (CHOOSE 1)", 0, null, null, null),
-	list("Corporate Security Armor", 0, /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate/ppo, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
-	list("M4 PPO Armor", 0, /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate/ppo/strong, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
+	list("Corporate Security Armor", 0, /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate/ppo, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_RECOMMENDED),
+	list("M4 PPO Armor", 0, /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate/ppo/strong, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
 
 	list("GLOVES (CHOOSE 1)", 0, null, null, null),
 	list("Corporate Security Gloves", 0, /obj/item/clothing/gloves/marine/veteran/ppo, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
@@ -91,10 +57,10 @@ GLOBAL_LIST_INIT(cm_vending_gear_corporate_security_full, list(
 	list("Medium General Pouch", 0, /obj/item/storage/pouch/general/medium, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 
 	list("PRIMARY WEAPON (CHOOSE 1)", 0, null, null, null),
-	list("M41A Pulse Rifle MK2", 0, /obj/effect/essentials_set/wy_m41a, MARINE_CAN_BUY_KIT, VENDOR_ITEM_MANDATORY),
-	list("M39 Submachine Gun", 0, /obj/effect/essentials_set/wy_m39, MARINE_CAN_BUY_KIT, VENDOR_ITEM_MANDATORY),
-	list("NSG23 Assault Rifle", 0, /obj/effect/essentials_set/wy_nsg23, MARINE_CAN_BUY_KIT, VENDOR_ITEM_MANDATORY),
-	list("ES-7 Supernova Electrostatic Shockgun", 15, /obj/effect/essentials_set/es7_nonlethal, MARINE_CAN_BUY_KIT, VENDOR_ITEM_MANDATORY),
+	list("ES-7 Supernova Electrostatic Shockgun", 15, /obj/effect/essentials_set/es7_nonlethal, MARINE_CAN_BUY_KIT, VENDOR_ITEM_RECOMMENDED),
+	list("M39 Submachine Gun", 0, /obj/effect/essentials_set/wy_m39, MARINE_CAN_BUY_KIT, VENDOR_ITEM_REGULAR),
+	list("M41A Pulse Rifle MK2", 0, /obj/effect/essentials_set/wy_m41a, MARINE_CAN_BUY_KIT, VENDOR_ITEM_REGULAR),
+	list("NSG23 Assault Rifle", 0, /obj/effect/essentials_set/wy_nsg23, MARINE_CAN_BUY_KIT, VENDOR_ITEM_REGULAR),
 
 	list("SIDEARM (CHOOSE 1)", 0, null, null, null),
 	list("ES-4 Electrostatic Pistol", 0, /obj/item/storage/belt/gun/m4a3/wy/es4, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
@@ -102,6 +68,8 @@ GLOBAL_LIST_INIT(cm_vending_gear_corporate_security_full, list(
 	list("VP78 Pistol", 8, /obj/item/storage/belt/gun/m4a3/wy/vp78, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
 
 	list("PRIMARY AMMUNITION", 0, null, null, null),
+	list("X21 Shock Slugs", 10, /obj/item/ammo_magazine/shotgun/beanbag/es7, null, VENDOR_ITEM_REGULAR),
+	list("X21 Lethal Slugs", 15, /obj/item/ammo_magazine/shotgun/beanbag/es7/slug, null, VENDOR_ITEM_REGULAR),
 	list("M39 Magazine (10x20mm)", 6, /obj/item/ammo_magazine/smg/m39 , null, VENDOR_ITEM_REGULAR),
 	list("M39 Extended Magazine (10x20mm)", 8, /obj/item/ammo_magazine/smg/m39/extended , null, VENDOR_ITEM_REGULAR),
 	list("M39 AP Magazine (10x20mm)", 10, /obj/item/ammo_magazine/smg/m39/ap , null, VENDOR_ITEM_REGULAR),
@@ -111,8 +79,6 @@ GLOBAL_LIST_INIT(cm_vending_gear_corporate_security_full, list(
 	list("NSG 23 magazine (10x24mm)", 6, /obj/item/ammo_magazine/rifle/nsg23, null, VENDOR_ITEM_REGULAR),
 	list("NSG 23 extended magazine (10x24mm)", 8, /obj/item/ammo_magazine/rifle/nsg23/extended, null, VENDOR_ITEM_REGULAR),
 	list("NSG 23 armor-piercing magazine (10x24mm)", 10, /obj/item/ammo_magazine/rifle/nsg23/ap, null, VENDOR_ITEM_REGULAR),
-	list("X21 Shock Slugs", 10, /obj/item/ammo_magazine/shotgun/beanbag/es7, null, VENDOR_ITEM_REGULAR),
-	list("X21 Lethal Slugs", 15, /obj/item/ammo_magazine/shotgun/beanbag/es7/slug, null, VENDOR_ITEM_REGULAR),
 
 	list("SIDEARM AMMUNITION", 0, null, null, null),
 	list("ES-4 Stun Magazine (9mm)", 4, /obj/item/ammo_magazine/pistol/es4, null, VENDOR_ITEM_REGULAR),
@@ -160,10 +126,6 @@ GLOBAL_LIST_INIT(cm_vending_gear_corporate_security_full, list(
 	desc = "An automated rack hooked up to a colossal storage of Corporate Security standard-issue equipment."
 
 /obj/structure/machinery/cm_vending/gear/corporate_security/get_listed_products(mob/living/carbon/human/user)
-	if(user?.wear_id)
-		var/obj/item/card/id/id_card = user.wear_id
-		if(id_card.paygrade == PAY_SHORT_WY_SEC_TPPO)
-			return GLOB.cm_vending_gear_corporate_security_non_lethal
 	return GLOB.cm_vending_gear_corporate_security_full
 
 /obj/effect/essentials_set/wy_m41a

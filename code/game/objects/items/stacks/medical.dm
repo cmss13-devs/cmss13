@@ -131,13 +131,18 @@
 
 		var/possessive = "[user == M ? "your" : "\the [M]'s"]"
 		var/possessive_their = "[user == M ? user.p_their() : "\the [M]'s"]"
+		if(affecting.status & LIMB_THIRD_DEGREE_BURNS) //Severe burns bypass wound checks because they cannot be treated with medicine even after the burn wound heals, so the medicine can heal the wounds, but the Severe Burns status will be left behind. The only way to treat it is to burn your patient so you can slap a burn kit on it. Not nice.
+			user.affected_message(M,
+				SPAN_HELPFUL("You <b>deeply salve a severe burn</b> on [possessive] <b>[affecting.display_name]</b>."),
+				SPAN_HELPFUL("[user] <b>deeply salves a severe burn</b> on your <b>[affecting.display_name]</b>."),
+				SPAN_NOTICE("[user] deeply salves a severe burn [possessive_their] [affecting.display_name]."))
+			affecting.status &= ~LIMB_THIRD_DEGREE_BURNS
 		switch(affecting.salve())
 			if(WOUNDS_BANDAGED)
 				user.affected_message(M,
 					SPAN_HELPFUL("You <b>salve the burns</b> on [possessive] <b>[affecting.display_name]</b>."),
 					SPAN_HELPFUL("[user] <b>salves the burns</b> on your <b>[affecting.display_name]</b>."),
 					SPAN_NOTICE("[user] salves the burns on [possessive_their] [affecting.display_name]."))
-				affecting.status &= ~LIMB_THIRD_DEGREE_BURNS
 				affecting.heal_damage(burn = heal_burn)
 
 				use(1)
@@ -257,6 +262,12 @@
 
 		var/possessive = "[user == M ? "your" : "\the [M]'s"]"
 		var/possessive_their = "[user == M ? user.p_their() : "\the [M]'s"]"
+		if(affecting.status & LIMB_THIRD_DEGREE_BURNS) //Severe burns bypass wound checks because they cannot be treated with medicine even after the burn wound heals, so the medicine can heal the wounds, but the Severe Burns status will be left behind. The only way to treat it is to burn your patient so you can slap a burn kit on it. Not nice.
+			user.affected_message(M,
+				SPAN_HELPFUL("You <b>deeply salve a severe burn</b> on [possessive] <b>[affecting.display_name]</b>."),
+				SPAN_HELPFUL("[user] <b>deeply salves a severe burn</b> on your <b>[affecting.display_name]</b>."),
+				SPAN_NOTICE("[user] deeply salves a severe burn [possessive_their] [affecting.display_name]."))
+			affecting.status &= ~LIMB_THIRD_DEGREE_BURNS
 		switch(affecting.salve(TRUE))
 			if(WOUNDS_BANDAGED)
 				user.affected_message(M,
@@ -266,7 +277,6 @@
 				//If a suture datum exists, apply half the damage as grafts. This ensures consistency in healing amounts.
 				if(SEND_SIGNAL(affecting, COMSIG_LIMB_ADD_SUTURES, FALSE, TRUE, heal_amt * 0.5))
 					heal_amt *= 0.5
-				affecting.status &= ~LIMB_THIRD_DEGREE_BURNS
 				affecting.heal_damage(burn = heal_amt)
 
 				use(1)

@@ -116,7 +116,6 @@
 	worn_state = "marine_medic"
 	specialty = "USCM Hospital Corpsman"
 
-
 /obj/item/clothing/under/marine/medic/jungle
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 

@@ -173,7 +173,7 @@
 
 
 /obj/structure/closet/wardrobe/pjs
-	name = "Pajama wardrobe"
+	name = "pajama wardrobe"
 	icon_state = "white"
 	icon_closed = "white"
 	icon_opened = "white_open"
@@ -201,16 +201,12 @@
 	. = ..()
 	new /obj/item/clothing/under/rank/scientist(src)
 	new /obj/item/clothing/under/rank/scientist(src)
-	new /obj/item/clothing/under/rank/scientist(src)
-	new /obj/item/clothing/suit/storage/labcoat/science(src)
 	new /obj/item/clothing/suit/storage/labcoat/science(src)
 	new /obj/item/clothing/suit/storage/labcoat/science(src)
 	new /obj/item/clothing/shoes/white(src)
 	new /obj/item/clothing/shoes/white(src)
-	new /obj/item/clothing/shoes/white(src)
-	new /obj/item/clothing/shoes/slippers
-	new /obj/item/clothing/shoes/slippers
-	new /obj/item/clothing/shoes/slippers
+	new /obj/item/clothing/mask/surgical(src)
+	new /obj/item/clothing/mask/surgical(src)
 	return
 
 
@@ -245,12 +241,8 @@
 	new /obj/item/clothing/under/rank/chemist(src)
 	new /obj/item/clothing/suit/storage/labcoat/chemist(src)
 	new /obj/item/clothing/suit/storage/labcoat/chemist(src)
-	new /obj/item/clothing/suit/storage/labcoat/chemist(src)
-	new /obj/item/clothing/suit/storage/labcoat/chemist(src)
 	new /obj/item/clothing/shoes/white(src)
 	new /obj/item/clothing/shoes/white(src)
-	new /obj/item/clothing/shoes/white(src)
-	new /obj/item/clothing/mask/surgical(src)
 	new /obj/item/clothing/mask/surgical(src)
 	new /obj/item/clothing/mask/surgical(src)
 
@@ -281,14 +273,10 @@
 	. = ..()
 	new /obj/item/clothing/under/rank/geneticist(src)
 	new /obj/item/clothing/under/rank/geneticist(src)
-	new /obj/item/clothing/under/rank/geneticist(src)
-	new /obj/item/clothing/shoes/white(src)
 	new /obj/item/clothing/shoes/white(src)
 	new /obj/item/clothing/shoes/white(src)
 	new /obj/item/clothing/suit/storage/labcoat/genetics(src)
 	new /obj/item/clothing/suit/storage/labcoat/genetics(src)
-	new /obj/item/clothing/suit/storage/labcoat/genetics(src)
-	new /obj/item/clothing/mask/surgical(src)
 	new /obj/item/clothing/mask/surgical(src)
 	new /obj/item/clothing/mask/surgical(src)
 	return
@@ -332,7 +320,7 @@
 	new /obj/item/clothing/head/surgery/blue(src)
 	new /obj/item/clothing/head/surgery/lightblue(src)
 	new /obj/item/clothing/head/surgery/purple(src)
-	new /obj/item/clothing/under/rank/medical/morgue(src)
+	new /obj/item/clothing/head/surgery/morgue(src)
 	new /obj/item/clothing/head/surgery/white(src)
 	new /obj/item/clothing/shoes/white(src)
 	new /obj/item/clothing/suit/storage/labcoat(src)

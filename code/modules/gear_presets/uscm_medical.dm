@@ -43,7 +43,7 @@
 	role_comm_title = "CMO"
 	skills = /datum/skills/CMO
 
-	minimap_icon = "cmo"
+	minimap_icon = "doctor"
 	minimap_background = "background_command"
 	utility_under = list(/obj/item/clothing/under/rank/cmo)
 	utility_hat = list()
@@ -93,10 +93,6 @@
 /datum/equipment_preset/uscm_ship/uscm_medical/doctor/surgeon
 	name = "USCM Surgeon"
 	assignment = JOB_SURGEON
-	job_title = JOB_SURGEON
-	role_comm_title = "Sgn"
-	minimap_icon = "surgeon"
-	minimap_background = "background_medical"
 
 /datum/equipment_preset/uscm_ship/uscm_medical/doctor/surgeon/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel
@@ -112,10 +108,6 @@
 /datum/equipment_preset/uscm_ship/uscm_medical/doctor/pharmacist
 	name = "USCM Pharmaceutical Physician"
 	assignment = JOB_PHARMACIST
-	job_title = JOB_PHARMACIST
-	role_comm_title = "Phm"
-	minimap_icon = "pharmacist"
-	minimap_background = "background_medical"
 
 /datum/equipment_preset/uscm_ship/uscm_medical/doctor/pharmacist/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel
@@ -151,8 +143,8 @@
 
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/doc(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/field_doctor(new_human), WEAR_BODY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/field_doctor/scrubs(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/white(new_human), WEAR_FEET)
 
 //*****************************************************************************************************/
 
@@ -162,12 +154,12 @@
 	assignment = JOB_NURSE
 	job_title = JOB_NURSE
 	paygrades = list(PAY_SHORT_ME4 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_1)
-	role_comm_title = "Nrs"
+	role_comm_title = "Nurse"
 	skills = /datum/skills/nurse
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE, ACCESS_MARINE_DATABASE)
 
 	minimap_icon = "nurse"
-	minimap_background = "background_medical"
+	minimap_background = "background_shipside"
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/nco)
 	dress_hat = list(/obj/item/clothing/head/marine/dress_cover)
@@ -200,8 +192,8 @@
 	faction_group =	FACTION_LIST_MARINE_WY
 	origin_override = ORIGIN_CIVILIAN
 
-	minimap_icon = "goon_sci"
-	minimap_background = "background_goon"
+	minimap_icon = "researcher"
+	minimap_background = "background_medical"
 	utility_under = list(/obj/item/clothing/under/marine/officer/researcher)
 	utility_hat = list()
 	utility_gloves = list()

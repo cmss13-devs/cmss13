@@ -49,6 +49,9 @@
 		verb = speaking.speech_verb
 		message = capitalize(trim_left(strip_language(message)))
 
+	if(language_flags[speaking.name] & LANGUAGE_HEAR_ONLY)
+		speaking = get_default_language()
+
 	// Xenomorphs can lisp too. :) Only if they're not speaking in hivemind.
 	if((!(speaking.flags & HIVEMIND) || !can_hivemind_speak) && HAS_TRAIT(src, TRAIT_LISPING))
 		var/old_message = message

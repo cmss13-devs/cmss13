@@ -107,7 +107,9 @@
 	to_chat(src, SPAN_YAUTJABOLD("You have chosen [hunter_data.prey] as your next prey."))
 
 	// Notify other preds
-	message_all_yautja("[real_name] has chosen [hunter_data.prey] ([max(hunter_data.prey.life_kills_total, hunter_data.prey.default_honor_value)] honor) as their next target at \the [get_area_name(hunter_data.prey)].")
+	var/obj/item/clothing/gloves/yautja/hunter/bracer = gloves
+	if(istype(bracer))
+		message_all_yautja("[real_name] has chosen [hunter_data.prey] ([max(hunter_data.prey.life_kills_total, hunter_data.prey.default_honor_value)] honor) as their next target at \the [get_area_name(hunter_data.prey)].", broadcast_networks = bracer.received_networks)
 
 	// log to server file
 	log_interact(src, hunter_data.prey, "[key_name(src)] has marked [key_name(hunter_data.prey)] for the Hunt in [get_area(hunter_data.prey)] ([x],[y],[z]).")
@@ -143,6 +145,10 @@
 
 
 /mob/living/carbon/human/proc/mark_honored()
+	if(faction == FACTION_YAUTJA_BADBLOOD)
+		to_chat(src, SPAN_DANGER("You have no honor. You cannot do this."))
+		return
+
 	if(is_mob_incapacitated())
 		to_chat(src, SPAN_DANGER("You're not able to do that right now."))
 		return
@@ -169,7 +175,9 @@
 		return
 
 	log_interact(src, T, "[key_name(src)] has marked [key_name(T)] as Honored for '[reason]'.")
-	message_all_yautja("[real_name] has marked [T] as Honored for '[reason]'.")
+	var/obj/item/clothing/gloves/yautja/hunter/bracer = gloves
+	if(istype(bracer))
+		message_all_yautja("[real_name] has marked [T] as Honored for '[reason]'.", broadcast_networks = bracer.received_networks)
 
 	T.hunter_data.honored_set = src
 	hunter_data.honored_targets += T
@@ -180,6 +188,10 @@
 
 
 /mob/living/carbon/human/proc/unmark_honored()
+	if(faction == FACTION_YAUTJA_BADBLOOD)
+		to_chat(src, SPAN_DANGER("You have no honor. You cannot do this."))
+		return
+
 	if(is_mob_incapacitated())
 		to_chat(src, SPAN_DANGER("You're not able to do that right now."))
 		return
@@ -204,7 +216,9 @@
 	if(!T.hunter_data.honored_set || src == T.hunter_data.honored_set)
 
 		log_interact(src, T, "[key_name(src)] has un-marked [key_name(T)] as honored!")
-		message_all_yautja("[real_name] has un-marked [T] as honored!'.")
+		var/obj/item/clothing/gloves/yautja/hunter/bracer = gloves
+		if(istype(bracer))
+			message_all_yautja("[real_name] has un-marked [T] as honored!'.", broadcast_networks = bracer.received_networks)
 
 		T.hunter_data.honored_set = null
 		hunter_data.honored_targets += T
@@ -217,6 +231,10 @@
 
 
 /mob/living/carbon/human/proc/mark_dishonored()
+	if(faction == FACTION_YAUTJA_BADBLOOD)
+		to_chat(src, SPAN_DANGER("You have no honor. You cannot do this."))
+		return
+
 	if(is_mob_incapacitated())
 		to_chat(src, SPAN_DANGER("You're not able to do that right now."))
 		return
@@ -246,7 +264,9 @@
 		return
 
 	log_interact(src, T, "[key_name(src)] has marked [key_name(T)] as Dishonorable for '[reason]'.")
-	message_all_yautja("[real_name] has marked [T] as Dishonorable for '[reason]'.")
+	var/obj/item/clothing/gloves/yautja/hunter/bracer = gloves
+	if(istype(bracer))
+		message_all_yautja("[real_name] has marked [T] as Dishonorable for '[reason]'.", broadcast_networks = bracer.received_networks)
 
 	T.hunter_data.dishonored_set = src
 	hunter_data.dishonored_targets += T
@@ -257,6 +277,10 @@
 
 
 /mob/living/carbon/human/proc/unmark_dishonored()
+	if(faction == FACTION_YAUTJA_BADBLOOD)
+		to_chat(src, SPAN_DANGER("You have no honor. You cannot do this."))
+		return
+
 	if(is_mob_incapacitated())
 		to_chat(src, SPAN_DANGER("You're not able to do that right now."))
 		return
@@ -285,7 +309,9 @@
 	if(!T.hunter_data.dishonored_set || src == T.hunter_data.dishonored_set)
 
 		log_interact(src, T, "[key_name(src)] has un-marked [key_name(T)] as dishonorable!")
-		message_all_yautja("[real_name] has un-marked [T] as dishonorable!'.")
+		var/obj/item/clothing/gloves/yautja/hunter/bracer = gloves
+		if(istype(bracer))
+			message_all_yautja("[real_name] has un-marked [T] as dishonorable!'.", broadcast_networks = bracer.received_networks)
 
 		T.hunter_data.dishonored_set = null
 		hunter_data.dishonored_targets -= T
@@ -319,7 +345,9 @@
 		return
 
 	log_interact(src, T, "[key_name(src)] has marked [key_name(T)] as a Gear Carrier!")
-	message_all_yautja("[real_name] has marked [T] as a Gear Carrier!'.")
+	var/obj/item/clothing/gloves/yautja/hunter/bracer = gloves
+	if(istype(bracer))
+		message_all_yautja("[real_name] has marked [T] as a Gear Carrier!'.", broadcast_networks = bracer.received_networks)
 
 	T.hunter_data.gear_set = src
 	hunter_data.gear_targets += T
@@ -350,9 +378,10 @@
 		to_chat(src, SPAN_YAUTJABOLD("[T] is not marked as a gear carrier!"))
 		return
 
-
 	log_interact(src, T, "[key_name(src)] has un-marked [key_name(T)] as a Gear Carrier!")
-	message_all_yautja("[real_name] has un-marked [T] as a Gear Carrier!'.")
+	var/obj/item/clothing/gloves/yautja/hunter/bracer = gloves
+	if(istype(bracer))
+		message_all_yautja("[real_name] has un-marked [T] as a Gear Carrier!'.", broadcast_networks = bracer.received_networks)
 
 	T.hunter_data.gear_set = null
 	hunter_data.gear_targets -= T
@@ -361,6 +390,10 @@
 
 
 /mob/living/carbon/human/proc/mark_thralled()
+	if(faction == FACTION_YAUTJA_BADBLOOD)
+		to_chat(src, SPAN_DANGER("You have no honor. You cannot do this."))
+		return
+
 	if(is_mob_incapacitated())
 		to_chat(src, SPAN_DANGER("You're not able to do that right now."))
 		return
@@ -393,7 +426,9 @@
 		return
 
 	log_interact(src, T, "[key_name(src)] has taken [key_name(T)] as their Thrall for '[reason]'.")
-	message_all_yautja("[real_name] has taken [T] as their Thrall for '[reason]'.")
+	var/obj/item/clothing/gloves/yautja/hunter/bracer = gloves
+	if(istype(bracer))
+		message_all_yautja("[real_name] has taken [T] as their Thrall for '[reason]'.", broadcast_networks = bracer.received_networks)
 
 	T.hunter_data.thralled_set = src
 	T.hunter_data.thralled = TRUE
@@ -401,9 +436,11 @@
 	hunter_data.thrall = T
 	T.hud_set_hunter()
 
-
-
 /mob/living/carbon/human/proc/unmark_thralled()
+	if(faction == FACTION_YAUTJA_BADBLOOD)
+		to_chat(src, SPAN_DANGER("You have no honor. You cannot do this."))
+		return
+
 	if(is_mob_incapacitated())
 		to_chat(src, SPAN_DANGER("You're not able to do that right now."))
 		return
@@ -434,7 +471,9 @@
 	if(!thrall.hunter_data.thralled_set || src == thrall.hunter_data.thralled_set)
 
 		log_interact(src, thrall, "[key_name(src)] has released [key_name(thrall)] from thralldom!")
-		message_all_yautja("[real_name] has released [thrall] from thralldom!'.")
+		var/obj/item/clothing/gloves/yautja/hunter/bracer = gloves
+		if(istype(bracer))
+			message_all_yautja("[real_name] has released [thrall] from thralldom!'.", broadcast_networks = bracer.received_networks)
 
 		thrall.set_species("Human")
 		thrall.allow_gun_usage = TRUE
@@ -447,6 +486,10 @@
 		to_chat(src, SPAN_YAUTJABOLD("You cannot undo the actions of a living brother or sister!"))
 
 /mob/living/carbon/human/proc/mark_blooded() //No mark_unblooded, once a thrall becomes a blooded hunter, there is no going back.
+	if(faction == FACTION_YAUTJA_BADBLOOD)
+		to_chat(src, SPAN_DANGER("You have no honor. You cannot do this."))
+		return
+
 	if(is_mob_incapacitated())
 		to_chat(src, SPAN_DANGER("You're not able to do that right now."))
 		return
@@ -470,7 +513,9 @@
 			return
 
 		log_interact(src, newblood, "[key_name(src)] has blooded [key_name(newblood)] for '[reason]'.")
-		message_all_yautja("[real_name] has blooded [newblood] for '[reason]'.")
+		var/obj/item/clothing/gloves/yautja/hunter/bracer = gloves
+		if(istype(bracer))
+			message_all_yautja("[real_name] has blooded [newblood] for '[reason]'.", broadcast_networks = bracer.received_networks)
 
 		ADD_TRAIT(newblood, TRAIT_YAUTJA_TECH, "Yautja Tech")
 		to_chat(newblood, SPAN_YAUTJABOLD("You are a Blooded Thrall. Focus on interacting with Predators and developing your reputation. You should be observant and discreet while exercising discretionary restraint when hunting worthy prey. Learn Yautja lore and their Honor Code. If you have any questions, ask the whitelisted players in LOOC."))

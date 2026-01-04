@@ -8,3 +8,7 @@
 /datum/lazy_template/pred/jungle_moon
 	map_name = "jungle_moon"
 	hunting_ground_name = "Jungle Moon"
+
+/area/yautja/badblood
+	name = "\improper Yautja Survivor Preparation"
+	base_lighting_alpha = 105

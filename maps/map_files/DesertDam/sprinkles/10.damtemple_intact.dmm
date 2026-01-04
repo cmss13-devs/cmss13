@@ -79,6 +79,13 @@
 	},
 /turf/open/floor/corsat/squareswood/north,
 /area/desert_dam/interior/caves/temple)
+"an" = (
+/obj/structure/machinery/door/airlock/sandstone/runed{
+	name = "Strange Temple";
+	dir = 1
+	},
+/turf/open/floor/sandstone/runed,
+/area/desert_dam/interior/caves/temple)
 "av" = (
 /obj/structure/xenoautopsy/tank/hugger/yautja,
 /turf/open/shuttle/red,
@@ -160,7 +167,7 @@
 /area/desert_dam/interior/caves/temple)
 "fX" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 5;
 	icon_state = "p_stair_full"
 	},
@@ -350,7 +357,7 @@
 /area/desert_dam/interior/caves/temple)
 "uO" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 9;
 	icon_state = "p_stair_full"
 	},
@@ -358,7 +365,7 @@
 /area/desert_dam/exterior/valley/valley_crashsite)
 "vb" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
@@ -384,7 +391,7 @@
 /area/desert_dam/interior/caves/temple)
 "yT" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
@@ -1000,7 +1007,7 @@ mB
 mB
 mB
 mB
-uK
+an
 mB
 "}
 (13,1,1) = {"
@@ -1026,7 +1033,7 @@ AU
 mB
 Gz
 mB
-uK
+an
 mB
 "}
 (14,1,1) = {"
@@ -1039,7 +1046,7 @@ MH
 WV
 am
 mB
-uK
+an
 mB
 mB
 YH
@@ -1177,7 +1184,7 @@ mB
 mB
 mB
 mB
-uK
+an
 AU
 AU
 fl

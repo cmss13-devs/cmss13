@@ -15004,11 +15004,6 @@
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/shipboard/navigation)
 "aMQ" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "NW-out";
-	layer = 2.5;
-	pixel_y = 1
-	},
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
@@ -36775,6 +36770,10 @@
 	layer = 3.3
 	},
 /obj/structure/machinery/power/apc/almayer/south,
+/obj/item/storage/box/guncase/m2c,
+/obj/item/storage/box/guncase/m2c{
+	pixel_y = 7
+	},
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/squads/support)
 "bMs" = (
@@ -38149,6 +38148,10 @@
 	},
 /obj/structure/machinery/light{
 	dir = 8
+	},
+/obj/item/reagent_container/food/drinks/milk{
+	pixel_y = 8;
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/briefing)
@@ -41132,19 +41135,11 @@
 /area/almayer/squads/platoon1_shared)
 "bWW" = (
 /obj/structure/closet/crate/freezer,
-/obj/item/reagent_container/food/snacks/tomatomeat,
-/obj/item/reagent_container/food/snacks/tomatomeat,
-/obj/item/reagent_container/food/snacks/tomatomeat,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/storage/box/donkpockets,
-/obj/item/storage/box/donkpockets,
-/obj/item/storage/box/donkpockets,
-/obj/item/pizzabox/pizza_galaxy/vegetable,
-/obj/item/pizzabox/pizza_galaxy/vegetable,
-/obj/item/pizzabox/pizza_galaxy/meat,
-/obj/item/pizzabox/pizza_galaxy/meat,
-/obj/item/pizzabox/pizza_galaxy/margherita,
-/obj/item/pizzabox/pizza_galaxy/margherita,
+/obj/item/pizzabox/meat,
+/obj/item/pizzabox/meat,
+/obj/item/pizzabox/mystery,
+/obj/item/pizzabox/mystery,
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
 "bWX" = (
@@ -41501,10 +41496,6 @@
 /area/almayer/living/briefing)
 "bXF" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/storage/box/sugar{
-	pixel_y = 15;
-	pixel_x = 8
-	},
 /obj/item/trash/ceramic_plate,
 /obj/item/reagent_container/food/condiment/peppermill{
 	pixel_y = 5;
@@ -41516,6 +41507,10 @@
 	},
 /obj/structure/machinery/light{
 	dir = 4
+	},
+/obj/item/reagent_container/food/condiment/sugar{
+	pixel_y = 21;
+	pixel_x = 5
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/briefing)
@@ -41647,14 +41642,12 @@
 /area/almayer/living/briefing)
 "bXW" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/reagent_container/food/drinks/golden_cup{
-	desc = "A golden cup, won in the championship final against the USS Sulaco ca. 2172";
-	pixel_y = 18;
-	pixel_x = 7
+/obj/item/tool/kitchen/knife{
+	pixel_y = 8
 	},
-/obj/item/storage/box/drinkingglasses{
-	pixel_x = -6;
-	pixel_y = 6
+/obj/item/tool/kitchen/knife{
+	pixel_y = 5;
+	pixel_x = -5
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/grunt_rnr)
@@ -41743,6 +41736,10 @@
 "bYi" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/box/drinkingglasses{
+	pixel_x = -6;
+	pixel_y = 6
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/grunt_rnr)
 "bYj" = (
@@ -44649,14 +44646,6 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/alpha)
 "cfc" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	layer = 3.3
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
 /turf/open/floor/almayer,
 /area/almayer/squads/alpha)
 "cfd" = (
@@ -44864,21 +44853,15 @@
 /area/almayer/squads/alpha)
 "cfz" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/camera/autoname/almayer{
-	name = "ship-grade camera"
+/obj/item/clothing/head/marine/dress_cover{
+	pixel_y = 4;
+	pixel_x = -5
 	},
-/obj/item/prop/helmetgarb/gunoil{
-	pixel_x = -6;
-	pixel_y = 14
+/obj/item/facepaint/lipstick/maroon{
+	pixel_y = 8;
+	pixel_x = 5
 	},
-/obj/item/prop/helmetgarb/gunoil{
-	pixel_x = -8;
-	pixel_y = 5
-	},
-/obj/item/prop/magazine/boots/n058{
-	pixel_y = 3;
-	pixel_x = 13
-	},
+/obj/item/facepaint/sunscreen_stick,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/alpha)
 "cfA" = (
@@ -56220,7 +56203,14 @@
 	light_color = "#BB3F3F"
 	},
 /obj/structure/surface/table/almayer,
-/obj/item/toy/bikehorn/rubberducky,
+/obj/item/toy/bikehorn/rubberducky{
+	pixel_x = -3
+	},
+/obj/item/reagent_container/food/drinks/golden_cup{
+	desc = "A golden cup, won in the championship final against the USS Sulaco ca. 2172";
+	pixel_y = 18;
+	pixel_x = 7
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/l_m_p)
 "gHl" = (
@@ -59822,6 +59812,11 @@
 /area/almayer/underdeck/req)
 "iow" = (
 /obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33;
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
 	icon_state = "W";
 	layer = 3.3
 	},
@@ -59835,15 +59830,6 @@
 	layer = 3.3
 	},
 /obj/structure/machinery/power/apc/almayer/north,
-/obj/structure/sign/safety/rewire{
-	pixel_y = 0;
-	pixel_x = -18
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	layer = 3.33;
-	pixel_y = 1
-	},
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/squads/alpha)
 "ioM" = (
@@ -63247,6 +63233,10 @@
 "jMr" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/crate/freezer,
+/obj/item/pizzabox/margherita,
+/obj/item/pizzabox/margherita,
+/obj/item/pizzabox/mushroom,
+/obj/item/pizzabox/mushroom,
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
 "jMx" = (
@@ -63900,12 +63890,11 @@
 /turf/open/floor/almayer/plating,
 /area/almayer/living/basketball)
 "kaB" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/reagent_container/food/drinks/cans/souto/diet/grape{
-	pixel_x = -4;
-	pixel_y = 6
+/obj/structure/machinery/cm_vending/clothing/marine/alpha{
+	density = 0;
+	pixel_y = 26
 	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/floor/almayer/cargo,
 /area/almayer/squads/alpha)
 "kaE" = (
 /obj/effect/decal/warning_stripes{
@@ -74156,10 +74145,6 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/upper/u_f_s)
 "ozq" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	layer = 3.3
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -84349,14 +84334,11 @@
 /area/almayer/lifeboat_pumps/south2)
 "tab" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/tool/kitchen/knife{
-	pixel_y = 8
-	},
-/obj/item/tool/kitchen/knife{
-	pixel_y = 8
-	},
 /obj/item/tool/kitchen/rollingpin,
-/obj/item/tool/kitchen/rollingpin,
+/obj/item/tool/kitchen/rollingpin{
+	pixel_x = -3;
+	pixel_y = 5
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/grunt_rnr)
 "tal" = (
@@ -87003,13 +86985,6 @@
 /obj/structure/machinery/light,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/upper/u_a_s)
-"ueZ" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	layer = 3.3
-	},
-/turf/open/floor/almayer,
-/area/almayer/squads/alpha)
 "ufb" = (
 /obj/structure/barricade/handrail{
 	dir = 8
@@ -91379,11 +91354,24 @@
 /turf/closed/wall/almayer/reinforced,
 /area/almayer/shipboard/brig/cic_hallway)
 "vVb" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/prop/helmetgarb/gunoil{
+	pixel_x = -6;
+	pixel_y = 14
 	},
-/turf/open/floor/almayer/flooredge/east,
+/obj/item/prop/helmetgarb/gunoil{
+	pixel_x = -8;
+	pixel_y = 5
+	},
+/obj/item/prop/magazine/boots/n058{
+	pixel_y = 3;
+	pixel_x = 13
+	},
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
+	name = "ship-grade camera"
+	},
+/turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/alpha)
 "vVd" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
@@ -146306,7 +146294,7 @@ vuA
 fZE
 fZE
 naa
-meQ
+fZE
 fZE
 bdg
 bVA
@@ -146328,7 +146316,7 @@ oQH
 bVA
 bdg
 oSM
-awE
+oSM
 ter
 oSM
 oSM
@@ -146409,7 +146397,7 @@ bdd
 fZE
 fZE
 naa
-meQ
+fZE
 fZE
 bdg
 bVA
@@ -146431,7 +146419,7 @@ bVL
 bVA
 bdg
 oSM
-awE
+oSM
 ter
 oSM
 oSM
@@ -146511,7 +146499,7 @@ caS
 caF
 fZE
 meQ
-naa
+iEM
 meQ
 fZE
 bdg
@@ -146535,7 +146523,7 @@ bVA
 bdg
 oSM
 awE
-ter
+jnc
 awE
 oSM
 bTf
@@ -147834,11 +147822,11 @@ atF
 atF
 atl
 cfR
-cfz
+kaB
 cfc
-ueZ
+cfc
 ozq
-ueZ
+cfc
 aLT
 aLT
 aQN
@@ -147938,7 +147926,7 @@ atC
 atp
 cfR
 kaB
-vVb
+cdy
 ceO
 aOy
 cdy
@@ -148249,8 +148237,8 @@ bdv
 aLT
 bdz
 ceQ
-brn
-brn
+cfz
+vVb
 caj
 caj
 bjs

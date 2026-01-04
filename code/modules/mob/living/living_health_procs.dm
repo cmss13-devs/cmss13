@@ -548,7 +548,7 @@
 	recalculate_move_delay = TRUE
 	sdisabilities = 0
 	disabilities = 0
-	drowsyness = 0
+	drowsiness = 0
 	hallucination = 0
 	jitteriness = 0
 	dizziness = 0

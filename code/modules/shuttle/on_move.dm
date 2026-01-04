@@ -4,17 +4,17 @@ All ShuttleMove procs go here
 
 /* ***********************************Base procs************************************/
 
-// Called on every turf in the shuttle region, returns a bitflag for allowed movements of that turf
-// returns the new move_mode (based on the old)
+/// Called on every turf in the shuttle region, returns a bitflag for allowed movements of that turf
+/// returns the new move_mode (based on the old)
 /turf/proc/fromShuttleMove(turf/newT, move_mode)
 	if(!(move_mode & MOVE_AREA) || !isshuttleturf(src))
 		return move_mode
 
 	return move_mode | MOVE_TURF | MOVE_CONTENTS
 
-// Called from the new turf before anything has been moved
-// Only gets called if fromShuttleMove returns true first
-// returns the new move_mode (based on the old)
+/// Called from the new turf before anything has been moved
+/// Only gets called if fromShuttleMove returns true first
+/// returns the new move_mode (based on the old)
 /turf/proc/toShuttleMove(turf/oldT, move_mode, obj/docking_port/mobile/shuttle)
 	. = move_mode
 	if(!(. & (MOVE_TURF|MOVE_CONTENTS)))
@@ -57,7 +57,7 @@ All ShuttleMove procs go here
 		qdel(thing)
 
 
-// Called on the old turf to move the turf data
+/// Called on the old turf to move the turf data
 /turf/proc/onShuttleMove(turf/newT, list/movement_force, move_dir)
 	if(newT == src) // In case of in place shuttle rotation shenanigans.
 		return
@@ -70,7 +70,7 @@ All ShuttleMove procs go here
 	newT.CopyOnTop(src, 1, depth, TRUE)
 	return TRUE
 
-// Called on the new turf after everything has been moved
+/// Called on the new turf after everything has been moved
 /turf/proc/afterShuttleMove(turf/oldT, rotation)
 	//Dealing with the turf we left behind
 	oldT.TransferComponents(src)
@@ -91,13 +91,13 @@ All ShuttleMove procs go here
 
 //=====================================================================//
 
-// Called on every atom in shuttle turf contents before anything has been moved
-// returns the new move_mode (based on the old)
-// WARNING: Do not leave turf contents in beforeShuttleMove or dock() will runtime
+/// Called on every atom in shuttle turf contents before anything has been moved
+/// returns the new move_mode (based on the old)
+/// WARNING: Do not leave turf contents in beforeShuttleMove or dock() will runtime
 /atom/movable/proc/beforeShuttleMove(turf/newT, rotation, move_mode, obj/docking_port/mobile/moving_dock)
 	return move_mode
 
-// Called on atoms to move the atom to the new location
+/// Called on atoms to move the atom to the new location
 /atom/movable/proc/onShuttleMove(turf/newT, turf/oldT, list/movement_force, move_dir, obj/docking_port/stationary/old_dock, obj/docking_port/mobile/moving_dock)
 	if(newT == oldT) // In case of in place shuttle rotation shenanigans.
 		return
@@ -109,7 +109,7 @@ All ShuttleMove procs go here
 
 	return TRUE
 
-// Called on atoms after everything has been moved
+/// Called on atoms after everything has been moved
 /atom/movable/proc/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
 
 	var/turf/newT = get_turf(src)
@@ -138,14 +138,14 @@ All ShuttleMove procs go here
 
 //=====================================================================//
 
-// Called on areas before anything has been moved
-// returns the new move_mode (based on the old)
+/// Called on areas before anything has been moved
+/// returns the new move_mode (based on the old)
 /area/proc/beforeShuttleMove(list/shuttle_areas)
 	if(!shuttle_areas[src])
 		return NONE
 	return MOVE_AREA
 
-// Called on areas to move their turf between areas
+/// Called on areas to move their turf between areas
 /area/proc/onShuttleMove(turf/oldT, turf/newT, area/underlying_old_area)
 	if(newT == oldT) // In case of in place shuttle rotation shenanigans.
 		return TRUE
@@ -163,7 +163,7 @@ All ShuttleMove procs go here
 	newT.change_area(old_dest_area, src) //lighting
 	return TRUE
 
-// Called on areas after everything has been moved
+/// Called on areas after everything has been moved
 /area/proc/afterShuttleMove(new_parallax_dir)
 	//parallax_movedir = new_parallax_dir
 	return TRUE

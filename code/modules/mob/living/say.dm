@@ -101,8 +101,8 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	message = process_chat_markup(message, list("~", "_"))
 
 	for(var/dst=0; dst<=1; dst++) //Will run twice if src has a clone
-		if(!dst && src.clone) //Will speak in src's location and the clone's
-			T = locate(src.loc.x + src.clone.proj_x, src.loc.y + src.clone.proj_y, src.loc.z)
+		if(!dst && clone) //Will speak in src's location and the clone's
+			T = locate(loc.x + clone.proj_x, loc.y + clone.proj_y, loc.z + clone.proj_z)
 		else
 			T = get_turf(src)
 			dst++ //Only speak once

@@ -21,6 +21,8 @@ GLOBAL_VAR_INIT(create_and_destroy_ignore_paths, generate_ignore_paths())
 		/atom/movable/lighting_mask, //leave it alone
 		//This is meant to fail extremely loud every single time it occurs in any environment in any context, and it falsely alarms when this unit test iterates it. Let's not spawn it in.
 		/obj/merge_conflict_marker,
+		/obj/effect/projector_anchor, // Needs a link ID set to work as intended
+		/obj/effect/projector/linked, // Needs a link ID set to work as intended
 	)
 	//This turf existing is an error in and of itself
 	. += typesof(/turf/baseturf_skipover)

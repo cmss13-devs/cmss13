@@ -3456,10 +3456,7 @@
 /turf/open/floor/plating/platebot,
 /area/lv522/indoors/c_block/cargo)
 "bMX" = (
-/turf/closed/shuttle{
-	dir = 1;
-	icon_state = "pwall"
-	},
+/turf/closed/cordon,
 /area/lv522/oob)
 "bNf" = (
 /obj/structure/desertdam/decals/road_edge{

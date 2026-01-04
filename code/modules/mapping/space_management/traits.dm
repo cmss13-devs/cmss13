@@ -67,6 +67,20 @@
 		return
 	return locate(T.x, T.y, T.z + offset)
 
+// Attempt to get the turf below the provided one according to Z traits
+/datum/controller/subsystem/mapping/proc/get_turf_below_coord(x, y, z)
+	var/offset = level_trait(z, ZTRAIT_DOWN)
+	if(!offset)
+		return
+	return locate(x, y, z + offset)
+
+// Attempt to get the turf above the provided one according to Z traits
+/datum/controller/subsystem/mapping/proc/get_turf_above_coord(x, y, z)
+	var/offset = level_trait(z, ZTRAIT_UP)
+	if(!offset)
+		return
+	return locate(x, y, z + offset)
+
 // Same as get_turf_below, but for multiple turfs from the same z level
 /datum/controller/subsystem/mapping/proc/get_same_z_turfs_below(list/turf/turfs)
 	if (turfs.len < 1)
@@ -114,9 +128,9 @@
 /datum/controller/subsystem/mapping/proc/same_z_map(z1, z2)
 	if(z1 == z2)
 		return TRUE
-	
+
 	var/diff = z2 - z1
-	var/direction = diff > 0 ? ZTRAIT_UP : ZTRAIT_DOWN  
+	var/direction = diff > 0 ? ZTRAIT_UP : ZTRAIT_DOWN
 
 	for(var/step in 1 to abs(diff))
 		if(!level_trait(z1, direction))
@@ -127,5 +141,5 @@
 		if(z1 == z2)
 			return TRUE
 
-	return FALSE 
-		
+	return FALSE
+

@@ -221,7 +221,6 @@
 #define PROPERTY_ENCRYPTED "encrypted"
 #define PROPERTY_FIRE_PENETRATING "fire-penetrating"
 #define PROPERTY_HYPERGENETIC "hypergenetic"
-#define PROPERTY_NERVESTIMULATING "nerve-stimulating"
 #define PROPERTY_OPTIMIZED "optimizing"
 #define PROPERTY_REGULATING "regulating"
 //Admin Only Properties
@@ -242,17 +241,18 @@
 #define PROPERTY_VISCOUS "viscous"
 #define PROPERTY_EXPLOSIVE "explosive"
 //Generation Disabled Properties
-#define PROPERTY_CARDIOSTABILIZING "cardio-stabilizing"
 #define PROPERTY_AIDING "aiding"
-#define PROPERTY_THERMOSTABILIZING "themo-stabilizing"
-#define PROPERTY_OXYGENATING "oxygenating"
-#define PROPERTY_FOCUSING "focusing"
 #define PROPERTY_ANTICARCINOGENIC "anti-carcinogenic"
-#define PROPERTY_UNKNOWN "unknown" //just has an OD effect
+#define PROPERTY_CARDIOSTABILIZING "cardio-stabilizing"
+#define PROPERTY_FOCUSING "focusing"
 #define PROPERTY_HEMOSITIC "hemositic"
+#define PROPERTY_NERVESTIMULATING "nerve-stimulating"
+#define PROPERTY_OXYGENATING "oxygenating"
+#define PROPERTY_THERMOSTABILIZING "themo-stabilizing"
+#define PROPERTY_UNKNOWN "unknown" //just has an OD effect
 
 ///Legendary properties, no PROPERTY_TYPE_ANOMALOUS, only normal ones.
-#define PROPERTY_LEGENDARY_LIST list(PROPERTY_HYPERGENETIC, PROPERTY_BOOSTING, PROPERTY_REGULATING, PROPERTY_OPTIMIZED, PROPERTY_NERVESTIMULATING)
+#define PROPERTY_LEGENDARY_LIST list(PROPERTY_HYPERGENETIC, PROPERTY_BOOSTING, PROPERTY_REGULATING, PROPERTY_OPTIMIZED)
 
 
 //Property rarity

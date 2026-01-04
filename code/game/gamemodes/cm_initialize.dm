@@ -242,13 +242,11 @@ Additional game mode variables.
 
 	pred_candidate.client.prefs.find_assigned_slot(JOB_PREDATOR) // Probably does not do anything relevant, predator preferences are not tied to specific slot.
 
-	var/clan_id = CLAN_SHIP_PUBLIC
 	var/datum/entity/clan_player/clan_info = pred_candidate?.client?.clan_info
 	clan_info?.sync()
-	SSpredships.load_new(clan_id)
-	var/turf/spawn_point = SAFEPICK(SSpredships.get_clan_spawnpoints(clan_id))
+	var/turf/spawn_point = SAFEPICK(GLOB.yautja_spawnpoints)
 	if(!isturf(spawn_point))
-		log_debug("Failed to find spawn point for pred ship in transform_predator - clan_id=[clan_id]")
+		log_debug("Failed to find spawn point for pred ship in transform_predator.")
 		to_chat(pred_candidate, SPAN_WARNING("Unable to setup spawn location - you might want to tell someone about this."))
 		return
 	if(!pred_candidate?.mind) // Legacy check

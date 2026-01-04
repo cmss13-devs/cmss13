@@ -4,5 +4,5 @@
 
 /obj/effect/landmark/clan_spawn/New()
 	. = ..()
-	SSpredships.init_spawnpoint(src)
+	GLOB.yautja_spawnpoints += get_turf(src)
 	qdel(src)

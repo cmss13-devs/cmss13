@@ -1601,7 +1601,7 @@
 /obj/structure/surface/table/woodentable/fancy,
 /obj/effect/landmark/map_item,
 /obj/item/folder/black_random,
-/obj/item/device/whistle,
+/obj/item/clothing/accessory/device/whistle,
 /turf/open/floor/prison/floor_plate,
 /area/whiskey_outpost/inside/cic)
 "gE" = (
@@ -2298,7 +2298,7 @@
 "jp" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/effect/landmark/map_item,
-/obj/item/device/whistle,
+/obj/item/clothing/accessory/device/whistle,
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/cic)
 "jq" = (
@@ -2548,7 +2548,7 @@
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
-/obj/item/device/whistle,
+/obj/item/clothing/accessory/device/whistle,
 /turf/open/floor/prison/floor_plate,
 /area/whiskey_outpost/inside/cic)
 "kq" = (
@@ -3052,7 +3052,7 @@
 /obj/item/tool/pen{
 	pixel_x = 6
 	},
-/obj/item/device/whistle{
+/obj/item/clothing/accessory/device/whistle{
 	pixel_y = 14
 	},
 /turf/open/floor/prison/floor_plate/southwest,

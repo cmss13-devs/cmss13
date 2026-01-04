@@ -1192,15 +1192,15 @@
 /obj/item/storage/pouch/pressurized_reagent_canister/surgery_prep/Initialize()
 	. = ..()
 
-	//we don't call fill_with because of the complex mix of chemicals we have
-	inner.reagents.add_reagent("oxycodone", inner.volume/3)
-	inner.reagents.add_reagent("dexalinp", inner.volume/3)
-	inner.reagents.add_reagent("peridaxon", inner.volume/3)
+	//My special recipe: tried, tested, and true! -- Puckaboo2
+	inner.reagents.add_reagent("oxycodone", inner.volume/1.5)
+	inner.reagents.add_reagent("dexalinp", inner.volume/6)
+	inner.reagents.add_reagent("peridaxon", inner.volume/6)
 	if(length(contents) > 0)
 		var/obj/item/reagent_container/hypospray/autoinjector/empty/medic/A = contents[1]
-		A.reagents.add_reagent("oxycodone", A.volume/3)
-		A.reagents.add_reagent("dexalinp", A.volume/3)
-		A.reagents.add_reagent("peridaxon", A.volume/3)
+		A.reagents.add_reagent("oxycodone", A.volume/1.5)
+		A.reagents.add_reagent("dexalinp", A.volume/6)
+		A.reagents.add_reagent("peridaxon", A.volume/6)
 		A.update_uses_left()
 		A.update_icon()
 	update_icon()

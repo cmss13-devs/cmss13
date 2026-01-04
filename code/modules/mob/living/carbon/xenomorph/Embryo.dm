@@ -198,8 +198,7 @@
 				if(cur_obs.client?.prefs?.be_special & BE_ALIEN && !jobban_isbanned(cur_obs, JOB_XENOMORPH))
 					picked = cur_obs
 				break
-
-	if(!picked)
+	if(!picked && !(flags_embryo & FLAG_EMBRYO_BRAINDEAD)) // Braindead embryos skip candidate selection
 		// Get a candidate from observers
 		var/list/candidates = get_alien_candidates(hive, abomination = (isyautja(affected_mob) || (flags_embryo & FLAG_EMBRYO_PREDATOR)))
 		if(candidates && length(candidates))
@@ -255,6 +254,8 @@
 		new_xeno = new /mob/living/carbon/xenomorph/larva/predalien(affected_mob)
 	else
 		new_xeno = new(affected_mob)
+		if(flags_embryo & FLAG_EMBRYO_BRAINDEAD)
+			ADD_TRAIT(new_xeno, TRAIT_XENO_BRAINDEAD, REF(src))
 
 	if(hive)
 		hive.add_xeno(new_xeno)

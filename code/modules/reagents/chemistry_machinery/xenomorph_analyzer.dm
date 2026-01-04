@@ -1,6 +1,6 @@
 /obj/structure/machinery/xenoanalyzer
 	name = "Biomass Analyzer"
-	desc = "Analyzer of biological material which processes valuable matter into even more valueble data."
+	desc = "Analyzer of biological material which processes valuable matter into even more valuable data."
 	density = TRUE
 	anchored = TRUE
 	icon = 'icons/obj/structures/machinery/science_machines_64x32.dmi'
@@ -29,6 +29,11 @@
 		if(upgrade.behavior == RESEARCH_UPGRADE_EXCLUDE_BUY)
 			continue
 		technology_purchased[upgrade_type] = 0
+
+	RegisterSignal(SSdcs, COMSIG_GLOB_BIOMASS_GAIN, PROC_REF(gain_biomass))
+
+/obj/structure/machinery/xenoanalyzer/proc/gain_biomass(obj/relay_tower, biomass_added)
+	biomass_points += biomass_added
 
 /obj/structure/machinery/xenoanalyzer/attack_hand(mob/user)
 	if(!skillcheck(user, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))

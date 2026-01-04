@@ -22,6 +22,9 @@
 	return ..()
 
 /obj/structure/machinery/door/poddoor/two_tile/open(forced = FALSE)
+	if(!density)
+		return
+
 	if(operating) //doors can still open when emag-disabled
 		return FALSE
 
@@ -58,6 +61,9 @@
 	..()
 
 /obj/structure/machinery/door/poddoor/two_tile/close(forced = FALSE)
+	if(density)
+		return
+
 	if(operating)
 		return FALSE
 

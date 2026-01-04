@@ -44646,8 +44646,17 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/alpha)
 "cfc" = (
-/turf/open/floor/almayer,
-/area/almayer/squads/alpha)
+/obj/item/ashtray/plastic{
+	pixel_x = -4;
+	pixel_y = 12
+	},
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/reagent_container/food/condiment/hotsauce/sriracha{
+	pixel_x = 7;
+	pixel_y = 17
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/living/briefing)
 "cfd" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "door_warning2";
@@ -44852,17 +44861,11 @@
 /turf/open/floor/almayer/flooredge/north,
 /area/almayer/squads/alpha)
 "cfz" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/clothing/head/marine/dress_cover{
-	pixel_y = 4;
-	pixel_x = -5
+/obj/structure/machinery/cm_vending/clothing/marine/alpha{
+	density = 0;
+	pixel_y = 26
 	},
-/obj/item/facepaint/lipstick/maroon{
-	pixel_y = 8;
-	pixel_x = 5
-	},
-/obj/item/facepaint/sunscreen_stick,
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/floor/almayer/cargo,
 /area/almayer/squads/alpha)
 "cfA" = (
 /obj/effect/decal/warning_stripes{
@@ -63890,11 +63893,24 @@
 /turf/open/floor/almayer/plating,
 /area/almayer/living/basketball)
 "kaB" = (
-/obj/structure/machinery/cm_vending/clothing/marine/alpha{
-	density = 0;
-	pixel_y = 26
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/prop/helmetgarb/gunoil{
+	pixel_x = -6;
+	pixel_y = 14
 	},
-/turf/open/floor/almayer/cargo,
+/obj/item/prop/helmetgarb/gunoil{
+	pixel_x = -8;
+	pixel_y = 5
+	},
+/obj/item/prop/magazine/boots/n058{
+	pixel_y = 3;
+	pixel_x = 13
+	},
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
+	name = "ship-grade camera"
+	},
+/turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/alpha)
 "kaE" = (
 /obj/effect/decal/warning_stripes{
@@ -86985,6 +87001,9 @@
 /obj/structure/machinery/light,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/upper/u_a_s)
+"ueZ" = (
+/turf/open/floor/almayer,
+/area/almayer/squads/alpha)
 "ufb" = (
 /obj/structure/barricade/handrail{
 	dir = 8
@@ -91355,22 +91374,15 @@
 /area/almayer/shipboard/brig/cic_hallway)
 "vVb" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/prop/helmetgarb/gunoil{
-	pixel_x = -6;
-	pixel_y = 14
+/obj/item/clothing/head/marine/dress_cover{
+	pixel_y = 4;
+	pixel_x = -5
 	},
-/obj/item/prop/helmetgarb/gunoil{
-	pixel_x = -8;
-	pixel_y = 5
+/obj/item/facepaint/lipstick/maroon{
+	pixel_y = 8;
+	pixel_x = 5
 	},
-/obj/item/prop/magazine/boots/n058{
-	pixel_y = 3;
-	pixel_x = 13
-	},
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 1;
-	name = "ship-grade camera"
-	},
+/obj/item/facepaint/sunscreen_stick,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/alpha)
 "vVd" = (
@@ -146300,7 +146312,7 @@ bdg
 bVA
 nlB
 vGG
-bWA
+cfc
 bWm
 bVW
 bYd
@@ -147822,11 +147834,11 @@ atF
 atF
 atl
 cfR
-kaB
-cfc
-cfc
+cfz
+ueZ
+ueZ
 ozq
-cfc
+ueZ
 aLT
 aLT
 aQN
@@ -147925,7 +147937,7 @@ atC
 atC
 atp
 cfR
-kaB
+cfz
 cdy
 ceO
 aOy
@@ -148237,8 +148249,8 @@ bdv
 aLT
 bdz
 ceQ
-cfz
 vVb
+kaB
 caj
 caj
 bjs

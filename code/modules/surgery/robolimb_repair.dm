@@ -57,7 +57,7 @@
 	if(target_zone in HANDLING_LIMBS) //Arm/hand
 		failure_mode = pick("flails wildly", "gestures rudely", "attempts to throttle its owner")
 	else //Leg/foot
-		failure_mode = pick("kicks wildly", "contorts inhumanly", "almost crushes something with its toes")
+		failure_mode = pick("kicks wildly", "contorts inhumanly", "almost kicks [user] with its toes")
 
 	user.affected_message(target,
 		SPAN_WARNING("You make a mistake recalibrating the prosthetic [parse_zone(target_zone)], and it [failure_mode]!"),

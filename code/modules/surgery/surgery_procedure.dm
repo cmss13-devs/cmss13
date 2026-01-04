@@ -97,7 +97,7 @@
 	for(var/mob/living/potential_blocker in get_turf(target))
 		if(potential_blocker == user || potential_blocker == target)
 			continue
-		to_chat(user, SPAN_WARNING("You can't operate when you don't have enough space! Remove everybody else."))
+		to_chat(user, SPAN_WARNING("You can't operate when you don't have enough space! Remove everybody else from the area!"))
 		return FALSE
 
 	if(user == target)
@@ -119,9 +119,9 @@
 				return TRUE
 		if(tool && is_surgery_tool(tool)) //Just because you used the wrong tool doesn't mean you meant to whack the patient with it...
 			if(next_step)
-				to_chat(user, SPAN_WARNING("You can't [current_step.desc] with \the [tool], or [next_step.desc]."))
+				to_chat(user, SPAN_WARNING("You can't [current_step.desc] with [tool], or [next_step.desc]."))
 			else
-				to_chat(user, SPAN_WARNING("You can't [current_step.desc] with \the [tool]."))
+				to_chat(user, SPAN_WARNING("You can't [current_step.desc] with [tool]."))
 			return FALSE //...but you might be wanting to use it on them anyway. If on help intent, the help-intent safety will apply for this attack.
 	return FALSE
 

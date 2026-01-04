@@ -1,3 +1,4 @@
+/*
 #define TIME_TO_TRANSFORM 1 SECONDS
 /datum/caste_datum/pathogen/overmind
 	caste_type = PATHOGEN_CREATURE_OVERMIND
@@ -77,7 +78,12 @@
 
 /mob/living/carbon/xenomorph/overmind/Initialize(mapload)
 	. = ..()
-	var/obj/effect/alien/resin/overmind/new_core = new /obj/effect/alien/resin/overmind(loc, hivenumber)
+	var/turf/location_turf = get_turf(src)
+	if(!location_turf)
+		ghostize()
+		if(!QDELETED(src))
+			qdel(src)
+	var/obj/effect/alien/resin/overmind/new_core = new /obj/effect/alien/resin/overmind(get_turf(src), hivenumber)
 	core = WEAKREF(new_core)
 	new_core.parent = WEAKREF(src)
 	RegisterSignal(src, COMSIG_XENOMORPH_CORE_RETURN, PROC_REF(return_to_core))
@@ -218,7 +224,7 @@
 	var/obj/effect/alien/weeds/nearby_weeds = locate() in crossing_turf
 	if(nearby_weeds && HIVE_ALLIED_TO_HIVE(nearby_weeds.hivenumber, hivenumber))
 		if(!(nearby_weeds.hivenumber == XENO_HIVE_PATHOGEN))
-			nearby_weeds.update_icon() //randomizes the icon of the turf when crossed over*/
+			nearby_weeds.update_icon() //randomizes the icon of the turf when crossed over
 		return TRUE
 
 	return FALSE
@@ -390,12 +396,15 @@
 			to_chat(our_parent, SPAN_XENOHIGHDANGER("Your core is under attack, and low on health!"))
 		if(76 to INFINITY)
 			to_chat(our_parent, SPAN_XENOHIGHDANGER("Your core is under attack!"))
+*/
 
 /**
  * Proc checks if we should alert the hivemind, and if it can, it does so.
  * datum/source - the atom (in this case it should be a turf) sending the crossed signal
  * atom/movable/hostile - the atom that triggered the crossed signal, in this case we're looking for a mob
  */
+
+/*
 /obj/effect/alien/resin/overmind/proc/overmind_proxy_alert(datum/source, atom/movable/hostile)
 	SIGNAL_HANDLER
 	if(!COOLDOWN_FINISHED(src, cooldown_overmind_proxy_alert)) //Proxy alert triggered too recently; abort
@@ -422,3 +431,4 @@
 	return parent?.resolve()
 
 #undef TIME_TO_TRANSFORM
+*/

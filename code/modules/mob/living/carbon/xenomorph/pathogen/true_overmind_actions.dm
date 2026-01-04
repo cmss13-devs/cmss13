@@ -1,3 +1,4 @@
+/*
 /datum/action/xeno_action/onclick/return_to_core
 	name = "Return to Core"
 	action_icon_state = "retrieve"
@@ -39,4 +40,5 @@
 		return
 	var/mob/living/carbon/xenomorph/overmind/overmind = source
 	overmind.jump(selected_xeno)
+*/
 */

@@ -668,8 +668,8 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 			M = /mob/living/carbon/xenomorph/brute
 		if(PATHOGEN_CREATURE_MATRIARCH)
 			M = /mob/living/carbon/xenomorph/matriarch
-		if(PATHOGEN_CREATURE_OVERMIND)
-			M = /mob/living/carbon/xenomorph/overmind
+//		if(PATHOGEN_CREATURE_OVERMIND)
+//			M = /mob/living/carbon/xenomorph/overmind
 	return M
 
 

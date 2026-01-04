@@ -85,7 +85,7 @@
 		for(var/datum/mob_hud/hud in GLOB.huds)
 			hud.remove_hud_from(usr, usr)
 	else
-		xeno_add_hive_hud_proc(hivenumber, TRUE)
+		handle_xeno_hive_hud(hivenumber, TRUE)
 
 	xeno_mobhud = !xeno_mobhud
 

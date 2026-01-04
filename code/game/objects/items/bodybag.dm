@@ -171,7 +171,7 @@
 		user.visible_message(SPAN_WARNING("[user] opens [src]."), SPAN_NOTICE("You open [src]."))
 		var/area/bag_area = get_area(user)
 		log_attack("[key_name(user)] opened [src] at [bag_area.name].")
-	. = ..()
+		. = ..()
 
 
 /obj/structure/closet/bodybag/close(mob/user)

@@ -156,8 +156,10 @@
 	name = "Survivor - United Americas Riot Officer(Riot Response)"
 	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "UA RCP"
+	faction = FACTION_UA
+	faction_group = FACTION_LIST_SURVIVOR_UA
 	flags = EQUIPMENT_PRESET_EXTRA
-	assignment = "United Americas Police Officer"
+	assignment = JOB_UA_RIOT_OFFICER
 	skills = /datum/skills/civilian/survivor/marshal
 	minimap_icon = "mp"
 	minimap_background = "background_cmb"

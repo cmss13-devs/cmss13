@@ -146,16 +146,21 @@
 		else
 			to_chat(user, SPAN_NOTICE("You dissolve the [fluff_text] in [target]."))
 
-		var/rgt_list_text = get_reagent_list_text()
+	if(!target.is_open_container())
+		to_chat(user, SPAN_WARNING("[target] has a lid on it. You can't drop [fluff_text] in [target] with the lid in the way."))
+		return
+	if(target.reagents?.total_volume <= 0)
+		to_chat(user, SPAN_WARNING("[target] needs to contain some liquid to dissolve [fluff_text] in."))
+		return
 
-		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Spiked \a [target] with a [fluff_text]. Reagents: [rgt_list_text]</font>")
-		msg_admin_attack("[key_name(user)] spiked \a [target] with a [fluff_text] (REAGENTS: [rgt_list_text]) (INTENT: [uppertext(intent_text(user.a_intent))]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
+	var/rgt_list_text = get_reagent_list_text()
+	reagents.trans_to(target, reagents.total_volume)
 
-		reagents.trans_to(target, reagents.total_volume)
-		for(var/mob/other in viewers(2, user))
-			other.show_message(SPAN_DANGER("[user] puts something in [target]."), SHOW_MESSAGE_VISIBLE)
+	user.visible_message(SPAN_WARNING("[user] puts something [fluff_text] in [target]."),
+	SPAN_WARNING("You put [fluff_text] in [target]."), null, 2)
 
-		QDEL_IN(src, 5)
+	log_interact(user, target, "[key_name(user)] dissolved a [fluff_text] with [rgt_list_text] into [src].")
+	QDEL_IN(src, 5)
 
 	return
 
@@ -165,7 +170,7 @@
 
 //Pills
 /obj/item/reagent_container/pill/antitox
-	pill_desc = "An anti-toxin pill. It neutralizes many common toxins, as well as treating toxin damage."
+	pill_desc = "A Dylovene pill. It neutralizes many common toxins, as well as treating toxin damage."
 	pill_initial_reagents = list("anti_toxin" = 15)
 	pill_icon_class = "atox"
 

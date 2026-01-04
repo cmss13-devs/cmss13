@@ -42,7 +42,7 @@
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/onclick/emit_pheromones,
 		/datum/action/xeno_action/onclick/plant_weeds/pathogen/popper,
-//		/datum/action/xeno_action/onclick/place_spore_sac, // Macro 2 // Needs rethinking on ease of access
+		/datum/action/xeno_action/onclick/place_spore_sac/fatal, // Macro 2 // Needs rethinking on ease of access
 //		/datum/action/xeno_action/onclick/release_spores,
 	)
 	inherent_verbs = list(
@@ -95,6 +95,11 @@
 	plasma_cost = 700
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
+	var/fatal_use = FALSE
+
+/datum/action/xeno_action/onclick/place_spore_sac/fatal
+	name = "Morph to spore sac (700)"
+	fatal_use = TRUE
 
 /datum/action/xeno_action/onclick/place_spore_sac/use_ability(atom/A)
 	var/mob/living/carbon/xenomorph/popper = owner
@@ -111,18 +116,25 @@
 		return
 	if(isnull(turf_area) || !(turf_area.is_resin_allowed))
 		if(!turf_area || turf_area.flags_area & AREA_UNWEEDABLE)
-			to_chat(popper, SPAN_XENOWARNING("This area is unsuited to host the hive!"))
+			to_chat(popper, SPAN_XENOWARNING("This area is unsuited to host the confluence!"))
 			return
-		to_chat(popper, SPAN_XENOWARNING("It's too early to spread the hive this far."))
+		to_chat(popper, SPAN_XENOWARNING("It's too early to spread the confluence this far."))
 		return
 	if(!target_turf.check_spore_sac_placement(popper))
 		return
 	if(!popper.check_plasma(plasma_cost))
 		return
+	if(fatal_use)
+		to_chat(popper, SPAN_XENOHIGHDANGER("Creaeting this spore sac will consume all our energy and we will die!"))
+	if(!do_after(popper, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+		return
 	popper.use_plasma(plasma_cost)
 	playsound(popper.loc, "alien_resin_build", 25)
 	new /obj/effect/pathogen/spore_sac(target_turf)
 	to_chat(popper, SPAN_XENONOTICE("We place a spore sac on the ground."))
+	if(fatal_use)
+		to_chat(popper, SPAN_XENOHIGHDANGER("The spore sac consumes all our energy!"))
+		popper.death("Spore Morphing")
 	return ..()
 
 /turf/proc/check_spore_sac_placement(mob/living/carbon/xenomorph/xeno)

@@ -257,6 +257,7 @@
 				make_overmind(attacking_xeno)
 			else
 				admin_request_overmind(attacking_xeno)
+				to_chat(attacking_xeno, SPAN_WARNING("We have submitted our intent to become the overmind. Now we must wait.")) // no spammy
 			return XENO_NO_DELAY_ACTION
 
 	if(!overmind_mob && attacking_xeno.a_intent != INTENT_HELP && attacking_xeno.can_destroy_special() && attacking_xeno.hivenumber == linked_hive.hivenumber)

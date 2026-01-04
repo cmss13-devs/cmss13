@@ -16,11 +16,11 @@
 /datum/equipment_preset/synth/load_race(mob/living/carbon/human/new_human)
 	var/generation_selection = SYNTH_GEN_THREE
 	if(locked_generation)
-		new_human.set_species(locked_generation, defualt_species = SYNTH_GEN_THREE)
+		new_human.set_species(locked_generation, default_species = SYNTH_GEN_THREE)
 	else
 		if(new_human.client?.prefs?.synthetic_type)
 			generation_selection = new_human.client.prefs.synthetic_type
-		new_human.set_species(generation_selection, defualt_species = SYNTH_GEN_THREE)
+		new_human.set_species(generation_selection, default_species = SYNTH_GEN_THREE)
 
 /datum/equipment_preset/synth/load_name(mob/living/carbon/human/new_human, randomise)
 	var/final_name = "David"

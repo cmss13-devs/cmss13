@@ -1846,7 +1846,11 @@
 	if(..())
 		return TRUE
 
-	if(!brewing && cup && user.Adjacent(src) && user.put_in_hands(cup))
+	if(brewing)
+		to_chat(user, SPAN_WARNING("[src] is still brewing [vends]."))
+		return FALSE
+
+	if(cup && user.Adjacent(src) && user.put_in_hands(cup, FALSE))
 		to_chat(user, SPAN_NOTICE("You take [cup] in your hand."))
 		cup = null
 		update_icon()
@@ -1885,7 +1889,7 @@
 /obj/structure/machinery/hybrisa/coffee_machine/proc/vend_coffee(mob/user, amount)
 	brewing = FALSE
 	cup?.reagents?.add_reagent(vends, amount)
-	if(user?.Adjacent(src) && user.put_in_hands(cup))
+	if(user?.Adjacent(src) && user.put_in_hands(cup, FALSE))
 		to_chat(user, SPAN_NOTICE("You take [cup] in your hand."))
 		cup = null
 	else

@@ -143,14 +143,14 @@
 /datum/recipe/xenoburger
 	items = list(
 		/obj/item/reagent_container/food/snacks/bun,
-		/obj/item/reagent_container/food/snacks/meat/xenomeat,
+		/obj/item/reagent_container/food/snacks/meat/xenomeat/processed,
 	)
 	result = /obj/item/reagent_container/food/snacks/xenoburger
 
 /datum/recipe/fishburger
 	items = list(
 		/obj/item/reagent_container/food/snacks/bun,
-		/obj/item/reagent_container/food/snacks/carpmeat,
+		/obj/item/reagent_container/food/snacks/carpmeat/processed,
 	)
 	result = /obj/item/reagent_container/food/snacks/fishburger
 
@@ -247,7 +247,7 @@
 /datum/recipe/xenomeatbread
 	items = list(
 		/obj/item/reagent_container/food/snacks/dough,
-		/obj/item/reagent_container/food/snacks/meat/xenomeat,
+		/obj/item/reagent_container/food/snacks/meat/xenomeat/processed,
 		/obj/item/reagent_container/food/snacks/cheesewedge,
 	)
 	result = /obj/item/reagent_container/food/snacks/sliceable/xenomeatbread
@@ -353,7 +353,7 @@
 /datum/recipe/xemeatpie
 	items = list(
 		/obj/item/reagent_container/food/snacks/sliceable/flatdough,
-		/obj/item/reagent_container/food/snacks/meat/xenomeat,
+		/obj/item/reagent_container/food/snacks/meat/xenomeat/processed,
 	)
 	result = /obj/item/reagent_container/food/snacks/xemeatpie
 
@@ -741,7 +741,7 @@
 /datum/recipe/wingfangchu
 	reagents = list("soysauce" = 5)
 	items = list(
-		/obj/item/reagent_container/food/snacks/meat/xenomeat,
+		/obj/item/reagent_container/food/snacks/meat/xenomeat/processed,
 	)
 	result = /obj/item/reagent_container/food/snacks/wingfangchu
 
@@ -791,7 +791,7 @@
 	items = list(
 		/obj/item/reagent_container/food/snacks/dough,
 		/obj/item/reagent_container/food/snacks/grown/chili,
-		/obj/item/reagent_container/food/snacks/carpmeat,
+		/obj/item/reagent_container/food/snacks/carpmeat/processed,
 	)
 	result = /obj/item/reagent_container/food/snacks/cubancarp
 
@@ -895,7 +895,7 @@
 /datum/recipe/fishandchips
 	items = list(
 		/obj/item/reagent_container/food/snacks/fries,
-		/obj/item/reagent_container/food/snacks/carpmeat,
+		/obj/item/reagent_container/food/snacks/carpmeat/processed,
 	)
 	result = /obj/item/reagent_container/food/snacks/fishandchips
 
@@ -1005,7 +1005,7 @@
 	items = list(
 		/obj/item/reagent_container/food/snacks/flour,
 		/obj/item/reagent_container/food/snacks/egg,
-		/obj/item/reagent_container/food/snacks/carpmeat,
+		/obj/item/reagent_container/food/snacks/carpmeat/processed,
 	)
 	result = /obj/item/reagent_container/food/snacks/fishfingers
 

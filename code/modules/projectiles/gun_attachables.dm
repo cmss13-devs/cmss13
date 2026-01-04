@@ -887,8 +887,8 @@ Defined in conflicts.dm of the #defines folder.
 	var/original_state = "flashlight"
 	var/original_attach = "flashlight_a"
 
-	var/helm_mounted_light_power = 2
-	var/helm_mounted_light_range = 3
+	var/helm_mounted_light_power = 3
+	var/helm_mounted_light_range = 4
 
 	var/datum/action/item_action/activation
 	var/obj/item/attached_item
@@ -4039,7 +4039,7 @@ Defined in conflicts.dm of the #defines folder.
 				scatter_mod = -SCATTER_AMOUNT_TIER_10
 				recoil_mod = -RECOIL_AMOUNT_TIER_4
 				burst_scatter_mod = -SCATTER_AMOUNT_TIER_8
-				if(istype(gun, /obj/item/weapon/gun/rifle/sniper/M42A))
+				if(istype(gun, /obj/item/weapon/gun/rifle/sniper/M42A || /obj/item/weapon/gun/rifle/sniper/halo))
 					delay_mod = -FIRE_DELAY_TIER_7
 				else
 					delay_mod = -FIRE_DELAY_TIER_12

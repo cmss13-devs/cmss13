@@ -1,5 +1,5 @@
 // here they will be all the Equipment that are restricted to a role/job.
-
+/*
 /datum/supply_packs/armor_leader
 	name = "B12 pattern marine armor crate (x1 helmet, x1 armor)"
 	contains = list(
@@ -21,7 +21,7 @@
 	containertype = /obj/structure/closet/crate
 	containername = "M4 pattern marine armor crate"
 	group = "Restricted Equipment"
-
+*/
 /datum/supply_packs/intel_kit
 	name = "Field Intelligence Support Kit crate (x1 fulton pack, x1 data detector, x1 intel pamphlet, x1 large document pouch, 1x intel radio key)"
 	contains = list(

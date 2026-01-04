@@ -137,7 +137,7 @@
 		return
 	. += SPAN_NOTICE("It contains:")
 	if(supplies_remaining)
-		. += SPAN_NOTICE(" [supplies_remaining] [supply_descriptor].")
+		. += SPAN_NOTICE("[supplies_remaining] [supply_descriptor].")
 	else
 		. += SPAN_NOTICE(" Nothing.")
 

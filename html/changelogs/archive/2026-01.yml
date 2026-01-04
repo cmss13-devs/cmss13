@@ -29,3 +29,6 @@
       Eyes have some of the greatest concentrations of nociceptive nerves in the human
       body and must be fully numbed for LASIK or to be be completely anesthetized
       in real life for an operation to commence.
+2026-01-04:
+  Puckaboo2:
+  - bugfix: Xeno spit overlays should return to their original function.

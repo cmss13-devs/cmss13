@@ -1,4 +1,5 @@
 #define PREDATOR_ACTION_ON_CLICK 2 //If the action is on click, and not toggled on or off
+
 /datum/action/predator_action
 	icon_file = 'icons/mob/hud/actions_yautja.dmi'
 	button_icon_state = "pred_template"
@@ -236,8 +237,6 @@
 	. = ..()
 	bracers.activate_suicide()
 
-#undef PREDATOR_ACTION_ON_CLICK
-
 //Misc actions
 /datum/action/yautja_emote_panel
 	name = "Open Emote Panel"
@@ -327,3 +326,98 @@
 			COOLDOWN_START(src, panel_emote_cooldown, 2.5 SECONDS)
 			ui.user.emote(initial(path.key))
 			return TRUE
+
+/datum/action/predator_action/leap
+	name = "Leap"
+	action_icon_state = "leap_placeholder"
+	listen_signal = COMSIG_KB_YAUTJA_LEAP
+	active = FALSE
+	var/max_distance = 7
+	var/leap_speed = 5
+	var/cooldown_duration = 15 SECONDS
+	COOLDOWN_DECLARE(leap_cooldown)
+
+/datum/action/predator_action/leap/can_use_action()
+	var/mob/living/carbon/human/user = owner
+	if(user.is_mob_incapacitated())
+		return FALSE
+	return TRUE
+
+/datum/action/predator_action/leap/action_activate()
+	. = ..()
+	var/mob/living/carbon/human/user = owner
+	if(user.selected_ability == src)
+		to_chat(user, "You will no longer use [name] with [user.get_ability_mouse_name()].")
+		button.icon_state = "template"
+		user.set_selected_ability(null)
+	else
+		to_chat(user, "You will now use [name] with [user.get_ability_mouse_name()].")
+		if(user.selected_ability)
+			user.selected_ability.button.icon_state = "template"
+			user.set_selected_ability(null)
+		button.icon_state = "template_on"
+		user.set_selected_ability(src)
+
+/datum/action/predator_action/leap/proc/use_ability(atom/target_atom)
+	var/mob/living/carbon/human/user = owner
+
+	if(user.is_mob_incapacitated())
+		to_chat(user, SPAN_WARNING("You're a bit too incapacitated for that."))
+		return FALSE
+
+	if(!COOLDOWN_FINISHED(src, leap_cooldown))
+		to_chat(user, SPAN_WARNING("You cannot leap again so soon, give your legs a break!"))
+		return FALSE
+
+	if(!isturf(user.loc))
+		to_chat(user, SPAN_WARNING("You can't leap from here!"))
+		return FALSE
+
+	if(user.legcuffed)
+		to_chat(user, SPAN_WARNING("You can't leap with that thing on your leg!"))
+		return FALSE
+
+	if(!target_atom || target_atom.layer >= FLY_LAYER)
+		return FALSE
+
+	var/turf/t_turf = get_turf(target_atom)
+	var/obj/effect/warning/yautja_leap/warning = new(t_turf)
+	calculate_warning_turf(warning, user, t_turf)
+
+	user.face_dir(get_cardinal_dir(user, target_atom))
+	user.visible_message(SPAN_WARNING("\The [user] prepares to leap at [target_atom]!"), SPAN_WARNING("You get ready to leap at [target_atom]!"))
+
+	/// Default delay
+	if(!do_after(user, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
+		qdel(warning)
+		return FALSE
+
+	/// Extra if you're going upwards
+	if((target_atom.z > user.z) && !do_after(user, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
+		qdel(warning)
+		return FALSE
+
+	COOLDOWN_START(src, leap_cooldown, cooldown_duration)
+	if(isspeciesyautja(user))
+		var/sound_file = pick('sound/effects/pred_leap1.ogg', 'sound/effects/pred_leap2.ogg')
+		playsound(user, sound_file, 25, TRUE)
+
+	RegisterSignal(user, COMSIG_CLIENT_MOB_MOVE, PROC_REF(disable_flying_movement))
+	user.throw_atom(t_turf, max_distance, leap_speed, launch_type = LOW_LAUNCH, pass_flags = PASS_MOB_THRU|PASS_OVER_THROW_MOB)
+	user.visible_message(SPAN_WARNING("\The [user] leaps at [target_atom]!"), SPAN_WARNING("You leap at [target_atom]!"))
+
+	UnregisterSignal(user, COMSIG_CLIENT_MOB_MOVE)
+	qdel(warning)
+
+/datum/action/predator_action/leap/proc/disable_flying_movement(mob/living/carbon/human/user)
+	SIGNAL_HANDLER
+	return COMPONENT_OVERRIDE_MOVE
+
+/datum/action/predator_action/leap/proc/calculate_warning_turf(obj/effect/warning/warning, mob/living/user, turf/t_turf)
+	var/t_dist = get_dist(user, t_turf)
+	if(!(t_dist > max_distance))
+		return
+	var/list/turf/path = get_line(user, t_turf, FALSE)
+	warning.forceMove(path[max_distance])
+
+#undef PREDATOR_ACTION_ON_CLICK

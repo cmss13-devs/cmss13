@@ -83,6 +83,7 @@
 		else
 			return
 
+	H.add_hud_to(M, HUD_SOURCE_ADMIN)
 	to_chat(src, SPAN_INFO("[hud_choice] enabled."))
 	message_admins(SPAN_INFO("[key_name(usr)] has given a [hud_choice] to [M]."))
 

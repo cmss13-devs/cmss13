@@ -322,7 +322,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 		if(istype(hud, /datum/mob_hud/xeno))
 			hud.remove_from_hud(src)
 			hud.remove_hud_from(src, src)
-		else if (istype(hud, /datum/mob_hud/xeno_infection))
+		else if(istype(hud, /datum/mob_hud/xeno_infection))
 			hud.remove_hud_from(src, src)
 	if(xeno_hostile_hud)
 		xeno_hostile_hud = FALSE

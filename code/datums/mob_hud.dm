@@ -281,7 +281,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 	return
 
 /mob/hologram/queen/add_to_all_mob_huds(hivenumber)
-	xeno_add_hive_proc(hivenumber)
+	xeno_add_hive_hud_proc(hivenumber)
 	var/datum/mob_hud/hud = GLOB.huds[MOB_HUD_XENO_STATUS]
 	hud.add_to_hud(src)
 
@@ -298,7 +298,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 	hud_set_new_player()
 
 /mob/living/carbon/xenomorph/add_to_all_mob_huds(hivenumber)
-	xeno_add_hive_proc(hivenumber)
+	xeno_add_hive_hud_proc(hivenumber)
 	var/datum/mob_hud/hud = GLOB.huds[MOB_HUD_XENO_STATUS]
 	hud.add_to_hud(src)
 
@@ -341,7 +341,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 			hud.refresh_hud(src, hud.hudusers[M])
 
 
-/mob/proc/xeno_add_hive_proc(hive_choice, choose_verb = FALSE)
+/mob/proc/xeno_add_hive_hud_proc(hive_choice, choose_verb = FALSE)
 	var/datum/mob_hud/hud
 	switch(hive_choice)
 		if("xeno_hive_normal")

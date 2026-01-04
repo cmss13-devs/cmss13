@@ -28,6 +28,7 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
 	)
+	flags_xeno_examine = EXAMINE_FLAG_MEDIUMBLADE|EXAMINE_FLAG_YAUTJA
 	item_state = "harpoon"
 	flags_item = ADJACENT_CLICK_DELAY
 	embeddable = FALSE
@@ -126,6 +127,7 @@
 	icon_state = "metal_gauntlet"
 	hitsound = null
 	item_state = "gauntlet"
+	flags_xeno_examine = EXAMINE_FLAG_SMALLBLUNT|EXAMINE_FLAG_YAUTJA
 	attack_speed = 1 SECONDS
 	attack_verb = list("flayed", "punched", "suckerpunched")
 	force = MELEE_FORCE_TIER_4
@@ -329,6 +331,7 @@
 	desc = "A huge, serrated blade extending from metal gauntlets."
 	icon_state = "wrist"
 	item_state = "wristblade"
+	flags_xeno_examine = EXAMINE_FLAG_MEDIUMBLADE|EXAMINE_FLAG_YAUTJA
 	attack_speed = 0.5 SECONDS
 	attack_verb = list("sliced", "slashed", "jabbed", "torn", "gored")
 	force = MELEE_FORCE_TIER_4
@@ -340,6 +343,7 @@
 	desc = "A huge, serrated blade extending from metal gauntlets."
 	icon_state = "scim"
 	item_state = "scim"
+	flags_xeno_examine = EXAMINE_FLAG_MEDIUMBLADE|EXAMINE_FLAG_YAUTJA
 	attack_speed = 1 SECONDS
 	attack_verb = list("sliced", "slashed", "jabbed", "torn", "gored")
 	force = MELEE_FORCE_TIER_5
@@ -379,6 +383,7 @@
 	desc = "A segmented, lightweight whip made of durable, acid-resistant metal. Not very common among Yautja Hunters, but still a dangerous weapon capable of shredding prey."
 	icon_state = "whip"
 	item_state = "whip"
+	flags_xeno_examine = EXAMINE_FLAG_MEDIUMBLUNT|EXAMINE_FLAG_YAUTJA
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_equip_slot = SLOT_WAIST
 	embeddable = FALSE
@@ -405,6 +410,7 @@
 	name = "clan sword"
 	desc = "An expertly crafted Yautja blade carried by hunters who wish to fight up close. Razor sharp and capable of cutting flesh into ribbons. Commonly carried by aggressive and lethal hunters."
 	icon_state = "clansword"
+	flags_xeno_examine = EXAMINE_FLAG_MEDIUMBLADE|EXAMINE_FLAG_YAUTJA
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_equip_slot = SLOT_BACK
 	force = MELEE_FORCE_TIER_7
@@ -449,6 +455,7 @@
 	desc = "A huge, incredibly sharp dual blade used for hunting dangerous prey. This weapon is commonly carried by Yautja who wish to disable and slice apart their foes."
 	icon_state = "predscythe"
 	item_state = "scythe_dual"
+	flags_xeno_examine = EXAMINE_FLAG_MEDIUMBLADE|EXAMINE_FLAG_YAUTJA
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_equip_slot = SLOT_BACK|SLOT_WAIST
 	force = MELEE_FORCE_TIER_6
@@ -493,6 +500,7 @@
 	name = "combi-stick"
 	desc = "A compact yet deadly personal weapon. Can be concealed when folded. Functions well as a throwing weapon or defensive tool. A common sight in Yautja packs due to its versatility."
 	icon_state = "combistick"
+	flags_xeno_examine = EXAMINE_FLAG_MEDIUMBLADE|EXAMINE_FLAG_YAUTJA
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_equip_slot = SLOT_BACK
 	flags_item = TWOHANDED|ITEM_PREDATOR|ADJACENT_CLICK_DELAY
@@ -741,6 +749,7 @@
 	name = "war axe"
 	desc = "A swift weapon designed to gouge and gore the hunter's prey. A chain is attached to the hilt, allowing for a quick retrieval."
 	icon_state = "war_axe"
+	flags_xeno_examine = EXAMINE_FLAG_SMALLBLADE|EXAMINE_FLAG_YAUTJA
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_equip_slot = SLOT_BACK
 	flags_item = ITEM_PREDATOR|ADJACENT_CLICK_DELAY
@@ -763,6 +772,7 @@
 	desc = "A viciously sharp dagger inscribed with ancient Yautja markings. Smells thickly of blood. Carried by some hunters."
 	icon_state = "predknife"
 	item_state = "knife"
+	flags_xeno_examine = EXAMINE_FLAG_SMALLBLADE|EXAMINE_FLAG_YAUTJA
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_item = ITEM_PREDATOR|CAN_DIG_SHRAPNEL|ADJACENT_CLICK_DELAY
 	flags_equip_slot = SLOT_STORE
@@ -1075,6 +1085,7 @@
 	desc = "A spear of exquisite design, used by an ancient civilisation."
 	icon_state = "spearhunter"
 	item_state = "spearhunter"
+	flags_xeno_examine = EXAMINE_FLAG_SPEAR|EXAMINE_FLAG_YAUTJA
 	flags_item = TWOHANDED|ADJACENT_CLICK_DELAY
 	force = MELEE_FORCE_TIER_3
 	force_wielded = MELEE_FORCE_TIER_7
@@ -1133,6 +1144,7 @@
 	desc = "Two huge, powerful blades on a metallic pole. Mysterious writing is carved into the weapon."
 	icon_state = "glaive_alt"
 	item_state = "glaive_alt"
+	flags_xeno_examine = EXAMINE_FLAG_HEAVYBLADE|EXAMINE_FLAG_YAUTJA
 	force = MELEE_FORCE_TIER_3
 	force_wielded = MELEE_FORCE_TIER_9
 	throwforce = MELEE_FORCE_TIER_3
@@ -1215,6 +1227,7 @@
 	embeddable = FALSE
 	icon_state = "duelling_sword"
 	item_state = "duelling_sword"
+	flags_xeno_examine = EXAMINE_FLAG_MEDIUMBLADE|EXAMINE_FLAG_YAUTJA
 	force = MELEE_FORCE_STRONG
 	throwforce = MELEE_FORCE_WEAK
 	sharp = IS_SHARP_ITEM_BIG
@@ -1232,6 +1245,7 @@
 	flags_item = ADJACENT_CLICK_DELAY
 	icon_state = "duelling_club"
 	item_state = "duelling_club"
+	flags_xeno_examine = EXAMINE_FLAG_MEDIUMBLUNT|EXAMINE_FLAG_YAUTJA
 	sharp = 0
 	edge = 0
 	w_class = SIZE_MEDIUM
@@ -1252,6 +1266,7 @@
 	embeddable = FALSE
 	icon_state = "duelling_hatchet"
 	item_state = "duelling_hatchet"
+	flags_xeno_examine = EXAMINE_FLAG_SMALLBLADE|EXAMINE_FLAG_YAUTJA
 	force = MELEE_FORCE_NORMAL
 	w_class = SIZE_SMALL
 	throwforce = 20
@@ -1271,6 +1286,7 @@
 	embeddable = FALSE
 	icon_state = "duelling_knife"
 	item_state = "duelling_knife"
+	flags_xeno_examine = EXAMINE_FLAG_SMALLBLADE|EXAMINE_FLAG_YAUTJA
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("ripped", "torn", "cut")
 	force = 25
@@ -1300,6 +1316,7 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/pred_guns_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/pred_guns_righthand.dmi'
 	)
+	flags_xeno_examine = EXAMINE_FLAG_RIFLE|EXAMINE_FLAG_YAUTJA // Although a launcher, going to consider this analagous enough to a rifle
 
 	muzzle_flash = null // TO DO, add a decent one.
 
@@ -1404,6 +1421,7 @@
 	desc = "A long-barreled heavy plasma weapon. Intended for combat, not hunting. Has an integrated battery that allows for a functionally unlimited amount of shots to be discharged. Equipped with an internal gyroscopic stabilizer allowing its operator to fire the weapon one-handed if desired."
 	icon_state = "plasmarifle"
 	item_state = "plasmarifle"
+	flags_xeno_examine = EXAMINE_FLAG_SNIPER|EXAMINE_FLAG_YAUTJA // Sounds and looks meaty, so considering it vaguely sniper-esque
 	unacidable = TRUE
 	fire_sound = 'sound/weapons/pred_plasma_shot.ogg'
 	ammo = /datum/ammo/energy/yautja/rifle/bolt
@@ -1492,6 +1510,7 @@
 	desc = "A plasma pistol capable of rapid fire. It has an integrated battery. Can be used to set fires, either to braziers or on people."
 	icon_state = "plasmapistol"
 	item_state = "plasmapistol"
+	flags_xeno_examine = EXAMINE_FLAG_PISTOL|EXAMINE_FLAG_YAUTJA
 
 	unacidable = TRUE
 	fire_sound = 'sound/weapons/pulse3.ogg'
@@ -1619,6 +1638,7 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
 	)
+	flags_xeno_examine = EXAMINE_FLAG_EXOTIC|EXAMINE_FLAG_YAUTJA
 	fire_sound = 'sound/weapons/pred_plasmacaster_fire.ogg'
 	ammo = /datum/ammo/energy/yautja/caster/bolt/single_stun
 	muzzle_flash = "muzzle_flash_blue"
@@ -1785,6 +1805,7 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi',
 		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
 	)
+	flags_xeno_examine = EXAMINE_FLAG_EXOTIC|EXAMINE_FLAG_YAUTJA
 	current_mag = /obj/item/ammo_magazine/internal/bow
 	reload_sound = 'sound/weapons/gun_shotgun_shell_insert.ogg'
 	fire_sound = 'sound/weapons/bow_shot.ogg'

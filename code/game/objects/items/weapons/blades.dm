@@ -11,6 +11,7 @@
 	icon = 'icons/obj/items/weapons/melee/swords.dmi'
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_equip_slot = SLOT_WAIST
+	flags_xeno_examine = EXAMINE_FLAG_MEDIUMBLADE
 	force = MELEE_FORCE_STRONG
 	throwforce = MELEE_FORCE_WEAK
 	sharp = IS_SHARP_ITEM_BIG
@@ -67,15 +68,17 @@
 	desc = "An older issue USCM machete, never left testing. Designed in the Central African Republic. The notching made it hard to clean, and as such the USCM refused to adopt it - despite the superior bludgeoning power offered. Difficult to carry with the usual kit."
 	icon_state = "arnold-machete"
 	item_state = "arnold-machete"
+	flags_xeno_examine = EXAMINE_FLAG_MEDIUMBLADE|EXAMINE_FLAG_GENERICDANGER
 	force = MELEE_FORCE_TIER_11
 	shield_chance = SHIELD_CHANCE_EXTRAHIGH
 	shield_projectile_mult = PROJECTILE_BLOCK_PERC_50
 
 /obj/item/weapon/sword/hefa
 	name = "HEFA sword"
+	desc = "A blade known to be used by the Order of the HEFA, this highly dangerous blade blows up in a shower of shrapnel on impact."
 	icon_state = "hefasword"
 	item_state = "hefasword"
-	desc = "A blade known to be used by the Order of the HEFA, this highly dangerous blade blows up in a shower of shrapnel on impact."
+	flags_xeno_examine = EXAMINE_FLAG_MEDIUMBLADE|EXAMINE_FLAG_EXPLODES
 	attack_verb = list("bapped", "smacked", "clubbed")
 	shield_chance = SHIELD_CHANCE_MEDHIGH
 
@@ -118,6 +121,7 @@
 	desc = "A finely made Japanese sword, with a well sharpened blade. The blade has been filed to a molecular edge, and is extremely deadly. Commonly found in the hands of mercenaries and yakuza."
 	icon_state = "katana"
 	item_state = "katana"
+	flags_xeno_examine = EXAMINE_FLAG_MEDIUMBLADE|EXAMINE_FLAG_GENERICDANGER
 	force = MELEE_FORCE_VERY_STRONG
 	shield_chance = SHIELD_CHANCE_EXTRAHIGH
 
@@ -125,16 +129,17 @@
 /obj/item/weapon/sword/katana/replica
 	name = "replica katana"
 	desc = "A cheap knock-off commonly found in regular knife stores. Can still do some damage."
+	flags_xeno_examine = EXAMINE_FLAG_MEDIUMBLADE
 	force = MELEE_FORCE_WEAK
 	throwforce = 7
 	shield_chance = SHIELD_CHANCE_MED
 
-/obj/item/weapon/sword/dragon_katana
+/obj/item/weapon/sword/katana/dragon
 	name = "dragon katana"
 	desc = "A finely made Japanese sword, with a cherry colored handle. The blade has been filed to a molecular edge, and is extremely deadly. This one seems to have been handcrafted."
 	icon_state = "dragon_katana"
 	item_state = "dragon_katana"
-	force = MELEE_FORCE_VERY_STRONG
+	shield_chance = SHIELD_CHANCE_LOW
 
 /obj/item/weapon/throwing_knife
 	name ="\improper M11 throwing knife"
@@ -149,6 +154,7 @@
 	desc = "A military knife designed to be thrown at the enemy. Much quieter than a firearm, but requires a steady hand to be used optimally, although you should probably just use a gun instead."
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	sharp = IS_SHARP_ITEM_ACCURATE
+	flags_xeno_examine = EXAMINE_FLAG_SMALLBLADE
 	force = MELEE_FORCE_TIER_1
 	w_class = SIZE_SMALL
 	throwforce = MELEE_FORCE_TIER_10 //increased by throwspeed to roughly 80
@@ -237,6 +243,7 @@
 	icon_state = "dark_blade"
 	item_state = "dark_blade"
 	icon = 'icons/obj/items/weapons/melee/misc.dmi'
+	flags_xeno_examine = EXAMINE_FLAG_MEDIUMBLADE|EXAMINE_FLAG_UNIQUEDANGER
 	force = MELEE_FORCE_VERY_STRONG
 	throwforce = MELEE_FORCE_WEAK
 	sharp = IS_SHARP_ITEM_BIG
@@ -263,6 +270,7 @@
 	icon_state = "razor"
 	icon = 'icons/obj/items/weapons/melee/knives.dmi'
 	hitsound = 'sound/weapons/genhit3.ogg'
+	flags_xeno_examine = EXAMINE_FLAG_SMALLBLADE|EXAMINE_FLAG_NONCOMBAT // This thing can as well be considered non-combat by Xeno standards
 	force = MELEE_FORCE_TIER_1
 	throwforce = MELEE_FORCE_TIER_1
 	throw_speed = SPEED_VERY_FAST

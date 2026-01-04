@@ -688,3 +688,33 @@ GLOBAL_LIST_INIT(uniform_categories, list(
 			return FALSE
 		else
 			return TRUE
+
+// Flags for Xenomorph Weapon Examine
+
+// Melee
+#define EXAMINE_FLAG_SMALLBLADE (1<<1) /// Knives, handaxes, ect.
+#define EXAMINE_FLAG_SMALLBLUNT (1<<2) /// I cannot think of many examples for this one
+#define EXAMINE_FLAG_MEDIUMBLADE (1<<3) /// Swords, machetes, ect.
+#define EXAMINE_FLAG_MEDIUMBLUNT (1<<4) /// Batons, baseball bats, ect.
+#define EXAMINE_FLAG_HEAVYBLADE (1<<5) /// Two-handed axes and other two-handed bladed things
+#define EXAMINE_FLAG_HEAVYBLUNT (1<<6) /// Two-handed hammers
+#define EXAMINE_FLAG_SPEAR (1<<7) /// Self-explanatory
+
+// Guns
+#define EXAMINE_FLAG_PISTOL (1<<8) /// Revolvers and pistols
+#define EXAMINE_FLAG_SMG (1<<9) /// SMGs and machine pistols
+#define EXAMINE_FLAG_RIFLE (1<<10) /// Everything that can be considered a rifle, except snipers
+#define EXAMINE_FLAG_SHOTGUN (1<<11) /// Anything that fires shotgun shells
+#define EXAMINE_FLAG_MACHINEGUN (1<<12) /// Smartguns, HPRs, ect.
+#define EXAMINE_FLAG_FLAMER (1<<13) /// Flamethrowers
+#define EXAMINE_FLAG_SNIPER (1<<14) /// For slow-firing heavy rifles
+#define EXAMINE_FLAG_GRENADELAUNCHER (1<<15) /// Grenade launchers, including SHARP
+#define EXAMINE_FLAG_ROCKETLAUNCHER (1<<16) /// Rocket launchers
+#define EXAMINE_FLAG_EXOTIC (1<<17) /// For odd ranged weapons that don't fit in any of the above
+
+// Modifier Flags
+#define EXAMINE_FLAG_GENERICDANGER (1<<18) /// This weapon is strong but not unique
+#define EXAMINE_FLAG_UNIQUEDANGER (1<<19) /// This weapon is strong and unique, such as a Specialist weapon or the M46C
+#define EXAMINE_FLAG_EXPLODES (1<<20) /// One way or another, this weapon can explode
+#define EXAMINE_FLAG_NONCOMBAT (1<<21) /// Whatever weapon this is doesn't deal damage, such as BRUTE
+#define EXAMINE_FLAG_YAUTJA (1<<22) /// This is a Predator weapon

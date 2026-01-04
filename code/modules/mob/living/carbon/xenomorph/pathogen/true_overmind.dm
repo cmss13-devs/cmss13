@@ -76,9 +76,9 @@
 	tackle_chance = 0
 
 /mob/living/carbon/xenomorph/overmind/Initialize(mapload)
+	. = ..()
 	var/obj/effect/alien/resin/overmind/new_core = new /obj/effect/alien/resin/overmind(loc, hivenumber)
 	core = WEAKREF(new_core)
-	. = ..()
 	new_core.parent = WEAKREF(src)
 	RegisterSignal(src, COMSIG_XENOMORPH_CORE_RETURN, PROC_REF(return_to_core))
 	RegisterSignal(src, COMSIG_XENOMORPH_HIVEMIND_CHANGE_FORM, PROC_REF(change_form))

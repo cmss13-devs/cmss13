@@ -304,7 +304,7 @@
 		for(var/caste in castes_available)
 			fancy_caste_list[caste] = hive.evolution_menu_images[caste]
 
-		castepick = show_radial_menu(src, client?.eye, fancy_caste_list)
+		castepick = show_radial_menu(src, client?.get_eye(), fancy_caste_list)
 	if(!castepick) //Changed my mind
 		return
 

@@ -96,6 +96,10 @@
 		if (alert(usr, "Would you like to enable pixel scaling?", "Confirm", "Yes", "No") == "Yes")
 			enable_pixel_scaling()
 
+/obj/Entered(atom/movable/moved_obj, atom/old_loc)
+	. = ..()
+
+	SEND_SIGNAL(moved_obj, COMSIG_MOVABLE_ENTERED_OBJ, src, old_loc)
 
 // object is being physically reduced into parts
 /obj/proc/deconstruct(disassembled = TRUE)
@@ -287,7 +291,7 @@
 				buckled_mob.visible_message(
 					SPAN_NOTICE("[buckled_mob.name] unbuckled [buckled_mob.p_them()]self!"),
 					SPAN_NOTICE("You unbuckle yourself from [src]."),
-					SPAN_NOTICE("You hear metal clanking"))
+					SPAN_NOTICE("You hear metal clanking."))
 			unbuckle(buckled_mob)
 			add_fingerprint(user)
 			return 1
@@ -363,7 +367,7 @@
 		M.visible_message(
 			SPAN_NOTICE("[M] is buckled in to [src] by [user]!"),
 			SPAN_NOTICE("You are buckled in to [src] by [user]."),
-			SPAN_NOTICE("You hear metal clanking"))
+			SPAN_NOTICE("You hear metal clanking."))
 
 /obj/Moved(atom/oldloc, direction, Forced = FALSE)
 	. = ..()

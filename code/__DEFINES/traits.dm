@@ -215,6 +215,8 @@
 #define TRAIT_CHARGING "t_charging"
 /// If the mob has leadership abilities (giving orders).
 #define TRAIT_LEADERSHIP "t_leadership"
+/// If the mob is a acting squad leader (incapable of the leadership abilities).
+#define TRAIT_ACTING_LEAD "t_acting_leader"
 /// If the mob can see the reagents contents of stuff
 #define TRAIT_REAGENT_SCANNER "reagent_scanner"
 /// If the mob cannot eat/be fed

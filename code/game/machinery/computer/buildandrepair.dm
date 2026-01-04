@@ -6,114 +6,141 @@
 	name = "Computer-frame"
 	icon = 'icons/obj/structures/machinery/stock_parts.dmi'
 	icon_state = "0"
-	var/state = 0
+	var/build_state = COMPUTERFRAME_STATE_FRAME_UNSECURE
 	var/obj/item/circuitboard/computer/circuit = null
-// weight = 1.0E8
+	///Whether this is currently being manipulated to prevent doubling up
+	var/busy = FALSE
+	// weight = 1.0E8
 
-/obj/structure/computerframe/attackby(obj/item/P as obj, mob/user as mob)
-	switch(state)
-		if(0)
-			if(HAS_TRAIT(P, TRAIT_TOOL_WRENCH))
-				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
+/obj/structure/computerframe/attackby(obj/item/attacking_item, mob/living/user, list/mods)
+	if(busy)
+		to_chat(user, SPAN_WARNING("Someone else is already working on [src]."))
+		return
+
+	switch(build_state)
+		if(COMPUTERFRAME_STATE_FRAME_UNSECURE)
+			if(HAS_TRAIT(attacking_item, TRAIT_TOOL_WRENCH))
+				playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
+				busy = TRUE
 				if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					to_chat(user, SPAN_NOTICE(" You wrench the frame into place."))
-					src.anchored = TRUE
-					src.state = 1
-			if(iswelder(P))
-				if(!HAS_TRAIT(P, TRAIT_TOOL_BLOWTORCH))
+					to_chat(user, SPAN_NOTICE("You wrench the frame into place."))
+					anchored = TRUE
+					build_state = COMPUTERFRAME_STATE_NO_BOARD
+				busy = FALSE
+				return
+			if(iswelder(attacking_item))
+				if(!HAS_TRAIT(attacking_item, TRAIT_TOOL_BLOWTORCH))
 					to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 					return
-				var/obj/item/tool/weldingtool/WT = P
-				if(!WT.isOn())
-					to_chat(user, SPAN_WARNING("\The [WT] needs to be on!"))
+				var/obj/item/tool/weldingtool/torch = attacking_item
+				if(!torch.isOn())
+					to_chat(user, SPAN_WARNING("[torch] needs to be on!"))
 					return
-				playsound(src.loc, 'sound/items/Welder.ogg', 25, 1)
-				if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					if(!src || !WT.isOn())
+				playsound(loc, 'sound/items/Welder.ogg', 25, 1)
+				busy = TRUE
+				if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
+					busy = FALSE
+					if(QDELETED(src) || !torch.isOn())
 						return
-					to_chat(user, SPAN_NOTICE(" You deconstruct the frame."))
+					to_chat(user, SPAN_NOTICE("You deconstruct the frame."))
 					deconstruct()
-		if(1)
-			if(HAS_TRAIT(P, TRAIT_TOOL_WRENCH))
-				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
+				busy = FALSE
+				return
+		if(COMPUTERFRAME_STATE_NO_BOARD)
+			if(HAS_TRAIT(attacking_item, TRAIT_TOOL_WRENCH))
+				playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
+				busy = TRUE
 				if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					to_chat(user, SPAN_NOTICE(" You unfasten the frame."))
-					src.anchored = FALSE
-					src.state = 0
-			if(istype(P, /obj/item/circuitboard/computer) && !circuit)
+					to_chat(user, SPAN_NOTICE("You unfasten the frame."))
+					anchored = FALSE
+					build_state = COMPUTERFRAME_STATE_FRAME_UNSECURE
+				busy = FALSE
+				return
+			if(istype(attacking_item, /obj/item/circuitboard/computer) && !circuit)
 				if(user.drop_held_item())
-					playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
-					to_chat(user, SPAN_NOTICE(" You place the circuit board inside the frame."))
+					playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
+					to_chat(user, SPAN_NOTICE("You place the circuit board inside the frame."))
 					icon_state = "1"
-					circuit = P
-					P.forceMove(src)
-
-			if(HAS_TRAIT(P, TRAIT_TOOL_SCREWDRIVER) && circuit)
-				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
-				to_chat(user, SPAN_NOTICE(" You screw the circuit board into place."))
-				src.state = 2
-				src.icon_state = "2"
-			if(HAS_TRAIT(P, TRAIT_TOOL_CROWBAR) && circuit)
-				playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
-				to_chat(user, SPAN_NOTICE(" You remove the circuit board."))
-				src.state = 1
-				src.icon_state = "0"
+					circuit = attacking_item
+					attacking_item.forceMove(src)
+				return
+			if(HAS_TRAIT(attacking_item, TRAIT_TOOL_SCREWDRIVER) && circuit)
+				playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
+				to_chat(user, SPAN_NOTICE("You screw the circuit board into place."))
+				build_state = COMPUTERFRAME_STATE_NO_CABLES
+				icon_state = "2"
+				return
+			if(HAS_TRAIT(attacking_item, TRAIT_TOOL_CROWBAR) && circuit)
+				playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
+				to_chat(user, SPAN_NOTICE("You remove the circuit board."))
+				build_state = COMPUTERFRAME_STATE_NO_BOARD
+				icon_state = "0"
 				circuit.forceMove(loc)
-				src.circuit = null
-		if(2)
-			if(HAS_TRAIT(P, TRAIT_TOOL_SCREWDRIVER) && circuit)
-				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
-				to_chat(user, SPAN_NOTICE(" You unfasten the circuit board."))
-				src.state = 1
-				src.icon_state = "1"
-			if(istype(P, /obj/item/stack/cable_coil))
-				var/obj/item/stack/cable_coil/C = P
-				if (C.get_amount() < 5)
+				circuit = null
+				return
+		if(COMPUTERFRAME_STATE_NO_CABLES)
+			if(HAS_TRAIT(attacking_item, TRAIT_TOOL_SCREWDRIVER) && circuit)
+				playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
+				to_chat(user, SPAN_NOTICE("You unfasten the circuit board."))
+				build_state = COMPUTERFRAME_STATE_NO_BOARD
+				icon_state = "1"
+				return
+			if(istype(attacking_item, /obj/item/stack/cable_coil))
+				var/obj/item/stack/cable_coil/coil = attacking_item
+				if(coil.get_amount() < 5)
 					to_chat(user, SPAN_WARNING("You need five coils of wire to add them to the frame."))
 					return
 				to_chat(user, SPAN_NOTICE("You start to add cables to the frame."))
-				playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
-				if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && state == 2)
-					if (C.use(5))
+				playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
+				busy = TRUE
+				if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && build_state == COMPUTERFRAME_STATE_NO_CABLES)
+					if(coil.use(5))
 						to_chat(user, SPAN_NOTICE("You add cables to the frame."))
-						state = 3
+						build_state = COMPUTERFRAME_STATE_NO_GLASS
 						icon_state = "3"
-		if(3)
-			if(HAS_TRAIT(P, TRAIT_TOOL_WIRECUTTERS))
-				playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
-				to_chat(user, SPAN_NOTICE(" You remove the cables."))
-				src.state = 2
-				src.icon_state = "2"
-				var/obj/item/stack/cable_coil/A = new /obj/item/stack/cable_coil( src.loc )
-				A.amount = 5
-
-			if(istype(P, /obj/item/stack/sheet/glass))
-				var/obj/item/stack/sheet/glass/G = P
-				if (G.get_amount() < 2)
+				busy = FALSE
+				return
+		if(COMPUTERFRAME_STATE_NO_GLASS)
+			if(HAS_TRAIT(attacking_item, TRAIT_TOOL_WIRECUTTERS))
+				playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
+				to_chat(user, SPAN_NOTICE("You remove the cables."))
+				build_state = COMPUTERFRAME_STATE_NO_CABLES
+				icon_state = "2"
+				var/obj/item/stack/cable_coil/coil = new /obj/item/stack/cable_coil(loc)
+				coil.amount = 5
+				return
+			if(istype(attacking_item, /obj/item/stack/sheet/glass))
+				var/obj/item/stack/sheet/glass/glass_sheet = attacking_item
+				if(glass_sheet.get_amount() < 2)
 					to_chat(user, SPAN_WARNING("You need two sheets of glass to put in the glass panel."))
 					return
-				playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
+				playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
 				to_chat(user, SPAN_NOTICE("You start to put in the glass panel."))
-				if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && state == 3)
-					if (G.use(2))
+				busy = TRUE
+				if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && build_state == COMPUTERFRAME_STATE_NO_GLASS)
+					if(glass_sheet.use(2))
 						to_chat(user, SPAN_NOTICE("You put in the glass panel."))
-						src.state = 4
-						src.icon_state = "4"
-		if(4)
-			if(HAS_TRAIT(P, TRAIT_TOOL_CROWBAR))
-				playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
-				to_chat(user, SPAN_NOTICE(" You remove the glass panel."))
-				src.state = 3
-				src.icon_state = "3"
-				new /obj/item/stack/sheet/glass( src.loc, 2 )
-			if(HAS_TRAIT(P, TRAIT_TOOL_SCREWDRIVER))
-				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
-				to_chat(user, SPAN_NOTICE(" You connect the monitor."))
-				var/B = new src.circuit.build_path ( src.loc )
-				src.circuit.construct(B)
+						build_state = COMPUTERFRAME_STATE_COMPLETE
+						icon_state = "4"
+				busy = FALSE
+				return
+		if(COMPUTERFRAME_STATE_COMPLETE)
+			if(HAS_TRAIT(attacking_item, TRAIT_TOOL_CROWBAR))
+				playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
+				to_chat(user, SPAN_NOTICE("You remove the glass panel."))
+				build_state = COMPUTERFRAME_STATE_NO_GLASS
+				icon_state = "3"
+				new /obj/item/stack/sheet/glass(loc, 2)
+				return
+			if(HAS_TRAIT(attacking_item, TRAIT_TOOL_SCREWDRIVER))
+				playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
+				to_chat(user, SPAN_NOTICE("You connect the monitor."))
+				var/board = new circuit.build_path(loc)
+				circuit.construct(board)
 				qdel(src)
+				return
 
 /obj/structure/computerframe/deconstruct(disassembled = TRUE)
 	if(disassembled)
-		new /obj/item/stack/sheet/metal(src.loc, 5)
+		new /obj/item/stack/sheet/metal(loc, 5)
 	return ..()

@@ -36,7 +36,7 @@
 	set name = "View Playtimes"
 	set desc = "View your playtimes."
 	if(!SSentity_manager.ready)
-		to_chat(src, "DB is still starting up, please wait")
+		to_chat(src, "DB is still starting up, please wait.")
 		return
 	if(client && client.player_entity)
 		client.player_data.tgui_interact(src)
@@ -258,6 +258,13 @@
 				if(client)
 					client.change_view(8, vehicle_seat.vehicle)
 					vehicle_seat.vehicle.set_seated_mob(vehicle_seat.seat, src)
+		return
+
+	if(!client)
+		return
+
+	if(client.view != world.view)
+		to_chat(src, SPAN_WARNING("You cannot look up while zoomed!"))
 		return
 
 	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))

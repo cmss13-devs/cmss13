@@ -23,7 +23,7 @@
 	var/attack_speed = 11  //+3, Adds up to 10.  Added an extra 4 removed from /mob/proc/do_click()
 	///Used in attackby() to say how something was attacked "[x] has been [z.attack_verb] by [y] with [z]"
 	var/list/attack_verb
-	/// A multiplier to an object's force when used against a stucture.
+	/// A multiplier to an object's force when used against a structure.
 	var/demolition_mod = 1
 
 	health = null
@@ -364,7 +364,7 @@
 	if(istype(W,/obj/item/storage))
 		var/obj/item/storage/S = W
 		if(S.storage_flags & STORAGE_CLICK_GATHER && isturf(loc))
-			if(S.storage_flags & STORAGE_GATHER_SIMULTAENOUSLY) //Mode is set to collect all items on a tile and we clicked on a valid one.
+			if(S.storage_flags & STORAGE_GATHER_SIMULTANEOUSLY) //Mode is set to collect all items on a tile and we clicked on a valid one.
 				var/success = 0
 				var/failure = 0
 

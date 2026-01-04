@@ -292,23 +292,23 @@
 
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa
 	name = "\improper WY corporate security helmet"
-	desc = "A basic skull-helm with a orange saftey vison fitted. Worn by corporate security assets, graded to protect your head from an unruly scientist armed with a crowbar."
+	desc = "A basic skull-helm with a orange safety visor fitted. Worn by corporate security assets, graded to protect your head from an unruly scientist armed with a crowbar."
 	icon_state = "sec_helmet_hybrisa"
 	item_state = "sec_helmet_hybrisa"
 
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa/lead
-	desc = "A basic skull-helm with a orange saftey vison fitted. Worn by corporate security assets. This variant is worn by low-level guards that have too much brainmatter to fit into the old one. Or so they say."
+	desc = "A basic skull-helm with a orange safety visor fitted. Worn by corporate security assets. This variant is worn by low-level guards that have too much brainmatter to fit into the old one. Or so they say."
 	icon_state = "sec_lead_helmet_hybrisa"
 	item_state = "sec_lead_helmet_hybrisa"
 
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa/brown
 	name = "\improper WY corporate security helmet"
-	desc = "A basic skull-helm with a orange saftey vison fitted. Worn by corporate security assets, graded to protect your head from an unruly scientist armed with a crowbar."
+	desc = "A basic skull-helm with a orange safety visor fitted. Worn by corporate security assets, graded to protect your head from an unruly scientist armed with a crowbar."
 	icon_state = "sec_brown_helmet_hybrisa"
 	item_state = "sec_brown_helmet_hybrisa"
 
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa/medic
-	desc = "A basic skull-helm with a orange saftey vison fitted. Worn by corporate security assets, graded to protect your head from an unruly scientist armed with a crowbar. A medical cross is emblazoned across the front."
+	desc = "A basic skull-helm with a orange safety visor fitted. Worn by corporate security assets, graded to protect your head from an unruly scientist armed with a crowbar. A medical cross is emblazoned across the front."
 	icon_state = "sec_medic_helmet_hybrisa"
 	item_state = "sec_medic_helmet_hybrisa"
 
@@ -391,7 +391,7 @@
 
 /obj/item/clothing/head/hybrisa/wy_po_cap
 	name = "\improper Weyland-Yutani Pilot cap"
-	desc = "A dark peaked cap enscribed with the Weyland-Yutani 'Wings' logo. A formal cap for qualified civillian Pilots, akin to old Earth formal Pilots-wear."
+	desc = "A dark peaked cap enscribed with the Weyland-Yutani 'Wings' logo. A formal cap for qualified civilian Pilots, akin to old Earth formal Pilots-wear."
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/WY.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/WY.dmi',
@@ -886,7 +886,7 @@
 
 /obj/item/clothing/suit/storage/hybrisa/wy_Pilot
 	name = "\improper Weyland-Yutani Pilot formal-jacket"
-	desc = "A suit-style jacket with a fur lined collar and golden epaulettes signifying rank. Worn by Weyland-Yutani qualified civillian Pilots, akin to old Earth formal Pilots-wear."
+	desc = "A suit-style jacket with a fur lined collar and golden epaulettes signifying rank. Worn by Weyland-Yutani qualified civilian Pilots, akin to old Earth formal Pilots-wear."
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/WY.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/WY.dmi'

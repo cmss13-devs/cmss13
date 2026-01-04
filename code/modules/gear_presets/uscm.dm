@@ -1245,9 +1245,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full(new_human), WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/alternate(new_human), WEAR_R_STORE)
 	spawn_marine_fluff_items(new_human)
-
-/datum/equipment_preset/uscm/pve/sg/load_status(mob/living/carbon/human/new_human)
-
+	
 //## Team Leader ##//
 /datum/equipment_preset/uscm/pve/tl
 	name = "USCM Solar Devils Team Leader"
@@ -1473,6 +1471,9 @@
 	skills = /datum/skills/smartgunner_pve
 
 	minimap_icon = "smartgunner"
+
+/datum/equipment_preset/uscm/hunted/sg/load_status(mob/living/carbon/human/new_human)
+	new_human.nutrition = NUTRITION_NORMAL
 
 /datum/equipment_preset/uscm/hunted/sg/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine(new_human), WEAR_BODY)

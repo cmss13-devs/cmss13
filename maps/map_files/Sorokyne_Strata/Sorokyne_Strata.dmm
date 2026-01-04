@@ -8025,7 +8025,7 @@
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/interior/outpost/engi)
 "avR" = (
-/obj/item/prop/helmetgarb/netting/jungle,
+/obj/item/clothing/accessory/helmet/cover/netting/jungle,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/landing_zones/near_lz2)
 "avS" = (
@@ -14179,10 +14179,10 @@
 /area/strata/exterior/marsh/spring_marshes)
 "aNC" = (
 /obj/structure/closet/crate,
-/obj/item/prop/helmetgarb/raincover/jungle,
-/obj/item/prop/helmetgarb/raincover/jungle,
-/obj/item/prop/helmetgarb/raincover/jungle,
-/obj/item/prop/helmetgarb/raincover/jungle,
+/obj/item/clothing/accessory/helmet/cover/raincover/jungle,
+/obj/item/clothing/accessory/helmet/cover/raincover/jungle,
+/obj/item/clothing/accessory/helmet/cover/raincover/jungle,
+/obj/item/clothing/accessory/helmet/cover/raincover/jungle,
 /obj/item/clothing/head/helmet/skullcap/jungle,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/outpost/maint)
@@ -17770,7 +17770,7 @@
 /obj/item/bedsheet/colorable{
 	color = "#798675"
 	},
-/obj/item/prop/helmetgarb/netting/jungle,
+/obj/item/clothing/accessory/helmet/cover/netting/jungle,
 /turf/open/floor/strata,
 /area/strata/interior/mining_outpost/south_dormitories)
 "aXG" = (
@@ -25744,7 +25744,7 @@
 /obj/structure/bed{
 	icon_state = "abed"
 	},
-/obj/item/prop/helmetgarb/netting/jungle,
+/obj/item/clothing/accessory/helmet/cover/netting/jungle,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/parts_storage_cave)
 "bvP" = (
@@ -26222,7 +26222,7 @@
 "bxl" = (
 /obj/effect/decal/cleanable/cobweb2,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/prop/helmetgarb/netting/jungle,
+/obj/item/clothing/accessory/helmet/cover/netting/jungle,
 /turf/open/floor/wood/wood_broken5,
 /area/strata/interior/wooden_ruins)
 "bxm" = (
@@ -27374,7 +27374,7 @@
 "bAO" = (
 /obj/structure/surface/table/almayer,
 /obj/item/reagent_container/food/drinks/cans/bodaplus,
-/obj/item/prop/helmetgarb/netting/jungle{
+/obj/item/clothing/accessory/helmet/cover/netting/jungle{
 	pixel_x = 9;
 	pixel_y = 8
 	},

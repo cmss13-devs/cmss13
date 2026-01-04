@@ -261,19 +261,19 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 	// PREFERENCES GEAR
 	/obj/item/prop/helmetgarb/gunoil = NO_GARB_OVERRIDE,
-	/obj/item/prop/helmetgarb/netting = NO_GARB_OVERRIDE,
-	/obj/item/prop/helmetgarb/netting/desert = NO_GARB_OVERRIDE,
-	/obj/item/prop/helmetgarb/netting/jungle = NO_GARB_OVERRIDE,
-	/obj/item/prop/helmetgarb/netting/urban = NO_GARB_OVERRIDE,
+	/obj/item/clothing/accessory/helmet/cover/netting = NO_GARB_OVERRIDE,
+	/obj/item/clothing/accessory/helmet/cover/netting/desert = NO_GARB_OVERRIDE,
+	/obj/item/clothing/accessory/helmet/cover/netting/jungle = NO_GARB_OVERRIDE,
+	/obj/item/clothing/accessory/helmet/cover/netting/urban = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/spent_buckshot = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/spent_slug = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/spent_flech = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/cartridge = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/prescription_bottle = NO_GARB_OVERRIDE,
-	/obj/item/prop/helmetgarb/raincover = NO_GARB_OVERRIDE,
-	/obj/item/prop/helmetgarb/raincover/jungle = NO_GARB_OVERRIDE,
-	/obj/item/prop/helmetgarb/raincover/desert = NO_GARB_OVERRIDE,
-	/obj/item/prop/helmetgarb/raincover/urban = NO_GARB_OVERRIDE,
+	/obj/item/clothing/accessory/helmet/cover/raincover = NO_GARB_OVERRIDE,
+	/obj/item/clothing/accessory/helmet/cover/raincover/jungle = NO_GARB_OVERRIDE,
+	/obj/item/clothing/accessory/helmet/cover/raincover/desert = NO_GARB_OVERRIDE,
+	/obj/item/clothing/accessory/helmet/cover/raincover/urban = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/rabbitsfoot = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/rosary = NO_GARB_OVERRIDE, // This one was already in the game for some reason, but never had an object
 	/obj/item/prop/helmetgarb/lucky_feather = NO_GARB_OVERRIDE,
@@ -521,6 +521,10 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		..()
 
 /obj/item/clothing/head/helmet/marine/attackby(obj/item/attacking_item, mob/user)
+	. = ..()
+	if(.)
+		return
+
 	if(istype(attacking_item, /obj/item/ammo_magazine) && world.time > helmet_bash_cooldown && user)
 		var/obj/item/ammo_magazine/M = attacking_item
 		var/ammo_level = "more than half full."

@@ -110,6 +110,10 @@
 		to_chat(src, SPAN_WARNING("We cannot rest while our crest is down!"))
 		return
 
+	if(enclosed_plates)
+		to_chat(src, SPAN_WARNING("We cannot rest when we are encased in plates!"))
+		return
+
 	return ..()
 
 /mob/living/carbon/xenomorph/set_lying_down()

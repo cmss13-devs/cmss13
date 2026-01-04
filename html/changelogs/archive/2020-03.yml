@@ -14,7 +14,7 @@
   - rscadd: Added Plasmagas to the game. Plasmagas is a resource found on key locations
       of the map and can be gathered by both factions to give them advantages on the
       field.
-  - rscadd: Added hive collectors, built by the resin construction ability when targetting
+  - rscadd: Added hive collectors, built by the resin construction ability when targeting
       a resource node or a tile with a resource node present. Gathers 1 resource per
       10 seconds and puts it into the hive resource pool.
   - rscadd: Plasmagas nodes will span in three categories, Hive, LZ, and Primary nodes
@@ -29,13 +29,13 @@
       appear closer to whichever faction has gathered the least resources.
   - rscadd: Added the ability to see resource node locations via the hive and command
       tacmaps.
-  - rscadd: Added the hive core, a hive structure that acts as a centrepiece to all
+  - rscadd: Added the hive core, a hive structure that acts as a centerpiece to all
       hives by growing hive weeds and stockpiling Plasmagas.
   - rscadd: Added the hive pylon, a remote structure that also grows hive weeds in
       a smaller radius as well as acting as a remote location from the hive to build
       hive structures and access the hive Plasmagas stockpile.
-  - rscadd: Hive pylons and cores will strengthen celings above them by 1 to 2 levels
-      if the area they encompass is already rooved. This will stop air support from
+  - rscadd: Hive pylons and cores will strengthen ceilings above them by 1 to 2 levels
+      if the area they encompass is already roofed. This will stop air support from
       being effective around hive locations.
   - rscadd: Added the spawn pool, a hive structure that can be fed bursted corpses
       in order to respawn a single xenomorph that was killed in action. Spawning can
@@ -50,7 +50,7 @@
   - rscadd: Hives will now have a reduced rate of burrowed larvae after 25 minutes
       into the round. You will need to gain captures in order to efficiently grow
       your hive.
-  - tweak: Default monkey spawns have been reduced from 25 to 5. Extra monkies from
+  - tweak: Default monkey spawns have been reduced from 25 to 5. Extra monkeys from
       survivor spawns have been removed.
   - tweak: Young xenomorphs have been made significantly weaker. Later maturations
       have remained the same stat-wise.
@@ -62,7 +62,7 @@
       #9824 '
   - bugfix: 'Wrapping paper can no longer be exploited to store large items. #8795 '
   - bugfix: 'The pistol rig can no longer hold the smartpistol. #9361 '
-  - bugfix: 'WestonMed plus will now vend tricord autoinjectors, isntead of incorrectly
+  - bugfix: 'WestonMed plus will now vend tricord autoinjectors, instead of incorrectly
       vending tricord hyposprays. #10257 '
   - tweak: Revert an unintentional change where hyposprays vended empty.
   - tweak: Allows SMG on the back (new onmob icons added)
@@ -140,7 +140,7 @@
   - wip: 'Until reactors get reworked: ship fusion engines now always start in perfect
       state with max fuel and no fuel consumption.'
   - experiment: ORDNANCE TECHNICIAN UPDATE. The Maintenance Technician is now renamed
-      to Ordnance Technicnan.
+      to Ordnance Technician.
   - rscadd: The Ordnance Technician (OT) keep the duties of maintaining the OB cannon
       and may perform the same duties as the old MT, but their primary active job
       is the construction of new weapons for the USCM arsenal.
@@ -163,7 +163,7 @@
       the armylathe now.
   - tweak: Small chemnades now fit in the underslug grenade launcher.
   - tweak: MT level engineering is now required to assemble any custom explosive,
-      which can generally be refered to as chembombs.
+      which can generally be referred to as chembombs.
   - tweak: Chemnades can now only use timers. Custom mines can use proximity sensors.
       Custom C4 can use any of the former plus remote signal.
   - tweak: Chemical explosions and chemical fire limits are now defined by the container.
@@ -193,7 +193,7 @@
       and 1 ammonium nitrate. This is a high strength high cost explosive.
   - rscadd: Explosive chemicals can now be either sensitive or insensitive.
   - rscadd: Sensitive explosives are potassium hydroxide (water and potassium), nitroglycerin
-      and ANFO. These will spontanously explode if made in more than a certain quantity
+      and ANFO. These will spontaneously explode if made in more than a certain quantity
       at a time or when ignited.
   - rscadd: Insensitive explosives are ammonium nitrate, cyclonite and octogen. These
       will only explode when ignited.
@@ -201,7 +201,7 @@
       Viscous and Explosive, which affect chemical fire and explosions.
   - rscadd: Added the following purchaseable supply crates to Req.
   - rscadd: Assembly crate, containing 5 of each igniters, prox sensors and timers.
-  - rscadd: Pyrotecnics crate, containing beakers of sulfuric acid, ethanol, phosphorus,
+  - rscadd: Pyrotechnics crate, containing beakers of sulfuric acid, ethanol, phosphorus,
       lithium, salt and potassium chloride.
   - rscadd: Phoron crate, containing 2 stacks of 30 phoron bars.
   - rscadd: Plastic crate, containing 2 stacks of 10 plastic sheets.
@@ -214,15 +214,15 @@
       and a few has been removed from the Almayer. The YouTool vendor has been renamed
       to Tool Storage Machine. The Engi-Vend has been renamed to Electronics Vendor.
       The contents of these three vendors has been tweaked to be more specialized.
-  - tweak: Vials from random vialboxes are now always full.
+  - tweak: Vials from random vial boxes are now always full.
   - tweak: Proximity sensors now have IFF.
   - tweak: It is now possible to disarm C4 with a multitool, or dissolve it with acid.
   - tweak: Removed the public autolathe in the hangar.
   - tweak: Increased bucket metal costs.
   - tweak: You can now dispose reagents from the chem grinder.
-  - tweak: Added mopbuckets to the autolathe for twice the cost of a normal bucket.
+  - tweak: Added mop buckets to the autolathe for twice the cost of a normal bucket.
       Holds twice the amount.
-  - tweak: Research Cells are no longer excempt from the grenade antigrief. So OTs
+  - tweak: Research Cells are no longer exempt from the grenade antigrief. So OTs
       don't go to research to turn them into your test lab, you aren't supposed to
       spend the whole round testing. That is why you have the demo scanner.
   - tweak: The Ordnance Technician will be restricted behind 3 hours of squad engineer
@@ -250,7 +250,7 @@
       by new enemy running through.
   - rscadd: Added Planted Flag, it will boost nearby marines in a 5x5 radius with
       Hold order and Focus order.
-  - tweak: Defense base, modules and the Generator can be crowbared to get the resources
+  - tweak: Defense base, modules and the Generator can be crowbarred to get the resources
       used back. The phoron is lost in the case of the Generator.
   - rscadd: There are now emergency phoron tanks to power Generators in the red alert
       chambers on Almayer, specifically in Engineering and in CIC.

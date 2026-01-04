@@ -252,7 +252,7 @@
 
 /obj/item/ammo_magazine/pistol/np92/tranq
 	name = "\improper NPZ92 tranq magazine (9x18mm Makarov)"
-	desc = "A tranquilizer 9x18mm Makaraov pistol magazine."
+	desc = "A tranquilizer 9x18mm Makarov pistol magazine."
 	default_ammo = /datum/ammo/bullet/pistol/tranq
 	caliber = "9x18mm Makarov"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/pistols.dmi'
@@ -339,7 +339,7 @@
 
 //-------------------------------------------------------
 //.45 MARSHALS PISTOL //Inspired by the Browning Hipower
-// rebalanced - singlefire, very strong bullets but slow to fire and heavy recoil
+// rebalanced - single fire, very strong bullets but slow to fire and heavy recoil
 // redesigned - now rejected USCM sidearm model, utilized by Colonial Marshals and other stray groups.
 
 /obj/item/ammo_magazine/pistol/highpower

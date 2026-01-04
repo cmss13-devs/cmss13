@@ -124,7 +124,7 @@
 
 /obj/item/tool/scythe
 	name = "scythe"
-	desc = "A sharp and curved blade on a long fibremetal handle, this tool makes it easy to reap what you sow."
+	desc = "A sharp and curved blade on a long fibre-metal handle, this tool makes it easy to reap what you sow."
 	icon = 'icons/obj/items/tools.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',

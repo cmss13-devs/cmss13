@@ -65,7 +65,7 @@
 
 /datum/dropship_hijack/almayer/proc/finish_landing()
 	SShijack.announce_status_on_crash()
-	SSticker.hijack_ocurred()
+	SSticker.hijack_occurred()
 
 /datum/dropship_hijack/almayer/proc/fire()
 	if(!shuttle || !crash_site)

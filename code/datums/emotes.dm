@@ -210,7 +210,7 @@
 	return sound //by default just return this var.
 
 /**
- * To replace pronouns in the inputed string with the user's proper pronouns.
+ * To replace pronouns in the inputted string with the user's proper pronouns.
  *
  * Arguments:
  * * user - Person that is trying to send the emote.

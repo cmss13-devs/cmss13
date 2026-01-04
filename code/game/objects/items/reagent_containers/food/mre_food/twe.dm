@@ -100,7 +100,7 @@
 /obj/item/reagent_container/food/snacks/mre_food/twe/side/nutpatty
 	name = "chickpeas patty"
 	icon_state = "nut patty"
-	desc = "Vegeterian patte from from chickpeas, covered in bread crumbs and fried, reminds you of fish sticks for some reason."
+	desc = "Vegetarian patty from from chickpeas, covered in bread crumbs and fried, reminds you of fish sticks for some reason."
 
 /obj/item/reagent_container/food/snacks/mre_food/twe/side/nutpatty/Initialize()
 	. = ..()
@@ -192,7 +192,7 @@
 
 /obj/item/mre_food_packet/twe/dessert
 	name = "\improper ORP dessert"
-	desc = "An Operatipn Ration Pack side component. Contains a sweet dessert, to be eaten after the main (or before, if you're rebellious)."
+	desc = "An Operational Ration Pack side component. Contains a sweet dessert, to be eaten after the main (or before, if you're rebellious)."
 	icon_state = "twe_dessert"
 	food_list = list(
 		/obj/item/reagent_container/food/snacks/mre_food/twe/dessert/chocobar,

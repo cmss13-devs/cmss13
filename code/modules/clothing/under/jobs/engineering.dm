@@ -1,5 +1,7 @@
-//Contains: Engineering department jumpsuits
-
+/*
+ * Contains:
+ * Engineering
+ */
 /obj/item/clothing/under/rank/atmospheric_technician
 	desc = "It's a jumpsuit worn by atmospheric technicians."
 	name = "atmospheric technician's jumpsuit"

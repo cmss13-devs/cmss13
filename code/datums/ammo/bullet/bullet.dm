@@ -47,7 +47,7 @@
 		SPAN_HIGHDANGER("[user] aims \the [fired_from] directly at your head!"),
 		SPAN_DANGER("[user] aims \the [fired_from] at [execution_target]'s head!"))
 
-	user.next_move += 1.1 SECONDS //PB has no click delay; readding it here to prevent people accidentally queuing up multiple executions.
+	user.next_move += 1.1 SECONDS //PB has no click delay; re-adding it here to prevent people accidentally queuing up multiple executions.
 
 	if(!do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || !user.Adjacent(execution_target))
 		fired_from.delete_bullet(firing_projectile, TRUE)

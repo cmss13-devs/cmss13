@@ -1,4 +1,4 @@
-// Updated version of old powerswitch by Atlantis
+// Updated version of old power switch by Atlantis
 // Has better texture, and is now considered electronic device
 // AI has ability to toggle it in 5 seconds
 // Humans need 30 seconds (AI is faster when it comes to complex electronics)

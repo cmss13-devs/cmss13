@@ -57,7 +57,7 @@
   - rscadd: IFTS Mini-Scope has IFF but it also lowers your RoF.
   - rscadd: Carbon Stock - unique attachment for the Battle Rifle. Gives Battle Rifle
       a significant increase in accuracy while only increasing wield delay and size.
-  - tweak: Mini-sniper kit now provides L41A Battle Rifle, Supressor, Extended Barrel,
+  - tweak: Mini-sniper kit now provides L41A Battle Rifle, Suppressor, Extended Barrel,
       IFTS Mini-Scope, Carbon Stock, 2 Battle Rifle AP mags.
   - rscadd: Composite Deployable Folding Barricades - barricade that can be deployed
       in 3 seconds without any training. They can be repaired without skill for 40%
@@ -72,7 +72,7 @@
       of backpack.
   - rscadd: Folding Barricades are extremely rare.
   - rscadd: Added 4xFolding Barricade to req for 100 points.
-  - rscadd: 'Added a rare requisition only kit - Heavy Support Kit. It conists of:
+  - rscadd: 'Added a rare requisition only kit - Heavy Support Kit. It consists of:
       HP Rifle, 1 ammo box for HP rifle, Bipod, Folding Barricade, Welding Tool and
       Welding Glasses.'
   - tweak: 'Webbing cost for PFC: 15 -> 30.'
@@ -131,7 +131,7 @@
   - bugfix: Smartpistol holsters can now actually be attached to the exosuit slot.
   - tweak: Engineers and Medics can now buy heavy and light armor in their vendors.
   Neth Iafin:
-  - tweak: Mini-sniper kit now has miniscope insted of IFF scope.
+  - tweak: Mini-sniper kit now has miniscope instead of IFF scope.
   - tweak: IFF Scope is a Requisition Only attachment.
   - tweak: IFF Scope reduces gun damage and also reduces fire rate.
   - tweak: L41A has no damage falloff at all now.
@@ -154,7 +154,7 @@
   - bugfix: Corrects smg brace scatter accuracy.
   - spellcheck: Renamed Commodore's peaked cap to Captain's peaked cap.
   - tweak: Renamed M5A6 smart pistol to SU-6 smart pistol.
-  - bugfix: Adjusted L4A1 attachement offsets.
+  - bugfix: Adjusted L4A1 attachment offsets.
   - bugfix: Adjusted SU-6 Smartpistol attachment offsets.
   - bugfix: Put the L4A1 into the req vendors.
   - bugfix: Fixed flechette box icon error.
@@ -194,7 +194,7 @@
       as they have cryoxadone or clonexadone in them.
   - rscadd: Cryotubes now notify bystanders when their patient's internal bleeding
       is or their external wounds are healed.
-  - maptweak: Almayer. Deck 1's ventillation system, from the OB cannon to the R&R
+  - maptweak: Almayer. Deck 1's ventilation system, from the OB cannon to the R&R
       area, was vastly expanded. Not final yet, working on the rest.
   - maptweak: Almayer. Moved the crew monitoring console to the public area.
   - maptweak: Almayer. Added a disposal bin and two MarineMeds to the Treatment Center.
@@ -240,7 +240,7 @@
   - experiment: Adjustments will be made as time goes on, and others will be added
       too. They can be bought as you would buy a normal mutator. Keep in mind that
       they count as Keystones, so you will not be able to buy another Keystone if
-      you have a Strain bought, and viceversa.
+      you have a Strain bought, and vice versa.
   Miraviel:
   - rscadd: Larvae now get a notification once they are ready to evolve.
   - tweak: The Stats panel for Xenomorphs was tweaked to give more important information
@@ -452,7 +452,7 @@
       and using a welder on them.
   MattAtlas:
   - rscadd: Dutch's Dozen have been re-added to the game as an admin-spawn only ERT
-      (and as a Select Equipment preset, which I reccomend using, considering how
+      (and as a Select Equipment preset, which I recommend using, considering how
       strong they are).
   - tweak: The Ol' Painless should actually hit things now.
   - bugfix: The grenadier belt should now actually spawn with grenades.

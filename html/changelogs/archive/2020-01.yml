@@ -94,7 +94,7 @@
   - rscadd: The Synthesis Simulator runs using a new resource called research credits.
       Research credits are granted by identifying chemicals and defcon decreasing.
       More methods are to come.
-  - rscadd: Survivor doctor, survivor scientist and survivor liason now holds special
+  - rscadd: Survivor doctor, survivor scientist and survivor liaison now holds special
       id cards that can bypass clearance level requirements up to level 3, 4 and 5
       respectively, regardless of defcon status. This can only be done by the actual
       card holder.
@@ -107,7 +107,7 @@
       of the XRF.
   - tweak: Research clearance now starts at level 1.
   - tweak: The XRF now prints the overdose threshold and potency of properties.
-  - tweak: Research chemicals are now scanable with the HF2.
+  - tweak: Research chemicals are now scannable with the HF2.
   - tweak: Research chemicals can no longer require synthetic blood as a component.
   - tweak: The chemical report that the scientist survivor holds now contains more
       data.
@@ -142,7 +142,7 @@
 2020-01-12:
   Neth:
   - tweak: Eggs can now be planted only in a 15 cell radius around queen in ovipositor.
-      If there is no queen - eggs can be planted whereever. Queen cannot plant her
+      If there is no queen - eggs can be planted wherever. Queen cannot plant her
       own eggs while not in ovipositor. This has no effect on humans planting eggs
       in research.
   - rscadd: Queen can plant eggs while in ovipositor withing 3 tiles range from her.
@@ -155,7 +155,7 @@
       it.
   Vampmare:
   - tweak: Added a small windup to hugging someone.
-  - tweak: Synthetics cant be nested anymore.
+  - tweak: Synthetics can't be nested anymore.
   - tweak: Reduced the multiburst average output.
   - tweak: If there is a Queen alive, nests are now only buildable if the Queen is
       in Ovipositor and the nest is built within 15 tiles of the Queen. If there is
@@ -221,7 +221,7 @@
       them.
   Ranged66:
   - rscadd: Added 'switch storage drawing method' functionality to all clothing with
-      storage (armor, labcoats, vests etc!), and webbings or other accessories.
+      storage (armor, lab coats, vests etc!), and webbings or other accessories.
   RavingManiac:
   - rscadd: 'New firearm: The Basira-Armstrong rifle, a civilian semi-automatic hunting
       rifle renown for its light weight and pinpoint accuracy. Comparable to the L42A

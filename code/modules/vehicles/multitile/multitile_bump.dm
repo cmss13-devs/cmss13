@@ -585,7 +585,7 @@
 		if(faction == driver.faction)
 			msg_admin_ff("[key_name(driver)] rammed [key_name(src)] with \the [V] in [get_area(src)] [ADMIN_JMP(driver)] [ADMIN_PM(driver)]")
 	else
-		log_attack("[key_name(src)] was friendly pushed by [key_name(driver)] with [V].") //to be able to determine whether vehicle was pushign friendlies
+		log_attack("[key_name(src)] was friendly pushed by [key_name(driver)] with [V].") //to be able to determine whether vehicle was pushing friendlies
 
 	return mob_moved
 
@@ -790,7 +790,7 @@
 		return . = ..()
 
 //CRUSHER CHARGE COLLISION
-//Crushers going top speed can charge into & move vehicles with broken/without locmotion module
+//Crushers going top speed can charge into & move vehicles with broken/without locomotion module
 /obj/vehicle/multitile/Collided(atom/A)
 	. = ..()
 
@@ -801,7 +801,7 @@
 		var/do_move = TRUE
 		if(health > 0)
 			take_damage_type(100, "blunt", C)
-			visible_message(SPAN_DANGER("\The [A] ramms \the [src]!"))
+			visible_message(SPAN_DANGER("\The [A] rams \the [src]!"))
 			for(var/obj/item/hardpoint/locomotion/Loco in hardpoints)
 				if(Loco.health > 0)
 					do_move = FALSE

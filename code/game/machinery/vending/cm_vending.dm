@@ -579,7 +579,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 				if(can_buy_flags)
 					if(can_buy_flags == MARINE_CAN_BUY_ESSENTIALS)
 						if(vendor_role.Find(JOB_SQUAD_SPECIALIST))
-							// handle specalist essential gear assignment
+							// handle specialist essential gear assignment
 							if(user.job != JOB_SQUAD_SPECIALIST)
 								to_chat(user, SPAN_WARNING("Only specialists can take specialist sets."))
 								vend_fail()
@@ -976,7 +976,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 
 ///this proc, well, populates product list based on roundstart amount of players
 ///do not rely on scale here if you use VEND_STOCK_DYNAMIC because it's already taken into account
-///this is here for historical reasons and should ONLY be called by populate_product_list_and_boxes if you want dynamic stocks and ammoboxes to work
+///this is here for historical reasons and should ONLY be called by populate_product_list_and_boxes if you want dynamic stocks and ammo boxes to work
 /obj/structure/machinery/cm_vending/sorted/proc/populate_product_list(scale)
 	return
 

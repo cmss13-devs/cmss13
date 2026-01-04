@@ -6,7 +6,7 @@
 	element_flags = ELEMENT_DETACH|ELEMENT_BESPOKE
 	id_arg_index = 2
 
-	//amount of tiles that projectile should be skiping mobs.
+	//amount of tiles that projectile should be skipping mobs.
 	var/ignored_range = 0
 
 /datum/element/bullet_trait_ignored_range/Attach(datum/target, range_to_ignore)

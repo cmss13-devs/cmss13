@@ -429,7 +429,7 @@ K9 SCANNER
 
 /obj/item/device/black_market_scanner
 	name = "suspicious device"
-	desc = "This is... seemingly a makeshift combination between an autopsy scanner, an ancient t-ray scanner, and some sort of robotic clamp, but you can see a lightbulb inside it. What the hell is this?"
+	desc = "This is... seemingly a makeshift combination between an autopsy scanner, an ancient t-ray scanner, and some sort of robotic clamp, but you can see a light bulb inside it. What the hell is this?"
 	icon_state = "mendoza_scanner"
 	item_state = "analyzer"
 	w_class = SIZE_SMALL

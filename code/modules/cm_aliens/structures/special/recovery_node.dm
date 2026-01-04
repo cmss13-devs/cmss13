@@ -91,7 +91,7 @@
 	update_minimap_icon()
 
 	if(boosted_structure)
-		heal_amount = 100 // increase heal amount by abit, needs tweaking probably
+		heal_amount = 100 // increase heal amount by a bit, needs tweaking probably
 		if(health <= maxhealth)
 			health += 25 // Regenerate health by 25
 	else

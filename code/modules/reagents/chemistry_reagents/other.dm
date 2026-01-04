@@ -196,7 +196,7 @@
 /datum/reagent/space_drugs
 	name = "Space drugs"
 	id = "space_drugs"
-	description = "An illegal compound that causes hallucinations, visual artefacts and loss of balance."
+	description = "An illegal compound that causes hallucinations, visual artifacts and loss of balance."
 	reagent_state = LIQUID
 	color = "#60A584" // rgb: 96, 165, 132
 	overdose = REAGENTS_OVERDOSE
@@ -401,7 +401,7 @@
 /datum/reagent/sugar
 	name = "Sugar"
 	id = "sugar"
-	description = "The organic compound commonly known as table sugar and sometimes called saccharose. This white, odorless, crystalline powder has a pleasing, sweet taste. The most simple form of sugar, glucose, is the only form of nutriment for red blood cells as they have no mitocondria. Sugar can therefore be used to improve blood regeneration as a nutriment, although ineffective."
+	description = "The organic compound commonly known as table sugar and sometimes called saccharose. This white, odorless, crystalline powder has a pleasing, sweet taste. The most simple form of sugar, glucose, is the only form of nutriment for red blood cells as they have no mitochondria. Sugar can therefore be used to improve blood regeneration as a nutriment, although ineffective."
 	reagent_state = SOLID
 	color = COLOR_WHITE
 	chemclass = CHEM_CLASS_BASIC
@@ -645,7 +645,7 @@
 /datum/reagent/fluorosurfactant//foam precursor
 	name = "Fluorosurfactant"
 	id = "fluorosurfactant"
-	description = "A perfluoronated sulfonic acid that forms a foam when mixed with water."
+	description = "A perfluorinated sulfonic acid that forms a foam when mixed with water."
 	reagent_state = LIQUID
 	color = "#9E6B38" // rgb: 158, 107, 56
 	chemclass = CHEM_CLASS_UNCOMMON
@@ -653,7 +653,7 @@
 /datum/reagent/foaming_agent// Metal foaming agent. This is lithium hydride. Add other recipes (e.g. LiH + H2O -> LiOH + H2) eventually.
 	name = "Foaming agent"
 	id = "foaming_agent"
-	description = "An agent that yeilds metallic foam when mixed with light metal and a strong acid."
+	description = "An agent that yields metallic foam when mixed with light metal and a strong acid."
 	reagent_state = SOLID
 	color = "#664B63" // rgb: 102, 75, 99
 	chemclass = CHEM_CLASS_UNCOMMON
@@ -751,7 +751,7 @@
 /datum/reagent/viroxeno
 	name = "Xenogenetic Catalyst"
 	id = "xenogenic"
-	description = "A catalyst chemical that is extremely aggresive towards any organic substance before swiftly turning it into itself."
+	description = "A catalyst chemical that is extremely aggressive towards any organic substance before swiftly turning it into itself."
 	reagent_state = LIQUID
 	color = "#a244d8"
 	overdose = 10
@@ -897,7 +897,7 @@
 /datum/reagent/napalm/deathsquad //version of fuel for dsquad flamers.
 	name = "Napalm EX"
 	id = "napalmex"
-	description = "A sticky combustible liquid chemical made up of a combonation of rare and dangerous reagents both that penetrates the best fire retardants, and burns extremely hot."
+	description = "A sticky combustible liquid chemical made up of a combination of rare and dangerous reagents both that penetrates the best fire retardants, and burns extremely hot."
 	color = "#641dd6"
 	burncolor = "#641dd6"
 	burn_sprite = "dynamic"
@@ -911,7 +911,7 @@
 /datum/reagent/napalm/upp
 	name = "R189"
 	id = "R189"
-	description = "A UPP chemical, it burns at an extremely high tempature and is designed to melt directly through fortified positions or bunkers."
+	description = "A UPP chemical, it burns at an extremely high temperature and is designed to melt directly through fortified positions or bunkers."
 	color = "#ffe49c"
 	burncolor = "#ffe49c"
 	burn_sprite = "dynamic"
@@ -925,7 +925,7 @@
 /datum/reagent/chlorinetrifluoride
 	name = "Chlorine Trifluoride"
 	id = "chlorine trifluoride"
-	description = "A highly reactive interhalogen compound capaple of self ignition. A very strong oxidizer and is extremely reactive with most organic and inorganic materials."
+	description = "A highly reactive interhalogen compound capable of self ignition. A very strong oxidizer and is extremely reactive with most organic and inorganic materials."
 	reagent_state = LIQUID
 	color = COLOR_CYAN
 	custom_metabolism = 100
@@ -1121,7 +1121,7 @@
 /datum/reagent/plasma/nutrient
 	name = "Nutrient Plasma"
 	id = PLASMA_NUTRIENT
-	description = "A tarquise plasma..."
+	description = "A turquoise plasma..."
 	color = "#2fbe88"
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
@@ -1195,6 +1195,6 @@
 		return
 
 	var/obj/effect/decal/prints/reacting_prints = reacting_on
-	reacting_prints.set_visiblity(TRUE)
+	reacting_prints.set_visibility(TRUE)
 
-	addtimer(CALLBACK(reacting_prints, TYPE_PROC_REF(/obj/effect/decal/prints, set_visiblity), FALSE), 1 MINUTES, TIMER_UNIQUE|TIMER_OVERRIDE)
+	addtimer(CALLBACK(reacting_prints, TYPE_PROC_REF(/obj/effect/decal/prints, set_visibility), FALSE), 1 MINUTES, TIMER_UNIQUE|TIMER_OVERRIDE)

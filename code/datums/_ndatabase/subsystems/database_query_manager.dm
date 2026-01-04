@@ -25,7 +25,7 @@ GLOBAL_REAL(SSdatabase, /datum/controller/subsystem/database_query_manager)
 	wait   = 1
 	init_order = SS_INIT_DATABASE
 	init_stage = INITSTAGE_EARLY
-	priority   = SS_PRIORITY_DATABASE // Low prio SS_TICKER
+	priority   = SS_PRIORITY_DATABASE // Low priority SS_TICKER
 	flags  = SS_TICKER|SS_NO_INIT
 
 	var/datum/db/connection/connection

@@ -151,7 +151,7 @@
 
 /turf/open/hybrisa/street/NSPA_2x2_emblem
 	icon_state = "NSPA_emblem_concrete_2x2"
-	name = "NSPA - Concrete Sakrua Emblem"
+	name = "NSPA - Concrete Sakura Emblem"
 	desc = "A concrete emblem resembling a (Sakura Flower), the symbol of the NSPA, below is is an inscription reading - (Empire and Honor, Bound by Duty. Duty Beyond Borders, Justice Across Worlds)."
 
 /turf/open/hybrisa/street/NSPA_2x2_emblem/north
@@ -866,7 +866,7 @@
 	name = "NSPA - Golden Sakura Emblem"
 
 /turf/open/floor/hybrisa/misc/wybiglogo
-	name = "Weyland-Yutani corp. - bulding better worlds."
+	name = "Weyland-Yutani corp. - building better worlds."
 	icon_state = "big8x8wylogo"
 
 /turf/open/floor/hybrisa/misc/wybiglogo/southwest
@@ -1086,7 +1086,7 @@
 
 /turf/closed/wall/hybrisa/rock
 	name = "rock wall"
-	desc = "Massive columns comprised of anicent sedimentary rocks loom before you."
+	desc = "Massive columns comprised of ancient sedimentary rocks loom before you."
 	icon = 'icons/turf/walls/kutjevorockdark.dmi'
 	icon_state = "rock"
 	walltype = WALL_KUTJEVO_ROCK

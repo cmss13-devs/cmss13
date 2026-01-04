@@ -48,7 +48,7 @@
 	// Bad things are based on charge percentage.
 	// Possible effects:
 	// Sparks - Lets out few sparks, mostly fire hazard if phoron present. Otherwise purely aesthetic.
-	// Shock - Depending on intensity harms the user. Insultated Gloves protect against weaker shocks, but strong shock bypasses them.
+	// Shock - Depending on intensity harms the user. Insulated Gloves protect against weaker shocks, but strong shock bypasses them.
 	// EMP Pulse - Lets out EMP pulse discharge which screws up nearby electronics.
 	// Light Overload - X% chance to overload each lighting circuit in connected powernet. APC based.
 	// APC Failure - X% chance to destroy APC causing very weak explosion too. Won't cause hull breach or serious harm.
@@ -126,7 +126,7 @@
 
 		if (61 to INFINITY)
 			// Massive overcharge
-			// Sparks, Near - instantkill shock, Strong EMP, 25% light overload, 5% APC failure. 50% of SMES explosion. This is bad.
+			// Sparks, Near - instakill shock, Strong EMP, 25% light overload, 5% APC failure. 50% of SMES explosion. This is bad.
 			s.set_up(10,1,src)
 			s.start()
 			to_chat(h_user, "Massive electrical arc sparks between you and [src]. Last thing you can think about is \"Oh shit...\"")
@@ -140,16 +140,16 @@
 			src.ping("Caution. Output regulators malfunction. Significant uncontrolled discharge detected.")
 
 			if (prob(50))
-				// Added admin-notifications so they can stop it when griffed.
+				// Added admin-notifications so they can stop it when griefed.
 				log_game("SMES explosion imminent.")
 				message_admins("SMES explosion imminent.")
 				src.ping("DANGER! Magnetic containment field unstable! Containment field failure imminent!")
 				failing = 1
 				// 30 - 60 seconds and then BAM!
 				spawn(rand(300,600))
-					if(!failing) // Admin can manually set this var back to 0 to stop overload, for use when griffed.
+					if(!failing) // Admin can manually set this var back to 0 to stop overload, for use when griefed.
 						update_icon()
-						src.ping("Magnetic containment stabilised.")
+						src.ping("Magnetic containment stabilized.")
 						return
 					src.ping("DANGER! Magnetic containment field failure in 3 ... 2 ... 1 ...")
 					explosion(src.loc,1,2,4,8)
@@ -251,4 +251,4 @@
 		else if(HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL))
 			safeties_enabled = !safeties_enabled
 			to_chat(user, SPAN_WARNING("You [safeties_enabled ? "connected" : "disconnected"] the safety circuit."))
-			src.visible_message("[icon2html(src, viewers(src))] <b>[src]</b> beeps: \"Caution. Safety circuit has been: [safeties_enabled ? "re-enabled" : "disabled. Please excercise caution."]\"")
+			src.visible_message("[icon2html(src, viewers(src))] <b>[src]</b> beeps: \"Caution. Safety circuit has been: [safeties_enabled ? "re-enabled" : "disabled. Please exercise caution."]\"")

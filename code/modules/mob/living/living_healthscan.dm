@@ -458,7 +458,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 		if(length(advice))
 			data["advice"] = advice
 		else
-			data["advice"] = null // interstingly even if we don't set data at all, re-using UI that had this data still has it
+			data["advice"] = null // interestingly even if we don't set data at all, re-using UI that had this data still has it
 
 		//diseases
 		var/list/diseases = list()
@@ -476,7 +476,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 		if(length(diseases))
 			data["diseases"] = diseases
 		else
-			data["diseases"] = null // interstingly even if we don't set data at all, re-using UI that had this data still has it
+			data["diseases"] = null // interestingly even if we don't set data at all, re-using UI that had this data still has it
 
 	data["ssd"] = null //clear the data in case we have an old input from a previous scan
 	if(target_mob.getBrainLoss() >= 100 || !target_mob.has_brain())
@@ -509,7 +509,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 			ui.send_update(list("ui_mode" = ui_mode))
 			return FALSE
 
-/// legacy proc for to_chat messages on health analysers
+/// legacy proc for to_chat messages on health analyzers
 /mob/living/proc/health_scan(mob/living/carbon/human/user, ignore_delay = FALSE, show_limb_damage = TRUE, show_browser = TRUE, alien = FALSE, do_checks = TRUE) // ahem. FUCK WHOEVER CODED THIS SHIT AS NUMBERS AND NOT DEFINES.
 	if(do_checks)
 		if((user.getBrainLoss() >= 60) && prob(50))
@@ -635,7 +635,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 					dat += "(Splinted)"
 				dat += "\n"
 
-	// Show red messages - broken bokes, etc
+	// Show red messages - broken bones, etc
 	if (src.getCloneLoss())
 		dat += "\t<span class='scanner'> *Subject appears to have been imperfectly cloned.</span>\n"
 	for(var/datum/disease/D in src.viruses)

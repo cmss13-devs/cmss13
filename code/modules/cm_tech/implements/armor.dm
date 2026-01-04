@@ -8,7 +8,7 @@
 
 	worn_accessory_slot = ACCESSORY_SLOT_ARMOR_C
 	w_class = SIZE_MEDIUM
-	/// is it *armor* or something different & irrelevant and always passes damage & doesnt take damage to itself?
+	/// is it *armor* or something different & irrelevant and always passes damage & doesn't take damage to itself?
 	var/is_armor = TRUE
 	var/armor_health = 10
 	var/armor_maxhealth = 10
@@ -251,7 +251,7 @@
 	if(user.universal_understand)
 		to_chat(user, SPAN_NOTICE("[src] makes a sad woop sound as it powers down."))
 		attached_uni = null
-		if(user.chem_effect_flags & CHEM_EFFECT_HYPER_THROTTLE) // we are currently under effect of simular univeral understand drug.
+		if(user.chem_effect_flags & CHEM_EFFECT_HYPER_THROTTLE) // we are currently under effect of similar universal understand drug.
 			return
 		user.universal_understand = FALSE
 
@@ -261,7 +261,7 @@
 		return
 	if(user.universal_understand)
 		to_chat(user, SPAN_NOTICE("[src] makes a woop sound as it is powered down."))
-		if(user.chem_effect_flags & CHEM_EFFECT_HYPER_THROTTLE) // we are currently under effect of simular univeral understand drug.
+		if(user.chem_effect_flags & CHEM_EFFECT_HYPER_THROTTLE) // we are currently under effect of similar universal understand drug.
 			return
 		attached_uni = null
 		user.universal_understand = FALSE

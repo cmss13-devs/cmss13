@@ -32,7 +32,7 @@
 	group = "Weapons"
 
 /datum/supply_packs/grenade_launchers
-	name = "M85A1 Grenade Launcher Crate (x2 Guncases)"
+	name = "M85A1 Grenade Launcher Crate (x2 Gun Cases)"
 	contains = list(
 		/obj/item/storage/box/guncase/m85a1,
 		/obj/item/storage/box/guncase/m85a1,

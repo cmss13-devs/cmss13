@@ -353,6 +353,10 @@
 	playsound(popper, 'sound/effects/xeno_newlarva.ogg', 25, TRUE)
 	popper.generate_name()
 	popper.timeofdeath = user.timeofdeath
+	to_chat(user, SPAN_PATHOGEN_ANNOUNCE("You are now a Pathogen Popper!"))
+	to_chat(user, SPAN_PATHOGEN_LEADER("You exist to spread mycelium and infect hosts with spores."))
+	to_chat(user, SPAN_PATHOGEN_LEADER("You can create spore sacs by sacrificing your life, or release spores when killed."))
+	to_chat(user, SPAN_PATHOGEN_LEADER("You are ineffective in combat and do minimal damage."))
 	msg_admin_niche("[key_name(popper)] has joined as a Pathogen Popper at ([source.x],[source.y],[source.z]).")
 
 /datum/hive_status/proc/can_spawn_as_popper(mob/dead/observer/user)

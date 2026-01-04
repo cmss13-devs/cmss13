@@ -164,10 +164,10 @@
 
 /obj/structure/closet/bodybag/attack_hand(mob/living/user)
 	if(!opened)
-		open_cooldown = world.time + 10 //1s cooldown for opening and closing, stop that spam! - stan_albatross
 		if(open_cooldown > world.time)
 			to_chat(user, SPAN_WARNING("\The [src] has been opened too recently!"))
 			return
+		open_cooldown = world.time + 10 //1s cooldown for opening and closing, stop that spam! - stan_albatross
 		user.visible_message(SPAN_WARNING("[user] opens [src]."), SPAN_NOTICE("You open [src]."))
 		var/area/bag_area = get_area(user)
 		log_attack("[key_name(user)] opened [src] at [bag_area.name].")

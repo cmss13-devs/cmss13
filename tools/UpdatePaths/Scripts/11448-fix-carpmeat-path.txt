@@ -1,0 +1,2 @@
+/obj/item/reagent_container/food/snacks/carpmeat/@SUBTYPES : /obj/item/reagent_container/food/snacks/meat/fish/carpmeat/@SUBTYPES{@OLD}
+

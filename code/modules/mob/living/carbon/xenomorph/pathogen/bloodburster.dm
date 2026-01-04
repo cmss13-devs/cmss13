@@ -173,6 +173,8 @@
 	set waitfor = 0
 	if(victim.chestburst || loc != victim)
 		return
+	if(!client)
+		free_for_ghosts(TRUE)
 	victim.mob_flags |= BLOOD_BURSTING
 	victim.chestburst = TRUE
 	to_chat(src, SPAN_DANGER("We start bursting out of [victim]'s body!"))

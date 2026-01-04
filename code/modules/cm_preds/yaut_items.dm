@@ -1007,6 +1007,9 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 				if(isyautja(H))
 					to_chat(H, SPAN_NOTICE("You carefully avoid stepping on the trap."))
 					return
+				if((armed_faction == FACTION_YAUTJA_BADBLOOD) && xeno_hivenumber(XENO_HIVE_YAUTJA_BADBLOOD))
+					to_chat(H, SPAN_NOTICE("We carefully avoid stepping on the trap."))
+					return
 				trapMob(H)
 				for(var/mob/O in viewers(H, null))
 					if(O == H)

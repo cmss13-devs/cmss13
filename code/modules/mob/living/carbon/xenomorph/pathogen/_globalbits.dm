@@ -285,8 +285,8 @@
 	var/list/castes_available = caste.evolves_to.Copy()
 
 	// Also offer queen to any tier 1 that can evolve at all if there isn't a queen
-	if(tier <= 2 && !hive.living_xeno_queen)
-		castes_available |= PATHOGEN_CREATURE_OVERMIND
+//	if(tier <= 2 && !hive.living_xeno_queen)
+//		castes_available |= PATHOGEN_CREATURE_OVERMIND
 
 	for(var/caste in castes_available)
 		if(GLOB.xeno_datum_list[caste].minimum_evolve_time > ROUND_TIME)
@@ -308,8 +308,8 @@
 	if(!castepick) //Changed my mind
 		return
 
-	if(castepick == PATHOGEN_CREATURE_OVERMIND && tgui_alert(src, "You are about to evolve into the overmind, which places its core on the tile you're on when evolving. This core cannot be moved and you cannot regress. Are you sure you would like to place your core here?", "Evolving to Overmind", list("Yes", "No"), FALSE) != "Yes")
-		return
+//	if(castepick == PATHOGEN_CREATURE_OVERMIND && tgui_alert(src, "You are about to evolve into the overmind, which places its core on the tile you're on when evolving. This core cannot be moved and you cannot regress. Are you sure you would like to place your core here?", "Evolving to Overmind", list("Yes", "No"), FALSE) != "Yes")
+//		return
 
 	if(SEND_SIGNAL(src, COMSIG_XENO_TRY_EVOLVE, castepick) & COMPONENT_OVERRIDE_EVOLVE)
 		return // Message will be handled by component
@@ -322,7 +322,7 @@
 	if(!evolve_checks())
 		return
 
-	if(evolution_threshold && castepick != PATHOGEN_CREATURE_OVERMIND) //Does the caste have an evolution timer? Then check it
+	if(evolution_threshold)// && castepick != PATHOGEN_CREATURE_OVERMIND) //Does the caste have an evolution timer? Then check it
 		if(evolution_stored < evolution_threshold)
 			to_chat(src, SPAN_WARNING("We must wait before evolving. Currently at: [evolution_stored] / [evolution_threshold]."))
 			return
@@ -347,9 +347,9 @@
 		evolving = FALSE
 		return
 
-	if(castepick == PATHOGEN_CREATURE_OVERMIND && hive.living_xeno_queen)
-		to_chat(src, SPAN_WARNING("Another creature has become the Overmind. We remain as we are, for now."))
-		return
+//	if(castepick == PATHOGEN_CREATURE_OVERMIND && hive.living_xeno_queen)
+//		to_chat(src, SPAN_WARNING("Another creature has become the Overmind. We remain as we are, for now."))
+//		return
 
 	evolving = FALSE
 

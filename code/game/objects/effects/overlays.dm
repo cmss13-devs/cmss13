@@ -226,6 +226,27 @@
 	icon = 'icons/obj/items/weapons/projectiles.dmi'
 	icon_state = "laser_target3"
 
+//animation of the OB shell actually hitting the ground
+/obj/effect/overlay/temp/ob_impact
+	name = "ob impact animation"
+	effect_duration = 12
+	var/atom/shell
+
+/obj/effect/overlay/temp/ob_impact/Initialize(mapload, atom/owner)
+	. = ..()
+	if (!owner)
+		log_debug("Created a [type] without `owner`")
+		qdel(src)
+		return
+	shell = owner
+	appearance = shell.appearance
+	transform = matrix().Turn(-90)
+	layer = initial(layer)
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	pixel_y = 600
+	animate(src, pixel_y = -10, time=10)
+	animate(icon_state=null, icon=null, time=2) // to vanish it immediately
+
 /obj/effect/overlay/temp/emp_sparks
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "empdisable"

@@ -387,32 +387,39 @@
 	HUD_toggled = client.prefs.observer_huds
 	for(var/i in HUD_toggled)
 		if(HUD_toggled[i])
-			if(i == "Xeno Status HUD")
-				for(var/datum/mob_hud/xeno/xeno_hud in GLOB.huds)
-					xeno_hud.add_hud_to(src, src)
-			else
-				switch(i)
-					if("Medical HUD")
-						the_hud = GLOB.huds[MOB_HUD_MEDICAL_OBSERVER]
-					if("Security HUD")
-						the_hud = GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
-					if("Squad HUD")
-						the_hud = GLOB.huds[MOB_HUD_FACTION_OBSERVER]
-					if("Faction UPP HUD")
-						the_hud = GLOB.huds[MOB_HUD_FACTION_UPP]
-					if("Faction Wey-Yu HUD")
-						the_hud = GLOB.huds[MOB_HUD_FACTION_WY]
-					if("Faction TWE HUD")
-						the_hud = GLOB.huds[MOB_HUD_FACTION_TWE]
-					if("Faction CLF HUD")
-						the_hud = GLOB.huds[MOB_HUD_FACTION_CLF]
-					if("Faction WO HUD")
-						the_hud = GLOB.huds[MOB_HUD_FACTION_WO]
-					if(HUD_MENTOR_SIGHT)
-						the_hud = GLOB.huds[MOB_HUD_NEW_PLAYER]
-					if("Faction Hyperdyne HUD")
-						the_hud = GLOB.huds[MOB_HUD_FACTION_HC]
-				if(the_hud)
+			switch(i)
+				if("Medical HUD")
+					the_hud = GLOB.huds[MOB_HUD_MEDICAL_OBSERVER]
+					the_hud.add_hud_to(src, src)
+				if("Security HUD")
+					the_hud = GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
+					the_hud.add_hud_to(src, src)
+				if("Squad HUD")
+					the_hud = GLOB.huds[MOB_HUD_FACTION_OBSERVER]
+					the_hud.add_hud_to(src, src)
+				if("Xeno Status HUD")
+					the_hud = GLOB.huds[MOB_HUD_XENO_STATUS]
+					the_hud.add_hud_to(src, src)
+				if("Faction UPP HUD")
+					the_hud = GLOB.huds[MOB_HUD_FACTION_UPP]
+					the_hud.add_hud_to(src, src)
+				if("Faction Wey-Yu HUD")
+					the_hud = GLOB.huds[MOB_HUD_FACTION_WY]
+					the_hud.add_hud_to(src, src)
+				if("Faction TWE HUD")
+					the_hud = GLOB.huds[MOB_HUD_FACTION_TWE]
+					the_hud.add_hud_to(src, src)
+				if("Faction CLF HUD")
+					the_hud = GLOB.huds[MOB_HUD_FACTION_CLF]
+					the_hud.add_hud_to(src, src)
+				if("Faction WO HUD")
+					the_hud= GLOB.huds[MOB_HUD_FACTION_WO]
+					the_hud.add_hud_to(src, src)
+				if(HUD_MENTOR_SIGHT)
+					the_hud = GLOB.huds[MOB_HUD_NEW_PLAYER]
+					the_hud.add_hud_to(src, src)
+				if("Faction Hyperdyne HUD")
+					the_hud= GLOB.huds[MOB_HUD_FACTION_HC]
 					the_hud.add_hud_to(src, src)
 
 	see_invisible = INVISIBILITY_OBSERVER

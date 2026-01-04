@@ -756,25 +756,13 @@ CLIENT_VERB(toggle_adaptive_zooming)
 	if(!isobserver(usr))
 		return
 	var/mob/dead/observer/observer_user = usr
-	var/hud_index = hud_options[hud_choice]
+	var/datum/mob_hud/hud = GLOB.huds[hud_options[hud_choice]]
 
 	observer_user.HUD_toggled[hud_choice] = prefs.observer_huds[hud_choice]
-
-	if(hud_index == MOB_HUD_XENO_STATUS)
-		for(var/datum/mob_hud/hud_iter in GLOB.huds)
-			if(!istype(hud_iter, /datum/mob_hud/xeno))
-				continue
-
-			if(observer_user.HUD_toggled[hud_choice])
-				hud_iter.add_hud_to(observer_user, observer_user)
-			else
-				hud_iter.remove_hud_from(observer_user, observer_user)
+	if(observer_user.HUD_toggled[hud_choice])
+		hud.add_hud_to(observer_user, observer_user)
 	else
-		var/datum/mob_hud/hud = GLOB.huds[hud_index]
-		if(observer_user.HUD_toggled[hud_choice])
-			hud.add_hud_to(observer_user, observer_user)
-		else
-			hud.remove_hud_from(observer_user, observer_user)
+		hud.remove_hud_from(observer_user, observer_user)
 
 /client/proc/toggle_ghost_health_scan()
 	set name = "Toggle Health Scan"

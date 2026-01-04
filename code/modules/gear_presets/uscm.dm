@@ -1093,7 +1093,7 @@
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues)
 
 /datum/equipment_preset/uscm/pve/load_status(mob/living/carbon/human/new_human)
-	new_human.nutrition = NUTRITION_MAX
+	new_human.nutrition = NUTRITION_NORMAL
 
 /datum/equipment_preset/uscm/pve/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine(new_human), WEAR_BODY)
@@ -1214,6 +1214,9 @@
 	minimap_icon = "smartgunner"
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues)
+
+/datum/equipment_preset/uscm/pve/sg/load_status(mob/living/carbon/human/new_human)
+	new_human.nutrition = NUTRITION_NORMAL
 
 /datum/equipment_preset/uscm/pve/sg/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine(new_human), WEAR_BODY)
@@ -1382,7 +1385,7 @@
 	minimap_icon = "private"
 
 /datum/equipment_preset/uscm/hunted/rifleman/load_status(mob/living/carbon/human/new_human)
-	new_human.nutrition = NUTRITION_MAX
+	new_human.nutrition = NUTRITION_NORMAL
 
 /datum/equipment_preset/uscm/hunted/rifleman/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine(new_human), WEAR_BODY)

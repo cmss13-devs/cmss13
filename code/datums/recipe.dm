@@ -150,7 +150,7 @@
 /datum/recipe/fishburger
 	items = list(
 		/obj/item/reagent_container/food/snacks/bun,
-		/obj/item/reagent_container/food/snacks/carpmeat/processed,
+		/obj/item/reagent_container/food/snacks/meat/fish/carpmeat/processed,
 	)
 	result = /obj/item/reagent_container/food/snacks/fishburger
 
@@ -791,7 +791,7 @@
 	items = list(
 		/obj/item/reagent_container/food/snacks/dough,
 		/obj/item/reagent_container/food/snacks/grown/chili,
-		/obj/item/reagent_container/food/snacks/carpmeat/processed,
+		/obj/item/reagent_container/food/snacks/meat/fish/carpmeat/processed,
 	)
 	result = /obj/item/reagent_container/food/snacks/cubancarp
 
@@ -895,7 +895,7 @@
 /datum/recipe/fishandchips
 	items = list(
 		/obj/item/reagent_container/food/snacks/fries,
-		/obj/item/reagent_container/food/snacks/carpmeat/processed,
+		/obj/item/reagent_container/food/snacks/meat/fish/carpmeat/processed,
 	)
 	result = /obj/item/reagent_container/food/snacks/fishandchips
 
@@ -1005,7 +1005,7 @@
 	items = list(
 		/obj/item/reagent_container/food/snacks/flour,
 		/obj/item/reagent_container/food/snacks/egg,
-		/obj/item/reagent_container/food/snacks/carpmeat/processed,
+		/obj/item/reagent_container/food/snacks/meat/fish/carpmeat/processed,
 	)
 	result = /obj/item/reagent_container/food/snacks/fishfingers
 

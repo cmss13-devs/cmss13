@@ -182,7 +182,7 @@
 			display_name = "Turnovers"
 			items_measures[display_name] = "turnover"
 			items_measures_p[display_name] = "turnovers"
-		if (istype(contents_item, /obj/item/reagent_container/food/snacks/carpmeat))
+		if (istype(contents_item, /obj/item/reagent_container/food/snacks/meat/fish/carpmeat))
 			items_measures[display_name] = "fillet of meat"
 			items_measures_p[display_name] = "fillets of meat"
 		items_counts[display_name]++

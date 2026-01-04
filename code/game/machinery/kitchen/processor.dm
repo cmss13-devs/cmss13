@@ -48,8 +48,8 @@
 	output = /obj/item/reagent_container/food/snacks/rawmeatball
 
 /datum/food_processor_process/carpmeat
-	input = /obj/item/reagent_container/food/snacks/carpmeat
-	output = /obj/item/reagent_container/food/snacks/carpmeat/processed
+	input = /obj/item/reagent_container/food/snacks/meat/fish/carpmeat
+	output = /obj/item/reagent_container/food/snacks/meat/fish/carpmeat/processed
 
 /datum/food_processor_process/carpmeat/can_use(mob/user)
 	if(!skillcheck(user, SKILL_DOMESTIC, SKILL_DOMESTIC_MASTER))

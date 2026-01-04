@@ -89,9 +89,8 @@
 
 /obj/item/reagent_container/food/snacks/meat/fish/squid
 	name = "squid meat"
-	desc = "Mmm, calimari."
+	desc = "Mmm, calamari."
 	icon_state = "squid_meat"
-
 
 /obj/item/reagent_container/food/snacks/meat/fish/squid/alt
 	name = "sock squid meat"
@@ -117,5 +116,5 @@
 /obj/item/reagent_container/food/snacks/meat/fish/white_perch
 
 	name = "white perch meat"
-	desc = "Meat of an invasive fish, its oily.."
+	desc = "Meat of an invasive fish."
 	icon_state = "white_perch_meat"

@@ -645,24 +645,24 @@
 	reagents.add_reagent("bread", 2)
 	reagents.add_reagent("blackpepper",1)
 
-/obj/item/reagent_container/food/snacks/carpmeat
+/obj/item/reagent_container/food/snacks/meat/fish/carpmeat
 	name = "carp fillet"
 	desc = "A fillet of spess carp meat."
 	icon_state = "fishfillet"
 	icon = 'icons/obj/items/food/fish.dmi'
 	filling_color = "#FFDEFE"
 
-/obj/item/reagent_container/food/snacks/carpmeat/Initialize()
+/obj/item/reagent_container/food/snacks/meat/fish/carpmeat/Initialize()
 	. = ..()
 	reagents.add_reagent("fish", 3)
 	reagents.add_reagent("carpotoxin", 6)
 	src.bitesize = 6
 
-/obj/item/reagent_container/food/snacks/carpmeat/processed
+/obj/item/reagent_container/food/snacks/meat/fish/carpmeat/processed
 	name = "processed carp fillet"
 	desc = "A fillet of spess carp meat. This one has been processed to remove carpotoxin."
 
-/obj/item/reagent_container/food/snacks/carpmeat/processed/Initialize()
+/obj/item/reagent_container/food/snacks/meat/fish/carpmeat/processed/Initialize()
 	. = ..()
 	reagents.remove_reagent("carpotoxin", 6)
 

@@ -942,7 +942,7 @@
 
 /obj/item/storage/box/fish/fill_preset_inventory()
 	for(var/i in 1 to 7)
-		new /obj/item/reagent_container/food/snacks/carpmeat(src)
+		new /obj/item/reagent_container/food/snacks/meat/fish/carpmeat(src)
 
 //grocery
 

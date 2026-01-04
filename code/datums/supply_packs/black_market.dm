@@ -569,7 +569,7 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 		/obj/item/reagent_container/food/snacks/grown/apple/poisoned,
 		/obj/item/reagent_container/food/snacks/grown/poisonberries,
 		/obj/item/reagent_container/food/snacks/grown/deathberries,
-		/obj/item/reagent_container/food/snacks/carpmeat,
+		/obj/item/reagent_container/food/snacks/meat/fish/carpmeat,
 		/obj/item/reagent_container/food/snacks/candy_corn,
 		/obj/item/reagent_container/food/snacks/monkeyburger,
 		/obj/item/reagent_container/food/snacks/human/burger,

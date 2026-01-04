@@ -192,6 +192,7 @@
 	minimap_background = "background_upp"
 	minimap_icon = "upp_synth"
 
+	skills = /datum/skills/synthetic
 	locked_generation = SYNTH_GEN_THREE
 
 /datum/equipment_preset/synth/survivor/upp/load_gear(mob/living/carbon/human/new_human)

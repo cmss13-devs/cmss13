@@ -376,6 +376,8 @@
 	faction = FACTION_CONTRACTOR
 	languages = ALL_SYNTH_LANGUAGES
 
+	locked_generation = SYNTH_GEN_THREE
+
 	var/headset_type = /obj/item/device/radio/headset/distress/contractor
 
 /datum/equipment_preset/synth/contractor/New()

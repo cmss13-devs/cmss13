@@ -2785,13 +2785,15 @@
 	origin_override = ORIGIN_UPP
 	languages = ALL_SYNTH_LANGUAGES_UPP
 
-	skills = /datum/skills/synthetic
 	assignment = JOB_UPP_SUPPORT_SYNTH
 	job_title = JOB_UPP_SUPPORT_SYNTH
 	minimap_icon = "upp_synth"
 	minimap_background = "background_upp"
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/dogtag/upp
+
+	skills = /datum/skills/synthetic
+	locked_generation = SYNTH_GEN_THREE
 
 /datum/equipment_preset/synth/upp/New()
 	.=..()

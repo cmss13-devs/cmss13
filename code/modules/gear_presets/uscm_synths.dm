@@ -11,9 +11,7 @@
 
 	minimap_icon = "synth"
 	paygrades = list(PAY_SHORT_MWO = JOB_PLAYTIME_TIER_0)
-	skills = /datum/skills/synthetic
 
-	locked_generation = FALSE
 	var/is_council = FALSE
 
 /datum/equipment_preset/synth/uscm/New()

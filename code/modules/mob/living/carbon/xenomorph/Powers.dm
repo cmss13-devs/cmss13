@@ -1,3 +1,19 @@
+#define RESIN_CONSTRUCT 1
+#define RESIN_DOOR 2
+#define RESIN_WALL 3
+#define RESIN_WALL_MEMBRANE 4
+#define RESIN_FAST 5
+#define RESIN_STICKY 6
+#define RESIN_SPIKE 7
+#define RESIN_ACIDPILLAR 8
+#define RESIN_RECOVERY 9
+#define RESIN_CLUSTER 10
+#define RESIN_CORE 11
+#define RESIN_PYLON 12
+#define RESIN_EGGMORPH 13
+#define RESIN_TREE 14
+#define RESIN_TRAP 15
+
 /mob/living/carbon/xenomorph/proc/build_resin(atom/target, thick = FALSE, message = TRUE, use_plasma = TRUE, add_build_mod = 1)
 	if(!selected_resin)
 		return SECRETE_RESIN_FAIL
@@ -32,11 +48,45 @@
 			return SECRETE_RESIN_FAIL
 
 	var/turf/current_turf = get_turf(target)
+	var/can_deconstruct = TRUE
 
-	if(extra_build_dist != IGNORE_BUILD_DISTANCE && get_dist(src, target) > src.caste.max_build_dist + extra_build_dist) // Hivelords and eggsac carriers have max_build_dist of 1, drones and queens 0
+	var/structure_kind = NONE
+	if(istype(target, /obj/effect/alien/resin/construction))
+		structure_kind = RESIN_CONSTRUCT
+	else if(istype(target, /turf/closed/wall/resin/membrane)) // We must check this one before /turf/closed/wall/resin
+		structure_kind = RESIN_WALL_MEMBRANE
+	else if(istype(target, /turf/closed/wall/resin))
+		structure_kind = RESIN_WALL
+	else if(istype(target, /obj/structure/mineral_door/resin))
+		structure_kind = RESIN_DOOR
+	else if(istype(target, /obj/effect/alien/resin/sticky/fast))
+		structure_kind = RESIN_FAST
+	else if(istype(target, /obj/effect/alien/resin/sticky))
+		structure_kind = RESIN_STICKY
+	else if(istype(target, /obj/effect/alien/resin/spike))
+		structure_kind = RESIN_SPIKE
+	else if(istype(target, /obj/effect/alien/resin/acid_pillar))
+		structure_kind = RESIN_ACIDPILLAR
+	else if(istype(target, /obj/effect/alien/resin/special/recovery))
+		structure_kind = RESIN_RECOVERY
+	else if(istype(target, /obj/effect/alien/resin/special/cluster))
+		structure_kind = RESIN_CLUSTER
+	else if(istype(target, /obj/effect/alien/resin/special/pylon/core))
+		structure_kind = RESIN_CORE
+	else if(istype(target, /obj/effect/alien/resin/special/pylon))
+		structure_kind = RESIN_PYLON
+	else if(istype(target, /obj/effect/alien/resin/special/eggmorph))
+		structure_kind = RESIN_EGGMORPH
+	else if(istype(target, /obj/effect/alien/resin/special/plasma_tree))
+		structure_kind = RESIN_TREE
+	else if(istype(target, /obj/effect/alien/resin/trap))
+		structure_kind = RESIN_TRAP
+
+	if(extra_build_dist != IGNORE_BUILD_DISTANCE && get_dist(src, target) > caste.max_build_dist + extra_build_dist) // Hivelords and eggsac carriers have max_build_dist of 1, drones and queens 0
 		to_chat(src, SPAN_XENOWARNING("We can't build from that far!"))
 		return SECRETE_RESIN_FAIL
-	else if(thick) //hivelords can thicken existing resin structures.
+
+	if(thick) //hivelords can thicken existing resin structures.
 		var/thickened = FALSE
 		if(istype(target, /turf/closed/wall/resin))
 			var/turf/closed/wall/resin/wall = target
@@ -49,24 +99,27 @@
 				to_chat(src, SPAN_XENOWARNING("The extra resin is preventing us from reinforcing [wall]. Wait until it elapse."))
 				return SECRETE_RESIN_FAIL
 
-			if (wall.hivenumber != hivenumber)
+			if(wall.hivenumber != hivenumber)
 				to_chat(src, SPAN_XENOWARNING("[wall] doesn't belong to your hive!"))
 				return SECRETE_RESIN_FAIL
 
 			if(wall.type == /turf/closed/wall/resin)
 				wall.ChangeTurf(/turf/closed/wall/resin/thick)
 				total_resin_cost = XENO_THICKEN_WALL_COST
+				thickened = TRUE
+				can_deconstruct = FALSE
 			else if(wall.type == /turf/closed/wall/resin/membrane)
 				wall.ChangeTurf(/turf/closed/wall/resin/membrane/thick)
 				total_resin_cost = XENO_THICKEN_MEMBRANE_COST
-			else
+				thickened = TRUE
+				can_deconstruct = FALSE
+			else if(!can_deconstruct)
 				to_chat(src, SPAN_XENOWARNING("[wall] can't be made thicker."))
 				return SECRETE_RESIN_FAIL
-			thickened = TRUE
 
 		else if(istype(target, /obj/structure/mineral_door/resin))
 			var/obj/structure/mineral_door/resin/door = target
-			if (door.hivenumber != hivenumber)
+			if(door.hivenumber != hivenumber)
 				to_chat(src, SPAN_XENOWARNING("[door] doesn't belong to your hive!"))
 				return SECRETE_RESIN_FAIL
 
@@ -79,10 +132,11 @@
 				qdel(door)
 				new /obj/structure/mineral_door/resin/thick (oldloc, door.hivenumber)
 				total_resin_cost = XENO_THICKEN_DOOR_COST
-			else
+				thickened = TRUE
+				can_deconstruct = FALSE
+			else if(!can_deconstruct)
 				to_chat(src, SPAN_XENOWARNING("[door] can't be made thicker."))
 				return SECRETE_RESIN_FAIL
-			thickened = TRUE
 
 		if(thickened)
 			if(message)
@@ -93,6 +147,230 @@
 				playsound(loc, "alien_resin_build", 25)
 			target.add_hiddenprint(src) //so admins know who thickened the walls
 			return TRUE
+
+	// Only those able to build at range can do extra stuff at range, and only not when adjacent to the target
+	if(structure_kind && !Adjacent(target) && (extra_build_dist == IGNORE_BUILD_DISTANCE || caste.max_build_dist + extra_build_dist > 1))
+		for(var/datum/effects/xeno_structure_reinforcement/sf in target.effects_list)
+			to_chat(src, SPAN_XENOWARNING("The extra resin makes it difficult to deconstruct [target]. We should wait for it to wear off."))
+			return SECRETE_RESIN_FAIL
+
+		switch(structure_kind)
+			if(RESIN_CONSTRUCT)
+				var/obj/effect/alien/resin/construction/construct_target = target
+				if(hivenumber != construct_target.linked_hive.hivenumber)
+					return SECRETE_RESIN_FAIL
+
+				if(a_intent == INTENT_HARM && can_deconstruct)
+
+					if(!deconstruct_windup(target, 2 SECONDS)) // A bit unnecessary, but anti-grief crossed my mind
+						return SECRETE_RESIN_FAIL
+
+					construct_target.visible_message(SPAN_XENONOTICE("[construct_target] shudders and withdraws back into the weeds!"))
+					playsound(target.loc, "alien_resin_break", 25)
+					construct_target.health -= initial(construct_target.health) * 2
+					construct_target.healthcheck()
+				else
+					construct_target.template.add_crystal(src)
+				return TRUE
+
+			// In practice, Membrane and Wall are treated as the same, but future modularity is good, so they are identified as seperate things
+			if(RESIN_WALL to RESIN_WALL_MEMBRANE)
+				var/turf/closed/wall/resin/resin_wall = target
+				if(!can_deconstruct)
+					return SECRETE_RESIN_FAIL
+
+				if(resin_wall.hivenumber != hivenumber)
+					to_chat(src, SPAN_XENOWARNING("We cannot deconstruct what doesn't belong to our hive!"))
+					return SECRETE_RESIN_FAIL
+
+				if(istype(target, /turf/closed/wall/resin/weak))
+					to_chat(src, SPAN_XENOWARNING("[resin_wall] is too weak to be worth deconstructing."))
+					return SECRETE_RESIN_FAIL
+
+				if(!deconstruct_windup(target))
+					return SECRETE_RESIN_FAIL
+
+				resin_wall.visible_message(SPAN_XENONOTICE("[resin_wall] crumbles!"))
+				to_chat(src, SPAN_XENONOTICE("We deconstruct [resin_wall]!"))
+				playsound(get_turf(target), "alien_resin_break", 25)
+				resin_wall.dismantle_wall()
+				return TRUE
+
+			if(RESIN_DOOR)
+				var/obj/structure/mineral_door/resin/resin_door = target
+				if(a_intent != INTENT_HARM && resin_door.hivenumber == hivenumber)
+					if(resin_door.TryToSwitchState(src))
+						if(resin_door.open)
+							to_chat(src, SPAN_XENONOTICE("We focus our connection to the resin and remotely close the resin door."))
+						else
+							to_chat(src, SPAN_XENONOTICE("We focus our connection to the resin and remotely open the resin door."))
+					return SECRETE_RESIN_FAIL // Opening and closing doors shouldn't evoke a normal length cooldown
+
+				if(!can_deconstruct)
+					return SECRETE_RESIN_FAIL
+
+				if(resin_door.hivenumber != hivenumber)
+					to_chat(src, SPAN_XENOWARNING("We cannot deconstruct what doesn't belong to our hive!"))
+					return SECRETE_RESIN_FAIL
+
+				if(!deconstruct_windup(target))
+					return SECRETE_RESIN_FAIL
+
+				resin_door.visible_message(SPAN_XENONOTICE("[resin_door] crumbles!"))
+				to_chat(src, SPAN_XENONOTICE("We deconstruct [resin_door]!"))
+				playsound(target.loc, "alien_resin_move", 25)
+				resin_door.Dismantle(1)
+				return TRUE
+
+			if(RESIN_FAST to RESIN_STICKY)
+				var/obj/effect/alien/resin/sticky/faststicky = target
+				if(!can_deconstruct)
+					return SECRETE_RESIN_FAIL
+
+				if(hivenumber != faststicky.hivenumber)
+					return SECRETE_RESIN_FAIL
+
+				faststicky.visible_message(SPAN_XENONOTICE("[faststicky] crumbles!"))
+				playsound(target.loc, "alien_resin_break", 25)
+				faststicky.health -= initial(faststicky.health) * 2
+				faststicky.healthcheck()
+				return TRUE
+
+			if(RESIN_SPIKE)
+				var/obj/effect/alien/resin/spike/resin_spike = target
+				if(!can_deconstruct)
+					return SECRETE_RESIN_FAIL
+
+				if(hivenumber != resin_spike.hivenumber)
+					return SECRETE_RESIN_FAIL
+
+				resin_spike.visible_message(SPAN_XENONOTICE("[resin_spike] crumbles!"))
+				playsound(target.loc, "alien_resin_break", 25)
+				resin_spike.health -= initial(resin_spike.health) * 2
+				resin_spike.healthcheck()
+				return TRUE
+
+			if(RESIN_ACIDPILLAR)
+				var/obj/effect/alien/resin/acid_pillar/acidpillar = target
+				if(!can_deconstruct)
+					return SECRETE_RESIN_FAIL
+
+				if(hivenumber != acidpillar.hivenumber)
+					return SECRETE_RESIN_FAIL
+
+				if(!deconstruct_windup(target, 1 SECONDS))
+					return SECRETE_RESIN_FAIL
+
+				acidpillar.visible_message(SPAN_XENONOTICE("[acidpillar] crumbles!"))
+				playsound(target.loc, "alien_resin_break", 25)
+				acidpillar.health -= initial(acidpillar.health) * 2
+				acidpillar.healthcheck()
+				return TRUE
+
+			if(RESIN_RECOVERY)
+				var/obj/effect/alien/resin/special/recovery/recovery = target
+				if(!can_deconstruct)
+					return SECRETE_RESIN_FAIL
+
+				if(hivenumber != recovery.linked_hive.hivenumber)
+					return SECRETE_RESIN_FAIL
+
+				if(!can_destroy_special())
+					return SECRETE_RESIN_FAIL
+
+				if(!deconstruct_windup(target, 4 SECONDS))
+					return SECRETE_RESIN_FAIL
+
+				recovery.visible_message(SPAN_XENONOTICE("[recovery] crumbles!"))
+				playsound(target.loc, "alien_resin_break", 25)
+				recovery.health -= initial(recovery.health) * 2
+				recovery.healthcheck()
+				return TRUE
+
+			if(RESIN_CLUSTER)
+				var/obj/effect/alien/resin/special/cluster/cluster = target
+
+				if(hivenumber != cluster.linked_hive.hivenumber)
+					return SECRETE_RESIN_FAIL
+
+				if(a_intent == INTENT_HARM && can_deconstruct && can_destroy_special())
+					if(!deconstruct_windup(target, 4 SECONDS))
+						return SECRETE_RESIN_FAIL
+
+					cluster.visible_message(SPAN_XENONOTICE("[cluster] crumbles!"))
+					playsound(target.loc, "alien_resin_break", 25)
+					cluster.health -= initial(cluster.health) * 2
+					cluster.healthcheck()
+				else
+					cluster.do_repair(src)
+				return TRUE
+
+			// Much like Membranes and Walls, these are defined seperately for future modularity but treated as the same
+			if(RESIN_CORE to RESIN_PYLON)
+				var/obj/effect/alien/resin/special/pylon/resin_pylon = target
+				if(hivenumber != resin_pylon.linked_hive.hivenumber)
+					return SECRETE_RESIN_FAIL
+
+				resin_pylon.do_repair(src)
+				return TRUE
+
+			if(RESIN_EGGMORPH)
+				var/obj/effect/alien/resin/special/eggmorph/eggmorph = target
+				if(!can_deconstruct)
+					return SECRETE_RESIN_FAIL
+
+				if(hivenumber != eggmorph.linked_hive.hivenumber)
+					return SECRETE_RESIN_FAIL
+
+				if(!can_destroy_special())
+					return SECRETE_RESIN_FAIL
+
+				if(!deconstruct_windup(target, 4 SECONDS))
+					return SECRETE_RESIN_FAIL
+
+				eggmorph.visible_message(SPAN_XENONOTICE("[eggmorph] crumbles!"))
+				playsound(target.loc, "alien_resin_break", 25)
+				eggmorph.health -= initial(eggmorph.health) * 2
+				eggmorph.healthcheck()
+				return TRUE
+
+			if(RESIN_TREE)
+				var/obj/effect/alien/resin/special/plasma_tree/plasma_tree = target
+				if(!can_deconstruct)
+					return SECRETE_RESIN_FAIL
+
+				if(hivenumber != plasma_tree.linked_hive.hivenumber)
+					return SECRETE_RESIN_FAIL
+
+				if(!can_destroy_special())
+					return SECRETE_RESIN_FAIL
+
+				if(!deconstruct_windup(target, 4 SECONDS))
+					return SECRETE_RESIN_FAIL
+
+				plasma_tree.visible_message(SPAN_XENONOTICE("[plasma_tree] crumbles!"))
+				playsound(target.loc, "alien_resin_break", 25)
+				plasma_tree.health -= initial(plasma_tree.health) * 2
+				plasma_tree.healthcheck()
+				return TRUE
+
+			if(RESIN_TRAP)
+				var/obj/effect/alien/resin/trap/resin_trap = target
+				if(!can_deconstruct)
+					return SECRETE_RESIN_FAIL
+
+				if((hivenumber != resin_trap.hivenumber))
+					return SECRETE_RESIN_FAIL
+
+				if(resin_trap.trap_type != RESIN_TRAP_EMPTY)
+					to_chat(src, SPAN_XENOWARNING("This trap is filled with something, we cannot deconstruct it!"))
+					return SECRETE_RESIN_FAIL
+
+				resin_trap.visible_message(SPAN_XENONOTICE("[resin_trap] collapses in on itself!"))
+				playsound(target.loc, "alien_resin_break", 25)
+				resin_trap.health -= initial(resin_trap.health) * 2
+				resin_trap.healthcheck()
+				return TRUE
 
 	var/wait_time = resin_construct.build_time * caste.build_time_mult * add_build_mod
 
@@ -149,15 +427,20 @@
 			playsound(loc, "alien_resin_build", 25)
 		return SECRETE_RESIN_SUCCESS
 
-	if(!resin_construct.can_build_here(current_turf, src))
+	if (!resin_construct.can_build_here(current_turf, src))
 		return SECRETE_RESIN_FAIL
 
 	if(use_plasma)
 		use_plasma(total_resin_cost)
 	if(message)
-		visible_message(SPAN_XENONOTICE("[src] regurgitates a thick substance and shapes it into \a [resin_construct.construction_name]!"),
+		if(Adjacent(target))
+			visible_message(SPAN_XENONOTICE("[src] regurgitates a thick substance and shapes it into \a [resin_construct.construction_name]!"),
 			SPAN_XENONOTICE("We regurgitate some resin and shape it into \a [resin_construct.construction_name][use_plasma ? " at the cost of a total [total_resin_cost] plasma" : ""]."), null, 5)
-		playsound(loc, "alien_resin_build", 25)
+			playsound(loc, "alien_resin_build", 25)
+		else
+			target.visible_message(SPAN_XENONOTICE("The weeds begin pulsating wildly and secrete resin in the shape of \a [resin_construct.construction_name]!"))
+			to_chat(src, SPAN_XENONOTICE("We focus [use_plasma ? "[total_resin_cost] of our plasma into" : "our will through"] the weeds below us and force the weeds to secrete resin in the shape of \a [resin_construct.construction_name]."))
+			playsound(current_turf, "alien_resin_build", 25)
 
 	var/atom/new_resin = resin_construct.build(current_turf, hivenumber, src)
 	if(succeeded)
@@ -180,38 +463,31 @@
 
 	return SECRETE_RESIN_SUCCESS
 
-/mob/living/carbon/xenomorph/proc/maybe_convert_to_weedbound(turf/current_turf, datum/resin_construction/resin_construct, thick = FALSE)
-	if(current_turf.is_weedable != SEMI_WEEDABLE)
+#undef RESIN_CONSTRUCT
+#undef RESIN_DOOR
+#undef RESIN_WALL
+#undef RESIN_WALL_MEMBRANE
+#undef RESIN_FAST
+#undef RESIN_STICKY
+#undef RESIN_SPIKE
+#undef RESIN_ACIDPILLAR
+#undef RESIN_RECOVERY
+#undef RESIN_CLUSTER
+#undef RESIN_CORE
+#undef RESIN_PYLON
+#undef RESIN_EGGMORPH
+#undef RESIN_TREE
+#undef RESIN_TRAP
+
+/mob/living/carbon/xenomorph/proc/deconstruct_windup(atom/target, delay = 2 SECONDS)
+	target.visible_message(SPAN_XENONOTICE("[target] starts to shudder!"))
+	to_chat(src, SPAN_XENOWARNING("We channel our focus on deconstructing [target]!"))
+	if(!do_after(src, delay, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, target))
+		target.visible_message(SPAN_XENONOTICE("[target] stops shuddering!"))
+		to_chat(src, SPAN_XENONOTICE("We stop focusing on deconstructing [target]!"))
 		return FALSE
 
-	var/obj/effect/alien/resin/design/the_node = null
-	for(var/obj/effect/alien/resin/design/node in current_turf)
-		the_node = node
-		break
-
-	if(!the_node)
-		return FALSE
-
-	if(istype(resin_construct, /datum/resin_construction/resin_turf/wall))
-		if(thick)
-			current_turf.PlaceOnTop(/turf/closed/wall/resin/weedbound/thick)
-		else
-			current_turf.PlaceOnTop(/turf/closed/wall/resin/weedbound/normal)
-
-		qdel(the_node)
-		return TRUE
-
-	else if(istype(resin_construct, /datum/resin_construction/resin_obj/door))
-		if(thick)
-			new /obj/structure/mineral_door/resin/weedbound/thick(current_turf)
-		else
-			new /obj/structure/mineral_door/resin/weedbound/normal(current_turf)
-
-		qdel(the_node)
-		return TRUE
-
-	to_chat(src, SPAN_XENOWARNING("This node only accepts sturdy walls or doors."))
-	return FALSE
+	return TRUE
 
 /mob/living/carbon/xenomorph/proc/remove_built_structure(atom/A)
 	SIGNAL_HANDLER
@@ -279,3 +555,36 @@
 			to_chat(X, SPAN_XENOANNOUNCE("[src.name] has declared: [NM.mark_meaning.desc] in [sanitize_area(current_area_name)]! (<a href='byond://?src=\ref[X];overwatch=1;target=\ref[NM]'>Watch</a>) (<a href='byond://?src=\ref[X];track=1;target=\ref[NM]'>Track</a>)"))
 			//this is killing the tgui chat and I don't know why
 	return TRUE
+
+/mob/living/carbon/xenomorph/proc/maybe_convert_to_weedbound(turf/current_turf, datum/resin_construction/resin_construct, thick = FALSE)
+	if(current_turf.is_weedable != SEMI_WEEDABLE)
+		return FALSE
+
+	var/obj/effect/alien/resin/design/the_node = null
+	for(var/obj/effect/alien/resin/design/node in current_turf)
+		the_node = node
+		break
+
+	if(!the_node)
+		return FALSE
+
+	if(istype(resin_construct, /datum/resin_construction/resin_turf/wall))
+		if(thick)
+			current_turf.PlaceOnTop(/turf/closed/wall/resin/weedbound/thick)
+		else
+			current_turf.PlaceOnTop(/turf/closed/wall/resin/weedbound/normal)
+
+		qdel(the_node)
+		return TRUE
+
+	else if(istype(resin_construct, /datum/resin_construction/resin_obj/door))
+		if(thick)
+			new /obj/structure/mineral_door/resin/weedbound/thick(current_turf)
+		else
+			new /obj/structure/mineral_door/resin/weedbound/normal(current_turf)
+
+		qdel(the_node)
+		return TRUE
+
+	to_chat(src, SPAN_XENOWARNING("This node only accepts sturdy walls or doors."))
+	return FALSE

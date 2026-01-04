@@ -40,7 +40,7 @@
 		/obj/item/storage/secure/safe,
 		/obj/structure/machinery/iv_drip,
 		/obj/structure/machinery/disposal,
-		/mob/living/simple_animal/cow,
+		/mob/living/simple_animal/big/cow,
 		/mob/living/simple_animal/hostile/retaliate/goat,
 		/obj/structure/machinery/medical_pod/sleeper,
 		/obj/structure/machinery/smartfridge/,

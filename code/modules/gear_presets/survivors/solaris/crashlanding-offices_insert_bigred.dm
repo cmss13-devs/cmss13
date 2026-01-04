@@ -282,17 +282,10 @@
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "WY Syn"
 	skills = /datum/skills/synthetic
-	preset_generation_support = FALSE
+	locked_generation = SYNTH_GEN_THREE
 	minimap_icon = "pmc_syn"
 	minimap_background = "background_pmc"
 	origin_override = ORIGIN_WY_PMC
-
-/datum/equipment_preset/synth/survivor/pmc/load_race(mob/living/carbon/human/new_human)
-	new_human.set_species(SYNTH_GEN_THREE)
-
-/datum/equipment_preset/synth/survivor/pmc/load_skills(mob/living/carbon/human/new_human)
-	new_human.set_skills(/datum/skills/synthetic)
-	new_human.allow_gun_usage = FALSE
 
 /datum/equipment_preset/synth/survivor/pmc/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc(new_human), WEAR_BODY)

@@ -1099,9 +1099,9 @@
 /area/adminlevel/chinook)
 "dL" = (
 /obj/structure/closet/secure_closet/freezer/meat,
-/obj/item/reagent_container/food/snacks/carpmeat,
-/obj/item/reagent_container/food/snacks/carpmeat,
-/obj/item/reagent_container/food/snacks/carpmeat,
+/obj/item/reagent_container/food/snacks/meat/fish/carpmeat,
+/obj/item/reagent_container/food/snacks/meat/fish/carpmeat,
+/obj/item/reagent_container/food/snacks/meat/fish/carpmeat,
 /turf/open/floor/prison/kitchen,
 /area/adminlevel/chinook/event)
 "dN" = (

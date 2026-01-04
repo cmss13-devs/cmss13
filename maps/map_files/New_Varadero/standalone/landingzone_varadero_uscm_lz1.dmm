@@ -5396,7 +5396,7 @@
 	pixel_x = 7;
 	pixel_y = -1
 	},
-/obj/item/reagent_container/food/snacks/carpmeat,
+/obj/item/reagent_container/food/snacks/meat/fish/carpmeat,
 /obj/item/prop/helmetgarb/helmet_nvg/cosmetic{
 	pixel_x = -8;
 	pixel_y = 9

@@ -2815,7 +2815,7 @@
 	pixel_x = 9;
 	pixel_y = 11
 	},
-/obj/item/reagent_container/food/snacks/carpmeat{
+/obj/item/reagent_container/food/snacks/meat/fish/carpmeat{
 	layer = 3.3;
 	pixel_x = 8;
 	pixel_y = 11

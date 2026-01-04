@@ -73,11 +73,11 @@
 /area/template_noop)
 "fL" = (
 /obj/structure/grille,
-/obj/item/reagent_container/food/snacks/carpmeat{
+/obj/item/reagent_container/food/snacks/meat/fish/carpmeat{
 	pixel_x = -5;
 	pixel_y = 13
 	},
-/obj/item/reagent_container/food/snacks/carpmeat{
+/obj/item/reagent_container/food/snacks/meat/fish/carpmeat{
 	pixel_x = 4;
 	pixel_y = 6
 	},

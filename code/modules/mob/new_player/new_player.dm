@@ -132,6 +132,22 @@
 		to_chat(src, SPAN_WARNING("[rank] is not available. Please try another."))
 		return
 
+	var/mob/living/carbon/human/test_human = new
+	var/datum/equipment_preset/preset = new player_rank.gear_preset
+	test_human.faction = preset.faction
+	test_human.job = player_rank.title
+	if(player_rank.flags_startup_parameters & ROLE_ADD_TO_SQUAD && test_human.job != JOB_INTEL)
+		GLOB.RoleAuthority.randomize_squad(test_human, force_client=client)
+		if(istype(test_human.assigned_squad, /datum/squad/marine/cryo))
+			test_human.assigned_squad.forget_marine_in_squad(test_human)
+			GLOB.RoleAuthority.free_role(player_rank, force = TRUE)
+			job = null
+			to_chat(src, SPAN_WARNING("[rank] is not available with your current squad preferences."))
+			qdel(test_human)
+			return
+		test_human.assigned_squad.forget_marine_in_squad(test_human)
+	qdel(test_human)
+
 	spawning = TRUE
 	close_spawn_windows()
 
@@ -150,9 +166,13 @@
 	SSticker.mode.update_gear_scale()
 
 	for(var/datum/squad/target_squad in GLOB.RoleAuthority.squads)
-		if(target_squad)
+		if(!target_squad)
+			continue
+
+		if(target_squad.dynamic_scaling)
 			target_squad.roles_cap[JOB_SQUAD_ENGI] = engi_slot_formula(length(GLOB.clients))
 			target_squad.roles_cap[JOB_SQUAD_MEDIC] = medic_slot_formula(length(GLOB.clients))
+
 
 	var/latejoin_larva_drop = SSticker.mode.latejoin_larva_drop
 

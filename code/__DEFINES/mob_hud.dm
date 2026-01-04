@@ -72,6 +72,8 @@
 #define TRACKER_CSL "_csl" // Charlie Squad Leader
 #define TRACKER_DSL "_dsl" // Delta Squad Leader
 #define TRACKER_ESL "_esl" // Echo Squad Leader
+#define TRACKER_KSL "_ksl" // Kilo Squad Leader
+#define TRACKER_OSL "_osl" // Oscar Squad Leader
 #define TRACKER_FSL "_fsl" // Cryo Squad Leader
 #define TRACKER_ISL "_isl" // Intel Squad Leader
 

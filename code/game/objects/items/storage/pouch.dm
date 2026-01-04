@@ -271,6 +271,25 @@
 /obj/item/storage/pouch/firstaid/full/pills/wy
 	icon_state = "wy_firstaid"
 
+/obj/item/storage/pouch/firstaid/hunted
+	name = "old pouch"
+	desc = "A general-purpose pouch used to carry neccessary survival items."
+	icon_state = "survival"
+	storage_slots = 5
+	can_hold = list(
+		/obj/item/reagent_container/pill,
+		/obj/item/stack/medical/advanced/bruise_pack/predator,
+		/obj/item/stack/medical/advanced/ointment/predator,
+		/obj/item/stack/medical/splint,
+	)
+
+/obj/item/storage/pouch/firstaid/hunted/fill_preset_inventory()
+	new /obj/item/stack/medical/advanced/bruise_pack/predator(src)
+	new /obj/item/stack/medical/advanced/ointment/predator(src)
+	new /obj/item/stack/medical/splint(src)
+	new /obj/item/reagent_container/pill/oxycodone/natural(src)
+	new /obj/item/reagent_container/pill/bicaridine/natural(src)
+
 /obj/item/storage/pouch/firstaid/ert
 	desc = "It can contain autoinjectors, ointments, and bandages. This one has some extra stuff."
 	icon_state = "firstaid"

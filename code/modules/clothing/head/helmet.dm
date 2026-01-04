@@ -139,6 +139,51 @@
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 
+/obj/item/clothing/head/helmet/roman
+	name = "\improper imperial galea helmet"
+	desc = "An extremely old helmet that was used by Roman heavy infantry units called the Legionares."
+	icon_state = "legionary_helm"
+	item_state = "legionary_helm"
+	icon = 'icons/obj/items/clothing/hats/misc_ert_colony.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/misc_ert_colony.dmi'
+	)
+	flags_inventory = COVEREYES|BLOCKSHARPOBJ
+	flags_inv_hide = HIDEEARS|HIDEEYES
+	siemens_coefficient = 1
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_NONE
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_LOW
+	armor_rad = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+
+/obj/item/clothing/head/helmet/roman/centurion
+	desc = "An extremely old helmet that was used by Roman heavy infantry units called the Legionares. This one has a crest indicating it was used by Centurions."
+	icon_state = "centurion_helm"
+	item_state = "centurion_helm"
+	worn_x_dimension = 64
+	worn_y_dimension = 64
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/head_64.dmi'
+	)
+
+
+/obj/item/clothing/head/helmet/roman/eaglebearer
+	name = "\improper Aquilifier's bear pelt mask"
+	desc = "a bear pelt and mask that was worn by a Roman Aquilifier, a prestigious role meant to inspire troops in battles."
+	icon_state = "eaglebearer_hat"
+	item_state = "eaglebearer_hat"
+	worn_x_dimension = 64
+	worn_y_dimension = 64
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/head_64.dmi'
+	)
+	flags_inv_hide = HIDEMASK|HIDEEARS|HIDEEYES
+	anti_hug = 1
+
 //===========================//MARINES HELMETS\\=================================\\
 //=======================================================================\\
 
@@ -1548,6 +1593,10 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_rad = CLOTHING_ARMOR_MEDIUM
 	flags_marine_helmet = HELMET_GARB_OVERLAY|HELMET_DAMAGE_OVERLAY
 	camera_factions = list(FACTION_DUTCH)
+
+/obj/item/clothing/head/helmet/marine/veteran/dutch/vietnam
+	name = "\improper M1 pattern army helmet"
+	desc = "A protective helmet worn by US Army Riflemen during the peak of the Vietnam War."
 
 /obj/item/clothing/head/helmet/marine/veteran/dutch/cap
 	name = "\improper Dutch's Dozen cap"

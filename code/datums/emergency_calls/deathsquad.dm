@@ -7,7 +7,6 @@
 	mob_max = 8
 	mob_min = 5
 	arrival_message = "'!`2*%slau#*jer t*h$em a!l%. le&*ve n(o^ w&*nes%6es.*v$e %#d ou^'"
-	objectives = "Whiteout protocol is in effect for the target. Ensure there are no traces of the infestation or any witnesses."
 	probability = 0
 	shuttle_id = MOBILE_SHUTTLE_ID_ERT2
 	home_base = /datum/lazy_template/ert/weyland_station
@@ -17,6 +16,9 @@
 	max_heavies = 2
 	hostility = TRUE
 
+/datum/emergency_call/death/New()
+	. = ..()
+	objectives = "Whiteout protocol is in effect for the target. Ensure there are no traces of the infestation or any witnesses."
 
 // DEATH SQUAD--------------------------------------------------------------------------------
 /datum/emergency_call/death/create_member(datum/mind/player, turf/override_spawn_loc)

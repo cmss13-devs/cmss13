@@ -265,7 +265,7 @@
 			if(human_being_cremated.pain.feels_pain)
 				human_being_cremated.emote("scream")
 
-	user.attack_log +="\[[time_stamp()]\] Cremated [SPAN_BOLD(key_name(mob_being_cremated))][human_was_alive ? " they were Alive upon cremation, " : ""]</b>"
+	user.attack_log +="\[[time_stamp()]\] Cremated [SPAN_BOLD(key_name(mob_being_cremated))][human_was_alive ? " they were Alive upon cremation." : "."]"
 	msg_admin_attack("\[[time_stamp()]\] [SPAN_BOLD(key_name(user))] cremated [SPAN_BOLD(key_name(mob_being_cremated))][human_was_alive ? " they were Alive upon cremation, " : ""] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
 	mob_being_cremated.death(create_cause_data("cremation", user), TRUE)
 	mob_being_cremated.ghostize()

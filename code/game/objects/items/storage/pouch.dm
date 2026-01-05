@@ -1194,12 +1194,12 @@
 
 	//My special recipe: tried, tested, and true! -- Puckaboo2
 	inner.reagents.add_reagent("oxycodone", inner.volume*(7/12)) //280u
-	inner.reagents.add_reagent("dexalin", inner.volume/3) //160u
+	inner.reagents.add_reagent("dexalinp", inner.volume/3) //160u
 	inner.reagents.add_reagent("peridaxon", inner.volume/12) //40u. Peri and Dexalin only need to last long enough to give more blood/fix IB/complete organ repair surgery.
 	if(length(contents) > 0)
 		var/obj/item/reagent_container/hypospray/autoinjector/empty/medic/A = contents[1]
 		A.reagents.add_reagent("oxycodone", A.volume*(7/12))
-		A.reagents.add_reagent("dexalin", A.volume/3)
+		A.reagents.add_reagent("dexalinp", A.volume/3)
 		A.reagents.add_reagent("peridaxon", A.volume/12)
 		A.update_uses_left()
 		A.update_icon()

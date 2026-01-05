@@ -1,6 +1,6 @@
 /obj/structure/closet/secure_closet/emergency
 	name = "emergency closet"
-	desc = "It's an immobile card-locked storage unit that uses evacuation protocols to determine its opening, closing, locking, and unlocking behavior."
+	desc = "It's an immobile card-locked storage unit that uses hijack protocols to determine its opening, closing, locking, and unlocking behavior."
 	icon_state = "secure1"
 	var/hijack = FALSE
 	store_mobs = FALSE

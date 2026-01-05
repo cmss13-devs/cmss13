@@ -97,6 +97,7 @@ GLOBAL_LIST_EMPTY(admin_ranks) //list of all ranks with associated rights
 
 	if(CONFIG_GET(string/cmdb_url) && CONFIG_GET(string/cmdb_api_key) && fetch_api_admins())
 		return
+		// API fetch failed, fall through to load from config files
 
 	load_admin_ranks()
 
@@ -259,7 +260,18 @@ GLOBAL_LIST_EMPTY(admin_ranks) //list of all ranks with associated rights
 
 	var/datum/http_response/response = request.into_response()
 
-	var/admins_response = json_decode(response.body)
+	if(!response || response.status_code != 200)
+
+	var/admins_response = null
+	try
+		admins_response = json_decode(response.body)
+	catch(var/exception/error)
+		log_admin("\[ADMIN_API\] Error occured while decoding, defaulting to configuration files.")
+		return FALSE
+
+	if(isnull(admins_response) || !islist(admins_response))
+		log_admin("\[ADMIN_API\] Failed to parse JSON from API response, defaulting to configuration files.")
+		return FALSE
 
 	if(!("users" in admins_response) || !("groups" in admins_response))
 		log_admin("\[ADMIN_API\] API did not return a properly formed response, defaulting to configuration files.")

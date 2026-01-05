@@ -97,7 +97,6 @@ GLOBAL_LIST_EMPTY(admin_ranks) //list of all ranks with associated rights
 
 	if(CONFIG_GET(string/cmdb_url) && CONFIG_GET(string/cmdb_api_key) && fetch_api_admins())
 		return
-		// API fetch failed, fall through to load from config files
 
 	load_admin_ranks()
 
@@ -300,3 +299,5 @@ GLOBAL_LIST_EMPTY(admin_ranks) //list of all ranks with associated rights
 		var/datum/admins/admin_datum = new(user["display_name"], GLOB.admin_ranks[user["primary_group"]], user["ckey"], additional_title)
 
 		INVOKE_ASYNC(admin_datum, TYPE_PROC_REF(/datum/admins, associate), GLOB.directory[user["ckey"]])
+
+	return TRUE

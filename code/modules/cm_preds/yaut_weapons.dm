@@ -732,7 +732,7 @@
 	if(isyautja(hit_atom))
 		var/mob/living/carbon/human/human = hit_atom
 		if(human.put_in_hands(src))
-			hit_atom.visible_message(SPAN_NOTICE("[hit_atom] expertly catches [src] out of the air. "),
+			hit_atom.visible_message(SPAN_NOTICE(" [hit_atom] expertly catches [src] out of the air. "),
 				SPAN_NOTICE(" You easily catch [src]. "))
 			return
 	..()

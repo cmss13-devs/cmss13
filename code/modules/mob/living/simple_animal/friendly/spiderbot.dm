@@ -91,7 +91,7 @@
 				for(var/mob/W in viewers(user, null))
 					W.show_message(text(SPAN_DANGER("[user] has spot-welded some of the damage to [src]!")), SHOW_MESSAGE_VISIBLE)
 			else
-				to_chat(user, SPAN_NOTICE("[src] is undamaged!"))
+				to_chat(user, SPAN_NOTICE(" [src] is undamaged!"))
 		else
 			to_chat(user, "Need more welding fuel!")
 			return

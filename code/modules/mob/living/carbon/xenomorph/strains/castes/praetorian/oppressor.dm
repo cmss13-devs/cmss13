@@ -96,6 +96,8 @@
 		tail_image = image('icons/effects/status_effects.dmi', "hooked")
 
 	if(!ability_used_once)
+		targets_collided.len = 0
+		targets_added.len = 0
 		ability_used_once = TRUE
 
 		if(!targetted_atom || targetted_atom.layer >= FLY_LAYER || !isturf(abduct_user.loc))
@@ -207,8 +209,8 @@
 	for(var/mob/living/target in targets_added)
 		REMOVE_TRAIT(target, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Abduct"))
 		target.overlays -= tail_image
-	targets_added.len = 0
-	targets_collided.len = 0
+	targets_added.Cut()
+	targets_collided.Cut()
 
 	ability_used_once = FALSE
 	apply_cooldown()

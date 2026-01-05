@@ -22,8 +22,8 @@
 	density = FALSE
 	layer = ABOVE_LYING_MOB_LAYER
 	min_oxy = 16 //Require at least 16kPA oxygen
-	minbodytemp = 223 //Below -50 Degrees Celcius
-	maxbodytemp = 323 //Above 50 Degrees Celcius
+	minbodytemp = 223 //Below -50 Degrees Celsius
+	maxbodytemp = 323 //Above 50 Degrees Celsius
 	universal_speak = FALSE
 	universal_understand = TRUE
 	holder_type = /obj/item/holder/mouse

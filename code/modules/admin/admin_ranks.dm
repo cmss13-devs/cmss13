@@ -267,7 +267,7 @@ GLOBAL_LIST_EMPTY(admin_ranks) //list of all ranks with associated rights
 	var/admins_response = null
 	try
 		admins_response = json_decode(response.body)
-	catch(var/exception/error)
+	catch
 		log_admin("\[ADMIN_API\] Error occured while decoding, defaulting to configuration files.")
 		return FALSE
 

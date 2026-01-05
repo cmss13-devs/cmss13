@@ -731,7 +731,7 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 						var/new_slowdown = H.next_move_slowdown + rand(4,7)
 						H.next_move_slowdown = new_slowdown
 						if(prob(10))
-							to_chat(H, SPAN_WARNING("It is very hard to move trough this [src]..."))
+							to_chat(H, SPAN_WARNING("It is very hard to move trough  [src]..."))
 					if(8 to 9)
 						var/new_slowdown = H.next_move_slowdown + rand(8,11)
 						H.next_move_slowdown = new_slowdown

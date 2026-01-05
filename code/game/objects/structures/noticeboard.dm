@@ -33,7 +33,7 @@
 				return
 			notices++
 			update_overlays()
-			to_chat(user, SPAN_NOTICE("You pin the [O] to the noticeboard."))
+			to_chat(user, SPAN_NOTICE("You pin [O] to the noticeboard."))
 		else
 			to_chat(user, SPAN_WARNING("The notice board is full!"))
 	else if(istype(O, /obj/item/tool/pen))

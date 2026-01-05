@@ -324,7 +324,7 @@
 /obj/item/packageWrap/get_examine_text(mob/user)
 	. = ..()
 	if(get_dist(src, user) < 2)
-		. += SPAN_NOTICE("There are [amount] units of package wrap left!")
+		. += SPAN_NOTICE(" There are [amount] units of package wrap left!")
 
 
 /obj/item/device/destTagger

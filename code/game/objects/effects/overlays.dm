@@ -266,10 +266,11 @@
 	shell = owner
 	appearance = shell.appearance
 	transform = matrix().Turn(-180)
+	add_filter("motionblur", 1, motion_blur_filter(x = 0, y = 1))
 	layer = initial(layer)
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	pixel_y = 600
-	animate(src, pixel_y = -10, time=2 SECONDS)
+	pixel_y = 3000
+	animate(src, pixel_y = -50, time=2 SECONDS)
 	animate(icon_state=null, icon=null, time=2) // to vanish it immediately
 
 /obj/effect/overlay/temp/emp_sparks

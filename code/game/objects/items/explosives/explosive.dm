@@ -232,7 +232,7 @@
 
 
 	if(!QDELETED(src)) //the possible reactions didn't qdel src
-		if(reagents.total_volume) //The possible reactions didnt use up all reagents.
+		if(reagents.total_volume) //The possible reactions didn't use up all reagents.
 			var/datum/effect_system/steam_spread/steam = new /datum/effect_system/steam_spread()
 			steam.set_up(10, 0, get_turf(src))
 			steam.attach(src)

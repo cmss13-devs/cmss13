@@ -4,7 +4,6 @@
 # Rank is CASE-SENSITIVE, all punctuation will be stripped so spaces don't matter.     #
 # Each rank is then followed by keywords with the prefix "+".                          #
 # These keywords represent groups of verbs and abilities which are given to that rank. #
-# +@ (or +prev) is a special shorthand which adds all the rights of the rank above it. #
 # Ranks with no keywords will just be given the most basic verbs and abilities   ~Carn #
 ########################################################################################
 # PLEASE NOTE: depending on config options, some abilities will be unavailable regardless if you have permission to use them!

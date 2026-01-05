@@ -4,8 +4,6 @@ GLOBAL_LIST_EMPTY(admin_ranks) //list of all ranks with associated rights
 /proc/load_admin_ranks()
 	GLOB.admin_ranks.Cut()
 
-	var/previous_rights = 0
-
 	//load text from file
 	var/list/Lines = file2list("config/admin_ranks.txt")
 
@@ -27,52 +25,7 @@ GLOBAL_LIST_EMPTY(admin_ranks) //list of all ranks with associated rights
 			if("Removed")
 				continue //Reserved
 
-		var/rights = 0
-		for(var/i=2, i<=length(List), i++)
-			switch(ckey(List[i]))
-				if("@","prev")
-					rights |= previous_rights
-				if("buildmode","build")
-					rights |= R_BUILDMODE
-				if("admin")
-					rights |= R_ADMIN
-				if("ban")
-					rights |= R_BAN
-				if("server")
-					rights |= R_SERVER
-				if("debug")
-					rights |= R_DEBUG
-				if("permissions","rights")
-					rights |= R_PERMISSIONS
-				if("possess")
-					rights |= R_POSSESS
-				if("stealth")
-					rights |= R_STEALTH
-				if("color")
-					rights |= R_COLOR
-				if("varedit")
-					rights |= R_VAREDIT
-				if("event")
-					rights |= R_EVENT
-				if("sound","sounds")
-					rights |= R_SOUNDS
-				if("nolock")
-					rights |= R_NOLOCK
-				if("spawn","create")
-					rights |= R_SPAWN
-				if("mod")
-					rights |= R_MOD
-				if("mentor")
-					rights |= R_MENTOR
-				if("profiler")
-					rights |= R_PROFILER
-				if("host")
-					rights |= RL_HOST
-				if("everything")
-					rights |= RL_EVERYTHING
-
-		GLOB.admin_ranks[rank] = rights
-		previous_rights = rights
+		GLOB.admin_ranks[rank] = get_rights(List.Copy(2))
 
 	#ifdef TESTING
 	var/msg = "Permission Sets Built:\n"
@@ -80,6 +33,54 @@ GLOBAL_LIST_EMPTY(admin_ranks) //list of all ranks with associated rights
 		msg += "\t[rank] - [GLOB.admin_ranks[rank]]\n"
 	testing(msg)
 	#endif
+
+/proc/get_rights(input_list)
+	var/rights = NONE
+
+	for(var/right in input_list)
+		right = lowertext(right)
+
+		switch(right)
+			if("buildmode","build")
+				rights |= R_BUILDMODE
+			if("admin")
+				rights |= R_ADMIN
+			if("ban")
+				rights |= R_BAN
+			if("server")
+				rights |= R_SERVER
+			if("debug")
+				rights |= R_DEBUG
+			if("permissions","rights")
+				rights |= R_PERMISSIONS
+			if("possess")
+				rights |= R_POSSESS
+			if("stealth")
+				rights |= R_STEALTH
+			if("color")
+				rights |= R_COLOR
+			if("varedit")
+				rights |= R_VAREDIT
+			if("event")
+				rights |= R_EVENT
+			if("sound","sounds")
+				rights |= R_SOUNDS
+			if("nolock")
+				rights |= R_NOLOCK
+			if("spawn","create")
+				rights |= R_SPAWN
+			if("mod")
+				rights |= R_MOD
+			if("mentor")
+				rights |= R_MENTOR
+			if("profiler")
+				rights |= R_PROFILER
+			if("host")
+				rights |= RL_HOST
+			if("everything")
+				rights |= RL_EVERYTHING
+
+	return rights
 
 /proc/load_admins()
 	//clear the datums references
@@ -93,6 +94,9 @@ GLOBAL_LIST_EMPTY(admin_ranks) //list of all ranks with associated rights
 	for(var/admin in world.GetConfig("admin"))
 		log_debug("Clearing [admin] from APP/admin.")
 		world.SetConfig("APP/admin", admin, null)
+
+	if(CONFIG_GET(string/cmdb_url) && CONFIG_GET(string/cmdb_api_key) && fetch_api_admins())
+		return
 
 	load_admin_ranks()
 
@@ -158,24 +162,127 @@ GLOBAL_LIST_EMPTY(admin_ranks) //list of all ranks with associated rights
 	//find the client for a ckey if they are connected and associate them with the new admin datum
 	INVOKE_ASYNC(D, TYPE_PROC_REF(/datum/admins, associate), GLOB.directory[ckey])
 
-/*
-#ifdef TESTING
-CLIENT_VERB(changerank, newrank in admin_ranks)
-	if(holder)
-		holder.rank = newrank
-		holder.rights = admin_ranks[newrank]
-	else
-		holder = new /datum/admins(newrank,admin_ranks[newrank],ckey)
-	remove_admin_verbs()
-	holder.associate(src)
+/datum/config_entry/string/cmdb_url
+	protection = CONFIG_ENTRY_LOCKED
 
-CLIENT_VERB(changerights, newrights as num)
-	if(holder)
-		holder.rights = newrights
-	else
-		holder = new /datum/admins("testing",newrights,ckey)
-	remove_admin_verbs()
-	holder.associate(src)
+/datum/config_entry/string/cmdb_api_key
+	protection = CONFIG_ENTRY_HIDDEN | CONFIG_ENTRY_LOCKED
 
-#endif
-*/
+/**
+ * Using the API backed admins/admin_ranks requires a response from the endpoint following this schema:
+
+ * ```
+ * {
+ *   $schema: https://json-schema.org/draft/2020-12/schema,
+ *   type: object,
+ *   required: [users, groups],
+ *   properties: {
+ *     users: {
+ *       type: array,
+ *       items: {
+ *         type: object,
+ *         required: [ckey, primary_group, display_name],
+ *         properties: {
+ *           ckey: {
+ *             type: string,
+ *             description: Unique identifier for the user
+ *           },
+ *           primary_group: {
+ *             type: string,
+ *             description: The user's primary permission group
+ *           },
+ *           display_name: {
+ *             type: string,
+ *             description: Human-readable role name
+ *           },
+ *           additional_title: {
+ *             type: string,
+ *             description: Additional title for the user, only present when the group has a display_name configured
+ *           }
+ *         }
+ *       }
+ *     },
+ *     groups: {
+ *       type: object,
+ *       additionalProperties: {
+ *         type: object,
+ *         additionalProperties: {
+ *           type: array,
+ *           items: {
+ *             type: string,
+ *             enum: [
+ *               ADMIN,
+ *               MOD,
+ *               SERVER,
+ *               BAN,
+ *               VAREDIT,
+ *               SPAWN,
+ *               DEBUG,
+ *               POSSESS,
+ *               BUILDMODE,
+ *               SOUNDS,
+ *               NOLOCK,
+ *               MENTOR,
+ *               EVENT,
+ *               PROFILER,
+ *               HOST,
+ *               STEALTH,
+ *               COLOR,
+ *               PERMISSIONS
+ *             ]
+ *           },
+ *           description: List of permissions for this server
+ *         }
+ *       },
+ *       description: Permission groups mapped to servers and their permissions
+ *     }
+ *   }
+ * }
+ * ```
+ */
+/proc/fetch_api_admins()
+	var/api_url = CONFIG_GET(string/cmdb_url)
+	var/api_key = CONFIG_GET(string/cmdb_api_key)
+
+	if(!api_key || !api_url)
+		return FALSE
+
+	var/instance_name = CONFIG_GET(string/instance_name)
+
+	if(!instance_name)
+		log_admin("\[ADMIN_API\] INSTANCE_NAME not configured.")
+		return FALSE
+
+	var/datum/http_request/request = new
+	request.prepare(RUSTG_HTTP_METHOD_GET, api_url, null, list("Authorization" = "Bearer [api_key]"))
+	request.execute_blocking()
+
+	var/datum/http_response/response = request.into_response()
+
+	var/admins_response = json_decode(response.body)
+
+	if(!("users" in admins_response) || !("groups" in admins_response))
+		log_admin("\[ADMIN_API\] API did not return a properly formed response, defaulting to configuration files.")
+		return FALSE
+
+	var/users = admins_response["users"]
+	var/groups = admins_response["groups"]
+
+	for(var/group_name, group_ranks in groups)
+		if(!(instance_name in group_ranks))
+			continue
+
+		GLOB.admin_ranks[group_name] = get_rights(group_ranks[instance_name])
+
+	for(var/user in users)
+		if(!("display_name" in user) || !("primary_group" in user) || !("ckey" in user))
+			log_admin("\[ADMIN_API\] Invalid entry ([user]) in API response, skipping!")
+			continue
+
+		var/additional_title = null
+		if("additional_title" in user)
+			additional_title = list(user["additional_title"])
+
+		var/datum/admins/admin_datum = new(user["display_name"], GLOB.admin_ranks[user["primary_group"]], user["ckey"], additional_title)
+
+		INVOKE_ASYNC(admin_datum, TYPE_PROC_REF(/datum/admins, associate), GLOB.directory[user["ckey"]])

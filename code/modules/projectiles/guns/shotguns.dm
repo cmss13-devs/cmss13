@@ -932,7 +932,7 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/double/mou53/reload(mob/user, obj/item/ammo_magazine/magazine)
 	if(ispath(magazine.default_ammo, /datum/ammo/bullet/shotgun/buckshot)) // No buckshot in this gun
-		to_chat(user, SPAN_WARNING("\the [src] cannot safely fire this type of shell!"))
+		to_chat(user, SPAN_WARNING("\The [src] cannot safely fire this type of shell!"))
 		return
 	..()
 

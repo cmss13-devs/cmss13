@@ -158,7 +158,7 @@
 			scan_data += "<br>"
 
 	for(var/mob/O in viewers(usr))
-		O.show_message(SPAN_DANGER("\the [src] rattles and prints out a sheet of paper."), SHOW_MESSAGE_VISIBLE)
+		O.show_message(SPAN_DANGER("\The [src] rattles and prints out a sheet of paper."), SHOW_MESSAGE_VISIBLE)
 
 	sleep(10)
 

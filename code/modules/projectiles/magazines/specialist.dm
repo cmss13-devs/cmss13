@@ -208,7 +208,7 @@
 		return
 	var/obj/item/weapon/twohanded/offhand/off_hand = demoman.get_inactive_hand()
 	if(!off_hand || !istype(off_hand))
-		to_chat(user, SPAN_WARNING("\the [demoman] needs to be wielding \the [in_hand] in order to reload!"))
+		to_chat(user, SPAN_WARNING("\The [demoman] needs to be wielding \the [in_hand] in order to reload!"))
 		return
 	if(!skillcheck(demoman, SKILL_FIREARMS, SKILL_FIREARMS_TRAINED))
 		to_chat(user, SPAN_WARNING("You don't know how to reload \the [in_hand]!"))
@@ -217,7 +217,7 @@
 		to_chat(user, SPAN_WARNING("You must be standing behind \the [demoman] in order to reload it!"))
 		return
 	if(in_hand.current_mag.current_rounds > 0)
-		to_chat(user, SPAN_WARNING("\the [in_hand] is already loaded!"))
+		to_chat(user, SPAN_WARNING("\The [in_hand] is already loaded!"))
 		return
 	if(user.action_busy)
 		return
@@ -226,7 +226,7 @@
 		to_chat(user, SPAN_WARNING("Your reload was interrupted!"))
 		return
 	if(off_hand != demoman.get_inactive_hand())
-		to_chat(user, SPAN_WARNING("\the [demoman] needs to be wielding \the [in_hand] in order to reload!"))
+		to_chat(user, SPAN_WARNING("\The [demoman] needs to be wielding \the [in_hand] in order to reload!"))
 		return
 	if(demoman.dir != user.dir)
 		to_chat(user, SPAN_WARNING("You must be standing behind \the [demoman] in order to reload it!"))

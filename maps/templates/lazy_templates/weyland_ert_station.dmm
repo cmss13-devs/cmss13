@@ -92,7 +92,7 @@
 /turf/open/floor/corsat/sterileplate,
 /area/adminlevel/ert_station/weyland_station)
 "cn" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/corsat/cargo,
 /area/adminlevel/ert_station/weyland_station)
 "cq" = (
@@ -1261,7 +1261,7 @@
 /turf/open/floor/corsat/sterileplate,
 /area/adminlevel/ert_station/weyland_station)
 "ul" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/corsat/cargo,
 /area/adminlevel/ert_station/weyland_station)
 "uv" = (
@@ -2775,15 +2775,6 @@
 	pixel_y = 30
 	},
 /turf/open/floor/almayer/research/containment/corner_var1/containment_corner_variant_2,
-/area/adminlevel/ert_station/weyland_station)
-"RZ" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor/corsat/squares,
 /area/adminlevel/ert_station/weyland_station)
 "Si" = (
 /obj/structure/bed/roller,
@@ -4474,7 +4465,7 @@ kV
 gL
 fX
 kA
-RZ
+al
 Je
 fX
 fX

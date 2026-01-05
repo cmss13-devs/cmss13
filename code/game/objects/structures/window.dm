@@ -582,6 +582,7 @@
 	reinf = 1
 	dir = NORTHEAST
 	window_frame = /obj/structure/window_frame/almayer
+	plane = TURF_PLANE
 
 /obj/structure/window/framed/almayer/hull
 	name = "hull window"

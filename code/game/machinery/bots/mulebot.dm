@@ -493,7 +493,7 @@
 		var/mob/M = C
 		if(M.client)
 			M.client.perspective = EYE_PERSPECTIVE
-			M.client.eye = src
+			M.client.set_eye(src)
 
 	mode = 0
 	send_status()
@@ -515,7 +515,7 @@
 		var/mob/M = load
 		if(M.client)
 			M.client.perspective = MOB_PERSPECTIVE
-			M.client.eye = src
+			M.client.set_eye(src)
 
 
 	if(dirn)
@@ -541,7 +541,7 @@
 			var/mob/M = AM
 			if(M.client)
 				M.client.perspective = MOB_PERSPECTIVE
-				M.client.eye = src
+				M.client.set_eye(src)
 	mode = 0
 
 

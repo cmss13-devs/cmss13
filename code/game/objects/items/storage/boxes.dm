@@ -36,7 +36,7 @@
 	foldable = TRUE
 	storage_slots = null
 	max_w_class = SIZE_SMALL //Changed because of in-game abuse
-	w_class = SIZE_LARGE //Changed becuase of in-game abuse
+	w_class = SIZE_LARGE //Changed because of in-game abuse
 	storage_flags = STORAGE_FLAGS_BOX
 
 /obj/item/storage/box/pride
@@ -96,6 +96,14 @@
 	can_hold = list(/obj/item/clothing/mask/surgical)
 	w_class = SIZE_SMALL
 
+/obj/item/storage/box/bloodbag
+	name = "empty box of blood bags"
+	desc = "This box can hold all kinds of blood bags."
+	icon_state = "blood"
+	item_state = "blood"
+	can_hold = list(/obj/item/reagent_container/blood/)
+	w_class = SIZE_MEDIUM
+
 /obj/item/storage/box/masks/fill_preset_inventory()
 	new /obj/item/clothing/mask/surgical(src)
 	new /obj/item/clothing/mask/surgical(src)
@@ -109,7 +117,7 @@
 /obj/item/storage/box/syringes
 	name = "box of syringes"
 	desc = "A box full of syringes."
-	desc = "A biohazard alert warning is printed on the box"
+	desc = "A biohazard alert warning is printed on the box."
 	can_hold = list(/obj/item/reagent_container/syringe)
 	icon_state = "syringe"
 	item_state = "syringe"
@@ -140,6 +148,22 @@
 	new /obj/item/reagent_container/glass/beaker(src)
 	new /obj/item/reagent_container/glass/beaker(src)
 	new /obj/item/reagent_container/glass/beaker(src)
+
+/obj/item/storage/box/vials
+	name = "box of vials"
+	icon_state = "vial"
+	item_state = "vial"
+	can_hold = list(/obj/item/reagent_container/glass/beaker)
+	w_class = SIZE_SMALL
+
+/obj/item/storage/box/vials/fill_preset_inventory()
+	new /obj/item/reagent_container/glass/beaker/vial(src)
+	new /obj/item/reagent_container/glass/beaker/vial(src)
+	new /obj/item/reagent_container/glass/beaker/vial(src)
+	new /obj/item/reagent_container/glass/beaker/vial(src)
+	new /obj/item/reagent_container/glass/beaker/vial(src)
+	new /obj/item/reagent_container/glass/beaker/vial(src)
+	new /obj/item/reagent_container/glass/beaker/vial(src)
 
 /obj/item/storage/box/sprays
 	name = "box of empty spray bottles"
@@ -537,7 +561,7 @@
 	icon_state = "pillbox"
 	item_state = "pillbox"
 
-	storage_flags = STORAGE_FLAGS_BOX|STORAGE_CLICK_GATHER|STORAGE_GATHER_SIMULTAENOUSLY
+	storage_flags = STORAGE_FLAGS_BOX|STORAGE_CLICK_GATHER|STORAGE_GATHER_SIMULTANEOUSLY
 	can_hold = list(
 		/obj/item/storage/pill_bottle,
 	)

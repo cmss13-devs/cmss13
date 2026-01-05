@@ -50,9 +50,7 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/two_south)
 "ai" = (
-/obj/structure/machinery/light{
-	dir = 2
-	},
+/obj/structure/machinery/light,
 /obj/structure/platform/metal/almayer{
 	dir = 1
 	},
@@ -3588,7 +3586,7 @@
 /turf/open/gm/dirtgrassborder/north,
 /area/whiskey_outpost/outside/lane/two_south)
 "pk" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/whiskey_outpost/inside/engineering)
 "pm" = (
@@ -3829,7 +3827,7 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/asteroidfloor/north,
 /area/whiskey_outpost/inside/bunker/bunker/front)
 "qm" = (
@@ -3909,7 +3907,7 @@
 /area/whiskey_outpost/inside/hospital)
 "qC" = (
 /obj/structure/machinery/power/apc/almayer/north,
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/whiskey_outpost/inside/engineering)
 "qE" = (
@@ -7265,7 +7263,7 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/north/beach)
 "GD" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/plating/warnplate/northwest,
 /area/whiskey_outpost/outside/north/northeast)
 "GE" = (
@@ -7321,7 +7319,7 @@
 /turf/open/gm/coast/west,
 /area/whiskey_outpost/outside/river/east)
 "GT" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/plating/warnplate/west,
 /area/whiskey_outpost/outside/north/northeast)
 "GU" = (
@@ -7568,10 +7566,6 @@
 /area/whiskey_outpost/outside/north/platform)
 "If" = (
 /obj/structure/barricade/sandbags/wired,
-/obj/structure/barricade/sandbags/wired{
-	dir = 8;
-	icon_state = "sandbag_0"
-	},
 /obj/structure/barricade/sandbags/wired{
 	dir = 8;
 	icon_state = "sandbag_0"
@@ -9422,7 +9416,7 @@
 /turf/open/jungle,
 /area/whiskey_outpost/outside/lane/one_south)
 "Ta" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/gm/grass/gbcorner/north_west,
 /area/whiskey_outpost/outside/north/northwest)
 "Td" = (
@@ -10106,7 +10100,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/whiskey_outpost/inside/bunker/pillbox/one)
 "Wn" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/jungle,
 /area/whiskey_outpost/outside/north)
 "Wo" = (
@@ -10220,7 +10214,7 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/north)
 "WT" = (
@@ -10377,7 +10371,7 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/north/beach)
 "XM" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/whiskey_outpost/inside/bunker/bunker/front)
 "XN" = (

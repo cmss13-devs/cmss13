@@ -5,20 +5,22 @@ GLOBAL_VAR_INIT(power_last_profile_time, 0)
 GLOBAL_LIST_EMPTY(power_update_requests_by_machine)
 GLOBAL_LIST_EMPTY(power_update_requests_by_area)
 
-/proc/log_power_update_request(area/A, obj/structure/machinery/M)
+/proc/log_power_update_request(area/area, obj/structure/machinery/machine, amount, channel)
 	if (!GLOB.enable_power_update_profiling)
 		return
 
-	var/machine_type = "[M.type]"
+	var/machine_type = "[machine.type]"
+	debug_log("[machine] ([machine_type] - \ref[machine]) in [area] ([area.type]) requested [amount] for channel [channel]")
+
 	if (machine_type in GLOB.power_update_requests_by_machine)
 		GLOB.power_update_requests_by_machine[machine_type]++
 	else
 		GLOB.power_update_requests_by_machine[machine_type] = 1
 
-	if (A.name in GLOB.power_update_requests_by_area)
-		GLOB.power_update_requests_by_area[A.name]++
+	if (area.name in GLOB.power_update_requests_by_area)
+		GLOB.power_update_requests_by_area[area.name]++
 	else
-		GLOB.power_update_requests_by_area[A.name] = 1
+		GLOB.power_update_requests_by_area[area.name] = 1
 
 	GLOB.power_profiled_time += (world.time - GLOB.power_last_profile_time)
 	GLOB.power_last_profile_time = world.time
@@ -53,7 +55,7 @@ GLOBAL_LIST_EMPTY(power_update_requests_by_area)
 	if(!check_rights(R_DEBUG))
 		return
 
-	to_chat(usr, "Total profiling time: [GLOB.power_profiled_time] ticks")
+	to_chat(usr, "Total profiling time: [GLOB.power_profiled_time] ticks.")
 	for (var/M in GLOB.power_update_requests_by_machine)
 		to_chat(usr, "[M] = [GLOB.power_update_requests_by_machine[M]]")
 
@@ -65,7 +67,7 @@ GLOBAL_LIST_EMPTY(power_update_requests_by_area)
 	if(!check_rights(R_DEBUG))
 		return
 
-	to_chat(usr, "Total profiling time: [GLOB.power_profiled_time] ticks")
-	to_chat(usr, "Total profiling time: [GLOB.power_profiled_time] ticks")
+	to_chat(usr, "Total profiling time: [GLOB.power_profiled_time] ticks.")
+	to_chat(usr, "Total profiling time: [GLOB.power_profiled_time] ticks.")
 	for (var/A in GLOB.power_update_requests_by_area)
 		to_chat(usr, "[A] = [GLOB.power_update_requests_by_area[A]]")

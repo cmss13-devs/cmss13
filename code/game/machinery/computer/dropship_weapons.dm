@@ -24,10 +24,6 @@
 	var/datum/simulator/simulation
 	var/datum/cas_fire_mission/configuration
 
-	// groundside maps
-	var/datum/tacmap/tacmap
-	var/minimap_type = MINIMAP_FLAG_USCM
-
 	// Cameras
 	var/camera_target_id
 	var/camera_width = 11
@@ -38,6 +34,8 @@
 
 	var/registered = FALSE
 
+	var/minimap_flag = MINIMAP_FLAG_USCM
+
 /obj/structure/machinery/computer/dropship_weapons/New()
 	..()
 	if(firemission_envelope)
@@ -46,22 +44,27 @@
 /obj/structure/machinery/computer/dropship_weapons/Initialize()
 	. = ..()
 	simulation = new()
-	tacmap = new(src, minimap_type)
 
 	RegisterSignal(src, COMSIG_CAMERA_MAPNAME_ASSIGNED, PROC_REF(camera_mapname_update))
 
 	// camera setup
 	AddComponent(/datum/component/camera_manager)
+	AddComponent(/datum/component/tacmap, has_drawing_tools = FALSE, minimap_flag = minimap_flag, has_update = FALSE)
 	SEND_SIGNAL(src, COMSIG_CAMERA_CLEAR)
 
 /obj/structure/machinery/computer/dropship_weapons/Destroy()
 	. = ..()
 	QDEL_NULL(firemission_envelope)
-	QDEL_NULL(tacmap)
 	UnregisterSignal(src, COMSIG_CAMERA_MAPNAME_ASSIGNED)
 
 /obj/structure/machinery/computer/dropship_weapons/proc/camera_mapname_update(source, value)
 	camera_map_name = value
+
+/obj/structure/machinery/computer/dropship_weapons/on_unset_interaction(mob/user)
+	. = ..()
+
+	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
+	tacmap_component.on_unset_interaction(user)
 
 /obj/structure/machinery/computer/dropship_weapons/attack_hand(mob/user)
 	if(..())
@@ -75,7 +78,7 @@
 		/*to_chat(user, SPAN_WARNING("Weapons modification access denied, attempting to launch simulation."))
 
 		if(!selected_firemission)
-			to_chat(user, SPAN_WARNING("Firemission must be selected before attempting to run the simulation"))
+			to_chat(user, SPAN_WARNING("Firemission must be selected before attempting to run the simulation."))
 			return TRUE
 
 		tgui_interact(user)
@@ -90,7 +93,7 @@
 		if(matrix.state == ASSEMBLY_LOCKED)
 			user.drop_held_item(W, src)
 			W.forceMove(src)
-			to_chat(user, SPAN_NOTICE("You swap the matrix in the dropship guidance camera system, destroying the older part in the process"))
+			to_chat(user, SPAN_NOTICE("You swap the matrix in the dropship guidance camera system, destroying the older part in the process."))
 			upgraded = matrix.upgrade
 			power = matrix.power
 
@@ -144,19 +147,17 @@
 		RegisterSignal(dropship, COMSIG_DROPSHIP_REMOVE_EQUIPMENT, PROC_REF(equipment_update))
 		registered = TRUE
 
-	if(!tacmap.map_holder)
-		var/level = SSmapping.levels_by_trait(tacmap.targeted_ztrait)
-		tacmap.map_holder = SSminimaps.fetch_tacmap_datum(level[1], tacmap.allowed_flags)
-
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		user.client.register_map_obj(tacmap.map_holder.map)
 		SEND_SIGNAL(src, COMSIG_CAMERA_REGISTER_UI, user)
 		ui = new(user, src, "DropshipWeaponsConsole", "Weapons Console")
 		ui.open()
 
 /obj/structure/machinery/computer/dropship_weapons/ui_close(mob/user)
 	. = ..()
+
+	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
+	tacmap_component.on_unset_interaction(user)
 	SEND_SIGNAL(src, COMSIG_CAMERA_UNREGISTER_UI, user)
 	simulation.stop_watching(user)
 
@@ -176,7 +177,6 @@
 
 /obj/structure/machinery/computer/dropship_weapons/ui_static_data(mob/user)
 	. = list()
-	.["tactical_map_ref"] = tacmap.map_holder.map_ref
 	.["camera_map_ref"] = camera_map_name
 
 /obj/structure/machinery/computer/dropship_weapons/ui_data(mob/user)
@@ -278,7 +278,7 @@
 
 		if("execute_simulated_firemission")
 			if(!configuration)
-				to_chat(user, SPAN_WARNING("No configured firemission"))
+				to_chat(user, SPAN_WARNING("No configured firemission."))
 				return
 			simulate_firemission(user)
 			. = TRUE
@@ -286,7 +286,7 @@
 		if("switch_firemission")
 			configuration = tgui_input_list(user, "Select firemission to simulate", "Select firemission", firemission_envelope.missions, 30 SECONDS)
 			if(!selected_firemission)
-				to_chat(user, SPAN_WARNING("No configured firemission"))
+				to_chat(user, SPAN_WARNING("No configured firemission."))
 				return
 			if(!configuration)
 				configuration = selected_firemission
@@ -511,6 +511,12 @@
 			RegisterSignal(linked_shuttle.paradrop_signal, COMSIG_PARENT_QDELETING, PROC_REF(clear_locked_turf_and_lock_aft))
 			RegisterSignal(linked_shuttle, COMSIG_SHUTTLE_SETMODE, PROC_REF(clear_locked_turf_and_lock_aft))
 			return TRUE
+		if("mapview")
+			var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
+			if(user in tacmap_component.interactees)
+				tacmap_component.on_unset_interaction(user)
+			else
+				tacmap_component.show_tacmap(user)
 
 /obj/structure/machinery/computer/dropship_weapons/proc/open_aft_for_paradrop()
 	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttle_tag)
@@ -833,10 +839,10 @@
 	if (!istype(dropship))
 		return FALSE
 	if (!dropship.in_flyby || dropship.mode != SHUTTLE_CALL)
-		to_chat(user, SPAN_WARNING("Has to be in Fly By mode"))
+		to_chat(user, SPAN_WARNING("Has to be in Fly By mode."))
 		return FALSE
 	if (dropship.timer && dropship.timeLeft(1) < firemission_envelope.flyoff_period)
-		to_chat(user, SPAN_WARNING("Not enough time to complete the Fire Mission"))
+		to_chat(user, SPAN_WARNING("Not enough time to complete the Fire Mission."))
 		return FALSE
 	var/datum/cas_signal/recorded_loc = firemission_envelope.recorded_loc
 	var/obj/source = recorded_loc.signal_loc
@@ -924,10 +930,10 @@
 
 /obj/structure/machinery/computer/dropship_weapons/proc/simulate_firemission(mob/living/user)
 	if(!configuration)
-		to_chat(user, SPAN_WARNING("Configure a firemission before attempting to run the simulation"))
+		to_chat(user, SPAN_WARNING("Configure a firemission before attempting to run the simulation."))
 		return
 	if(configuration.check(src) != FIRE_MISSION_ALL_GOOD)
-		to_chat(user, SPAN_WARNING("Configured firemission has errors, fix the errors before attempting to run the simulation"))
+		to_chat(user, SPAN_WARNING("Configured firemission has errors, fix the errors before attempting to run the simulation."))
 		return
 
 	simulation.spawn_mobs(user)

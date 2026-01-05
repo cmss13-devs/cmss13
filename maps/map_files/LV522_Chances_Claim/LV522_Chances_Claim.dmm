@@ -750,6 +750,89 @@
 /obj/effect/landmark/spycam_start,
 /turf/open/floor/prison/floor_marked/southwest,
 /area/lv522/landing_zone_1)
+"acV" = (
+/obj/structure/barricade/deployable{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"acW" = (
+/obj/structure/cargo_container/horizontal/blue/bottom,
+/turf/open/floor/prison/floor_plate,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"acX" = (
+/obj/structure/cargo_container/horizontal/blue/middle{
+	layer = 3.1
+	},
+/turf/open/floor/plating,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"acY" = (
+/obj/item/ammo_magazine/rifle/m4ra/extended{
+	current_rounds = 0
+	},
+/obj/item/ammo_magazine/rifle/m4ra/extended{
+	current_rounds = 0
+	},
+/obj/item/ammo_magazine/rifle/m4ra/extended{
+	current_rounds = 0
+	},
+/obj/item/ammo_magazine/rifle/m4ra/extended{
+	current_rounds = 0
+	},
+/obj/structure/closet/crate/ammo,
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"acZ" = (
+/obj/item/stack/sheet/metal/med_small_stack,
+/obj/structure/closet/crate/construction,
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"ada" = (
+/obj/structure/cargo_container/horizontal/blue/middle,
+/obj/structure/largecrate/supply/floodlights{
+	layer = 3.1;
+	pixel_y = 3
+	},
+/turf/open/floor/prison/floor_plate,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"adb" = (
+/obj/structure/cargo_container/horizontal/blue/top,
+/turf/open/floor/plating,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"adc" = (
+/obj/structure/cargo_container/kelland/right,
+/obj/structure/cargo_container/horizontal/blue/top{
+	layer = 4.3
+	},
+/turf/open/floor/prison/floor_plate,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"add" = (
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/corsat/brown,
+/area/lv522/atmos/filt)
+"ade" = (
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/corsat/plate,
+/area/lv522/atmos/filt)
+"adf" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/prison/floor_plate,
+/area/lv522/outdoors/nw_rockies)
+"adg" = (
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv522/atmos/filt)
+"adh" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/prison,
+/area/lv522/outdoors/nw_rockies)
+"adi" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/corsat/plate,
+/area/lv522/atmos/cargo_intake)
 "adk" = (
 /obj/structure/surface/table/almayer,
 /obj/item/trash/plate,
@@ -1776,11 +1859,6 @@
 /area/lv522/indoors/a_block/medical)
 "aOf" = (
 /obj/structure/platform_decoration/metal/almayer/east,
-/obj/structure/closet/crate/ammo,
-/obj/item/ammo_magazine/rifle/lmg/holo_target,
-/obj/item/weapon/gun/rifle/lmg{
-	current_mag = null
-	},
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "aOi" = (
@@ -3776,6 +3854,10 @@
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
 "bYC" = (
+/obj/item/defenses/handheld/sentry/mini{
+	pixel_y = -4;
+	pixel_x = -5
+	},
 /turf/open/shuttle/dropship/can_surgery/light_grey_top_right,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "bYM" = (
@@ -4440,10 +4522,6 @@
 /obj/effect/spawner/gibspawner/xeno,
 /obj/structure/platform/metal/almayer/west,
 /turf/open/asphalt/cement/cement1,
-/area/lv522/outdoors/colony_streets/north_east_street)
-"cuk" = (
-/obj/structure/cargo_container/horizontal/blue/top,
-/turf/open/floor/prison/floor_marked,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "cuF" = (
 /obj/structure/machinery/light{
@@ -6133,7 +6211,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/bridges/op_centre)
 "djQ" = (
-/obj/structure/reagent_dispensers/watertank{
+/obj/structure/reagent_dispensers/tank/water{
 	anchored = 1
 	},
 /obj/structure/prop/ice_colony/dense/planter_box{
@@ -6415,9 +6493,6 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	name = "\improper Marshal Office Interrogation";
 	req_access = null
-	},
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -6787,13 +6862,7 @@
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/indoors/c_block/casino)
 "dBd" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	layer = 3;
-	name = "????";
-	stat = 2
-	},
+/obj/structure/cargo_container/kelland/left,
 /turf/open/floor/plating,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "dBe" = (
@@ -6970,7 +7039,7 @@
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/central_streets)
 "dFR" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/corsat,
 /area/lv522/atmos/cargo_intake)
 "dFT" = (
@@ -8057,7 +8126,7 @@
 /turf/open/asphalt/cement/cement12,
 /area/lv522/outdoors/colony_streets/containers)
 "ehr" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/lv522/indoors/b_block/bar)
@@ -9241,9 +9310,7 @@
 /turf/open/floor/corsat/brown/southeast,
 /area/lv522/atmos/east_reactor/south)
 "eRI" = (
-/obj/structure/barricade/deployable{
-	dir = 8
-	},
+/obj/structure/cargo_container/horizontal/blue/bottom,
 /turf/open/floor/plating,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "eRQ" = (
@@ -10734,7 +10801,7 @@
 /turf/open/floor/corsat/brown/north,
 /area/lv522/atmos/reactor_garage)
 "fNp" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/indoors/b_block/hydro)
 "fNq" = (
@@ -10755,7 +10822,7 @@
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/indoors/c_block/casino)
 "fOy" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/indoors/b_block/hydro)
@@ -11661,7 +11728,7 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/nw_rockies)
 "gpi" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/indoors/c_block/cargo)
@@ -13770,7 +13837,7 @@
 /turf/closed/wall/strata_outpost,
 /area/lv522/indoors/a_block/fitness)
 "hzu" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/indoors/c_block/cargo)
@@ -14722,7 +14789,7 @@
 /turf/open/floor/plating,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "hZg" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/prison/floor_plate,
 /area/lv522/atmos/reactor_garage)
 "hZC" = (
@@ -18555,6 +18622,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/corsat/plate,
 /area/lv522/atmos/east_reactor/south)
 "kbg" = (
@@ -21772,7 +21840,7 @@
 /turf/open/floor/prison/blue_plate/north,
 /area/lv522/indoors/a_block/admin)
 "lHd" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /obj/item/reagent_container/food/drinks/flask/marine{
 	layer = 3.1;
 	pixel_x = -6;
@@ -23604,7 +23672,7 @@
 /turf/open/floor/strata/white_cyan2/west,
 /area/lv522/indoors/a_block/medical/glass)
 "mEG" = (
-/obj/structure/reagent_dispensers/fueltank/gas,
+/obj/structure/reagent_dispensers/tank/fuel/gas,
 /obj/item/tool/weldpack{
 	layer = 3.1;
 	pixel_x = -5;
@@ -24717,7 +24785,7 @@
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/garage)
 "ngo" = (
-/obj/structure/reagent_dispensers/fueltank{
+/obj/structure/reagent_dispensers/tank/fuel{
 	layer = 2.9
 	},
 /turf/open/floor/corsat/marked,
@@ -24759,7 +24827,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/admin)
 "nhb" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/corsat/marked,
 /area/lv522/outdoors/colony_streets/north_street)
 "nhs" = (
@@ -25496,15 +25564,6 @@
 	pixel_x = 30
 	},
 /obj/effect/decal/cleanable/blood/splatter,
-/obj/item/ammo_box/rounds/smg{
-	layer = 3;
-	pixel_x = 1;
-	pixel_y = 4
-	},
-/obj/item/defenses/handheld/sentry/mini{
-	pixel_y = -4;
-	pixel_x = -5
-	},
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "nBo" = (
@@ -25737,7 +25796,7 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/colony_streets/south_east_street)
 "nIF" = (
-/obj/structure/reagent_dispensers/fueltank{
+/obj/structure/reagent_dispensers/tank/fuel{
 	layer = 2.9
 	},
 /obj/effect/decal/cleanable/liquid_fuel,
@@ -26566,7 +26625,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/lv522/indoors/a_block/corpo/glass)
 "ocL" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /obj/structure/platform_decoration/metal/almayer/west,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkbrownfull2,
@@ -26693,6 +26752,11 @@
 /turf/open/floor/corsat,
 /area/lv522/atmos/east_reactor/south)
 "oeV" = (
+/obj/structure/closet/crate/ammo,
+/obj/item/ammo_magazine/rifle/lmg/holo_target,
+/obj/item/weapon/gun/rifle/lmg{
+	current_mag = null
+	},
 /turf/open/shuttle/dropship/can_surgery/light_grey_bottom_left,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "oeX" = (
@@ -27273,7 +27337,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/kitchen)
 "ouO" = (
-/obj/structure/reagent_dispensers/fueltank{
+/obj/structure/reagent_dispensers/tank/fuel{
 	layer = 2.9
 	},
 /obj/effect/decal/cleanable/liquid_fuel,
@@ -30527,11 +30591,6 @@
 	pixel_x = 7;
 	pixel_y = 19
 	},
-/obj/structure/machinery/door_control{
-	id = "UD6 East";
-	name = "Cargo Shutter Control";
-	pixel_y = -4
-	},
 /obj/item/clothing/head/headset{
 	pixel_x = 4
 	},
@@ -31337,7 +31396,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
-/obj/structure/reagent_dispensers/fueltank{
+/obj/structure/reagent_dispensers/tank/fuel{
 	layer = 2.9
 	},
 /obj/structure/barricade/metal{
@@ -31448,10 +31507,6 @@
 /obj/structure/machinery/light/double{
 	dir = 8;
 	pixel_y = -5
-	},
-/obj/item/ammo_magazine/rifle/m4ra{
-	pixel_x = 5;
-	pixel_y = 6
 	},
 /turf/open/floor/strata/white_cyan2,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
@@ -32043,24 +32098,16 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/colony_streets/south_east_street)
 "qUf" = (
-/obj/item/ammo_magazine/rifle/m4ra/extended{
-	current_rounds = 0
-	},
-/obj/item/ammo_magazine/rifle/m4ra/extended{
-	current_rounds = 0
-	},
-/obj/item/ammo_magazine/rifle/m4ra/extended{
-	current_rounds = 0
-	},
-/obj/item/ammo_magazine/rifle/m4ra/extended{
-	current_rounds = 0
-	},
-/obj/structure/closet/crate/ammo,
 /obj/structure/barricade/handrail{
 	dir = 8
 	},
 /obj/structure/barricade/handrail{
 	dir = 4
+	},
+/obj/item/ammo_box/rounds/smg{
+	layer = 3;
+	pixel_x = 1;
+	pixel_y = 4
 	},
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
@@ -35834,7 +35881,7 @@
 /turf/open/floor/prison/whitegreenfull,
 /area/lv522/indoors/a_block/fitness)
 "sKS" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/item/prop/colony/canister{
 	pixel_y = 11
 	},
@@ -37919,10 +37966,6 @@
 	},
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/security)
-"tLJ" = (
-/obj/structure/cargo_container/horizontal/blue/bottom,
-/turf/open/floor/prison/floor_marked,
-/area/lv522/outdoors/colony_streets/north_east_street)
 "tLL" = (
 /obj/structure/curtain/medical,
 /obj/effect/decal/cleanable/dirt,
@@ -38186,7 +38229,8 @@
 	dir = 4;
 	pixel_y = -5
 	},
-/obj/structure/largecrate/supply/supplies/metal,
+/obj/item/stack/sheet/metal/med_small_stack,
+/obj/structure/closet/crate/construction,
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "tTb" = (
@@ -38624,7 +38668,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/c_block/mining)
 "uep" = (
-/obj/structure/reagent_dispensers/fueltank{
+/obj/structure/reagent_dispensers/tank/fuel{
 	layer = 2.9
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -39244,7 +39288,7 @@
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/lv522/indoors/c_block/t_comm)
 "utd" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/marked,
 /area/lv522/outdoors/colony_streets/north_street)
@@ -43319,7 +43363,7 @@
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/indoors/c_block/bridge)
 "woi" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/indoors/c_block/cargo)
 "woq" = (
@@ -43792,14 +43836,6 @@
 "wAB" = (
 /turf/open/floor/corsat/brown/west,
 /area/lv522/atmos/cargo_intake)
-"wAM" = (
-/obj/structure/cargo_container/horizontal/blue/middle,
-/obj/structure/largecrate/supply/floodlights{
-	layer = 3.1;
-	pixel_y = 9
-	},
-/turf/open/floor/prison/floor_marked,
-/area/lv522/outdoors/colony_streets/north_east_street)
 "wBp" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -45099,7 +45135,7 @@
 /turf/open/floor/shiva/radiator_tile2,
 /area/lv522/indoors/a_block/bridges/corpo)
 "xlL" = (
-/obj/structure/reagent_dispensers/fueltank{
+/obj/structure/reagent_dispensers/tank/fuel{
 	layer = 2.9
 	},
 /obj/effect/decal/cleanable/liquid_fuel,
@@ -46311,11 +46347,6 @@
 "xRM" = (
 /obj/structure/machinery/door/airlock/dropship_hatch/two{
 	dir = 8
-	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "UD6 East";
-	explo_proof = 1
 	},
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
@@ -56728,12 +56759,12 @@ saC
 tTl
 wAB
 ezp
-wBR
+adi
 iTX
 eZq
 fmv
 auG
-gat
+adf
 gsZ
 uWO
 uWO
@@ -57556,7 +57587,7 @@ abB
 epb
 abu
 fol
-auG
+adh
 gbQ
 gsZ
 uWO
@@ -75271,11 +75302,11 @@ cpy
 xZE
 eWn
 gUv
+ade
 sYl
+ade
 sYl
-sYl
-sYl
-gUv
+add
 han
 shD
 cpy
@@ -75478,9 +75509,9 @@ xZE
 eWy
 gUv
 sYl
+adg
 fSe
-fSe
-sYl
+ade
 gUv
 sYl
 shD
@@ -75682,10 +75713,10 @@ cpy
 cpy
 xZE
 sYl
-gUv
+add
 sYl
 fSe
-fSe
+adg
 gJD
 gUv
 sYl
@@ -78776,7 +78807,7 @@ pvZ
 pvZ
 pvZ
 pvZ
-pvZ
+hXo
 pvZ
 pvZ
 lBM
@@ -79596,7 +79627,7 @@ rdC
 pvZ
 pvZ
 pvZ
-pvZ
+hXo
 pvZ
 pvZ
 pvZ
@@ -79604,7 +79635,7 @@ pvZ
 pvZ
 lBM
 lBM
-lBM
+cDO
 lBM
 lBM
 lBM
@@ -82512,8 +82543,8 @@ qUL
 qUL
 nSF
 qUL
-qUL
-eRI
+adb
+acX
 eRI
 sct
 fzC
@@ -83337,7 +83368,7 @@ sKi
 hLR
 dNx
 dNx
-dNx
+acY
 dNx
 nHF
 dNx
@@ -83955,7 +83986,7 @@ sIA
 goC
 jAX
 tna
-xyu
+acZ
 xyu
 goC
 ucs
@@ -84367,8 +84398,8 @@ qUL
 ucD
 vpU
 wXe
-qUL
-qUL
+acV
+acV
 sct
 dWY
 qzw
@@ -84563,7 +84594,7 @@ qSH
 qSH
 hKN
 ljq
-iNs
+ljA
 qUL
 qUL
 qUL
@@ -84769,7 +84800,7 @@ vGp
 qSH
 esu
 lhr
-kbn
+ljA
 ljA
 lAn
 lAn
@@ -84778,9 +84809,9 @@ lAn
 lAn
 nVX
 nVX
-lAn
-lAn
-lAn
+adc
+ada
+acW
 lAn
 naw
 nzU
@@ -85193,9 +85224,9 @@ mqc
 mqc
 hKS
 eNW
-cuk
-wAM
-tLJ
+mqc
+mqc
+mqc
 xIv
 mqc
 ljA

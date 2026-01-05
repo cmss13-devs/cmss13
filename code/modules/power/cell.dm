@@ -124,6 +124,10 @@
 	maxcharge = 500
 	matter = list("metal" = 700, "glass" = 40)
 
+/obj/item/cell/crap/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/cell/crap/empty
 	charge = 0
 

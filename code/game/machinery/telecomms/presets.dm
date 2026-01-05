@@ -22,7 +22,7 @@
 	unslashable = TRUE
 	unacidable = TRUE
 
-	//We dont want anyone to mess with it
+	//We don't want anyone to mess with it
 /obj/structure/machinery/telecomms/relay/preset/ice_colony/attackby()
 	return
 
@@ -49,7 +49,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	GLOB.all_static_telecomms_towers += src
 	. = ..()
 	if(z)
-		SSminimaps.add_marker(src, z, MINIMAP_FLAG_ALL, "supply")
+		SSminimaps.add_marker(src, MINIMAP_FLAG_ALL, image('icons/UI_icons/map_blips.dmi', null, "supply"))
 
 /obj/structure/machinery/telecomms/relay/preset/tower/Destroy()
 	GLOB.all_static_telecomms_towers -= src
@@ -259,7 +259,8 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	else
 		use_power = USE_POWER_NONE
 		message_admins("[key_name(user)] turned \the [src] in [commarea] OFF. [ADMIN_JMP(commloc.loc)]")
-	toggle_cooldown = world.time + 40
+	toggle_cooldown = world.time + 4 SECONDS
+	SSradio.update_cache()
 
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/attackby(obj/item/I, mob/user)
 	if(HAS_TRAIT(I, TRAIT_TOOL_MULTITOOL))
@@ -270,6 +271,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 		if(choice == "Wipe communication frequencies")
 			freq_listening.Cut()
 			to_chat(user, SPAN_NOTICE("You wipe the preexisting frequencies from \the [src]."))
+			SSradio.update_cache()
 			return
 		else if(choice == "Add your faction's frequencies")
 			if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -293,6 +295,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 				else
 					freq_listening |= DEPT_FREQS
 			to_chat(user, SPAN_NOTICE("You add your faction's communication frequencies to \the [src]'s comm list."))
+			SSradio.update_cache()
 			return
 	. = ..()
 
@@ -303,6 +306,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 			toggle_state()
 			on = FALSE
 			update_icon()
+			SSradio.update_cache()
 
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/update_state()
 	..()

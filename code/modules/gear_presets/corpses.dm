@@ -11,6 +11,7 @@
 	skills = /datum/skills/civilian
 	idtype = /obj/item/card/id/lanyard
 	var/xenovictim = FALSE //Set to true to make the corpse spawn as a victim of a xeno burst
+	selection_categories = list("Corpse")
 
 /datum/equipment_preset/corpse/load_languages(mob/living/carbon/human/new_human)
 	return
@@ -20,6 +21,7 @@
 
 	// These two values matter because they are checked on death for weed_food
 	new_human.undefibbable = TRUE
+	SEND_SIGNAL(new_human, COMSIG_HUMAN_SET_UNDEFIBBABLE)
 	if(xenovictim)
 		new_human.chestburst = 2
 

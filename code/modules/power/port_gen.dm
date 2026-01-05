@@ -180,7 +180,7 @@ display floor(lastgen) and phorontank amount
 
 /obj/structure/machinery/power/power_generator/port_gen/pacman/get_examine_text(mob/user)
 	. = ..()
-	. += SPAN_NOTICE("The generator has [sheets] units of [sheet_name] fuel left, producing [power_gen] per cycle.")
+	. += SPAN_NOTICE(" The generator has [sheets] units of [sheet_name] fuel left, producing [power_gen] per cycle.")
 	if(crit_fail) . += SPAN_DANGER("The generator seems to have broken down.")
 
 /obj/structure/machinery/power/power_generator/port_gen/pacman/HasFuel()

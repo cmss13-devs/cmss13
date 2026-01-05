@@ -3,7 +3,7 @@
 	desc = "It's an immobile card-locked storage unit that uses hijack protocols to determine its opening, closing, locking, and unlocking behavior."
 	icon_state = "secure1"
 	store_mobs = FALSE
-	var/hijack = TRUE
+	var/hijack = FALSE
 
 /obj/structure/closet/secure_closet/emergency/Initialize()
 	. = ..()

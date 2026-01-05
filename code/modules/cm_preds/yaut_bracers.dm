@@ -823,7 +823,7 @@
 
 	decloak(wearer, TRUE, DECLOAK_EXTINGUISHER)
 
-/obj/item/clothing/gloves/yautja/hunter/decloak(mob/user, forced, force_multiplier = DECLOAK_FORCED)
+/obj/item/clothing/gloves/yautja/hunter/decloak(mob/user, forced, force_multipler = DECLOAK_FORCED)
 	if(!user)
 		return
 
@@ -833,7 +833,7 @@
 	UnregisterSignal(user, COMSIG_HUMAN_PRE_BULLET_ACT)
 	UnregisterSignal(user, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
 
-	var/decloak_timer = (DECLOAK_STANDARD * force_multiplier)
+	var/decloak_timer = (DECLOAK_STANDARD * force_multipler)
 	if(forced)
 		cloak_malfunction = world.time + decloak_timer
 

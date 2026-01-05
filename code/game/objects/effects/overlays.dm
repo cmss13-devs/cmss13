@@ -231,8 +231,33 @@
 	name = "ob impact animation"
 	effect_duration = 12
 	var/atom/shell
+	var/size_mod
 
-/obj/effect/overlay/temp/ob_impact/Initialize(mapload, atom/owner)
+/obj/effect/overlay/temp/ob_impact/Initialize(mapload, atom/owner, size)
+	. = ..()
+	if (!owner)
+		log_debug("Created a [type] without `owner`")
+		qdel(src)
+		return
+	shell = owner
+	size_mod = size
+	appearance = shell.appearance
+	transform = matrix().Turn(-90)
+	transform *= size_mod
+	add_filter("motionblur", 1, motion_blur_filter(x = 2, y = 0)) //either im stupid and dont know what its supposed to look like or it needs to be x because it got rotated
+	layer = initial(layer)
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	pixel_y = 3000
+	animate(src, pixel_y = -50, time=10)
+	animate(icon_state=null, icon=null, time=2) // to vanish it immediately
+
+//same as above but for mortar shells
+/obj/effect/overlay/temp/mortar_impact
+	name = "mortar impact animation"
+	effect_duration = 22
+	var/atom/shell
+
+/obj/effect/overlay/temp/mortar_impact/Initialize(mapload, atom/owner)
 	. = ..()
 	if (!owner)
 		log_debug("Created a [type] without `owner`")
@@ -240,11 +265,11 @@
 		return
 	shell = owner
 	appearance = shell.appearance
-	transform = matrix().Turn(-90)
+	transform = matrix().Turn(-180)
 	layer = initial(layer)
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	pixel_y = 600
-	animate(src, pixel_y = -10, time=10)
+	animate(src, pixel_y = -10, time=2 SECONDS)
 	animate(icon_state=null, icon=null, time=2) // to vanish it immediately
 
 /obj/effect/overlay/temp/emp_sparks

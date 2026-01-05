@@ -260,7 +260,9 @@ GLOBAL_LIST_EMPTY(admin_ranks) //list of all ranks with associated rights
 
 	var/datum/http_response/response = request.into_response()
 
-	if(!response || response.status_code != 200)
+	if(!response || response.status_code != 200 || response.errored)
+		log_admin("\[ADMIN_API\] Error occured while fetching, defaulting to configuration files.")
+		return FALSE
 
 	var/admins_response = null
 	try

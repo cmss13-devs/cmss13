@@ -1099,7 +1099,7 @@
 
 /obj/item/storage/pouch/pressurized_reagent_canister/surgery_prep
 	name = "\improper Pressurized Reagent Canister Pouch (Surgery Prep Mix)"
-	desc = "A pouch that carries a 15u custom autoinjector and a pressurized reagent canister filled with 240u Oxycodone, 180u Dexalin, and 60u Peridaxon to locally anesthetize patients and prevent them from dying on the table due to the effects of organ damage or suffocating from low blood. You can refill the pouch's canister with a reagent tank or chemical dispenser."
+	desc = "A pouch that carries a 15u custom autoinjector and a pressurized reagent canister filled with 280u Oxycodone, 160u Dexalin, and 40u Peridaxon to locally anesthetize patients and prevent them from dying on the table due to the effects of organ damage or suffocating from low blood. You can refill the pouch's canister with a reagent tank or chemical dispenser."
 
 /obj/item/storage/pouch/pressurized_reagent_canister/Initialize()
 	. = ..()
@@ -1193,14 +1193,14 @@
 	. = ..()
 
 	//My special recipe: tried, tested, and true! -- Puckaboo2
-	inner.reagents.add_reagent("oxycodone", inner.volume/2)
-	inner.reagents.add_reagent("dexalin", inner.volume*(3/8))
-	inner.reagents.add_reagent("peridaxon", inner.volume/6)
+	inner.reagents.add_reagent("oxycodone", inner.volume*(5/12)) //280u
+	inner.reagents.add_reagent("dexalin", inner.volume/3) //160u
+	inner.reagents.add_reagent("peridaxon", inner.volume/12) //40u. Peri and Dexalin only need to last long enough to give more blood/fix IB/complete organ repair surgery.
 	if(length(contents) > 0)
 		var/obj/item/reagent_container/hypospray/autoinjector/empty/medic/A = contents[1]
-		A.reagents.add_reagent("oxycodone", A.volume/2)
-		A.reagents.add_reagent("dexalin", A.volume*(3/8))
-		A.reagents.add_reagent("peridaxon", A.volume/6)
+		A.reagents.add_reagent("oxycodone", A.volume*(5/12)
+		A.reagents.add_reagent("dexalin", A.volume/3)
+		A.reagents.add_reagent(peridaxon, A.volume/12)
 		A.update_uses_left()
 		A.update_icon()
 	update_icon()

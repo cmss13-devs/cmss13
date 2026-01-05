@@ -8,7 +8,7 @@
 	health = 200
 	opacity = TRUE
 	anchored = TRUE
-	///multiples any demage taken from bullets
+	///multiples any damage taken from bullets
 	var/bullet_damage_multiplier = 0.2
 	///multiples any demage taken from explosion
 	var/explosion_damage_multiplier = 2
@@ -55,7 +55,7 @@
 //Note, for Watatsumi, Grant, and Arious, "left" and "leftmid" are both the left end of the container, but "left" is generic and "leftmid" has the Sat Mover mark on it
 /obj/structure/cargo_container/watatsumi
 	name = "Watatsumi Cargo Container"
-	desc = "A huge industrial shipping container.\nThis one is from Watatsumi, a manufacturer of a variety of electronical and mechanical products.\nAt least, that is what is says on the container. You have literally never heard of this company before."
+	desc = "A huge industrial shipping container.\nThis one is from Watatsumi, a manufacturer of a variety of electronic and mechanical products.\nAt least, that is what is says on the container. You have literally never heard of this company before."
 
 /obj/structure/cargo_container/watatsumi/left
 	icon_state = "watatsumi_l"
@@ -312,7 +312,7 @@
 
 /obj/structure/cargo_container/canc
 	name = "CANC Cargo Container"
-	desc = "A huge industrial shipping container.\nThis one is from the Chinese/Asian–Nation Cooperative, which was absorded into the UPP. Their massive industrial output has ensured that cargo containers bearing their symbols and name won't be disappearing any time soon."
+	desc = "A huge industrial shipping container.\nThis one is from the Chinese/Asian–Nation Cooperative, which was absorbed into the UPP. Their massive industrial output has ensured that cargo containers bearing their symbols and name won't be disappearing any time soon."
 
 /obj/structure/cargo_container/canc/left
 	icon_state = "canc_g_l"
@@ -325,7 +325,7 @@
 
 /obj/structure/cargo_container/canc/tan
 	name = "CANC Cargo Container"
-	desc = "A huge industrial shipping container.\nThis one is from the Chinese/Asian–Nation Cooperative, which was absorded into the UPP. Their massive industrial output has ensured that cargo containers bearing their symbols and name won't be disappearing any time soon."
+	desc = "A huge industrial shipping container.\nThis one is from the Chinese/Asian–Nation Cooperative, which was absorbed into the UPP. Their massive industrial output has ensured that cargo containers bearing their symbols and name won't be disappearing any time soon."
 
 /obj/structure/cargo_container/canc/tan/left
 	icon_state = "canc_t_l"

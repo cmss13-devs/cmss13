@@ -198,7 +198,7 @@
 
 	setup_banned_allies()
 
-///Generate the image()'s requried for the evolution radial menu.
+///Generate the image()'s required for the evolution radial menu.
 /datum/hive_status/proc/generate_evo_menu_images()
 	for(var/datum/caste_datum/caste as anything in subtypesof(/datum/caste_datum))
 		evolution_menu_images[initial(caste.caste_type)] = image('icons/mob/xenos/radial_xenos.dmi', initial(caste.caste_type))
@@ -1533,7 +1533,7 @@
 
 	xeno_message(SPAN_XENOANNOUNCE("We sense that [english_list(defectors)] turned their backs against their sisters and the Queen in favor of their slavemasters!"), 3, hivenumber)
 	if(faction == FACTION_MARINE && ares_can_interface())
-		marine_announcement("The advanced IFF Xenomorph tagging technology has detected hostile intentions and succesfully supressed the psychic link of [length(defectors)] lifeform\s. The collaborative lifeforms are given designation Renegades. Full cooperation is to be expected.", MAIN_AI_SYSTEM)
+		marine_announcement("The advanced IFF Xenomorph tagging technology has detected hostile intentions and successfully suppressed the psychic link of [length(defectors)] lifeform\s. The collaborative lifeforms are given designation Renegades. Full cooperation is to be expected.", MAIN_AI_SYSTEM)
 	defectors.Cut()
 
 /datum/hive_status/corrupted/proc/add_personal_ally(mob/living/ally)
@@ -1610,7 +1610,7 @@
 			potential_hivebuffs -= possible_hivebuff
 			continue
 
-		//If this buff isn't combineable, check if any other active hivebuffs aren't combineable
+		//If this buff isn't combinable, check if any other active hivebuffs aren't combineable
 		if(!initial(possible_hivebuff.is_combineable))
 			var/found_conflict = FALSE
 			for(var/datum/hivebuff/active_hivebuff in active_hivebuffs)
@@ -1642,7 +1642,7 @@
 /datum/xeno_mark_define
 	var/name = "xeno_declare"
 	var/icon_state = "empty"
-	var/desc = "Xenos make psychic markers with this meaning as positional lasting communication to eachother."
+	var/desc = "Xenos make psychic markers with this meaning as positional lasting communication to each other."
 
 /datum/xeno_mark_define/fortify
 	name = "Fortify"

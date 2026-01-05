@@ -45,7 +45,7 @@
 	//No longer relevant to the game mode, since supply drops are getting changed.
 	var/checkwin_counter = 0
 	var/finished = 0
-	var/has_started_timer = 10 //This is a simple timer so we don't accidently check win conditions right in post-game
+	var/has_started_timer = 10 //This is a simple timer so we don't accidentally check win conditions right in post-game
 	var/randomovertime = 0 //This is a simple timer so we can add some random time to the game mode.
 	var/spawn_next_wave = 12 MINUTES //Spawn first batch at ~12 minutes
 	var/last_wave_time = 0 // Stores the time the last wave (wave 15) started
@@ -130,7 +130,7 @@
 	sleep(10)
 	switch(map_locale) //Switching it up.
 		if(0)
-			marine_announcement("This is Captain Hans Naiche, commander of the 3rd Battalion 'Dust Raiders' forces here on LV-624. In our attempts to establish a base on this planet, several of our patrols were wiped out by hostile creatures.  We're setting up a distress call, but we need you to hold [SSmapping.configs[GROUND_MAP].map_name] in order for our engineers to set up the relay. We're prepping several M402 mortar units to provide fire support. If they overrun your positon, we will be wiped out with no way to call for help. Hold the line or we all die.", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
+			marine_announcement("This is Captain Hans Naiche, commander of the 3rd Battalion 'Dust Raiders' forces here on LV-624. In our attempts to establish a base on this planet, several of our patrols were wiped out by hostile creatures.  We're setting up a distress call, but we need you to hold [SSmapping.configs[GROUND_MAP].map_name] in order for our engineers to set up the relay. We're prepping several M402 mortar units to provide fire support. If they overrun your position, we will be wiped out with no way to call for help. Hold the line or we all die.", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
 	addtimer(CALLBACK(src, PROC_REF(story_announce), 0), 3 MINUTES)
 	return ..()
 
@@ -159,7 +159,7 @@
 			SSitem_cleanup.delete_almayer()
 
 
-//PROCCESS
+//PROCESS
 /datum/game_mode/whiskey_outpost/process(delta_time)
 	. = ..()
 	checkwin_counter++
@@ -501,7 +501,7 @@
 			for(var/path in spawnitems)
 				new path(crate)
 
-//Whiskey Outpost Recycler Machine. Teleports objects to centcomm so it doesnt lag
+//Whiskey Outpost Recycler Machine. Teleports objects to centcomm so it doesn't lag
 /obj/structure/machinery/wo_recycler
 	icon = 'icons/obj/structures/machinery/recycling.dmi'
 	icon_state = "grinder-o0"

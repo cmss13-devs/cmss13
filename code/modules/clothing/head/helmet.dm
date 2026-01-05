@@ -1278,7 +1278,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	inserted_visors = list(new /obj/item/device/helmet_visor/po_visor)
 	max_inserted_visors = 1
 
-/obj/item/clothing/head/helmet/marine/pilot/novisor //For vendors that give sepreate visor options
+/obj/item/clothing/head/helmet/marine/pilot/novisor //For vendors that give separate visor options
 	inserted_visors = list()
 
 /obj/item/clothing/head/helmet/marine/pilot/tex

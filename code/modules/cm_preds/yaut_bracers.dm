@@ -312,7 +312,7 @@
 
 /obj/item/clothing/gloves/yautja/hunter/emp_act(severity)
 	. = ..()
-	charge = max(charge - (1000/severity), 0) //someone made weaker emp have higer severity so we divide
+	charge = max(charge - (1000/severity), 0) //someone made weaker emp have higher severity so we divide
 	if(ishuman(loc))
 		var/mob/living/carbon/human/wearer = loc
 		if(wearer.gloves == src)
@@ -440,7 +440,7 @@
 	var/obj/item/attached_weapon
 	///Attachment deployment sound
 	var/deployment_sound
-	///Attachment rectraction sound
+	///Attachment retraction sound
 	var/retract_sound
 
 /obj/item/bracer_attachments/Initialize(mapload, ...)
@@ -1088,7 +1088,7 @@
 
 /obj/item/clothing/gloves/yautja/hunter/verb/remote_kill()
 	set name = "Remotely Kill Youngblood"
-	set desc = "Remotley kill a youngblood for breaking the honour code."
+	set desc = "Remotely kill a youngblood for breaking the honour code."
 	set category = "Yautja.Misc"
 	set src in usr
 	. = remote_kill_internal(usr, FALSE)

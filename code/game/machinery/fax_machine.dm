@@ -745,7 +745,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 	radio_alert_tag = ":p"
 
 /obj/structure/machinery/faxmachine/uscm/almayer/brig/chief
-	sub_name = "Chief Military Police"
+	sub_name = "Chief of Military Police"
 
 /obj/structure/machinery/faxmachine/uscm/provost
 	name = "\improper USCM Provost Fax Machine"

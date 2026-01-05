@@ -522,7 +522,7 @@
 	misc_tracking = TRUE
 
 	inbuilt_tracking_options = list(
-		"Chief Military Police" = TRACKER_CMP,
+		"Chief of Military Police" = TRACKER_CMP,
 		"Military Warden" = TRACKER_WARDEN,
 	)
 
@@ -540,7 +540,7 @@
 	inbuilt_tracking_options = list(
 		"Commanding Officer" = TRACKER_CO,
 		"Executive Officer" = TRACKER_XO,
-		"Chief Military Police" = TRACKER_CMP,
+		"Chief of Military Police" = TRACKER_CMP,
 		"Military Warden" = TRACKER_WARDEN,
 	)
 
@@ -744,7 +744,7 @@
 	inbuilt_tracking_options = list(
 		"Commanding Officer" = TRACKER_CO,
 		"Executive Officer" = TRACKER_XO,
-		"Chief Military Police" = TRACKER_CMP
+		"Chief of Military Police" = TRACKER_CMP
 	)
 
 /obj/item/device/radio/headset/almayer/mcom/synth

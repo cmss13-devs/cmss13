@@ -369,7 +369,7 @@ COMMAND STAFF
 	)
 
 /datum/skills/CMP
-	name = "Chief Military Police"
+	name = "Chief of Military Police"
 	skills = list(
 		SKILL_CQC = SKILL_CQC_SKILLED,
 		SKILL_POLICE = SKILL_POLICE_SKILLED,

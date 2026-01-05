@@ -1,4 +1,4 @@
-//Chief Military Police
+//Chief of Military Police
 /datum/job/command/warrant
 	title = JOB_CHIEF_POLICE
 	selection_class = "job_cmp"

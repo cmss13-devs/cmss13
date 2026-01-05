@@ -564,7 +564,7 @@
 	job = JOB_WARDEN
 
 /obj/effect/landmark/late_join/chief_police
-	name = "Chief Military Police late join"
+	name = "Chief of Military Police late join"
 	icon_state = "late_join_police"
 	job = JOB_CHIEF_POLICE
 

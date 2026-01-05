@@ -182,7 +182,7 @@
 	initial_icon_state = "coat_warden"
 
 /obj/item/clothing/suit/storage/jacket/marine/service/cmp
-	name = "chief military police service jacket"
+	name = "chief of military police service jacket"
 	desc = "A marine service jacket adopted for use by Military Police personnel on board USCM ships. Ironically most ships require their MP departments to use full armor, making these barely used by on duty MPs. Very popular among those who want to inexplicably smell like donuts."
 	has_buttons = TRUE
 	icon_state = "coat_cmp"

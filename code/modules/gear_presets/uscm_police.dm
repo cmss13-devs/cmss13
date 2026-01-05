@@ -140,7 +140,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/uscm_police/cmp
-	name = "USCM Chief Military Police (CMP)"
+	name = "USCM Chief of Military Police (CMP)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 	idtype = /obj/item/card/id/silver
 
@@ -257,7 +257,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/uscm_police/riot_mp/riot_cmp
-	name = "USCM Riot Chief Military Police (RCMP)"
+	name = "USCM Riot Chief of Military Police (RCMP)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	minimap_icon = "crmp"

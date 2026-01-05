@@ -55,7 +55,7 @@ Make the USCM proud!"}
 //----------------CMP-------------
 //*************************************/
 
-//Chief Military Police
+//Chief of Military Police
 /datum/job/command/warrant/whiskey
 	title = JOB_WO_CHIEF_POLICE
 	selection_class = "job_honor_guard_sl"

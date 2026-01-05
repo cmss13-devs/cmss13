@@ -33,7 +33,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 		WEAR_JACKET = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
 	)
 
-	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
 	armor_laser = CLOTHING_ARMOR_MEDIUM
 	armor_energy = CLOTHING_ARMOR_MEDIUM
@@ -109,6 +109,26 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 
+/// Damaged version used by survivors.
+/obj/item/clothing/suit/armor/yautja/hunter/scalable
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_laser = CLOTHING_ARMOR_MEDIUM
+	armor_energy = CLOTHING_ARMOR_MEDIUM
+	armor_bomb = CLOTHING_ARMOR_HIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_MEDIUM
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+
+	var/repair_status = YAUTJA_REPAIR_DAMAGED
+
+/obj/item/clothing/suit/armor/yautja/hunter/scalable/get_examine_text(mob/user)
+	. = ..()
+	switch(repair_status)
+		if(YAUTJA_REPAIR_DAMAGED)
+			. += SPAN_RED("It has been damaged by long use and poor maintenance.")
+		if(YAUTJA_REPAIR_REINFORCED)
+			. += SPAN_GREEN("It has been reinforced to be more protective.")
 
 /obj/item/clothing/suit/armor/yautja/hunter/full
 	name = "heavy clan armor"
@@ -142,6 +162,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	icon_state = "fullarmor_[armor_material]"
 	LAZYSET(item_state_slots, WEAR_JACKET, "fullarmor_[armor_material]")
 
+// ---------- Cape ----------
 
 /obj/item/clothing/yautja_cape
 	name = PRED_YAUTJA_CAPE
@@ -199,6 +220,8 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	name = PRED_YAUTJA_DAMAGED_CAPE
 	icon_state = "damagedcape"
 
+// ---------- Shoes ----------
+
 /obj/item/clothing/shoes/yautja
 	name = "ancient alien greaves"
 	desc = "Greaves made from scraps of cloth and a strange alloy. They feel cold with an alien weight."
@@ -249,7 +272,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 
 /obj/item/clothing/shoes/yautja/hunter
 	name = "clan greaves"
-	desc = "A pair of armored, perfectly balanced boots. Perfect for running through the jungle."
+	desc = "A pair of armored, perfectly balanced boots. Ideal for running through the jungle."
 
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_HIGH
@@ -262,6 +285,32 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 
 /obj/item/clothing/shoes/yautja/hunter/knife
 	spawn_item_type = /obj/item/weapon/yautja/knife
+
+/// Damaged version used by survivors.
+/obj/item/clothing/shoes/yautja/hunter/scalable
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_laser = CLOTHING_ARMOR_MEDIUM
+	armor_energy = CLOTHING_ARMOR_MEDIUM
+	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_MEDIUM
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+
+	var/repair_status = YAUTJA_REPAIR_DAMAGED
+
+/obj/item/clothing/shoes/yautja/hunter/scalable/knife
+	spawn_item_type = /obj/item/weapon/yautja/knife
+
+/obj/item/clothing/shoes/yautja/hunter/scalable/get_examine_text(mob/user)
+	. = ..()
+	switch(repair_status)
+		if(YAUTJA_REPAIR_DAMAGED)
+			. += SPAN_RED("They have been damaged by long use and poor maintenance.")
+		if(YAUTJA_REPAIR_REINFORCED)
+			. += SPAN_GREEN("It has been reinforced to be more protective.")
+
+// ---------- Shirt ----------
 
 /obj/item/clothing/under/chainshirt
 	name = "ancient alien mesh suit"
@@ -304,6 +353,26 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 	black_market_value = 50
+
+/obj/item/clothing/under/chainshirt/hunter/scalable
+	armor_melee = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
+	armor_laser = CLOTHING_ARMOR_MEDIUM
+	armor_energy = CLOTHING_ARMOR_MEDIUM
+	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_MEDIUM
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+
+	var/repair_status = YAUTJA_REPAIR_DAMAGED
+
+/obj/item/clothing/under/chainshirt/hunter/scalable/get_examine_text(mob/user)
+	. = ..()
+	switch(repair_status)
+		if(YAUTJA_REPAIR_DAMAGED)
+			. += SPAN_RED("It has been worn from long use and poor maintenance.")
+		if(YAUTJA_REPAIR_REINFORCED)
+			. += SPAN_GREEN("It has been reinforced to be more protective.")
 
 //=================//\\=================\\
 //======================================\\

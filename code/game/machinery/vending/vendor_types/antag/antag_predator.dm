@@ -171,8 +171,8 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 
 GLOBAL_LIST_INIT(cm_vending_equipment_stranded_pred, list(
 		list("Essential Hunting Supplies", 0, null, null, null),
-		list("Hunting Equipment", 0, list(/obj/item/clothing/under/chainshirt/hunter, /obj/item/storage/backpack/yautja, /obj/item/storage/medicomp/full, /obj/item/tool/yautja_cleaner), YAUTJA_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
-		list("Armor", 0, list(/obj/item/clothing/suit/armor/yautja/hunter, /obj/item/clothing/mask/gas/yautja/hunter, /obj/item/clothing/accessory/mask, /obj/item/clothing/shoes/yautja/hunter/knife), YAUTJA_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
+		list("Hunting Equipment", 0, list(/obj/item/clothing/under/chainshirt/hunter/scalable, /obj/item/storage/backpack/yautja, /obj/item/storage/medicomp/full, /obj/item/tool/yautja_cleaner), YAUTJA_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
+		list("Armor", 0, list(/obj/item/clothing/suit/armor/yautja/hunter/scalable, /obj/item/clothing/mask/gas/yautja/hunter/scalable, /obj/item/clothing/accessory/mask, /obj/item/clothing/shoes/yautja/hunter/scalable/knife), YAUTJA_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
 
 		list("Main Weapons (CHOOSE 1)", 0, null, null, null),
 		list("The Primary Hunting Sword", 0, /obj/item/weapon/yautja/sword, YAUTJA_CAN_BUY_PRIMARY, VENDOR_ITEM_RECOMMENDED),
@@ -223,8 +223,8 @@ GLOBAL_LIST_INIT(cm_vending_equipment_stranded_pred, list(
 
 GLOBAL_LIST_INIT(cm_vending_equipment_badblood, list(
 		list("Essential Hunting Supplies", 0, null, null, null),
-		list("Hunting Equipment", 0, list(/obj/item/clothing/under/chainshirt/hunter, /obj/item/storage/backpack/yautja, /obj/item/storage/medicomp/survivor, /obj/item/tool/yautja_cleaner, /obj/item/device/badblood_enthraller), YAUTJA_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
-		list("Armor", 0, list(/obj/item/clothing/suit/armor/yautja/hunter, /obj/item/clothing/mask/gas/yautja/hunter, /obj/item/clothing/accessory/mask, /obj/item/clothing/shoes/yautja/hunter/knife), YAUTJA_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
+		list("Hunting Equipment", 0, list(/obj/item/clothing/under/chainshirt/hunter/scalable, /obj/item/storage/backpack/yautja, /obj/item/storage/medicomp/survivor, /obj/item/tool/yautja_cleaner, /obj/item/device/badblood_enthraller), YAUTJA_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
+		list("Armor", 0, list(/obj/item/clothing/suit/armor/yautja/hunter/scalable, /obj/item/clothing/mask/gas/yautja/hunter/scalable, /obj/item/clothing/accessory/mask, /obj/item/clothing/shoes/yautja/hunter/scalable/knife), YAUTJA_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
 
 		list("Main Weapons (CHOOSE 1)", 0, null, null, null),
 		list("The Primary Hunting Sword", 0, /obj/item/weapon/yautja/sword, YAUTJA_CAN_BUY_PRIMARY, VENDOR_ITEM_RECOMMENDED),

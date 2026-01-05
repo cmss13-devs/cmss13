@@ -14,7 +14,7 @@
 	/// Amount of sheets to stack before outputting a stack
 	var/sheets_per_batch = 10
 	var/last_recycle_sound //for sound cooldown
-	var/ignored_items = list(/obj/item/limb)
+	var/ignored_items = list(/obj/item/document_objective, /obj/item/disk/objective)
 
 /obj/structure/machinery/recycler/whiskey
 	crate_reward = 15000 //  Boosted reward (4 sheets) to make up for workload and the fact you can't sell them
@@ -45,7 +45,7 @@
 
 	for(var/forbidden_path in ignored_items)
 		if(istype(I, forbidden_path))
-			I.forceMove(loc)
+			I.forceMove(get_step(loc, turn(recycle_dir, 180)))
 			return
 
 	if(isstorage(I))

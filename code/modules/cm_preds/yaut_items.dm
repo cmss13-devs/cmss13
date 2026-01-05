@@ -1000,25 +1000,25 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 
 /obj/item/hunting_trap/Crossed(atom/movable/AM)
 	if(armed && ismob(AM))
-		var/mob/M = AM
-		if(!M.buckled)
-			if(iscarbon(AM) && isturf(src.loc))
-				var/mob/living/carbon/H = AM
-				if(isyautja(H))
-					to_chat(H, SPAN_NOTICE("You carefully avoid stepping on the trap."))
+		var/mob/trap_mob = AM
+		if(!trap_mob.buckled)
+			if(iscarbon(trap_mob) && isturf(loc))
+				var/mob/living/carbon/trap_target = trap_mob
+				if(isyautja(trap_target))
+					to_chat(trap_target, SPAN_NOTICE("You carefully avoid stepping on the trap."))
 					return
-				if((armed_faction == FACTION_YAUTJA_BADBLOOD) && xeno_hivenumber(XENO_HIVE_YAUTJA_BADBLOOD))
-					to_chat(H, SPAN_NOTICE("We carefully avoid stepping on the trap."))
+				if((armed_faction == FACTION_YAUTJA_BADBLOOD) && (xeno_hivenumber(trap_target) == XENO_HIVE_YAUTJA_BADBLOOD))
+					to_chat(trap_target, SPAN_NOTICE("We carefully avoid stepping on the trap."))
 					return
-				trapMob(H)
-				for(var/mob/O in viewers(H, null))
-					if(O == H)
+				trapMob(trap_target)
+				for(var/mob/O in viewers(trap_target, null))
+					if(O == trap_target)
 						continue
-					O.show_message(SPAN_WARNING("[icon2html(src, O)] <B>[H] gets caught in \the [src].</B>"), SHOW_MESSAGE_VISIBLE)
-			else if(isanimal(AM) && !istype(AM, /mob/living/simple_animal/parrot))
+					O.show_message(SPAN_WARNING("[icon2html(src, O)] <B>[trap_target] gets caught in \the [src].</B>"), SHOW_MESSAGE_VISIBLE)
+			else if(isanimal(trap_mob))
 				armed = FALSE
-				var/mob/living/simple_animal/SA = AM
-				SA.health -= 20
+				var/mob/living/simple_animal/simple_mob = trap_mob
+				simple_mob.health -= 20
 	..()
 
 /obj/item/hunting_trap/proc/cleanup_tether()

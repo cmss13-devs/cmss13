@@ -136,6 +136,10 @@
 	QDEL_NULL(battery)
 	. = ..()
 
+/obj/item/weapon/gun/smartgun/cock(mob/user)
+	to_chat(user, SPAN_WARNING("You can't manually unload a smartgun's chamber!"))
+	return
+
 /obj/item/weapon/gun/smartgun/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 16,"rail_x" = 17, "rail_y" = 18, "under_x" = 22, "under_y" = 14, "stock_x" = 22, "stock_y" = 14)
 
@@ -263,24 +267,24 @@
 /datum/action/item_action/smartgun/toggle_motion_detector/New(Target, obj/item/holder)
 	. = ..()
 	name = "Toggle Motion Detector"
-	action_icon_state = "motion_detector"
 	button.name = name
-	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
 
 /datum/action/item_action/smartgun/toggle_motion_detector/action_activate()
 	. = ..()
 	var/obj/item/weapon/gun/smartgun/G = holder_item
 	G.toggle_motion_detector(usr)
 
-/datum/action/item_action/smartgun/toggle_motion_detector/proc/update_icon()
+/datum/action/item_action/smartgun/toggle_motion_detector/update_button_icon()
 	if(!holder_item)
 		return
 	var/obj/item/weapon/gun/smartgun/G = holder_item
 	if(G.motion_detector)
-		button.icon_state = "template_on"
+		action_icon_state = "motion_detector_off"
 	else
-		button.icon_state = "template"
+		action_icon_state = "motion_detector"
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+
 
 /datum/action/item_action/smartgun/toggle_auto_fire/New(Target, obj/item/holder)
 	. = ..()
@@ -300,15 +304,17 @@
 		return
 	var/obj/item/weapon/gun/smartgun/G = holder_item
 	if(G.auto_fire)
-		button.icon_state = "template_on"
+		action_icon_state = "autofire_off"
 	else
-		button.icon_state = "template"
+		action_icon_state = "autofire"
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
 
 /datum/action/item_action/smartgun/toggle_aim_assist/New(Target, obj/item/holder)
 	. = ..()
 	name = "Toggle Aim Assist"
 
-	action_icon_state = "aimassist"
+	update_icon()
 	button.name = name
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
@@ -323,9 +329,9 @@
 		return
 	var/obj/item/weapon/gun/smartgun/smortgun = holder_item
 	if(smortgun.aim_assist)
-		button.icon_state = "template_on"
+		action_icon_state = "aimassist"
 	else
-		button.icon_state = "template"
+		action_icon_state = "aimassist_off"
 
 /datum/action/item_action/smartgun/toggle_accuracy_improvement/New(Target, obj/item/holder)
 	. = ..()
@@ -340,9 +346,11 @@
 	var/obj/item/weapon/gun/smartgun/G = holder_item
 	G.toggle_accuracy_improvement(usr)
 	if(G.accuracy_improvement)
-		button.icon_state = "template_on"
+		action_icon_state = "accuracy_improvement_off"
 	else
-		button.icon_state = "template"
+		action_icon_state = "accuracy_improvement"
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
 
 /datum/action/item_action/smartgun/toggle_recoil_compensation/New(Target, obj/item/holder)
 	. = ..()
@@ -357,9 +365,11 @@
 	var/obj/item/weapon/gun/smartgun/G = holder_item
 	G.toggle_recoil_compensation(usr)
 	if(G.recoil_compensation)
-		button.icon_state = "template_on"
+		action_icon_state = "recoil_compensation_off"
 	else
-		button.icon_state = "template"
+		action_icon_state = "recoil_compensation"
+	button.overlays.Cut()
+	button.overlays += image ('icons/mob/hud/actions.dmi', button, action_icon_state)
 
 /datum/action/item_action/smartgun/toggle_frontline_mode/New(Target, obj/item/holder)
 	. = ..()
@@ -789,7 +799,7 @@
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	motion_detector = !motion_detector
 	var/datum/action/item_action/smartgun/toggle_motion_detector/TMD = locate(/datum/action/item_action/smartgun/toggle_motion_detector) in actions
-	TMD.update_icon()
+	TMD.update_button_icon()
 	motion_detector()
 
 /obj/item/weapon/gun/smartgun/proc/motion_detector()
@@ -960,6 +970,7 @@
 /obj/item/weapon/gun/smartgun/l56a2/Initialize(mapload, ...)
 	. = ..()
 	toggle_aim_assist(null, TRUE)
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/weapon/gun/smartgun/l56a2/elite
 	name = "\improper L56A2D 'Dirty' smartgun"
@@ -1079,7 +1090,7 @@
 			to_chat(user, SPAN_GREEN("You successfully unjam \the [src]!"))
 			playsound(src, 'sound/weapons/handling/gun_jam_rack_success.ogg', 50, FALSE)
 			jammed = FALSE
-			cock_cooldown += 1 SECONDS //so they dont accidentally cock a bullet away
+			cock_cooldown += 1 SECONDS //so they don't accidentally cock a bullet away
 			balloon_alert(user, "*unjammed!*")
 		else
 			to_chat(user, SPAN_NOTICE("You start wildly racking the bolt back and forth attempting to unjam \the [src]!"))
@@ -1156,6 +1167,10 @@
 	item_state = "la56"
 	gun_faction = FACTION_TWE
 
+/obj/item/weapon/gun/smartgun/rmc/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/weapon/gun/smartgun/upp
 	name = "\improper RFVS37 smartgun"
 	desc = "The actual firearm in the 2-piece RFVS37 Smartgun System. This experimental variant is used by the Union of Progressive Peoples units."
@@ -1167,6 +1182,10 @@
 	current_mag = /obj/item/ammo_magazine/smartgun/upp
 	mouse_pointer = 'icons/effects/mouse_pointer/upp_smartgun_mouse.dmi'
 	gun_faction = FACTION_UPP
+
+/obj/item/weapon/gun/smartgun/upp/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/norcomm)
 
 //  Solar devils SG, frontline mode only
 

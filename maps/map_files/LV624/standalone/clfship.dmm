@@ -145,6 +145,10 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
 "aB" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
 	dir = 4
 	},
@@ -698,6 +702,14 @@
 /turf/open/floor/almayer,
 /area/lv624/lazarus/crashed_ship)
 "mH" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
 	dir = 4
 	},
@@ -750,7 +762,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 "ou" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "oI" = (
@@ -952,6 +964,14 @@
 /turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
 "xk" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
 	dir = 8
 	},
@@ -1506,6 +1526,14 @@
 /turf/open/floor/almayer/emeraldcorner/east,
 /area/lv624/lazarus/crashed_ship)
 "OB" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
 	dir = 4
 	},
@@ -1868,7 +1896,7 @@
 /turf/open/floor/plating/warnplate/southwest,
 /area/lv624/lazarus/crashed_ship)
 "Yx" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 "Yz" = (

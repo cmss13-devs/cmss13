@@ -2,6 +2,12 @@
 #define FRIDGE_WIRE_SHOOT_INV 2
 #define FRIDGE_WIRE_IDSCAN 3
 
+GLOBAL_LIST_INIT(fridge_wire_descriptions, flatten_numeric_alist(alist(
+		FRIDGE_WIRE_SHOCK = "Ground safety",
+		FRIDGE_WIRE_SHOOT_INV = "Dispenser motor control",
+		FRIDGE_WIRE_IDSCAN = "ID scanner",
+	)))
+
 #define FRIDGE_LOCK_COMPLETE 1
 #define FRIDGE_LOCK_ID 2
 #define FRIDGE_LOCK_NOLOCK 3
@@ -184,10 +190,9 @@
 	.["transfer_mode"] = transfer_mode
 	.["locked"] = locked
 
-	var/list/wire_descriptions = get_wire_descriptions()
 	var/list/panel_wires = list()
-	for(var/wire = 1 to length(wire_descriptions))
-		panel_wires += list(list("desc" = wire_descriptions[wire], "cut" = isWireCut(wire)))
+	for(var/wire in 1 to length(GLOB.fridge_wire_descriptions))
+		panel_wires += list(list("desc" = GLOB.fridge_wire_descriptions[wire], "cut" = isWireCut(wire)))
 
 	.["electrical"] = list(
 		"electrified" = !COOLDOWN_FINISHED(src, electrified_cooldown),
@@ -395,13 +400,6 @@
 //*************
 //* Hacking
 //**************/
-
-/obj/structure/machinery/smartfridge/proc/get_wire_descriptions()
-	return list(
-		FRIDGE_WIRE_SHOCK   = "Ground safety",
-		FRIDGE_WIRE_SHOOT_INV  = "Dispenser motor control",
-		FRIDGE_WIRE_IDSCAN  = "ID scanner"
-	)
 
 /obj/structure/machinery/smartfridge/proc/cut(wire)
 	wires ^= getWireFlag(wire)

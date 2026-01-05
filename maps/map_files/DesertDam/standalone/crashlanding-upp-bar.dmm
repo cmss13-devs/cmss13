@@ -2245,7 +2245,7 @@
 	},
 /area/desert_dam/building/bar/bar)
 "SF" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/backroom)
 "SG" = (
@@ -2518,7 +2518,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "Xe" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /obj/item/reagent_container/food/drinks/flask/canteen{
 	desc = "You take a sip from your trusty UPP canteen...";
 	pixel_x = 3;

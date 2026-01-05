@@ -67,9 +67,9 @@
 	var/image/cone
 	///Current tracked direction for the directional cast behaviour
 	var/current_direction
-	///Tracks current directional x offset so we dont update unecessarily
+	///Tracks current directional x offset so we don't update unecessarily
 	var/directional_offset_x
-	///Tracks current directional y offset so we dont update unecessarily
+	///Tracks current directional y offset so we don't update unecessarily
 	var/directional_offset_y
 	///Cast range for the directional cast (how far away the atom is moved)
 	var/cast_range = 2

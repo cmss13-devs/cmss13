@@ -29,7 +29,7 @@ jobs:
       run: |
         sudo dpkg --add-architecture i386
         sudo apt update || true
-        sudo apt install -o APT::Immediate-Configure=false zlib1g-dev:i386 libssl-dev:i386
+        sudo apt install -o APT::Immediate-Configure=false zlib1g-dev:i386 libssl-dev:i386 curl:i386
         bash tools/ci/install_rust_g.sh
     - name: Compile and generate Autowiki files
       if: steps.secrets_set.outputs.SECRETS_ENABLED
@@ -45,4 +45,4 @@ jobs:
         cd tools/autowiki
         npm install
         cd ../..
-        bun tools/autowiki/autowiki.js data/autowiki_edits.txt data/autowiki_files/
+        node tools/autowiki/autowiki.js data/autowiki_edits.txt data/autowiki_files/

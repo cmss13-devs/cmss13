@@ -289,7 +289,7 @@
 //	SEND_SIGNAL(src, COMSIG_LIVING_RESTING, new_resting, silent, instant)
 //	update_resting() // HUD icons
 
-/mob/living/carbon/human/proc/toggle_inherent_nightvison()
+/mob/living/carbon/human/proc/toggle_inherent_nightvision()
 	set category = "Synthetic"
 	set name = "Toggle Nightvision"
 	set desc = "Toggles inherent nightvision."
@@ -380,17 +380,17 @@
 	var/viewoffset = 32 * tileoffset
 	switch(dir)
 		if(NORTH)
-			client.pixel_x = 0
-			client.pixel_y = viewoffset
+			client.set_pixel_x(0)
+			client.set_pixel_y(viewoffset)
 		if(SOUTH)
-			client.pixel_x = 0
-			client.pixel_y = -viewoffset
+			client.set_pixel_x(0)
+			client.set_pixel_y(-viewoffset)
 		if(EAST)
-			client.pixel_x = viewoffset
-			client.pixel_y = 0
+			client.set_pixel_x(viewoffset)
+			client.set_pixel_y(0)
 		if(WEST)
-			client.pixel_x = -viewoffset
-			client.pixel_y = 0
+			client.set_pixel_x(-viewoffset)
+			client.set_pixel_y(0)
 
 /mob/living/carbon/human/proc/disable_zoom()
 	SIGNAL_HANDLER
@@ -398,6 +398,6 @@
 		return
 	UnregisterSignal(src, COMSIG_MOB_MOVE_OR_LOOK)
 	client.change_view(GLOB.world_view_size)
-	client.pixel_x = 0
-	client.pixel_y = 0
+	client.set_pixel_x(0)
+	client.set_pixel_y(0)
 	is_zoomed = FALSE

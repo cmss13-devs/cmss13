@@ -5031,7 +5031,7 @@
 /turf/open/floor/freezerfloor,
 /area/desert_dam/interior/lab_northeast/east_lab_lobby)
 "avQ" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/darkyellow2/southwest,
 /area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
 "avR" = (
@@ -5450,7 +5450,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "axK" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/plating,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "axL" = (
@@ -5461,7 +5461,7 @@
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_labs)
 "axN" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/plating,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "axP" = (
@@ -8971,7 +8971,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/desert_dam/exterior/landing_pad_one)
 "aNw" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/prison/darkyellow2/west,
 /area/desert_dam/building/substation/northeast)
 "aNx" = (
@@ -9057,7 +9057,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
 /area/desert_dam/exterior/valley/valley_medical)
 "aNQ" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/prison/darkyellow2,
 /area/desert_dam/building/substation/northeast)
 "aNR" = (
@@ -11010,7 +11010,6 @@
 "aXQ" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
-/obj/structure/disposalpipe/trunk,
 /turf/open/floor/dark2,
 /area/desert_dam/building/administration/hallway)
 "aXR" = (
@@ -11719,7 +11718,6 @@
 "baT" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/dark2,
 /area/desert_dam/building/administration/archives)
 "baV" = (
@@ -11765,12 +11763,6 @@
 "bbe" = (
 /turf/open/floor/prison/bluecorner,
 /area/desert_dam/building/administration/lobby)
-"bbf" = (
-/obj/structure/disposalpipe/segment,
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/prison/bright_clean2,
-/area/desert_dam/building/administration/hallway)
 "bbg" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -11868,7 +11860,6 @@
 	dir = 8;
 	icon_state = "pipe-c"
 	},
-/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/building/administration/hallway)
@@ -15194,7 +15185,7 @@
 /turf/open/floor/prison/darkyellowcorners2/north,
 /area/desert_dam/interior/dam_interior/engine_east_wing)
 "bsf" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/prison/darkyellow2/northeast,
 /area/desert_dam/interior/dam_interior/engine_east_wing)
 "bsg" = (
@@ -15336,7 +15327,7 @@
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/dam_interior/engine_east_wing)
 "bsO" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/prison/darkyellow2/east,
 /area/desert_dam/interior/dam_interior/engine_east_wing)
 "bsP" = (
@@ -15615,7 +15606,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/mining/workshop)
 "buA" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/backroom)
 "buB" = (
@@ -15716,13 +15707,6 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/bright_clean2,
-/area/desert_dam/building/administration/hallway)
-"buX" = (
-/obj/structure/disposalpipe/segment,
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/building/administration/hallway)
@@ -16139,7 +16123,7 @@
 /turf/open/floor/prison/darkbrowncorners3,
 /area/desert_dam/interior/dam_interior/hanger)
 "bwY" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/dam_interior/hanger)
 "bwZ" = (
@@ -16224,7 +16208,7 @@
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/building/administration/hallway)
 "bxn" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/prison/darkbrown2/east,
 /area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bxo" = (
@@ -16735,7 +16719,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/security/staffroom)
 "bAh" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/dam_interior/hangar_storage)
 "bAk" = (
@@ -16790,7 +16774,7 @@
 /turf/open/desert/rock/deep/transition/north,
 /area/desert_dam/interior/caves/east_caves)
 "bAy" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/prison/darkyellow2/southwest,
 /area/desert_dam/interior/dam_interior/engine_west_wing)
 "bAz" = (
@@ -16800,7 +16784,7 @@
 /turf/open/floor/prison/darkyellowcorners2/west,
 /area/desert_dam/interior/dam_interior/engine_west_wing)
 "bAB" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/prison/darkyellow2,
 /area/desert_dam/interior/dam_interior/engine_west_wing)
 "bAC" = (
@@ -18513,7 +18497,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/northeastern_tunnel)
 "bJp" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/northeastern_tunnel)
 "bJq" = (
@@ -18747,7 +18731,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bKy" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/prison/darkyellow2/east,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "bKz" = (
@@ -23331,7 +23315,7 @@
 /turf/open/floor/plating/warnplate/southeast,
 /area/desert_dam/building/substation/west)
 "chb" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/prison,
 /area/desert_dam/building/substation/west)
 "chd" = (
@@ -24047,7 +24031,7 @@
 /turf/open/floor/white,
 /area/desert_dam/interior/dam_interior/lobby)
 "ckY" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/plating,
 /area/desert_dam/building/warehouse/breakroom)
 "ckZ" = (
@@ -25138,7 +25122,7 @@
 /turf/open/floor/prison/whitegreen/north,
 /area/desert_dam/building/medical/north_wing_hallway)
 "cqy" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkyellow2/east,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
@@ -26853,7 +26837,7 @@
 /turf/open/floor/prison/darkbrown2/southwest,
 /area/desert_dam/building/mining/workshop_foyer)
 "cyx" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/prison/darkbrown2,
 /area/desert_dam/building/mining/workshop_foyer)
 "cyz" = (
@@ -31593,7 +31577,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
 /area/desert_dam/exterior/valley/valley_civilian)
 "cUd" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/prison/darkyellow2,
 /area/desert_dam/building/mining/workshop)
 "cUf" = (
@@ -31642,7 +31626,7 @@
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/hydroponics/hydroponics_breakroom)
 "cUv" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/prison/darkyellow2/southeast,
 /area/desert_dam/building/mining/workshop)
 "cUw" = (
@@ -32541,7 +32525,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/cafeteria/backroom)
 "daN" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/plating,
 /area/desert_dam/building/cafeteria/backroom)
 "daO" = (
@@ -33367,7 +33351,7 @@
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/building/cafeteria/cafeteria)
 "deI" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/prison/darkyellow2/northwest,
 /area/desert_dam/building/substation/central)
 "deJ" = (
@@ -33391,7 +33375,7 @@
 /turf/open/floor/prison/floor_marked/southwest,
 /area/desert_dam/building/warehouse/loading)
 "deQ" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/floor_marked/southwest,
 /area/desert_dam/building/warehouse/loading)
@@ -33572,7 +33556,7 @@
 /turf/open/floor/prison/floor_marked/southwest,
 /area/desert_dam/building/warehouse/loading)
 "dfD" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/prison/floor_marked/southwest,
 /area/desert_dam/building/warehouse/loading)
 "dfE" = (
@@ -33725,12 +33709,12 @@
 /turf/open/asphalt,
 /area/desert_dam/building/warehouse/loading)
 "dgr" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/floor_marked/southwest,
 /area/desert_dam/building/warehouse/loading)
 "dgs" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/prison/floor_marked/southwest,
 /area/desert_dam/building/warehouse/loading)
 "dgt" = (
@@ -34250,7 +34234,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached20,
 /area/desert_dam/exterior/valley/valley_hydro)
 "dkJ" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/prison/darkyellow2/northwest,
 /area/desert_dam/building/substation/southwest)
 "dkL" = (
@@ -34296,7 +34280,7 @@
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/building/cafeteria/loading)
 "dlu" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/plating,
 /area/desert_dam/building/medical/virology_wing)
 "dlx" = (
@@ -34500,7 +34484,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "dof" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/plating,
 /area/desert_dam/building/cafeteria/backroom)
 "doi" = (
@@ -34852,7 +34836,7 @@
 	},
 /area/desert_dam/building/water_treatment_one/garage)
 "dsM" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/garage)
 "dsO" = (
@@ -35345,7 +35329,7 @@
 /turf/open/floor/prison/kitchen/southwest,
 /area/desert_dam/building/cafeteria/cafeteria)
 "dxW" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/bot/north,
 /area/desert_dam/building/water_treatment_one/garage)
 "dxX" = (
@@ -40756,7 +40740,7 @@
 /turf/open/asphalt,
 /area/desert_dam/building/hydroponics/hydroponics_loading)
 "eeL" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/prison,
 /area/desert_dam/building/cafeteria/loading)
 "eeM" = (
@@ -41661,7 +41645,7 @@
 /turf/open/desert/dirt/desert_transition_edge1/southwest,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "fyO" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/prison/darkyellow2/north,
 /area/desert_dam/interior/dam_interior/garage)
 "fAH" = (
@@ -67360,7 +67344,7 @@ btI
 btI
 btI
 buW
-buX
+btI
 bbD
 bwa
 btI
@@ -68531,7 +68515,7 @@ bau
 baG
 baT
 bbl
-bbf
+aYn
 bxm
 byB
 bsJ

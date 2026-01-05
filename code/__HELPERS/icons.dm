@@ -118,7 +118,7 @@ ColorTone(rgb, tone)
 /*
 Get Flat Icon DEMO by DarkCampainger
 
-This is a test for the get flat icon proc, modified approprietly for icons and their states.
+This is a test for the get flat icon proc, modified appropriately for icons and their states.
 Probably not a good idea to run this unless you want to see how the proc works in detail.
 mob
 	icon = 'old_or_unused.dmi'
@@ -606,11 +606,11 @@ world
 
 /// generates a filename for a given asset.
 /// like generate_asset_name(), except returns the rsc reference and the rsc file hash as well as the asset name (sans extension)
-/// used so that certain asset files dont have to be hashed twice
+/// used so that certain asset files don't have to be hashed twice
 /proc/generate_and_hash_rsc_file(file, dmi_file_path)
 	var/rsc_ref = fcopy_rsc(file)
 	var/hash
-	//if we have a valid dmi file path we can trust md5'ing the rsc file because we know it doesnt have the bug described in http://www.byond.com/forum/post/2611357
+	//if we have a valid dmi file path we can trust md5'ing the rsc file because we know it doesn't have the bug described in http://www.byond.com/forum/post/2611357
 	if(dmi_file_path)
 		hash = md5(rsc_ref)
 	else //otherwise, we need to do the expensive fcopy() workaround
@@ -647,7 +647,7 @@ world
 		//if theyre unchanged dmi's then they're stringifiable to "icons/path/to/dmi_file.dmi"
 
 	if(isicon(icon) && isfile(icon))
-		//icons compiled in from 'icons/path/to/dmi_file.dmi' at compile time are weird and arent really /icon objects,
+		//icons compiled in from 'icons/path/to/dmi_file.dmi' at compile time are weird and aren't really /icon objects,
 		///but they pass both isicon() and isfile() checks. theyre the easiest case since stringifying them gives us the path we want
 		var/icon_ref = text_ref(icon)
 		var/locate_icon_string = "[locate(icon_ref)]"
@@ -745,10 +745,10 @@ world
  * * frame - what frame of the icon_state's animation for the icon being used
  * * moving - whether or not to use a moving state for the given icon
  * * sourceonly - if TRUE, only generate the asset and send back the asset url, instead of tags that display the icon to players
- * * extra_clases - string of extra css classes to use when returning the icon string
+ * * extra_classes - string of extra css classes to use when returning the icon string
  * * keyonly - if TRUE, only returns the asset key to use get_asset_url manually. Overrides sourceonly.
  */
-/proc/icon2html(atom/thing, client/target, icon_state, dir = SOUTH, frame = 1, moving = FALSE, sourceonly = FALSE, extra_classes = null, keyonly = FALSE)
+/proc/icon2html(atom/thing, client/target, icon_state, dir = SOUTH, frame = 1, moving = FALSE, sourceonly = FALSE, extra_classes = null, keyonly = FALSE, non_standard_size = FALSE)
 	if (!thing)
 		return
 
@@ -768,7 +768,7 @@ world
 	if(!length(targets))
 		return
 
-	//check if the given object is associated with a dmi file in the icons folder. if it is then we dont need to do a lot of work
+	//check if the given object is associated with a dmi file in the icons folder. if it is then we don't need to do a lot of work
 	//for asset generation to get around byond limitations
 	var/icon_path = get_icon_dmi_path(thing)
 
@@ -791,7 +791,7 @@ world
 		if (isnull(icon_state))
 			icon_state = thing.icon_state
 			//Despite casting to atom, this code path supports mutable appearances, so let's be nice to them
-			if(isnull(icon_state) || (isatom(thing) && thing.flags_atom & HTML_USE_INITAL_ICON))
+			if(isnull(icon_state) || (isatom(thing) && thing.flags_atom & HTML_USE_INITIAL_ICON))
 				icon_state = initial(thing.icon_state)
 				if (isnull(dir))
 					dir = initial(thing.dir)
@@ -813,11 +813,12 @@ world
 
 	icon2collapse = icon(icon2collapse, icon_state, dir, frame, moving)
 
-	var/width = icon2collapse.Width()
-	var/height = icon2collapse.Height()
-	if(width != height)
-		var/new_dimension = min(width, height)
-		center_icon(icon2collapse, new_dimension, new_dimension)
+	if(!non_standard_size)
+		var/width = icon2collapse.Width()
+		var/height = icon2collapse.Height()
+		if(width != height)
+			var/new_dimension = min(width, height)
+			center_icon(icon2collapse, new_dimension, new_dimension)
 
 	var/list/name_and_ref = generate_and_hash_rsc_file(icon2collapse, icon_path)//pretend that tuples exist
 

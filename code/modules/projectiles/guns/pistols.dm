@@ -23,9 +23,12 @@
 	firesound_volume = 25
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
+		/obj/item/attachable/suppressor/sleek,
 		/obj/item/attachable/reddot,
+		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/extended_barrel,
@@ -61,9 +64,12 @@
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
+		/obj/item/attachable/suppressor/sleek,
 		/obj/item/attachable/reddot,
+		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/extended_barrel,
@@ -71,9 +77,12 @@
 		/obj/item/attachable/burstfire_assembly,
 	)
 
+/obj/item/weapon/gun/pistol/m4a3/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/armat)
+
 /obj/item/weapon/gun/pistol/m4a3/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 20,"rail_x" = 10, "rail_y" = 21, "under_x" = 21, "under_y" = 17, "stock_x" = 21, "stock_y" = 17)
-
 
 /obj/item/weapon/gun/pistol/m4a3/set_gun_config_values()
 	..()
@@ -125,17 +134,18 @@
 
 /obj/item/weapon/gun/pistol/m1911
 	name = "\improper M1911 service pistol"
-	desc = "A timeless classic since the first World War. Once standard issue for the USCM, now back order only. Chambered in .45 ACP. Unfortunately, due to the progression of IFF technology, M1911 .45 ACP is NOT compatible with the SU-6."
+	desc = "A timeless classic since the first World War, produced in limited amount by Armat Battlefield Systems after their aquisison of Colt's Manufacturing Company. Once standard issue for the USCM, now back order only. Chambered in .45 ACP."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/pistols.dmi'
 	icon_state = "m4a345"
 	item_state = "m4a3"
-
 	current_mag = /obj/item/ammo_magazine/pistol/m1911
 
+/obj/item/weapon/gun/pistol/m1911/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/armat)
 
 /obj/item/weapon/gun/pistol/m1911/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 20,"rail_x" = 10, "rail_y" = 22, "under_x" = 21, "under_y" = 17, "stock_x" = 21, "stock_y" = 17)
-
 
 /obj/item/weapon/gun/pistol/m1911/set_gun_config_values()
 	..()
@@ -146,7 +156,6 @@
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
 	scatter_unwielded = SCATTER_AMOUNT_TIER_6
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_5
-
 
 /obj/item/weapon/gun/pistol/m1911/socom
 	name = "\improper M48A4 service pistol"
@@ -174,7 +183,6 @@
 	icon_state = "m1911c"
 	item_state = "m4a3"
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
-
 	current_mag = /obj/item/ammo_magazine/pistol/m1911/highimpact
 
 /obj/item/weapon/gun/pistol/m1911/custom/set_gun_config_values()
@@ -189,6 +197,10 @@
 
 /obj/item/weapon/gun/pistol/m1911/custom/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 20, "rail_x" = 10, "rail_y" = 22, "under_x" = 21, "under_y" = 15, "stock_x" = 21, "stock_y" = 17)
+
+/obj/item/weapon/gun/pistol/m1911/custom/unique_action(mob/user)
+	if(fire_into_air(user))
+		return ..()
 
 //-------------------------------------------------------
 //Beretta 92FS, the gun McClane carries around in Die Hard. Very similar to the service pistol, all around.
@@ -243,8 +255,10 @@
 
 	attachable_allowed = list(
 		/obj/item/attachable/reddot,
+		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/lasersight,
@@ -315,10 +329,16 @@
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
+		/obj/item/attachable/suppressor/sleek,
 		/obj/item/attachable/reddot,
+		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
 	)
+
+/obj/item/weapon/gun/pistol/np92/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/norcomm)
 
 /obj/item/weapon/gun/pistol/np92/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 27, "muzzle_y" = 20,"rail_x" = 13, "rail_y" = 22, "under_x" = 21, "under_y" = 18, "stock_x" = 21, "stock_y" = 18)
@@ -344,6 +364,7 @@
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
 	attachable_allowed = list(
 		/obj/item/attachable/reddot,
+		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
 	)
@@ -366,11 +387,18 @@
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
 	attachable_allowed = list(
 		/obj/item/attachable/reddot,
+		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/suppressor,
+		/obj/item/attachable/suppressor/sleek,
 	)
+
+/obj/item/weapon/gun/pistol/t73/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/norcomm)
 
 /obj/item/weapon/gun/pistol/t73/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 20,"rail_x" = 13, "rail_y" = 22, "under_x" = 22, "under_y" = 15, "stock_x" = 21, "stock_y" = 18)
@@ -400,9 +428,11 @@
 
 	attachable_allowed = list(
 		/obj/item/attachable/reddot,
+		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/suppressor,
+		/obj/item/attachable/suppressor/sleek,
 		/obj/item/attachable/heavy_barrel,
 	)
 
@@ -467,9 +497,13 @@
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/lasersight,
 	)
 
+/obj/item/weapon/gun/pistol/holdout/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/spearhead)
 
 /obj/item/weapon/gun/pistol/holdout/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 25, "muzzle_y" = 20,"rail_x" = 6, "rail_y" = 20, "under_x" = 20, "under_y" = 17, "stock_x" = 22, "stock_y" = 17)
@@ -515,12 +549,17 @@
 	attachable_allowed = list(
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/compensator,
 	)
+
+/obj/item/weapon/gun/pistol/action/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/spearhead)
 
 /obj/item/weapon/gun/pistol/action/set_gun_config_values()
 	..()
@@ -550,6 +589,8 @@
 	force = 5
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
+		/obj/item/attachable/suppressor/sleek,
+		/obj/item/attachable/flashlight/under_barrel, // not like it matters lol
 		/obj/item/attachable/flashlight,
 	)
 
@@ -583,6 +624,7 @@
 	force = 15
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor, // Barrel
+		/obj/item/attachable/suppressor/sleek,
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/bayonet/upp_replica,
 		/obj/item/attachable/bayonet/upp,
@@ -600,6 +642,7 @@
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/reddot, // Rail
+		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/magnetic_harness,
@@ -608,6 +651,7 @@
 		/obj/item/attachable/gyro, // Under
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/burstfire_assembly,
+		/obj/item/attachable/flashlight/under_barrel,
 	)
 	/// This weapon needs to be manually racked every time a new magazine is loaded. I tried and failed to touch gun shitcode so this will do.
 	var/manually_slided = FALSE
@@ -615,6 +659,7 @@
 /obj/item/weapon/gun/pistol/highpower/Initialize(mapload, spawn_empty)
 	. = ..()
 	manually_slided = TRUE
+	AddElement(/datum/element/corp_label/henjin_garcia)
 
 /obj/item/weapon/gun/pistol/highpower/Fire(atom/target, mob/living/user, params, reflex = 0, dual_wield)
 	if(!manually_slided)
@@ -674,6 +719,8 @@
 	starting_attachment_types = list(/obj/item/attachable/suppressor, /obj/item/attachable/lasersight, /obj/item/attachable/reflex)
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
 
+
+
 //-------------------------------------------------------
 //mod88 based off VP70 - Counterpart to M1911, offers burst and capacity ine exchange of low accuracy and damage.
 
@@ -692,12 +739,15 @@
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
+		/obj/item/attachable/suppressor/sleek,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/reddot,
+		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/burstfire_assembly,
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/flashlight/grip,
@@ -705,9 +755,12 @@
 		/obj/item/attachable/stock/mod88,
 	)
 
+/obj/item/weapon/gun/pistol/mod88/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/weapon/gun/pistol/mod88/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 27, "muzzle_y" = 21,"rail_x" = 8, "rail_y" = 22, "under_x" = 21, "under_y" = 18, "stock_x" = 18, "stock_y" = 15)
-
 
 /obj/item/weapon/gun/pistol/mod88/set_gun_config_values()
 	..()
@@ -753,13 +806,18 @@
 	attachable_allowed = list(
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/reddot,
+		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/lasersight,
 	)
 
+/obj/item/weapon/gun/pistol/es4/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/weapon/gun/pistol/es4/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 27, "muzzle_y" = 21, "rail_x" = 10, "rail_y" = 22, "under_x" = 25, "under_y" = 18, "stock_x" = 18, "stock_y" = 15)
-
 
 /obj/item/weapon/gun/pistol/es4/set_gun_config_values()
 	..()
@@ -788,14 +846,21 @@
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
+		/obj/item/attachable/suppressor/sleek,
 		/obj/item/attachable/reddot,
+		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
-		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight, // look its kinda strange why you would list these as allowed when the vp-78 has an integrated flashlight, but flashlight attachment code does have a warning for this so yknow whatever really
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/flashlight/laser_light_combo,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/heavy_barrel,
 	)
+
+/obj/item/weapon/gun/pistol/vp78/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/weapon/gun/pistol/vp78/handle_starting_attachment()
 	..()
@@ -807,7 +872,6 @@
 
 /obj/item/weapon/gun/pistol/vp78/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 22,"rail_x" = 10, "rail_y" = 23, "under_x" = 20, "under_y" = 17, "stock_x" = 18, "stock_y" = 14)
-
 
 /obj/item/weapon/gun/pistol/vp78/set_gun_config_values()
 	..()
@@ -949,14 +1013,17 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED
 	attachable_allowed = list(
 		/obj/item/attachable/reddot, //Rail
+		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/suppressor, //Muzzle
+		/obj/item/attachable/suppressor/sleek,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/lasersight, //Underbarrel
 		/obj/item/attachable/burstfire_assembly,
+		/obj/item/attachable/flashlight/under_barrel,
 	)
 	start_semiauto = FALSE
 	start_automatic = TRUE
@@ -988,41 +1055,52 @@ Unlike other pistols, it can be equipped with limited mods (small muzzle, underb
 	icon_state = "m10"
 	item_state = "m10"
 	attachable_allowed = list(
-		/obj/item/attachable/reddot, //Rail
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reddot/small, //Rail
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/suppressor, //Muzzle
-		/obj/item/attachable/compensator,
+		/obj/item/attachable/suppressor/sleek,
+		/obj/item/attachable/compensator/m10, // Special M10 compensator
+		/obj/item/attachable/compensator/m10/spiked, // Special M10 compensator - Melee version
 		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/extended_barrel/vented,
 		/obj/item/attachable/heavy_barrel,
-		/obj/item/attachable/lasersight, //Underbarrel
+		/obj/item/attachable/stock/pistol/collapsible, //Stock
+		/obj/item/attachable/stock/m10_solid,
+		/obj/item/attachable/lasersight/micro, //Underbarrel
+		/obj/item/attachable/flashlight/under_barrel,
 	)
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
 	start_automatic = TRUE
 	map_specific_decoration = TRUE
-	fire_sound = 'sound/weapons/gun_m10_auto_pistol.ogg'
-	reload_sound = 'sound/weapons/handling/smg_reload.ogg'
-	unload_sound = 'sound/weapons/handling/smg_unload.ogg'
+	fire_sound = null
+	fire_sounds = list('sound/weapons/gun_m10_auto_pistol.ogg', 'sound/weapons/gun_m10_auto_pistol2.ogg')
+	reload_sound = 'sound/weapons/handling/gun_m10_auto_pistol_reload.ogg'
+	unload_sound = 'sound/weapons/handling/gun_m10_auto_pistol_unload.ogg'
 
 	current_mag = /obj/item/ammo_magazine/pistol/m10
 
+/obj/item/weapon/gun/pistol/m10/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/armat)
+
 /obj/item/weapon/gun/pistol/m10/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 26, "muzzle_y" = 19,"rail_x" = 11, "rail_y" = 20, "under_x" = 21, "under_y" = 16, "stock_x" = 18, "stock_y" = 14)
+	attachable_offset = list("muzzle_x" = 25, "muzzle_y" = 19,"rail_x" = 11, "rail_y" = 21, "under_x" = 18, "under_y" = 15, "stock_x" = 25, "stock_y" = 17)
 
 /obj/item/weapon/gun/pistol/m10/set_gun_config_values()
 	..()
 	set_burst_amount(0)
-	fa_scatter_peak = FULL_AUTO_SCATTER_PEAK_TIER_5
-	fa_max_scatter = SCATTER_AMOUNT_TIER_3
 	set_fire_delay(FIRE_DELAY_TIER_12)
+	fa_scatter_peak = FULL_AUTO_SCATTER_PEAK_TIER_4
+	fa_max_scatter = SCATTER_AMOUNT_TIER_7
 	accuracy_mult = BASE_ACCURACY_MULT
-	accuracy_mult_unwielded = BASE_ACCURACY_MULT
-	scatter = SCATTER_AMOUNT_TIER_4
-	scatter_unwielded = SCATTER_AMOUNT_TIER_3
-	damage_mult = BASE_BULLET_DAMAGE_MULT - BULLET_DAMAGE_MULT_TIER_7
-	recoil = RECOIL_AMOUNT_TIER_5
-	recoil_unwielded = RECOIL_AMOUNT_TIER_4
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_4
+	scatter = SCATTER_AMOUNT_TIER_5
+	scatter_unwielded = SCATTER_AMOUNT_TIER_4
+	recoil_unwielded = RECOIL_AMOUNT_TIER_5
+	damage_mult = BASE_BULLET_DAMAGE_MULT - BULLET_DAMAGE_MULT_TIER_5
 
 //-------------------------------------------------------
 /*
@@ -1044,9 +1122,12 @@ L54 service pistol
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
+		/obj/item/attachable/suppressor/sleek,
 		/obj/item/attachable/reddot,
+		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/extended_barrel,
@@ -1076,8 +1157,10 @@ L54 service pistol
 	current_mag = /obj/item/ammo_magazine/pistol/l54_custom
 	attachable_allowed = list(
 		/obj/item/attachable/reddot,
+		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/burstfire_assembly,
 	)

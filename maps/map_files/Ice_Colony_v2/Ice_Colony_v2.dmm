@@ -962,7 +962,7 @@
 /turf/open/floor/dark2,
 /area/ice_colony/surface/engineering/electric)
 "adS" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/darkyellow2,
 /area/ice_colony/surface/engineering/electric)
 "adT" = (
@@ -1125,7 +1125,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/darkyellow2/northeast,
 /area/ice_colony/surface/engineering/generator)
 "aex" = (
@@ -2278,7 +2278,7 @@
 /area/ice_colony/surface/engineering/generator)
 "aiv" = (
 /obj/structure/machinery/light,
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/darkyellow2/southeast,
 /area/ice_colony/surface/engineering/generator)
 "aiw" = (
@@ -3738,12 +3738,12 @@
 /turf/open/floor/darkyellow2/southwest,
 /area/ice_colony/surface/substation)
 "anz" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/structure/machinery/light,
 /turf/open/floor/darkyellow2,
 /area/ice_colony/surface/substation)
 "anA" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/darkyellow2,
 /area/ice_colony/surface/substation)
 "anB" = (
@@ -7317,7 +7317,7 @@
 /turf/open/floor/darkbrown2/north,
 /area/ice_colony/surface/garage/one)
 "azX" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/darkbrown2/north,
 /area/ice_colony/surface/garage/one)
 "azY" = (
@@ -7368,7 +7368,7 @@
 /turf/open/floor/darkbrown2/north,
 /area/ice_colony/surface/garage/two)
 "aAh" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/darkbrown2/north,
 /area/ice_colony/surface/garage/two)
 "aAi" = (
@@ -8177,9 +8177,6 @@
 "aDh" = (
 /obj/item/clipboard,
 /obj/item/tool/pen/blue,
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -11121,7 +11118,7 @@
 /turf/open/floor/darkbrown2,
 /area/ice_colony/surface/hangar/alpha)
 "aON" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -11183,7 +11180,7 @@
 /turf/open/floor/darkbrowncorners2,
 /area/ice_colony/surface/hangar/beta)
 "aOW" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -12601,7 +12598,7 @@
 /turf/open/ice,
 /area/ice_colony/exterior/surface/landing_pad_external)
 "aUQ" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/darkyellow2/southwest,
 /area/ice_colony/surface/research/temporary)
 "aUR" = (
@@ -12739,7 +12736,7 @@
 /turf/open/floor/darkyellow2/northeast,
 /area/ice_colony/surface/research/tech_storage)
 "aVt" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/platebot,
 /area/ice_colony/surface/research/tech_storage)
 "aVv" = (
@@ -13768,7 +13765,7 @@
 /turf/open/floor/plating/icefloor/warnplate,
 /area/ice_colony/exterior/surface/landing_pad)
 "aZT" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/underground/hangar)
 "aZU" = (
@@ -14549,7 +14546,7 @@
 /turf/open/floor/plating/icefloor/warnplate,
 /area/ice_colony/underground/hangar)
 "bdX" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/structure/machinery/power/apc/no_power/east,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/excavation/storage)
@@ -14755,7 +14752,7 @@
 /turf/open/floor/plating/icefloor/warnplate/west,
 /area/ice_colony/surface/excavation/storage)
 "beI" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/excavation/storage)
 "beJ" = (
@@ -15940,11 +15937,11 @@
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/north)
 "bkk" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/north)
 "bkl" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/north)
 "bkn" = (
@@ -19343,14 +19340,14 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/engineering)
 "bxF" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/engineering)
 "bxG" = (
@@ -20595,14 +20592,14 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/central)
 "bCw" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/central)
 "bCz" = (
@@ -23602,7 +23599,7 @@
 /turf/open/floor/darkbrown2/northeast,
 /area/ice_colony/underground/crew/lavatory)
 "bOi" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
@@ -23764,7 +23761,7 @@
 /turf/open/floor/darkbrown2/east,
 /area/ice_colony/underground/crew/lavatory)
 "bOO" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/south)
 "bOP" = (
@@ -24244,11 +24241,11 @@
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/leisure)
 "bQz" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/security)
 "bQA" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/security)
 "bQB" = (
@@ -25896,7 +25893,7 @@
 /turf/open/ice,
 /area/ice_colony/exterior/underground/caves/open)
 "bWt" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/ice,
 /area/ice_colony/exterior/underground/caves/open)
 "bWu" = (

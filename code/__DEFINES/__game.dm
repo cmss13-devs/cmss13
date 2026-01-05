@@ -126,6 +126,7 @@
 #define CHAT_GHOSTHIVEMIND (1<<12)
 #define CHAT_NICHELOGS (1<<13)
 #define CHAT_LISTENINGBUG (1<<14)
+#define CHAT_GHOSTANNOUNCECLARITY (1<<15)
 
 //toggles_ghost
 #define GHOST_HEALTH_SCAN  (1<<0)
@@ -500,8 +501,8 @@
 /// Minimum Y height up to which we keep dividing the tree (meaning cells can be half that)
 #define QUADTREE_BOUNDARY_MINIMUM_HEIGHT 12
 
-
-#define QTREE_EXCLUDE_OBSERVER 1
+/// Whether to filter to only living mobs
+#define QTREE_FILTER_LIVING 1
 
 /// Return mob list instead of client list.
 #define QTREE_SCAN_MOBS 2
@@ -585,4 +586,4 @@
 #define PERF_TOGGLE_TECHWEBS (1<<4)
 
 /// Maptext styles
-#define MAP_STYLESHEET ".maptext { font-family: 'Small Fonts'; font-size: 7px; -dm-text-outline: 1px black; color: white; line-height: 1.1; } .center { text-align: center; } .langchat { font-family: 'Small Fonts'; font-size: 7px; -dm-text-outline: 1px black; } .langchat_small { font-size: 6px; } .langchat_yell { font-weight: bold; font-size: 10px; } .langchat_bolded { font-weight: bold; font-size: 8px; } .langchat_announce { font-weight: bold; font-size: 12px; } .langchat_bolditalicbig {font-weight: bold; font-size: 24px; font-style: italic; } .langchat_italic {font-style: italic; }"
+#define MAP_STYLESHEET "img.icon { width: auto; height: auto } .center { text-align: center; }  .maptext { font-family: 'Small Fonts'; font-size: 7px; -dm-text-outline: 1px black; color: white; line-height: 1.1; } .center { text-align: center; } .langchat { font-family: 'Small Fonts'; font-size: 7px; -dm-text-outline: 1px black; } .langchat_small { font-size: 6px; } .langchat_yell { font-weight: bold; font-size: 10px; } .langchat_smaller_bolded { font-weight: bold; font-size: 7px; } .langchat_bolded { font-weight: bold; font-size: 8px; } .langchat_announce { font-weight: bold; font-size: 12px; } .langchat_bolditalicbig {font-weight: bold; font-size: 24px; font-style: italic; } .langchat_italic {font-style: italic; }"

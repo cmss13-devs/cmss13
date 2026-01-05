@@ -135,6 +135,10 @@
 	has_charge_meter = FALSE
 	charge_icon = "+rxfm5_empty"
 
+/obj/item/weapon/gun/energy/rxfm5_eva/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/weapon/gun/energy/rxfm5_eva/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 0, "muzzle_y" = 0,"rail_x" = 12, "rail_y" = 21, "under_x" = 16, "under_y" = 10, "stock_x" = 0, "stock_y" = 0)
 
@@ -172,7 +176,7 @@
 
 /obj/item/weapon/gun/energy/laser_top
 	name = "'LAZ-TOP'"
-	desc = "The 'LAZ-TOP', aka the Laser Anode something something"//finish this later
+	desc = "The 'LAZ-TOP', aka the Laser Anode something something."//finish this later
 
 /obj/item/weapon/gun/energy/laz_uzi
 	name = "laser UZI"

@@ -173,6 +173,10 @@
 	siemens_coefficient = 0.2
 	unacidable = TRUE
 
+/obj/item/clothing/shoes/veteran/pmc/commando/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/clothing/shoes/veteran/pmc/commando/knife
 	spawn_item_type = /obj/item/attachable/bayonet/wy
 
@@ -185,6 +189,10 @@
 	siemens_coefficient = 0.2
 	unacidable = TRUE
 	spawn_item_type = /obj/item/attachable/bayonet/wy
+
+/obj/item/clothing/shoes/veteran/pmc/combat_android/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/clothing/shoes/veteran/pmc/combat_android/dark
 	name = "\improper M7X Mark II greaves"

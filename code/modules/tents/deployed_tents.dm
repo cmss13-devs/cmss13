@@ -112,6 +112,21 @@
 
 	return XENO_ATTACK_ACTION
 
+/obj/structure/tent/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
+	if(unslashable || health <= 0)
+		return TAILSTAB_COOLDOWN_NONE
+	playsound(src, 'sound/items/paper_ripped.ogg', 25, 1)
+	health -= xeno.melee_damage_upper
+	if(health <= 0)
+		xeno.visible_message(SPAN_DANGER("[xeno] collapses [src] with its tail!"),
+		SPAN_DANGER("We collapse [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+		qdel(src)
+	else
+		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
+		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno.tail_stab_animation(src, blunt_stab)
+	return TAILSTAB_COOLDOWN_NORMAL
+
 /obj/structure/tent/attackby(obj/item/item, mob/user)
 	var/obj/item/tool/shovel/shovel = item
 	if(!istype(shovel) || shovel.folded || user.action_busy)

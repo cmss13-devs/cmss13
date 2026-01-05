@@ -121,6 +121,6 @@
 	"chat.useNestedAgentsMdFiles": false,
 	"chat.tools.global.autoApprove": false,
 	"chat.mcp.gallery.enabled": false,
-	"mermaid-chat.enabled": false,
-	"githubPullRequests.experimental.useQuickChat": false,
+    "mermaid-chat.enabled": false,
+    "githubPullRequests.experimental.useQuickChat": false
 }

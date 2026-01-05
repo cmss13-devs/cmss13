@@ -197,7 +197,6 @@
 	morgue_type = "crema"
 	var/cremating = 0
 	var/id = 1
-	var/ignored_items = list(/obj/item/document_objective, /obj/item/disk/objective)
 
 
 /obj/structure/morgue/crematorium/toggle_morgue(mob/user)

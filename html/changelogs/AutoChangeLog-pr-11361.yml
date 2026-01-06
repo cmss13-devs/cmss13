@@ -1,0 +1,4 @@
+author: "Venuska1117"
+delete-after: True
+changes:
+  - bugfix: "Abduct can no longer can pass through wall griders."

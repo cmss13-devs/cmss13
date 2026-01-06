@@ -134,6 +134,7 @@
 			H.remove_hud_from(user, src)
 		user.glasses = null
 		user.update_inv_glasses()
+		user.update_glass_vision(src)
 	user.update_sight()
 	return ..()
 
@@ -345,7 +346,7 @@
 
 /obj/item/clothing/glasses/jensen
 	name = "Augmented sunglasses"
-	desc = "Augmented sunglasses with the HUD removed"
+	desc = "Augmented sunglasses with the HUD removed."
 	icon = 'icons/obj/items/clothing/glasses/misc.dmi'
 	item_icons = list(
 		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/misc.dmi',

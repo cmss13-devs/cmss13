@@ -5,12 +5,15 @@
 	name = "Colonial Liberation Front (Squad)"
 	mob_max = 10
 	arrival_message = "'Attention, you are trespassing on our sovereign territory. Expect no forgiveness.'"
-	objectives = "Assault the USCM, and sabotage as much as you can. Ensure any survivors escape in your custody."
 	probability = 20
 	hostility = TRUE
 	home_base = /datum/lazy_template/ert/clf_station
 	var/max_synths = 1
 	var/synths = 0
+
+/datum/emergency_call/clf/New()
+	. = ..()
+	objectives = "Assault the USCM, and sabotage as much as you can. Ensure any survivors escape in your custody."
 
 /datum/emergency_call/clf/print_backstory(mob/living/carbon/human/H)
 	if(ishuman_strict(H))
@@ -33,7 +36,7 @@
 	to_chat(H, SPAN_BOLD("The arrival of the USCM Battalion, the Falling Falcons, and their flagship, the [MAIN_SHIP_NAME], have reaffirmed that the United Americas considers the Neroid Sector part of their holdings."))
 	to_chat(H, SPAN_BOLD("It is up to you and your fellow colonists to make them realize their trespasses. This sector is no longer theirs."))
 
-	to_chat(H, SPAN_WARNING(FONT_SIZE_HUGE("YOU ARE HOSTILE to the USCM")))
+	to_chat(H, SPAN_WARNING(FONT_SIZE_HUGE("YOU ARE HOSTILE to the USCM.")))
 
 /datum/emergency_call/clf/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()

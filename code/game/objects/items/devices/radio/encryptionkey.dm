@@ -15,8 +15,8 @@
 	icon_state = "binary_key"
 	translate_apollo = TRUE
 
-/obj/item/device/encryptionkey/public
-	name = "Public Radio Encryption Key"
+/obj/item/device/encryptionkey/almayer
+	name = "Almayer Radio Encryption Key"
 	icon_state = "stripped_key"
 	channels = list(RADIO_CHANNEL_ALMAYER = TRUE)
 	abstract = TRUE
@@ -47,7 +47,7 @@
 
 /obj/item/device/encryptionkey/sentry_laptop
 	name = "Sentry Network Status Encryption Key"
-	desc = "Automated channel to broadcast sentry gun updates"
+	desc = "Automated channel to broadcast sentry gun updates."
 	icon_state = "eng_key"
 	channels = list(RADIO_CHANNEL_SENTRY = TRUE)
 
@@ -152,7 +152,7 @@
 /obj/item/device/encryptionkey/io
 	name = "\improper Marine Intelligence Officer Radio Encryption Key"
 	icon_state = "cap_key"
-	channels = list(RADIO_CHANNEL_ALMAYER = TRUE, RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_REQ = TRUE, RADIO_CHANNEL_JTAC = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, SQUAD_MARINE_1 = FALSE, SQUAD_MARINE_2 = FALSE, SQUAD_MARINE_3 = FALSE, SQUAD_MARINE_4 = FALSE, SQUAD_MARINE_5 = FALSE, SQUAD_MARINE_CRYO = FALSE)
+	channels = list(RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_REQ = TRUE, RADIO_CHANNEL_JTAC = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, SQUAD_MARINE_1 = FALSE, SQUAD_MARINE_2 = FALSE, SQUAD_MARINE_3 = FALSE, SQUAD_MARINE_4 = FALSE, SQUAD_MARINE_5 = FALSE, SQUAD_MARINE_CRYO = FALSE)
 
 /obj/item/device/encryptionkey/vc
 	name = "\improper Marine Vehicle Crewman Radio Encryption Key"

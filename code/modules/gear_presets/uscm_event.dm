@@ -58,7 +58,6 @@
 /datum/equipment_preset/uscm_event/general
 	name = "USCM O-7 - Brigadier General (High Command)"
 	flags = EQUIPMENT_PRESET_EXTRA
-
 	idtype = /obj/item/card/id/general
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = JOB_GENERAL
@@ -149,7 +148,6 @@
 /datum/equipment_preset/uscm_event/upp_spy
 	name = "UPP Spy"
 	flags = EQUIPMENT_PRESET_EXTRA
-
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN)
 	access = list(
 		ACCESS_MARINE_ENGINEERING,
@@ -201,7 +199,6 @@
 
 /datum/equipment_preset/uscm_event/provost
 	name = "USCM Provost"
-
 	idtype = /obj/item/card/id/provost
 	skills = /datum/skills/provost
 	minimap_background = "background_mp"
@@ -218,6 +215,7 @@
 	role_comm_title = "PvE"
 	flags = EQUIPMENT_PRESET_EXTRA
 	minimap_icon = "pve"
+
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues)
 	dress_hat = list(/obj/item/clothing/head/marine/dress_cover)
@@ -387,7 +385,6 @@
 	name = "Provost Deputy Marshal (MO6)"
 	minimum_age = 45
 	skills = /datum/skills/general
-
 	assignment = JOB_PROVOST_DMARSHAL
 	job_title = JOB_PROVOST_DMARSHAL
 	paygrades = list(PAY_SHORT_PVDM = JOB_PLAYTIME_TIER_0)

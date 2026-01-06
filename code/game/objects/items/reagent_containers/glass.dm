@@ -419,6 +419,7 @@
 
 /obj/item/reagent_container/glass/beaker/vial/random
 	var/tier
+	is_objective = TRUE
 
 /obj/item/reagent_container/glass/beaker/vial/random/Initialize()
 	. = ..()
@@ -432,6 +433,13 @@
 	if(random_chem)
 		reagents.add_reagent(random_chem, 30)
 		update_icon()
+	else
+		is_objective = FALSE
+
+/obj/item/reagent_container/glass/beaker/vial/random/on_reagent_change()
+	. = ..()
+	if(!reagents?.total_volume)
+		is_objective = FALSE
 
 /obj/item/reagent_container/glass/beaker/vial/epinephrine
 	name = "epinephrine vial"

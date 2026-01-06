@@ -560,7 +560,7 @@
 		30,
 		50,
 		60,
-		80
+		80,
 	)
 // how much of the tape has been used up
 // make this the biggest number on the timestamp list or 10 MINUTES if you don't want anything more to be recorded on the side.

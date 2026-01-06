@@ -144,7 +144,7 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 		var/list/message = new() //Duration hint messages.
 
 		if(self_surgery)
-			message += "[pick("performing surgery", "working", "operating")] on [pick("yourself", "your own body")] is [pick("awkward", "tricky")]."
+			message += "[pick("performing surgery", "working", "operating")] on [pick("yourself", "your own body")] is [pick("awkward", "tricky")]"
 
 		switch(tool_modifier) //Implicitly means tool exists as accept_any_item item or accept_hand would = 1x. No message for 1x - that's the default.
 			if(SURGERY_TOOL_MULT_SUBOPTIMAL)

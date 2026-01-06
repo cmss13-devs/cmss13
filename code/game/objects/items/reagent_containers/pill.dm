@@ -195,6 +195,12 @@
 	pill_initial_reagents = list("oxycodone" = 10)
 	pill_icon_class = "oxy"
 
+/obj/item/reagent_container/pill/oxycodone/natural
+	name = "numbing herb"
+	pill_desc = "A powerful painkilling herb, eating it will numb the pain."
+	icon = 'icons/obj/items/harvest.dmi'
+	icon_state = "mtear"
+
 /obj/item/reagent_container/pill/paracetamol
 	pill_desc = "A Paracetamol pill. Painkiller for the ages."
 	pill_initial_reagents = list("paracetamol" = 15)
@@ -264,6 +270,12 @@
 	pill_desc = "A Bicaridine pill. Heals brute damage."
 	pill_initial_reagents = list("bicaridine" = 15)
 	pill_icon_class = "bica"
+
+/obj/item/reagent_container/pill/bicaridine/natural
+	name = "healing herb"
+	pill_desc = "A remarkable healing herb, eating it will heal brute damage."
+	icon = 'icons/obj/items/harvest.dmi'
+	icon_state = "shand"
 
 /obj/item/reagent_container/pill/ultrazine
 	pill_desc = "An Ultrazine pill. A highly-potent, long-lasting combination CNS and muscle stimulant. Extremely addictive."

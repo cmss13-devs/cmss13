@@ -393,3 +393,6 @@
   zzzmike:
   - bugfix: Larva that chestburst onto a tile that already has fire on it will no
       longer ignite
+2025-12-31:
+  DangerRevolution:
+  - spellcheck: Fixed several duplicate "the" with Mortar interactions

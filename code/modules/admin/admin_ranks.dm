@@ -83,13 +83,6 @@ GLOBAL_LIST_EMPTY(admin_ranks) //list of all ranks with associated rights
 	return rights
 
 /proc/load_admins()
-	//clear the datums references
-	GLOB.admin_datums.Cut()
-	for(var/client/C in GLOB.admins)
-		C.remove_admin_verbs()
-		C.admin_holder = null
-	GLOB.admins.Cut()
-
 	//Clear profile access
 	for(var/admin in world.GetConfig("admin"))
 		log_debug("Clearing [admin] from APP/admin.")
@@ -97,6 +90,13 @@ GLOBAL_LIST_EMPTY(admin_ranks) //list of all ranks with associated rights
 
 	if(CONFIG_GET(string/cmdb_url) && CONFIG_GET(string/cmdb_api_key) && fetch_api_admins())
 		return
+
+	//clear the datums references
+	GLOB.admin_datums.Cut()
+	for(var/client/C in GLOB.admins)
+		C.remove_admin_verbs()
+		C.admin_holder = null
+	GLOB.admins.Cut()
 
 	load_admin_ranks()
 
@@ -287,17 +287,51 @@ GLOBAL_LIST_EMPTY(admin_ranks) //list of all ranks with associated rights
 
 		GLOB.admin_ranks[group_name] = get_rights(group_ranks[instance_name])
 
+	var/static/list/cached_api_response = list()
+
+	var/list/unchanged_users = list()
+	var/list/changed_users = list()
+
 	for(var/user in users)
 		if(!("display_name" in user) || !("primary_group" in user) || !("ckey" in user))
 			log_admin("\[ADMIN_API\] Invalid entry ([user]) in API response, skipping!")
 			continue
 
+		if(user["ckey"] in cached_api_response)
+			var/cached_response = cached_api_response[user["ckey"]]
+
+			if(cached_response ~= user)
+				unchanged_users += user["ckey"]
+				continue
+
+		changed_users += list(user)
+
+	for(var/ckey, admin_datum in GLOB.admin_datums)
+		if(ckey in unchanged_users)
+			continue
+
+		GLOB.admin_datums -= ckey
+		cached_api_response -= ckey
+
+		var/client/current_client = GLOB.directory[ckey]
+		if(current_client)
+			current_client.remove_admin_verbs()
+			current_client.admin_holder = null
+
+			GLOB.admins -= current_client
+
+	for(var/changed_user in changed_users)
 		var/additional_title = null
-		if("additional_title" in user)
-			additional_title = list(user["additional_title"])
+		if("additional_title" in changed_user)
+			additional_title = list(changed_user["additional_title"])
 
-		var/datum/admins/admin_datum = new(user["display_name"], GLOB.admin_ranks[user["primary_group"]], user["ckey"], additional_title)
+		var/datum/admins/admin_datum = new(changed_user["display_name"], GLOB.admin_ranks[changed_user["primary_group"]], changed_user["ckey"], additional_title)
 
-		INVOKE_ASYNC(admin_datum, TYPE_PROC_REF(/datum/admins, associate), GLOB.directory[user["ckey"]])
+		INVOKE_ASYNC(admin_datum, TYPE_PROC_REF(/datum/admins, associate), GLOB.directory[changed_user["ckey"]])
+
+		cached_api_response[changed_user["ckey"]] = changed_user
 
 	return TRUE
+
+/client/verb/reload_admins_debug()
+	load_admins()

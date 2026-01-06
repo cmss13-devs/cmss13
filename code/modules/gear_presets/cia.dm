@@ -89,11 +89,13 @@
 	name = "CIA Senior Agent (USCM Liaison - Captain)"
 	paygrades = list(PAY_SHORT_MO3 = JOB_PLAYTIME_TIER_0)
 	minimum_age = 30
+	minimap_icon = "cia_co"
 	skills = /datum/skills/cia_senior
 
 /datum/equipment_preset/uscm/marsoc/low_threat/cia
 	name = "CIA Senior Agent (Marine Raider Advisor)"
 	minimum_age = 30
+
 	skills = /datum/skills/cia_senior
 
 /datum/equipment_preset/uscm/marsoc/low_threat/cia/New()

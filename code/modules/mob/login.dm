@@ -70,7 +70,5 @@
 	if(client?.prefs.main_cursor)
 		update_cursor()
 
-	stack_trace("Beep!")
-
 /mob/proc/set_logged_in_mob()
 	GLOB.ckey_to_occupied_mob[client.ckey] = src

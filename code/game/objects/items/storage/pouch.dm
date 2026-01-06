@@ -1745,7 +1745,7 @@
 
 /obj/item/storage/pouch/cassette/Initialize()
 	. = ..()
-	AddElement(/datum/element/corp_label/synsound)
+	AddElement(/datum/element/corp_label/seegson)
 
 /obj/item/storage/pouch/cassette/update_icon()
 	underlays.Cut()

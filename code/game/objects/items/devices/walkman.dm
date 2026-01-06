@@ -1,8 +1,8 @@
 
 
 /obj/item/device/walkman
-	name = "Synsound Walkman"
-	desc = "A Synsound cassette player that first hit the market over 200 years ago. Crazy how these never went out of style."
+	name = "Seegson C-60 cassette player"
+	desc = "A newly released Seegson cassette player, nicknamed the 'space-walkman' due to it's similarity to the 200 year old walkman. Crazy how these never went out of style."
 	icon = 'icons/obj/items/walkman.dmi'
 	icon_state = "walkman"
 	item_icons = list(
@@ -31,7 +31,7 @@
 	. = ..()
 	design = rand(1, 5)
 	update_icon()
-	AddElement(/datum/element/corp_label/synsound)
+	AddElement(/datum/element/corp_label/seegson)
 
 /obj/item/device/walkman/Destroy()
 	QDEL_NULL(tape)

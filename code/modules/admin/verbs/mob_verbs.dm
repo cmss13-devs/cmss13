@@ -163,11 +163,11 @@
 			var/mob/living/carbon/human/H = M
 
 			if(!istype(H))
-				to_chat(usr, "The person you are trying to contact is not human")
+				to_chat(usr, "The person you are trying to contact is not human.")
 				return
 
 			if(!H.get_type_in_ears(/obj/item/device/radio/headset))
-				to_chat(usr, "The person you are trying to contact is not wearing a headset")
+				to_chat(usr, "The person you are trying to contact is not wearing a headset.")
 				return
 			to_chat(H, SPAN_ANNOUNCEMENT_HEADER_BLUE("Message received through headset. [message_option] Transmission <b>\"[msg]\"</b>"))
 
@@ -296,7 +296,7 @@
 	usr.forceMove(O)
 	usr.real_name = O.name
 	usr.name = O.name
-	usr.client.eye = O
+	usr.client.set_eye(O)
 	usr.control_object = O
 
 /client/proc/release(obj/O as obj in world)
@@ -316,7 +316,7 @@
 			H.change_real_name(H, usr.name_archive)
 
 	usr.forceMove(O.loc )// Appear where the object you were controlling is -- TLE
-	usr.client.eye = usr
+	usr.client.set_eye(usr)
 	usr.control_object = null
 
 /client/proc/cmd_admin_drop_everything(mob/M as mob in GLOB.mob_list)
@@ -353,7 +353,7 @@
 	var/newhive = tgui_input_list(src,"Select a hive.", "Change Hivenumber", hives, theme="hive_status")
 
 	if(!H)
-		to_chat(usr, "This mob no longer exists")
+		to_chat(usr, "This mob no longer exists.")
 		return
 
 	if(isxeno(H))
@@ -387,7 +387,7 @@
 		return
 
 	if(!carbon)
-		to_chat(usr, "This mob no longer exists")
+		to_chat(usr, "This mob no longer exists.")
 		return
 
 	var/old_name = carbon.name

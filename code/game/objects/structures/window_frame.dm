@@ -1,6 +1,6 @@
 /obj/structure/window_frame
 	name = "window frame"
-	desc = "A big hole in the wall that used to sport a large window. Can be vaulted through"
+	desc = "A big hole in the wall that used to sport a large window. Can be vaulted through."
 	icon = 'icons/turf/walls/window_frames.dmi'
 	icon_state = "window0_frame"
 	layer = WINDOW_FRAME_LAYER
@@ -103,7 +103,7 @@
 		if(buildstacktype)
 			to_chat(user, SPAN_NOTICE(" You start to deconstruct [src]."))
 			playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
-			if(do_after(user, 30 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD)) // takes 3 seconds to deconstruct
+			if(do_after(user, 30 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src)) // takes 3 seconds to deconstruct
 				playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 				to_chat(user, SPAN_NOTICE("You deconstruct [src]."))
 				SEND_SIGNAL(user, COMSIG_MOB_DISASSEMBLE_W_FRAME, src)
@@ -136,18 +136,30 @@
 		. = ..()
 
 /obj/structure/window_frame/attack_alien(mob/living/carbon/xenomorph/user)
-	if(!reinforced && user.claw_type >= CLAW_TYPE_SHARP)
-		user.animation_attack_on(src)
-		playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
-		take_damage((max_health / XENO_HITS_TO_DESTROY_WINDOW_FRAME) + 1)
-		return XENO_ATTACK_ACTION
-	else if (reinforced && user.claw_type >= CLAW_TYPE_SHARP)
-		user.animation_attack_on(src)
-		playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
-		take_damage((max_health / XENO_HITS_TO_DESTROY_R_WINDOW_FRAME) + 1)
-		return XENO_ATTACK_ACTION
+	if(user.claw_type < CLAW_TYPE_SHARP)
+		return ..()
+	user.animation_attack_on(src)
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	var/hits_divisor = reinforced ? XENO_HITS_TO_DESTROY_R_WINDOW_FRAME : XENO_HITS_TO_DESTROY_WINDOW_FRAME
+	take_damage((max_health / hits_divisor) + 1)
+	return XENO_ATTACK_ACTION
 
-	. = ..()
+/obj/structure/window_frame/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
+	if(unslashable || health <= 0)
+		return TAILSTAB_COOLDOWN_NONE
+	if(xeno.claw_type < CLAW_TYPE_SHARP)
+		return TAILSTAB_COOLDOWN_NONE
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	var/hits_divisor = reinforced ? XENO_HITS_TO_DESTROY_R_WINDOW_FRAME : XENO_HITS_TO_DESTROY_WINDOW_FRAME
+	take_damage((max_health / hits_divisor) + 1)
+	if(health <= 0)
+		xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
+		SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	else
+		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
+		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno.tail_stab_animation(src, blunt_stab)
+	return TAILSTAB_COOLDOWN_NORMAL
 
 /obj/structure/window_frame/bullet_act(obj/projectile/P)
 	bullet_ping(P)

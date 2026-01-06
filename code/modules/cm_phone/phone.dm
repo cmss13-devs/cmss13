@@ -266,7 +266,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	if(T)
 		if(T.attached_to && ismob(T.attached_to.loc))
 			var/mob/M = T.attached_to.loc
-			to_chat(M, SPAN_PURPLE("[icon2html(src, M)] [phone_id] has hung up on you."))
+			to_chat(M, SPAN_PURPLE("[icon2html(src, M)] You hear a click as the phone goes dead. [phone_id] has hung up on you."))
 			T.hangup_loop.start()
 
 		if(attached_to && ismob(attached_to.loc))
@@ -411,7 +411,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	var/zlevel_transfer = FALSE
 	var/zlevel_transfer_timer = TIMER_ID_NULL
 	var/zlevel_transfer_timeout = 5 SECONDS
-	var/can_be_raised = TRUE // This is for items like the scout helmet where you dont need to raise it.
+	var/can_be_raised = TRUE // This is for items like the scout helmet where you don't need to raise it.
 
 /obj/item/phone/Initialize(mapload)
 	. = ..()

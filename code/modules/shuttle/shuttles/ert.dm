@@ -128,6 +128,12 @@
 	preferred_direction = SOUTH
 	port_direction = NORTH
 
+/obj/docking_port/mobile/emergency_response/hunter
+	name = "Hunter Shuttle"
+	id = MOBILE_SHUTTLE_ID_HUNTER
+	preferred_direction = SOUTH
+	port_direction = NORTH
+
 /obj/docking_port/mobile/emergency_response/small
 	name = "Rescue Shuttle"
 	id = MOBILE_SHUTTLE_ID_ERT_SMALL
@@ -381,3 +387,7 @@
 /datum/map_template/shuttle/big_ert
 	name = "Boarding Shuttle"
 	shuttle_id = MOBILE_SHUTTLE_ID_ERT_BIG
+
+/datum/map_template/shuttle/hunter
+	name = "Hunter Shuttle"
+	shuttle_id = MOBILE_SHUTTLE_ID_HUNTER

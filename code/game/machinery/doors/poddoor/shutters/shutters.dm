@@ -97,9 +97,9 @@
 /obj/structure/machinery/door/poddoor/yautja
 	name = "Yautja Shutter"
 	desc = "A heavily reinforced metal-alloy door, designed to be virtually indestructible—nothing can penetrate its defenses."
-	icon = 'icons/obj/structures/doors/hybrisashutters.dmi'
-	icon_state = "udoor1"
-	base_icon_state = "udoor"
+	icon = 'icons/obj/structures/doors/hunter/hunter_shutter.dmi'
+	icon_state = "hdoor1"
+	base_icon_state = "hdoor"
 	unslashable = TRUE
 	emp_proof = TRUE
 	openspeed = 6

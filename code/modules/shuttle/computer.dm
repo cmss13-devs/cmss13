@@ -358,6 +358,12 @@
 			continue
 		. += list(dock)
 
+/obj/structure/machinery/computer/shuttle/ert/hunter
+	name = "flight console"
+	desc = "An advanced alien flight console."
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+	icon_state = "console_shuttle"
+
 /obj/structure/machinery/computer/shuttle/lifeboat
 	name = "lifeboat console"
 	desc = "A lifeboat control computer."

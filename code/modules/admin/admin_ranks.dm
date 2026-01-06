@@ -333,5 +333,3 @@ GLOBAL_LIST_EMPTY(admin_ranks) //list of all ranks with associated rights
 
 	return TRUE
 
-/client/verb/reload_admins_debug()
-	load_admins()

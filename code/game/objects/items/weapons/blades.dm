@@ -20,11 +20,18 @@
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	attack_speed = 9
 
+	shield_chance = SHIELD_CHANCE_LOW
+	shield_projectile_mult = PROJECTILE_BLOCK_PERC_NONE
+	shield_type = SHIELD_DIRECTIONAL
+	shield_sound = 'sound/items/parry.ogg'
+	shield_flags = CAN_SHIELD_BASH
+
 /obj/item/weapon/sword/claymore
 	name = "claymore"
 	desc = "What are you standing around staring at this for? Get to killing!"
 	icon_state = "claymore"
 	item_state = "claymore"
+	shield_chance = SHIELD_CHANCE_MED
 
 /obj/item/weapon/sword/ceremonial
 	name = "Ceremonial Sword"
@@ -61,6 +68,8 @@
 	icon_state = "arnold-machete"
 	item_state = "arnold-machete"
 	force = MELEE_FORCE_TIER_11
+	shield_chance = SHIELD_CHANCE_EXTRAHIGH
+	shield_projectile_mult = PROJECTILE_BLOCK_PERC_50
 
 /obj/item/weapon/sword/hefa
 	name = "HEFA sword"
@@ -68,6 +77,7 @@
 	item_state = "hefasword"
 	desc = "A blade known to be used by the Order of the HEFA, this highly dangerous blade blows up in a shower of shrapnel on impact."
 	attack_verb = list("bapped", "smacked", "clubbed")
+	shield_chance = SHIELD_CHANCE_MEDHIGH
 
 	var/primed = FALSE
 
@@ -109,6 +119,7 @@
 	icon_state = "katana"
 	item_state = "katana"
 	force = MELEE_FORCE_VERY_STRONG
+	shield_chance = SHIELD_CHANCE_EXTRAHIGH
 
 //To do: replace the toys.
 /obj/item/weapon/sword/katana/replica
@@ -116,6 +127,7 @@
 	desc = "A cheap knock-off commonly found in regular knife stores. Can still do some damage."
 	force = MELEE_FORCE_WEAK
 	throwforce = 7
+	shield_chance = SHIELD_CHANCE_MED
 
 /obj/item/weapon/sword/dragon_katana
 	name = "dragon katana"
@@ -221,7 +233,7 @@
 // Demo and example of a 64x64 weapon.
 /obj/item/weapon/ritual
 	name = "cool knife"
-	desc = "It shines with awesome coding power"
+	desc = "It shines with awesome coding power."
 	icon_state = "dark_blade"
 	item_state = "dark_blade"
 	icon = 'icons/obj/items/weapons/melee/misc.dmi'
@@ -239,6 +251,11 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/items_lefthand_64.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/items_righthand_64.dmi'
 	)
+
+	shield_chance = 45
+	shield_projectile_mult = PROJECTILE_BLOCK_PERC_80
+	shield_type = SHIELD_DIRECTIONAL
+	shield_sound = 'sound/items/parry.ogg'
 
 /obj/item/weapon/straight_razor
 	name = "straight razor"
@@ -316,7 +333,7 @@
 
 /obj/item/weapon/straight_razor/verb/change_hair_style()
 	set name = "Change Hair Style"
-	set desc = "Change your hair style"
+	set desc = "Change your hair style."
 	set category = "Object"
 	set src in usr
 
@@ -379,3 +396,63 @@
 	human_user.apply_damage(rand(1,5), BRUTE, "head", src)
 	human_user.update_hair()
 
+/obj/item/weapon/sword/gladius
+	name = "Gladius sword"
+	desc = "A standard sword used by Roman infantry units. Its remarkable how its still in pristine condition."
+	icon = 'icons/obj/items/weapons/melee/swords.dmi'
+	icon_state = "gladius"
+	item_state = "gladius"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/swords_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/swords_righthand.dmi'
+	)
+	flags_equip_slot = SLOT_WAIST
+
+	force = MELEE_FORCE_TIER_4
+	throwforce = MELEE_FORCE_TIER_5
+	flags_atom = QUICK_DRAWABLE
+	flags_item = ADJACENT_CLICK_DELAY
+	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	sharp = IS_SHARP_ITEM_ACCURATE
+	edge = TRUE
+	embeddable = FALSE
+	w_class = SIZE_LARGE
+	hitsound = 'sound/weapons/bladeslice.ogg'
+	attack_speed = 1 SECONDS
+	shield_type = SHIELD_DIRECTIONAL
+	shield_chance = SHIELD_CHANCE_LOW
+	shield_flags = CAN_SHIELD_BASH
+	shield_sound = 'sound/items/parry.ogg'
+	var/gladius_readied = FALSE
+
+/obj/item/weapon/sword/gladius/proc/raise_gladius(mob/user as mob)
+	user.visible_message(SPAN_BLUE("\The [user] raises the [src]."))
+	gladius_readied = TRUE
+	item_state = "gladius_w"
+	force = MELEE_FORCE_TIER_6
+
+/obj/item/weapon/sword/gladius/proc/lower_gladius(mob/user as mob)
+	user.visible_message(SPAN_BLUE("\The [user] lowers the [src]."))
+	gladius_readied = FALSE
+	item_state = "gladius"
+	force = MELEE_FORCE_TIER_4
+
+/obj/item/weapon/sword/gladius/proc/toggle_gladius(mob/user as mob)
+	if(gladius_readied)
+		lower_gladius(user)
+	else
+		raise_gladius(user)
+
+/obj/item/weapon/sword/gladius/dropped(mob/user as mob)
+	if(gladius_readied)
+		lower_gladius(user)
+	..()
+
+/obj/item/weapon/sword/gladius/equipped(mob/user, slot)
+	if(gladius_readied)
+		lower_gladius(user)
+	..()
+
+/obj/item/weapon/sword/gladius/attack_self(mob/user)
+	..()
+	toggle_gladius(user)

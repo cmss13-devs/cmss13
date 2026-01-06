@@ -24649,7 +24649,6 @@
 "bUA" = (
 /obj/structure/surface/table/almayer,
 /obj/item/paper,
-/obj/item/explosive/grenade/custom/antiweed,
 /turf/open/floor/corsat/purplewhite,
 /area/corsat/omega/complex)
 "bUC" = (

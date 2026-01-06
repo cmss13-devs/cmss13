@@ -98,7 +98,7 @@
 
 /datum/surgery_step/abort_amputation
 	name = "Reconnect Muscular Tissue (Surgery Abort)"
-	desc = "reconnect muscles and abort the amputation"
+	desc = "reconnect the muscles and abort the amputation"
 	tools = SURGERY_TOOLS_SUTURE
 	time = 3 SECONDS
 	preop_sound = 'sound/surgery/suture1.ogg'

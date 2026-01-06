@@ -576,8 +576,9 @@ Defined in conflicts.dm of the #defines folder.
 	desc = "A hyper threaded barrel extender that fits to the muzzle of most firearms. Increases bullet speed and velocity.\nGreatly increases projectile damage at the cost of accuracy and firing speed."
 	slot = "muzzle"
 	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
-	icon_state = "hbarrel"
-	attach_icon = "hbarrel_a"
+	icon_state = "charger"
+	attach_icon = "charger_a"
+	pixel_shift_y = 18
 	hud_offset_mod = -3
 
 /obj/item/attachable/heavy_barrel/New()

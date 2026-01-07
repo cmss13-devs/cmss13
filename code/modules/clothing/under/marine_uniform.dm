@@ -1376,6 +1376,10 @@
 /obj/item/clothing/under/marine/veteran/dutch/ranger
 	icon_state = "dutch_jumpsuit2"
 
+/obj/item/clothing/under/marine/veteran/dutch/vietnam
+	name = "\improper US Army uniform"
+	desc = "Standard-issue Army uniform. Used during the Vietnam War."
+
 /obj/item/clothing/under/marine/veteran/van_bandolier
 	name = "hunting clothes"
 	desc = "A set of tailored clothes, made from fine but sturdy reinforced fabrics. Protects from thorns, weather, and the cuts and scrapes that forever bedevil outdoorsmen."

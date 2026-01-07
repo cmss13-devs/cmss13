@@ -9,7 +9,7 @@
 "snow","searing heat","calamity","the dead","a rifle", \
 "a knife","a distress beacon","a pistol","a spider","empty space","claws", \
 "acid","jaws","a meeting","welding","the vents","being trapped","a survivor", \
-"a power loader","cyrostasis","a meeting room","an engineer","a severed head","a motion scanner","a dropship","a uniform", \
+"a power loader","cryostasis","a meeting room","an engineer","a severed head","a motion scanner","a dropship","a uniform", \
 "a ruined station","fire","a smokey room","a voice","the cold","dimness","an operating table","teeth","flowers","graves", \
 "a synthetic man","meat","a planet","the U.P.P.","Weyland-Yutani","tools" \
 )

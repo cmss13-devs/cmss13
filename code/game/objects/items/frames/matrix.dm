@@ -13,7 +13,7 @@
 //Upgrade types
 //Matrix default - the default dropship camera system you start with
 //Matrix NVG - guidance camera gets NVG filter depending on the potency of the property
-//Matrix wide - gives a wider view which depends on the potency of the proeprty
+//Matrix wide - gives a wider view which depends on the potency of the property
 
 /obj/item/frame/matrix_frame/attackby(obj/item/W, mob/user as mob)
 	switch(state)

@@ -9,7 +9,7 @@
 	/// How many marines in the kill_marines stage have been killed
 	var/ending_marines_killed = 0
 
-// START OF SCRITPING
+// START OF SCRIPTING
 
 /datum/tutorial/xenomorph/abomination/start_tutorial(mob/starting_mob)
 	. = ..()

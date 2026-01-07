@@ -1,7 +1,7 @@
 #define IFF_HALT_COOLDOWN 0.5 SECONDS
 
 /// A component that prevents gun (although you can attach it to anything else that shoot projectiles) from shooting when mob from the same faction stands in the way.
-/// You can also pass number of ticks, to make gun have an additional delay if firing prevention comes into play, but it is not neccesary.
+/// You can also pass number of ticks, to make gun have an additional delay if firing prevention comes into play, but it is not necessary.
 /datum/component/iff_fire_prevention
 	var/iff_additional_fire_delay
 	COOLDOWN_DECLARE(iff_halt_cooldown)

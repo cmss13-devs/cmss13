@@ -40,7 +40,7 @@
 	var/lip_style = null //no lipstick by default- arguably misleading, as it could be used for general makeup
 
 	var/age = 30 //Player's age (pure fluff)
-	blood_type = "A+" //Player's bloodtype
+	blood_type = "A+" //Player's blood type
 
 	var/underwear = "Boxers (Camo Conforming)" //Which underwear the player wants
 	var/undershirt = "Undershirt (Tan) (Camo Conforming)" //Which undershirt the player wants.
@@ -87,7 +87,7 @@
 	var/fire_alert = 0
 	var/prev_gender = null // Debug for plural genders
 	var/revive_grace_period = 5 MINUTES //5 minutes
-	var/undefibbable = FALSE //whether the human is dead and past the defibbrillation period.
+	var/undefibbable = FALSE //whether the human is dead and past the defibrillation period.
 
 	var/holo_card_color = "" //which color type of holocard is printed on us
 

@@ -566,7 +566,7 @@
 		/obj/item/storage/pill_bottle,
 	)
 
-	//multiplier to time required to empty the box into chem master
+	//multiplier to time required to empty the box into chemmaster
 	var/time_to_empty = 3
 
 

@@ -109,7 +109,7 @@
 /obj/structure/machinery/medical_pod/MouseDrop_T(mob/target, mob/user)
 	. = ..()
 	var/mob/living/H = user
-	if(!istype(H) || target != user) //cant make others get in. grab-click for this
+	if(!istype(H) || target != user) //can't make others get in. grab-click for this
 		return
 
 	move_inside(target)

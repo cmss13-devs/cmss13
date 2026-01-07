@@ -49,7 +49,7 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	/// Roles that can spawn with this item.
 	var/list/allowed_roles
 
-	/// Origins that can sapwn with this item.
+	/// Origins that can spawn with this item.
 	var/list/allowed_origins
 
 /// Returns a list with the various variables used to display this gear in a UI
@@ -456,7 +456,7 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	path = /obj/item/prop/helmetgarb/flair_uscm
 
 /datum/gear/helmet_garb/helmet_gasmask
-	display_name = "M5 integrated gasmask"
+	display_name = "M5 integrated gas mask"
 	path = /obj/item/prop/helmetgarb/helmet_gasmask
 
 /datum/gear/helmet_garb/gunoil

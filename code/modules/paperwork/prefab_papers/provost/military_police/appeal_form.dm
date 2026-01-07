@@ -112,7 +112,7 @@
 	dat += "<p class=\"header-title\">Appeals Form</p>"
 	dat += "<p class=\"header-subtitle\">PR301a</p>"
 	dat += "<hr style=\"margin-top:-15px; margin-bottom:15px;\">"
-	dat += "</div> <!-- /Heasder Info -->"
+	dat += "</div> <!-- /Header Info -->"
 	dat += ""
 	dat += ""
 	dat += "<div class=\"message-body-text\">"

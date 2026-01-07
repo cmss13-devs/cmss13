@@ -527,7 +527,7 @@
 	ammo_band_color = AMMO_BAND_COLOR_HEAP
 
 /obj/item/ammo_magazine/rifle/nsg23/incendiary
-	name = "\improper NSG 23 incindiary magazine (10x24mm)"
+	name = "\improper NSG 23 incendiary magazine (10x24mm)"
 	desc = "A white phosphorus-tipped incendiary NSG 23 assault rifle magazine."
 	default_ammo = /datum/ammo/bullet/rifle/incendiary
 	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
@@ -647,7 +647,7 @@
 	ammo_band_color = AMMO_BAND_COLOR_HEAP
 
 /obj/item/ammo_magazine/rifle/l23/incendiary
-	name = "\improper L23 incindiary magazine (8.88x51mm)"
+	name = "\improper L23 incendiary magazine (8.88x51mm)"
 	desc = "A white phosphorus-tipped incendiary 8.88x51mm L23 assault rifle magazine."
 	default_ammo = /datum/ammo/bullet/rifle/l23/incendiary
 	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY

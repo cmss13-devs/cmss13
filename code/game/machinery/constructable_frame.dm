@@ -167,7 +167,7 @@
 						if(istype(P, /obj/item/stack/cable_coil))
 							var/obj/item/stack/cable_coil/CP = P
 							if(CP.get_amount() > 1)
-								var/camt = min(CP.amount, req_components[I]) // amount of cable to take, idealy amount required, but limited by amount provided
+								var/camt = min(CP.amount, req_components[I]) // amount of cable to take, ideally amount required, but limited by amount provided
 								var/obj/item/stack/cable_coil/CC = new /obj/item/stack/cable_coil(src)
 								CC.amount = camt
 								CC.update_icon()

@@ -2,7 +2,7 @@
 The Nightmare system is intended to be a replacement for legacy "Nightmare Creator". Its primary function is to change the game map, but is being expanded to encompass more dynamic round variations.
 
 ## Lifecycle
-Nightmare is resovled in three phases:
+Nightmare is resolved in three phases:
  * The Scenario is resolved at game init
  * The Main Configuration is resolved at game start
  * The resulting Tasks to effect the game are then executed

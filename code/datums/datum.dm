@@ -1,7 +1,7 @@
 /**
 * The absolute base class for everything
 *
-* A datum instantiated has no physical world prescence, use an atom if you want something
+* A datum instantiated has no physical world presence, use an atom if you want something
 * that actually lives in the world
 *
 * Be very mindful about adding variables to this class, they are inherited by every single
@@ -13,7 +13,7 @@
 	* Tick count time when this object was destroyed.
 	*
 	* If this is non zero then the object has been garbage collected and is awaiting either
-	* a hard del by the GC subsystme, or to be autocollected (if it has no references)
+	* a hard del by the GC subsystem, or to be autocollected (if it has no references)
 	*/
 	var/gc_destroyed
 
@@ -85,7 +85,7 @@
 *
 * The base case is responsible for doing the following
 * * Erasing timers pointing to this datum
-* * Erasing compenents on this datum
+* * Erasing components on this datum
 * * Notifying datums listening to signals from this datum that we are going away
 *
 * Returns [QDEL_HINT_QUEUE]

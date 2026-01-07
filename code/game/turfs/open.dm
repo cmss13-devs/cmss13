@@ -71,7 +71,7 @@
 			overlays += I
 
 	if(scorchedness)
-		if(!icon_state_before_scorching) //I hate you mappers, stop var editting turfs
+		if(!icon_state_before_scorching) //I hate you mappers, stop var editing turfs
 			icon_state_before_scorching = icon_state
 		var/new_icon_state = "[icon_state_before_scorching]_scorched[scorchedness]"
 		if(icon_state != new_icon_state) //no point in updating the icon_state if it would be updated to be the same thing that it was
@@ -115,7 +115,7 @@
 			return
 
 		if(1) // 1 only singes
-			if(!scorchedness) // we only singe that which hasnt burned
+			if(!scorchedness) // we only singe that which hasn't burned
 				scorchedness = 1
 
 		if(2 to 30)
@@ -130,7 +130,7 @@
 			for(var/i in GLOB.cardinals)
 				singe_target = get_step(src, i)
 				if(istype(singe_target, /turf/open))
-					if(singe_target.scorchable && !singe_target.scorchedness)  //much recurision checking
+					if(singe_target.scorchable && !singe_target.scorchedness)  //much recursion checking
 						singe_target.scorch(1)
 
 	update_icon()
@@ -167,7 +167,7 @@
 	can_bloody = FALSE
 	supports_surgery = FALSE
 
-//Slipery slope
+//Slippery slope
 /turf/open/slippery
 	name = "sloped roof"
 	icon = 'icons/turf/floors/floors.dmi'
@@ -1030,7 +1030,7 @@
 	icon_state = "cement_sunbleached9"
 
 
-// Jungle turfs (Whiksey Outpost)
+// Jungle turfs (Whiskey Outpost)
 
 
 /turf/open/jungle
@@ -1130,7 +1130,7 @@
 /turf/open/jungle/impenetrable/Initialize(mapload, ...)
 	. = ..()
 	var/obj/structure/flora/jungle/thickbush/bush = new(src)
-	bush.indestructable = TRUE
+	bush.indestructible = TRUE
 
 /turf/open/jungle/impenetrable/grass_clear
 	icon_state = "grass_clear"

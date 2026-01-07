@@ -13,7 +13,7 @@
 	var/broken_ringer = FALSE
 	/// Holds the time that the bell can next be rang.
 	COOLDOWN_DECLARE(ring_cooldown)
-	/// The length of the cooldown. Setting it to 0 will skip all cooldowns alltogether.
+	/// The length of the cooldown. Setting it to 0 will skip all cooldowns altogether.
 	var/ring_cooldown_length = 5 SECONDS // This is here to protect against tinnitus.
 	/// The sound the bell makes.
 	var/ring_sound = 'sound/misc/desk_bell.ogg'
@@ -105,5 +105,5 @@
 /obj/item/desk_bell/ares/ring_bell(mob/living/user)
 	if(broken_ringer)
 		return FALSE
-	ares_apollo_talk("Attendence requested at AI Core Reception.")
+	ares_apollo_talk("Attendance requested at AI Core Reception.")
 	return ..()

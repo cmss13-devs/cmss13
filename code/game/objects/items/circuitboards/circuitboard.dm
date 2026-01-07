@@ -16,7 +16,7 @@
 
 
 
-//Called when the circuitboard is used to contruct a new machine.
+//Called when the circuitboard is used to construct a new machine.
 /obj/item/circuitboard/proc/construct(obj/structure/machinery/M)
 	if (istype(M, build_path))
 		return 1

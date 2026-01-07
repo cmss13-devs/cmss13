@@ -499,7 +499,7 @@
 	var/mob/living/carbon/xenomorph/source_xeno = null
 
 /obj/effect/xenomorph/boiler_bombard/New(loc, source_xeno = null)
-	// Hopefully we don't get insantiated in these places anyway..
+	// Hopefully we don't get instantiated in these places anyway..
 	if (isxeno(source_xeno))
 		src.source_xeno = source_xeno
 

@@ -112,7 +112,7 @@
 		else
 			usr.invisibility = 70
 			usr.layer = BELOW_MOB_LAYER
-			to_chat(usr, SPAN_WARNING("Your ghost is now invisibile to other ghosts."))
+			to_chat(usr, SPAN_WARNING("Your ghost is now invisible to other ghosts."))
 		log_admin("Admin [key_name(src)] has toggled Ordukai Mode.")
 	else
 		to_chat(usr, SPAN_WARNING("You need to be a ghost in order to use this."))

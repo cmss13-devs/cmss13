@@ -16,7 +16,7 @@
 	}
 
 #ifdef SHADOW_DEBUG
-///Color coded atom debug, note will break when theres planetside lgihting
+///Color coded atom debug, note will break when theres planetside lighting
 #define DEBUG_HIGHLIGHT(x, y, colour) \
 	do { \
 		var/turf/T = locate(x, y, 3); \
@@ -48,7 +48,7 @@
 
 /**
  * Returns a list of matrices corresponding to the matrices that should be applied to triangles of
- * coordinates (0,0),(1,0),(0,1) to create a triangcalculate_shadows_matricesle that respresents the shadows
+ * coordinates (0,0),(1,0),(0,1) to create a triangcalculate_shadows_matricesle that represents the shadows
  * takes in the old turf to smoothly animate shadow movement
  */
 /atom/movable/lighting_mask/proc/calculate_lighting_shadows()
@@ -65,7 +65,7 @@
 	if(!attached_atom.loc)
 		return
 
-	//Incremement the global counter for shadow calculations
+	//Increment the global counter for shadow calculations
 	SSlighting.total_shadow_calculations ++
 
 	//Ceiling the range since we need it in integer form
@@ -103,8 +103,8 @@
 	LAZYCLEARLIST(affecting_turfs)
 	LAZYCLEARLIST(shadows)
 
-	//Optimise grouping by storing as
-	// Key : x (AS A STRING BECAUSE BYOND DOESNT ALLOW FOR INT KEY DICTIONARIES)
+	//Optimize grouping by storing as
+	// Key : x (AS A STRING BECAUSE BYOND DOESN'T ALLOW FOR INT KEY DICTIONARIES)
 	// Value: List(y values)
 	var/list/opaque_atoms_in_view = list()
 
@@ -114,7 +114,7 @@
 		link_turf_to_light(thing)
 		//The turf is now affected by our light, make it luminous
 		thing.luminosity += 1
-		//Dont consider shadows about our turf.
+		//Don't consider shadows about our turf.
 		if(!is_on_closed_turf)
 			if(thing == our_turf)
 				continue
@@ -124,7 +124,7 @@
 			COORD_LIST_ADD(opaque_atoms_in_view, thing.x, thing.y)
 			DEBUG_HIGHLIGHT(thing.x, thing.y, "#0000FF")
 
-	//We are too small to consider shadows on, luminsoty has been considered at least.
+	//We are too small to consider shadows on, luminosity has been considered at least.
 	if(radius < 2)
 		return
 
@@ -245,7 +245,7 @@
 	// (-4,  4)
 	// ( 4, -4)
 	//Would be much easier if it was (0, 0) instead of (-4, -4) but since we have 6 inputs and 6 unknowns
-	//we can solve the values of the matrix pretty easilly simultaneously.
+	//we can solve the values of the matrix pretty easily simultaneously.
 	//In fact since variables U,W,Y,A,B,C are separate to V,X,Z,D,E,F its easy since its 2 identical tri-variable simultaneous equations.
 	//By solving the equations simultaneously we get these results:
 	//a = (y-u)/8
@@ -262,7 +262,7 @@
 	var/f = (translatedPoint3y + translatedPoint2y) / 2
 	//Matrix time g
 	//a,b,d and e can be used to define the shape, C and F can be used for translation god matrices are so beautiful
-	//Completely random offset that I didnt derive, I just trialled and errored for about 4 hours until it randomly worked
+	//Completely random offset that I didn't derive, I just trialled and errored for about 4 hours until it randomly worked
 	//var/radius_based_offset = radius * 3 + RADIUS_BASED_OFFSET <-- for 1024x1024 lights DO NOT USE 1024x1024 SHADOWS UNLESS YOU ARE PLAYING WITH RTX200000 OR SOMETHING
 	var/radius_based_offset = RADIUS_BASED_OFFSET
 	var/matrix/M = matrix(a, b, (c * 32) - ((radius_based_offset) * 32), d, e, (f * 32) - ((radius_based_offset) * 32))
@@ -281,7 +281,7 @@
  */
 /atom/movable/lighting_mask/proc/calculate_triangle_vertices(list/cornergroup)
 	var/shadow_radius = max(radius + 1, 3)
-	//Get the origin poin's
+	//Get the origin point's
 	var/ourx = calculated_position_x
 	var/oury = calculated_position_y
 	//The output

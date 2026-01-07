@@ -28,7 +28,7 @@
 		if(H.opened_gift == 2)
 			to_chat(H, SPAN_NOTICE(" Santa knows of your treachery, yet you open another present."))
 		if(H.opened_gift == 3)
-			to_chat(H, SPAN_NOTICE(" Even the Grinch glares with disguist..."))
+			to_chat(H, SPAN_NOTICE(" Even the Grinch glares with disgust..."))
 		if(H.opened_gift == 4)
 			to_chat(H, SPAN_NOTICE(" You're ruining the Christmas magic, I hope you're happy."))
 		if(H.opened_gift == 5)

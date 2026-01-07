@@ -101,7 +101,7 @@
 		var/obj/item/coin/inserted_coin = inserted
 		if(!user.drop_inv_item_on_ground(inserted_coin))
 			return
-		to_chat(user, SPAN_WARNING("Coin insterted."))
+		to_chat(user, SPAN_WARNING("Coin inserted."))
 		balance += inserted_coin.black_market_value
 		qdel(inserted_coin)
 		return
@@ -110,7 +110,7 @@
 		var/obj/item/spacecash/inserted_cash = inserted
 		if(!user.drop_inv_item_on_ground(inserted_cash))
 			return
-		to_chat(user, SPAN_WARNING("Cash insterted."))
+		to_chat(user, SPAN_WARNING("Cash inserted."))
 		balance += inserted_cash.worth
 		qdel(inserted_cash)
 		return

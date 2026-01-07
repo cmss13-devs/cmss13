@@ -33,7 +33,7 @@
 	render_relay_plane = null
 	generate_render_target = FALSE
 
-///renders general in charachter game objects
+///renders general in character game objects
 /atom/movable/screen/plane_master/rendering_plate/game_world
 	name = "game rendering plate"
 	plane = RENDER_PLANE_GAME

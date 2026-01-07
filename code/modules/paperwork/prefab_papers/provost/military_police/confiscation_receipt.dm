@@ -92,7 +92,7 @@
 	dat += "<p class=\"header-title\">Military Police Confiscation Receipt</p>"
 	dat += "<p class=\"header-subtitle\">PR356</p>"
 	dat += "<hr style=\"margin-top:-15px; margin-bottom:15px;\">"
-	dat += "</div> <!-- /Heasder Info -->"
+	dat += "</div> <!-- /Header Info -->"
 	dat += ""
 	dat += ""
 	dat += "<div class=\"message-body-text\">"

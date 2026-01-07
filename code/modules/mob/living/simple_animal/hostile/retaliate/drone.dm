@@ -13,7 +13,7 @@
 	response_help = "pokes the"
 	response_disarm = "gently pushes aside the"
 	response_harm = "hits the"
-	speak = list("ALERT.","Hostile-ile-ile entities dee-twhoooo-wected.","Threat parameterszzzz- szzet.","Bring sub-sub-sub-systems uuuup to combat alert alpha-a-a.")
+	speak = list("ALERT.","Hostile-ile-ile entities dee-twhoooo-wected.","Threat parameterszzzz-szzet.","Bring sub-sub-sub-systems uuuup to combat alert alpha-a-a.")
 	emote_see = list("beeps menacingly","whirrs threateningly","scans its immediate vicinity")
 	a_intent = INTENT_HARM
 	stop_automated_movement_when_pulled = 0
@@ -132,7 +132,7 @@
 
 	if(exploding && prob(20))
 		if(prob(50))
-			src.visible_message(SPAN_DANGER("[icon2html(src, viewers(src))] [src] begins to spark and shake violenty!"))
+			src.visible_message(SPAN_DANGER("[icon2html(src, viewers(src))] [src] begins to spark and shake violently!"))
 		else
 			src.visible_message(SPAN_DANGER("[icon2html(src, viewers(src))] [src] sparks and shakes like it's about to explode!"))
 		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread

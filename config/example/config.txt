@@ -75,9 +75,9 @@ SHOW_MENTORS
 #MENTORS
 
 
-## probablities for game modes chosen in "secret" and "random" modes
+## probabilities for game modes chosen in "secret" and "random" modes
 ##
-## default probablity is 1, increase to make that mode more likely to be picked
+## default probability is 1, increase to make that mode more likely to be picked
 ## set to 0 to disable that mode
 PROBABILITY EXTENDED 1
 
@@ -90,7 +90,7 @@ ALLOW_ADMIN_OOCCOLOR
 ## allow players to initiate a restart vote
 ALLOW_VOTE_RESTART
 
-## allow players to initate a mode-change start
+## allow players to initiate a mode-change start
 #ALLOW_VOTE_MODE
 
 ## min delay (deciseconds) between voting sessions (default 10 minutes)
@@ -99,7 +99,7 @@ VOTE_DELAY 6000
 ## time period (deciseconds) which voting session will last (default 1 minute)
 VOTE_PERIOD 600
 
-## Time left (seconds) before round start when automatic gamemote vote is called (default 100).
+## Time left (seconds) before round start when automatic gamemode vote is called (default 100).
 VOTE_AUTOGAMEMODE_TIMELEFT 99999999
 
 ## prevents dead players from voting or starting votes
@@ -145,7 +145,7 @@ BANAPPEALS https://cm-ss13.com/viewforum.php?f=76
 ## DISCORDURL
 
 ## In-game features
-## Remove the # to show a popup 'reply to' window to every non-admin that recieves an adminPM.
+## Remove the # to show a popup 'reply to' window to every non-admin that receives an adminPM.
 ## The intention is to make adminPMs more visible. (although I fnd popups annoying so this defaults to off)
 #POPUP_ADMIN_PM
 

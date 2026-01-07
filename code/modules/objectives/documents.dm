@@ -172,7 +172,7 @@
 		to_chat(user, SPAN_WARNING("You get distracted and lose your train of thought, you'll have to start over reading this."))
 		return
 
-	// Prerequisit objective not complete.
+	// Prerequisite objective not complete.
 	if(objective.state & OBJECTIVE_INACTIVE)
 		to_chat(user, SPAN_NOTICE("You don't notice anything useful. You probably need to find its instructions on a paper scrap."))
 		return

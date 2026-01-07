@@ -299,7 +299,7 @@
 
 //Determines how strong could be shock, deals damage to mob, uses power.
 //M is a mob who touched wire/whatever
-//power_source is a source of electricity, can be powercell, area, apc, cable, powernet or null
+//power_source is a source of electricity, can be power cell, area, apc, cable, powernet or null
 //source is an object caused electrocuting (airlock, grille, etc)
 //No animations will be performed by this proc.
 /proc/electrocute_mob(mob/living/carbon/M as mob, power_source, obj/source, siemens_coeff = 1.0)
@@ -312,7 +312,7 @@
 		else if(H.gloves)
 			var/obj/item/clothing/gloves/G = H.gloves
 			if(G.siemens_coefficient == 0)
-				return 0 //to avoid spamming with insulated glvoes on
+				return 0 //to avoid spamming with insulated gloves on
 
 	var/area/source_area
 	if(istype(power_source,/area))

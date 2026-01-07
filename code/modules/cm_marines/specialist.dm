@@ -228,7 +228,7 @@
 /datum/specialist_set/heavy
 	name = "Heavy Armor Set"
 	role_name = "Heavy"
-	skill_to_give = SKILL_SPEC_PYRO //we do not realy care atm
+	skill_to_give = SKILL_SPEC_PYRO //we do not really care atm
 	trait_to_give = "heavy"
 	rank_icon = "spec_heavy"
 	kit_typepath = /obj/item/storage/box/spec/B18

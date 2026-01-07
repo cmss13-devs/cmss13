@@ -10,7 +10,7 @@
 	// Config
 	var/speed_duration = 3 SECONDS
 	var/armor_duration = 6 SECONDS
-	var/speed_buff_amount = 0.8 // Go from shit slow to kindafast
+	var/speed_buff_amount = 0.8 // Go from shit slow to kinda fast
 	var/armor_buff_amount = 10 // hopefully-minor buff so they can close the distance
 
 	var/speed_buff = FALSE
@@ -65,7 +65,7 @@
 
 /datum/action/xeno_action/onclick/toggle_gut_targeting
 	name = "Toggle Gutting Type"
-	action_icon_state = "rav_shard_shed" // starting targetting is SINGLETARGETGUT
+	action_icon_state = "rav_shard_shed" // starting targeting is SINGLETARGETGUT
 	macro_path = /datum/action/xeno_action/verb/verb_toggle_gut_targeting
 	action_type = XENO_ACTION_ACTIVATE
 	ability_primacy = XENO_PRIMARY_ACTION_5

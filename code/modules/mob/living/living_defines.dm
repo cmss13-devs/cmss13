@@ -120,7 +120,7 @@
 	/// This is what the value is changed to when the mob dies. Actual BMV definition in atom/movable.
 	var/dead_black_market_value = 0
 
-	/// Variable to track the body position of a mob, regardgless of the actual angle of rotation (usually matching it, but not necessarily).
+	/// Variable to track the body position of a mob, regardless of the actual angle of rotation (usually matching it, but not necessarily).
 	var/body_position = STANDING_UP
 	/// For knowing when was the body position changed
 	var/body_position_changed = 0

@@ -286,10 +286,10 @@
 		overlays |= holo_card_icon
 
 /obj/structure/closet/bodybag/cryobag/attack_hand(mob/living/user)
-    if(!opened && stasis_mob && (open_cooldown > world.time))
+	if(!opened && stasis_mob && (open_cooldown > world.time))
 		user.visible_message(SPAN_WARNING("[user] opens [src]."), SPAN_NOTICE("You open [src]."))
-        var/area/bag_area = get_area(src)
-        log_attack("[key_name(user)] opened stasis bag [src] containing [key_name(stasis_mob)] at [bag_area.name].")
+		var/area/bag_area = get_area(src)
+		log_attack("[key_name(user)] opened stasis bag [src] containing [key_name(stasis_mob)] at [bag_area.name].")
     . = ..()
 
 /obj/structure/closet/bodybag/cryobag/open(mob/user, force)

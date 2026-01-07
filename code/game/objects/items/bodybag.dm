@@ -290,7 +290,7 @@
 		user.visible_message(SPAN_WARNING("[user] opens [src]."), SPAN_NOTICE("You open [src]."))
 		var/area/bag_area = get_area(src)
 		log_attack("[key_name(user)] opened stasis bag [src] containing [key_name(stasis_mob)] at [bag_area.name].")
-    . = ..()
+	. = ..()
 
 /obj/structure/closet/bodybag/cryobag/open(mob/user, force)
 	. = ..()

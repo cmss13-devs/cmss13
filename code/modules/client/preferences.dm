@@ -709,6 +709,8 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			dat += "<b>Spawn as Royal Marine:</b> <a href='byond://?_src_=prefs;preference=toggles_ert_pred;flag=[PLAY_TWE]'><b>[toggles_ert_pred & PLAY_TWE ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Spawn as UPP:</b> <a href='byond://?_src_=prefs;preference=toggles_ert_pred;flag=[PLAY_UPP]'><b>[toggles_ert_pred & PLAY_UPP ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Spawn as CLF:</b> <a href='byond://?_src_=prefs;preference=toggles_ert_pred;flag=[PLAY_CLF]'><b>[toggles_ert_pred & PLAY_CLF ? "Yes" : "No"]</b></a><br>"
+			dat += "<b>Spawn as PMC:</b> <a href='byond://?_src_=prefs;preference=toggles_ert_pred;flag=[PLAY_PMC]'><b>[toggles_ert_pred & PLAY_PMC ? "Yes" : "No"]</b></a><br>"
+			dat += "<b>Spawn as Miscellaneous:</b> <a href='byond://?_src_=prefs;preference=toggles_ert_pred;flag=[PLAY_HUNT_MISC]'><b>[toggles_ert_pred & PLAY_HUNT_MISC ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Spawn as Xeno T2:</b> <a href='byond://?_src_=prefs;preference=toggles_ert_pred;flag=[PLAY_XENO_T2]'><b>[toggles_ert_pred & PLAY_XENO_T2 ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Spawn as Xeno T3:</b> <a href='byond://?_src_=prefs;preference=toggles_ert_pred;flag=[PLAY_XENO_T3]'><b>[toggles_ert_pred & PLAY_XENO_T3 ? "Yes" : "No"]</b></a><br>"
 			dat += "</div>"

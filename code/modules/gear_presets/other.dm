@@ -90,7 +90,9 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/shotgun, WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive/C4, WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
-	spawn_weapon(/obj/item/weapon/gun/shotgun/type23, pick(GLOB.shotgun_handfuls_8g), new_human, 0, 14) //shotgunner mini-spec
+	spawn_weapon(/obj/item/weapon/gun/shotgun/type23, pick(/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
+	/obj/item/ammo_magazine/handful/shotgun/heavy/flechette,
+	/obj/item/ammo_magazine/handful/shotgun/heavy/dragonsbreath), new_human, 0, 14) //shotgunner mini-spec
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/stick, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/stick, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/stick, WEAR_IN_BACK)

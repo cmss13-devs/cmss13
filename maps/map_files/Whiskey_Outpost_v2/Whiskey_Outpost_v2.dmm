@@ -166,7 +166,7 @@
 /turf/open/gm/coast/beachcorner/north_east,
 /area/whiskey_outpost/outside/river)
 "aA" = (
-/mob/living/simple_animal/corgi{
+/mob/living/simple_animal/big/corgi{
 	name = "\improper Mr. Wiggles Sir"
 	},
 /turf/open/floor/wood,

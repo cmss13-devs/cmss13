@@ -227,6 +227,6 @@
 	// I lied
 	else if(istype(W, /obj/item/stock_parts/manipulator))
 		to_chat(user, SPAN_NOTICE("You jury rig the head with some manipulators, creating a mostly functional spider-bot!"))
-		new /mob/living/simple_animal/spiderbot(get_turf(loc))
+		new /mob/living/simple_animal/small/spiderbot(get_turf(loc))
 		qdel(W)
 		qdel(src)

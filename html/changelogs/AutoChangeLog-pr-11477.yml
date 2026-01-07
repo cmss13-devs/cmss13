@@ -1,0 +1,4 @@
+author: "Puckaboo2"
+delete-after: True
+changes:
+  - bugfix: "Pharmaceutical Physician is now medical green on the crew monitor."

@@ -1,0 +1,5 @@
+author: "Puckaboo2"
+delete-after: True
+changes:
+  - bugfix: "Fixes Data Detector's action button icon from displaying FIX ME when toggled."
+  - bugfix: "Fixes Data Detector's action button icon not switching when clicking the data detector in-hand."

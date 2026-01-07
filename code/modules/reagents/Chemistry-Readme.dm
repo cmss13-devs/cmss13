@@ -140,7 +140,7 @@ About Reagents:
 			slippery floors for lube or something in here.
 
 		on_mob_life(mob/M)
-			This proc is called everytime the mobs life proc executes.
+			This proc is called every time the mobs life proc executes.
 			This is the place where you put damage for toxins ,
 			drowsiness for sleep toxins etc etc.
 			You'll want to call the parents proc by using ..() .

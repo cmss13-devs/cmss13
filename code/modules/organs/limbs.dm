@@ -259,7 +259,7 @@
  * directly would allow the attacker to effectively bypass all of that armor. A lurker
  * with 35 slash damage repeatedly slashing a hand protected by marine combat gloves
  * (20 armor) would do 20 damage to the hand, then would start doing the same 20 to
- * the arm, and then the chest. But if the lurker slashes the arm direclty it would only
+ * the arm, and then the chest. But if the lurker slashes the arm directly it would only
  * do 16 damage, assuming the marine is wearing medium armor which has armor value of 30.
  *
  * Thus we have to apply armor damage reduction on each limb to which the damage is
@@ -461,7 +461,7 @@ This function completely restores a damaged organ to perfect condition.
 	damage_state = "=="
 	if(status & LIMB_SYNTHSKIN)
 		status = LIMB_SYNTHSKIN
-	else if(status & LIMB_ROBOT) //Robotic organs stay robotic.  Fix because right click rejuvinate makes IPC's organs organic.
+	else if(status & LIMB_ROBOT) //Robotic organs stay robotic.  Fix because right click rejuvenate makes IPC's organs organic.
 		status = LIMB_ROBOT
 	else
 		status = LIMB_ORGANIC
@@ -572,7 +572,7 @@ This function completely restores a damaged organ to perfect condition.
 
 ///Adds bleeding to the limb. Damage_amount lets you apply an amount worth of bleeding, otherwise it uses the given wound's damage.
 /obj/limb/proc/add_bleeding(datum/wound/W, internal = FALSE, damage_amount)
-	if(!(SSticker.current_state >= GAME_STATE_PLAYING)) //If the game hasnt started, don't add bleed. Hacky fix to avoid having 100 bleed effect from roundstart.
+	if(!(SSticker.current_state >= GAME_STATE_PLAYING)) //If the game hasn't started, don't add bleed. Hacky fix to avoid having 100 bleed effect from roundstart.
 		return
 
 	if(status & (LIMB_ROBOT|LIMB_SYNTHSKIN))

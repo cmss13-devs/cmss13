@@ -1,9 +1,0 @@
-author: "Puckaboo2"
-delete-after: True
-changes:
-  - bugfix: "All steps in eye surgeries now have sounds."
-  - bugfix: "If the patient is blind or nearsighted and has 0 eye damage, you can still initiate eye surgery. A patient now needs to either have eye damage or be blind/nearsighted to need surgery."
-  - qol: "Makes eye surgery steps more descriptive."
-  - qol: "If you cured blindness or nearsightedness, you get extra flavor text and a pat on the back (from Puck)"
-  - balance: "Changes eye surgery steps. It's now Scalpel, Hemostat, Retractor, FixoVein, Cautery. Pretend you're doing internal bleeding on the eyes and you will be fine."
-  - balance: "Eye surgery now requires Oxycodone instead of getting away with inaprovaline. Eyes have some of the greatest concentrations of nociceptive nerves in the human body and must be fully numbed for LASIK or to be be completely anesthetized in real life for an operation to commence."

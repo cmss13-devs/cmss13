@@ -80,7 +80,6 @@
 
 	to_chat(target, SPAN_NOTICE("The rattling and piercing feelings in your brain cease. Your mind and ears feel more clear."))
 
-	new /obj/item/shard/shrapnel/bone_chips/human(target) //adds bone chips
 	var/obj/item/shard/shrapnel/bone_chips/human/C = locate() in target
 	if(C)
 		C.forceMove(user.loc)
@@ -141,13 +140,11 @@
 	log_interact(user, target, "[key_name(user)] finished mending a hematoma in [key_name(target)]'s brain with [tool], beginning [surgery].")
 
 	var/datum/internal_organ/brain/B = target.internal_organs_by_name["brain"]
-	if(B)
+	if(B && B.damage >= BONECHIPS_MAX_DAMAGE) // severe brain damage won't be fixed by curing the hematoma
 		B.damage = BONECHIPS_MAX_DAMAGE
-		to_chat(target, SPAN_NOTICE("The agonizing pressure in your skull ceases, but something still feels pokey up there!"))
 
-	target.disabilities &= ~NERVOUS
-	target.sdisabilities &= ~DISABILITY_DEAF
-	target.sdisabilities &= ~DISABILITY_MUTE
+	to_chat(target, SPAN_NOTICE("The agonizing pressure in your skull ceases, but something still feels pokey up there!"))
+	new /obj/item/shard/shrapnel/bone_chips/human(target) //secretly adds bone chips
 	target.pain.recalculate_pain()
 
 /datum/surgery_step/treat_hematoma/failure(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)

@@ -38,13 +38,13 @@
 	return ..()
 
 /datum/reagents/proc/remove_any(amount=1)
-	var/total_transfered = 0
+	var/total_transferred = 0
 	var/current_list_element = 1
 
 	current_list_element = rand(1,length(reagent_list))
 
-	while(total_transfered != amount)
-		if(total_transfered >= amount)
+	while(total_transferred != amount)
+		if(total_transferred >= amount)
 			break
 		if(total_volume <= 0 || !length(reagent_list))
 			break
@@ -56,21 +56,21 @@
 		remove_reagent(current_reagent.id, 1)
 
 		current_list_element++
-		total_transfered++
+		total_transferred++
 		update_total()
 
 	handle_reactions()
-	return total_transfered
+	return total_transferred
 
 ///This proc is one that removes all reagents from the targeted datum other than the designated ignored reagent
 /datum/reagents/proc/remove_any_but(reagent_to_ignore, amount=1)
-	var/total_transfered = 0
+	var/total_transferred = 0
 	var/current_list_element = 1
 
 	current_list_element = rand(1, length(reagent_list))
 
-	while(total_transfered != amount)
-		if(total_transfered >= amount)
+	while(total_transferred != amount)
+		if(total_transferred >= amount)
 			break
 		if(total_volume <= 0 || !length(reagent_list))
 			break
@@ -90,11 +90,11 @@
 		remove_reagent(current_reagent.id, 1)
 
 		current_list_element++
-		total_transfered++
+		total_transferred++
 		update_total()
 
 	handle_reactions()
-	return total_transfered
+	return total_transferred
 
 
 /datum/reagents/proc/get_master_reagent()

@@ -244,12 +244,6 @@
 
 	load_freelancer_soldier(new_human)
 
-	var/percentage = rand(1, 100)
-	switch(percentage)
-		if(1 to 66)
-			load_freelancer_rifleman(new_human)
-		else
-			load_freelancer_machinegunner(new_human)
 
 /datum/equipment_preset/other/freelancer/leader/hunted
 	name = "Freelancer Leader (Hunted)"

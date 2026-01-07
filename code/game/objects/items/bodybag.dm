@@ -168,9 +168,6 @@
 			to_chat(user, SPAN_WARNING("\The [src] has been opened too recently!"))
 			return
 		open_cooldown = world.time + 10 //1s cooldown for opening and closing, stop that spam! - stan_albatross
-		user.visible_message(SPAN_WARNING("[user] opens [src]."), SPAN_NOTICE("You open [src]."))
-		var/area/bag_area = get_area(user)
-		log_attack("[key_name(user)] opened [src] at [bag_area.name].")
 	. = ..()
 
 
@@ -287,6 +284,13 @@
 			return
 
 		overlays |= holo_card_icon
+
+/obj/structure/closet/bodybag/cryobag/attack_hand(mob/living/user)
+    if(!opened && stasis_mob && (open_cooldown > world.time))
+		user.visible_message(SPAN_WARNING("[user] opens [src]."), SPAN_NOTICE("You open [src]."))
+        var/area/bag_area = get_area(src)
+        log_attack("[key_name(user)] opened stasis bag [src] containing [key_name(stasis_mob)] at [bag_area.name].")
+    . = ..()
 
 /obj/structure/closet/bodybag/cryobag/open(mob/user, force)
 	. = ..()

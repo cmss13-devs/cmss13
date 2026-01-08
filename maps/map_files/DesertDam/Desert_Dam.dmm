@@ -261,6 +261,9 @@
 /turf/open/hybrisa/street/underground_unweedable,
 /area/desert_dam/interior/lab_northeast/east_lab_maintenence)
 "aaE" = (
+/obj/effect/decal/strata_decals/grime/grime3{
+	dir = 8
+	},
 /turf/open/floor/prison/darkbrown2/west,
 /area/desert_dam/interior/lab_northeast/east_lab_maintenence)
 "aaF" = (
@@ -1320,6 +1323,13 @@
 "aea" = (
 /turf/open/floor/prison/yellow/west,
 /area/desert_dam/building/hydroponics/stairwell)
+"aeb" = (
+/obj/effect/decal/strata_decals/grime/grime4{
+	dir = 1;
+	pixel_y = 12
+	},
+/turf/open/floor/prison/darkbrown2/north,
+/area/desert_dam/interior/lab_northeast/east_lab_maintenence)
 "aec" = (
 /turf/open/asphalt/cement/cement4,
 /area/desert_dam/exterior/valley/valley_wilderness)
@@ -2615,6 +2625,12 @@
 /obj/structure/machinery/faxmachine,
 /turf/open/floor/wood,
 /area/desert_dam/building/administration/meetingrooom)
+"aic" = (
+/obj/effect/decal/strata_decals/grime/grime2{
+	dir = 1
+	},
+/turf/open/floor/prison/darkbrown2/north,
+/area/desert_dam/interior/lab_northeast/east_lab_maintenence)
 "aid" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "hvhupplz1"
@@ -4749,6 +4765,12 @@
 	},
 /turf/open/floor/almayer_hull,
 /area/desert_dam/building/security/stairwell/upper)
+"aoE" = (
+/obj/effect/decal/strata_decals/grime/grime1{
+	icon_state = "grime2"
+	},
+/turf/open/floor/prison/darkbrown2,
+/area/desert_dam/interior/lab_northeast/east_lab_maintenence)
 "aoF" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
@@ -8276,6 +8298,10 @@
 	layer = 3
 	},
 /obj/effect/landmark/monkey_spawn,
+/obj/item/hybrisa/misc/trash_bag_full_prop{
+	pixel_x = -4;
+	pixel_y = 6
+	},
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/disposals)
 "aAk" = (
@@ -14557,6 +14583,17 @@
 /obj/structure/prop/hybrisa/vehicles/Ambulance,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
+"aTU" = (
+/obj/item/hybrisa/misc/trash_bag_full_prop{
+	pixel_x = -6;
+	pixel_y = 14
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_7";
+	pixel_y = 12
+	},
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/interior/dam_interior/central_tunnel)
 "aTV" = (
 /obj/structure/platform/metal/kutjevo_smooth_immune,
 /obj/structure/barricade/handrail,
@@ -14881,6 +14918,15 @@
 /obj/structure/platform/metal/kutjevo_smooth_immune/east,
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/dam_interior/lower_stairwell)
+"aVd" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/disposals)
 "aVe" = (
 /obj/structure/platform_decoration/metal/kutjevo_smooth_immune,
 /turf/open/floor/prison/darkyellow2/north,
@@ -14889,6 +14935,13 @@
 /obj/structure/platform_decoration/metal/kutjevo_smooth_immune/north,
 /turf/open/floor/prison/darkyellow2/north,
 /area/desert_dam/interior/dam_interior/lower_stairwell)
+"aVg" = (
+/obj/structure/closet/crate/trashcart{
+	layer = 4;
+	pixel_y = 8
+	},
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/interior/dam_interior/central_tunnel)
 "aVh" = (
 /obj/structure/platform_decoration/metal/kutjevo_smooth_immune,
 /turf/open/floor/prison/southwest,
@@ -14897,6 +14950,28 @@
 /obj/structure/platform_decoration/metal/kutjevo_smooth_immune/west,
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/dam_interior/hanger)
+"aVj" = (
+/obj/effect/decal/strata_decals/grime/grime3{
+	pixel_y = 12
+	},
+/obj/effect/decal/hybrisa/trash{
+	pixel_y = 12
+	},
+/obj/effect/landmark/good_item,
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/disposals)
+"aVk" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/crate/trashcart{
+	layer = 4;
+	pixel_y = 8
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_16";
+	pixel_y = 35
+	},
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/interior/dam_interior/central_tunnel)
 "aVl" = (
 /turf/open/floor/prison/yellowcorner/west,
 /area/desert_dam/building/hydroponics/hydroponics)
@@ -15446,6 +15521,13 @@
 	},
 /turf/open/floor/prison,
 /area/desert_dam/building/security/deathrow)
+"aXi" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt{
+	pixel_x = 7
+	},
+/turf/open/asphalt/cement/cement3,
+/area/desert_dam/interior/dam_interior/central_tunnel)
 "aXj" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#da822a";
@@ -15471,6 +15553,17 @@
 	},
 /turf/open/desert/rock,
 /area/desert_dam/interior/caves/west_caves)
+"aXn" = (
+/obj/item/weapon/broken_bottle{
+	pixel_x = 11;
+	pixel_y = -2
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_10";
+	pixel_y = 12
+	},
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/disposals)
 "aXo" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#da822a";
@@ -15524,6 +15617,14 @@
 	},
 /turf/open/desert/rock/deep/rock3,
 /area/desert_dam/interior/caves/east_caves)
+"aXv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/disposals)
 "aXw" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#da822a";
@@ -18222,6 +18323,15 @@
 	},
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_5/north,
 /area/desert_dam/interior/caves/pred_ship)
+"bfC" = (
+/obj/item/hybrisa/misc/trash_bag_full_prop{
+	layer = 8;
+	pixel_x = -3;
+	pixel_y = 14
+	},
+/obj/effect/decal/strata_decals/grime/grime3,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/interior/dam_interior/central_tunnel)
 "bfD" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
@@ -18601,6 +18711,18 @@
 	},
 /turf/open/shuttle/dropship/predship/mainfloor/direction_1/north,
 /area/desert_dam/interior/caves/pred_ship)
+"bgD" = (
+/obj/item/hybrisa/misc/trash_bag_full_prop{
+	pixel_x = -4;
+	pixel_y = 13
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_9";
+	pixel_y = 12
+	},
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/disposals)
 "bgE" = (
 /obj/item/tool/wet_sign{
 	layer = 4;
@@ -20761,9 +20883,33 @@
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/whitegreen/west,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"bnc" = (
+/obj/item/reagent_container/glass/bucket{
+	pixel_x = 8;
+	pixel_y = -6
+	},
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/interior/dam_interior/workshop)
+"bnd" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/janitorialcart,
+/obj/item/tool/mop{
+	pixel_x = -10
+	},
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/interior/dam_interior/workshop)
 "bne" = (
 /turf/open/desert/dirt/desert_transition_edge1/southeast,
 /area/desert_dam/exterior/valley/south_valley_dam)
+"bnf" = (
+/obj/item/tool/warning_cone{
+	pixel_x = -12;
+	pixel_y = 10
+	},
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/interior/dam_interior/central_tunnel)
 "bnh" = (
 /turf/open/floor/prison,
 /area/desert_dam/building/security/armory)
@@ -24237,10 +24383,15 @@
 /area/desert_dam/building/security/prison)
 "cJw" = (
 /obj/structure/surface/table,
-/obj/item/device/lightreplacer,
-/obj/item/clothing/mask/rebreather,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/reagent_container/spray/cleaner{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/obj/item/device/flashlight{
+	pixel_y = -8
+	},
 /turf/open/floor/prison/darkbrown3/east,
 /area/desert_dam/interior/dam_interior/disposals)
 "cJA" = (
@@ -30743,10 +30894,20 @@
 /area/desert_dam/interior/caves/east_caves)
 "fgE" = (
 /obj/structure/surface/table,
-/obj/item/device/radio,
-/obj/item/device/radio,
-/obj/item/storage/toolbox/emergency,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/tool/lighter/random{
+	pixel_x = 7;
+	pixel_y = 4
+	},
+/obj/item/reagent_container/food/drinks/coffee{
+	pixel_x = -4;
+	pixel_y = -6
+	},
+/obj/item/ashtray/bronze{
+	icon_state = "ashtray_full_bl";
+	pixel_x = -6;
+	pixel_y = 8
+	},
 /turf/open/floor/prison/darkbrown3/east,
 /area/desert_dam/interior/dam_interior/disposals)
 "fgH" = (
@@ -32267,6 +32428,15 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/rack,
+/obj/item/device/lightreplacer{
+	pixel_x = -5;
+	pixel_y = -1
+	},
+/obj/item/clothing/mask/rebreather{
+	pixel_x = 5;
+	pixel_y = 6
+	},
 /turf/open/floor/prison/darkbrown3/northwest,
 /area/desert_dam/interior/dam_interior/disposals)
 "fMZ" = (
@@ -36099,8 +36269,16 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/cafeteria/loading)
 "hif" = (
-/obj/structure/machinery/power/apc/no_power/north,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/rack,
+/obj/item/device/radio{
+	pixel_x = 6;
+	pixel_y = 3
+	},
+/obj/effect/spawner/random/technology_scanner{
+	pixel_x = -6;
+	pixel_y = -3
+	},
 /turf/open/floor/prison/darkbrown3/north,
 /area/desert_dam/interior/dam_interior/disposals)
 "hiz" = (
@@ -37082,6 +37260,10 @@
 	health = 80
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 13
+	},
 /turf/open/floor/prison/darkbrown3/west,
 /area/desert_dam/interior/dam_interior/disposals)
 "hCJ" = (
@@ -39081,6 +39263,12 @@
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "ipx" = (
+/obj/effect/decal/strata_decals/grime/grime3{
+	dir = 4;
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/obj/item/shard,
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/disposals)
 "ipy" = (
@@ -45005,8 +45193,13 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_labs)
 "kHD" = (
-/obj/item/trash/semki,
+/obj/item/trash/semki{
+	pixel_x = -5;
+	pixel_y = -10
+	},
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/decal/strata_decals/grime/grime3,
+/obj/item/trash/c_tube,
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/disposals)
 "kIb" = (
@@ -51611,7 +51804,11 @@
 /obj/structure/machinery/conveyor{
 	id = "anomalybelt"
 	},
-/obj/item/trash/syndi_cakes,
+/obj/item/trash/syndi_cakes{
+	pixel_x = 4;
+	pixel_y = -7
+	},
+/obj/item/shard,
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/disposals)
 "now" = (
@@ -54535,7 +54732,10 @@
 /obj/structure/machinery/conveyor{
 	id = "anomalybelt"
 	},
-/obj/item/trash/popcorn,
+/obj/item/trash/popcorn{
+	pixel_x = -3;
+	pixel_y = 8
+	},
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/disposals)
 "osx" = (
@@ -61074,7 +61274,13 @@
 /turf/open/asphalt,
 /area/desert_dam/building/water_treatment_one/garage)
 "qPS" = (
-/obj/item/trash/raisins,
+/obj/item/trash/raisins{
+	pixel_x = 5
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_11"
+	},
+/obj/item/shard,
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/disposals)
 "qPT" = (
@@ -62871,6 +63077,7 @@
 "rAP" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/power/apc/no_power/east,
 /turf/open/floor/prison/darkbrowncorners3,
 /area/desert_dam/interior/dam_interior/disposals)
 "rAR" = (
@@ -66140,7 +66347,6 @@
 /area/desert_dam/building/water_treatment_one/hallway)
 "sNu" = (
 /obj/structure/surface/table,
-/obj/effect/spawner/random/technology_scanner,
 /obj/effect/spawner/random/tool,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/darkbrown2/southeast,
@@ -66492,9 +66698,9 @@
 /turf/open/floor/plating,
 /area/desert_dam/exterior/telecomm/lz2_containers)
 "sVg" = (
-/obj/structure/surface/rack,
-/obj/item/device/flashlight,
-/obj/item/device/flashlight/flare,
+/obj/structure/closet,
+/obj/item/clothing/suit/storage/hazardvest/sanitation,
+/obj/item/clothing/suit/storage/hazardvest/sanitation,
 /turf/open/floor/prison/darkbrown3/north,
 /area/desert_dam/interior/dam_interior/disposals)
 "sVm" = (
@@ -73058,7 +73264,10 @@
 /obj/structure/machinery/conveyor{
 	id = "anomalybelt"
 	},
-/obj/item/trash/candy,
+/obj/item/trash/candy{
+	pixel_x = 3;
+	pixel_y = 5
+	},
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/disposals)
 "vxr" = (
@@ -77561,9 +77770,15 @@
 /area/desert_dam/interior/dam_interior/smes_backup)
 "xpm" = (
 /obj/structure/surface/table,
-/obj/item/storage/box/lightstick/red,
-/obj/effect/landmark/good_item,
+/obj/item/storage/box/lightstick/red{
+	pixel_x = -5;
+	pixel_y = -2
+	},
 /obj/effect/decal/cleanable/dirt,
+/obj/item/storage/toolbox/emergency{
+	pixel_x = 3;
+	pixel_y = 11
+	},
 /turf/open/floor/darkbrown2,
 /area/desert_dam/interior/dam_interior/disposals)
 "xpw" = (
@@ -115546,9 +115761,9 @@ rfS
 rfS
 hPy
 hPy
-aaG
+aoE
 aaC
-aar
+aeb
 hPy
 hPy
 rfS
@@ -116718,7 +116933,7 @@ hPy
 hPy
 aaG
 aaC
-aar
+aic
 hPy
 hPy
 rfS
@@ -145573,13 +145788,13 @@ hIj
 xwe
 qPn
 owK
-soF
+bgD
 qPS
 kHD
+aXn
+aVj
 ipx
-ipx
-ipx
-ipx
+soF
 gyp
 qaR
 qaR
@@ -145805,7 +146020,7 @@ jwI
 hha
 fVL
 xwe
-qPn
+bnc
 owK
 fMN
 mYe
@@ -146039,14 +146254,14 @@ jwI
 hha
 fVL
 xwe
-pqo
+bnd
 owK
 hif
+aXv
 fYF
-fYF
 cMe
 cMe
-cMe
+aVd
 xpm
 gyp
 qaR
@@ -146503,7 +146718,7 @@ aNO
 nmn
 uME
 tRo
-clF
+bnf
 nhd
 rvJ
 clF
@@ -146747,9 +146962,9 @@ vCT
 lUT
 jMf
 clF
-tFJ
-clF
-clF
+aVk
+aVg
+aTU
 vCT
 clF
 kyO
@@ -146981,7 +147196,7 @@ qEg
 ovw
 mWM
 dOm
-bIw
+aXi
 bIw
 bIw
 dOm
@@ -147680,7 +147895,7 @@ wwR
 bqn
 clF
 iFp
-clF
+bfC
 clF
 clF
 iFp

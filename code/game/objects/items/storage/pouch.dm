@@ -1099,7 +1099,7 @@
 
 /obj/item/storage/pouch/pressurized_reagent_canister/surgery_prep
 	name = "\improper Pressurized Reagent Canister Pouch (Surgery Prep Mix)"
-	desc = "A pouch that carries a 15u custom autoinjector and a pressurized reagent canister filled with 280u Oxycodone, 160u Dexalin, and 40u Peridaxon to locally anesthetize patients and prevent them from dying on the table due to the effects of organ damage or suffocating from low blood. You can refill the pouch's canister with a reagent tank or chemical dispenser."
+	desc = "A pouch that carries a 15u custom autoinjector and a pressurized reagent canister filled with 280u Oxycodone, 160u Dexalin+, and 40u Peridaxon to locally anesthetize patients and prevent them from dying on the table due to the effects of organ damage or suffocating from low blood. You can refill the pouch's canister with a reagent tank or chemical dispenser."
 
 /obj/item/storage/pouch/pressurized_reagent_canister/Initialize()
 	. = ..()
@@ -1208,7 +1208,7 @@
 /obj/item/storage/pouch/pressurized_reagent_canister/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/reagent_container/glass/pressurized_canister))
 		if(inner)
-			to_chat(user, SPAN_WARNING("There already is a container inside [src]!"))
+			to_chat(user, SPAN_WARNING("There already is a canister inside [src]!"))
 		else
 			user.drop_inv_item_to_loc(W, src)
 			inner = W
@@ -1247,7 +1247,7 @@
 	if(istype(target, /obj/structure/machinery/chem_dispenser))
 		var/obj/structure/machinery/chem_dispenser/cd = target
 		if(!cd.beaker)
-			to_chat(user, SPAN_NOTICE("You unhook the inner container and connect it to [target]."))
+			to_chat(user, SPAN_NOTICE("You unhook the inner canister and connect it to [target]."))
 			inner.forceMove(cd)
 			cd.beaker = inner
 			inner = null
@@ -1327,7 +1327,7 @@
 	if(isxeno(user))
 		return
 	if(!inner)
-		return "[src] has no container inside!"
+		return "[src] has no cansiter inside!"
 	if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_TRAINED))
 		return "[src] contains: [get_reagent_list_text()]"
 	else

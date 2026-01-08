@@ -105,12 +105,12 @@
 		return
 
 	if(!cell_left && !cell_right)
-		balloon_alert_to_viewers("no cells detected.")
+		balloon_alert_to_viewers("no cells detected")
 		turn_off()
 		return
 
 	if((!cell_right && cell_left?.is_regenerated()) || (!cell_left && cell_right?.is_regenerated()) || (cell_left?.is_regenerated() && cell_right?.is_regenerated()))
-		balloon_alert_to_viewers("all cells charged.")
+		balloon_alert_to_viewers("all cells charged")
 		turn_off()
 		return
 

@@ -123,15 +123,15 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 		if(FAX_NET_USCM)
 			id_tag_prefix = "UA-M"//United Americas Military
 		if(FAX_NET_USCM_HC)
-			id_tag_final = "UA-MHC"
+			id_tag_prefix = "UA-MHC"
 		if(FAX_NET_CMB)
-			id_tag_final = "CMB-R"
+			id_tag_prefix = "CMB-R"
 		if(FAX_NET_WY)
 			id_tag_prefix = "WY-SCN"//Weyland Yutani Secure Corporate Network
 		if(FAX_NET_WY_COL)
 			id_tag_prefix = "WYC"//Weyland Yutani Communications
 		if(FAX_NET_WY_HC)
-			id_tag_final = "WY-DIR"
+			id_tag_prefix = "WY-DIR"
 		if(FAX_NET_TWE)
 			id_tag_prefix = "ICN"//Imperial Communication Network
 		if(FAX_NET_TWE_HC)
@@ -266,7 +266,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 /obj/structure/machinery/faxmachine/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "FaxMachine", "[src.name]")
+		ui = new(user, src, "FaxMachine", "[capitalize(name)]")
 		ui.open()
 
 /obj/structure/machinery/faxmachine/ui_state(mob/user)
@@ -347,6 +347,9 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 			. = TRUE
 
 		if("send")
+			if(!COOLDOWN_FINISHED(src, send_cooldown))
+				return
+
 			if(!original_fax)
 				to_chat(user, SPAN_NOTICE("No paper loaded."))
 				return
@@ -379,6 +382,8 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 		if("ejectpaper")
 			if(!original_fax)
 				to_chat(user, SPAN_NOTICE("No paper loaded."))
+				return
+
 			if(!ishuman(user))
 				to_chat(user, SPAN_NOTICE("You can't do that."))
 				return
@@ -506,16 +511,20 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 		if(istype(papers[content], /obj/item/paper))
 			var/obj/item/paper/faxed_paper = papers[content]
 			fax_paper_copy.info += faxed_paper.info
+			if(faxed_paper.extra_headers)
+				LAZYOR(fax_paper_copy.extra_headers, faxed_paper.extra_headers)
+			if(faxed_paper.extra_stylesheets)
+				LAZYOR(fax_paper_copy.extra_stylesheets, faxed_paper.extra_stylesheets)
 		else // type photo
 			var/obj/item/photo/faxed_photo = papers[content]
 			if(!isicon(faxed_photo.img))
 				return
 			photo_list += list("tmp_photo[content].png" = (faxed_photo.img))
-			fax_paper_copy.info  += "<img src='tmp_photo[content].png' width='192'/>"
+			fax_paper_copy.info += "<img src='tmp_photo[content].png' width='192'/>"
 
 /obj/structure/machinery/faxmachine/proc/outgoing_fax_message(mob/user, sending_priority)
 
-	var/datum/fax/faxcontents = new(fax_paper_copy.info, photo_list, fax_paper_copy.name, target_department, machine_id_tag)
+	var/datum/fax/faxcontents = new(fax_paper_copy.info, photo_list, fax_paper_copy.name, target_department, machine_id_tag, fax_paper_copy.extra_stylesheets, fax_paper_copy.extra_headers)
 
 	GLOB.fax_contents += faxcontents
 
@@ -615,7 +624,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 			return
 		if(!(receiver.inoperable()))
 
-			flick("[initial(icon_state)]receive", receiver)
+			flick("[initial(receiver.icon_state)]receive", receiver)
 
 			playsound(receiver.loc, "sound/machines/fax.ogg", 15)
 			// give the sprite some time to flick
@@ -626,6 +635,10 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 				else
 					P.name = "faxed message ([faxcontents.paper_name])"
 				P.info = "[faxcontents.data]"
+				if(faxcontents.extra_headers)
+					P.extra_headers = faxcontents.extra_headers.Copy()
+				if(faxcontents.extra_stylesheets)
+					P.extra_stylesheets = faxcontents.extra_stylesheets.Copy()
 				P.update_icon()
 				var/image/stampoverlay = image('icons/obj/items/paper.dmi')
 				var/encrypted = FALSE
@@ -691,7 +704,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 /obj/structure/machinery/faxmachine/corporate/liaison/almayer
 	department = FAX_DEPARTMENT_ALMAYER
 	sub_name = "W-Y Liaison"
-	radio_alert_tag = ":Y"
+	radio_alert_tag = ":y"
 
 /obj/structure/machinery/faxmachine/corporate/highcom
 	department = FAX_DEPARTMENT_WY_HC
@@ -729,7 +742,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 	name = "\improper USCM Provost Fax Machine"
 	department = FAX_DEPARTMENT_ALMAYER_BRIG
 	target_department = FAX_DEPARTMENT_PROVOST
-	radio_alert_tag = ":P"
+	radio_alert_tag = ":p"
 
 /obj/structure/machinery/faxmachine/uscm/almayer/brig/chief
 	sub_name = "Chief MP"
@@ -791,14 +804,18 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 	needs_power = FALSE
 	use_power = USE_POWER_NONE
 	health = 150
+	department = FAX_DEPARTMENT_ALMAYER
+	target_department = FAX_DEPARTMENT_PRESS
+	sub_name = "Correspondent (portable)"
 	var/obj/item/device/fax_backpack/faxbag
 
 /obj/structure/machinery/faxmachine/backpack/New(loc, portable_id_tag)
-	. = ..()
 	if(portable_id_tag)
 		machine_id_tag = portable_id_tag
+		identity_name = sub_name ? "[sub_name], [machine_id_tag]" : machine_id_tag
 		fixed_id_tag = TRUE
 		GLOB.fax_network.all_faxcodes[machine_id_tag] = src
+	return ..()
 
 ///The wearable and deployable part of the fax machine backpack
 /obj/item/device/fax_backpack
@@ -878,14 +895,16 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 	var/data
 	var/list/photo_list
 	var/paper_name
-
 	/// Where this fax was sent to
 	var/department
-
 	/// The ID tag of the fax machine that sent this
 	var/fax_id_tag
+	///Optional additional stylesheets in the form name=filename
+	var/list/extra_stylesheets
+	///Optional additional header content
+	var/list/extra_headers
 
-/datum/fax/New(new_data, new_photo_list, new_name, department, fax_id_tag)
+/datum/fax/New(new_data, new_photo_list, new_name, department, fax_id_tag, list/extra_stylesheets, list/extra_headers)
 	. = ..()
 	data = new_data
 	photo_list = new_photo_list
@@ -894,7 +913,11 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 
 	src.department = department
 	src.fax_id_tag = fax_id_tag
-
+	if(extra_stylesheets)
+		src.extra_stylesheets = extra_stylesheets.Copy()
+	if(extra_headers)
+		src.extra_headers = extra_headers.Copy()
+	LAZYADD(src.extra_headers, "<style>body {--bg-color: white;}</style>")
 
 /obj/structure/machinery/faxmachine/proc/is_department_responder_awake(target_department)
 	if(!(target_department in FAX_HIGHCOM_DEPARTMENTS))

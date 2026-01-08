@@ -7,7 +7,7 @@
 /turf/open/floor/corsat/squareswood/north,
 /area/desert_dam/interior/caves/temple)
 "ab" = (
-/obj/structure/reagent_dispensers/watertank/yautja,
+/obj/structure/reagent_dispensers/tank/water/yautja,
 /turf/open/floor/corsat/squareswood/north,
 /area/desert_dam/interior/caves/temple)
 "ac" = (
@@ -59,7 +59,7 @@
 /turf/open/floor/corsat/squareswood/north,
 /area/desert_dam/interior/caves/temple)
 "aj" = (
-/obj/structure/reagent_dispensers/fueltank/yautja,
+/obj/structure/reagent_dispensers/tank/fuel/yautja,
 /turf/open/floor/strata/grey_multi_tiles,
 /area/desert_dam/interior/caves/temple)
 "ak" = (

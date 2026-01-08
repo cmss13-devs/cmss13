@@ -34,6 +34,13 @@
 
 	blood_color = BLOOD_COLOR_SYNTHETIC
 
+	//Currently, this is only used for flavor in surgery messages.
+	flesh_type = "synthetic flesh"
+	nerves_type = "control wiring"
+	muscle_type = "silicon musculature"
+	vasculature_type = "artificial vasculature"
+	bone_type = "carbon fiber skeleton"
+
 	has_organ = list(
 		"heart" = /datum/internal_organ/heart/prosthetic,
 		"brain" = /datum/internal_organ/brain/prosthetic,
@@ -45,7 +52,7 @@
 
 	inherent_verbs = list(
 		/mob/living/carbon/human/synthetic/proc/toggle_HUD,
-		/mob/living/carbon/human/proc/toggle_inherent_nightvison,
+		/mob/living/carbon/human/proc/toggle_inherent_nightvision,
 	)
 
 /datum/species/synthetic/handle_post_spawn(mob/living/carbon/human/H)

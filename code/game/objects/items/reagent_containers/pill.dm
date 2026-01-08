@@ -135,11 +135,16 @@
 	if(!proximity)
 		return
 
-	if(target.is_open_container() != 0 && target.reagents)
+	if(target.is_open_container() && target.reagents)
 		if(!target.reagents.total_volume)
 			to_chat(user, SPAN_DANGER("[target] is empty. Can't dissolve [fluff_text]."))
 			return
-		to_chat(user, SPAN_NOTICE("You dissolve the [fluff_text] in [target]"))
+		var/amount = reagents.total_volume + target.reagents.total_volume
+		var/loss = amount - target.reagents.maximum_volume
+		if(amount > target.reagents.maximum_volume)
+			to_chat(user, SPAN_WARNING("You dissolve [fluff_text], but [target] overflows and takes [loss]u of your pill with it."))
+		else
+			to_chat(user, SPAN_NOTICE("You dissolve the [fluff_text] in [target]."))
 
 		var/rgt_list_text = get_reagent_list_text()
 
@@ -147,8 +152,8 @@
 		msg_admin_attack("[key_name(user)] spiked \a [target] with a [fluff_text] (REAGENTS: [rgt_list_text]) (INTENT: [uppertext(intent_text(user.a_intent))]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
 
 		reagents.trans_to(target, reagents.total_volume)
-		for(var/mob/O in viewers(2, user))
-			O.show_message(SPAN_DANGER("[user] puts something in \the [target]."), SHOW_MESSAGE_VISIBLE)
+		for(var/mob/other in viewers(2, user))
+			other.show_message(SPAN_DANGER("[user] puts something in [target]."), SHOW_MESSAGE_VISIBLE)
 
 		QDEL_IN(src, 5)
 
@@ -160,7 +165,7 @@
 
 //Pills
 /obj/item/reagent_container/pill/antitox
-	pill_desc = "An anti-toxin pill. It neutralizes many common toxins, as well as treating toxin damage"
+	pill_desc = "An anti-toxin pill. It neutralizes many common toxins, as well as treating toxin damage."
 	pill_initial_reagents = list("anti_toxin" = 15)
 	pill_icon_class = "atox"
 
@@ -186,9 +191,15 @@
 	pill_icon_class = "kelo"
 
 /obj/item/reagent_container/pill/oxycodone
-	pill_desc = "A Oxycodone pill. A powerful painkiller."
-	pill_initial_reagents = list("oxycodone" = 15)
+	pill_desc = "An Oxycodone pill. A powerful painkiller."
+	pill_initial_reagents = list("oxycodone" = 10)
 	pill_icon_class = "oxy"
+
+/obj/item/reagent_container/pill/oxycodone/natural
+	name = "numbing herb"
+	pill_desc = "A powerful painkilling herb, eating it will numb the pain."
+	icon = 'icons/obj/items/harvest.dmi'
+	icon_state = "mtear"
 
 /obj/item/reagent_container/pill/paracetamol
 	pill_desc = "A Paracetamol pill. Painkiller for the ages."
@@ -259,6 +270,12 @@
 	pill_desc = "A Bicaridine pill. Heals brute damage."
 	pill_initial_reagents = list("bicaridine" = 15)
 	pill_icon_class = "bica"
+
+/obj/item/reagent_container/pill/bicaridine/natural
+	name = "healing herb"
+	pill_desc = "A remarkable healing herb, eating it will heal brute damage."
+	icon = 'icons/obj/items/harvest.dmi'
+	icon_state = "shand"
 
 /obj/item/reagent_container/pill/ultrazine
 	pill_desc = "An Ultrazine pill. A highly-potent, long-lasting combination CNS and muscle stimulant. Extremely addictive."

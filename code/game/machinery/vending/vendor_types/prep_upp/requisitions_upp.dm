@@ -41,6 +41,7 @@
 		list("Webbing", floor(scale * 5), /obj/item/clothing/accessory/storage/webbing, VENDOR_ITEM_REGULAR),
 		list("Knife Webbing", floor(scale * 1), /obj/item/clothing/accessory/storage/knifeharness, VENDOR_ITEM_REGULAR),
 		list("Drop Pouch", floor(scale * 2), /obj/item/clothing/accessory/storage/droppouch, VENDOR_ITEM_REGULAR),
+		list("Black Drop Pouch", floor(scale * 2), /obj/item/clothing/accessory/storage/droppouch/black, VENDOR_ITEM_REGULAR),
 		list("External Webbing", floor(scale * 5), /obj/item/clothing/suit/storage/webbing, VENDOR_ITEM_REGULAR),
 
 		list("BACKPACKS", -1, null, null),
@@ -86,10 +87,6 @@
 		list("Large Magazine Pouch", floor(scale * 1), /obj/item/storage/pouch/magazine/large, VENDOR_ITEM_REGULAR),
 		list("Large Shotgun Shell Pouch", floor(scale * 1), /obj/item/storage/pouch/shotgun/large, VENDOR_ITEM_REGULAR),
 
-		list("REPAIR TOOLS", -1, null, null),
-		list("Multi-Purpose Combat Lubricant", floor(scale * 20), /obj/item/stack/repairable/gunlube, VENDOR_ITEM_REGULAR),
-		list("Firearms Repair Kit", floor(scale * 10), /obj/item/stack/repairable/gunkit, VENDOR_ITEM_REGULAR),
-
 		list("MISCELLANEOUS", -1, null, null),
 		list("Combat Flashlight", floor(scale * 8), /obj/item/device/flashlight/combat, VENDOR_ITEM_REGULAR),
 		list("Entrenching Tool", floor(scale * 4), /obj/item/tool/shovel/etool/folded, VENDOR_ITEM_REGULAR),
@@ -127,6 +124,22 @@
 		list("Box of High-Capacity Power Cells", 0, /obj/item/ammo_box/magazine/misc/power_cell, VENDOR_ITEM_REGULAR),
 		list("Nailgun Magazine Box (7x45mm)", floor(scale * 2), /obj/item/ammo_box/magazine/nailgun, VENDOR_ITEM_REGULAR),
 		)
+
+//Special cargo-specific vendor with vending offsets
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/upp_cargo_guns
+	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_LOAD_AMMO_BOXES | VEND_STOCK_DYNAMIC //We want to vend to turf not hand, since we are in requisitions
+	vend_dir = NORTH
+	vend_dir_whitelist = list(WEST, EAST)
+
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/upp_cargo_guns/blend
+	icon_state = "upp_req_guns_wall"
+	vend_delay = 3
+	vend_sound = 'sound/machines/vending_drop.ogg'
+	tiles_with = list(
+		/obj/structure/window/framed/upp_ship,
+		/obj/structure/machinery/door/airlock,
+		/turf/closed/wall/upp_ship,
+	)
 
 //------------UPP AMMUNITION VENDOR---------------
 
@@ -170,6 +183,22 @@
 		list("Flamer Tank Box (UT-Napthal Fuel x 8)", 0, /obj/item/ammo_box/magazine/flamer, VENDOR_ITEM_REGULAR),
 		)
 
+//Special cargo-specific vendor with vending offsets
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/upp_cargo_ammo
+	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_LOAD_AMMO_BOXES | VEND_STOCK_DYNAMIC //We want to vend to turf not hand, since we are in requisitions
+	vend_dir = NORTH
+	vend_dir_whitelist = list(NORTHWEST, NORTHEAST)
+
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/upp_cargo_ammo/blend
+	icon_state = "upp_req_ammo_wall"
+	vend_delay = 3
+	vend_sound = 'sound/machines/vending_drop.ogg'
+	tiles_with = list(
+		/obj/structure/window/framed/upp_ship,
+		/obj/structure/machinery/door/airlock,
+		/turf/closed/wall/upp_ship,
+	)
+
 //------------ATTACHMENTS VENDOR---------------
 
 /obj/structure/machinery/cm_vending/sorted/attachments/upp_attachments
@@ -208,6 +237,22 @@
 		list("Underbarrel Flashlight Grip", 9.5, /obj/item/attachable/flashlight/grip, VENDOR_ITEM_REGULAR),
 		list("Vertical Grip", 9.5, /obj/item/attachable/verticalgrip, VENDOR_ITEM_REGULAR),
 		)
+
+//Special cargo-specific vendor with vending offsets
+/obj/structure/machinery/cm_vending/sorted/attachments/upp_attachments
+	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_LOAD_AMMO_BOXES | VEND_STOCK_DYNAMIC //We want to vend to turf not hand, since we are in requisitions
+	vend_dir = NORTH
+	vend_dir_whitelist = list(SOUTHWEST, SOUTHEAST)
+
+/obj/structure/machinery/cm_vending/sorted/attachments/upp_attachments/blend
+	icon_state = "upp_req_attach_wall"
+	vend_delay = 3
+	vend_sound = 'sound/machines/vending_drop.ogg'
+	tiles_with = list(
+		/obj/structure/window/framed/upp_ship,
+		/obj/structure/machinery/door/airlock,
+		/turf/closed/wall/upp_ship,
+	)
 
 //------------UNIFORM VENDOR---------------
 

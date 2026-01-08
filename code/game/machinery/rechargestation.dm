@@ -201,7 +201,7 @@
 	var/mob/living/synth = occupant
 
 	if(synth.client)
-		synth.client.eye = synth.client.mob
+		synth.client.set_eye(synth.client.mob)
 		synth.client.perspective = MOB_PERSPECTIVE
 
 	synth.forceMove(loc)
@@ -239,7 +239,7 @@
 	M.stop_pulling()
 	if(M && M.client)
 		M.client.perspective = EYE_PERSPECTIVE
-		M.client.eye = src
+		M.client.set_eye(src)
 	M.forceMove(src)
 	src.occupant = M
 	start_processing()
@@ -257,10 +257,10 @@
 		//Whoever had it so that a borg with a dead cell can't enter this thing should be shot. --NEO
 		return
 	if (!issynth(usr))
-		to_chat(usr, SPAN_NOTICE(" <B>Only non-organics may enter the recharge and repair station!</B>"))
+		to_chat(usr, SPAN_NOTICE(" <B>Only non-organics may enter the [name]!</B>"))
 		return
 	if (src.occupant)
-		to_chat(usr, SPAN_NOTICE(" <B>The cell is already occupied!</B>"))
+		to_chat(usr, SPAN_NOTICE(" <B>The [name] is already occupied!</B>"))
 		return
 	move_mob_inside(usr)
 	return
@@ -279,11 +279,11 @@
 			to_chat(user, SPAN_NOTICE("The [name] is already occupied!"))
 			return
 
-		visible_message(SPAN_NOTICE("[user] starts putting [G.grabbed_thing] into the sleeper."), null, null, 3)
+		visible_message(SPAN_NOTICE("[user] starts putting [G.grabbed_thing] into the [name]."), null, null, 3)
 
 		if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 			if(occupant)
-				to_chat(user, SPAN_NOTICE("The sleeper is already occupied!"))
+				to_chat(user, SPAN_NOTICE("The [name] is already occupied!"))
 				return
 			if(!G || !G.grabbed_thing)
 				return

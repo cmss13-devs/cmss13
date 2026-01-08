@@ -136,7 +136,7 @@
 		to_chat(M, SPAN_HELPFUL("Your gear protects you from the worst of the 'bang'."))
 
 	M.Stun(weaken_amount)
-	M.KnockDown(weaken_amount)	
+	M.KnockDown(weaken_amount)
 	M.KnockOut(paralyze_amount)
 	if(deafen_amount)
 		M.SetEarDeafness(max(M.ear_deaf, deafen_amount))
@@ -172,7 +172,7 @@
 	icon_state = "cluster_active"
 	det_time = 10
 	active = TRUE
-	w_class = SIZE_MASSIVE // We cheat a little, primed nades become massive so they cant be stored anywhere
+	w_class = SIZE_MASSIVE // We cheat a little, primed nades become massive so they can't be stored anywhere
 	addtimer(CALLBACK(src, PROC_REF(prime)), det_time)
 
 /obj/item/explosive/grenade/flashbang/cluster/prime()
@@ -331,7 +331,7 @@
 	M.apply_effect(paralyze_amount, PARALYZE)
 
 	if(flash_amount)
-		M.flash_eyes(EYE_PROTECTION_FLASH, TRUE, /atom/movable/screen/fullscreen/flash, flash_amount)
+		M.flash_eyes(EYE_PROTECTION_FLASH, TRUE, flash_amount, /atom/movable/screen/fullscreen/flash)
 	if(deafen_amount)
 		M.SetEarDeafness(max(M.ear_deaf, deafen_amount))
 

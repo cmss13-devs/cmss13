@@ -12,6 +12,7 @@
 	power_channel = POWER_CHANNEL_ENVIRON
 	unslashable = TRUE
 	unacidable = TRUE
+	explo_proof = TRUE
 	var/id = null
 	var/range = 10
 	var/normaldoorcontrol = CONTROL_POD_DOORS
@@ -48,6 +49,9 @@
 
 /obj/structure/machinery/door_control/attack_alien(mob/user as mob)
 	return
+
+/obj/structure/machinery/door_control/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
+	return TAILSTAB_COOLDOWN_NONE
 
 /obj/structure/machinery/door_control/attackby(obj/item/W, mob/user as mob)
 	return src.attack_hand(user)
@@ -124,7 +128,7 @@
 		return
 
 	if(!allowed(user) && (wires & 1) && !force )
-		to_chat(user, SPAN_DANGER("Access Denied"))
+		to_chat(user, SPAN_DANGER("Access Denied."))
 		flick(initial(icon_state) + "-denied",src)
 		return
 
@@ -171,7 +175,7 @@
 		return
 
 	if(!allowed(user) && (wires & 1) && !force)
-		to_chat(user, SPAN_DANGER("Access Denied"))
+		to_chat(user, SPAN_DANGER("Access Denied."))
 		flick(initial(icon_state) + "-denied",src)
 		return
 

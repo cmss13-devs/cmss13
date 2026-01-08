@@ -2,17 +2,15 @@
 @use 'sass:color';
 @use './colors.scss';
 
-// Core styles
 @include meta.load-css('~tgui/styles/reset');
-// Atomic styles
-@include meta.load-css('~tgui/styles/atomic/text.scss');
-// External styles
-@include meta.load-css('~tgui/styles/components/TextArea');
-// Local styles
 @include meta.load-css('./styles.scss');
 
 @each $channel, $color in colors.$channel-map {
   $darkened: color.adjust($color, $lightness: -20%, $space: hsl);
+
+  .button {
+    user-select: none;
+  }
 
   .button-#{$channel} {
     border-color: color.adjust($color, $lightness: -10%, $space: hsl);

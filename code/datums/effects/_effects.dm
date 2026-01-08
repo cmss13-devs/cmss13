@@ -36,6 +36,7 @@
 	var/obj_icon_state_path = null //The icon_state path for objs
 	var/mob_icon_state_path = null //The icon_state path for mobs
 	var/datum/cause_data/cause_data = null //Cause data for statistics
+	var/show_baloon_alert = FALSE //Used to limit balloon alerts
 
 /datum/effects/New(atom/thing, mob/from = null, last_dmg_source = null, zone = "chest")
 	if(!validate_atom(thing) || QDELETED(thing))

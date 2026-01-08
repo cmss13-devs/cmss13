@@ -68,8 +68,6 @@
 	to_chat(user, SPAN_NOTICE("Timer set for [timer] seconds."))
 
 /obj/item/explosive/plastic/afterattack(atom/target, mob/user, flag)
-	setDir(get_dir(user, target))
-
 	if(user.action_busy || !flag)
 		return
 	if(!skillcheck(user, req_skill, req_skill_level))
@@ -94,6 +92,7 @@
 			disarm()
 		return
 
+	setDir(get_dir(user, target))
 	user.drop_held_item()
 	cause_data = create_cause_data(initial(name), user)
 	plant_target = target
@@ -129,6 +128,7 @@
 		user.visible_message(SPAN_WARNING("[user] plants [name] on [target]!"),
 		SPAN_WARNING("You plant [name] on [target]! Timer counting down from [timer]."))
 		active = TRUE
+		anchored = TRUE
 		addtimer(CALLBACK(src, PROC_REF(prime)), timer * 10)
 
 /obj/item/explosive/plastic/attackby(obj/item/W, mob/user)
@@ -174,6 +174,7 @@
 			if(!isigniter(detonator.a_left) && !issignaller(detonator.a_left))
 				detonator.a_left.activate()
 	active = FALSE
+	anchored = FALSE
 	update_icon()
 
 /obj/item/explosive/plastic/proc/can_place(mob/user, atom/target)
@@ -227,7 +228,7 @@
 	if(customizable && assembly_stage < ASSEMBLY_LOCKED)
 		return FALSE
 
-	return TRUE
+	return user.Adjacent(target)
 
 /obj/item/explosive/plastic/proc/calculate_pixel_offset(mob/user, atom/target)
 	switch(get_dir(user, target))

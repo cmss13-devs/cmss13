@@ -72,6 +72,7 @@ Radiochat range: 1441 to 1489 (most devices refuse to be tune to other frequency
 
 //Misc channels
 #define YAUT_FREQ 1205
+#define YAUT_OVR_FREQ 1206
 #define DUT_FREQ 1210
 #define VAI_FREQ 1215
 #define RMC_FREQ 1216
@@ -112,6 +113,10 @@ Radiochat range: 1441 to 1489 (most devices refuse to be tune to other frequency
 #define FAX_WY_FREQ 1296
 #define FAX_USCM_HC_FREQ 1297
 #define FAX_USCM_PVST_FREQ 1298
+
+//Hyperdyne channels (1331-1399)
+
+#define HDC_FREQ 1331
 
 //General Radio
 #define MIN_FREQ 1460 // ------------------------------------------------------
@@ -156,6 +161,7 @@ Radiochat range: 1441 to 1489 (most devices refuse to be tune to other frequency
 
 GLOBAL_LIST_INIT(radiochannels, list(
 	RADIO_CHANNEL_YAUTJA = YAUT_FREQ,
+	RADIO_CHANNEL_YAUTJA_OVERSEER = YAUT_OVR_FREQ,
 	RADIO_CHANNEL_VAI = VAI_FREQ,
 	RADIO_CHANNEL_CMB = CMB_FREQ,
 	RADIO_CHANNEL_DUTCH_DOZEN = DUT_FREQ,
@@ -191,6 +197,7 @@ GLOBAL_LIST_INIT(radiochannels, list(
 
 	RADIO_CHANNEL_COLONY = COLONY_FREQ,
 
+	RADIO_CHANNEL_HYPERDYNE = HDC_FREQ,
 
 	RADIO_CHANNEL_WY = WY_FREQ,
 	RADIO_CHANNEL_PMC_GEN = PMC_FREQ,
@@ -224,7 +231,7 @@ GLOBAL_LIST_INIT(radiochannels, list(
 ))
 
 // Response Teams
-#define ERT_FREQS list(VAI_FREQ, DUT_FREQ, YAUT_FREQ, CMB_FREQ, RMC_FREQ)
+#define ERT_FREQS list(VAI_FREQ, DUT_FREQ, YAUT_FREQ, YAUT_OVR_FREQ, CMB_FREQ, RMC_FREQ)
 
 // UPP Frequencies
 #define UPP_FREQS list(UPP_FREQ, UPP_CMD_FREQ, UPP_ENGI_FREQ, UPP_MED_FREQ, UPP_CCT_FREQ, UPP_KDO_FREQ)
@@ -271,13 +278,21 @@ GLOBAL_LIST_INIT(radiochannels, list(
 
 SUBSYSTEM_DEF(radio)
 	name = "radio"
-	flags = SS_NO_FIRE|SS_NO_INIT
+	wait = 30 SECONDS
+	flags = SS_KEEP_TIMING|SS_NO_INIT
 	init_order = SS_INIT_RADIO
 	var/list/datum/radio_frequency/frequencies = list()
 
 	//Keeping a list of tcomm machines to see which Z level has comms
 	var/list/tcomm_machines_ground = list()
 	var/list/tcomm_machines_almayer = list()
+
+	/// The last cached result for get_available_tcomm_zs(COMM_FREQ)
+	var/list/last_command_zs = list()
+	/// The current coms clarity per faction for Zs without coms (otherwise announcement_max_clarity config value)
+	var/list/faction_coms_clarity = list(FACTION_MARINE = 100)
+	/// The currently unsolved encryption_sequences for a faction (only the ones listed here decay)
+	var/list/faction_coms_codes = list(FACTION_MARINE = list())
 
 	var/static/list/freq_to_span = list(
 		"[COMM_FREQ]" = "comradio",
@@ -322,7 +337,26 @@ SUBSYSTEM_DEF(radio)
 		"[FAX_WY_FREQ]" = "airadio",
 		"[FAX_USCM_HC_FREQ]" = "aiprivradio",
 		"[FAX_USCM_PVST_FREQ]" = "aiprivradio",
+		"[HDC_FREQ]" = "hdcradio",
 	)
+
+/datum/controller/subsystem/radio/fire(resumed)
+	var/decay_rate = CONFIG_GET(number/announcement_clarity_decay)
+	var/clarity_min = CONFIG_GET(number/announcement_min_clarity)
+	var/oldest_time = world.time - ((100 - clarity_min) / decay_rate * wait)
+
+	for(var/faction in faction_coms_codes)
+		// Clean out any old codes (Assumption: They're ordered)
+		var/list/codes = faction_coms_codes[faction]
+		var/index
+		for(index in 1 to length(codes))
+			var/datum/encryption_sequence/current = codes[index]
+			if(current.time >= oldest_time)
+				break
+		codes.Cut(1, index)
+
+		// Decay current clarity
+		faction_coms_clarity[faction] = max(faction_coms_clarity[faction] - decay_rate, clarity_min)
 
 /datum/controller/subsystem/radio/proc/add_object(obj/device as obj, new_frequency as num, filter = null as text|null)
 	var/f_text = num2text(new_frequency)
@@ -360,8 +394,8 @@ SUBSYSTEM_DEF(radio)
 
 	return frequency
 
+///Returns lists of Z levels that have comms
 /datum/controller/subsystem/radio/proc/get_available_tcomm_zs(frequency)
-	//Returns lists of Z levels that have comms
 	var/list/target_zs = SSmapping.levels_by_trait(ZTRAIT_ADMIN)
 	var/list/extra_zs = SSmapping.levels_by_trait(ZTRAIT_AWAY)
 	if(length(extra_zs))
@@ -375,8 +409,13 @@ SUBSYSTEM_DEF(radio)
 			target_zs += SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
 			target_zs += SSmapping.levels_by_trait(ZTRAIT_RESERVED)
 			break
-	SEND_SIGNAL(src, COMSIG_SSRADIO_GET_AVAILABLE_TCOMMS_ZS, target_zs)
+	if(frequency == COMM_FREQ)
+		last_command_zs = target_zs
 	return target_zs
+
+/// Call this when a cached frequency changed (e.g. tcoms going down/up)
+/datum/controller/subsystem/radio/proc/update_cache()
+	get_available_tcomm_zs(COMM_FREQ)
 
 /datum/controller/subsystem/radio/proc/add_tcomm_machine(obj/machine)
 	if(is_ground_level(machine.z))

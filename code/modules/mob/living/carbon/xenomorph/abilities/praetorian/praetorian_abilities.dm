@@ -124,7 +124,7 @@
 	plasma_cost = 180
 
 	// Config
-	var/max_distance = 7
+	var/max_distance = 6
 	var/windup = 8 DECISECONDS
 
 /datum/action/xeno_action/activable/oppressor_punch
@@ -212,6 +212,11 @@
 
 ////////// BASE PRAE
 
+/datum/action/xeno_action/activable/xeno_spit/praetorian
+	name = "Spit Acid"
+	xeno_cooldown = 2 SECONDS
+
+
 /datum/action/xeno_action/activable/pounce/base_prae_dash
 	name = "Dash"
 	action_icon_state = "prae_dash"
@@ -240,6 +245,41 @@
 	var/activation_delay = 1 SECONDS
 	var/prime_delay = 1 SECONDS
 
+/datum/action/xeno_action/activable/prae_acid_ball/use_ability(atom/target)
+	if (!target)
+		return
+
+	var/mob/living/carbon/xenomorph/acidball_user = owner
+	if (!acidball_user.check_state() || acidball_user.action_busy)
+		return
+
+	if (!action_cooldown_check())
+		return
+	var/turf/current_turf = get_turf(acidball_user)
+
+	if (!current_turf)
+		return
+
+	if (!do_after(acidball_user, activation_delay, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+		to_chat(acidball_user, SPAN_XENODANGER("We cancel our acid ball."))
+		return
+
+	if (!check_and_use_plasma_owner())
+		return
+
+	apply_cooldown()
+
+	to_chat(acidball_user, SPAN_XENOWARNING("We lob a compressed ball of acid into the air!"))
+
+	var/obj/item/explosive/grenade/xeno_acid_grenade/grenade = new /obj/item/explosive/grenade/xeno_acid_grenade
+	grenade.cause_data = create_cause_data(initial(acidball_user.caste_type), acidball_user)
+	grenade.forceMove(get_turf(acidball_user))
+	grenade.throw_atom(target, 5, SPEED_SLOW, acidball_user, TRUE)
+	addtimer(CALLBACK(grenade, TYPE_PROC_REF(/obj/item/explosive, prime)), prime_delay)
+
+	return ..()
+
+
 /datum/action/xeno_action/activable/spray_acid/base_prae_spray_acid
 	name = "Spray Acid"
 	action_icon_state = "spray_acid"
@@ -254,8 +294,6 @@
 	spray_type = ACID_SPRAY_LINE
 	spray_distance = 7
 	spray_effect_type = /obj/effect/xenomorph/spray/praetorian
-	activation_delay = TRUE
-	activation_delay_length = 5
 
 ///////////////////////// VALKYRIE PRAE
 

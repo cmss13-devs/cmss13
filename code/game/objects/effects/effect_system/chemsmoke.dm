@@ -64,14 +64,14 @@
 	FOR_DVIEW_END
 
 	//make secondary list for reagents that affect walls
-	if(chemholder.reagents.has_reagent("thermite") || chemholder.reagents.has_reagent("plantbgone"))
+	if(chemholder.reagents.has_reagent("thermite"))
 		wallList = new()
 
 	//pathing check
 	smokeFlow(location, targetTurfs, wallList)
 
 	//set the density of the cloud - for diluting reagents
-	density = max(1, length(targetTurfs) / 4) //clamp the cloud density minimum to 1 so it cant multiply the reagents
+	density = max(1, length(targetTurfs)) //clamp the cloud density minimum to 1 so it can't multiply the reagents
 
 	//Admin messaging
 	var/contained = ""
@@ -121,7 +121,7 @@
 			chemholder.reagents.update_total()
 
 			//apply wall affecting reagents to walls
-			if(R.id in list("thermite", "plantbgone"))
+			if(R.id in list("thermite"))
 				for(var/turf/T in wallList)
 					R.reaction_turf(T, R.volume)
 
@@ -145,6 +145,14 @@
 								var/dist = cheap_pythag(T.x - location.x, T.y - location.y)
 								if(!dist)
 									dist = 1
+								var/mob/living/carbon/human/human_in_smoke = A
+								if(istype(human_in_smoke))
+									if(human_in_smoke?.wear_mask?.flags_inventory & BLOCKGASEFFECT)
+										continue
+									if(human_in_smoke?.glasses?.flags_inventory & BLOCKGASEFFECT)
+										continue
+									if(human_in_smoke?.head?.flags_inventory & BLOCKGASEFFECT)
+										continue
 								R.reaction_mob(A, volume = R.volume * POTENCY_MULTIPLIER_VLOW / dist, permeable = FALSE)
 							else if(istype(A, /obj))
 								R.reaction_obj(A, R.volume)
@@ -271,6 +279,14 @@
 	if(!length(reagents?.reagent_list))
 		return FALSE
 
+	var/mob/living/carbon/human/human_in_smoke = affected_mob
+	if(istype(human_in_smoke))
+		if(human_in_smoke?.wear_mask?.flags_inventory & BLOCKGASEFFECT)
+			return FALSE
+		if(human_in_smoke?.glasses?.flags_inventory & BLOCKGASEFFECT)
+			return FALSE
+		if(human_in_smoke?.head?.flags_inventory & BLOCKGASEFFECT)
+			return FALSE
 	for(var/datum/reagent/reagent in reagents.reagent_list)
 		reagent.reaction_mob(affected_mob, volume = reagent.volume * POTENCY_MULTIPLIER_LOW, permeable = FALSE)
 	return TRUE

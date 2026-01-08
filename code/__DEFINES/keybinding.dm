@@ -29,6 +29,7 @@
 #define COMSIG_KB_CARBON_GIVEITEM_DOWN "keybinding_carbon_giveitem_down"
 #define COMSIG_KB_CARBON_WARCRY "keybinding_carbon_warcry"
 #define COMSIG_KB_CARBON_MEDIC "keybinding_carbon_medic"
+#define COMSIG_KB_CARBON_UNIQUEACTION "keybinding_carbon_uniqueaction"
 
 //Client
 #define COMSIG_KB_CLIENT_GETHELP_DOWN "keybinding_client_gethelp_down"
@@ -80,7 +81,6 @@
 #define COMSIG_KB_HUMAN_WEAPON_STOCKATTACHMENT "keybinding_human_weapon_stockattachment"
 #define COMSIG_KB_HUMAN_WEAPON_AUTOEJECT "keybinding_human_weapon_autoeject"
 #define COMSIG_KB_HUMAN_WEAPON_UNDERBARREL "keybinding_human_weapon_underbarrel"
-#define COMSIG_KB_HUMAN_WEAPON_UNIQUEACTION "keybinding_human_weapon_uniqueaction"
 #define COMSIG_KB_HUMAN_WEAPON_SAFETY "keybinding_human_weapon_safety"
 #define COMSIG_KB_HUMAN_WEAPON_UNLOAD "keybinding_human_weapon_unload"
 #define COMSIG_KB_HUMAN_WEAPON_ATTACHMENT "keybinding_human_weapon_attachment"
@@ -124,6 +124,7 @@
 #define COMSIG_KB_MOB_TARGETPREV_DOWN "keybinding_mob_targetprev_down"
 #define COMSIG_KB_MOB_BLOCKMOVEMENT_DOWN "keybinding_mob_blockmovement_down"
 #define COMSIG_KB_MOB_LOOK_UP "keybinding_mob_look_up"
+#define COMSIG_KB_MOB_TOGGLE_MINIMAP "keybinding_toggle_minimap"
 
 //Robot
 #define COMSIG_KB_SILICON_TOGGLEMODULEONE_DOWN "keybinding_silicon_togglemoduleone_down"
@@ -165,6 +166,7 @@
 #define COMSIG_KB_XENO_EVOLVE "keybinding_evolve"
 #define COMSIG_KB_XENO_PURCHASE_STRAIN "keybinding_purchase_strain"
 #define COMSIG_KB_XENO_RESET_STRAIN "keybinding_reset_strain"
+#define COMSIG_KB_XENO_BECOME_SEETHROUGH "keybinding_become_seethrough"
 
 // Yautja
 
@@ -202,6 +204,7 @@
 
 #define COMSIG_KB_YAUTJA_TELE_LOC "keybinding_yautja_tele_loc"
 #define COMSIG_KB_YAUTJA_FOLD_COMBISTICK "keybinding_yautja_fold_combistick"
+#define COMSIG_KB_YAUTJA_GAUNTLET_GUARD "keybinding_yautja_gauntlet_guard"
 
 #define COMSIG_KB_OBSERVER_JOIN_XENO "keybinding_observer_join_as_xeno"
 #define COMSIG_KB_OBSERVER_JOIN_ERT "keybinding_observer_join_ert"

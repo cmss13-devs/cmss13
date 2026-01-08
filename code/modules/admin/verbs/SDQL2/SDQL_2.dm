@@ -564,7 +564,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/sdql2_vv_all, new(null
 			if(length(select_text))
 				var/text = islist(select_text)? select_text.Join() : select_text
 				var/static/result_offset = 0
-				showmob << browse(text, "window=SDQL-result-[result_offset++]")
+				showmob << browse(HTML_SKELETON(text), "window=SDQL-result-[result_offset++]")
 	show_next_to_key = null
 	if(qdel_on_finish)
 		qdel(src)
@@ -1161,10 +1161,10 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/sdql2_vv_all, new(null
 			return null
 		var/datum/located = locate("\[[expression[start + 1]]]")
 		if(!istype(located))
-			to_chat(usr, SPAN_DANGER("Invalid pointer: [expression[start + 1]] - null or not datum"), confidential = TRUE)
+			to_chat(usr, SPAN_DANGER("Invalid pointer: [expression[start + 1]] - null or not datum."), confidential = TRUE)
 			return null
 		if(!located.can_vv_mark())
-			to_chat(usr, SPAN_DANGER("Pointer [expression[start+1]] cannot be marked"), confidential = TRUE)
+			to_chat(usr, SPAN_DANGER("Pointer [expression[start+1]] cannot be marked."), confidential = TRUE)
 			return null
 		v = located
 		start++

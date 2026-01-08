@@ -8,6 +8,9 @@
 		if(!I)
 			to_chat(H, SPAN_NOTICE("You are not holding anything to equip."))
 			return
+		if(I.last_equipped_slot)
+			if(equip_to_slot_if_possible(I, I.last_equipped_slot, FALSE, FALSE, TRUE))
+				return
 		if(!H.equip_to_appropriate_slot(I, 0))
 			to_chat(H, SPAN_DANGER("You are unable to equip that."))
 
@@ -89,15 +92,15 @@
 		if(WEAR_IN_R_STORE)
 			return 1
 
-/mob/living/carbon/human/put_in_l_hand(obj/item/W)
-	var/obj/limb/O = get_limb("l_hand")
-	if(!O || !O.is_usable())
+/mob/living/carbon/human/put_in_l_hand(obj/item/moved_item)
+	var/obj/limb/check_hand = get_limb("l_hand")
+	if(!check_hand || !check_hand.is_usable())
 		return FALSE
 	. = ..()
 
-/mob/living/carbon/human/put_in_r_hand(obj/item/W)
-	var/obj/limb/O = get_limb("r_hand")
-	if(!O || !O.is_usable())
+/mob/living/carbon/human/put_in_r_hand(obj/item/moved_item)
+	var/obj/limb/check_hand = get_limb("r_hand")
+	if(!check_hand || !check_hand.is_usable())
 		return FALSE
 	. = ..()
 

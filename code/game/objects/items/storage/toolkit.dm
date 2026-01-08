@@ -26,8 +26,6 @@
 		/obj/item/stock_parts,
 		/obj/item/explosive/plastic,
 		/obj/item/device/defibrillator/synthetic,
-		/obj/item/stack/repairable/gunlube,
-		/obj/item/stack/repairable/gunkit,
 	)
 	storage_flags = STORAGE_FLAGS_BOX
 	required_skill_for_nest_opening = SKILL_ENGINEER

@@ -98,6 +98,11 @@
 	max_heat_protection_temperature = FIRE_HELMET_MAX_HEAT_PROT
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 
+/obj/item/clothing/head/hardhat/white/alt
+	icon_state = "hardhat0_white_alt"
+	hardhat_color = "white_alt"
+	name = "Jùtóu Combine mining helmet"
+
 /obj/item/clothing/head/hardhat/white
 	icon_state = "hardhat0_white"
 	hardhat_color = "white"

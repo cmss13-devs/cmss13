@@ -137,6 +137,7 @@
 #define XENO_HIVE_MUTATED "xeno_hive_mutated"
 #define XENO_HIVE_FORSAKEN "xeno_hive_forsaken"
 #define XENO_HIVE_YAUTJA "xeno_hive_yautja"
+#define XENO_HIVE_HUNTED "xeno_hive_hunted"
 #define XENO_HIVE_RENEGADE "xeno_hive_renegade"
 
 #define XENO_HIVE_TUTORIAL "xeno_hive_tutorial"
@@ -264,6 +265,10 @@
 #define ACTION_BLUE_POWER_UP 16
 #define ACTION_PURPLE_POWER_UP 17
 
+#define BUSY_ICON_CLIMBING 18
+
+#define EMOTE_ICON_WALLBOOSTING 19
+
 //defins for datum/hud
 
 #define HUD_STYLE_STANDARD 1
@@ -299,6 +304,7 @@
 #define EMOTING_HEADBUTT   (1<<2)
 #define EMOTING_TAIL_SWIPE (1<<3)
 #define EMOTING_ROCK_PAPER_SCISSORS (1<<4)
+#define EMOTING_WALL_BOOSTING (1<<5)
 
 //forcesay types
 #define SUDDEN 0

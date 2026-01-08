@@ -45,8 +45,10 @@
 /obj/item/clothing/gloves/marine/insulated/black
 	name = "marine insulated black gloves"
 	desc = "These marine gloves will protect the wearer from electric shocks and shrapnal. Standard issue for properly-equipped Marines."
-	icon_state = "black"
+	icon_state = "yellow"
 	item_state = "black"
+	item_state_slots = list(WEAR_HANDS = "black")
+	adopts_squad_color = FALSE
 
 /obj/item/clothing/gloves/marine/black
 	name = "marine black combat gloves"
@@ -64,6 +66,13 @@
 	desc = "Standard issue marine tactical gloves. It reads: 'knit by Marine Widows Association'. These are a shade of grey instead of the classic black."
 	icon_state = "marine_grey"
 	item_state = "marine_grey"
+	adopts_squad_color = FALSE
+
+/obj/item/clothing/gloves/marine/fingerless
+	name = "marine fingerless combat gloves"
+	desc = "Standard issue marine tactical gloves. It reads: 'knit by Marine Widows Association'. These ones have have been modified by having the fingertips removed."
+	icon_state = "marine_fingerless"
+	item_state = "marine_fingerless"
 	adopts_squad_color = FALSE
 
 /obj/item/clothing/gloves/marine/medical
@@ -159,6 +168,10 @@
 	icon_state = "pmc"
 	item_state = "pmc"
 
+/obj/item/clothing/gloves/marine/veteran/pmc/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/clothing/gloves/marine/veteran/pmc/commando
 	name = "\improper W-Y Commando gloves"
 	desc = "Standard issue kevlon fiber gloves manufactured for and by Weyland-Yutani Commandos. They are insulated against electrical shock."
@@ -226,6 +239,10 @@
 	unacidable = TRUE
 	adopts_squad_color = FALSE
 
+/obj/item/clothing/gloves/marine/veteran/souto/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/souta)
+
 /obj/item/clothing/gloves/marine/veteran/insulated/van_bandolier
 	name = "custom shooting gloves"
 	desc = "Highly protective against injury, temperature, and electric shock. Cool in the summer, warm in the winter, and a secure grip on any surface. You could buy a lot for the price of these, and they're worth every penny."
@@ -244,6 +261,10 @@
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	unacidable = TRUE
 	adopts_squad_color = FALSE
+
+/obj/item/clothing/gloves/marine/joe/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/seegson)
 
 //=ROYAL MARINES=\\
 
@@ -268,3 +289,9 @@
 	item_state = "cbrn"
 	armor_bio = CLOTHING_ARMOR_GIGAHIGHPLUS
 	armor_rad = CLOTHING_ARMOR_GIGAHIGHPLUS
+
+/obj/item/clothing/gloves/marine/cbrn_non_armored
+	name = "\improper M2 MOPP gloves"
+	desc = "These older-generation M2 MOPP gloves are constructed from treated venlar and offer basic protection against contamination in CBRN environments. While they provide decent dexterity for operating small tools and weapons, they lack the advanced grip enhancements and durability of the newer models. Typically, these gloves remain effective for up to 12 hours of moderate exposure before they must be replaced."
+	icon_state = "cbrn"
+	item_state = "cbrn"

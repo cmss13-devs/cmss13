@@ -28,7 +28,7 @@ const COLORS_SPECTRUM = [
 
 const COLORS_STATES = ['good', 'average', 'bad', 'black', 'white'];
 
-const Story = (props) => {
+function Story() {
   return (
     <Section>
       <Box mb={1}>
@@ -64,4 +64,4 @@ const Story = (props) => {
       </Box>
     </Section>
   );
-};
+}

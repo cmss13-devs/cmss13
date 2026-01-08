@@ -151,15 +151,15 @@
 	set_predator_status(H, "Cryo")
 
 /datum/species/yautja/proc/set_predator_status(mob/living/carbon/human/H, status = "Alive")
-	if(!H.persistent_ckey)
+	if(!H.persistent_username)
 		return
 	var/datum/game_mode/GM
 	if(SSticker?.mode)
 		GM = SSticker.mode
-		if(H.persistent_ckey in GM.predators)
-			GM.predators[H.persistent_ckey]["Status"] = status
+		if(H.persistent_username in GM.predators)
+			GM.predators[H.persistent_username]["Status"] = status
 		else
-			GM.predators[H.persistent_ckey] = list("Name" = H.real_name, "Status" = status)
+			GM.predators[H.persistent_username] = list("Name" = H.real_name, "Status" = status)
 
 /datum/species/yautja/post_species_loss(mob/living/carbon/human/H)
 	..()
@@ -213,6 +213,7 @@
 				limb.time_to_knit = 600 // 1 minute to self heal bone break, time is in tenths of a second
 
 	hunter.set_languages(list(LANGUAGE_YAUTJA))
+	hunter.hud_used?.hide_actions_toggle.update_button_icon(hunter)
 	give_action(hunter, /datum/action/yautja_emote_panel)
 	give_action(hunter, /datum/action/predator_action/mark_for_hunt)
 	give_action(hunter, /datum/action/predator_action/mark_panel)

@@ -256,8 +256,8 @@
 			beaker.reagents.reaction(occupant, permeable_in_mobs = FALSE)
 
 	if(autoeject)
-		//release the patient automatically when brute and burn are handled on non-robotic limbs
-		if(!occupant.getBruteLoss(TRUE) && !occupant.getFireLoss(TRUE) && !occupant.getCloneLoss())
+		//release the patient automatically when brute and burn are handled on non-robotic limbs and tox damage handled
+		if(!occupant.getBruteLoss(TRUE) && !occupant.getFireLoss(TRUE) && !occupant.getToxLoss() && !occupant.getCloneLoss())
 			display_message("Patient's external wounds are healed.")
 			go_out(TRUE)
 			return
@@ -270,7 +270,7 @@
 	if(!(occupant))
 		return
 	if(occupant.client)
-		occupant.client.eye = occupant.client.mob
+		occupant.client.set_eye(occupant.client.mob)
 		occupant.client.perspective = MOB_PERSPECTIVE
 	switch(dir)
 		if(NORTH)

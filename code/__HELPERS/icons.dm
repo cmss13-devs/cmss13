@@ -118,7 +118,7 @@ ColorTone(rgb, tone)
 /*
 Get Flat Icon DEMO by DarkCampainger
 
-This is a test for the get flat icon proc, modified approprietly for icons and their states.
+This is a test for the get flat icon proc, modified appropriately for icons and their states.
 Probably not a good idea to run this unless you want to see how the proc works in detail.
 mob
 	icon = 'old_or_unused.dmi'
@@ -514,7 +514,8 @@ world
 
 		if(no_anim)
 			//Clean up repeated frames
-			var/icon/cleaned = new /icon()
+			// Done this way otherwise Width() and Height() would always be 0 for this icon
+			var/icon/cleaned = icon('icons/effects/effects.dmi', "nothing")
 			cleaned.Insert(flat, "", SOUTH, 1, 0)
 			return cleaned
 		else
@@ -605,11 +606,11 @@ world
 
 /// generates a filename for a given asset.
 /// like generate_asset_name(), except returns the rsc reference and the rsc file hash as well as the asset name (sans extension)
-/// used so that certain asset files dont have to be hashed twice
+/// used so that certain asset files don't have to be hashed twice
 /proc/generate_and_hash_rsc_file(file, dmi_file_path)
 	var/rsc_ref = fcopy_rsc(file)
 	var/hash
-	//if we have a valid dmi file path we can trust md5'ing the rsc file because we know it doesnt have the bug described in http://www.byond.com/forum/post/2611357
+	//if we have a valid dmi file path we can trust md5'ing the rsc file because we know it doesn't have the bug described in http://www.byond.com/forum/post/2611357
 	if(dmi_file_path)
 		hash = md5(rsc_ref)
 	else //otherwise, we need to do the expensive fcopy() workaround
@@ -646,7 +647,7 @@ world
 		//if theyre unchanged dmi's then they're stringifiable to "icons/path/to/dmi_file.dmi"
 
 	if(isicon(icon) && isfile(icon))
-		//icons compiled in from 'icons/path/to/dmi_file.dmi' at compile time are weird and arent really /icon objects,
+		//icons compiled in from 'icons/path/to/dmi_file.dmi' at compile time are weird and aren't really /icon objects,
 		///but they pass both isicon() and isfile() checks. theyre the easiest case since stringifying them gives us the path we want
 		var/icon_ref = text_ref(icon)
 		var/locate_icon_string = "[locate(icon_ref)]"
@@ -679,6 +680,61 @@ world
 
 	return FALSE
 
+/// Asks the user for an icon (either from file or as a path) and offers to customize it if possible (e.g. setting icon_state)
+/proc/pick_and_customize_icon(mob/user, pick_only=FALSE)
+	var/icon/icon_result = null
+	if(!user)
+		user = usr
+
+	var/icon_from_file = tgui_alert(user, "Do you wish to pick an icon from file?", "File picker icon", list("Yes", "No"))
+	if(isnull(icon_from_file))
+		return null
+	if(icon_from_file == "Yes")
+		icon_result = input(user, "Pick icon:", "Icon") as null|icon
+		if(!icon_result)
+			return null
+	else if(icon_from_file == "No")
+		var/new_icon = tgui_input_text(user, "Pick icon path", "icon path")
+		if(isnull(new_icon))
+			return null
+		var/regex/regex = regex(@"^.+icons/")
+		new_icon = regex.Replace(replacetext(new_icon, @"\", "/"), "icons/")
+		icon_result = fcopy_rsc(new_icon)
+		if(!icon_result)
+			to_chat(user, SPAN_WARNING("'[new_icon]' is an invalid icon path!"))
+			return null
+
+	var/dmi_path = get_icon_dmi_path(icon_result)
+	if(!dmi_path || pick_only)
+		return icon_result
+
+	var/custom = tgui_alert(user, "Do you wish to specify any arguments for the icon?", "Customize Icon", list("Yes", "No"))
+	if(isnull(custom))
+		return null
+	if(custom == "Yes")
+		var/new_icon_state = tgui_input_text(user, "Pick icon_state", "icon_state")
+		if(isnull(new_icon_state))
+			return null
+		var/new_icon_dir = tgui_input_list(user, "Pick icon dir", "dir", list("North", "East", "South", "West"), default="South")
+		if(isnull(new_icon_dir))
+			return null
+		var/new_icon_frame = tgui_input_number(user, "Pick icon frame", "frame", min_value=0, integer_only=TRUE)
+		if(isnull(new_icon_frame))
+			return null
+		var/new_icon_moving = tgui_input_list(user, "Pick icon moving", "moving", list("Both", "Movement only", "Non-Movement Only"), default="Both")
+		switch(new_icon_moving)
+			if("Both")
+				new_icon_moving = null
+			if("Movement only")
+				new_icon_moving = 1
+			if("Non-Movement Only")
+				new_icon_moving = 0
+			else
+				return null
+		icon_result = new(dmi_path, new_icon_state, text2dir(new_icon_dir), new_icon_frame, new_icon_moving)
+
+	return icon_result
+
 /**
  * generate an asset for the given icon or the icon of the given appearance for [thing], and send it to any clients in target.
  * Arguments:
@@ -689,10 +745,10 @@ world
  * * frame - what frame of the icon_state's animation for the icon being used
  * * moving - whether or not to use a moving state for the given icon
  * * sourceonly - if TRUE, only generate the asset and send back the asset url, instead of tags that display the icon to players
- * * extra_clases - string of extra css classes to use when returning the icon string
+ * * extra_classes - string of extra css classes to use when returning the icon string
  * * keyonly - if TRUE, only returns the asset key to use get_asset_url manually. Overrides sourceonly.
  */
-/proc/icon2html(atom/thing, client/target, icon_state, dir = SOUTH, frame = 1, moving = FALSE, sourceonly = FALSE, extra_classes = null, keyonly = FALSE)
+/proc/icon2html(atom/thing, client/target, icon_state, dir = SOUTH, frame = 1, moving = FALSE, sourceonly = FALSE, extra_classes = null, keyonly = FALSE, non_standard_size = FALSE)
 	if (!thing)
 		return
 
@@ -712,7 +768,7 @@ world
 	if(!length(targets))
 		return
 
-	//check if the given object is associated with a dmi file in the icons folder. if it is then we dont need to do a lot of work
+	//check if the given object is associated with a dmi file in the icons folder. if it is then we don't need to do a lot of work
 	//for asset generation to get around byond limitations
 	var/icon_path = get_icon_dmi_path(thing)
 
@@ -735,7 +791,7 @@ world
 		if (isnull(icon_state))
 			icon_state = thing.icon_state
 			//Despite casting to atom, this code path supports mutable appearances, so let's be nice to them
-			if(isnull(icon_state) || (isatom(thing) && thing.flags_atom & HTML_USE_INITAL_ICON))
+			if(isnull(icon_state) || (isatom(thing) && thing.flags_atom & HTML_USE_INITIAL_ICON))
 				icon_state = initial(thing.icon_state)
 				if (isnull(dir))
 					dir = initial(thing.dir)
@@ -756,6 +812,13 @@ world
 			icon_state = ""
 
 	icon2collapse = icon(icon2collapse, icon_state, dir, frame, moving)
+
+	if(!non_standard_size)
+		var/width = icon2collapse.Width()
+		var/height = icon2collapse.Height()
+		if(width != height)
+			var/new_dimension = min(width, height)
+			center_icon(icon2collapse, new_dimension, new_dimension)
 
 	var/list/name_and_ref = generate_and_hash_rsc_file(icon2collapse, icon_path)//pretend that tuples exist
 
@@ -888,6 +951,50 @@ world
 	image_to_center.pixel_y = y_offset
 
 	return image_to_center
+
+/**
+ * Centers an icon.
+ *
+ * Arguments:
+ * * icon - The icon to center
+ * * final_width - The width to crop to. Will use Width() if <= 0
+ * * final_height - The height to crop to. Will use Height() if <= 0
+ */
+/proc/center_icon(icon/icon, final_width, final_height)
+	var/width = icon.Width() || world.icon_size
+	var/height = icon.Height() || world.icon_size
+
+	if(final_width <= 0)
+		final_width = width
+	if(final_height <= 0)
+		final_height = height
+
+	var/left = INFINITY
+	var/right = 0
+	var/bottom = INFINITY
+	var/top = 0
+
+	// Find the inner dimensions (non-alpha pixels)
+	for(var/x in 1 to width)
+		for(var/y in 1 to height)
+			if(icon.GetPixel(x, y))
+				left = min(x, left)
+				right = max(x, right)
+				bottom = min(y, bottom)
+				top = max(y, top)
+
+	if(!right)
+		// Fully transparent
+		icon.Crop(1, 1, final_width, final_height)
+		return icon
+
+	var/inner_width = right - left
+	var/inner_height = top - bottom
+	var/left_padding = left - floor((final_width - inner_width) * 0.5)
+	var/bottom_padding = bottom - floor((final_height - inner_height) * 0.5)
+
+	icon.Crop(left_padding, bottom_padding, left_padding + final_width - 1, bottom_padding + final_height - 1)
+	return icon
 
 //For creating consistent icons for human looking simple animals
 /proc/get_flat_human_icon(icon_id, equipment_preset_dresscode, datum/preferences/prefs, dummy_key, showDirs = GLOB.cardinals, outfit_override)

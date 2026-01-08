@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aaa" = (
-/obj/structure/reagent_dispensers/fueltank/yautja,
+/obj/structure/reagent_dispensers/tank/fuel/yautja,
 /turf/open/floor/strata/grey_multi_tiles,
 /area/varadero/interior_protected/vessel)
 "aab" = (
@@ -233,11 +233,35 @@
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz2_near)
+"aaS" = (
+/obj/structure/sign/calendar{
+	pixel_y = 29
+	},
+/turf/open/floor/wood,
+/area/varadero/interior/security)
+"aaT" = (
+/obj/structure/sign/calendar{
+	pixel_y = 29
+	},
+/turf/open/floor/wood,
+/area/varadero/interior/library)
+"aaU" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"aaV" = (
+/obj/structure/machinery/blackbox_recorder,
+/obj/item/prop/almayer/flight_recorder/colony{
+	pixel_x = -6;
+	pixel_y = 10
+	},
+/turf/open/floor/shiva/blue/north,
+/area/varadero/interior/administration)
 "abf" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
-/mob/living/simple_animal/mouse,
+/mob/living/simple_animal/small/mouse,
 /turf/open/floor/shiva/multi_tiles/southeast,
 /area/varadero/interior/medical)
 "abl" = (
@@ -593,7 +617,7 @@
 /turf/open/floor/shiva/red/north,
 /area/varadero/interior/security)
 "apY" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
@@ -618,7 +642,7 @@
 /turf/open/gm/river/ocean/deep_ocean,
 /area/varadero/exterior/pontoon_beach)
 "aqk" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/north)
 "aqq" = (
@@ -1109,6 +1133,9 @@
 	pixel_y = 6
 	},
 /obj/effect/landmark/objective_landmark/science,
+/obj/structure/sign/calendar{
+	pixel_y = 29
+	},
 /turf/open/floor/wood,
 /area/varadero/interior/research)
 "aHu" = (
@@ -2047,7 +2074,7 @@
 	pixel_x = -11;
 	pixel_y = 4
 	},
-/obj/item/paper/research_notes/good{
+/obj/item/paper/research_notes/unique/tier_three{
 	pixel_x = -15;
 	pixel_y = 2
 	},
@@ -2772,7 +2799,7 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/lz1_near)
 "bZA" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/interior/maintenance/north)
 "bZI" = (
@@ -5909,7 +5936,7 @@
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/comms3)
 "eGd" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -6390,6 +6417,7 @@
 /area/varadero/exterior/pontoon_beach)
 "faX" = (
 /obj/structure/closet/secure_closet/engineering_electrical,
+/obj/item/device/defibrillator/synthetic,
 /turf/open/floor/shiva/yellow/north,
 /area/varadero/interior/electrical)
 "fbw" = (
@@ -7075,7 +7103,7 @@
 /turf/open/floor/carpet,
 /area/varadero/interior/chapel)
 "fyZ" = (
-/mob/living/simple_animal/cat{
+/mob/living/simple_animal/small/cat{
 	desc = "A domesticated, feline pet. The collar says 'Orion'.";
 	name = "Orion";
 	real_name = "Orion"
@@ -7223,7 +7251,7 @@
 /obj/structure/machinery/alarm{
 	pixel_y = 24
 	},
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/shiva/yellow/north,
 /area/varadero/interior/electrical)
 "fFI" = (
@@ -10240,7 +10268,7 @@
 /turf/open/floor/wood,
 /area/varadero/interior/court)
 "igQ" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/north)
 "igU" = (
@@ -10580,7 +10608,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance)
 "iwf" = (
-/mob/living/simple_animal/mouse,
+/mob/living/simple_animal/small/mouse,
 /turf/open/floor/wood,
 /area/varadero/interior/hall_SE)
 "iwg" = (
@@ -10665,7 +10693,7 @@
 /turf/open/floor/wood,
 /area/varadero/interior/maintenance/north)
 "ixQ" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/structure/machinery/power/apc/no_power/east,
 /turf/open/floor/plating,
 /area/varadero/interior_protected/caves/makeshift_tent)
@@ -10894,6 +10922,9 @@
 /area/varadero/exterior/pool)
 "iIt" = (
 /obj/structure/filingcabinet/chestdrawer,
+/obj/structure/sign/calendar{
+	pixel_y = 29
+	},
 /turf/open/floor/wood,
 /area/varadero/interior/records)
 "iIC" = (
@@ -11747,7 +11778,7 @@
 /turf/open/floor/prison/chapel_carpet/doubleside/north,
 /area/varadero/interior/chapel)
 "joO" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /obj/structure/cable/heavyduty{
 	icon_state = "4-8"
 	},
@@ -12345,7 +12376,7 @@
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/varadero/exterior/pontoon_beach/lz)
 "jLU" = (
-/obj/structure/reagent_dispensers/fueltank/gas,
+/obj/structure/reagent_dispensers/tank/fuel/gas,
 /turf/open/floor/plating,
 /area/varadero/interior_protected/caves/makeshift_tent)
 "jMq" = (
@@ -12932,7 +12963,7 @@
 /turf/open/floor/shiva/green/east,
 /area/varadero/interior/hall_SE)
 "kmo" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/eastbeach)
 "kmu" = (
@@ -13580,7 +13611,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/shiva/yellow/west,
 /area/varadero/interior/electrical)
 "kPj" = (
@@ -13791,7 +13822,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/security/north)
 "kZL" = (
@@ -14345,8 +14376,7 @@
 /obj/structure/machinery/door_control{
 	id = "undergroundhangarsouth";
 	name = "South Dock Door";
-	pixel_x = -24;
-	explo_proof = 1
+	pixel_x = -24
 	},
 /turf/open/floor/plating/icefloor/warnplate,
 /area/varadero/interior/maintenance/north)
@@ -14641,7 +14671,7 @@
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/medical)
 "lLq" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/shiva/yellowfull/west,
 /area/varadero/interior/technical_storage)
 "lLZ" = (
@@ -15212,7 +15242,7 @@
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
 "miP" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/research)
 "miR" = (
@@ -16615,7 +16645,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance)
 "nsl" = (
@@ -16671,7 +16701,7 @@
 /turf/open/gm/river/ocean/deep_ocean,
 /area/varadero/exterior/farocean)
 "nwi" = (
-/obj/structure/machinery/power/port_gen/pacman/mrs,
+/obj/structure/machinery/power/power_generator/port_gen/pacman/mrs,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/north)
 "nwq" = (
@@ -17395,8 +17425,7 @@
 	id = "undergroundhangarsouth";
 	name = "South Dock Door";
 	pixel_x = -32;
-	pixel_y = -18;
-	explo_proof = 1
+	pixel_y = -18
 	},
 /turf/open/floor/plating/icefloor/warnplate/north,
 /area/varadero/exterior/lz1_near)
@@ -18690,7 +18719,7 @@
 /turf/open/floor/corsat/squareswood/north,
 /area/varadero/interior_protected/vessel)
 "pcK" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/shiva/yellow,
 /area/varadero/interior/technical_storage)
 "pdc" = (
@@ -18890,7 +18919,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/cargo)
 "pkT" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/bcircuit,
 /area/varadero/interior/electrical)
 "pkX" = (
@@ -20381,8 +20410,7 @@
 /obj/structure/machinery/door_control/brbutton{
 	id = "undergroundhangarwest";
 	name = "West Dock Door";
-	pixel_x = 3;
-	explo_proof = 1
+	pixel_x = 3
 	},
 /turf/closed/wall/r_wall/unmeltable,
 /area/varadero/exterior/lz1_near)
@@ -20759,6 +20787,7 @@
 /area/varadero/interior/maintenance/research)
 "qDs" = (
 /obj/structure/surface/table/reinforced/prison,
+/obj/item/weapon/gun/shotgun/double/sawn,
 /turf/open/floor/shiva/red/southeast,
 /area/varadero/interior/security)
 "qDt" = (
@@ -21403,7 +21432,7 @@
 /turf/open/gm/dirt/desert3,
 /area/varadero/exterior/eastbeach)
 "ret" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/security/south)
 "rex" = (
@@ -21888,7 +21917,7 @@
 /turf/open/floor/shiva/wredfull,
 /area/varadero/interior/medical)
 "rtP" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/north)
 "rtR" = (
@@ -22717,7 +22746,7 @@
 /turf/open/floor/wood,
 /area/varadero/interior/beach_bar)
 "sbG" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/security/south)
 "sbP" = (
@@ -22870,21 +22899,6 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/maintenance/south)
-"sgn" = (
-/obj/structure/barricade/handrail{
-	desc = "Your platforms look pretty heavy king, let me support them for you.";
-	dir = 1;
-	icon_state = "hr_kutjevo";
-	name = "support struts"
-	},
-/obj/structure/barricade/handrail{
-	desc = "Your platforms look pretty heavy king, let me support them for you.";
-	dir = 1;
-	icon_state = "hr_kutjevo";
-	name = "support struts"
-	},
-/turf/open/gm/river/shallow_ocean_shallow_ocean,
-/area/varadero/exterior/pontoon_beach)
 "sgp" = (
 /obj/structure/barricade/wooden,
 /turf/open/shuttle/elevator,
@@ -23301,7 +23315,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/maintenance/south)
 "swM" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /obj/structure/machinery/light/small,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/electrical)
@@ -23396,7 +23410,7 @@
 /turf/open/floor/plating,
 /area/varadero/interior/comms3)
 "szw" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/digsite)
 "szS" = (
@@ -23790,7 +23804,7 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/interior/maintenance/north)
 "sOj" = (
@@ -24098,6 +24112,7 @@
 /turf/open/shuttle/elevator/grating,
 /area/varadero/interior/hall_N)
 "tfc" = (
+/obj/effect/landmark/spycam_start,
 /turf/open/floor/asteroidwarning,
 /area/varadero/exterior/lz2_near)
 "tfj" = (
@@ -24146,7 +24161,7 @@
 /turf/open/floor/shiva,
 /area/varadero/interior/technical_storage)
 "thp" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/electrical)
 "thS" = (
@@ -25347,7 +25362,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/security/north)
 "ukw" = (
@@ -26845,7 +26860,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance)
 "vtR" = (
@@ -26962,7 +26977,7 @@
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz2_near)
 "vzt" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/hall_SE)
 "vzz" = (
@@ -27827,7 +27842,7 @@
 /turf/open/floor/shiva/yellow/north,
 /area/varadero/interior/disposals)
 "wdI" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/shuttle/elevator,
 /area/varadero/interior/records)
 "wdX" = (
@@ -28199,7 +28214,7 @@
 /area/varadero/interior/medical)
 "wpC" = (
 /obj/structure/platform_decoration/metal/kutjevo/west,
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz1_near)
 "wpG" = (
@@ -28535,8 +28550,7 @@
 /obj/structure/machinery/door_control/brbutton{
 	id = "undergroundhangarwest";
 	name = "West Dock Door";
-	pixel_x = 8;
-	explo_proof = 1
+	pixel_x = 8
 	},
 /obj/structure/sign/safety/bulkhead_door,
 /turf/closed/wall/r_wall/unmeltable,
@@ -43125,7 +43139,7 @@ bZU
 bZU
 xsH
 mrC
-wMw
+aaU
 wMw
 wMw
 wMw
@@ -43351,7 +43365,7 @@ qqA
 qqA
 bYT
 xgG
-xUq
+aaV
 tkT
 rzg
 rzg
@@ -46213,7 +46227,7 @@ lTR
 lTR
 pFZ
 knw
-sgn
+cpF
 dXg
 dXg
 scL
@@ -47326,7 +47340,7 @@ hsl
 giN
 hyr
 sXb
-tzw
+aaT
 aJP
 svH
 kBo
@@ -50086,7 +50100,7 @@ fEZ
 htt
 wVf
 wVf
-idw
+aaS
 jQB
 psb
 idw

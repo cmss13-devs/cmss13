@@ -465,7 +465,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		arm_equipment(new_human, new_job.gear_preset_whitelist[job_whitelist], FALSE, TRUE)
 		var/generated_account = new_job.generate_money_account(new_human)
 		new_job.announce_entry_message(new_human, generated_account, whitelist_status) //Tell them their spawn info.
-		new_job.generate_entry_conditions(new_human, whitelist_status) //Do any other thing that relates to their spawn.
+		new_job.generate_entry_conditions(new_human, whitelist_status, late_join) //Do any other thing that relates to their spawn.
 	else
 		arm_equipment(new_human, new_job.gear_preset, FALSE, TRUE) //After we move them, we want to equip anything else they should have.
 		var/generated_account = new_job.generate_money_account(new_human)
@@ -474,6 +474,8 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 
 	if(new_job.flags_startup_parameters & ROLE_ADD_TO_SQUAD) //Are we a muhreen? Randomize our squad. This should go AFTER IDs. //TODO Robust this later.
 		randomize_squad(new_human)
+	if(!late_join)
+		prioritize_specialist(new_human)
 
 	if(Check_WO() && GLOB.job_squad_roles.Find(GET_DEFAULT_ROLE(new_human.job))) //activates self setting proc for marine headsets for WO
 		var/datum/game_mode/whiskey_outpost/WO = SSticker.mode
@@ -520,6 +522,10 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 
 	new_human.sec_hud_set_ID()
 	new_human.hud_set_squad()
+
+	// comm_title is probably available at this point.
+	var/datum/highlight_keywords_payload/payload = new(new_mob)
+	new_mob.client.tgui_panel.window.send_message("settings/updateHighlightKeywords", payload.to_list())
 
 	SEND_SIGNAL(new_human, COMSIG_POST_SPAWN_UPDATE)
 	SSround_recording.recorder.track_player(new_human)
@@ -576,6 +582,27 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	lowest.put_marine_in_squad(human)
 	return
 
+/datum/authority/branch/role/proc/prioritize_specialist(mob/living/carbon/human/human)
+	if(!human)
+		return
+	if(SSticker && MODE_HAS_MODIFIER(/datum/gamemode_modifier/heavy_specialists))
+		return // Choices are overridden
+	if(human.job != JOB_SQUAD_SPECIALIST)
+		return // Not a spec
+	var/list/preferred_spec = human.client?.prefs?.preferred_spec
+	if(!length(preferred_spec))
+		return // No preference
+	var/obj/item/spec_kit/kit = locate() in human
+	for(var/option in preferred_spec)
+		var/datum/specialist_set/spec_set = GLOB.specialist_set_name_dict[option]
+		if(spec_set?.redeem_set(human, kit, silent=TRUE))
+			if(kit)
+				to_chat(human, SPAN_NOTICE("You have been assigned as a [spec_set.get_role()]."))
+				qdel(kit)
+			else
+				to_chat(human, SPAN_NOTICE("You have been assigned as a [spec_set.get_role()]. Redeem your essentials at your gear vendor."))
+			break
+
 /datum/authority/branch/role/proc/get_caste_by_text(name)
 	var/mob/living/carbon/xenomorph/M
 	switch(name) //ADD NEW CASTES HERE!
@@ -623,6 +650,8 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 			M = /mob/living/carbon/xenomorph/hellhound
 		if(XENO_CASTE_KING)
 			M = /mob/living/carbon/xenomorph/king
+		if(XENO_CASTE_DESPOILER)
+			M = /mob/living/carbon/xenomorph/despoiler
 	return M
 
 
@@ -664,6 +693,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 				break
 
 		transfer_marine.hud_set_squad()
+	SEND_SIGNAL(transfer_marine, COMSIG_HUMAN_SQUAD_CHANGED)
 
 // returns TRUE if transfer_marine's role is at max capacity in the new squad
 /datum/authority/branch/role/proc/check_squad_capacity(mob/living/carbon/human/transfer_marine, datum/squad/new_squad)

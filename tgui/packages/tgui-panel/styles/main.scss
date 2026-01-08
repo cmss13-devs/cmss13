@@ -33,7 +33,6 @@
 @include meta.load-css('~tgui/styles/components/Dropdown.scss');
 @include meta.load-css('~tgui/styles/components/Flex.scss');
 @include meta.load-css('~tgui/styles/components/Icon.scss');
-// @include meta.load-css('~tgui/styles/components/ImageButton.scss'); // Does not exist on local tgui, enable if you use tgui-core
 @include meta.load-css('~tgui/styles/components/Input.scss');
 @include meta.load-css('~tgui/styles/components/Knob.scss');
 @include meta.load-css('~tgui/styles/components/LabeledList.scss');

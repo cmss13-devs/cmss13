@@ -4,4 +4,6 @@
  * @license MIT
  */
 
-export const selectDebug = (state) => state.debug;
+export function selectDebug(state: Record<string, any>) {
+  return state.debug;
+}

@@ -50,7 +50,7 @@ map kutjevo
 endmap
 
 map sorokyne_strata
-	minplayers 130
+	minplayers 110
 endmap
 
 map lv522_chances_claim

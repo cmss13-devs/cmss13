@@ -152,9 +152,9 @@
 	if(M)
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
-			if(skillcheck(H, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT))
+			if(skillcheck(H, SKILL_LEADERSHIP, SKILL_LEAD_SKILLED))
 				volume = max(volume, RADIO_VOLUME_CRITICAL)
-			else if(HAS_TRAIT(M, TRAIT_LEADERSHIP))
+			else if(HAS_TRAIT(M, TRAIT_LEADERSHIP) || HAS_TRAIT(M, TRAIT_ACTING_LEAD))
 				volume = max(volume, RADIO_VOLUME_IMPORTANT)
 
 			comm_title = H.comm_title //Set up [CO] and stuff after frequency
@@ -246,7 +246,10 @@
 		/* --- Process all the mobs that heard the voice normally (did not understand) --- */
 		if (length(heard_voice))
 			for (var/mob/R in heard_voice)
-				R.hear_radio(message,verbage, speaking, part_a, part_b, M,0, vname, 0)
+				if(R.faction == M.faction)
+					R.hear_radio(message, verbage, speaking, part_a, part_b, M, 0, realname, volume)
+				else
+					R.hear_radio(message, verbage, speaking, part_a, part_b, M, 0, vname, 0)
 
 		/* --- Process all the mobs that heard a garbled voice (did not understand) --- */
 			// Displays garbled message (ie "f*c* **u, **i*er!")

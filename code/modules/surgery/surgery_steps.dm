@@ -29,6 +29,22 @@
 	///failure >:(
 	var/failure_sound
 
+//when a surgery step wants to use an anatomy type, we use these procs to fetch the correct type.
+/mob/living/carbon/human/proc/get_flesh_type()
+	return species.flesh_type
+
+/mob/living/carbon/human/proc/get_nerves_type()
+	return species.nerves_type
+
+/mob/living/carbon/human/proc/get_muscle_type()
+	return species.muscle_type
+
+/mob/living/carbon/human/proc/get_vasculature_type()
+	return species.vasculature_type
+
+/mob/living/carbon/human/proc/get_bone_type()
+	return species.bone_type
+
 /datum/surgery_step/New()
 	. = ..()
 	for(var/tool_path in tools)
@@ -58,7 +74,7 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 			return tools_cache[tool.type]
 	return FALSE
 
-///does any extra checks that is is SUBTYPED to perform
+///does any extra checks that it is SUBTYPED to perform
 /datum/surgery_step/proc/extra_checks(mob/living/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, repeating, skipped)
 	return TRUE
 
@@ -204,9 +220,10 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 		msg_admin_niche("[user] failed a [surgery] step on [target] because of [failure_penalties] failure possibility penalties ([surgery_failure_chance]%)")
 
 	else //Help intent.
-		if(do_after(user, step_duration, INTERRUPT_ALL|INTERRUPT_DIFF_INTENT, BUSY_ICON_FRIENDLY,target,INTERRUPT_MOVED,BUSY_ICON_MEDICAL))
+		if(do_after(user, step_duration, INTERRUPT_ALL|INTERRUPT_DIFF_INTENT, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 			success(user, target, target_zone, tool, tool_type, surgery)
-			SEND_SIGNAL(user, COMSIG_HUMAN_SURGERY_STEP_SUCCESS, target, surgery, tool)
+			if(surgery_limb)
+				SEND_SIGNAL(surgery_limb, COMSIG_LIMB_SURGERY_STEP_SUCCESS, user, surgery, tool)
 			advance = TRUE
 			play_success_sound(user, target, target_zone, tool, surgery)
 			if(repeat_step && repeat_step_criteria(user, target, target_zone, tool, tool_type, surgery))
@@ -259,8 +276,8 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 /**This is used for failed-step narration and relevant failure changes, often damage etc. If it returns TRUE, the step succeeds anyway.
 tool_type may be a typepath or simply '1'. Note that a first step done on help-intent doesn't call failure(), it just ends harmlessly.**/
 /datum/surgery_step/proc/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	user.visible_message(SPAN_NOTICE("[user] fails to finish the surgery"),
-			SPAN_NOTICE("You fail to finish the surgery"))
+	user.visible_message(SPAN_NOTICE("[user] fails to finish the surgery."),
+			SPAN_NOTICE("You fail to finish the surgery."))
 	return FALSE
 
 /// Plays the failure sound

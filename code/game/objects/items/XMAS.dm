@@ -3,7 +3,7 @@
 
 /obj/item/m_gift //Marine Gift
 	name = "Present"
-	desc = "One, standard issue USCM Present"
+	desc = "One, standard issue USCM Present."
 	icon = 'icons/obj/items/gifts.dmi'
 	icon_state = "gift1"
 	item_state = "gift1"
@@ -112,7 +112,7 @@
 		/obj/item/toy/prize/ripley,
 		/obj/item/toy/prize/seraph,
 		/obj/item/toy/spinningtoy,
-		/obj/item/clothing/accessory/horrible,
+		/obj/item/clothing/accessory/tie/horrible,
 		/obj/item/clothing/shoes/slippers,
 		/obj/item/clothing/shoes/slippers_worn,
 		/obj/item/clothing/head/collectable/tophat/super,

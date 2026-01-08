@@ -58,6 +58,11 @@
 	flags_inv_hide = HIDEEARS|HIDEFACE|HIDEALLHAIR
 	flags_equip_slot = SLOT_FACE
 
+/obj/item/clothing/mask/gas/pmc/Initialize()
+	. = ..()
+	if(istypestrict(src, /obj/item/clothing/mask/gas/pmc) || istypestrict(src, /obj/item/clothing/mask/gas/pmc/leader))
+		AddElement(/datum/element/corp_label/wy)
+
 /obj/item/clothing/mask/gas/pmc/marsoc
 	name = "\improper SOF armored balaclava"
 	desc = "Designed for maximum protection -- and badassery. Provides protection against facial attacks, filters toxins, and conceals the wearer's identity."
@@ -124,3 +129,34 @@
 		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/masks_by_faction/TWE.dmi'
 	)
 	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
+
+//= UPP =\\
+
+/obj/item/clothing/mask/gas/upp_pfb
+	name = "\improper ShMB/4 gasmask"
+	desc = "The standard issue gasmask utilized by the UPP Armed Collective and many UPP civilian organizations."
+	icon_state = "pfb"
+	item_state = "pfb"
+	icon = 'icons/obj/items/clothing/masks/masks_by_faction/UPP.dmi'
+	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/masks_by_faction/UPP.dmi'
+	)
+	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
+	flags_inv_hide = HIDEEARS|HIDEFACE|HIDEALLHAIR
+
+//= CLF =\\
+
+/obj/item/clothing/mask/gas/riot
+	name = "riot mask"
+	desc = "A mask of colonial riot control department, with red laser shield lenses for eye protection due a somewhat often use of RXF-M5 EVA by colonial rioteers. Riot gear is also often seen in hands of CLF terrorists, due to large surplus of it being captured in colonial rebellions."
+	icon_state = "carbon_mask"
+	item_state = "balaclava"
+	icon = 'icons/obj/items/clothing/masks/masks_by_faction/CLF.dmi'
+	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/masks_by_faction/CLF.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/masks_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/masks_righthand.dmi',
+	)
+	vision_impair = VISION_IMPAIR_NONE
+	eye_protection = EYE_PROTECTION_FLAVOR
+	flags_inv_hide = HIDEEARS|HIDEFACE

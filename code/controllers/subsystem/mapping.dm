@@ -195,7 +195,7 @@ SUBSYSTEM_DEF(mapping)
 		// CM Snowflake for Mass Screenshot dimensions auto detection
 		for(var/z in bounds[MAP_MINZ] to bounds[MAP_MAXZ])
 			var/datum/space_level/zlevel = z_list[start_z + z - 1]
-			zlevel.bounds = list(bounds[MAP_MINX], bounds[MAP_MINY], z, bounds[MAP_MAXX], bounds[MAP_MAXY], z)
+			zlevel.bounds = list(bounds[MAP_MINX] + x_offset - 1, bounds[MAP_MINY] + y_offset - 1, z, bounds[MAP_MAXX] + x_offset - 1, bounds[MAP_MAXY] + y_offset - 1, z)
 
 	// =============== END CM Change =================
 
@@ -267,11 +267,12 @@ SUBSYSTEM_DEF(mapping)
 		next_map_configs[SHIP_MAP] = VM
 		return TRUE
 
-/datum/controller/subsystem/mapping/proc/preloadTemplates(path = "maps/templates/") //see master controller setup
-	var/list/filelist = flist(path)
-	for(var/map in filelist)
-		var/datum/map_template/T = new(path = "[path][map]", rename = "[map]")
-		map_templates[T.name] = T
+/datum/controller/subsystem/mapping/proc/preloadTemplates(paths = list("maps/templates/", "maps/templates/lazy_templates/thunderdome/")) //see master controller setup
+	for(var/path in paths)
+		var/list/filelist = flist(path)
+		for(var/map in filelist)
+			var/datum/map_template/T = new(path = "[path][map]", rename = "[map]")
+			map_templates[T.name] = T
 
 	preloadShuttleTemplates()
 	preload_tent_templates()

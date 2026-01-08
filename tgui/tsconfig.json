@@ -5,7 +5,7 @@
     "checkJs": false,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "isolatedModules": false,
+    "isolatedModules": true,
     "jsx": "preserve",
     "lib": ["DOM", "DOM.Iterable", "ESNext", "ScriptHost"],
     "module": "ESNext",
@@ -15,7 +15,12 @@
     "skipLibCheck": true,
     "strict": false,
     "strictNullChecks": true,
-    "target": "ESNext"
+    "target": "ESNext",
+    "baseUrl": ".",
+    "paths": {
+      "tgui/*": ["packages/tgui/*"],
+      "common/*": ["packages/common/*"]
+    }
   },
   "include": ["./*.d.ts", "./packages"]
 }

@@ -134,6 +134,16 @@
 	containername = "\improper M4RA AP magazines crate"
 	group = "Ammo"
 
+/datum/supply_packs/ammo_m4ra_mag_box_ext
+	name = "Magazine box (M4RA, 12x extended mags)"
+	contains = list(
+		/obj/item/ammo_box/magazine/m4ra/ext,
+	)
+	cost = 30
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "\improper M4RA extended magazines crate"
+	group = "Ammo"
+
 //------------------------For  M44----------------
 
 /datum/supply_packs/ammo_m44_mag_box
@@ -230,16 +240,6 @@
 	containername = "\improper shotgun flechette crate"
 	group = "Ammo"
 
-/datum/supply_packs/ammo_shell_box_breaching
-	name = "Shell box (16g) (120x breaching shells)"
-	contains = list(
-		/obj/item/ammo_box/magazine/shotgun/light/breaching,
-	)
-	cost = 40
-	containertype = /obj/structure/closet/crate/ammo
-	containername = "\improper shotgun breaching crate"
-	group = "Ammo"
-
 //------------------------For 88M4 ----------------
 
 /datum/supply_packs/ammo_mod88_mag_box_ap
@@ -296,17 +296,6 @@
 	containername = "\improper M41AE2 HPR holo-target magazines crate"
 	group = "Ammo"
 
-/datum/supply_packs/ammo_xm51
-	contains = list(
-		/obj/item/ammo_magazine/rifle/xm51,
-		/obj/item/ammo_magazine/rifle/xm51,
-		/obj/item/ammo_magazine/shotgun/light/breaching,
-	)
-	name = "XM51 Ammo (2x mags) (1x small breaching shell box)"
-	cost = 20
-	containertype = /obj/structure/closet/crate/ammo
-	containername = "\improper XM51 ammo crate"
-	group = "Ammo"
 
 //------------------------For M10 Auto Pistol ----------------
 
@@ -330,16 +319,25 @@
 	containername = "\improper M10 extended magazines crate"
 	group = "Ammo"
 
-/datum/supply_packs/ammo_m10_pistol_mag_box_drum
-	name = "Magazine box (M10, 12x drum mags)"
+/datum/supply_packs/ammo_m10_ap_pistol_mag_box
+	name = "Magazine box (M10 AP, 22x regular mags)"
 	contains = list(
-		/obj/item/ammo_box/magazine/m10/drum,
+		/obj/item/ammo_box/magazine/m10/ap,
 	)
-	cost = 50
+	cost = 40
 	containertype = /obj/structure/closet/crate/ammo
-	containername = "\improper M10 drum magazines crate"
+	containername = "\improper M10 AP magazines crate"
 	group = "Ammo"
 
+/datum/supply_packs/ammo_m10_ap_pistol_mag_box_extended
+	name = "Magazine box (M10 AP, 14x extended mags)"
+	contains = list(
+		/obj/item/ammo_box/magazine/m10/ap/extended,
+	)
+	cost = 60
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "\improper M10 AP extended magazines crate"
+	group = "Ammo"
 
 //------------------------Smartgunner stuff----------------
 
@@ -512,9 +510,10 @@
 		/obj/item/ammo_magazine/smg/m39/extended,
 		/obj/item/ammo_magazine/smg/m39/ap,
 		/obj/item/ammo_magazine/smg/m39/ap,
-		/obj/item/ammo_magazine/pistol/m10,
 		/obj/item/ammo_magazine/pistol/m10/extended,
-		/obj/item/ammo_magazine/pistol/m10/drum,
+		/obj/item/ammo_magazine/pistol/m10/extended,
+		/obj/item/ammo_magazine/pistol/m10/extended,
+		/obj/item/ammo_magazine/pistol/m10/extended,
 		/obj/item/ammo_magazine/revolver,
 		/obj/item/ammo_magazine/revolver,
 		/obj/item/ammo_magazine/revolver,
@@ -532,4 +531,36 @@
 	cost = 60
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "\improper surplus ammo crate"
+	group = "Ammo"
+
+//------------------------For  L54----------------
+
+/datum/supply_packs/ammo_l54_mag_box
+	name = "Magazine box (L54, 16x regular mags)"
+	contains = list(
+		/obj/item/ammo_box/magazine/l54,
+	)
+	cost = 20
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "\improper L54 magazines crate"
+	group = "Ammo"
+
+/datum/supply_packs/ammo_l54_mag_box_ap
+	name = "Magazine box (L54, 16x AP mags)"
+	contains = list(
+		/obj/item/ammo_box/magazine/l54/ap,
+	)
+	cost = 30
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "\improper L54 AP magazines crate"
+	group = "Ammo"
+
+/datum/supply_packs/ammo_l54_mag_box_hp
+	name = "Magazine box (L54, 16x HP mags)"
+	contains = list(
+		/obj/item/ammo_box/magazine/l54/hp,
+	)
+	cost = 30
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "\improper L54 HP magazines crate"
 	group = "Ammo"

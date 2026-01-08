@@ -363,7 +363,7 @@
 			break
 
 	if(!istype(T_src) || !istype(T_int) || !istype(T_trg))
-		message_admins(SPAN_WARNING("Error with shuttles: Reference turfs not correctly instantiated. Code: MSD04.\n WARNING: DROPSHIP LAUNCH WILL FAIL"))
+		message_admins(SPAN_WARNING("Error with shuttles: Reference turfs not correctly instantiated. Code: MSD04.\n WARNING: DROPSHIP LAUNCH WILL FAIL."))
 
 	SSoldshuttle.shuttle_controller.locs_crash[target_section] -= T_trg
 
@@ -447,12 +447,12 @@
 
 	shake_cameras(turfs_int) //shake for 1.5 seconds before crash, 0.5 after
 
-	for(var/obj/structure/machinery/power/apc/A in GLOB.machines) //break APCs
-		if(A.z != T_trg.z)
+	for(var/obj/structure/machinery/power/apc/controller in GLOB.machines) //break APCs
+		if(!is_mainship_level(controller.z))
 			continue
-		if(prob(A.crash_break_probability))
-			A.overload_lighting()
-			A.set_broken()
+		if(prob(controller.crash_break_probability))
+			controller.overload_lighting()
+			controller.set_broken()
 
 	var/turf/sploded
 	var/explonum = rand(10,15)
@@ -555,7 +555,7 @@
 
 	//Switch the landmarks so we can do this again
 	if(!istype(T_src) || !istype(T_trg))
-		message_admins(SPAN_WARNING("Error with shuttles: Ref turfs are null. Code: MSD15.\n WARNING: DROPSHIPS MAY NO LONGER BE OPERABLE"))
+		message_admins(SPAN_WARNING("Error with shuttles: Ref turfs are null. Code: MSD15.\n WARNING: DROPSHIPS MAY NO LONGER BE OPERABLE."))
 		return FALSE
 
 	locs_dock -= T_src

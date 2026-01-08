@@ -10,11 +10,13 @@
 
 	logging_ckey = client.ckey
 	persistent_ckey = client.ckey
+	persistent_username = username()
 
 	if(client.player_data)
 		client.player_data.playtime_start = world.time
 
 	GLOB.player_list |= src
+	set_logged_in_mob()
 
 	update_Login_details()
 
@@ -60,7 +62,13 @@
 
 	client.init_verbs()
 	client.set_right_click_menu_mode(shift_only = FALSE)
+	client.tgui_say?.load()
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MOB_LOGGED_IN, src)
 	SEND_SIGNAL(client, COMSIG_CLIENT_MOB_LOGGED_IN, src)
 	SEND_SIGNAL(src, COMSIG_MOB_LOGGED_IN)
+	if(client?.prefs.main_cursor)
+		update_cursor()
+
+/mob/proc/set_logged_in_mob()
+	GLOB.ckey_to_occupied_mob[client.ckey] = src

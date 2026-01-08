@@ -11,12 +11,14 @@
 
 //Returns the thing in our inactive hand
 /mob/proc/get_inactive_hand()
+	RETURN_TYPE(/obj/item)
 	if(hand)
 		return r_hand
 	else
 		return l_hand
 
 /mob/proc/get_hands()
+	RETURN_TYPE(/obj/item)
 	if(hand)
 		return list(l_hand, r_hand)
 	else
@@ -32,35 +34,37 @@
 	return handen.Find(I)
 
 //Puts the item into your l_hand if possible and calls all necessary triggers/updates. returns 1 on success.
-/mob/proc/put_in_l_hand(obj/item/W)
-	if(!istype(W))
+/mob/proc/put_in_l_hand(obj/item/moved_item)
+	if(!istype(moved_item))
 		return FALSE
 	if(!l_hand)
-		if(W.loc == src && !(W.flags_item & DELONDROP))
-			W.dropped(src)
-		W.pickup(src)
-		W.forceMove(src)
-		l_hand = W
-		W.layer = ABOVE_HUD_LAYER
-		W.plane = ABOVE_HUD_PLANE
-		W.equipped(src,WEAR_L_HAND)
+		if(moved_item.loc == src && !(moved_item.flags_item & DELONDROP))
+			moved_item.dropped(src)
+		if(!moved_item.pickup(src))
+			return FALSE
+		moved_item.forceMove(src)
+		l_hand = moved_item
+		moved_item.layer = ABOVE_HUD_LAYER
+		moved_item.plane = ABOVE_HUD_PLANE
+		moved_item.equipped(src,WEAR_L_HAND)
 		update_inv_l_hand()
 		return TRUE
 	return FALSE
 
 //Puts the item into your r_hand if possible and calls all necessary triggers/updates. returns 1 on success.
-/mob/proc/put_in_r_hand(obj/item/W)
-	if(!istype(W))
+/mob/proc/put_in_r_hand(obj/item/moved_item)
+	if(!istype(moved_item))
 		return FALSE
 	if(!r_hand)
-		if(W.loc == src && !(W.flags_item & DELONDROP))
-			W.dropped(src)
-		W.pickup(src)
-		W.forceMove(src)
-		r_hand = W
-		W.layer = ABOVE_HUD_LAYER
-		W.plane = ABOVE_HUD_PLANE
-		W.equipped(src,WEAR_R_HAND)
+		if(moved_item.loc == src && !(moved_item.flags_item & DELONDROP))
+			moved_item.dropped(src)
+		if(!moved_item.pickup(src))
+			return FALSE
+		moved_item.forceMove(src)
+		r_hand = moved_item
+		moved_item.layer = ABOVE_HUD_LAYER
+		moved_item.plane = ABOVE_HUD_PLANE
+		moved_item.equipped(src,WEAR_R_HAND)
 		update_inv_r_hand()
 		return TRUE
 	return FALSE

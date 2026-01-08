@@ -1,6 +1,6 @@
 /obj/effect/spawner/random
 	name = "Random Object"
-	desc = "This item type is used to spawn random objects at round-start"
+	desc = "This item type is used to spawn random objects at round-start."
 	icon = 'icons/landmarks.dmi'
 	icon_state = "x3"
 	var/spawn_nothing_percentage = 0 // this variable determines the likelyhood that this random object will not spawn anything
@@ -38,7 +38,7 @@
 
 /obj/effect/spawner/random/tool
 	name = "Random Tool"
-	desc = "This is a random tool"
+	desc = "This is a random tool."
 	icon_state = "random_tool"
 
 /obj/effect/spawner/random/tool/item_to_spawn()
@@ -125,7 +125,7 @@
 
 /obj/effect/spawner/random/attachment
 	name = "Random Attachment"
-	desc = "This is a random attachment"
+	desc = "This is a random attachment."
 	icon_state = "random_attachment"
 
 /obj/effect/spawner/random/attachment/item_to_spawn()
@@ -229,14 +229,14 @@
 				/obj/item/toy/sword,\
 				/obj/item/reagent_container/food/snacks/grown/ambrosiadeus,\
 				/obj/item/reagent_container/food/snacks/grown/ambrosiavulgaris,\
-				/obj/item/clothing/accessory/horrible,\
+				/obj/item/clothing/accessory/tie/horrible,\
 				/obj/item/clothing/shoes/slippers,\
 				/obj/item/clothing/shoes/slippers_worn,\
 				/obj/item/clothing/head/collectable/tophat/super)
 
 /obj/effect/spawner/random/pills
 	name = "Pill Bottle Loot Spawner" // 60% chance for strong loot
-	desc = "This is a random pill bottle, for survivors. Remember to set spawn nothing percentage chance in instancing"
+	desc = "This is a random pill bottle, for survivors. Remember to set spawn nothing percentage chance in instancing."
 	icon_state = "loot_pills"
 
 /obj/effect/spawner/random/pills/item_to_spawn()
@@ -248,6 +248,7 @@
 				prob(3);/obj/item/storage/pill_bottle/bicaridine/skillless,\
 				prob(3);/obj/item/storage/pill_bottle/kelotane/skillless,\
 				prob(3);/obj/item/storage/pill_bottle/peridaxon/skillless,\
+				prob(2);/obj/item/storage/pill_bottle/oxycodone/skillless,\
 				prob(2);/obj/item/storage/pill_bottle/packet/oxycodone)
 
 /obj/effect/spawner/random/pills/lowchance
@@ -264,15 +265,11 @@
 
 /obj/effect/spawner/random/goggles
 	name = "Goggles Loot Spawner"
-	desc = "This is a random set of goggles, for survivors. Remember to set spawn nothing percentage chance in instancing"
+	desc = "This is a random set of goggles, for survivors. Remember to set spawn nothing percentage chance in instancing."
 	icon_state = "loot_goggles"
 
 /obj/effect/spawner/random/goggles/item_to_spawn()
-	return pick(prob(4);/obj/item/clothing/glasses/thermal/syndi/bug_b_gone,\
-				prob(4);/obj/item/clothing/glasses/thermal/syndi,\
-				prob(4);/obj/item/clothing/glasses/thermal/monocle,\
-				prob(4);/obj/item/clothing/glasses/thermal/eyepatch,\
-				prob(4);/obj/item/clothing/glasses/welding/superior,\
+	return pick(prob(4);/obj/item/clothing/glasses/welding/superior,\
 				prob(4);/obj/item/clothing/glasses/hud/security/jensenshades,\
 				prob(4);/obj/item/clothing/glasses/meson/refurbished,\
 				prob(4);/obj/item/clothing/glasses/science,\
@@ -293,7 +290,7 @@
 
 /obj/effect/spawner/random/sentry
 	name = "sentry Loot Spawner"
-	desc = "This is a random sentry, for survivors. Remember to set spawn nothing percentage chance in instancing"
+	desc = "This is a random sentry, for survivors. Remember to set spawn nothing percentage chance in instancing."
 	icon_state = "loot_sentry"
 
 /obj/effect/spawner/random/sentry/item_to_spawn()
@@ -322,7 +319,7 @@
 
 /obj/effect/spawner/random/gun
 	name = "PARENT TYPE"
-	desc = "don't spawn this"
+	desc = "Don't spawn this."
 	icon_state = "map_hazard"
 	var/scatter = TRUE
 	var/mags_max = 5
@@ -380,7 +377,7 @@
 
 /obj/effect/spawner/random/gun/pistol
 	name = "pistol loot spawner"
-	desc = "spawns a surv pistol and some ammo"
+	desc = "Spawns a surv pistol and some ammo."
 	icon_state = "loot_pistol"
 	mags_max = 4
 	mags_min = 1
@@ -417,7 +414,7 @@
 
 /obj/effect/spawner/random/gun/rifle
 	name = "rifle loot spawner"
-	desc = "spawns a surv rifle and some ammo"
+	desc = "Spawns a surv rifle and some ammo."
 	icon_state = "loot_rifle"
 	guns = list(
 		/obj/item/weapon/gun/boltaction = /obj/item/ammo_magazine/rifle/boltaction,
@@ -451,7 +448,7 @@
 
 /obj/effect/spawner/random/gun/shotgun
 	name = "shotgun loot spawner"
-	desc = "spawns a surv shotgun and some ammo"
+	desc = "Spawns a surv shotgun and some ammo."
 	icon_state = "loot_shotgun"
 	mags_min = 1
 	mags_max = 2
@@ -483,7 +480,7 @@
 
 /obj/effect/spawner/random/gun/smg
 	name = "smg loot spawner"
-	desc = "spawns a surv smg and some ammo"
+	desc = "Spawns a surv smg and some ammo."
 	icon_state = "loot_smg"
 	guns = list(
 		/obj/item/weapon/gun/smg/mp5 = /obj/item/ammo_magazine/smg/mp5,
@@ -516,7 +513,7 @@
 
 /obj/effect/spawner/random/gun/special
 	name = "special gun loot spawner"
-	desc = "spawns a surv special gun and some ammo"
+	desc = "Spawns a surv special gun and some ammo."
 	icon_state = "loot_special"
 	guns = list(
 		/obj/item/weapon/gun/rifle/mar40/lmg = /obj/item/ammo_magazine/rifle/mar40/lmg,
@@ -525,7 +522,7 @@
 		/obj/item/weapon/gun/rifle/m41a = /obj/item/ammo_magazine/rifle,
 		/obj/item/weapon/gun/shotgun/combat = null,
 		/obj/item/weapon/gun/pistol/vp78 = /obj/item/ammo_magazine/pistol/vp78,
-		/obj/item/weapon/gun/launcher/grenade/m81/m79 = null
+		/obj/item/weapon/gun/launcher/grenade/m81/m85a1 = null
 		)
 
 /obj/effect/spawner/random/gun/special/lowchance

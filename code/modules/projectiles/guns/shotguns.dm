@@ -1398,7 +1398,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_5
 	scatter_unwielded = SCATTER_AMOUNT_TIER_2
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_1
-	recoil = RECOIL_AMOUNT_TIER_4
+	recoil = RECOIL_AMOUNT_TIER_3
 	recoil_unwielded = RECOIL_AMOUNT_TIER_1
 
 	// DUAL-TUBE SHOTGUNS ----------------------------------------

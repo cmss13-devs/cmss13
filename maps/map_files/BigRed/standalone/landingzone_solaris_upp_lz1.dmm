@@ -1,7 +1,4 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"aa" = (
-/turf/closed/wall/solaris/rock,
-/area/event/metal/dynamic/lit)
 "ai" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement_sunbleached,
@@ -704,9 +701,6 @@
 	},
 /turf/open/floor/whitegreen/northeast,
 /area/event/metal/dynamic/lit)
-"td" = (
-/turf/closed/wall/solaris/reinforced,
-/area/bigredv2/caves)
 "ti" = (
 /obj/structure/barricade/metal/wired{
 	brute_multiplier = 0.05;
@@ -934,9 +928,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic/lit)
-"yS" = (
-/turf/open/floor/asteroidfloor/north,
-/area/bigredv2/caves)
 "yX" = (
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves)
@@ -1304,9 +1295,6 @@
 /obj/structure/platform/metal/almayer/west,
 /turf/open/floor/plating/asteroidwarning/east,
 /area/event/metal/dynamic/lit)
-"MH" = (
-/turf/closed/wall/solaris/rock,
-/area/bigredv2/caves_research)
 "MK" = (
 /obj/item/trash/sosjerky{
 	pixel_x = -12;
@@ -1637,9 +1625,6 @@
 "Yd" = (
 /turf/open/floor/asteroidwarning/southwest,
 /area/bigredv2/outside/s)
-"Yl" = (
-/turf/closed/wall/solaris/reinforced/hull,
-/area/event/metal/dynamic/lit)
 "Ym" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/event/metal/dynamic/lit)
@@ -1683,9 +1668,6 @@
 	},
 /turf/open/floor/plating/asteroidwarning/west,
 /area/event/metal/dynamic/lit)
-"ZK" = (
-/turf/closed/wall/solaris/reinforced/hull,
-/area/bigredv2/caves_research)
 "ZM" = (
 /obj/effect/decal/strata_decals/grime/grime4,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
@@ -1725,14 +1707,14 @@ Az
 Az
 Az
 Az
-MH
-MH
-MH
-MH
-MH
-MH
-MH
-MH
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
 rJ
 Az
 Az
@@ -1788,13 +1770,13 @@ Az
 Az
 Az
 Az
-ZK
+Kn
 tM
-MH
-MH
-MH
+Az
+Az
+Az
 tM
-ZK
+Kn
 Az
 Az
 Az
@@ -1851,13 +1833,13 @@ Az
 Az
 Az
 Az
-ZK
+Kn
 tM
 tM
 tM
 tM
 tM
-ZK
+Kn
 Az
 Az
 Az
@@ -1977,13 +1959,13 @@ oh
 oh
 oh
 oh
-Yl
+Kn
 bw
 UW
 mu
 nV
 AF
-Yl
+Kn
 oh
 oh
 oh
@@ -2000,7 +1982,7 @@ oh
 oh
 oh
 oh
-yS
+oh
 Kn
 Az
 Az
@@ -2065,16 +2047,16 @@ oh
 hW
 Kn
 Kn
-Yl
-aa
-aa
-aa
-aa
-aa
-aa
-Yl
-Yl
-ZK
+Kn
+Az
+Az
+Az
+Az
+Az
+Az
+Kn
+Kn
+Kn
 PL
 tM
 WT
@@ -2135,7 +2117,7 @@ oh
 oh
 oh
 oh
-Yl
+Kn
 PV
 WT
 tM
@@ -2198,7 +2180,7 @@ Ym
 Ym
 Ym
 Ym
-Yl
+Kn
 PV
 tM
 tM
@@ -2261,7 +2243,7 @@ xn
 xn
 xn
 xn
-Yl
+Kn
 PV
 tM
 tM
@@ -2324,7 +2306,7 @@ bx
 bx
 bx
 bx
-Yl
+Kn
 PV
 tM
 tM
@@ -2387,7 +2369,7 @@ oh
 oh
 oh
 oh
-Yl
+Kn
 PV
 WT
 tM
@@ -2441,18 +2423,18 @@ xf
 xn
 mv
 Kb
-Yl
 Kn
-Yl
-aa
-aa
-aa
-aa
-aa
-aa
-Yl
-Yl
-ZK
+Kn
+Kn
+Az
+Az
+Az
+Az
+Az
+Az
+Kn
+Kn
+Kn
 tM
 tM
 tM
@@ -3545,7 +3527,7 @@ QG
 mP
 Aw
 mt
-td
+ic
 Az
 Az
 Az

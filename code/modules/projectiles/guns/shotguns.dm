@@ -1381,6 +1381,10 @@ can cause issues with ammo types getting mixed up during the burst.
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/shotguns.dmi'
 	icon_state = "mk481"
 	item_state = "mk481"
+	pixel_x = -10
+	hud_offset = -10
+	auto_retrieval_slot = WEAR_BACK
+	flags_equip_slot = SLOT_BACK
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/mk481 // 4+1 max
 	attachable_allowed = list()
 

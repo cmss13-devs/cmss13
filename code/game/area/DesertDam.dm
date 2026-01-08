@@ -290,6 +290,10 @@
 	name = "Sand Temple"
 	icon_state = "green"
 
+/area/desert_dam/interior/caves/pred_ship
+	name = "Unknown Vessel"
+	icon_state = "red"
+
 //BUILDING
 //areas not under rock
 // ceiling = CEILING_METAL

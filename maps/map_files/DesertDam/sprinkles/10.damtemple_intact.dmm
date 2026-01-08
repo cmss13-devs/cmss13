@@ -427,9 +427,6 @@
 	},
 /turf/open/floor/strata/grey_multi_tiles,
 /area/desert_dam/interior/caves/temple)
-"Co" = (
-/turf/open/desert/dirt/rock1,
-/area/desert_dam/interior/caves/temple)
 "CC" = (
 /obj/structure/platform_decoration/stone/runed_sandstone/north,
 /turf/open/floor/sandstone/runed,
@@ -678,16 +675,16 @@ an
 an
 an
 an
-an
-an
-an
-an
-an
-an
-an
-an
-an
-an
+vb
+vb
+vb
+vb
+vb
+vb
+vb
+vb
+vb
+vb
 MH
 MH
 MH
@@ -704,7 +701,7 @@ an
 an
 an
 an
-Co
+vb
 vb
 vb
 vb

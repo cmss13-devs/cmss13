@@ -427,6 +427,11 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
+"abb" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/item/map/galaxy,
+/turf/open/floor/carpet,
+/area/almayer/command/cicconference)
 "abc" = (
 /obj/structure/machinery/power/apc/almayer/east,
 /turf/open/floor/plating/plating_catwalk,
@@ -4519,10 +4524,11 @@
 /turf/open/floor/almayer/green/north,
 /area/almayer/hallways/upper/fore_hallway)
 "akq" = (
-/obj/structure/surface/table/reinforced/black,
-/obj/item/map/galaxy,
-/turf/open/floor/carpet,
-/area/almayer/command/cicconference)
+/obj/structure/sign/third_fleet_info{
+	pixel_y = 29
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/command/cic)
 "akr" = (
 /turf/open/floor/almayer/plating_striped/west,
 /area/almayer/shipboard/port_point_defense)
@@ -4610,18 +4616,6 @@
 "akG" = (
 /turf/open/floor/almayer/red/southeast,
 /area/almayer/command/cicconference)
-"akH" = (
-/obj/structure/sign/third_fleet_info{
-	pixel_y = 29
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/command/cic)
-"akI" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
-	pixel_y = -25
-	},
-/turf/open/floor/almayer/silver,
-/area/almayer/command/cic)
 "akJ" = (
 /turf/open/floor/almayer/plating_striped/west,
 /area/almayer/hallways/lower/port_midship_hallway)
@@ -49666,6 +49660,12 @@
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/underdeck/req)
+"gvq" = (
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_y = -25
+	},
+/turf/open/floor/almayer/silver,
+/area/almayer/command/cic)
 "gvu" = (
 /turf/open/floor/almayer/green/north,
 /area/almayer/hallways/upper/fore_hallway)
@@ -195545,7 +195545,7 @@ aAs
 aAs
 aDz
 iwW
-akq
+abb
 gwR
 sTm
 tdT
@@ -197506,7 +197506,7 @@ avY
 aAE
 aCq
 aBV
-akI
+gvq
 wVW
 lrW
 mqh
@@ -197912,7 +197912,7 @@ ssW
 qEk
 hrm
 wVW
-akH
+akq
 aqN
 tCT
 tCT

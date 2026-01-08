@@ -1375,6 +1375,30 @@ can cause issues with ammo types getting mixed up during the burst.
 		/obj/item/attachable/stock/synth/collapsible,
 	)
 
+/obj/item/weapon/gun/shotgun/pump/mk481
+	name = "\improper MK481 heavy shotgun"
+	desc = "The bulky, MK481, known to many as 'the broomstick', is an aging relic within the USCM arsenal. The MK481 weapons platform was developed as a crowd suppression device to equip USCM units with a less-lethal option compared to the Harrington Rifle of the time. The pump-action system chambered in 12-gauge (18.5mm) with an internal magazine capacity of 5 full length shells. Additional mechanisms allow the M481 to chamber and fire 18.5mm high dispersive shock grenades (HDSG), often referred to as 'firecrackers'."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/shotguns.dmi'
+	icon_state = "mk481"
+	item_state = "mk481"
+	current_mag = /obj/item/ammo_magazine/internal/shotgun/mk481 // 4+1 max
+	attachable_allowed = list()
+
+/obj/item/weapon/gun/shotgun/pump/mk481/set_gun_config_values()
+	..()
+	set_burst_amount(BURST_AMOUNT_TIER_1)
+	set_fire_delay(FIRE_DELAY_TIER_SHOTGUN_HEAVY)
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_10
+	scatter = SCATTER_AMOUNT_TIER_6
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_5
+	scatter_unwielded = SCATTER_AMOUNT_TIER_2
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_1
+	recoil = RECOIL_AMOUNT_TIER_4
+	recoil_unwielded = RECOIL_AMOUNT_TIER_1
+
+	// DUAL-TUBE SHOTGUNS ----------------------------------------
+
 /obj/item/weapon/gun/shotgun/pump/dual_tube
 	name = "generic dual-tube pump shotgun"
 	desc = "A twenty-round pump action shotgun with dual internal tube magazines. You can switch the active internal magazine by toggling the shotgun tube."

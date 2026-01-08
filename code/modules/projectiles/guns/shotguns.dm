@@ -1385,7 +1385,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	hud_offset = -10
 	auto_retrieval_slot = WEAR_BACK
 	flags_equip_slot = SLOT_BACK
-	fire_sound = 'sound/weapons/mk418_fire.ogg'
+	fire_sound = 'sound/weapons/mk481_fire.ogg'
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/mk481 // 4+1 max
 	attachable_allowed = list()
 

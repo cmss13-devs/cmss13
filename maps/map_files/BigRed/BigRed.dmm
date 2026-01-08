@@ -594,6 +594,9 @@
 "acl" = (
 /obj/structure/filingcabinet,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/structure/sign/calendar{
+	pixel_y = 30
+	},
 /turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
 "acm" = (
@@ -1333,6 +1336,12 @@
 /obj/structure/window/framed/solaris/reinforced,
 /turf/open/floor/plating,
 /area/bigredv2/caves/lambda/xenobiology)
+"afe" = (
+/obj/structure/sign/calendar/wy{
+	pixel_y = 30
+	},
+/turf/open/floor/wood,
+/area/bigredv2/caves/lambda/breakroom)
 "aff" = (
 /obj/effect/decal/cleanable/mucus,
 /obj/structure/surface/table,
@@ -1343,6 +1352,12 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
+"afh" = (
+/obj/structure/sign/calendar{
+	pixel_y = 30
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/telecomm)
 "afi" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Marshal Office Isolation"
@@ -1380,6 +1395,17 @@
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/vault2/west,
 /area/bigredv2/outside/marshal_office)
+"afo" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/outside/space_port_lz2)
+"afp" = (
+/obj/structure/machinery/landinglight/ds1{
+	dir = 8
+	},
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/asteroidwarning/west,
+/area/bigredv2/outside/space_port)
 "afr" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 4
@@ -3103,7 +3129,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves/lambda/xenobiology)
 "anl" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/plating,
 /area/bigredv2/caves/lambda/xenobiology)
 "anm" = (
@@ -3301,10 +3327,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/whitegreenfull,
 /area/bigredv2/caves/lambda/xenobiology)
-"aoe" = (
-/obj/item/explosive/grenade/custom/antiweed,
-/turf/open/floor/whitegreenfull,
-/area/bigredv2/caves/lambda/xenobiology)
 "aof" = (
 /turf/closed/wall/solaris,
 /area/bigredv2/outside/admin_building)
@@ -3338,7 +3360,7 @@
 /area/bigredv2/outside/marshal_office)
 "aom" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/item/clothing/suit/storage/lawyer/bluejacket,
+/obj/item/clothing/suit/storage/jacket/marine/lawyer/bluejacket,
 /turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
 "aon" = (
@@ -3546,7 +3568,7 @@
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/ne)
 "app" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/plating,
 /area/bigredv2/caves/lambda/xenobiology)
 "apq" = (
@@ -4153,7 +4175,7 @@
 /turf/open/floor/elevatorshaft/north,
 /area/bigredv2/caves/lambda/breakroom)
 "aso" = (
-/mob/living/simple_animal/corgi/puppy{
+/mob/living/simple_animal/big/corgi/puppy{
 	desc = "It's a corgi puppy. MISTER WIGGLES!! HE IS THE GREATEST!";
 	name = "\improper Mister Wiggles"
 	},
@@ -5278,11 +5300,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/whitegreen/east,
 /area/bigredv2/outside/medical)
-"axF" = (
-/obj/structure/barricade/wooden,
-/obj/structure/barricade/wooden,
-/turf/open/floor/asteroidwarning/east,
-/area/bigredv2/outside/n)
 "axG" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 4
@@ -5916,7 +5933,7 @@
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/ne)
 "aAM" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/engine,
 /area/bigredv2/caves/lambda/research)
 "aAN" = (
@@ -6264,7 +6281,7 @@
 /turf/open/floor/engine,
 /area/bigredv2/caves/lambda/research)
 "aCr" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/delivery,
 /area/bigredv2/caves/lambda/research)
 "aCs" = (
@@ -6310,7 +6327,7 @@
 /turf/open/floor/delivery,
 /area/bigredv2/caves/lambda/xenobiology)
 "aCz" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /obj/effect/decal/warning_stripes{
 	icon_state = "U-N"
 	},
@@ -7348,7 +7365,7 @@
 /turf/open/floor/carpet15_15/west,
 /area/bigredv2/outside/bar)
 "aIu" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aIv" = (
@@ -7902,7 +7919,7 @@
 /turf/open/floor/freezerfloor,
 /area/bigredv2/outside/hydroponics)
 "aKF" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/freezerfloor,
 /area/bigredv2/outside/hydroponics)
 "aKG" = (
@@ -8136,6 +8153,9 @@
 "aLJ" = (
 /obj/structure/filingcabinet,
 /obj/effect/landmark/objective_landmark/close,
+/obj/structure/sign/calendar{
+	pixel_y = 30
+	},
 /turf/open/floor/darkyellow2/north,
 /area/bigredv2/outside/engineering)
 "aLM" = (
@@ -10120,7 +10140,7 @@
 /turf/open/floor/whitebluefull/northeast,
 /area/bigredv2/outside/general_store)
 "aTQ" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor,
 /area/bigredv2/outside/general_store)
 "aTR" = (
@@ -12174,7 +12194,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/office_complex)
 "bdA" = (
-/obj/effect/decal/warning_stripes/uscm_logo/desat,
+/obj/structure/sign/prop1,
 /turf/open/floor,
 /area/bigredv2/outside/office_complex)
 "bdB" = (
@@ -12963,7 +12983,7 @@
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/c)
 "bhL" = (
-/obj/item/stack/repairable/gunlube,
+/obj/item/prop/helmetgarb/gunoil,
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/c)
 "bhT" = (
@@ -13254,7 +13274,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bkn" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bko" = (
@@ -13336,7 +13356,7 @@
 /turf/open/floor/darkyellow2/north,
 /area/bigredv2/outside/filtration_plant)
 "bkG" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/darkyellow2/north,
 /area/bigredv2/outside/filtration_plant)
 "bkH" = (
@@ -13472,7 +13492,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "blo" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -14204,7 +14224,7 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/engineering)
 "boL" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/darkyellow2/east,
 /area/bigredv2/outside/engineering)
@@ -14298,14 +14318,14 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/engineering)
 "bpi" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /obj/structure/machinery/light{
 	dir = 8
 	},
 /turf/open/floor/darkyellow2/west,
 /area/bigredv2/outside/engineering)
 "bpj" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/darkyellow2/east,
 /area/bigredv2/outside/engineering)
@@ -14384,7 +14404,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/bigredv2/outside/engineering)
 "bpC" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/darkyellow2/southeast,
 /area/bigredv2/outside/engineering)
 "bpD" = (
@@ -14394,7 +14414,7 @@
 /area/bigredv2/outside/engineering)
 "bpE" = (
 /obj/structure/surface/rack,
-/obj/item/device/analyzer,
+/obj/item/device/defibrillator/synthetic,
 /turf/open/floor/darkyellow2/north,
 /area/bigredv2/outside/engineering)
 "bpF" = (
@@ -15031,7 +15051,7 @@
 /area/bigredv2/outside/engineering)
 "bti" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/darkyellow2/east,
 /area/bigredv2/outside/engineering)
 "btj" = (
@@ -15068,7 +15088,7 @@
 /area/bigredv2/outside/engineering)
 "btB" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/darkyellow2/east,
 /area/bigredv2/outside/engineering)
 "btD" = (
@@ -15102,7 +15122,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -15268,7 +15288,7 @@
 /turf/open/mars_cave/mars_cave_23,
 /area/bigredv2/caves_se)
 "bvS" = (
-/obj/structure/machinery/power/port_gen/pacman/super,
+/obj/structure/machinery/power/power_generator/port_gen/pacman/super,
 /turf/open/floor/plating,
 /area/bigredv2/outside/lz2_south_cas)
 "bvV" = (
@@ -16116,6 +16136,9 @@
 "bzG" = (
 /obj/structure/surface/table,
 /obj/item/storage/fancy/vials/random,
+/obj/structure/sign/calendar/wy{
+	pixel_y = 30
+	},
 /turf/open/floor/darkblue2/north,
 /area/bigredv2/caves/eta/research)
 "bzH" = (
@@ -17664,7 +17687,7 @@
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "bRV" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/white,
 /area/bigredv2/outside/virology)
 "bSk" = (
@@ -19187,7 +19210,7 @@
 "dCb" = (
 /obj/effect/landmark/corpsespawner/security/marshal,
 /obj/effect/decal/cleanable/blood/oil,
-/obj/item/weapon/gun/launcher/grenade/m81/m79{
+/obj/item/weapon/gun/launcher/grenade/m81/m85a1{
 	pixel_x = -3;
 	pixel_y = -9
 	},
@@ -19329,9 +19352,7 @@
 /obj/structure/prop/invuln/minecart_tracks/bumper{
 	dir = 4
 	},
-/obj/item/ore/uranium{
-	desc = "You feel fuzzy just looking at it.... it's slightly lumanesant"
-	},
+/obj/item/ore/uranium,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "dIH" = (
@@ -20214,7 +20235,7 @@
 /turf/open/asphalt/cement,
 /area/bigredv2/outside/filtration_cave_cas)
 "eER" = (
-/obj/structure/machinery/power/port_gen/pacman/super,
+/obj/structure/machinery/power/power_generator/port_gen/pacman/super,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "eFh" = (
@@ -20286,7 +20307,7 @@
 /turf/open/floor/whiteyellowfull/east,
 /area/bigredv2/outside/office_complex)
 "eIN" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/darkyellow2/west,
 /area/bigredv2/outside/engineering/reactor)
@@ -20517,7 +20538,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
 "eTj" = (
-/obj/structure/reagent_dispensers/fueltank/gas,
+/obj/structure/reagent_dispensers/tank/fuel/gas,
 /turf/open/mars/mars_dirt_14,
 /area/bigredv2/outside/c)
 "eTm" = (
@@ -20766,6 +20787,9 @@
 "fhy" = (
 /obj/structure/bed/chair/comfy/blue{
 	dir = 8
+	},
+/obj/structure/sign/calendar/wy{
+	pixel_y = 30
 	},
 /turf/open/floor/carpet15_15/west,
 /area/bigredv2/outside/admin_building)
@@ -22030,7 +22054,7 @@
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/nw)
 "gyJ" = (
-/obj/structure/machinery/power/port_gen/pacman/super,
+/obj/structure/machinery/power/power_generator/port_gen/pacman/super,
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves/mining)
 "gyL" = (
@@ -22132,7 +22156,7 @@
 /turf/open/floor/red,
 /area/bigredv2/outside/lambda_cave_cas)
 "gFR" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/darkyellow2/east,
 /area/bigredv2/outside/engineering/reactor)
 "gGf" = (
@@ -22664,7 +22688,7 @@
 /turf/open/mars_cave/mars_cave_15,
 /area/bigredv2/caves_sw)
 "hkv" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/plating,
 /area/bigredv2/caves/eta/storage)
 "hkJ" = (
@@ -22999,7 +23023,7 @@
 /turf/open/mars_cave/mars_cave_6,
 /area/bigredv2/outside/lz2_south_cas)
 "hEK" = (
-/obj/structure/reagent_dispensers/fueltank/gas,
+/obj/structure/reagent_dispensers/tank/fuel/gas,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "hEN" = (
@@ -23078,7 +23102,7 @@
 /turf/open/floor/freezerfloor,
 /area/bigredv2/outside/dorms)
 "hHG" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/plating,
 /area/bigredv2/caves/eta/storage)
 "hIk" = (
@@ -23295,7 +23319,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/office_complex)
 "ian" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/structure/machinery/door_control{
 	id = "Cargonia";
 	name = "Storm Shutters";
@@ -23395,7 +23419,7 @@
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/n)
 "idM" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/darkyellow2/east,
 /area/bigredv2/outside/engineering)
 "idT" = (
@@ -24386,7 +24410,7 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/obj/structure/reagent_dispensers/fueltank/gas,
+/obj/structure/reagent_dispensers/tank/fuel/gas,
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "jlr" = (
@@ -24681,7 +24705,7 @@
 /turf/open/floor/darkyellow2/west,
 /area/bigredv2/outside/engineering)
 "jEx" = (
-/obj/structure/machinery/power/port_gen/pacman/super,
+/obj/structure/machinery/power/power_generator/port_gen/pacman/super,
 /turf/open/mars_cave/mars_cave_16,
 /area/bigredv2/caves/mining)
 "jEX" = (
@@ -26636,7 +26660,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/c)
 "lCt" = (
-/obj/structure/machinery/power/reactor/colony{
+/obj/structure/machinery/power/power_generator/reactor/colony{
 	name = "Reactor Turbine"
 	},
 /turf/open/floor/delivery,
@@ -26966,7 +26990,7 @@
 /turf/open/mars_cave/mars_cave_18,
 /area/bigredv2/caves_se)
 "lUM" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/plating,
 /area/bigredv2/caves/lambda/xenobiology)
 "lVr" = (
@@ -27018,7 +27042,7 @@
 /turf/open/floor/plating/platingdmg2/west,
 /area/bigredv2/caves/mining)
 "lYH" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/darkyellow2,
 /area/bigredv2/outside/filtration_plant)
 "lYP" = (
@@ -27298,10 +27322,10 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/c)
 "mnu" = (
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/item/ammo_casing/shell,
 /obj/item/ammo_casing/shell,
 /obj/effect/decal/cleanable/blood,
+/obj/item/weapon/gun/shotgun/double/with_stock,
 /turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "mnv" = (
@@ -28932,7 +28956,7 @@
 /turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "nXS" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /obj/item/reagent_container/food/drinks/cup{
 	pixel_x = -6;
 	pixel_y = 8
@@ -29444,7 +29468,7 @@
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "oxk" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor,
 /area/bigred/ground/garage_workshop)
 "oxp" = (
@@ -29672,7 +29696,7 @@
 	icon_state = "1-2-4";
 	name = "heavy duty power cable"
 	},
-/obj/structure/machinery/power/port_gen/pacman/super,
+/obj/structure/machinery/power/power_generator/port_gen/pacman/super,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "oJh" = (
@@ -32619,7 +32643,7 @@
 /turf/open/floor/asteroidwarning/north,
 /area/bigredv2/outside/lz2_south_cas)
 "rJR" = (
-/obj/structure/reagent_dispensers/fueltank/gas,
+/obj/structure/reagent_dispensers/tank/fuel/gas,
 /turf/open/mars_cave/mars_cave_15,
 /area/bigredv2/caves/mining)
 "rJW" = (
@@ -32993,11 +33017,11 @@
 /area/bigredv2/outside/medical)
 "rXy" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/structure/surface/table,
 /obj/item/ammo_magazine/handful/shotgun/buckshot/incendiary{
 	pixel_y = 12
 	},
+/obj/item/weapon/gun/shotgun/double/sawn,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "rXJ" = (
@@ -33736,7 +33760,7 @@
 /turf/open/mars_cave/mars_cave_9,
 /area/bigredv2/caves_sw)
 "sDO" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/darkyellow2/west,
 /area/bigredv2/outside/engineering/reactor)
 "sDZ" = (
@@ -34769,7 +34793,7 @@
 /turf/open/floor/whitegreen/north,
 /area/bigredv2/outside/marshal_office)
 "tHl" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/mars/mars_dirt_10,
 /area/bigredv2/outside/c)
 "tHH" = (
@@ -34974,7 +34998,6 @@
 "tQo" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/ore/uranium{
-	desc = "You feel fuzzy just looking at it.... it's slightly lumanesant";
 	pixel_x = -7;
 	pixel_y = 4
 	},
@@ -35021,18 +35044,14 @@
 /area/bigredv2/outside/c)
 "tRV" = (
 /obj/item/ore/uranium{
-	desc = "You feel fuzzy just looking at it.... it's slightly lumanesant";
 	pixel_x = -8;
 	pixel_y = 9
 	},
 /obj/item/ore/uranium{
-	desc = "You feel fuzzy just looking at it.... it's slightly lumanesant";
 	pixel_x = 4;
 	pixel_y = 15
 	},
-/obj/item/ore/uranium{
-	desc = "You feel fuzzy just looking at it.... it's slightly lumanesant"
-	},
+/obj/item/ore/uranium,
 /turf/open/mars_cave/mars_cave_14,
 /area/bigredv2/caves/mining)
 "tSY" = (
@@ -38740,6 +38759,9 @@
 	pixel_y = 6
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/calendar/wy{
+	pixel_y = 30
+	},
 /turf/open/floor,
 /area/bigredv2/outside/admin_building)
 "xLd" = (
@@ -38797,8 +38819,8 @@
 	pixel_y = 7
 	},
 /obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/item/reagent_container/food/snacks/packaged_burger,
+/obj/item/weapon/gun/shotgun/double/sawn,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "xNa" = (
@@ -38928,18 +38950,14 @@
 /area/bigredv2/caves/lambda/research)
 "xWr" = (
 /obj/item/ore/uranium{
-	desc = "You feel fuzzy just looking at it.... it's slightly lumanesant";
 	pixel_x = 4;
 	pixel_y = 15
 	},
 /obj/item/ore/uranium{
-	desc = "You feel fuzzy just looking at it.... it's slightly lumanesant";
 	pixel_x = -8;
 	pixel_y = 9
 	},
-/obj/item/ore/uranium{
-	desc = "You feel fuzzy just looking at it.... it's slightly lumanesant"
-	},
+/obj/item/ore/uranium,
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "xWz" = (
@@ -41021,7 +41039,7 @@ acA
 aas
 aas
 acQ
-ade
+afh
 ade
 ade
 aeb
@@ -46443,7 +46461,7 @@ aaT
 aap
 aav
 aaG
-aaT
+afp
 aap
 aav
 aaG
@@ -46957,7 +46975,7 @@ beP
 beP
 aSB
 tVp
-tVp
+afo
 tVp
 tVp
 bgX
@@ -58630,7 +58648,7 @@ alF
 alF
 alF
 alF
-axF
+asf
 asf
 alF
 akw
@@ -76202,7 +76220,7 @@ arG
 ara
 atf
 amk
-aqc
+afe
 aqc
 ass
 aqc
@@ -80750,7 +80768,7 @@ ali
 alW
 amT
 alW
-aoe
+alg
 alW
 alg
 aqn

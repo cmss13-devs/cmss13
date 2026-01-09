@@ -436,7 +436,7 @@ export const TargetAquisitionMfdPanel = (props: MfdProps) => {
                 tag: firemissionSelected?.mission_tag,
                 direction: strikeDirection
                   ? directionLookup[strikeDirection]
-                  : 1,
+                  : 0,
                 target_id: selectedTarget,
                 offset_x_value: fmXOffsetValue,
                 offset_y_value: fmYOffsetValue,

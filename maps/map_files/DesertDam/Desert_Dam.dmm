@@ -17917,6 +17917,23 @@
 /obj/item/device/flashlight/on,
 /turf/open/floor/plating,
 /area/desert_dam/interior/caves/east_caves)
+"bes" = (
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/platform_decoration/metal/hunter,
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 6
+	},
+/turf/open/shuttle/dropship/predship/mainfloor/direction_3,
+/area/desert_dam/interior/caves/pred_ship)
+"bet" = (
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/item/stack/cable_coil,
+/turf/open/shuttle/dropship/predship/red_glow,
+/area/desert_dam/interior/caves/pred_ship)
 "beu" = (
 /obj/item/stack/rods{
 	pixel_x = -5;
@@ -18862,6 +18879,10 @@
 /obj/structure/prop/hunter/fake_platform/hunter/east{
 	pixel_y = 5
 	},
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1
+	},
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
 /area/desert_dam/interior/caves/pred_ship)
 "bhb" = (
@@ -19442,6 +19463,12 @@
 /obj/effect/decal/sand_overlay/sand2/corner2{
 	dir = 1;
 	layer = 2.02
+	},
+/obj/item/weapon/shield/riot/yautja/ancient{
+	anchored = 1;
+	layer = 2.9;
+	pixel_x = 17;
+	pixel_y = 34
 	},
 /turf/open/shuttle/dropship/predship/mainfloor/direction_3/west,
 /area/desert_dam/interior/caves/pred_ship)
@@ -20294,6 +20321,24 @@
 /obj/effect/hunter/catwalk/hunter_grate,
 /obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/showcase{
+	desc = null;
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "smallmonitor";
+	name = "Monitor";
+	pixel_y = 23;
+	pixel_x = 10;
+	density = 0
+	},
+/obj/structure/showcase{
+	desc = null;
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "smallmonitor";
+	name = "Monitor";
+	pixel_y = 23;
+	pixel_x = -10;
+	density = 0
+	},
 /turf/open/shuttle/dropship/predship/red_glow,
 /area/desert_dam/interior/caves/pred_ship)
 "blp" = (
@@ -21171,6 +21216,18 @@
 	},
 /turf/open/desert/rock/deep/transition,
 /area/desert_dam/interior/caves/west_caves)
+"bnM" = (
+/obj/effect/hunter/rune{
+	dir = 1
+	},
+/obj/item/weapon/shield/riot/yautja/ancient{
+	anchored = 1;
+	layer = 2.9;
+	pixel_x = 17;
+	pixel_y = 34
+	},
+/turf/open/shuttle/dropship/predship/mainfloor/direction_3/west,
+/area/desert_dam/interior/caves/pred_ship)
 "bnN" = (
 /obj/structure/platform/metal/kutjevo_smooth_immune/east,
 /turf/open/floor/plating,
@@ -21892,6 +21949,10 @@
 /obj/structure/platform_decoration/metal/kutjevo_smooth_immune,
 /turf/open_space,
 /area/desert_dam/exterior/rock)
+"bpY" = (
+/obj/item/tool/shovel,
+/turf/open/desert/rock,
+/area/desert_dam/interior/caves/pred_ship)
 "bpZ" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
@@ -126663,7 +126724,7 @@ bgf
 bgQ
 bgF
 bgo
-bgf
+bes
 rfS
 rfS
 rfS
@@ -127585,7 +127646,7 @@ rfS
 rfS
 rfS
 rfS
-bfm
+bpY
 bfm
 bfm
 bgc
@@ -128525,7 +128586,7 @@ bjv
 bjn
 bgc
 bgc
-biN
+bnM
 biz
 bin
 bhY
@@ -129232,7 +129293,7 @@ bit
 bio
 bid
 bhO
-bhO
+bet
 bhA
 bhk
 bgN
@@ -129687,7 +129748,7 @@ bkt
 bgc
 bgc
 bgc
-bgc
+biY
 bjT
 bjh
 bjA

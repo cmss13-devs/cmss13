@@ -19262,18 +19262,6 @@
 	},
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_5/north,
 /area/desert_dam/interior/caves/pred_ship)
-"bif" = (
-/obj/effect/hunter/rune,
-/obj/effect/decal/sand_overlay/sand2/corner2{
-	dir = 1;
-	layer = ss
-	},
-/obj/effect/decal/sand_overlay/sand2/corner2{
-	dir = 1;
-	layer = 2.02
-	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_2,
-/area/desert_dam/interior/caves/pred_ship)
 "big" = (
 /obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/item/clipboard{
@@ -126479,7 +126467,7 @@ rfS
 rfS
 biH
 bip
-bif
+bjb
 bge
 bge
 bge

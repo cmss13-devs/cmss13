@@ -705,6 +705,9 @@
 	if(DEW.last_fired > world.time - DEW.firing_delay)
 		to_chat(weapon_operator, SPAN_WARNING("[DEW] just fired, wait for it to cool down."))
 		return FALSE
+	if(firemission_envelope.stat > FIRE_MISSION_STATE_IDLE && firemission_envelope.stat < FIRE_MISSION_STATE_COOLDOWN)
+		to_chat(weapon_operator, SPAN_WARNING("A Fire Mission is already underway."))
+		return FALSE
 
 	var/datum/cas_iff_group/cas_group = GLOB.cas_groups[faction]
 

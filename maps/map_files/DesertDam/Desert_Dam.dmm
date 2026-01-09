@@ -21171,9 +21171,6 @@
 	},
 /turf/open/desert/rock/deep/transition,
 /area/desert_dam/interior/caves/west_caves)
-"bnM" = (
-/turf/open/space/basic,
-/area/desert_dam/interior/caves/pred_ship)
 "bnN" = (
 /obj/structure/platform/metal/kutjevo_smooth_immune/east,
 /turf/open/floor/plating,
@@ -30688,7 +30685,7 @@
 /obj/item/clothing/under/marine/veteran/pmc/corporate/kutjevo,
 /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate,
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate,
-/obj/item/storage/belt/gun/m4a3/mod88,
+/obj/item/storage/belt/gun/m4a3/wy/mod88,
 /turf/open/floor/prison/red/southwest,
 /area/desert_dam/interior/lab_northeast/east_lab_west_entrance)
 "eOZ" = (
@@ -34055,7 +34052,7 @@
 /obj/structure/closet/secure_closet/security,
 /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate,
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate,
-/obj/item/storage/belt/gun/m4a3/mod88,
+/obj/item/storage/belt/gun/m4a3/wy/mod88,
 /obj/item/clothing/under/marine/veteran/pmc/corporate/kutjevo,
 /turf/open/floor/prison/darkred2/east,
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
@@ -51529,7 +51526,7 @@
 /obj/item/clothing/under/marine/veteran/pmc/corporate/kutjevo,
 /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate,
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate,
-/obj/item/storage/belt/gun/m4a3/mod88,
+/obj/item/storage/belt/gun/m4a3/wy/mod88,
 /turf/open/floor/prison/red/southeast,
 /area/desert_dam/interior/lab_northeast/east_lab_east_entrance)
 "mRS" = (
@@ -51783,7 +51780,7 @@
 /obj/item/clothing/under/marine/veteran/pmc/corporate/kutjevo,
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate,
 /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate,
-/obj/item/storage/belt/gun,
+/obj/item/storage/belt/gun/m4a3/wy,
 /turf/open/floor/prison/darkred2/northwest,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "mWV" = (
@@ -52786,7 +52783,7 @@
 /obj/structure/closet/secure_closet/security,
 /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate/lead,
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/lead,
-/obj/item/storage/belt/gun/m4a3/mod88,
+/obj/item/storage/belt/gun/m4a3/wy/mod88,
 /obj/item/clothing/under/marine/veteran/pmc/corporate/kutjevo/lead{
 	desc = "An armored uniform worn by Weyland-Yutani corporate security members. This variant is more breathable for use in hot, dry environments and has gold armbands denoting the team leadsssssssssssssssssser."
 	},
@@ -59548,7 +59545,7 @@
 "pUb" = (
 /obj/structure/closet/secure_closet/security,
 /obj/item/clothing/under/marine/veteran/pmc/corporate/kutjevo,
-/obj/item/storage/belt/gun/m4a3/mod88,
+/obj/item/storage/belt/gun/m4a3/wy/mod88,
 /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate,
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate,
 /turf/open/floor/prison/darkred2/north,
@@ -129947,7 +129944,7 @@ bfU
 bfH
 bfm
 bfm
-bnM
+bfm
 bfm
 bfj
 rfS

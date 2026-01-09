@@ -211,8 +211,8 @@
 /obj/effect/landmark/objective_landmark/far,
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate,
 /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate,
-/obj/item/storage/belt/gun/m4a3/mod88,
 /obj/item/clothing/under/marine/veteran/pmc/corporate/kutjevo,
+/obj/item/storage/belt/gun/m4a3/wy,
 /turf/open/floor/prison/darkred2/northwest,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "sM" = (

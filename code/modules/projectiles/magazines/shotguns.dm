@@ -328,6 +328,7 @@ GLOBAL_LIST_INIT(shotgun_handfuls_12g, list(
 	default_ammo = /datum/ammo/bullet/shotgun/slug/hdsg
 	gun_type = /obj/item/weapon/gun/shotgun/pump/mk481
 	caliber = "18.5mm"
+	handful_state = "hdsg_shell"
 
 
 /obj/item/ammo_magazine/handful/shotgun/custom_color

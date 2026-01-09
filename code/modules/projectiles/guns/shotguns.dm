@@ -1383,15 +1383,14 @@ can cause issues with ammo types getting mixed up during the burst.
 	item_state = "mk481"
 	pixel_x = -10
 	hud_offset = -10
-	gauge = "12g"
-	caliber = "18.5mm"
+	gauge = list("12g","18.5mm")
 	auto_retrieval_slot = WEAR_BACK
 	flags_equip_slot = SLOT_BACK|SLOT_BLOCK_SUIT_STORE
 	force = MELEE_FORCE_STRONG
 	throwforce = MELEE_FORCE_WEAK
 	fire_sound = 'sound/weapons/mk481_fire.ogg'
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/mk481 // 4+1 max
-	attachable_allowed = list()
+	attachable_allowed = list() //too old to fit any modern attachies #balance
 
 /obj/item/weapon/gun/shotgun/pump/mk481/set_gun_config_values()
 	..()

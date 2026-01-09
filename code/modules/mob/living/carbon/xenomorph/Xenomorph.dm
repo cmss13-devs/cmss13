@@ -558,11 +558,15 @@
 	if(!flags)
 		flags = get_minimap_flag_for_faction(hivenumber)
 
-	var/image/background = image('icons/ui_icons/map_blips.dmi', null, caste.minimap_background)
-	var/image/xeno = image('icons/ui_icons/map_blips.dmi', null, caste.minimap_icon)
+	var/icon_file = 'icons/ui_icons/map_blips.dmi'
+	if(hivenumber == XENO_HIVE_PATHOGEN)
+		icon_file = 'icons/mob/pathogen/neo_blips.dmi'
+
+	var/image/background = image(icon_file, null, caste.minimap_background)
+	var/image/xeno = image(icon_file, null, caste.minimap_icon)
 	background.overlays += xeno
 	if(IS_XENO_LEADER(src))
-		var/image/overlay = image('icons/ui_icons/map_blips.dmi', null, "xenoleader")
+		var/image/overlay = image(icon_file, null, "xenoleader")
 		background.overlays += overlay
 		SSminimaps.add_marker(src, flags, background)
 		return

@@ -37,6 +37,13 @@
 	var/inuse_stun_time = 7 SECONDS
 	var/icon_state_inuse
 
+/obj/structure/weightmachine/attackby(obj/item/W, mob/user)
+	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH) && do_after(user, 2 SECONDS, BUSY_ICON_BUILD, src))
+		to_chat(user, SPAN_NOTICE("You [anchored ? "unwrench" : "wrench"] the bolts of [src]."))
+		anchored = !anchored
+		return
+	return ..()
+
 /obj/structure/weightmachine/proc/animate_machine(mob/living/user)
 	return
 
@@ -86,6 +93,9 @@
 		stoplag(9 DECISECONDS)
 		playsound(user, 'sound/effects/spring.ogg', 40, TRUE, 2)
 
+/obj/structure/weightmachine/stacklifter/unanchored
+	anchored = FALSE
+
 /obj/structure/weightmachine/weightlifter
 	icon = 'icons/obj/structures/fitness.dmi'
 	icon_state = "fitnessweight"
@@ -106,6 +116,9 @@
 	animate(user, pixel_z = 2, time = 3, delay = 3)
 	stoplag(6 DECISECONDS)
 	overlays -= swole_overlay
+
+/obj/structure/weightmachine/weightlifter/unanchored
+	anchored = FALSE
 
 // Treadmill
 
@@ -184,15 +197,26 @@
 /obj/structure/machinery/treadmill/proc/move_thing(atom/thing)
 	step(thing, turn(dir, 180))
 
+/obj/structure/machinery/treadmill/console
+	dir = EAST
+
+/obj/structure/machinery/treadmill/console/inverted
+	dir = WEST
+
 /obj/structure/machinery/treadmill/console/Initialize(mapload, ...)
 	. = ..()
 	var/turf/back_turf = get_step(src, turn(dir, 180))
+	var/obj/structure/machinery/treadmill/sec_half
 	for(var/obj/object in back_turf)
 		if(object.type == /obj/structure/machinery/treadmill)
-			var/obj/structure/machinery/treadmill/sec_half = object
+			sec_half = object
 			second_half_ref = WEAKREF(sec_half)
 			sec_half.second_half_ref = WEAKREF(src)
 			return
+	// If we didn't find a back-treadmill create one
+	sec_half = new(back_turf)
+	second_half_ref = WEAKREF(sec_half)
+	sec_half.second_half_ref = WEAKREF(src)
 
 /obj/structure/machinery/treadmill/console/update_icon()
 	overlays.Cut()

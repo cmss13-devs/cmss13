@@ -490,6 +490,8 @@
 /obj/item/tool/dumbbell
 	name = "dumbbell"
 	desc = "Lift it for strength, or drop it on your toe for instant enlightenment, either way this dumbbell delivers results."
+	force = 12
+	throwforce = 12
 	icon_state = "dumbbell"
 	item_state = "dumbbell"
 	icon = 'icons/obj/items/tools.dmi'

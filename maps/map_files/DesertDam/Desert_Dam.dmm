@@ -19262,6 +19262,10 @@
 	},
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_5/north,
 /area/desert_dam/interior/caves/pred_ship)
+"bif" = (
+/mob/living/simple_animal/small/mouse/rat/white,
+/turf/open/floor/prison/southwest,
+/area/desert_dam/building/medical/virology_isolation)
 "big" = (
 /obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/item/clipboard{
@@ -60067,10 +60071,6 @@
 	},
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/water_treatment_one/hallway)
-"qdg" = (
-/mob/living/simple_animal/mouse/rat/white,
-/turf/open/floor/prison/southwest,
-/area/desert_dam/building/medical/virology_isolation)
 "qdh" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/powercell,
@@ -64588,10 +64588,10 @@
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/interior/dam_interior/workshop)
 "rPJ" = (
-/mob/living/simple_animal/mouse/rat/white,
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/mob/living/simple_animal/small/mouse/rat/white,
 /turf/open/floor/prison/southwest,
 /area/desert_dam/building/medical/virology_isolation)
 "rPX" = (
@@ -77217,7 +77217,6 @@
 /area/desert_dam/interior/dam_interior/hangar_storage)
 "wNh" = (
 /obj/effect/decal/cleanable/dirt,
-/mob/living/simple_animal/mouse/rat/white,
 /turf/open/floor/prison/southwest,
 /area/desert_dam/building/medical/virology_isolation)
 "wNC" = (
@@ -230411,7 +230410,7 @@ bhG
 dsS
 dsS
 vIS
-qdg
+pwE
 pwE
 vIS
 joZ
@@ -230646,7 +230645,7 @@ aff
 dsS
 vIS
 dEG
-pwE
+bif
 hYy
 oWs
 iyb
@@ -231113,8 +231112,8 @@ ipW
 bhG
 dsS
 vIS
-qdg
-pwE
+bif
+bif
 vyK
 fAr
 qiQ

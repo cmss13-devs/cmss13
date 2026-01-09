@@ -1,5 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - rscadd: "Static comms are available to more gamemodes including extended"
-  - code_imp: "static_comms_amount variable on a gamemode is now per individual tower vs pairs of towers"

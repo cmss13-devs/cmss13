@@ -8,6 +8,10 @@ import type { EquipmentContext, MGSpec } from './types';
 
 const MgPanel = (props: DropshipEquipment) => {
   const mgData = props.data as MGSpec;
+  const ammoReadout =
+    mgData.rounds === null || mgData.rounds === undefined
+      ? 'DEPLETED'
+      : mgData.rounds + ' / ' + mgData.max_rounds;
 
   return (
     <Stack>
@@ -25,9 +29,7 @@ const MgPanel = (props: DropshipEquipment) => {
             </h3>
           </Stack.Item>
           <Stack.Item>
-            <h3>
-              Ammo: {mgData.rounds} / {mgData.max_rounds}
-            </h3>
+            <h3>Ammo: {ammoReadout}</h3>
           </Stack.Item>
           <Stack.Item>
             <h3>

@@ -8,6 +8,10 @@ import type { EquipmentContext, SentrySpec } from './types';
 
 const SentryPanel = (props: DropshipEquipment) => {
   const sentryData = props.data as SentrySpec;
+  const ammoReadout =
+    sentryData.rounds === null || sentryData.rounds === undefined
+      ? 'DEPLETED'
+      : sentryData.rounds + ' / ' + sentryData.max_rounds;
   return (
     <Stack>
       <Stack.Item width="100px">
@@ -24,9 +28,7 @@ const SentryPanel = (props: DropshipEquipment) => {
             </h3>
           </Stack.Item>
           <Stack.Item>
-            <h3>
-              Ammo: {sentryData.rounds} / {sentryData.max_rounds}
-            </h3>
+            <h3>Ammo: {ammoReadout}</h3>
           </Stack.Item>
           <Stack.Item>
             <h3>

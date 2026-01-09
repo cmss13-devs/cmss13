@@ -26,6 +26,10 @@ const WeaponPanel = (props: {
   readonly equipment: DropshipEquipment;
 }) => {
   const { data } = useBackend<EquipmentContext>();
+  const ammoReadout =
+    props.equipment.ammo === null || props.equipment.ammo === undefined
+      ? 'DEPLETED'
+      : props.equipment.ammo + ' / ' + props.equipment.max_ammo;
 
   return (
     <Stack>
@@ -82,9 +86,7 @@ const WeaponPanel = (props: {
               <h3>{props.equipment.ammo_name}</h3>
             </Stack.Item>
             <Stack.Item>
-              <h3>
-                Ammo {props.equipment.ammo} / {props.equipment.max_ammo}
-              </h3>
+              <h3>Ammo {ammoReadout}</h3>
             </Stack.Item>
           </Stack>
         </Box>

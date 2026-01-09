@@ -54,6 +54,25 @@
 	penetration = ARMOR_PENETRATION_TIER_8
 	accuracy = HIT_ACCURACY_TIER_5
 
+/datum/ammo/bullet/shotgun/slug/hdsg
+	name = "18.5mm high-dispersive shock grenade"
+	icon_state = "hdsg"
+	handful_state = "hdsg"
+	damage = 40
+	penetration = ARMOR_PENETRATION_TIER_2
+	flags_ammo_behavior = AMMO_EXPLOSIVE|AMMO_BALLISTIC
+
+/datum/ammo/bullet/shotgun/slug/hdsg/on_hit_mob(mob/mob_target, obj/projectile/explosive_projectile)
+	cell_explosion(get_turf(mob_target), 20, 40, EXPLOSION_FALLOFF_SHAPE_LINEAR, explosive_projectile.dir, explosive_projectile.weapon_cause_data)
+
+/datum/ammo/bullet/shotgun/slug/hdsg/on_hit_obj(obj/object_target, obj/projectile/explosive_projectile)
+	cell_explosion(get_turf(object_target), 20, 40, EXPLOSION_FALLOFF_SHAPE_LINEAR, explosive_projectile.dir, explosive_projectile.weapon_cause_data)
+
+/datum/ammo/bullet/shotgun/slug/hdsg/on_hit_turf(turf/turf_target, obj/projectile/explosive_projectile)
+	if(turf_target.density)
+		cell_explosion(turf_target, 20, 40, EXPLOSION_FALLOFF_SHAPE_LINEAR, explosive_projectile.dir, explosive_projectile.weapon_cause_data)
+		create_shrapnel(turf_target, 3, 0, 200)
+
 /datum/ammo/bullet/shotgun/beanbag
 	name = "beanbag slug"
 	headshot_state = HEADSHOT_OVERLAY_LIGHT //It's not meant to kill people... but if you put it in your mouth, it will.

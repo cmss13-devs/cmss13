@@ -224,6 +224,7 @@ also doesn't really matter. You can only reload them with handfuls.
 
 /obj/item/ammo_magazine/internal/shotgun/mk481
 	max_rounds = 4
+	default_ammo = /datum/ammo/bullet/shotgun/buckshot
 
 /obj/item/ammo_magazine/internal/shotgun/buckshot
 	default_ammo = /datum/ammo/bullet/shotgun/buckshot
@@ -312,6 +313,13 @@ GLOBAL_LIST_INIT(shotgun_handfuls_12g, list(
 	icon_state = "incen_buckshot_5"
 	default_ammo = /datum/ammo/bullet/shotgun/buckshot/incendiary
 	handful_state = "incen_buckshot"
+
+/obj/item/ammo_magazine/handful/shotgun/hdsg
+	name = "handful of high-dispersive shock grenades (18.5mm)"
+	icon_state = "hdsg"
+	default_ammo = /datum/ammo/bullet/shotgun/slug/hdsg
+	gun_type = /obj/item/weapon/gun/shotgun/pump/mk481
+
 
 /obj/item/ammo_magazine/handful/shotgun/custom_color
 	name = "abstract handful custom type"

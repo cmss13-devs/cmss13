@@ -242,7 +242,7 @@ const ViewFiremissionMfdPanel = (
                   </Stack.Item>
                 </Stack>
               </Stack.Item>
-              <Stack.Item>
+              <Stack.Item width="100%">
                 <FiremissionView
                   panelStateId={props.panelStateId}
                   fm={firemission}
@@ -307,7 +307,7 @@ const FiremissionView = (props: MfdProps & { readonly fm: CasFiremission }) => {
       </Stack.Item>
       {!editFm &&
         weaponData.map((x) => (
-          <Stack.Item key={x.mount_point}>
+          <Stack.Item key={x.mount_point} grow>
             <FMOffsetStack
               displayDetail={displayDetail}
               fm={props.fm}
@@ -317,10 +317,16 @@ const FiremissionView = (props: MfdProps & { readonly fm: CasFiremission }) => {
           </Stack.Item>
         ))}
       {editFm && selectedWeapon === undefined && (
-        <Stack.Item>Select weapon on right panel</Stack.Item>
+        <Stack.Item grow>
+          <Stack vertical className="FireMissionStack">
+            <Stack.Item height="130px" />
+            <Divider />
+            <Stack.Item>Select weapon on right panel</Stack.Item>
+          </Stack>
+        </Stack.Item>
       )}
       {editFm && selectedWeapon && (
-        <Stack.Item key={selectedWeapon.mount_point}>
+        <Stack.Item grow key={selectedWeapon.mount_point}>
           <FMOffsetStack
             displayDetail={displayDetail}
             fm={props.fm}
@@ -439,9 +445,9 @@ const FMOffsetError = (
           equipment={props.equipment}
         />
       )}
-      <Stack.Item height="25px" />
+      <Stack.Item height="26px" />
       <Divider />
-      <Stack.Item className="FireMissionError">
+      <Stack.Item className="FireMissionError" width="100%">
         Unable to set firemission offsets.
         <br />
         Offsets depend on ammunition.

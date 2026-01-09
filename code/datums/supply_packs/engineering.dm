@@ -21,7 +21,7 @@
 /datum/supply_packs/metal
 	name = "metal sheets (x50)"
 	contains = list(/obj/item/stack/sheet/metal/large_stack)
-	cost = 20
+	cost = 25
 	containertype = /obj/structure/closet/crate/supply
 	containername = "metal sheets crate"
 	group = "Engineering"
@@ -29,7 +29,7 @@
 /datum/supply_packs/plas
 	name = "plasteel sheets (x40)"
 	contains = list(/obj/item/stack/sheet/plasteel/med_large_stack)
-	cost = 30
+	cost = 33
 	containertype = /obj/structure/closet/crate/supply
 	containername = "plasteel sheets crate"
 	group = "Engineering"

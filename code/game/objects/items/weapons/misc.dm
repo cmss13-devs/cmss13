@@ -146,7 +146,7 @@
 	user.visible_message(SPAN_RED("\The [user] raises the [src]."))
 	javelin_readied = TRUE
 	item_state = "javelin_w"
-	force = MELEE_FORCE_TIER_10
+	force = MELEE_FORCE_TIER_7
 	throw_range = 6
 
 /obj/item/weapon/javelin/proc/lower_javelin(mob/user as mob)

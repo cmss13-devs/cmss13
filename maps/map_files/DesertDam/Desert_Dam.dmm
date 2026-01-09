@@ -21914,11 +21914,6 @@
 /obj/structure/prop/dam/gravestone,
 /turf/open/desert/dirt/desert_transition_corner1/west,
 /area/desert_dam/exterior/valley/valley_hydro)
-"bpU" = (
-/obj/structure/platform/metal/kutjevo_smooth_immune/west,
-/obj/structure/platform/metal/kutjevo_smooth_immune/west,
-/turf/open_space,
-/area/desert_dam/exterior/rock)
 "bpV" = (
 /obj/structure/platform/metal/almayer/west,
 /obj/effect/decal/sand_overlay/sand2/corner2{
@@ -192157,16 +192152,16 @@ qaR
 qaR
 qaR
 hor
-bpW
-aVt
+hor
+hor
 iMy
 pGT
 nAy
 nAy
 hKm
 mEh
-bpU
-bpR
+hor
+hor
 hor
 qaR
 qaR

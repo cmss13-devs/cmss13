@@ -15,6 +15,7 @@
 	w_class = SIZE_MEDIUM
 
 	attack_verb = list("flogged", "whipped", "lashed", "disciplined")
+	shield_flags = CAN_SHIELD_BASH
 
 /obj/item/weapon/broken_bottle
 	name = "broken bottle"
@@ -86,3 +87,87 @@
 	name = "green throwing dart"
 	desc = "A dart. For throwing. This one's green."
 	icon_state = "green_dart"
+
+/obj/item/weapon/aquilastaff
+	name = "Aquila Staff"
+	desc = "A large prestigious staff used by Aquilifiers to rally the Roman troops. Can act as a blunt weapon in a pinch but is hard to carry around."
+	icon = 'icons/obj/items/weapons/melee/misc_64.dmi'
+	icon_state = "aquilastaff"
+	item_state = "aquilastaff"
+	inhand_x_dimension = 64
+	inhand_y_dimension = 64
+	item_icons = list(
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/64_weapons_righthand.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/64_weapons_lefthand.dmi'
+	)
+	flags_equip_slot = NO_FLAGS
+	force = MELEE_FORCE_TIER_6
+	throwforce = MELEE_FORCE_WEAK
+	throw_speed = SPEED_FAST
+	throw_range = 4
+	shield_flags = CAN_BLOCK_POUNCE
+	w_class = SIZE_MASSIVE
+	embeddable = FALSE
+	flags_item = ADJACENT_CLICK_DELAY
+	attack_verb = list("thwacked", "smacked")
+	attack_speed = 1 SECONDS
+	shield_type = SHIELD_ABSOLUTE
+	shield_chance = SHIELD_CHANCE_MED
+
+/obj/item/weapon/javelin
+	name = "Javelin"
+	desc = "A large spear used by Roman infantry units. Extremely deadly in the right hands but hard to carry around."
+	icon = 'icons/obj/items/weapons/melee/spears.dmi'
+	icon_state = "javelin"
+	item_state = "javelin"
+	inhand_x_dimension = 64
+	inhand_y_dimension = 64
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/64_weapons_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/64_weapons_righthand.dmi'
+	)
+	flags_equip_slot = NO_FLAGS
+	force = MELEE_FORCE_TIER_4
+	throwforce = 100 //Does high damage but can't be spammed
+	flags_item = ADJACENT_CLICK_DELAY
+	sharp = IS_SHARP_ITEM_SIMPLE
+	embeddable = FALSE
+	w_class = SIZE_MASSIVE
+	hitsound = 'sound/weapons/bladeslice.ogg'
+	attack_verb = list("speared", "stabbed", "impaled")
+	attack_speed = 1 SECONDS
+	throw_speed = SPEED_VERY_FAST
+	throw_range = 0
+	shield_type = SHIELD_NONE
+	shield_flags = CAN_SHIELD_BASH
+	var/javelin_readied = FALSE
+
+/obj/item/weapon/javelin/proc/raise_javelin(mob/user as mob)
+	user.visible_message(SPAN_RED("\The [user] raises the [src]."))
+	javelin_readied = TRUE
+	item_state = "javelin_w"
+	force = MELEE_FORCE_TIER_6
+	throw_range = 6
+
+/obj/item/weapon/javelin/proc/lower_javelin(mob/user as mob)
+	user.visible_message(SPAN_BLUE("\The [user] lowers the [src]."))
+	javelin_readied = FALSE
+	item_state = "javelin"
+	force = MELEE_FORCE_TIER_4
+	throw_range = 0
+
+/obj/item/weapon/javelin/proc/toggle_javelin(mob/user as mob)
+	if(javelin_readied)
+		lower_javelin(user)
+	else
+		raise_javelin(user)
+
+/obj/item/weapon/javelin/equipped(mob/user, slot)
+	if(javelin_readied)
+		lower_javelin(user)
+	..()
+
+/obj/item/weapon/javelin/attack_self(mob/user)
+	if(do_after(user, 3.5 SECONDS, (INTERRUPT_ALL & (~INTERRUPT_MOVED)) , BUSY_ICON_HOSTILE))
+		toggle_javelin(user)
+	..()

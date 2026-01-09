@@ -126,6 +126,7 @@
 #define CHAT_GHOSTHIVEMIND (1<<12)
 #define CHAT_NICHELOGS (1<<13)
 #define CHAT_LISTENINGBUG (1<<14)
+#define CHAT_GHOSTANNOUNCECLARITY (1<<15)
 
 //toggles_ghost
 #define GHOST_HEALTH_SCAN  (1<<0)
@@ -159,8 +160,10 @@
 #define PLAY_TWE (1<<1)
 #define PLAY_UPP (1<<2)
 #define PLAY_CLF (1<<3)
-#define PLAY_XENO_T2 (1<<4)
-#define PLAY_XENO_T3 (1<<5)
+#define PLAY_PMC (1<<4)
+#define PLAY_HUNT_MISC (1<<5)
+#define PLAY_XENO_T2 (1<<6)
+#define PLAY_XENO_T3 (1<<7)
 
 //toggles_admin
 /// Splits admin tabs in Statpanel
@@ -184,7 +187,7 @@
 
 #define TOGGLES_SURVIVOR_DEFAULT (PLAY_SURVIVOR_HOSTILE|PLAY_SURVIVOR_NON_HOSTILE)
 
-#define TOGGLES_ERT_GROUNDS (PLAY_MERC|PLAY_TWE|PLAY_UPP|PLAY_CLF|PLAY_XENO_T2|PLAY_XENO_T3)
+#define TOGGLES_ERT_GROUNDS (PLAY_MERC|PLAY_TWE|PLAY_UPP|PLAY_CLF|PLAY_PMC|PLAY_HUNT_MISC|PLAY_XENO_T2|PLAY_XENO_T3)
 
 #define TOGGLES_ADMIN_DEFAULT (ADMIN_AFK_SAFE)
 
@@ -500,8 +503,8 @@
 /// Minimum Y height up to which we keep dividing the tree (meaning cells can be half that)
 #define QUADTREE_BOUNDARY_MINIMUM_HEIGHT 12
 
-
-#define QTREE_EXCLUDE_OBSERVER 1
+/// Whether to filter to only living mobs
+#define QTREE_FILTER_LIVING 1
 
 /// Return mob list instead of client list.
 #define QTREE_SCAN_MOBS 2

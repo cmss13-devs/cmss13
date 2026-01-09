@@ -3327,10 +3327,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/whitegreenfull,
 /area/bigredv2/caves/lambda/xenobiology)
-"aoe" = (
-/obj/item/explosive/grenade/custom/antiweed,
-/turf/open/floor/whitegreenfull,
-/area/bigredv2/caves/lambda/xenobiology)
 "aof" = (
 /turf/closed/wall/solaris,
 /area/bigredv2/outside/admin_building)
@@ -4179,7 +4175,7 @@
 /turf/open/floor/elevatorshaft/north,
 /area/bigredv2/caves/lambda/breakroom)
 "aso" = (
-/mob/living/simple_animal/corgi/puppy{
+/mob/living/simple_animal/big/corgi/puppy{
 	desc = "It's a corgi puppy. MISTER WIGGLES!! HE IS THE GREATEST!";
 	name = "\improper Mister Wiggles"
 	},
@@ -80772,7 +80768,7 @@ ali
 alW
 amT
 alW
-aoe
+alg
 alW
 alg
 aqn

@@ -272,6 +272,7 @@
 	//music = "signal"
 	ambience_exterior = AMBIENCE_YAUTJA
 	ceiling = CEILING_METAL
+	powernet_name = "yautja_ship"
 	requires_power = FALSE
 	base_lighting_alpha = 155
 	base_lighting_color = "#ffc49c"

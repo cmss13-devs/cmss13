@@ -205,6 +205,21 @@
 	healthcheck(user)
 	return XENO_ATTACK_ACTION
 
+/obj/structure/restock_cart/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
+	if(unslashable || health <= 0)
+		return TAILSTAB_COOLDOWN_NONE
+	playsound(src, attacked_sound, 25, 1)
+	health -= xeno.melee_damage_upper
+	if(health <= 0)
+		xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
+		SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	else
+		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
+		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno.tail_stab_animation(src, blunt_stab)
+	healthcheck(xeno)
+	return TAILSTAB_COOLDOWN_NORMAL
+
 /obj/structure/restock_cart/ex_act(severity)
 	if(explo_proof)
 		return
@@ -341,7 +356,7 @@
 	return TRUE
 
 /// Attempts to consume our reagents needed for the container (doesn't actually change the container)
-/// Will return TRUE if reagents were deducated or no reagents were needed
+/// Will return TRUE if reagents were deducted or no reagents were needed
 /obj/structure/machinery/cm_vending/sorted/medical/proc/try_deduct_chem(obj/item/reagent_container/container, mob/user)
 	var/missing_reagents = container.reagents.maximum_volume - container.reagents.total_volume
 	if(missing_reagents <= 0)

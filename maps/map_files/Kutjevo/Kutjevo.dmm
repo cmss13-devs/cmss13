@@ -3216,7 +3216,7 @@
 /obj/structure/flora/bush/ausbushes/var3/ppflowers{
 	icon_state = "lavendergrass_1"
 	},
-/mob/living/simple_animal/cat/Runtime{
+/mob/living/simple_animal/small/cat/Runtime{
 	name = "Garry"
 	},
 /turf/open/gm/dirtgrassborder2/west,

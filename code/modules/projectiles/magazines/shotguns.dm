@@ -81,7 +81,7 @@ GLOBAL_LIST_INIT(shotgun_boxes_12g, list(
 	icon_state = "hdsg"
 	item_state = "hdsg"
 	max_rounds = 15
-	default_ammo = /datum/ammo/bullet/shotgun/slug/hdsg
+	default_ammo = /datum/ammo/bullet/shotgun/hdsg
 
 /obj/item/ammo_magazine/shotgun/beanbag
 	name = "box of beanbag slugs"
@@ -325,7 +325,7 @@ GLOBAL_LIST_INIT(shotgun_handfuls_12g, list(
 /obj/item/ammo_magazine/handful/shotgun/hdsg
 	name = "handful of high-dispersive shock grenades (18.5mm)"
 	icon_state = "hdsg_5"
-	default_ammo = /datum/ammo/bullet/shotgun/slug/hdsg
+	default_ammo = /datum/ammo/bullet/shotgun/hdsg
 	gun_type = /obj/item/weapon/gun/shotgun/pump/mk481
 	caliber = "18.5mm"
 	handful_state = "hdsg"

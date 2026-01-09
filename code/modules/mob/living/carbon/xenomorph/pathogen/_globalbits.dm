@@ -139,7 +139,7 @@
 	fire_immunity = FIRE_MODIFIER
 	fire_modifier_mult = FIRE_MULTIPLIER_MEDIUM
 
-/*
+
 /datum/caste_datum/pathogen/get_minimap_icon()
 	var/image/background = mutable_appearance('icons/mob/pathogen/neo_blips.dmi', minimap_background)
 
@@ -149,7 +149,7 @@
 	background.overlays += icon
 
 	return background
-*/
+
 
 //####################################################################
 //####################################################################

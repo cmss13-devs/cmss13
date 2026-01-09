@@ -75,6 +75,14 @@ GLOBAL_LIST_INIT(shotgun_boxes_12g, list(
 	default_ammo = /datum/ammo/bullet/shotgun/flechette
 	handful_state = "flechette_shell"
 
+/obj/item/ammo_magazine/shotgun/hdsg
+	name = "box of HDSG grenades"
+	desc = "A box filled with 18.5mm high-dispersive shock grenades"
+	icon_state = "hdsg"
+	item_state = "hdsg"
+	max_rounds = 15
+	default_ammo = /datum/ammo/bullet/shotgun/slug/hdsg
+
 /obj/item/ammo_magazine/shotgun/beanbag
 	name = "box of beanbag slugs"
 	desc = "A box filled with beanbag shotgun shells used for non-lethal crowd control. 12 Gauge."
@@ -319,6 +327,7 @@ GLOBAL_LIST_INIT(shotgun_handfuls_12g, list(
 	icon_state = "hdsg"
 	default_ammo = /datum/ammo/bullet/shotgun/slug/hdsg
 	gun_type = /obj/item/weapon/gun/shotgun/pump/mk481
+	caliber = "18.5mm"
 
 
 /obj/item/ammo_magazine/handful/shotgun/custom_color

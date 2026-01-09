@@ -58,20 +58,24 @@
 	name = "18.5mm high-dispersive shock grenade"
 	icon_state = "hdsg"
 	handful_state = "hdsg"
-	damage = 40
+	max_range = 5
+	damage = 30
 	penetration = ARMOR_PENETRATION_TIER_2
 	flags_ammo_behavior = AMMO_EXPLOSIVE|AMMO_BALLISTIC
 
 /datum/ammo/bullet/shotgun/slug/hdsg/on_hit_mob(mob/mob_target, obj/projectile/explosive_projectile)
-	cell_explosion(get_turf(mob_target), 20, 40, EXPLOSION_FALLOFF_SHAPE_LINEAR, explosive_projectile.dir, explosive_projectile.weapon_cause_data)
-
+	cell_explosion(get_turf(mob_target), 40, 10, EXPLOSION_FALLOFF_SHAPE_LINEAR, explosive_projectile.dir, explosive_projectile.weapon_cause_data)
+	//create_shrapnel(mob_target, 3, 0, 200,/datum/ammo/bullet/shrapnel/hdsg)
 /datum/ammo/bullet/shotgun/slug/hdsg/on_hit_obj(obj/object_target, obj/projectile/explosive_projectile)
-	cell_explosion(get_turf(object_target), 20, 40, EXPLOSION_FALLOFF_SHAPE_LINEAR, explosive_projectile.dir, explosive_projectile.weapon_cause_data)
-
+	cell_explosion(get_turf(object_target), 40, 10, EXPLOSION_FALLOFF_SHAPE_LINEAR, explosive_projectile.dir, explosive_projectile.weapon_cause_data)
+	//create_shrapnel(object_target, 3, 0, 200,/datum/ammo/bullet/shrapnel/hdsg)
 /datum/ammo/bullet/shotgun/slug/hdsg/on_hit_turf(turf/turf_target, obj/projectile/explosive_projectile)
 	if(turf_target.density)
-		cell_explosion(turf_target, 20, 40, EXPLOSION_FALLOFF_SHAPE_LINEAR, explosive_projectile.dir, explosive_projectile.weapon_cause_data)
-		create_shrapnel(turf_target, 3, 0, 200)
+		cell_explosion(turf_target, 40, 10, EXPLOSION_FALLOFF_SHAPE_LINEAR, explosive_projectile.dir, explosive_projectile.weapon_cause_data)
+		//create_shrapnel(turf_target, 3, 0, 200,/datum/ammo/bullet/shrapnel/hdsg)
+
+/datum/ammo/bullet/shotgun/slug/hdsg/do_at_max_range(obj/projectile/explosive_projectile)
+	cell_explosion(get_turf(explosive_projectile), 60, 10, EXPLOSION_FALLOFF_SHAPE_LINEAR, explosive_projectile.dir, explosive_projectile.weapon_cause_data)
 
 /datum/ammo/bullet/shotgun/beanbag
 	name = "beanbag slug"

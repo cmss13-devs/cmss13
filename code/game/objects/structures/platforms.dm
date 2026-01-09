@@ -927,3 +927,140 @@
 	dir = EAST
 /obj/structure/platform_decoration/stone/runed_sandstone/west
 	dir = WEST
+
+// Colorable variants
+// strata rocks
+
+/obj/structure/platform/stone/soro_colorable
+	name = "rock edge"
+	desc = "A solid chunk of desolate rocks. Looks like you could climb it."
+	icon_state = "colorable_strata_rock_platform"
+
+/obj/structure/platform/stone/soro_colorable/north
+	dir = NORTH
+/obj/structure/platform/stone/soro_colorable/east
+	dir = EAST
+/obj/structure/platform/stone/soro_colorable/west
+	dir = WEST
+
+/obj/structure/platform_decoration/stone/soro_colorable
+	name = "rock corner"
+	desc = "Solid chunks of desolate rocks."
+	icon_state = "colorable_strata_rock_platform_deco"
+
+/obj/structure/platform_decoration/stone/soro_colorable/north
+	dir = NORTH
+/obj/structure/platform_decoration/stone/soro_colorable/east
+	dir = EAST
+/obj/structure/platform_decoration/stone/soro_colorable/west
+	dir = WEST
+
+/obj/structure/platform/stone/stair_cut/soro_left
+	icon_state = "colorable_strata_rock_platform_stair"
+
+/obj/structure/platform/stone/stair_cut/soro_right
+	icon_state = "colorable_strata_rock_platform_stair_alt"
+
+//strata rocks immune (used for z level transitions)
+
+/obj/structure/platform/stone/soro_colorable_immune
+	name = "rock edge"
+	desc = "A solid chunk of desolate rocks. Looks like you could climb it."
+	icon_state = "colorable_strata_rock_platform"
+	explo_proof = TRUE
+
+/obj/structure/platform/stone/soro_colorable_immune/north
+	dir = NORTH
+/obj/structure/platform/stone/soro_colorable_immune/east
+	dir = EAST
+/obj/structure/platform/stone/soro_colorable_immune/west
+	dir = WEST
+
+/obj/structure/platform_decoration/stone/soro_colorable_immune
+	name = "rock corner"
+	desc = "Solid chunks of desolate rocks."
+	icon_state = "colorable_strata_rock_platform_deco"
+	explo_proof = TRUE
+
+/obj/structure/platform_decoration/stone/soro_colorable_immune/north
+	dir = NORTH
+/obj/structure/platform_decoration/stone/soro_colorable_immune/east
+	dir = EAST
+/obj/structure/platform_decoration/stone/soro_colorable_immune/west
+	dir = WEST
+
+/obj/structure/platform/stone/stair_cut/soro_left
+	icon_state = "colorable_strata_rock_platform_stair"
+	explo_proof = TRUE
+
+/obj/structure/platform/stone/stair_cut/soro_right
+	icon_state = "colorable_strata_rock_platform_stair_alt"
+	explo_proof = TRUE
+
+//kutjevo rocks
+
+/obj/structure/platform/stone/kutjevo_colorable
+	name = "rock edge"
+	desc = "A solid chunk of desolate rocks. Looks like you could climb it."
+	icon_state = "colorable_kutjevo_rock"
+
+/obj/structure/platform/stone/kutjevo_colorable/north
+	dir = NORTH
+/obj/structure/platform/stone/kutjevo_colorable/east
+	dir = EAST
+/obj/structure/platform/stone/kutjevo_colorable/west
+	dir = WEST
+
+/obj/structure/platform_decoration/stone/kutjevo_colorable
+	name = "rock corner"
+	desc = "Solid chunks of desolate rocks."
+	icon_state = "colorable_kutjevo_rock_deco"
+
+/obj/structure/platform_decoration/stone/kutjevo_colorable/north
+	dir = NORTH
+/obj/structure/platform_decoration/stone/kutjevo_colorable/east
+	dir = EAST
+/obj/structure/platform_decoration/stone/kutjevo_colorable/west
+	dir = WEST
+
+/obj/structure/platform/stone/stair_cut/kutjevo_left
+	icon_state = "colorable_kutjevo_rock_stair"
+
+/obj/structure/platform/stone/stair_cut/kutjevo_right
+	icon_state = "colorable_kutjevo_rock_stair_alt"
+
+//kutjevo rocks immune (used for z level transitions)
+
+/obj/structure/platform/stone/kutjevo_colorable_immune
+	name = "rock edge"
+	desc = "A solid chunk of desolate rocks. Looks like you could climb it."
+	icon_state = "colorable_kutjevo_rock"
+	explo_proof = TRUE
+
+/obj/structure/platform/stone/kutjevo_colorable_immune/north
+	dir = NORTH
+/obj/structure/platform/stone/kutjevo_colorable_immune/east
+	dir = EAST
+/obj/structure/platform/stone/kutjevo_colorable_immune/west
+	dir = WEST
+
+/obj/structure/platform_decoration/stone/kutjevo_colorable_immune
+	name = "rock corner"
+	desc = "Solid chunks of desolate rocks."
+	icon_state = "colorable_kutjevo_rock_deco"
+	explo_proof = TRUE
+
+/obj/structure/platform_decoration/stone/kutjevo_colorable_immune/north
+	dir = NORTH
+/obj/structure/platform_decoration/stone/kutjevo_colorable_immune/east
+	dir = EAST
+/obj/structure/platform_decoration/stone/kutjevo_colorable_immune/west
+	dir = WEST
+
+/obj/structure/platform/stone/stair_cut/kutjevo_left
+	icon_state = "colorable_kutjevo_rock_stair"
+	explo_proof = TRUE
+
+/obj/structure/platform/stone/stair_cut/kutjevo_right
+	icon_state = "colorable_kutjevo_rock_stair_alt"
+	explo_proof = TRUE

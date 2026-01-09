@@ -9883,6 +9883,7 @@
 /area/desert_dam/interior/caves/west_caves)
 "aEP" = (
 /obj/structure/stairs/multiz/up,
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/interior/caves/west_caves)
 "aEQ" = (
@@ -9969,11 +9970,12 @@
 "aFa" = (
 /obj/structure/ore_box,
 /obj/item/tool/pickaxe,
-/turf/open/desert/rock/deep/transition,
+/turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/central_tunnel)
 "aFb" = (
 /obj/structure/stairs/multiz/down,
 /obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/exterior/rock)
 "aFc" = (
@@ -9986,7 +9988,7 @@
 	dir = 4
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/desert/rock/deep/transition/east,
+/turf/open/floor/prison/sterile_white,
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "aFe" = (
 /turf/closed/wall/r_wall,
@@ -12424,6 +12426,7 @@
 	dir = 4
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/platform/metal/kutjevo_smooth_immune/east,
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/interior/dam_interior/central_tunnel)
 "aMI" = (
@@ -17914,14 +17917,6 @@
 /obj/item/device/flashlight/on,
 /turf/open/floor/plating,
 /area/desert_dam/interior/caves/east_caves)
-"bes" = (
-/obj/effect/decal/hybrisa/lattice/full,
-/turf/open/desert/dirt/desert_transition_edge1/north,
-/area/desert_dam/interior/caves/east_caves)
-"bet" = (
-/obj/effect/decal/hybrisa/lattice/full,
-/turf/open/desert/dirt,
-/area/desert_dam/interior/caves/east_caves)
 "beu" = (
 /obj/item/stack/rods{
 	pixel_x = -5;
@@ -19159,6 +19154,15 @@
 /area/desert_dam/interior/caves/pred_ship)
 "bhV" = (
 /obj/structure/machinery/power/apc/fully_broken/no_cell/north,
+/obj/structure/showcase{
+	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	dir = 8;
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "terminal";
+	name = "Radar Console";
+	pixel_x = -17;
+	density = 0
+	},
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/desert_dam/interior/caves/pred_ship)
 "bhW" = (
@@ -19182,6 +19186,9 @@
 	pixel_y = 23;
 	pixel_x = -6;
 	density = 0
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
 	},
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/desert_dam/interior/caves/pred_ship)
@@ -20475,13 +20482,21 @@
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_5/west,
 /area/desert_dam/interior/caves/pred_ship)
 "blT" = (
-/obj/structure/platform/stone/soro/west,
-/obj/structure/platform/stone/soro,
+/obj/structure/platform/stone/kutjevo_colorable_immune/west{
+	color = "#724119"
+	},
+/obj/structure/platform/stone/kutjevo_colorable_immune{
+	color = "#724119"
+	},
 /turf/open_space,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "blU" = (
-/obj/structure/platform/stone/soro,
-/obj/structure/platform/stone/soro/east,
+/obj/structure/platform/stone/kutjevo_colorable_immune/east{
+	color = "#724119"
+	},
+/obj/structure/platform/stone/kutjevo_colorable_immune{
+	color = "#724119"
+	},
 /turf/open_space,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "blV" = (
@@ -20489,10 +20504,12 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/medical/virology_wing)
 "blW" = (
-/obj/structure/platform_decoration/stone/soro/east,
 /obj/structure/prop/invuln/rope{
 	pixel_x = -15;
 	pixel_y = -3
+	},
+/obj/structure/platform_decoration/stone/kutjevo_colorable_immune/east{
+	color = "#724119"
 	},
 /turf/open_space,
 /area/desert_dam/exterior/valley/valley_crashsite)
@@ -20501,12 +20518,18 @@
 /turf/open/floor/predship/hull/non_weedable_hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "blY" = (
-/obj/structure/platform/stone/soro/north,
+/obj/structure/platform/stone/kutjevo_colorable_immune/north{
+	color = "#724119"
+	},
 /turf/open_space,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "blZ" = (
-/obj/structure/platform/stone/soro/north,
-/obj/structure/platform/stone/soro/east,
+/obj/structure/platform/stone/kutjevo_colorable_immune/north{
+	color = "#724119"
+	},
+/obj/structure/platform/stone/kutjevo_colorable_immune/east{
+	color = "#724119"
+	},
 /turf/open_space,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bma" = (
@@ -20910,12 +20933,160 @@
 	},
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/interior/dam_interior/central_tunnel)
+"bng" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 6
+	},
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 9
+	},
+/turf/open/floor/plating,
+/area/desert_dam/interior/caves/west_caves)
 "bnh" = (
 /turf/open/floor/prison,
 /area/desert_dam/building/security/armory)
+"bni" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 6
+	},
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/desert_dam/interior/caves/west_caves)
+"bnj" = (
+/turf/closed/wall/r_wall/bunker{
+	name = "reinforced metal wall"
+	},
+/area/desert_dam/exterior/rock/level1)
+"bnk" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/east,
+/obj/effect/decal/sand_overlay/sand2/corner2,
+/obj/effect/decal/sand_overlay/sand2/corner2{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/desert_dam/interior/caves/west_caves)
+"bnl" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 6
+	},
+/turf/open/floor/plating,
+/area/desert_dam/interior/caves/west_caves)
+"bnm" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 4
+	},
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/west,
+/turf/open/desert/rock,
+/area/desert_dam/interior/caves/west_caves)
 "bnn" = (
 /turf/open/desert/dirt/desert_transition_edge1/northwest,
 /area/desert_dam/exterior/valley/valley_civilian)
+"bno" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/east,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/desert/rock,
+/area/desert_dam/interior/caves/west_caves)
+"bnp" = (
+/obj/structure/stairs/multiz/up{
+	dir = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
+/turf/open/floor/almayer_hull,
+/area/desert_dam/interior/caves/west_caves)
+"bnq" = (
+/obj/structure/stairs/multiz/up{
+	dir = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth_immune/east,
+/turf/open/floor/almayer_hull,
+/area/desert_dam/interior/caves/west_caves)
+"bnr" = (
+/obj/structure/stairs/multiz/up{
+	dir = 8
+	},
+/obj/structure/platform/stone/kutjevo_colorable_immune{
+	color = "#724119"
+	},
+/turf/open/floor/almayer_hull,
+/area/desert_dam/interior/caves/west_caves)
+"bns" = (
+/obj/structure/platform_decoration/stone/kutjevo_colorable_immune/north{
+	color = "#724119"
+	},
+/turf/open/desert/rock,
+/area/desert_dam/interior/caves/west_caves)
+"bnt" = (
+/obj/structure/stairs/multiz/up{
+	dir = 8
+	},
+/obj/structure/platform/stone/kutjevo_colorable_immune/north{
+	color = "#724119"
+	},
+/turf/open/floor/almayer_hull,
+/area/desert_dam/interior/caves/west_caves)
+"bnu" = (
+/obj/structure/platform_decoration/stone/kutjevo_colorable_immune/east{
+	color = "#724119"
+	},
+/turf/open/desert/rock,
+/area/desert_dam/interior/caves/west_caves)
+"bnv" = (
+/obj/effect/decal/sand_overlay/sand2,
+/turf/open/floor/plating,
+/area/desert_dam/interior/caves/west_caves)
+"bnw" = (
+/obj/item/device/flashlight/lamp/tripod,
+/obj/effect/decal/sand_overlay/sand2,
+/turf/open/floor/plating,
+/area/desert_dam/interior/caves/west_caves)
+"bnx" = (
+/obj/effect/decal/sand_overlay/sand2,
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/desert_dam/interior/caves/west_caves)
+"bny" = (
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 4;
+	pixel_y = 4
+	},
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 4
+	},
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4;
+	pixel_y = -4
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/desert_dam/interior/caves/west_caves)
+"bnz" = (
+/obj/item/stack/cable_coil/random{
+	pixel_x = -8;
+	pixel_y = -5
+	},
+/obj/item/tool/wirecutters{
+	pixel_y = 10
+	},
+/obj/item/stack/catwalk{
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/turf/open/floor/plating,
+/area/desert_dam/interior/caves/west_caves)
+"bnA" = (
+/obj/item/stack/catwalk{
+	pixel_x = -3;
+	pixel_y = 2
+	},
+/turf/open/floor/plating,
+/area/desert_dam/interior/caves/west_caves)
 "bnB" = (
 /obj/structure/platform/metal/kutjevo_smooth_immune/north,
 /obj/structure/platform/metal/kutjevo_smooth_immune/east,
@@ -20927,6 +21098,115 @@
 /obj/item/storage/backpack/lightpack,
 /turf/open/floor/prison/darkred2/east,
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
+"bnD" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/desert_dam/interior/caves/west_caves)
+"bnE" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 1
+	},
+/obj/structure/machinery/power/apc/no_power/west,
+/turf/open/floor/plating,
+/area/desert_dam/interior/caves/west_caves)
+"bnF" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/desert_dam/interior/caves/west_caves)
+"bnG" = (
+/obj/item/storage/toolbox/electrical{
+	pixel_x = -4;
+	pixel_y = 7
+	},
+/obj/effect/decal/sand_overlay/sand2/corner2{
+	dir = 1
+	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/desert_dam/interior/caves/west_caves)
+"bnH" = (
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	pixel_x = -4
+	},
+/obj/effect/hybrisa/misc/fake/wire/red{
+	pixel_x = 4
+	},
+/obj/effect/hybrisa/misc/fake/wire/yellow,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/desert_dam/interior/caves/west_caves)
+"bnI" = (
+/obj/item/stack/cable_coil/random{
+	pixel_x = -6;
+	pixel_y = -7
+	},
+/obj/effect/decal/sand_overlay/sand2/corner2,
+/obj/structure/prop/hybrisa/misc/metergreen{
+	pixel_y = 32
+	},
+/turf/open/floor/plating,
+/area/desert_dam/interior/caves/west_caves)
+"bnJ" = (
+/obj/structure/largecrate/random/case/double,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/desert/rock,
+/area/desert_dam/interior/caves/west_caves)
+"bnK" = (
+/obj/structure/flora/bush/desert/cactus/multiple{
+	icon_state = "cacti_11"
+	},
+/turf/open/desert/rock/deep/transition/northwest,
+/area/desert_dam/interior/caves/west_caves)
+"bnL" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1
+	},
+/turf/open/desert/rock/deep/transition,
+/area/desert_dam/interior/caves/west_caves)
+"bnM" = (
+/turf/open/space/basic,
+/area/desert_dam/interior/caves/pred_ship)
+"bnN" = (
+/obj/structure/platform/metal/kutjevo_smooth_immune/east,
+/turf/open/floor/plating,
+/area/desert_dam/interior/caves/west_caves)
+"bnO" = (
+/obj/structure/stairs/multiz/up,
+/obj/structure/platform/metal/kutjevo_smooth_immune/east,
+/turf/open/floor/almayer_hull,
+/area/desert_dam/interior/caves/west_caves)
+"bnP" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune,
+/obj/effect/decal/sand_overlay/sand2/corner2{
+	dir = 4
+	},
+/obj/effect/decal/sand_overlay/sand2/corner2{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/desert_dam/interior/caves/west_caves)
+"bnQ" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/north,
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/desert_dam/interior/caves/west_caves)
+"bnR" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune,
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/desert_dam/interior/caves/west_caves)
 "bnS" = (
 /obj/item/ammo_magazine/rifle{
 	current_rounds = 0
@@ -20939,12 +21219,93 @@
 	},
 /turf/open/desert/rock,
 /area/desert_dam/exterior/valley/valley_crashsite)
+"bnU" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 9
+	},
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/desert_dam/interior/caves/west_caves)
+"bnV" = (
+/obj/structure/machinery/light,
+/turf/open/desert/rock,
+/area/desert_dam/interior/caves/west_caves)
+"bnW" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/device/multitool/yautja{
+	pixel_x = -5;
+	pixel_y = 6
+	},
+/turf/open/shuttle/dropship/predship/hunter_grille,
+/area/desert_dam/interior/caves/pred_ship)
+"bnX" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/structure/machinery/computer/crew/alt{
+	dir = 1;
+	name = "human monitoring computer";
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "terminal"
+	},
+/turf/open/shuttle/dropship/predship/hunter_grille,
+/area/desert_dam/interior/caves/pred_ship)
+"bnY" = (
+/obj/structure/platform_decoration/stone/kutjevo_colorable_immune/east{
+	color = "#724119"
+	},
+/turf/open/desert/rock,
+/area/desert_dam/interior/caves/temple)
+"bnZ" = (
+/obj/structure/stairs/multiz/up{
+	dir = 8
+	},
+/obj/structure/platform/stone/kutjevo_colorable_immune{
+	color = "#724119"
+	},
+/turf/open/floor/almayer_hull,
+/area/desert_dam/interior/caves/temple)
 "boa" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
 /area/desert_dam/exterior/landing_pad_one)
+"bob" = (
+/obj/structure/platform_decoration/stone/kutjevo_colorable_immune/north{
+	color = "#724119"
+	},
+/turf/open/desert/rock,
+/area/desert_dam/interior/caves/temple)
+"boc" = (
+/obj/structure/stairs/multiz/up{
+	dir = 8
+	},
+/obj/structure/platform/stone/kutjevo_colorable_immune/north{
+	color = "#724119"
+	},
+/turf/open/floor/almayer_hull,
+/area/desert_dam/interior/caves/temple)
+"bod" = (
+/obj/structure/platform_decoration/stone/kutjevo_colorable_immune/north{
+	color = "#724119"
+	},
+/turf/open/desert/rock/deep/transition/northwest,
+/area/desert_dam/interior/caves/temple)
+"boe" = (
+/obj/structure/surface/rack,
+/obj/item/device/flashlight{
+	pixel_y = 5
+	},
+/obj/item/device/flashlight{
+	pixel_y = -4
+	},
+/turf/open/floor/plating,
+/area/desert_dam/interior/caves/east_caves)
 "bof" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/window/reinforced{
@@ -20958,9 +21319,117 @@
 "bog" = (
 /turf/open/floor/prison,
 /area/desert_dam/building/security/deathrow)
+"boh" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune,
+/turf/open/floor/plating,
+/area/desert_dam/interior/caves/east_caves)
+"boi" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/north,
+/turf/open/floor/plating,
+/area/desert_dam/interior/caves/east_caves)
+"boj" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/north,
+/obj/structure/largecrate/random/case/small,
+/turf/open/floor/plating,
+/area/desert_dam/interior/caves/east_caves)
+"bok" = (
+/obj/structure/stairs/multiz/up,
+/obj/structure/platform/stone/kutjevo_colorable_immune/west{
+	color = "#724119"
+	},
+/turf/open/floor/almayer_hull,
+/area/desert_dam/interior/caves/east_caves)
+"bol" = (
+/obj/structure/stairs/multiz/up,
+/obj/structure/platform/stone/kutjevo_colorable_immune/east{
+	color = "#724119"
+	},
+/turf/open/floor/almayer_hull,
+/area/desert_dam/interior/caves/east_caves)
+"bom" = (
+/obj/effect/decal/sand_overlay/sand2/corner2{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/desert_dam/interior/caves/east_caves)
+"bon" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/desert_dam/interior/caves/east_caves)
+"boo" = (
+/obj/effect/decal/sand_overlay/sand2/corner2{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/desert_dam/interior/caves/east_caves)
+"bop" = (
+/obj/structure/stairs/multiz/up{
+	dir = 8
+	},
+/obj/structure/platform/stone/kutjevo_colorable_immune{
+	color = "#724119"
+	},
+/turf/open/floor/almayer_hull,
+/area/desert_dam/interior/caves/east_caves)
+"boq" = (
+/obj/structure/platform_decoration/stone/kutjevo_colorable_immune/north{
+	color = "#724119"
+	},
+/obj/structure/platform_decoration/stone/kutjevo_colorable_immune{
+	color = "#724119"
+	},
+/turf/open/desert/rock,
+/area/desert_dam/interior/caves/east_caves)
+"bor" = (
+/obj/structure/platform_decoration/stone/kutjevo_colorable_immune/north{
+	color = "#724119"
+	},
+/turf/open/desert/rock,
+/area/desert_dam/interior/caves/east_caves)
+"bos" = (
+/obj/structure/platform_decoration/stone/kutjevo_colorable_immune{
+	color = "#724119"
+	},
+/turf/open/desert/rock/deep/transition,
+/area/desert_dam/interior/caves/east_caves)
 "bot" = (
 /turf/closed/wall/r_wall/prison,
 /area/desert_dam/building/security/observation)
+"bou" = (
+/obj/structure/platform_decoration/stone/kutjevo_colorable_immune/north{
+	color = "#724119"
+	},
+/turf/open/desert/rock/deep/transition,
+/area/desert_dam/interior/caves/east_caves)
+"bov" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 8
+	},
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/desert_dam/interior/caves/east_caves)
+"bow" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 4
+	},
+/obj/effect/decal/sand_overlay/sand2/corner2{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/desert_dam/interior/caves/east_caves)
+"box" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 9
+	},
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 5
+	},
+/turf/open/floor/plating,
+/area/desert_dam/interior/caves/east_caves)
 "boy" = (
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 4
@@ -20973,10 +21442,37 @@
 	},
 /turf/open/floor/plating,
 /area/desert_dam/building/medical/maint/south)
+"boA" = (
+/obj/structure/stairs/multiz/up{
+	dir = 8
+	},
+/obj/structure/platform/stone/kutjevo_colorable_immune/north{
+	color = "#724119"
+	},
+/turf/open/floor/almayer_hull,
+/area/desert_dam/interior/caves/east_caves)
 "boB" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/building/dorms/restroom)
+"boC" = (
+/obj/structure/platform_decoration/stone/kutjevo_colorable_immune/east{
+	color = "#724119"
+	},
+/turf/open/desert/rock/deep/rock3,
+/area/desert_dam/interior/caves/east_caves)
+"boD" = (
+/obj/structure/fence/slim/dark,
+/turf/open/desert/rock/deep/transition/southwest,
+/area/desert_dam/interior/caves/east_caves)
+"boE" = (
+/obj/structure/fence/slim/dark/door,
+/turf/open/desert/rock/deep/transition/east,
+/area/desert_dam/interior/caves/east_caves)
+"boF" = (
+/obj/structure/largecrate/random/barrel/blue,
+/turf/open/desert/rock/deep/transition/southwest,
+/area/desert_dam/interior/caves/east_caves)
 "boG" = (
 /obj/structure/window/reinforced{
 	dir = 8;
@@ -20989,6 +21485,11 @@
 /obj/structure/machinery/door/window/southleft,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
+"boH" = (
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
+/obj/structure/platform/metal/kutjevo_smooth_immune,
+/turf/open_space,
+/area/desert_dam/exterior/rock)
 "boI" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -21004,11 +21505,58 @@
 	},
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/medical/outgoing)
+"boK" = (
+/obj/structure/platform/metal/kutjevo_smooth_immune,
+/turf/open_space,
+/area/desert_dam/exterior/rock)
 "boL" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "clfpods"
 	},
 /turf/closed/wall/rock/orange,
+/area/desert_dam/exterior/rock)
+"boM" = (
+/obj/structure/platform/metal/kutjevo_smooth_immune/east,
+/obj/structure/platform/metal/kutjevo_smooth_immune,
+/turf/open_space,
+/area/desert_dam/exterior/rock)
+"boN" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/platform_decoration/stone/kutjevo_colorable_immune{
+	color = "#724119"
+	},
+/turf/open/desert/rock/deep/transition/east,
+/area/desert_dam/interior/dam_interior/central_tunnel)
+"boO" = (
+/obj/structure/stairs/multiz/down{
+	dir = 8
+	},
+/obj/structure/platform/stone/kutjevo_colorable_immune{
+	color = "#724119"
+	},
+/turf/open/floor/almayer_hull,
+/area/desert_dam/interior/dam_interior/central_tunnel)
+"boP" = (
+/obj/structure/platform/stone/kutjevo_colorable_immune{
+	color = "#724119"
+	},
+/turf/open_space,
+/area/desert_dam/exterior/rock)
+"boQ" = (
+/obj/structure/platform/stone/kutjevo_colorable_immune{
+	color = "#724119"
+	},
+/obj/structure/platform/stone/kutjevo_colorable_immune/east{
+	color = "#724119"
+	},
+/turf/open_space,
+/area/desert_dam/exterior/rock)
+"boR" = (
+/obj/structure/stairs/multiz/down{
+	dir = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
+/turf/open/floor/almayer_hull,
 /area/desert_dam/exterior/rock)
 "boS" = (
 /obj/effect/decal/cleanable/dirt,
@@ -21020,6 +21568,61 @@
 	},
 /turf/open/floor/prison/whitegreen/north,
 /area/desert_dam/building/medical/west_wing_hallway)
+"boT" = (
+/obj/structure/stairs/multiz/down{
+	dir = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth_immune/east,
+/turf/open/floor/almayer_hull,
+/area/desert_dam/exterior/rock)
+"boU" = (
+/obj/structure/platform/stone/kutjevo_colorable_immune/east{
+	color = "#724119"
+	},
+/turf/open_space,
+/area/desert_dam/exterior/rock)
+"boV" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/north,
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/central_tunnel)
+"boW" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/platform_decoration/stone/kutjevo_colorable_immune/west{
+	color = "#724119"
+	},
+/turf/open/desert/rock/deep/transition/east,
+/area/desert_dam/interior/dam_interior/central_tunnel)
+"boX" = (
+/obj/structure/stairs/multiz/down{
+	dir = 8
+	},
+/obj/structure/platform/stone/kutjevo_colorable_immune/north{
+	color = "#724119"
+	},
+/turf/open/floor/almayer_hull,
+/area/desert_dam/interior/dam_interior/central_tunnel)
+"boY" = (
+/obj/structure/platform/stone/kutjevo_colorable_immune/north{
+	color = "#724119"
+	},
+/turf/open_space,
+/area/desert_dam/exterior/rock)
+"boZ" = (
+/obj/structure/platform/stone/kutjevo_colorable_immune/north{
+	color = "#724119"
+	},
+/obj/structure/platform/stone/kutjevo_colorable_immune/east{
+	color = "#724119"
+	},
+/turf/open_space,
+/area/desert_dam/exterior/rock)
+"bpa" = (
+/obj/structure/platform/stone/kutjevo_colorable_immune{
+	color = "#724119"
+	},
+/turf/open_space,
+/area/desert_dam/interior/caves/temple)
 "bpb" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
@@ -21032,10 +21635,65 @@
 	},
 /turf/open/floor/freezerfloor,
 /area/desert_dam/building/water_treatment_one/breakroom)
+"bpd" = (
+/obj/structure/platform/stone/kutjevo_colorable_immune{
+	color = "#724119"
+	},
+/obj/structure/platform/stone/kutjevo_colorable_immune/west{
+	color = "#724119"
+	},
+/turf/open_space,
+/area/desert_dam/exterior/valley/valley_crashsite)
 "bpe" = (
 /obj/item/clothing/gloves/latex,
 /turf/open/floor/prison/whitegreencorner/east,
 /area/desert_dam/building/medical/virology_wing)
+"bpf" = (
+/obj/structure/platform/stone/kutjevo_colorable_immune{
+	color = "#724119"
+	},
+/obj/structure/platform/stone/kutjevo_colorable_immune/east{
+	color = "#724119"
+	},
+/turf/open_space,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"bpg" = (
+/obj/structure/stairs/multiz/down,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/platform/metal/kutjevo_smooth_immune/east,
+/turf/open/floor/almayer_hull,
+/area/desert_dam/exterior/rock)
+"bph" = (
+/obj/structure/platform/metal/kutjevo_smooth_immune,
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
+/turf/open_space,
+/area/desert_dam/exterior/rock)
+"bpi" = (
+/obj/structure/platform/metal/kutjevo_smooth_immune/north,
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
+/turf/open_space,
+/area/desert_dam/exterior/rock)
+"bpj" = (
+/obj/structure/platform/metal/kutjevo_smooth_immune/north,
+/turf/open_space,
+/area/desert_dam/exterior/rock)
+"bpk" = (
+/obj/structure/platform/metal/kutjevo_smooth_immune/north,
+/obj/structure/platform/metal/kutjevo_smooth_immune/east,
+/turf/open_space,
+/area/desert_dam/exterior/rock)
+"bpl" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 6
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"bpm" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 5
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
+/area/desert_dam/exterior/valley/valley_crashsite)
 "bpn" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -21054,19 +21712,174 @@
 /obj/structure/machinery/door/airlock/almayer/engineering/colony,
 /turf/open/floor/plating/asteroidfloor/north,
 /area/desert_dam/interior/dam_interior/west_tunnel)
+"bpq" = (
+/obj/structure/platform_decoration/stone/kutjevo_colorable_immune/west{
+	color = "#724119"
+	},
+/turf/open/desert/rock,
+/area/desert_dam/interior/caves/central_caves)
+"bpr" = (
+/obj/structure/platform_decoration/stone/kutjevo_colorable_immune{
+	color = "#724119"
+	},
+/turf/open/desert/rock,
+/area/desert_dam/interior/caves/central_caves)
+"bps" = (
+/obj/structure/stairs/multiz/down{
+	dir = 8
+	},
+/obj/structure/platform/stone/kutjevo_colorable_immune{
+	color = "#724119"
+	},
+/turf/open/floor/almayer_hull,
+/area/desert_dam/interior/caves/central_caves)
 "bpt" = (
 /obj/structure/surface/rack,
 /obj/item/storage/bag/trash,
 /turf/open/floor/plating,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
+"bpu" = (
+/obj/structure/platform_decoration/stone/kutjevo_colorable_immune/west{
+	color = "#724119"
+	},
+/turf/open/desert/dirt/desert_transition_edge1/northeast,
+/area/desert_dam/interior/caves/central_caves)
+"bpv" = (
+/obj/structure/stairs/multiz/down{
+	dir = 8
+	},
+/obj/structure/platform/stone/kutjevo_colorable_immune/north{
+	color = "#724119"
+	},
+/turf/open/floor/almayer_hull,
+/area/desert_dam/interior/caves/central_caves)
+"bpw" = (
+/obj/structure/platform_decoration/stone/kutjevo_colorable_immune{
+	color = "#724119"
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/interior/caves/central_caves)
+"bpx" = (
+/turf/closed/wall/r_wall/bunker,
+/area/desert_dam/interior/caves/central_caves)
+"bpy" = (
+/obj/structure/fence/slim/dark,
+/turf/open/desert/rock/deep/transition,
+/area/desert_dam/interior/caves/central_caves)
+"bpz" = (
+/obj/structure/fence/slim/dark/door{
+	dir = 8
+	},
+/turf/open/desert/rock,
+/area/desert_dam/interior/caves/central_caves)
+"bpA" = (
+/obj/structure/fence/slim/dark/door{
+	dir = 4
+	},
+/turf/open/desert/rock,
+/area/desert_dam/interior/caves/central_caves)
+"bpB" = (
+/obj/structure/fence/slim/dark,
+/turf/open/desert/rock,
+/area/desert_dam/interior/caves/central_caves)
+"bpC" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 10
+	},
+/turf/open/floor/plating,
+/area/desert_dam/interior/caves/central_caves)
+"bpD" = (
+/obj/effect/decal/sand_overlay/sand2,
+/turf/open/floor/plating,
+/area/desert_dam/interior/caves/central_caves)
+"bpE" = (
+/obj/effect/decal/sand_overlay/sand2/corner2{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/desert_dam/interior/caves/central_caves)
+"bpF" = (
+/turf/open/floor/plating,
+/area/desert_dam/interior/caves/central_caves)
+"bpG" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/west,
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 10
+	},
+/turf/open/floor/plating,
+/area/desert_dam/interior/caves/central_caves)
+"bpH" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/east,
+/obj/effect/decal/sand_overlay/sand2{
+	layer = 2.02
+	},
+/turf/open/floor/plating,
+/area/desert_dam/interior/caves/central_caves)
 "bpI" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/dark,
 /area/desert_dam/interior/dam_interior/office)
+"bpJ" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/west,
+/turf/open/floor/plating,
+/area/desert_dam/interior/caves/central_caves)
+"bpK" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/east,
+/turf/open/floor/plating,
+/area/desert_dam/interior/caves/central_caves)
+"bpL" = (
+/obj/structure/stairs/multiz/down,
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
+/turf/open/floor/almayer_hull,
+/area/desert_dam/interior/caves/central_caves)
+"bpM" = (
+/obj/structure/stairs/multiz/down,
+/obj/structure/platform/metal/kutjevo_smooth_immune/east,
+/turf/open/floor/almayer_hull,
+/area/desert_dam/interior/caves/central_caves)
+"bpN" = (
+/obj/structure/platform_decoration/stone/kutjevo_colorable_immune/east{
+	color = "#724119"
+	},
+/turf/open/desert/rock,
+/area/desert_dam/interior/caves/central_caves)
+"bpO" = (
+/obj/structure/stairs/multiz/down,
+/obj/structure/platform/stone/kutjevo_colorable_immune/west{
+	color = "#724119"
+	},
+/turf/open/floor/almayer_hull,
+/area/desert_dam/interior/caves/central_caves)
+"bpP" = (
+/obj/structure/stairs/multiz/down,
+/obj/structure/platform/stone/kutjevo_colorable_immune/east{
+	color = "#724119"
+	},
+/turf/open/floor/almayer_hull,
+/area/desert_dam/interior/caves/central_caves)
+"bpQ" = (
+/obj/structure/platform_decoration/stone/kutjevo_colorable_immune/west{
+	color = "#724119"
+	},
+/turf/open/desert/rock/deep/rock3,
+/area/desert_dam/interior/caves/central_caves)
+"bpR" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/east,
+/turf/open_space,
+/area/desert_dam/exterior/rock)
+"bpS" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/west,
+/turf/open_space,
+/area/desert_dam/exterior/rock)
 "bpT" = (
 /obj/structure/prop/dam/gravestone,
 /turf/open/desert/dirt/desert_transition_corner1/west,
 /area/desert_dam/exterior/valley/valley_hydro)
+"bpU" = (
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
+/turf/open_space,
+/area/desert_dam/exterior/rock)
 "bpV" = (
 /obj/structure/platform/metal/almayer/west,
 /obj/effect/decal/sand_overlay/sand2/corner2{
@@ -21074,6 +21887,14 @@
 	},
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/north_tunnel)
+"bpW" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/north,
+/turf/open_space,
+/area/desert_dam/exterior/rock)
+"bpX" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune,
+/turf/open_space,
+/area/desert_dam/exterior/rock)
 "bpZ" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
@@ -22542,7 +23363,7 @@
 	pixel_y = 17
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/desert/rock/deep/transition/northwest,
+/turf/open/floor/prison/sterile_white,
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "bTN" = (
 /obj/structure/platform/metal/almayer/north,
@@ -23053,14 +23874,6 @@
 	},
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_crashsite)
-"cgw" = (
-/obj/structure/prop/colorable_rock/colorable{
-	color = "#da822a";
-	pixel_y = -1;
-	dir = 6
-	},
-/turf/open/desert/rock/deep/transition,
-/area/desert_dam/interior/dam_interior/central_tunnel)
 "cgx" = (
 /obj/structure/machinery/conveyor{
 	dir = 8;
@@ -23781,6 +24594,9 @@
 /area/desert_dam/exterior/valley/valley_crashsite)
 "cvn" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/platform_decoration/stone/kutjevo_colorable_immune/west{
+	color = "#724119"
+	},
 /turf/open/desert/rock/deep/transition/northeast,
 /area/desert_dam/interior/dam_interior/central_tunnel)
 "cvs" = (
@@ -24200,7 +25016,9 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/water_treatment_one/breakroom)
 "cGx" = (
-/obj/structure/platform_decoration/stone/soro/north,
+/obj/structure/platform_decoration/stone/kutjevo_colorable_immune/north{
+	color = "#724119"
+	},
 /turf/open_space,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "cGC" = (
@@ -26696,13 +27514,6 @@
 	},
 /turf/open/floor/prison/whitepurple,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
-"dzF" = (
-/obj/effect/decal/sand_overlay/sand2/corner2{
-	dir = 8
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/sterile_white,
-/area/desert_dam/interior/dam_interior/central_tunnel)
 "dzJ" = (
 /obj/structure/platform_decoration/metal/almayer/west,
 /turf/open/desert/dirt/dirt2,
@@ -29116,7 +29927,6 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/water_treatment_two/equipment)
 "ezh" = (
-/obj/effect/decal/sand_overlay/sand2,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/tool/warning_cone{
 	pixel_y = 17;
@@ -29989,11 +30799,7 @@
 /turf/open/floor/delivery,
 /area/desert_dam/exterior/telecomm/lz1_south)
 "eRt" = (
-/obj/structure/prop/colorable_rock/colorable/alt{
-	color = "#da822a";
-	dir = 4
-	},
-/turf/open/desert/rock/deep/rock3,
+/turf/closed/wall/rock/orange,
 /area/desert_dam/interior/caves/temple)
 "eRv" = (
 /obj/structure/largecrate/random/mini{
@@ -30824,11 +31630,6 @@
 /obj/effect/blocker/toxic_water/Group_1,
 /turf/open/gm/river/desert/shallow_edge/east,
 /area/desert_dam/exterior/river/riverside_south)
-"ffs" = (
-/obj/effect/decal/sand_overlay/sand2,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/sterile_white,
-/area/desert_dam/interior/dam_interior/central_tunnel)
 "ffI" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -32763,6 +33564,9 @@
 /turf/open/floor/wood,
 /area/desert_dam/building/medical/CMO)
 "fSc" = (
+/obj/structure/platform_decoration/stone/kutjevo_colorable_immune{
+	color = "#724119"
+	},
 /turf/open/desert/rock/deep/transition/east,
 /area/desert_dam/interior/dam_interior/central_tunnel)
 "fSh" = (
@@ -33175,13 +33979,6 @@
 /obj/structure/machinery/recharge_station,
 /turf/open/floor/prison/darkbrown2/east,
 /area/desert_dam/interior/dam_interior/auxilary_tool_storage)
-"gaq" = (
-/obj/effect/decal/sand_overlay/sand2{
-	dir = 1
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/sterile_white,
-/area/desert_dam/interior/dam_interior/north_tunnel)
 "gav" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -33834,7 +34631,7 @@
 	dir = 8
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/desert/rock/deep/transition/southwest,
+/turf/open/floor/prison/sterile_white,
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "gna" = (
 /obj/structure/flora/grass/desert/lightgrass_9,
@@ -34241,13 +35038,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/whitegreen,
 /area/desert_dam/building/medical/east_wing_hallway)
-"guI" = (
-/obj/effect/decal/sand_overlay/sand2/corner2{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/sterile_white,
-/area/desert_dam/interior/dam_interior/north_tunnel)
 "guJ" = (
 /turf/open/desert/desert_shore/shore_corner2/east,
 /area/desert_dam/exterior/valley/valley_crashsite)
@@ -34626,9 +35416,6 @@
 /area/desert_dam/exterior/valley/north_valley_dam)
 "gCQ" = (
 /obj/structure/machinery/power/apc/no_power/north,
-/obj/effect/decal/sand_overlay/sand2{
-	dir = 4
-	},
 /obj/item/trash/cigbutt{
 	pixel_y = 10
 	},
@@ -38040,11 +38827,15 @@
 /turf/open/desert/dirt/desert_transition_edge1,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "hSo" = (
-/obj/structure/platform/stone/soro/north,
-/obj/structure/platform/stone/soro/west,
 /obj/structure/prop/invuln/rope{
 	pixel_x = 6;
 	pixel_y = 5
+	},
+/obj/structure/platform/stone/kutjevo_colorable_immune/north{
+	color = "#724119"
+	},
+/obj/structure/platform/stone/kutjevo_colorable_immune/west{
+	color = "#724119"
 	},
 /turf/open_space,
 /area/desert_dam/exterior/valley/valley_crashsite)
@@ -41223,9 +42014,6 @@
 /turf/open/floor/prison/whitepurple,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "jet" = (
-/obj/effect/decal/sand_overlay/sand2{
-	dir = 4
-	},
 /obj/item/trash/buritto,
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/interior/dam_interior/north_tunnel)
@@ -43206,7 +43994,7 @@
 	dir = 4
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/desert/rock/deep/transition/east,
+/turf/open/floor/prison/sterile_white,
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "jQJ" = (
 /obj/effect/decal/sand_overlay/sand2{
@@ -43996,7 +44784,6 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/smes_main)
 "khn" = (
-/obj/effect/decal/hybrisa/lattice/full,
 /turf/open/desert/dirt/desert_transition_edge1/west,
 /area/desert_dam/interior/caves/east_caves)
 "khC" = (
@@ -48628,7 +49415,9 @@
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/dam_interior/hangar_storage)
 "lZQ" = (
-/obj/structure/platform/stone/soro/east,
+/obj/structure/platform/stone/kutjevo_colorable_immune/east{
+	color = "#724119"
+	},
 /turf/open_space,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "lZS" = (
@@ -51257,7 +52046,9 @@
 /turf/open/desert/dirt/dirt2,
 /area/desert_dam/interior/caves/temple)
 "ncQ" = (
-/obj/structure/platform/stone/soro/west,
+/obj/structure/platform/stone/kutjevo_colorable_immune/west{
+	color = "#724119"
+	},
 /turf/open_space,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "ncW" = (
@@ -51548,9 +52339,6 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_cargo)
-"njl" = (
-/turf/closed/wall/rock/orange,
-/area/desert_dam/exterior/valley/valley_crashsite)
 "njm" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 6
@@ -52680,7 +53468,7 @@
 /turf/open/desert/dirt/rock1,
 /area/desert_dam/exterior/valley/valley_civilian)
 "nFP" = (
-/turf/open/desert/rock/deep/transition/southeast,
+/turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/central_tunnel)
 "nFW" = (
 /obj/structure/surface/table/almayer,
@@ -52831,7 +53619,7 @@
 "nIU" = (
 /obj/structure/largecrate/random/barrel/black,
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/desert/rock/deep/transition/northeast,
+/turf/open/floor/prison/sterile_white,
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "nIW" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -56871,7 +57659,6 @@
 /turf/open/floor/almayer_hull,
 /area/desert_dam/exterior/roof)
 "pks" = (
-/obj/effect/decal/sand_overlay/sand2,
 /obj/item/tool/warning_cone{
 	pixel_y = 17;
 	pixel_x = -10
@@ -59090,9 +59877,6 @@
 /turf/open/floor/vault2/northeast,
 /area/desert_dam/building/administration/gate)
 "qaQ" = (
-/obj/effect/decal/sand_overlay/sand2{
-	dir = 8
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/prison/sterile_white,
@@ -61819,7 +62603,8 @@
 "raB" = (
 /obj/structure/closet/crate/miningcar,
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/desert/rock/deep,
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune,
+/turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/central_tunnel)
 "raG" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
@@ -63306,8 +64091,7 @@
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/desert_dam/building/water_treatment_one/purification)
 "rEL" = (
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/desert/rock/deep/transition/north,
+/turf/closed/wall/rock/orange,
 /area/desert_dam/interior/dam_interior/central_tunnel)
 "rES" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
@@ -63355,7 +64139,9 @@
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "rFK" = (
-/obj/structure/platform_decoration/stone/soro,
+/obj/structure/platform_decoration/stone/kutjevo_colorable_immune{
+	color = "#724119"
+	},
 /turf/open_space,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "rFL" = (
@@ -64673,6 +65459,9 @@
 /turf/open/floor/prison/blue,
 /area/desert_dam/building/administration/hallway)
 "siR" = (
+/obj/structure/platform_decoration/stone/kutjevo_colorable_immune/west{
+	color = "#724119"
+	},
 /turf/open/desert/rock,
 /area/desert_dam/exterior/rock)
 "siT" = (
@@ -66259,14 +67048,12 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/water_treatment_one/equipment)
 "sLn" = (
-/obj/effect/decal/sand_overlay/sand2{
-	dir = 8
-	},
 /obj/item/tool/warning_cone{
 	pixel_y = 17;
 	pixel_x = -10
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune,
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/interior/dam_interior/central_tunnel)
 "sLz" = (
@@ -68267,8 +69054,12 @@
 /turf/open/floor/dark,
 /area/desert_dam/exterior/roof)
 "tCn" = (
-/obj/structure/platform/stone/soro/north,
-/obj/structure/platform/stone/soro/west,
+/obj/structure/platform/stone/kutjevo_colorable_immune/north{
+	color = "#724119"
+	},
+/obj/structure/platform/stone/kutjevo_colorable_immune/west{
+	color = "#724119"
+	},
 /turf/open_space,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "tCv" = (
@@ -68345,7 +69136,7 @@
 	dir = 1
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/desert/rock/deep/transition/north,
+/turf/open/floor/prison/sterile_white,
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "tDK" = (
 /obj/structure/platform_decoration/metal/almayer/west,
@@ -69072,7 +69863,9 @@
 /turf/open/desert/dirt/desert_transition_edge1/northeast,
 /area/desert_dam/exterior/valley/valley_security)
 "tQg" = (
-/obj/structure/platform_decoration/stone/soro/west,
+/obj/structure/platform_decoration/stone/kutjevo_colorable_immune/west{
+	color = "#724119"
+	},
 /turf/open_space,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "tQo" = (
@@ -73507,13 +74300,6 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/vault2/northeast,
 /area/desert_dam/building/security/prison)
-"vCN" = (
-/obj/effect/decal/sand_overlay/sand2{
-	dir = 8
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/sterile_white,
-/area/desert_dam/interior/dam_interior/north_tunnel)
 "vCT" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -76291,7 +77077,9 @@
 /turf/open/floor/whiteyellow/west,
 /area/desert_dam/interior/dam_interior/break_room)
 "wLy" = (
-/obj/structure/platform/stone/soro,
+/obj/structure/platform/stone/kutjevo_colorable_immune{
+	color = "#724119"
+	},
 /turf/open_space,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "wLz" = (
@@ -76559,11 +77347,15 @@
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/warehouse/breakroom)
 "wQX" = (
-/obj/structure/platform/stone/soro/north,
-/obj/structure/platform/stone/soro/east,
 /obj/structure/prop/invuln/rope{
 	pixel_x = 1;
 	pixel_y = 1
+	},
+/obj/structure/platform/stone/kutjevo_colorable_immune/north{
+	color = "#724119"
+	},
+/obj/structure/platform/stone/kutjevo_colorable_immune/east{
+	color = "#724119"
 	},
 /turf/open_space,
 /area/desert_dam/exterior/valley/valley_crashsite)
@@ -78372,7 +79164,7 @@
 /area/desert_dam/exterior/valley/valley_medical)
 "xCl" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/desert/rock/deep,
+/turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/central_tunnel)
 "xCn" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
@@ -92203,9 +92995,9 @@ rfS
 rfS
 rfS
 rfS
-rfS
-rfS
-rfS
+bnj
+bnj
+bnj
 aEK
 acl
 rfS
@@ -92410,9 +93202,9 @@ rfS
 acl
 acl
 acl
-rfS
-rfS
-rfS
+bnj
+bnj
+bnj
 rfS
 rfS
 aEO
@@ -92437,10 +93229,10 @@ rfS
 rfS
 rfS
 rfS
-rfS
-aEs
-acl
-acl
+bnj
+bnp
+bnk
+bni
 acl
 aYU
 rfS
@@ -92643,10 +93435,10 @@ rfS
 acl
 acl
 acl
-acl
-acl
-acl
-rfS
+bnU
+bnP
+bnN
+bnj
 rfS
 rfS
 rfS
@@ -92671,11 +93463,11 @@ rfS
 rfS
 rfS
 rfS
-rfS
+bnj
 aEs
+bnl
 acl
-acl
-acl
+bng
 acl
 rfS
 rfS
@@ -92878,9 +93670,9 @@ acl
 aED
 acl
 acl
-acl
+bnQ
 aEP
-rfS
+bnj
 rfS
 rfS
 rfS
@@ -92905,9 +93697,9 @@ rfS
 rfS
 rfS
 rfS
-rfS
-aEs
-aYW
+bnj
+bnq
+bnm
 acl
 acl
 acl
@@ -93112,9 +93904,9 @@ acl
 acl
 acl
 acl
-acl
-aEP
-rfS
+bnR
+bnO
+bnj
 rfS
 rfS
 rfS
@@ -93139,9 +93931,9 @@ rfS
 rfS
 rfS
 rfS
-rfS
-rfS
-acl
+bnj
+bnj
+bno
 acl
 acl
 acl
@@ -93345,10 +94137,10 @@ rfS
 aEv
 acl
 acl
-acl
-rfS
-rfS
-rfS
+bnV
+bnj
+bnj
+bnj
 rfS
 rfS
 rfS
@@ -94066,10 +94858,10 @@ aEq
 aem
 rfS
 rfS
-rfS
-rfS
-rfS
-rfS
+bnj
+bnj
+bnj
+bnj
 rfS
 rfS
 rfS
@@ -94299,11 +95091,11 @@ acl
 acl
 aEn
 aEH
-acl
-acl
-aXl
-aZa
-rfS
+aZb
+bnJ
+bnE
+bny
+bnj
 rfS
 rfS
 acl
@@ -94535,9 +95327,9 @@ acl
 acl
 acl
 acl
-acl
-acl
-acl
+bnF
+bny
+bnv
 acl
 acl
 acl
@@ -94769,9 +95561,9 @@ aEo
 aeh
 aeh
 aEx
-acl
-acl
-acl
+bnF
+bny
+bnv
 acl
 acl
 acl
@@ -94999,13 +95791,13 @@ rfS
 rfS
 rfS
 rfS
-aEp
+bnL
 aem
 aEI
 aEG
-acl
-acl
-acl
+bnF
+bny
+bnv
 acl
 acl
 aEz
@@ -95237,9 +96029,9 @@ rfS
 rfS
 rfS
 rfS
-acl
-acl
-acl
+bnF
+bny
+bnv
 acl
 acl
 acl
@@ -95471,9 +96263,9 @@ rfS
 rfS
 rfS
 acl
-acl
-acl
-acl
+bnF
+bny
+bnv
 acl
 aZd
 acl
@@ -95705,9 +96497,9 @@ rfS
 rfS
 aax
 aEx
-acl
-acl
-acl
+bnF
+bny
+bnv
 acl
 acl
 acl
@@ -95939,9 +96731,9 @@ rfS
 rfS
 aem
 aEy
-acl
-acl
-acl
+bnF
+bnz
+bnv
 acl
 acl
 acl
@@ -96173,11 +96965,11 @@ rfS
 rfS
 aem
 aEy
+bnF
+bny
+bnv
+acl
 aYW
-acl
-acl
-acl
-acl
 rfS
 rfS
 rfS
@@ -96407,9 +97199,9 @@ rfS
 rfS
 aZh
 aEy
-acl
-acl
-acl
+bnF
+bny
+bnv
 aEB
 rfS
 rfS
@@ -96641,9 +97433,9 @@ rfS
 rfS
 aem
 aEy
-acl
-acl
-acl
+bnF
+bny
+bnv
 acl
 rfS
 rfS
@@ -96874,10 +97666,10 @@ rfS
 rfS
 rfS
 aEn
-aEH
-acl
-acl
-aED
+bnK
+bnF
+bny
+bnv
 rfS
 rfS
 rfS
@@ -97109,9 +97901,9 @@ rfS
 rfS
 aZi
 acl
-acl
-acl
-acl
+bnF
+bny
+bnv
 aZe
 rfS
 rfS
@@ -97343,9 +98135,9 @@ rfS
 rfS
 rfS
 acl
-acl
-acl
-acl
+bnF
+bny
+bnv
 aZf
 rfS
 rfS
@@ -97576,10 +98368,10 @@ rfS
 rfS
 rfS
 rfS
-rfS
-acl
-acl
-acl
+bnj
+bnG
+bny
+bnv
 acl
 rfS
 rfS
@@ -97810,10 +98602,10 @@ rfS
 rfS
 rfS
 rfS
-rfS
-acl
-acl
-aEz
+bnj
+bnH
+bnA
+bnw
 acl
 aZb
 rfS
@@ -98044,17 +98836,17 @@ rfS
 rfS
 rfS
 rfS
-rfS
-acl
-acl
-acl
+bnj
+bnI
+bnD
+bnx
 acl
 aEA
 rfS
 rfS
+bnt
 aEt
-aEt
-aEt
+bnr
 rfS
 rfS
 rfS
@@ -98278,17 +99070,17 @@ rfS
 rfS
 rfS
 rfS
-rfS
-rfS
+bnj
+bnj
 acl
 acl
 acl
 acl
 acl
+bns
+bnu
 acl
-acl
-acl
-acl
+bns
 rfS
 rfS
 rfS
@@ -124230,7 +125022,7 @@ rfS
 rfS
 bfw
 bfw
-sbh
+bnW
 kjh
 rfk
 bgT
@@ -125165,7 +125957,7 @@ rfS
 rfS
 rfS
 bfw
-bhR
+bnX
 bhR
 kjh
 bho
@@ -129155,7 +129947,7 @@ bfU
 bfH
 bfm
 bfm
-bfm
+bnM
 bfm
 bfj
 rfS
@@ -132180,11 +132972,11 @@ seM
 rfS
 rfS
 rfS
+boc
 ueS
 ueS
-ueS
-ueS
-hBs
+bnZ
+eRt
 rfS
 rfS
 rfS
@@ -132381,10 +133173,10 @@ elW
 kOU
 kOU
 rfS
+boA
 ugF
 ugF
-ugF
-ugF
+bop
 rfS
 rfS
 rfS
@@ -132413,12 +133205,12 @@ dMk
 aZx
 rfS
 rfS
-iEk
+bod
+bnY
 dMk
 dMk
-dMk
-dMk
-dMk
+bob
+bnY
 aZo
 rfS
 rfS
@@ -132615,11 +133407,11 @@ kOU
 kOU
 kOU
 rfS
-sxl
+boC
 xJY
 kOU
-kOU
-kOU
+boq
+rfS
 rfS
 rfS
 rfS
@@ -132852,8 +133644,8 @@ kOU
 xFN
 xJY
 kOU
-kOU
-hgm
+bor
+bok
 rfS
 rfS
 rfS
@@ -133315,13 +134107,13 @@ rfS
 rfS
 rfS
 rfS
-rfS
+kOU
 kOU
 vmL
 xJY
 kOU
-vmL
-hgm
+bos
+bol
 rfS
 rfS
 rfS
@@ -133554,8 +134346,8 @@ rfS
 rfS
 xJY
 kOU
-vmL
-sxl
+bou
+rfS
 rfS
 rfS
 rfS
@@ -134467,7 +135259,7 @@ pfK
 yiP
 bew
 bev
-bet
+pfK
 ber
 beq
 khn
@@ -134702,7 +135494,7 @@ pfK
 pfK
 pfK
 beu
-bes
+fgx
 kOU
 kOU
 bem
@@ -134711,7 +135503,7 @@ baM
 ljD
 cWd
 beh
-xFN
+boF
 bai
 sxl
 sxl
@@ -135662,7 +136454,7 @@ rfS
 rfS
 rfS
 rfS
-bai
+boe
 rfS
 rfS
 rfS
@@ -135891,13 +136683,13 @@ kOU
 vmL
 nmc
 rfS
-rfS
+bel
 bab
 sxl
-sxl
-rfS
-sxl
-sxl
+bon
+bep
+boh
+aYi
 rfS
 rfS
 rfS
@@ -136125,13 +136917,13 @@ kOU
 xFN
 ljD
 kOU
-xFN
+boD
 ljD
 ljD
-cWd
-ljD
-sxl
-hgm
+bov
+bom
+boi
+aUK
 rfS
 rfS
 rfS
@@ -136359,12 +137151,12 @@ kOU
 kOU
 kOU
 kOU
-edP
+boE
 kOU
 kOU
 kOU
-kOU
-ljD
+bon
+bep
 hgm
 rfS
 rfS
@@ -136593,13 +137385,13 @@ tys
 kOU
 kOU
 aGy
-sxl
+bek
 xJY
-edP
-edP
-edP
-edP
-hgm
+box
+bow
+boo
+boh
+aUL
 rfS
 rfS
 rfS
@@ -136827,13 +137619,13 @@ xJY
 baw
 kOU
 vmL
-sxl
+aYi
 sxl
 baq
-sxl
+bon
 rfS
-sxl
-sxl
+boj
+aYi
 rfS
 rfS
 rfS
@@ -149506,11 +150298,11 @@ fOh
 btg
 qTq
 nQB
-iam
-vCN
-vCN
+wPo
+wzW
+wzW
 qaQ
-oEU
+wPo
 vPw
 qPN
 wPo
@@ -149531,8 +150323,8 @@ ktt
 clF
 xhv
 jIw
-ueK
-epu
+clF
+clF
 sLn
 aMH
 uqE
@@ -149744,7 +150536,7 @@ jQH
 aFd
 aFd
 nIU
-lhe
+wPo
 vPw
 qPN
 uvE
@@ -149767,12 +150559,12 @@ vpU
 xnJ
 pks
 nFP
-aMF
-aET
-hor
-hor
-hor
-qaR
+boV
+boR
+aVt
+aVt
+aVt
+boH
 uqE
 goj
 xnJ
@@ -149973,12 +150765,12 @@ jNt
 sMX
 dIl
 ter
-qaR
-hor
-hor
-hor
+dUS
+bpi
+aVt
+bph
 tDE
-lhe
+wPo
 rDe
 qPN
 edo
@@ -149999,14 +150791,14 @@ ktt
 wFe
 wcc
 rvJ
-ffs
-cgw
+tFJ
+nFP
 xCl
 aET
 hor
 hor
 hor
-qaR
+boK
 uqE
 oog
 xnJ
@@ -150207,12 +150999,12 @@ jNt
 sMX
 rta
 ter
-qaR
-hor
+dUS
+bpj
 hor
 hor
 aFb
-lhx
+wPo
 rDe
 iNg
 rGd
@@ -150236,11 +151028,11 @@ xnJ
 ezh
 aFa
 raB
-aET
-hor
-hor
-hor
-qaR
+boT
+aVu
+aVu
+aVu
+boM
 uqE
 oog
 xnJ
@@ -150441,12 +151233,12 @@ dkT
 sMX
 sUh
 ter
-qaR
-hor
-hor
-hor
-aFb
-guI
+dUS
+bpk
+aVu
+aVu
+bpg
+wzW
 rDe
 iNg
 coC
@@ -150467,7 +151259,7 @@ fxG
 cEv
 vpU
 rvJ
-dzF
+tFJ
 mSN
 xEx
 xEx
@@ -150675,12 +151467,12 @@ cVF
 lmz
 pKS
 ter
-qaR
-qaR
-qaR
+dUS
+dUS
+dUS
 gmV
 bTL
-gaq
+wzW
 rDe
 qPN
 dOZ
@@ -150914,7 +151706,7 @@ ter
 ter
 gCQ
 jet
-lhx
+wPo
 vPw
 jxk
 iaO
@@ -154915,9 +155707,9 @@ bQG
 bQG
 bQG
 fSc
+boW
 aMF
-aMF
-aMF
+boN
 cvn
 gFy
 aDl
@@ -155149,9 +155941,9 @@ qaR
 qaR
 qaR
 qaR
+boX
 aEX
-aEX
-aEX
+boO
 rEL
 bdm
 bdi
@@ -155383,9 +156175,9 @@ qaR
 qaR
 qaR
 qaR
+boY
 hor
-hor
-hor
+boP
 qaR
 pTb
 pTb
@@ -155617,9 +156409,9 @@ qaR
 qaR
 qaR
 qaR
+boY
 hor
-hor
-hor
+boP
 qaR
 qaR
 wSe
@@ -155851,9 +156643,9 @@ qaR
 qaR
 qaR
 qaR
-hor
-hor
-hor
+boZ
+boU
+boQ
 qaR
 qaR
 qaR
@@ -179223,8 +180015,8 @@ vDK
 vDK
 vDK
 vDK
-vAc
-qKr
+bpm
+bpl
 vDK
 vDK
 vDK
@@ -186488,7 +187280,7 @@ tCn
 ncQ
 ncQ
 ncQ
-blT
+bpd
 vDK
 vDK
 qbW
@@ -187185,7 +187977,7 @@ guJ
 vFD
 rXL
 bmh
-uub
+blY
 uub
 uub
 uub
@@ -187424,7 +188216,7 @@ lZQ
 tQg
 uub
 rFK
-blU
+bpf
 vDK
 vLO
 dHb
@@ -187657,7 +188449,7 @@ vDK
 vDK
 wQX
 lZQ
-blU
+bpf
 vDK
 vDK
 vLO
@@ -188352,15 +189144,15 @@ uCT
 uot
 uot
 uot
-njl
-njl
-njl
-njl
-njl
-njl
-njl
-njl
-njl
+qaR
+qaR
+vDK
+qaR
+qaR
+vDK
+vDK
+vDK
+qaR
 qaR
 qaR
 aYt
@@ -188591,17 +189383,17 @@ qaR
 qaR
 qaR
 qaR
+vDK
+vDK
 qaR
 qaR
 qaR
 qaR
 qaR
-qaR
-qaR
-qaR
-qaR
-qaR
-qaR
+dHb
+dHb
+dHb
+dHb
 qaR
 qaR
 qaR
@@ -188834,7 +189626,7 @@ qaR
 qaR
 qaR
 qaR
-qaR
+dHb
 qaR
 qaR
 qaR
@@ -189042,12 +189834,12 @@ jDl
 jDl
 jDl
 jDl
-jDl
-dxl
+bpw
+bpu
 lQe
 aQO
-aQO
-aQO
+bpr
+bpq
 qaR
 qaR
 qaR
@@ -189244,11 +190036,11 @@ qaR
 qaR
 qaR
 qaR
-njK
+bpQ
 njK
 uuX
-aQO
-aQO
+bpr
+bpq
 qaR
 tRH
 weE
@@ -189276,11 +190068,11 @@ btD
 jDl
 jDl
 jgx
-jDl
+wWs
+bpv
 oUf
 oUf
-oUf
-oUf
+bps
 qaR
 qaR
 qaR
@@ -189478,10 +190270,10 @@ qaR
 qaR
 qaR
 wWs
+bpv
 oUf
 oUf
-oUf
-oUf
+bps
 wWs
 qaR
 qaR
@@ -189515,7 +190307,7 @@ hor
 hor
 hor
 hor
-hor
+qaR
 qaR
 qaR
 qaR
@@ -189950,9 +190742,9 @@ hor
 hor
 hor
 hor
-hor
 qaR
-aQO
+qaR
+bpq
 oqd
 jDl
 jDl
@@ -190185,8 +190977,8 @@ hor
 hor
 hor
 hor
-qGc
-aQO
+bpO
+bpN
 oqd
 jDl
 jDl
@@ -190447,8 +191239,8 @@ qaR
 qaR
 qaR
 qaR
-qaR
-qaR
+hor
+hor
 qaR
 qaR
 qaR
@@ -190653,7 +191445,7 @@ hor
 hor
 hor
 hor
-qGc
+bpP
 siR
 tRH
 weE
@@ -190709,7 +191501,7 @@ qaR
 qaR
 qaR
 qaR
-bDW
+bpa
 ncB
 bdt
 kNm
@@ -190886,7 +191678,7 @@ qaR
 hor
 hor
 hor
-hor
+qaR
 qaR
 qaR
 qaR
@@ -190943,7 +191735,7 @@ qaR
 qaR
 qaR
 bDW
-bDW
+bpa
 wzx
 kNm
 kNm
@@ -191177,7 +191969,7 @@ qaR
 qaR
 qaR
 bDW
-bDW
+bpa
 ncB
 kNm
 kNm
@@ -191322,7 +192114,7 @@ qaR
 qaR
 qaR
 hor
-hor
+bpW
 aVt
 iMy
 pGT
@@ -191330,8 +192122,8 @@ nAy
 nAy
 hKm
 mEh
-aVt
-hor
+bpU
+bpR
 hor
 qaR
 qaR
@@ -191556,7 +192348,7 @@ qaR
 qaR
 qaR
 hor
-hor
+bpX
 aVu
 pIu
 flo
@@ -191565,6 +192357,7 @@ fwW
 uLR
 oBt
 aVu
+bpS
 hor
 hor
 qaR
@@ -191592,13 +192385,12 @@ qaR
 qaR
 qaR
 qaR
-qaR
-qaR
-qaR
-aQO
-aQO
-eVe
-njK
+bpx
+bpB
+bpA
+bpz
+bpy
+bpx
 qaR
 qaR
 qaR
@@ -191790,18 +192582,18 @@ qaR
 qaR
 hor
 hor
+bpW
+aVt
+aVt
+aVt
+aVt
+aVt
+aVt
+aVt
+aVt
+bpR
 hor
 hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-qaR
-qaR
 qaR
 qaR
 qaR
@@ -192033,9 +192825,9 @@ hor
 hor
 hor
 hor
-qaR
-qaR
-qaR
+hor
+hor
+hor
 qaR
 qaR
 qaR
@@ -192260,16 +193052,16 @@ qaR
 qaR
 qaR
 hor
-qaR
-qaR
-qaR
 hor
 hor
 hor
-qaR
-qaR
-qaR
-qaR
+hor
+hor
+hor
+hor
+hor
+hor
+hor
 qaR
 qaR
 qaR
@@ -192493,17 +193285,17 @@ qaR
 qaR
 qaR
 qaR
-qaR
-qaR
-qaR
-qaR
-qaR
-qaR
 hor
-qaR
-qaR
-qaR
-qaR
+hor
+hor
+hor
+hor
+hor
+hor
+hor
+hor
+hor
+hor
 qaR
 qaR
 qaR
@@ -192729,14 +193521,14 @@ qaR
 qaR
 qaR
 qaR
+hor
+hor
+hor
+hor
+hor
+hor
 qaR
-qaR
-qaR
-qaR
-qaR
-qaR
-qaR
-qaR
+hor
 qaR
 qaR
 qaR
@@ -192964,10 +193756,10 @@ qaR
 qaR
 qaR
 qaR
+hor
+hor
 qaR
-qaR
-qaR
-qaR
+hor
 qaR
 qaR
 qaR
@@ -193229,8 +194021,8 @@ hor
 qaR
 hor
 hor
-qaR
-njK
+yfT
+bpG
 nDK
 gzk
 aQO
@@ -193463,8 +194255,8 @@ hor
 hor
 hor
 hor
-qGc
-gzk
+bpL
+bpH
 aQO
 mwY
 nNa
@@ -193692,14 +194484,14 @@ qaR
 qaR
 qaR
 qaR
-qaR
+hor
 hor
 hor
 hor
 hor
 qGc
-aQO
-aQO
+bpE
+bpC
 aQO
 eVe
 njK
@@ -193926,15 +194718,15 @@ qaR
 qaR
 qaR
 qaR
-qaR
 hor
 hor
 hor
 hor
-qGc
-aQO
-aQO
-aQO
+hor
+bpM
+bpJ
+bpE
+bpC
 eVe
 njK
 qaR
@@ -194165,10 +194957,10 @@ hor
 qaR
 hor
 hor
-qaR
-aQO
-aQO
-aQO
+yfT
+bpK
+bpF
+bpD
 eVe
 qaR
 qaR

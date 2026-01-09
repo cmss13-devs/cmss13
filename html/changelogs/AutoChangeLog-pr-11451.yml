@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - server: "Map DB stats now save correctly"

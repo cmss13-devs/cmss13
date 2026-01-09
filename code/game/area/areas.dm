@@ -470,6 +470,7 @@
 	name = "Lower Sky"
 	icon_state = "lv-626"
 	flags_area = AREA_UNWEEDABLE
+	is_resin_allowed = FALSE
 
 /area/sky/level4
 	name = "Sky"

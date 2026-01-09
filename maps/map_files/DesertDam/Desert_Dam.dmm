@@ -19184,7 +19184,7 @@
 	pixel_x = -17;
 	density = 0
 	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/floor/plating,
 /area/desert_dam/interior/caves/pred_ship)
 "bhW" = (
 /obj/structure/showcase{
@@ -19720,14 +19720,11 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
 /obj/item/tool/weldingtool/yautja{
 	pixel_x = 13;
 	pixel_y = 8
 	},
-/turf/open/floor/corsat/squares,
+/turf/open/shuttle/dropship/predship/tile/red3,
 /area/desert_dam/interior/caves/pred_ship)
 "bjz" = (
 /obj/effect/decal/sand_overlay/sand1/corner1{

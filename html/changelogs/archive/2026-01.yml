@@ -8,3 +8,62 @@
       key is removed
   - code_imp: Repaths all instances of encryptionkey/public to encryptionkey/almayer
       for less confusion
+2026-01-03:
+  Doc12693420:
+  - bugfix: UPP Serzhant survivors can now use their QYJ-42
+  Git-Nivrak:
+  - bugfix: You can no longer pounce up a zlevel into places which would get you stuck
+  - bugfix: You can no longer pounce over indestructible obstacles (e.g fog)
+  Puckaboo2:
+  - bugfix: All steps in eye surgeries now have sounds.
+  - bugfix: If the patient is blind or nearsighted and has 0 eye damage, you can still
+      initiate eye surgery. A patient now needs to either have eye damage or be blind/nearsighted
+      to need surgery.
+  - qol: Makes eye surgery steps more descriptive.
+  - qol: If you cured blindness or nearsightedness, you get extra flavor text and
+      a pat on the back (from Puck)
+  - balance: Changes eye surgery steps. It's now Scalpel, Hemostat, Retractor, FixoVein,
+      Cautery. Pretend you're doing internal bleeding on the eyes and you will be
+      fine.
+  - balance: Eye surgery now requires Oxycodone instead of getting away with inaprovaline.
+      Eyes have some of the greatest concentrations of nociceptive nerves in the human
+      body and must be fully numbed for LASIK or to be be completely anesthetized
+      in real life for an operation to commence.
+2026-01-04:
+  Puckaboo2:
+  - bugfix: Xeno spit overlays should return to their original function.
+2026-01-07:
+  Puckaboo2:
+  - bugfix: Autodoc now properly does the new eye surgery steps.
+  - rscdel: Removed Spitter Frenzy's macro. Replaced it with Charge Spit.
+  - bugfix: Spitter Frenzy should not show up in Spitter's Alien sidebar.
+  - bugfix: Charge Spit should appear in Spitter's Alien sidebar.
+  - bugfix: The FIX ME icon state no longer appears on the cycle helmet HUD button
+      if you're toggling the Squad Optic.
+  Unknownity  Wei:
+  - rscadd: Added two new factions the PMCs and Historical/Miscallenous prey to the
+      Hunting Grounds pool.
+  - rscadd: Despoiler has been added to Hunting Grounds xenomorph T3 pool.
+  - rscadd: CLF Specialist has been added to the Hunting Grounds CLF pool.
+  - bugfix: Fixes USCM Smartgunner being hungry in the Hunting Grounds.
+  - bugfix: Fixes objectives not appearing for certain ERTs.
+  - bugfix: Fixes the super top hat appearing incorrectly on the mob.
+  Venuska1117:
+  - bugfix: Abduct can no longer can pass through wall griders.
+2026-01-08:
+  Drathek:
+  - server: Map DB stats now save correctly
+  Killfish:
+  - refactor: Refactored Xeno Fire Immunity Code
+  Nihisohel:
+  - qol: You can now walk over small simple mobs (E.G. Rats) rather than swapping
+      positions with them
+  - balance: Reasonably small mobs (E.G Corgi Puppies, Larva, Facehuggers) now require
+      sprite clicking to be hit by throwing weapons
+  - code_imp: Adds a few simple mob parents, allows small simple_mob types to vent
+      crawl
+  Puckaboo2:
+  - bugfix: Fixes Data Detector's action button icon from displaying FIX ME when toggled.
+  - bugfix: Fixes Data Detector's action button icon not switching when clicking the
+      data detector in-hand.
+  - bugfix: Pharmaceutical Physician is now medical green on the crew monitor.

@@ -649,7 +649,7 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 		/obj/structure/weightmachine/stacklifter/unanchored,
 		/obj/structure/weightmachine/weightlifter/unanchored,
 		/obj/item/tool/dumbbell,
-		/obj/item/tool/dumbbell/alt
+		/obj/item/tool/dumbbell/alt,
 	)
 	dollar_cost = 45
 	crate_heat = -5

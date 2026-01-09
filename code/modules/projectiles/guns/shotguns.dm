@@ -1383,8 +1383,8 @@ can cause issues with ammo types getting mixed up during the burst.
 	item_state = "mk481"
 	pixel_x = -10
 	hud_offset = -10
-	gauge = list("12g", "18.5mm")
-    caliber = list("12g", "18.5mm")
+	gauge = list("12g","18.5mm")
+	caliber = list("12g","18.5mm")
 	auto_retrieval_slot = WEAR_BACK
 	flags_equip_slot = SLOT_BACK|SLOT_BLOCK_SUIT_STORE
 	force = MELEE_FORCE_STRONG

@@ -164,7 +164,7 @@
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/initialize_pass_flags(datum/pass_flags_container/pass_flags_container)
 	..()
 	if(pass_flags_container)
-		pass_flags_container.flags_pass |= PASS_FLAGS_CRAWLER
+		pass_flags_container.flags_pass |= PASS_FLAGS_CRAWLER|PASS_OVER_THROW_ITEM
 
 //regular pain datum will make the mob die when trying to pounce after taking enough damage.
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/initialize_pain()

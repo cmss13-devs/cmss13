@@ -30,7 +30,7 @@ const WeaponPanel = (props: {
   return (
     <Stack>
       <Stack.Item>
-        <svg height="501" width="100">
+        <svg height="501" width="100" overflow="visible">
           <text stroke="#00e94e" x={60} y={230} textAnchor="start">
             ACTIONS
           </text>
@@ -90,7 +90,7 @@ const WeaponPanel = (props: {
         </Box>
       </Stack.Item>
       <Stack.Item>
-        <svg width="50px" height="500px">
+        <svg width="50px" height="500px" overflow="visible">
           <g transform="translate(-10)">
             {data.targets_data.length === 0 && (
               <text

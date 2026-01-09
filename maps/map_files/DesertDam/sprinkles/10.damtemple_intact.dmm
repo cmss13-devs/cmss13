@@ -257,6 +257,9 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/corsat/squareswood/north,
 /area/desert_dam/interior/caves/temple)
+"mA" = (
+/turf/template_noop,
+/area/template_noop)
 "mB" = (
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
@@ -360,9 +363,6 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
-"vb" = (
-/turf/template_noop,
-/area/template_noop)
 "vY" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -675,16 +675,16 @@ an
 an
 an
 an
-vb
-vb
-vb
-vb
-vb
-vb
-vb
-vb
-vb
-vb
+mA
+mA
+mA
+mA
+mA
+mA
+mA
+mA
+mA
+mA
 MH
 MH
 MH
@@ -701,16 +701,16 @@ an
 an
 an
 an
-vb
-vb
-vb
-vb
-vb
-vb
-vb
-vb
-vb
-vb
+mA
+mA
+mA
+mA
+mA
+mA
+mA
+mA
+mA
+mA
 MH
 MH
 Li

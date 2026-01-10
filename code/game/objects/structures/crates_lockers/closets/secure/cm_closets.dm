@@ -369,6 +369,11 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 	icon_off = "secure_unlocked_cmdcabinet"
 	wall_mounted = TRUE
 
+/obj/structure/closet/secure_closet/cmdcabinet/Initialize()
+	. = ..()
+	new /obj/item/device/radio/headset/almayer/mcom/spare(src)
+	new /obj/item/device/cotablet(src)
+
 /obj/structure/closet/secure_closet/cmdcabinet/comms_mp
 	name = "communications cabinet"
 	desc = "A bulletproof cabinet containing communications equipment."

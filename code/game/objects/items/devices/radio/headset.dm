@@ -703,6 +703,12 @@
 	additional_hud_types = list(MOB_HUD_FACTION_WY, MOB_HUD_FACTION_CMB)
 	minimap_type = /datum/action/minimap/marine/live
 
+/obj/item/device/radio/headset/almayer/mcom/spare
+	name = "marine acting command headset"
+	desc = "Issued only to officers tasked in being the acting commander or as its duty officer. Channels are as follows: :v - marine command, :p - military police, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC,  :t - intel."
+	initial_keys = list(/obj/item/device/encryptionkey/mcom, /obj/item/device/encryptionkey/mmpo)
+	icon_state = "mco_headset"
+
 /obj/item/device/radio/headset/almayer/mcom/cdrcom/xo
 	locate_setting = TRACKER_CO
 
@@ -739,6 +745,7 @@
 	icon_state = "mco_headset"
 	misc_tracking = TRUE
 	locate_setting = TRACKER_CO
+	initial_keys = list(/obj/item/device/encryptionkey/mcom, /obj/item/device/encryptionkey/mmpo)
 
 	inbuilt_tracking_options = list(
 		"Commanding Officer" = TRACKER_CO,

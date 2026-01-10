@@ -12,7 +12,7 @@
 	icon_living = "guard"
 	icon_dead = "guard_dead"
 	speak_emote = list("chitters")
-	emote_hear = list("chitters")
+	emote_hear = list("chitters.")
 	speak_chance = 5
 	turns_per_move = 5
 	see_in_dark = 10
@@ -62,29 +62,30 @@
 	poison_per_bite = 5
 	move_to_delay = 4
 
-/mob/living/simple_animal/hostile/giant_spider/initialize_pass_flags(datum/pass_flags_container/PF)
+/mob/living/simple_animal/hostile/giant_spider/initialize_pass_flags(datum/pass_flags_container/pass_flags)
 	..()
-	if (PF)
-		PF.flags_pass = PASS_FLAGS_CRAWLER
+	if (pass_flags)
+		pass_flags.flags_pass = PASS_FLAGS_CRAWLER
+		pass_flags.flags_can_pass_all = PASS_OVER_THROW_ITEM
 
 /mob/living/simple_animal/hostile/giant_spider/AttackingTarget()
 	..()
+	var/mob/living/target_mob = target_mob_ref?.resolve()
 	if(isliving(target_mob))
-		var/mob/living/L = target_mob
-		if(L.reagents)
-			L.reagents.add_reagent("toxin", poison_per_bite)
+		if(target_mob.reagents)
+			target_mob.reagents.add_reagent("toxin", poison_per_bite)
 			if(prob(poison_per_bite))
-				to_chat(L, SPAN_DANGER("You feel a tiny prick."))
-				L.reagents.add_reagent(poison_type, 5)
+				to_chat(target_mob, SPAN_DANGER("You feel a tiny prick."))
+				target_mob.reagents.add_reagent(poison_type, 5)
 
 /mob/living/simple_animal/hostile/giant_spider/Life(delta_time)
-	..()
-	if(!stat)
+	. = ..()
+	if(stat == CONSCIOUS)
 		if(stance == HOSTILE_STANCE_IDLE)
 			//1% chance to skitter madly away
 			if(!busy && prob(1))
 				/*var/list/move_targets = list()
-				for(var/turf/T in orange(20, src))
+				for(var/turf/T as anything in ORANGE_TURFS(20, src))
 					move_targets.Add(T)*/
 				stop_automated_movement = 1
 				walk_to(src, pick(orange(20, src)), 1, move_to_delay)
@@ -101,8 +102,8 @@
 			stop_automated_movement = 0
 
 /mob/living/simple_animal/hostile/giant_spider/nurse/Life(delta_time)
-	..()
-	if(!stat)
+	. = ..()
+	if(stat == CONSCIOUS)
 		if(stance == HOSTILE_STANCE_IDLE)
 			var/list/can_see = view(src, 10)
 			//30% chance to stop wandering and do something

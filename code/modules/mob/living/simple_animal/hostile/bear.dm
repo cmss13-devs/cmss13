@@ -8,8 +8,8 @@
 	icon_gib = "bear_gib"
 	speak = list("RAWR!","Rawr!","GRR!","Growl!")
 	speak_emote = list("growls", "roars")
-	emote_hear = list("rawrs","grumbles","grawls")
-	emote_see = list("stares ferociously", "stomps")
+	emote_hear = list("rawrs.","roars.","grumbles.","growls.")
+	emote_see = list("stares ferociously.", "stomps.")
 	speak_chance = 1
 	turns_per_move = 5
 	see_in_dark = 6
@@ -46,7 +46,7 @@
 	response_harm   = "pokes"
 
 /mob/living/simple_animal/hostile/bear/Life(delta_time)
-	. =..()
+	. = ..()
 	if(!.)
 		return
 
@@ -54,6 +54,8 @@
 		icon_state = "bear"
 	else
 		icon_state = "bearfloor"
+
+	var/mob/living/target_mob = target_mob_ref?.resolve()
 
 	switch(stance)
 
@@ -77,7 +79,7 @@
 					src.setDir(get_dir(src,target_mob)) //Keep staring at the mob
 
 					if(stance_step in list(1,4,7)) //every 3 ticks
-						var/action = pick( list( "growls at [target_mob]", "stares angrily at [target_mob]", "prepares to attack [target_mob]", "closely watches [target_mob]" ) )
+						var/action = pick( list( "growls at [target_mob]", "stares angrily at [target_mob].", "prepares to attack [target_mob].", "closely watches [target_mob]." ) )
 						if(action)
 							INVOKE_ASYNC(src, PROC_REF(manual_emote), action)
 			if(!found_mob)
@@ -90,7 +92,7 @@
 
 		if(HOSTILE_STANCE_ATTACKING)
 			if(stance_step >= 20) //attacks for 20 ticks, then it gets tired and needs to rest
-				INVOKE_ASYNC(src, PROC_REF(manual_emote), "is worn out and needs to rest")
+				INVOKE_ASYNC(src, PROC_REF(manual_emote), "is worn out and needs to rest.")
 				stance = HOSTILE_STANCE_TIRED
 				stance_step = 0
 				walk(src, 0) //This stops the bear's walking
@@ -102,15 +104,15 @@
 	if(stance != HOSTILE_STANCE_ATTACK && stance != HOSTILE_STANCE_ATTACKING)
 		stance = HOSTILE_STANCE_ALERT
 		stance_step = 6
-		target_mob = user
-	..()
+		target_mob_ref = WEAKREF(user)
+	return ..()
 
-/mob/living/simple_animal/hostile/bear/attack_hand(mob/living/carbon/human/M as mob)
+/mob/living/simple_animal/hostile/bear/attack_hand(mob/living/carbon/human/attacking_mob)
 	if(stance != HOSTILE_STANCE_ATTACK && stance != HOSTILE_STANCE_ATTACKING)
 		stance = HOSTILE_STANCE_ALERT
 		stance_step = 6
-		target_mob = M
-	..()
+		target_mob_ref = WEAKREF(attacking_mob)
+	return ..()
 
 /mob/living/simple_animal/hostile/bear/Process_Spacemove(check_drift = 0)
 	return //No drifting in space for space bears!
@@ -118,29 +120,29 @@
 /mob/living/simple_animal/hostile/bear/FindTarget()
 	. = ..()
 	if(.)
-		manual_emote("stares alertly at [.]")
+		manual_emote("stares alertly at [.].")
 		stance = HOSTILE_STANCE_ALERT
 
 /mob/living/simple_animal/hostile/bear/LoseTarget()
 	..(5)
 
 /mob/living/simple_animal/hostile/bear/AttackingTarget()
+	var/mob/living/target_mob = target_mob_ref?.resolve()
 	if(!Adjacent(target_mob))
 		return
-	manual_emote(pick(list("slashes at [target_mob]", "bites [target_mob]")))
+	manual_emote(pick(list("slashes at [target_mob].", "bites [target_mob].")))
 
 	var/damage = rand(20,30)
 
 	if(ishuman(target_mob))
-		var/mob/living/carbon/human/H = target_mob
+		var/mob/living/carbon/human/hooman = target_mob
 		var/dam_zone = pick("chest", "l_hand", "r_hand", "l_leg", "r_leg")
-		var/obj/limb/affecting = H.get_limb(rand_zone(dam_zone))
-		H.apply_damage(damage, BRUTE, affecting, sharp=1, edge=1)
-		return H
+		var/obj/limb/affecting = hooman.get_limb(rand_zone(dam_zone))
+		hooman.apply_damage(damage, BRUTE, affecting, sharp=TRUE, edge=TRUE, enviro=TRUE)
+		return hooman
 	else if(isliving(target_mob))
-		var/mob/living/L = target_mob
-		L.apply_damage(damage, BRUTE)
-		return L
+		target_mob.apply_damage(damage, BRUTE, enviro=TRUE)
+		return target_mob
 
 
 

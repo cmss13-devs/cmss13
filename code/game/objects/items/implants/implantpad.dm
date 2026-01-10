@@ -3,7 +3,11 @@
 /obj/item/implantpad
 	name = "implantpad"
 	desc = "Used to modify implants."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/syringe.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/devices_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/devices_righthand.dmi',
+	)
 	icon_state = "implantpad-0"
 	item_state = "electronic"
 	throw_speed = SPEED_FAST
@@ -66,7 +70,7 @@
 			dat += "The implant casing is empty."
 	else
 		dat += "Please insert an implant casing!"
-	user << browse(dat, "window=implantpad")
+	user << browse(HTML_SKELETON(dat), "window=implantpad")
 	onclose(user, "implantpad")
 	return
 

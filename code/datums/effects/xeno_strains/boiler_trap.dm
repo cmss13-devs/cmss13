@@ -25,7 +25,8 @@
 
 /datum/effects/boiler_trap/process_mob()
 	. = ..()
-	if(!.) return FALSE
+	if(!.)
+		return FALSE
 	var/mob/living/affected_living = affected_atom
 	ADD_TRAIT(affected_living, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY(effect_name))
 	return TRUE

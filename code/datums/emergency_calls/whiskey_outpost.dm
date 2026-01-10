@@ -19,7 +19,8 @@
 		name_of_spawn = /obj/effect/landmark/ert_spawns/distress_wo
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
-	if(!istype(spawn_loc)) return //Didn't find a useable spawn point.
+	if(!istype(spawn_loc))
+		return //Didn't find a useable spawn point.
 
 	var/mob/living/carbon/human/mob = new(spawn_loc)
 	M.transfer_to(mob, TRUE)
@@ -51,7 +52,9 @@
 
 	sleep(10)
 	to_chat(mob, "<B>Objectives:</b> [objectives]")
+
 	GLOB.RoleAuthority.randomize_squad(mob)
+
 	mob.sec_hud_set_ID()
 	mob.hud_set_squad()
 

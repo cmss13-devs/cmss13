@@ -76,13 +76,7 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 	move_turn_momentum_loss_factor = 0.8
 
 	vehicle_ram_multiplier = VEHICLE_TRAMPLE_DAMAGE_APC_REDUCTION
-
-/obj/vehicle/multitile/apc/Initialize()
-	. = ..()
-
-	var/turf/gotten_turf = get_turf(src)
-	if(gotten_turf && gotten_turf.z)
-		SSminimaps.add_marker(src, gotten_turf.z, MINIMAP_FLAG_USCM, "apc", 'icons/ui_icons/map_blips_large.dmi')
+	minimap_icon_state = "apc"
 
 /obj/vehicle/multitile/apc/load_role_reserved_slots()
 	var/datum/role_reserved_slots/RRS = new
@@ -114,7 +108,6 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 		add_verb(M.client, list(
 			/obj/vehicle/multitile/proc/switch_hardpoint,
 			/obj/vehicle/multitile/proc/cycle_hardpoint,
-			/obj/vehicle/multitile/proc/toggle_shift_click,
 			/obj/vehicle/multitile/proc/name_vehicle
 		))
 
@@ -141,7 +134,6 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 		remove_verb(M.client, list(
 			/obj/vehicle/multitile/proc/switch_hardpoint,
 			/obj/vehicle/multitile/proc/cycle_hardpoint,
-			/obj/vehicle/multitile/proc/toggle_shift_click,
 			/obj/vehicle/multitile/proc/name_vehicle,
 		))
 	else if(seat == VEHICLE_SUPPORT_GUNNER_ONE || seat == VEHICLE_SUPPORT_GUNNER_TWO)

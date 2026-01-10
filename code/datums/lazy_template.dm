@@ -91,6 +91,13 @@
 			for(var/thing in (turf.get_all_contents() - turf))
 				loaded_atom_movables |= thing
 
+	for(var/turf/initializing_turf as anything in loaded_turfs)
+		var/area/turf_area = initializing_turf.loc // not using get_area as these are turfs, and the loc is guaranteed to be an area
+		if(!turf_area.static_lighting)
+			continue
+
+		new /datum/static_lighting_object(initializing_turf)
+
 	SSatoms.InitializeAtoms(loaded_areas + loaded_atom_movables + loaded_turfs)
 
 	SEND_SIGNAL(src, COMSIG_LAZY_TEMPLATE_LOADED, loaded_atom_movables, loaded_turfs, loaded_areas)

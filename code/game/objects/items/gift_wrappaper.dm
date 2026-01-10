@@ -10,7 +10,7 @@
 /obj/item/a_gift
 	name = "gift"
 	desc = "PRESENTS!!!! eek!"
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/gifts.dmi'
 	icon_state = "gift1"
 	item_state = "gift1"
 
@@ -56,7 +56,7 @@
 	for(var/mob/M in src) //Should only be one but whatever.
 		M.forceMove(src.loc)
 		if (M.client)
-			M.client.eye = M.client.mob
+			M.client.set_eye(M.client.mob)
 			M.client.perspective = MOB_PERSPECTIVE
 
 	deconstruct()
@@ -72,7 +72,7 @@
 		/obj/item/storage/belt/champion,
 		/obj/item/tool/soap/deluxe,
 		/obj/item/tool/pickaxe/silver,
-		/obj/item/tool/pen/invisible,
+		/obj/item/tool/pen/white,
 		/obj/item/explosive/grenade/smokebomb,
 		/obj/item/corncob,
 		/obj/item/poster,
@@ -101,9 +101,10 @@
 		/obj/item/toy/sword,
 		/obj/item/reagent_container/food/snacks/grown/ambrosiadeus,
 		/obj/item/reagent_container/food/snacks/grown/ambrosiavulgaris,
-		/obj/item/clothing/accessory/horrible)
+		/obj/item/clothing/accessory/tie/horrible)
 
-	if(!ispath(gift_type,/obj/item)) return
+	if(!ispath(gift_type,/obj/item))
+		return
 
 	var/obj/item/I = new gift_type(M)
 	M.temp_drop_inv_item(src)
@@ -118,7 +119,7 @@
 /obj/item/wrapping_paper
 	name = "wrapping paper"
 	desc = "You can use this to wrap items in."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "wrap_paper"
 	var/amount = 20
 
@@ -179,7 +180,7 @@
 
 			if (H.client)
 				H.client.perspective = EYE_PERSPECTIVE
-				H.client.eye = present
+				H.client.set_eye(present)
 
 			H.forceMove(present)
 

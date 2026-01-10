@@ -2,7 +2,7 @@
 	message_admins("[usr] spawned in a container of [target] with a volume of [volume]u")
 
 	if(volume > 300)
-		var/obj/structure/reagent_dispensers/fueltank/custom/C = new(usr.loc, volume, target)
+		var/obj/structure/reagent_dispensers/tank/fuel/custom/C = new(usr.loc, volume, target)
 		C.reagents.add_reagent(target, volume)
 
 		if(alert(usr, "Do you want to set the explosive capabilities on your fueltank? (This will disallow transferring to and from the tank)", "", "Yes", "No") == "Yes")
@@ -208,7 +208,8 @@
 					if("Specific number")
 						var/number = tgui_input_number(usr,"How many properties?")
 						R.gen_tier = tgui_input_number(usr,"Enter the generation tier. This will affect how potent the properties can be. Must be between 1-5.", "generation tier", 1, 5, 1)
-						if(number > 10) number = 10
+						if(number > 10)
+							number = 10
 						for(var/i=1,i<=number,i++)
 							R.add_property()
 						response = alert(usr,"Done. What do you want customized next?","Custom reagent [target]","Add property","Randomize non property vars","Finish")

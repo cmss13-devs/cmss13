@@ -5,8 +5,8 @@
 $title-text-color: base.$color-fg !default;
 
 $button-bg-opacity: 0.25;
-$recommended-color: #3a9b52;
-$mandatory-color: rgb(128, 83, 0);
+$recommended-color: hsl(135, 46%, 42%);
+$mandatory-color: hsl(39, 100%, 25%);
 
 .Vendor {
   .Description {
@@ -133,7 +133,7 @@ $mandatory-color: rgb(128, 83, 0);
   }
 
   .VendingFlexAlt {
-    background-color: rgba(#000000, 0.6);
+    background-color: rgba(hsl(0, 0%, 0%), 0.6);
   }
 
   .VendingItem {
@@ -184,11 +184,11 @@ $mandatory-color: rgb(128, 83, 0);
   }
 
   .MandatoryItemText {
-    color: rgb(255, 200, 90);
+    color: hsl(40, 100%, 68%);
   }
 
   .RecommendedItemText {
-    color: #56e97b;
+    color: hsl(135, 77%, 63%);
   }
 
   .Spacer {

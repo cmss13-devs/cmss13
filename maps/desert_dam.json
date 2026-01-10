@@ -5,6 +5,7 @@
     "webmap_url": "Trijent",
     "survivor_types": [
         "/datum/equipment_preset/survivor/doctor/trijent",
+        "/datum/equipment_preset/survivor/hybrisa/paramedic",
         "/datum/equipment_preset/survivor/scientist/trijent",
         "/datum/equipment_preset/survivor/roughneck",
         "/datum/equipment_preset/survivor/chaplain/trijent",
@@ -15,8 +16,12 @@
         "/datum/equipment_preset/survivor/trucker/trijent",
         "/datum/equipment_preset/survivor/security/trijent",
         "/datum/equipment_preset/survivor/corporate/trijent",
-        "/datum/equipment_preset/survivor/clf",
-        "/datum/equipment_preset/survivor/civilian"
+        "/datum/equipment_preset/survivor/civilian",
+        "/datum/equipment_preset/survivor/civilian_unique",
+        "/datum/equipment_preset/survivor/hybrisa/fire_fighter"
+    ],
+    "CO_insert_survivor_types": [
+        "/datum/equipment_preset/survivor/clf/coordinator"
     ],
     "defcon_triggers": [
         3300,
@@ -27,10 +32,31 @@
     ],
     "map_item_type": "/obj/item/map/desert_dam",
     "announce_text": "We've lost contact with Weyland-Yutani's extra-solar colony, \"Trijent Dam\", on the planet \"Raijin.\" The ###SHIPNAME### has been dispatched to assist.",
+    "liaison_briefing": "maps/map_briefings/cl_brief_trijent.html",
+    "co_briefing": {
+        "Hawks": "maps/map_briefings/commanding_officer/trijent_dam/TRIJENTDAMcpo.html",
+        "Doves": "maps/map_briefings/commanding_officer/trijent_dam/TRIJENTDAMhmm.html",
+        "Magpies": "maps/map_briefings/commanding_officer/trijent_dam/TRIJENTDAMmodi.html",
+        "Unaligned": "maps/map_briefings/commanding_officer/trijent_dam/TRIJENTDAMunaligned.html"
+    },
     "monkey_types": [
         "stok"
     ],
-    "traits": [{ "Ground": true }],
+    "traits": [
+        {
+            "Ground": true,
+            "Up": 1
+        },
+        {
+            "Ground": true,
+            "Up": 1,
+            "Down": -1
+        },
+        {
+            "Ground": true,
+            "Down": -1
+        }
+    ],
     "nightmare_path": "maps/Nightmare/maps/DesertDam/",
     "xvx_hives": {
         "xeno_hive_alpha": 0,

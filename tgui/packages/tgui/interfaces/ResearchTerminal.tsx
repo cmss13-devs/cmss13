@@ -1,14 +1,27 @@
-import { useState } from 'react';
-
-import { classes } from '../../common/react';
-import { useBackend } from '../backend';
-import { Box, Button, Flex, Section, Stack, Tabs } from '../components';
-import { BoxProps } from '../components/Box';
-import { Table, TableCell, TableRow } from '../components/Table';
-import { Window } from '../layouts';
+import { type ComponentProps, useState } from 'react';
+import { useBackend } from 'tgui/backend';
+import {
+  Box,
+  Button,
+  Divider,
+  Flex,
+  ProgressBar,
+  Section,
+  Stack,
+  Tabs,
+} from 'tgui/components';
+import { Table, TableCell, TableRow } from 'tgui/components/Table';
+import { Window } from 'tgui/layouts';
 
 export interface DocumentLog {
   ['XRF Scans']?: Array<DocumentRecord>;
+}
+export interface Chemical {
+  name: string;
+  property_hint: string;
+  recipe_hint: string;
+  id: string;
+  gen_tier: number;
 }
 
 export interface DocumentRecord {
@@ -30,72 +43,14 @@ interface TerminalProps {
   clearance_x_access: number;
   photocopier_error: number;
   printer_toner: number;
+  is_contract_picked: number;
+  contract_chems: Chemical[];
+  world_time: number;
+  next_reroll: number;
+  contract_cooldown: number;
 }
 
-const PurchaseDocs = () => {
-  const { data, act } = useBackend<TerminalProps>();
-  const [purchaseSelection, setPurchaseSelection] = useState('0');
-  const clearance_level = data.clearance_level;
-  const all_levels = ['1', '2', '3', '4', '5'];
-  const costs = { '1': 7, '2': 9, '3': 11, '4': 13, '5': 15 };
-  const available_levels = Array.from(Array(clearance_level).keys()).map((x) =>
-    (x + 1).toString(),
-  );
-
-  return (
-    <Stack vertical>
-      <Stack.Item>
-        <span>Purchase Reports</span>
-        <hr />
-      </Stack.Item>
-
-      <Stack.Item>
-        <Flex justify="space-between" fill={1} className="purchase-flex">
-          {all_levels.map((x) => {
-            const isDisabled =
-              !available_levels.includes(x) || costs[x] > data.rsc_credits;
-            return (
-              <Flex.Item key={x}>
-                <Button
-                  className={classes([
-                    !available_levels.includes(x) && 'HiddenButton',
-                  ])}
-                  disabled={isDisabled}
-                  onClick={() => setPurchaseSelection(x)}
-                >
-                  Level {x} {costs[x]}CR
-                </Button>
-              </Flex.Item>
-            );
-          })}
-        </Flex>
-      </Stack.Item>
-      <hr />
-      {purchaseSelection !== '0' && (
-        <Flex.Item>
-          <ConfirmationDialogue
-            onConfirm={() => {
-              act('purchase_document', {
-                purchase_document: purchaseSelection,
-              });
-              setPurchaseSelection('0');
-            }}
-            onCancel={() => setPurchaseSelection('0')}
-          >
-            <span>
-              Are you sure you want to purchase a level{' '}
-              <u>{purchaseSelection}</u> document?
-              <br />
-              It will cost <u>{costs[purchaseSelection]}</u> credits.
-            </span>
-          </ConfirmationDialogue>
-        </Flex.Item>
-      )}
-    </Stack>
-  );
-};
-
-interface ConfirmationProps extends BoxProps {
+interface ConfirmationProps extends ComponentProps<typeof Box> {
   readonly onConfirm: () => any;
   readonly onCancel: () => any;
 }
@@ -130,7 +85,7 @@ const NoCompoundsDetected = () => {
   return <span>ERROR: no chemicals have been detected.</span>;
 };
 
-interface CompoundRecordProps extends BoxProps {
+interface CompoundRecordProps extends ComponentProps<typeof Box> {
   readonly compound: CompoundData;
   readonly canPrint: boolean;
 }
@@ -259,7 +214,7 @@ const ResearchReportTable = (props: {
           </Flex.Item>
         </Flex>
       </Stack.Item>
-      <hr />
+      <Divider />
       <Stack.Item>
         <CompoundTable
           hideOld={hideOld}
@@ -272,7 +227,7 @@ const ResearchReportTable = (props: {
   );
 };
 
-export interface CompoundTableProps extends BoxProps {
+export interface CompoundTableProps extends ComponentProps<typeof Box> {
   readonly docs: DocumentRecord[];
   readonly timeLabel: string;
   readonly canPrint: boolean;
@@ -486,12 +441,12 @@ const ResearchManager = (props: {
         </Stack.Item>
       </Stack>
       <hr />
-      <PurchaseDocs />
       <ImproveClearanceConfirmation
         isConfirm={isConfirm}
         setConfirm={setConfirm}
       />
       <XClearanceConfirmation isConfirm={isConfirm} setConfirm={setConfirm} />
+      <Contracts />
     </Box>
   );
 };
@@ -511,6 +466,72 @@ const ErrorStack = () => {
         </Stack.Item>
       )}
     </Stack>
+  );
+};
+
+const Contracts = () => {
+  const { data, act } = useBackend<TerminalProps>();
+  const timeLeft = data.next_reroll - data.world_time;
+  const timeLeftPct = timeLeft / data.contract_cooldown;
+  const contractKeys =
+    data.contract_chems.length === 0
+      ? []
+      : Array.from(Array(data.contract_chems.length).keys());
+  return (
+    <Box px={'7px'}>
+      <Section title={'Chemical Contracts'} mt={'5px'}>
+        <ProgressBar
+          width="100%"
+          value={timeLeftPct}
+          ranges={{
+            average: [-Infinity, Infinity],
+          }}
+        >
+          <Box textAlign="center">
+            Contracts Refresh in: {Math.ceil(timeLeft / 10)}
+          </Box>
+        </ProgressBar>
+      </Section>
+      {contractKeys.map((value, key) => (
+        <Flex grow direction="row" key={key}>
+          <Flex.Item grow={1}>
+            <Section title={<span>{data.contract_chems[key].name}</span>} fill>
+              <span>
+                Difficulty:{' '}
+                {data.contract_chems[key].gen_tier === 1
+                  ? 'Easy'
+                  : data.contract_chems[key].gen_tier === 2
+                    ? 'Intermediate'
+                    : 'Hard'}
+              </span>
+              <Flex.Item>
+                Early assesment shows one part of the recipe is{' '}
+                {data.contract_chems[key].recipe_hint}
+              </Flex.Item>
+              <Flex.Item>
+                Early testing shows property of{' '}
+                {data.contract_chems[key].property_hint}
+              </Flex.Item>
+              <Button
+                my={1}
+                fluid
+                icon="print"
+                disabled={data.is_contract_picked}
+                tooltip={
+                  'Taking this contract will put a 5 minute cooldown on new chemical. You can only pick one.'
+                }
+                tooltipPosition="top"
+                onClick={() =>
+                  act('take_contract', { id: data.contract_chems[key].id })
+                }
+              >
+                {data.is_contract_picked ? 'UNAVAILABLE' : 'Take Contract'}
+              </Button>
+            </Section>
+          </Flex.Item>
+        </Flex>
+      ))}
+    </Box>
   );
 };
 
@@ -611,13 +632,21 @@ const ClearanceImproveButton = (props: {
   readonly setSelectedTab: React.Dispatch<React.SetStateAction<number>>;
   readonly setConfirm: React.Dispatch<React.SetStateAction<string | undefined>>;
 }) => {
-  const { data } = useBackend<TerminalProps>();
+  const { data, act } = useBackend<TerminalProps>();
   const { setSelectedTab, setConfirm } = props;
   const clearance_level = data.clearance_level;
   const x_access = data.clearance_x_access;
   const isDisabled = data.rsc_credits < data.broker_cost;
   return (
     <>
+      <Button
+        onClick={() => {
+          act('reprint_last_contract');
+        }}
+        tooltip={'Reprint Last picked contract in the case you lost it.'}
+      >
+        Reprint Last Contract
+      </Button>
       {clearance_level < 5 && (
         <Button
           disabled={isDisabled}
@@ -630,35 +659,31 @@ const ClearanceImproveButton = (props: {
         </Button>
       )}
       {clearance_level === 5 && x_access === 0 && (
-        <Flex.Item>
-          <Button
-            disabled={data.rsc_credits < 5}
-            onClick={() => {
-              setSelectedTab(1);
-              setConfirm('request_clearance_x_access');
-            }}
-          >
-            Request X (5)
-          </Button>
-        </Flex.Item>
+        <Button
+          disabled={data.rsc_credits < 5}
+          onClick={() => {
+            setSelectedTab(1);
+            setConfirm('request_clearance_x_access');
+          }}
+        >
+          Request X (5)
+        </Button>
       )}
-      {x_access !== 0 && (
-        <Flex.Item>
-          <Button disabled>Maximum clearance reached</Button>
-        </Flex.Item>
-      )}
+      {x_access !== 0 && <Button disabled>Maximum clearance reached</Button>}
     </>
   );
 };
 
 export const ResearchTerminal = () => {
-  const { data } = useBackend<TerminalProps>();
+  const { data, act } = useBackend<TerminalProps>();
   const [selectedTab, setSelectedTab] = useState(1);
   const [isConfirm, setConfirm] = useState<string | undefined>(undefined);
   return (
     <Window width={480 * 2} height={320 * 2} theme="crtyellow">
-      <Window.Content scrollable className="ResearchTerminal">
+      <Window.Content className="ResearchTerminal">
         <Section
+          fill
+          scrollable
           title={`Clearance Level ${data.clearance_level}`}
           buttons={
             <ClearanceImproveButton

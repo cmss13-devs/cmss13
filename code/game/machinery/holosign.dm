@@ -1,6 +1,6 @@
 /obj/structure/machinery/holosign
 	name = "holosign"
-	desc = "Small wall-mounted holographic projector"
+	desc = "Small wall-mounted holographic projector."
 	icon = 'icons/obj/structures/machinery/holosign.dmi'
 	icon_state = "sign_off"
 	layer = MOB_LAYER
@@ -22,9 +22,11 @@
 		icon_state = on_icon
 
 /obj/structure/machinery/holosign/power_change()
+	. = ..()
 	if(stat & NOPOWER)
-		lit = 0
-	update_icon()
+		if(lit)
+			lit = FALSE
+			update_icon()
 
 /obj/structure/machinery/holosign/surgery
 	name = "surgery holosign"

@@ -7,7 +7,7 @@
 	name = "Fractal Energy Reactor"
 	desc = "This thing drains power from fractal-subspace. (DEBUG ITEM: INFINITE POWERSOURCE FOR MAP TESTING. CONTACT DEVELOPERS IF FOUND.)"
 	icon = 'icons/obj/structures/machinery/power.dmi'
-	icon_state = "tracker" //ICON stolen from solar tracker. There is no need to make new texture for debug item
+	icon_state = "bbox_on"
 	anchored = TRUE
 	density = TRUE
 	directwired = 1

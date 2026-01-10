@@ -12,6 +12,7 @@
 	power_channel = POWER_CHANNEL_ENVIRON
 	unslashable = TRUE
 	unacidable = TRUE
+	explo_proof = TRUE
 	var/id = null
 	var/range = 10
 	var/normaldoorcontrol = CONTROL_POD_DOORS
@@ -49,17 +50,23 @@
 /obj/structure/machinery/door_control/attack_alien(mob/user as mob)
 	return
 
+/obj/structure/machinery/door_control/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
+	return TAILSTAB_COOLDOWN_NONE
+
 /obj/structure/machinery/door_control/attackby(obj/item/W, mob/user as mob)
 	return src.attack_hand(user)
 
 /obj/structure/machinery/door_control/ex_act(severity)
-	if(indestructible)
+	if(explo_proof)
 		return FALSE
 	..()
 
 /obj/structure/machinery/door_control/proc/handle_dropship(ship_id)
 	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(ship_id)
 	if (!istype(shuttle))
+		return
+	var/obj/structure/machinery/computer/shuttle/dropship/flight/comp = shuttle.getControlConsole()
+	if(comp?.dropship_control_lost)
 		return
 	if(is_mainship_level(z)) // on the almayer
 		return
@@ -121,7 +128,7 @@
 		return
 
 	if(!allowed(user) && (wires & 1) && !force )
-		to_chat(user, SPAN_DANGER("Access Denied"))
+		to_chat(user, SPAN_DANGER("Access Denied."))
 		flick(initial(icon_state) + "-denied",src)
 		return
 
@@ -168,7 +175,7 @@
 		return
 
 	if(!allowed(user) && (wires & 1) && !force)
-		to_chat(user, SPAN_DANGER("Access Denied"))
+		to_chat(user, SPAN_DANGER("Access Denied."))
 		flick(initial(icon_state) + "-denied",src)
 		return
 
@@ -203,6 +210,9 @@
 		busy = FALSE
 		if(!(stat & NOPOWER))
 			icon_state = initial(icon_state) + "0"
+
+/obj/structure/machinery/door_control/yautja
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 
 /obj/structure/machinery/door_control/brbutton
 	icon_state = "big_red_button_wallv"
@@ -262,3 +272,37 @@
 /obj/structure/machinery/door_control/cl/quarter/windows
 	name = "Quarter Windows Shutters"
 	id = "cl_quarter_windows"
+
+// Hybrisa lockdown announcements
+
+/obj/structure/machinery/door_control/colony_lockdown
+	var/used = FALSE
+	var/colony_lockdown_time = 25 MINUTES
+
+/obj/structure/machinery/door_control/colony_lockdown/use_button(mob/living/user,force)
+	if(world.time < SSticker.mode.round_time_lobby + colony_lockdown_time)
+		to_chat(user, SPAN_WARNING("The colony-wide lockdown cannot be lifted yet. Please wait another [floor((SSticker.mode.round_time_lobby + colony_lockdown_time-world.time)/600)] minutes before trying again."))
+		return
+	if(used)
+		to_chat(user, SPAN_WARNING("The colony-wide lockdown has already been lifted."))
+		return
+	. = ..()
+	marine_announcement("The colony-wide lockdown protocols have been lifted.")
+	used = TRUE
+
+// Research
+
+/obj/structure/machinery/door_control/research_lockdown
+	var/used = FALSE
+	var/colony_lockdown_time = 10 MINUTES
+
+/obj/structure/machinery/door_control/research_lockdown/use_button(mob/living/user,force)
+	if(world.time < SSticker.mode.round_time_lobby + colony_lockdown_time)
+		to_chat(user, SPAN_WARNING("The WY-Research-Facility lockdown cannot be lifted yet. Please wait another [floor((SSticker.mode.round_time_lobby + colony_lockdown_time-world.time)/600)] minutes before trying again."))
+		return
+	if(used)
+		to_chat(user, SPAN_WARNING("The WY-Research-Facility lockdown has already been lifted."))
+		return
+	. = ..()
+	marine_announcement("The WY-Research-Facility lockdown protocols have been lifted.")
+	used = TRUE

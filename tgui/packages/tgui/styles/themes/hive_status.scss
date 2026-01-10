@@ -6,12 +6,12 @@
 
 .theme-hive_status {
   // Components
-  @include meta.load-css('../components/BlockQuote.scss');
+  @include meta.load-css('~tgui/styles/components/BlockQuote');
   @include meta.load-css(
-    '../components/Button.scss',
+    '~tgui/styles/components/Button',
     $with: ('color-selected': #52375c)
   );
-  @include meta.load-css('../components/Table.scss');
+  @include meta.load-css('~tgui/styles/components/Table');
 
   // Layouts
   @include meta.load-css('../layouts/Layout.scss');

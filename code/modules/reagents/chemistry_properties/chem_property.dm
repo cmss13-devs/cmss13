@@ -6,7 +6,7 @@
 	var/rarity = PROPERTY_DISABLED
 	var/category = PROPERTY_TYPE_MEDICINE
 	var/level = 1 //used to calculate potency
-	var/max_level //if there a point where it makes no logical sense to increase the level? Remember potency is level / 2
+	var/max_level = 999 //if there a point where it makes no logical sense to increase the level? Remember potency is level / 2
 	var/value //how much value per level? Negative properties should have a high negative value, neutral should have a value near zero, and positive ones should have a high value
 	var/starter = FALSE //whether or not this is a starter property and should be added to the property database on startup
 	var/updates_stats = FALSE //should the property change other variables in the reagent when added or removed?
@@ -48,27 +48,36 @@
 
 	return TRUE
 
+///what does this property do to a hydrotray and its plant
+/datum/chem_property/proc/reaction_hydro_tray(/obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency = 1, volume = 1)
+	return
+
 /datum/chem_property/proc/process_dead(mob/living/M, potency = 1, delta_time)
 	return FALSE // By default, chemicals don't process in dead personnel.
 
-/datum/chem_property/proc/trigger(A) //used for properties that needs something to trigger outside of where process is usually called
+//used for properties that needs something to trigger outside of where process is usually called
+/datum/chem_property/proc/trigger(A)
 	return
 
 /datum/chem_property/proc/reset_reagent()
 	return
 
-/datum/chem_property/proc/update_reagent() //used for changing other variables in the reagent, set update to FALSE to remove the update
+///used for changing other variables in the reagent, set update to FALSE to remove the update
+/datum/chem_property/proc/update_reagent()
 	return
 
+///What will this property do to mob when its sprayed/smoked/etc on
 /datum/chem_property/proc/reaction_mob(mob/M, method=TOUCH, volume, potency)
 	return
 
+///What will this property do to object when its sprayed/smoked/etc on
 /datum/chem_property/proc/reaction_obj(obj/O, volume, potency)
 	return
-
+///What will this property do to turf when its sprayed/smoked/etc on
 /datum/chem_property/proc/reaction_turf(turf/T, volume, potency)
 	return
 
+///Late update the reagent the property is in. "late" means the reagent is already ready.
 /datum/chem_property/proc/post_update_reagent()
 	return
 
@@ -107,3 +116,6 @@
 		text += "Anomalous "
 	return text
 
+/// If this property can cause harm, generally
+/datum/chem_property/proc/can_cause_harm()
+	return FALSE

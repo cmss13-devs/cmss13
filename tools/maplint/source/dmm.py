@@ -94,7 +94,12 @@ class DMMParser:
                 break
             elif content_end == "{":
                 while (var_edit := self.parse_var_edit()) is not None:
+                    if var_edit[0] == None and var_edit[1] == None:
+                        break
                     content.var_edits[var_edit[0]] = var_edit[1]
+                else:
+                    continue # inner loop didn't break
+                break # inner loop did break indicating a })
             elif content_end == ",":
                 continue
 
@@ -106,6 +111,8 @@ class DMMParser:
         line = self.next_line()
         if line == "\t},":
             return None
+        if line == "\t})":
+            return None, None
 
         var_edit_match = REGEX_VAR_EDIT.match(line)
         self.expect(var_edit_match is not None, "Var edits ended too early, expected a newline in between.")
@@ -128,6 +135,8 @@ class DMMParser:
             return Filename(constant[1:-1])
         elif (list_match := re.match(r'^list\((?P<contents>.*)\)$', constant)):
             return ["NYI: list"]
+        elif (list_match := re.match(r'^newlist\((?P<contents>.*)\)$', constant)):
+            return ["NYI: newlist"]
         else:
             self.raise_error(f"Unknown constant type: {constant}")
 

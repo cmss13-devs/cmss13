@@ -28,8 +28,10 @@
 /obj/effect/spawner/gibspawner/Initialize(mapload, list/viruses, mob/living/ml, fleshcolor, bloodcolor)
 	. = ..()
 
-	if(fleshcolor) src.fleshcolor = fleshcolor
-	if(bloodcolor) src.bloodcolor = bloodcolor
+	if(fleshcolor)
+		src.fleshcolor = fleshcolor
+	if(bloodcolor)
+		src.bloodcolor = bloodcolor
 
 	if(istype(loc,/turf)) //basically if a badmin spawns it
 		src.viruses = viruses

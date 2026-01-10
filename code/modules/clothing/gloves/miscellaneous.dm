@@ -9,7 +9,7 @@
 	max_heat_protection_temperature = GLOVES_MAX_HEAT_PROT
 
 /obj/item/clothing/gloves/cyborg
-	desc = "beep boop borp"
+	desc = "Beep boop borp."
 	name = "cyborg gloves"
 	icon_state = "black"
 	item_state = "r_hands"
@@ -18,10 +18,10 @@
 /obj/item/clothing/gloves/swat
 	desc = "These tactical gloves are somewhat fire and impact-resistant."
 	name = "\improper SWAT Gloves"
-	icon_state = "black"
-	item_state = "swat_gl"
+	icon_state = "veteran"
+	item_state = "black"
 	siemens_coefficient = 0.6
-	permeability_coefficient = 0.05
+
 
 	flags_cold_protection = BODY_FLAG_HANDS
 	min_cold_protection_temperature = GLOVES_MIN_COLD_PROT
@@ -32,9 +32,9 @@
 	desc = "These tactical gloves are somewhat fire and impact resistant."
 	name = "combat gloves"
 	icon_state = "black"
-	item_state = "swat_gl"
+	item_state = "black"
 	siemens_coefficient = 0
-	permeability_coefficient = 0.05
+
 	flags_cold_protection = BODY_FLAG_HANDS
 	min_cold_protection_temperature = GLOVES_MIN_COLD_PROT
 	flags_heat_protection = BODY_FLAG_HANDS
@@ -44,19 +44,22 @@
 	name = "latex gloves"
 	desc = "Sterile latex gloves."
 	icon_state = "latex"
-	item_state = "lgloves"
+	item_state = "latex"
 	siemens_coefficient = 0.30
-	permeability_coefficient = 0.35
+	armor_bio = CLOTHING_ARMOR_LOW
 
 /obj/item/clothing/gloves/botanic_leather
 	desc = "These leather gloves protect against thorns, barbs, prickles, spikes and other harmful objects of floral origin."
 	name = "botanist's leather gloves"
 	icon_state = "leather"
 	item_state = "ggloves"
-	permeability_coefficient = 0.9
 	siemens_coefficient = 0.9
 
-
+/obj/item/clothing/gloves/black_leather
+	name = "stylish leather gloves"
+	desc = "Supple, black leather gloves crafted from the finest leather. Stylish, durable, and ready for work or play."
+	icon_state = "black_leather"
+	item_state = "black"
 
 /obj/item/clothing/gloves/boxing
 	name = "boxing gloves"

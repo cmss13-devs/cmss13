@@ -207,7 +207,7 @@
 			take_damage(I.force * I.sharp * FOAMED_METAL_ITEM_MELEE) //human advantage, sharper items do more damage
 		else
 			take_damage(I.force * FOAMED_METAL_ITEM_MELEE) //blunt items can damage it still
-		return TRUE
+		return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
 
 	return FALSE
 
@@ -220,12 +220,19 @@
 
 	X.animation_attack_on(src)
 
-	X.visible_message(SPAN_DANGER("\The [X] slashes [src]!"), \
+	X.visible_message(SPAN_DANGER("\The [X] slashes [src]!"),
 	SPAN_DANGER("You slash [src]!"))
 
 	take_damage(damage * FOAMED_METAL_XENO_SLASH)
 
 	return XENO_ATTACK_ACTION
+
+/obj/structure/foamed_metal/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
+	take_damage(xeno.melee_damage_upper * FOAMED_METAL_XENO_SLASH)
+	xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
+	SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno.tail_stab_animation(src, blunt_stab)
+	return TAILSTAB_COOLDOWN_NORMAL
 
 #undef FOAMED_METAL_FIRE_ACT_DMG
 #undef FOAMED_METAL_XENO_SLASH

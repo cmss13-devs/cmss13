@@ -36,7 +36,6 @@
 
 	if(mapload)
 		create_valid_directions()
-
 		search_for_connections()
 
 	if(!is_mainship_level(z))
@@ -124,7 +123,7 @@
 			if(W)
 				var/mob/living/carbon/xenomorph/X = user
 				if(!istype(X) || X.hivenumber != W.linked_hive.hivenumber)
-					to_chat(user, SPAN_WARNING("The weeds are blocking the exit of this vent"))
+					to_chat(user, SPAN_WARNING("The weeds are blocking the exit of this vent."))
 					return
 
 		if(ventcrawl_message_busy > world.time)
@@ -132,7 +131,8 @@
 
 		ventcrawl_message_busy = world.time + 20
 		playsound(src, pick('sound/effects/alien_ventcrawl1.ogg', 'sound/effects/alien_ventcrawl2.ogg'), 25, 1)
-		visible_message(SPAN_HIGHDANGER("You hear something squeezing through the ducts."))
+		var/turf/alert_turf = get_turf(src) //Pipe segments aren't guaranteed to be visible
+		alert_turf.visible_message(SPAN_HIGHDANGER("You hear something squeezing through the ducts."))
 		to_chat(user, SPAN_NOTICE("You begin to climb out of [src]"))
 		animate_ventcrawl()
 		user.remove_specific_pipe_image(src)
@@ -149,7 +149,7 @@
 		return
 
 	user.forceMove(next_pipe)
-	user.client.eye = next_pipe //if we don't do this, Byond only updates the eye every tick - required for smooth movement
+	user.client.set_eye(next_pipe) //if we don't do this, Byond only updates the eye every tick - required for smooth movement
 	user.update_pipe_icons(next_pipe)
 
 	if(world.time - user.last_played_vent > VENT_SOUND_DELAY)

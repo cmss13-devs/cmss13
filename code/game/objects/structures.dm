@@ -10,7 +10,8 @@
 	var/list/debris
 	var/unslashable = FALSE
 	var/wrenchable = FALSE
-	health = 100
+	blocks_emissive = EMISSIVE_BLOCK_GENERIC
+	health = STRUCTURE_HEALTH_BASE
 	anchored = TRUE
 	projectile_coverage = PROJECTILE_COVERAGE_MEDIUM
 	can_block_movement = TRUE
@@ -43,10 +44,10 @@
 			return TRUE
 		toggle_anchored(W, user)
 		return TRUE
-	..()
+	. = ..()
 
 /obj/structure/ex_act(severity, direction)
-	if(indestructible)
+	if(explo_proof)
 		return
 
 	if(src.health) //Prevents unbreakable objects from being destroyed
@@ -110,7 +111,13 @@
 
 /obj/structure/proc/do_climb(mob/living/user, mods)
 	if(!can_climb(user))
-		return
+		return FALSE
+
+	if(istype(loc, /turf/open_space) && user.a_intent != INTENT_HARM)
+		var/turf/open_space/open = loc
+		open.climb_down(user)
+		return FALSE
+
 
 	var/list/climbdata = list("climb_delay" = climb_delay)
 	SEND_SIGNAL(user, COMSIG_LIVING_CLIMB_STRUCTURE, climbdata)
@@ -120,10 +127,10 @@
 	user.visible_message(SPAN_WARNING("[user] starts [flags_atom & ON_BORDER ? "leaping over" : climb_over_string] \the [src]!"))
 
 	if(!do_after(user, final_climb_delay, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC, numticks = 2))
-		return
+		return FALSE
 
 	if(!can_climb(user))
-		return
+		return FALSE
 
 	var/turf/TT = get_turf(src)
 	if(flags_atom & ON_BORDER)
@@ -145,6 +152,7 @@
 	user.forceMove(TT)
 	for(var/atom/movable/thing as anything in grabbed_things) // grabbed things aren't moved to the tile immediately to: make the animation better, preserve the grab
 		thing.forceMove(TT)
+	return TRUE
 
 /obj/structure/proc/structure_shaken()
 
@@ -187,9 +195,6 @@
 			else
 				to_chat(H, SPAN_DANGER("You land heavily!"))
 				H.apply_damage(damage, BRUTE)
-
-			H.UpdateDamageIcon()
-			H.updatehealth()
 	return
 
 /obj/structure/proc/can_touch(mob/living/user)
@@ -232,3 +237,8 @@
 		return -1
 
 	return 4 SECONDS
+
+/obj/structure/Collided(atom/movable/AM)
+	..()
+	// NOTE: We aren't requiring a parent call to ensure this signal is sent
+	SEND_SIGNAL(src, COMSIG_STRUCTURE_COLLIDED, AM)

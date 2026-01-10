@@ -1,5 +1,9 @@
 /obj/item/clothing/glasses/hud
 	name = "HUD"
+	icon = 'icons/obj/items/clothing/glasses/huds.dmi'
+	item_icons = list(
+		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/huds.dmi',
+	)
 	gender = NEUTER
 	desc = "A heads-up display that provides important info in (almost) real time."
 	flags_atom = null //doesn't protect eyes because it's a monocle, duh
@@ -9,11 +13,12 @@
 	name = "\improper HealthMate HUD"
 	desc = "A heads-up display that scans the humans in view and provides accurate data about their health status."
 	icon_state = "healthhud"
+	item_state = "healthhud"
 	deactive_state = "degoggles"
 	flags_armor_protection = 0
 	toggleable = TRUE
 	hud_type = MOB_HUD_MEDICAL_ADVANCED
-	actions_types = list(/datum/action/item_action/toggle, /datum/action/item_action/view_publications)
+	actions_types = list(/datum/action/item_action/toggle/hudgoggles, /datum/action/item_action/view_publications)
 	req_skill = SKILL_MEDICAL
 	req_skill_level = SKILL_MEDICAL_MEDIC
 
@@ -27,9 +32,7 @@
 	name = "View Research Publications"
 	button.name = name
 	button.overlays.Cut()
-	var/image/IMG = image('icons/obj/structures/machinery/computer.dmi', button, "research")
-	IMG.pixel_x = 0
-	IMG.pixel_y = -5
+	var/image/IMG = image('icons/mob/hud/actions.dmi', button, "research")
 	button.overlays += IMG
 
 /datum/action/item_action/view_publications/update_button_icon()
@@ -103,6 +106,31 @@
 		if(report)
 			report.read_paper(user)
 
+/obj/item/clothing/glasses/hud/health/basic
+	name = "\improper Basic HealthMate HUD"
+	desc = "A heads-up display that scans the humans in view and provides accurate data about their health status. This one is a simpler model."
+	hud_type = MOB_HUD_MEDICAL_BASIC
+	req_skill = NONE
+	req_skill_level = NONE
+	actions_types = list(/datum/action/item_action/toggle)
+
+/obj/item/clothing/glasses/hud/health/basic/prescription
+	name = "\improper Prescription Basic HealthMate HUD"
+	desc = "A heads-up display that scans the humans in view and provides accurate data about their health status. This simpler model contains prescription lenses."
+	prescription = TRUE
+
+/obj/item/clothing/glasses/hud/health/science
+	name = "custom HealthMate HUD" // combined HealthMateHUD and Reagent Scanner HUD for CMO
+	desc = "These HealthMate HUD googles are modified with a light-weight titantium-alloy frame that is custom fitted with extra wiring and low profile components from a reagent analyzer, allowing them to combine the functionality of a HealthMate and reagent scanner HUD without compromising on the form of the googles."
+	req_skill = SKILL_RESEARCH
+	req_skill_level = SKILL_RESEARCH_TRAINED
+	clothing_traits = list(TRAIT_REAGENT_SCANNER)
+
+/obj/item/clothing/glasses/hud/health/science/prescription
+	name = "prescription custom HealthMate HUD" // combined HealthMateHUD and Reagent Scanner HUD for CMO but prescription
+	desc = parent_type::desc + " This pair contains prescription lenses."
+	prescription = TRUE
+
 /obj/item/clothing/glasses/hud/sensor
 	name = "\improper SensorMate HUD"
 	desc = "A much older heads-up display that displays the last known biometric data from suit sensors of any given individual."
@@ -128,7 +156,7 @@
 	toggleable = TRUE
 	flags_armor_protection = 0
 	hud_type = MOB_HUD_SECURITY_ADVANCED
-	actions_types = list(/datum/action/item_action/toggle)
+	actions_types = list(/datum/action/item_action/toggle/hudgoggles)
 
 /obj/item/clothing/glasses/hud/security/prescription
 	name = "\improper Prescription PatrolMate HUD"
@@ -139,6 +167,10 @@
 	name = "augmented shades"
 	gender = PLURAL
 	desc = "Polarized bioneural eyewear, designed to augment your vision. Why don't you try getting a job?"
+	icon = 'icons/obj/items/clothing/glasses/misc.dmi'
+	item_icons = list(
+		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/misc.dmi',
+	)
 	icon_state = "jensenshades"
 	item_state = "jensenshades"
 	vision_flags = SEE_MOBS

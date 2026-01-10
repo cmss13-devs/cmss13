@@ -1,6 +1,6 @@
 /obj/structure/pipes/standard/simple/visible/universal
 	name = "Universal pipe adapter"
-	desc = "An adapter for regular, supply and scrubbers pipes"
+	desc = "An adapter for regular, supply and scrubbers pipes."
 	icon_state = "map_universal"
 
 /obj/structure/pipes/standard/simple/visible/universal/update_icon(safety = 0)
@@ -17,7 +17,7 @@
 
 /obj/structure/pipes/standard/simple/hidden/universal
 	name="Universal pipe adapter"
-	desc = "An adapter for regular, supply and scrubbers pipes"
+	desc = "An adapter for regular, supply and scrubbers pipes."
 	icon_state = "map_universal"
 
 /obj/structure/pipes/standard/simple/hidden/universal/update_icon(safety = 0)
@@ -110,6 +110,7 @@
 /obj/structure/pipes/standard/cap/hidden/supply/no_boom
 	name = "reinforced supply pipe endcap"
 	explodey = FALSE
+	color = PIPE_COLOR_PURPLE
 
 
 /obj/structure/pipes/standard/tank
@@ -120,6 +121,7 @@
 	dir = SOUTH
 	valid_directions = list(SOUTH)
 	density = TRUE
+	layer = OBJ_LAYER
 	var/actual_icon_state = "air"
 
 /obj/structure/pipes/standard/tank/New()

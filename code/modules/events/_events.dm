@@ -57,7 +57,7 @@
 
 	triggering = TRUE
 	if(alert_observers)
-		message_admins("Random Event triggering in [DisplayTimeText(RANDOM_EVENT_ADMIN_INTERVENTION_TIME)]: [name]. (<a href='?src=[REF(src)];cancel=1'>CANCEL</a>)")
+		message_admins("Random Event triggering in [DisplayTimeText(RANDOM_EVENT_ADMIN_INTERVENTION_TIME)]: [name]. (<a href='byond://?src=[REF(src)];cancel=1'>CANCEL</a>)")
 		sleep(RANDOM_EVENT_ADMIN_INTERVENTION_TIME)
 		var/gamemode = SSticker.mode.config_tag
 		var/players_amt = get_active_player_count(alive_check = TRUE, afk_check = TRUE)
@@ -74,7 +74,7 @@
 	..()
 	if(href_list["cancel"])
 		if(!triggering)
-			to_chat(usr, SPAN_ADMIN("You are too late to cancel that event"))
+			to_chat(usr, SPAN_ADMIN("You are too late to cancel that event."))
 			return
 		triggering = FALSE
 		message_admins("[key_name_admin(usr)] cancelled event [name].")
@@ -88,7 +88,7 @@ Runs the event
 */
 /datum/round_event_control/proc/run_event(random = FALSE, announce_chance_override = null, admin_forced = FALSE)
 	/*
-	* We clear our signals first so we dont cancel a wanted event by accident,
+	* We clear our signals first so we don't cancel a wanted event by accident,
 	* the majority of time the admin will probably want to cancel a single midround spawned random events
 	* and not multiple events called by others admins
 	* * In the worst case scenario we can still recall a event which we cancelled by accident, which is much better then to have a unwanted event

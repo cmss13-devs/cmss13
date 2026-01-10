@@ -33,7 +33,6 @@
 	var/pain_reduction_required = PAIN_REDUCTION_FULL
 	///How much training is needed to do this surgery?
 	var/required_surgery_skill = SKILL_SURGERY_TRAINED
-
 	var/step_in_progress = FALSE
 	///The step the surgery is currently on. When status > number of steps, the surgery ends.
 	var/status = 1
@@ -94,6 +93,13 @@
 	if(lying_required && target.body_position != LYING_DOWN)
 		to_chat(user, SPAN_WARNING("[user == target ? "You need" : "[target] needs"] to be lying down for this operation!"))
 		return FALSE
+
+	for(var/mob/living/potential_blocker in get_turf(target))
+		if(potential_blocker == user || potential_blocker == target)
+			continue
+		to_chat(user, SPAN_WARNING("You can't operate when you don't have enough space! Remove everybody else."))
+		return FALSE
+
 	if(user == target)
 		if(!self_operable)
 			to_chat(user, SPAN_WARNING("You can't perform this operation on yourself!"))

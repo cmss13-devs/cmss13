@@ -3,7 +3,7 @@
 	var/static_lighting = TRUE
 
 //Non static lighting areas.
-//Any lighting area that wont support static lights.
+//Any lighting area that won't support static lights.
 //These areas will NOT have corners generated.
 
 /area/space

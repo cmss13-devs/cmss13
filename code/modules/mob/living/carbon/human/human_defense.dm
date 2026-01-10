@@ -74,6 +74,9 @@ Contains most of the procs that are called when a mob is attacked by something
 			var/obj/item/clothing/C = gear
 			if(C.flags_armor_protection & def_zone.body_part)
 				protection += C.get_armor(type)
+	var/datum/effects/acid/acid_effect = locate() in effects_list
+	if(acid_effect)
+		protection = acid_effect.adjust_armor(protection, type)
 	return protection
 
 /mob/living/carbon/human/get_sharp_obj_blocker(obj/limb/limb)
@@ -93,81 +96,6 @@ Contains most of the procs that are called when a mob is attacked by something
 				return TRUE
 	return FALSE
 
-/mob/living/carbon/human/proc/check_shields(damage = 0, attack_text = "the attack", combistick=0)
-	if(l_hand && istype(l_hand, /obj/item/weapon))//Current base is the prob(50-d/3)
-		if(combistick && istype(l_hand,/obj/item/weapon/yautja/combistick) && prob(66))
-			var/obj/item/weapon/yautja/combistick/C = l_hand
-			if(C.on)
-				return TRUE
-
-		if(l_hand.IsShield() && istype(l_hand,/obj/item/weapon/shield)) // Activable shields
-			var/obj/item/weapon/shield/S = l_hand
-			var/shield_blocked_l = FALSE
-			if(S.shield_readied && prob(S.readied_block)) // User activated his shield before the attack. Lower if it blocks.
-				S.lower_shield(src)
-				shield_blocked_l = TRUE
-			else if(prob(S.passive_block))
-				shield_blocked_l = TRUE
-
-			if(shield_blocked_l)
-				visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [l_hand.name]!</B>"), null, null, 5)
-				return TRUE
-			// We cannot return FALSE on fail here, because we haven't checked r_hand yet. Dual-wielding shields perhaps!
-
-		var/obj/item/weapon/I = l_hand
-		if(I.IsShield() && !istype(I, /obj/item/weapon/shield) && (prob(50 - floor(damage / 3)))) // 'other' shields, like predweapons. Make sure that item/weapon/shield does not apply here, no double-rolls.
-			visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [l_hand.name]!</B>"), null, null, 5)
-			return TRUE
-
-	if(r_hand && istype(r_hand, /obj/item/weapon))
-		if(combistick && istype(r_hand,/obj/item/weapon/yautja/combistick) && prob(66))
-			var/obj/item/weapon/yautja/combistick/C = r_hand
-			if(C.on)
-				return TRUE
-
-		if(r_hand.IsShield() && istype(r_hand,/obj/item/weapon/shield)) // Activable shields
-			var/obj/item/weapon/shield/S = r_hand
-			var/shield_blocked_r = FALSE
-			if(S.shield_readied && prob(S.readied_block)) // User activated his shield before the attack. Lower if it blocks.
-				shield_blocked_r = TRUE
-				S.lower_shield(src)
-			else if(prob(S.passive_block))
-				shield_blocked_r = TRUE
-
-			if(shield_blocked_r)
-				visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [r_hand.name]!</B>"), null, null, 5)
-				return TRUE
-
-		var/obj/item/weapon/I = r_hand
-		if(I.IsShield() && !istype(I, /obj/item/weapon/shield) && (prob(50 - floor(damage / 3)))) // other shields. Don't doublecheck activable here.
-			visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [r_hand.name]!</B>"), null, null, 5)
-			return TRUE
-
-	if(back && istype(back, /obj/item/weapon/shield/riot) && prob(20))
-		var/obj/item/weapon/shield/riot/shield = back
-		if(shield.blocks_on_back)
-			visible_message(SPAN_DANGER("<B>The [back] on [src]'s back blocks [attack_text]!</B>"), null, null, 5)
-			return TRUE
-
-	if(attack_text == "the pounce" && wear_suit && wear_suit.flags_inventory & BLOCK_KNOCKDOWN)
-		visible_message(SPAN_DANGER("<B>[src] withstands [attack_text] with their [wear_suit.name]!</B>"), null, null, 5)
-		return TRUE
-	return FALSE
-
-/mob/living/carbon/human/emp_act(severity)
-	. = ..()
-	for(var/obj/O in src)
-		if(!O)
-			continue
-		O.emp_act(severity)
-	for(var/obj/limb/O in limbs)
-		if(O.status & LIMB_DESTROYED)
-			continue
-		O.emp_act(severity)
-		for(var/datum/internal_organ/I in O.internal_organs)
-			if(I.robotic == FALSE)
-				continue
-			I.emp_act(severity)
 
 
 //Returns 1 if the attack hit, 0 if it missed.
@@ -191,7 +119,7 @@ Contains most of the procs that are called when a mob is attacked by something
 		return FALSE
 	var/hit_area = affecting.display_name
 
-	if((user != src) && check_shields(I.force, "the [I.name]"))
+	if((user != src) && !(I.flags_item & UNBLOCKABLE) && check_shields("the [I.name]", get_dir(src, user)))
 		return FALSE
 
 	if(LAZYLEN(I.attack_verb))
@@ -258,7 +186,8 @@ Contains most of the procs that are called when a mob is attacked by something
 	//Melee weapon embedded object code.
 	if (I.damtype == BRUTE && !(I.flags_item & (NODROP|DELONDROP)))
 		damage = I.force
-		if(damage > 40) damage = 40  //Some sanity, mostly for yautja weapons. CONSTANT STICKY ICKY
+		if(damage > 40)
+			damage = 40  //Some sanity, mostly for yautja weapons. CONSTANT STICKY ICKY
 		if (weapon_sharp && prob(3) && !isyautja(user)) // make yautja less likely to get their weapon stuck
 			affecting.embed(I)
 
@@ -271,6 +200,7 @@ Contains most of the procs that are called when a mob is attacked by something
 
 	var/obj/O = AM
 	var/datum/launch_metadata/LM = O.launch_metadata
+	var/launch_meta_valid = istype(LM)
 
 	//empty active hand and we're in throw mode
 	var/can_catch = (!(O.flags_atom & ITEM_UNCATCHABLE) || isyautja(src))
@@ -288,7 +218,7 @@ Contains most of the procs that are called when a mob is attacked by something
 	var/impact_damage = (1 + O.throwforce*THROWFORCE_COEFF)*O.throwforce*THROW_SPEED_IMPACT_COEFF*O.cur_speed
 
 	var/zone
-	if (istype(LM.thrower, /mob/living))
+	if (launch_meta_valid && istype(LM.thrower, /mob/living))
 		var/mob/living/L = LM.thrower
 		zone = check_zone(L.zone_selected)
 	else
@@ -299,7 +229,7 @@ Contains most of the procs that are called when a mob is attacked by something
 		return
 	O.throwing = FALSE //it hit, so stop moving
 
-	if ((LM.thrower != src) && check_shields(impact_damage, "[O]"))
+	if ((!launch_meta_valid || LM.thrower != src) && check_shields("[O]", get_dir(src, LM.thrower), attack_type = SHIELD_ATTACK_PROJECTILE))
 		return
 
 	var/obj/limb/affecting = get_limb(zone)
@@ -326,7 +256,7 @@ Contains most of the procs that are called when a mob is attacked by something
 		else
 			playsound(loc, 'sound/effects/thud.ogg', 25, TRUE, 5, falloff = 2)
 
-	if (ismob(LM.thrower))
+	if (launch_meta_valid && ismob(LM.thrower))
 		var/mob/M = LM.thrower
 		var/client/assailant = M.client
 		if (damage > 5)
@@ -337,7 +267,7 @@ Contains most of the procs that are called when a mob is attacked by something
 		if (assailant)
 			src.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been hit with \a [O], thrown by [key_name(M)]</font>")
 			M.attack_log += text("\[[time_stamp()]\] <font color='red'>Hit [key_name(src)] with a thrown [O]</font>")
-			if(!istype(src,/mob/living/simple_animal/mouse))
+			if(!istype(src,/mob/living/simple_animal/small/mouse))
 				msg_admin_attack("[key_name(src)] was hit by \a [O], thrown by [key_name(M)] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
 
 	if(last_damage_source)

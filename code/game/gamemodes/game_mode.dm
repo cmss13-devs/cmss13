@@ -29,7 +29,7 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 	var/is_in_endgame = FALSE //Set it to TRUE when we trigger DELTA alert or dropship crashes
 	/// When set and this gamemode is selected, the taskbar icon will change to the png selected here
 	var/taskbar_icon = 'icons/taskbar/gml_distress.png'
-	var/static_comms_amount = 0
+	var/static_comms_amount = 1
 	var/obj/structure/machinery/computer/shuttle/dropship/flight/active_lz = null
 
 	var/datum/entity/statistic/round/round_stats = null
@@ -39,6 +39,9 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 	var/corpses_to_spawn = 0
 
 	var/hardcore = FALSE
+
+	///Whether or not the fax response station has loaded.
+	var/loaded_fax_base = FALSE
 
 /datum/game_mode/New()
 	..()
@@ -75,6 +78,7 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 		spawn_static_comms()
 	if(corpses_to_spawn)
 		generate_corpses()
+	initialize_gamemode_modifiers()
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MODE_PRESETUP)
 	return 1
 
@@ -101,9 +105,7 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 		SS.post_setup()
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MODE_POSTSETUP)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(display_roundstart_logout_report)), ROUNDSTART_LOGOUT_REPORT_TIME)
-
-	for(var/mob/new_player/np in GLOB.new_player_list)
-		np.new_player_panel_proc()
+	adjust_ammo_values()
 	round_time_lobby = world.time
 	log_game("Round started at [time2text(world.realtime)]")
 	log_game("Operation time at round start is [worldtime2text()]")
@@ -111,6 +113,11 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 		log_game("Game mode set to [SSticker.mode] on the [SSmapping.configs[GROUND_MAP].map_name] map")
 	log_game("Server IP: [world.internet_address]:[world.port]")
 	return TRUE
+
+/datum/game_mode/proc/adjust_ammo_values()
+	if(MODE_HAS_FLAG(MODE_FACTION_CLASH))
+		for(var/ammo in GLOB.ammo_list)
+			GLOB.ammo_list[ammo].setup_faction_clash_values()
 
 /datum/game_mode/proc/get_affected_zlevels()
 	if(is_in_endgame)
@@ -133,7 +140,7 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 	if(GLOB.round_statistics)
 		GLOB.round_statistics.track_round_end()
 	log_game("Round end result: [round_finished]")
-	to_chat_spaced(world, margin_top = 2, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDHEADER("|Round Complete|"))
+	to_chat_spaced(world, margin_top = 2, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDHEADER("|Round Complete:[round_finished]|"))
 	to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDBODY("Thus ends the story of the brave men and women of the [MAIN_SHIP_NAME] and their struggle on [SSmapping.configs[GROUND_MAP].map_name].\nThe game-mode was: [GLOB.master_mode]!\n[CONFIG_GET(string/endofroundblurb)]"))
 
 /datum/game_mode/proc/declare_completion()
@@ -177,9 +184,9 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 
 		if(M.client && M.client.player_data)
 			if(M.stat == DEAD)
-				record_playtime(M.client.player_data, JOB_OBSERVER, type)
+				record_playtime(M.client.player_data, JOB_OBSERVER, M.type)
 			else
-				record_playtime(M.client.player_data, M.job, type)
+				record_playtime(M.client.player_data, M.job, M.type)
 
 /datum/game_mode/proc/show_end_statistics(icon_state)
 	GLOB.round_statistics.update_panel_data()
@@ -267,16 +274,16 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 
 /datum/game_mode/proc/spawn_static_comms()
 	for(var/i = 1 to static_comms_amount)
-		var/obj/effect/landmark/static_comms/SCO = pick_n_take(GLOB.comm_tower_landmarks_net_one)
-		var/obj/effect/landmark/static_comms/SCT = pick_n_take(GLOB.comm_tower_landmarks_net_two)
-		if(!SCO)
-			break
-		SCO.spawn_tower()
-		if(!SCT)
-			break
-		SCT.spawn_tower()
-	QDEL_NULL_LIST(GLOB.comm_tower_landmarks_net_one)
-	QDEL_NULL_LIST(GLOB.comm_tower_landmarks_net_two)
+		var/obj/effect/landmark/static_comms/tower
+		if(i % 2)
+			tower = pick_n_take(GLOB.comm_tower_landmarks_net_one)
+		else
+			tower = pick_n_take(GLOB.comm_tower_landmarks_net_two)
+		if(!tower)
+			continue
+		tower.spawn_tower()
+	QDEL_LIST(GLOB.comm_tower_landmarks_net_one)
+	QDEL_LIST(GLOB.comm_tower_landmarks_net_two)
 
 //////////////////////////
 //Reports player logouts//

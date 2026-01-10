@@ -23,6 +23,7 @@
 	GLOB.ai_mob_list += src
 	real_name = MAIN_AI_SYSTEM
 	ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_INHERENT)
+	AddElement(/datum/element/corp_label/wy)
 
 /mob/living/silicon/decoy/ship_ai/Destroy()
 	QDEL_NULL(ai_headset)
@@ -32,6 +33,7 @@
 	return ..()
 
 /mob/living/silicon/decoy/Life(delta_time)
+	..()
 	if(stat == DEAD)
 		return FALSE
 	if(health <= HEALTH_THRESHOLD_DEAD && stat != DEAD)
@@ -64,9 +66,12 @@
 	var/message_mode = parse_message_mode(message) //I really prefer my rewrite of all this.
 
 	switch(message_mode)
-		if("headset") message = copytext(message, 2)
-		if("broadcast") message_mode = "headset"
-		else message = copytext(message, 3)
+		if("headset")
+			message = copytext(message, 2)
+		if("broadcast")
+			message_mode = "headset"
+		else
+			message = copytext(message, 3)
 
 	ai_headset.talk_into(src, message, message_mode, "states", languages[1])
 	return TRUE
@@ -78,9 +83,10 @@
 		return "headset"
 
 	if(length(message) >= 2)
-		var/channel_prefix = copytext(message, 1 ,3)
+		var/channel_prefix = lowertext(copytext(message, 1, 3))
 		channel_prefix = GLOB.department_radio_keys[channel_prefix]
-		if(channel_prefix) return channel_prefix
+		if(channel_prefix)
+			return channel_prefix
 
 
 /*Specific communication to a terminal.

@@ -2,7 +2,7 @@
 
 /obj/structure/machinery/recharger
 	name = "\improper recharger"
-	icon = 'icons/obj/structures/props/stationobjs.dmi'
+	icon = 'icons/obj/structures/recharger.dmi'
 	icon_state = "recharger"
 	anchored = TRUE
 	use_power = USE_POWER_IDLE
@@ -213,10 +213,6 @@
 			return
 		*/
 
-/obj/structure/machinery/recharger/power_change()
-	..()
-	update_icon()
-
 /obj/structure/machinery/recharger/emp_act(severity)
 	. = ..()
 	if(inoperable() || !anchored)
@@ -262,14 +258,3 @@
 /obj/structure/machinery/recharger/unanchored
 	anchored = FALSE
 
-/*
-/obj/structure/machinery/recharger/wallcharger
-	name = "wall recharger"
-	icon = 'icons/obj/structures/props/stationobjs.dmi'
-	icon_state = "wrecharger0"
-	active_power_usage = 25000 //25 kW , It's more specialized than the standalone recharger (guns and batons only) so make it more powerful
-	allowed_devices = list(/obj/item/weapon/gun/energy, /obj/item/weapon/baton)
-	icon_state_charged = "wrecharger2"
-	icon_state_idle = "wrecharger0"
-	icon_state_charging = "wrecharger1"
-*/

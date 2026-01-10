@@ -15,31 +15,6 @@
 	var/mob/dead/observer/G = usr
 	G.follow()
 
-/atom/movable/screen/ghost/minimap
-	name = "Minimap"
-	icon_state = "minimap"
-
-/atom/movable/screen/ghost/minimap/Click()
-	var/mob/dead/observer/ghost = usr
-
-	ghost.minimap.action_activate()
-
-// /atom/movable/screen/ghost/follow_xeno
-// name = "Follow Xeno"
-// icon_state = "follow_xeno"
-
-// /atom/movable/screen/ghost/follow_xeno/Click()
-// var/mob/dead/observer/G = usr
-// G.follow_xeno()
-
-// /atom/movable/screen/ghost/follow_human
-// name = "Follow Humans"
-// icon_state = "follow_human"
-
-// /atom/movable/screen/ghost/follow_human/Click()
-// var/mob/dead/observer/G = usr
-// G.follow_human()
-
 /atom/movable/screen/ghost/reenter_corpse
 	name = "Reenter corpse"
 	icon_state = "reenter_corpse"
@@ -56,6 +31,26 @@
 	var/client/client = usr.client
 	client.toggle_ghost_hud()
 
+/atom/movable/screen/move_up
+	icon = 'icons/mob/screen_ghost.dmi'
+	icon_state = "move_up"
+
+/atom/movable/screen/move_up/Click()
+	var/mob/dead/observer/ghost = usr
+
+	ghost.teleport_z_up()
+	return
+
+/atom/movable/screen/move_down
+	icon = 'icons/mob/screen_ghost.dmi'
+	icon_state = "move_down"
+
+/atom/movable/screen/move_down/Click()
+	var/mob/dead/observer/ghost = usr
+
+	ghost.teleport_z_down()
+	return
+
 /datum/hud/ghost/New(mob/owner, ui_style='icons/mob/hud/human_white.dmi', ui_color, ui_alpha = 230)
 	. = ..()
 	var/atom/movable/screen/using
@@ -64,19 +59,24 @@
 	using.screen_loc = ui_ghost_slot2
 	static_inventory += using
 
-	using = new /atom/movable/screen/ghost/minimap()
-	using.screen_loc = ui_ghost_slot3
-	static_inventory += using
-
 	// using = new /atom/movable/screen/ghost/follow_human()
 	// using.screen_loc = ui_ghost_slot3
 	// static_inventory += using
 
 	using = new /atom/movable/screen/ghost/reenter_corpse()
-	using.screen_loc = ui_ghost_slot4
+	using.screen_loc = ui_ghost_slot3
 	static_inventory += using
 
 	using = new /atom/movable/screen/ghost/toggle_huds()
+	using.screen_loc = ui_ghost_slot4
+	static_inventory += using
+
+	// Using the same slot because they are two parts of the same slot
+	using = new /atom/movable/screen/move_up()
+	using.screen_loc = ui_ghost_slot5
+	static_inventory += using
+
+	using = new /atom/movable/screen/move_down()
 	using.screen_loc = ui_ghost_slot5
 	static_inventory += using
 

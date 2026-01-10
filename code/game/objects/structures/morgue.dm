@@ -4,7 +4,7 @@
 /obj/structure/morgue
 	name = "morgue"
 	desc = "Used to keep bodies in until someone fetches them."
-	icon = 'icons/obj/structures/props/stationobjs.dmi'
+	icon = 'icons/obj/structures/morgue.dmi'
 	icon_state = "morgue1"
 	dir = EAST
 	density = TRUE
@@ -52,7 +52,8 @@
 
 /obj/structure/morgue/proc/toggle_morgue(mob/user)
 	add_fingerprint(user)
-	if(!connected) return
+	if(!connected)
+		return
 	if(morgue_open)
 		for(var/atom/movable/A in connected.loc)
 			if(!A.anchored)
@@ -91,27 +92,32 @@
 		return
 	else if(HAS_TRAIT(W, TRAIT_TOOL_PEN))
 		var/prior_label_text
-		var/datum/component/label/labelcomponent = src.GetComponent(/datum/component/label)
-		if(labelcomponent)
+		var/datum/component/label/labelcomponent = GetComponent(/datum/component/label)
+		if(labelcomponent && labelcomponent.has_label())
 			prior_label_text = labelcomponent.label_name
-		var/tmp_label = sanitize(input(user, "Enter a label for [name]","Label", prior_label_text))
-		if(tmp_label == "" || !tmp_label)
-			if(labelcomponent)
-				labelcomponent.remove_label()
-				user.visible_message(SPAN_NOTICE("[user] removes the label from \the [src]."), \
-				SPAN_NOTICE("You remove the label from \the [src]."))
-				return
-			else
-				return
+		var/tmp_label = tgui_input_text(user, "Enter a label for [src] (or nothing to remove)", "Label", prior_label_text, MAX_NAME_LEN, ui_state=GLOB.not_incapacitated_state)
+		if(isnull(tmp_label))
+			return // Canceled
+		if(!tmp_label)
+			if(prior_label_text)
+				log_admin("[key_name(usr)] has removed label from [src].")
+				user.visible_message(SPAN_NOTICE("[user] removes label from [src]."),
+									SPAN_NOTICE("You remove the label from [src]."))
+				labelcomponent.clear_label()
+			return
 		if(length(tmp_label) > MAX_NAME_LEN)
 			to_chat(user, SPAN_WARNING("The label can be at most [MAX_NAME_LEN] characters long."))
-		else
-			user.visible_message(SPAN_NOTICE("[user] labels [src] as \"[tmp_label]\"."), \
-			SPAN_NOTICE("You label [src] as \"[tmp_label]\"."))
-			AddComponent(/datum/component/label, tmp_label)
-			playsound(src, "paper_writing", 15, TRUE)
-	else
-		. = ..()
+			return
+		if(prior_label_text == tmp_label)
+			to_chat(user, SPAN_WARNING("The label already says \"[tmp_label]\"."))
+			return
+		user.visible_message(SPAN_NOTICE("[user] labels [src] as \"[tmp_label]\"."),
+		SPAN_NOTICE("You label [src] as \"[tmp_label]\"."))
+		AddComponent(/datum/component/label, tmp_label)
+		playsound(src, "paper_writing", 15, TRUE)
+		return
+
+	return ..()
 
 /obj/structure/morgue/relaymove(mob/living/user)
 	if(user.is_mob_incapacitated())
@@ -131,7 +137,7 @@
 /obj/structure/morgue_tray
 	name = "morgue tray"
 	desc = "Apply corpse before closing."
-	icon = 'icons/obj/structures/props/stationobjs.dmi'
+	icon = 'icons/obj/structures/morgue.dmi'
 	icon_state = "morguet"
 	var/icon_tray = ""
 	density = TRUE
@@ -201,7 +207,8 @@
 
 
 /obj/structure/morgue/crematorium/relaymove(mob/user)
-	if(cremating) return
+	if(cremating)
+		return
 	..()
 
 
@@ -242,7 +249,8 @@
 			qdel(M)
 
 		for(var/obj/O in contents)
-			if(istype(O, /obj/structure/morgue_tray)) continue
+			if(istype(O, /obj/structure/morgue_tray))
+				continue
 			qdel(O)
 
 		new /obj/effect/decal/cleanable/ash(src)

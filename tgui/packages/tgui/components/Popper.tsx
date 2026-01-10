@@ -1,8 +1,7 @@
-/* eslint-disable func-style */
-import { Placement } from '@popperjs/core';
+import type { Placement } from '@popperjs/core';
 import {
-  PropsWithChildren,
-  ReactNode,
+  type PropsWithChildren,
+  type ReactNode,
   useEffect,
   useRef,
   useState,

@@ -1,11 +1,10 @@
-/* eslint-disable func-style */
 import { KEY } from 'common/keys';
-import { BooleanLike } from 'common/react';
-import { KeyboardEvent, useState } from 'react';
+import type { BooleanLike } from 'common/react';
+import { type KeyboardEvent, useState } from 'react';
+import { useBackend } from 'tgui/backend';
+import { Autofocus, Box, Button, Section, Stack } from 'tgui/components';
+import { Window } from 'tgui/layouts';
 
-import { useBackend } from '../backend';
-import { Autofocus, Box, Button, Section, Stack } from '../components';
-import { Window } from '../layouts';
 import { Loader } from './common/Loader';
 
 type Data = {
@@ -41,11 +40,14 @@ export function AlertModal(props) {
   const largeSpacing = isVerbose && large_buttons ? 20 : 15;
 
   // Dynamically sets window dimensions
+  const splitMessage = message.split('\n');
+  const messageLength =
+    message.length + 30 * Math.max(splitMessage.length - 1, 0);
   const windowHeight =
     120 +
     (isVerbose ? largeSpacing * buttons.length : 0) +
-    (message.length > 30 ? Math.ceil(message.length / 4) : 0) +
-    (message.length && large_buttons ? 5 : 0);
+    (messageLength > 30 ? Math.ceil(messageLength / 3.3) : 0) +
+    (messageLength && large_buttons ? 5 : 0);
 
   const windowWidth = 345 + (buttons.length > 2 ? 55 : 0);
 
@@ -84,7 +86,7 @@ export function AlertModal(props) {
         <Section fill>
           <Stack fill vertical>
             <Stack.Item m={1}>
-              <Box color="label" overflow="hidden">
+              <Box color="label" overflow="hidden" preserveWhitespace>
                 {message}
               </Box>
             </Stack.Item>

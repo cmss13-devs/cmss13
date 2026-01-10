@@ -1,6 +1,3 @@
-/datum/law/minor_law
-	severity = MINOR_CRIME
-
 /datum/law/minor_law/contraband
 	name = "Contraband"
 	desc = "Possessing items or weapons from the Area of Operations not authorized by someone with the rank of SSGT or higher."
@@ -10,7 +7,7 @@
 /datum/law/minor_law/damage_to_government_property
 	name = "Damage to Government Property"
 	desc = "Damaging the ship or making any unauthorized modifications to it as outlined in Standard Operating Procedure on a minor level, such as breaking a window or damaging a wall."
-	special_punishment = "Repairations"
+	special_punishment = "Reparation"
 	brig_time = 7.5
 
 /datum/law/minor_law/insubordination
@@ -27,6 +24,12 @@
 	name = "Trespassing"
 	desc = "Unauthorized access of an area which a person does not have access to or without approval from someone with access."
 	special_punishment = "Escort Out"
+	brig_time = 7.5
+
+/datum/law/minor_law/listening_bugs
+	name = "Unauthorized use of a Listening Device"
+	desc = "Using a listening device against SOP in a public area such as the gym."
+	special_punishment = "Listening Device Confiscation"
 	brig_time = 7.5
 
 /datum/law/minor_law/disrespect

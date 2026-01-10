@@ -7,7 +7,7 @@
 
 	unacidable = TRUE
 	unslashable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 
 	// The vehicle this seat is tied to
 	var/obj/vehicle/multitile/vehicle = null
@@ -21,6 +21,9 @@
 
 	M.reset_view(vehicle)
 	give_action(M, /datum/action/human_action/vehicle_unbuckle)
+
+/obj/structure/interior_viewport/wy
+	icon = 'icons/obj/vehicles/interiors/general_wy.dmi'
 
 /obj/structure/interior_viewport/simple
 	name = "viewport"

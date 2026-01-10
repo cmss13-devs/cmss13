@@ -6,6 +6,9 @@
 #define CAMERA_NET_BRIG "Brig"
 #define CAMERA_NET_ALAMO "Alamo"
 #define CAMERA_NET_NORMANDY "Normandy"
+#define CAMERA_NET_SAIPAN "Saipan"
+#define CAMERA_NET_MORANA "Morana"
+#define CAMERA_NET_DEVANA "Devana"
 #define CAMERA_NET_COLONY "Colony"
 #define CAMERA_NET_ARES "ARES"
 
@@ -18,6 +21,8 @@
 #define CAMERA_NET_LANDING_ZONES "Landing Zones"
 #define CAMERA_NET_LASER_TARGETS "Laser Targets"
 #define CAMERA_NET_CORRESPONDENT "Combat Correspondent Live"
+
+#define CAMERA_NET_WY "WY"
 
 #define CAMERA_NET_POWER_ALARMS "Power Alarms"
 #define CAMERA_NET_ATMOSPHERE_ALARMS "Atmosphere Alarms"

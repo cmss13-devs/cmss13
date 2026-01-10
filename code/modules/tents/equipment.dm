@@ -51,14 +51,14 @@
 	return ..()
 
 /// ASRS request console
-/obj/structure/machinery/computer/ordercomp/tent
+/obj/structure/machinery/computer/supply/tent
 	icon_state = "request_wall"
 	density = FALSE
 	deconstructible = FALSE
 	needs_power = FALSE
-	indestructible = TRUE // Goes with the tent instead
+	explo_proof = TRUE // Goes with the tent instead
 	layer = INTERIOR_WALLMOUNT_LAYER
-/obj/structure/machinery/computer/ordercomp/tent/Initialize()
+/obj/structure/machinery/computer/supply/tent/Initialize()
 	AddComponent(/datum/component/tent_supported_object)
 	return ..()
 
@@ -111,3 +111,39 @@
 		return
 	visible_message(SPAN_BOLDWARNING("[src] gets torn to shreds!"))
 	qdel(src)
+
+/// Microwave
+/obj/structure/machinery/microwave/tent
+	unacidable = FALSE
+	density = TRUE
+	layer = ABOVE_TABLE_LAYER
+	needs_power = FALSE
+/obj/structure/machinery/microwave/tent/Initialize()
+	AddComponent(/datum/component/tent_supported_object)
+	return ..()
+
+/// Hotdrinks vendor
+/obj/structure/machinery/vending/coffee/tent
+	unacidable = FALSE
+	needs_power = FALSE
+/obj/structure/machinery/vending/coffee/tent/Initialize()
+	AddComponent(/datum/component/tent_supported_object)
+	return ..()
+
+/// Ingredients vendor
+/obj/structure/machinery/vending/ingredients/tent
+	unacidable = FALSE
+	needs_power = FALSE
+/obj/structure/machinery/vending/ingredients/tent/Initialize()
+	AddComponent(/datum/component/tent_supported_object)
+	return ..()
+
+/// Food Processor
+/obj/structure/machinery/processor/tent
+	unacidable = FALSE
+	density = TRUE
+	layer = ABOVE_TABLE_LAYER
+	needs_power = FALSE
+/obj/structure/machinery/processor/tent/Initialize()
+	AddComponent(/datum/component/tent_supported_object)
+	return ..()

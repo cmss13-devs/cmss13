@@ -10,27 +10,20 @@
 	},
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/cp_lz2)
-"f" = (
-/obj/structure/machinery/landinglight/spoke{
-	pixel_x = -2;
-	pixel_y = 22
-	},
-/turf/closed/wall/shiva/prefabricated/reinforced/hull,
-/area/shiva/exterior/lz2_fortress)
 "h" = (
 /obj/item/stack/sheet/metal/small_stack,
 /turf/open/floor/shiva/multi_tiles/east,
 /area/shiva/exterior/lz2_fortress)
-"k" = (
-/obj/item/stack/sheet/metal/small_stack,
-/turf/open/floor/plating/plating_catwalk/shiva,
-/area/shiva/exterior/lz2_fortress)
-"l" = (
+"j" = (
 /obj/structure/machinery/landinglight/spoke{
 	pixel_x = 1;
 	pixel_y = 22
 	},
 /turf/closed/wall/shiva/prefabricated/reinforced/hull,
+/area/shiva/exterior/lz2_fortress)
+"k" = (
+/obj/item/stack/sheet/metal/small_stack,
+/turf/open/floor/plating/plating_catwalk/shiva,
 /area/shiva/exterior/lz2_fortress)
 "o" = (
 /turf/open/floor/shiva/north,
@@ -39,15 +32,16 @@
 /obj/effect/decal/cleanable/ash,
 /turf/open/floor/plating/plating_catwalk/shiva,
 /area/shiva/exterior/lz2_fortress)
-"q" = (
-/obj/structure/machinery/power/apc{
-	dir = 8
-	},
-/turf/open/floor/plating,
-/area/shiva/exterior/cp_lz2)
 "r" = (
 /obj/effect/decal/cleanable/ash,
 /turf/open/floor/shiva/north,
+/area/shiva/exterior/lz2_fortress)
+"s" = (
+/obj/structure/machinery/landinglight/spoke{
+	pixel_x = -2;
+	pixel_y = 22
+	},
+/turf/closed/wall/shiva/prefabricated/reinforced/hull,
 /area/shiva/exterior/lz2_fortress)
 "t" = (
 /turf/open/floor/shiva/multi_tiles/east,
@@ -58,20 +52,6 @@
 	pixel_y = 25
 	},
 /turf/open/floor/shiva/north,
-/area/shiva/exterior/lz2_fortress)
-"w" = (
-/obj/structure/machinery/landinglight/spoke{
-	pixel_x = 1;
-	pixel_y = 23
-	},
-/turf/closed/wall/shiva/prefabricated/reinforced/hull,
-/area/shiva/exterior/lz2_fortress)
-"z" = (
-/obj/structure/machinery/landinglight/spoke{
-	pixel_x = -2;
-	pixel_y = 23
-	},
-/turf/closed/wall/shiva/prefabricated/reinforced/hull,
 /area/shiva/exterior/lz2_fortress)
 "A" = (
 /obj/item/lightstick/red/spoke/planted{
@@ -84,9 +64,20 @@
 "B" = (
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/cp_lz2)
+"C" = (
+/obj/structure/machinery/power/apc/power/east,
+/turf/open/floor/shiva/north,
+/area/shiva/exterior/lz2_fortress)
 "D" = (
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_lz2)
+"E" = (
+/obj/structure/machinery/landinglight/spoke{
+	pixel_x = -2;
+	pixel_y = 23
+	},
+/turf/closed/wall/shiva/prefabricated/reinforced/hull,
+/area/shiva/exterior/lz2_fortress)
 "F" = (
 /obj/item/stack/snow,
 /turf/open/floor/shiva/north,
@@ -102,6 +93,17 @@
 	},
 /turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
+"M" = (
+/obj/structure/machinery/landinglight/spoke{
+	pixel_x = 1;
+	pixel_y = 23
+	},
+/turf/closed/wall/shiva/prefabricated/reinforced/hull,
+/area/shiva/exterior/lz2_fortress)
+"N" = (
+/obj/structure/machinery/power/apc/power/west,
+/turf/open/floor/plating,
+/area/shiva/exterior/cp_lz2)
 "O" = (
 /obj/effect/decal/cleanable/ash,
 /turf/open/floor/shiva/multi_tiles/east,
@@ -115,12 +117,6 @@
 "V" = (
 /turf/open/floor/plating/plating_catwalk/shiva,
 /area/shiva/exterior/lz2_fortress)
-"Y" = (
-/obj/structure/machinery/power/apc{
-	dir = 4
-	},
-/turf/open/floor/shiva/north,
-/area/shiva/exterior/lz2_fortress)
 "Z" = (
 /obj/structure/foamed_metal,
 /obj/effect/decal/cleanable/ash,
@@ -128,7 +124,7 @@
 /area/shiva/exterior/lz2_fortress)
 
 (1,1,1) = {"
-Y
+C
 o
 L
 Q
@@ -139,12 +135,12 @@ Z
 "}
 (2,1,1) = {"
 a
-w
+M
 J
 h
 O
 J
-l
+j
 a
 "}
 (3,1,1) = {"
@@ -189,16 +185,16 @@ a
 "}
 (7,1,1) = {"
 a
-z
+E
 J
 O
 t
 J
-f
+s
 a
 "}
 (8,1,1) = {"
-q
+N
 B
 A
 T

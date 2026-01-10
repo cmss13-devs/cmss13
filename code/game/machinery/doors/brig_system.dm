@@ -13,7 +13,7 @@
 	anchored = TRUE // can't pick it up
 	density = FALSE // can walk through it.
 	unacidable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 
 	/// id of door it controls.
 	var/id = null
@@ -333,11 +333,6 @@
 	else
 		if (maptext)
 			maptext = ""
-
-/obj/structure/machinery/brig_cell/power_change()
-	..()
-
-	update_icon()
 
 /obj/structure/machinery/brig_cell/attackby(obj/item/W, mob/living/user)
 	if(!istype(W, /obj/item/paper/incident))

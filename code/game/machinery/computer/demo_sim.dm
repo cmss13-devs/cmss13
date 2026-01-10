@@ -2,7 +2,7 @@
 	name = "demolitions simulator"
 	desc = "A powerful simulator that can simulate explosions. Its processors need a cooldown of approximately 1 minute after each simulation."
 	icon_state = "demo_sim"
-	exproof = TRUE
+	explo_proof = TRUE
 	unacidable = TRUE
 	var/datum/simulator/simulation
 	var/turf/sim_location
@@ -11,7 +11,7 @@
 /obj/structure/machinery/computer/demo_sim/attackby(obj/item/B, mob/living/user)
 	if(inoperable())
 		return
-	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 		to_chat(user, SPAN_WARNING("You don't know how to configure [src]."))
 		return
 	if(configuration)
@@ -40,7 +40,7 @@
 /obj/structure/machinery/computer/demo_sim/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "DemoSim", "[src.name]")
+		ui = new(user, src, "DemoSim", "[capitalize(name)]")
 		ui.open()
 
 /obj/structure/machinery/computer/demo_sim/ui_state(mob/user) // we gotta do custom shit here so that it always closes instead of suspending

@@ -25,7 +25,9 @@
 	minimum_evolve_time = 0
 
 /mob/living/carbon/xenomorph/larva
-	name = XENO_CASTE_LARVA
+	AUTOWIKI_SKIP(TRUE)
+
+	name = "Bloody Larva"
 	caste_type = XENO_CASTE_LARVA
 	speak_emote = list("hisses")
 	icon_state = "Bloody Larva"
@@ -42,7 +44,6 @@
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/onclick/xenohide,
-		/datum/action/xeno_action/onclick/tacmap,
 	)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
@@ -50,43 +51,77 @@
 
 	var/burrowable = TRUE //Can it be safely burrowed if it has no player?
 	var/state_override
-	var/is_bloody = TRUE //We're still "bloody"
+	/// Whether we're bloody, normal, or mature
+	var/larva_state = LARVA_STATE_BLOODY
+	var/last_roar_time = 0
 
-	icon_xeno = 'icons/mob/xenos/larva.dmi'
-	icon_xenonid = 'icons/mob/xenonids/larva.dmi'
+	icon_xeno = 'icons/mob/xenos/castes/tier_0/larva.dmi'
+	icon_xenonid = 'icons/mob/xenonids/castes/tier_0/larva.dmi'
 
 /mob/living/carbon/xenomorph/larva/Life()
-	if(is_bloody && (evolution_stored >= evolution_threshold / 2)) //We're no longer bloody so update our name...
+	// Check if no longer bloody or mature
+	if(larva_state == LARVA_STATE_BLOODY && evolution_stored >= evolution_threshold / 2)
+		larva_state = LARVA_STATE_NORMAL
 		generate_name()
-		is_bloody = FALSE
+	else if(larva_state == LARVA_STATE_NORMAL && evolution_stored >= evolution_threshold)
+		larva_state = LARVA_STATE_MATURE
+		generate_name()
 	return ..()
+
+/mob/living/carbon/xenomorph/larva/warn_away_timer()
+	if(away_timer != XENO_LEAVE_TIMER_LARVA - XENO_AVAILABLE_TIMER)
+		return
+	if(aghosted)
+		return
+	if(health <= 0)
+		return
+	var/area/area = get_area(src)
+	if(should_block_game_interaction(src) && (!area || !(area.flags_area & AREA_ALLOW_XENO_JOIN)))
+		return //xenos on admin z level don't count
+
+	to_chat(client, SPAN_ALERTWARNING("You are inactive and will be available to ghosts in [XENO_AVAILABLE_TIMER] second\s!"))
+	playsound_client(client, sound('sound/effects/xeno_evolveready.ogg'))
 
 /mob/living/carbon/xenomorph/larva/initialize_pass_flags(datum/pass_flags_container/pass_flags)
 	..()
 	if (pass_flags)
 		pass_flags.flags_pass = PASS_MOB_THRU|PASS_FLAGS_CRAWLER
-		pass_flags.flags_can_pass_all = PASS_ALL^PASS_OVER_THROW_ITEM
+		pass_flags.flags_can_pass_all = PASS_ALL|PASS_OVER_THROW_ITEM
 
 /mob/living/carbon/xenomorph/larva/corrupted
+	AUTOWIKI_SKIP(TRUE)
+
 	hivenumber = XENO_HIVE_CORRUPTED
 
 /mob/living/carbon/xenomorph/larva/alpha
+	AUTOWIKI_SKIP(TRUE)
+
 	hivenumber = XENO_HIVE_ALPHA
 
 /mob/living/carbon/xenomorph/larva/bravo
+	AUTOWIKI_SKIP(TRUE)
+
 	hivenumber = XENO_HIVE_BRAVO
 
 /mob/living/carbon/xenomorph/larva/charlie
+	AUTOWIKI_SKIP(TRUE)
+
 	hivenumber = XENO_HIVE_CHARLIE
 
 /mob/living/carbon/xenomorph/larva/delta
+	AUTOWIKI_SKIP(TRUE)
+
 	hivenumber = XENO_HIVE_DELTA
 
 /mob/living/carbon/xenomorph/larva/mutated
+	AUTOWIKI_SKIP(TRUE)
+
 	hivenumber = XENO_HIVE_MUTATED
 
 /mob/living/carbon/xenomorph/larva/predalien
-	icon_xeno = 'icons/mob/xenos/predalien_larva.dmi'
+	AUTOWIKI_SKIP(TRUE)
+
+	icon_xeno = 'icons/mob/xenos/castes/tier_0/predalien_larva.dmi'
 	icon_state = "Predalien Larva"
 	caste_type = XENO_CASTE_PREDALIEN_LARVA
 	burrowable = FALSE //Not interchangeable with regular larvas in the hive core.
@@ -100,7 +135,7 @@
 	hud_set_hunter()
 
 /mob/living/carbon/xenomorph/larva/evolve_message()
-	to_chat(src, SPAN_XENODANGER("Strength ripples through your small form. You are ready to be shaped to the Queen's will. <a href='?src=\ref[src];evolve=1;'>Evolve</a>"))
+	to_chat(src, SPAN_XENODANGER("Strength ripples through your small form. You are ready to be shaped to the Queen's will. <a href='byond://?src=\ref[src];evolve=1;'>Evolve</a>"))
 	playsound_client(client, sound('sound/effects/xeno_evolveready.ogg'))
 
 	var/datum/action/xeno_action/onclick/evolve/evolve_action = new()
@@ -110,7 +145,7 @@
 /mob/living/carbon/xenomorph/larva/update_icons()
 	var/state = "" //Icon convention, two different sprite sets
 
-	if(evolution_stored < evolution_threshold / 2) //We're still bloody
+	if(larva_state == LARVA_STATE_BLOODY)
 		state = "Bloody "
 
 	if(stat == DEAD)
@@ -176,6 +211,12 @@
 			return FALSE
 
 	// Otherwise, ""roar""!
+	var/current_time = world.time
+	if(current_time - last_roar_time < 1 SECONDS)
+		to_chat(src, SPAN_WARNING("You must wait before roaring again."))
+		return FALSE
+
+	last_roar_time = current_time
 	playsound(loc, "alien_roar_larva", 15)
 	return TRUE
 
@@ -197,9 +238,9 @@ Also handles the "Mature / Bloody naming convention. Call this to update the nam
 		name_prefix = hive.prefix
 		color = hive.color
 
-	if(evolution_stored >= evolution_threshold)
+	if(larva_state == LARVA_STATE_MATURE)
 		progress = "Mature "
-	else if(evolution_stored < evolution_threshold / 2) //We're still bloody
+	else if(larva_state == LARVA_STATE_BLOODY)
 		progress = "Bloody "
 
 	name = "[name_prefix][progress]Larva ([nicknumber])"

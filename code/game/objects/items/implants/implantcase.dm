@@ -3,7 +3,11 @@
 /obj/item/implantcase
 	name = "Glass Case"
 	desc = "A case containing an implant."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/syringe.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_righthand.dmi',
+	)
 	icon_state = "implantcase-0"
 	item_state = "implantcase"
 	throw_speed = SPEED_FAST
@@ -31,8 +35,10 @@
 		else
 			src.name = "Glass Case"
 	else if(istype(I, /obj/item/reagent_container/syringe))
-		if(!src.imp) return
-		if(!src.imp.allow_reagents) return
+		if(!src.imp)
+			return
+		if(!src.imp.allow_reagents)
+			return
 		if(src.imp.reagents.total_volume >= src.imp.reagents.maximum_volume)
 			to_chat(user, SPAN_DANGER("[src] is full."))
 		else

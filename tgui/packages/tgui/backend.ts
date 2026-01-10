@@ -17,6 +17,11 @@ import { createAction } from 'common/redux';
 import { setupDrag } from './drag';
 import { globalEvents } from './events';
 import { focusMap } from './focus';
+import {
+  releaseHeldKeys,
+  startKeyPassthrough,
+  stopKeyPassthrough,
+} from './hotkeys';
 import { createLogger } from './logging';
 import { resumeRenderer, suspendRenderer } from './renderer';
 
@@ -177,6 +182,8 @@ export const backendMiddleware = (store) => {
       Byond.winset(Byond.windowId, {
         'is-visible': false,
       });
+      stopKeyPassthrough();
+      releaseHeldKeys();
       setTimeout(() => focusMap());
     }
 
@@ -203,8 +210,9 @@ export const backendMiddleware = (store) => {
       logger.log('backend/update', payload);
       // Signal renderer that we have resumed
       resumeRenderer();
+      startKeyPassthrough();
       // Setup drag
-      setupDrag();
+      setupDrag(payload.config?.window?.fancy);
       // We schedule this for the next tick here because resizing and unhiding
       // during the same tick will flash with a white background.
       setTimeout(() => {
@@ -259,6 +267,7 @@ type BackendState<TData> = {
       size: [number, number];
       fancy: boolean;
       locked: boolean;
+      scale: boolean;
     };
     client: {
       ckey: string;

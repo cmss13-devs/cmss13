@@ -2,11 +2,17 @@
 #define AUTOLATHE_WIRE_SHOCK 2
 #define AUTOLATHE_WIRES_UNCUT (AUTOLATHE_WIRE_HACK|AUTOLATHE_WIRE_SHOCK) // when none of the wires are cut
 
+GLOBAL_LIST_INIT(autolathe_wire_descriptions, flatten_numeric_alist(alist(
+		AUTOLATHE_WIRE_HACK = "Item template controller",
+		AUTOLATHE_WIRE_SHOCK = "Ground safety",
+	)))
+
 /obj/structure/machinery/autolathe
 	name = "\improper autolathe"
 	desc = "It produces items using metal and glass."
 	icon_state = "autolathe"
 	var/base_state = "autolathe"
+	icon = 'icons/obj/structures/machinery/autolathe.dmi'
 	unacidable = TRUE
 	density = TRUE
 	anchored = TRUE
@@ -100,7 +106,7 @@
 /obj/structure/machinery/autolathe/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "Autolathe", "[name] control panel")
+		ui = new(user, src, "Autolathe", "[capitalize(name)] control panel")
 		ui.open()
 
 /obj/structure/machinery/autolathe/ui_data(mob/user)
@@ -127,10 +133,9 @@
 	data["materials"] = stored_material
 	data["printables"] = printables
 
-	var/list/wire_descriptions = get_wire_descriptions()
 	var/list/panel_wires = list()
-	for(var/wire = 1 to length(wire_descriptions))
-		panel_wires += list(list("desc" = wire_descriptions[wire], "cut" = isWireCut(wire)))
+	for(var/wire in 1 to length(GLOB.autolathe_wire_descriptions))
+		panel_wires += list(list("desc" = GLOB.autolathe_wire_descriptions[wire], "cut" = isWireCut(wire)))
 
 	data["electrical"] = list(
 		"electrified" = shocked,
@@ -224,7 +229,7 @@
 		if("cutwire")
 			if(!panel_open)
 				return FALSE
-			if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+			if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 				to_chat(usr, SPAN_WARNING("You don't understand anything about this wiring..."))
 				return FALSE
 			var/obj/item/held_item = usr.get_held_item()
@@ -238,7 +243,7 @@
 		if("fixwire")
 			if(!panel_open)
 				return FALSE
-			if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+			if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 				to_chat(usr, SPAN_WARNING("You don't understand anything about this wiring..."))
 				return FALSE
 			var/obj/item/held_item = usr.get_held_item()
@@ -251,7 +256,7 @@
 		if("pulsewire")
 			if(!panel_open)
 				return FALSE
-			if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+			if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 				to_chat(usr, SPAN_WARNING("You don't understand anything about this wiring..."))
 				return FALSE
 			var/obj/item/held_item = usr.get_held_item()
@@ -269,7 +274,7 @@
 
 /obj/structure/machinery/autolathe/attackby(obj/item/O as obj, mob/user as mob)
 	if(HAS_TRAIT(O, TRAIT_TOOL_SCREWDRIVER))
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You are not trained to dismantle machines..."))
 			return
 		panel_open = !panel_open
@@ -445,12 +450,6 @@
 		var/obj/item/stack/S = I
 		S.amount = multiplier
 
-/obj/structure/machinery/autolathe/proc/get_wire_descriptions()
-	return list(
-		AUTOLATHE_WIRE_HACK = "Item template controller",
-		AUTOLATHE_WIRE_SHOCK = "Ground safety"
-	)
-
 /obj/structure/machinery/autolathe/proc/isWireCut(wire)
 	return !(wires & getWireFlag(wire))
 
@@ -586,7 +585,7 @@
 	stored_material =  list("metal" = 56250, "plastic" = 20000) //15 metal and 10 plastic sheets
 
 /obj/structure/machinery/autolathe/armylathe/attack_hand(mob/user)
-	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 		to_chat(user, SPAN_WARNING("You have no idea how to operate the [name]."))
 		return FALSE
 	. = ..()

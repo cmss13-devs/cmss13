@@ -5,6 +5,11 @@
 /obj/item/tank
 	name = "tank"
 	icon = 'icons/obj/items/tank.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tanks_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tanks_righthand.dmi',
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/misc.dmi'
+	)
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_BACK
 	w_class = SIZE_MEDIUM
@@ -59,9 +64,9 @@
 
 		to_chat(user, SPAN_NOTICE("Results of analysis of [icon2html(src, user)]"))
 		if(pressure>0)
-			to_chat(user, SPAN_NOTICE("Pressure: [round(pressure,0.1)] kPa"))
+			to_chat(user, SPAN_NOTICE("Pressure: [round(pressure,0.1)] kPa."))
 			to_chat(user, SPAN_NOTICE("[gas_type]: 100%"))
-			to_chat(user, SPAN_NOTICE("Temperature: [floor(temperature-T0C)]&deg;C"))
+			to_chat(user, SPAN_NOTICE("Temperature: [floor(temperature-T0C)]&deg;C."))
 		else
 			to_chat(user, SPAN_NOTICE("Tank is empty!"))
 		src.add_fingerprint(user)

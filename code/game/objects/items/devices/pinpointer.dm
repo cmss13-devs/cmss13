@@ -18,14 +18,15 @@
 	if(!active)
 		active = 1
 		workdisk()
-		to_chat(usr, SPAN_NOTICE(" You activate the pinpointer"))
+		to_chat(usr, SPAN_NOTICE(" You activate the pinpointer."))
 	else
 		active = 0
 		icon_state = "pinoff"
-		to_chat(usr, SPAN_NOTICE(" You deactivate the pinpointer"))
+		to_chat(usr, SPAN_NOTICE(" You deactivate the pinpointer."))
 
 /obj/item/device/pinpointer/proc/workdisk()
-	if(!active) return
+	if(!active)
+		return
 	if(!the_disk)
 		the_disk = locate()
 		if(!the_disk)
@@ -67,11 +68,11 @@
 			worklocation()
 		if(mode == 2)
 			workobj()
-		to_chat(usr, SPAN_NOTICE(" You activate the pinpointer"))
+		to_chat(usr, SPAN_NOTICE(" You activate the pinpointer."))
 	else
 		active = 0
 		icon_state = "pinoff"
-		to_chat(usr, SPAN_NOTICE(" You deactivate the pinpointer"))
+		to_chat(usr, SPAN_NOTICE(" You deactivate the pinpointer."))
 
 
 /obj/item/device/pinpointer/advpinpointer/proc/worklocation()
@@ -126,10 +127,10 @@
 			mode = 1
 
 			var/locationx = tgui_input_real_number(usr, "Please input the x coordinate to search for.", "Location?")
-			if(!locationx || !(usr in view(1,src)))
+			if(!locationx || !(usr in dview(1, src)))
 				return
 			var/locationy = tgui_input_real_number(usr, "Please input the y coordinate to search for.", "Location?")
-			if(!locationy || !(usr in view(1,src)))
+			if(!locationy || !(usr in dview(1, src)))
 				return
 
 			var/turf/Z = get_turf(src)

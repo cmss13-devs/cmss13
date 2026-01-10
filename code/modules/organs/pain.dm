@@ -24,11 +24,15 @@
 			msg = "You [pick("wince","shiver","grimace")] in pain"
 			var/i
 			for(var/obj/limb/O in list(right_hand, left_hand))
-				if(!O || !O.is_usable()) continue //Not if the organ can't possibly function.
-				if(O.name == "l_hand") drop_l_hand()
-				else drop_r_hand()
+				if(!O || !O.is_usable())
+					continue //Not if the organ can't possibly function.
+				if(O.name == "l_hand")
+					drop_l_hand()
+				else
+					drop_r_hand()
 				i++
-			if(i) msg += ", [pick("fumbling with","struggling with","losing control of")] your [i < 2 ? "hand" : "hands"]"
+			if(i)
+				msg += ", [pick("fumbling with","struggling with","losing control of")] your [i < 2 ? "hand" : "hands"]"
 			to_chat(H, SPAN_WARNING("[msg]."))
 
 	if(burning)
@@ -73,7 +77,8 @@
 		return
 
 	var/msg = SPAN_DANGER("[message]")
-	if(flash_strength >= 1) msg = SPAN_HIGHDANGER("[message]")
+	if(flash_strength >= 1)
+		msg = SPAN_HIGHDANGER("[message]")
 
 	// Anti message spam checks
 	if(msg && ((msg != last_pain_message) || (world.time >= next_pain_time)))

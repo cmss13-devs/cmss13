@@ -80,9 +80,9 @@
 				if(user.drop_inv_item_to_loc(crayon, src))
 					crayon = W
 			else
-				..()
+				. = ..()
 		else
-			..()
+			. = ..()
 
 	else if(istype(W,/obj/item/stack/sheet/hairlesshide) || \
 		istype(W,/obj/item/clothing/under) || \
@@ -103,9 +103,6 @@
 // if ( istype(W,/obj/item/clothing/suit/powered ) )
 // to_chat(user, "This item does not fit.")
 // return
-		if ( istype(W,/obj/item/clothing/suit/cyborg_suit ) )
-			to_chat(user, "This item does not fit.")
-			return
 		if ( istype(W,/obj/item/clothing/suit/bomb_suit ) )
 			to_chat(user, "This item does not fit.")
 			return
@@ -140,7 +137,7 @@
 		else
 			to_chat(user, SPAN_NOTICE(" The washing machine is full."))
 	else
-		..()
+		. = ..()
 	update_icon()
 
 /obj/structure/machinery/washing_machine/attack_hand(mob/user as mob)

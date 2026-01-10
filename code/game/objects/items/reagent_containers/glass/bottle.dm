@@ -5,9 +5,9 @@
 	desc = "A small bottle."
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle-1"
-	item_state = "atoxinbottle"
+	item_state = "bottle-1"
 	amount_per_transfer_from_this = 10
-	possible_transfer_amounts = list(5, 10, 15, 25, 30, 40, 60)
+	possible_transfer_amounts = list(5,10,15,20,25,30,40,50,60)
 	flags_atom = FPRINT|OPENCONTAINER
 	volume = 60
 	attack_speed = 4
@@ -17,7 +17,7 @@
 	update_icon()
 
 /obj/item/reagent_container/glass/bottle/pickup(mob/user)
-	..()
+	. = ..()
 	update_icon()
 
 /obj/item/reagent_container/glass/bottle/dropped(mob/user)
@@ -41,12 +41,18 @@
 
 		var/percent = floor((reagents.total_volume / volume) * 100)
 		switch(percent)
-			if(0) filling.icon_state = null
-			if(1 to 20) filling.icon_state = "[icon_state]-20"
-			if(21 to 40) filling.icon_state = "[icon_state]-40"
-			if(41 to 60) filling.icon_state = "[icon_state]-60"
-			if(61 to 80) filling.icon_state = "[icon_state]-80"
-			if(81 to INFINITY) filling.icon_state = "[icon_state]-100"
+			if(0)
+				filling.icon_state = null
+			if(1 to 20)
+				filling.icon_state = "[icon_state]-20"
+			if(21 to 40)
+				filling.icon_state = "[icon_state]-40"
+			if(41 to 60)
+				filling.icon_state = "[icon_state]-60"
+			if(61 to 80)
+				filling.icon_state = "[icon_state]-80"
+			if(81 to INFINITY)
+				filling.icon_state = "[icon_state]-100"
 
 		filling.color = mix_color_from_reagents(reagents.reagent_list)
 		overlays += filling
@@ -399,7 +405,7 @@
 
 /obj/item/reagent_container/glass/bottle/epinephrine
 	name = "\improper Epinephrine bottle"
-	desc = "A small bottle. Contains epinephrine - Used to increase a patients arterial blood pressure, amongst other actions, to assist in cardiopulmonary resuscitation." //"I can't lie to you about your odds of a successful resuscitation, but you have my sympathies"
+	desc = "A small bottle. Contains epinephrine - Used to increase a patients arterial blood pressure, amongst other actions, to assist in cardiopulmonary resuscitation." //"I can't lie to you about your odds of a successful resuscitation, but you have my sympathies."
 	volume = 60
 
 /obj/item/reagent_container/glass/bottle/epinephrine/Initialize()

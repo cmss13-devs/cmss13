@@ -160,10 +160,11 @@
 		return FALSE
 
 	if(!has_access(M, TREE_ACCESS_VIEW) && !force)
-		to_chat(M, SPAN_WARNING("You do not have access to this tech tree"))
+		to_chat(M, SPAN_WARNING("You do not have access to this tech tree."))
 		return FALSE
 
-	if(SEND_SIGNAL(M, COMSIG_MOB_ENTER_TREE, src, force) & COMPONENT_CANCEL_TREE_ENTRY) return
+	if(SEND_SIGNAL(M, COMSIG_MOB_ENTER_TREE, src, force) & COMPONENT_CANCEL_TREE_ENTRY)
+		return
 
 	var/tech_hologram = new/mob/hologram/techtree(entrance, M)
 

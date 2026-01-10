@@ -21,6 +21,7 @@
 /obj/structure/machinery/door/poddoor/almayer/blended
 	icon_state = "almayer_pdoor1"
 	base_icon_state = "almayer_pdoor"
+	plane = TURF_PLANE
 
 /obj/structure/machinery/door/poddoor/almayer/blended/open
 	density = FALSE
@@ -30,6 +31,16 @@
 	base_icon_state = "w_almayer_pdoor"
 
 /obj/structure/machinery/door/poddoor/almayer/blended/white/open
+	density = FALSE
+
+/obj/structure/machinery/door/poddoor/almayer/blended/liaison
+	name = "hull"
+	desc = "A metal wall used to separate rooms and make up the ship."
+	icon_state = "liaison_pdoor1"
+	base_icon_state = "liaison_pdoor"
+	id = "CLRoomDivider"
+
+/obj/structure/machinery/door/poddoor/almayer/blended/liaison/open
 	density = FALSE
 
 /obj/structure/machinery/door/poddoor/almayer/blended/aicore
@@ -53,7 +64,7 @@
 /obj/structure/machinery/door/poddoor/almayer/locked/attackby(obj/item/C as obj, mob/user as mob)
 	if(HAS_TRAIT(C, TRAIT_TOOL_CROWBAR))
 		return
-	..()
+	. = ..()
 
 /obj/structure/machinery/door/poddoor/almayer/closed
 	density = TRUE

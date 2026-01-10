@@ -140,7 +140,7 @@
 		if(do_after(user,10, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			if(Target.density)
 				return
-			user.visible_message(SPAN_WARNING("[user] throws [G] through [src]!"), \
+			user.visible_message(SPAN_WARNING("[user] throws [G] through [src]!"),
 								SPAN_WARNING("You throw [G] through [src]"))
 			user.drop_held_item()
 			G.forceMove(Target)
@@ -162,7 +162,7 @@
 		if(do_after(user,10, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			if(Target.density)
 				return
-			user.visible_message(SPAN_WARNING("[user] throws [F] through [src]!"), \
+			user.visible_message(SPAN_WARNING("[user] throws [F] through [src]!"),
 								SPAN_WARNING("You throw [F] through [src]"))
 			user.drop_held_item()
 			F.forceMove(Target)

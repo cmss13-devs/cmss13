@@ -4,7 +4,7 @@ from collections import defaultdict
 from . import frontend
 from .dmm import *
 
-def merge_map(new_map, old_map, delete_unused=False):
+def merge_map(new_map, old_map, delete_unused=True, suppress_notices=False):
     if new_map.key_length != old_map.key_length:
         print("Warning: Key lengths differ, taking new map")
         print(f"  Old: {old_map.key_length}")
@@ -65,8 +65,9 @@ def merge_map(new_map, old_map, delete_unused=False):
             select_key(fresh_key)
 
     # step two: delete unused keys
-    if unused_keys:
-        #print(f"Notice: Trimming {len(unused_keys)} unused dictionary keys.")
+    if unused_keys and delete_unused:
+        if not suppress_notices:
+            print(f"Notice: Trimming {len(unused_keys)} unused dictionary keys.")
         for key in unused_keys:
             del merged.dictionary[key]
 

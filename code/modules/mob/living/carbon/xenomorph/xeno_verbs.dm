@@ -102,21 +102,22 @@
 
 	xeno_hostile_hud = !xeno_hostile_hud
 
-
-/mob/living/carbon/xenomorph/verb/middle_mouse_toggle()
-	set name = "Toggle Middle/Shift Clicking"
-	set desc = "Toggles between using middle mouse click and shift click for selected ability use."
+/mob/living/carbon/xenomorph/verb/toggle_auto_shove()
+	set name = "Toggle Automatic Shove"
+	set desc = "Toggles whethever you will automatically shove people as the Queen."
 	set category = "Alien"
+
 
 	if (!client || !client.prefs)
 		return
 
-	client.prefs.toggle_prefs ^= TOGGLE_MIDDLE_MOUSE_CLICK
+	client.prefs.toggle_prefs ^= TOGGLE_AUTO_SHOVE_OFF
 	client.prefs.save_preferences()
-	if (client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK)
-		to_chat(src, SPAN_NOTICE("The selected xeno ability will now be activated with middle mouse clicking."))
+	if (client.prefs.toggle_prefs & TOGGLE_AUTO_SHOVE_OFF)
+		to_chat(src, SPAN_NOTICE("You will no longer automatically shove people in the way as the Queen."))
 	else
-		to_chat(src, SPAN_NOTICE("The selected xeno ability will now be activated with shift clicking."))
+		to_chat(src, SPAN_NOTICE("You will now automatically shove people in the way as the Queen."))
+
 
 /mob/living/carbon/xenomorph/verb/ability_deactivation_toggle()
 	set name = "Toggle Ability Deactivation"
@@ -154,9 +155,20 @@
 	if(observed_xeno)
 		overwatch(observed_xeno, TRUE)
 
+/mob/living/carbon/xenomorph/verb/view_tacmaps()
+	set name = "View Tacmap"
+	set category = "Alien"
+	GLOB.tacmap_viewer.tgui_interact(src)
+
+/mob/living/carbon/xenomorph/look_up()
+	if(is_zoomed)
+		to_chat(src, SPAN_WARNING("You cannot look up while zoomed!"))
+		return
+
+	. = ..()
 // /mob/living/carbon/xenomorph/verb/enter_tree()
 // set name = "Enter Techtree"
-// set desc = "Enter the Xenomorph techtree"
+// set desc = "Enter the Xenomorph techtree."
 // set category = "Alien.Techtree"
 
 // var/datum/techtree/T = GET_TREE(TREE_XENO)

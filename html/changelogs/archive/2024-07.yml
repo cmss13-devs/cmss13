@@ -285,3 +285,20 @@
   zzzmike:
   - bugfix: stops attempted stripping when stunned etc.
   - rscadd: pilots can unhack lifeboats, similar to dropship unhacking
+2024-07-31:
+  coldironwarrior:
+  - spellcheck: Fixed spelling of auxiliary in the circuit board vendor
+  - spellcheck: Fixed capitalization of ordnance workshop area
+  realforest2001:
+  - code_imp: Changed back-end for working out equipment preset paygrades so as to
+      remove the manual overrides on several roles based on playtime perks.
+  - rscadd: Added lower ranks for all enlisted and some officer roles subject to having
+      played for less than ten hours. This rank cannot be used after playing more
+      than ten hours, and ignores preferences for playtime perks.
+  - rscadd: Added a higher rank achievable to most enlisted and some officers, requiring
+      175+ hours.
+  - rscadd: Changed base rank for SL, SG, Spec and FTL by one grade up.
+  - rscadd: Changed low playtime rank for MP and Nurse from Lance Corporal to Corporal.
+  zzzmike:
+  - rscdel: Disablers can't execute people anymore
+  - bugfix: stops people from buckling others when they are knocked out etc.

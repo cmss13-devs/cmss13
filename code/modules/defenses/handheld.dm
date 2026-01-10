@@ -10,7 +10,7 @@
 	throw_range = 5
 	w_class = SIZE_MEDIUM
 
-	indestructible = TRUE
+	explo_proof = TRUE
 	var/defense_type = /obj/structure/machinery/defenses
 	var/deployment_time = 3 SECONDS
 
@@ -33,7 +33,7 @@
 
 /obj/item/defenses/handheld/proc/connect()
 	if(dropped && !TR)
-		TR = new defense_type
+		TR = new defense_type(src)
 		if(!TR.HD)
 			TR.HD = src
 			return TRUE
@@ -65,7 +65,10 @@
 	for(var/mob/M in T)
 		blocked = TRUE
 		break
-
+	var/area/area = get_area(T)
+	if(!area.allow_construction)
+		to_chat(user, SPAN_WARNING("You cannot deploy \a [src] here, find a more secure surface!"))
+		return
 	if(istype(T, /turf/open))
 		var/turf/open/floor = T
 		if(!floor.allow_construction)
@@ -110,11 +113,12 @@
 
 /obj/item/defenses/handheld/sentry/get_upgrade_list()
 	. = list()
-	if(!MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_SNIPER_SENTRY))
+	if(!MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_long_range_sentry))
 		. += list("DMR Upgrade" = image(icon = 'icons/obj/structures/machinery/defenses/sentry.dmi', icon_state = "DMR uac_sentry_handheld"))
 	. += list(
 		"Shotgun Upgrade" = image(icon = 'icons/obj/structures/machinery/defenses/sentry.dmi', icon_state = "Shotgun uac_sentry_handheld"),
-		"Mini-Sentry Upgrade" = image(icon = 'icons/obj/structures/machinery/defenses/sentry.dmi', icon_state = "Mini uac_sentry_handheld")
+		"Mini-Sentry Upgrade" = image(icon = 'icons/obj/structures/machinery/defenses/sentry.dmi', icon_state = "Mini uac_sentry_handheld"),
+		"Omni-Sentry Upgrade" = image(icon = 'icons/obj/structures/machinery/defenses/sentry.dmi', icon_state="Normal uac_sentry_handheld")
 	)
 
 /obj/item/defenses/handheld/sentry/upgrade_string_to_type(upgrade_string)
@@ -125,6 +129,8 @@
 			return /obj/item/defenses/handheld/sentry/shotgun
 		if("Mini-Sentry Upgrade")
 			return /obj/item/defenses/handheld/sentry/mini
+		if("Omni-Sentry Upgrade")
+			return /obj/item/defenses/handheld/sentry/omni
 
 /obj/item/defenses/handheld/sentry/dmr
 	name = "handheld UA 725-D sniper sentry"
@@ -142,6 +148,12 @@
 	icon_state = "Mini uac_sentry_handheld"
 	defense_type = /obj/structure/machinery/defenses/sentry/mini
 	deployment_time = 0.75 SECONDS
+
+/obj/item/defenses/handheld/sentry/omni
+	name = "handheld UA 571-D omnidirectional sentry gun"
+	icon = 'icons/obj/structures/machinery/defenses/sentry.dmi'
+	icon_state = "Normal uac_sentry_handheld"
+	defense_type = /obj/structure/machinery/defenses/sentry/omni
 
 /obj/item/defenses/handheld/sentry/wy
 	name = "handheld WY 202-GMA1 smart sentry"
@@ -189,7 +201,7 @@
 
 /obj/item/defenses/handheld/sentry/flamer/get_upgrade_list()
 	. = list()
-	if(!MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_SNIPER_SENTRY))
+	if(!MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_long_range_sentry))
 		. += list("Long-Range Plasma Upgrade" = image(icon = 'icons/obj/structures/machinery/defenses/flamer.dmi', icon_state = "Plasma uac_flamer_handheld"))
 	. += list(
 		"Mini-Flamer Upgrade" = image(icon = 'icons/obj/structures/machinery/defenses/flamer.dmi', icon_state = "Mini uac_flamer_handheld")
@@ -204,7 +216,8 @@
 
 /obj/item/defenses/handheld/sentry/flamer/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	. = ..()
-	if(!ammo_convert) return
+	if(!ammo_convert)
+		return
 
 	if(!istype(target, /obj/item/ammo_magazine/sentry_flamer))
 		return .
@@ -369,3 +382,10 @@
 	deployment_time = 5 SECONDS
 	defense_type = /obj/structure/machinery/defenses/planted_flag/upp
 
+/obj/item/defenses/handheld/planted_flag/clf
+	name = "handheld CLF planted flag"
+	desc = "A compact version of the CLF defenses. Designed for deployment in the field."
+	icon = 'icons/obj/structures/machinery/defenses/clf_defenses.dmi'
+	icon_state = "CLF planted_flag_handheld"
+	deployment_time = 5 SECONDS
+	defense_type = /obj/structure/machinery/defenses/planted_flag/clf

@@ -104,7 +104,11 @@
 		list("Firearm Lubricant", floor(scale * 10), /obj/item/prop/helmetgarb/gunoil, VENDOR_ITEM_REGULAR),
 		list("USCM Flair", floor(scale * 10), /obj/item/prop/helmetgarb/flair_uscm, VENDOR_ITEM_REGULAR),
 		list("Falling Falcons Shoulder Patch", floor(scale * 10), /obj/item/clothing/accessory/patch/falcon, VENDOR_ITEM_REGULAR),
+		list("Falling Falcons UA Shoulder Patch", floor(scale * 10), /obj/item/clothing/accessory/patch/falconalt, VENDOR_ITEM_REGULAR),
+		list("USCM Large Chest Patch", floor(scale * 10), /obj/item/clothing/accessory/patch/uscmlarge, VENDOR_ITEM_REGULAR),
 		list("USCM Shoulder Patch", floor(scale * 10), /obj/item/clothing/accessory/patch, VENDOR_ITEM_REGULAR),
+		list("United Americas Shoulder patch", floor(scale * 10), /obj/item/clothing/accessory/patch/ua, VENDOR_ITEM_REGULAR),
+		list("United Americas Flag Shoulder patch", floor(scale * 10), /obj/item/clothing/accessory/patch/uasquare, VENDOR_ITEM_REGULAR),
 		list("Bedroll", floor(scale * 10), /obj/item/roller/bedroll, VENDOR_ITEM_REGULAR),
 
 		list("OPTICS", -1, null, null, null),
@@ -123,7 +127,7 @@
 	listed_products = list(
 		list("PRIMARY FIREARMS", -1, null, null),
 		list("M4RA Battle Rifle", floor(scale * 10), /obj/item/weapon/gun/rifle/m4ra, VENDOR_ITEM_REGULAR),
-		list("M37A2 Pump Shotgun", floor(scale * 15), /obj/item/weapon/gun/shotgun/pump, VENDOR_ITEM_REGULAR),
+		list("M37A2 Pump Shotgun", floor(scale * 15), /obj/item/weapon/gun/shotgun/pump/m37a, VENDOR_ITEM_REGULAR),
 		list("M39 Submachine Gun", floor(scale * 30), /obj/item/weapon/gun/smg/m39, VENDOR_ITEM_REGULAR),
 		list("M41A Pulse Rifle MK1", floor(scale * 30), /obj/item/weapon/gun/rifle/m41aMK1, VENDOR_ITEM_REGULAR),
 		list("M41A Pulse Rifle MK2", floor(scale * 30), /obj/item/weapon/gun/rifle/m41a, VENDOR_ITEM_REGULAR),
@@ -153,6 +157,7 @@
 		list("Rail Flashlight", floor(scale * 25), /obj/item/attachable/flashlight, VENDOR_ITEM_REGULAR),
 		list("Underbarrel Flashlight Grip", floor(scale * 10), /obj/item/attachable/flashlight/grip, VENDOR_ITEM_REGULAR),
 		list("Underslung Grenade Launcher", floor(scale * 25), /obj/item/attachable/attached_gun/grenade, VENDOR_ITEM_REGULAR), //They already get these as on-spawns, might as well formalize some spares.
+		list("Underbarrel Flare Launcher", floor(scale * 25), /obj/item/attachable/attached_gun/flare_launcher, VENDOR_ITEM_REGULAR),
 
 		list("UTILITIES", -1, null, null),
 		list("M5 Bayonet", floor(scale * 25), /obj/item/attachable/bayonet, VENDOR_ITEM_REGULAR),
@@ -178,11 +183,17 @@
 		list("M42A Flak Magazine (10x28mm)", floor(scale * 1), /obj/item/ammo_magazine/sniper/flak, VENDOR_ITEM_REGULAR),
 		list("M42A Incendiary Magazine (10x28mm)", floor(scale * 1), /obj/item/ammo_magazine/sniper/incendiary, VENDOR_ITEM_REGULAR),
 		list("M42A Marksman Magazine (10x28mm Caseless)", floor(scale * 1.5), /obj/item/ammo_magazine/sniper, VENDOR_ITEM_REGULAR),
+		list("XM43E1 Marksman Magazine (10x99mm Caseless)", floor(scale * 3), /obj/item/ammo_magazine/sniper/anti_materiel, VENDOR_ITEM_REGULAR),
 
 		list("EXTRA DEMOLITIONIST AMMUNITION", -1, null, null, null),
 		list("84mm Anti-Armor Rocket", floor(scale * 1), /obj/item/ammo_magazine/rocket/ap, VENDOR_ITEM_REGULAR),
 		list("84mm High-Explosive Rocket", floor(scale * 1), /obj/item/ammo_magazine/rocket, VENDOR_ITEM_REGULAR),
 		list("84mm White-Phosphorus Rocket", floor(scale * 1), /obj/item/ammo_magazine/rocket/wp, VENDOR_ITEM_REGULAR),
+
+		list("EXTRA SHARP AMMUNITION", -1, null, null, null),
+		list("SHARP 9X-E Sticky Explosive Dart magazine (darts)", round(scale * 1.5), /obj/item/ammo_magazine/rifle/sharp/explosive, null, VENDOR_ITEM_REGULAR),
+		list("SHARP 9X-T Sticky incendiary Dart magazine (darts)", round(scale * 1), /obj/item/ammo_magazine/rifle/sharp/incendiary, null, VENDOR_ITEM_REGULAR),
+		list("SHARP 9X-F Flechette Dart Magazine (darts)", round(scale * 1), /obj/item/ammo_magazine/rifle/sharp/flechette, null, VENDOR_ITEM_REGULAR),
 
 		list("EXTRA GRENADES", -1, null, null, null),
 		list("M40 HEDP Grenade Pack (x6)", floor(scale * 1.5), /obj/effect/essentials_set/hedp_6_pack, VENDOR_ITEM_REGULAR),

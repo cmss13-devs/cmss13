@@ -22,10 +22,12 @@
 	. = "Green indicators on your HUD will show the location of intelligence objects detected by the scanner. Has two modes: slow long-range [SPAN_HELPFUL("(14 tiles)")] and fast short-range [SPAN_HELPFUL("(7 tiles)")]."
 
 /obj/item/device/motiondetector/intel/update_icon()
-	if (active)
+	if(active)
 		icon_state = "[initial(icon_state)]_on_[detector_mode]"
 	else
 		icon_state = "[initial(icon_state)]"
+	for(var/datum/action/item_action as anything in actions)
+		item_action.update_button_icon()
 
 /obj/item/device/motiondetector/intel/scan()
 	set waitfor = 0
@@ -65,9 +67,12 @@
 
 	for(var/mob/M in orange(detector_range, loc))
 		var/detected
-		if(loc == null || M == null) continue
-		if(loc.z != M.z) continue
-		if(M == loc) continue //device user isn't detected
+		if(loc == null || M == null)
+			continue
+		if(loc.z != M.z)
+			continue
+		if(M == loc)
+			continue //device user isn't detected
 		if((isxeno(M) || isyautja(M)) && M.stat == DEAD )
 			detected = TRUE
 		else if(ishuman(M) && M.stat == DEAD && length(M.contents))

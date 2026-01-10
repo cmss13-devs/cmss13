@@ -13,6 +13,7 @@
 	var/datum/beam/current_beam
 	//make it so that IV doesn't require power to function.
 	use_power = USE_POWER_NONE
+	needs_power = FALSE
 
 /obj/structure/machinery/iv_drip/update_icon()
 	if(attached)
@@ -29,13 +30,20 @@
 
 			var/percent = floor((reagents.total_volume / beaker.volume) * 100)
 			switch(percent)
-				if(0 to 9) filling.icon_state = "reagent0"
-				if(10 to 24) filling.icon_state = "reagent10"
-				if(25 to 49) filling.icon_state = "reagent25"
-				if(50 to 74) filling.icon_state = "reagent50"
-				if(75 to 79) filling.icon_state = "reagent75"
-				if(80 to 90) filling.icon_state = "reagent80"
-				if(91 to INFINITY) filling.icon_state = "reagent100"
+				if(0 to 9)
+					filling.icon_state = "reagent0"
+				if(10 to 24)
+					filling.icon_state = "reagent10"
+				if(25 to 49)
+					filling.icon_state = "reagent25"
+				if(50 to 74)
+					filling.icon_state = "reagent50"
+				if(75 to 79)
+					filling.icon_state = "reagent75"
+				if(80 to 90)
+					filling.icon_state = "reagent80"
+				if(91 to INFINITY)
+					filling.icon_state = "reagent100"
 
 			filling.color = mix_color_from_reagents(reagents.reagent_list)
 			overlays += filling
@@ -65,7 +73,7 @@
 			return
 
 		if(attached)
-			user.visible_message("[user] detaches \the [src] from \the [attached].", \
+			user.visible_message("[user] detaches \the [src] from \the [attached].",
 			"You detach \the [src] from \the [attached].")
 			attached.active_transfusions -= src
 			attached = null
@@ -75,7 +83,7 @@
 			return
 
 		if(in_range(src, usr) && iscarbon(over_object) && get_dist(over_object, src) <= 1)
-			user.visible_message("[user] attaches \the [src] to \the [over_object].", \
+			user.visible_message("[user] attaches \the [src] to \the [over_object].",
 			"You attach \the [src] to \the [over_object].")
 			attached = over_object
 			attached.active_transfusions += src
@@ -143,7 +151,8 @@
 			amount = min(amount, 4)
 			// If the beaker is full, ping
 			if(amount == 0)
-				if(prob(5)) visible_message("\The [src] pings.")
+				if(prob(5))
+					visible_message("\The [src] pings.")
 				return
 
 			var/mob/living/carbon/patient = attached
@@ -156,7 +165,7 @@
 					return
 
 			// If the human is losing too much blood, beep.
-			if(patient.blood_volume < BLOOD_VOLUME_SAFE) if(prob(5))
+			if(patient.blood_volume < BLOOD_VOLUME_SAFE && prob(5))
 				visible_message("\The [src] beeps loudly.")
 
 			patient.take_blood(beaker,amount)

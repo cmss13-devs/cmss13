@@ -1,0 +1,37 @@
+@use 'sass:meta';
+
+$light: hsl(45, 87%, 36%);
+$dark: hsla(60, 100%, 3%, 0.7607843137254902);
+
+@use '../../base.scss' with (
+  $color-bg: $dark,
+  $color-fg: $light
+);
+
+@use '../crt.scss';
+
+.theme-crtbrown {
+  @extend %theme-crt;
+
+  @keyframes brownConfirmFlicker {
+    0% {
+      background-color: $light;
+      color: $dark;
+    }
+    50% {
+      background-color: $dark;
+      color: $light;
+    }
+    100% {
+      background-color: $light;
+      color: $dark;
+    }
+  }
+
+  .Button.ConfirmButton {
+    animation: brownConfirmFlicker 5s infinite;
+    &:hover {
+      animation: none;
+    }
+  }
+}

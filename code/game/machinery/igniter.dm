@@ -58,7 +58,6 @@
 /obj/structure/machinery/sparker/power_change()
 	..()
 	if ( !(stat & NOPOWER) && disable == 0 )
-
 		icon_state = "[base_state]"
 // src.sd_set_light(2)
 	else

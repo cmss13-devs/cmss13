@@ -1,6 +1,5 @@
 import { useState } from 'react';
-
-import { useBackend } from '../backend';
+import { useBackend } from 'tgui/backend';
 import {
   Box,
   Button,
@@ -9,9 +8,10 @@ import {
   Section,
   Stack,
   Tabs,
-} from '../components';
-import { ByondUi } from '../components';
-import { Window } from '../layouts';
+} from 'tgui/components';
+import { ByondUi } from 'tgui/components';
+import { Window } from 'tgui/layouts';
+
 import { CanvasLayer } from './CanvasLayer';
 import { DrawnMap } from './DrawnMap';
 
@@ -20,7 +20,7 @@ interface TacMapProps {
   toolbarUpdatedSelection: string;
   updatedCanvas: boolean;
   themeId: number;
-  svgData: any;
+  svgData: (string | number | CanvasGradient | CanvasPattern)[];
   canViewTacmap: boolean;
   canDraw: boolean;
   isxeno: boolean;
@@ -32,11 +32,12 @@ interface TacMapProps {
   mapFallback: string;
   mapRef: string;
   currentMenu: string;
-  lastUpdateTime: any;
-  canvasCooldownDuration: any;
-  canvasCooldown: any;
-  exportedTacMapImage: any;
+  lastUpdateTime: number;
+  canvasCooldownDuration: number;
+  canvasCooldown: number;
+  exportedTacMapImage: HTMLImageElement;
   tacmapReady: boolean;
+  canChangeZ: boolean;
 }
 
 const PAGES = [
@@ -48,18 +49,7 @@ const PAGES = [
     component: () => ViewMapPanel,
     icon: 'map',
     canAccess: (data: TacMapProps) => {
-      return data.canViewTacmap;
-    },
-  },
-  {
-    title: 'Map View',
-    canOpen: (data: TacMapProps) => {
       return true;
-    },
-    component: () => OldMapPanel,
-    icon: 'eye',
-    canAccess: (data: TacMapProps) => {
-      return data.canViewCanvas;
     },
   },
   {
@@ -97,7 +87,7 @@ const colors: Record<string, string> = {
 
 export const TacticalMap = (props) => {
   const { data, act } = useBackend<TacMapProps>();
-  const [pageIndex, setPageIndex] = useState(data.canViewTacmap ? 0 : 1);
+  const [pageIndex, setPageIndex] = useState(0);
   const PageComponent = PAGES[pageIndex].component();
 
   const handleTacmapOnClick = (i: number, pageTitle: string) => {
@@ -105,6 +95,45 @@ export const TacticalMap = (props) => {
     act('menuSelect', {
       selection: pageTitle,
     });
+  };
+
+  const tryIncrementZ = () => {
+    act('changeZ', {
+      amount: 1,
+    });
+  };
+
+  const tryDecrementZ = () => {
+    act('changeZ', {
+      amount: -1,
+    });
+  };
+
+  const getZTabs = () => {
+    if (!data.canChangeZ) return;
+
+    return (
+      <>
+        <Tabs.Tab
+          key={PAGES.length}
+          color={data.isxeno ? 'purple' : 'blue'}
+          selected={false}
+          icon={'plus'}
+          onClick={() => tryIncrementZ()}
+        >
+          Move up
+        </Tabs.Tab>
+        <Tabs.Tab
+          key={PAGES.length + 1}
+          color={data.isxeno ? 'purple' : 'blue'}
+          selected={false}
+          icon={'minus'}
+          onClick={() => tryDecrementZ()}
+        >
+          Move down
+        </Tabs.Tab>
+      </>
+    );
   };
 
   return (
@@ -144,6 +173,7 @@ export const TacticalMap = (props) => {
                     </Tabs.Tab>
                   );
                 })}
+                {getZTabs()}
               </Tabs>
             </Stack.Item>
           </Stack>
@@ -157,14 +187,11 @@ export const TacticalMap = (props) => {
 const ViewMapPanel = (props) => {
   const { data } = useBackend<TacMapProps>();
 
-  // byond ui can't resist trying to render
-  if (!data.canViewTacmap || data.mapRef === null) {
-    return <OldMapPanel {...props} />;
-  }
-
   return (
-    <Section fitted height="86%">
+    <Section fill fitted height="86%">
       <ByondUi
+        height="100%"
+        width="100%"
         params={{
           id: data.mapRef,
           type: 'map',
@@ -179,7 +206,7 @@ const ViewMapPanel = (props) => {
 const OldMapPanel = (props) => {
   const { data } = useBackend<TacMapProps>();
   return (
-    <Section fitted height="86%" align="center" fontSize="30px">
+    <Section fill fitted height="86%" align="center" fontSize="30px">
       {data.canViewCanvas ? (
         <DrawnMap
           svgData={data.svgData}
@@ -201,7 +228,7 @@ const DrawMapPanel = (props) => {
   const timeLeftPct = data.canvasCooldown / data.canvasCooldownDuration;
   const canUpdate = data.canvasCooldown <= 0 && !data.updatedCanvas;
 
-  const handleTacMapExport = (image: any) => {
+  const handleTacMapExport = (image: HTMLImageElement) => {
     data.exportedTacMapImage = image;
   };
 
@@ -224,6 +251,8 @@ const DrawMapPanel = (props) => {
         title="Canvas Options"
         className={'canvas-options'}
         width="688px"
+        position="absolute"
+        style={{ zIndex: '1' }}
       >
         <Stack height="15px">
           <Stack.Item grow>
@@ -320,7 +349,13 @@ const DrawMapPanel = (props) => {
           </Stack.Item>
         </Stack>
       </Section>
-      <Section width="688px" align="center" textAlign="center">
+      <Section
+        width="688px"
+        height="694px"
+        align="center"
+        textAlign="center"
+        fitted
+      >
         <CanvasLayer
           selection={handleColorSelection(data.toolbarUpdatedSelection)}
           actionQueueChange={data.actionQueueChange}

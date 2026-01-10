@@ -192,3 +192,48 @@
 				</html>
 				"}
 
+
+/datum/fluff_email/almayer/newgunny
+	title = "RE: New Gunny"
+	entry_text = {"<html>
+				Hey man, you gotta be careful with those razors,
+				if our new Platoon Sergeant catches you trying to sell your stash, you'll be in for a world of pain.
+				<br>
+				<br>
+				Way I heard it, he transferred in from dealing with the shittiest boot camp at Twentynine Palms,
+				so he's extra rough around the edges and might just cut you to ribbons with your own supply.
+				</html>
+				"}
+
+/datum/fluff_email/almayer/immunization
+	title = "RE: Immunizations & Training"
+	entry_text = {"<html>
+				One of the battalions just got mulched by a Beebop group and the AAR suggests their training was neglected, it's one hell of a shit show over here.
+				Command is breathing down everyone's necks and wants the entire regiment on high readiness. Orders are going out to immediately assess each battalion's state and conduct training.
+				<br>
+				<br>
+				Make sure that the recent transfers to the battalion undergo the immunization program, you know the one that was prepared for Swamp Hopper.
+				It's apart of the readiness check, gotta be prepared for those plant-suckin shitholes like back on O'Bannon's.
+				<br>
+				<br>
+				This is your heads-up, don't make me get chewed out chief.
+				</html>
+				"}
+
+/datum/fluff_email/almayer/morevehicles
+	title = "RE: Any chance of replacement vehicles?"
+	entry_text = {"<htrml>
+				No, sorry. What we lost on Tychon was what we had. Maisie thinks there might be enough spare bits left to refurbish
+				one of the old rust buckets, but the chances of that are next to nil unless she can pull more than coins from behind her ear.
+				</html>
+				"}
+
+//Sticking this here because I'm too lazy to type it all out.
+/*
+/datum/fluff_email/almayer/
+	title = ""
+	entry_text = {"<html>
+
+				</html>
+				"}
+*/

@@ -1,6 +1,5 @@
-/datum/job/special/wey_yu
+/datum/job/special/wey_yu // Abstract type (null title)
 	supervisors = "Weyland-Yutani Corporate Office"
-	title = "Weyland-Yutani Representative"
 	selection_class = "job_cl"
 	flags_startup_parameters = ROLE_CUSTOM_SPAWN
 	gear_preset = /datum/equipment_preset/wy/trainee
@@ -43,6 +42,11 @@
 	gear_preset = /datum/equipment_preset/wy/manager/chief_executive
 	supervisors = "Weyland-Yutani Directorate"
 
+/datum/job/special/wey_yu/corporate/deputy_director
+	title = JOB_DEPUTY_DIRECTOR
+	gear_preset = /datum/equipment_preset/wy/manager/director/deputy
+	supervisors = "Weyland-Yutani Directorate"
+
 /datum/job/special/wey_yu/corporate/director
 	title = JOB_DIRECTOR
 	gear_preset = /datum/equipment_preset/wy/manager/director
@@ -50,7 +54,7 @@
 
 
 // PMCS //
-/datum/job/special/wey_yu/pmc
+/datum/job/special/wey_yu/pmc // Abstract type (null title)
 	supervisors = "Weyland-Yutani PMC Dispatch"
 
 /datum/job/special/wey_yu/pmc/standard
@@ -85,6 +89,10 @@
 	title = JOB_PMC_LEAD_INVEST
 	gear_preset = /datum/equipment_preset/pmc/pmc_lead_investigator
 
+/datum/job/special/wey_yu/pmc/crowd_control
+	title = JOB_PMC_CROWD_CONTROL
+	gear_preset = /datum/equipment_preset/pmc/pmc_riot_control
+
 /datum/job/special/wey_yu/pmc/detainer
 	title = JOB_PMC_DETAINER
 	gear_preset = /datum/equipment_preset/pmc/pmc_detainer
@@ -97,10 +105,6 @@
 	title = JOB_PMC_DOCTOR
 	gear_preset = /datum/equipment_preset/pmc/doctor
 
-/datum/job/special/wey_yu/pmc/handler
-	title = JOB_PMC_XENO_HANDLER
-	gear_preset = /datum/equipment_preset/pmc/xeno_handler
-
 /datum/job/special/wey_yu/pmc/synth
 	title = JOB_PMC_SYNTH
 	gear_preset = /datum/equipment_preset/pmc/synth
@@ -108,3 +112,20 @@
 /datum/job/special/wey_yu/pmc/director
 	title = JOB_PMC_DIRECTOR
 	gear_preset = /datum/equipment_preset/pmc/director
+
+/datum/job/special/wey_yu/pmc/commando
+	title = JOB_WY_COMMANDO_STANDARD
+	gear_preset = /datum/equipment_preset/pmc/commando/standard
+
+/datum/job/special/wey_yu/pmc/commando_leader
+	title = JOB_WY_COMMANDO_LEADER
+	gear_preset = /datum/equipment_preset/pmc/commando/leader
+
+/datum/job/special/wey_yu/pmc/commando_gunner
+	title = JOB_WY_COMMANDO_GUNNER
+	gear_preset = /datum/equipment_preset/pmc/commando/gunner
+
+/datum/job/special/wey_yu/pmc/commando_dogcatcher
+	title = JOB_WY_COMMANDO_DOGCATHER
+	gear_preset = /datum/equipment_preset/pmc/commando/dogcatcher
+

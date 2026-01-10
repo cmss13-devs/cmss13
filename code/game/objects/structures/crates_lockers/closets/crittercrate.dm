@@ -4,3 +4,6 @@
 	icon_state = "critter"
 	icon_opened = "critteropen"
 	icon_closed = "critter"
+
+/obj/structure/closet/crate/critter/attempt_rigging(obj/item/object, mob/user)
+	return FALSE // No rigging

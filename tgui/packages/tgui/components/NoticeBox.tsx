@@ -1,4 +1,3 @@
-/* eslint-disable func-style */
 /**
  * @file
  * @copyright 2020 Aleksej Komarov
@@ -7,7 +6,7 @@
 
 import { classes } from 'common/react';
 
-import { Box, BoxProps } from './Box';
+import { Box, type BoxProps } from './Box';
 
 type Props = ExclusiveProps & BoxProps;
 

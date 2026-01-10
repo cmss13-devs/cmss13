@@ -15,7 +15,7 @@
 /turf/open/floor/prison/greenfull/east,
 /area/template_noop)
 "n" = (
-/obj/structure/machinery/power/apc,
+/obj/structure/machinery/power/apc/power/south,
 /turf/open/floor/prison/greenfull/east,
 /area/template_noop)
 "o" = (

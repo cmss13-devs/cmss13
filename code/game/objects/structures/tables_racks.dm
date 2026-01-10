@@ -259,14 +259,16 @@
 		step(I, get_dir(I, src))
 
 /obj/structure/surface/table/attackby(obj/item/W, mob/user, click_data)
-	if(!W) return
+	if(!W)
+		return
 
 	if (W.has_special_table_placement)
 		W.set_to_table(src)
 		return
 
 	if(istype(W, /obj/item/grab) && get_dist(src, user) <= 1)
-		if(isxeno(user)) return
+		if(isxeno(user))
+			return
 		var/obj/item/grab/G = W
 		if(istype(G.grabbed_thing, /mob/living))
 			var/mob/living/M = G.grabbed_thing
@@ -279,6 +281,7 @@
 					user.visible_message(SPAN_DANGER("<B>[user] slams [M]'s face against [src]!</B>"),
 					SPAN_DANGER("<B>You slam [M]'s face against [src]!</B>"))
 					playsound(src.loc, 'sound/weapons/tablehit1.ogg', 25, 1)
+					return ATTACKBY_HINT_UPDATE_NEXT_MOVE
 				else
 					to_chat(user, SPAN_WARNING("You need a better grip to do that!"))
 					return
@@ -289,13 +292,14 @@
 				playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 				user.visible_message(SPAN_DANGER("<B>[user] throws [M] on [src], stunning them!</B>"),
 				SPAN_DANGER("<B>You throw [M] on [src], stunning them!</B>"))
+				return ATTACKBY_HINT_UPDATE_NEXT_MOVE
 		return
 
 	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH) && !(user.a_intent == INTENT_HELP))
 		user.visible_message(SPAN_NOTICE("[user] starts disassembling [src]."),
 		SPAN_NOTICE("You start disassembling [src]."))
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-		if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+		if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 			user.visible_message(SPAN_NOTICE("[user] disassembles [src]."),
 			SPAN_NOTICE("You disassemble [src]."))
 			deconstruct(TRUE)
@@ -304,7 +308,7 @@
 	if(W.flags_item & ITEM_ABSTRACT)
 		return
 
-	if(istype(W, /obj/item/weapon/wristblades))
+	if(istype(W, /obj/item/weapon/bracer_attachment))
 		if(rand(0, 2) == 0)
 			playsound(src.loc, 'sound/weapons/wristblades_hit.ogg', 25, 1)
 			user.visible_message(SPAN_DANGER("[user] slices [src] apart!"),
@@ -323,7 +327,7 @@
 	//clicking the table
 	if(flipped)
 		return
-	..()
+	. = ..()
 
 /// Checks whether a table is a straight line along a given axis
 /obj/structure/surface/table/proc/straight_table_check(direction)
@@ -349,7 +353,7 @@
 
 /obj/structure/surface/table/verb/do_flip()
 	set name = "Flip table"
-	set desc = "Flips a non-reinforced table"
+	set desc = "Flips a non-reinforced table."
 	set category = "Object"
 	set src in oview(1)
 
@@ -385,9 +389,11 @@
 		to_chat(usr, SPAN_WARNING("You have moved a table too recently."))
 		return FALSE
 
-	for(var/mob/living/mob_behind_table in oview(src, 0))
+	FOR_DOVIEW(var/mob/living/mob_behind_table, 0, src, HIDE_INVISIBLE_OBSERVER)
 		to_chat(usr, SPAN_WARNING("[mob_behind_table] is in the way of [src]."))
+		FOR_DVIEW_END
 		return FALSE
+	FOR_DVIEW_END
 
 	var/list/directions = list()
 	if(direction)
@@ -409,7 +415,7 @@
 
 /obj/structure/surface/table/proc/do_put()
 	set name = "Put table back"
-	set desc = "Puts flipped table back"
+	set desc = "Puts flipped table back."
 	set category = "Object"
 	set src in oview(1)
 
@@ -557,7 +563,8 @@
 				SPAN_NOTICE("You start weakening [src]"))
 				playsound(src.loc, 'sound/items/Welder.ogg', 25, 1)
 				if (do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					if(!src || !WT.isOn()) return
+					if(!src || !WT.isOn())
+						return
 					user.visible_message(SPAN_NOTICE("[user] weakens [src]."),
 					SPAN_NOTICE("You weaken [src]"))
 					src.status = RTABLE_WEAKENED
@@ -566,7 +573,8 @@
 				SPAN_NOTICE("You start welding [src] back together."))
 				playsound(src.loc, 'sound/items/Welder.ogg', 25, 1)
 				if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					if(!src || !WT.isOn()) return
+					if(!src || !WT.isOn())
+						return
 					user.visible_message(SPAN_NOTICE("[user] welds [src] back together."),
 					SPAN_NOTICE("You weld [src] back together."))
 					status = RTABLE_NORMAL
@@ -576,12 +584,45 @@
 	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH) && !(user.a_intent == INTENT_HELP) && status == RTABLE_NORMAL)
 		return
 
-	..()
+	. = ..()
 
 /obj/structure/surface/table/reinforced/prison
 	desc = "A square metal surface resting on four legs. This one has side panels, making it useful as a desk, but impossible to flip."
 	icon_state = "prisontable"
 	table_prefix = "prison"
+
+/obj/structure/surface/table/reinforced/rostock_blend
+	desc = "A square metal surface resting on its fat metal bottom. You can't flip something that doesn't have legs."
+	icon_state = "rostockStable" //instance, this is a static table for req.
+	table_prefix = "rostockS"
+	tiles_with = list(
+		/obj/structure/window/framed/almayer,
+		/obj/structure/machinery/door/airlock,
+		/turf/closed/wall,
+	)
+
+/obj/structure/surface/table/reinforced/rostock_blend/north
+	icon_state = "rostockNtable"
+	table_prefix = "rostockN"
+
+/obj/structure/surface/table/reinforced/rostock_blend/east
+	icon_state = "rostockEtable"
+	table_prefix = "rostockE"
+
+/obj/structure/surface/table/reinforced/rostock_blend/west
+	icon_state = "rostockWtable"
+	table_prefix = "rostockW"
+
+/obj/structure/surface/table/reinforced/rostock_blend/flip(direction)
+	return FALSE
+
+/obj/structure/surface/table/reinforced/rostock_table
+	desc = "A square metal surface resting on its fat metal bottom. You can't flip something that doesn't have legs."
+	icon_state = "rostock_table" //this one actually auto-tiles, but has no flipped state!
+	table_prefix = "rostock_"
+
+/obj/structure/surface/table/reinforced/rostock_table/flip(direction)
+	return FALSE
 
 /obj/structure/surface/table/reinforced/almayer_blend
 	desc = "A square metal surface resting on its fat metal bottom. You can't flip something that doesn't have legs."
@@ -634,7 +675,7 @@
 /obj/structure/surface/rack
 	name = "rack"
 	desc = "A bunch of metal shelves stacked on top of eachother. Excellent for storage purposes, less so as cover."
-	icon = 'icons/obj/objects.dmi'
+	icon = 'icons/obj/structures/tables.dmi'
 	icon_state = "rack"
 	density = TRUE
 	layer = TABLE_LAYER
@@ -672,7 +713,7 @@
 		return
 	if(W.flags_item & ITEM_ABSTRACT)
 		return
-	..()
+	. = ..()
 
 /obj/structure/surface/rack/Crossed(atom/movable/O)
 	..()

@@ -9,7 +9,7 @@
 
 /obj/structure/machinery/telecomms/broadcaster
 	name = "Subspace Broadcaster"
-	icon = 'icons/obj/structures/props/stationobjs.dmi'
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	icon_state = "broadcaster"
 	desc = "A dish-shaped machine used to broadcast processed subspace signals."
 	density = TRUE
@@ -83,7 +83,7 @@
 						vmask, vmessage, obj/item/device/radio/radio,
 						message, name, job, realname, vname,
 						data, compression, list/level, freq, verbage = "says",
-						datum/language/speaking = null, volume = RADIO_VOLUME_QUIET, listening_device = FALSE)
+						datum/language/speaking = null, volume = RADIO_VOLUME_QUIET, listening_device = NOT_LISTENING_BUG)
 
 	/* ###### Prepare the radio connection ###### */
 	var/display_freq = freq
@@ -152,9 +152,9 @@
 	if(M)
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
-			if(skillcheck(H, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT))
+			if(skillcheck(H, SKILL_LEADERSHIP, SKILL_LEAD_SKILLED))
 				volume = max(volume, RADIO_VOLUME_CRITICAL)
-			else if(HAS_TRAIT(M, TRAIT_LEADERSHIP))
+			else if(HAS_TRAIT(M, TRAIT_LEADERSHIP) || HAS_TRAIT(M, TRAIT_ACTING_LEAD))
 				volume = max(volume, RADIO_VOLUME_IMPORTANT)
 
 			comm_title = H.comm_title //Set up [CO] and stuff after frequency
@@ -182,7 +182,7 @@
 		// Ghosts hearing all radio chat don't want to hear syndicate intercepts, they're duplicates
 		if(data == 3 && is_ghost && R.client && (R.client.prefs.toggles_chat & CHAT_GHOSTRADIO))
 			continue
-		if(is_ghost && listening_device && !(R.client.prefs.toggles_chat & CHAT_LISTENINGBUG))
+		if(is_ghost && ((listening_device && !(R.client.prefs.toggles_chat & CHAT_LISTENINGBUG)) || listening_device == LISTENING_BUG_NEVER))
 			continue
 		// --- Check for compression ---
 		if(compression > 0)
@@ -190,7 +190,7 @@
 			continue
 
 		// --- Can understand the speech ---
-		if (!M || R.say_understands(M))
+		if (!M || R.say_understands(M, speaking))
 			// - Not human or wearing a voice mask -
 			if (!M || !ishuman(M) || vmask)
 				heard_masked += R
@@ -246,7 +246,10 @@
 		/* --- Process all the mobs that heard the voice normally (did not understand) --- */
 		if (length(heard_voice))
 			for (var/mob/R in heard_voice)
-				R.hear_radio(message,verbage, speaking, part_a, part_b, M,0, vname, 0)
+				if(R.faction == M.faction)
+					R.hear_radio(message, verbage, speaking, part_a, part_b, M, 0, realname, volume)
+				else
+					R.hear_radio(message, verbage, speaking, part_a, part_b, M, 0, vname, 0)
 
 		/* --- Process all the mobs that heard a garbled voice (did not understand) --- */
 			// Displays garbled message (ie "f*c* **u, **i*er!")

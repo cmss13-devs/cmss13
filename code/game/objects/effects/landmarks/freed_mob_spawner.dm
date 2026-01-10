@@ -28,5 +28,5 @@
 
 /obj/effect/landmark/freed_mob_spawner/upp_soldier
 	name = "UPP Soldier"
-	equipment_path = /datum/equipment_preset/upp/soldier
+	equipment_path = /datum/equipment_preset/upp/soldier/dressed
 	count_participant = TRUE

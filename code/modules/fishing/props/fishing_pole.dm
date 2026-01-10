@@ -9,10 +9,10 @@
 
 /obj/structure/prop/fishing/pole_interactive
 	var/time_to_fish = 30 SECONDS
-	var/fishing_success = 'sound/items/bikehorn.ogg'//to-do get a sound effect(s)
-	var/fishing_start = 'sound/items/fulton.ogg'
-	var/fishing_failure = 'sound/items/jetpack_beep.ogg'
-	var/fishing_event = 'sound/items/component_pickup.ogg'
+	var/fishing_success = 'sound/misc/fishing_set_hook.ogg'// changed sound effects
+	var/fishing_start = 'sound/misc/fishing_Line.ogg'
+	var/fishing_failure = 'sound/misc/fishing_fail_splash.ogg'
+	var/fishing_event = 'sound/misc/bobber_water_splash.ogg'
 
 	// these can be modified per-rod to make one luckier than the others
 	var/common_weight = 80
@@ -95,7 +95,7 @@
 	var/area/A = get_area(T)
 
 	var/obj/item/caught_item = get_fishing_loot(T, A, get_common_weight(), get_uncommon_weight(), get_rare_weight(), get_ultra_rare_weight())
-	caught_item.throw_atom(M.loc, 2, 2, spin = TRUE, launch_type = HIGH_LAUNCH)
+	caught_item.throw_atom(get_turf(M), 2, 2, spin = TRUE, launch_type = HIGH_LAUNCH)
 	playsound(src, fishing_success, 50, 1)
 	M.visible_message(SPAN_NOTICE("[M] fishes up \the [caught_item]!"), SPAN_NOTICE("You fish up \the [caught_item]!"))
 

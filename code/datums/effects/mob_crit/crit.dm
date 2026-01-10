@@ -3,7 +3,7 @@
 	duration = 30
 	flags = INF_DURATION | NO_PROCESS_ON_DEATH | DEL_ON_UNDEFIBBABLE
 
-/datum/effects/pain/validate_atom(atom/A)
+/datum/effects/crit/validate_atom(atom/A)
 	if(isobj(A))
 		return FALSE
 	. = ..()

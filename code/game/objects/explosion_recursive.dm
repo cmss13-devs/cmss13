@@ -63,10 +63,12 @@ explosion resistance exactly as much as their health
 			new_explosion_cause_data = create_cause_data("Explosion")
 	explosion_cause_data = new_explosion_cause_data
 
-	if(power0 <= 1) return
+	if(power0 <= 1)
+		return
 	power = power0
 	epicenter = get_turf(epicenter)
-	if(!epicenter) return
+	if(!epicenter)
+		return
 
 	falloff = max(falloff0, power/100) //prevent explosions with a range larger than 100 tiles
 	minimum_spread_power = -power * reflection_amplification_limit
@@ -86,9 +88,7 @@ explosion resistance exactly as much as their health
 
 	if(power >= 100) // powerful explosions send out some special effects
 		epicenter = get_turf(epicenter) // the ex_acts might have changed the epicenter
-		create_shrapnel(epicenter, rand(5,9), , ,/datum/ammo/bullet/shrapnel/light/effect/ver1, explosion_cause_data)
-		sleep(1)
-		create_shrapnel(epicenter, rand(5,9), , ,/datum/ammo/bullet/shrapnel/light/effect/ver2, explosion_cause_data)
+		new /obj/shrapnel_effect(epicenter)
 
 	spawn(2) //just in case something goes wrong
 		if(explosion_in_progress)
@@ -221,7 +221,8 @@ explosion resistance exactly as much as their health
 	var/num_tiles_affected = 0
 
 	for(var/turf/T in explosion_turfs)
-		if(!T) continue
+		if(!T)
+			continue
 		if(explosion_turfs[T] >= 0)
 			num_tiles_affected++
 
@@ -233,7 +234,8 @@ explosion resistance exactly as much as their health
 	var/increment = min(50, sqrt(num_tiles_affected)*3 )//how many tiles we damage per tick
 
 	for(var/turf/T in explosion_turfs)
-		if(!T) continue
+		if(!T)
+			continue
 
 		var/severity = explosion_turfs[T] + damage_addon
 		if (severity <= 0)

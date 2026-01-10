@@ -67,6 +67,54 @@
 
 /obj/item/ammo_box/magazine/shotgun/beanbag/empty
 	empty = TRUE
+//-----------------------TYPE 23 SHELL BOXES-----------------------
+
+/obj/item/ammo_box/magazine/shotgun/upp
+	name = "\improper Type 23 shotgun shell box (Slugs 8g x 100)"
+	icon_state = "base_slug_upp"
+	overlay_gun_type = "_type23"
+	overlay_content = "_upp_slug"
+	magazine_type = /obj/item/ammo_magazine/shotgun/heavy/slug
+
+/obj/item/ammo_box/magazine/shotgun/upp/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/shotgun/upp/buckshot
+	name = "\improper Type 23 shotgun shell box (Buckshot 8g x 100)"
+	icon_state = "base_buck_upp"
+	overlay_content = "_upp_buck"
+	magazine_type = /obj/item/ammo_magazine/shotgun/heavy/buckshot
+
+/obj/item/ammo_box/magazine/shotgun/upp/buckshot/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/shotgun/upp/flechette
+	name = "\improper Type 23 shotgun shell box (Flechette 8g x 100)"
+	icon_state = "base_flech_upp"
+	overlay_content = "_upp_flech"
+	magazine_type = /obj/item/ammo_magazine/shotgun/heavy/flechette
+
+/obj/item/ammo_box/magazine/shotgun/upp/flechette/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/shotgun/upp/incendiary
+	name = "\improper Type 23 shotgun shell box (Dragon's breath 8g x 100)"
+	icon_state = "base_inc_upp"
+	overlay_content = "_upp_incen"
+	magazine_type = /obj/item/ammo_magazine/shotgun/heavy/incendiary
+
+/obj/item/ammo_box/magazine/shotgun/upp/incendiary/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/shotgun/upp/beanbag
+	name = "\improper Type 23 shotgun shell box (Beanbag 8g x 100)"
+	icon_state = "base_bean_upp"
+	overlay_content = "_upp_bean"
+	magazine_type = /obj/item/ammo_magazine/shotgun/heavy/beanbag
+	can_explode = FALSE
+
+/obj/item/ammo_box/magazine/shotgun/upp/beanbag/empty
+	empty = TRUE
 
 
 //-----------------------16 GAUGE SHOTGUN SHELL BOXES-----------------------
@@ -87,6 +135,7 @@
 /obj/item/ammo_box/magazine/lever_action
 	name = "\improper 45-70 bullets box (45-70 x 300)"
 	icon_state = "base_4570"
+	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_reg"
 	overlay_gun_type = "_4570"
 	overlay_content = "_4570"
@@ -131,4 +180,15 @@
 	magazine_type = /obj/item/ammo_magazine/handful/lever_action/marksman
 
 /obj/item/ammo_box/magazine/lever_action/marksman/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/lever_action/xm88
+	name = "\improper .458 bullets box (.458 x 300)"
+	icon_state = "base_458"
+	overlay_ammo_type = "_blank"
+	overlay_gun_type = "_458"
+	overlay_content = "_458"
+	magazine_type = /obj/item/ammo_magazine/lever_action/xm88
+
+/obj/item/ammo_box/magazine/lever_action/xm88/empty
 	empty = TRUE

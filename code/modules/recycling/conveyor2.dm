@@ -107,7 +107,9 @@
 			var/mob/GM = G.grabbed_thing
 			step(GM, get_dir(GM, src))
 			return
-	user.drop_inv_item_to_loc(I, loc)
+
+	if(user.a_intent != INTENT_HARM)
+		user.drop_inv_item_to_loc(I, loc)
 
 // attack with hand, move pulled object onto conveyor
 /obj/structure/machinery/conveyor/attack_hand(mob/user as mob)
@@ -150,7 +152,8 @@
 	if(id != match_id)
 		return
 	operable = op
-	if(operable) start_processing()
+	if(operable)
+		start_processing()
 
 	update()
 	var/obj/structure/machinery/conveyor/C = locate() in get_step(src, stepdir)

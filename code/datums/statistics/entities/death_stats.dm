@@ -14,12 +14,13 @@
 	var/cause_role_name
 	var/cause_faction_name
 
-	var/total_steps = 0
+	var/total_steps
 	var/total_kills = 0
 	var/time_of_death
 	var/total_time_alive
 	var/total_damage_taken
 	var/total_revives_done = 0
+	var/total_ib_fixed = 0
 
 	var/total_brute = 0
 	var/total_burn = 0
@@ -53,6 +54,7 @@
 		"total_time_alive" = DB_FIELDTYPE_BIGINT,
 		"total_damage_taken" = DB_FIELDTYPE_INT,
 		"total_revives_done" = DB_FIELDTYPE_INT,
+		"total_ib_fixed" = DB_FIELDTYPE_INT,
 
 		"total_brute" = DB_FIELDTYPE_INT,
 		"total_burn" = DB_FIELDTYPE_INT,
@@ -132,12 +134,12 @@
 	new_death.total_time_alive = life_time_total
 	new_death.total_damage_taken = life_damage_taken_total
 	new_death.total_revives_done = life_revives_total
+	new_death.total_ib_fixed = life_ib_total
 
 	if(GLOB.round_statistics)
 		GLOB.round_statistics.track_death(new_death)
 
 	new_death.save()
-	new_death.detach()
 	return new_death
 
 /mob/living/carbon/human/track_mob_death(datum/cause_data/cause_data, turf/death_loc)

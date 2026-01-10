@@ -186,6 +186,9 @@
 /turf/open/floor/shiva/bluecorners
 	icon_state = "bluecorners"
 
+/turf/open/floor/shiva/bluecorners/east
+	dir = EAST
+
 /turf/open/floor/shiva/bluecorners/west
 	dir = WEST
 

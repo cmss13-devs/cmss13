@@ -56,5 +56,5 @@
 	if(!istype(hit_wall))
 		return COMPONENT_BULLET_PASS_THROUGH
 
-	if(!hit_wall.hull)
+	if(!(hit_wall.turf_flags & TURF_HULL))
 		return COMPONENT_BULLET_PASS_THROUGH

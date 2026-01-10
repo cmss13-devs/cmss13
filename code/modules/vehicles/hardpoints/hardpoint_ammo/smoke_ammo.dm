@@ -2,6 +2,7 @@
 	name = "Turret Smoke Screen Magazine"
 	desc = "A smoke grenades magazine used by tank turret."
 	caliber = "grenade"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/vehicles.dmi'
 	icon_state = "slauncher_1"
 	w_class = SIZE_LARGE
 	default_ammo = /datum/ammo/grenade_container/smoke

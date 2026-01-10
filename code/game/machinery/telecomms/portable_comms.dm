@@ -3,7 +3,7 @@
 	desc = "A portable compact TC-4T telecommunications construction kit. Used to set up subspace communications lines between planetary and extra-planetary locations. Needs cabling."
 	icon = 'icons/obj/structures/machinery/comm_tower2.dmi'
 	icon_state = "construct_0_0"
-	required_skill = SKILL_ENGINEER_ENGI
+	required_skill = SKILL_ENGINEER_TRAINED
 	required_dismantle_skill = 5
 	density = TRUE
 	anchored = FALSE
@@ -38,5 +38,5 @@
 		return
 	if(istype(I, /obj/item/circuitboard/machine) && !istype(I, /obj/item/circuitboard/machine/telecomms/relay/tower))
 		return
-	..()
+	. = ..()
 

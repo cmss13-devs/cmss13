@@ -66,15 +66,6 @@
 	},
 /turf/open/floor/plating/prison,
 /area/template_noop)
-"o" = (
-/obj/structure/machinery/landinglight/delaythree{
-	dir = 8;
-	pixel_x = 7
-	},
-/turf/closed/shuttle/ert{
-	icon_state = "wy4"
-	},
-/area/template_noop)
 "w" = (
 /obj/item/trash/cigbutt/ucigbutt,
 /obj/item/trash/cigbutt/ucigbutt{
@@ -93,6 +84,12 @@
 /turf/closed/shuttle/ert{
 	icon_state = "wy_leftengine"
 	},
+/area/template_noop)
+"G" = (
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/almayer_hull,
 /area/template_noop)
 "H" = (
 /turf/closed/shuttle/ert{
@@ -113,16 +110,6 @@
 	icon_state = "wy20"
 	},
 /area/template_noop)
-"T" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 8
-	},
-/obj/structure/platform/kutjevo/smooth{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/blood/oil,
-/turf/open/floor/almayer_hull,
-/area/template_noop)
 "V" = (
 /obj/structure/machinery/light/small{
 	dir = 8;
@@ -135,7 +122,16 @@
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor/plating/prison,
 /area/template_noop)
-"Z" = (
+"W" = (
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 8;
+	pixel_x = 7
+	},
+/turf/closed/shuttle/ert{
+	icon_state = "wy4"
+	},
+/area/template_noop)
+"X" = (
 /obj/structure/machinery/landinglight/delaythree{
 	dir = 4;
 	pixel_x = -7
@@ -147,8 +143,8 @@
 
 (1,1,1) = {"
 P
-o
-o
+W
+W
 F
 h
 "}
@@ -164,12 +160,12 @@ e
 l
 w
 a
-T
+G
 "}
 (4,1,1) = {"
 b
-Z
-Z
+X
+X
 y
 g
 "}

@@ -9,18 +9,6 @@ GLOBAL_LIST_INIT_TYPED(undershirt_f, /datum/sprite_accessory/undershirt, setup_u
 			continue
 		if(undershirt_datum.camo_conforming)
 			undershirt_list["[undershirt_datum.name] (Camo Conforming)"] = undershirt_datum
-			var/datum/sprite_accessory/undershirt/classic_datum = new undershirt_type
-			classic_datum.generate_non_conforming("c")
-			undershirt_list[classic_datum.name] = classic_datum
-			var/datum/sprite_accessory/undershirt/jungle_datum = new undershirt_type
-			jungle_datum.generate_non_conforming("j")
-			undershirt_list[jungle_datum.name] = jungle_datum
-			var/datum/sprite_accessory/undershirt/desert_datum = new undershirt_type
-			desert_datum.generate_non_conforming("d")
-			undershirt_list[desert_datum.name] = desert_datum
-			var/datum/sprite_accessory/undershirt/snow_datum = new undershirt_type
-			snow_datum.generate_non_conforming("s")
-			undershirt_list[snow_datum.name] = snow_datum
 		else
 			undershirt_list[undershirt_datum.name] = undershirt_datum
 	return undershirt_list
@@ -29,18 +17,23 @@ GLOBAL_LIST_INIT_TYPED(undershirt_f, /datum/sprite_accessory/undershirt, setup_u
 	icon = 'icons/mob/humans/undershirt.dmi'
 	var/camo_conforming = FALSE
 
+	/// If this undershirt should be displayed while a uniform is worn
+	var/shown_under_uniform = FALSE
+
 /datum/sprite_accessory/undershirt/proc/get_image(mob_gender)
 	var/selected_icon_state = icon_state
 	if(camo_conforming)
 		switch(SSmapping.configs[GROUND_MAP].camouflage_type)
 			if("classic")
-				selected_icon_state = "c_" + selected_icon_state
+				selected_icon_state = "classic_" + selected_icon_state
 			if("jungle")
-				selected_icon_state = "j_" + selected_icon_state
+				selected_icon_state = "jungle_" + selected_icon_state
 			if("desert")
-				selected_icon_state = "d_" + selected_icon_state
+				selected_icon_state = "desert_" + selected_icon_state
 			if("snow")
-				selected_icon_state = "s_" + selected_icon_state
+				selected_icon_state = "snow_" + selected_icon_state
+			if("urban")
+				selected_icon_state = "urban_" + selected_icon_state
 
 	if(gender == PLURAL)
 		selected_icon_state += mob_gender == MALE ? "_m" : "_f"
@@ -50,14 +43,16 @@ GLOBAL_LIST_INIT_TYPED(undershirt_f, /datum/sprite_accessory/undershirt, setup_u
 	camo_conforming = FALSE
 	icon_state = "[camo_key]_[icon_state]"
 	switch(camo_key)
-		if("c")
+		if("classic")
 			name += " (Classic)"
-		if("j")
+		if("jungle")
 			name += " (Jungle)"
-		if("d")
+		if("desert")
 			name += " (Desert)"
-		if("s")
+		if("snow")
 			name += " (Snow)"
+		if("urban")
+			name += " (Urban)"
 
 // Plural
 /datum/sprite_accessory/undershirt/undershirt
@@ -65,33 +60,53 @@ GLOBAL_LIST_INIT_TYPED(undershirt_f, /datum/sprite_accessory/undershirt, setup_u
 	icon_state = "t_undershirt"
 	gender = NEUTER
 
+	shown_under_uniform = TRUE
+	camo_conforming = TRUE
+
 /datum/sprite_accessory/undershirt/undershirt/black
 	name = "Undershirt (Black)"
 	icon_state = "b_undershirt"
+	camo_conforming = FALSE
 
 /datum/sprite_accessory/undershirt/undershirt/sleeveless
 	name = "Undershirt (Tan, Sleeveless)"
 	icon_state = "t_undershirt_sleeveless"
+	camo_conforming = TRUE
 
 /datum/sprite_accessory/undershirt/undershirt/sleeveless/black
 	name = "Undershirt (Black, Sleeveless)"
 	icon_state = "b_undershirt_sleeveless"
+	camo_conforming = FALSE
 
 /datum/sprite_accessory/undershirt/undershirt/rolled
 	name = "Undershirt (Tan, Rolled)"
 	icon_state = "t_rolled_undershirt"
+	camo_conforming = TRUE
+
+/datum/sprite_accessory/undershirt/undershirt/rolled/black
+	name = "Undershirt (Black, Rolled)"
+	icon_state = "b_rolled_undershirt"
+	camo_conforming = FALSE
 
 /datum/sprite_accessory/undershirt/undershirt/rolled_sleeveless
-	name = "Undershirt (Tan, Rolled Sleeveless)"
+	name = "Undershirt (Tan, Rolled, Sleeveless)"
 	icon_state = "t_rolled_undershirt_sleeveless"
+	camo_conforming = TRUE
+
+/datum/sprite_accessory/undershirt/undershirt/rolled_sleeveless/black
+	name = "Undershirt (Black, Rolled, Sleeveless)"
+	icon_state = "b_rolled_undershirt_sleeveless"
+	camo_conforming = FALSE
 
 /datum/sprite_accessory/undershirt/undershirt/long
 	name = "Undershirt (Tan, Long Sleeved)"
 	icon_state = "t_long_undershirt"
+	camo_conforming = TRUE
 
 /datum/sprite_accessory/undershirt/undershirt/long/black
 	name = "Undershirt (Black, Long Sleeved)"
 	icon_state = "b_long_undershirt"
+	camo_conforming = FALSE
 
 // Male
 /datum/sprite_accessory/undershirt/none
@@ -102,9 +117,15 @@ GLOBAL_LIST_INIT_TYPED(undershirt_f, /datum/sprite_accessory/undershirt, setup_u
 // Female
 /datum/sprite_accessory/undershirt/bra
 	name = "Bra"
-	icon_state = "classic"
+	icon_state = "bra"
 	gender = FEMALE
 	camo_conforming = TRUE
+
+/datum/sprite_accessory/undershirt/bra/black
+	name = "Bra (Black)"
+	icon_state = "b_bra"
+	gender = FEMALE
+	camo_conforming = FALSE
 
 /datum/sprite_accessory/undershirt/sports_bra
 	name = "Sports Bra"
@@ -112,8 +133,20 @@ GLOBAL_LIST_INIT_TYPED(undershirt_f, /datum/sprite_accessory/undershirt, setup_u
 	gender = FEMALE
 	camo_conforming = TRUE
 
+/datum/sprite_accessory/undershirt/sports_bra/black
+	name = "Sports Bra (Black)"
+	icon_state = "b_sports"
+	gender = FEMALE
+	camo_conforming = FALSE
+
 /datum/sprite_accessory/undershirt/strapless_bra
 	name = "Strapless Bra"
 	icon_state = "strapless"
 	gender = FEMALE
 	camo_conforming = TRUE
+
+/datum/sprite_accessory/undershirt/strapless_bra/black
+	name = "Strapless Bra (Black)"
+	icon_state = "b_strapless"
+	gender = FEMALE
+	camo_conforming = FALSE

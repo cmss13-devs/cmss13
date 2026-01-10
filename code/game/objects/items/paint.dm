@@ -5,19 +5,24 @@ GLOBAL_LIST_EMPTY(cached_icons)
 /obj/item/reagent_container/glass/paint
 	desc = "It's a paint bucket."
 	name = "paint bucket"
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/paint.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/paint_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/paint_righthand.dmi'
+	)
 	icon_state = "paint_neutral"
 	item_state = "paintcan"
 	matter = list("metal" = 200)
 	w_class = SIZE_MEDIUM
 	amount_per_transfer_from_this = 10
-	possible_transfer_amounts = list(10,20,30,50,70)
+	possible_transfer_amounts = list(5,10,15,20,25,30,40,50,60,70)
 	volume = 70
 	flags_atom = FPRINT|OPENCONTAINER
 	var/paint_type = ""
 
 /obj/item/reagent_container/glass/paint/afterattack(turf/target, mob/user, proximity)
-	if(!proximity) return
+	if(!proximity)
+		return
 	if(istype(target) && reagents.total_volume > 5)
 		for(var/mob/O in viewers(user))
 			O.show_message(SPAN_DANGER("\The [target] has been splashed with something by [user]!"), SHOW_MESSAGE_VISIBLE)

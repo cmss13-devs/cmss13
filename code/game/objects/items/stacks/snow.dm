@@ -56,7 +56,8 @@ GLOBAL_LIST_INIT(snow_recipes, list(
 
 
 /obj/item/stack/snow/afterattack(atom/target, mob/user, proximity)
-	if(!proximity) return
+	if(!proximity)
+		return
 	if(istype(target, /turf/open))
 		if(user.action_busy)
 			return
@@ -83,9 +84,9 @@ GLOBAL_LIST_INIT(snow_recipes, list(
 /obj/item/snowball
 	name = "snowball"
 	desc = "A weapon of mass destruction, this perfectly crafted item can be used to decimate the enemy forces, provided there isn't a shoebill to block your shot..."
-	icon = 'icons/obj/items/weapons/weapons.dmi'
+	icon = 'icons/obj/items/toy.dmi'
 	icon_state = "snowball"
-	item_state = "lgloves"
+	item_state = "latex"
 	flags_atom = ITEM_UNCATCHABLE
 	force = 0
 	w_class = SIZE_SMALL

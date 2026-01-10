@@ -52,10 +52,10 @@ GLOBAL_DATUM_INIT(revdata, /datum/getrev, new)
 			continue
 		. += "<a href=\"[CONFIG_GET(string/githuburl)]/pull/[tm.number]\">#[tm.number][details]</a><br>"
 
-/client/verb/showrevinfo()
+CLIENT_VERB(showrevinfo)
 	set category = "OOC"
 	set name = "Show Server Revision"
-	set desc = "Check the current server code revision"
+	set desc = "Check the current server code revision."
 
 	var/list/msg = list("")
 	// Round ID

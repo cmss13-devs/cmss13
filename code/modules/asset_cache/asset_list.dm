@@ -7,6 +7,8 @@ GLOBAL_LIST_EMPTY(asset_datums)
 
 //get an assetdatum or make a new one
 /proc/get_asset_datum(type)
+	RETURN_TYPE(/datum/asset)
+
 	return GLOB.asset_datums[type] || new type()
 
 /datum/asset
@@ -261,11 +263,12 @@ GLOBAL_LIST_EMPTY(asset_datums)
 				continue
 			asset = fcopy_rsc(asset) //dedupe
 			var/prefix2 = (length(directions) > 1) ? "[dir2text(direction)]." : ""
-			var/asset_name = sanitize_filename("[prefix].[prefix2][icon_state_name].png")
+			var/asset_name = sanitize_filename("[prefix ? "[prefix]." : ""][prefix2][icon_state_name].png")
 			if (generic_icon_names)
 				asset_name = "[generate_asset_name(asset)].png"
 
 			SSassets.transport.register_asset(asset_name, asset)
+			assets[asset_name] = asset
 
 /datum/asset/simple/icon_states/multiple_icons
 	_abstract = /datum/asset/simple/icon_states/multiple_icons
@@ -323,6 +326,32 @@ GLOBAL_LIST_EMPTY(asset_datums)
 /// Needed because byond doesn't allow you to browse() to a url.
 /datum/asset/simple/namespaced/proc/get_htmlloader(filename)
 	return url2htmlloader(SSassets.transport.get_asset_url(filename, assets[filename]))
+
+/// A subtype to generate a JSON file from a list
+/datum/asset/json
+	_abstract = /datum/asset/json
+	/// The filename, will be suffixed with ".json"
+	var/name
+
+/datum/asset/json/send(client)
+	return SSassets.transport.send_assets(client, "[name].json")
+
+/datum/asset/json/get_url_mappings()
+	return list(
+		"[name].json" = SSassets.transport.get_asset_url("[name].json"),
+	)
+
+/datum/asset/json/register()
+	var/filename = "data/[name].json"
+	fdel(filename)
+	text2file(json_encode(generate()), filename)
+	SSassets.transport.register_asset("[name].json", fcopy_rsc(filename))
+	fdel(filename)
+
+/// Returns the data that will be JSON encoded
+/datum/asset/json/proc/generate()
+	SHOULD_CALL_PARENT(FALSE)
+	CRASH("generate() not implemented for [type]!")
 
 /datum/asset/changelog_item
 	_abstract = /datum/asset/changelog_item

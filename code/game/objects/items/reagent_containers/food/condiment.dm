@@ -7,15 +7,13 @@
 /obj/item/reagent_container/food/condiment
 	name = "Condiment Container"
 	desc = "Just your average condiment container."
-	icon = 'icons/obj/items/food.dmi'
+	icon = 'icons/obj/items/food/condiments.dmi'
 	icon_state = "emptycondiment"
 	flags_atom = FPRINT|OPENCONTAINER
 	possible_transfer_amounts = list(1,5,10)
 	center_of_mass = "x=16;y=6"
 	volume = 50
-
-/obj/item/reagent_container/food/condiment/attackby(obj/item/W, mob/user)
-	return
+	var/static_container_icon = FALSE //do I change my icon when a different reagent is inside me? Right now, yes.
 
 /obj/item/reagent_container/food/condiment/attack(mob/M, mob/user)
 	if(!reagents?.total_volume)
@@ -25,7 +23,7 @@
 	if(M == user)
 		to_chat(M, SPAN_NOTICE("You swallow some of contents of [src]."))
 
-	else if(istype(M, /mob/living/carbon/human))
+	else if(istype(M, /mob/living/carbon))
 		user.affected_message(M,
 			SPAN_HELPFUL("You <b>start feeding</b> [user == M ? "yourself" : "[M]"] <b>[src]</b>."),
 			SPAN_HELPFUL("[user] <b>starts feeding</b> you <b>[src]</b>."),
@@ -52,7 +50,7 @@
 	playsound(M.loc,'sound/items/drink.ogg', 15, 1)
 	return TRUE
 
-/obj/item/reagent_container/food/condiment/attackby(obj/item/I as obj, mob/user as mob)
+/obj/item/reagent_container/food/condiment/attackby(obj/item/W, mob/living/user, list/mods)
 	return
 
 /obj/item/reagent_container/food/condiment/afterattack(obj/target, mob/user , flag)
@@ -86,7 +84,7 @@
 		to_chat(user, SPAN_NOTICE(" You transfer [trans] units of the condiment to [target]."))
 
 /obj/item/reagent_container/food/condiment/on_reagent_change()
-	if(icon_state == "saltshakersmall" || icon_state == "peppermillsmall" || icon_state == "hotsauce_cholula" || icon_state == "hotsauce_franks" || icon_state == "hotsauce_sriracha" || icon_state == "hotsauce_tabasco" || icon_state == "coldsauce_cole")
+	if(static_container_icon) //Noooo, don't turn me into a marketable enzyme/condiment bottle, I have my own icon and description!
 		return
 	if(length(reagents.reagent_list) > 0)
 		switch(reagents.get_master_reagent_id())
@@ -123,7 +121,7 @@
 			if("cornoil")
 				name = "Corn Oil"
 				desc = "A delicious oil used in cooking. Made from corn."
-				icon_state = "oliveoil"
+				icon_state = "cornoil"
 				center_of_mass = "x=16;y=6"
 			if("sugar")
 				name = "Sugar"
@@ -159,10 +157,25 @@
 	. = ..()
 	reagents.add_reagent("sugar", 50)
 
+/obj/item/reagent_container/food/condiment/chocolate_syrup
+	name = "\improper Chocolate Syrup bottle"
+	desc = "A bottle of Weyland-Yutani brand chocolate syrup for adding chocolate flavor to space treats, or for sipping directly from the nozzle like a little kid."
+	icon_state = "chocolate_syrup"
+	static_container_icon = TRUE //Yes, I do have my own sprite.
+	possible_transfer_amounts = list(1,5,10,15,20,60) //the thought of marines having fisticuffs because somebody drank all the chocolate syrup is beyond hilarious.
+	amount_per_transfer_from_this = 5
+	volume = 60
+
+/obj/item/reagent_container/food/condiment/chocolate_syrup/Initialize()
+	. = ..()
+	reagents.add_reagent("chocolatesyrup", 60)
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/reagent_container/food/condiment/saltshaker //Separate from above since it's a small shaker rather then
 	name = "Salt Shaker" // a large one.
 	desc = "Salt. From space oceans, presumably."
 	icon_state = "saltshakersmall"
+	static_container_icon = TRUE
 	possible_transfer_amounts = list(1,20) //for clown turning the lid off
 	amount_per_transfer_from_this = 1
 	volume = 20
@@ -175,6 +188,7 @@
 	name = "Pepper Mill"
 	desc = "Often used to flavor food or make people sneeze."
 	icon_state = "peppermillsmall"
+	static_container_icon = TRUE
 	possible_transfer_amounts = list(1,20) //for clown turning the lid off
 	amount_per_transfer_from_this = 1
 	volume = 20
@@ -184,8 +198,9 @@
 	reagents.add_reagent("blackpepper", 20)
 
 /obj/item/reagent_container/food/condiment/hotsauce
-	icon = 'icons/obj/items/food.dmi'
+	icon = 'icons/obj/items/food/condiments.dmi'
 	name = "hotsauce parent object"
+	static_container_icon = TRUE
 	possible_transfer_amounts = list(1,5,60) //60 allows marines to chug the bottle in one go.
 	volume = 60
 
@@ -199,6 +214,10 @@
 	icon_state = "hotsauce_cholula"
 	item_state = "hotsauce_cholula"
 
+/obj/item/reagent_container/food/condiment/hotsauce/cholula/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/reagent_container/food/condiment/hotsauce/franks
 	name = "\improper Frank's Red Hot bottle"
 	desc = "A bottle of Weyland-Yutani brand Frank's Red Hot hot sauce."
@@ -206,17 +225,29 @@
 	icon_state = "hotsauce_franks"
 	item_state = "hotsauce_franks"
 
+/obj/item/reagent_container/food/condiment/hotsauce/franks/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/reagent_container/food/condiment/hotsauce/sriracha
 	name = "\improper Sriracha bottle"
 	desc = "A bottle of Weyland-Yutani brand Sriracha hot sauce."
 	icon_state = "hotsauce_sriracha"
 	item_state = "hotsauce_sriracha"
 
+/obj/item/reagent_container/food/condiment/hotsauce/sriracha/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/reagent_container/food/condiment/hotsauce/tabasco
 	name = "\improper Tabasco bottle"
 	desc = "A bottle of Weyland-Yutani brand Tabasco hot sauce."
 	icon_state = "hotsauce_tabasco"
 	item_state = "hotsauce_tabasco"
+
+/obj/item/reagent_container/food/condiment/hotsauce/tabasco/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/reagent_container/food/condiment/hotsauce/franks/macho
 	name = "\improper Frank's ULTRA Hot bottle"
@@ -232,6 +263,7 @@
 	name = "Cole's Cold bottle"
 	desc = "A bottle of cold sauce locally produced in Shivas Snowball. You probably shouldn't drink this on its own."
 	icon_state = "coldsauce_cole"
+	static_container_icon = TRUE
 
 /obj/item/reagent_container/food/condiment/coldsauce/Initialize()
 	. = ..()

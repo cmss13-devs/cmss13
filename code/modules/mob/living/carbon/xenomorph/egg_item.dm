@@ -3,7 +3,12 @@
 	name = "egg"
 	desc = "Some sort of egg."
 	icon = 'icons/mob/xenos/effects.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/xeno_items_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/xeno_items_righthand.dmi',
+	)
 	icon_state = "egg_item"
+	item_state = "xeno_egg"
 	w_class = SIZE_MASSIVE
 	flags_atom = FPRINT|OPENCONTAINER
 	flags_item = NOBLUDGEON
@@ -12,6 +17,8 @@
 	black_market_value = 35
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/flags_embryo = NO_FLAGS
+	///The objects in this list will be skipped when checking for obstrucing objects.
+	var/static/list/object_whitelist = list(/obj/structure/machinery/light, /obj/structure/machinery/light_construct)
 
 /obj/item/xeno_egg/Initialize(mapload, hive)
 	pixel_x = rand(-3,3)
@@ -63,18 +70,18 @@
 			to_chat(user, SPAN_WARNING("Best not to plant this thing outside of a containment cell."))
 			return
 		for (var/obj/O in T)
-			if (!istype(O,/obj/structure/machinery/light/small))
+			if (!istype(O, /obj/structure/machinery/light))
 				to_chat(user, SPAN_WARNING("The floor needs to be clear to plant this!"))
 				return
 
-	user.visible_message(SPAN_NOTICE("[user] starts planting [src]."), \
+	user.visible_message(SPAN_NOTICE("[user] starts planting [src]."),
 					SPAN_NOTICE("You start planting [src]."), null, 5)
 	if(!do_after(user, 50, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
 
 	if(user.hivenumber != hivenumber)
 		for (var/obj/O in T)
-			if (!istype(O,/obj/structure/machinery/light/small))
+			if (!istype(O, /obj/structure/machinery/light))
 				return
 
 	var/obj/effect/alien/egg/newegg = new /obj/effect/alien/egg(T, hivenumber)
@@ -90,7 +97,7 @@
 	if(!user.hive)
 		to_chat(user, SPAN_XENOWARNING("Your hive cannot procreate."))
 		return
-	if(!user.check_alien_construction(T))
+	if(!user.check_alien_construction(T, ignore_nest = TRUE))
 		return
 	if(!user.check_plasma(30))
 		return
@@ -121,6 +128,8 @@
 		return
 
 	for(var/obj/object in T.contents)
+		if(is_type_in_list(object, object_whitelist))
+			continue
 		var/obj/effect/alien/egg/xeno_egg = /obj/effect/alien/egg
 		if(object.layer > initial(xeno_egg.layer))
 			to_chat(user, SPAN_XENOWARNING("[src] cannot be planted below objects that would obscure it."))
@@ -131,11 +140,12 @@
 	var/plant_time = 35
 	if(isdrone(user))
 		plant_time = 25
-	if(iscarrier(user))
+	else if(iscarrier(user))
 		plant_time = 10
+
 	if(!do_after(user, plant_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
-	if(!user.check_alien_construction(T))
+	if(!user.check_alien_construction(T, ignore_nest = TRUE))
 		return
 	if(!user.check_plasma(30))
 		return

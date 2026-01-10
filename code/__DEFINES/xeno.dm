@@ -8,8 +8,10 @@
 #define TUNNEL_ENTER_BIG_XENO_DELAY 120
 #define TUNNEL_ENTER_LARVA_DELAY 10
 
-/// The duration it takes a player controlled facehugger to leap or hug adjacently
-#define FACEHUGGER_WINDUP_DURATION 1 SECONDS
+/// The duration it takes a player controlled facehugger to leap
+#define FACEHUGGER_LEAP_DURATION 2 SECONDS
+/// The duration it takes a player controlled facehugger to hug a target lying down by clicking on it
+#define FACEHUGGER_CLIMB_DURATION 1 SECONDS
 
 // Defines for action types and click delays used by xenomorph/unarmedattack() and attack_alien().
 
@@ -57,6 +59,8 @@
 #define XENO_CORROSIVE_ACID 6 //Macro for covering things in acid, universal ability
 #define XENO_SCREECH 7 //Macro for queen screech
 #define XENO_TAIL_STAB 8 //macro for tail stabs
+#define XENO_BECOME_SEETHROUGH 9 // macro to become seethrough, only used by queen as of implementation
+
 
 #define NO_ACTION_CHARGES -1 // This ability does not have a limit to how many times it can be used
 
@@ -65,10 +69,6 @@
 /// Defines for Abomination ability /datum/action/xeno_action/activable/feralfrenzy
 #define SINGLETARGETGUT 0
 #define AOETARGETGUT 1
-
-#define WARDEN_HEAL_SHIELD 0
-#define WARDEN_HEAL_HP 1
-#define WARDEN_HEAL_DEBUFFS 2
 
 #define HUD_PAIN_STATES_XENO   4
 #define HUD_HEALTH_STATES_XENO 16
@@ -83,15 +83,14 @@
 
 #define IGNORE_BUILD_DISTANCE -1
 
-#define XENO_LEADER_HIVE_POS(X)   (X + 1)
-#define GET_XENO_LEADER_NUM(X)  (X.hive_pos - 1)
-#define IS_XENO_LEADER(X)    (X.hive_pos > 1)
+#define XENO_LEADER_HIVE_POS(X) (X + 1)
+#define GET_XENO_LEADER_NUM(X) (X.hive_pos - 1)
+#define IS_XENO_LEADER(X) (X.hive_pos >= XENO_LEADER)
+#define IS_NORMAL_XENO(X) (X.hive_pos == NORMAL_XENO)
 
 #define NORMAL_XENO  0
 #define XENO_QUEEN   1
 #define XENO_LEADER  2
-/// Nobody can create constructions. (Feral)
-#define XENO_NOBODY  3
 
 #define XENO_HIVE_AREA_SIZE 21 //The turf size from the centrepiece of a hive in which special things can be done (like building structures)
 
@@ -108,8 +107,37 @@
 
 #define XENO_STARTING_CRYSTAL 100 //How much building resource the queen gets to start with
 
-#define XENO_SLASH_ALLOWED 0
-#define XENO_SLASH_FORBIDDEN 1
+// Queen permission toggles
+#define COOLDOWN_TOGGLE_SLASH "cooldown_toggle_slash"
+#define COOLDOWN_TOGGLE_CONSTRUCTION "cooldown_toggle_construction"
+#define COOLDOWN_TOGGLE_DECONSTRUCTION "cooldown_toggle_deconstruction"
+#define COOLDOWN_TOGGLE_UNNESTING "cooldown_toggle_unnesting"
+
+/// Whether you can harm non-infected
+#define XENO_SLASH_NORMAL (1<<0)
+/// Whether you can harm infected
+#define XENO_SLASH_INFECTED (1<<1)
+/// Multi-flag to indicate all harming is allowed
+#define XENO_SLASH_ALLOW_ALL (XENO_SLASH_NORMAL|XENO_SLASH_INFECTED)
+/// Whether only drone castes can unnest hosts
+#define XENO_UNNESTING_RESTRICTED (1<<2)
+/// Whether normal xenos can make special structures
+#define XENO_CONSTRUCTION_NORMAL (1<<3)
+/// Whether leader xenos can make special structures
+#define XENO_CONSTRUCTION_LEADERS (1<<4)
+/// Whether queen can make special structures
+#define XENO_CONSTRUCTION_QUEEN (1<<5)
+/// Multi-flag to indicate all special structures construction is allowed
+#define XENO_CONSTRUCTION_ALLOW_ALL (XENO_CONSTRUCTION_QUEEN|XENO_CONSTRUCTION_LEADERS|XENO_CONSTRUCTION_NORMAL)
+/// Whether normal xenos can destroy special structures
+#define XENO_DECONSTRUCTION_NORMAL (1<<6)
+/// Whether leader xenos can destroy special structures
+#define XENO_DECONSTRUCTION_LEADERS (1<<7)
+/// Whether queen can destroy special structures
+#define XENO_DECONSTRUCTION_QUEEN (1<<8)
+/// Multi-flag to indicate all special structures deconstruction is allowed
+#define XENO_DECONSTRUCTION_ALLOW_ALL (XENO_DECONSTRUCTION_QUEEN|XENO_DECONSTRUCTION_LEADERS|XENO_DECONSTRUCTION_NORMAL)
+
 // Holds defines for /datum/caste_datum, which is the primary datum for the caste system,
 // /datum/hive_status (self explanatory)
 // and some of the var defines for the Xenomorph base type.
@@ -174,7 +202,7 @@
 /// The time when xenos can start taking over comm towers
 #define XENO_COMM_ACQUISITION_TIME (55 MINUTES)
 
-/// The time it takes for a pylon to give one larva while activated
+/// The time it takes for a pylon to give one royal resin while activated
 #define XENO_PYLON_ACTIVATION_COOLDOWN (5 MINUTES)
 
 /// The time until you can re-corrupt a comms relay after the last pylon was destroyed
@@ -199,10 +227,11 @@
 #define XENO_LEAVE_TIMER_LARVA 80 //80 seconds
 /// The time against away_timer when an AFK xeno (not larva) can be replaced
 #define XENO_LEAVE_TIMER 300 //300 seconds
-/// The time against away_timer when an AFK facehugger converts to a npc
-#define XENO_FACEHUGGER_LEAVE_TIMER 420 //420 seconds
 /// The time against away_timer when an AFK xeno gets listed in the available list so ghosts can get ready
-#define XENO_AVAILABLE_TIMER 60 //60 seconds
+#define XENO_AVAILABLE_TIMER 30 //30 seconds
+
+/// The damage that xeno health gets divided by for banish tick damage
+#define XENO_BANISHMENT_DMG_DIVISOR 23
 
 /// Between 2% to 10% of explosion severity
 #define WEED_EXPLOSION_DAMAGEMULT rand(2, 10)*0.01
@@ -255,6 +284,7 @@
 #define XENO_HEALTH_TIER_14 950 * XENO_UNIVERSAL_HPMULT
 #define XENO_HEALTH_QUEEN 1000 * XENO_UNIVERSAL_HPMULT
 #define XENO_HEALTH_IMMORTAL 1200 * XENO_UNIVERSAL_HPMULT
+#define XENO_HEALTH_KING 1500 * XENO_UNIVERSAL_HPMULT
 
 // Plasma bands
 #define XENO_NO_PLASMA 0
@@ -377,6 +407,7 @@
 
 // Hivelord strain flags
 #define HIVELORD_RESIN_WHISPERER "Resin Whisperer"
+#define HIVELORD_DESIGNER "Designer"
 
 // Carrier strain flags
 #define CARRIER_EGGSAC "Eggsac"
@@ -403,7 +434,7 @@
 // Praetorian strain flags
 #define PRAETORIAN_VANGUARD "Vanguard"
 #define PRAETORIAN_DANCER "Dancer"
-#define PRAETORIAN_WARDEN "Warden"
+#define PRAETORIAN_VALKYRIE "Valkyrie"
 #define PRAETORIAN_OPPRESSOR "Oppressor"
 
 /////////////////////////////////////////////////////////////////////////////////////
@@ -434,6 +465,7 @@
 // Armor mods. Use the above defines for some guidance
 // In general, +20 armor should be a little more than +20% effective HP, however,
 // the higher the Xeno's base armor, the greater the effect.
+#define XENO_ARMOR_MOD_TINY  2.5
 #define XENO_ARMOR_MOD_VERY_SMALL  5
 #define XENO_ARMOR_MOD_SMALL   10
 #define XENO_ARMOR_MOD_MED 15
@@ -636,6 +668,7 @@
 #define XENO_STRUCTURE_PYLON "hive pylon"
 #define XENO_STRUCTURE_EGGMORPH  "egg morpher"
 #define XENO_STRUCTURE_RECOVERY  "recovery node"
+#define XENO_STRUCTURE_PLASMA_TREE "plasma tree"
 #define XENO_STRUCTURE_NEST  "thick resin nest"
 
 #define RESIN_TRAP_EMPTY 0
@@ -665,9 +698,10 @@
 #define XENO_SHIELD_SOURCE_GARDENER 8
 #define XENO_SHIELD_SOURCE_SHIELD_PILLAR 9
 #define XENO_SHIELD_SOURCE_CUMULATIVE_GENERIC 10
+#define XENO_SHIELD_SOURCE_KING_BULWARKSPELL 11
 
 //XENO CASTES
-#define XENO_CASTE_LARVA  "Bloody Larva"
+#define XENO_CASTE_LARVA  "Larva"
 #define XENO_CASTE_PREDALIEN_LARVA   "Predalien Larva"
 #define XENO_CASTE_FACEHUGGER "Facehugger"
 #define XENO_CASTE_LESSER_DRONE "Lesser Drone"
@@ -692,14 +726,22 @@
 #define XENO_CASTE_PRAETORIAN "Praetorian"
 #define XENO_CASTE_CRUSHER    "Crusher"
 #define XENO_CASTE_RAVAGER    "Ravager"
-#define XENO_T3_CASTES    list(XENO_CASTE_BOILER, XENO_CASTE_PRAETORIAN, XENO_CASTE_CRUSHER, XENO_CASTE_RAVAGER)
-//special
+#define XENO_CASTE_DESPOILER "Despoiler"
+#define XENO_T3_CASTES    list(XENO_CASTE_BOILER, XENO_CASTE_PRAETORIAN, XENO_CASTE_CRUSHER, XENO_CASTE_RAVAGER, XENO_CASTE_DESPOILER)
+
+//Tier 4
+#define XENO_CASTE_KING "King"
 #define XENO_CASTE_QUEEN  "Queen"
+
+//special
 #define XENO_CASTE_PREDALIEN  "Predalien"
 #define XENO_CASTE_HELLHOUND  "Hellhound"
 #define XENO_SPECIAL_CASTES   list(XENO_CASTE_QUEEN, XENO_CASTE_PREDALIEN, XENO_CASTE_HELLHOUND)
 
-#define ALL_XENO_CASTES list(XENO_CASTE_LARVA, XENO_CASTE_PREDALIEN_LARVA, XENO_CASTE_FACEHUGGER, XENO_CASTE_LESSER_DRONE, XENO_CASTE_DRONE, XENO_CASTE_RUNNER, XENO_CASTE_SENTINEL, XENO_CASTE_DEFENDER, XENO_CASTE_BURROWER, XENO_CASTE_CARRIER, XENO_CASTE_HIVELORD, XENO_CASTE_LURKER, XENO_CASTE_WARRIOR, XENO_CASTE_SPITTER, XENO_CASTE_BOILER, XENO_CASTE_PRAETORIAN, XENO_CASTE_CRUSHER, XENO_CASTE_RAVAGER, XENO_CASTE_QUEEN, XENO_CASTE_PREDALIEN, XENO_CASTE_HELLHOUND)
+//caste list
+#define XENO_CONSTRUCT_NODE_BOOST list(XENO_CASTE_HIVELORD, XENO_CASTE_BURROWER, XENO_CASTE_CARRIER, XENO_CASTE_QUEEN)
+
+#define ALL_XENO_CASTES list(XENO_CASTE_LARVA, XENO_CASTE_PREDALIEN_LARVA, XENO_CASTE_FACEHUGGER, XENO_CASTE_LESSER_DRONE, XENO_CASTE_DRONE, XENO_CASTE_RUNNER, XENO_CASTE_SENTINEL, XENO_CASTE_DEFENDER, XENO_CASTE_BURROWER, XENO_CASTE_CARRIER, XENO_CASTE_HIVELORD, XENO_CASTE_LURKER, XENO_CASTE_WARRIOR, XENO_CASTE_SPITTER, XENO_CASTE_BOILER, XENO_CASTE_DESPOILER, XENO_CASTE_PRAETORIAN, XENO_CASTE_CRUSHER, XENO_CASTE_RAVAGER, XENO_CASTE_QUEEN, XENO_CASTE_PREDALIEN, XENO_CASTE_HELLHOUND, XENO_CASTE_KING)
 
 // Checks if two hives are allied to each other.
 // PARAMETERS:
@@ -710,10 +752,12 @@
 #define QUEEN_SPAWN_TIMEOUT (1 MINUTES)
 
 #define FIRE_IMMUNITY_NONE				0
-#define FIRE_IMMUNITY_NO_DAMAGE			(1<<0)
-#define FIRE_IMMUNITY_NO_IGNITE			(1<<1)
-#define FIRE_IMMUNITY_XENO_FRENZY		(1<<2)
-#define FIRE_VULNERABILITY				(1<<3)
+#define FIRE_IMMUNITY_NO_DAMAGE			(1<<0) // Will not take damage from fire, but can be set on fire
+#define FIRE_IMMUNITY_NO_IGNITE			(1<<1) // Cannot be set on fire, but will take damage
+#define FIRE_IMMUNITY_COMPLETE			(1<<2) // Cannot be set on fire and will not take damage from fire
+#define FIRE_IMMUNITY_BURROWER			(1<<3) // Bespoke variant for Burrower so we don't need to constantly add and remove signals
+#define FIRE_IMMUNITY_XENO_FRENZY		(1<<4) // Will have COMPONENT_XENO_FRENZY added
+#define FIRE_MODIFIER					(1<<5) // Indicates vulnerability/resistance rather than immunity
 
 #define FIRE_MULTIPLIER_BASE	 	1
 #define FIRE_MULTIPLIER_LOW		 	1.25
@@ -722,6 +766,7 @@
 #define FIRE_MULTIPLIER_EXTREME	 	2
 #define FIRE_MULTIPLIER_DEADLY		3
 
+#define WHISPERER_VIEWRANGE 10
 #define TRAPPER_VIEWRANGE 13
 
 #define SECRETE_RESIN_INTERRUPT -1
@@ -734,6 +779,7 @@
 
 #define XENO_VISION_LEVEL_NO_NVG "No Night Vision"
 #define XENO_VISION_LEVEL_MID_NVG "Half Night Vision"
+#define XENO_VISION_LEVEL_HIGH_NVG "Three Quarters Night Vision"
 #define XENO_VISION_LEVEL_FULL_NVG "Full Night Vision"
 
 
@@ -765,4 +811,9 @@
 #define FRENZY_DAMAGE_MULTIPLIER 2
 
 #define JOIN_AS_FACEHUGGER_DELAY (3 MINUTES)
-#define JOIN_AS_LESSER_DRONE_DELAY (30 SECONDS)
+#define JOIN_AS_LESSER_DRONE_DELAY (1 MINUTES)
+
+// larva states
+#define LARVA_STATE_BLOODY 0
+#define LARVA_STATE_NORMAL 1
+#define LARVA_STATE_MATURE 2

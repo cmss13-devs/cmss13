@@ -2,7 +2,7 @@
 	name = "FORECON (Squad)"
 	arrival_message = "A Force Reconnaissance squad has been dispatched to your ship. Stand by."
 	objectives = "Handle whatever threat is present. Further orders may be provided."
-	home_base = /datum/lazy_template/ert/weyland_station
+	home_base = /datum/lazy_template/ert/uscm_station
 	probability = 0
 	mob_min = 3
 	mob_max = 6

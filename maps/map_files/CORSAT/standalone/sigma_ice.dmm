@@ -465,11 +465,6 @@
 	},
 /turf/open/auto_turf/snow/layer3,
 /area/corsat/sigma/biodome/ice)
-"kt" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/ice,
-/area/corsat/sigma/biodome/ice)
 "kv" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor/asteroidfloor/north,
@@ -1199,7 +1194,7 @@
 /obj/structure/window/reinforced/toughened{
 	dir = 1
 	},
-/obj/item/weapon/gun/flamer/M240T,
+/obj/item/weapon/gun/flamer/m240/spec,
 /turf/open/floor/asteroidplating,
 /area/corsat/sigma/biodome/gunrange)
 "Bv" = (
@@ -1431,7 +1426,7 @@
 /obj/structure/machinery/door/window/westright{
 	name = "Weapon Rack"
 	},
-/obj/item/ammo_magazine/flamer_tank,
+/obj/item/ammo_magazine/flamer_tank/survivor,
 /turf/open/floor/asteroidplating,
 /area/corsat/sigma/biodome/gunrange)
 "Gf" = (
@@ -1454,11 +1449,7 @@
 /turf/open/floor/asteroidplating,
 /area/corsat/sigma/biodome/gunrange)
 "GJ" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/upgraded/no_power/west,
 /obj/structure/closet/wardrobe/atmospherics_yellow,
 /turf/open/floor/corsat/yellow/west,
 /area/corsat/sigma/airlock/control)
@@ -3987,8 +3978,8 @@ vU
 Sl
 Sl
 Sl
-kt
-kt
+Sl
+Sl
 kI
 Sl
 Sl

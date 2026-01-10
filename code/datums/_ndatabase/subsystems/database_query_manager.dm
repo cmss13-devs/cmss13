@@ -176,7 +176,8 @@ GLOBAL_REAL(SSdatabase, /datum/controller/subsystem/database_query_manager)
 	var/list/Lines = file2list(filename)
 	var/list/result = list()
 	for(var/t in Lines)
-		if(!t) continue
+		if(!t)
+			continue
 
 		t = trim(t)
 		if(length(t) == 0)

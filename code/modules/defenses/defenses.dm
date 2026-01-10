@@ -50,7 +50,12 @@
 	connect()
 
 /obj/structure/machinery/defenses/Destroy()
-	if(!QDESTROYING(HD))
+	owner_mob = null
+	HD = null // FIXME: Might also need to delete. Unsure.
+	if(linked_laptop)
+		linked_laptop.unpair_sentry(src)
+		linked_laptop = null
+	if(!QDELETED(HD))
 		QDEL_NULL(HD)
 	return ..()
 
@@ -185,7 +190,7 @@
 				additional_shock++
 			if(prob(50))
 				var/mob/living/carbon/human/H = user
-				if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+				if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_NOVICE))
 					if(turned_on)
 						additional_shock++
 					H.electrocute_act(40, src, additional_shock)//god damn Hans...
@@ -204,7 +209,7 @@
 			to_chat(user, SPAN_WARNING("You've hacked \the [src], it's now ours!"))
 			return
 
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_NOVICE))
 			to_chat(user, SPAN_WARNING("You don't have the training to do this."))
 			return
 		// if the sentry can have key interacted with
@@ -309,6 +314,10 @@
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 			return
 		else
+			var/area/area = get_area(src)
+			if(!area.allow_construction)
+				to_chat(user, SPAN_WARNING("You cannot secure \the [src] here, find a more secure surface!"))
+				return
 			var/turf/open/floor = get_turf(src)
 			if(!floor.allow_construction)
 				to_chat(user, SPAN_WARNING("You cannot secure \the [src] here, find a more secure surface!"))
@@ -368,7 +377,7 @@
 		to_chat(user, SPAN_WARNING("It must be anchored to the ground before you can activate it."))
 		return
 
-	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 		if(locked)
 			to_chat(user, SPAN_WARNING("The control panel on [src] is locked to non-engineers."))
 			return
@@ -378,7 +387,7 @@
 
 	if(!turned_on)
 		if(!can_be_near_defense)
-			for(var/obj/structure/machinery/defenses/def in urange(defense_check_range, loc))
+			for(var/obj/structure/machinery/defenses/def in long_range(defense_check_range, loc))
 				if(def != src && def.turned_on && !def.can_be_near_defense)
 					to_chat(user, SPAN_WARNING("This is too close to \a [def]!"))
 					return
@@ -470,15 +479,6 @@
 /obj/structure/machinery/defenses/power_change()
 	return
 
-/obj/structure/machinery/defenses/Destroy()
-	if(owner_mob)
-		owner_mob = null
-	HD = null // FIXME: Might also need to delete. Unsure.
-	if(linked_laptop)
-		linked_laptop.unpair_sentry(src)
-		linked_laptop = null
-	. = ..()
-
 /obj/structure/machinery/defenses/verb/toggle_turret_locks_verb()
 	set name = "Toggle Turret Lock"
 	set desc = "Toggles allowing non-engineers to turn turrets on and off"
@@ -490,7 +490,7 @@
 		return
 	if(!friendly_faction(usr.faction))
 		return
-	if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+	if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 		to_chat(usr, SPAN_WARNING("You don't have the training to do this."))
 		return
 

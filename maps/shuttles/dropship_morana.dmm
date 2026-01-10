@@ -1,0 +1,851 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ah" = (
+/obj/structure/shuttle/part/dropshipupp/transparent/nose_center,
+/turf/template_noop,
+/area/shuttle/drop_upp/morana)
+"am" = (
+/obj/structure/stairs,
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop_upp/morana)
+"ax" = (
+/turf/open/shuttle/dropship/light_grey_bottom_right,
+/area/shuttle/drop_upp/morana)
+"aL" = (
+/obj/item/device/radio/intercom/morana{
+	pixel_y = 26
+	},
+/turf/open/shuttle/dropship/light_grey_top_left,
+/area/shuttle/drop_upp/morana)
+"bd" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/machinery/computer/shuttle/dropship/flight/upp{
+	req_one_access = list(235, 240)
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop_upp/morana)
+"bg" = (
+/turf/open/shuttle/dropship/light_grey_top_left,
+/area/shuttle/drop_upp/morana)
+"bv" = (
+/obj/structure/shuttle/part/dropshipupp/transparent/upper_left_wing{
+	icon_state = "upp_wing_top_left"
+	},
+/turf/template_noop,
+/area/shuttle/drop_upp/morana)
+"bI" = (
+/obj/structure/machinery/door_control{
+	name = "Dropship Lockdown";
+	pixel_y = -19;
+	id = "dropship_morana";
+	throw_range = 15;
+	normaldoorcontrol = 3;
+	req_one_access_txt = "235;240"
+	},
+/turf/open/shuttle/dropship/light_grey_left_to_right,
+/area/shuttle/drop_upp/morana)
+"bM" = (
+/obj/structure/shuttle/part/dropshipupp/transparent/outer_left_weapons,
+/obj/effect/attach_point/weapon/dropship_upp/left_fore,
+/turf/template_noop,
+/area/shuttle/drop_upp/morana)
+"bR" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
+	},
+/obj/structure/sign/flag/upp{
+	dir = 8;
+	pixel_y = 28
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop_upp/morana)
+"bS" = (
+/obj/structure/blocker/invisible_wall,
+/turf/closed/shuttle/upp_dropship/transparent{
+	icon_state = "93b"
+	},
+/area/shuttle/drop_upp/morana)
+"bZ" = (
+/turf/open/shuttle/dropship/light_grey_left_to_right,
+/area/shuttle/drop_upp/morana)
+"cw" = (
+/obj/structure/shuttle/part/dropshipupp/transparent/upper_right_wing{
+	icon_state = "upp_wing_top_right"
+	},
+/turf/template_noop,
+/area/shuttle/drop_upp/morana)
+"cC" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/upp{
+	id = "aft_door"
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop_upp/morana)
+"dd" = (
+/turf/closed/shuttle/upp_dropship{
+	icon_state = "67"
+	},
+/area/shuttle/drop_upp/morana)
+"dx" = (
+/turf/closed/shuttle/upp_dropship{
+	icon_state = "73"
+	},
+/area/shuttle/drop_upp/morana)
+"dT" = (
+/obj/structure/shuttle/part/dropshipupp/transparent/right_inner_bottom_wing{
+	icon_state = "tail_5"
+	},
+/turf/template_noop,
+/area/shuttle/drop_upp/morana)
+"ex" = (
+/turf/closed/shuttle/upp_dropship{
+	icon_state = "30"
+	},
+/area/shuttle/drop_upp/morana)
+"fu" = (
+/turf/open/shuttle/dropship/light_grey_top_right,
+/area/shuttle/drop_upp/morana)
+"fD" = (
+/turf/closed/shuttle/upp_dropship/transparent{
+	icon_state = "78"
+	},
+/area/shuttle/drop_upp/morana)
+"fJ" = (
+/obj/structure/shuttle/part/dropshipupp/nose_front_left,
+/turf/template_noop,
+/area/shuttle/drop_upp/morana)
+"fO" = (
+/obj/structure/shuttle/part/dropshipupp/transparent/nose_top_left,
+/turf/template_noop,
+/area/shuttle/drop_upp/morana)
+"gH" = (
+/obj/structure/shuttle/part/dropshipupp/nose_front_right,
+/turf/template_noop,
+/area/shuttle/drop_upp/morana)
+"gQ" = (
+/obj/structure/shuttle/part/dropshipupp/left_inner_wing_connector,
+/obj/structure/machinery/light/dropship/blue{
+	dir = 4
+	},
+/turf/template_noop,
+/area/shuttle/drop_upp/morana)
+"hI" = (
+/obj/docking_port/mobile/marine_dropship/morana,
+/turf/closed/shuttle/upp_dropship{
+	icon_state = "68"
+	},
+/area/shuttle/drop_upp/morana)
+"hN" = (
+/obj/structure/shuttle/part/dropshipupp/transparent/inner_left_weapons,
+/obj/effect/attach_point/electronics/dropship_upp,
+/turf/template_noop,
+/area/shuttle/drop_upp/morana)
+"hP" = (
+/obj/item/device/radio/intercom/morana{
+	pixel_y = 50;
+	pixel_x = 32
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop_upp/morana)
+"is" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
+	},
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_x = 30
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop_upp/morana)
+"jp" = (
+/turf/closed/shuttle/upp_dropship{
+	icon_state = "92"
+	},
+/area/shuttle/drop_upp/morana)
+"jO" = (
+/turf/closed/shuttle/upp_dropship{
+	icon_state = "25"
+	},
+/area/shuttle/drop_upp/morana)
+"kE" = (
+/turf/closed/shuttle/upp_dropship/transparent{
+	icon_state = "23"
+	},
+/area/shuttle/drop_upp/morana)
+"kV" = (
+/turf/closed/shuttle/upp_dropship{
+	icon_state = "48"
+	},
+/area/shuttle/drop_upp/morana)
+"mk" = (
+/turf/closed/shuttle/upp_dropship/transparent{
+	icon_state = "96"
+	},
+/area/shuttle/drop_upp/morana)
+"mz" = (
+/turf/closed/shuttle/upp_dropship{
+	icon_state = "69"
+	},
+/area/shuttle/drop_upp/morana)
+"mG" = (
+/obj/structure/shuttle/part/dropshipupp/transparent/right_outer_bottom_wing{
+	icon_state = "tail_6"
+	},
+/turf/template_noop,
+/area/shuttle/drop_upp/morana)
+"nk" = (
+/obj/structure/shuttle/part/dropshipupp/lower_right_wall,
+/turf/template_noop,
+/area/shuttle/drop_upp/morana)
+"nW" = (
+/turf/closed/shuttle/upp_dropship/transparent{
+	icon_state = "21"
+	},
+/area/shuttle/drop_upp/morana)
+"ow" = (
+/obj/structure/machinery/light/dropship/green{
+	dir = 4
+	},
+/obj/structure/shuttle/part/dropshipupp/transparent/middle_right_wing{
+	icon_state = "wing_right_red"
+	},
+/turf/template_noop,
+/area/shuttle/drop_upp/morana)
+"oJ" = (
+/obj/structure/shuttle/part/dropshipupp/transparent/inner_right_weapons,
+/obj/effect/attach_point/electronics/dropship_upp,
+/turf/template_noop,
+/area/shuttle/drop_upp/morana)
+"oX" = (
+/turf/closed/shuttle/upp_dropship/transparent{
+	icon_state = "39"
+	},
+/area/shuttle/drop_upp/morana)
+"po" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop_upp/morana)
+"pK" = (
+/turf/closed/shuttle/upp_dropship/transparent{
+	icon_state = "27"
+	},
+/area/shuttle/drop_upp/morana)
+"qj" = (
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop_upp/morana)
+"re" = (
+/turf/closed/shuttle/upp_dropship{
+	icon_state = "64"
+	},
+/area/shuttle/drop_upp/morana)
+"rh" = (
+/obj/structure/shuttle/part/dropshipupp/transparent/outer_right_weapons,
+/obj/effect/attach_point/weapon/dropship_upp/right_fore,
+/turf/template_noop,
+/area/shuttle/drop_upp/morana)
+"rt" = (
+/turf/closed/shuttle/upp_dropship{
+	icon_state = "31"
+	},
+/area/shuttle/drop_upp/morana)
+"sf" = (
+/turf/closed/shuttle/upp_dropship/transparent{
+	icon_state = "26"
+	},
+/area/shuttle/drop_upp/morana)
+"tD" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
+	},
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_x = -30
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop_upp/morana)
+"tK" = (
+/turf/closed/shuttle/upp_dropship{
+	icon_state = "19"
+	},
+/area/shuttle/drop_upp/morana)
+"va" = (
+/turf/closed/shuttle/upp_dropship/transparent{
+	icon_state = "97"
+	},
+/area/shuttle/drop_upp/morana)
+"vM" = (
+/turf/closed/shuttle/upp_dropship/transparent{
+	icon_state = "89"
+	},
+/area/shuttle/drop_upp/morana)
+"wV" = (
+/obj/item/device/radio/intercom/morana{
+	pixel_y = 26
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop_upp/morana)
+"xd" = (
+/turf/closed/shuttle/upp_dropship{
+	icon_state = "63"
+	},
+/area/shuttle/drop_upp/morana)
+"xm" = (
+/turf/closed/shuttle/upp_dropship/transparent{
+	icon_state = "32"
+	},
+/area/shuttle/drop_upp/morana)
+"xT" = (
+/turf/open/shuttle/dropship/light_grey_single_wide_up_to_down,
+/area/shuttle/drop_upp/morana)
+"yf" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/dropshipside/upp{
+	dir = 2;
+	id = "port_door"
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop_upp/morana)
+"yk" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/dropshipside/upp{
+	id = "starboard_door";
+	dir = 1
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop_upp/morana)
+"yJ" = (
+/obj/structure/shuttle/part/dropshipupp/lower_left_wall,
+/turf/template_noop,
+/area/shuttle/drop_upp/morana)
+"yQ" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/machinery/door/airlock/hatch/cockpit/upp{
+	req_access = null;
+	req_one_access = list(235, 240)
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop_upp/morana)
+"yU" = (
+/turf/closed/shuttle/upp_dropship{
+	icon_state = "47"
+	},
+/area/shuttle/drop_upp/morana)
+"zk" = (
+/turf/closed/shuttle/upp_dropship{
+	icon_state = "10"
+	},
+/area/shuttle/drop_upp/morana)
+"zq" = (
+/turf/closed/shuttle/upp_dropship{
+	icon_state = "68";
+	dir = 1
+	},
+/area/shuttle/drop_upp/morana)
+"zJ" = (
+/turf/closed/shuttle/upp_dropship{
+	icon_state = "81"
+	},
+/area/shuttle/drop_upp/morana)
+"zS" = (
+/obj/structure/shuttle/part/dropshipupp/transparent/nose_top_right,
+/turf/template_noop,
+/area/shuttle/drop_upp/morana)
+"Dj" = (
+/turf/closed/shuttle/upp_dropship{
+	icon_state = "72"
+	},
+/area/shuttle/drop_upp/morana)
+"DW" = (
+/turf/open/shuttle/dropship/light_grey_bottom_left,
+/area/shuttle/drop_upp/morana)
+"Ei" = (
+/turf/closed/shuttle/upp_dropship/transparent{
+	icon_state = "34"
+	},
+/area/shuttle/drop_upp/morana)
+"EC" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/shuttle/dropship/light_grey_single_wide_up_to_down,
+/area/shuttle/drop_upp/morana)
+"EN" = (
+/obj/structure/shuttle/part/dropshipupp/transparent/engine_left_cap,
+/turf/template_noop,
+/area/shuttle/drop_upp/morana)
+"FI" = (
+/obj/structure/platform/metal/strata/north,
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop_upp/morana)
+"FO" = (
+/obj/effect/attach_point/fuel/dropship_upp{
+	dir = 1
+	},
+/turf/closed/shuttle/upp_dropship/transparent{
+	icon_state = "28"
+	},
+/area/shuttle/drop_upp/morana)
+"FS" = (
+/turf/closed/shuttle/upp_dropship/transparent{
+	icon_state = "86"
+	},
+/area/shuttle/drop_upp/morana)
+"Gx" = (
+/obj/effect/attach_point/crew_weapon/dropship_upp,
+/obj/item/device/radio/intercom/morana{
+	pixel_y = 26
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop_upp/morana)
+"GJ" = (
+/obj/item/device/radio/intercom/morana{
+	pixel_x = -10
+	},
+/turf/closed/shuttle/upp_dropship{
+	icon_state = "18"
+	},
+/area/shuttle/drop_upp/morana)
+"Hp" = (
+/obj/structure/barricade/handrail/strata,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop_upp/morana)
+"HE" = (
+/turf/closed/shuttle/upp_dropship{
+	icon_state = "83"
+	},
+/area/shuttle/drop_upp/morana)
+"HX" = (
+/turf/closed/shuttle/upp_dropship/transparent{
+	icon_state = "22"
+	},
+/area/shuttle/drop_upp/morana)
+"Iy" = (
+/obj/structure/machinery/light/dropship/red{
+	dir = 8
+	},
+/obj/structure/shuttle/part/dropshipupp/transparent/middle_left_wing{
+	icon_state = "wing_left_red"
+	},
+/turf/template_noop,
+/area/shuttle/drop_upp/morana)
+"IM" = (
+/obj/structure/shuttle/part/dropshipupp/transparent/left_outer_inner_wing{
+	icon_state = "tail_2"
+	},
+/turf/template_noop,
+/area/shuttle/drop_upp/morana)
+"JB" = (
+/turf/closed/shuttle/upp_dropship/transparent{
+	icon_state = "98"
+	},
+/area/shuttle/drop_upp/morana)
+"JO" = (
+/turf/closed/shuttle/upp_dropship{
+	icon_state = "68"
+	},
+/area/shuttle/drop_upp/morana)
+"Kc" = (
+/obj/structure/shuttle/part/dropshipupp/transparent/lower_left_wing{
+	icon_state = "upp_wing_eng_left"
+	},
+/obj/effect/attach_point/weapon/dropship_upp/left_wing,
+/turf/template_noop,
+/area/shuttle/drop_upp/morana)
+"Kl" = (
+/obj/effect/attach_point/crew_weapon/dropship_upp,
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop_upp/morana)
+"Ky" = (
+/turf/closed/shuttle/upp_dropship{
+	icon_state = "76"
+	},
+/area/shuttle/drop_upp/morana)
+"KQ" = (
+/obj/structure/blocker/invisible_wall,
+/turf/closed/shuttle/upp_dropship/transparent{
+	icon_state = "93a"
+	},
+/area/shuttle/drop_upp/morana)
+"KW" = (
+/obj/structure/shuttle/part/dropshipupp/transparent/engine_right_cap,
+/turf/template_noop,
+/area/shuttle/drop_upp/morana)
+"Lb" = (
+/turf/closed/shuttle/upp_dropship{
+	icon_state = "18"
+	},
+/area/shuttle/drop_upp/morana)
+"Nd" = (
+/turf/closed/shuttle/upp_dropship{
+	icon_state = "24"
+	},
+/area/shuttle/drop_upp/morana)
+"Nv" = (
+/obj/item/device/radio/intercom/morana{
+	pixel_x = 10
+	},
+/turf/closed/shuttle/upp_dropship{
+	icon_state = "19"
+	},
+/area/shuttle/drop_upp/morana)
+"Op" = (
+/obj/item/device/radio/intercom/morana{
+	pixel_y = 26
+	},
+/turf/open/shuttle/dropship/light_grey_top_right,
+/area/shuttle/drop_upp/morana)
+"Or" = (
+/obj/effect/attach_point/fuel/dropship_upp{
+	dir = 1;
+	pixel_x = -32
+	},
+/turf/closed/shuttle/upp_dropship/transparent{
+	icon_state = "33"
+	},
+/area/shuttle/drop_upp/morana)
+"Pc" = (
+/obj/structure/bed/chair/dropship/pilot{
+	dir = 1
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop_upp/morana)
+"Qn" = (
+/turf/closed/shuttle/upp_dropship{
+	icon_state = "77"
+	},
+/area/shuttle/drop_upp/morana)
+"RW" = (
+/obj/structure/shuttle/part/dropshipupp/right_outer_wing_connector{
+	icon_state = "tail_4"
+	},
+/turf/template_noop,
+/area/shuttle/drop_upp/morana)
+"RX" = (
+/turf/closed/shuttle/upp_dropship/transparent{
+	icon_state = "35"
+	},
+/area/shuttle/drop_upp/morana)
+"Ti" = (
+/turf/closed/shuttle/upp_dropship{
+	icon_state = "94"
+	},
+/area/shuttle/drop_upp/morana)
+"TT" = (
+/obj/structure/shuttle/part/dropshipupp/transparent/upper_left_wing{
+	icon_state = "tail_1"
+	},
+/turf/template_noop,
+/area/shuttle/drop_upp/morana)
+"Vk" = (
+/turf/closed/shuttle/upp_dropship/transparent{
+	icon_state = "20"
+	},
+/area/shuttle/drop_upp/morana)
+"VN" = (
+/turf/template_noop,
+/area/space)
+"VO" = (
+/turf/closed/shuttle/upp_dropship/transparent{
+	icon_state = "29"
+	},
+/area/shuttle/drop_upp/morana)
+"Wc" = (
+/obj/structure/shuttle/part/dropshipupp/left_outer_wing_connector{
+	icon_state = "tail_3"
+	},
+/turf/template_noop,
+/area/shuttle/drop_upp/morana)
+"Xl" = (
+/turf/closed/shuttle/upp_dropship/transparent{
+	icon_state = "38"
+	},
+/area/shuttle/drop_upp/morana)
+"XZ" = (
+/obj/structure/shuttle/part/dropshipupp/right_inner_wing_connector,
+/obj/structure/machinery/light/dropship/blue{
+	dir = 8
+	},
+/turf/template_noop,
+/area/shuttle/drop_upp/morana)
+"Yi" = (
+/obj/structure/shuttle/part/dropshipupp/transparent/lower_right_wing{
+	icon_state = "upp_wing_eng_right"
+	},
+/obj/effect/attach_point/weapon/dropship_upp/right_wing,
+/turf/template_noop,
+/area/shuttle/drop_upp/morana)
+"YV" = (
+/turf/closed/shuttle/upp_dropship{
+	icon_state = "75"
+	},
+/area/shuttle/drop_upp/morana)
+"ZX" = (
+/turf/closed/shuttle/upp_dropship{
+	icon_state = "62"
+	},
+/area/shuttle/drop_upp/morana)
+
+(1,1,1) = {"
+VN
+VN
+VN
+VN
+VN
+bv
+Iy
+Kc
+VN
+VN
+VN
+VN
+VN
+EN
+Ei
+FO
+HX
+Vk
+VN
+VN
+VN
+"}
+(2,1,1) = {"
+VN
+VN
+VN
+bM
+YV
+Dj
+dd
+ZX
+qj
+yf
+GJ
+Lb
+yJ
+KW
+RX
+VO
+kE
+nW
+VN
+VN
+TT
+"}
+(3,1,1) = {"
+VN
+VN
+VN
+hN
+Ky
+bR
+po
+po
+qj
+qj
+po
+po
+yU
+Lb
+Lb
+ex
+Nd
+Lb
+yJ
+VN
+IM
+"}
+(4,1,1) = {"
+fO
+fJ
+jp
+FS
+zJ
+aL
+xT
+xT
+xT
+xT
+xT
+DW
+Hp
+FI
+po
+tD
+po
+po
+zk
+gQ
+Wc
+"}
+(5,1,1) = {"
+ah
+mk
+KQ
+Pc
+fD
+bZ
+po
+po
+po
+bZ
+po
+fu
+EC
+am
+xT
+xT
+xT
+xT
+cC
+VN
+VN
+"}
+(6,1,1) = {"
+ah
+va
+bd
+hP
+yQ
+bI
+JO
+zq
+Gx
+bZ
+hI
+xd
+xd
+zq
+wV
+Kl
+qj
+Kl
+qj
+VN
+VN
+"}
+(7,1,1) = {"
+ah
+JB
+bS
+Pc
+fD
+bZ
+po
+po
+po
+bZ
+po
+bg
+EC
+am
+xT
+xT
+xT
+xT
+qj
+VN
+VN
+"}
+(8,1,1) = {"
+zS
+gH
+Ti
+vM
+Qn
+Op
+xT
+xT
+xT
+xT
+xT
+ax
+Hp
+FI
+po
+is
+po
+po
+zk
+XZ
+RW
+"}
+(9,1,1) = {"
+VN
+VN
+VN
+oJ
+Ky
+bR
+po
+po
+qj
+qj
+po
+po
+kV
+tK
+tK
+rt
+jO
+tK
+nk
+VN
+dT
+"}
+(10,1,1) = {"
+VN
+VN
+VN
+rh
+HE
+dx
+mz
+re
+qj
+yk
+Nv
+tK
+nk
+EN
+Xl
+xm
+sf
+Vk
+VN
+VN
+mG
+"}
+(11,1,1) = {"
+VN
+VN
+VN
+VN
+VN
+cw
+ow
+Yi
+VN
+VN
+VN
+VN
+VN
+KW
+oX
+Or
+pK
+nW
+VN
+VN
+VN
+"}

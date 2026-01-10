@@ -150,6 +150,7 @@
  */
 /obj/item/device/sentry_computer/proc/send_message(message)
 	if(!silent && transceiver)
+		message = strip_improper(message)
 		transceiver.talk_into(voice, "[message]", RADIO_CHANNEL_SENTRY)
 		voice.say(message)
 
@@ -308,7 +309,7 @@
 	. = ..()
 	if(!on)
 		return UI_CLOSE
-	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 		return UI_UPDATE
 
 
@@ -383,7 +384,7 @@
 	. = ..()
 	if(.)
 		return
-	if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+	if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 		to_chat(usr, SPAN_WARNING("You are not authorised to configure the sentry."))
 		return
 	if(params["index"])

@@ -2,7 +2,6 @@
 /datum/action/xeno_action/activable/fling
 	name = "Fling"
 	action_icon_state = "fling"
-	ability_name = "Fling"
 	macro_path = /datum/action/xeno_action/verb/verb_fling
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
@@ -18,7 +17,6 @@
 /datum/action/xeno_action/activable/lunge
 	name = "Lunge"
 	action_icon_state = "lunge"
-	ability_name = "lunge"
 	macro_path = /datum/action/xeno_action/verb/verb_lunge
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
@@ -32,7 +30,6 @@
 /datum/action/xeno_action/activable/warrior_punch
 	name = "Punch"
 	action_icon_state = "punch"
-	ability_name = "punch"
 	macro_path = /datum/action/xeno_action/verb/verb_punch
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1

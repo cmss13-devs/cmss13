@@ -20,7 +20,7 @@
 	desc = "A monitor depicting the ship's current status. It flickers every so often."
 	anchored = TRUE
 	density = FALSE
-	use_power = FALSE
+	use_power = USE_POWER_NONE
 	idle_power_usage = 10
 	var/mode = 0 // 0 = Blank
 					// 1 = Shuttle timer
@@ -80,9 +80,11 @@
 			message1 = "EVAC"
 			message2 = SShijack.get_evac_eta()
 			if(message2)
-				if(length(message2) > CHARS_PER_LINE) message2 = "Error"
+				if(length(message2) > CHARS_PER_LINE)
+					message2 = "Error"
 				update_display(message1, message2)
-			else remove_display()
+			else
+				remove_display()
 			return 1
 		if(STATUS_DISPLAY_MESSAGE) //custom messages
 			var/line1

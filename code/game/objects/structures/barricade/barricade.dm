@@ -54,6 +54,29 @@
 	addtimer(CALLBACK(src, PROC_REF(update_icon)), 0)
 	starting_maxhealth = maxhealth
 
+/obj/structure/barricade/metal/Initialize(mapload, mob/user)
+	. = ..()
+	var/area/area = get_area(src)
+	if(area.flags_area & AREA_NOSECURECADES && !mapload)
+		anchored = FALSE
+		build_state = BARRICADE_BSTATE_MOVABLE
+		to_chat(user, SPAN_WARNING("[src] does not properly secure on this surface!"))
+
+/obj/structure/barricade/plasteel/Initialize(mapload, mob/user)
+	. = ..()
+	var/area/area = get_area(src)
+	if(area.flags_area & AREA_NOSECURECADES && !mapload)
+		anchored = FALSE
+		build_state = BARRICADE_BSTATE_MOVABLE
+		to_chat(user, SPAN_WARNING("[src] does not properly secure on this surface!"))
+
+/obj/structure/barricade/deployable/Initialize(mapload, mob/user)
+	. = ..()
+	var/area/area = get_area(src)
+	if(area.flags_area & AREA_NOSECURECADES && !mapload)
+		anchored = FALSE
+		to_chat(user, SPAN_WARNING("[src] does not properly secure on this surface!"))
+
 /obj/structure/barricade/initialize_pass_flags(datum/pass_flags_container/pass_flags)
 	..()
 	if (pass_flags)
@@ -92,14 +115,17 @@
 				layer = initial(layer) - 0.01
 			else
 				layer = initial(layer)
-		if(!anchored)
-			layer = initial(layer)
 	else
 		if(can_change_dmg_state)
 			icon_state = "[barricade_type]_closed_[damage_state]"
 		else
 			icon_state = "[barricade_type]_closed"
 		layer = OBJ_LAYER
+
+	// Pixelshift to indicate anchored state
+	pixel_y = initial(pixel_y)
+	if(!anchored)
+		pixel_y += 2
 
 	if(upgraded)
 		switch(upgraded)
@@ -125,13 +151,27 @@
 			if(living_carbon.mob_size <= MOB_SIZE_XENO)
 				living_carbon.visible_message(SPAN_DANGER("The barbed wire slices into [living_carbon]!"),
 				SPAN_DANGER("The barbed wire slices into you!"))
-				living_carbon.apply_damage(10)
+				living_carbon.apply_damage(10, enviro=TRUE)
 				living_carbon.apply_effect(2, WEAKEN) //Leaping into barbed wire is VERY bad
 				playsound(living_carbon, "bonk", 75, FALSE)
 	..()
 
 /obj/structure/barricade/Collided(atom/movable/atom_movable)
-	..()
+	// Similar behavior to /atom/movable/Collided(atom/movable/AM) but we account for something in our same location
+	if(isliving(atom_movable) && !anchored)
+		var/blocked = FALSE
+		for(var/atom/movable/other_moveable as anything in loc)
+			if(other_moveable == src || other_moveable == atom_movable)
+				continue
+			if(!other_moveable.density || !other_moveable.can_block_movement)
+				continue
+			blocked = TRUE
+			break
+		if(!blocked)
+			var/target_dir = get_dir(atom_movable, src) || dir
+			var/turf/target_turf = get_step(loc, target_dir)
+			Move(target_turf)
+	SEND_SIGNAL(src, COMSIG_STRUCTURE_COLLIDED, atom_movable)
 
 	if(istype(atom_movable, /mob/living/carbon/xenomorph/crusher))
 		var/mob/living/carbon/xenomorph/crusher/living_carbon = atom_movable
@@ -193,6 +233,7 @@
 	if(istype(item, /obj/item/weapon/zombie_claws))
 		user.visible_message(SPAN_DANGER("The zombie smashed at the [src.barricade_type] barricade!"),
 		SPAN_DANGER("You smack the [src.barricade_type] barricade!"))
+		. = ..()
 		if(barricade_hitsound)
 			playsound(src, barricade_hitsound, 35, 1)
 		hit_barricade(item)
@@ -250,7 +291,7 @@
 		return
 
 	if(item.force > force_level_absorption)
-		..()
+		. = ..()
 		if(barricade_hitsound)
 			playsound(src, barricade_hitsound, 35, 1)
 		hit_barricade(item)
@@ -262,6 +303,7 @@
 		bullet.damage = bullet.damage * burn_multiplier
 	else
 		bullet.damage = bullet.damage * brute_projectile_multiplier
+		playsound(src, barricade_hitsound, 35, 1)
 
 	if(istype(bullet.ammo, /datum/ammo/xeno/boiler_gas))
 		take_damage(floor(50 * burn_multiplier))
@@ -361,10 +403,14 @@
 /obj/structure/barricade/proc/update_damage_state()
 	var/health_percent = floor(health/maxhealth * 100)
 	switch(health_percent)
-		if(0 to 25) damage_state = BARRICADE_DMG_HEAVY
-		if(25 to 50) damage_state = BARRICADE_DMG_MODERATE
-		if(50 to 75) damage_state = BARRICADE_DMG_SLIGHT
-		if(75 to INFINITY) damage_state = BARRICADE_DMG_NONE
+		if(0 to 25)
+			damage_state = BARRICADE_DMG_HEAVY
+		if(25 to 50)
+			damage_state = BARRICADE_DMG_MODERATE
+		if(50 to 75)
+			damage_state = BARRICADE_DMG_SLIGHT
+		if(75 to INFINITY)
+			damage_state = BARRICADE_DMG_NONE
 
 /obj/structure/barricade/proc/try_weld_cade(obj/item/tool/weldingtool/welder, mob/user, repeat = TRUE, skip_check = FALSE)
 	if(!skip_check && !can_weld(welder, user))
@@ -425,7 +471,7 @@
 	update_icon()
 
 /obj/structure/barricade/clicked(mob/user, list/mods)
-	if(mods["alt"])
+	if(mods[ALT_CLICK])
 		rotate(user)
 		return TRUE
 
@@ -453,6 +499,10 @@
 		to_chat(user, SPAN_WARNING("You'll need some adequate repair material in your other hand to patch up [src]!"))
 		return FALSE
 
+	if(material.amount < nailgun.material_per_repair)
+		to_chat(user, SPAN_WARNING("You'll need more adequate repair material in your other hand to patch up [src]!"))
+		return FALSE
+
 	var/repair_value = 0
 	for(var/validSheetType in repair_materials)
 		if(validSheetType == material.sheettype)
@@ -469,7 +519,7 @@
 		return FALSE
 
 	if(!material || (material != user.l_hand && material != user.r_hand) || material.amount <= 0)
-		to_chat(user, SPAN_WARNING("You seems to have misplaced the repair material!"))
+		to_chat(user, SPAN_WARNING("You seem to have misplaced the repair material!"))
 		return FALSE
 
 	if(!nailgun.in_chamber || !nailgun.current_mag || nailgun.current_mag.current_rounds < 3)
@@ -479,7 +529,7 @@
 	update_health(-repair_value*maxhealth)
 	to_chat(user, SPAN_WARNING("You nail [material] to [src], restoring some of its integrity!"))
 	update_damage_state()
-	material.use(1)
+	material.use(nailgun.material_per_repair)
 	nailgun.current_mag.current_rounds -= 3
 	nailgun.in_chamber = null
 	nailgun.load_into_chamber()

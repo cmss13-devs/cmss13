@@ -73,7 +73,7 @@
 				var/can_vend = TRUE
 				if(uniform_path in vended_items)
 					can_vend = FALSE
-				var/name = sanitize(initial(O.name))
+				var/name = sanitize(strip_improper(initial(O.name)))
 				var/flags = can_vend ? null : MARINE_CAN_BUY_DRESS
 				display_list += list(
 					list(name, 0, uniform_path, flags, VENDOR_ITEM_REGULAR)
@@ -123,7 +123,7 @@
 			var/obj/item/card/id/id_card = H.get_idcard()
 
 			if(!id_card) //not wearing an ID
-				to_chat(H, SPAN_WARNING("Access denied. No ID card detected"))
+				to_chat(H, SPAN_WARNING("Access denied. No ID card detected."))
 				return
 
 			if(id_card.registered_name != H.real_name)
@@ -165,7 +165,7 @@
 	show_points = FALSE
 	use_snowflake_points = FALSE
 	vendor_theme = VENDOR_THEME_COMPANY
-	vend_flags = VEND_CLUTTER_PROTECTION | VEND_TO_HAND
+	vend_flags = VEND_CLUTTER_PROTECTION | VEND_TO_HAND | VEND_UNIFORM_AUTOEQUIP
 	vend_delay = 1 SECONDS
 	var/list/items
 	var/list/obj/item/item_types

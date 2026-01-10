@@ -1,9 +1,10 @@
 /obj/item
 	name = "item"
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/tools.dmi' //PLACEHOLDER FOR TESTING
 	mouse_drag_pointer = MOUSE_ACTIVE_POINTER
 	layer = ITEM_LAYER
 	light_system = MOVABLE_LIGHT
+	blocks_emissive = EMISSIVE_BLOCK_GENERIC
 	/// this saves our blood splatter overlay, which will be processed not to go over the edges of the sprite
 	var/image/blood_overlay = null
 	var/randpixel = 6
@@ -22,7 +23,7 @@
 	var/attack_speed = 11  //+3, Adds up to 10.  Added an extra 4 removed from /mob/proc/do_click()
 	///Used in attackby() to say how something was attacked "[x] has been [z.attack_verb] by [y] with [z]"
 	var/list/attack_verb
-	/// A multiplier to an object's force when used against a stucture.
+	/// A multiplier to an object's force when used against a structure.
 	var/demolition_mod = 1
 
 	health = null
@@ -66,6 +67,8 @@
 	var/flags_item = NO_FLAGS
 	/// This is used to determine on which slots an item can fit.
 	var/flags_equip_slot = NO_FLAGS
+	///Last slot that item was equipped to (aka sticky slot)
+	var/last_equipped_slot
 
 	//Since any item can now be a piece of clothing, this has to be put here so all items share it.
 	/// This flag is used for various clothing/equipment item stuff
@@ -81,6 +84,8 @@
 	var/flags_heat_protection = NO_FLAGS
 	/// flags which determine which body parts are protected from cold. Use the HEAD, UPPER_TORSO, LOWER_TORSO, etc. flags. See setup.dm
 	var/flags_cold_protection = NO_FLAGS
+	/// flags which determine which body parts are hidden from view.
+	var/flags_bodypart_hidden = NO_FLAGS
 	/// Set this variable to determine up to which temperature (IN KELVIN) the item protects against heat damage. Keep at null to disable protection. Only protects areas set by flags_heat_protection flags
 	var/max_heat_protection_temperature
 	/// Set this variable to determine down to which temperature (IN KELVIN) the item protects against cold damage. 0 is NOT an acceptable number due to if(varname) tests!! Keep at null to disable protection. Only protects areas set by flags_cold_protection flags
@@ -89,13 +94,8 @@
 	var/list/actions
 	/// list of paths of action datums to give to the item on New().
 	var/list/actions_types
-
-	//var/heat_transfer_coefficient = 1 //0 prevents all transfers, 1 is invisible
-
 	/// for leaking gas from turf to mask and vice-versa (for masks right now, but at some point, i'd like to include space helmets)
 	var/gas_transfer_coefficient = 1
-	/// for chemicals/diseases
-	var/permeability_coefficient = 1
 	/// for electrical admittance/conductance (electrocution checks and shit)
 	var/siemens_coefficient = 1
 	/// How much clothing is slowing you down. Negative values speeds you up
@@ -135,6 +135,7 @@
 	///Used for stepping onto flame and seeing how much dmg you take and if you're ignited.
 	var/fire_intensity_resistance
 
+	/// If item should have a map specific camo icon
 	var/map_specific_decoration = FALSE
 	/// color of the blood on us if there's any.
 	var/blood_color = ""
@@ -162,6 +163,11 @@
 	var/ground_offset_x = 0
 	/// How much to offset the item randomly either way alongside Y visually
 	var/ground_offset_y = 0
+	/// bypass any species specific OnMob overlay blockers
+	var/force_overlays_on = FALSE
+
+	/// Special storages this item prioritizes
+	var/list/preferred_storage
 
 /obj/item/Initialize(mapload, ...)
 	. = ..()
@@ -201,21 +207,21 @@
 
 	return ..()
 
-/obj/item/ex_act(severity, explosion_direction)
+/obj/item/ex_act(severity, direction, datum/cause_data/cause_data, pierce=0, enviro=FALSE)
 	var/msg = pick("is destroyed by the blast!", "is obliterated by the blast!", "shatters as the explosion engulfs it!", "disintegrates in the blast!", "perishes in the blast!", "is mangled into uselessness by the blast!")
-	explosion_throw(severity, explosion_direction)
+	explosion_throw(severity, direction)
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(5))
-				if(!indestructible)
+				if(!explo_proof)
 					visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] [msg]")))
 					deconstruct(FALSE)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(50))
-				if(!indestructible)
+				if(!explo_proof)
 					deconstruct(FALSE)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			if(!indestructible)
+			if(!explo_proof)
 				visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] [msg]")))
 				deconstruct(FALSE)
 
@@ -233,13 +239,20 @@
 /obj/item/proc/suicide_act(mob/user)
 	return
 
-/*Global item proc for all of your unique item skin needs. Works with any
-item, and will change the skin to whatever you specify here. You can also
-manually override the icon with a unique skin if wanted, for the outlier
-cases. Override_icon_state should be a list.*/
+/**
+ * Global item proc for all of your unique item skin needs. Works with any
+ * item, and will change the skin to whatever you specify here. You can also
+ * manually override the icon with a unique skin if wanted, for the outlier
+ * cases. Override_icon_state should be a list. Generally requires NO_GAMEMODE_SKIN
+ * to not be set for changes to be applied.
+ *
+ * Returns whether changes were applied.
+ */
 /obj/item/proc/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
 	if(type != expected_type)
-		return
+		return FALSE
+	if(flags_atom & NO_GAMEMODE_SKIN)
+		return FALSE
 
 	var/new_icon_state
 	var/new_protection
@@ -248,18 +261,44 @@ cases. Override_icon_state should be a list.*/
 		new_icon_state = override_icon_state[SSmapping.configs[GROUND_MAP].map_name]
 	if(LAZYLEN(override_protection))
 		new_protection = override_protection[SSmapping.configs[GROUND_MAP].map_name]
-	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
-		if("snow")
-			icon_state = new_icon_state ? new_icon_state : "s_" + icon_state
-			item_state = new_item_state ? new_item_state : "s_" + item_state
-		if("desert")
-			icon_state = new_icon_state ? new_icon_state : "d_" + icon_state
-			item_state = new_item_state ? new_item_state : "d_" + item_state
-		if("classic")
-			icon_state = new_icon_state ? new_icon_state : "c_" + icon_state
-			item_state = new_item_state ? new_item_state : "c_" + item_state
-	if(new_protection)
-		min_cold_protection_temperature = new_protection
+	if(!isnull(icon_state) || new_icon_state || new_item_state)
+		if(flags_atom & MAP_COLOR_INDEX)
+			switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+				if("snow")
+					icon_state = new_icon_state ? new_icon_state : "s_" + icon_state
+					item_state = new_item_state ? new_item_state : "s_" + item_state
+				if("desert")
+					icon_state = new_icon_state ? new_icon_state : "d_" + icon_state
+					item_state = new_item_state ? new_item_state : "d_" + item_state
+				if("classic")
+					icon_state = new_icon_state ? new_icon_state : "c_" + icon_state
+					item_state = new_item_state ? new_item_state : "c_" + item_state
+				if("urban")
+					icon_state = new_icon_state ? new_icon_state : "u_" + icon_state
+					item_state = new_item_state ? new_item_state : "u_" + item_state
+		if(new_protection)
+			min_cold_protection_temperature = new_protection
+		else
+			if(!item_icons)
+				item_icons = list()
+			switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+				if("jungle")
+					item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi'
+					item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
+				if("snow")
+					item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi'
+					item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+				if("desert")
+					item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/desert_lefthand.dmi'
+					item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi'
+				if("classic")
+					item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/classic_lefthand.dmi'
+					item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi'
+				if("urban")
+					item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/urban_lefthand.dmi'
+					item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
+
+	return TRUE
 
 /obj/item/get_examine_text(mob/user)
 	. = list()
@@ -300,7 +339,9 @@ cases. Override_icon_state should be a list.*/
 
 	if(isstorage(loc))
 		var/obj/item/storage/S = loc
-		S.remove_from_storage(src, user.loc)
+		S.remove_from_storage(src, user.loc, user)
+	else if(isturf(loc) && HAS_TRAIT(user, TRAIT_HAULED))
+		return
 
 	throwing = 0
 
@@ -323,7 +364,7 @@ cases. Override_icon_state should be a list.*/
 	if(istype(W,/obj/item/storage))
 		var/obj/item/storage/S = W
 		if(S.storage_flags & STORAGE_CLICK_GATHER && isturf(loc))
-			if(S.storage_flags & STORAGE_GATHER_SIMULTAENOUSLY) //Mode is set to collect all items on a tile and we clicked on a valid one.
+			if(S.storage_flags & STORAGE_GATHER_SIMULTANEOUSLY) //Mode is set to collect all items on a tile and we clicked on a valid one.
 				var/success = 0
 				var/failure = 0
 
@@ -373,15 +414,37 @@ cases. Override_icon_state should be a list.*/
 
 	appearance_flags &= ~NO_CLIENT_COLOR //So saturation/desaturation etc. effects affect it.
 
-// called just as an item is picked up (loc is not yet changed)
+/// Called just as an item is picked up (loc is not yet changed) and will return TRUE if the pickup wasn't canceled.
 /obj/item/proc/pickup(mob/user, silent)
 	SHOULD_CALL_PARENT(TRUE)
-	SEND_SIGNAL(src, COMSIG_ITEM_PICKUP, user)
+	if((SEND_SIGNAL(src, COMSIG_ITEM_PICKUP, user)) & COMSIG_ITEM_PICKUP_CANCELLED)
+		if(!silent)
+			to_chat(user, SPAN_WARNING("Can't pick [src] up!"))
+			balloon_alert(user, "can't pick up")
+		return FALSE
 	SEND_SIGNAL(user, COMSIG_MOB_PICKUP_ITEM, src)
 	setDir(SOUTH)//Always rotate it south. This resets it to default position, so you wouldn't be putting things on backwards
 	if(pickup_sound && !silent && src.loc?.z)
 		playsound(src, pickup_sound, pickupvol, pickup_vary)
 	do_pickup_animation(user)
+	return TRUE
+
+///Helper function for updating last_equipped_slot when item is drawn from storage
+/obj/item/proc/set_last_equipped_slot_of_storage(obj/item/storage/storage_item)
+	if(!isitem(storage_item))
+		return
+
+	var/obj/item/storage_item_storage = storage_item
+	while(isitem(storage_item_storage.loc)) // for stuff like pouches
+		storage_item_storage = storage_item_storage.loc
+
+	if(!storage_item_storage)
+		return
+	//don't put the fucking clothes back into the backpack we just pulled it out from
+	if(!isclothing(src))
+		last_equipped_slot = slot_to_in_storage_slot(storage_item_storage.last_equipped_slot)
+	else
+		last_equipped_slot = storage_item_storage.last_equipped_slot
 
 // called when this item is removed from a storage item, which is passed on as S. The loc variable is already set to the new destination before this is called.
 /obj/item/proc/on_exit_storage(obj/item/storage/S as obj)
@@ -393,6 +456,7 @@ cases. Override_icon_state should be a list.*/
 			S.flags_atom &= ~USES_HEARING
 	var/atom/location = S.get_loc_turf()
 	do_drop_animation(location)
+	set_last_equipped_slot_of_storage(S)
 
 // called when this item is added into a storage item, which is passed on as S. The loc variable is already set to the storage item.
 /obj/item/proc/on_enter_storage(obj/item/storage/S as obj)
@@ -427,6 +491,9 @@ cases. Override_icon_state should be a list.*/
 	SHOULD_CALL_PARENT(TRUE)
 
 	SEND_SIGNAL(src, COMSIG_ITEM_EQUIPPED, user, slot)
+
+	if(is_valid_sticky_slot(slot))
+		last_equipped_slot = slot
 
 	if(item_action_slot_check(user, slot))
 		add_verb(user, verbs)
@@ -788,10 +855,6 @@ cases. Override_icon_state should be a list.*/
 	if(src in usr)
 		attack_self(usr)
 
-
-/obj/item/proc/IsShield()
-	return FALSE
-
 /obj/item/proc/get_loc_turf()
 	var/atom/L = loc
 	while(L && !istype(L, /turf/))
@@ -817,6 +880,7 @@ cases. Override_icon_state should be a list.*/
 /obj/item/proc/zoom(mob/living/user, tileoffset = 11, viewsize = 12, keep_zoom = 0) //tileoffset is client view offset in the direction the user is facing. viewsize is how far out this thing zooms. 7 is normal view
 	if(!user)
 		return
+	QDEL_NULL(user.observed_atom)
 	var/zoom_device = zoomdevicename ? "\improper [zoomdevicename] of [src]" : "\improper [src]"
 
 	for(var/obj/item/I in user.contents)
@@ -856,8 +920,8 @@ cases. Override_icon_state should be a list.*/
 	//General reset in case anything goes wrong, the view will always reset to default unless zooming in.
 	if(user.client)
 		user.client.change_view(GLOB.world_view_size, src)
-		user.client.pixel_x = 0
-		user.client.pixel_y = 0
+		user.client.set_pixel_x(0)
+		user.client.set_pixel_y(0)
 
 /obj/item/proc/zoom_handle_mob_move_or_look(mob/living/mover, actually_moving, direction, specific_direction)
 	SIGNAL_HANDLER
@@ -894,22 +958,22 @@ cases. Override_icon_state should be a list.*/
 
 		switch(user.dir)
 			if(NORTH)
-				user.client.pixel_x = 0
-				user.client.pixel_y = viewoffset
+				user.client.set_pixel_x(0)
+				user.client.set_pixel_y(viewoffset)
 			if(SOUTH)
-				user.client.pixel_x = 0
-				user.client.pixel_y = -viewoffset
+				user.client.set_pixel_x(0)
+				user.client.set_pixel_y(-viewoffset)
 			if(EAST)
-				user.client.pixel_x = viewoffset
-				user.client.pixel_y = 0
+				user.client.set_pixel_x(viewoffset)
+				user.client.set_pixel_y(0)
 			if(WEST)
-				user.client.pixel_x = -viewoffset
-				user.client.pixel_y = 0
+				user.client.set_pixel_x(-viewoffset)
+				user.client.set_pixel_y(0)
 
 	SEND_SIGNAL(src, COMSIG_ITEM_ZOOM, user)
 	var/zoom_device = zoomdevicename ? "\improper [zoomdevicename] of [src]" : "\improper [src]"
-	user.visible_message(SPAN_NOTICE("[user] peers through \the [zoom_device]."),
-	SPAN_NOTICE("You peer through \the [zoom_device]."))
+	user.visible_message(SPAN_NOTICE("[user] peers through [zoom_device]."),
+	SPAN_NOTICE("You peer through [zoom_device]."))
 	zoom = !zoom
 
 /obj/item/proc/get_icon_state(mob/user_mob, slot)
@@ -1092,3 +1156,33 @@ cases. Override_icon_state should be a list.*/
 ///Called by /mob/living/carbon/swap_hand() when hands are swapped
 /obj/item/proc/hands_swapped(mob/living/carbon/swapper_of_hands)
 	return
+
+// formerly in gun_helpers.dm, moved here for universal usage
+/obj/item/proc/unique_action(mob/user)
+	return
+
+/obj/item/verb/use_unique_action()
+	set category = "Object"
+	set name = "Unique Action"
+	set desc = "Use anything unique your item is capable of."
+	set src = usr.contents
+
+	if(usr.is_mob_incapacitated() || !isturf(usr.loc))
+		return
+	if(!ishuman(usr) && !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
+		to_chat(usr, SPAN_WARNING("Not right now."))
+		return
+
+	var/obj/item/held_item = usr.get_active_hand()
+	if(!held_item)
+		to_chat(usr, SPAN_WARNING("You need to be holding something to do that!"))
+		return
+
+	src = held_item
+
+	// For guns, check if we should use the active attachable instead
+	var/obj/item/weapon/gun/gun = src
+	if(isgun(gun) && gun.active_attachable)
+		src = gun.active_attachable
+
+	unique_action(usr)

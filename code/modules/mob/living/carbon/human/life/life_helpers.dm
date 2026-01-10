@@ -15,8 +15,8 @@
 		return //Fuck this precision
 
 	if(bodytemperature < species.cold_level_1) //260.15 is 310.15 - 50, the temperature where you start to feel effects.
-		if(nutrition >= 2) //If we are very, very cold we'll use up quite a bit of nutriment to heat us up.
-			nutrition -= 2
+		if(nutrition >= COLD_NUTRITION_COST) //If we are very, very cold we'll use up quite a bit of nutriment to heat us up.
+			nutrition -= COLD_NUTRITION_COST
 		var/recovery_amt = max((body_temperature_difference / BODYTEMP_AUTORECOVERY_DIVISOR), BODYTEMP_AUTORECOVERY_MINIMUM)
 		bodytemperature += recovery_amt
 		recalculate_move_delay = TRUE
@@ -160,11 +160,18 @@
 
 
 /mob/living/carbon/human/proc/process_glasses(obj/item/clothing/glasses/G)
+	var/atom/movable/screen/plane_master/blackness/darkness_plane = hud_used?.plane_masters["[BLACKNESS_PLANE]"]
+
 	if(!G || !G.active)
+		darkness_plane?.alpha = 255
 		return
 	see_in_dark += G.darkness_view
 	if(G.vision_flags)
 		sight |= G.vision_flags
+
+	if(G.vision_flags & SEE_TURFS)
+		darkness_plane?.alpha = 0
+
 	if(G.lighting_alpha < lighting_alpha)
 		lighting_alpha = G.lighting_alpha
 
@@ -196,6 +203,7 @@
 
 
 /mob/living/carbon/human/proc/handle_revive()
+	revive_grace_period = initial(revive_grace_period)
 	SEND_SIGNAL(src, COMSIG_HUMAN_REVIVED)
 	track_revive(job)
 	GLOB.alive_mob_list += src

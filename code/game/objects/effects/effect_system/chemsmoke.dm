@@ -57,20 +57,21 @@
 	targetTurfs = new()
 
 	//build affected area list
-	for(var/turf/T in view(range, location))
+	FOR_DVIEW(var/turf/T, range, location, HIDE_INVISIBLE_OBSERVER)
 		//cull turfs to circle
 		if(cheap_pythag(T.x - location.x, T.y - location.y) <= range)
 			targetTurfs += T
+	FOR_DVIEW_END
 
 	//make secondary list for reagents that affect walls
-	if(chemholder.reagents.has_reagent("thermite") || chemholder.reagents.has_reagent("plantbgone"))
+	if(chemholder.reagents.has_reagent("thermite"))
 		wallList = new()
 
 	//pathing check
 	smokeFlow(location, targetTurfs, wallList)
 
 	//set the density of the cloud - for diluting reagents
-	density = max(1, length(targetTurfs) / 4) //clamp the cloud density minimum to 1 so it cant multiply the reagents
+	density = max(1, length(targetTurfs)) //clamp the cloud density minimum to 1 so it can't multiply the reagents
 
 	//Admin messaging
 	var/contained = ""
@@ -86,7 +87,7 @@
 	last_reaction_signature = reaction_signature
 
 	var/where = "[A.name]|[location.x], [location.y]"
-	var/whereLink = "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[location.x];Y=[location.y];Z=[location.z]'>[where]</a>"
+	var/whereLink = "<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[location.x];Y=[location.y];Z=[location.z]'>[where]</a>"
 
 	if(carry.my_atom.fingerprintslast)
 		msg_admin_niche("A chemical smoke reaction has taken place in ([whereLink])[contained]. Last associated key is [carry.my_atom.fingerprintslast].")
@@ -120,7 +121,7 @@
 			chemholder.reagents.update_total()
 
 			//apply wall affecting reagents to walls
-			if(R.id in list("thermite", "plantbgone"))
+			if(R.id in list("thermite"))
 				for(var/turf/T in wallList)
 					R.reaction_turf(T, R.volume)
 
@@ -144,6 +145,14 @@
 								var/dist = cheap_pythag(T.x - location.x, T.y - location.y)
 								if(!dist)
 									dist = 1
+								var/mob/living/carbon/human/human_in_smoke = A
+								if(istype(human_in_smoke))
+									if(human_in_smoke?.wear_mask?.flags_inventory & BLOCKGASEFFECT)
+										continue
+									if(human_in_smoke?.glasses?.flags_inventory & BLOCKGASEFFECT)
+										continue
+									if(human_in_smoke?.head?.flags_inventory & BLOCKGASEFFECT)
+										continue
 								R.reaction_mob(A, volume = R.volume * POTENCY_MULTIPLIER_VLOW / dist, permeable = FALSE)
 							else if(istype(A, /obj))
 								R.reaction_obj(A, R.volume)
@@ -270,6 +279,14 @@
 	if(!length(reagents?.reagent_list))
 		return FALSE
 
+	var/mob/living/carbon/human/human_in_smoke = affected_mob
+	if(istype(human_in_smoke))
+		if(human_in_smoke?.wear_mask?.flags_inventory & BLOCKGASEFFECT)
+			return FALSE
+		if(human_in_smoke?.glasses?.flags_inventory & BLOCKGASEFFECT)
+			return FALSE
+		if(human_in_smoke?.head?.flags_inventory & BLOCKGASEFFECT)
+			return FALSE
 	for(var/datum/reagent/reagent in reagents.reagent_list)
 		reagent.reaction_mob(affected_mob, volume = reagent.volume * POTENCY_MULTIPLIER_LOW, permeable = FALSE)
 	return TRUE

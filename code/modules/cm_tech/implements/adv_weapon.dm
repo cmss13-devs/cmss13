@@ -1,9 +1,9 @@
 
 /obj/item/techtree_advanced_weapon_kit
 	name = "advanced weapon kit"
-	desc = "It seems to be a kit to choose an advanced weapon"
+	desc = "It seems to be a kit to choose an advanced weapon."
 
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "wrench"
 
 	var/gun_type = /obj/item/weapon/gun/shotgun/pump
@@ -24,9 +24,9 @@
 
 /obj/item/techtree_advanced_weapon_kit/railgun
 	name = "advanced weapon kit"
-	desc = "It seems to be a kit to choose an advanced weapon"
+	desc = "It seems to be a kit to choose an advanced weapon."
 
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "wrench"
 
 	gun_type = /obj/item/weapon/gun/rifle/techweb_railgun
@@ -36,11 +36,18 @@
 
 /obj/item/weapon/gun/rifle/techweb_railgun
 	name = "\improper Railgun"
-	desc = "A poggers hellbliterator"
+	desc = "A poggers hellbliterator."
 	icon_state = "m42a"
 	item_state = "m42a"
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/marksman_rifles.dmi'
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/marksman_rifles.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/marksman_rifles.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/marksman_rifles_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/marksman_rifles_righthand.dmi'
+	)
 	unacidable = TRUE
-	indestructible = 1
+	explo_proof = TRUE
 
 	fire_sound = 'sound/weapons/gun_sniper.ogg'
 	current_mag = /obj/item/ammo_magazine/techweb_railgun
@@ -149,6 +156,7 @@
 	desc = "A magazine ammo for the poggers Railgun."
 	caliber = "14mm"
 	icon_state = "m42c" //PLACEHOLDER
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/marksman_rifles.dmi'
 	w_class = SIZE_MEDIUM
 	max_rounds = 5
 	default_ammo = /datum/ammo/bullet/sniper/railgun

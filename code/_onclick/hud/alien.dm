@@ -19,7 +19,6 @@
 	draw_healths(ui_alien_datum)
 	draw_alien_nightvision(ui_alien_datum)
 	draw_alien_plasma_display(ui_alien_datum)
-	draw_alien_armor_display(ui_alien_datum)
 	draw_alien_locate_queen(ui_alien_datum)
 	draw_alien_locate_mark(ui_alien_datum)
 
@@ -37,14 +36,6 @@
 	alien_plasma_display.name = "plasma stored"
 	alien_plasma_display.screen_loc = ui_alien_datum.ui_alienplasmadisplay
 	infodisplay += alien_plasma_display
-
-/datum/hud/proc/draw_alien_armor_display(datum/custom_hud/alien/ui_alien_datum)
-	alien_armor_display = new /atom/movable/screen()
-	alien_armor_display.icon = ui_alien_datum.ui_style_icon
-	alien_armor_display.icon_state = "armor_100"
-	alien_armor_display.name = "armor integrity"
-	alien_armor_display.screen_loc = ui_alien_datum.ui_alienarmordisplay
-	infodisplay += alien_armor_display
 
 /datum/hud/proc/draw_alien_locate_queen(datum/custom_hud/alien/ui_alien_datum)
 	locate_leader = new /atom/movable/screen/queen_locator()

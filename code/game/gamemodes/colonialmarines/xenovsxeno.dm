@@ -6,6 +6,7 @@
 	required_players = 4 //Need at least 4 players
 	xeno_required_num = 4 //Need at least four xenos.
 	monkey_amount = 0.2 // Amount of monkeys per player
+	static_comms_amount = 0
 	flags_round_type = MODE_NO_SPAWN|MODE_NO_LATEJOIN|MODE_XVX|MODE_RANDOM_HIVE
 
 	var/list/structures_to_delete = list(/obj/effect/alien/weeds, /turf/closed/wall/resin, /obj/structure/mineral_door/resin, /obj/structure/bed/nest, /obj/item, /obj/structure/tunnel, /obj/structure/machinery/computer/shuttle_control, /obj/structure/machinery/defenses/sentry/premade)
@@ -91,9 +92,13 @@
 	initialize_post_xenomorph_list(GLOB.xeno_hive_spawns)
 
 	round_time_lobby = world.time
-	for(var/area/A in GLOB.all_areas)
-		if(!(A.is_resin_allowed))
-			A.is_resin_allowed = TRUE
+
+	if(!MODE_HAS_MODIFIER(/datum/gamemode_modifier/lz_weeding))
+		MODE_SET_MODIFIER(/datum/gamemode_modifier/lz_weeding, TRUE)
+	for(var/area/cur_area as anything in GLOB.all_areas)
+		if(cur_area.flags_area & AREA_UNWEEDABLE)
+			continue
+		cur_area.unoviable_timer = FALSE
 
 	open_podlocks("map_lockdown")
 
@@ -156,11 +161,13 @@
 
 /datum/game_mode/xenovs/pick_queen_spawn(mob/player, hivenumber = XENO_HIVE_NORMAL)
 	. = ..()
-	if(!.) return
+	if(!.)
+		return
 	// Spawn additional hive structures
 	var/turf/T  = .
 	var/area/AR = get_area(T)
-	if(!AR) return
+	if(!AR)
+		return
 	for(var/obj/effect/landmark/structure_spawner/xvx_hive/SS in AR)
 		SS.apply()
 		qdel(SS)
@@ -205,7 +212,7 @@
 		hivenumbers += list(HS.name = list())
 
 	for(var/mob/M in GLOB.player_list)
-		if(M.z && (M.z in z_levels) && M.stat != DEAD && !istype(M.loc, /turf/open/space)) //If they have a z var, they are on a turf.
+		if(M.z && (M.z in z_levels) && M.stat != DEAD && !istype(M.loc, /turf/open/space) && !istype(M.loc, /area/adminlevel/ert_station/fax_response_station)) //If they have a z var, they are on a turf.
 			var/mob/living/carbon/xenomorph/X = M
 			var/datum/hive_status/hive = GLOB.hive_datum[X.hivenumber]
 			if(!hive)
@@ -273,6 +280,7 @@
 	calculate_end_statistics()
 	declare_fun_facts()
 
+	GLOB.round_statistics?.save()
 
 	return TRUE
 

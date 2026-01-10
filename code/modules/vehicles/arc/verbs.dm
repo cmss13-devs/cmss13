@@ -116,6 +116,6 @@
 	2. <b>\"G: Toggle Door Locks\"</b> - toggles vehicle's access restrictions. Crewman, Brig and Command accesses bypass these restrictions.<br> \
 	<font color='#cd6500'><b><i>Driver shortcuts:</i></b></font><br> 1. <b>\"CTRL + Click\"</b> - activates vehicle horn.<br>"
 
-	show_browser(user, dat, "Vehicle Controls Guide", "vehicle_help", "size=900x500")
+	show_browser(user, dat, "Vehicle Controls Guide", "vehicle_help", width = 900, height = 500)
 	onclose(user, "vehicle_help")
 	return

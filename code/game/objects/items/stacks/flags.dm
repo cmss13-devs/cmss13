@@ -149,6 +149,20 @@
 		to_chat(xeno, SPAN_WARNING("We stare at [src] cluelessly."))
 		return XENO_NONCOMBAT_ACTION
 
+/obj/structure/flag/plantable/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
+	if(unslashable || health <= 0)
+		return TAILSTAB_COOLDOWN_NONE
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	update_health(xeno.melee_damage_upper)
+	if(health <= 0)
+		xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
+		SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	else
+		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
+		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno.tail_stab_animation(src, blunt_stab)
+	return TAILSTAB_COOLDOWN_NORMAL
+
 /obj/structure/flag/plantable/bullet_act(obj/projectile/bullet)
 	bullet_ping(bullet)
 	visible_message(SPAN_DANGER("[src] is hit by [bullet]!"), null, 4, CHAT_TYPE_TAKING_HIT)
@@ -156,7 +170,7 @@
 	return TRUE
 
 /obj/structure/flag/plantable/attackby(obj/item/weapon, mob/living/user)
-	if(!indestructible)
+	if(!explo_proof)
 		visible_message(SPAN_DANGER("[src] has been hit by [user] with [weapon]!"), null, 5, CHAT_TYPE_MELEE_HIT)
 		user.animation_attack_on(src)
 		playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)
@@ -174,10 +188,10 @@
 	throwforce = 5
 	hitsound = "swing_hit"
 	unacidable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 	item_icons = list(
-		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_64.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_64.dmi'
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/items_lefthand_64.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/items_righthand_64.dmi'
 		)
 
 	/// The typepath of the flag structure that gets spawned when the flag is planted.
@@ -281,3 +295,43 @@
 	desc = "The flag of the United Americas. Semper fi."
 	icon_state = "flag_ua_planted"
 	flag_type = /obj/item/flag/plantable/ua
+
+// UNION OF PROGRESSIVE PEOPLES FLAG //
+//////////////////////////
+
+/obj/item/flag/plantable/upp
+	name = "\improper Union of Progressive Peoples flag"
+	desc = "The flag of the Union of Progressive Peoples. This one looks ready to be planted into the ground."
+	icon = 'icons/obj/structures/plantable_flag.dmi'
+	icon_state = "flag_upp"
+	flag_type = /obj/structure/flag/plantable/upp
+	faction = FACTION_UPP
+	play_warcry = TRUE
+	warcry_sound = 'sound/effects/flag_upp_warcry.ogg'
+	warcry_extra_sound = 'sound/effects/flag_upp_warcry_extra.ogg'
+
+/obj/structure/flag/plantable/upp
+	name = "\improper Union of Progressive Peoples flag"
+	desc = "The flag of the Union of Progressive Peoples. Unity through Strength, Freedom through Unity."
+	icon_state = "flag_upp_planted"
+	flag_type = /obj/item/flag/plantable/upp
+
+// COLONIAL LIBERATION FRONT FLAG //
+//////////////////////////
+
+/obj/item/flag/plantable/clf
+	name = "\improper Colonial Liberation Front flag"
+	desc = "The flag of the Colonial Liberation Front. This one looks ready to be planted into the ground."
+	icon = 'icons/obj/structures/plantable_flag.dmi'
+	icon_state = "flag_clf"
+	flag_type = /obj/structure/flag/plantable/clf
+	faction = FACTION_CLF
+	play_warcry = TRUE
+	warcry_sound = 'sound/effects/flag_warcry_clf.ogg'
+	warcry_extra_sound = 'sound/effects/flag_warcry_clf_extra.ogg'
+
+/obj/structure/flag/plantable/clf
+	name = "\improper Colonial Liberation Front flag"
+	desc = "The flag of the Colonial Liberation Front — a symbol of resistance and resolve. Strength forged in unity. Freedom earned through struggle."
+	icon_state = "flag_clf_planted"
+	flag_type = /obj/item/flag/plantable/clf

@@ -65,8 +65,30 @@
 
 /// from /datum/surgery_step/proc/attempt_step()
 #define COMSIG_HUMAN_SURGERY_APPLY_MODIFIERS "human_surgery_apply_modifiers"
+
 /// From /mob/living/carbon/human/proc/get_flags_cold_protection()
 #define COMSIG_HUMAN_COLD_PROTECTION_APPLY_MODIFIERS "human_cold_protection_apply_modifiers"
 
 /// From /obj/item/proc/dig_out_shrapnel() : ()
 #define COMSIG_HUMAN_SHRAPNEL_REMOVED "human_shrapnel_removed"
+
+/// From /obj/item/reagent_container/pill/attack() : (mob/living/carbon/human/attacked_mob)
+#define COMSIG_HUMAN_PILL_FED "human_pill_fed"
+
+/// From /mob/living/carbon/human/attack_hand() : (successful)
+// Sends to attacking mob, successful TRUE or FALSE
+#define COMSIG_HUMAN_CPR_PERFORMED "human_cpr_performed"
+
+#define COMSIG_HUMAN_HM_TUTORIAL_TREATED "human_hm_tutorial_treated"
+
+/// From /mob/living/carbon/human/UnarmedAttack()
+#define COMSIG_HUMAN_UNARMED_ATTACK "human_unarmed_attack"
+
+/// from /modules/animations/animations_library.dm
+#define COMSIG_HUMAN_ANIMATING "human_animating"
+
+/// from /proc/transfer_marine_to_squad
+#define COMSIG_HUMAN_SQUAD_CHANGED "human_squad_change"
+
+/// From /mob/living/carbon/human/hud_set_holocard()
+#define COMSIG_HUMAN_TRIAGE_CARD_UPDATED "human_triage_card_updated"

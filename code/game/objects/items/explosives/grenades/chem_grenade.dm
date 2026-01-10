@@ -8,8 +8,8 @@
 	customizable = TRUE
 	underslug_launchable = TRUE
 	allowed_sensors = list(/obj/item/device/assembly/timer)
-	max_container_volume = 90
-	matter = list("metal" = 3750)
+	max_container_volume = 120
+	matter = list("metal" = 4250)
 	has_blast_wave_dampener = TRUE
 
 /obj/item/explosive/grenade/custom/prime()
@@ -22,8 +22,8 @@
 	icon_state = "large_grenade_custom"
 	allowed_containers = list(/obj/item/reagent_container/glass)
 	max_container_volume = 180
-	reaction_limits = list( "max_ex_power" = 215, "base_ex_falloff" = 90, "max_ex_shards" = 32,
-							"max_fire_rad" = 5, "max_fire_int" = 20, "max_fire_dur" = 24,
+	reaction_limits = list( "max_ex_power" = 220, "base_ex_falloff" = 120, "max_ex_shards" = 80,
+							"max_fire_rad" = 6, "max_fire_int" = 30, "max_fire_dur" = 32,
 							"min_fire_rad" = 1, "min_fire_int" = 3, "min_fire_dur" = 3
 	)
 	underslug_launchable = FALSE
@@ -126,30 +126,6 @@
 	containers += B3
 	update_icon()
 
-
-/obj/item/explosive/grenade/custom/antiweed
-	name = "weedkiller grenade"
-	desc = "Used for purging large areas of invasive plant species. Contents under pressure. Do not directly inhale contents."
-	assembly_stage = ASSEMBLY_LOCKED
-	harmful = FALSE
-	antigrief_protection = FALSE
-
-/obj/item/explosive/grenade/custom/antiweed/Initialize()
-	. = ..()
-	var/obj/item/reagent_container/glass/beaker/B1 = new(src)
-	var/obj/item/reagent_container/glass/beaker/B2 = new(src)
-
-	B1.reagents.add_reagent("plantbgone", 25)
-	B1.reagents.add_reagent("potassium", 25)
-	B2.reagents.add_reagent("phosphorus", 25)
-	B2.reagents.add_reagent("sugar", 25)
-	has_blast_wave_dampener = FALSE
-
-	detonator = new/obj/item/device/assembly_holder/timer_igniter(src)
-
-	containers += B1
-	containers += B2
-	update_icon()
 
 /obj/item/explosive/grenade/custom/cleaner
 	name = "cleaner grenade"

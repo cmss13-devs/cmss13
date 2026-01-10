@@ -2,23 +2,25 @@
 /datum/xeno_shield/vanguard
 	var/hit_yet = FALSE
 	var/explosive_armor_amount = XENO_EXPOSIVEARMOR_MOD_VERY_LARGE
+	var/minimal_damage = 5
 	amount = 800
 
 /datum/xeno_shield/vanguard/on_hit(damage)
 	notify_xeno()
 
-	if (!hit_yet)
+	if (!hit_yet && damage > minimal_damage)
 		hit_yet = TRUE
-		rapid_decay()
-		return 0
+		addtimer(CALLBACK(src, PROC_REF(rapid_decay)),  0.4 SECONDS, TIMER_LOOP)
+		return
 	else
-		return ..(damage)
+		. = ..()
+		if (amount <= 0)
+			rapid_decay() // Reuse its cleanup logic
 
 /datum/xeno_shield/vanguard/Destroy()
 	if (linked_xeno)
 		linked_xeno.explosivearmor_modifier -= explosive_armor_amount
 		linked_xeno.recalculate_armor()
-
 	return ..()
 
 /// Decay is suppressed for Vanguard Shield and triggered on hit
@@ -28,23 +30,19 @@
 	return PROCESS_KILL // REALLY, don't process us!
 
 /datum/xeno_shield/vanguard/proc/rapid_decay()
-	set waitfor = 0
-	while(amount > 0)
+	if(amount > 0)
 		amount *= 0.70
 		amount -= 50
+		return
 
-		notify_xeno()
-		sleep(0.4 SECONDS)
+	qdel(src)
+	if (QDELETED(linked_xeno) || !istype(linked_xeno))
+		return
 
-	if (amount <= 0)
-		if (linked_xeno)
-			if (QDELETED(linked_xeno) || !istype(linked_xeno))
-				return
-
-			linked_xeno.overlay_shields()
-			var/datum/action/xeno_action/activable/cleave/cAction = get_action(linked_xeno, /datum/action/xeno_action/activable/cleave)
-			if (istype(cAction))
-				addtimer(CALLBACK(cAction, TYPE_PROC_REF(/datum/action/xeno_action/activable/cleave, remove_buff)), 7, TIMER_UNIQUE)
+	linked_xeno.overlay_shields()
+	var/datum/action/xeno_action/activable/cleave/cAction = get_action(linked_xeno, /datum/action/xeno_action/activable/cleave)
+	if (istype(cAction))
+		addtimer(CALLBACK(cAction, TYPE_PROC_REF(/datum/action/xeno_action/activable/cleave, remove_buff)), 7, TIMER_UNIQUE)
 
 /datum/xeno_shield/vanguard/proc/notify_xeno()
 	if (!istype(linked_xeno))

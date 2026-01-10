@@ -26,14 +26,6 @@
 	},
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/security)
-"bb" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform,
-/turf/open/floor/prison/floor_plate,
-/area/fiorina/station/security)
 "bl" = (
 /obj/structure/machinery/vending/coffee,
 /turf/open/floor/prison/redfull,
@@ -80,10 +72,6 @@
 "cr" = (
 /obj/structure/sign/poster/clf,
 /turf/closed/wall/prison,
-/area/fiorina/station/security)
-"cI" = (
-/obj/structure/platform,
-/turf/open/floor/prison/cell_stripe/east,
 /area/fiorina/station/security)
 "cZ" = (
 /obj/structure/bed/chair/comfy{
@@ -252,6 +240,10 @@
 /obj/item/prop/helmetgarb/riot_shield,
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/security)
+"la" = (
+/obj/structure/machinery/power/apc/power/east,
+/turf/open/floor/prison,
+/area/fiorina/station/security)
 "lv" = (
 /turf/open/floor/prison/cell_stripe/west,
 /area/fiorina/station/security)
@@ -323,6 +315,12 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/security)
+"mX" = (
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 4
+	},
+/turf/open/floor/prison,
+/area/fiorina/lz/near_lzII)
 "nf" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/box/nade_box/tear_gas,
@@ -331,17 +329,6 @@
 "nl" = (
 /turf/template_noop,
 /area/template_noop)
-"np" = (
-/obj/structure/machinery/landinglight/delaythree{
-	dir = 4
-	},
-/turf/open/floor/prison,
-/area/fiorina/lz/near_lzII)
-"nD" = (
-/obj/structure/platform,
-/obj/effect/decal/cleanable/blood/gibs/xeno,
-/turf/open/floor/prison/floor_plate,
-/area/fiorina/station/security)
 "nN" = (
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/lz/near_lzII)
@@ -359,12 +346,23 @@
 /obj/item/storage/pill_bottle/kelotane,
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/security)
+"oo" = (
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_ew_full_cap"
+	},
+/obj/structure/platform/metal/stair_cut/platform_right,
+/turf/open/floor/plating/prison,
+/area/fiorina/station/security)
 "oE" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/recharger{
 	pixel_y = 4
 	},
 /turf/open/floor/prison/floor_plate,
+/area/fiorina/station/security)
+"oL" = (
+/obj/item/clothing/head/helmet/marine/veteran/cmb,
+/turf/open/floor/prison,
 /area/fiorina/station/security)
 "oS" = (
 /obj/structure/barricade/wooden{
@@ -399,6 +397,10 @@
 /area/fiorina/station/security)
 "pE" = (
 /obj/item/clothing/glasses/sunglasses/blindfold,
+/turf/open/floor/prison,
+/area/fiorina/station/security)
+"pK" = (
+/obj/item/clothing/glasses/mgoggles/cmb_riot_shield,
 /turf/open/floor/prison,
 /area/fiorina/station/security)
 "pN" = (
@@ -515,12 +517,6 @@
 	},
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/security)
-"ty" = (
-/obj/structure/machinery/power/apc{
-	dir = 1
-	},
-/turf/open/floor/prison,
-/area/fiorina/lz/near_lzII)
 "tS" = (
 /obj/structure/closet/secure_closet/security_empty,
 /obj/item/clothing/accessory/storage/holster,
@@ -533,6 +529,10 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/device/flash,
 /turf/open/floor/prison/redfull,
+/area/fiorina/station/security)
+"uo" = (
+/obj/structure/platform/metal/almayer,
+/turf/open/floor/prison/cell_stripe/east,
 /area/fiorina/station/security)
 "uQ" = (
 /turf/open/floor/prison,
@@ -585,6 +585,14 @@
 /obj/effect/landmark/corpsespawner/ua_riot,
 /turf/open/floor/prison,
 /area/fiorina/station/security)
+"xh" = (
+/obj/structure/stairs/perspective{
+	dir = 8;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/metal/almayer,
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/station/security)
 "xp" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_29";
@@ -631,6 +639,21 @@
 /obj/item/weapon/classic_baton,
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzII)
+"yt" = (
+/obj/structure/closet/secure_closet/guncabinet{
+	req_access = null;
+	name = "CMB riot locker"
+	},
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/clothing/mask/gas/swat,
+/obj/item/clothing/head/helmet/marine/veteran/cmb,
+/obj/item/clothing/glasses/mgoggles/cmb_riot_shield,
+/obj/item/clothing/suit/storage/marine/veteran/cmb,
+/obj/item/clothing/under/marine/veteran/cmb,
+/turf/open/floor/prison/redfull,
+/area/fiorina/station/security)
 "yv" = (
 /turf/open/floor/prison/cell_stripe/west,
 /area/fiorina/lz/near_lzII)
@@ -724,18 +747,6 @@
 /obj/item/stack/sheet/metal,
 /turf/open/floor/prison,
 /area/fiorina/station/security)
-"BJ" = (
-/obj/structure/closet/secure_closet/guncabinet{
-	req_access = null
-	},
-/obj/item/weapon/gun/smg/mp5,
-/obj/item/ammo_magazine/smg/mp5,
-/obj/item/ammo_magazine/smg/mp5,
-/obj/item/clothing/under/marine/ua_riot,
-/obj/item/clothing/suit/storage/marine/veteran/ua_riot,
-/obj/item/prop/helmetgarb/riot_shield,
-/turf/open/floor/prison/redfull,
-/area/fiorina/station/security)
 "Cb" = (
 /obj/structure/barricade/deployable{
 	dir = 4
@@ -782,6 +793,10 @@
 /obj/item/frame/rack,
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/security)
+"Fi" = (
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/prison,
+/area/fiorina/lz/near_lzII)
 "Fj" = (
 /obj/structure/stairs/perspective{
 	dir = 8;
@@ -817,6 +832,10 @@
 "FZ" = (
 /obj/item/weapon/shield/riot,
 /turf/open/floor/prison,
+/area/fiorina/station/security)
+"Gc" = (
+/obj/structure/platform/metal/almayer,
+/turf/open/floor/prison/floor_plate,
 /area/fiorina/station/security)
 "Gd" = (
 /obj/structure/closet/secure_closet/guncabinet{
@@ -863,10 +882,6 @@
 /obj/item/clothing/glasses/sunglasses/sechud,
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/security)
-"HH" = (
-/obj/item/weapon/gun/launcher/grenade/m81/riot,
-/turf/open/floor/prison,
-/area/fiorina/station/security)
 "HL" = (
 /obj/item/clothing/under/color/orange,
 /obj/effect/spawner/gibspawner/human,
@@ -881,6 +896,10 @@
 	pixel_y = -4
 	},
 /turf/open/floor/prison/redfull,
+/area/fiorina/station/security)
+"HX" = (
+/obj/structure/platform/metal/almayer,
+/turf/open/floor/prison/cell_stripe/west,
 /area/fiorina/station/security)
 "Ie" = (
 /obj/structure/stairs/perspective{
@@ -952,16 +971,13 @@
 /obj/item/prop/helmetgarb/riot_shield,
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/security)
-"NL" = (
-/obj/structure/platform,
-/turf/open/floor/prison/cell_stripe/west,
+"Nl" = (
+/obj/structure/platform/metal/almayer,
+/obj/effect/decal/cleanable/blood/gibs/xeno,
+/turf/open/floor/prison/floor_plate,
 /area/fiorina/station/security)
 "NN" = (
 /obj/item/ammo_magazine/rifle/m16,
-/turf/open/floor/prison/floor_plate,
-/area/fiorina/station/security)
-"Ox" = (
-/obj/structure/platform,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/security)
 "OA" = (
@@ -978,6 +994,12 @@
 /obj/effect/landmark/corpsespawner/prisoner,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison,
+/area/fiorina/lz/near_lzII)
+"Pn" = (
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 4
+	},
+/turf/open/floor/prison/floor_plate,
 /area/fiorina/lz/near_lzII)
 "Pt" = (
 /obj/item/prop/helmetgarb/riot_shield,
@@ -998,12 +1020,6 @@
 /obj/structure/machinery/vending/security,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/security)
-"QF" = (
-/obj/structure/machinery/landinglight/delaytwo{
-	dir = 4
-	},
-/turf/open/floor/prison/floor_plate,
-/area/fiorina/lz/near_lzII)
 "QJ" = (
 /turf/closed/wall/prison,
 /area/fiorina/station/security)
@@ -1024,6 +1040,10 @@
 /obj/item/storage/fancy/cigarettes/emeraldgreen,
 /obj/item/tool/lighter,
 /turf/open/floor/prison/redfull,
+/area/fiorina/station/security)
+"RU" = (
+/obj/item/weapon/gun/launcher/grenade/m84,
+/turf/open/floor/prison,
 /area/fiorina/station/security)
 "Sd" = (
 /obj/item/poster,
@@ -1063,19 +1083,6 @@
 /obj/structure/machinery/vending/coffee,
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzII)
-"SE" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_ew_full_cap"
-	},
-/obj/structure/platform/stair_cut/alt,
-/turf/open/floor/plating/prison,
-/area/fiorina/station/security)
-"Tn" = (
-/obj/structure/machinery/power/apc{
-	dir = 4
-	},
-/turf/open/floor/prison,
-/area/fiorina/station/security)
 "Tp" = (
 /obj/item/paper/crumpled,
 /turf/open/floor/prison/redfull,
@@ -1084,6 +1091,12 @@
 /obj/item/stack/tile/plasteel,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/security)
+"TT" = (
+/obj/structure/machinery/landinglight/delayone{
+	dir = 4
+	},
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/lz/near_lzII)
 "UE" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/computer/cameras{
@@ -1202,12 +1215,6 @@
 /obj/item/storage/belt/marine,
 /turf/open/floor/prison,
 /area/fiorina/station/security)
-"XO" = (
-/obj/structure/machinery/landinglight/delayone{
-	dir = 4
-	},
-/turf/open/floor/prison/floor_plate,
-/area/fiorina/lz/near_lzII)
 "XV" = (
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/station/security)
@@ -1288,7 +1295,7 @@ FH
 FH
 xW
 Ie
-Tn
+la
 Zg
 vq
 vq
@@ -1383,7 +1390,7 @@ nl
 vq
 sA
 sq
-HH
+RU
 sq
 FH
 PA
@@ -1489,8 +1496,8 @@ Su
 YH
 hg
 PA
-sq
-sq
+oL
+pK
 sq
 PA
 FH
@@ -1522,7 +1529,7 @@ bO
 WW
 Pt
 vq
-BJ
+yt
 rR
 Ne
 vq
@@ -1587,7 +1594,7 @@ Wy
 Sd
 FH
 TO
-Ox
+Gc
 vq
 xW
 xW
@@ -1620,7 +1627,7 @@ FH
 mt
 rl
 MX
-Ox
+Gc
 QJ
 Mp
 xW
@@ -1653,7 +1660,7 @@ hI
 FH
 FH
 Sm
-nD
+Nl
 IG
 xW
 wW
@@ -1686,7 +1693,7 @@ Yt
 Yt
 XV
 Yt
-cI
+uo
 QJ
 Xj
 sq
@@ -1719,7 +1726,7 @@ lv
 lv
 XV
 lv
-NL
+HX
 YL
 Zo
 sq
@@ -1752,7 +1759,7 @@ FH
 FH
 vS
 FH
-Ox
+Gc
 YL
 bl
 sq
@@ -1785,7 +1792,7 @@ FH
 fh
 gl
 FH
-Ox
+Gc
 YL
 nf
 sq
@@ -1816,9 +1823,9 @@ QJ
 Qv
 vq
 vq
-SE
+oo
 ma
-bb
+xh
 QJ
 qX
 sq
@@ -1927,7 +1934,7 @@ cr
 gV
 gV
 vq
-ty
+Fi
 uQ
 uQ
 uQ
@@ -1964,7 +1971,7 @@ nN
 uQ
 ce
 uQ
-XO
-QF
-np
+TT
+Pn
+mX
 "}

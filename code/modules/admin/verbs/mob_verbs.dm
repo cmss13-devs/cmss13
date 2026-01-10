@@ -41,7 +41,8 @@
 		if(!M || !O) //Extra check in case the mob was deleted while we were transfering.
 			return
 		change_ckey(M, O.ckey)
-	else return
+	else
+		return
 
 /client/proc/cmd_admin_check_contents(mob/living/M as mob in GLOB.living_mob_list)
 	set name = "Check Contents"
@@ -79,7 +80,8 @@
 			H = GLOB.huds[MOB_HUD_FACTION_OBSERVER]
 		if("Xeno Status HUD")
 			H = GLOB.huds[MOB_HUD_XENO_STATUS]
-		else return
+		else
+			return
 
 	H.add_hud_to(M, HUD_SOURCE_ADMIN)
 	to_chat(src, SPAN_INFO("[hud_choice] enabled."))
@@ -89,12 +91,15 @@
 	set category = "Admin.Fun"
 	set name = "Gib"
 
-	if(!check_rights(R_ADMIN)) return
+	if(!check_rights(R_ADMIN))
+		return
 
 	var/confirm = alert(src, "You sure?", "Confirm", "Yes", "No")
-	if(confirm != "Yes") return
+	if(confirm != "Yes")
+		return
 	//Due to the delay here its easy for something to have happened to the mob
-	if(!M) return
+	if(!M)
+		return
 
 	message_admins("[key_name_admin(usr)] has gibbed [key_name_admin(M)]", 1)
 
@@ -158,11 +163,11 @@
 			var/mob/living/carbon/human/H = M
 
 			if(!istype(H))
-				to_chat(usr, "The person you are trying to contact is not human")
+				to_chat(usr, "The person you are trying to contact is not human.")
 				return
 
 			if(!H.get_type_in_ears(/obj/item/device/radio/headset))
-				to_chat(usr, "The person you are trying to contact is not wearing a headset")
+				to_chat(usr, "The person you are trying to contact is not wearing a headset.")
 				return
 			to_chat(H, SPAN_ANNOUNCEMENT_HEADER_BLUE("Message received through headset. [message_option] Transmission <b>\"[msg]\"</b>"))
 
@@ -214,11 +219,13 @@
 				"What type of narration?",
 				"Narration",
 				list(NARRATION_METHOD_SAY, NARRATION_METHOD_ME, NARRATION_METHOD_DIRECT))
-	if(!type) return
+	if(!type)
+		return
 	var/message = input(usr,
 				"What should it say?",
 				"Narrating as [selected.name]")
-	if(!message) return
+	if(!message)
+		return
 
 	var/list/heard = get_mobs_in_view(GLOB.world_view_size, selected)
 
@@ -289,7 +296,7 @@
 	usr.forceMove(O)
 	usr.real_name = O.name
 	usr.name = O.name
-	usr.client.eye = O
+	usr.client.set_eye(O)
 	usr.control_object = O
 
 /client/proc/release(obj/O as obj in world)
@@ -309,7 +316,7 @@
 			H.change_real_name(H, usr.name_archive)
 
 	usr.forceMove(O.loc )// Appear where the object you were controlling is -- TLE
-	usr.client.eye = usr
+	usr.client.set_eye(usr)
 	usr.control_object = null
 
 /client/proc/cmd_admin_drop_everything(mob/M as mob in GLOB.mob_list)
@@ -325,7 +332,8 @@
 		return
 
 	for(var/obj/item/W in M)
-		if(istype(W,/obj/item/alien_embryo)) continue
+		if(istype(W,/obj/item/alien_embryo))
+			continue
 		M.drop_inv_item_on_ground(W)
 
 	message_admins("[key_name_admin(usr)] made [key_name_admin(M)] drop everything!")
@@ -345,7 +353,7 @@
 	var/newhive = tgui_input_list(src,"Select a hive.", "Change Hivenumber", hives, theme="hive_status")
 
 	if(!H)
-		to_chat(usr, "This mob no longer exists")
+		to_chat(usr, "This mob no longer exists.")
 		return
 
 	if(isxeno(H))
@@ -379,7 +387,7 @@
 		return
 
 	if(!carbon)
-		to_chat(usr, "This mob no longer exists")
+		to_chat(usr, "This mob no longer exists.")
 		return
 
 	var/old_name = carbon.name
@@ -388,7 +396,7 @@
 		var/mob/living/carbon/human/human = carbon
 		var/obj/item/card/id/card = human.get_idcard()
 		if(card)
-			card.name = "[human.real_name]'s ID Card"
+			card.name = "[human.real_name]'s [card.id_type]"
 			card.registered_name = "[human.real_name]"
 			if(card.assignment)
 				card.name += " ([card.assignment])"
@@ -399,7 +407,8 @@
 	set name = "Toggle Sleeping"
 	set category = null
 
-	if(!check_rights(0)) return
+	if(!check_rights(0))
+		return
 
 	if (M.sleeping > 0) //if they're already slept, set their sleep to zero and remove the icon
 		M.sleeping = 0

@@ -58,6 +58,13 @@
 			SPAN_NOTICE("[user] has constructed a prepared incision in [target]'s [surgery.affected_limb.display_name]."))
 
 		surgery.status += 2 //IMS completes all steps.
+
+		switch(target_zone) //forces application of overlays
+			if("chest")
+				target.overlays += image('icons/mob/humans/dam_human.dmi', "chest_surgery_closed")
+			if("head")
+				target.overlays += image('icons/mob/humans/dam_human.dmi', "skull_surgery_closed")
+
 	else if(tool_type == /obj/item/tool/surgery/scalpel/laser && prob(las_scalpel.bloodlessprob))
 		user.affected_message(target,
 			SPAN_NOTICE("You finish making a bloodless incision on [target]'s [surgery.affected_limb.display_name] with \the [tool]."),
@@ -223,6 +230,7 @@
 		/obj/item/attachable/bayonet = SURGERY_TOOL_MULT_AWFUL,
 		/obj/item/tool/surgery/scalpel = SURGERY_TOOL_MULT_AWFUL,
 		/obj/item/tool/kitchen/knife = SURGERY_TOOL_MULT_AWFUL,
+		/obj/item/weapon/throwing_knife = SURGERY_TOOL_MULT_AWFUL,
 		/obj/item/shard = SURGERY_TOOL_MULT_AWFUL
 		)
 	preop_sound = 'sound/surgery/retractor1.ogg'
@@ -253,11 +261,18 @@
 			h_his = "her"
 
 	switch(target_zone)
+		if("chest")
+			target.overlays += image('icons/mob/humans/dam_human.dmi', "chest_surgery_closed")
+			user.affected_message(target,
+				SPAN_NOTICE("You hold the incision on [target]'s [surgery.affected_limb.display_name] open with \the [tool]."),
+				SPAN_NOTICE("[user] holds the incision on your [surgery.affected_limb.display_name] open with \the [tool]."),
+				SPAN_NOTICE("[user] holds the incision on [target]'s [surgery.affected_limb.display_name] open with \the [tool]."))
 		if("head")
 			user.affected_message(target,
 				SPAN_NOTICE("You hold the incision on [target]'s head open with \the [tool], exposing [h_his] skull."),
 				SPAN_NOTICE("[user] holds the incision on your head open with \the [tool], exposing your skull."),
 				SPAN_NOTICE("[user] holds the incision on [target]'s head open with \the [tool], exposing [h_his] skull."))
+			target.overlays += image('icons/mob/humans/dam_human.dmi', "skull_surgery_closed")
 		if("groin")
 			user.affected_message(target,
 				SPAN_NOTICE("You hold the incision on [target]'s lower abdomen open with \the [tool], exposing [h_his] viscera."),
@@ -281,15 +296,25 @@
 
 	switch(target_zone)
 		if("head")
+			target.overlays += image('icons/mob/humans/dam_human.dmi', "skull_surgery_closed")
 			user.affected_message(target,
 				SPAN_WARNING("You tear open the incision on [target]'s head with \the [tool], exposing [h_his] skull!"),
 				SPAN_WARNING("[user] holds the incision on your head open with \the [tool], exposing your skull!"),
 				SPAN_WARNING("[user] holds the incision on [target]'s head open with \the [tool], exposing [h_his] skull!"))
+
 		if("groin")
 			user.affected_message(target,
 				SPAN_WARNING("You tear open the incision on [target]'s lower abdomen with \the [tool], exposing [h_his] viscera!"),
 				SPAN_WARNING("[user] tears the incision on your lower abdomen open with \the [tool], exposing your viscera!"),
 				SPAN_WARNING("[user] tears the incision on [target]'s lower abdomen open with \the [tool], exposing [h_his] viscera!"))
+
+		if("chest")
+			target.overlays += image('icons/mob/humans/dam_human.dmi', "chest_surgery_closed")
+			user.affected_message(target,
+				SPAN_WARNING("You tear open the incision on [target]'s [surgery.affected_limb.display_name] with \the [tool]!"),
+				SPAN_WARNING("[user] tears the incision on your [surgery.affected_limb.display_name] open with \the [tool]!"),
+				SPAN_WARNING("[user] tears the incision on [target]'s [surgery.affected_limb.display_name] open with \the [tool]!"))
+
 		else
 			user.affected_message(target,
 				SPAN_WARNING("You tear open the incision on [target]'s [surgery.affected_limb.display_name] with \the [tool]!"),
@@ -347,6 +372,13 @@
 		SPAN_NOTICE("You cauterize the incision on [target]'s [surgery.affected_limb.display_name]."),
 		SPAN_NOTICE("[user] cauterizes the incision on your [surgery.affected_limb.display_name]."),
 		SPAN_NOTICE("[user] cauterizes the incision on [target]'s [surgery.affected_limb.display_name]."))
+	switch(target_zone)
+		if("head")
+			target.overlays -= image('icons/mob/humans/dam_human.dmi', "skull_surgery_closed")
+			target.overlays -= image('icons/mob/humans/dam_human.dmi', "skull_surgery_open")
+		if("chest")
+			target.overlays -= image('icons/mob/humans/dam_human.dmi', "chest_surgery_closed")
+			target.overlays -= image('icons/mob/humans/dam_human.dmi', "chest_surgery_open")
 
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SURFACE
 	surgery.affected_limb.remove_all_bleeding(TRUE, FALSE)
@@ -478,6 +510,13 @@
 		SPAN_NOTICE("You use \the [tool] to hold [target]'s [surgery.affected_limb.encased] open, exposing \his [brain ? "brain" : "vital organs"]."),
 		SPAN_NOTICE("[user] uses \the [tool] to hold your [surgery.affected_limb.encased] open, exposing your [brain ? "brain" : "vital organs"]."),
 		SPAN_NOTICE("[user] uses \the [tool] to hold [target]'s [surgery.affected_limb.encased] open, exposing \his [brain ? "brain" : "vital organs"]."))
+	switch(target_zone)
+		if("head")
+			target.overlays -= image('icons/mob/humans/dam_human.dmi', "skull_surgery_closed")
+			target.overlays += image('icons/mob/humans/dam_human.dmi', "skull_surgery_open")
+		if("chest")
+			target.overlays -= image('icons/mob/humans/dam_human.dmi', "chest_surgery_closed")
+			target.overlays += image('icons/mob/humans/dam_human.dmi', "chest_surgery_open")
 
 	target.incision_depths[target_zone] = SURGERY_DEPTH_DEEP
 	complete(target, surgery) //This finishes the surgery.
@@ -542,6 +581,13 @@
 		SPAN_NOTICE("You close [target]'s [surgery.affected_limb.encased]."),
 		SPAN_NOTICE("[user] closes your [surgery.affected_limb.encased]."),
 		SPAN_NOTICE("[user] closes [target]'s [surgery.affected_limb.encased]."))
+	switch(target_zone)
+		if("head")
+			target.overlays -= image('icons/mob/humans/dam_human.dmi', "skull_surgery_open")
+			target.overlays += image('icons/mob/humans/dam_human.dmi', "skull_surgery_closed")
+		if("chest")
+			target.overlays -= image('icons/mob/humans/dam_human.dmi', "chest_surgery_open")
+			target.overlays += image('icons/mob/humans/dam_human.dmi', "chest_surgery_closed")
 
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SHALLOW
 	log_interact(user, target, "[key_name(user)] closed [key_name(target)]'s [surgery.affected_limb.encased], beginning [surgery].")
@@ -665,7 +711,7 @@ If fiddling with, uncomment /mob/living/attackby surgery code also. It's pointle
 	steps = list(/datum/surgery_step/test_incision)
 	pain_reduction_required = NONE //Xenos cannot process painkillers.
 	requires_bodypart = FALSE //Xenos have no limbs.
-	target_mobtypes = list(/mob/living/carbon/xenomorph, /mob/living/simple_animal/cat/Jones)
+	target_mobtypes = list(/mob/living/carbon/xenomorph, /mob/living/simple_animal/small/cat/Jones)
 	lying_required = FALSE
 
 /datum/surgery_step/test_incision
@@ -709,7 +755,7 @@ If fiddling with, uncomment /mob/living/attackby surgery code also. It's pointle
 	priority = SURGERY_PRIORITY_HIGH
 	possible_locs = list("chest")
 	required_surgery_skill = SKILL_SURGERY_TRAINED
-	target_mobtypes = list(/mob/living/simple_animal/cat/Jones)
+	target_mobtypes = list(/mob/living/simple_animal/small/cat/Jones)
 	steps = list(/datum/surgery_step/mend_test_organ_step)
 	pain_reduction_required = NONE //Xenos cannot process painkillers.
 	requires_bodypart = FALSE //Xenos have no limbs.
@@ -769,7 +815,7 @@ If fiddling with, uncomment /mob/living/attackby surgery code also. It's pointle
 	self_operable = TRUE
 	pain_reduction_required = NONE //Xenos cannot process painkillers.
 	requires_bodypart = FALSE //Xenos have no limbs.
-	target_mobtypes = list(/mob/living/carbon/xenomorph, /mob/living/simple_animal/cat/Jones)
+	target_mobtypes = list(/mob/living/carbon/xenomorph, /mob/living/simple_animal/small/cat/Jones)
 	lying_required = FALSE
 
 //------------------------------------

@@ -1,6 +1,6 @@
 #define WO_MAX_WAVE 15
 
-//Global proc for checking if the game is whiskey outpost so I dont need to type if(gamemode == whiskey outpost) 50000 times
+//Global proc for checking if the game is whiskey outpost so I don't need to type if(gamemode == whiskey outpost) 50000 times
 /proc/Check_WO()
 	if(SSticker.mode == GAMEMODE_WHISKEY_OUTPOST || GLOB.master_mode == GAMEMODE_WHISKEY_OUTPOST)
 		return 1
@@ -11,6 +11,7 @@
 	config_tag = GAMEMODE_WHISKEY_OUTPOST
 	required_players = 140
 	xeno_bypass_timer = 1
+	static_comms_amount = 0
 	flags_round_type = MODE_NEW_SPAWN
 	role_mappings = list(
 		/datum/job/command/commander/whiskey = JOB_CO,
@@ -26,7 +27,7 @@
 		/datum/job/civilian/doctor/whiskey = JOB_DOCTOR,
 		/datum/job/civilian/researcher/whiskey = JOB_RESEARCHER,
 		/datum/job/logistics/engineering/whiskey = JOB_CHIEF_ENGINEER,
-		/datum/job/logistics/tech/maint/whiskey = JOB_MAINT_TECH,
+		/datum/job/logistics/maint/whiskey = JOB_MAINT_TECH,
 		/datum/job/logistics/cargo/whiskey = JOB_CARGO_TECH,
 		/datum/job/civilian/liaison/whiskey = JOB_CORPORATE_LIAISON,
 		/datum/job/marine/leader/whiskey = JOB_SQUAD_LEADER,
@@ -40,7 +41,7 @@
 
 	latejoin_larva_drop = 0 //You never know
 
-	//var/mob/living/carbon/human/Commander //If there is no Commander, marines wont get any supplies
+	//var/mob/living/carbon/human/Commander //If there is no Commander, marines won't get any supplies
 	//No longer relevant to the game mode, since supply drops are getting changed.
 	var/checkwin_counter = 0
 	var/finished = 0
@@ -74,6 +75,7 @@
 	var/list/whiskey_outpost_waves = list()
 
 	hardcore = TRUE
+	starting_round_modifiers = list(/datum/gamemode_modifier/permadeath)
 
 	votable = TRUE
 	vote_cycle = 75 // approx. once every 5 days, if it wins the vote
@@ -91,7 +93,6 @@
 	return 1
 
 /datum/game_mode/whiskey_outpost/pre_setup()
-	SSticker.mode.toggleable_flags ^= MODE_HARDCORE_PERMA
 	for(var/obj/effect/landmark/whiskey_outpost/xenospawn/X)
 		xeno_spawns += X.loc
 	for(var/obj/effect/landmark/whiskey_outpost/supplydrops/S)
@@ -119,10 +120,10 @@
 	CONFIG_SET(flag/remove_gun_restrictions, TRUE)
 	sleep(10)
 	to_world(SPAN_ROUND_HEADER("The current game mode is - WHISKEY OUTPOST!"))
-	to_world(SPAN_ROUNDBODY("It is the year 2177 on the planet LV-624, five years before the arrival of the USS Almayer and the 2nd 'Falling Falcons' Battalion in the sector"))
-	to_world(SPAN_ROUNDBODY("The 3rd 'Dust Raiders' Battalion is charged with establishing a USCM presence in the Neroid Sector"))
-	to_world(SPAN_ROUNDBODY("[SSmapping.configs[GROUND_MAP].map_name], one of the Dust Raider bases being established in the sector, has come under attack from unrecognized alien forces"))
-	to_world(SPAN_ROUNDBODY("With casualties mounting and supplies running thin, the Dust Raiders at [SSmapping.configs[GROUND_MAP].map_name] must survive for an hour to alert the rest of their battalion in the sector"))
+	to_world(SPAN_ROUNDBODY("It is the year 2177 on the planet LV-624, five years before the arrival of the USS Almayer and the 2nd 'Falling Falcons' Battalion in the sector."))
+	to_world(SPAN_ROUNDBODY("The 3rd 'Dust Raiders' Battalion is charged with establishing a USCM presence in the Neroid Sector."))
+	to_world(SPAN_ROUNDBODY("[SSmapping.configs[GROUND_MAP].map_name], one of the Dust Raider bases being established in the sector, has come under attack from unrecognized alien forces."))
+	to_world(SPAN_ROUNDBODY("With casualties mounting and supplies running thin, the Dust Raiders at [SSmapping.configs[GROUND_MAP].map_name] must survive for an hour to alert the rest of their battalion in the sector."))
 	to_world(SPAN_ROUNDBODY("Hold out for as long as you can."))
 	world << sound('sound/effects/siren.ogg')
 
@@ -136,7 +137,7 @@
 /datum/game_mode/whiskey_outpost/proc/story_announce(time)
 	switch(time)
 		if(0)
-			marine_announcement("This is Captain Hans Naiche, Commander of the 3rd Bataillion, 'Dust Raiders' forces on LV-624. As you already know, several of our patrols have gone missing and likely wiped out by hostile local creatures as we've attempted to set our base up.", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
+			marine_announcement("This is Captain Hans Naiche, Commander of the 3rd Bataillion, 'Dust Raiders' forces on LV-624. As you already know, several of our patrols have gone missing and were likely wiped out by hostile local creatures as we attempted to set up our base.", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
 		if(1)
 			marine_announcement("Our scouts report increased activity in the area and given our intel, we're already preparing for the worst. We're setting up a comms relay to send out a distress call, but we're going to need time while our engineers get everything ready. All other stations should prepare accordingly and maximize combat readiness, effective immediately.", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
 		if(2)
@@ -298,11 +299,10 @@
 		GLOB.round_statistics.game_mode = name
 		GLOB.round_statistics.round_length = world.time
 		GLOB.round_statistics.end_round_player_population = length(GLOB.clients)
-
 		GLOB.round_statistics.log_round_statistics()
+		GLOB.round_statistics.save()
 
-		round_finished = 1
-
+	round_finished = 1
 	calculate_end_statistics()
 
 
@@ -508,7 +508,7 @@
 	var/icon_on = "grinder-o1"
 
 	name = "Recycler"
-	desc = "Instructions: Place objects you want to destroy on top of it and use the machine. Use with care"
+	desc = "Instructions: Place objects you want to destroy on top of it and use the machine. Use with care."
 	density = FALSE
 	anchored = TRUE
 	unslashable = TRUE
@@ -537,7 +537,7 @@
 				if(istype(O,/obj/structure/closet/crate))
 					var/obj/structure/closet/crate/C = O
 					if(length(C.contents))
-						to_chat(user, SPAN_DANGER("[O] must be emptied before it can be recycled"))
+						to_chat(user, SPAN_DANGER("[O] must be emptied before it can be recycled."))
 						continue
 					new /obj/item/stack/sheet/metal(get_step(src,dir))
 					O.forceMove(get_turf(locate(84,237,2))) //z.2
@@ -591,7 +591,7 @@
 /obj/item/device/whiskey_supply_beacon //Whiskey Outpost Supply beacon. Might as well reuse the IR target beacon (Time to spook the fucking shit out of people.)
 	name = "ASB beacon"
 	desc = "Ammo Supply Beacon, it has 5 different settings for different supplies. Look at your weapons verb tab to be able to switch ammo drops."
-	icon = 'icons/turf/whiskeyoutpost.dmi'
+	icon = 'icons/obj/items/weapons/grenade.dmi'
 	icon_state = "ir_beacon"
 	w_class = SIZE_SMALL
 	var/activated = 0
@@ -612,8 +612,10 @@
 	var/list/supplies = list(
 		"10x24mm, slugs, buckshot, and 10x20mm rounds",
 		"Explosives and grenades",
+		"SHARP ammo",
 		"Rocket ammo",
 		"Sniper ammo",
+		"Anti-Material Sniper ammo",
 		"Pyrotechnician tanks",
 		"Scout ammo",
 		"Smartgun ammo",
@@ -634,14 +636,20 @@
 		if("Sniper ammo")
 			supply_drop = 3
 			to_chat(usr, SPAN_NOTICE("Sniper ammo will now drop!"))
-		if("Explosives and grenades")
+		if("Anti-Material Sniper ammo")
 			supply_drop = 4
-			to_chat(usr, SPAN_NOTICE("Explosives and grenades will now drop!"))
-		if("Pyrotechnician tanks")
+			to_chat(usr, SPAN_NOTICE("Anti-Material Sniper ammo will now drop!"))
+		if("Explosives and grenades")
 			supply_drop = 5
+			to_chat(usr, SPAN_NOTICE("Explosives and grenades will now drop!"))
+		if("SHARP ammo")
+			supply_drop = 6
+			to_chat(usr, SPAN_NOTICE("SHARP ammo will now drop!"))
+		if("Pyrotechnician tanks")
+			supply_drop = 7
 			to_chat(usr, SPAN_NOTICE("Pyrotechnician tanks will now drop!"))
 		if("Scout ammo")
-			supply_drop = 6
+			supply_drop = 8
 			to_chat(usr, SPAN_NOTICE("Scout ammo will now drop!"))
 		else
 			return
@@ -673,7 +681,8 @@
 	return
 
 /obj/item/device/whiskey_supply_beacon/proc/drop_supplies(turf/T, SD)
-	if(!istype(T)) return
+	if(!istype(T))
+		return
 	var/list/spawnitems = list()
 	var/obj/structure/closet/crate/crate
 	crate = new /obj/structure/closet/crate/secure/weapon(T)
@@ -734,15 +743,26 @@
 							/obj/item/ammo_magazine/sniper,
 							/obj/item/ammo_magazine/sniper/incendiary,
 							/obj/item/ammo_magazine/sniper/flak)
-		if(4) // Give them explosives + Grenades for the Grenade spec. Might be too many grenades, but we'll find out.
+		if(4) //Amr sniper ammo.
+			spawnitems = list(/obj/item/ammo_magazine/sniper/anti_materiel,
+							/obj/item/ammo_magazine/sniper/anti_materiel,
+							/obj/item/ammo_magazine/sniper/anti_materiel,
+							/obj/item/ammo_magazine/sniper/anti_materiel,
+							/obj/item/ammo_magazine/sniper/anti_materiel)
+		if(5) // Give them explosives + Grenades for the Grenade spec. Might be too many grenades, but we'll find out.
 			spawnitems = list(/obj/item/storage/box/explosive_mines,
 							/obj/item/storage/belt/grenade/full)
-		if(5) // Pyrotech
+		if(6) // SHARP ammo
+			spawnitems = list(/obj/item/ammo_magazine/rifle/sharp/explosive,
+							/obj/item/ammo_magazine/rifle/sharp/explosive,
+							/obj/item/ammo_magazine/rifle/sharp/incendiary,
+							/obj/item/ammo_magazine/rifle/sharp/flechette,)
+		if(7) // Pyrotech
 			var/fuel = pick(/obj/item/ammo_magazine/flamer_tank/large/B, /obj/item/ammo_magazine/flamer_tank/large/X)
 			spawnitems = list(/obj/item/ammo_magazine/flamer_tank/large,
 							/obj/item/ammo_magazine/flamer_tank/large,
 							fuel)
-		if(6) // Scout
+		if(8) // Scout
 			spawnitems = list(/obj/item/ammo_magazine/rifle/m4ra/custom,
 							/obj/item/ammo_magazine/rifle/m4ra/custom,
 							/obj/item/ammo_magazine/rifle/m4ra/custom/incendiary,
@@ -772,9 +792,12 @@
 	var/a1 = pick(common)
 	var/a2 = pick(attachment_1)
 	var/a3 = pick(attachment_2)
-	if(a1) new a1(src)
-	if(a2) new a2(src)
-	if(a3) new a3(src)
+	if(a1)
+		new a1(src)
+	if(a2)
+		new a2(src)
+	if(a3)
+		new a3(src)
 	return
 
 /obj/item/storage/box/attachments/update_icon()

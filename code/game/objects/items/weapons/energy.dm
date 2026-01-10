@@ -1,5 +1,10 @@
 /obj/item/weapon/energy
 	var/active = 0
+	icon = 'icons/obj/items/weapons/melee/energy.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/energy_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/energy_righthand.dmi'
+	)
 	flags_atom = FPRINT|QUICK_DRAWABLE|NOBLOODY
 
 /obj/item/weapon/energy/axe
@@ -12,7 +17,7 @@
 	throw_range = 5
 	w_class = SIZE_MEDIUM
 	flags_atom = FPRINT|CONDUCT|QUICK_DRAWABLE|NOBLOODY
-	flags_item = NOSHIELD
+	flags_item = UNBLOCKABLE
 
 	attack_verb = list("attacked", "chopped", "cleaved", "torn", "cut")
 	sharp = IS_SHARP_ITEM_BIG
@@ -48,18 +53,13 @@
 	throw_range = 5
 	w_class = SIZE_SMALL
 	flags_atom = FPRINT|QUICK_DRAWABLE|NOBLOODY
-	flags_item = NOSHIELD
+	flags_item = UNBLOCKABLE
 
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	sharp = IS_SHARP_ITEM_BIG
 	edge = 1
 	var/base_sword_icon = "sword"
 	var/sword_color
-
-/obj/item/weapon/energy/sword/IsShield()
-	if(active)
-		return 1
-	return 0
 
 /obj/item/weapon/energy/sword/New()
 	if(!sword_color)

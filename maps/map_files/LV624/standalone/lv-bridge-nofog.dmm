@@ -63,7 +63,7 @@
 /turf/open/gm/river,
 /area/lv624/ground/river/central_river)
 "lS" = (
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/jungle/north_jungle)
 "lW" = (
 /obj/effect/landmark/lv624/fog_blocker,
@@ -87,11 +87,11 @@
 /area/lv624/ground/river/central_river)
 "mD" = (
 /obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/jungle/north_jungle)
 "mE" = (
 /obj/structure/flora/jungle/plantbot1,
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/jungle/north_east_jungle)
 "pF" = (
 /turf/open/gm/coast/south,
@@ -103,7 +103,7 @@
 /area/lv624/ground/river/central_river)
 "xB" = (
 /obj/effect/landmark/crap_item,
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/jungle/north_jungle)
 "yj" = (
 /turf/open/gm/coast/beachcorner/south_east,
@@ -134,7 +134,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_east_jungle)
 "Wb" = (
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/jungle/north_east_jungle)
 "Yw" = (
 /turf/open/floor/plating/asteroidwarning/north,

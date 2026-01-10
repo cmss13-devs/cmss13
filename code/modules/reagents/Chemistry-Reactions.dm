@@ -6,19 +6,23 @@
 	var/list/required_reagents = new/list()
 	var/list/required_catalysts = new/list()
 
-	var/mob_react = TRUE //Determines if a chemical reaction can occur inside a mob
+	/// Determines if a chemical reaction can occur inside a mob
+	var/mob_react = TRUE
+	/// The container path required for the reaction to happen
+	var/required_container = null
+	/// The resulting amount: Recommended to be set to the total volume of all components
+	var/result_amount = 0
+	/// set to nonzero if secondary reaction
+	var/secondary = 0
+	/// additional reagents produced by the reaction
+	var/list/secondary_results = list()
+	///flags of indicator of the reaction does this reaction has. potentially violent.
+	var/reaction_type = CHEM_REACTION_CALM
 
-	// both vars below are currently unused
-	var/atom/required_container = null // the container required for the reaction to happen
-	var/required_other = 0 // an integer required for the reaction to happen
+/datum/chemical_reaction/proc/on_reaction(datum/reagents/holder, created_volume, multiplier)
+	SHOULD_CALL_PARENT(TRUE)
 
-	var/result_amount = 0 //I recommend you set the result amount to the total volume of all components.
-	var/secondary = 0 // set to nonzero if secondary reaction
-	var/list/secondary_results = list() //additional reagents produced by the reaction
-	var/requires_heating = 0
 
-/datum/chemical_reaction/proc/on_reaction(datum/reagents/holder, created_volume)
-	return
 
 /datum/chemical_reaction/proc/add_to_filtered_list(reset = FALSE)
 	if(reset)
@@ -47,3 +51,4 @@
 		if(!(initial(M.flags) & REAGENT_TYPE_MEDICAL))
 			return FALSE
 	return TRUE
+

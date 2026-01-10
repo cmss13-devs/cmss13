@@ -4,7 +4,12 @@
 
 /obj/item/tool/pickaxe
 	name = "pickaxe"
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/tools.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/tools.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_righthand.dmi'
+	)
 	icon_state = "pickaxe"
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST

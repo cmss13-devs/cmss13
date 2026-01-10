@@ -45,9 +45,6 @@
 
 #define HDPT_OFFSET_EMPTY list(NORTH = list(0, 0), SOUTH = list(0, 0), EAST = list(0, 0), WEST = list(0, 0))
 
-/// Toggle between Shift click and MMB click for gunner
-#define VEHICLE_TOGGLE_SHIFT_CLICK_GUNNER (1<<0)
-
 /// Vehicle Classes (for future)
 #define VEHICLE_CLASS_WEAK (1<<1) //light unarmored vehicles like colony vehicles/trucks/vans
 #define VEHICLE_CLASS_LIGHT (1<<2) //light class armor (APC, tank)

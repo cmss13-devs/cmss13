@@ -40,21 +40,31 @@ SUBSYSTEM_DEF(item_cleanup)
 
 	log_debug("item_cleanup deleted [deleted] garbage out of total [total_items]")
 
-/datum/controller/subsystem/item_cleanup/proc/delete_almayer()
-	//Should only be called for Whiskey Outpost!
+/datum/controller/subsystem/item_cleanup/proc/delete_almayer(ensure_observer_landmark_ground = TRUE)
 	delete_z_level(SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP))
+	if(ensure_observer_landmark_ground && !length(GLOB.observer_starts))
+		var/turf/center = SSmapping.get_ground_center()
+		new /obj/effect/landmark/observer_start(center)
 
-/datum/controller/subsystem/item_cleanup/proc/delete_surface()
+/datum/controller/subsystem/item_cleanup/proc/delete_surface(ensure_observer_landmark_ship = TRUE)
 	//Should only be called when lag is really bad and everyone is off the surface, including the dropships
 	delete_z_level(SSmapping.levels_by_trait(ZTRAIT_GROUND))
+	if(ensure_observer_landmark_ship && !length(GLOB.observer_starts))
+		var/turf/center = SSmapping.get_mainship_center()
+		new /obj/effect/landmark/observer_start(center)
 
 /datum/controller/subsystem/item_cleanup/proc/delete_z_level(list/z_levels)
 	set background = 1
-	for(var/obj/o in world)
-		if(QDELETED(o) || isnull(o.loc))
+	for(var/obj/thing in world)
+		if(QDELETED(thing) || isnull(thing.loc))
 			continue
-		if(o.loc.z in z_levels) //item is on the proper Z-level
-			qdel(o)
+		if(thing.loc.z in z_levels) //obj is on the proper Z-level
+			qdel(thing)
+	for(var/mob/moob as anything in GLOB.living_mob_list)
+		if(QDELETED(moob) || isnull(moob.loc))
+			continue
+		if(moob.loc.z in z_levels) //living mob is on the proper Z-level
+			qdel(moob)
 
 /proc/add_to_garbage(atom/a)
 	addToListNoDupe(GLOB.item_cleanup_list, a)

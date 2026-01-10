@@ -30,12 +30,14 @@
 	minimap_icon = "predalien"
 
 /mob/living/carbon/xenomorph/predalien
+	AUTOWIKI_SKIP(TRUE)
+
 	caste_type = XENO_CASTE_PREDALIEN
 	name = "Abomination" //snowflake name
 	desc = "A strange looking creature with fleshy strands on its head. It appears like a mixture of armor and flesh, smooth, but well carapaced."
-	icon = 'icons/mob/xenos/predalien.dmi'
-	icon_xeno = 'icons/mob/xenos/predalien.dmi'
-	icon_xenonid = 'icons/mob/xenos/predalien.dmi'
+	icon = 'icons/mob/xenos/castes/tier_4/predalien.dmi'
+	icon_xeno = 'icons/mob/xenos/castes/tier_4/predalien.dmi'
+	icon_xenonid = 'icons/mob/xenos/castes/tier_4/predalien.dmi'
 	icon_state = "Predalien Walking"
 	speaking_noise = 'sound/voice/predalien_click.ogg'
 	plasma_types = list(PLASMA_CATECHOLAMINE)
@@ -54,7 +56,7 @@
 
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/onclick/regurgitate,
+		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/onclick/feralrush,
@@ -62,12 +64,12 @@
 		/datum/action/xeno_action/activable/feral_smash,
 		/datum/action/xeno_action/activable/feralfrenzy,
 		/datum/action/xeno_action/onclick/toggle_gut_targeting,
-		/datum/action/xeno_action/onclick/tacmap,
 	)
 
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
 	weed_food_states = list("Predalien_1","Predalien_2","Predalien_3")
 	weed_food_states_flipped = list("Predalien_1","Predalien_2","Predalien_3")
+
 	var/smashing = FALSE
 	/// If the pred alert/player notif should happen when the predalien spawns
 	var/should_announce_spawn = TRUE
@@ -85,9 +87,15 @@
 
 	AddComponent(/datum/component/footstep, 4, 25, 11, 2, "alien_footstep_medium")
 
+/mob/living/carbon/xenomorph/predalien/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
+	death(cause, gibbed = TRUE)
+
 /mob/living/carbon/xenomorph/predalien/proc/announce_spawn()
 	if(!loc)
 		return FALSE
+
+	elder_overseer_message("An abomination has been detected at [get_area_name(loc)]. Exterminate it immediately. Heavy Armory unlocked.")
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_YAUTJA_ARMORY_OPENED)
 
 	to_chat(src, {"
 <span class='role_body'>|______________________|</span>
@@ -114,11 +122,15 @@ You must still listen to the queen.
 	. += "It has [predalienkills.kills] kills to its name!"
 
 /mob/living/carbon/xenomorph/predalien/tutorial
+	AUTOWIKI_SKIP(TRUE)
+
 	should_announce_spawn = FALSE
 
 /mob/living/carbon/xenomorph/predalien/tutorial/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
 	death(cause, gibbed = TRUE)
 
+/mob/living/carbon/xenomorph/predalien/noannounce /// To not alert preds
+	should_announce_spawn = FALSE
 
 /datum/behavior_delegate/predalien_base
 	name = "Base Predalien Behavior Delegate"

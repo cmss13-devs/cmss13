@@ -8,7 +8,7 @@
  * Render relay object assigned to a plane master to be able to relay it's render onto other planes that are not it's own
  */
 /obj/render_plane_relay
-	screen_loc = "CENTER"
+	screen_loc = "1,1"
 	layer = -1
 	plane = 0
 	appearance_flags = PASS_MOUSE | NO_CLIENT_COLOR | KEEP_TOGETHER
@@ -20,7 +20,7 @@
  * Renders other planes onto this plane, through the use of render objects
  * Any effects applied onto this plane will act on the unified plane
  * IE a bulge filter will apply as if the world was one object
- * remember that once planes are unified on a render plate you cant change the layering of them!
+ * remember that once planes are unified on a render plate you can't change the layering of them!
  */
 /atom/movable/screen/plane_master/rendering_plate
 	name = "default rendering plate"
@@ -72,6 +72,7 @@
 	relay.render_source = render_target
 	relay.plane = relay_plane
 	relay.layer = (plane + abs(LOWEST_EVER_PLANE))*0.5 //layer must be positive but can be a decimal
+
 	if(blend_mode_override)
 		relay.blend_mode = blend_mode_override
 	else

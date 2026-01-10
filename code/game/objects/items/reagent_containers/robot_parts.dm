@@ -213,7 +213,7 @@
 			to_chat(user, SPAN_NOTICE("You insert the flash into the eye socket!"))
 	else if(istype(W, /obj/item/stock_parts/manipulator))
 		to_chat(user, SPAN_NOTICE("You install some manipulators and modify the head, creating a functional spider-bot!"))
-		new /mob/living/simple_animal/spiderbot(get_turf(loc))
+		new /mob/living/simple_animal/small/spiderbot(get_turf(loc))
 		user.temp_drop_inv_item(W)
 		qdel(W)
 		qdel(src)

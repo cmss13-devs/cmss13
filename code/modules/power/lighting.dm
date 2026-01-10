@@ -788,7 +788,12 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	light_color = LIGHT_COLOR_FLARE
+	explo_proof = TRUE
+	emp_proof = TRUE
 	var/obj/docking_port/stationary/marine_dropship/linked_port = null
+	var/icon_on = "landingstripe0_on"
+	var/icon_off = "landingstripe_off"
+	var/light_strength = 2
 
 //Don't allow blowing those up, so Marine nades don't fuck them
 /obj/structure/machinery/landinglight/ex_act(severity)
@@ -807,18 +812,6 @@
 /obj/structure/machinery/landinglight/proc/turn_off()
 	icon_state = icon_off
 	set_light(0)
-
-/obj/structure/machinery/landinglight/ds1
-	id = "USS Almayer Dropship 1" // ID for landing zone
-
-/obj/structure/machinery/landinglight/ds2
-	id = "USS Almayer Dropship 2" // ID for landing zone
-
-/obj/structure/machinery/landinglight/upp_ds1
-	id = "SSV Rostock Dropship 1" // ID for landing zone
-
-/obj/structure/machinery/landinglight/upp_ds2
-	id = "SSV Rostock Dropship 2" // ID for landing zone
 
 /obj/structure/machinery/landinglight/proc/turn_on()
 	icon_state = icon_on
@@ -841,49 +834,3 @@
 	icon_on = "lz_spoke_light_on"
 	icon_off = "lz_spoke_light_off"
 	light_strength = 3
-
-/obj/structure/machinery/landinglight/ds2/delaytwo/turn_on()
-	icon_state = initial(icon_state) + "2"
-	set_light(2)
-
-/obj/structure/machinery/landinglight/ds2/delaythree/turn_on()
-	icon_state = initial(icon_state) + "3"
-	set_light(2)
-
-/obj/structure/machinery/landinglight/upp_ds1/delayone/turn_on()
-	icon_state = initial(icon_state) + "1"
-	set_light(2)
-
-/obj/structure/machinery/landinglight/upp_ds1/delaytwo/turn_on()
-	icon_state = initial(icon_state) + "2"
-	set_light(2)
-
-/obj/structure/machinery/landinglight/upp_ds1/delaythree/turn_on()
-	icon_state = initial(icon_state) + "3"
-	set_light(2)
-
-/obj/structure/machinery/landinglight/upp_ds2/delayone/turn_on()
-	icon_state = initial(icon_state) + "1"
-	set_light(2)
-
-/obj/structure/machinery/landinglight/upp_ds2/delaytwo/turn_on()
-	icon_state = initial(icon_state) + "2"
-	set_light(2)
-
-/obj/structure/machinery/landinglight/upp_ds2/delaythree/turn_on()
-	icon_state = initial(icon_state) + "3"
-	set_light(2)
-
-/obj/structure/machinery/landinglight/ds1/spoke
-	icon_state = "lz_spoke_light"
-
-/obj/structure/machinery/landinglight/ds1/spoke/turn_on()
-	icon_state = initial(icon_state) + "1"
-	set_light(3)
-
-/obj/structure/machinery/landinglight/ds2/spoke
-	icon_state = "lz_spoke_light"
-
-/obj/structure/machinery/landinglight/ds2/spoke/turn_on()
-	icon_state = initial(icon_state) + "1"
-	set_light(3)

@@ -9242,6 +9242,13 @@
 	},
 /turf/open/gm/dirt/brown,
 /area/strata/exterior/landing_zones/near_lz2)
+"azh" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/landinglight/delayone{
+	dir = 8
+	},
+/turf/open/floor/plating/asteroidfloor,
+/area/strata/exterior/landing_zones/lz2)
 "azi" = (
 /obj/structure/largecrate/random/barrel/yellow,
 /turf/open/floor/strata,
@@ -12228,6 +12235,13 @@
 "aHP" = (
 /turf/open/floor/strata,
 /area/strata/interior/outpost/canteen)
+"aHQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 8
+	},
+/turf/open/floor/plating/asteroidfloor,
+/area/strata/exterior/landing_zones/lz2)
 "aHR" = (
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/interior/outpost/maint)
@@ -16110,13 +16124,6 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/marsh/spring_marshes)
-"aSX" = (
-/obj/effect/decal/cleanable/blood/oil,
-/obj/structure/machinery/landinglight{
-	dir = 1
-	},
-/turf/open/floor/plating/asteroidfloor,
-/area/strata/exterior/landing_zones/lz2)
 "aSY" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = -5;
@@ -40666,7 +40673,7 @@
 /turf/open/floor/interior/plastic,
 /area/strata/interior/outpost/canteen)
 "eBo" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo,
+/obj/structure/machinery/landinglight,
 /turf/open/floor/plating/asteroidfloor,
 /area/strata/exterior/landing_zones/lz2)
 "eBr" = (
@@ -46059,7 +46066,7 @@
 /turf/open/floor/strata/orange_cover,
 /area/strata/exterior/marsh/river)
 "lEo" = (
-/obj/structure/machinery/landinglight/ds2,
+/obj/structure/machinery/landinglight/delaytwo,
 /turf/open/floor/plating/asteroidfloor,
 /area/strata/exterior/landing_zones/lz2)
 "lEq" = (
@@ -47943,7 +47950,7 @@
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/parts_storage)
 "odB" = (
-/obj/structure/machinery/landinglight/ds2/delayone,
+/obj/structure/machinery/landinglight/delaythree,
 /turf/open/floor/plating/asteroidfloor,
 /area/strata/exterior/landing_zones/lz2)
 "oeu" = (
@@ -51203,13 +51210,6 @@
 /obj/structure/platform/metal/strata/north,
 /turf/open/gm/river/soro,
 /area/strata/exterior/marsh/river)
-"skJ" = (
-/obj/effect/decal/cleanable/blood/oil,
-/obj/structure/machinery/landinglight{
-	dir = 4
-	},
-/turf/open/floor/plating/asteroidfloor,
-/area/strata/exterior/landing_zones/lz2)
 "skM" = (
 /obj/structure/platform_decoration/stone/soro/west,
 /turf/open/auto_turf/strata_grass/layer1,
@@ -51454,7 +51454,7 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/interior/research)
 "sBg" = (
-/obj/structure/machinery/landinglight/ds2/delaythree,
+/obj/structure/machinery/landinglight/delayone,
 /turf/open/floor/plating/asteroidfloor,
 /area/strata/exterior/landing_zones/lz2)
 "sCa" = (
@@ -52215,10 +52215,6 @@
 /obj/item/ammo_casing,
 /turf/open/gm/dirt/brown/variant_5,
 /area/strata/exterior/parts_storage_cave)
-"tCR" = (
-/obj/effect/landmark/hunter_primary,
-/turf/open/floor/plating,
-/area/strata/exterior/landing_zones/lz2)
 "tDw" = (
 /obj/effect/blocker/sorokyne_hot_water,
 /obj/effect/blocker/sorokyne_hot_water,
@@ -53694,10 +53690,6 @@
 	},
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/interior/underground_dorms/med2)
-"vqx" = (
-/obj/effect/landmark/hunter_secondary,
-/turf/open/floor/plating,
-/area/strata/exterior/landing_zones/lz2)
 "vqA" = (
 /obj/structure/platform/metal/strata/west,
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -55519,11 +55511,6 @@
 /obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/strata,
 /area/strata/interior/outpost/med)
-"xGE" = (
-/obj/effect/decal/cleanable/blood/oil,
-/obj/structure/machinery/landinglight/ds2/delaythree,
-/turf/open/floor/plating/asteroidfloor,
-/area/strata/exterior/landing_zones/lz2)
 "xGI" = (
 /obj/effect/blocker/sorokyne_hot_water,
 /obj/structure/platform/stone/soro,
@@ -63117,8 +63104,8 @@ qOj
 qOj
 qOj
 qOj
-qOj
 cOI
+aen
 aen
 bvE
 aac
@@ -63275,10 +63262,6 @@ jPQ
 apv
 nTf
 iwp
-skJ
-apv
-nTf
-iwp
 jPQ
 apv
 nTf
@@ -63292,8 +63275,12 @@ apv
 nTf
 iwp
 jPQ
+apv
+nTf
+iwp
 bJI
 wvF
+aen
 aen
 bvE
 aac
@@ -63445,7 +63432,15 @@ bvE
 aen
 eFa
 lEo
-tCR
+jWs
+jWs
+ewk
+jWs
+jWs
+jWs
+jWs
+jWs
+jWs
 jWs
 ewk
 jWs
@@ -63458,17 +63453,9 @@ jWs
 ewk
 jWs
 jWs
-jWs
-jWs
-jWs
-jWs
-jWs
-jWs
-ewk
-jWs
-jWs
-yee
+sFB
 wvF
+aen
 byr
 bvE
 aac
@@ -63641,9 +63628,9 @@ jWs
 jWs
 jWs
 jWs
-jWs
-qbk
+yee
 wvF
+aen
 aen
 acM
 ael
@@ -63816,9 +63803,9 @@ jWs
 jWs
 jWs
 jWs
-jWs
-ayh
+qbk
 wvF
+aen
 bvE
 aeI
 byr
@@ -63970,7 +63957,6 @@ aen
 aen
 eFa
 odB
-vqx
 jWs
 jWs
 jWs
@@ -63992,8 +63978,9 @@ jWs
 jWs
 jWs
 jWs
-aSX
+ayh
 wvF
+aen
 aen
 bvE
 acM
@@ -64166,9 +64153,9 @@ jWs
 jWs
 jWs
 jWs
-jWs
-yee
+sFB
 wvF
+aen
 afR
 bvD
 bvE
@@ -64319,7 +64306,7 @@ bvE
 bvE
 aen
 eFa
-xGE
+sBg
 jWs
 jWs
 jWs
@@ -64341,9 +64328,9 @@ jWs
 jWs
 jWs
 jWs
-jWs
-qbk
+yee
 wvF
+aen
 aen
 aeO
 bvE
@@ -64516,9 +64503,9 @@ jWs
 jWs
 jWs
 jWs
-jWs
-ayh
+qbk
 wvF
+aen
 aen
 bvE
 bvE
@@ -64691,9 +64678,9 @@ jWs
 jWs
 jWs
 jWs
-jWs
-sFB
+ayh
 oFG
+aen
 bvE
 aeP
 acM
@@ -64866,9 +64853,9 @@ jWs
 jWs
 jWs
 jWs
-jWs
-yee
+sFB
 wvF
+aen
 agd
 bvE
 aen
@@ -65041,9 +65028,9 @@ jWs
 jWs
 jWs
 jWs
-jWs
-qbk
+yee
 wvF
+aen
 aen
 aeQ
 bvE
@@ -65213,12 +65200,12 @@ jWs
 jWs
 jWs
 jWs
-jWs
 ewk
 jWs
 jWs
-ayh
+qbk
 wvF
+aen
 agk
 bvE
 acM
@@ -65370,7 +65357,13 @@ bvE
 aen
 abR
 bJI
+hzb
+qbU
 vsp
+hue
+hzb
+aHQ
+azh
 hue
 hzb
 qbU
@@ -65385,15 +65378,9 @@ qbU
 vsp
 hue
 hzb
-qbU
-vsp
-hue
-hzb
-qbU
-vsp
-hue
 bJI
 wvF
+aen
 agm
 bvE
 bvE
@@ -65567,8 +65554,8 @@ ppe
 ppe
 ppe
 ppe
-ppe
 kYx
+aen
 aen
 bvE
 bvE

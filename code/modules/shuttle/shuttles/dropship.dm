@@ -214,10 +214,6 @@
 	var/xeno_announce = FALSE
 	var/faction = FACTION_MARINE
 
-/obj/docking_port/stationary/marine_dropship/Initialize(mapload)
-	. = ..()
-	link_landing_lights()
-
 /obj/docking_port/stationary/marine_dropship/Destroy()
 	. = ..()
 	for(var/obj/structure/machinery/landinglight/light in landing_lights)
@@ -228,38 +224,8 @@
 	for(var/obj/structure/machinery/computer/shuttle/dropship/flight/flight_console in GLOB.machines)
 		flight_console.compatible_landing_zones -= src
 
-/obj/docking_port/stationary/marine_dropship/proc/link_landing_lights()
-	var/list/coords = return_coords()
-	var/scan_range = 5
-	var/x0 = coords[1] - scan_range
-	var/y0 = coords[2] - scan_range
-	var/x1 = coords[3] + scan_range
-	var/y1 = coords[4] + scan_range
-
-	for(var/xscan = x0; xscan < x1; xscan++)
-		for(var/yscan = y0; yscan < y1; yscan++)
-			var/turf/searchspot = locate(xscan, yscan, src.z)
-			for(var/obj/structure/machinery/landinglight/light in searchspot)
-				landing_lights += light
-				light.linked_port = src
-
-/obj/docking_port/stationary/marine_dropship/proc/turn_on_landing_lights()
-	for(var/obj/structure/machinery/landinglight/light in landing_lights)
-		light.turn_on()
-	landing_lights_on = TRUE
-
-/obj/docking_port/stationary/marine_dropship/proc/turn_off_landing_lights()
-	for(var/obj/structure/machinery/landinglight/light in landing_lights)
-		light.turn_off()
-	landing_lights_on = FALSE
-
-/obj/docking_port/stationary/marine_dropship/on_prearrival(obj/docking_port/mobile/arriving_shuttle)
-	. = ..()
-	turn_on_landing_lights()
-
 /obj/docking_port/stationary/marine_dropship/on_arrival(obj/docking_port/mobile/arriving_shuttle)
 	. = ..()
-	turn_off_landing_lights()
 	var/obj/docking_port/mobile/marine_dropship/dropship = arriving_shuttle
 
 	if(auto_open && istype(arriving_shuttle, /obj/docking_port/mobile/marine_dropship))
@@ -277,10 +243,6 @@
 
 	for(var/obj/structure/dropship_equipment/eq as anything in dropship.equipments)
 		eq.on_arrival()
-
-/obj/docking_port/stationary/marine_dropship/on_dock_ignition(obj/docking_port/mobile/departing_shuttle)
-	. = ..()
-	turn_on_landing_lights()
 
 /obj/docking_port/stationary/marine_dropship/on_departure(obj/docking_port/mobile/departing_shuttle)
 	. = ..()

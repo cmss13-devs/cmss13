@@ -14,7 +14,7 @@
 /turf/open/floor/shiva/redfull/west,
 /area/shiva/interior/colony/research_hab)
 "bD" = (
-/obj/structure/machinery/landinglight/ds1/spoke,
+/obj/structure/machinery/landinglight/spoke,
 /turf/open/auto_turf/snow/layer0,
 /area/event/underground/dynamic)
 "cg" = (
@@ -61,7 +61,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/event/underground/dynamic)
 "ed" = (
-/obj/structure/machinery/landinglight/ds1/spoke,
+/obj/structure/machinery/landinglight/spoke,
 /turf/open/auto_turf/ice/layer1,
 /area/event/underground/dynamic)
 "el" = (
@@ -222,7 +222,7 @@
 /turf/open/floor/shiva/multi_tiles/north,
 /area/event/underground/dynamic)
 "nW" = (
-/obj/structure/machinery/landinglight/ds1/spoke,
+/obj/structure/machinery/landinglight/spoke,
 /turf/open/auto_turf/snow/layer1,
 /area/event/dynamic/lit)
 "or" = (
@@ -429,7 +429,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/event/dynamic/lit)
 "EO" = (
-/obj/structure/machinery/landinglight/ds1/spoke,
+/obj/structure/machinery/landinglight/spoke,
 /turf/open/auto_turf/snow/layer0,
 /area/event/dynamic/lit)
 "Fb" = (
@@ -459,7 +459,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/event/underground/dynamic)
 "IN" = (
-/obj/structure/machinery/landinglight/ds1/spoke,
+/obj/structure/machinery/landinglight/spoke,
 /turf/open/floor/shiva/floor3,
 /area/event/underground/dynamic)
 "Jl" = (
@@ -472,7 +472,7 @@
 /turf/open/floor/shiva/multi_tiles/east,
 /area/shiva/interior/colony/research_hab)
 "Lb" = (
-/obj/structure/machinery/landinglight/ds1/spoke,
+/obj/structure/machinery/landinglight/spoke,
 /turf/open/floor/shiva,
 /area/event/underground/dynamic)
 "LK" = (

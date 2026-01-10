@@ -17675,10 +17675,10 @@
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "qae" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/effect/sentry_landmark/lz_2/bottom_left,
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
-/obj/effect/sentry_landmark/lz_2/bottom_left,
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
 "qaE" = (

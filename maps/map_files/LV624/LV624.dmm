@@ -8400,7 +8400,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/mob/living/simple_animal/corgi/puppy{
+/mob/living/simple_animal/big/corgi/puppy{
 	desc = "It's a corgi puppy. MISTER WIGGLES!! HE IS THE GREATEST!";
 	name = "\improper Mister Wiggles"
 	},
@@ -9169,7 +9169,7 @@
 /turf/open/floor/grimy,
 /area/lv624/lazarus/hop)
 "aVr" = (
-/mob/living/simple_animal/mouse,
+/mob/living/simple_animal/small/mouse,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 9
 	},
@@ -15444,7 +15444,7 @@
 /turf/open/gm/dirtgrassborder/west,
 /area/lv624/ground/caves/sand_temple)
 "lJC" = (
-/mob/living/simple_animal/bat,
+/mob/living/simple_animal/small/bat,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/caves/north_central_caves)
 "lKe" = (
@@ -19116,7 +19116,7 @@
 /turf/open/floor/warning,
 /area/lv624/lazarus/landing_zones/lz1)
 "tgL" = (
-/mob/living/simple_animal/bat,
+/mob/living/simple_animal/small/bat,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/north_west_caves)
 "tgV" = (
@@ -21126,7 +21126,7 @@
 /turf/closed/wall/r_wall,
 /area/lv624/lazarus/corporate_dome)
 "xhc" = (
-/mob/living/simple_animal/bat,
+/mob/living/simple_animal/small/bat,
 /obj/effect/decal/grass_overlay/grass1/inner{
 	dir = 1
 	},

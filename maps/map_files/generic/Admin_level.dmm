@@ -524,7 +524,7 @@
 /obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
-/turf/open/floor/almayer/silver/west,
+/turf/open/floor/plating/almayer,
 /area/adminlevel/ert_station)
 "sj" = (
 /obj/structure/machinery/faxmachine,
@@ -1418,7 +1418,7 @@
 	id = "ERT Lock 4";
 	unacidable = 1
 	},
-/turf/open/floor/almayer/tcomms,
+/turf/open/floor/almayer/test_floor4,
 /area/adminlevel/ert_station)
 "Nk" = (
 /obj/structure/flora/pottedplant{
@@ -1466,7 +1466,7 @@
 	id = "ERT Lock 3";
 	unacidable = 1
 	},
-/turf/open/floor/almayer/tcomms,
+/turf/open/floor/almayer/test_floor4,
 /area/adminlevel/ert_station)
 "Oi" = (
 /turf/closed/wall/r_wall/unmeltable,
@@ -1504,9 +1504,7 @@
 	id = "ERT Lock 1";
 	unacidable = 1
 	},
-/turf/open/floor/almayer{
-	icon_state = "tcomms"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/adminlevel/ert_station)
 "Po" = (
 /obj/structure/bed,
@@ -1718,12 +1716,7 @@
 /obj/structure/sign/safety/debark_lounge{
 	pixel_x = 15
 	},
-/obj/structure/machinery/door/poddoor/almayer{
-	dir = 4;
-	id = "ERT Lock 1";
-	unacidable = 1
-	},
-/turf/open/floor/almayer/tcomms,
+/turf/closed/wall/r_wall/unmeltable,
 /area/adminlevel/ert_station)
 "Ur" = (
 /obj/structure/bed/sofa/vert/grey/bot,
@@ -1942,16 +1935,12 @@
 	name = "\improper Hangar";
 	no_panel = 1
 	},
-/obj/structure/sign/safety/debark_lounge{
-	pixel_x = 15;
-	pixel_y = -32
-	},
 /obj/structure/machinery/door/poddoor/almayer{
 	dir = 4;
 	id = "ERT Lock 2";
 	unacidable = 1
 	},
-/turf/open/floor/almayer/tcomms,
+/turf/open/floor/almayer/test_floor4,
 /area/adminlevel/ert_station)
 "ZI" = (
 /obj/structure/barricade/handrail,
@@ -4338,7 +4327,7 @@ wW
 wW
 Uq
 Pm
-Uq
+wW
 wW
 Sw
 wW

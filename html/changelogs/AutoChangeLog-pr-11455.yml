@@ -1,0 +1,6 @@
+author: "FourkhanDaKhan"
+delete-after: True
+changes:
+  - balance: "Nervestimulating (anti-stun) is disabled in natural generation."
+  - balance: "It can still be obtained from pheromone plasma on 5X clearance."
+  - balance: "Scientist and corporate survivors no longer grant research points by swiping their IDs."

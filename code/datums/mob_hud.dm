@@ -675,7 +675,6 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 	var/image/holder = hud_list[WANTED_HUD]
 	holder.icon_state = "hudblank"
 	criminal = FALSE
-	var/modified = FALSE
 	var/perpref = null
 	if(wear_id)
 		var/obj/item/card/id/I = wear_id.GetID()

@@ -27,6 +27,7 @@
 /datum/equipment_preset/uscm/cbrn/standard
 	name = "CBRN Rifleman"
 	role_comm_title = "RFN"
+	minimap_icon = "private"
 
 /datum/equipment_preset/uscm/cbrn/standard/load_gear(mob/living/carbon/human/new_human)
 	. = ..()

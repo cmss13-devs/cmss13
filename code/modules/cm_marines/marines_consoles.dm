@@ -977,6 +977,7 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				JOB_CIA_UACQS_ADMN = 8,
 				JOB_CIA_UACQS_SEC = 9,
 				// 10-19: Command
+				JOB_CIA_LIAISON_CO = 10,
 				JOB_CO = 10,
 				JOB_XO = 11,
 				JOB_MARINE_RAIDER_CMD = 11,

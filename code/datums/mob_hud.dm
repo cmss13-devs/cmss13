@@ -660,23 +660,37 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 	if(wear_id)
 		var/obj/item/card/id/I = wear_id.GetID()
 		if(I)
-			holder.icon_state = "hudsec_[ckey(I.GetJobName())]"
+			if(faction == FACTION_MARINE || faction == FACTION_MARSHAL)
+				if(I.registered_name == real_name) //I am a member of the USCM!
+					holder.icon_state = "hudsec_confirmed"
+				else
+					//am not who I say I am. I should probably be investigated.
+					holder.icon_state = "hudsec_rejected"
+			else
+				holder.icon_state = "hudsec_needprocessing"
+	else
+		holder.icon_state = "hudsec_unknown" //My ID is not on me, or I do not have one.
 
 /mob/living/carbon/human/proc/sec_hud_set_security_status()
 	var/image/holder = hud_list[WANTED_HUD]
 	holder.icon_state = "hudblank"
 	criminal = FALSE
+	var/modified = FALSE
 	var/perpref = null
 	if(wear_id)
 		var/obj/item/card/id/I = wear_id.GetID()
 		if(I)
 			perpref = I.registered_ref
 
+
 	if(!GLOB.data_core)
 		return
 
 	for(var/datum/data/record/E in GLOB.data_core.general)
 		if(E.fields["ref"] == perpref)
+			modified = 1
+		if(!modified)
+			holder.icon_state = "hudsec_unavailable"
 			for(var/datum/data/record/R in GLOB.data_core.security)
 				if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == "*Arrest*"))
 					holder.icon_state = "hudsec_wanted"

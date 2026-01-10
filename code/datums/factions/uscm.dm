@@ -37,6 +37,8 @@
 				marine_rk = "general"
 			if(JOB_CAS_PILOT)
 				marine_rk = "gp"
+			if(JOB_CAS_PILOT)
+				marine_rk = "gp"
 			if(JOB_DROPSHIP_PILOT)
 				marine_rk = "dp"
 			if(JOB_TANK_CREW)
@@ -130,15 +132,17 @@
 				marine_rk = "leader"
 			if(JOB_FORECON_SUPPORT)
 				marine_rk = "tech"
-				border_rk = "forecon"
 			if(JOB_INTEL)
 				marine_rk = "io"
-			if(JOB_CAS_PILOT, JOB_DROPSHIP_PILOT)
+			if(JOB_CAS_PILOT)
+				marine_rk = "gp"
+			if(JOB_DROPSHIP_PILOT)
 				marine_rk = "dp"
 			if(JOB_DROPSHIP_CREW_CHIEF)
 				marine_rk = "dcc"
 			if(JOB_TANK_CREW)
 				marine_rk = "tc"
+				border_rk = "auxiliary"
 			if(JOB_CHIEF_POLICE)
 				marine_rk = "cmp"
 			if(JOB_POLICE)
@@ -213,6 +217,8 @@
 				marine_rk = "cia"
 			if(JOB_CIA_LIAISON)
 				marine_rk = "cialo"
+			if(JOB_CIA_LIAISON_CO)
+				marine_rk = "ciaco"
 			if(JOB_CIA_UACQS_ADMN)
 				marine_rk = "uacqs"
 			if(JOB_CIA_UACQS_COMR)

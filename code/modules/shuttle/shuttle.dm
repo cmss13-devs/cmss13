@@ -669,12 +669,15 @@
 		playsound(return_center_turf(), ignition_sound, 60, 0, falloff=4)
 	return
 
-/obj/docking_port/mobile/proc/on_prearrival()
+/obj/docking_port/mobile/proc/on_start_prearrival()
 	if(destination)
 		if(destination.landing_lights_on)
 			return //Return early if the lights are on, something went wrong and called twice.
 		destination.on_prearrival(src, landing_sound)
 	playsound(return_center_turf(), landing_sound, 60, 0)
+	return
+
+/obj/docking_port/mobile/proc/on_prearrival()
 	return
 
 /obj/docking_port/mobile/proc/on_crash()
@@ -820,8 +823,7 @@
 			if(prearrivalTime && mode != SHUTTLE_PREARRIVAL)
 				set_mode(SHUTTLE_PREARRIVAL)
 				setTimer(prearrivalTime)
-				/// Run on_prearrival after setting the mode rather than waiting for next check, as this doesn't occur until landing is complete.
-				on_prearrival()
+				on_start_prearrival()
 				return
 			on_prearrival()
 			var/error = initiate_docking(destination, preferred_direction)

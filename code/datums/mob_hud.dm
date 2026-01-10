@@ -656,7 +656,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 
 /mob/living/carbon/human/sec_hud_set_ID()
 	var/image/holder = hud_list[ID_HUD]
-	holder.icon_state = "hudsec_unknown"
+	holder.icon_state = "hudblank"
 	if(wear_id)
 		var/obj/item/card/id/I = wear_id.GetID()
 		if(I)
@@ -688,9 +688,6 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 
 	for(var/datum/data/record/E in GLOB.data_core.general)
 		if(E.fields["ref"] == perpref)
-			modified = 1
-		if(!modified)
-			holder.icon_state = "hudsec_unavailable"
 			for(var/datum/data/record/R in GLOB.data_core.security)
 				if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == "*Arrest*"))
 					holder.icon_state = "hudsec_wanted"

@@ -2113,8 +2113,7 @@
 	dir = 8
 	},
 /obj/item/book/manual/chemistry{
-	pixel_x = 4;
-	pixel_y = 0
+	pixel_x = 4
 	},
 /obj/item/book/manual/medical_diagnostics_manual{
 	pixel_x = 7;
@@ -4590,9 +4589,7 @@
 /area/almayer/hallways/lower/port_midship_hallway)
 "akE" = (
 /obj/structure/machinery/camera/autoname/almayer{
-	name = "ship-grade camera";
-	pixel_x = 0;
-	pixel_y = 0
+	name = "ship-grade camera"
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/secure_closet{
@@ -14680,8 +14677,11 @@
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/hydroponics)
 "aMe" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	dir = 1
+/obj/structure/machinery/door/airlock/almayer/maint/reinforced{
+	access_modified = 1;
+	dir = 1;
+	req_one_access = null;
+	req_one_access_txt = "7;19"
 	},
 /turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/middeck/maintenance/bow)
@@ -60414,10 +60414,7 @@
 	pixel_y = 31;
 	pixel_x = -1
 	},
-/obj/structure/surface/table/almayer{
-	pixel_x = 0;
-	pixel_y = 0
-	},
+/obj/structure/surface/table/almayer,
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_17";
 	pixel_x = -6;
@@ -62393,6 +62390,15 @@
 	},
 /turf/open/floor/almayer/green/northeast,
 /area/almayer/hallways/lower/starboard_midship_hallway)
+"lFY" = (
+/obj/structure/machinery/door/airlock/almayer/maint/reinforced{
+	access_modified = 1;
+	dir = 1;
+	req_one_access = null;
+	req_one_access_txt = "7;19"
+	},
+/turf/open/floor/almayer/no_build/test_floor4,
+/area/almayer/middeck/maintenance/pb)
 "lGg" = (
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
 /turf/open/floor/almayer/cargo,
@@ -161372,7 +161378,7 @@ aMh
 aMK
 aMu
 aMj
-aNU
+lFY
 aZo
 bay
 bwN

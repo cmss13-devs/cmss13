@@ -231,7 +231,7 @@
 	name = "ob impact animation"
 	effect_duration = 12
 	var/atom/shell
-	var/size_mod
+	var/size_mod = 1
 
 /obj/effect/overlay/temp/ob_impact/Initialize(mapload, atom/owner, size)
 	. = ..()

@@ -20644,10 +20644,6 @@
 	dir = 4
 	},
 /area/shiva/interior/aerodrome)
-"tGS" = (
-/obj/structure/machinery/landinglight/spoke,
-/turf/open/floor/shiva/multi_tiles/southeast,
-/area/shiva/interior/colony/botany)
 "tGU" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Colony Dormitories Canteen";
@@ -38998,7 +38994,7 @@ tnh
 jhq
 qlQ
 emd
-tGS
+dDo
 asJ
 dDo
 emd

@@ -248,7 +248,7 @@
 
 /obj/item/storage/box/mre/fsr
 	name = "\improper FSR combat ration"
-	desc = "First Strike Ration, produced by the same manufacturere that produces MREs for UA militaries, but oriented on a civillian and private markets."
+	desc = "First Strike Ration, produced by the same manufacturere that produces MREs for UA militaries, but oriented on a civilian and private markets."
 	icon_state = "merc_mealpack"
 	icon_closed = "merc_mealpack"
 	icon_opened = "merc_mealpackopened"

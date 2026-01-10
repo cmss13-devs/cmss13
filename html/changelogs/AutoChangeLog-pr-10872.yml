@@ -1,0 +1,4 @@
+author: "Thwomper, Nivrak"
+delete-after: True
+changes:
+  - rscadd: "Adds roof/sky Z-Level to all ground maps."

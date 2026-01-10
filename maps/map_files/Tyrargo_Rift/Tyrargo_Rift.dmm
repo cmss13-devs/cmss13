@@ -8516,7 +8516,7 @@
 	icon_state = "trash_5";
 	layer = 3.1
 	},
-/mob/living/simple_animal/mouse/rat/gray,
+/mob/living/simple_animal/small/mouse/rat/gray,
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 4
 	},
@@ -12159,7 +12159,7 @@
 	icon_state = "trash_2";
 	pixel_y = 12
 	},
-/mob/living/simple_animal/mouse/rat/brown,
+/mob/living/simple_animal/small/mouse/rat/brown,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/security/ground)
 "aEJ" = (
@@ -25814,7 +25814,7 @@
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/tyrargo/oob)
 "bgB" = (
-/mob/living/simple_animal/mouse/rat/gray,
+/mob/living/simple_animal/small/mouse/rat/gray,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/underground/bunker/north)
 "bgC" = (
@@ -25899,7 +25899,7 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
 "bgT" = (
-/mob/living/simple_animal/mouse/rat/black,
+/mob/living/simple_animal/small/mouse/rat/black,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/colony_exterior/south_east)
 "bgU" = (
@@ -37155,7 +37155,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
 "bFs" = (
-/mob/living/simple_animal/mouse/rat/black,
+/mob/living/simple_animal/small/mouse/rat/black,
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/tyrargo/outdoors/colony_exterior/south_west)
 "bFt" = (
@@ -42546,7 +42546,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/no_mans_land)
 "bSQ" = (
-/mob/living/simple_animal/mouse/rat/black,
+/mob/living/simple_animal/small/mouse/rat/black,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/colony_exterior/west)
 "bSR" = (
@@ -43545,7 +43545,7 @@
 /turf/open/floor/corsat/redcorner,
 /area/tyrargo/underground/bunker/ammo_dump_entrance)
 "bVD" = (
-/mob/living/simple_animal/mouse/rat/gray,
+/mob/living/simple_animal/small/mouse/rat/gray,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/underground/bunker/ammo_dump_entrance)
 "bVE" = (
@@ -44072,7 +44072,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/underground/bunker/ammo_dump_connection)
 "bXh" = (
-/mob/living/simple_animal/mouse/rat/black,
+/mob/living/simple_animal/small/mouse/rat/black,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/underground/bunker/ammo_dump_connection)
 "bXi" = (
@@ -44126,7 +44126,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/underground/bunker/ammo_dump_connection)
 "bXo" = (
-/mob/living/simple_animal/mouse/rat/brown,
+/mob/living/simple_animal/small/mouse/rat/brown,
 /turf/open/floor/corsat,
 /area/tyrargo/underground/bunker/ammo_dump_connection)
 "bXp" = (
@@ -44349,7 +44349,7 @@
 /area/tyrargo/underground/bunker/ammo_dump_connection)
 "bXQ" = (
 /obj/effect/decal/cleanable/dirt,
-/mob/living/simple_animal/mouse/rat/black,
+/mob/living/simple_animal/small/mouse/rat/black,
 /turf/open/asphalt/cement/cement12,
 /area/tyrargo/outdoors/colony_streets/north_east)
 "bXR" = (
@@ -44379,7 +44379,7 @@
 "bXS" = (
 /obj/item/prop/colony/used_flare,
 /obj/effect/decal/cleanable/dirt,
-/mob/living/simple_animal/mouse/rat/black,
+/mob/living/simple_animal/small/mouse/rat/black,
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice3";
 	pixel_x = 1;
@@ -44628,7 +44628,7 @@
 /turf/open/floor/corsat,
 /area/tyrargo/underground/bunker/south)
 "bYy" = (
-/mob/living/simple_animal/mouse/rat/gray,
+/mob/living/simple_animal/small/mouse/rat/gray,
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice1";
 	pixel_x = 1;
@@ -44818,7 +44818,7 @@
 /turf/open/floor/corsat/red/southeast,
 /area/tyrargo/underground/bunker/south)
 "bZc" = (
-/mob/living/simple_animal/mouse/rat/black,
+/mob/living/simple_animal/small/mouse/rat/black,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/underground/bunker/south)
 "bZd" = (
@@ -45026,7 +45026,7 @@
 /turf/open/floor/corsat/brown/west,
 /area/tyrargo/underground/bunker/south)
 "bZJ" = (
-/mob/living/simple_animal/mouse/rat/black,
+/mob/living/simple_animal/small/mouse/rat/black,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/underground/bunker/south)
 "bZK" = (
@@ -45237,7 +45237,7 @@
 /turf/open/floor/corsat,
 /area/tyrargo/underground/bunker/south)
 "cam" = (
-/mob/living/simple_animal/mouse/rat/brown,
+/mob/living/simple_animal/small/mouse/rat/brown,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/underground/bunker/south)
 "can" = (
@@ -45868,7 +45868,7 @@
 /turf/open/floor/corsat,
 /area/tyrargo/underground/bunker/north)
 "ccj" = (
-/mob/living/simple_animal/mouse/rat/gray,
+/mob/living/simple_animal/small/mouse/rat/gray,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/underground/bunker/north)
 "cck" = (
@@ -45999,7 +45999,7 @@
 /area/tyrargo/underground/bunker/north)
 "ccB" = (
 /obj/effect/glowshroom,
-/mob/living/simple_animal/mouse/rat/white,
+/mob/living/simple_animal/small/mouse/rat/white,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/underground/bunker/north)
 "ccC" = (
@@ -46103,7 +46103,7 @@
 /turf/open/floor/corsat,
 /area/tyrargo/underground/bunker/north)
 "ccP" = (
-/mob/living/simple_animal/mouse/rat/brown,
+/mob/living/simple_animal/small/mouse/rat/brown,
 /turf/open/floor/corsat,
 /area/tyrargo/underground/bunker/north)
 "ccQ" = (
@@ -46236,7 +46236,7 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
-/mob/living/simple_animal/mouse/rat/brown,
+/mob/living/simple_animal/small/mouse/rat/brown,
 /turf/open/floor/corsat,
 /area/tyrargo/underground/bunker/north)
 "cdi" = (
@@ -46610,7 +46610,7 @@
 /turf/open/floor/corsat,
 /area/tyrargo/underground/bunker/north)
 "cei" = (
-/mob/living/simple_animal/mouse/rat/black,
+/mob/living/simple_animal/small/mouse/rat/black,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/underground/bunker/north)
 "cej" = (
@@ -63204,7 +63204,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/landing_zone_1)
 "dcM" = (
-/mob/living/simple_animal/cat{
+/mob/living/simple_animal/small/cat{
 	name = "Holly";
 	real_name = "Holly"
 	},
@@ -109102,7 +109102,7 @@
 /obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
 	},
-/mob/living/simple_animal/mouse/rat/black,
+/mob/living/simple_animal/small/mouse/rat/black,
 /turf/open/floor/hybrisa/carpet/carpetreddeco,
 /area/tyrargo/indoors/apartment/south_ground)
 "pnu" = (
@@ -112663,7 +112663,7 @@
 "vHF" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood,
-/mob/living/simple_animal/mouse/rat/brown,
+/mob/living/simple_animal/small/mouse/rat/brown,
 /turf/open/floor/hybrisa/tile/tilegreen,
 /area/tyrargo/indoors/apartment/south_ground)
 "vIh" = (

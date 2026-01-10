@@ -1,16 +1,15 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "bt" = (
-/turf/closed/shuttle/hunter{
-	icon_state = "hunter28"
-	},
+/obj/structure/shuttle/part/hunter/right_front3,
+/turf/template_noop,
 /area/shuttle/hunter)
 "cv" = (
-/obj/structure/machinery/door/airlock/yautja/secure,
-/obj/structure/machinery/door/poddoor/yautja{
-	dir = 4;
+/obj/structure/machinery/door/poddoor/yautja/open/turf_plane{
 	id = "yaut_shut_lock";
-	unacidable = 1;
-	explo_proof = 1
+	dir = 4
+	},
+/obj/structure/machinery/door/airlock/yautja/secure/turf_plane{
+	id = "hunter_external"
 	},
 /turf/open/floor/corsat/squares,
 /area/shuttle/hunter)
@@ -44,17 +43,6 @@
 "iq" = (
 /turf/open/predship/shuttle_border_corner,
 /area/shuttle/hunter)
-"jG" = (
-/obj/structure/machinery/door/airlock/yautja/secure,
-/obj/structure/machinery/door/poddoor/yautja{
-	dir = 4;
-	id = "yaut_shut_lock";
-	unacidable = 1;
-	explo_proof = 1;
-	name = "Emergency Shutter"
-	},
-/turf/open/floor/corsat/squares,
-/area/shuttle/hunter)
 "jQ" = (
 /turf/closed/shuttle/hunter{
 	icon_state = "leftengine_2"
@@ -79,25 +67,22 @@
 	},
 /area/shuttle/hunter)
 "pE" = (
-/obj/structure/machinery/door/airlock/yautja/secure{
+/obj/structure/machinery/door/airlock/yautja/secure/turf_plane{
 	dir = 1
 	},
 /turf/open/floor/corsat/squares,
 /area/shuttle/hunter)
 "qe" = (
-/turf/closed/shuttle/hunter{
-	icon_state = "hunter21"
-	},
+/obj/structure/shuttle/part/hunter/left_front2,
+/turf/template_noop,
 /area/shuttle/hunter)
 "rf" = (
-/obj/structure/machinery/door/airlock/yautja/secure{
-	dir = 1
+/obj/structure/machinery/door/poddoor/yautja/open/turf_plane{
+	id = "yaut_shut_lock"
 	},
-/obj/structure/machinery/door/poddoor/yautja{
-	id = "yaut_shut_lock";
-	unacidable = 1;
-	explo_proof = 1;
-	name = "Emergency Shutter"
+/obj/structure/machinery/door/airlock/yautja/secure/turf_plane{
+	dir = 1;
+	id = "hunter_external"
 	},
 /turf/open/floor/corsat/squares,
 /area/shuttle/hunter)
@@ -123,9 +108,8 @@
 	},
 /area/shuttle/hunter)
 "xz" = (
-/turf/closed/shuttle/hunter{
-	icon_state = "rightengine_1"
-	},
+/obj/structure/shuttle/part/hunter/engine_right_back,
+/turf/template_noop,
 /area/shuttle/hunter)
 "xG" = (
 /turf/open/predship/shuttle_border,
@@ -136,9 +120,8 @@
 	},
 /area/shuttle/hunter)
 "yf" = (
-/turf/closed/shuttle/hunter{
-	icon_state = "hunter26"
-	},
+/obj/structure/shuttle/part/hunter/right_front4,
+/turf/template_noop,
 /area/shuttle/hunter)
 "yw" = (
 /turf/closed/shuttle/hunter{
@@ -161,9 +144,8 @@
 	},
 /area/shuttle/hunter)
 "zG" = (
-/turf/closed/shuttle/hunter{
-	icon_state = "rightengine_6"
-	},
+/obj/structure/shuttle/part/hunter/engine_right_front,
+/turf/template_noop,
 /area/shuttle/hunter)
 "AC" = (
 /turf/closed/shuttle/hunter{
@@ -171,9 +153,8 @@
 	},
 /area/shuttle/hunter)
 "Ba" = (
-/turf/closed/shuttle/hunter{
-	icon_state = "hunter18"
-	},
+/obj/structure/shuttle/part/hunter/left_front1,
+/turf/template_noop,
 /area/shuttle/hunter)
 "CS" = (
 /obj/structure/bed/chair/hunter{
@@ -214,14 +195,12 @@
 	},
 /area/shuttle/hunter)
 "IY" = (
-/turf/closed/shuttle/hunter{
-	icon_state = "hunter25"
-	},
+/obj/structure/shuttle/part/hunter/right_front1,
+/turf/template_noop,
 /area/shuttle/hunter)
 "Ji" = (
-/turf/closed/shuttle/hunter{
-	icon_state = "leftengine_6"
-	},
+/obj/structure/shuttle/part/hunter/engine_left_front,
+/turf/template_noop,
 /area/shuttle/hunter)
 "Jk" = (
 /turf/closed/shuttle/hunter/transparent{
@@ -242,10 +221,9 @@
 	},
 /area/shuttle/hunter)
 "PS" = (
+/obj/structure/shuttle/part/hunter/engine_left_back,
 /obj/docking_port/mobile/emergency_response/hunter,
-/turf/closed/shuttle/hunter{
-	icon_state = "leftengine_1"
-	},
+/turf/template_noop,
 /area/shuttle/hunter)
 "Qq" = (
 /turf/closed/shuttle/hunter{
@@ -285,14 +263,14 @@
 	pixel_x = -6;
 	pixel_y = -1;
 	name = "Lockdown";
-	id = "yaut_shut_lock"
+	id = "yaut_shut_lock";
+	req_one_access = list(390,392,393)
 	},
 /turf/open/predship/tile/hunter_tile_2/west,
 /area/shuttle/hunter)
 "Sy" = (
-/turf/closed/shuttle/hunter{
-	icon_state = "hunter27"
-	},
+/obj/structure/shuttle/part/hunter/right_front2,
+/turf/template_noop,
 /area/shuttle/hunter)
 "TS" = (
 /obj/structure/bed/chair/hunter{
@@ -309,9 +287,8 @@
 	},
 /area/shuttle/hunter)
 "Ve" = (
-/turf/closed/shuttle/hunter{
-	icon_state = "hunter20"
-	},
+/obj/structure/shuttle/part/hunter/left_front4,
+/turf/template_noop,
 /area/shuttle/hunter)
 "Vg" = (
 /turf/closed/shuttle/hunter{
@@ -322,9 +299,8 @@
 /turf/open/predship/shuttle_border_corner/west,
 /area/shuttle/hunter)
 "WW" = (
-/turf/closed/shuttle/hunter{
-	icon_state = "hunter22"
-	},
+/obj/structure/shuttle/part/hunter/left_front3,
+/turf/template_noop,
 /area/shuttle/hunter)
 "Xm" = (
 /turf/closed/shuttle/hunter{
@@ -435,7 +411,7 @@ bt
 Sy
 IY
 US
-jG
+cv
 US
 HE
 zG

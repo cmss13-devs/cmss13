@@ -133,6 +133,19 @@
 	id = MOBILE_SHUTTLE_ID_HUNTER
 	preferred_direction = SOUTH
 	port_direction = NORTH
+	area_type = /area/shuttle/hunter
+
+/obj/docking_port/mobile/emergency_response/hunter/Initialize(mapload)
+	. = ..()
+	external_doors = list()
+	for(var/place in shuttle_areas)
+		for(var/obj/structure/machinery/door/airlock/air in place)
+			if(air.id != "hunter_external")
+				continue
+			air.breakable = FALSE
+			air.explo_proof = TRUE
+			air.unacidable = TRUE
+			external_doors += list(air)
 
 /obj/docking_port/mobile/emergency_response/small
 	name = "Rescue Shuttle"
@@ -245,6 +258,20 @@
 	name = "Rostock port landing pad"
 	dir = NORTH
 	id = "rostock-ert2"
+
+/obj/docking_port/stationary/emergency_response/yautja
+	name = "DO NOT USE"
+
+/obj/docking_port/stationary/emergency_response/yautja/port1
+	name = "Hunter Ship landing pad A"
+	dir = NORTH
+	id = "hunter-ert1"
+	roundstart_template = /datum/map_template/shuttle/hunter
+
+/obj/docking_port/stationary/emergency_response/yautja/port2
+	name = "Hunter Ship landing pad B"
+	dir = NORTH
+	id = "hunter-ert2"
 
 /obj/docking_port/stationary/emergency_response/external
 	is_external = TRUE

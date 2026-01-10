@@ -364,6 +364,21 @@
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 	icon_state = "console_shuttle"
 
+/obj/structure/machinery/computer/shuttle/ert/hunter/get_landing_zones()
+	. = list()
+	for(var/obj/docking_port/stationary/emergency_response/dock in SSshuttle.stationary)
+		if(istype(dock, /obj/docking_port/stationary/emergency_response/yautja))
+			. += list(dock)
+			continue
+
+		if(!is_mainship_level(dock.z))
+			continue
+
+		if(dock.is_external)
+			continue
+
+		. += list(dock)
+
 /obj/structure/machinery/computer/shuttle/lifeboat
 	name = "lifeboat console"
 	desc = "A lifeboat control computer."

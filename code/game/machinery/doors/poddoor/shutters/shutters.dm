@@ -108,6 +108,16 @@
 /obj/structure/machinery/door/poddoor/yautja/open
 	density = FALSE
 
+/obj/structure/machinery/door/poddoor/yautja/open/turf_plane
+	name = "Emergency Shutter"
+	density = FALSE
+	unslashable = TRUE
+	emp_proof = TRUE
+	unacidable = TRUE
+	breakable = FALSE
+	explo_proof = TRUE
+	plane = TURF_PLANE
+
 /obj/structure/machinery/door/poddoor/yautja/emp_act(power, severity)
 	if(emp_proof)
 		return FALSE

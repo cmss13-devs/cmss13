@@ -24,6 +24,7 @@
 #define SHUTTLE_HEIGHT_TOO_LARGE "height too large"
 #define SHUTTLE_ALREADY_DOCKED "we are already docked"
 #define SHUTTLE_SOMEONE_ELSE_DOCKED "someone else docked"
+#define SHUTTLE_HUNTER "unsafe dock"//Only Yautja can use these.
 
 //Launching Shuttles to CentCom - used for escape shuttle code
 #define NOLAUNCH -1
@@ -130,7 +131,6 @@
 #define DROPSHIP_LZ2 "dropship-lz2"
 
 #define YAUTJA_HANGAR_A "yautja-hangar-a"
-#define YAUTJA_HANGAR_B "yautja-hangar-b"
 
 #define ESCAPE_SHUTTLE "escape-shuttle"
 #define ESCAPE_SHUTTLE_EAST "escape_shuttle_e"

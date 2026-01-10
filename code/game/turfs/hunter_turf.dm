@@ -305,6 +305,7 @@
 /// Shuttle
 
 /turf/closed/shuttle/hunter
+	name = "hull"
 	icon = 'icons/turf/hunter_shuttle.dmi'
 	icon_state = "hunter4"
 
@@ -334,3 +335,49 @@
 
 /turf/open/predship/shuttle_border_corner/west
 	dir = WEST
+
+/obj/structure/shuttle/part/hunter
+	name = "hull"
+	icon = 'icons/turf/hunter_shuttle.dmi'
+	icon_state = "hunter4"
+	plane = TURF_PLANE
+
+/obj/structure/shuttle/part/hunter/engine_left_back
+	icon_state = "leftengine_1"
+
+/obj/structure/shuttle/part/hunter/engine_left_front
+	icon_state = "leftengine_6"
+
+/obj/structure/shuttle/part/hunter/engine_right_back
+	icon_state = "rightengine_1"
+
+/obj/structure/shuttle/part/hunter/engine_right_front
+	icon_state = "rightengine_6"
+
+/obj/structure/shuttle/part/hunter/left_front1
+	icon_state = "hunter18"
+
+/obj/structure/shuttle/part/hunter/left_front2
+	icon_state = "hunter21"
+	opacity = FALSE
+
+/obj/structure/shuttle/part/hunter/left_front3
+	icon_state = "hunter22"
+	opacity = FALSE
+
+/obj/structure/shuttle/part/hunter/left_front4
+	icon_state = "hunter20"
+
+/obj/structure/shuttle/part/hunter/right_front1
+	icon_state = "hunter25"
+
+/obj/structure/shuttle/part/hunter/right_front2
+	icon_state = "hunter27"
+	opacity = FALSE
+
+/obj/structure/shuttle/part/hunter/right_front3
+	icon_state = "hunter28"
+	opacity = FALSE
+
+/obj/structure/shuttle/part/hunter/right_front4
+	icon_state = "hunter26"

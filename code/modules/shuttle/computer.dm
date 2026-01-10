@@ -379,6 +379,16 @@
 
 		. += list(dock)
 
+/obj/structure/machinery/computer/shuttle/ert/hunter/tgui_interact(mob/user, datum/tgui/ui)
+	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
+		to_chat(user, SPAN_WARNING("You do not understand how to use this terminal."))
+		return
+
+	ui = SStgui.try_update_ui(user, src, ui)
+	if (!ui)
+		ui = new(user, src, "NavigationShuttle", "Hunter Navigation Computer")
+		ui.open()
+
 /obj/structure/machinery/computer/shuttle/lifeboat
 	name = "lifeboat console"
 	desc = "A lifeboat control computer."

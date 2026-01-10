@@ -14,17 +14,17 @@ SUBSYSTEM_DEF(inactivity)
 	return ..()
 
 /datum/controller/subsystem/inactivity/fire(resumed = FALSE)
-	if(list_clear_nulls(GLOB.clients))
-		debug_log("Removed nulls from GLOB.clients!")
-	if(list_clear_nulls(GLOB.player_list))
-		debug_log("Removed nulls from GLOB.player_list!")
-	if(list_clear_nulls(GLOB.new_player_list))
-		debug_log("Removed nulls from GLOB.new_player_list!")
-
-	if(!CONFIG_GET(flag/kick_inactive))
-		return
-
 	if(!resumed)
+		if(list_clear_nulls(GLOB.clients))
+			debug_log("Removed nulls from GLOB.clients!")
+		if(list_clear_nulls(GLOB.player_list))
+			debug_log("Removed nulls from GLOB.player_list!")
+		if(list_clear_nulls(GLOB.new_player_list))
+			debug_log("Removed nulls from GLOB.new_player_list!")
+
+		if(!CONFIG_GET(flag/kick_inactive))
+			return
+
 		current_run = GLOB.clients.Copy()
 
 	while(length(current_run))

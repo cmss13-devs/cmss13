@@ -40,11 +40,11 @@
 /turf/open/predship/hunter_catwalk_alt,
 /area/yautja_ship/middle_deck/trophy_hall)
 "ae" = (
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/upper_deck/hangar_a)
 "af" = (
 /obj/docking_port/stationary/marine_dropship/yautja_hangar_1,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/upper_deck/hangar_a)
 "ah" = (
 /obj/structure/prop/hunter/fake_platform/hunter,
@@ -247,7 +247,7 @@
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/training_center)
 "aJ" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -268,7 +268,7 @@
 	color = "#bccab4"
 	},
 /obj/effect/landmark/ert_spawns/distress/hunt_spawner/pred,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/training_center)
 "aL" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -289,7 +289,7 @@
 	dir = 8
 	},
 /obj/effect/landmark/ert_spawns/distress/hunt_spawner/pred,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/training_center)
 "aN" = (
 /turf/open/predship/hunter_grille,
@@ -319,7 +319,7 @@
 /area/yautja_ship/lower_deck/corridors)
 "aQ" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/training_center)
 "aR" = (
 /obj/structure/platform_decoration/metal/hunter/west,
@@ -367,7 +367,7 @@
 	dir = 4
 	},
 /obj/structure/curtain/leather/alt_1,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/training_center)
 "ba" = (
 /obj/structure/prop/hunter/fake_platform/hunter/east,
@@ -392,7 +392,7 @@
 	},
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/training_center)
 "be" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -447,7 +447,7 @@
 	pixel_x = -3;
 	pixel_y = 1
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/reactor)
 "bh" = (
 /obj/structure/bed/bedroll{
@@ -456,7 +456,7 @@
 	},
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/training_center)
 "bi" = (
 /obj/structure/machinery/shower{
@@ -508,7 +508,7 @@
 /obj/structure/prop/hunter/stairs/border/stair_cut/rune{
 	dir = 4
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/trophy_hall)
 "bn" = (
 /obj/structure/surface/rack{
@@ -576,7 +576,7 @@
 	color = "#fbebe2"
 	},
 /obj/structure/window/framed/colony/reinforced/yautja,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/elder)
 "bz" = (
 /obj/effect/decal/cleanable/dirt{
@@ -589,7 +589,7 @@
 	pixel_y = 9;
 	name = "Bowl"
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/training_center)
 "bA" = (
 /obj/structure/bed/bedroll{
@@ -602,12 +602,12 @@
 	layer = 3.2;
 	color = "#bccab4"
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/training_center)
 "bB" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/curtain/leather/alt_1,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/training_center)
 "bC" = (
 /obj/structure/prop/hunter/fake_platform/hunter,
@@ -640,7 +640,7 @@
 /area/yautja_ship/middle_deck/workshop)
 "bF" = (
 /obj/structure/machinery/cm_vending/clothing/yautja/hunter/right_centre,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/prep)
 "bG" = (
 /obj/effect/hunter/rune{
@@ -1014,7 +1014,7 @@
 	layer = 3.2;
 	color = "#bccab4"
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/training_center)
 "ct" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
@@ -1073,7 +1073,7 @@
 /area/yautja_ship/upper_deck/throne)
 "cv" = (
 /obj/effect/hunter/bridge_border/brown/large_stair,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/training_center)
 "cw" = (
 /obj/structure/platform_decoration/metal/hunter/east,
@@ -1215,7 +1215,7 @@
 /obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
 	color = "#fbebe2"
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/medical)
 "cR" = (
 /obj/effect/hunter/catwalk/hunter_grate,
@@ -1348,7 +1348,7 @@
 	color = "#fbebe2"
 	},
 /obj/structure/window/framed/colony/reinforced/yautja,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/food)
 "dd" = (
 /obj/structure/prop/hunter/fake_platform/hunter,
@@ -1394,7 +1394,7 @@
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_y = 24
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/prep)
 "di" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -1419,7 +1419,7 @@
 /obj/structure/curtain/colorable{
 	color = "#6c4449"
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/morgue)
 "dk" = (
 /obj/structure/surface/rack{
@@ -1604,7 +1604,7 @@
 /area/yautja_ship/middle_deck/trophy_hall)
 "dA" = (
 /obj/effect/hunter/bridge_border/brown/large_stair,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/prep)
 "dB" = (
 /obj/effect/hunter/bridge_border/brown/large_stair{
@@ -1630,7 +1630,7 @@
 	color = "#fbebe2";
 	dir = 4
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/training_center)
 "dE" = (
 /obj/effect/decal/cleanable/dirt{
@@ -1667,7 +1667,7 @@
 	pixel_y = 14
 	},
 /obj/effect/hunter/bridge_border/brown/large_stair,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/prep)
 "dI" = (
 /obj/effect/hunter/bridge_border/brown/large_stair{
@@ -2076,7 +2076,7 @@
 /area/yautja_ship/lower_deck/training_center)
 "en" = (
 /obj/structure/window/framed/colony/reinforced/hull/yautja,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/houndchamber)
 "eo" = (
 /obj/effect/hunter/bridge_border/brown{
@@ -2822,7 +2822,7 @@
 	pixel_x = 7
 	},
 /obj/structure/prop/hunter/trophy_display/bottom_left,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/trophy_hall)
 "fO" = (
 /obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
@@ -2830,7 +2830,7 @@
 	dir = 4
 	},
 /obj/structure/window/framed/colony/reinforced/yautja,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/medical)
 "fP" = (
 /obj/effect/decal/cleanable/generic{
@@ -3238,7 +3238,7 @@
 /obj/effect/hunter/bridge_border/brown/large_stair{
 	dir = 8
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/trophy_hall)
 "gw" = (
 /obj/effect/hunter/bridge_border/brown/large_stair,
@@ -3247,7 +3247,7 @@
 	layer = 3.2;
 	color = "#bccab4"
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/training_center)
 "gx" = (
 /obj/structure/platform_decoration/metal/hunter/west,
@@ -3259,7 +3259,7 @@
 "gy" = (
 /obj/effect/hunter/bridge_border/brown/large_stair,
 /obj/structure/prop/hunter/fake_platform/hunter/east,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/training_center)
 "gz" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north{
@@ -3291,7 +3291,7 @@
 	pixel_x = 3;
 	pixel_y = -4
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/reactor)
 "gB" = (
 /obj/structure/machinery/cm_vending/clothing/yautja/thrall,
@@ -3421,7 +3421,7 @@
 /obj/structure/machinery/door/poddoor/yautja/open{
 	id = "researchlockdown"
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/research)
 "gX" = (
 /obj/structure/machinery/cm_vending/clothing/yautja/young_blood/right,
@@ -3469,7 +3469,7 @@
 /obj/structure/machinery/door/poddoor/yautja/open{
 	id = "houndcells"
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/houndchamber)
 "hd" = (
 /turf/closed/wall/huntership,
@@ -3479,7 +3479,7 @@
 	basestate = "pred_window";
 	icon_state = "pred_window0"
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/bridge)
 "hf" = (
 /obj/structure/machinery/door/airlock/yautja{
@@ -3601,11 +3601,11 @@
 /area/yautja_ship/middle_deck/bridge)
 "hu" = (
 /obj/structure/window/framed/colony/reinforced/hull/yautja,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/elder)
 "hv" = (
 /obj/structure/machinery/cm_vending/clothing/yautja/hunter/elder/right,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/prep)
 "hw" = (
 /obj/structure/blocker/invisible_wall,
@@ -3644,7 +3644,7 @@
 	},
 /obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/trophy_hall)
 "hB" = (
 /obj/structure/prop/hunter/fake_platform/hunter/east,
@@ -3729,7 +3729,7 @@
 	id = "researchlockdown2";
 	dir = 4
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/research)
 "hO" = (
 /turf/open/predship/tile/red3,
@@ -3964,7 +3964,7 @@
 /obj/effect/hunter/bridge_border/brown{
 	dir = 8
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/houndchamber)
 "in" = (
 /obj/structure/bed/chair/comfy/yautja{
@@ -3994,7 +3994,7 @@
 /area/yautja_ship/middle_deck/elder)
 "io" = (
 /obj/effect/hunter/bridge_border/brown/edge,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/houndchamber)
 "ip" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -4016,7 +4016,7 @@
 /obj/effect/hunter/bridge_border/brown/edge{
 	dir = 8
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/houndchamber)
 "ir" = (
 /obj/effect/hunter/bridge_border/brown{
@@ -4042,7 +4042,7 @@
 /obj/effect/decal/strata_decals/grime/grime3{
 	icon_state = "grime4"
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/houndchamber)
 "is" = (
 /turf/open/predship/hull/non_weedable_hull/east,
@@ -4098,7 +4098,7 @@
 	color = "#5d524b";
 	alpha = 155
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/houndchamber)
 "iu" = (
 /obj/item/reagent_container/glass/bucket/mopbucket{
@@ -4127,7 +4127,7 @@
 	},
 /obj/effect/decal/cleanable/blood/drip,
 /obj/effect/hunter/bridge_border/brown,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/houndchamber)
 "iv" = (
 /turf/closed/wall/huntership/reinforced,
@@ -4173,11 +4173,11 @@
 	dir = 4;
 	layer = 3
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/houndchamber)
 "iB" = (
 /obj/effect/hunter/bridge_border/brown,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/houndchamber)
 "iC" = (
 /obj/effect/hunter/bridge_border/brown,
@@ -4228,7 +4228,7 @@
 	pixel_x = -10
 	},
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/houndchamber)
 "iI" = (
 /obj/effect/hunter/bridge_border/brown/small_stair_right{
@@ -4238,7 +4238,7 @@
 /turf/open/predship/mainfloor/upper/north,
 /area/yautja_ship/middle_deck/trophy_hall)
 "iJ" = (
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/houndchamber)
 "iK" = (
 /obj/effect/hunter/bridge_border/brown/corner,
@@ -4284,14 +4284,14 @@
 /obj/effect/hunter/bridge_border/brown{
 	dir = 1
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/houndchamber)
 "iQ" = (
 /obj/effect/hunter/bridge_border/brown{
 	dir = 1
 	},
 /obj/structure/prop/hunter/hellhound,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/houndchamber)
 "iR" = (
 /turf/closed/wall/huntership/innerhull,
@@ -4306,7 +4306,7 @@
 	color = "#6b675e"
 	},
 /obj/structure/blocker/invisible_wall,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/houndchamber)
 "iT" = (
 /obj/structure/machinery/door_control/yautja{
@@ -4359,7 +4359,7 @@
 /obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
 	color = "#fbebe2"
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/houndchamber)
 "iY" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
@@ -4484,7 +4484,7 @@
 	color = "#fbebe2";
 	dir = 4
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/houndchamber)
 "jo" = (
 /turf/open/predship/tile/red5,
@@ -4661,7 +4661,7 @@
 /obj/effect/hunter/bridge_border/brown/large_stair{
 	dir = 1
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/trophy_hall)
 "jF" = (
 /obj/structure/blocker/invisible_wall,
@@ -4730,7 +4730,7 @@
 "jS" = (
 /obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/effect/hunter/bridge_border/brown/large_stair,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/prep)
 "jT" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
@@ -4804,7 +4804,7 @@
 	color = "#fbebe2";
 	dir = 4
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/training_center)
 "kc" = (
 /obj/structure/blocker/invisible_wall,
@@ -4824,7 +4824,7 @@
 	},
 /obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter/north,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/trophy_hall)
 "kg" = (
 /obj/structure/machinery/door/airlock/yautja{
@@ -4990,7 +4990,7 @@
 	layer = 3.2;
 	color = "#bccab4"
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/training_center)
 "kB" = (
 /obj/item/clothing/mask/gas/yautja/hunter{
@@ -5025,7 +5025,7 @@
 	layer = 3.2;
 	color = "#bccab4"
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/training_center)
 "kD" = (
 /obj/structure/blocker/invisible_wall,
@@ -5249,7 +5249,7 @@
 /area/yautja_ship/middle_deck/elder)
 "lh" = (
 /obj/structure/prop/hunter/trophy_display/center,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/trophy_hall)
 "li" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
@@ -5386,7 +5386,7 @@
 /area/yautja_ship/middle_deck/trophy_hall)
 "lz" = (
 /obj/structure/window/framed/colony/reinforced/hull/yautja,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/trophy_hall)
 "lA" = (
 /turf/closed/wall/huntership/reinforced,
@@ -5875,7 +5875,7 @@
 /area/yautja_ship/middle_deck/trophy_hall)
 "mD" = (
 /obj/structure/machinery/cm_vending/clothing/yautja/hunter/right,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/prep)
 "mE" = (
 /obj/structure/platform_decoration/metal/hunter/east,
@@ -5901,7 +5901,7 @@
 	},
 /obj/structure/prop/hunter/fake_platform/hunter/stair_cut/hunter_left,
 /obj/structure/platform_decoration/metal/hunter/west,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/trophy_hall)
 "mH" = (
 /obj/structure/blocker/invisible_wall,
@@ -6042,7 +6042,7 @@
 	basestate = "pred_window";
 	icon_state = "pred_window0"
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/upper_deck/throne)
 "mX" = (
 /obj/structure/shuttle/engine/propulsion{
@@ -6930,7 +6930,7 @@
 /obj/effect/hunter/bridge_border/brown/large_stair{
 	dir = 8
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/trophy_hall)
 "oY" = (
 /turf/open/predship/hunter_grille,
@@ -7168,7 +7168,7 @@
 	color = "#fbebe2"
 	},
 /obj/structure/window/framed/colony/reinforced/yautja,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/upper_deck/ancient)
 "ps" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -7302,7 +7302,7 @@
 	pixel_y = 24;
 	pixel_x = 26
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/prep)
 "pI" = (
 /obj/effect/hunter/catwalk/hunter_grate,
@@ -7778,7 +7778,7 @@
 /turf/open/floor/corsat/box,
 /area/yautja_ship/middle_deck/food)
 "qQ" = (
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/upper_deck/hangar_b)
 "qS" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
@@ -7811,7 +7811,7 @@
 	dir = 8;
 	name = "\improper Hangar A"
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/upper_deck/hangar_a)
 "qW" = (
 /obj/item/weapon/shield/riot/yautja{
@@ -7826,13 +7826,13 @@
 	dir = 8;
 	name = "\improper Hangar B"
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/upper_deck/hangar_b)
 "qY" = (
 /obj/effect/hunter/bridge_border/brown/large_stair{
 	dir = 1
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/trophy_hall)
 "qZ" = (
 /obj/structure/prop/ice_colony/tiger_rug{
@@ -7896,7 +7896,7 @@
 	anchored = 1
 	},
 /obj/structure/prop/hunter/trophy_display/center,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/trophy_hall)
 "rj" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -8036,7 +8036,7 @@
 	pixel_x = -6;
 	pixel_y = 6
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/houndchamber)
 "rx" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -8343,7 +8343,7 @@
 /area/yautja_ship/upper_deck/prison)
 "sg" = (
 /obj/structure/prop/hunter/trophy_display/bottom_left,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/trophy_hall)
 "sh" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
@@ -8415,7 +8415,7 @@
 /obj/structure/machinery/door/poddoor/yautja/open{
 	id = "prisonlockdown2"
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/upper_deck/prison)
 "sp" = (
 /obj/structure/machinery/door/airlock/yautja/secure{
@@ -8829,7 +8829,7 @@
 	dir = 4;
 	id = "researchlockdown"
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/research)
 "to" = (
 /obj/structure/pipes/unary/freezer/yautja{
@@ -8985,7 +8985,7 @@
 /area/yautja_ship/upper_deck/prison)
 "tF" = (
 /obj/structure/window/framed/colony/reinforced/hull/yautja,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/upper_deck/prison)
 "tG" = (
 /obj/structure/prop/ice_colony/tiger_rug{
@@ -9237,7 +9237,7 @@
 	anchored = 1
 	},
 /obj/structure/prop/hunter/trophy_display/center,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/trophy_hall)
 "uk" = (
 /obj/structure/bed/chair/hunter{
@@ -9599,7 +9599,7 @@
 /obj/effect/hunter/bridge_border/brown/large_stair{
 	dir = 1
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/corridors)
 "vh" = (
 /obj/structure/machinery/door_control/yautja{
@@ -9788,7 +9788,7 @@
 	anchored = 1
 	},
 /obj/structure/prop/hunter/trophy_display/bottom_left,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/trophy_hall)
 "vD" = (
 /turf/open/predship/mainfloor/plain,
@@ -9807,7 +9807,7 @@
 	color = "#912727"
 	},
 /obj/effect/hunter/rune/stripes_arrow,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/reactor)
 "vH" = (
 /obj/effect/hunter/rune{
@@ -10007,7 +10007,7 @@
 /area/yautja_ship/middle_deck/research)
 "we" = (
 /obj/structure/machinery/cm_vending/clothing/yautja/hunter/left_centre,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/prep)
 "wf" = (
 /obj/structure/prop/hunter/ancient_temple/coffin_base{
@@ -10254,7 +10254,7 @@
 /obj/effect/decal/strata_decals/grime/grime3{
 	dir = 8
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/houndchamber)
 "wB" = (
 /obj/structure/showcase{
@@ -10277,7 +10277,7 @@
 	pixel_x = 3;
 	pixel_y = 1
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/reactor)
 "wC" = (
 /turf/closed/wall/huntership,
@@ -10379,7 +10379,7 @@
 /area/yautja_ship/lower_deck/temple)
 "wR" = (
 /obj/structure/window/framed/colony/reinforced/hull/yautja,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/temple)
 "wS" = (
 /obj/structure/prop/hunter/trophy_display/center,
@@ -10582,7 +10582,7 @@
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 8
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/houndchamber)
 "xm" = (
 /obj/structure/blocker/invisible_wall,
@@ -10793,7 +10793,7 @@
 /area/yautja_ship/middle_deck/trophy_hall)
 "xP" = (
 /obj/structure/machinery/cm_vending/clothing/yautja/hunter/centre,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/prep)
 "xQ" = (
 /turf/closed/wall/huntership/innerhull,
@@ -10823,7 +10823,7 @@
 	dir = 4
 	},
 /obj/structure/window/framed/colony/reinforced/yautja,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/food)
 "xV" = (
 /obj/structure/surface/rack{
@@ -10842,7 +10842,7 @@
 /area/yautja_ship/middle_deck/workshop)
 "xW" = (
 /obj/structure/window/framed/colony/reinforced/hull/yautja,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/food)
 "xX" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
@@ -10996,7 +10996,7 @@
 /obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
 	color = "#fbebe2"
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/prep)
 "yq" = (
 /turf/closed/wall/huntership,
@@ -11063,7 +11063,7 @@
 /area/yautja_ship/middle_deck/research)
 "yA" = (
 /obj/structure/machinery/cm_vending/clothing/yautja/thrall/blooded_thrall/right,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/prep)
 "yB" = (
 /obj/structure/blocker/invisible_wall,
@@ -11094,7 +11094,7 @@
 /area/yautja_ship/middle_deck/mainhall)
 "yE" = (
 /obj/structure/window/framed/colony/reinforced/hull/yautja,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/prep)
 "yF" = (
 /obj/structure/blocker/invisible_wall,
@@ -11234,7 +11234,7 @@
 	dir = 4
 	},
 /obj/structure/window/framed/colony/reinforced/yautja,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/upper_deck/hangar_b)
 "yV" = (
 /obj/structure/showcase{
@@ -11381,7 +11381,7 @@
 /area/yautja_ship/upper_deck/ancient)
 "zi" = (
 /obj/structure/largecrate/hunter_games_ammo/good,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/cargo)
 "zj" = (
 /obj/structure/prop/hunter/fake_platform/hunter/east,
@@ -11414,7 +11414,7 @@
 	pixel_y = 3
 	},
 /obj/structure/largecrate/machine/recycler,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/cargo)
 "zm" = (
 /obj/effect/hunter/catwalk/new_alpha,
@@ -11645,7 +11645,7 @@
 "zG" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/north,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/upper_deck/hangar_a)
 "zH" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -11689,7 +11689,7 @@
 /area/yautja_ship/upper_deck/hangar_a)
 "zM" = (
 /obj/structure/prop/hunter/fake_platform/hunter,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/cargo)
 "zN" = (
 /obj/effect/hunter/bridge_border/edge{
@@ -11750,7 +11750,7 @@
 "zS" = (
 /obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/platform_decoration/metal/hunter,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/upper_deck/hangar_a)
 "zT" = (
 /obj/structure/closet/secure_closet/freezer/fridge/groceries/yautja,
@@ -11781,7 +11781,7 @@
 /obj/effect/hunter/bridge_border/brown/large_stair{
 	dir = 8
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/trophy_hall)
 "zW" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -11932,7 +11932,7 @@
 /area/yautja_ship/upper_deck/prison)
 "Al" = (
 /obj/structure/largecrate/hunter_games_armors,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/cargo)
 "Am" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -12014,7 +12014,7 @@
 /area/yautja_ship/upper_deck/corridors)
 "Av" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/upper_deck/hangar_a)
 "Aw" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -12048,7 +12048,7 @@
 /area/yautja_ship/middle_deck/corridors)
 "AA" = (
 /obj/structure/prop/hunter/fake_platform/hunter/east,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/upper_deck/hangar_a)
 "AB" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
@@ -12117,7 +12117,7 @@
 /area/yautja_ship/lower_deck/temple)
 "AI" = (
 /obj/structure/xenoautopsy/tank/hugger/yautja,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/cargo)
 "AJ" = (
 /obj/structure/prop/hunter/misc/prop_armor/ancient{
@@ -12204,7 +12204,7 @@
 /area/yautja_ship/middle_deck/trophy_hall)
 "AV" = (
 /obj/structure/largecrate/hunter_games_guns/decent,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/cargo)
 "AW" = (
 /turf/closed/wall/huntership/reinforced,
@@ -12289,7 +12289,7 @@
 /area/yautja_ship/lower_deck/engine)
 "Bf" = (
 /obj/structure/largecrate/hunter_games_guns/mediocre,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/cargo)
 "Bg" = (
 /obj/effect/hunter/bridge_border/brown/large_stair{
@@ -12537,7 +12537,7 @@
 	dir = 4
 	},
 /obj/structure/window/framed/colony/reinforced/yautja,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/forge)
 "BK" = (
 /turf/open/predship/tile/hunter_tile_2/east,
@@ -12701,7 +12701,7 @@
 	pixel_x = -2;
 	pixel_y = -4
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/reactor)
 "Cc" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
@@ -12751,7 +12751,7 @@
 	color = "#6b675e"
 	},
 /obj/structure/blocker/invisible_wall,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/houndchamber)
 "Cj" = (
 /obj/structure/surface/rack{
@@ -12889,7 +12889,7 @@
 	color = "#fbebe2"
 	},
 /obj/structure/window/framed/colony/reinforced/yautja,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/upper_deck/corridors)
 "Cx" = (
 /obj/structure/prop/hunter/trophy_display/bottom_left,
@@ -12929,7 +12929,7 @@
 /area/yautja_ship/middle_deck/corridors)
 "CC" = (
 /obj/docking_port/stationary/emergency_response/yautja/port2,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/upper_deck/hangar_b)
 "CD" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -13029,7 +13029,7 @@
 /obj/structure/machinery/chem_master/yautja{
 	req_skill_level = 1
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/cargo)
 "CO" = (
 /obj/structure/machinery/cryopod/no_store/yautja,
@@ -13112,7 +13112,7 @@
 /area/yautja_ship/upper_deck/corridors)
 "CX" = (
 /obj/structure/largecrate/hunter_games_guns/good,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/cargo)
 "CY" = (
 /obj/structure/blocker/invisible_wall,
@@ -13231,7 +13231,7 @@
 	layer = 3.2;
 	color = "#bccab4"
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/training_center)
 "Dp" = (
 /obj/effect/hunter/catwalk/hunter_grate,
@@ -13247,7 +13247,7 @@
 	anchored = 1
 	},
 /obj/structure/prop/hunter/trophy_display/bottom_right,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/trophy_hall)
 "Dr" = (
 /obj/effect/hunter/catwalk/new_alpha,
@@ -13264,7 +13264,7 @@
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_y = 26
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/upper_deck/hangar_a)
 "Dt" = (
 /obj/structure/machinery/body_scanconsole/yautja{
@@ -13278,7 +13278,7 @@
 	color = "#fbebe2"
 	},
 /obj/structure/window/framed/colony/reinforced/yautja,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/firerange)
 "Dv" = (
 /turf/open/predship/tile/hunter_tile_2/east,
@@ -13409,7 +13409,7 @@
 /obj/effect/hunter/bridge_border/brown/small_stair{
 	dir = 4
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/upper_deck/hangar_a)
 "DH" = (
 /obj/structure/platform_decoration/metal/hunter,
@@ -13554,11 +13554,11 @@
 /obj/structure/platform_decoration/metal/hunter{
 	pixel_y = 26
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/upper_deck/hangar_a)
 "DR" = (
 /obj/structure/largecrate/hunter_games_supplies,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/cargo)
 "DS" = (
 /turf/closed/wall/huntership/reinforced,
@@ -13629,7 +13629,7 @@
 /obj/structure/curtain/colorable{
 	color = "#6c4449"
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/morgue)
 "Eb" = (
 /turf/open/predship/hunter_grille,
@@ -13643,7 +13643,7 @@
 	pixel_y = 9
 	},
 /obj/item/storage/belt/utility/pred/full,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/cargo)
 "Ed" = (
 /obj/structure/prop/hunter/ancient_temple/coffin_base{
@@ -13810,7 +13810,7 @@
 	icon_state = "smallmonitor";
 	pixel_y = 23
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/prep)
 "Ev" = (
 /obj/effect/hunter/bridge_border/brown/corner{
@@ -13913,7 +13913,7 @@
 	pixel_x = -1;
 	pixel_y = 8
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/cargo)
 "EJ" = (
 /obj/structure/prop/hunter/fake_platform/hunter/east,
@@ -13950,7 +13950,7 @@
 	dir = 4
 	},
 /obj/structure/window/framed/colony/reinforced/yautja,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/upper_deck/ancient)
 "EO" = (
 /obj/structure/platform_decoration/metal/hunter/north{
@@ -14027,7 +14027,7 @@
 "EV" = (
 /obj/effect/hunter/bridge_border/brown/large_stair,
 /obj/structure/prop/hunter/fake_platform/hunter/east,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/prep)
 "EW" = (
 /turf/open/floor/carpet15_15/west,
@@ -14126,7 +14126,7 @@
 /area/yautja_ship/middle_deck/medical)
 "Fi" = (
 /obj/structure/window/framed/colony/reinforced/hull/yautja,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/upper_deck/hangar_a)
 "Fj" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -14350,7 +14350,7 @@
 	color = "#6b675e";
 	dir = 8
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/training_center)
 "FJ" = (
 /obj/effect/hunter/catwalk/hunter_grate,
@@ -14370,7 +14370,7 @@
 /area/yautja_ship/upper_deck/ancient)
 "FL" = (
 /obj/structure/window/framed/colony/reinforced/hull/yautja,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/upper_deck/hangar_b)
 "FM" = (
 /obj/effect/hunter/bridge_border/brown/small_stair{
@@ -14412,13 +14412,13 @@
 /area/yautja_ship/middle_deck/medical)
 "FO" = (
 /obj/structure/largecrate/machine/recycler,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/cargo)
 "FP" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics/yautja{
 	anchored = 0
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/cargo)
 "FQ" = (
 /obj/effect/hunter/rune/corner{
@@ -14443,7 +14443,7 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/cargo)
 "FU" = (
 /obj/structure/platform_decoration/metal/hunter/west,
@@ -14484,7 +14484,7 @@
 	pixel_y = -2;
 	name = "Bowl"
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/training_center)
 "FZ" = (
 /turf/closed/wall/huntership/innerhull,
@@ -14496,7 +14496,7 @@
 /area/yautja_ship/upper_deck/hangar_b)
 "Gb" = (
 /obj/structure/window/framed/colony/reinforced/hull/yautja,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/upper_deck/elder)
 "Gc" = (
 /obj/effect/alien/weeds/node/forsaken,
@@ -14667,7 +14667,7 @@
 	pixel_y = 24;
 	pixel_x = 26
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/prep)
 "Gz" = (
 /obj/structure/bed/chair/comfy/yautja{
@@ -14782,7 +14782,7 @@
 	color = "#fbebe2"
 	},
 /obj/structure/window/framed/colony/reinforced/yautja,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/upper_deck/elder)
 "GK" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
@@ -14858,7 +14858,7 @@
 	pixel_x = 1;
 	pixel_y = 8
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/cargo)
 "GS" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
@@ -14896,7 +14896,7 @@
 /obj/structure/machinery/door/poddoor/yautja/armory{
 	id = "armory2"
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/armory)
 "GX" = (
 /obj/item/clothing/shoes/combat,
@@ -14908,7 +14908,7 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/cargo)
 "GY" = (
 /obj/structure/platform_decoration/metal/hunter,
@@ -14916,7 +14916,7 @@
 /area/yautja_ship/upper_deck/hangar_b)
 "GZ" = (
 /obj/structure/largecrate/hunter_games_ammo/decent,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/cargo)
 "Ha" = (
 /obj/structure/surface/rack{
@@ -14966,7 +14966,7 @@
 	pixel_y = 26
 	},
 /obj/structure/machinery/portable_atmospherics/canister/oxygen/yautja,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/cargo)
 "Hf" = (
 /obj/effect/hunter/catwalk/hunter_grate,
@@ -15245,7 +15245,7 @@
 	},
 /obj/structure/prop/hunter/fake_platform/hunter/stair_cut/hunter_right,
 /obj/structure/platform_decoration/metal/hunter/east,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/trophy_hall)
 "HN" = (
 /obj/effect/hunter/bridge_border/brown/large_stair{
@@ -15268,7 +15268,7 @@
 /area/yautja_ship/middle_deck/workshop)
 "HP" = (
 /obj/structure/platform_decoration/metal/hunter,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/cargo)
 "HQ" = (
 /obj/effect/hunter/bridge_border/brown{
@@ -15370,7 +15370,7 @@
 	dir = 8;
 	pixel_y = 8
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/cargo)
 "Ia" = (
 /obj/effect/hunter/rune{
@@ -15518,7 +15518,7 @@
 	dir = 4
 	},
 /obj/structure/window/framed/colony/reinforced/yautja,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/scribe)
 "Iq" = (
 /obj/item/weapon/yautja/knife{
@@ -15764,7 +15764,7 @@
 /turf/open/predship/tile/hunter_tile_5/east,
 /area/yautja_ship/middle_deck/workshop)
 "IN" = (
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/cargo)
 "IO" = (
 /obj/structure/prop/hunter/trophy_display/bottom_left,
@@ -15782,7 +15782,7 @@
 /area/yautja_ship/middle_deck/elder)
 "IS" = (
 /obj/docking_port/stationary/emergency_response/yautja/port1,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/upper_deck/hangar_b)
 "IT" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
@@ -15830,7 +15830,7 @@
 	color = "#fbebe2"
 	},
 /obj/structure/window/framed/colony/reinforced/yautja,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/upper_deck/meeting)
 "IY" = (
 /obj/structure/prop/hunter/fake_platform/hunter,
@@ -15843,7 +15843,7 @@
 /area/yautja_ship/upper_deck/hangar_a)
 "Ja" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/cargo)
 "Jb" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -16250,7 +16250,7 @@
 /area/yautja_ship/lower_deck/firerange)
 "JF" = (
 /obj/structure/prop/hunter/trophy_display/bottom_right,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/trophy_hall)
 "JG" = (
 /obj/effect/hunter/bridge_border/brown/corner{
@@ -16306,7 +16306,7 @@
 /area/yautja_ship/middle_deck/mainhall)
 "JN" = (
 /obj/structure/machinery/chem_dispenser/yauja,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/cargo)
 "JO" = (
 /obj/effect/hunter/catwalk/hunter_grate,
@@ -16357,7 +16357,7 @@
 	dir = 6;
 	color = "#6b675e"
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/cargo)
 "JT" = (
 /obj/structure/machinery/door/airlock/yautja{
@@ -16471,7 +16471,7 @@
 "Ke" = (
 /obj/structure/platform_decoration/metal/hunter/east,
 /obj/structure/platform_decoration/metal/hunter/north,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/cargo)
 "Kf" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -16550,7 +16550,7 @@
 /area/yautja_ship/upper_deck/meeting)
 "Kn" = (
 /obj/structure/prop/hunter/fake_platform/hunter/east,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/cargo)
 "Ko" = (
 /obj/structure/blocker/invisible_wall,
@@ -16811,7 +16811,7 @@
 /area/yautja_ship/lower_deck/houndchamber)
 "KP" = (
 /obj/structure/largecrate/hunter_games_surgery,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/cargo)
 "KQ" = (
 /obj/structure/showcase{
@@ -16911,7 +16911,7 @@
 /obj/structure/prop/hunter/stairs/border/stair_cut/rune{
 	dir = 8
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/trophy_hall)
 "KZ" = (
 /obj/structure/surface/rack{
@@ -16956,7 +16956,7 @@
 /obj/effect/hunter/bridge_border/brown{
 	dir = 8
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/houndchamber)
 "Le" = (
 /obj/effect/hunter/bridge_border/brown/small_stair_left{
@@ -16990,7 +16990,7 @@
 	color = "#c0baae";
 	pixel_x = -3
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/engine)
 "Lh" = (
 /obj/effect/hunter/catwalk/hunter_grate,
@@ -17004,7 +17004,7 @@
 	pixel_y = 1
 	},
 /obj/structure/platform_decoration/metal/hunter,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/cargo)
 "Lj" = (
 /obj/structure/surface/rack{
@@ -17070,7 +17070,7 @@
 	pixel_y = 24
 	},
 /obj/effect/hunter/bridge_border/brown/large_stair,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/prep)
 "Lo" = (
 /obj/effect/hunter/bridge_border/brown/corner,
@@ -17109,7 +17109,7 @@
 /obj/effect/hunter/bridge_border/brown/large_stair{
 	dir = 8
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/trophy_hall)
 "Lu" = (
 /obj/structure/reagent_dispensers/tank/water/yautja,
@@ -17195,7 +17195,7 @@
 	color = "#6b675e"
 	},
 /obj/structure/blocker/invisible_wall,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/houndchamber)
 "LE" = (
 /obj/effect/hunter/bridge_border/brown/large_stair{
@@ -17422,7 +17422,7 @@
 /obj/structure/machinery/door/airlock/yautja/secure{
 	name = "\improper Ladder Access"
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/upper_deck/corridors)
 "Mb" = (
 /obj/effect/hunter/rune/corner{
@@ -17585,7 +17585,7 @@
 	dir = 8;
 	pixel_y = 8
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/cargo)
 "Mt" = (
 /obj/effect/hunter/bridge_border/brown/corner{
@@ -18066,7 +18066,7 @@
 /area/yautja_ship/middle_deck/corridors)
 "NE" = (
 /obj/structure/machinery/cm_vending/clothing/yautja/thrall/blooded_thrall/left,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/prep)
 "NF" = (
 /obj/effect/hunter/catwalk/new_alpha,
@@ -18168,7 +18168,7 @@
 	pixel_y = 14
 	},
 /obj/effect/hunter/bridge_border/brown/large_stair,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/prep)
 "NR" = (
 /obj/structure/prop/ice_colony/tiger_rug{
@@ -18290,14 +18290,14 @@
 /obj/structure/curtain/colorable{
 	color = "#6c4449"
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/workshop)
 "Od" = (
 /obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
 	color = "#fbebe2"
 	},
 /obj/structure/window/framed/colony/reinforced/yautja,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/cargo)
 "Oe" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
@@ -18450,7 +18450,7 @@
 	pixel_y = 11;
 	pixel_x = -1
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/cargo)
 "Ou" = (
 /obj/effect/hunter/catwalk/hunter_grate,
@@ -18497,7 +18497,7 @@
 /obj/structure/pipes/unary/freezer/yautja{
 	dir = 8
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/cargo)
 "OC" = (
 /obj/structure/platform_decoration/metal/hunter,
@@ -18544,7 +18544,7 @@
 /obj/structure/machinery/door/poddoor/yautja/open{
 	id = "prisonlockdown"
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/upper_deck/prison)
 "OJ" = (
 /obj/structure/window/framed/colony/reinforced/hull/yautja,
@@ -18554,7 +18554,7 @@
 /obj/structure/curtain/colorable{
 	color = "#6c4449"
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/upper_deck/ancient)
 "OK" = (
 /obj/structure/bed/alien/yautja,
@@ -18658,7 +18658,7 @@
 /area/yautja_ship/lower_deck/elites)
 "OZ" = (
 /obj/structure/prop/hunter/trophy_display/bottom_left,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/elites)
 "Pa" = (
 /obj/structure/showcase{
@@ -18703,7 +18703,7 @@
 /area/yautja_ship/lower_deck/temple)
 "Pf" = (
 /obj/structure/largecrate/hunter_games_medical,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/cargo)
 "Pg" = (
 /obj/structure/closet/coffin/predator{
@@ -18720,7 +18720,7 @@
 /area/yautja_ship/middle_deck/medical)
 "Pj" = (
 /obj/structure/machinery/cm_vending/clothing/yautja/hunter,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/prep)
 "Pl" = (
 /obj/structure/showcase{
@@ -19174,7 +19174,7 @@
 	dir = 8;
 	color = "#6b675e"
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/cargo)
 "Qj" = (
 /obj/effect/hunter/catwalk/hunter_grate,
@@ -19215,7 +19215,7 @@
 /area/yautja_ship/lower_deck/corridors)
 "Qo" = (
 /obj/structure/prop/hunter/trophy_display/bottom_right,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/elites)
 "Qp" = (
 /obj/structure/blocker/invisible_wall,
@@ -19357,7 +19357,7 @@
 /obj/effect/hunter/bridge_border/brown/large_stair{
 	dir = 1
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/trophy_hall)
 "QF" = (
 /obj/structure/prop/hunter/ancient_temple/fountain_head{
@@ -19742,7 +19742,7 @@
 	dir = 5;
 	color = "#6b675e"
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/cargo)
 "Rs" = (
 /obj/structure/prop/hunter/fake_platform/hunter,
@@ -19780,7 +19780,7 @@
 "Rz" = (
 /obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/cargo)
 "RB" = (
 /obj/structure/prop/hunter/fake_platform/hunter/east,
@@ -20030,7 +20030,7 @@
 	color = "#bccab4"
 	},
 /obj/effect/landmark/ert_spawns/distress/hunt_spawner/pred,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/training_center)
 "Sf" = (
 /obj/structure/bed/chair/comfy/yautja,
@@ -20134,7 +20134,7 @@
 /obj/structure/machinery/door/poddoor/yautja/armory{
 	id = "armory"
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/armory)
 "Su" = (
 /turf/open/predship/tile/hunter_tile_5/east,
@@ -20151,7 +20151,7 @@
 	dir = 8
 	},
 /obj/structure/prop/hunter/hellhound,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/houndchamber)
 "Sy" = (
 /obj/effect/hunter/rune{
@@ -20194,7 +20194,7 @@
 /obj/effect/hunter/bridge_border/brown/large_stair{
 	dir = 1
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/corridors)
 "SB" = (
 /obj/structure/showcase{
@@ -20240,7 +20240,7 @@
 	color = "#6b675e"
 	},
 /obj/structure/blocker/invisible_wall,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/houndchamber)
 "SI" = (
 /obj/item/weapon/yautja/knife{
@@ -20277,7 +20277,7 @@
 	light_power = 2;
 	light_range = 3
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/cargo)
 "SL" = (
 /obj/effect/hunter/bridge_border/brown/small_stair{
@@ -20294,7 +20294,7 @@
 /obj/structure/curtain/colorable{
 	color = "#6c4449"
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/elites)
 "SN" = (
 /obj/structure/prop/brazier{
@@ -20420,7 +20420,7 @@
 	dir = 4
 	},
 /obj/structure/window/framed/colony/reinforced/yautja,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/upper_deck/corridors)
 "Te" = (
 /obj/structure/sink{
@@ -20577,7 +20577,7 @@
 	color = "#fbebe2"
 	},
 /obj/structure/window/framed/colony/reinforced/yautja,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/forge)
 "TB" = (
 /obj/structure/closet/yautja,
@@ -20606,7 +20606,7 @@
 /obj/effect/hunter/bridge_border/brown{
 	dir = 8
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/houndchamber)
 "TF" = (
 /obj/effect/hunter/bridge_border/brown/corner,
@@ -20641,7 +20641,7 @@
 /area/yautja_ship/lower_deck/corridors)
 "TJ" = (
 /obj/structure/largecrate/hunter_games_construction,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/cargo)
 "TK" = (
 /obj/structure/platform_decoration/metal/hunter/west{
@@ -20660,7 +20660,7 @@
 	color = "#fbebe2";
 	dir = 4
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/upper_deck/ancient)
 "TM" = (
 /obj/effect/hunter/bridge_border/brown/large_stair{
@@ -20682,7 +20682,7 @@
 	pixel_y = 23;
 	density = 0
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/workshop)
 "TN" = (
 /obj/effect/hunter/catwalk/hunter_grate,
@@ -21015,7 +21015,7 @@
 /obj/structure/bed/bedroll{
 	color = "#6b675e"
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/training_center)
 "Uz" = (
 /obj/structure/window/framed/colony/reinforced/hull/yautja,
@@ -21023,7 +21023,7 @@
 	color = "#fbebe2";
 	dir = 4
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/corridors)
 "UA" = (
 /obj/structure/platform_decoration/metal/hunter{
@@ -21033,14 +21033,14 @@
 	dir = 1
 	},
 /obj/structure/prop/hunter/stairs/border/rune,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/trophy_hall)
 "UB" = (
 /obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
 	color = "#fbebe2"
 	},
 /obj/structure/window/framed/colony/reinforced/yautja,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/workshop)
 "UC" = (
 /obj/effect/hunter/bridge_border/brown/corner{
@@ -21165,7 +21165,7 @@
 	color = "#6b675e"
 	},
 /obj/structure/blocker/invisible_wall,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/houndchamber)
 "US" = (
 /obj/structure/bed/chair/comfy/yautja,
@@ -21521,11 +21521,11 @@
 	dir = 8
 	},
 /obj/structure/prop/hunter/stairs/border/rune,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/trophy_hall)
 "VM" = (
 /obj/structure/prop/hunter/trophy_display/center,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/elites)
 "VN" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -21605,7 +21605,7 @@
 	dir = 4
 	},
 /obj/structure/window/framed/colony/reinforced/yautja,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/upper_deck/hangar_a)
 "VT" = (
 /turf/open/predship/hunter_catwalk,
@@ -21850,7 +21850,7 @@
 /area/yautja_ship/lower_deck/corridors)
 "Wx" = (
 /obj/structure/largecrate/hunter_games_ammo/mediocre,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/cargo)
 "Wy" = (
 /obj/structure/curtain/colorable{
@@ -21860,7 +21860,7 @@
 /area/yautja_ship/upper_deck/ancient)
 "Wz" = (
 /obj/structure/machinery/cm_vending/clothing/yautja/hunter/elder,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/prep)
 "WA" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -21965,7 +21965,7 @@
 /obj/structure/curtain/colorable{
 	color = "#6c4449"
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/mortuary)
 "WJ" = (
 /obj/item/stack/medical/advanced/ointment/predator{
@@ -22185,7 +22185,7 @@
 	dir = 4
 	},
 /obj/structure/window/framed/colony/reinforced/yautja,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/firerange)
 "Xo" = (
 /obj/structure/window/framed/colony/reinforced/hull/yautja,
@@ -22197,7 +22197,7 @@
 	id = "researchlockdown2";
 	dir = 4
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/research)
 "Xp" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
@@ -22515,7 +22515,7 @@
 /obj/structure/window/reinforced/toughened{
 	color = "#912727"
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/cargo)
 "Yc" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -22897,7 +22897,7 @@
 	color = "#6b675e";
 	pixel_y = 6
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/houndchamber)
 "YX" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -22917,7 +22917,7 @@
 	color = "#6b675e";
 	dir = 4
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/cargo)
 "YZ" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
@@ -23009,7 +23009,7 @@
 	},
 /obj/structure/reagent_dispensers/tank/fuel/yautja,
 /obj/effect/hunter/rune/stripes_arrow,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/reactor)
 "Zn" = (
 /turf/closed/wall/huntership,
@@ -23046,7 +23046,7 @@
 	color = "#6b675e"
 	},
 /obj/structure/blocker/invisible_wall,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/houndchamber)
 "Zq" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -23134,7 +23134,7 @@
 "ZA" = (
 /obj/effect/hunter/bridge_border/brown/large_stair,
 /obj/structure/prop/hunter/fake_platform/hunter/west,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/middle_deck/prep)
 "ZB" = (
 /obj/effect/hunter/bridge_border/brown/corner{
@@ -23335,13 +23335,13 @@
 /obj/item/device/analyzer/plant_analyzer/yautja,
 /obj/item/device/analyzer/plant_analyzer/yautja,
 /obj/item/device/analyzer/plant_analyzer/yautja,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/cargo)
 "ZU" = (
 /obj/structure/reagent_dispensers/tank/water/yautja{
 	pixel_x = 1
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/cargo)
 "ZV" = (
 /obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
@@ -23379,7 +23379,7 @@
 /obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
 	color = "#fbebe2"
 	},
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/yautja_ship/lower_deck/cargo)
 "ZX" = (
 /obj/structure/prop/hunter/fake_platform/hunter,

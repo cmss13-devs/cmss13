@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/template_noop)
 "b" = (
 /obj/structure/platform/metal/hunter/east,
@@ -8,23 +8,23 @@
 	pixel_y = 24;
 	layer = 3
 	},
-/turf/open/predship/tile/red3,
+/turf/open/predship/tile/red3/lz_rim,
 /area/template_noop)
 "c" = (
 /obj/structure/platform/metal/hunter/east,
-/turf/open/predship/tile/red4/glow,
+/turf/open/predship/tile/red4/glow/lz_rim,
 /area/template_noop)
 "d" = (
 /obj/structure/platform/metal/hunter/west,
-/turf/open/predship/tile/red4/glow,
+/turf/open/predship/tile/red4/glow/lz_rim,
 /area/template_noop)
 "e" = (
 /obj/structure/platform_decoration/metal/hunter,
-/turf/open/predship/tile/red4/glow,
+/turf/open/predship/tile/red4/glow/lz_rim,
 /area/template_noop)
 "f" = (
 /obj/structure/platform/metal/hunter/east,
-/turf/open/predship/tile/red3,
+/turf/open/predship/tile/red3/lz_rim,
 /area/template_noop)
 "g" = (
 /obj/structure/platform/metal/hunter/west,
@@ -32,77 +32,77 @@
 	pixel_y = 24;
 	layer = 3
 	},
-/turf/open/predship/tile/red3,
+/turf/open/predship/tile/red3/lz_rim,
 /area/template_noop)
 "h" = (
 /obj/structure/platform/metal/hunter,
-/turf/open/predship/tile/red4/glow,
+/turf/open/predship/tile/red4/glow/lz_rim,
 /area/template_noop)
 "i" = (
 /obj/structure/platform_decoration/metal/hunter/north,
 /obj/structure/platform/metal/hunter/west,
-/turf/open/predship/tile/red3,
+/turf/open/predship/tile/red3/lz_rim,
 /area/template_noop)
 "n" = (
 /obj/structure/platform/metal/hunter/west,
-/turf/open/predship/tile/red3,
+/turf/open/predship/tile/red3/lz_rim,
 /area/template_noop)
 "o" = (
 /obj/structure/platform_decoration/metal/hunter/west,
-/turf/open/predship/tile/red4/glow,
+/turf/open/predship/tile/red4/glow/lz_rim,
 /area/template_noop)
 "p" = (
 /obj/docking_port/stationary/emergency_response/yautja/temporary,
-/turf/open/floor/corsat,
+/turf/open/predship/plating,
 /area/template_noop)
 "s" = (
 /obj/structure/platform_decoration/metal/hunter/east,
 /obj/structure/platform/metal/hunter/north,
-/turf/open/predship/tile/red3,
+/turf/open/predship/tile/red3/lz_rim,
 /area/template_noop)
 "t" = (
 /obj/structure/platform_decoration/metal/hunter/west,
 /obj/structure/platform/metal/hunter/north,
-/turf/open/predship/tile/red3,
+/turf/open/predship/tile/red3/lz_rim,
 /area/template_noop)
 "z" = (
 /obj/structure/platform_decoration/metal/hunter/east,
-/turf/open/predship/tile/red4/glow,
+/turf/open/predship/tile/red4/glow/lz_rim,
 /area/template_noop)
 "B" = (
 /obj/structure/platform_decoration/metal/hunter,
 /obj/structure/platform/metal/hunter/east,
-/turf/open/predship/tile/red3,
+/turf/open/predship/tile/red3/lz_rim,
 /area/template_noop)
 "F" = (
 /obj/effect/hunter/bridge_border/brown/small_stair{
 	dir = 1
 	},
-/turf/open/predship/tile/red3,
+/turf/open/predship/tile/red3/lz_rim,
 /area/template_noop)
 "K" = (
 /obj/effect/hunter/bridge_border/brown/small_stair{
 	dir = 8
 	},
-/turf/open/predship/tile/red3,
+/turf/open/predship/tile/red3/lz_rim,
 /area/template_noop)
 "Q" = (
 /obj/structure/platform/metal/hunter/north,
-/turf/open/predship/tile/red3,
+/turf/open/predship/tile/red3/lz_rim,
 /area/template_noop)
 "U" = (
 /obj/structure/platform_decoration/metal/hunter/north,
-/turf/open/predship/tile/red4/glow,
+/turf/open/predship/tile/red4/glow/lz_rim,
 /area/template_noop)
 "W" = (
 /obj/structure/platform/metal/hunter,
-/turf/open/predship/tile/red3,
+/turf/open/predship/tile/red3/lz_rim,
 /area/template_noop)
 "X" = (
 /obj/effect/hunter/bridge_border/brown/small_stair{
 	dir = 4
 	},
-/turf/open/predship/tile/red4/glow,
+/turf/open/predship/tile/red4/glow/lz_rim,
 /area/template_noop)
 
 (1,1,1) = {"

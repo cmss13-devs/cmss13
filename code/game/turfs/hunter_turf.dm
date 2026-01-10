@@ -121,6 +121,9 @@
 /turf/open/predship/tile/red3
 	icon_state = "hunter_red_3"
 
+/turf/open/predship/tile/red3/lz_rim
+	allow_construction = TRUE
+
 /turf/open/predship/tile/red4
 	icon_state = "hunter_red_4"
 
@@ -130,6 +133,9 @@
 	light_power = 1
 	light_range = 2
 	light_color = "#ff0000"
+
+/turf/open/predship/tile/red4/glow/lz_rim
+	allow_construction = TRUE
 
 /turf/open/predship/tile/red5
 	icon_state = "hunter_red_5"
@@ -381,3 +387,7 @@
 
 /obj/structure/shuttle/part/hunter/right_front4
 	icon_state = "hunter26"
+
+/turf/open/predship/plating
+	icon = 'icons/turf/floors/corsat.dmi'
+	icon_state = "plating"

@@ -358,6 +358,7 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 /obj/structure/closet/secure_closet/cmdcabinet
 	name = "heavyduty wall cabinet"
 	desc = "A bulletproof cabinet containing whatever important goodies to justify locking it inside."
+	req_one_access = list(ACCESS_MARINE_SENIOR)
 	density = FALSE
 	store_mobs = FALSE
 	icon_state = "secure_locked_cmdcabinet"

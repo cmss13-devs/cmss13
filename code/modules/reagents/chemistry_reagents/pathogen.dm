@@ -66,9 +66,9 @@
 	return TRUE
 
 /datum/chem_property/special/mycotainted/trigger()
-	SSticker.mode.get_specific_call(/datum/emergency_call/cbrn/pathogen, TRUE, TRUE, holder.name) // "Weyland-Yutani Goon (Chemical Investigation Squad)"
+	SSticker.mode.get_specific_call(/datum/emergency_call/cbrn/pathogen, TRUE, TRUE, holder.name)
 	GLOB.chemical_data.update_credits(15)
 	message_admins("The research department has discovered Mycotainted traits in [holder.name] adding 15 bonus tech points.")
 	var/datum/techtree/tree = GET_TREE(TREE_MARINE)
 	tree.add_points(15)
-	ai_announcement("NOTICE: Encrypted data transmission received from USCSS Royce. Shuttle inbound.")
+	ai_announcement("NOTICE: Encrypted data transmission received from USS Kurtz. Shuttle inbound.")

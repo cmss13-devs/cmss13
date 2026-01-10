@@ -83,7 +83,6 @@
 
 /datum/emergency_call/cbrn/pathogen
 	name = "CBRN (Squad) (Pathogen Response)"
-	home_base = /datum/lazy_template/ert/uscm_station
 	mob_min = 3
 	mob_max = 5
 	max_heavies = 0
@@ -92,24 +91,15 @@
 
 /datum/emergency_call/cbrn/pathogen/New()
 	..()
-	dispatch_message = "[MAIN_SHIP_NAME], this is the USS Kurtz. We are preparing a CBRN squad to render assistance."
-	arrival_message = "[MAIN_SHIP_NAME], this is the USS Kurtz. CBRN squad enroute. Stand by for arrival."
-	objectives = "Secure all documents, samples, and chemicals containing the property DNA_Disintegrating from [MAIN_SHIP_NAME] research department and assist in dealing with the ongoing outbreak."
-
-/datum/emergency_call/cbrn/pathogen/proc/check_objective_info()
-	if(objective_info)
-		objectives = "Secure all documents, samples and chemicals related to [objective_info] from [MAIN_SHIP_NAME] research department and assist in dealing with the ongoing outbreak."
-	objectives += "Assume at least 30 units are located within the department. If they can not make more that should be all. All humans who have ingested the chemical must undergo quarantine."
-	checked_objective = TRUE
+	var/cbrn_team_name = "Unit [pick(GLOB.nato_phonetic_alphabet)]-[rand(1, 99)]"
+	arrival_message = "[MAIN_SHIP_NAME], CBRN [cbrn_team_name] has been dispatched. Comply with all Biohazard Control instructions from [cbrn_team_name]."
+	objectives = "You are a member of the CBRN [cbrn_team_name] dispatched to quell a serious biological threat to [MAIN_SHIP_NAME]. Further orders may be provided."
 
 /datum/emergency_call/cbrn/pathogen/create_member(datum/mind/new_mind, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
 	if(!istype(spawn_loc))
 		return //Didn't find a useable spawn point.
-
-	if(!checked_objective)
-		check_objective_info()
 
 	var/mob/living/carbon/human/mob = new(spawn_loc)
 	new_mind.transfer_to(mob, TRUE)

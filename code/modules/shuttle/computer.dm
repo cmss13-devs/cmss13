@@ -104,6 +104,7 @@
 
 	/// if the ERT that used this shuttle has returned home
 	var/mission_accomplished = FALSE
+	var/ui_theme = "crtlobby"
 
 /obj/structure/machinery/computer/shuttle/ert/broken
 	name = "nonfunctional shuttle control console"
@@ -246,6 +247,7 @@
 			"error" = can_dock,
 		)
 		.["destinations"] += list(dockinfo)
+	.["ui_theme"] = ui_theme
 
 /obj/structure/machinery/computer/shuttle/ert/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
@@ -363,6 +365,7 @@
 	desc = "An advanced alien flight console."
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 	icon_state = "console_shuttle"
+	ui_theme = "ntos_spooky"
 
 /obj/structure/machinery/computer/shuttle/ert/hunter/get_landing_zones()
 	. = list()
@@ -378,6 +381,9 @@
 			continue
 
 		. += list(dock)
+
+/obj/structure/machinery/computer/shuttle/ert/hunter/proc/resync_landing_zones()
+	compatible_landing_zones = get_landing_zones()
 
 /obj/structure/machinery/computer/shuttle/ert/hunter/tgui_interact(mob/user, datum/tgui/ui)
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))

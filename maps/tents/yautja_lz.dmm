@@ -1,0 +1,247 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/open/floor/corsat,
+/area/template_noop)
+"b" = (
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/platform_decoration/metal/hunter{
+	pixel_y = 24;
+	layer = 2.49
+	},
+/turf/template_noop,
+/area/template_noop)
+"e" = (
+/obj/structure/platform_decoration/metal/hunter,
+/turf/template_noop,
+/area/template_noop)
+"f" = (
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/turf/template_noop,
+/area/template_noop)
+"g" = (
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/platform_decoration/metal/hunter/north{
+	pixel_y = 24
+	},
+/turf/template_noop,
+/area/template_noop)
+"i" = (
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/platform_decoration/metal/hunter/north,
+/turf/template_noop,
+/area/template_noop)
+"n" = (
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/turf/template_noop,
+/area/template_noop)
+"o" = (
+/obj/structure/platform_decoration/metal/hunter/west,
+/turf/template_noop,
+/area/template_noop)
+"p" = (
+/obj/docking_port/stationary/emergency_response/yautja/temporary,
+/turf/open/floor/corsat,
+/area/template_noop)
+"s" = (
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/platform_decoration/metal/hunter/east,
+/turf/template_noop,
+/area/template_noop)
+"t" = (
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/platform_decoration/metal/hunter/west,
+/turf/template_noop,
+/area/template_noop)
+"z" = (
+/obj/structure/platform_decoration/metal/hunter/east,
+/turf/template_noop,
+/area/template_noop)
+"B" = (
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/platform_decoration/metal/hunter,
+/turf/template_noop,
+/area/template_noop)
+"F" = (
+/obj/effect/hunter/bridge_border/brown/small_stair{
+	dir = 1
+	},
+/turf/template_noop,
+/area/template_noop)
+"K" = (
+/obj/effect/hunter/bridge_border/brown/small_stair{
+	dir = 8
+	},
+/turf/template_noop,
+/area/template_noop)
+"Q" = (
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/turf/template_noop,
+/area/template_noop)
+"U" = (
+/obj/structure/platform_decoration/metal/hunter/north,
+/turf/template_noop,
+/area/template_noop)
+"W" = (
+/obj/structure/prop/hunter/fake_platform/hunter,
+/turf/template_noop,
+/area/template_noop)
+"X" = (
+/obj/effect/hunter/bridge_border/brown/small_stair{
+	dir = 4
+	},
+/turf/template_noop,
+/area/template_noop)
+
+(1,1,1) = {"
+e
+f
+f
+f
+B
+K
+b
+f
+f
+f
+f
+f
+f
+f
+o
+"}
+(2,1,1) = {"
+W
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+p
+Q
+"}
+(3,1,1) = {"
+W
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+Q
+"}
+(4,1,1) = {"
+W
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+t
+"}
+(5,1,1) = {"
+W
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+X
+"}
+(6,1,1) = {"
+W
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+s
+"}
+(7,1,1) = {"
+W
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+Q
+"}
+(8,1,1) = {"
+W
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+Q
+"}
+(9,1,1) = {"
+U
+n
+n
+n
+i
+F
+g
+n
+n
+n
+n
+n
+n
+n
+z
+"}

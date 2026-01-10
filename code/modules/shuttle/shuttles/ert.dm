@@ -261,17 +261,28 @@
 
 /obj/docking_port/stationary/emergency_response/yautja
 	name = "DO NOT USE"
+	dir = NORTH
 
 /obj/docking_port/stationary/emergency_response/yautja/port1
 	name = "Hunter Ship landing pad A"
-	dir = NORTH
 	id = "hunter-ert1"
 	roundstart_template = /datum/map_template/shuttle/hunter
 
 /obj/docking_port/stationary/emergency_response/yautja/port2
 	name = "Hunter Ship landing pad B"
-	dir = NORTH
 	id = "hunter-ert2"
+
+/obj/docking_port/stationary/emergency_response/yautja/temporary
+	name = "Temporary Landing Zone"
+
+/obj/docking_port/stationary/emergency_response/yautja/temporary/Initialize(mapload)
+	var/tag = "[pick(GLOB.nato_phonetic_alphabet)]-[rand(1, 99)]"
+	name = "Temporary Landing Zone [tag]"
+	id = "hunter-temp-[tag]"
+	. = ..()
+	for(var/obj/docking_port/mobile/emergency_response/hunter/shuttle in SSshuttle.mobile)
+		var/obj/structure/machinery/computer/shuttle/ert/hunter/console = shuttle.getControlConsole()
+		console.resync_landing_zones()
 
 /obj/docking_port/stationary/emergency_response/external
 	is_external = TRUE

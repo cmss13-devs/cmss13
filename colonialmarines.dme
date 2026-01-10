@@ -1806,6 +1806,7 @@
 #include "code\modules\cm_preds\falcon.dm"
 #include "code\modules\cm_preds\huntdata.dm"
 #include "code\modules\cm_preds\hunting_grounds.dm"
+#include "code\modules\cm_preds\lz_placer.dm"
 #include "code\modules\cm_preds\smartdisc.dm"
 #include "code\modules\cm_preds\thrall_items.dm"
 #include "code\modules\cm_preds\thrall_procs.dm"

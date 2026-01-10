@@ -365,6 +365,7 @@
 
 	var/atom/movable/vis_obj/wound_icon_holder
 	var/atom/movable/vis_obj/xeno_pack/backpack_icon_holder
+	var/atom/movable/vis_obj/xeno_pack/head_icon_holder
 	/// If TRUE, the xeno cannot slash anything
 	var/cannot_slash = FALSE
 	/// The world.time when the xeno was created. Carries over between strains and evolving
@@ -426,7 +427,7 @@
 			old_xeno.iff_tag = null
 
 	if(hive)
-		for(var/trait in hive.hive_inherant_traits)
+		for(var/trait in hive.hive_inherent_traits)
 			ADD_TRAIT(src, trait, TRAIT_SOURCE_HIVE)
 
 	//Set caste stuff
@@ -831,6 +832,11 @@
 	if(organ_removed)
 		. += "It seems to have its carapace cut open."
 
+	if(HAS_TRAIT(src, TRAIT_XENO_CONTROLLED))
+		. += "It shambles along in a strange, unnatural motion, as if being puppeteered by someone."
+	else if (HAS_TRAIT(src, TRAIT_XENO_BRAINDEAD))
+		. += "It sits completely, unerringly still. Not a single muscle is moving. Disturbing."
+
 /mob/living/carbon/xenomorph/Destroy()
 	GLOB.living_xeno_list -= src
 	GLOB.xeno_mob_list -= src
@@ -909,7 +915,7 @@
 		return TRUE
 	if(has_species(puller,"Human")) // If the Xeno is alive, fight back against a grab/pull
 		var/mob/living/carbon/human/H = puller
-		if(H.ally_of_hivenumber(hivenumber))
+		if(H.ally_of_hivenumber(hivenumber) || HAS_TRAIT(src, TRAIT_XENO_BRAINDEAD))
 			return TRUE
 		playsound(puller.loc, 'sound/weapons/pierce.ogg', 25, 1)
 		puller.visible_message(SPAN_WARNING("[puller] tried to pull [src] but instead gets a tail swipe to the head!"))
@@ -991,7 +997,7 @@
 
 	new_hive.add_xeno(src)
 
-	for(var/trait in new_hive.hive_inherant_traits)
+	for(var/trait in new_hive.hive_inherent_traits)
 		ADD_TRAIT(src, trait, TRAIT_SOURCE_HIVE)
 
 	generate_name()

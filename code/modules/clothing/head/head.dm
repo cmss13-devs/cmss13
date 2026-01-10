@@ -13,6 +13,10 @@
 	var/anti_hug = 0
 	/// List of images for overlays recreated every update_icon()
 	var/list/helmet_overlays
+	/// The icon_state for xeno's wearing this (using the dmi defined in default_xeno_onmob_icons list)
+	var/xeno_icon_state = null
+	/// What xeno types can equip this item
+	var/list/xeno_types = null
 
 /obj/item/clothing/head/Destroy()
 	helmet_overlays = null

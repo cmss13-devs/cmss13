@@ -16,6 +16,13 @@
 /// From /mob/living/carbon/xenomorph/revive()
 #define COMSIG_XENO_REVIVED "xeno_revived"
 
+/// From /mob/living/carbon/xenomorph/death(cause, gibbed)
+#define COMSIG_XENO_DEATH "xeno_death"
+
+// From I don't know man.
+#define COMSIG_XENO_CONTROL_HEADSET_CONTROL "xeno_control_headset_control"
+#define COMSIG_XENO_CONTROL_HEADSET_UNCONTROL "xeno_control_headset_uncontrol"
+
 // From /obj/structure/safe/Topic()
 #define COMSIG_SAFE_OPENED "safe_opened"
 

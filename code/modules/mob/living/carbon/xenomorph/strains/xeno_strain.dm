@@ -95,8 +95,11 @@
 	if(!can_take_strain())
 		return
 
+	perform_strain(chosen_strain)
+
+/mob/living/carbon/xenomorph/proc/perform_strain(datum/xeno_strain/picked_strain)
 	// Create the strain datum and apply it to the xeno.
-	var/datum/xeno_strain/strain_instance = new chosen_strain()
+	var/datum/xeno_strain/strain_instance = new picked_strain()
 	if(strain_instance._add_to_xeno(src))
 		overlays -= acid_overlay
 		xeno_jitter(1.5 SECONDS)
@@ -141,6 +144,10 @@
 /// Is this xeno currently able to take a strain?
 /mob/living/carbon/xenomorph/proc/can_take_strain(reset=FALSE)
 	if(!length(caste.available_strains) || !check_state(TRUE))
+		return FALSE
+
+	if(HAS_TRAIT(src, TRAIT_XENO_CONTROLLED))
+		to_chat(src, SPAN_WARNING("You strain really hard, but nothing happens!"))
 		return FALSE
 
 	if(strain && !reset)

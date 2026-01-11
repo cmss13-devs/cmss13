@@ -42236,7 +42236,7 @@
 /area/desert_dam/interior/dam_interior/break_room)
 "gIS" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 5;
 	icon_state = "p_stair_full"
 	},
@@ -43126,7 +43126,8 @@
 /area/desert_dam/exterior/valley/valley_hydro)
 "ivs" = (
 /obj/structure/machinery/door/airlock/sandstone/runed{
-	name = "Strange Temple"
+	name = "Strange Temple";
+	dir = 1
 	},
 /turf/open/desert/rock/deep/rock4,
 /area/desert_dam/interior/caves/temple)
@@ -45107,7 +45108,7 @@
 /area/desert_dam/exterior/landing_pad_one)
 "ndP" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#b6a38f";
 	dir = 4;
 	icon_state = "p_stair_full"
 	},

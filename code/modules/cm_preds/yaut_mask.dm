@@ -320,3 +320,25 @@
 	accessory_icons = list(WEAR_FACE = 'icons/mob/humans/onmob/hunter/pred_mask_accessories.dmi')
 	icon_state = null
 	worn_accessory_slot = ACCESSORY_SLOT_YAUTJA_MASK
+
+/obj/item/clothing/mask/gas/yautja/hunter/ancient
+	name = "ornate ancient alien mask"
+	desc = "An ornate ancient faceplate of an aged alloy, once worn by a revered hunter. Though tarnished by time, its craftsmanship remains exquisite - a fusion of artistry and deadly function."
+	icon = 'icons/obj/items/hunter/ancient_mask.dmi'
+	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/hunter/ancient_mask.dmi'
+	)
+	icon_state = "pred_mask_ancient_redglow"
+	item_state = "helmet"
+	item_state_slots = list(WEAR_FACE = "pred_mask_ancient_redglow")
+	thrall = TRUE
+
+/obj/item/clothing/mask/gas/yautja/hunter/ancient/hollow
+	icon_state = "pred_mask_ancient"
+	item_state = "helmet"
+	item_state_slots = list(WEAR_FACE = "pred_mask_ancient")
+
+/obj/item/clothing/mask/gas/yautja/hunter/ancient/no_glow
+	icon_state = "pred_mask_ancient_white"
+	item_state = "helmet"
+	item_state_slots = list(WEAR_FACE = "pred_mask_ancient_white")

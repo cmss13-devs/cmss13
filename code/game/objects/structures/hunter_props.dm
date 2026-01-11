@@ -76,10 +76,120 @@
 /obj/effect/hunter/bridge_border/brown/large_stair
 	icon_state = "large_stair"
 
+// Ancient Temple
+/obj/effect/hunter/ancient_temple
+	name = null
+	desc = null
+	icon = 'icons/effects/32x32-hunter_effects.dmi'
+	icon_state = "rubble0"
+	density = FALSE
+	anchored = TRUE
+	layer = ABOVE_TURF_LAYER
+	plane = FLOOR_PLANE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+/obj/effect/hunter/ancient_temple/deco_border
+	icon_state = "deco_border1"
+	layer = TURF_LAYER
+
+/obj/effect/hunter/ancient_temple/deco_border/deco_border2
+	icon_state = "deco_border2"
+
+/obj/effect/hunter/ancient_temple/deco_border/deco_border3
+	icon_state = "deco_border3"
+
+/obj/effect/hunter/ancient_temple/deco_border/deco_border4
+	icon_state = "deco_border4"
+
+/obj/effect/hunter/ancient_temple/deco_border/deco_border5
+	icon_state = "deco_border5"
+
+/obj/effect/hunter/ancient_temple/deco_border/deco_border6
+	icon_state = "deco_border6"
+
+/obj/effect/hunter/ancient_temple/deco_border/deco_border7
+	icon_state = "deco_border7"
+
+/obj/effect/hunter/ancient_temple/deco_border/bronze
+	icon_state = "bronze_deco_border1"
+
+/obj/effect/hunter/ancient_temple/deco_border/bronze/deco_border2
+	icon_state = "bronze_deco_border2"
+
+/obj/effect/hunter/ancient_temple/deco_border/bronze/deco_border3
+	icon_state = "bronze_deco_border3"
+
+/obj/effect/hunter/ancient_temple/deco_border/bronze/deco_border4
+	icon_state = "bronze_deco_border4"
+
+/obj/effect/hunter/ancient_temple/deco_border/bronze/deco_border5
+	icon_state = "bronze_deco_border5"
+
+/obj/effect/hunter/ancient_temple/deco_border/bronze/deco_border6
+	icon_state = "bronze_deco_border6"
+
+/obj/effect/hunter/ancient_temple/deco_border/bronze/deco_border7
+	icon_state = "bronze_deco_border7"
+
+// Floor tile edges
+/obj/effect/hunter/ancient_temple/tile_edge
+	icon_state = "floor_edges_1"
+	name = "tile edge"
+	desc = null
+	layer = TURF_LAYER
+	anchored = TRUE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+/obj/effect/hunter/ancient_temple/tile_edge/tile_edge_2
+	icon_state = "floor_edges_2"
+
+/obj/effect/hunter/ancient_temple/tile_edge/tile_edge_3
+	icon_state = "floor_edges_3"
+
+/obj/effect/hunter/ancient_temple/tile_edge/tile_edge_4
+	icon_state = "floor_edges_4"
+
+/obj/effect/hunter/ancient_temple/tile_edge/tile_edge_5
+	icon_state = "floor_edges_5"
+
+/obj/effect/hunter/ancient_temple/tile_edge/tile_edge_6
+	icon_state = "floor_edges_6"
+
+/obj/effect/hunter/ancient_temple/tile_edge/tile_edge_7
+	icon_state = "floor_edges_7"
+
+/obj/effect/hunter/ancient_temple/tile_edge/tile_edge_8
+	icon_state = "floor_edges_8"
+
+/obj/effect/hunter/ancient_temple/tile_edge/tile_edge_9
+	icon_state = "floor_edges_9"
+
+/obj/effect/hunter/ancient_temple/tile_edge/tile_edge_10
+	icon_state = "floor_edges_10"
+
+/obj/effect/hunter/ancient_temple/tile_edge/tile_edge_11
+	icon_state = "floor_edges_11"
+
+/obj/effect/hunter/ancient_temple/tile_edge/tile_edge_12
+	icon_state = "floor_edges_12"
+
+/obj/effect/hunter/ancient_temple/tile_edge_corner
+	icon_state = "floor_corner_1"
+	layer = TURF_LAYER
+
+/obj/effect/hunter/ancient_temple/tile_edge_corner/tile_edge_corner_2
+	icon_state = "floor_corner_2"
+
+/obj/effect/hunter/ancient_temple/tile_edge_corner/tile_edge_corner_3
+	icon_state = "floor_corner_3"
+
+/obj/effect/hunter/ancient_temple/tile_edge_corner/tile_edge_corner_4
+	icon_state = "floor_corner_4"
+
 // Catwalks
 
 /obj/structure/prop/hunter/catwalk
-	icon = 'icons/turf/floors/hunter_floors.dmi'
+	icon = 'icons/turf/floors/hunter/hunter_floors.dmi'
 	icon_state = "hunter_catwalk_alpha"
 	name = "catwalk"
 	layer = CATWALK_LAYER
@@ -96,6 +206,10 @@
 
 /obj/structure/prop/hunter/catwalk/hunter_grate
 	icon_state = "hunter_grate_alpha"
+
+/obj/effect/hunter/catwalk/ancient_temple_grille
+	icon = 'icons/turf/floors/hunter/ancientfloor.dmi'
+	icon_state = "grille_transparent"
 
 /obj/structure/prop/hunter/catwalk/corner
 	icon_state = "corner_1"
@@ -125,7 +239,7 @@
 	icon_state = "corner_9"
 
 /obj/effect/hunter/catwalk
-	icon = 'icons/turf/floors/hunter_floors.dmi'
+	icon = 'icons/turf/floors/hunter/hunter_floors.dmi'
 	icon_state = "hunter_catwalk_alpha"
 	desc = null
 	density = FALSE
@@ -381,3 +495,168 @@
 	notify_ghosts(header = "Hellhound", message = "A hellhound has been called in [get_area(user)] by [user.real_name] click play as hellhound to play as one.", extra_large = TRUE)
 	qdel(src)
 	return
+
+/// Ancient Temple Props & Effects
+/obj/structure/prop/hunter/ancient_temple
+	icon = 'icons/obj/structures/props/hunter/ancientstatue.dmi'
+	icon_state = "ancient_statue"
+
+/obj/structure/prop/hunter/ancient_temple/giant_statue
+	icon = 'icons/obj/structures/props/hunter/ancientstatue.dmi'
+	icon_state = "ancient_statue"
+	name = "colossal warrior statue"
+	desc = "A towering stone effigy of an unknown warrior, clutching a spear-like weapon. It's made from a smooth dark stone, seemingly unweathered from the passage of time."
+	anchored = TRUE
+	layer = BIG_XENO_LAYER
+	density = TRUE
+	bound_height = 64
+	bound_width = 64
+
+/obj/structure/prop/hunter/ancient_temple/giant_statue/base
+	icon = 'icons/obj/structures/props/hunter/ancientsatuebase.dmi'
+	icon_state = "statue_base_big"
+	name = "colossal statue base"
+	desc = "An ornate statue base, carved with elaborate decorative runes and symbols."
+	anchored = TRUE
+	layer = BELOW_MOB_LAYER
+	density = TRUE
+	bound_height = 64
+	bound_width = 64
+
+/obj/structure/prop/hunter/ancient_temple/giant_statue/base/small
+
+	icon_state = "statue_base_small"
+
+/obj/structure/prop/hunter/ancient_temple/small_statue
+	icon = 'icons/obj/structures/props/hunter/ancientsmallstatue.dmi'
+	icon_state = "statue_ancient"
+	name = "stone statue"
+	desc = "A tall stone effigy of an unknown warrior."
+	anchored = TRUE
+	layer = BIG_XENO_LAYER
+	density = TRUE
+
+/obj/structure/prop/hunter/ancient_temple/small_statue/grey
+	icon_state = "statue_grey"
+
+/obj/structure/prop/hunter/ancient_temple/small_statue/sandstone
+
+	icon_state = "statue_sandstone"
+
+/obj/structure/prop/hunter/ancient_temple/small_statue/base
+
+	icon_state = "small_statue_base"
+	name = "stone statue base"
+	desc = "A stone statue base, ordorned with unknown symbols and runes."
+
+/obj/structure/prop/hunter/ancient_temple/fountain_head
+	name = "carved stone head"
+	desc = "A huge carved stone head of an unknown creature."
+	icon = 'icons/obj/structures/props/hunter/32x32_hunter_props.dmi'
+	icon_state = "fountain_head_static"
+	anchored = TRUE
+	density = FALSE
+
+/obj/structure/prop/hunter/ancient_temple/fountain_head/flowing
+	name = "carved stone head"
+	desc = "A huge carved stone head of an unknown creature, water flows from it's mouth."
+	icon_state = "fountain_head_flowing"
+
+/obj/structure/prop/hunter/ancient_temple/coffin_base
+	name = null
+	desc = null
+	icon = 'icons/obj/structures/props/hunter/sarcophagus.dmi'
+	icon_state = "ancient_coffin_base"
+	anchored = TRUE
+	layer = ABOVE_TURF_LAYER
+	plane = FLOOR_PLANE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	density = FALSE
+	unslashable = TRUE
+	unacidable = TRUE
+	explo_proof = TRUE
+
+/obj/structure/prop/hunter/ancient_temple/coffin_base/deco
+	icon_state = "ancient_coffin_base_deco"
+
+/// Large Bars
+/obj/structure/prop/hunter/ancient_temple/large_bars
+	icon = 'icons/obj/structures/props/hunter/ancientsatuebase.dmi'
+	icon_state = "temple_large_bars"
+	name = "large bars"
+	desc = "large bars"
+	anchored = TRUE
+	layer = BIG_XENO_LAYER
+	density = TRUE
+	bound_width = 64
+	bound_height = 64
+
+/obj/structure/prop/hunter/ancient_temple/large_bars/water
+	icon_state = "temple_large_bars_water"
+
+/obj/structure/prop/hunter/ancient_temple/large_bars/alt
+	icon_state = "temple_large_bars_alt"
+
+/obj/structure/prop/hunter/ancient_temple/large_bars/alt/water
+	icon_state = "temple_large_bars_alt_water"
+
+/obj/structure/prop/hunter/ancient_temple/large_bars/colorable
+	icon_state = "colorable_large_bars"
+	name = "large bars"
+	desc = "large bars"
+	anchored = TRUE
+	layer = BIG_XENO_LAYER
+	density = TRUE
+	bound_width = 64
+	bound_height = 64
+
+/// Breakable Ancient-Temple Walls
+/obj/structure/prop/hunter/ancient_temple/collapsed_wall
+	name = "damaged sandstone temple wall"
+	desc = "A damaged heavy wall of sandstone."
+	icon = 'icons/turf/walls/hunter/hunter_temple.dmi'
+	icon_state = "ancient_stone_breach"
+	density = TRUE
+	health = 600
+	anchored = TRUE
+
+/obj/structure/prop/hunter/ancient_temple/collapsed_wall/bullet_act(obj/projectile/P)
+	health -= P.damage
+	playsound(src, 'sound/effects/thud.ogg', 35, 1)
+	..()
+	healthcheck()
+	return TRUE
+
+/obj/structure/prop/hunter/ancient_temple/collapsed_wall/proc/explode()
+	visible_message(SPAN_DANGER("[src] crumbles!"), max_distance = 1)
+	deconstruct(FALSE)
+	playsound(loc, 'sound/effects/burrowoff.ogg', 25)
+	var/turf/Tsec = get_turf(src)
+	new /obj/item/stack/sheet/mineral/sandstone/runed(Tsec)
+	new /obj/item/stack/sheet/mineral/sandstone/runed(Tsec)
+	new /obj/item/stack/sheet/mineral/sandstone/runed(Tsec)
+	new /obj/effect/hunter/ancient_temple/rubble/rubble(Tsec)
+	new /obj/effect/hunter/ancient_temple/rubble/rubble_1(Tsec)
+	deconstruct(FALSE)
+
+/obj/structure/prop/hunter/ancient_temple/collapsed_wall/proc/healthcheck()
+	if(health <= 0)
+		explode()
+
+/obj/structure/prop/hunter/ancient_temple/collapsed_wall/ex_act(severity)
+	switch(severity)
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if(prob(50))
+				deconstruct(FALSE)
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			deconstruct(FALSE)
+
+/obj/structure/prop/hunter/ancient_temple/collapsed_wall/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
+	if(unslashable)
+		return XENO_NO_DELAY_ACTION
+	current_xenomorph.animation_attack_on(src)
+	playsound(src, 'sound/effects/metal_close.ogg', 25, 1)
+	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] slashes at [src]!"),
+	SPAN_DANGER("You slash at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
+	return XENO_ATTACK_ACTION

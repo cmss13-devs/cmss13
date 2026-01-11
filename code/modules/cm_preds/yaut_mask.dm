@@ -273,6 +273,27 @@
 	name = "ancient alien mask"
 	desc = "A beautifully designed metallic face mask, both ornate and functional. This one seems to be old and degraded."
 
+/obj/item/clothing/mask/gas/yautja/hunter/scalable
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_laser = CLOTHING_ARMOR_MEDIUM
+	armor_energy = CLOTHING_ARMOR_MEDIUM
+	armor_bomb = CLOTHING_ARMOR_HIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_MEDIUM
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+	anti_hug = 30
+
+	var/repair_status = YAUTJA_REPAIR_DAMAGED
+
+/obj/item/clothing/mask/gas/yautja/hunter/scalable/get_examine_text(mob/user)
+	. = ..()
+	switch(repair_status)
+		if(YAUTJA_REPAIR_DAMAGED)
+			. += SPAN_RED("It has been worn from long use and poor maintenance.")
+		if(YAUTJA_REPAIR_REINFORCED)
+			. += SPAN_GREEN("It has been reinforced to be more protective.")
+
 //flavor, not a subtype
 /obj/item/clothing/mask/yautja_flavor
 	name = "alien stone mask"

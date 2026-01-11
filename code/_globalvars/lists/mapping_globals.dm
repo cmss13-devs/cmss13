@@ -18,6 +18,7 @@ GLOBAL_LIST_EMPTY(yautja_teleports)
 GLOBAL_LIST_EMPTY(yautja_teleport_descs)
 GLOBAL_LIST_EMPTY(yautja_young_teleports)
 GLOBAL_LIST_EMPTY(yautja_young_descs)
+GLOBAL_LIST_EMPTY_TYPED(badblood_spawns, /turf)
 
 GLOBAL_LIST_EMPTY(thunderdome_one)
 GLOBAL_LIST_EMPTY(thunderdome_two)

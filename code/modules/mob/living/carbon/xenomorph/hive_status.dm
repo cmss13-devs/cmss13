@@ -1285,6 +1285,44 @@
 /datum/hive_status/yautja/can_delay_round_end(mob/living/carbon/xenomorph/xeno)
 	return FALSE
 
+/datum/hive_status/yautja_bad
+	name = FACTION_XENOMORPH_BADBLOOD
+	reporting_id = "enthralled"
+	hivenumber = XENO_HIVE_YAUTJA_BADBLOOD
+	internal_faction = FACTION_YAUTJA_BADBLOOD
+
+	prefix = "Enthralled "
+
+	color = "#cccc00"
+	ui_color = "#135029"
+	dynamic_evolution = FALSE
+	allow_no_queen_actions = TRUE
+	allow_no_queen_evo = FALSE
+	evolution_rate = 0
+	allow_queen_evolve = FALSE
+	latejoin_burrowed = FALSE
+
+	need_round_end_check = TRUE
+
+	blacklisted_castes = list(
+		XENO_CASTE_DRONE,
+		XENO_CASTE_QUEEN,
+		XENO_CASTE_BURROWER,
+		XENO_CASTE_CARRIER,
+		XENO_CASTE_HIVELORD,
+	)
+
+/datum/hive_status/yautja_bad/add_xeno(mob/living/carbon/xenomorph/xeno)
+	. = ..()
+	xeno.handle_enthrall()
+
+/datum/hive_status/yautja_bad/remove_xeno(mob/living/carbon/xenomorph/xeno, hard)
+	. = ..()
+	xeno.handle_dethrall()
+
+/datum/hive_status/yautja_bad/can_delay_round_end(mob/living/carbon/xenomorph/xeno)
+	return FALSE
+
 /datum/hive_status/hunted
 	name = FACTION_XENOMORPH_HUNTED
 	reporting_id = "hunted"

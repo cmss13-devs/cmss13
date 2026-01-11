@@ -96,7 +96,7 @@
 		if(thralled_set)
 			thralled_set.hunter_data.thrall = null
 			to_chat(thralled_set, SPAN_YAUTJABOLD("Your Thrall has been utterly destroyed!"))
-			message_all_yautja("[thralled_set.real_name]'s Thrall, [owner.real_name], has been utterly destroyed!")
+			message_all_yautja("[thralled_set.real_name]'s Thrall, [owner.real_name], has been utterly destroyed!", broadcast_networks = list(thralled_set.faction))
 			thralled_set = null
 		thralled = FALSE
 	if(thrall)

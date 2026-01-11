@@ -60,7 +60,7 @@
 	use_power(machinepower)
 
 /obj/structure/machinery/colony_floodlight_switch/electrified_fence_switch/update_machines()
-	// Make sure any linked switch isn't on simultaniously with us
+	// Make sure any linked switch isn't on simultaneously with us
 	if(is_on)
 		for(var/obj/structure/machinery/colony_floodlight_switch/electrified_fence_switch/linked_switch as anything in linked_switches)
 			if(linked_switch.is_on)

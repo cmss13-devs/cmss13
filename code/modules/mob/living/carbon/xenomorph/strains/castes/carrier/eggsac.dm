@@ -7,7 +7,7 @@
 	actions_to_remove = list(
 		/datum/action/xeno_action/activable/throw_hugger,
 		/datum/action/xeno_action/onclick/place_trap,
-		/datum/action/xeno_action/activable/retrieve_egg, // readding it so it gets at the end of the ability list
+		/datum/action/xeno_action/activable/retrieve_hugger_egg, // readding it so it gets at the end of the ability list
 		/datum/action/xeno_action/onclick/set_hugger_reserve,
 	)
 	actions_to_add = list(
@@ -122,7 +122,7 @@
 				xeno.eggs_cur++
 				to_chat(xeno, SPAN_XENONOTICE("We generate an egg. Now sheltering: [xeno.eggs_cur] / [xeno.eggs_max]."))
 				xeno.update_icons()
-			
+
 #undef EGGSAC_OFF_WEED_EGGCAP
 #undef EGGSAC_EGG_SUSTAIN_DISTANCE
 

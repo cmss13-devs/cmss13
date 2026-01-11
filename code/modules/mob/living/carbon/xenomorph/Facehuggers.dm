@@ -168,9 +168,9 @@
 /obj/item/clothing/mask/facehugger/attack_self(mob/user)
 	..()
 
-	if(iscarrier(user))
-		var/mob/living/carbon/xenomorph/carrier/C = user
-		C.store_hugger(src)
+	var/mob/living/carbon/xenomorph/xeno = user
+	if(xeno.huggers_max > 0)
+		xeno.store_hugger(src)
 
 /obj/item/clothing/mask/facehugger/get_examine_text(mob/user)
 	. = ..()

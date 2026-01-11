@@ -90,7 +90,10 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/shotgun, WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive/C4, WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
-	spawn_weapon(/obj/item/weapon/gun/shotgun/type23, pick(GLOB.shotgun_handfuls_8g), new_human, 0, 14) //shotgunner mini-spec
+	spawn_weapon(/obj/item/weapon/gun/shotgun/type23, pick(/obj/item/ammo_magazine/handful/shotgun/heavy/slug,
+	/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
+	/obj/item/ammo_magazine/handful/shotgun/heavy/flechette,
+	/obj/item/ammo_magazine/handful/shotgun/heavy/dragonsbreath), new_human, 0, 14) //shotgunner mini-spec
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/stick, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/stick, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/stick, WEAR_IN_BACK)
@@ -241,12 +244,6 @@
 
 	load_freelancer_soldier(new_human)
 
-	var/percentage = rand(1, 100)
-	switch(percentage)
-		if(1 to 66)
-			load_freelancer_rifleman(new_human)
-		else
-			load_freelancer_machinegunner(new_human)
 
 /datum/equipment_preset/other/freelancer/leader/hunted
 	name = "Freelancer Leader (Hunted)"

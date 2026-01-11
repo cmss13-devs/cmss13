@@ -185,6 +185,13 @@ can cause issues with ammo types getting mixed up during the burst.
 /obj/item/weapon/gun/shotgun/start_fire(datum/source, atom/object, turf/location, control, params, bypass_checks = FALSE)
 	if(gun_user.Adjacent(object))
 		if(isliving(object))
+			var/list/modifiers = params2list(params)
+			if(modifiers[CTRL_CLICK] || modifiers[SHIFT_CLICK] || modifiers[MIDDLE_CLICK] || modifiers[RIGHT_CLICK] || modifiers[BUTTON4] || modifiers[BUTTON5])
+				return FALSE
+			if(gun_user.throw_mode)
+				return FALSE
+			if(QDELETED(object))
+				return FALSE
 			INVOKE_ASYNC(src, PROC_REF(attack), object, gun_user)
 			return COMSIG_MOB_CLICK_HANDLED
 	. = ..()

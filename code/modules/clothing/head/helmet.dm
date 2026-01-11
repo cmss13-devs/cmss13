@@ -320,7 +320,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/prop/helmetgarb/raincover/desert = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/raincover/urban = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/rabbitsfoot = NO_GARB_OVERRIDE,
-	/obj/item/prop/helmetgarb/rosary = NO_GARB_OVERRIDE, // This one was already in the game for some reason, but never had an object
+	/obj/item/clothing/accessory/rosary = NO_GARB_OVERRIDE, // This one was already in the game for some reason, but never had an object
+	/obj/item/clothing/accessory/rosary/gold = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/lucky_feather = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/lucky_feather/blue = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/lucky_feather/purple = NO_GARB_OVERRIDE,
@@ -375,7 +376,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/paper = NO_GARB_OVERRIDE,
 	/obj/item/device/flashlight/flare = NO_GARB_OVERRIDE,
 	/obj/item/clothing/head/headset = NO_GARB_OVERRIDE,
-	/obj/item/clothing/accessory/patch = NO_GARB_OVERRIDE,
+	/obj/item/clothing/accessory/patch/uscmpatch = NO_GARB_OVERRIDE,
 	/obj/item/clothing/accessory/patch/falcon = NO_GARB_OVERRIDE,
 	/obj/item/clothing/accessory/patch/falcon/squad_main = NO_GARB_OVERRIDE,
 	/obj/item/clothing/accessory/patch/cec_patch = NO_GARB_OVERRIDE,

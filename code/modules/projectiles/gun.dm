@@ -1567,8 +1567,8 @@ and you're good to go.
 				BP.accuracy = floor(BP.accuracy * projectile_to_fire.accuracy/initial(projectile_to_fire.accuracy)) //Modifies accuracy of pellets per fire_bonus_projectiles.
 				BP.damage *= damage_buff * damage_mult
 
-				BP.bonus_projectile_check = 2
-				projectile_to_fire.bonus_projectile_check = 1
+				BP.bonus_projectile_check = PROJECTILE_BONUS
+				projectile_to_fire.bonus_projectile_check = PROJECTILE_ORIGINAL
 
 				projectile_to_fire.give_bullet_traits(BP)
 				if(bullets_fired > 1)

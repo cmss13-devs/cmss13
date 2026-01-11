@@ -219,37 +219,38 @@
 /datum/reagent/medical/alkysine
 	name = "Alkysine"
 	id = "alkysine"
-	description = "Alkysine is a drug used to lessen and heal the damage to neurological tissue after a catastrophic injury. Alkysine is toxic upon overdosing, and critical overdoses are neurotoxic and sever the connection between nerve endings in the spine, causing paralysis in the limbs."
+	description = "Used for temporarily managing the symptoms of encephalic trauma in lieu of performing a surgical operation. The medication will stop working after the brain take too much damage, however. Alkysine is toxic upon overdosing, and critical overdoses are neurotoxic and sever the connection between nerve endings in the spine, causing paralysis in the limbs."
 	reagent_state = LIQUID
 	color = "#e9d191" // rgb: 233, 209, 145
 	custom_metabolism = AMOUNT_PER_TIME(1, 40 SECONDS)
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_NEUROPEUTIC = 2)
+	properties = list(PROPERTY_ORGANSTABILIZEBRAIN = 2)
 
 /datum/reagent/medical/imidazoline
 	name = "Imidazoline"
 	id = "imidazoline"
-	description = "Used for treating non-genetic eye trauma. Generally prescribed as treatment for most cases of eye trauma instead of performing a surgical operation. Imidazoline is toxic during an overdose, and is neurotoxic at critical overdosing."
+	description = "Used for temporarily managing the symptoms of non-genetic ocular trauma in lieu of performing a surgical operation. The medication will stop working after the eyes take too much damage, however. Imidazoline is toxic during an overdose, and is neurotoxic at critical overdosing."
 	reagent_state = LIQUID
 	color = "#C8A5DC" // rgb: 200, 165, 220
 	overdose = REAGENTS_OVERDOSE
+	custom_metabolism = AMOUNT_PER_TIME(1, 40 SECONDS)
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_OCULOPEUTIC = 2)
+	properties = list(PROPERTY_ORGANSTABILIZEEYE = 2)
 
 /datum/reagent/medical/peridaxon
 	name = "Peridaxon"
 	id = "peridaxon"
-	description = "Prevents symptoms caused by damaged internal organs while in the bloodstream, but does not fix the organ damage. Recommended for patients awaiting internal organ surgery. Overdosing on peridaxon at damages external tissues, and critical overdoses ironically damage internal organs."
+	description = "Used for temporarily managing the symptoms of non-genetic pulmonary, hepatic, and renal trauma in lieu of performing a surgical operation. The medication will stop working for organs that take too much damage, however. Overdosing on peridaxon damages external tissues, and critical overdoses ironically damage internal organs."
 	reagent_state = LIQUID
 	color = "#403142" // rgb: 64, 49, 66
 	overdose = LOWH_REAGENTS_OVERDOSE
 	overdose_critical = LOWH_REAGENTS_OVERDOSE_CRITICAL
 	custom_metabolism = AMOUNT_PER_TIME(1, 40 SECONDS)
 	chemclass = CHEM_CLASS_COMMON
-	properties = list(PROPERTY_ORGANSTABILIZE = 4)
+	properties = list(PROPERTY_ORGANSTABILIZEBODY = 4)
 
 /datum/reagent/medical/bicaridine // no, it no longer cures IB while overdosing.
 	name = "Bicaridine"

@@ -78,7 +78,7 @@
 			icon_state = "sword[sword_color]"
 		w_class = SIZE_LARGE
 		playsound(user, 'sound/weapons/saberon.ogg', 25, 1)
-		to_chat(user, SPAN_NOTICE(" [src] is now active."))
+		to_chat(user, SPAN_NOTICE("[src] is now active."))
 
 	else
 		force = 3
@@ -86,7 +86,7 @@
 		icon_state = "[base_sword_icon]0"
 		w_class = SIZE_SMALL
 		playsound(user, 'sound/weapons/saberoff.ogg', 25, 1)
-		to_chat(user, SPAN_NOTICE(" [src] can now be concealed."))
+		to_chat(user, SPAN_NOTICE("[src] can now be concealed."))
 
 	if(istype(user,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = user

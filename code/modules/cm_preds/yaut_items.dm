@@ -414,20 +414,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 		to_chat(user, SPAN_WARNING("You have not been shown how to use the relay beacon, best not fiddle with it."))
 		return
 
-	if(H.client && H.client.clan_info)
-		var/datum/entity/clan_player/clan_info = H.client.clan_info
-		if(clan_info.permissions & CLAN_PERMISSION_ADMIN_VIEW)
-			var/list/datum/view_record/clan_view/CPV = DB_VIEW(/datum/view_record/clan_view/)
-			for(var/datum/view_record/clan_view/CV in CPV)
-				if(!SSpredships.is_clanship_loaded(CV?.clan_id))
-					continue
-				ship_to_tele += list("[CV.name]" = "[CV.clan_id]: [CV.name]")
-		if(SSpredships.is_clanship_loaded(clan_info?.clan_id))
-			ship_to_tele += list("Your clan" = "[clan_info.clan_id]")
-
 	var/clan = ship_to_tele[tgui_input_list(H, "Select a ship to teleport to", "[src]", ship_to_tele)]
-	if(clan != "Human" && !SSpredships.is_clanship_loaded(clan))
-		return // Checking ship is valid
 
 	// Getting an arrival point
 	var/turf/target_turf
@@ -435,7 +422,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 		var/obj/effect/landmark/yautja_teleport/pickedYT = pick(GLOB.mainship_yautja_teleports)
 		target_turf = get_turf(pickedYT)
 	else
-		target_turf = SAFEPICK(SSpredships.get_clan_spawnpoints(clan))
+		target_turf = SAFEPICK(GLOB.yautja_spawnpoints)
 	if(!istype(target_turf))
 		return
 

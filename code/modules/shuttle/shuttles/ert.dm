@@ -128,6 +128,27 @@
 	preferred_direction = SOUTH
 	port_direction = NORTH
 
+/obj/docking_port/mobile/emergency_response/hunter
+	name = "Hunter Shuttle"
+	id = MOBILE_SHUTTLE_ID_HUNTER
+	preferred_direction = SOUTH
+	port_direction = NORTH
+	area_type = /area/shuttle/hunter
+	landing_sound = 'sound/effects/engine_cargoshuttle_landing.ogg'
+	ignition_sound = 'sound/effects/engine_cargoshuttle_startup.ogg'
+
+/obj/docking_port/mobile/emergency_response/hunter/Initialize(mapload)
+	. = ..()
+	external_doors = list()
+	for(var/place in shuttle_areas)
+		for(var/obj/structure/machinery/door/airlock/air in place)
+			if(air.id != "hunter_external")
+				continue
+			air.breakable = FALSE
+			air.explo_proof = TRUE
+			air.unacidable = TRUE
+			external_doors += list(air)
+
 /obj/docking_port/mobile/emergency_response/small
 	name = "Rescue Shuttle"
 	id = MOBILE_SHUTTLE_ID_ERT_SMALL
@@ -239,6 +260,36 @@
 	name = "Rostock port landing pad"
 	dir = NORTH
 	id = "rostock-ert2"
+
+/obj/docking_port/stationary/emergency_response/yautja
+	name = "DO NOT USE"
+	dir = NORTH
+
+/obj/docking_port/stationary/emergency_response/yautja/on_prearrival(obj/docking_port/mobile/arriving_shuttle)
+	if(arriving_shuttle?.landing_sound)
+		playsound(return_center_turf(), arriving_shuttle.landing_sound, 60, 0)
+	return
+
+/obj/docking_port/stationary/emergency_response/yautja/port1
+	name = "Hunter Ship landing pad A"
+	id = "hunter-ert1"
+	roundstart_template = /datum/map_template/shuttle/hunter
+
+/obj/docking_port/stationary/emergency_response/yautja/port2
+	name = "Hunter Ship landing pad B"
+	id = "hunter-ert2"
+
+/obj/docking_port/stationary/emergency_response/yautja/temporary
+	name = "Temporary Landing Zone"
+
+/obj/docking_port/stationary/emergency_response/yautja/temporary/Initialize(mapload)
+	var/tag = "[pick(GLOB.nato_phonetic_alphabet)]-[rand(1, 99)]"
+	name = "Temporary Landing Zone [tag]"
+	id = "hunter-temp-[tag]"
+	. = ..()
+	for(var/obj/docking_port/mobile/emergency_response/hunter/shuttle in SSshuttle.mobile)
+		var/obj/structure/machinery/computer/shuttle/ert/hunter/console = shuttle.getControlConsole()
+		console.resync_landing_zones()
 
 /obj/docking_port/stationary/emergency_response/external
 	is_external = TRUE
@@ -381,3 +432,7 @@
 /datum/map_template/shuttle/big_ert
 	name = "Boarding Shuttle"
 	shuttle_id = MOBILE_SHUTTLE_ID_ERT_BIG
+
+/datum/map_template/shuttle/hunter
+	name = "Hunter Shuttle"
+	shuttle_id = MOBILE_SHUTTLE_ID_HUNTER

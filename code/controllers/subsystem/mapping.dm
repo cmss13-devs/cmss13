@@ -238,6 +238,10 @@ SUBSYSTEM_DEF(mapping)
 	if(trim(file2text("data/mode.txt")) == GAMEMODE_FACTION_CLASH_UPP_CM)
 		Loadship(FailedZs, "ssv_rostock", "templates/", list("ssv_rostock.dmm") , list(),ZTRAITS_MAIN_SHIP , override_map_path = "maps/")
 
+	var/datum/map_config/hunter_map = new
+	hunter_map.LoadConfig("maps/huntership.json", TRUE)
+	Loadship(FailedZs, hunter_map.map_name, hunter_map.map_path, hunter_map.map_file, hunter_map.traits, ZTRAITS_ADMIN, override_map_path = "maps/")
+
 	if(LAZYLEN(FailedZs)) //but seriously, unless the server's filesystem is messed up this will never happen
 		var/msg = "RED ALERT! The following map files failed to load: [FailedZs[1]]"
 		if(length(FailedZs) > 1)

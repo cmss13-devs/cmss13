@@ -1073,7 +1073,7 @@
 	desc = "Nigh indestructible walls that make up the hull of an unknown ancient ship, looks like nothing you can do will penetrate the hull."
 	icon = 'icons/turf/walls/engineership.dmi'
 	icon_state = "metal"
-	walltype = WALL_HUNTERSHIP
+	walltype = WALL_ENGINEERSHIP
 	turf_flags = TURF_HULL
 
 /turf/closed/wall/engineership/destructible

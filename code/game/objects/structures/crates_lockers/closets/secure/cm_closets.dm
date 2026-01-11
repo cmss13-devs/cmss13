@@ -368,6 +368,7 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 	icon_broken = "secure_locked_cmdcabinet"
 	icon_off = "secure_unlocked_cmdcabinet"
 	wall_mounted = TRUE
+	plane = TURF_PLANE
 
 /obj/structure/closet/secure_closet/cmdcabinet/comms_mp
 	name = "communications cabinet"

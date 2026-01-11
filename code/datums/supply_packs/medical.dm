@@ -127,6 +127,22 @@
 	access = ACCESS_MARINE_MEDBAY
 	group = "Medical"
 
+/datum/supply_packs/surgery/beds
+	name = "surgery crate (surgical beds)"
+	contains = list(
+		/obj/item/roller/surgical,
+		/obj/item/roller/surgical,
+		/obj/item/roller/surgical,
+		/obj/item/roller/surgical,
+		/obj/item/roller/surgical,
+		/obj/item/roller/surgical,
+	)
+	cost = 25
+	containertype = /obj/structure/closet/crate/secure/surgery
+	containername = "surgery crate"
+	access = ACCESS_MARINE_MEDBAY
+	group = "Medical"
+
 /datum/supply_packs/field_doc
 	name = "field doctor crate (replacement field doctor gear)"
 	contains = list(

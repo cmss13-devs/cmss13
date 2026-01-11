@@ -184,7 +184,7 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/start_fire(datum/source, atom/object, turf/location, control, params, bypass_checks = FALSE)
 	if(gun_user.Adjacent(object))
-		if(ismob(object))
+		if(isliving(object))
 			INVOKE_ASYNC(src, PROC_REF(attack), object, gun_user)
 			return COMSIG_MOB_CLICK_HANDLED
 	. = ..()

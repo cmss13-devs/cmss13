@@ -65,6 +65,7 @@
 	var/list/mercenary = list()
 	var/list/dutch = list()
 	var/list/marshal = list()
+	var/list/united_americas = list()
 	var/list/synthetics = list()
 	var/list/predators = list()
 	var/list/hunted = list()
@@ -222,6 +223,8 @@
 					mercenary += list(serialized)
 				else if(human.faction in FACTION_LIST_MARSHAL)
 					marshal += list(serialized)
+				else if(human.faction in FACTION_LIST_UA_CIA)
+					united_americas += list(serialized)
 				else if(human.faction in FACTION_LIST_DUTCH)
 					dutch += list(serialized)
 				else if(human.faction in FACTION_LIST_MARINE)
@@ -249,6 +252,7 @@
 	data["mercenary"] = mercenary
 	data["dutch"] = dutch
 	data["marshal"] = marshal
+	data["united_americas"] = united_americas
 	data["synthetics"] = synthetics
 	data["predators"] = predators
 	data["hunted"] = hunted

@@ -476,6 +476,16 @@ Defined in conflicts.dm of the #defines folder.
 	item_state = "bayonet_tanto_alt"
 	attach_icon = "bayonet_tanto_alt_a"
 
+/obj/item/attachable/bayonet/tanto/grs
+	AUTOWIKI_SKIP(TRUE)
+
+	name = "\improper R4 tactical bayonet"
+	desc = "A custom tanto-bladed bayonet used by the Global Response Staff, it has a carbon finish grip and corrosion proof blade."
+	icon_state = "bayonet_tanto_grs"
+	item_state = "bayonet_tanto_grs"
+	attach_icon = "bayonet_tanto_grs_a"
+	unacidable = TRUE
+
 /obj/item/attachable/bayonet/van_bandolier
 	AUTOWIKI_SKIP(TRUE)
 
@@ -1453,6 +1463,12 @@ Defined in conflicts.dm of the #defines folder.
 	zoom_offset = 7
 	dynamic_aim_slowdown = SLOWDOWN_ADS_NONE
 
+/obj/item/attachable/scope/mini/xm88/cia
+	name = "XS-9R targeting relay"
+	desc = "An ARMAT XS-9 optical interface. Unlike a traditional scope, this rail-mounted device features no telescoping lens. Instead, the firearm's onboard targeting system relays data directly to the optic for the system operator to reference in realtime."
+	icon_state = "s_boomslang-scope"
+	flags_atom = FPRINT|CONDUCT|NO_GAMEMODE_SKIN
+
 /obj/item/attachable/scope/mini/xm88/New()
 	..()
 	select_gamemode_skin(type)
@@ -2328,6 +2344,20 @@ Defined in conflicts.dm of the #defines folder.
 	scatter_mod = -SCATTER_AMOUNT_TIER_8
 	recoil_unwielded_mod = RECOIL_AMOUNT_TIER_5
 	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_4
+
+/obj/item/attachable/stock/xm88/cia
+	name = "\improper XM88R padded stock"
+	desc = "A specially made compound polymer stock reinforced with aluminum rods and thick rubber padding to shield the user from recoil. Fitted specifically for the XM88R Heavy Rifle."
+	icon_state = "s_boomslang-stock"
+	flags_atom = FPRINT|CONDUCT|NO_GAMEMODE_SKIN
+
+/obj/item/attachable/stock/m47pulse
+	name = "\improper M47 integrated stock"
+	desc = "A stock"
+	icon_state = "m47stock"
+	attach_icon = "m47stock_a"
+	wield_delay_mod = WIELD_DELAY_NONE
+	flags_atom = FPRINT|CONDUCT|NO_GAMEMODE_SKIN
 
 /obj/item/attachable/stock/tactical
 	name = "\improper MK221 tactical stock"
@@ -3333,6 +3363,25 @@ Defined in conflicts.dm of the #defines folder.
 	max_rounds = 5
 	max_range = 10
 	attachment_firing_delay = 24
+
+// GRS Grenadier
+/obj/item/attachable/attached_gun/grenade/grs
+	name = "UA6 grenade launcher"
+	desc = "A weapon-mounted, reloadable grenade launcher designed specifically for use by the GRS."
+
+/obj/item/attachable/attached_gun/grenade/grs/hedp/New()
+	..()
+	for(var/i = 1 to max_rounds)
+		var/grenade = new /obj/item/explosive/grenade/high_explosive(src)
+		loaded_grenades += grenade
+		current_rounds++
+
+/obj/item/attachable/attached_gun/grenade/grs/hedp_super/New()
+	..()
+	for(var/i = 1 to max_rounds)
+		var/grenade = new /obj/item/explosive/grenade/high_explosive/super(src)
+		loaded_grenades += grenade
+		current_rounds++
 
 //"ammo/flamethrower" is a bullet, but the actual process is handled through fire_attachment, linked through Fire().
 /obj/item/attachable/attached_gun/flamer

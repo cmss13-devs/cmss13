@@ -503,6 +503,8 @@
 			else
 				msg += "\n"
 	if(hasHUD(user,"medical"))
+
+	
 		var/cardcolor = holo_card_color
 		if(!cardcolor)
 			cardcolor = "none"

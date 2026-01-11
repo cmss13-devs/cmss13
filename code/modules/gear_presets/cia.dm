@@ -88,6 +88,8 @@
 /datum/equipment_preset/cia/officer/o3
 	name = "CIA Senior Agent (USCM Liaison - Captain)"
 	paygrades = list(PAY_SHORT_MO3 = JOB_PLAYTIME_TIER_0)
+	job_title = JOB_CIA_LIAISON_CO
+	assignment = JOB_CIA_LIAISON_CO
 	minimum_age = 30
 	minimap_icon = "cia_co"
 	skills = /datum/skills/cia_senior

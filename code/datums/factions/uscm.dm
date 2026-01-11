@@ -126,6 +126,7 @@
 				border_rk = "command"
 			if(JOB_AUXILIARY_OFFICER)
 				marine_rk = "aso"
+				border_rk = "command"
 			if(JOB_PLT_MED)
 				marine_rk = "med"
 			if(JOB_PLT_SL)
@@ -251,12 +252,16 @@
 				marine_rk = "wo_chemist"
 			if(JOB_WO_CHIEF_REQUISITION)
 				marine_rk = "wo_ro"
+			if(JOB_WO_REQUISITION)
+				marine_rk = "wo_ct"
 			if(JOB_WO_CHIEF_ENGINEER)
 				marine_rk = "wo_ce"
 			if(JOB_WO_ORDNANCE_TECH)
 				marine_rk = "wo_ot"
 			if(JOB_WO_PILOT)
 				marine_rk = "wo_mcrew"
+			if(JOB_WO_CORPORATE_LIAISON)
+				marine_rk = "wo_comrec"
 			// Check squad marines here too, for the unique ones
 			if(JOB_SQUAD_ENGI)
 				marine_rk = "engi"

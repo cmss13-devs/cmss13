@@ -667,7 +667,7 @@ GLOBAL_DATUM_INIT(above_blackness_backdrop, /atom/movable/above_blackness_backdr
 		xeno.animation_attack_on(src)
 		xeno.visible_message(SPAN_DANGER("[xeno] slices [src] apart!"))
 		playsound(src, 'sound/effects/woodhit.ogg')
-		to_chat(xeno, SPAN_WARNING("We slice the [src] apart!"))
+		to_chat(xeno, SPAN_WARNING("We slice [src] apart!"))
 		deconstruct(FALSE)
 		return XENO_ATTACK_ACTION
 	else

@@ -108,7 +108,7 @@
 			user.count_niche_stat(STATISTICS_NICHE_DESTRUCTION_WINDOWS, 1)
 			SEND_SIGNAL(user, COMSIG_MOB_DESTROY_WINDOW, src)
 			for(var/mob/living/carbon/viewer_in_range in orange(7, src))
-				to_chat(viewer_in_range, SPAN_WARNING("[user] smashes through the [src][AM ? " with [AM]":""]!"))
+				to_chat(viewer_in_range, SPAN_WARNING("[user] smashes through [src][AM ? " with [AM]":""]!"))
 			if(is_mainship_level(z))
 				SSclues.create_print(get_turf(user), user, "A small glass piece is found on the fingerprint.")
 		if(make_shatter_sound)
@@ -507,7 +507,7 @@
 	layer = TABLE_LAYER
 	static_frame = 1
 	flags_atom = FPRINT
-	var/window_frame //For perspective windows,so the window frame doesn't magically dissapear
+	var/window_frame //For perspective windows,so the window frame doesn't magically disappear
 	var/list/tiles_special = list(/obj/structure/machinery/door/airlock,
 		/obj/structure/window/framed,
 		/obj/structure/girder,

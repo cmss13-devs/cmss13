@@ -158,7 +158,7 @@
 	if(occupant.real_name != injector_name)
 		go_out()
 	else
-		to_chat(usr, SPAN_WARNING("You are unable to leave the [src] until evacuation completes, or is cancelled!."))
+		to_chat(usr, SPAN_WARNING("You are unable to leave [src] until evacuation completes, or is cancelled!."))
 		return FALSE
 
 /obj/structure/machinery/cryopod/evacuation/go_out() //When the system ejects the occupant.

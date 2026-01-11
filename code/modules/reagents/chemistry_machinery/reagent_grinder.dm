@@ -11,7 +11,7 @@
 	var/inuse = 0
 	var/grind_duration = 6 SECONDS // 6 seconds
 	var/obj/item/reagent_container/beaker = null
-	var/limit = 10
+	var/limit = 16
 	var/tether_range = 8
 	var/obj/structure/machinery/smartfridge/chemistry/linked_storage //Where we send bottle chemicals
 	var/list/blend_items = list (
@@ -30,7 +30,7 @@
 		/obj/item/reagent_container/food/snacks/grown/ricestalk = list("rice" = -5),
 		/obj/item/reagent_container/food/snacks/grown/cherries = list("cherryjelly" = 0),
 		/obj/item/reagent_container/food/snacks/grown/plastellium = list("plasticide" = 5),
-
+		/obj/item/reagent_container/food/snacks/chocolatebar = list("chocolatesyrup" = 0),
 
 		//All types that you can put into the grinder to transfer the reagents to the beaker. !Put all recipes above this.!
 		/obj/item/reagent_container/pill = list(),
@@ -53,7 +53,6 @@
 		/obj/item/reagent_container/food/snacks/watermelonslice = list("watermelonjuice" = 0),
 		/obj/item/reagent_container/food/snacks/grown/grapes = list("grapejuice" = 0),
 		/obj/item/reagent_container/food/snacks/grown/poisonberries = list("poisonberryjuice" = 0),
-
 	)
 
 
@@ -93,7 +92,7 @@
 		to_chat(user, SPAN_WARNING("The machine cannot hold anymore items."))
 		return TRUE
 	if (istype(O, /obj/item/research_upgrades/grinderspeed))
-		if(limit == 10)
+		if(limit == 16)
 			grind_duration = 3 SECONDS
 			limit = 25
 			to_chat(user, SPAN_NOTICE("You insert [O] into [src]"))
@@ -440,7 +439,7 @@
 
 /obj/structure/machinery/reagentgrinder/industrial
 	name = "Industrial Grinder"
-	desc = "a heavy-duty variant of the all-in-one grinder meant for grinding large amounts of industrial material. Not food safe."
+	desc = "A heavy-duty variant of the all-in-one grinder meant for grinding large amounts of industrial material. Not food safe."
 	icon_state = "industry1"
 	limit = 30
 	blend_items = list (

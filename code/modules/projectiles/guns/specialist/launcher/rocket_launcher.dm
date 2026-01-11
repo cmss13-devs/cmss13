@@ -3,7 +3,7 @@
 
 /obj/item/weapon/gun/launcher/rocket
 	name = "\improper common rocket launcher ancestor"
-	desc = "You should not be seeing this"
+	desc = "You should not be seeing this."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/rocket_launchers.dmi'
 	icon_state = "m5"
 	item_state = "m5"

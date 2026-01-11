@@ -207,3 +207,13 @@
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/WY.dmi',
 	)
+
+/obj/item/clothing/under/tunic
+	name = "generic tunic"
+	desc = "A generic tunic woven by linen fabric. Its historical usage dates back to old human civillizations."
+	icon_state = "roman_tunic"
+	item_state = "roman_tunic"
+	icon = 'icons/obj/items/clothing/uniforms/misc_ert_colony.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/misc_ert_colony.dmi'
+	)

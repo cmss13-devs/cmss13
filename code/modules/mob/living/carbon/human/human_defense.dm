@@ -74,6 +74,9 @@ Contains most of the procs that are called when a mob is attacked by something
 			var/obj/item/clothing/C = gear
 			if(C.flags_armor_protection & def_zone.body_part)
 				protection += C.get_armor(type)
+	var/datum/effects/acid/acid_effect = locate() in effects_list
+	if(acid_effect)
+		protection = acid_effect.adjust_armor(protection, type)
 	return protection
 
 /mob/living/carbon/human/get_sharp_obj_blocker(obj/limb/limb)
@@ -264,7 +267,7 @@ Contains most of the procs that are called when a mob is attacked by something
 		if (assailant)
 			src.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been hit with \a [O], thrown by [key_name(M)]</font>")
 			M.attack_log += text("\[[time_stamp()]\] <font color='red'>Hit [key_name(src)] with a thrown [O]</font>")
-			if(!istype(src,/mob/living/simple_animal/mouse))
+			if(!istype(src,/mob/living/simple_animal/small/mouse))
 				msg_admin_attack("[key_name(src)] was hit by \a [O], thrown by [key_name(M)] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
 
 	if(last_damage_source)

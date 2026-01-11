@@ -9,7 +9,7 @@ SUBSYSTEM_DEF(atoms)
 	flags = SS_NO_FIRE
 
 	var/old_initialized
-	/// A count of how many initalize changes we've made. We want to prevent old_initialize being overridden by some other value, breaking init code
+	/// A count of how many initialize changes we've made. We want to prevent old_initialize being overridden by some other value, breaking init code
 	var/initialized_changed = 0
 	var/init_start_time
 	var/processing_late_loaders = FALSE
@@ -41,18 +41,18 @@ SUBSYSTEM_DEF(atoms)
 	if(initialized == INITIALIZATION_INSSATOMS)
 		return
 
-	set_tracked_initalized(INITIALIZATION_INNEW_MAPLOAD)
+	set_tracked_initialized(INITIALIZATION_INNEW_MAPLOAD)
 
 	fix_atoms_locs(atoms)
 
 	// This may look a bit odd, but if the actual atom creation runtimes for some reason, we absolutely need to set initialized BACK
 	CreateAtoms(atoms)
-	clear_tracked_initalize()
+	clear_tracked_initialize()
 
 	InitializeLateLoaders()
 
 /// Processes all late_loaders, checking the length each iteration and prevents duplicate calls
-/// This is necessary because of an edge case where there might be simultanious calls to InitializeAtoms
+/// This is necessary because of an edge case where there might be simultaneous calls to InitializeAtoms
 /datum/controller/subsystem/atoms/proc/InitializeLateLoaders()
 	if(processing_late_loaders) // If we still manage to double this proc, try a ++ here, or solve the root of the problem
 		#ifdef TESTING
@@ -75,7 +75,7 @@ SUBSYSTEM_DEF(atoms)
 	late_loaders.Cut()
 	processing_late_loaders = FALSE
 
-/// Actually creates the list of atoms. Exists soley so a runtime in the creation logic doesn't cause initalized to totally break
+/// Actually creates the list of atoms. Exists solely so a runtime in the creation logic doesn't cause initialized to totally break
 /datum/controller/subsystem/atoms/proc/CreateAtoms(list/atoms, list/atoms_to_return = null)
 	if (atoms_to_return)
 		LAZYINITLIST(created_atoms)
@@ -182,13 +182,13 @@ SUBSYSTEM_DEF(atoms)
 			A.loc = A.loc
 
 /datum/controller/subsystem/atoms/proc/map_loader_begin()
-	set_tracked_initalized(INITIALIZATION_INSSATOMS)
+	set_tracked_initialized(INITIALIZATION_INSSATOMS)
 
 /datum/controller/subsystem/atoms/proc/map_loader_stop()
-	clear_tracked_initalize()
+	clear_tracked_initialize()
 
 /// Use this to set initialized to prevent error states where old_initialized is overridden. It keeps happening and it's cheesing me off
-/datum/controller/subsystem/atoms/proc/set_tracked_initalized(value)
+/datum/controller/subsystem/atoms/proc/set_tracked_initialized(value)
 	if(!initialized_changed)
 		old_initialized = initialized
 		initialized = value
@@ -197,7 +197,7 @@ SUBSYSTEM_DEF(atoms)
 		debug_log("We started maploading while we were already maploading. You doing something odd?")
 	initialized_changed += 1
 
-/datum/controller/subsystem/atoms/proc/clear_tracked_initalize()
+/datum/controller/subsystem/atoms/proc/clear_tracked_initialize()
 	initialized_changed -= 1
 	if(!initialized_changed)
 		initialized = old_initialized

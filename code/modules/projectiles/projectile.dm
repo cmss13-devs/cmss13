@@ -1080,7 +1080,7 @@
 
 	var/ammo_flags = bullet.ammo.flags_ammo_behavior | bullet.projectile_override_flags
 
-	if((ammo_flags & AMMO_FLAME) && (caste.fire_immunity & (FIRE_IMMUNITY_NO_IGNITE|FIRE_IMMUNITY_NO_DAMAGE)))
+	if((ammo_flags & AMMO_FLAME) && (fire_immunity & (FIRE_IMMUNITY_NO_IGNITE || FIRE_IMMUNITY_NO_DAMAGE || FIRE_IMMUNITY_COMPLETE)))
 		to_chat(src, SPAN_AVOIDHARM("You shrug off the glob of flame."))
 		bullet_message(bullet, damaging = FALSE)
 		return

@@ -7,7 +7,7 @@ Code shamelessly copied from apc_frame
 */
 /obj/item/frame/air_alarm
 	name = "air alarm frame"
-	desc = "Used for building Air Alarms"
+	desc = "Used for building Air Alarms."
 	icon = 'icons/obj/structures/machinery/monitors.dmi'
 	icon_state = "alarm_bitem"
 	flags_atom = FPRINT|CONDUCT
@@ -50,7 +50,7 @@ Code shamelessly copied from apc_frame
 */
 /obj/item/frame/fire_alarm
 	name = "fire alarm frame"
-	desc = "Used for building Fire Alarms"
+	desc = "Used for building Fire Alarms."
 	icon = 'icons/obj/structures/machinery/monitors.dmi'
 	icon_state = "fire_bitem"
 	flags_atom = FPRINT|CONDUCT

@@ -2173,8 +2173,8 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 	set_target(get_turf_on_clickcatcher(object, gun_user, params))
 	if((gun_firemode == GUN_FIREMODE_SEMIAUTO) || active_attachable)
-		Fire(object, gun_user, modifiers)
-		reset_fire()
+		if(Fire(object, gun_user, modifiers))
+			reset_fire()
 		return COMSIG_MOB_CLICK_HANDLED
 	SEND_SIGNAL(src, COMSIG_GUN_FIRE)
 	return COMSIG_MOB_CLICK_HANDLED

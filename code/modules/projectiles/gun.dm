@@ -1181,7 +1181,7 @@ and you're good to go.
 	if(user.interactee && istype(user.interactee, /obj/structure/ladder))
 		var/obj/structure/ladder/ladder = user.interactee
 		if(ladder.is_watching)
-			to_chat(user, SPAN_WARNING("You can't shoot while looking up the ladder!"))
+			to_chat(user, SPAN_WARNING("You can't shoot while looking from the ladder!"))
 			return NONE
 
 	if(!able_to_fire(user) || !target || !get_turf(user) || !get_turf(target))

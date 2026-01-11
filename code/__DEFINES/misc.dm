@@ -54,6 +54,8 @@
 #define AREA_YAUTJA_HANGABLE (1<<7)
 /// Makes it so barricades can't be anchored and starts unsecured.
 #define AREA_NOSECURECADES (1<<8)
+/// Makes it so the area cannot be fired into from above.
+#define AREA_PROJECTILE_CEILING (1<<9)
 
 /// Default number of ticks for do_after
 #define DA_DEFAULT_NUM_TICKS 5

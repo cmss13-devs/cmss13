@@ -235,24 +235,24 @@
 		else
 			P.play_hit_effect(M)
 
-/datum/ammo/proc/fire_bonus_projectiles(obj/projectile/original_P, gun_damage_mult = 1, projectile_max_range_add = 0, bonus_proj_scatter = 0)
+/datum/ammo/proc/fire_bonus_projectiles(obj/projectile/original_projectile, gun_damage_mult = 1, projectile_max_range_add = 0, bonus_proj_scatter = 0, pointblank_bonus = FALSE)
 	set waitfor = 0
 
-	var/turf/curloc = get_turf(original_P.shot_from)
-	var/turf/cur_target = get_turf(original_P.target_turf)
+	var/turf/curloc = get_turf(original_projectile.shot_from)
+	var/turf/cur_target = get_turf(original_projectile.target_turf)
 	var/initial_angle = Get_Angle(curloc, cur_target)
 
 	for(var/i in 1 to bonus_projectiles_amount) //Want to run this for the number of bonus projectiles.
 		var/final_angle = initial_angle
 
-		var/obj/projectile/P = new /obj/projectile(curloc, original_P.weapon_cause_data)
-		P.generate_bullet(GLOB.ammo_list[bonus_projectiles_type])
-		P.damage *= gun_damage_mult
-		P.accuracy = floor(P.accuracy * original_P.accuracy/initial(original_P.accuracy)) //if the gun changes the accuracy of the main projectile, it also affects the bonus ones.
-		original_P.give_bullet_traits(P)
-		P.bonus_projectile_check = 2 //It's a bonus projectile!
+		var/obj/projectile/extra_projectile = new /obj/projectile(curloc, original_projectile.weapon_cause_data)
+		extra_projectile.generate_bullet(GLOB.ammo_list[bonus_projectiles_type])
+		extra_projectile.damage *= gun_damage_mult
+		extra_projectile.accuracy = floor(extra_projectile.accuracy * original_projectile.accuracy/initial(original_projectile.accuracy)) //if the gun changes the accuracy of the main projectile, it also affects the bonus ones.
+		original_projectile.give_bullet_traits(extra_projectile)
+		extra_projectile.bonus_projectile_check = PROJECTILE_BONUS //It's a bonus projectile!
 
-		var/total_scatter_angle = P.scatter + bonus_proj_scatter
+		var/total_scatter_angle = extra_projectile.scatter + bonus_proj_scatter
 		final_angle += rand(-total_scatter_angle, total_scatter_angle)
 		var/turf/new_target = get_angle_target_turf(curloc, final_angle, 30)
 
@@ -266,7 +266,7 @@
 			if(above)
 				new_target = above
 
-		P.fire_at(new_target, original_P.firer, original_P.shot_from, P.ammo.max_range + projectile_max_range_add, P.ammo.shell_speed, original_P.original, FALSE) //Fire!
+		extra_projectile.fire_at(new_target, original_projectile.firer, original_projectile.shot_from, extra_projectile.ammo.max_range + projectile_max_range_add, extra_projectile.ammo.shell_speed, original_projectile.original, FALSE) //Fire!
 
 /datum/ammo/proc/drop_flame(turf/turf, datum/cause_data/cause_data) // ~Art updated fire 20JAN17
 	if(!istype(turf))

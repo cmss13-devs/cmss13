@@ -195,6 +195,7 @@
 #define COMSIG_KB_YAUTJA_IDCHIP "keybinding_yautja_idchip"
 #define COMSIG_KB_YAUTJA_LINK_BRACER "keybinding_yautja_link_bracer"
 #define COMSIG_KB_YAUTJA_CONTROL_FALCON "keybinding_yautja_control_falcon"
+#define COMSIG_KB_YAUTJA_LEAP "keybinding_yautja_leap"
 
 //mask
 #define COMSIG_KB_YAUTJA_MASK_TOGGLE_ZOOM "keybinding_yautja_mask_toggle_zoom"

@@ -68,10 +68,10 @@
 		return
 	if(splashable)
 		if(is_open_container())
-			to_chat(usr, SPAN_NOTICE("You put the lid on \the [src]."))
+			to_chat(usr, SPAN_NOTICE("You put the lid on [src]."))
 			flags_atom ^= OPENCONTAINER
 		else
-			to_chat(usr, SPAN_NOTICE("You take the lid off \the [src]."))
+			to_chat(usr, SPAN_NOTICE("You take the lid off [src]."))
 			flags_atom |= OPENCONTAINER
 		update_icon()
 
@@ -173,8 +173,9 @@
 			reagents.clear_reagents()
 		return
 
-/obj/item/reagent_container/glass/attackby(obj/item/W, mob/user)
-	if(HAS_TRAIT(W, TRAIT_TOOL_PEN))
+
+/obj/item/reagent_container/glass/attackby(obj/item/attacking_object, mob/living/user)
+	if(HAS_TRAIT(attacking_object, TRAIT_TOOL_PEN))
 		var/prior_label_text
 		var/datum/component/label/labelcomponent = GetComponent(/datum/component/label)
 		if(labelcomponent && labelcomponent.has_label())
@@ -200,6 +201,55 @@
 		AddComponent(/datum/component/label, tmp_label)
 		playsound(src, "paper_writing", 15, TRUE)
 		return
+
+	if(istype(attacking_object, /obj/item/storage/pill_bottle)) //dumping a pill bottle's contents in a container
+		var/obj/item/storage/pill_bottle/pbottle = attacking_object
+		if(!is_open_container())
+			to_chat(user, SPAN_WARNING("[src] has a lid on it. You can't dump pills into [src] with the lid in the way."))
+			return
+		if(reagents?.total_volume <= 0)
+			to_chat(user, SPAN_WARNING("[src] needs to contain some liquid to dissolve the pills in."))
+			return
+		if(reagents.total_volume == reagents.maximum_volume)
+			to_chat(user, SPAN_WARNING("[src] is full. You cannot dissolve any more pills."))
+			return
+		if(length(pbottle.contents) <= 0)
+			to_chat(user, SPAN_WARNING("You don't have any pills to dump from [pbottle.name]."))
+			return
+		user.visible_message(SPAN_NOTICE("[user] starts to empty [pbottle.name] into [src]..."),
+		SPAN_NOTICE("You start to empty [pbottle.name] into [src]..."),
+		SPAN_NOTICE("You hear the emptying of a pill bottle. The pills bloop into liquid..."), 2)
+
+		var/waiting_time = (length(pbottle.contents)) * 0.125 SECONDS
+		if(!do_after(user, waiting_time, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
+			user.visible_message(SPAN_NOTICE("[user] stops trying to empty [pbottle.name] into [src]."),
+			SPAN_WARNING("You get distracted and stop trying to empty [pbottle.name] into [src]."))
+			return
+
+		var/list/reagent_list_text = list()
+		for(var/obj/item/reagent_container/pill/pill in pbottle.contents)
+			var/temp_reagent_text = pill.get_reagent_list_text()
+			if(temp_reagent_text in reagent_list_text)
+				reagent_list_text[temp_reagent_text]++
+			else
+				reagent_list_text += temp_reagent_text
+
+			var/amount = pill.reagents.total_volume + reagents.total_volume
+			var/loss = amount - reagents.maximum_volume
+
+			pill.reagents.trans_to(src, reagents.total_volume)
+			pbottle.forced_item_removal(pill)
+			if(amount > reagents.maximum_volume)
+				user.visible_message(SPAN_WARNING("[user] overflows [src], spilling some of its contents."),
+				SPAN_WARNING("[src] overflows and spills [loss]u of the last pill you dissolved."))
+				break
+
+		var/output_text
+		for(var/reagent_text in reagent_list_text)
+			output_text += "[output_text ? "," : ":" ] [reagent_list_text[reagent_text]+1] Pill[reagent_list_text[reagent_text] > 0 ? "s" : ""] of " + reagent_text
+		user.visible_message(SPAN_NOTICE("[user] finishes emptying [pbottle.name] into [src]."), SPAN_NOTICE("You stop emptying [pbottle.name] into [src]."))
+		log_interact(user, null, "[key_name(user)] dissolved the contents of [pbottle.name] into [src] containing[output_text].")
+		return // No call parent AFTER loop is done. Prevents pill bottles from attempting to gather pills.
 
 	return ..()
 
@@ -651,7 +701,7 @@
 
 /obj/item/reagent_container/glass/bucket/attackby(obj/item/I, mob/user)
 	if(isprox(I))
-		to_chat(user, "You add \the [I] to \the [src].")
+		to_chat(user, "You add [I] to [src].")
 		qdel(I)
 		user.put_in_hands(new /obj/item/frame/bucket_sensor)
 		user.drop_inv_item_on_ground(src)
@@ -659,11 +709,11 @@
 	else if(istype(I, /obj/item/tool/mop))
 		var/obj/item/tool/mop/mop = I
 		if(reagents.total_volume < 1)
-			to_chat(user, SPAN_WARNING("\The [src] is out of water!"))
+			to_chat(user, SPAN_WARNING("[src] is out of water!"))
 		else
 			reagents.trans_to(mop, mop.max_reagent_volume)
 			mop.update_icon()
-			to_chat(user, SPAN_NOTICE("You wet \the [mop] in \the [src]."))
+			to_chat(user, SPAN_NOTICE("You wet [mop] in [src]."))
 			playsound(loc, 'sound/effects/slosh.ogg', 25, 1)
 		return
 	else
@@ -745,7 +795,7 @@
 
 /obj/item/reagent_container/glass/rag/attack(atom/target, mob/user)
 	if(ismob(target) && target.reagents && reagents.total_volume)
-		user.visible_message(SPAN_DANGER("\The [target] has been smothered with \the [src] by \the [user]!"), SPAN_DANGER("You smother \the [target] with \the [src]!"), "You hear some struggling and muffled cries of surprise.")
+		user.visible_message(SPAN_DANGER("[target] has been smothered with [src] by [user]!"), SPAN_DANGER("You smother [target] with [src]!"), "You hear some struggling and muffled cries of surprise!")
 		src.reagents.reaction(target, TOUCH)
 		spawn(5) src.reagents.clear_reagents()
 		return

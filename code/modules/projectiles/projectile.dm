@@ -843,7 +843,7 @@
 /mob/living/proc/get_projectile_hit_chance(obj/projectile/P)
 	if(HAS_TRAIT(src, TRAIT_NO_STRAY) && src != P.original)
 		return FALSE
-	if(body_position == LYING_DOWN && src != P.original && world.time - body_position_changed > 0.1 SECONDS && !P.ammo.hits_lying_mobs)
+	if((body_position == LYING_DOWN && src != P.original && world.time - body_position_changed > 0.1 SECONDS) && !P.ammo.hits_lying_mobs)
 		return FALSE // Fixes for buckshot projectiles not hitting stunned targets
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 	if(ammo_flags & AMMO_XENO)

@@ -115,7 +115,7 @@
 					else
 						hint_msg += ", [current_step.desc]"
 				else
-					hint_msg = "You can't [current_step.desc] with \the [tool]"
+					hint_msg = "You can't [current_step.desc] with [tool]"
 			if(!isnull(hint_msg))
 				to_chat(user, SPAN_WARNING("[hint_msg]."))
 		return FALSE
@@ -143,7 +143,7 @@
 		if(surgery_limb)
 			var/obj/item/blocker = target.get_sharp_obj_blocker(surgery_limb)
 			if(blocker)
-				to_chat(user, SPAN_WARNING("[blocker] [target] is wearing restricts your access to the surgical site, take it off!"))
+				to_chat(user, SPAN_WARNING("[blocker] [target] is wearing restricts your access to the surgical site! Take it off!"))
 				return
 
 		if(affecting)

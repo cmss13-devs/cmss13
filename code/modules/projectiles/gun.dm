@@ -1175,7 +1175,7 @@ and you're good to go.
 	set waitfor = FALSE
 
 	if(!gun_user)
-		gun_user = user
+		set_gun_user(user)
 
 	// Check if watching a ladder
 	if(user.interactee && istype(user.interactee, /obj/structure/ladder))
@@ -1783,12 +1783,16 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	if(active_attachable)
 		return
 
-	if(!user)
+	if(!user && gun_user)
 		user = gun_user
+	else if(ismob(loc))
+		user = loc
+	else
+		return
 
 	if(flags_gun_features & GUN_AMMO_COUNTER && current_mag)
 		// toggleable spam control.
-		if(user.client.prefs.toggle_prefs & TOGGLE_AMMO_DISPLAY_TYPE && gun_firemode == GUN_FIREMODE_SEMIAUTO && current_mag.current_rounds % 5 != 0 && current_mag.current_rounds > 15)
+		if(user?.client?.prefs?.toggle_prefs & TOGGLE_AMMO_DISPLAY_TYPE && gun_firemode == GUN_FIREMODE_SEMIAUTO && current_mag.current_rounds % 5 != 0 && current_mag.current_rounds > 15)
 			return
 		var/chambered = in_chamber ? TRUE : FALSE
 		to_chat(user, SPAN_DANGER("[current_mag.current_rounds][chambered ? "+1" : ""] / [current_mag.max_rounds] ROUNDS REMAINING."))
@@ -2033,6 +2037,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	shots_fired = 0//Let's clean everything
 	set_target(null)
 	set_auto_firing(FALSE)
+	display_ammo()
 
 /// adder for fire_delay
 /obj/item/weapon/gun/proc/modify_fire_delay(value)
@@ -2092,7 +2097,6 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 	if(gun_firemode == GUN_FIREMODE_AUTOMATIC)
 		reset_fire()
-		display_ammo()
 	SEND_SIGNAL(src, COMSIG_GUN_STOP_FIRE)
 
 /obj/item/weapon/gun/proc/set_gun_user(mob/to_set)
@@ -2128,6 +2132,9 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 /obj/item/weapon/gun/proc/start_fire(datum/source, atom/object, turf/location, control, params, bypass_checks = FALSE)
 	SIGNAL_HANDLER
 
+	if(!gun_user)
+		set_gun_user(source)
+
 	var/list/modifiers = params2list(params)
 	if(modifiers[CTRL_CLICK] || modifiers[SHIFT_CLICK] || modifiers[MIDDLE_CLICK] || modifiers[RIGHT_CLICK] || modifiers[BUTTON4] || modifiers[BUTTON5])
 		return FALSE
@@ -2140,7 +2147,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		return FALSE
 
 	if(!bypass_checks)
-		if(gun_user.hand && !isgun(gun_user.l_hand) || !gun_user.hand && !isgun(gun_user.r_hand)) // If the object in our active hand is not a gun, abort
+		if(gun_user.get_active_hand() != src) // If the object in our active hand is not this gun, abort, also shouldn't ever
 			return FALSE
 
 		if(gun_user.throw_mode)
@@ -2168,7 +2175,6 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	if((gun_firemode == GUN_FIREMODE_SEMIAUTO) || active_attachable)
 		Fire(object, gun_user, modifiers)
 		reset_fire()
-		display_ammo()
 		return COMSIG_MOB_CLICK_HANDLED
 	SEND_SIGNAL(src, COMSIG_GUN_FIRE)
 	return COMSIG_MOB_CLICK_HANDLED

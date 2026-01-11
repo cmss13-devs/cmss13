@@ -568,7 +568,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 				vendor_successful_vend(itemspec, user)
 				add_fingerprint(user)
 				return TRUE
-			if((!human_user.assigned_squad && squad_tag) || (!human_user.assigned_squad?.omni_squad_vendor && (squad_tag && human_user.assigned_squad.name != squad_tag)))
+			if((!human_user.assigned_squad && squad_tag) || (!human_user.assigned_squad?.omni_squad_vendor && (squad_tag && human_user.assigned_squad.name != squad_tag)) && squad_tag != "null")
 				to_chat(user, SPAN_WARNING("This machine isn't for your squad."))
 				vend_fail()
 				return FALSE
@@ -1461,6 +1461,11 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 			else
 				user.equip_to_appropriate_slot(new_item)
 				new_item.update_icon()
+
+			if(istype(new_item, /obj/item/device/radio/headset/almayer/marine/self_setting))
+				var/obj/item/device/radio/headset/almayer/marine/self_setting/new_headset = new_item
+				new_headset.self_set()
+
 
 	new_item.post_vendor_spawn_hook(user)
 

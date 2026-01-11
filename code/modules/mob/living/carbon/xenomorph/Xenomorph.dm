@@ -155,6 +155,7 @@
 	var/show_age_prefix = TRUE
 	var/show_name_numbers = TRUE
 	var/show_only_numbers = FALSE
+	var/static_name = FALSE
 	var/evolution_stored = 0 //How much evolution they have stored
 	var/evolution_threshold = 200
 	var/tier = 1 //This will track their "tier" to restrict/limit evolutions
@@ -742,24 +743,24 @@
 		name_client_postfix = client.xeno_postfix ? ("-"+client.xeno_postfix) : ""
 		age_xeno()
 	full_designation = "[name_client_prefix][nicknumber][name_client_postfix]"
+	if(!static_name) //I hate this but it will do as a temporary measure
+		if(HAS_TRAIT(src, TRAIT_PATHOGEN_OVERMIND))
+			name = "Overmind ([full_designation])"
+		else
+			var/age_display = show_age_prefix ? age_prefix : ""
+			var/name_display = ""
+			// Rare easter egg
+			if(nicknumber == 666)
+				number_decorator = "Infernal "
+			if(show_name_numbers)
+				name_display = show_only_numbers ? " ([nicknumber])" : " ([name_client_prefix][nicknumber][name_client_postfix])"
+			name = "[name_prefix][number_decorator][age_display][caste.display_name || caste.caste_type][name_display]"
 
-	if(!HAS_TRAIT(src, TRAIT_PATHOGEN_OVERMIND))
-		var/age_display = show_age_prefix ? age_prefix : ""
-		var/name_display = ""
-		// Rare easter egg
-		if(nicknumber == 666)
-			number_decorator = "Infernal "
-		if(show_name_numbers)
-			name_display = show_only_numbers ? " ([nicknumber])" : " ([name_client_prefix][nicknumber][name_client_postfix])"
-		name = "[name_prefix][number_decorator][age_display][caste.display_name || caste.caste_type][name_display]"
-	else
-		name = "Overmind ([full_designation])"
+		//Update linked data so they show up properly
+		change_real_name(src, name)
 
-	//Update linked data so they show up properly
-	change_real_name(src, name)
-
-	// Since we updated our name we should update the info in the UI
-	in_hive.hive_ui.update_xeno_info()
+		// Since we updated our name we should update the info in the UI
+		in_hive.hive_ui.update_xeno_info()
 
 /mob/living/carbon/xenomorph/proc/set_lighting_alpha_from_prefs(client/xeno_client)
 	var/vision_level = xeno_client?.prefs?.xeno_vision_level_pref

@@ -67,3 +67,11 @@
   - bugfix: Fixes Data Detector's action button icon not switching when clicking the
       data detector in-hand.
   - bugfix: Pharmaceutical Physician is now medical green on the crew monitor.
+2026-01-11:
+  FourkhanDaKhan:
+  - balance: Nervestimulating (anti-stun) is disabled in natural generation.
+  - balance: It can still be obtained from pheromone plasma on 5X clearance.
+  - balance: Scientist and corporate survivors no longer grant research points by
+      swiping their IDs.
+  Thwomper, Nivrak:
+  - rscadd: Adds roof/sky Z-Level to all ground maps.

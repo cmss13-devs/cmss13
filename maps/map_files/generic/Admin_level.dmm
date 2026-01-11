@@ -1242,7 +1242,7 @@
 /turf/open/floor/plating/almayer,
 /area/adminlevel/ert_station)
 "LA" = (
-/obj/structure/surface/table/gamblingtable,
+/obj/structure/surface/table/woodentable/gamblingtable,
 /obj/item/device/flashlight/lamp/green{
 	pixel_y = 10
 	},
@@ -1586,7 +1586,7 @@
 /turf/open/floor/almayer/silver/north,
 /area/adminlevel/ert_station)
 "TX" = (
-/obj/structure/surface/table/gamblingtable,
+/obj/structure/surface/table/woodentable/gamblingtable,
 /obj/item/ashtray/plastic{
 	pixel_x = -4;
 	pixel_y = -2
@@ -1624,7 +1624,7 @@
 /turf/open/floor/almayer/greencorner/north,
 /area/adminlevel/ert_station)
 "UI" = (
-/obj/structure/surface/table/gamblingtable,
+/obj/structure/surface/table/woodentable/gamblingtable,
 /obj/item/toy/deck{
 	pixel_x = -1;
 	pixel_y = 2

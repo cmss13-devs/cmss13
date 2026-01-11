@@ -750,7 +750,7 @@
 "fT" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Underground Requesitions Bay"
+	name = "\improper Underground Requisitions Bay"
 	},
 /turf/open/floor/shiva/yellow/west,
 /area/varadero/interior/cargo)
@@ -1247,7 +1247,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 1;
-	name = "\improper Underground Requesitions Office";
+	name = "\improper Underground Requisitions Office";
 	req_access_txt = "100";
 	req_one_access = null
 	},
@@ -1377,7 +1377,7 @@
 "ls" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "cargobay";
-	name = "\improper Requesitions Storage Shutters"
+	name = "\improper Requisitions Storage Shutters"
 	},
 /turf/open/floor/shiva/yellow/west,
 /area/varadero/interior/cargo)
@@ -2678,7 +2678,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "\improper Underground Requesitions Freezer";
+	name = "\improper Underground Requisitions Freezer";
 	req_access_txt = "100"
 	},
 /turf/open/floor/freezerfloor,
@@ -3433,7 +3433,7 @@
 "By" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2;
-	name = "\improper Underground Requesitions Freezer";
+	name = "\improper Underground Requisitions Freezer";
 	req_access_txt = "100"
 	},
 /turf/open/floor/freezerfloor,
@@ -4029,7 +4029,7 @@
 "Gk" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "cargobay";
-	name = "\improper Requesitions Storage Shutters"
+	name = "\improper Requisitions Storage Shutters"
 	},
 /turf/open/floor/shiva/yellow/east,
 /area/varadero/interior/cargo)
@@ -4084,7 +4084,7 @@
 /area/varadero/interior/maintenance/north)
 "GQ" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Underground Requesitions Lobby"
+	name = "\improper Underground Requisitions Lobby"
 	},
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/cargo)
@@ -5116,7 +5116,7 @@
 "Qm" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "cargobay";
-	name = "\improper Requesitions Storage Shutters"
+	name = "\improper Requisitions Storage Shutters"
 	},
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/cargo)
@@ -5300,11 +5300,11 @@
 	dir = 1;
 	icon_state = "leftsecure";
 	id = null;
-	name = "Requesitions Desk"
+	name = "Requisitions Desk"
 	},
 /obj/structure/machinery/door/window/northright{
 	dir = 2;
-	name = "Requesitions Desk"
+	name = "Requisitions Desk"
 	},
 /obj/item/tool/pen/blue{
 	pixel_x = -6

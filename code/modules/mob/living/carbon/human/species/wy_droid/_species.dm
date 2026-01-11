@@ -20,6 +20,7 @@
 /datum/species/synthetic/colonial/wy_droid/handle_post_spawn(mob/living/carbon/human/wy_droid)
 	. = ..()
 	give_action(wy_droid, /datum/action/wy_droid_emote_panel)
+	wy_droid.AddElement(/datum/element/corp_label/wy)
 
 /datum/species/synthetic/colonial/wy_droid/handle_death(mob/living/carbon/human/dying_droid)
 	playsound(get_turf(dying_droid),"wy_droid_death", 25, FALSE)

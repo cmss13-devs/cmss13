@@ -197,7 +197,7 @@
 
 /obj/structure/closet/crate/ammo
 	name = "ammunitions crate"
-	desc = "An ammunitions crate"
+	desc = "An ammunitions crate."
 	icon_state = "closed_ammo"
 	icon_opened = "open_ammo"
 	icon_closed = "closed_ammo"
@@ -239,7 +239,7 @@
 
 /obj/structure/closet/crate/construction
 	name = "construction crate"
-	desc = "A construction crate"
+	desc = "A construction crate."
 	icon_state = "closed_construction"
 	icon_opened = "open_construction"
 	icon_closed = "closed_construction"
@@ -253,7 +253,7 @@
 
 /obj/structure/closet/crate/explosives
 	name = "explosives crate"
-	desc = "An explosives crate"
+	desc = "An explosives crate."
 	icon_state = "closed_explosives"
 	icon_opened = "open_explosives"
 	icon_closed = "closed_explosives"
@@ -378,6 +378,10 @@
 	icon_opened = "foodcart2_open"
 	icon_closed = "foodcart2"
 
+/obj/structure/closet/crate/foodcart/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/structure/closet/crate/foodcart/alt
 	icon_state = "foodcart1"
 	icon_opened = "foodcart1_open"
@@ -403,7 +407,7 @@
 
 /obj/structure/closet/crate/empexplosives
 	name = "electromagnetic explosives crate"
-	desc = "An explosives crate, containing EMP grenades"
+	desc = "An explosives crate, containing EMP grenades."
 	icon_state = "closed_explosives"
 	icon_opened = "open_explosives"
 	icon_closed = "closed_explosives"

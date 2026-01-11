@@ -24,12 +24,13 @@
 
 
 	utility_under = list(/obj/item/clothing/under/marine, /obj/item/clothing/under/marine/officer/command, /obj/item/clothing/under/marine/officer/boiler)
-	utility_hat = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/beret/cm/tan)
+	utility_hat = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/cmcap/bridge, /obj/item/clothing/head/beret/cm/tan)
+	utility_gloves = list(/obj/item/clothing/gloves/marine, /obj/item/clothing/gloves/marine/brown, /obj/item/clothing/gloves/marine/grey, /obj/item/clothing/gloves/marine/fingerless)
 	utility_extra = list(/obj/item/clothing/glasses/sunglasses, /obj/item/clothing/glasses/sunglasses/big, /obj/item/clothing/glasses/sunglasses/aviator, /obj/item/clothing/glasses/mbcg)
 
 	service_under = list(/obj/item/clothing/under/marine/officer/formal/gray, /obj/item/clothing/under/marine/officer/formal/turtleneck)
 	service_shoes = list(/obj/item/clothing/shoes/dress/commander)
-	service_extra = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/patchless)
+	service_extra = list(/obj/item/clothing/suit/storage/jacket/marine/service, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/patchless)
 	service_hat = list(/obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/marine/commander/dress, /obj/item/clothing/head/beret/marine/commander/black, /obj/item/clothing/head/marine/peaked/service)
 
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)
@@ -41,7 +42,6 @@
 	minimap_icon = "co"
 	minimap_background = "background_command"
 
-
 /datum/equipment_preset/uscm_co/New()
 	. = ..()
 	access = get_access(ACCESS_LIST_MARINE_ALL)
@@ -52,7 +52,7 @@
 
 
 /datum/equipment_preset/uscm_co/load_gear(mob/living/carbon/human/new_human)
-	var/sidearm = "Mateba"
+	var/sidearm = "Unica (camo comforting)"
 	var/kit = null
 	var/sidearmpath = /obj/item/storage/belt/gun/mateba/cmateba/full
 	var/back_item = /obj/item/storage/backpack/satchel/lockable
@@ -65,13 +65,30 @@
 				kit = /obj/item/storage/mateba_case/captain
 			if(CO_GUN_MATEBA_SPECIAL)
 				sidearmpath = /obj/item/storage/belt/gun/mateba/cmateba/special
-			if(CO_GUN_MATEBA_COUNCIL)
-				sidearmpath = /obj/item/storage/belt/gun/mateba/council/full
-				kit = /obj/item/storage/mateba_case/captain/council
+			if(CO_GUN_MATEBA_CLASSIC)
+				sidearmpath = /obj/item/storage/belt/gun/mateba/full
+				kit = /obj/item/storage/mateba_case/captain
+			if(CO_GUN_2006M)
+				sidearmpath = /obj/item/storage/belt/gun/mateba/mtr6m/full
 			if(CO_GUN_DEAGLE)
 				sidearmpath = /obj/item/storage/belt/gun/m4a3/heavy/co
 			if(CO_GUN_M1911C)
 				sidearmpath = /obj/item/storage/belt/gun/m4a3/m1911/commander
+			//Council variants
+			if(CO_GUN_MATEBA_COUNCIL)
+				sidearmpath = /obj/item/storage/belt/gun/mateba/council/full
+				kit = /obj/item/storage/mateba_case/captain/council
+			if(CO_GUN_MATEBA_COUNCIL_GOLDEN)
+				sidearmpath = /obj/item/storage/belt/gun/mateba/council/full_golden
+				kit = /obj/item/storage/mateba_case/captain/council_gold
+			if(CO_GUN_2006M_COUNCIL)
+				sidearmpath = /obj/item/storage/belt/gun/mateba/council/mtr6m/full
+			if(CO_GUN_2006MB_COUNCIL)
+				sidearmpath = /obj/item/storage/belt/gun/mateba/council/mtr6m/full_black
+			if(CO_GUN_2006MS_COUNCIL)
+				sidearmpath = /obj/item/storage/belt/gun/mateba/council/mtr6m/full_silver
+			if(CO_GUN_DEAGLE_COUNCIL)
+				sidearmpath = /obj/item/storage/belt/gun/m4a3/heavy/co_golden
 	switch(whitelist_level)
 		if(WHITELIST_COUNCIL)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/marine/commander/council(new_human), WEAR_HEAD)

@@ -11,7 +11,7 @@
 	icon_state = "meson"
 	item_state = "glasses"
 	deactive_state = "degoggles"
-	actions_types = list(/datum/action/item_action/toggle)
+	actions_types = list(/datum/action/item_action/toggle/hudgoggles)
 	toggleable = TRUE
 	fullscreen_vision = /atom/movable/screen/fullscreen/meson
 

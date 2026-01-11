@@ -66,9 +66,6 @@
 /// from /datum/surgery_step/proc/attempt_step()
 #define COMSIG_HUMAN_SURGERY_APPLY_MODIFIERS "human_surgery_apply_modifiers"
 
-/// From /datum/surgery_step/proc/success() : (mob/user, mob/living/carbon/target, datum/surgery/surgery, obj/item/tool)
-#define COMSIG_HUMAN_SURGERY_STEP_SUCCESS "human_surgery_step_success"
-
 /// From /mob/living/carbon/human/proc/get_flags_cold_protection()
 #define COMSIG_HUMAN_COLD_PROTECTION_APPLY_MODIFIERS "human_cold_protection_apply_modifiers"
 
@@ -86,6 +83,12 @@
 
 /// From /mob/living/carbon/human/UnarmedAttack()
 #define COMSIG_HUMAN_UNARMED_ATTACK "human_unarmed_attack"
+
+/// from /modules/animations/animations_library.dm
+#define COMSIG_HUMAN_ANIMATING "human_animating"
+
+/// from /proc/transfer_marine_to_squad
+#define COMSIG_HUMAN_SQUAD_CHANGED "human_squad_change"
 
 /// From /mob/living/carbon/human/hud_set_holocard()
 #define COMSIG_HUMAN_TRIAGE_CARD_UPDATED "human_triage_card_updated"

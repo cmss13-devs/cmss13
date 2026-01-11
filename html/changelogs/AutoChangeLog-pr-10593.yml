@@ -1,4 +1,0 @@
-author: "cuberound"
-delete-after: True
-changes:
-  - rscadd: "motion detector detects pings on higer and lower z level, uses arrows to show their location"

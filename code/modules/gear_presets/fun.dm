@@ -436,7 +436,7 @@
 	new_human.age = rand(1, 40)
 
 /datum/equipment_preset/fun/monkey/proc/get_random_name(mob/living/carbon/human/new_human)
-	return pick(GLOB.monkey_names)
+	return capitalize(pick(GLOB.monkey_names))
 
 /datum/equipment_preset/fun/monkey/marine
 	name = "Fun - Monkey Marine"

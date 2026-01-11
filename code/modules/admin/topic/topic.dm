@@ -428,7 +428,7 @@
 
 		var/mob/M = locate(href_list["jobban4"])
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob")
+			to_chat(usr, "This can only be used on instances of type /mob.")
 			return
 
 		if(M != usr) //we can jobban ourselves
@@ -513,7 +513,7 @@
 				return
 			var/reason = input("Please enter reason")
 			if(!reason)
-				to_chat_forced(M, SPAN_WARNING("You have been kicked from the server"))
+				to_chat_forced(M, SPAN_WARNING("You have been kicked from the server."))
 			else
 				to_chat_forced(M, SPAN_WARNING("You have been kicked from the server: [reason]"))
 			message_admins("[key_name_admin(usr)] booted [key_name_admin(M)].")
@@ -591,7 +591,7 @@
 
 		var/mob/living/carbon/xenomorph/X = locate(href_list["xenoresetname"])
 		if(!isxeno(X))
-			to_chat(usr, SPAN_WARNING("Not a xeno"))
+			to_chat(usr, SPAN_WARNING("Not a xeno."))
 			return
 
 		if(alert("Are you sure you want to reset xeno name for [X.ckey]?", , "Yes", "No") != "Yes")
@@ -635,7 +635,7 @@
 
 
 		if(!isxeno(X))
-			to_chat(usr, SPAN_WARNING("Not a xeno"))
+			to_chat(usr, SPAN_WARNING("Not a xeno."))
 			return
 
 		if(alert("Are you sure you want to BAN [X.ckey] from ever using any xeno name?", , "Yes", "No") != "Yes")
@@ -708,7 +708,7 @@
 
 		var/mob/living/carbon/human/H = locate(href_list["monkeyone"])
 		if(!istype(H))
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
+			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human.")
 			return
 
 		message_admins("[key_name_admin(usr)] attempting to monkeyize [key_name_admin(H)]")
@@ -720,7 +720,7 @@
 
 		var/mob/M = locate(href_list["forcespeech"])
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob")
+			to_chat(usr, "This can only be used on instances of type /mob.")
 			return
 
 		var/speech = input("What will [key_name(M)] say?.", "Force speech", "")// Don't need to sanitize, since it does that in say(), we also trust our admins.
@@ -735,7 +735,7 @@
 			return
 		var/mob/living/carbon/human/H = locate(href_list["zombieinfect"])
 		if(!istype(H))
-			to_chat(usr, "This can only be used on instances of type /human")
+			to_chat(usr, "This can only be used on instances of type /human.")
 			return
 
 		if(alert(usr, "Are you sure you want to infect them with a ZOMBIE VIRUS? This can trigger a major event!", "Message", "Yes", "No") != "Yes")
@@ -755,7 +755,7 @@
 			return
 		var/mob/living/carbon/human/H = locate(href_list["larvainfect"])
 		if(!istype(H))
-			to_chat(usr, "This can only be used on instances of type /human")
+			to_chat(usr, "This can only be used on instances of type /human.")
 			return
 
 		if(alert(usr, "Are you sure you want to infect them with a xeno larva?", "Message", "Yes", "No") != "Yes")
@@ -770,7 +770,7 @@
 		var/newhive = tgui_input_list(usr,"Select a hive.", "Infect Larva", hives)
 
 		if(!H)
-			to_chat(usr, "This mob no longer exists")
+			to_chat(usr, "This mob no longer exists.")
 			return
 
 		var/obj/item/alien_embryo/embryo = new /obj/item/alien_embryo(H)
@@ -785,7 +785,7 @@
 
 		var/mob/living/carbon/human/H = locate(href_list["makemutineer"])
 		if(!istype(H))
-			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human")
+			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human.")
 			return
 
 		if(H.faction != FACTION_MARINE)
@@ -803,7 +803,7 @@
 
 		var/mob/living/carbon/human/H = locate(href_list["makecultist"]) || locate(href_list["makecultistleader"])
 		if(!istype(H))
-			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human")
+			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human.")
 			return
 
 		var/list/hives = list()
@@ -819,13 +819,13 @@
 		var/datum/hive_status/hive = hives[hive_name]
 
 		if(href_list["makecultist"])
-			var/datum/equipment_preset/preset = GLOB.gear_path_presets_list[/datum/equipment_preset/other/xeno_cultist]
+			var/datum/equipment_preset/preset = GLOB.equipment_presets.gear_path_presets_list[/datum/equipment_preset/other/xeno_cultist]
 			preset.load_race(H)
 			preset.load_status(H, hive.hivenumber)
 			message_admins("[key_name_admin(usr)] has made [key_name_admin(H)] into a cultist for [hive.name].")
 
 		else if(href_list["makecultistleader"])
-			var/datum/equipment_preset/preset = GLOB.gear_path_presets_list[/datum/equipment_preset/other/xeno_cultist/leader]
+			var/datum/equipment_preset/preset = GLOB.equipment_presets.gear_path_presets_list[/datum/equipment_preset/other/xeno_cultist/leader]
 			preset.load_race(H)
 			preset.load_status(H, hive.hivenumber)
 			message_admins("[key_name_admin(usr)] has made [key_name_admin(H)] into a cultist leader for [hive.name].")
@@ -838,7 +838,7 @@
 
 		var/mob/M = locate(href_list["forceemote"])
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob")
+			to_chat(usr, "This can only be used on instances of type /mob.")
 
 		var/speech = input("What will [key_name(M)] emote?.", "Force emote", "")// Don't need to sanitize, since it does that in say(), we also trust our admins.
 		if(!speech)
@@ -879,7 +879,7 @@
 
 		var/mob/M = locate(href_list["tdome1"])
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob")
+			to_chat(usr, "This can only be used on instances of type /mob.")
 			return
 
 		for(var/obj/item/I in M)
@@ -901,7 +901,7 @@
 
 		var/mob/M = locate(href_list["tdome2"])
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob")
+			to_chat(usr, "This can only be used on instances of type /mob.")
 			return
 
 		for(var/obj/item/I in M)
@@ -923,7 +923,7 @@
 
 		var/mob/M = locate(href_list["tdomeadmin"])
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob")
+			to_chat(usr, "This can only be used on instances of type /mob.")
 			return
 
 		M.apply_effect(5, PARALYZE)
@@ -942,7 +942,7 @@
 
 		var/mob/M = locate(href_list["tdomeobserve"])
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob")
+			to_chat(usr, "This can only be used on instances of type /mob.")
 			return
 
 		for(var/obj/item/I in M)
@@ -965,7 +965,7 @@
 
 		var/mob/living/L = locate(href_list["revive"])
 		if(!istype(L))
-			to_chat(usr, "This can only be used on instances of type /mob/living")
+			to_chat(usr, "This can only be used on instances of type /mob/living.")
 			return
 
 		L.revive()
@@ -977,7 +977,7 @@
 
 		var/mob/living/carbon/human/H = locate(href_list["makealien"])
 		if(!istype(H))
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
+			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human.")
 			return
 
 		usr.client.cmd_admin_alienize(H)
@@ -1051,7 +1051,7 @@
 
 		var/mob/M = locate(href_list["makeanimal"])
 		if(istype(M, /mob/new_player))
-			to_chat(usr, "This cannot be used on instances of type /mob/new_player")
+			to_chat(usr, "This cannot be used on instances of type /mob/new_player.")
 			return
 
 		usr.client.cmd_admin_animalize(M)
@@ -1133,7 +1133,7 @@
 
 		var/mob/living/carbon/human/H = locate(href_list["adminspawncookie"])
 		if(!ishuman(H))
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
+			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human.")
 			return
 
 		var/cookie_type = tgui_input_list(usr, "Choose cookie type:", "Give Cookie", list("cookie", "random fortune cookie", "custom fortune cookie"))
@@ -1183,13 +1183,13 @@
 		var/mob/living/carbon/human/H = locate(href_list["CentcommReply"])
 
 		if(!istype(H))
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
+			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human.")
 			return
 
 		//unanswered_distress -= H
 
 		if(!H.get_type_in_ears(/obj/item/device/radio/headset))
-			to_chat(usr, "The person you are trying to contact is not wearing a headset")
+			to_chat(usr, "The person you are trying to contact is not wearing a headset.")
 			return
 
 		var/input = input(src.owner, "Please enter a message to reply to [key_name(H)] via their headset.","Outgoing message from USCM", "")
@@ -1206,10 +1206,10 @@
 	else if(href_list["SyndicateReply"])
 		var/mob/living/carbon/human/H = locate(href_list["SyndicateReply"])
 		if(!istype(H))
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
+			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human.")
 			return
 		if(!H.get_type_in_ears(/obj/item/device/radio/headset))
-			to_chat(usr, "The person you are trying to contact is not wearing a headset")
+			to_chat(usr, "The person you are trying to contact is not wearing a headset.")
 			return
 
 		var/input = input(src.owner, "Please enter a message to reply to [key_name(H)] via their headset.","Outgoing message from The Syndicate", "")
@@ -1269,7 +1269,7 @@
 					return
 
 				fax_message = new(generate_templated_fax(0, organization_type, subject, addressed_to, message_body, sent_by, "Editor in Chief", organization_type))
-		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "pressfaxpreview", width = 500, height = 400)
+		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "pressfaxpreview", width = DEFAULT_PAPER_WIDTH, height = DEFAULT_PAPER_HEIGHT)
 		var/send_choice = tgui_input_list(user, "Send this fax?", "Fax Template", list("Send", "Cancel"))
 		if(send_choice != "Send")
 			return
@@ -1321,7 +1321,7 @@
 					sent_title = "USCM High Command"
 
 				fax_message = new(generate_templated_fax(0, "USCM CENTRAL COMMAND", subject,addressed_to, message_body,sent_by, sent_title, "United States Colonial Marine Corps"))
-		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "uscmfaxpreview", width = 500, height = 400)
+		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "uscmfaxpreview", width = DEFAULT_PAPER_WIDTH, height = DEFAULT_PAPER_HEIGHT)
 		var/send_choice = tgui_input_list(user, "Send this fax?", "Fax Template", list("Send", "Cancel"))
 		if(send_choice != "Send")
 			return
@@ -1369,7 +1369,7 @@
 				if(!sent_by)
 					return
 				fax_message = new(generate_templated_fax(1, "WEYLAND-YUTANI CORPORATE AFFAIRS - [MAIN_SHIP_NAME]", subject, addressed_to, message_body, sent_by, "Corporate Affairs Director", "Weyland-Yutani"))
-		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "clfaxpreview", width = 500, height = 400)
+		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "clfaxpreview", width = DEFAULT_PAPER_WIDTH, height = DEFAULT_PAPER_HEIGHT)
 		var/send_choice = tgui_input_list(user, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
 		if(send_choice != "Send")
 			return
@@ -1417,7 +1417,7 @@
 				if(!sent_by)
 					return
 				fax_message = new(generate_templated_fax(0, "THREE WORLD EMPIRE - ROYAL MILITARY COMMAND", subject, addressed_to, message_body, sent_by, "Office of Military Communications", "Three World Empire"))
-		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF TWE FAX", width = 500, height = 400)
+		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF TWE FAX", width = DEFAULT_PAPER_WIDTH, height = DEFAULT_PAPER_HEIGHT)
 		var/send_choice = tgui_input_list(user, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
 		if(send_choice != "Send")
 			return
@@ -1465,7 +1465,7 @@
 				if(!sent_by)
 					return
 				fax_message = new(generate_templated_fax(0, "UNION OF PROGRESSIVE PEOPLES - MILITARY HIGH KOMMAND", subject, addressed_to, message_body, sent_by, "Military High Kommand", "Union of Progressive Peoples"))
-		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF UPP FAX", width = 500, height = 400)
+		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF UPP FAX", width = DEFAULT_PAPER_WIDTH, height = DEFAULT_PAPER_HEIGHT)
 		var/send_choice = tgui_input_list(user, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
 		if(send_choice != "Send")
 			return
@@ -1513,7 +1513,7 @@
 				if(!sent_by)
 					return
 				fax_message = new(generate_templated_fax(0, "COLONIAL LIBERATION FRONT - COLONIAL COUNCIL OF LIBERATION", subject, addressed_to, message_body, sent_by, "Guerilla Forces Command", "Colonial Liberation Front"))
-		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF CLF FAX", width = 500, height = 400)
+		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF CLF FAX", width = DEFAULT_PAPER_WIDTH, height = DEFAULT_PAPER_HEIGHT)
 		var/send_choice = tgui_input_list(user, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
 		if(send_choice != "Send")
 			return
@@ -1561,7 +1561,7 @@
 				if(!sent_by)
 					return
 				fax_message = new(generate_templated_fax(0, "COLONIAL MARSHAL BUREAU INCIDENT COMMAND CENTER - ANCHORPOINT STATION", subject, addressed_to, message_body, sent_by, "Supervisory Deputy Marshal", "Colonial Marshal Bureau"))
-		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF CMB FAX", width = 500, height = 400)
+		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF CMB FAX", width = DEFAULT_PAPER_WIDTH, height = DEFAULT_PAPER_HEIGHT)
 		var/send_choice = tgui_input_list(user, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
 		if(send_choice != "Send")
 			return
@@ -1909,7 +1909,7 @@
 		var/prompt = tgui_alert(usr, "Do you want the nuke to be Encrypted?", "Nuke Type", list("Encrypted", "Decrypted"), 20 SECONDS)
 		if(prompt == "Decrypted")
 			nukename = "Decrypted Operational Blockbuster"
-		prompt = tgui_alert(usr, "Are you sure you want to authorize '[nukename]' to the marines? This will greatly affect the round!", "DEFCON 1", list("No", "Yes"))
+		prompt = tgui_alert(usr, "Are you sure you want to authorize '[nukename]' to the marines? This will greatly affect the round!", "DEFCON 1", list("Yes", "No"))
 		if(prompt != "Yes")
 			return
 
@@ -2037,7 +2037,7 @@
 		var/mob/living/carbon/human/speaker = locate(href_list["AresReply"])
 
 		if(!istype(speaker))
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
+			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human.")
 			return FALSE
 
 		if((!GLOB.ares_link.interface) || (GLOB.ares_link.interface.inoperable()))
@@ -2059,7 +2059,7 @@
 		var/mob/living/carbon/human/speaker = locate(href_list["AresMark"])
 
 		if(!istype(speaker))
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
+			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human.")
 			return FALSE
 
 		if((!GLOB.ares_link.interface) || (GLOB.ares_link.interface.inoperable()))
@@ -2111,7 +2111,7 @@
 			dat += "<td width='20%'><a href='byond://?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=[job.title];jobban4=\ref[M]'>[replacetext(job.title, " ", "&nbsp")]</a></td>"
 			counter++
 
-		if(counter >= 5) //So things dont get squiiiiished!
+		if(counter >= 5) //So things don't get squiiiiished!
 			dat += "</tr><tr>"
 			counter = 0
 	dat += "</tr></table>"

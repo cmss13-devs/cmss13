@@ -1,7 +1,7 @@
 /client/var/inquisitive_ghost = 1
 /mob/dead/observer/verb/toggle_inquisition() // warning: unexpected inquisition
 	set name = "Toggle Inquisitiveness"
-	set desc = "Sets whether your ghost examines everything on click by default"
+	set desc = "Sets whether your ghost examines everything on click by default."
 	set category = "Ghost.Settings"
 	if(!client)
 		return
@@ -10,6 +10,14 @@
 		to_chat(src, SPAN_NOTICE(" You will now examine everything you click on."))
 	else
 		to_chat(src, SPAN_NOTICE(" You will no longer examine things you click on."))
+
+/mob/dead/observer/do_click(atom/A, location, params)
+	. = ..()
+	if(check_click_intercept(params, A))
+		return
+
+	if(SEND_SIGNAL(src, COMSIG_OBSERVER_CLICKON, A, params) & COMSIG_MOB_CLICK_CANCELED)
+		return
 
 /mob/dead/observer/click(atom/target, list/mods)
 	if(..())
@@ -22,62 +30,74 @@
 	if(mods[CTRL_CLICK])
 		if(target == src)
 			if(!can_reenter_corpse || !mind || !mind.current)
-				return
-			if(alert(src, "Are you sure you want to re-enter your corpse?", "Confirm", "Yes", "No") == "Yes")
+				return FALSE
+			if(tgui_alert(src, "Are you sure you want to re-enter your corpse?", "Confirm", list("Yes", "No")) == "Yes")
 				reenter_corpse()
+			return TRUE
+
+		if(isxeno(target))
+			if(isfacehugger(target) || islesserdrone(target))
+				do_observe(target) // Can't offer takeover for lessers or facehuggers
 				return TRUE
+
+			//if it's a xeno and all checks are alright, we are gonna try to take their body
+			if(!SSticker.mode.check_xeno_late_join(src))
+				do_observe(target)
+				return TRUE
+
+			var/mob/living/carbon/xenomorph/xeno = target
+			var/dead_or_ignored = xeno.stat == DEAD || should_block_game_interaction(xeno)
+			if(dead_or_ignored || xeno.aghosted)
+				if(dead_or_ignored)
+					to_chat(src, SPAN_WARNING("You cannot join as [xeno]."))
+				do_observe(xeno)
+				return TRUE
+
+			if(xeno.health <= 0)
+				to_chat(src, SPAN_WARNING("You cannot join if the xenomorph is in critical condition or unconscious."))
+				do_observe(xeno)
+				return TRUE
+
+			var/required_leave_time = XENO_LEAVE_TIMER
+			var/required_dead_time = XENO_JOIN_DEAD_TIME
+			if(islarva(xeno))
+				required_leave_time = XENO_LEAVE_TIMER_LARVA
+				required_dead_time = XENO_JOIN_DEAD_LARVA_TIME
+
+			if(xeno.away_timer < required_leave_time)
+				var/to_wait = required_leave_time - xeno.away_timer
+				if(to_wait < 30) // don't spam for clearly non-AFK xenos
+					to_chat(src, SPAN_WARNING("That player hasn't been away long enough. Please wait [to_wait] second\s longer."))
+				do_observe(target)
+				return TRUE
+
+			if(!SSticker.mode.xeno_bypass_timer)
+				var/deathtime = world.time - timeofdeath
+				if(deathtime < required_dead_time && !bypass_time_of_death_checks)
+					to_chat(src, SPAN_WARNING("You have been dead for [DisplayTimeText(deathtime)]."))
+					to_chat(src, SPAN_WARNING("You must wait at least [required_dead_time / 600] minute\s before rejoining the game!"))
+					do_observe(target)
+					return TRUE
+
+			if(xeno.hive)
+				for(var/mob_name in xeno.hive.banished_ckeys)
+					if(xeno.hive.banished_ckeys[mob_name] == ckey)
+						to_chat(src, SPAN_WARNING("You are banished from the [xeno.hive], you may not rejoin unless the Queen re-admits you or dies."))
+						do_observe(target)
+						return TRUE
+
+			if(tgui_alert(src, "Are you sure you want to transfer yourself into [xeno]?", "Confirm Transfer", list("Yes", "No")) != "Yes")
+				do_observe(target)
+				return TRUE
+
+			if(QDELETED(xeno) || xeno.away_timer < required_leave_time || xeno.stat == DEAD || !(xeno in GLOB.living_xeno_list)) // Do it again, just in case
+				to_chat(src, SPAN_WARNING("That xenomorph can no longer be controlled. Please try another."))
+				return TRUE
+
+			SSticker.mode.transfer_xeno(src, xeno)
+			return TRUE
 
 		if(ismob(target) || isVehicle(target))
-			if(isxeno(target) && SSticker.mode.check_xeno_late_join(src)) //if it's a xeno and all checks are alright, we are gonna try to take their body
-				var/mob/living/carbon/xenomorph/xeno = target
-				if(xeno.stat == DEAD || should_block_game_interaction(xeno) || xeno.aghosted)
-					to_chat(src, SPAN_WARNING("You cannot join as [xeno]."))
-					do_observe(xeno)
-					return FALSE
-
-				if(xeno.health <= 0)
-					to_chat(src, SPAN_WARNING("You cannot join if the xenomorph is in critical condition or unconscious."))
-					do_observe(xeno)
-					return FALSE
-
-				var/required_leave_time = XENO_LEAVE_TIMER
-				var/required_dead_time = XENO_JOIN_DEAD_TIME
-				if(islarva(xeno))
-					required_leave_time = XENO_LEAVE_TIMER_LARVA
-					required_dead_time = XENO_JOIN_DEAD_LARVA_TIME
-
-				if(xeno.away_timer < required_leave_time)
-					var/to_wait = required_leave_time - xeno.away_timer
-					if(to_wait > 60 SECONDS) // don't spam for clearly non-AFK xenos
-						to_chat(src, SPAN_WARNING("That player hasn't been away long enough. Please wait [to_wait] second\s longer."))
-					do_observe(target)
-					return FALSE
-
-				if(!SSticker.mode.xeno_bypass_timer)
-					var/deathtime = world.time - timeofdeath
-					if(deathtime < required_dead_time && !bypass_time_of_death_checks)
-						to_chat(src, SPAN_WARNING("You have been dead for [DisplayTimeText(deathtime)]."))
-						to_chat(src, SPAN_WARNING("You must wait at least [required_dead_time / 600] minute\s before rejoining the game!"))
-						do_observe(target)
-						return FALSE
-
-				if(xeno.hive)
-					for(var/mob_name in xeno.hive.banished_ckeys)
-						if(xeno.hive.banished_ckeys[mob_name] == ckey)
-							to_chat(src, SPAN_WARNING("You are banished from the [xeno.hive], you may not rejoin unless the Queen re-admits you or dies."))
-							do_observe(target)
-							return FALSE
-
-				if(tgui_alert(src, "Are you sure you want to transfer yourself into [xeno]?", "Confirm Transfer", list("Yes", "No")) != "Yes")
-					return FALSE
-
-				if(xeno.away_timer < required_leave_time || xeno.stat == DEAD || !(xeno in GLOB.living_xeno_list)) // Do it again, just in case
-					to_chat(src, SPAN_WARNING("That xenomorph can no longer be controlled. Please try another."))
-					return FALSE
-
-				SSticker.mode.transfer_xeno(src, xeno)
-				return TRUE
-
 			do_observe(target)
 			return TRUE
 

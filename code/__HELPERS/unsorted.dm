@@ -220,8 +220,6 @@
 			continue
 		A = obstacle
 		blocking_dir |= A.BlockedPassDirs(mover, fdir)
-		if((fd1 && blocking_dir == fd1) || (fd2 && blocking_dir == fd2))
-			return A
 		if((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
 			return A
 
@@ -585,7 +583,7 @@
 	return toReturn
 
 //Step-towards method of determining whether one atom can see another. Similar to viewers()
-/proc/can_see(atom/source, atom/target, length=5) // I couldnt be arsed to do actual raycasting :I This is horribly inaccurate.
+/proc/can_see(atom/source, atom/target, length=5) // I couldn't be arsed to do actual raycasting :I This is horribly inaccurate.
 	var/turf/current = get_turf(source)
 	var/turf/target_turf = get_turf(target)
 	var/steps = 0
@@ -1375,7 +1373,7 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
 			switch(CONFIG_GET(number/explosive_antigrief))
 				if(ANTIGRIEF_DISABLED)
 					return FALSE
-				if(ANTIGRIEF_NEW_PLAYERS) //if they have less than 10 hours, dont let them prime nades
+				if(ANTIGRIEF_NEW_PLAYERS) //if they have less than 10 hours, don't let them prime nades
 					if(user.client && user.client.get_total_human_playtime() < JOB_PLAYTIME_TIER_1)
 						return TRUE
 				else //ANTIGRIEF_ENABLED
@@ -1512,7 +1510,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 			var/mob/living/carbon/human/H = user
 			if(H.selected_ability)
 				return FALSE
-	if(user.client.eye == user && !user.is_mob_incapacitated(TRUE))
+	if(user.client.get_eye() == user && !user.is_mob_incapacitated(TRUE))
 		user.face_atom(src)
 	return TRUE
 
@@ -1649,7 +1647,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 
 //Vars that will not be copied when using /DuplicateObject
 GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
-	"tag", "datum_components", "area", "type", "loc", "locs", "vars", "parent", "parent_type", "verbs", "ckey", "key",
+	"tag", "datum_components", "area", "type", "loc", "pixloc", "locs", "vars", "parent", "parent_type", "verbs", "ckey", "key",
 	"power_supply", "contents", "reagents", "stat", "x", "y", "z", "group", "atmos_adjacent_turfs", "comp_lookup",
 	"client_mobs_in_contents", "bodyparts", "internal_organs", "hand_bodyparts", "overlays_standing", "hud_list",
 	"actions", "AIStatus", "appearance", "managed_overlays", "managed_vis_overlays", "computer_id", "lastKnownIP", "implants",
@@ -1688,24 +1686,29 @@ GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
 	var/list/mobs = sortmobs()
 	var/list/namecounts = list()
 	var/list/pois = list()
-	for(var/mob/M as anything in mobs)
-		if(skip_mindless && (!M.mind && !M.ckey))
+	for(var/mob/current as anything in mobs)
+		if(skip_mindless && (!current.mind && !current.ckey))
 			continue
-		if(M.client?.admin_holder)
-			if(M.client.admin_holder.fakekey || M.client.admin_holder.invisimined) //stealthmins
+		if(current.client?.admin_holder)
+			if(current.client.admin_holder.fakekey || current.client.admin_holder.invisimined) //stealthmins
 				continue
-		var/name = avoid_assoc_duplicate_keys(M.name, namecounts)
+		var/name = avoid_assoc_duplicate_keys(current.name ? current.name : "Unknown", namecounts)
 
-		if(M.real_name && M.real_name != M.name)
-			name += " \[[M.real_name]\]"
-		if(M.stat == DEAD && specify_dead_role)
-			if(isobserver(M))
-				name += " \[ghost\]"
-			else
-				name += " \[dead\]"
-		pois[name] = M
+		if(current.real_name && current.real_name != current.name)
+			name += " \[[current.real_name]\]"
+		if(current.stat == DEAD)
+			var/isobserver = isobserver(current)
+			if(isobserver && current.mind?.original?.aghosted)
+				continue
+			if(specify_dead_role)
+				if(isobserver)
+					name += " \[ghost\]"
+				else
+					name += " \[dead\]"
+		pois[name] = current
 
-	pois.Add(get_multi_vehicles())
+	if(!mobs_only)
+		pois.Add(get_multi_vehicles())
 
 	return pois
 
@@ -1773,3 +1776,12 @@ GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
 		return TRUE
 
 	return FALSE
+
+///Converts a screen loc param to a x,y coordinate pixel on the screen
+/proc/params2screenpixel(scr_loc)
+	var/list/x_and_y = splittext(scr_loc, ",")
+	var/list/x_dirty = splittext(x_and_y[1], ":")
+	var/list/y_dirty = splittext(x_and_y[2], ":")
+	var/x = (text2num(x_dirty[1])-1)*32 + text2num(x_dirty[2])
+	var/y = (text2num(y_dirty[1])-1)*32 + text2num(y_dirty[2])
+	return list(x, y)

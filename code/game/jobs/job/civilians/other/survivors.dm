@@ -76,7 +76,7 @@ GLOBAL_LIST_EMPTY(spawned_survivors)
 	if(picked_spawner.roundstart_damage_max > 0)
 		if(istype(picked_spawner) && picked_spawner.roundstart_damage_max > 0)
 			for(var/i in 0 to picked_spawner.roundstart_damage_times)
-			H.take_limb_damage(rand(picked_spawner.roundstart_damage_min, picked_spawner.roundstart_damage_max), 0)
+				H.take_limb_damage(rand(picked_spawner.roundstart_damage_min, picked_spawner.roundstart_damage_max), 0)
 
 	H.name = H.get_visible_name()
 
@@ -145,7 +145,7 @@ GLOBAL_LIST_EMPTY(spawned_survivors)
 										)
 										*/
 
-	var/random_name = pick(random_name(FEMALE), random_name(MALE))
+	var/random_name = random_name(pick(FEMALE, MALE))
 	var/temp_story = "<b>Your story thus far</b>: " + replacetext(pick(survivor_story), "{name}", "[random_name]")
 	to_chat(H, temp_story)
 	H.mind.memory += temp_story

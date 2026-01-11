@@ -39,7 +39,7 @@
 	var/list/mutable_appearance/shadows
 	var/times_calculated = 0
 
-	//Please dont change these
+	//Please don't change these
 	var/calculated_position_x
 	var/calculated_position_y
 
@@ -91,7 +91,7 @@
 	// - Center the overlay image
 	// - Ok so apparently translate is affected by the scale we already did huh.
 	// ^ Future me here, its because it works as translate then scale since its backwards.
-	// ^ ^ Future future me here, it totally shouldnt since the translation component of a matrix is independent to the scale component.
+	// ^ ^ Future future me here, it totally shouldn't since the translation component of a matrix is independent to the scale component.
 	new_size_matrix.Translate(-128 + 16)
 	//Adjust for pixel offsets
 	var/invert_offsets = attached_atom.dir & (NORTH | EAST)
@@ -113,7 +113,7 @@
 	rotated_matrix *= transform
 	//Overlays cannot be edited while applied, meaning their transform cannot be changed.
 	//Disconnect the shadows from the overlay, apply the transform and then reapply them as an overlay.
-	//Oh also since the matrix is really weird standard rotation matrices wont work here.
+	//Oh also since the matrix is really weird standard rotation matrices won't work here.
 	overlays.Cut()
 	//Disconnect from parent matrix, become a global position
 	for(var/mutable_appearance/shadow as anything in shadows)	//Mutable appearances are children of icon

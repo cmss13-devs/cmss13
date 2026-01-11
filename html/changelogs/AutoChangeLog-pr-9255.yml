@@ -1,6 +1,0 @@
-author: "BertStein"
-delete-after: True
-changes:
-  - rscadd: "Added a preset system for ChemMaster."
-  - ui: "Added a \"Select All/Deselect All\" button for ChemMaster."
-  - bugfix: "Fixed delay between selecting a pill bottle in ChemMaster and the UI responding."

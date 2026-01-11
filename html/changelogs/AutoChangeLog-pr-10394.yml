@@ -1,4 +1,0 @@
-author: "Sergeys"
-delete-after: True
-changes:
-  - bugfix: "The analyzer no longer forgets about surgery in the head."

@@ -1,5 +1,5 @@
 ///*****************************LV-522 Force Recon Survivors*******************************************************/
-//Nanu told me to put them here so they dont clutter up survivors.dm
+//Nanu told me to put them here so they don't clutter up survivors.dm
 /datum/equipment_preset/survivor/forecon
 	paygrades = list(PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/dogtag
@@ -253,7 +253,7 @@
 	idtype = /obj/item/card/id/gold
 	role_comm_title = "FORECON CO"
 	minimap_icon = "co"
-	minimap_background = "background_command"
+	minimap_background = "background_forecon"
 
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer)
@@ -275,9 +275,13 @@
 				sidearm = /obj/item/weapon/gun/revolver/mateba/cmateba
 				sidearmbelt = /obj/item/storage/belt/gun/mateba/cmateba
 				sidearmammo = /obj/item/ammo_magazine/revolver/mateba
-			if(CO_GUN_MATEBA_COUNCIL)
-				sidearm = /obj/item/weapon/gun/revolver/mateba/cmateba
-				sidearmbelt = /obj/item/storage/belt/gun/mateba/cmateba
+			if(CO_GUN_MATEBA_CLASSIC)
+				sidearm = /obj/item/weapon/gun/revolver/mateba/impact
+				sidearmbelt = /obj/item/storage/belt/gun/mateba
+				sidearmammo = /obj/item/ammo_magazine/revolver/mateba
+			if(CO_GUN_2006M)
+				sidearm = /obj/item/weapon/gun/revolver/mateba/mtr6m
+				sidearmbelt = /obj/item/storage/belt/gun/mateba/mtr6m
 				sidearmammo = /obj/item/ammo_magazine/revolver/mateba
 			if(CO_GUN_DEAGLE)
 				sidearm = /obj/item/weapon/gun/pistol/heavy/co
@@ -287,6 +291,31 @@
 				sidearm = /obj/item/weapon/gun/pistol/m1911/custom
 				sidearmbelt = /obj/item/storage/belt/gun/m4a3
 				sidearmammo = /obj/item/ammo_magazine/pistol/m1911
+			//Council variants
+			if(CO_GUN_MATEBA_COUNCIL)
+				sidearm = /obj/item/weapon/gun/revolver/mateba/silver
+				sidearmbelt = /obj/item/storage/belt/gun/mateba/council
+				sidearmammo = /obj/item/ammo_magazine/revolver/mateba
+			if(CO_GUN_MATEBA_COUNCIL_GOLDEN)
+				sidearm = /obj/item/weapon/gun/revolver/mateba/golden
+				sidearmbelt = /obj/item/storage/belt/gun/mateba/council
+				sidearmammo = /obj/item/ammo_magazine/revolver/mateba
+			if(CO_GUN_2006M_COUNCIL)
+				sidearm = /obj/item/weapon/gun/revolver/mateba/mtr6m/golden
+				sidearmbelt = /obj/item/storage/belt/gun/mateba/council
+				sidearmammo = /obj/item/ammo_magazine/revolver/mateba
+			if(CO_GUN_2006MB_COUNCIL)
+				sidearm = /obj/item/weapon/gun/revolver/mateba/mtr6m/golden/black_handle
+				sidearmbelt = /obj/item/storage/belt/gun/mateba/council
+				sidearmammo = /obj/item/ammo_magazine/revolver/mateba
+			if(CO_GUN_2006MS_COUNCIL)
+				sidearm = /obj/item/weapon/gun/revolver/mateba/mtr6m/silver
+				sidearmbelt = /obj/item/storage/belt/gun/mateba/council
+				sidearmammo = /obj/item/ammo_magazine/revolver/mateba
+			if(CO_GUN_DEAGLE_COUNCIL)
+				sidearm = /obj/item/weapon/gun/pistol/heavy/co/gold
+				sidearmbelt = /obj/item/storage/belt/gun/m4a3/black
+				sidearmammo = /obj/item/ammo_magazine/pistol/heavy/super
 
 	var/obj/item/clothing/under/marine/reconnaissance/uniform = new()
 	var/obj/item/clothing/accessory/storage/droppouch/pouch = new()

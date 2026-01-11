@@ -1,9 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - balance: "Ovipositor is now required 3 minutes into a round instead of 5 minutes"
-  - balance: "Queen temporary maturity now ends upon entry into a tunnel"
-  - balance: "Queen temporary maturity now only extends if damage taken is 5 or more and is not considered environmental (e.g. dmg from electrocution, weather, water, turrets, map deployed mine explosions, animals, barbed wire)"
-  - ui: "Added evolution progress requirement to hive status (much like the stat panel to indicate when a queen or ovipositor is needed)"
-  - code_imp: "Added more autodoc comments and reworked several timer based defines for xeno hives"
-  - code_imp: "Mines now set weak_cause in cause_data (though often not applicable because they qdel)"

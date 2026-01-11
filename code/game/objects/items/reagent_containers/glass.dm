@@ -13,7 +13,7 @@
 	icon_state = null
 	item_state = null
 	amount_per_transfer_from_this = 10
-	possible_transfer_amounts = list(5,10,15,25,30,60)
+	possible_transfer_amounts = list(5,10,15,20,25,30,40,50,60)
 	volume = 60
 	flags_atom = FPRINT|OPENCONTAINER
 	transparent = TRUE
@@ -40,7 +40,7 @@
 		/obj/item/storage/secure/safe,
 		/obj/structure/machinery/iv_drip,
 		/obj/structure/machinery/disposal,
-		/mob/living/simple_animal/cow,
+		/mob/living/simple_animal/big/cow,
 		/mob/living/simple_animal/hostile/retaliate/goat,
 		/obj/structure/machinery/medical_pod/sleeper,
 		/obj/structure/machinery/smartfridge/,
@@ -347,9 +347,9 @@
 	matter = list("glass" = 5000)
 	volume = 120
 	amount_per_transfer_from_this = 10
-	possible_transfer_amounts = list(5,10,15,25,30,60,120)
+	possible_transfer_amounts = list(5,10,15,20,25,30,40,60,80,120)
 
-/obj/item/reagent_container/glass/beaker/silver
+/obj/item/reagent_container/glass/beaker/catalyst/silver
 	name = "large silver beaker"
 	desc = "A large silver beaker. Can hold up to 240 units. The beaker itself acts as a silver catalyst."
 	icon_state = "beakersilver"
@@ -357,8 +357,31 @@
 	volume = 240
 	matter = list("silver" = 5000)
 	amount_per_transfer_from_this = 10
-	possible_transfer_amounts = list(5,10,15,25,30,60,120,240)
+	possible_transfer_amounts = list(5,10,15,20,30,40,60,80,120,240)
 	pixel_y = 5
+
+/obj/item/reagent_container/glass/beaker/catalyst/update_icon()
+	overlays.Cut()
+
+	if(reagents && reagents.total_volume)
+		var/image/filling = image('icons/obj/items/reagentfillings.dmi', src, "beakerlarge-10") //If we make another type of large beaker that acts as a catalyst for reagents, it will always use the beakerlarge fill icon.
+
+		var/percent = floor((reagents.total_volume / volume) * 100)
+		switch(percent)
+			if(0)
+				filling.icon_state = null
+			if(1 to 20)
+				filling.icon_state = "beakerlarge-20"
+			if(21 to 40)
+				filling.icon_state = "beakerlarge-40"
+			if(41 to 60)
+				filling.icon_state = "beakerlarge-60"
+			if(61 to 80)
+				filling.icon_state = "beakerlarge-80"
+			if(81 to INFINITY)
+				filling.icon_state = "beakerlarge-100"
+		filling.color = mix_color_from_reagents(reagents.reagent_list)
+		overlays += filling
 
 /obj/item/reagent_container/glass/beaker/noreact
 	name = "cryostasis beaker"
@@ -367,18 +390,18 @@
 	matter = list("glass" = 500)
 	volume = 60
 	amount_per_transfer_from_this = 10
+
 	flags_atom = FPRINT|OPENCONTAINER|NOREACT
 
 /obj/item/reagent_container/glass/beaker/bluespace
 	name = "high-capacity beaker"
-	desc = "A beaker with an enlarged holding capacity, made with blue-tinted plexiglass in order to withstand greater pressure. Can hold up to 300 units."
+	desc = "A beaker with an enlarged holding capacity, made with blue-tinted plexiglass in order to withstand greater pressure. Can hold up to 500 units."
 	icon_state = "beakerbluespace"
 	item_state = "beakerbluespace"
-	matter = list("glass" = 10000)
-	volume = 300
+	matter = list("glass" = 30000)
+	volume = 500
 	amount_per_transfer_from_this = 10
-	possible_transfer_amounts = list(5,10,15,20,25,30,40,60,80,120,300)
-
+	possible_transfer_amounts = list(5,10,15,20,30,40,60,120,240,500)
 
 /obj/item/reagent_container/glass/beaker/vial
 	name = "vial"
@@ -388,7 +411,7 @@
 	volume = 30
 	amount_per_transfer_from_this = 10
 	matter = list()
-	possible_transfer_amounts = list(5,10,15,25,30)
+	possible_transfer_amounts = list(5,10,15,20,25,30)
 	flags_atom = FPRINT|OPENCONTAINER
 	ground_offset_x = 9
 	ground_offset_y = 8
@@ -439,6 +462,14 @@
 /obj/item/reagent_container/glass/beaker/cryoxadone/Initialize()
 	. = ..()
 	reagents.add_reagent("cryoxadone", 30)
+	update_icon()
+
+/obj/item/reagent_container/glass/beaker/phoron
+	name = "phoron beaker"
+
+/obj/item/reagent_container/glass/beaker/phoron/Initialize()
+	. = ..()
+	reagents.add_reagent("phoron", 30)
 	update_icon()
 
 /obj/item/reagent_container/glass/beaker/cryopredmix
@@ -570,22 +601,36 @@
 	. = ..()
 	update_icon()
 
-/obj/item/reagent_container/glass/pressurized_canister/attackby(obj/item/I, mob/user)
-	return
+/obj/item/reagent_container/glass/pressurized_canister/on_reagent_change()
+	update_icon()
 
 /obj/item/reagent_container/glass/pressurized_canister/afterattack(obj/target, mob/user, flag)
 	if(!istype(target, /obj/structure/reagent_dispensers))
 		return
 	. = ..()
 
-/obj/item/reagent_container/glass/pressurized_canister/on_reagent_change()
-	update_icon()
+/obj/item/reagent_container/glass/pressurized_canister/update_icon() 	 //Canister now has a clear indicator on what's inside and how much.
+	overlays.Cut()
 
-/obj/item/reagent_container/glass/pressurized_canister/update_icon()
-	color = COLOR_WHITE
-	if(reagents)
-		color = mix_color_from_reagents(reagents.reagent_list)
+	if(reagents && reagents.total_volume)
+		var/image/filling
+		var/percent = floor((reagents.total_volume / volume) * 100)
+		switch(percent)
+			if(1 to 25)
+				filling = image('icons/obj/items/reagentfillings.dmi', src, "[icon_state]-25")
+			if(26 to 50)
+				filling = image('icons/obj/items/reagentfillings.dmi', src, "[icon_state]-50")
+			if(51 to 75)
+				filling = image('icons/obj/items/reagentfillings.dmi', src, "[icon_state]-75")
+			if(76 to INFINITY)
+				filling = image('icons/obj/items/reagentfillings.dmi', src, "[icon_state]-100")
+			else
+				return ..()
+
+		filling.color = mix_color_from_reagents(reagents.reagent_list)
+		overlays += filling
 	..()
+
 
 /obj/item/reagent_container/glass/bucket
 	desc = "It's a bucket. Holds 120 units."
@@ -600,7 +645,7 @@
 	matter = list("metal" = 2000)
 	w_class = SIZE_MEDIUM
 	amount_per_transfer_from_this = 20
-	possible_transfer_amounts = list(10,20,30,60,120)
+	possible_transfer_amounts = list(5,10,15,20,25,30,40,60,80,120)
 	volume = 120
 	flags_atom = FPRINT|OPENCONTAINER
 
@@ -663,23 +708,25 @@
 
 /obj/item/reagent_container/glass/bucket/mopbucket
 	name = "mop bucket"
-	desc = "A larger bucket, typically used with a mop. Holds 240 units"
+	desc = "A larger bucket, typically used with a mop. Holds 240 units."
 	icon_state = "mopbucket"
 	item_state = "mopbucket"
 	matter = list("metal" = 4000)
 	w_class = SIZE_LARGE
 	amount_per_transfer_from_this = 20
-	possible_transfer_amounts = list(10,20,30,60,120,240)
+	possible_transfer_amounts = list(5,10,15,20,30,40,60,80,120,240)
 	volume = 240
 	flags_atom = FPRINT|OPENCONTAINER
 
 /obj/item/reagent_container/glass/bucket/janibucket
 	name = "janitorial bucket"
-	desc = "It's a large bucket that fits in a janitorial cart. Holds 500 units."
+	desc = "It's a large bucket that fits in a janitorial cart. Holds 300 units."
 	icon_state = "janibucket"
 	item_state = "janibucket"
 	matter = list("metal" = 8000)
-	volume = 500
+	volume = 300
+	possible_transfer_amounts = list(5,10,15,20,30,40,60,120,240,300)
+	w_class = SIZE_LARGE
 
 
 /obj/item/reagent_container/glass/rag
@@ -698,7 +745,7 @@
 
 /obj/item/reagent_container/glass/rag/attack(atom/target, mob/user)
 	if(ismob(target) && target.reagents && reagents.total_volume)
-		user.visible_message(SPAN_DANGER("\The [target] has been smothered with \the [src] by \the [user]!"), SPAN_DANGER("You smother \the [target] with \the [src]!"), "You hear some struggling and muffled cries of surprise")
+		user.visible_message(SPAN_DANGER("\The [target] has been smothered with \the [src] by \the [user]!"), SPAN_DANGER("You smother \the [target] with \the [src]!"), "You hear some struggling and muffled cries of surprise.")
 		src.reagents.reaction(target, TOUCH)
 		spawn(5) src.reagents.clear_reagents()
 		return

@@ -307,6 +307,8 @@
 				sound = pick('sound/bullets/spear_ricochet1.ogg','sound/bullets/spear_ricochet2.ogg')
 			if("gun_silenced")
 				sound = pick('sound/weapons/gun_silenced_shot1.ogg','sound/weapons/gun_silenced_shot2.ogg')
+			if("gun_silenced_alt")
+				sound = pick('sound/weapons/gun_silenced_alt_shot1.ogg','sound/weapons/gun_silenced_alt_shot2.ogg','sound/weapons/gun_silenced_alt_shot3.ogg')
 			if("gun_pulse")
 				sound = pick('sound/weapons/gun_m41a_1.ogg','sound/weapons/gun_m41a_2.ogg','sound/weapons/gun_m41a_3.ogg','sound/weapons/gun_m41a_4.ogg','sound/weapons/gun_m41a_5.ogg','sound/weapons/gun_m41a_6.ogg')
 			if("gun_smartgun")
@@ -455,7 +457,7 @@
 
 /client/proc/generate_sound_queues()
 	set name = "Queue sounds"
-	set desc = "stress test this bich"
+	set desc = "Stress test this bich."
 	set category = "Debug"
 
 	var/ammount = tgui_input_number(usr, "How many sounds to queue?")
@@ -476,8 +478,8 @@
 
 /client/proc/sound_debug_query()
 	set name = "Dump Playing Client Sounds"
-	set desc = "dumps info about locally, playing sounds"
+	set desc = "Dumps info about locally, playing sounds."
 	set category = "Debug"
 
 	for(var/sound/soundin in SoundQuery())
-		UNLINT(to_chat(src, "channel#[soundin.channel]: [soundin.status] - [soundin.file] - len=[length(soundin)], wait=[soundin.wait], offset=[soundin.offset], repeat=[soundin.repeat]")) // unlint until spacemandmm suite-1.7
+		to_chat(src, "channel#[soundin.channel]: [soundin.status] - [soundin.file] - len=[length(soundin)], wait=[soundin.wait], offset=[soundin.offset], repeat=[soundin.repeat]")

@@ -15,15 +15,6 @@
 	var/mob/dead/observer/G = usr
 	G.follow()
 
-/atom/movable/screen/ghost/minimap
-	name = "Minimap"
-	icon_state = "minimap"
-
-/atom/movable/screen/ghost/minimap/Click()
-	var/mob/dead/observer/ghost = usr
-
-	ghost.minimap.action_activate()
-
 /atom/movable/screen/ghost/reenter_corpse
 	name = "Reenter corpse"
 	icon_state = "reenter_corpse"
@@ -68,29 +59,25 @@
 	using.screen_loc = ui_ghost_slot2
 	static_inventory += using
 
-	using = new /atom/movable/screen/ghost/minimap()
-	using.screen_loc = ui_ghost_slot3
-	static_inventory += using
-
 	// using = new /atom/movable/screen/ghost/follow_human()
 	// using.screen_loc = ui_ghost_slot3
 	// static_inventory += using
 
 	using = new /atom/movable/screen/ghost/reenter_corpse()
-	using.screen_loc = ui_ghost_slot4
+	using.screen_loc = ui_ghost_slot3
 	static_inventory += using
 
 	using = new /atom/movable/screen/ghost/toggle_huds()
-	using.screen_loc = ui_ghost_slot5
+	using.screen_loc = ui_ghost_slot4
 	static_inventory += using
 
 	// Using the same slot because they are two parts of the same slot
 	using = new /atom/movable/screen/move_up()
-	using.screen_loc = ui_ghost_slot6
+	using.screen_loc = ui_ghost_slot5
 	static_inventory += using
 
 	using = new /atom/movable/screen/move_down()
-	using.screen_loc = ui_ghost_slot6
+	using.screen_loc = ui_ghost_slot5
 	static_inventory += using
 
 /datum/hud/ghost/show_hud(version = 0, mob/viewmob)

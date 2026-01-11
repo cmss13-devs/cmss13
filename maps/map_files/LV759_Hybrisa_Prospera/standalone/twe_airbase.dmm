@@ -276,7 +276,7 @@
 /area/lv759/indoors/twe_souter_outpost/twe_gunship)
 "bT" = (
 /obj/structure/machinery/power/apc/no_power/west,
-/obj/item/ammo_magazine/smg/p90/twe,
+/obj/item/ammo_magazine/smg/p90/ap,
 /turf/open/floor/strata/red3/west,
 /area/lv759/indoors/twe_souter_outpost/armoury)
 "bU" = (
@@ -862,18 +862,18 @@
 /turf/open/floor/hybrisa/metal/grated/east,
 /area/lv759/outdoors/colony_streets/central_streets)
 "gv" = (
-/obj/item/ammo_magazine/smg/p90/twe,
-/obj/item/ammo_magazine/smg/p90/twe,
-/obj/item/ammo_magazine/smg/p90/twe,
-/obj/item/ammo_magazine/smg/p90/twe,
-/obj/item/ammo_magazine/smg/p90/twe,
+/obj/item/ammo_magazine/smg/p90/ap,
+/obj/item/ammo_magazine/smg/p90/ap,
+/obj/item/ammo_magazine/smg/p90/ap,
+/obj/item/ammo_magazine/smg/p90/ap,
+/obj/item/ammo_magazine/smg/p90/ap,
 /obj/item/weapon/gun/smg/p90/twe{
 	pixel_y = 4
 	},
-/obj/item/ammo_magazine/smg/p90/twe,
-/obj/item/ammo_magazine/smg/p90/twe,
-/obj/item/ammo_magazine/smg/p90/twe,
-/obj/item/ammo_magazine/smg/p90/twe,
+/obj/item/ammo_magazine/smg/p90/ap,
+/obj/item/ammo_magazine/smg/p90/ap,
+/obj/item/ammo_magazine/smg/p90/ap,
+/obj/item/ammo_magazine/smg/p90/ap,
 /obj/item/weapon/gun/smg/p90/twe{
 	pixel_y = -4
 	},
@@ -932,7 +932,7 @@
 	icon_state = "igniter0";
 	name = "floor panel"
 	},
-/obj/structure/reagent_dispensers/fueltank/spacecraft,
+/obj/structure/reagent_dispensers/tank/fuel/spacecraft,
 /turf/open/floor/shiva/radiator_tile2,
 /area/lv759/indoors/twe_souter_outpost/hangar)
 "he" = (
@@ -1257,9 +1257,9 @@
 "ki" = (
 /obj/structure/closet/secure_closet/security,
 /obj/item/weapon/gun/smg/p90/twe,
-/obj/item/ammo_magazine/smg/p90/twe,
-/obj/item/ammo_magazine/smg/p90/twe,
-/obj/item/ammo_magazine/smg/p90/twe,
+/obj/item/ammo_magazine/smg/p90/ap,
+/obj/item/ammo_magazine/smg/p90/ap,
+/obj/item/ammo_magazine/smg/p90/ap,
 /obj/effect/landmark/objective_landmark/close,
 /obj/structure/machinery/power/apc/no_power/east,
 /turf/open/floor/prison/red/southeast,
@@ -2922,7 +2922,7 @@
 	icon_state = "igniter0";
 	name = "floor panel"
 	},
-/obj/structure/reagent_dispensers/fueltank/spacecraft{
+/obj/structure/reagent_dispensers/tank/fuel/spacecraft{
 	layer = 3.1
 	},
 /turf/open/floor/shiva/radiator_tile2,
@@ -4018,7 +4018,7 @@
 /turf/open/floor/almayer/cargo,
 /area/lv759/indoors/twe_souter_outpost/hangar)
 "Rl" = (
-/obj/item/ammo_magazine/smg/p90/twe,
+/obj/item/ammo_magazine/smg/p90/ap,
 /turf/open/floor/almayer/cargo,
 /area/lv759/indoors/twe_souter_outpost/hangar)
 "Rq" = (

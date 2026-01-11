@@ -1,5 +1,0 @@
-author: "Ediblebomb"
-delete-after: True
-changes:
-  - rscadd: "Adds Non-Binary as gender option in character creation and random generation"
-  - ui: "Adds a body presentation button to the PredPicker:tm:"

@@ -128,7 +128,7 @@
 		to_chat(M, SPAN_NOTICE("You swallow a gulp of [src]."))
 		if(reagents.total_volume)
 			reagents.set_source_mob(user)
-			reagents.trans_to_ingest(M, gulp_size)
+			reagents.trans_to_ingest(M, gulp_size, method = INGESTION)
 
 		playsound(M.loc, consume_sound, 15, 1)
 		return 1
@@ -156,7 +156,7 @@
 
 		if(reagents.total_volume)
 			reagents.set_source_mob(user)
-			reagents.trans_to_ingest(M, gulp_size)
+			reagents.trans_to_ingest(M, gulp_size, method = INGESTION)
 
 		playsound(M.loc,'sound/items/drink.ogg', 15, 1)
 		return 1
@@ -198,7 +198,7 @@
 			to_chat(user, SPAN_DANGER("You can't add any more to [target]."))
 			return
 		var/trans = src.reagents.trans_to(target, amount_per_transfer_from_this)
-		to_chat(user, SPAN_NOTICE(" You transfer [trans] units of the contents to [target]."))
+		to_chat(user, SPAN_NOTICE("You transfer [trans] units of the contents to [target]."))
 
 	return ..()
 

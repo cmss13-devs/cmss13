@@ -51,8 +51,8 @@
 /datum/equipment_preset/synth/survivor
 	name = "Survivor - Synthetic - Classic Joe"
 	flags = EQUIPMENT_PRESET_EXTRA
-	faction = FACTION_SURVIVOR
-	faction_group = list(FACTION_SURVIVOR)
+	faction = FACTION_SYNTH_SURVIVOR
+	faction_group = list(FACTION_SURVIVOR, FACTION_SYNTH_SURVIVOR)
 	idtype = /obj/item/card/id/lanyard
 	assignment = JOB_SYNTH
 	job_title = JOB_SYNTH_SURVIVOR
@@ -98,7 +98,7 @@
 /datum/equipment_preset/synth/survivor/wy
 	flags = EQUIPMENT_PRESET_STUB
 	faction = FACTION_WY
-	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
+	faction_group = list(FACTION_WY, FACTION_SURVIVOR, FACTION_SYNTH_SURVIVOR)
 	minimap_icon = "wy_syn"
 	minimap_background = "background_goon"
 	origin_override = ORIGIN_WY
@@ -551,7 +551,7 @@
 	job_title = JOB_CMB_SYN
 	paygrades = list(PAY_SHORT_CMBS = JOB_PLAYTIME_TIER_0)
 	faction = FACTION_MARSHAL
-	faction_group = list(FACTION_MARSHAL, FACTION_MARINE, FACTION_SURVIVOR)
+	faction_group = list(FACTION_MARSHAL, FACTION_MARINE, FACTION_SURVIVOR, FACTION_SYNTH_SURVIVOR)
 	minimap_background = "background_cmb"
 	minimap_icon = "cmb_syn"
 	origin_override = ORIGIN_CMB

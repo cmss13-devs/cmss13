@@ -4,7 +4,7 @@
 	name = "Synsound Walkman"
 	desc = "A Synsound cassette player that first hit the market over 200 years ago. Crazy how these never went out of style."
 	icon = 'icons/obj/items/walkman.dmi'
-	icon_state = "walkman"
+	icon_state = "Walkman"
 	item_icons = list(
 		WEAR_L_EAR = 'icons/mob/humans/onmob/clothing/ears.dmi',
 		WEAR_R_EAR = 'icons/mob/humans/onmob/clothing/ears.dmi',
@@ -29,7 +29,7 @@
 
 /obj/item/device/walkman/Initialize()
 	. = ..()
-	design = rand(1, 5)
+	design = rand(1, 13)
 	update_icon()
 	AddElement(/datum/element/corp_label/synsound)
 
@@ -167,17 +167,28 @@
 	play()
 	to_chat(user,SPAN_INFO("You change the song."))
 
+	// this kinda sucks but i couldnt think of a better way
+	overlays -= "+Buttons_default"
+	overlays -= "+Play_or_pause"
+	overlays += "+Next_song"
+	sleep(0.7 SECONDS)
+	update_icon()
+
 
 /obj/item/device/walkman/update_icon()
 	..()
 	overlays.Cut()
 	if(design)
-		overlays += "+[design]"
+		overlays += "+Walkman_[design]"
 	if(tape)
 		if(!paused)
-			overlays += "+playing"
+			overlays += "+Playing"
+			overlays += "+Play_or_pause"
+		else
+			overlays += "+Inserted"
+			overlays += "+Buttons_default"
 	else
-		overlays += "+empty"
+		overlays += "+Buttons_default"
 
 	if(ishuman(loc))
 		var/mob/living/carbon/human/H = loc
@@ -255,6 +266,13 @@
 	update_song(current_song, current_listener, 0)
 	to_chat(user,SPAN_INFO("You restart the song."))
 
+	// this kinda sucks but i couldnt think of a better way
+	overlays -= "+Buttons_default"
+	overlays -= "+Play_or_pause"
+	overlays += "+Restart"
+	sleep(0.7 SECONDS)
+	update_icon()
+
 /obj/item/device/walkman/verb/restart_current_song()
 	set name = "Restart Song"
 	set category = "Object"
@@ -320,6 +338,63 @@
 		var/obj/item/device/walkman/WM = target
 		WM.restart_song(owner)
 
+/obj/item/device/walkman/white_band
+	name = "Synsound Walkman (White Band)"
+	desc = "A Synsound cassette player that first hit the market over 200 years ago. Crazy how these never went out of style. This one has a white band."
+
+/obj/item/device/walkman/white_band/Initialize()
+	. = ..()
+	name = "Synsound Walkman" // band color in the name was only for the vendor
+	design = rand(1, 14)
+	update_icon()
+
+/obj/item/device/walkman/white_band/update_icon()
+	overlays.Cut()
+	if(design)
+		overlays += "+Walkman_[design]"
+	if(tape)
+		if(!paused)
+			overlays += "+Playing"
+			overlays += "+Play_or_pause"
+		else
+			overlays += "+Inserted"
+			overlays += "+Buttons_default"
+	else
+		overlays += "+Buttons_default"
+	overlays += "+White_band"
+
+	if(ishuman(loc))
+		var/mob/living/carbon/human/H = loc
+		H.regenerate_icons()
+
+/obj/item/device/walkman/black_band
+	name = "Synsound Walkman (Black Band)"
+	desc = "A Synsound cassette player that first hit the market over 200 years ago. Crazy how these never went out of style. This one has a black band."
+
+/obj/item/device/walkman/black_band/Initialize()
+	. = ..()
+	name = "Synsound Walkman" // band color in the name was only for the vendor
+	design = rand(1, 13)
+	update_icon()
+
+/obj/item/device/walkman/black_band/update_icon()
+	overlays.Cut()
+	if(design)
+		overlays += "+Walkman_[design]"
+	if(tape)
+		if(!paused)
+			overlays += "+Playing"
+			overlays += "+Play_or_pause"
+		else
+			overlays += "+Inserted"
+			overlays += "+Buttons_default"
+	else
+		overlays += "+Buttons_default"
+	overlays += "+Black_band"
+
+	if(ishuman(loc))
+		var/mob/living/carbon/human/H = loc
+		H.regenerate_icons()
 /*
 	TAPES
 */

@@ -1966,6 +1966,9 @@
 	icon_state = "logo_c"
 	name = "\improper USCM Logo"
 
+/turf/open/floor/almayer/uscm/southface
+	dir = NORTH
+
 /turf/open/floor/almayer/uscm/directional
 	icon_state = "logo_directional"
 
@@ -1995,6 +1998,33 @@
 
 /turf/open/floor/almayer/uscm/directional/northwest
 	dir = NORTHWEST
+
+/turf/open/floor/almayer/uscm/south_face
+	icon_state = "logo_directional1"
+
+/turf/open/floor/almayer/uscm/south_face/north
+	dir = WEST
+
+/turf/open/floor/almayer/uscm/south_face/south
+	dir = EAST
+
+/turf/open/floor/almayer/uscm/south_face/east
+	dir = NORTH
+
+/turf/open/floor/almayer/uscm/south_face/west
+	dir = SOUTH
+
+/turf/open/floor/almayer/uscm/south_face/northwest
+	dir = SOUTHWEST
+
+/turf/open/floor/almayer/uscm/south_face/northeast
+	dir = NORTHWEST
+
+/turf/open/floor/almayer/uscm/south_face/southeast
+	dir = NORTHEAST
+
+/turf/open/floor/almayer/uscm/south_face/southwest
+	dir = SOUTHEAST
 
 /turf/open/floor/almayer/no_build
 	allow_construction = FALSE
@@ -2178,7 +2208,29 @@
 /turf/open/floor/almayer_hull/outerhull_dir/northwest
 	dir = NORTHWEST
 
+/turf/open/floor/almayer_hull/outerhull_dir_alt
+	icon_state = "outerhull_dir_alt"
 
+/turf/open/floor/almayer_hull/outerhull_dir_alt/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/almayer_hull/outerhull_dir_alt/north
+	dir = NORTH
+
+/turf/open/floor/almayer_hull/outerhull_dir_alt/east
+	dir = EAST
+
+/turf/open/floor/almayer_hull/outerhull_dir_alt/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/almayer_hull/outerhull_dir_alt/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/almayer_hull/outerhull_dir_alt/west
+	dir = WEST
+
+/turf/open/floor/almayer_hull/outerhull_dir_alt/northwest
+	dir = NORTHWEST
 
 //////////////////////////////////////////////////////////////////////
 

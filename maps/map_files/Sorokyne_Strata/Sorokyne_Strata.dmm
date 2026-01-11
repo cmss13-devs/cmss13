@@ -6,10 +6,7 @@
 /turf/open/floor/strata/orange_tile,
 /area/strata/interior/mining_outpost)
 "aab" = (
-/turf/closed/shuttle{
-	dir = 1;
-	icon_state = "pwall"
-	},
+/turf/closed/cordon,
 /area/space)
 "aac" = (
 /turf/closed/wall/strata_ice/jungle,

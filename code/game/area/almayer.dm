@@ -992,7 +992,7 @@
 
 //Admin Lower Level
 
-/area/almayer/underdeck/
+/area/almayer/underdeck
 	name = "USS Almayer - Under Deck"
 	allow_construction = FALSE
 	icon_state = "lowerhull"

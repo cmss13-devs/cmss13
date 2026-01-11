@@ -8,10 +8,8 @@
 	rechargeTime = SHUTTLE_RECHARGE
 	ignitionTime = 8 SECONDS
 	ignition_sound = 'sound/effects/escape_pod_warmup.ogg'
-	/// The % chance of the escape pod crashing into the groundmap before lifeboats leaving
-	var/early_crash_land_chance = 75
 	/// The % chance of the escape pod crashing into the groundmap
-	var/crash_land_chance = 0
+	var/crash_land_chance = 75
 	/// How many people can be in the escape pod before it crashes
 	var/max_capacity = 3
 
@@ -105,7 +103,10 @@
 /obj/docking_port/mobile/crashable/escape_shuttle/crash_check()
 	. = ..()
 
-	if(prob((SShijack.hijack_status >= HIJACK_OBJECTIVES_COMPLETE ? crash_land_chance : early_crash_land_chance)))
+	if(SShijack.hijack_status >= HIJACK_OBJECTIVES_FTL_CRASH)
+		return FALSE
+
+	if(prob(crash_land_chance))
 		return TRUE
 
 /obj/docking_port/mobile/crashable/escape_shuttle/open_doors()
@@ -126,7 +127,6 @@
 	id = ESCAPE_SHUTTLE_EAST_CL
 	width = 4
 	height = 5
-	early_crash_land_chance = 0
 	crash_land_chance = 0
 
 /obj/docking_port/mobile/crashable/escape_shuttle/w

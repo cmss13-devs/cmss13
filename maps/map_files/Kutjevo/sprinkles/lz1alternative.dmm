@@ -976,10 +976,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/exterior/lz_dunes)
 "Fx" = (
-/turf/closed/shuttle{
-	dir = 1;
-	icon_state = "pwall"
-	},
+/turf/closed/cordon,
 /area/kutjevo/interior/oob)
 "FJ" = (
 /obj/structure/machinery/light{

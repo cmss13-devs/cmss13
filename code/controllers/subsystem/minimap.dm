@@ -1596,6 +1596,8 @@ SUBSYSTEM_DEF(minimaps)
 			return MINIMAP_FLAG_XENO_HUNTED
 		if(XENO_HIVE_RENEGADE)
 			return MINIMAP_FLAG_XENO_RENEGADE
+		if(XENO_HIVE_PATHOGEN)
+			return MINIMAP_FLAG_XENO_PATHOGEN
 	return 0
 
 /// Returns the highest world.time for all minimap_flags passed

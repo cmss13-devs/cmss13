@@ -371,7 +371,7 @@
 		var/turf/target_turf = get_turf(A)
 		if(isliving(A))
 			var/mob/living/M = A
-			if(M.stat & DEAD || isbrain(M))
+			if((M.stat & DEAD) || isbrain(M) || (M.status_flags & INCORPOREAL))
 				if(A == target)
 					target = null
 				targets.Remove(A)

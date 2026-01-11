@@ -49,6 +49,10 @@ GLOBAL_LIST_EMPTY(cached_maps)
 		var/icon/image = icon('icons/UI_icons/map_blips.dmi', icon_state = iconstate)
 		icons[iconstate] += image
 
+	for(var/iconstate in icon_states('icons/mob/pathogen/neo_blips.dmi'))
+		var/icon/image = icon('icons/mob/pathogen/neo_blips.dmi', icon_state = iconstate)
+		icons[iconstate] += image
+
 	var/list/base64_icons = list()
 	for(var/iconstate in icons)
 		base64_icons[iconstate] = icon2base64(icons[iconstate])
@@ -106,6 +110,10 @@ GLOBAL_LIST_INIT(resin_build_order_ovipositor, list(
 	/datum/resin_construction/resin_obj/sticky_resin,
 	/datum/resin_construction/resin_obj/fast_resin,
 	/datum/resin_construction/resin_obj/resin_spike
+))
+
+GLOBAL_LIST_INIT(resin_build_order_pathogen_overmind, list(
+	/datum/resin_construction/resin_obj/popper_cocoon
 ))
 
 //Xeno Leader Mark Meanings
@@ -225,7 +233,8 @@ GLOBAL_LIST_INIT_TYPED(hive_datum, /datum/hive_status, list(
 	XENO_HIVE_YAUTJA = new /datum/hive_status/yautja(),
 	XENO_HIVE_HUNTED = new /datum/hive_status/hunted(),
 	XENO_HIVE_RENEGADE = new /datum/hive_status/corrupted/renegade(),
-	XENO_HIVE_TUTORIAL = new /datum/hive_status/tutorial()
+	XENO_HIVE_TUTORIAL = new /datum/hive_status/tutorial(),
+	XENO_HIVE_PATHOGEN = new /datum/hive_status/pathogen(),
 ))
 
 GLOBAL_VAR_INIT(king_acquisition_time, 1 HOURS + 30 MINUTES + rand(0, 25) MINUTES)

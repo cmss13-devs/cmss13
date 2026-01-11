@@ -79,3 +79,49 @@
 
 	to_chat(mob, SPAN_ROLE_BODY("You are a member of the USCM's CBRN. The CBRN is a force that specializes in handling chemical, biological, radiological, and nuclear threats."))
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), mob, SPAN_BOLD("Objectives:</b> [objectives]")), 1 SECONDS)
+
+
+/datum/emergency_call/cbrn/pathogen
+	name = "CBRN (Squad) (Pathogen Response)"
+	mob_min = 3
+	mob_max = 5
+	max_heavies = 0
+	max_smartgunners = 0
+	var/checked_objective = FALSE
+
+/datum/emergency_call/cbrn/pathogen/New()
+	..()
+	var/cbrn_team_name = "Unit [pick(GLOB.nato_phonetic_alphabet)]-[rand(1, 99)]"
+	arrival_message = "[MAIN_SHIP_NAME], CBRN [cbrn_team_name] has been dispatched. Comply with all Biohazard Control instructions from [cbrn_team_name]."
+	objectives = "You are a member of the CBRN [cbrn_team_name] dispatched to quell a serious biological threat to [MAIN_SHIP_NAME]. Further orders may be provided."
+
+/datum/emergency_call/cbrn/pathogen/create_member(datum/mind/new_mind, turf/override_spawn_loc)
+	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
+
+	if(!istype(spawn_loc))
+		return //Didn't find a useable spawn point.
+
+	var/mob/living/carbon/human/mob = new(spawn_loc)
+	new_mind.transfer_to(mob, TRUE)
+
+	if(!leader && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(mob.client, JOB_SQUAD_LEADER, time_required_for_job))
+		leader = mob
+		arm_equipment(mob, /datum/equipment_preset/uscm/cbrn/leader, TRUE, TRUE)
+		to_chat(mob, SPAN_ROLE_HEADER("You are the CBRN Fireteam Leader!"))
+
+	else if(medics < max_medics && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(mob.client, JOB_SQUAD_MEDIC, time_required_for_job))
+		medics++
+		arm_equipment(mob, /datum/equipment_preset/uscm/cbrn/medic, TRUE, TRUE)
+		to_chat(mob, SPAN_ROLE_HEADER("You are the CBRN Squad Medic!"))
+
+	else if(engineers < max_engineers && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_ENGINEER) && check_timelock(mob.client, JOB_SQUAD_ENGI, time_required_for_job))
+		engineers++
+		arm_equipment(mob, /datum/equipment_preset/uscm/cbrn/engineer, TRUE, TRUE)
+		to_chat(mob, SPAN_ROLE_HEADER("You are the CBRN Squad Engineer!"))
+
+	else
+		arm_equipment(mob, /datum/equipment_preset/uscm/cbrn/standard, TRUE, TRUE)
+		to_chat(mob, SPAN_ROLE_HEADER("You are a CBRN Squad Rifleman!"))
+
+	to_chat(mob, SPAN_ROLE_BODY("You are a member of the USCM's CBRN. The CBRN is a force that specializes in handling chemical, biological, radiological, and nuclear threats."))
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), mob, SPAN_BOLD("Objectives:</b> [objectives]")), 1 SECONDS)

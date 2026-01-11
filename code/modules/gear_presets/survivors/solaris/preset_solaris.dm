@@ -135,7 +135,7 @@
 	assignment = "USCM Recruiter"
 	paygrades = list(PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_0)
 	minimap_icon = "recruiter"
-	minimap_background = "background_medical"
+	minimap_background = "background_enlisted"
 	skills = /datum/skills/civilian/survivor/uscm_recruiter
 
 /datum/equipment_preset/survivor/uscm/solaris/load_gear(mob/living/carbon/human/new_human)

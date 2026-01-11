@@ -341,6 +341,13 @@
 /obj/item/device/walkman/white_band
 	name = "Synsound Walkman (White Band)"
 	desc = "A Synsound cassette player that first hit the market over 200 years ago. Crazy how these never went out of style. This one has a white band."
+	item_icons = list(
+		WEAR_L_EAR = 'icons/mob/humans/onmob/clothing/ears.dmi',
+		WEAR_R_EAR = 'icons/mob/humans/onmob/clothing/ears.dmi',
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/ears.dmi',
+		WEAR_IN_J_STORE = 'icons/mob/humans/onmob/clothing/ears.dmi',
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/walkman.dmi',
+		)
 
 /obj/item/device/walkman/white_band/Initialize()
 	. = ..()
@@ -370,6 +377,13 @@
 /obj/item/device/walkman/black_band
 	name = "Synsound Walkman (Black Band)"
 	desc = "A Synsound cassette player that first hit the market over 200 years ago. Crazy how these never went out of style. This one has a black band."
+	item_icons = list(
+		WEAR_L_EAR = 'icons/mob/humans/onmob/clothing/ears.dmi',
+		WEAR_R_EAR = 'icons/mob/humans/onmob/clothing/ears.dmi',
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/ears.dmi',
+		WEAR_IN_J_STORE = 'icons/mob/humans/onmob/clothing/ears.dmi',
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/walkman.dmi',
+		)
 
 /obj/item/device/walkman/black_band/Initialize()
 	. = ..()

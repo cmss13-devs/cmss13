@@ -8,11 +8,9 @@
 	assignment = JOB_SYNTH
 	job_title = JOB_SYNTH
 	role_comm_title = "Syn"
-	preset_generation_support = FALSE
 
 	minimap_icon = "synth"
 	paygrades = list(PAY_SHORT_MWO = JOB_PLAYTIME_TIER_0)
-	skills = /datum/skills/synthetic
 
 	var/is_council = FALSE
 

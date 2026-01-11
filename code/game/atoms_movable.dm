@@ -200,9 +200,10 @@
 
 /mob/proc/unset_interaction()
 	if(interactee)
-		if(istype(interactee))
-			interactee.on_unset_interaction(src)
+		var/atom/movable/prev_interactee = interactee
 		interactee = null
+		if(istype(prev_interactee))
+			prev_interactee.on_unset_interaction(src)
 
 
 //things the user's machine must do just after we set the user's machine.

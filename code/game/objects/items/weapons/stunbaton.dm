@@ -10,6 +10,7 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/non_lethal_righthand.dmi'
 	)
 	flags_equip_slot = SLOT_WAIST
+	flags_xeno_examine = EXAMINE_FLAG_MEDIUMBLUNT
 	force = 15
 	throwforce = 7
 	sharp = FALSE
@@ -193,6 +194,7 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/spears_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/spears_righthand.dmi'
 	)
+	flags_xeno_examine = EXAMINE_FLAG_MEDIUMBLADE|EXAMINE_FLAG_NONCOMBAT // So pathetically weak it can as well be considered non-combat by Xeno standards
 	force = 3
 	throwforce = 5
 	stunforce = 40

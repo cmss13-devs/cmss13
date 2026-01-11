@@ -16,6 +16,7 @@
 	matter = list("metal" = 2000)
 	flags_equip_slot = SLOT_WAIST
 	w_class = SIZE_MEDIUM
+	flags_xeno_examine = EXAMINE_FLAG_PISTOL
 	force = 6
 	movement_onehanded_acc_penalty_mult = 3
 	wield_delay = WIELD_DELAY_VERY_FAST //If you modify your pistol to be two-handed, it will still be fast to aim
@@ -182,6 +183,7 @@
 	desc = "A variant of the legendary M1911 pistol in use by USCM command elements. Based off the modernized M48A4, it has been modified to more closely resemble a classic M1911 in shape, while retaining modern technology features like a discreet ammo counter. Chambered in .45 ACP."
 	icon_state = "m1911c"
 	item_state = "m4a3"
+	flags_xeno_examine = EXAMINE_FLAG_PISTOL|EXAMINE_FLAG_UNIQUEDANGER
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
 	current_mag = /obj/item/ammo_magazine/pistol/m1911/highimpact
 
@@ -287,6 +289,7 @@
 	name = "polished Desert Eagle"
 	icon_state = "c_deagle"
 	item_state = "c_deagle"
+	flags_xeno_examine = EXAMINE_FLAG_PISTOL|EXAMINE_FLAG_UNIQUEDANGER
 	current_mag = /obj/item/ammo_magazine/pistol/heavy/super/highimpact
 	black_market_value = 100
 	unacidable = TRUE
@@ -1008,6 +1011,7 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/smgs_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/smgs_righthand.dmi'
 	)
+	flags_xeno_examine = EXAMINE_FLAG_SMG
 	fire_sound = 'sound/weapons/gun_skorpion.ogg'
 	current_mag = /obj/item/ammo_magazine/pistol/skorpion
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED
@@ -1054,6 +1058,7 @@ Unlike other pistols, it can be equipped with limited mods (small muzzle, underb
 	icon = 'icons/obj/items/weapons/guns/guns_by_map/classic/guns_obj.dmi'
 	icon_state = "m10"
 	item_state = "m10"
+	flags_xeno_examine = EXAMINE_FLAG_SMG
 	attachable_allowed = list(
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reddot/small, //Rail
@@ -1154,6 +1159,7 @@ L54 service pistol
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/TWE/pistols.dmi'
 	icon_state = "l54_custom"
 	item_state = "l54_custom"
+	flags_xeno_examine = EXAMINE_FLAG_PISTOL|EXAMINE_FLAG_UNIQUEDANGER
 	current_mag = /obj/item/ammo_magazine/pistol/l54_custom
 	attachable_allowed = list(
 		/obj/item/attachable/reddot,

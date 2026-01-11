@@ -557,6 +557,7 @@
 		return
 	. = lying_angle
 	lying_angle = new_lying
+	SEND_SIGNAL(src, COMSIG_LIVING_SET_LYING_ANGLE)
 	if(lying_angle != lying_prev)
 		update_transform(instant_update = on_movement) // Don't use transition for eg. crawling movement, because we already have the movement glide
 		lying_prev = lying_angle

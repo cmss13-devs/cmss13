@@ -412,7 +412,6 @@
 	var/obj/item/card/id/card = person_in_charge.get_idcard()
 	if(card)
 		var/static/to_add = list(ACCESS_MARINE_SENIOR, ACCESS_MARINE_DATABASE, ACCESS_MARINE_COMMAND)
-
 		var/new_access = card.access | to_add
 		if(card.access ~! new_access)
 			card.access = new_access
@@ -674,7 +673,7 @@
 				GLOB.round_statistics.current_map.total_xeno_victories++
 				GLOB.round_statistics.current_map.total_xeno_majors++
 		if(MODE_INFESTATION_M_MAJOR)
-			musical_track = pick('sound/theme/winning_triumph1.ogg','sound/theme/winning_triumph2.ogg')
+			musical_track = pick('sound/theme/winning_triumph1.ogg','sound/theme/winning_triumph2.ogg','sound/theme/winning_triumph3.ogg')
 			end_icon = "marine_major"
 			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
 				GLOB.round_statistics.current_map.total_marine_victories++

@@ -630,6 +630,9 @@
 		fire_angle += rand(-total_scatter_angle, total_scatter_angle)
 		target = get_angle_target_turf(curloc, fire_angle, 30)
 
+	if(curloc.z != targloc.z)
+		target = locate(target.x, target.y, targloc.z)
+
 	return target
 
 /// Get turf at hardpoint origin offset, used as the muzzle.

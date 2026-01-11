@@ -34,6 +34,8 @@
 	if(health <= 0)
 		return FALSE
 
+	last_input_time = world.time
+
 	return pre_movement(direction)
 
 // This determines what type of movement to execute
@@ -53,6 +55,9 @@
 		success = try_rotate(turning_angle(dir, direction))
 		if(move_on_turn)
 			try_move(direction)
+
+	if(success)
+		start_momentum_decay_if_needed()
 
 	return success
 
@@ -121,10 +126,6 @@
 
 // Increases/decreases the vehicle's momentum according to whether or not the user is steppin' on the gas or not
 /obj/vehicle/multitile/proc/update_momentum(direction)
-	// If we've stood still for long enough we go back to 0 momentum
-	if(world.time > next_move + move_delay*move_momentum_build_factor)
-		move_momentum = 0
-
 	if(direction == dir)
 		move_momentum = min(move_momentum + 1, move_max_momentum)
 	else
@@ -140,11 +141,11 @@
 
 /obj/vehicle/multitile/proc/update_next_move()
 	// 1/((m/M)*b) where m is momentum, M is max momentum and b is the build factor
+	//// move_momentum_build_factor seems to cancel itself out here. It's worth to revisit this section and maybe refactor it.
 	var/anti_build_factor = 1/((max(abs(move_momentum), 1)/move_max_momentum) * move_momentum_build_factor)
 
 	next_move = world.time + move_delay * move_momentum_build_factor * anti_build_factor * misc_multipliers["move"]
 	l_move_time = world.time
-
 
 // This just checks if the vehicle can physically move in the given direction
 /obj/vehicle/multitile/proc/can_move(direction)
@@ -166,11 +167,27 @@
 		if(T in old_turfs)
 			continue
 
+		// This first istype() check is probably a bad practice but it'll allow V-TOL to still enter...
+		// ... open_space turfs in case Tank Desant and VTOL get TM'd together.
+		if(istype(src, /obj/vehicle/multitile/tank) && istype(T, /turf/open_space))
+			// early return so we skip crash behavior.
+			move_momentum = floor(move_momentum/2)
+			update_next_move()
+			return FALSE
+
 		if(!T.Enter(src))
 			can_move = FALSE
+			break
+
+		// any other tile-blocking items that weren't caught by !T.Enter
+		for(var/atom/A in T)
+			if(is_blocking_structure(A))
+				can_move = FALSE
+				break
 
 	// Crashed with something that stopped us
 	if(!can_move)
+		on_crash()
 		move_momentum = floor(move_momentum/2)
 		update_next_move()
 		interior_crash_effect()
@@ -307,3 +324,59 @@
 		return
 	else
 		cell_explosion(target, explosion_strength, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
+
+/**
+ * Base proc for defining special behavior when crashing
+ *
+ * on_crash is a proc meant to be overridable by child classes
+ * That way, all of the effects that happen when crashing are in the same spot.
+ */
+/obj/vehicle/multitile/proc/on_crash()
+	return
+
+
+/**
+ * Starts the momentum decay loop if not already running and momentum exists.
+ * This should be called after any movement to ensure decay starts when player stops.
+ */
+/obj/vehicle/multitile/proc/start_momentum_decay_if_needed()
+	if(abs(move_momentum) > 0 && !momentum_decay_active)
+		momentum_decay_active = TRUE
+		spawn(0)
+			momentum_decay_loop()
+
+/**
+ * The main momentum decay loop - runs continuously while vehicle has momentum.
+ * Checks every second if the player has stopped giving input, and decays momentum accordingly.
+ *
+ * 	decay_interval controls how fast mometum will decay. By default, it decays every second.
+ *
+ * idle_time_required is how long you have to go without pressing a movement key.
+ *
+ * So, for example, if idle time is 20 and decay interval is 5, you will start losing momentum twice per second after you spend 2 seconds without moving.
+ *
+ */
+/obj/vehicle/multitile/proc/momentum_decay_loop()
+	var/decay_interval = 10      // Decay every 1 second
+
+	while(abs(move_momentum) > 0)
+		sleep(decay_interval)
+
+		var/time_since_input = world.time - last_input_time
+		if(time_since_input < idle_time_required)
+			continue
+
+		var/momentum_abs = abs(move_momentum)
+		momentum_abs -= move_momentum_loss_factor
+		if(momentum_abs <= 0)
+			move_momentum = 0
+			momentum_decay_active = FALSE
+			return
+
+		if(move_momentum > 0)
+			move_momentum = momentum_abs
+
+		else
+			move_momentum = -momentum_abs
+
+	momentum_decay_active = FALSE

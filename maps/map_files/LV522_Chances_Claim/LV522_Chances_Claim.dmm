@@ -777,6 +777,15 @@
 "add" = (
 /turf/open/slippery/hull/dir/southwest,
 /area/sky)
+"ade" = (
+/obj/effect/landmark/survivor_spawner/lv522_forecon_major,
+/turf/open/floor/prison,
+/area/lv522/indoors/a_block/admin)
+"adf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/survivor_spawner/lv522_forecon_synth,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv522/indoors/a_block/admin)
 "adj" = (
 /obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/sand_white/layer0,
@@ -78284,7 +78293,7 @@ fRk
 ibk
 qcd
 mEx
-sWr
+ade
 lxZ
 lHV
 wGY
@@ -79107,7 +79116,7 @@ lsa
 svf
 ydV
 sWT
-oGF
+adf
 dkq
 iBr
 wGY

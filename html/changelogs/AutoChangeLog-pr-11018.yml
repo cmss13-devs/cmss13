@@ -1,6 +1,0 @@
-author: "Nihisohel"
-delete-after: True
-changes:
-  - qol: "You can now walk over small simple mobs (E.G. Rats) rather than swapping positions with them"
-  - balance: "Reasonably small mobs (E.G Corgi Puppies, Larva, Facehuggers) now require sprite clicking to be hit by throwing weapons"
-  - code_imp: "Adds a few simple mob parents, allows small simple_mob types to vent crawl"

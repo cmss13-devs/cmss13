@@ -1179,8 +1179,8 @@ and you're good to go.
 
 	// Check if watching a ladder
 	if(user.interactee && istype(user.interactee, /obj/structure/ladder))
-		var/obj/structure/ladder/L = user.interactee
-		if(L.is_watching)
+		var/obj/structure/ladder/ladder = user.interactee
+		if(ladder.is_watching)
 			to_chat(user, SPAN_WARNING("You can't shoot while looking up the ladder!"))
 			return NONE
 

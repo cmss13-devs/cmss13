@@ -8,6 +8,8 @@
 */
 
 /mob/living/carbon/xenomorph/proc/set_selected_ability(datum/action/xeno_action/activable/ability)
+	if(active_action_cursor && active_action_cursor != ability)
+		clear_action_cursor()
 	if(!ability)
 		selected_ability = null
 		client?.set_right_click_menu_mode(shift_only = FALSE)

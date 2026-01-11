@@ -538,18 +538,30 @@
 	if(length(dragging_agents) || length(active_agents))
 		movement_handler()
 
-/datum/tutorial/marine/hospital_corpsman_sandbox/proc/item_cleanup(obj/item/clothing/suit/storage/marine/medium/armor)
+/datum/tutorial/marine/hospital_corpsman_sandbox/proc/item_cleanup(obj/item/clothing/suit/storage/marine/medium/armor, obj/item/clothing/head/helmet)
 	SIGNAL_HANDLER
 
 	if(!(armor in cleanup))
 		cleanup |= armor // marks item for removal once the dummy is ready
 		UnregisterSignal(armor, COMSIG_ITEM_UNEQUIPPED)
 		return
-	else
+	if(armor in cleanup)
 		cleanup -= armor
 		var/obj/item/storage/internal/armor_storage = locate(/obj/item/storage/internal) in armor
 		for(var/obj/item/item as anything in armor_storage)
 			armor_storage.remove_from_storage(item, get_turf(armor))
+		QDEL_IN(armor, 1 SECONDS)
+
+	if(!(helmet in cleanup))
+		cleanup |= helmet // marks item for removal once the dummy is ready
+		UnregisterSignal(armor, COMSIG_ITEM_UNEQUIPPED)
+		return
+
+	if(helmet in cleanup)
+		cleanup -= helmet
+		var/obj/item/storage/internal/helmet_storage = locate(/obj/item/storage/internal) in helmet
+		for(var/obj/item/item as anything in helmet_storage)
+			helmet_storage.remove_from_storage(item, get_turf(helmet))
 		QDEL_IN(armor, 1 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/init_mob()

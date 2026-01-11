@@ -80,7 +80,7 @@
 /turf/open/floor/prison/bluecorner/north,
 /area/desert_dam/building/administration/lobby)
 "bi" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
@@ -109,7 +109,7 @@
 /turf/open/floor/prison/blue,
 /area/desert_dam/interior/dam_interior/tech_storage)
 "bt" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
@@ -201,7 +201,7 @@
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/building/administration/hallway)
 "cO" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
@@ -221,7 +221,7 @@
 /turf/open/floor/prison/blue/southwest,
 /area/desert_dam/building/administration/control_room)
 "df" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
@@ -400,7 +400,7 @@
 	},
 /area/desert_dam/interior/dam_interior/hanger)
 "gi" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
@@ -511,7 +511,7 @@
 /turf/open/floor/prison/blue/east,
 /area/desert_dam/building/administration/control_room)
 "il" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
@@ -597,7 +597,7 @@
 /turf/open/floor/prison/bluecorner,
 /area/desert_dam/building/administration/hallway)
 "jO" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
 /turf/open/asphalt,
@@ -752,7 +752,7 @@
 /area/desert_dam/interior/dam_interior/tech_storage)
 "mp" = (
 /obj/structure/machinery/floodlight/landing,
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /turf/open/floor/asteroidplating,
@@ -924,7 +924,7 @@
 /turf/open/floor/prison/bluecorner/east,
 /area/desert_dam/building/administration/lobby)
 "oY" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
@@ -963,7 +963,7 @@
 /area/desert_dam/exterior/landing_pad_one)
 "pG" = (
 /obj/structure/machinery/floodlight/landing,
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /turf/open/floor/asteroidplating,
@@ -1027,7 +1027,7 @@
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/building/administration/control_room)
 "qy" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
@@ -1135,7 +1135,7 @@
 /turf/open/floor/prison/blue/northwest,
 /area/desert_dam/interior/dam_interior/tech_storage)
 "sF" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
@@ -1540,7 +1540,7 @@
 /turf/open/floor/prison/blue/north,
 /area/desert_dam/building/administration/hallway)
 "AB" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
@@ -1593,7 +1593,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/landing_pad_one)
 "BS" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
@@ -1627,7 +1627,7 @@
 /turf/open/floor/darkred2/north,
 /area/desert_dam/building/administration/lobby)
 "Cn" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
@@ -1732,7 +1732,7 @@
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/dam_interior/hanger)
 "DX" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 1
 	},
 /turf/open/asphalt,
@@ -1863,7 +1863,7 @@
 	},
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "FS" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
@@ -1907,7 +1907,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
 /area/desert_dam/exterior/valley/valley_northwest)
 "Gf" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /turf/open/asphalt,
@@ -2314,7 +2314,7 @@
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/landing_pad_one)
 "MU" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
@@ -2397,7 +2397,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached17,
 /area/desert_dam/exterior/valley/valley_northwest)
 "Or" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
@@ -2661,7 +2661,7 @@
 /turf/open/floor/wood,
 /area/desert_dam/building/administration/office)
 "So" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
@@ -2737,7 +2737,7 @@
 	},
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "TS" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
@@ -3042,7 +3042,7 @@
 /turf/open/floor/prison/blue/west,
 /area/desert_dam/building/administration/control_room)
 "ZN" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /turf/open/asphalt,

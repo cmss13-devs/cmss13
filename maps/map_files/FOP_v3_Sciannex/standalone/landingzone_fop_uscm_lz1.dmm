@@ -31,7 +31,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/oob)
 "by" = (
-/obj/structure/machinery/landinglight/ds2/delayone,
+/obj/structure/machinery/landinglight/delayone,
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzII)
 "bD" = (
@@ -82,7 +82,7 @@
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzII)
 "eJ" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /turf/open/floor/prison/floor_plate,
@@ -197,7 +197,7 @@
 /turf/open/space,
 /area/fiorina/oob)
 "jt" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /turf/open/floor/prison/floor_plate,
@@ -212,7 +212,7 @@
 /turf/open/floor/prison/floor_marked/southwest,
 /area/fiorina/lz/near_lzII)
 "jH" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/floor/prison,
@@ -266,13 +266,13 @@
 /turf/open/floor/wood,
 /area/fiorina/station/security/wardens)
 "ln" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/lz/near_lzII)
 "lt" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /turf/open/floor/prison/floor_plate,
@@ -360,7 +360,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzII)
 "pT" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /turf/open/floor/plating/prison,
@@ -381,7 +381,7 @@
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzII)
 "qw" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/floor/prison/floor_plate,
@@ -421,7 +421,7 @@
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzII)
 "sG" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /turf/open/floor/prison,
@@ -459,7 +459,7 @@
 /area/fiorina/lz/near_lzII)
 "un" = (
 /obj/effect/decal/cleanable/blood/oil,
-/obj/structure/machinery/landinglight/ds2/delayone,
+/obj/structure/machinery/landinglight/delayone,
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzII)
 "uF" = (
@@ -513,7 +513,7 @@
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzII)
 "wq" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 1
 	},
 /turf/open/floor/plating/prison,
@@ -647,7 +647,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzII)
 "Fq" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo,
+/obj/structure/machinery/landinglight/delaytwo,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/lz/near_lzII)
 "Fs" = (
@@ -662,7 +662,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzII)
 "FW" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /turf/open/floor/prison/floor_plate,
@@ -792,13 +792,13 @@
 /turf/open/space,
 /area/fiorina/oob)
 "KD" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/lz/near_lzII)
 "KJ" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /turf/open/floor/plating/prison,
@@ -896,13 +896,13 @@
 /turf/open/floor/prison/bluefull,
 /area/fiorina/station/power_ring)
 "Qj" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/lz/near_lzII)
 "Qy" = (
-/obj/structure/machinery/landinglight/ds2,
+/obj/structure/machinery/landinglight,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/lz/near_lzII)
 "QW" = (
@@ -929,7 +929,7 @@
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzII)
 "SS" = (
-/obj/structure/machinery/landinglight/ds2/delaythree,
+/obj/structure/machinery/landinglight/delaythree,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/lz/near_lzII)
 "Th" = (
@@ -1096,7 +1096,7 @@
 /turf/open/floor/prison/bluefull,
 /area/fiorina/station/power_ring)
 "ZW" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
 /turf/open/floor/plating/prison,

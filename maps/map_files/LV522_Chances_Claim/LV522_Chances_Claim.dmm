@@ -42,7 +42,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/lv522/landing_zone_1)
 "aaj" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /obj/effect/landmark/lv624/fog_blocker/short,
@@ -53,7 +53,7 @@
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1)
 "aal" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /obj/effect/landmark/lv624/fog_blocker/short,
@@ -92,14 +92,14 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/landing_zone_1)
 "aar" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1)
 "aas" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /obj/effect/landmark/lv624/fog_blocker/short,
@@ -116,21 +116,21 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/landing_zone_1)
 "aav" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1)
 "aaw" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1)
 "aax" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /obj/effect/landmark/lv624/fog_blocker/short,
@@ -142,21 +142,21 @@
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1)
 "aaz" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1)
 "aaA" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1)
 "aaB" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /obj/effect/landmark/lv624/fog_blocker/short,
@@ -1748,7 +1748,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/lone_buildings/outdoor_bot)
 "aGS" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -5804,7 +5804,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/atmos/cargo_intake)
 "das" = (
-/obj/structure/machinery/landinglight/ds1/delayone,
+/obj/structure/machinery/landinglight/delayone,
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1)
@@ -6170,7 +6170,7 @@
 /turf/open/auto_turf/shale/layer1,
 /area/sky)
 "dhP" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -7387,7 +7387,7 @@
 /turf/open/floor/corsat/brown/north,
 /area/lv522/atmos/cargo_intake)
 "dMY" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -8741,7 +8741,7 @@
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/garage)
 "eyy" = (
-/obj/structure/machinery/landinglight/ds1,
+/obj/structure/machinery/landinglight,
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1)
@@ -10478,7 +10478,7 @@
 /turf/open/asphalt/cement/cement15,
 /area/lv522/outdoors/colony_streets/east_central_street)
 "fBL" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo,
+/obj/structure/machinery/landinglight/delaytwo,
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1)
@@ -10853,7 +10853,7 @@
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/indoors/c_block/garage)
 "fOc" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -10908,7 +10908,7 @@
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/north_west_street)
 "fPO" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -10983,7 +10983,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/atmos/filt)
 "fSo" = (
-/obj/structure/machinery/landinglight/ds1,
+/obj/structure/machinery/landinglight,
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1)
@@ -11685,7 +11685,7 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/colony_streets/south_east_street)
 "gnf" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -12077,7 +12077,7 @@
 /turf/open/floor/prison/cell_stripe/east,
 /area/lv522/atmos/reactor_garage)
 "gxp" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -12854,7 +12854,7 @@
 /turf/open/floor/strata/white_cyan1/east,
 /area/lv522/indoors/a_block/medical)
 "gVf" = (
-/obj/structure/machinery/landinglight/ds2,
+/obj/structure/machinery/landinglight,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/lv522/landing_zone_2)
@@ -13046,7 +13046,7 @@
 /turf/open/floor/prison/greenfull/northwest,
 /area/lv522/indoors/b_block/bridge)
 "haf" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo,
+/obj/structure/machinery/landinglight/delaytwo,
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1)
@@ -15421,7 +15421,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/mining)
 "iqX" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -17630,7 +17630,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/admin)
 "jzZ" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -17951,7 +17951,7 @@
 /turf/open/floor/strata/white_cyan1/east,
 /area/lv522/indoors/a_block/medical)
 "jIk" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -18444,7 +18444,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/lv522/outdoors/nw_rockies)
 "jVq" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -18572,7 +18572,7 @@
 /turf/open/floor/prison/darkpurplefull2,
 /area/lv522/indoors/a_block/dorms)
 "jYr" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -18844,7 +18844,7 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/colony_streets/east_central_street)
 "kcR" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -20009,7 +20009,7 @@
 /turf/open/floor/strata/white_cyan3/southeast,
 /area/lv522/indoors/a_block/medical)
 "kFB" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo,
+/obj/structure/machinery/landinglight/delaytwo,
 /turf/open/floor/plating,
 /area/lv522/landing_zone_2)
 "kFC" = (
@@ -24595,7 +24595,7 @@
 /turf/open/floor/prison/blue/north,
 /area/lv522/indoors/a_block/hallway)
 "naS" = (
-/obj/structure/machinery/landinglight/ds1/delaythree,
+/obj/structure/machinery/landinglight/delaythree,
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1)
@@ -27305,7 +27305,7 @@
 /turf/open/floor/prison/blue/north,
 /area/lv522/indoors/a_block/admin)
 "orU" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -27480,7 +27480,7 @@
 /turf/open/floor/prison/floor_marked,
 /area/lv522/outdoors/colony_streets/containers)
 "oyf" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -28423,7 +28423,7 @@
 /turf/open/gm/river,
 /area/lv522/landing_zone_1/tunnel/far)
 "pab" = (
-/obj/structure/machinery/landinglight/ds2/delayone,
+/obj/structure/machinery/landinglight/delayone,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/lv522/landing_zone_2)
@@ -30541,7 +30541,7 @@
 /turf/open/floor/prison,
 /area/shuttle/drop1/lv522)
 "qle" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo,
+/obj/structure/machinery/landinglight/delaytwo,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/lv522/landing_zone_2)
@@ -32748,7 +32748,7 @@
 /turf/open/floor/carpet,
 /area/lv522/indoors/a_block/dorm_north)
 "res" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -32866,7 +32866,7 @@
 /turf/open/floor/strata/blue1,
 /area/lv522/outdoors/colony_streets/windbreaker/observation)
 "rhk" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/floor/prison/greenfull/east,
@@ -33755,7 +33755,7 @@
 	},
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "rFT" = (
-/obj/structure/machinery/landinglight/ds2,
+/obj/structure/machinery/landinglight,
 /turf/open/floor/plating,
 /area/lv522/landing_zone_2)
 "rGg" = (
@@ -35077,7 +35077,7 @@
 /turf/open/floor/prison,
 /area/lv522/outdoors/colony_streets/containers)
 "sol" = (
-/obj/structure/machinery/landinglight/ds2/delayone,
+/obj/structure/machinery/landinglight/delayone,
 /turf/open/floor/plating,
 /area/lv522/landing_zone_2)
 "sop" = (
@@ -35206,7 +35206,7 @@
 /turf/open/asphalt/cement/cement4,
 /area/lv522/outdoors/colony_streets/north_west_street)
 "srS" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -36393,7 +36393,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/mining)
 "sTR" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -37047,7 +37047,7 @@
 /turf/open/floor/prison/darkpurplefull2,
 /area/lv522/indoors/a_block/dorms)
 "tns" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -38686,7 +38686,7 @@
 /turf/open/asphalt/cement/cement12,
 /area/lv522/indoors/lone_buildings/engineering)
 "udA" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -38799,7 +38799,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/lone_buildings/outdoor_bot)
 "ufR" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -39738,7 +39738,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "uEH" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/floor/prison/greenfull/east,
@@ -40124,7 +40124,7 @@
 /area/lv522/indoors/c_block/mining)
 "uLz" = (
 /obj/effect/landmark/hunter_secondary,
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -40433,7 +40433,7 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/colony_streets/north_west_street)
 "uTd" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -41943,7 +41943,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/lv522/indoors/b_block/hydro)
 "vER" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /turf/open/floor/prison/greenfull/east,
@@ -42149,7 +42149,7 @@
 /turf/open/floor/prison/blue_plate,
 /area/lv522/indoors/a_block/fitness)
 "vJj" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -42166,7 +42166,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "vJr" = (
-/obj/structure/machinery/landinglight/ds2/delaythree,
+/obj/structure/machinery/landinglight/delaythree,
 /turf/open/floor/plating,
 /area/lv522/landing_zone_2)
 "vJu" = (
@@ -42557,7 +42557,7 @@
 /turf/open/floor/corsat/plate,
 /area/lv522/atmos/command_centre)
 "vTO" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -43901,7 +43901,7 @@
 /turf/open/floor/corsat/marked,
 /area/lv522/indoors/a_block/executive)
 "wBx" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -45409,7 +45409,7 @@
 /turf/open/floor/wood,
 /area/lv522/indoors/a_block/executive)
 "xsq" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -45612,7 +45612,7 @@
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/garage)
 "xyC" = (
-/obj/structure/machinery/landinglight/ds2/delaythree,
+/obj/structure/machinery/landinglight/delaythree,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/lv522/landing_zone_2)
@@ -45879,7 +45879,7 @@
 /turf/open/floor/corsat/squares,
 /area/lv522/atmos/cargo_intake)
 "xEH" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /turf/open/floor/prison/greenfull/east,
@@ -46953,7 +46953,7 @@
 /turf/open/floor/plating,
 /area/lv522/indoors/b_block/hydro)
 "yfK" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /turf/open/floor/plating,

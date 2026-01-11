@@ -25,7 +25,7 @@
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/lz_dunes)
 "ag" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
 /obj/item/stack/sheet/wood,
@@ -114,7 +114,7 @@
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/exterior/lz_dunes)
 "bH" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -258,7 +258,7 @@
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/lz_dunes)
 "hA" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /obj/effect/decal/cleanable/blood/oil,
@@ -322,7 +322,7 @@
 /turf/open/floor/kutjevo/tan/alt_edge/southwest,
 /area/kutjevo/exterior/lz_dunes)
 "ks" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -335,14 +335,14 @@
 /turf/open/floor/kutjevo/colors/red/inner_corner,
 /area/kutjevo/exterior/lz_dunes)
 "kZ" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/lz_dunes)
 "lk" = (
 /obj/effect/decal/cleanable/blood/oil,
-/obj/structure/machinery/landinglight/ds1/delayone,
+/obj/structure/machinery/landinglight/delayone,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/lz_dunes)
 "lm" = (
@@ -419,7 +419,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/exterior/lz_dunes)
 "mP" = (
-/obj/structure/machinery/landinglight/ds1/delayone,
+/obj/structure/machinery/landinglight/delayone,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/lz_dunes)
 "nd" = (
@@ -449,7 +449,7 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/lz_dunes)
 "oc" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -653,7 +653,7 @@
 /turf/open/floor/kutjevo/tan/alt_edge/west,
 /area/kutjevo/exterior/lz_dunes)
 "vI" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 1
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -663,7 +663,7 @@
 /turf/open/floor/kutjevo/multi_tiles/southeast,
 /area/kutjevo/exterior/lz_dunes)
 "wf" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -896,7 +896,7 @@
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/lz_dunes)
 "Ci" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -1161,7 +1161,7 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/lz_dunes)
 "Jz" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -1316,7 +1316,7 @@
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/power/comms)
 "Ne" = (
-/obj/structure/machinery/landinglight/ds1/delaythree,
+/obj/structure/machinery/landinglight/delaythree,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/lz_dunes)
 "Nt" = (
@@ -1370,7 +1370,7 @@
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/exterior/lz_dunes)
 "OM" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -1395,7 +1395,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/exterior/lz_dunes)
 "Pe" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -1513,7 +1513,7 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/lz_dunes)
 "Uw" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -1639,7 +1639,7 @@
 /turf/open/floor/kutjevo/colors/orange/edge/west,
 /area/kutjevo/exterior/lz_dunes)
 "Yi" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -1653,7 +1653,7 @@
 /turf/open/floor/almayer/research/containment/floor1,
 /area/kutjevo/exterior/lz_dunes)
 "Yy" = (
-/obj/structure/machinery/landinglight/ds1,
+/obj/structure/machinery/landinglight,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/lz_dunes)
 "YC" = (
@@ -1696,7 +1696,7 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/lz_river)
 "Zx" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo,
+/obj/structure/machinery/landinglight/delaytwo,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/lz_dunes)
 "ZD" = (

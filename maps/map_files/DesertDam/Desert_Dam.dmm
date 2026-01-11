@@ -88,7 +88,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/substation/northwest)
 "aav" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
@@ -455,7 +455,7 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "abQ" = (
-/obj/structure/machinery/landinglight/ds1/delayone,
+/obj/structure/machinery/landinglight/delayone,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/desert_dam/exterior/landing_pad_one)
 "abR" = (
@@ -465,7 +465,7 @@
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_labs)
 "abS" = (
-/obj/structure/machinery/landinglight/ds2,
+/obj/structure/machinery/landinglight,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/landing_pad_two)
 "abT" = (
@@ -659,11 +659,11 @@
 /turf/open/gm/river/desert/shallow_corner/east,
 /area/desert_dam/exterior/valley/valley_labs)
 "acI" = (
-/obj/structure/machinery/landinglight/ds1,
+/obj/structure/machinery/landinglight,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/desert_dam/exterior/landing_pad_one)
 "acJ" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo,
+/obj/structure/machinery/landinglight/delaytwo,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/desert_dam/exterior/landing_pad_one)
 "acK" = (
@@ -742,7 +742,7 @@
 /area/desert_dam/interior/dam_interior/hanger)
 "adb" = (
 /obj/structure/machinery/floodlight/landing,
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /turf/open/floor/asteroidplating,
@@ -759,7 +759,7 @@
 /turf/open/desert/dirt/desert_transition_edge1/west,
 /area/desert_dam/exterior/valley/valley_labs)
 "adf" = (
-/obj/structure/machinery/landinglight/ds2/delayone,
+/obj/structure/machinery/landinglight/delayone,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/landing_pad_two)
 "adg" = (
@@ -8414,7 +8414,7 @@
 /turf/open/floor/whitegreencorner/east,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "aLa" = (
-/obj/structure/machinery/landinglight/ds1/delaythree,
+/obj/structure/machinery/landinglight/delaythree,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/desert_dam/exterior/landing_pad_one)
 "aLb" = (
@@ -8965,7 +8965,7 @@
 /turf/open/floor/prison/blue/north,
 /area/desert_dam/building/administration/control_room)
 "aNv" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
@@ -10659,7 +10659,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/exterior/landing_pad_one)
 "aWi" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
@@ -12978,7 +12978,7 @@
 	},
 /area/desert_dam/interior/dam_interior/hanger)
 "bhv" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
@@ -13788,7 +13788,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "blD" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
@@ -14580,7 +14580,7 @@
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/north_valley_dam)
 "boV" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
@@ -14648,7 +14648,7 @@
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/desert_dam/building/security/staffroom)
 "bpu" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
@@ -14746,7 +14746,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/engine_west_wing)
 "bpQ" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
@@ -14769,7 +14769,7 @@
 /turf/open/gm/river/desert/shallow/toxic,
 /area/desert_dam/exterior/river/filtration_a)
 "bpT" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
@@ -14816,7 +14816,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/desert_dam/building/security/evidence)
 "bqk" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
@@ -15151,7 +15151,7 @@
 /turf/open/floor/prison/darkyellow2/east,
 /area/desert_dam/interior/dam_interior/engine_west_wing)
 "brW" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
@@ -16176,7 +16176,7 @@
 /turf/open/floor/prison/darkbrown2,
 /area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bxj" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
@@ -16805,7 +16805,7 @@
 /turf/open/floor/wood,
 /area/desert_dam/building/administration/overseer_office)
 "bAF" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
@@ -17327,7 +17327,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/security/staffroom)
 "bDO" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
@@ -17639,7 +17639,7 @@
 /turf/open/floor/prison/darkred2/southwest,
 /area/desert_dam/building/security/holding)
 "bFg" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
@@ -17720,7 +17720,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/security/staffroom)
 "bFB" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /turf/open/asphalt,
@@ -18034,7 +18034,7 @@
 /turf/closed/wall/hangar,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "bGY" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 1
 	},
 /turf/open/asphalt,
@@ -18597,7 +18597,7 @@
 /turf/open/floor/prison/darkred2,
 /area/desert_dam/building/security/staffroom)
 "bJQ" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /turf/open/asphalt,
@@ -18753,7 +18753,7 @@
 /turf/open/floor/prison/darkyellow2/east,
 /area/desert_dam/interior/dam_interior/lobby)
 "bKC" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
 /turf/open/asphalt,
@@ -27771,7 +27771,7 @@
 /turf/open/floor/prison/darkbrown2,
 /area/desert_dam/building/mining/workshop_foyer)
 "cCZ" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
@@ -27936,17 +27936,17 @@
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/desert_dam/building/medical/east_wing_hallway)
 "cDK" = (
-/obj/structure/machinery/landinglight/ds2,
+/obj/structure/machinery/landinglight,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
 /area/desert_dam/exterior/landing_pad_two)
 "cDL" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/desert_dam/exterior/landing_pad_two)
 "cDM" = (
-/obj/structure/machinery/landinglight/ds2/delaythree,
+/obj/structure/machinery/landinglight/delaythree,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/landing_pad_two)
 "cDN" = (
@@ -27966,7 +27966,7 @@
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/dam_interior/CE_office)
 "cDV" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo,
+/obj/structure/machinery/landinglight/delaytwo,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/desert_dam/exterior/landing_pad_two)
 "cDX" = (
@@ -27991,7 +27991,7 @@
 /turf/open/floor/carpet15_15/west,
 /area/desert_dam/building/bar/bar)
 "cEc" = (
-/obj/structure/machinery/landinglight/ds1,
+/obj/structure/machinery/landinglight,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/desert_dam/exterior/landing_pad_one)
 "cEd" = (
@@ -28184,7 +28184,7 @@
 /area/desert_dam/exterior/valley/valley_civilian)
 "cEZ" = (
 /obj/structure/machinery/floodlight/landing,
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/floor/asteroidplating,
@@ -28194,19 +28194,19 @@
 /turf/open/floor/plating,
 /area/desert_dam/exterior/landing_pad_two)
 "cFb" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/desert_dam/exterior/landing_pad_two)
 "cFc" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/desert_dam/exterior/landing_pad_two)
 "cFe" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
@@ -28395,7 +28395,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_civilian)
 "cFI" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
@@ -28443,7 +28443,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_civilian)
 "cFP" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
@@ -28453,7 +28453,7 @@
 /turf/open/floor/prison/darkbrowncorners2/north,
 /area/desert_dam/building/warehouse/warehouse)
 "cFS" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
@@ -28483,7 +28483,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "cGa" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
@@ -28675,7 +28675,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/valley/valley_cargo)
 "cGG" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
@@ -28723,7 +28723,7 @@
 /turf/open/floor/prison/darkred2,
 /area/desert_dam/building/security/armory)
 "cGQ" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
@@ -28733,7 +28733,7 @@
 /turf/open/desert/dirt/desert_transition_edge1/northeast,
 /area/desert_dam/exterior/landing_pad_two)
 "cGS" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo,
+/obj/structure/machinery/landinglight/delaytwo,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/landing_pad_two)
 "cGU" = (
@@ -28816,7 +28816,7 @@
 /turf/open/desert/dirt/desert_transition_edge1,
 /area/desert_dam/exterior/valley/valley_cargo)
 "cHn" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
@@ -29658,7 +29658,7 @@
 /turf/open/asphalt,
 /area/desert_dam/building/warehouse/warehouse)
 "cLe" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
@@ -29737,7 +29737,7 @@
 /turf/open/asphalt,
 /area/desert_dam/building/warehouse/warehouse)
 "cLL" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
@@ -29900,7 +29900,7 @@
 /turf/open/floor/asteroidplating,
 /area/desert_dam/exterior/landing_pad_two)
 "cMD" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
@@ -29925,7 +29925,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_cargo)
 "cML" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
@@ -30005,7 +30005,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/medical/virology_isolation)
 "cNb" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
@@ -30040,7 +30040,7 @@
 	dir = 1;
 	icon_state = "stop_decal5"
 	},
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 1
 	},
 /turf/open/asphalt,
@@ -30050,7 +30050,7 @@
 	dir = 1;
 	icon_state = "stop_decal5"
 	},
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /turf/open/asphalt,
@@ -30114,7 +30114,7 @@
 	dir = 1;
 	icon_state = "stop_decal5"
 	},
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
 /turf/open/asphalt,
@@ -30593,7 +30593,7 @@
 	dir = 1;
 	icon_state = "stop_decal5"
 	},
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /turf/open/asphalt,
@@ -30672,7 +30672,7 @@
 	dir = 1;
 	icon_state = "stop_decal5"
 	},
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 1
 	},
 /turf/open/asphalt,
@@ -45415,7 +45415,7 @@
 /turf/open/floor/prison/green/north,
 /area/desert_dam/building/dorms/hallway_northwing)
 "nJZ" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
@@ -45821,7 +45821,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_hydro)
 "oCD" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
@@ -46743,7 +46743,7 @@
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_central_south)
 "qoJ" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo,
+/obj/structure/machinery/landinglight/delaytwo,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/desert_dam/exterior/landing_pad_one)
 "qps" = (
@@ -49256,7 +49256,7 @@
 /turf/open/desert/dirt/desert_transition_edge1/east,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "vpn" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /obj/structure/machinery/floodlight/landing,
@@ -49498,7 +49498,7 @@
 /turf/open/gm/river/desert/shallow_edge/southwest,
 /area/desert_dam/exterior/river/riverside_central_south)
 "vRc" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
@@ -50015,7 +50015,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_civilian)
 "wRg" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
@@ -50503,7 +50503,7 @@
 /area/desert_dam/exterior/river/riverside_central_north)
 "xNB" = (
 /obj/structure/machinery/floodlight/landing,
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /turf/open/floor/asteroidplating,

@@ -32,3 +32,46 @@
 2026-01-04:
   Puckaboo2:
   - bugfix: Xeno spit overlays should return to their original function.
+2026-01-07:
+  Puckaboo2:
+  - bugfix: Autodoc now properly does the new eye surgery steps.
+  - rscdel: Removed Spitter Frenzy's macro. Replaced it with Charge Spit.
+  - bugfix: Spitter Frenzy should not show up in Spitter's Alien sidebar.
+  - bugfix: Charge Spit should appear in Spitter's Alien sidebar.
+  - bugfix: The FIX ME icon state no longer appears on the cycle helmet HUD button
+      if you're toggling the Squad Optic.
+  Unknownity  Wei:
+  - rscadd: Added two new factions the PMCs and Historical/Miscallenous prey to the
+      Hunting Grounds pool.
+  - rscadd: Despoiler has been added to Hunting Grounds xenomorph T3 pool.
+  - rscadd: CLF Specialist has been added to the Hunting Grounds CLF pool.
+  - bugfix: Fixes USCM Smartgunner being hungry in the Hunting Grounds.
+  - bugfix: Fixes objectives not appearing for certain ERTs.
+  - bugfix: Fixes the super top hat appearing incorrectly on the mob.
+  Venuska1117:
+  - bugfix: Abduct can no longer can pass through wall griders.
+2026-01-08:
+  Drathek:
+  - server: Map DB stats now save correctly
+  Killfish:
+  - refactor: Refactored Xeno Fire Immunity Code
+  Nihisohel:
+  - qol: You can now walk over small simple mobs (E.G. Rats) rather than swapping
+      positions with them
+  - balance: Reasonably small mobs (E.G Corgi Puppies, Larva, Facehuggers) now require
+      sprite clicking to be hit by throwing weapons
+  - code_imp: Adds a few simple mob parents, allows small simple_mob types to vent
+      crawl
+  Puckaboo2:
+  - bugfix: Fixes Data Detector's action button icon from displaying FIX ME when toggled.
+  - bugfix: Fixes Data Detector's action button icon not switching when clicking the
+      data detector in-hand.
+  - bugfix: Pharmaceutical Physician is now medical green on the crew monitor.
+2026-01-11:
+  FourkhanDaKhan:
+  - balance: Nervestimulating (anti-stun) is disabled in natural generation.
+  - balance: It can still be obtained from pheromone plasma on 5X clearance.
+  - balance: Scientist and corporate survivors no longer grant research points by
+      swiping their IDs.
+  Thwomper, Nivrak:
+  - rscadd: Adds roof/sky Z-Level to all ground maps.

@@ -10245,7 +10245,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/exterior/runoff_dunes)
 "nXX" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 8
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -16411,7 +16411,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/colony_south/power2)
 "xGI" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 4
 	},
 /turf/open/floor/kutjevo/multi_tiles,

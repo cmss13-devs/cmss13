@@ -39,7 +39,7 @@
 	if (A.always_unpowered)
 		to_chat(usr, SPAN_WARNING("This area is unsuitable for an APC."))
 		return
-	for(var/obj/structure/machinery/power/terminal/T in loc)
+	for(var/obj/structure/terminal/T in loc)
 		if (T.master)
 			to_chat(usr, SPAN_WARNING("There is another network terminal here."))
 			return

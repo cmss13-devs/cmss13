@@ -380,6 +380,9 @@
 	for(var/datum/action/action as anything in bracer_actions)
 		remove_action(user, action)
 
+	if(bracer_attachment_deployed)
+		retract_bracer_attachments(user)
+
 	..()
 
 /obj/item/clothing/gloves/yautja/hunter/on_enter_storage(obj/item/storage/S)

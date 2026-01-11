@@ -369,10 +369,24 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 			if("Collector")
 				icon_state = "pred_mask_elder_n"
 				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elder_n")
+		base_state = icon_state
 		user.update_inv_wear_mask()
 		return
 
+	base_state = "pred_mask[mob_client.prefs.predator_mask_type]"
 	icon_state = "pred_mask[mob_client.prefs.predator_mask_type]_[mob_client.prefs.predator_mask_material]"
+
+	switch(mob_client.prefs.predator_light_color)
+		if("Yellow")
+			mask_light_color = "#F9E8BE"
+		if("Green")
+			mask_light_color = "#D0F181"
+		if("Blue")
+			mask_light_color = "#02FAFC"
+		if("Red")
+			mask_light_color = "#FB0703"
+
+	set_light_color(mask_light_color)
 	LAZYSET(item_state_slots, WEAR_FACE, "pred_mask[mob_client.prefs.predator_mask_type]_[mob_client.prefs.predator_mask_material]")
 	user.update_inv_wear_mask()
 

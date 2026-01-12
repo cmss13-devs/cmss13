@@ -593,8 +593,12 @@
 	if(force_end_at && world.time > force_end_at)
 		round_finished = MODE_INFESTATION_X_MINOR
 
-	if(!num_humans && num_xenos) //No humans remain alive.
-		round_finished = MODE_INFESTATION_X_MAJOR //Evacuation did not take place. Everyone died.
+	if(SShijack?.sd_detonated)
+		round_finished = MODE_INFESTATION_DRAW_DEATH // Self destruction.
+		return
+
+	if(!num_humans && num_xenos)
+		round_finished = MODE_INFESTATION_X_MAJOR //No humans remain alive.
 	else if(num_humans && !num_xenos)
 		if(SSticker.mode && SSticker.mode.is_in_endgame)
 			round_finished = MODE_INFESTATION_X_MINOR //Evacuation successfully took place.

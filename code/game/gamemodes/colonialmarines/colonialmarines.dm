@@ -426,6 +426,7 @@
 	ai_silent_announcement("Bioscan complete. No unknown lifeform signature detected.", ".V")
 	ai_silent_announcement("Saving operational report to archive.", ".V")
 	ai_silent_announcement("Commencing final systems scan in 3 minutes.", ".V")
+	log_game("Distress Signal ARES commencing final system scan in 3 minutes!")
 
 
 
@@ -647,6 +648,7 @@
 		round_finished = MODE_INFESTATION_M_MAJOR
 	else
 		round_finished = MODE_INFESTATION_M_MINOR
+	log_game("Distress Signal Hive collapse!")
 
 /**
  * Checks if the round is over

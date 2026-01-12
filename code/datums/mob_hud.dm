@@ -673,9 +673,8 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 
 /mob/living/carbon/human/proc/sec_hud_set_security_status()
 	var/image/holder = hud_list[WANTED_HUD]
-	holder.icon_state = "hudsec_none"
+	holder.icon_state = "hudblank"
 	criminal = FALSE
-	var/modified = 0
 	var/perpref = null
 
 	if(wear_id)
@@ -690,42 +689,25 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 	for(var/datum/data/record/E in GLOB.data_core.general)
 		if(E.fields["ref"] == perpref)
 			for(var/datum/data/record/R in GLOB.data_core.security)
-				if(R.fields["id"] == E.fields["id"])
-					if(R.fields["criminal"] == "*Arrest*")
-						holder.icon_state = "hudsec_wanted"
-						criminal = TRUE
-						modified = 1
-						break
-					else if(R.fields["criminal"] == "Incarcerated")
-						holder.icon_state = "hudsec_prisoner"
-						criminal = TRUE
-						modified = 1
-						break
-					else if(R.fields["criminal"] == "Released")
-						holder.icon_state = "hudsec_released"
-						criminal = FALSE
-						modified = 1
-						break
-					else if(R.fields["criminal"] == "Suspect")
-						holder.icon_state = "hudsec_suspect"
-						criminal = FALSE
-						modified = 1
-						break
-					else if(R.fields["criminal"] == "NJP")
-						holder.icon_state = "hudsec_njp"
-						criminal = FALSE
-						modified = 1
-						break
-					else if(R.fields["criminal"] == "None")
-						modified = 1
-						holder.icon_state = "hudsec_none"
-						criminal = FALSE
-						break
-		if(!modified)
-			holder.icon_state = "hudsec_unavailable"
-
-
-	//Squad HUD
+				if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == "*Arrest*"))
+					holder.icon_state = "hudsec_wanted"
+					criminal = TRUE
+					break
+				else if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == "Incarcerated"))
+					holder.icon_state = "hudsec_prisoner"
+					criminal = TRUE
+					break
+				else if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == "Released"))
+					holder.icon_state = "hudsec_released"
+					criminal = FALSE
+					break
+				else if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == "Suspect"))
+					holder.icon_state = "hudsec_suspect"
+					break
+				else if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == "NJP"))
+					holder.icon_state = "hudsec_njp"
+					break
+//Squad HUD
 
 /mob/proc/hud_set_squad()
 	return

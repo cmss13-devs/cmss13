@@ -3,15 +3,13 @@
 	faction_tag = FACTION_MARSHAL
 	base_icon_file = 'icons/mob/hud/factions/cmb.dmi'
 
-/datum/faction/cmb/modify_hud_holder(image/holder, mob/living/carbon/human/H)
+/datum/faction/cmb/modify_hud_holder(image/holder, mob/living/carbon/human/human)
 	var/icon/override_icon_file
 	var/hud_icon_state
-	var/obj/item/card/id/ID = H.get_idcard()
-	var/_role
-	if(H.mind)
-		_role = H.job
-	else if(ID)
-		_role = ID.rank
+	var/obj/item/card/id/id_card = human.get_idcard()
+	var/_role = human.job
+	if(!_role && id_card)
+		_role = id_card.rank
 	switch(_role)
 		if(JOB_CMB)
 			hud_icon_state = "dep"
@@ -34,4 +32,4 @@
 		if(JOB_CMB_SWAT)
 			hud_icon_state = "spec"
 	if(hud_icon_state)
-		holder.overlays += image(override_icon_file ? override_icon_file : base_icon_file, H, "cmb_[hud_icon_state]")
+		holder.overlays += image(override_icon_file ? override_icon_file : base_icon_file, human, "cmb_[hud_icon_state]")

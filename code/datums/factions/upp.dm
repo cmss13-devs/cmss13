@@ -6,15 +6,13 @@
 /datum/faction/upp/modify_hud_holder(image/holder, mob/living/carbon/human/human)
 	var/icon/override_icon_file
 	var/hud_icon_state
-	var/obj/item/card/id/ID = human.get_idcard()
 	var/default_color = FALSE //so squad units get red icons as survs and ERT
 	var/datum/squad/squad = human.assigned_squad
 
-	var/_role
-	if(human.mind)
-		_role = human.job
-	else if(ID)
-		_role = ID.rank
+	var/obj/item/card/id/id_card = human.get_idcard()
+	var/_role = human.job
+	if(!_role && id_card)
+		_role = id_card.rank
 	switch(_role)
 		if(JOB_UPP_MEDIC)
 			hud_icon_state = "med"

@@ -9,12 +9,10 @@
 	if(istype(squad))
 		var/squad_clr = current_human.assigned_squad.equipment_color
 		var/marine_rk
-		var/obj/item/card/id/I = current_human.get_idcard()
-		var/_role
-		if(current_human.job)
-			_role = current_human.job
-		else if(I)
-			_role = I.rank
+		var/obj/item/card/id/id_card = current_human.get_idcard()
+		var/_role = current_human.job
+		if(!_role && id_card)
+			_role = id_card.rank
 		switch(GET_DEFAULT_ROLE(_role))
 			if(JOB_SQUAD_ENGI)
 				marine_rk = "engi"
@@ -88,12 +86,10 @@
 	else
 		var/marine_rk
 		var/border_rk
-		var/obj/item/card/id/ID = current_human.get_idcard()
-		var/_role
-		if(current_human.mind)
-			_role = current_human.job
-		else if(ID)
-			_role = ID.rank
+		var/obj/item/card/id/id_card = current_human.get_idcard()
+		var/_role = current_human.job
+		if(!_role && id_card)
+			_role = id_card.rank
 		switch(_role)
 			if(JOB_XO)
 				marine_rk = "xo"

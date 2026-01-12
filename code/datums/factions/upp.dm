@@ -9,10 +9,11 @@
 	var/default_color = FALSE //so squad units get red icons as survs and ERT
 	var/datum/squad/squad = human.assigned_squad
 
-	var/obj/item/card/id/id_card = human.get_idcard()
 	var/_role = human.job
-	if(!_role && id_card)
-		_role = id_card.rank
+	if(!_role)
+		var/obj/item/card/id/id_card = human.get_idcard()
+		if(id_card)
+			_role = id_card.rank
 	switch(_role)
 		if(JOB_UPP_MEDIC)
 			hud_icon_state = "med"

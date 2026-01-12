@@ -579,16 +579,14 @@
 		return
 	if(ROUND_TIME < 10 MINUTES)
 		return
-	var/list/living_player_list = count_humans_and_xenos(get_affected_zlevels())
-	var/num_humans = living_player_list[1]
-	var/num_xenos = living_player_list[2]
-
-	if(force_end_at && world.time > force_end_at)
-		round_finished = MODE_INFESTATION_X_MINOR
 
 	if(SShijack?.sd_detonated)
 		round_finished = MODE_INFESTATION_DRAW_DEATH // Self destruction.
 		return
+
+	var/list/living_player_list = count_humans_and_xenos(get_affected_zlevels())
+	var/num_humans = living_player_list[1]
+	var/num_xenos = living_player_list[2]
 
 	if(!num_humans && num_xenos)
 		round_finished = MODE_INFESTATION_X_MAJOR //No humans remain alive.
@@ -602,6 +600,8 @@
 			addtimer(VARSET_CALLBACK(SSticker, roundend_check_paused, FALSE), MARINE_MAJOR_ROUND_END_DELAY)
 	else if(!num_humans && !num_xenos)
 		round_finished = MODE_INFESTATION_DRAW_DEATH //Both were somehow destroyed.
+	else if (force_end_at && world.time > force_end_at)
+		round_finished = MODE_INFESTATION_X_MINOR // Times up.
 
 /datum/game_mode/colonialmarines/count_humans_and_xenos(list/z_levels)
 	. = ..()

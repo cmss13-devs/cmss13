@@ -682,7 +682,6 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 		if(I)
 			perpref = I.registered_ref
 
-
 	if(!GLOB.data_core)
 		return
 

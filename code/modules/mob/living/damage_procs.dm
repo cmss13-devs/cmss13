@@ -15,7 +15,8 @@
 	Returns
 	standard 0 if fail
 */
-/mob/living/proc/apply_damage(damage = 0, damagetype = BRUTE, def_zone = null, used_weapon = null, sharp = 0, edge = 0, force = FALSE, enviro = FALSE)
+
+/mob/living/proc/apply_damage(damage = 0, damagetype = BRUTE, def_zone = null, used_weapon = null, sharp = 0, edge = 0, force = FALSE, enviro = FALSE , chemical = FALSE)
 	if(!damage)
 		return FALSE
 
@@ -28,7 +29,7 @@
 		if(BRUTE)
 			adjustBruteLoss(damage)
 		if(BURN)
-			adjustFireLoss(damage)
+			adjustFireLoss(damage, chemical)
 		if(TOX)
 			adjustToxLoss(damage)
 		if(OXY)
@@ -46,21 +47,21 @@
 	updatehealth()
 	return 1
 
-/mob/living/proc/apply_damages(brute = 0, burn = 0, tox = 0, oxy = 0, clone = 0, halloss = 0, brain = 0, def_zone = null)
+/mob/living/proc/apply_damages(brute = 0, burn = 0, tox = 0, oxy = 0, clone = 0, halloss = 0, brain = 0, def_zone = null, chemical = FALSE)
 	if(brute)
-		apply_damage(brute, BRUTE, def_zone)
+		apply_damage(brute, BRUTE, def_zone, chemical)
 	if(burn)
-		apply_damage(burn, BURN, def_zone)
+		apply_damage(burn, BURN, def_zone, chemical)
 	if(tox)
-		apply_damage(tox, TOX, def_zone)
+		apply_damage(tox, TOX, def_zone, chemical)
 	if(oxy)
-		apply_damage(oxy, OXY, def_zone)
+		apply_damage(oxy, OXY, def_zone, chemical)
 	if(clone)
-		apply_damage(clone, CLONE, def_zone)
+		apply_damage(clone, CLONE, def_zone, chemical)
 	if(halloss)
-		apply_damage(halloss, HALLOSS, def_zone)
+		apply_damage(halloss, HALLOSS, def_zone, chemical)
 	if(brain)
-		apply_damage(brain, BRAIN, def_zone)
+		apply_damage(brain, BRAIN, def_zone, chemical)
 	return 1
 
 /mob/living/proc/apply_internal_damage(damage = 0, organ)
@@ -104,7 +105,7 @@
 		if(EYE_BLUR)
 			EyeBlur(effect)
 		if(DROWSY)
-			drowsyness = max(drowsyness, effect)
+			drowsiness = max(drowsiness, effect)
 		if(ROOT)
 			Root(effect)
 	updatehealth()
@@ -139,7 +140,7 @@
 		if(EYE_BLUR)
 			AdjustEyeBlur(effect)
 		if(DROWSY)
-			drowsyness = POSITIVE(drowsyness + effect)
+			drowsiness = POSITIVE(drowsiness + effect)
 		if(ROOT)
 			AdjustRoot(effect)
 	updatehealth()
@@ -171,7 +172,7 @@
 		if(EYE_BLUR)
 			SetEyeBlur(effect)
 		if(DROWSY)
-			drowsyness = POSITIVE(effect)
+			drowsiness = POSITIVE(effect)
 		if(ROOT)
 			SetRoot(effect)
 	updatehealth()

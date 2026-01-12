@@ -108,7 +108,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 			topiclimiter[SECOND_COUNT] = 0
 		topiclimiter[SECOND_COUNT] += 1
 		if (topiclimiter[SECOND_COUNT] > stl)
-			to_chat(src, SPAN_DANGER("Your previous action was ignored because you've done too many in a second"))
+			to_chat(src, SPAN_DANGER("Your previous action was ignored because you've done too many in a second."))
 			return
 
 	// Tgui Topic middleware
@@ -168,7 +168,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 			for(var/photo in info.photo_list)
 				usr << browse_rsc(info.photo_list[photo], photo)
 
-		show_browser(usr, "<body class='paper'>[info.data]</body>", "Fax Message", "Fax Message")
+		show_browser(usr, "<body class='paper'>[info.data]</body>", "Fax Message", "Fax Message", width=DEFAULT_PAPER_WIDTH, height=DEFAULT_PAPER_HEIGHT, extra_stylesheets=info.extra_stylesheets, extra_headers=info.extra_headers)
 
 	else if(href_list["medals_panel"])
 		GLOB.medals_panel.tgui_interact(mob)
@@ -323,7 +323,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		to_chat_immediate(src, SPAN_DANGER("<b>Your version of BYOND is too old:</b>"))
 		to_chat_immediate(src, CONFIG_GET(string/client_error_message))
 		to_chat_immediate(src, "Your version: [byond_version].[byond_build]")
-		to_chat_immediate(src, "Required version: [breaking_version].[breaking_build] or later")
+		to_chat_immediate(src, "Required version: [breaking_version].[breaking_build] or later.")
 		to_chat_immediate(src, "Visit <a href=\"https://www.byond.com/download\">BYOND's website</a> to get the latest version of BYOND.")
 		return FALSE
 
@@ -339,7 +339,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 			to_chat(src, SPAN_DANGER("<b>Your version of BYOND may be getting out of date:</b>"))
 			to_chat(src, CONFIG_GET(string/client_warn_message))
 			to_chat(src, "Your version: [byond_version].[byond_build]")
-			to_chat(src, "Required version to remove this message: [warn_version].[warn_build] or later")
+			to_chat(src, "Required version to remove this message: [warn_version].[warn_build] or later.")
 			to_chat(src, "Visit <a href=\"https://www.byond.com/download\">BYOND's website</a> to get the latest version of BYOND.")
 
 	if (num2text(byond_build) in GLOB.blacklisted_builds)
@@ -468,10 +468,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if(CONFIG_GET(flag/ooc_country_flags))
 		spawn if(src)
 			ip2country(address, src)
-
-	spawn(-1)
-		if(SScmtv.is_subscriber(src))
-			add_verb(src, /client/proc/set_ooc_color_self)
 
 	//////////////
 	//DISCONNECT//

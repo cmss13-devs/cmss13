@@ -68,7 +68,7 @@ Additional game mode variables.
 	//Some gameplay variables.
 	var/round_checkwin = 0
 	var/round_finished
-	var/round_started = 5 //This is a simple timer so we don't accidently check win conditions right in post-game
+	var/round_started = 5 //This is a simple timer so we don't accidentally check win conditions right in post-game
 	var/list/round_toxic_river = list() //List of all toxic river locations
 	var/round_time_lobby //Base time for the lobby, for fog dispersal.
 	var/round_time_river
@@ -110,20 +110,21 @@ Additional game mode variables.
 	var/round_modifiers = list()
 	///List of typepaths of all /datum/gamemode_modifiers that start enabled
 	var/starting_round_modifiers = list()
-
+	/// The current acting commander; set by ares_command_check()
+	var/acting_commander
 
 /datum/game_mode/proc/get_roles_list()
 	return GLOB.ROLES_USCM
 
 //===================================================\\
 
-				//GAME MODE INITIATLIZE\\
+				//GAME MODE INITIALIZE\\
 
 //===================================================\\
 
 /datum/game_mode/proc/initialize_special_clamps()
 	xeno_starting_num = clamp((GLOB.readied_players/CONFIG_GET(number/xeno_number_divider)), xeno_required_num, INFINITY) //(n, minimum, maximum)
-	surv_starting_num = clamp((GLOB.readied_players/CONFIG_GET(number/surv_number_divider)), 2, 8) //this doesnt run
+	surv_starting_num = clamp((GLOB.readied_players/CONFIG_GET(number/surv_number_divider)), 2, 8) //this doesn't run
 	marine_starting_num = length(GLOB.player_list) - xeno_starting_num - surv_starting_num
 	for(var/datum/squad/target_squad in GLOB.RoleAuthority.squads)
 		if(target_squad)
@@ -138,7 +139,7 @@ Additional game mode variables.
 
 //===================================================\\
 
-				//PREDATOR INITIATLIZE\\
+				//PREDATOR INITIALIZE\\
 
 //===================================================\\
 
@@ -373,7 +374,7 @@ Additional game mode variables.
 
 //===================================================\\
 
-			//XENOMORPH INITIATLIZE\\
+			//XENOMORPH INITIALIZE\\
 
 //===================================================\\
 
@@ -484,6 +485,8 @@ Additional game mode variables.
 		var/required_leave_time = islarva(cur_xeno) ? XENO_LEAVE_TIMER_LARVA : XENO_LEAVE_TIMER
 		var/min_time = instant_join ? 0 : XENO_AVAILABLE_TIMER
 		if(required_leave_time - cur_xeno.away_timer > min_time)
+			continue
+		if(isfacehugger(cur_xeno) || islesserdrone(cur_xeno))
 			continue
 		available_xenos += cur_xeno
 
@@ -865,7 +868,7 @@ Additional game mode variables.
 
 //===================================================\\
 
-			//SURVIVOR INITIATLIZE\\
+			//SURVIVOR INITIALIZE\\
 
 //===================================================\\
 
@@ -1040,11 +1043,11 @@ Additional game mode variables.
 
 //===================================================\\
 
-			//MARINE GEAR INITIATLIZE\\
+			//MARINE GEAR INITIALIZE\\
 
 //===================================================\\
 
-//We do NOT want to initilialize the gear before everyone is properly spawned in
+//We do NOT want to initialize the gear before everyone is properly spawned in
 /datum/game_mode/proc/initialize_post_marine_gear_list()
 	init_gear_scale()
 
@@ -1052,6 +1055,12 @@ Additional game mode variables.
 	for(var/i in GLOB.cm_vending_vendors)
 		var/obj/structure/machinery/cm_vending/sorted/CVS = i
 		CVS.populate_product_list_and_boxes(gear_scale)
+
+	for(var/chem_storage_network in GLOB.chemical_data.chemical_networks)
+		var/obj/structure/machinery/chem_storage/chem_storage = GLOB.chemical_data.chemical_networks[chem_storage_network]
+		if(!chem_storage.dynamic_storage)
+			continue
+		chem_storage.calculate_dynamic_storage(gear_scale)
 
 	//Scale the amount of cargo points through a direct multiplier
 	GLOB.supply_controller.points += floor(GLOB.supply_controller.points_scale * gear_scale)
@@ -1082,6 +1091,11 @@ Additional game mode variables.
 		gear_scale_max = gear_scale
 		for(var/obj/structure/machinery/cm_vending/sorted/vendor as anything in GLOB.cm_vending_vendors)
 			vendor.update_dynamic_stock(gear_scale_max)
+		for(var/chem_storage_network in GLOB.chemical_data.chemical_networks)
+			var/obj/structure/machinery/chem_storage/chem_storage = GLOB.chemical_data.chemical_networks[chem_storage_network]
+			if(!chem_storage.dynamic_storage)
+				continue
+			chem_storage.calculate_dynamic_storage(gear_scale)
 		GLOB.supply_controller.points += floor(gear_delta * GLOB.supply_controller.points_scale)
 
 /// Updates [var/latejoin_tally] and [var/gear_scale] based on role weights of latejoiners/cryoers. Delta is the amount of role positions added/removed

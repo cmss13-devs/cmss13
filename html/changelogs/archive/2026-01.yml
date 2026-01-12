@@ -75,3 +75,11 @@
       swiping their IDs.
   Thwomper, Nivrak:
   - rscadd: Adds roof/sky Z-Level to all ground maps.
+2026-01-12:
+  Puckaboo2:
+  - bugfix: Removes the random chance that Hunted Freelancers only spawn with beanbags
+      with their Type-23.
+  Xander3359:
+  - qol: Switching hands unwields.
+  aquariofury:
+  - balance: Players can no longer fire weapons while looking up or down ladders

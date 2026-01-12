@@ -201,6 +201,9 @@ can cause issues with ammo types getting mixed up during the burst.
 			if(gun_user.throw_mode)
 				return FALSE
 
+			if(gun_user.a_intent != INTENT_HARM)
+				return FALSE
+
 			if(QDELETED(object))
 				return FALSE
 

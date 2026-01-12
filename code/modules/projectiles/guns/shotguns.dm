@@ -188,16 +188,22 @@ can cause issues with ammo types getting mixed up during the burst.
 			var/list/modifiers = params2list(params)
 			if(modifiers[CTRL_CLICK] || modifiers[SHIFT_CLICK] || modifiers[MIDDLE_CLICK] || modifiers[RIGHT_CLICK] || modifiers[BUTTON4] || modifiers[BUTTON5])
 				return FALSE
+
 			if(!gun_user)
 				set_gun_user(source)
+
 			if(gun_user == object)
 				return FALSE
+
 			if(gun_user.get_active_hand() != src)
 				return FALSE
+
 			if(gun_user.throw_mode)
 				return FALSE
+
 			if(QDELETED(object))
 				return FALSE
+
 			INVOKE_ASYNC(src, PROC_REF(attack), object, gun_user)
 			return COMSIG_MOB_CLICK_HANDLED
 	. = ..()

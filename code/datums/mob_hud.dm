@@ -660,7 +660,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 	if(wear_id)
 		var/obj/item/card/id/I = wear_id.GetID()
 		if(I)
-			if(I.faction == FACTION_MARINE || I.faction == FACTION_MARSHAL)
+			if((FACTION_MARINE in I.faction_group) || (FACTION_MARSHAL in I.faction_group))
 				if(I.registered_name == real_name) //I am a member of the USCM!
 					holder.icon_state = "hudsec_confirmed"
 				else

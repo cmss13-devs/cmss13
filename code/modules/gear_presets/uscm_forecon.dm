@@ -84,7 +84,6 @@
 	assignment = JOB_FORECON_RIFLEMAN
 	job_title = JOB_SQUAD_MARINE
 	role_comm_title = "RFN"
-	minimap_icon = "private"
 	skills = /datum/skills/military/survivor/forecon_standard
 
 /datum/equipment_preset/uscm/forecon/standard/load_gear(mob/living/carbon/human/new_human)

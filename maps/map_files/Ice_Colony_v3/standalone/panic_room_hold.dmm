@@ -274,6 +274,10 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/shiva/snow_mat/east,
 /area/shiva/interior/colony/botany)
+"aM" = (
+/obj/structure/bed/bedroll,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/s_admin)
 "ba" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/alarm{
@@ -2185,7 +2189,7 @@ tD
 RQ
 uP
 IQ
-fj
+aM
 Bv
 MG
 WA

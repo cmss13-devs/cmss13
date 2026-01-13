@@ -1406,6 +1406,13 @@
 /obj/effect/landmark/spycam_start,
 /turf/open/floor/asteroidwarning/west,
 /area/bigredv2/outside/space_port)
+"afq" = (
+/obj/item/clothing/suit/storage/CMB{
+	pixel_x = -6;
+	pixel_y = -10
+	},
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves)
 "afr" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 4
@@ -1510,6 +1517,10 @@
 /obj/structure/bed/chair/office/dark,
 /turf/open/floor/dark,
 /area/bigredv2/outside/telecomm)
+"afK" = (
+/obj/effect/spawner/random/claymore/highchance,
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves)
 "afL" = (
 /obj/structure/showcase{
 	icon_state = "broadcaster_send";
@@ -1520,6 +1531,13 @@
 "afM" = (
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/outside/space_port)
+"afN" = (
+/obj/item/clothing/suit/armor/riot{
+	pixel_y = -5;
+	pixel_x = -4
+	},
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves)
 "afO" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/delivery,
@@ -59477,7 +59495,7 @@ aao
 aao
 agE
 afR
-ahq
+afq
 aao
 aao
 aao
@@ -59694,7 +59712,7 @@ aao
 agR
 agF
 afR
-ahU
+afK
 aao
 tjX
 dgQ
@@ -59911,7 +59929,7 @@ aho
 ahg
 agG
 afR
-ahU
+afK
 aao
 xqW
 vHU
@@ -60128,7 +60146,7 @@ aao
 ahh
 agI
 agp
-ahW
+afN
 aao
 psI
 dQR

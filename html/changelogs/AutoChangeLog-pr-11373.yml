@@ -1,5 +1,0 @@
-author: "Puckaboo2"
-delete-after: True
-changes:
-  - soundtweak: "Renamed files where 'acquired' was misspelled."
-  - spellcheck: "The word 'acquired' is no longer misspelled anywhere."

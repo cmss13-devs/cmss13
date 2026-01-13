@@ -274,10 +274,6 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/shiva/snow_mat/east,
 /area/shiva/interior/colony/botany)
-"aM" = (
-/obj/structure/bed/bedroll,
-/turf/open/floor/shiva/floor3,
-/area/shiva/interior/colony/s_admin)
 "ba" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/alarm{
@@ -437,6 +433,10 @@
 /obj/structure/surface/table,
 /obj/item/weapon/gun/rifle/m16,
 /turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"gL" = (
+/obj/structure/bed/bedroll,
+/turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/s_admin)
 "gO" = (
 /obj/structure/window/reinforced/tinted{
@@ -2189,7 +2189,7 @@ tD
 RQ
 uP
 IQ
-aM
+gL
 Bv
 MG
 WA

@@ -106,9 +106,6 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	is_weedable = NOT_WEEDABLE
 	density = TRUE
 
-/turf/open_space/is_weedable()
-	return NOT_WEEDABLE
-
 /turf/open_space/blackfoot
 	var/target_x = 1
 	var/target_y = 1
@@ -152,6 +149,7 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 
 	movable.forceMove(below)
 	movable.onZImpact(below, height)
+
 /turf/solid_open_space/Initialize()
 	ADD_TRAIT(src, TURF_Z_TRANSPARENT_TRAIT, TRAIT_SOURCE_INHERENT)
 	icon_state = "transparent"

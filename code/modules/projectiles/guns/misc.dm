@@ -360,6 +360,13 @@
 	H.put_in_active_hand(pill_to_use)
 
 /obj/item/weapon/gun/pill/Fire(atom/target, mob/living/user, params, reflex, dual_wield)
+	// Check if watching a ladder
+	if(user.interactee && istype(user.interactee, /obj/structure/ladder))
+		var/obj/structure/ladder/ladder = user.interactee
+		if(ladder.is_watching)
+			to_chat(user, SPAN_WARNING("You can't shoot while looking from the ladder!"))
+			return NONE
+
 	if(!able_to_fire(user))
 		return NONE
 

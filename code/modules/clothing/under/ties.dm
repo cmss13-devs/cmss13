@@ -954,7 +954,7 @@
 
 /obj/item/clothing/accessory/storage/black_vest/brown_vest
 	name = "brown webbing vest"
-	desc = "Worn brownish synthcotton vest with five pockets to hold whatever you need,"
+	desc = "Worn brownish synthcotton vest with five pockets to hold whatever you need."
 	icon_state = "vest_brown"
 
 /obj/item/clothing/accessory/storage/black_vest/owlf_vest

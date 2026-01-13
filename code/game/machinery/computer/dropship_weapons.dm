@@ -393,7 +393,7 @@
 				return TRUE
 
 		if("firemission-create")
-			var/name = params["firemission_name"]
+			var/name = strip_html(params["firemission_name"], MAX_NAME_LEN)
 			var/length = params["firemission_length"]
 			var/length_n = text2num(length)
 			if(!length_n)

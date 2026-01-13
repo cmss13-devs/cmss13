@@ -34,6 +34,8 @@
 			hud_icon_state = "mar"
 		if(JOB_CMB_SWAT)
 			hud_icon_state = "spec"
+
+	//Anchorpoint Marines
 		if(JOB_SQUAD_MARINE)
 			hud_icon_state = "grunt"
 			anchorpoint_marine = TRUE

@@ -1,7 +1,13 @@
 
 /datum/equipment_preset/survivor/scientist/fiorina
 	name = "Survivor - Fiorina Researcher"
-	assignment = "Fiorina Researcher"
+	assignment = JOB_WY_RESEARCHER
+	job_title = JOB_WY_RESEARCHER
+	minimap_background = "background_goon"
+	minimap_icon = "goon_research"
+	idtype = /obj/item/card/id/silver/cl
+	faction = FACTION_WY
+	faction_group = FACTION_LIST_SURVIVOR_WY
 
 /datum/equipment_preset/survivor/scientist/fiorina/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/workwear/pink(new_human), WEAR_BODY)
@@ -18,7 +24,14 @@
 
 /datum/equipment_preset/survivor/doctor/fiorina
 	name = "Survivor - Fiorina Doctor"
-	assignment = "Fiorina Doctor"
+	assignment = JOB_WY_GOON_MEDIC
+	job_title = JOB_WY_GOON_MEDIC
+	minimap_background = "background_goon"
+	minimap_icon = "goon_med"
+	idtype = /obj/item/card/id/silver/cl
+	faction = FACTION_WY
+	faction_group = FACTION_LIST_SURVIVOR_WY
+
 
 /datum/equipment_preset/survivor/doctor/fiorina/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical/lightblue(new_human), WEAR_BODY)
@@ -53,7 +66,7 @@
 	assignment = "United Americas Riot Officer"
 	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/silver
-	job_title = JOB_SURVIVOR
+	job_title = JOB_CMB_RIOT
 	role_comm_title = "UA RO"
 	faction = FACTION_LIST_SURVIVOR_UA
 	minimap_icon = "rmp"

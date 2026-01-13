@@ -4,9 +4,11 @@
 	name = "Survivor - Colonial Marshal"
 	faction = FACTION_MARSHAL
 	faction_group = FACTION_LIST_SURVIVOR_UA
+	role_comm_title = "CMB"
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	var/human_versus_human = FALSE
 	minimap_background = "background_cmb"
+	minimap_icon = "cmp"
 	access = list(
 		ACCESS_LIST_UA,
 	)

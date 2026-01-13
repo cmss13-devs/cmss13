@@ -185,6 +185,35 @@
 
 	INVOKE_ASYNC(crosser, TYPE_PROC_REF(/atom/movable, throw_atom), (get_step(src, dir)), 50, SPEED_FAST, null, TRUE)
 
+/turf/open/slippery/hull
+	name = "sloped roof"
+	icon = 'icons/turf/almayer.dmi'
+	icon_state = "outerhull"
+
+/turf/open/slippery/hull/dir
+	icon_state = "outerhull_dir"
+
+/turf/open/slippery/hull/dir/southwest
+	dir = SOUTHWEST
+
+/turf/open/slippery/hull/dir/north
+	dir = NORTH
+
+/turf/open/slippery/hull/dir/east
+	dir = EAST
+
+/turf/open/slippery/hull/dir/northeast
+	dir = NORTHEAST
+
+/turf/open/slippery/hull/dir/southeast
+	dir = SOUTHEAST
+
+/turf/open/slippery/hull/dir/west
+	dir = WEST
+
+/turf/open/slippery/hull/dir/northwest
+	dir = NORTHWEST
+
 
 // Prison grass
 /turf/open/organic/grass

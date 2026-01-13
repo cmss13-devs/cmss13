@@ -28,6 +28,26 @@
 /obj/structure/interior_exit/vehicle/apc/rear/right
 	icon_state = "door_rear_right"
 
+/obj/structure/interior_wall/apc_pmc
+	name = "\improper APC interior wall"
+	icon = 'icons/obj/vehicles/interiors/apc_pmc.dmi'
+	icon_state = "apc_right_1"
+
+/obj/structure/interior_exit/vehicle/apc_pmc
+	name = "APC side door"
+	icon = 'icons/obj/vehicles/interiors/apc_pmc.dmi'
+	icon_state = "exit_door"
+
+/obj/structure/interior_exit/vehicle/apc_pmc/rear
+	name = "APC rear hatch"
+	icon_state = "door_rear_center"
+
+/obj/structure/interior_exit/vehicle/apc_pmc/rear/left
+	icon_state = "door_rear_left"
+
+/obj/structure/interior_exit/vehicle/apc_pmc/rear/right
+	icon_state = "door_rear_right"
+
 /obj/structure/prop/vehicle
 	name = "Generic vehicle prop"
 	desc = "Adds more flavour to vehicle interior."
@@ -42,7 +62,7 @@
 
 /obj/structure/prop/vehicle/firing_port_weapon
 	name = "M56 FPW handle"
-	desc = "A control handle for a modified M56B Smartgun installed on the sides of M577 Armored Personnel Carrier as a Firing Port Weapon. \
+	desc = "A control handle for a modified M56A2 Smartgun installed on the sides of M577 Armored Personnel Carrier as a Firing Port Weapon. \
 	Used by support gunners to cover friendly infantry entering or exiting APC via side doors. \
 	For ease of use, firing ports are marked with green (right side) and red (left side) marks. \
 	Do not be mistaken however, this is not a piece of an actual weapon, but a joystick made in a familiar to marines form."

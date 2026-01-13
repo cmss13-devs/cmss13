@@ -56,11 +56,14 @@
 /// PMC-VS, Vehicle Specialist
 #define PAY_SHORT_PMC_VS "PMC-VS"
 
-/// PMC-XS, Xeno Specialist (Handler)
-#define PAY_SHORT_PMC_XS "PMC-XS"
+/// PMC-CCS, Crowd Control Specialist
+#define PAY_SHORT_PMC_CCS "PMC-CCS"
 
 /// PMC-TL, Team Leader
 #define PAY_SHORT_PMC_TL "PMC-TL"
+
+/// PMC-FOL, Field Operations Leader
+#define PAY_SHORT_PMC_FOL "PMC-FOL"
 
 /// PMC-DOC, Trauma Surgeon
 #define PAY_SHORT_PMC_DOC "PMC-DOC"
@@ -82,3 +85,17 @@
 
 /// PMC-DIR, PMC Director
 #define PAY_SHORT_PMC_DIR "PMC-DIR"
+
+// Weyland Yutani Commandos
+
+/// WY-COM, Weyland-Yutani Commando
+#define PAY_SHORT_WY_COM "WY-COM"
+
+/// WY-COMLD Weyland-Yutani Commando Leader
+#define PAY_SHORT_WY_COMLD "WY-COMLD"
+
+/// WY-GUN, Weyland-Yutani Commando Gunner
+#define PAY_SHORT_WY_GUN "WY-GUN"
+
+/// WY-DOG, Weyland-Yutani Dog Catcher
+#define PAY_SHORT_WY_DOG "WY-DOG"

@@ -5,8 +5,12 @@
  */
 
 import { classes } from 'common/react';
-import { ComponentProps, useEffect, useRef } from 'react';
-import { Box, computeBoxClassName, computeBoxProps } from 'tgui/components/Box';
+import { type ComponentProps, useEffect, useRef } from 'react';
+import {
+  type Box,
+  computeBoxClassName,
+  computeBoxProps,
+} from 'tgui/components/Box';
 import { addScrollableNode, removeScrollableNode } from 'tgui/events';
 
 type Props = Partial<{
@@ -16,10 +20,14 @@ type Props = Partial<{
 
 export function Layout(props: Props) {
   const { className, theme = 'weyland_yutani', children, ...rest } = props;
-  document.documentElement.className = `theme-${theme}`;
+  const themeClass = `theme-${theme}`;
+
+  useEffect(() => {
+    document.documentElement.className = themeClass;
+  }, [themeClass]);
 
   return (
-    <div className={'theme-' + theme}>
+    <div className={themeClass}>
       <div
         className={classes(['Layout', className, computeBoxClassName(rest)])}
         {...computeBoxProps(rest)}

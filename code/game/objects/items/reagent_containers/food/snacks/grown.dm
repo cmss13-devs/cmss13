@@ -75,6 +75,56 @@
 	plantname = "poppies"
 	black_market_value = 25
 
+/obj/item/reagent_container/food/snacks/grown/nettle
+	plantname = "nettle"
+	desc = "It's probably wise to <B>not touch it with your bare hands...</B>"
+	name = "nettle"
+	icon_state = "nettle"
+	damtype = "fire"
+	force = 15
+	flags_atom = NO_FLAGS
+	throwforce = 1
+	w_class = SIZE_SMALL
+	throw_speed = SPEED_FAST
+	throw_range = 3
+
+	attack_verb = list("stung")
+	hitsound = ""
+
+	var/potency_divisior = 5
+
+/obj/item/reagent_container/food/snacks/grown/nettle/Initialize()
+	. = ..()
+	force = round((5+potency/potency_divisior), 1)
+
+/obj/item/reagent_container/food/snacks/grown/nettle/pickup(mob/living/carbon/human/user, silent)
+	. = ..()
+	if(!istype(user) || user.gloves)
+		return FALSE
+
+	to_chat(user, SPAN_DANGER("The nettle burns your bare hand!"))
+	var/obj/limb/affecting = user.get_limb(user.hand ? "l_hand":"r_hand")
+	affecting.take_damage(0, force)
+	return TRUE
+
+/obj/item/reagent_container/food/snacks/grown/nettle/death
+	plantname = "deathnettle"
+	desc = "The glowing nettle incites <B>rage</B> in you just from looking at it!"
+	name = "deathnettle"
+	icon_state = "deathnettle"
+
+	potency_divisior = 2.5
+
+/obj/item/reagent_container/food/snacks/grown/nettle/death/On_Consume(mob/living/carbon/human/user)
+	. = ..()
+	user.apply_internal_damage(potency/potency_divisior, user.internal_organs_by_name["liver"])
+
+/obj/item/reagent_container/food/snacks/grown/nettle/death/pickup(mob/living/carbon/human/user)
+
+	if(..() && prob(50))
+		user.apply_effect(5, PARALYZE)
+		to_chat(user, SPAN_DANGER("You are stunned by the deathnettle as you try to pick it up!"))
+
 /obj/item/reagent_container/food/snacks/grown/harebell
 	name = "harebell"
 	desc = "\"I'll sweeten thy sad grave: thou shalt not lack the flower that's like thy face, pale primrose, nor the azured hare-bell, like thy veins; no, nor the leaf of eglantine, whom not to slander, out-sweeten'd not thy breath.\""
@@ -131,7 +181,7 @@
 
 /obj/item/reagent_container/food/snacks/grown/plastellium
 	name = "clump of plastellium"
-	desc = "Hmm, needs some processing"
+	desc = "Hmm, needs some processing."
 	icon_state = "plastellium"
 	filling_color = "#C4C4C4"
 	plantname = "plastic"
@@ -392,7 +442,7 @@
 
 	if(istype(user.loc,/turf/open/space))
 		return
-	new /mob/living/simple_animal/tomato(user.loc)
+	new /mob/living/simple_animal/small/tomato(user.loc)
 	qdel(src)
 
 	to_chat(user, SPAN_NOTICE("You plant the killer-tomato."))
@@ -463,7 +513,7 @@
 
 /obj/item/reagent_container/food/snacks/grown/icepepper
 	name = "ice-pepper"
-	desc = "It's a mutant strain of chili"
+	desc = "It's a mutant strain of chili."
 	icon_state = "icepepper"
 	potency = 20
 	filling_color = "#66CEED"
@@ -511,7 +561,7 @@
 
 /obj/item/reagent_container/food/snacks/grown/mushroom/plumphelmet
 	name = "plump-helmet"
-	desc = "<I>Plumus Hellmus</I>: Plump, soft and s-so inviting~"
+	desc = "<I>Plumus Hellmus</I>: A purple plump mushroom. Decent for baking."
 	icon_state = "plumphelmet"
 	filling_color = "#F714BE"
 	plantname = "plumphelmet"

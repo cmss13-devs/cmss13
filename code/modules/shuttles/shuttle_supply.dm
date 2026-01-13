@@ -17,6 +17,28 @@
 			GLOB.supply_controller.supply_elevator = get_turf(src)
 	return INITIALIZE_HINT_QDEL
 
+/obj/effect/landmark/supply_elevator/LateInitialize()
+	. = ..()
+	GLOB.supply_controller_upp.supply_elevator = get_turf(src)
+	var/datum/shuttle/ferry/supply/shuttle = SSoldshuttle.shuttle_controller.shuttles["Supply upp"]
+	if(shuttle.pick_loc())
+		shuttle.Elevator_x = shuttle.pick_loc().x
+		shuttle.Elevator_y = shuttle.pick_loc().y
+		shuttle.Elevator_z = shuttle.pick_loc().z
+		shuttle.SW = new /obj/effect/elevator(locate(shuttle.Elevator_x-2,shuttle.Elevator_y-2,shuttle.Elevator_z))
+		shuttle.SW.vis_contents += shuttle.elevator_animation
+		shuttle.SE = new /obj/effect/elevator(locate(shuttle.Elevator_x+2,shuttle.Elevator_y-2,shuttle.Elevator_z))
+		shuttle.SE.pixel_x = -128
+		shuttle.SE.vis_contents += shuttle.elevator_animation
+		shuttle.NW = new /obj/effect/elevator(locate(shuttle.Elevator_x-2,shuttle.Elevator_y+2,shuttle.Elevator_z))
+		shuttle.NW.pixel_y = -128
+		shuttle.NW.vis_contents += shuttle.elevator_animation
+		shuttle.NE = new /obj/effect/elevator(locate(shuttle.Elevator_x+2,shuttle.Elevator_y+2,shuttle.Elevator_z))
+		shuttle.NE.pixel_x = -128
+		shuttle.NE.pixel_y = -128
+		shuttle.NE.vis_contents += shuttle.elevator_animation
+	return INITIALIZE_HINT_QDEL
+
 
 
 /datum/shuttle/ferry/supply
@@ -124,7 +146,7 @@
 
 		for(var/turf/vis_turf in elevator_animation.vis_contents)
 			for(var/atom/movable/vis_content in vis_turf.contents)
-				vis_content.blocks_emissive = FALSE
+				vis_content.blocks_emissive = EMISSIVE_BLOCK_NONE
 				vis_content.update_emissive_block()
 
 		//If we are at the away_area then we are just pretending to move, otherwise actually do the move

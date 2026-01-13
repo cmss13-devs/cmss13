@@ -37,7 +37,6 @@
 	flags_atom |= USES_HEARING
 
 /obj/structure/closet/Destroy()
-	dump_contents()
 	GLOB.closet_list -= src
 	return ..()
 
@@ -90,21 +89,22 @@
 				M.visible_message(SPAN_WARNING("[M] suddenly gets out of [src]!"),
 				SPAN_WARNING("You get out of [src] and get your bearings!"))
 
-/obj/structure/closet/proc/open()
+/// Attempts to open this closet by user, skipping checks that prevent opening if forced
+/obj/structure/closet/proc/open(mob/user, force)
 	if(opened)
-		return 0
+		return FALSE
 
-	if(!can_open())
-		return 0
+	if(!force && !can_open())
+		return FALSE
 
 	dump_contents()
 
 	UnregisterSignal(src, COMSIG_CLOSET_FLASHBANGED)
-	opened = 1
+	opened = TRUE
 	update_icon()
-	playsound(src.loc, open_sound, 15, 1)
+	playsound(loc, open_sound, 15, 1)
 	density = FALSE
-	return 1
+	return TRUE
 
 /obj/structure/closet/proc/close(mob/user)
 	if(!src.opened)
@@ -159,7 +159,7 @@
 
 /obj/structure/closet/proc/toggle(mob/living/user)
 	user.next_move = world.time + 5
-	if(!(src.opened ? src.close(user) : src.open()))
+	if(!(opened ? close(user) : open(user)))
 		to_chat(user, SPAN_NOTICE("It won't budge!"))
 	return
 
@@ -170,14 +170,9 @@
 
 	health = max(health - damage, 0)
 	if(health <= 0)
-		for(var/atom/movable/movable as anything in src)
-			if(!loc)
-				break
-			movable.forceMove(loc)
 		playsound(loc, 'sound/effects/meteorimpact.ogg', 25, 1)
-		qdel(src)
+		deconstruct(FALSE)
 
-// this should probably use dump_contents()
 /obj/structure/closet/ex_act(severity)
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
@@ -191,6 +186,10 @@
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			contents_explosion(severity - EXPLOSION_THRESHOLD_LOW)
 			deconstruct(FALSE)
+
+/obj/structure/closet/deconstruct(disassembled = TRUE)
+	dump_contents()
+	return ..()
 
 /obj/structure/closet/proc/flashbang(datum/source, obj/item/explosive/grenade/flashbang/FB)
 	SIGNAL_HANDLER
@@ -208,81 +207,82 @@
 /obj/structure/closet/attack_animal(mob/living/user)
 	if(user.wall_smash)
 		visible_message(SPAN_DANGER("[user] destroys [src]."))
-		for(var/atom/movable/A as mob|obj in src)
-			A.forceMove(src.loc)
-		qdel(src)
+		deconstruct(FALSE)
 
-/obj/structure/closet/attackby(obj/item/W, mob/living/user)
-	if(src.opened)
-		if(istype(W, /obj/item/grab))
+/obj/structure/closet/attackby(obj/item/attacking_item, mob/living/user, list/mods)
+	if(opened)
+		if(istype(attacking_item, /obj/item/grab))
 			if(isxeno(user))
-				return
-			var/obj/item/grab/G = W
-			if(G.grabbed_thing)
-				src.MouseDrop_T(G.grabbed_thing, user)   //act like they were dragged onto the closet
-			return
-		if(W.flags_item & ITEM_ABSTRACT)
-			return 0
+				return FALSE
+			var/obj/item/grab/grab = attacking_item
+			if(grab.grabbed_thing)
+				MouseDrop_T(grab.grabbed_thing, user) //act like they were dragged onto the closet
+			return FALSE
+		if(attacking_item.flags_item & ITEM_ABSTRACT)
+			return FALSE
 		if(material == MATERIAL_METAL)
-			if(iswelder(W))
-				if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+			if(iswelder(attacking_item))
+				if(!HAS_TRAIT(attacking_item, TRAIT_TOOL_BLOWTORCH))
 					to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
-					return
-				var/obj/item/tool/weldingtool/WT = W
-				if(!WT.isOn())
-					to_chat(user, SPAN_WARNING("\The [WT] needs to be on!"))
-					return
-				if(!WT.remove_fuel(0 ,user))
+					return FALSE
+				var/obj/item/tool/weldingtool/torch = attacking_item
+				if(!torch.isOn())
+					to_chat(user, SPAN_WARNING("[torch] needs to be on!"))
+					return FALSE
+				if(!torch.remove_fuel(0 ,user))
 					to_chat(user, SPAN_NOTICE("You need more welding fuel to complete this task."))
-					return
+					return FALSE
 				playsound(src, 'sound/items/Welder.ogg', 25, 1)
-				if(!do_after(user, 10 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					return
-				new /obj/item/stack/sheet/metal(src.loc)
-				for(var/mob/M as anything in viewers(src))
-					M.show_message(SPAN_NOTICE("\The [src] has been cut apart by [user] with [WT]."), SHOW_MESSAGE_VISIBLE, "You hear welding.", SHOW_MESSAGE_AUDIBLE)
+				if(!do_after(user, 10 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
+					return FALSE
+				new /obj/item/stack/sheet/metal(loc)
+				visible_message(SPAN_NOTICE("[src] has been cut apart by [user] with [torch]."),
+				SPAN_NOTICE("You hear welding."))
 				qdel(src)
-				return
+				return FALSE
 		if(material == MATERIAL_WOOD)
-			if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
+			if(HAS_TRAIT(attacking_item, TRAIT_TOOL_CROWBAR))
 				playsound(src, 'sound/effects/woodhit.ogg')
-				if(!do_after(user, 10 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					return
-				new /obj/item/stack/sheet/wood(src.loc)
-				user.visible_message(SPAN_NOTICE("[user] has pried apart [src] with [W]."), "You pry apart [src].")
+				if(!do_after(user, 10 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
+					return FALSE
+				new /obj/item/stack/sheet/wood(loc)
+				user.visible_message(SPAN_NOTICE("[user] has pried apart [src] with [attacking_item]."), "You pry apart [src].")
 				qdel(src)
-				return
-		user.drop_inv_item_to_loc(W,loc)
+				return FALSE
+		user.drop_inv_item_to_loc(attacking_item,loc)
 
-	else if(istype(W, /obj/item/packageWrap) || istype(W, /obj/item/explosive/plastic))
-		return
-	else if(iswelder(W))
+	//If we're trying to label a crate, label it, don't open it. The code that lets a hand labeler label crates but not lockers is in misc_tools.dm
+	else if(istype(attacking_item, /obj/item/tool/hand_labeler))
+		return FALSE
+	else if(istype(attacking_item, /obj/item/packageWrap) || istype(attacking_item, /obj/item/explosive/plastic))
+		return FALSE
+	else if(iswelder(attacking_item))
 		if(material != MATERIAL_METAL && material != MATERIAL_PLASTEEL)
 			to_chat(user, SPAN_WARNING("You cannot weld [material]!"))
 			return FALSE//Can't weld wood/plastic.
-		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+		if(!HAS_TRAIT(attacking_item, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 			return FALSE
-		var/obj/item/tool/weldingtool/WT = W
-		if(!WT.isOn())
-			to_chat(user, SPAN_WARNING("\The [WT] needs to be on!"))
+		var/obj/item/tool/weldingtool/torch = attacking_item
+		if(!torch.isOn())
+			to_chat(user, SPAN_WARNING("[torch] needs to be on!"))
 			return FALSE
-		if(!WT.remove_fuel(0, user))
-			to_chat(user, SPAN_NOTICE("You need more welding fuel to complete this task."))
+		if(!torch.remove_fuel(1, user))
+			to_chat(user, SPAN_WARNING("You need more welding fuel to complete this task."))
 			return FALSE
 		playsound(src, 'sound/items/Welder.ogg', 25, 1)
 		if(!do_after(user, 10 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			return FALSE
 		welded = !welded
 		update_icon()
-		for(var/mob/M as anything in viewers(src))
-			M.show_message(SPAN_WARNING("[src] has been [welded?"welded shut":"unwelded"] by [user.name]."), SHOW_MESSAGE_VISIBLE, "You hear welding.", SHOW_MESSAGE_AUDIBLE)
+		visible_message(SPAN_NOTICE("[src] has been [welded?"welded shut":"unwelded"] by [user.name]."),
+		SPAN_NOTICE("You hear welding."))
 	else
 		if(isxeno(user))
 			var/mob/living/carbon/xenomorph/opener = user
-			src.attack_alien(opener)
+			attack_alien(opener)
 			return FALSE
-		src.attack_hand(user)
+		attack_hand(user)
 	return TRUE
 
 /obj/structure/closet/MouseDrop_T(atom/movable/O, mob/user)
@@ -327,10 +327,10 @@
 	if(istype(I) && (I.pry_capable == IS_PRY_CAPABLE_FORCE))
 		visible_message(SPAN_DANGER("[user] smashes out of the locker!"))
 		playsound(loc, 'sound/effects/metal_crash.ogg', 75)
-		qdel(src)
+		deconstruct(FALSE)
 		return
 
-	if(!src.open())
+	if(!open(user))
 		to_chat(user, SPAN_NOTICE("It won't budge!"))
 		if(!lastbang)
 			lastbang = 1
@@ -380,10 +380,10 @@
 			proxy_object_heard(src, M, TM, text, verb, language, italics)
 #endif // ifdef OBJECTS_PROXY_SPEECH
 
-/obj/structure/closet/proc/break_open()
+/obj/structure/closet/proc/break_open(mob/user)
 	if(!opened)
-		welded = 0
-		open()
+		welded = FALSE
+		open(user, force=TRUE)
 
 /obj/structure/closet/yautja
 	name = "alien closet"

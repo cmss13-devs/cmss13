@@ -3,9 +3,10 @@
  * SPDX-License-Identifier: MIT
  */
 
+@use 'sass:color';
 @use 'sass:math';
 
-$border-color: rgba(140, 140, 140, 0.5) !default;
+$border-color: hsla(0, 0%, 55%, 0.5) !default;
 
 .Ping {
   position: relative;
@@ -16,7 +17,7 @@ $border-color: rgba(140, 140, 140, 0.5) !default;
   user-select: none;
   text-align: right;
   &:hover {
-    background-color: lighten($border-color, 30%);
+    background-color: color.scale($border-color, $lightness: 66.6666666667%);
   }
 }
 
@@ -27,6 +28,6 @@ $border-color: rgba(140, 140, 140, 0.5) !default;
   left: 0.5em;
   width: 0.5em;
   height: 0.5em;
-  background-color: #888;
+  background-color: hsl(0, 0%, 53%);
   border-radius: 0.25em;
 }

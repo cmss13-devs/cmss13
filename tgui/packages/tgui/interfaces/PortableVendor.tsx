@@ -64,7 +64,7 @@ export const PortableVendor = (props) => {
 
   return (
     <Window width={400} height={700}>
-      <Window.Content>
+      <Window.Content scrollable>
         <Stack vertical>
           {data.show_points && <PointCounter />}
           {data.displayed_records.map((record) => {

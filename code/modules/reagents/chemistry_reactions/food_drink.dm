@@ -12,6 +12,7 @@
 	result_amount = 1
 
 /datum/chemical_reaction/tofu/on_reaction(datum/reagents/holder, created_volume)
+	. = ..()
 	var/location = get_turf(holder.my_atom)
 	for(var/i = 1, i <= created_volume, i++)
 		new /obj/item/reagent_container/food/snacks/tofu(location)
@@ -129,6 +130,7 @@
 	result_amount = 1
 
 /datum/chemical_reaction/cheesewheel/immature/on_reaction(datum/reagents/holder, created_volume)
+	. = ..()
 	var/location = get_turf(holder.my_atom)
 	new /obj/item/reagent_container/food/snacks/sliceable/cheesewheel/immature(location)
 
@@ -141,6 +143,7 @@
 	result_amount = 1
 
 /datum/chemical_reaction/synthmeat/on_reaction(datum/reagents/holder, created_volume)
+	. = ..()
 	var/location = get_turf(holder.my_atom)
 	new /obj/item/reagent_container/food/snacks/meat/synthmeat(location)
 
@@ -798,11 +801,25 @@
 	required_reagents = list("orangejuice" = 2, "cola" = 1)
 	result_amount = 2
 
+/datum/chemical_reaction/chocolate_milk
+	name = "Chocolate Milk"
+	id = "chocolate_milk"
+	result = "chocolate_milk"
+	required_reagents = list("chocolatesyrup" = 1, "milk" = 4)
+	result_amount = 5
+
 /datum/chemical_reaction/milkshake
 	name = "Milkshake"
 	id = "milkshake"
 	result = "milkshake"
 	required_reagents = list("cream" = 1, "ice" = 2, "milk" = 2)
+	result_amount = 5
+
+/datum/chemical_reaction/milkshake/chocolate
+	name = "Chocolate Milkshake"
+	id = "chocolate_milkshake"
+	result = "chocolate_milkshake"
+	required_reagents = list("cream" = 1, "ice" = 2, "chocolate_milk" = 2)
 	result_amount = 5
 
 /datum/chemical_reaction/rewriter

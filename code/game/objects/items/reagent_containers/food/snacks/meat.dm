@@ -1,6 +1,6 @@
 /obj/item/reagent_container/food/snacks/meat
 	name = "meat"
-	desc = "A slab of meat"
+	desc = "A slab of meat."
 	icon_state = "meat"
 	icon = 'icons/obj/items/food/meat.dmi'
 	health = 180
@@ -74,8 +74,8 @@
 /obj/item/reagent_container/food/snacks/meat/fish
 	name = "fish meat"
 	desc = "Meat from a fish."
-	icon_state = "fish_meat"
-	icon = 'icons/obj/items/fishing_atoms.dmi'
+	icon_state = "fishfillet"
+	icon = 'icons/obj/items/food/fish.dmi'
 
 /obj/item/reagent_container/food/snacks/meat/fish/crab
 	name = "crab meat"
@@ -107,3 +107,15 @@
 	name = "bluegill meat"
 	desc = "Small strips of pan frying meat!"
 	icon_state = "bluegill_meat"
+
+/obj/item/reagent_container/food/snacks/meat/fish/salmon
+
+	name = "salmon meat"
+	desc = "Considered a 'fancy' cut of fish!"
+	icon_state = "salmon_meat"
+
+/obj/item/reagent_container/food/snacks/meat/fish/white_perch
+
+	name = "white perch meat"
+	desc = "Meat of an invasive fish, its oily.."
+	icon_state = "white_perch_meat"

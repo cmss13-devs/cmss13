@@ -210,9 +210,7 @@
 
 /turf/open/floor/plating/almayer/no_build
 	allow_construction = FALSE
-
-/turf/open/floor/plating/almayer/no_build/is_weedable()
-	return NOT_WEEDABLE
+	is_weedable = NOT_WEEDABLE
 
 /turf/open/floor/plating/airless
 	icon_state = "plating"
@@ -316,6 +314,10 @@
 		covered = 0
 		update_icon()
 	..()
+
+/turf/open/floor/plating/plating_catwalk/no_build
+	allow_construction = FALSE
+	turf_flags = parent_type::turf_flags|TURF_HULL
 
 /turf/open/floor/plating/plating_catwalk/prison
 	icon = 'icons/turf/floors/prison.dmi'
@@ -1886,9 +1888,7 @@
 	desc = "There seems to be an awful lot of machinery down below..."
 	icon = 'icons/turf/floors/floors.dmi'
 	icon_state = "black"
-
-/turf/open/floor/almayer/empty/is_weedable()
-	return NOT_WEEDABLE
+	is_weedable = NOT_WEEDABLE
 
 /turf/open/floor/almayer/empty/ex_act(severity) //Should make it indestructible
 	return
@@ -2152,9 +2152,7 @@
 	name = "hull"
 	turf_flags = TURF_HULL
 	allow_construction = FALSE
-
-/turf/open/floor/almayer_hull/is_weedable()
-	return NOT_WEEDABLE
+	is_weedable = NOT_WEEDABLE
 
 /turf/open/floor/almayer_hull/outerhull_dir
 	icon_state = "outerhull_dir"
@@ -2184,6 +2182,77 @@
 
 //////////////////////////////////////////////////////////////////////
 
+//Outerhull UPP
+
+/turf/open/floor/upp_hull_rostock
+	icon = 'icons/turf/walls/upp_hull.dmi'
+	icon_state = "outerhull_upp_rostock"
+	name = "hull"
+	turf_flags = TURF_HULL
+
+/turf/open/floor/upp_hull_rostock/outerhull_dir
+	icon_state = "outerhull_dir_upp_rostock"
+
+/turf/open/floor/upp_hull_rostock/outerhull_dir/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/upp_hull_rostock/outerhull_dir/north
+	dir = NORTH
+
+/turf/open/floor/upp_hull_rostock/outerhull_dir/east
+	dir = EAST
+
+/turf/open/floor/upp_hull_rostock/outerhull_dir/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/upp_hull_rostock/outerhull_dir/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/upp_hull_rostock/outerhull_dir/west
+	dir = WEST
+
+/turf/open/floor/upp_hull_rostock/outerhull_dir/northwest
+	dir = NORTHWEST
+
+
+//Outerhull Reskin Almayer UPP
+
+/turf/open/floor/upp_hull
+	icon = 'icons/turf/walls/upp_hull.dmi'
+	icon_state = "outerhull_upp"
+	name = "hull"
+	turf_flags = TURF_HULL
+
+/turf/open/floor/upp_hull/outerhull_dir
+	icon_state = "outerhull_dir_upp"
+
+/turf/open/floor/upp_hull/outerhull_dir/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/upp_hull/outerhull_dir/north
+	dir = NORTH
+
+/turf/open/floor/upp_hull/outerhull_dir/east
+	dir = EAST
+
+/turf/open/floor/upp_hull/outerhull_dir/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/upp_hull/outerhull_dir/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/upp_hull/outerhull_dir/west
+	dir = WEST
+
+/turf/open/floor/upp_hull/outerhull_dir/northwest
+	dir = NORTHWEST
+
+
+
+
+
+
+//////////////////////////////////////////////////////////////////////
 
 
 
@@ -2279,27 +2348,38 @@
 	turf_flags = NO_FLAGS
 	baseturfs = /turf/open/floor
 
+	///Whether this turf is currently being manipulated to prevent doubling up
+	var/busy = FALSE
+
 /turf/open/floor/engine/simulator_center
 	color = "#AAAAAA"
 
 /turf/open/floor/engine/make_plating()
 	return
 
-/turf/open/floor/engine/attackby(obj/item/C as obj, mob/user as mob)
-	if(!C)
+/turf/open/floor/engine/attackby(obj/item/hitting_item, mob/user)
+	if(!hitting_item)
 		return
 	if(!user)
 		return
-	if(HAS_TRAIT(C, TRAIT_TOOL_WRENCH))
+	if(busy)
+		to_chat(user, SPAN_WARNING("Someone else is already working on [src]."))
+		return
+
+	if(HAS_TRAIT(hitting_item, TRAIT_TOOL_WRENCH))
 		user.visible_message(SPAN_NOTICE("[user] starts removing [src]'s protective cover."),
 		SPAN_NOTICE("You start removing [src]'s protective cover."))
 		playsound(src, 'sound/items/Ratchet.ogg', 25, 1)
+		busy = TRUE
 		if(do_after(user, 30 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+			busy = FALSE
+			if(!istype(src, /turf/open/floor/engine))
+				return
 			new /obj/item/stack/rods(src, 2)
-			var/turf/open/floor/F = ScrapeAway()
-			if(istype(/turf/open/floor, F))
-				F.make_plating()
-
+			var/turf/open/floor/floor = ScrapeAway()
+			if(istype(/turf/open/floor, floor))
+				floor.make_plating()
+		busy = FALSE
 
 /turf/open/floor/engine/ex_act(severity)
 	switch(severity)

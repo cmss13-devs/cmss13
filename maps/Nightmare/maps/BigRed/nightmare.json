@@ -23,6 +23,27 @@
 		{ "weight": 3, "type": "map_insert", "landmark": "medbay-passage", "path": "standalone/medbay-passage.dmm" },
 		{ "weight": 1, "type": "map_insert", "landmark": "medbay-v3",   "path": "standalone/medbay-v3.dmm" }
 	]},
+	{
+		"type": "map_insert",
+		"landmark": "hvhupplz1",
+		"chance": 1.0,
+		"path": "standalone/landingzone_solaris_upp_lz1.dmm",
+		"when": { "$gamemode": "Faction Clash UPP CM" }
+	},
+	{
+		"type": "map_insert",
+		"landmark": "hvhuscmlz1",
+		"chance": 1.0,
+		"path": "standalone/landingzone_solaris_uscm_lz1.dmm",
+		"when": { "$gamemode": "Faction Clash UPP CM" }
+	},
+	{
+		"type": "map_insert",
+		"landmark": "hvhuscmlz2",
+		"chance": 1.0,
+		"path": "standalone/landingzone_solaris_uscm_lz2.dmm",
+		"when": { "$gamemode": "Faction Clash UPP CM" }
+	},
     {
 		"type": "map_insert",
 		"landmark": "clfmining",

@@ -1,0 +1,5274 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ad" = (
+/obj/structure/machinery/colony_floodlight{
+	layer = 4.3
+	},
+/obj/structure/platform/metal/almayer/west,
+/turf/open/asphalt/cement/cement1,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"ar" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"aw" = (
+/obj/item/prop/colony/used_flare,
+/turf/open/floor/prison/blue_plate,
+/area/event/dynamic/lit)
+"aE" = (
+/turf/closed/wall/strata_ice/dirty,
+/area/lv522/oob)
+"ba" = (
+/turf/open/floor/prison,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"bd" = (
+/obj/structure/platform_decoration/metal/almayer/west,
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic/lit)
+"bq" = (
+/obj/item/stack/tile/wood{
+	layer = 2.5
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic/lit)
+"bu" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/paper_bin{
+	pixel_y = 7;
+	pixel_x = -7
+	},
+/obj/item/tool/pen{
+	pixel_x = 9;
+	pixel_y = -2
+	},
+/turf/open/floor/prison/blue/north,
+/area/event/metal/dynamic/lit)
+"bz" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/strata/floor3,
+/area/event/dynamic/lit)
+"bC" = (
+/obj/structure/cargo_container/arious/leftmid,
+/turf/open/floor/prison,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"bV" = (
+/obj/structure/largecrate/random/barrel{
+	layer = 2.7
+	},
+/obj/structure/largecrate/random/barrel{
+	layer = 2.9;
+	pixel_x = 6;
+	pixel_y = -16
+	},
+/obj/structure/largecrate/random/barrel{
+	layer = 2.9;
+	pixel_x = -17;
+	pixel_y = -9
+	},
+/obj/structure/blocker/invisible_wall,
+/obj/structure/prop/invuln/fire{
+	pixel_x = -3;
+	pixel_y = 6
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic/lit)
+"bZ" = (
+/turf/open/floor/prison/floor_plate,
+/area/event/dynamic/lit)
+"cb" = (
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0"
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 4;
+	icon_state = "sandbag_0"
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"cv" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/prison,
+/area/event/metal/dynamic/lit)
+"cF" = (
+/turf/open/floor/prison/floor_marked,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"cG" = (
+/obj/item/stack/tile/plasteel{
+	name = "ceiling tile";
+	pixel_x = -2;
+	pixel_y = 1
+	},
+/obj/item/prop/colony/used_flare,
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"cM" = (
+/obj/structure/platform/metal/almayer,
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice10";
+	pixel_x = 4;
+	pixel_y = -16
+	},
+/turf/open/asphalt/cement,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"cQ" = (
+/obj/structure/prop/invuln/ice_prefab/roof_greeble{
+	icon_state = "vent2";
+	pixel_x = 4;
+	pixel_y = 2
+	},
+/turf/open/floor/prison/floor_marked,
+/area/event/dynamic/lit)
+"da" = (
+/obj/structure/sign/flag/upp{
+	dir = 1;
+	pixel_y = 26;
+	layer = 2.7
+	},
+/turf/open/auto_turf/shale/layer2,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"dC" = (
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0";
+	dir = 8
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"dJ" = (
+/obj/structure/window/framed/strata/reinforced,
+/turf/open/floor/corsat/marked,
+/area/lv522/indoors/a_block/hallway)
+"ee" = (
+/obj/item/stack/sheet/metal,
+/obj/structure/platform_decoration/metal/almayer/north,
+/turf/open/asphalt/cement/cement1,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"er" = (
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic/lit)
+"eQ" = (
+/obj/structure/largecrate/random/secure,
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"eS" = (
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_full"
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic/lit)
+"fb" = (
+/obj/structure/platform/metal/almayer,
+/turf/open/asphalt/cement/cement4,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"fi" = (
+/obj/structure/stairs/perspective{
+	dir = 4;
+	icon_state = "p_stair_full"
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic/lit)
+"ft" = (
+/obj/structure/largecrate/random/barrel,
+/turf/open/auto_turf/shale/layer1,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"fw" = (
+/obj/structure/platform_decoration/metal/almayer/north,
+/turf/open/asphalt/cement,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"fN" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/device/flashlight/lamp,
+/turf/open/floor/prison/blue,
+/area/event/metal/dynamic/lit)
+"fZ" = (
+/obj/structure/stairs/perspective{
+	dir = 10;
+	icon_state = "p_stair_full"
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic/lit)
+"ga" = (
+/obj/structure/stairs/perspective{
+	dir = 1;
+	icon_state = "p_stair_full"
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic/lit)
+"gu" = (
+/obj/structure/machinery/floodlight/landing/floor,
+/turf/open/floor/plating,
+/area/event/dynamic/lit)
+"gD" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	dir = 4;
+	id = "Reactor_e_entry_4"
+	},
+/turf/open/floor/corsat/marked,
+/area/lv522/atmos/filt)
+"gI" = (
+/obj/structure/machinery/floodlight/landing,
+/turf/open/floor/prison/blue_plate/north,
+/area/event/dynamic/lit)
+"gV" = (
+/obj/structure/sign/flag/upp{
+	dir = 1;
+	pixel_y = 28;
+	pixel_x = 16
+	},
+/turf/open/floor/prison/floor_marked,
+/area/event/dynamic/lit)
+"hg" = (
+/obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
+	name = "Remote dropship navigation computer";
+	req_one_access = null;
+	faction = "UPP"
+	},
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/prison/blue/west,
+/area/event/metal/dynamic/lit)
+"hp" = (
+/turf/closed/wall/solaris/reinforced/hull/lv522,
+/area/event/metal/dynamic/lit)
+"hI" = (
+/obj/item/prop/colony/used_flare,
+/turf/open/floor/prison/floor_plate,
+/area/event/dynamic/lit)
+"ir" = (
+/obj/structure/bed/roller,
+/turf/open/floor/prison,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"iH" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/almayer/tcomms,
+/area/event/metal/dynamic/lit)
+"iJ" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/beer_pack{
+	pixel_y = 8
+	},
+/turf/open/auto_turf/shale/layer1,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"jh" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33;
+	pixel_y = 2
+	},
+/turf/open/floor/prison,
+/area/event/metal/dynamic/lit)
+"jp" = (
+/obj/structure/platform/metal/almayer,
+/obj/structure/platform/metal/almayer/west,
+/turf/open/asphalt/cement,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"jr" = (
+/turf/open/floor/corsat/marked,
+/area/event/metal/dynamic/lit)
+"jt" = (
+/turf/open/asphalt/cement/cement12,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"jH" = (
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform_decoration/metal/almayer/northeast,
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic/lit)
+"jI" = (
+/obj/item/stack/sheet/metal,
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"kg" = (
+/obj/structure/machinery/door_display/research_cell{
+	dir = 4;
+	id = "Reactor_e_entry_4";
+	pixel_x = -16;
+	req_access = null
+	},
+/turf/open/asphalt/cement/cement1,
+/area/event/dynamic/lit)
+"ki" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/prison/floor_plate,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"kn" = (
+/turf/open/floor/prison/blue,
+/area/event/metal/dynamic/lit)
+"kv" = (
+/obj/structure/platform_decoration/metal/almayer/east,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/prison/floor_plate,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"kx" = (
+/turf/closed/wall/solaris/reinforced,
+/area/event/metal/dynamic/lit)
+"kz" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/auto_turf/shale/layer2,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"kB" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic/lit)
+"kC" = (
+/obj/structure/cargo_container/wy/mid,
+/turf/open/floor/prison/floor_marked,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"kG" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 10
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"lb" = (
+/obj/effect/landmark/objective_landmark/close,
+/obj/structure/bed/roller,
+/turf/open/floor/prison,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"ld" = (
+/obj/structure/prop/invuln/ice_prefab/standalone/trim{
+	icon_state = "white_trim"
+	},
+/obj/structure/prop/invuln/ice_prefab/roof_greeble{
+	icon_state = "vent2";
+	pixel_x = 4;
+	pixel_y = -3
+	},
+/obj/structure/cargo_container/kelland/left{
+	layer = 3
+	},
+/turf/open/floor/prison,
+/area/event/dynamic/lit)
+"lx" = (
+/obj/structure/platform/metal/almayer/west,
+/turf/open/asphalt/cement/cement1,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"lz" = (
+/obj/structure/barricade/plasteel/wired{
+	dir = 8
+	},
+/turf/open/auto_turf/shale/layer1,
+/area/event/dynamic/lit)
+"lB" = (
+/obj/structure/platform/metal/almayer,
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform_decoration/metal/almayer/southeast,
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic/lit)
+"lF" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/prison,
+/area/event/metal/dynamic/lit)
+"lO" = (
+/obj/structure/machinery/telecomms/broadcaster,
+/turf/open/floor/almayer/tcomms,
+/area/event/metal/dynamic/lit)
+"lT" = (
+/turf/open/asphalt/cement/cement1,
+/area/event/dynamic/lit)
+"mf" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/asphalt/cement/cement1,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"mo" = (
+/turf/closed/wall/strata_ice/dirty,
+/area/event/dynamic/lit)
+"mQ" = (
+/obj/item/prop/colony/used_flare,
+/turf/open/floor/prison,
+/area/event/dynamic/lit)
+"mU" = (
+/obj/item/stack/sheet/metal,
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic/lit)
+"nd" = (
+/obj/structure/platform/metal/almayer,
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic/lit)
+"ni" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_y = 2;
+	pixel_x = 1
+	},
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/prison,
+/area/event/metal/dynamic/lit)
+"np" = (
+/turf/open/asphalt/cement/cement15,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"nt" = (
+/obj/structure/platform/metal/almayer/north,
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic/lit)
+"nB" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/auto_turf/shale/layer2,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"nJ" = (
+/obj/structure/machinery/telecomms/server,
+/turf/open/floor/almayer/tcomms,
+/area/event/metal/dynamic/lit)
+"nU" = (
+/obj/item/stack/sheet/metal,
+/turf/open/asphalt/cement/cement4,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"oo" = (
+/obj/structure/prop/invuln/ice_prefab/roof_greeble{
+	icon_state = "flagpole";
+	layer = 4.11;
+	pixel_x = 4;
+	pixel_y = 3
+	},
+/turf/open/floor/prison/floor_marked,
+/area/event/dynamic/lit)
+"pd" = (
+/turf/open/asphalt/cement/cement2,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"pe" = (
+/obj/structure/barricade/plasteel,
+/turf/open/auto_turf/shale/layer1,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"pi" = (
+/obj/structure/platform_decoration/metal/almayer/north,
+/obj/structure/stairs/perspective{
+	dir = 9;
+	icon_state = "p_stair_full"
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic/lit)
+"pm" = (
+/obj/structure/cargo_container/horizontal/blue/bottom,
+/turf/open/floor/prison,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"px" = (
+/obj/item/device/flashlight/lamp/tripod/grey,
+/turf/open/floor/prison,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"pz" = (
+/obj/structure/cargo_container/wy/right,
+/turf/open/floor/prison,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"pJ" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/ears/earmuffs,
+/obj/item/clothing/ears/earmuffs{
+	icon_state = "earmuffs2";
+	item_state = "earmuffs2";
+	pixel_y = -4
+	},
+/turf/open/auto_turf/shale/layer1,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"pU" = (
+/obj/structure/cargo_container/kelland/right,
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"qf" = (
+/obj/structure/stairs/perspective{
+	dir = 8;
+	icon_state = "p_stair_full"
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic/lit)
+"qg" = (
+/obj/structure/cargo_container/ferret/right,
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"qr" = (
+/obj/structure/surface/table/almayer,
+/turf/open/floor/prison/floor_marked,
+/area/event/dynamic/lit)
+"qK" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/auto_turf/shale/layer1,
+/area/event/dynamic/lit)
+"re" = (
+/obj/structure/fence{
+	layer = 2.9
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/prison/floor_plate,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"rl" = (
+/obj/structure/platform/metal/almayer/east,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/prison/floor_plate,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"rY" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/auto_turf/shale/layer1,
+/area/event/dynamic/lit)
+"se" = (
+/obj/structure/machinery/floodlight/landing,
+/turf/open/floor/prison/blue_plate,
+/area/event/dynamic/lit)
+"sg" = (
+/obj/item/stack/rods,
+/obj/structure/platform/metal/almayer,
+/turf/open/asphalt/cement/cement4,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"sh" = (
+/obj/structure/prop/vehicles/crawler{
+	dir = 8;
+	icon_state = "crawler_crate_alt2";
+	layer = 3.1
+	},
+/turf/open/floor/prison,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"sm" = (
+/obj/structure/surface/rack,
+/obj/effect/spawner/random/tool,
+/turf/open/auto_turf/shale/layer1,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"sn" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/auto_turf/shale/layer1,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"sw" = (
+/obj/structure/sign/flag/upp{
+	pixel_y = 28;
+	layer = 2.7
+	},
+/turf/open/auto_turf/shale/layer1,
+/area/event/dynamic/lit)
+"sK" = (
+/obj/structure/cargo_container/kelland/right,
+/turf/open/floor/prison/blue_plate,
+/area/event/dynamic/lit)
+"td" = (
+/turf/closed/wall/solaris/reinforced/hull,
+/area/event/dynamic/lit)
+"tn" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 1
+	},
+/turf/open/auto_turf/shale/layer1,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"to" = (
+/obj/structure/platform_decoration/metal/almayer/north,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/prison/floor_plate,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"tp" = (
+/turf/open/asphalt/cement/cement9,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"tt" = (
+/turf/closed/wall/solaris/reinforced,
+/area/event/dynamic/lit)
+"tE" = (
+/turf/closed/wall/solaris/reinforced/hull/lv522,
+/area/event/dynamic/lit)
+"tN" = (
+/turf/template_noop,
+/area/template_noop)
+"tP" = (
+/obj/structure/platform/metal/almayer/west,
+/turf/open/asphalt/cement,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"tT" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 1
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"ug" = (
+/turf/open/floor/prison/blue_plate,
+/area/event/dynamic/lit)
+"uj" = (
+/obj/structure/platform/metal/almayer/west,
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic/lit)
+"ul" = (
+/obj/structure/pipes/standard/manifold/hidden/green,
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"uq" = (
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/stairs/perspective{
+	dir = 1;
+	icon_state = "p_stair_full"
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic/lit)
+"uC" = (
+/obj/item/prop/colony/used_flare,
+/turf/open/floor/prison,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"uE" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/turf/open/floor/prison,
+/area/event/metal/dynamic/lit)
+"uH" = (
+/obj/structure/platform_decoration/metal/almayer/west,
+/obj/structure/stairs/perspective{
+	dir = 6;
+	icon_state = "p_stair_full"
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic/lit)
+"uJ" = (
+/obj/structure/platform_decoration/metal/almayer/north,
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic/lit)
+"uU" = (
+/obj/structure/cargo_container/lockmart/mid,
+/turf/open/floor/prison/floor_marked,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"vx" = (
+/obj/structure/cargo_container/lockmart/right,
+/turf/open/floor/prison/floor_marked,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"vN" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_y = 3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/prison,
+/area/event/metal/dynamic/lit)
+"wj" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/asphalt/cement/cement1,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"wq" = (
+/obj/item/stack/rods,
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic/lit)
+"wD" = (
+/obj/structure/machinery/recharge_station,
+/turf/open/floor/almayer/tcomms,
+/area/event/metal/dynamic/lit)
+"wE" = (
+/turf/open/auto_turf/shale/layer1,
+/area/event/dynamic/lit)
+"xl" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/asphalt/cement/cement1,
+/area/event/dynamic/lit)
+"xt" = (
+/obj/structure/platform/metal/almayer,
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform_decoration/metal/almayer/southwest,
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic/lit)
+"xB" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"xE" = (
+/obj/structure/machinery/colony_floodlight{
+	layer = 4.3
+	},
+/turf/open/asphalt/cement/cement4,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"yo" = (
+/turf/open/asphalt/cement/cement3,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"yv" = (
+/obj/structure/machinery/telecomms/relay/preset/tower/all{
+	pixel_x = 11;
+	pixel_y = 20
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/almayer/tcomms,
+/area/event/metal/dynamic/lit)
+"yB" = (
+/obj/structure/machinery/telecomms/bus,
+/turf/open/floor/almayer/tcomms,
+/area/event/metal/dynamic/lit)
+"yD" = (
+/obj/structure/machinery/light,
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/faxmachine{
+	target_department = "UPP High Command";
+	name = "UPP Fax Machine";
+	department = "FOB Fax";
+	network = "UPP Encrypted Network"
+	},
+/turf/open/floor/prison/blue/north,
+/area/event/metal/dynamic/lit)
+"yE" = (
+/turf/open/floor/prison,
+/area/event/dynamic/lit)
+"yF" = (
+/obj/docking_port/stationary/marine_dropship/lz2{
+	name = "North-East Processor Landing Zone";
+	faction = "UPP"
+	},
+/turf/open/floor/plating,
+/area/event/dynamic/lit)
+"yH" = (
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0"
+	},
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0";
+	dir = 8
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"yJ" = (
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_full"
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic/lit)
+"yR" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/asphalt/cement/cement1,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"zs" = (
+/obj/structure/stairs/perspective{
+	dir = 6;
+	icon_state = "p_stair_full"
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic/lit)
+"zM" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33;
+	pixel_y = 2
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison,
+/area/event/metal/dynamic/lit)
+"zN" = (
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_full"
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic/lit)
+"zT" = (
+/obj/structure/largecrate,
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic/lit)
+"Ao" = (
+/obj/structure/ore_box,
+/turf/open/floor/prison,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"Av" = (
+/obj/structure/cargo_container/wy/mid,
+/turf/open/floor/prison,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"AA" = (
+/obj/structure/machinery/iv_drip,
+/turf/open/floor/prison,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"AB" = (
+/obj/structure/largecrate/random/mini{
+	pixel_x = 9;
+	pixel_y = 12
+	},
+/turf/open/auto_turf/shale/layer1,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"AL" = (
+/obj/item/prop/colony/used_flare,
+/turf/open/asphalt/cement/cement12,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"AO" = (
+/obj/structure/cargo_container/kelland/left{
+	layer = 4.13
+	},
+/turf/open/floor/prison/blue_plate,
+/area/event/dynamic/lit)
+"AR" = (
+/obj/structure/platform_decoration/metal/almayer,
+/obj/structure/stairs/perspective{
+	dir = 5;
+	icon_state = "p_stair_full"
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic/lit)
+"AS" = (
+/turf/open/floor/prison,
+/area/event/metal/dynamic/lit)
+"AZ" = (
+/obj/structure/platform/metal/almayer/north,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/prison/floor_plate,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"Bb" = (
+/obj/item/prop/colony/used_flare,
+/turf/open/floor/prison/floor_marked,
+/area/event/dynamic/lit)
+"Bf" = (
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform_decoration/metal/almayer/northwest,
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic/lit)
+"Bh" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 4;
+	icon_state = "sandbag_0"
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"BD" = (
+/obj/item/device/flashlight/lamp/tripod/grey,
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"BM" = (
+/turf/open/floor/prison/blue_plate/north,
+/area/event/dynamic/lit)
+"BS" = (
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0";
+	dir = 8
+	},
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0"
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"Cw" = (
+/obj/structure/largecrate/random/barrel/true_random,
+/turf/open/auto_turf/shale/layer1,
+/area/event/dynamic/lit)
+"CA" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_y = -1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33;
+	pixel_y = 2
+	},
+/turf/open/floor/prison,
+/area/event/metal/dynamic/lit)
+"CB" = (
+/obj/structure/platform_decoration/metal/almayer,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/prison/floor_plate,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"CQ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/strata/floor3,
+/area/event/dynamic/lit)
+"Da" = (
+/turf/open/floor/prison/floor_marked,
+/area/event/dynamic/lit)
+"Dh" = (
+/obj/item/device/flashlight/lamp/tripod/grey,
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic/lit)
+"Dv" = (
+/obj/structure/prop/vehicles/crawler{
+	icon_state = "crawler_crate_alt"
+	},
+/turf/open/floor/prison,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"DN" = (
+/obj/structure/stairs/perspective{
+	dir = 9;
+	icon_state = "p_stair_full"
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic/lit)
+"DZ" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"Em" = (
+/turf/closed/wall/solaris/reinforced/hull/lv522,
+/area/lv522/oob)
+"Ep" = (
+/obj/structure/prop/invuln/ice_prefab/roof_greeble{
+	icon_state = "vent2";
+	pixel_x = -4;
+	pixel_y = -3
+	},
+/obj/structure/cargo_container/kelland/right{
+	layer = 3
+	},
+/turf/open/floor/prison,
+/area/event/dynamic/lit)
+"Es" = (
+/obj/item/storage/belt/medical/lifesaver,
+/turf/open/floor/prison,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"Ex" = (
+/obj/item/weapon/twohanded/folded_metal_chair,
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic/lit)
+"EK" = (
+/obj/structure/platform/metal/almayer,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice10";
+	pixel_x = -2;
+	pixel_y = -8
+	},
+/turf/open/asphalt/cement,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"EU" = (
+/obj/structure/largecrate/random/barrel/true_random,
+/turf/open/asphalt/cement/cement1,
+/area/event/dynamic/lit)
+"Fa" = (
+/turf/closed/wall/shiva/prefabricated/reinforced/hull,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"Fe" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper A-Block - Colony Operations Centre Airlock"
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 1
+	},
+/turf/open/floor/corsat/marked,
+/area/lv522/indoors/a_block/hallway)
+"FA" = (
+/turf/open/asphalt/cement/cement1,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"FV" = (
+/obj/item/prop/colony/used_flare,
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"Gm" = (
+/obj/structure/cargo_container/ferret/mid,
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"Gu" = (
+/obj/structure/prop/invuln/ice_prefab/standalone{
+	icon_state = "white"
+	},
+/turf/open/floor/prison/floor_marked,
+/area/event/dynamic/lit)
+"GC" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 5
+	},
+/turf/open/auto_turf/shale/layer2,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"GZ" = (
+/obj/structure/fence,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/prison/floor_plate,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"Hx" = (
+/turf/open/auto_turf/shale/layer2,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"HA" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/ammo_box/magazine/misc/flashlight,
+/turf/open/floor/prison/blue,
+/area/event/metal/dynamic/lit)
+"HI" = (
+/turf/open/floor/prison/blue/north,
+/area/event/metal/dynamic/lit)
+"HM" = (
+/obj/effect/alien/resin/sticky,
+/turf/closed/wall/solaris/reinforced,
+/area/event/dynamic/lit)
+"HW" = (
+/turf/open/floor/shiva/radiator_tile2,
+/area/lv522/indoors/a_block/hallway)
+"HZ" = (
+/obj/structure/barricade/plasteel/wired{
+	dir = 8
+	},
+/turf/open/asphalt/cement/cement1,
+/area/event/dynamic/lit)
+"Id" = (
+/obj/structure/sign/flag/upp{
+	dir = 1;
+	pixel_y = 26;
+	layer = 2.7
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"Ix" = (
+/obj/structure/barricade/plasteel,
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"IF" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic/lit)
+"IZ" = (
+/obj/item/stack/tile/plasteel{
+	name = "ceiling tile";
+	pixel_x = -2;
+	pixel_y = 1
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"Ja" = (
+/obj/structure/cargo_container/wy/left,
+/turf/open/floor/prison/floor_marked,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"Jj" = (
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/stairs/perspective{
+	dir = 1;
+	icon_state = "p_stair_full"
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic/lit)
+"JY" = (
+/obj/structure/fence{
+	layer = 2.9
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/strata/floor3,
+/area/event/dynamic/lit)
+"Ka" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 10
+	},
+/turf/open/auto_turf/shale/layer1,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"KR" = (
+/turf/open/floor/prison/blue/east,
+/area/event/metal/dynamic/lit)
+"Lc" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison,
+/area/event/metal/dynamic/lit)
+"Lp" = (
+/obj/structure/cargo_container/ferret/left,
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"Lw" = (
+/obj/structure/cargo_container/horizontal/blue/bottom,
+/turf/open/floor/prison/floor_marked,
+/area/event/dynamic/lit)
+"Ly" = (
+/turf/open/auto_turf/shale/layer2,
+/area/event/dynamic/lit)
+"LB" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/obj/structure/barricade/metal/wired,
+/turf/open/asphalt/cement/cement1,
+/area/event/dynamic/lit)
+"LY" = (
+/obj/structure/cargo_container/arious/right,
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"Mq" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"Nv" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/obj/structure/barricade/metal/wired,
+/turf/open/auto_turf/shale/layer1,
+/area/event/dynamic/lit)
+"Nx" = (
+/obj/structure/platform_decoration/metal/almayer/east,
+/obj/structure/stairs/perspective{
+	dir = 10;
+	icon_state = "p_stair_full"
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic/lit)
+"NR" = (
+/obj/structure/cargo_container/horizontal/blue/middle,
+/turf/open/floor/prison,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"Oe" = (
+/obj/item/prop/colony/used_flare,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/prison/floor_plate,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"Oo" = (
+/obj/item/device/flashlight/lamp/tripod/grey,
+/turf/open/auto_turf/shale/layer1,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"Ox" = (
+/obj/structure/platform_decoration/metal/almayer/north,
+/turf/open/asphalt/cement/cement4,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"OL" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/asphalt/cement/cement4,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"OU" = (
+/obj/item/stack/tile/plasteel{
+	name = "ceiling tile";
+	pixel_x = -2;
+	pixel_y = 1
+	},
+/obj/structure/barricade/metal/wired,
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"Pb" = (
+/turf/closed/wall/strata_ice/dirty,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"Pg" = (
+/obj/structure/platform_decoration/metal/almayer,
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic/lit)
+"Ph" = (
+/obj/structure/platform/metal/almayer/east,
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic/lit)
+"Pn" = (
+/turf/closed/wall/strata_outpost,
+/area/lv522/indoors/a_block/hallway)
+"Pq" = (
+/obj/item/stack/sheet/metal{
+	layer = 2.5;
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic/lit)
+"Pt" = (
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv522/indoors/a_block/hallway)
+"PK" = (
+/turf/closed/wall/strata_outpost/reinforced,
+/area/lv522/atmos/filt)
+"PM" = (
+/obj/structure/cargo_container/wy/right,
+/turf/open/floor/prison/floor_marked,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"PQ" = (
+/obj/item/stack/sheet/wood{
+	pixel_x = -5;
+	pixel_y = -10
+	},
+/obj/item/stack/sheet/wood{
+	layer = 2.7;
+	pixel_y = 8
+	},
+/obj/item/reagent_container/food/drinks/bottle/whiskey{
+	layer = 3.1;
+	pixel_x = -11;
+	pixel_y = -6
+	},
+/obj/item/reagent_container/food/drinks/drinkingglass{
+	icon_state = "shotglass";
+	pixel_x = 4;
+	pixel_y = 17
+	},
+/obj/item/reagent_container/food/drinks/drinkingglass{
+	icon_state = "shotglass";
+	layer = 3.1;
+	pixel_x = 15;
+	pixel_y = 17
+	},
+/obj/item/reagent_container/food/drinks/drinkingglass{
+	icon_state = "shotglass";
+	layer = 3.1;
+	pixel_x = 9;
+	pixel_y = 1
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic/lit)
+"PU" = (
+/obj/structure/platform_decoration/metal/almayer/west,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/prison/floor_plate,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"PZ" = (
+/turf/open/floor/prison/floor_marked/southwest,
+/area/event/dynamic/lit)
+"Qr" = (
+/obj/structure/sign/flag/upp{
+	dir = 1;
+	pixel_y = 26;
+	layer = 2.7
+	},
+/turf/open/auto_turf/shale/layer1,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"Qv" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/obj/structure/barricade/metal/wired,
+/turf/open/asphalt/cement/cement15,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"QJ" = (
+/turf/open/floor/prison/floor_plate,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"QM" = (
+/obj/structure/cargo_container/kelland/left,
+/turf/open/floor/prison/blue_plate,
+/area/event/dynamic/lit)
+"QS" = (
+/obj/structure/cargo_container/arious/rightmid,
+/turf/open/floor/prison,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"Rb" = (
+/obj/structure/cargo_container/kelland/left,
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"Rz" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison,
+/area/event/metal/dynamic/lit)
+"RI" = (
+/obj/structure/cargo_container/wy/left,
+/turf/open/floor/prison,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"RL" = (
+/turf/open/asphalt/cement/cement4,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"RV" = (
+/obj/structure/stairs/perspective{
+	dir = 1;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 1
+	},
+/turf/open/asphalt/cement/cement4,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"Si" = (
+/obj/structure/cargo_container/lockmart/left,
+/turf/open/floor/prison/floor_marked,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"Sl" = (
+/obj/structure/largecrate/random/secure,
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic/lit)
+"Sv" = (
+/obj/structure/largecrate/random,
+/turf/open/auto_turf/shale/layer1,
+/area/event/dynamic/lit)
+"SL" = (
+/obj/structure/platform/metal/almayer/east,
+/obj/item/prop/colony/used_flare,
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic/lit)
+"To" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/barricade/metal/wired,
+/turf/open/auto_turf/shale/layer1,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"Tu" = (
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"TJ" = (
+/obj/structure/machinery/door/airlock/almayer/command/reinforced{
+	req_access = null
+	},
+/turf/open/floor/corsat/marked,
+/area/event/metal/dynamic/lit)
+"TX" = (
+/obj/structure/stairs/perspective{
+	dir = 1;
+	icon_state = "p_stair_full"
+	},
+/turf/open/asphalt/cement/cement4,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"Uj" = (
+/turf/closed/wall/mineral/bone_resin,
+/area/lv522/oob)
+"Uk" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	pixel_y = -1
+	},
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33;
+	pixel_y = 2
+	},
+/turf/open/floor/prison,
+/area/event/metal/dynamic/lit)
+"Ut" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/closed/wall/solaris/reinforced/hull/lv522,
+/area/lv522/oob)
+"Uu" = (
+/turf/open/auto_turf/shale/layer1,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"UH" = (
+/obj/structure/stairs/perspective{
+	dir = 1;
+	icon_state = "p_stair_full"
+	},
+/turf/open/asphalt/cement,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"UR" = (
+/obj/structure/cargo_container/horizontal/blue/middle,
+/obj/structure/largecrate/supply/floodlights{
+	layer = 3.1;
+	pixel_y = 9
+	},
+/turf/open/floor/prison/floor_marked,
+/area/event/dynamic/lit)
+"UY" = (
+/obj/structure/platform/metal/almayer/west,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/prison/floor_plate,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"Vl" = (
+/obj/structure/surface/rack,
+/turf/open/floor/prison/floor_marked,
+/area/event/dynamic/lit)
+"Vy" = (
+/turf/open/floor/plating,
+/area/event/dynamic/lit)
+"VA" = (
+/turf/open/floor/corsat/marked,
+/area/lv522/indoors/a_block/hallway)
+"VG" = (
+/obj/structure/window/framed/solaris,
+/turf/open/floor/plating,
+/area/event/metal/dynamic/lit)
+"VK" = (
+/obj/structure/platform_decoration/metal/almayer/east,
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic/lit)
+"Wa" = (
+/obj/item/prop/colony/used_flare,
+/turf/open/auto_turf/shale/layer1,
+/area/event/dynamic/lit)
+"Wq" = (
+/obj/structure/largecrate/random,
+/turf/open/floor/prison,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"WD" = (
+/obj/structure/cargo_container/horizontal/blue/top,
+/turf/open/floor/prison/floor_marked,
+/area/event/dynamic/lit)
+"WG" = (
+/obj/structure/barricade/metal/wired,
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/turf/open/auto_turf/shale/layer1,
+/area/event/dynamic/lit)
+"WN" = (
+/obj/item/prop/colony/used_flare,
+/turf/open/auto_turf/shale/layer1,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"WT" = (
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0"
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"WW" = (
+/turf/closed/wall/strata_outpost/reinforced/hull,
+/area/lv522/oob)
+"WY" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 1
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv522/indoors/a_block/hallway)
+"Xu" = (
+/obj/item/prop/colony/used_flare,
+/turf/open/floor/prison/floor_marked,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"Xy" = (
+/obj/structure/platform/metal/almayer,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/prison/floor_plate,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"XA" = (
+/obj/structure/surface/table/almayer,
+/obj/item/stack/tile/plasteel{
+	pixel_x = 1;
+	pixel_y = 9
+	},
+/obj/item/reagent_container/food/drinks/bottle/sake{
+	pixel_x = -4;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/shale/layer1,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"XD" = (
+/obj/structure/largecrate/random/secure,
+/turf/open/auto_turf/shale/layer1,
+/area/event/dynamic/lit)
+"Ye" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/obj/structure/barricade/metal/wired{
+	dir = 1
+	},
+/turf/open/asphalt/cement/cement1,
+/area/event/dynamic/lit)
+"Yf" = (
+/obj/structure/largecrate/random/barrel/true_random,
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic/lit)
+"Yr" = (
+/obj/structure/machinery/colony_floodlight,
+/turf/open/floor/corsat/marked,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"YJ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/prison/floor_plate,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"Za" = (
+/obj/structure/stairs/perspective{
+	dir = 5;
+	icon_state = "p_stair_full"
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic/lit)
+"Zv" = (
+/obj/structure/cargo_container/horizontal/blue/top,
+/turf/open/floor/prison/floor_marked,
+/area/lv522/outdoors/colony_streets/north_east_street)
+
+(1,1,1) = {"
+Uj
+Uj
+Uj
+Uj
+Uj
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+PK
+PK
+gD
+gD
+gD
+gD
+PK
+PK
+aE
+Em
+aE
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+"}
+(2,1,1) = {"
+Uj
+Uj
+Uj
+Uj
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+lT
+kg
+HZ
+xl
+xl
+HZ
+lT
+EU
+Em
+Em
+Ut
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+"}
+(3,1,1) = {"
+Uj
+Uj
+Uj
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+Em
+wE
+wE
+wE
+er
+er
+mU
+er
+er
+Yf
+Em
+aE
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+"}
+(4,1,1) = {"
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+Em
+Em
+Em
+Em
+tt
+wE
+wE
+er
+wq
+er
+er
+er
+Yf
+Em
+aE
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+"}
+(5,1,1) = {"
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+Em
+Em
+Em
+Sv
+Sv
+tt
+wE
+wE
+wE
+er
+er
+er
+er
+er
+tt
+Em
+Em
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+"}
+(6,1,1) = {"
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+Em
+XD
+Sv
+wE
+JY
+wE
+wE
+er
+er
+er
+er
+er
+wE
+wE
+Em
+aE
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+"}
+(7,1,1) = {"
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+Em
+wE
+wE
+wE
+JY
+wE
+er
+er
+er
+er
+er
+er
+wE
+aE
+Em
+aE
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+"}
+(8,1,1) = {"
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+Em
+Em
+tt
+wE
+wE
+JY
+er
+er
+er
+er
+er
+er
+wE
+aE
+Em
+Em
+Em
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+"}
+(9,1,1) = {"
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+Em
+Sv
+wE
+wE
+JY
+er
+er
+er
+er
+er
+wE
+aE
+aE
+aE
+Em
+aE
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+"}
+(10,1,1) = {"
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+Em
+XD
+XD
+wE
+tt
+rY
+lz
+IF
+IF
+IF
+lz
+wE
+aE
+aE
+Em
+aE
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+"}
+(11,1,1) = {"
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+Em
+Em
+tt
+tt
+tt
+tt
+td
+sw
+wE
+er
+er
+er
+wE
+wE
+Em
+Em
+Em
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+"}
+(12,1,1) = {"
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+Em
+XD
+Cw
+wE
+tt
+wE
+wE
+er
+er
+er
+er
+er
+wE
+aE
+Em
+aE
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+"}
+(13,1,1) = {"
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+Em
+Cw
+wE
+wE
+wE
+wE
+er
+er
+er
+er
+er
+er
+er
+wE
+Em
+aE
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+"}
+(14,1,1) = {"
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+Em
+Em
+tt
+kB
+er
+er
+er
+er
+er
+er
+er
+er
+er
+wE
+tt
+tt
+HM
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+"}
+(15,1,1) = {"
+aE
+aE
+Em
+aE
+aE
+Em
+aE
+aE
+aE
+Em
+Pq
+PQ
+er
+er
+er
+er
+er
+er
+er
+er
+er
+er
+er
+er
+tt
+tt
+tt
+tt
+tt
+Ye
+xl
+xl
+LB
+tt
+tt
+FA
+yR
+yR
+mf
+yR
+yR
+Qv
+Uu
+Uu
+Uu
+Uu
+Uu
+Uu
+Uu
+Tu
+ar
+sg
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+"}
+(16,1,1) = {"
+aE
+Em
+Em
+Em
+Em
+Em
+Em
+Em
+Em
+Em
+bV
+bq
+Ex
+er
+er
+er
+er
+er
+er
+er
+er
+er
+wE
+wE
+wE
+wE
+wE
+tt
+rY
+wE
+wE
+wE
+qK
+tt
+Hx
+Uu
+Uu
+Uu
+Ka
+sn
+sn
+To
+sn
+sn
+sn
+sn
+sn
+sn
+sn
+DZ
+ul
+fb
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+"}
+(17,1,1) = {"
+Em
+Em
+tt
+wE
+er
+tt
+wE
+wE
+tt
+tt
+tt
+mo
+Wa
+er
+DN
+qf
+qf
+qf
+fZ
+er
+er
+er
+er
+er
+er
+er
+er
+er
+er
+er
+wE
+wE
+WG
+tt
+Hx
+Uu
+WN
+Uu
+Uu
+Uu
+Oo
+pe
+Uu
+Uu
+Uu
+Uu
+Uu
+CB
+rl
+PU
+ar
+fb
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+"}
+(18,1,1) = {"
+aE
+Em
+er
+Sl
+er
+er
+er
+er
+wE
+wE
+wE
+wE
+Pg
+Ph
+uq
+ug
+ug
+ug
+zN
+Ph
+bd
+er
+er
+wE
+wE
+wE
+wE
+wE
+er
+er
+wE
+qK
+tt
+tt
+td
+da
+Uu
+Uu
+Uu
+Uu
+Uu
+Hx
+aE
+Uu
+Uu
+Uu
+Uu
+Xy
+Yr
+AZ
+ar
+Ox
+jp
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+"}
+(19,1,1) = {"
+aE
+Em
+er
+er
+er
+er
+er
+er
+er
+er
+Pg
+Ph
+lB
+se
+ug
+ug
+bZ
+ug
+ug
+se
+Bf
+Ph
+bd
+er
+tt
+tE
+sw
+wE
+wE
+er
+wE
+wE
+Nv
+tt
+Uu
+Uu
+Uu
+Uu
+Uu
+Uu
+Hx
+aE
+aE
+Hx
+Uu
+Uu
+Uu
+to
+UY
+kv
+ar
+nU
+EK
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+"}
+(20,1,1) = {"
+Em
+Em
+tt
+er
+er
+er
+er
+er
+er
+Pg
+lB
+ug
+ug
+aw
+Da
+Da
+bZ
+Da
+Da
+aw
+ug
+QM
+Bf
+bd
+er
+tt
+tt
+wE
+wE
+wE
+er
+wE
+wE
+tt
+Uu
+Uu
+ft
+Uu
+Uu
+Uu
+aE
+aE
+aE
+aE
+Uu
+Uu
+Uu
+Uu
+Tu
+Tu
+ar
+tp
+fw
+cM
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+"}
+(21,1,1) = {"
+aE
+Em
+er
+er
+er
+er
+er
+Pg
+SL
+lB
+ug
+ug
+yE
+yE
+yE
+yE
+bZ
+yE
+yE
+yE
+yE
+sK
+AO
+Bf
+Ph
+bd
+er
+wE
+wE
+wE
+Dh
+wE
+tt
+tt
+tt
+sm
+Uu
+Uu
+Uu
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+Uu
+Tu
+Tu
+Tu
+ar
+Tu
+tp
+ee
+lx
+lx
+lx
+lx
+lx
+lx
+lx
+ad
+lx
+lx
+lx
+lx
+lx
+tP
+Pn
+tN
+tN
+"}
+(22,1,1) = {"
+aE
+Em
+er
+zT
+er
+Pg
+Ph
+lB
+ug
+ug
+ug
+qr
+ld
+cQ
+Gu
+gV
+bZ
+Da
+Da
+Da
+yE
+Vl
+sK
+BM
+BM
+Bf
+Ph
+bd
+wE
+wE
+er
+er
+wE
+tt
+XA
+Uu
+Uu
+Uu
+Tu
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+Tu
+Tu
+Tu
+Tu
+kG
+tT
+tT
+tT
+tT
+tT
+tT
+tT
+tT
+tT
+tT
+tT
+tT
+GC
+Hx
+Hx
+Uu
+RL
+Pn
+tN
+tN
+"}
+(23,1,1) = {"
+Em
+Em
+tt
+er
+Pg
+lB
+ug
+ug
+ug
+Da
+Da
+Bb
+Ep
+oo
+Da
+Da
+bZ
+Da
+Da
+Da
+yE
+Da
+Da
+PZ
+BM
+BM
+BM
+Bf
+bd
+er
+er
+er
+er
+tt
+iJ
+Uu
+Uu
+Tu
+Tu
+Uu
+Uu
+aE
+aE
+aE
+aE
+WN
+Mq
+Mq
+Mq
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+ar
+Uu
+Uu
+Uu
+xE
+Pn
+Pn
+Pn
+"}
+(24,1,1) = {"
+aE
+Em
+er
+Pg
+lB
+ug
+ug
+bZ
+bZ
+bZ
+bZ
+bZ
+bZ
+bZ
+bZ
+bZ
+bZ
+bZ
+bZ
+bZ
+bZ
+bZ
+bZ
+bZ
+bZ
+bZ
+BM
+BM
+Bf
+bd
+er
+er
+tt
+tt
+tt
+WN
+eQ
+Tu
+Tu
+Tu
+pd
+yo
+yo
+yo
+yo
+yo
+yo
+yo
+yo
+yo
+Tu
+IZ
+Tu
+Tu
+yo
+yo
+yo
+Uu
+Uu
+Uu
+Uu
+Tu
+Tu
+ar
+Tu
+Uu
+Uu
+tp
+UH
+Pn
+HW
+"}
+(25,1,1) = {"
+aE
+Em
+er
+nd
+se
+ug
+gu
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+gu
+BM
+gI
+nt
+er
+er
+er
+tt
+Rb
+Tu
+Tu
+Tu
+Tu
+Tu
+RL
+Fa
+Fa
+GZ
+GZ
+ki
+ki
+ki
+GZ
+GZ
+Tu
+Tu
+Tu
+Tu
+jI
+Fa
+Fa
+Uu
+Uu
+Uu
+Uu
+Uu
+Tu
+ar
+Tu
+Uu
+Uu
+Uu
+TX
+dJ
+HW
+"}
+(26,1,1) = {"
+Em
+Em
+tt
+pi
+ug
+yE
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+bZ
+BM
+Nx
+er
+er
+er
+tt
+pU
+Tu
+Tu
+BD
+Tu
+Tu
+RL
+Fa
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+jI
+Tu
+FV
+IZ
+Tu
+Tu
+Fa
+Tu
+Hx
+Uu
+Uu
+Uu
+Uu
+ar
+Tu
+Tu
+Uu
+Uu
+TX
+Pn
+HW
+"}
+(27,1,1) = {"
+aE
+Em
+er
+ga
+ug
+yE
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+bZ
+BM
+eS
+er
+er
+tt
+tt
+tt
+Tu
+Tu
+Tu
+Tu
+Tu
+OL
+re
+ba
+cF
+cF
+Tu
+cF
+cF
+cF
+cF
+cF
+cF
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Uu
+Uu
+Uu
+kG
+tT
+tn
+tn
+tn
+RV
+Fe
+WY
+"}
+(28,1,1) = {"
+aE
+Em
+er
+ga
+ug
+yE
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+hI
+BM
+eS
+er
+er
+er
+tt
+pJ
+dC
+BS
+Tu
+Tu
+Tu
+OL
+re
+ba
+cF
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+cF
+Tu
+Tu
+Tu
+Tu
+xB
+Tu
+Tu
+Tu
+Tu
+Uu
+Uu
+Tu
+Tu
+Uu
+Uu
+Uu
+TX
+VA
+Pt
+"}
+(29,1,1) = {"
+Em
+Em
+tt
+ga
+ug
+yE
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+bZ
+BM
+eS
+er
+er
+er
+tt
+AB
+Tu
+WT
+Tu
+Tu
+Tu
+OL
+re
+ba
+Ja
+ir
+ba
+uC
+ba
+RI
+Es
+ba
+cF
+jI
+Tu
+BD
+Tu
+xB
+jt
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Uu
+Uu
+Uu
+Uu
+TX
+Pn
+HW
+"}
+(30,1,1) = {"
+aE
+Em
+er
+ga
+ug
+yE
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+yF
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+bZ
+BM
+eS
+er
+er
+tt
+tt
+td
+Id
+cb
+Tu
+Tu
+Tu
+RL
+re
+ba
+kC
+AA
+lb
+ba
+ba
+Av
+sh
+ba
+cF
+ba
+Tu
+Tu
+IZ
+Tu
+jt
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Uu
+Uu
+Uu
+Hx
+TX
+dJ
+HW
+"}
+(31,1,1) = {"
+aE
+Em
+er
+ga
+ug
+yE
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+bZ
+BM
+eS
+er
+er
+er
+CQ
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+RL
+YJ
+ba
+PM
+Es
+ba
+Tu
+Tu
+pz
+ba
+ba
+cF
+ba
+Tu
+Tu
+Tu
+Lp
+AL
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Uu
+Uu
+Hx
+Uu
+TX
+Pn
+HW
+"}
+(32,1,1) = {"
+Em
+Em
+tt
+ga
+ug
+yE
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+bZ
+BM
+eS
+er
+er
+er
+bz
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+RL
+YJ
+ba
+cF
+ba
+ba
+Tu
+Tu
+Tu
+ba
+ba
+cF
+ba
+ba
+Tu
+Tu
+Gm
+Tu
+Tu
+Tu
+Tu
+Uu
+Uu
+Uu
+Uu
+Hx
+aE
+aE
+aE
+WW
+WW
+"}
+(33,1,1) = {"
+aE
+Em
+er
+ga
+ug
+yE
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+bZ
+BM
+eS
+er
+er
+er
+bz
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+OL
+re
+ba
+Zv
+NR
+pm
+ba
+ba
+ba
+ba
+ba
+QJ
+QJ
+QJ
+QJ
+Tu
+qg
+Tu
+Tu
+Tu
+Uu
+Uu
+Uu
+Uu
+Uu
+Hx
+aE
+aE
+aE
+aE
+aE
+"}
+(34,1,1) = {"
+aE
+Em
+er
+AR
+ug
+yE
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+bZ
+BM
+uH
+er
+er
+er
+bz
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+RL
+YJ
+ba
+cF
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+Xu
+ba
+ba
+ba
+Tu
+Tu
+jI
+Tu
+Tu
+WN
+Uu
+Uu
+Uu
+Uu
+Uu
+aE
+aE
+aE
+aE
+aE
+"}
+(35,1,1) = {"
+Em
+Em
+tt
+nd
+se
+QM
+gu
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+gu
+BM
+gI
+nt
+er
+er
+er
+bz
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+RL
+re
+ba
+cF
+ba
+ba
+px
+ba
+ba
+ba
+ba
+cF
+ba
+ba
+ba
+Tu
+xB
+Tu
+Tu
+Tu
+Uu
+Uu
+Uu
+Uu
+Uu
+Pb
+aE
+aE
+aE
+aE
+aE
+"}
+(36,1,1) = {"
+aE
+Em
+er
+uJ
+xt
+sK
+ug
+bZ
+bZ
+bZ
+bZ
+bZ
+bZ
+bZ
+bZ
+bZ
+bZ
+bZ
+bZ
+bZ
+bZ
+bZ
+bZ
+bZ
+bZ
+bZ
+BM
+BM
+jH
+VK
+er
+er
+er
+CQ
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+RL
+re
+ba
+cF
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+Si
+ba
+bC
+ba
+Tu
+xB
+Tu
+Tu
+Tu
+Uu
+Uu
+Uu
+Uu
+Uu
+aE
+aE
+aE
+aE
+aE
+aE
+"}
+(37,1,1) = {"
+aE
+Em
+wE
+er
+uJ
+xt
+ug
+ug
+ug
+Vl
+Vl
+Da
+yE
+Da
+Da
+Da
+bZ
+Vl
+Vl
+Da
+yE
+Da
+Da
+PZ
+BM
+BM
+BM
+jH
+VK
+er
+er
+er
+tt
+tt
+td
+Id
+yH
+Tu
+Tu
+Tu
+RL
+re
+ba
+cF
+uC
+ba
+ba
+Dv
+ba
+ba
+ba
+uU
+ba
+QS
+ba
+Tu
+xB
+Tu
+Tu
+Tu
+Uu
+Uu
+Uu
+Uu
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+"}
+(38,1,1) = {"
+Em
+Em
+tt
+er
+er
+uJ
+uj
+xt
+ug
+ug
+ug
+Bb
+yE
+Da
+Da
+Da
+bZ
+WD
+UR
+Lw
+yE
+Da
+ug
+BM
+BM
+jH
+uj
+VK
+er
+er
+er
+er
+wE
+tt
+Tu
+Tu
+WT
+Tu
+Tu
+BD
+RL
+Tu
+Tu
+IZ
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+vx
+ba
+LY
+ba
+Tu
+IZ
+Tu
+Tu
+Tu
+Uu
+Uu
+Uu
+Uu
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+"}
+(39,1,1) = {"
+aE
+Em
+wE
+Ly
+er
+er
+er
+uJ
+uj
+xt
+ug
+ug
+yE
+yE
+yE
+yE
+bZ
+yE
+yE
+yE
+mQ
+ug
+ug
+jH
+uj
+VK
+er
+er
+er
+wE
+Dh
+wE
+wE
+tt
+Tu
+Bh
+cb
+Tu
+Tu
+Tu
+xB
+Tu
+jI
+Tu
+Tu
+ba
+ba
+ba
+Tu
+ba
+ba
+cF
+ba
+Tu
+ba
+Tu
+Tu
+Tu
+Tu
+Tu
+Uu
+Uu
+Uu
+Uu
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+"}
+(40,1,1) = {"
+aE
+Em
+wE
+wE
+er
+er
+er
+er
+er
+uJ
+xt
+ug
+ug
+ug
+Da
+Da
+bZ
+Da
+Da
+ug
+ug
+ug
+jH
+VK
+er
+er
+er
+er
+er
+wE
+wE
+wE
+tt
+tt
+tt
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+ba
+ba
+ba
+ba
+ba
+ba
+cF
+ba
+ba
+ba
+Tu
+Tu
+Tu
+Tu
+Tu
+Uu
+Uu
+Uu
+Uu
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+"}
+(41,1,1) = {"
+Em
+Em
+tt
+wE
+wE
+wE
+er
+er
+er
+er
+uJ
+uj
+xt
+se
+ug
+ug
+bZ
+ug
+ug
+se
+jH
+uj
+VK
+er
+er
+er
+er
+er
+wE
+wE
+wE
+wE
+wE
+tt
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+cG
+Tu
+Tu
+Tu
+Tu
+ba
+ba
+ba
+ba
+ba
+ba
+QJ
+QJ
+QJ
+QJ
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Uu
+Uu
+Uu
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+"}
+(42,1,1) = {"
+aE
+Em
+wE
+wE
+wE
+wE
+Ly
+Ly
+wE
+wE
+er
+er
+uJ
+uj
+Jj
+ug
+ug
+ug
+yJ
+uj
+VK
+er
+er
+er
+er
+er
+er
+wE
+wE
+Ly
+wE
+aE
+aE
+tt
+Uu
+Tu
+Tu
+Tu
+Tu
+Tu
+xB
+Tu
+Tu
+Tu
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+cF
+ba
+ba
+Tu
+Tu
+OU
+Tu
+Tu
+Tu
+Tu
+Uu
+Uu
+Uu
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+"}
+(43,1,1) = {"
+aE
+Em
+wE
+Ly
+tt
+wE
+wE
+tt
+wE
+wE
+tt
+wE
+er
+er
+Za
+fi
+fi
+fi
+zs
+er
+er
+er
+er
+er
+er
+Ly
+Ly
+wE
+er
+mo
+aE
+aE
+tt
+tt
+tt
+Uu
+Tu
+Tu
+Tu
+Tu
+xB
+Tu
+Tu
+Tu
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+cF
+Ao
+ba
+BD
+Tu
+xB
+Tu
+Tu
+Tu
+Tu
+Uu
+Uu
+Uu
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+"}
+(44,1,1) = {"
+aE
+Em
+Em
+Em
+Em
+Em
+Em
+Em
+Em
+Em
+Em
+XD
+wE
+td
+sw
+er
+wE
+er
+er
+er
+Ly
+wE
+er
+kx
+TJ
+kx
+Wa
+wE
+wE
+aE
+aE
+aE
+aE
+tt
+kz
+Uu
+Tu
+Tu
+Tu
+Tu
+jI
+Tu
+IZ
+Tu
+Wq
+ba
+ba
+ba
+ba
+ba
+ba
+cF
+ba
+ba
+Tu
+Tu
+xB
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Uu
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+"}
+(45,1,1) = {"
+aE
+aE
+aE
+aE
+Em
+aE
+aE
+Em
+aE
+aE
+Em
+Em
+Em
+kx
+kx
+jr
+jr
+kx
+kx
+kx
+wE
+wE
+kx
+kx
+KR
+kx
+kx
+wE
+wE
+aE
+aE
+aE
+aE
+tt
+kz
+Uu
+Hx
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Xu
+cF
+cF
+cF
+cF
+Tu
+cF
+cF
+ba
+uC
+Tu
+Tu
+Ix
+jt
+Tu
+Tu
+Tu
+Tu
+Uu
+Uu
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+"}
+(46,1,1) = {"
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+Em
+lO
+CA
+uE
+uE
+ni
+yB
+kx
+wE
+wE
+kx
+fN
+AS
+bu
+kx
+wE
+wE
+wE
+aE
+aE
+tt
+tt
+td
+Qr
+Uu
+Tu
+Tu
+Tu
+Tu
+Fa
+Tu
+Tu
+ba
+ba
+ba
+ba
+ba
+Tu
+ba
+ba
+ba
+ba
+IZ
+Tu
+Fa
+jt
+Tu
+Tu
+Tu
+Tu
+Uu
+Hx
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+"}
+(47,1,1) = {"
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+Em
+lF
+Lc
+iH
+yv
+zM
+lF
+VG
+Ly
+wE
+kx
+HA
+AS
+yD
+kx
+aE
+wE
+wE
+aE
+aE
+aE
+tt
+kz
+Uu
+Uu
+Uu
+Uu
+Tu
+Tu
+Fa
+Fa
+Tu
+ki
+ki
+ki
+ki
+ki
+ki
+ki
+Oe
+ki
+ki
+Tu
+Fa
+Fa
+jt
+Tu
+Tu
+Tu
+Uu
+Uu
+Hx
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+"}
+(48,1,1) = {"
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+Em
+uE
+cv
+iH
+iH
+jh
+uE
+VG
+wE
+aE
+hp
+kn
+AS
+HI
+hp
+aE
+wE
+Ly
+aE
+aE
+aE
+tt
+kz
+nB
+Uu
+Uu
+Uu
+Hx
+xB
+Tu
+Tu
+Tu
+Tu
+FA
+FA
+FA
+FA
+FA
+FA
+Tu
+Uu
+FA
+FA
+FA
+wj
+np
+Tu
+Uu
+Uu
+Uu
+Hx
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+"}
+(49,1,1) = {"
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+Em
+wD
+Uk
+Rz
+lF
+vN
+nJ
+kx
+aE
+aE
+hp
+hp
+hg
+hp
+hp
+aE
+aE
+aE
+aE
+aE
+tt
+tt
+tt
+kz
+Hx
+Uu
+Uu
+Uu
+Uu
+Uu
+Uu
+Uu
+Uu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+xB
+Tu
+Hx
+Hx
+Uu
+Uu
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+"}
+(50,1,1) = {"
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+Ly
+aE
+aE
+aE
+hp
+hp
+hp
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+Hx
+Hx
+Uu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+"}
+(51,1,1) = {"
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+"}

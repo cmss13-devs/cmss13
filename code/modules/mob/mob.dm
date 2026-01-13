@@ -104,7 +104,7 @@
 			if(HUNTER_CLAN,HUNTER_HUD)
 				I = image('icons/mob/hud/hud_yautja.dmi', src, "")
 			if(HOLOCARD_HUD)
-				I = image('icons/mob/hud/marine_hud.dmi', src, "")
+				I = image('icons/mob/hud/human_status.dmi', src, "")
 		I.appearance_flags |= NO_CLIENT_COLOR|KEEP_APART|RESET_COLOR
 		hud_list[hud] = I
 
@@ -209,8 +209,8 @@
 	var/hear_dist = 7
 	if(max_distance)
 		hear_dist = max_distance
-	for(var/mob/M as anything in hearers(hear_dist, src.loc))
-		M.show_message(message, SHOW_MESSAGE_AUDIBLE, deaf_message, SHOW_MESSAGE_VISIBLE, message_flags = message_flags)
+	for(var/mob/current in hearers(hear_dist, loc))
+		current.show_message(message, SHOW_MESSAGE_AUDIBLE, deaf_message, SHOW_MESSAGE_VISIBLE, message_flags = message_flags)
 
 /atom/proc/ranged_message(message, blind_message, max_distance, message_flags = CHAT_TYPE_OTHER)
 	var/view_dist = 7
@@ -237,6 +237,7 @@
 
 
 /mob/proc/Life(delta_time)
+	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 	if(client == null)
 		away_timer++
@@ -362,14 +363,14 @@
 	if(client)
 		if(istype(focus, /atom/movable))
 			client.perspective = EYE_PERSPECTIVE
-			client.eye = focus
+			client.set_eye(focus)
 		else
 			if(isturf(loc))
-				client.eye = client.mob
+				client.set_eye(client.mob)
 				client.perspective = MOB_PERSPECTIVE
 			else
 				client.perspective = EYE_PERSPECTIVE
-				client.eye = loc
+				client.set_eye(loc)
 
 		client.mouse_pointer_icon = initial(client.mouse_pointer_icon)
 
@@ -424,10 +425,10 @@
 /mob/proc/print_flavor_text()
 	if (flavor_text && flavor_text != "")
 		var/msg = replacetext(flavor_text, "\n", " ")
-		if(length(msg) <= 40)
+		if(length(msg) <= 70)
 			return SPAN_NOTICE("[msg]")
 		else
-			return SPAN_NOTICE("[copytext(msg, 1, 37)]... <a href='byond://?src=\ref[src];flavor_more=1'>More...</a>")
+			return SPAN_NOTICE("[copytext(msg, 1, 67)]... <a href='byond://?src=\ref[src];flavor_more=1'>More...</a>")
 
 /mob/Topic(href, href_list)
 	. = ..()
@@ -477,6 +478,9 @@
 		return
 
 	if(throwing || is_mob_incapacitated())
+		return
+
+	if(HAS_TRAIT(src, TRAIT_HAULED))
 		return
 
 	if(pulling)
@@ -614,23 +618,23 @@ note dizziness decrements automatically in the mob's Life() proc.
 /mob/proc/dizzy_process()
 	is_dizzy = 1
 	while(dizziness > 100)
-		SEND_SIGNAL(src, COMSIG_HUMAN_ANIMATING)
+		SEND_SIGNAL(src, COMSIG_MOB_ANIMATING)
 		if(client)
 			if(buckled || resting)
-				client.pixel_x = 0
-				client.pixel_y = 0
+				client.set_pixel_x(0)
+				client.set_pixel_y(0)
 			else
 				var/amplitude = dizziness*(sin(dizziness * 0.044 * world.time) + 1) / 70
-				client.pixel_x = amplitude * sin(0.008 * dizziness * world.time)
-				client.pixel_y = amplitude * cos(0.008 * dizziness * world.time)
+				client.set_pixel_x(amplitude * sin(0.008 * dizziness * world.time))
+				client.set_pixel_y(amplitude * cos(0.008 * dizziness * world.time))
 				if(prob(1))
 					to_chat(src, "The dizziness is becoming unbearable! It should pass faster if you lie down.")
 		sleep(1)
 	//endwhile - reset the pixel offsets to zero
 	is_dizzy = 0
 	if(client)
-		client.pixel_x = 0
-		client.pixel_y = 0
+		client.set_pixel_x(0)
+		client.set_pixel_y(0)
 		to_chat(src, "The dizziness has passed, you're starting to feel better.")
 
 // jitteriness - copy+paste of dizziness
@@ -655,7 +659,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 /mob/proc/jittery_process()
 	is_jittery = 1
 	while(jitteriness > 100)
-		SEND_SIGNAL(src, COMSIG_HUMAN_ANIMATING)
+		SEND_SIGNAL(src, COMSIG_MOB_ANIMATING)
 		var/amplitude = min(4, jitteriness / 100)
 		pixel_x = old_x + rand(-amplitude, amplitude)
 		pixel_y = old_y + rand(-amplitude/3, amplitude/3)
@@ -804,7 +808,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 			return FALSE
 		to_chat(usr, SPAN_WARNING("You attempt to get a good grip on [selection] in [src]'s body."))
 
-	if(!do_after(usr, 80 * usr.get_skill_duration_multiplier(SKILL_SURGERY), INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+	if(!do_after(usr, 2 SECONDS * selection.w_class * usr.get_skill_duration_multiplier(SKILL_SURGERY), INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 		return
 	if(!selection || !src || !usr || !istype(selection))
 		return
@@ -842,7 +846,8 @@ note dizziness decrements automatically in the mob's Life() proc.
 			affected.wounds += I
 			H.custom_pain("Something tears wetly in your [affected] as [selection] is pulled free!", 1)
 
-	selection.forceMove(get_turf(src))
+	playsound(loc, 'sound/weapons/bladeslice.ogg', 25)
+	usr.put_in_hands(selection)
 	return TRUE
 
 ///Can this mob resist (default FALSE)
@@ -972,12 +977,14 @@ note dizziness decrements automatically in the mob's Life() proc.
 			end_of_conga = TRUE //Only mobs can continue the cycle.
 	var/area/new_area = get_area(destination)
 	for(var/atom/movable/AM in conga_line)
-		var/oldLoc
+		var/atom/oldLoc
 		if(AM.loc)
 			oldLoc = AM.loc
 			AM.loc.Exited(AM,destination)
 		AM.loc = destination
 		AM.loc.Entered(AM,oldLoc)
+		if(oldLoc.z != destination.z)
+			SEND_SIGNAL(AM, COMSIG_MOVABLE_Z_CHANGED)
 		var/area/old_area
 		if(oldLoc)
 			old_area = get_area(oldLoc)
@@ -1022,26 +1029,26 @@ note dizziness decrements automatically in the mob's Life() proc.
 			//Set the thing unless it's us
 			if(A != src)
 				client.perspective = EYE_PERSPECTIVE
-				client.eye = A
+				client.set_eye(A)
 			else
-				client.eye = client.mob
+				client.set_eye(client.mob)
 				client.perspective = MOB_PERSPECTIVE
 		else if(isturf(A))
 			//Set to the turf unless it's our current turf
 			if(A != loc)
 				client.perspective = EYE_PERSPECTIVE
-				client.eye = A
+				client.set_eye(A)
 			else
-				client.eye = client.mob
+				client.set_eye(client.mob)
 				client.perspective = MOB_PERSPECTIVE
 	else
 		//Reset to common defaults: mob if on turf, otherwise current loc
 		if(isturf(loc))
-			client.eye = client.mob
+			client.set_eye(client.mob)
 			client.perspective = MOB_PERSPECTIVE
 		else
 			client.perspective = EYE_PERSPECTIVE
-			client.eye = loc
+			client.set_eye(loc)
 
 	return TRUE
 
@@ -1065,3 +1072,14 @@ note dizziness decrements automatically in the mob's Life() proc.
 	mind.transfer_to(new_player)
 
 	qdel(src)
+
+/mob/proc/update_cursor()
+
+	client?.mouse_pointer_icon = client?.prefs.chosen_pointer
+
+/// To be used when displaying a mobs "username" to players
+/mob/proc/username()
+	if(client)
+		return client.username()
+
+	return key

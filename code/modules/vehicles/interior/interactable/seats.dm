@@ -44,8 +44,8 @@
 		vehicle.set_seated_mob(seat, null)
 		if(M.client)
 			M.client.change_view(GLOB.world_view_size, vehicle)
-			M.client.pixel_x = 0
-			M.client.pixel_y = 0
+			M.client.set_pixel_x(0)
+			M.client.set_pixel_y(0)
 			M.reset_view()
 	else
 		if(M.stat == DEAD)
@@ -56,7 +56,7 @@
 			M.client.change_view(8, vehicle)
 
 /obj/structure/bed/chair/comfy/vehicle/clicked(mob/user, list/mods) // If you're buckled, you can shift-click on the seat in order to return to camera-view
-	if(user == buckled_mob && mods["shift"] && !user.is_mob_incapacitated())
+	if(user == buckled_mob && mods[SHIFT_CLICK] && !user.is_mob_incapacitated())
 		user.client.change_view(8, vehicle)
 		vehicle.set_seated_mob(seat, user)
 		return TRUE
@@ -108,6 +108,9 @@
 			else
 				to_chat(user, SPAN_WARNING("You are unable to use heavy weaponry."))
 			return
+		if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/ceasefire))
+			to_chat(user, SPAN_WARNING("You will not break the ceasefire by doing that!"))
+			return FALSE
 
 	for(var/obj/item/I in user.contents)		//prevents shooting while zoomed in, but zoom can still be activated and used without shooting
 		if(I.zoom)
@@ -121,14 +124,23 @@
 /obj/structure/bed/chair/comfy/vehicle/attackby(obj/item/W, mob/living/user)
 	return
 
-/obj/structure/bed/chair/comfy/vehicle/attack_alien(mob/living/carbon/xenomorph/X, dam_bonus)
-
-	if(X.is_mob_incapacitated() || !Adjacent(X))
+/obj/structure/bed/chair/comfy/vehicle/attack_alien(mob/living/carbon/xenomorph/user)
+	if(user.is_mob_incapacitated() || !Adjacent(user))
 		return
 
 	if(buckled_mob)
-		manual_unbuckle(X)
+		manual_unbuckle(user)
 		return
+
+/obj/structure/bed/chair/comfy/vehicle/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
+	if(!buckled_mob)
+		return TAILSTAB_COOLDOWN_NONE
+	manual_unbuckle(xeno)
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	xeno.visible_message(SPAN_DANGER("[xeno] smacks [src] with its tail!"),
+	SPAN_DANGER("We smack [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno.tail_stab_animation(src, blunt_stab)
+	return TAILSTAB_COOLDOWN_LOW
 
 //custom vehicle seats for armored vehicles
 //spawners located in interior_landmarks
@@ -138,7 +150,7 @@
 	var/image/over_image = null
 
 /obj/structure/bed/chair/comfy/vehicle/driver/armor/Initialize(mapload)
-	over_image = image('icons/obj/vehicles/interiors/general.dmi', "armor_chair_buckled")
+	over_image = image(icon, "armor_chair_buckled")
 	over_image.layer = ABOVE_MOB_LAYER
 
 	return ..()
@@ -160,7 +172,7 @@
 	var/image/over_image = null
 
 /obj/structure/bed/chair/comfy/vehicle/gunner/armor/Initialize(mapload)
-	over_image = image('icons/obj/vehicles/interiors/general.dmi', "armor_chair_buckled")
+	over_image = image(icon, "armor_chair_buckled")
 	over_image.layer = ABOVE_MOB_LAYER
 
 	return ..()
@@ -179,8 +191,8 @@
 		vehicle.set_seated_mob(seat, null)
 		if(M.client)
 			M.client.change_view(GLOB.world_view_size, vehicle)
-			M.client.pixel_x = 0
-			M.client.pixel_y = 0
+			M.client.set_pixel_x(0)
+			M.client.set_pixel_y(0)
 	else
 		if(M.stat != CONSCIOUS)
 			unbuckle()
@@ -201,7 +213,6 @@
 	if(buckled_mob)
 		overlays += over_image
 
-
 //armored vehicles support gunner seat
 
 /obj/structure/bed/chair/comfy/vehicle/support_gunner
@@ -220,7 +231,7 @@
 	. = ..()
 
 /obj/structure/bed/chair/comfy/vehicle/support_gunner/Initialize(mapload)
-	over_image = image('icons/obj/vehicles/interiors/general.dmi', "armor_chair_buckled")
+	over_image = image(icon, "armor_chair_buckled")
 	over_image.layer = ABOVE_MOB_LAYER
 
 	return ..()
@@ -235,6 +246,9 @@
 			else
 				to_chat(user, SPAN_WARNING("You are unable to use firearms."))
 			return
+		if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/ceasefire))
+			to_chat(user, SPAN_WARNING("You will not break the ceasefire by doing that!"))
+			return FALSE
 	. = ..()
 
 	update_icon()
@@ -257,8 +271,8 @@
 		vehicle.set_seated_mob(seat, null)
 		if(M.client)
 			M.client.change_view(GLOB.world_view_size, vehicle)
-			M.client.pixel_x = 0
-			M.client.pixel_y = 0
+			M.client.set_pixel_x(0)
+			M.client.set_pixel_y(0)
 			M.reset_view()
 	else
 		if(M.stat == DEAD)
@@ -317,7 +331,7 @@
 
 /obj/structure/bed/chair/vehicle/Initialize()
 	. = ..()
-	chairbar = image('icons/obj/vehicles/interiors/general.dmi', "vehicle_bars")
+	chairbar = image(icon, "vehicle_bars")
 	chairbar.layer = ABOVE_MOB_LAYER
 
 	addtimer(CALLBACK(src, PROC_REF(setup_buckle_offsets)), 1 SECONDS)
@@ -401,6 +415,18 @@
 		else
 			deconstruct(FALSE)
 
+/obj/structure/bed/chair/vehicle/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
+	if(unslashable)
+		return TAILSTAB_COOLDOWN_NONE
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	xeno.visible_message(SPAN_DANGER("[xeno] smashes [src] with its tail!"),
+	SPAN_DANGER("We smash [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	if(!broken)
+		break_seat()
+	else
+		deconstruct(FALSE)
+	xeno.tail_stab_animation(src, blunt_stab)
+	return TAILSTAB_COOLDOWN_NORMAL
 
 /obj/structure/bed/chair/vehicle/attackby(obj/item/W, mob/living/user)
 	if((iswelder(W) && broken))
@@ -449,4 +475,4 @@
 /obj/structure/bed/chair/vehicle/white
 	name = "passenger seat"
 	desc = "A sturdy chair with a brace that lowers over your body. Prevents being flung around in vehicle during crash being injured as a result. Fasten your seatbelts, kids! Fix with welding tool in case of damage."
-	icon = 'icons/obj/vehicles/interiors/whitechair.dmi'
+	icon = 'icons/obj/vehicles/interiors/general_wy.dmi'

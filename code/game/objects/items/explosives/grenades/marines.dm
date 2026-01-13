@@ -510,6 +510,10 @@
 	/// Post falloff calc damage is multipled by this to get human stamina damage
 	var/human_stam_dam_factor = 0.5
 
+/obj/item/explosive/grenade/sebb/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/armat)
+
 /obj/item/explosive/grenade/sebb/get_examine_text(mob/user)
 	. = ..()
 	. += SPAN_NOTICE("To put into mine mode, plant at feet.")
@@ -541,6 +545,9 @@
 		var/mob/living/carbon/human/human = user
 		if(!human.allow_gun_usage)
 			to_chat(user, SPAN_WARNING("Your programming prevents you from using this!"))
+			return
+		if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/ceasefire))
+			to_chat(user, SPAN_WARNING("You will not break the ceasefire by doing that!"))
 			return
 
 	if(user_turf && (user_turf.density || locate(/obj/structure/fence) in user_turf))
@@ -625,7 +632,7 @@
 				damage_applied *= 1.5
 				new /obj/effect/overlay/temp/elec_arc(get_turf(shocked_human))
 				to_chat(mob, SPAN_HIGHDANGER("All of your systems jam up as your main bus is overvolted by [damage_applied*2] volts."))
-				mob.visible_message(SPAN_WARNING("[mob] seizes up from the elctric shock"))
+				mob.visible_message(SPAN_WARNING("[mob] seizes up from the elctric shock."))
 			shocked_human.take_overall_armored_damage(damage_applied, ARMOR_ENERGY, BURN, 90) // 90% chance to be on additional limbs
 			shocked_human.make_dizzy(damage_applied)
 			mob.apply_stamina_damage(damage_applied*human_stam_dam_factor) // Stamina damage
@@ -635,6 +642,8 @@
 			if((mob_dist < (range-3))) // 2 tiles around small superslow
 				mob.Superslow(2)
 			mob.Slow(damage_applied/xeno_slowdown_numerator)
+			if(iswydroid(mob))
+				mob.emote("pain")
 
 		if(mob_dist < 1) // Range based stuff, standing ontop of the equivalent of a canned lighting bolt should mess you up.
 			mob.Superslow(3) // Note that humans will likely be in stamcrit so it's always worse for them when ontop of it and we can just balancing it on xenos.
@@ -650,7 +659,7 @@
 
 		new /obj/effect/overlay/temp/emp_sparks(mob)
 		mob.make_jittery(damage_applied*2)
-	empulse(src, 1, 2) // mini EMP
+	empulse(src, 1, 2, cause_data?.resolve_mob()) // mini EMP
 	qdel(src)
 
 
@@ -924,11 +933,15 @@
 // abstract grenades used for hijack explosions
 
 /obj/item/explosive/grenade/high_explosive/bursting_pipe
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "bursting pipe"
 	alpha = 0
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /obj/item/explosive/grenade/incendiary/bursting_pipe
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "bursting pipe"
 	alpha = 0
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT

@@ -8,13 +8,16 @@ import { Input, LabeledList, Section } from 'tgui/components';
 
 export const meta = {
   title: 'Themes',
-  render: (theme, setTheme) => <Story theme={theme} setTheme={setTheme} />,
+  render: (
+    theme: string,
+    setTheme: (value: React.SetStateAction<string>) => void,
+  ) => <Story theme={theme} setTheme={setTheme} />,
 };
 
-const Story = (props: {
+function Story(props: {
   readonly theme: string;
   readonly setTheme: (value: React.SetStateAction<string>) => void;
-}) => {
+}) {
   return (
     <Section>
       <LabeledList>
@@ -28,4 +31,4 @@ const Story = (props: {
       </LabeledList>
     </Section>
   );
-};
+}

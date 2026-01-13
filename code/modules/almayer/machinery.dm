@@ -76,28 +76,47 @@
 	use_power = USE_POWER_IDLE
 	density = TRUE
 	idle_power_usage = 2
-	var/datum/tacmap/map
-	///flags that we want to be shown when you interact with this table
-	var/minimap_type = MINIMAP_FLAG_USCM
-	///The faction that is intended to use this structure (determines type of tacmap used)
-	var/faction = FACTION_MARINE
+	var/minimap_flag = MINIMAP_FLAG_USCM
+	var/drawing = TRUE
 
-/obj/structure/machinery/prop/almayer/CICmap/Initialize()
+/obj/structure/machinery/prop/almayer/CICmap/Initialize(mapload, ...)
 	. = ..()
-
-	if (faction == FACTION_MARINE)
-		map = new /datum/tacmap/drawing(src, minimap_type)
-	else
-		map = new(src, minimap_type) // Non-drawing version
+	AddComponent(/datum/component/tacmap, has_drawing_tools=drawing, minimap_flag=minimap_flag, has_update=drawing, drawing=drawing)
 
 /obj/structure/machinery/prop/almayer/CICmap/Destroy()
-	QDEL_NULL(map)
 	return ..()
 
 /obj/structure/machinery/prop/almayer/CICmap/attack_hand(mob/user)
 	. = ..()
+	if(.)
+		return
+	if(interact_checks(user))
+		return TRUE
 
-	map.tgui_interact(user)
+	if(locate(/atom/movable/screen/minimap) in user.client.screen) //This seems like the most effective way to do this without some wacky code
+		to_chat(user, SPAN_WARNING("You already have a minimap open!"))
+		return
+	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
+	tacmap_component.show_tacmap(user)
+	RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(on_move), user)
+
+///Returns true if something prevents the user from interacting with this. used mainly with the drawtable
+/obj/structure/machinery/prop/almayer/CICmap/proc/interact_checks(mob/user)
+	if(!user.client)
+		return TRUE
+
+/obj/structure/machinery/prop/almayer/CICmap/on_unset_interaction(mob/user)
+	. = ..()
+	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
+	tacmap_component.on_unset_interaction(user)
+
+//Bugfix to handle cases for ghosts/observers that don't automatically close uis on move.
+/obj/structure/machinery/prop/almayer/CICmap/proc/on_move(mob/source, oldloc)
+	SIGNAL_HANDLER
+	if(Adjacent(source))
+		return
+	on_unset_interaction(source)
+	UnregisterSignal(source, COMSIG_MOVABLE_MOVED)
 
 /obj/structure/machinery/prop/almayer/CICmap/computer
 	name = "map terminal"
@@ -107,16 +126,13 @@
 	density = FALSE
 
 /obj/structure/machinery/prop/almayer/CICmap/upp
-	minimap_type = MINIMAP_FLAG_UPP
-	faction = FACTION_UPP
+	minimap_flag = MINIMAP_FLAG_UPP
 
 /obj/structure/machinery/prop/almayer/CICmap/clf
-	minimap_type = MINIMAP_FLAG_CLF
-	faction = FACTION_CLF
+	minimap_flag = MINIMAP_FLAG_CLF
 
 /obj/structure/machinery/prop/almayer/CICmap/pmc
-	minimap_type = MINIMAP_FLAG_WY
-	faction = FACTION_PMC
+	minimap_flag = MINIMAP_FLAG_PMC
 
 //Nonpower using props
 

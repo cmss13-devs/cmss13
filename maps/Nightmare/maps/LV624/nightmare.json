@@ -23,7 +23,7 @@
 	{
 		"type": "map_insert",
 		"landmark": "lv-leftsidepass",
-		"chance": 0.7,
+		"chance": 1.0,
 		"path": "standalone/leftsidepass.dmm",
 		"when": { "mainpath": "left" }
 	},
@@ -32,18 +32,32 @@
 		"choices": [
 			{ "type": "map_insert", "landmark": "lv-bridge-nofog", "path": "standalone/lv-bridge-nofog.dmm" },
 			{ "type": "map_insert", "landmark": "lv-bridge-east",  "path": "standalone/lv-bridge-east.dmm"  }
-		], "chance": 0.6,
+		], "chance": 1.0,
 		"when": { "mainpath": "bridge" }
 	},
 	{
 		"type": "map_insert",
 		"landmark": "lv-rightsidepass",
-		"chance": 0.7,
+		"chance": 1.0,
 		"path": "standalone/rightsidepass.dmm",
 		"when": { "mainpath": "right" }
 	},
 	{
 		"type": "include", "name": "Standalone variations",
 		"file": "mapgen_variations.json"
+	},
+	{
+		"type": "map_insert",
+		"landmark": "hvhupplz1",
+		"chance": 1.0,
+		"path": "standalone/landingzone_624_upp_lz1.dmm",
+		"when": { "$gamemode": "Faction Clash UPP CM" }
+	},
+	{
+		"type": "map_insert",
+		"landmark": "hvhuscmlz1",
+		"chance": 1.0,
+		"path": "standalone/landingzone_624_uscm_lz1.dmm",
+		"when": { "$gamemode": "Faction Clash UPP CM" }
 	}
 ]

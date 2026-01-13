@@ -26,10 +26,18 @@
 	icon_state = "burger"
 	desc = "A greasy plastic film that once held a Cheeseburger. Packaged by the Weyland-Yutani Corporation."
 
+/obj/item/trash/burger/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/trash/buritto
 	name = "Burrito wrapper"
 	icon_state = "burrito"
 	desc = "A foul-smelling plastic film that once held a microwave burrito. Packaged by the Weyland-Yutani Corporation."
+
+/obj/item/trash/buritto/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/trash/candy
 	name = "Candy"
@@ -64,6 +72,10 @@
 	icon_state = "hotdog"
 	desc = "A musty plastic film that once held a hotdog. Packaged by the Weyland-Yutani Corporation."
 
+/obj/item/trash/hotdog/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/trash/kepler
 	name = "Kepler wrapper"
 	icon_state = "kepler"
@@ -72,17 +84,13 @@
 	name = "Kepler Flamehot wrapper"
 	icon_state = "flamehotkepler"
 
-/obj/item/trash/liquidfood
-	name = "\improper \"LiquidFood\" ration"
-	icon_state = "liquidfood"
-
-/obj/item/trash/pistachios
-	name = "Pistachios pack"
-	icon_state = "pistachios_pack"
-
 /obj/item/trash/popcorn
 	name = "Popcorn"
 	icon_state = "popcorn"
+
+/obj/item/trash/popcorn/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/trash/raisins
 	name = "4no raisins"
@@ -134,7 +142,7 @@
 
 /obj/item/trash/merc_mre
 	name = "\improper crumbled FSR ration"
-	desc = "Who left it in here? Civillians? Hikers? Military collectors? Undercover mercenaries?"
+	desc = "Who left it in here? Civilians? Hikers? Military collectors? Undercover mercenaries?"
 	icon = 'icons/obj/items/storage/mre.dmi'
 	icon_state = "mealpackempty"
 

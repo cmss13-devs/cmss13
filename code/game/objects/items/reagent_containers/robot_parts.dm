@@ -200,10 +200,7 @@
 /obj/item/robot_parts/head/attackby(obj/item/W as obj, mob/user as mob)
 	..()
 	if(istype(W, /obj/item/device/flash))
-		if(istype(user,/mob/living/silicon/robot))
-			to_chat(user, SPAN_DANGER("How do you propose to do that?"))
-			return
-		else if(src.flash1 && src.flash2)
+		if(src.flash1 && src.flash2)
 			to_chat(user, SPAN_NOTICE(" You have already inserted the eyes!"))
 			return
 		else if(src.flash1)
@@ -216,7 +213,7 @@
 			to_chat(user, SPAN_NOTICE(" You insert the flash into the eye socket!"))
 	else if(istype(W, /obj/item/stock_parts/manipulator))
 		to_chat(user, SPAN_NOTICE(" You install some manipulators and modify the head, creating a functional spider-bot!"))
-		new /mob/living/simple_animal/spiderbot(get_turf(loc))
+		new /mob/living/simple_animal/small/spiderbot(get_turf(loc))
 		user.temp_drop_inv_item(W)
 		qdel(W)
 		qdel(src)
@@ -230,6 +227,6 @@
 	// I lied
 	else if(istype(W, /obj/item/stock_parts/manipulator))
 		to_chat(user, SPAN_NOTICE("You jury rig the head with some manipulators, creating a mostly functional spider-bot!"))
-		new /mob/living/simple_animal/spiderbot(get_turf(loc))
+		new /mob/living/simple_animal/small/spiderbot(get_turf(loc))
 		qdel(W)
 		qdel(src)

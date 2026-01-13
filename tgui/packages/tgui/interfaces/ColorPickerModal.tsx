@@ -6,7 +6,7 @@
 
 import {
   hexToHsva,
-  HsvaColor,
+  type HsvaColor,
   hsvaToHex,
   hsvaToHslString,
   hsvaToRgba,
@@ -18,10 +18,10 @@ import { clamp } from 'common/math';
 import { classes } from 'common/react';
 import {
   Component,
-  FocusEvent,
-  FormEvent,
-  KeyboardEvent,
-  ReactNode,
+  type FocusEvent,
+  type FormEvent,
+  type KeyboardEvent,
+  type ReactNode,
   useState,
 } from 'react';
 import { useBackend } from 'tgui/backend';
@@ -36,7 +36,7 @@ import {
   Stack,
   Tooltip,
 } from 'tgui/components';
-import { Interaction, Interactive } from 'tgui/components/Interactive';
+import { type Interaction, Interactive } from 'tgui/components/Interactive';
 import { Window } from 'tgui/layouts';
 
 import { InputButtons } from './common/InputButtons';
@@ -345,8 +345,10 @@ const TextSetter = ({
  * SOFTWARE.
  */
 
-interface HexColorInputProps
-  extends Omit<ColorInputBaseProps, 'escape' | 'validate'> {
+interface HexColorInputProps extends Omit<
+  ColorInputBaseProps,
+  'escape' | 'validate'
+> {
   /** Enables `#` prefix displaying */
   readonly prefixed?: boolean;
   /** Allows `#rgba` and `#rrggbbaa` color formats */

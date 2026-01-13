@@ -30,9 +30,9 @@
 	if ((A.flags_atom & NOINTERACT))
 		if (istype(A, /atom/movable/screen/click_catcher))
 			var/list/mods = params2list(params)
-			var/turf/TU = params2turf(mods["screen-loc"], get_turf(client.eye), client)
+			var/turf/TU = params2turf(mods[SCREEN_LOC], get_turf(client.get_eye()), client)
 			if (TU)
-				params += ";click_catcher=1"
+				params += CLICK_CATCHER_ADD_PARAM
 				do_click(TU, location, params)
 		return
 
@@ -49,7 +49,7 @@
 		clicked_something[mod] = TRUE
 
 	// Don't allow any other clicks while dragging something
-	if (mods["drag"])
+	if(mods[DRAG])
 		return
 
 	if(SEND_SIGNAL(client, COMSIG_CLIENT_PRE_CLICK, A, mods) & COMPONENT_INTERRUPT_CLICK)
@@ -142,6 +142,9 @@
 		W.afterattack(A, src, 0, mods)
 		return
 
+	if(SEND_SIGNAL(src, COMSIG_MOB_CLICKON, A, params) & COMSIG_MOB_CLICK_CANCELED)
+		return
+
 	RangedAttack(A, mods)
 	SEND_SIGNAL(src, COMSIG_MOB_POST_CLICK, A, mods)
 	return
@@ -213,19 +216,19 @@
 	if(!client || !client.remote_control)
 		return FALSE
 
-	if(mods["middle"])
+	if(mods[MIDDLE_CLICK])
 		A.AIMiddleClick(src)
 		return TRUE
 
-	if(mods["shift"])
+	if(mods[SHIFT_CLICK])
 		A.AIShiftClick(src)
 		return TRUE
 
-	if(mods["alt"])
+	if(mods[ALT_CLICK])
 		A.AIAltClick(src)
 		return TRUE
 
-	if(mods["ctrl"])
+	if(mods[CTRL_CLICK])
 		A.AICtrlClick(src)
 		return TRUE
 
@@ -236,12 +239,12 @@
 	return TRUE
 
 /atom/proc/clicked(mob/user, list/mods)
-	if (mods["shift"] && !mods["middle"])
+	if (mods[SHIFT_CLICK] && !mods[MIDDLE_CLICK])
 		if(can_examine(user))
 			examine(user)
 		return TRUE
 
-	if (mods["alt"])
+	if (mods[ALT_CLICK])
 		var/turf/T = get_turf(src)
 		if(T && user.TurfAdjacent(T) && length(T.contents))
 			user.set_listed_turf(T)
@@ -253,7 +256,7 @@
 	if (..())
 		return TRUE
 
-	if (mods["ctrl"])
+	if (mods[CTRL_CLICK])
 		if (Adjacent(user) && user.next_move < world.time)
 			user.start_pulling(src)
 		return TRUE
@@ -378,13 +381,16 @@
 	if(SEND_SIGNAL(mob, COMSIG_MOB_CHANGE_VIEW, new_size) & COMPONENT_OVERRIDE_VIEW)
 		return TRUE
 	view = mob.check_view_change(new_size, source)
+
+	SEND_SIGNAL(src, COMSIG_CLIENT_VIEW_CHANGED, view)
+
 	apply_clickcatcher()
 	mob.reload_fullscreens()
 
 	if(prefs.adaptive_zoom)
 		INVOKE_ASYNC(src, PROC_REF(adaptive_zoom))
 	else if(prefs.auto_fit_viewport)
-		INVOKE_ASYNC(src, VERB_REF(fit_viewport))
+		INVOKE_ASYNC(src, PROC_REF(fit_viewport))
 
 /client/proc/get_adaptive_zoom_factor()
 	if(!prefs.adaptive_zoom)
@@ -423,8 +429,8 @@
 	tY = tY[1]
 	tX = splittext(tX[1], ":")
 	tX = tX[1]
-	var/shiftX = C.pixel_x / world.icon_size
-	var/shiftY = C.pixel_y / world.icon_size
+	var/shiftX = C.get_pixel_x() / world.icon_size
+	var/shiftY = C.get_pixel_y() / world.icon_size
 	var/list/actual_view = getviewsize(C ? C.view : GLOB.world_view_size)
 	tX = clamp(origin.x + text2num(tX) + shiftX - floor(actual_view[1] / 2) - 1, 1, world.maxx)
 	tY = clamp(origin.y + text2num(tY) + shiftY - floor(actual_view[2] / 2) - 1, 1, world.maxy)

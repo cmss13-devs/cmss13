@@ -46,6 +46,33 @@
 	action_icon_state = "order_focus"
 	order_type = COMMAND_ORDER_FOCUS
 
+/datum/action/human_action/cycle_voice_level
+	name = "Cycle Voice Level"
+	action_icon_state = "leadership_voice_low"
+
+/datum/action/human_action/cycle_voice_level/action_activate()
+	. = ..()
+	if(!ishuman(owner)) // i actually don't know if this is necessary
+		return
+	var/mob/living/carbon/human/my_voice = owner
+	my_voice.cycle_voice_level()
+	update_button_icon()
+
+/datum/action/human_action/cycle_voice_level/update_button_icon()
+	var/mob/living/carbon/human/my_voice = owner
+	switch(my_voice.langchat_styles) // honestly, could probably merge this one with the cycle_voice_level proc
+		if("", null)
+			action_icon_state = "leadership_voice_off"
+
+		if("langchat_smaller_bolded")
+			action_icon_state = "leadership_voice_low"
+
+		if("langchat_bolded")
+			action_icon_state = "leadership_voice_high"
+
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+
 /datum/action/human_action/psychic_whisper
 	name = "Psychic Whisper"
 	action_icon_state = "cultist_channel_hivemind"
@@ -183,7 +210,7 @@ CULT
 
 	if(assigned_droppod)
 		if(tgui_alert(H, "Do you want to recall the current pod?",\
-			"Recall Droppod", list("No", "Yes")) == "Yes")
+			"Recall Droppod", list("Yes", "No")) == "Yes")
 			if(!assigned_droppod)
 				return
 
@@ -330,7 +357,7 @@ CULT
 		return
 	var/mob/living/carbon/human/Hu = owner
 
-	if(H.skills && (skillcheck(H, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT) || skillcheck(H, SKILL_POLICE, SKILL_POLICE_SKILLED)))
+	if(H.skills && (skillcheck(H, SKILL_LEADERSHIP, SKILL_LEAD_SKILLED) || skillcheck(H, SKILL_POLICE, SKILL_POLICE_SKILLED)))
 		to_chat(Hu, SPAN_WARNING("This mind is too strong to target with your abilities."))
 		return
 
@@ -382,7 +409,7 @@ CULT
 		to_chat(H, SPAN_XENOMINORWARNING("You decide not to convert [chosen]."))
 		return
 
-	var/datum/equipment_preset/preset = GLOB.gear_path_presets_list[/datum/equipment_preset/other/xeno_cultist]
+	var/datum/equipment_preset/preset = GLOB.equipment_presets.gear_path_presets_list[/datum/equipment_preset/other/xeno_cultist]
 	preset.load_race(chosen)
 	preset.load_status(chosen, H.hivenumber)
 
@@ -488,23 +515,74 @@ CULT
 	if(!can_use_action())
 		return
 
-	var/mob/living/carbon/human/H = owner
+	var/mob/living/carbon/human/human_owner = owner
 
-	if(tgui_alert(H, "Are you sure you want to begin the mutiny?", "Begin Mutiny?", list("Yes", "No")) != "Yes")
+	if(tgui_alert(human_owner, "Are you sure you want to begin the mutiny?", "Begin Mutiny?", list("Yes", "No")) != "Yes")
 		return
 
-	shipwide_ai_announcement("DANGER: Communications received; a mutiny is in progress. Code: Detain, Arrest, Defend.")
-	var/datum/equipment_preset/other/mutineer/XC = new()
-
-	XC.load_status(H)
-	for(var/datum/action/human_action/activable/mutineer/mutineer_convert/converted in H.actions)
+	for(var/datum/action/human_action/activable/mutineer/mutineer_convert/converted in human_owner.actions)
 		for(var/mob/living/carbon/human/chosen in converted.converted)
-			XC.load_status(chosen)
-		converted.remove_from(H)
+			chosen.join_mutiny(TRUE, MUTINY_MUTINEER)
+		converted.remove_from(human_owner)
 
-	message_admins("[key_name_admin(H)] has begun the mutiny.")
-	remove_from(H)
+	human_owner.join_mutiny(TRUE, MUTINY_MUTINEER)
+	start_mutiny(human_owner.faction)
+	message_admins("[key_name_admin(human_owner)] has begun the mutiny.")
+	remove_from(human_owner)
 
+/proc/start_mutiny(mutiny_faction = FACTION_MARINE)
+	for(var/mob/living/carbon/human/person in GLOB.alive_human_list)
+		if(!person.client)
+			continue
+		if(person.faction != mutiny_faction)
+			continue
+		if(person.mob_flags & (MUTINY_MUTINEER|MUTINY_LOYALIST|MUTINY_NONCOMBAT))
+			continue
+
+		if(skillcheck(person, SKILL_POLICE, SKILL_POLICE_MAX) || (person.job in MUTINY_LOYALIST_ROLES) || (person.job in PROVOST_JOB_LIST))
+			INVOKE_ASYNC(person, TYPE_PROC_REF(/mob/living/carbon/human, join_mutiny), TRUE, MUTINY_LOYALIST)
+			continue
+
+		INVOKE_ASYNC(person, TYPE_PROC_REF(/mob/living/carbon/human, join_mutiny))
+
+	if(mutiny_faction == FACTION_MARINE)
+		shipwide_ai_announcement("DANGER: Communications received; a mutiny is in progress. Code: Detain, Arrest, Defend.")
+		set_security_level(SEC_LEVEL_RED, TRUE)
+
+/mob/living/carbon/human/proc/join_mutiny(forced = FALSE, forced_side = MUTINY_MUTINEER)
+	if(job == JOB_WORKING_JOE)
+		return FALSE
+	if(forced)
+		switch(forced_side)
+			if(MUTINY_MUTINEER)
+				var/datum/equipment_preset/other/mutiny/mutineer/preset = new()
+				preset.load_status(src)
+				return TRUE
+			if(MUTINY_LOYALIST)
+				var/datum/equipment_preset/other/mutiny/loyalist/preset = new()
+				preset.load_status(src)
+				return TRUE
+			if(MUTINY_NONCOMBAT)
+				var/datum/equipment_preset/other/mutiny/noncombat/preset = new()
+				preset.load_status(src)
+				return TRUE
+
+	var/options = list("MUTINEERS", "LOYALISTS", "REFUSE TO FIGHT")
+	if(job == JOB_SYNTH)
+		options -= "MUTINEERS"
+	switch(tgui_alert(src, "A mutiny has been started, with whom do you stand?", "Choose a Side", options, 20 SECONDS))
+		if("MUTINEERS")
+			var/datum/equipment_preset/other/mutiny/mutineer/preset = new()
+			preset.load_status(src)
+			return TRUE
+		if("LOYALISTS")
+			var/datum/equipment_preset/other/mutiny/loyalist/preset = new()
+			preset.load_status(src)
+			return TRUE
+		else
+			var/datum/equipment_preset/other/mutiny/noncombat/preset = new()
+			preset.load_status(src)
+			return TRUE
 
 /datum/action/human_action/cancel_view // cancel-camera-view, but a button
 	name = "Cancel View"
@@ -528,8 +606,8 @@ CULT
 	H.cancel_camera()
 	H.reset_view()
 	H.client.change_view(GLOB.world_view_size, target)
-	H.client.pixel_x = 0
-	H.client.pixel_y = 0
+	H.client.set_pixel_x(0)
+	H.client.set_pixel_y(0)
 
 //Similar to a cancel-camera-view button, but for mobs that were buckled to special vehicle seats.
 //Unbuckles them, which handles the view and offsets resets and other stuff.
@@ -561,8 +639,8 @@ CULT
 
 	H.unset_interaction()
 	H.client.change_view(GLOB.world_view_size, target)
-	H.client.pixel_x = 0
-	H.client.pixel_y = 0
+	H.client.set_pixel_x(0)
+	H.client.set_pixel_y(0)
 	H.reset_view()
 	remove_from(H)
 

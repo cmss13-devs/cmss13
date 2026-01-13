@@ -10,7 +10,8 @@
 	var/list/debris
 	var/unslashable = FALSE
 	var/wrenchable = FALSE
-	health = 100
+	blocks_emissive = EMISSIVE_BLOCK_GENERIC
+	health = STRUCTURE_HEALTH_BASE
 	anchored = TRUE
 	projectile_coverage = PROJECTILE_COVERAGE_MEDIUM
 	can_block_movement = TRUE
@@ -112,6 +113,12 @@
 	if(!can_climb(user))
 		return FALSE
 
+	if(istype(loc, /turf/open_space) && user.a_intent != INTENT_HARM)
+		var/turf/open_space/open = loc
+		open.climb_down(user)
+		return FALSE
+
+
 	var/list/climbdata = list("climb_delay" = climb_delay)
 	SEND_SIGNAL(user, COMSIG_LIVING_CLIMB_STRUCTURE, climbdata)
 	var/final_climb_delay = climbdata["climb_delay"] //so it doesn't set structure's climb_delay to permanently be modified
@@ -188,9 +195,6 @@
 			else
 				to_chat(H, SPAN_DANGER("You land heavily!"))
 				H.apply_damage(damage, BRUTE)
-
-			H.UpdateDamageIcon()
-			H.updatehealth()
 	return
 
 /obj/structure/proc/can_touch(mob/living/user)

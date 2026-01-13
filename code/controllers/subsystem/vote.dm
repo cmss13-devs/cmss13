@@ -371,7 +371,7 @@ SUBSYSTEM_DEF(vote)
 				V.set_name("Vote: [question]")
 			C.player_details.player_actions += V
 			if(send_clients_vote)
-				C.mob.vote()
+				C.vote()
 
 		RegisterSignal(SSdcs, COMSIG_GLOB_CLIENT_LOGGED_IN, PROC_REF(handle_client_joining))
 		SStgui.update_uis(src)
@@ -385,15 +385,15 @@ SUBSYSTEM_DEF(vote)
 	// Do not remove more votes than were made for the map
 	return -(min(current_votes, total_vote_adjustment))
 
-/mob/verb/vote()
+CLIENT_VERB(vote)
 	set category = "OOC"
 	set name = "Vote"
 
-	SSvote.tgui_interact(src)
+	SSvote.tgui_interact(mob)
 
 /datum/controller/subsystem/vote/Topic(href, href_list)
 	. = ..()
-	usr.vote()
+	usr.client?.vote()
 
 /datum/controller/subsystem/vote/proc/remove_action_buttons()
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_REMOVE_VOTE_BUTTON)
@@ -415,7 +415,7 @@ SUBSYSTEM_DEF(vote)
 
 /datum/action/innate/vote/action_activate()
 	. = ..()
-	owner.vote()
+	owner.client?.vote()
 
 /datum/action/innate/vote/proc/remove_from_client()
 	if(!owner)

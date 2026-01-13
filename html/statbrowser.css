@@ -47,7 +47,6 @@ h3 {
 }
 
 img {
-	-ms-interpolation-mode: nearest-neighbor;
 	image-rendering: pixelated;
 }
 

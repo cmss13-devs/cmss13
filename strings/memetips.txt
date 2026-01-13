@@ -49,3 +49,4 @@ Remember that as Yautja HPCs are your primary weapons.
 You can always bully staff into giving you more awesome tips.
 Embrace the suck.
 Jump out of the Alamo during transit to deploy quicker than other players.
+Synthetics aren't actually player controlled. Instead, their dialogue and movements are recieved real time from ChatGPT.

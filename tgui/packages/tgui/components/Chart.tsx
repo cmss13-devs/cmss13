@@ -5,9 +5,9 @@
  */
 
 import { map, zip } from 'common/collections';
-import { Component, createRef, RefObject } from 'react';
+import { Component, createRef, type RefObject } from 'react';
 
-import { Box, BoxProps } from './Box';
+import { Box, type BoxProps } from './Box';
 
 type Props = {
   readonly data: number[][];

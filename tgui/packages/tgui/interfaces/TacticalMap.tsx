@@ -49,18 +49,7 @@ const PAGES = [
     component: () => ViewMapPanel,
     icon: 'map',
     canAccess: (data: TacMapProps) => {
-      return data.canViewTacmap;
-    },
-  },
-  {
-    title: 'Map View',
-    canOpen: (data: TacMapProps) => {
       return true;
-    },
-    component: () => OldMapPanel,
-    icon: 'eye',
-    canAccess: (data: TacMapProps) => {
-      return data.canViewCanvas;
     },
   },
   {
@@ -98,7 +87,7 @@ const colors: Record<string, string> = {
 
 export const TacticalMap = (props) => {
   const { data, act } = useBackend<TacMapProps>();
-  const [pageIndex, setPageIndex] = useState(data.canViewTacmap ? 0 : 1);
+  const [pageIndex, setPageIndex] = useState(0);
   const PageComponent = PAGES[pageIndex].component();
 
   const handleTacmapOnClick = (i: number, pageTitle: string) => {
@@ -197,11 +186,6 @@ export const TacticalMap = (props) => {
 
 const ViewMapPanel = (props) => {
   const { data } = useBackend<TacMapProps>();
-
-  // byond ui can't resist trying to render
-  if (!data.canViewTacmap || data.mapRef === null) {
-    return <OldMapPanel {...props} />;
-  }
 
   return (
     <Section fill fitted height="86%">

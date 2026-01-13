@@ -1,42 +1,61 @@
 // Weather events for Sorokyne
-/datum/weather_event/snow
-	name = "Snow"
-	display_name = "Snow"
-	length = 10 MINUTES
-	fullscreen_type = /atom/movable/screen/fullscreen/weather/low
-	turf_overlay_icon_state = "strata_snowing"
 
-	effect_message = "You feel the icy winds chill you!"
+/datum/weather_event/soro/very_light_rain
+	name = "Soro Light Rain"
+
+	display_name = "Light Rain"
+
+	length = 3 MINUTES
+
+	lightning_chance = 4
+
+	fire_smothering_strength = 1
+
+	turf_overlay_icon_state = "strata_storm"
+	turf_overlay_alpha = 25
+
+	effect_message = null
 	damage_per_tick = 0
 
-	ambience = 'sound/ambience/strata/strata_snow.ogg'
+	ambience = 'sound/ambience/rainandthunderlong.ogg'
 
-	fire_smothering_strength = 3
+/datum/weather_event/soro/light_rain
+	name = "Tropical Storm"
+	display_name = "Tropical Storm"
+	length = 3 MINUTES
+	fullscreen_type = /atom/movable/screen/fullscreen/weather/low
 
-/datum/weather_event/snowstorm
-	name = "Snowstorm"
-	display_name = "Snowstorm"
-	length = 6 MINUTES
-	fullscreen_type = /atom/movable/screen/fullscreen/weather/medium
 	turf_overlay_icon_state = "strata_storm"
+	turf_overlay_alpha = 40
 
-	effect_message = "You feel the icy winds of the snowstorm chill you to the bone!"
-	damage_per_tick = 0.125
+	effect_message = null
+	damage_per_tick = 0
 
-	ambience = 'sound/ambience/strata/strata_snowstorm.ogg'
+	has_process = TRUE
+	lightning_chance = 1
 
-	fire_smothering_strength = 4
+	ambience = 'sound/ambience/rainforest.ogg'
 
-/datum/weather_event/blizzard
-	name = "Blizzard"
-	display_name = "Blizzard"
+	fire_smothering_strength = 1
+
+/datum/weather_event/soro/monsoon
+	name = "Monsoon Warning"
+	display_name = "Monsoon Warning"
+
+	should_sound_weather_alarm = TRUE
+
 	length = 4 MINUTES
 	fullscreen_type = /atom/movable/screen/fullscreen/weather/high
-	turf_overlay_icon_state = "strata_blizzard"
 
-	effect_message = "You feel the winds of the blizzard sap all the warmth from your body!"
-	damage_per_tick = 0.25
+	turf_overlay_icon_state = "strata_storm"
+	turf_overlay_alpha = 115
 
-	ambience = 'sound/ambience/strata/strata_blizzard.ogg'
+	effect_message = null
+	damage_per_tick = 0
 
-	fire_smothering_strength = 6
+	ambience = 'sound/ambience/varadero_storm.ogg'
+
+	has_process = TRUE
+	lightning_chance = 6
+
+	fire_smothering_strength = 4

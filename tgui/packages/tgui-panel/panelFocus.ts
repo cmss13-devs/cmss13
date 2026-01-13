@@ -34,6 +34,9 @@ export const setupPanelFocusHacks = () => {
         focusStolen = true;
       }
     }
+    if (document.activeElement?.className.includes('Button')) {
+      focusStolen = true;
+    }
     if (!focusStolen) {
       deferredFocusMap();
     }

@@ -6,7 +6,7 @@
 
 import { isEscape, KEY } from 'common/keys';
 import { clamp } from 'common/math';
-import { Component, createRef, CSSProperties } from 'react';
+import { Component, createRef, type CSSProperties } from 'react';
 
 import { AnimatedNumber } from './AnimatedNumber';
 

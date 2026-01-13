@@ -14,7 +14,7 @@
 	icon_state = "hypo"
 	amount_per_transfer_from_this = 5
 	volume = 30
-	possible_transfer_amounts = list(3, 5, 10, 15, 30)
+	possible_transfer_amounts = list(1,3,5,10,15,20,25,30)
 	flags_atom = FPRINT|OPENCONTAINER
 	flags_equip_slot = SLOT_WAIST
 	flags_item = NOBLUDGEON
@@ -44,7 +44,7 @@
 
 //Transfer amount switch//
 /obj/item/reagent_container/hypospray/clicked(mob/user, list/mods)
-	if(!isnull(possible_transfer_amounts) && mods["alt"]) //Autoinjectors aren't supposed to have toggleable transfer amounts.
+	if(!isnull(possible_transfer_amounts) && mods[ALT_CLICK]) //Autoinjectors aren't supposed to have toggleable transfer amounts.
 		if(!CAN_PICKUP(user, src))
 			return ..()
 		amount_per_transfer_from_this = next_in_list(amount_per_transfer_from_this, possible_transfer_amounts)

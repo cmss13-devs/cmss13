@@ -31,6 +31,8 @@ type Props = Required<{
     className: BoxProps['className'];
     /** Makes the input field uneditable & non draggable to prevent user changes */
     disabled: BooleanLike;
+    /** Makes the input field focusable via tab */
+    tabbed: BooleanLike;
     /** Fill all available horizontal space. */
     fluid: BooleanLike;
     /** Input font size */
@@ -330,18 +332,44 @@ export class NumberInput extends Component<Props, State> {
           />
         </div>
         {contentElement}
-        <input
-          ref={this.inputRef}
-          className="NumberInput__input"
-          style={{
-            display: !editing ? 'none' : 'inline',
-            height: height,
-            lineHeight: lineHeight,
-            fontSize: fontSize,
-          }}
-          onBlur={this.handleBlur}
-          onKeyDown={this.handleKeyDown}
-        />
+        {this.props.tabbed ? (
+          <input
+            ref={this.inputRef}
+            className="NumberInput__input"
+            tabIndex={0}
+            style={{
+              opacity: editing ? 1 : 0,
+              pointerEvents: editing ? 'auto' : 'none',
+              position: 'absolute',
+              height,
+              lineHeight,
+              fontSize,
+              left: 0,
+              width: '100%',
+            }}
+            onFocus={() => {
+              this.setState({ editing: true });
+              requestAnimationFrame(() => {
+                this.inputRef.current?.select();
+              });
+            }}
+            onBlur={this.handleBlur}
+            onKeyDown={this.handleKeyDown}
+          />
+        ) : (
+          <input
+            ref={this.inputRef}
+            className="NumberInput__input"
+            style={{
+              display: !editing ? 'none' : 'inline',
+              height: height,
+              lineHeight: lineHeight,
+              fontSize: fontSize,
+            }}
+            onBlur={this.handleBlur}
+            onKeyDown={this.handleKeyDown}
+          />
+        )}
       </Box>
     );
   }

@@ -22,20 +22,20 @@
 
 /obj/structure/machinery/gibber/New()
 	..()
-	overlays += image('icons/obj/structures/machinery/kitchen.dmi', "grjam")
+	overlays += image(icon, "grjam")
 
 /obj/structure/machinery/gibber/update_icon()
 	overlays.Cut()
 	if (dirty)
-		overlays += image('icons/obj/structures/machinery/kitchen.dmi', "grbloody")
+		overlays += image(icon, "grbloody")
 	if(inoperable())
 		return
 	if (!occupant)
-		overlays += image('icons/obj/structures/machinery/kitchen.dmi', "grjam")
+		overlays += image(icon, "grjam")
 	else if (operating)
-		overlays += image('icons/obj/structures/machinery/kitchen.dmi', "gruse")
+		overlays += image(icon, "gruse")
 	else
-		overlays += image('icons/obj/structures/machinery/kitchen.dmi', "gridle")
+		overlays += image(icon, "gridle")
 
 /obj/structure/machinery/gibber/relaymove(mob/user)
 	if(user.is_mob_incapacitated(TRUE))
@@ -47,7 +47,7 @@
 	if(inoperable())
 		return
 	if(operating)
-		to_chat(user, SPAN_DANGER("It's locked and running"))
+		to_chat(user, SPAN_DANGER("It's locked and running."))
 		return
 	else
 		startgibbing(user)
@@ -131,7 +131,7 @@
 	for(var/obj/O in src)
 		O.forceMove(loc)
 	if (occupant.client)
-		occupant.client.eye = occupant.client.mob
+		occupant.client.set_eye(occupant.client.mob)
 		occupant.client.perspective = MOB_PERSPECTIVE
 	occupant.forceMove(loc)
 	if(launch)
@@ -216,7 +216,7 @@
 		newmeat.name = newmeat.made_from_player + newmeat.name
 		allmeat[i] = newmeat
 
-		// Synths wont die to this (on it's own at least), dont log as a gib
+		// Synths won't die to this (on it's own at least), don't log as a gib
 		if(synthetic)
 			if(occupant.client) // Log still
 				occupant.attack_log += "\[[time_stamp()]\] Was delimbed by <b>[key_name(user)]</b>"

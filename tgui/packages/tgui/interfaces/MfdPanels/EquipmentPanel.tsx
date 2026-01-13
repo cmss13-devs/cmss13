@@ -1,8 +1,8 @@
 import { useBackend } from 'tgui/backend';
 import { Box } from 'tgui/components';
 
-import { DropshipEquipment } from '../DropshipWeaponsConsole';
-import { MfdPanel, MfdProps } from './MultifunctionDisplay';
+import type { DropshipEquipment } from '../DropshipWeaponsConsole';
+import { MfdPanel, type MfdProps } from './MultifunctionDisplay';
 import { mfdState, useEquipmentState, useWeaponState } from './stateManagers';
 import type { EquipmentContext } from './types';
 
@@ -76,8 +76,8 @@ const DrawWeaponEquipment = (props: DropshipEquipment) => {
         desc={props.shorthand}
         sub_desc={`${
           props.shorthand === 'MSL'
-            ? props.ammo_name?.split(' ')[0] ?? 'Empty'
-            : props.ammo ?? 0
+            ? (props.ammo_name?.split(' ')[0] ?? 'Empty')
+            : (props.ammo ?? 0)
         }`}
       />
     </>

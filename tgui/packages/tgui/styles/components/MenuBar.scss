@@ -2,7 +2,7 @@
  * Copyright (c) 2020 Aleksej Komarov
  * SPDX-License-Identifier: MIT
  */
-
+@use 'sass:color';
 @use '../base.scss';
 
 $separator-color: base.$color-bg-section;
@@ -21,7 +21,7 @@ $dropdown-z-index: 5;
 
 .MenuBar__hover {
   &:hover {
-    background-color: lighten($background-color, 30%);
+    background-color: color.adjust($background-color, $lightness: 30%);
     transition: background-color 0ms;
   }
 }
@@ -35,7 +35,7 @@ $dropdown-z-index: 5;
   z-index: $dropdown-z-index;
   background-color: $background-color;
   padding: 0.3rem 0.3rem 0.3rem 0.3rem;
-  box-shadow: 4px 6px 5px -2px rgba(0, 0, 0, 0.55);
+  box-shadow: 4px 6px 5px -2px hsla(0, 0%, 0%, 0.55);
 }
 
 .MenuBar__MenuItem {

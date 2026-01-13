@@ -27,6 +27,8 @@
 	var/list/evolves_to = list()
 	/// what caste or castes to de-evolve to.
 	var/list/deevolves_to = list()
+	///This is where you add castes drones can evolve to before first drop.
+	var/list/early_evolves_to
 	///If they can use consoles, etc. Set on Queen
 	var/is_intelligent = 0
 	var/caste_desc = null
@@ -40,11 +42,11 @@
 
 	///Chance of deflecting projectiles.
 	var/armor_deflection = 0
-	var/fire_immunity = FIRE_IMMUNITY_NONE
-	var/fire_intensity_resistance = 0
 
-	///Delay timer for spitting
-	var/spit_delay = 60
+	var/fire_immunity = FIRE_IMMUNITY_NONE
+	/// If fire_immunity is set to be vulnerable, how much will fire damage be multiplied. Defines in xeno.dm
+	var/fire_modifier_mult = 0
+	var/fire_intensity_resistance = 0
 
 	/// Windup for spits
 	var/spit_windup = FALSE
@@ -101,14 +103,8 @@
 
 	var/caste_luminosity = 0
 
-	/// if fire_immunity is set to be vulnerable, how much will fire damage be multiplied. Defines in xeno.dm
-	var/fire_vulnerability_mult = 0
-
 	var/burrow_cooldown = 5 SECONDS
-	var/tunnel_cooldown = 100
-	var/widen_cooldown = 10 SECONDS
-	///Big strong ability, big cooldown.
-	var/tremor_cooldown = 30 SECONDS
+	var/tunnel_cooldown = 10 SECONDS
 	///whether the xeno heals even outside weeds.
 	var/innate_healing = FALSE
 
@@ -174,13 +170,3 @@
 
 /datum/caste_datum/proc/get_caste_requirement(client/client)
 	return minimum_xeno_playtime - client.get_total_xeno_playtime()
-
-/datum/caste_datum/proc/get_minimap_icon()
-	var/image/background = mutable_appearance('icons/ui_icons/map_blips.dmi', minimap_background)
-
-	var/iconstate = minimap_icon ? minimap_icon : "unknown"
-	var/mutable_appearance/icon = image('icons/ui_icons/map_blips.dmi', icon_state = iconstate)
-	icon.appearance_flags = RESET_COLOR
-	background.overlays += icon
-
-	return background

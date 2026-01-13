@@ -1,8 +1,8 @@
 @use 'sass:meta';
 
 @use '../../base.scss' with (
-  $color-bg: #000011,
-  $color-fg: #d62c2c
+  $color-bg: hsl(240, 100%, 3%),
+  $color-fg: hsl(0, 67%, 51%)
 );
 
 @use '../crt.scss' with (

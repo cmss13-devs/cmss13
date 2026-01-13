@@ -59,7 +59,7 @@
 	. = ..()
 
 /obj/item/explosive/clicked(mob/user, list/mods)
-	if(mods["alt"])
+	if(mods[ALT_CLICK])
 		if(!CAN_PICKUP(user, src))
 			return ..()
 		if(!has_blast_wave_dampener)
@@ -258,7 +258,7 @@
 /obj/item/explosive/proc/toggle_blast_dampener_verb()
 	set category = "Weapons"
 	set name = "Toggle Blast Wave Dampener"
-	set desc = "Enable/Disable the Explosive Blast Wave Dampener"
+	set desc = "Enable/Disable the Explosive Blast Wave Dampener."
 	set src in usr
 
 	toggle_blast_dampener(usr)

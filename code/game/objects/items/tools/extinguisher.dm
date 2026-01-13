@@ -82,13 +82,13 @@
 		return ..()
 
 /obj/item/tool/extinguisher/afterattack(atom/target, mob/user , flag)
-	if(istype(target, /obj/structure/reagent_dispensers/watertank) && get_dist(user,target) <= 1)
+	if(istype(target, /obj/structure/reagent_dispensers/tank/water) && get_dist(user,target) <= 1)
 		var/obj/object = target
 		if(object.reagents.contains_harmful_substances())
 			to_chat(user, SPAN_WARNING("You cannot re-fill the extinguisher with the contents of this."))
 			return
 		object.reagents.trans_to(src, 50)
-		to_chat(user, SPAN_NOTICE(" \The [src] is now refilled"))
+		to_chat(user, SPAN_NOTICE(" \The [src] is now refilled."))
 		playsound(user, 'sound/effects/refill.ogg', 25, 1, 3)
 		return
 
@@ -123,6 +123,8 @@
 			var/obj/structure/bed/chair/C = null
 			if(istype(user.buckled, /obj/structure/bed/chair))
 				C = user.buckled
+			if(!C)
+				return
 			var/obj/B = user.buckled
 			var/movementdirection = turn(direction,180)
 			if(C)
@@ -201,7 +203,7 @@
 			if(isliving(atm)) //For extinguishing mobs on fire
 				var/mob/living/M = atm
 				M.ExtinguishMob()
-			if(iscarbon(atm) || istype(atm, /obj/structure/barricade))
+			if(iscarbon(atm) || istype(atm, /obj/structure/barricade) || istype(atm, /obj/effect/xenomorph/acid))
 				atm.extinguish_acid()
 		T = get_turf(W)
 		if(T == target)

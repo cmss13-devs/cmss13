@@ -8,6 +8,7 @@
 	name = "facehugger"
 	desc = "It has some sort of a tube at the end of its tail."
 	icon = 'icons/mob/xenos/effects.dmi'
+	flags_obj = OBJ_IS_HELMET_GARB
 	item_icons = list(
 		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/objects.dmi',
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/misc.dmi',
@@ -38,6 +39,8 @@
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/flags_embryo = NO_FLAGS
 	var/impregnated = FALSE
+	/// How many units of stims are drained upon hugging
+	var/stim_drain = 30
 
 	/// The timer for the hugger to jump
 	/// at the nearest human
@@ -53,20 +56,21 @@
 	var/death_timer
 
 	var/icon_xeno = 'icons/mob/xenos/effects.dmi'
-	var/icon_xenonid = 'icons/mob/xenonids/castes/tier_0/xenonid_crab.dmi'
+	var/icon_xenonid = 'icons/mob/xenos/effects_xenoids.dmi'
 
 /obj/item/clothing/mask/facehugger/Initialize(mapload, hive)
 	. = ..()
-	var/new_icon = icon_xeno
 	if (hive)
 		hivenumber = hive
-
 		var/datum/hive_status/hive_s = GLOB.hive_datum[hivenumber]
-		if(HAS_TRAIT(hive_s, TRAIT_XENONID))
-			new_icon = icon_xenonid
+		for(var/trait in hive_s.hive_inherant_traits)
+			ADD_TRAIT(src, trait, TRAIT_SOURCE_HIVE)
 
-	icon = new_icon
 	set_hive_data(src, hivenumber)
+	if(HAS_TRAIT(src, TRAIT_NO_COLOR))
+		color = null
+	if(HAS_TRAIT(src, TRAIT_XENONID))
+		icon = icon_xenonid
 	go_active()
 
 	if (hivenumber != XENO_HIVE_TUTORIAL)
@@ -314,6 +318,8 @@
 	if(!sterile)
 		if(!human.species || !(human.species.flags & IS_SYNTHETIC)) //synthetics aren't paralyzed
 			human.apply_effect(MIN_IMPREGNATION_TIME * 0.5 * knockout_mod, PARALYZE) //THIS MIGHT NEED TWEAKS
+			for(var/datum/reagent/generated/stim in human.reagents.reagent_list) // Banish them stims
+				human.reagents.remove_reagent(stim.id, stim_drain, TRUE)
 
 	var/area/hug_area = get_area(src)
 	var/name = hugger ? "[hugger]" : "\a [src]"
@@ -548,11 +554,14 @@
 					m_helmet.add_hugger_damage()
 				update_inv_head()
 
-	if(!wear_mask)
+	/// Don't need to continue if no mask or already can't infect.
+	if(!wear_mask || !can_infect)
 		return can_infect
 
 	var/obj/item/clothing/mask/W = wear_mask
-	if(istype(W))
+	if(!istype(W))
+		drop_inv_item_on_ground(wear_mask) // drop any item from the face that isn't being checked for anti-hug.
+	else
 		if(W.flags_item & NODROP)
 			return FALSE
 
@@ -571,7 +580,6 @@
 		else
 			visible_message(SPAN_DANGER("[hugger] smashes against [src]'s [W.name] and rips it off!"))
 			drop_inv_item_on_ground(W)
-
 	return can_infect
 
 /datum/species/proc/handle_hugger_attachment(mob/living/carbon/human/target, obj/item/clothing/mask/facehugger/hugger, mob/living/carbon/xenomorph/facehugger/mob_hugger)

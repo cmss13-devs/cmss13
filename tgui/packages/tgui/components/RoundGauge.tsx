@@ -8,7 +8,12 @@ import { clamp01, keyOfMatchingRange, scale } from 'common/math';
 import { classes } from 'common/react';
 
 import { AnimatedNumber } from './AnimatedNumber';
-import { Box, BoxProps, computeBoxClassName, computeBoxProps } from './Box';
+import {
+  Box,
+  type BoxProps,
+  computeBoxClassName,
+  computeBoxProps,
+} from './Box';
 
 type Props = {
   /** The current value of the metric. */

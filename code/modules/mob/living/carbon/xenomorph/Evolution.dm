@@ -28,6 +28,12 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	if(tier == 1 && hive.allow_queen_evolve && !hive.living_xeno_queen)
 		castes_available |= XENO_CASTE_QUEEN
 
+	// Allow drones to evo into any T2 before first drop
+	if(caste_type == XENO_CASTE_DRONE && !SSobjectives.first_drop_complete)
+		castes_available = caste.early_evolves_to.Copy()
+
+	castes_available -= hive.blacklisted_castes
+
 	for(var/caste in castes_available)
 		if(GLOB.xeno_datum_list[caste].minimum_evolve_time > ROUND_TIME)
 			castes_available -= caste
@@ -44,12 +50,16 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		for(var/caste in castes_available)
 			fancy_caste_list[caste] = hive.evolution_menu_images[caste]
 
-		castepick = show_radial_menu(src, client?.eye, fancy_caste_list)
+		castepick = show_radial_menu(src, client?.get_eye(), fancy_caste_list)
 	if(!castepick) //Changed my mind
 		return
 
 	if(SEND_SIGNAL(src, COMSIG_XENO_TRY_EVOLVE, castepick) & COMPONENT_OVERRIDE_EVOLVE)
 		return // Message will be handled by component
+
+	if(castepick in hive.blacklisted_castes)
+		to_chat(src, SPAN_WARNING("The Hive cannot support this caste!"))
+		return
 
 	var/datum/caste_datum/caste_datum = GLOB.xeno_datum_list[castepick]
 	if(caste_datum && caste_datum.minimum_evolve_time > ROUND_TIME)
@@ -126,7 +136,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 			to_chat(src, SPAN_WARNING("There already is a Queen."))
 			return
 		if(!hive.allow_queen_evolve)
-			to_chat(src, SPAN_WARNING("We can't find the strength to evolve into a Queen"))
+			to_chat(src, SPAN_WARNING("We can't find the strength to evolve into a Queen."))
 			return
 	else if(!can_evolve(castepick, potential_queens))
 		return
@@ -171,7 +181,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	new_xeno.generate_name()
 	if(new_xeno.client)
 		new_xeno.set_lighting_alpha(level_to_switch_to)
-	if(new_xeno.health - getBruteLoss(src) - getFireLoss(src) > 0) //Cmon, don't kill the new one! Shouldnt be possible though
+	if(new_xeno.health - getBruteLoss(src) - getFireLoss(src) > 0) //Cmon, don't kill the new one! Shouldn't be possible though
 		new_xeno.bruteloss = bruteloss //Transfers the damage over.
 		new_xeno.fireloss = fireloss //Transfers the damage over.
 		new_xeno.updatehealth()
@@ -193,6 +203,10 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 
 	transfer_observers_to(new_xeno)
 	new_xeno._status_traits = _status_traits
+
+	// Freshly evolved xenos emerge standing.
+	// This resets density and resting status traits.
+	set_body_position(STANDING_UP)
 
 	qdel(src)
 	new_xeno.xeno_jitter(25)
@@ -228,6 +242,10 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		to_chat(src, SPAN_WARNING("We can't evolve here."))
 		return FALSE
 
+	if(HAS_TRAIT(src, TRAIT_HIVEMIND_INTERFERENCE))
+		to_chat(src, SPAN_WARNING("Our link to the hive is being suppressed...we should wait a bit."))
+		return FALSE
+
 	if(hardcore)
 		to_chat(src, SPAN_WARNING("Nuh-uh."))
 		return FALSE
@@ -255,11 +273,11 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		to_chat(src, SPAN_WARNING("We must be at full health to evolve."))
 		return FALSE
 
-	if(agility || fortify || crest_defense)
+	if(agility || fortify || crest_defense || stealth)
 		to_chat(src, SPAN_WARNING("We cannot evolve while in this stance."))
 		return FALSE
 
-	if(world.time < (SSticker.mode.round_time_lobby + XENO_ROUNDSTART_PROGRESS_TIME_2))
+	if(ROUND_TIME < XENO_ROUNDSTART_BOOSTED_EVO_TIME)
 		if(caste_type == XENO_CASTE_LARVA || caste_type == XENO_CASTE_PREDALIEN_LARVA)
 			var/turf/evoturf = get_turf(src)
 			if(!locate(/obj/effect/alien/weeds) in evoturf)
@@ -270,7 +288,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 
 /mob/living/carbon/xenomorph/proc/transmute_verb()
 	set name = "Transmute"
-	set desc = "Transmute into a different caste of the same tier"
+	set desc = "Transmute into a different caste of the same tier."
 	set category = "Alien"
 
 	if(!check_state())
@@ -281,11 +299,17 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	if(!isturf(loc))
 		to_chat(src, SPAN_XENOWARNING("We can't transmute here."))
 		return
+	if(HAS_TRAIT(src, TRAIT_HIVEMIND_INTERFERENCE))
+		to_chat(src, SPAN_WARNING("Our link to the hive is being suppressed...we should wait a bit."))
+		return FALSE
 	if(health < maxHealth)
 		to_chat(src, SPAN_XENOWARNING("We are too weak to transmute, we must regain our health first."))
 		return
 	if(tier == 0 || tier == 4)
 		to_chat(src, SPAN_XENOWARNING("We can't transmute."))
+		return
+	if(agility || fortify || crest_defense || stealth)
+		to_chat(src, SPAN_XENOWARNING("We can't transmute while in this stance."))
 		return
 	if(lock_evolve)
 		if(banished)
@@ -335,6 +359,9 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	if(health < maxHealth)
 		to_chat(src, SPAN_XENOWARNING("We are too weak to deevolve, we must regain our health first."))
 		return
+	if(HAS_TRAIT(src, TRAIT_HIVEMIND_INTERFERENCE))
+		to_chat(src, SPAN_WARNING("Our link to the hive is being suppressed...we should wait a bit."))
+		return FALSE
 	if(length(caste.deevolves_to) < 1)
 		to_chat(src, SPAN_XENOWARNING("We can't deevolve any further."))
 		return
@@ -386,7 +413,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		GLOB.deevolved_ckeys += new_xeno.ckey
 
 /mob/living/carbon/xenomorph/proc/transmute(newcaste, message="We regress into our previous form.")
-	// We have to delete the organ before creating the new xeno because all old_xeno contents are dropped to the ground on Initalize()
+	// We have to delete the organ before creating the new xeno because all old_xeno contents are dropped to the ground on Initialize()
 	var/obj/item/organ/xeno/organ = locate() in src
 	if(!isnull(organ))
 		qdel(organ)
@@ -419,8 +446,8 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		new_xeno.key = key
 		if(new_xeno.client)
 			new_xeno.client.change_view(GLOB.world_view_size)
-			new_xeno.client.pixel_x = 0
-			new_xeno.client.pixel_y = 0
+			new_xeno.client.set_pixel_x(0)
+			new_xeno.client.set_pixel_y(0)
 
 	//Regenerate the new mob's name now that our player is inside
 	if(newcaste == XENO_CASTE_LARVA)

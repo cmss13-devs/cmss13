@@ -19,7 +19,7 @@
 		icon_state = "door_electronics_smoked"
 
 /obj/item/circuitboard/airlock/attack_self(mob/user as mob)
-	if (!ishuman(user) && !istype(user,/mob/living/silicon/robot))
+	if (!ishuman(user))
 		return ..(user)
 
 	var/mob/living/carbon/human/H = user
@@ -113,4 +113,4 @@
 
 /obj/item/circuitboard/airlock/secure
 	name = "secure airlock electronics"
-	desc = "designed to be somewhat more resistant to hacking than standard electronics."
+	desc = "Designed to be somewhat more resistant to hacking than standard electronics."

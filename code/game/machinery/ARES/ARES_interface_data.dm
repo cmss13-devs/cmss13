@@ -18,6 +18,9 @@
 	data["nuketimelock"] = NUCLEAR_TIME_LOCK
 	data["nuke_available"] = nuke_available
 
+	data["sentry_setting"] = link.faction_label
+	data["faction_options"] = list("USCM Only", "Wey-Yu Only", "USCM & Wey-Yu", "ARES Only")
+
 
 	var/list/logged_announcements = list()
 	for(var/datum/ares_record/announcement/broadcast as anything in records_announcement)
@@ -135,7 +138,7 @@
 	data["records_discussions"] = logged_convos
 
 	var/list/security_vents = list()
-	for(var/obj/structure/pipes/vents/pump/no_boom/gas/vent in link.linked_vents)
+	for(var/obj/structure/pipes/vents/pump/no_boom/gas/ares/vent in link.linked_vents)
 		if(!vent.vent_tag)
 			vent.vent_tag = "Security Vent #[link.tag_num]"
 			link.tag_num++

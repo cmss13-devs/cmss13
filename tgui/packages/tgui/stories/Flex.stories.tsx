@@ -12,7 +12,7 @@ export const meta = {
   render: () => <Story />,
 };
 
-const Story = (props) => {
+function Story() {
   const [grow, setGrow] = useState(1);
   const [direction, setDirection] = useState('column');
   const [fill, setFill] = useState(true);
@@ -64,4 +64,4 @@ const Story = (props) => {
       </Flex.Item>
     </Flex>
   );
-};
+}

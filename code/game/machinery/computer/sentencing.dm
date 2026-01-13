@@ -11,7 +11,7 @@
 	unacidable = TRUE
 	breakable = FALSE
 	unslashable = TRUE
-	
+
 /obj/structure/machinery/computer/sentencing/ex_act(severity)
 	return
 
@@ -50,6 +50,7 @@
 			current_charge["name"] = L.name
 			current_charge["desc"] = L.desc
 			current_charge["special_punishment"] = L.special_punishment
+			current_charge["conditions"] = L.conditions
 			current_charge["ref"] = "\ref[L]"
 			current_charges += list(current_charge)
 		data["current_charges"] = current_charges
@@ -85,6 +86,7 @@
 	data["laws"] += list(create_law_data("Capital Laws", SSlaw_init.capital_law))
 	data["laws"] += list(create_law_data("Optional Laws", SSlaw_init.optional_law))
 	data["laws"] += list(create_law_data("Precautionary Laws", SSlaw_init.precautionary_law))
+	data["laws"] += list(create_law_data("Civilian Laws", SSlaw_init.civilian_law))
 
 	return data
 
@@ -98,6 +100,7 @@
 		law["desc"] = L.desc
 		law["brig_time"] = L.brig_time
 		law["special_punishment"] = L.special_punishment
+		law["conditions"] = L.conditions
 		law["ref"] = "\ref[L]"
 		formatted_laws += list(law)
 

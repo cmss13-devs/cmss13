@@ -5,7 +5,7 @@
  */
 
 import { shallowDiffers } from 'common/react';
-import { Component, createRef, RefObject } from 'react';
+import { Component, createRef, type RefObject } from 'react';
 import { Button } from 'tgui/components';
 
 import { chatRenderer } from './renderer';
@@ -68,7 +68,7 @@ export class ChatPanel extends Component<ChatPanelTypes> {
     return (
       <>
         <div className="Chat" ref={this.ref} />
-        {!scrollTracking && (
+        {!scrollTracking && !chatRenderer.alwaysStayAtBottom && (
           <Button
             className="Chat__scrollButton"
             icon="arrow-down"

@@ -29,17 +29,32 @@
 
 /mob/living/carbon/xenomorph/proc/update_icon_source()
 	if(HAS_TRAIT(src, TRAIT_XENONID))
-		icon = icon_xenonid
+		if(!icon_xenonid)
+			color = hive.color
+		else
+			icon = icon_xenonid
 		if(isqueen(src))
 			var/mob/living/carbon/xenomorph/queen/Q = src
 			Q.queen_standing_icon = icon_xenonid
 			Q.queen_ovipositor_icon = 'icons/mob/xenonids/castes/tier_4/ovipositor.dmi'
+		if(!isnull(xenonid_pixel_x))
+			old_x = xenonid_pixel_x
+			pixel_x = xenonid_pixel_x
+		if(!isnull(xenonid_pixel_y))
+			old_y = xenonid_pixel_y
+			pixel_y = xenonid_pixel_y
 	else
 		icon = icon_xeno
 		if(isqueen(src))
 			var/mob/living/carbon/xenomorph/queen/Q = src
 			Q.queen_standing_icon = icon_xeno
 			Q.queen_ovipositor_icon = 'icons/mob/xenos/castes/tier_4/ovipositor.dmi'
+		if(!isnull(xenonid_pixel_x))
+			old_x = src::old_x
+			pixel_x = src::pixel_x
+		if(!isnull(xenonid_pixel_y))
+			old_y = src::old_y
+			pixel_y = src::pixel_y
 
 	var/mutation_caste_state = "[get_strain_icon()] [caste.caste_type]"
 	if(!walking_state_cache[mutation_caste_state])
@@ -51,6 +66,7 @@
 		walking_state_cache[mutation_caste_state] = cache_walking_state
 	has_walking_icon_state = walking_state_cache[mutation_caste_state]
 	update_icons()
+	color = HAS_TRAIT(src, TRAIT_NO_COLOR) ? null : hive.color
 
 /mob/living/carbon/xenomorph/update_icons()
 	if(!caste)
@@ -104,6 +120,8 @@
 	. = ..()
 	update_icons()
 	update_wounds()
+	overlays -= acid_overlay
+
 /mob/living/carbon/xenomorph/on_floored_end()
 	. = ..()
 	update_icons()
@@ -326,6 +344,8 @@
 	if(!wound_icon_holder)
 		return
 
+	wound_icon_holder.icon = icon
+
 	var/health_threshold
 	health_threshold = max(ceil((health * 4) / (maxHealth)), 0) //From 0 to 4, in 25% chunks
 
@@ -353,9 +373,6 @@
 /atom/movable/vis_obj
 	vis_flags = VIS_INHERIT_ID|VIS_INHERIT_DIR|VIS_INHERIT_LAYER|VIS_INHERIT_PLANE
 	appearance_flags = RESET_COLOR
-
-/atom/movable/vis_obj/xeno_wounds
-	icon = 'icons/mob/xenos/wounds.dmi'
 
 /atom/movable/vis_obj/xeno_pack/Initialize(mapload, mob/living/carbon/source)
 	. = ..()

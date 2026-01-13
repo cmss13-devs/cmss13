@@ -44,7 +44,6 @@
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/onclick/xenohide,
-		/datum/action/xeno_action/onclick/tacmap,
 	)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
@@ -54,6 +53,7 @@
 	var/state_override
 	/// Whether we're bloody, normal, or mature
 	var/larva_state = LARVA_STATE_BLOODY
+	var/last_roar_time = 0
 
 	icon_xeno = 'icons/mob/xenos/castes/tier_0/larva.dmi'
 	icon_xenonid = 'icons/mob/xenonids/castes/tier_0/larva.dmi'
@@ -68,11 +68,25 @@
 		generate_name()
 	return ..()
 
+/mob/living/carbon/xenomorph/larva/warn_away_timer()
+	if(away_timer != XENO_LEAVE_TIMER_LARVA - XENO_AVAILABLE_TIMER)
+		return
+	if(aghosted)
+		return
+	if(health <= 0)
+		return
+	var/area/area = get_area(src)
+	if(should_block_game_interaction(src) && (!area || !(area.flags_area & AREA_ALLOW_XENO_JOIN)))
+		return //xenos on admin z level don't count
+
+	to_chat(client, SPAN_ALERTWARNING("You are inactive and will be available to ghosts in [XENO_AVAILABLE_TIMER] second\s!"))
+	playsound_client(client, sound('sound/effects/xeno_evolveready.ogg'))
+
 /mob/living/carbon/xenomorph/larva/initialize_pass_flags(datum/pass_flags_container/pass_flags)
 	..()
 	if (pass_flags)
 		pass_flags.flags_pass = PASS_MOB_THRU|PASS_FLAGS_CRAWLER
-		pass_flags.flags_can_pass_all = PASS_ALL^PASS_OVER_THROW_ITEM
+		pass_flags.flags_can_pass_all = PASS_ALL|PASS_OVER_THROW_ITEM
 
 /mob/living/carbon/xenomorph/larva/corrupted
 	AUTOWIKI_SKIP(TRUE)
@@ -197,6 +211,12 @@
 			return FALSE
 
 	// Otherwise, ""roar""!
+	var/current_time = world.time
+	if(current_time - last_roar_time < 1 SECONDS)
+		to_chat(src, SPAN_WARNING("You must wait before roaring again."))
+		return FALSE
+
+	last_roar_time = current_time
 	playsound(loc, "alien_roar_larva", 15)
 	return TRUE
 

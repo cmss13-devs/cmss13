@@ -43,6 +43,9 @@
 	if(harmful && ishuman(user) && !user.allow_gun_usage)
 		to_chat(user, SPAN_WARNING("Your programming prevents you from using this!"))
 		return FALSE
+	if(harmful && ishuman(user) && MODE_HAS_MODIFIER(/datum/gamemode_modifier/ceasefire))
+		to_chat(user, SPAN_WARNING("You will not break the ceasefire by doing that!"))
+		return FALSE
 
 	if(HAS_TRAIT(user, TRAIT_HAULED)) // If somehow they have a grenade in hand while hauled, we don't want them to prime it
 		return FALSE
@@ -114,7 +117,7 @@
 	else
 		active = TRUE
 		det_time ? addtimer(CALLBACK(src, PROC_REF(prime)), det_time) : prime()
-	w_class = SIZE_MASSIVE // We cheat a little, primed nades become massive so they cant be stored anywhere
+	w_class = SIZE_MASSIVE // We cheat a little, primed nades become massive so they can't be stored anywhere
 	update_icon()
 
 /obj/item/explosive/grenade/prime(force = FALSE)

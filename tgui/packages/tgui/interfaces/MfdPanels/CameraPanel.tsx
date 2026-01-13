@@ -2,7 +2,7 @@ import { useBackend } from 'tgui/backend';
 import { ByondUi } from 'tgui/components';
 import { Box } from 'tgui/components';
 
-import { MfdPanel, MfdProps } from './MultifunctionDisplay';
+import { MfdPanel, type MfdProps } from './MultifunctionDisplay';
 import { mfdState } from './stateManagers';
 import type { CameraProps } from './types';
 

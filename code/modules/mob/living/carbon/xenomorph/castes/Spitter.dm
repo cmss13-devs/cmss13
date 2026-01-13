@@ -15,11 +15,9 @@
 
 	caste_desc = "Ptui!"
 	spit_types = list(/datum/ammo/xeno/acid, /datum/ammo/xeno/acid/spatter)
-	evolves_to = list(XENO_CASTE_PRAETORIAN, XENO_CASTE_BOILER)
+	evolves_to = list(XENO_CASTE_PRAETORIAN, XENO_CASTE_BOILER, XENO_CASTE_DESPOILER)
 	deevolves_to = list(XENO_CASTE_SENTINEL)
 	acid_level = 2
-
-	spit_delay = 2.5 SECONDS
 
 	tackle_min = 2
 	tackle_max = 6
@@ -40,6 +38,7 @@
 	plasma_types = list(PLASMA_NEUROTOXIN)
 	pixel_x = -12
 	old_x = -12
+	xenonid_pixel_x = -9
 	organ_value = 2000
 	tier = 2
 	base_actions = list(
@@ -48,10 +47,9 @@
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/tail_stab/spitter,
 		/datum/action/xeno_action/activable/corrosive_acid,
-		/datum/action/xeno_action/activable/xeno_spit,
+		/datum/action/xeno_action/activable/xeno_spit/spitter,
 		/datum/action/xeno_action/onclick/charge_spit,
 		/datum/action/xeno_action/activable/spray_acid/spitter,
-		/datum/action/xeno_action/onclick/tacmap,
 	)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
@@ -59,6 +57,8 @@
 
 	icon_xeno = 'icons/mob/xenos/castes/tier_2/spitter.dmi'
 	icon_xenonid = 'icons/mob/xenonids/castes/tier_2/spitter.dmi'
+
+	acid_overlay = icon('icons/mob/xenos/castes/tier_2/spitter.dmi', "Spitter-Spit")
 
 	weed_food_icon = 'icons/mob/xenos/weeds_48x48.dmi'
 	weed_food_states = list("Drone_1","Drone_2","Drone_3")

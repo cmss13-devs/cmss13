@@ -53,6 +53,7 @@
 /atom/movable/screen/action_button
 	icon = 'icons/mob/hud/actions.dmi'
 	icon_state = "template"
+	plane = ABOVE_TACMAP_PLANE
 	var/datum/action/source_action
 	var/image/maptext_overlay
 
@@ -100,18 +101,29 @@
 	icon = 'icons/mob/hud/actions.dmi'
 	icon_state = "hide"
 	var/hidden = 0
+	var/base_icon
 
 /atom/movable/screen/action_button/hide_toggle/clicked(mob/user, list/mods)
 	user.hud_used.action_buttons_hidden = !user.hud_used.action_buttons_hidden
 	hidden = user.hud_used.action_buttons_hidden
-	if(hidden)
-		name = "Show Buttons"
-		icon_state = "show"
-	else
-		name = "Hide Buttons"
-		icon_state = "hide"
+	update_button_icon(user)
 	user.update_action_buttons()
 	return TRUE
+
+/atom/movable/screen/action_button/hide_toggle/proc/update_button_icon(mob/user)
+	if(isyautja(user))
+		base_icon = "pred"
+	else if(isxeno(user))
+		base_icon = "xeno"
+	else
+		base_icon = "marine"
+
+	if(hidden)
+		name = "Show Buttons"
+		icon_state = "[base_icon]_show"
+	else
+		name = "Hide Buttons"
+		icon_state = "[base_icon]_hide"
 
 /atom/movable/screen/action_button/ghost/minimap/get_button_screen_loc(button_number)
 	return "SOUTH:6,CENTER+1:24"
@@ -155,8 +167,8 @@
 	if (..())
 		return TRUE
 
-	var/icon_x = text2num(mods["icon-x"])
-	var/icon_y = text2num(mods["icon-y"])
+	var/icon_x = text2num(mods[ICON_X])
+	var/icon_y = text2num(mods[ICON_Y])
 	var/old_selecting = selecting //We're only going to update_icon() if there's been a change
 
 	switch(icon_y)
@@ -296,6 +308,9 @@
 /atom/movable/screen/inventory/proc/handle_dropped_on(atom/dropped_on, atom/dropping, client/user)
 	SIGNAL_HANDLER
 
+	if(!isliving(user.mob))
+		return
+
 	if(slot_id != WEAR_L_HAND && slot_id != WEAR_R_HAND)
 		return
 
@@ -323,7 +338,7 @@
 	if(user.is_mob_incapacitated())
 		return TRUE
 
-	if (mods["ctrl"])
+	if (mods[CTRL_CLICK])
 		carbon.toggle_throw_mode(THROW_MODE_HIGH)
 	else
 		carbon.toggle_throw_mode(THROW_MODE_NORMAL)
@@ -403,8 +418,8 @@
 	return 1
 
 /atom/movable/screen/act_intent/corner/clicked(mob/user, list/mods)
-	var/_x = text2num(mods["icon-x"])
-	var/_y = text2num(mods["icon-y"])
+	var/_x = text2num(mods[ICON_X])
+	var/_y = text2num(mods[ICON_Y])
 
 	if(_x<=16 && _y<=16)
 		user.a_intent_change(INTENT_HARM)
@@ -459,18 +474,17 @@
 	if(!istype(user))
 		return
 	var/obj/item/device/radio/headset/earpiece = user.get_type_in_ears(/obj/item/device/radio/headset)
-	var/has_access = earpiece.misc_tracking || (user.assigned_squad && user.assigned_squad.radio_freq == earpiece.frequency)
-	if(!istype(earpiece) || !earpiece.has_hud || !has_access)
+	if(!istype(earpiece) || !earpiece.has_hud)
 		to_chat(user, SPAN_WARNING("Unauthorized access detected."))
 		return
-	if(mods["shift"])
+	if(mods[SHIFT_CLICK])
 		var/area/current_area = get_area(user)
 		to_chat(user, SPAN_NOTICE("You are currently at: <b>[current_area.name]</b>."))
 		return
-	else if(mods["alt"])
+	else if(mods[ALT_CLICK])
 		earpiece.switch_tracker_target()
 		return
-	if(user.get_active_hand())
+	if(user.a_intent == INTENT_HARM && user.get_active_hand()) //Stop it popping up in combat(hopefully), but work any other time.
 		return
 	if(user.assigned_squad)
 		user.assigned_squad.tgui_interact(user)
@@ -483,14 +497,14 @@
 /atom/movable/screen/mark_locator/clicked(mob/living/carbon/xenomorph/user, mods)
 	if(!istype(user))
 		return FALSE
-	if(mods["shift"] && user.tracked_marker)
+	if(mods[SHIFT_CLICK] && user.tracked_marker)
 		if(user.observed_xeno == user.tracked_marker)
 			user.overwatch(user.tracked_marker, TRUE) //passing in an obj/effect into a proc that expects mob/xenomorph B)
 		else
 			to_chat(user, SPAN_XENONOTICE("We psychically observe the [user.tracked_marker.mark_meaning.name] resin mark in [get_area_name(user.tracked_marker)]."))
 			user.overwatch(user.tracked_marker) //this is so scuffed, sorry if this causes errors
 		return
-	if(mods["alt"] && user.tracked_marker)
+	if(mods[ALT_CLICK] && user.tracked_marker)
 		user.stop_tracking_resin_mark()
 		return
 	if(!user.hive)
@@ -517,14 +531,14 @@
 /atom/movable/screen/queen_locator/clicked(mob/living/carbon/xenomorph/user, mods)
 	if(!istype(user))
 		return FALSE
-	if(mods["shift"])
+	if(mods[SHIFT_CLICK])
 		var/area/current_area = get_area(user)
 		to_chat(user, SPAN_NOTICE("We are currently at: <b>[current_area.name]</b>."))
 		return
 	if(!user.hive)
 		to_chat(user, SPAN_WARNING("We don't belong to a hive!"))
 		return FALSE
-	if(mods["alt"])
+	if(mods[ALT_CLICK])
 		var/list/options = list()
 		if(user.hive.living_xeno_queen)
 			// Don't need weakrefs to this or the hive core, since there's only one possible target.

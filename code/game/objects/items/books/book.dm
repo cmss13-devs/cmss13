@@ -45,7 +45,7 @@
 			to_chat(user, SPAN_NOTICE("The pages of [title] have been cut out!"))
 			return
 	if(src.dat)
-		show_browser(user, "<body class='paper'><TT><I>Owner: [author].</I></TT> <BR>[dat]</body>", "window=book", width = 800, height = 600)
+		show_browser(user, "<body class='paper'><TT><I>Author: [author].</I></TT> <BR>[dat]</body>","[title]", "window=book", width = 800, height = 600)
 		user.visible_message("[user] opens \"[src.title]\".")
 		onclose(user, "book")
 	else
@@ -271,3 +271,92 @@
 		```
 	"}
 	live_preview = TRUE
+
+/obj/item/lore_book/punch_out
+	name = "Punch Out! Surviving An Ejection."
+	book_title = "Punch Out!"
+	icon_state = "punch_out"
+	book_author = "Sgt. ███████████████████"
+	book_contents = @{"
+># **[DECLASSIFIED]**
+
+```
+“Make maluna o ka hilahila.”
+(Death before dishonor)
+- Scratched beneath ███████'s UD-4L Dropship, the '████ █████████'
+```
+<span style='font-size: 13px'>
+This motto served as a reminder of fallen comrades, especially 1st Lt.
+███████████████, killed in the ███████ against the ████. If you're reading
+this, you may one day be fighting for your own survival too. Here's how to
+live to tell the tale.
+</span>
+
+<br />
+<br />
+
+***
+
+<br />
+
+# Step 1: Slow Down
+
+If your dropship's still responsive, reduce your speed as
+much as possible. Damaged controls? Don't push 'em too hard or you'll stall and
+fall outta the sky-- **or worse**. If slowing down isn't an option, move to
+step 2 and say your prayers.
+
+# Step 2: Eject!
+
+Cram yourself into the seat as
+best you can and yank the ejection handle. The glass'll be blown off the bird
+and shatter, and you'll be shot out of the top like a missile. The system'll
+automatically eject your partner too-- or what's left of 'em, Hold on tight, it
+ain't over yet.
+
+# Step 3: Drop and Glide
+
+Once you're clear of the bird, Check your
+surroundings-- if it's all blue sea, ride the chair and prepare for a splash,
+it'll inflate a raft. Otherwise, ditch it and go for land, flatter is better.
+Remember to bend the knees and prepare to handle the momentum when you hit the
+dirt.
+
+# Step 4: Injuries
+
+The ejection seat does it's best to get you out of the
+bird **alive**, but chances are good it beat you up pretty good in the
+process. Stay calm, and try to staunch any heavy bleeds before you hit the dirt,
+you aren't gonna want to stop when you land.
+
+<br/>
+<br/>
+<br/>
+<br/>
+
+# Step 5: Stay alert, Stay Mobile
+
+Whatever took you out could be on the lookout to finish you off, first thing you
+need to do when you hit the dirt is get to cover, Prog pilots are known to try
+to hit a gun strafe as you land.
+
+# Step 6: Survive on the ground
+
+Chances are good you're in hostile territory,
+with limited supplies, some injuries, and a nasty adrenaline crash. You need to
+secure the gear from your SSK and follow standard SERE procedures, keep your
+head low, stay sharp, and stay mobile.
+
+<br />
+
+***
+
+
+Remember,
+**Survival isn't luck, it's all skill.**
+
+> **Now get a move on.**
+
+***
+
+	"}

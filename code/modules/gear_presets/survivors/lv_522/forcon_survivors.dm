@@ -1,12 +1,13 @@
 ///*****************************LV-522 Force Recon Survivors*******************************************************/
-//Nanu told me to put them here so they dont clutter up survivors.dm
+//Nanu told me to put them here so they don't clutter up survivors.dm
 /datum/equipment_preset/survivor/forecon
 	paygrades = list(PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/dogtag
 	role_comm_title = "FORECON"
 	minimap_background = "background_forecon"
-	rank = JOB_SURVIVOR
+	job_title = JOB_SURVIVOR
 	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
+	origin_override = ORIGIN_USCM
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
@@ -252,13 +253,70 @@
 	idtype = /obj/item/card/id/gold
 	role_comm_title = "FORECON CO"
 	minimap_icon = "co"
-	minimap_background = "background_command"
+	minimap_background = "background_forecon"
 
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer)
 	dress_hat = list(/obj/item/clothing/head/marine/dress_cover/officer)
 
 /datum/equipment_preset/survivor/forecon/major/load_gear(mob/living/carbon/human/new_human)
+	var/sidearm = /obj/item/weapon/gun/revolver/mateba/cmateba
+	var/sidearmbelt = /obj/item/storage/belt/gun/mateba/cmateba
+	var/sidearmammo = /obj/item/ammo_magazine/revolver/mateba
+
+	if(new_human.client && new_human.client.prefs)
+		sidearm = new_human.client.prefs.commander_sidearm
+		switch(sidearm)
+			if(CO_GUN_MATEBA)
+				sidearm = /obj/item/weapon/gun/revolver/mateba/cmateba
+				sidearmbelt = /obj/item/storage/belt/gun/mateba/cmateba
+				sidearmammo = /obj/item/ammo_magazine/revolver/mateba
+			if(CO_GUN_MATEBA_SPECIAL)
+				sidearm = /obj/item/weapon/gun/revolver/mateba/cmateba
+				sidearmbelt = /obj/item/storage/belt/gun/mateba/cmateba
+				sidearmammo = /obj/item/ammo_magazine/revolver/mateba
+			if(CO_GUN_MATEBA_CLASSIC)
+				sidearm = /obj/item/weapon/gun/revolver/mateba/impact
+				sidearmbelt = /obj/item/storage/belt/gun/mateba
+				sidearmammo = /obj/item/ammo_magazine/revolver/mateba
+			if(CO_GUN_2006M)
+				sidearm = /obj/item/weapon/gun/revolver/mateba/mtr6m
+				sidearmbelt = /obj/item/storage/belt/gun/mateba/mtr6m
+				sidearmammo = /obj/item/ammo_magazine/revolver/mateba
+			if(CO_GUN_DEAGLE)
+				sidearm = /obj/item/weapon/gun/pistol/heavy/co
+				sidearmbelt = /obj/item/storage/belt/gun/m4a3
+				sidearmammo = /obj/item/ammo_magazine/pistol/heavy/super
+			if(CO_GUN_M1911C)
+				sidearm = /obj/item/weapon/gun/pistol/m1911/custom
+				sidearmbelt = /obj/item/storage/belt/gun/m4a3
+				sidearmammo = /obj/item/ammo_magazine/pistol/m1911
+			//Council variants
+			if(CO_GUN_MATEBA_COUNCIL)
+				sidearm = /obj/item/weapon/gun/revolver/mateba/silver
+				sidearmbelt = /obj/item/storage/belt/gun/mateba/council
+				sidearmammo = /obj/item/ammo_magazine/revolver/mateba
+			if(CO_GUN_MATEBA_COUNCIL_GOLDEN)
+				sidearm = /obj/item/weapon/gun/revolver/mateba/golden
+				sidearmbelt = /obj/item/storage/belt/gun/mateba/council
+				sidearmammo = /obj/item/ammo_magazine/revolver/mateba
+			if(CO_GUN_2006M_COUNCIL)
+				sidearm = /obj/item/weapon/gun/revolver/mateba/mtr6m/golden
+				sidearmbelt = /obj/item/storage/belt/gun/mateba/council
+				sidearmammo = /obj/item/ammo_magazine/revolver/mateba
+			if(CO_GUN_2006MB_COUNCIL)
+				sidearm = /obj/item/weapon/gun/revolver/mateba/mtr6m/golden/black_handle
+				sidearmbelt = /obj/item/storage/belt/gun/mateba/council
+				sidearmammo = /obj/item/ammo_magazine/revolver/mateba
+			if(CO_GUN_2006MS_COUNCIL)
+				sidearm = /obj/item/weapon/gun/revolver/mateba/mtr6m/silver
+				sidearmbelt = /obj/item/storage/belt/gun/mateba/council
+				sidearmammo = /obj/item/ammo_magazine/revolver/mateba
+			if(CO_GUN_DEAGLE_COUNCIL)
+				sidearm = /obj/item/weapon/gun/pistol/heavy/co/gold
+				sidearmbelt = /obj/item/storage/belt/gun/m4a3/black
+				sidearmammo = /obj/item/ammo_magazine/pistol/heavy/super
+
 	var/obj/item/clothing/under/marine/reconnaissance/uniform = new()
 	var/obj/item/clothing/accessory/storage/droppouch/pouch = new()
 	var/obj/item/clothing/accessory/ranks/marine/o4/pin = new()
@@ -271,11 +329,11 @@
 	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/windbreaker/windbreaker_green(new_human), WEAR_JACKET)
 	..()
-	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/cmateba(new_human), WEAR_WAIST)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/revolver/mateba/cmateba(new_human), WEAR_R_HAND)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/mateba(new_human), WEAR_IN_BELT)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/mateba(new_human), WEAR_IN_BELT)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/mateba(new_human), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new sidearmbelt(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new sidearmammo(new_human), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new sidearmammo(new_human), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new sidearmammo(new_human), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new sidearm(new_human), WEAR_R_HAND)
 	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range/designator(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/cigarette/cigar(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/lighter/zippo/gold(new_human), WEAR_IN_BACK)
@@ -288,6 +346,7 @@
 	assignment = JOB_FORECON_SYN
 	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
 	idtype = /obj/item/card/id/gold
+	origin_override = ORIGIN_USCM
 
 /datum/equipment_preset/synth/survivor/forecon/load_gear(mob/living/carbon/human/preset_human) //Bishop from Aliens
 	preset_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/engi, WEAR_BODY)

@@ -151,3 +151,14 @@ GLOBAL_VAR_INIT(running_create_and_destroy, FALSE)
 	//This shouldn't be needed, but let's be polite
 	SSgarbage.collection_timeout[GC_QUEUE_CHECK] = GC_CHECK_QUEUE
 	SSgarbage.collection_timeout[GC_QUEUE_HARDDELETE] = GC_DEL_QUEUE
+
+/datum/unit_test/create_and_destroy/Destroy()
+	. = ..()
+	//Ensure the entire space is the correct turf again
+	var/original_turf_type = run_loc_floor_bottom_left.type
+	var/original_baseturfs = islist(run_loc_floor_bottom_left.baseturfs) ? run_loc_floor_bottom_left.baseturfs.Copy() : run_loc_floor_bottom_left.baseturfs
+	var/width = run_loc_floor_top_right.x - run_loc_floor_bottom_left.x + 1
+	var/height = run_loc_floor_top_right.y - run_loc_floor_bottom_left.y + 1
+	for(var/turf/turf as anything in CORNER_BLOCK(run_loc_floor_bottom_left, width, height))
+		debug_log("C&D: Changing [turf] - [turf.type] at [turf.x],[turf.y] back to [original_turf_type]")
+		turf.ChangeTurf(original_turf_type, original_baseturfs)

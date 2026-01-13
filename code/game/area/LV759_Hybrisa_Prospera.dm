@@ -219,7 +219,7 @@
 	soundscape_playlist = SCAPE_PL_LV759_CAVES
 	ceiling_muffle = FALSE
 	minimap_color = MINIMAP_AREA_HYBRISACAVES
-	unoviable_timer = FALSE
+	unoviable_timer = 25 MINUTES
 	always_unpowered = TRUE
 
 /area/lv759/indoors/caves/electric_fence1
@@ -323,7 +323,7 @@
 	soundscape_playlist = SCAPE_PL_LV759_DEEPCAVES
 	ceiling_muffle = FALSE
 	minimap_color = MINIMAP_AREA_HYBRISACAVES
-	unoviable_timer = FALSE
+	unoviable_timer = 25 MINUTES
 
 /area/lv759/outdoors/caves/north_west_caves_outdoors
 	name = "Caverns - Northwest"
@@ -333,7 +333,7 @@
 	soundscape_playlist = SCAPE_PL_LV759_CAVES
 	ceiling_muffle = FALSE
 	minimap_color = MINIMAP_AREA_HYBRISACAVES
-	unoviable_timer = FALSE
+	unoviable_timer = 25 MINUTES
 
 /area/lv759/indoors/caves/north_east_caves
 	name = "Caverns - Northeast"
@@ -564,6 +564,12 @@
 
 /area/lv759/indoors/spaceport/horizon_runner
 	name = "WY-LWI Horizon Runner HR-150"
+	icon_state = "wydropship"
+	requires_power = FALSE
+	minimap_color = MINIMAP_AREA_COLONY
+
+/area/lv759/indoors/spaceport/clf_dropship
+	name = "UD-9M 'Dogbite'"
 	icon_state = "wydropship"
 	requires_power = FALSE
 	minimap_color = MINIMAP_AREA_COLONY

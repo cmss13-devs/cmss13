@@ -497,7 +497,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/xeno_restraints,
+/obj/item/restraint/legcuffs/xeno_restraints,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata/grey_multi_tiles,
 /area/lv624/ground/caves/sand_temple)
@@ -2212,11 +2212,11 @@ uE
 uE
 Wj
 Ws
-dF
+hi
 Cr
 UK
 hD
-hi
+dF
 OJ
 tX
 "}
@@ -2254,11 +2254,11 @@ uE
 uE
 uE
 dJ
-dF
+hi
 UK
 MK
 UK
-hi
+dF
 OP
 tX
 "}
@@ -2296,11 +2296,11 @@ uE
 uE
 Qe
 iW
-dF
+hi
 ZG
 UK
 wZ
-hi
+dF
 Ix
 tX
 "}

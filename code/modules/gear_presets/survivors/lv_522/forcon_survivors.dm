@@ -6,7 +6,7 @@
 	role_comm_title = "FORECON"
 	minimap_background = "background_forecon"
 	job_title = JOB_SURVIVOR
-	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
+	faction_group = FACTION_LIST_SURVIVOR_UA
 	origin_override = ORIGIN_USCM
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(
@@ -344,7 +344,7 @@
 /datum/equipment_preset/synth/survivor/forecon
 	name = "Survivor - Synthetic - FORECON Synth"
 	assignment = JOB_FORECON_SYN
-	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
+	faction_group = FACTION_LIST_SURVIVOR_UA
 	idtype = /obj/item/card/id/gold
 	origin_override = ORIGIN_USCM
 

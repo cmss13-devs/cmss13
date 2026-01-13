@@ -17,7 +17,7 @@
 	minimap_icon = "cmp"
 	faction = FACTION_WY
 	idtype = /obj/item/card/id/silver/cl
-	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
+	faction_group = FACTION_LIST_SURVIVOR_WY
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_COMMAND, ACCESS_CIVILIAN_MEDBAY, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_BRIG, ACCESS_WY_GENERAL, ACCESS_WY_COLONIAL, ACCESS_WY_MEDICAL, ACCESS_WY_ENGINEERING)
 
 /datum/equipment_preset/survivor/security/trijent/load_gear(mob/living/carbon/human/new_human)

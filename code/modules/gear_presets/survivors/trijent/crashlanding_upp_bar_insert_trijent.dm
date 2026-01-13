@@ -8,7 +8,7 @@
 	skills = /datum/skills/military/survivor/upp_private
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_CHINESE)
 	faction = FACTION_UPP
-	faction_group = list(FACTION_UPP, FACTION_SURVIVOR)
+	faction_group = FACTION_LIST_SURVIVOR_UPP
 	minimap_icon = "upp_pvt"
 	minimap_background = "background_upp"
 	role_comm_title = "173/RECON"
@@ -182,7 +182,7 @@
 	assignment = JOB_UPP_SUPPORT_SYNTH
 	job_title = JOB_UPP_SUPPORT_SYNTH
 	faction = FACTION_UPP
-	faction_group = list(FACTION_UPP, FACTION_SURVIVOR)
+	faction_group = FACTION_LIST_SURVIVOR_UPP
 	origin_override = ORIGIN_UPP
 	skills = /datum/skills/colonial_synthetic
 	preset_generation_support = FALSE

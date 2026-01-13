@@ -1,6 +1,9 @@
 /datum/equipment_preset/survivor/security/nv
 	name = "Survivor - New Varadero Security Guard"
 	assignment = "United Americas Peacekeeper"
+	minimap_background = "background_ua"
+	minimap_icon = "peacekeeper"
+	faction = FACTION_LIST_SURVIVOR_UA
 
 /datum/equipment_preset/survivor/security/nv/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/ua_riot(new_human), WEAR_BODY)

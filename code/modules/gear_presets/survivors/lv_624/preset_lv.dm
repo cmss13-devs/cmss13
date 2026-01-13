@@ -16,6 +16,7 @@
 /datum/equipment_preset/survivor/colonial_marshal/lv
 	name = "Survivor - LV-624 Colonial Marshal Deputy"
 	assignment = "CMB Deputy"
+	faction_group = FACTION_LIST_SURVIVOR_UA
 
 /datum/equipment_preset/survivor/colonial_marshal/lv/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/CM_uniform(new_human), WEAR_BODY)
@@ -85,7 +86,7 @@
 	minimap_icon = "cmp"
 	idtype = /obj/item/card/id/silver/cl
 	faction = FACTION_WY
-	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
+	faction_group = FACTION_LIST_SURVIVOR_WY
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 
 /datum/equipment_preset/survivor/security/lv/load_gear(mob/living/carbon/human/new_human)

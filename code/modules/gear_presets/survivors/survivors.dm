@@ -194,7 +194,7 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 	idtype = /obj/item/card/id/deputy
 	job_title = JOB_CMB
 	faction = FACTION_MARSHAL
-	faction_group = list(FACTION_MARSHAL, FACTION_MARINE, FACTION_SURVIVOR)
+	faction_group = FACTION_LIST_SURVIVOR_UA
 	origin_override = ORIGIN_CMB
 	role_comm_title = "CMB DEP"
 	access = list(
@@ -300,7 +300,7 @@ Everything bellow is a parent used as a base for one or multiple maps.
 	faction_group = FACTION_LIST_SURVIVOR_WY
 	job_title = JOB_EXECUTIVE
 	faction = FACTION_WY
-	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
+	faction_group = FACTION_LIST_SURVIVOR_WY
 	origin_override = ORIGIN_WY
 	idtype = /obj/item/card/id/silver/clearance_badge/cl
 	access = list(

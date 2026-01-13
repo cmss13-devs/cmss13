@@ -497,7 +497,7 @@ Everything below isn't used or out of place.
 	idtype = /obj/item/card/id/silver/cl
 	skills = /datum/skills/civilian/survivor/goon
 	faction = FACTION_WY
-	faction_group = list(FACTION_WY, FACTION_SURVIVOR, FACTION_PMC)
+	faction_group = FACTION_LIST_SURVIVOR_WY
 	origin_override = ORIGIN_WY_SEC
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_COMMAND, ACCESS_CIVILIAN_BRIG, ACCESS_WY_COLONIAL)

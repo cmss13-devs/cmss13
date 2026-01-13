@@ -71,6 +71,7 @@
 	assignment = "United Americas Peacekeeper"
 	minimap_icon = "peacekeeper"
 	minimap_background = "background_ua"
+	faction = FACTION_LIST_SURVIVOR_UA
 
 /datum/equipment_preset/survivor/security/solaris/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/ua_riot(new_human), WEAR_BODY)
@@ -89,7 +90,7 @@
 	role_comm_title = "CMB MAR"
 	paygrades = list(PAY_SHORT_CMBM = JOB_PLAYTIME_TIER_0)
 	minimap_icon = "deputy"
-	faction_group = list(FACTION_MARSHAL, FACTION_MARINE, FACTION_SURVIVOR)
+	faction_group = FACTION_LIST_SURVIVOR_UA
 	idtype = /obj/item/card/id/marshal
 	skills = /datum/skills/cmb/co_survivor
 	access = list(

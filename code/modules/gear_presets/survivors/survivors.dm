@@ -63,7 +63,7 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 	idtype = /obj/item/card/id/silver/clearance_badge/scientist
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_MEDBAY)
 	paygrades = list(PAY_SHORT_CDOC = JOB_PLAYTIME_TIER_0)
-
+	role_comm_title = "Rsr"
 	survivor_variant = SCIENTIST_SURVIVOR
 
 /datum/equipment_preset/survivor/scientist/load_gear(mob/living/carbon/human/new_human)
@@ -91,7 +91,7 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 	idtype = /obj/item/card/id/silver/clearance_badge
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_MEDBAY, ACCESS_CIVILIAN_COMMAND)
 	paygrades = list(PAY_SHORT_CDOC = JOB_PLAYTIME_TIER_0)
-
+	role_comm_title = "Doc"
 	survivor_variant = MEDICAL_SURVIVOR
 
 /datum/equipment_preset/survivor/doctor/load_gear(mob/living/carbon/human/new_human)
@@ -126,6 +126,7 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 	skills = /datum/skills/civilian/survivor/chef
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC)
+	role_comm_title = "Chef"
 
 /datum/equipment_preset/survivor/chef/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/chef(new_human), WEAR_BODY)
@@ -147,6 +148,7 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 	skills = /datum/skills/civilian/survivor/chaplain
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC)
+	role_comm_title = "Chaplain"
 
 /datum/equipment_preset/survivor/chaplain/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/chaplain(new_human), WEAR_BODY)
@@ -167,6 +169,7 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 	skills = /datum/skills/civilian/survivor/miner
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_LOGISTICS)
+	role_comm_title = "Miner"
 
 /datum/equipment_preset/survivor/miner/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/blue(new_human), WEAR_BODY)
@@ -234,7 +237,7 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 	skills = /datum/skills/civilian/survivor/engineer
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_ENGINEERING,ACCESS_CIVILIAN_LOGISTICS)
-
+	role_comm_title = "Engi"
 	survivor_variant = ENGINEERING_SURVIVOR
 
 /datum/equipment_preset/survivor/engineer/load_gear(mob/living/carbon/human/new_human)
@@ -264,7 +267,7 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 	idtype = /obj/item/card/id/data
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_BRIG,ACCESS_CIVILIAN_COMMAND)
 	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
-
+	role_comm_title = "Sec"
 	survivor_variant = SECURITY_SURVIVOR
 
 /datum/equipment_preset/survivor/security/load_gear(mob/living/carbon/human/new_human)
@@ -472,6 +475,8 @@ Everything bellow is a parent used as a base for one or multiple maps.
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 	origin_override = ORIGIN_USCM
+	faction_group = FACTION_LIST_SURVIVOR_UA
+	role_comm_title = "USCM ???"
 
 /datum/equipment_preset/survivor/uscm/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine(new_human), WEAR_BODY)

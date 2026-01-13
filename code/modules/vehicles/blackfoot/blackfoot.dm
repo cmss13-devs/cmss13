@@ -105,16 +105,7 @@
 
 	var/obj/structure/interior_exit/vehicle/blackfoot/back/back_door
 
-	var/datum/tacmap/tacmap
 	var/minimap_type = MINIMAP_FLAG_USCM
-
-/datum/tacmap/drawing/blackfoot/ui_status(mob/user)
-	var/obj/vehicle/multitile/blackfoot/blackfoot_owner = owner
-
-	if(blackfoot_owner.seats[VEHICLE_DRIVER] != user)
-		return UI_CLOSE
-
-	return UI_INTERACTIVE
 
 /obj/blackfoot_shadow
 	icon = 'icons/obj/vehicles/blackfoot.dmi'
@@ -131,7 +122,7 @@
 
 /obj/vehicle/multitile/blackfoot/Initialize(mapload, ...)
 	. = ..()
-	tacmap = new /datum/tacmap/drawing/blackfoot(src, minimap_type)
+	AddComponent(/datum/component/tacmap, has_drawing_tools=FALSE, minimap_flag=minimap_type, has_update=FALSE)
 	update_icon()
 
 /obj/vehicle/multitile/blackfoot/Destroy()
@@ -276,8 +267,8 @@
 
 		passenger.unset_interaction()
 		passenger.client.change_view(GLOB.world_view_size, passenger)
-		passenger.client.pixel_x = 0
-		passenger.client.pixel_y = 0
+		passenger.client.set_pixel_x(0)
+		passenger.client.set_pixel_y(0)
 		passenger.reset_view()
 		passenger.forceMove(fall_turf)
 
@@ -291,7 +282,7 @@
 			break
 
 		below_turf = SSmapping.get_turf_below(below_turf)
-	
+
 	forceMove(below_turf)
 	cell_explosion(below_turf, 400, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("blackfoot crash"))
 	qdel(shadow_holder)
@@ -300,7 +291,7 @@
 /obj/vehicle/multitile/blackfoot/before_move(direction)
 	if(back_door.open)
 		update_rear_view()
-	
+
 	if(state != STATE_FLIGHT && state != STATE_VTOL)
 		return
 
@@ -314,7 +305,7 @@
 	while(SSmapping.get_turf_below(shadow_turf))
 		if(!fits_in_turf(SSmapping.get_turf_below(shadow_turf)))
 			break
-		
+
 		shadow_turf = SSmapping.get_turf_below(shadow_turf)
 
 	shadow_holder.dir = dir
@@ -329,7 +320,7 @@
 			/obj/vehicle/multitile/proc/switch_hardpoint,
 		))
 		return
-	
+
 	add_verb(M.client, list(
 		/obj/vehicle/multitile/proc/get_status_info,
 		/obj/vehicle/multitile/proc/toggle_door_lock,
@@ -411,7 +402,7 @@
 			/obj/vehicle/multitile/proc/switch_hardpoint,
 		))
 		return
-	
+
 	remove_verb(M.client, list(
 		/obj/vehicle/multitile/proc/get_status_info,
 		/obj/vehicle/multitile/proc/toggle_door_lock,
@@ -448,7 +439,7 @@
 /obj/vehicle/multitile/blackfoot/give_seated_mob_actions(mob/seated_mob)
 	if(seats[VEHICLE_DRIVER] != seated_mob)
 		return
-	
+
 	give_action(seated_mob, /datum/action/human_action/vehicle_unbuckle/blackfoot)
 
 /obj/vehicle/multitile/blackfoot/Collided(atom/movable/collided_atom)
@@ -608,7 +599,7 @@
 	var/turf/top_turf = SSmapping.get_turf_above(get_turf(src))
 	while(SSmapping.get_turf_above(top_turf))
 		top_turf = SSmapping.get_turf_above(top_turf)
-	
+
 	forceMove(top_turf)
 
 	var/turf/shadow_turf = SSmapping.get_turf_below(get_turf(src))
@@ -616,7 +607,7 @@
 	while(SSmapping.get_turf_below(shadow_turf))
 		if(!fits_in_turf(SSmapping.get_turf_below(shadow_turf)))
 			break
-		
+
 		shadow_turf = SSmapping.get_turf_below(shadow_turf)
 	shadow_holder = new(shadow_turf)
 	shadow_holder.icon_state = "[get_sprite_state()]_shadow"
@@ -667,7 +658,7 @@
 			break
 
 		below_turf = SSmapping.get_turf_below(below_turf)
-	
+
 	forceMove(below_turf)
 	qdel(shadow_holder)
 	flags_atom &= ~NO_ZFALL
@@ -1017,8 +1008,11 @@
 		return
 
 	. = ..()
-
-	vehicle.tacmap.tgui_interact(owner)
+	var/datum/component/tacmap/tacmap_component = vehicle.GetComponent(/datum/component/tacmap)
+	if(owner in tacmap_component.interactees)
+		tacmap_component.on_unset_interaction(owner)
+	else
+		tacmap_component.show_tacmap(owner)
 
 /datum/action/human_action/blackfoot/toggle_engines
 	name = "Toggle Engine Idling"

@@ -14,7 +14,7 @@ Everything below isn't used or out of place.
 	skills = /datum/skills/civilian/survivor/prisoner
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC)
-
+	minimap_icon = "prisoner"
 	survivor_variant = SECURITY_SURVIVOR
 
 /datum/equipment_preset/survivor/prisoner/load_gear(mob/living/carbon/human/new_human)
@@ -37,6 +37,7 @@ Everything below isn't used or out of place.
 	skills = /datum/skills/civilian/survivor/gangleader
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC)
+	minimap_icon = "gang"
 
 /datum/equipment_preset/survivor/gangleader/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
@@ -425,6 +426,7 @@ Everything below isn't used or out of place.
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/data
 	access = list(ACCESS_CIVILIAN_PUBLIC)
+	minimap_icon = "sales"
 
 /datum/equipment_preset/survivor/salesman/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/brown(new_human), WEAR_BODY)
@@ -447,6 +449,7 @@ Everything below isn't used or out of place.
 	skills = /datum/skills/civilian/survivor/pmc
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC)
+	minimap_icon = "roughie"
 
 /datum/equipment_preset/survivor/roughneck/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/workwear/blue(new_human), WEAR_BODY)
@@ -497,7 +500,7 @@ Everything below isn't used or out of place.
 	idtype = /obj/item/card/id/silver/cl
 	skills = /datum/skills/civilian/survivor/goon
 	faction = FACTION_WY
-	faction_group = FACTION_LIST_SURVIVOR_WY
+	faction_group = list(FACTION_WY, FACTION_SURVIVOR, FACTION_PMC)
 	origin_override = ORIGIN_WY_SEC
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_COMMAND, ACCESS_CIVILIAN_BRIG, ACCESS_WY_COLONIAL)

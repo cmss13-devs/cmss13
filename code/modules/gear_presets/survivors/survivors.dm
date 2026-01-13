@@ -12,7 +12,7 @@
 	origin_override = ORIGIN_CIVILIAN
 
 	access = list(ACCESS_CIVILIAN_PUBLIC)
-
+	role_comm_title = "Civ"
 	minimap_icon = "surv"
 	minimap_background = "background_civilian"
 	var/survivor_variant = CIVILIAN_SURVIVOR
@@ -64,6 +64,7 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_MEDBAY)
 	paygrades = list(PAY_SHORT_CDOC = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "Rsr"
+	minimap_icon = "chemist_wo"
 	survivor_variant = SCIENTIST_SURVIVOR
 
 /datum/equipment_preset/survivor/scientist/load_gear(mob/living/carbon/human/new_human)
@@ -92,6 +93,7 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_MEDBAY, ACCESS_CIVILIAN_COMMAND)
 	paygrades = list(PAY_SHORT_CDOC = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "Doc"
+	minimap_icon = "nurse"
 	survivor_variant = MEDICAL_SURVIVOR
 
 /datum/equipment_preset/survivor/doctor/load_gear(mob/living/carbon/human/new_human)
@@ -127,6 +129,7 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 	role_comm_title = "Chef"
+	minimap_icon = "mst"
 
 /datum/equipment_preset/survivor/chef/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/chef(new_human), WEAR_BODY)
@@ -149,6 +152,7 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 	role_comm_title = "Chaplain"
+	minimap_icon = "chaplain"
 
 /datum/equipment_preset/survivor/chaplain/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/chaplain(new_human), WEAR_BODY)
@@ -170,6 +174,7 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_LOGISTICS)
 	role_comm_title = "Miner"
+	minimap_icon = "miner"
 
 /datum/equipment_preset/survivor/miner/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/blue(new_human), WEAR_BODY)
@@ -239,6 +244,7 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_ENGINEERING,ACCESS_CIVILIAN_LOGISTICS)
 	role_comm_title = "Engi"
 	survivor_variant = ENGINEERING_SURVIVOR
+	minimap_icon = "mt"
 
 /datum/equipment_preset/survivor/engineer/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/brown(new_human), WEAR_BODY)
@@ -268,6 +274,7 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_BRIG,ACCESS_CIVILIAN_COMMAND)
 	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "Sec"
+	minimap_icon = "mp"
 	survivor_variant = SECURITY_SURVIVOR
 
 /datum/equipment_preset/survivor/security/load_gear(mob/living/carbon/human/new_human)
@@ -362,7 +369,8 @@ Everything bellow is a parent used as a base for one or multiple maps.
 	skills = /datum/skills/civilian/survivor/trucker
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_ENGINEERING,ACCESS_CIVILIAN_LOGISTICS)
-
+	role_comm_title = "Vehicle Op."
+	minimap_icon = "vc"
 	survivor_variant = ENGINEERING_SURVIVOR
 
 /datum/equipment_preset/survivor/trucker/load_gear(mob/living/carbon/human/new_human)
@@ -388,6 +396,8 @@ Everything bellow is a parent used as a base for one or multiple maps.
 	idtype = /obj/item/card/id/data
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_LOGISTICS,ACCESS_WY_FLIGHT)
+	minimap_icon = "pilot"
+	role_comm_title = "FCO"
 
 /datum/equipment_preset/survivor/flight_control_operator/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/workwear/khaki(new_human), WEAR_BODY)
@@ -412,6 +422,7 @@ Everything bellow is a parent used as a base for one or multiple maps.
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_COMMAND)
 	minimap_icon = "obs"
+	role_comm_title = "IHR Rep."
 	minimap_background = "background_cmb"
 
 /datum/equipment_preset/survivor/interstellar_human_rights_observer/load_gear(mob/living/carbon/human/new_human)

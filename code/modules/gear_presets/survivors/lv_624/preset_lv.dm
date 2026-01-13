@@ -28,6 +28,7 @@
 /datum/equipment_preset/survivor/trucker/lv
 	name = "Survivor - LV-624 Cargo Technician"
 	assignment = "LV-624 Cargo Technician"
+	minimap_icon = "ct"
 
 /datum/equipment_preset/survivor/trucker/lv/load_gear(mob/living/carbon/human/new_human)
 	var/obj/item/clothing/under/colonist/workwear/khaki/uniform = new()

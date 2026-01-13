@@ -44,6 +44,7 @@
 	paygrades = list(PAY_SHORT_UE1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_UE2 = JOB_PLAYTIME_TIER_1)
 	assignment = JOB_UPP
 	job_title = JOB_UPP
+	role_comm_title = "173/RECON RFN"
 	skills = /datum/skills/military/survivor/upp_private
 
 /datum/equipment_preset/survivor/upp/soldier/load_gear(mob/living/carbon/human/new_human)
@@ -70,7 +71,7 @@
 	paygrades = list(PAY_SHORT_UE3 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_UPP_ENGI
 	job_title = JOB_UPP_ENGI
-
+	role_comm_title = "173/RECON Engi"
 	minimap_icon = "upp_sapper"
 
 	skills = /datum/skills/military/survivor/upp_sapper
@@ -101,7 +102,7 @@
 	paygrades = list(PAY_SHORT_UE3 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_UPP_MEDIC
 	job_title = JOB_UPP_MEDIC
-
+	role_comm_title = "173/RECON Med"
 	minimap_icon = "upp_med"
 
 	skills = /datum/skills/military/survivor/upp_medic
@@ -134,6 +135,7 @@
 	assignment = JOB_UPP_SPECIALIST
 	job_title = JOB_UPP_SPECIALIST
 	minimap_icon = "upp_spec"
+	role_comm_title = "173/RECON Spec"
 	paygrades = list(PAY_SHORT_UE4 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/military/survivor/upp_spec
 

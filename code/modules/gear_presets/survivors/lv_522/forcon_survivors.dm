@@ -110,7 +110,7 @@
 	assignment = JOB_FORECON_RIFLEMAN
 	skills = /datum/skills/military/survivor/forecon_standard
 	minimap_icon = "private"
-
+	role_comm_title = "FORECON RFN"
 /datum/equipment_preset/survivor/forecon/standard/load_gear(mob/living/carbon/human/new_human)
 	..()
 	add_forecon_weapon_pistol(new_human)
@@ -125,6 +125,7 @@
 	assignment = JOB_FORECON_SUPPORT
 	skills = /datum/skills/military/survivor/forecon_techician
 	minimap_icon = "engi"
+	role_comm_title = "FORECON Engi"
 
 /datum/equipment_preset/survivor/forecon/tech/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel/big(new_human), WEAR_BACK)
@@ -148,6 +149,7 @@
 	assignment = JOB_FORECON_MARKSMAN
 	skills = /datum/skills/military/survivor/forecon_marksman
 	minimap_icon = "spec"
+	role_comm_title = "FORECON Marksman"
 
 /datum/equipment_preset/survivor/forecon/marksman/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m4ra_custom(new_human), WEAR_L_HAND)
@@ -165,6 +167,7 @@
 	assignment = JOB_FORECON_SMARTGUNNER
 	skills = /datum/skills/military/survivor/forecon_smartgunner
 	minimap_icon = "smartgunner"
+	role_comm_title = "FORECON SGunner"
 
 /datum/equipment_preset/survivor/forecon/smartgunner/load_gear(mob/living/carbon/human/new_human)
 	..()
@@ -184,6 +187,7 @@
 	assignment = JOB_FORECON_SNIPER
 	skills = /datum/skills/military/survivor/forecon_sniper
 	minimap_icon = "spec"
+	role_comm_title = "FORECON Sniper"
 
 /datum/equipment_preset/survivor/forecon/sniper/load_gear(mob/living/carbon/human/new_human)
 	var/obj/item/clothing/under/marine/reconnaissance/uniform = new()
@@ -220,6 +224,7 @@
 	skills = /datum/skills/military/survivor/forecon_squad_leader
 	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_0)
 	minimap_icon = "leader"
+	role_comm_title = "FORECON Leader"
 
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer)
@@ -347,6 +352,7 @@
 	faction_group = FACTION_LIST_SURVIVOR_UA
 	idtype = /obj/item/card/id/gold
 	origin_override = ORIGIN_USCM
+	role_comm_title = "FORECON Syn"
 
 /datum/equipment_preset/synth/survivor/forecon/load_gear(mob/living/carbon/human/preset_human) //Bishop from Aliens
 	preset_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/engi, WEAR_BODY)

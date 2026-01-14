@@ -95,8 +95,6 @@
 	var/battery = 600
 	var/max_battery = 600
 
-	var/previous_move_delay
-
 	var/list/atom/movable/screen/blackfoot/custom_hud = list(
 		new /atom/movable/screen/blackfoot/fuel(),
 		new /atom/movable/screen/blackfoot/integrity(),
@@ -295,6 +293,9 @@
 	if(state != STATE_FLIGHT && state != STATE_VTOL)
 		return
 
+	if(busy)
+		return
+
 	var/turf/below = SSmapping.get_turf_below(get_step(get_turf(src), direction))
 
 	if(!below)
@@ -454,7 +455,6 @@
 
 	qdel(collided_atom)
 	state = STATE_TUGGED
-	previous_move_delay = move_delay
 	move_delay = VEHICLE_SPEED_NORMAL
 	update_icon()
 
@@ -477,7 +477,13 @@
 		if(WEST)
 			disconnect_turf = locate(x - 2, y, z)
 
-	move_delay = previous_move_delay
+	var/obj/item/hardpoint/locomotion/engine = locate() in hardpoints
+
+	if(engine)
+		move_delay = engine.move_delay
+	else
+		move_delay = VEHICLE_SPEED_NORMAL
+
 	var/obj/structure/blackfoot_tug/tug = new(disconnect_turf)
 	tug.dir = dir
 

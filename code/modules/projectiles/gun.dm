@@ -778,7 +778,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 	if(world.time < pull_time) //Need to wait until it's pulled out to aim
 		if(addtimer(CALLBACK(src, PROC_REF(wield), user), pull_time - world.time, TIMER_UNIQUE))
-			if(!wield_delay <= WIELD_DELAY_VERY_FAST) // dont want the message to play when you can instantly wield it anyway
+			if(wield_delay > WIELD_DELAY_VERY_FAST) // dont want the message to play when you can instantly wield it anyway
 				to_chat(user, SPAN_NOTICE("You start readying yourself to wield \the [src]..."))
 			if(wield_delay >= WIELD_DELAY_SLOW) // for the more slower wielding weapons
 				user.balloon_alert(user, "wielding")

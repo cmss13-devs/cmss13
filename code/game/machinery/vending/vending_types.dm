@@ -711,6 +711,24 @@
 	. = ..()
 	AddElement(/datum/element/corp_label/wy)
 
+/obj/structure/machinery/vending/walkman/update_icon()
+
+	overlays.Cut()
+
+	var/matrix/A = matrix()
+	apply_transform(A)
+
+	if(stat & NOPOWER)
+		overlays += image(icon, "[icon_state]_off")
+	if(stat & BROKEN)
+		overlays += image(icon, "[initial(icon_state)]_broken")
+		if(stat & IN_REPAIR)
+			overlays += image(icon, "[icon_state]_panel")
+
+	if(stat & BROKEN) //finally, if it is tipped over, flip the sprite
+		A.Turn(90)
+		apply_transform(A)
+
 //vendor of ingredients for kitchen
 /obj/structure/machinery/vending/ingredients
 	name = "\improper Galley Auxiliary Storage Requisition System"

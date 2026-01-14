@@ -133,10 +133,11 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 		overlays += image(icon, "[initial(icon_state)]-panel")
 	if(stat & BROKEN)
 		icon_state = "[initial(icon_state)]-broken"
-	else if(stat & NOPOWER)
+		return
+	if(stat & NOPOWER)
 		icon_state = "[initial(icon_state)]-off"
-	else
-		icon_state = initial(icon_state)
+		return
+	icon_state = initial(icon_state)
 
 /obj/structure/machinery/vending/ex_act(severity)
 	switch(severity)
@@ -190,8 +191,9 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 
 	var/possessive = include_name ? "[src]'s" : "Its"
 	var/nominative = include_name ? "[src]" : "It"
-
-	if(stat & BROKEN)
+	if(is_tipped_over)
+		return "[nominative] needs to be uprighted."
+	else if(stat & BROKEN)
 		return "[possessive] broken panel still needs to be <b>unscrewed</b> and removed."
 	else if(stat & REPAIR_STEP_ONE)
 		return "[possessive] broken wires still need to be <b>cut</b> and removed from the vendor."
@@ -949,6 +951,19 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 	stat |= BROKEN
 	update_icon()
 
+/obj/structure/machinery/vending/proc/tip_over()
+	var/matrix/A = matrix()
+	is_tipped_over = TRUE
+	density = FALSE
+	A.Turn(90)
+	apply_transform(A)
+	malfunction()
+
+/obj/structure/machinery/vending/proc/flip_back()
+	is_tipped_over = FALSE
+	density = TRUE
+	var/matrix/A = matrix()
+	apply_transform(A)
 
 //Somebody cut an important wire and now we're following a new definition of "pitch."
 /obj/structure/machinery/vending/proc/throw_item()

@@ -43,7 +43,7 @@
 	role_comm_title = "CMO"
 	skills = /datum/skills/CMO
 
-	minimap_icon = "cmo"
+	minimap_icon = "doctor"
 	minimap_background = "background_command"
 	utility_under = list(/obj/item/clothing/under/rank/cmo)
 	utility_hat = list()

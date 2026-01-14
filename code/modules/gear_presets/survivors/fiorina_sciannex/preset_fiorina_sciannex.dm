@@ -68,7 +68,8 @@
 	idtype = /obj/item/card/id/silver
 	job_title = JOB_CMB_RIOT
 	role_comm_title = "UA RO"
-	faction = FACTION_LIST_SURVIVOR_UA
+	faction = FACTION_SURVIVOR
+	faction_group = FACTION_LIST_SURVIVOR_UA
 	minimap_icon = "rmp"
 	minimap_background = "background_ua"
 

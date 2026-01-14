@@ -13,7 +13,7 @@
 /datum/equipment_preset/pmc/commando/standard
 	name = "Weyland-Yutani Commando (Standard) (!DEATHSQUAD!)"
 	flags = EQUIPMENT_PRESET_EXTRA
-	role_comm_title = "WY-C"
+	role_comm_title = "COM"
 	assignment = JOB_WY_COMMANDO_STANDARD
 	job_title = JOB_WY_COMMANDO_STANDARD
 	minimap_icon = "pmc_gun"
@@ -117,7 +117,7 @@
 	assignment = JOB_WY_COMMANDO_GUNNER
 	job_title = JOB_WY_COMMANDO_GUNNER
 	minimap_icon = "pmc_sg"
-	role_comm_title = "WY-C Gun"
+	role_comm_title = "COM Gun"
 	skills = /datum/skills/pmc/commando/gunner
 	paygrades = list(PAY_SHORT_WY_GUN = JOB_PLAYTIME_TIER_0)
 
@@ -212,7 +212,7 @@
 	minimap_icon = "pmc_ld"
 	skills = /datum/skills/pmc/commando/leader
 	paygrades = list(PAY_SHORT_WY_COMLD = JOB_PLAYTIME_TIER_0)
-	role_comm_title = "WY-C GunLead"
+	role_comm_title = "COM GunLead"
 /datum/equipment_preset/pmc/commando/leader/load_name(mob/living/carbon/human/new_human, randomise) //reference to Theo Stern from A:DD
 	new_human.gender = MALE
 
@@ -325,7 +325,7 @@
 	assignment = JOB_WY_COMMANDO_DOGCATCHER
 	job_title = JOB_WY_COMMANDO_DOGCATCHER
 	paygrades = list(PAY_SHORT_WY_DOG = JOB_PLAYTIME_TIER_0)
-	role_comm_title = "WY DOG"
+	role_comm_title = "COM DOG"
 	minimap_icon = "dogcatcher"
 	skills = /datum/skills/pmc/commando/dogcatcher
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE, LANGUAGE_XENOMORPH)

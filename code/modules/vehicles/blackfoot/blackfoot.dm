@@ -1291,7 +1291,7 @@
 
 /obj/structure/largecrate/supply/blackfoot_peripherals
 	name = "\improper blackfoot peripherals crate"
-	desc = "A supply crate containig the peripheral service units for the VTOL landing pad."
+	desc = "A supply crate containing the peripheral service units for the VTOL landing pad."
 	supplies = list(
 		/obj/item/fuel_pump = 1,
 		/obj/item/flight_cpu = 1,

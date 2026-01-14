@@ -1,9 +1,15 @@
 /datum/equipment_preset/survivor/security/nv
 	name = "Survivor - New Varadero Security Guard"
+	faction = FACTION_MARSHAL
 	assignment = "United Americas Peacekeeper"
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
+	origin_override = ORIGIN_CMB
+	idtype = /obj/item/card/id/deputy
 	minimap_background = "background_ua"
 	minimap_icon = "peacekeeper"
-	faction = FACTION_LIST_SURVIVOR_UA
+	faction_group = FACTION_LIST_SURVIVOR_UA
+	role_comm_title = "PKPR"
+	skills = /datum/skills/civilian/survivor/marshal
 
 /datum/equipment_preset/survivor/security/nv/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/ua_riot(new_human), WEAR_BODY)
@@ -13,6 +19,8 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/ua_riot(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CMB/limited(new_human), WEAR_L_EAR)
+
 	..()
 
 /datum/equipment_preset/survivor/doctor/nv
@@ -52,6 +60,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight, WEAR_J_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/clipboard, WEAR_L_HAND)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses, WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CMB/limited(new_human), WEAR_L_EAR)
 	..()
 
 /datum/equipment_preset/survivor/trucker/nv

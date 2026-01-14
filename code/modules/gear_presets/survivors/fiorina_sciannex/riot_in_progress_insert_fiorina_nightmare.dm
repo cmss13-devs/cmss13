@@ -18,7 +18,7 @@
 /datum/equipment_preset/survivor/cmb/riot
 	name = "Survivor - CMB Riot Control Officer"
 	paygrades = list(PAY_SHORT_CMBR = JOB_PLAYTIME_TIER_0)
-	role_comm_title = "CMB RCO"
+	role_comm_title = "RCO"
 	flags = EQUIPMENT_PRESET_EXTRA
 	faction = FACTION_MARSHAL
 	faction_group = FACTION_LIST_SURVIVOR_UA
@@ -92,7 +92,7 @@
 /datum/equipment_preset/synth/survivor/cmb/riotsynth
 	name = "Survivor - Synthetic - CMB Riot Control Synthetic"
 	paygrades = list(PAY_SHORT_CMBRS = JOB_PLAYTIME_TIER_0)
-	role_comm_title = "CMB Syn"
+	role_comm_title = "RC Syn"
 	faction = FACTION_MARSHAL
 	faction_group = FACTION_LIST_SURVIVOR_UA
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -243,7 +243,7 @@
 /datum/equipment_preset/synth/survivor/cmb/ua_synth
 	name = "Survivor - Synthetic - UA Police Synthetic (Riot Response)"
 	paygrades = list(PAY_SHORT_CMBS = JOB_PLAYTIME_TIER_0)
-	role_comm_title = "UA Syn"
+	role_comm_title = "UA RR Syn"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "UA Police Synthetic"
 	languages = ALL_SYNTH_LANGUAGES

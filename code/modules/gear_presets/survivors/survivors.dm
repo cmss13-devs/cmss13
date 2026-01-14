@@ -417,7 +417,7 @@ Everything bellow is a parent used as a base for one or multiple maps.
 // Used in Sorokyne Strata and Fiorina Science Annex.
 /datum/equipment_preset/survivor/interstellar_human_rights_observer
 	name = "Survivor - Interstellar Human Rights Observer"
-	assignment = "Interstellar Human Rights Observer(Colony)"
+	assignment = "Interstellar Human Rights Observer (Colony)"
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_COMMAND)
@@ -444,14 +444,14 @@ Everything bellow is a parent used as a base for one or multiple maps.
 /datum/equipment_preset/survivor/interstellar_commerce_commission_liaison
 	name = "Survivor - Interstellar Commerce Commission Liaison"
 	assignment = "Interstellar Commerce Commission Corporate Liaison"
-	skills = /datum/skills/civilian/survivor
+	skills = /datum/skills/civilian/icc_investigation
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	paygrades = list(PAY_SHORT_ICCL = JOB_PLAYTIME_TIER_0)
 	faction_group = FACTION_LIST_SURVIVOR_WY
 	idtype = /obj/item/card/id/silver/cl
 	role_comm_title = "ICC Rep."
 	minimap_icon = "icc"
-	minimap_background = "background_cmb"
+	minimap_background = "background_wy"
 
 	survivor_variant = CORPORATE_SURVIVOR
 

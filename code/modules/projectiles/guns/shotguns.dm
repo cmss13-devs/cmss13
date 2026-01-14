@@ -78,7 +78,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		playsound(user, reload_sound, 25, TRUE)
 		if(flags_gun_features & GUN_AMMO_COUNTER)
 			var/chambered = in_chamber ? TRUE : FALSE
-			to_chat(user, SPAN_DANGER("[current_mag.current_rounds][chambered ? "+1" : ""] / [current_mag.max_rounds] ROUNDS REMAINING"))
+			to_chat(user, SPAN_DANGER("[current_mag.current_rounds][chambered ? "+1" : ""] / [current_mag.max_rounds] ROUNDS REMAINING."))
 	return TRUE
 
 /obj/item/weapon/gun/shotgun/proc/empty_chamber(mob/user, silent = FALSE, only_chamber = FALSE)
@@ -102,7 +102,7 @@ can cause issues with ammo types getting mixed up during the burst.
 			if(flags_gun_features & GUN_AMMO_COUNTER && user)
 				var/chambered = in_chamber ? TRUE : FALSE //useless, but for consistency
 				if(!silent)
-					to_chat(user, SPAN_DANGER("[current_mag.current_rounds][chambered ? "+1" : ""] / [current_mag.max_rounds] ROUNDS REMAINING"))
+					to_chat(user, SPAN_DANGER("[current_mag.current_rounds][chambered ? "+1" : ""] / [current_mag.max_rounds] ROUNDS REMAINING."))
 		else
 			if(user && !silent)
 				to_chat(user, SPAN_WARNING("[src] is already empty."))
@@ -289,6 +289,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/magnetic_harness,
@@ -355,6 +356,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/magnetic_harness,
@@ -485,6 +487,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/bayonet/upp,
 		/obj/item/attachable/verticalgrip, // Underbarrel
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/flashlight/grip,
 		/obj/item/attachable/attached_gun/extinguisher,
 		/obj/item/attachable/burstfire_assembly,
@@ -580,6 +583,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/verticalgrip, //Underbarrel
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/stock/type23, //Stock
 	)
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_INTERNAL_MAG
@@ -911,6 +915,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/scope/mini,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/verticalgrip,
 		/obj/item/attachable/angledgrip,
 		/obj/item/attachable/flashlight/grip,
@@ -1249,6 +1254,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		/obj/item/attachable/flashlight/grip,
 		/obj/item/attachable/gyro,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/compensator,
@@ -1375,6 +1381,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		/obj/item/attachable/flashlight/grip,
 		/obj/item/attachable/gyro,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/compensator,
@@ -1510,6 +1517,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/gyro,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/attached_gun/extinguisher,

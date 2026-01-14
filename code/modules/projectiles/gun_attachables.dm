@@ -176,11 +176,14 @@ Defined in conflicts.dm of the #defines folder.
 	if(!istype(detaching_gun))
 		return //Guns only
 
+	if(!user && ishuman(detaching_gun.loc))
+		user = detaching_gun.loc //Specifically for when called by Attach which doesn't pass a user.
+
 	if(user)
 		detaching_gun.on_detach(user, src)
 
 	if(flags_attach_features & ATTACH_ACTIVATION)
-		activate_attachment(detaching_gun, null, TRUE)
+		activate_attachment(detaching_gun, user, TRUE)
 
 	detaching_gun.attachments[slot] = null
 	detaching_gun.recalculate_attachment_bonuses()
@@ -867,14 +870,14 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/flashlight
 	name = "rail flashlight"
-	desc = "A flashlight, for rails, on guns. Can be toggled on and off. A better light source than standard M3 pattern armor lights."
+	desc = "A flashlight, for rails, on guns. Can be toggled on and off. A better light source than standard M3 pattern armor lights. This one is set to be mounted to the rail, press unique-action to switch its mount."
 	icon = 'icons/obj/items/weapons/guns/attachments/rail.dmi'
 	icon_state = "flashlight"
 	item_icons = list(
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/misc.dmi',
 	)
 	attach_icon = "flashlight_a"
-	light_mod = 5
+	light_mod = 6
 	slot = "rail"
 	matter = list("metal" = 50,"glass" = 20)
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION
@@ -889,6 +892,12 @@ Defined in conflicts.dm of the #defines folder.
 
 	var/datum/action/item_action/activation
 	var/obj/item/attached_item
+
+/obj/item/attachable/flashlight/unique_action(mob/user)
+	to_chat(user, SPAN_NOTICE("You reconfigure [src] for an underbarrel mount."))
+	playsound(user, 'sound/machines/click.ogg', 25, 1)
+	user.put_in_hands(new /obj/item/attachable/flashlight/under_barrel(user))
+	qdel(src)
 
 /obj/item/attachable/flashlight/on_enter_storage(obj/item/storage/internal/S)
 	..()
@@ -1012,12 +1021,25 @@ Defined in conflicts.dm of the #defines folder.
 	else
 		. = ..()
 
+/obj/item/attachable/flashlight/under_barrel
+	desc = "A flashlight, for rails, on guns. Can be toggled on and off. A better light source than standard M3 pattern armor lights. This one is set to be mounted to the underbarrel, press unique-action to switch its mount."
+	slot = "under"
+	pixel_shift_x = 15
+	pixel_shift_y = 18
+
+/obj/item/attachable/flashlight/under_barrel/unique_action(mob/user)
+	to_chat(user, SPAN_NOTICE("You reconfigure [src] for a rail mount."))
+	playsound(user, 'sound/machines/click.ogg', 25, 1)
+	user.put_in_hands(new /obj/item/attachable/flashlight(user))
+	qdel(src)
+
 /obj/item/attachable/flashlight/grip //Grip Light is here because it is a child object. Having it further down might cause a future coder a headache.
 	name = "underbarrel flashlight grip"
 	desc = "Holy smokes RO man, they put a grip on a flashlight! \nReduces recoil and scatter by a tiny amount. Boosts accuracy by a tiny amount. Works as a light source."
 	icon = 'icons/obj/items/weapons/guns/attachments/under.dmi'
 	icon_state = "flashgrip"
 	attach_icon = "flashgrip_a"
+	light_mod = 5
 	slot = "under"
 	attachment_action_type = /datum/action/item_action/toggle/flashlight_grip
 	original_state = "flashgrip"
@@ -1040,6 +1062,7 @@ Defined in conflicts.dm of the #defines folder.
 	icon = 'icons/obj/items/weapons/guns/attachments/under.dmi'
 	icon_state = "vplaserlight"
 	attach_icon = "vplaserlight_a"
+	light_mod = 5
 	slot = "under"
 	attachment_action_type = /datum/action/item_action/toggle/flashlight_grip
 	original_state = "vplaserlight"
@@ -1296,14 +1319,14 @@ Defined in conflicts.dm of the #defines folder.
 		zoom_offset = 11
 		zoom_viewsize = 12
 		allows_movement = 0
-		to_chat(usr, SPAN_NOTICE("Zoom level switched to 4x"))
+		to_chat(usr, SPAN_NOTICE("Zoom level switched to 4x."))
 		return
 	else
 		zoom_level = ZOOM_LEVEL_2X
 		zoom_offset = 6
 		zoom_viewsize = 7
 		allows_movement = 1
-		to_chat(usr, SPAN_NOTICE("Zoom level switched to 2x"))
+		to_chat(usr, SPAN_NOTICE("Zoom level switched to 2x."))
 		return
 
 /datum/action/item_action/toggle_zoom_level
@@ -3155,7 +3178,7 @@ Defined in conflicts.dm of the #defines folder.
 	if(!istype(G) && G != null)
 		G = user.get_active_hand()
 	if(!G)
-		to_chat(user, SPAN_WARNING("You need to hold \the [src] to do that"))
+		to_chat(user, SPAN_WARNING("You need to hold \the [src] to do that."))
 		return
 
 	pump(user)
@@ -3925,6 +3948,7 @@ Defined in conflicts.dm of the #defines folder.
 	RegisterSignal(gun, COMSIG_ITEM_DROPPED, PROC_REF(handle_drop))
 
 /obj/item/attachable/bipod/Detach(mob/user, obj/item/weapon/gun/detaching_gun)
+	..()
 	UnregisterSignal(detaching_gun, COMSIG_ITEM_DROPPED)
 
 	//clear out anything related to full auto switching
@@ -3938,7 +3962,6 @@ Defined in conflicts.dm of the #defines folder.
 
 	if(bipod_deployed)
 		undeploy_bipod(detaching_gun, user)
-	..()
 
 /obj/item/attachable/bipod/update_icon()
 	if(bipod_deployed)
@@ -3974,7 +3997,7 @@ Defined in conflicts.dm of the #defines folder.
 	scatter_mod = SCATTER_AMOUNT_TIER_9
 	recoil_mod = RECOIL_AMOUNT_TIER_5
 	burst_scatter_mod = 0
-	delay_mod = FIRE_DELAY_TIER_12
+	delay_mod = FIRE_DELAY_TIER_11
 	//if we are no longer on full auto, don't bother switching back to the old firemode
 	if(full_auto_switch && gun.gun_firemode == GUN_FIREMODE_AUTOMATIC && gun.gun_firemode != old_firemode)
 		gun.do_toggle_firemode(user, null, old_firemode)

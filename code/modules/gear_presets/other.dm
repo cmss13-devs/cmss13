@@ -90,7 +90,10 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/shotgun, WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive/C4, WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
-	spawn_weapon(/obj/item/weapon/gun/shotgun/type23, pick(GLOB.shotgun_handfuls_8g), new_human, 0, 14) //shotgunner mini-spec
+	spawn_weapon(/obj/item/weapon/gun/shotgun/type23, pick(/obj/item/ammo_magazine/handful/shotgun/heavy/slug,
+	/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
+	/obj/item/ammo_magazine/handful/shotgun/heavy/flechette,
+	/obj/item/ammo_magazine/handful/shotgun/heavy/dragonsbreath), new_human, 0, 14) //shotgunner mini-spec
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/stick, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/stick, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/stick, WEAR_IN_BACK)
@@ -241,12 +244,6 @@
 
 	load_freelancer_soldier(new_human)
 
-	var/percentage = rand(1, 100)
-	switch(percentage)
-		if(1 to 66)
-			load_freelancer_rifleman(new_human)
-		else
-			load_freelancer_machinegunner(new_human)
 
 /datum/equipment_preset/other/freelancer/leader/hunted
 	name = "Freelancer Leader (Hunted)"
@@ -678,16 +675,17 @@
 	var/datum/preferences/A = new
 	A.randomize_appearance(new_human)
 
-	var/random_name
+	var/first_name
+	var/last_name = capitalize(pick(GLOB.last_names_gladiator))
 	switch(new_human.gender)
 		if(FEMALE)
-			random_name = capitalize(pick(GLOB.first_names_female_gladiator))
+			first_name = capitalize(pick(GLOB.first_names_female_gladiator))
 		if(PLURAL, NEUTER) // Not currently possible
-			random_name = capitalize(pick(MALE, FEMALE) == MALE ? pick(GLOB.first_names_male_gladiator) : pick(GLOB.first_names_female_gladiator))
+			first_name = capitalize(pick(MALE, FEMALE) == MALE ? pick(GLOB.first_names_male_gladiator) : pick(GLOB.first_names_female_gladiator))
 		else // MALE
-			random_name = capitalize(pick(GLOB.first_names_male_gladiator))
+			first_name = capitalize(pick(GLOB.first_names_male_gladiator))
 
-	new_human.change_real_name(new_human, random_name)
+	new_human.change_real_name(new_human, "[first_name] [last_name]")
 	new_human.age = rand(21,45)
 
 /datum/equipment_preset/other/gladiator/load_gear(mob/living/carbon/human/new_human)
@@ -1026,3 +1024,149 @@
 	new_human.change_real_name(new_human, mob_name)
 	var/datum/preferences/preferences = new
 	preferences.randomize_appearance(new_human)
+
+///Hunting Grounds Historical Prey///
+
+/datum/equipment_preset/other/hunted
+	name = "Hunted Warrior"
+	faction = FACTION_HUNTED_MISC
+	faction_group = FACTION_LIST_HUNTED
+	flags = EQUIPMENT_PRESET_EXTRA
+
+/datum/equipment_preset/other/hunted/roman
+	name = "Roman Legionary (Hunted)"
+	languages = list(LANGUAGE_FORGOTTEN)
+	idtype = null
+	skills = /datum/skills/gladiator/legionary
+	assignment = "Legionary"
+	job_title = "Legionnaire"
+
+/datum/equipment_preset/other/hunted/roman/load_name(mob/living/carbon/human/new_human, randomise)
+	new_human.gender = pick(MALE, FEMALE)
+
+	var/datum/preferences/A = new
+	A.randomize_appearance(new_human)
+
+	var/first_name
+	var/last_name = capitalize(pick(GLOB.last_names_gladiator))
+	switch(new_human.gender)
+		if(FEMALE)
+			first_name = capitalize(pick(GLOB.first_names_female_gladiator))
+		if(PLURAL, NEUTER) // Not currently possible
+			first_name = capitalize(pick(MALE, FEMALE) == MALE ? pick(GLOB.first_names_male_gladiator) : pick(GLOB.first_names_female_gladiator))
+		else // MALE
+			first_name = capitalize(pick(GLOB.first_names_male_gladiator))
+
+	new_human.change_real_name(new_human, "[first_name] [last_name]")
+	new_human.age = rand(21,45)
+
+/datum/equipment_preset/other/hunted/roman/load_languages(mob/living/carbon/human/new_human, client/mob_client)
+	new_human.set_languages(list(LANGUAGE_FORGOTTEN))
+
+/datum/equipment_preset/other/hunted/roman/load_traits(mob/living/carbon/human/new_human, client/mob_client)
+	return
+
+/datum/equipment_preset/other/hunted/roman/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/roman, WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/tunic, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/roman, WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/footwrap_sandals, WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/shield/riot/roman, WEAR_R_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/sword/gladius, WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/hunted, WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight/lantern/on, WEAR_R_STORE)
+	new_human.set_species("Human Hero")
+	new_human.universal_understand = FALSE
+	new_human.status_flags &= ~NO_PERMANENT_DAMAGE
+	new_human.status_flags |= STATUS_FLAGS_DEBILITATE
+
+/datum/equipment_preset/other/hunted/roman/centurion
+	name = "Roman Centurion (Hunted)"
+	assignment = "Centurion"
+	job_title = "Legionnaire"
+
+/datum/equipment_preset/other/hunted/roman/centurion/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/roman/centurion, WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/tunic, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/roman/centurion, WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/footwrap_sandals, WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/shield/riot/roman, WEAR_R_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/javelin, WEAR_L_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/sword/gladius, WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/hunted, WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight/lantern/on, WEAR_R_STORE)
+	new_human.set_species("Human Hero")
+	new_human.universal_understand = FALSE
+	new_human.status_flags &= ~NO_PERMANENT_DAMAGE
+	new_human.status_flags |= STATUS_FLAGS_DEBILITATE
+
+/datum/equipment_preset/other/hunted/roman/eaglebearer
+	name = "Roman Aquilifer (Hunted)"
+	assignment = "Aquilifer"
+	job_title = "Legionnaire"
+	skills = /datum/skills/gladiator/legionary/eaglebearer
+
+/datum/equipment_preset/other/hunted/roman/eaglebearer/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/roman/eaglebearer, WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/tunic, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/roman/centurion, WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/footwrap_sandals, WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/aquilastaff, WEAR_R_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/hunted, WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight/lantern/on, WEAR_R_STORE)
+	new_human.set_species("Human Hero")
+	new_human.universal_understand = FALSE
+	new_human.status_flags &= ~NO_PERMANENT_DAMAGE
+	new_human.status_flags |= STATUS_FLAGS_DEBILITATE
+
+/datum/equipment_preset/other/hunted/vietnam
+	name = "Vietnam US Army Rifleman (Hunted)"
+	idtype = /obj/item/card/id/dogtag
+	skills = /datum/skills/dutchmerc
+	assignment = JOB_SQUAD_MARINE
+	job_title = JOB_SQUAD_MARINE
+	paygrades = list(PAY_SHORT_ME1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME2 = JOB_PLAYTIME_TIER_1, PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_3)
+	role_comm_title = "RFN"
+
+/datum/equipment_preset/other/hunted/vietnam/load_name(mob/living/carbon/human/new_human, randomise)
+	new_human.gender = pick(MALE, FEMALE)
+
+	var/datum/preferences/A = new()
+	A.randomize_appearance(new_human)
+
+	var/first_name
+	var/last_name = capitalize(pick(GLOB.last_names_colonist))
+	switch(new_human.gender)
+		if(FEMALE)
+			first_name = capitalize(pick(GLOB.first_names_female_colonist))
+		if(PLURAL, NEUTER) // Not currently possible
+			first_name = capitalize(pick(MALE, FEMALE) == MALE ? pick(GLOB.first_names_male_colonist) : pick(GLOB.first_names_female_colonist))
+		else // MALE
+			first_name = capitalize(pick(GLOB.first_names_male_colonist))
+			new_human.f_style = "5 O'clock Shadow"
+
+	new_human.change_real_name(new_human, "[first_name] [last_name]")
+	new_human.age = rand(20,45)
+	new_human.r_hair = 25
+	new_human.g_hair = 25
+	new_human.b_hair = 35
+
+/datum/equipment_preset/other/hunted/vietnam/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/dutch/vietnam(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/fancy/cigarettes/lucky_strikes(new_human), WEAR_IN_HELMET)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/lighter/zippo(new_human), WEAR_IN_HELMET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/dutch/vietnam(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/dutch(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/holster(new_human), WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/m1911(new_human), WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/m1911(new_human), WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/m1911(new_human), WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/jungle/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m16(new_human), WEAR_J_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m16/ap(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m16/ap(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/marine/dutch/m16/ap(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/m16/ap(new_human), WEAR_L_STORE)

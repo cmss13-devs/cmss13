@@ -129,7 +129,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 
 /obj/structure/machinery/vending/update_icon()
 	overlays.Cut()
-	if(panel_open)
+	if(panel_open || stat & REPAIR_STEP_ONE)
 		overlays += image(icon, "[initial(icon_state)]-panel")
 	if(stat & BROKEN)
 		icon_state = "[initial(icon_state)]-broken"
@@ -226,8 +226,8 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 				to_chat(user, SPAN_WARNING("You stop unscrewing [src]'s broken panel."))
 				return FALSE
 			to_chat(user, SPAN_NOTICE("You unscrew [src]'s broken panel and remove it, exposing many broken wires."))
-			stat &= ~BROKEN
 			stat |= REPAIR_STEP_ONE
+			update_icon()
 			return TRUE
 		else if(stat & REPAIR_STEP_FOUR)
 			to_chat(user, SPAN_NOTICE("You start to fasten [src]'s new panel."))
@@ -235,7 +235,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 				to_chat(user, SPAN_WARNING("You stop fastening [src]'s new panel."))
 				return FALSE
 			to_chat(user, SPAN_NOTICE("You fasten [src]'s new panel, fully repairing the vendor."))
-			stat &= ~REPAIR_STEP_FOUR
+			stat &= ~(REPAIR_STEP_FOUR|BROKEN)
 			stat |= FULLY_REPAIRED
 			update_icon()
 			return TRUE

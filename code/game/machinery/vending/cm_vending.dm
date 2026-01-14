@@ -83,9 +83,9 @@ IN_USE used for vending/denying
 
 	if(stat & NOPOWER || stat & TIPPED_OVER) //tipping off without breaking uses "_off" sprite
 		overlays += image(icon, "[icon_state]_off")
-	if(stat & MAINT) //if we require maintenance, then it is completely "_broken"
+	if(stat & BROKEN) //if we require maintenance, then it is completely "_broken"
 		overlays += image(icon, "[initial(icon_state)]_broken")
-		if(stat & IN_REPAIR) //if someone started repairs, they unscrewed "_panel"
+		if(!(stat & MAINT)) //if someone started repairs, they unscrewed "_panel"
 			overlays += image(icon, "[icon_state]_panel")
 
 	if(stat & TIPPED_OVER) //finally, if it is tipped over, flip the sprite

@@ -772,12 +772,17 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	if(!(flags_item & TWOHANDED) || flags_item & WIELDED)
 		return
 
-	if(world.time < pull_time) //Need to wait until it's pulled out to aim
+	// dont want a wield when its not on the user, obviously
+	if(loc != user)
 		return
 
-	var/obj/item/I = user.get_inactive_hand()
-	if(I)
-		if(!user.drop_inv_item_on_ground(I))
+	if(world.time < pull_time) //Need to wait until it's pulled out to aim
+		addtimer(CALLBACK(src, PROC_REF(wield), user), pull_time - world.time, TIMER_UNIQUE)
+		return TRUE
+
+	var/obj/item/item = user.get_inactive_hand()
+	if(item)
+		if(!user.drop_inv_item_on_ground(item))
 			return
 
 	if(ishuman(user))
@@ -812,7 +817,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	if(user.client)
 		RegisterSignal(user.client, COMSIG_CLIENT_RESET_VIEW, PROC_REF(handle_view))
 
-	return 1
+	return TRUE
 
 /obj/item/weapon/gun/unwield(mob/user)
 	. = ..()

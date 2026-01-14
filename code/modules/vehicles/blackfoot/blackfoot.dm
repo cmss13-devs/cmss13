@@ -22,6 +22,7 @@
 	bound_x = -32
 	bound_y = 0
 
+	minimap_icon_state = "arc"
 	interior_map = /datum/map_template/interior/blackfoot_transport
 
 	move_max_momentum = 2.2
@@ -629,6 +630,8 @@
 		return
 
 	var/turf/below_turf = SSmapping.get_turf_below(get_turf(src))
+	while(SSmapping.get_turf_below(below_turf) && istransparentturf(SSmapping.get_turf_below(below_turf)))
+		below_turf = SSmapping.get_turf_below(below_turf)
 
 	if(!fits_in_turf(below_turf))
 		to_chat(seats[VEHICLE_DRIVER], SPAN_WARNING("You can't land here, the area is roofed or blocked by something."))

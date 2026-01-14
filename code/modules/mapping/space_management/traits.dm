@@ -51,6 +51,7 @@
 
 // Attempt to get the turf below the provided one according to Z traits
 /datum/controller/subsystem/mapping/proc/get_turf_below(turf/T)
+	RETURN_TYPE(/turf)
 	if (!T)
 		return
 	var/offset = level_trait(T.z, ZTRAIT_DOWN)

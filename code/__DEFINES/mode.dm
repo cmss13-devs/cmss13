@@ -245,7 +245,7 @@ DEFINE_BITFIELD(whitelist_status, list(
 // Faction names
 #define FACTION_NEUTRAL "Neutral"
 #define FACTION_MARINE "USCM"
-#define FACTION_UNISC = "UNISC" // https://cm-ss13.com/wiki/UNISC
+#define FACTION_UNISC "UNISC" // https://cm-ss13.com/wiki/UNISC
 #define FACTION_SURVIVOR "Survivor"
 #define FACTION_UPP "UPP"
 #define FACTION_TWE "TWE"

@@ -310,7 +310,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_dropship_crew_chief, list(
 		return combined
 	if(user.job == JOB_DROPSHIP_CREW_CHIEF)
 		return GLOB.cm_vending_clothing_dropship_crew_chief
-	if(user.job == JOB_CAS_PILOT)
+	if(user.job == JOB_CAS_PILOT || user.job == JOB_OPERATIONS_PILOT)
 		return GLOB.cm_vending_clothing_pilot_officer
 	if(user.job == JOB_DROPSHIP_PILOT)
 		return GLOB.cm_vending_clothing_pilot_officer

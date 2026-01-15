@@ -111,9 +111,9 @@
 	var/size_bonus
 	switch(hit_object.w_class)
 		if(SIZE_TINY)
-			size_bonus = 1.3
+			size_bonus = 1.1
 		if(SIZE_SMALL)
-			size_bonus = 1.2
+			size_bonus = 1.3
 		if(SIZE_MEDIUM)
 			size_bonus = 0.9
 		else

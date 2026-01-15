@@ -43,6 +43,14 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	check_fall(entered_movable)
 
 /turf/open_space/additional_enter_checks(atom/movable/mover)
+	var/turf/projected_turf = get_projected_turf()
+	if(projected_turf.density)
+		return FALSE
+
+	for(var/atom/possible_blocker in projected_turf.contents)
+		if(possible_blocker.density)
+			return FALSE
+
 	if(mover.move_intentionally && istype(mover,/mob/living))
 		var/mob/living/climber = mover
 		if(climber.a_intent == INTENT_HARM)
@@ -122,6 +130,7 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	return
 
 /turf/open_space/blackfoot/get_projected_turf()
+	RETURN_TYPE(/turf)
 	return locate(target_x, target_y, target_z)
 
 /turf/open_space/blackfoot/update_vis_contents()

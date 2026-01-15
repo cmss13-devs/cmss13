@@ -203,7 +203,7 @@
 
 /datum/ammo/xeno/acid/spatter/venator_corrosive_spit/on_hit_turf(turf/T, obj/projectile/P)
 	. = ..()
-	new/obj/effect/xenomorph/spray/no_stun/venator(T.loc)
+	new/obj/effect/xenomorph/spray/no_stun/venator(T)
 
 /datum/ammo/xeno/acid/spatter/venator_enzymatic_breath
 	name = "Enzymatic breath"

@@ -453,7 +453,9 @@
 	return flags
 
 /area/proc/reg_in_areas_in_z()
-	SSmapping.areas_in_z["[z]"] += SSmapping.areas_in_z["[z]"] ? src : list(src)
+	if(!SSmapping.areas_in_z["[z]"])
+		SSmapping.areas_in_z["[z]"] = list()
+	SSmapping.areas_in_z["[z]"] += src
 
 /**
  * Purges existing weeds, and prevents future weeds from being placed.

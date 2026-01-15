@@ -1010,6 +1010,7 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				JOB_RESEARCHER = 41,
 				JOB_DOCTOR = 42,
 				JOB_SURGEON = 42,
+				JOB_PHARMACIST = 42,
 				JOB_FIELD_DOCTOR = 43,
 				JOB_SYNTH_MED = 44,
 				JOB_NURSE = 45,

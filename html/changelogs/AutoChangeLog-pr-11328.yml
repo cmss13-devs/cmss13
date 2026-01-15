@@ -1,5 +1,0 @@
-author: "Nihisohel"
-delete-after: True
-changes:
-  - rscadd: "Adds an underbarrel flashlight mount, switch to it via unique-action on the rail light"
-  - balance: "Rail lights and by extension, the underbarrel rail light, has their light modifier buffed by a single point"

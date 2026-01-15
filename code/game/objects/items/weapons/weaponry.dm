@@ -127,7 +127,7 @@
 	var/speed = clamp((hit_object.throw_speed * random_speed) * size_bonus, SPEED_SLOW, SPEED_REALLY_FAST)
 	var/launch = pick(HIGH_LAUNCH, NORMAL_LAUNCH)
 
-	if(prob(70))
+	if(prob(60 * size_bonus))
 		launch_data.relaunched = TRUE
 		hit_object.throw_in_random_direction_from_arc(range, speed, user, TRUE, launch, directional = user.dir)
 		user.visible_message(SPAN_NOTICE("[user] hits the [hit_object] and [hit_message_list[ceil(range/2)]] [launch == HIGH_LAUNCH ? "in a high arc" : "in a flat arc"] with [src]!"), \

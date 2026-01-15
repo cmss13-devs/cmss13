@@ -253,7 +253,7 @@
 	throw_atom(furthest_turf, range, speed, thrower, spin, launch_type, pass_flags)
 
 /atom/movable/proc/throw_in_random_direction_from_arc(range, speed = 0, atom/thrower, spin, launch_type = NORMAL_LAUNCH, pass_flags = NO_FLAGS, directional = NORTH)
-	var/directions = get_directions_in_arc(directional)
+	var/directions = get_directions_in_arc(directional) - directional
 	var/selected_turf = get_turf(src)
 
 	var/list/key_points = list()
@@ -263,8 +263,6 @@
 		key_points += get_ranged_target_turf(selected_turf, direction, range)
 	for(var/i in 1 to length(key_points)-1)
 		turfs_to_pick += get_line(key_points[i], key_points[i+1])
-		if((i % 2) && (i <= length(key_points)-2))
-			turfs_to_pick += get_line(key_points[i], key_points[i+2])
 
 	selected_turf = pick(turfs_to_pick)
 

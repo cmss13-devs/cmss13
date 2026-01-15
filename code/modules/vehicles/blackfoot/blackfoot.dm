@@ -263,7 +263,7 @@
 		crash()
 
 /obj/vehicle/multitile/blackfoot/proc/crash()
-	for(var/mob/living/passenger in interior.get_passengers())
+	for(var/mob/living/carbon/human/passenger in interior.get_passengers())
 		var/turf/fall_turf = locate(x + rand(-5, 5), y + rand(-5, 5), z)
 
 		if(passenger.buckled)
@@ -275,6 +275,9 @@
 		passenger.client.set_pixel_y(0)
 		passenger.reset_view()
 		passenger.forceMove(fall_turf)
+
+		if(istype(fall_turf, /turf/closed)) // Perma kill them if they crash into a wall
+			passenger.apply_damage(200, BRUTE, "head", used_weapon = "crashed head first into a wall.", no_limb_loss = TRUE, permanent_kill = TRUE)
 
 	playsound(loc, 'sound/effects/metal_crash.ogg', 50, FALSE)
 	state = STATE_DESTROYED

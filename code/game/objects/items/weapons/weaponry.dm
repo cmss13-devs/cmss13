@@ -130,6 +130,7 @@
 
 	if(prob(hit_chance))
 		launch_data.relaunched = TRUE
+		do_item_attack_animation(hit_object, null, src)
 		hit_object.throw_in_random_direction_from_arc(range, speed, user, TRUE, launch, directional = user.dir)
 		user.visible_message(SPAN_NOTICE("[user] hits the [hit_object] and [hit_message_list[ceil(range/2)]] [launch == HIGH_LAUNCH ? "in a high arc" : "in a flat arc"] with [src]!"), \
 		SPAN_NOTICE("You hits the [hit_object] and [hit_message_list[ceil(range/2)]] [launch == HIGH_LAUNCH ? "in a high arc" : "in a flat arc"] with [src]!"))

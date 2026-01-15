@@ -111,11 +111,11 @@
 	var/size_bonus
 	switch(hit_object.w_class)
 		if(SIZE_TINY)
-			size_bonus = 1.2
+			size_bonus = 1.3
 		if(SIZE_SMALL)
-			size_bonus = 1.1
+			size_bonus = 1.2
 		if(SIZE_MEDIUM)
-			size_bonus = 0.8
+			size_bonus = 0.9
 		else
 			playsound(src, hitsound, 40, sound_range = 7)
 			user.visible_message(SPAN_NOTICE("[user] slams the bat into [hit_object] stopping it."), SPAN_NOTICE("You slam the bat into [hit_object] stopping it, but not much more."))
@@ -126,8 +126,9 @@
 	var/range = clamp((floor(rand(3, 7)* random_speed) * size_bonus), 1, 10)
 	var/speed = clamp((hit_object.throw_speed * random_speed) * size_bonus, SPEED_SLOW, SPEED_REALLY_FAST)
 	var/launch = pick(HIGH_LAUNCH, NORMAL_LAUNCH)
+	var/hit_chance = 60 * size_bonus
 
-	if(prob(60 * size_bonus))
+	if(prob(hit_chance))
 		launch_data.relaunched = TRUE
 		hit_object.throw_in_random_direction_from_arc(range, speed, user, TRUE, launch, directional = user.dir)
 		user.visible_message(SPAN_NOTICE("[user] hits the [hit_object] and [hit_message_list[ceil(range/2)]] [launch == HIGH_LAUNCH ? "in a high arc" : "in a flat arc"] with [src]!"), \

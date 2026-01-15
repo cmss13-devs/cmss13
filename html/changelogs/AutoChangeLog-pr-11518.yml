@@ -1,0 +1,4 @@
+author: "MistChristmas"
+delete-after: True
+changes:
+  - bugfix: "Nettles and Death nettles can be picked up when you have gloves on"

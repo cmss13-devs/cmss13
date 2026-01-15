@@ -1,3 +1,5 @@
+#define CLOAK_FILTER "pred_cloak"
+
 /obj/item/clothing/gloves/yautja
 	name = "ancient alien bracers"
 	desc = "A pair of strange, alien bracers."
@@ -743,69 +745,70 @@
 	if(.)
 		return
 
-	var/mob/living/carbon/human/M = user
+	var/mob/living/carbon/human/user_mob = user
 	var/new_alpha = cloak_alpha
 
-	if(!istype(M) || M.is_mob_incapacitated())
+	if(!istype(user_mob) || user_mob.is_mob_incapacitated())
 		return FALSE
 
 	if(HAS_TRAIT(user, TRAIT_CLOAKED)) //Turn it off.
 		if(cloak_timer > world.time)
-			to_chat(M, SPAN_WARNING("Your cloaking device is busy! Time left: <B>[max(floor((cloak_timer - world.time) / 10), 1)]</b> seconds."))
+			to_chat(user_mob, SPAN_WARNING("Your cloaking device is busy! Time left: <B>[max(floor((cloak_timer - world.time) / 10), 1)]</b> seconds."))
 			return FALSE
-		decloak(user)
+		decloak(user_mob)
 	else //Turn it on!
 		if(exploding)
-			to_chat(M, SPAN_WARNING("Your bracer is much too busy violently exploding to activate the cloaking device."))
+			to_chat(user_mob, SPAN_WARNING("Your bracer is much too busy violently exploding to activate the cloaking device."))
 			return FALSE
 
 		if(cloak_malfunction > world.time)
-			to_chat(M, SPAN_WARNING("Your cloak is malfunctioning and can't be enabled right now!"))
+			to_chat(user_mob, SPAN_WARNING("Your cloak is malfunctioning and can't be enabled right now!"))
 			return FALSE
 
 		if(cloak_timer > world.time)
-			to_chat(M, SPAN_WARNING("Your cloaking device is still recharging! Time left: <B>[max(floor((cloak_timer - world.time) / 10), 1)]</b> seconds."))
+			to_chat(user_mob, SPAN_WARNING("Your cloaking device is still recharging! Time left: <B>[max(floor((cloak_timer - world.time) / 10), 1)]</b> seconds."))
 			return FALSE
 
-		if(!drain_power(M, 50))
+		if(!drain_power(user_mob, 50))
 			return FALSE
 
-		ADD_TRAIT(M, TRAIT_CLOAKED, TRAIT_SOURCE_EQUIPMENT(WEAR_HANDS))
+		ADD_TRAIT(user_mob, TRAIT_CLOAKED, TRAIT_SOURCE_EQUIPMENT(WEAR_HANDS))
 
-		RegisterSignal(M, COMSIG_HUMAN_EXTINGUISH, PROC_REF(wrapper_fizzle_camouflage))
-		RegisterSignal(M, COMSIG_HUMAN_PRE_BULLET_ACT, PROC_REF(bullet_hit))
-		RegisterSignal(M, COMSIG_MOB_EFFECT_CLOAK_CANCEL, PROC_REF(decloak))
+		RegisterSignal(user_mob, COMSIG_HUMAN_EXTINGUISH, PROC_REF(wrapper_fizzle_camouflage))
+		RegisterSignal(user_mob, COMSIG_HUMAN_PRE_BULLET_ACT, PROC_REF(bullet_hit))
+		RegisterSignal(user_mob, COMSIG_MOB_EFFECT_CLOAK_CANCEL, PROC_REF(decloak))
 
 		cloak_timer = world.time + 1.5 SECONDS
 		if(true_cloak)
-			M.invisibility = INVISIBILITY_LEVEL_ONE
-			M.see_invisible = SEE_INVISIBLE_LEVEL_ONE
+			user_mob.invisibility = INVISIBILITY_LEVEL_ONE
+			user_mob.see_invisible = SEE_INVISIBLE_LEVEL_ONE
 
-		log_game("[key_name_admin(user)] has enabled their cloaking device.")
+		log_game("[key_name_admin(user_mob)] has enabled their cloaking device.")
 		if(!silent)
-			M.visible_message(SPAN_WARNING("[M] vanishes into thin air!"), SPAN_NOTICE("You are now invisible to normal detection."))
+			user_mob.visible_message(SPAN_WARNING("[user_mob] vanishes into thin air!"), SPAN_NOTICE("You are now invisible to normal detection."))
 			var/sound_to_use
 			if(invisibility_sound == PRED_TECH_MODERN)
 				sound_to_use = 'sound/effects/pred_cloakon_modern.ogg'
 			else
 				sound_to_use = 'sound/effects/pred_cloakon.ogg'
-			playsound(M.loc, sound_to_use, 15, 1, 4)
+			playsound(user_mob.loc, sound_to_use, 15, 1, 4)
 
 		if(!instant)
-			animate(M, alpha = new_alpha, time = 1.5 SECONDS, easing = SINE_EASING|EASE_OUT)
+			animate(user_mob, alpha = new_alpha, time = 1.5 SECONDS, easing = SINE_EASING|EASE_OUT)
 		else
-			M.alpha = new_alpha
+			user_mob.alpha = new_alpha
 
-		M.plane = DISPLACEMENT_PLATE_RENDER_LAYER
+		user_mob.plane = DISPLACEMENT_PLATE_RENDER_LAYER
+		user_mob.create_clone_movable(0, 0, TRUE)
 		var/datum/mob_hud/security/advanced/SA = GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
-		SA.remove_from_hud(M)
+		SA.remove_from_hud(user_mob)
 		var/datum/mob_hud/xeno_infection/XI = GLOB.huds[MOB_HUD_XENO_INFECTION]
-		XI.remove_from_hud(M)
+		XI.remove_from_hud(user_mob)
 		if(!instant)
-			anim(M.loc,M,'icons/mob/mob.dmi',,"cloak",,M.dir)
+			anim(user_mob.loc,user_mob,'icons/mob/mob.dmi',,"cloak",,user_mob.dir)
 
 	var/datum/action/predator_action/bracer/cloak/cloak_action
-	for(cloak_action as anything in M.actions)
+	for(cloak_action as anything in user_mob.actions)
 		if(istypestrict(cloak_action, /datum/action/predator_action/bracer/cloak))
 			cloak_action.update_button_icon(HAS_TRAIT(user, TRAIT_CLOAKED))
 			break
@@ -849,6 +852,7 @@
 	playsound(user.loc, sound_to_use, 15, 1, 4)
 	user.alpha = initial(user.alpha)
 	user.plane = initial(user.plane)
+	user.destroy_clone()
 	if(true_cloak)
 		user.invisibility = initial(user.invisibility)
 		user.see_invisible = initial(user.see_invisible)
@@ -1486,3 +1490,5 @@
 			to_chat(wearer, SPAN_WARNING("With an angry blare, the bracer releases your forearm."))
 	playsound(src, 'sound/items/air_release.ogg', 15, 1)
 	return TRUE
+
+#undef CLOAK_FILTER

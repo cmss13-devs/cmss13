@@ -702,6 +702,48 @@ em {
   font-family: 'Courier New', cursive, sans-serif;
 }
 
+.corp_label_red {
+  color: hsl(12, 67%, 46%);
+  text-shadow: 0 0 8px #c5371e;
+  font-weight: bold;
+}
+
+.corp_label_white {
+  color: hsl(0, 0%, 83%);
+  text-shadow: 0 0 8px #cfcfcf;
+  font-weight: bold;
+}
+
+.corp_label_blue {
+  color: hsl(209, 100%, 60%);
+  text-shadow: 0 0 8px #40a3ff;
+  font-weight: bold;
+}
+
+.corp_label_yellow {
+  color: hsl(66, 100%, 48%);
+  text-shadow: 0 0 8px #e4fd00;
+  font-weight: bold;
+}
+
+.corp_label_gold {
+  color: hsl(54, 100%, 48%);
+  text-shadow: 0 0 8px #fdec00;
+  font-weight: bold;
+}
+
+.corp_label_green {
+  color: hsl(92, 29%, 60%);
+  text-shadow: 0 0 8px #93af8d;
+  font-weight: bold;
+}
+
+.corp_label_bluegreen {
+  color: hsl(157, 37%, 50%);
+  text-shadow: 0 0 8px #52b38a;
+  font-weight: bold;
+}
+
 .command_headset {
   font-weight: bold;
   font-size: 160%;
@@ -1587,4 +1629,9 @@ em {
   height: 1.5em;
   margin: 0;
   padding: 0;
+
+  &.corplogo {
+    width: 165px !important;
+    height: 60px !important;
+  }
 }

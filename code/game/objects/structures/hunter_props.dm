@@ -345,3 +345,39 @@
 	new_item.pixel_x = (CELLSIZE * (cell_x + 0.5)) - center["x"]
 	new_item.pixel_y = (CELLSIZE * (cell_y + 0.5)) - center["y"]
 	new_item.pixel_z = 0
+
+/obj/structure/prop/hunter/hellhound //for summoning hellhounds
+	name = "\improper Sleeping Hellhound"
+	desc = "A sleeping Hellhound. Maybe you could wake it up..."
+	icon = 'icons/mob/humans/onmob/hunter/hellhound.dmi'
+	icon_state = "Normal Hellhound Sleeping"
+	density = FALSE
+
+/obj/structure/prop/hunter/hellhound/get_examine_text(mob/user)
+	. = ..()
+	if (!isyautja(user) && !isHellhound(user))
+		. = list()
+		.+= SPAN_NOTICE("What the hell is that thing??")
+
+/obj/structure/prop/hunter/hellhound/attack_hand(mob/user)
+	. = ..()
+	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
+		to_chat(user, SPAN_WARNING("You're not going anywhere near that thing!"))
+		return
+
+	var/summon_hellhound = tgui_alert(user, "Do you want to wake the Hellhound?", "Summon Hellhound", list("Yes", "No"))
+
+	if(!(summon_hellhound == "Yes"))
+		to_chat(user, SPAN_NOTICE("You decide to leave it alone."))
+		return
+	to_chat(user, SPAN_NOTICE("The Hellhound begins to stir..."))
+	msg_admin_attack("[key_name(user)] summoned a Hellhound ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
+	summon_hellhound(user)
+
+/obj/structure/prop/hunter/hellhound/proc/summon_hellhound(mob/user)
+	var/mob/living/carbon/xenomorph/hellhound/new_hellhound = new(loc, null, XENO_HIVE_YAUTJA)
+	var/datum/behavior_delegate/hellhound_base/hound_owner = new_hellhound.behavior_delegate
+	hound_owner.pred_owner = user
+	notify_ghosts(header = "Hellhound", message = "A hellhound has been called in [get_area(user)] by [user.real_name] click play as hellhound to play as one.", extra_large = TRUE)
+	qdel(src)
+	return

@@ -9,7 +9,7 @@
 
 	SEND_SIGNAL(attacking_mob, COMSIG_LIVING_ATTACKHAND_HUMAN, src)
 
-	if((attacking_mob != src) && check_shields(0, attacking_mob.name))
+	if((attacking_mob != src) && check_shields(attacking_mob.name, get_dir(src, attacking_mob), custom_response = TRUE))
 		visible_message(SPAN_DANGER("<B>[attacking_mob] attempted to touch [src]!</B>"), null, null, 5)
 		return FALSE
 
@@ -65,7 +65,7 @@
 					else
 						attacking_mob.visible_message(SPAN_NOTICE("<b>[attacking_mob]</b> fails to perform CPR on <b>[src]</b>."),
 							SPAN_HELPFUL("You <b>fail</b> to perform <b>CPR</b> on <b>[src]</b>. Incorrect rhythm. Do it <b>slower</b>."))
-						balloon_alert(attacking_mob, "incorrect rhythm. do it slower")
+						balloon_alert(attacking_mob, "incorrect rhythm, do it slower")
 					cpr_cooldown = world.time + 7 SECONDS
 			cpr_attempt_timer = 0
 			return 1
@@ -198,10 +198,14 @@
 
 	//Target is not us
 	var/t_him = "it"
-	if (gender == MALE)
-		t_him = "him"
-	else if (gender == FEMALE)
-		t_him = "her"
+	switch(gender)
+		if(MALE)
+			t_him = "him"
+		if(FEMALE)
+			t_him = "her"
+		if(PLURAL)
+			t_him = "them"
+
 	if (w_uniform)
 		w_uniform.add_fingerprint(M)
 
@@ -306,6 +310,11 @@
 			postscript += " <b>(NANOSPLINTED)</b>"
 		else if(org.status & LIMB_SPLINTED)
 			postscript += " <b>(SPLINTED)</b>"
+		if(org.status & LIMB_THIRD_DEGREE_BURNS)
+			postscript += "<b>(SEVERE BURN)</b>"
+		if(org.status & LIMB_ESCHAR)
+			postscript += " <b>(ESCHAR)</b>"
+
 
 		if(postscript)
 			limb_message += "\t My [org.display_name] is [SPAN_WARNING("[english_list(status, final_comma_text = ",")].[postscript]")]"

@@ -27,7 +27,6 @@
 		name = "M56 snow combat harness"
 	else
 		name = "M56 combat harness"
-	//select_gamemode_skin(type)
 
 /obj/item/clothing/suit/storage/marine/smartgunner/mob_can_equip(mob/equipping_mob, slot, disable_warning = FALSE)
 	. = ..()
@@ -62,3 +61,20 @@
 	. = ..()
 
 	UnregisterSignal(user, COMSIG_HUMAN_ATTEMPTING_EQUIP)
+
+/obj/item/clothing/suit/storage/marine/smartgunner/reinforced
+	name = "\improper M56 reinforced combat harness"
+	desc = "A heavy protective vest designed to be worn with the M56 Smartgun System, this one also has a bulky reinforced plate attached to it, hurting agility but providing more armor. \nIt has specially designed straps and reinforcement to carry the Smartgun and accessories."
+	icon_state = "sg"
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+	slowdown = SLOWDOWN_ARMOR_MEDIUM
+
+/obj/item/clothing/suit/storage/marine/smartgunner/reinforced/Initialize()
+	. = ..()
+	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD] && name == "M56 reinforced combat harness")
+		name = "M56 reinforced snow combat harness"
+	else
+		name = "M56 reinforced combat harness"

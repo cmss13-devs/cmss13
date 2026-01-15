@@ -19,7 +19,7 @@ jobs:
         private-key: ${{ secrets.APP_PRIVATE_KEY }}
 
     - name: Clone
-      uses: actions/checkout@v3
+      uses: actions/checkout@v5
       with:
         token: ${{ steps.app-token-generation.outputs.token }}
 

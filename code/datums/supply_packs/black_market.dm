@@ -1303,7 +1303,6 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 				/obj/item/explosive/grenade/phosphorus/clf,
 				/obj/item/explosive/grenade/smokebomb,
 				/obj/item/explosive/grenade/smokebomb/airburst,
-				/obj/item/explosive/grenade/custom/antiweed
 			)
 			for(var/i in 1 to 4)
 				var/picked_type = pick(nades_to_pick)
@@ -1380,7 +1379,7 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 			var/obj/item/mortar_shell/frag/fragshell = new(loc)
 			var/obj/item/explosive/grenade/incendiary/molotov/molotov = new(loc)
 			molotov.prime()
-			fragshell.balloon_alert_to_viewers("the mortar shell makes an awful hissing noise!")
+			fragshell.balloon_alert_to_viewers("the shell starts hissing!")
 			addtimer(CALLBACK(fragshell, TYPE_PROC_REF(/obj/item/mortar_shell/frag, detonate), loc), 5 SECONDS)
 			QDEL_IN(fragshell, 5.5 SECONDS)
 			loot_message = SPAN_HIGHDANGER("RUN!!!")

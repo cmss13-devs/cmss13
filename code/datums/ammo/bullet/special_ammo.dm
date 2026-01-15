@@ -128,6 +128,16 @@
 	damage_falloff = DAMAGE_FALLOFF_TIER_7
 	effective_range_max = 7
 
+/datum/ammo/bullet/smartgun/heap
+	name = "high-explosive armor-piercing smartgun bullet"
+	icon_state = "bullet"
+
+	headshot_state = HEADSHOT_OVERLAY_HEAVY
+	damage = 50//big damage, doesn't actually blow up because thats stupid.
+	penetration = ARMOR_PENETRATION_TIER_8
+
+
+
 /datum/ammo/bullet/smartgun/m56_fpw
 	name = "\improper M56 FPW bullet"
 	icon_state = "redbullet"
@@ -153,6 +163,7 @@
 	pen_armor_punch = 0
 	shell_speed = 2*AMMO_SPEED_TIER_6
 	accuracy = HIT_ACCURACY_TIER_5
+	damage_enviro = TRUE
 
 /datum/ammo/bullet/turret/dumb
 	icon_state = "bullet"

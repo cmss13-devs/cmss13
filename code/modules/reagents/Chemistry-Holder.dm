@@ -282,7 +282,7 @@
 					total_matching_reagents++
 					multipliers += floor(get_reagent_amount(required_reagent) / reaction.required_reagents[required_reagent])
 				for(var/catalyst in reaction.required_catalysts)
-					if(catalyst == "silver" && istype(my_atom, /obj/item/reagent_container/glass/beaker/silver))
+					if(catalyst == "silver" && istype(my_atom, /obj/item/reagent_container/glass/beaker/catalyst/silver))
 						total_matching_catalysts++
 						continue
 					if(!has_reagent(catalyst, reaction.required_catalysts[catalyst]))
@@ -307,7 +307,7 @@
 					var/created_volume = reaction.result_amount*multiplier
 
 					if(reaction.result)
-						multiplier = max(multiplier, 1) //this shouldnt happen ...
+						multiplier = max(multiplier, 1) //this shouldn't happen ...
 						set_data(reaction.result, preserved_data)
 					if(CHECK_BITFIELD(reaction.reaction_type, CHEM_REACTION_CALM) && !CHECK_BITFIELD(reaction.reaction_type, CHEM_REACTION_ENDOTHERMIC)) //mix the chemicals
 						if(endothermic_reaction_occuring)
@@ -751,7 +751,7 @@
 				shards += floor(reagent.volume)
 			else if(reagent.id == "phoron" && reagent.volume >= EXPLOSION_PHORON_THRESHOLD)
 				shard_type = /datum/ammo/bullet/shrapnel/incendiary
-			else if(reagent.id == "sulphuric acid" && reagent.volume >= EXPLOSION_ACID_THRESHOLD)
+			else if(reagent.id == "pacid" && reagent.volume >= EXPLOSION_ACID_THRESHOLD)
 				shard_type = /datum/ammo/bullet/shrapnel/hornet_rounds
 			else if(reagent.id == "neurotoxinplasma" && reagent.volume >= EXPLOSION_NEURO_THRESHOLD)
 				shard_type = /datum/ammo/bullet/shrapnel/neuro

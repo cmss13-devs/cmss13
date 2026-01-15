@@ -135,7 +135,7 @@
 		return
 
 	else if(istype(W, /obj/item/weapon/zombie_claws))
-		open()
+		open(user)
 
 /obj/structure/closet/bodybag/store_mobs(stored_units) // overriding this
 	var/list/dead_mobs = list()
@@ -172,14 +172,14 @@
 	. = ..()
 
 
-/obj/structure/closet/bodybag/close()
+/obj/structure/closet/bodybag/close(mob/user)
 	if(..())
 		density = FALSE
 		update_name()
 		return 1
 	return 0
 
-/obj/structure/closet/bodybag/open()
+/obj/structure/closet/bodybag/open(mob/user, force)
 	. = ..()
 	update_name()
 
@@ -286,7 +286,7 @@
 
 		overlays |= holo_card_icon
 
-/obj/structure/closet/bodybag/cryobag/open()
+/obj/structure/closet/bodybag/cryobag/open(mob/user, force)
 	. = ..()
 	if(stasis_mob)
 		stasis_mob.in_stasis = FALSE

@@ -1,6 +1,7 @@
 GLOBAL_DATUM_INIT(supply_controller_upp, /datum/controller/supply/upp, new())
 /obj/structure/machinery/computer/supply/asrs/upp
 	name = "UPP Supply ordering console"
+	req_access = list(ACCESS_UPP_ENGINEERING)
 	faction = FACTION_UPP
 	circuit = /obj/item/circuitboard/computer/ordercomp/upp
 
@@ -10,7 +11,7 @@ GLOBAL_DATUM_INIT(supply_controller_upp, /datum/controller/supply/upp, new())
 
 /obj/structure/machinery/computer/supply/upp
 	name = "UPP supply console"
-	desc = "A console for the General Supply Storage"
+	desc = "A console for the General Supply Storage."
 	circuit = /obj/item/circuitboard/computer/supplycomp/upp
 	faction = FACTION_UPP
 

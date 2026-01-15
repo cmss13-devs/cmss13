@@ -77,7 +77,7 @@ GLOBAL_VAR_INIT(ship_alt, SHIP_ALT_MED)
 /obj/structure/machinery/computer/altitude_control_console/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "AltitudeControlConsole", "[src.name]")
+		ui = new(user, src, "AltitudeControlConsole", "[capitalize(name)]")
 		ui.open()
 
 /obj/structure/machinery/computer/altitude_control_console/ui_state(mob/user)

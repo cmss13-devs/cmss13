@@ -1,6 +1,0 @@
-author: "BasilHerb"
-delete-after: True
-changes:
-  - rscadd: "Xenomorphs now start drooling acid when they have relevant abilities selected, which currently includes: All forms of xeno spitting, including sentinel neurospit, all forms of xeno acid spray, boiler bombard, scatterspit, thanks to Spypig for un-shittifying my code!"
-  - imageadd: "Added drooling overlays for the relevant castes, courtesy of Blundir!"
-  - bugfix: "Fixed an oversight with abilities not deselecting upon ghosting, courtesy of Drathek!"

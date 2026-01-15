@@ -13,8 +13,17 @@
 /// CDOC, Doctor
 #define PAY_SHORT_CDOC "CDOC"
 
-/// CCMO, Professor
-#define PAY_SHORT_CCMO "CCMO"
+/// CCMOA, Assistant Professor
+#define PAY_SHORT_CCMOA "CCMOA"
+
+/// CCMOB, Associate Professor
+#define PAY_SHORT_CCMOB "CCMOB"
+
+/// CCMOC, Professor
+#define PAY_SHORT_CCMOC "CCMOC"
+
+/// CCMOD, Regents Professor
+#define PAY_SHORT_CCMOD "CCMOD"
 
 /// CREP, Representative
 #define PAY_SHORT_CREP "CREP"

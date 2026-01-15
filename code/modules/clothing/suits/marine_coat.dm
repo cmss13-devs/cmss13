@@ -10,6 +10,7 @@
 	blood_overlay_type = "coat"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
+	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_LOW
@@ -109,6 +110,7 @@
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
+	flags_bodypart_hidden = BODY_FLAG_CHEST
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
 	armor_laser = CLOTHING_ARMOR_LOW
@@ -271,13 +273,13 @@
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/officer/patchless
 	name = "commanding officer's jacket"
-	desc = "A patchless version of the officer jacket, its presence is still domineering"
+	desc = "A patchless version of the officer jacket, its presence is still domineering."
 	icon_state = "co_plain"
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/officer/commander
 
 	name = "commanding officer's jacket"
-	desc = "The thought of looking even at the rank pins scare you with a court martial"
+	desc = "The thought of looking even at the rank pins scare you with a court martial."
 	icon_state = "co_falcon"
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/officer/falcon
@@ -440,6 +442,7 @@
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/vests_aprons.dmi'
 	)
+	flags_bodypart_hidden = BODY_FLAG_CHEST
 	flags_atom = NO_GAMEMODE_SKIN
 	has_buttons = FALSE
 

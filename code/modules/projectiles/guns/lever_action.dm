@@ -294,7 +294,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 
 /obj/item/weapon/gun/lever_action/r4t
 	name = "R4T lever-action rifle"
-	desc = "This lever-action was designed for small scout operations in harsh environments such as the jungle or particularly windy deserts, as such its internal mechanisms are simple yet robust."
+	desc = "This lever-action was designed for exotic hunting and small scout operations in harsh environments such as the jungle or particularly windy deserts, as such its internal mechanisms are simple yet robust."
 	icon_state = "r4t"
 	item_state = "r4t"
 	flags_equip_slot = SLOT_BACK
@@ -321,6 +321,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/scope/mini,
 		/obj/item/attachable/gyro, // Under
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/magnetic_harness/lever_sling,
 		/obj/item/attachable/stock/r4t, // Stock
@@ -329,6 +330,10 @@ their unique feature is that a direct hit will buff your damage and firerate
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG|GUN_AMMO_COUNTER
 	flags_gun_lever_action = MOVES_WHEN_LEVERING|DANGEROUS_TO_ONEHAND_LEVER
 	civilian_usable_override = TRUE
+
+/obj/item/weapon/gun/lever_action/r4t/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/henjin_garcia)
 
 /obj/item/weapon/gun/lever_action/r4t/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 19, "rail_x" = 11, "rail_y" = 21, "under_x" = 24, "under_y" = 16, "stock_x" = 15, "stock_y" = 14)
@@ -344,7 +349,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 /obj/item/weapon/gun/lever_action/xm88
 	name = "\improper XM88 heavy rifle"
 	desc = "An experimental man-portable anti-material rifle chambered in .458 SOCOM. It must be manually chambered for every shot.\nIt has a special property - when you obtain multiple direct hits in a row, its armor penetration and damage will increase."
-	desc_lore = "Originally developed by ARMAT Battlefield Systems for the government of the state of Greater Brazil for use in the Favela Wars (2161 - Ongoing) against mechanized infantry. The platform features an onboard computerized targeting system, sensor array, and an electronic autoloader; these features work in tandem to reduce and render inert armor on the users target with successive hits. The Almayer was issued a small amount of XM88s while preparing for Operation Swamp Hopper with the USS Nan-Shan."
+	desc_lore = "Originally developed by Armat Battlefield Systems for the government of the state of Greater Brazil for use in the Favela Wars (2161 - Ongoing) against mechanized infantry. The platform features an onboard computerized targeting system, sensor array, and an electronic autoloader; these features work in tandem to reduce and render inert armor on the users target with successive hits. The Almayer was issued a small amount of XM88s while preparing for Operation Swamp Hopper with the USS Nan-Shan."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/marksman_rifles.dmi' // overridden with camos anyways
 	icon_state = "boomslang"
 	item_state = "boomslang"
@@ -379,9 +384,14 @@ their unique feature is that a direct hit will buff your damage and firerate
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/scope/mini/xm88,
 		/obj/item/attachable/gyro, // Under
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/stock/xm88, // Stock
 		)
+
+/obj/item/weapon/gun/lever_action/xm88/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/armat)
 
 /obj/item/weapon/gun/lever_action/xm88/set_gun_config_values()
 	..()

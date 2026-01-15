@@ -799,6 +799,7 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 #define RAIDER_OFFICER_SQUAD "SOF [JOB_MARINE_RAIDER_CMD]"
 #define RAIDER_SL_SQUAD "SOF [JOB_MARINE_RAIDER_SL]"
 #define RAIDER_SQUAD "SOF [JOB_MARINE_RAIDER]"
+#define RAIDER_SG_SQUAD "SOF [JOB_MARINE_RAIDER_SG]"
 
 /datum/crewmonitor
 	/// List of user -> UI source
@@ -982,6 +983,7 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				RAIDER_OFFICER_SQUAD = 11,
 				JOB_SO = 12,
 				JOB_SEA = 13,
+				JOB_SYNTH_CMD = 14,
 				// 20-29: Aux Command
 				JOB_AUXILIARY_OFFICER = 20,
 				JOB_SYNTH = 21,
@@ -989,6 +991,7 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				JOB_DROPSHIP_PILOT = 23,
 				JOB_DROPSHIP_CREW_CHIEF = 24,
 				JOB_INTEL = 25,
+				JOB_SYNTH_INTEL = 25,
 				JOB_CIA_LIAISON = 26,
 				JOB_TANK_CREW = 27,
 				// 30-39: Security
@@ -996,21 +999,26 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				JOB_PROVOST_TML = 30,
 				JOB_WARDEN = 31,
 				JOB_PROVOST_ENFORCER = 31,
+				JOB_POLICE_HG = 32,
 				JOB_RIOT_CHIEF = 32,
 				JOB_RIOT = 33,
 				JOB_POLICE = 34,
-				JOB_PROVOST_ADVISOR = 35,
+				JOB_SYNTH_MP = 35,
+				JOB_PROVOST_ADVISOR = 36,
 				// 40-49: MedSci
 				JOB_CMO = 40,
 				JOB_RESEARCHER = 41,
 				JOB_DOCTOR = 42,
 				JOB_SURGEON = 42,
+				JOB_PHARMACIST = 42,
 				JOB_FIELD_DOCTOR = 43,
-				JOB_NURSE = 44,
+				JOB_SYNTH_MED = 44,
+				JOB_NURSE = 45,
 				// 50-59: Engineering
 				JOB_CHIEF_ENGINEER = 50,
-				JOB_ORDNANCE_TECH = 51,
-				JOB_MAINT_TECH = 52,
+				JOB_SYNTH_ENG = 51,
+				JOB_ORDNANCE_TECH = 52,
+				JOB_MAINT_TECH = 53,
 				// 60-69: Cargo
 				JOB_CHIEF_REQUISITION = 60,
 				JOB_CARGO_TECH = 61,
@@ -1079,7 +1087,8 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				JOB_MARINE_RAIDER_SL = 130,
 				RAIDER_SL_SQUAD = 130,
 				JOB_MARINE_RAIDER = 131,
-				RAIDER_SQUAD = 131,
+				JOB_MARINE_RAIDER_SG = 132,
+				RAIDER_SQUAD = 132,
 
 				JOB_FORECON_CO = 140,
 				JOB_FORECON_SL = 140,

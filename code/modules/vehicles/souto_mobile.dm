@@ -10,6 +10,7 @@
 	. = ..()
 	var/image/I = new(icon = 'icons/obj/vehicles/vehicles.dmi', icon_state = "soutomobile_overlay", layer = ABOVE_MOB_LAYER) //over mobs
 	overlays += I
+	AddElement(/datum/element/corp_label/souta)
 
 /obj/vehicle/souto/manual_unbuckle(mob/user)
 	if(buckled_mob && buckled_mob != user)

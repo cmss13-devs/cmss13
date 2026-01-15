@@ -13,6 +13,10 @@
 	var/recharge_rate = 10
 	var/energy = 50
 	var/max_energy = 100
+	// dynamic chemical supply variables
+	var/base_recharge_rate = 10
+	var/base_max_energy = 100
+	var/dynamic_storage = FALSE
 
 	unslashable = TRUE
 	unacidable = TRUE
@@ -20,6 +24,7 @@
 /obj/structure/machinery/chem_storage/medbay
 	name = "Chemical Storage System (Medbay)"
 	network = "Medbay"
+	dynamic_storage = TRUE
 
 /obj/structure/machinery/chem_storage/research
 	name = "Chemical Storage System (Research)"
@@ -37,6 +42,15 @@
 /obj/structure/machinery/chem_storage/Destroy()
 	GLOB.chemical_data.remove_chem_storage(src)
 	return ..()
+
+/// Scales the energy capacity and charge rates for chemical dispensers using the dynamic_storage var
+/// multiplier works by dividing total marine pop by 50
+/obj/structure/machinery/chem_storage/proc/calculate_dynamic_storage(multiplier)
+	if(!dynamic_storage)
+		return
+	recharge_rate |= floor(base_recharge_rate * multiplier)
+	max_energy |= floor(base_max_energy * multiplier)
+	energy = max_energy
 
 /obj/structure/machinery/chem_storage/get_examine_text(mob/user)
 	. = ..()

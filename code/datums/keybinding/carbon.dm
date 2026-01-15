@@ -5,6 +5,13 @@
 /datum/keybinding/carbon/can_use(client/user)
 	return iscarbon(user.mob)
 
+/datum/keybinding/carbon/item/can_use(client/user)
+	. = ..()
+	if(!.)
+		return
+	var/mob/user_mob = user.mob
+	return isitem(user_mob.get_held_item())
+
 /datum/keybinding/carbon/toggle_throw_mode
 	hotkey_keys = list("R", "Southwest") // END
 	classic_keys =list("R", "Southwest")
@@ -130,4 +137,20 @@
 		return
 	var/mob/living/carbon/C = user.mob
 	C.give()
+	return TRUE
+
+/datum/keybinding/carbon/item/unique_action
+	hotkey_keys = list("Space")
+	classic_keys = list("Unbound")
+	name = "unique_action"
+	full_name = "Unique Action"
+	keybind_signal = COMSIG_KB_CARBON_UNIQUEACTION
+
+/datum/keybinding/carbon/item/unique_action/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/human/human = user.mob
+	var/obj/item/held_item = human.get_held_item()
+	held_item.use_unique_action()
 	return TRUE

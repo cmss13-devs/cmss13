@@ -330,8 +330,8 @@
 	clone.anchored = anchored //Some of these may be suitable for Init
 	clone.appearance = appearance
 	if(clone.displacement_cover)
-		clone.plane = 1
-		clone.alpha = 0
+		clone.plane = 10
+		clone.alpha = 40
 	clone.dir = dir
 	clone.flags_atom = flags_atom
 	clone.density = density

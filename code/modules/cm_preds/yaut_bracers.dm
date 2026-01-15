@@ -266,7 +266,7 @@
 	charge = 3000
 	charge_max = 3000
 
-	cloak_alpha = 40
+	cloak_alpha = 0//zeroed for testing with displacement cloak
 
 	var/exploding = 0
 	var/disc_timer = 0
@@ -798,7 +798,6 @@
 		else
 			user_mob.alpha = new_alpha
 
-		user_mob.plane = DISPLACEMENT_PLATE_RENDER_LAYER
 		user_mob.create_clone_movable(0, 0, TRUE)
 		var/datum/mob_hud/security/advanced/SA = GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
 		SA.remove_from_hud(user_mob)
@@ -851,7 +850,6 @@
 		sound_to_use = 'sound/effects/pred_cloakoff.ogg'
 	playsound(user.loc, sound_to_use, 15, 1, 4)
 	user.alpha = initial(user.alpha)
-	user.plane = initial(user.plane)
 	user.destroy_clone()
 	if(true_cloak)
 		user.invisibility = initial(user.invisibility)

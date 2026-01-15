@@ -170,6 +170,9 @@
 /// From /obj/item/weapon/gun/proc/reload() : (obj/item/weapon/gun/reloaded)
 #define COMSIG_MOB_RELOADED_GUN "mob_reloaded_gun"
 
+/// From /obj/item/weapon/baseballbat/attack_self() : (mob/user)
+#define COMSIG_MOB_PREPARED_SWING "mob_prepared_swing"
+
 /// From /mob/proc/get_status_tab_items() : (list/status_list)
 #define COMSIG_MOB_GET_STATUS_TAB_ITEMS "mob_get_status_tab_items"
 

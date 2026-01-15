@@ -1762,6 +1762,20 @@ GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
 		if(NORTHWEST)
 			return list(NORTHWEST, NORTH, WEST)
 
+/proc/get_directions_in_arc(direction = NORTH)
+	switch(direction)
+		if(NORTH)
+			return list(WEST, NORTHWEST, NORTH, NORTHEAST, EAST)
+
+		if(EAST)
+			return list(NORTH, NORTHEAST, EAST, SOUTHEAST, SOUTH)
+
+		if(SOUTH)
+			return list(WEST, SOUTHWEST, SOUTH, SOUTHEAST, EAST)
+
+		if(WEST)
+			return list(NORTH, NORTHWEST, WEST, SOUTHWEST, SOUTH)
+
 /// Returns TRUE if the target is somewhere that the game should not interact with if possible
 /// In this case, admin Zs and tutorial areas
 /proc/should_block_game_interaction(atom/target, include_hunting_grounds = FALSE)

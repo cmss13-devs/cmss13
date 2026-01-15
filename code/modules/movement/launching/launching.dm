@@ -8,6 +8,7 @@
 	var/speed
 	var/atom/thrower
 	var/spin
+	var/relaunched
 
 	// A list of callbacks to invoke when an atom of a specific type is hit (keys are typepaths and values are proc paths)
 	// These should only be for CUSTOM procs to invoke when an atom of a specific type is collided with, otherwise will default to using
@@ -216,26 +217,27 @@
 		sleep(delay)
 
 	//done throwing, either because it hit something or it finished moving
-	if ((isobj(src) || ismob(src)) && throwing && !early_exit)
-		var/turf/T = get_turf(src)
-		if(!istype(T))
-			return
-		var/atom/hit_atom = ismob(LM.target) ? null : T // TODO, just check for LM.target, the ismob is to prevent funky behavior with grenades 'n crates
-		if(!hit_atom)
-			for(var/atom/A in T)
-				if(A == LM.target)
-					hit_atom = A
-					break
-			if(!hit_atom && tracking && get_dist(src, LM.target) <= 1 && get_dist(start_turf, LM.target) <= 1) // If we missed, but we are tracking and the target is still next to us and the turf we launched from, then we still count it as a hit
-				hit_atom = LM.target
-		launch_impact(hit_atom)
-	if (loc)
-		throwing = FALSE
-		rebounding = FALSE
-		cur_speed = old_speed
-		remove_temp_pass_flags(pass_flags)
-		LM.invoke_end_throw_callbacks(src)
-	QDEL_NULL(launch_metadata)
+	if(!LM.relaunched)
+		if ((isobj(src) || ismob(src)) && throwing && !early_exit)
+			var/turf/T = get_turf(src)
+			if(!istype(T))
+				return
+			var/atom/hit_atom = ismob(LM.target) ? null : T // TODO, just check for LM.target, the ismob is to prevent funky behavior with grenades 'n crates
+			if(!hit_atom)
+				for(var/atom/A in T)
+					if(A == LM.target)
+						hit_atom = A
+						break
+				if(!hit_atom && tracking && get_dist(src, LM.target) <= 1 && get_dist(start_turf, LM.target) <= 1) // If we missed, but we are tracking and the target is still next to us and the turf we launched from, then we still count it as a hit
+					hit_atom = LM.target
+			launch_impact(hit_atom)
+		if (loc)
+			throwing = FALSE
+			rebounding = FALSE
+			cur_speed = old_speed
+			remove_temp_pass_flags(pass_flags)
+			LM.invoke_end_throw_callbacks(src)
+		QDEL_NULL(launch_metadata)
 
 /atom/movable/proc/throw_random_direction(range, speed = 0, atom/thrower, spin, launch_type = NORMAL_LAUNCH, pass_flags = NO_FLAGS)
 	var/throw_direction = pick(CARDINAL_ALL_DIRS)
@@ -249,3 +251,21 @@
 		furthest_turf = temp_turf
 
 	throw_atom(furthest_turf, range, speed, thrower, spin, launch_type, pass_flags)
+
+/atom/movable/proc/throw_in_random_direction_from_arc(range, speed = 0, atom/thrower, spin, launch_type = NORMAL_LAUNCH, pass_flags = NO_FLAGS, directional = NORTH)
+	var/directions = get_directions_in_arc(directional)
+	var/selected_turf = get_turf(src)
+
+	var/list/key_points = list()
+	var/list/turf/turfs_to_pick = list()
+
+	for(var/direction in directions)
+		key_points += get_ranged_target_turf(selected_turf, direction, range)
+	for(var/i in 1 to length(key_points)-1)
+		turfs_to_pick += get_line(key_points[i], key_points[i+1])
+		if(!(i % 2) && (i < length(key_points)-2))
+			turfs_to_pick += get_line(key_points[i], key_points[i+2])
+
+	selected_turf = pick(turfs_to_pick)
+
+	throw_atom(selected_turf, range, speed, thrower, spin, launch_type, pass_flags)

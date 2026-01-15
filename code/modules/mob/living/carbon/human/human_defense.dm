@@ -204,13 +204,17 @@ Contains most of the procs that are called when a mob is attacked by something
 
 	//empty active hand and we're in throw mode
 	var/can_catch = (!(O.flags_atom & ITEM_UNCATCHABLE) || isyautja(src))
-	if (throw_mode && can_catch && !get_active_hand() && cur_speed <= SPEED_VERY_FAST && \
-		!is_mob_incapacitated() && isturf(O.loc) && put_in_active_hand(O)
-	)
-		visible_message(SPAN_WARNING("[src] catches [O]!"), null, null, 5)
-		toggle_throw_mode(THROW_MODE_OFF)
-		return
-
+	if(can_catch)
+		if(throw_mode && !get_active_hand() && cur_speed <= SPEED_VERY_FAST && \
+			!is_mob_incapacitated() && isturf(O.loc) && put_in_active_hand(O)
+		)
+			visible_message(SPAN_WARNING("[src] catches [O]!"), null, null, 5)
+			toggle_throw_mode(THROW_MODE_OFF)
+			return
+		else if(COMSIG_MOB_PREPARED_SWING in comp_lookup)
+			var/obj/item/weapon/baseballbat/bat = comp_lookup[COMSIG_MOB_PREPARED_SWING]
+			bat.swing(src, O, LM)
+			return
 	var/dtype = BRUTE
 	if (istype(O, /obj/item/weapon))
 		var/obj/item/weapon/W = O

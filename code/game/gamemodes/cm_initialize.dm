@@ -306,13 +306,13 @@ Additional game mode variables.
 
 	var/turf/spawn_point = pick(GLOB.badblood_spawns)
 	if(!isturf(spawn_point))
-		log_debug("Failed to find spawn point for pred ship in transform_badblood.")
+		log_debug("Failed to find spawn point for pred survivor in transform_badblood.")
 		to_chat(badblood_candidate, SPAN_WARNING("Unable to setup spawn location - you might want to tell someone about this."))
 		return
 	if(!badblood_candidate?.mind) // Legacy check
 		log_debug("Tried to spawn invalid pred player in transform_badblood - new_player name=[badblood_candidate]")
 		to_chat(badblood_candidate, SPAN_WARNING("Could not setup character - you might want to tell someone about this."))
-		return
+		//return
 
 	var/mob/living/carbon/human/yautja/new_badblood = new(spawn_point)
 	badblood_candidate.mind.transfer_to(new_badblood, TRUE)
@@ -344,13 +344,13 @@ Additional game mode variables.
 	//var/turf/spawn_point = get_turf(position)
 	var/turf/spawn_point = pick(GLOB.badblood_spawns)
 	if(!isturf(spawn_point))
-		log_debug("Failed to find spawn point for pred ship in transform_stranded_pred.")
+		log_debug("Failed to find spawn point for pred survivor in transform_stranded_pred.")
 		to_chat(stranded_candidate, SPAN_WARNING("Unable to setup spawn location - you might want to tell someone about this."))
 		return
 	if(!stranded_candidate?.mind) // Legacy check
 		log_debug("Tried to spawn invalid pred player in transform_stranded_pred - new_player name=[stranded_candidate]")
 		to_chat(stranded_candidate, SPAN_WARNING("Could not setup character - you might want to tell someone about this."))
-		return
+		//return
 
 	var/mob/living/carbon/human/yautja/new_stranded = new(spawn_point)
 	stranded_candidate.mind.transfer_to(new_stranded, TRUE)

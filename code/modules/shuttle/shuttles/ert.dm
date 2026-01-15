@@ -134,10 +134,13 @@
 	preferred_direction = SOUTH
 	port_direction = NORTH
 	area_type = /area/shuttle/hunter
-	landing_sound = 'sound/effects/engine_cargoshuttle_landing.ogg'
-	ignition_sound = 'sound/effects/engine_cargoshuttle_startup.ogg'
+	landing_sound = 'sound/effects/engine_hunter_landing.ogg'
+	ignition_sound = 'sound/effects/engine_hunter_startup.ogg'
 
 /obj/docking_port/mobile/emergency_response/hunter/Initialize(mapload)
+	var/tag = "[pick(GLOB.nato_phonetic_alphabet)]-[rand(1, 99)]"
+	name = "Hunter Shuttle [tag]"
+	id = "hunter-shuttle-[tag]"
 	. = ..()
 	external_doors = list()
 	for(var/place in shuttle_areas)
@@ -264,11 +267,6 @@
 /obj/docking_port/stationary/emergency_response/yautja
 	name = "DO NOT USE"
 	dir = NORTH
-
-/obj/docking_port/stationary/emergency_response/yautja/on_prearrival(obj/docking_port/mobile/arriving_shuttle)
-	if(arriving_shuttle?.landing_sound)
-		playsound(return_center_turf(), arriving_shuttle.landing_sound, 60, 0)
-	return
 
 /obj/docking_port/stationary/emergency_response/yautja/port1
 	name = "Hunter Ship landing pad A"

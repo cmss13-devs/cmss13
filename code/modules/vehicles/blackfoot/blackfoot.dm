@@ -273,10 +273,11 @@
 			passenger.buckled.unbuckle()
 
 		passenger.unset_interaction()
-		passenger.client.change_view(GLOB.world_view_size, passenger)
-		passenger.client.set_pixel_x(0)
-		passenger.client.set_pixel_y(0)
-		passenger.reset_view()
+		if(passenger.client)
+			passenger.client.change_view(GLOB.world_view_size, passenger)
+			passenger.client.set_pixel_x(0)
+			passenger.client.set_pixel_y(0)
+			passenger.reset_view()
 		passenger.forceMove(fall_turf)
 
 		if(istype(fall_turf, /turf/closed)) // Perma kill them if they crash into a wall

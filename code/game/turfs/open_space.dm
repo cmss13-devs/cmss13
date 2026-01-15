@@ -51,12 +51,6 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 		if(possible_blocker.density)
 			return FALSE
 
-	if(mover.move_intentionally && istype(mover,/mob/living))
-		var/mob/living/climber = mover
-		if(climber.a_intent == INTENT_HARM)
-			return TRUE
-		climb_down(climber)
-		return FALSE
 	return TRUE
 
 /turf/open_space/on_throw_end(atom/movable/thrown_atom)

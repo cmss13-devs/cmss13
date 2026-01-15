@@ -4541,6 +4541,10 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
+/obj/item/hardpoint/primary/chimera_launchers{
+	pixel_y = 7;
+	pixel_x = -4
+	},
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/hallways/hangar)
 "akr" = (
@@ -4642,6 +4646,7 @@
 /obj/structure/platform/metal/almayer/east{
 	layer = 2.9
 	},
+/obj/vehicle/multitile/blackfoot,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
 "akI" = (
@@ -4651,10 +4656,7 @@
 	pixel_x = 2
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/item/hardpoint/primary/chimera_launchers{
-	pixel_y = 7;
-	pixel_x = -4
-	},
+/obj/item/hardpoint/locomotion/blackfoot_thrusters,
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/hallways/hangar)
 "akJ" = (
@@ -7293,15 +7295,6 @@
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/almayer/redfull,
 /area/almayer/engineering/upper_engineering)
-"arI" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	layer = 3.33;
-	pixel_x = 2
-	},
-/obj/item/hardpoint/locomotion/blackfoot_thrusters,
-/turf/open/floor/almayer/plating/northeast,
-/area/almayer/hallways/hangar)
 "arJ" = (
 /obj/structure/sign/poster{
 	desc = "Koorlander Golds, lovingly machine rolled for YOUR pleasure.";
@@ -38304,6 +38297,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/maint/upper/u_a_s)
 "bYW" = (
+/obj/structure/blackfoot_tug,
 /turf/open/floor/almayer/cargo_arrow,
 /area/almayer/hallways/hangar)
 "bYY" = (
@@ -44696,7 +44690,6 @@
 	dir = 4;
 	layer = 2.9
 	},
-/obj/vehicle/multitile/blackfoot,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
 "eqm" = (
@@ -66273,7 +66266,6 @@
 	dir = 1;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/blackfoot_tug,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
 "njS" = (
@@ -133976,7 +133968,7 @@ xzB
 eWs
 asp
 arW
-arI
+arW
 akI
 akq
 abb

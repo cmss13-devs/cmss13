@@ -42,16 +42,20 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 
 	check_fall(entered_movable)
 
+/turf/open_space/additional_enter_checks(atom/movable/mover)
+	if(mover.move_intentionally && istype(mover,/mob/living))
+		var/mob/living/climber = mover
+		if(climber.a_intent == INTENT_HARM)
+			return TRUE
+		climb_down(climber)
+		return FALSE
+	return TRUE
+
 /turf/open_space/on_throw_end(atom/movable/thrown_atom)
 	check_fall(thrown_atom)
 
 /turf/open_space/proc/climb_down(mob/user)
 	if(user.action_busy)
-		return
-
-	var/turf/current_turf = get_turf(src)
-
-	if(!istype(current_turf, /turf/open_space))
 		return
 
 	var/climb_down_time = 1 SECONDS
@@ -68,6 +72,7 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 
 	if(user.action_busy)
 		return
+
 	user.visible_message(SPAN_WARNING("[user] starts climbing down."), SPAN_WARNING("You start climbing down."))
 
 	if(!do_after(user, climb_down_time, INTERRUPT_ALL, BUSY_ICON_CLIMBING))
@@ -76,7 +81,7 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 
 	user.visible_message(SPAN_WARNING("[user] climbs down."), SPAN_WARNING("You climb down."))
 
-	var/turf/below = SSmapping.get_turf_below(current_turf)
+	var/turf/below = get_projected_turf()
 	while(istype(below, /turf/open_space))
 		below = SSmapping.get_turf_below(below)
 
@@ -120,9 +125,6 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	return locate(target_x, target_y, target_z)
 
 /turf/open_space/blackfoot/update_vis_contents()
-	if(!istransparentturf(src))
-		return
-
 	vis_contents.Cut()
 	for(var/obj/vis_contents_holder/holder in src)
 		qdel(holder)
@@ -148,7 +150,9 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 		height++
 
 	movable.forceMove(below)
-	movable.onZImpact(below, height)
+
+	if(height > 0)
+		movable.onZImpact(below, height)
 
 /turf/solid_open_space/Initialize()
 	ADD_TRAIT(src, TURF_Z_TRANSPARENT_TRAIT, TRAIT_SOURCE_INHERENT)

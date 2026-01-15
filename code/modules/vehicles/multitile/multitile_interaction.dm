@@ -383,7 +383,7 @@
 				return
 
 	var/obj/item/hardpoint/hardpoint = get_mob_hp(source)
-	if(!hardpoint)
+	if(!hardpoint && notify_no_hardpoint_selected)
 		to_chat(source, SPAN_WARNING("Please select an active hardpoint first."))
 		return
 

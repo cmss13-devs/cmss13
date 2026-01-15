@@ -171,6 +171,8 @@
 	var/minimap_flags = MINIMAP_FLAG_USCM
 	///Minimap iconstate to use for this vehicle
 	var/minimap_icon_state
+	///Should it spam the "select an active hardpoint"
+	var/notify_no_hardpoint_selected = TRUE
 
 /obj/vehicle/multitile/Initialize()
 	. = ..()

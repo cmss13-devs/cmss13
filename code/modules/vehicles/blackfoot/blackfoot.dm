@@ -76,6 +76,8 @@
 		"abstract" = 1
 	)
 
+	notify_no_hardpoint_selected = FALSE
+
 	var/image/thrust_overlay
 
 	var/last_turn = 0
@@ -112,21 +114,24 @@
 	pixel_y = -160
 	layer = ABOVE_MOB_LAYER
 	flags_atom = NO_ZFALL
+	anchored = TRUE
 
 /obj/downwash_effect
 	icon = 'icons/obj/vehicles/blackfoot.dmi'
 	icon_state = "downwash"
 	pixel_x = -64
 	pixel_y = -32
+	anchored = TRUE
 
 /obj/vehicle/multitile/blackfoot/Initialize(mapload, ...)
 	. = ..()
 	AddComponent(/datum/component/tacmap, has_drawing_tools=FALSE, minimap_flag=minimap_type, has_update=FALSE)
+	RegisterSignal(src, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(update_rear_view))
 	update_icon()
 
 /obj/vehicle/multitile/blackfoot/Destroy()
 	QDEL_NULL(shadow_holder)
-
+	UnregisterSignal(src, COMSIG_MOVABLE_Z_CHANGED)
 	. = ..()
 
 /obj/vehicle/multitile/blackfoot/load_role_reserved_slots()
@@ -317,12 +322,6 @@
 	if(!M.client)
 		return
 
-	if(seat == VEHICLE_GUNNER)
-		add_verb(M.client, list(
-			/obj/vehicle/multitile/proc/switch_hardpoint,
-		))
-		return
-
 	add_verb(M.client, list(
 		/obj/vehicle/multitile/proc/get_status_info,
 		/obj/vehicle/multitile/proc/toggle_door_lock,
@@ -399,12 +398,6 @@
 	if(!M.client)
 		return
 
-	if(seat == VEHICLE_GUNNER)
-		remove_verb(M.client, list(
-			/obj/vehicle/multitile/proc/switch_hardpoint,
-		))
-		return
-
 	remove_verb(M.client, list(
 		/obj/vehicle/multitile/proc/get_status_info,
 		/obj/vehicle/multitile/proc/toggle_door_lock,
@@ -414,6 +407,7 @@
 		/obj/vehicle/multitile/blackfoot/proc/land,
 		/obj/vehicle/multitile/blackfoot/proc/toggle_vtol,
 		/obj/vehicle/multitile/blackfoot/proc/toggle_stow,
+		/obj/vehicle/multitile/proc/switch_hardpoint,
 	))
 
 	remove_action(M, /datum/action/human_action/blackfoot/takeoff)

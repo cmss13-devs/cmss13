@@ -93,7 +93,7 @@
 /obj/item/weapon/baseballbat/attack_self(mob/living/carbon/human/user)
 	. = ..()
 	if(world.time < next_swing)
-		user.visible_message(null, SPAN_WARNING("You can't swing [src] yet."))
+		to_chat(user, SPAN_WARNING("You can't swing [src] yet."))
 		return
 	prepared_to_swing = TRUE
 	user.visible_message(SPAN_NOTICE("[user] prepares to swing [src]."), SPAN_NOTICE("You prepare to swing [src]."), null, 3)

@@ -126,7 +126,7 @@
 	var/range = clamp((floor(rand(3, 7)* random_speed) * size_bonus), 1, 10)
 	var/speed = clamp((hit_object.throw_speed * random_speed) * size_bonus, SPEED_SLOW, SPEED_REALLY_FAST)
 	var/launch = pick(HIGH_LAUNCH, NORMAL_LAUNCH)
-	var/hit_chance = 60 * size_bonus
+	var/hit_chance = 55 * size_bonus
 
 	if(prob(hit_chance))
 		launch_data.relaunched = TRUE

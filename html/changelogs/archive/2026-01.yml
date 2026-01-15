@@ -83,3 +83,6 @@
   - qol: Switching hands unwields.
   aquariofury:
   - balance: Players can no longer fire weapons while looking up or down ladders
+2026-01-14:
+  Drathek:
+  - bugfix: SDQL can search for closets, cables, and vehicles

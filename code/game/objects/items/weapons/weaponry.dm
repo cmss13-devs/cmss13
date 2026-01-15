@@ -105,7 +105,9 @@
 /obj/item/weapon/baseballbat/proc/swing(mob/living/carbon/human/user, obj/item/hit_object, datum/launch_metadata/launch_data)
 	if(QDELETED(hit_object))
 		return
+
 	removed_prepared_swing(user, TRUE)
+
 	var/size_bonus
 	switch(hit_object.w_class)
 		if(SIZE_TINY)
@@ -115,17 +117,21 @@
 		if(SIZE_MEDIUM)
 			size_bonus = 0.8
 		else
-			attackby(hit_object, user)
+			playsound(src, hitsound, 40, sound_range = 7)
 			user.visible_message(SPAN_NOTICE("[user] slams the bat into [hit_object] stopping it."), SPAN_NOTICE("You slam the bat into [hit_object] stopping it, but not much more."))
+			hit_object.forceMove(get_step(user.loc, user.dir))
 			return TRUE
+
 	var/random_speed = (rand(2, 15)) / 10
 	var/range = clamp((floor(rand(3, 7)* random_speed) * size_bonus), 1, 10)
 	var/speed = clamp((hit_object.throw_speed * random_speed) * size_bonus, SPEED_SLOW, SPEED_REALLY_FAST)
 	var/launch = pick(HIGH_LAUNCH, NORMAL_LAUNCH)
+
 	if(prob(70))
 		launch_data.relaunched = TRUE
 		hit_object.throw_in_random_direction_from_arc(range, speed, user, TRUE, launch, directional = user.dir)
-		user.visible_message(SPAN_NOTICE("[user] hits the [hit_object] and [hit_message_list[ceil(range/2)]] [launch == HIGH_LAUNCH ? "in a high arc" : "in a flat arc"] with [src]!"), SPAN_NOTICE("You hit the [hit_object] with [src]!"))
+		user.visible_message(SPAN_NOTICE("[user] hits the [hit_object] and [hit_message_list[ceil(range/2)]] [launch == HIGH_LAUNCH ? "in a high arc" : "in a flat arc"] with [src]!"), \
+		SPAN_NOTICE("You hits the [hit_object] and [hit_message_list[ceil(range/2)]] [launch == HIGH_LAUNCH ? "in a high arc" : "in a flat arc"] with [src]!"))
 		return TRUE
 	else
 		if(prob(90))

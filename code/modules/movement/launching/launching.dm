@@ -263,7 +263,7 @@
 		key_points += get_ranged_target_turf(selected_turf, direction, range)
 	for(var/i in 1 to length(key_points)-1)
 		turfs_to_pick += get_line(key_points[i], key_points[i+1])
-		if(!(i % 2) && (i < length(key_points)-2))
+		if((i % 2) && (i <= length(key_points)-2))
 			turfs_to_pick += get_line(key_points[i], key_points[i+2])
 
 	selected_turf = pick(turfs_to_pick)

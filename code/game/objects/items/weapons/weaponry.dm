@@ -123,7 +123,7 @@
 			return TRUE
 
 	var/random_speed = (rand(2, 15)) / 10
-	var/range = clamp((floor(rand(3, 7)* random_speed) * size_bonus), 1, 10)
+	var/range = clamp(floor((rand(3, 7)* random_speed) * size_bonus), 1, 10)
 	var/speed = clamp((hit_object.throw_speed * random_speed) * size_bonus, SPEED_SLOW, SPEED_REALLY_FAST)
 	var/launch = pick(HIGH_LAUNCH, NORMAL_LAUNCH)
 	var/hit_chance = 55 * size_bonus

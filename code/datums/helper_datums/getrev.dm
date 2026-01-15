@@ -81,6 +81,7 @@ CLIENT_VERB(showrevinfo)
 		msg += "TGS version: [version.raw_parameter]"
 		var/datum/tgs_version/api_version = world.TgsApiVersion()
 		msg += "DMAPI version: [api_version.raw_parameter]"
+	msg += "Additional code modifications available at <a href='https://public-code.cm-ss13.com'>https://public-code.cm-ss13.com</a>."
 
 	// Game mode odds
 	to_chat(src, SPAN_INFO(msg.Join("<br>")))

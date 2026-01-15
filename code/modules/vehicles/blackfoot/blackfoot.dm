@@ -236,6 +236,9 @@
 	if(!.)
 		return
 
+	if(back_door.open)
+		update_rear_view()
+
 	shadow_holder.dir = dir
 	last_turn = world.time
 

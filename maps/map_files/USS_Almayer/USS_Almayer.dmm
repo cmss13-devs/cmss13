@@ -6491,11 +6491,10 @@
 	pixel_y = 38
 	},
 /obj/structure/machinery/door_control{
-	id = "safe_shutters";
-	name = "Saferoom Entrance";
-	pixel_x = 10;
-	pixel_y = 23;
-	req_one_access_txt = "3;19"
+	id = "VTOL Bay Shutters";
+	name = "shutter-control";
+	pixel_y = 25;
+	pixel_x = 9
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)

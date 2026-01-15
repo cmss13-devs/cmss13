@@ -65,7 +65,8 @@
 	if(SShijack.hijack_status >= HIJACK_OBJECTIVES_COMPLETE)
 		return FALSE
 
-	return TRUE
+	if(prob(abs((SShijack.current_progress - SShijack.required_progress) / SShijack.required_progress) * 100))
+		return TRUE
 
 /obj/docking_port/mobile/crashable/lifeboat/open_doors()
 	. = ..()

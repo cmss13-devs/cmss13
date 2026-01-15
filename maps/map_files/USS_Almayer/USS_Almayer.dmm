@@ -7295,6 +7295,14 @@
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/almayer/redfull,
 /area/almayer/engineering/upper_engineering)
+"arI" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33;
+	pixel_x = 2
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/hallways/hangar)
 "arJ" = (
 /obj/structure/sign/poster{
 	desc = "Koorlander Golds, lovingly machine rolled for YOUR pleasure.";
@@ -7393,14 +7401,6 @@
 "arV" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/command/lifeboat)
-"arW" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	layer = 3.33;
-	pixel_x = 2
-	},
-/turf/open/floor/almayer/plating/northeast,
-/area/almayer/hallways/hangar)
 "arX" = (
 /obj/structure/pipes/vents/scrubber,
 /turf/open/floor/almayer/dark_sterile2,
@@ -133967,8 +133967,8 @@ sGw
 xzB
 eWs
 asp
-arW
-arW
+arI
+arI
 akI
 akq
 abb

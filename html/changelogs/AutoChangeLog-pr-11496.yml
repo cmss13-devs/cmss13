@@ -1,0 +1,5 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Fixed an interaction loop for HMG/M2C with ladders"
+  - bugfix: "Fixed ladders not always unregistering a signal"

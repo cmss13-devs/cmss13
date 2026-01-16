@@ -547,10 +547,10 @@
 			var/turf/dumping_turf = get_turf(dropped)
 			for(var/obj/item/stored_item as anything in stored_items)
 				stored_items.remove_from_storage(stored_item, dumping_turf)
-		QDEL_IN(item, 1 SECONDS)
+		QDEL_IN(dropped, 1 SECONDS)
 	else
 		cleanup |= dropped // marks item for removal once the dummy is ready
-		UnregisterSignal(item, COMSIG_ITEM_UNEQUIPPED)
+		UnregisterSignal(dropped, COMSIG_ITEM_UNEQUIPPED)
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/init_mob()
 	. = ..()

@@ -118,6 +118,9 @@
 				continue
 			if(!structure.density && !structure.opacity)
 				continue
+			if(istype(structure, /obj/structure/girder))
+				blocked = TRUE
+				continue
 			if(istype(structure, /obj/structure/window/reinforced))
 				var/obj/structure/window/reinforced/pane_glass = structure
 				var/pane_facing = pane_glass.dir

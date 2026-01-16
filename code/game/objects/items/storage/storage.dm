@@ -913,10 +913,8 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	storage_close(watcher)
 
 /obj/item/storage/proc/dump_important_items()
-
-	var/list/stored_items = contents.Copy()
-	for(var/obj/item/cur_item in stored_items)
-		if(cur_item.is_objective || cur_item.explo_proof || cur_item.unacidable)
+	for(var/obj/item/cur_item in src)
+		if(cur_item.is_objective)
 			remove_from_storage(cur_item)
 
 /obj/item/storage/Destroy()

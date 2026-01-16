@@ -133,15 +133,14 @@
 	launch_data.relaunched = TRUE
 
 	if(prob(hit_chance))
-		do_item_attack_animation(hit_object, null, src)
-		hit_object.throw_in_random_direction_from_arc(range, speed, user, TRUE, launch, directional = user.dir)
-
 		user.visible_message(SPAN_NOTICE("[user] hits the [hit_object] and [hit_message_list[ceil(range/2)]] [launch == HIGH_LAUNCH ? "in a high arc" : "in a flat arc"] with [src]!"), \
 		SPAN_NOTICE("You hits the [hit_object] and [hit_message_list[ceil(range/2)]] [launch == HIGH_LAUNCH ? "in a high arc" : "in a flat arc"] with [src]!"))
+
+		do_item_attack_animation(hit_object, null, src)
+		hit_object.throw_in_random_direction_from_arc(range, speed, user, TRUE, launch, directional = user.dir)
 		return COMSIG_MOB_PREPARED_SWING_SWUNG
 	else
 		hit_object.forceMove(user.loc)
-		hit_object.throw_atom(launch_data.target, launch_data.range, launch_data.speed, user, TRUE, NORMAL_LAUNCH)
 
 		if(prob(90))
 			var/miss_message = pick(miss_message_list)
@@ -149,6 +148,7 @@
 		else
 			user.visible_message(SPAN_NOTICE("[user] doesn't swing at all!"), SPAN_NOTICE("You were way too late and don't swing at all! How embarassing!"))
 
+		hit_object.throw_atom(launch_data.target, launch_data.range, launch_data.speed, user, TRUE, NORMAL_LAUNCH)
 		return COMSIG_MOB_PREPARED_SWING_PASSTHROUGH
 
 /obj/item/weapon/baseballbat/proc/removed_prepared_swing(mob/living/carbon/human/user, swung = FALSE)

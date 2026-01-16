@@ -92,6 +92,9 @@
 		return
 	message = parsed["message"]
 
+	if(hushed)
+		parsed["modes"] = list(RADIO_MODE_WHISPER)
+
 	if(!filter_message(src, message))
 		return
 

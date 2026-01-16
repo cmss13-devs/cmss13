@@ -11,7 +11,7 @@
 	w_class = SIZE_SMALL
 	flags_atom = FPRINT|CONDUCT
 
-	var/spam_cooldown_time = 2 SECONDS
+	var/spam_cooldown_time = 1.5 SECONDS
 	var/amplifying = FALSE
 	COOLDOWN_DECLARE(spam_cooldown)
 
@@ -50,20 +50,40 @@
 	var/list/new_message = humanoid.handle_speech_problems(message)
 	message = new_message[1]
 	message = capitalize(message)
-	log_admin("[key_name(user)] used a megaphone to say: >[message]<")
+	log_admin("[key_name(user)] used a megaphone to announce: >[message]<")
 
 	if((src.loc == user && !user.is_mob_incapacitated()))
 		// get mobs in the range of the user
 		var/list/mob/listeners = viewers(user) // slow but we need it
 		// mobs that pass the conditionals will be added here
 		var/list/mob/langchat_long_listeners = list()
+		var/datum/language/speaking = user.get_default_language()
+		var/paygrade = user.get_paygrade()
+
 		for(var/mob/listener in listeners)
 			if(!ishumansynth_strict(listener) && !isobserver(listener))
-				listener.show_message("[user] says something on the microphone, but you can't understand it.")
+				listener.show_message("[user] says something to the megaphone, but you can't understand it.")
 				continue
-			listener.show_message("<B>[user]</B> broadcasts, [FONT_SIZE_LARGE("\"[message]\"")]", SHOW_MESSAGE_AUDIBLE) // 2 stands for hearable message
+			var/broadcast = message
+
+			if(speaking)
+				if(!listener.say_understands(user, speaking))
+					broadcast = speaking.scramble(message)
+				broadcast = "<span class='[speaking.color]'>[broadcast]</span>"
+
+			listener.show_message("<B>[paygrade][user]</B> broadcasts, [FONT_SIZE_LARGE("\"[broadcast]\"")]", SHOW_MESSAGE_AUDIBLE) // 2 stands for hearable message
+
+			if(isliving(listener))
+				var/mob/living/audience = listener
+				if(skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_TRAINED) && !HAS_TRAIT(audience, TRAIT_LEADERSHIP) && !skillcheck(audience, SKILL_LEADERSHIP, SKILL_LEAD_TRAINED))
+					if(user.faction == audience.faction)
+						audience.set_effect(3 SECONDS, HUSHED)
+						to_chat(audience, SPAN_WARNING("You hush yourself as [user] broadcasts authoritatively through the [src]!"))
+					else
+						to_chat(audience, SPAN_WARNING("You hear [user] broadcast authoritatively... but you don't particularly care for it."))
 			langchat_long_listeners += listener
+
 		playsound(loc, 'sound/items/megaphone.ogg', 100, FALSE, TRUE)
-		user.langchat_long_speech(message, langchat_long_listeners, user.get_default_language())
+		user.langchat_speech(message, langchat_long_listeners, speaking, additional_styles = list("langchat_announce"), split_long_messages = TRUE)
 
 		COOLDOWN_START(src, spam_cooldown, spam_cooldown_time)

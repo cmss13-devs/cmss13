@@ -274,8 +274,6 @@
 		key_points += get_ranged_target_turf(selected_turf, direction, range + range_bonus)
 	for(var/i in 1 to length(key_points)-1)
 		turfs_to_pick += get_line(key_points[i], key_points[i+1])
-	for(var/turf/turfs in turfs_to_pick)
-		turfs.color = "#ff0000"
 
 	selected_turf = pick(turfs_to_pick)
 	range = get_dist(starting_turf, selected_turf)

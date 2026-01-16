@@ -730,3 +730,6 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 
 /datum/config_entry/str_list/ignored_cids
 	protection = CONFIG_ENTRY_LOCKED
+
+/// Appended to CLIENT_VERB(showrevinfo)
+/datum/config_entry/string/code_modifications_message

@@ -15,7 +15,7 @@ GLOBAL_LIST_EMPTY(cached_icons)
 	matter = list("metal" = 200)
 	w_class = SIZE_MEDIUM
 	amount_per_transfer_from_this = 10
-	possible_transfer_amounts = list(10,20,30,50,70)
+	possible_transfer_amounts = list(5,10,15,20,25,30,40,50,60,70)
 	volume = 70
 	flags_atom = FPRINT|OPENCONTAINER
 	var/paint_type = ""

@@ -116,7 +116,7 @@
 	layer = 3.5;
 	pixel_y = 13
 	},
-/mob/living/simple_animal/mouse/rat/brown,
+/mob/living/simple_animal/small/mouse/rat/brown,
 /obj/structure/sign/safety/bathunisex{
 	pixel_x = -16;
 	pixel_y = 8
@@ -2106,10 +2106,19 @@
 	ring_cooldown_length = 10
 	},
 /obj/item/reagent_container/food/drinks/coffeecup{
-	pixel_x = 6
+	pixel_x = -6;
+	pixel_y = -3
 	},
 /obj/structure/machinery/door/window/eastleft{
 	dir = 8
+	},
+/obj/item/book/manual/chemistry{
+	pixel_x = 4;
+	pixel_y = 0
+	},
+/obj/item/book/manual/medical_diagnostics_manual{
+	pixel_x = 7;
+	pixel_y = 6
 	},
 /turf/open/floor/almayer/sterile_green2,
 /area/almayer/medical/lower_medical_medbay)
@@ -3141,6 +3150,7 @@
 	pixel_x = 10;
 	pixel_y = 3
 	},
+/obj/item/book/manual/chemistry,
 /obj/item/book/manual/medical_diagnostics_manual{
 	pixel_x = -4;
 	pixel_y = 6
@@ -3691,8 +3701,8 @@
 	pixel_x = -3;
 	pixel_y = 11
 	},
+/obj/item/clothing/accessory/storage/surg_vest/black/equipped,
 /obj/item/clothing/accessory/storage/surg_vest/blue/equipped,
-/obj/item/clothing/accessory/storage/black_vest,
 /obj/item/clothing/accessory/storage/surg_vest/equipped,
 /obj/item/prop{
 	desc = "A blood bag with a hole in it. The rats must have gotten to it first.";
@@ -4580,7 +4590,9 @@
 /area/almayer/hallways/lower/port_midship_hallway)
 "akE" = (
 /obj/structure/machinery/camera/autoname/almayer{
-	name = "ship-grade camera"
+	name = "ship-grade camera";
+	pixel_x = 0;
+	pixel_y = 0
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/secure_closet{
@@ -4594,6 +4606,9 @@
 /obj/item/storage/box/mre,
 /obj/item/device/radio/marine,
 /obj/item/clothing/accessory/patch/medic_patch,
+/obj/item/book/manual/surgery,
+/obj/item/book/manual/chemistry,
+/obj/item/book/manual/medical_diagnostics_manual,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/lower_medical_medbay)
 "akF" = (
@@ -7317,7 +7332,7 @@
 /obj/structure/machinery/status_display{
 	pixel_y = 30
 	},
-/obj/structure/prop/almayer/computers/sensor_computer1,
+/obj/structure/machinery/computer/almayer_encryption/encoder,
 /turf/open/floor/almayer/silver/northeast,
 /area/almayer/command/cic)
 "arS" = (
@@ -8885,9 +8900,7 @@
 /turf/closed/wall/almayer/reinforced,
 /area/almayer/command/cichallway)
 "awA" = (
-/obj/structure/prop/almayer/computers/sensor_computer3{
-	name = "weapon targetting computer"
-	},
+/obj/structure/machinery/computer/almayer_encryption/decoder,
 /obj/structure/sign/safety/terminal{
 	pixel_x = 8;
 	pixel_y = 32
@@ -9618,6 +9631,10 @@
 	pixel_x = 17;
 	pixel_y = -6
 	},
+/obj/item/paper/punch_card/instructional,
+/obj/item/paper/punch_card,
+/obj/item/paper/punch_card,
+/obj/item/paper/punch_card,
 /obj/item/device/megaphone{
 	pixel_x = -2
 	},
@@ -21512,6 +21529,7 @@
 /obj/item/device/mass_spectrometer,
 /obj/item/reagent_container/glass/beaker/large,
 /obj/item/reagent_container/glass/beaker/large,
+/obj/item/reagent_container/glass/beaker/large,
 /obj/item/reagent_container/glass/beaker,
 /obj/item/reagent_container/glass/beaker,
 /obj/item/reagent_container/glass/beaker,
@@ -23010,6 +23028,7 @@
 /area/almayer/hallways/hangar)
 "bgk" = (
 /obj/structure/surface/table/almayer,
+/obj/item/book/manual/chemistry,
 /turf/open/floor/almayer/sterile_green_side/west,
 /area/almayer/medical/chemistry)
 "bgl" = (
@@ -60395,7 +60414,10 @@
 	pixel_y = 31;
 	pixel_x = -1
 	},
-/obj/structure/surface/table/almayer,
+/obj/structure/surface/table/almayer{
+	pixel_x = 0;
+	pixel_y = 0
+	},
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_17";
 	pixel_x = -6;
@@ -60409,6 +60431,7 @@
 	pixel_x = 6;
 	req_one_access_txt = "19;20"
 	},
+/obj/item/book/manual/chemistry,
 /turf/open/floor/almayer/sterile_green_corner/north,
 /area/almayer/medical/chemistry)
 "kPB" = (
@@ -67849,6 +67872,10 @@
 	pixel_y = 3;
 	pixel_x = 3
 	},
+/obj/item/roller/surgical,
+/obj/item/roller/surgical,
+/obj/item/roller/surgical,
+/obj/item/roller/surgical,
 /turf/open/floor/almayer/sterile_green_corner,
 /area/almayer/medical/lockerroom)
 "nTs" = (
@@ -68494,7 +68521,7 @@
 	pixel_x = -1;
 	pixel_y = 28
 	},
-/mob/living/simple_animal/cat/Jones{
+/mob/living/simple_animal/small/cat/Jones{
 	dir = 8
 	},
 /turf/open/floor/wood/ship,
@@ -72500,7 +72527,7 @@
 	pixel_x = -10;
 	pixel_y = 7
 	},
-/mob/living/simple_animal/mouse/white/Doc,
+/mob/living/simple_animal/small/mouse/white/Doc,
 /turf/open/floor/almayer/sterile_green,
 /area/almayer/medical/hydroponics)
 "pOi" = (
@@ -78865,17 +78892,8 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_10"
 	},
-/obj/structure/closet/secure_closet/cmdcabinet{
-	desc = "A bulletproof cabinet containing communications equipment.";
-	name = "communications cabinet";
-	pixel_y = 24;
-	req_one_access_txt = "207;203"
-	},
-/obj/item/device/radio,
-/obj/item/device/radio/listening_bug/radio_linked/wy,
-/obj/item/device/radio/listening_bug/radio_linked/wy{
-	pixel_x = 4;
-	pixel_y = -3
+/obj/structure/closet/secure_closet/cmdcabinet/comms_cl{
+	pixel_y = 24
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
@@ -80978,7 +80996,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/prop/almayer/computers/sensor_computer2,
+/obj/structure/machinery/computer/almayer_encryption,
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
 "teZ" = (
@@ -88675,11 +88693,9 @@
 /turf/open/floor/almayer/red,
 /area/almayer/living/cryo_cells)
 "wbX" = (
-/obj/structure/closet/secure_closet/cmdcabinet{
+/obj/structure/closet/secure_closet/cmdcabinet/marine{
 	pixel_y = 24
 	},
-/obj/item/device/cotablet,
-/obj/item/device/radio/headset/almayer/mcom/cdrcom,
 /turf/open/floor/almayer/silver/north,
 /area/almayer/command/cic)
 "wcm" = (

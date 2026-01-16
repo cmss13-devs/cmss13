@@ -1,0 +1,4 @@
+author: "Git-Nivrak"
+delete-after: True
+changes:
+  - bugfix: "Fixes HPR being able to fire 360 degrees while bipoded without undeploying"

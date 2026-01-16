@@ -1080,6 +1080,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/hunted, WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight/lantern/on, WEAR_R_STORE)
 	new_human.set_species("Human Hero")
+	new_human.species.flags = HAS_SKIN_TONE|HAS_LIPS|NO_SHRAPNEL|HAS_HARDCRIT|HAS_SKIN_COLOR
 	new_human.universal_understand = FALSE
 	new_human.status_flags &= ~NO_PERMANENT_DAMAGE
 	new_human.status_flags |= STATUS_FLAGS_DEBILITATE
@@ -1100,6 +1101,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/hunted, WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight/lantern/on, WEAR_R_STORE)
 	new_human.set_species("Human Hero")
+	new_human.species.flags = HAS_SKIN_TONE|HAS_LIPS|NO_SHRAPNEL|HAS_HARDCRIT|HAS_SKIN_COLOR
 	new_human.universal_understand = FALSE
 	new_human.status_flags &= ~NO_PERMANENT_DAMAGE
 	new_human.status_flags |= STATUS_FLAGS_DEBILITATE
@@ -1119,6 +1121,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/hunted, WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight/lantern/on, WEAR_R_STORE)
 	new_human.set_species("Human Hero")
+	new_human.species.flags = HAS_SKIN_TONE|HAS_LIPS|NO_SHRAPNEL|HAS_HARDCRIT|HAS_SKIN_COLOR
 	new_human.universal_understand = FALSE
 	new_human.status_flags &= ~NO_PERMANENT_DAMAGE
 	new_human.status_flags |= STATUS_FLAGS_DEBILITATE

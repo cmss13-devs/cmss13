@@ -1,6 +1,6 @@
 /obj/item/weapon/gun/bow
 	name = "hunting bow"
-	desc = "An abnormal-sized weapon with an exeptionally tight string. Requires extraordinary strength to draw."
+	desc = "An abnormal-sized weapon with an exceptionally tight string. Requires extraordinary strength to draw."
 	icon = 'icons/obj/items/hunter/bow.dmi'
 	icon_state = "bow"
 	item_state = "bow"

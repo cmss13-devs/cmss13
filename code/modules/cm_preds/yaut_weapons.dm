@@ -146,7 +146,7 @@
 		. += "Stack up your combo meter by using [SPAN_RED("HARM")] intent, you can then use these combo stacks on different intents to do different finishers."
 		. += "Finish your combo on [SPAN_GREEN("HELP")] intent to slam the target to the ground, incapacitating them for a few seconds, if the target is a xenomorph you do extra damage as well."
 		. += "Finish your combo on [SPAN_BLUE("SHOVE")] intent to throw the target away from you, if you have some chains wrapped around the gauntlet, you'll pull them back towards you. If you are using the special ability, the throw range will be further."
-		. += "Finish your combo on [SPAN_ORANGE("GRAB")] intent to do an execution that instantly kills your target, they must already be unconcious or in critical state."
+		. += "Finish your combo on [SPAN_ORANGE("GRAB")] intent to do an execution that instantly kills your target, they must already be unconscious or in critical state."
 
 /obj/item/weapon/bracer_attachment/chain_gauntlets/attack(mob/living/carbon/target, mob/living/carbon/human/user)
 	. = ..()
@@ -732,7 +732,7 @@
 	if(isyautja(hit_atom))
 		var/mob/living/carbon/human/human = hit_atom
 		if(human.put_in_hands(src))
-			hit_atom.visible_message(SPAN_NOTICE(" [hit_atom] expertly catches [src] out of the air. "),
+			hit_atom.visible_message(SPAN_NOTICE("[hit_atom] expertly catches [src] out of the air. "),
 				SPAN_NOTICE(" You easily catch [src]. "))
 			return
 	..()
@@ -1099,7 +1099,7 @@
 		busy_fishing = TRUE
 		user.visible_message(SPAN_NOTICE("[user] starts aiming \the [src] at the water..."), SPAN_NOTICE("You prepare to catch something in the water..."), max_distance = 3)
 		if(do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-			if(prob(60)) // fishing rods are prefered
+			if(prob(60)) // fishing rods are preferred
 				busy_fishing = FALSE
 				to_chat(user, SPAN_WARNING("You fail to catch anything!"))
 				return

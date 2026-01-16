@@ -286,7 +286,7 @@
 	deploy_roller(user, user.loc)
 
 /// Handles the switch between a item/roller to a structure/bed/roller, and storing one within the other when not in use
-/obj/item/roller/proc/deploy_roller(mob/user, atom/location)
+/obj/item/roller/proc/deploy_roller(mob/user, atom/location, mob/target_mob)
 	if(!length(contents))
 		new rollertype(src)
 	var/obj/structure/bed/roller/roller = locate(rollertype) in contents
@@ -296,10 +296,16 @@
 	user.temp_drop_inv_item(src)
 	forceMove(roller)
 	SEND_SIGNAL(user, COMSIG_MOB_ITEM_ROLLER_DEPLOYED, roller)
+	if(target_mob)
+		roller.buckle_mob(target_mob, user)
 
 /obj/item/roller/afterattack(obj/target, mob/user, proximity)
 	if(!proximity)
 		return
+	if(ismob(target))
+		var/turf/target_turf = get_turf(target)
+		if(!target_turf.density)
+			deploy_roller(user, target_turf, target)
 	if(isturf(target))
 		var/turf/T = target
 		if(!T.density)

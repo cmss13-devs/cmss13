@@ -155,3 +155,26 @@
 	passive_projectile_mult = PROJECTILE_BLOCK_PERC_60
 	readied_block = SHIELD_CHANCE_GODLY
 	readied_projectile_mult = PROJECTILE_BLOCK_PERC_80
+
+/obj/item/weapon/shield/riot/roman
+	name = "imperial scutum shield"
+	desc = "A large metal shield often used by Roman heavy infantry units. Capable of stopping multiple projectiles and melee blows. its size makes it extraordinary difficult to carry around."
+
+	icon_state = "roman_shield"
+	item_state = "roman_shield"
+	base_icon_state = "roman_shield"
+	flags_equip_slot = NO_FLAGS
+	force = MELEE_FORCE_TIER_3
+	passive_block = SHIELD_CHANCE_VHIGH
+	passive_projectile_mult = PROJECTILE_BLOCK_PERC_60
+	readied_block = SHIELD_CHANCE_SUPER
+	readied_projectile_mult = PROJECTILE_BLOCK_PERC_80
+	readied_slowdown = SLOWDOWN_ARMOR_MEDIUM
+	throwforce = MELEE_FORCE_TIER_2
+	throw_speed = SPEED_SLOW
+	throw_range = 3
+	w_class = SIZE_MASSIVE
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/shields_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/shields_righthand.dmi'
+	)

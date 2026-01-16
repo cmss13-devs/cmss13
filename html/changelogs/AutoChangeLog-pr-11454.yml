@@ -1,0 +1,6 @@
+author: "zzzmike"
+delete-after: True
+changes:
+  - admin: "added logging in attack log for when people open stasis bags to grief the hugged people inside"
+  - qol: "stasis bags now check for the open/close cooldown when opening the bag instead of closing it."
+  - bugfix: "message about opening a bag only appears when opening a stasis bag with a mob inside"

@@ -298,9 +298,9 @@
 			last_damage_data = create_cause_data(initial(M.name), M)
 			M.visible_message(SPAN_DANGER("[M] [M.slashes_verb] [src]!"),
 			SPAN_DANGER("We [M.slash_verb] [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-			attack_log += text("\[[time_stamp()]\] <font color='orange'>was [M.slash_verb]ed by [key_name(M)]</font>")
-			M.attack_log += text("\[[time_stamp()]\] <font color='red'>[M.slash_verb]ed [key_name(src)]</font>")
-			log_attack("[key_name(M)] [M.slash_verb]ed [key_name(src)]")
+			attack_log += text("\[[time_stamp()]\] <font color='orange'>was [M.slash_verb]ed by [key_name(M)] at [get_area(src)] ([loc.x],[loc.y],[loc.z])</font>")
+			M.attack_log += text("\[[time_stamp()]\] <font color='red'>[M.slash_verb]ed [key_name(src)] at [get_area(src)] ([loc.x],[loc.y],[loc.z])</font>")
+			log_attack("[key_name(M)] [M.slash_verb]ed [key_name(src)] at [get_area(src)] ([loc.x],[loc.y],[loc.z]).")
 
 			if(custom_slashed_sound)
 				playsound(loc, custom_slashed_sound, 25, 1)

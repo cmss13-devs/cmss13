@@ -538,18 +538,18 @@
 	if(length(dragging_agents) || length(active_agents))
 		movement_handler()
 
-/datum/tutorial/marine/hospital_corpsman_sandbox/proc/item_cleanup(obj/item/item)
+/datum/tutorial/marine/hospital_corpsman_sandbox/proc/item_cleanup(obj/item/dropped)
 	SIGNAL_HANDLER
-	if(item in cleanup)
-		cleanup -= item
-		var/obj/item/storage/internal/stored_items = locate(/obj/item/storage/internal) in item
+	if(dropped in cleanup)
+		cleanup -= dropped
+		var/obj/item/storage/internal/stored_items = locate(/obj/item/storage/internal) in dropped
 		if(stored_items)
-			var/turf/dumping_turf = get_turf(item)
+			var/turf/dumping_turf = get_turf(dropped)
 			for(var/obj/item/stored_item as anything in stored_items)
 				stored_items.remove_from_storage(stored_item, dumping_turf)
 		QDEL_IN(item, 1 SECONDS)
 	else
-		cleanup |= item // marks item for removal once the dummy is ready
+		cleanup |= dropped // marks item for removal once the dummy is ready
 		UnregisterSignal(item, COMSIG_ITEM_UNEQUIPPED)
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/init_mob()
@@ -629,7 +629,6 @@
 #undef TUTORIAL_HM_PHASE_NIGHTMARE
 
 #undef TUTORIAL_HM_DIFFICULTY_INCREASE
-q
 #undef TUTORIAL_HM_INJURY_SEVERITY_BOOBOO
 #undef TUTORIAL_HM_INJURY_SEVERITY_MINOR
 #undef TUTORIAL_HM_INJURY_SEVERITY_ROUTINE

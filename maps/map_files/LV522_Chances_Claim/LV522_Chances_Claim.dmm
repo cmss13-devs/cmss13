@@ -782,25 +782,6 @@
 /obj/structure/machinery/door/airlock/dropship_hatch/two,
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
-"adf" = (
-/obj/effect/decal/cleanable/dirt,
-/mob/living/simple_animal/small/mouse,
-/turf/open/floor/prison,
-/area/lv522/indoors/c_block/cargo)
-"adg" = (
-/obj/structure/surface/table/almayer,
-/obj/effect/landmark/objective_landmark/close,
-/mob/living/simple_animal/small/mouse,
-/turf/open/floor/plating,
-/area/lv522/indoors/c_block/cargo)
-"adh" = (
-/mob/living/simple_animal/small/mouse,
-/turf/open/asphalt/cement,
-/area/lv522/outdoors/colony_streets/east_central_street)
-"adi" = (
-/mob/living/simple_animal/small/mouse,
-/turf/open/floor/prison,
-/area/lv522/indoors/c_block/garage)
 "adj" = (
 /obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/sand_white/layer0,
@@ -844,23 +825,6 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/shale/layer1,
 /area/sky)
-"adp" = (
-/obj/effect/decal/cleanable/dirt,
-/mob/living/simple_animal/small/mouse,
-/turf/open/floor/strata/cyan2/east,
-/area/lv522/indoors/a_block/medical)
-"adq" = (
-/mob/living/simple_animal/small/mouse,
-/turf/open/organic/grass,
-/area/lv522/indoors/a_block/garden)
-"adr" = (
-/obj/structure/machinery/shower{
-	dir = 1
-	},
-/obj/effect/decal/cleanable/dirt,
-/mob/living/simple_animal/small/mouse,
-/turf/open/floor/prison/kitchen,
-/area/lv522/indoors/a_block/fitness)
 "adG" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/reagent_container/food/condiment/saltshaker,
@@ -9999,6 +9963,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/indoors/b_block/bridge)
+"fld" = (
+/mob/living/simple_animal/small/mouse,
+/turf/open/floor/prison,
+/area/lv522/indoors/c_block/garage)
 "fln" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/prop/almayer/computer/PC{
@@ -12520,6 +12488,10 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/bridges/corpo)
+"gIg" = (
+/mob/living/simple_animal/small/mouse,
+/turf/open/asphalt/cement,
+/area/lv522/outdoors/colony_streets/east_central_street)
 "gIh" = (
 /obj/structure/cargo_container/kelland/left,
 /turf/open/asphalt/cement/cement12,
@@ -16302,6 +16274,12 @@
 	},
 /turf/open/floor/corsat/marked,
 /area/lv522/indoors/lone_buildings/storage_blocks/north_west)
+"iPO" = (
+/obj/structure/surface/table/almayer,
+/obj/effect/landmark/objective_landmark/close,
+/mob/living/simple_animal/small/mouse,
+/turf/open/floor/plating,
+/area/lv522/indoors/c_block/cargo)
 "iPR" = (
 /turf/open/asphalt/cement/cement3,
 /area/lv522/outdoors/colony_streets/central_streets)
@@ -16710,6 +16688,14 @@
 	},
 /turf/open/floor/carpet,
 /area/lv522/indoors/b_block/bar)
+"jaY" = (
+/obj/structure/machinery/shower{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/mob/living/simple_animal/small/mouse,
+/turf/open/floor/prison/kitchen,
+/area/lv522/indoors/a_block/fitness)
 "jbd" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -17676,6 +17662,11 @@
 	},
 /turf/open/floor/plating,
 /area/lv522/indoors/a_block/admin)
+"jAI" = (
+/obj/effect/decal/cleanable/dirt,
+/mob/living/simple_animal/small/mouse,
+/turf/open/floor/prison,
+/area/lv522/indoors/c_block/cargo)
 "jAV" = (
 /obj/item/prop/alien/hugger{
 	pixel_x = -12;
@@ -26919,6 +26910,11 @@
 /obj/structure/machinery/door/airlock/almayer/maint,
 /turf/open/floor/corsat/marked,
 /area/lv522/indoors/c_block/mining)
+"ogZ" = (
+/obj/effect/decal/cleanable/dirt,
+/mob/living/simple_animal/small/mouse,
+/turf/open/floor/strata/cyan2/east,
+/area/lv522/indoors/a_block/medical)
 "oht" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -37475,6 +37471,10 @@
 /obj/structure/cargo_container/grant/right,
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/central_streets)
+"twY" = (
+/mob/living/simple_animal/small/mouse,
+/turf/open/organic/grass,
+/area/lv522/indoors/a_block/garden)
 "txK" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/effect/decal/cleanable/dirt,
@@ -61020,7 +61020,7 @@ nSC
 usy
 xtb
 nSC
-adr
+jaY
 xtb
 xAO
 mMr
@@ -65207,7 +65207,7 @@ tnM
 wHU
 woq
 qsC
-adg
+iPO
 jmG
 wly
 qic
@@ -68513,7 +68513,7 @@ wiE
 wiE
 yhi
 wdd
-adf
+jAI
 six
 cqH
 qic
@@ -70932,7 +70932,7 @@ ulZ
 ulZ
 ulZ
 ulZ
-adq
+twY
 ulZ
 ulZ
 pKX
@@ -75501,7 +75501,7 @@ xXg
 xXg
 xXg
 xXg
-adh
+gIg
 xXg
 xXg
 vNk
@@ -75907,7 +75907,7 @@ rnB
 rnB
 igT
 oLg
-adh
+gIg
 ceG
 sRY
 xXg
@@ -76124,7 +76124,7 @@ uuD
 uuD
 uuD
 lFO
-adh
+gIg
 imT
 xvl
 xvl
@@ -77951,7 +77951,7 @@ rYD
 bHg
 tTK
 aWw
-adp
+ogZ
 idt
 vxY
 qxL
@@ -79007,7 +79007,7 @@ tID
 owQ
 tID
 tID
-adi
+fld
 mkW
 bdH
 uaI

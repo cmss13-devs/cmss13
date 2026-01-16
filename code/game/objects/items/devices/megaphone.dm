@@ -1,6 +1,6 @@
 /obj/item/device/megaphone
 	name = "megaphone"
-	desc = "A device used to project your voice. Loudly. Pressing unique action will toggle voice amplification on and off. While active, using the megaphone will broadcast your message to a much larger area."
+	desc = "A device used to project your voice. Loudly. Pressing unique action will toggle voice amplification on and off. While active on your active hand, speaking will project your message to a much larger area."
 	icon_state = "megaphone"
 	item_state = "megaphone"
 	icon = 'icons/obj/items/tools.dmi'
@@ -69,9 +69,9 @@
 			if(speaking)
 				if(!listener.say_understands(user, speaking))
 					broadcast = speaking.scramble(message)
-				broadcast = "<span class='[speaking.color]'>[broadcast]</span>"
+				broadcast = "<span class='[speaking.color]'>\"[broadcast]\"</span>"
 
-			listener.show_message("<B>[paygrade][user]</B> broadcasts, [FONT_SIZE_LARGE("\"[broadcast]\"")]", SHOW_MESSAGE_AUDIBLE) // 2 stands for hearable message
+			listener.show_message("<B>[paygrade][user]</B> broadcasts, [FONT_SIZE_LARGE(broadcast)]", SHOW_MESSAGE_AUDIBLE) // 2 stands for hearable message
 
 			if(isliving(listener))
 				var/mob/living/audience = listener

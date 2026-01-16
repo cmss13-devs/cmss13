@@ -213,8 +213,7 @@ Contains most of the procs that are called when a mob is attacked by something
 			return
 		else if(COMSIG_MOB_PREPARED_SWING in comp_lookup)
 			var/obj/item/weapon/baseballbat/bat = comp_lookup[COMSIG_MOB_PREPARED_SWING]
-			bat.swing(src, O, LM)
-			return
+			return bat.swing(src, O, LM)
 	var/dtype = BRUTE
 	if (istype(O, /obj/item/weapon))
 		var/obj/item/weapon/W = O

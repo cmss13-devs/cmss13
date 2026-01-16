@@ -80,7 +80,8 @@
 			else
 				CB.Invoke(hit_atom)
 	else if (isliving(hit_atom))
-		mob_launch_collision(hit_atom)
+		if(mob_launch_collision(hit_atom) & (COMSIG_MOB_PREPARED_SWING_PASSTHROUGH|COMSIG_MOB_PREPARED_SWING_SWUNG))
+			return
 	else if (isobj(hit_atom)) // Thrown object hits another object and moves it
 		obj_launch_collision(hit_atom)
 	else if (isturf(hit_atom))
@@ -93,7 +94,7 @@
 
 /atom/movable/proc/mob_launch_collision(mob/living/L)
 	if (!rebounding)
-		L.hitby(src)
+		return L.hitby(src)
 
 /atom/movable/proc/obj_launch_collision(obj/O)
 	if (!O.anchored && !rebounding && !isxeno(src))
@@ -253,17 +254,30 @@
 	throw_atom(furthest_turf, range, speed, thrower, spin, launch_type, pass_flags)
 
 /atom/movable/proc/throw_in_random_direction_from_arc(range, speed = 0, atom/thrower, spin, launch_type = NORMAL_LAUNCH, pass_flags = NO_FLAGS, directional = NORTH)
-	var/directions = get_directions_in_arc(directional) - directional
-	var/selected_turf = get_turf(src)
+	var/directions = get_directions_in_arc(directional)
+	var/starting_turf = get_turf(src)
+	var/selected_turf = starting_turf
 
 	var/list/key_points = list()
 	var/list/turf/turfs_to_pick = list()
+	var/range_bonus = 0
 
 	for(var/direction in directions)
-		key_points += get_ranged_target_turf(selected_turf, direction, range)
+		if(speed > SPEED_FAST)
+			if(range > 2)
+				if(range_bonus == 0)
+					range_bonus = 1
+				else if(range_bonus == 2 || range_bonus == 1)
+					range_bonus = 0
+				if(length(key_points) == 2)
+					range_bonus = 2
+		key_points += get_ranged_target_turf(selected_turf, direction, range + range_bonus)
 	for(var/i in 1 to length(key_points)-1)
 		turfs_to_pick += get_line(key_points[i], key_points[i+1])
+	for(var/turf/turfs in turfs_to_pick)
+		turfs.color = "#ff0000"
 
 	selected_turf = pick(turfs_to_pick)
+	range = get_dist(starting_turf, selected_turf)
 
 	throw_atom(selected_turf, range, speed, thrower, spin, launch_type, pass_flags)

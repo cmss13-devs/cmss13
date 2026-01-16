@@ -88,7 +88,7 @@
 	var/next_swing
 	var/prepared_to_swing = FALSE
 	var/list/hit_message_list = list("bunts it", "whacks it", "sends it", "drives it hard", "launches it flying")
-	var/list/miss_message_list = list("swings and misses!", "swings way too early!"," swings late!")
+	var/list/miss_message_list = list("swings and misses!", "swings way too early!","swings late!")
 
 /obj/item/weapon/baseballbat/attack_self(mob/living/carbon/human/user)
 	. = ..()
@@ -121,28 +121,30 @@
 			user.visible_message(SPAN_NOTICE("[user] slams the bat into [hit_object] stopping it."), SPAN_NOTICE("You slam the bat into [hit_object] stopping it, but not much more."))
 			hit_object.forceMove(get_step(user.loc, user.dir))
 			return TRUE
-
+	var/max_throw_range = clamp(ceil(throw_range * 1.5), 3, 10)
 	var/random_speed = (rand(2, 15)) / 10
-	var/range = clamp(floor((rand(3, 7)* random_speed) * size_bonus), 1, 10)
-	var/speed = clamp((hit_object.throw_speed * random_speed) * size_bonus, SPEED_SLOW, SPEED_REALLY_FAST)
+	var/range = clamp(floor((rand(3, 7)* random_speed) * size_bonus), 1, max_throw_range)
+	var/speed = clamp(((hit_object.throw_speed / 2) * random_speed) * size_bonus, MIN_SPEED, SPEED_REALLY_FAST)
 	var/launch = pick(HIGH_LAUNCH, NORMAL_LAUNCH)
 	var/hit_chance = 55 * size_bonus
 
+	launch_data.relaunched = TRUE
+
 	if(prob(hit_chance))
-		launch_data.relaunched = TRUE
 		do_item_attack_animation(hit_object, null, src)
 		hit_object.throw_in_random_direction_from_arc(range, speed, user, TRUE, launch, directional = user.dir)
 		user.visible_message(SPAN_NOTICE("[user] hits the [hit_object] and [hit_message_list[ceil(range/2)]] [launch == HIGH_LAUNCH ? "in a high arc" : "in a flat arc"] with [src]!"), \
 		SPAN_NOTICE("You hits the [hit_object] and [hit_message_list[ceil(range/2)]] [launch == HIGH_LAUNCH ? "in a high arc" : "in a flat arc"] with [src]!"))
-		return TRUE
+		return COMSIG_MOB_PREPARED_SWING_SWUNG
 	else
+		hit_object.forceMove(user.loc)
+		hit_object.throw_atom(launch_data.target, launch_data.range, launch_data.speed, user, TRUE, NORMAL_LAUNCH)
 		if(prob(90))
 			var/miss_message = pick(miss_message_list)
 			user.visible_message(SPAN_NOTICE("[user] [miss_message]"), SPAN_NOTICE("You [miss_message]"))
 		else
 			user.visible_message(SPAN_NOTICE("[user] doesn't swing at all!"), SPAN_NOTICE("You were way too late and don't swing at all! How embarassing!"))
-		return FALSE
-
+		return COMSIG_MOB_PREPARED_SWING_PASSTHROUGH
 /obj/item/weapon/baseballbat/proc/removed_prepared_swing(mob/living/carbon/human/user, swung = FALSE)
 	if(prepared_to_swing)
 		prepared_to_swing = FALSE

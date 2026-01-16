@@ -172,6 +172,8 @@
 
 /// From /obj/item/weapon/baseballbat/attack_self() : (mob/user)
 #define COMSIG_MOB_PREPARED_SWING "mob_prepared_swing"
+	#define COMSIG_MOB_PREPARED_SWING_SWUNG (1<<0)
+	#define COMSIG_MOB_PREPARED_SWING_PASSTHROUGH (1<<1)
 
 /// From /mob/proc/get_status_tab_items() : (list/status_list)
 #define COMSIG_MOB_GET_STATUS_TAB_ITEMS "mob_get_status_tab_items"

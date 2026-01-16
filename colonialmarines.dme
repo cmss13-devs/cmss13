@@ -591,8 +591,6 @@
 #include "code\datums\emergency_calls\pred_hunt\hunting_calls.dm"
 #include "code\datums\entities\chemical_information.dm"
 #include "code\datums\entities\clans.dm"
-#include "code\datums\entities\discord_identifier.dm"
-#include "code\datums\entities\discord_link.dm"
 #include "code\datums\entities\login_triplets.dm"
 #include "code\datums\entities\map_votes.dm"
 #include "code\datums\entities\mc_controller.dm"

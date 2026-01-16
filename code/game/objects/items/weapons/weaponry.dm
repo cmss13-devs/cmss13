@@ -118,15 +118,16 @@
 			size_bonus = 0.9
 		else
 			playsound(src, hitsound, 40, sound_range = 7)
+			do_item_attack_animation(hit_object, null, src)
 			user.visible_message(SPAN_NOTICE("[user] slams the bat into [hit_object] stopping it."), SPAN_NOTICE("You slam the bat into [hit_object] stopping it, but not much more."))
 			hit_object.forceMove(get_step(user.loc, user.dir))
 			return COMSIG_MOB_PREPARED_SWING_SWUNG
 
 	var/max_throw_range = clamp(ceil(throw_range * 1.5), 3, 10)
+	var/launch = pick(HIGH_LAUNCH, NORMAL_LAUNCH)
 	var/random_speed = (rand(2, 15)) / 10
 	var/range = clamp(floor((rand(3, 7)* random_speed) * size_bonus), 1, max_throw_range)
-	var/speed = clamp(((hit_object.throw_speed / 2) * random_speed) * size_bonus, MIN_SPEED, SPEED_REALLY_FAST)
-	var/launch = pick(HIGH_LAUNCH, NORMAL_LAUNCH)
+	var/speed = clamp(((hit_object.throw_speed / 2) * random_speed * (launch == HIGH_LAUNCH ? 0.7 : 1)) * size_bonus, MIN_SPEED, SPEED_REALLY_FAST)
 	var/hit_chance = 55 * size_bonus
 
 	launch_data.relaunched = TRUE

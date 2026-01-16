@@ -1,6 +1,6 @@
 /obj/item/device/megaphone
 	name = "megaphone"
-	desc = "A device used to project your voice. Loudly."
+	desc = "A device used to project your voice. Loudly. Pressing unique action will toggle voice amplification on and off. While active, using the megaphone will broadcast your message to a much larger area."
 	icon_state = "megaphone"
 	item_state = "megaphone"
 	icon = 'icons/obj/items/tools.dmi'
@@ -12,13 +12,25 @@
 	flags_atom = FPRINT|CONDUCT
 
 	var/spam_cooldown_time = 2 SECONDS
+	var/amplifying = FALSE
 	COOLDOWN_DECLARE(spam_cooldown)
+
+/obj/item/device/megaphone/unique_action(mob/living/user)
+	amplifying = !amplifying
+	if(amplifying)
+		to_chat(user, SPAN_HELPFUL("You toggle the [src] on, amplifying your voice so long as it is on your active hand."))
+		. += SPAN_INFO("It is currently toggled on and amplifying your voice.")
+	else
+		to_chat(user, SPAN_NOTICE("You toggle the [src] off."))
+		. += SPAN_INFO("It is currently toggled off.")
+
+	playsound(loc, 'sound/weapons/handling/safety_toggle.ogg', 25, 1, 6)
 
 /obj/item/device/megaphone/attack_self(mob/living/user)
 	. = ..()
 	if(user.client)
 		if(user.client?.prefs?.muted & MUTE_IC)
-			to_chat(src, SPAN_DANGER("You cannot speak in IC (muted)."))
+			to_chat(user, SPAN_DANGER("You cannot speak in IC (muted)."))
 			return
 	if(!ishumansynth_strict(user))
 		to_chat(user, SPAN_DANGER("You don't know how to use this!"))

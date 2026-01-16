@@ -58,7 +58,8 @@
 	var/verb = "says"
 	var/alt_name = ""
 	var/message_range = GLOB.world_view_size
-	var/italics = 0
+	var/italics = FALSE
+	var/langchat_override
 
 	if(!able_to_speak)
 		to_chat(src, SPAN_DANGER("You try to speak, but nothing comes out!"))
@@ -155,6 +156,14 @@
 					var/earpiece = get_type_in_ears(/obj/item/device/radio)
 					if(earpiece)
 						used_radios += earpiece
+				else
+					var/obj/item/device/megaphone/megaphone = get_active_hand()
+					if(istype(megaphone) && megaphone.amplifying) //istype necessary here
+						message = FONT_SIZE_LARGE(message)
+						message_range = GLOB.world_view_size * 2 // this means you can hear it from off screen by a good bit
+						playsound(loc, 'sound/items/megaphone.ogg', 100, FALSE, TRUE)
+						verb = "broadcasts"
+						langchat_override = "langchat_announce"
 
 		var/sound/speech_sound
 		var/sound_vol
@@ -175,10 +184,10 @@
 			if(ishumansynth_strict(src))
 				playsound(src.loc, 'sound/effects/radiostatic.ogg', 15, 1)
 
-			italics = 1
+			italics = TRUE
 			message_range = 2
 
-		..(message, speaking, verb, alt_name, italics, message_range, speech_sound, sound_vol, 0, message_mode) //ohgod we should really be passing a datum here.
+		..(message, speaking, verb, alt_name, italics, message_range, speech_sound, sound_vol, 0, message_mode, langchat_override = langchat_override) //ohgod we should really be passing a datum here.
 
 		INVOKE_ASYNC(src, TYPE_PROC_REF(/mob/living/carbon/human, say_to_radios), used_radios, message, message_mode, verb, speaking)
 

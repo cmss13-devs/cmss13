@@ -498,8 +498,10 @@
 		voice("Warning: Medicinal container missing.")
 		return
 	var/reagents_in_harness = length(acid_harness.beaker.reagents.reagent_list)
+
 	for(var/datum/reagent/R in acid_harness.beaker.reagents.reagent_list)
-		if(R.overdose && user.reagents.get_reagent_amount(R.id) + (inject_amount / reagents_in_harness) > R.overdose) //Don't overdose our boi
+		var/amount_in_inject = (acid_harness.beaker.reagents.get_reagent_amount(R.id) / acid_harness.beaker.reagents.total_volume) * inject_amount
+		if(R.overdose && (user.reagents.get_reagent_amount(R.id) + amount_in_inject) > R.overdose) //Don't overdose our boi
 			voice("Notice: Injection trigger cancelled to avoid overdose.")
 			scan_interval = ACID_DEAFUALT_SCAN_INTERVAL + ((ACID_DEAFUALT_SCAN_INTERVAL*0.2) * inject_amount) //Add 20% of scan time per reagent unit ontop of normal scan time for a bigger period inbetween
 			rechecking = TRUE

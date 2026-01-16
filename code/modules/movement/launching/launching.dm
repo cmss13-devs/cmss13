@@ -263,14 +263,13 @@
 	var/range_bonus = 0
 
 	for(var/direction in directions)
-		if(speed > SPEED_FAST)
-			if(range > 2)
-				if(range_bonus == 0)
-					range_bonus = 1
-				else if(range_bonus == 2 || range_bonus == 1)
-					range_bonus = 0
-				if(length(key_points) == 2)
-					range_bonus = 2
+		if(speed > SPEED_FAST && range > 2)
+			if(range_bonus == 0)
+				range_bonus = 1
+			else if(range_bonus == 2 || range_bonus == 1)
+				range_bonus = 0
+			if(length(key_points) == 2)
+				range_bonus = 2
 		key_points += get_ranged_target_turf(selected_turf, direction, range + range_bonus)
 	for(var/i in 1 to length(key_points)-1)
 		turfs_to_pick += get_line(key_points[i], key_points[i+1])

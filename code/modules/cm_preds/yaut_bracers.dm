@@ -891,6 +891,9 @@
 		if(user.faction == FACTION_YAUTJA_YOUNG)
 			to_chat(user, SPAN_WARNING("You have not earned that right yet!"))
 			return
+		if(isthrall(user))
+			to_chat(user, SPAN_WARNING("The device is preventing you access of this feature as it detects you being a thrall."))
+			return
 		user.put_in_active_hand(caster)
 		caster_deployed = TRUE
 		if(user.client?.prefs.custom_cursors)
@@ -988,6 +991,9 @@
 		return
 	if(user.faction == FACTION_YAUTJA_YOUNG)
 		to_chat(boomer, SPAN_WARNING("You don't yet understand how to use this.")) // No SDing for youngbloods
+		return
+	if(isthrall(user))
+		to_chat(boomer, SPAN_WARNING("The device is preventing you access of this feature as it detects you being a thrall."))
 		return
 
 	var/obj/item/grab/G = boomer.get_active_hand()
@@ -1099,6 +1105,10 @@
 
 	if(user.faction == FACTION_YAUTJA_YOUNG)
 		to_chat(user, SPAN_WARNING("This button is not for you."))
+		return
+
+	if(isthrall(user))
+		to_chat(user, SPAN_WARNING("The device is preventing you access of this feature as it detects you being a thrall."))
 		return
 
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
@@ -1256,6 +1266,10 @@
 	if(user.is_mob_incapacitated())
 		return FALSE
 
+	if(!isyautja(user))
+		to_chat(user, SPAN_WARNING("You have no idea how to use this."))
+		return FALSE
+
 	. = check_random_function(user, forced)
 	if(.)
 		return
@@ -1281,6 +1295,10 @@
 
 /obj/item/clothing/gloves/yautja/hunter/proc/add_tracked_item_internal(mob/user, forced = FALSE)
 	if(user.is_mob_incapacitated())
+		return FALSE
+
+	if(!isyautja(user))
+		to_chat(user, SPAN_WARNING("You have no idea how to use this."))
 		return FALSE
 
 	. = check_random_function(user, forced)

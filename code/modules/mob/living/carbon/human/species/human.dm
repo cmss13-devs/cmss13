@@ -127,8 +127,15 @@
 /datum/species/human/hero/thrall
 	name = "Thrall"
 	name_plural = "Thralls"
+	flags = HAS_SKIN_TONE|HAS_LIPS|HAS_UNDERWEAR|HAS_HARDCRIT|HAS_SKIN_COLOR|NO_SHRAPNEL
+	mob_inherent_traits = list(
+		TRAIT_DEXTROUS,
+		TRAIT_IRON_TEETH,
+		TRAIT_SUPER_STRONG,
+	)
 	weed_slowdown_mult = 0
 	acid_blood_dodge_chance = 70
+	total_health = 150
 
 /datum/species/human/hero/thrall/handle_post_spawn(mob/living/carbon/human/thrall)
 	thrall.universal_understand = FALSE

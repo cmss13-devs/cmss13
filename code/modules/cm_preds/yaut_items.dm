@@ -334,7 +334,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	minimap_flag = MINIMAP_FLAG_YAUTJA
 
 /obj/item/device/radio/headset/yautja/talk_into(mob/living/M as mob, message, channel, verb = "commands", datum/language/speaking)
-	if(!isyautja(M)) //Nope.
+	if(!isyautja(M) && !isthrall(M)) //Nope.
 		to_chat(M, SPAN_WARNING("You try to talk into the headset, but just get a horrible shrieking in your ears!"))
 		return
 
@@ -527,6 +527,10 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	. = ..()
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		to_chat(user, SPAN_WARNING("You do not understand how to use this console."))
+		return
+
+	if(isthrall(user))
+		to_chat(user, SPAN_WARNING("Your master would not like you to use this."))
 		return
 
 	if(user.faction == FACTION_YAUTJA_YOUNG)

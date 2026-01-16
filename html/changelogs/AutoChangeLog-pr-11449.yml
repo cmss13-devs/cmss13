@@ -1,0 +1,5 @@
+author: "Puckaboo2"
+delete-after: True
+changes:
+  - balance: "Hunting Ground marines no longer start with a full belly, but normal belly."
+  - bugfix: "Hunting Ground Smartgunners no longer start with an empty belly."

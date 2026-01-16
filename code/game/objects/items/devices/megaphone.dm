@@ -15,14 +15,20 @@
 	var/amplifying = FALSE
 	COOLDOWN_DECLARE(spam_cooldown)
 
+/obj/item/device/megaphone/get_examine_text(mob/user)
+	. = ..()
+	if(amplifying)
+		. += SPAN_HELPFUL("It is currently toggled on and amplifying your voice.")
+	else
+		. += SPAN_WARNING("It is currently toggled off.")
+
+
 /obj/item/device/megaphone/unique_action(mob/living/user)
 	amplifying = !amplifying
 	if(amplifying)
 		to_chat(user, SPAN_HELPFUL("You toggle the [src] on, amplifying your voice so long as it is on your active hand."))
-		. += SPAN_INFO("It is currently toggled on and amplifying your voice.")
 	else
 		to_chat(user, SPAN_NOTICE("You toggle the [src] off."))
-		. += SPAN_INFO("It is currently toggled off.")
 
 	playsound(loc, 'sound/weapons/handling/safety_toggle.ogg', 25, 1, 6)
 

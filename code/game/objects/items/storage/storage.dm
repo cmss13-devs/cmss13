@@ -915,7 +915,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 /obj/item/storage/proc/dump_important_items()
 	for(var/obj/item/cur_item in src)
 		if(cur_item.is_objective)
-			remove_from_storage(cur_item)
+			remove_from_storage(cur_item, loc)
 
 /obj/item/storage/Destroy()
 	dump_important_items()

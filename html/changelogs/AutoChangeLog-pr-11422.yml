@@ -1,0 +1,4 @@
+author: "MistChristmas"
+delete-after: True
+changes:
+  - bugfix: "Coffee Machine no longer generates a magical cup when you brew coffee with your hands full."

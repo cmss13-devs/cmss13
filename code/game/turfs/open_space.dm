@@ -48,7 +48,7 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 		return FALSE
 
 	for(var/atom/possible_blocker in projected_turf.contents)
-		if(possible_blocker.density)
+		if(possible_blocker.density && !ismob(possible_blocker))
 			return FALSE
 
 	return TRUE

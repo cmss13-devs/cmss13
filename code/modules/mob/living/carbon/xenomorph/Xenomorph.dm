@@ -133,11 +133,6 @@
 	var/weed_level = WEED_LEVEL_STANDARD
 	var/acid_level = 0
 
-	// Fire Immunity/Vulnerability/Resistance
-	// Basically copies of the respective vars on caste_datum for referance simplicity
-	var/fire_immunity = FIRE_IMMUNITY_NONE
-	var/fire_modifier_mult = 0
-
 	/// The xeno's strain, if they've taken one.
 	var/datum/xeno_strain/strain = null
 
@@ -185,9 +180,6 @@
 
 	/// this is the resin mark that is currently being tracked by the xeno
 	var/obj/effect/alien/resin/marker/tracked_marker
-	///The type of minimap this xeno has access too
-	var/datum/action/minimap/minimap_type = /datum/action/minimap/xeno
-	var/datum/weakref/minimap_ref
 
 	//////////////////////////////////////////////////////////////////
 	//
@@ -324,8 +316,6 @@
 
 	var/icon_xeno
 	var/icon_xenonid
-	var/xenonid_pixel_x
-	var/xenonid_pixel_y
 	/// Stores the overlay icon for spitting/drooling when acid-based abilities are selected
 	var/acid_overlay
 
@@ -433,8 +423,18 @@
 	if(caste_type && GLOB.xeno_datum_list[caste_type])
 		caste = GLOB.xeno_datum_list[caste_type]
 
-		//Fire immunity stuff
-		set_initial_fire_immunity()
+		//Fire immunity signals
+		if (HAS_FLAG(caste.fire_immunity, FIRE_IMMUNITY_NO_DAMAGE | FIRE_IMMUNITY_NO_IGNITE | FIRE_IMMUNITY_XENO_FRENZY))
+			if(caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE)
+				RegisterSignal(src, COMSIG_LIVING_PREIGNITION, PROC_REF(fire_immune))
+
+			RegisterSignal(src, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED), PROC_REF(flamer_crossed_immune))
+		else
+			UnregisterSignal(src, list(
+				COMSIG_LIVING_PREIGNITION,
+				COMSIG_LIVING_FLAMER_CROSSED,
+				COMSIG_LIVING_FLAMER_FLAMED
+			))
 
 		if(caste.spit_types && length(caste.spit_types))
 			ammo = GLOB.ammo_list[caste.spit_types[1]]
@@ -490,11 +490,11 @@
 	time_of_birth = world.time
 
 	//Minimap
-	if(hivenumber != XENO_HIVE_TUTORIAL)
+	if(z && hivenumber != XENO_HIVE_TUTORIAL)
 		INVOKE_NEXT_TICK(src, PROC_REF(add_minimap_marker))
 
 	//Sight
-	sight |= (SEE_MOBS|SEE_BLACKNESS|SEE_TURFS)
+	sight |= SEE_MOBS
 	see_invisible = SEE_INVISIBLE_LIVING
 	see_in_dark = 12
 
@@ -519,27 +519,12 @@
 	if (hive && hive.hive_ui)
 		hive.hive_ui.update_all_xeno_data()
 
-	if(hive.hivenumber != XENO_HIVE_NORMAL)
-		remove_verb(src, /mob/living/carbon/xenomorph/verb/view_tacmaps)
-	minimap_ref = WEAKREF(new minimap_type(hive_number=hive.hivenumber))
-	var/datum/action/minimap/ref = minimap_ref.resolve()
-	ref.give_to(src, ref)
-	RegisterSignal(hive, COMSIG_XENO_REVEAL_TACMAP, PROC_REF(update_minimap_see_humans))
-
 	creation_time = world.time
 
 	Decorate()
 
 	RegisterSignal(src, COMSIG_MOB_SCREECH_ACT, PROC_REF(handle_screech_act))
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_XENO_SPAWN, src)
-
-/mob/living/carbon/xenomorph/proc/update_minimap_see_humans()
-	var/datum/action/minimap/ref = minimap_ref.resolve()
-	ref.remove_from(src)
-
-	minimap_ref = WEAKREF(new /datum/action/minimap/xeno/see_humans)
-	ref = minimap_ref.resolve()
-	ref.give_to(src, ref)
 
 /mob/living/carbon/xenomorph/proc/handle_screech_act(mob/self, mob/living/carbon/xenomorph/queen/queen)
 	SIGNAL_HANDLER
@@ -551,16 +536,10 @@
 /mob/living/carbon/xenomorph/proc/add_minimap_marker(flags)
 	if(!flags)
 		flags = get_minimap_flag_for_faction(hivenumber)
-
-	var/image/background = image('icons/ui_icons/map_blips.dmi', null, caste.minimap_background)
-	var/image/xeno = image('icons/ui_icons/map_blips.dmi', null, caste.minimap_icon)
-	background.overlays += xeno
 	if(IS_XENO_LEADER(src))
-		var/image/overlay = image('icons/ui_icons/map_blips.dmi', null, "xenoleader")
-		background.overlays += overlay
-		SSminimaps.add_marker(src, flags, background)
+		SSminimaps.add_marker(src, z, hud_flags = flags, given_image = caste.get_minimap_icon(), overlay_iconstates = list(caste.minimap_leadered_overlay))
 		return
-	SSminimaps.add_marker(src, flags, background)
+	SSminimaps.add_marker(src, z, hud_flags = flags, given_image = caste.get_minimap_icon())
 
 /mob/living/carbon/xenomorph/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
@@ -574,135 +553,26 @@
 /mob/living/carbon/xenomorph/initialize_stamina()
 	stamina = new /datum/stamina/none(src)
 
-// Fire Immunity Signal Procs
-// No Damage - Can be set on fire, but will not take damage. No preignition proc.
-/mob/living/carbon/xenomorph/proc/flamer_cross_no_damage(mob/living/carbon/xenomorph/xeno, datum/reagent/reagent_thing)
+/mob/living/carbon/xenomorph/proc/fire_immune(mob/living/L)
 	SIGNAL_HANDLER
 
-	if(reagent_thing.fire_penetrating)
+	if(L.fire_reagent?.fire_penetrating && !HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
+		return
+
+	return COMPONENT_CANCEL_IGNITION
+
+/mob/living/carbon/xenomorph/proc/flamer_crossed_immune(mob/living/L, datum/reagent/R)
+	SIGNAL_HANDLER
+
+	if(R.fire_penetrating)
 		return
 
 	. = COMPONENT_NO_BURN
-
-	if(fire_immunity & FIRE_IMMUNITY_XENO_FRENZY)
+	// Burrowed xenos also cannot be ignited
+	if((caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE) || HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
+		. |= COMPONENT_NO_IGNITE
+	if(caste.fire_immunity & FIRE_IMMUNITY_XENO_FRENZY)
 		. |= COMPONENT_XENO_FRENZY
-
-// No Ignition - Cannot be set on fire, but will take damage. Has preignition and flamer proc
-/mob/living/carbon/xenomorph/proc/preignition_no_ignition(mob/living/carbon/xenomorph/xeno)
-	SIGNAL_HANDLER
-
-	if(xeno.fire_reagent?.fire_penetrating && !HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
-		return
-
-	return COMPONENT_CANCEL_IGNITION
-
-/mob/living/carbon/xenomorph/proc/flamer_cross_no_ignition(mob/living/carbon/xenomorph/xeno, datum/reagent/reagent_thing)
-	SIGNAL_HANDLER
-
-	if(reagent_thing.fire_penetrating)
-		return
-
-	. |= COMPONENT_NO_IGNITE
-
-	if(fire_immunity & FIRE_IMMUNITY_XENO_FRENZY)
-		. |= COMPONENT_XENO_FRENZY
-
-// Complete Immunity - Cannot be set on fire and will not take damage
-/mob/living/carbon/xenomorph/proc/preignition_complete_immunity(mob/living/carbon/xenomorph/xeno)
-	SIGNAL_HANDLER
-
-	if(xeno.fire_reagent?.fire_penetrating && !HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
-		return
-
-	return COMPONENT_CANCEL_IGNITION
-
-/mob/living/carbon/xenomorph/proc/flamer_cross_complete_immunity(mob/living/carbon/xenomorph/xeno, datum/reagent/reagent_thing)
-	SIGNAL_HANDLER
-
-	if(reagent_thing.fire_penetrating)
-		return
-
-	. |= COMPONENT_NO_IGNITE
-	. |= COMPONENT_NO_BURN
-
-	if(fire_immunity & FIRE_IMMUNITY_XENO_FRENZY)
-		. |= COMPONENT_XENO_FRENZY
-
-// Burrower Immunity - Same as Complete Immunity, however requires TRAIT_ABILITY_BURROWED for effects to kick in
-/mob/living/carbon/xenomorph/proc/preignition_burrower_immunity(mob/living/carbon/xenomorph/xeno)
-	SIGNAL_HANDLER
-
-	if(!HAS_TRAIT(xeno, TRAIT_ABILITY_BURROWED))
-		return
-
-	if(xeno.fire_reagent?.fire_penetrating && !HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
-		return
-
-	return COMPONENT_CANCEL_IGNITION
-
-/mob/living/carbon/xenomorph/proc/flamer_cross_burrower_immunity(mob/living/carbon/xenomorph/xeno, datum/reagent/reagent_thing)
-	SIGNAL_HANDLER
-
-	if(!HAS_TRAIT(xeno, TRAIT_ABILITY_BURROWED))
-		return
-
-	if(reagent_thing.fire_penetrating)
-		return
-
-	. |= COMPONENT_NO_IGNITE
-	. |= COMPONENT_NO_BURN
-
-	if(fire_immunity & FIRE_IMMUNITY_XENO_FRENZY)
-		. |= COMPONENT_XENO_FRENZY
-
-/// Registers the caste_datum's fire immunity info onto the mob, then adds signals. The mob immunity is what gets altered by strains and/or other things.
-/mob/living/carbon/xenomorph/proc/set_initial_fire_immunity()
-	fire_immunity = caste.fire_immunity
-	fire_modifier_mult = caste.fire_modifier_mult
-	add_fire_immunity_signals()
-
-/// Removes any registered signals, re-registers the the caste_datum's initial fire immunity info onto the mob, then reapplies signals.
-/// As the caste info should *NOT* be changed by anything, this is more of an admin failsafe to make *absolutely sure* that the Xeno is back to initial fire immunity should something go wrong somehow.
-/mob/living/carbon/xenomorph/proc/reset_to_initial_fire_immunity()
-	remove_fire_immunity_signals()
-	fire_immunity = initial(caste.fire_immunity)
-	fire_modifier_mult = initial(caste.fire_modifier_mult)
-	add_fire_immunity_signals()
-
-/// Removes and readds fire immunity signals. This is to account for frequently shifting immunities, like hivebuff.
-/mob/living/carbon/xenomorph/proc/refresh_fire_immunity()
-	remove_fire_immunity_signals()
-	add_fire_immunity_signals()
-
-/// The actual proc that adds fire immunity signals based on fire immunity flags registered to the Xenomorph.
-/mob/living/carbon/xenomorph/proc/add_fire_immunity_signals()
-	var/valid_immunity = fire_immunity
-	if(fire_immunity & FIRE_IMMUNITY_XENO_FRENZY)
-		valid_immunity -= FIRE_IMMUNITY_XENO_FRENZY
-
-	switch(valid_immunity)
-		if(FIRE_IMMUNITY_NO_DAMAGE)
-			RegisterSignal(src, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED), PROC_REF(flamer_cross_no_damage))
-
-		if(FIRE_IMMUNITY_NO_IGNITE)
-			RegisterSignal(src, COMSIG_LIVING_PREIGNITION, PROC_REF(preignition_no_ignition))
-			RegisterSignal(src, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED), PROC_REF(flamer_cross_no_ignition))
-
-		if(FIRE_IMMUNITY_COMPLETE)
-			RegisterSignal(src, COMSIG_LIVING_PREIGNITION, PROC_REF(preignition_complete_immunity))
-			RegisterSignal(src, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED), PROC_REF(flamer_cross_complete_immunity))
-
-		if(FIRE_IMMUNITY_BURROWER)
-			RegisterSignal(src, COMSIG_LIVING_PREIGNITION, PROC_REF(preignition_burrower_immunity))
-			RegisterSignal(src, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED), PROC_REF(flamer_cross_burrower_immunity))
-
-/// Removes all fire immunity related signals on a Xenomorph.
-/mob/living/carbon/xenomorph/proc/remove_fire_immunity_signals()
-		UnregisterSignal(src, list(
-			COMSIG_LIVING_PREIGNITION,
-			COMSIG_LIVING_FLAMER_CROSSED,
-			COMSIG_LIVING_FLAMER_FLAMED
-		))
 
 //Off-load this proc so it can be called freely
 //Since Xenos change names like they change shoes, we need somewhere to hammer in all those legos
@@ -732,6 +602,8 @@
 		name_client_postfix = client.xeno_postfix ? ("-"+client.xeno_postfix) : ""
 		age_xeno()
 	full_designation = "[name_client_prefix][nicknumber][name_client_postfix]"
+	if(!HAS_TRAIT(src, TRAIT_NO_COLOR))
+		color = in_hive.color
 
 	var/age_display = show_age_prefix ? age_prefix : ""
 	var/name_display = ""
@@ -911,12 +783,9 @@
 		var/mob/living/carbon/human/H = puller
 		if(H.ally_of_hivenumber(hivenumber))
 			return TRUE
+		puller.apply_effect(rand(caste.tacklestrength_min,caste.tacklestrength_max), WEAKEN)
 		playsound(puller.loc, 'sound/weapons/pierce.ogg', 25, 1)
 		puller.visible_message(SPAN_WARNING("[puller] tried to pull [src] but instead gets a tail swipe to the head!"))
-		if(stealth)
-			puller.apply_effect(caste.tacklestrength_min, WEAKEN)
-			return FALSE
-		puller.apply_effect(rand(caste.tacklestrength_min,caste.tacklestrength_max), WEAKEN)
 		return FALSE
 	if(issynth(puller) && (mob_size >= 4 || istype(src, /mob/living/carbon/xenomorph/warrior)))
 		var/mob/living/carbon/human/synthetic/puller_synth = puller
@@ -1031,7 +900,6 @@
 	recalculate_damage()
 	recalculate_evasion()
 	recalculate_tackle()
-	recalculate_fire_immunity()
 
 /mob/living/carbon/xenomorph/proc/recalculate_tackle()
 	tackle_min = caste.tackle_min
@@ -1090,8 +958,6 @@
 /mob/living/carbon/xenomorph/proc/recalculate_evasion()
 	if(caste)
 		evasion = evasion_modifier + caste.evasion
-
-/mob/living/carbon/xenomorph/proc/recalculate_fire_immunity()
 
 /mob/living/carbon/xenomorph/proc/recalculate_actions()
 	recalculate_acid()
@@ -1201,7 +1067,7 @@
 	. = ..()
 	if (. & IGNITE_IGNITED)
 		RegisterSignal(src, COMSIG_XENO_PRE_HEAL, PROC_REF(cancel_heal))
-		if(!(fire_immunity & (FIRE_IMMUNITY_NO_DAMAGE || FIRE_IMMUNITY_COMPLETE)) || fire_reagent.fire_penetrating)
+		if(!caste || !(caste.fire_immunity & FIRE_IMMUNITY_NO_DAMAGE) || fire_reagent.fire_penetrating)
 			INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, emote), "roar")
 
 /mob/living/carbon/xenomorph/ExtinguishMob()
@@ -1219,9 +1085,9 @@
 	if(length(resin_build_order))
 		selected_resin = resin_build_order[1]
 
-/mob/living/carbon/xenomorph/ghostize(can_reenter_corpse = TRUE, aghosted = FALSE, transfer = FALSE)
+/mob/living/carbon/xenomorph/ghostize(can_reenter_corpse = TRUE, aghosted = FALSE)
 	. = ..()
-	if(. && !can_reenter_corpse && !transfer && stat != DEAD && !QDELETED(src) && !should_block_game_interaction(src))
+	if(. && !can_reenter_corpse && stat != DEAD && !QDELETED(src) && !should_block_game_interaction(src))
 		handle_ghost_message()
 	if(selected_ability)
 		selected_ability.action_deselect()

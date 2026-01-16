@@ -68,7 +68,7 @@ export class ChatPanel extends Component<ChatPanelTypes> {
     return (
       <>
         <div className="Chat" ref={this.ref} />
-        {!scrollTracking && !chatRenderer.alwaysStayAtBottom && (
+        {!scrollTracking && (
           <Button
             className="Chat__scrollButton"
             icon="arrow-down"

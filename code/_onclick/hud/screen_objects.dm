@@ -53,7 +53,6 @@
 /atom/movable/screen/action_button
 	icon = 'icons/mob/hud/actions.dmi'
 	icon_state = "template"
-	plane = ABOVE_TACMAP_PLANE
 	var/datum/action/source_action
 	var/image/maptext_overlay
 
@@ -101,29 +100,18 @@
 	icon = 'icons/mob/hud/actions.dmi'
 	icon_state = "hide"
 	var/hidden = 0
-	var/base_icon
 
 /atom/movable/screen/action_button/hide_toggle/clicked(mob/user, list/mods)
 	user.hud_used.action_buttons_hidden = !user.hud_used.action_buttons_hidden
 	hidden = user.hud_used.action_buttons_hidden
-	update_button_icon(user)
-	user.update_action_buttons()
-	return TRUE
-
-/atom/movable/screen/action_button/hide_toggle/proc/update_button_icon(mob/user)
-	if(isyautja(user))
-		base_icon = "pred"
-	else if(isxeno(user))
-		base_icon = "xeno"
-	else
-		base_icon = "marine"
-
 	if(hidden)
 		name = "Show Buttons"
-		icon_state = "[base_icon]_show"
+		icon_state = "show"
 	else
 		name = "Hide Buttons"
-		icon_state = "[base_icon]_hide"
+		icon_state = "hide"
+	user.update_action_buttons()
+	return TRUE
 
 /atom/movable/screen/action_button/ghost/minimap/get_button_screen_loc(button_number)
 	return "SOUTH:6,CENTER+1:24"
@@ -308,9 +296,6 @@
 /atom/movable/screen/inventory/proc/handle_dropped_on(atom/dropped_on, atom/dropping, client/user)
 	SIGNAL_HANDLER
 
-	if(!isliving(user.mob))
-		return
-
 	if(slot_id != WEAR_L_HAND && slot_id != WEAR_R_HAND)
 		return
 
@@ -474,7 +459,8 @@
 	if(!istype(user))
 		return
 	var/obj/item/device/radio/headset/earpiece = user.get_type_in_ears(/obj/item/device/radio/headset)
-	if(!istype(earpiece) || !earpiece.has_hud)
+	var/has_access = earpiece.misc_tracking || (user.assigned_squad && user.assigned_squad.radio_freq == earpiece.frequency)
+	if(!istype(earpiece) || !earpiece.has_hud || !has_access)
 		to_chat(user, SPAN_WARNING("Unauthorized access detected."))
 		return
 	if(mods[SHIFT_CLICK])
@@ -484,7 +470,7 @@
 	else if(mods[ALT_CLICK])
 		earpiece.switch_tracker_target()
 		return
-	if(user.a_intent == INTENT_HARM && user.get_active_hand()) //Stop it popping up in combat(hopefully), but work any other time.
+	if(user.get_active_hand())
 		return
 	if(user.assigned_squad)
 		user.assigned_squad.tgui_interact(user)

@@ -16,7 +16,6 @@
 		throw_alert(ALERT_LEGCUFFED, /atom/movable/screen/alert/restrained/legcuffed, new_master = handcuffed)
 	else
 		clear_alert(ALERT_LEGCUFFED)
-		set_movement_intent(MOVE_INTENT_RUN)
 	update_inv_legcuffed()
 
 

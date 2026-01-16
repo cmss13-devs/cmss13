@@ -44,26 +44,27 @@ all_changelog_entries = {}
 
 # Do not change the order, add to the bottom of the array if necessary
 validPrefixes = [
-    'add',
-    'admin',
-    'balance',
-    'code',
-    'config',
-    'del',
-    'fix',
-    'imageadd',
-    'imagedel',
-    'imagetweak',
-    'mapadd',
-    'maptweak',
+    'bugfix',
+    'wip',
     'qol',
-    'refactor',
-    'server',
     'soundadd',
     'sounddel',
-    'soundtweak',
+    'rscadd',
+    'rscdel',
+    'imageadd',
+    'imagedel',
+    'expansion',
     'spellcheck',
-    'ui'
+    'experiment',
+    'balance',
+    'code_imp',
+    'refactor',
+    'config',
+    'admin',
+    'server',
+    'ui',
+    'mapadd',
+    'maptweak'
 ]
 
 def dictToTuples(inp):

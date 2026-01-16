@@ -82,10 +82,6 @@
 	magazine_type = /obj/item/storage/box/mre/pmc
 	overlay_content = "_colony_mre"
 
-/obj/item/ammo_box/magazine/misc/mre/pmc/Initialize()
-	. = ..()
-	AddElement(/datum/element/corp_label/wy)
-
 /obj/item/ammo_box/magazine/misc/mre/pmc/empty
 	empty = TRUE
 
@@ -95,10 +91,6 @@
 	icon_state = "wy_food_crate"
 	magazine_type = /obj/item/storage/box/mre/wy
 	overlay_content = "_wy_mre"
-
-/obj/item/ammo_box/magazine/misc/mre/wy/Initialize()
-	. = ..()
-	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/ammo_box/magazine/misc/mre/wy/empty
 	empty = TRUE
@@ -120,10 +112,6 @@
 	magazine_type = /obj/item/mre_food_packet/wy/cookie_brick
 	num_of_magazines = 20
 	overlay_content = "_colony_mre"
-
-/obj/item/ammo_box/magazine/misc/mre/emergency/Initialize()
-	. = ..()
-	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/ammo_box/magazine/misc/mre/emergency/empty
 	empty = TRUE

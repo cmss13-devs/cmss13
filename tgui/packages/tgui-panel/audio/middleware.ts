@@ -4,7 +4,6 @@
  * @license MIT
  */
 
-import { selectGame } from '../game/selectors';
 import { AudioPlayer } from './player';
 
 export const audioMiddleware = (store) => {
@@ -18,14 +17,6 @@ export const audioMiddleware = (store) => {
   return (next) => (action) => {
     const { type, payload } = action;
     if (type === 'audio/playMusic') {
-      const state = store.getState();
-      if (state) {
-        const game = selectGame(state);
-        if (game.tvMode) {
-          return next(action);
-        }
-      }
-
       const { url, ...options } = payload;
       player.play(url, options);
       return next(action);

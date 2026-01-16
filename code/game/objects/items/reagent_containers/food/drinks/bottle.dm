@@ -151,7 +151,6 @@
 /obj/item/reagent_container/food/drinks/bottle/sake/Initialize()
 	. = ..()
 	reagents.add_reagent("sake", 100)
-	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/reagent_container/food/drinks/bottle/vodka
 	name = "\improper Red Star Vodka"
@@ -249,7 +248,7 @@
 
 /obj/item/reagent_container/food/drinks/bottle/bottleofnothing
 	name = "Bottle of Nothing"
-	desc = "A bottle filled with nothing."
+	desc = "A bottle filled with nothing"
 	icon_state = "bottleofnothing"
 	center_of_mass = "x=17;y=5"
 

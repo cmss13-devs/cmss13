@@ -30,7 +30,6 @@ export const initialState = {
   pageById: {
     [mainPage.id]: mainPage,
   },
-  shouldAlwaysScroll: false,
 };
 
 export const chatReducer = (state = initialState, action) => {

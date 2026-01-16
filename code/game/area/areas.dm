@@ -375,7 +375,7 @@
 
 	return used
 
-/area/proc/use_power(amount, chan = POWER_CHANNEL_ONEOFF)
+/area/proc/use_power(amount, chan)
 	switch(chan)
 		if(POWER_CHANNEL_EQUIP)
 			used_equip += amount
@@ -386,52 +386,35 @@
 		if(POWER_CHANNEL_ONEOFF)
 			used_oneoff += amount
 
-#if defined(UNIT_TESTS)
-	switch(chan)
-		if(POWER_CHANNEL_EQUIP)
-			if(used_equip < 0)
-				stack_trace("[src] ([type]) now has [used_equip] used_equip after use_power([amount],...)!")
-		if(POWER_CHANNEL_LIGHT)
-			if(used_light < 0)
-				stack_trace("[src] ([type]) now has [used_light] used_light after use_power([amount],...)!")
-		if(POWER_CHANNEL_ENVIRON)
-			if(used_environ < 0)
-				stack_trace("[src] ([type]) now has [used_environ] used_environ after use_power([amount],...)!")
-		if(POWER_CHANNEL_ONEOFF)
-			if(used_oneoff < 0)
-				stack_trace("[src] ([type]) now has [used_oneoff] used_oneoff after use_power([amount],...)!")
-#endif
-
-/area/Entered(atom/movable/thing, atom/OldLoc)
-	if(ismob(thing))
+/area/Entered(A,atom/OldLoc)
+	if(ismob(A))
 		if(!OldLoc)
 			return
-		var/mob/mob_thing = thing
+		var/mob/M = A
 		var/area/old_area = get_area(OldLoc)
 		if(old_area == src)
 			return
-		mob_thing?.client?.soundOutput?.update_ambience(src, null, TRUE)
-	else if(istype(thing, /obj/structure/machinery))
-		add_machine(thing)
+		M?.client?.soundOutput?.update_ambience(src, null, TRUE)
+	else if(istype(A, /obj/structure/machinery))
+		add_machine(A)
 
-/area/Exited(atom/movable/thing)
-	if(istype(thing, /obj/structure/machinery))
-		remove_machine(thing)
-	else if(ismob(thing))
-		var/mob/exiting_mob = thing
+/area/Exited(A)
+	if(istype(A, /obj/structure/machinery))
+		remove_machine(A)
+	else if(ismob(A))
+		var/mob/exiting_mob = A
 		exiting_mob?.client?.soundOutput?.update_ambience(target_area = null, ambience_override = null, force_update = TRUE)
 
-/area/proc/add_machine(obj/structure/machinery/machine)
+/area/proc/add_machine(obj/structure/machinery/M)
 	SHOULD_NOT_SLEEP(TRUE)
-	if(!machine.last_power_usage)
-		machine.update_use_power(-1)
-	else
-		use_power(machine.last_power_usage, machine.power_channel)
-	machine.power_change()
+	if(istype(M))
+		use_power(M.calculate_current_power_usage(), M.power_channel)
+		M.power_change()
 
-/area/proc/remove_machine(obj/structure/machinery/machine)
+/area/proc/remove_machine(obj/structure/machinery/M)
 	SHOULD_NOT_SLEEP(TRUE)
-	use_power(-machine.last_power_usage, machine.power_channel)
+	if(istype(M))
+		use_power(-M.calculate_current_power_usage(), M.power_channel)
 
 //atmos related procs
 

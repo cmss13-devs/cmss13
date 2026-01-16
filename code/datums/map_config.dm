@@ -33,7 +33,6 @@
 	var/announce_text = ""
 	var/infection_announce_text = ""
 	var/liaison_briefing = ""
-	var/list/co_briefing_files = list()
 
 	var/squads_max_num = 4
 
@@ -150,16 +149,6 @@
 
 #define CHECK_EXISTS(X) if(!istext(json[X])) { log_world("[##X] missing from json!"); return; }
 /datum/map_config/proc/LoadConfig(filename, error_if_missing, maptype)
-	#ifdef FORCE_GROUND_MAP
-	if(maptype == GROUND_MAP)
-		filename = FORCE_GROUND_MAP
-	#endif
-
-	#ifdef FORCE_SHIP_MAP
-	if(maptype == SHIP_MAP)
-		filename = FORCE_SHIP_MAP
-	#endif
-
 	if(!fexists(filename))
 		if(error_if_missing)
 			log_world("map_config not found: [filename]")
@@ -394,9 +383,6 @@
 
 	if(json["liaison_briefing"])
 		liaison_briefing = json["liaison_briefing"]
-
-	if(islist(json["co_briefing"]))
-		co_briefing_files = json["co_briefing"]
 
 	if(json["weather_holder"])
 		weather_holder = text2path(json["weather_holder"])

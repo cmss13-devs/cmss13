@@ -61,6 +61,8 @@
 	if(!can_move(direction))
 		return FALSE
 
+	before_move(direction)
+
 	if(!force)
 		var/should_move = update_momentum(direction)
 		update_next_move()
@@ -81,10 +83,10 @@
 
 	last_move_dir = direction
 
-	if(force && (health <= 0)) // Broken and forced movement (currently only xenos)
-		interior.drop_human_bodies(old_turf)
-
 	return TRUE
+
+/obj/vehicle/multitile/proc/before_move(direction)
+	return
 
 // Rotates the vehicle by deg degrees if possible
 /obj/vehicle/multitile/proc/try_rotate(deg)

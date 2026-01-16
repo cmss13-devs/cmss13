@@ -45,7 +45,7 @@
  * If the object is completely solid, returns all directions
  */
 /atom/proc/BlockedExitDirs(atom/movable/mover, target_dir)
-	if(!mover || !mover.pass_flags)
+	if(!mover || !mover.pass_flags || !pass_flags)
 		return NO_BLOCKED_MOVEMENT
 
 	var/flags_can_pass = pass_flags?.flags_can_pass_all|flags_can_pass_all_temp|pass_flags?.flags_can_pass_behind|flags_can_pass_behind_temp
@@ -85,9 +85,9 @@
 		A.Collided(src)
 
 /// Called when an atom has been hit by a movable atom via movement
-/atom/movable/Collided(atom/movable/collider)
-	if(!anchored && isliving(collider))
-		var/target_dir = get_dir(collider, src)
+/atom/movable/Collided(atom/movable/AM)
+	if(isliving(AM) && !anchored)
+		var/target_dir = get_dir(AM, src)
 		var/turf/target_turf = get_step(loc, target_dir)
 		Move(target_turf)
 

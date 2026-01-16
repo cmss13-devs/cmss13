@@ -22,47 +22,28 @@
 	paygrade = PAY_SHORT_CDOC
 	name = "Doctor"
 	prefix = "Dr."
-	pay_multiplier = 2.5
-
-/datum/paygrade/civilian/assistantprofessor
-	paygrade = PAY_SHORT_CCMOA
-	name = "Assistant Professor"
-	prefix = "Asst. Prof."
-	pay_multiplier = 3
-
-/datum/paygrade/civilian/associateprofessor
-	paygrade = PAY_SHORT_CCMOB
-	name = "Associate Professor"
-	prefix = "Assoc. Prof."
-	pay_multiplier = 3.5
+	pay_multiplier = 0.75
 
 /datum/paygrade/civilian/professor
-	paygrade = PAY_SHORT_CCMOC
+	paygrade = PAY_SHORT_CCMO
 	name = "Professor"
 	prefix = "Prof."
-	pay_multiplier = 3.75
+	pay_multiplier = 1
 	officer_grade = GRADE_OFFICER
 
-/datum/paygrade/civilian/regentsprofessor
-	paygrade = PAY_SHORT_CCMOD
-	name = "Regents Professor"
-	prefix = "Regents Prof."
-	pay_multiplier = 4
-	officer_grade = GRADE_OFFICER
-
-/datum/paygrade/civilian/representative
+/datum/paygrade/civillian/representative
 	paygrade = PAY_SHORT_CREP
 	name = "Representative"
 	prefix = "Rep."
 	pay_multiplier = 1
 
-/datum/paygrade/civilian/officer
+/datum/paygrade/civillian/officer
 	paygrade = PAY_SHORT_CPO
 	name = "Officer"
 	prefix = "Off."
 	pay_multiplier = 0.66
 
-/datum/paygrade/civilian/officer/senior
+/datum/paygrade/civillian/officer/senior
 	paygrade = PAY_SHORT_CSPO
 	name = "Senior Officer"
 	prefix = "Sr. Off."

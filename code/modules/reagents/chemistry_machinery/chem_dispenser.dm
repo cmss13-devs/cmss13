@@ -22,7 +22,7 @@
 	var/accept_beaker_only = TRUE
 	var/obj/item/reagent_container/beaker = null
 	var/ui_check = 0
-	var/static/list/possible_transfer_amounts = list(5,10,15,20,30,40,60)
+	var/static/list/possible_transfer_amounts = list(5,10,20,30,40)
 	/// List of typepaths for reagent containers that a chem dispenser will accept; all containers allowed if empty.
 	var/list/whitelisted_containers = list()
 	var/list/dispensable_reagents = list(
@@ -59,18 +59,18 @@
 /obj/structure/machinery/chem_dispenser/research
 	network = "Research"
 
+/obj/structure/machinery/chem_dispenser/process()
+	if(!chem_storage)
+		chem_storage = GLOB.chemical_data.connect_chem_storage(network)
 
 /obj/structure/machinery/chem_dispenser/Initialize()
-	..()
+	. = ..()
 	dispensable_reagents = sortList(dispensable_reagents)
-	return INITIALIZE_HINT_LATELOAD
-
-/obj/structure/machinery/chem_dispenser/LateInitialize()
-	chem_storage = GLOB.chemical_data.connect_chem_storage(network)
+	start_processing()
 
 /obj/structure/machinery/chem_dispenser/Destroy()
-	GLOB.chemical_data.disconnect_chem_storage(network)
-	chem_storage = null
+	if(!chem_storage)
+		chem_storage = GLOB.chemical_data.disconnect_chem_storage(network)
 	return ..()
 
 /obj/structure/machinery/chem_dispenser/ex_act(severity)
@@ -213,7 +213,7 @@
 /obj/structure/machinery/chem_dispenser/attackby(obj/item/reagent_container/attacking_object, mob/user)
 	if(istype(attacking_object, /obj/item/reagent_container/glass) || istype(attacking_object, /obj/item/reagent_container/food))
 		if(accept_beaker_only && istype(attacking_object,/obj/item/reagent_container/food))
-			to_chat(user, SPAN_NOTICE("This machine only accepts beakers."))
+			to_chat(user, SPAN_NOTICE("This machine only accepts beakers"))
 			return
 		//If the dispenser has a whitelist with stuff in it, and the attacking object ain't in there, don't accept it.
 		if(length(whitelisted_containers) && !(attacking_object.type in whitelisted_containers))
@@ -341,7 +341,6 @@
 		"grapejuice",
 		"lemonjuice",
 		"banana",
-		"chocolatesyrup",
 	)
 	hacked_reagents = list(
 		"milk",

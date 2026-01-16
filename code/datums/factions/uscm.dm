@@ -45,6 +45,10 @@
 				marine_rk = "io"
 			if(JOB_DROPSHIP_CREW_CHIEF)
 				marine_rk = "dcc"
+			if(JOB_OPERATIONS_PILOT)
+				marine_rk = "op"
+			if(JOB_OPERATIONS_CREW_CHIEF)
+				marine_rk = "occ"
 			if(JOB_MARINE_RAIDER)
 				marine_rk = "soc_grunt"
 			if(JOB_MARINE_RAIDER_SG)
@@ -61,6 +65,10 @@
 					marine_rk = "leader_a"
 				if("Team")
 					marine_rk = "soctl_a"
+
+			current_human.langchat_styles = "langchat_bolded" // bold text for bold leaders
+		else
+			current_human.langchat_styles = initial(current_human.langchat_styles)
 
 		current_human.langchat_color = current_human.assigned_squad.chat_color
 
@@ -127,6 +135,10 @@
 				marine_rk = "dp"
 			if(JOB_DROPSHIP_CREW_CHIEF)
 				marine_rk = "dcc"
+			if(JOB_OPERATIONS_PILOT)
+				marine_rk = "op"
+			if(JOB_OPERATIONS_CREW_CHIEF)
+				marine_rk = "occ"
 			if(JOB_CHIEF_POLICE)
 				marine_rk = "cmp"
 				border_rk = "command"
@@ -172,9 +184,6 @@
 				border_rk = "command"
 			if(JOB_SYNTH)
 				marine_rk = "syn"
-				var/datum/equipment_preset/synth/preset = current_human.assigned_equipment_preset
-				if(preset?.subtype)
-					marine_rk = "syn_[preset.subtype]"
 			if(JOB_SYNTH_K9)
 				marine_rk = "syn_k9"
 			if(JOB_MESS_SERGEANT)

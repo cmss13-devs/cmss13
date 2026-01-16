@@ -28,7 +28,6 @@
 	for(var/i = 0, i < 6, i++)
 		new /obj/item/reagent_container/food/snacks/flour(src)
 	new /obj/item/reagent_container/food/condiment/sugar(src)
-	new /obj/item/reagent_container/food/condiment/chocolate_syrup(src)
 	for(var/i = 0, i < 3, i++)
 		new /obj/item/reagent_container/food/snacks/meat/monkey(src)
 
@@ -130,8 +129,7 @@
 		new /obj/item/reagent_container/food/condiment/sugar(src)
 	for(var/i = 0, i < 6, i++)
 		new /obj/item/reagent_container/food/snacks/flour(src)
-		new /obj/item/reagent_container/food/condiment/enzyme(src)
-		new /obj/item/reagent_container/food/condiment/chocolate_syrup(src)
+	new /obj/item/reagent_container/food/condiment/enzyme(src)
 
 /obj/structure/closet/secure_closet/freezer/industry
 	name = "Industry Freezer"

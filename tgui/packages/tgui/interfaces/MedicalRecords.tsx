@@ -229,16 +229,7 @@ export const MedicalRecords = () => {
       contentKey: 'general_p_stat',
       isEditable: edit_record,
       type: 'select',
-      options: [
-        'Active',
-        'Injured',
-        'Deceased',
-        'Inactive',
-        'SSD',
-        'Unknown',
-        'Disabled',
-        'Incarcerated',
-      ],
+      options: ['Active', 'Physically Unfit', 'Disabled', 'SSD', 'Deceased'],
     },
     {
       label: 'Mental Status:',
@@ -252,7 +243,7 @@ export const MedicalRecords = () => {
       contentKey: 'medical_blood_type',
       isEditable: edit_record,
       type: 'select',
-      options: ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-', 'Unknown'],
+      options: ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'],
     },
   ];
 

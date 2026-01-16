@@ -2,7 +2,7 @@
 
 /datum/supply_packs/fueltank
 	name = "fuel tank crate (x1)"
-	contains = list(/obj/structure/reagent_dispensers/tank/fuel)
+	contains = list(/obj/structure/reagent_dispensers/fueltank)
 	cost = 20
 	containertype = /obj/structure/largecrate
 	containername = "fuel tank crate"

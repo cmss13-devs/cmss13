@@ -9,6 +9,7 @@ GENERAL_PROTECT_DATUM(/mob/unauthenticated)
 	sight = BLIND
 	stat = DEAD
 
+	var/static/valid_characters = splittext("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", "")
 	var/access_code
 
 	var/datum/tgui_window/unauthenticated_menu
@@ -62,9 +63,7 @@ GENERAL_PROTECT_DATUM(/mob/unauthenticated)
 #define ACCESS_CODE_LENGTH 40
 
 /// Creates a base 62 access code
-/proc/generate_access_code()
-	var/static/valid_characters = splittext("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", "")
-
+/mob/unauthenticated/proc/generate_access_code()
 	var/code = ""
 
 	for(var/i in 1 to ACCESS_CODE_LENGTH)

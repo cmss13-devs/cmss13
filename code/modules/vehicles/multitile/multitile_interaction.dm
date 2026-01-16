@@ -197,7 +197,6 @@
 
 		health = min(health + max_hp/100 * (5 / amount_fixed_adjustment), max_hp)
 		if(!lighting_holder.light)
-			update_minimap_icon()
 			lighting_holder.set_light_on(TRUE)
 
 		if(WT)
@@ -369,6 +368,9 @@
 
 	var/list/modifiers = params2list(params)
 	if(modifiers[SHIFT_CLICK] || modifiers[MIDDLE_CLICK] || modifiers[RIGHT_CLICK] || modifiers[BUTTON4] || modifiers[BUTTON5]) //don't step on examine, point, etc
+		return
+
+	if(isscreenatom(object))	// the user has clicked a UI element, which is handled elsewhere
 		return
 
 	var/seat = get_mob_seat(source)

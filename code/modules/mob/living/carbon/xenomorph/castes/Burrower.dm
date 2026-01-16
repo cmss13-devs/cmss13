@@ -16,7 +16,6 @@
 
 	deevolves_to = list(XENO_CASTE_DRONE)
 	caste_desc = "A digger and trapper."
-	fire_immunity = FIRE_IMMUNITY_BURROWER
 	acid_level = 2
 	weed_level = WEED_LEVEL_STANDARD
 	evolution_allowed = FALSE
@@ -48,7 +47,6 @@
 	plasma_types = list(PLASMA_PURPLE)
 	pixel_x = -12
 	old_x = -12
-	xenonid_pixel_x = -16
 	base_pixel_x = 0
 	base_pixel_y = -20
 	tier = 2
@@ -67,6 +65,7 @@
 		/datum/action/xeno_action/activable/burrow, //third macro
 		/datum/action/xeno_action/onclick/tremor, //fourth macro
 		/datum/action/xeno_action/active_toggle/toggle_meson_vision,
+		/datum/action/xeno_action/onclick/tacmap,
 		)
 
 	inherent_verbs = list(
@@ -155,6 +154,12 @@
 	if(hauled)
 		hauled.forceMove(src)
 
+	if(caste.fire_immunity == FIRE_IMMUNITY_NONE)
+		RegisterSignal(src, COMSIG_LIVING_PREIGNITION, PROC_REF(fire_immune))
+		RegisterSignal(src, list(
+				COMSIG_LIVING_FLAMER_CROSSED,
+				COMSIG_LIVING_FLAMER_FLAMED,
+		), PROC_REF(flamer_crossed_immune))
 	add_traits(list(TRAIT_ABILITY_BURROWED, TRAIT_UNDENSE, TRAIT_IMMOBILIZED), TRAIT_SOURCE_ABILITY("Burrow"))
 	playsound(src.loc, 'sound/effects/burrowing_b.ogg', 25)
 	update_icons()
@@ -176,6 +181,12 @@
 	if(caste_type && GLOB.xeno_datum_list[caste_type])
 		caste = GLOB.xeno_datum_list[caste_type]
 	to_chat(src, SPAN_NOTICE("You resurface."))
+	if(caste.fire_immunity == FIRE_IMMUNITY_NONE)
+		UnregisterSignal(src, list(
+				COMSIG_LIVING_PREIGNITION,
+				COMSIG_LIVING_FLAMER_CROSSED,
+				COMSIG_LIVING_FLAMER_FLAMED,
+		))
 	remove_traits(list(TRAIT_ABILITY_BURROWED, TRAIT_UNDENSE, TRAIT_IMMOBILIZED), TRAIT_SOURCE_ABILITY("Burrow"))
 	invisibility = FALSE
 	alpha = initial(alpha)
@@ -360,6 +371,10 @@
 		return
 
 	if(locate(/obj/structure/machinery/sentry_holder/landing_zone) in xenomorph.loc)
+		to_chat(xenomorph, SPAN_XENOWARNING("We can't dig a tunnel with this object in the way."))
+		return
+
+	if(locate(/obj/effect/tunnel_blocker) in xenomorph.loc)
 		to_chat(xenomorph, SPAN_XENOWARNING("We can't dig a tunnel with this object in the way."))
 		return
 

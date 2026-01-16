@@ -5,4 +5,3 @@
 #define ALERT_INCAPACITATED "incapacitated"
 #define ALERT_KNOCKEDOUT "knockedout"
 #define ALERT_IMMOBILIZED "immobilized"
-#define ALERT_MULTI_Z "multi_z"

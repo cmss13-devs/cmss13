@@ -188,7 +188,7 @@
 	dispersion_angle = 25//tight cone
 
 /obj/item/explosive/grenade/high_explosive/airburst/starshell
-	name = "\improper M74 AGM-S Star Shell"
+	name = "\improper M74 AGM-S 40mm Star Shell"
 	desc = "Functions identically to the standard AGM-F 40mm grenade, except instead of exploding into shrapnel, the star shells bursts into burning phosphor that illuminates the area."
 	icon_state = "grenade_starshell"
 	item_state = "grenade_starshell_active"
@@ -196,6 +196,27 @@
 	shrapnel_type = /datum/ammo/flare/starshell
 	direct_hit_shrapnel = 5
 	dispersion_angle = 360 //beeg circle
+
+// Non-airburst variant
+/obj/item/explosive/grenade/high_explosive/starshell
+	name = "\improper M74 HE 40mm impact Star Shell"
+	desc = "A non-airburst variant of the standard AGM-S 40mm Star Shell, with an impact detonator installed. Bursts into burning phosphor that illuminates the area upon contact."
+	icon_state = "grenade_starshell"
+	item_state = "grenade_starshell_active"
+	shrapnel_count = 8
+	shrapnel_type = /datum/ammo/flare/starshell
+	det_time = 0
+	explosion_power = 0
+
+/obj/item/explosive/grenade/high_explosive/hornet
+	name = "\improper M74 HE 40mm impact Hornet Shell"
+	desc = "A non-airburst variant of the standard AGM-H 40mm Hornet Shell, with an impact detonator installed. Shoots off holo-targeting .22lr rounds. The equivalent to buckshot at-range."
+	icon_state = "grenade_hornet"
+	item_state = "grenade_hornet_active"
+	shrapnel_count = 15
+	shrapnel_type = /datum/ammo/bullet/shrapnel/hornet_rounds
+	det_time = 0
+	explosion_power = 0
 
 /*
 //================================================
@@ -489,10 +510,6 @@
 	/// Post falloff calc damage is multipled by this to get human stamina damage
 	var/human_stam_dam_factor = 0.5
 
-/obj/item/explosive/grenade/sebb/Initialize()
-	. = ..()
-	AddElement(/datum/element/corp_label/armat)
-
 /obj/item/explosive/grenade/sebb/get_examine_text(mob/user)
 	. = ..()
 	. += SPAN_NOTICE("To put into mine mode, plant at feet.")
@@ -611,7 +628,7 @@
 				damage_applied *= 1.5
 				new /obj/effect/overlay/temp/elec_arc(get_turf(shocked_human))
 				to_chat(mob, SPAN_HIGHDANGER("All of your systems jam up as your main bus is overvolted by [damage_applied*2] volts."))
-				mob.visible_message(SPAN_WARNING("[mob] seizes up from the elctric shock."))
+				mob.visible_message(SPAN_WARNING("[mob] seizes up from the elctric shock"))
 			shocked_human.take_overall_armored_damage(damage_applied, ARMOR_ENERGY, BURN, 90) // 90% chance to be on additional limbs
 			shocked_human.make_dizzy(damage_applied)
 			mob.apply_stamina_damage(damage_applied*human_stam_dam_factor) // Stamina damage
@@ -638,7 +655,7 @@
 
 		new /obj/effect/overlay/temp/emp_sparks(mob)
 		mob.make_jittery(damage_applied*2)
-	empulse(src, 1, 2, cause_data?.resolve_mob()) // mini EMP
+	empulse(src, 1, 2) // mini EMP
 	qdel(src)
 
 

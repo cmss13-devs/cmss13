@@ -61,7 +61,7 @@
 		queue_mask_update()
 		return
 	awaiting_update = FALSE
-	//we moved to nullspace meanwhile don't bother
+	//we moved to nullspace meanwhile dont bother
 	if(!attached_atom.loc)
 		return
 

@@ -8,11 +8,6 @@
 	flags_heat_protection = BODY_FLAG_FEET
 	max_heat_protection_temperature = SHOE_MAX_HEAT_PROT
 
-/obj/item/clothing/shoes/morgue
-	name = "morgue shoes"
-	icon_state = "morgue"
-	desc = "A pair of all-black shoes to wear in the morgue."
-
 /obj/item/clothing/shoes/brown
 	name = "brown shoes"
 	desc = "A pair of brown shoes."
@@ -53,7 +48,6 @@
 
 /obj/item/clothing/shoes/white
 	name = "white shoes"
-	desc = "A pair of white shoes. Not sterile."
 	icon_state = "white"
 
 

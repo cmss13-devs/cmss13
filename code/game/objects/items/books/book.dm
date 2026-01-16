@@ -276,28 +276,21 @@
 	name = "Punch Out! Surviving An Ejection."
 	book_title = "Punch Out!"
 	icon_state = "punch_out"
-	book_author = "Sgt. ███████████████████"
+	book_author = "Sgt. Nalu \"Puali\" Kaiona"
 	book_contents = @{"
-># **[DECLASSIFIED]**
-
 ```
 “Make maluna o ka hilahila.”
 (Death before dishonor)
-- Scratched beneath ███████'s UD-4L Dropship, the '████ █████████'
+- Scratched beneath Kaiona’s UD-4L Dropship, the 'Lucky Number 7.'
 ```
-<span style='font-size: 13px'>
+<span style="font-size: 13px">
 This motto served as a reminder of fallen comrades, especially 1st Lt.
-███████████████, killed in the ███████ against the ████. If you're reading
+Jackson Bridges, killed in the Dog War against the CANC. If you’re reading
 this, you may one day be fighting for your own survival too. Here's how to
 live to tell the tale.
 </span>
 
-<br />
-<br />
-
 ***
-
-<br />
 
 # Step 1: Slow Down
 
@@ -329,16 +322,16 @@ bird **alive**, but chances are good it beat you up pretty good in the
 process. Stay calm, and try to staunch any heavy bleeds before you hit the dirt,
 you aren't gonna want to stop when you land.
 
-<br/>
-<br/>
-<br/>
-<br/>
-
 # Step 5: Stay alert, Stay Mobile
 
 Whatever took you out could be on the lookout to finish you off, first thing you
 need to do when you hit the dirt is get to cover, Prog pilots are known to try
 to hit a gun strafe as you land.
+
+<br />
+<br />
+
+***
 
 # Step 6: Survive on the ground
 
@@ -349,13 +342,26 @@ head low, stay sharp, and stay mobile.
 
 <br />
 
+Remember,
+**survival isn't luck, it's all skill.**
+
+<br />
+
+**Now get a move on.**
+
 ***
 
+<span style="font-size: 11px">
 
-Remember,
-**Survival isn't luck, it's all skill.**
+**Sgt. Kaiona's Current Deployment:**
 
-> **Now get a move on.**
+<br />
+
+Sgt. Kaiona is currently stationed aboard the USS Almayer with the 2nd
+Company, 2nd Battalion, Falling Falcons, 4th Brigade of the 4th United
+States Colonial Marine Division. He provides aerial support and helps manage
+dropship operations aboard the vessel.
+</span>
 
 ***
 

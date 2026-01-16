@@ -42,9 +42,11 @@
 					affecting = H.get_limb(type)
 					H.apply_effect(3, STUN)
 		if(affecting)
-			affecting.take_damage(1, 0)
+			if(affecting.take_damage(1, 0))
+				H.UpdateDamageIcon()
+			H.updatehealth()
 	else if(ismouse(target))
-		var/mob/living/simple_animal/small/mouse/M = target
+		var/mob/living/simple_animal/mouse/M = target
 		visible_message(SPAN_DANGER("<b>SPLAT!</b>"))
 		M.splat()
 	if(!target)

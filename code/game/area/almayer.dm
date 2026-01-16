@@ -198,8 +198,8 @@
 	hijack_evacuation_weight = 1.1
 	hijack_evacuation_type = EVACUATION_TYPE_MULTIPLICATIVE
 
-/area/almayer/shipboard/panic
-	name = "\improper Hangar Panic Room"
+/area/almayer/shipboard/operations
+	name = "\improper VTOL Operations Bay"
 	icon_state = "brig"
 	fake_zlevel = 2 // lowerdeck
 

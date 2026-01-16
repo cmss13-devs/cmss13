@@ -497,8 +497,6 @@
 	if(!acid_harness.beaker || !acid_harness.beaker.reagents)
 		voice("Warning: Medicinal container missing.")
 		return
-	var/reagents_in_harness = length(acid_harness.beaker.reagents.reagent_list)
-
 	for(var/datum/reagent/R in acid_harness.beaker.reagents.reagent_list)
 		var/amount_in_inject = (acid_harness.beaker.reagents.get_reagent_amount(R.id) / acid_harness.beaker.reagents.total_volume) * inject_amount
 		if(R.overdose && (user.reagents.get_reagent_amount(R.id) + amount_in_inject) > R.overdose) //Don't overdose our boi

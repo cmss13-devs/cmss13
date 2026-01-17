@@ -48,10 +48,17 @@
 	/// What mode is the storage instant grab mode in if you are grabbing pills from it
 	var/instant_pill_grab_mode = 1 //On by default
 
+	// slingign related variables
+	/// Toggles the slinging mechanic, first equipped item will be the slung item
 	var/allow_drop_retrieval = FALSE
 	var/obj/item/slung_item
+
+	/// the range of the tether, used in drop_retrieval.dm
 	var/sling_range = 4
+	/// the name of the tether itself, fluff
 	var/retrieval_name = "retrieval cable"
+	/// the icon used for the tether
+	var/tether_icon = "chain"
 
 /obj/item/storage/get_examine_text(mob/user)
 	. = ..()
@@ -969,7 +976,7 @@ object is always an item. stop_warning prevents messaging. user may be null.**/
 
 	if(allow_drop_retrieval && slung_item)
 		to_chat(user, SPAN_NOTICE("You retract the [retrieval_name] from [slung_item]."))
-		unsling(TRUE)
+		unsling()
 		return
 
 	//Clicking on itself will empty it, if it has contents and the verb to do that. Contents but no verb means nothing happens.
@@ -990,11 +997,11 @@ object is always an item. stop_warning prevents messaging. user may be null.**/
 	to_chat(user, SPAN_NOTICE("You fold [src] flat."))
 	qdel(src)
 
-/obj/item/storage/proc/unsling(mob/user, silent = FALSE)
+/obj/item/storage/proc/unsling(forced = FALSE)
 	if(!slung_item)
 		return
-	if(!silent)
-		to_chat(user, SPAN_WARNING("\The [retrieval_name] is forcibly detached from the [slung_item]!"))
+	if(forced)
+		to_chat(loc, SPAN_WARNING("\The [retrieval_name] is forcibly detached from \the [slung_item]!"))
 	slung_item.RemoveElement(/datum/element/drop_retrieval/storage, src)
 	slung_item = null
 
@@ -1016,7 +1023,7 @@ object is always an item. stop_warning prevents messaging. user may be null.**/
 /obj/item/storage/proc/attempt_retrieval(mob/living/carbon/human/user)
 	if(sling_return(user))
 		return
-	unsling(TRUE)
+	unsling()
 	if(user && src.loc == user) // honestly dont know how this could happen
 		to_chat(user, SPAN_WARNING("The [retrieval_name] of your [src] snaps back empty!"))
 

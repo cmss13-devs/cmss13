@@ -97,6 +97,8 @@
 		if(current_target != desired_target)
 			qdel(active_tether)
 
+	maintain_tether()
+
 /datum/element/drop_retrieval/storage/proc/container_moved(datum/source)
 	SIGNAL_HANDLER
 
@@ -105,6 +107,8 @@
 		var/atom/desired_anchor = get_anchor()
 		if(current_anchor != desired_anchor)
 			qdel(active_tether)
+
+	maintain_tether()
 
 /datum/element/drop_retrieval/storage/proc/check_pickup(obj/item/source, mob/user) // ordinarily attack_hand would be cleaner here, but signal shenanigans
 	SIGNAL_HANDLER
@@ -126,10 +130,6 @@
 	if(active_tether)
 		return
 
-	if(container.slung_item && container.slung_item.z && container.z && container.slung_item.z != container.z) // some nullspace z nonsense necessitated this
-		container.unsling(TRUE)
-		return
-
 	var/obj/item/object = container.slung_item
 	if(!object || object.loc == container)
 		return
@@ -142,8 +142,11 @@
 
 	if(get_dist(anchor, target) > container.sling_range) // really annoying edgecase code i needed to do here if the storage item is picked up farther than the sling_range yet phone.dm has this handled safely somehow, probably some element limitation or something w/e - nihi
 		step_towards(target, anchor)
+		if(get_dist(anchor, target) > container.sling_range + 1) // also doubles as a z check kinda
+			container.unsling(forced = TRUE)
+			return
 
-	var/list/tether_data = apply_tether(anchor, target, range = container.sling_range)
+	var/list/tether_data = apply_tether(anchor, target, range = container.sling_range, icon = container.tether_icon)
 	active_tether = tether_data["tetherer_tether"]
 	RegisterSignal(active_tether, COMSIG_PARENT_QDELETING, PROC_REF(tether_deleted))
 

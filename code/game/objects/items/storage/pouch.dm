@@ -1663,7 +1663,9 @@
 	bypass_w_limit = list(/obj/item/tool/shovel/etool)
 	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD
 	allow_drop_retrieval = TRUE
+	sling_range = 2
 	retrieval_name = "sling"
+	tether_icon = "rope"
 
 /obj/item/storage/pouch/cassette
 	name = "cassette pouch"

@@ -242,7 +242,7 @@
 	..()
 
 /// Signal handler for COMSIG_MOVABLE_PREBUCKLE to potentially block buckling.
-/obj/structure/bed/roller/proc/check_buckle(obj/bed, mob/buckle_target)
+/obj/structure/bed/roller/proc/check_buckle(obj/bed, mob/buckle_target, mob/user)
 	SIGNAL_HANDLER
 
 	if(buckle_target.mob_size <= MOB_SIZE_XENO)

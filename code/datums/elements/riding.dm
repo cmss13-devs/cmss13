@@ -30,8 +30,8 @@
 	UnregisterSignal(target, list(COMSIG_MOVABLE_PREBUCKLE, COMSIG_PARENT_ATTACKBY))
 	return ..()
 
-/// Someone is buckling to this movable, which is literally the only thing we care about (other than speed potions)
-/datum/element/ridable/proc/check_mounting(atom/movable/target_movable, mob/living/potential_rider, force = FALSE, check_loc, lying_buckle, hands_needed, target_hands_needed, silent)
+/// Someone is buckling to this movable, which is literally the only thing we care about
+/datum/element/ridable/proc/check_mounting(atom/movable/target_movable, atom/movable/user, mob/living/potential_rider, force = FALSE, check_loc, lying_buckle, hands_needed, target_hands_needed, silent)
 	SIGNAL_HANDLER
 
 	if(HAS_TRAIT(potential_rider, TRAIT_CANT_RIDE))
@@ -86,11 +86,10 @@
 
 /// Remove all of the relevant [riding offhand items][/obj/item/riding_offhand] from the target
 /datum/element/ridable/proc/unequip_buckle_inhands(mob/living/carbon/user, atom/movable/target_movable)
-	for(var/obj/item/riding_offhand/Obj in user.contents)
-		if(Obj.selfdeleting)
+	for(var/obj/item/riding_offhand/reins in user.contents)
+		if(reins.selfdeleting)
 			continue
-		else
-			qdel(Obj)
+		qdel(reins)
 	return TRUE
 
 

@@ -1219,7 +1219,7 @@
 	//Second check to make sure they're still valid to be carried
 	if(target.is_mob_incapacitated())
 		return
-	buckle_mob(target, usr, hands_needed = 1)
+	buckle_mob(target, usr, target_hands_needed = 1)
 
 /mob/living/carbon/xenomorph/unbuckle()
 	. = ..()

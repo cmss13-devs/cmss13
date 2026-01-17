@@ -171,7 +171,7 @@
 	layer = FLY_LAYER
 
 /obj/effect/overlay/temp/tent_deployment_area/casting
-	effect_duration = 10 SECONDS
+	effect_duration = 20 SECONDS
 	color = "#228822"
 
 /obj/effect/overlay/temp/tent_deployment_area/error

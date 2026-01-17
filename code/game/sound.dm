@@ -19,6 +19,7 @@
 	var/z
 	var/y_s_offset // Vertical sound offset
 	var/x_s_offset // Horizontal sound offset
+	var/datum/weakref/source
 
 /datum/sound_template/proc/get_hearers()
 	var/list/hearers_to_return = list()
@@ -59,6 +60,7 @@
 		return FALSE
 
 	var/datum/sound_template/template = new()
+	template.source = WEAKREF(source)
 	if(istype(soundin))
 		template.file = soundin.file
 		template.wait = soundin.wait

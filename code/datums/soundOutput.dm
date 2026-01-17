@@ -24,6 +24,8 @@
 
 /datum/soundOutput/proc/process_sound(datum/sound_template/T)
 	var/sound/S = sound(T.file, T.wait, T.repeat)
+	if(T.source)
+		S.atom = T.source.resolve()
 	S.volume = owner.prefs.volume_preferences[T.volume_cat] * T.volume
 	if(T.channel == 0)
 		S.channel = get_free_channel()

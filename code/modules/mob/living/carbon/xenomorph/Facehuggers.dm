@@ -69,7 +69,7 @@
 	set_hive_data(src, hivenumber)
 	if(HAS_TRAIT(src, TRAIT_NO_COLOR))
 		color = null
-	if(HAS_TRAIT(src, TRAIT_XENONID))
+	if(HAS_TRAIT(src, TRAIT_XENONID) || (CONFIG_GET(string/default_hostile_sprites) == "Xenonid"))
 		icon = icon_xenonid
 	go_active()
 

@@ -220,19 +220,16 @@
 	teleporting = TRUE
 	user.visible_message(SPAN_INFO("[user] starts becoming shimmery and indistinct..."))
 
-	if(!do_after(user, 10 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-		to_chat(user, "You were interrupted!")
-		teleporting = FALSE
-		return
-	// Display fancy animation for you and the person you might be pulling (Legacy)
-	SEND_SIGNAL(user, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
-	user.visible_message(SPAN_WARNING("[icon2html(user, viewers(src))][user] disappears!"))
-	var/tele_time = animation_teleport_quick_out(user)
-	var/mob/living/passenger = user.pulling
-	if(istype(passenger)) // Pulled person
-		SEND_SIGNAL(passenger, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
-		passenger.visible_message(SPAN_WARNING("[icon2html(passenger, viewers(src))][passenger] disappears!"))
-		animation_teleport_quick_out(passenger)
+	if(do_after(user, 10 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+		// Display fancy animation for you and the person you might be pulling (Legacy)
+		SEND_SIGNAL(user, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
+		user.visible_message(SPAN_WARNING("[icon2html(user, viewers(src))][user] disappears!"))
+		var/tele_time = animation_teleport_quick_out(user)
+		var/mob/living/passenger = user.pulling
+		if(istype(passenger)) // Pulled person
+			SEND_SIGNAL(passenger, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
+			passenger.visible_message(SPAN_WARNING("[icon2html(passenger, viewers(src))][passenger] disappears!"))
+			animation_teleport_quick_out(passenger)
 
 		sleep(tele_time) // Animation delay
 		user.trainteleport(target_turf) // Actually teleports everyone, not just you + pulled

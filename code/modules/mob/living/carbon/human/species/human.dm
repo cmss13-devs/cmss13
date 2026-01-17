@@ -137,6 +137,11 @@
 	acid_blood_dodge_chance = 70
 	total_health = 150
 
+	inherent_verbs = list(
+		/mob/living/carbon/human/proc/mark_for_hunt,
+		/mob/living/carbon/human/proc/remove_from_hunt,
+	)
+
 /datum/species/human/hero/thrall/handle_post_spawn(mob/living/carbon/human/thrall)
 	thrall.universal_understand = FALSE
 	return ..()

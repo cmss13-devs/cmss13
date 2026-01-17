@@ -78,6 +78,7 @@
 		/obj/item/weapon/gun/shotgun/pump/m37a,
 	)
 	flags_atom = FPRINT // has gamemode skin
+	flags_item = SMARTGUNNER_BACKPACK_OVERRIDE
 
 /obj/item/storage/large_holster/m37/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
 	. = ..()
@@ -114,6 +115,7 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi'
 	)
+	flags_item = SMARTGUNNER_BACKPACK_OVERRIDE
 
 /obj/item/storage/large_holster/machete/full/fill_preset_inventory()
 	new /obj/item/weapon/sword/machete(src)
@@ -130,10 +132,10 @@
 
 /obj/item/storage/large_holster/machete/smartgunner
 	name = "\improper M56 harness machete scabbard"
-	desc = "A scabbard that connects to the M56 combat harness for carrying a M2132 machete."
+	desc = "A scabbard that connects to the M56 combat harness for carrying a M2132 machete. It comes with an experimental auto-retrieval system, allowing its machete to be dropped safely with the help of a safety cable attached and powered by the harness itself."
 	icon_state = "smartgun_machete_holster"
 	flags_equip_slot = SLOT_BACK
-	flags_item = SMARTGUNNER_BACKPACK_OVERRIDE
+	allow_drop_retrieval = TRUE
 
 /obj/item/storage/large_holster/machete/smartgunner/mob_can_equip(mob/equipping_mob, slot, disable_warning)
 	. = ..()
@@ -163,6 +165,7 @@
 	force = 12
 	attack_verb = list("bludgeoned", "struck", "cracked")
 	flags_equip_slot = SLOT_WAIST|SLOT_BACK
+	flags_item = SMARTGUNNER_BACKPACK_OVERRIDE
 	can_hold = list(/obj/item/weapon/sword/katana)
 
 /obj/item/storage/large_holster/katana/full/fill_preset_inventory()
@@ -197,6 +200,7 @@
 	force = 12
 	attack_verb = list("bludgeoned", "struck", "cracked")
 	flags_equip_slot = SLOT_WAIST|SLOT_BACK
+	flags_item = SMARTGUNNER_BACKPACK_OVERRIDE
 	can_hold = list(/obj/item/weapon/sword/dragon_katana)
 
 /obj/item/storage/large_holster/dragon_katana/full/fill_preset_inventory()

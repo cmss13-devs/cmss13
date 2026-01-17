@@ -48,6 +48,16 @@
 	/// What mode is the storage instant grab mode in if you are grabbing pills from it
 	var/instant_pill_grab_mode = 1 //On by default
 
+	var/allow_drop_retrieval = FALSE
+	var/obj/item/slung_item
+	var/sling_range = 4
+	var/retrieval_name = "retrieval cable"
+
+/obj/item/storage/get_examine_text(mob/user)
+	. = ..()
+	if(allow_drop_retrieval && slung_item)
+		. += SPAN_NOTICE("\The [slung_item] is attached to the [retrieval_name].")
+
 /obj/item/storage/MouseDrop(obj/over_object as obj)
 	if(CAN_PICKUP(usr, src) && !HAS_TRAIT(usr, TRAIT_HAULED))
 		if(over_object == usr) // this must come before the screen objects only block
@@ -459,56 +469,67 @@ GLOBAL_LIST_EMPTY_TYPED(item_storage_box_cache, /datum/item_storage_box)
 
 //This proc return 1 if the item can be picked up and 0 if it can't.
 //Set the stop_messages to stop it from printing messages
-/obj/item/storage/proc/can_be_inserted(obj/item/W, mob/user, stop_messages = FALSE)
-	if(!istype(W) || (W.flags_item & NODROP))
+/obj/item/storage/proc/can_be_inserted(obj/item/object, mob/user, stop_messages = FALSE)
+	if(!istype(object) || (object.flags_item & NODROP))
 		return //Not an item
 
-	if(src.loc == W)
+	if(src.loc == object)
 		return 0 //Means the item is already in the storage item
 
+	if(allow_drop_retrieval)
+		if(slung_item)
+			if(slung_item != object)
+				if(!stop_messages)
+					to_chat(usr, SPAN_WARNING("\The [slung_item] is already attached to the [retrieval_name]."))
+				return FALSE
+		else if(SEND_SIGNAL(object, COMSIG_DROP_RETRIEVAL_CHECK) & COMPONENT_DROP_RETRIEVAL_PRESENT)
+			if(!stop_messages)
+				to_chat(usr, SPAN_WARNING("[object] is already attached to another retrieval system."))
+			return FALSE
+
 	//specific labeler check
-	if(istype(W, /obj/item/tool/hand_labeler))
-		var/obj/item/tool/hand_labeler/L = W
-		if(L.mode)
+	if(istype(object, /obj/item/tool/hand_labeler))
+		var/obj/item/tool/hand_labeler/labeller = object
+		if(labeller.mode)
 			return 0
 
-	if(istype(W, /obj/item/tool/yautja_cleaner) && user.a_intent == INTENT_HARM) //Cleaner both needs to be able to melt containers and be stored within them.
+	if(istype(object, /obj/item/tool/yautja_cleaner) && user.a_intent == INTENT_HARM) //Cleaner both needs to be able to melt containers and be stored within them.
 		return
 
-	if(W.heat_source && !(W.flags_item & IGNITING_ITEM))
-		to_chat(usr, SPAN_ALERT("[W] is ignited, you can't store it!"))
+	if(object.heat_source && !(object.flags_item & IGNITING_ITEM))
+		to_chat(usr, SPAN_ALERT("[object] is ignited, you can't store it!"))
 		return
 
-	if(!can_hold_type(W.type, user))
+	if(!can_hold_type(object.type, user))
 		if(!stop_messages)
-			to_chat(usr, SPAN_NOTICE("[src] cannot hold [W]."))
+			to_chat(usr, SPAN_NOTICE("[src] cannot hold [object]."))
 		return
 
 	var/w_limit_bypassed = 0
 	if(length(bypass_w_limit))
-		for(var/A in bypass_w_limit)
-			if(istype(W, A))
+		for(var/bypassee in bypass_w_limit)
+			if(istype(object, bypassee))
 				w_limit_bypassed = 1
 				break
 
-	if (!w_limit_bypassed && W.w_class > max_w_class)
+	if (!w_limit_bypassed && object.w_class > max_w_class)
 		if(!stop_messages)
-			to_chat(usr, SPAN_NOTICE("[W] is too long for this [src]."))
+			to_chat(usr, SPAN_NOTICE("[object] is too long for this [src]."))
 		return 0
 
 	//Checks if there is room for the item.
-	if(!has_room(W))
+	if(!has_room(object))
 		if(!stop_messages)
 			to_chat(usr, SPAN_NOTICE("[src] is full, make some space."))
 		return 0
 
-	if(W.w_class >= src.w_class && (isstorage(W)))
+	if(object.w_class >= src.w_class && (isstorage(object)))
 		if(!istype(src, /obj/item/storage/backpack/holding)) //bohs should be able to hold backpacks again. The override for putting a boh in a boh is in backpack.dm.
 			if(!stop_messages)
-				to_chat(usr, SPAN_NOTICE("[src] cannot hold [W] as it's a storage item of the same size."))
+				to_chat(usr, SPAN_NOTICE("[src] cannot hold [object] as it's a storage item of the same size."))
 			return 0 //To prevent the stacking of same sized storage items.
 
-	return 1
+	return TRUE
 
 /**Handler for inserting items. It does not perform any checks of whether an item can or can't be inserted into the storage item.
 That's done by can_be_inserted(). Its checks are whether the item exists, is an item, and (if it's held by a mob) the mob can drop it.
@@ -565,23 +586,28 @@ user can be null, it refers to the potential mob doing the insertion.**/
 /**Inserts the item. Separate proc because handle_item_insertion isn't guaranteed to insert
 and it therefore isn't safe to override it before calling parent. Updates icon when done.
 Can be called directly but only if the item was spawned inside src - handle_item_insertion is safer.
-W is always an item. stop_warning prevents messaging. user may be null.**/
-/obj/item/storage/proc/_item_insertion(obj/item/W, prevent_warning = FALSE, mob/user)
-	W.on_enter_storage(src)
+object is always an item. stop_warning prevents messaging. user may be null.**/
+/obj/item/storage/proc/_item_insertion(obj/item/object, prevent_warning = FALSE, mob/user)
+	if(allow_drop_retrieval && !slung_item)
+		slung_item = object
+		slung_item.AddElement(/datum/element/drop_retrieval/storage, src)
+		if(!prevent_warning && user)
+			to_chat(user, SPAN_HELPFUL("You attach the [retrieval_name] to [object]."))
+	object.on_enter_storage(src)
 	if(user)
 		if (user.client && user.s_active != src)
-			user.client.remove_from_screen(W)
+			user.client.remove_from_screen(object)
 		add_fingerprint(user)
 		if(!prevent_warning)
-			var/visidist = W.w_class >= 3 ? 3 : 1
-			user.visible_message(SPAN_NOTICE("[user] puts [W] into [src]."),
-								SPAN_NOTICE("You put \the [W] into [src]."),
+			var/visidist = object.w_class >= 3 ? 3 : 1
+			user.visible_message(SPAN_NOTICE("[user] puts [object] into [src]."),
+								SPAN_NOTICE("You put \the [object] into [src]."),
 								null, visidist)
 	orient2hud()
 	for(var/mob/M in can_see_content())
 		show_to(M)
 	if (storage_slots)
-		W.mouse_opacity = MOUSE_OPACITY_OPAQUE //not having to click the item's tiny sprite to take it out of the storage.
+		object.mouse_opacity = MOUSE_OPACITY_OPAQUE //not having to click the item's tiny sprite to take it out of the storage.
 	update_icon()
 	if(user)
 		user.update_inv_l_hand()
@@ -941,6 +967,11 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 /obj/item/storage/attack_self(mob/user)
 	..()
 
+	if(allow_drop_retrieval && slung_item)
+		to_chat(user, SPAN_NOTICE("You retract the [retrieval_name] from [slung_item]."))
+		unsling(TRUE)
+		return
+
 	//Clicking on itself will empty it, if it has contents and the verb to do that. Contents but no verb means nothing happens.
 	if(length(contents))
 		if (!(storage_flags & STORAGE_DISABLE_USE_EMPTY))
@@ -958,6 +989,41 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 		new foldable(get_turf(src))
 	to_chat(user, SPAN_NOTICE("You fold [src] flat."))
 	qdel(src)
+
+/obj/item/storage/proc/unsling(mob/user, silent = FALSE)
+	if(!slung_item)
+		return
+	if(!silent)
+		to_chat(user, SPAN_WARNING("\The [retrieval_name] is forcibly detached from the [slung_item]!"))
+	slung_item.RemoveElement(/datum/element/drop_retrieval/storage, src)
+	slung_item = null
+
+/obj/item/storage/proc/sling_return(mob/living/carbon/human/user)
+	if(!slung_item || !slung_item.loc)
+		return FALSE
+	if(slung_item.loc == user)
+		return TRUE
+	if(!isturf(slung_item.loc))
+		return FALSE
+	if(get_dist(slung_item, src) > sling_range)
+		return FALSE
+	if(handle_item_insertion(slung_item, TRUE))
+		if(user)
+			to_chat(user, SPAN_NOTICE("\The [slung_item] snaps back into [src]!"))
+		return TRUE
+	return FALSE
+
+/obj/item/storage/proc/attempt_retrieval(mob/living/carbon/human/user)
+	if(sling_return(user))
+		return
+	unsling(TRUE)
+	if(user && src.loc == user) // honestly dont know how this could happen
+		to_chat(user, SPAN_WARNING("The [retrieval_name] of your [src] snaps back empty!"))
+
+/obj/item/storage/proc/handle_retrieval(mob/living/carbon/human/user)
+	if(slung_item && slung_item.loc == src)
+		return
+	addtimer(CALLBACK(src, PROC_REF(attempt_retrieval), user), 5 DECISECONDS, TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
 
 /obj/item/storage/afterattack(atom/target, mob/user, proximity)
 	if(!proximity)

@@ -68,6 +68,7 @@
 	var/t_has = "has"
 	var/t_is = "is"
 	var/t_do = "does"
+	var/t_seem = "seems"
 
 	var/id_paygrade = ""
 	var/obj/item/card/id/I = get_idcard()
@@ -83,6 +84,7 @@
 		t_has = "have"
 		t_is = "are"
 		t_do = "do"
+		t_seem = "seem"
 	else
 		if(icon)
 			msg += "[icon2html(src, user)] "
@@ -235,11 +237,11 @@
 	if(istype(user, /mob/dead/observer) || user.stat == DEAD) // ghosts can see anything
 		distance = 1
 	if (stat || status_flags & FAKEDEATH)
-		msg += SPAN_WARNING("[t_He] [t_is]n't responding to anything around [t_him] and seems to be asleep.\n")
+		msg += SPAN_WARNING("[t_He] [t_is]n't responding to anything around [t_him] and [t_seem] to be asleep.\n")
 		if(stat == DEAD && distance <= 3)
 			msg += SPAN_WARNING("[t_He] [t_do] not appear to be breathing.\n")
 		if(paralyzed > 1 && distance <= 3)
-			msg += SPAN_WARNING("[t_He] seems to be completely still.\n")
+			msg += SPAN_WARNING("[t_He] [t_seem] to be completely still.\n")
 		if(ishuman(user) && !user.stat && Adjacent(user))
 			user.visible_message("[SPAN_BOLD("[user]")] checks [src]'s pulse.", "You check [src]'s pulse.", null, 4)
 		spawn(15)

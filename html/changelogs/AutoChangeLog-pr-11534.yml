@@ -1,0 +1,5 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - rscdel: "Removed the depreciated discord link verb and various discord link/certify code"
+  - config: "Added optional CODE_MODIFICATIONS_MESSAGE config for the Show Server Revision verb"

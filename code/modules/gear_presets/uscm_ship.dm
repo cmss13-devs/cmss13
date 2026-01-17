@@ -637,7 +637,7 @@
 	role_comm_title = "OP"
 	skills = /datum/skills/operations_pilot
 
-	minimap_icon = "pilot"
+	minimap_icon = "op"
 	minimap_background = "background_command"
 
 /datum/equipment_preset/uscm_ship/op/load_gear(mob/living/carbon/human/new_human)

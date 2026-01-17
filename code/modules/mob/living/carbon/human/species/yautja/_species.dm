@@ -158,9 +158,10 @@
 	var/datum/job/pred_job = GLOB.RoleAuthority.roles_by_name[JOB_PREDATOR]
 	if(!pred_job)
 		return
-	var/pred_rank = pred_job.get_whitelist_status(predator.client)
-	if(pred_rank == CLAN_RANK_LEADER)
-		return FALSE
+	if(predator.client)
+		var/pred_rank = pred_job.get_whitelist_status(predator.client)
+		if(pred_rank == CLAN_RANK_LEADER)
+			return FALSE
 	return TRUE
 
 /datum/species/yautja/proc/set_predator_status(mob/living/carbon/human/H, status = "Alive")

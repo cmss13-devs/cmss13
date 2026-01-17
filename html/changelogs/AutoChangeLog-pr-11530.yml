@@ -1,4 +1,0 @@
-author: "Xander3359"
-delete-after: True
-changes:
-  - qol: "Clicking on something with a roller bed will buckle directly on the bed once it's deployed"

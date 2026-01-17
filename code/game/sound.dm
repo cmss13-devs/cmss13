@@ -60,7 +60,7 @@
 		return FALSE
 
 	var/datum/sound_template/template = new()
-	if(isturf(source.loc) || isarea(source.loc))
+	if(source && (isturf(source.loc) || isarea(source.loc)))
 		template.source = WEAKREF(source)
 	if(istype(soundin))
 		template.file = soundin.file

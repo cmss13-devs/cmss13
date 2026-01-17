@@ -533,5 +533,24 @@
 
 	qdel(src)
 
+/obj/effect/landmark/interior/spawn/flight_indicator
+	icon = 'icons/obj/vehicles/interiors/blackfoot.dmi'
+	icon_state = "indicator_flight"
+
+/obj/effect/landmark/interior/spawn/flight_indicator/on_load(datum/interior/interior)
+	var/obj/structure/flight_indicator/indicator = new(get_turf(src))
+
+	indicator.setDir(dir)
+	indicator.alpha = alpha
+	indicator.update_icon()
+	indicator.pixel_x = pixel_x
+	indicator.pixel_y = pixel_y
+
+	if(istype(interior.exterior, /obj/vehicle/multitile/blackfoot))
+		var/obj/vehicle/multitile/blackfoot/linked_blackfoot = interior.exterior
+		linked_blackfoot.indicator = indicator
+
+	qdel(src)
+
 /turf/open/floor/transparent
 	icon_state = "transparent"

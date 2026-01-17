@@ -68,8 +68,8 @@
 
 	dmg_multipliers = list(
 		"all" = 1,
-		"acid" = 3,
-		"slash" = 5,
+		"acid" = 10,
+		"slash" = 2.5,
 		"bullet" = 0.6,
 		"explosive" = 0.7,
 		"blunt" = 0.7,
@@ -105,6 +105,7 @@
 	)
 
 	var/obj/structure/interior_exit/vehicle/blackfoot/back/back_door
+	var/obj/structure/flight_indicator/indicator
 
 	var/minimap_type = MINIMAP_FLAG_USCM
 
@@ -133,6 +134,10 @@
 	QDEL_NULL(shadow_holder)
 	UnregisterSignal(src, COMSIG_MOVABLE_Z_CHANGED)
 	. = ..()
+
+/obj/vehicle/multitile/blackfoot/proc/change_state(state)
+	src.state = state
+	indicator.update_icon(state)
 
 /obj/vehicle/multitile/blackfoot/load_role_reserved_slots()
 	var/datum/role_reserved_slots/RRS = new
@@ -284,7 +289,7 @@
 			passenger.apply_damage(200, BRUTE, "head", used_weapon = "crashed head first into a wall.", no_limb_loss = TRUE, permanent_kill = TRUE)
 
 	playsound(loc, 'sound/effects/metal_crash.ogg', 50, FALSE)
-	state = STATE_DESTROYED
+	change_state(STATE_DESTROYED)
 	update_icon()
 	var/turf/below_turf = SSmapping.get_turf_below(get_turf(src))
 
@@ -456,15 +461,24 @@
 		return
 
 	qdel(collided_atom)
-	state = STATE_TUGGED
+	change_state(STATE_TUGGED)
 	move_delay = VEHICLE_SPEED_NORMAL
 	update_icon()
+
+/obj/vehicle/multitile/blackfoot/hitby(atom/movable/movable)
+	..()
+
+	if(!isxeno(movable))
+		return
+
+	var/mob/living/carbon/xenomorph/xeno = movable
+	attack_alien(xeno, rand(xeno.melee_damage_lower, xeno.melee_damage_upper))
 
 /obj/vehicle/multitile/blackfoot/proc/disconnect_tug()
 	if(state != STATE_TUGGED)
 		return
 
-	state = STATE_STOWED
+	change_state(STATE_TUGGED)
 	update_icon()
 
 	var/turf/disconnect_turf
@@ -592,14 +606,14 @@
 	addtimer(CALLBACK(src, PROC_REF(takeoff_engage_vtol)), 14 SECONDS)
 
 /obj/vehicle/multitile/blackfoot/proc/takeoff_engage_vtol()
-	state = STATE_TAKEOFF_LANDING
+	change_state(STATE_TAKEOFF_LANDING)
 	update_icon()
 	playsound(loc, 'sound/vehicles/vtol/mechanical.ogg', 25, FALSE)
 	addtimer(CALLBACK(src, PROC_REF(finish_takeoff)), 7 SECONDS)
 
 /obj/vehicle/multitile/blackfoot/proc/finish_takeoff()
 	flags_atom |= NO_ZFALL
-	state = STATE_VTOL
+	change_state(STATE_VTOL)
 	update_icon()
 	var/obj/downwash_effect/downwash = locate() in get_turf(src)
 	qdel(downwash)
@@ -650,7 +664,7 @@
 	animate(shadow_holder, pixel_x = src.pixel_x, pixel_y = src.pixel_y, time = 18 SECONDS)
 	new /obj/downwash_effect(below_turf)
 	busy = TRUE
-	state = STATE_TAKEOFF_LANDING
+	change_state(STATE_TAKEOFF_LANDING)
 	update_icon()
 
 	playsound(loc, 'sound/vehicles/vtol/landing.ogg', 25, FALSE)
@@ -670,7 +684,7 @@
 	forceMove(below_turf)
 	qdel(shadow_holder)
 	flags_atom &= ~NO_ZFALL
-	state = STATE_DEPLOYED
+	change_state(STATE_DEPLOYED)
 	transition_engines() // Idle mode by default
 	update_icon()
 	update_rear_view()
@@ -706,9 +720,9 @@
 
 /obj/vehicle/multitile/blackfoot/proc/transition_stowed()
 	if(state == STATE_DEPLOYED)
-		state = STATE_STOWED
+		change_state(STATE_STOWED)
 	else
-		state = STATE_DEPLOYED
+		change_state(STATE_DEPLOYED)
 
 	update_icon()
 	busy = FALSE
@@ -742,13 +756,13 @@
 		if(!thrusters)
 			return
 		START_PROCESSING(SSobj, thrusters)
-		state = STATE_IDLING
+		change_state(STATE_IDLING)
 	else
 		var/obj/item/hardpoint/locomotion/blackfoot_thrusters/thrusters = locate() in hardpoints
 		if(!thrusters)
 			return
 		STOP_PROCESSING(SSobj, thrusters)
-		state = STATE_DEPLOYED
+		change_state(STATE_DEPLOYED)
 
 /obj/vehicle/multitile/blackfoot/proc/toggle_targeting()
 	var/obj/item/hardpoint/primary/chimera_launchers/launchers = locate() in hardpoints
@@ -828,10 +842,10 @@
 		return
 
 	if(vehicle.state == STATE_FLIGHT)
-		vehicle.state = STATE_VTOL
+		vehicle.change_state(STATE_VTOL)
 		vehicle.update_icon()
 	else if (vehicle.state == STATE_VTOL)
-		vehicle.state = STATE_FLIGHT
+		vehicle.change_state(STATE_FLIGHT)
 		vehicle.update_icon()
 
 /obj/vehicle/multitile/blackfoot/proc/land()
@@ -1091,8 +1105,17 @@
 
 	to_chat(user, SPAN_NOTICE("You start assembling the landing pad..."))
 
+	var/list/obj/effect/overlay/temp/tent_deployment_area/turf_overlay = list()
+	for(var/turf/turf in CORNER_BLOCK(loc, 3, 3))
+		turf_overlay += new /obj/effect/overlay/temp/tent_deployment_area/casting(turf)
+
 	if(!do_after(user, 20 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
+		for(var/cast_effect in turf_overlay)
+			qdel(cast_effect)
 		return
+
+	for(var/cast_effect in turf_overlay)
+		qdel(cast_effect)
 
 	for(var/atom/possible_blocker in CORNER_BLOCK(loc, 3, 3))
 		if(possible_blocker.density)
@@ -1327,6 +1350,21 @@
 			return
 
 		launchers.try_add_clip(ammo, user)
+
+/obj/structure/flight_indicator
+	name = "flight indicator"
+	icon = 'icons/obj/vehicles/interiors/blackfoot.dmi'
+	icon_state = "indicator_landed"
+	density = FALSE
+
+/obj/structure/flight_indicator/update_icon(vtol_state)
+	switch(vtol_state)
+		if(STATE_TUGGED, STATE_STOWED, STATE_DEPLOYED, STATE_IDLING, STATE_DESTROYED)
+			icon_state = "indicator_landed"
+		if(STATE_TAKEOFF_LANDING)
+			icon_state = "indicator_landing"
+		if(STATE_VTOL, STATE_FLIGHT)
+			icon_state = "indicator_flight"
 
 #undef STATE_TUGGED
 #undef STATE_STOWED

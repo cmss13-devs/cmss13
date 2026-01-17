@@ -91,6 +91,9 @@
 /obj/effect/landmark/interior/spawn/entrance/blackfoot_rear_door{
 	tag = "back"
 	},
+/obj/effect/landmark/interior/spawn/flight_indicator{
+	pixel_y = 19
+	},
 /turf/open/floor/transparent,
 /area/interior/vehicle/blackfoot)
 "R" = (

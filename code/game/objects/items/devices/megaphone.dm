@@ -82,7 +82,7 @@
 			if(isliving(listener))
 				var/mob/living/audience = listener
 				if(skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_TRAINED) && !HAS_TRAIT(audience, TRAIT_LEADERSHIP) && !skillcheck(audience, SKILL_LEADERSHIP, SKILL_LEAD_TRAINED))
-					if(user.faction == audience.faction)
+					if(user.faction == audience.faction && !(audience.mob_flags & MUTINY_MUTINEER))
 						audience.set_effect(3 SECONDS, HUSHED)
 						to_chat(audience, SPAN_WARNING("You hush yourself as [user] broadcasts authoritatively through the [src]!"))
 					else

@@ -43,13 +43,12 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	check_fall(entered_movable)
 
 /turf/open_space/additional_enter_checks(atom/movable/mover)
-	var/turf/projected_turf = get_projected_turf()
-	if(projected_turf.density)
+	if(mover.move_intentionally && istype(mover,/mob/living))
+		var/mob/living/climber = mover
+		if(climber.a_intent == INTENT_HARM)
+			return TRUE
+		climb_down(climber)
 		return FALSE
-
-	for(var/atom/possible_blocker in projected_turf.contents)
-		if(possible_blocker.density && !ismob(possible_blocker))
-			return FALSE
 
 	return TRUE
 
@@ -140,6 +139,17 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 			break
 		below = SSmapping.get_turf_below(below)
 		depth++
+
+/turf/open_space/blackfoot/additional_enter_checks(atom/movable/mover)
+	var/turf/projected_turf = get_projected_turf()
+	if(projected_turf.density)
+		return FALSE
+
+	for(var/atom/possible_blocker in projected_turf.contents)
+		if(possible_blocker.density && !ismob(possible_blocker))
+			return FALSE
+
+	return TRUE
 
 /turf/open_space/blackfoot/check_fall(atom/movable/movable)
 	if(movable.flags_atom & NO_ZFALL)

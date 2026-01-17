@@ -511,13 +511,13 @@
 
 	switch(dir)
 		if(SOUTH)
-			rear_turf = locate(x, y + 2, z)
+			rear_turf = locate(x, y + 3, z)
 		if(NORTH)
-			rear_turf = locate(x, y, z)
+			rear_turf = locate(x, y - 1, z)
 		if(EAST)
-			rear_turf = locate(x - 1, y + 1, z)
+			rear_turf = locate(x - 2, y + 1, z)
 		if(WEST)
-			rear_turf = locate(x - 1, y + 1, z)
+			rear_turf = locate(x + 2, y + 1, z)
 
 	if(state == STATE_VTOL || state == STATE_FLIGHT)
 		rear_turf = SSmapping.get_turf_below(rear_turf)

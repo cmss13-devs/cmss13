@@ -478,7 +478,7 @@
 	if(state != STATE_TUGGED)
 		return
 
-	change_state(STATE_TUGGED)
+	change_state(STATE_STOWED)
 	update_icon()
 
 	var/turf/disconnect_turf

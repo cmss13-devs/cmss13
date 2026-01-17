@@ -362,7 +362,7 @@
 
 	return XENO_NONCOMBAT_ACTION
 
-/obj/structure/powerloader_wreckage/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/powerloader_wreckage/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	if(unslashable || health <= 0)
 		return TAILSTAB_COOLDOWN_NONE
 	if(xeno.mob_size < MOB_SIZE_XENO)
@@ -378,6 +378,7 @@
 	else
 		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
 		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
 
 /obj/structure/powerloader_wreckage/jd

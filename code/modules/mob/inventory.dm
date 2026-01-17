@@ -11,12 +11,14 @@
 
 //Returns the thing in our inactive hand
 /mob/proc/get_inactive_hand()
+	RETURN_TYPE(/obj/item)
 	if(hand)
 		return r_hand
 	else
 		return l_hand
 
 /mob/proc/get_hands()
+	RETURN_TYPE(/obj/item)
 	if(hand)
 		return list(l_hand, r_hand)
 	else

@@ -80,7 +80,7 @@
 	target_ship_section = ship_section
 	var/turf/target = get_crashsite_turf(ship_section)
 	if(!target)
-		to_chat(usr, SPAN_WARNING("No area available"))
+		to_chat(usr, SPAN_WARNING("No area available."))
 		return
 
 	var/obj/docking_port/stationary/marine_dropship/crash_site/target_site = new()

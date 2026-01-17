@@ -142,7 +142,7 @@
  */
 /obj/item/clothing/head/radiation
 	name = "Radiation Hood"
-	desc = "A hood with radiation protective properties. Label: Made with lead, do not eat insulation"
+	desc = "A hood with radiation protective properties. Label: Made with lead, do not eat insulation."
 	icon_state = "rad"
 	icon = 'icons/obj/items/clothing/hats/hazard.dmi'
 	item_icons = list(

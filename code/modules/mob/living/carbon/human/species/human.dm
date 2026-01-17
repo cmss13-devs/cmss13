@@ -138,6 +138,7 @@
 	total_health = 150
 
 	inherent_verbs = list(
+		/mob/living/carbon/human/proc/butcher,
 		/mob/living/carbon/human/proc/mark_for_hunt,
 		/mob/living/carbon/human/proc/remove_from_hunt,
 	)

@@ -794,9 +794,9 @@
 		to_chat(user, SPAN_WARNING("You're not strong enough to rip an entire humanoid apart. Also, that's kind of fucked up."))
 		return TRUE
 
-	if(issamespecies(user, victim))
+	if(isspeciesyautja(victim))
 		to_chat(user, SPAN_HIGHDANGER("ARE YOU OUT OF YOUR MIND!?"))
-		return
+		return TRUE
 
 	if(isspeciessynth(victim))
 		to_chat(user, SPAN_WARNING("You can't flay metal..."))

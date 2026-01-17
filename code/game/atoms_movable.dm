@@ -49,6 +49,9 @@
 	QDEL_NULL(em_block)
 	QDEL_NULL(emissive_overlay)
 
+	buckled_mobs?.Cut()
+	buckled_mob = null
+
 	if(loc)
 		loc.on_stored_atom_del(src) //things that container need to do when a movable atom inside it is deleted
 	if(orbiting)
@@ -400,7 +403,7 @@
 	INVOKE_ASYNC(src, PROC_REF(SpinAnimation), 5, 2)
 
 //trying to buckle a mob
-/atom/movable/proc/buckle_mob(mob/user, mob/buckle_target, force = FALSE, check_loc = TRUE, lying_buckle = FALSE, hands_needed = 0, target_hands_needed = 0, silent = FALSE)
+/atom/movable/proc/buckle_mob(mob/buckle_target, mob/user, force = FALSE, check_loc = TRUE, lying_buckle = FALSE, hands_needed = 0, target_hands_needed = 0, silent = FALSE)
 	if(!ismob(buckle_target) || (get_dist(src, user) > 1) || user.stat || buckled_mob || buckle_target.buckled || !isturf(user.loc))
 		return
 
@@ -426,8 +429,9 @@
 			if(buckle_target.loc != loc)
 				return
 			. = buckle_mob(buckle_target)
-	if(SEND_SIGNAL(src, COMSIG_MOVABLE_PREBUCKLE, buckle_target, user, force, check_loc, lying_buckle, hands_needed, target_hands_needed, silent) & COMPONENT_BLOCK_BUCKLE)
+	if(SEND_SIGNAL(src, COMSIG_MOVABLE_PREBUCKLE, buckle_target, user, force, check_loc, lying_buckle, hands_needed, target_hands_needed, silent) && COMPONENT_BLOCK_BUCKLE)
 		return
+	/*
 	if(buckle_target.mob_size <= MOB_SIZE_XENO)
 		if ((buckle_target.stat == DEAD && istype(src, /obj/structure/bed/roller) || HAS_TRAIT(buckle_target, TRAIT_OPPOSABLE_THUMBS)))
 			do_buckle(buckle_target, user)
@@ -437,12 +441,12 @@
 			var/obj/structure/bed/roller/roller = src
 			if(!roller.can_carry_big)
 				to_chat(user, SPAN_WARNING("[buckle_target] is too big to buckle in."))
-				return
+				return COMPONENT_BLOCK_BUCKLE
 			if(buckle_target.stat != DEAD)
 				to_chat(user, SPAN_WARNING("[buckle_target] resists your attempt to buckle!"))
-				return
+				return COMPONENT_BLOCK_BUCKLE
 		if(buckle_target.stat != DEAD)
-			return
+			return */
 	do_buckle(buckle_target, user)
 
 // the actual buckling proc

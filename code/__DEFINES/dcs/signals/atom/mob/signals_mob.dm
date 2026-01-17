@@ -175,6 +175,10 @@
 	#define COMSIG_MOB_PREPARED_SWING_SWUNG (1<<0)
 	#define COMSIG_MOB_PREPARED_SWING_PASSTHROUGH (1<<1)
 
+#define COMSIG_MOB_CATCHING_OBJECT "mob_catching_object"
+	#define COMSIG_MOB_CATCHING_OBJECT_CAUGHT (1<<0)
+	#define COMSIG_MOB_CATCHING_OBJECT_DROPPED (1<<1)
+
 /// From /mob/proc/get_status_tab_items() : (list/status_list)
 #define COMSIG_MOB_GET_STATUS_TAB_ITEMS "mob_get_status_tab_items"
 

@@ -214,6 +214,11 @@ Contains most of the procs that are called when a mob is attacked by something
 		else if(COMSIG_MOB_PREPARED_SWING in comp_lookup)
 			var/obj/item/weapon/baseballbat/bat = comp_lookup[COMSIG_MOB_PREPARED_SWING]
 			return bat.swing(src, O, LM)
+		else if(throw_mode && (COMSIG_MOB_CATCHING_OBJECT in comp_lookup) && cur_speed <= SPEED_VERY_FAST && \
+			!is_mob_incapacitated() && isturf(O.loc) )
+			if(SEND_SIGNAL(src, COMSIG_MOB_CATCHING_OBJECT, O) & COMSIG_MOB_CATCHING_OBJECT_CAUGHT)
+				toggle_throw_mode(THROW_MODE_OFF)
+				return
 	var/dtype = BRUTE
 	if (istype(O, /obj/item/weapon))
 		var/obj/item/weapon/W = O

@@ -96,7 +96,7 @@
 		to_chat(user, SPAN_WARNING("You can't swing [src] yet."))
 		return
 	prepared_to_swing = TRUE
-	user.visible_message(SPAN_NOTICE("[user] prepares to swing [src]."), SPAN_NOTICE("You prepare to swing [src]."), null, 3)
+	user.visible_message(SPAN_NOTICE("[user] prepares to swing [src]."), SPAN_NOTICE("You prepare to swing [src]."))
 	RegisterSignal(user, COMSIG_MOB_PREPARED_SWING, PROC_REF(swing))
 	next_swing = world.time + swing_prepared_time
 	addtimer(CALLBACK(src, PROC_REF(removed_prepared_swing), user), swing_prepared_time)

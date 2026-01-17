@@ -67,6 +67,7 @@
 	var/t_him = "it"
 	var/t_has = "has"
 	var/t_is = "is"
+	var/t_do = "does"
 
 	var/id_paygrade = ""
 	var/obj/item/card/id/I = get_idcard()
@@ -81,6 +82,7 @@
 		t_him = "them"
 		t_has = "have"
 		t_is = "are"
+		t_do = "do"
 	else
 		if(icon)
 			msg += "[icon2html(src, user)] "
@@ -184,9 +186,9 @@
 					found_iff = TRUE
 			if(found_iff)
 				if(get_target_lock(human_with_gun.get_id_faction_group()) > 0)
-					msg += SPAN_HELPFUL("[capitalize(t_He)] is compatible with your weapon's IFF.\n")
+					msg += SPAN_HELPFUL("[t_He] [t_is] compatible with your weapon's IFF.\n")
 				else
-					msg += SPAN_DANGER("[capitalize(t_He)] is not compatible with your weapon's IFF. They will be shot by your weapon!\n")
+					msg += SPAN_DANGER("[t_He] [t_is] not compatible with your weapon's IFF. They will be shot by your weapon!\n")
 	//Restraints
 	if(handcuffed)
 		msg += SPAN_ORANGE("[capitalize(t_his)] arms are restrained by [handcuffed].\n")
@@ -235,7 +237,7 @@
 	if (stat || status_flags & FAKEDEATH)
 		msg += SPAN_WARNING("[t_He] [t_is]n't responding to anything around [t_him] and seems to be asleep.\n")
 		if(stat == DEAD && distance <= 3)
-			msg += SPAN_WARNING("[t_He] does not appear to be breathing.\n")
+			msg += SPAN_WARNING("[t_He] [t_do] not appear to be breathing.\n")
 		if(paralyzed > 1 && distance <= 3)
 			msg += SPAN_WARNING("[t_He] seems to be completely still.\n")
 		if(ishuman(user) && !user.stat && Adjacent(user))
@@ -250,7 +252,7 @@
 
 	if((species && !species.has_organ["brain"] || has_brain()) && stat != DEAD && stat != CONSCIOUS)
 		if(!key)
-			msg += SPAN_DEADSAY("[t_He] [t_is] fast asleep. It doesn't look like they are waking up anytime soon.\n")
+			msg += SPAN_DEADSAY("[t_He] [t_is] fast asleep. [t_He] [t_do] not look like [lowertext(t_He)] [t_is] waking up anytime soon.\n")
 		else if(!client)
 			msg += "[t_He] [t_has] suddenly fallen asleep.\n"
 
@@ -268,7 +270,7 @@
 		if(temp)
 			if(temp.status & LIMB_DESTROYED)
 				is_destroyed["[temp.display_name]"] = 1
-				wound_flavor_text["[temp.display_name]"] = SPAN_WARNING(SPAN_BOLD("[t_He] is missing [t_his] [temp.display_name].\n"))
+				wound_flavor_text["[temp.display_name]"] = SPAN_WARNING(SPAN_BOLD("[t_He] [t_is] missing [t_his] [temp.display_name].\n"))
 				continue
 			if(temp.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 				if(!(temp.brute_dam + temp.burn_dam))
@@ -324,12 +326,12 @@
 						switch(wound_descriptors[wound])
 							if(1)
 								if(!length(flavor_text))
-									flavor_text += SPAN_WARNING("[t_He] has[prob(10) && !(wound in no_exclude)  ? " what might be" : ""] a [wound]")
+									flavor_text += SPAN_WARNING("[t_He] [t_has][prob(10) && !(wound in no_exclude)  ? " what might be" : ""] a [wound]")
 								else
 									flavor_text += "[prob(10) && !(wound in no_exclude) ? " what might be" : ""] a [wound]"
 							if(2)
 								if(!length(flavor_text))
-									flavor_text += SPAN_WARNING("[t_He] has[prob(10) && !(wound in no_exclude) ? " what might be" : ""] a pair of [wound]s")
+									flavor_text += SPAN_WARNING("[t_He] [t_has][prob(10) && !(wound in no_exclude) ? " what might be" : ""] a pair of [wound]s")
 								else
 									flavor_text += "[prob(10) && !(wound in no_exclude) ? " what might be" : ""] a pair of [wound]s"
 							if(3 to 5)

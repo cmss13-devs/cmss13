@@ -22,7 +22,7 @@
 	bound_x = -32
 	bound_y = 0
 
-	minimap_icon_state = "arc"
+	minimap_icon_state = "vtol"
 	interior_map = /datum/map_template/interior/blackfoot_transport
 
 	move_max_momentum = 2.2

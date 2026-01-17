@@ -241,7 +241,8 @@
 			return
 	..()
 
-/obj/structure/bed/roller/proc/check_buckle(obj/bed, mob/buckle_target, mob/user)
+/// Signal handler for COMSIG_MOVABLE_PREBUCKLE to potentially block buckling.
+/obj/structure/bed/roller/proc/check_buckle(obj/bed, mob/buckle_target)
 	SIGNAL_HANDLER
 
 	if(buckle_target.mob_size <= MOB_SIZE_XENO)

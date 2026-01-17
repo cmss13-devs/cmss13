@@ -135,12 +135,12 @@
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if(!xeno.check_state())
 		return
-	for(var/info in 1 to length(xeno.caste.spit_types))
-		if(xeno.ammo == GLOB.ammo_list[xeno.caste.spit_types[info]])
-			if(info == length(xeno.caste.spit_types))
+	for(var/i in 1 to length(xeno.caste.spit_types))
+		if(xeno.ammo == GLOB.ammo_list[xeno.caste.spit_types[i]])
+			if(i == length(xeno.caste.spit_types))
 				xeno.ammo = GLOB.ammo_list[xeno.caste.spit_types[1]]
 			else
-				xeno.ammo = GLOB.ammo_list[xeno.caste.spit_types[info+1]]
+				xeno.ammo = GLOB.ammo_list[xeno.caste.spit_types[i+1]]
 			break
 	to_chat(xeno, SPAN_NOTICE("We will now spit [xeno.ammo.name] ([xeno.ammo.spit_cost] plasma)."))
 	button.overlays.Cut()
@@ -183,13 +183,13 @@
 	var/list/constructions = list()
 	for(var/type in xeno.resin_build_order)
 		var/list/entry = list()
-		var/datum/resin_construction/Resin_Construct = GLOB.resin_constructions_list[type]
+		var/datum/resin_construction/resin_construct = GLOB.resin_constructions_list[type]
 
-		entry["name"] = Resin_Construct.name
-		entry["desc"] = Resin_Construct.desc
-		entry["image"] = replacetext(Resin_Construct.construction_name, " ", "-")
-		entry["plasma_cost"] = Resin_Construct.cost
-		entry["max_per_xeno"] = Resin_Construct.max_per_xeno
+		entry["name"] = resin_construct.name
+		entry["desc"] = resin_construct.desc
+		entry["image"] = replacetext(resin_construct.construction_name, " ", "-")
+		entry["plasma_cost"] = resin_construct.cost
+		entry["max_per_xeno"] = resin_construct.max_per_xeno
 		entry["id"] = "[type]"
 		constructions += list(entry)
 
@@ -317,12 +317,12 @@
 		var/list/promptlist = list("Yes", "No")
 		var/obj/effect/alien/resin/marker/goober = null
 		var/promptuser = null
-		for(var/info=1, info<=length(xeno.hive.resin_marks))
-			goober = xeno.hive.resin_marks[info]
+		for(var/i=1, i<=length(xeno.hive.resin_marks))
+			goober = xeno.hive.resin_marks[i]
 			if(goober.createdby == xeno.nicknumber)
 				promptuser = tgui_input_list(xeno, "Remove oldest placed mark: '[goober.mark_meaning.name]!'?", "Mark limit reached.", promptlist, theme="hive_status")
 				break
-			info++
+			i++
 		if(promptuser == "No")
 			return
 		else if(promptuser == "Yes")
@@ -457,8 +457,8 @@
 		playsound(loc, "alien_drool", 25)
 
 	if(isqueen(src) && hive && length(hive.xeno_leader_list) && anchored)
-		for(var/mob/living/carbon/xenomorph/List in hive.xeno_leader_list)
-			List.handle_xeno_leader_pheromones()
+		for(var/mob/living/carbon/xenomorph/leader in hive.xeno_leader_list)
+			leader.handle_xeno_leader_pheromones()
 
 /datum/action/xeno_action/activable/pounce/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
@@ -830,8 +830,8 @@
 
 /datum/action/xeno_action/activable/place_construction/proc/spacecheck(mob/living/carbon/xenomorph/xeno, turf/turf, datum/construction_template/xenomorph/tem)
 	if(tem.block_range)
-		for(var/turf/turf_Target in range(tem.block_range, turf))
-			if(!xeno.check_alien_construction(turf_Target, FALSE, TRUE, ignore_nest = TRUE))
+		for(var/turf/turf_target in range(tem.block_range, turf))
+			if(!xeno.check_alien_construction(turf_target, FALSE, TRUE, ignore_nest = TRUE))
 				to_chat(xeno, SPAN_WARNING("We need more open space to build here."))
 				qdel(tem)
 				return FALSE
@@ -966,8 +966,8 @@
 
 	addtimer(CALLBACK(src, PROC_REF(new_effect), turf, owner), 2*(orig_depth - dist_left))
 
-	for(var/mob/living/Living in turf)
-		to_chat(Living, SPAN_XENOHIGHDANGER("You see a massive ball of acid flying towards you!"))
+	for(var/mob/living/living in turf)
+		to_chat(living, SPAN_XENOHIGHDANGER("You see a massive ball of acid flying towards you!"))
 
 	for(var/dirn in GLOB.alldirs)
 		recursive_spread(get_step(turf, dirn), dist_left - 1, orig_depth)
@@ -976,7 +976,7 @@
 	if(!istype(turf))
 		return
 
-	for(var/obj/effect/xenomorph/boiler_bombard/Boiler_Bombard in turf)
+	if(locate(/obj/effect/xenomorph/boiler_bombard) in turf)
 		return
 
 	new effect_type(turf, xeno)

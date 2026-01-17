@@ -62,12 +62,12 @@
 		return FALSE
 
 	if(alien_weeds?.block_structures >= BLOCK_ALL_STRUCTURES)
-		to_chat(xeno, SPAN_WARNING("\The [alien_weeds] block the construction of any structures!"))
+		to_chat(xeno, SPAN_WARNING("[alien_weeds] block the construction of any structures!"))
 		return FALSE
 
-	var/obj/vehicle/Vehicle = locate() in turf
-	if(Vehicle)
-		to_chat(xeno, SPAN_WARNING("You cannot build under \the [Vehicle]!"))
+	var/obj/vehicle/vehicle = locate() in turf
+	if(vehicle)
+		to_chat(xeno, SPAN_WARNING("You cannot build under \the [vehicle]!"))
 		return FALSE
 
 	if(alien_weeds.linked_hive.hivenumber != xeno.hivenumber)
@@ -82,9 +82,9 @@
 		return FALSE
 
 	if(range_between_constructions)
-		for(var/info in long_range(range_between_constructions, turf))
-			var/atom/Atom = info
-			if(Atom.type == build_path)
+		for(var/i in long_range(range_between_constructions, turf))
+			var/atom/atom = i
+			if(atom.type == build_path)
 				to_chat(xeno, SPAN_WARNING("This is too close to another similar structure!"))
 				return FALSE
 
@@ -97,7 +97,7 @@
 			return
 		if(istype(alien_weeds, /obj/effect/alien/weeds/node))
 			to_chat(xeno, SPAN_NOTICE("We start uprooting the node so we can put the resin hole in its place..."))
-			if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC, INTERRUPT_ALL))
+			if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 				return
 			if(!turf.check_xeno_trap_placement(xeno))
 				return
@@ -248,8 +248,8 @@
 		return FALSE
 
 	var/wall_support = FALSE
-	for(var/Dir in GLOB.cardinals)
-		var/turf/turf_target = get_step(turf, Dir)
+	for(var/dir in GLOB.cardinals)
+		var/turf/turf_target = get_step(turf, dir)
 		if(turf_target)
 			if(turf_target.density)
 				wall_support = TRUE
@@ -314,14 +314,13 @@
 	desc = "Resin that harms any tallhosts when they walk over it."
 	construction_name = "resin spike"
 	cost = XENO_RESIN_SPIKE_COST
-	build_time = 1 SECONDS
 	max_per_xeno = 15
 
 	build_path = /obj/effect/alien/resin/spike
 
 /datum/resin_construction/resin_obj/resin_spike/burrower
 	cost = XENO_RESIN_SPIKE_BURROWER_COST
-	max_per_xeno = 45
+	max_per_xeno = 30
 
 /datum/resin_construction/resin_obj/resin_hole
 	name = "Resin Hole"
@@ -349,7 +348,6 @@
 
 /datum/resin_construction/resin_obj/acid_pillar/burrower
 	cost = XENO_RESIN_ACID_PILLAR_BURROWER_COST
-	max_per_xeno = 2
 	range_between_constructions = 3
 
 /datum/resin_construction/resin_obj/shield_dispenser

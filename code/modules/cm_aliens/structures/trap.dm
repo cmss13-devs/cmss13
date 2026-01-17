@@ -15,7 +15,7 @@
 	var/hivenumber = XENO_HIVE_NORMAL //Hivenumber of the xeno that planted it OR the last Facehugger that was placed (essentially taking over the trap)
 	var/trap_type = RESIN_TRAP_EMPTY
 	var/armed = 0
-	var/created_by = null
+	var/created_by //ckey
 	var/list/notify_list = list() // list of xeno mobs to notify on trigger
 	var/datum/effect_system/smoke_spread/smoke_system
 	var/datum/cause_data/cause_data
@@ -27,7 +27,7 @@
 		hivenumber = hive
 
 	if(istype(xeno, /mob/living/carbon/xenomorph))
-		created_by = xeno.nicknumber
+		created_by = xeno.ckey
 
 	cause_data = create_cause_data("resin trap", xeno)
 	set_hive_data(src, hivenumber)
@@ -185,10 +185,10 @@
 			new spray_type(loc, cause_data, hivenumber)
 			for(var/turf/turf in range(1,loc))
 				var/obj/effect/xenomorph/spray/acid_splash = new spray_type(turf, cause_data, hivenumber)
-				for(var/mob/living/carbon/Human in turf)
-					if(Human.ally_of_hivenumber(hivenumber))
+				for(var/mob/living/carbon/human in turf)
+					if(human.ally_of_hivenumber(hivenumber))
 						continue
-					acid_splash.apply_spray(Human)
+					acid_splash.apply_spray(human)
 			set_state()
 			clear_tripwires()
 	if(!area)
@@ -238,13 +238,13 @@
 		new_tripwire.linked_trap = src
 		tripwires += new_tripwire
 
-/obj/effect/alien/resin/trap/attackby(obj/item/Weapon, mob/user)
-	if(!(istype(Weapon, /obj/item/clothing/mask/facehugger) && isxeno(user)))
+/obj/effect/alien/resin/trap/attackby(obj/item/weapon, mob/user)
+	if(!(istype(weapon, /obj/item/clothing/mask/facehugger) && isxeno(user)))
 		return ..()
 	if(trap_type != RESIN_TRAP_EMPTY)
 		to_chat(user, SPAN_XENOWARNING("You can't put a hugger in this trap!"))
 		return
-	var/obj/item/clothing/mask/facehugger/hugger = Weapon
+	var/obj/item/clothing/mask/facehugger/hugger = weapon
 	if(hugger.stat == DEAD)
 		to_chat(user, SPAN_XENOWARNING("You can't put a dead facehugger in [src]."))
 	else

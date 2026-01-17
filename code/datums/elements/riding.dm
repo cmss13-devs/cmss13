@@ -13,7 +13,7 @@
 	/// The specific riding component subtype we're loading our instructions from, don't leave this as default please!
 	var/riding_component_type = /datum/component/riding
 
-/datum/element/ridable/Attach(atom/movable/target, component_type = /datum/component/riding, potion_boost = FALSE)
+/datum/element/ridable/Attach(atom/movable/target, component_type = /datum/component/riding)
 	. = ..()
 	if(!ismovable(target))
 		return COMPONENT_INCOMPATIBLE
@@ -31,7 +31,7 @@
 	return ..()
 
 /// Someone is buckling to this movable, which is literally the only thing we care about
-/datum/element/ridable/proc/check_mounting(atom/movable/target_movable, atom/movable/user, mob/living/potential_rider, force = FALSE, check_loc, lying_buckle, hands_needed, target_hands_needed, silent)
+/datum/element/ridable/proc/check_mounting(atom/movable/target_movable, atom/movable/user, mob/living/potential_rider, ride_check_flags, force = FALSE, check_loc, lying_buckle, hands_needed, target_hands_needed, silent)
 	SIGNAL_HANDLER
 
 	if(HAS_TRAIT(potential_rider, TRAIT_CANT_RIDE))
@@ -41,12 +41,11 @@
 		potential_rider.visible_message(SPAN_WARNING("[potential_rider] can't get a grip on [target_movable] because [potential_rider.p_their()] hands are full!"),
 			SPAN_WARNING("You can't get a grip on [target_movable] because your hands are full!"))
 		return COMPONENT_BLOCK_BUCKLE
-/*
+
 	if((ride_check_flags & RIDER_NEEDS_LEGS) && HAS_TRAIT(potential_rider, TRAIT_FLOORED))
 		potential_rider.visible_message(SPAN_WARNING("[potential_rider] can't get [potential_rider.p_their()] footing on [target_movable]!"),
 			SPAN_WARNING("You can't get your footing on [target_movable]!"))
 		return COMPONENT_BLOCK_BUCKLE
-*/
 
 	var/mob/living/target_living = target_movable
 

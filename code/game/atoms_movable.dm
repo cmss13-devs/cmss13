@@ -403,7 +403,7 @@
 	INVOKE_ASYNC(src, PROC_REF(SpinAnimation), 5, 2)
 
 //trying to buckle a mob
-/atom/movable/proc/buckle_mob(mob/buckle_target, mob/user, force = FALSE, check_loc = TRUE, lying_buckle = FALSE, hands_needed = 0, target_hands_needed = 0, silent = FALSE)
+/atom/movable/proc/buckle_mob(mob/buckle_target, mob/user, ride_check_flags = null, force = FALSE, check_loc = TRUE, lying_buckle = FALSE, hands_needed = 0, target_hands_needed = 0, silent = FALSE)
 	if(!ismob(buckle_target) || (get_dist(src, user) > 1) || user.stat || buckled_mob || buckle_target.buckled || !isturf(user.loc))
 		return
 
@@ -429,7 +429,7 @@
 			if(buckle_target.loc != loc)
 				return
 			. = buckle_mob(buckle_target)
-	if(SEND_SIGNAL(src, COMSIG_MOVABLE_PREBUCKLE, buckle_target, user, force, check_loc, lying_buckle, hands_needed, target_hands_needed, silent) & COMPONENT_BLOCK_BUCKLE)
+	if(SEND_SIGNAL(src, COMSIG_MOVABLE_PREBUCKLE, buckle_target, user, ride_check_flags, force, check_loc, lying_buckle, hands_needed, target_hands_needed, silent) & COMPONENT_BLOCK_BUCKLE)
 		return
 	do_buckle(buckle_target, user)
 

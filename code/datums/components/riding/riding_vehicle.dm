@@ -1,6 +1,6 @@
 // For any /obj/vehicle's that can be ridden
 
-/datum/component/riding/vehicle/Initialize(mob/living/riding_mob, force = FALSE, ride_check_flags = (RIDER_NEEDS_LEGS | RIDER_NEEDS_ARMS), potion_boost = FALSE)
+/datum/component/riding/vehicle/Initialize(mob/living/riding_mob, force = FALSE, ride_check_flags = (RIDER_NEEDS_LEGS | RIDER_NEEDS_ARMS))
 	if(!isVehicle(parent))
 		return COMPONENT_INCOMPATIBLE
 	return ..()
@@ -16,7 +16,7 @@
 
 	if(!keycheck(user))
 		if(COOLDOWN_FINISHED(src, message_cooldown))
-			to_chat(user, "<span class='warning'>[vehicle_parent] has no key inserted!</span>")
+			to_chat(user, SPAN_WARNING("[vehicle_parent] has no key inserted!"))
 			COOLDOWN_START(src, message_cooldown, 5 SECONDS)
 		return COMPONENT_DRIVER_BLOCK_MOVE
 

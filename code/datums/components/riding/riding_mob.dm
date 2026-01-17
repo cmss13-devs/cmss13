@@ -54,8 +54,8 @@
 	if(!kick_us_off)
 		return TRUE
 
-	rider.visible_message("<span class='warning'>[rider] falls off of [living_parent]!</span>", \
-					"<span class='warning'>You fall off of [living_parent]!</span>")
+	rider.visible_message(SPAN_WARNING("[rider] falls off of [living_parent]!"), \
+					SPAN_WARNING("You fall off of [living_parent]!"))
 	rider.KnockOut(1)
 	rider.KnockDown(4)
 	living_parent.unbuckle(rider)
@@ -70,7 +70,7 @@
 	if(!keycheck(user))
 		if(ispath(keytype, /obj/item))
 			var/obj/item/key = keytype
-			to_chat(user, "<span class='warning'>You need a [initial(key.name)] to ride [movable_parent]!</span>")
+			to_chat(user, SPAN_WARNING("You need a [initial(key.name)] to ride [movable_parent]!"))
 		return COMPONENT_DRIVER_BLOCK_MOVE
 	var/mob/living/living_parent = parent
 	var/turf/next = get_step(living_parent, direction)
@@ -91,13 +91,13 @@
 	rider.Move(targetm)
 	rider.KnockDown(3)
 	if(gentle)
-		rider.visible_message("<span class='warning'>[rider] is thrown clear of [movable_parent]!</span>", \
-		"<span class='warning'>You're thrown clear of [movable_parent]!</span>")
-		rider.throw_atom(target, 8, 3, movable_parent)
+		rider.visible_message(SPAN_WARNING("[rider] is thrown clear of [movable_parent]!"), \
+		SPAN_WARNING("You're thrown clear of [movable_parent]!"))
+		rider.throw_atom(target, 3, SPEED_FAST, movable_parent)
 	else
-		rider.visible_message("<span class='warning'>[rider] is thrown violently from [movable_parent]!</span>", \
-		"<span class='warning'>You're thrown violently from [movable_parent]!</span>")
-		rider.throw_atom(target, 14, 5, movable_parent)
+		rider.visible_message(SPAN_WARNING("[rider] is thrown violently from [movable_parent]!"), \
+		SPAN_WARNING("You're thrown violently from [movable_parent]!"))
+		rider.throw_atom(target, 5, SPEED_FAST, movable_parent)
 
 /datum/component/riding/creature/proc/check_carrier_fall_over(mob/living/carbon/carrying)
 	SIGNAL_HANDLER
@@ -105,9 +105,9 @@
 	for(var/mob/living/rider in carrying.buckled_mobs)
 		carrying.unbuckle(rider)
 		rider.KnockDown(1)
-		carrying.visible_message("<span class='danger'>[rider] topples off of [carrying] as they both fall to the ground!</span>", \
-					"<span class='warning'>You fall to the ground, bringing [rider] with you!</span>", "<span class='hear'>You hear two consecutive thuds.</span>")
-		to_chat(rider, "<span class='danger'>[carrying] falls to the ground, bringing you with [carrying.p_them()]!</span>")
+		carrying.visible_message(SPAN_DANGER("[rider] topples off of [carrying] as they both fall to the ground!"), \
+					SPAN_DANGER("You fall to the ground, bringing [rider] with you!</span>"), \
+					"You hear two consecutive thuds.")
 
 
 /datum/component/riding/creature/runner

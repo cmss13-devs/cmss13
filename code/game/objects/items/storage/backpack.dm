@@ -593,7 +593,7 @@
 	if(!user || !user.ally_of_hivenumber(xeno.hivenumber))
 		user.KnockDown(rand(xeno.caste.tacklestrength_min, xeno.caste.tacklestrength_max))
 		playsound(user.loc, 'sound/weapons/pierce.ogg', 25, TRUE)
-		user.visible_message(SPAN_WARNING("\The [user] tried to strap \the [src] onto [xeno] but instead gets a tail swipe to the head!"))
+		user.visible_message(SPAN_WARNING("[user] tried to strap [src] onto [xeno] but instead gets a tail swipe to the head!"))
 		return FALSE
 	if(isrunner(xeno))
 		ENABLE_BITFIELD(xeno.buckle_flags, CAN_BUCKLE)

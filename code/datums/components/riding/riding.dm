@@ -55,9 +55,9 @@
 		. = UNBUCKLE_DISABLED_RIDER
 	if(hands_needed == 1)
 		. |= RIDER_NEEDS_ARM
-	if(hands_needed == 2)
+	else if(hands_needed > 1)
 		. |= RIDER_NEEDS_ARMS
-	if(target_hands_needed == 1)
+	if(target_hands_needed)
 		. |= CARRIER_NEEDS_ARM
 
 /datum/component/riding/RegisterWithParent()

@@ -913,8 +913,10 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	storage_close(watcher)
 
 /obj/item/storage/proc/dump_important_items()
+	if(GLOB.running_create_and_destroy)
+		return // we are literally in the process of destroying everything anyway so dont even bother with this
 	for(var/obj/item/cur_item in src)
-		if(cur_item.is_objective || cur_item.unacidable)
+		if(cur_item.is_objective || cur_item.explo_proof || cur_item.unacidable)
 			remove_from_storage(cur_item)
 
 /obj/item/storage/Destroy()

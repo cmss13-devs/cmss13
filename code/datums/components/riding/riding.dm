@@ -4,8 +4,6 @@
  * This component lives for as long as at least one mob is buckled to the parent. Once all mobs are unbuckled, the component is deleted, until another mob is buckled in
  * and we make a new riding component, so on and so forth until the sun explodes.
  */
-
-
 /datum/component/riding
 	dupe_mode = COMPONENT_DUPE_UNIQUE
 	/// whether our last owners move was diagonally done to update move speeds, bool
@@ -90,14 +88,14 @@
 
 /// Some ridable atoms may want to only show on top of the rider in certain directions, like wheelchairs
 /datum/component/riding/proc/handle_vehicle_layer(dir)
-	var/atom/movable/Atom = parent
+	var/atom/movable/movable_parent = parent
 	var/static/list/defaults = list(TEXT_NORTH = OBJ_LAYER, TEXT_SOUTH = ABOVE_MOB_LAYER, TEXT_EAST = ABOVE_MOB_LAYER, TEXT_WEST = ABOVE_MOB_LAYER)
 	. = defaults["[dir]"]
 	if(directional_vehicle_layers["[dir]"])
 		. = directional_vehicle_layers["[dir]"]
 	if(isnull(.)) //you can set it to null to not change it.
-		. = Atom.layer
-	Atom.layer = .
+		. = movable_parent.layer
+	movable_parent.layer = .
 
 /datum/component/riding/proc/set_vehicle_dir_layer(dir, layer)
 	directional_vehicle_layers["[dir]"] = layer
@@ -107,10 +105,9 @@
 	SIGNAL_HANDLER
 
 	var/atom/movable/movable_parent = parent
-	if (isnull(dir))
+	if(isnull(dir))
 		dir = movable_parent.dir
-	for (var/mobs in movable_parent.buckled_mobs)
-		var/mob/buckled_mob = mobs
+	for(var/mob/buckled_mob as anything in movable_parent.buckled_mobs)
 		ride_check(buckled_mob)
 	if(QDELETED(src))
 		return // runtimed with piggy's without this, look into this more
@@ -139,15 +136,15 @@
 	//	var/obj/vehicle/vehicle_parent = parent
 	//	return istype(vehicle_parent.inserted_key, keytype)
 
-	return user.is_holding_item_of_type(keytype)
+	return user.is_holding_item_of_type(keytype, mainhand=FALSE)
 
 //BUCKLE HOOKS
 /datum/component/riding/proc/restore_position(mob/living/buckled_mob)
-	if(buckled_mob)
-		buckled_mob.pixel_x = initial(buckled_mob.pixel_x)//buckled_mob.base_pixel_x
-		buckled_mob.pixel_y = initial(buckled_mob.pixel_y)//buckled_mob.base_pixel_y
-		if(buckled_mob.client)
-			buckled_mob.client.view = 7
+	if(!buckled_mob)
+		return
+	buckled_mob.pixel_x = initial(buckled_mob.pixel_x)//buckled_mob.base_pixel_x
+	buckled_mob.pixel_y = initial(buckled_mob.pixel_y)//buckled_mob.base_pixel_y
+	buckled_mob.client?.view = 7
 
 //MOVEMENT
 /datum/component/riding/proc/turf_check(turf/next, turf/current)
@@ -170,14 +167,10 @@
 	for(var/occupant in movable_parent.buckled_mob)
 		INVOKE_ASYNC(possible_bumped_door, TYPE_PROC_REF(/obj/structure/machinery/door, bumpopen), occupant)
 
-/datum/component/riding/proc/Unbuckle(atom/movable/Mob)
-	addtimer(CALLBACK(parent, TYPE_PROC_REF(/atom/movable, unbuckle), Mob), 0, TIMER_UNIQUE)
-
 /// currently replicated from ridable because we need this behavior here too, see if we can deal with that
 /datum/component/riding/proc/unequip_buckle_inhands(mob/living/carbon/user)
-	for(var/obj/item/riding_offhand/Obj in user.contents)
-		if(Obj.selfdeleting)
+	for(var/obj/item/riding_offhand/reins in user.contents)
+		if(reins.selfdeleting)
 			continue
-		else
-			qdel(Obj)
+		qdel(reins)
 	return TRUE

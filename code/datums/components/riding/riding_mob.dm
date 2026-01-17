@@ -1,5 +1,4 @@
-// For any mob that can be ridden
-
+/// Variant of /datum/component/riding specifically for living mobs
 /datum/component/riding/creature
 	/// If TRUE, this creature's movements can be controlled by the rider while mounted (as opposed to riding cyborgs and humans, which is passive)
 	var/can_be_driven = TRUE
@@ -36,8 +35,7 @@
 	if(!istype(living_parent) || !istype(rider))
 		return
 
-	msg_admin_attack("[living_parent] is now being ridden by [rider]", living_parent.loc.x, living_parent.loc.y, living_parent.loc.z)
-	msg_admin_attack("[rider] started riding [living_parent]", rider.loc.x, rider.loc.y, rider.loc.z)
+	log_interact(rider, living_parent, "[rider] started riding [living_parent]")
 
 // this applies to humans and most creatures, but is replaced again for cyborgs
 /datum/component/riding/creature/ride_check(mob/living/rider)
@@ -63,8 +61,7 @@
 	living_parent.unbuckle(rider)
 
 /datum/component/riding/creature/vehicle_mob_unbuckle(mob/living/living_parent, force = FALSE)
-	msg_admin_attack("[living_parent] is no longer being ridden by [usr]", living_parent.loc.x, living_parent.loc.y, living_parent.loc.z)
-	msg_admin_attack("[usr] is no longer riding [living_parent]", usr.loc.x, usr.loc.y, usr.loc.z)
+	log_interact(usr, living_parent, "[usr] is no longer riding [living_parent]")
 	return ..()
 
 /datum/component/riding/creature/driver_move(atom/movable/movable_parent, mob/living/user, direction)
@@ -79,7 +76,7 @@
 	var/turf/next = get_step(living_parent, direction)
 	step(living_parent, direction)
 	last_move_diagonal = ((direction & (direction - 1)) && (living_parent.loc == next))
-	COOLDOWN_START(src, vehicle_move_cooldown, (last_move_diagonal? 2 : 1) * vehicle_move_delay)
+	COOLDOWN_START(src, vehicle_move_cooldown, (last_move_diagonal ? 2 : 1) * vehicle_move_delay)
 
 /// Yeets the rider off, used for animals and cyborgs, redefined for humans who shove their piggyback rider off
 /datum/component/riding/creature/proc/force_dismount(mob/living/rider, gentle = FALSE)

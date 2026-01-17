@@ -121,8 +121,9 @@
 	return ..()
 
 /obj/item/riding_offhand/Destroy()
-	var/atom/movable/Atom = parent
-	if(selfdeleting)
-		if(rider in Atom.buckled_mobs)
-			Atom.unbuckle(rider)
-	return ..()
+	if(selfdeleting && parent)
+		if(rider in parent.buckled_mobs)
+			parent.unbuckle(rider)
+	. =..()
+	rider = null
+	parent = null

@@ -88,16 +88,6 @@
 	if(is_zoomed)
 		zoom_out()
 
-/mob/living/carbon/xenomorph/runner/MouseDrop_T(atom/dropping, mob/user)
-	. = ..()
-	if(!ishuman(user))
-		return
-	if(!back)
-		balloon_alert(user,"this runner isn't wearing a saddle!")
-		return
-	if(!do_after(user, 3 SECONDS, NONE, src))
-		return
-
 /mob/living/carbon/xenomorph/runner/can_mount(mob/living/user, target_mounting = FALSE)
 	if(!target_mounting)
 		user = pulling

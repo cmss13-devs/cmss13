@@ -581,7 +581,7 @@
 
 /obj/item/storage/backpack/marine/saddle/unequipped(mob/user, slot, silent)
 	. = ..()
-	if(src.type == /obj/item/storage/backpack/marine/saddle && isrunner(user))
+	if(isrunner(user))
 		DISABLE_BITFIELD(user.buckle_flags, CAN_BUCKLE)
 		user.RemoveElement(/datum/element/ridable, /datum/component/riding/creature/runner)
 		for(var/mob/riders in user.buckled_mobs)
@@ -595,7 +595,7 @@
 		playsound(user.loc, 'sound/weapons/pierce.ogg', 25, TRUE)
 		user.visible_message(SPAN_WARNING("\The [user] tried to strap \the [src] onto [xeno] but instead gets a tail swipe to the head!"))
 		return FALSE
-	if(src.type == /obj/item/storage/backpack/marine/saddle && isrunner(xeno))
+	if(isrunner(xeno))
 		ENABLE_BITFIELD(xeno.buckle_flags, CAN_BUCKLE)
 		xeno.AddElement(/datum/element/ridable, /datum/component/riding/creature/runner)
 

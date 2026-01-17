@@ -13,7 +13,8 @@
 	var/rebounding = FALSE // whether an object that was launched was rebounded (to prevent infinite recursive loops from wall bouncing)
 	var/list/mob/living/buckled_mobs
 	var/mob/living/buckled_mob // mob buckled to this mob
-	var/buckle_lying = NO_BUCKLE_LYING/// Bed-like behaviour, forces mob.lying = buckle_lying if not set to [NO_BUCKLE_LYING].
+	/// Bed-like behaviour, forces mob.lying = buckle_lying if not set to [NO_BUCKLE_LYING].
+	var/buckle_lying = NO_BUCKLE_LYING
 	var/buckle_flags = NONE
 
 	var/acid_damage = 0 //Counter for stomach acid damage. At ~60 ticks, dissolved
@@ -400,17 +401,17 @@
 
 //trying to buckle a mob
 /atom/movable/proc/buckle_mob(mob/user, mob/buckle_target, force = FALSE, check_loc = TRUE, lying_buckle = FALSE, hands_needed = 0, target_hands_needed = 0, silent = FALSE)
-	if (!ismob(buckle_target) || (get_dist(src, user) > 1) || user.stat || buckled_mob || buckle_target.buckled || !isturf(user.loc))
+	if(!ismob(buckle_target) || (get_dist(src, user) > 1) || user.stat || buckled_mob || buckle_target.buckled || !isturf(user.loc))
 		return
 
-	if (user.is_mob_incapacitated() || HAS_TRAIT(user, TRAIT_IMMOBILIZED) || HAS_TRAIT(user, TRAIT_FLOORED))
+	if(user.is_mob_incapacitated() || HAS_TRAIT(user, TRAIT_IMMOBILIZED) || HAS_TRAIT(user, TRAIT_FLOORED))
 		to_chat(user, SPAN_WARNING("You can't do this right now."))
 		return
 
-	if (isxeno(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
+	if(isxeno(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
 		to_chat(user, SPAN_WARNING("You don't have the dexterity to do that, try a nest."))
 		return
-	if (iszombie(user))
+	if(iszombie(user))
 		return
 
 	if(density)
@@ -420,18 +421,18 @@
 			return
 		density = TRUE
 	else
-		if(buckle_target.loc != src.loc)
+		if(buckle_target.loc != loc)
 			step_towards(buckle_target, src) //buckle if you're right next to it
-			if(buckle_target.loc != src.loc)
+			if(buckle_target.loc != loc)
 				return
 			. = buckle_mob(buckle_target)
-	if (SEND_SIGNAL(src, COMSIG_MOVABLE_PREBUCKLE, buckle_target, user, force, check_loc, lying_buckle, hands_needed, target_hands_needed, silent))
+	if(SEND_SIGNAL(src, COMSIG_MOVABLE_PREBUCKLE, buckle_target, user, force, check_loc, lying_buckle, hands_needed, target_hands_needed, silent) & COMPONENT_BLOCK_BUCKLE)
 		return
-	if (buckle_target.mob_size <= MOB_SIZE_XENO)
+	if(buckle_target.mob_size <= MOB_SIZE_XENO)
 		if ((buckle_target.stat == DEAD && istype(src, /obj/structure/bed/roller) || HAS_TRAIT(buckle_target, TRAIT_OPPOSABLE_THUMBS)))
 			do_buckle(buckle_target, user)
 			return
-	if ((buckle_target.mob_size > MOB_SIZE_HUMAN))
+	if((buckle_target.mob_size > MOB_SIZE_HUMAN))
 		if(istype(src, /obj/structure/bed/roller))
 			var/obj/structure/bed/roller/roller = src
 			if(!roller.can_carry_big)
@@ -448,19 +449,19 @@
 // Yes I know this is not style but its unreadable otherwise
 /atom/movable/proc/do_buckle(mob/living/target, mob/user)
 	send_buckling_message(target, user)
-	if (src && src.loc)
+	if(src && loc)
 		target.throw_alert(ALERT_BUCKLED, /atom/movable/screen/alert/buckled)
 		target.set_buckled(src)
-		target.forceMove(src.loc)
+		target.forceMove(loc)
 		target.setDir(dir)
-		src.buckled_mob = target
-		LAZYADD(src.buckled_mobs, target)
-		src.add_fingerprint(user)
+		buckled_mob = target
+		LAZYADD(buckled_mobs, target)
+		add_fingerprint(user)
 		afterbuckle(target)
 		return TRUE
 
 /atom/movable/proc/send_buckling_message(mob/buckle_target, mob/user)
-	if (buckle_target == user)
+	if(buckle_target == user)
 		buckle_target.visible_message(
 			SPAN_NOTICE("[buckle_target] buckles in!"),
 			SPAN_NOTICE("You buckle yourself to [src]."),
@@ -469,9 +470,10 @@
 		buckle_target.visible_message(
 			SPAN_NOTICE("[buckle_target] is buckled in to [src] by [user]!"),
 			SPAN_NOTICE("You are buckled in to [src] by [user]."),
-			SPAN_NOTICE("You hear metal clanking"))
+			SPAN_NOTICE("You hear metal clanking."))
 
-/atom/movable/proc/afterbuckle(mob/buckle_target as mob) // Called after somebody buckled / unbuckled
+/// Called after somebody buckled / unbuckled
+/atom/movable/proc/afterbuckle(mob/buckle_target as mob)
 	handle_rotation() // To be removed when we have full dir support in set_buckled
 	SEND_SIGNAL(src, COMSIG_OBJ_AFTER_BUCKLE, buckled_mob)
 	if(!buckled_mob)
@@ -493,7 +495,7 @@
 		var/mob/living/mob = buckled_mob
 		buckled_mob = null
 		REMOVE_TRAITS_IN(mob, TRAIT_SOURCE_BUCKLE)
-		LAZYREMOVE(src.buckled_mobs, mob)
+		LAZYREMOVE(buckled_mobs, mob)
 		SEND_SIGNAL(src, COMSIG_MOVABLE_UNBUCKLE, mob)
 		afterbuckle(mob)
 
@@ -509,12 +511,12 @@
 				buckled_mob.visible_message(
 					SPAN_NOTICE("[buckled_mob.name] unbuckled [buckled_mob.p_them()]self!"),
 					SPAN_NOTICE("You unbuckle yourself from [src]."),
-					SPAN_NOTICE("You hear metal clanking"))
+					SPAN_NOTICE("You hear metal clanking."))
 			unbuckle(buckled_mob)
 			add_fingerprint(user)
-			return 1
+			return TRUE
 
-	return 0
+	return FALSE
 
 /atom/movable/proc/handle_buckled_mob_movement(NewLoc, direct)
 	if(!buckled_mob.Move(NewLoc, direct))

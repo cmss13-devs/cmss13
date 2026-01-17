@@ -248,7 +248,7 @@
 			if(user && src && distance <= 1)
 				get_pulse(GETPULSE_HAND) // to update it
 				if(pulse == PULSE_NONE || status_flags & FAKEDEATH)
-					to_chat(user, SPAN_DEADSAY("[t_He] [t_has] no pulse[client ? "" : " and [t_his] soul [t_has] departed"]..."))
+					to_chat(user, SPAN_DEADSAY("[t_He] [t_has] no pulse[client ? "" : " and [t_his] soul has departed"]..."))
 				else
 					to_chat(user, SPAN_DEADSAY("[t_He] [t_has] a pulse!"))
 

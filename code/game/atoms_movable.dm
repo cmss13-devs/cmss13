@@ -429,24 +429,8 @@
 			if(buckle_target.loc != loc)
 				return
 			. = buckle_mob(buckle_target)
-	if(SEND_SIGNAL(src, COMSIG_MOVABLE_PREBUCKLE, buckle_target, user, force, check_loc, lying_buckle, hands_needed, target_hands_needed, silent) && COMPONENT_BLOCK_BUCKLE)
+	if(SEND_SIGNAL(src, COMSIG_MOVABLE_PREBUCKLE, buckle_target, user, force, check_loc, lying_buckle, hands_needed, target_hands_needed, silent) & COMPONENT_BLOCK_BUCKLE)
 		return
-	/*
-	if(buckle_target.mob_size <= MOB_SIZE_XENO)
-		if ((buckle_target.stat == DEAD && istype(src, /obj/structure/bed/roller) || HAS_TRAIT(buckle_target, TRAIT_OPPOSABLE_THUMBS)))
-			do_buckle(buckle_target, user)
-			return
-	if((buckle_target.mob_size > MOB_SIZE_HUMAN))
-		if(istype(src, /obj/structure/bed/roller))
-			var/obj/structure/bed/roller/roller = src
-			if(!roller.can_carry_big)
-				to_chat(user, SPAN_WARNING("[buckle_target] is too big to buckle in."))
-				return COMPONENT_BLOCK_BUCKLE
-			if(buckle_target.stat != DEAD)
-				to_chat(user, SPAN_WARNING("[buckle_target] resists your attempt to buckle!"))
-				return COMPONENT_BLOCK_BUCKLE
-		if(buckle_target.stat != DEAD)
-			return */
 	do_buckle(buckle_target, user)
 
 // the actual buckling proc

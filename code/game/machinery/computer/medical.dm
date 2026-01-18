@@ -377,7 +377,7 @@
 
 			var/new_comment = list(
 				"entry" = strip_html(trim(comment)),
-				"created_by" = list("name" = user.get_authentication_name(), "rank" = user.get_assignment()),
+				"created_by" = list("name" = user.get_authentification_name(), "rank" = user.get_assignment()),
 				"created_at" = created_at,
 				"deleted_by" = null,
 				"deleted_at" = null
@@ -417,7 +417,7 @@
 				to_chat(user, SPAN_WARNING("This comment is already deleted."))
 				return
 
-			comment["deleted_by"] = "[user.get_authentication_name()] ([user.get_assignment()])"
+			comment["deleted_by"] = "[user.get_authentification_name()] ([user.get_assignment()])"
 			comment["deleted_at"] = text("[]  []  []", time2text(world.realtime, "MMM DD"), time2text(world.time, "[worldtime2text()]:ss"), GLOB.game_year)
 
 			medical_record.fields["comments"][comment_key] = comment

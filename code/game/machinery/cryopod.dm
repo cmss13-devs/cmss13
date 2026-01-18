@@ -219,6 +219,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 		stop_processing()
 
 /obj/structure/machinery/cryopod/proc/despawn_occupant()
+	var/was_aco = FALSE
 	time_till_despawn = initial(time_till_despawn)
 
 	//Drop all items into the pod.
@@ -346,6 +347,8 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	var/datum/job/job = GET_MAPPED_ROLE(occupant.job)
 	if(ishuman(occupant))
 		var/mob/living/carbon/human/H = occupant
+		if(H == SSticker.mode.acting_commander) //If we are despawning the aCO we should look for a new one
+			was_aco=TRUE
 		if(job)
 			job.on_cryo(H)
 		if(H.assigned_squad)
@@ -389,6 +392,8 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	//Delete the mob.
 
 	QDEL_NULL(occupant)
+	if(was_aco)
+		SSticker.mode.ares_command_check(force=TRUE)
 	stop_processing()
 
 /obj/structure/machinery/cryopod/attackby(obj/item/W, mob/living/user)

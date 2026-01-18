@@ -1176,13 +1176,13 @@
 
 	var/obj/item/clothing/accessory/limb/skeleton/head/skull = attacking_item
 	if(skull_attached)
-		to_chat(user, SPAN_WARNING("You already have a [skull] mounted on [src]."))
+		to_chat(user, SPAN_WARNING("You already have \a [skull] mounted on [src]."))
 		return
 
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		to_chat(user, SPAN_WARNING("Why would you want to do this!?."))
 		return
-	user.visible_message(SPAN_NOTICE("[user] mounts the [skull] with [src]."), SPAN_NOTICE("You mount [skull] to [src]."))
+	user.visible_message(SPAN_NOTICE("[user] mounts \the [skull] with [src]."), SPAN_NOTICE("You mount \the [skull] to [src]."))
 	user.drop_inv_item_to_loc(skull, src)
 	skull_attached = TRUE
 	update_icon()

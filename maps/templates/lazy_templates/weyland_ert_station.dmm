@@ -787,7 +787,7 @@
 /turf/open/floor/corsat/red/southeast,
 /area/adminlevel/ert_station/weyland_station)
 "mV" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer{
+/obj/structure/machinery/door/airlock/multi_tile/almayer{
 	name = "\improper Telecomms"
 	},
 /turf/open/floor/corsat/plate,
@@ -920,7 +920,7 @@
 /turf/open/floor/corsat/green,
 /area/adminlevel/ert_station/weyland_station)
 "oQ" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/glass{
 	dir = 1
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -1647,7 +1647,7 @@
 /turf/open/floor/corsat/bluecorner/east,
 /area/adminlevel/ert_station/weyland_station)
 "AG" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/glass{
 	dir = 1
 	},
 /turf/open/floor/corsat/marked,
@@ -1912,7 +1912,7 @@
 /turf/open/floor/corsat/green/southwest,
 /area/adminlevel/ert_station/weyland_station)
 "Eg" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/glass{
 	name = "\improper Medical & Surgery"
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
@@ -2294,7 +2294,7 @@
 	},
 /area/adminlevel/ert_station/weyland_station)
 "KC" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/glass{
 	dir = 1;
 	name = "\improper Meeting Room"
 	},
@@ -2581,7 +2581,7 @@
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/weyland_station)
 "PH" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/glass{
 	name = "\improper Medical Storage"
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
@@ -3249,7 +3249,7 @@
 /turf/open/floor/corsat/redcorner/west,
 /area/adminlevel/ert_station/weyland_station)
 "Zu" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/glass{
 	dir = 1;
 	name = "\improper Meeting Room"
 	},

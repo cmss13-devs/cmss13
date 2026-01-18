@@ -168,7 +168,7 @@
 /obj/item/prop/helmetgarb/riot_shield{
 	pixel_y = -15
 	},
-/obj/item/weapon/gun/launcher/grenade/m81/m79{
+/obj/item/weapon/gun/launcher/grenade/m81/m85a1{
 	pixel_x = -3;
 	pixel_y = 12
 	},

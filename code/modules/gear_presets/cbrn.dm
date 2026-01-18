@@ -38,7 +38,7 @@
 	if(prob(50))
 		new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(new_human), WEAR_L_STORE)
 	else
-		new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medkit/full/toxin(new_human), WEAR_L_STORE)
+		new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medkit/full/toxin/cbrn(new_human), WEAR_L_STORE)
 
 	switch(pick("flamethrower", "mk2"))
 		if("flamethrower")

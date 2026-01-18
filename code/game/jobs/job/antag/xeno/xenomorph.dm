@@ -11,7 +11,6 @@
 	// a proper limit.
 	spawn_positions = -1
 	total_positions = -1
-	xeno_sided = TRUE
 
 /datum/job/antag/xenos/proc/calculate_extra_spawn_positions(count)
 	return max((floor(count * XENO_TO_TOTAL_SPAWN_RATIO)), 0)

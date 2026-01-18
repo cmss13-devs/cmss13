@@ -44,8 +44,6 @@
 
 	/// How many points people with this role selected get to pick from
 	var/loadout_points = 0
-	var/marine_sided = FALSE
-	var/xeno_sided = FALSE
 
 /datum/job/New()
 	. = ..()
@@ -253,21 +251,7 @@
 
 	setup_human(new_character, NP)
 
-	addtimer(CALLBACK(src, PROC_REF(add_to_battlepass_earners), new_character), BATTLEPASS_TIME_TO_EARN_REWARD)
-
 	return new_character
-
-/datum/job/proc/add_to_battlepass_earners(mob/living/carbon/human/character)
-	if(!character?.client?.ckey)
-		return
-
-	var/ckey = character.client.ckey
-
-	// You cannot double dip; marine or xeno only
-	if(marine_sided && !(ckey in SSbattlepass.xeno_battlepass_earners))
-		SSbattlepass.marine_battlepass_earners |= ckey
-	else if(xeno_sided && !(ckey in SSbattlepass.marine_battlepass_earners))
-		SSbattlepass.xeno_battlepass_earners |= ckey
 
 /datum/job/proc/equip_job(mob/living/M)
 	if(!istype(M))
@@ -299,6 +283,7 @@
 
 		if(flags_startup_parameters & ROLE_ADD_TO_SQUAD) //Are we a muhreen? Randomize our squad. This should go AFTER IDs. //TODO Robust this later.
 			GLOB.RoleAuthority.randomize_squad(human)
+		GLOB.RoleAuthority.prioritize_specialist(human)
 
 		if(Check_WO() && GLOB.job_squad_roles.Find(GET_DEFAULT_ROLE(human.job))) //activates self setting proc for marine headsets for WO
 			var/datum/game_mode/whiskey_outpost/WO = SSticker.mode

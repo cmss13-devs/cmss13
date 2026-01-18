@@ -149,6 +149,16 @@
 
 #define CHECK_EXISTS(X) if(!istext(json[X])) { log_world("[##X] missing from json!"); return; }
 /datum/map_config/proc/LoadConfig(filename, error_if_missing, maptype)
+	#ifdef FORCE_GROUND_MAP
+	if(maptype == GROUND_MAP)
+		filename = FORCE_GROUND_MAP
+	#endif
+
+	#ifdef FORCE_SHIP_MAP
+	if(maptype == SHIP_MAP)
+		filename = FORCE_SHIP_MAP
+	#endif
+
 	if(!fexists(filename))
 		if(error_if_missing)
 			log_world("map_config not found: [filename]")

@@ -12,6 +12,7 @@
 	result_amount = 1
 
 /datum/chemical_reaction/tofu/on_reaction(datum/reagents/holder, created_volume)
+	. = ..()
 	var/location = get_turf(holder.my_atom)
 	for(var/i = 1, i <= created_volume, i++)
 		new /obj/item/reagent_container/food/snacks/tofu(location)
@@ -129,6 +130,7 @@
 	result_amount = 1
 
 /datum/chemical_reaction/cheesewheel/immature/on_reaction(datum/reagents/holder, created_volume)
+	. = ..()
 	var/location = get_turf(holder.my_atom)
 	new /obj/item/reagent_container/food/snacks/sliceable/cheesewheel/immature(location)
 
@@ -141,6 +143,7 @@
 	result_amount = 1
 
 /datum/chemical_reaction/synthmeat/on_reaction(datum/reagents/holder, created_volume)
+	. = ..()
 	var/location = get_turf(holder.my_atom)
 	new /obj/item/reagent_container/food/snacks/meat/synthmeat(location)
 

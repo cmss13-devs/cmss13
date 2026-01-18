@@ -1,0 +1,131 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/obj/structure/blocker/tent/full_tile,
+/turf/template_noop,
+/area/template_noop)
+"b" = (
+/obj/structure/blocker/tent{
+	dir = 1
+	},
+/obj/structure/machinery/vending/ingredients/tent{
+	pixel_x = 3
+	},
+/turf/template_noop,
+/area/template_noop)
+"i" = (
+/obj/structure/machinery/vending/coffee/tent,
+/turf/template_noop,
+/area/template_noop)
+"j" = (
+/obj/structure/reagent_dispensers/watertank,
+/turf/template_noop,
+/area/template_noop)
+"o" = (
+/obj/structure/blocker/tent{
+	dir = 4
+	},
+/obj/structure/blocker/tent,
+/obj/structure/surface/rack,
+/obj/item/tool/kitchen/utensil/pspoon,
+/obj/item/tool/kitchen/utensil/pspoon,
+/obj/item/tool/kitchen/utensil/pspoon,
+/obj/item/tool/kitchen/utensil/pfork,
+/obj/item/tool/kitchen/utensil/pfork,
+/obj/item/tool/kitchen/utensil/pfork,
+/obj/item/tool/kitchen/rollingpin,
+/obj/item/tool/kitchen/knife,
+/turf/template_noop,
+/area/template_noop)
+"p" = (
+/obj/structure/blocker/tent{
+	dir = 1
+	},
+/obj/structure/blocker/tent{
+	dir = 4
+	},
+/obj/structure/machinery/processor/tent{
+	pixel_y = -4;
+	pixel_x = -5
+	},
+/turf/template_noop,
+/area/template_noop)
+"s" = (
+/obj/structure/tent_curtain,
+/obj/structure/blocker/tent{
+	dir = 8
+	},
+/obj/structure/tent/mess,
+/turf/template_noop,
+/area/template_noop)
+"w" = (
+/turf/template_noop,
+/area/template_noop)
+"z" = (
+/obj/structure/blocker/tent{
+	dir = 1
+	},
+/obj/structure/surface/table,
+/turf/template_noop,
+/area/template_noop)
+"A" = (
+/obj/structure/tent_curtain,
+/obj/structure/blocker/tent{
+	dir = 4
+	},
+/turf/template_noop,
+/area/template_noop)
+"C" = (
+/obj/structure/transmitter/tent{
+	pixel_y = 30;
+	pixel_x = 16;
+	phone_category = "Command";
+	phone_id = "Ground Provisions";
+	name = "Mess Phone"
+	},
+/obj/structure/surface/table,
+/obj/structure/machinery/microwave/tent{
+	pixel_y = 7
+	},
+/obj/structure/blocker/tent{
+	dir = 1
+	},
+/obj/structure/blocker/tent{
+	dir = 8
+	},
+/turf/template_noop,
+/area/template_noop)
+"T" = (
+/obj/structure/blocker/tent,
+/turf/template_noop,
+/area/template_noop)
+"V" = (
+/obj/structure/blocker/tent{
+	dir = 8
+	},
+/turf/template_noop,
+/area/template_noop)
+
+(1,1,1) = {"
+a
+C
+V
+s
+"}
+(2,1,1) = {"
+a
+z
+w
+A
+"}
+(3,1,1) = {"
+a
+b
+T
+j
+"}
+(4,1,1) = {"
+a
+p
+o
+i
+"}

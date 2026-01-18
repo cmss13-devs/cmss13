@@ -145,6 +145,7 @@
 	power_channel = POWER_CHANNEL_LIGHT //Lights are calc'd via area so they dont need to be in the machine list
 	light_system = STATIC_LIGHT
 	light_color = LIGHT_COLOR_TUNGSTEN
+	flags_atom = NO_ZFALL
 	var/on = 0 // 1 if on, 0 if off
 	var/on_gs = 0
 	var/brightness = 6 // luminosity when on, also used in power calculation
@@ -400,10 +401,10 @@
 			to_chat(user, "There is a [fitting] already inserted.")
 			return
 		else
-			playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
 			src.add_fingerprint(user)
 			var/obj/item/light_bulb/L = W
 			if(istype(L, light_type))
+				playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				status = L.status
 				to_chat(user, "You insert the [L.name].")
 				switchcount = L.switchcount
@@ -425,11 +426,7 @@
 		return
 
 	// attempt to remove light via screwdriver
-	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
-		if(status == LIGHT_EMPTY)
-			to_chat(user, "There is no [fitting] in this light.")
-			return
-
+	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) && status != LIGHT_EMPTY)
 		to_chat(user, "You remove the light [fitting].")
 		playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
 		// create a light tube/bulb item and put it in the user's hand

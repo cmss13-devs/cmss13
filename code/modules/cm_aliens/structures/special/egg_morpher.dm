@@ -116,7 +116,11 @@
 
 	if(!linked_hive || !COOLDOWN_FINISHED(src, spawn_cooldown) || stored_huggers == huggers_to_grow_max)
 		return
-	COOLDOWN_START(src, spawn_cooldown, get_egg_cooldown())
+
+	if(boosted_structure)
+		COOLDOWN_START(src, spawn_cooldown, 30 SECONDS)
+	else
+		COOLDOWN_START(src, spawn_cooldown, get_egg_cooldown())
 	if(stored_huggers < huggers_to_grow_max)
 		stored_huggers = min(huggers_to_grow_max, stored_huggers + 1)
 
@@ -128,6 +132,12 @@
 	if(isnull(targets) || !length(targets))
 		return
 
+	for(var/mob/living/carbon/xenomorph/xeno in targets)
+		targets -= xeno //Don't add xenomorphs to the list of possible players we hug.
+
+
+	if(!length(targets))
+		return
 	var/target = pick(targets)
 	if(isnull(target))
 		return

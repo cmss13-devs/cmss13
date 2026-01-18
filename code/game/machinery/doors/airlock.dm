@@ -115,6 +115,8 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		. += SPAN_WARNING("It looks slightly damaged.")
 	if(masterkey_resist)
 		. += SPAN_INFO("It has been reinforced against breaching attempts.")
+	if(secondsElectrified != 0 && arePowerSystemsOn())
+		. += SPAN_DANGER("Violent sparks are firing from the door's machinery.")
 
 /obj/structure/machinery/door/airlock/proc/take_damage(dam, mob/M)
 	if(!dam || unacidable)
@@ -206,6 +208,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 				shockedby += text("\[[time_stamp()]\][key_name(usr)]")
 				usr.attack_log += text("\[[time_stamp()]\] <font color='red'>Electrified the [name] at [x] [y] [z]</font>")
 				secondsElectrified = 30
+				start_processing()
 				visible_message(SPAN_DANGER("Electric arcs shoot off from \the [src] airlock!"))
 				spawn(10)
 					//TODO: Move this into process() and make pulsing reset secondsElectrified to 30
@@ -267,6 +270,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 				shockedby += text("\[[time_stamp()]\][key_name(usr)]")
 				usr.attack_log += text("\[[time_stamp()]\] <font color='red'>Electrified the [name] at [x] [y] [z]</font>")
 				secondsElectrified = -1
+				start_processing()
 				visible_message(SPAN_DANGER("Electric arcs shoot off from \the [src] airlock!"))
 
 		if(AIRLOCK_WIRE_SAFETY)

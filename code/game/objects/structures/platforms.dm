@@ -16,6 +16,7 @@
 	unacidable = TRUE
 	climb_delay = CLIMB_DELAY_SHORT
 	projectile_coverage = PROJECTILE_COVERAGE_NONE
+	flags_atom = NO_ZFALL
 	var/stat = 0
 	var/creaking_sound
 	var/breaking_sound
@@ -115,7 +116,7 @@
 		to_chat(user, SPAN_WARNING("Its already destroyed!"))
 		return XENO_NO_DELAY_ACTION
 
-	if(stat & explo_proof)
+	if(explo_proof)
 		to_chat(user, SPAN_WARNING("Its too strong for us!"))
 		return XENO_NO_DELAY_ACTION
 
@@ -159,6 +160,7 @@
 	breakable = FALSE
 	flags_atom = ON_BORDER
 	unacidable = TRUE
+	flags_atom = NO_ZFALL
 
 /obj/structure/platform_decoration/Initialize()
 	. = ..()
@@ -232,6 +234,14 @@
 /obj/structure/platform/metal/stair_cut/shiva_right
 	icon_state = "shiva_stair_alt"
 
+/obj/structure/platform/metal/stair_cut/almayer_smooth_left
+	icon_state = "platform_sm_stair"
+	explo_proof = TRUE
+
+/obj/structure/platform/metal/stair_cut/almayer_smooth_right
+	icon_state = "platform_sm_stair_alt"
+	explo_proof = TRUE
+
 //------------------------------//
 //    Stone Stairs Platforms    //
 //------------------------------//
@@ -291,6 +301,18 @@
 /obj/structure/platform/metal/almayer/west
 	dir = WEST
 
+/obj/structure/platform/metal/almayer_smooth
+	icon_state = "platform_sm"
+	explo_proof = TRUE
+
+/obj/structure/platform/metal/almayer_smooth/north
+	dir = NORTH
+
+/obj/structure/platform/metal/almayer_smooth/east
+	dir = EAST
+
+/obj/structure/platform/metal/almayer_smooth/west
+	dir = WEST
 
 /obj/structure/platform/metal/kutjevo
 	icon_state = "kutjevo_platform"
@@ -465,6 +487,30 @@
 /obj/structure/platform_decoration/metal/almayer/southwest
 	dir = SOUTHWEST
 
+/obj/structure/platform_decoration/metal/almayer_smooth
+	icon_state = "platform_sm_deco"
+	explo_proof = TRUE
+
+/obj/structure/platform_decoration/metal/almayer_smooth/north
+	dir = NORTH
+
+/obj/structure/platform_decoration/metal/almayer_smooth/east
+	dir = EAST
+
+/obj/structure/platform_decoration/metal/almayer_smooth/west
+	dir = WEST
+
+/obj/structure/platform_decoration/metal/almayer_smooth/northeast
+	dir = NORTHEAST
+
+/obj/structure/platform_decoration/metal/almayer_smooth/northwest
+	dir = NORTHWEST
+
+/obj/structure/platform_decoration/metal/almayer_smooth/southeast
+	dir = SOUTHEAST
+
+/obj/structure/platform_decoration/metal/almayer_smooth/southwest
+	dir = SOUTHWEST
 
 /obj/structure/platform_decoration/metal/kutjevo
 	name = "raised metal corner"

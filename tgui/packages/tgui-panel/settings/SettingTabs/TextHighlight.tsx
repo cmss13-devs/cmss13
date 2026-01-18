@@ -1,12 +1,17 @@
+import { useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'tgui/backend';
 import {
   Box,
   Button,
+  Collapsible,
   ColorBox,
   Divider,
+  Flex,
   Input,
   Section,
   Stack,
+  Tabs,
   TextArea,
 } from 'tgui/components';
 
@@ -17,6 +22,7 @@ import {
   updateHighlightSetting,
 } from '../actions';
 import {
+  selectHighlightKeywords,
   selectHighlightSettingById,
   selectHighlightSettings,
 } from '../selectors';
@@ -28,6 +34,9 @@ export function TextHighlightSettings(props) {
   return (
     <Section fill scrollable height="250px">
       <Stack vertical>
+        <Stack.Item>
+          <KeywordMenu />
+        </Stack.Item>
         {highlightSettings.map((id, i) => (
           <TextHighlightSetting
             key={i}
@@ -175,3 +184,87 @@ function TextHighlightSetting(props) {
     </Stack.Item>
   );
 }
+
+const KeywordMenu = (props) => {
+  const highlightKeywords = useSelector(selectHighlightKeywords);
+
+  const keywordsExist = highlightKeywords !== null;
+
+  const [tabIndex, setTabIndex] = useState(0);
+  // Tab information defined here.
+  // [name, color, contents]
+  const tabs: Array<[string, string, Array<string>]> = [
+    ['Global', 'white', ['fullName', 'fullJob']],
+    ['Human', 'good', ['firstName', 'lastName', 'middleName', 'jobCommTitle']],
+    ['Xenomorph', 'xeno', ['xenoPrefix', 'xenoNumber', 'xenoPostfix']],
+  ];
+  const [_tabTitle, tabColor, selectedTabEntries] = tabs[tabIndex];
+
+  return (
+    <>
+      <Flex direction="horizontal">
+        <Flex.Item grow>
+          <Collapsible title="Keywords">
+            {keywordsExist ? (
+              <>
+                <Box color="label">
+                  Instances of the following triggers (e.g. $fullName$) in
+                  highlight strings will be replaced with the coresponding
+                  value, if available.
+                </Box>
+                {/* Tab selection. */}
+                <Tabs px="0.75rem" mb="0">
+                  {tabs.map(([title, _tabEntries], i) => (
+                    <Tabs.Tab
+                      key={i}
+                      selected={i === tabIndex}
+                      color={tabColor}
+                      onClick={() => setTabIndex(i)}
+                    >
+                      {title}
+                    </Tabs.Tab>
+                  ))}
+                </Tabs>
+                {/* Tab contents. */}
+                <Flex wrap backgroundColor="hsl(0, 0%, 11%)" p="0.75rem" pb="0">
+                  {selectedTabEntries.map((keywordName, index) => {
+                    const [trigger, replacement] = [
+                      '$' + keywordName + '$',
+                      // Em-dash if value is null/empty.
+                      highlightKeywords[keywordName] || '-',
+                    ];
+
+                    return (
+                      <Flex.Item width="33%" mb="0.75rem" key="index">
+                        <Box>{trigger}</Box>
+                        <Box color="label" style={{ userSelect: 'none' }}>
+                          {replacement}
+                        </Box>
+                      </Flex.Item>
+                    );
+                  })}
+                </Flex>
+              </>
+            ) : (
+              <Box color="label">
+                Keywords unavailable. Occupy a character to generate highlight
+                keywords.
+              </Box>
+            )}
+          </Collapsible>
+        </Flex.Item>
+        {/* Refresh button. */}
+        <Flex.Item ml="0.5rem">
+          <Button
+            color="transparent"
+            tooltip="Refresh keywords"
+            tooltipPosition="left"
+            icon="refresh"
+            onClick={() => Byond.sendMessage('refresh_keywords')}
+          />
+        </Flex.Item>
+      </Flex>
+      <Divider />
+    </>
+  );
+};

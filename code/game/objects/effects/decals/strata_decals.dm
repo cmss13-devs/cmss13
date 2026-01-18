@@ -30,13 +30,14 @@
 /obj/effect/decal/strata_decals/grasses
 	icon_state = "tufts"
 	name = "some foliage"
-	desc = "A few brave tufts of snow grass."
+	desc = "A few brave tufts of grass."
 
 /obj/effect/decal/strata_decals/mud_corner
 	icon_state = "soro_mud_innercorner"
 	name = "mud"
 	desc = null
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	keep_as_object = TRUE
 
 ////////////////INDOORS STUFF////////////////////
 

@@ -73,5 +73,3 @@
 /// Fired on the item when someone tries to holster the item: /mob/living/carbon/human/verb/holster_verb
 #define COMSIG_ITEM_HOLSTER "item_holster"
 	#define COMPONENT_ITEM_HOLSTER_CANCELLED (1<<0)
-
-#define COMSIG_BATTLEPASS_CHALLENGE_COMPLETED "battlepass_challenge_completed"

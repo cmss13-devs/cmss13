@@ -20,7 +20,7 @@ jobs:
         echo "SECRETS_ENABLED=$SECRET_EXISTS" >> $GITHUB_OUTPUT
     - name: Checkout
       if: steps.secrets_set.outputs.SECRETS_ENABLED
-      uses: actions/checkout@v3
+      uses: actions/checkout@v5
     - name: Install BYOND
       if: steps.secrets_set.outputs.SECRETS_ENABLED
       uses: ./.github/actions/restore_or_install_byond
@@ -35,7 +35,7 @@ jobs:
       if: steps.secrets_set.outputs.SECRETS_ENABLED
       run: |
         source $HOME/BYOND/byond/bin/byondsetup
-        tools/build/build --ci autowiki
+        tools/build/build.sh --ci autowiki
     - name: Run Autowiki
       if: steps.secrets_set.outputs.SECRETS_ENABLED
       env:
@@ -45,4 +45,4 @@ jobs:
         cd tools/autowiki
         npm install
         cd ../..
-        node tools/autowiki/autowiki.js data/autowiki_edits.txt data/autowiki_files/
+        bun tools/autowiki/autowiki.js data/autowiki_edits.txt data/autowiki_files/

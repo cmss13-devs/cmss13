@@ -11,7 +11,7 @@
 
 //#define AREA_LAYER 1
 
-#define DISPLACEMENT_PLATE_RENDER_LAYER 1
+#define DISPLACEMENT_PLATE_RENDER_LAYER 10
 #define DISPLACEMENT_PLATE_RENDER_TARGET "*DISPLACEMENT_PLATE_RENDER_TARGET"
 
 #define UNDER_TURF_LAYER 1.99
@@ -20,6 +20,7 @@
 
 #define ABOVE_TURF_LAYER 2.01
 #define WALL_LAYER 2.02
+#define ABOVE_WALL_LAYER 2.03
 
 #define LATTICE_LAYER 2.15
 
@@ -55,6 +56,8 @@
 #define PODDOOR_OPEN_LAYER 2.55
 /// conveyor belt
 #define CONVEYOR_LAYER 2.56
+
+#define RESIN_UNDER_STRUCTURE_LAYER 2.59
 
 #define RESIN_STRUCTURE_LAYER 2.6
 
@@ -167,8 +170,6 @@
 #define FULLSCREEN_VULTURE_SCOPE_LAYER 17.21
 /// in critical
 #define FULLSCREEN_CRIT_LAYER 17.25
-/// tier-up battlepass
-#define FULLSCREEN_BATTLEPASS_TIERUP 18
 
 #define HUD_LAYER 19
 #define ABOVE_HUD_LAYER 20
@@ -223,6 +224,7 @@
 #define LOWEST_EVER_PLANE -200
 
 #define OPEN_SPACE_PLANE_END -20
+
 // Do no put anything between these two, adjust more z level support as needed
 #define OPEN_SPACE_PLANE_START -9
 
@@ -230,15 +232,28 @@
 
 /// Floor plane, self explanatory. Used for Ambient Occlusion filter
 #define FLOOR_PLANE -7
-/// Game Plane, where most of the game objects reside
-#define GAME_PLANE -6
-/// Above Game Plane. For things which are above game objects, but below screen effects.
-#define ABOVE_GAME_PLANE -5
-/// Roof plane, disappearing when entering buildings
-#define ROOF_PLANE -4
+
+#define TURF_PLANE -6
 
 /// To keep from conflicts with SEE_BLACKNESS internals
 #define BLACKNESS_PLANE 0
+
+
+/// Game Plane, where most of the game objects reside
+#define GAME_PLANE 1
+
+/// Above Game Plane. For things which are above game objects, but below screen effects.
+#define ABOVE_GAME_PLANE 2
+
+///Slightly above the game plane but does not catch mouse clicks. Useful for certain visuals that should be clicked through, like seethrough trees
+#define SEETHROUGH_PLANE 3
+
+/// Roof plane, disappearing when entering buildings
+#define ROOF_PLANE 4
+
+/// For turfs and things we want to appear *over* blackness
+#define ABOVE_BLACKNESS_PLANE 5
+#define ABOVE_BLACKNESS_BACKDROP_PLANE 6
 
 #define GHOST_PLANE 80
 

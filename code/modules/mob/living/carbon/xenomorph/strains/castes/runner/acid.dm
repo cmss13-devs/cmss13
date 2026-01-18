@@ -45,7 +45,10 @@
 	/// Determines whether the combat acid generation is on or off
 	var/combat_gen_active = FALSE
 
+	/// How much acid is required to melt something
 	var/melt_acid_cost = 100
+	/// How much acid is required to fill a trap
+	var/fill_acid_cost = 75
 
 	var/list/caboom_sound = list('sound/effects/runner_charging_1.ogg','sound/effects/runner_charging_2.ogg')
 	var/caboom_loop = 1
@@ -149,8 +152,6 @@
 	var/acid_range = acid_amount / caboom_acid_ratio
 	var/max_burn_damage = acid_amount / caboom_burn_damage_ratio
 	var/burn_range = acid_amount / caboom_burn_range_ratio
-	if(acid_amount >= max_acid)
-		SEND_SIGNAL(bound_xeno, COMSIG_XENO_FTH_MAX_ACID)
 
 	for(var/barricades in dview(acid_range, bound_xeno))
 		if(istype(barricades, /obj/structure/barricade))

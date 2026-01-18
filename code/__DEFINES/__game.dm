@@ -367,6 +367,8 @@
 #define WALL_REINFORCED_BUNKER "bunker"
 #define WALL_RESIN "resin"
 #define WALL_THICKRESIN "thickresin"
+#define WALL_WEEDBOUND_RESIN "weedboundresin"
+#define WALL_THICK_WEEDBOUND_RESIN "thickweedboundresin"
 #define WALL_MEMBRANE "membrane"
 #define WALL_THICKMEMBRANE "thickmembrane"
 #define WALL_BONE_RESIN "bone_resin"
@@ -518,10 +520,13 @@
 #define TURF_PROTECTION_MORTAR 1
 #define TURF_PROTECTION_CAS 2
 #define TURF_PROTECTION_OB 3
+#define TURF_PROTECTION_CORE 4
 
 /// Convert a turf protection level to a ceiling protection level
 /proc/get_ceiling_protection_level(turf_protection_level)
 	switch(turf_protection_level)
+		if(TURF_PROTECTION_CORE)
+			return CEILING_PROTECTION_TIER_4
 		if(TURF_PROTECTION_OB)
 			return CEILING_PROTECTION_TIER_4
 		if(TURF_PROTECTION_CAS)

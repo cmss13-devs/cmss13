@@ -1,8 +1,8 @@
 /datum/chem_property/special
 	rarity = PROPERTY_DISABLED
 	category = PROPERTY_TYPE_ANOMALOUS
-	value = 6
-
+	value = 8
+//IF YOU ADD A NEW LEGENADRY INTENDED FOR RESEARCH NORMAL LOOP, MAKE SURE TO ADD TO LEGENDARY PROPERTY LIST DEFINE
 /datum/chem_property/special/boosting
 	name = PROPERTY_BOOSTING
 	code = "BST"
@@ -12,6 +12,19 @@
 
 /datum/chem_property/special/boosting/pre_process(mob/living/M)
 	return list(REAGENT_BOOST = level * 0.5)
+
+/datum/chem_property/special/optimized
+	name = PROPERTY_OPTIMIZED
+	code = "OPM"
+	description = "Chemical molecule is structured diffrently, resulting in more efficient and easy synthesis process."
+	rarity = PROPERTY_LEGENDARY
+	category = PROPERTY_TYPE_METABOLITE
+
+/datum/chem_property/special/optimized/update_reagent()
+	var/datum/chemical_reaction/reaction_chem = GLOB.chemical_reactions_list[holder.id]
+	if(reaction_chem)
+		reaction_chem.result_amount = 2
+	. = ..()
 
 /datum/chem_property/special/hypergenetic
 	name = PROPERTY_HYPERGENETIC
@@ -69,7 +82,7 @@
 	name = PROPERTY_DNA_DISINTEGRATING
 	code = "DDI"
 	description = "Immediately disintegrates the DNA of all organic cells it comes into contact with. This property is highly valued by WY."
-	rarity = PROPERTY_LEGENDARY
+	rarity = PROPERTY_DISABLED
 	category = PROPERTY_TYPE_TOXICANT|PROPERTY_TYPE_ANOMALOUS
 	value = 16
 
@@ -86,6 +99,22 @@
 	var/datum/techtree/tree = GET_TREE(TREE_MARINE)
 	tree.add_points(10)
 	ai_announcement("NOTICE: Encrypted data transmission received from USCSS Royce. Shuttle inbound.")
+
+/datum/chem_property/special/regulating
+	name = PROPERTY_REGULATING
+	code = "REG"
+	description = "The chemical regulates its metabolization and can never cause an overdose."
+	rarity = PROPERTY_LEGENDARY
+	category = PROPERTY_TYPE_METABOLITE
+	max_level = 1
+
+/datum/chem_property/special/regulating/reset_reagent()
+	holder.flags = initial(holder.flags)
+	..()
+
+/datum/chem_property/special/regulating/update_reagent()
+	holder.flags |= REAGENT_CANNOT_OVERDOSE
+	..()
 
 /datum/chem_property/special/ciphering
 	name = PROPERTY_CIPHERING
@@ -109,6 +138,13 @@
 		var/obj/item/alien_embryo/A = content
 		A.hivenumber = hivenumber
 		A.faction = hive.internal_faction
+
+/datum/chem_property/special/encrypted
+	name = PROPERTY_ENCRYPTED
+	code = "ENC"
+	description = "This extremely complex chemical structure contains a cipher that appears to be missing a few parts to complete the process."
+	rarity = PROPERTY_DISABLED
+	category = PROPERTY_TYPE_ANOMALOUS
 
 /datum/chem_property/special/ciphering/predator
 	name = PROPERTY_CIPHERING_PREDATOR
@@ -268,6 +304,18 @@
 	var/mob/living/carbon/human/H = M
 	for(var/datum/internal_organ/I in H.internal_organs)
 		M.apply_internal_damage(-0.5 * potency * delta_time, I)
+
+/datum/chem_property/special/omnipotent/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	processing_tray.nutrilevel += 0.5*(potency*2)*volume
+	processing_tray.weedlevel += -2.5*(potency*2)*volume
+	processing_tray.pestlevel += -2.5*(potency*2)*volume
+	processing_tray.plant_health += 1*(potency*2)*volume
+	processing_tray.yield_mod += 1*(potency*2)*volume
+	processing_tray.mutation_mod += 1*(potency*2)*volume
+
 
 /datum/chem_property/special/radius
 	name = PROPERTY_RADIUS

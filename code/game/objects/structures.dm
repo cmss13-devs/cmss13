@@ -55,6 +55,10 @@
 			handle_debris(severity, direction)
 			deconstruct(FALSE)
 
+/obj/structure/onZImpact()
+	new/obj/structure/debris()
+	qdel(src)
+
 /obj/structure/proc/handle_debris(severity = 0, direction = 0)
 	if(!LAZYLEN(debris))
 		return
@@ -111,6 +115,12 @@
 /obj/structure/proc/do_climb(mob/living/user, mods)
 	if(!can_climb(user))
 		return FALSE
+
+	if(istype(loc, /turf/open_space) && user.a_intent != INTENT_HARM)
+		var/turf/open_space/open = loc
+		open.climb_down(user)
+		return FALSE
+
 
 	var/list/climbdata = list("climb_delay" = climb_delay)
 	SEND_SIGNAL(user, COMSIG_LIVING_CLIMB_STRUCTURE, climbdata)

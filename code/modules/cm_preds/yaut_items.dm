@@ -524,7 +524,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 
 /obj/structure/machinery/hunting_ground_selection/attack_hand(mob/living/user)
 	. = ..()
-	if(!isyautja(user))
+	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		to_chat(user, SPAN_WARNING("You do not understand how to use this console."))
 		return
 
@@ -975,9 +975,10 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 /obj/item/hunting_trap/attack_self(mob/user as mob)
 	..()
 	if(ishuman(user) && !user.stat && !user.is_mob_restrained())
-		var/wait_time = 3 SECONDS
 		if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
-			wait_time = rand(5 SECONDS, 10 SECONDS)
+			to_chat(user, SPAN_WARNING("You don't know how to use this thing!"))
+			return
+		var/wait_time = 3 SECONDS
 		if(!do_after(user, wait_time, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			return
 		armed = TRUE
@@ -1703,7 +1704,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	force = 1
 	throwforce = 1
 	unacidable = TRUE
-	var/obj/structure/machinery/computer/cameras/yautja/internal_camera
+	var/obj/structure/machinery/computer/cameras/internal/yautja/internal_camera
 
 /obj/item/device/houndcam/Initialize()
 	. = ..()

@@ -99,6 +99,8 @@
 	if(my_area.lighting_effect)
 		overlays += my_area.lighting_effect
 
+
+
 /turf/open/proc/scorch(heat_level)
 	// All scorched icons should be in the dmi that their unscorched bases are
 	// "name_scorched#" where # is the scorchedness level 0 - 1 - 2 - 3
@@ -166,6 +168,25 @@
 /turf/open/river
 	can_bloody = FALSE
 	supports_surgery = FALSE
+
+//Slipery slope
+/turf/open/slippery
+	name = "sloped roof"
+	icon = 'icons/turf/floors/floors.dmi'
+	icon_state = "grass1"
+	is_weedable = NOT_WEEDABLE
+
+
+/turf/open/slippery/Entered(atom/movable/crosser)
+	. = ..()
+	if(isobserver(crosser) || crosser.anchored)
+		return
+
+	if(!(isitem(crosser) || isliving(crosser)))
+		return
+
+	INVOKE_ASYNC(crosser, TYPE_PROC_REF(/atom/movable, throw_atom), (get_step(src, dir)), 50, SPEED_FAST, null, TRUE)
+
 
 // Prison grass
 /turf/open/organic/grass
@@ -1387,6 +1408,11 @@
 	icon_state = "plating"
 	allow_construction = FALSE
 	supports_surgery = TRUE
+
+/turf/open/shuttle/lifeboat/catwalk
+	icon = 'icons/turf/escapepods.dmi'
+	icon_state = "floor3"
+	dir = EAST
 
 /turf/open/shuttle/lifeboat/plating_striped
 	icon_state = "plating_striped"

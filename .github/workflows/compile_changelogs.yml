@@ -39,7 +39,7 @@ jobs:
           sudo apt-get install  dos2unix
       - name: "Checkout"
         if: steps.value_holder.outputs.ACTIONS_ENABLED
-        uses: actions/checkout@v3
+        uses: actions/checkout@v5
         with:
           fetch-depth: 25
           persist-credentials: false

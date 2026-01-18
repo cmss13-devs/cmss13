@@ -4,13 +4,15 @@
 	opacity = FALSE
 	density = FALSE
 	layer = WALL_OBJ_LAYER
+	var/deconstructable = TRUE
 
 /obj/structure/sign/ex_act(severity)
-	deconstruct(FALSE)
+	if(!explo_proof)
+		deconstruct(FALSE)
 	return
 
 /obj/structure/sign/attackby(obj/item/tool as obj, mob/user as mob) //deconstruction
-	if(HAS_TRAIT(tool, TRAIT_TOOL_SCREWDRIVER) && !istype(src, /obj/structure/sign/double))
+	if(deconstructable && HAS_TRAIT(tool, TRAIT_TOOL_SCREWDRIVER) && !istype(src, /obj/structure/sign/double) && !QDELETED(src))
 		to_chat(user, "You unfasten the sign with your [tool].")
 		var/obj/item/sign/S = new(src.loc)
 		S.name = name
@@ -32,6 +34,8 @@
 	if(HAS_TRAIT(tool, TRAIT_TOOL_SCREWDRIVER) && isturf(user.loc))
 		var/direction = tgui_input_list(usr, "In which direction?", "Select direction.", list("North", "East", "South", "West", "Cancel"))
 		if(direction == "Cancel")
+			return
+		if(!Adjacent(user, src))
 			return
 		var/obj/structure/sign/S = new(user.loc)
 		switch(direction)
@@ -61,11 +65,13 @@
 	name = "\improper NO SMOKING"
 	desc = "A warning sign which reads 'NO SMOKING'."
 	icon_state = "nosmoking"
+	deconstructable = FALSE
 
 /obj/structure/sign/nosmoking_2
 	name = "\improper NO SMOKING"
 	desc = "A warning sign which reads 'NO SMOKING'."
 	icon_state = "nosmoking2"
+	deconstructable = FALSE
 
 /obj/structure/sign/goldenplaque
 	name = "The Most Robust Men Award for Robustness"
@@ -91,6 +97,16 @@
 
 /obj/structure/sign/double/maltesefalcon/right
 	icon_state = "maltesefalcon-right"
+
+/obj/structure/sign/uacqs
+	name = "\improper UACQS Plaque"
+	desc = "a UACQS sign"
+	icon_state = "roplaque"
+	deconstructable = FALSE
+
+/obj/structure/sign/uacqs/New(loc, ...)
+	. = ..()
+	desc = "1) These premises are under the operation of the United Americas Commission for Quality and Standards.<br>2) Access to these premises are regulated by UACQS personnel, or the regulating authority of the region.<br>[SPAN_RED("3) In accordance with Civil Law, firearms are not permitted in these premises.")]"
 
 //============//
 //  Banners  //
@@ -626,6 +642,7 @@
 	name = "\improper USCM Requisitions Office Guidelines"
 	desc = " 1. You are not entitled to service or equipment. Attachments are a privilege, not a right.\n 2. You must be fully dressed to obtain service. Cryosleep underwear is non-permissible.\n 3. The Quartermaster has the final say and the right to decline service. Only the Acting Commanding Officer may override their decisions.\n 4. Please treat your Requsitions staff with respect. They work hard."
 	icon_state = "roplaque"
+	deconstructable = FALSE
 
 /obj/structure/sign/ROcreed
 	name = "\improper QMC Creed Plaque"

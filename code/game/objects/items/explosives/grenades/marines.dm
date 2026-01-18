@@ -33,7 +33,7 @@
 	if(shrapnel_count)
 		create_shrapnel(loc, shrapnel_count, , ,shrapnel_type, cause_data)
 	apply_explosion_overlay()
-	cell_explosion(loc, explosion_power, explosion_falloff, falloff_mode, null, cause_data)
+	cell_explosion(loc, explosion_power, explosion_falloff, falloff_mode, null, cause_data, FALSE, floor_destroying)
 	qdel(src)
 
 
@@ -913,6 +913,7 @@
 	name = "bursting pipe"
 	alpha = 0
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	floor_destroying = TRUE
 
 /obj/item/explosive/grenade/incendiary/bursting_pipe
 	AUTOWIKI_SKIP(TRUE)

@@ -488,6 +488,9 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 	for(var/i in HEAD_GARB_LAYER to (HEAD_GARB_LAYER + MAX_HEAD_GARB_LAYERS - 1))
 		remove_overlay(i)
 
+	if(!head)
+		return
+
 	if(client && hud_used && hud_used.hud_shown && hud_used.inventory_shown && hud_used.ui_datum)
 		client.add_to_screen(head)
 		head.screen_loc = hud_used.ui_datum.hud_slot_offset(head, hud_used.ui_datum.ui_head)
@@ -532,8 +535,8 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 	for(var/i in num_helmet_overlays+1 to MAX_HEAD_GARB_LAYERS)
 		overlays_standing[HEAD_GARB_LAYER + (i-1)] = null
 
-	for(var/ii in HEAD_GARB_LAYER to (HEAD_GARB_LAYER + 1))
-		apply_overlay(ii)
+	for(var/i in HEAD_GARB_LAYER to (HEAD_GARB_LAYER + MAX_HEAD_GARB_LAYERS - 1))
+		apply_overlay(i)
 
 /mob/living/carbon/human/update_inv_belt()
 	remove_overlay(BELT_LAYER)

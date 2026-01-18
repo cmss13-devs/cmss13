@@ -7,6 +7,7 @@
 	minimap_background = "background_forecon"
 	job_title = JOB_SURVIVOR
 	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
+	origin_override = ORIGIN_USCM
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
@@ -282,10 +283,10 @@
 				sidearm = /obj/item/weapon/gun/pistol/heavy/co
 				sidearmbelt = /obj/item/storage/belt/gun/m4a3
 				sidearmammo = /obj/item/ammo_magazine/pistol/heavy/super
-			if(CO_GUN_DEAGLE_COUNCIL)
-				sidearm = /obj/item/weapon/gun/pistol/heavy/co
+			if(CO_GUN_M1911C)
+				sidearm = /obj/item/weapon/gun/pistol/m1911/custom
 				sidearmbelt = /obj/item/storage/belt/gun/m4a3
-				sidearmammo = /obj/item/ammo_magazine/pistol/heavy/super
+				sidearmammo = /obj/item/ammo_magazine/pistol/m1911
 
 	var/obj/item/clothing/under/marine/reconnaissance/uniform = new()
 	var/obj/item/clothing/accessory/storage/droppouch/pouch = new()
@@ -316,6 +317,7 @@
 	assignment = JOB_FORECON_SYN
 	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
 	idtype = /obj/item/card/id/gold
+	origin_override = ORIGIN_USCM
 
 /datum/equipment_preset/synth/survivor/forecon/load_gear(mob/living/carbon/human/preset_human) //Bishop from Aliens
 	preset_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/engi, WEAR_BODY)

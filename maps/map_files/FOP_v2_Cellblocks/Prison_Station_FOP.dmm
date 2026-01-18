@@ -23581,7 +23581,7 @@
 /turf/open/floor/wood,
 /area/prison/library)
 "bOa" = (
-/obj/structure/machinery/power/reactor/colony{
+/obj/structure/machinery/power/power_generator/reactor/colony{
 	desc = "A thermoelectric generator fueled by searing hot uranium!";
 	name = "thermoelectric generator"
 	},
@@ -25118,7 +25118,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
-/obj/structure/machinery/power/port_gen/pacman/super,
+/obj/structure/machinery/power/power_generator/port_gen/pacman/super,
 /turf/open/floor/plating,
 /area/prison/engineering)
 "bUm" = (
@@ -25554,7 +25554,7 @@
 /turf/open/floor/prison/blue/north,
 /area/prison/cellblock/protective)
 "bVO" = (
-/obj/structure/machinery/power/port_gen/pacman/super,
+/obj/structure/machinery/power/power_generator/port_gen/pacman/super,
 /turf/open/floor/plating,
 /area/prison/engineering)
 "bVP" = (
@@ -30445,7 +30445,7 @@
 /turf/open/floor/plating,
 /area/prison/disposal)
 "cpQ" = (
-/obj/structure/machinery/power/port_gen/pacman/super,
+/obj/structure/machinery/power/power_generator/port_gen/pacman/super,
 /turf/open/floor/prison,
 /area/prison/disposal)
 "cpR" = (

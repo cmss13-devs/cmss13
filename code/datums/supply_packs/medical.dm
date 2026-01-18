@@ -112,7 +112,7 @@
 	group = "Medical"
 
 /datum/supply_packs/surgery
-	name = "surgery crate(tray,anesthetic,surgeon gear)"
+	name = "surgery crate (tray, anesthetic, surgeon gear)"
 	contains = list(
 		/obj/item/storage/surgical_tray,
 		/obj/item/clothing/mask/breath/medical,
@@ -124,6 +124,27 @@
 	cost = 25
 	containertype = /obj/structure/closet/crate/secure/surgery
 	containername = "surgery crate"
+	access = ACCESS_MARINE_MEDBAY
+	group = "Medical"
+
+/datum/supply_packs/field_doc
+	name = "field doctor crate (replacement field doctor gear)"
+	contains = list(
+		/obj/item/folded_tent/med,
+		/obj/item/clothing/accessory/storage/surg_vest/equipped,
+		/obj/item/roller/surgical,
+		/obj/item/tool/portadialysis,
+		/obj/structure/machinery/iv_drip,
+		/obj/item/reagent_container/spray/cleaner,
+		/obj/item/clothing/mask/breath/medical,
+		/obj/item/storage/box/masks,
+		/obj/item/storage/box/gloves,
+		/obj/item/tool/wrench,
+		/obj/item/tool/crowbar,
+	)
+	cost = 35 //that tent is expensive, man. Only order this crate if the old tent was destroyed.
+	containertype = /obj/structure/closet/crate/secure/medical
+	containername = "field doctor's replacement personal crate"
 	access = ACCESS_MARINE_MEDBAY
 	group = "Medical"
 

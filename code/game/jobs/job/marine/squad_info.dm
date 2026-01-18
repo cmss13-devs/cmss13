@@ -252,6 +252,10 @@
 								rank = "SpcSn"
 							if("spec_grenadier")
 								rank = "SpcGr"
+							if("spec_sharp")
+								rank = "SpcShp"
+							if("spec_heavy")
+								rank = "SpcHvy"
 							if("spec_pyro")
 								rank = "SpcPy"
 							else

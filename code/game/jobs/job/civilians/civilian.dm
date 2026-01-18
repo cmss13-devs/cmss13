@@ -1,6 +1,5 @@
 /datum/job/civilian
 	gear_preset = /datum/equipment_preset/colonist
-	marine_sided = TRUE
 
 /datum/timelock/medic
 	name = "Medical Roles"

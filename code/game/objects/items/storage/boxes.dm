@@ -537,6 +537,15 @@
 	icon_state = "pillbox"
 	item_state = "pillbox"
 
+	storage_flags = STORAGE_FLAGS_BOX|STORAGE_CLICK_GATHER|STORAGE_GATHER_SIMULTAENOUSLY
+	can_hold = list(
+		/obj/item/storage/pill_bottle,
+	)
+
+	//multiplier to time required to empty the box into chem master
+	var/time_to_empty = 3
+
+
 /obj/item/storage/box/pillbottles/fill_preset_inventory()
 	new /obj/item/storage/pill_bottle( src )
 	new /obj/item/storage/pill_bottle( src )
@@ -998,8 +1007,8 @@
 		new /obj/item/reagent_container/food/snacks/grown/banana(src)
 
 //chanterelle
-/obj/item/storage/box/chanterelles
-	name = "box of chanterelle"
+/obj/item/storage/box/chanterelle
+	name = "box of chanterelles"
 
 /obj/item/storage/box/chanterelle/fill_preset_inventory()
 	for(var/i in 1 to 7)

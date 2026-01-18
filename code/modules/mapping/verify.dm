@@ -39,7 +39,7 @@
 				html += "<ul><li>[messages.Join("</li><li>")]</li></ul>"
 			html += "</li>"
 		html += "</ul></p>"
-	C << browse(html.Join(), "window=[tag];size=600x400")
+	C << browse(HTML_SKELETON(html.Join()), "window=[tag];size=600x400")
 
 /datum/map_report/Topic(href, href_list)
 	. = ..()

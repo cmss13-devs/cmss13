@@ -229,7 +229,7 @@
 // a custom list of parameters
 // otherwise, just reset the client mob's machine var.
 //
-/client/verb/windowclose(atomref as text|null, params as text|null)
+CLIENT_VERB(windowclose, atomref as text|null, params as text|null)
 	set hidden = TRUE // hide this verb from the user's panel
 	set name = ".windowclose" // no autocomplete on cmd line
 

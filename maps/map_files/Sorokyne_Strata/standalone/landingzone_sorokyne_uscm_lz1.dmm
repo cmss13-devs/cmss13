@@ -218,7 +218,6 @@
 	pixel_x = -7;
 	pixel_y = 10;
 	emp_proof = 1;
-	explo_proof = 1;
 	name = "Landing Zone - Secure Lockdown Button";
 	id = "LZ1"
 	},
@@ -1595,7 +1594,7 @@
 /turf/open/asphalt/cement/cement3,
 /area/strata/interior/landing_zones/lz1)
 "zO" = (
-/obj/structure/fence/dark,
+/obj/structure/fence/slim/upp,
 /turf/open/floor/strata/orange_cover,
 /area/strata/exterior/marsh/river)
 "zS" = (
@@ -1641,7 +1640,6 @@
 /obj/structure/machinery/door_control/brbutton/alt{
 	pixel_y = -18;
 	emp_proof = 1;
-	explo_proof = 1;
 	name = "Landing Zone - Secure Lockdown Button";
 	id = "LZ1";
 	needs_power = 0

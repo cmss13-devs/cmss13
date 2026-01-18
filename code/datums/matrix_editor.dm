@@ -2,7 +2,6 @@
 /client
 	var/list/stored_matrices
 	var/selected_matrix = ""
-	var/datum/battlepass/owned_battlepass
 
 /client/proc/matrix_editor()
 	set name = "Matrix Editor"

@@ -331,6 +331,11 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		if("keyboard")
 			playsound(src, "keyboard", 15, 1)
 
+/obj/structure/machinery/computer/supply/ui_status(mob/user)
+	. = ..()
+	if(inoperable(MAINT))
+		return UI_CLOSE
+
 /obj/structure/machinery/computer/supply/proc/print_form(datum/supply_order/order)
 	var/list/accesses = list()
 
@@ -431,7 +436,6 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	req_access = list(ACCESS_MARINE_CARGO)
 	var/x_supply = 0
 	var/y_supply = 0
-	var/z_supply = 0
 	var/datum/squad/current_squad = null
 	var/drop_cooldown = 1 MINUTES
 	var/can_pick_squad = TRUE
@@ -480,7 +484,6 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	data["worldtime"] = world.time
 	data["x_offset"] = x_supply
 	data["y_offset"] = y_supply
-	data["z_offset"] = z_supply
 	data["loaded"] = loaded_crate
 	if(loaded_crate)
 		data["crate_name"] = loaded_crate.name
@@ -507,13 +510,6 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 			if(isnull(new_y))
 				return
 			y_supply = new_y
-			. = TRUE
-
-		if("set_z")
-			var/new_z = text2num(params["set_z"])
-			if(isnull(new_z))
-				return
-			z_supply = new_z
 			. = TRUE
 
 		if("pick_squad")
@@ -570,7 +566,24 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 	var/x_coord = deobfuscate_x(x_supply)
 	var/y_coord = deobfuscate_y(y_supply)
-	var/z_coord = deobfuscate_z(z_supply)
+	var/z_coord = null
+	var/too_deap = FALSE
+	for(var/z in SSmapping.levels_by_trait(ZTRAIT_GROUND))
+		var/turf/turf = locate(x_coord, y_coord, z)
+		if(isnull(turf))
+			continue
+
+		if(istype(turf, /turf/open_space)) //we do not detonate in the open
+			continue
+		if(turf.turf_flags & TURF_HULL) //this makes us ignore the walls above caves, might cause issue if someone uses turf with this flag incorrectly like almayer hull being used for roofs
+			continue
+
+		var/area/area = get_area(turf)
+		if(istype(area) && CEILING_IS_PROTECTED(area.ceiling, CEILING_PROTECTION_TIER_2))
+			too_deap = TRUE
+			continue
+		too_deap = FALSE
+		z_coord = max(z, z_coord)
 
 	if(!is_ground_level(z_coord))
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The target zone appears to be out of bounds. Please check coordinates.")]")
@@ -581,8 +594,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Error, invalid coordinates.")]")
 		return
 
-	var/area/A = get_area(T)
-	if(A && CEILING_IS_PROTECTED(A.ceiling, CEILING_PROTECTION_TIER_2))
+	if(too_deap)
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The landing zone is underground. The supply drop cannot reach here.")]")
 		return
 
@@ -1420,6 +1432,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	post_signal("supply_vehicle")
 
 	var/dat = ""
+	var/turf/upper_turf = get_turf(SSshuttle.getDock("almayer vehicle"))
 
 	if(!SSshuttle.vehicle_elevator)
 		return
@@ -1428,7 +1441,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	if (SSshuttle.vehicle_elevator.mode != SHUTTLE_IDLE)
 		dat += "Moving"
 	else
-		if(is_mainship_level(SSshuttle.vehicle_elevator.z))
+		if(SSshuttle.vehicle_elevator.z == upper_turf.z)
 			dat += "Raised"
 			if(!spent)
 				dat += "<br>\[<a href='byond://?src=\ref[src];lower_elevator=1'>Lower</a>\]"
@@ -1453,12 +1466,19 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 /obj/structure/machinery/computer/supply/asrs/vehicle/Topic(href, href_list)
 	. = ..()
+
+	var/turf/upper_turf = get_turf(SSshuttle.getDock("almayer vehicle"))
+	var/turf/lower_turf = get_turf(SSshuttle.getDock("adminlevel vehicle"))
+
 	if(.)
 		return
+
 	if(!is_mainship_level(z))
 		return
+
 	if(spent)
 		return
+
 	if(!linked_supply_controller)
 		world.log << "## ERROR: Eek. The linked_supply_controller controller datum is missing somehow."
 		return
@@ -1471,10 +1491,10 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		usr.set_interaction(src)
 
 	if(href_list["get_vehicle"])
-		if(is_mainship_level(SSshuttle.vehicle_elevator.z) || SSshuttle.vehicle_elevator.mode != SHUTTLE_IDLE)
+		if((SSshuttle.vehicle_elevator.z == upper_turf.z) || SSshuttle.vehicle_elevator.mode != SHUTTLE_IDLE)
 			to_chat(usr, SPAN_WARNING("The elevator needs to be in the cargo bay dock to call a vehicle up!"))
 			return
-		// dunno why the +1 is needed but the vehicles spawn off-center
+
 		var/turf/middle_turf = get_turf(SSshuttle.vehicle_elevator)
 
 		var/obj/vehicle/multitile/ordered_vehicle
@@ -1485,6 +1505,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 		if(VO?.has_vehicle_lock())
 			return
+
 		spent = TRUE
 		ordered_vehicle = new VO.ordered_vehicle(middle_turf)
 		SSshuttle.vehicle_elevator.request(SSshuttle.getDock("almayer vehicle"))
@@ -1495,6 +1516,10 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 	else if(href_list["lower_elevator"])
 		if(!is_mainship_level(SSshuttle.vehicle_elevator.z))
+			return
+
+		if(SSshuttle.vehicle_elevator.z == lower_turf.z)
+			to_chat(usr, SPAN_WARNING("The elevator is already lowered!"))
 			return
 
 		SSshuttle.vehicle_elevator.request(SSshuttle.getDock("adminlevel vehicle"))

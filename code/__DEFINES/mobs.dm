@@ -264,6 +264,10 @@
 #define ACTION_BLUE_POWER_UP 16
 #define ACTION_PURPLE_POWER_UP 17
 
+#define BUSY_ICON_CLIMBING 18
+
+#define EMOTE_ICON_WALLBOOSTING 19
+
 //defins for datum/hud
 
 #define HUD_STYLE_STANDARD 1
@@ -299,6 +303,7 @@
 #define EMOTING_HEADBUTT   (1<<2)
 #define EMOTING_TAIL_SWIPE (1<<3)
 #define EMOTING_ROCK_PAPER_SCISSORS (1<<4)
+#define EMOTING_WALL_BOOSTING (1<<5)
 
 //forcesay types
 #define SUDDEN 0

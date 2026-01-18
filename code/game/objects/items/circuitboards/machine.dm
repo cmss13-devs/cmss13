@@ -67,7 +67,7 @@ to destroy them and players will be able to make replacements.
 
 /obj/item/circuitboard/machine/pacman
 	name = "Circuit Board (PACMAN-type Generator)"
-	build_path = /obj/structure/machinery/power/port_gen/pacman
+	build_path = /obj/structure/machinery/power/power_generator/port_gen/pacman
 
 	frame_desc = "Requires 1 Matter Bin, 1 Micro-Laser, 2 Pieces of Cable, and 1 Capacitor."
 	req_components = list(
@@ -79,12 +79,12 @@ to destroy them and players will be able to make replacements.
 
 /obj/item/circuitboard/machine/pacman/super
 	name = "Circuit Board (SUPERPACMAN-type Generator)"
-	build_path = /obj/structure/machinery/power/port_gen/pacman/super
+	build_path = /obj/structure/machinery/power/power_generator/port_gen/pacman/super
 
 
 /obj/item/circuitboard/machine/pacman/mrs
 	name = "Circuit Board (MRSPACMAN-type Generator)"
-	build_path = /obj/structure/machinery/power/port_gen/pacman/mrs
+	build_path = /obj/structure/machinery/power/power_generator/port_gen/pacman/mrs
 
 
 /obj/item/circuitboard/machine/rdserver

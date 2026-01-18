@@ -127,7 +127,7 @@
 	name = "\improper High Impact Armor-Piercing Mateba speed loader (.454)"
 	desc = "A formidable 6-round .454 speedloader, made exclusively for the Mateba autorevolver. Packs a devastating punch. This armor-piercing variant is optimized against armored targets at the cost of lower overall damage. Don't point at anything you don't want to destroy."
 	default_ammo = /datum/ammo/bullet/revolver/mateba/highimpact/ap
-	ammo_band_color = REVOLVER_TIP_COLOR_AP
+	ammo_band_color = REVOLVER_TIP_COLOR_HIAP
 
 /obj/item/ammo_magazine/revolver/mateba/highimpact/explosive
 	name = "\improper Mateba explosive speed loader (.454)"

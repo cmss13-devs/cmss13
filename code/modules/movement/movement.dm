@@ -14,23 +14,25 @@
  * If the object is completely solid, returns ALL
  */
 /atom/proc/BlockedPassDirs(atom/movable/mover, target_dir)
-	var/reverse_dir = REVERSE_DIR(dir)
-	var/flags_can_pass = pass_flags.flags_can_pass_all|flags_can_pass_all_temp|pass_flags.flags_can_pass_front|flags_can_pass_front_temp
-
 	if(!mover || !mover.pass_flags)
 		return NO_BLOCKED_MOVEMENT
 
-	var/mover_flags_pass = mover.pass_flags.flags_pass|mover.flags_pass_temp
-
-	if (!density || (flags_can_pass & mover_flags_pass))
+	if(!density)
 		return NO_BLOCKED_MOVEMENT
 
-	if (flags_atom & ON_BORDER)
-		if (!(target_dir & reverse_dir))
+	var/flags_can_pass = pass_flags?.flags_can_pass_all|flags_can_pass_all_temp|pass_flags?.flags_can_pass_front|flags_can_pass_front_temp
+	var/mover_flags_pass = mover.pass_flags.flags_pass|mover.flags_pass_temp
+
+	if(flags_can_pass & mover_flags_pass)
+		return NO_BLOCKED_MOVEMENT
+
+	if(flags_atom & ON_BORDER)
+		var/reverse_dir = REVERSE_DIR(dir)
+		if(!(target_dir & reverse_dir))
 			return NO_BLOCKED_MOVEMENT
 
 		// This is to properly handle diagonal movement (a cade to your NE facing west when you are trying to move NE should block for north instead of east)
-		if (target_dir & (NORTH|SOUTH) && target_dir & (EAST|WEST))
+		if(target_dir & (NORTH|SOUTH) && target_dir & (EAST|WEST))
 			return target_dir - (target_dir & reverse_dir)
 		return target_dir & reverse_dir
 	else
@@ -43,11 +45,10 @@
  * If the object is completely solid, returns all directions
  */
 /atom/proc/BlockedExitDirs(atom/movable/mover, target_dir)
-	var/flags_can_pass = pass_flags.flags_can_pass_all|flags_can_pass_all_temp|pass_flags.flags_can_pass_behind|flags_can_pass_behind_temp
-
 	if(!mover || !mover.pass_flags)
 		return NO_BLOCKED_MOVEMENT
 
+	var/flags_can_pass = pass_flags?.flags_can_pass_all|flags_can_pass_all_temp|pass_flags?.flags_can_pass_behind|flags_can_pass_behind_temp
 	var/mover_flags_pass = mover.pass_flags.flags_pass|mover.flags_pass_temp
 
 	if(flags_atom & ON_BORDER && density && !(flags_can_pass & mover_flags_pass))

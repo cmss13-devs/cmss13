@@ -693,7 +693,7 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 		/obj/item/weapon/baton/cattleprod,
 		/obj/item/ammo_magazine/shotgun/beanbag,
 		/obj/item/storage/box/packet/m15/rubber,
-		/obj/item/storage/box/guncase/m79,
+		/obj/item/storage/box/guncase/m85a1,
 		/obj/item/clothing/head/helmet/marine/MP,
 		/obj/item/prop/helmetgarb/riot_shield,
 	)
@@ -1380,7 +1380,7 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 			var/obj/item/mortar_shell/frag/fragshell = new(loc)
 			var/obj/item/explosive/grenade/incendiary/molotov/molotov = new(loc)
 			molotov.prime()
-			fragshell.balloon_alert_to_viewers("the mortar shell makes an awful hissing noise!")
+			fragshell.balloon_alert_to_viewers("the shell starts hissing!")
 			addtimer(CALLBACK(fragshell, TYPE_PROC_REF(/obj/item/mortar_shell/frag, detonate), loc), 5 SECONDS)
 			QDEL_IN(fragshell, 5.5 SECONDS)
 			loot_message = SPAN_HIGHDANGER("RUN!!!")

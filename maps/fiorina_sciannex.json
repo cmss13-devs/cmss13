@@ -16,6 +16,9 @@
         "/datum/equipment_preset/survivor/corporate/fiorina",
         "/datum/equipment_preset/survivor/civilian"
     ],
+    "CO_insert_survivor_types": [
+        "/datum/equipment_preset/survivor/clf/coordinator"
+    ],
     "defcon_triggers": [
         3750,
         2600,

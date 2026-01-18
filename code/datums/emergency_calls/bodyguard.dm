@@ -1,8 +1,9 @@
 /datum/emergency_call/wy_bodyguard
-	name = "Weyland-Yutani Bodyguard (Executive Bodyguard Detail)"
+	name = "Weyland-Yutani Public Security (Executive Bodyguard Detail)"
 	mob_max = 1
 	mob_min = 1
 	home_base = /datum/lazy_template/ert/weyland_station
+	ert_message = "A corporate security beacon has been activated!"
 	var/equipment_preset = /datum/equipment_preset/wy/security
 	var/equipment_preset_leader = /datum/equipment_preset/wy/security
 	var/spawn_header = "You are a Weyland-Yutani Security Guard!"
@@ -43,12 +44,14 @@
 	to_chat(response_mob, SPAN_BOLD("Ensure no damage is incurred against Weyland-Yutani. Make sure the CL is safe."))
 
 /datum/emergency_call/wy_bodyguard/goon
+	name = "Weyland-Yutani Corporate Security (Executive Bodyguard Detail)"
 	equipment_preset = /datum/equipment_preset/goon/standard/bodyguard
 	equipment_preset_leader = /datum/equipment_preset/goon/lead/bodyguard
 	spawn_header = "You are a Weyland-Yutani Corporate Security Officer!"
 	spawn_header_leader = "You are a Weyland-Yutani Corporate Security Lead!"
 
 /datum/emergency_call/wy_bodyguard/pmc
+	name = "Weyland-Yutani PMC (Executive Bodyguard Detail)"
 	equipment_preset = /datum/equipment_preset/pmc/pmc_standard
 	equipment_preset_leader = /datum/equipment_preset/pmc/pmc_leader
 	spawn_header = "You are a Weyland-Yutani PMC Operator!"
@@ -61,13 +64,15 @@
 		to_chat(response_mob, SPAN_BOLD("While you are officially an employee, much of your work is off the books. You work as a skilled mercenary."))
 		to_chat(response_mob, SPAN_BOLD("You are [pick(50;"unaware of the xenomorph threat", 15;"acutely aware of the xenomorph threat", 10;"well-informed of the xenomorph threat")]"))
 
-/datum/emergency_call/wy_bodyguard/pmc/sec/
+/datum/emergency_call/wy_bodyguard/pmc/sec
+	name = "Weyland-Yutani PMC Enforcer (Executive Bodyguard Detail)"
 	equipment_preset = /datum/equipment_preset/pmc/pmc_detainer
 	equipment_preset_leader = /datum/equipment_preset/pmc/pmc_lead_investigator
 	spawn_header = "You are a Weyland-Yutani PMC Detainer!"
 	spawn_header_leader = "You are a Weyland-Yutani PMC Lead Investigator!"
 
 /datum/emergency_call/wy_bodyguard/commando
+	name = "Weyland-Yutani Commando (Executive Bodyguard Detail)"
 	equipment_preset = /datum/equipment_preset/pmc/commando/standard/low_threat
 	equipment_preset_leader = /datum/equipment_preset/pmc/commando/leader/low_threat
 	spawn_header = "You are a Weyland-Yutani Commando!"
@@ -86,6 +91,7 @@
 	to_chat(response_mob, SPAN_BOLD("Deny Weyland-Yutani's involvement and do not trust the UA/USCM forces."))
 
 /datum/emergency_call/wy_bodyguard/android
+	name = "Weyland-Yutani Combat Android (Executive Bodyguard Detail)"
 	equipment_preset = /datum/equipment_preset/pmc/w_y_whiteout/low_threat
 	equipment_preset_leader = /datum/equipment_preset/pmc/w_y_whiteout/low_threat/leader
 	spawn_header = "You are a Weyland-Yutani Combat Android!"

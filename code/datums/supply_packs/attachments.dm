@@ -214,9 +214,9 @@
 		/obj/item/attachable/stock/rifle,
 		/obj/item/attachable/stock/rifle,
 		/obj/item/attachable/stock/rifle,
-		/obj/item/attachable/stock/shotgun,
-		/obj/item/attachable/stock/shotgun,
-		/obj/item/attachable/stock/shotgun,
+		/obj/item/attachable/stock/synth/collapsible,
+		/obj/item/attachable/stock/synth/collapsible,
+		/obj/item/attachable/stock/synth/collapsible,
 		/obj/item/attachable/stock/smg,
 		/obj/item/attachable/stock/smg,
 		/obj/item/attachable/stock/smg,
@@ -259,10 +259,10 @@
 /datum/supply_packs/stock_shotgun
 	name = "shotgun stock attachment crate (x4)"
 	contains = list(
-		/obj/item/attachable/stock/shotgun,
-		/obj/item/attachable/stock/shotgun,
-		/obj/item/attachable/stock/shotgun,
-		/obj/item/attachable/stock/shotgun,
+		/obj/item/attachable/stock/synth/collapsible,
+		/obj/item/attachable/stock/synth/collapsible,
+		/obj/item/attachable/stock/synth/collapsible,
+		/obj/item/attachable/stock/synth/collapsible,
 	)
 	cost = 30
 	containertype = /obj/structure/closet/crate

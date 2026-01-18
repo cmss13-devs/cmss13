@@ -275,7 +275,7 @@
 	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_reg"
 	overlay_gun_type = "_m10"
-	overlay_content = "_hv"
+	overlay_content = "_apc"
 	num_of_magazines = 22
 	magazine_type = /obj/item/ammo_magazine/pistol/m10
 
@@ -285,7 +285,7 @@
 /obj/item/ammo_box/magazine/m10/extended
 	name = "magazine box (Ext m10 x 14)"
 	overlay_ammo_type = "_ext"
-	overlay_content = "_hv"
+	overlay_content = "_apc"
 	num_of_magazines = 14
 	magazine_type = /obj/item/ammo_magazine/pistol/m10/extended
 
@@ -295,11 +295,44 @@
 /obj/item/ammo_box/magazine/m10/drum
 	name = "magazine box (Drum m10 x 12)"
 	overlay_ammo_type = "_drum"
-	overlay_content = "_hv"
+	overlay_content = "_apc"
 	num_of_magazines = 12
 	magazine_type = /obj/item/ammo_magazine/pistol/m10/drum
 
 /obj/item/ammo_box/magazine/m10/drum/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/m10/ap
+	name = "magazine box (M10 AP x 22)"
+	icon_state = "base_m10"
+	flags_equip_slot = SLOT_BACK
+	overlay_ammo_type = "_ap"
+	overlay_gun_type = "_m10"
+	overlay_content = "_ap"
+	num_of_magazines = 22
+	magazine_type = /obj/item/ammo_magazine/pistol/m10/ap
+
+/obj/item/ammo_box/magazine/m10/ap/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/m10/ap/extended
+	name = "magazine box (Ext AP m10 x 14)"
+	overlay_ammo_type = "_ext_ap"
+	overlay_content = "_ap"
+	num_of_magazines = 14
+	magazine_type = /obj/item/ammo_magazine/pistol/m10/ap/extended
+
+/obj/item/ammo_box/magazine/m10/ap/extended/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/m10/ap/drum
+	name = "magazine box (Drum AP m10 x 12)"
+	overlay_ammo_type = "_drum_ap"
+	overlay_content = "_ap"
+	num_of_magazines = 12
+	magazine_type = /obj/item/ammo_magazine/pistol/m10/ap/drum
+
+/obj/item/ammo_box/magazine/m10/ap/drum/empty
 	empty = TRUE
 
 //-----------------------M4A3 Pistol Mag Box-----------------------
@@ -510,10 +543,10 @@
 /obj/item/ammo_box/magazine/nailgun/empty
 	empty = TRUE
 
-//-----------------------M56B Drum Box-----------------------
+//-----------------------M56A2 Drum Box-----------------------
 
-/obj/item/ammo_box/magazine/m56b
-	name = "drum box (M56B x 8)"
+/obj/item/ammo_box/magazine/m56a2
+	name = "drum box (M56A2 x 8)"
 	icon_state = "base_m56b"
 	overlay_ammo_type = "_reg_heavy"
 	overlay_gun_type = "_sg"
@@ -521,16 +554,16 @@
 	magazine_type = /obj/item/ammo_magazine/smartgun
 	num_of_magazines = 8
 
-/obj/item/ammo_box/magazine/m56b/empty
+/obj/item/ammo_box/magazine/m56a2/empty
 	empty = TRUE
 
-/obj/item/ammo_box/magazine/m56b/dirty
-	name = "drum box (M56B 'Dirty' x 8)"
+/obj/item/ammo_box/magazine/m56a2/dirty
+	name = "drum box (M56A2 'Dirty' x 8)"
 	overlay_ammo_type = "_red_heavy"
 	overlay_content = "_sgdirty"
 	magazine_type = /obj/item/ammo_magazine/smartgun/dirty
 
-/obj/item/ammo_box/magazine/m56b/dirty/empty
+/obj/item/ammo_box/magazine/m56a2/dirty/empty
 	empty = TRUE
 
 //-----------------------M56D Drum Box-----------------------

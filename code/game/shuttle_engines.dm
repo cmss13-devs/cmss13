@@ -1,6 +1,7 @@
 /obj/structure/shuttle
 	name = "shuttle"
 	icon = 'icons/turf/shuttle.dmi'
+	flags_atom = NO_ZFALL
 
 /obj/structure/shuttle/window
 	name = "shuttle window"

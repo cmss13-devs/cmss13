@@ -19,7 +19,7 @@
 	return
 
 /// Whether or not to show a typing indicator when speaking. Defaults to on.
-/client/verb/typing_indicator()
+CLIENT_VERB(typing_indicator)
 	set name = "Show/Hide Typing Indicator"
 	set category = "Preferences.Chat"
 	set desc = "Toggles showing an indicator when you are typing emote or say message."
@@ -73,6 +73,8 @@
 	active_thinking_indicator = mutable_appearance('icons/mob/effects/talk.dmi', "[bubble_icon]3", TYPING_LAYER)
 	active_thinking_indicator.pixel_x = bubble_icon_x_offset
 	active_thinking_indicator.pixel_y = bubble_icon_y_offset
+	active_thinking_indicator.appearance_flags = RESET_TRANSFORM
+	active_thinking_indicator.plane = ABOVE_GAME_PLANE
 	overlays += active_thinking_indicator
 
 /mob/living/remove_thinking_indicator()
@@ -89,6 +91,8 @@
 	active_typing_indicator = mutable_appearance('icons/mob/effects/talk.dmi', "[bubble_icon]0", TYPING_LAYER)
 	active_typing_indicator.pixel_x = bubble_icon_x_offset
 	active_typing_indicator.pixel_y = bubble_icon_y_offset
+	active_typing_indicator.appearance_flags = RESET_TRANSFORM
+	active_typing_indicator.plane = ABOVE_GAME_PLANE
 	overlays += active_typing_indicator
 
 /mob/living/remove_typing_indicator()

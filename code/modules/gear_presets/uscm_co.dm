@@ -70,8 +70,8 @@
 				kit = /obj/item/storage/mateba_case/captain/council
 			if(CO_GUN_DEAGLE)
 				sidearmpath = /obj/item/storage/belt/gun/m4a3/heavy/co
-			if(CO_GUN_DEAGLE_COUNCIL)
-				sidearmpath = /obj/item/storage/belt/gun/m4a3/heavy/co_golden
+			if(CO_GUN_M1911C)
+				sidearmpath = /obj/item/storage/belt/gun/m4a3/m1911/commander
 	switch(whitelist_level)
 		if(WHITELIST_COUNCIL)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/marine/commander/council(new_human), WEAR_HEAD)
@@ -308,15 +308,6 @@
 
 	service_extra = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/commander, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber)
 
-/datum/equipment_preset/uscm_co/visitor
-	name = "USCM Observer (Major) (VO)"
-	flags = EQUIPMENT_PRESET_EXTRA
-
-	assignment = JOB_USCM_OBSV
-	job_title = JOB_USCM_OBSV
-	role_comm_title = "VO"
-	minimap_background = "background_medical_WO"
-
 /datum/equipment_preset/uscm_co/council
 	name = "USCM Commanding Officer (CO+)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
@@ -343,3 +334,20 @@
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior, /obj/item/clothing/under/marine/dress/blues/general)
 
 	service_extra = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/commander, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber)
+
+/datum/equipment_preset/uscm_co/visitor
+	name = "USCM Observer (Major) (VO)"
+	flags = EQUIPMENT_PRESET_EXTRA
+
+	assignment = JOB_USCM_OBSV
+	job_title = JOB_USCM_OBSV
+	role_comm_title = "VO"
+	minimap_background = "background_medical_WO"
+
+/datum/equipment_preset/uscm_co/visitor/ltcol
+	name = "USCM Observer (Lt. Col.) (VO)"
+	paygrades = list(PAY_SHORT_MO5 = JOB_PLAYTIME_TIER_0)
+
+/datum/equipment_preset/uscm_co/visitor/col
+	name = "USCM Observer (Colonel) (VO)"
+	paygrades = list(PAY_SHORT_MO6 = JOB_PLAYTIME_TIER_0)

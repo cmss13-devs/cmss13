@@ -121,7 +121,7 @@
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer
 	name = "\improper Airlock"
-	icon = 'icons/obj/structures/doors/comdoor.dmi' //Tiles with is here FOR SAFETY PURPOSES
+	icon = 'icons/obj/structures/doors/2x1almayerdoor.dmi' //Tiles with is here FOR SAFETY PURPOSES
 	openspeed = 4 //shorter open animation.
 	tiles_with = list(
 		/obj/structure/window/framed/almayer,
@@ -142,6 +142,11 @@
 		SSclues.create_print(get_turf(damaging_mob), damaging_mob, "The fingerprint contains bits of wire and metal specks.")
 	..()
 
+/obj/structure/machinery/door/airlock/multi_tile/almayer/glass
+	icon = 'icons/obj/structures/doors/2x1almayerdoor_glass.dmi'
+	opacity = FALSE
+	glass = TRUE
+
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic
 	name = "\improper Airlock"
 	icon = 'icons/obj/structures/doors/2x1generic.dmi'
@@ -155,6 +160,9 @@
 	icon = 'icons/obj/structures/doors/2x1generic_solid.dmi'
 	opacity = TRUE
 	glass = FALSE
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/solid
+	autoname = TRUE
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor
 	name = "\improper Medical Airlock"
@@ -629,15 +637,6 @@
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic2/glass/autoname
 	autoname = TRUE
-
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer
-	name = "\improper Airlock"
-	icon = 'icons/obj/structures/doors/2x1almayerdoor.dmi'
-
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass
-	icon = 'icons/obj/structures/doors/2x1almayerdoor_glass.dmi'
-	opacity = FALSE
-	glass = TRUE
 
 // Hybrisa
 

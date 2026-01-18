@@ -220,20 +220,6 @@
 	notification_sound = !notification_sound
 	to_chat(usr, SPAN_NOTICE("The bracer's sound is now turned [notification_sound ? "on" : "off"]."))
 
-/obj/item/clothing/gloves/yautja/thrall/update_minimap_icon()
-	if(!ishuman(owner))
-		return
-
-	var/mob/living/carbon/human/human_owner = owner
-	var/turf/wearer_turf = get_turf(owner)
-	if(owner.stat >= DEAD)
-		if(human_owner.undefibbable)
-			SSminimaps.add_marker(owner, wearer_turf.z, MINIMAP_FLAG_YAUTJA, minimap_icon, overlay_iconstates = list("undefibbable"))
-		else
-			SSminimaps.add_marker(owner, wearer_turf.z, MINIMAP_FLAG_YAUTJA, minimap_icon, overlay_iconstates = list("defibbable"))
-	else
-		SSminimaps.add_marker(owner, wearer_turf.z, MINIMAP_FLAG_YAUTJA, minimap_icon)
-
 /obj/item/clothing/gloves/yautja/hunter
 	name = "clan bracers"
 	desc = "An extremely complex, yet simple-to-operate set of armored bracers worn by the Yautja. It has many functions, activate them to use some."
@@ -1263,7 +1249,7 @@
 	set src in usr
 	. = translate_internal(usr, FALSE)
 
-/obj/item/clothing/gloves/yautja/hunter/proc/translate_internal(mob/user, forced = FALSE)
+/obj/item/clothing/gloves/yautja/hunter/proc/translate_internal(mob/living/user, forced = FALSE)
 	if(!user || user.stat)
 		return
 
@@ -1275,21 +1261,24 @@
 		to_chat(user, SPAN_DANGER("You cannot translate (muted)."))
 		return
 
-	user.create_typing_indicator()
-	var/msg = sanitize(input(user, "Your bracer beeps and waits patiently for you to input your message.", "Translator", "") as text)
-	user.remove_typing_indicator()
-	if(!msg || !user.client)
+	var/list/heard = get_mobs_in_view(7, user)
+	for(var/mob/heard_mob in heard)
+		if(heard_mob.ear_deaf)
+			heard -= heard_mob
+
+	var/image/translator_bubble = image('icons/mob/effects/talk.dmi', src, "pred_translator", TYPING_LAYER)
+	user.show_speech_bubble(heard, looping_bubble = TRUE, animated = FALSE, speech_bubble = translator_bubble)
+	var/message = tgui_input_text(user, "The bracer beeps and is awaiting to translate", "Translator", multiline = TRUE)
+	user.remove_speech_bubble(translator_bubble)
+	if(!message || !user.client)
 		return
 
 	if(!drain_power(user, 50))
 		return
 
-	log_say("[user.name != "Unknown" ? user.name : "([user.real_name])"] \[Yautja Translator\]: [msg] (CKEY: [user.key]) (JOB: [user.job]) (AREA: [get_area_name(user)])")
+	user.show_speech_bubble(heard, "pred_translator1")
 
-	var/list/heard = get_mobs_in_view(7, user)
-	for(var/mob/M in heard)
-		if(M.ear_deaf)
-			heard -= M
+	log_say("[user.name != "Unknown" ? user.name : "([user.real_name])"] \[Yautja Translator\]: [message] (CKEY: [user.key]) (JOB: [user.job]) (AREA: [get_area_name(user)])")
 
 	var/overhead_color = "#ff0505"
 	var/span_class = "yautja_translator"
@@ -1297,22 +1286,22 @@
 		if(translator_type == PRED_TECH_RETRO)
 			overhead_color = "#FFFFFF"
 			span_class = "retro_translator"
-		msg = replacetext(msg, "a", "@")
-		msg = replacetext(msg, "e", "3")
-		msg = replacetext(msg, "i", "1")
-		msg = replacetext(msg, "o", "0")
-		msg = replacetext(msg, "s", "5")
-		msg = replacetext(msg, "l", "1")
+		message = replacetext(message, "a", "@")
+		message = replacetext(message, "e", "3")
+		message = replacetext(message, "i", "1")
+		message = replacetext(message, "o", "0")
+		message = replacetext(message, "s", "5")
+		message = replacetext(message, "l", "1")
 
-	user.langchat_speech(msg, heard, GLOB.all_languages, overhead_color, TRUE)
+	user.langchat_speech(message, heard, GLOB.all_languages, overhead_color, TRUE)
 
 	var/voice_name = "A strange voice"
 	if(user.name == user.real_name && user.alpha == initial(user.alpha))
 		voice_name = "<b>[user.name]</b>"
-	for(var/mob/Q as anything in heard)
-		if(Q.stat && !isobserver(Q))
+	for(var/mob/heard_human as anything in heard)
+		if(heard_human.stat && !isobserver(heard_human))
 			continue //Unconscious
-		to_chat(Q, "[SPAN_INFO("[voice_name] says,")] <span class='[span_class]'>'[msg]'</span>")
+		to_chat(heard_human, "[SPAN_INFO("[voice_name] says,")] <span class='[span_class]'>'[message]'</span>")
 
 /obj/item/clothing/gloves/yautja/hunter/verb/bracername()
 	set name = "Toggle Bracer Name"

@@ -43,6 +43,8 @@
 	var/falloff_shape = EXPLOSION_FALLOFF_SHAPE_LINEAR
 	// How much power does the explosion gain (or lose) by bouncing off walls?
 	var/reflection_power_multiplier = 0.4
+	/// Whether the damage is considered to be from an environmental source
+	var/enviro = FALSE
 
 	//Diagonal cells have a small delay when branching off from a non-diagonal cell. This helps the explosion look circular
 	var/delay = 0
@@ -54,6 +56,9 @@
 	// Whether or not the explosion should merge with other explosions
 	var/should_merge = TRUE
 
+	/// Whether this explosion should destroy floors
+	var/floor_destroying = FALSE
+
 	// For stat tracking and logging purposes
 	var/datum/cause_data/explosion_cause_data
 
@@ -62,6 +67,12 @@
 	var/list/atom/exploded_atoms = list()
 
 	var/obj/effect/particle_effect/shockwave/shockwave = null
+
+	//we do not want to expand up, if we already expanded down
+	var/expanded_up = FALSE
+
+	//we do not want to expand down, if we already expanded up
+	var/expanded_down = FALSE
 
 // If we're on a fake z teleport, teleport over
 /datum/automata_cell/explosion/birth()
@@ -147,13 +158,13 @@
 		resistance += max(0, A.get_explosion_resistance())
 
 	// Blow stuff up
-	INVOKE_ASYNC(in_turf, TYPE_PROC_REF(/atom, ex_act), power, direction, explosion_cause_data)
+	INVOKE_ASYNC(in_turf, TYPE_PROC_REF(/atom, ex_act), power, direction, explosion_cause_data, 0, enviro, floor_destroying)
 	for(var/atom/A in in_turf)
 		if(A in exploded_atoms)
 			continue
 		if(A.gc_destroyed)
 			continue
-		INVOKE_ASYNC(A, TYPE_PROC_REF(/atom, ex_act), power, direction, explosion_cause_data)
+		INVOKE_ASYNC(A, TYPE_PROC_REF(/atom, ex_act), power, direction, explosion_cause_data, 0, enviro)
 		exploded_atoms += A
 		log_explosion(A, src)
 
@@ -206,14 +217,61 @@
 			E.power_falloff = new_falloff
 			E.falloff_shape = falloff_shape
 			E.explosion_cause_data = explosion_cause_data
+			E.floor_destroying = floor_destroying
+			E.expanded_down = expanded_down
+			E.expanded_up = expanded_up
 
 			// Set the direction the explosion is traveling in
 			E.direction = dir
+			E.floor_destroying = floor_destroying
 			//Diagonal cells have a small delay when branching off the center. This helps the explosion look circular
 			if(!direction && (dir in GLOB.diagonals))
 				E.delay = 1
 
+			var/turf/below = SSmapping.get_turf_below(E.in_turf)
+			if(below && istype(E.in_turf,/turf/open_space) && (!below.get_cell(type)) && !expanded_up)
+				var/datum/automata_cell/C = new type(below)
+				var/datum/automata_cell/explosion/explosion = C
+				new_power -= (power_falloff * dir_falloff)
+				explosion.power = new_power * 0.8
+				explosion.power_falloff = new_falloff
+				explosion.falloff_shape = falloff_shape
+				explosion.explosion_cause_data = explosion_cause_data
+				explosion.floor_destroying = floor_destroying
+				explosion.expanded_down = TRUE
+				E.expanded_down = TRUE
+				explosion.expanded_up = expanded_up
+
+				// Set the direction the explosion is traveling in
+				explosion.direction = dir
+				//Diagonal cells have a small delay when branching off the center. This helps the explosion look circular
+				if(!direction && (dir in GLOB.diagonals))
+					explosion.delay = 1
+				setup_new_cell(explosion)
+			var/turf/above = SSmapping.get_turf_above(E.in_turf)
+			if(above && istype(above,/turf/open_space) && (! above.get_cell(type)) && !expanded_down)
+				var/datum/automata_cell/C = new type(above)
+				var/datum/automata_cell/explosion/explosion = C
+				new_power -= (power_falloff * dir_falloff)
+				explosion.power = new_power * 0.8
+				explosion.power_falloff = new_falloff
+				explosion.falloff_shape = falloff_shape
+				explosion.explosion_cause_data = explosion_cause_data
+				explosion.floor_destroying = floor_destroying
+				explosion.expanded_down = expanded_down
+				explosion.expanded_up = TRUE
+				E.expanded_up = TRUE
+
+				// Set the direction the explosion is traveling in
+				explosion.direction = dir
+				//Diagonal cells have a small delay when branching off the center. This helps the explosion look circular
+				if(!direction && (dir in GLOB.diagonals))
+					explosion.delay = 1
+				setup_new_cell(explosion)
+
 			setup_new_cell(E)
+
+
 
 	// We've done our duty, now die pls
 	qdel(src)
@@ -241,13 +299,14 @@ as having entered the turf.
 	if(A.gc_destroyed)
 		return
 
-	INVOKE_ASYNC(A, TYPE_PROC_REF(/atom, ex_act), power, null, explosion_cause_data)
+	INVOKE_ASYNC(A, TYPE_PROC_REF(/atom, ex_act), power, null, explosion_cause_data, 0, enviro)
 	log_explosion(A, src)
 
 // I'll admit most of the code from here on out is basically just copypasta from DOREC
 
 // Spawns a cellular automaton of an explosion
-/proc/cell_explosion(turf/epicenter, power, falloff, falloff_shape = EXPLOSION_FALLOFF_SHAPE_LINEAR, direction, datum/cause_data/explosion_cause_data)
+
+/proc/cell_explosion(turf/epicenter, power, falloff, falloff_shape = EXPLOSION_FALLOFF_SHAPE_LINEAR, direction, datum/cause_data/explosion_cause_data, enviro=FALSE, floor_destroying = FALSE )
 	if(!istype(epicenter))
 		epicenter = get_turf(epicenter)
 
@@ -261,8 +320,8 @@ as having entered the turf.
 		else
 			stack_trace("cell_explosion called without cause_data.")
 			explosion_cause_data = create_cause_data("Explosion")
-
 	falloff = max(falloff, power/100)
+
 
 	var/obj/causing_obj = explosion_cause_data?.resolve_cause()
 	var/mob/causing_mob = explosion_cause_data?.resolve_mob()
@@ -274,11 +333,12 @@ as having entered the turf.
 		playsound(epicenter, "bigboom", 80, 1, max(round(power,1),7))
 	else
 		playsound(epicenter, "explosion", 90, 1, max(round(power,1),7))
-
-	var/datum/automata_cell/explosion/E = new /datum/automata_cell/explosion(epicenter)
 	if(power > EXPLOSION_MAX_POWER)
 		log_debug("[explosion_cause_data.cause_name] exploded with force of [power]. Overriding to capacity of [EXPLOSION_MAX_POWER].")
 		power = EXPLOSION_MAX_POWER
+
+	var/datum/automata_cell/explosion/E = new /datum/automata_cell/explosion(epicenter)
+
 
 	// something went wrong :(
 	if(QDELETED(E))
@@ -292,6 +352,8 @@ as having entered the turf.
 	E.falloff_shape = falloff_shape
 	E.direction = direction
 	E.explosion_cause_data = explosion_cause_data
+	E.enviro = enviro
+	E.floor_destroying = floor_destroying
 
 	if(power >= 100) // powerful explosions send out some special effects
 		epicenter = get_turf(epicenter) // the ex_acts might have changed the epicenter

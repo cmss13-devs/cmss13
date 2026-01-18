@@ -292,7 +292,7 @@
 
 /obj/structure/machinery/door/airlock/almayer
 	name = "\improper Airlock"
-	icon = 'icons/obj/structures/doors/comdoor.dmi' //Tiles with is here FOR SAFETY PURPOSES
+	icon = 'icons/obj/structures/doors/almayerdoor.dmi' //Tiles with is here FOR SAFETY PURPOSES
 	openspeed = 4 //shorter open animation.
 	tiles_with = list(
 		/obj/structure/window/framed/almayer,
@@ -316,6 +316,11 @@
 
 /obj/structure/machinery/door/airlock/almayer/autoname
 	autoname = TRUE
+
+/obj/structure/machinery/door/airlock/almayer/glass
+	icon = 'icons/obj/structures/doors/almayerdoor_glass.dmi'
+	opacity = FALSE
+	glass = TRUE
 
 /obj/structure/machinery/door/airlock/almayer/security
 	name = "\improper Security Airlock"

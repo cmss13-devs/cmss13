@@ -1,5 +1,4 @@
 GLOBAL_LIST_EMPTY(string_lists)
-#define json_load(FILE) (json_decode(file2text(FILE)))
 
 /**
  * Caches lists with non-numeric stringify-able values (text or typepath).

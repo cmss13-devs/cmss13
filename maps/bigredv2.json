@@ -24,6 +24,9 @@
     "CO_survivor_types": [
         "/datum/equipment_preset/survivor/solaris_ridge/co_survivor"
     ],
+    "CO_insert_survivor_types": [
+        "/datum/equipment_preset/survivor/clf/coordinator"
+    ],
     "defcon_triggers": [
         4750,
         3500,

@@ -137,6 +137,58 @@
 	SPAN_XENOWARNING("We vomit globs of vile stuff all over [affected_atom]. It begins to sizzle and melt under the bubbling mess of acid!"), null, 5)
 	playsound(loc, "sound/bullets/acid_impact1.ogg", 25)
 
+#define ACIDER_ACID_LEVEL 3
+
+/mob/living/carbon/xenomorph/runner/try_fill_trap(obj/effect/alien/resin/trap/target)
+	if(!istype(strain, /datum/xeno_strain/acider))
+		return ..()
+
+	if(!istype(target))
+		return FALSE
+
+	var/datum/behavior_delegate/runner_acider/behavior_del = behavior_delegate
+	if(!istype(behavior_del))
+		return FALSE
+
+	if(behavior_del.acid_amount < behavior_del.fill_acid_cost)
+		to_chat(src, SPAN_XENOHIGHDANGER("Not enough acid stored!"))
+		return FALSE
+
+	var/trap_acid_level = 0
+	if(target.trap_type >= RESIN_TRAP_ACID1)
+		trap_acid_level = 1 + target.trap_type - RESIN_TRAP_ACID1
+
+	if(trap_acid_level >= ACIDER_ACID_LEVEL) // Acid runners apply /obj/effect/xenomorph/acid/strong generally
+		to_chat(src, SPAN_XENONOTICE("It already has good acid in."))
+		return FALSE
+
+	to_chat(src, SPAN_XENONOTICE("You begin charging the resin trap with acid."))
+	xeno_attack_delay(src)
+	if(!do_after(src, 3 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, src))
+		return FALSE
+
+	if(target.trap_type >= RESIN_TRAP_ACID1)
+		trap_acid_level = 1 + target.trap_type - RESIN_TRAP_ACID1
+
+	if(trap_acid_level >= ACIDER_ACID_LEVEL)
+		return FALSE
+
+	if(behavior_del.acid_amount < behavior_del.fill_acid_cost)
+		to_chat(src, SPAN_XENOHIGHDANGER("Not enough acid stored!"))
+		return FALSE
+
+	behavior_del.modify_acid(-behavior_del.fill_acid_cost)
+
+	target.cause_data = create_cause_data("resin acid trap", src)
+	target.setup_tripwires()
+	target.set_state(RESIN_TRAP_ACID1 + ACIDER_ACID_LEVEL - 1)
+
+	playsound(target, 'sound/effects/refill.ogg', 25, 1)
+	visible_message(SPAN_XENOWARNING("[src] pressurises the resin trap with acid!"),
+	SPAN_XENOWARNING("You pressurise the resin trap with acid!"), null, 5)
+	return TRUE
+
+#undef ACIDER_ACID_LEVEL
 
 /datum/action/xeno_action/activable/acider_for_the_hive/use_ability(atom/affected_atom)
 	var/mob/living/carbon/xenomorph/xeno = owner

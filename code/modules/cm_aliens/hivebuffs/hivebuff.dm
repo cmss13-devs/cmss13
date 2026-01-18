@@ -565,3 +565,30 @@
 /datum/hivebuff/attack/major/remove_buff_effects(mob/living/carbon/xenomorph/xeno)
 	xeno.damage_modifier -= XENO_DAMAGE_MOD_SMALL
 	xeno.recalculate_damage()
+
+
+/datum/hivebuff/boost_structure
+	name = "Boon of Fortification"
+	desc = "Gives buffs out to all the sturctures, not only do structures regenerate their own health slowly any recovery nodes of all sorts work twice as fast."
+	tier = HIVEBUFF_TIER_MINOR
+
+	engage_flavourmessage = "The resin starts moving and shifting..."
+	duration = 5 MINUTES
+	number_of_required_pylons = 1
+	cost = 1
+	radial_icon = "building"
+
+/datum/hivebuff/boost_structure/apply_buff_effects(mob/living/carbon/xenomorph/xeno)
+	. = ..()
+
+	var/hive_purchaser = hive.hivenumber
+
+
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_BOOST_XENOMORPH_WALLS, hive_purchaser)
+
+/datum/hivebuff/boost_structure/remove_buff_effects(mob/living/carbon/xenomorph/xeno)
+	. = ..()
+
+	var/hive_purchaser = hive.hivenumber
+
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_STOP_BOOST_XENOMORPH_WALLS, hive_purchaser)

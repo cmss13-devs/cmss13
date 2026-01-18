@@ -114,7 +114,7 @@
 
 /obj/item/device/binoculars/range/get_examine_text(mob/user)
 	. = ..()
-	. += SPAN_NOTICE(FONT_SIZE_LARGE("The rangefinder reads: LONGITUDE [last_x], LATITUDE [last_y], HEIGHT [last_z]."))
+	. += SPAN_NOTICE(FONT_SIZE_LARGE("The rangefinder reads: LONGITUDE [last_x], LATITUDE [last_y]."))
 
 /obj/item/device/binoculars/range/verb/toggle_rangefinder_popup()
 	set name = "Toggle Rangefinder Display"
@@ -427,7 +427,7 @@
 		overlays += cas_laser_overlay
 
 /datum/action/item_action/specialist/spotter_target
-	ability_primacy = SPEC_PRIMARY_ACTION_1
+	ability_primacy = SPEC_PRIMARY_ACTION_2
 	var/minimum_laze_distance = 2
 
 /datum/action/item_action/specialist/spotter_target/New(mob/living/user, obj/item/holder)

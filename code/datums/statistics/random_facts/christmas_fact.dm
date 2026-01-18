@@ -1,6 +1,9 @@
 // Leaderboard stat for festivizer_hits_total_max
 // Normally includes dead always but can disable by setting prob_check_dead to 0
 
+/datum/random_fact/christmas
+	role_filter = null
+
 /datum/random_fact/christmas/life_grab_stat(mob/fact_mob)
 	return fact_mob.festivizer_hits_total
 
@@ -24,6 +27,8 @@
 			list_to_check += GLOB.living_xeno_list
 
 	for(var/mob/checked_mob as anything in list_to_check)
+		if(check_mob_ignored(checked_mob))
+			continue
 		if(festivizer_hits_total_max < checked_mob.festivizer_hits_total && (checked_mob.persistent_ckey in GLOB.directory))
 			mob_to_report = checked_mob
 			festivizer_hits_total_max = life_grab_stat(checked_mob)

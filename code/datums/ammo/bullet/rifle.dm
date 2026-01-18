@@ -286,3 +286,16 @@
 	damage = 0
 	stamina_damage = 22
 	shrapnel_chance = 0
+
+/datum/ammo/bullet/rifle/l64
+
+	name = "8.88x51 squash-head bullet"
+
+	damage = 40
+	penetration = ARMOR_PENETRATION_TIER_1
+
+/datum/ammo/bullet/rifle/l64/ap
+	name = "8.88x51 armour piercing squash-head bullet"
+
+	damage = 30
+	penetration = ARMOR_PENETRATION_TIER_8

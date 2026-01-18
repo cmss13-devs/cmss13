@@ -258,6 +258,24 @@
 	reagents.add_reagent("oxycodone", MED_REAGENTS_OVERDOSE-1)
 	update_icon()
 
+/obj/item/reagent_container/hypospray/autoinjector/black_goo_cure
+	name = "\"Pathogen\" cure autoinjector (SINGLE-USE)"
+	desc = "An auto-injector loaded with a cure for Agent A0-3959X.91–15, also known as the 'black-goo'. Doesn't require any training to administrate."
+	icon_state = "empty_ez"
+	chemname = "antiZed"
+	amount_per_transfer_from_this = 5
+	volume = 5
+	uses_left = 1
+	injectSFX = 'sound/items/air_release.ogg'
+	display_maptext = TRUE
+	maptext_label = "!!"
+	skilllock = SKILL_MEDICAL_DEFAULT
+
+/obj/item/reagent_container/hypospray/autoinjector/black_goo_cure/Initialize()
+	. = ..()
+	reagents.add_reagent("antiZed", 5)
+	update_icon()
+
 /obj/item/reagent_container/hypospray/autoinjector/ultrazine
 	name = "ultrazine autoinjector"
 	chemname = "ultrazine"

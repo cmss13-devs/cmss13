@@ -23,6 +23,9 @@
         "/datum/equipment_preset/synth/survivor/kutjevo/scientist",
         "/datum/equipment_preset/synth/survivor/kutjevo/corporate"
     ],
+    "CO_insert_survivor_types": [
+        "/datum/equipment_preset/survivor/clf/coordinator"
+    ],
     "defcon_triggers": [
         4250,
         2950,

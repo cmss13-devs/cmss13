@@ -293,6 +293,11 @@
 		return XENO_NO_DELAY_ACTION
 
 	user.forceMove(src) //become one with the tunnel
+
+	if(isqueen(user))
+		var/mob/living/carbon/xenomorph/queen/queen_user = user
+		queen_user.end_temporary_maturity()
+
 	to_chat(user, SPAN_HIGHDANGER("Alt + Click the tunnel to exit, Ctrl + Click to choose a destination."))
 	pick_tunnel(user)
 	return XENO_NO_DELAY_ACTION

@@ -271,7 +271,7 @@
 			if(!C.stasis_mob)
 				return
 			M = C.stasis_mob
-			C.open()
+			C.open(user)
 			user.stop_pulling()
 			user.start_pulling(M)
 		else

@@ -156,10 +156,7 @@ WARNING!*/
 	else
 		jobs += "<td width='20%'><a href='byond://?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=Survivor;jobban4=\ref[M]'>Survivor</a></td>"
 
-	if(jobban_isbanned(M, "Agent", P) || isbanned_dept)
-		jobs += "<td width='20%'><a href='byond://?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=Agent;jobban4=\ref[M]'><font color=red>Agent</font></a></td>"
-	else
-		jobs += "<td width='20%'><a href='byond://?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=Agent;jobban4=\ref[M]'>Agent</a></td>"
+	// Agent was a previous jobban
 
 	if(jobban_isbanned(M, "Urgent Adminhelp", P))
 		jobs += "<td width='20%'><a href='byond://?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=Urgent Adminhelp;jobban4=\ref[M]'><font color=red>Urgent Adminhelp</font></a></td>"

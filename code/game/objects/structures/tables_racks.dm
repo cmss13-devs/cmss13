@@ -591,6 +591,39 @@
 	icon_state = "prisontable"
 	table_prefix = "prison"
 
+/obj/structure/surface/table/reinforced/rostock_blend
+	desc = "A square metal surface resting on its fat metal bottom. You can't flip something that doesn't have legs."
+	icon_state = "rostockStable" //instance, this is a static table for req.
+	table_prefix = "rostockS"
+	tiles_with = list(
+		/obj/structure/window/framed/almayer,
+		/obj/structure/machinery/door/airlock,
+		/turf/closed/wall,
+	)
+
+/obj/structure/surface/table/reinforced/rostock_blend/north
+	icon_state = "rostockNtable"
+	table_prefix = "rostockN"
+
+/obj/structure/surface/table/reinforced/rostock_blend/east
+	icon_state = "rostockEtable"
+	table_prefix = "rostockE"
+
+/obj/structure/surface/table/reinforced/rostock_blend/west
+	icon_state = "rostockWtable"
+	table_prefix = "rostockW"
+
+/obj/structure/surface/table/reinforced/rostock_blend/flip(direction)
+	return FALSE
+
+/obj/structure/surface/table/reinforced/rostock_table
+	desc = "A square metal surface resting on its fat metal bottom. You can't flip something that doesn't have legs."
+	icon_state = "rostock_table" //this one actually auto-tiles, but has no flipped state!
+	table_prefix = "rostock_"
+
+/obj/structure/surface/table/reinforced/rostock_table/flip(direction)
+	return FALSE
+
 /obj/structure/surface/table/reinforced/almayer_blend
 	desc = "A square metal surface resting on its fat metal bottom. You can't flip something that doesn't have legs."
 	icon_state = "reqStable" //instance, this is a static table for req.

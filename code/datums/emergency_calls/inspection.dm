@@ -4,6 +4,7 @@
 	mob_max = 2
 	mob_min = 1
 	probability = 0
+	ert_message = "A Provost investigation has been requested!"
 
 /datum/emergency_call/inspection_provost/New()
 	..()
@@ -57,6 +58,7 @@
 	mob_max = 2
 	mob_min = 1
 	probability = 0
+	ert_message = "A USCM High Command investigation has been requested!"
 
 /datum/emergency_call/inspection_hc/New()
 	..()
@@ -96,6 +98,7 @@
 	item_spawn = /obj/effect/landmark/ert_spawns/distress_pmc/item
 	max_heavies = 1
 	probability = 0
+	ert_message = "A Weyland-Yutani investigation has been requested!"
 
 /datum/emergency_call/inspection_wy/New()
 	..()
@@ -146,6 +149,7 @@
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_pmc
 	item_spawn = /obj/effect/landmark/ert_spawns/distress_pmc/item
 	probability = 0
+	ert_message = "A corporate lawyer beacon has been activated!"
 
 /datum/emergency_call/inspection_wy/lawyer/New()
 	..()
@@ -183,6 +187,7 @@
 	mob_min = 1
 	probability = 0
 	home_base = /datum/lazy_template/ert/weyland_station
+	ert_message = "A Colonial Marshal investigation has been requested!"
 
 	var/max_synths = 1
 	var/synths = 0
@@ -285,6 +290,7 @@
 	max_synths = 0
 	will_spawn_icc_liaison = TRUE
 	will_spawn_cmb_observer = FALSE
+	ert_message = "A blackmarket investigation has been requested!"
 
 /datum/emergency_call/inspection_cmb/black_market/New()
 	..()

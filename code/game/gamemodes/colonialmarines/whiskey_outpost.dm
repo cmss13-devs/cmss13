@@ -136,7 +136,7 @@
 /datum/game_mode/whiskey_outpost/proc/story_announce(time)
 	switch(time)
 		if(0)
-			marine_announcement("This is Captain Hans Naiche, Commander of the 3rd Bataillion, 'Dust Raiders' forces on LV-624. As you already know, several of our patrols have gone missing and likely wiped out by hostile local creatures as we've attempted to set our base up.", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
+			marine_announcement("This is Captain Hans Naiche, Commander of the 3rd Bataillion, 'Dust Raiders' forces on LV-624. As you already know, several of our patrols have gone missing and were likely wiped out by hostile local creatures as we attempted to set up our base.", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
 		if(1)
 			marine_announcement("Our scouts report increased activity in the area and given our intel, we're already preparing for the worst. We're setting up a comms relay to send out a distress call, but we're going to need time while our engineers get everything ready. All other stations should prepare accordingly and maximize combat readiness, effective immediately.", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
 		if(2)
@@ -645,10 +645,10 @@
 			supply_drop = 6
 			to_chat(usr, SPAN_NOTICE("SHARP ammo will now drop!"))
 		if("Pyrotechnician tanks")
-			supply_drop = 6
+			supply_drop = 7
 			to_chat(usr, SPAN_NOTICE("Pyrotechnician tanks will now drop!"))
 		if("Scout ammo")
-			supply_drop = 7
+			supply_drop = 8
 			to_chat(usr, SPAN_NOTICE("Scout ammo will now drop!"))
 		else
 			return

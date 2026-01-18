@@ -1,6 +1,3 @@
-/datum/job/special/uscm
-	marine_sided = TRUE
-
 /datum/job/special/uscm/colonel
 	title = JOB_COLONEL
 /datum/job/special/uscm/observer
@@ -18,5 +15,8 @@
 /datum/job/special/uscm/riot/chief
 	title = JOB_RIOT_CHIEF
 
+/datum/job/special/uscm/hgmp
+	title = JOB_POLICE_HG
+
 /datum/job/special/uscm/tech
-	title = JOB_SQUAD_TECH
+	title = JOB_FORECON_SUPPORT

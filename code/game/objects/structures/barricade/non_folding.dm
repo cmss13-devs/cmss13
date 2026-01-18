@@ -243,6 +243,9 @@
 				if(!(istype(turf) && turf.allow_construction))
 					to_chat(user, SPAN_WARNING("[src] must be secured on a proper surface!"))
 					return
+				if(area.flags_area & AREA_NOSECURECADES)
+					to_chat(user, SPAN_WARNING("[src] must be secured on a proper surface!"))
+					return
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 					return

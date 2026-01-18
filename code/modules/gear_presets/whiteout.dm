@@ -30,9 +30,9 @@
 	new_human.gender = pick(MALE)
 	var/random_name
 	if(new_human.gender == MALE)
-		random_name = "[pick(GLOB.greek_letters)]"
+		random_name = capitalize(pick(GLOB.greek_letters))
 	else
-		random_name = "[pick(GLOB.greek_letters)]"
+		random_name = capitalize(pick(GLOB.greek_letters))
 	new_human.change_real_name(new_human, random_name)
 	new_human.bubble_icon = new_bubble_icon
 	new_human.age = rand(3, 5)

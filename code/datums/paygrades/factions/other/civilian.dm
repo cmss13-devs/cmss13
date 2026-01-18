@@ -59,3 +59,9 @@
 	name = "Rebel Commander"
 	prefix = "CMDR."
 	officer_grade = GRADE_OFFICER
+
+/datum/paygrade/civilian/administrator
+	paygrade = PAY_SHORT_CADMIN
+	name = "Administrator"
+	prefix = "Admn."
+	pay_multiplier = 1

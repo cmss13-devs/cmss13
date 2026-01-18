@@ -118,7 +118,7 @@ YOU TO 200 DAMAGE. I ASK NOT FOR MY OWN MEDIC EGOSTROKING, BUT FOR THE GOOD OF T
 	if(user == target)
 		suture_time *= 1.5 //Stitching yourself up is badass but awkward.
 		possessive = "your"
-		possessive_their = user.gender == MALE ? "his" : "her"
+		possessive_their = user.p_their()
 		if(!looping) //start message.
 			skill_msg = pick("awkwardly", "slowly and carefully")
 			user.visible_message(SPAN_NOTICE("[user] begins to [skill_msg] [description_verb] the [description_wounds] on \his [target_limb.display_name]."),

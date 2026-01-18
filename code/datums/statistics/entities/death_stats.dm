@@ -14,7 +14,7 @@
 	var/cause_role_name
 	var/cause_faction_name
 
-	var/total_steps = 0
+	var/total_steps
 	var/total_kills = 0
 	var/time_of_death
 	var/total_time_alive
@@ -113,7 +113,6 @@
 
 	if(cause_mob)
 		cause_mob.life_kills_total += life_value
-		SEND_SIGNAL(cause_mob, COMSIG_MOB_KILL_TOTAL_INCREASED, src, cause_data)
 
 	if(getBruteLoss())
 		new_death.total_brute = floor(getBruteLoss())
@@ -141,7 +140,6 @@
 		GLOB.round_statistics.track_death(new_death)
 
 	new_death.save()
-	new_death.detach()
 	return new_death
 
 /mob/living/carbon/human/track_mob_death(datum/cause_data/cause_data, turf/death_loc)

@@ -412,15 +412,3 @@ SUBSYSTEM_DEF(statpanels)
 	else
 		client.stat_panel.send_message("remove_listedturf")
 		client.obj_window.stop_turf_tracking()
-
-/client/verb/open_statbrowser_options(current_fontsize as num|null)
-	set name = "Open Statbrowser Options"
-	set hidden = TRUE
-
-	if (!current_fontsize)
-		current_fontsize = 14
-
-	var/datum/statbrowser_options/options_panel = statbrowser_options
-	if(!options_panel)
-		options_panel = statbrowser_options = new(src, current_fontsize)
-	options_panel.tgui_interact()

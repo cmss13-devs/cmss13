@@ -136,7 +136,7 @@
 /obj/item/spacecash/c50
 	name = "50 dollar bill"
 	icon_state = "spacecash50"
-	desc = "A single US Government minted fifty-dollar bill. It has a picture of Ulysses S. Grant, a man known for expendable troop tactics in the civil war, and probable distant relative of Bill Carson. You could probably buy the whole bar a beer with this, assuming there are 4 other people in the bar."
+	desc = "A single US Government minted fifty-dollar bill. It has a picture of Ulysses S. Grant, a man known for expendable troop tactics in the civil war. You could probably buy the whole bar a beer with this, assuming there are 4 other people in the bar."
 	worth = 50
 
 /obj/item/spacecash/c100

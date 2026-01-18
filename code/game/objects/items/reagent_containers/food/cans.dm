@@ -215,7 +215,7 @@
 	L = H.get_limb(H.zone_selected)
 
 	if(src == H.get_inactive_hand())
-		message = "between [user.gender == MALE ? "his" : "her"] hands"
+		message = "between [user.p_their()] hands"
 		to_chat(user, SPAN_NOTICE("You start crushing the [name] between your hands!"))
 		if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC)) //crushing with hands takes great effort and might
 			return
@@ -225,14 +225,14 @@
 				if(!L)
 					to_chat(user, SPAN_WARNING("You don't have a [H.zone_selected], can't crush yer can on nothing!"))
 					return
-				message = "against [user.gender == MALE ? "his" : "her"] head!"
+				message = "against [user.p_their()] head!"
 				L.take_damage(brute = 3) //ouch! but you're a tough badass so it barely hurts
 				H.UpdateDamageIcon()
 			if("l_foot" , "r_foot")
 				if(!L)
 					to_chat(user, SPAN_WARNING("You don't have a [H.zone_selected], can't crush yer can under nothing!"))
 					return
-				message = "under [user.gender == MALE ? "his" : "her"] foot!"
+				message = "under [user.p_their()] foot!"
 
 	crushed = TRUE
 	flags_atom &= ~OPENCONTAINER

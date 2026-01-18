@@ -181,6 +181,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	var/silent_exit = FALSE
 	var/obj/item/device/radio/intercom/announce //Intercom for cryo announcements
 	var/no_store_pod = FALSE
+	var/willing = FALSE //True when player entered by themselves or agreed to be put inside
 
 /obj/structure/machinery/cryopod/right
 	dir = WEST
@@ -205,10 +206,10 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 //Lifted from Unity stasis.dm and refactored. ~Zuhayr
 /obj/structure/machinery/cryopod/process()
 	if(occupant && !(occupant in GLOB.freed_mob_list)) //ignore freed mobs
-		//if occupant ghosted, time till despawn is severely shorter
-		if(!occupant.key && time_till_despawn == 10 MINUTES)
-			time_till_despawn -= 8 MINUTES
-		//Allow a ten minute gap between entering the pod and actually despawning.
+		//if occupant ghosted or entered willingly, time till despawn is severely shorter
+		if((!occupant.key || willing) && time_till_despawn == 10 MINUTES)
+			time_till_despawn -= 9 MINUTES
+		//Allow a gap between entering the pod and actually despawning.
 		if(world.time - time_entered < time_till_despawn)
 			return
 
@@ -345,7 +346,8 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	var/datum/job/job = GET_MAPPED_ROLE(occupant.job)
 	if(ishuman(occupant))
 		var/mob/living/carbon/human/H = occupant
-		job.on_cryo(H)
+		if(job)
+			job.on_cryo(H)
 		if(H.assigned_squad)
 			var/datum/squad/S = H.assigned_squad
 			S.forget_marine_in_squad(H)
@@ -401,7 +403,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 		if(!isliving(G.grabbed_thing))
 			return FALSE
 
-		var/willing = FALSE //We don't want to allow people to be forced into despawning.
+		willing = FALSE //We don't want to allow people to be forced into despawning.
 		var/mob/living/M = G.grabbed_thing
 
 		if(M.stat == DEAD) //This mob is dead
@@ -419,7 +421,6 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 				willing = TRUE
 		else
 			willing = TRUE
-
 		if(willing)
 
 			visible_message(SPAN_NOTICE("[user] starts putting [M] into [src]."),
@@ -433,7 +434,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 				to_chat(user, SPAN_WARNING("[src] is occupied."))
 				return FALSE
 
-			go_in_cryopod(M)
+			go_in_cryopod(M, forced=TRUE)
 
 			//Book keeping!
 			var/area/location = get_area(src)
@@ -513,7 +514,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 		add_fingerprint(usr)
 
 
-/obj/structure/machinery/cryopod/proc/go_in_cryopod(mob/mob, silent = FALSE)
+/obj/structure/machinery/cryopod/proc/go_in_cryopod(mob/mob, silent = FALSE, forced=FALSE)
 	if(occupant)
 		return
 	mob.forceMove(src)
@@ -521,12 +522,16 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	icon_state = "body_scanner_closed"
 	set_light(2)
 	time_entered = world.time
+	if(!forced)
+		willing = TRUE
+	else
+		willing = FALSE
 	start_processing()
 
 	if(!silent)
 		if(mob.client)
 			to_chat(mob, SPAN_NOTICE("You feel cool air surround you. You go numb as your senses turn inward."))
-			to_chat(mob, SPAN_BOLDNOTICE("If you log out or close your client now, your character will permanently removed from the round in 10 minutes. If you ghost, timer will be decreased to 2 minutes."))
+			to_chat(mob, SPAN_BOLDNOTICE("If you ghost or close your client now, your character will permanently removed from the round in 1 minute."))
 			if(!should_block_game_interaction(src)) // Set their queue time now because the client has to actually leave to despawn and at that point the client is lost
 				mob.client.player_details.larva_pool_time = max(mob.client.player_details.larva_pool_time, world.time)
 		var/area/location = get_area(src)
@@ -580,7 +585,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 /obj/structure/machinery/cryopod/tutorial/process()
 	return
 
-/obj/structure/machinery/cryopod/tutorial/go_in_cryopod(mob/mob, silent = FALSE, del_them = TRUE)
+/obj/structure/machinery/cryopod/tutorial/go_in_cryopod(mob/mob, silent = FALSE, forced=FALSE, del_them = TRUE)
 	if(occupant)
 		return
 	mob.forceMove(src)

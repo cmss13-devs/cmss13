@@ -320,7 +320,7 @@ DEFINES in setup.dm, referenced here.
 		if(istype(src, magazine.gun_type) || (magazine.type in accepted_ammo))
 
 			if(istype(bullet, /obj/item/ammo_magazine/handful) && in_chamber)
-				to_chat(user, SPAN_WARNING("You can't tactically reload with [bullet] without clearing [src]'s chamber!"))
+				to_chat(user, SPAN_WARNING("You can't tactically reload with [bullet] without clearing \the [src]'s chamber!"))
 				return
 
 			if(current_mag)
@@ -340,7 +340,7 @@ DEFINES in setup.dm, referenced here.
 				master_storage.remove_from_storage(magazine)
 			reload(user, magazine)
 		else
-			to_chat(user, SPAN_WARNING("The [magazine] doesn't fit in [src]!"))
+			to_chat(user, SPAN_WARNING("The [magazine] doesn't fit in \the [src]!"))
 			return
 	else
 		..()
@@ -348,7 +348,7 @@ DEFINES in setup.dm, referenced here.
 
 /obj/item/weapon/gun/proc/unconventional_reload(mob/user, obj/item/ammo_magazine/magazine)
 	if(magazine.caliber != caliber)
-		to_chat(user, SPAN_WARNING("This doesn't match [src]'s caliber!"))
+		to_chat(user, SPAN_WARNING("This doesn't match \the [src]'s caliber!"))
 		return
 	if(current_mag && current_mag.current_rounds >= current_mag.max_rounds)
 		to_chat(user, SPAN_WARNING("[src] is already at its maximum capacity!"))

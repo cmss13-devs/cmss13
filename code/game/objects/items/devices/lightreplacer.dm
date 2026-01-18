@@ -82,7 +82,7 @@
 			return
 		else if(glass.use(1))
 			AddUses(5)
-			to_chat(user, SPAN_NOTICE("You insert a piece of glass into [src]. You have [uses] lights remaining."))
+			to_chat(user, SPAN_NOTICE("You insert a piece of glass into \the [src]. You have [uses] lights remaining."))
 			return
 		else
 			to_chat(user, SPAN_WARNING("You need one sheet of glass to replace lights."))

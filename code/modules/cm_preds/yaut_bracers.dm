@@ -503,12 +503,12 @@
 		return ..()
 
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
-		to_chat(user, SPAN_WARNING("You do not know how to attach the [attacking_item] to [src]."))
+		to_chat(user, SPAN_WARNING("You do not know how to attach the [attacking_item] to \the [src]."))
 		return
 
 	var/obj/item/bracer_attachments/bracer_attachment = attacking_item
 	if(!bracer_attachment.attached_weapon_type)
-		CRASH("[key_name(user)] attempted to attach the [bracer_attachment] to [src], with no valid attached_weapon.")
+		CRASH("[key_name(user)] attempted to attach the [bracer_attachment] to \the [src], with no valid attached_weapon.")
 
 	if(left_bracer_attachment && right_bracer_attachment)
 		to_chat(user, SPAN_WARNING("You already have the maximum amount of bracer attachments on [src]."))

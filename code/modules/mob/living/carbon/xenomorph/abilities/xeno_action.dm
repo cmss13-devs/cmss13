@@ -391,12 +391,13 @@
 
 // Helper proc to check if there is anything blocking the way from mob M to the atom A
 // Max distance can be supplied to check some of the way instead of the whole way.
-/proc/check_clear_path_to_target(mob/M, atom/A, smash_windows = TRUE, max_distance = 1000)
+/proc/check_clear_path_to_target(mob/M, atom/A, smash_windows = TRUE, max_distance = 1000, smash_multiple = TRUE)
 	if(A.z != M.z)
 		return FALSE
 
 	var/list/turf/path = get_line(M, A, include_start_atom = FALSE)
 	var/distance = 0
+	var/obj/structure/window/framed/stored_window = null //only used with smash_multiple = FALSE, singular window that will be destroyed if there arent any more obstructions
 	for(var/turf/T in path)
 		if(distance >= max_distance)
 			return FALSE
@@ -412,11 +413,18 @@
 		for(var/obj/structure/S in T)
 			if(istype(S, /obj/structure/window/framed) && smash_windows)
 				var/obj/structure/window/framed/W = S
-				if(!W.unslashable)
-					W.deconstruct(disassembled = FALSE)
+				if(smash_multiple)
+					if(!W.unslashable && smash_multiple)
+						W.health = 0
+						W.healthcheck(TRUE, TRUE, TRUE, M)
+				else if(!stored_window)
+					stored_window = W
+				else
+					return FALSE
 
-			if(S.opacity)
-				return FALSE
+	if(stored_window)
+		stored_window.health = 0
+		stored_window.healthcheck(TRUE, TRUE, TRUE, M)
 
 	return TRUE
 

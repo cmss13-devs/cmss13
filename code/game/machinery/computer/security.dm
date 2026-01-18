@@ -267,7 +267,7 @@
 			var/mob/living/carbon/human/U = usr
 			var/new_comment = list(
 				"entry" = strip_html(trim(comment)),
-				"created_by" = list("name" = U.get_authentification_name(), "rank" = U.get_assignment()),
+				"created_by" = list("name" = U.get_authentication_name(), "rank" = U.get_assignment()),
 				"created_at" = created_at,
 				"deleted_by" = null,
 				"deleted_at" = null
@@ -307,7 +307,7 @@
 				return
 
 			var/mob/living/carbon/human/U = user
-			comment["deleted_by"] = "[U.get_authentification_name()] ([U.get_assignment()])"
+			comment["deleted_by"] = "[U.get_authentication_name()] ([U.get_assignment()])"
 			comment["deleted_at"] = text("[]  []  []", time2text(world.realtime, "MMM DD"), time2text(world.time, "[worldtime2text()]:ss"), GLOB.game_year)
 
 			security_record.fields["comments"][comment_key] = comment

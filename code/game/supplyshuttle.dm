@@ -307,7 +307,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 				for(var/iterator in 1 to current_order[item])
 					to_order += pack
 
-			var/id_name = human_user.get_authentification_name()
+			var/id_name = human_user.get_authentication_name()
 			var/assignment = human_user.get_assignment()
 
 			var/datum/supply_order/supply_order = new
@@ -1150,7 +1150,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	if(!ishuman(ui.user))
 		return
 	var/mob/living/carbon/human/human_user = ui.user
-	var/id_name = human_user.get_authentification_name()
+	var/id_name = human_user.get_authentication_name()
 	var/assignment = human_user.get_assignment()
 
 	switch(action)

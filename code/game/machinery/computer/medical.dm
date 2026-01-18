@@ -21,7 +21,7 @@
 	var/biometric_scan_timer
 	/// the current users access level for the medical record database. see define definitions for access permissions
 	var/access_level = MEDICAL_RECORD_ACCESS_LEVEL_0
-	/// the id number of the lastest viewed record. used to manage ui data
+	/// the id number of the latest viewed record. used to manage ui data
 	var/currently_selected_record_id
 
 	COOLDOWN_DECLARE(record_printing_cooldown)
@@ -234,7 +234,7 @@
 		// checks if the record is being viewed, and requires more data
 		if((id_number == currently_selected_record_id) && currently_selected_record_id)
 			records |= list(gather_record_data(user, general))
-			// sends photo data seperately from the records system, for ease of use
+			// sends photo data separately from the records system, for ease of use
 			var/icon/photo_icon = new /icon('icons/misc/buildmode.dmi', "buildhelp")
 			var/photo_data = icon2html(photo_icon, user.client, sourceonly = TRUE)
 
@@ -377,7 +377,7 @@
 
 			var/new_comment = list(
 				"entry" = strip_html(trim(comment)),
-				"created_by" = list("name" = user.get_authentification_name(), "rank" = user.get_assignment()),
+				"created_by" = list("name" = user.get_authentication_name(), "rank" = user.get_assignment()),
 				"created_at" = created_at,
 				"deleted_by" = null,
 				"deleted_at" = null
@@ -417,7 +417,7 @@
 				to_chat(user, SPAN_WARNING("This comment is already deleted."))
 				return
 
-			comment["deleted_by"] = "[user.get_authentification_name()] ([user.get_assignment()])"
+			comment["deleted_by"] = "[user.get_authentication_name()] ([user.get_assignment()])"
 			comment["deleted_at"] = text("[]  []  []", time2text(world.realtime, "MMM DD"), time2text(world.time, "[worldtime2text()]:ss"), GLOB.game_year)
 
 			medical_record.fields["comments"][comment_key] = comment

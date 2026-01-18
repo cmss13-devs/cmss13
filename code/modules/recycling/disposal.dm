@@ -82,6 +82,7 @@
 /obj/structure/machinery/disposal/attackby(obj/item/item, mob/user)
 	if(stat & BROKEN || !item || !user)
 		return
+
 	if(isxeno(user)) //No, fuck off. Concerns trashing Marines and facehuggers
 		return
 

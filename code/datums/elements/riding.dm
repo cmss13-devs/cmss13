@@ -85,7 +85,7 @@
 
 /// Remove all of the relevant [riding offhand items][/obj/item/riding_offhand] from the target
 /datum/element/ridable/proc/unequip_buckle_inhands(mob/living/carbon/user, atom/movable/target_movable)
-	for(var/obj/item/riding_offhand/reins in user.contents)
+	for(var/obj/item/riding_offhand/reins in user)
 		if(reins.selfdeleting)
 			continue
 		qdel(reins)
@@ -121,6 +121,7 @@
 /obj/item/riding_offhand/Destroy()
 	if(selfdeleting && parent)
 		if(rider in parent.buckled_mobs)
+			rider.send_unbuckling_message(rider, rider, parent)
 			parent.unbuckle(rider)
 	. =..()
 	rider = null

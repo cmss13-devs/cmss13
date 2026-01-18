@@ -11,6 +11,7 @@
 	. = ..()
 	var/mob/living/living_parent = parent
 	living_parent.stop_pulling() // was only used on humans previously, may change some other behavior
+	ENABLE_BITFIELD(riding_mob.flags_atom, NO_ZFALL)
 	log_riding(living_parent, riding_mob)
 	riding_mob.glide_size = living_parent.glide_size
 
@@ -123,7 +124,8 @@
 
 /datum/component/riding/creature/runner/vehicle_mob_unbuckle(datum/source, force = FALSE)
 	var/mob/living/ridden = parent
-	unequip_buckle_inhands(usr)
+	for(var/mob/mob in ridden.buckled_mobs)
+		unequip_buckle_inhands(mob)
 	ridden.density = TRUE
 	return ..()
 

@@ -460,6 +460,21 @@
 			SPAN_NOTICE("You are buckled in to [src] by [user]."),
 			SPAN_NOTICE("You hear metal clanking."))
 
+/atom/movable/proc/send_unbuckling_message(mob/buckle_target, mob/user, atom/movable/unbuckle_from,)
+	if(!unbuckle_from)
+		unbuckle_from = src
+
+	if(buckle_target == user)
+		buckle_target.visible_message(
+			SPAN_NOTICE("[buckle_target.name] unbuckled [buckle_target.p_them()]self!"),
+			SPAN_NOTICE("You unbuckle yourself from [unbuckle_from]."),
+			SPAN_NOTICE("You hear metal clanking."))
+	else
+		buckle_target.visible_message(
+			SPAN_NOTICE("[buckle_target.name] was unbuckled by [user.name]!"),
+			SPAN_NOTICE("You were unbuckled from [unbuckle_from] by [user.name]."),
+			SPAN_NOTICE("You hear metal clanking."))
+
 /// Called after somebody buckled / unbuckled
 /atom/movable/proc/afterbuckle(mob/buckle_target as mob)
 	handle_rotation() // To be removed when we have full dir support in set_buckled
@@ -483,23 +498,14 @@
 		var/mob/living/mob = buckled_mob
 		buckled_mob = null
 		REMOVE_TRAITS_IN(mob, TRAIT_SOURCE_BUCKLE)
-		LAZYREMOVE(buckled_mobs, mob)
 		SEND_SIGNAL(src, COMSIG_MOVABLE_UNBUCKLE, mob)
+		LAZYREMOVE(buckled_mobs, mob)
 		afterbuckle(mob)
 
 /atom/movable/proc/manual_unbuckle(mob/user as mob)
 	if(buckled_mob)
 		if(buckled_mob.buckled == src)
-			if(buckled_mob != user)
-				buckled_mob.visible_message(
-					SPAN_NOTICE("[buckled_mob.name] was unbuckled by [user.name]!"),
-					SPAN_NOTICE("You were unbuckled from [src] by [user.name]."),
-					SPAN_NOTICE("You hear metal clanking."))
-			else
-				buckled_mob.visible_message(
-					SPAN_NOTICE("[buckled_mob.name] unbuckled [buckled_mob.p_them()]self!"),
-					SPAN_NOTICE("You unbuckle yourself from [src]."),
-					SPAN_NOTICE("You hear metal clanking."))
+			send_unbuckling_message(buckled_mob, user)
 			unbuckle(buckled_mob)
 			add_fingerprint(user)
 			return TRUE
@@ -515,6 +521,9 @@
 
 	// Even if the movement is entirely managed by the object, notify the buckled mob that it's moving for its handler.
 	//It won't be called otherwise because it's a function of client_move or pulled mob, neither of which accounts for this.
+	if(!buckled_mob)
+		log_debug("buckled_mob null on signal send in /atom/movable/proc/handle_buckled_mob_movement.")
+		return FALSE
 	SEND_SIGNAL(buckled_mob, COMSIG_MOB_MOVE_OR_LOOK, TRUE, direct, direct)
 	return TRUE
 

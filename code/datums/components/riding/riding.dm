@@ -63,6 +63,7 @@
 /datum/component/riding/RegisterWithParent()
 	. = ..()
 	RegisterSignal(parent, COMSIG_ATOM_DIR_CHANGE, PROC_REF(vehicle_turned))
+	RegisterSignal(parent, COMSIG_MOB_MOVE_OR_LOOK, PROC_REF(handle_mob_move_or_look))
 	RegisterSignal(parent, COMSIG_MOVABLE_UNBUCKLE, PROC_REF(vehicle_mob_unbuckle))
 	RegisterSignal(parent, COMSIG_MOVABLE_MOVED, PROC_REF(vehicle_moved))
 
@@ -81,10 +82,13 @@
 	SIGNAL_HANDLER
 
 	var/atom/movable/movable_parent = parent
-	restore_position(usr)
-	unequip_buckle_inhands(usr)
+	for(var/mob/mob in movable_parent.buckled_mobs)
+		restore_position(mob)
+		unequip_buckle_inhands(mob)
+		DISABLE_BITFIELD(mob.flags_atom, NO_ZFALL)
 	if(!LAZYLEN(movable_parent.buckled_mobs))
 		qdel(src)
+	UnregisterSignal(movable_parent, COMSIG_MOB_MOVE_OR_LOOK, PROC_REF(handle_mob_move_or_look))
 
 /// Some ridable atoms may want to only show on top of the rider in certain directions, like wheelchairs
 /datum/component/riding/proc/handle_vehicle_layer(dir)
@@ -108,6 +112,7 @@
 	if(isnull(dir))
 		dir = movable_parent.dir
 	for(var/mob/buckled_mob as anything in movable_parent.buckled_mobs)
+		buckled_mob.setDir(dir)
 		ride_check(buckled_mob)
 	if(QDELETED(src))
 		return // runtimed with piggy's without this, look into this more
@@ -117,7 +122,12 @@
 /datum/component/riding/proc/vehicle_turned(datum/source, _old_dir, new_dir)
 	SIGNAL_HANDLER
 
-	vehicle_moved(source, new_dir)
+	vehicle_moved(source, _old_dir, new_dir)
+
+/datum/component/riding/proc/handle_mob_move_or_look(mob/living/mover, actually_moving, direction, specific_direction)
+	SIGNAL_HANDLER
+
+	vehicle_moved(mover, dir = direction)
 
 /// Check to see if we have all of the necessary bodyparts and not-falling-over statuses we need to stay onboard
 /datum/component/riding/proc/ride_check(mob/living/rider)
@@ -169,7 +179,7 @@
 
 /// currently replicated from ridable because we need this behavior here too, see if we can deal with that
 /datum/component/riding/proc/unequip_buckle_inhands(mob/living/carbon/user)
-	for(var/obj/item/riding_offhand/reins in user.contents)
+	for(var/obj/item/riding_offhand/reins in user)
 		if(reins.selfdeleting)
 			continue
 		qdel(reins)

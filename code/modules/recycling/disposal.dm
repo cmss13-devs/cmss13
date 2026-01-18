@@ -79,16 +79,15 @@
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND
 
 ///Attack by item places it in to disposal
-/obj/structure/machinery/disposal/attackby(obj/item/I, mob/user)
-	if(stat & BROKEN || !I || !user)
+/obj/structure/machinery/disposal/attackby(obj/item/item, mob/user)
+	if(stat & BROKEN || !item || !user)
 		return
-
 	if(isxeno(user)) //No, fuck off. Concerns trashing Marines and facehuggers
 		return
 
 	add_fingerprint(user)
 	if(mode <= 0) //It's off
-		if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER))
+		if(HAS_TRAIT(item, TRAIT_TOOL_SCREWDRIVER))
 			if(length(contents) > 0)
 				to_chat(user, SPAN_WARNING("Eject the contents first!"))
 				return
@@ -102,47 +101,46 @@
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				to_chat(user, SPAN_NOTICE("You attach the screws around the power connection."))
 				return
-		else if(iswelder(I) && mode == DISPOSALS_DOUBLE_OFF)
-			if(!HAS_TRAIT(I, TRAIT_TOOL_BLOWTORCH))
+		else if(iswelder(item) && mode == DISPOSALS_DOUBLE_OFF)
+			if(!HAS_TRAIT(item, TRAIT_TOOL_BLOWTORCH))
 				to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 				return
 			if(length(contents) > 0)
 				to_chat(user, SPAN_WARNING("Eject the contents first!"))
 				return
-			var/obj/item/tool/weldingtool/W = I
-			if(W.remove_fuel(0, user))
+			var/obj/item/tool/weldingtool/welder = item
+			if(welder.remove_fuel(0, user))
 				playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
 				to_chat(user, SPAN_NOTICE("You start slicing the floorweld off the disposal unit."))
 				if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					if(!src || !W.isOn())
+					if(!src || !welder.isOn())
 						return
 					to_chat(user, SPAN_NOTICE("You sliced the floorweld off the disposal unit."))
-					var/obj/structure/disposalconstruct/C = new(loc)
-					transfer_fingerprints_to(C)
-					C.ptype = 6 //6 = disposal unit
-					C.anchored = TRUE
-					C.density = TRUE
-					C.update()
+					var/obj/structure/disposalconstruct/construct = new(loc)
+					transfer_fingerprints_to(construct)
+					construct.ptype = 6 //6 = disposal unit
+					construct.anchored = TRUE
+					construct.density = TRUE
+					construct.update()
 					qdel(src)
 			else
 				to_chat(user, SPAN_WARNING("You need more welding fuel to complete this task."))
 			return
 
-
-	if(isstorage(I))
-		var/obj/item/storage/S = I
-		if(!S.can_storage_interact(user))
+	if(isstorage(item))
+		var/obj/item/storage/container = item
+		if(!container.can_storage_interact(user))
 			return
-		if(length(S.contents) > 0)
-			to_chat(user, SPAN_NOTICE("You empty [S] into [src]."))
-			for(var/obj/item/O in S.contents)
-				S.remove_from_storage(O, src, user)
+		if(length(container.contents) > 0)
+			to_chat(user, SPAN_NOTICE("You empty [container] into [src]."))
+			for(var/obj/item/content in container.contents)
+				container.remove_from_storage(content, src, user)
 			start_processing()
-			S.update_icon()
+			container.update_icon()
 			update()
 			return
 
-	var/obj/item/grab/grab_effect = I
+	var/obj/item/grab/grab_effect = item
 	if(istype(grab_effect)) //Handle grabbed mob
 		if(ismob(grab_effect.grabbed_thing))
 			var/mob/grabbed_mob = grab_effect.grabbed_thing
@@ -179,12 +177,12 @@
 			return TRUE
 		return FALSE
 
-	if(!I)
+	if(!item)
 		return
 
-	if(user.drop_inv_item_to_loc(I, src))
-		user.visible_message(SPAN_NOTICE("[user] places [I] into [src]."),
-		SPAN_NOTICE("You place [I] into [src]."))
+	if(user.drop_inv_item_to_loc(item, src))
+		user.visible_message(SPAN_NOTICE("[user] places [item] into [src]."),
+		SPAN_NOTICE("You place [item] into [src]."))
 		//Something to dispose!
 		start_processing()
 	update()

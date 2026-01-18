@@ -48,7 +48,7 @@
 	. = ..()
 	for(var/obj/structure/machinery/nuclearbomb/bomb in GLOB.machines)
 		if(bomb.timing)
-			. += "Extreme danger.  Arming signal detected.   Time remaining: [bomb.timeleft]"
+			. += "Extreme danger. Arming signal detected. Time remaining: [bomb.timeleft]"
 
 
 /obj/item/device/pinpointer/advpinpointer

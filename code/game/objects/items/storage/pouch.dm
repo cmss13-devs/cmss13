@@ -1724,8 +1724,8 @@
 	new /obj/item/reagent_container/spray/pepper(src)
 
 /obj/item/storage/pouch/sling
-	name = "sling strap"
-	desc = "Keeps a single item attached to a strap."
+	name = "sling pouch"
+	desc = "Keeps a single item tethered to a strap, allowing for easy retrieval."
 	storage_slots = 1
 	max_w_class = SIZE_MEDIUM
 	icon_state = "sling"

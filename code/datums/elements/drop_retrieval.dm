@@ -141,10 +141,8 @@
 		return
 
 	if(get_dist(anchor, target) > container.sling_range) // really annoying edgecase code i needed to do here if the storage item is picked up farther than the sling_range yet phone.dm has this handled safely somehow, probably some element limitation or something w/e - nihi
-		step_towards(target, anchor)
-		if(get_dist(anchor, target) > container.sling_range + 1) // also doubles as a z check kinda
-			container.unsling(forced = TRUE)
-			return
+		container.unsling(forced = TRUE)
+		return
 
 	var/list/tether_data = apply_tether(anchor, target, range = container.sling_range, icon = container.tether_icon)
 	active_tether = tether_data["tetherer_tether"]
@@ -155,7 +153,7 @@
 	var/i = 0
 	while(object && !ismob(object) && i < 10)
 		if(isturf(object.loc))
-			return container
+			return object
 		object = object.loc
 		i++
 	if(ismob(object))
@@ -170,7 +168,7 @@
 	var/i = 0
 	while(item && !ismob(item) && i < 10)
 		if(isturf(item.loc))
-			return object
+			return item
 		item = item.loc
 		i++
 	if(ismob(item))

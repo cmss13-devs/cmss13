@@ -346,14 +346,14 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 
 	var/datum/job/job = GET_MAPPED_ROLE(occupant.job)
 	if(ishuman(occupant))
-		var/mob/living/carbon/human/H = occupant
-		if(H == SSticker.mode.acting_commander) //If we are despawning the aCO we should look for a new one
+		var/mob/living/carbon/human/human_occupant = occupant
+		if(human_occupant == SSticker.mode.acting_commander) //If we are despawning the aCO we should look for a new one
 			was_aco=TRUE
 		if(job)
-			job.on_cryo(H)
-		if(H.assigned_squad)
-			var/datum/squad/S = H.assigned_squad
-			S.forget_marine_in_squad(H)
+			job.on_cryo(human_occupant)
+		if(human_occupant.assigned_squad)
+			var/datum/squad/squad = human_occupant.assigned_squad
+			squad.forget_marine_in_squad(human_occupant)
 
 	//Cryoing someone out removes someone from the Marines, blocking further larva spawns until accounted for
 	SSticker.mode.latejoin_update(job, -1)

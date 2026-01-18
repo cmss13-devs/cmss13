@@ -518,4 +518,5 @@ SUBSYSTEM_DEF(ticker)
 /datum/controller/subsystem/ticker/proc/hijack_ocurred()
 	if(mode)
 		mode.is_in_endgame = TRUE
-		mode.force_end_at = (world.time + 25 MINUTES)
+		if(!mode.force_end_at || mode.force_end_at < 1 || mode.force_end_at > 14999)
+			mode.force_end_at = (world.time + 25 MINUTES)

@@ -1076,7 +1076,7 @@
 				toggle_ammo_type(user)
 			if(7)
 				toggle_lethal_mode(user)
-		to_chat(user, SPAN_HIGHDANGER("The [src] electronics malfunctions!"))
+		to_chat(user, SPAN_HIGHDANGER("\The [src] electronics malfunctions!"))
 		var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
 		sparks.set_up(5, 3, src)
 		sparks.start()

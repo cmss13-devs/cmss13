@@ -429,7 +429,7 @@
 /obj/item/clothing/accessory/health/research_plate/anti_decay/proc/begin_preserving()
 	SIGNAL_HANDLER
 	UnregisterSignal(wearer, COMSIG_MOB_DEATH)
-	to_chat(wearer, SPAN_NOTICE("The [src] detects your death and starts injecting various chemicals to slow down your final demise!"))
+	to_chat(wearer, SPAN_NOTICE("\The [src] detects your death and starts injecting various chemicals to slow down your final demise!"))
 	RegisterSignal(wearer, COMSIG_HUMAN_REVIVED, PROC_REF(reset_use))
 
 /obj/item/clothing/accessory/health/research_plate/anti_decay/proc/reset_use()

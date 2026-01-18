@@ -111,33 +111,34 @@
 		to_chat(user, SPAN_DANGER("It's running!"))
 	else if(is_type_in_list(O,acceptable_items))
 		if (length(contents)>=max_n_of_items)
-			to_chat(user, SPAN_DANGER("This [src] is full of ingredients, you cannot put more."))
+			to_chat(user, SPAN_DANGER("[src] is full of ingredients, you cannot put more."))
 			return 1
 		if(istype(O, /obj/item/stack) && O:get_amount() > 1) // This is bad, but I can't think of how to change it
 			var/obj/item/stack/S = O
 			new O.type (src)
 			S.use(1)
 			user.visible_message(
-				SPAN_NOTICE("[user] has added one of [O] to \the [src]."),
-				SPAN_NOTICE("You add one of [O] to \the [src]."))
+				SPAN_NOTICE("[user] has added one of \the [O]s to \the [src]."),
+				SPAN_NOTICE("You add one of \the [O]s to \the [src]."))
 		else
 		// user.before_take_item(O) //This just causes problems so far as I can tell. -Pete
 			if(user.drop_held_item())
 				O.forceMove(src)
 				user.visible_message(
 					SPAN_NOTICE("[user] has added \the [O] to \the [src]."),
-					SPAN_NOTICE("You add \the [O] to \the [src]."))
+					SPAN_NOTICE("You add \the [O] to \the [src]. \this"))
+
 	else if(istype(O,/obj/item/reagent_container/glass) || istype(O,/obj/item/reagent_container/food/drinks) || istype(O,/obj/item/reagent_container/food/condiment)) // TODO: typecache this
 		if (!O.reagents)
 			return 1
 		for (var/datum/reagent/R in O.reagents.reagent_list)
 			if (!(R.id in acceptable_reagents))
-				to_chat(user, SPAN_DANGER("Your [O] contains components unsuitable for cookery."))
+				to_chat(user, SPAN_DANGER("\The [O] contains components unsuitable for cookery."))
 				return 1
 	else if(istype(O,/obj/item/grab))
 		return 1
 	else
-		to_chat(user, SPAN_DANGER("You have no idea what you can cook with this [O]."))
+		to_chat(user, SPAN_DANGER("You have no idea what you can cook with \the [O]."))
 		return 1
 	src.updateUsrDialog()
 

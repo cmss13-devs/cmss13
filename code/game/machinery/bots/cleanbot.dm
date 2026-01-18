@@ -142,7 +142,7 @@ text("<A href='byond://?src=\ref[src];operation=oddbutton'>[src.oddbutton ? "Yes
 			if(open)
 				to_chat(user, SPAN_WARNING("Please close the access panel before locking it."))
 			else
-				to_chat(user, SPAN_NOTICE("This [src] doesn't seem to respect your authority."))
+				to_chat(user, SPAN_NOTICE("\The [src] doesn't seem to respect your authority."))
 	else
 		return ..()
 

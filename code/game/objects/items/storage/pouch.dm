@@ -1283,9 +1283,9 @@
 	if(isxeno(user))
 		return
 	if(!inner)
-		return "This [src] has no container inside!"
+		return "\The [src] has no container inside!"
 	if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_TRAINED))
-		return "This [src] contains: [get_reagent_list_text()]"
+		return "\The [src] contains: [get_reagent_list_text()]"
 	else
 		return "You don't know what's in it."
 

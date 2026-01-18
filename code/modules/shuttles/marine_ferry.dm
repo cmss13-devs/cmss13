@@ -533,7 +533,7 @@
 
 	if(SSticker.mode)
 		SSticker.mode.is_in_endgame = TRUE
-		if(!SSticker.mode.force_end_at || SSticker.mode.force_end_at < 1 || SSticker.mode.force_end_at > 14999)
+		if!(SSticker.mode.force_end_at && SSticker.mode.force_end_at > 0 && SSticker.mode.force_end_at < 15000)
 			SSticker.mode.force_end_at = world.time + 15000 // 25 mins
 		if(istype(SSticker.mode, /datum/game_mode/colonialmarines))
 			var/datum/game_mode/colonialmarines/colonial_marines = SSticker.mode

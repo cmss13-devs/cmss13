@@ -424,9 +424,8 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 				if(!M || !G || !G.grabbed_thing)
 					return FALSE
 				willing = TRUE
-		else
-			willing = TRUE
-		if(willing)
+
+		if(willing || !M.client)
 
 			visible_message(SPAN_NOTICE("[user] starts putting [M] into [src]."),
 			SPAN_NOTICE("You start putting [M] into [src]."))
@@ -439,7 +438,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 				to_chat(user, SPAN_WARNING("[src] is occupied."))
 				return FALSE
 
-			go_in_cryopod(M, forced=TRUE)
+			go_in_cryopod(M)
 
 			//Book keeping!
 			var/area/location = get_area(src)
@@ -516,10 +515,11 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 			return
 
 		go_in_cryopod(usr)
+		willing = TRUE
 		add_fingerprint(usr)
 
 
-/obj/structure/machinery/cryopod/proc/go_in_cryopod(mob/mob, silent = FALSE, forced=FALSE)
+/obj/structure/machinery/cryopod/proc/go_in_cryopod(mob/mob, silent = FALSE)
 	if(occupant)
 		return
 	mob.forceMove(src)
@@ -527,10 +527,6 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	icon_state = "body_scanner_closed"
 	set_light(2)
 	time_entered = world.time
-	if(!forced)
-		willing = TRUE
-	else
-		willing = FALSE
 	start_processing()
 
 	if(!silent)
@@ -590,7 +586,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 /obj/structure/machinery/cryopod/tutorial/process()
 	return
 
-/obj/structure/machinery/cryopod/tutorial/go_in_cryopod(mob/mob, silent = FALSE, forced=FALSE, del_them = TRUE)
+/obj/structure/machinery/cryopod/tutorial/go_in_cryopod(mob/mob, silent = FALSE, del_them = TRUE)
 	if(occupant)
 		return
 	mob.forceMove(src)

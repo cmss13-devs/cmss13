@@ -600,7 +600,7 @@
 		return
 
 	busy = TRUE
-	new /obj/downwash_effect(get_turf(src))
+	new /obj/downwash_effect(locate(x, y+1, z))
 	playsound(loc, 'sound/vehicles/vtol/takeoff.ogg', 25, FALSE)
 	transition_engines()
 	addtimer(CALLBACK(src, PROC_REF(takeoff_engage_vtol)), 14 SECONDS)

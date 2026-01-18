@@ -378,7 +378,7 @@
 		gun_underlay = null
 
 /obj/item/storage/pouch/pistol/mag_carrier
-	name = "sidearm pouch"
+	name = "sidearm carrier"
 	desc = "You could carry a pistol in this; more importantly, you could draw it quickly, and although it lacks a cord, it can carry an extra magazine, of any kind, provided it fits the damn thing. Useful for emergencies."
 	storage_slots = 2 // one pistol, one mag
 	icon_state = "pistol_pouch"

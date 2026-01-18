@@ -1,4 +1,0 @@
-/obj/structure/disposalpipe:
-  banned_neighbors:
-    /obj/structure/disposalpipe:
-      identical: true

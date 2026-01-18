@@ -1107,9 +1107,9 @@
 	result = /obj/item/reagent_container/food/snacks/taco
 
 /datum/recipe/bun
-	reagents = list("blackpepper" = 1)
+	reagents = list("sodiumchloride" = 1)
 	items = list(
-		/obj/item/reagent_container/food/snacks/doughslice,
+		/obj/item/reagent_container/food/snacks/dough,
 	)
 	result = /obj/item/reagent_container/food/snacks/bun
 

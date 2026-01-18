@@ -1,7 +1,4 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"aa" = (
-/turf/open/floor/almayer/test_floor4,
-/area/shuttle/lifeboat)
 "aF" = (
 /obj/structure/prop/invuln/dropship_parts/lifeboat{
 	icon_state = "1,6"
@@ -198,7 +195,7 @@
 	id = "Boat1-D4";
 	throw_dir = 2
 	},
-/turf/open/floor/almayer/test_floor4,
+/turf/open/shuttle/lifeboat,
 /area/shuttle/lifeboat)
 "yf" = (
 /obj/structure/machinery/cm_vending/sorted/supplies/lifeboat{
@@ -247,7 +244,7 @@
 	id = "Boat1-D1";
 	throw_dir = 1
 	},
-/turf/open/floor/almayer/test_floor4,
+/turf/open/shuttle/lifeboat/test_floor4,
 /area/shuttle/lifeboat)
 "CI" = (
 /turf/template_noop,
@@ -268,7 +265,7 @@
 	id = "Boat1-D3";
 	throw_dir = 2
 	},
-/turf/open/floor/almayer/test_floor4,
+/turf/open/shuttle/lifeboat,
 /area/shuttle/lifeboat)
 "FR" = (
 /obj/structure/surface/table/reinforced/almayer_B,
@@ -336,7 +333,10 @@
 	id = "Boat1-D2";
 	throw_dir = 1
 	},
-/turf/open/floor/almayer/test_floor4,
+/turf/open/shuttle/lifeboat/test_floor4,
+/area/shuttle/lifeboat)
+"Nm" = (
+/turf/open/shuttle/lifeboat/test_floor4,
 /area/shuttle/lifeboat)
 "Ob" = (
 /turf/closed/shuttle/lifeboat{
@@ -542,22 +542,22 @@ pH
 EW
 "}
 (10,1,1) = {"
-aa
+Nm
 dt
 Ro
 Jg
 Ro
 pH
-aa
+Ro
 "}
 (11,1,1) = {"
-aa
+Nm
 dt
 Ro
 Jg
 Ro
 pH
-aa
+Ro
 "}
 (12,1,1) = {"
 Rs
@@ -587,22 +587,22 @@ pH
 xS
 "}
 (15,1,1) = {"
-aa
+Nm
 dt
 Ro
 Jg
 Ro
 pH
-aa
+Ro
 "}
 (16,1,1) = {"
-aa
+Nm
 dt
 Ro
 Jg
 Ro
 pH
-aa
+Ro
 "}
 (17,1,1) = {"
 Rs

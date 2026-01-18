@@ -11,7 +11,6 @@
 	can_bloody = FALSE
 	layer = UNDER_TURF_LAYER
 	supports_surgery = FALSE
-	minimap_color = MINIMAP_BLACK
 	is_weedable = NOT_WEEDABLE
 
 /turf/open/space/basic/New() //Do not convert to Initialize

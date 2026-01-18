@@ -160,10 +160,6 @@
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 
-/obj/item/clothing/under/hybrisa/kelland_mining/Initialize()
-	. = ..()
-	AddElement(/datum/element/corp_label/kelland)
-
 // Weymart
 
 /obj/item/clothing/under/hybrisa/weymart
@@ -292,23 +288,23 @@
 
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa
 	name = "\improper WY corporate security helmet"
-	desc = "A basic skull-helm with a orange safety visor fitted. Worn by corporate security assets, graded to protect your head from an unruly scientist armed with a crowbar."
+	desc = "A basic skull-helm with a orange saftey vison fitted. Worn by corporate security assets, graded to protect your head from an unruly scientist armed with a crowbar."
 	icon_state = "sec_helmet_hybrisa"
 	item_state = "sec_helmet_hybrisa"
 
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa/lead
-	desc = "A basic skull-helm with a orange safety visor fitted. Worn by corporate security assets. This variant is worn by low-level guards that have too much brainmatter to fit into the old one. Or so they say."
+	desc = "A basic skull-helm with a orange saftey vison fitted. Worn by corporate security assets. This variant is worn by low-level guards that have too much brainmatter to fit into the old one. Or so they say."
 	icon_state = "sec_lead_helmet_hybrisa"
 	item_state = "sec_lead_helmet_hybrisa"
 
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa/brown
 	name = "\improper WY corporate security helmet"
-	desc = "A basic skull-helm with a orange safety visor fitted. Worn by corporate security assets, graded to protect your head from an unruly scientist armed with a crowbar."
+	desc = "A basic skull-helm with a orange saftey vison fitted. Worn by corporate security assets, graded to protect your head from an unruly scientist armed with a crowbar."
 	icon_state = "sec_brown_helmet_hybrisa"
 	item_state = "sec_brown_helmet_hybrisa"
 
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa/medic
-	desc = "A basic skull-helm with a orange safety visor fitted. Worn by corporate security assets, graded to protect your head from an unruly scientist armed with a crowbar. A medical cross is emblazoned across the front."
+	desc = "A basic skull-helm with a orange saftey vison fitted. Worn by corporate security assets, graded to protect your head from an unruly scientist armed with a crowbar. A medical cross is emblazoned across the front."
 	icon_state = "sec_medic_helmet_hybrisa"
 	item_state = "sec_medic_helmet_hybrisa"
 
@@ -391,7 +387,7 @@
 
 /obj/item/clothing/head/hybrisa/wy_po_cap
 	name = "\improper Weyland-Yutani Pilot cap"
-	desc = "A dark peaked cap enscribed with the Weyland-Yutani 'Wings' logo. A formal cap for qualified civilian Pilots, akin to old Earth formal Pilots-wear."
+	desc = "A dark peaked cap enscribed with the Weyland-Yutani 'Wings' logo. A formal cap for qualified civillian Pilots, akin to old Earth formal Pilots-wear."
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/WY.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/WY.dmi',
@@ -500,10 +496,6 @@
 	flags_inventory = COVEREYES|BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDEEYES|HIDETOPHAIR
 
-/obj/item/clothing/head/helmet/hybrisa/kelland_mining_helmet/Initialize()
-	. = ..()
-	AddElement(/datum/element/corp_label/kelland)
-
 // Pizza-Galaxy (Rare Helmet)
 
 /obj/item/clothing/head/helmet/hybrisa/pizza_galaxy
@@ -538,10 +530,6 @@
 	icon_state = "sci_expedition_helmet"
 	item_state = "sci_expedition_helmet"
 
-/obj/item/clothing/head/bio_hood/wy_bio/Initialize()
-	. = ..()
-	AddElement(/datum/element/corp_label/wy)
-
 /obj/item/clothing/head/bio_hood/wy_bio/alt
 	name = "WY-TSS MK I - bio hood"
 	desc = "The 'Weyland-Yutani TerraScientia bio-suit MK I'. An advanced light-weight bio-suit developed in-house by Weyland-Yutani. It's a hood that protects the head and face from biological contaminants."
@@ -559,10 +547,6 @@
 	item_state = "sci_expedition"
 	slowdown = 0
 	uniform_restricted = null
-
-/obj/item/clothing/suit/bio_suit/wy_bio/Initialize()
-	. = ..()
-	AddElement(/datum/element/corp_label/wy)
 
 // Synth Bio
 
@@ -584,7 +568,7 @@
 
 /obj/item/clothing/suit/storage/synthbio/wy_bio
 	name = "WY-TSS MK I - bio suit"
-	desc = "The 'Weyland-Yutani TerraScientia bio-suit MK I'. An advanced light-weight bio-suit developed in-house by Weyland-Yutani. A Synthetic compliant biohazard suit. Intended to allow a synthetic to offer the illusion of infection control to humans. Has had most of the internal protective lining removed, allowing it to hold equipment and be lighter to move in."
+	desc = "The 'Weyland-Yutani TerraScientia bio-suit MK I'. An advanced light-weight bio-suit developed in-house by Weyland-Yutani. A Synthetic compliant bio-hazard suit. Intended to allow a synthetic to offer the illusion of infection control to humans. Has had most of the internal protective lining removed, allowing it to hold equipment and be lighter to move in."
 	icon = 'icons/obj/items/clothing/suits/hazard.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/hazard.dmi',
@@ -653,10 +637,6 @@
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
 	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROT
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
-
-/obj/item/clothing/suit/storage/marine/light/vest/fire_light/Initialize(mapload)
-	. = ..()
-	RemoveElement(/datum/element/corp_label/armat)
 
 /obj/item/clothing/suit/storage/marine/light/vest/fire_light/equipped(mob/user, slot)
 	if(slot == WEAR_JACKET)
@@ -777,11 +757,6 @@
 		/obj/item/storage/belt/gun/xm51,
 	)
 
-/obj/item/clothing/suit/storage/marine/light/vest/hybrisa_kelland/Initialize()
-	. = ..()
-	RemoveElement(/datum/element/corp_label/armat)
-	AddElement(/datum/element/corp_label/kelland)
-
 /obj/item/clothing/suit/storage/marine/light/vest/hybrisa_kelland_alt
 	name = "\improper Kelland-Mining utility uniform"
 	desc = "A set of standard issue Kelland-Mining utility fatigues, a yellow pair of utility work slacks and a black collard heavy padded jacket, which protects against various environmental hazards."
@@ -822,11 +797,6 @@
 		/obj/item/storage/belt/gun/m39,
 		/obj/item/storage/belt/gun/xm51,
 	)
-
-/obj/item/clothing/suit/storage/marine/light/vest/hybrisa_kelland_alt/Initialize()
-	. = ..()
-	RemoveElement(/datum/element/corp_label/armat)
-	AddElement(/datum/element/corp_label/kelland)
 
 // EMT - Paramedic
 
@@ -886,7 +856,7 @@
 
 /obj/item/clothing/suit/storage/hybrisa/wy_Pilot
 	name = "\improper Weyland-Yutani Pilot formal-jacket"
-	desc = "A suit-style jacket with a fur lined collar and golden epaulettes signifying rank. Worn by Weyland-Yutani qualified civilian Pilots, akin to old Earth formal Pilots-wear."
+	desc = "A suit-style jacket with a fur lined collar and golden epaulettes signifying rank. Worn by Weyland-Yutani qualified civillian Pilots, akin to old Earth formal Pilots-wear."
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/WY.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/WY.dmi'

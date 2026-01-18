@@ -23,7 +23,6 @@
 	GLOB.living_mob_list += src
 
 /mob/living/Destroy()
-	GLOB.living_player_list -= src
 	GLOB.living_mob_list -= src
 	cleanup_status_effects()
 	pipes_shown = null
@@ -73,7 +72,8 @@
 		for(var/obj/limb/affecting in H.limbs)
 			if(!affecting)
 				continue
-			affecting.take_damage(0, divided_damage+extradam) //TODO: fix the extradam stuff. Or, better yet...rewrite this entire proc ~Carn
+			if(affecting.take_damage(0, divided_damage+extradam)) //TODO: fix the extradam stuff. Or, ebtter yet...rewrite this entire proc ~Carn
+				H.UpdateDamageIcon()
 		H.updatehealth()
 		return 1
 
@@ -107,7 +107,7 @@
 
 	if(passed_object)
 		if(recursion > 8)
-			debug_log("Recursion went long for get_contents() for [src] ending at the object [passed_object]. Likely object_one is holding object_two which is holding object_one ad nauseum.")
+			debug_log("Recursion went long for get_contents() for [src] ending at the object [passed_object]. Likely object_one is holding object_two which is holding object_one ad naseum.")
 			return total_contents
 
 		total_contents += passed_object.contents
@@ -226,7 +226,7 @@
 /mob/living/resist_grab(moving_resist)
 	if(!pulledby)
 		return
-	// vars for checks of strength
+	// vars for checks of strengh
 	var/pulledby_is_strong = HAS_TRAIT(pulledby, TRAIT_SUPER_STRONG)
 	var/src_is_strong = HAS_TRAIT(src, TRAIT_SUPER_STRONG)
 
@@ -262,7 +262,7 @@
 		. += 10
 		do_bump_delay = 0
 
-	if (drowsiness > 0)
+	if (drowsyness > 0)
 		. += 6
 
 	if(pulling && pulling.drag_delay && get_pull_miltiplier()) //Dragging stuff can slow you down a bit.
@@ -274,10 +274,6 @@
 				grab_level_delay = 6
 			if(GRAB_CHOKE)
 				grab_level_delay = 9
-		if(ismob(pulling))
-			var/mob/pulled_mob = pulling
-			if(pulled_mob.pulling)
-				grab_level_delay = 9 // its a chain pull...
 
 		. += max(pull_speed + (pull_delay + reagent_move_delay_modifier) + grab_level_delay, 0) //harder grab makes you slower
 	move_delay = .
@@ -375,14 +371,6 @@
 					to_chat(src, SPAN_WARNING("[living_mob] is restraining [pulled_mob], you cannot push past."))
 				now_pushing = FALSE
 				return
-		if(!pulling)
-			// treat it as if we're also pulling just for move delay
-			pulling = living_mob.pulling
-			if(client)
-				client.recalculate_move_delay()
-			else
-				movement_delay()
-			pulling = null
 
 	if(ishuman(living_mob))
 		if(!(living_mob.status_flags & CANPUSH))

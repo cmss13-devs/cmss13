@@ -38,6 +38,8 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/grenades_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/grenades_righthand.dmi'
 	)
+	/// Whether or not it should destroy floors
+	var/floor_destroying = FALSE
 
 /obj/item/explosive/Initialize()
 	. = ..()
@@ -258,7 +260,7 @@
 /obj/item/explosive/proc/toggle_blast_dampener_verb()
 	set category = "Weapons"
 	set name = "Toggle Blast Wave Dampener"
-	set desc = "Enable/Disable the Explosive Blast Wave Dampener."
+	set desc = "Enable/Disable the Explosive Blast Wave Dampener"
 	set src in usr
 
 	toggle_blast_dampener(usr)

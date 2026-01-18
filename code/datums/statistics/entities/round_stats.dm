@@ -22,10 +22,8 @@
 	var/total_friendly_fire_instances = 0
 	var/total_slashes = 0
 
-	// Sub entities
-	var/datum/entity/statistic/map/current_map // reference to current map
-
 	// untracked data
+	var/datum/entity/statistic/map/current_map // reference to current map
 	var/list/datum/entity/statistic/death/death_stats_list = list()
 
 	var/list/abilities_used = list() // types of /datum/entity/statistic, "tail sweep" = 10, "screech" = 2
@@ -64,10 +62,6 @@
 	QDEL_LIST_ASSOC_VAL(caste_stats_list)
 	QDEL_LIST_ASSOC_VAL(weapon_stats_list)
 	QDEL_LIST_ASSOC_VAL(job_stats_list)
-
-/datum/entity/statistic/round/save()
-	. = ..()
-	current_map?.save()
 
 /datum/entity_meta/statistic_round
 	entity_type = /datum/entity/statistic/round
@@ -118,8 +112,6 @@
 
 		// Map stats
 		var/datum/entity/statistic/map/new_map = DB_EKEY(/datum/entity/statistic/map, SSmapping.configs[GROUND_MAP].map_name)
-		new_map.save()
-		new_map.sync()
 		new_map.total_rounds++
 		new_map.save()
 

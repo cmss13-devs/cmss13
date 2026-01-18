@@ -67,7 +67,7 @@ const GeneralPanel = (props) => {
     <Section fill>
       <Stack vertical fill>
         <Stack.Item>
-          <Tabs style={{ flexWrap: 'wrap' }}>
+          <Tabs>
             {categories.map((val) => (
               <Tabs.Tab
                 selected={val === currentCategory}

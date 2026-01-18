@@ -1,2 +1,0 @@
-/obj/item/reagent_container/glass/beaker/silver/@SUBTYPES : /obj/item/reagent_container/glass/beaker/catalyst/silver/@SUBTYPES{@OLD}
-

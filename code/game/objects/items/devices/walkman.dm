@@ -1,8 +1,8 @@
 
 
 /obj/item/device/walkman
-	name = "Synsound Walkman"
-	desc = "A Synsound cassette player that first hit the market over 200 years ago. Crazy how these never went out of style."
+	name = "walkman"
+	desc = "A cassette player that first hit the market over 200 years ago. Crazy how these never went out of style."
 	icon = 'icons/obj/items/walkman.dmi'
 	icon_state = "walkman"
 	item_icons = list(
@@ -31,7 +31,6 @@
 	. = ..()
 	design = rand(1, 5)
 	update_icon()
-	AddElement(/datum/element/corp_label/synsound)
 
 /obj/item/device/walkman/Destroy()
 	QDEL_NULL(tape)
@@ -60,13 +59,13 @@
 	if(istype(tape))
 		if(paused)
 			play()
-			to_chat(user,SPAN_INFO("You press [src]'s 'play' button."))
+			to_chat(user,SPAN_INFO("You press [src]'s 'play' button"))
 		else
 			pause()
 			to_chat(user,SPAN_INFO("You pause [src]"))
 		update_icon()
 	else
-		to_chat(user,SPAN_INFO("There's no tape to play."))
+		to_chat(user,SPAN_INFO("There's no tape to play"))
 	playsound(src,'sound/machines/click.ogg',20,1)
 
 /obj/item/device/walkman/attack_hand(mob/user)
@@ -165,7 +164,7 @@
 	current_song = sound(current_playlist[pl_index], 0, 0, SOUND_CHANNEL_WALKMAN, volume)
 	current_song.status = SOUND_STREAM
 	play()
-	to_chat(user,SPAN_INFO("You change the song."))
+	to_chat(user,SPAN_INFO("You change the song"))
 
 
 /obj/item/device/walkman/update_icon()
@@ -253,7 +252,7 @@
 		return
 
 	update_song(current_song, current_listener, 0)
-	to_chat(user,SPAN_INFO("You restart the song."))
+	to_chat(user,SPAN_INFO("You restart the song"))
 
 /obj/item/device/walkman/verb/restart_current_song()
 	set name = "Restart Song"
@@ -272,11 +271,7 @@
 
 /datum/action/item_action/walkman/New()
 	..()
-	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
-
-/datum/action/item_action/walkman/update_button_icon()
-	return
 
 /datum/action/item_action/walkman/play_pause
 	action_icon_state = "walkman_playpause"
@@ -325,7 +320,7 @@
 */
 /obj/item/device/cassette_tape
 	name = "cassette Tape"
-	desc = "A cassette tape."
+	desc = "A cassette tape"
 	icon = 'icons/obj/items/walkman.dmi'
 	icon_state = "cassette_flip"
 	item_icons = list(
@@ -338,10 +333,6 @@
 	var/flipped = FALSE //Tape side
 	var/list/songs = list()
 	var/id = 1
-
-/obj/item/device/cassette_tape/Initialize()
-	. = ..()
-	AddElement(/datum/element/corp_label/synsound)
 
 /obj/item/device/cassette_tape/attack_self(mob/user)
 	..()

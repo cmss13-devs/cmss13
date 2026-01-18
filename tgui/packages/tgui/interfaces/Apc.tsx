@@ -6,7 +6,6 @@ import {
   LabeledList,
   ProgressBar,
   Section,
-  Tooltip,
 } from 'tgui/components';
 import { Window } from 'tgui/layouts';
 
@@ -31,10 +30,6 @@ type Data = {
   chargeMode: BooleanLike;
   chargingStatus: number;
   totalLoad: string;
-  totalLoadDemanded: string;
-  totalGenerated: string;
-  totalGeneratedSurplus: string;
-  generatorCount: number;
   coverLocked: BooleanLike;
   siliconUser: BooleanLike;
   powerChannels: PowerChannel[];
@@ -53,39 +48,24 @@ export const Apc = (props) => {
 };
 
 const powerStatusMap = {
-  4: {
+  3: {
     color: 'average',
     externalPowerText: 'Local Power',
+    chargingText: 'Charging',
   },
-  3: {
+  2: {
     color: 'good',
     externalPowerText: 'External Power',
-  },
-  2: {
-    color: 'average',
-    externalPowerText: 'Low External Power',
-  },
-  1: {
-    color: 'bad',
-    externalPowerText: 'No External Power',
-  },
-  0: {
-    color: 'bad',
-    externalPowerText: 'Electrical Fault',
-  },
-};
-
-const chargeStatusMap = {
-  2: {
-    color: 'good',
     chargingText: 'Fully Charged',
   },
   1: {
     color: 'average',
+    externalPowerText: 'Low External Power',
     chargingText: 'Charging',
   },
   0: {
     color: 'bad',
+    externalPowerText: 'No External Power',
     chargingText: 'Not Charging',
   },
 };
@@ -96,7 +76,7 @@ const ApcContent = (props) => {
   const externalPowerStatus =
     powerStatusMap[data.externalPower] || powerStatusMap[0];
   const chargingStatus =
-    chargeStatusMap[data.chargingStatus] || chargeStatusMap[0];
+    powerStatusMap[data.chargingStatus] || powerStatusMap[0];
   const channelArray = data.powerChannels || [];
   const adjustedCellChange = data.powerCellStatus
     ? data.powerCellStatus / 100
@@ -193,20 +173,9 @@ const ApcContent = (props) => {
               </LabeledList.Item>
             );
           })}
-          <Tooltip content="How much power is used (Demand includes idle usage that a breaker may be preventing)">
-            <LabeledList.Item label="Total Load (Demand)">
-              <b>
-                {data.totalLoad} ({data.totalLoadDemanded})
-              </b>
-            </LabeledList.Item>
-          </Tooltip>
-          {data.generatorCount > 0 && (
-            <Tooltip content="How much generators are producing (Surplus is how much is supplied to the grid)">
-              <LabeledList.Item label="Generated (Surplus)">
-                {data.totalGenerated} ({data.totalGeneratedSurplus})
-              </LabeledList.Item>
-            </Tooltip>
-          )}
+          <LabeledList.Item label="Total Load">
+            <b>{data.totalLoad}</b>
+          </LabeledList.Item>
         </LabeledList>
       </Section>
       <Section

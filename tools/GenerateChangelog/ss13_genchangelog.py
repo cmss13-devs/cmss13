@@ -50,26 +50,19 @@ args = opt.parse_args()
 all_changelog_entries = {}
 
 validPrefixes = [
-	'add',
-	'admin',
-	'balance',
-	'code',
-	'config',
-	'del',
-	'fix',
-	'imageadd',
-	'imagedel',
-	'imagetweak',
-	'mapadd',
-	'maptweak',
-	'qol',
-	'refactor',
-	'server',
-	'soundadd',
-	'sounddel',
-	'soundtweak',
-	'spellcheck',
-	'ui'
+    'bugfix',
+    'wip',
+    'tweak',
+    'soundadd',
+    'sounddel',
+    'rscdel',
+    'rscadd',
+    'imageadd',
+    'imagedel',
+    'maptweak',
+    'spellcheck',
+    'experiment',
+    'balance'
 ]
 
 

@@ -12,9 +12,6 @@
 	force_wielded = MELEE_FORCE_VERY_STRONG
 	flags_item = TWOHANDED
 
-	shield_type = SHIELD_DIRECTIONAL_TWOHANDS
-	shield_chance = SHIELD_CHANCE_MED
-
 /obj/item/weapon/twohanded/update_icon()
 	return
 
@@ -114,9 +111,6 @@
 	name = "offhand"
 	flags_item = DELONDROP|TWOHANDED|WIELDED|CANTSTRIP
 
-	shield_type = SHIELD_NONE
-	shield_chance = SHIELD_CHANCE_NONE
-
 /obj/item/weapon/twohanded/offhand/unwield(mob/user)
 	if(flags_item & WIELDED)
 		flags_item &= ~WIELDED
@@ -156,7 +150,6 @@
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_item = TWOHANDED
 	attack_verb = list("attacked", "chopped", "cleaved", "torn", "cut")
-	shield_flags = CAN_SHIELD_BASH
 
 /obj/item/weapon/twohanded/fireaxe/wield(mob/user)
 	. = ..()
@@ -179,7 +172,7 @@
 
 /obj/item/weapon/twohanded/sledgehammer
 	name = "sledgehammer"
-	desc = "A large block of metal on the end of a pole. Smashing!"
+	desc = "a large block of metal on the end of a pole. Smashing!"
 	icon_state = "sledgehammer"
 	item_state = "sledgehammer"
 	icon = 'icons/obj/items/weapons/melee/hammers.dmi'
@@ -221,14 +214,11 @@
 	wieldsound = 'sound/weapons/saberon.ogg'
 	unwieldsound = 'sound/weapons/saberoff.ogg'
 	flags_atom = FPRINT|QUICK_DRAWABLE|NOBLOODY
-	flags_item = UNBLOCKABLE|TWOHANDED
+	flags_item = NOSHIELD|TWOHANDED
 
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	sharp = IS_SHARP_ITEM_BIG
 	edge = 1
-
-	shield_type = SHIELD_ABSOLUTE_TWOHANDS
-	shield_chance = SHIELD_CHANCE_VHIGH
 
 /obj/item/weapon/twohanded/dualsaber/attack(target as mob, mob/living/user as mob)
 	..()
@@ -237,6 +227,10 @@
 			for(var/i in list(1,2,4,8,4,2,1,2,4,8,4,2))
 				user.setDir(i)
 				sleep(1)
+
+/obj/item/weapon/twohanded/dualsaber/IsShield()
+	if(flags_item & WIELDED)
+		return 1
 
 /obj/item/weapon/twohanded/dualsaber/wield(mob/user)
 	. = ..()
@@ -267,10 +261,9 @@
 	throw_speed = SPEED_VERY_FAST
 	edge = 1
 	sharp = IS_SHARP_ITEM_SIMPLE
-	flags_item = TWOHANDED
+	flags_item = NOSHIELD|TWOHANDED
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("attacked", "stabbed", "jabbed", "torn", "gored")
-	shield_chance = SHIELD_CHANCE_LOW
 
 /obj/item/weapon/twohanded/lungemine
 	name = "lunge mine"
@@ -286,8 +279,6 @@
 	force_wielded = 1
 	attack_verb = list("whacked")
 	hitsound = "swing_hit"
-	shield_chance = SHIELD_CHANCE_NONE
-	shield_type = SHIELD_NONE
 
 	var/detonating = FALSE
 	var/gib_user = TRUE
@@ -382,7 +373,6 @@
 	item_state = "syn_breacher"
 	force_wielded = MELEE_FORCE_VERY_STRONG
 	really_heavy = TRUE
-	shield_chance = SHIELD_CHANCE_MEDHIGH
 	var/move_delay_addition = 1.5
 
 /obj/item/weapon/twohanded/breacher/synth/pickup(mob/user)

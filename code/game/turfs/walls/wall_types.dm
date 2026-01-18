@@ -28,16 +28,11 @@
 
 	/// The type of wall decoration we use, to avoid the wall changing icon all the time
 	var/decoration_type
-	minimap_color = MINIMAP_BLACK
 
-/turf/closed/wall/almayer/Initialize(mapload)
+/turf/closed/wall/almayer/Initialize(mapload, ...)
 	if(!special_icon && prob(20))
 		decoration_type = rand(0,3)
-	. = ..()
-	for(var/direction in GLOB.cardinals)
-		var/turf/turf_to_check = get_step(src, direction)
-		if(!isnull(turf_to_check) && !turf_to_check.density && !(istype(turf_to_check, /turf/open/space)))
-			minimap_color = MINIMAP_SOLID
+	return ..()
 
 /turf/closed/wall/almayer/update_icon()
 	if(decoration_type == null)
@@ -114,7 +109,7 @@
 
 /turf/closed/wall/almayer/white/hull
 	name = "ultra reinforced hull"
-	desc = "An extremely reinforced metal wall used to isolate potentially dangerous areas."
+	desc = "An extremely reinforced metal wall used to isolate potentially dangerous areas"
 	icon_state = "hull"
 	turf_flags = TURF_HULL
 
@@ -236,7 +231,7 @@
 
 /turf/closed/wall/almayer/aicore/hull
 	name = "ultra reinforced hull"
-	desc = "An extremely reinforced metal wall used to isolate potentially dangerous areas."
+	desc = "An extremely reinforced metal wall used to isolate potentially dangerous areas"
 	icon_state = "hull"
 	turf_flags = TURF_HULL
 
@@ -252,7 +247,7 @@
 
 /turf/closed/wall/almayer/aicore/white/hull
 	name = "ultra reinforced hull"
-	desc = "An extremely reinforced metal wall used to isolate potentially dangerous areas."
+	desc = "An extremely reinforced metal wall used to isolate potentially dangerous areas"
 	icon_state = "hull"
 	turf_flags = TURF_HULL
 
@@ -270,14 +265,14 @@
 
 /turf/closed/wall/sulaco/hull
 	name = "outer hull"
-	desc = "A reinforced outer hull, probably to prevent breaches."
+	desc = "A reinforced outer hull, probably to prevent breaches"
 	walltype = WALL_SULACO
 	turf_flags = TURF_HULL
 
 
 /turf/closed/wall/sulaco/unmeltable
 	name = "outer hull"
-	desc = "A reinforced outer hull, probably to prevent breaches."
+	desc = "A reinforced outer hull, probably to prevent breaches"
 	walltype = WALL_SULACO
 	turf_flags = TURF_HULL
 
@@ -309,7 +304,7 @@
 
 /turf/closed/wall/upp_ship/reinforced/outer
 	name = "ultra reinforced hull"
-	desc = "An extremely reinforced metal wall used to isolate potentially dangerous areas."
+	desc = "An extremely reinforced metal wall used to isolate potentially dangerous areas"
 	turf_flags = TURF_HULL
 	icon_state = "uppwall_hull"
 
@@ -327,7 +322,7 @@
 
 /turf/closed/wall/almayer/upp/reinforced/outer
 	name = "ultra reinforced hull"
-	desc = "An extremely reinforced metal wall used to isolate potentially dangerous areas."
+	desc = "An extremely reinforced metal wall used to isolate potentially dangerous areas"
 	turf_flags = TURF_HULL
 	icon_state = "hull"
 
@@ -381,7 +376,7 @@
 
 /turf/closed/wall/mineral
 	name = "mineral wall"
-	desc = "This shouldn't exist."
+	desc = "This shouldn't exist"
 	icon = 'icons/turf/walls/stone.dmi'
 	icon_state = "stone"
 	walltype = WALL_STONE
@@ -509,7 +504,7 @@
 
 /turf/closed/wall/cult
 	name = "wall"
-	desc = "The patterns engraved on the wall seem to shift as you try to focus on them. You feel sick."
+	desc = "The patterns engraved on the wall seem to shift as you try to focus on them. You feel sick"
 	icon = 'icons/turf/walls/cult.dmi'
 	icon_state = "cult"
 	walltype = WALL_CULT
@@ -578,14 +573,6 @@
 	walltype = WALL_CAVE
 	turf_flags = TURF_HULL
 	baseturfs = /turf/open/gm/dirt
-	minimap_color = MINIMAP_BLACK
-
-/turf/closed/wall/rock/Initialize(mapload)
-	. = ..()
-	for(var/direction in GLOB.cardinals)
-		var/turf/turf_to_check = get_step(src, direction)
-		if(!isnull(turf_to_check) && !turf_to_check.density && !(istype(turf_to_check, /turf/open/space)))
-			minimap_color = MINIMAP_SOLID
 
 /turf/closed/wall/rock/brown
 	color = "#826161"
@@ -614,14 +601,6 @@
 	desc = "An absolutely massive collection of columns made of ice. The longer you stare, the deeper the ice seems to go."
 	walltype = WALL_STRATA_ICE //Not a metal wall
 	turf_flags = TURF_HULL //Can't break this ice.
-	minimap_color = MINIMAP_BLACK
-
-/turf/closed/wall/strata_ice/Initialize(mapload)
-	. = ..()
-	for(var/direction in GLOB.cardinals)
-		var/turf/turf_to_check = get_step(src, direction)
-		if(!isnull(turf_to_check) && !turf_to_check.density && !(istype(turf_to_check, /turf/open/space)))
-			minimap_color = MINIMAP_SOLID
 
 /turf/closed/wall/strata_ice/dirty
 	icon_state = "strata_ice_dirty"
@@ -635,14 +614,6 @@
 	desc = "Exceptionally dense vegetation that you can't see through."
 	walltype = WALL_JUNGLE_UPDATED //Not a metal wall
 	turf_flags = TURF_HULL
-	minimap_color = MINIMAP_BLACK
-
-/turf/closed/wall/strata_ice/jungle/Initialize(mapload)
-	. = ..()
-	for(var/direction in GLOB.cardinals)
-		var/turf/turf_to_check = get_step(src, direction)
-		if(!isnull(turf_to_check) && !turf_to_check.density && !(istype(turf_to_check, /turf/open/space)))
-			minimap_color = MINIMAP_SOLID
 
 /turf/closed/wall/strata_outpost_ribbed //this guy is our reinforced replacement
 	name = "ribbed outpost walls"
@@ -715,7 +686,7 @@
 /turf/closed/wall/dev/reinforced
 	name = "greybox reinforced wall"
 	icon_state = "devwall_r"
-	desc = "Just like in the orange box! This one is reinforced."
+	desc = "Just like in the orange box! This one is reinforced"
 	walltype = WALL_DEVWALL_R
 	damage_cap = HEALTH_WALL_REINFORCED
 
@@ -733,14 +704,6 @@
 	icon_state = "rock"
 	walltype = WALL_KUTJEVO_ROCK
 	turf_flags = TURF_HULL
-	minimap_color = MINIMAP_BLACK
-
-/turf/closed/wall/kutjevo/rock/Initialize(mapload)
-	. = ..()
-	for(var/direction in GLOB.cardinals)
-		var/turf/turf_to_check = get_step(src, direction)
-		if(!isnull(turf_to_check) && !turf_to_check.density && !(istype(turf_to_check, /turf/open/space)))
-			minimap_color = MINIMAP_SOLID
 
 /turf/closed/wall/kutjevo/rock/border
 	icon_state = "rock_border"//no sandy edges
@@ -756,7 +719,7 @@
 /turf/closed/wall/kutjevo/colony/reinforced
 	name = "reinforced colony wall"
 	icon_state = "colonyr"
-	desc = "Dusty worn down walls that were once built to last. This one is reinforced."
+	desc = "Dusty worn down walls that were once built to last. This one is reinforced"
 	walltype = WALL_KUTJEVO_COLONYR
 	damage_cap = HEALTH_WALL_REINFORCED
 

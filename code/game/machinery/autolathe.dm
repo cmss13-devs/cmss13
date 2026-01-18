@@ -2,11 +2,6 @@
 #define AUTOLATHE_WIRE_SHOCK 2
 #define AUTOLATHE_WIRES_UNCUT (AUTOLATHE_WIRE_HACK|AUTOLATHE_WIRE_SHOCK) // when none of the wires are cut
 
-GLOBAL_LIST_INIT(autolathe_wire_descriptions, flatten_numeric_alist(alist(
-		AUTOLATHE_WIRE_HACK = "Item template controller",
-		AUTOLATHE_WIRE_SHOCK = "Ground safety",
-	)))
-
 /obj/structure/machinery/autolathe
 	name = "\improper autolathe"
 	desc = "It produces items using metal and glass."
@@ -106,7 +101,7 @@ GLOBAL_LIST_INIT(autolathe_wire_descriptions, flatten_numeric_alist(alist(
 /obj/structure/machinery/autolathe/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "Autolathe", "[capitalize(name)] control panel")
+		ui = new(user, src, "Autolathe", "[name] control panel")
 		ui.open()
 
 /obj/structure/machinery/autolathe/ui_data(mob/user)
@@ -133,9 +128,10 @@ GLOBAL_LIST_INIT(autolathe_wire_descriptions, flatten_numeric_alist(alist(
 	data["materials"] = stored_material
 	data["printables"] = printables
 
+	var/list/wire_descriptions = get_wire_descriptions()
 	var/list/panel_wires = list()
-	for(var/wire in 1 to length(GLOB.autolathe_wire_descriptions))
-		panel_wires += list(list("desc" = GLOB.autolathe_wire_descriptions[wire], "cut" = isWireCut(wire)))
+	for(var/wire = 1 to length(wire_descriptions))
+		panel_wires += list(list("desc" = wire_descriptions[wire], "cut" = isWireCut(wire)))
 
 	data["electrical"] = list(
 		"electrified" = shocked,
@@ -449,6 +445,12 @@ GLOBAL_LIST_INIT(autolathe_wire_descriptions, flatten_numeric_alist(alist(
 	if(multiplier > 1 && istype(I,/obj/item/stack))
 		var/obj/item/stack/S = I
 		S.amount = multiplier
+
+/obj/structure/machinery/autolathe/proc/get_wire_descriptions()
+	return list(
+		AUTOLATHE_WIRE_HACK = "Item template controller",
+		AUTOLATHE_WIRE_SHOCK = "Ground safety"
+	)
 
 /obj/structure/machinery/autolathe/proc/isWireCut(wire)
 	return !(wires & getWireFlag(wire))

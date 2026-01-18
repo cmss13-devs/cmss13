@@ -44,8 +44,8 @@
 		vehicle.set_seated_mob(seat, null)
 		if(M.client)
 			M.client.change_view(GLOB.world_view_size, vehicle)
-			M.client.set_pixel_x(0)
-			M.client.set_pixel_y(0)
+			M.client.pixel_x = 0
+			M.client.pixel_y = 0
 			M.reset_view()
 	else
 		if(M.stat == DEAD)
@@ -123,23 +123,14 @@
 /obj/structure/bed/chair/comfy/vehicle/attackby(obj/item/W, mob/living/user)
 	return
 
-/obj/structure/bed/chair/comfy/vehicle/attack_alien(mob/living/carbon/xenomorph/user)
-	if(user.is_mob_incapacitated() || !Adjacent(user))
+/obj/structure/bed/chair/comfy/vehicle/attack_alien(mob/living/carbon/xenomorph/X, dam_bonus)
+
+	if(X.is_mob_incapacitated() || !Adjacent(X))
 		return
 
 	if(buckled_mob)
-		manual_unbuckle(user)
+		manual_unbuckle(X)
 		return
-
-/obj/structure/bed/chair/comfy/vehicle/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
-	if(!buckled_mob)
-		return TAILSTAB_COOLDOWN_NONE
-	manual_unbuckle(xeno)
-	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
-	xeno.visible_message(SPAN_DANGER("[xeno] smacks [src] with its tail!"),
-	SPAN_DANGER("We smack [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-	xeno.tail_stab_animation(src, blunt_stab)
-	return TAILSTAB_COOLDOWN_LOW
 
 //custom vehicle seats for armored vehicles
 //spawners located in interior_landmarks
@@ -190,8 +181,8 @@
 		vehicle.set_seated_mob(seat, null)
 		if(M.client)
 			M.client.change_view(GLOB.world_view_size, vehicle)
-			M.client.set_pixel_x(0)
-			M.client.set_pixel_y(0)
+			M.client.pixel_x = 0
+			M.client.pixel_y = 0
 	else
 		if(M.stat != CONSCIOUS)
 			unbuckle()
@@ -270,8 +261,8 @@
 		vehicle.set_seated_mob(seat, null)
 		if(M.client)
 			M.client.change_view(GLOB.world_view_size, vehicle)
-			M.client.set_pixel_x(0)
-			M.client.set_pixel_y(0)
+			M.client.pixel_x = 0
+			M.client.pixel_y = 0
 			M.reset_view()
 	else
 		if(M.stat == DEAD)
@@ -414,18 +405,6 @@
 		else
 			deconstruct(FALSE)
 
-/obj/structure/bed/chair/vehicle/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
-	if(unslashable)
-		return TAILSTAB_COOLDOWN_NONE
-	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
-	xeno.visible_message(SPAN_DANGER("[xeno] smashes [src] with its tail!"),
-	SPAN_DANGER("We smash [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-	if(!broken)
-		break_seat()
-	else
-		deconstruct(FALSE)
-	xeno.tail_stab_animation(src, blunt_stab)
-	return TAILSTAB_COOLDOWN_NORMAL
 
 /obj/structure/bed/chair/vehicle/attackby(obj/item/W, mob/living/user)
 	if((iswelder(W) && broken))

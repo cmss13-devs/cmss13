@@ -46,6 +46,7 @@
 				break_tile()
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			break_tile_to_plating()
+	.=..()
 	return 0
 
 /turf/open/floor/fire_act(exposed_temperature, exposed_volume)

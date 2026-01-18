@@ -1,7 +1,4 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"aa" = (
-/turf/open/floor/almayer/test_floor4,
-/area/shuttle/lifeboat)
 "ce" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "17,5"
@@ -108,7 +105,7 @@
 	id = "Boat2-D4";
 	throw_dir = 2
 	},
-/turf/open/floor/almayer/test_floor4,
+/turf/open/shuttle/lifeboat,
 /area/shuttle/lifeboat)
 "mt" = (
 /turf/closed/shuttle/lifeboat/transparent{
@@ -167,7 +164,7 @@
 	id = "Boat2-D2";
 	throw_dir = 1
 	},
-/turf/open/floor/almayer/test_floor4,
+/turf/open/shuttle/lifeboat/test_floor4,
 /area/shuttle/lifeboat)
 "vG" = (
 /obj/docking_port/mobile/crashable/lifeboat/starboard,
@@ -189,7 +186,7 @@
 	id = "Boat2-D1";
 	throw_dir = 1
 	},
-/turf/open/floor/almayer/test_floor4,
+/turf/open/shuttle/lifeboat/test_floor4,
 /area/shuttle/lifeboat)
 "zv" = (
 /turf/closed/shuttle/lifeboat{
@@ -254,7 +251,7 @@
 	id = "Boat2-D3";
 	throw_dir = 2
 	},
-/turf/open/floor/almayer/test_floor4,
+/turf/open/shuttle/lifeboat,
 /area/shuttle/lifeboat)
 "EI" = (
 /obj/structure/surface/table/reinforced/almayer_B,
@@ -371,6 +368,9 @@
 /turf/closed/shuttle/lifeboat{
 	icon_state = "12,0"
 	},
+/area/shuttle/lifeboat)
+"Qj" = (
+/turf/open/shuttle/lifeboat/test_floor4,
 /area/shuttle/lifeboat)
 "Rk" = (
 /turf/closed/shuttle/lifeboat{
@@ -542,22 +542,22 @@ AF
 Ep
 "}
 (10,1,1) = {"
-aa
+Qj
 SA
 OO
 VZ
 OO
 AF
-aa
+OO
 "}
 (11,1,1) = {"
-aa
+Qj
 SA
 OO
 VZ
 OO
 AF
-aa
+OO
 "}
 (12,1,1) = {"
 em
@@ -587,22 +587,22 @@ AF
 lS
 "}
 (15,1,1) = {"
-aa
+Qj
 SA
 OO
 VZ
 OO
 AF
-aa
+OO
 "}
 (16,1,1) = {"
-aa
+Qj
 SA
 OO
 VZ
 OO
 AF
-aa
+OO
 "}
 (17,1,1) = {"
 em

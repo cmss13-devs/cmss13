@@ -402,8 +402,7 @@ const GroupedObservable = (props: {
             <ObservableSection
               color={x.color}
               title={x.title}
-              section={x.members}
-              sorter={props.sorter}
+              section={props.sorter ? x.members.sort(props.sorter) : x.members}
               key={x.title}
             />
           ))}
@@ -676,9 +675,8 @@ const ObservableSection = (props: {
   readonly color?: string;
   readonly section: Array<Observable>;
   readonly title: string;
-  readonly sorter?: groupSorter;
 }) => {
-  const { color, section = [], title, sorter } = props;
+  const { color, section = [], title } = props;
 
   const {
     value: searchQuery,
@@ -694,14 +692,11 @@ const ObservableSection = (props: {
     .filter((observable) => isJobOrNameMatch(observable, searchQuery))
     .filter((observable) => (observable.in_ground === 1 ? show_ground : true))
     .filter((observable) => (observable.in_ship === 1 ? show_ship : true))
-    .sort((a, b) => {
-      if (sorter) {
-        return sorter(a, b);
-      }
-      return a.full_name
+    .sort((a, b) =>
+      a.full_name
         .toLocaleLowerCase()
-        .localeCompare(b.full_name.toLocaleLowerCase());
-    });
+        .localeCompare(b.full_name.toLocaleLowerCase()),
+    );
 
   if (!filteredSection.length) {
     return null;

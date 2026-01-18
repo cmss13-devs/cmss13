@@ -99,6 +99,8 @@
 	if(my_area.lighting_effect)
 		overlays += my_area.lighting_effect
 
+
+
 /turf/open/proc/scorch(heat_level)
 	// All scorched icons should be in the dmi that their unscorched bases are
 	// "name_scorched#" where # is the scorchedness level 0 - 1 - 2 - 3
@@ -184,35 +186,6 @@
 		return
 
 	INVOKE_ASYNC(crosser, TYPE_PROC_REF(/atom/movable, throw_atom), (get_step(src, dir)), 50, SPEED_FAST, null, TRUE)
-
-/turf/open/slippery/hull
-	name = "sloped roof"
-	icon = 'icons/turf/almayer.dmi'
-	icon_state = "outerhull"
-
-/turf/open/slippery/hull/dir
-	icon_state = "outerhull_dir"
-
-/turf/open/slippery/hull/dir/southwest
-	dir = SOUTHWEST
-
-/turf/open/slippery/hull/dir/north
-	dir = NORTH
-
-/turf/open/slippery/hull/dir/east
-	dir = EAST
-
-/turf/open/slippery/hull/dir/northeast
-	dir = NORTHEAST
-
-/turf/open/slippery/hull/dir/southeast
-	dir = SOUTHEAST
-
-/turf/open/slippery/hull/dir/west
-	dir = WEST
-
-/turf/open/slippery/hull/dir/northwest
-	dir = NORTHWEST
 
 
 // Prison grass
@@ -749,9 +722,9 @@
 			river_slowdown -= 0.7
 			if(isboiler(C))
 				river_slowdown -= 1
-		river_slowdown = max(0, river_slowdown)
 
-		C.next_move_slowdown += river_slowdown
+		var/new_slowdown = C.next_move_slowdown + river_slowdown
+		C.next_move_slowdown = new_slowdown
 
 	if(ishuman(AM))
 		var/mob/living/carbon/human/H = AM
@@ -1167,7 +1140,7 @@
 /turf/open/jungle/water
 	bushes_spawn = 0
 	name = "murky water"
-	desc = "Thick, murky water."
+	desc = "thick, murky water"
 	icon = 'icons/turf/floors/beach.dmi'
 	icon_state = "water"
 	icon_spawn_state = "water"

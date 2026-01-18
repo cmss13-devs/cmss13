@@ -8,6 +8,7 @@
 	explo_proof = TRUE
 	icon = 'icons/landmarks.dmi'
 	icon_state = "map_blocker"
+	flags_atom = NO_ZFALL
 
 /obj/structure/blocker/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
@@ -36,7 +37,7 @@
 	icon_state = null
 
 /obj/structure/blocker/invisible_wall/water
-	desc = "You cannot wade out any further."
+	desc = "You cannot wade out any further"
 	icon_state = "map_blocker"
 
 /obj/structure/blocker/fog
@@ -77,7 +78,7 @@
 	if(user.action_busy)
 		return
 
-	var/choice = tgui_alert(user, "Are you sure you want to traverse the fog and escape the preserve?", "[src]", list("Yes", "No"), 15 SECONDS)
+	var/choice = tgui_alert(user, "Are you sure you want to traverse the fog and escape the preserve?", "[src]", list("No", "Yes"), 15 SECONDS)
 	if(!choice)
 		return
 

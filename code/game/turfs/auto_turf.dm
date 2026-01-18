@@ -59,6 +59,7 @@
 
 //Explosion act
 /turf/open/auto_turf/ex_act(severity)
+	.=..()
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(20) && bleed_layer)
@@ -303,7 +304,7 @@
 	icon_state = "grass_0"
 	icon_prefix = "grass"
 	layer_name = list("ground","lush thick grass")
-	desc = "Grass, dirt, mud, and other assorted high moisture cave flooring."
+	desc = "grass, dirt, mud, and other assorted high moisture cave flooring."
 
 /turf/open/auto_turf/strata_grass/insert_self_into_baseturfs()
 	baseturfs += /turf/open/auto_turf/strata_grass/layer0

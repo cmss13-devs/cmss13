@@ -60,6 +60,7 @@
 		/datum/action/xeno_action/activable/pounce/crusher_charge,
 		/datum/action/xeno_action/onclick/crusher_stomp,
 		/datum/action/xeno_action/onclick/crusher_shield,
+		/datum/action/xeno_action/onclick/tacmap,
 	)
 
 	claw_type = CLAW_TYPE_VERY_SHARP
@@ -522,6 +523,6 @@
 		found.on_removal()
 		qdel(found)
 		to_chat(xeno, SPAN_XENOHIGHDANGER("We feel our enhanced shield end!"))
-		button.icon_state = "template_xeno"
+		button.icon_state = "template"
 
 	xeno.overlay_shields()

@@ -74,9 +74,6 @@ SUBSYSTEM_DEF(sentry)
 			"platform" = "other",
 			"server_name" = CONFIG_GET(string/servername),
 			"release" = git_revision,
-			"tags" = list(
-				"round_id" = GLOB.round_id,
-			),
 			"exception" = list(
 				"type" = error.error,
 				"value" = "Runtime Error",

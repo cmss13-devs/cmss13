@@ -114,11 +114,6 @@ GLOBAL_LIST_INIT(pp_transformables, list(
 	color = "purple"
 	),
 	list(
-	name = XENO_CASTE_DESPOILER,
-	key = /mob/living/carbon/xenomorph/despoiler,
-	color = "purple"
-	),
-	list(
 	name = XENO_CASTE_BOILER,
 	key = /mob/living/carbon/xenomorph/boiler,
 	color = "purple"
@@ -156,17 +151,17 @@ GLOBAL_LIST_INIT(pp_transformables, list(
 	"Miscellaneous" = list(
 	list(
 	name = "Cat",
-	key = /mob/living/simple_animal/small/cat,
+	key = /mob/living/simple_animal/cat,
 	color = "orange"
 	),
 	list(
 	name = "Crab",
-	key = /mob/living/simple_animal/small/crab,
+	key = /mob/living/simple_animal/crab,
 	color = "orange"
 	),
 	list(
 	name = "Corgi",
-	key = /mob/living/simple_animal/big/corgi,
+	key = /mob/living/simple_animal/corgi,
 	color = "orange"
 	),
 	list(

@@ -1,13 +1,7 @@
-/datum/hud/human/yautja/draw_locator_spot(mob/living/carbon/human/yautja/owner, datum/custom_hud/ui_datum)
+/datum/hud/human/yautja/draw_locator_spot(datum/custom_hud/ui_datum)
 	pred_power_icon = new /atom/movable/screen()
 	pred_power_icon.icon = 'icons/mob/hud/hud_yautja.dmi'
-
-	if(owner.client)
-		var/bracer_material = owner.client.prefs.predator_bracer_material
-		pred_power_icon.icon_state = "powerbar10_" + bracer_material
-	else
-		pred_power_icon.icon_state = "powerbar10"
-
+	pred_power_icon.icon_state = "powerbar10"
 	pred_power_icon.name = "bracer power stored"
 	pred_power_icon.screen_loc = ui_predator_power
 	infodisplay += pred_power_icon

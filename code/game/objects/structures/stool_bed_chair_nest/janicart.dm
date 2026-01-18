@@ -1,6 +1,6 @@
 
 
-//old style cart
+//old style retardo-cart
 /obj/structure/bed/chair/janicart
 	name = "janicart"
 	icon = 'icons/obj/vehicles/vehicles.dmi'

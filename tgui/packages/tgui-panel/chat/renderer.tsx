@@ -133,7 +133,6 @@ class ChatRenderer {
   page: Page | null;
   events: EventEmitter;
   scrollNode: HTMLElement | null;
-  alwaysStayAtBottom: boolean;
   scrollTracking: boolean;
   handleScroll: (type: any) => void;
   ensureScrollTracking: () => void;
@@ -160,7 +159,6 @@ class ChatRenderer {
     // Scroll handler
     /** @type {HTMLElement} */
     this.scrollNode = null;
-    this.alwaysStayAtBottom = false;
     this.scrollTracking = true;
     this.lastScrollHeight = 0;
     this.handleScroll = (type) => {
@@ -172,9 +170,6 @@ class ChatRenderer {
           Math.abs(height - bottom) < SCROLL_TRACKING_TOLERANCE ||
           this.lastScrollHeight === 0;
         if (scrollTracking !== this.scrollTracking) {
-          if (this.alwaysStayAtBottom) {
-            return this.scrollToBottom();
-          }
           this.scrollTracking = scrollTracking;
           this.events.emit('scrollTrackingChanged', scrollTracking);
           logger.debug('tracking', this.scrollTracking);
@@ -563,7 +558,7 @@ class ChatRenderer {
       } else {
         this.rootNode.appendChild(fragment);
       }
-      if (this.scrollTracking || this.alwaysStayAtBottom) {
+      if (this.scrollTracking) {
         setTimeout(() => this.scrollToBottom());
       }
     }

@@ -19,13 +19,7 @@ $bg-map: colors.$bg-map !default;
 @mixin button-color($color) {
   // Adapt text color to background luminance to ensure high contast
   $luminance: luminance($color);
-  $text-color: null;
-
-  @if $luminance > 0.4 {
-    $text-color: hsla(0, 0%, 0%, 1);
-  } @else {
-    $text-color: hsla(0, 0%, 100%, 1);
-  }
+  $text-color: if($luminance > 0.4, hsla(0, 0%, 0%, 1), hsla(0, 0%, 100%, 1));
 
   transition:
     color 50ms,

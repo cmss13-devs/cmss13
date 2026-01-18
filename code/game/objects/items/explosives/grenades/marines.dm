@@ -33,7 +33,7 @@
 	if(shrapnel_count)
 		create_shrapnel(loc, shrapnel_count, , ,shrapnel_type, cause_data)
 	apply_explosion_overlay()
-	cell_explosion(loc, explosion_power, explosion_falloff, falloff_mode, null, cause_data)
+	cell_explosion(loc, explosion_power, explosion_falloff, falloff_mode, null, cause_data, FALSE, floor_destroying)
 	qdel(src)
 
 
@@ -489,10 +489,6 @@
 	/// Post falloff calc damage is multipled by this to get human stamina damage
 	var/human_stam_dam_factor = 0.5
 
-/obj/item/explosive/grenade/sebb/Initialize()
-	. = ..()
-	AddElement(/datum/element/corp_label/armat)
-
 /obj/item/explosive/grenade/sebb/get_examine_text(mob/user)
 	. = ..()
 	. += SPAN_NOTICE("To put into mine mode, plant at feet.")
@@ -611,7 +607,7 @@
 				damage_applied *= 1.5
 				new /obj/effect/overlay/temp/elec_arc(get_turf(shocked_human))
 				to_chat(mob, SPAN_HIGHDANGER("All of your systems jam up as your main bus is overvolted by [damage_applied*2] volts."))
-				mob.visible_message(SPAN_WARNING("[mob] seizes up from the elctric shock."))
+				mob.visible_message(SPAN_WARNING("[mob] seizes up from the elctric shock"))
 			shocked_human.take_overall_armored_damage(damage_applied, ARMOR_ENERGY, BURN, 90) // 90% chance to be on additional limbs
 			shocked_human.make_dizzy(damage_applied)
 			mob.apply_stamina_damage(damage_applied*human_stam_dam_factor) // Stamina damage
@@ -638,7 +634,7 @@
 
 		new /obj/effect/overlay/temp/emp_sparks(mob)
 		mob.make_jittery(damage_applied*2)
-	empulse(src, 1, 2, cause_data?.resolve_mob()) // mini EMP
+	empulse(src, 1, 2) // mini EMP
 	qdel(src)
 
 
@@ -917,6 +913,7 @@
 	name = "bursting pipe"
 	alpha = 0
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	floor_destroying = TRUE
 
 /obj/item/explosive/grenade/incendiary/bursting_pipe
 	AUTOWIKI_SKIP(TRUE)

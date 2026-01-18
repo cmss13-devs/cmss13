@@ -48,7 +48,6 @@
 	LAZYINITLIST(simulations)
 	LAZYINITLIST(property_costs)
 	LAZYINITLIST(recipe_targets)
-	AddElement(/datum/element/corp_label/wy)
 
 /obj/structure/machinery/chem_simulator/power_change()
 	..()

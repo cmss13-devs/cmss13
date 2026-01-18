@@ -57,9 +57,6 @@ type PredData = {
   caster_prefix: string;
   caster_material: string;
 
-  bracer_icon: string;
-  bracer_material: string;
-
   mask_accessory_icon: string;
   mask_accessory_type: number;
   mask_accessory_types: number;
@@ -70,7 +67,6 @@ type PredData = {
   skin_colors: { [key: string]: string };
 
   materials: string[];
-  retro_materials: string[];
   translators: string[];
   invisibility_sounds: string[];
   legacies: string[];
@@ -84,7 +80,6 @@ type ModalOptions =
   | 'mask'
   | 'mask_accessory'
   | 'caster'
-  | 'bracer'
   | 'cape_color';
 
 export const PredPicker = () => {
@@ -212,9 +207,6 @@ const PredEquipment = (props: { readonly pick: (_: ModalOptions) => void }) => {
     caster_material,
     caster_prefix,
 
-    bracer_icon,
-    bracer_material,
-
     mask_accessory_icon,
     mask_accessory_type,
     mask_accessory_types,
@@ -297,24 +289,6 @@ const PredEquipment = (props: { readonly pick: (_: ModalOptions) => void }) => {
                   <DmIcon
                     icon={caster_icon}
                     icon_state={`${caster_prefix}_${caster_material}`}
-                    height="128px"
-                  />
-                </Stack.Item>
-              </Stack>
-            </Button>
-          </Stack.Item>
-
-          <Stack.Item grow>
-            <Button
-              fluid
-              tooltip="Select Bracer"
-              onClick={() => pick('bracer')}
-            >
-              <Stack justify="center">
-                <Stack.Item>
-                  <DmIcon
-                    icon={bracer_icon}
-                    icon_state={`bracer1_${bracer_material}`}
                     height="128px"
                   />
                 </Stack.Item>
@@ -505,10 +479,7 @@ const PredModal = (props: {
 
     caster_material,
 
-    bracer_material,
-
     materials,
-    retro_materials,
   } = data;
 
   switch (type) {
@@ -577,7 +548,7 @@ const PredModal = (props: {
           buttons={<Button icon="x" onClick={() => close()} />}
         >
           <Stack>
-            {retro_materials.map((material) => (
+            {materials.map((material) => (
               <Stack.Item key={material}>
                 <Button
                   selected={material === caster_material}
@@ -587,33 +558,6 @@ const PredModal = (props: {
                   <DmIcon
                     icon={data.caster_icon}
                     icon_state={`${data.caster_prefix}_${material}`}
-                    height="96px"
-                  />
-                </Button>
-              </Stack.Item>
-            ))}
-          </Stack>
-        </Section>
-      );
-
-    case 'bracer':
-      return (
-        <Section
-          title="Bracer"
-          p={2}
-          buttons={<Button icon="x" onClick={() => close()} />}
-        >
-          <Stack>
-            {retro_materials.map((material) => (
-              <Stack.Item key={material}>
-                <Button
-                  selected={material === bracer_material}
-                  onClick={() => act('bracer_material', { material: material })}
-                  tooltip={capitalizeFirst(material)}
-                >
-                  <DmIcon
-                    icon={data.bracer_icon}
-                    icon_state={`bracer1_${material}`}
                     height="96px"
                   />
                 </Button>

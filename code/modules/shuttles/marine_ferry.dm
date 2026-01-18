@@ -363,7 +363,7 @@
 			break
 
 	if(!istype(T_src) || !istype(T_int) || !istype(T_trg))
-		message_admins(SPAN_WARNING("Error with shuttles: Reference turfs not correctly instantiated. Code: MSD04.\n WARNING: DROPSHIP LAUNCH WILL FAIL."))
+		message_admins(SPAN_WARNING("Error with shuttles: Reference turfs not correctly instantiated. Code: MSD04.\n WARNING: DROPSHIP LAUNCH WILL FAIL"))
 
 	SSoldshuttle.shuttle_controller.locs_crash[target_section] -= T_trg
 
@@ -459,7 +459,7 @@
 	for(var/j=0; j<explonum; j++)
 		sploded = locate(T_trg.x + rand(-5, 15), T_trg.y + rand(-5, 25), T_trg.z)
 		//Fucking. Kaboom.
-		cell_explosion(sploded, 250, 10, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("dropship crash")) //Clears out walls
+		cell_explosion(sploded, 250, 10, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("dropship crash"), floor_destroying = TRUE) //Clears out walls
 		sleep(3)
 
 	// Break the ultra-reinforced windows.
@@ -538,6 +538,7 @@
 			var/datum/game_mode/colonialmarines/colonial_marines = SSticker.mode
 			colonial_marines.add_current_round_status_to_end_results("Hijack")
 
+
 /datum/shuttle/ferry/marine/proc/disable_latejoin()
 	GLOB.enter_allowed = FALSE
 
@@ -555,7 +556,7 @@
 
 	//Switch the landmarks so we can do this again
 	if(!istype(T_src) || !istype(T_trg))
-		message_admins(SPAN_WARNING("Error with shuttles: Ref turfs are null. Code: MSD15.\n WARNING: DROPSHIPS MAY NO LONGER BE OPERABLE."))
+		message_admins(SPAN_WARNING("Error with shuttles: Ref turfs are null. Code: MSD15.\n WARNING: DROPSHIPS MAY NO LONGER BE OPERABLE"))
 		return FALSE
 
 	locs_dock -= T_src

@@ -52,7 +52,7 @@
 
 	inherent_verbs = list(
 		/mob/living/carbon/human/synthetic/proc/toggle_HUD,
-		/mob/living/carbon/human/proc/toggle_inherent_nightvision,
+		/mob/living/carbon/human/proc/toggle_inherent_nightvison,
 	)
 
 /datum/species/synthetic/handle_post_spawn(mob/living/carbon/human/H)

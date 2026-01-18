@@ -34,20 +34,19 @@
 /mob/living/silicon/drop_held_items()
 	return
 
-/mob/living/silicon/emp_act(severity, datum/cause_data/cause_data)
+/mob/living/silicon/emp_act(severity)
 	. = ..()
 	switch(severity)
 		if(1)
-			take_limb_damage(20)
+			src.take_limb_damage(20)
 			apply_effect(rand(5,10), STUN)
 		if(2)
-			take_limb_damage(10)
+			src.take_limb_damage(10)
 			apply_effect(rand(1,5), STUN)
 	flash_eyes(EYE_PROTECTION_FLAVOR, TRUE, light_type = /atom/movable/screen/fullscreen/flash/noise)
 
 	to_chat(src, SPAN_DANGER("<B>*BZZZT*</B>"))
 	to_chat(src, SPAN_DANGER("Warning: Electromagnetic pulse detected."))
-	log_emp(src, cause_data)
 
 /mob/living/silicon/stun_effect_act(stun_amount, agony_amount)
 	return //immune

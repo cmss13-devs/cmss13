@@ -27,7 +27,6 @@
 /turf
 	icon = 'icons/turf/floors/floors.dmi'
 	plane = TURF_PLANE
-
 	///Used by floors to indicate the floor is a tile (otherwise its plating)
 	var/intact_tile = TRUE
 	///Can blood spawn on this turf?
@@ -215,8 +214,38 @@
 		return FALSE
 	. = ..()
 
-/turf/ex_act(severity)
-	return 0
+/turf/ex_act(severity, direction, explosion_cause_data, piercing, enviro, floor_destroying)
+	. = ..()
+	var/turf/above = SSmapping.get_turf_above(src)
+	if(above && above.explodable(severity, floor_destroying))
+		addtimer(CALLBACK(above,PROC_REF(breach_floor), severity, floor_destroying), 1)
+	if(!explodable(severity, floor_destroying))
+		return FALSE
+	addtimer(CALLBACK(src,PROC_REF(breach_floor), severity, floor_destroying), 1)
+	return TRUE
+
+/turf/proc/explodable(severity, floor_destroying)
+	if(!floor_destroying)
+		return FALSE
+	if(severity < 50)
+		return FALSE
+	var/turf/turf_below = SSmapping.get_turf_below(src)
+	if(!turf_below) //so we do not make hole into space
+		return FALSE
+	if((turf_below.turf_flags & TURF_HULL) && turf_below.density) //so we do not make hole into unbreachable wall on bottom layer
+		return FALSE
+	if(is_mainship_level(z) && SSticker?.mode?.is_in_endgame) // the ship is made out of tilet paper now
+		return TRUE
+	if(get_pylon_protection_level() >= TURF_PROTECTION_CORE || turf_below.get_pylon_protection_level() >= TURF_PROTECTION_CORE)
+		return FALSE
+
+	return TRUE
+
+/turf/proc/breach_floor(severity, floor_destroying)
+	if(!explodable(severity, floor_destroying)) // incase something fucks up from the moment of explosion
+		return
+	new/obj/structure/debris(src)
+	ChangeTurf(/turf/open_space)
 
 /turf/proc/update_icon() //Base parent. - Abby
 	return
@@ -494,8 +523,9 @@
 	qdel(src) //Just get the side effects and call Destroy
 	var/turf/W = new path(src)
 
-	for(var/atom/movable/thing as anything in W.contents)
-		SEND_SIGNAL(thing, COMSIG_ATOM_TURF_CHANGE, src)
+	for(var/i in W.contents)
+		var/datum/A = i
+		SEND_SIGNAL(A, COMSIG_ATOM_TURF_CHANGE, src)
 
 	if(new_baseturfs)
 		W.baseturfs = new_baseturfs

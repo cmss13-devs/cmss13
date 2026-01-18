@@ -475,25 +475,25 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 	new /obj/effect/overlay/temp/blinking_laser (target)
 	sleep(10)
 	var/datum/cause_data/cause_data = create_cause_data(initial(name), source_mob)
-	cell_explosion(target, clear_power, clear_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data) //break shit around
+	cell_explosion(target, clear_power, clear_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data, FALSE, TRUE) //break shit around
 	sleep(clear_delay)
 
 	// Explosion if turf is not a wall.
 	if(!target.density)
-		cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
+		cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data, FALSE, TRUE)
 		handle_ob_shake(target)
 		sleep(double_explosion_delay)
-		cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
+		cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data, FALSE, TRUE)
 		qdel(src)
 		return
 
 	// Checks turf around the target
 	for(var/turf/T in range(2, target))
 		if(!T.density)
-			cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
+			cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data, FALSE, TRUE)
 			handle_ob_shake(target)
 			sleep(double_explosion_delay)
-			cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
+			cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data, FALSE, TRUE)
 			qdel(src)
 			return
 
@@ -523,7 +523,7 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 	new /obj/effect/overlay/temp/blinking_laser (target)
 	sleep(10)
 	var/datum/cause_data/cause_data = create_cause_data(initial(name), source_mob)
-	cell_explosion(target, clear_power, clear_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data) //break shit around
+	cell_explosion(target, clear_power, clear_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data, FALSE, TRUE) //break shit around
 	handle_ob_shake(target)
 
 	sleep(clear_delay)
@@ -571,7 +571,7 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 
 /obj/structure/ob_ammo/warhead/cluster/proc/fire_in_a_hole(turf/loc)
 	new /obj/effect/overlay/temp/blinking_laser (loc)
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), loc, explosion_power, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), source_mob)), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), loc, explosion_power, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), source_mob), FALSE, TRUE), 1 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(handle_ob_shake), loc), 1 SECONDS)
 
 /obj/structure/ob_ammo/ob_fuel
@@ -610,7 +610,7 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 /obj/structure/machinery/computer/orbital_cannon_console/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "OrbitalCannonConsole", "[capitalize(name)]")
+		ui = new(user, src, "OrbitalCannonConsole", "[src.name]")
 		ui.open()
 
 /obj/structure/machinery/computer/orbital_cannon_console/ui_state(mob/user)

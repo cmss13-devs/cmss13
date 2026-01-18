@@ -1,28 +1,26 @@
 import os, re
-from github import Auth, Github, GithubIntegration, GithubException
+from github import Github, GithubException
 
 # Format - Key: Array[Label, [StringsToIgnore]]
 changelogToPrefix = {
-    'add': ["Feature", ["Added new mechanics or gameplay changes", "Added more things", "Added something"]],
-    'admin': ["Admin", ["messed with admin stuff"]],
+    'fix': ["Fix", ["fixed a few things"]],
+    'qol': ["Quality of Life", ["made something easier to use"]],
+    'add': ["Feature", ["Added new mechanics or gameplay changes", "Added more things"]],
+    'del': ["Removal", ["Removed old things"]],
+    'spellcheck': ["Grammar and Formatting", ["fixed a few typos"]],
     'balance': ["Balance", ["rebalanced something"]],
     'code': ["Code Improvement", ["changed some code"]],
-    'config': ["Config", ["changed some config setting"]],
-    'del': ["Removal", ["Removed old things"]],
-    'fix': ["Fix", ["fixed a few things"]],
-    'imageadd': ["Sprites", ["added some icons and images"]],
-    'imagedel': ["Sprites", ["deleted some icons and images"]],
-    'imagetweak': ["Sprites", ["tweaked some icons and images"]],
-    'mapadd': ["Mapping", ["added a new map or section to a map"]],
-    'maptweak': ["Mapping", ["tweaked a map"]],
-    'qol': ["Quality of Life", ["made something easier to use"]],
     'refactor': ["Refactor", ["refactored some code"]],
+    'config': ["Config", ["changed some config setting"]],
+    'admin': ["Admin", ["messed with admin stuff"]],
     'server': ["Server", ["something server ops should know"]],
     'soundadd': ["Sound", ["added a new sound thingy"]],
     'sounddel': ["Sound", ["removed an old sound thingy"]],
-    'soundtweak': ["Sound", ["tweaked a sound thingy"]],
-    'spellcheck': ["Grammar and Formatting", ["fixed a few typos"]],
-    'ui': ["UI", ["changed something relating to user interfaces"]],
+    'imageadd': ["Sprites", ["added some icons and images"]],
+    'imagedel': ["Sprites", ["deleted some icons and images"]],
+    'mapadd': ["Mapping", ["added a new map or section to a map"]],
+    'maptweak': ["Mapping", ["tweaked a map"]],
+    'ui' : ["UI", ["changed something relating to user interfaces"]]
 }
 
 fileToPrefix = {
@@ -56,11 +54,13 @@ def get_labels(pr):
             continue
         labels[fileToPrefix[prefix]] = True
 
-    changelog_match = re.search(r"(?:🆑|:cl:)(.*)/(?:🆑|:cl:)", pr.body, re.S | re.M)
+    changelog_match = re.search(r"🆑(.*)/🆑", pr.body, re.S | re.M)
     if changelog_match is None:
-        print("::warning ::No changelog detected.")
-        labels[missingLogLabel] = True
-        return labels, False
+        changelog_match = re.search(r":cl:(.*)/:cl:", pr.body, re.S | re.M)
+        if changelog_match is None:
+            print("::warning ::No changelog detected.")
+            labels[missingLogLabel] = True
+            return labels, False
 
     lines = changelog_match.group(1).split('\n')
     failed = len(lines) <= 2 # Make sure its not an empty changelog
@@ -92,8 +92,7 @@ def get_labels(pr):
     return list(labels), failed
 
 def main():
-    auth = Auth.Token(os.environ["TOKEN"])
-    g = Github(auth=auth)
+    g = Github(os.environ["TOKEN"])
     repo = g.get_repo(os.environ['REPO'])
 
     pr = repo.get_pull(int(os.environ["PR_NUMBER"]))

@@ -1624,7 +1624,7 @@
 
 /obj/item/weapon/gun/rifle/type71/flamer
 	name = "\improper Type 71-F pulse rifle"
-	desc = " This appears to be a less common variant of the Type 71 with an integrated flamethrower that seems especially powerful."
+	desc = "This appears to be a less common variant of the Type 71 with an integrated flamethrower that seems especially powerful."
 	attachable_allowed = list(
 		/obj/item/attachable/flashlight, // Rail
 		/obj/item/attachable/magnetic_harness,

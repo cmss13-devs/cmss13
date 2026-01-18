@@ -46,21 +46,21 @@
 			if(anchored)
 				var/temp = ""
 				if(width == 1)
-					temp += "It looks like a [SPAN_HELPFUL("wrench")] will unsecure it. "
-				helpmessage += "[temp]You can insert an [SPAN_HELPFUL("airlock circuit")]. "
+					temp += "It looks like a [SPAN_HELPFUL("wrench")] will unsecure it."
+				helpmessage += "[temp]You can insert an [SPAN_HELPFUL("airlock circuit")]."
 				if(!glass)
-					helpmessage += "Insert some [SPAN_HELPFUL("glass sheets")] to add windows to it. "
+					helpmessage += "Insert some [SPAN_HELPFUL("glass sheets")] to add windows to it."
 				else if(glass == AIRLOCK_GLASSIN)
-					helpmessage += "You can take out the windows with a [SPAN_HELPFUL("screwdriver")]. "
+					helpmessage += "You can take out the windows with a [SPAN_HELPFUL("screwdriver")]."
 			else
-				helpmessage += "It looks like a [SPAN_HELPFUL("wrench")] will secure it. "
+				helpmessage += "It looks like a [SPAN_HELPFUL("wrench")] will secure it."
 		if(STATE_CIRCUIT)
-			helpmessage += "Add [SPAN_HELPFUL("cable coil")] to the circuit. "
+			helpmessage += "Add [SPAN_HELPFUL("cable coil")] to the circuit."
 		if(STATE_WIRES)
-			helpmessage += "Secure the circuit with a [SPAN_HELPFUL("screwdriver")]. "
+			helpmessage += "Secure the circuit with a [SPAN_HELPFUL("screwdriver")]."
 		if(STATE_SCREWDRIVER)
-			helpmessage += "Use a [SPAN_HELPFUL("Multitool")] to change its type. "
-			helpmessage += "You can [SPAN_HELPFUL("Weld")] it all in place. "
+			helpmessage += "Use a [SPAN_HELPFUL("Multitool")] to change its type."
+			helpmessage += "You can [SPAN_HELPFUL("Weld")] it all in place."
 	helpmessage += "You can name it with a [SPAN_HELPFUL("pen")]."
 	. += SPAN_NOTICE(helpmessage)
 

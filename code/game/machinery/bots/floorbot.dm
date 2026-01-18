@@ -58,7 +58,7 @@
 	dat += "Status: <A href='byond://?src=\ref[src];operation=start'>[src.on ? "On" : "Off"]</A><BR>"
 	dat += "Maintenance panel is [src.open ? "opened" : "closed"]<BR>"
 	dat += "Tiles left: [src.amount]<BR>"
-	dat += "Behvaiour controls are [src.locked ? "locked" : "unlocked"]<BR>"
+	dat += "Behaviour controls are [src.locked ? "locked" : "unlocked"]<BR>"
 	if(!src.locked || isRemoteControlling(user))
 		dat += "Improves floors: <A href='byond://?src=\ref[src];operation=improve'>[src.improvefloors ? "Yes" : "No"]</A><BR>"
 		dat += "Finds tiles: <A href='byond://?src=\ref[src];operation=tiles'>[src.eattiles ? "Yes" : "No"]</A><BR>"

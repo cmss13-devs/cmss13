@@ -1610,7 +1610,7 @@
 			potential_hivebuffs -= possible_hivebuff
 			continue
 
-		//If this buff isn't combinable, check if any other active hivebuffs aren't combineable
+		//If this buff isn't combinable, check if any other active hivebuffs aren't combinable
 		if(!initial(possible_hivebuff.is_combineable))
 			var/found_conflict = FALSE
 			for(var/datum/hivebuff/active_hivebuff in active_hivebuffs)

@@ -36,7 +36,7 @@
 
 /obj/structure/machinery/centrifuge/attackby(obj/item/B, mob/living/user)
 	if(machine_processing)
-		to_chat(user, SPAN_WARNING("\The [src] is still running!"))
+		to_chat(user, SPAN_WARNING("The [src] is still running!"))
 		return
 	if(!skillcheck(user, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))
 		to_chat(user, SPAN_WARNING("You have no idea how to use this."))
@@ -46,7 +46,7 @@
 			to_chat(user, SPAN_WARNING("A container is already loaded into \the [src]."))
 			return
 		if(input_source == INPUT_TURING)
-			to_chat(user, SPAN_WARNING("\The [src] is expecting its input from the Turing. Toggle input back to container if you want to centrifuge this."))
+			to_chat(user, SPAN_WARNING("The [src] is expecting its input from the Turing. Toggle input back to container if you want to centrifuge this."))
 			return
 		if(user.drop_inv_item_to_loc(B, src))
 			input_container = B
@@ -80,7 +80,7 @@
 		if(input_source == INPUT_TURING && status == 0)
 			stop_processing()
 		else
-			to_chat(user, SPAN_WARNING("\The [src] is still running!"))
+			to_chat(user, SPAN_WARNING("The [src] is still running!"))
 			return
 	if(!skillcheck(user, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))
 		to_chat(user, SPAN_WARNING("You have no idea how to use this."))

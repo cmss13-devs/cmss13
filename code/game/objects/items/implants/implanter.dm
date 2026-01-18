@@ -24,7 +24,7 @@
 	if(isyautja(M))
 		return
 	if (user && src.imp)
-		user.visible_message(SPAN_WARNING("[user] is attemping to implant [M]."), SPAN_NOTICE("You're attemping to implant [M]."))
+		user.visible_message(SPAN_WARNING("[user] is attempting to implant [M]."), SPAN_NOTICE("You're attempting to implant [M]."))
 
 		var/turf/T1 = get_turf(M)
 		if (T1 && ((M == user) || do_after(user, 50, INTERRUPT_ALL, BUSY_ICON_GENERIC)))

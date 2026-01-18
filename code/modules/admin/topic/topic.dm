@@ -445,7 +445,7 @@
 		if(!P1)
 			P1 = get_player_from_key(M.ckey)
 
-		//get jobs for department if specified, otherwise just returnt he one job in a list.
+		//get jobs for department if specified, otherwise just return the one job in a list.
 		var/list/joblist = list()
 		switch(href_list["jobban3"])
 			if("CICdept")

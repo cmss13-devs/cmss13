@@ -5,7 +5,7 @@
 	icon_state = "left"
 	layer = WINDOW_LAYER
 	var/base_state = "left"
-	health = 150 //If you change this, consiter changing ../door/window/brigdoor/ health at the bottom of this .dm file
+	health = 150 //If you change this, consider changing ../door/window/brigdoor/ health at the bottom of this .dm file
 	visible = 0
 	use_power = USE_POWER_NONE
 	flags_atom = ON_BORDER

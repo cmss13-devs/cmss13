@@ -264,7 +264,7 @@
 	. = ..()
 
 /obj/structure/airlock_assembly/update_icon()
-	if(state == STATE_SCREWDRIVER) /// they just look diferent on their last step
+	if(state == STATE_SCREWDRIVER) /// they just look different on their last step
 		icon_state = "assembly_[glass ? "glass_" : ""][airlock_type][state]"
 	else
 		icon_state = "assembly_[glass ? "glass_" : ""]generic[state]"

@@ -729,7 +729,7 @@
 			addtimer(VARSET_CALLBACK(src, las_b, FALSE), 5 MINUTES)
 			return
 
-/obj/item/device/binoculars/designator/afterattack(atom/targeted_atom as mob|obj|turf, mob/user as mob, params) // This is actually WAY better, espically since its fucken already in the code.
+/obj/item/device/binoculars/designator/afterattack(atom/targeted_atom as mob|obj|turf, mob/user as mob, params) // This is actually WAY better, especially since its fucken already in the code.
 	lasering(user, targeted_atom, params)
 	return
 

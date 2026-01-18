@@ -486,11 +486,11 @@
 	mode = SYRINGE_INJECT
 	update_icon()
 
-/obj/item/reagent_container/syringe/robot/inoprovaline
-	name = "\improper syringe (Inoprovaline)"
+/obj/item/reagent_container/syringe/robot/inaprovaline
+	name = "\improper syringe (Inaprovaline)"
 	desc = "Contains inaprovaline - used to stabilize patients."
 
-/obj/item/reagent_container/syringe/robot/inoprovaline/Initialize()
+/obj/item/reagent_container/syringe/robot/inaprovaline/Initialize()
 	. = ..()
 	reagents.add_reagent("inaprovaline", 15)
 	mode = SYRINGE_INJECT

@@ -96,7 +96,7 @@
 	var/mob/living/carbon/human/human_pulled = user
 	if(human_pulled.stat == DEAD)
 		return FALSE
-	if(!istype(back, /obj/item/storage/backpack/marine/saddle/)) //cant ride without a saddle
+	if(!istype(back, /obj/item/storage/backpack/marine/saddle)) //cant ride without a saddle
 		return FALSE
 	return TRUE
 

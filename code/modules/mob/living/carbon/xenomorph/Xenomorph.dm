@@ -1221,9 +1221,6 @@
 		return
 	buckle_mob(target, usr, target_hands_needed = 1)
 
-/mob/living/carbon/xenomorph/unbuckle()
-	. = ..()
-
 /mob/living/carbon/xenomorph/MouseDrop_T(atom/dropping, mob/user)
 	. = ..()
 	if(isxeno(user))

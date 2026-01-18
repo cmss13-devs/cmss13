@@ -61,11 +61,11 @@
 	},
 	"chat.mcp.access": "none",
 	"chat.mcp.discovery.enabled": {
-        "claude-desktop": false,
-        "windsurf": false,
-        "cursor-global": false,
-        "cursor-workspace": false
-    },
+		"claude-desktop": false,
+		"windsurf": false,
+		"cursor-global": false,
+		"cursor-workspace": false
+	},
 	"chat.promptFiles": false,
 	"chat.promptFilesLocations": {
 		".github/prompts": false

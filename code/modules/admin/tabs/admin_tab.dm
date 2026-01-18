@@ -127,7 +127,7 @@
 
 /datum/admins/proc/announce()
 	set name = "Admin Announcement"
-	set desc = "Announce your desires to the world"
+	set desc = "Announce your desires to the world."
 	set category = "Admin.Game"
 
 	if(!check_rights(0))
@@ -680,3 +680,28 @@
 		return
 
 	admin_holder.in_view_panel()
+
+/datum/admins/proc/set_commander()
+	if(!check_rights(R_MOD, FALSE))
+		return
+
+	if(!SSticker || SSticker.current_state != GAME_STATE_PLAYING)
+		to_chat(usr, SPAN_WARNING("The game hasn't started yet!"))
+		return
+
+	var/mob/living/carbon/human/commander = tgui_input_list(usr, "Choose someone to be the operation commander", "Choose an acting commander", GLOB.alive_human_list)
+	if(!commander)
+		return
+
+	SSticker.mode.ares_command_check(commander, TRUE)
+
+	log_admin("[key_name_admin(usr)] manually chose [key_name_admin(commander)], [commander?.job] as the acting commander.")
+
+/client/proc/set_commander()
+	set name = "Set Operations Commander"
+	set category = "Admin.Factions"
+
+	if(!admin_holder || !check_rights(R_MOD, FALSE))
+		return
+
+	admin_holder.set_commander()

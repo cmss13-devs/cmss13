@@ -10,7 +10,6 @@
 		/datum/action/xeno_action/activable/pounce/base_prae_dash,
 		/datum/action/xeno_action/activable/prae_acid_ball,
 		/datum/action/xeno_action/activable/spray_acid/base_prae_spray_acid,
-		/datum/action/xeno_action/onclick/tacmap,
 	)
 	actions_to_add = list(
 		/datum/action/xeno_action/activable/tail_stab/tail_fountain,
@@ -19,7 +18,6 @@
 		/datum/action/xeno_action/activable/high_gallop,
 		/datum/action/xeno_action/onclick/fight_or_flight,
 		/datum/action/xeno_action/activable/prae_retrieve,
-		/datum/action/xeno_action/onclick/tacmap,
 	)
 
 

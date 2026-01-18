@@ -1527,7 +1527,7 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/royal_marines_station)
 "Kl" = (
-/obj/structure/reagent_dispensers/fueltank/custom,
+/obj/structure/reagent_dispensers/tank/fuel/custom,
 /turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/ert_station/royal_marines_station)
 "Ks" = (

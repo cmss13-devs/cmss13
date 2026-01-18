@@ -12,7 +12,7 @@
 	var/render_relay_plane = RENDER_PLANE_GAME
 	///bool: Whether this plane should get a render target automatically generated
 	var/generate_render_target = TRUE
-	///integer: blend mode to apply to the render relay in case you dont want to use the plane_masters blend_mode
+	///integer: blend mode to apply to the render relay in case you don't want to use the plane_masters blend_mode
 	var/blend_mode_override
 	///reference: current relay this plane is utilizing to render
 	var/obj/render_plane_relay/relay
@@ -222,8 +222,7 @@
 /atom/movable/screen/plane_master/escape_menu
 	name = "Escape Menu"
 	plane = ESCAPE_MENU_PLANE
-	appearance_flags = PLANE_MASTER|NO_CLIENT_COLOR
-	render_relay_plane = RENDER_PLANE_MASTER
+	render_relay_plane = null
 
 /atom/movable/screen/plane_master/displacement
 	name = "displacement plane"
@@ -257,7 +256,14 @@
 	filters += filter(type = "drop_shadow", color = "#04080FAA", size = -20)
 
 /atom/movable/screen/plane_master/seethrough
-	name = "Seethrough"
+	name = "seethrough plane"
 	plane = SEETHROUGH_PLANE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	plane = SEETHROUGH_PLANE
+
+/atom/movable/screen/plane_master/minimap
+	name = "minimap plane"
+	plane = TACMAP_PLANE
+	appearance_flags = PLANE_MASTER|NO_CLIENT_COLOR|PIXEL_SCALE
+	render_relay_plane = null
+	var/cur_x_shift = 0
+	var/cur_y_shift = 0

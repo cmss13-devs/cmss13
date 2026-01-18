@@ -493,7 +493,7 @@
 			return
 		if((rounds > 0) && (user.a_intent & (INTENT_GRAB)))
 			playsound(src.loc, 'sound/items/m56dauto_load.ogg', 75, 1)
-			user.visible_message(SPAN_NOTICE(" [user] removes [src]'s ammo box."),SPAN_NOTICE(" You remove [src]'s ammo box, preparing the gun for disassembly."))
+			user.visible_message(SPAN_NOTICE("[user] removes [src]'s ammo box."),SPAN_NOTICE(" You remove [src]'s ammo box, preparing the gun for disassembly."))
 			var/obj/item/ammo_magazine/m2c/used_ammo = new(user.loc)
 			used_ammo.current_rounds = rounds
 			user.put_in_active_hand(used_ammo)
@@ -545,27 +545,27 @@
 		user.reset_view(src)
 		if(dir == EAST)
 			diff_x = -16 + user_old_x
-			user.client.pixel_x = viewoffset
-			user.client.pixel_y = 0
+			user.client.set_pixel_x(viewoffset)
+			user.client.set_pixel_y(0)
 		if(dir == WEST)
 			diff_x = 16 + user_old_x
-			user.client.pixel_x = -viewoffset
-			user.client.pixel_y = 0
+			user.client.set_pixel_x(-viewoffset)
+			user.client.set_pixel_y(0)
 		if(dir == NORTH)
 			diff_y = -16 + user_old_y
-			user.client.pixel_x = 0
-			user.client.pixel_y = viewoffset
+			user.client.set_pixel_x(0)
+			user.client.set_pixel_y(viewoffset)
 		if(dir == SOUTH)
 			diff_y = 16 + user_old_y
-			user.client.pixel_x = 0
-			user.client.pixel_y = -viewoffset
+			user.client.set_pixel_x(0)
+			user.client.set_pixel_y(-viewoffset)
 
 		animate(user, pixel_x=diff_x, pixel_y=diff_y, 0.4 SECONDS)
 	else
 		if(user.client)
 			user.client.change_view(GLOB.world_view_size)
-			user.client.pixel_x = 0
-			user.client.pixel_y = 0
+			user.client.set_pixel_x(0)
+			user.client.set_pixel_y(0)
 
 		animate(user, pixel_x=user_old_x, pixel_y=user_old_y, 4, 1)
 

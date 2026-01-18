@@ -150,7 +150,7 @@
 				SPAN_NOTICE("You repair [src]!")
 			)
 		else
-			to_chat(user, SPAN_NOTICE(" [src] does not need a repair!"))
+			to_chat(user, SPAN_NOTICE("[src] does not need a repair!"))
 	else if(load && ismob(load))  // chance to knock off rider
 		if(prob(1+I.force * 2))
 			unload(0)
@@ -410,15 +410,15 @@
 				if (held_item && HAS_TRAIT(held_item, TRAIT_TOOL_MULTITOOL))
 					switch(href_list["wire"])
 						if("1","2")
-							to_chat(usr, SPAN_NOTICE(" [icon2html(src, usr)] The charge light flickers."))
+							to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] The charge light flickers."))
 						if("4")
-							to_chat(usr, SPAN_NOTICE(" [icon2html(src, usr)] The external warning lights flash briefly."))
+							to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] The external warning lights flash briefly."))
 						if("8")
-							to_chat(usr, SPAN_NOTICE(" [icon2html(src, usr)] The load platform clunks."))
+							to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] The load platform clunks."))
 						if("16", "32")
-							to_chat(usr, SPAN_NOTICE(" [icon2html(src, usr)] The drive motor whines briefly."))
+							to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] The drive motor whines briefly."))
 						else
-							to_chat(usr, SPAN_NOTICE(" [icon2html(src, usr)] You hear a radio crackle."))
+							to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] You hear a radio crackle."))
 				else
 					to_chat(usr, SPAN_NOTICE(" You need a multitool!"))
 
@@ -493,7 +493,7 @@
 		var/mob/M = C
 		if(M.client)
 			M.client.perspective = EYE_PERSPECTIVE
-			M.client.eye = src
+			M.client.set_eye(src)
 
 	mode = 0
 	send_status()
@@ -515,7 +515,7 @@
 		var/mob/M = load
 		if(M.client)
 			M.client.perspective = MOB_PERSPECTIVE
-			M.client.eye = src
+			M.client.set_eye(src)
 
 
 	if(dirn)
@@ -541,7 +541,7 @@
 			var/mob/M = AM
 			if(M.client)
 				M.client.perspective = MOB_PERSPECTIVE
-				M.client.eye = src
+				M.client.set_eye(src)
 	mode = 0
 
 

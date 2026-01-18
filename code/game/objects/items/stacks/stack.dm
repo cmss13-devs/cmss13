@@ -197,34 +197,40 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 		to_chat(ui.user, SPAN_WARNING("The [recipe.title] must be built on snow!"))
 		return FALSE
 
+	//cache the user, so when ui is closed, the construction continues
+	var/mob/user = ui.user;
 	if(recipe.time)
-		if(ui.user.action_busy)
+		if(user.action_busy)
 			return FALSE
-		var/time_mult = skillcheck(ui.user, SKILL_CONSTRUCTION, 2) ? 1 : 2
-		ui.user.visible_message(SPAN_NOTICE("[ui.user] starts assembling \a [recipe.title]."),
+		var/time_mult = skillcheck(user, SKILL_CONSTRUCTION, 2) ? 1 : 2
+		user.visible_message(SPAN_NOTICE("[user] starts assembling \a [recipe.title]."),
 			SPAN_NOTICE("You start assembling \a [recipe.title]."))
-		if(!do_after(ui.user, max(recipe.time * time_mult, recipe.min_time), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+		if(!do_after(user, max(recipe.time * time_mult, recipe.min_time), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+			return FALSE
+
+		//the user is no longer with us
+		if(!user)
 			return FALSE
 
 		//check again after some time has passed
 		if(amount < recipe.req_amount * multiplier)
 			return FALSE
 
-		if(check_one_per_turf(recipe,ui.user))
+		if(check_one_per_turf(recipe,user))
 			return FALSE
 
 	var/atom/new_item
 	if(ispath(recipe.result_type, /turf))
-		var/turf/current_turf = get_turf(ui.user)
+		var/turf/current_turf = get_turf(user)
 		if(!current_turf)
 			return FALSE
 		new_item = current_turf.ChangeTurf(recipe.result_type)
 	else
-		new_item = new recipe.result_type(ui.user.loc, ui.user)
+		new_item = new recipe.result_type(user.loc, user)
 
-	ui.user.visible_message(SPAN_NOTICE("[ui.user] assembles \a [new_item]."),
+	user.visible_message(SPAN_NOTICE("[user] assembles \a [new_item]."),
 	SPAN_NOTICE("You assemble \a [new_item]."))
-	new_item.setDir(ui.user.dir)
+	new_item.setDir(user.dir)
 	if(recipe.max_res_amount > 1)
 		var/obj/item/stack/new_stack = new_item
 		new_stack.amount = recipe.res_amount * multiplier
@@ -234,12 +240,12 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 	if(amount <= 0)
 		var/oldsrc = src
 		src = null //dont kill proc after qdel()
-		ui.user.drop_inv_item_on_ground(oldsrc)
+		user.drop_inv_item_on_ground(oldsrc)
 		qdel(oldsrc)
 
 	if(istype(new_item,/obj/item/stack)) //floor stacking convenience
 		var/obj/item/stack/stack_item = new_item
-		for(var/obj/item/stack/found_item in ui.user.loc)
+		for(var/obj/item/stack/found_item in user.loc)
 			if(stack_item.stack_id == found_item.stack_id && stack_item != found_item)
 				var/diff = found_item.max_amount - found_item.amount
 				if (stack_item.amount < diff)
@@ -250,7 +256,7 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 					found_item.amount += diff
 				break
 
-	new_item?.add_fingerprint(ui.user)
+	new_item?.add_fingerprint(user)
 
 	//BubbleWrap - so newly formed boxes are empty
 	if(isstorage(new_item))

@@ -72,7 +72,7 @@
 
 /mob/dead/observer/verb/toggle_ghostsee()
 	set name = "Toggle Ghost Vision"
-	set desc = "Toggles your ability to see things only ghosts can see, like other ghosts"
+	set desc = "Toggles your ability to see things only ghosts can see, like other ghosts."
 	set category = "Ghost.Settings"
 	ghostvision = !ghostvision
 	if(ghostvision)
@@ -91,30 +91,10 @@
 
 	var/turf/spawn_turf
 	if(ismob(body))
+		ghostize_appearance(body)
 		spawn_turf = get_turf(body) //Where is the body located?
 		attack_log = body.attack_log //preserve our attack logs by copying them to our ghost
 		life_kills_total = body.life_kills_total //kills also copy over
-
-		appearance = body.appearance
-		underlays.Cut()
-		base_transform = matrix(body.base_transform)
-		body.alter_ghost(src)
-		apply_transform(matrix())
-
-		own_orbit_size = body.get_orbit_size()
-
-		desc = initial(desc)
-
-		alpha = 127
-		invisibility = INVISIBILITY_OBSERVER
-		plane = GHOST_PLANE
-		layer = ABOVE_FLY_LAYER
-		mouse_opacity = MOUSE_OPACITY_ICON // In case we were weed_food
-
-		sight |= SEE_TURFS|SEE_MOBS|SEE_OBJS|SEE_SELF
-		see_invisible = INVISIBILITY_OBSERVER
-		see_in_dark = 100
-
 		mind = body.mind //we don't transfer the mind but we keep a reference to it.
 
 	if(!own_orbit_size)
@@ -150,6 +130,24 @@
 	verbs -= /mob/verb/pickup_item
 	verbs -= /mob/verb/pull_item
 
+
+/mob/dead/observer/proc/ghostize_appearance(mob/body)
+	appearance = body.appearance
+	underlays.Cut()
+	base_transform = matrix(body.base_transform)
+	body.alter_ghost(src)
+	apply_transform(matrix())
+	own_orbit_size = body.get_orbit_size()
+	desc = initial(desc)
+	alpha = 127
+	invisibility = INVISIBILITY_OBSERVER
+	plane = GHOST_PLANE
+	layer = ABOVE_FLY_LAYER
+	mouse_opacity = MOUSE_OPACITY_ICON // In case we were weed_food
+	sight |= SEE_TURFS|SEE_MOBS|SEE_OBJS|SEE_SELF
+	see_invisible = INVISIBILITY_OBSERVER
+	see_in_dark = 100
+
 /mob/dead/observer/proc/set_lighting_alpha_from_pref(client/ghost_client)
 	var/vision_level = ghost_client?.prefs?.ghost_vision_pref
 	switch(vision_level)
@@ -183,7 +181,7 @@
 	observe_target_mob = null
 	observe_target_client = null
 
-	client.eye = src
+	client.set_eye(src)
 	hud_used.show_hud(hud_used.hud_version, src)
 	UnregisterSignal(src, COMSIG_MOVABLE_MOVED)
 
@@ -205,6 +203,11 @@
 		/atom/movable/screen/escape_menu,
 		/atom/movable/screen/buildmode,
 		/obj/effect/detector_blip,
+		/atom/movable/screen/minimap_tool,
+		/atom/movable/screen/exit_map,
+		/atom/movable/screen/minimap,
+		/atom/movable/screen/exit_map,
+		/atom/movable/screen/minimap_locator,
 	))
 
 	if(!client)
@@ -274,7 +277,7 @@
 		return
 
 	client.clear_screen()
-	client.eye = carbon_target
+	client.set_eye(carbon_target)
 	observe_target_mob = carbon_target
 
 	carbon_target.auto_observed(src)
@@ -374,9 +377,7 @@
 	if(href_list["join_xeno"])
 		join_as_alien()
 	if(href_list[NOTIFY_USCM_TACMAP])
-		GLOB.uscm_tacmap_status.tgui_interact(src)
-	if(href_list[NOTIFY_XENO_TACMAP])
-		GLOB.xeno_tacmap_status.tgui_interact(src)
+		view_tacmaps()
 
 /mob/dead/observer/proc/set_huds_from_prefs()
 	if(!client || !client.prefs)
@@ -500,8 +501,8 @@ Works together with spawning an observer, noted above.
 	if(ghost.client)
 		ghost.client.init_verbs()
 		ghost.client.change_view(GLOB.world_view_size) //reset view range to default
-		ghost.client.pixel_x = 0 //recenters our view
-		ghost.client.pixel_y = 0
+		ghost.client.set_pixel_x(0) //recenters our view
+		ghost.client.set_pixel_y(0)
 		ghost.set_lighting_alpha_from_pref(ghost.client)
 		if(ghost.client.soundOutput)
 			ghost.client.soundOutput.update_ambience()
@@ -666,7 +667,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 /mob/dead/observer/verb/teleport_z_up()
 	set category = "Ghost.Movement"
 	set name = "Move Up"
-	set desc = "Move up a z level"
+	set desc = "Move up a z level."
 
 	var/turf/above = SSmapping.get_turf_above(get_turf(src))
 
@@ -676,7 +677,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 /mob/dead/observer/verb/teleport_z_down()
 	set category = "Ghost.Movement"
 	set name = "Move Down"
-	set desc = "Move down a z level"
+	set desc = "Move down a z level."
 
 	var/turf/below = SSmapping.get_turf_below(get_turf(src))
 
@@ -740,10 +741,30 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		last_health_display.target_mob = target
 	last_health_display.look_at(src, DETAIL_LEVEL_FULL, bypass_checks = TRUE)
 
+/mob/dead/observer/verb/restore_ghost_appearance()
+	set category = "Ghost.Body"
+	set name = "Restore Ghost Character"
+	set desc = "Restore your ghost character's name and appearance from your preferences."
+
+	if(!client?.prefs)
+		to_chat(src, SPAN_NOTICE("Somehow, you have no preferences."))
+		return
+
+	if(!client.prefs.preview_dummy)
+		client.prefs.update_preview_icon()
+	ghostize_appearance(client.prefs.preview_dummy)
+	QDEL_NULL(client.prefs.preview_dummy)
+
+	var/real_name = client.prefs.real_name
+	name = real_name
+	real_name = real_name
+
+	to_chat(client, SPAN_NOTICE("Appearance reset."))
+
 /mob/dead/observer/verb/follow_local(mob/target in GLOB.mob_list)
 	set category = "Ghost.Follow"
 	set name = "Follow Local Mob"
-	set desc = "Follow on-screen mob"
+	set desc = "Follow on-screen mob."
 
 	do_observe(target)
 
@@ -801,7 +822,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 /mob/dead/observer/verb/dead_teleport_mob() //Moves the ghost instead of just changing the ghosts's eye -Nodrak
 	set category = "Ghost"
 	set name = "Teleport to Mob"
-	set desc = "Teleport to a mob"
+	set desc = "Teleport to a mob."
 
 	if(istype(usr, /mob/dead/observer)) //Make sure they're an observer!
 
@@ -914,6 +935,11 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set category = "Ghost.View"
 	GLOB.crew_manifest.open_ui(src)
 
+/mob/dead/observer/verb/view_tacmaps()
+	set name = "View Tacmaps"
+	set category = "Ghost.View"
+	GLOB.tacmap_viewer.tgui_interact(src)
+
 /mob/dead/verb/hive_status()
 	set name = "Hive Status"
 	set desc = "Check the status of the hive."
@@ -930,7 +956,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			last_hive_checked = hive
 
 	if(!length(hives))
-		to_chat(src, SPAN_ALERT("There seem to be no living hives at the moment"))
+		to_chat(src, SPAN_ALERT("There seem to be no living hives at the moment."))
 		return
 	else if(length(hives) == 1) // Only one hive, don't need an input menu for that
 		last_hive_checked.hive_ui.open_hive_status(src)
@@ -942,26 +968,9 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 		GLOB.hive_datum[hives[faction]].hive_ui.open_hive_status(src)
 
-/mob/dead/observer/verb/view_uscm_tacmap()
-	set name = "View USCM Tacmap"
-	set category = "Ghost.View"
-
-	GLOB.uscm_tacmap_status.tgui_interact(src)
-
-/mob/dead/observer/verb/view_xeno_tacmap()
-	set name = "View Xeno Tacmap"
-	set category = "Ghost.View"
-
-	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
-	if(!hive || !length(hive.totalXenos))
-		to_chat(src, SPAN_ALERT("There seems to be no living normal hive at the moment"))
-		return
-
-	GLOB.xeno_tacmap_status.tgui_interact(src)
-
 /mob/dead/observer/verb/view_faxes()
 	set name = "View Sent Faxes"
-	set desc = "View faxes from this round"
+	set desc = "View faxes from this round."
 	set category = "Ghost.View"
 
 	var/list/options = list(
@@ -1347,7 +1356,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		var/mob/living/carbon/human/H = mind.original
 		if(istype(H))
 			ref = WEAKREF(H)
-		GLOB.data_core.manifest_modify(name, ref, null, null, "*Deceased*")
+		GLOB.data_core.manifest_modify(name, ref, null, null, "Deceased")
 
 
 /mob/dead/observer/verb/view_kill_feed()

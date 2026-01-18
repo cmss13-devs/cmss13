@@ -610,7 +610,7 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 /obj/structure/machinery/computer/orbital_cannon_console/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "OrbitalCannonConsole", "[src.name]")
+		ui = new(user, src, "OrbitalCannonConsole", "[capitalize(name)]")
 		ui.open()
 
 /obj/structure/machinery/computer/orbital_cannon_console/ui_state(mob/user)

@@ -135,3 +135,12 @@
       of closing it.
   - bugfix: message about opening a bag only appears when opening a stasis bag with
       a mob inside
+2026-01-18:
+  Drathek:
+  - rscdel: Removed the depreciated discord link verb and various discord link/certify
+      code
+  - config: Added optional CODE_MODIFICATIONS_MESSAGE config for the Show Server Revision
+      verb
+2026-01-19:
+  realforest2001:
+  - rscadd: Cryoing as a predator will now open the slot again.

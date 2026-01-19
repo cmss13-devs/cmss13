@@ -1,0 +1,5 @@
+author: "Syndro101"
+delete-after: True
+changes:
+  - bugfix: "fixed issues outlined in issue 5966 with semiotics, lights and cameras"
+  - maptweak: "tweaked ship lights, cameras and semiotics"

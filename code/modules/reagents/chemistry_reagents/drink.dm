@@ -16,6 +16,7 @@
 	var/adj_dizzy = 0
 	var/adj_drowsy = 0
 	var/adj_sleepy = 0
+	preferred_delivery = INGESTION | CONTROLLED_INGESTION
 
 /datum/reagent/drink/on_mob_life(mob/living/M, alien, delta_time)
 	. = ..()
@@ -550,14 +551,14 @@
 //***************************************Remove When Safe**********************************************/
 //*****************************************************************************************************/
 
-/datum/reagent/atomicbomb
+/datum/reagent/drink/atomicbomb
 	name = "Atomic Bomb"
 	id = "atomicbomb"
 	description = "Nuclear proliferation never tasted so good."
 	reagent_state = LIQUID
 	color = "#666300" // rgb: 102, 99, 0
 
-/datum/reagent/atomicbomb/on_mob_life(mob/living/M)
+/datum/reagent/drink/atomicbomb/on_mob_life(mob/living/M)
 	. = ..()
 	if(!.)
 		return
@@ -577,14 +578,14 @@
 			M.sleeping++
 			M.apply_damage(2, TOX)
 
-/datum/reagent/gargle_blaster
+/datum/reagent/drink/gargle_blaster
 	name = "Pan-Galactic Gargle Blaster"
 	id = "gargleblaster"
 	description = "Whoah, this stuff looks volatile!"
 	reagent_state = LIQUID
 	color = "#664300" // rgb: 102, 67, 0
 
-/datum/reagent/gargle_blaster/on_mob_life(mob/living/M)
+/datum/reagent/drink/gargle_blaster/on_mob_life(mob/living/M)
 	. = ..()
 	if(!.)
 		return
@@ -603,14 +604,14 @@
 	else if(data >=200)
 		M.apply_damage(2, TOX)
 
-/datum/reagent/neurotoxin
+/datum/reagent/drink/neurotoxin
 	name = "Neurotoxin"
 	id = "neurotoxin"
 	description = "A strong neurotoxin that puts the subject into a death-like state."
 	reagent_state = LIQUID
 	color = "#2E2E61" // rgb: 46, 46, 97
 
-/datum/reagent/neurotoxin/on_mob_life(mob/living/carbon/M)
+/datum/reagent/drink/neurotoxin/on_mob_life(mob/living/carbon/M)
 	. = ..()
 	if(!.)
 		return
@@ -630,14 +631,14 @@
 	else if(data >=200)
 		M.apply_damage(2, TOX)
 
-/datum/reagent/hippies_delight
+/datum/reagent/drink/hippies_delight
 	name = "Hippies' Delight"
 	id = "hippiesdelight"
 	description = "You just don't get it maaaan."
 	reagent_state = LIQUID
 	color = "#664300" // rgb: 102, 67, 0
 
-/datum/reagent/hippies_delight/on_mob_life(mob/living/M)
+/datum/reagent/drink/hippies_delight/on_mob_life(mob/living/M)
 	. = ..()
 	if(!.)
 		return

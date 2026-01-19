@@ -46,7 +46,7 @@
 
 	if(reagents.total_volume)
 		reagents.set_source_mob(user)
-		reagents.trans_to_ingest(M, 10)
+		reagents.trans_to_ingest(M, 10, method = INGESTION)
 	playsound(M.loc,'sound/items/drink.ogg', 15, 1)
 	return TRUE
 
@@ -81,7 +81,7 @@
 			to_chat(user, SPAN_DANGER("You can't add any more to [target]."))
 			return
 		var/trans = src.reagents.trans_to(target, amount_per_transfer_from_this)
-		to_chat(user, SPAN_NOTICE(" You transfer [trans] units of the condiment to [target]."))
+		to_chat(user, SPAN_NOTICE("You transfer [trans] units of the condiment to [target]."))
 
 /obj/item/reagent_container/food/condiment/on_reagent_change()
 	if(static_container_icon) //Noooo, don't turn me into a marketable enzyme/condiment bottle, I have my own icon and description!

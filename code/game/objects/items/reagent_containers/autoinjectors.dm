@@ -20,6 +20,7 @@
 	magfed = FALSE
 	starting_vial = null
 	transparent = FALSE
+	skilllock = SKILL_MEDICAL_DEFAULT
 	var/uses_left = 3
 	var/mixed_chem = FALSE
 	var/display_maptext = FALSE
@@ -45,6 +46,7 @@
 
 /obj/item/reagent_container/hypospray/autoinjector/attack(mob/M, mob/user)
 	if(uses_left <= 0)
+		to_chat(user, SPAN_DANGER("[src] is empty."))
 		return
 	. = ..()
 	if(!.)
@@ -99,6 +101,7 @@
 	desc = "An EZ autoinjector loaded with 3 doses of 15u of Tricordrazine, a weak general use medicine for treating damage. You can refill it at Wey-Med vending machines and it does not require any training to use."
 	icon_state = "emptyskill"
 	skilllock = SKILL_MEDICAL_DEFAULT
+	mode = INJECTOR_MODE_SKILLESS
 	maptext_label = "EzTc"
 
 /obj/item/reagent_container/hypospray/autoinjector/adrenaline
@@ -109,6 +112,7 @@
 	volume = (LOWM_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 	display_maptext = TRUE
 	maptext_label = "Ep"
+	mode = INJECTOR_MODE_SKILLESS
 
 /obj/item/reagent_container/hypospray/autoinjector/dexalinp
 	name = "dexalin plus autoinjector"
@@ -118,6 +122,7 @@
 	volume = 3
 	display_maptext = TRUE
 	maptext_label = "D+"
+	mode = INJECTOR_MODE_FAST // look, its still gonna be just as good as injecting normally
 
 /obj/item/reagent_container/hypospray/autoinjector/chloralhydrate
 	name = "anesthetic autoinjector"
@@ -149,6 +154,7 @@
 	desc = "An EZ autoinjector loaded with 3 doses of 15u of Tramadol, a weak but effective painkiller for normal wounds. You can refill it at Wey-Med vending machines and it doesn't require any training to use."
 	icon_state = "emptyskill"
 	skilllock = SKILL_MEDICAL_DEFAULT
+	mode = INJECTOR_MODE_SKILLESS
 	maptext_label = "EzTr"
 
 /obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless/one_use
@@ -185,6 +191,7 @@
 	desc = "An EZ autoinjector loaded with 3 doses of 15u of Kelotane, a common burn medicine. Doesn't require any training to use. You can refill it at Wey-Med vending machines."
 	icon_state = "emptyskill"
 	skilllock = SKILL_MEDICAL_DEFAULT
+	mode = INJECTOR_MODE_SKILLESS
 	display_maptext = TRUE
 	maptext_label = "EzKl"
 
@@ -213,6 +220,7 @@
 	desc = "An EZ autoinjector loaded with 3 doses of 15u of Bicaridine, a common brute and circulatory damage medicine. Doesn't require any training to use."
 	icon_state = "emptyskill"
 	skilllock = SKILL_MEDICAL_DEFAULT
+	mode = INJECTOR_MODE_SKILLESS
 	display_maptext = TRUE
 	maptext_label = "EzBi"
 
@@ -241,6 +249,7 @@
 	desc = "An EZ autoinjector loaded with 3 doses of 15u of Dylovene, a common toxin damage medicine. Doesn't require any training to use. You can refill it at Wey-Med vending machines."
 	icon_state = "emptyskill"
 	skilllock = SKILL_MEDICAL_DEFAULT
+	mode = INJECTOR_MODE_SKILLESS
 	display_maptext = TRUE
 	maptext_label = "EzDy"
 
@@ -378,6 +387,7 @@
 	volume = REAGENTS_OVERDOSE
 	uses_left = 1
 	black_market_value = 25
+	mode = INJECTOR_MODE_SKILLESS // obviously
 
 /obj/item/reagent_container/hypospray/autoinjector/yautja/attack(mob/M as mob, mob/user as mob)
 	if(HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
@@ -411,6 +421,7 @@
 	uses_left = 1
 	display_maptext = TRUE
 	maptext_label = "OuTc"
+	mode = INJECTOR_MODE_SKILLESS // Lock the mode to skilless
 
 /obj/item/reagent_container/hypospray/autoinjector/skillless/attack(mob/M as mob, mob/user as mob)
 	. = ..()
@@ -474,6 +485,7 @@
 	icon_state = "empty_research_oneuse"
 	autoinjector_type = "autoinjector_oneuse"
 	skilllock = SKILL_MEDICAL_DEFAULT
+	mode = INJECTOR_MODE_SKILLESS
 	amount_per_transfer_from_this = 15
 	volume = 15
 	uses_left = 0

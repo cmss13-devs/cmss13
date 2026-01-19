@@ -11,7 +11,6 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 		if (length(initial(R.name)))
 			.[ckey(initial(R.name))] = t
 
-
 /datum/reagent
 	var/name = "Reagent"
 	var/id = ""
@@ -66,6 +65,12 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	var/adj_temp = 0
 	/// When adj_temp is used, this is the cap to the temperature
 	var/target_temp = 310
+	/// The preferred reagent delivery of the chemical, can have multiple, such as INGESTION | INHALATION
+	var/preferred_delivery = NO_DELIVERY
+	/// The undesired reagent delivery of the chemical, opposite of the preferred, obviously
+	var/undesired_delivery = NO_DELIVERY
+	/// How the reagent was delivered to the current holder.
+	var/delivery_method = NO_DELIVERY
 
 	var/deleted = FALSE //If the reagent was deleted
 
@@ -96,10 +101,10 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	if(!istype(M, /mob/living))
 		return FALSE
 	var/datum/reagent/self = src
-	src = null   //of the reagent to the mob on TOUCHING it.
+	src = null   //of the reagent to the mob on INHALATION of it.
 
 	if(self.holder) //for catching rare runtimes
-		if(method == TOUCH && permeable && !istype(self.holder.my_atom, /obj/effect/particle_effect/smoke/chem))
+		if(method == INHALATION && permeable && !istype(self.holder.my_atom, /obj/effect/particle_effect/smoke/chem))
 			// If the chemicals are in a smoke cloud, do not try to let the chemicals "penetrate" into the mob's system (balance station 13) -- Doohl
 			var/chance = 1
 
@@ -110,8 +115,8 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 			chance = (100 - chance)
 
 			if(prob(chance))//This will need testing, I'm not confident I did it correctly.
-				if(M.reagents)
-					M.reagents.add_reagent(self.id, self.volume * 0.5)
+				if(M.reagents) // pass the method too
+					M.reagents.add_reagent(self.id, self.volume * 0.5, TOUCH)
 
 		for(var/datum/chem_property/property in self.properties)
 			var/potency = property.level * LEVEL_TO_POTENCY_MULTIPLIER
@@ -190,6 +195,22 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 		//A level of 1 == 0.5 potency, which is equal to REM (0.2/0.4) in the old system
 		//That means the level of the property by default is the number of REMs the effect had in the old system
 		var/potency = mods[REAGENT_EFFECT] * ((P.level+mods[REAGENT_BOOST]) * LEVEL_TO_POTENCY_MULTIPLIER)
+		var/delivery_outcome = calc_delivery_spectrum(delivery_method) // let me know if this needs to be moved out, this might be processing intensive - nihi
+
+		switch(delivery_outcome)
+			if(DELIVERY_LESSER_EFFECT)
+				potency *= 0.5 // or some other factor
+			if(DELIVERY_NO_EFFECT)
+				potency = 0
+			if(DELIVERY_NEGATIVE_EFFECT)
+				P.process_overdose(M, potency, delta_time)
+				// if you are overdosing an improper delivery, kill them further
+				if(overdose && volume > overdose)
+					P.process_critical(M, potency, delta_time)
+				var/overdose_message = "improper delivery of [istype(src, /datum/reagent/generated) ? "custom chemical" : initial(name)]"
+				M.last_damage_data = create_cause_data(overdose_message, last_source_mob?.resolve())
+				potency = 0 // Don't apply normal effects
+
 		if(potency <= 0)
 			continue
 		P.process(M, potency, delta_time)
@@ -268,6 +289,9 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	flags = C.flags
 	lockdown_chem = C.lockdown_chem
 	credit_reward = C.credit_reward
+	preferred_delivery = C.preferred_delivery
+	undesired_delivery = C.undesired_delivery
+	delivery_method = C.delivery_method
 
 /datum/chemical_reaction/proc/make_alike(datum/chemical_reaction/C)
 	if(!C)
@@ -383,5 +407,59 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 		var/mob/living/carbon/human/H = holder.my_atom
 		H.pain.reset_pain_reduction()
 
+
+/datum/reagent/proc/calc_delivery_spectrum(method=TOUCH)
+	if(undesired_delivery & method || undesired_delivery == ANY_DELIVERY) // check the unpreferred first since we wanna fuck over any kind of bug abusers if they find a way to game this shit
+		return DELIVERY_NEGATIVE_EFFECT
+	if(preferred_delivery == NO_DELIVERY || preferred_delivery & method || preferred_delivery == ANY_DELIVERY) // we deliver the preferred effect for no_delivery as it would be better to assume that a future contrib forgot to set it, than to not have it - nihi
+		return DELIVERY_PREFERRED_EFFECT
+
+	var/preferred_indices = list()
+	var/delivery_index = 0
+
+	for(var/index = 1 to GLOB.delivery_spectrum.len)
+		if(preferred_delivery & GLOB.delivery_spectrum[index])
+			preferred_indices += index
+		if(method & GLOB.delivery_spectrum[index])
+			delivery_index = index
+
+	var/min_distance = GLOB.delivery_spectrum.len
+	for(var/preferred_index in preferred_indices)
+		min_distance = min(min_distance, abs(preferred_index - delivery_index))
+
+	switch(min_distance)
+		if(0)
+			return DELIVERY_PREFERRED_EFFECT
+		if(1) // one step away on the spectrum
+			return DELIVERY_LESSER_EFFECT
+		if(2) // two steps away
+			return DELIVERY_NO_EFFECT
+		else // three or more steps away
+			return DELIVERY_NEGATIVE_EFFECT
+
 /datum/reagent/proc/process_non_property_effects(mob/living/M, list/mods, delta_time)
 	return
+
+/// convert delivery method to a string for healthscan displays
+/datum/reagent/proc/delivery_method_to_string(delivery_method)
+	if(!delivery_method || delivery_method == NO_DELIVERY)
+		return " - DV: Unknown"
+
+	var/list/methods = list()
+	switch(delivery_method)
+		if(CONTROLLED_INGESTION)
+			methods += "Controlled Ingestion"
+		if(INGESTION)
+			methods += "Ingestion"
+		if(INHALATION)
+			methods += "Inhalation"
+		if(TOUCH)
+			methods += "Touch"
+		if(ABSORPTION)
+			methods += "Absorption"
+		if(INJECTION)
+			methods += "Injection"
+		if(IMPLANTATION)
+			methods += "Implantation"
+
+	return " - DV: [english_list(methods)]"

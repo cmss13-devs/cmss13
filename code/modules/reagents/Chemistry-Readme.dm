@@ -1,6 +1,8 @@
 /*
 NOTE: IF YOU UPDATE THE REAGENT-SYSTEM, ALSO UPDATE THIS README.
 
+2025 NOTE: THIS README IS POSSIBLY, MORE THAN LIKELY, IS EXTREMELY OUTDATED.
+
 Structure: ///////////////////   //////////////////////////
 		   // Mob or object // -------> // Reagents var (datum) // Is a reference to the datum that holds the reagents.
 		   ///////////////////   //////////////////////////

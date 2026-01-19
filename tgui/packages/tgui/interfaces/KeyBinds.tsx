@@ -85,6 +85,18 @@ export const KeyBinds = (props) => {
         val.full_name.toLowerCase().match(replaceRegexChars(searchTerm)),
     );
 
+  const filteredCustomKeybinds = custom_keybinds
+    .map((keybind, index) => ({ keybind, index }))
+    .filter(({ keybind }) => {
+      if (!searchTerm) return true;
+      if (!keybind?.contents) return false;
+      const contents =
+        typeof keybind.contents === 'object'
+          ? keybind.contents.join(' ')
+          : keybind.contents;
+      return contents.toLowerCase().match(replaceRegexChars(searchTerm));
+    });
+
   return (
     <Window width={400} height={500}>
       <Window.Content scrollable>
@@ -129,17 +141,30 @@ export const KeyBinds = (props) => {
                             .join('+');
                           // targetKey's entry in player_keybinds.
                           const targetEntry = player_keybinds[targetKey];
-                          if (!targetEntry) {
-                            return;
+                          // Check regular keybinds first
+                          if (targetEntry) {
+                            // If a keybind was found, scroll to the first match currently rendered.
+                            for (let i = 0; i < targetEntry.length; i++) {
+                              const element = document.getElementById(
+                                targetEntry[i],
+                              );
+                              if (element) {
+                                element.scrollIntoView();
+                                return;
+                              }
+                            }
                           }
-                          // If a keybind was found, scroll to the first match currently rendered.
-                          for (let i = 0; i < targetEntry.length; i++) {
-                            const element = document.getElementById(
-                              targetEntry[i],
-                            );
-                            if (element) {
-                              element.scrollIntoView();
-                              break;
+                          // Check custom keybinds
+                          for (let i = 0; i < custom_keybinds.length; i++) {
+                            const customKeybind = custom_keybinds[i];
+                            if (customKeybind?.keybinding === targetKey) {
+                              const element = document.getElementById(
+                                `custom-keybind-${i}`,
+                              );
+                              if (element) {
+                                element.scrollIntoView();
+                                return;
+                              }
                             }
                           }
                         }}
@@ -159,50 +184,53 @@ export const KeyBinds = (props) => {
             </Section>
           </Flex.Item>
           <Flex direction="column">
-            {selectedTab === 'CUSTOM' ? (
-              <Section title="Custom Keybinds">
-                {custom_keybinds.map((keybind, index) => (
-                  <CustomKeybinds
-                    keybind={keybind}
-                    index={index}
-                    key={`kb${index}`}
-                  />
-                ))}
-              </Section>
-            ) : selectedTab === 'ALL' && !searchTerm.length ? (
-              Object.keys(glob_keybinds).map((category) => (
-                <Flex.Item key={category}>
-                  <Section title={category}>
-                    <Flex direction="column">
-                      {glob_keybinds[category].map((keybind) => (
-                        <Flex.Item key={keybind}>
-                          <KeybindElement keybind={keybind} />
-                          <Box
-                            backgroundColor="rgba(40, 40, 40, 255)"
-                            width="100%"
-                            height="2px"
-                            mt="2px"
-                          />
-                        </Flex.Item>
-                      ))}
-                    </Flex>
-                  </Section>
-                </Flex.Item>
-              ))
-            ) : (
-              filteredKeybinds &&
-              filteredKeybinds.map((keybind) => (
-                <Flex.Item key={keybind.full_name}>
-                  <KeybindElement keybind={keybind} />
-                  <Box
-                    backgroundColor="rgba(40, 40, 40, 255)"
-                    width="100%"
-                    height="2px"
-                    mt="2px"
-                  />
-                </Flex.Item>
-              ))
-            )}
+            {(selectedTab === 'CUSTOM' || searchTerm.length > 0) &&
+              filteredCustomKeybinds.length > 0 && (
+                <Section title="Custom Keybinds">
+                  {filteredCustomKeybinds.map(({ keybind, index }) => (
+                    <CustomKeybinds
+                      keybind={keybind}
+                      index={index}
+                      key={`kb${index}`}
+                    />
+                  ))}
+                </Section>
+              )}
+            {selectedTab !== 'CUSTOM' &&
+              (selectedTab === 'ALL' && !searchTerm.length ? (
+                Object.keys(glob_keybinds).map((category) => (
+                  <Flex.Item key={category}>
+                    <Section title={category}>
+                      <Flex direction="column">
+                        {glob_keybinds[category].map((keybind) => (
+                          <Flex.Item key={keybind}>
+                            <KeybindElement keybind={keybind} />
+                            <Box
+                              backgroundColor="rgba(40, 40, 40, 255)"
+                              width="100%"
+                              height="2px"
+                              mt="2px"
+                            />
+                          </Flex.Item>
+                        ))}
+                      </Flex>
+                    </Section>
+                  </Flex.Item>
+                ))
+              ) : (
+                filteredKeybinds &&
+                filteredKeybinds.map((keybind) => (
+                  <Flex.Item key={keybind.full_name}>
+                    <KeybindElement keybind={keybind} />
+                    <Box
+                      backgroundColor="rgba(40, 40, 40, 255)"
+                      width="100%"
+                      height="2px"
+                      mt="2px"
+                    />
+                  </Flex.Item>
+                ))
+              ))}
           </Flex>
         </Flex>
       </Window.Content>
@@ -285,7 +313,7 @@ const CustomKeybinds = (props: {
 
   if (isEditingContents) {
     return (
-      <Flex.Item key={`idx${index}`}>
+      <Flex.Item key={`idx${index}`} id={`custom-keybind-${index}`}>
         <Flex direction="column">
           <Flex.Item>
             <Box fontSize="115%" color="label" mb={1}>
@@ -376,7 +404,7 @@ const CustomKeybinds = (props: {
     : 'Unset';
 
   return (
-    <Flex.Item key={`idx${index}`}>
+    <Flex.Item key={`idx${index}`} id={`custom-keybind-${index}`}>
       <Flex align="center">
         <Flex.Item basis="10%" shrink={0}>
           <Box fontSize="115%" color="label">

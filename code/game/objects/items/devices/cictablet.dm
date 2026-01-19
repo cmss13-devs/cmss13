@@ -76,8 +76,6 @@
 	if(!on)
 		return UI_DISABLED
 
-	return UI_INTERACTIVE
-
 /obj/item/device/cotablet/ui_state(mob/user)
 	return GLOB.not_incapacitated_and_inventory_state
 

@@ -1,0 +1,146 @@
+2026-01-01:
+  MistChristmas:
+  - bugfix: Ghosts no longer able to move items out of open inventories when orbiting
+  Nihisohel:
+  - rscadd: Adds spare almayer general keys to requisitions for non-marines such as
+      survivors
+  - bugfix: Fixes intel headsets losing their almayer general comms when their intel
+      key is removed
+  - code_imp: Repaths all instances of encryptionkey/public to encryptionkey/almayer
+      for less confusion
+2026-01-03:
+  Doc12693420:
+  - bugfix: UPP Serzhant survivors can now use their QYJ-42
+  Git-Nivrak:
+  - bugfix: You can no longer pounce up a zlevel into places which would get you stuck
+  - bugfix: You can no longer pounce over indestructible obstacles (e.g fog)
+  Puckaboo2:
+  - bugfix: All steps in eye surgeries now have sounds.
+  - bugfix: If the patient is blind or nearsighted and has 0 eye damage, you can still
+      initiate eye surgery. A patient now needs to either have eye damage or be blind/nearsighted
+      to need surgery.
+  - qol: Makes eye surgery steps more descriptive.
+  - qol: If you cured blindness or nearsightedness, you get extra flavor text and
+      a pat on the back (from Puck)
+  - balance: Changes eye surgery steps. It's now Scalpel, Hemostat, Retractor, FixoVein,
+      Cautery. Pretend you're doing internal bleeding on the eyes and you will be
+      fine.
+  - balance: Eye surgery now requires Oxycodone instead of getting away with inaprovaline.
+      Eyes have some of the greatest concentrations of nociceptive nerves in the human
+      body and must be fully numbed for LASIK or to be be completely anesthetized
+      in real life for an operation to commence.
+2026-01-04:
+  Puckaboo2:
+  - bugfix: Xeno spit overlays should return to their original function.
+2026-01-07:
+  Puckaboo2:
+  - bugfix: Autodoc now properly does the new eye surgery steps.
+  - rscdel: Removed Spitter Frenzy's macro. Replaced it with Charge Spit.
+  - bugfix: Spitter Frenzy should not show up in Spitter's Alien sidebar.
+  - bugfix: Charge Spit should appear in Spitter's Alien sidebar.
+  - bugfix: The FIX ME icon state no longer appears on the cycle helmet HUD button
+      if you're toggling the Squad Optic.
+  Unknownity  Wei:
+  - rscadd: Added two new factions the PMCs and Historical/Miscallenous prey to the
+      Hunting Grounds pool.
+  - rscadd: Despoiler has been added to Hunting Grounds xenomorph T3 pool.
+  - rscadd: CLF Specialist has been added to the Hunting Grounds CLF pool.
+  - bugfix: Fixes USCM Smartgunner being hungry in the Hunting Grounds.
+  - bugfix: Fixes objectives not appearing for certain ERTs.
+  - bugfix: Fixes the super top hat appearing incorrectly on the mob.
+  Venuska1117:
+  - bugfix: Abduct can no longer can pass through wall griders.
+2026-01-08:
+  Drathek:
+  - server: Map DB stats now save correctly
+  Killfish:
+  - refactor: Refactored Xeno Fire Immunity Code
+  Nihisohel:
+  - qol: You can now walk over small simple mobs (E.G. Rats) rather than swapping
+      positions with them
+  - balance: Reasonably small mobs (E.G Corgi Puppies, Larva, Facehuggers) now require
+      sprite clicking to be hit by throwing weapons
+  - code_imp: Adds a few simple mob parents, allows small simple_mob types to vent
+      crawl
+  Puckaboo2:
+  - bugfix: Fixes Data Detector's action button icon from displaying FIX ME when toggled.
+  - bugfix: Fixes Data Detector's action button icon not switching when clicking the
+      data detector in-hand.
+  - bugfix: Pharmaceutical Physician is now medical green on the crew monitor.
+2026-01-11:
+  FourkhanDaKhan:
+  - balance: Nervestimulating (anti-stun) is disabled in natural generation.
+  - balance: It can still be obtained from pheromone plasma on 5X clearance.
+  - balance: Scientist and corporate survivors no longer grant research points by
+      swiping their IDs.
+  Thwomper, Nivrak:
+  - rscadd: Adds roof/sky Z-Level to all ground maps.
+2026-01-12:
+  Puckaboo2:
+  - bugfix: Removes the random chance that Hunted Freelancers only spawn with beanbags
+      with their Type-23.
+  Xander3359:
+  - qol: Switching hands unwields.
+  aquariofury:
+  - balance: Players can no longer fire weapons while looking up or down ladders
+2026-01-14:
+  Drathek:
+  - bugfix: SDQL can search for closets, cables, and vehicles
+2026-01-16:
+  MistChristmas:
+  - bugfix: Nettles and Death nettles can be picked up when you have gloves on
+2026-01-17:
+  Drathek:
+  - bugfix: SHARP operator pick is now stat tracked
+  - bugfix: Fixed an interaction loop for HMG/M2C with ladders
+  - bugfix: Fixed ladders not always unregistering a signal
+  - bugfix: Fixed a way for SSinactivity to runtime
+  Git-Nivrak:
+  - bugfix: Fixes HPR being able to fire 360 degrees while bipoded without undeploying
+  - refactor: Refactored reg_in_areas_in_z logic to address overtime issues
+  MistChristmas:
+  - bugfix: Inventory hotkeys don't let you use them if your lying down, restrained
+      or nested.
+  - bugfix: Acid Harness no longer warns of erroneous ODs when you have more than
+      one reagent
+  - bugfix: Round-Start nested corpses no longer block projectiles like bullets.
+  - bugfix: Coffee Machine no longer generates a magical cup when you brew coffee
+      with your hands full.
+  - ui: Tweaks to make the L and R in strip menu not move.
+  Nihisohel:
+  - balance: The spare senior command headset is now incapable of broadcasting a live
+      tacmap, you know who you are giving it away to grunts.
+  - code_imp: The CO tablet closet now spawns its contents upon initialization, rather
+      than mapped in
+  - bugfix: SEAs get their MP radio channel back.
+  Puckaboo2:
+  - balance: Hunting Ground marines no longer start with a full belly, but normal
+      belly.
+  - bugfix: Hunting Ground Smartgunners no longer start with an empty belly.
+  - code_imp: Fixes some spacing errors.
+  - spellcheck: Spellchecks some stuff.
+  Xander3359:
+  - qol: Clicking on something with a roller bed will buckle directly on the bed once
+      it's deployed
+  aquariofury:
+  - bugfix: Prevents things with ITEM_ABSTRACT from being put into linen bins
+  larentoun:
+  - bugfix: Chestbursting mutated larva will now have mutated icon.
+  realforest2001:
+  - admin: Xeno slashes against mobs now log their location.
+  zzzmike:
+  - admin: added logging in attack log for when people open stasis bags to grief the
+      hugged people inside
+  - qol: stasis bags now check for the open/close cooldown when opening the bag instead
+      of closing it.
+  - bugfix: message about opening a bag only appears when opening a stasis bag with
+      a mob inside
+2026-01-18:
+  Drathek:
+  - rscdel: Removed the depreciated discord link verb and various discord link/certify
+      code
+  - config: Added optional CODE_MODIFICATIONS_MESSAGE config for the Show Server Revision
+      verb
+2026-01-19:
+  realforest2001:
+  - rscadd: Cryoing as a predator will now open the slot again.

@@ -660,7 +660,7 @@
 	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
 		return FALSE
 
-	if(caste.fire_immunity & FIRE_IMMUNITY_NO_DAMAGE)
+	if(fire_immunity & (FIRE_IMMUNITY_NO_DAMAGE || FIRE_IMMUNITY_COMPLETE))
 		burn_amount *= 0.5
 
 	apply_damage(burn_amount, BURN)
@@ -693,7 +693,7 @@
 	target.xenos_tracking |= src
 	tracked_marker = target
 	to_chat(src, SPAN_XENONOTICE("We start tracking the [target.mark_meaning.name] resin mark."))
-	to_chat(src, SPAN_INFO("Shift click the compass to watch the mark, alt click to stop tracking"))
+	to_chat(src, SPAN_INFO("Shift click the compass to watch the mark, alt click to stop tracking."))
 
 /mob/living/carbon/xenomorph/proc/stop_tracking_resin_mark(destroyed, silent = FALSE) //tracked_marker shouldn't be nulled outside this PROC!! >:C
 	if(QDELETED(src))

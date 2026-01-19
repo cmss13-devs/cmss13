@@ -394,7 +394,7 @@
 //industructible props
 /obj/structure/prop/invuln
 	name = "instanceable object"
-	desc = "this needs to be defined by a coder"
+	desc = "This needs to be defined by a coder."
 	icon = 'icons/obj/structures/structures.dmi'
 	icon_state = "structure_lattice"
 	explo_proof = TRUE
@@ -705,13 +705,14 @@
 		attack_hand(xeno)
 		return XENO_NONCOMBAT_ACTION
 
-/obj/structure/prop/ice_colony/dense/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/prop/ice_colony/dense/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	if(unslashable)
 		return TAILSTAB_COOLDOWN_NONE
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
 	deconstruct(FALSE)
 	xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
 	SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
 
 /obj/structure/prop/ice_colony/dense/ice_tray
@@ -763,7 +764,7 @@
 	projectile_coverage = 0
 	density = FALSE
 	icon = 'icons/obj/structures/props/holiday_props.dmi'
-	desc = "parent object for temporary holiday structures. If you are reading this, go find a mapper and tell them to search up error code: TOO MUCH EGGNOG"//hello future mapper. Next time use the sub types or instance the desc. Thanks -past mapper.
+	desc = "Parent object for temporary holiday structures. If you are reading this, go find a mapper and tell them to search up error code: TOO MUCH EGGNOG"//hello future mapper. Next time use the sub types or instance the desc. Thanks -past mapper.
 	layer = 4
 	health = 50
 	anchored = TRUE
@@ -921,7 +922,7 @@
 
 /obj/structure/prop/invuln/remote_console_pod
 	name = "Remote Console Pod"
-	desc = "A drop pod used to launch remote piloting equipment to USCM areas of operation"
+	desc = "A drop pod used to launch remote piloting equipment to USCM areas of operation."
 	icon = 'icons/obj/structures/droppod_32x64.dmi'
 	icon_state = "techpod_open"
 	layer = DOOR_CLOSED_LAYER
@@ -1096,7 +1097,7 @@
 		SPAN_DANGER("You slash [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	return XENO_ATTACK_ACTION
 
-/obj/structure/prop/wooden_cross/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/prop/wooden_cross/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	if(unslashable || health <= 0)
 		return TAILSTAB_COOLDOWN_NONE
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
@@ -1107,6 +1108,7 @@
 	else
 		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
 		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
 
 /obj/structure/prop/wooden_cross/update_icon()

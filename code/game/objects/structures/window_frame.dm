@@ -1,6 +1,6 @@
 /obj/structure/window_frame
 	name = "window frame"
-	desc = "A big hole in the wall that used to sport a large window. Can be vaulted through"
+	desc = "A big hole in the wall that used to sport a large window. Can be vaulted through."
 	icon = 'icons/turf/walls/window_frames.dmi'
 	icon_state = "window0_frame"
 	layer = WINDOW_FRAME_LAYER
@@ -144,7 +144,7 @@
 	take_damage((max_health / hits_divisor) + 1)
 	return XENO_ATTACK_ACTION
 
-/obj/structure/window_frame/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/window_frame/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	if(unslashable || health <= 0)
 		return TAILSTAB_COOLDOWN_NONE
 	if(xeno.claw_type < CLAW_TYPE_SHARP)
@@ -158,6 +158,7 @@
 	else
 		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
 		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
 
 /obj/structure/window_frame/bullet_act(obj/projectile/P)

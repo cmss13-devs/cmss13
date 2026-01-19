@@ -18,7 +18,6 @@
 		zoom_out()
 
 	if(stat != DEAD) //Stop if dead. Performance boost
-
 		update_progression()
 
 		//Status updates, death etc.
@@ -34,6 +33,21 @@
 		handle_environment()
 		if(client)
 			handle_regular_hud_updates()
+			warn_away_timer()
+
+/mob/living/carbon/xenomorph/proc/warn_away_timer()
+	if(away_timer != XENO_LEAVE_TIMER - XENO_AVAILABLE_TIMER)
+		return
+	if(aghosted)
+		return
+	if(health <= 0)
+		return
+	var/area/area = get_area(src)
+	if(should_block_game_interaction(src) && (!area || !(area.flags_area & AREA_ALLOW_XENO_JOIN)))
+		return //xenos on admin z level don't count
+
+	to_chat(client, SPAN_ALERTWARNING("You are inactive and will be available to ghosts in [XENO_AVAILABLE_TIMER] second\s!"))
+	playsound_client(client, sound('sound/effects/xeno_evolveready.ogg'))
 
 /mob/living/carbon/xenomorph/proc/update_progression()
 	if(isnull(hive))
@@ -84,9 +98,9 @@
 	if(istype(G))
 		G.die()
 		drop_inv_item_on_ground(G)
-	if(!caste || !(caste.fire_immunity & FIRE_IMMUNITY_NO_DAMAGE) || fire_reagent.fire_penetrating)
-		if(caste.fire_immunity & FIRE_VULNERABILITY && caste.fire_vulnerability_mult >= 1)
-			apply_damage(PASSIVE_BURN_DAM_CALC(fire_reagent.intensityfire, fire_reagent.durationfire, fire_stacks) * caste.fire_vulnerability_mult, BURN)
+	if(!(fire_immunity & (FIRE_IMMUNITY_NO_DAMAGE || FIRE_IMMUNITY_COMPLETE)) || fire_reagent.fire_penetrating)
+		if(fire_immunity & FIRE_MODIFIER && fire_modifier_mult != 1)
+			apply_damage(PASSIVE_BURN_DAM_CALC(fire_reagent.intensityfire, fire_reagent.durationfire, fire_stacks) * fire_modifier_mult, BURN)
 		else
 			apply_damage(armor_damage_reduction(GLOB.xeno_fire, PASSIVE_BURN_DAM_CALC(fire_reagent.intensityfire, fire_reagent.durationfire, fire_stacks)), BURN)
 		INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, emote), pick("roar", "needhelp"))
@@ -185,7 +199,7 @@
 
 
 /mob/living/carbon/xenomorph/handle_regular_status_updates(regular_update = TRUE)
-	if(regular_update && health <= 0 && (!caste || (caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE) || !on_fire)) //Sleeping Xenos are also unconscious, but all crit Xenos are under 0 HP. Go figure
+	if(regular_update && health <= 0 && ((fire_immunity & (FIRE_IMMUNITY_NO_IGNITE || FIRE_IMMUNITY_COMPLETE)) || !on_fire)) //Sleeping Xenos are also unconscious, but all crit Xenos are under 0 HP. Go figure
 		if(!check_weeds_for_healing()) //In crit, damage is maximal if you're caught off weeds
 			apply_damage(2.5 - warding_aura*0.5, BRUTE) //Warding can heavily lower the impact of bleedout. Halved at 2.5 phero, stopped at 5 phero
 		else
@@ -322,9 +336,9 @@ Make sure their actual health updates immediately.*/
 	if(!current_turf || !istype(current_turf))
 		return
 
-	var/recoveryActual = (!caste || (caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE) || !on_fire) ? recovery_aura : 0
+	var/recoveryActual = ((fire_immunity & (FIRE_IMMUNITY_NO_IGNITE || FIRE_IMMUNITY_COMPLETE)) || !on_fire) ? recovery_aura : 0
 	var/env_temperature = loc.return_temperature()
-	if(caste && !(caste.fire_immunity & FIRE_IMMUNITY_NO_DAMAGE))
+	if(caste && !(fire_immunity & (FIRE_IMMUNITY_NO_DAMAGE || FIRE_IMMUNITY_COMPLETE)))
 		if(env_temperature > (T0C + 66))
 			apply_damage((env_temperature - (T0C + 66)) / 5, BURN) //Might be too high, check in testing.
 			updatehealth() //Make sure their actual health updates immediately

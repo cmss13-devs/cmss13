@@ -457,7 +457,7 @@ const CustomKeybinds = (props: {
                 };
               });
             }}
-            width="80px"
+            width="85px"
             menuWidth="85px"
           />
         </Flex.Item>

@@ -83,3 +83,64 @@
   - qol: Switching hands unwields.
   aquariofury:
   - balance: Players can no longer fire weapons while looking up or down ladders
+2026-01-14:
+  Drathek:
+  - bugfix: SDQL can search for closets, cables, and vehicles
+2026-01-16:
+  MistChristmas:
+  - bugfix: Nettles and Death nettles can be picked up when you have gloves on
+2026-01-17:
+  Drathek:
+  - bugfix: SHARP operator pick is now stat tracked
+  - bugfix: Fixed an interaction loop for HMG/M2C with ladders
+  - bugfix: Fixed ladders not always unregistering a signal
+  - bugfix: Fixed a way for SSinactivity to runtime
+  Git-Nivrak:
+  - bugfix: Fixes HPR being able to fire 360 degrees while bipoded without undeploying
+  - refactor: Refactored reg_in_areas_in_z logic to address overtime issues
+  MistChristmas:
+  - bugfix: Inventory hotkeys don't let you use them if your lying down, restrained
+      or nested.
+  - bugfix: Acid Harness no longer warns of erroneous ODs when you have more than
+      one reagent
+  - bugfix: Round-Start nested corpses no longer block projectiles like bullets.
+  - bugfix: Coffee Machine no longer generates a magical cup when you brew coffee
+      with your hands full.
+  - ui: Tweaks to make the L and R in strip menu not move.
+  Nihisohel:
+  - balance: The spare senior command headset is now incapable of broadcasting a live
+      tacmap, you know who you are giving it away to grunts.
+  - code_imp: The CO tablet closet now spawns its contents upon initialization, rather
+      than mapped in
+  - bugfix: SEAs get their MP radio channel back.
+  Puckaboo2:
+  - balance: Hunting Ground marines no longer start with a full belly, but normal
+      belly.
+  - bugfix: Hunting Ground Smartgunners no longer start with an empty belly.
+  - code_imp: Fixes some spacing errors.
+  - spellcheck: Spellchecks some stuff.
+  Xander3359:
+  - qol: Clicking on something with a roller bed will buckle directly on the bed once
+      it's deployed
+  aquariofury:
+  - bugfix: Prevents things with ITEM_ABSTRACT from being put into linen bins
+  larentoun:
+  - bugfix: Chestbursting mutated larva will now have mutated icon.
+  realforest2001:
+  - admin: Xeno slashes against mobs now log their location.
+  zzzmike:
+  - admin: added logging in attack log for when people open stasis bags to grief the
+      hugged people inside
+  - qol: stasis bags now check for the open/close cooldown when opening the bag instead
+      of closing it.
+  - bugfix: message about opening a bag only appears when opening a stasis bag with
+      a mob inside
+2026-01-18:
+  Drathek:
+  - rscdel: Removed the depreciated discord link verb and various discord link/certify
+      code
+  - config: Added optional CODE_MODIFICATIONS_MESSAGE config for the Show Server Revision
+      verb
+2026-01-19:
+  realforest2001:
+  - rscadd: Cryoing as a predator will now open the slot again.

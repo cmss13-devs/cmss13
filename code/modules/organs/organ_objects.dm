@@ -135,6 +135,11 @@
 	///the caste in a string, which is used in a xenoanalyzer
 	var/caste_origin // used for desc in xenoanalyzer
 
+/obj/item/organ/xeno/pathogen
+	name = "mycelium heart"
+	desc = "Mycelium heart removed from a strange creature."
+	black_market_value = 120
+
 //These are here so they can be printed out via the fabricator.
 /obj/item/organ/heart/prosthetic
 	name = "circulatory pump"

@@ -652,6 +652,24 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 			M = /mob/living/carbon/xenomorph/king
 		if(XENO_CASTE_DESPOILER)
 			M = /mob/living/carbon/xenomorph/despoiler
+		if(PATHOGEN_CREATURE_BURSTER)
+			M = /mob/living/carbon/xenomorph/bloodburster
+		if(PATHOGEN_CREATURE_POPPER)
+			M = /mob/living/carbon/xenomorph/popper
+		if(PATHOGEN_CREATURE_SPRINTER)
+			M = /mob/living/carbon/xenomorph/sprinter
+		if(PATHOGEN_CREATURE_NEOMORPH)
+			M = /mob/living/carbon/xenomorph/neomorph
+		if(PATHOGEN_CREATURE_BLIGHT)
+			M = /mob/living/carbon/xenomorph/blight
+		if(PATHOGEN_CREATURE_VENATOR)
+			M = /mob/living/carbon/xenomorph/venator
+		if(PATHOGEN_CREATURE_BRUTE)
+			M = /mob/living/carbon/xenomorph/brute
+		if(PATHOGEN_CREATURE_MATRIARCH)
+			M = /mob/living/carbon/xenomorph/matriarch
+//		if(PATHOGEN_CREATURE_OVERMIND)
+//			M = /mob/living/carbon/xenomorph/overmind
 	return M
 
 

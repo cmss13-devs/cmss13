@@ -141,8 +141,8 @@
 	log_interact(user, target, "[key_name(user)] started to remove an embryo from [key_name(target)]'s ribcage.")
 
 /datum/surgery_step/remove_larva/success(mob/living/carbon/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	var/obj/item/alien_embryo/A = locate() in target
-	if(A)
+	var/obj/item/alien_embryo/embryo = locate() in target
+	if(embryo)
 		if(tool)
 			user.affected_message(target,
 				SPAN_WARNING("You pull a wriggling parasite out of [target]'s ribcage!"),
@@ -168,13 +168,18 @@
 				user.apply_damage(15, BURN, "r_hand")
 
 		user.count_niche_stat(STATISTICS_NICHE_SURGERY_LARVA)
-		var/mob/living/carbon/xenomorph/larva/L = locate() in target //the larva was fully grown, ready to burst.
-		if(L)
-			L.forceMove(target.loc)
-			qdel(A)
+		var/mob/living/carbon/xenomorph/larva/larva = locate() in target //the larva was fully grown, ready to burst.
+		var/mob/living/carbon/xenomorph/bloodburster/burster = locate() in target
+		if(larva)
+			larva.forceMove(target.loc)
+			qdel(embryo)
 			user.visible_message(SPAN_HIGHDANGER("The larva was removed just in time, but is fully grown and alive!"))
+		else if(burster)
+			burster.forceMove(target.loc)
+			qdel(embryo)
+			user.visible_message(SPAN_HIGHDANGER("The bloodburster was removed just in time, but is fully grown and alive!"))
 		else
-			A.forceMove(target.loc)
+			embryo.forceMove(target.loc)
 			target.status_flags &= ~XENO_HOST
 
 		log_interact(user, target, "[key_name(user)] removed an embryo from [key_name(target)]'s ribcage with [tool ? "\the [tool]" : "their hands"], ending [surgery].")

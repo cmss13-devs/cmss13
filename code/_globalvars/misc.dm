@@ -132,3 +132,5 @@ GLOBAL_VAR(obfs_z)
 
 /// List of giant lizards that are alive.
 GLOBAL_LIST_EMPTY(giant_lizards_alive)
+
+GLOBAL_VAR_INIT(overmind_cancel, FALSE)

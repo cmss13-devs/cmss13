@@ -147,6 +147,14 @@
 					infected += list(serialized)
 				continue
 
+			if(iswalker(player))
+				var/mob/living/carbon/human/walker = player
+				serialized["caste"] = "Walker"
+				serialized["icon"] = "whiteout"
+				serialized["hivenumber"] = walker.hivenumber
+				xenos += list(serialized)
+				continue
+
 			if(ishuman(player))
 				var/mob/living/carbon/human/human = player
 				var/obj/item/card/id/id_card = human.get_idcard()

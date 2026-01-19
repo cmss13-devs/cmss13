@@ -2072,6 +2072,28 @@
 			if((R_ADMIN|R_MOD) & staff.admin_holder.rights)
 				to_chat(staff, SPAN_STAFF_IC("<b>ADMINS/MODS: [SPAN_RED("[src.owner] marked [key_name(speaker)]'s ARES message for response.")]</b>"))
 
+	if(href_list["overmind_deny"])
+		var/mob/ref_person = locate(href_list["overmind_deny"])
+		log_game("[key_name_admin(usr)] has refused the Overmind Request from [key_name_admin(ref_person)].")
+		message_admins("[key_name_admin(usr)] has refused the Overmind Request from [key_name_admin(ref_person)].", 1)
+		return
+
+	if(href_list["overmind_approve"])
+		GLOB.overmind_cancel = FALSE
+		var/mob/ref_person = locate(href_list["overmind_approve"])
+		message_admins("[key_name_admin(usr)] has granted the Overmind Request from [key_name_admin(ref_person)]! Finalizing in 10 seconds... (<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];overmind_cancel=\ref[usr]'>CANCEL</A>)")
+		addtimer(CALLBACK(src, PROC_REF(approve_overmind), usr, ref_person), 10 SECONDS)
+		return
+
+	if(href_list["overmind_cancel"])
+		if(GLOB.overmind_cancel)
+			to_chat(usr, "The Overmind Request was either canceled, or you are too late to cancel.")
+			return
+		log_game("[key_name_admin(usr)] has canceled the Overmind Request.")
+		message_admins("[key_name_admin(usr)] has canceled the Overmind Request.")
+		GLOB.overmind_cancel = TRUE
+		return
+
 	return
 
 /datum/admins/proc/accept_ert(mob/approver, mob/ref_person)

@@ -1,0 +1,4 @@
+author: "hry-gh"
+delete-after: True
+changes:
+  - rscadd: "added the ability to configure custom keybinds in your keybind settings, these can be use to define up to 20 say/me/picksay keybinds to say whatever you want"

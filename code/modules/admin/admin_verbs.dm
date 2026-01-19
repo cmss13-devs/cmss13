@@ -61,6 +61,7 @@ GLOBAL_LIST_INIT(admin_verbs_default, list(
 	/client/proc/toggle_own_ghost_vis,
 	/client/proc/cmd_admin_check_contents,
 	/client/proc/clear_mutineers,
+	/client/proc/set_commander, /*Allows manually choosing an active commander and giving them access to CIC.*/
 	/datum/admins/proc/directnarrateall,
 	/datum/admins/proc/subtlemessageall,
 	/datum/admins/proc/alertall,
@@ -101,6 +102,8 @@ GLOBAL_LIST_INIT(admin_verbs_admin, list(
 GLOBAL_LIST_INIT(admin_verbs_ban, list(
 	/client/proc/unban_panel,
 	/client/proc/stickyban_panel,
+	/client/proc/ipcheck_allow,
+	/client/proc/ipcheck_revoke,
 	// /client/proc/jobbans // Disabled temporarily due to 15-30 second lag spikes.
 ))
 
@@ -136,6 +139,7 @@ GLOBAL_LIST_INIT(admin_verbs_minor_event, list(
 	/datum/admins/proc/open_shuttlepanel,
 	/client/proc/get_whitelisted_clients,
 	/client/proc/modifiers_panel,
+	/client/proc/setup_delayed_event_spawns,
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_major_event, list(
@@ -155,7 +159,8 @@ GLOBAL_LIST_INIT(admin_verbs_major_event, list(
 	/client/proc/enable_podlauncher,
 	/client/proc/change_taskbar_icon,
 	/client/proc/change_weather,
-	/client/proc/admin_blurb
+	/client/proc/admin_blurb,
+	/client/proc/change_observed_player
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_spawn, list(
@@ -455,7 +460,7 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 /client/proc/object_talk(msg as text) // -- TLE
 	set category = "Admin.Events"
 	set name = "Object Say"
-	set desc = "Display a message to everyone who can hear the target"
+	set desc = "Display a message to everyone who can hear the target."
 	if(mob.control_object)
 		if(!msg)
 			return
@@ -521,12 +526,12 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 
 	var/new_gender = alert(usr, "Please select gender.", "Character Generation", "Male", "Female", "Non-Binary")
 	if(new_gender)
-		if(new_gender == "Male")
-			M.gender = MALE
-		else if(new_gender == "Female")
+		if(new_gender == "Female")
 			M.gender = FEMALE
 		else if(new_gender == "Non-Binary")
 			M.gender = PLURAL
+		else
+			M.gender = MALE
 	M.update_hair()
 	M.update_body()
 
@@ -597,7 +602,7 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 	set desc = "Tells everyone about a random statistic in the round."
 	set category = "OOC"
 
-	var/prompt = tgui_alert(usr, "Are you sure you want to do this?", "Announce Random Fact", list("No", "Yes"))
+	var/prompt = tgui_alert(usr, "Are you sure you want to do this?", "Announce Random Fact", list("Yes", "No"))
 	if(prompt != "Yes")
 		return
 

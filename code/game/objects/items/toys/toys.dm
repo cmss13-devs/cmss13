@@ -45,7 +45,7 @@
 /obj/item/toy/balloon/afterattack(atom/A as mob|obj, mob/user as mob, proximity)
 	if(!proximity)
 		return
-	if (istype(A, /obj/structure/reagent_dispensers/watertank) && get_dist(src,A) <= 1)
+	if (istype(A, /obj/structure/reagent_dispensers/tank/water) && get_dist(src,A) <= 1)
 		A.reagents.trans_to(src, 10)
 		to_chat(user, SPAN_NOTICE("You fill the balloon with the contents of [A]."))
 		src.desc = "A translucent balloon with some form of liquid sloshing around in it."
@@ -203,7 +203,7 @@
 	else if (locate (/obj/structure/surface/table, src.loc))
 		return
 
-	else if (istype(A, /obj/structure/reagent_dispensers/watertank) && get_dist(src,A) <= 1)
+	else if (istype(A, /obj/structure/reagent_dispensers/tank/water) && get_dist(src,A) <= 1)
 		A.reagents.trans_to(src, 10)
 		to_chat(user, SPAN_NOTICE(" You refill your flower!"))
 		return
@@ -418,7 +418,7 @@
 
 /obj/item/computer3_part
 	name = "computer part"
-	desc = "Holy jesus you donnit now"
+	desc = "Holy jesus you donnit now."
 	gender = PLURAL
 	icon = 'icons/obj/structures/machinery/stock_parts.dmi'
 	icon_state = "hdd1"
@@ -490,7 +490,7 @@
 
 /obj/item/toy/plush
 	name = "generic plushie"
-	desc = "perfectly generic"
+	desc = "Perfectly generic."
 	icon = 'icons/obj/items/toy.dmi'
 	icon_state = "debug"
 	w_class = SIZE_SMALL
@@ -535,12 +535,12 @@
 
 /obj/item/toy/plush/gnarp
 	name = "gnarp plush"
-	desc = "gnarp gnarp."
+	desc = "Gnarp gnarp."
 	icon_state = "gnarp"
 
 /obj/item/toy/plush/gnarp/alt
 	name = "gnarp plush"
-	desc = "gnarp gnarp."
+	desc = "Gnarp gnarp."
 	icon_state = "gnarp_alt"
 
 /obj/item/toy/plush/therapy

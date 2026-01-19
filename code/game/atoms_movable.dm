@@ -11,6 +11,11 @@
 	var/mob/pulledby = null
 	var/rebounds = FALSE
 	var/rebounding = FALSE // whether an object that was launched was rebounded (to prevent infinite recursive loops from wall bouncing)
+	var/list/mob/living/buckled_mobs
+	var/mob/living/buckled_mob // mob buckled to this mob
+	/// Bed-like behaviour, forces mob.lying = buckle_lying if not set to [NO_BUCKLE_LYING].
+	var/buckle_lying = NO_BUCKLE_LYING
+	var/buckle_flags = NONE
 
 	var/acid_damage = 0 //Counter for stomach acid damage. At ~60 ticks, dissolved
 
@@ -21,8 +26,8 @@
 
 	var/datum/component/orbiter/orbiting
 
-	/// Either FALSE, [EMISSIVE_BLOCK_GENERIC], or [EMISSIVE_BLOCK_UNIQUE]
-	var/blocks_emissive = FALSE
+	/// Either [EMISSIVE_BLOCK_NONE], [EMISSIVE_BLOCK_GENERIC], or [EMISSIVE_BLOCK_UNIQUE]
+	var/blocks_emissive = EMISSIVE_BLOCK_NONE
 	///Internal holder for emissive blocker object, do not use directly use blocks_emissive
 	var/atom/movable/emissive_blocker/em_block
 
@@ -43,6 +48,9 @@
 	QDEL_NULL(launch_metadata)
 	QDEL_NULL(em_block)
 	QDEL_NULL(emissive_overlay)
+
+	buckled_mobs?.Cut()
+	buckled_mob = null
 
 	if(loc)
 		loc.on_stored_atom_del(src) //things that container need to do when a movable atom inside it is deleted
@@ -81,10 +89,46 @@
 		return src.master.attack_hand(a, b, c)
 	return
 
+/mutable_appearance/emissive_blocker
+
+/mutable_appearance/emissive_blocker/New()
+	. = ..()
+	// Need to do this here because it's overridden by the parent call
+	// This is a microop which is the sole reason why this child exists, because its static this is a really cheap way to set color without setting or checking it every time we create an atom
+	color = EM_BLOCK_COLOR
+
 /atom/movable/Initialize(mapload, ...)
 	. = ..()
 
-	update_emissive_block()
+#if EMISSIVE_BLOCK_GENERIC != 0
+	#error EMISSIVE_BLOCK_GENERIC is expected to be 0 to facilitate a weird optimization hack where we rely on it being the most common.
+	#error Read the comment in code/game/atoms_movable.dm for details.
+#endif
+
+	// This one is incredible.
+	// `if (x) else { /* code */ }` is surprisingly fast, and it's faster than a switch, which is seemingly not a jump table.
+	// From what I can tell, a switch case checks every single branch individually, although sane, is slow in a hot proc like this.
+	// So, we make the most common `blocks_emissive` value, EMISSIVE_BLOCK_GENERIC, 0, getting to the fast else branch quickly.
+	// If it fails, then we can check over every value it can be (here, EMISSIVE_BLOCK_UNIQUE is the only one that matters).
+	// This saves several hundred milliseconds of init time.
+	if (blocks_emissive)
+		if (blocks_emissive == EMISSIVE_BLOCK_UNIQUE)
+			render_target = ref(src)
+			em_block = new(null, src)
+			overlays += em_block
+	else
+		var/static/mutable_appearance/emissive_blocker/blocker = new()
+		blocker.icon = icon
+		blocker.icon_state = icon_state
+		blocker.dir = dir
+		blocker.appearance_flags = appearance_flags | EMISSIVE_APPEARANCE_FLAGS
+		blocker.plane = EMISSIVE_PLANE // Takes a light path through the normal macro for a microop
+		// Ok so this is really cursed, but I want to set with this blocker cheaply while
+		// Still allowing it to be removed from the overlays list later
+		// So I'm gonna flatten it, then insert the flattened overlay into overlays AND the managed overlays list, directly
+		// I'm sorry
+		var/mutable_appearance/flat = blocker.appearance
+		overlays += flat
 
 	if(opacity)
 		AddElement(/datum/element/light_blocking)
@@ -94,22 +138,24 @@
 		AddComponent(/datum/component/overlay_lighting, is_directional = TRUE)
 
 /atom/movable/proc/update_emissive_block()
-	if(emissive_overlay)
-		overlays -= emissive_overlay
-
-	switch(blocks_emissive)
-		if(EMISSIVE_BLOCK_GENERIC)
-			var/mutable_appearance/gen_emissive_blocker = mutable_appearance(icon, icon_state, plane = EMISSIVE_PLANE, alpha = src.alpha)
-			gen_emissive_blocker.color = GLOB.em_block_color
-			gen_emissive_blocker.dir = dir
-			gen_emissive_blocker.appearance_flags |= appearance_flags
-			emissive_overlay = gen_emissive_blocker
-			overlays += gen_emissive_blocker
-		if(EMISSIVE_BLOCK_UNIQUE)
-			render_target = ref(src)
-			em_block = new(src, render_target)
-			emissive_overlay = em_block
-			overlays += list(em_block)
+	// This one is incredible.
+	// `if (x) else { /* code */ }` is surprisingly fast, and it's faster than a switch, which is seemingly not a jump table.
+	// From what I can tell, a switch case checks every single branch individually, although sane, is slow in a hot proc like this.
+	// So, we make the most common `blocks_emissive` value, EMISSIVE_BLOCK_GENERIC, 0, getting to the fast else branch quickly.
+	// If it fails, then we can check over every value it can be (here, EMISSIVE_BLOCK_UNIQUE is the only one that matters).
+	// This saves several hundred milliseconds of init time.
+	if (blocks_emissive)
+		if (blocks_emissive == EMISSIVE_BLOCK_UNIQUE)
+			if(em_block)
+				em_block.plane = EMISSIVE_PLANE
+			else if(!QDELETED(src))
+				render_target = ref(src)
+				em_block = new(null, src)
+			return em_block
+		// Implied else if (blocks_emissive == EMISSIVE_BLOCK_NONE) -> return
+	// EMISSIVE_BLOCK_GENERIC == 0
+	else
+		return fast_emissive_blocker(src)
 
 /atom/movable/vv_get_dropdown()
 	. = ..()
@@ -162,9 +208,10 @@
 
 /mob/proc/unset_interaction()
 	if(interactee)
-		if(istype(interactee))
-			interactee.on_unset_interaction(src)
+		var/atom/movable/prev_interactee = interactee
 		interactee = null
+		if(istype(prev_interactee))
+			prev_interactee.on_unset_interaction(src)
 
 
 //things the user's machine must do just after we set the user's machine.
@@ -355,3 +402,131 @@
 	if(HAS_TRAIT(src, TRAIT_HAULED)) //we do not spin houled humans
 		return
 	INVOKE_ASYNC(src, PROC_REF(SpinAnimation), 5, 2)
+
+//trying to buckle a mob
+/atom/movable/proc/buckle_mob(mob/buckle_target, mob/user, ride_check_flags = null, force = FALSE, check_loc = TRUE, lying_buckle = FALSE, hands_needed = 0, target_hands_needed = 0, silent = FALSE)
+	if(!ismob(buckle_target) || (get_dist(src, user) > 1) || user.stat || buckled_mob || buckle_target.buckled || !isturf(user.loc))
+		return
+
+	if(user.is_mob_incapacitated() || HAS_TRAIT(user, TRAIT_IMMOBILIZED) || HAS_TRAIT(user, TRAIT_FLOORED))
+		to_chat(user, SPAN_WARNING("You can't do this right now."))
+		return
+
+	if(isxeno(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
+		to_chat(user, SPAN_WARNING("You don't have the dexterity to do that, try a nest."))
+		return
+	if(iszombie(user))
+		return
+
+	if(density)
+		density = FALSE
+		if(!step(buckle_target, get_dir(buckle_target, src)) && loc != buckle_target.loc)
+			density = TRUE
+			return
+		density = TRUE
+	else
+		if(buckle_target.loc != loc)
+			step_towards(buckle_target, src) //buckle if you're right next to it
+			if(buckle_target.loc != loc)
+				return
+			. = buckle_mob(buckle_target)
+	if(SEND_SIGNAL(src, COMSIG_MOVABLE_PREBUCKLE, buckle_target, user, ride_check_flags, force, check_loc, lying_buckle, hands_needed, target_hands_needed, silent) & COMPONENT_BLOCK_BUCKLE)
+		return
+	do_buckle(buckle_target, user)
+
+// the actual buckling proc
+// Yes I know this is not style but its unreadable otherwise
+/atom/movable/proc/do_buckle(mob/living/target, mob/user)
+	send_buckling_message(target, user)
+	if(src && loc)
+		target.throw_alert(ALERT_BUCKLED, /atom/movable/screen/alert/buckled)
+		target.set_buckled(src)
+		target.forceMove(loc)
+		target.setDir(dir)
+		buckled_mob = target
+		LAZYADD(buckled_mobs, target)
+		add_fingerprint(user)
+		afterbuckle(target)
+		return TRUE
+
+/atom/movable/proc/send_buckling_message(mob/buckle_target, mob/user)
+	if(buckle_target == user)
+		buckle_target.visible_message(
+			SPAN_NOTICE("[buckle_target] buckles in!"),
+			SPAN_NOTICE("You buckle yourself to [src]."),
+			SPAN_NOTICE("You hear metal clanking."))
+	else
+		buckle_target.visible_message(
+			SPAN_NOTICE("[buckle_target] is buckled in to [src] by [user]!"),
+			SPAN_NOTICE("You are buckled in to [src] by [user]."),
+			SPAN_NOTICE("You hear metal clanking."))
+
+/atom/movable/proc/send_unbuckling_message(mob/buckle_target, mob/user, atom/movable/unbuckle_from)
+	if(!unbuckle_from)
+		unbuckle_from = src
+
+	if(buckle_target == user)
+		buckle_target.visible_message(
+			SPAN_NOTICE("[buckle_target] unbuckled [buckle_target.p_them()]self!"),
+			SPAN_NOTICE("You unbuckle yourself from [unbuckle_from]."),
+			SPAN_NOTICE("You hear metal clanking."))
+	else
+		buckle_target.visible_message(
+			SPAN_NOTICE("[buckle_target] was unbuckled by [user.name]!"),
+			SPAN_NOTICE("You were unbuckled from [unbuckle_from] by [user]."),
+			SPAN_NOTICE("You hear metal clanking."))
+
+/// Called after somebody buckled / unbuckled
+/atom/movable/proc/afterbuckle(mob/buckle_target as mob)
+	handle_rotation() // To be removed when we have full dir support in set_buckled
+	SEND_SIGNAL(src, COMSIG_OBJ_AFTER_BUCKLE, buckled_mob)
+	if(!buckled_mob)
+		UnregisterSignal(buckle_target, COMSIG_PARENT_QDELETING)
+	else
+		RegisterSignal(buckled_mob, COMSIG_PARENT_QDELETING, PROC_REF(unbuckle))
+	return buckled_mob
+
+/atom/movable/proc/handle_rotation()
+	return
+
+/atom/movable/proc/unbuckle()
+	SIGNAL_HANDLER
+	if(buckled_mob && buckled_mob.buckled == src)
+		buckled_mob.clear_alert(ALERT_BUCKLED)
+		buckled_mob.set_buckled(null)
+		buckled_mob.anchored = initial(buckled_mob.anchored)
+
+		var/mob/living/mob = buckled_mob
+		buckled_mob = null
+		REMOVE_TRAITS_IN(mob, TRAIT_SOURCE_BUCKLE)
+		SEND_SIGNAL(src, COMSIG_MOVABLE_UNBUCKLE, mob)
+		LAZYREMOVE(buckled_mobs, mob)
+		afterbuckle(mob)
+
+/atom/movable/proc/manual_unbuckle(mob/user as mob)
+	if(buckled_mob)
+		if(buckled_mob.buckled == src)
+			send_unbuckling_message(buckled_mob, user)
+			unbuckle(buckled_mob)
+			add_fingerprint(user)
+			return TRUE
+
+	return FALSE
+
+/atom/movable/proc/handle_buckled_mob_movement(NewLoc, direct)
+	if(!buckled_mob.Move(NewLoc, direct))
+		forceMove(buckled_mob.loc)
+		last_move_dir = buckled_mob.last_move_dir
+		buckled_mob.inertia_dir = last_move_dir
+		return FALSE
+
+	// Even if the movement is entirely managed by the object, notify the buckled mob that it's moving for its handler.
+	//It won't be called otherwise because it's a function of client_move or pulled mob, neither of which accounts for this.
+	SEND_SIGNAL(buckled_mob, COMSIG_MOB_MOVE_OR_LOOK, TRUE, direct, direct)
+	return TRUE
+
+/atom/movable/BlockedPassDirs(atom/movable/mover, target_dir)
+	if(mover == buckled_mob) //can't collide with the thing you're buckled to
+		return NO_BLOCKED_MOVEMENT
+
+	return ..()

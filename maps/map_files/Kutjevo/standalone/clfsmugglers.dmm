@@ -529,6 +529,10 @@
 	icon_state = "stan8"
 	},
 /area/kutjevo/interior/colony/clf_shuttle)
+"Ax" = (
+/obj/structure/machinery/iv_drip,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/clf_lz)
 "AT" = (
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
 	dir = 8
@@ -826,7 +830,7 @@
 /turf/open/floor/almayer/research/containment/floor1,
 /area/kutjevo/exterior/clf_lz)
 "Ou" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/clf_lz)
 "OE" = (
@@ -2287,7 +2291,7 @@ mr
 cf
 cf
 gl
-cf
+Ax
 cf
 cf
 cf

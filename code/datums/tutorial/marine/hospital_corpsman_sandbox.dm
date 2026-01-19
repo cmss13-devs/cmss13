@@ -25,6 +25,7 @@
 #define INTERNAL_BLEEDING "IB"
 #define SUTURE "suture"
 #define FRACTURE "fracture"
+#define ESCHAR_INJURY "eschar"
 
 /datum/tutorial/marine/hospital_corpsman_sandbox
 	name = "Marine - Hospital Corpsman (Sandbox)"
@@ -235,8 +236,10 @@
 			var/obj/limb/selected_limb = pick(limbs)
 			var/damage_amount = (rand((40 * survival_difficulty), (50 * survival_difficulty)))
 			selected_limb.take_damage(round((damage_amount * damage_amount_split) / amount_of_parts), round((damage_amount * (1 - damage_amount_split)) / amount_of_parts))
-			if((damage_amount > 30) && prob(survival_difficulty * 10))
+			if((damage_amount > selected_limb.min_broken_damage) && prob(survival_difficulty * 7))
 				selected_limb.fracture()
+			if((damage_amount > selected_limb.min_eschar_damage) && prob(survival_difficulty * 3))
+				selected_limb.eschar()
 	if(patient_type == PATIENT_TYPE_ORGAN)	// applies organ damage AS WELL as mundane damage if type 2
 		var/datum/internal_organ/organ = pick(target.internal_organs)
 		target.apply_internal_damage(rand(1,(survival_difficulty*3.75)), "[organ.name]")
@@ -266,12 +269,16 @@
 		var/list/injury_type = list()
 		if((limb.status & LIMB_BROKEN) && !(limb.status & LIMB_SPLINTED))
 			injury_type |= FRACTURE
-			RegisterSignal(limb, COMSIG_LIVING_LIMB_SPLINTED, PROC_REF(health_tasks_handler))
+			RegisterSignal(limb, COMSIG_LIVING_LIMB_SPLINTED, PROC_REF(health_tasks_handler_splinted))
+		if((limb.status & LIMB_ESCHAR))
+			injury_type |= ESCHAR_INJURY
+			RegisterSignal(limb, COMSIG_LIMB_SURGERY_STEP_SUCCESS, PROC_REF(health_tasks_handler_surgery))
 		if(limb.can_bleed_internally)
 			for(var/datum/wound/wound as anything in limb.wounds)
 				if(wound.internal)
 					injury_type |= INTERNAL_BLEEDING
-					RegisterSignal(tutorial_mob, COMSIG_HUMAN_SURGERY_STEP_SUCCESS, PROC_REF(health_tasks_handler), TRUE) // yeah yeah, give me a break
+					RegisterSignal(limb, COMSIG_LIMB_SURGERY_STEP_SUCCESS, PROC_REF(health_tasks_handler_surgery))
+					break
 		if(length(injury_type))
 			healing_tasks[limb] = injury_type
 	if(!length(healing_tasks) || bypass)
@@ -279,37 +286,43 @@
 	else
 		agent_healing_tasks[target] = healing_tasks
 
-/datum/tutorial/marine/hospital_corpsman_sandbox/proc/health_tasks_handler(datum/source, mob/living/carbon/human/realistic_dummy/target, datum/surgery/surgery)
+/// Signal handler for COMSIG_LIVING_LIMB_SPLINTED
+/datum/tutorial/marine/hospital_corpsman_sandbox/proc/health_tasks_handler_splinted(obj/limb/limb, mob/living/user)
 	SIGNAL_HANDLER
+	health_tasks_handler(limb)
 
+/// Signal handler for COMSIG_LIMB_SURGERY_STEP_SUCCESS
+/datum/tutorial/marine/hospital_corpsman_sandbox/proc/health_tasks_handler_surgery(obj/limb/limb, mob/living/user, datum/surgery/surgery, obj/item/tool)
+	SIGNAL_HANDLER
+	health_tasks_handler(limb, surgery)
+
+/datum/tutorial/marine/hospital_corpsman_sandbox/proc/health_tasks_handler(obj/limb/limb, datum/surgery/surgery)
+	var/mob/living/carbon/human/realistic_dummy/target = limb.owner
 	var/list/healing_tasks = agent_healing_tasks[target]
+	var/list/injury_type = healing_tasks[limb]
 
-	var/obj/limb/limb
-	if(istype(source, /obj/limb)) // swaps around the variables from COMSIG_LIVING_LIMB_SPLINTED to make them consistent
-		limb = source
-		var/target_redirect = limb.owner
-		health_tasks_handler(target, target_redirect)
-		UnregisterSignal(limb, COMSIG_LIVING_LIMB_SPLINTED)
-		return
-	for(limb in healing_tasks)
-		var/list/injury_type = list()
-		injury_type |= healing_tasks[limb]
-		if(surgery && limb == surgery.affected_limb)
+	if(surgery?.affected_limb == limb)
+		if(surgery.status == length(surgery.steps))
 			if(istype(surgery, /datum/surgery/internal_bleeding))
 				injury_type -= INTERNAL_BLEEDING
 				injury_type |= SUTURE
-			if(istype(surgery, /datum/surgery/suture_incision))
-				injury_type = healing_tasks[surgery.affected_limb]
-				if(SUTURE in injury_type)
-					injury_type -= SUTURE
-		if((FRACTURE in injury_type) && (limb.status & LIMB_BROKEN) && (limb.status & LIMB_SPLINTED))
-			injury_type -= FRACTURE
-		if(!length(injury_type) && limb) // makes sure something DID exist on the list
-			healing_tasks -= limb
-		else
-			healing_tasks[limb] = injury_type
+			else if(istype(surgery, /datum/surgery/eschar_mend) && !(limb.status & LIMB_ESCHAR))
+				injury_type -= ESCHAR_INJURY
+				injury_type |= SUTURE
+			else if(istype(surgery, /datum/surgery/suture_incision))
+				injury_type -= SUTURE
+				if(!(INTERNAL_BLEEDING in injury_type) && !(ESCHAR_INJURY in injury_type))
+					UnregisterSignal(limb, COMSIG_LIMB_SURGERY_STEP_SUCCESS)
+	if((FRACTURE in injury_type) && (CHECK_MULTIPLE_BITFIELDS(limb.status, LIMB_BROKEN|LIMB_SPLINTED) || !(limb.status & LIMB_BROKEN)))
+		injury_type -= FRACTURE
+		UnregisterSignal(limb, COMSIG_LIVING_LIMB_SPLINTED)
+
+	if(!length(injury_type)) // makes sure something DID exist on the list
+		healing_tasks -= limb
+	else
+		healing_tasks[limb] = injury_type
+
 	if(!length(healing_tasks))
-		UnregisterSignal(tutorial_mob, COMSIG_HUMAN_SURGERY_STEP_SUCCESS)
 		make_agent_leave(target)
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/proc/eval_agent_status()
@@ -490,27 +503,27 @@
 
 	for(var/datum/reagent/medical/chemical as anything in target.reagents.reagent_list)
 		if(chemical.volume >= chemical.overdose_critical)
-			status_message |= "Critical [chemical.name] overdose detected"
+			status_message |= "critical [chemical.name] overdose detected"
 	for(var/datum/internal_organ/organ as anything in target.internal_organs)
 		if(organ.damage >= organ.min_broken_damage)
 			if((locate(/datum/reagent/medical/peridaxon) in target.reagents.reagent_list) || (target.stat == DEAD))
-				status_message |= "Ruptured [organ.name] detected"
+				status_message |= "ruptured [organ.name] detected"
 			else
-				medevac_bed.balloon_alert_to_viewers("Organ damage detected! Please stabilize patient with Peridaxon before transit.", null, DEFAULT_MESSAGE_RANGE, null, COLOR_RED)
+				medevac_bed.balloon_alert_to_viewers("organ damage detected! stabilize patient with peridaxon before transit!", null, DEFAULT_MESSAGE_RANGE, null, COLOR_RED)
 				playsound(medevac_bed.loc, 'sound/machines/twobeep.ogg', 20)
 				return
 
 	if(tutorial_mob == target)
-		medevac_bed.balloon_alert_to_viewers("Error! Unable to self-evacuate!", null, DEFAULT_MESSAGE_RANGE, null, COLOR_RED)
+		medevac_bed.balloon_alert_to_viewers("unable to self-evacuate!", null, DEFAULT_MESSAGE_RANGE, null, COLOR_RED)
 		playsound(medevac_bed.loc, 'sound/machines/twobeep.ogg', 20)
 		return
 	if(length(status_message))
-		medevac_bed.balloon_alert_to_viewers("[pick(status_message)]! Evacuating patient!!", null, DEFAULT_MESSAGE_RANGE, null, LIGHT_COLOR_BLUE)
+		medevac_bed.balloon_alert_to_viewers("[pick(status_message)]! evacuating patient!", null, DEFAULT_MESSAGE_RANGE, null, LIGHT_COLOR_BLUE)
 		playsound(medevac_bed.loc, pick_weight(list('sound/machines/ping.ogg' = 9, 'sound/machines/juicer.ogg' = 1)), 20)
 		make_agent_leave(target, TRUE)
 		addtimer(CALLBACK(src, PROC_REF(animate_medevac_bed), target), 2.7 SECONDS)
 	else
-		medevac_bed.balloon_alert_to_viewers("Error! Patient condition does not warrant evacuation!", null, DEFAULT_MESSAGE_RANGE, null, COLOR_RED)
+		medevac_bed.balloon_alert_to_viewers("patient condition does not warrant evacuation!", null, DEFAULT_MESSAGE_RANGE, null, COLOR_RED)
 		playsound(medevac_bed.loc, 'sound/machines/twobeep.ogg', 20)
 		return
 
@@ -632,3 +645,4 @@
 #undef INTERNAL_BLEEDING
 #undef SUTURE
 #undef FRACTURE
+#undef ESCHAR_INJURY

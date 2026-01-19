@@ -212,3 +212,28 @@
 
 /obj/item/ammo_box/rounds/l23/incendiary/empty
 	empty = TRUE
+
+//----------------10x20mm (APC) Ammunition Boxes (for M10 Auto-Pistol)------------------
+
+/obj/item/ammo_box/rounds/pistol/m10
+	name = "\improper pistol ammunition box (10x20mm-APC)"
+	desc = "A 10x20mm-APC ammunition box. Used to refill M10 regular, extended and drum magazines. It comes with a leather strap allowing to wear it on the back."
+	caliber = "10x20mm-APC"
+	icon_state = "base_m10"
+	overlay_content = "_apc"
+	default_ammo = /datum/ammo/bullet/pistol/m10
+	bullet_amount = 984 // M10 mags can hold a LOT, regular size is not enough.
+	max_bullet_amount = 984
+
+/obj/item/ammo_box/rounds/pistol/m10/empty
+	empty = TRUE
+
+/obj/item/ammo_box/rounds/pistol/m10/ap
+	name = "\improper pistol ammunition box (10x20mm-APC (AP))"
+	desc = "A 10x20mm-APC armor-piercing ammunition box. Used to refill M10 regular, extended and drum AP magazines. It comes with a leather strap allowing to wear it on the back."
+	caliber = "10x20mm-APC"
+	overlay_content = "_apc_ap"
+	default_ammo = /datum/ammo/bullet/pistol/m10/ap
+
+/obj/item/ammo_box/rounds/pistol/m10/ap/empty
+	empty = TRUE

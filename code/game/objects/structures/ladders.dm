@@ -79,20 +79,28 @@
 	else //wtf make your ladders properly assholes
 		icon_state = "ladder00"
 
-/obj/structure/ladder/attack_hand(mob/living/user)
-	if(user.stat || get_dist(user, src) > 1 || user.blinded || user.body_position == LYING_DOWN || user.buckled || user.anchored)
+/obj/structure/ladder/attack_hand(mob/living/user, click_parameters)
+	if(user.stat || get_dist(user, src) > 1 || user.blinded || user.body_position == LYING_DOWN || user.buckled || user.anchored || user.interactee)
 		return
 	if(busy)
 		to_chat(user, SPAN_WARNING("Someone else is currently using [src]."))
 		return
 
 	var/ladder_dir_name
+	var/selected_ladder_dest
+
+	if(click_parameters[CTRL_CLICK])
+		selected_ladder_dest = "up"
+
+	if(click_parameters[ALT_CLICK])
+		selected_ladder_dest = "down"
 
 	if(!length(direction_selection))
 		direction_selection = get_ladder_images()
 
 	if(length(direction_selection) > 1)
-		var/selected_ladder_dest = lowertext(show_radial_menu(user, src, direction_selection, require_near = TRUE))
+		if(!selected_ladder_dest)
+			selected_ladder_dest = lowertext(show_radial_menu(user, src, direction_selection, require_near = TRUE))
 
 		if(!selected_ladder_dest)
 			return
@@ -180,6 +188,7 @@
 
 
 /obj/structure/ladder/on_unset_interaction(mob/user)
+	UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
 	..()
 	is_watching = 0
 	user.reset_view(null)
@@ -187,7 +196,6 @@
 /obj/structure/ladder/proc/handle_move(mob/moved_mob, oldLoc, direct)
 	SIGNAL_HANDLER
 	moved_mob.unset_interaction()
-	UnregisterSignal(moved_mob, COMSIG_MOVABLE_MOVED)
 
 //Peeking up/down
 /obj/structure/ladder/MouseDrop(over_object, src_location, over_location, mob/user)
@@ -243,13 +251,20 @@
 	return
 
 //Throwing Shiet
-/obj/structure/ladder/attackby(obj/item/W, mob/user)
+/obj/structure/ladder/attackby(obj/item/W, mob/user, list/mods)
 	//Throwing Grenades
 	if(istype(W,/obj/item/explosive/grenade))
 		var/obj/item/explosive/grenade/G = W
 		var/ladder_dir_name
+
+		if(mods[CTRL_CLICK])
+			ladder_dir_name = "up"
+
+		if(mods[ALT_CLICK])
+			ladder_dir_name = "down"
+
 		var/obj/structure/ladder/ladder_dest
-		if(up && down)
+		if(up && down && !ladder_dir_name)
 			ladder_dest = lowertext(show_radial_menu(user, src, direction_selection, require_near = TRUE))
 			if(ladder_dest == "up")
 				ladder_dest = up
@@ -292,7 +307,14 @@
 		var/obj/item/device/flashlight/F = W
 		var/ladder_dir_name
 		var/obj/structure/ladder/ladder_dest
-		if(up && down)
+
+		if(mods[CTRL_CLICK])
+			ladder_dest = "up"
+
+		if(mods[ALT_CLICK])
+			ladder_dest = "down"
+
+		if(up && down && !ladder_dest)
 			ladder_dest = lowertext(show_radial_menu(user, src, direction_selection, require_near = TRUE))
 			if(ladder_dest == "up")
 				ladder_dest = up

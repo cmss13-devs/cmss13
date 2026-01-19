@@ -1,0 +1,4 @@
+author: "Bibby0110"
+delete-after: True
+changes:
+  - bugfix: "CIC tablet now closes when you die/fall unconscious"

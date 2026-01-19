@@ -237,6 +237,7 @@
 		back_item = /obj/item/storage/backpack/marine
 
 	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/io(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/intel(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
 
@@ -255,7 +256,7 @@
 
 	var/obj/item/clothing/under/marine/officer/intel/U = new(new_human)
 	new_human.equip_to_slot_or_del(U, WEAR_BODY)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/intel(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/io(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/vp78(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/rto/intel(new_human), WEAR_HEAD)
@@ -948,7 +949,7 @@
 
 /datum/equipment_preset/uscm/marsoc/covert/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = MALE
-	new_human.change_real_name(new_human, "[pick(GLOB.nato_phonetic_alphabet)]")
+	new_human.change_real_name(new_human, capitalize(pick(GLOB.nato_phonetic_alphabet)))
 	new_human.age = rand(20,30)
 
 /datum/equipment_preset/uscm/marsoc/covert/load_rank(mob/living/carbon/human/new_human)
@@ -960,7 +961,7 @@
 
 /datum/equipment_preset/uscm/marsoc/sg/covert/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = MALE
-	new_human.change_real_name(new_human, "[pick(GLOB.nato_phonetic_alphabet)]")
+	new_human.change_real_name(new_human, capitalize(pick(GLOB.nato_phonetic_alphabet)))
 	new_human.age = rand(20,30)
 
 /datum/equipment_preset/uscm/marsoc/sg/covert/load_rank(mob/living/carbon/human/new_human)
@@ -988,7 +989,7 @@
 
 /datum/equipment_preset/uscm/marsoc/sl/covert/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = MALE
-	new_human.change_real_name(new_human, "[pick(GLOB.nato_phonetic_alphabet)]")
+	new_human.change_real_name(new_human, capitalize(pick(GLOB.nato_phonetic_alphabet)))
 	new_human.age = rand(20,30)
 
 /datum/equipment_preset/uscm/marsoc/sl/covert/load_rank(mob/living/carbon/human/new_human)
@@ -1092,7 +1093,7 @@
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues)
 
 /datum/equipment_preset/uscm/pve/load_status(mob/living/carbon/human/new_human)
-	new_human.nutrition = NUTRITION_MAX
+	new_human.nutrition = NUTRITION_NORMAL
 
 /datum/equipment_preset/uscm/pve/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine(new_human), WEAR_BODY)
@@ -1214,6 +1215,9 @@
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues)
 
+/datum/equipment_preset/uscm/pve/sg/load_status(mob/living/carbon/human/new_human)
+	new_human.nutrition = NUTRITION_NORMAL
+
 /datum/equipment_preset/uscm/pve/sg/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(new_human), WEAR_HEAD)
@@ -1241,9 +1245,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full(new_human), WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/alternate(new_human), WEAR_R_STORE)
 	spawn_marine_fluff_items(new_human)
-
-/datum/equipment_preset/uscm/pve/sg/load_status(mob/living/carbon/human/new_human)
-
+	
 //## Team Leader ##//
 /datum/equipment_preset/uscm/pve/tl
 	name = "USCM Solar Devils Team Leader"
@@ -1381,7 +1383,7 @@
 	minimap_icon = "private"
 
 /datum/equipment_preset/uscm/hunted/rifleman/load_status(mob/living/carbon/human/new_human)
-	new_human.nutrition = NUTRITION_MAX
+	new_human.nutrition = NUTRITION_NORMAL
 
 /datum/equipment_preset/uscm/hunted/rifleman/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine(new_human), WEAR_BODY)
@@ -1428,7 +1430,7 @@
 	minimap_icon = "tl"
 
 /datum/equipment_preset/uscm/hunted/tl/load_status(mob/living/carbon/human/new_human)
-	new_human.nutrition = NUTRITION_NORMAL
+	new_human.nutrition = NUTRITION_MAX
 
 /datum/equipment_preset/uscm/hunted/tl/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine(new_human), WEAR_BODY)
@@ -1469,6 +1471,9 @@
 	skills = /datum/skills/smartgunner_pve
 
 	minimap_icon = "smartgunner"
+
+/datum/equipment_preset/uscm/hunted/sg/load_status(mob/living/carbon/human/new_human)
+	new_human.nutrition = NUTRITION_NORMAL
 
 /datum/equipment_preset/uscm/hunted/sg/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine(new_human), WEAR_BODY)

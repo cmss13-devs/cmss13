@@ -43,7 +43,7 @@
 /// Whether or not the object uses hearing
 #define USES_HEARING (1<<17)
 /// Should we use the initial icon for display? Mostly used by overlay only objects
-#define HTML_USE_INITAL_ICON (1<<18)
+#define HTML_USE_INITIAL_ICON (1<<18)
 // Whether or not the object sees emotes
 #define USES_SEEING (1<<19)
 // Can be quick drawn
@@ -66,8 +66,8 @@
 #define NODROP (1<<0)
 /// when an item has this it produces no "X has been hit by Y with Z" message with the default handler
 #define NOBLUDGEON (1<<1)
-/// weapon not affected by shield (does nothing currently)
-#define NOSHIELD (1<<2)
+/// weapon cannot be blocked by a shield
+#define UNBLOCKABLE (1<<2)
 /// Deletes on drop instead of falling on the floor.
 #define DELONDROP (1<<3)
 /// The item is twohanded.
@@ -84,7 +84,7 @@
 #define NO_CRYO_STORE (1<<9)
 /// For backpacks if they should have unique layering functions
 #define ITEM_OVERRIDE_NORTHFACE (1<<10)
-/// whether activating it digs shrapnel out of the user and striking others with medical skills can dig shapnel out of other people.
+/// whether activating it digs shrapnel out of the user and striking others with medical skills can dig shrapnel out of other people.
 #define CAN_DIG_SHRAPNEL (1<<11)
 /// whether it has an animated icon state of "[icon_state]_on" to be used during surgeries.
 #define ANIMATED_SURGICAL_TOOL (1<<12)
@@ -575,7 +575,7 @@ GLOBAL_LIST_INIT(uniform_categories, list(
 /// Whether the storage object groups contents of the same type and displays them as a number. Only works for slot-based storage objects.
 #define STORAGE_CONTENT_NUM_DISPLAY (1<<9)
 /// Whether the storage object can pick up all the items in a tile
-#define STORAGE_GATHER_SIMULTAENOUSLY (1<<10)
+#define STORAGE_GATHER_SIMULTANEOUSLY (1<<10)
 /// Whether the storage can be drawn with E or Holster verb
 #define STORAGE_ALLOW_QUICKDRAW (1<<11)
 /// Whether using this item will try not to empty it if possible
@@ -583,7 +583,7 @@ GLOBAL_LIST_INIT(uniform_categories, list(
 /// Whether the user can withdraw the items in storage while being hauled by a xeno
 #define STORAGE_ALLOW_WHILE_HAULED (1<<13)
 
-#define STORAGE_FLAGS_DEFAULT (STORAGE_SHOW_FULLNESS|STORAGE_GATHER_SIMULTAENOUSLY|STORAGE_ALLOW_EMPTY)
+#define STORAGE_FLAGS_DEFAULT (STORAGE_SHOW_FULLNESS|STORAGE_GATHER_SIMULTANEOUSLY|STORAGE_ALLOW_EMPTY)
 #define STORAGE_FLAGS_BOX (STORAGE_FLAGS_DEFAULT)
 #define STORAGE_FLAGS_BAG (STORAGE_QUICK_GATHER|STORAGE_QUICK_EMPTY|STORAGE_CLICK_GATHER|STORAGE_FLAGS_DEFAULT)
 #define STORAGE_FLAGS_POUCH (STORAGE_FLAGS_DEFAULT|STORAGE_ALLOW_DRAWING_METHOD_TOGGLE)
@@ -605,6 +605,58 @@ GLOBAL_LIST_INIT(uniform_categories, list(
 #define PHONE_DND_ON 1
 #define PHONE_DND_OFF 0
 #define PHONE_DND_FORBIDDEN -1
+
+//===========
+// Shield (attack blocker) or not. Absolute or Directional.
+/// Not a shield
+#define SHIELD_NONE 0
+/// Blocks attacks with directional scaling.
+#define SHIELD_DIRECTIONAL 1
+/// Blocks attacks with directional scaling (penalized if not wielded with both hands).
+#define SHIELD_DIRECTIONAL_TWOHANDS 2
+/// Blocks attacks from all directions equally.
+#define SHIELD_ABSOLUTE 3
+/// Blocks attacks from all directions equally (penalized if not wielded with both hands).
+#define SHIELD_ABSOLUTE_TWOHANDS 4
+
+// Percentage base chance of blocking
+#define SHIELD_CHANCE_NONE 0
+#define SHIELD_CHANCE_VLOW 5
+#define SHIELD_CHANCE_LOW 15
+#define SHIELD_CHANCE_MED 20
+#define SHIELD_CHANCE_MEDHIGH 25
+#define SHIELD_CHANCE_HIGH 30
+#define SHIELD_CHANCE_EXTRAHIGH 35
+#define SHIELD_CHANCE_VHIGH 40
+#define SHIELD_CHANCE_5050 50
+#define SHIELD_CHANCE_SUPER 60
+#define SHIELD_CHANCE_GODLY 90
+
+// Types of attack
+#define SHIELD_ATTACK_MELEE 1
+#define SHIELD_ATTACK_HEAVY_MELEE 2
+#define SHIELD_ATTACK_PROJECTILE 3
+#define SHIELD_ATTACK_POUNCE 4
+
+#define SHIELD_BASH_COOLDOWN 2.5 SECONDS
+
+// Special flags
+#define CAN_SHIELD_BASH (1<<0)
+#define CAN_BLOCK_POUNCE (1<<1)
+#define CAN_BLOCK_HEAVY (1<<2)
+
+// Grades of protection against projectiles, including thrown items.
+
+#define PROJECTILE_BLOCK_PERC_NONE 0
+#define PROJECTILE_BLOCK_PERC_20 0.2
+#define PROJECTILE_BLOCK_PERC_30 0.3
+#define PROJECTILE_BLOCK_PERC_40 0.4
+#define PROJECTILE_BLOCK_PERC_45 0.45
+#define PROJECTILE_BLOCK_PERC_50 0.5
+#define PROJECTILE_BLOCK_PERC_60 0.6
+#define PROJECTILE_BLOCK_PERC_70 0.7
+#define PROJECTILE_BLOCK_PERC_80 0.8
+#define PROJECTILE_BLOCK_PERC_100 1
 
 ///Get appropriate SLOT_IN_X for given slot
 /proc/slot_to_in_storage_slot(slot)

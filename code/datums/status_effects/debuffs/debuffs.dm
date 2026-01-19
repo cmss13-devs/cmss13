@@ -21,26 +21,72 @@
 		owner.update_stat()
 	return ..()
 
+#define MAX_RESISTABLE_STUN (20 SECONDS)
+
 //STUN
 /datum/status_effect/incapacitating/stun
 	id = "stun"
+	VAR_PROTECTED/resist_duration = -1
+	var/last_amount = 0
 //	alert_type = /atom/movable/screen/alert/status_effect/stun
+
+/datum/status_effect/incapacitating/stun/on_creation(mob/living/new_owner, set_duration, resistable=FALSE)
+	if(!resistable)
+		if(new_owner)
+			last_amount = set_duration / new_owner.GetStunDuration(1)
+		return ..()
+
+	resist_duration = world.time + MAX_RESISTABLE_STUN
+	var/capped_amount = min(set_duration, MAX_RESISTABLE_STUN)
+	if(new_owner)
+		last_amount = capped_amount / new_owner.GetStunDuration(1)
+	return ..(new_owner, capped_amount, resistable)
 
 /datum/status_effect/incapacitating/stun/on_apply()
 	. = ..()
 	if(!.)
 		return
-	owner.add_traits(list(TRAIT_INCAPACITATED, TRAIT_IMMOBILIZED /*, TRAIT_HANDS_BLOCKED*/), TRAIT_STATUS_EFFECT(id))
+	owner?.add_traits(list(TRAIT_INCAPACITATED, TRAIT_IMMOBILIZED /*, TRAIT_HANDS_BLOCKED*/), TRAIT_STATUS_EFFECT(id))
 
 /datum/status_effect/incapacitating/stun/on_remove()
-	owner.remove_traits(list(TRAIT_INCAPACITATED, TRAIT_IMMOBILIZED /*, TRAIT_HANDS_BLOCKED*/), TRAIT_STATUS_EFFECT(id))
+	resist_duration = -1
+	owner?.remove_traits(list(TRAIT_INCAPACITATED, TRAIT_IMMOBILIZED /*, TRAIT_HANDS_BLOCKED*/), TRAIT_STATUS_EFFECT(id))
 	return ..()
+
+/datum/status_effect/incapacitating/stun/update_duration(amount, increment, resistable=FALSE)
+	if(!resistable)
+		if(owner)
+			last_amount = amount / owner.GetStunDuration(1)
+		return ..()
+
+	if(resist_duration < 0)
+		resist_duration = world.time + MAX_RESISTABLE_STUN
+
+	var/capped_amount = min(amount, resist_duration - world.time)
+	if(owner)
+		last_amount = capped_amount / owner.GetStunDuration(1)
+	return ..(capped_amount, increment)
+
+/datum/status_effect/incapacitating/stun/adjust_duration(amount, resistable=FALSE)
+	if(!resistable)
+		if(owner)
+			last_amount = amount / owner.GetStunDuration(1)
+		return ..()
+
+	if(resist_duration < 0)
+		resist_duration = world.time + MAX_RESISTABLE_STUN
+
+	var/capped_amount = min(amount, resist_duration - world.time)
+	if(owner)
+		last_amount = capped_amount / owner.GetStunDuration(1)
+	return ..(capped_amount)
 
 /atom/movable/screen/alert/status_effect/stun
 	name = "Stunned"
 	desc = "You are incapacitated. You may not move or act."
 	icon_state = ALERT_INCAPACITATED
 
+#undef MAX_RESISTABLE_STUN
 
 //KNOCKDOWN
 /datum/status_effect/incapacitating/knockdown

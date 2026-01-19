@@ -19,6 +19,9 @@ GLOBAL_VAR_INIT(total_dead_xenos, 0)
 	if(SSticker?.mode?.hardcore)
 		ghostize()
 
+	if(hauled_mob)
+		release_haul(stuns=FALSE)
+
 	set_light_range(0)
 
 	if(pulledby)
@@ -73,6 +76,7 @@ GLOBAL_VAR_INIT(total_dead_xenos, 0)
 
 			if(hive && hive.living_xeno_queen == src)
 				notify_ghosts(header = "Queen Death", message = "The Queen has been slain!", source = src, action = NOTIFY_ORBIT)
+				SScmtv.spectate_event("Queen Death", src)
 				xeno_message(SPAN_XENOANNOUNCE("A sudden tremor ripples through the hive... the Queen has been slain! Vengeance!"), 3, hivenumber)
 				if(!hive.hive_flags_locked)
 					hive.hive_flags = initial(hive.hive_flags)

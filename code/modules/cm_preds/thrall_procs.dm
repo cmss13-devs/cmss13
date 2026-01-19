@@ -107,7 +107,7 @@
 
 /obj/item/clothing/gloves/yautja/hunter/verb/stun_thrall()
 	set name = "Stun Thrall"
-	set desc = "Stun your thrall when it misbehaves"
+	set desc = "Stun your thrall when it misbehaves."
 	set category = "Yautja.Thrall"
 	set src in usr
 
@@ -168,7 +168,8 @@
 	do_after(thrall, (80), INTERRUPT_NONE, BUSY_ICON_HOSTILE)
 
 	if(thrall)
-		cell_explosion(thrall, 800, 550, EXPLOSION_FALLOFF_SHAPE_LINEAR, null)
+		var/datum/cause_data/cause_data = create_cause_data("thrall remote self-destruct", master)
+		cell_explosion(thrall, 800, 550, EXPLOSION_FALLOFF_SHAPE_LINEAR, explosion_cause_data=cause_data)
 		thrall.gib() // kills the thrall
 		qdel(thrall)
 

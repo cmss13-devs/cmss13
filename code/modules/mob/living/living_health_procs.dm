@@ -39,7 +39,7 @@
 /mob/living/getFireLoss()
 	return fireloss
 
-/mob/living/proc/adjustFireLoss(amount)
+/mob/living/proc/adjustFireLoss(amount, chemical = FALSE)
 	if(status_flags & GODMODE)
 		return 0 //godmode
 	fireloss = min(max(fireloss + amount, 0),(maxHealth*2))
@@ -104,7 +104,7 @@
 	if(S)
 		return S.get_duration_left() / GLOBAL_STATUS_MULTIPLIER
 	return 0
-/mob/living/proc/Stun(amount)
+/mob/living/proc/Stun(amount, resistable = FALSE)
 	if(!(status_flags & CANSTUN))
 		return
 	amount = GetStunDuration(amount)
@@ -113,9 +113,9 @@
 		if(nst_stim.get_property(PROPERTY_NERVESTIMULATING))
 			nst_stim.volume += max(min((-1*amount)/10, 0), -10)
 	if(S)
-		S.update_duration(amount, increment = TRUE)
+		S.update_duration(amount, increment=TRUE, resistable=resistable)
 	else if(amount > 0)
-		S = apply_status_effect(/datum/status_effect/incapacitating/stun, amount)
+		S = apply_status_effect(/datum/status_effect/incapacitating/stun, amount, resistable)
 	return S
 /mob/living/proc/SetStun(amount, ignore_canstun = FALSE) //Sets remaining duration
 	if(!(status_flags & CANSTUN))
@@ -509,10 +509,9 @@
 		return COMPONENT_NO_IGNITE
 
 // heal ONE limb, organ gets randomly selected from damaged ones.
-/mob/living/proc/heal_limb_damage(brute, burn)
+/mob/living/proc/heal_limb_damage(brute, burn, chemical = FALSE)
 	apply_damage(-brute, BRUTE)
-	apply_damage(-burn, BURN)
-	src.updatehealth()
+	apply_damage(-burn, BURN, chemical = chemical)
 
 // damage ONE limb, organ gets randomly selected from damaged ones.
 /mob/living/proc/take_limb_damage(brute, burn)
@@ -520,13 +519,11 @@
 		return 0 //godmode
 	apply_damage(brute, BRUTE)
 	apply_damage(burn, BURN)
-	src.updatehealth()
 
 // heal MANY limbs, in random order
 /mob/living/proc/heal_overall_damage(brute, burn)
 	apply_damage(-brute, BRUTE)
 	apply_damage(-burn, BURN)
-	src.updatehealth()
 
 // damage MANY limbs, in random order
 /mob/living/proc/take_overall_damage(brute, burn, used_weapon = null, limb_damage_chance = 80)
@@ -534,16 +531,12 @@
 		return 0 //godmode
 	apply_damage(brute, BRUTE)
 	apply_damage(burn, BURN)
-	src.updatehealth()
 
 /mob/living/proc/restore_all_organs()
 	return
 
-
-
 /mob/living/proc/revive(keep_viruses)
 	rejuvenate()
-
 
 /mob/living/proc/rejuvenate()
 	heal_all_damage()
@@ -555,7 +548,7 @@
 	recalculate_move_delay = TRUE
 	sdisabilities = 0
 	disabilities = 0
-	drowsyness = 0
+	drowsiness = 0
 	hallucination = 0
 	jitteriness = 0
 	dizziness = 0

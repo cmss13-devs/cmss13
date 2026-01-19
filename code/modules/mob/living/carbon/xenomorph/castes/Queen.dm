@@ -23,7 +23,7 @@
 
 	is_intelligent = 1
 	evolution_allowed = FALSE
-	fire_immunity = FIRE_IMMUNITY_NO_DAMAGE|FIRE_IMMUNITY_NO_IGNITE
+	fire_immunity = FIRE_IMMUNITY_COMPLETE
 	caste_desc = "The Queen, in all her glory."
 	spit_types = list(/datum/ammo/xeno/toxin/queen, /datum/ammo/xeno/acid/spatter)
 	can_hold_facehuggers = 0
@@ -46,7 +46,6 @@
 	minimum_evolve_time = 0
 
 	minimap_icon = "xenoqueen"
-
 	minimap_background = "xeno_ruler"
 
 	royal_caste = TRUE
@@ -246,9 +245,9 @@
 		M.client.perspective = EYE_PERSPECTIVE
 
 		if(is_watching)
-			M.client.eye = is_watching
+			M.client.set_eye(is_watching)
 		else
-			M.client.eye = src
+			M.client.set_eye(src)
 
 	return COMPONENT_OVERRIDE_VIEW
 
@@ -280,6 +279,7 @@
 	wall_smash = 0
 	pixel_x = -29 //new offsets for the much bigger sprite.
 	old_x = -29
+	xenonid_pixel_x = -16
 	mob_size = MOB_SIZE_IMMOBILE
 	drag_delay = 6 //pulling a big dead xeno is hard
 	tier = 0 //Queen doesn't count towards population limit.
@@ -326,7 +326,6 @@
 		/datum/action/xeno_action/activable/info_marker/queen,
 		/datum/action/xeno_action/onclick/manage_hive,
 		/datum/action/xeno_action/onclick/send_thoughts,
-		/datum/action/xeno_action/onclick/tacmap,
 		/datum/action/xeno_action/onclick/toggle_seethrough,
 	)
 
@@ -456,6 +455,8 @@
 
 	AddComponent(/datum/component/footstep, 2 , 35, 11, 4, "alien_footstep_large")
 	AddComponent(/datum/component/seethrough_mob)
+	if(hive.hivenumber == XENO_HIVE_NORMAL)
+		AddComponent(/datum/component/tacmap, has_drawing_tools=TRUE, minimap_flag=get_minimap_flag_for_faction(hive.hivenumber), has_update=TRUE, drawing=TRUE)
 	RegisterSignal(src, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(check_block))
 
 /mob/living/carbon/xenomorph/queen/proc/check_block(mob/queen, turf/new_loc)
@@ -507,7 +508,6 @@
 
 
 	full_designation = "[name_client_prefix][nicknumber][name_client_postfix]"
-	color = hive.color
 
 	//Update linked data so they show up properly
 	change_real_name(src, name)
@@ -693,7 +693,7 @@
 /mob/living/carbon/xenomorph/queen/proc/hive_message()
 	set category = "Alien"
 	set name = "Word of the Queen (50)"
-	set desc = "Send a message to all aliens in the hive that is big and visible"
+	set desc = "Send a message to all aliens in the hive that is big and visible."
 	if(client.prefs.muted & MUTE_IC)
 		to_chat(src, SPAN_DANGER("You cannot send Announcements (muted)."))
 		return
@@ -1078,8 +1078,6 @@
 	for(var/path in immobile_abilities)
 		give_action(src, path)
 
-	add_verb(src, /mob/living/carbon/xenomorph/proc/xeno_tacmap)
-
 	ADD_TRAIT(src, TRAIT_ABILITY_NO_PLASMA_TRANSFER, TRAIT_SOURCE_ABILITY("Ovipositor"))
 	ADD_TRAIT(src, TRAIT_ABILITY_OVIPOSITOR, TRAIT_SOURCE_ABILITY("Ovipositor"))
 
@@ -1126,8 +1124,6 @@
 
 	set_resin_build_order(GLOB.resin_build_order_drone) // This needs to occur before we update the abilities so we can update the choose resin icon
 	refresh_combat_abilities()
-
-	remove_verb(src, /mob/living/carbon/xenomorph/proc/xeno_tacmap)
 
 	REMOVE_TRAIT(src, TRAIT_ABILITY_NO_PLASMA_TRANSFER, TRAIT_SOURCE_ABILITY("Ovipositor"))
 	REMOVE_TRAIT(src, TRAIT_ABILITY_OVIPOSITOR, TRAIT_SOURCE_ABILITY("Ovipositor"))

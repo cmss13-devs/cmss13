@@ -1,4 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/open/floor/almayer/test_floor4,
+/area/shuttle/lifeboat)
 "ce" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "17,5"
@@ -105,7 +108,7 @@
 	id = "Boat2-D2";
 	throw_dir = 2
 	},
-/turf/open/shuttle/lifeboat,
+/turf/open/floor/almayer/test_floor4,
 /area/shuttle/lifeboat)
 "mt" = (
 /turf/closed/shuttle/lifeboat/transparent{
@@ -237,7 +240,7 @@
 	id = "Boat2-D1";
 	throw_dir = 2
 	},
-/turf/open/shuttle/lifeboat,
+/turf/open/floor/almayer/test_floor4,
 /area/shuttle/lifeboat)
 "EI" = (
 /obj/structure/surface/table/reinforced/almayer_B,
@@ -528,7 +531,7 @@ OO
 VZ
 OO
 AF
-OO
+aa
 "}
 (11,1,1) = {"
 Bf
@@ -537,7 +540,7 @@ OO
 VZ
 OO
 AF
-OO
+aa
 "}
 (12,1,1) = {"
 em
@@ -573,7 +576,7 @@ OO
 VZ
 OO
 AF
-OO
+aa
 "}
 (16,1,1) = {"
 Bf
@@ -582,7 +585,7 @@ OO
 VZ
 OO
 AF
-OO
+aa
 "}
 (17,1,1) = {"
 em

@@ -1,7 +1,14 @@
 import { classes } from 'common/react';
 import { Fragment, useEffect, useRef, useState } from 'react';
 import { useBackend } from 'tgui/backend';
-import { Box, Button, NumberInput, Section, Stack } from 'tgui/components';
+import {
+  Box,
+  Button,
+  Input,
+  NumberInput,
+  Section,
+  Stack,
+} from 'tgui/components';
 import { Window } from 'tgui/layouts';
 
 type Receipt = {
@@ -36,12 +43,28 @@ export const StackReceipts = () => {
   ]);
   const [cycleIndex, setCycleIndex] = useState(0);
 
-  const currentReceipts = receiptStack[receiptStack.length - 1];
-
   const pluralize = (count: number, singular: string) =>
     count === 1 ? singular : `${singular}s`;
 
   const getNotOne = (count: number) => (count === 1 ? '' : `${count} `);
+
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const searchFilter = (x: Receipt) =>
+    x.title.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase());
+
+  const currentReceipts = receiptStack[receiptStack.length - 1];
+
+  const flattenReceipts = (receipts: Receipt[]): Receipt[] => {
+    return receipts.flatMap((r) =>
+      r.stack_sub_receipts
+        ? [r, ...flattenReceipts(r.stack_sub_receipts)]
+        : [r],
+    );
+  };
+
+  const filteredAllReceipts =
+    flattenReceipts(currentReceipts).filter(searchFilter);
 
   const handleBuildClick = (receipt: Receipt, multiplier: number) => {
     act('make', {
@@ -104,7 +127,9 @@ export const StackReceipts = () => {
     let materialAmount = receipt.req_amount ?? 1;
 
     if (receipt.is_multi) {
-      materialAmount = (receipt.amount_to_build ?? 1) * materialAmount;
+      materialAmount = Math.floor(
+        (receipt.amount_to_build ?? 1) / (receipt.res_amount ?? 1),
+      );
     }
 
     return (
@@ -156,7 +181,13 @@ export const StackReceipts = () => {
                     )
                   }
                   onClick={() => {
-                    handleBuildClick(receipt, receipt.amount_to_build ?? 1);
+                    handleBuildClick(
+                      receipt,
+                      Math.floor(
+                        (receipt.amount_to_build ?? 1) /
+                          (receipt.res_amount ?? 1),
+                      ),
+                    );
                   }}
                 >
                   {pluralize(receipt.res_amount ?? 1, receipt.title)}
@@ -172,13 +203,19 @@ export const StackReceipts = () => {
                     <NumberInput
                       tabbed
                       className="StackNumberInput"
-                      value={receipt.amount_to_build ?? 1}
+                      value={
+                        Math.round(
+                          (receipt.amount_to_build ?? 1) /
+                            (receipt.res_amount ?? 1),
+                        ) * (receipt.res_amount ?? 1)
+                      }
                       maxValue={Math.min(
-                        20,
-                        Math.floor(stack_amount / (receipt.req_amount ?? 1)),
+                        20 * (receipt.res_amount ?? 1),
+                        Math.floor(stack_amount / (receipt.req_amount ?? 1)) *
+                          (receipt.res_amount ?? 1),
                       )}
-                      minValue={1}
-                      step={1}
+                      minValue={receipt.res_amount ?? 1}
+                      step={receipt.res_amount ?? 1}
                       stepPixelSize={3}
                       width="30px"
                       height="24px"
@@ -208,7 +245,7 @@ export const StackReceipts = () => {
   };
 
   return (
-    <Window width={440} height={500}>
+    <Window height={600} width={450}>
       <Window.Content className="StackReceipts">
         <Section
           ref={scrollRef}
@@ -220,15 +257,32 @@ export const StackReceipts = () => {
               <small style={{ fontWeight: 'normal' }}>
                 Amount left: {stack_amount}
               </small>
+              <Stack
+                align="center"
+                justify="space-between"
+                align-items="stretch"
+              >
+                <Stack.Item>
+                  <small style={{ fontWeight: 'normal' }}>Search</small>
+                </Stack.Item>
+                <Stack.Item>
+                  <Input
+                    value={searchTerm}
+                    onInput={(_, value) => setSearchTerm(value)}
+                    width="160px"
+                  />
+                </Stack.Item>
+              </Stack>
             </>
           }
         >
           <Stack fill vertical>
             <Box width="100%">
               {currentReceipts.length > 0 &&
-                currentReceipts.map((receipt, index) =>
-                  renderReceipt(receipt, index),
-                )}
+                (searchTerm.length > 0
+                  ? filteredAllReceipts
+                  : currentReceipts
+                ).map((receipt, index) => renderReceipt(receipt, index))}
 
               {receiptStack.length > 1 && (
                 <Box width="100%" style={{ marginTop: '10px' }}>

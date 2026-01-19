@@ -198,7 +198,7 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 	new /obj/item/storage/belt/security/MP(src)
 	new /obj/item/device/flashlight(src)
 	new /obj/item/clothing/glasses/sunglasses/sechud(src)
-	new /obj/item/device/radio/headset/almayer/cmpcom(src)
+	new /obj/item/device/radio/headset/almayer/mcom/cmp(src)
 	new /obj/item/weapon/gun/energy/taser(src)
 	new /obj/item/weapon/baton(src)
 	new /obj/item/storage/backpack/security (src)
@@ -249,18 +249,18 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 	new /obj/item/storage/backpack/marine/satchel(src)
 	if(!is_ground_level(z))
 		new /obj/item/device/radio/headset/almayer/doc(src)
+	new /obj/item/clothing/under/rank/medical(src)
+	new /obj/item/clothing/suit/storage/labcoat(src)
+	new /obj/item/clothing/suit/storage/labcoat/short(src)
+	new /obj/item/clothing/suit/storage/labcoat/long(src)
 	new /obj/item/clothing/shoes/white(src)
-	new /obj/item/clothing/shoes/white(src)
-	new /obj/item/storage/belt/medical/full(src)
-	new /obj/item/clothing/under/rank/medical/green(src)
-	new /obj/item/clothing/under/rank/medical/blue(src)
-	new /obj/item/clothing/under/rank/medical/lightblue(src)
-	new /obj/item/clothing/under/rank/medical/purple(src)
+	new /obj/item/clothing/mask/breath(src)
 	new /obj/item/clothing/mask/surgical(src)
-	new /obj/item/clothing/head/surgery/green(src)
-	new /obj/item/clothing/head/surgery/blue(src)
-	new /obj/item/clothing/head/surgery/purple(src)
 	new /obj/item/clothing/glasses/hud/health(src)
+	new /obj/item/storage/pouch/medical(src)
+	new /obj/item/storage/pouch/syringe(src)
+	new /obj/item/storage/pouch/medkit(src)
+	new /obj/item/storage/pouch/chem(src)
 
 /obj/structure/closet/secure_closet/medical_doctor/select_gamemode_equipment(gamemode)
 	if (SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
@@ -307,7 +307,7 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 
 /obj/structure/closet/secure_closet/req_officer/Initialize()
 	. = ..()
-	new /obj/item/device/radio/headset/almayer/qm(src)
+	new /obj/item/device/radio/headset/almayer/mcom/qm(src)
 	new /obj/item/clothing/under/rank/qm_suit(src)
 	new /obj/item/clothing/shoes/marine(src)
 	new /obj/item/storage/belt/marine(src)
@@ -356,11 +356,11 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 	new /obj/item/storage/backpack/marine/satchel(src)
 
 /obj/structure/closet/secure_closet/cmdcabinet
-	name = "command tablet cabinet"
-	desc = "A bulletproof cabinet containing the command tablet for usage by the CO and XO. Opens only to them and department heads."
+	name = "heavyduty wall cabinet"
+	desc = "A bulletproof cabinet containing whatever important goodies to justify locking it inside."
+	req_one_access = list(ACCESS_MARINE_SENIOR)
 	density = FALSE
 	store_mobs = FALSE
-	req_one_access = list(ACCESS_MARINE_SENIOR)
 	icon_state = "secure_locked_cmdcabinet"
 	icon_closed = "secure_unlocked_cmdcabinet"
 	icon_locked = "secure_locked_cmdcabinet"
@@ -368,6 +368,16 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 	icon_broken = "secure_locked_cmdcabinet"
 	icon_off = "secure_unlocked_cmdcabinet"
 	wall_mounted = TRUE
+
+/obj/structure/closet/secure_closet/cmdcabinet/marine
+	name = "command tablet cabinet"
+	desc = "A bulletproof cabinet containing the command tablet for usage by the CO and XO. Opens only to them and department heads."
+	req_one_access = list(ACCESS_MARINE_SENIOR)
+
+/obj/structure/closet/secure_closet/cmdcabinet/marine/Initialize()
+	. = ..()
+	new /obj/item/device/radio/headset/almayer/mcom/spare(src)
+	new /obj/item/device/cotablet(src)
 
 /obj/structure/closet/secure_closet/cmdcabinet/comms_mp
 	name = "communications cabinet"

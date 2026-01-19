@@ -14,8 +14,16 @@
 	if(!skills)
 		return FALSE
 	var/order_level = skills.get_skill_level(SKILL_LEADERSHIP)
-	if(!order_level)
-		order_level = SKILL_LEAD_TRAINED
+
+	switch(order_level)
+		if(SKILL_LEAD_TRAINED)
+			order_level = 1
+		if(SKILL_LEAD_SKILLED)
+			order_level = 1.5
+		if(SKILL_LEAD_EXPERT)
+			order_level = 2
+		if(SKILL_LEAD_MASTER)
+			order_level = 3
 
 	if(!order)
 		order = tgui_input_list(src, "Choose an order", "Order to send", list(COMMAND_ORDER_MOVE, COMMAND_ORDER_HOLD, COMMAND_ORDER_FOCUS, "help", "cancel"))
@@ -54,11 +62,11 @@
 		var/spoken_order = ""
 		switch(order)
 			if(COMMAND_ORDER_MOVE)
-				spoken_order = pick("*GET MOVING*!", "*GO, GO, GO*!", "*WE ARE ON THE MOVE*!", "*MOVE IT*!", "*DOUBLE TIME*!", "*KEEP UP LADIES*!", "*MOVE, MOVE, MOVE*!", "*ADVANCE*!", "*KICK YOUR FEET, TWINKLETOES*!", "*ON YOUR FEET SOLDIER, WE ARE LEAVING*!", "*WE ARE OSCAR MIKE*!", "*FORWARD*!", "*GET UP THERE*!", "*GET ON ME*!", "*CHARGE, FORWARD*!", "*ON ME MEN, LET'S MOVE*!", "*STEPPING OFF*!", "*STEP IT UP, LET'S ROLL*!", "*LET'S ROLL*!", "*STACK UP ON ME*!", "*FALL IN*!")
+				spoken_order = pick("GET MOVING!", "GO, GO, GO!", "WE ARE ON THE MOVE!", "MOVE IT!", "DOUBLE TIME!", "KEEP UP LADIES!", "MOVE, MOVE, MOVE!", "ADVANCE!", "KICK YOUR FEET, TWINKLETOES!", "ON YOUR FEET SOLDIER, WE ARE LEAVING!", "WE ARE OSCAR MIKE!", "FORWARD!", "GET UP THERE!", "GET ON ME!", "CHARGE, FORWARD!", "ON ME MEN, LET'S MOVE!", "STEPPING OFF!", "STEP IT UP, LET'S ROLL!", "LET'S ROLL!", "STACK UP ON ME!", "FALL IN!")
 			if(COMMAND_ORDER_HOLD)
-				spoken_order = pick("*DUCK AND COVER*!", "*HOLD THE LINE*!", "*HOLD POSITION*!", "*STAND YOUR GROUND*!", "*STAND AND FIGHT*!", "*HOLD YOUR GROUND*!", "*HUNKER*!", "*HUNKER DOWN*!", "*HOLD HERE*!", "*HOLD WITH ME*!", "*TO ME, HOLD*!", "*DEFENSIVE POSITIONS*!", "*TAKE COVER AND FIRE*!", "*STAND FAST*!", "*NOT ONE STEP BACK*!", "*HOLD FAST*!", "*DIG IN AND HOLD*!", "*BRACE*!", "*TO THE LAST MAN*!", "*KEEP YOUR NERVE, HOLD STRONG*!", "*NO RETREAT, STAND FIRM*!")
+				spoken_order = pick("DUCK AND COVER!", "HOLD THE LINE!", "HOLD POSITION!", "STAND YOUR GROUND!", "STAND AND FIGHT!", "HOLD YOUR GROUND!", "HUNKER!", "HUNKER DOWN!", "HOLD HERE!", "HOLD WITH ME!", "TO ME, HOLD!", "DEFENSIVE POSITIONS!", "TAKE COVER AND FIRE!", "STAND FAST!", "NOT ONE STEP BACK!", "HOLD FAST!", "DIG IN AND HOLD!", "BRACE!", "TO THE LAST MAN!", "KEEP YOUR NERVE, HOLD STRONG!", "NO RETREAT, STAND FIRM!")
 			if(COMMAND_ORDER_FOCUS)
-				spoken_order = pick("*FOCUS FIRE*!", "*PICK YOUR TARGETS*!", "*CENTER MASS*!", "*SHORT-CONTROLLED BURSTS*!", "*AIM YOUR SHOTS*!", "*ON MY MARK*!", "*AIMED SHOTS*!", "*GO FOR THE KILL*!", "*SHOOT 'EM DEAD*!", "*KILL THEM ALL*!", "*SUPPRESSIVE FIRE*!", "*TIGHTEN YOUR SHOTS*!", "*LOCK AND LOAD*!", "*TARGET THEIR WEAK SPOTS*!", "*ZERO IN ON THE ENEMY*!", "*EYES ON THE PRIZE*!", "*LET'S ROCK*!", "*HIT 'EM WHERE IT HURTS*!", "*SLAUGHTER 'EM*!", "*BRING THE PAIN*!", "*STEADY YOUR AIM*!", "*EYES UP AND FIRE*!", "*FIRING LANES*!", "*CROSSHAIRS, PEOPLE*!", "*STRIKE*!")
+				spoken_order = pick("FOCUS FIRE!", "PICK YOUR TARGETS!", "CENTER MASS!", "SHORT-CONTROLLED BURSTS!", "AIM YOUR SHOTS!", "ON MY MARK!", "AIMED SHOTS!", "GO FOR THE KILL!", "SHOOT 'EM DEAD!", "KILL THEM ALL!", "SUPPRESSIVE FIRE!", "TIGHTEN YOUR SHOTS!", "LOCK AND LOAD!", "TARGET THEIR WEAK SPOTS!", "ZERO IN ON THE ENEMY!", "EYES ON THE PRIZE!", "LET'S ROCK!", "HIT 'EM WHERE IT HURTS!", "SLAUGHTER 'EM!", "BRING THE PAIN!", "STEADY YOUR AIM!", "EYES UP AND FIRE!", "FIRING LANES!", "CROSSHAIRS, PEOPLE!", "STRIKE!")
 		say(spoken_order) // if someone thinks about adding new lines, it'll be better to split the current ones we have into two different lists per order for readability, and have a coin flip pick between spoken_orders 1 or 2
 	else
 		visible_message(SPAN_BOLDNOTICE("[src] gives an order to [order]!"), SPAN_BOLDNOTICE("You give an order to [order]!"))
@@ -123,3 +131,24 @@
 				marksman_aura = 0
 
 	hud_set_order()
+
+/mob/living/carbon/human/proc/cycle_voice_level()
+	if(!HAS_TRAIT(src, TRAIT_LEADERSHIP)) // just in case
+		to_chat(src, SPAN_WARNING("You don't particularly understand how to speak... 'authoritatively.'"))
+		return
+
+	switch(langchat_styles)
+		if("", null)
+			langchat_styles = "langchat_smaller_bolded"
+			to_chat(src, SPAN_NOTICE("You will now speak authoritatively."))
+			return
+
+		if("langchat_smaller_bolded")
+			langchat_styles = "langchat_bolded"
+			to_chat(src, SPAN_NOTICE("You will now speak loudly and authoritatively."))
+			return
+
+		if("langchat_bolded")
+			langchat_styles = ""
+			to_chat(src, SPAN_NOTICE("You will now speak normally."))
+			return

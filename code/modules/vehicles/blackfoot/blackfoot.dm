@@ -615,7 +615,7 @@
 	flags_atom |= NO_ZFALL
 	change_state(STATE_VTOL)
 	update_icon()
-	var/obj/downwash_effect/downwash = locate() in get_turf(src)
+	var/obj/downwash_effect/downwash = locate() in locate(x, y+1, z)
 	qdel(downwash)
 
 	var/turf/top_turf = SSmapping.get_turf_above(get_turf(src))
@@ -1074,6 +1074,7 @@
 	icon_state = "aerospace-tug"
 	density = TRUE
 	anchored = FALSE
+	unacidable = TRUE
 	pixel_x = -16
 	pixel_y = 0
 
@@ -1084,7 +1085,7 @@
 	icon_state = "landing-pad-folded"
 	density = TRUE
 	anchored = FALSE
-
+	unacidable = TRUE
 	pixel_x = -16
 	pixel_y = -16
 
@@ -1134,6 +1135,7 @@
 	icon = 'icons/obj/vehicles/blackfoot_peripherals.dmi'
 	icon_state = "landing pad light"
 	layer = BELOW_MOB_LAYER
+	unacidable = TRUE
 
 /obj/item/flight_cpu
 	name = "GZ0 Operations Terminal"
@@ -1141,6 +1143,7 @@
 	icon = 'icons/obj/vehicles/blackfoot_peripherals.dmi'
 	icon_state = "flightcpu-crate"
 	layer = BELOW_MOB_LAYER
+	unacidable = TRUE
 
 	var/obj/structure/landing_pad/linked_pad
 	var/fueling = FALSE
@@ -1233,6 +1236,7 @@
 	icon = 'icons/obj/vehicles/blackfoot_peripherals.dmi'
 	icon_state = "fuelpump-crate"
 	layer = BELOW_MOB_LAYER
+	unacidable = TRUE
 
 /obj/structure/landing_pad
 	name = "M9AB Landing Pad"
@@ -1241,7 +1245,7 @@
 	icon_state = "pad"
 	light_pixel_x = 48
 	light_pixel_y = 48
-
+	unacidable = TRUE
 	pixel_x = -2
 	pixel_y = 4
 
@@ -1330,6 +1334,7 @@
 		/obj/item/ammo_magazine/hardpoint/chimera_launchers_ammo = 4,
 	)
 	icon_state = "secure_crate_strapped"
+	unacidable = TRUE
 
 
 /obj/structure/chimera_loader

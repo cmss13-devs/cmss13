@@ -141,6 +141,9 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 		depth++
 
 /turf/open_space/blackfoot/additional_enter_checks(atom/movable/mover)
+	if(!ishuman(mover))
+		return TRUE
+
 	var/turf/projected_turf = get_projected_turf()
 	if(projected_turf.density)
 		return FALSE

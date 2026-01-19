@@ -43,7 +43,7 @@ type ChemMasterData = {
   };
   buffer?: Reagent[];
   mode: BooleanLike;
-  bottle_select: BooleanLike;
+  bottle_autoselect: BooleanLike;
   pill_or_bottle_icon: string;
   pill_icon_choices: number;
   bottle_icon_choices: number;
@@ -293,12 +293,12 @@ export const ChemMaster = () => {
                             : 'Select All'}
                         </Button>
                         <Button.Checkbox
-                          checked={data.bottle_select}
+                          checked={data.bottle_autoselect}
                           tooltip={
                             'If checked, new pill bottles will be autoselected'
                           }
                           onClick={() => {
-                            act('bottle_select_toggle');
+                            act('bottle_autoselect_toggle');
                           }}
                         >
                           Auto-select

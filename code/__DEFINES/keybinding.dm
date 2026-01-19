@@ -2,7 +2,10 @@
 #define KEYBIND_TYPE_ME "me"
 #define KEYBIND_TYPE_PICKSAY "picksay"
 
+#define COMSIG_KB_CUSTOM_KEYBIND_DOWN "keybinding_custom_down"
+
 #define KEYBIND_CUSTOM_MAX 20
+#define KEYBIND_CUSTOM_PICKSAY_MAX 20
 
 //Signals
 

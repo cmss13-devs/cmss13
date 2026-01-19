@@ -255,7 +255,7 @@ const CustomKeybinds = (props: {
   };
 
   const handleAddPicksayOption = () => {
-    if (inputValue.trim()) {
+    if (inputValue.trim() && picksayOptions.length < 20) {
       setPicksayOptions((prev) => [...prev, inputValue.trim()]);
       setInputValue('');
     }
@@ -301,6 +301,7 @@ const CustomKeybinds = (props: {
                     <Input
                       fluid
                       placeholder="Add an option..."
+                      maxLength={1024}
                       value={inputValue}
                       onInput={(_, val) => setInputValue(val)}
                       onEnter={() => handleAddPicksayOption()}
@@ -309,6 +310,7 @@ const CustomKeybinds = (props: {
                   <Flex.Item ml={1}>
                     <Button
                       icon="plus"
+                      disabled={picksayOptions.length >= 20}
                       onClick={() => handleAddPicksayOption()}
                     >
                       Add
@@ -338,6 +340,7 @@ const CustomKeybinds = (props: {
             <Flex.Item mb={1}>
               <Input
                 fluid
+                maxLength={1024}
                 placeholder="Enter content..."
                 value={inputValue}
                 onInput={(_, val) => setInputValue(val)}
@@ -396,7 +399,12 @@ const CustomKeybinds = (props: {
               </Box>
             </Flex.Item>
             <Flex.Item shrink={0} ml={1}>
-              <Button onClick={() => handleStartEditing()}>Set</Button>
+              <Button
+                className="Button--dropdown"
+                onClick={() => handleStartEditing()}
+              >
+                Set
+              </Button>
             </Flex.Item>
           </Flex>
         </Flex.Item>
@@ -424,6 +432,7 @@ const CustomKeybinds = (props: {
               });
             }}
             width="80px"
+            menuWidth="85px"
           />
         </Flex.Item>
         <Flex.Item ml={1}>
@@ -542,6 +551,7 @@ const CustomKeybinds = (props: {
             <Button
               color="bad"
               icon="times"
+              tooltip="Discard changes"
               onClick={() => setPendingKeybind(undefined)}
             />
           </Flex.Item>

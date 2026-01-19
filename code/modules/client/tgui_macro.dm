@@ -126,22 +126,31 @@ GLOBAL_LIST_EMPTY(ui_data_keybindings)
 
 		if("set_custom_keybinds")
 			var/index = params["index"]
-
 			if(index > KEYBIND_CUSTOM_MAX)
 				return TRUE
 
 			var/keybind_type = params["keybind_type"]
-
 			if(!(keybind_type in list(KEYBIND_TYPE_SAY, KEYBIND_TYPE_ME, KEYBIND_TYPE_PICKSAY)))
 				return TRUE
 
 			var/contents = params["contents"]
-
 			if(keybind_type == KEYBIND_TYPE_PICKSAY && !islist(contents))
 				contents = list(contents)
 
-			if(keybind_type != KEYBIND_TYPE_PICKSAY && islist(contents))
-				contents = jointext(contents, ", ")
+				if(length(contents) != KEYBIND_CUSTOM_PICKSAY_MAX)
+					var/list/list_contents = contents
+					list_contents.len = KEYBIND_CUSTOM_PICKSAY_MAX
+
+				for(var/i in 1 to length(contents))
+					var/new_contents = list()
+					new_contents[i] = strip_html(contents[i])
+					contents = new_contents
+
+			if(keybind_type != KEYBIND_TYPE_PICKSAY)
+				if(islist(contents))
+					contents = jointext(contents, ", ")
+
+				contents = strip_html(contents)
 
 			var/keybind = params["keybind"]
 			if(!keybind)

@@ -14,10 +14,10 @@
 
 /obj/structure/closet/secure_closet/emergency/surgery/Initialize()
 	. = ..()
-	new /obj/item/storage/internal/accessory/surg_vest/equipped(src) //one for each doctor slot
-	new /obj/item/storage/internal/accessory/surg_vest/equipped(src)
-	new /obj/item/storage/internal/accessory/surg_vest/equipped(src)
-	new /obj/item/storage/internal/accessory/surg_vest/equipped(src)
+	new /obj/item/clothing/accessory/storage/surg_vest/equipped(src) //one for each doctor slot
+	new /obj/item/clothing/accessory/storage/surg_vest/equipped(src)
+	new /obj/item/clothing/accessory/storage/surg_vest/equipped(src)
+	new /obj/item/clothing/accessory/storage/surg_vest/equipped(src)
 	new /obj/item/roller/surgical(src)
 	new /obj/item/roller/surgical(src)
 	new /obj/item/roller/surgical(src)

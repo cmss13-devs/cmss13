@@ -60,7 +60,6 @@
 
 /// Try putting the appropriate number of [riding offhand items][/obj/item/riding_offhand] into the target's hands, return FALSE if we can't
 /datum/element/ridable/proc/equip_buckle_inhands(mob/living/carbon/human/user, amount_required = 1, atom/movable/target_movable, riding_target_override = null)
-	var/atom/movable/Atom = target_movable
 	var/amount_equipped = 0
 	for(var/amount_needed = amount_required, amount_needed > 0, amount_needed--)
 		var/obj/item/riding_offhand/inhand = new /obj/item/riding_offhand(user)
@@ -68,7 +67,7 @@
 			inhand.rider = user
 		else
 			inhand.rider = riding_target_override
-		inhand.parent = Atom
+		inhand.parent = target_movable
 
 		if(user.put_in_hands(inhand))
 			amount_equipped++

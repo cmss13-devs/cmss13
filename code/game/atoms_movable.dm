@@ -460,19 +460,19 @@
 			SPAN_NOTICE("You are buckled in to [src] by [user]."),
 			SPAN_NOTICE("You hear metal clanking."))
 
-/atom/movable/proc/send_unbuckling_message(mob/buckle_target, mob/user, atom/movable/unbuckle_from,)
+/atom/movable/proc/send_unbuckling_message(mob/buckle_target, mob/user, atom/movable/unbuckle_from)
 	if(!unbuckle_from)
 		unbuckle_from = src
 
 	if(buckle_target == user)
 		buckle_target.visible_message(
-			SPAN_NOTICE("[buckle_target.name] unbuckled [buckle_target.p_them()]self!"),
+			SPAN_NOTICE("[buckle_target] unbuckled [buckle_target.p_them()]self!"),
 			SPAN_NOTICE("You unbuckle yourself from [unbuckle_from]."),
 			SPAN_NOTICE("You hear metal clanking."))
 	else
 		buckle_target.visible_message(
-			SPAN_NOTICE("[buckle_target.name] was unbuckled by [user.name]!"),
-			SPAN_NOTICE("You were unbuckled from [unbuckle_from] by [user.name]."),
+			SPAN_NOTICE("[buckle_target] was unbuckled by [user.name]!"),
+			SPAN_NOTICE("You were unbuckled from [unbuckle_from] by [user]."),
 			SPAN_NOTICE("You hear metal clanking."))
 
 /// Called after somebody buckled / unbuckled
@@ -521,9 +521,6 @@
 
 	// Even if the movement is entirely managed by the object, notify the buckled mob that it's moving for its handler.
 	//It won't be called otherwise because it's a function of client_move or pulled mob, neither of which accounts for this.
-	if(!buckled_mob)
-		log_debug("buckled_mob null on signal send in /atom/movable/proc/handle_buckled_mob_movement.")
-		return FALSE
 	SEND_SIGNAL(buckled_mob, COMSIG_MOB_MOVE_OR_LOOK, TRUE, direct, direct)
 	return TRUE
 

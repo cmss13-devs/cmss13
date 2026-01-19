@@ -1008,9 +1008,9 @@
 /turf/open_space,
 /area/desert_dam/building/warehouse/warehouse)
 "ada" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
@@ -3152,8 +3152,8 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/security/workshop)
 "ajE" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_security)
 "ajF" = (
@@ -3203,8 +3203,8 @@
 /obj/structure/barricade/sandbags{
 	dir = 8
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_security)
 "ajM" = (
@@ -3252,8 +3252,8 @@
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_security)
 "ajS" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 1
 	},
@@ -3294,17 +3294,17 @@
 /turf/open/shuttle/can_surgery/black,
 /area/desert_dam/interior/dam_interior/hanger)
 "ajZ" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 8
 	},
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_security)
 "aka" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing/cartridge,
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_security)
 "akb" = (
@@ -3355,7 +3355,7 @@
 /obj/structure/barricade/sandbags{
 	dir = 8
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing/cartridge,
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_security)
 "akj" = (
@@ -3600,7 +3600,7 @@
 /turf/open/floor/prison/darkred2,
 /area/desert_dam/building/security/southern_hallway)
 "alc" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/prison/darkred2,
 /area/desert_dam/building/security/southern_hallway)
 "ald" = (
@@ -3641,17 +3641,17 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/prison,
 /area/desert_dam/building/security/southern_hallway)
 "alj" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/prison,
 /area/desert_dam/building/security/southern_hallway)
 "alk" = (
@@ -3728,8 +3728,8 @@
 /turf/open/floor/prison/darkredcorners2/north,
 /area/desert_dam/building/security/workshop)
 "alr" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/prison/darkred2/north,
 /area/desert_dam/building/security/southern_hallway)
 "als" = (
@@ -3780,15 +3780,15 @@
 /turf/open/floor/prison/darkredcorners2/west,
 /area/desert_dam/building/security/workshop)
 "alz" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing/cartridge,
 /turf/open/floor/prison,
 /area/desert_dam/building/security/workshop)
 "alA" = (
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
 /turf/open/floor/prison/darkred2/east,
 /area/desert_dam/building/security/workshop)
 "alB" = (
@@ -3816,7 +3816,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/security/workshop)
 "alE" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing/cartridge,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/ammo_magazine/revolver/cmb{
 	current_rounds = 0;
@@ -3829,8 +3829,8 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/security/workshop)
 "alF" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
 /turf/open/floor/prison,
 /area/desert_dam/building/security/workshop)
 "alG" = (
@@ -3862,9 +3862,9 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/security/workshop)
 "alJ" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
 /turf/open/floor/prison,
 /area/desert_dam/building/security/workshop)
 "alK" = (
@@ -3897,9 +3897,9 @@
 /area/desert_dam/building/security/workshop)
 "alO" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
 /obj/item/ammo_magazine/pistol/l54{
 	current_rounds = 0
 	},
@@ -3920,10 +3920,10 @@
 	dir = 1
 	},
 /obj/structure/surface/table/reinforced,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
 /obj/item/ammo_magazine/pistol/l54{
 	pixel_x = 4;
 	current_rounds = 0
@@ -5336,7 +5336,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/prison/darkredcorners2/east,
 /area/desert_dam/building/security/upper_hallway)
 "aqR" = (
@@ -5407,8 +5407,8 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/prison,
 /area/desert_dam/building/security/upper_hallway)
 "arg" = (
@@ -6693,13 +6693,13 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/prison,
 /area/desert_dam/building/security/upper_hallway)
 "avu" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/prison/darkred2,
 /area/desert_dam/building/security/upper_hallway)
 "avv" = (
@@ -6713,16 +6713,16 @@
 /turf/open/floor/prison/darkred2/north,
 /area/desert_dam/building/security/upper_hallway)
 "avw" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/prison/darkred2/north,
 /area/desert_dam/building/security/upper_hallway)
 "avx" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/prison,
 /area/desert_dam/building/security/upper_hallway)
 "avy" = (
@@ -6734,7 +6734,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/prison,
 /area/desert_dam/building/security/upper_hallway)
 "avA" = (
@@ -6746,7 +6746,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/security/upper_hallway)
 "avB" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/prison/darkred2/north,
 /area/desert_dam/building/security/upper_hallway)
 "avC" = (
@@ -8838,8 +8838,8 @@
 	dir = 8;
 	pixel_x = -4
 	},
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_x = -5;
 	pixel_y = 10
@@ -15259,8 +15259,8 @@
 /turf/open/desert/dirt/desert_transition_corner1/west,
 /area/desert_dam/exterior/valley/valley_hydro)
 "aWp" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
 /turf/open/desert/dirt/desert_transition_edge1/north,
 /area/desert_dam/exterior/valley/valley_hydro)
 "aWq" = (
@@ -15268,9 +15268,9 @@
 	pixel_x = 4;
 	pixel_y = 18
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
 /turf/open/desert/dirt/desert_transition_edge1/northeast,
 /area/desert_dam/exterior/valley/valley_hydro)
 "aWr" = (
@@ -15306,11 +15306,11 @@
 	dir = 1;
 	pixel_y = 17
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
 /obj/effect/decal/cleanable/blood/gibs/limb,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_hydro)
@@ -15333,9 +15333,9 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "aWA" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "aWB" = (
@@ -15354,12 +15354,12 @@
 /obj/effect/decal/cleanable/blood/drip{
 	icon_state = "2"
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing/cartridge,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "aWF" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "aWG" = (
@@ -22426,10 +22426,10 @@
 /turf/open/floor/whiteyellowcorner/east,
 /area/desert_dam/interior/dam_interior/break_room)
 "bAh" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_security)
 "bAk" = (
@@ -22600,7 +22600,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/engine_west_wing)
 "bDU" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "bDW" = (
@@ -24741,7 +24741,7 @@
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_telecoms)
 "cyj" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /obj/structure/machinery/light,
 /turf/open/floor/prison/red,
 /area/desert_dam/interior/lab_northeast/east_lab_east_entrance)
@@ -26670,9 +26670,9 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
 /area/desert_dam/exterior/landing_pad_one)
 "djI" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_security)
 "dkb" = (
@@ -27588,7 +27588,7 @@
 /turf/open/floor/prison/yellow/southeast,
 /area/desert_dam/building/hydroponics/hydroponics)
 "dAf" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing/cartridge,
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 1
 	},
@@ -27694,9 +27694,9 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
@@ -28900,7 +28900,7 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/security/northern_hallway)
 "ebq" = (
@@ -31123,7 +31123,7 @@
 /area/desert_dam/building/hydroponics/hydroponics)
 "eVB" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/security/northern_hallway)
 "eVI" = (
@@ -40735,9 +40735,9 @@
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
 "iBC" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/desert/rock/deep/transition/north,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "iBJ" = (
@@ -43260,8 +43260,8 @@
 	pixel_x = -1;
 	pixel_y = -6
 	},
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/white,
 /area/desert_dam/interior/dam_interior/lobby)
 "jBq" = (
@@ -43585,9 +43585,9 @@
 /turf/open/floor/wood,
 /area/desert_dam/building/warehouse/breakroom)
 "jHV" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/prison/red,
 /area/desert_dam/interior/lab_northeast/east_lab_east_entrance)
 "jHW" = (
@@ -45035,7 +45035,7 @@
 /area/desert_dam/building/administration/hallway)
 "kkF" = (
 /obj/structure/machinery/power/apc/no_power/north,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/prison/red/north,
 /area/desert_dam/interior/lab_northeast/east_lab_east_entrance)
 "kkL" = (
@@ -46531,10 +46531,10 @@
 	pixel_x = 6;
 	pixel_y = -2
 	},
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "kSP" = (
@@ -47168,7 +47168,7 @@
 /area/desert_dam/building/dorms/pool)
 "lgW" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/white,
 /area/desert_dam/interior/dam_interior/lobby)
 "lhd" = (
@@ -52918,7 +52918,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_northwest)
 "nsH" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/prison/darkred2/north,
 /area/desert_dam/building/security/armory)
 "nsK" = (
@@ -53010,8 +53010,8 @@
 /turf/open/floor/carpet9_4/west,
 /area/desert_dam/building/church)
 "nuw" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "nux" = (
@@ -53247,9 +53247,9 @@
 /turf/open/floor/wood,
 /area/desert_dam/building/administration/meetingrooom)
 "nAq" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "mgibbl4";
 	pixel_y = 2
@@ -54278,7 +54278,7 @@
 /turf/open/floor/whiteyellow/north,
 /area/desert_dam/interior/dam_interior/lobby)
 "nTA" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/desert/dirt/desert_transition_edge1,
 /area/desert_dam/exterior/valley/valley_security)
 "nTB" = (
@@ -54591,9 +54591,9 @@
 /obj/effect/decal/cleanable/blood{
 	icon_state = "xgib2"
 	},
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "nZg" = (
@@ -55758,7 +55758,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/security/northern_hallway)
 "owK" = (
@@ -58536,8 +58536,8 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/garage)
 "pAN" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /obj/item/weapon/gun/rifle/m41a/corporate/no_lock{
 	current_mag = null
 	},
@@ -60655,7 +60655,7 @@
 /obj/effect/decal/cleanable/blood{
 	icon_state = "xgib1"
 	},
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/prison/blue,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "qqb" = (
@@ -62611,7 +62611,7 @@
 	pixel_x = -1;
 	pixel_y = -6
 	},
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "qZU" = (
@@ -63649,8 +63649,8 @@
 /turf/open/floor/prison/darkyellowcorners2/north,
 /area/desert_dam/interior/dam_interior/engine_east_wing)
 "rvG" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/prison/blue,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "rvJ" = (
@@ -64166,9 +64166,9 @@
 /turf/open/floor/corsat/spiralplate,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "rFx" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /obj/effect/decal/cleanable/blood/drip{
 	icon_state = "3";
 	pixel_x = -5;
@@ -65452,7 +65452,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/security/northern_hallway)
 "shh" = (
@@ -65482,7 +65482,7 @@
 /turf/open/floor/prison/green/north,
 /area/desert_dam/building/dorms/hallway_westwing)
 "shO" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_security)
 "shU" = (
@@ -70238,9 +70238,9 @@
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/hydroponics/hydroponics_breakroom)
 "tXK" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "tXM" = (
@@ -71546,8 +71546,8 @@
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "uvI" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /obj/effect/decal/cleanable/blood{
 	layer = 3
 	},
@@ -71823,7 +71823,7 @@
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/medical/outgoing)
 "uBO" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/prison/whitepurple/north,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "uBP" = (
@@ -71926,7 +71926,7 @@
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 1
 	},
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/prison/whitepurple/north,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "uEo" = (
@@ -74491,9 +74491,9 @@
 	dir = 4;
 	icon_state = "gib6"
 	},
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/dark2,
 /area/desert_dam/interior/lab_northeast/east_lab_west_entrance)
 "vGw" = (
@@ -74577,9 +74577,9 @@
 /area/desert_dam/building/mining/workshop_foyer)
 "vHI" = (
 /obj/effect/decal/sand_overlay/sand2,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/prison/whitepurple,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "vHK" = (
@@ -76660,9 +76660,9 @@
 /area/desert_dam/building/medical/east_wing_hallway)
 "wyW" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/whiteyellowcorner/east,
 /area/desert_dam/interior/dam_interior/lobby)
 "wzd" = (
@@ -77999,9 +77999,9 @@
 /turf/open/floor/whiteyellowcorner/east,
 /area/desert_dam/interior/dam_interior/break_room)
 "xdQ" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/prison/blue,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "xdT" = (
@@ -79357,9 +79357,9 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/blood,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/prison/whitepurplecorner/west,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "xFN" = (

@@ -15,13 +15,13 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "ae" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/desert_dam/exterior/valley/valley_medical)
 "ag" = (
@@ -40,10 +40,10 @@
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal4"
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "aj" = (
@@ -54,10 +54,10 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "al" = (
@@ -65,7 +65,7 @@
 	icon_state = "W"
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing/cartridge,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6";
 	pixel_y = -8
@@ -92,9 +92,9 @@
 /area/desert_dam/exterior/valley/valley_medical)
 "aq" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "ar" = (
@@ -117,7 +117,7 @@
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal4"
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing/cartridge,
 /obj/item/ammo_magazine/rifle/mar40,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
@@ -125,9 +125,9 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "aw" = (
@@ -586,10 +586,10 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/medical/lobby)
 "cK" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_medical)
 "cR" = (
@@ -1754,8 +1754,8 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_medical)
 "Lx" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "LG" = (
@@ -1903,8 +1903,8 @@
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal4"
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "PI" = (
@@ -2092,9 +2092,9 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "UZ" = (

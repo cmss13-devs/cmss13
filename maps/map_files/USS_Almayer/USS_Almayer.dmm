@@ -116,7 +116,7 @@
 	layer = 3.5;
 	pixel_y = 13
 	},
-/mob/living/simple_animal/mouse/rat/brown,
+/mob/living/simple_animal/small/mouse/rat/brown,
 /obj/structure/sign/safety/bathunisex{
 	pixel_x = -16;
 	pixel_y = 8
@@ -3158,6 +3158,10 @@
 /obj/structure/machinery/cm_vending/clothing/medical_crew{
 	pixel_x = 26;
 	density = 0
+	},
+/obj/structure/closet/secure_closet/emergency/surgery{
+	pixel_x = 0;
+	pixel_y = 29
 	},
 /turf/open/floor/almayer/sterile_green_corner/north,
 /area/almayer/medical/lower_medical_medbay)
@@ -68503,7 +68507,7 @@
 	pixel_x = -1;
 	pixel_y = 28
 	},
-/mob/living/simple_animal/cat/Jones{
+/mob/living/simple_animal/small/cat/Jones{
 	dir = 8
 	},
 /turf/open/floor/wood/ship,
@@ -72464,7 +72468,7 @@
 	pixel_x = -10;
 	pixel_y = 7
 	},
-/mob/living/simple_animal/mouse/white/Doc,
+/mob/living/simple_animal/small/mouse/white/Doc,
 /turf/open/floor/almayer/sterile_green,
 /area/almayer/medical/hydroponics)
 "pOi" = (
@@ -78775,17 +78779,8 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_10"
 	},
-/obj/structure/closet/secure_closet/cmdcabinet{
-	desc = "A bulletproof cabinet containing communications equipment.";
-	name = "communications cabinet";
-	pixel_y = 24;
-	req_one_access_txt = "207;203"
-	},
-/obj/item/device/radio,
-/obj/item/device/radio/listening_bug/radio_linked/wy,
-/obj/item/device/radio/listening_bug/radio_linked/wy{
-	pixel_x = 4;
-	pixel_y = -3
+/obj/structure/closet/secure_closet/cmdcabinet/comms_cl{
+	pixel_y = 24
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
@@ -88398,11 +88393,9 @@
 /turf/open/floor/almayer/red,
 /area/almayer/living/cryo_cells)
 "wbX" = (
-/obj/structure/closet/secure_closet/cmdcabinet{
+/obj/structure/closet/secure_closet/cmdcabinet/marine{
 	pixel_y = 24
 	},
-/obj/item/device/cotablet,
-/obj/item/device/radio/headset/almayer/mcom/cdrcom,
 /turf/open/floor/almayer/silver/north,
 /area/almayer/command/cic)
 "wcm" = (

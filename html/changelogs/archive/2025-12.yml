@@ -327,3 +327,72 @@
   - bugfix: Fixed liquid fuel stacking extra amounts depending on the quantity of
       objects in the turf
   - refactor: Refactored logic for chem sprayer and synth foam backpack sprayer
+2025-12-25:
+  Drathek:
+  - code_imp: rust_g updated from 3.3.0 to 4.2.0
+  Kashargul:
+  - code_imp: update tgui dependencies
+  - code_imp: Update tgui dependencies again
+  - ui: Updated some stylesheets to meet new SASS expectations
+2025-12-30:
+  Drathek:
+  - spellcheck: Redacted a lorebook
+  - rscadd: Static comms are available to more gamemodes including extended
+  - code_imp: static_comms_amount variable on a gamemode is now per individual tower
+      vs pairs of towers
+  Itus:
+  - imageadd: 5 new two handed sprites to the MP27, Skorpion, SU6, KT42 and Auto9
+  Labeo0:
+  - bugfix: meson scanner vision effect is now removed when it's unequipped
+  Nihisohel:
+  - rscadd: Adds an underbarrel flashlight mount, switch to it via unique-action on
+      the rail light
+  - balance: Rail lights and by extension, the underbarrel rail light, has their light
+      modifier buffed by a single point
+  - balance: Most non-combatant marine roles start with a headset now.
+  - balance: Rebalance the cost of the researcher spare headset in the CMO vendors
+  - balance: CMPs are now able to buy spare MP headsets in their personal vendors
+  - rscdel: Most spare headset choices are removed; you may still find spares in certain
+      places, such as the MP lockers, or CIC Armory Lockers.
+  - code_imp: Cleans up the paths of the headsets, made them all subtypes of command
+      headsets, cleans up redundant variables
+  - qol: Arguably QOL, but departmental headsets now default to their department frequency
+  - rscadd: Pilots can now track the LZ with their headset
+  - rscdel: CE tracking options has been gutted, they have no need to track anything
+      but the LZ for building, anyhow
+  Puckaboo2:
+  - soundtweak: Renamed files where 'acquired' was misspelled.
+  - spellcheck: The word 'acquired' is no longer misspelled anywhere.
+  - spellcheck: All instances of 'simultaneously' have been spellchecked.
+  - spellcheck: Spellchecks modified files.
+  - spellcheck: Fixed a typo.
+  - bugfix: Spec kits cannot be acided.
+  - bugfix: The portable composite barricade no longer shrinks when damaged on the
+      west state.
+  - bugfix: Xeno spit overlays no longer linger on dead/fallen/ghost xenomorphs
+  - bugfix: Youngbloods can no longer spawn with bad eyesight.
+  - bugfix: Floodlight switches cannot be destroyed by explosions.
+  - bugfix: Fixes inconsistencies with bottle fills.
+  - bugfix: Fixes blinking line on surgical drill.
+  - bugfix: Removes two blue pixels from Fix-O-Vein.
+  - qol: If you drop a pill in a beaker that is full or nearly full, it will overflow
+      and you will know how much of your pill you lost.
+  - imagetweak: Adjusts glass bottle fills again.
+  - ui: Increases the window height for modifying skills in a skillset from 550 to
+      600 so the entire list can be accessed without the need for scrolling.
+  - spellcheck: Spellchecks the word 'initial'.
+  - spellcheck: All instances of 'drowsiness' have been spellchecked.
+  - spellcheck: If 'Civilian' was misspelled anywhere, now it isn't.
+  - imagetweak: Respelled 'background_civillian' to 'background_civilian'.
+  carlarctg:
+  - code_imp: Tail stabbing objects now does the mob-stab animation
+  - imageadd: Added a new sprite for tail slam that shows its blunt, because i don't
+      know.
+  realforest2001:
+  - bugfix: Fixes facehuggers bypassing hug resistant masks.
+  zzzmike:
+  - bugfix: Larva that chestburst onto a tile that already has fire on it will no
+      longer ignite
+2025-12-31:
+  DangerRevolution:
+  - spellcheck: Fixed several duplicate "the" with Mortar interactions

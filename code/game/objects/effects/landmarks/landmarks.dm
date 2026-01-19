@@ -461,7 +461,7 @@
 	icon_state = "chef_spawn"
 	job = /datum/job/civilian/chef //Need to create a WO variant in the future
 
-//****************************************** CIVILLIANS & MEDBAY ************************************************/
+//****************************************** CIVILIANS & MEDBAY ************************************************/
 
 /obj/effect/landmark/start/whiskey/liaison
 	icon_state = "cc_spawn"
@@ -635,7 +635,7 @@
 	var/broken_on_spawn = FALSE
 
 /obj/effect/landmark/static_comms/proc/spawn_tower()
-	var/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/commstower = new /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms(loc)
+	var/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/commstower = new (loc)
 	if(broken_on_spawn)
 		commstower.update_health(damage = health) //fuck it up
 	qdel(src)

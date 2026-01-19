@@ -37,12 +37,7 @@
 			mods -= LEFT_CLICK
 		else
 			mods -= RIGHT_CLICK
-	else if(mods[LEFT_CLICK] && mods[MIDDLE_CLICK])
-		if(mods[BUTTON] == MIDDLE_CLICK)
-			mods -= LEFT_CLICK
-		else
-			mods -= MIDDLE_CLICK
-	params = list2params(mods)
+		params = list2params(mods)
 
 	if(SEND_SIGNAL(mob, COMSIG_MOB_MOUSEDOWN, A, T, skin_ctl, params) & COMSIG_MOB_CLICK_CANCELED)
 		return

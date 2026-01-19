@@ -294,22 +294,17 @@ GLOBAL_LIST_EMPTY(admin_ranks) //list of all ranks with associated rights
 
 		if(current_rights && current_rights != new_rights)
 			dirty_groups += group_name
-			to_chat(world, "debug_line: Group [group_name] is dirty (rights changed from [current_rights] to [new_rights])")
 
 		GLOB.admin_ranks[group_name] = new_rights
-		to_chat(world, "debug_line: Set admin rank [group_name] = [new_rights]")
 
 	var/static/list/cached_api_response = list()
 
 	var/list/unchanged_users = list()
 	var/list/changed_users = list()
 
-	to_chat(world, "debug_line: Processing [length(users)] users from API response")
-
 	for(var/user in users)
 		if(!("display_name" in user) || !("groups" in user)  || !("ckey" in user))
 			log_admin("\[ADMIN_API\] Invalid entry ([user]) in API response, skipping!")
-			to_chat(world, "debug_line: Skipping invalid user entry")
 			continue
 
 		if(user["ckey"] in cached_api_response)
@@ -321,7 +316,7 @@ GLOBAL_LIST_EMPTY(admin_ranks) //list of all ranks with associated rights
 					has_dirty_groups = TRUE
 					break
 
-			if(deep_equivalence(cached_response) && !has_dirty_groups)
+			if(deep_equivalence(user, cached_response) && !has_dirty_groups)
 				unchanged_users += user["ckey"]
 				continue
 
@@ -348,7 +343,7 @@ GLOBAL_LIST_EMPTY(admin_ranks) //list of all ranks with associated rights
 
 		var/final_rights = NONE
 		for(var/group in changed_user["groups"])
-			final_rights = final_rights & GLOB.admin_ranks[group]
+			final_rights = final_rights | GLOB.admin_ranks[group]
 
 		var/datum/admins/admin_datum = new(changed_user["display_name"], final_rights, changed_user["ckey"], additional_title)
 
@@ -361,11 +356,15 @@ GLOBAL_LIST_EMPTY(admin_ranks) //list of all ranks with associated rights
 /// For two associated arrays, compares all their top level contents via equivalence.
 /// Returns TRUE if they are deeply equivalent, FALSE otherwise
 /proc/deep_equivalence(a, b)
-	if(a ~! b)
-		return FALSE
-
 	for(var/field, key in a)
-		if(key ~! field[b])
+		if(!(field in b))
+			return FALSE
+
+		if(key ~! b[field])
+			return FALSE
+
+	for(var/field in b)
+		if(!(field in a))
 			return FALSE
 
 	return TRUE

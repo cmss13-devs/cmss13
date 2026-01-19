@@ -120,17 +120,21 @@
 
 /datum/component/tacmap/ui_status(mob/user, datum/ui_state/state)
 	if(get_dist(parent, user) > 1)
-		ui_close(user)
 		return UI_CLOSE
 
 	return UI_INTERACTIVE
 
 /datum/component/tacmap/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
-	if(!ui)
-		user.client.register_map_obj(map_holder.map)
-		ui = new(user, src, "TacticalMap")
-		ui.open()
+
+	// XXX: try_update_ui returns NULL as the UI even if the UI is trying to close from ui_status.
+	// Double check that we aren't attempting to close so that we don't leak a UI.
+	if(ui || get_dist(parent, user) > 1)
+		return
+
+	user.client.register_map_obj(map_holder.map)
+	ui = new(user, src, "TacticalMap")
+	ui.open()
 	user.client.using_popout_tacmap = TRUE
 
 /datum/component/tacmap/ui_data(mob/user)

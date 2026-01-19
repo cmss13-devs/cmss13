@@ -11,7 +11,7 @@
 	minimap_icon = "ass_man"
 	job_title = JOB_ASSISTANT_MANAGER
 	idtype = /obj/item/card/id/silver/clearance_badge/manager
-	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
+	faction_group = FACTION_LIST_SURVIVOR_WY
 	access = list(
 		ACCESS_WY_GENERAL,
 		ACCESS_WY_COLONIAL,
@@ -50,7 +50,7 @@
 	assignment = JOB_WY_COMMANDO_STANDARD
 	job_title = JOB_WY_COMMANDO_STANDARD
 	faction = FACTION_PMC
-	faction_group = list(FACTION_WY, FACTION_SURVIVOR, FACTION_PMC)
+	faction_group = FACTION_LIST_SURVIVOR_WY
 	paygrades = list(PAY_SHORT_WY_COM = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/pmc/commando
 	skills = /datum/skills/civilian/survivor/pmc/commando

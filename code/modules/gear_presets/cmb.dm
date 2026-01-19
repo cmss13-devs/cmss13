@@ -54,7 +54,7 @@
 /datum/equipment_preset/cmb/standard
 	name = "CMB - Colonial Marshal Deputy"
 	paygrades = list(PAY_SHORT_CMBD = JOB_PLAYTIME_TIER_0)
-	role_comm_title = "CMB DEP"
+	role_comm_title = "CM Dep"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "CMB Deputy"
 	job_title = JOB_CMB
@@ -141,7 +141,7 @@
 	name = "CMB - The Colonial Marshal"
 	paygrades = list(PAY_SHORT_CMBM = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/marshal
-	role_comm_title = "CMB MAR"
+	role_comm_title = "CM"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	minimap_icon = "xo"
@@ -194,6 +194,7 @@
 
 /datum/equipment_preset/cmb/leader/riot
 	name = "CMB - The Colonial Marshal Riot Control"
+	role_comm_title = "RC"
 
 /datum/equipment_preset/cmb/leader/riot/load_gear(mob/living/carbon/human/new_human)
 	//clothes
@@ -249,7 +250,7 @@
 	name = "CMB - Riot Control Officer"
 	paygrades = list(PAY_SHORT_CMBR = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/deputy/riot
-	role_comm_title = "CMB RCO"
+	role_comm_title = "RCO"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	minimap_icon = "mp"
@@ -366,7 +367,7 @@
 	name = "CMB - Medical Technician"
 	paygrades = list(PAY_SHORT_CMBMT = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/deputy/riot
-	role_comm_title = "CMB MDT"
+	role_comm_title = "MT"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	minimap_icon = "medic"
@@ -417,7 +418,7 @@
 	name = "CMB - Breaching Technician"
 	paygrades = list(PAY_SHORT_CMBBT = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/deputy/riot
-	role_comm_title = "CMB BT"
+	role_comm_title = "BT"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	minimap_icon = "engi"
@@ -471,7 +472,7 @@
 	name = "CMB - SWAT Specialist"
 	paygrades = list(PAY_SHORT_CMBSWS = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/deputy/riot
-	role_comm_title = "CMB Spec"
+	role_comm_title = "SWAT Spec"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	minimap_icon = "cmb_spc"
@@ -522,7 +523,7 @@
 	name = "CMB - Colonial Marshal Investigative Synthetic"
 	paygrades = list(PAY_SHORT_CMBS = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/deputy
-	role_comm_title = "CMB Syn"
+	role_comm_title = "Inv Syn"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	minimap_icon = "cmb_syn"
@@ -624,7 +625,7 @@
 /datum/equipment_preset/cmb/synth/riot
 	name = "CMB - Colonial Marshal Riot Control Synthetic"
 	paygrades = list(PAY_SHORT_CMBRS = JOB_PLAYTIME_TIER_0)
-
+	role_comm_title = "RC Syn"
 	minimap_icon = "pmc_syn"
 
 	assignment = "CMB Riot Control Synthetic"

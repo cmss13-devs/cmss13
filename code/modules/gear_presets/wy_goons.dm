@@ -67,6 +67,7 @@
 	assignment = JOB_WY_GOON
 	job_title = JOB_WY_GOON
 	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
+	role_comm_title = "CSG"
 	skills = /datum/skills/wy_goon
 	minimap_icon = "goon_standard"
 
@@ -108,7 +109,7 @@
 
 /datum/equipment_preset/goon/standard/bodyguard
 	name = "Weyland-Yutani Corporate Security Goon (CL Bodyguard)"
-
+	role_comm_title = "CSG (CL BG)"
 /datum/equipment_preset/goon/standard/bodyguard/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY, WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new uniform_type, WEAR_BODY)
@@ -149,6 +150,7 @@
 	assignment = JOB_WY_GOON_TECH
 	job_title = JOB_WY_GOON_TECH
 	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
+	role_comm_title = "CST"
 	skills = /datum/skills/wy_goon_tech
 	minimap_icon = "goon_engi"
 	uniform_type = /obj/item/clothing/under/marine/veteran/pmc/corporate/engineer
@@ -198,6 +200,7 @@
 	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/wy_goon_medic
 	minimap_icon = "goon_med"
+	role_comm_title = "CSM"
 	uniform_type = /obj/item/clothing/under/marine/veteran/pmc/corporate/medic
 	helmet_type = /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/medic
 
@@ -205,7 +208,6 @@
 	name = "Weyland-Yutani Corporate Security Medic (Kutjevo Camo)"
 	uniform_type = /obj/item/clothing/under/marine/veteran/pmc/corporate/kutjevo
 	helmet_type = /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/kutjevo/medic
-
 /datum/equipment_preset/goon/medic/hybrisa
 	name = "Weyland-Yutani Corporate Security Medic (Hybrisa Camo)"
 	uniform_type = /obj/item/clothing/under/marine/veteran/pmc/corporate/hybrisa
@@ -256,6 +258,7 @@
 	paygrades = list(PAY_SHORT_CSPO = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/wy_goon_lead
 	minimap_icon = "goon_leader"
+	role_comm_title = "CSL"
 	uniform_type = /obj/item/clothing/under/marine/veteran/pmc/corporate/lead
 	helmet_type = /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/lead
 
@@ -298,7 +301,7 @@
 
 /datum/equipment_preset/goon/lead/bodyguard
 	name = "Weyland-Yutani Corporate Security Lead (CL Bodyguard)"
-
+	role_comm_title = "CSL (CL BG)"
 /datum/equipment_preset/goon/lead/bodyguard/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY, WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new uniform_type, WEAR_BODY)
@@ -337,6 +340,7 @@
 	assignment = JOB_WY_RESEARCHER
 	job_title = JOB_WY_RESEARCHER
 	paygrades = list(PAY_SHORT_CDOC = JOB_PLAYTIME_TIER_0)
+	role_comm_title = "CRC"
 	skills = /datum/skills/researcher
 	minimap_icon = "goon_sci"
 
@@ -383,6 +387,7 @@
 	assignment = JOB_WY_RESEARCH_LEAD
 	job_title = JOB_WY_RESEARCH_LEAD
 	paygrades = list(PAY_SHORT_CCMO = JOB_PLAYTIME_TIER_0)
+	role_comm_title = "CRC Lead"
 	skills = /datum/skills/researcher
 	minimap_icon = "goon_sci_lead"
 

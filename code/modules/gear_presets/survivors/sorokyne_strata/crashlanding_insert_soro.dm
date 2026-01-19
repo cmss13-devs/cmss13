@@ -9,7 +9,7 @@
 	skills = /datum/skills/military/survivor/upp_private
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH,  LANGUAGE_GERMAN,  LANGUAGE_CHINESE)
 	faction = FACTION_UPP
-	faction_group = list(FACTION_UPP, FACTION_SURVIVOR)
+	faction_group = FACTION_LIST_SURVIVOR_UPP
 	minimap_icon = "upp_pvt"
 	minimap_background = "background_upp"
 	role_comm_title = "121/RECON"
@@ -46,7 +46,7 @@
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH,  LANGUAGE_GERMAN,  LANGUAGE_CHINESE)
 	skills = /datum/skills/military/survivor/upp_private
 	flags = EQUIPMENT_PRESET_EXTRA
-
+	role_comm_title = "121/RECON RFN"
 /datum/equipment_preset/survivor/upp/SOF_survivor/soldier/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP/SOF_uniform(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/flare/full(new_human), WEAR_R_STORE)
@@ -60,7 +60,7 @@
 	assignment = JOB_UPP_ENGI
 	job_title = JOB_UPP_ENGI
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH,  LANGUAGE_GERMAN,  LANGUAGE_CHINESE)
-
+	role_comm_title = "121/RECON Eng"
 	minimap_icon = "upp_sapper"
 
 	skills = /datum/skills/military/survivor/upp_sapper
@@ -81,7 +81,7 @@
 	assignment = JOB_UPP_MEDIC
 	job_title = JOB_UPP_MEDIC
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH,  LANGUAGE_GERMAN,  LANGUAGE_CHINESE)
-
+	role_comm_title = "121/RECON Med"
 	minimap_icon = "upp_med"
 
 	skills = /datum/skills/military/survivor/upp_medic
@@ -104,6 +104,7 @@
 	job_title = JOB_UPP_SPECIALIST
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH,  LANGUAGE_GERMAN,  LANGUAGE_CHINESE)
 	minimap_icon = "upp_spec"
+	role_comm_title = "121/RECON Spec"
 	paygrades = list(PAY_SHORT_UE4 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/military/survivor/upp_spec/rocket
 
@@ -146,7 +147,7 @@
 	assignment = JOB_UPP_SUPPORT_SYNTH
 	job_title = JOB_UPP_SUPPORT_SYNTH
 	faction = FACTION_UPP
-	faction_group = list(FACTION_UPP, FACTION_SURVIVOR)
+	faction_group = FACTION_LIST_SURVIVOR_UPP
 	skills = /datum/skills/colonial_synthetic
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/dogtag/upp

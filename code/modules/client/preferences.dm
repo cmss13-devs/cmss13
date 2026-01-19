@@ -317,6 +317,12 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	/// A list of saved presets for the ChemMaster, storing pill bottle color, label, and pill color preferences
 	var/list/chem_presets = list()
 
+	/// The custom keybinds, in an array to associated array of {"keybinding": [], "type": "picksay"|"say"|"me", "contents": "CHARGE!"}
+	var/list/custom_keybinds = list()
+
+	/// The same keybinds, but in an array of {"keybinding": /datum/keybinding/custom}
+	var/list/key_to_custom_keybind = list()
+
 /datum/preferences/New(client/C)
 	key_bindings = deep_copy_list(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
 	macros = new(C, src)

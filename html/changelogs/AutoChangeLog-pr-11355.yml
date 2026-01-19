@@ -1,0 +1,6 @@
+author: "frans feiffer (sprite for tan saddle), ori"
+delete-after: True
+changes:
+  - rscadd: "added event-only runner saddles"
+  - code_imp: "buckling is now /atom/movable/ instead of /obj/ and moves the move and forcemove procs of obj to just be part of the procs in movement.dm"
+  - imageadd: "added sprites for runner saddles"

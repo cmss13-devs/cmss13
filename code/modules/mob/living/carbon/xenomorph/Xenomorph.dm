@@ -1291,3 +1291,47 @@
 	if(new_player.mind)
 		new_player.mind_initialize()
 		new_player.mind.transfer_to(target, TRUE)
+
+/**
+ * Checks if user can mount src
+ *
+ * Arguments:
+ * * user - The mob trying to mount
+ * * target_mounting - Is the target initiating the mounting process?
+ */
+/mob/living/carbon/xenomorph/proc/can_mount(mob/living/user, target_mounting = FALSE)
+	return FALSE
+
+/**
+ * Handles the target trying to ride src
+ *
+ * Arguments:
+ * * target - The mob being put on the back
+ * * target_mounting - Is the target initiating the mounting process?
+ */
+/mob/living/carbon/xenomorph/proc/carry_target(mob/living/carbon/target, target_mounting = FALSE)
+	if(!ismob(target))
+		return
+	if(target.is_mob_incapacitated())
+		if(target_mounting)
+			to_chat(target, SPAN_XENOWARNING("You cannot mount [src]!"))
+			return
+		to_chat(src, SPAN_XENOWARNING("[target] cannot mount you!"))
+		return
+	visible_message(SPAN_NOTICE("[target_mounting ? "[target] starts to mount [src]" : "[src] starts hoisting [target] onto [p_their()] back..."]"),
+	SPAN_NOTICE("[target_mounting ? "[target] starts to mount on your back" : "You start to lift [target] onto your back..."]"))
+	if(!do_after(target_mounting ? target : src, 5 SECONDS, NONE, BUSY_ICON_HOSTILE, target_mounting ? src : target))
+		visible_message(SPAN_WARNING("[target_mounting ? "[target] fails to mount on [src]" : "[src] fails to carry [target]!"]"))
+		return
+	//Second check to make sure they're still valid to be carried
+	if(target.is_mob_incapacitated())
+		return
+	buckle_mob(target, usr, target_hands_needed = 1)
+
+/mob/living/carbon/xenomorph/MouseDrop_T(atom/dropping, mob/user)
+	. = ..()
+	if(isxeno(user))
+		return
+	if(!can_mount(user, TRUE))
+		return
+	INVOKE_ASYNC(src, PROC_REF(carry_target), dropping, TRUE) // target_mounting is always true, the runner should never be buckling someone to itself (unless someone wants to make it happen)

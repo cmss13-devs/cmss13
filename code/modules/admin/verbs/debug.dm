@@ -60,7 +60,7 @@
 
 	var/mob/living/carbon/X = tgui_input_list(src,"Select a xeno.", "Change Hivenumber", GLOB.living_xeno_list)
 	if(!istype(X))
-		to_chat(usr, "This can only be done to instances of type /mob/living/carbon")
+		to_chat(usr, "This can only be done to instances of type /mob/living/carbon.")
 		return
 
 	cmd_admin_change_their_hivenumber(X)
@@ -246,7 +246,7 @@
 	set name = "Create Bank Account"
 
 	if(!ishuman(target))
-		to_chat(src, SPAN_WARNING("This only works on humans"))
+		to_chat(src, SPAN_WARNING("This only works on humans."))
 		return
 
 	var/mob/living/carbon/human/account_user = target

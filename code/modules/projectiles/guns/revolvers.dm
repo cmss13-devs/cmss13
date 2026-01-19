@@ -64,7 +64,7 @@
 
 /obj/item/weapon/gun/revolver/display_ammo(mob/user) // revolvers don't *really* have a chamber, at least in a way that matters for ammo displaying
 	if(flags_gun_features & GUN_AMMO_COUNTER && !(flags_gun_features & GUN_BURST_FIRING) && current_mag)
-		to_chat(user, SPAN_DANGER("[current_mag.current_rounds] / [current_mag.max_rounds] ROUNDS REMAINING"))
+		to_chat(user, SPAN_DANGER("[current_mag.current_rounds] / [current_mag.max_rounds] ROUNDS REMAINING."))
 
 /obj/item/weapon/gun/revolver/proc/rotate_cylinder(mob/user) //Cylinder moves backward.
 	if(current_mag)
@@ -356,6 +356,7 @@
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/extended_barrel,
@@ -426,6 +427,7 @@
 	attachable_allowed = list(
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/lasersight,
+		/obj/item/attachable/flashlight/under_barrel,
 	)
 
 	item_icons = list(
@@ -453,6 +455,7 @@
 	attachable_allowed = list(
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/lasersight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
@@ -473,6 +476,7 @@
 	attachable_allowed = list(
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/lasersight,
+		/obj/item/attachable/flashlight/under_barrel,
 	)
 
 /obj/item/weapon/gun/revolver/m44/custom/pkd_special/l_series/set_gun_attachment_offsets()
@@ -549,6 +553,7 @@
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/extended_barrel/vented,
 		/obj/item/attachable/lasersight, // Underbarrel
+		/obj/item/attachable/flashlight/under_barrel,
 		)
 
 /obj/item/weapon/gun/revolver/upp/Initialize()
@@ -630,7 +635,7 @@
 	name = "\improper Spearhead Unica 6 autorevolver"
 	desc = "The Spearhead Unica is a powerful, fast-firing revolver that uses its own recoil to rotate the cylinders. It fires heavy .454 rounds."
 	desc_lore = "Originally an Italian design, during the middle 21st century, Mateba company had many severe financial issues as well as violation of local firearm laws. \
-	After numerous court cases, they went bankrupt and few years later, Spearhead Armaments aquired the rights to the Mateba designs, and re-introduced the Unica 6 as the 'Spearhead Unica', \
+	After numerous court cases, they went bankrupt and few years later, Spearhead Armaments acquired the rights to the Mateba designs, and re-introduced the Unica 6 as the 'Spearhead Unica', \
 	as well as many other Mateba revolvers. The new design featured a few changes, like rechambered variation for .454 rounds, attachment rail and other attachments support, but overall, design intentionally remained the same, \
 	due to the iconic status in pop culture and high demand for the authentic piece. The gun is produced in limited numbers and is considered a luxury firearm, often seen in the hands of high-ranking officers, mercenaries and wealthy collectors, \
 	usually comes with authentic wooden grips, engravings, or gold plating finish."
@@ -646,6 +651,7 @@
 		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/mateba,
@@ -729,6 +735,7 @@
 		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/mateba/gold,
@@ -772,6 +779,7 @@
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/mateba/silver,
@@ -791,6 +799,7 @@
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/mateba/gold,
@@ -823,6 +832,7 @@
 		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/compensator,
 	)
@@ -840,7 +850,7 @@
 	name = "\improper Spearhead 2006M autorevolver"
 	desc = "The Spearhead 2006M is a powerful, fast-firing revolver that uses its own recoil to rotate the cylinders. It fires heavy .454 rounds. It is compatible with more commonly found Unica 6 speedloaders."
 	desc_lore = "Originally an Italian design, during the middle 21st century, Mateba company had many severe financial issues as well as violation of local firearm laws. \
-	After numerous court cases, they went bankrupt and few years later, Spearhead Armaments aquired the rights to the Mateba designs, and re-introduced the 2006M as the 'Spearhead 2006M', \
+	After numerous court cases, they went bankrupt and few years later, Spearhead Armaments acquired the rights to the Mateba designs, and re-introduced the 2006M as the 'Spearhead 2006M', \
 	as well as many other Mateba revolvers. The new design featured a few changes, like rechambered variation for .454 rounds, attachment rail and other attachments support, but overall, design intentionally remained the same, \
 	due to the iconic status in pop culture and high demand for the authentic piece. The gun is produced in limited numbers and is considered a luxury firearm, often seen in the hands of high-ranking officers, mercenaries and wealthy collectors, \
 	usually comes with authentic wooden grips, engravings, or gold plating finish."
@@ -856,6 +866,7 @@
 		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/compensator,
 	)
@@ -910,6 +921,7 @@
 		/obj/item/attachable/scope/mini,
 		/obj/item/attachable/gyro, // Under
 		/obj/item/attachable/lasersight,
+		/obj/item/attachable/flashlight/under_barrel,
 	)
 
 /obj/item/weapon/gun/revolver/cmb/Initialize(mapload)

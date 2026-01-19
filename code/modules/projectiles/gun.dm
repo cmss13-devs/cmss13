@@ -1635,7 +1635,7 @@ and you're good to go.
 
 			var/obj/limb/head = user.get_limb("head") // carnage
 			if(projectile_to_fire.ammo.bonus_projectiles_type || projectile_to_fire.ammo.flags_ammo_behavior == AMMO_EXPLOSIVE || projectile_to_fire.ammo.damage >= 80)
-				user.visible_message(SPAN_HIGHDANGER(uppertext("[user]'s head explodes into a cloud of blood and bone from their [name], oh God.")))
+				user.visible_message(SPAN_HIGHDANGER(uppertext("[user]'s head explodes into a cloud of blood and bone by their [name], oh God.")))
 				head.droplimb(FALSE, TRUE)
 				user.spawn_gibs()
 			else
@@ -2238,6 +2238,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 			click_empty(user)
 			user.visible_message(SPAN_HIGHDANGER(uppertext("...but the [name] dry fires with a resolute click! Embarassing...")),
 	SPAN_HIGHDANGER(uppertext("...but your [name] dry fires with quite the authoratitively embarassing click...")))
+			balloon_alert_to_viewers("<b>*click*</b>")
 			var/obj/item/weapon/gun/revolver/revolver = src // snowflake check but whatever, revolvers are pretty snowflakey for most implementations anyway
 			if(revolver)
 				revolver.rotate_cylinder(user)
@@ -2249,6 +2250,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 			click_empty(user)
 			user.visible_message(SPAN_HIGHDANGER(uppertext("...but the [name] dry fires with a resolute click! Embarassing...")),
 	SPAN_HIGHDANGER(uppertext("...but your [name] dry fires with quite the authoratitively embarassing click...")))
+			balloon_alert_to_viewers("<b>*click*</b>")
 			return
 
 		in_chamber = null

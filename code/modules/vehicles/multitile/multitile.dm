@@ -171,6 +171,8 @@
 	var/minimap_flags = MINIMAP_FLAG_USCM
 	///Minimap iconstate to use for this vehicle
 	var/minimap_icon_state
+	///Should it spam the "select an active hardpoint"
+	var/notify_no_hardpoint_selected = TRUE
 
 /obj/vehicle/multitile/Initialize()
 	. = ..()
@@ -343,8 +345,11 @@
 
 	M.set_interaction(src)
 	M.reset_view(src)
-	give_action(M, /datum/action/human_action/vehicle_unbuckle)
+	give_seated_mob_actions(M)
 	return TRUE
+
+/obj/vehicle/multitile/proc/give_seated_mob_actions(mob/seated_mob)
+	give_action(seated_mob, /datum/action/human_action/vehicle_unbuckle)
 
 /// Get crewmember of seat.
 /obj/vehicle/multitile/proc/get_seat_mob(seat)

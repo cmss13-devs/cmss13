@@ -162,7 +162,7 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 			if(visible_turfs["[x]-[y]"])
 				continue
 
-			var/turf/cur_turf = locate(x, y, user.z + 1)
+			var/turf/cur_turf = locate(x, y, user.z + (z - user.z))
 
 			if(istransparentturf(cur_turf))
 				var/image/view_blocker = image('icons/turf/floors/floors.dmi', cur_turf, "full_black", 100000)
@@ -187,7 +187,14 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 	var/turf/new_turf = get_step(loc, direct)
 	forceMove(new_turf)
 
-	if(!istype(new_turf, /turf/open_space))
+	var/failed = FALSE
+	for(var/z_offset in 0 to z - M.z - 1)
+		var/turf/turf_to_check = locate(new_turf.x, new_turf.y, new_turf.z - z_offset)
+		if(!istransparentturf(turf_to_check))
+			failed = TRUE
+			break
+
+	if(failed)
 		UnregisterSignal(linked_mob, COMSIG_MOB_RESET_VIEW)
 		view_registered = FALSE
 		linked_mob.reset_view()

@@ -51,6 +51,7 @@
 
 // Attempt to get the turf below the provided one according to Z traits
 /datum/controller/subsystem/mapping/proc/get_turf_below(turf/T)
+	RETURN_TYPE(/turf)
 	if (!T)
 		return
 	var/offset = level_trait(T.z, ZTRAIT_DOWN)
@@ -60,6 +61,7 @@
 
 // Attempt to get the turf above the provided one according to Z traits
 /datum/controller/subsystem/mapping/proc/get_turf_above(turf/T)
+	RETURN_TYPE(/turf)
 	if (!T)
 		return
 	var/offset = level_trait(T.z, ZTRAIT_UP)
@@ -114,9 +116,9 @@
 /datum/controller/subsystem/mapping/proc/same_z_map(z1, z2)
 	if(z1 == z2)
 		return TRUE
-	
+
 	var/diff = z2 - z1
-	var/direction = diff > 0 ? ZTRAIT_UP : ZTRAIT_DOWN  
+	var/direction = diff > 0 ? ZTRAIT_UP : ZTRAIT_DOWN
 
 	for(var/step in 1 to abs(diff))
 		if(!level_trait(z1, direction))
@@ -127,5 +129,5 @@
 		if(z1 == z2)
 			return TRUE
 
-	return FALSE 
-		
+	return FALSE
+

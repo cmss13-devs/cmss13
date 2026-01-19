@@ -15,6 +15,9 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	plane = OPEN_SPACE_PLANE_START
 	is_weedable = NOT_WEEDABLE
 
+/turf/open_space/proc/get_projected_turf()
+	return SSmapping.get_turf_below(get_turf(src))
+
 /turf/open_space/Initialize()
 	pass_flags = GLOB.pass_flags_cache[type]
 
@@ -39,16 +42,21 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 
 	check_fall(entered_movable)
 
+/turf/open_space/additional_enter_checks(atom/movable/mover)
+	if(mover.move_intentionally && istype(mover,/mob/living))
+		var/mob/living/climber = mover
+		if(climber.a_intent == INTENT_HARM)
+			return TRUE
+		climb_down(climber)
+		return FALSE
+
+	return TRUE
+
 /turf/open_space/on_throw_end(atom/movable/thrown_atom)
 	check_fall(thrown_atom)
 
 /turf/open_space/proc/climb_down(mob/user)
 	if(user.action_busy)
-		return
-
-	var/turf/current_turf = get_turf(src)
-
-	if(!istype(current_turf, /turf/open_space))
 		return
 
 	var/climb_down_time = 1 SECONDS
@@ -65,6 +73,7 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 
 	if(user.action_busy)
 		return
+
 	user.visible_message(SPAN_WARNING("[user] starts climbing down."), SPAN_WARNING("You start climbing down."))
 
 	if(!do_after(user, climb_down_time, INTERRUPT_ALL, BUSY_ICON_CLIMBING))
@@ -73,7 +82,7 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 
 	user.visible_message(SPAN_WARNING("[user] climbs down."), SPAN_WARNING("You climb down."))
 
-	var/turf/below = SSmapping.get_turf_below(current_turf)
+	var/turf/below = get_projected_turf()
 	while(istype(below, /turf/open_space))
 		below = SSmapping.get_turf_below(below)
 
@@ -85,7 +94,7 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 		return
 
 	var/height = 1
-	var/turf/below = SSmapping.get_turf_below(get_turf(src))
+	var/turf/below = get_projected_turf()
 
 	while(istype(below, /turf/open_space))
 		below = SSmapping.get_turf_below(below)
@@ -102,6 +111,61 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	plane = OPEN_SPACE_PLANE_START
 	is_weedable = NOT_WEEDABLE
 	density = TRUE
+
+/turf/open_space/blackfoot
+	var/target_x = 1
+	var/target_y = 1
+	var/target_z = 1
+	var/backdrop = FALSE
+	var/should_fall = FALSE
+
+/turf/open_space/blackfoot/attack_hand(mob/user)
+	return
+
+/turf/open_space/blackfoot/get_projected_turf()
+	RETURN_TYPE(/turf)
+	return locate(target_x, target_y, target_z)
+
+/turf/open_space/blackfoot/update_vis_contents()
+	vis_contents.Cut()
+	for(var/obj/vis_contents_holder/holder in src)
+		qdel(holder)
+
+	var/turf/below = get_projected_turf()
+	var/depth = 0
+	while(below)
+		new /obj/vis_contents_holder(src, below, depth, backdrop)
+		if(!istransparentturf(below))
+			break
+		below = SSmapping.get_turf_below(below)
+		depth++
+
+/turf/open_space/blackfoot/additional_enter_checks(atom/movable/mover)
+	var/turf/projected_turf = get_projected_turf()
+	if(projected_turf.density)
+		return FALSE
+
+	for(var/atom/possible_blocker in projected_turf.contents)
+		if(possible_blocker.density && !ismob(possible_blocker))
+			return FALSE
+
+	return TRUE
+
+/turf/open_space/blackfoot/check_fall(atom/movable/movable)
+	if(movable.flags_atom & NO_ZFALL)
+		return
+
+	var/height = should_fall ? 1 : 0
+	var/turf/below = get_projected_turf()
+
+	while(istype(below, /turf/open_space))
+		below = SSmapping.get_turf_below(below)
+		height++
+
+	movable.forceMove(below)
+
+	if(height > 0)
+		movable.onZImpact(below, height)
 
 /turf/solid_open_space/Initialize()
 	ADD_TRAIT(src, TURF_Z_TRANSPARENT_TRAIT, TRAIT_SOURCE_INHERENT)

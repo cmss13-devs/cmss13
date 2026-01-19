@@ -370,6 +370,12 @@
 	/// The world.time when the xeno was created. Carries over between strains and evolving
 	var/creation_time = 0
 
+	// facehugger stuff
+	/// cooldown between dropping facehuggers
+	var/hugger_drop_cooldown = 0
+	/// cooldown between throwing facehuggers
+	var/hugger_throw_cooldown = 0
+
 /mob/living/carbon/xenomorph/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
 	if(old_xeno && old_xeno.hivenumber)
 		src.hivenumber = old_xeno.hivenumber
@@ -1291,3 +1297,28 @@
 	if(new_player.mind)
 		new_player.mind_initialize()
 		new_player.mind.transfer_to(target, TRUE)
+
+/mob/living/carbon/xenomorph/drop_inv_item_on_ground(obj/item/object, nomoveupdate, force)
+	if(istype(object, /obj/item/clothing/mask/facehugger) && !force)
+		if(world.time < hugger_drop_cooldown)
+			to_chat(src, SPAN_WARNING("We must wait before dropping another facehugger."))
+			return null
+		hugger_drop_cooldown = world.time + 2.5 SECONDS
+	return ..()
+
+/mob/living/carbon/xenomorph/throw_item(atom/target)
+	var/obj/item/object = get_active_hand()
+	if(istype(object, /obj/item/clothing/mask/facehugger))
+		if(world.time < hugger_throw_cooldown)
+			to_chat(src, SPAN_WARNING("We must wait before throwing another facehugger."))
+			return
+		hugger_throw_cooldown = world.time + 2.5 SECONDS
+		var/old_range = object.throw_range
+		object.throw_range = get_throw_range(object)
+		. = ..()
+		object.throw_range = old_range
+		return
+	return ..()
+
+/mob/living/carbon/xenomorph/proc/get_throw_range(obj/item/I)
+	return 1

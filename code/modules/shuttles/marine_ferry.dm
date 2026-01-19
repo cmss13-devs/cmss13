@@ -531,10 +531,9 @@
 	sleep(100)
 	moving_status = SHUTTLE_CRASHED
 
-	if(SSticker.mode)
+	if(SSticker.mode && !SSticker.mode.is_in_endgame)
 		SSticker.mode.is_in_endgame = TRUE
-		if(!(SSticker.mode.force_end_at && SSticker.mode.force_end_at > 0 && SSticker.mode.force_end_at < 15000))
-			SSticker.mode.force_end_at = world.time + 15000 // 25 mins
+		SSticker.mode.force_end_at = world.time + 15000 // 25 mins
 		if(istype(SSticker.mode, /datum/game_mode/colonialmarines))
 			var/datum/game_mode/colonialmarines/colonial_marines = SSticker.mode
 			colonial_marines.add_current_round_status_to_end_results("Hijack")

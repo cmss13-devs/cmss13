@@ -24,12 +24,19 @@ that said, the icon_states in the dmi files aren't culled for use by mappers - n
 	layer = ABOVE_WEED_LAYER
 	density = FALSE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	var/image/actual_casing //the actual image of the casing, for manipulation
+	///the actual image of the casing, for manipulation
+	var/image/actual_casing
 	var/ejection_sfx = "gun_casing_generic"
+	/// number of variations of the casing found in its dmi file, much cleaner than spawning multiple casings on 1 tile for mappers
+	var/number_of_states = 10
 
-/obj/effect/decal/ammo_casing/Initialize()
+/obj/effect/decal/ammo_casing/Initialize(mapload)
 	. = ..()
-
+	if(mapload && number_of_states) // pretty much only called on map init and stuff
+		icon_state += "_[rand(1,number_of_states)]" // the casing dmi file needs to be slightly overhauled, its dirty, and doesnt use all the old system jank with its icon_state manipulation, but at least it works out of the box
+		setDir(pick(GLOB.alldirs))
+	else
+		setDir(pick(GLOB.alldirs))
 	actual_casing = image(icon, icon_state)
 	actual_casing.appearance_flags = PIXEL_SCALE
 	actual_casing.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
@@ -51,6 +58,7 @@ that said, the icon_states in the dmi files aren't culled for use by mappers - n
 /obj/effect/decal/ammo_casing/shell/red_shell
 	name = "spent shell"
 	icon_state = "red_shell"
+	number_of_states = 0
 
 /obj/effect/decal/ammo_casing/shell/blue_shell
 	name = "spent shell"
@@ -59,15 +67,19 @@ that said, the icon_states in the dmi files aren't culled for use by mappers - n
 /obj/effect/decal/ammo_casing/shell/purple_shell
 	name = "spent shell"
 	icon_state = "purple_shell"
+	number_of_states = 0
 
 /obj/effect/decal/ammo_casing/shell/incen_shell
 	name = "spent shell"
 	icon_state = "incen_shell"
+	number_of_states = 0
 
 /obj/effect/decal/ammo_casing/shell/blank_shell
 	name = "spent shell"
 	icon_state = "blank_shell"
+	number_of_states = 0
 
 /obj/effect/decal/ammo_casing/shell/twobore_shell
 	name = "comedically sized spent shell"
 	icon_state = "twobore_shell"
+	number_of_states = 0

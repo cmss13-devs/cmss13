@@ -11,6 +11,7 @@
 	unslashable = TRUE
 	wall_mounted = TRUE
 	store_mobs = FALSE
+	req_access = list(ACCESS_MARINE_MEDBAY)
 
 /obj/structure/closet/secure_closet/emergency/surgery/Initialize()
 	. = ..()

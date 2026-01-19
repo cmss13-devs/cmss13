@@ -1,4 +1,4 @@
-/mob/living/simple_animal/spiderbot
+/mob/living/simple_animal/small/spiderbot
 
 	min_oxy = 0
 	max_tox = 0
@@ -39,7 +39,7 @@
 	mob_size = MOB_SIZE_SMALL
 	speak_emote = list("beeps","clicks","chirps")
 
-/mob/living/simple_animal/spiderbot/attackby(obj/item/O as obj, mob/user as mob)
+/mob/living/simple_animal/small/spiderbot/attackby(obj/item/O as obj, mob/user as mob)
 
 	if(istype(O, /obj/item/device/mmi))
 		var/obj/item/device/mmi/B = O
@@ -91,7 +91,7 @@
 				for(var/mob/W in viewers(user, null))
 					W.show_message(text(SPAN_DANGER("[user] has spot-welded some of the damage to [src]!")), SHOW_MESSAGE_VISIBLE)
 			else
-				to_chat(user, SPAN_NOTICE(" [src] is undamaged!"))
+				to_chat(user, SPAN_NOTICE("[src] is undamaged!"))
 		else
 			to_chat(user, "Need more welding fuel!")
 			return
@@ -132,7 +132,7 @@
 				if ((M.client && !( M.blinded )))
 					M.show_message(SPAN_DANGER("[user] gently taps [src] with \the [O]."), SHOW_MESSAGE_VISIBLE)
 
-/mob/living/simple_animal/spiderbot/proc/transfer_personality(obj/item/device/mmi/M as obj)
+/mob/living/simple_animal/small/spiderbot/proc/transfer_personality(obj/item/device/mmi/M as obj)
 	src.mind = M.brainmob.mind
 	src.mind.key = M.brainmob.key
 	src.ckey = M.brainmob.ckey
@@ -140,7 +140,7 @@
 		client.change_view(GLOB.world_view_size)
 	src.name = "Spider-bot ([M.brainmob.name])"
 
-/mob/living/simple_animal/spiderbot/proc/explode(cause = "exploding") //When emagged.
+/mob/living/simple_animal/small/spiderbot/proc/explode(cause = "exploding") //When emagged.
 	for(var/mob/M as anything in viewers(src, null))
 		if ((M.client && !( M.blinded )))
 			M.show_message(SPAN_DANGER("[src] makes an odd warbling noise, fizzles, and explodes."), SHOW_MESSAGE_VISIBLE)
@@ -148,7 +148,7 @@
 	eject_brain()
 	death(cause)
 
-/mob/living/simple_animal/spiderbot/proc/update_icon()
+/mob/living/simple_animal/small/spiderbot/proc/update_icon()
 	if(mmi)
 		if(istype(mmi,/obj/item/device/mmi))
 			icon_state = "spiderbot-chassis-mmi"
@@ -157,7 +157,7 @@
 		icon_state = "spiderbot-chassis"
 		icon_living = "spiderbot-chassis"
 
-/mob/living/simple_animal/spiderbot/proc/eject_brain()
+/mob/living/simple_animal/small/spiderbot/proc/eject_brain()
 	if(mmi)
 		var/turf/T = get_turf(loc)
 		if(T)
@@ -168,11 +168,11 @@
 		src.name = "Spider-bot"
 		update_icon()
 
-/mob/living/simple_animal/spiderbot/Destroy()
+/mob/living/simple_animal/small/spiderbot/Destroy()
 	eject_brain()
 	. = ..()
 
-/mob/living/simple_animal/spiderbot/New()
+/mob/living/simple_animal/small/spiderbot/New()
 
 	camera = new /obj/structure/machinery/camera(src)
 	camera.c_tag = "Spiderbot-[real_name]"
@@ -180,7 +180,7 @@
 
 	..()
 
-/mob/living/simple_animal/spiderbot/death()
+/mob/living/simple_animal/small/spiderbot/death()
 
 	GLOB.alive_mob_list -= src
 	GLOB.dead_mob_list += src
@@ -195,7 +195,7 @@
 	qdel(src)
 
 //Cannibalized from the parrot mob. ~Zuhayr
-/mob/living/simple_animal/spiderbot/verb/drop_spider_held_item()
+/mob/living/simple_animal/small/spiderbot/verb/drop_spider_held_item()
 	set name = "Drop held item"
 	set category = "Spiderbot"
 	set desc = "Drop the item you're holding."
@@ -222,7 +222,7 @@
 	return 1
 
 
-/mob/living/simple_animal/spiderbot/verb/get_item()
+/mob/living/simple_animal/small/spiderbot/verb/get_item()
 	set name = "Pick up item"
 	set category = "Spiderbot"
 	set desc = "Allows you to take a nearby small item."
@@ -254,7 +254,7 @@
 	to_chat(src, SPAN_DANGER("There is nothing of interest to take."))
 	return 0
 
-/mob/living/simple_animal/spiderbot/get_examine_text(mob/user)
+/mob/living/simple_animal/small/spiderbot/get_examine_text(mob/user)
 	. = ..()
 	if(held_item)
 		. += "It is carrying \a [held_item] [icon2html(held_item, user)]."

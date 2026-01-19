@@ -4,6 +4,7 @@
 	icon_state = "secure1"
 	store_mobs = FALSE
 	var/hijack = FALSE
+	req_access = list(ACCESS_MARINE_MEDBAY)
 
 /obj/structure/closet/secure_closet/emergency/Initialize()
 	. = ..()
@@ -40,4 +41,3 @@
 	hijack = TRUE
 	unlock()
 	open()
-	req_access = list(ACCESS_MARINE_MEDBAY) //ALL Y'ALL FOB MEDICS NOW!

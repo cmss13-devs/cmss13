@@ -101,7 +101,7 @@
 	concurrent_users += WEAKREF(user)
 	onclose(user, "groundside_operations")
 
-/obj/structure/machinery/computer/groundside_operations/ui_close(mob/user as mob)
+/obj/structure/machinery/computer/groundside_operations/ui_close(mob/user)
 	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
 	tacmap_component.close_popout_tacmaps(user)
 

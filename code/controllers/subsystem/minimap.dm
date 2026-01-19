@@ -1508,7 +1508,7 @@ SUBSYSTEM_DEF(minimaps)
 	desc = "Move up a level"
 	screen_loc = "15,6"
 
-/atom/movable/screen/minimap_tool/up/clicked(location, list/modifiers)
+/atom/movable/screen/minimap_tool/up/clicked(mob/user, list/modifiers, atom/location, list/params)
 	if(!SSmapping.same_z_map(zlevel, zlevel+1))
 		return
 
@@ -1519,7 +1519,7 @@ SUBSYSTEM_DEF(minimaps)
 	desc = "Move down a level"
 	screen_loc = "15,5"
 
-/atom/movable/screen/minimap_tool/down/clicked(location, list/modifiers)
+/atom/movable/screen/minimap_tool/down/clicked(mob/user, list/modifiers, atom/location, list/params)
 	if(!SSmapping.same_z_map(zlevel, zlevel-1))
 		return
 
@@ -1532,9 +1532,8 @@ SUBSYSTEM_DEF(minimaps)
 	desc = "Pop the minimap to a window"
 	screen_loc = "15,4"
 
-/atom/movable/screen/minimap_tool/popout/clicked(location, list/modifiers)
-	owner.popout()
-
+/atom/movable/screen/minimap_tool/popout/clicked(mob/user, list/modifiers, atom/location, list/params)
+	owner.popout(user)
 	return TRUE
 
 /atom/movable/screen/minimap_tool/popout/set_zlevel(zlevel, minimap_flag)

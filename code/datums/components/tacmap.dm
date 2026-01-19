@@ -59,7 +59,7 @@
 	var/list/_interactees = interactees.Copy()
 	for(var/mob/interactee in _interactees)
 		on_unset_interaction(interactee)
-		close_popout_tacmaps()
+		close_popout_tacmaps(interactee)
 	map = null
 	for(var/mob/interactee in _interactees)
 		show_tacmap(interactee)
@@ -70,18 +70,18 @@
 	var/list/_interactees = interactees.Copy()
 	for(var/mob/interactee in _interactees)
 		on_unset_interaction(interactee)
-		close_popout_tacmaps()
+		close_popout_tacmaps(interactee)
 	map = null
 	for(var/mob/interactee in _interactees)
 		show_tacmap(interactee)
 		tgui_interact(interactee)
 
-/datum/component/tacmap/proc/popout()
-	var/datum/tgui/maybe_ui = SStgui.get_open_ui(usr, src)
+/datum/component/tacmap/proc/popout(mob/user)
+	var/datum/tgui/maybe_ui = SStgui.get_open_ui(user, src)
 	if (maybe_ui == null)
-		tgui_interact(usr)
+		tgui_interact(user)
 	else
-		close_popout_tacmaps()
+		close_popout_tacmaps(user)
 
 /datum/component/tacmap/proc/on_unset_interaction(mob/user)
 	interactees -= user
@@ -118,7 +118,6 @@
 	interactees += user
 	user.client.using_main_tacmap = TRUE
 
-
 /datum/component/tacmap/ui_status(mob/user, datum/ui_state/state)
 	if(get_dist(parent, user) > 1)
 		ui_close(user)
@@ -143,8 +142,8 @@
 	.["isXeno"] = isxeno(user)
 	.["canChangeZ"] = FALSE
 
-/datum/component/tacmap/proc/close_popout_tacmaps()
-	var/datum/tgui/maybe_ui = SStgui.get_open_ui(usr, src)
+/datum/component/tacmap/proc/close_popout_tacmaps(mob/user)
+	var/datum/tgui/maybe_ui = SStgui.get_open_ui(user, src)
 	if (maybe_ui != null)
 		maybe_ui.close()
 

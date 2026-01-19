@@ -187,9 +187,12 @@ GLOBAL_LIST_EMPTY(admin_ranks) //list of all ranks with associated rights
  *             type: string,
  *             description: Unique identifier for the user
  *           },
- *           primary_group: {
- *             type: string,
- *             description: The user's primary permission group
+ *           groups: {
+ *             type: array,
+ *             items: {
+ *               type: string,
+ *             },
+ *             description: The user's permission group
  *           },
  *           display_name: {
  *             type: string,
@@ -281,26 +284,44 @@ GLOBAL_LIST_EMPTY(admin_ranks) //list of all ranks with associated rights
 	var/users = admins_response["users"]
 	var/groups = admins_response["groups"]
 
+	var/dirty_groups = list()
 	for(var/group_name, group_ranks in groups)
 		if(!(instance_name in group_ranks))
 			continue
 
-		GLOB.admin_ranks[group_name] = get_rights(group_ranks[instance_name])
+		var/current_rights = GLOB.admin_ranks[group_name]
+		var/new_rights = get_rights(group_ranks[instance_name])
+
+		if(current_rights && current_rights != new_rights)
+			dirty_groups += group_name
+			to_chat(world, "debug_line: Group [group_name] is dirty (rights changed from [current_rights] to [new_rights])")
+
+		GLOB.admin_ranks[group_name] = new_rights
+		to_chat(world, "debug_line: Set admin rank [group_name] = [new_rights]")
 
 	var/static/list/cached_api_response = list()
 
 	var/list/unchanged_users = list()
 	var/list/changed_users = list()
 
+	to_chat(world, "debug_line: Processing [length(users)] users from API response")
+
 	for(var/user in users)
-		if(!("display_name" in user) || !("primary_group" in user) || !("ckey" in user))
+		if(!("display_name" in user) || !("groups" in user)  || !("ckey" in user))
 			log_admin("\[ADMIN_API\] Invalid entry ([user]) in API response, skipping!")
+			to_chat(world, "debug_line: Skipping invalid user entry")
 			continue
 
 		if(user["ckey"] in cached_api_response)
 			var/cached_response = cached_api_response[user["ckey"]]
 
-			if(cached_response ~= user)
+			var/has_dirty_groups = FALSE
+			for(var/group in user["groups"])
+				if(group in dirty_groups)
+					has_dirty_groups = TRUE
+					break
+
+			if(deep_equivalence(cached_response) && !has_dirty_groups)
 				unchanged_users += user["ckey"]
 				continue
 
@@ -325,7 +346,11 @@ GLOBAL_LIST_EMPTY(admin_ranks) //list of all ranks with associated rights
 		if("additional_title" in changed_user)
 			additional_title = list(changed_user["additional_title"])
 
-		var/datum/admins/admin_datum = new(changed_user["display_name"], GLOB.admin_ranks[changed_user["primary_group"]], changed_user["ckey"], additional_title)
+		var/final_rights = NONE
+		for(var/group in changed_user["groups"])
+			final_rights = final_rights & GLOB.admin_ranks[group]
+
+		var/datum/admins/admin_datum = new(changed_user["display_name"], final_rights, changed_user["ckey"], additional_title)
 
 		INVOKE_ASYNC(admin_datum, TYPE_PROC_REF(/datum/admins, associate), GLOB.directory[changed_user["ckey"]])
 
@@ -333,3 +358,14 @@ GLOBAL_LIST_EMPTY(admin_ranks) //list of all ranks with associated rights
 
 	return TRUE
 
+/// For two associated arrays, compares all their top level contents via equivalence.
+/// Returns TRUE if they are deeply equivalent, FALSE otherwise
+/proc/deep_equivalence(a, b)
+	if(a ~! b)
+		return FALSE
+
+	for(var/field, key in a)
+		if(key ~! field[b])
+			return FALSE
+
+	return TRUE

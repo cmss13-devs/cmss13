@@ -304,6 +304,7 @@
 
 /obj/item/weapon/gun/Destroy()
 	in_chamber = null
+	QDEL_NULL(in_chamber)
 	ammo = null
 	QDEL_NULL(current_mag)
 	target = null

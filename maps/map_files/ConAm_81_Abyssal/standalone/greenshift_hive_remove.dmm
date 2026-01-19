@@ -3185,7 +3185,7 @@
 /area/abyssal/interior/maintenance/east)
 "Ee" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/mob/living/simple_animal/cat/blackcat{
+/mob/living/simple_animal/small/cat/blackcat{
 	dir = 8;
 	name = "Sebastian"
 	},

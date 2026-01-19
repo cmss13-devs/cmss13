@@ -11520,8 +11520,7 @@
 /obj/structure/machinery/colony_floodlight_switch/containment{
 	pixel_x = -28;
 	name = "backup containment light switch";
-	desc = "This switch controls the containment zone floodlights. This appears to be a backup switch kept within the containment zone. This needs to be powered elsewhere.";
-	explo_proof = 1
+	desc = "This switch controls the containment zone floodlights. This appears to be a backup switch kept within the containment zone. This needs to be powered elsewhere."
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/indoors/main_level/east_containment_hive)
@@ -11946,6 +11945,13 @@
 	},
 /turf/closed/wall/hybrisa/research/reinforced,
 /area/white_antre/indoors/main_level/north_containment)
+"aBk" = (
+/obj/structure/flora/tree/tyrargo{
+	pixel_x = -17;
+	pixel_y = 8
+	},
+/turf/open/auto_turf/shale/layer1/weedable,
+/area/white_antre/oob)
 "aBl" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/showcase{
@@ -19969,8 +19975,7 @@
 "aWt" = (
 /obj/structure/machinery/colony_floodlight_switch/antre{
 	pixel_y = 28;
-	name = "industrial floodlight switch";
-	explo_proof = 1
+	name = "industrial floodlight switch"
 	},
 /turf/open/floor/prison/darkyellow2/west,
 /area/white_antre/indoors/main_level/engineering)
@@ -53305,14 +53310,6 @@
 	pixel_x = -7;
 	pixel_y = 8
 	},
-/obj/item/explosive/grenade/custom/antiweed{
-	pixel_x = 6;
-	pixel_y = -5
-	},
-/obj/item/explosive/grenade/custom/antiweed{
-	pixel_x = 11;
-	pixel_y = 6
-	},
 /turf/open/floor/strata/orange_cover,
 /area/white_antre/indoors/main_level/weapons)
 "iGZ" = (
@@ -60175,7 +60172,7 @@ pzo
 rIc
 rIc
 rIc
-pzo
+aBk
 byS
 ylt
 byQ

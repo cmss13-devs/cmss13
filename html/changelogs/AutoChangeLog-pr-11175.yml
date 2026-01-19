@@ -1,0 +1,7 @@
+author: "Puckaboo2"
+delete-after: True
+changes:
+  - code_imp: "Adds a global hijack signal for coding and signalling goodness."
+  - rscadd: "Adds emergency medical wall lockers with surgical vests, surgical beds, and portable dialysis machines. The lockers cannot be unlocked; they open on their own only during hijack."
+  - imageadd: "Adds sprites to the new lockers."
+  - maptweak: "Adds the emergency surgical wall lockers to the medical bay in the clothing vending room."

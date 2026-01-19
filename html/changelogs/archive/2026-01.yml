@@ -141,3 +141,6 @@
       code
   - config: Added optional CODE_MODIFICATIONS_MESSAGE config for the Show Server Revision
       verb
+2026-01-19:
+  realforest2001:
+  - rscadd: Cryoing as a predator will now open the slot again.

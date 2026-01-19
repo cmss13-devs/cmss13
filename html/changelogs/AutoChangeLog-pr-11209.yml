@@ -1,0 +1,11 @@
+author: "kiVts"
+delete-after: True
+changes:
+  - balance: "Tweaked OD for contracts to make intermediate more appealing."
+  - balance: "Intermediates have much less properties on average"
+  - balance: "Value of a property is now accounted for in the price of a operation"
+  - balance: "Intermediate and hard level can now have more than 3 chemicals in the recipe, made hard chemicals slightly harder to come by."
+  - balance: "Made Optimized slightly better, changed Coniine chemical properties, buffed paining by 10x, made Thymol effects slightly better."
+  - balance: "having any negative in the chemical gives you a discount of 2 credits."
+  - bugfix: "Contract recipe generation should account for when recipes don't pass the occupied recipe check."
+  - bugfix: "Transmute volume decrease fix, reagent overflow small fix."

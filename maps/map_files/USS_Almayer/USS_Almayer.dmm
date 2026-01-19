@@ -3200,6 +3200,10 @@
 	pixel_x = 26;
 	density = 0
 	},
+/obj/structure/closet/secure_closet/emergency/surgery{
+	pixel_x = 0;
+	pixel_y = 29
+	},
 /turf/open/floor/almayer/sterile_green_corner/north,
 /area/almayer/medical/lower_medical_medbay)
 "ahl" = (

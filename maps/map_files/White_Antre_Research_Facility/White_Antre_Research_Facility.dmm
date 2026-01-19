@@ -3782,7 +3782,7 @@
 /turf/open/floor/prison/bright_clean2,
 /area/white_antre/indoors/upper_level/east_overwatch)
 "aiY" = (
-/mob/living/simple_animal/cat{
+/mob/living/simple_animal/small/cat{
 	name = "Holly II";
 	desc = "Offspring of a cat from some corporate oil rig. Has a tendency to adopt crewmembers, this one adopted the site director."
 	},
@@ -25550,7 +25550,7 @@
 	color = "#5d524b";
 	alpha = 155
 	},
-/mob/living/simple_animal/mouse/rat/brown,
+/mob/living/simple_animal/small/mouse/rat/brown,
 /obj/effect/antre/border{
 	dir = 8
 	},
@@ -40758,7 +40758,7 @@
 /area/white_antre/oob)
 "bUZ" = (
 /obj/effect/decal/cleanable/dirt,
-/mob/living/simple_animal/mouse/rat/white,
+/mob/living/simple_animal/small/mouse/rat/white,
 /turf/open/floor/prison,
 /area/white_antre/indoors/underground_level/east_maint)
 "bVa" = (
@@ -40817,7 +40817,7 @@
 /area/white_antre/indoors/underground_level/east_maint)
 "bVj" = (
 /obj/effect/decal/cleanable/dirt,
-/mob/living/simple_animal/mouse/rat/white,
+/mob/living/simple_animal/small/mouse/rat/white,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/indoors/underground_level/west_maint)
 "bVk" = (
@@ -40911,7 +40911,7 @@
 /area/white_antre/indoors/underground_level/west_maint)
 "bVA" = (
 /obj/effect/decal/cleanable/dirt,
-/mob/living/simple_animal/mouse/rat/gray,
+/mob/living/simple_animal/small/mouse/rat/gray,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/white_antre/indoors/underground_level/west_maint)
 "bVB" = (
@@ -40977,7 +40977,7 @@
 	color = "#5d524b";
 	alpha = 155
 	},
-/mob/living/simple_animal/mouse/rat/black,
+/mob/living/simple_animal/small/mouse/rat/black,
 /obj/effect/antre/border{
 	dir = 8
 	},

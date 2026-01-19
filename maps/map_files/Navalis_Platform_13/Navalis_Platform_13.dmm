@@ -13971,7 +13971,7 @@
 /turf/open/floor/plating,
 /area/navalis/indoors/charon/surface_deck/main_deck)
 "aOp" = (
-/mob/living/simple_animal/cat{
+/mob/living/simple_animal/small/cat{
 	name = "Holly"
 	},
 /turf/open/floor/hybrisa/carpet/carpetreddeco,

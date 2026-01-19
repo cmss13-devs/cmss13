@@ -197,40 +197,38 @@ export const KeyBinds = (props) => {
                 </Section>
               )}
             {selectedTab !== 'CUSTOM' &&
-              (selectedTab === 'ALL' && !searchTerm.length ? (
-                Object.keys(glob_keybinds).map((category) => (
-                  <Flex.Item key={category}>
-                    <Section title={category}>
-                      <Flex direction="column">
-                        {glob_keybinds[category].map((keybind) => (
-                          <Flex.Item key={keybind}>
-                            <KeybindElement keybind={keybind} />
-                            <Box
-                              backgroundColor="rgba(40, 40, 40, 255)"
-                              width="100%"
-                              height="2px"
-                              mt="2px"
-                            />
-                          </Flex.Item>
-                        ))}
-                      </Flex>
-                    </Section>
-                  </Flex.Item>
-                ))
-              ) : (
-                filteredKeybinds &&
-                filteredKeybinds.map((keybind) => (
-                  <Flex.Item key={keybind.full_name}>
-                    <KeybindElement keybind={keybind} />
-                    <Box
-                      backgroundColor="rgba(40, 40, 40, 255)"
-                      width="100%"
-                      height="2px"
-                      mt="2px"
-                    />
-                  </Flex.Item>
-                ))
-              ))}
+              (selectedTab === 'ALL' && !searchTerm.length
+                ? Object.keys(glob_keybinds).map((category) => (
+                    <Flex.Item key={category}>
+                      <Section title={category}>
+                        <Flex direction="column">
+                          {glob_keybinds[category].map((keybind) => (
+                            <Flex.Item key={keybind}>
+                              <KeybindElement keybind={keybind} />
+                              <Box
+                                backgroundColor="rgba(40, 40, 40, 255)"
+                                width="100%"
+                                height="2px"
+                                mt="2px"
+                              />
+                            </Flex.Item>
+                          ))}
+                        </Flex>
+                      </Section>
+                    </Flex.Item>
+                  ))
+                : filteredKeybinds &&
+                  filteredKeybinds.map((keybind) => (
+                    <Flex.Item key={keybind.full_name}>
+                      <KeybindElement keybind={keybind} />
+                      <Box
+                        backgroundColor="rgba(40, 40, 40, 255)"
+                        width="100%"
+                        height="2px"
+                        mt="2px"
+                      />
+                    </Flex.Item>
+                  )))}
           </Flex>
         </Flex>
       </Window.Content>

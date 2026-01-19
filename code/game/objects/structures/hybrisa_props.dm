@@ -1815,6 +1815,52 @@
 
 // Coffee Machine (Works with Empty Coffee cups, Mugs ect.)
 
+/obj/structure/mug_rack
+	icon = 'icons/obj/structures/mug_rack.dmi'
+	name = "mug rack"
+	desc = "A rack, for mugs."
+	icon_state = "mug-rack"
+	var/amount = 50
+
+/obj/structure/mug_rack/Initialize(mapload, ...)
+	update_icon()
+
+	. = ..()
+
+/obj/structure/mug_rack/update_icon()
+	overlays.Cut()
+	if(amount == 0)
+		return
+
+	if(amount < initial(amount) / 3)
+		overlays += image(icon=icon, icon_state="mugs-3")
+		return
+
+	if(amount < 2 * initial(amount) / 3)
+		overlays += image(icon=icon, icon_state="mugs-2")
+		return
+
+	overlays += image(icon=icon, icon_state="mugs-1")
+
+/obj/structure/mug_rack/attackby(obj/item/item, mob/user)
+	if(istype(item, /obj/item/reagent_container/food/drinks/coffeecup))
+		if(user.drop_held_item())
+			qdel(item)
+			amount++
+			to_chat(user, SPAN_NOTICE("You put [item] in [src]."))
+			update_icon()
+
+/obj/structure/mug_rack/attack_hand(mob/user)
+	if(amount >= 1)
+		amount--
+
+		var/obj/item/reagent_container/food/drinks/coffeecup/cup = new(loc)
+
+		cup.forceMove(user.loc)
+		user.put_in_hands(cup)
+		to_chat(user, SPAN_NOTICE("You take [cup] out of [src]."))
+		update_icon()
+
 /obj/structure/machinery/hybrisa/coffee_machine
 	icon = 'icons/obj/structures/machinery/coffee_machine.dmi'
 	name = "coffee machine"

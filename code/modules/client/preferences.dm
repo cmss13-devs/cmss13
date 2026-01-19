@@ -195,7 +195,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/body_size = "Average" // Body Size
 	var/body_type = "Lean" // Body Type
 	var/language = "None" //Secondary language
-	var/preferred_squad = "None"
+	var/preferred_squad = list()
 	var/preferred_spec = list()
 	var/night_vision_preference = "Green"
 	var/list/nv_color_list = list(
@@ -498,7 +498,14 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			dat += "<b>Religion:</b> <a href='byond://?_src_=prefs;preference=religion;task=input'><b>[religion]</b></a><br/>"
 
 			dat += "<b>Corporate Relation:</b> <a href='byond://?_src_=prefs;preference=wy_relation;task=input'><b>[weyland_yutani_relation]</b></a><br>"
-			dat += "<b>Preferred Squad:</b> <a href='byond://?_src_=prefs;preference=prefsquad;task=input'><b>[preferred_squad]</b></a><br>"
+			var/squad_detail = "No preference"
+			if(length(preferred_squad) && islist(preferred_squad))
+				squad_detail = ""
+				for(var/squad in preferred_squad)
+					squad_detail += copytext(squad, 1, 2) + ", "
+				squad_detail = copytext(squad_detail, 1, length(squad_detail) - 1)
+
+			dat += "<b>Squad Priority:</b> <a href='byond://?_src_=prefs;preference=prefsquad;task=input'><b>[squad_detail]</b></a><br>"
 			var/spec_detail
 			switch(length(preferred_spec))
 				if(0)
@@ -1633,9 +1640,19 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 						weyland_yutani_relation = new_relation
 
 				if("prefsquad")
-					var/new_pref_squad = input(user, "Choose your preferred squad.", "Character Preference")  as null|anything in list("Alpha", "Bravo", "Charlie", "Delta", "None")
-					if(new_pref_squad)
-						preferred_squad = new_pref_squad
+					var/list/choices
+					if(preferred_squad && islist(preferred_squad) && length(preferred_squad))
+						choices = preferred_squad
+
+						for(var/squad in list("Alpha", "Bravo", "Charlie", "Delta", "Oscar", "Kilo"))
+							if(!(squad in choices))
+								choices += squad
+					else
+						choices = list("Alpha", "Bravo", "Charlie", "Delta", "Oscar", "Kilo")
+					var/new_pref_squad = tgui_priority_input(user, "Choose your preferred squads in order of priority or none for 'No Preference'.", "Squad Preference", choices)
+					if(isnull(new_pref_squad))
+						return // Canceled
+					preferred_squad = new_pref_squad
 
 				if("prefspec")
 					var/new_pref_spec = tgui_input_checkboxes(user, "Choose your preferred spec in order of priority or none for 'No Preference'.", "Specialist Preference", GLOB.specialist_set_name_dict, min_checked=0)

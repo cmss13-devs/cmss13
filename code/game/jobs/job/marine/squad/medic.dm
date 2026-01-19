@@ -9,7 +9,7 @@
 
 /datum/job/marine/medic/set_spawn_positions(count)
 	for(var/datum/squad/target_squad in GLOB.RoleAuthority.squads)
-		if(target_squad)
+		if(target_squad && target_squad.dynamic_scaling)
 			target_squad.roles_cap[title] = medic_slot_formula(count)
 
 /datum/job/marine/medic/get_total_positions(latejoin=0)
@@ -20,12 +20,22 @@
 	else
 		total_positions_so_far = slots
 
-	if(latejoin)
-		for(var/datum/squad/target_squad in GLOB.RoleAuthority.squads)
-			if(target_squad)
-				target_squad.roles_cap[title] = slots
+	var/extra_slots = 0
 
-	return (slots*4)
+	for(var/datum/squad/target_squad in GLOB.RoleAuthority.squads)
+		if(!target_squad)
+			continue
+
+		if(target_squad.pop_lock && target_squad.pop_lock < length(GLOB.clients))
+			target_squad.roles_cap = target_squad.initial_roles_cap
+
+		if(target_squad.dynamic_scaling)
+			if(latejoin)
+				target_squad.roles_cap[title] = slots
+		else
+			extra_slots += target_squad.roles_cap[title]
+
+	return slots * 2 + extra_slots
 
 /datum/job/marine/medic/whiskey
 	title = JOB_WO_SQUAD_MEDIC
@@ -41,19 +51,3 @@ AddTimelock(/datum/job/marine/medic, list(
 	name = JOB_SQUAD_MEDIC
 	icon_state = "medic_spawn"
 	job = /datum/job/marine/medic
-
-/obj/effect/landmark/start/marine/medic/alpha
-	icon_state = "medic_spawn_alpha"
-	squad = SQUAD_MARINE_1
-
-/obj/effect/landmark/start/marine/medic/bravo
-	icon_state = "medic_spawn_bravo"
-	squad = SQUAD_MARINE_2
-
-/obj/effect/landmark/start/marine/medic/charlie
-	icon_state = "medic_spawn_charlie"
-	squad = SQUAD_MARINE_3
-
-/obj/effect/landmark/start/marine/medic/delta
-	icon_state = "medic_spawn_delta"
-	squad = SQUAD_MARINE_4

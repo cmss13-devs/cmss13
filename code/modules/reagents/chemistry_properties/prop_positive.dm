@@ -19,7 +19,7 @@
 	M.apply_internal_damage(0.5 * potency * delta_time, "eyes")
 
 /datum/chem_property/positive/antitoxic/process_critical(mob/living/M, potency = 1, delta_time)
-	M.drowsyness  = max(M.drowsyness, 30)
+	M.drowsiness  = max(M.drowsiness, 30)
 
 /datum/chem_property/positive/antitoxic/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
 	. = ..()
@@ -37,9 +37,9 @@
 	value = 2
 
 /datum/chem_property/positive/anticorrosive/process(mob/living/M, potency = 1)
-	M.heal_limb_damage(0, potency)
+	M.heal_limb_damage(0, potency, chemical = TRUE)
 	if(potency > CREATE_MAX_TIER_1)
-		M.heal_limb_damage(0, potency * POTENCY_MULTIPLIER_LOW)
+		M.heal_limb_damage(0, potency * POTENCY_MULTIPLIER_LOW, chemical = TRUE)
 
 /datum/chem_property/positive/anticorrosive/process_overdose(mob/living/M, potency = 1, delta_time)
 	M.apply_damages(0.5 * potency * delta_time, 0, 0.5 * potency * delta_time) //Mixed brute/tox damage
@@ -197,7 +197,7 @@
 	name = PROPERTY_NERVESTIMULATING
 	code = "NST"
 	description = "Increases neuron communication speed across synapses resulting in improved reaction time, awareness and muscular control. Excessive muscular control loss causes the reagent to bind to nociceptors more aggressively than usual."
-	rarity = PROPERTY_RARE
+	rarity = PROPERTY_DISABLED
 	category = PROPERTY_TYPE_STIMULANT
 	value = 4
 
@@ -209,7 +209,7 @@
 		M.stuttering = max(M.stuttering - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 		M.confused = max(M.confused - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 		M.ReduceEyeBlur(POTENCY_MULTIPLIER_MEDIUM * potency)
-		M.drowsyness = max(M.drowsyness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
+		M.drowsiness = max(M.drowsiness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 		M.dizziness = max(M.dizziness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 		M.jitteriness = max(M.jitteriness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 
@@ -336,7 +336,7 @@
 /datum/chem_property/positive/nephropeutic/process_critical(mob/living/M, potency = 1, delta_time)
 	M.apply_damage(2.5 * potency * delta_time, TOX)
 
-//Applies mutation enable onto hydrotray plants, enables tolerance adjustment, parasitic and carnivorus
+//Applies mutation enable onto hydrotray plants, enables tolerance adjustment, parasitic and carnivorous
 /datum/chem_property/positive/nephropeutic/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
 	. = ..()
 	if(!processing_tray.seed)
@@ -410,8 +410,8 @@
 		return
 	if (processing_tray.mutation_controller["Potency"] < 1)
 		processing_tray.mutation_controller["Potency"] = 1
-	if(processing_tray.mutation_controller["Bioluminecence"] < 1)
-		processing_tray.mutation_controller["Bioluminecence"] = 1
+	if(processing_tray.mutation_controller["Bioluminescence"] < 1)
+		processing_tray.mutation_controller["Bioluminescence"] = 1
 	if (processing_tray.mutation_controller["Flowers"] < 1)
 		processing_tray.mutation_controller["Flowers"] = 1
 
@@ -523,7 +523,7 @@
 /datum/chem_property/positive/fluxing
 	name = PROPERTY_FLUXING
 	code = "FLX"
-	description = "Liquifies large crystalline and metallic structures under bodytemperature in the body and allows it to migrate to and be excreted through the skin."
+	description = "Liquefies large crystalline and metallic structures the body and allows them to migrate to and be excreted through the skin."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_REACTANT
 
@@ -885,6 +885,9 @@
 	durationmod_per_level = 0.2
 	radiusmod_per_level = 0.01
 
+/datum/chem_property/positive/fire/fueling/can_cause_harm()
+	return TRUE
+
 /datum/chem_property/positive/fire/fueling/reaction_mob(mob/M, method = TOUCH, volume, potency = 1)
 	var/mob/living/L = M
 	if(istype(L) && method == TOUCH)//makes you more flammable if sprayed/splashed on you
@@ -892,12 +895,6 @@
 
 /datum/chem_property/positive/fire/fueling/reaction_turf(turf/T, volume, potency = 1)
 	new /obj/effect/decal/cleanable/liquid_fuel(T, volume)
-
-/datum/chem_property/positive/fire/fueling/reaction_obj(obj/O, volume, potency)
-	var/turf/the_turf = get_turf(O) //tries to splash fuel on object's turf
-	if(!the_turf)
-		return
-	new /obj/effect/decal/cleanable/liquid_fuel(the_turf, volume)
 
 /datum/chem_property/positive/fire/oxidizing
 	name = PROPERTY_OXIDIZING

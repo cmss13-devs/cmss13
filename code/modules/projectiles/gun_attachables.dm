@@ -870,14 +870,14 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/flashlight
 	name = "rail flashlight"
-	desc = "A flashlight, for rails, on guns. Can be toggled on and off. A better light source than standard M3 pattern armor lights."
+	desc = "A flashlight, for rails, on guns. Can be toggled on and off. A better light source than standard M3 pattern armor lights. This one is set to be mounted to the rail, press unique-action to switch its mount."
 	icon = 'icons/obj/items/weapons/guns/attachments/rail.dmi'
 	icon_state = "flashlight"
 	item_icons = list(
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/misc.dmi',
 	)
 	attach_icon = "flashlight_a"
-	light_mod = 5
+	light_mod = 6
 	slot = "rail"
 	matter = list("metal" = 50,"glass" = 20)
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION
@@ -892,6 +892,12 @@ Defined in conflicts.dm of the #defines folder.
 
 	var/datum/action/item_action/activation
 	var/obj/item/attached_item
+
+/obj/item/attachable/flashlight/unique_action(mob/user)
+	to_chat(user, SPAN_NOTICE("You reconfigure [src] for an underbarrel mount."))
+	playsound(user, 'sound/machines/click.ogg', 25, 1)
+	user.put_in_hands(new /obj/item/attachable/flashlight/under_barrel(user))
+	qdel(src)
 
 /obj/item/attachable/flashlight/on_enter_storage(obj/item/storage/internal/S)
 	..()
@@ -1015,12 +1021,25 @@ Defined in conflicts.dm of the #defines folder.
 	else
 		. = ..()
 
+/obj/item/attachable/flashlight/under_barrel
+	desc = "A flashlight, for rails, on guns. Can be toggled on and off. A better light source than standard M3 pattern armor lights. This one is set to be mounted to the underbarrel, press unique-action to switch its mount."
+	slot = "under"
+	pixel_shift_x = 15
+	pixel_shift_y = 18
+
+/obj/item/attachable/flashlight/under_barrel/unique_action(mob/user)
+	to_chat(user, SPAN_NOTICE("You reconfigure [src] for a rail mount."))
+	playsound(user, 'sound/machines/click.ogg', 25, 1)
+	user.put_in_hands(new /obj/item/attachable/flashlight(user))
+	qdel(src)
+
 /obj/item/attachable/flashlight/grip //Grip Light is here because it is a child object. Having it further down might cause a future coder a headache.
 	name = "underbarrel flashlight grip"
 	desc = "Holy smokes RO man, they put a grip on a flashlight! \nReduces recoil and scatter by a tiny amount. Boosts accuracy by a tiny amount. Works as a light source."
 	icon = 'icons/obj/items/weapons/guns/attachments/under.dmi'
 	icon_state = "flashgrip"
 	attach_icon = "flashgrip_a"
+	light_mod = 5
 	slot = "under"
 	attachment_action_type = /datum/action/item_action/toggle/flashlight_grip
 	original_state = "flashgrip"
@@ -1043,6 +1062,7 @@ Defined in conflicts.dm of the #defines folder.
 	icon = 'icons/obj/items/weapons/guns/attachments/under.dmi'
 	icon_state = "vplaserlight"
 	attach_icon = "vplaserlight_a"
+	light_mod = 5
 	slot = "under"
 	attachment_action_type = /datum/action/item_action/toggle/flashlight_grip
 	original_state = "vplaserlight"
@@ -4160,7 +4180,7 @@ Defined in conflicts.dm of the #defines folder.
 	desc = "A set of rugged telescopic poles to keep a weapon stabilized during firing."
 	icon_state = "bipod_m41ae2"
 	attach_icon = "bipod_m41ae2_a"
-	heavy_bipod = TRUE
+	heavy_bipod = FALSE
 	camo_bipod = TRUE // this bipod has a camo skin
 
 /obj/item/attachable/bipod/m41ae2/Initialize(mapload, ...)

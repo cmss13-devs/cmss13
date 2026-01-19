@@ -326,3 +326,5 @@
 
 // magic value to use for indicating a proc slept
 #define PROC_RETURN_SLEEP -1
+
+#define RIDING_OFFSET_ALL "ALL"

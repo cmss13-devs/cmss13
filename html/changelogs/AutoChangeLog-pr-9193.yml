@@ -1,0 +1,10 @@
+author: "BOBAMA, Drathek"
+delete-after: True
+changes:
+  - rscadd: "New thematic gun spawners for mappers"
+  - balance: "Current gun spawners no longer spawn absurd quantities of rocket launchers or Type19s"
+  - bugfix: "gun spawners now spawn ammo for shotguns and GLs"
+  - bugfix: "minor GC issue with mutliz stairs and build_blocker"
+  - mapadd: "Trijent Z levels"
+  - mapadd: "A lot of new nightmare inserts to Trijent"
+  - maptweak: "Original Trijent Z is now more detailed"

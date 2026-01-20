@@ -104,6 +104,9 @@ SUBSYSTEM_DEF(hijack)
 	/// The y offset for open_space turfs to ground when crashed
 	var/crashed_offset_y = 0
 
+	/// The min ground z for open_space turfs when crashed
+	var/crashed_ground_z_min = 0
+
 	/// The x origin for the mainship map
 	var/ship_origin_x = 0
 
@@ -680,7 +683,7 @@ SUBSYSTEM_DEF(hijack)
 
 	// Place the crash template
 	var/datum/map_template/template = SSmapping.map_templates[template_name]
-	if(!template?.load(ground_origin, centered=FALSE, delete=TRUE, allow_cropping=TRUE, crop_within_type=cordon_type, crop_within_border=1, expand_type=border_type))
+	if(!template?.load(ground_origin, centered=FALSE, delete=TRUE, allow_cropping=TRUE, crop_within_type=cordon_type, crop_within_border=1, expand_type=border_type, keep_within_ztrait=TRUE))
 		stack_trace("Hijack crash template '[template_name]' failed to load!")
 
 	// Figure out the offset for open_space turfs to peer down to ground aligned to the wreck
@@ -692,6 +695,7 @@ SUBSYSTEM_DEF(hijack)
 	crashed_offset_y = -ship_origin_y + 1 // 0 Vertical difference between shipmap and template
 	crashed_offset_x += ground_origin.x - 1
 	crashed_offset_y += ground_origin.y - 1
+	crashed_ground_z_min = ground_origin.z
 
 	shakeship(
 		sstrength = 3,
@@ -937,7 +941,7 @@ SUBSYSTEM_DEF(hijack)
 		// Don't bother with open_space further out
 		space_turf.icon_state = "black"
 		return
-	space_turf.ChangeTurf(/turf/open_space/ground_level, null, null, crashed_offset_x, crashed_offset_y)
+	space_turf.ChangeTurf(/turf/open_space/ground_level, null, null, crashed_offset_x, crashed_offset_y, crashed_ground_z_min)
 
 /// Called to enter FTP warp
 /datum/controller/subsystem/hijack/proc/enter_ftl()

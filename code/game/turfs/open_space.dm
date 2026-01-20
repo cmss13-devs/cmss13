@@ -154,15 +154,20 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	var/offset_x = 0
 	/// A offset in y to adjust what it deemed the below turf (adjusting this after Initialize requires update_vis_contents)
 	var/offset_y = 0
+	/// A minimum Z to use when determing the lowest ground Z
+	var/min_ground_z = 0
 	/// A specific z to adjust what it deemed the below turf (updated automatically in update_vis_contents)
 	var/target_z = 0
 	/// A cache of open_space z to ground z representative of the height
 	var/static/alist/z_mapping = alist()
 
 /turf/open_space/ground_level/Initialize(mapload, list/arguments)
-	if(length(arguments) >= 2)
+	var/arg_count = length(arguments)
+	if(arg_count >= 2)
 		offset_x = arguments[1]
 		offset_y = arguments[2]
+		if(arg_count >= 3)
+			min_ground_z = max(arguments[3], 0)
 	return ..()
 
 /turf/open_space/ground_level/get_turf_below()
@@ -193,9 +198,9 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 
 	// Figure out lowest ground z
 	// Assumption: Going ZTRAIT_DOWN keeps you within ZTRAIT_GROUND
-	current_z = ground_zs[1]
+	current_z = min_ground_z || ground_zs[1]
 	offset = SSmapping.level_trait(current_z, ZTRAIT_DOWN)
-	while(offset)
+	while(offset && current_z != min_ground_z)
 		current_z += offset
 		offset = SSmapping.level_trait(current_z, ZTRAIT_DOWN)
 

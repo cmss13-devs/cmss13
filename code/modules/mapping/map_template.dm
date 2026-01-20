@@ -109,8 +109,9 @@
  * * crop_within_type - A strict typepath to limit x_upper and y_upper further when in allow_cropping mode (passing FALSE here will disable a cordon border)
  * * crop_within_border - An extra extra distance to crop within for crop_within_type and expand_type
  * * expand_type - Specifying this typepath will allow expansion mode filling in space tiles with this type
+ * * keep_within_ztrait - Whether to restrict the z_upper to the highest Z that can be obtained with ZTRAIT_UP
  */
-/datum/map_template/proc/load(turf/target_turf, centered=FALSE, delete=FALSE, allow_cropping=FALSE, crop_within_type=/turf/closed/cordon, crop_within_border=1, expand_type=null)
+/datum/map_template/proc/load(turf/target_turf, centered=FALSE, delete=FALSE, allow_cropping=FALSE, crop_within_type=/turf/closed/cordon, crop_within_border=1, expand_type=null, keep_within_ztrait=FALSE)
 	if(centered)
 		target_turf = locate(target_turf.x - floor(width/2), target_turf.y - floor(height/2), target_turf.z)
 	if(!target_turf)
@@ -118,8 +119,23 @@
 
 	var/x_upper = INFINITY
 	var/y_upper = INFINITY
+	var/z_upper = INFINITY
 	var/expand_x_start = 0
 	var/expand_y_start = 0
+
+	// If we are keeping within ground/ship map trait, restrict the z_upper
+	if(keep_within_ztrait)
+		var/height = 1
+		var/current_z = target_turf.z
+		var/offset = SSmapping.level_trait(current_z, ZTRAIT_UP)
+		while(offset)
+			height++
+			current_z += offset
+			offset = SSmapping.level_trait(current_z, ZTRAIT_UP)
+		z_upper = height
+
+	// ASSUMPTION: target_turf.z to target_turf.z + z_upper is contiguous
+	// ASSUMPTION: World border is going to be the same for all ground Zs
 	if(!allow_cropping)
 		if((target_turf.x + width) - 1 > world.maxx)
 			return
@@ -174,6 +190,7 @@
 		no_changeturf = (SSatoms.initialized == INITIALIZATION_INSSATOMS),
 		x_upper = x_upper,
 		y_upper = y_upper,
+		z_upper = z_upper,
 		place_on_top = should_place_on_top,
 		delete = delete
 	))
@@ -183,23 +200,25 @@
 	if(!bounds)
 		return
 
+	// ASSUMPTION: target_turf.z to bounds[MAP_MAXZ] is contiguous
+	var/max_z = bounds[MAP_MAXZ]
 	if(expand_x_start || expand_y_start)
 		if(expand_x_start)
 			// Eastward expansion minus borders
-			for(var/turf/current in block(expand_x_start, target_turf.y, target_turf.z, target_turf.x + width - 1, target_turf.y + height - 1, target_turf.z))
+			for(var/turf/current in block(expand_x_start, target_turf.y, target_turf.z, target_turf.x + width - 1, target_turf.y + height - 1, max_z))
 				if(current.type == crop_within_type || istype(current, /turf/open/space))
 					current.ChangeTurf(expand_type)
 					CHECK_TICK
 			// Southern strip cordon
 			if(crop_within_type)
-				for(var/turf/current in block(expand_x_start, target_turf.y - 1, target_turf.z, target_turf.x + width, target_turf.y - 1, target_turf.z))
+				for(var/turf/current in block(expand_x_start, target_turf.y - 1, target_turf.z, target_turf.x + width, target_turf.y - 1, max_z))
 					if(current.type != crop_within_type)
 						current.ChangeTurf(crop_within_type)
 						CHECK_TICK
 			// Force border w/o additional expansion
 			if(crop_within_border > 0)
 				// Southern strip inner border
-				for(var/turf/current in block(expand_x_start, target_turf.y, target_turf.z, target_turf.x + width - 1, target_turf.y + crop_within_border - 1, target_turf.z))
+				for(var/turf/current in block(expand_x_start, target_turf.y, target_turf.z, target_turf.x + width - 1, target_turf.y + crop_within_border - 1, max_z))
 					if(current.type != expand_type)
 						current.ChangeTurf(expand_type)
 						CHECK_TICK
@@ -207,20 +226,20 @@
 		if(expand_y_start)
 			// Northward expansion minus borders
 			var/end_x = expand_x_start ? expand_x_start : target_turf.x + width
-			for(var/turf/current in block(target_turf.x, expand_y_start, target_turf.z, end_x - 1, target_turf.y + height - 1, target_turf.z))
+			for(var/turf/current in block(target_turf.x, expand_y_start, target_turf.z, end_x - 1, target_turf.y + height - 1, max_z))
 				if(current.type == crop_within_type || istype(current, /turf/open/space))
 					current.ChangeTurf(expand_type)
 					CHECK_TICK
 			// Western strip cordon
 			if(crop_within_type)
-				for(var/turf/current in block(target_turf.x - 1, expand_y_start, target_turf.z, target_turf.x - 1, target_turf.y + height, target_turf.z))
+				for(var/turf/current in block(target_turf.x - 1, expand_y_start, target_turf.z, target_turf.x - 1, target_turf.y + height, max_z))
 					if(current.type != crop_within_type)
 						current.ChangeTurf(crop_within_type)
 						CHECK_TICK
 			// Force border w/o additional expansion
 			if(crop_within_border > 0)
 				// Western strip inner border
-				for(var/turf/current in block(target_turf.x + crop_within_border - 1, expand_y_start, target_turf.z, target_turf.x, target_turf.y + height - crop_within_border - 1, target_turf.z))
+				for(var/turf/current in block(target_turf.x + crop_within_border - 1, expand_y_start, target_turf.z, target_turf.x, target_turf.y + height - crop_within_border - 1, max_z))
 					if(current.type != expand_type)
 						current.ChangeTurf(expand_type)
 						CHECK_TICK
@@ -233,24 +252,24 @@
 			expand_y_start = max(target_turf.y, expand_y_start)
 		if(crop_within_type)
 			// East strip cordon
-			for(var/turf/current in block(target_turf.x + width, expand_y_start, target_turf.z, target_turf.x + width, target_turf.y + height - 1, target_turf.z))
+			for(var/turf/current in block(target_turf.x + width, expand_y_start, target_turf.z, target_turf.x + width, target_turf.y + height - 1, max_z))
 				if(current.type != crop_within_type)
 					current.ChangeTurf(crop_within_type)
 					CHECK_TICK
 			// North strip cordon
-			for(var/turf/current in block(expand_x_start, target_turf.y + height, target_turf.z, target_turf.x + width, target_turf.y + height, target_turf.z))
+			for(var/turf/current in block(expand_x_start, target_turf.y + height, target_turf.z, target_turf.x + width, target_turf.y + height, max_z))
 				if(current.type != crop_within_type)
 					current.ChangeTurf(crop_within_type)
 					CHECK_TICK
 		// Force border w/o additional expansion
 		if(crop_within_border > 0)
 			// East strip inner border
-			for(var/turf/current in block(target_turf.x + width - crop_within_border, expand_y_start + crop_within_border, target_turf.z, target_turf.x + width - 1, target_turf.y + height - crop_within_border - 1, target_turf.z))
+			for(var/turf/current in block(target_turf.x + width - crop_within_border, expand_y_start + crop_within_border, target_turf.z, target_turf.x + width - 1, target_turf.y + height - crop_within_border - 1, max_z))
 				if(current.type != expand_type)
 					current.ChangeTurf(expand_type)
 					CHECK_TICK
 			// North strip inner border
-			for(var/turf/current in block(expand_x_start, target_turf.y + height - 1, target_turf.z, target_turf.x + width - 1, target_turf.y + height - crop_within_border, target_turf.z))
+			for(var/turf/current in block(expand_x_start, target_turf.y + height - 1, target_turf.z, target_turf.x + width - 1, target_turf.y + height - crop_within_border, max_z))
 				if(current.type != expand_type)
 					current.ChangeTurf(expand_type)
 					CHECK_TICK

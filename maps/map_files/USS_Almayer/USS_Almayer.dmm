@@ -4528,7 +4528,6 @@
 /turf/open/floor/almayer/plating_stripedcorner/west,
 /area/almayer/hallways/lower/port_midship_hallway)
 "akE" = (
-/obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/secure_closet{
 	name = "Field Doctor's locker"
 	},
@@ -4541,17 +4540,6 @@
 /obj/item/device/radio/marine,
 /obj/item/clothing/accessory/patch/medic_patch,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/closet/secure_closet{
-	name = "Field Doctor's locker"
-	},
-/obj/item/clothing/shoes/marine{
-	layer = 4.1
-	},
-/obj/item/clothing/suit/storage/marine/light/vest,
-/obj/item/clothing/head/helmet/marine/medic,
-/obj/item/storage/box/mre,
-/obj/item/device/radio/marine,
-/obj/item/clothing/accessory/patch/medic_patch,
 /obj/item/book/manual/surgery,
 /obj/item/book/manual/chemistry,
 /obj/item/book/manual/medical_diagnostics_manual,

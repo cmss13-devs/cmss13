@@ -136,14 +136,14 @@
 		return
 	var/rgt_list_text = get_reagent_list_text()
 	if(target.reagents)
+		if(!target.is_open_container())
+			to_chat(user, SPAN_WARNING("\The [target] has a lid on it. You can't drop \the [fluff_text] in [target] with the lid in the way."))
+			return
 		if(target.reagents?.total_volume <= 0)
 			to_chat(user, SPAN_WARNING("\The [target] needs to contain some liquid to dissolve pills in it."))
 			return
 		if(target.reagents.total_volume >= target.reagents.maximum_volume)
 			to_chat(user, SPAN_WARNING("\The [target] is full. You cannot dissolve anything else without it overflowing."))
-			return
-		if(!target.is_open_container())
-			to_chat(user, SPAN_WARNING("\The [target] has a lid on it. You can't drop \the [fluff_text] in [target] with the lid in the way."))
 			return
 
 		var/amount = reagents.total_volume + target.reagents.total_volume

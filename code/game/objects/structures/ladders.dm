@@ -104,7 +104,7 @@
 
 //Helper function to handle climbing logic for both manual clicks and modifier clicks
 /obj/structure/ladder/proc/climb_ladder(mob/living/user, direction)
-	if(user.stat || get_dist(user, src) > 1 || user.blinded || user.body_position == LYING_DOWN || user.buckled || user.anchored)
+	if(user.stat || get_dist(user, src) > 1 || user.blinded || user.body_position == LYING_DOWN || user.buckled || user.anchored || user.interactee)
 		return FALSE
 	if(busy)
 		to_chat(user, SPAN_WARNING("Someone else is currently using [src]."))
@@ -203,6 +203,7 @@
 
 
 /obj/structure/ladder/on_unset_interaction(mob/user)
+	UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
 	..()
 	is_watching = 0
 	user.reset_view(null)
@@ -210,7 +211,6 @@
 /obj/structure/ladder/proc/handle_move(mob/moved_mob, oldLoc, direct)
 	SIGNAL_HANDLER
 	moved_mob.unset_interaction()
-	UnregisterSignal(moved_mob, COMSIG_MOVABLE_MOVED)
 
 //Peeking up/down
 /obj/structure/ladder/MouseDrop(over_object, src_location, over_location, mob/user)

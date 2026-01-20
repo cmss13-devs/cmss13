@@ -197,7 +197,7 @@
 	name = PROPERTY_NERVESTIMULATING
 	code = "NST"
 	description = "Increases neuron communication speed across synapses resulting in improved reaction time, awareness and muscular control. Excessive muscular control loss causes the reagent to bind to nociceptors more aggressively than usual."
-	rarity = PROPERTY_RARE
+	rarity = PROPERTY_DISABLED
 	category = PROPERTY_TYPE_STIMULANT
 	value = 4
 

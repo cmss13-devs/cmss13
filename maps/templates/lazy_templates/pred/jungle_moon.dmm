@@ -50,7 +50,7 @@
 /obj/item/weapon/twohanded/yautja/glaive/alt{
 	anchored = 1
 	},
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/yautja_grounds/prep_room)
 "aD" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -60,17 +60,17 @@
 	pixel_y = 10
 	},
 /obj/item/bracer_attachments/wristblades,
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/yautja_grounds/prep_room)
 "aE" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/auto_turf/strata_grass/layer0,
 /area/yautja_grounds/jungle/north_east)
 "aF" = (
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/yautja_grounds/prep_room)
 "aJ" = (
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/yautja_grounds/prep_room)
 "aK" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -79,14 +79,14 @@
 /obj/item/device/flashlight/lantern/yautja,
 /obj/item/device/flashlight/lantern/yautja,
 /obj/item/device/flashlight/lantern/yautja,
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/yautja_grounds/prep_room)
 "aL" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
 /obj/item/reagent_container/glass/rag/polishing_rag,
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/yautja_grounds/prep_room)
 "aM" = (
 /obj/structure/flora/jungle/vines{
@@ -117,7 +117,7 @@
 /obj/item/stack/yautja_rope,
 /obj/item/stack/yautja_rope,
 /obj/item/stack/yautja_rope,
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/yautja_grounds/prep_room)
 "aR" = (
 /obj/structure/prop/ice_colony/tiger_rug{
@@ -129,11 +129,11 @@
 	name = "animal pelt";
 	desc = "A pelt of a fearsome dead creature."
 	},
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/yautja_grounds/prep_room)
 "aT" = (
 /obj/effect/landmark/yautja_young_teleport,
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/yautja_grounds/prep_room)
 "aU" = (
 /obj/structure/prop/ice_colony/tiger_rug{
@@ -146,11 +146,11 @@
 	name = "animal pelt";
 	desc = "A pelt of a fearsome dead creature."
 	},
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/yautja_grounds/prep_room)
 "aV" = (
 /obj/structure/machinery/prop/yautja/bubbler,
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/yautja_grounds/prep_room)
 "aW" = (
 /obj/effect/landmark/ert_spawns/distress/hunt_spawner,
@@ -203,7 +203,7 @@
 /obj/item/hunting_trap,
 /obj/item/hunting_trap,
 /obj/item/hunting_trap,
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/yautja_grounds/prep_room)
 "bi" = (
 /turf/closed/wall/rock/brown,
@@ -217,7 +217,7 @@
 /obj/item/weapon/harpoon/yautja,
 /obj/item/weapon/harpoon/yautja,
 /obj/item/weapon/harpoon/yautja,
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/yautja_grounds/prep_room)
 "bk" = (
 /obj/structure/flora/jungle/vines/heavy,
@@ -267,11 +267,11 @@
 /area/yautja_grounds/prep_room)
 "bw" = (
 /obj/structure/curtain/leather/alt_2,
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/yautja_grounds/prep_room)
 "by" = (
 /obj/structure/curtain/leather/alt_1,
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/yautja_grounds/prep_room)
 "bz" = (
 /obj/structure/flora/jungle/vines,
@@ -347,14 +347,14 @@
 /area/yautja_grounds/jungle/south)
 "bW" = (
 /obj/structure/machinery/door/airlock/sandstone/runed/dark,
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/yautja_grounds/prep_room)
 "bX" = (
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/yautja_grounds/prep_room)
 "bY" = (
 /obj/structure/machinery/door/airlock/sandstone/runed/dark,
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/yautja_grounds/prep_room)
 "bZ" = (
 /turf/open/auto_turf/strata_grass/layer0_mud,
@@ -421,7 +421,7 @@
 	anchored = 1;
 	pixel_x = 1
 	},
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/yautja_grounds/prep_room)
 "co" = (
 /obj/structure/prop/ice_colony/tiger_rug{
@@ -434,7 +434,7 @@
 	desc = "A pelt of a fearsome dead creature.";
 	layer = 2.9
 	},
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/yautja_grounds/prep_room)
 "cp" = (
 /obj/effect/decal/remains/human,
@@ -516,13 +516,13 @@
 /area/yautja_grounds/jungle/south)
 "cE" = (
 /obj/structure/curtain/leather/alt_2,
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/yautja_grounds/prep_room)
 "cF" = (
 /obj/structure/bed/chair/comfy/yautja{
 	dir = 1
 	},
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/yautja_grounds/prep_room)
 "cG" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
@@ -542,13 +542,13 @@
 	name = "animal pelt";
 	desc = "A pelt of a fearsome dead creature."
 	},
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/yautja_grounds/prep_room)
 "cI" = (
 /obj/structure/closet/crate{
 	color = "#6b675e"
 	},
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/yautja_grounds/prep_room)
 "cJ" = (
 /obj/structure/flora/jungle/vines/heavy,
@@ -624,7 +624,7 @@
 /obj/structure/closet/coffin/predator{
 	pixel_y = 5
 	},
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/yautja_grounds/prep_room)
 "dd" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
@@ -641,17 +641,17 @@
 	pixel_y = 5
 	},
 /obj/item/tool/kitchen/utensil/spoon,
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/yautja_grounds/prep_room)
 "df" = (
 /obj/effect/landmark/yautja_teleport,
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/predship/tile/red2,
 /area/yautja_grounds/prep_room)
 "dg" = (
 /obj/structure/closet/crate{
 	color = "#6b675e"
 	},
-/turf/open/shuttle/dropship/predship/tile/red3,
+/turf/open/predship/tile/red3,
 /area/yautja_grounds/prep_room)
 "dh" = (
 /obj/structure/flora/jungle/vines/heavy,
@@ -740,11 +740,11 @@
 	name = "animal pelt";
 	desc = "A pelt of a fearsome dead creature."
 	},
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/yautja_grounds/prep_room)
 "dA" = (
 /obj/structure/bed/chair/comfy/yautja,
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/yautja_grounds/prep_room)
 "dB" = (
 /obj/structure/flora/jungle/vines/heavy,
@@ -813,15 +813,15 @@
 /area/yautja_grounds/jungle/south)
 "dN" = (
 /obj/structure/prop/hunter/trophy_display/bottom_left,
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/yautja_grounds/prep_room)
 "dP" = (
 /obj/structure/prop/hunter/trophy_display/center,
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/yautja_grounds/prep_room)
 "dR" = (
 /obj/structure/prop/hunter/trophy_display/bottom_right,
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/predship/tile/red,
 /area/yautja_grounds/prep_room)
 "dS" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,

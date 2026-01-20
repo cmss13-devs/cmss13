@@ -21912,6 +21912,10 @@
 /obj/structure/prop/dam/gravestone,
 /turf/open/desert/dirt/desert_transition_corner1/west,
 /area/desert_dam/exterior/valley/valley_hydro)
+"bpU" = (
+/obj/effect/landmark/mainship_crashsite,
+/turf/closed/wall/rock/orange,
+/area/desert_dam/exterior/rock)
 "bpV" = (
 /obj/structure/platform/metal/almayer/west,
 /obj/effect/decal/sand_overlay/sand2/corner2{
@@ -138759,7 +138763,7 @@ qaR
 qaR
 qaR
 qaR
-qaR
+bpU
 uer
 "}
 (3,1,2) = {"

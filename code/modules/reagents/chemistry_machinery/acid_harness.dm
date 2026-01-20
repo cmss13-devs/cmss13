@@ -39,7 +39,7 @@
 
 #define ACID_CONTAINER_MAXIMUM_VOLUME 60
 
-#define ACID_DEAFUALT_SCAN_INTERVAL 15 SECONDS
+#define ACID_DEFAULT_SCAN_INTERVAL 15 SECONDS
 
 /obj/item/storage/internal/accessory/black_vest/acid_harness
 	storage_slots = 2
@@ -241,7 +241,7 @@
 	var/battery_level = FALSE
 	var/rechecking = FALSE
 
-	var/scan_interval = ACID_DEAFUALT_SCAN_INTERVAL
+	var/scan_interval = ACID_DEFAULT_SCAN_INTERVAL
 	var/last_scan_time
 
 /obj/structure/machinery/acid_core/Initialize(mapload, ...)
@@ -263,7 +263,7 @@
 				return
 			text += SPAN_NOTICE("Welcome, to the Automated Chemical Integrated Delivery harness.")
 		if(1)
-			text += SPAN_NOTICE("Standby for Main Systems initilization...")
+			text += SPAN_NOTICE("Standby for Main Systems initialization...")
 		if(2)
 			text += SPAN_NOTICE("Communication interface, online.")
 			playsound_client(user.client, 'sound/handling/toggle_nv1.ogg', null, ITEM_EQUIP_VOLUME)
@@ -470,7 +470,7 @@
 	if(inject_conditions & ACID_SCAN_CONDITION_CONCUSSION && (HAS_TRAIT(src, TRAIT_KNOCKEDOUT) || HAS_TRAIT(src, TRAIT_FLOORED)))
 		condition_scan |= ACID_SCAN_CONDITION_CONCUSSION
 
-	if(inject_conditions & ACID_SCAN_CONDITION_INTOXICATION && (HAS_TRAIT(src, TRAIT_DAZED) || user.slowed || user.confused || user.drowsyness || user.dizziness || user.druggy))
+	if(inject_conditions & ACID_SCAN_CONDITION_INTOXICATION && (HAS_TRAIT(src, TRAIT_DAZED) || user.slowed || user.confused || user.drowsiness || user.dizziness || user.druggy))
 		condition_scan |= ACID_SCAN_CONDITION_INTOXICATION
 
 	//Compare
@@ -498,15 +498,16 @@
 		voice("Warning: Medicinal container missing.")
 		return
 	for(var/datum/reagent/R in acid_harness.beaker.reagents.reagent_list)
-		if(R.overdose && user.reagents.get_reagent_amount(R.id) + inject_amount > R.overdose) //Don't overdose our boi
+		var/amount_in_inject = (acid_harness.beaker.reagents.get_reagent_amount(R.id) / acid_harness.beaker.reagents.total_volume) * inject_amount
+		if(R.overdose && (user.reagents.get_reagent_amount(R.id) + amount_in_inject) > R.overdose) //Don't overdose our boi
 			voice("Notice: Injection trigger cancelled to avoid overdose.")
-			scan_interval = ACID_DEAFUALT_SCAN_INTERVAL + ((ACID_DEAFUALT_SCAN_INTERVAL*0.2) * inject_amount) //Add 20% of scan time per reagent unit ontop of normal scan time for a bigger period inbetween
+			scan_interval = ACID_DEFAULT_SCAN_INTERVAL + ((ACID_DEFAULT_SCAN_INTERVAL*0.2) * inject_amount) //Add 20% of scan time per reagent unit ontop of normal scan time for a bigger period inbetween
 			rechecking = TRUE
 			return
 	if(acid_harness.beaker.reagents.trans_to(user, inject_amount))
 		playsound_client(user.client, 'sound/items/hypospray.ogg', null, ITEM_EQUIP_VOLUME)
 		voice("Medicine administered. [acid_harness.beaker.reagents.total_volume] units remaining.")
-		scan_interval = ACID_DEAFUALT_SCAN_INTERVAL + ((ACID_DEAFUALT_SCAN_INTERVAL*0.15) * inject_amount)
+		scan_interval = ACID_DEFAULT_SCAN_INTERVAL + ((ACID_DEFAULT_SCAN_INTERVAL*0.15) * inject_amount)
 		rechecking = TRUE
 	if(!acid_harness.beaker.reagents.total_volume)
 		voice("Warning: Medicinal container is empty, resupply required.")

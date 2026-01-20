@@ -113,6 +113,7 @@
 		. += 360
 
 /proc/angle_to_dir(angle)
+	angle = ((angle % 360) + 382.5) % 360
 	switch(angle) //diagonal directions get priority over straight directions in edge cases
 		if (22.5 to 67.5)
 			return NORTHEAST

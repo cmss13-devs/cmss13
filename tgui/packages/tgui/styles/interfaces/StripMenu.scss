@@ -3,16 +3,18 @@
 $background-color: hsla(0, 0%, 0%, 0.33) !default;
 
 .StripMenu__cornertext_left {
-  position: relative;
-  left: 2px;
+  position: absolute;
+  top: -2px;
+  left: 3px;
   text-align: left;
   text-shadow: 1px 1px 1px hsl(0, 0%, 33%);
 }
 
 .StripMenu__cornertext_right {
-  position: relative;
-  left: -2px;
-  text-align: right;
+  position: absolute;
+  top: -2px;
+  right: 4px;
+  text-align: absolute;
   text-shadow: 1px 1px 1px hsl(0, 0%, 33%);
 }
 

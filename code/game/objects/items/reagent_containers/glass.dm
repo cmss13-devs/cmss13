@@ -714,7 +714,7 @@
 		else
 			reagents.trans_to(mop, mop.max_reagent_volume)
 			mop.update_icon()
-			to_chat(user, SPAN_NOTICE("You wet [mop] in [src]."))
+			to_chat(user, SPAN_NOTICE("You wet \the [mop] in [src]."))
 			playsound(loc, 'sound/effects/slosh.ogg', 25, 1)
 		return
 	else
@@ -778,7 +778,6 @@
 	volume = 300
 	possible_transfer_amounts = list(5,10,15,20,30,40,60,120,240,300)
 	w_class = SIZE_LARGE
-
 
 /obj/item/reagent_container/glass/rag
 	name = "damp rag"

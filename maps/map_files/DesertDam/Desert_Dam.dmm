@@ -21912,10 +21912,6 @@
 /obj/structure/prop/dam/gravestone,
 /turf/open/desert/dirt/desert_transition_corner1/west,
 /area/desert_dam/exterior/valley/valley_hydro)
-"bpU" = (
-/obj/effect/landmark/mainship_crashsite,
-/turf/closed/wall/rock/orange,
-/area/desert_dam/exterior/rock)
 "bpV" = (
 /obj/structure/platform/metal/almayer/west,
 /obj/effect/decal/sand_overlay/sand2/corner2{
@@ -21939,6 +21935,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
 /area/desert_dam/exterior/valley/valley_medical)
+"bqa" = (
+/obj/effect/landmark/mainship_crashsite,
+/turf/closed/cordon,
+/area/desert_dam/exterior/rock)
 "bqf" = (
 /obj/structure/disposalpipe/segment{
 	dir = 2;
@@ -138530,7 +138530,7 @@ uer
 uer
 uer
 uer
-uer
+bqa
 "}
 (2,1,2) = {"
 uer
@@ -138763,7 +138763,7 @@ qaR
 qaR
 qaR
 qaR
-bpU
+qaR
 uer
 "}
 (3,1,2) = {"

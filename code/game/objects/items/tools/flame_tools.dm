@@ -153,7 +153,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	set_light_on(toggle_on)
 
 /obj/item/tool/match/proc/light_match(mob/user)
-	attack_verb = list("burnt", "singed", "scorched", "seared")
+	attack_verb = list("burned", "singed", "scorched", "seared")
 	if(heat_source || burnt)
 		return
 	heat_source = 1000
@@ -854,7 +854,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 					else
 						user.apply_damage(2,BURN,"r_hand")
 					user.visible_message(SPAN_NOTICE("After a few attempts, [user] manages to light [src], they however burn their finger in the process."))
-			attack_verb = list("burnt", "branded", "scorched", "seared")
+			attack_verb = list("burned", "branded", "scorched", "seared")
 			damtype = "fire"
 			set_light_range(2)
 			set_light_on(TRUE)
@@ -870,7 +870,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		heat_source = 0
 		icon_state = icon_off
 		item_state = icon_off
-		attack_verb = list("smacked", "hit", "strike")
+		attack_verb = list("smacked", "hit", "struck")
 		damtype = "brute"
 		if(!silent)
 			if(istype(src, /obj/item/tool/lighter/zippo) )

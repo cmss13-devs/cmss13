@@ -1,4 +1,0 @@
-author: "Puckaboo2"
-delete-after: True
-changes:
-  - bugfix: "The FIX ME icon state no longer appears on the cycle helmet HUD button if you're toggling the Squad Optic."

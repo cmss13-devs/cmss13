@@ -1,9 +1,0 @@
-author: "Unknownity  Wei"
-delete-after: True
-changes:
-  - rscadd: "Added two new factions the PMCs and Historical/Miscallenous prey to the Hunting Grounds pool."
-  - rscadd: "Despoiler has been added to Hunting Grounds xenomorph T3 pool."
-  - rscadd: "CLF Specialist has been added to the Hunting Grounds CLF pool."
-  - bugfix: "Fixes USCM Smartgunner being hungry in the Hunting Grounds."
-  - bugfix: "Fixes objectives not appearing for certain ERTs."
-  - bugfix: "Fixes the super top hat appearing incorrectly on the mob."

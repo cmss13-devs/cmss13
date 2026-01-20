@@ -271,6 +271,12 @@
 #define GET_RANDOM_FREQ rand(32000, 55000)
 #define GET_RANDOM_FREQ_MINOR rand(42000, 48000)
 
+/// Directions as text for riding component
+#define TEXT_NORTH "[NORTH]"
+#define TEXT_SOUTH "[SOUTH]"
+#define TEXT_EAST "[EAST]"
+#define TEXT_WEST "[WEST]"
+
 // Ceilings
 // Ceiling types
 // CEILING_PROTECTION_TIER_X are thresholds for blocking shit, everything else is

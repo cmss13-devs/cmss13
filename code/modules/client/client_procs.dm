@@ -274,6 +274,33 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	///////////
 /client/New(TopicData)
 	soundOutput = new /datum/soundOutput(src)
+
+	var/new_topic = params2list(TopicData)
+
+	if(new_topic && ("access_code" in new_topic))
+		var/oidc_endpoint = CONFIG_GET(string/oidc_endpoint)
+		if(oidc_endpoint)
+			var/access_code = new_topic["access_code"]
+
+			var/datum/http_request/request = new(RUSTG_HTTP_METHOD_GET, oidc_endpoint, null, list(
+				"Authorization" = "Bearer [access_code]"
+			))
+			request.execute_blocking()
+
+			var/datum/http_response/response = request.into_response()
+
+			if(!response.errored && !response.error)
+
+				var/json = json_decode(response.body)
+
+				var/user_ckey = json["ckey"]
+
+				if(user_ckey)
+					ckey = user_ckey
+				else
+					ckey = json["sub"]
+					external_username = json["preferred_username"]
+
 	TopicData = null //Prevent calls to client.Topic from connect
 
 	if(!(connection in list("seeker", "web"))) //Invalid connection type.

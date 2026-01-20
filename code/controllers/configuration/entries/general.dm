@@ -733,3 +733,6 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 
 /// Appended to CLIENT_VERB(showrevinfo)
 /datum/config_entry/string/code_modifications_message
+
+/datum/config_entry/string/oidc_endpoint
+	protection = CONFIG_ENTRY_LOCKED

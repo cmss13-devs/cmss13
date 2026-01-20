@@ -7,7 +7,7 @@
 
 /mob/living/simple_animal/hostile/retaliate/giant_lizard
 	name = "giant lizard"
-	desc = "A large, wolf-like reptile. Its eyes are keenly focused on yours."
+	desc = "A large, synapsid-like creature. Its eyes are keenly focused on yours."
 	icon = 'icons/mob/mob_64.dmi'
 	icon_state = "Giant Lizard Running"
 	icon_living = "Giant Lizard Running"
@@ -35,7 +35,7 @@
 	speak_chance = 2
 	speak_emote = "hisses"
 	emote_hear = list("hisses.", "growls.", "roars.", "bellows.")
-	emote_see = list("shakes its head.", "wags its tail.", "yawns.")
+	emote_see = list("shakes its head.", "wags its tail.", "yawns.", "licks its eyeball.")
 
 	melee_damage_lower = 20
 	melee_damage_upper = 25
@@ -164,7 +164,7 @@
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/initialize_pass_flags(datum/pass_flags_container/pass_flags_container)
 	..()
 	if(pass_flags_container)
-		pass_flags_container.flags_pass |= PASS_FLAGS_CRAWLER
+		pass_flags_container.flags_pass |= PASS_FLAGS_CRAWLER|PASS_OVER_THROW_ITEM
 
 //regular pain datum will make the mob die when trying to pounce after taking enough damage.
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/initialize_pain()

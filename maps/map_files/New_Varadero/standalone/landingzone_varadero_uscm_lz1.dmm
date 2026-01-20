@@ -1212,7 +1212,7 @@
 /turf/open/gm/dirt/desert3,
 /area/varadero/exterior/lz1_near)
 "jS" = (
-/mob/living/simple_animal/cat{
+/mob/living/simple_animal/small/cat{
 	desc = "A domesticated, feline pet. The collar says 'Orion'.";
 	name = "Orion";
 	real_name = "Orion"

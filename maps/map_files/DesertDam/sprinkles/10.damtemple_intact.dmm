@@ -110,29 +110,29 @@
 /obj/effect/decal/remains/human,
 /turf/open/desert/rock,
 /area/desert_dam/interior/caves/temple)
-"av" = (
-/obj/structure/xenoautopsy/tank/hugger/yautja,
-/turf/open/shuttle/red,
-/area/desert_dam/interior/caves/temple)
-"aw" = (
+"au" = (
 /obj/structure/machinery/door/airlock/sandstone/runed{
 	name = "Strange Temple";
 	dir = 1
 	},
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
-"ay" = (
+"av" = (
+/obj/structure/xenoautopsy/tank/hugger/yautja,
+/turf/open/shuttle/red,
+/area/desert_dam/interior/caves/temple)
+"aw" = (
 /obj/structure/stairs/perspective{
 	color = "#b6a38f";
-	dir = 9;
+	dir = 8;
 	icon_state = "p_stair_full"
 	},
 /turf/template_noop,
 /area/template_noop)
-"aB" = (
+"ax" = (
 /obj/structure/stairs/perspective{
 	color = "#b6a38f";
-	dir = 8;
+	dir = 9;
 	icon_state = "p_stair_full"
 	},
 /turf/template_noop,
@@ -724,16 +724,16 @@ an
 an
 an
 an
-ay
-aB
-aB
-aB
-aB
-aB
-aB
-aB
-aB
-aB
+ax
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
 MH
 MH
 Li
@@ -1000,7 +1000,7 @@ mB
 mB
 mB
 mB
-aw
+au
 mB
 ao
 "}
@@ -1026,7 +1026,7 @@ AU
 mB
 Gz
 mB
-aw
+au
 mB
 ap
 "}
@@ -1039,7 +1039,7 @@ MH
 WV
 am
 mB
-aw
+au
 mB
 mB
 YH
@@ -1177,7 +1177,7 @@ mB
 mB
 mB
 mB
-aw
+au
 AU
 AU
 fl

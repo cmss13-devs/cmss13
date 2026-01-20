@@ -694,6 +694,13 @@
 "abP" = (
 /obj/structure/machinery/iv_drip,
 /obj/structure/machinery/light,
+/obj/structure/machinery/door_control{
+	id = "or3privacyshutter";
+	name = "\improper Window's Privacy Shutters";
+	pixel_y = -24;
+	throw_range = 15;
+	req_one_access_txt = "19;20"
+	},
 /turf/open/floor/almayer/sterile_green_side,
 /area/almayer/medical/operating_room_three)
 "abQ" = (
@@ -731,6 +738,13 @@
 "abV" = (
 /obj/structure/machinery/iv_drip,
 /obj/structure/machinery/light,
+/obj/structure/machinery/door_control{
+	id = "or4privacyshutter";
+	name = "\improper Window's Privacy Shutters";
+	pixel_y = -24;
+	throw_range = 15;
+	req_one_access_txt = "19;20"
+	},
 /turf/open/floor/almayer/sterile_green_side,
 /area/almayer/medical/operating_room_four)
 "abW" = (
@@ -945,7 +959,7 @@
 /obj/structure/window/framed/almayer/white,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "or1privacyshutter";
+	id = "or3privacyshutter";
 	name = "\improper Privacy Shutters";
 	dir = 4
 	},
@@ -1378,7 +1392,7 @@
 "ads" = (
 /obj/structure/window/framed/almayer/white,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "or3shutter";
+	id = "or3privacyshutter";
 	name = "\improper Privacy Shutters"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -3005,7 +3019,7 @@
 "agX" = (
 /obj/structure/window/framed/almayer/white,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "or1shutter";
+	id = "or1privacyshutter";
 	name = "\improper Privacy Shutters"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -3269,7 +3283,7 @@
 /obj/structure/window/framed/almayer/white,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "or3privacyshutter";
+	id = "or1privacyshutter";
 	name = "\improper Privacy Shutters";
 	dir = 4
 	},
@@ -3553,6 +3567,13 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/structure/machinery/door_control{
+	id = "or1privacyshutter";
+	name = "\improper Window's Privacy Shutters";
+	pixel_y = 23;
+	throw_range = 15;
+	req_one_access_txt = "19;20"
+	},
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/almayer/medical/operating_room_one)
 "aig" = (
@@ -3615,6 +3636,13 @@
 /obj/structure/machinery/iv_drip,
 /obj/structure/machinery/light{
 	dir = 1
+	},
+/obj/structure/machinery/door_control{
+	id = "or2privacyshutter";
+	name = "\improper Window's Privacy Shutters";
+	pixel_y = 23;
+	throw_range = 15;
+	req_one_access_txt = "19;20"
 	},
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/almayer/medical/operating_room_two)
@@ -23095,12 +23123,12 @@
 /obj/structure/window/framed/almayer/white,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "or4privacyshutter";
+	id = "or1privacyshutter";
 	name = "\improper Privacy Shutters";
 	dir = 4
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "or3privacyshutter";
+	id = "or2privacyshutter";
 	name = "\improper Privacy Shutters";
 	dir = 4
 	},
@@ -25109,7 +25137,7 @@
 	dir = 2
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "or2shutter";
+	id = "or2privacyshutter";
 	name = "\improper Privacy Shutters"
 	},
 /turf/open/floor/plating,
@@ -28932,12 +28960,12 @@
 /obj/structure/window/framed/almayer/white,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "or2privacyshutter";
+	id = "or4privacyshutter";
 	name = "\improper Privacy Shutters";
 	dir = 4
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "or1privacyshutter";
+	id = "or3privacyshutter";
 	name = "\improper Privacy Shutters";
 	dir = 4
 	},
@@ -36735,7 +36763,7 @@
 	dir = 2
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "or3shutter";
+	id = "or3privacyshutter";
 	name = "\improper Privacy Shutters"
 	},
 /turf/open/floor/plating,
@@ -36751,7 +36779,7 @@
 "bLK" = (
 /obj/structure/window/framed/almayer/white,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "or4shutter";
+	id = "or4privacyshutter";
 	name = "\improper Privacy Shutters"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -36819,7 +36847,7 @@
 	dir = 2
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "or1shutter";
+	id = "or1privacyshutter";
 	name = "\improper Privacy Shutters"
 	},
 /turf/open/floor/plating,
@@ -36827,7 +36855,7 @@
 "bLT" = (
 /obj/structure/window/framed/almayer/white,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "or2shutter";
+	id = "or2privacyshutter";
 	name = "\improper Privacy Shutters"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -40229,7 +40257,7 @@
 	dir = 2
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "or4shutter";
+	id = "or4privacyshutter";
 	name = "\improper Privacy Shutters"
 	},
 /turf/open/floor/plating,
@@ -41171,7 +41199,7 @@
 /obj/structure/window/framed/almayer/white,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "or2privacyshutter";
+	id = "or4privacyshutter";
 	name = "\improper Privacy Shutters";
 	dir = 4
 	},
@@ -44062,7 +44090,7 @@
 /obj/structure/window/framed/almayer/white,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "or4privacyshutter";
+	id = "or2privacyshutter";
 	name = "\improper Privacy Shutters";
 	dir = 4
 	},

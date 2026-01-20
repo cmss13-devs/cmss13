@@ -70,10 +70,10 @@
 		beaker = inputted_item
 		user.drop_inv_item_to_loc(inputted_item, src)
 		if(old_beaker)
-			to_chat(user, SPAN_NOTICE("You swap out [old_beaker] for [inputted_item]."))
+			to_chat(user, SPAN_NOTICE("You swap out \the [old_beaker] for \the [inputted_item]."))
 			user.put_in_hands(old_beaker)
 		else
-			to_chat(user, SPAN_NOTICE("You add the beaker to the machine!"))
+			to_chat(user, SPAN_NOTICE("You add \the [inputted_item] to the machine!"))
 		SStgui.update_uis(src)
 		update_icon()
 		return
@@ -109,11 +109,6 @@
 
 		user.visible_message(SPAN_NOTICE("[user] starts to empty \the [box] into [src]..."),
 		SPAN_NOTICE("You start to empty \the [box] into [src]..."))
-
-		user.visible_message(SPAN_NOTICE("[user] starts to empty \the [box] into [src]..."),
-		SPAN_NOTICE("You start to empty \the [box] into [src]..."))
-
-
 		var/waiting_time = min(length(box.contents), max_bottles_count - length(loaded_pill_bottles)) * box.time_to_empty
 
 		if(!do_after(user, waiting_time, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))

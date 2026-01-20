@@ -110,11 +110,11 @@
 		D.add_fingerprint(user)
 		if(D.dispensing)
 			if(!target.reagents.total_volume && target.reagents)
-				to_chat(user, SPAN_WARNING("[target] is empty."))
+				to_chat(user, SPAN_WARNING("\The [target] is empty."))
 				return
 
 			if(reagents.total_volume >= reagents.maximum_volume)
-				to_chat(user, SPAN_WARNING("[src] is full."))
+				to_chat(user, SPAN_WARNING("\The [src] is full."))
 				return
 
 			var/trans = target.reagents.trans_to(src, target:amount_per_transfer_from_this)
@@ -127,11 +127,11 @@
 		else
 			if(is_open_container_or_can_be_dispensed_into())
 				if(reagents && !reagents.total_volume)
-					to_chat(user, SPAN_WARNING("[src] is empty."))
+					to_chat(user, SPAN_WARNING("\The [src] is empty."))
 					return
 
 				if(D.reagents.total_volume >= D.reagents.maximum_volume)
-					to_chat(user, SPAN_WARNING("[D] is full."))
+					to_chat(user, SPAN_WARNING("\The [D] is full."))
 					return
 
 				var/trans = reagents.trans_to(D, D:amount_per_transfer_from_this)
@@ -151,7 +151,7 @@
 			return
 
 		if(target.reagents.total_volume >= target.reagents.maximum_volume)
-			to_chat(user, SPAN_WARNING("[target] is full."))
+			to_chat(user, SPAN_WARNING("\The [target] is full."))
 			return
 
 		var/trans = src.reagents.trans_to(target, amount_per_transfer_from_this)
@@ -214,16 +214,16 @@
 			to_chat(user, SPAN_WARNING("[src] is full. You cannot dissolve any more pills."))
 			return
 		if(length(pbottle.contents) <= 0)
-			to_chat(user, SPAN_WARNING("You don't have any pills to dump from [pbottle.name]."))
+			to_chat(user, SPAN_WARNING("You don't have any pills to dump from \the [pbottle.name]."))
 			return
-		user.visible_message(SPAN_NOTICE("[user] starts to empty [pbottle.name] into [src]..."),
-		SPAN_NOTICE("You start to empty [pbottle.name] into [src]..."),
+		user.visible_message(SPAN_NOTICE("[user] starts to empty \the [pbottle.name] into [src]..."),
+		SPAN_NOTICE("You start to empty \the [pbottle.name] into [src]..."),
 		SPAN_NOTICE("You hear the emptying of a pill bottle. The pills bloop into liquid..."), 2)
 
 		var/waiting_time = (length(pbottle.contents)) * 0.125 SECONDS
 		if(!do_after(user, waiting_time, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
-			user.visible_message(SPAN_NOTICE("[user] stops trying to empty [pbottle.name] into [src]."),
-			SPAN_WARNING("You get distracted and stop trying to empty [pbottle.name] into [src]."))
+			user.visible_message(SPAN_NOTICE("[user] stops trying to empty \the [pbottle.name] into [src]."),
+			SPAN_WARNING("You get distracted and stop trying to empty \the [pbottle.name] into [src]."))
 			return
 
 		var/list/reagent_list_text = list()
@@ -247,8 +247,8 @@
 		var/output_text
 		for(var/reagent_text in reagent_list_text)
 			output_text += "[output_text ? "," : ":" ] [reagent_list_text[reagent_text]+1] Pill[reagent_list_text[reagent_text] > 0 ? "s" : ""] of " + reagent_text
-		user.visible_message(SPAN_NOTICE("[user] finishes emptying [pbottle.name] into [src]."), SPAN_NOTICE("You stop emptying [pbottle.name] into [src]."))
-		log_interact(user, null, "[key_name(user)] dissolved the contents of [pbottle.name] into [src] containing[output_text].")
+		user.visible_message(SPAN_NOTICE("[user] finishes emptying \the [pbottle.name] into [src]."), SPAN_NOTICE("You stop emptying \the [pbottle.name] into [src]."))
+		log_interact(user, null, "[key_name(user)] dissolved the contents of \the [pbottle.name] into [src] containing[output_text].")
 		return // No call parent AFTER loop is done. Prevents pill bottles from attempting to gather pills.
 
 	return ..()
@@ -699,15 +699,15 @@
 	volume = 120
 	flags_atom = FPRINT|OPENCONTAINER
 
-/obj/item/reagent_container/glass/bucket/attackby(obj/item/I, mob/user)
-	if(isprox(I))
-		to_chat(user, "You add [I] to [src].")
-		qdel(I)
+/obj/item/reagent_container/glass/bucket/attackby(obj/item/something, mob/user)
+	if(isprox(something))
+		to_chat(user, "You add [something] to [src].")
+		qdel(something)
 		user.put_in_hands(new /obj/item/frame/bucket_sensor)
 		user.drop_inv_item_on_ground(src)
 		qdel(src)
-	else if(istype(I, /obj/item/tool/mop))
-		var/obj/item/tool/mop/mop = I
+	else if(istype(something, /obj/item/tool/mop))
+		var/obj/item/tool/mop/mop = something
 		if(reagents.total_volume < 1)
 			to_chat(user, SPAN_WARNING("[src] is out of water!"))
 		else

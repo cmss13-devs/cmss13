@@ -70,7 +70,7 @@
 		if(istype(M, /mob/living/carbon/human))
 			var/mob/living/carbon/human/H = M
 			if(H.species.flags & IS_SYNTHETIC)
-				to_chat(H, SPAN_DANGER("You can't eat [fluff_text]s."))
+				to_chat(H, SPAN_DANGER("You can't eat \the [fluff_text]s."))
 				return
 
 		M.visible_message(SPAN_NOTICE("[user] swallows [src]."),
@@ -135,31 +135,31 @@
 	if(!proximity)
 		return
 
-	if(target.is_open_container() && target.reagents)
-		if(!target.reagents.total_volume)
-			to_chat(user, SPAN_DANGER("[target] is empty. Can't dissolve [fluff_text]."))
+	if(target.reagents)
+		if(target.reagents?.total_volume <= 0)
+			to_chat(user, SPAN_WARNING("[target] needs to contain some liquid to dissolve \the [fluff_text] in."))
 			return
 		var/amount = reagents.total_volume + target.reagents.total_volume
 		var/loss = amount - target.reagents.maximum_volume
-		if(amount > target.reagents.maximum_volume)
-			to_chat(user, SPAN_WARNING("You dissolve [fluff_text], but [target] overflows and takes [loss]u of your pill with it."))
+		if(amount > target.reagents.maximum_volume && target.reagents.total_volume != target.reagents.maximum_volume)
+			to_chat(user, SPAN_WARNING("You dissolve \the [fluff_text], but [target] overflows and takes [loss]u of your pill with it."))
+		if(target.reagents.total_volume >= target.reagents.maximum_volume)
+			to_chat(user, SPAN_WARNING("You cannot dissolve anything else in [target] without it overflowing."))
+			return
 		else
-			to_chat(user, SPAN_NOTICE("You dissolve the [fluff_text] in [target]."))
+			to_chat(user, SPAN_NOTICE("You dissolve \the [fluff_text] in [target]."))
 
 	if(!target.is_open_container())
-		to_chat(user, SPAN_WARNING("[target] has a lid on it. You can't drop [fluff_text] in [target] with the lid in the way."))
-		return
-	if(target.reagents?.total_volume <= 0)
-		to_chat(user, SPAN_WARNING("[target] needs to contain some liquid to dissolve [fluff_text] in."))
+		to_chat(user, SPAN_WARNING("\The [target] has a lid on it. You can't drop \the [fluff_text] in [target] with the lid in the way."))
 		return
 
 	var/rgt_list_text = get_reagent_list_text()
 	reagents.trans_to(target, reagents.total_volume)
 
-	user.visible_message(SPAN_WARNING("[user] puts something [fluff_text] in [target]."),
-	SPAN_WARNING("You put [fluff_text] in [target]."), null, 2)
+	user.visible_message(SPAN_WARNING("[user] puts something in [target]."),
+	SPAN_WARNING("You put \the [fluff_text] in [target]."), null, 2)
 
-	log_interact(user, target, "[key_name(user)] dissolved a [fluff_text] with [rgt_list_text] into [src].")
+	log_interact(user, target, "[key_name(user)] dissolved \the [fluff_text] with [rgt_list_text] into [src].")
 	QDEL_IN(src, 5)
 
 	return

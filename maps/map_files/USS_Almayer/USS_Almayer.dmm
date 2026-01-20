@@ -696,7 +696,7 @@
 /obj/structure/machinery/light,
 /obj/structure/machinery/door_control{
 	id = "or3privacyshutter";
-	name = "\improper Window's Privacy Shutters";
+	name = "\improper Privacy Shutters Control";
 	pixel_y = -24;
 	throw_range = 15;
 	req_one_access_txt = "19;20"
@@ -740,7 +740,7 @@
 /obj/structure/machinery/light,
 /obj/structure/machinery/door_control{
 	id = "or4privacyshutter";
-	name = "\improper Window's Privacy Shutters";
+	name = "\improper Privacy Shutters Control";
 	pixel_y = -24;
 	throw_range = 15;
 	req_one_access_txt = "19;20"
@@ -1412,7 +1412,7 @@
 	id_tag = "or03"
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "or3shutter";
+	id = "or3privacyshutter";
 	name = "\improper Privacy Shutters"
 	},
 /turf/open/floor/almayer/test_floor4,
@@ -1432,7 +1432,7 @@
 	id_tag = "or04"
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "or4shutter";
+	id = "or4privacyshutter";
 	name = "\improper Privacy Shutters"
 	},
 /turf/open/floor/almayer/test_floor4,
@@ -3042,7 +3042,7 @@
 	id_tag = "or01"
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "or1shutter";
+	id = "or1privacyshutter";
 	name = "\improper Privacy Shutters"
 	},
 /turf/open/floor/almayer/test_floor4,
@@ -3059,7 +3059,7 @@
 	id_tag = "or02"
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "or2shutter";
+	id = "or2privacyshutter";
 	name = "\improper Privacy Shutters"
 	},
 /turf/open/floor/almayer/test_floor4,
@@ -3569,7 +3569,7 @@
 	},
 /obj/structure/machinery/door_control{
 	id = "or1privacyshutter";
-	name = "\improper Window's Privacy Shutters";
+	name = "\improper Privacy Shutters Control";
 	pixel_y = 23;
 	throw_range = 15;
 	req_one_access_txt = "19;20"
@@ -3639,7 +3639,7 @@
 	},
 /obj/structure/machinery/door_control{
 	id = "or2privacyshutter";
-	name = "\improper Window's Privacy Shutters";
+	name = "\improper Privacy Shutters Control";
 	pixel_y = 23;
 	throw_range = 15;
 	req_one_access_txt = "19;20"
@@ -24139,8 +24139,8 @@
 	pixel_y = 3
 	},
 /obj/structure/machinery/door_control{
-	id = "or2shutter";
-	name = "\improper Door's Privacy Shutters";
+	id = "or2privacyshutter";
+	name = "\improper Privacy Shutters Control";
 	pixel_y = -22;
 	throw_range = 15;
 	pixel_x = 5;
@@ -35943,8 +35943,8 @@
 	dir = 1
 	},
 /obj/structure/machinery/door_control{
-	id = "or1shutter";
-	name = "\improper Door's Privacy Shutters";
+	id = "or1privacyshutter";
+	name = "\improper Privacy Shutters Control";
 	pixel_y = 23;
 	throw_range = 15;
 	req_one_access_txt = "19;20"
@@ -37971,8 +37971,8 @@
 	dir = 1
 	},
 /obj/structure/machinery/door_control{
-	id = "or2shutter";
-	name = "\improper Door's Privacy Shutters";
+	id = "or2privacyshutter";
+	name = "\improper Privacy Shutters Control";
 	pixel_y = 23;
 	throw_range = 15;
 	req_one_access_txt = "19;20"
@@ -41654,8 +41654,8 @@
 	pixel_y = -22
 	},
 /obj/structure/machinery/door_control{
-	id = "or1shutter";
-	name = "\improper Door's Privacy Shutters";
+	id = "or1privacyshutter";
+	name = "\improper Privacy Shutters Control";
 	pixel_y = -22;
 	throw_range = 15;
 	pixel_x = -5;
@@ -53650,8 +53650,8 @@
 	},
 /obj/structure/machinery/light,
 /obj/structure/machinery/door_control{
-	id = "or3shutter";
-	name = "\improper Door's Privacy Shutters";
+	id = "or3privacyshutter";
+	name = "\improper Privacy Shutters Control";
 	pixel_y = -24;
 	throw_range = 15;
 	req_one_access_txt = "19;20"
@@ -57280,8 +57280,8 @@
 	pixel_y = 26
 	},
 /obj/structure/machinery/door_control{
-	id = "or4shutter";
-	name = "\improper Door's Privacy Shutters";
+	id = "or4privacyshutter";
+	name = "\improper Privacy Shutters Control";
 	pixel_y = 26;
 	throw_range = 15;
 	pixel_x = 5;
@@ -78696,8 +78696,8 @@
 "siW" = (
 /obj/structure/machinery/light,
 /obj/structure/machinery/door_control{
-	id = "or4shutter";
-	name = "\improper Door's Privacy Shutters";
+	id = "or4privacyshutter";
+	name = "\improper Privacy Shutters Control";
 	pixel_y = -24;
 	throw_range = 15;
 	req_one_access_txt = "19;20"
@@ -89867,8 +89867,8 @@
 	pixel_y = 26
 	},
 /obj/structure/machinery/door_control{
-	id = "or3shutter";
-	name = "\improper Door's Privacy Shutters";
+	id = "or3privacyshutter";
+	name = "\improper Privacy Shutters Control";
 	pixel_y = 26;
 	throw_range = 15;
 	pixel_x = -5;

@@ -154,7 +154,6 @@
 		to_chat(user, SPAN_WARNING("\The [target] has a lid on it. You can't drop \the [fluff_text] in [target] with the lid in the way."))
 		return
 
-	var/rgt_list_text = get_reagent_list_text()
 	reagents.trans_to(target, reagents.total_volume)
 	user.visible_message(SPAN_NOTICE("[user] drops a [fluff_text] into [target]..."),
 	SPAN_NOTICE("You drop a [fluff_text] into [target]..."),

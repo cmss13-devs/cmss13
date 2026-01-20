@@ -130,7 +130,7 @@
 					to_chat(user, SPAN_WARNING("\The [src] is empty."))
 					return
 
-				if(D.reagents.total_volume >= dispenser.reagents.maximum_volume)
+				if(dispenser.reagents.total_volume >= dispenser.reagents.maximum_volume)
 					to_chat(user, SPAN_WARNING("\The [dispenser] is full."))
 					return
 

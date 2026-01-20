@@ -2485,6 +2485,7 @@
 #include "code\modules\round_recording\round_recorder.dm"
 #include "code\modules\security_levels\keycard_authentication.dm"
 #include "code\modules\security_levels\security_levels.dm"
+#include "code\modules\shuttle\cargo_elevator.dm"
 #include "code\modules\shuttle\computer.dm"
 #include "code\modules\shuttle\docking.dm"
 #include "code\modules\shuttle\dropship.dm"

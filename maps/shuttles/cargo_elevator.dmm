@@ -1,0 +1,43 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"d" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/structure/machinery/computer/cargo_elevator,
+/turf/open/floor/plating/plating_catwalk,
+/area/shuttle/vehicle_elevator)
+"e" = (
+/obj/docking_port/mobile/cargo_elevator,
+/turf/open/floor/almayer/plate,
+/area/shuttle/vehicle_elevator)
+"g" = (
+/turf/open/floor/plating/plating_catwalk,
+/area/shuttle/vehicle_elevator)
+"h" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/shuttle/vehicle_elevator)
+"i" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/shuttle/vehicle_elevator)
+
+(1,1,1) = {"
+g
+d
+h
+"}
+(2,1,1) = {"
+g
+e
+i
+"}
+(3,1,1) = {"
+g
+g
+g
+"}

@@ -78,7 +78,7 @@
 		Moved(oldloc, direct)
 
 	handle_rotation()
-	
+
 
 /// Called when a movable atom has hit an atom via movement
 /atom/movable/proc/Collide(atom/A)

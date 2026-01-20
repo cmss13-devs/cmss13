@@ -281,7 +281,7 @@ const CustomKeybinds = (props: {
   };
 
   const handleAddPicksayOption = () => {
-    if (inputValue.trim() && picksayOptions.length < 50) {
+    if (inputValue.trim() && picksayOptions.length < 30) {
       setPicksayOptions((prev) => [...prev, inputValue.trim()]);
       setInputValue('');
     }
@@ -327,7 +327,7 @@ const CustomKeybinds = (props: {
                     <Input
                       fluid
                       placeholder="Add an option..."
-                      maxLength={1024}
+                      maxLength={256}
                       value={inputValue}
                       onInput={(_, val) => setInputValue(val)}
                       onEnter={() => handleAddPicksayOption()}
@@ -336,7 +336,7 @@ const CustomKeybinds = (props: {
                   <Flex.Item ml={1}>
                     <Button
                       icon="plus"
-                      disabled={picksayOptions.length >= 50}
+                      disabled={picksayOptions.length >= 30}
                       onClick={() => handleAddPicksayOption()}
                     >
                       Add

@@ -248,7 +248,7 @@
 		for(var/reagent_text in reagent_list_text)
 			output_text += "[output_text ? "," : ":" ] [reagent_list_text[reagent_text]+1] Pill[reagent_list_text[reagent_text] > 0 ? "s" : ""] of " + reagent_text
 		user.visible_message(SPAN_NOTICE("[user] finishes emptying \the [pbottle.name] into [src]."), SPAN_NOTICE("You stop emptying \the [pbottle.name] into [src]."))
-		log_interact(user, null, "[key_name(user)] dissolved the contents of \the [pbottle.name] into [src] containing[output_text].")
+		log_interact(user, null, "[key_name(user)] dissolved the contents of \the [pbottle.name] containing [output_text] into [src].")
 		return // No call parent AFTER loop is done. Prevents pill bottles from attempting to gather pills.
 
 	return ..()

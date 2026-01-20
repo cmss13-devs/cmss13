@@ -134,20 +134,32 @@
 /obj/item/reagent_container/pill/afterattack(obj/target, mob/user, proximity)
 	if(!proximity)
 		return
+	var/list/reagent_list_text = list()
+	for(var/obj/item/reagent_container/pill/pill in user.contents)
+		var/temp_reagent_text = pill.get_reagent_list_text()
+		if(temp_reagent_text in reagent_list_text)
+			reagent_list_text[temp_reagent_text]++
+		else
+			reagent_list_text += temp_reagent_text
+	var/output_text
+	for(var/reagent_text in reagent_list_text)
+		output_text += "[output_text ? "," : ":" ] [reagent_list_text[reagent_text]+1] Pill[reagent_list_text[reagent_text] > 0 ? "s" : ""] of " + reagent_text
 
 	if(target.reagents)
 		if(target.reagents?.total_volume <= 0)
-			to_chat(user, SPAN_WARNING("[target] needs to contain some liquid to dissolve \the [fluff_text] in."))
+			to_chat(user, SPAN_WARNING("[target] needs to contain some liquid to dissolve \a [fluff_text] in."))
 			return
 		var/amount = reagents.total_volume + target.reagents.total_volume
 		var/loss = amount - target.reagents.maximum_volume
 		if(amount > target.reagents.maximum_volume && target.reagents.total_volume != target.reagents.maximum_volume)
 			to_chat(user, SPAN_WARNING("You dissolve \the [fluff_text], but [target] overflows and takes [loss]u of your pill with it."))
+			log_interact(user, null, "[key_name(user)] Attempted to dissolve \the [fluff_text] into [src] containing[output_text] but it overflowed.")
 		if(target.reagents.total_volume >= target.reagents.maximum_volume)
 			to_chat(user, SPAN_WARNING("You cannot dissolve anything else in [target] without it overflowing."))
 			return
 		else
 			to_chat(user, SPAN_NOTICE("You dissolve \the [fluff_text] in [target]."))
+			log_interact(user, null, "[key_name(user)] dissolved \the [fluff_text] containing [output_text] into [src].")
 
 	if(!target.is_open_container())
 		to_chat(user, SPAN_WARNING("\The [target] has a lid on it. You can't drop \the [fluff_text] in [target] with the lid in the way."))

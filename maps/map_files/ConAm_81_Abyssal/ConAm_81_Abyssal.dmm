@@ -25947,11 +25947,8 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/obj/item/device/radio/intercom{
-	freerange = 1;
-	pixel_x = -30
-	},
 /obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/machinery/power/apc/power/west,
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/west,
 /area/abyssal/interior/solar_control_north_west)
 "bjY" = (
@@ -26010,6 +26007,10 @@
 	name = "Main Power Grid Monitoring"
 	},
 /obj/effect/decal/hybrisa/dirt_2,
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	pixel_x = 30
+	},
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/north,
 /area/abyssal/interior/solar_control_north_west)
 "bkc" = (

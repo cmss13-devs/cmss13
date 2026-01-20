@@ -20830,7 +20830,7 @@
 /area/abyssal/interior/corridor_west)
 "aYG" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/closed/wall/abyssal/standard,
+/turf/closed/wall/abyssal/standard/unmeltable,
 /area/abyssal/interior/engineering)
 "aYH" = (
 /obj/structure/disposalpipe/segment,
@@ -45123,7 +45123,7 @@ aEI
 aEv
 acN
 aDC
-act
+bho
 aDj
 aNN
 aCJ
@@ -45275,7 +45275,7 @@ aEL
 aEw
 aAx
 aOU
-act
+bho
 aCa
 aCd
 aCa
@@ -45427,7 +45427,7 @@ aEM
 adV
 aEb
 aDE
-act
+bho
 aDk
 aCV
 aCd
@@ -45579,7 +45579,7 @@ aEx
 aEx
 aEc
 act
-act
+bho
 aCa
 aNO
 aCa
@@ -45731,12 +45731,12 @@ aNM
 aNM
 beI
 aDF
-act
-act
-act
-act
-act
-act
+bho
+bho
+bho
+bho
+bho
+bho
 ady
 olJ
 act
@@ -45894,8 +45894,8 @@ aYE
 act
 act
 act
-act
-acs
+bho
+bho
 aaX
 aaX
 abG
@@ -46047,7 +46047,7 @@ bkg
 aNM
 bia
 aYG
-act
+bho
 aqb
 aAa
 bhN
@@ -46484,8 +46484,8 @@ agO
 agO
 aGI
 aCU
-abL
-abL
+bkj
+bkj
 bit
 beH
 aXY
@@ -46636,8 +46636,8 @@ agO
 agO
 bgr
 bgb
-abL
-abL
+bkj
+bkj
 bkq
 afw
 bko
@@ -47422,8 +47422,8 @@ abH
 uYB
 azY
 aaX
-aaX
-aaX
+aan
+aan
 aIA
 aIu
 aHU
@@ -47574,8 +47574,8 @@ ayB
 aYl
 atv
 bhx
-aaB
-aaB
+aan
+aan
 aaB
 aaI
 aaI
@@ -47705,9 +47705,9 @@ bkj
 bki
 bkj
 xFp
-abL
-abL
-abL
+bkj
+bkj
+bkj
 aOt
 aNZ
 abL
@@ -47857,9 +47857,9 @@ aNM
 biu
 abL
 aPt
-abL
-abL
-abL
+bkj
+bkj
+bkj
 abL
 abL
 abL

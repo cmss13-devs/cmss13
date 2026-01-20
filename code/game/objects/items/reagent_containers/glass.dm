@@ -211,7 +211,7 @@
 			if(reagents?.total_volume <= 0)
 				to_chat(user, SPAN_WARNING("[src] needs to contain some liquid to dissolve the pills in."))
 				return
-			if(reagents.total_volume == reagents.maximum_volume)
+			if(reagents.total_volume >= reagents.maximum_volume)
 				to_chat(user, SPAN_WARNING("[src] is full. You cannot dissolve any more pills."))
 				return
 			if(length(pbottle.contents) <= 0)

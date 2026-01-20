@@ -135,35 +135,28 @@
 	if(!proximity)
 		return
 	var/rgt_list_text = get_reagent_list_text()
-
 	if(target.reagents)
-		if(!target.is_open_container())
-			to_chat(user, SPAN_WARNING("\The [target] has a lid on it. You can't drop \the [fluff_text] in [target] with the lid in the way."))
-			return
-
 		if(target.reagents?.total_volume <= 0)
 			to_chat(user, SPAN_WARNING("\The [target] needs to contain some liquid to dissolve pills in it."))
-			return
-
-		var/amount = reagents.total_volume + target.reagents.total_volume
-		var/loss = amount - target.reagents.maximum_volume
-		var/cap = reagents.total_volume - loss
-		if(amount > target.reagents.maximum_volume && target.reagents.total_volume != target.reagents.maximum_volume)
-			to_chat(user, SPAN_WARNING("You dissolve \the [fluff_text], but [target] overflows and takes [loss]u of your pill with it."))
-			reagents.trans_to(target, cap)
-			log_interact(user, null, "[key_name(user)] attempted to dissolve \the [fluff_text] containing [rgt_list_text] into [src] but it overflowed.")
 			return
 		if(target.reagents.total_volume >= target.reagents.maximum_volume)
 			to_chat(user, SPAN_WARNING("\The [target] is full. You cannot dissolve anything else without it overflowing."))
 			return
-		else
-			reagents.trans_to(target, reagents.total_volume)
-			user.visible_message(SPAN_NOTICE("[user] drops a [fluff_text] into [target]..."),
-			SPAN_NOTICE("You drop a [fluff_text] into [target]..."),
-			SPAN_NOTICE("You hear somebody drop a pill into some liquid."), 2)
+		if(!target.is_open_container())
+			to_chat(user, SPAN_WARNING("\The [target] has a lid on it. You can't drop \the [fluff_text] in [target] with the lid in the way."))
+			return
 
-			log_interact(user, target, "[key_name(user)] dissolved \the [fluff_text] with [rgt_list_text] into [target].")
-			QDEL_IN(src, 5)
+		var/amount = reagents.total_volume + target.reagents.total_volume
+		var/loss = amount - target.reagents.maximum_volume
+
+		reagents.trans_to(target, reagents.total_volume)
+		user.visible_message(SPAN_NOTICE("[user] drops a [fluff_text] into [target]..."),
+		SPAN_NOTICE("You drop a [fluff_text] into [target][loss > 0 ? " but [target] overflows and takes [loss]u of your pill with it." : "..."]"),
+		SPAN_NOTICE("You hear somebody drop a pill into some liquid."), 2)
+
+		log_interact(user, null, "[key_name(user)] dissolved \the [fluff_text] with [rgt_list_text] into [target][loss > 0 ? "but it overflowed. Losing:[loss]u." : "."]")
+		QDEL_IN(src, 5)
+
 
 ////////////////////////////////////////////////////////////////////////////////
 /// Pills. END

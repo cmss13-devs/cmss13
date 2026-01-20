@@ -8892,9 +8892,6 @@
 /turf/closed/wall/almayer/reinforced,
 /area/almayer/command/cichallway)
 "awA" = (
-/obj/structure/prop/almayer/computers/sensor_computer3{
-	name = "weapon targetting computer"
-	},
 /obj/structure/sign/safety/terminal{
 	pixel_x = 8;
 	pixel_y = 25

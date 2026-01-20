@@ -1,9 +1,12 @@
+/// range that we can remove labels when we click near them with the removal tool
+#define LABEL_REMOVE_RANGE 20
+/// How often a tacmap can be submitted
 #define CANVAS_COOLDOWN_TIME 3 MINUTES
+/// List of minimap_flag=world.time for a faction wide cooldown on tacmap submissions
+GLOBAL_VAR_INIT(faction_tacmap_cooldown, alist()) // TODO: Change to GLOBAL_ALIST_EMPTY
 ///A player needs to be unbanned from ALL these roles in order to be able to use the minimap drawing tool
 GLOBAL_LIST_INIT(roles_allowed_minimap_draw, list(JOB_SQUAD_LEADER, JOB_SQUAD_TEAM_LEADER, JOB_SO, JOB_XO, JOB_CO))
 GLOBAL_PROTECT(roles_allowed_minimap_draw)
-/// range that we can remove labels when we click near them with the removal tool
-#define LABEL_REMOVE_RANGE 20
 
 /**
  *  # Minimaps subsystem
@@ -200,7 +203,7 @@ SUBSYSTEM_DEF(minimaps)
  * Holder datum for a zlevels data, concerning the overlays and the drawn level itself
  * The individual image trackers have a raw and a normal list
  * raw lists just store the images, while the normal ones are assoc list of [tracked_atom] = image
- * the raw lists are to speed up the Fire() of the subsystem so we dont have to filter through
+ * the raw lists are to speed up the Fire() of the subsystem so we don't have to filter through
  */
 /datum/hud_displays
 	///Actual icon of the drawn zlevel with all of it's atoms
@@ -925,7 +928,7 @@ SUBSYSTEM_DEF(minimaps)
 
 /atom/movable/screen/exit_map
 	name = "Close Minimap"
-	desc = "Close the minimap"
+	desc = "Close the minimap."
 	icon = 'icons/ui_icons/minimap_buttons.dmi'
 	icon_state = "close"
 	screen_loc = "RIGHT,TOP"
@@ -1306,7 +1309,7 @@ SUBSYSTEM_DEF(minimaps)
 ///async mousedown for the actual label placement handling
 /atom/movable/screen/minimap_tool/label/proc/async_mousedown(mob/source, atom/object, location, control, params)
 	// this is really [/atom/movable/screen/minimap/proc/get_coords_from_click] copypaste since we
-	// want to also cancel the click if they click src and I cant be bothered to make it even more generic rn
+	// want to also cancel the click if they click src and I can't be bothered to make it even more generic rn
 	var/atom/movable/screen/plane_master/minimap/plane_master = source.hud_used.plane_masters["[TACMAP_PLANE]"]
 
 	if(!plane_master)
@@ -1361,20 +1364,24 @@ SUBSYSTEM_DEF(minimaps)
 
 /atom/movable/screen/minimap_tool/update
 	icon_state = "update"
-	desc = "Send a tacmap update"
+	desc = "Send a tacmap update."
 	screen_loc = "15,7"
-	COOLDOWN_DECLARE(update_cooldown)
 
 /atom/movable/screen/minimap_tool/update/proc/cooldown_finished()
 	icon_state = initial(icon_state)
 
 /atom/movable/screen/minimap_tool/update/clicked(location, list/modifiers)
-	if(!COOLDOWN_FINISHED(src, update_cooldown))
-		to_chat(location, SPAN_WARNING("Wait another [COOLDOWN_SECONDSLEFT(src, update_cooldown)] seconds before sending another update."))
+	var/time_left = get_cooldown_for_minimap_flag(minimap_flag) - world.time
+
+	if(time_left > 0)
+		to_chat(location, SPAN_WARNING("Wait another [DisplayTimeText(time_left)] before sending another update."))
+		if(icon_state != "update_cooldown")
+			icon_state = "update_cooldown"
+			addtimer(CALLBACK(src, PROC_REF(cooldown_finished)), time_left, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 		return
 
-	COOLDOWN_START(src, update_cooldown, CANVAS_COOLDOWN_TIME)
-	addtimer(CALLBACK(src, PROC_REF(cooldown_finished)), CANVAS_COOLDOWN_TIME)
+	set_cooldown_for_minimap_flag(minimap_flag, CANVAS_COOLDOWN_TIME)
+	addtimer(CALLBACK(src, PROC_REF(cooldown_finished)), CANVAS_COOLDOWN_TIME, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 	icon_state = "update_cooldown"
 
 	var/mob/user = location
@@ -1505,7 +1512,7 @@ SUBSYSTEM_DEF(minimaps)
 
 /atom/movable/screen/minimap_tool/up
 	icon_state = "up"
-	desc = "Move up a level"
+	desc = "Move up a level."
 	screen_loc = "15,6"
 
 /atom/movable/screen/minimap_tool/up/clicked(mob/user, list/modifiers, atom/location, list/params)
@@ -1516,7 +1523,7 @@ SUBSYSTEM_DEF(minimaps)
 
 /atom/movable/screen/minimap_tool/down
 	icon_state = "down"
-	desc = "Move down a level"
+	desc = "Move down a level."
 	screen_loc = "15,5"
 
 /atom/movable/screen/minimap_tool/down/clicked(mob/user, list/modifiers, atom/location, list/params)
@@ -1529,7 +1536,7 @@ SUBSYSTEM_DEF(minimaps)
 
 /atom/movable/screen/minimap_tool/popout
 	icon_state = "popout"
-	desc = "Pop the minimap to a window"
+	desc = "Pop the minimap to a window."
 	screen_loc = "15,4"
 
 /atom/movable/screen/minimap_tool/popout/clicked(mob/user, list/modifiers, atom/location, list/params)
@@ -1601,6 +1608,24 @@ SUBSYSTEM_DEF(minimaps)
 			return MINIMAP_FLAG_XENO_FORSAKEN
 		if(XENO_HIVE_YAUTJA)
 			return MINIMAP_FLAG_YAUTJA
+		if(XENO_HIVE_HUNTED)
+			return MINIMAP_FLAG_XENO_HUNTED
 		if(XENO_HIVE_RENEGADE)
 			return MINIMAP_FLAG_XENO_RENEGADE
 	return 0
+
+/// Returns the highest world.time for all minimap_flags passed
+/proc/get_cooldown_for_minimap_flag(minimap_flag)
+	var/cooldown = 0
+	for(var/flag in bitfield2list(minimap_flag))
+		cooldown = max(cooldown, GLOB.faction_tacmap_cooldown[flag])
+	return cooldown
+
+/// Sets the cooldown for all minimap_flags passed
+/proc/set_cooldown_for_minimap_flag(minimap_flag, duration)
+	duration += world.time
+	for(var/flag in bitfield2list(minimap_flag))
+		GLOB.faction_tacmap_cooldown[flag] = duration
+
+#undef CANVAS_COOLDOWN_TIME
+#undef LABEL_REMOVE_RANGE

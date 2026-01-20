@@ -90,7 +90,7 @@
 		return XENO_NO_DELAY_ACTION
 
 	if(fixed)
-		to_chat(xeno, SPAN_XENOWARNING("The [src]'s supports are bolted and welded into the floor. It looks like it's going to be staying there."))
+		to_chat(xeno, SPAN_XENOWARNING("[src]'s supports are bolted and welded into the floor. It looks like it's going to be staying there."))
 		return XENO_NO_DELAY_ACTION
 
 	if(firing)
@@ -100,19 +100,31 @@
 		playsound(xeno, "alien_help", 25, 1)
 		xeno.apply_damage(10, BURN)
 		xeno.visible_message(SPAN_DANGER("[xeno] tried to knock the steaming hot [src] over, but burned itself and pulled away!"),
-		SPAN_XENOWARNING("The [src] is burning hot! Wait a few seconds."))
+		SPAN_XENOWARNING("[src] is burning hot! Wait a few seconds."))
 		return XENO_ATTACK_ACTION
 
-	xeno.visible_message(SPAN_DANGER("[xeno] lashes at the [src] and knocks it over!"),
-	SPAN_DANGER("You knock the [src] over!"))
+	xeno.visible_message(SPAN_DANGER("[xeno] lashes at [src] and knocks it over!"),
+	SPAN_DANGER("You knock [src] over!"))
 	xeno.animation_attack_on(src)
 	xeno.flick_attack_overlay(src, "slash")
 	playsound(loc, 'sound/effects/metalhit.ogg', 25)
-	var/obj/item/mortar_kit/MK = new /obj/item/mortar_kit(loc)
-	MK.name = name
+	var/obj/item/mortar_kit/kit = new /obj/item/mortar_kit(loc)
+	kit.name = name
 	qdel(src)
 
 	return XENO_ATTACK_ACTION
+
+/obj/structure/mortar/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
+	if(unslashable || fixed || firing)
+		return TAILSTAB_COOLDOWN_NONE
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	xeno.visible_message(SPAN_DANGER("[xeno] smashes [src] with its tail knocking it over!"),
+	SPAN_DANGER("We smash [src] with our tail knocking it over!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	var/obj/item/mortar_kit/kit = new /obj/item/mortar_kit(loc)
+	kit.name = name
+	xeno.tail_stab_animation(src, blunt_stab)
+	qdel(src)
+	return TAILSTAB_COOLDOWN_NORMAL
 
 /obj/structure/mortar/attack_hand(mob/user)
 	if(isyautja(user))
@@ -153,13 +165,13 @@
 /obj/structure/mortar/proc/toggle_lase_mode(mob/user)
 	lase_mode = !lase_mode
 	if(lase_mode)
-		to_chat(user, SPAN_NOTICE("You toggle the [src] to laser targeting mode."))
+		to_chat(user, SPAN_NOTICE("You toggle [src] to laser targeting mode."))
 		reset_dials()
 		if(linked_designator)
 			RegisterSignal(linked_designator, COMSIG_DESIGNATOR_LASE, PROC_REF(retrieve_laser_target))
 			RegisterSignal(linked_designator, COMSIG_DESIGNATOR_LASE_OFF, PROC_REF(lost_laser_target))
 	else
-		to_chat(user, SPAN_NOTICE("You toggle the [src] to coordinate targeting mode."))
+		to_chat(user, SPAN_NOTICE("You toggle [src] to coordinate targeting mode."))
 		if(aimed || aiming)
 			lost_laser_target()
 		if(linked_designator)
@@ -237,7 +249,7 @@
 
 /obj/structure/mortar/proc/handle_target(mob/user, temp_targ_x = 0, temp_targ_y = 0, temp_targ_z = 0, manual = FALSE)
 	if(lase_mode)
-		user.visible_message(SPAN_WARNING("The [src] is set to laser targeting mode, switch to coordinate targeting in order to dial coordinates!"))
+		user.visible_message(SPAN_WARNING("[src] is set to laser targeting mode, switch to coordinate targeting in order to dial coordinates!"))
 		return
 	if(manual)
 		temp_targ_x = tgui_input_real_number(user, "Input the longitude of the target.")
@@ -276,7 +288,7 @@
 	SIGNAL_HANDLER
 	if(!lase_mode)
 		return
-	visible_message(SPAN_NOTICE("[icon2html(src, viewers(src))] The [src] has detected a target and beings calibrating..."))
+	visible_message(SPAN_NOTICE("[icon2html(src, viewers(src))] The [strip_improper(name)] has detected a target and begins calibrating..."))
 	aiming = TRUE
 	aimed = FALSE
 	playsound(loc, "sound/machines/scanning.ogg", 25, 1)
@@ -288,7 +300,7 @@
 	SIGNAL_HANDLER
 	if(!lase_mode)
 		return
-	visible_message(SPAN_NOTICE("[icon2html(src, viewers(src))] The [src] has lost the laser target and returns to it's normal position."))
+	visible_message(SPAN_NOTICE("[icon2html(src, viewers(src))] The [strip_improper(name)] has lost the laser target and returns to it's normal position."))
 	aiming = FALSE
 	aimed = FALSE
 	playsound(loc, "sound/machines/scanning.ogg", 25, 1)
@@ -303,13 +315,13 @@
 		aiming = FALSE
 		aimed = FALSE
 		return
-	visible_message(SPAN_NOTICE("[icon2html(src, viewers(src))] The [src] is ready to fire!"))
+	visible_message(SPAN_NOTICE("[icon2html(src, viewers(src))] The [strip_improper(name)] is ready to fire!"))
 	aiming = FALSE
 	aimed = TRUE
 
 /obj/structure/mortar/proc/handle_dial(mob/user, temp_dial_x = 0, temp_dial_y = 0, manual = FALSE)
 	if(lase_mode)
-		user.visible_message(SPAN_WARNING("The [src] is set to laser targeting mode, switch to coordinate targeting in order to dial coordinates!"))
+		user.visible_message(SPAN_WARNING("[src] is set to laser targeting mode, switch to coordinate targeting in order to dial coordinates!"))
 		return
 	if(manual)
 		temp_dial_x = tgui_input_number(user, "Set longitude adjustement from -10 to 10.", "Longitude", 0, 10, -10)
@@ -341,15 +353,15 @@
 /obj/structure/mortar/attackby(obj/item/item, mob/user)
 	if(istype(item, /obj/item/device/binoculars/range/designator))
 		if(!skillcheck(user, SKILL_JTAC, SKILL_JTAC_TRAINED))
-			to_chat(user, SPAN_WARNING("You don't know how to link your laser designator to the [src]."))
+			to_chat(user, SPAN_WARNING("You don't know how to link your laser designator to [src]."))
 			return
 		if(!lase_mode)
-			to_chat(user, SPAN_WARNING("You need to switch the [src] to laser targeting before linking your laser designator!"))
+			to_chat(user, SPAN_WARNING("You need to switch [src] to laser targeting before linking your laser designator!"))
 			return
 		if(aimed)
-			to_chat(user, SPAN_WARNING("The [src] is currently targeting something!"))
+			to_chat(user, SPAN_WARNING("[src] is currently targeting something!"))
 			return
-		to_chat(user, SPAN_NOTICE("You begin linking your laser designator to the [src].."))
+		to_chat(user, SPAN_NOTICE("You begin linking your laser designator to [src]..."))
 		if(do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 			if(linked_designator) // Unregister the previous laser designator signal, if switching linked laser designator
 				UnregisterSignal(linked_designator, COMSIG_DESIGNATOR_LASE)
@@ -366,13 +378,13 @@
 		var/turf/target_turf = locate(targ_x + dial_x + offset_x, targ_y + dial_y + offset_y, targ_z)
 		if(lase_mode)
 			if(!linked_designator)
-				to_chat(user, SPAN_WARNING("The [src] is in laser targeting mode, but there is no laser designator linked!"))
+				to_chat(user, SPAN_WARNING("[src] is in laser targeting mode, but there is no laser designator linked!"))
 				return
 			if(!aimed)
 				to_chat(user, SPAN_WARNING("Cannot find valid laser target!"))
 				return
 			if(aiming)
-				to_chat(user, SPAN_WARNING("The [src] is still calibrating!"))
+				to_chat(user, SPAN_WARNING("[src] is still calibrating!"))
 			else
 				target_turf = get_turf(linked_designator.laser)
 		var/area/target_area = get_area(target_turf)
@@ -533,25 +545,25 @@
 	var/attempt_info
 	var/can_fire = TRUE
 	if(ship_side)
-		attempt_info = SPAN_WARNING(("[user ? "You" : "The [src]"] cannot aim the mortar while on a ship."))
+		attempt_info = SPAN_WARNING(("[user ? "You" : "[src]"] cannot aim the mortar while on a ship."))
 		can_fire = FALSE
 	if(test_dial_x + test_targ_x > world.maxx || test_dial_x + test_targ_x < 0)
-		attempt_info = SPAN_WARNING("[user ? "You" : "The [src]"] cannot [dialing ? "dial to" : "aim at"] this [lase_mode ? "target" : "coordinate"], it is outside of the area of operations.")
+		attempt_info = SPAN_WARNING("[user ? "You" : "[src]"] cannot [dialing ? "dial to" : "aim at"] this [lase_mode ? "target" : "coordinate"], it is outside of the area of operations.")
 		can_fire = FALSE
 	if(test_dial_x < -10 || test_dial_x > 10 || test_dial_y < -10 || test_dial_y > 10)
-		attempt_info = SPAN_WARNING("[user ? "You" : "The [src]"] cannot [dialing ? "dial to" : "aim at"] this [lase_mode ? "target" : "coordinate"], it is too far away from the original target.")
+		attempt_info = SPAN_WARNING("[user ? "You" : "[src]"] cannot [dialing ? "dial to" : "aim at"] this [lase_mode ? "target" : "coordinate"], it is too far away from the original target.")
 		can_fire = FALSE
 	if(test_dial_y + test_targ_y > world.maxy || test_dial_y + test_targ_y < 0)
-		attempt_info = SPAN_WARNING("[user ? "You" : "The [src]"] cannot [dialing ? "dial to" : "aim at"] this [lase_mode ? "target" : "coordinate"], it is outside of the area of operations.")
+		attempt_info = SPAN_WARNING("[user ? "You" : "[src]"] cannot [dialing ? "dial to" : "aim at"] this [lase_mode ? "target" : "coordinate"], it is outside of the area of operations.")
 		can_fire = FALSE
 	if(get_dist(src, locate(test_targ_x + test_dial_x, test_targ_y + test_dial_y, z)) < min_range)
-		attempt_info = SPAN_WARNING("[user ? "You" : "The [src]"] cannot [dialing ? "dial to" : "aim at"] this [lase_mode ? "target" : "coordinate"], it is too close to [user ? "your" : "the"] mortar.")
+		attempt_info = SPAN_WARNING("[user ? "You" : "[src]"] cannot [dialing ? "dial to" : "aim at"] this [lase_mode ? "target" : "coordinate"], it is too close to [user ? "your" : "the"] mortar.")
 		can_fire = FALSE
 	if(!is_ground_level(test_targ_z))
-		attempt_info = SPAN_WARNING("[user ? "You" : "The [src]"] cannot [dialing ? "dial to" : "aim at"] this [lase_mode ? "target" : "coordinate"], it is outside of the area of operations.")
+		attempt_info = SPAN_WARNING("[user ? "You" : "[src]"] cannot [dialing ? "dial to" : "aim at"] this [lase_mode ? "target" : "coordinate"], it is outside of the area of operations.")
 		can_fire = FALSE
 	if(get_dist(src, locate(test_targ_x + test_dial_x, test_targ_y + test_dial_y, z)) > max_range)
-		attempt_info = SPAN_WARNING("[user ? "You" : "The [src]"] cannot [dialing ? "dial to" : "aim at"] this [lase_mode ? "target" : "coordinate"], it is too far from [user ? "your" : "the"] mortar.")
+		attempt_info = SPAN_WARNING("[user ? "You" : "[src]"] cannot [dialing ? "dial to" : "aim at"] this [lase_mode ? "target" : "coordinate"], it is too far from [user ? "your" : "the"] mortar.")
 		can_fire = FALSE
 	if(busy)
 		attempt_info = SPAN_WARNING("Someone else is currently using this mortar.")
@@ -576,7 +588,7 @@
 //The portable mortar item
 /obj/item/mortar_kit
 	name = "\improper M402 mortar portable kit"
-	desc = "A manual, crew-operated mortar system intended to rain down 80mm goodness on anything it's aimed at. Needs to be set down first"
+	desc = "A manual, crew-operated mortar system intended to rain down 80mm goodness on anything it's aimed at. Needs to be set down first."
 	icon = 'icons/obj/structures/mortar.dmi'
 	icon_state = "mortar_m402_carry"
 	item_state = "mortar_m402_carry"

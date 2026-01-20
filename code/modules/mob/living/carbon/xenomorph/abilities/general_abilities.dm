@@ -89,6 +89,11 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
 
+	/// In addition to the cooldown on building, you also get an increased cooldown after canceling that building.
+	var/xeno_cooldown_interrupt_modifier = 3
+	/// Something went wrong, for example, you can't build here
+	var/xeno_cooldown_fail = 1
+	/// Placement time increase modifier
 	var/build_speed_mod = 1
 
 	plasma_cost = 1
@@ -400,7 +405,7 @@
 
 /datum/action/xeno_action/onclick/xenohide/can_use_action()
 	var/mob/living/carbon/xenomorph/xeno = owner
-	if(xeno && !xeno.buckled && !xeno.is_mob_incapacitated())
+	if(xeno && !xeno.buckled && !xeno.is_mob_incapacitated() && !LAZYLEN(xeno.buckled_mobs))
 		if(!(SEND_SIGNAL(xeno, COMSIG_LIVING_SHIMMY_LAYER) & COMSIG_LIVING_SHIMMY_LAYER_CANCEL))
 			return TRUE
 

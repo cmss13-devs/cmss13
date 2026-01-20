@@ -56,7 +56,7 @@
 
 /obj/item/clothing/suit/storage/synthbio
 	name = "bio suit"
-	desc = "Synthetic compliant bio-hazard suit. Intended to allow a synthetic to offer the illusion of infection control to humans. Has had most of the internal protective lining removed, allowing it to hold equipment and be lighter to move in."
+	desc = "Synthetic compliant biohazard suit. Intended to allow a synthetic to offer the illusion of infection control to humans. Has had most of the internal protective lining removed, allowing it to hold equipment and be lighter to move in."
 	icon_state = "bio_general"
 	item_state = "bio_suit"
 	icon = 'icons/obj/items/clothing/suits/hazard.dmi'

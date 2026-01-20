@@ -164,7 +164,7 @@ const FireTeam = (props: { readonly ft: string }) => {
                   <Table.Cell className="RoleCell">Role</Table.Cell>
                   <Table.Cell className="RankCell">Rank</Table.Cell>
                   <Table.Cell className="MemberCell">Member</Table.Cell>
-                  {data.is_lead === 'sl' && (
+                  {data.is_lead !== 0 && (
                     <Table.Cell className="ActionCell">
                       {props.ft === 'Unassigned' ? 'Assign FT' : 'Actions'}
                     </Table.Cell>
@@ -233,30 +233,46 @@ const FireTeamMember = (props: {
       <Table.Cell>{props.member.paygrade}</Table.Cell>
       <Table.Cell>{props.member.name}</Table.Cell>
 
-      {data.is_lead === 'sl' && (
+      {data.is_lead !== 0 && (
         <Table.Cell>
           <Stack fill justify="center">
             {props.team === 'Unassigned' && (
               <>
-                <Stack.Item>
-                  <Button onClick={() => act('assign_ft', assignFT1)}>1</Button>
-                </Stack.Item>
-                <Stack.Item>
-                  <Button onClick={() => act('assign_ft', assignFT2)}>2</Button>
-                </Stack.Item>
-                <Stack.Item>
-                  <Button onClick={() => act('assign_ft', assignFT3)}>3</Button>
-                </Stack.Item>
+                {(data.is_lead === 'sl' || data.is_lead === 'FT1') && (
+                  <Stack.Item>
+                    <Button onClick={() => act('assign_ft', assignFT1)}>
+                      1
+                    </Button>
+                  </Stack.Item>
+                )}
+                {(data.is_lead === 'sl' || data.is_lead === 'FT2') && (
+                  <Stack.Item>
+                    <Button onClick={() => act('assign_ft', assignFT2)}>
+                      2
+                    </Button>
+                  </Stack.Item>
+                )}
+                {(data.is_lead === 'sl' || data.is_lead === 'FT3') && (
+                  <Stack.Item>
+                    <Button onClick={() => act('assign_ft', assignFT3)}>
+                      3
+                    </Button>
+                  </Stack.Item>
+                )}
               </>
             )}
             {props.team !== 'Unassigned' && (
               <>
-                <Stack.Item>
-                  <Button icon="chevron-up" onClick={promote} />
-                </Stack.Item>
-                <Stack.Item>
-                  <Button icon="xmark" onClick={unassign} />
-                </Stack.Item>
+                {data.is_lead === 'sl' && (
+                  <Stack.Item>
+                    <Button icon="chevron-up" onClick={promote} />
+                  </Stack.Item>
+                )}
+                {(data.is_lead === 'sl' || data.is_lead === props.team) && (
+                  <Stack.Item>
+                    <Button icon="xmark" onClick={unassign} />
+                  </Stack.Item>
+                )}
               </>
             )}
           </Stack>

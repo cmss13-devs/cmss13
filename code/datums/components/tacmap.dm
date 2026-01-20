@@ -94,7 +94,7 @@
 	user.client.remove_from_screen(close_button)
 	user.client.mouse_pointer_icon = null
 	user.client.active_draw_tool = null
-	map.active_draw_tool = null
+	map?.active_draw_tool = null
 	winset(user, "drawingtools", "reset=true")
 	user.client.using_main_tacmap = FALSE
 

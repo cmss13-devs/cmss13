@@ -1,0 +1,4 @@
+author: "FebrezeNinja"
+delete-after: True
+changes:
+  - qol: "ChemMaster toggle to allow pill bottle auto-selection"

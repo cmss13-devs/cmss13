@@ -474,38 +474,32 @@
 	if(!xeno.caste)
 		return
 
-	if(!(xeno.caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE))
-		RegisterSignal(xeno, COMSIG_LIVING_PREIGNITION, PROC_REF(fire_immune))
+	var/valid_immunity = xeno.fire_immunity
+	if(xeno.fire_immunity & FIRE_IMMUNITY_XENO_FRENZY)
+		valid_immunity -= FIRE_IMMUNITY_XENO_FRENZY
 
-	if(xeno.caste.fire_immunity == FIRE_IMMUNITY_NONE)
-		RegisterSignal(xeno, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED), PROC_REF(flamer_crossed_immune))
+	if((valid_immunity & FIRE_IMMUNITY_COMPLETE)) // Already completely fire immune, return
+		return
 
+
+	switch(valid_immunity)
+		if(FIRE_IMMUNITY_NONE) // No immunities whatsoever, make immune to ignition but not fire damage
+			RegisterSignal(xeno, COMSIG_LIVING_PREIGNITION, TYPE_PROC_REF(/mob/living/carbon/xenomorph, preignition_no_ignition))
+			RegisterSignal(xeno, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED), TYPE_PROC_REF(/mob/living/carbon/xenomorph, flamer_cross_no_ignition))
+
+		if(FIRE_IMMUNITY_NO_DAMAGE) // Immune to damage but not ignition, make them immune to ignition
+			RegisterSignal(xeno, COMSIG_LIVING_PREIGNITION, TYPE_PROC_REF(/mob/living/carbon/xenomorph, preignition_no_ignition))
+			RegisterSignal(xeno, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED), TYPE_PROC_REF(/mob/living/carbon/xenomorph, flamer_cross_no_ignition))
+
+		if(FIRE_IMMUNITY_NO_IGNITE) // Immune to ignition but not damage, make them immune to damage
+			RegisterSignal(xeno, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED), TYPE_PROC_REF(/mob/living/carbon/xenomorph, flamer_cross_no_damage))
+
+		if(FIRE_IMMUNITY_BURROWER) // Burrower, get same immunities as FIRE_IMMUNITY_NONE
+			RegisterSignal(xeno, COMSIG_LIVING_PREIGNITION, TYPE_PROC_REF(/mob/living/carbon/xenomorph, preignition_no_ignition))
+			RegisterSignal(xeno, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED), TYPE_PROC_REF(/mob/living/carbon/xenomorph, flamer_cross_no_ignition))
 
 /datum/hivebuff/fire/remove_buff_effects(mob/living/carbon/xenomorph/xeno)
-	if(!(xeno.caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE))
-		UnregisterSignal(xeno, COMSIG_LIVING_PREIGNITION)
-	if(xeno.caste.fire_immunity == FIRE_IMMUNITY_NONE)
-		UnregisterSignal(xeno, list(
-				COMSIG_LIVING_FLAMER_CROSSED,
-				COMSIG_LIVING_FLAMER_FLAMED
-			))
-
-/datum/hivebuff/fire/proc/flamer_crossed_immune(mob/living/living, datum/reagent/reagent)
-	SIGNAL_HANDLER
-
-	if(reagent.fire_penetrating)
-		return
-
-	. |= COMPONENT_NO_IGNITE
-
-
-/datum/hivebuff/fire/proc/fire_immune(mob/living/living)
-	SIGNAL_HANDLER
-
-	if(living.fire_reagent?.fire_penetrating && !HAS_TRAIT(living, TRAIT_ABILITY_BURROWED))
-		return
-
-	return COMPONENT_CANCEL_IGNITION
+	xeno.refresh_fire_immunity() // Returns all affected Xenos back to whatever fire immunity is logged on the mob
 
 /datum/hivebuff/adaptability
 	name = "Boon of Adaptability"
@@ -531,7 +525,7 @@
 
 /datum/hivebuff/attack
 	name = "Boon of Aggression"
-	desc = "Increases all xenomorph damage by 5 for 5 minutes"
+	desc = "Increases all xenomorph damage by 5 for 5 minutes."
 	tier = HIVEBUFF_TIER_MINOR
 
 	engage_flavourmessage = "The Queen has imbued us with sharp claws."
@@ -549,7 +543,7 @@
 
 /datum/hivebuff/attack/major
 	name = "Major Boon of Aggression"
-	desc = "Increases all xenomorph damage by 10 for 10 minutes"
+	desc = "Increases all xenomorph damage by 10 for 10 minutes."
 	tier = HIVEBUFF_TIER_MAJOR
 
 	engage_flavourmessage = "The Queen has imbued us with razor-sharp claws."

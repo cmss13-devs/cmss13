@@ -185,6 +185,35 @@
 
 	INVOKE_ASYNC(crosser, TYPE_PROC_REF(/atom/movable, throw_atom), (get_step(src, dir)), 50, SPEED_FAST, null, TRUE)
 
+/turf/open/slippery/hull
+	name = "sloped roof"
+	icon = 'icons/turf/almayer.dmi'
+	icon_state = "outerhull"
+
+/turf/open/slippery/hull/dir
+	icon_state = "outerhull_dir"
+
+/turf/open/slippery/hull/dir/southwest
+	dir = SOUTHWEST
+
+/turf/open/slippery/hull/dir/north
+	dir = NORTH
+
+/turf/open/slippery/hull/dir/east
+	dir = EAST
+
+/turf/open/slippery/hull/dir/northeast
+	dir = NORTHEAST
+
+/turf/open/slippery/hull/dir/southeast
+	dir = SOUTHEAST
+
+/turf/open/slippery/hull/dir/west
+	dir = WEST
+
+/turf/open/slippery/hull/dir/northwest
+	dir = NORTHWEST
+
 
 // Prison grass
 /turf/open/organic/grass
@@ -720,9 +749,9 @@
 			river_slowdown -= 0.7
 			if(isboiler(C))
 				river_slowdown -= 1
+		river_slowdown = max(0, river_slowdown)
 
-		var/new_slowdown = C.next_move_slowdown + river_slowdown
-		C.next_move_slowdown = new_slowdown
+		C.next_move_slowdown += river_slowdown
 
 	if(ishuman(AM))
 		var/mob/living/carbon/human/H = AM
@@ -965,6 +994,15 @@
 /turf/open/asphalt/cement/cement15
 	icon_state = "cement15"
 
+/turf/open/asphalt/cement/cement18
+	icon_state = "cement18"
+
+/turf/open/asphalt/cement/cement19
+	icon_state = "cement19"
+
+/turf/open/asphalt/cement/cement16
+	icon_state = "cement16"
+
 /turf/open/asphalt/cement/cement2
 	icon_state = "cement2"
 
@@ -1138,7 +1176,7 @@
 /turf/open/jungle/water
 	bushes_spawn = 0
 	name = "murky water"
-	desc = "thick, murky water"
+	desc = "Thick, murky water."
 	icon = 'icons/turf/floors/beach.dmi'
 	icon_state = "water"
 	icon_spawn_state = "water"

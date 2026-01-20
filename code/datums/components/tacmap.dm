@@ -127,8 +127,8 @@
 /datum/component/tacmap/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 
-	// XXX: try_update_ui returns NULL as the UI even if the UI is trying to close from ui_status.
-	// Double check that we aren't attempting to close so that we don't leak a UI.
+	// try_update_ui returns NULL as the UI even if the UI is trying to close from ui_status.
+	// Double check that we aren't attempting to close so that we don't make a UI when we don't need to.
 	if(ui || get_dist(parent, user) > 1)
 		return
 

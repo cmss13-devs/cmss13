@@ -11,7 +11,6 @@
 #define MARINE_CAN_BUY_PILOT_VISOR "pilot_visor"
 #define MARINE_CAN_BUY_MASK "mask"
 #define MARINE_CAN_BUY_ESSENTIALS "essentials"
-#define MARINE_CAN_BUY_SPECIALIZATION "specialization"
 #define MARINE_CAN_BUY_SECONDARY "secondary"
 #define MARINE_CAN_BUY_ATTACHMENT "attachment"
 #define MARINE_CAN_BUY_MRE "mre"

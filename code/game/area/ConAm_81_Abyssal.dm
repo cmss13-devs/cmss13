@@ -129,6 +129,11 @@
 	icon_state = "disco"
 	minimap_color = MINIMAP_AREA_GLASS
 
+/area/abyssal/interior/solar_control_north_west
+	name = "Abyssal - Fore-Port - Solar Interior Controlroom"
+	icon_state = "disco"
+	minimap_color = MINIMAP_AREA_GLASS
+
 //Departments
 /area/abyssal/interior/arrivals
 	name = "Abyssal - Arrivals Wing"

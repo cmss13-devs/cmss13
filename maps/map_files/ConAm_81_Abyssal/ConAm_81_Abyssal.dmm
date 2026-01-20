@@ -24715,6 +24715,9 @@
 /obj/effect/decal/hybrisa/dirt_2,
 /turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_central)
+"bho" = (
+/turf/closed/wall/abyssal/standard/unmeltable,
+/area/abyssal/interior/engineering)
 "bhp" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -25917,7 +25920,7 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/engine,
-/area/abyssal/interior/maintenance/west)
+/area/abyssal/interior/solar_control_north_west)
 "bjU" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/machinery/power/power_generator/reactor/colony{
@@ -25926,12 +25929,12 @@
 	},
 /obj/effect/decal/hybrisa/dirt_2,
 /turf/open/floor/elevatorshaft,
-/area/abyssal/interior/maintenance/west)
+/area/abyssal/interior/solar_control_north_west)
 "bjV" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile,
-/area/abyssal/interior/maintenance/west)
+/area/abyssal/interior/solar_control_north_west)
 "bjW" = (
 /obj/structure/prop/hybrisa/signs/high_voltage/small{
 	pixel_x = 27
@@ -25939,7 +25942,7 @@
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/machinery/power/smes/buildable,
 /turf/open/floor/elevatorshaft,
-/area/abyssal/interior/maintenance/west)
+/area/abyssal/interior/solar_control_north_west)
 "bjX" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -25950,7 +25953,7 @@
 	},
 /obj/effect/decal/hybrisa/dirt_2,
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/west,
-/area/abyssal/interior/maintenance/west)
+/area/abyssal/interior/solar_control_north_west)
 "bjY" = (
 /obj/effect/decal/large_stain{
 	pixel_x = -10;
@@ -25963,7 +25966,7 @@
 	pixel_y = 3
 	},
 /turf/open/floor/hybrisa/tile/darkgrey_bigtile,
-/area/abyssal/interior/maintenance/west)
+/area/abyssal/interior/solar_control_north_west)
 "bjZ" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/machinery/computer3{
@@ -25988,7 +25991,7 @@
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/machinery/power/terminal,
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/east,
-/area/abyssal/interior/maintenance/west)
+/area/abyssal/interior/solar_control_north_west)
 "bka" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -26001,18 +26004,18 @@
 	},
 /obj/effect/decal/hybrisa/dirt_2,
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/northwest,
-/area/abyssal/interior/maintenance/west)
+/area/abyssal/interior/solar_control_north_west)
 "bkb" = (
 /obj/structure/machinery/power/monitor{
 	name = "Main Power Grid Monitoring"
 	},
 /obj/effect/decal/hybrisa/dirt_2,
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/north,
-/area/abyssal/interior/maintenance/west)
+/area/abyssal/interior/solar_control_north_west)
 "bkc" = (
 /obj/structure/blocker/invisible_wall,
 /turf/closed/wall/abyssal/standard/unmeltable,
-/area/abyssal/interior/maintenance/west)
+/area/abyssal/interior/solar_control_north_west)
 "bkd" = (
 /obj/structure/machinery/door/airlock/external/colony{
 	unslashable = 1;
@@ -26028,7 +26031,7 @@
 	icon_state = "1-2"
 	},
 /turf/open/floor/engine,
-/area/abyssal/interior/maintenance/west)
+/area/abyssal/interior/solar_control_north_west)
 "bke" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-8"
@@ -26191,6 +26194,22 @@
 /obj/effect/alien/resin/sticky,
 /turf/open/floor/darkblue2/southwest,
 /area/abyssal/interior/command)
+"bkC" = (
+/turf/closed/wall/abyssal/standard/unmeltable,
+/area/abyssal/interior/maintenance/central)
+"bkD" = (
+/turf/closed/wall/abyssal/standard/unmeltable,
+/area/abyssal/interior/telecomms_1)
+"bkE" = (
+/turf/closed/wall/abyssal/standard/unmeltable,
+/area/abyssal/interior/solar_control_north_west)
+"bkF" = (
+/turf/closed/wall/abyssal/standard,
+/area/abyssal/interior/solar_control_north_west)
+"bkG" = (
+/obj/structure/window/framed/abyssal/standard/hull,
+/turf/open/floor/engine,
+/area/abyssal/interior/solar_control_north_west)
 "bqz" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -36105,10 +36124,10 @@ adD
 adD
 ahe
 bkc
-aej
-aej
-aej
-aej
+bkE
+bkE
+bkE
+bkE
 aej
 aej
 aej
@@ -36260,7 +36279,7 @@ bkd
 bka
 bjX
 bjU
-aej
+bkE
 aAq
 aKO
 ayk
@@ -36408,7 +36427,7 @@ ahe
 adD
 adD
 adp
-adT
+bkG
 bkb
 bjY
 bjV
@@ -36560,11 +36579,11 @@ ahe
 adp
 afZ
 aga
-afZ
-afV
+bkE
+bkF
 bjZ
 bjW
-aej
+bkE
 asq
 ahI
 kZG
@@ -36716,7 +36735,7 @@ aDB
 afV
 afV
 afV
-aej
+bkE
 pdL
 ahI
 nnq
@@ -37331,7 +37350,7 @@ ajF
 ajF
 ajm
 aYB
-ahP
+bkD
 ahM
 ahM
 ahM
@@ -37483,7 +37502,7 @@ qSz
 uEg
 ajm
 aTD
-ahP
+bkD
 aOC
 aTv
 aRo
@@ -37635,7 +37654,7 @@ bkw
 bkv
 ajm
 arW
-ahP
+bkD
 aUU
 aTB
 aRq
@@ -37787,7 +37806,7 @@ kdY
 ajm
 ajm
 aJg
-ahP
+bkD
 aVa
 aTC
 aRS
@@ -37939,8 +37958,8 @@ ajP
 ajm
 aId
 axM
-ahP
-ahP
+bkD
+bkD
 aTE
 aRV
 aOL
@@ -38092,9 +38111,9 @@ ajj
 ajn
 ayj
 ahS
-ahP
-ahP
-ahP
+bkD
+bkD
+bkD
 aIi
 ahP
 ahP
@@ -39330,8 +39349,8 @@ ado
 ari
 aul
 aPT
-acE
-acE
+acn
+acn
 aiY
 aNG
 aIM
@@ -42046,8 +42065,8 @@ bjE
 ahB
 aXO
 aUl
-ahB
-ahB
+ajk
+ajk
 bae
 aZZ
 aZX
@@ -42056,8 +42075,8 @@ aZG
 bjn
 aeD
 aFC
-aeD
-acs
+bkC
+bho
 afB
 acs
 act
@@ -42198,18 +42217,18 @@ aVq
 ajg
 ahB
 ahB
-ahB
-ahB
-ahB
-ahB
-ahB
+ajk
+ajk
+ajk
+ajk
+ajk
 aXK
 aZH
 aXG
 aeD
 aFC
-aeD
-acs
+bkC
+bho
 aEO
 agM
 agM
@@ -42353,8 +42372,8 @@ aUm
 aio
 aTL
 aib
-ahB
-ahB
+ajk
+ajk
 arm
 aZH
 aXH

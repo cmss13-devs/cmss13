@@ -385,8 +385,8 @@
 	RegisterSignal(loc, COMSIG_TURF_ENTERED, PROC_REF(on_turf_entered))
 	RegisterSignal(src, COMSIG_ATOM_TURF_CHANGE, PROC_REF(on_turf_changed))
 	for(var/turf/blocked_turf in range(1, src))
-		blockers += new /obj/effect/build_blocker(blocked_turf, src)
-		new /obj/structure/blocker/anti_cade(blocked_turf)
+		blockers += WEAKREF(new /obj/effect/build_blocker(blocked_turf, src))
+		blockers += WEAKREF(new /obj/structure/blocker/anti_cade(blocked_turf))
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/structure/stairs/multiz/Destroy()

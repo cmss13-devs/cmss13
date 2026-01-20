@@ -11683,7 +11683,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/transit_hub)
 "iNt" = (
-/obj/item/device/whistle,
+/obj/item/clothing/accessory/device/whistle,
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/station/medbay)
 "iOa" = (

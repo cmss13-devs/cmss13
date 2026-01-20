@@ -1,0 +1,8 @@
+author: "Nihisohel"
+delete-after: True
+changes:
+  - rscadd: "Adds the old disposable camera as a 3 point loadout purchase, go out and do some Frank West larp I guess"
+  - balance: "Changed the size of the old disposable camera from small to tiny."
+  - bugfix: "Adds a delay to picture taking as to not lag the server"
+  - qol: "Pressing Unique-action on polaroid cameras will now switch its focus."
+  - rscdel: "Removed the change focus verb for redundancy."

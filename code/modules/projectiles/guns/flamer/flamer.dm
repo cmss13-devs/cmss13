@@ -624,7 +624,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 
 	set_light(l_color = R.burncolor)
 	if(R.fire_penetrating)
-		var/new_burncolor = color_matrix_multiply(color_matrix_rotate_x(12), color_hex2color_matrix(R.burncolor))
+		var/new_burncolor = color_matrix_multiply(color_matrix_rotate_x(5), color_hex2color_matrix(R.burncolor))
 		if(!GLOB.flamer_particles[new_burncolor])
 			GLOB.flamer_particles[new_burncolor] = new /particles/flamer_fire(new_burncolor)
 		particles = GLOB.flamer_particles[new_burncolor]

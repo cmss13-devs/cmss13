@@ -144,3 +144,47 @@
 2026-01-19:
   realforest2001:
   - rscadd: Cryoing as a predator will now open the slot again.
+2026-01-20:
+  BOBAMA, Drathek:
+  - rscadd: New thematic gun spawners for mappers
+  - balance: Current gun spawners no longer spawn absurd quantities of rocket launchers
+      or Type19s
+  - bugfix: gun spawners now spawn ammo for shotguns and GLs
+  - bugfix: minor GC issue with mutliz stairs and build_blocker
+  - mapadd: Trijent Z levels
+  - mapadd: A lot of new nightmare inserts to Trijent
+  - maptweak: Original Trijent Z is now more detailed
+  Bibby0110:
+  - bugfix: CIC tablet now closes when you die/fall unconscious
+  Puckaboo2:
+  - code_imp: Adds a global hijack signal for coding and signalling goodness.
+  - rscadd: Adds emergency medical wall lockers with surgical vests, surgical beds,
+      and portable dialysis machines. The lockers cannot be unlocked; they open on
+      their own only during hijack.
+  - imageadd: Adds sprites to the new lockers.
+  - maptweak: Adds the emergency surgical wall lockers to the medical bay in the clothing
+      vending room.
+  Syndro101:
+  - bugfix: fixed issues outlined in issue 5966 with semiotics, lights and cameras
+  - maptweak: tweaked ship lights, cameras and semiotics
+  frans feiffer (sprite for tan saddle), ori:
+  - rscadd: added event-only runner saddles
+  - code_imp: buckling is now /atom/movable/ instead of /obj/ and moves the move and
+      forcemove procs of obj to just be part of the procs in movement.dm
+  - imageadd: added sprites for runner saddles
+  hry-gh:
+  - rscadd: added the ability to configure custom keybinds in your keybind settings,
+      these can be use to define up to 20 say/me/picksay keybinds to say whatever
+      you want
+  kiVts:
+  - balance: Tweaked OD for contracts to make intermediate more appealing.
+  - balance: Intermediates have much less properties on average
+  - balance: Value of a property is now accounted for in the price of a operation
+  - balance: Intermediate and hard level can now have more than 3 chemicals in the
+      recipe, made hard chemicals slightly harder to come by.
+  - balance: Made Optimized slightly better, changed Coniine chemical properties,
+      buffed paining by 10x, made Thymol effects slightly better.
+  - balance: having any negative in the chemical gives you a discount of 2 credits.
+  - bugfix: Contract recipe generation should account for when recipes don't pass
+      the occupied recipe check.
+  - bugfix: Transmute volume decrease fix, reagent overflow small fix.

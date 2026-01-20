@@ -701,7 +701,7 @@
 
 /obj/item/reagent_container/glass/bucket/attackby(obj/item/something, mob/user)
 	if(isprox(something))
-		to_chat(user, "You add [something] to [src].")
+		to_chat(user, "You add \the [something] to [src].")
 		qdel(something)
 		user.put_in_hands(new /obj/item/frame/bucket_sensor)
 		user.drop_inv_item_on_ground(src)

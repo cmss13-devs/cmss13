@@ -152,6 +152,15 @@
 /obj/structure/window/framed/abyssal/standard/reinforced,
 /turf/open/floor/engine,
 /area/abyssal/interior/landing_zone)
+"aaA" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 4;
+	pixel_y = -8
+	},
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/engine,
+/area/abyssal/interior/maintenance/east)
 "aaB" = (
 /turf/closed/wall/abyssal/standard,
 /area/abyssal/interior/corridor_east)
@@ -870,6 +879,7 @@
 /turf/open/floor/prison,
 /area/abyssal/interior/command)
 "acL" = (
+/obj/effect/alien/resin/sticky,
 /turf/open/floor/darkred2/east,
 /area/abyssal/interior/command)
 "acM" = (
@@ -1202,6 +1212,12 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/engine,
 /area/abyssal/interior/engineering)
+"adz" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/item/stack/cable_coil/cyan,
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/darkpurple2/southwest,
+/area/abyssal/interior/science)
 "adA" = (
 /turf/closed/wall/abyssal/standard/reinforced,
 /area/abyssal/interior/telecomms_2)
@@ -1768,6 +1784,14 @@
 "aeZ" = (
 /turf/open/floor/darkpurple2/west,
 /area/abyssal/interior/science)
+"afa" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/darkpurplecorners2,
+/area/abyssal/interior/science)
 "afb" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-8"
@@ -1972,6 +1996,21 @@
 	},
 /turf/open/floor/engine,
 /area/abyssal/interior/medical)
+"afx" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 9
+	},
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/engine,
+/area/abyssal/interior/maintenance/east)
+"afy" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/station/metal/floor/alt3,
+/area/abyssal/interior/corridor_east)
 "afz" = (
 /obj/structure/machinery/power/apc/power/north{
 	start_charge = 20
@@ -2138,14 +2177,6 @@
 	},
 /obj/effect/decal/hybrisa/lattice,
 /obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2
-	},
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
-	explo_proof = 1;
-	id = "abyssallockdown";
-	name = "Emergency Lockdown";
-	needs_power = 0;
-	unacidable = 1;
 	dir = 2
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
@@ -2892,6 +2923,14 @@
 	},
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/west)
+"aie" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/station/metal/floor/alt3,
+/area/abyssal/interior/corridor_east)
 "aif" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /turf/open/floor/hybrisa/tile/darkgrey_bigtile,
@@ -5102,6 +5141,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/floor/station/metal/floor/alt2,
 /area/abyssal/interior/corridor_east)
 "aoj" = (
@@ -5190,6 +5230,7 @@
 	pixel_x = 8
 	},
 /obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/alien/resin/sticky,
 /turf/open/floor/hybrisa/tile/green_bigtile,
 /area/abyssal/interior/command)
 "aov" = (
@@ -5217,6 +5258,7 @@
 /area/abyssal/interior/corridor_east)
 "aoz" = (
 /obj/effect/decal/floor_symbol/con_am/alt/top_4,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/floor/station/metal/floor/alt2,
 /area/abyssal/interior/corridor_east)
 "aoA" = (
@@ -6327,14 +6369,6 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
-	explo_proof = 1;
-	id = "abyssallockdown";
-	name = "Emergency Lockdown";
-	needs_power = 0;
-	unacidable = 1;
-	dir = 2
-	},
 /obj/effect/hybrisa/misc/fake/wire/blue{
 	pixel_x = -4
 	},
@@ -6635,6 +6669,12 @@
 	},
 /turf/open/floor/dark,
 /area/abyssal/interior/engineering)
+"arH" = (
+/obj/effect/decal/cleanable/dirt/alt_dirt/stain,
+/obj/item/shard,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/engine,
+/area/abyssal/interior/command)
 "arI" = (
 /obj/structure/closet/walllocker/emerglocker/west,
 /obj/effect/decal/cleanable/blood/oil,
@@ -8366,7 +8406,7 @@
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/west)
 "avy" = (
-/turf/closed/wall/abyssal/standard/temphull,
+/turf/closed/wall/abyssal/standard/reinforced,
 /area/abyssal/interior/bunker)
 "avz" = (
 /obj/effect/decal/warning_stripes{
@@ -8418,14 +8458,6 @@
 	},
 /obj/effect/decal/hybrisa/lattice,
 /obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2
-	},
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
-	explo_proof = 1;
-	id = "abyssallockdown";
-	name = "Emergency Lockdown";
-	needs_power = 0;
-	unacidable = 1;
 	dir = 2
 	},
 /turf/open/floor/engine,
@@ -8689,6 +8721,7 @@
 /area/abyssal/interior/cargo)
 "awr" = (
 /obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/alien/resin/sticky,
 /turf/open/floor/hybrisa/tile/greencorner_bigtile/north,
 /area/abyssal/interior/command)
 "aws" = (
@@ -10895,6 +10928,7 @@
 /turf/open/floor/plating/prison,
 /area/abyssal/interior/engineering)
 "aBn" = (
+/obj/effect/alien/resin/sticky,
 /turf/open/floor/hybrisa/tile/green_bigtile/southeast,
 /area/abyssal/interior/command)
 "aBo" = (
@@ -10991,6 +11025,14 @@
 /obj/effect/decal/hybrisa/dirt_2,
 /turf/open/floor/dark,
 /area/abyssal/interior/engineering)
+"aBy" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/station/metal/floor/alt3,
+/area/abyssal/interior/corridor_east)
 "aBz" = (
 /obj/effect/decal/hybrisa/lattice,
 /obj/effect/decal/hybrisa/dirt_2,
@@ -11147,6 +11189,10 @@
 /obj/effect/decal/hybrisa/dirt_2,
 /turf/open/floor/engine,
 /area/abyssal/interior/security)
+"aBQ" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/station/metal/floor/north,
+/area/abyssal/interior/corridor_east)
 "aBR" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/prop/misc/lit_cable,
@@ -11254,6 +11300,10 @@
 /obj/effect/decal/strata_decals/catwalk/prison,
 /turf/open/floor/shiva/radiator_tile2,
 /area/abyssal/interior/engineering)
+"aCe" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/station/metal/floor/alt2,
+/area/abyssal/interior/corridor_east)
 "aCf" = (
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 8
@@ -14154,6 +14204,7 @@
 	pixel_y = 2
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/floor/engine,
 /area/abyssal/interior/command)
 "aIU" = (
@@ -14267,14 +14318,6 @@
 	dir = 2;
 	autoname = 1;
 	req_one_access = null
-	},
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
-	explo_proof = 1;
-	id = "abyssallockdown";
-	name = "Emergency Lockdown";
-	needs_power = 0;
-	unacidable = 1;
-	dir = 2
 	},
 /turf/open/floor/engine,
 /area/abyssal/interior/bunker)
@@ -15151,6 +15194,7 @@
 "aLg" = (
 /obj/effect/decal/hybrisa/lattice,
 /obj/item/stack/rods,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/floor/engine,
 /area/abyssal/interior/command)
 "aLh" = (
@@ -15195,6 +15239,7 @@
 /turf/open/floor/hybrisa/tile/greencorner_bigtile/west,
 /area/abyssal/interior/command)
 "aLn" = (
+/obj/effect/alien/resin/sticky,
 /turf/open/floor/hybrisa/tile/greencorner_bigtile/north,
 /area/abyssal/interior/command)
 "aLo" = (
@@ -15322,6 +15367,11 @@
 	},
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/south)
+"aLC" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/hybrisa/tile/green_bigtile/east,
+/area/abyssal/interior/command)
 "aLD" = (
 /turf/open/floor/station/metal/floor/northwest,
 /area/abyssal/interior/arrivals)
@@ -15521,6 +15571,12 @@
 	},
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/west,
 /area/abyssal/interior/engineering)
+"aMe" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/hybrisa/tile/green_bigtile/west,
+/area/abyssal/interior/command)
 "aMf" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/greencorner/east,
@@ -15532,6 +15588,14 @@
 	},
 /turf/open/floor/station/metal/floor,
 /area/abyssal/interior/corridor_west)
+"aMh" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/prop/misc/lit_cable,
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/station/metal/floor/alt3,
+/area/abyssal/interior/corridor_east)
 "aMi" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_5";
@@ -16144,6 +16208,7 @@
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 1
 	},
+/obj/effect/alien/resin/sticky,
 /turf/open/floor/prison,
 /area/abyssal/interior/command)
 "aNK" = (
@@ -16893,6 +16958,7 @@
 "aPz" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/structure/disposalpipe/segment,
+/obj/effect/alien/resin/sticky,
 /turf/open/floor/darkblue2/east,
 /area/abyssal/interior/command)
 "aPA" = (
@@ -16922,6 +16988,11 @@
 	},
 /turf/open/floor/green/east,
 /area/abyssal/interior/medical)
+"aPE" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/hybrisa/tile/darkgrey_bigtile,
+/area/abyssal/interior/command)
 "aPF" = (
 /obj/structure/machinery/portable_atmospherics/canister/air,
 /turf/open/floor/engine,
@@ -20129,6 +20200,7 @@
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 4
 	},
+/obj/effect/alien/resin/sticky,
 /turf/open/floor/hybrisa/tile/green_bigtile/west,
 /area/abyssal/interior/command)
 "aXc" = (
@@ -21689,6 +21761,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
+/obj/effect/alien/resin/sticky,
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/east)
 "baU" = (
@@ -21766,6 +21839,7 @@
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 4
 	},
+/obj/effect/alien/resin/sticky,
 /turf/open/floor/dark,
 /area/abyssal/interior/science)
 "bbe" = (
@@ -22034,6 +22108,7 @@
 	dir = 8;
 	icon_state = "pipe-c"
 	},
+/obj/effect/alien/resin/sticky,
 /turf/open/floor/darkpurple2/west,
 /area/abyssal/interior/science)
 "bbP" = (
@@ -22143,6 +22218,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
+/obj/effect/alien/resin/sticky,
 /turf/open/floor/darkpurple2/west,
 /area/abyssal/interior/science)
 "bcc" = (
@@ -22279,6 +22355,7 @@
 /area/abyssal/interior/science)
 "bct" = (
 /obj/structure/pipes/standard/manifold/hidden/cyan,
+/obj/effect/alien/resin/sticky,
 /turf/open/floor/darkpurplecorners2/north,
 /area/abyssal/interior/science)
 "bcu" = (
@@ -23269,6 +23346,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/floor/engine,
 /area/abyssal/interior/command)
 "beO" = (
@@ -23318,6 +23396,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 5
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/station/metal/floor/alt3,
 /area/abyssal/interior/corridor_east)
 "beU" = (
@@ -23618,7 +23697,7 @@
 /obj/structure/sign/safety/rad_shield{
 	pixel_x = 8
 	},
-/turf/closed/wall/abyssal/standard/temphull,
+/turf/closed/wall/abyssal/standard/reinforced,
 /area/abyssal/interior/bunker)
 "bfC" = (
 /obj/structure/disposalpipe/segment,
@@ -23726,6 +23805,11 @@
 /obj/structure/machinery/light/blue,
 /turf/open/floor/station/metal/floor,
 /area/abyssal/interior/corridor_east)
+"bfM" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/darkblue2/southeast,
+/area/abyssal/interior/command)
 "bfN" = (
 /obj/structure/prop/misc/lit_cable,
 /obj/effect/decal/hybrisa/dirt_2,
@@ -23887,14 +23971,6 @@
 /obj/structure/machinery/door/airlock/almayer/engineering/glass/colony{
 	autoname = 1;
 	req_one_access = null
-	},
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
-	explo_proof = 1;
-	id = "abyssallockdown";
-	name = "Emergency Lockdown";
-	needs_power = 0;
-	unacidable = 1;
-	dir = 4
 	},
 /turf/open/floor/engine,
 /area/abyssal/interior/bunker)
@@ -24585,14 +24661,6 @@
 	autoname = 1;
 	req_one_access = null
 	},
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
-	explo_proof = 1;
-	id = "abyssallockdown";
-	name = "Emergency Lockdown";
-	needs_power = 0;
-	unacidable = 1;
-	dir = 4
-	},
 /turf/open/floor/engine,
 /area/abyssal/interior/bunker)
 "bhj" = (
@@ -24647,25 +24715,6 @@
 /obj/effect/decal/hybrisa/dirt_2,
 /turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_central)
-"bho" = (
-/obj/structure/machinery/door/airlock/prison_hatch/autoname{
-	dir = 1
-	},
-/obj/effect/decal/hybrisa/lattice,
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2
-	},
-/obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
-	explo_proof = 1;
-	id = "abyssallockdown";
-	name = "Emergency Lockdown";
-	needs_power = 0;
-	unacidable = 1;
-	dir = 2
-	},
-/turf/open/floor/engine,
-/area/abyssal/interior/bunker)
 "bhp" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -24958,6 +25007,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
+/obj/effect/alien/resin/sticky,
 /turf/open/floor/station/metal/floor/alt2,
 /area/abyssal/interior/corridor_east)
 "bhQ" = (
@@ -24974,6 +25024,7 @@
 /obj/item/shard{
 	layer = 2.9
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/floor/engine,
 /area/abyssal/interior/command)
 "bhR" = (
@@ -24982,6 +25033,10 @@
 	},
 /turf/open/floor/station/metal/floor/north,
 /area/abyssal/interior/corridor_east)
+"bhS" = (
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/darkblue2/west,
+/area/abyssal/interior/command)
 "bhT" = (
 /turf/open/floor/station/metal/floor/northwest,
 /area/abyssal/interior/corridor_east)
@@ -25047,10 +25102,16 @@
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/station/metal/floor/east,
 /area/abyssal/interior/corridor_east)
+"bic" = (
+/obj/structure/disposalpipe/segment,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/station/metal/floor/alt3,
+/area/abyssal/interior/corridor_east)
 "bid" = (
 /obj/effect/decal/hybrisa/lattice,
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/structure/disposalpipe/segment,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/floor/engine,
 /area/abyssal/interior/command)
 "bie" = (
@@ -26109,6 +26170,27 @@
 /obj/effect/landmark/yautja_young_teleport,
 /turf/open/floor/station/metal/floor/east,
 /area/abyssal/interior/corridor_central)
+"bky" = (
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/darkblue2,
+/area/abyssal/interior/command)
+"bkz" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/prison,
+/area/abyssal/interior/command)
+"bkA" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/darkblue2/northwest,
+/area/abyssal/interior/command)
+"bkB" = (
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/darkblue2/southwest,
+/area/abyssal/interior/command)
 "bqz" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -34520,7 +34602,7 @@ ait
 ail
 aPU
 apG
-bho
+afT
 aDA
 bgM
 bgx
@@ -47775,12 +47857,12 @@ abQ
 atv
 beA
 aXX
-aXX
+aie
 aXX
 aXX
 pOR
 aXX
-aXW
+afy
 bcA
 aYf
 bbQ
@@ -48379,7 +48461,7 @@ aKI
 abL
 aJV
 abL
-abH
+aBQ
 aYr
 rYy
 bbA
@@ -49140,7 +49222,7 @@ aKx
 aKa
 ach
 abH
-aYr
+aBy
 aXT
 bdm
 aoj
@@ -49277,7 +49359,7 @@ aYZ
 aYV
 bfk
 beV
-beV
+bic
 bus
 beV
 avV
@@ -49591,7 +49673,7 @@ beM
 beM
 aYs
 aYM
-aYL
+aMh
 aXW
 aXW
 aoH
@@ -50203,7 +50285,7 @@ acA
 aiD
 acB
 acj
-azc
+aCe
 bhP
 abA
 beu
@@ -50220,7 +50302,7 @@ bbN
 bbz
 aab
 bbb
-gkc
+afx
 aRT
 aAF
 aAF
@@ -50490,7 +50572,7 @@ agu
 aaY
 aIK
 aRh
-amu
+bky
 aEe
 aQv
 afH
@@ -50638,7 +50720,7 @@ aqC
 auX
 acY
 apa
-avP
+bkB
 atM
 aHw
 awl
@@ -50656,7 +50738,7 @@ aqF
 aLm
 alK
 aJv
-aJv
+aMe
 aKc
 aJv
 bhV
@@ -50682,7 +50764,7 @@ aeZ
 bas
 aab
 aab
-afD
+aaA
 asS
 aEh
 adD
@@ -50832,7 +50914,7 @@ baA
 baN
 afh
 bat
-aVZ
+adz
 aBM
 aat
 asS
@@ -50945,7 +51027,7 @@ biy
 bix
 biw
 biv
-adQ
+bkz
 amu
 aaY
 afN
@@ -50962,11 +51044,11 @@ abq
 abq
 abq
 aKf
-aiO
+aLC
 alC
 aiO
 aBn
-bew
+arH
 aii
 axG
 amg
@@ -50983,7 +51065,7 @@ aev
 baX
 adm
 baD
-bau
+afa
 aXs
 aab
 afD
@@ -51254,7 +51336,7 @@ aXn
 aKt
 amU
 agg
-apa
+bhS
 aNI
 aAE
 apa
@@ -51562,11 +51644,11 @@ aez
 aLI
 aNC
 alh
-aZh
+bfM
 aLg
 alB
 abY
-acI
+aPE
 abI
 alG
 acI
@@ -51856,16 +51938,16 @@ aWv
 aQd
 aPZ
 aRT
-aQv
+bkA
 aLJ
 abp
 aph
 apa
-apa
+bhS
 apa
 apa
 aNI
-apa
+bhS
 avP
 aaY
 aaY

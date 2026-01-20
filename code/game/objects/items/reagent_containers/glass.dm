@@ -106,9 +106,9 @@
 			reagents.clear_reagents()
 		return
 	else if(istype(target, /obj/structure/reagent_dispensers)) //A dispenser. Transfer FROM it TO us.
-		var/obj/structure/reagent_dispensers/D = target
-		D.add_fingerprint(user)
-		if(D.dispensing)
+		var/obj/structure/reagent_dispensers/dispenser = target
+		dispenser.add_fingerprint(user)
+		if(dispenser.dispensing)
 			if(!target.reagents.total_volume && target.reagents)
 				to_chat(user, SPAN_WARNING("\The [target] is empty."))
 				return
@@ -130,17 +130,17 @@
 					to_chat(user, SPAN_WARNING("\The [src] is empty."))
 					return
 
-				if(D.reagents.total_volume >= D.reagents.maximum_volume)
-					to_chat(user, SPAN_WARNING("\The [D] is full."))
+				if(D.reagents.total_volume >= dispenser.reagents.maximum_volume)
+					to_chat(user, SPAN_WARNING("\The [dispenser] is full."))
 					return
 
-				var/trans = reagents.trans_to(D, D:amount_per_transfer_from_this)
+				var/trans = reagents.trans_to(dispenser, dispenser:amount_per_transfer_from_this)
 
 				if(!trans)
 					to_chat(user, SPAN_DANGER("You fail to add reagents to [target]."))
 					return
 
-				to_chat(user, SPAN_NOTICE("You fill [D] with [trans] units of the contents of [src]."))
+				to_chat(user, SPAN_NOTICE("You fill [dispenser] with [trans] units of the contents of [src]."))
 			else
 				to_chat(user, SPAN_WARNING("You must open the container first!"))
 

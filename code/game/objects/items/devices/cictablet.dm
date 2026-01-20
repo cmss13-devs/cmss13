@@ -76,10 +76,8 @@
 	if(!on)
 		return UI_DISABLED
 
-	return UI_INTERACTIVE
-
 /obj/item/device/cotablet/ui_state(mob/user)
-	return GLOB.inventory_state
+	return GLOB.not_incapacitated_and_inventory_state
 
 /obj/item/device/cotablet/tgui_interact(mob/user, datum/tgui/ui, datum/ui_state/state)
 	ui = SStgui.try_update_ui(user, src, ui)

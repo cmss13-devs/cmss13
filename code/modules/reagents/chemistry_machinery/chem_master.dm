@@ -20,6 +20,7 @@
 	var/condi = 0
 	var/useramount = 30 // Last used amount
 	var/pillamount = 16
+	var/bottle_autoselect = FALSE //Toggle for whether extra new bottles are added to to_fill list
 	var/bottlesprite = "1" //yes, strings
 	var/pillsprite = "1"
 	var/client/has_sprites = list()
@@ -138,7 +139,7 @@
 
 	loaded_pill_bottles += bottle
 
-	if (length(loaded_pill_bottles) == 1 || length(loaded_pill_bottles_to_fill) == 0)
+	if (length(loaded_pill_bottles) == 1 || length(loaded_pill_bottles_to_fill) == 0 || bottle_autoselect)
 		loaded_pill_bottles_to_fill += bottle
 
 
@@ -166,6 +167,7 @@
 	.["mode"] = mode
 	.["pillsprite"] = pillsprite
 	.["bottlesprite"] = bottlesprite
+	.["bottle_autoselect"] = bottle_autoselect
 
 	.["pill_bottles"] = list()
 	if(length(loaded_pill_bottles) > 0)
@@ -704,6 +706,10 @@
 				loaded_pill_bottles_to_fill = LAZYCOPY(loaded_pill_bottles)
 			else
 				loaded_pill_bottles_to_fill = list()
+			return TRUE
+
+		if("bottle_autoselect_toggle")
+			bottle_autoselect = !bottle_autoselect
 			return TRUE
 
 /obj/structure/machinery/chem_master/attack_hand(mob/living/user)

@@ -1,4 +1,0 @@
-author: "Blundir"
-delete-after: True
-changes:
-  - bugfix: "fixed some cases of double manufacturer logo being applied"

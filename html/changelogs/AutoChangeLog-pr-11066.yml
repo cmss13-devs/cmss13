@@ -1,0 +1,4 @@
+author: "Sergeys"
+delete-after: True
+changes:
+  - bugfix: "fixed that some items cannot be crafted at low amount of crafting resources."

@@ -55,7 +55,7 @@
 		if(test_client.check_whitelist_status(GLOB.bitfields["whitelist_status"][flag]))
 			ckeys += test_client.ckey
 	if(!length(ckeys))
-		to_chat(src, SPAN_NOTICE("There are no players with that whitelist online"))
+		to_chat(src, SPAN_NOTICE("There are no players with that whitelist online."))
 		return
 	to_chat(src, SPAN_NOTICE("Whitelist holders: [ckeys.Join(", ")]."))
 
@@ -505,7 +505,7 @@
 	var/encrypt = tgui_alert(src, "Do you want the nuke to be already decrypted?", "Nuke Type", list("Encrypted", "Decrypted"), 20 SECONDS)
 	if(encrypt == "Encrypted")
 		nukename = "Encrypted Operational Blockbuster"
-	var/prompt = tgui_alert(src, "THIS CAN BE USED TO END THE ROUND. Are you sure you want to spawn a nuke? The nuke will be put onto the ASRS Lift.", "DEFCON 1", list("No", "Yes"), 30 SECONDS)
+	var/prompt = tgui_alert(src, "THIS CAN BE USED TO END THE ROUND. Are you sure you want to spawn a nuke? The nuke will be put onto the ASRS Lift.", "DEFCON 1", list("Yes", "No"), 30 SECONDS)
 	if(prompt != "Yes")
 		return
 

@@ -1,0 +1,2 @@
+/obj/item/prop/helmetgarb/rosary/@SUBTYPES : /obj/item/clothing/accessory/rosary/@SUBTYPES{@OLD}
+/obj/item/clothing/accessory/patch/@SUBTYPES : /obj/item/clothing/accessory/patch/uscmpatch/@SUBTYPES{@OLD}

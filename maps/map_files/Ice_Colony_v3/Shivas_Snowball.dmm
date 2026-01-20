@@ -11443,7 +11443,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/device/whistle,
+/obj/item/clothing/accessory/device/whistle,
 /turf/open/asphalt/cement,
 /area/shiva/interior/warehouse)
 "ixX" = (
@@ -11940,7 +11940,7 @@
 /area/shiva/interior/warehouse/caves)
 "jaU" = (
 /obj/structure/surface/table,
-/obj/item/device/whistle,
+/obj/item/clothing/accessory/device/whistle,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/research_hab)
 "jbr" = (
@@ -21032,7 +21032,7 @@
 	pixel_y = -4
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/item/device/whistle,
+/obj/item/clothing/accessory/device/whistle,
 /turf/open/asphalt/cement,
 /area/shiva/interior/warehouse)
 "uaa" = (

@@ -1,4 +1,0 @@
-author: "aquariofury"
-delete-after: True
-changes:
-  - bugfix: "Prevents things with ITEM_ABSTRACT from being put into linen bins"

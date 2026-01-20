@@ -218,7 +218,7 @@
 			return
 		user.visible_message(SPAN_NOTICE("[user] starts to empty \the [pbottle.name] into [src]..."),
 		SPAN_NOTICE("You start to empty \the [pbottle.name] into [src]..."),
-		SPAN_NOTICE("You hear the emptying of a pill bottle. The pills bloop into liquid..."), 2)
+		SPAN_NOTICE("You hear the emptying of a pill bottle and pills dropping into liquid."), 2)
 
 		var/waiting_time = (length(pbottle.contents)) * 0.125 SECONDS
 		if(!do_after(user, waiting_time, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))

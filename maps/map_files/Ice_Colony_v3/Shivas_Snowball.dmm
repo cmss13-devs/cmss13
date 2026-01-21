@@ -1158,8 +1158,8 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/medseceng)
 "agF" = (
-/obj/structure/machinery/landinglight/ds2,
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight,
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/floor/shiva/north,
@@ -4138,7 +4138,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_lz2)
 "aHQ" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/floor/shiva/north,
@@ -5165,8 +5165,8 @@
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/research_hab)
 "aWv" = (
-/obj/structure/machinery/landinglight/ds2,
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight,
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/floor/shiva/north,
@@ -5674,7 +5674,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/cp_colony_grounds)
 "bjP" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/floor/shiva/north,
@@ -6729,7 +6729,7 @@
 /turf/open/floor/shiva/multi_tiles/north,
 /area/shiva/exterior/lz2_fortress)
 "cBF" = (
-/obj/structure/machinery/landinglight/ds2/delayone,
+/obj/structure/machinery/landinglight/delayone,
 /turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
 "cBG" = (
@@ -7129,10 +7129,10 @@
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
 "cYR" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /turf/open/floor/shiva/north,
@@ -7585,7 +7585,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/interior/caves/cp_camp)
 "dDo" = (
-/obj/structure/machinery/landinglight/ds1/spoke,
+/obj/structure/machinery/landinglight/spoke,
 /turf/open/floor/shiva/multi_tiles/southeast,
 /area/shiva/interior/colony/botany)
 "dDy" = (
@@ -8452,7 +8452,7 @@
 /turf/closed/wall/shiva/prefabricated/white,
 /area/shiva/exterior/cp_lz2)
 "eVa" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /turf/open/floor/shiva/floor3,
@@ -8872,8 +8872,8 @@
 /turf/open/floor/plating,
 /area/shiva/interior/colony/botany)
 "fxw" = (
-/obj/structure/machinery/landinglight/ds2/spoke,
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/spoke,
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /turf/open/floor/shiva/north,
@@ -9133,10 +9133,10 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/colony/research_hab)
 "fLz" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/floor/shiva/north,
@@ -9495,7 +9495,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/right_spiders)
 "gkK" = (
-/obj/structure/machinery/landinglight/ds2/delaythree,
+/obj/structure/machinery/landinglight/delaythree,
 /turf/open/floor/shiva/floor3,
 /area/shiva/exterior/lz2_fortress)
 "gkL" = (
@@ -9749,7 +9749,7 @@
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
 "gCx" = (
-/obj/structure/machinery/landinglight/ds1/spoke,
+/obj/structure/machinery/landinglight/spoke,
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/lz1_valley)
 "gCy" = (
@@ -10373,10 +10373,10 @@
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/junkyard)
 "hpN" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
-/obj/structure/machinery/landinglight/ds2/delaytwo,
+/obj/structure/machinery/landinglight/delaytwo,
 /turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
 "hqd" = (
@@ -10879,7 +10879,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/junkyard)
 "hSq" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/floor/shiva/floor3,
@@ -11028,10 +11028,10 @@
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/botany)
 "hZu" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/floor/shiva/north,
@@ -11758,7 +11758,7 @@
 /turf/open/floor/plating,
 /area/shiva/interior/caves/research_caves)
 "iUk" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /turf/open/floor/shiva/north,
@@ -12251,7 +12251,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/s_admin)
 "jBN" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /turf/open/floor/shiva/north,
@@ -12381,7 +12381,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/junkyard)
 "jLc" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /turf/open/floor/shiva/north,
@@ -12686,8 +12686,8 @@
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/cp_s_research)
 "kcB" = (
-/obj/structure/machinery/landinglight/ds2/spoke,
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/spoke,
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/floor/shiva/north,
@@ -12797,7 +12797,7 @@
 /turf/open/floor/wood,
 /area/shiva/interior/colony/botany)
 "kiv" = (
-/obj/structure/machinery/landinglight/ds2,
+/obj/structure/machinery/landinglight,
 /turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
 "kiB" = (
@@ -13284,7 +13284,7 @@
 /turf/open/floor/shiva/red/north,
 /area/shiva/interior/colony/medseceng)
 "kIH" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /turf/open/floor/shiva/north,
@@ -13318,7 +13318,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/lz1_valley)
 "kLa" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/floor/shiva/floor3,
@@ -13643,7 +13643,7 @@
 /turf/open/floor/wood,
 /area/shiva/interior/bar)
 "las" = (
-/obj/structure/machinery/landinglight/ds2/spoke{
+/obj/structure/machinery/landinglight/spoke{
 	pixel_x = 1;
 	pixel_y = 22
 	},
@@ -13748,10 +13748,10 @@
 /turf/open/auto_turf/snow/layer4,
 /area/shiva/exterior/junkyard)
 "lgx" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/floor/shiva/north,
@@ -13974,13 +13974,13 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_s_research)
 "luR" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
 "lvj" = (
-/obj/structure/machinery/landinglight/ds2,
+/obj/structure/machinery/landinglight,
 /turf/open/floor/shiva/floor3,
 /area/shiva/exterior/lz2_fortress)
 "lvq" = (
@@ -14075,7 +14075,7 @@
 /turf/open/floor/shiva/yellowfull/west,
 /area/shiva/interior/colony/research_hab)
 "lBC" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/floor/shiva/north,
@@ -14899,7 +14899,7 @@
 /turf/open/floor/plating/plating_catwalk/shiva,
 /area/shiva/exterior/lz2_fortress)
 "mBM" = (
-/obj/structure/machinery/landinglight/ds2/spoke{
+/obj/structure/machinery/landinglight/spoke{
 	pixel_x = -2;
 	pixel_y = 23
 	},
@@ -14963,7 +14963,7 @@
 /turf/open/floor/wood,
 /area/shiva/interior/colony/botany)
 "mEp" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
 /turf/open/floor/shiva/north,
@@ -15079,7 +15079,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/junkyard)
 "mJA" = (
-/obj/structure/machinery/landinglight/ds2/spoke{
+/obj/structure/machinery/landinglight/spoke{
 	pixel_x = -2;
 	pixel_y = 22
 	},
@@ -15199,7 +15199,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/valley)
 "mQl" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /turf/open/floor/shiva/north,
@@ -15529,8 +15529,8 @@
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
 "nlG" = (
-/obj/structure/machinery/landinglight/ds2/spoke,
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/spoke,
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /turf/open/floor/shiva/north,
@@ -17263,8 +17263,8 @@
 /turf/open/floor/shiva/multi_tiles/southeast,
 /area/shiva/interior/bar)
 "pBl" = (
-/obj/structure/machinery/landinglight/ds2/spoke,
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/spoke,
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/floor/shiva/north,
@@ -17392,7 +17392,7 @@
 /turf/open/floor/shiva/wred/southwest,
 /area/shiva/interior/colony/medseceng)
 "pGg" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo,
+/obj/structure/machinery/landinglight/delaytwo,
 /turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
 "pGi" = (
@@ -17929,7 +17929,7 @@
 /turf/open/shuttle/elevator,
 /area/shiva/interior/aerodrome)
 "qkI" = (
-/obj/structure/machinery/landinglight/ds1/spoke,
+/obj/structure/machinery/landinglight/spoke,
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/lz1_valley)
 "qkL" = (
@@ -19250,7 +19250,7 @@
 	},
 /area/shiva/interior/aerodrome)
 "rXp" = (
-/obj/structure/machinery/landinglight/ds2/delayone,
+/obj/structure/machinery/landinglight/delayone,
 /turf/open/floor/shiva/floor3,
 /area/shiva/exterior/lz2_fortress)
 "rXt" = (
@@ -19656,7 +19656,7 @@
 /turf/open/floor/shiva/red/northeast,
 /area/shiva/interior/colony/medseceng)
 "sxD" = (
-/obj/structure/machinery/landinglight/ds2/spoke,
+/obj/structure/machinery/landinglight/spoke,
 /turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
 "sxS" = (
@@ -20150,7 +20150,7 @@
 /turf/open/floor/interior/plastic/alt,
 /area/shiva/interior/warehouse)
 "sZx" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 1
 	},
 /turf/open/floor/shiva/north,
@@ -20644,10 +20644,6 @@
 	dir = 4
 	},
 /area/shiva/interior/aerodrome)
-"tGS" = (
-/obj/structure/machinery/landinglight/ds2/spoke,
-/turf/open/floor/shiva/multi_tiles/southeast,
-/area/shiva/interior/colony/botany)
 "tGU" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Colony Dormitories Canteen";
@@ -21259,10 +21255,10 @@
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/n_admin)
 "ujV" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/floor/shiva/north,
@@ -22158,7 +22154,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/southwest_valley)
 "voH" = (
-/obj/structure/machinery/landinglight/ds2/spoke{
+/obj/structure/machinery/landinglight/spoke{
 	pixel_x = 1;
 	pixel_y = 23
 	},
@@ -22735,7 +22731,7 @@
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
 "wfO" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /turf/open/floor/shiva/floor3,
@@ -22887,8 +22883,8 @@
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
 "wpl" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo,
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaytwo,
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/floor/shiva/north,
@@ -23760,7 +23756,7 @@
 /turf/open/floor/shiva/purplefull,
 /area/shiva/interior/colony/research_hab)
 "xEd" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/floor/shiva/north,
@@ -24187,7 +24183,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/medseceng)
 "ylP" = (
-/obj/structure/machinery/landinglight/ds2/delaythree,
+/obj/structure/machinery/landinglight/delaythree,
 /turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
 "ylU" = (
@@ -38998,7 +38994,7 @@ tnh
 jhq
 qlQ
 emd
-tGS
+dDo
 asJ
 dDo
 emd

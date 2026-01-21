@@ -4947,7 +4947,7 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "azZ" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -5082,7 +5082,7 @@
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "aAJ" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -5428,7 +5428,7 @@
 /turf/open/floor/purple/northwest,
 /area/lv624/lazarus/sleep_female)
 "aCh" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -5757,19 +5757,19 @@
 /turf/open/floor/warning/west,
 /area/lv624/lazarus/landing_zones/lz1)
 "aDI" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo,
+/obj/structure/machinery/landinglight/delaytwo,
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "aDJ" = (
-/obj/structure/machinery/landinglight/ds1/delayone,
+/obj/structure/machinery/landinglight/delayone,
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "aDK" = (
-/obj/structure/machinery/landinglight/ds1,
+/obj/structure/machinery/landinglight,
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "aDL" = (
-/obj/structure/machinery/landinglight/ds1/delaythree,
+/obj/structure/machinery/landinglight/delaythree,
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "aDM" = (
@@ -5780,7 +5780,7 @@
 /turf/open/gm/river,
 /area/lv624/ground/jungle/west_jungle)
 "aDO" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -5845,13 +5845,13 @@
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "aEj" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "aEl" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -5879,7 +5879,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
 "aEw" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -6189,13 +6189,13 @@
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "aFK" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "aFM" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -6263,13 +6263,13 @@
 /turf/open/floor/warning/northeast,
 /area/lv624/lazarus/landing_zones/lz1)
 "aGe" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "aGf" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -6355,7 +6355,7 @@
 /turf/open/floor,
 /area/lv624/lazarus/landing_zones/lz1)
 "aGB" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -6365,7 +6365,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "aGE" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -6440,7 +6440,7 @@
 /turf/closed/wall,
 /area/lv624/lazarus/main_hall)
 "aGX" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -7611,7 +7611,7 @@
 /area/lv624/lazarus/canteen)
 "aNp" = (
 /obj/effect/landmark/hunter_secondary,
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -8367,7 +8367,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz1)
 "aRu" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -8493,25 +8493,25 @@
 /turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "aRZ" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "aSa" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "aSb" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 1
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "aSc" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -8761,7 +8761,7 @@
 /turf/open/floor/plating/platebotc,
 /area/lv624/lazarus/engineering)
 "aTt" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo,
+/obj/structure/machinery/landinglight/delaytwo,
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
 "aTu" = (
@@ -8776,7 +8776,7 @@
 /turf/open/floor/dark,
 /area/lv624/lazarus/engineering)
 "aTv" = (
-/obj/structure/machinery/landinglight/ds2,
+/obj/structure/machinery/landinglight,
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
 "aTw" = (
@@ -10210,7 +10210,7 @@
 /turf/open/gm/dirtgrassborder/north,
 /area/lv624/lazarus/landing_zones/lz2)
 "aZT" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -10570,7 +10570,7 @@
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/lv624/ground/river/east_river)
 "byK" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -14849,7 +14849,7 @@
 /turf/open/floor/dark,
 /area/lv624/lazarus/comms)
 "kvE" = (
-/obj/structure/machinery/landinglight/ds2/delaythree,
+/obj/structure/machinery/landinglight/delaythree,
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
 "kwG" = (
@@ -15110,7 +15110,7 @@
 /turf/open/floor/dark,
 /area/lv624/lazarus/corporate_dome)
 "kWJ" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -16642,7 +16642,7 @@
 /turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
 "odw" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -16994,7 +16994,7 @@
 /turf/open/floor/warning,
 /area/lv624/lazarus/landing_zones/lz2)
 "oOB" = (
-/obj/structure/machinery/landinglight/ds2/delayone,
+/obj/structure/machinery/landinglight/delayone,
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
 "oOV" = (
@@ -17675,10 +17675,10 @@
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "qae" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/effect/sentry_landmark/lz_2/bottom_left,
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
-/obj/effect/sentry_landmark/lz_2/bottom_left,
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
 "qaE" = (
@@ -17991,7 +17991,7 @@
 /turf/open/floor/brown/northwest,
 /area/lv624/lazarus/comms)
 "qNQ" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/floor/plating,

@@ -34,7 +34,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/telecomm)
 "af" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /turf/open/floor/asteroidwarning/east,
@@ -120,7 +120,7 @@
 	},
 /area/bigredv2/outside/nw)
 "bO" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /turf/open/floor/asteroidwarning/north,
@@ -131,7 +131,7 @@
 /turf/open/floor/asteroidwarning/north,
 /area/bigred/ground/garage_workshop)
 "bU" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
 /turf/open/floor/asteroidwarning/north,
@@ -212,7 +212,7 @@
 /turf/open/mars/mars_dirt_3,
 /area/bigredv2/outside/nw)
 "ee" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -286,7 +286,7 @@
 /turf/open/floor/plating/platebot,
 /area/bigredv2/outside/space_port)
 "gl" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/floor/asteroidwarning/west,
@@ -302,7 +302,7 @@
 /area/space)
 "gy" = (
 /obj/effect/landmark/crap_item,
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/floor/asteroidwarning/east,
@@ -337,7 +337,7 @@
 /turf/open/floor/asteroidwarning/north,
 /area/bigredv2/outside/nw)
 "gZ" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo,
+/obj/structure/machinery/landinglight/delaytwo,
 /turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/space_port)
 "hg" = (
@@ -736,7 +736,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "qV" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -759,13 +759,13 @@
 /turf/open/mars_cave/mars_cave_17,
 /area/bigredv2/outside/lz1_north_cas)
 "rx" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /turf/open/floor/asteroidwarning/west,
 /area/bigredv2/outside/space_port)
 "rz" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -887,7 +887,7 @@
 /turf/open/mars,
 /area/bigredv2/outside/nw)
 "uI" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/floor/asteroidwarning/east,
@@ -1161,7 +1161,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/nw)
 "Bv" = (
-/obj/structure/machinery/landinglight/ds1,
+/obj/structure/machinery/landinglight,
 /turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/space_port)
 "BE" = (
@@ -1212,7 +1212,7 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/telecomm)
 "CA" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /turf/open/floor/asteroidwarning/west,
@@ -1367,7 +1367,7 @@
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/telecomm)
 "Ff" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -1673,7 +1673,7 @@
 /turf/open/floor,
 /area/bigred/ground/garage_workshop)
 "LC" = (
-/obj/structure/machinery/landinglight/ds1/delayone,
+/obj/structure/machinery/landinglight/delayone,
 /turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/space_port)
 "LH" = (
@@ -1681,7 +1681,7 @@
 /turf/open/mars,
 /area/bigredv2/outside/nw)
 "LI" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 1
 	},
 /turf/open/floor/asteroidwarning/north,
@@ -1839,7 +1839,7 @@
 /area/bigredv2/outside/telecomm)
 "OI" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/floor/asteroidwarning/west,
@@ -1908,7 +1908,7 @@
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/nw)
 "PI" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/floor/asteroidwarning/east,
@@ -1982,7 +1982,7 @@
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/lz1_north_cas)
 "Ru" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -2014,7 +2014,7 @@
 /area/bigredv2/outside/telecomm)
 "RX" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /turf/open/floor/asteroidwarning/west,
@@ -2076,7 +2076,7 @@
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/space_port)
 "TS" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /turf/open/floor/asteroidwarning/east,
@@ -2137,7 +2137,7 @@
 /turf/open/floor/darkgreen2/east,
 /area/bigredv2/outside/space_port)
 "Vv" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/floor/asteroidwarning/west,
@@ -2314,7 +2314,7 @@
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/space_port)
 "YH" = (
-/obj/structure/machinery/landinglight/ds1/delaythree,
+/obj/structure/machinery/landinglight/delaythree,
 /turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/space_port)
 "YJ" = (
@@ -2370,7 +2370,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/bigredv2/outside/nw)
 "Zt" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /turf/open/floor/asteroidwarning/north,

@@ -21971,7 +21971,9 @@
 	pixel_x = -1;
 	pixel_y = 6
 	},
-/obj/item/weapon/gun/rifle/m41a/elite,
+/obj/item/weapon/gun/rifle/m41a/elite{
+	desc = "A modified version M41A Pulse Rifle MK2, re-engineered for better weight, handling and accuracy. Fires precise two-round bursts. Given only to elite units. Too bad this one's stuck on the other side of a bulletproof window."
+	},
 /turf/open/desert/rock,
 /area/desert_dam/oob)
 "bqh" = (

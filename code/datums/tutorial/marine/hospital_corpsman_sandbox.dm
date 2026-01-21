@@ -466,8 +466,8 @@
 		active_agents -= agent
 	QDEL_IN(agent, 2.5 SECONDS)
 	animate(agent, 2.5 SECONDS, alpha = 0, easing = CUBIC_EASING)
-	for(var/obj/item/clothing/suit/storage/marine/medium/armor as anything in cleanup)
-		item_cleanup(armor)
+	for(var/obj/item/cleanup_item as anything in cleanup)
+		item_cleanup(cleanup_item)
 	if(!length(agents))
 		INVOKE_ASYNC(src, PROC_REF(handle_round_progression))
 

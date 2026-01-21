@@ -306,6 +306,9 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		for(var/split in splittext(ckey_to_find, "."))
 			found_ckey = found_ckey[split]
 
+			if(!found_ckey)
+				break
+
 		if(!length(found_ckey))
 			if(length(fallback))
 				found_ckey = response_decoded[fallback]
@@ -328,6 +331,9 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		var/found_username = response_decoded
 		for(var/split in splittext(username_to_find, "."))
 			found_username = found_username[split]
+
+			if(!found_username)
+				break
 
 		if(!length(found_username))
 			break

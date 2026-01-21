@@ -39,6 +39,15 @@
 
 	var/lip_style = null //no lipstick by default- arguably misleading, as it could be used for general makeup
 
+	// Bunch of tattoo vars
+	var/head_tattoo = null
+	var/chest_tattoo = null
+	var/back_tattoo = null
+	var/left_arm_tattoo = null
+	var/right_arm_tattoo = null
+	var/left_leg_tattoo = null
+	var/right_leg_tattoo = null
+
 	var/age = 30 //Player's age (pure fluff)
 	blood_type = "A+" //Player's bloodtype
 

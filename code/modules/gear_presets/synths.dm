@@ -424,7 +424,7 @@
 		WEAR_WAIST = /obj/item/reagent_container/spray/cleaner,
 		WEAR_R_HAND = /obj/item/storage/fancy/crayons,
 		WEAR_FEET = /obj/item/clothing/shoes/marine/knife,
-		WEAR_L_HAND = /obj/item/weapon/butterfly/switchblade
+		WEAR_L_HAND = /obj/item/weapon/folding_knife/switchblade
 	)
 
 /datum/equipment_preset/synth/survivor/freelancer_synth
@@ -522,7 +522,7 @@
 		WEAR_WAIST = /obj/item/device/camera/oldcamera,
 		WEAR_R_HAND = /obj/item/device/broadcasting,
 		WEAR_FEET = /obj/item/clothing/shoes/dress,
-		WEAR_L_HAND = /obj/item/weapon/butterfly/switchblade
+		WEAR_L_HAND = /obj/item/weapon/folding_knife/switchblade
 	)
 
 /datum/equipment_preset/synth/survivor/detective_synth
@@ -949,7 +949,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_L_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/butterfly(new_human), WEAR_IN_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/folding_knife(new_human), WEAR_IN_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight(new_human), WEAR_IN_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/chloroform(new_human), WEAR_IN_L_STORE)
 

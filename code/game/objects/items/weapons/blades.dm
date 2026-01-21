@@ -230,6 +230,76 @@
 	else
 		to_chat(user, SPAN_NOTICE("You couldn't find any shrapnel."))
 
+/// Aside from not being attachable, these are identical to bayonets
+/obj/item/weapon/knife
+	name ="knife"
+	desc = "A bog-standard knife. This should not be seen normally, file an issue if you see this!"
+	icon_state = "knife"
+	icon = 'icons/obj/items/weapons/melee/knives.dmi'
+	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/objects.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_righthand.dmi'
+	)
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
+	w_class = SIZE_SMALL
+	sharp = IS_SHARP_ITEM_ACCURATE
+	force = MELEE_FORCE_NORMAL
+	throwforce = MELEE_FORCE_NORMAL
+	throw_speed = SPEED_VERY_FAST
+	throw_range = 6
+	hitsound = 'sound/weapons/slash.ogg'
+	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	attack_speed = 9
+	flags_equip_slot = SLOT_FACE
+	flags_armor_protection = SLOT_FACE
+	flags_item = CAN_DIG_SHRAPNEL
+
+/obj/item/weapon/knife/Initialize(mapload, ...)
+	. = ..()
+	if(flags_equip_slot & SLOT_FACE)
+		AddElement(/datum/element/mouth_drop_item)
+
+/obj/item/weapon/knife/fairburn
+	name ="\improper Fairburn-Sykes fighting knife"
+	desc = "A historic fighting knife with a strong legacy, used by the British during World War II and numerous other militaries afterward."
+	icon_state = "fairburn"
+
+/obj/item/weapon/knife/fairburn/Initialize(mapload, ...)
+	. = ..()
+	if(prob(5))
+		desc += "\n This one has 'ENGLAND' stamped on the crossguard."
+
+/obj/item/weapon/knife/gerber
+	name ="\improper Gerber mark II"
+	desc = "A famous fighting knife used in unofficial capacity by US troops during the Vietnam war. Later variants came with saw tooth serrations and were marketed as survival knives."
+	icon_state = "gerber"
+
+/obj/item/weapon/knife/kabar
+	name ="\improper Ka-Bar"
+	desc = "A fighting knife adopted and used by US troops from World War II to the Vietnam War. Its robust and simple construction has seen it be used as for utility as much as combat, by both civilians and soldiers."
+	icon_state = "kabar"
+
+/obj/item/weapon/knife/tanto
+	name ="\improper Tanto"
+	desc = "A kind of knife originating from Japan and imitated by Western countries some time after World War II. It has seen many use-cases, from self-defence to seppku, from being used as a concealed weapon to being ornament."
+	icon_state = "tanto"
+
+/obj/item/weapon/knife/bowie
+	name ="\improper Bowie knife"
+	desc = "A style of large knife named after its most famous alleged user, often being more akin to a miniature machete in length and weight. Now <B>this</B> is a knife."
+	icon_state = "bowie"
+
+/obj/item/weapon/knife/baker
+	name ="\improper Baker knife"
+	desc = "" // Note to self: ask for origin of this knife, I can't find it while searching
+	icon_state = "baker"
+
+/obj/item/weapon/knife/shiv
+	name ="\improper shiv"
+	desc = "A kind of improvised knife commonly made by prisoners out of whatever can be fashioned into a stabbing weapon. By shiv standards, this one is quite fancily made and most likely has not seen the inside of a prison cell."
+	icon_state = "shiv"
+
 // Demo and example of a 64x64 weapon.
 /obj/item/weapon/ritual
 	name = "cool knife"
@@ -257,59 +327,78 @@
 	shield_type = SHIELD_DIRECTIONAL
 	shield_sound = 'sound/items/parry.ogg'
 
-/obj/item/weapon/straight_razor
-	name = "straight razor"
-	desc = "The commandant's favorite weapon against marines who dare break the grooming standards."
-	icon_state = "razor"
+/obj/item/weapon/folding_knife
+	name = "folding knife"
+	desc = "A knife with a retracting blade. This should not be seen normally, file an issue if you see this!"
+	icon_state = "razor_closed"
 	icon = 'icons/obj/items/weapons/melee/knives.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_righthand.dmi'
+	)
 	hitsound = 'sound/weapons/genhit3.ogg'
 	force = MELEE_FORCE_TIER_1
 	throwforce = MELEE_FORCE_TIER_1
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 6
-	///Icon state for opened razor
-	var/enabled_icon = "razor"
-	///Icon state for closed razor
+	/// Sound used when opening/closing the blade
+	var/enable_disable_sound = 'sound/weapons/flipblade.ogg'
+	/// Used when opening the blade
+	var/enabled_verb = "reveal"
+	/// Used when closing the blade
+	var/disabled_verb = "hide"
+	/// Icon state for opened razor
+	var/enabled_icon = "razor_open"
+	/// Icon state for closed razor
 	var/disabled_icon = "razor_off"
-	///If the razor is able to be used
+	/// Prevents stacking the opening proc if it isn't instant
+	var/changing_state = FALSE
+	/// If the razor is able to be used
 	var/razor_opened = FALSE
-	///Time taken to open/close the razor
-	var/interaction_time = 3 SECONDS
+	/// Time taken to open/close the razor if it isn't instant
+	var/interaction_time = 2 SECONDS
 
-/obj/item/weapon/straight_razor/Initialize(mapload, ...)
+/*
+// This code only half-works: holstering via hotkey causes all this to be called, but holstering by clicking on the boots doesn't
+// As I am too lazy to sort this out now (18/01/2026), commenting it out fix later and to avoid confusion when quickholstering
+
+/obj/item/weapon/folding_knife/Initialize(mapload, ...)
 	. = ..()
 	RegisterSignal(src, COMSIG_ITEM_ATTEMPTING_EQUIP, PROC_REF(can_fit_in_shoe))
 	change_razor_state(razor_opened)
-	if(prob(1))
-		desc += " There is phrase etched into it, \"<i>It can guarantee the closest shave you'll ever know.</i>\"..."
-
-/obj/item/weapon/straight_razor/update_icon()
-	. = ..()
-	if(razor_opened)
-		icon_state = enabled_icon
-		return
-	icon_state = disabled_icon
-
-/obj/item/weapon/straight_razor/attack_hand(mob/user)
-	if(loc != user) //Only do unique stuff if you are holding it
-		return ..()
-
-	if(!do_after(user, interaction_time, INTERRUPT_INCAPACITATED, BUSY_ICON_HOSTILE))
-		return
-	playsound(user, 'sound/weapons/flipblade.ogg', 15, 1)
-	change_razor_state(!razor_opened)
-	to_chat(user, SPAN_NOTICE("You [razor_opened ? "reveal" : "hide"] [src]'s blade."))
 
 ///Check if the item can fit as a boot knife, var/source for signals
-/obj/item/weapon/straight_razor/proc/can_fit_in_shoe(source = src, mob/user, slot)
+/obj/item/weapon/folding_knife/proc/can_fit_in_shoe(source = src, mob/user, slot)
 	if(slot != WEAR_IN_SHOES) //Only check if you try putting it in a shoe
 		return
 	if(razor_opened)
 		to_chat(user, SPAN_NOTICE("You cannot store [src] in your shoes until the blade is hidden."))
 		return COMPONENT_CANCEL_EQUIP
+*/
 
-///Changes all the vars for the straight razor
-/obj/item/weapon/straight_razor/proc/change_razor_state(opening = FALSE)
+/obj/item/weapon/folding_knife/update_icon()
+	. = ..()
+	if(razor_opened)
+		icon_state = enabled_icon
+		item_state = enabled_icon
+		return
+	icon_state = disabled_icon
+	item_state = disabled_icon
+
+/obj/item/weapon/folding_knife/unique_action(mob/user)
+	if(changing_state)
+		return
+	changing_state = TRUE
+	if(!do_after(user, interaction_time, INTERRUPT_INCAPACITATED, BUSY_ICON_HOSTILE))
+		changing_state = FALSE
+		return
+	changing_state = FALSE
+	playsound(user, enable_disable_sound, 15, 1)
+	change_razor_state(!razor_opened)
+	to_chat(user, SPAN_NOTICE("You [razor_opened ? enabled_verb : disabled_verb] [src]'s blade."))
+
+///Changes all the vars when opening/closing the knife
+/obj/item/weapon/folding_knife/proc/change_razor_state(opening = FALSE)
 	razor_opened = opening
 	update_icon()
 	if(opening)
@@ -317,6 +406,8 @@
 		throwforce = MELEE_FORCE_NORMAL
 		sharp = IS_SHARP_ITEM_ACCURATE
 		edge = TRUE
+		w_class = SIZE_SMALL
+		flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 		attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 		hitsound = 'sound/weapons/slash.ogg'
 		if(!(flags_item & CAN_DIG_SHRAPNEL))
@@ -326,12 +417,23 @@
 	throwforce = MELEE_FORCE_TIER_1
 	sharp = FALSE
 	edge = FALSE
+	w_class = SIZE_TINY
+	flags_atom = FPRINT|QUICK_DRAWABLE
 	attack_verb = list("smashed", "beaten", "slammed", "struck", "smashed", "battered", "cracked")
 	hitsound = 'sound/weapons/genhit3.ogg'
 	if(flags_item & CAN_DIG_SHRAPNEL)
 		flags_item &= ~CAN_DIG_SHRAPNEL
 
-/obj/item/weapon/straight_razor/verb/change_hair_style()
+/obj/item/weapon/folding_knife/straight_razor
+	name = "straight razor"
+	desc = "The commandant's favorite weapon against marines who dare break the grooming standards."
+
+/obj/item/weapon/folding_knife/straight_razor/Initialize(mapload, ...)
+	. = ..()
+	if(prob(1))
+		desc += " There is phrase etched into it, \"<i>It can guarantee the closest shave you'll ever know.</i>\"..."
+
+/obj/item/weapon/folding_knife/straight_razor/verb/change_hair_style()
 	set name = "Change Hair Style"
 	set desc = "Change your hair style."
 	set category = "Object"
@@ -395,6 +497,59 @@
 
 	human_user.apply_damage(rand(1,5), BRUTE, "head", src)
 	human_user.update_hair()
+
+
+/obj/item/weapon/folding_knife/switchblade
+	name = "switchblade"
+	desc = "A stiletto-styled pocketknife with a folding blade. The classic choice for delinquents and criminals, leather jacket and pompadour not included."
+	icon_state = "switchblade_closed"
+	enabled_icon = "switchblade_open"
+	disabled_icon = "switchblade_closed"
+	enabled_verb = "flip out"
+	disabled_verb = "fold in"
+	interaction_time = 1 SECONDS
+
+/obj/item/weapon/folding_knife/switchblade/unique_action(mob/user)
+	if(razor_opened && changing_state)
+		return
+	changing_state = TRUE
+	if(razor_opened && !do_after(user, interaction_time, INTERRUPT_INCAPACITATED, BUSY_ICON_HOSTILE))
+		changing_state = FALSE
+		return
+	changing_state = FALSE
+	playsound(user, enable_disable_sound, 15, 1)
+	change_razor_state(!razor_opened)
+	to_chat(user, SPAN_NOTICE("You [razor_opened ? enabled_verb : disabled_verb] [src]'s blade."))
+
+/obj/item/weapon/folding_knife/butterfly
+	name = "butterfly knife"
+	desc = "A simple folding pocketknife of Filipino origin opened through 'flipping' the blade. A favourite of show-offs."
+	icon_state = "butterfly_closed"
+	enabled_icon = "butterfly_open"
+	disabled_icon = "butterfly_closed"
+
+/obj/item/weapon/folding_knife/butterfly/unique_action(mob/user)
+	if(changing_state)
+		return
+	changing_state = TRUE
+	user.visible_message(SPAN_NOTICE("[user] starts flipping [src]..."), SPAN_NOTICE("You start flipping [src]..."))
+	if(!do_after(user, interaction_time, INTERRUPT_INCAPACITATED, BUSY_ICON_HOSTILE))
+		changing_state = FALSE
+		return
+	changing_state = FALSE
+	playsound(user, enable_disable_sound, 15, 1)
+	change_razor_state(!razor_opened)
+	if(razor_opened)
+		user.visible_message(SPAN_NOTICE("[user] opens [src] with a cool flourish!"), SPAN_NOTICE("You open [src] with a cool flourish!"))
+	else
+		user.visible_message(SPAN_NOTICE("[user] closes [src] with a cool flourish!"), SPAN_NOTICE("You close [src] with a cool flourish!"))
+
+/obj/item/weapon/folding_knife/swiss
+	name = "swiss army knife"
+	desc = "The famous multitool pocketknife of Swiss origin, designed specially for their military. This one seems to be missing everything but the knife. Drat."
+	icon_state = "swiss_closed"
+	enabled_icon = "swiss_open"
+	disabled_icon = "swiss_closed"
 
 /obj/item/weapon/sword/gladius
 	name = "Gladius sword"

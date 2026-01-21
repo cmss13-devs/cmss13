@@ -25,7 +25,7 @@
 		/obj/item/weapon/gun/pistol/clfpistol,
 		/obj/item/tool/screwdriver,
 		/obj/item/tool/surgery/scalpel,
-		/obj/item/weapon/straight_razor,
+		/obj/item/weapon/folding_knife,
 	)
 	drop_sound = "armorequip"
 
@@ -153,7 +153,7 @@
 		/obj/item/weapon/throwing_knife,
 		/obj/item/weapon/gun/pistol/action,
 		/obj/item/weapon/gun/pistol/clfpistol,
-		/obj/item/weapon/straight_razor,
+		/obj/item/weapon/folding_knife,
 	)
 
 /obj/item/clothing/shoes/veteran/pmc/update_icon()
@@ -258,7 +258,7 @@
 		/obj/item/weapon/throwing_knife,
 		/obj/item/weapon/gun/pistol/action,
 		/obj/item/weapon/gun/pistol/clfpistol,
-		/obj/item/weapon/straight_razor,
+		/obj/item/weapon/folding_knife,
 	)
 	var/weed_slowdown_mult = 0.5
 

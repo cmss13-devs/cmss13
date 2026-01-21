@@ -965,6 +965,7 @@ This function completely restores a damaged organ to perfect condition.
 				owner.drop_inv_item_on_ground(owner.wear_r_ear, null, TRUE)
 				owner.drop_inv_item_on_ground(owner.wear_mask, null, TRUE)
 				owner.lip_style = null
+				owner.head_tattoo = null
 				owner.update_hair()
 				if(owner.species)
 					owner.species.handle_head_loss(owner)
@@ -977,6 +978,7 @@ This function completely restores a damaged organ to perfect condition.
 					var/obj/item/clothing/under/U = owner.w_uniform
 					U.removed_parts |= body_part
 					owner.update_inv_w_uniform()
+				owner.right_arm_tattoo = null
 			if(BODY_FLAG_ARM_LEFT)
 				if(status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 					organ = new /obj/item/robot_parts/arm/l_arm(owner.loc)
@@ -986,6 +988,7 @@ This function completely restores a damaged organ to perfect condition.
 					var/obj/item/clothing/under/U = owner.w_uniform
 					U.removed_parts |= body_part
 					owner.update_inv_w_uniform()
+				owner.left_arm_tattoo = null
 			if(BODY_FLAG_LEG_RIGHT)
 				if(status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 					organ = new /obj/item/robot_parts/leg/r_leg(owner.loc)
@@ -995,6 +998,7 @@ This function completely restores a damaged organ to perfect condition.
 					var/obj/item/clothing/under/U = owner.w_uniform
 					U.removed_parts |= body_part
 					owner.update_inv_w_uniform()
+				owner.right_leg_tattoo = null
 			if(BODY_FLAG_LEG_LEFT)
 				if(status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 					organ = new /obj/item/robot_parts/leg/l_leg(owner.loc)
@@ -1004,6 +1008,7 @@ This function completely restores a damaged organ to perfect condition.
 					var/obj/item/clothing/under/U = owner.w_uniform
 					U.removed_parts |= body_part
 					owner.update_inv_w_uniform()
+				owner.left_leg_tattoo = null
 			if(BODY_FLAG_HAND_RIGHT)
 				if(status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 					organ = new /obj/item/robot_parts/hand/r_hand(owner.loc)
@@ -1427,6 +1432,31 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	splint_icon_amount = 4
 	bandage_icon_amount = 4
 
+	var/chest_tattoo
+	var/back_tattoo
+
+/obj/limb/chest/update_limb()
+	. = ..()
+
+	chest_tattoo = owner.chest_tattoo
+	back_tattoo = owner.back_tattoo
+
+/obj/limb/chest/get_limb_icon()
+	. = ..()
+
+	if(chest_tattoo || back_tattoo)
+		if(chest_tattoo)
+			var/image/tattoo = image('icons/mob/humans/onmob/tattoos.dmi', "[chest_tattoo]", layer = -BODYPARTS_LAYER)
+			. += tattoo
+		if(back_tattoo)
+			var/image/tattoo = image('icons/mob/humans/onmob/tattoos.dmi', "[back_tattoo]", layer = -BODYPARTS_LAYER)
+			. += tattoo
+
+/obj/limb/chest/get_limb_icon_key()
+	. = ..()
+
+	return "[.]-[chest_tattoo]-[back_tattoo]"
+
 /obj/limb/groin
 	name = "groin"
 	icon_name = "groin"
@@ -1453,6 +1483,15 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	min_broken_damage = 20
 	min_eschar_damage = 20
 
+	var/leg_tattoo
+
+/obj/limb/leg/get_limb_icon()
+	. = ..()
+
+	if(leg_tattoo)
+		var/image/tattoo = image('icons/mob/humans/onmob/tattoos.dmi', "[leg_tattoo]", layer = -BODYPARTS_LAYER)
+		. += tattoo
+
 /obj/limb/foot
 	name = "foot"
 	display_name = "foot"
@@ -1467,6 +1506,15 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	max_damage = 35
 	min_broken_damage = 20
 	min_eschar_damage = 20
+
+	var/arm_tattoo
+
+/obj/limb/arm/get_limb_icon()
+	. = ..()
+
+	if(arm_tattoo)
+		var/image/tattoo = image('icons/mob/humans/onmob/tattoos.dmi', "[arm_tattoo]", layer = -BODYPARTS_LAYER)
+		. += tattoo
 
 /obj/limb/hand
 	name = "hand"
@@ -1483,6 +1531,16 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	body_part = BODY_FLAG_ARM_LEFT
 	has_stump_icon = TRUE
 
+/obj/limb/arm/l_arm/update_limb()
+	. = ..()
+
+	arm_tattoo = owner.left_arm_tattoo
+
+/obj/limb/arm/l_arm/get_limb_icon_key()
+	. = ..()
+
+	return "[.]-[arm_tattoo]"
+
 /obj/limb/arm/l_arm/process()
 	..()
 	process_grasp(owner.l_hand, "left hand")
@@ -1495,12 +1553,32 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	icon_position = LEFT
 	has_stump_icon = TRUE
 
+/obj/limb/leg/l_leg/update_limb()
+	. = ..()
+
+	leg_tattoo = owner.left_leg_tattoo
+
+/obj/limb/leg/l_leg/get_limb_icon_key()
+	. = ..()
+
+	return "[.]-[leg_tattoo]"
+
 /obj/limb/arm/r_arm
 	name = "r_arm"
 	display_name = "right arm"
 	icon_name = "r_arm"
 	body_part = BODY_FLAG_ARM_RIGHT
 	has_stump_icon = TRUE
+
+/obj/limb/arm/r_arm/update_limb()
+	. = ..()
+
+	arm_tattoo = owner.right_arm_tattoo
+
+/obj/limb/arm/r_arm/get_limb_icon_key()
+	. = ..()
+
+	return "[.]-[arm_tattoo]"
 
 /obj/limb/arm/r_arm/process()
 	..()
@@ -1513,6 +1591,16 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	body_part = BODY_FLAG_LEG_RIGHT
 	icon_position = RIGHT
 	has_stump_icon = TRUE
+
+/obj/limb/leg/r_leg/update_limb()
+	. = ..()
+
+	leg_tattoo = owner.right_leg_tattoo
+
+/obj/limb/leg/r_leg/get_limb_icon_key()
+	. = ..()
+
+	return "[.]-[leg_tattoo]"
 
 /obj/limb/foot/l_foot
 	name = "l_foot"
@@ -1573,6 +1661,8 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 
 	var/lip_style
 
+	var/head_tattoo
+
 /obj/limb/head/update_limb()
 	. = ..()
 
@@ -1581,6 +1671,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	eyes_b = owner.b_eyes
 
 	lip_style = owner.lip_style
+	head_tattoo = owner.head_tattoo
 
 /obj/limb/head/get_limb_icon()
 	. = ..()
@@ -1592,6 +1683,10 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	if(HAS_TRAIT(owner, TRAIT_INTENT_EYES))
 		. += emissive_appearance(icon = 'icons/mob/humans/onmob/human_face.dmi', icon_state = species.eyes)
 
+	if(head_tattoo)
+		var/image/tattoo = image('icons/mob/humans/onmob/tattoos.dmi', "[head_tattoo]", layer = -BODYPARTS_LAYER)
+		. += tattoo
+
 	if(lip_style && (species && species.flags & HAS_LIPS))
 		var/image/lips = image('icons/mob/humans/onmob/human_face.dmi', "paint_[lip_style]", layer = -BODYPARTS_LAYER)
 		. += lips
@@ -1599,7 +1694,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 /obj/limb/head/get_limb_icon_key()
 	. = ..()
 
-	return "[.]-[eyes_r]-[eyes_g]-[eyes_b]-[lip_style]"
+	return "[.]-[eyes_r]-[eyes_g]-[eyes_b]-[head_tattoo]-[lip_style]"
 
 /obj/limb/head/reset_limb_surgeries()
 	for(var/zone in list("head", "eyes", "mouth"))

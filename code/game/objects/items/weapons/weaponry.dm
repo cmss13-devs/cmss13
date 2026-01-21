@@ -142,18 +142,6 @@
 		attack_verb = initial(attack_verb)
 		add_fingerprint(user)
 
-/obj/item/weapon/butterfly/switchblade
-	name = "switchblade"
-	desc = "A classic switchblade with gold engraving. Just holding it makes you feel like a gangster."
-	icon_state = "switchblade"
-
-/obj/item/weapon/butterfly/katana
-	name = "katana"
-	desc = "A ancient weapon from Japan."
-	icon_state = "samurai"
-	icon = 'icons/obj/items/weapons/melee/swords.dmi'
-	force = MELEE_FORCE_VERY_STRONG
-
 /obj/item/weapon/wirerod
 	name = "wired rod"
 	desc = "A rod with some wire wrapped around the top. It'd be easy to attach something to the top bit."

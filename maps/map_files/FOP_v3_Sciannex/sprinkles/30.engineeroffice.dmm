@@ -99,7 +99,7 @@
 /obj/structure/sign/poster/music{
 	pixel_y = 29
 	},
-/obj/item/weapon/butterfly{
+/obj/item/weapon/folding_knife/butterfly{
 	pixel_x = 17
 	},
 /turf/open/floor/prison/greenfull/east,

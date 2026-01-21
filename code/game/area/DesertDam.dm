@@ -1076,6 +1076,7 @@
 	name = "Medical Valley"
 	icon_state = "valley"
 	unoviable_timer = FALSE
+	always_unpowered = 0
 
 /area/desert_dam/exterior/valley/valley_hydro
 	name = "Hydro Valley"

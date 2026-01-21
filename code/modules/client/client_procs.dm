@@ -269,22 +269,16 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	return 1
 
 /client/proc/process_preauthorization(list/topic_headers)
-	log_admin("PROCESS_PREAUTHORIZATION: called with topic_headers=[json_encode(topic_headers)]")
 	var/types_to_oidc_endpoint = CONFIG_GET(keyed_list/oidc_endpoint_to_type)
 
 	if(!length(types_to_oidc_endpoint))
-		log_admin("PROCESS_PREAUTHORIZATION: types_to_oidc_endpoint empty, returning")
 		return
 
 	for(var/oidc_endpoint, type in types_to_oidc_endpoint)
-		log_admin("PROCESS_PREAUTHORIZATION: checking oidc_endpoint=[oidc_endpoint], type=[type]")
 		var/access_code = topic_headers[type]
-
 		if(!access_code)
-			log_admin("PROCESS_PREAUTHORIZATION: no access_code for type=[type], skipping")
 			continue
 
-		log_admin("PROCESS_PREAUTHORIZATION: making http request to [oidc_endpoint] with access_code=[access_code]")
 		var/datum/http_request/request = new
 		request.prepare(RUSTG_HTTP_METHOD_GET, oidc_endpoint, null, list(
 			"Authorization" = "Bearer [access_code]"
@@ -292,7 +286,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		request.execute_blocking()
 
 		var/datum/http_response/response = request.into_response()
-
 		if(response.errored || response.error)
 			continue
 

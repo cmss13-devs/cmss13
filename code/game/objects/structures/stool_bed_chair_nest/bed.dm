@@ -215,6 +215,10 @@
 	accepts_bodybag = TRUE
 	base_bed_icon = "roller"
 
+/obj/structure/bed/roller/Initialize(mapload, ...)
+	. = ..()
+	RegisterSignal(src, COMSIG_MOVABLE_PREBUCKLE, PROC_REF(check_buckle))
+
 /obj/structure/bed/roller/MouseDrop(atom/over_object)
 	if(foldabletype && !buckled_mob && !buckled_bodybag)
 		var/mob/living/carbon/human/user = over_object
@@ -236,6 +240,22 @@
 			to_chat(user, SPAN_DANGER("You cannot buckle someone who is handcuffed onto this bed."))
 			return
 	..()
+
+/// Signal handler for COMSIG_MOVABLE_PREBUCKLE to potentially block buckling.
+/obj/structure/bed/roller/proc/check_buckle(obj/bed, mob/buckle_target, mob/user)
+	SIGNAL_HANDLER
+
+	if(buckle_target.mob_size <= MOB_SIZE_XENO)
+		if(buckle_target.stat == DEAD || HAS_TRAIT(buckle_target, TRAIT_OPPOSABLE_THUMBS))
+			return
+
+	if(buckle_target.mob_size > MOB_SIZE_HUMAN)
+		if(!can_carry_big)
+			to_chat(user, SPAN_WARNING("[buckle_target] is too big to buckle in."))
+			return COMPONENT_BLOCK_BUCKLE
+		if(buckle_target.stat != DEAD)
+			to_chat(user, SPAN_WARNING("[buckle_target] resists your attempt to buckle!"))
+			return COMPONENT_BLOCK_BUCKLE
 
 /obj/structure/bed/roller/Collided(atom/movable/moving_atom)
 	if(!isxeno(moving_atom))

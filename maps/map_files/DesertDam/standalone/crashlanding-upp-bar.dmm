@@ -15,26 +15,52 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "ac" = (
+/obj/structure/surface/table/woodentable,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ashtray/glass,
+/turf/open/floor/grimy,
+/area/desert_dam/building/bar/bar)
+"ad" = (
+/obj/structure/flora/tree/joshua,
+/turf/open/desert/rock,
+/area/desert_dam/exterior/valley/bar_valley_dam)
+"ae" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/shard,
+/turf/open/floor/grimy,
+/area/desert_dam/building/bar/bar)
+"af" = (
+/obj/structure/flora/grass/desert/lightgrass_3,
+/turf/open/desert/rock,
+/area/desert_dam/exterior/valley/bar_valley_dam)
+"ag" = (
+/obj/structure/machinery/cm_vending/sorted/boozeomat,
+/obj/structure/prop/hybrisa/misc/machinery/screens/wood_clock{
+	pixel_y = 38
+	},
+/turf/open/floor/grimy,
+/area/desert_dam/building/bar/bar)
+"ah" = (
 /obj/structure/shuttle/part/ert/transparent{
 	name = "Fulcrum";
 	icon_state = "rightengine_1"
 	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/desert_dam/building/bar/bar)
-"ad" = (
+"ai" = (
 /turf/closed/shuttle/ert/transparent{
 	name = "Fulcrum";
 	icon_state = "T5"
 	},
 /area/desert_dam/building/bar/bar)
-"ae" = (
+"aj" = (
 /obj/structure/shuttle/part/ert/transparent{
 	icon_state = "T11";
 	name = "Fulcrum"
 	},
 /turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/bar/bar)
-"af" = (
+"ak" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/shuttle/part/ert/transparent{
 	icon_state = "T16";
@@ -514,8 +540,7 @@
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "jp" = (
 /obj/structure/desertdam/decals/road_edge,
-/obj/structure/machinery/door/poddoor/almayer/locked{
-	dir = 2;
+/obj/structure/machinery/door/poddoor/almayer/planet_side_blastdoor{
 	id = "dam_checkpoint_west";
 	name = "\improper Checkpoint Lock"
 	},
@@ -525,8 +550,7 @@
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal2"
 	},
-/obj/structure/machinery/door/poddoor/almayer/locked{
-	dir = 2;
+/obj/structure/machinery/door/poddoor/almayer/planet_side_blastdoor{
 	id = "dam_checkpoint_west";
 	name = "\improper Checkpoint Lock"
 	},
@@ -838,7 +862,10 @@
 /turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "qe" = (
-/obj/structure/prop/dam/boulder/boulder3,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	dir = 1;
+	color = "#da822a"
+	},
 /turf/open/desert/dirt/desert_transition_corner1/west,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "qu" = (
@@ -875,7 +902,10 @@
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/bar)
 "rR" = (
-/obj/structure/prop/dam/boulder/boulder1,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#da822a";
+	dir = 8
+	},
 /turf/open/desert/dirt/desert_transition_edge1,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "rX" = (
@@ -903,6 +933,9 @@
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "sp" = (
 /obj/structure/machinery/cm_vending/sorted/boozeomat,
+/obj/structure/sign/poster/music{
+	pixel_y = 32
+	},
 /turf/open/floor/grimy,
 /area/desert_dam/building/bar/bar)
 "su" = (
@@ -911,6 +944,7 @@
 	density = 0;
 	pixel_y = 32
 	},
+/obj/item/reagent_container/food/drinks/shaker,
 /turf/open/floor/plating,
 /area/desert_dam/building/bar/bar)
 "sv" = (
@@ -1030,8 +1064,15 @@
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/bar/bar_restroom)
 "vq" = (
-/obj/structure/sink,
-/obj/effect/landmark/objective_landmark/medium,
+/obj/structure/sink{
+	pixel_y = 20
+	},
+/obj/structure/mirror{
+	desc = "Do you remember who you are?";
+	icon_state = "mirror_broke";
+	name = "broken mirror";
+	pixel_y = 32
+	},
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/bar/bar_restroom)
 "vy" = (
@@ -1122,7 +1163,10 @@
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)
 "xg" = (
-/obj/structure/prop/dam/boulder/boulder1,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	dir = 8;
+	color = "#da822a"
+	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "xj" = (
@@ -1143,7 +1187,9 @@
 /turf/open/desert/rock,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "xr" = (
-/obj/structure/prop/dam/boulder/boulder3,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#da822a"
+	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "xt" = (
@@ -1296,6 +1342,15 @@
 "zD" = (
 /obj/structure/surface/table/woodentable,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/reagent_container/food/drinks/bottle/beer/craft/ganucci{
+	pixel_x = 5;
+	pixel_y = 2
+	},
+/obj/item/reagent_container/food/drinks/drinkingglass{
+	icon_state = "shotglass";
+	pixel_x = 3;
+	pixel_y = 20
+	},
 /turf/open/floor/grimy,
 /area/desert_dam/building/bar/bar)
 "zM" = (
@@ -1894,12 +1949,11 @@
 /turf/open/floor/plating/platingdmg3,
 /area/desert_dam/building/bar/bar)
 "LB" = (
-/obj/structure/machinery/door/poddoor/almayer/locked{
-	dir = 2;
+/obj/structure/disposalpipe/segment,
+/obj/structure/machinery/door/poddoor/almayer/planet_side_blastdoor{
 	id = "dam_checkpoint_west";
 	name = "\improper Checkpoint Lock"
 	},
-/obj/structure/disposalpipe/segment,
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "LC" = (
@@ -2029,7 +2083,10 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "Ow" = (
-/obj/structure/prop/dam/boulder/boulder2,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	dir = 1;
+	color = "#da822a"
+	},
 /turf/open/desert/dirt/desert_transition_edge1,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "OD" = (
@@ -2144,6 +2201,14 @@
 	density = 0;
 	pixel_y = 32
 	},
+/obj/item/tool/kitchen/tray{
+	pixel_y = 8
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_y = 14;
+	pixel_x = -8
+	},
+/obj/item/trash/ceramic_plate,
 /turf/open/floor/grimy,
 /area/desert_dam/building/bar/bar)
 "QI" = (
@@ -2162,8 +2227,7 @@
 	},
 /area/desert_dam/building/bar/bar)
 "QN" = (
-/obj/structure/machinery/door/poddoor/almayer/locked{
-	dir = 2;
+/obj/structure/machinery/door/poddoor/almayer/planet_side_blastdoor{
 	id = "dam_checkpoint_west";
 	name = "\improper Checkpoint Lock"
 	},
@@ -2484,6 +2548,7 @@
 /area/desert_dam/building/bar/bar)
 "WG" = (
 /obj/item/stack/sheet/wood,
+/obj/item/shard,
 /turf/open/floor/plating,
 /area/desert_dam/building/bar/bar)
 "WK" = (
@@ -2798,7 +2863,7 @@ aO
 tW
 nz
 Om
-ad
+ai
 Qc
 wy
 vy
@@ -2832,7 +2897,7 @@ oD
 Xw
 jt
 Rs
-ae
+aj
 HP
 YS
 QK
@@ -3135,7 +3200,7 @@ WG
 UB
 WK
 zM
-af
+ak
 NK
 Dn
 Dn
@@ -3166,9 +3231,9 @@ xT
 "}
 (14,1,1) = {"
 hv
-sp
+ag
 Vr
-bu
+ae
 jj
 ye
 Xh
@@ -3179,7 +3244,7 @@ NK
 Dn
 pO
 kM
-ac
+ah
 zM
 wE
 tK
@@ -3245,7 +3310,7 @@ hv
 QG
 Ev
 Ev
-zD
+ac
 hY
 Er
 At
@@ -3397,7 +3462,7 @@ xT
 xT
 ln
 ln
-ln
+ad
 ln
 ln
 xX
@@ -3434,7 +3499,7 @@ tX
 xT
 ln
 ln
-ln
+af
 ln
 ln
 ln

@@ -162,11 +162,15 @@
 				else
 					var/obj/item/device/megaphone/megaphone = get_active_hand()
 					if(istype(megaphone) && megaphone.amplifying) //istype necessary here
-						message = FONT_SIZE_LARGE(message)
-						message_range = GLOB.world_view_size * 2 // this means you can hear it from off screen by a good bit
-						playsound(loc, 'sound/items/megaphone.ogg', 100, FALSE, TRUE)
-						verb = "broadcasts"
-						langchat_override = "langchat_announce"
+						if(!COOLDOWN_FINISHED(megaphone, spam_cooldown))
+							to_chat(src, SPAN_DANGER("\The [megaphone] needs to recharge! Wait [COOLDOWN_SECONDSLEFT(megaphone, spam_cooldown)] second(s)."))
+						else
+							COOLDOWN_START(megaphone, spam_cooldown, megaphone.spam_cooldown_time * 3)
+							message = FONT_SIZE_LARGE(message)
+							message_range = GLOB.world_view_size * 2 // this means you can hear it from off screen by a good bit
+							playsound(loc, 'sound/items/megaphone.ogg', 100, FALSE, TRUE)
+							verb = "broadcasts"
+							langchat_override = "langchat_announce"
 
 		var/sound/speech_sound
 		var/sound_vol

@@ -48,7 +48,7 @@
 		to_chat(user, SPAN_DANGER("\The [src] needs to recharge! Wait [COOLDOWN_SECONDSLEFT(src, spam_cooldown)] second(s)."))
 		return
 
-	var/message = tgui_input_text(user, "Shout a message?", "Megaphone", multiline = TRUE)
+	var/message = tgui_input_text(user, "Shout a message?", "\improper [name]", multiline = TRUE)
 	if(!message)
 		return
 	// we know user is a human now, so adjust user for this check
@@ -67,18 +67,18 @@
 		if(!(copytext(message, -1) in ENDING_PUNCT))
 			message += "."
 
-	log_admin("[key_name(user)] used a megaphone to announce: >[message]<")
+	log_admin("[key_name(user)] used a [name] to announce: >[message]<")
 
 	if(user.get_active_hand() == src && !user.is_mob_incapacitated())
 		// get mobs in the range of the user
-		var/list/mob/listeners = viewers(user) // slow but we need it
+		var/list/mob/listeners = hearers(user)
 		// mobs that pass the conditionals will be added here
 		var/list/mob/langchat_long_listeners = list()
 		var/paygrade = user.get_paygrade()
 
 		for(var/mob/listener in listeners)
 			if(!ishumansynth_strict(listener) && !isobserver(listener))
-				listener.show_message("[user] says something to the megaphone, but you can't understand it.")
+				listener.show_message("[user] says something to the [name], but you can't understand it.")
 				continue
 			var/broadcast = message
 
@@ -93,7 +93,7 @@
 				var/mob/living/audience = listener
 				if(skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_TRAINED) && !HAS_TRAIT(audience, TRAIT_LEADERSHIP) && !skillcheck(audience, SKILL_LEADERSHIP, SKILL_LEAD_TRAINED))
 					if(user.faction == audience.faction && !(audience.mob_flags & MUTINY_MUTINEER))
-						audience.set_effect(3 SECONDS, HUSHED)
+						audience.set_hushed(3 SECONDS)
 						to_chat(audience, SPAN_WARNING("You hush yourself as [user] broadcasts authoritatively through the [src]!"))
 					else
 						to_chat(audience, SPAN_WARNING("You hear [user] broadcast authoritatively... but you don't particularly care for it."))

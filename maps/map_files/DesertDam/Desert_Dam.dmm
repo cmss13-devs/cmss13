@@ -14430,7 +14430,7 @@
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 4
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aTq" = (
 /obj/effect/decal/cleanable/dirt,
@@ -14984,7 +14984,7 @@
 "aVn" = (
 /obj/effect/decal/sand_overlay/sand1/corner1,
 /obj/structure/prop/ice_colony/surveying_device/measuring_device,
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aVo" = (
 /obj/effect/decal/cleanable/dirt,
@@ -19076,7 +19076,7 @@
 	color = "#6b675e"
 	},
 /obj/item/weapon/sword/machete,
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/interior/caves/pred_ship)
 "bhG" = (
 /turf/open/floor/almayer_hull/outerhull_dir/north,
@@ -19125,7 +19125,7 @@
 	pixel_x = -4;
 	pixel_y = 1
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/interior/caves/pred_ship)
 "bhO" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
@@ -20549,7 +20549,7 @@
 /area/desert_dam/exterior/valley/valley_crashsite)
 "blX" = (
 /obj/effect/decal/sand_overlay/sand1,
-/turf/open/floor/predship/hull/non_weedable_hull,
+/turf/open/predship/hull/non_weedable_hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "blY" = (
 /obj/structure/platform/stone/kutjevo_colorable_immune/north{
@@ -20570,25 +20570,25 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 10
 	},
-/turf/open/floor/predship/hull/non_weedable_hull/southwest,
+/turf/open/predship/hull/non_weedable_hull/southwest,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmb" = (
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 8
 	},
 /obj/effect/decal/sand_overlay/sand1,
-/turf/open/floor/predship/hull/non_weedable_hull,
+/turf/open/predship/hull/non_weedable_hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmc" = (
 /obj/structure/prop/ice_colony/ground_wire,
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 8
 	},
-/turf/open/floor/predship/hull/non_weedable_hull,
+/turf/open/predship/hull/non_weedable_hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmd" = (
 /obj/structure/prop/ice_colony/ground_wire,
-/turf/open/floor/predship/hull/non_weedable_hull,
+/turf/open/predship/hull/non_weedable_hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bme" = (
 /obj/structure/bed/chair{
@@ -20653,13 +20653,13 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
 	},
-/turf/open/floor/predship/hull/non_weedable_hull/west,
+/turf/open/predship/hull/non_weedable_hull/west,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmk" = (
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 8
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bml" = (
 /obj/structure/window/framed/prison/reinforced,
@@ -20667,14 +20667,14 @@
 /area/desert_dam/building/security/northern_hallway)
 "bmm" = (
 /obj/structure/prop/ice_colony/ground_wire,
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmn" = (
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmo" = (
 /obj/effect/decal/sand_overlay/sand1/corner1,
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmp" = (
 /obj/structure/prop/ice_colony/ground_wire{
@@ -20683,7 +20683,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 6
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmq" = (
 /obj/structure/prop/ice_colony/ground_wire{
@@ -20692,7 +20692,7 @@
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 8
 	},
-/turf/open/floor/predship/hull/non_weedable_hull/west,
+/turf/open/predship/hull/non_weedable_hull/west,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmr" = (
 /turf/closed/wall/huntership,
@@ -20701,7 +20701,7 @@
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 8
 	},
-/turf/open/floor/predship/hull/non_weedable_hull/west,
+/turf/open/predship/hull/non_weedable_hull/west,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmt" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -20713,7 +20713,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 5
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmu" = (
 /obj/structure/prop/ice_colony/ground_wire{
@@ -20722,7 +20722,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 8
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmv" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -20737,20 +20737,20 @@
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 1
 	},
-/turf/open/floor/predship/hull/non_weedable_hull/west,
+/turf/open/predship/hull/non_weedable_hull/west,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmx" = (
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 8
 	},
 /obj/effect/decal/sand_overlay/sand1/corner1,
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmy" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 6
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmz" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -20765,7 +20765,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
 	},
-/turf/open/floor/predship/hull/non_weedable_hull/west,
+/turf/open/predship/hull/non_weedable_hull/west,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmB" = (
 /obj/structure/stairs{
@@ -20778,19 +20778,19 @@
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 1
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmD" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 8
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmE" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
 	},
-/turf/open/floor/predship/hull/non_weedable_hull/north,
+/turf/open/predship/hull/non_weedable_hull/north,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmF" = (
 /obj/effect/decal/cleanable/dirt,
@@ -20801,22 +20801,22 @@
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 1
 	},
-/turf/open/floor/predship/hull/non_weedable_hull/north,
+/turf/open/predship/hull/non_weedable_hull/north,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmH" = (
-/turf/open/floor/predship/hull/non_weedable_hull/north,
+/turf/open/predship/hull/non_weedable_hull/north,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmI" = (
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 4
 	},
-/turf/open/floor/predship/hull/non_weedable_hull/north,
+/turf/open/predship/hull/non_weedable_hull/north,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmJ" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmK" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -20825,7 +20825,7 @@
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 1
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmL" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -20834,7 +20834,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 5
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmM" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -20863,12 +20863,12 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 10
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmR" = (
 /obj/effect/decal/sand_overlay/sand1,
 /obj/structure/prop/ice_colony/ground_wire,
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmS" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -20877,20 +20877,20 @@
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 8
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmT" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 9
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmU" = (
 /obj/effect/decal/sand_overlay/sand1/corner1,
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 8
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmV" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -20899,7 +20899,7 @@
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 4
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmW" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -20908,7 +20908,7 @@
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 1
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmX" = (
 /obj/structure/prop/ice_colony/ground_wire{
@@ -20917,7 +20917,7 @@
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 8
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmY" = (
 /obj/structure/machinery/light{
@@ -20927,13 +20927,13 @@
 /area/desert_dam/interior/dam_interior/south_tunnel_research)
 "bmZ" = (
 /obj/effect/decal/sand_overlay/sand1,
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bna" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 5
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bnb" = (
 /obj/structure/surface/table,
@@ -23316,7 +23316,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bSm" = (
 /obj/structure/machinery/firealarm{
@@ -36934,7 +36934,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 6
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "hfD" = (
 /obj/structure/surface/table,
@@ -38114,7 +38114,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 9
 	},
-/turf/open/floor/predship/hull/non_weedable_hull/north,
+/turf/open/predship/hull/non_weedable_hull/north,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "hCR" = (
 /obj/effect/decal/warning_stripes{
@@ -50725,7 +50725,7 @@
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 4
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "mzL" = (
 /obj/structure/largecrate/random/barrel/medical,
@@ -62840,7 +62840,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 9
 	},
-/turf/open/floor/predship/hull/non_weedable_hull/northwest,
+/turf/open/predship/hull/non_weedable_hull/northwest,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "rdS" = (
 /obj/effect/decal/cleanable/dirt,
@@ -63681,7 +63681,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 5
 	},
-/turf/open/floor/predship/hull/non_weedable_hull/north,
+/turf/open/predship/hull/non_weedable_hull/north,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "rwn" = (
 /turf/open/floor/prison/whitegreen/north,
@@ -68871,7 +68871,7 @@
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 4
 	},
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "twQ" = (
 /obj/structure/cargo_container/trijent/right/alt,
@@ -73825,7 +73825,7 @@
 "vrI" = (
 /obj/structure/prop/ice_colony/ground_wire,
 /obj/effect/decal/sand_overlay/sand1/corner1,
-/turf/open/floor/predship/hull/non_weedable_hull,
+/turf/open/predship/hull/non_weedable_hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "vrR" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
@@ -74970,7 +74970,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 10
 	},
-/turf/open/floor/predship/hull/non_weedable_hull,
+/turf/open/predship/hull/non_weedable_hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "vQa" = (
 /obj/effect/decal/cleanable/blood,
@@ -75846,7 +75846,7 @@
 	dir = 8
 	},
 /obj/structure/prop/ice_colony/ground_wire,
-/turf/open/floor/predship/hull,
+/turf/open/predship/hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "wiB" = (
 /obj/structure/largecrate/empty/case/double,
@@ -76817,7 +76817,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 6
 	},
-/turf/open/floor/predship/hull/non_weedable_hull,
+/turf/open/predship/hull/non_weedable_hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "wCy" = (
 /obj/structure/machinery/light,

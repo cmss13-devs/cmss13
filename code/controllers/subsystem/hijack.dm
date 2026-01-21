@@ -113,6 +113,12 @@ SUBSYSTEM_DEF(hijack)
 	/// The y origin for the mainship map
 	var/ship_origin_y = 0
 
+	/**
+	 * A list of bounds in the form of OPEN_SPACE_BOUNDS_MINX, OPEN_SPACE_BOUNDS_MAXX, OPEN_SPACE_BOUNDS_MINY, OPEN_SPACE_BOUNDS_MAXY
+	 * of space that will convert to open space. Should not be modified because it will just be referencing the config list.
+	 */
+	var/list/open_space_bounds
+
 	/// Where the ship is currently transiting to
 	var/datum/spaceport/spaceport
 
@@ -669,7 +675,7 @@ SUBSYSTEM_DEF(hijack)
 	warhead.warhead_impact(target) // This is a blocking call
 
 /// Actually places the crash template onto the ground map, updates space turfs, and performs some effects
-/datum/controller/subsystem/hijack/proc/crash_onto_ground(turf/ground_origin, border_type, cordon_type, template_name="USS_Almayer_crash.dmm")
+/datum/controller/subsystem/hijack/proc/crash_onto_ground(turf/ground_origin, border_type, cordon_type)
 	if(!ground_origin)
 		CRASH("Unable to determine origin location on groundmap for hijack ground crash! Origin can be manually specified with a /obj/effect/landmark/mainship_crashsite")
 
@@ -682,20 +688,29 @@ SUBSYSTEM_DEF(hijack)
 	)
 
 	// Place the crash template
-	var/datum/map_template/template = SSmapping.map_templates[template_name]
+	var/datum/map_config/ship_map_config = SSmapping.configs[SHIP_MAP]
+	var/datum/map_template/template = SSmapping.map_templates[ship_map_config?.ground_crash_template_name]
 	if(!template?.load(ground_origin, centered=FALSE, delete=TRUE, allow_cropping=TRUE, crop_within_type=cordon_type, crop_within_border=1, expand_type=border_type, keep_within_ztrait=TRUE))
-		stack_trace("Hijack crash template '[template_name]' failed to load!")
+		stack_trace("Hijack crash template '[ship_map_config?.ground_crash_template_name]' failed to load!")
+
+	// Determine difference between the templates to offset
+	var/list/ship_map_bounds = SSmapping.load_group_bounds[ship_map_config?.map_name]
+	if(!ship_map_bounds)
+		stack_trace("Ship map bounds for '[ship_map_config?.map_name]' could not be found!")
+	var/horizontal_difference = template?.width - ship_map_bounds?[MAP_MAXX]
+	var/vertical_difference = template?.height - ship_map_bounds?[MAP_MAXY]
 
 	// Figure out the offset for open_space turfs to peer down to ground aligned to the wreck
 	var/shipmap_z = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)[1]
 	var/list/ship_bounds = SSmapping.z_list[shipmap_z].bounds
 	ship_origin_x = ship_bounds[MAP_MINX]
 	ship_origin_y = ship_bounds[MAP_MINY]
-	crashed_offset_x = -ship_origin_x + 1 - 17 // Horizontal difference between shipmap and template
-	crashed_offset_y = -ship_origin_y + 1 // 0 Vertical difference between shipmap and template
+	crashed_offset_x = -ship_origin_x + 1 + horizontal_difference // Horizontal difference between shipmap and template
+	crashed_offset_y = -ship_origin_y + 1 + vertical_difference // Vertical difference between shipmap and template
 	crashed_offset_x += ground_origin.x - 1
 	crashed_offset_y += ground_origin.y - 1
 	crashed_ground_z_min = ground_origin.z
+	open_space_bounds = ship_map_config?.open_space_bounds
 
 	shakeship(
 		sstrength = 3,
@@ -718,7 +733,7 @@ SUBSYSTEM_DEF(hijack)
 		drop = TRUE,
 	)
 	explode_pumps()
-	crack_open_ship(174)
+	crack_open_ship(SAFEPICK(ship_map_config?.crack_open_horizontal_positions))
 	explode_apcs(50)
 
 	if(!admin_sd_blocked)
@@ -937,7 +952,8 @@ SUBSYSTEM_DEF(hijack)
 /datum/controller/subsystem/hijack/proc/set_ftl_turf_open(turf/open/space/space_turf)
 	var/adjusted_x = space_turf.x - ship_origin_x
 	var/adjusted_y = space_turf.y - ship_origin_y
-	if(adjusted_x < 22 || adjusted_x > 311 || adjusted_y < -13 || adjusted_y > 113) // approx 15 each direction of empty space
+	// Attempt to keep approx 15 each direction of open_space
+	if(!open_space_bounds || adjusted_x < open_space_bounds[OPEN_SPACE_BOUNDS_MINX] || adjusted_x > open_space_bounds[OPEN_SPACE_BOUNDS_MAXX] || adjusted_y < open_space_bounds[OPEN_SPACE_BOUNDS_MINY] || adjusted_y > open_space_bounds[OPEN_SPACE_BOUNDS_MAXY])
 		// Don't bother with open_space further out
 		space_turf.icon_state = "black"
 		return

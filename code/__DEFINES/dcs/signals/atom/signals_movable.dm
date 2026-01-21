@@ -35,3 +35,11 @@
 
 /// Called when a movable atom enters an obj's contents (obj/entered, atom/old_loc)
 #define COMSIG_MOVABLE_ENTERED_OBJ "atom_entered"
+
+#define COMSIG_MOVABLE_PREBUCKLE "prebuckle" // this is the last chance to interrupt and block a buckle before it finishes
+	#define COMPONENT_BLOCK_BUCKLE	(1<<0)
+
+#define COMSIG_MOVABLE_BUCKLE "buckle" //from base of atom/movable/buckle_mob(): (mob, force)
+	#define COMPONENT_MOVABLE_BUCKLE_STOPPED (1<<0)
+
+#define COMSIG_MOVABLE_UNBUCKLE "unbuckle"

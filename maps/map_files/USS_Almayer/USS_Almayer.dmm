@@ -88411,7 +88411,6 @@
 /obj/structure/closet/secure_closet/cmdcabinet/marine{
 	pixel_y = 24
 	},
-/obj/item/device/cotablet,
 /turf/open/floor/almayer/silver/north,
 /area/almayer/command/cic)
 "wcm" = (

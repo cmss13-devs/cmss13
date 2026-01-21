@@ -327,6 +327,12 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 			ckey = found_ckey
 			log_admin("PROCESS_PREAUTHORIZATION: set ckey=[ckey]")
 
+			var/is_banned = world.IsBanned(ckey, address, computer_id, byond_user = FALSE)
+			if(is_banned)
+				to_chat_immediate("You are unable to connect to this server: [is_banned["reason"]]")
+				qdel(src)
+				return FALSE
+
 			var/username_to_find = CONFIG_GET(keyed_list/oidc_type_to_username)[type]
 			log_admin("PROCESS_PREAUTHORIZATION: username_to_find=[username_to_find]")
 			if(!username_to_find)

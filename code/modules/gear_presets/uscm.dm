@@ -1588,5 +1588,5 @@
 
 	minimap_icon = "leader"
 
-/datum/equipment_preset/uscm/hunted/marsoc/tl/load_status(mob/living/carbon/human/new_human)
+/datum/equipment_preset/uscm/hunted/marsoc/sl/load_status(mob/living/carbon/human/new_human)
 	new_human.nutrition = NUTRITION_NORMAL

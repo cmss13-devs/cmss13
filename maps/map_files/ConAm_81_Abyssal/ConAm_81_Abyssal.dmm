@@ -2179,6 +2179,14 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
+/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
+	explo_proof = 1;
+	id = "abyssallockdown";
+	name = "Emergency Lockdown";
+	needs_power = 0;
+	unacidable = 1;
+	dir = 2
+	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/engine,
 /area/abyssal/interior/bunker)
@@ -6369,6 +6377,14 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
+/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
+	explo_proof = 1;
+	id = "abyssallockdown";
+	name = "Emergency Lockdown";
+	needs_power = 0;
+	unacidable = 1;
+	dir = 2
+	},
 /obj/effect/hybrisa/misc/fake/wire/blue{
 	pixel_x = -4
 	},
@@ -8406,7 +8422,7 @@
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/west)
 "avy" = (
-/turf/closed/wall/abyssal/standard/reinforced,
+/turf/closed/wall/abyssal/standard/temphull,
 /area/abyssal/interior/bunker)
 "avz" = (
 /obj/effect/decal/warning_stripes{
@@ -8458,6 +8474,14 @@
 	},
 /obj/effect/decal/hybrisa/lattice,
 /obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
+	explo_proof = 1;
+	id = "abyssallockdown";
+	name = "Emergency Lockdown";
+	needs_power = 0;
+	unacidable = 1;
 	dir = 2
 	},
 /turf/open/floor/engine,
@@ -14318,6 +14342,14 @@
 	dir = 2;
 	autoname = 1;
 	req_one_access = null
+	},
+/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
+	explo_proof = 1;
+	id = "abyssallockdown";
+	name = "Emergency Lockdown";
+	needs_power = 0;
+	unacidable = 1;
+	dir = 2
 	},
 /turf/open/floor/engine,
 /area/abyssal/interior/bunker)
@@ -23697,7 +23729,7 @@
 /obj/structure/sign/safety/rad_shield{
 	pixel_x = 8
 	},
-/turf/closed/wall/abyssal/standard/reinforced,
+/turf/closed/wall/abyssal/standard/temphull,
 /area/abyssal/interior/bunker)
 "bfC" = (
 /obj/structure/disposalpipe/segment,
@@ -23971,6 +24003,14 @@
 /obj/structure/machinery/door/airlock/almayer/engineering/glass/colony{
 	autoname = 1;
 	req_one_access = null
+	},
+/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
+	explo_proof = 1;
+	id = "abyssallockdown";
+	name = "Emergency Lockdown";
+	needs_power = 0;
+	unacidable = 1;
+	dir = 4
 	},
 /turf/open/floor/engine,
 /area/abyssal/interior/bunker)
@@ -24660,6 +24700,14 @@
 /obj/structure/machinery/door/airlock/almayer/engineering/glass/colony{
 	autoname = 1;
 	req_one_access = null
+	},
+/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
+	explo_proof = 1;
+	id = "abyssallockdown";
+	name = "Emergency Lockdown";
+	needs_power = 0;
+	unacidable = 1;
+	dir = 4
 	},
 /turf/open/floor/engine,
 /area/abyssal/interior/bunker)
@@ -26211,6 +26259,25 @@
 /obj/structure/window/framed/abyssal/standard/hull,
 /turf/open/floor/engine,
 /area/abyssal/interior/solar_control_north_west)
+"bkH" = (
+/obj/structure/machinery/door/airlock/prison_hatch/autoname{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/lattice,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
+	explo_proof = 1;
+	id = "abyssallockdown";
+	name = "Emergency Lockdown";
+	needs_power = 0;
+	unacidable = 1;
+	dir = 2
+	},
+/turf/open/floor/engine,
+/area/abyssal/interior/bunker)
 "bqz" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -34622,7 +34689,7 @@ ait
 ail
 aPU
 apG
-afT
+bkH
 aDA
 bgM
 bgx

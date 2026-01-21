@@ -20406,6 +20406,10 @@
 	},
 /turf/open/floor/wood,
 /area/desert_dam/building/administration/office)
+"blD" = (
+/obj/structure/prop/dam/wide_boulder/boulder1,
+/turf/open/desert/rock,
+/area/desert_dam/oob)
 "blE" = (
 /obj/effect/hunter/bridge_border/brown{
 	dir = 8
@@ -21721,6 +21725,17 @@
 /obj/structure/platform/metal/kutjevo_smooth_immune/east,
 /turf/open_space,
 /area/desert_dam/exterior/rock)
+"bpl" = (
+/turf/open/desert/rock,
+/area/desert_dam/oob)
+"bpm" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 6
+	},
+/turf/open/desert/rock,
+/area/desert_dam/oob)
 "bpn" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -22267,6 +22282,33 @@
 /obj/structure/machinery/colony_floodlight,
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_crashsite)
+"bqZ" = (
+/obj/effect/decal/cleanable/blood/gibs/xeno/core,
+/turf/open/desert/rock,
+/area/desert_dam/oob)
+"bra" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 3;
+	pixel_y = 10
+	},
+/obj/effect/decal/cleanable/blood/gibs/xeno/core,
+/turf/open/desert/rock,
+/area/desert_dam/oob)
+"brb" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1
+	},
+/turf/open/desert/rock,
+/area/desert_dam/oob)
+"brc" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -1;
+	pixel_y = 6
+	},
+/obj/item/weapon/gun/rifle/m41a/elite,
+/turf/open/desert/rock,
+/area/desert_dam/oob)
 "brd" = (
 /obj/structure/sink{
 	dir = 8;
@@ -22275,6 +22317,32 @@
 	},
 /turf/open/floor/prison/southwest,
 /area/desert_dam/building/medical/virology_wing)
+"bre" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -5;
+	pixel_y = 13
+	},
+/obj/item/ammo_magazine/rifle/heap{
+	desc = "A high-explosive armor-piercing 10x24mm assault rifle magazine. Too bad this one's stuck on the other side of a bulletproof window."
+	},
+/turf/open/desert/rock,
+/area/desert_dam/oob)
+"brf" = (
+/obj/effect/landmark/corpsespawner/pmc,
+/obj/structure/prop/hybrisa/misc/blood/blood3,
+/obj/effect/decal/cleanable/blood,
+/turf/open/desert/rock,
+/area/desert_dam/oob)
+"brg" = (
+/obj/effect/decal/cleanable/blood{
+	pixel_y = -11
+	},
+/turf/open/desert/rock,
+/area/desert_dam/oob)
+"brh" = (
+/obj/structure/prop/dam/large_boulder/boulder1,
+/turf/open/desert/rock,
+/area/desert_dam/oob)
 "brr" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/bright_clean/southwest,
@@ -122953,8 +123021,8 @@ rfS
 rfS
 rfS
 rfS
-rfS
-rfS
+brf
+brc
 rfS
 rfS
 rfS
@@ -123187,12 +123255,12 @@ rfS
 rfS
 rfS
 rfS
-rfS
-rfS
-rfS
-rfS
-rfS
-rfS
+brg
+bre
+bra
+bpl
+bpl
+bpm
 rfS
 rfS
 rfS
@@ -123421,13 +123489,13 @@ rfS
 rfS
 rfS
 rfS
+bpl
+bpl
+brb
 rfS
-rfS
-rfS
-rfS
-rfS
-rfS
-rfS
+bpl
+bqZ
+blD
 rfS
 rfS
 rfS
@@ -123652,16 +123720,16 @@ rfS
 rfS
 rfS
 rfS
-rfS
-rfS
-rfS
-rfS
+bpl
+brh
+bpl
+bpl
 bfw
 bfw
 bfw
 bfw
-rfS
-rfS
+bpl
+bpl
 rfS
 rfS
 rfS
@@ -123886,8 +123954,8 @@ rfS
 rfS
 rfS
 rfS
-rfS
-rfS
+bpl
+bpl
 bfw
 bfZ
 bfw

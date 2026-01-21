@@ -7,6 +7,14 @@
 	ambience_exterior = AMBIENCE_TRIJENT
 	minimap_color = MINIMAP_AREA_COLONY
 
+/area/desert_dam/oob
+	name = "Out Of Bounds"
+	icon_state = "unknown"
+	requires_power = FALSE
+	ceiling = CEILING_MAX
+	is_resin_allowed = FALSE
+	flags_area = AREA_NOTUNNEL|AREA_UNWEEDABLE
+
 //INTERIOR
 // areas under rock
 /area/desert_dam/interior

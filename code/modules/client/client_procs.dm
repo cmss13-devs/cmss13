@@ -268,6 +268,54 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	fileaccess_timer = world.time + FTPDELAY */
 	return 1
 
+/client/process_preauthorization(list/topic_headers)
+	var/types_to_oidc_endpoint = CONFIG_GET(keyed_list/oidc_endpoint_to_type)
+
+	if(!length(types_to_oidc_endpoint))
+		return
+
+	for(var/oidc_endpoint, type in types_to_oidc_endpoint)
+		var/access_code = topic_headers[type]
+
+		if(!access_code)
+			continue
+
+		var/datum/http_request/request = new(RUSTG_HTTP_METHOD_GET, oidc_endpoint, null, list(
+			"Authorization" = "Bearer [access_code]"
+		))
+		request.execute_blocking()
+
+		var/datum/http_response/response = request.into_response()
+
+		if(!response.errored && !response.error)
+			var/response_decoded = json_decode(response.body)
+
+			var/ckey_to_find = CONFIG_GET(keyed_list/oidc_type_to_ckey)[type]
+			if(!ckey_to_find)
+				continue
+
+			var/found_ckey = response_decoded
+			for(var/split in splittext(ckey_to_find, "."))
+				found_ckey = found_ckey[split]
+
+			if(!length(found_ckey))
+				continue
+
+			ckey = found_ckey
+
+			var/username_to_find = CONFIG_GET(keyed_list/oidc_type_to_username)[type]
+			if(!username_to_find)
+				break
+
+			var/found_username = response_decoded
+			for(var/split in splittext(username_to_find, "."))
+				found_username = found_username[split]
+
+			if(!length(found_username))
+				break
+
+			external_username = found_username
+			break
 
 	///////////
 	//CONNECT//
@@ -275,31 +323,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 /client/New(TopicData)
 	soundOutput = new /datum/soundOutput(src)
 
-	var/new_topic = params2list(TopicData)
-
-	if(new_topic && ("access_code" in new_topic))
-		var/oidc_endpoint = CONFIG_GET(string/oidc_endpoint)
-		if(oidc_endpoint)
-			var/access_code = new_topic["access_code"]
-
-			var/datum/http_request/request = new(RUSTG_HTTP_METHOD_GET, oidc_endpoint, null, list(
-				"Authorization" = "Bearer [access_code]"
-			))
-			request.execute_blocking()
-
-			var/datum/http_response/response = request.into_response()
-
-			if(!response.errored && !response.error)
-
-				var/json = json_decode(response.body)
-
-				var/user_ckey = json["ckey"]
-
-				if(user_ckey)
-					ckey = user_ckey
-				else
-					ckey = json["sub"]
-					external_username = json["preferred_username"]
+	process_preauthorization(params2list(TopicData))
 
 	TopicData = null //Prevent calls to client.Topic from connect
 

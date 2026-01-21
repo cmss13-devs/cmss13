@@ -734,5 +734,11 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 /// Appended to CLIENT_VERB(showrevinfo)
 /datum/config_entry/string/code_modifications_message
 
-/datum/config_entry/string/oidc_endpoint
+/datum/config_entry/keyed_list/oidc_endpoint_to_type
+	protection = CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/keyed_list/oidc_type_to_username
+	protection = CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/keyed_list/oidc_type_to_ckey
 	protection = CONFIG_ENTRY_LOCKED

@@ -249,8 +249,9 @@ const CustomKeybinds = (props: {
   const [inputValue, setInputValue] = useState('');
   const [picksayOptions, setPicksayOptions] = useState<string[]>([]);
 
-  const currentType = pendingKeybind?.type || keybind?.type;
-  const isPicksay = currentType === 'PICKSAY';
+  const currentType =
+    pendingKeybind?.type?.toLowerCase() || keybind?.type?.toLowerCase();
+  const isPicksay = currentType === 'picksay';
 
   const handleStartEditing = () => {
     setIsEditingContents(true);

@@ -1,6 +1,0 @@
-author: "Puckaboo2"
-delete-after: True
-changes:
-  - rscadd: "You can pour the contents of pill bottles into glass reagent containers."
-  - spellcheck: "Fixes some spelling and grammar errors."
-  - refactor: "Refactors pill bottle dumping into the ChemMaster."

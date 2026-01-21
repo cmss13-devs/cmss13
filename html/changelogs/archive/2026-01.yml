@@ -188,3 +188,43 @@
   - bugfix: Contract recipe generation should account for when recipes don't pass
       the occupied recipe check.
   - bugfix: Transmute volume decrease fix, reagent overflow small fix.
+2026-01-21:
+  AnCopper:
+  - qol: Added a "Copy Coordinates" button to the Laser Designator/Binoculars UI
+  Bibby0110:
+  - bugfix: Restore ghost appearance now changes your chat name
+  Ediblebomb:
+  - maptweak: Walkways in the RMC ERT map now line up with the RMC ERT shuttle's doors.
+  FebrezeNinja:
+  - qol: ChemMaster toggle to allow pill bottle auto-selection
+  Nihisohel:
+  - bugfix: You will no longer be able to use the offhand 'item' as a deadly weapon.
+  - bugfix: Items will no longer be inaccessible when attempting to place an item
+      on a limbless slot in the TGUI strip panel
+  - rscadd: Adds the old disposable camera as a 3 point loadout purchase, go out and
+      do some Frank West larp I guess
+  - balance: Changed the size of the old disposable camera from small to tiny.
+  - bugfix: Adds a delay to picture taking as to not lag the server
+  - qol: Pressing Unique-action on polaroid cameras will now switch its focus.
+  - rscdel: Removed the change focus verb for redundancy.
+  Nihisohel, EldritchSack for the sprites:
+  - rscadd: Whistles are now automatically used when an order is being given
+  - rscadd: Additionally, adds a trench whistle, capable of further enhancing leadership
+      orders at the cost of longer cooldown, slowing you down momentarily, and audibly
+      revealing your location
+  - balance: Changed the normal whistle cooldown from 10 seconds to 5 seconds, putting
+      my trust in everyone not to spam this shit
+  - balance: These trench whistles are only available to SLs, COs, and XOs, and remains
+      a vendor choice for the FTLs and SOs
+  PoltavskaPraca:
+  - bugfix: fixed wrong window break message
+  Puckaboo2:
+  - rscadd: You can pour the contents of pill bottles into glass reagent containers.
+  - spellcheck: Fixes some spelling and grammar errors.
+  - refactor: Refactors pill bottle dumping into the ChemMaster.
+  Sergeys:
+  - bugfix: fixed that some items cannot be crafted at low amount of crafting resources.
+  aquariofury:
+  - soundadd: adds two pain sfx that were already in the game files
+  ori-disillusion-mirnov:
+  - bugfix: you cant buckle xenos

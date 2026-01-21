@@ -69,7 +69,7 @@
 
 	log_admin("[key_name(user)] used a megaphone to announce: >[message]<")
 
-	if((src.loc == user && !user.is_mob_incapacitated()))
+	if(user.get_active_hand() == src && !user.is_mob_incapacitated())
 		// get mobs in the range of the user
 		var/list/mob/listeners = viewers(user) // slow but we need it
 		// mobs that pass the conditionals will be added here
@@ -103,3 +103,7 @@
 		user.langchat_speech(message, langchat_long_listeners, speaking, additional_styles = list("langchat_announce"), split_long_messages = TRUE)
 
 		COOLDOWN_START(src, spam_cooldown, spam_cooldown_time)
+
+	// not on active hand
+	else
+		to_chat(user, SPAN_DANGER("You can only broadcast with the [name] when it is on your active hand!"))

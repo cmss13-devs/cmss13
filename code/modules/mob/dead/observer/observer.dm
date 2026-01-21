@@ -758,9 +758,9 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	ghostize_appearance(client.prefs.preview_dummy)
 	QDEL_NULL(client.prefs.preview_dummy)
 
-	var/real_name = client.prefs.real_name
-	name = real_name
-	real_name = real_name
+	var/preferences_real_name = client.prefs.real_name
+	name = preferences_real_name
+	real_name = preferences_real_name
 
 	to_chat(client, SPAN_NOTICE("Appearance reset."))
 

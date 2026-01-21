@@ -97,7 +97,7 @@
 			)
 			if (do_after(user, 2 SECONDS * user.get_skill_duration_multiplier(SKILL_DOMESTIC), INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 				user.visible_message(
-					SPAN_NOTICE("[user] has cleaned  the microwave."),
+					SPAN_NOTICE("[user] has cleaned the microwave."),
 					SPAN_NOTICE("You have cleaned the microwave.")
 				)
 				dirty = 0 // It's clean!
@@ -111,7 +111,7 @@
 		to_chat(user, SPAN_DANGER("It's running!"))
 	else if(is_type_in_list(O,acceptable_items))
 		if (length(contents)>=max_n_of_items)
-			to_chat(user, SPAN_DANGER("This [src] is full of ingredients, you cannot put more."))
+			to_chat(user, SPAN_DANGER("The [src] is full of ingredients, you cannot put more."))
 			return 1
 		if(istype(O, /obj/item/stack) && O:get_amount() > 1) // This is bad, but I can't think of how to change it
 			var/obj/item/stack/S = O

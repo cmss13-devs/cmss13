@@ -36369,7 +36369,7 @@
 /turf/open/floor/interior/tatami,
 /area/strata/interior/outpost/canteen)
 "bZJ" = (
-/obj/item/device/whistle,
+/obj/item/clothing/accessory/device/whistle,
 /turf/open/floor/interior/tatami,
 /area/strata/interior/outpost/canteen)
 "bZK" = (

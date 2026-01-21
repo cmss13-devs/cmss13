@@ -306,6 +306,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 			var/fallback = splittext(ckey_to_find, "?")
 			if(length(fallback) == 2)
 				fallback = fallback[2]
+				ckey_to_find = fallback[1]
 			else
 				fallback = null
 

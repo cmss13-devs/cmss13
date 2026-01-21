@@ -209,6 +209,72 @@
 	max_xeno_t3 = 3
 	max_xeno_t2 = 3
 
+/datum/emergency_call/pred/mixed_elite // uscm are "fill-ins" for this like normal multi faction, so they do not need vars for their numbers
+	name = "Hunting Grounds - Elite Multi Faction - Small"
+	hunt_name = "Elite Multi Faction (small)"
+	mob_max = 4
+	mob_min = 1
+	var/wy_elite = 0
+	var/upp_elite = 0
+	var/max_wy_elite = 1
+	var/max_upp_elite = 2
+
+/datum/emergency_call/pred/mixed_elite/create_member(datum/mind/player, turf/override_spawn_loc)
+	set waitfor = 0
+	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
+
+	if(!istype(spawn_loc))
+		return
+
+	var/mob/living/carbon/human/hunted = new(spawn_loc)
+
+	if(player)
+		player.transfer_to(hunted, TRUE)
+	else
+		hunted.create_hud()
+
+	if(wy_elite < max_wy_elite && HAS_FLAG(hunted.client.prefs.toggles_ert_pred, PLAY_PMC))
+		wy_elite++
+		var/list/hunted_types = list(/datum/equipment_preset/pmc/commando/hunted/standard, /datum/equipment_preset/pmc/commando/hunted/gunner, /datum/equipment_preset/pmc/commando/hunted/leader)
+		var/hunted_type = pick(hunted_types)
+		arm_equipment(hunted, hunted_type , TRUE, TRUE)
+		to_chat(hunted, SPAN_BOLD("Everything for the company. Having risen the ranks of Weyland-Yutani's Private Military Contractors, you and your team were employed as exceptionally skilled mercenaries, performing work that the company does not keep on-record. Unlike most others, you were well aware of the threat you were facing, but on a mission to capture a live Yautja subject, your team ended up encountering far more than they bargained for, and you were incapacitated with alien weaponry and captured. Dazed, you wake up not knowing where you are."))
+	else if(upp_elite < max_upp_elite && HAS_FLAG(hunted.client.prefs.toggles_ert_pred, PLAY_UPP))
+		upp_elite++
+		var/list/hunted_types = list(/datum/equipment_preset/upp/commando/hunted, /datum/equipment_preset/upp/commando/medic/hunted, /datum/equipment_preset/upp/commando/leader/hunted)
+		var/hunted_type = pick(hunted_types)
+		arm_equipment(hunted, hunted_type , TRUE, TRUE)
+		to_chat(hunted, SPAN_BOLD("I'm a cut above the rest. While the UPP's claims in areas of space like the Neroid Sector remain stationed by forces like the 17th 'Smoldering Sons', it is Kommandos like you that acted in your government's interest in clandestine operations beyond their borders. With cutting-edge technology and deadly weaponry to boot, your team handled missions often considered too high-profile to be seen in the public eye. On one operation, your squad met another cloaked target, who took you away before knocking you out cold - only for your eyes to now open here."))
+	else
+		var/list/hunted_types = list(/datum/equipment_preset/uscm/hunted/marsoc, /datum/equipment_preset/uscm/hunted/marsoc/sg, /datum/equipment_preset/uscm/hunted/marsoc/sl)
+		var/hunted_type = pick(hunted_types)
+		arm_equipment(hunted, hunted_type , TRUE, TRUE)
+		to_chat(hunted, SPAN_BOLD("My team is number one. Far above most marines in training and equipment, your squad of Marine Raiders often dealt with high-profile missions that demanded extreme prejudice and absolute secrecy, alongside overbearing force. The last mission you were on had your squad clearing out a strange dig site, only to come into contact with several unknown hostile humanoids, one of which barely managed to knock you out after a prolonged battle. With your head spinning, you wake up in a strange place."))
+
+/datum/emergency_call/pred/mixed_elite/medium
+	name = "Hunting Grounds - Elite Multi Faction - Medium"
+	hunt_name = "Elite Multi Faction (group)"
+	mob_max = 6
+	mob_min = 2
+	max_wy_elite = 2
+	max_upp_elite = 2
+
+/datum/emergency_call/pred/mixed_elite/hard
+	name = "Hunting Grounds - Elite Multi Faction - Large"
+	hunt_name = "Elite Multi Faction (large)"
+	mob_max = 8
+	mob_min = 3
+	max_wy_elite = 3
+	max_upp_elite = 3
+
+/datum/emergency_call/pred/mixed_elite/harder
+	name = "Hunting Grounds - Elite Multi Faction - Larger"
+	hunt_name = "Elite Multi Faction (larger)"
+	mob_max = 12
+	mob_min = 4
+	max_wy_elite = 4
+	max_upp_elite = 5
+
 /datum/emergency_call/young_bloods //YOUNG BLOOD ERT ONLY FOR HUNTING GROUNDS IF SOME MOD USES THIS INSIDE THE MAIN GAME THE COUNCIL WONT BE HAPPY (Joe Lampost)
 	name = "Template"
 	var/blooding_name

@@ -215,6 +215,7 @@
 		active_agent.a_intent = INTENT_DISARM
 		simulate_condition(active_agent)
 		var/obj/item/clothing/suit/storage/marine/medium/armor = active_agent.get_item_by_slot(WEAR_JACKET)
+		RegisterSignal(armor, COMSIG_ITEM_UNEQUIPPED, PROC_REF(item_cleanup))
 		var/obj/item/clothing/head/helmet/marine/helmet = active_agent.get_item_by_slot(WEAR_HEAD)
 		RegisterSignal(helmet, COMSIG_ITEM_UNEQUIPPED, PROC_REF(item_cleanup))
 

@@ -269,17 +269,22 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	return 1
 
 /client/process_preauthorization(list/topic_headers)
+	log_admin("PROCESS_PREAUTHORIZATION: called with topic_headers=[json_encode(topic_headers)]")
 	var/types_to_oidc_endpoint = CONFIG_GET(keyed_list/oidc_endpoint_to_type)
 
 	if(!length(types_to_oidc_endpoint))
+		log_admin("PROCESS_PREAUTHORIZATION: types_to_oidc_endpoint empty, returning")
 		return
 
 	for(var/oidc_endpoint, type in types_to_oidc_endpoint)
+		log_admin("PROCESS_PREAUTHORIZATION: checking oidc_endpoint=[oidc_endpoint], type=[type]")
 		var/access_code = topic_headers[type]
 
 		if(!access_code)
+			log_admin("PROCESS_PREAUTHORIZATION: no access_code for type=[type], skipping")
 			continue
 
+		log_admin("PROCESS_PREAUTHORIZATION: making http request to [oidc_endpoint] with access_code=[access_code]")
 		var/datum/http_request/request = new(RUSTG_HTTP_METHOD_GET, oidc_endpoint, null, list(
 			"Authorization" = "Bearer [access_code]"
 		))
@@ -288,34 +293,59 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		var/datum/http_response/response = request.into_response()
 
 		if(!response.errored && !response.error)
+			log_admin("PROCESS_PREAUTHORIZATION: got response, body=[response.body]")
 			var/response_decoded = json_decode(response.body)
 
 			var/ckey_to_find = CONFIG_GET(keyed_list/oidc_type_to_ckey)[type]
+			log_admin("PROCESS_PREAUTHORIZATION: ckey_to_find=[ckey_to_find]")
 			if(!ckey_to_find)
+				log_admin("PROCESS_PREAUTHORIZATION: no ckey_to_find for type=[type], skipping")
 				continue
+
+			var/fallback = splittext(ckey_to_find, "?")
+			if(length(fallback) == 2)
+				fallback = fallback[2]
+			else
+				fallback = null
 
 			var/found_ckey = response_decoded
 			for(var/split in splittext(ckey_to_find, "."))
 				found_ckey = found_ckey[split]
 
+			log_admin("PROCESS_PREAUTHORIZATION: found_ckey after split=[found_ckey]")
+
 			if(!length(found_ckey))
-				continue
+				found_ckey = response_decoded[fallback]
+				log_admin("PROCESS_PREAUTHORIZATION: found_ckey fallback=[found_ckey]")
+
+				if(!length(found_ckey))
+					log_admin("PROCESS_PREAUTHORIZATION: still no found_ckey, skipping")
+					continue
 
 			ckey = found_ckey
+			log_admin("PROCESS_PREAUTHORIZATION: set ckey=[ckey]")
 
 			var/username_to_find = CONFIG_GET(keyed_list/oidc_type_to_username)[type]
+			log_admin("PROCESS_PREAUTHORIZATION: username_to_find=[username_to_find]")
 			if(!username_to_find)
+				log_admin("PROCESS_PREAUTHORIZATION: no username_to_find for type=[type], breaking")
 				break
 
 			var/found_username = response_decoded
 			for(var/split in splittext(username_to_find, "."))
 				found_username = found_username[split]
 
+			log_admin("PROCESS_PREAUTHORIZATION: found_username after split=[found_username]")
+
 			if(!length(found_username))
+				log_admin("PROCESS_PREAUTHORIZATION: no found_username, breaking")
 				break
 
 			external_username = found_username
+			log_admin("PROCESS_PREAUTHORIZATION: set external_username=[external_username]")
 			break
+		else
+			log_admin("PROCESS_PREAUTHORIZATION: response errored or error present, skipping")
 
 	///////////
 	//CONNECT//
@@ -795,7 +825,7 @@ CLIENT_VERB(read_key_up, key as text|null)
 						var/looc = tgui_say_create_open_command(LOOC_CHANNEL)
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[looc]")
 					else
-						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=looc")
+					 winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=looc")
 					winset(src, "tgui_say.browser", "focus=true")
 				if(ADMIN_CHANNEL)
 					if(admin_holder?.check_for_rights(R_MOD))

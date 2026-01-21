@@ -22835,12 +22835,6 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/bar)
-"bsI" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/disposalpipe/segment,
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/prison/whitegreen/east,
-/area/desert_dam/building/medical/north_wing_hallway)
 "bsJ" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/prison/bright_clean/southwest,
@@ -181587,7 +181581,7 @@ jNX
 piz
 piz
 bsO
-bsI
+bsA
 bsA
 ixl
 yaa

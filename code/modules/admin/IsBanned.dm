@@ -28,7 +28,7 @@
 		return list("reason"="guest", "desc"="\nReason: Guests not allowed. Please sign in with a byond account.")
 
 	var/banned_ckey_pattern = CONFIG_GET(string/banned_ckey_pattern)
-	if(banned_ckey_pattern && byond_user)
+	if(banned_ckey_pattern && byond_user && !is_telemetry)
 		var/static/regex/banned_ckey_regex = null
 		if(!banned_ckey_regex)
 			banned_ckey_regex = regex(banned_ckey_pattern)

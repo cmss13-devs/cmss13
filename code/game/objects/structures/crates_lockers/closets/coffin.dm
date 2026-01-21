@@ -74,6 +74,10 @@
 	var/gas_triggered = FALSE
 	var/radius = 4
 	var/datum/effect_system/smoke_spread/gas_holder
+	
+	/obj/structure/closet/coffin/predator/ancient_stone/mummy/deco/gas/Destroy()
+		QDEL_NULL(gas_holder)
+		return ..()
 
 /obj/structure/closet/coffin/predator/ancient_stone/mummy/deco/gas/attack_alien(mob/living/carbon/xenomorph/M)
 	if(!gas_triggered)

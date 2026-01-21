@@ -228,8 +228,6 @@
 	var/difficulty = 10
 	///whether you can lose with first click. technically if this is on we generate the mines AFTER the click was made. if not we generate it immediatly.
 	var/first_click_safety = TRUE
-	///If we guarantee opening cell is a 0 cell
-	var/zero_cell_gurantee = TRUE
 	///if the first click was made
 	var/first_click_made = FALSE
 	var/list/field_boundaries = FIELD_SMALL

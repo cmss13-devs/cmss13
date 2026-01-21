@@ -1,4 +1,0 @@
-author: "MistChristmas"
-delete-after: True
-changes:
-  - bugfix: "Inventory hotkeys don't let you use them if your lying down, restrained or nested."

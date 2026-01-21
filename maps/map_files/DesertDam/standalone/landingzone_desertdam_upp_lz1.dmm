@@ -1,83 +1,100 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "ab" = (
-/turf/open/floor/prison/green/west,
-/area/desert_dam/building/dorms/hallway_westwing)
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/building/mining/workshop)
 "ac" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison,
-/area/desert_dam/building/dorms/hallway_westwing)
+/obj/structure/flora/bush/desert/cactus/multiple{
+	icon_state = "cacti_8"
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
 "ad" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison,
-/area/desert_dam/building/dorms/hallway_westwing)
+/obj/structure/surface/rack,
+/obj/item/stack/sheet/metal/small_stack,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/building/mining/workshop)
 "ae" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/green/east,
-/area/desert_dam/building/dorms/hallway_westwing)
+/obj/structure/surface/rack,
+/obj/item/tool/pickaxe/drill,
+/obj/item/tool/pickaxe/drill{
+	pixel_y = 8
+	},
+/turf/open/floor/prison,
+/area/desert_dam/building/mining/workshop)
 "af" = (
-/turf/closed/wall,
-/area/desert_dam/building/dorms/hallway_westwing)
+/obj/structure/surface/rack,
+/obj/item/tool/weldpack,
+/turf/open/floor/prison,
+/area/desert_dam/building/mining/workshop)
 "ag" = (
-/obj/structure/closet/secure_closet/personal,
-/turf/open/floor/prison/kitchen,
-/area/desert_dam/building/dorms/restroom)
+/obj/structure/prop/hybrisa/vehicles/Meridian/Orange,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
 "ah" = (
-/turf/open/floor/prison/kitchen,
-/area/desert_dam/building/dorms/restroom)
-"ai" = (
-/obj/effect/landmark/monkey_spawn,
-/turf/open/floor/prison/kitchen,
-/area/desert_dam/building/dorms/restroom)
-"aj" = (
-/obj/structure/machinery/shower{
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
 	dir = 8
 	},
-/turf/open/floor/prison/kitchen,
-/area/desert_dam/building/dorms/restroom)
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
+"ai" = (
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#da822a"
+	},
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
+"aj" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 6
+	},
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
 "ak" = (
-/turf/closed/wall,
-/area/desert_dam/building/dorms/restroom)
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 4
+	},
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
 "al" = (
-/obj/structure/sink{
-	dir = 8;
-	pixel_x = -11
-	},
-/obj/structure/mirror{
-	pixel_x = -28
-	},
-/turf/open/floor/prison/bright_clean2,
-/area/desert_dam/building/dorms/restroom)
+/obj/structure/flora/grass/desert/lightgrass_2,
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
 "am" = (
-/obj/structure/pipes/vents/pump{
-	dir = 4
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	dir = 5;
+	pixel_y = -1
 	},
-/turf/open/floor/prison/bright_clean2,
-/area/desert_dam/building/dorms/restroom)
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
 "an" = (
-/obj/structure/pipes/standard/manifold/hidden/green{
-	dir = 4
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 5
 	},
-/obj/structure/disposalpipe/segment,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/bright_clean2,
-/area/desert_dam/building/dorms/restroom)
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
 "ao" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/bright_clean2,
-/area/desert_dam/building/dorms/restroom)
-"ap" = (
-/obj/structure/machinery/light{
-	dir = 4
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 9
 	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/green/east,
-/area/desert_dam/building/dorms/hallway_westwing)
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
+"ap" = (
+/obj/structure/flora/grass/desert/lightgrass_9,
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
 "aq" = (
-/obj/structure/catwalk,
-/turf/open/floor/plating,
-/area/desert_dam/building/dorms/restroom)
+/obj/structure/flora/bush/desert{
+	icon_state = "tree_2"
+	},
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
 "ar" = (
 /obj/structure/machinery/door_control{
 	id = "warehouse_dam_2";
@@ -109,236 +126,318 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_civilian)
 "au" = (
-/obj/structure/machinery/power/apc/no_power/west,
-/turf/open/floor/prison/bright_clean2,
-/area/desert_dam/building/dorms/restroom)
+/obj/structure/flora/grass/desert/lightgrass_8,
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
 "av" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/disposalpipe/segment,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/bright_clean2,
-/area/desert_dam/building/dorms/restroom)
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 4
+	},
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
 "aw" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/bright_clean2,
-/area/desert_dam/building/dorms/restroom)
+/obj/structure/flora/grass/tallgrass/desert,
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
 "ax" = (
 /obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/prison/darkbrown2,
 /area/desert_dam/building/mining/workshop_foyer)
 "ay" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	name = "\improper Toilet Unit"
-	},
-/turf/open/floor/prison/bright_clean2,
-/area/desert_dam/building/dorms/restroom)
+/obj/structure/flora/grass/desert/heavygrass_3,
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
 "az" = (
-/obj/structure/toilet{
-	dir = 8
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 6
 	},
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
-/turf/open/floor/prison/bright_clean2,
-/area/desert_dam/building/dorms/restroom)
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
 "aA" = (
-/obj/structure/machinery/power/apc/no_power/west,
-/turf/open/floor/prison/green/west,
-/area/desert_dam/building/dorms/hallway_westwing)
+/obj/structure/flora/grass/tallgrass/desert/corner,
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
 "aB" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/prison,
-/area/desert_dam/building/dorms/hallway_westwing)
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 10
+	},
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
 "aC" = (
-/turf/open/floor/prison/greencorner,
-/area/desert_dam/building/dorms/hallway_westwing)
+/obj/structure/flora/grass/desert/lightgrass_7,
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
 "aD" = (
-/turf/open/floor/prison/sterile_white,
-/area/desert_dam/building/dorms/restroom)
+/obj/structure/flora/grass/desert/heavygrass_4,
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
 "aE" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/sterile_white,
-/area/desert_dam/building/dorms/restroom)
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 10
+	},
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
 "aF" = (
-/turf/open/floor/prison/bright_clean2,
-/area/desert_dam/building/dorms/restroom)
+/obj/structure/surface/table,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/tray{
+	pixel_x = -1;
+	pixel_y = 9
+	},
+/obj/item/reagent_container/food/snacks/hotdog{
+	pixel_x = -3;
+	pixel_y = 8
+	},
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
 "aG" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/disposalpipe/segment,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/bright_clean2,
-/area/desert_dam/building/dorms/restroom)
+/obj/structure/surface/table,
+/obj/item/reagent_container/food/condiment/saltshaker{
+	pixel_x = -9;
+	pixel_y = 7
+	},
+/obj/item/reagent_container/food/condiment/peppermill{
+	pixel_x = -11;
+	pixel_y = 13
+	},
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
 "aH" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood,
+/obj/structure/prop/dam/crane/damaged,
 /turf/open/floor/prison,
-/area/desert_dam/building/dorms/hallway_westwing)
+/area/desert_dam/building/cafeteria/loading)
 "aI" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
 /area/desert_dam/exterior/valley/valley_civilian)
 "aJ" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	name = "\improper Showers"
+/obj/structure/surface/table,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/tool/kitchen/utensil/fork{
+	pixel_x = -9;
+	pixel_y = 3
+	},
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
+"aK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/weapon/twohanded/folded_metal_chair,
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
+"aL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/weapon/broken_glass,
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
+"aM" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/sterile_white,
-/area/desert_dam/building/dorms/hallway_westwing)
-"aK" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	name = "\improper Showers"
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
 	},
-/turf/open/floor/prison/sterile_white,
-/area/desert_dam/building/dorms/restroom)
-"aL" = (
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/closed/wall,
-/area/desert_dam/building/dorms/restroom)
-"aM" = (
-/obj/structure/surface/table,
-/obj/item/trash/plate,
-/turf/open/floor/prison/green/west,
-/area/desert_dam/building/dorms/hallway_westwing)
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/crate/plastic,
+/obj/item/reagent_container/food/snacks/grown/corn,
+/obj/item/reagent_container/food/snacks/grown/corn,
+/obj/item/reagent_container/food/snacks/grown/corn,
+/obj/item/reagent_container/food/snacks/grown/corn,
+/obj/item/reagent_container/food/snacks/grown/corn,
+/turf/open/floor/prison/floor_marked/southwest,
+/area/desert_dam/building/cafeteria/loading)
 "aN" = (
-/turf/open/floor/prison/greencorner/north,
-/area/desert_dam/building/dorms/hallway_westwing)
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/hybrisa/misc/machinery/screens/wood_clock{
+	pixel_y = 38
+	},
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
 "aO" = (
-/obj/structure/machinery/washing_machine,
-/turf/open/floor/prison/sterile_white,
-/area/desert_dam/building/dorms/restroom)
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/power/apc/no_power/east,
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
 "aP" = (
-/obj/structure/surface/table,
-/obj/structure/bedsheetbin,
-/turf/open/floor/prison/sterile_white,
-/area/desert_dam/building/dorms/restroom)
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/crate/freezer,
+/obj/item/reagent_container/food/snacks/grown/wheat,
+/obj/item/reagent_container/food/snacks/grown/wheat,
+/obj/item/reagent_container/food/snacks/grown/wheat,
+/obj/item/reagent_container/food/snacks/grown/wheat,
+/obj/item/reagent_container/food/snacks/grown/wheat,
+/turf/open/floor/prison/floor_marked/southwest,
+/area/desert_dam/building/cafeteria/loading)
 "aQ" = (
-/obj/structure/surface/table,
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/obj/effect/spawner/random/toolbox,
-/turf/open/floor/prison/sterile_white,
-/area/desert_dam/building/dorms/restroom)
+/obj/structure/closet/crate/freezer,
+/obj/item/reagent_container/food/snacks/grown/potato,
+/obj/item/reagent_container/food/snacks/grown/potato,
+/obj/item/reagent_container/food/snacks/grown/potato,
+/obj/item/reagent_container/food/snacks/grown/potato,
+/obj/item/reagent_container/food/snacks/grown/potato,
+/turf/open/floor/prison/floor_marked/southwest,
+/area/desert_dam/building/cafeteria/loading)
 "aR" = (
-/obj/structure/closet/secure_closet/personal,
-/turf/open/floor/prison/sterile_white,
-/area/desert_dam/building/dorms/restroom)
+/obj/structure/prop/hybrisa/vehicles/Small_Truck/Garbage,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
 "aS" = (
-/obj/structure/closet/secure_closet/personal,
-/obj/effect/landmark/objective_landmark/science,
-/turf/open/floor/prison/sterile_white,
-/area/desert_dam/building/dorms/restroom)
-"aT" = (
-/obj/structure/machinery/light{
-	dir = 8
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1
 	},
-/turf/open/floor/prison/bright_clean2,
-/area/desert_dam/building/dorms/restroom)
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
+"aT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_y = 28
+	},
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
 "aU" = (
-/obj/structure/surface/table,
-/turf/open/floor/prison/green/west,
-/area/desert_dam/building/dorms/hallway_westwing)
-"aV" = (
-/turf/open/floor/prison,
-/area/desert_dam/building/dorms/hallway_westwing)
-"aW" = (
-/turf/open/floor/prison/green/east,
-/area/desert_dam/building/dorms/hallway_westwing)
-"aX" = (
-/obj/structure/window/framed/colony,
-/turf/open/floor/plating,
-/area/desert_dam/building/dorms/hallway_westwing)
-"aY" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
-/turf/open/floor/prison,
-/area/desert_dam/building/dorms/hallway_westwing)
-"aZ" = (
-/obj/structure/machinery/vending/snack,
-/turf/open/floor/prison/greenfull/northwest,
-/area/desert_dam/building/dorms/hallway_northwing)
-"ba" = (
 /obj/structure/machinery/vending/cigarette/wy,
-/turf/open/floor/prison/greenfull/northwest,
-/area/desert_dam/building/dorms/hallway_northwing)
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/cafeteria/cafeteria)
+"aV" = (
+/obj/structure/surface/table/reinforced,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/cafeteria/cafeteria)
+"aW" = (
+/obj/structure/grille,
+/turf/open/floor/plating,
+/area/desert_dam/building/cafeteria/backroom)
+"aX" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/desert_dam/building/cafeteria/backroom)
+"aY" = (
+/obj/item/weapon/twohanded/folded_metal_chair,
+/turf/open/floor/plating,
+/area/desert_dam/building/cafeteria/backroom)
+"aZ" = (
+/obj/structure/closet/crate/trashcart,
+/obj/item/storage/bag/trash,
+/turf/open/floor/plating,
+/area/desert_dam/building/cafeteria/backroom)
+"ba" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/floor/plating,
+/area/desert_dam/building/cafeteria/backroom)
 "bb" = (
-/obj/structure/machinery/vending/coffee,
-/turf/open/floor/prison/greenfull/northwest,
-/area/desert_dam/building/dorms/hallway_northwing)
+/obj/item/stack/rods,
+/turf/open/floor/plating,
+/area/desert_dam/building/cafeteria/backroom)
 "bc" = (
 /obj/structure/machinery/light,
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/building/cafeteria/cafeteria)
 "bd" = (
-/obj/structure/machinery/vending/cola,
-/turf/open/floor/prison/greenfull/northwest,
-/area/desert_dam/building/dorms/hallway_northwing)
+/obj/structure/surface/rack,
+/obj/item/tool/wet_sign,
+/obj/item/tool/wet_sign,
+/obj/item/tool/wet_sign{
+	pixel_y = -3;
+	pixel_x = 2
+	},
+/turf/open/floor/plating,
+/area/desert_dam/building/cafeteria/backroom)
 "be" = (
-/obj/structure/surface/table,
-/turf/open/floor/prison/greenfull/northwest,
-/area/desert_dam/building/dorms/hallway_northwing)
+/obj/structure/flora/bush/desert{
+	icon_state = "tree_3"
+	},
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
 "bf" = (
-/obj/structure/machinery/disposal,
-/obj/structure/disposalpipe/trunk{
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#da822a";
+	dir = 4
+	},
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
+"bg" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 9
+	},
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
+"bh" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
 	dir = 1
 	},
-/turf/open/floor/prison/greenfull/northwest,
-/area/desert_dam/building/dorms/hallway_northwing)
-"bg" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/disposalpipe/segment,
-/obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 1;
-	name = "\improper Restroom"
-	},
-/turf/open/floor/prison/bright_clean2,
-/area/desert_dam/building/dorms/restroom)
-"bh" = (
-/obj/structure/machinery/light,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/green,
-/area/desert_dam/building/dorms/hallway_northwing)
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
 "bi" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/greencorner/west,
-/area/desert_dam/building/dorms/hallway_northwing)
+/obj/structure/prop/colorable_rock/colorable/alt{
+	dir = 1;
+	color = "#da822a"
+	},
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
 "bj" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison,
-/area/desert_dam/building/dorms/hallway_northwing)
+/turf/open/floor/prison/green/west,
+/area/desert_dam/building/dorms/hallway_westwing)
 "bk" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/greencorner,
-/area/desert_dam/building/dorms/hallway_northwing)
+/turf/open/floor/prison,
+/area/desert_dam/building/dorms/hallway_westwing)
 "bl" = (
 /obj/structure/largecrate/random,
 /turf/open/floor/prison,
 /area/desert_dam/building/mining/workshop)
 "bm" = (
-/turf/open/floor/prison/green,
-/area/desert_dam/building/dorms/hallway_northwing)
-"bn" = (
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/prison/green,
-/area/desert_dam/building/dorms/hallway_northwing)
-"bo" = (
-/obj/structure/machinery/light,
-/obj/structure/pipes/vents/pump,
-/turf/open/floor/prison/green,
-/area/desert_dam/building/dorms/hallway_northwing)
-"bp" = (
-/turf/open/floor/prison/greencorner/west,
-/area/desert_dam/building/dorms/hallway_northwing)
-"bq" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/disposalpipe/segment,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
-/area/desert_dam/building/dorms/hallway_northwing)
+/area/desert_dam/building/dorms/hallway_westwing)
+"bn" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/green/east,
+/area/desert_dam/building/dorms/hallway_westwing)
+"bo" = (
+/turf/closed/wall,
+/area/desert_dam/building/dorms/hallway_westwing)
+"bp" = (
+/obj/structure/closet/secure_closet/personal,
+/turf/open/floor/prison/kitchen,
+/area/desert_dam/building/dorms/restroom)
+"bq" = (
+/turf/open/floor/prison/kitchen,
+/area/desert_dam/building/dorms/restroom)
 "br" = (
-/turf/open/floor/prison/greencorner,
-/area/desert_dam/building/dorms/hallway_northwing)
+/obj/effect/landmark/monkey_spawn,
+/turf/open/floor/prison/kitchen,
+/area/desert_dam/building/dorms/restroom)
 "bs" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/extinguisher_cabinet{
@@ -348,27 +447,27 @@
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/building/cafeteria/cafeteria)
 "bt" = (
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/closed/wall,
-/area/desert_dam/building/dorms/hallway_northwing)
-"bu" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
+/obj/structure/machinery/shower{
+	dir = 8
 	},
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison,
-/area/desert_dam/building/dorms/hallway_northwing)
+/turf/open/floor/prison/kitchen,
+/area/desert_dam/building/dorms/restroom)
+"bu" = (
+/turf/closed/wall,
+/area/desert_dam/building/dorms/restroom)
 "bv" = (
 /turf/open/floor/freezerfloor,
 /area/desert_dam/building/cafeteria/cafeteria)
 "bw" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = -11
 	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison,
-/area/desert_dam/building/dorms/hallway_northwing)
+/obj/structure/mirror{
+	pixel_x = -28
+	},
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/dorms/restroom)
 "bx" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -378,74 +477,63 @@
 /turf/open/floor/strata/floor2,
 /area/event/metal/dynamic/lit)
 "by" = (
-/obj/structure/pipes/standard/manifold/hidden/green{
-	dir = 1
+/obj/structure/pipes/vents/pump{
+	dir = 4
 	},
-/turf/open/floor/prison,
-/area/desert_dam/building/dorms/hallway_northwing)
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/dorms/restroom)
 "bz" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor/prison,
-/area/desert_dam/building/dorms/hallway_northwing)
-"bA" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
-	},
-/turf/open/floor/prison,
-/area/desert_dam/building/dorms/hallway_northwing)
-"bB" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
-	dir = 1
+	dir = 4
 	},
-/obj/structure/disposalpipe/segment{
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/dorms/restroom)
+"bA" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/dorms/restroom)
+"bB" = (
+/obj/structure/machinery/light{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison,
-/area/desert_dam/building/dorms/hallway_northwing)
+/turf/open/floor/prison/green/east,
+/area/desert_dam/building/dorms/hallway_westwing)
 "bC" = (
-/obj/structure/disposalpipe/junction{
-	dir = 1;
-	icon_state = "pipe-y"
-	},
-/obj/structure/pipes/standard/manifold/hidden/green,
-/turf/open/floor/prison,
-/area/desert_dam/building/dorms/hallway_northwing)
+/obj/structure/catwalk,
+/turf/open/floor/plating,
+/area/desert_dam/building/dorms/restroom)
 "bD" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
-	},
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 10
-	},
-/turf/open/floor/prison,
-/area/desert_dam/building/dorms/hallway_northwing)
+/obj/structure/machinery/power/apc/no_power/west,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/dorms/restroom)
 "bE" = (
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/obj/structure/machinery/door/airlock/almayer/maint/colony,
-/turf/open/floor/prison,
-/area/desert_dam/building/dorms/hallway_northwing)
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/dorms/restroom)
 "bF" = (
 /turf/open/floor/strata/blue3/east,
 /area/event/metal/dynamic/lit)
 "bG" = (
-/turf/open/floor/prison/green/north,
-/area/desert_dam/building/dorms/hallway_northwing)
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/dorms/restroom)
 "bH" = (
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_civilian)
 "bI" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/green/north,
-/area/desert_dam/building/dorms/hallway_northwing)
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Toilet Unit"
+	},
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/dorms/restroom)
 "bJ" = (
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -464,148 +552,129 @@
 /turf/open/floor/strata/floor2,
 /area/event/metal/dynamic/lit)
 "bK" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light{
-	dir = 1
+/obj/structure/toilet{
+	dir = 8
 	},
-/turf/open/floor/prison/green/north,
-/area/desert_dam/building/dorms/hallway_northwing)
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/dorms/restroom)
 "bL" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/greencorner/east,
-/area/desert_dam/building/dorms/hallway_northwing)
+/obj/structure/machinery/power/apc/no_power/west,
+/turf/open/floor/prison/green/west,
+/area/desert_dam/building/dorms/hallway_westwing)
 "bM" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison,
-/area/desert_dam/building/dorms/hallway_northwing)
-"bN" = (
-/obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison,
-/area/desert_dam/building/dorms/hallway_northwing)
+/area/desert_dam/building/dorms/hallway_westwing)
+"bN" = (
+/turf/open/floor/prison/greencorner,
+/area/desert_dam/building/dorms/hallway_westwing)
 "bO" = (
-/turf/open/floor/prison,
-/area/desert_dam/building/dorms/hallway_northwing)
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/dorms/restroom)
 "bP" = (
-/obj/structure/bed/chair{
-	dir = 1
-	},
-/turf/open/floor/prison,
-/area/desert_dam/building/dorms/hallway_northwing)
-"bQ" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 1;
-	name = "\improper Dormitories Bedroom"
-	},
-/turf/open/floor/wood,
-/area/desert_dam/building/dorms/hallway_northwing)
-"bR" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/surface/table,
-/turf/open/floor/prison/green/northwest,
-/area/desert_dam/building/dorms/hallway_northwing)
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/dorms/restroom)
+"bQ" = (
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/dorms/restroom)
+"bR" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/dorms/restroom)
 "bS" = (
-/obj/structure/surface/table,
-/obj/effect/spawner/random/toolbox,
-/turf/open/floor/prison/green/north,
-/area/desert_dam/building/dorms/hallway_northwing)
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison,
+/area/desert_dam/building/dorms/hallway_westwing)
 "bT" = (
-/obj/structure/surface/table,
-/turf/open/floor/prison/green/north,
-/area/desert_dam/building/dorms/hallway_northwing)
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Showers"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/dorms/hallway_westwing)
 "bU" = (
-/obj/structure/flora/pottedplant,
-/turf/open/floor/prison/green/north,
-/area/desert_dam/building/dorms/hallway_northwing)
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Showers"
+	},
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/dorms/restroom)
 "bV" = (
 /obj/effect/decal/sand_overlay/sand1/corner1,
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_civilian)
 "bW" = (
-/obj/structure/machinery/atm{
-	name = "Weyland-Yutani Automatic Teller Machine";
-	pixel_y = 30
-	},
-/turf/open/floor/prison/greencorner/east,
-/area/desert_dam/building/dorms/hallway_northwing)
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/closed/wall,
+/area/desert_dam/building/dorms/restroom)
 "bX" = (
-/obj/structure/barricade/wooden{
-	dir = 1
-	},
-/turf/open/floor/prison,
-/area/desert_dam/building/dorms/hallway_northwing)
+/obj/structure/surface/table,
+/obj/item/trash/plate,
+/turf/open/floor/prison/green/west,
+/area/desert_dam/building/dorms/hallway_westwing)
 "bY" = (
-/obj/structure/barricade/wooden{
-	dir = 1
-	},
-/obj/structure/disposalpipe/segment,
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/prison,
-/area/desert_dam/building/dorms/hallway_northwing)
+/turf/open/floor/prison/greencorner/north,
+/area/desert_dam/building/dorms/hallway_westwing)
 "bZ" = (
+/obj/structure/machinery/washing_machine,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/dorms/restroom)
+"ca" = (
+/obj/structure/surface/table,
+/obj/structure/bedsheetbin,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/dorms/restroom)
+"cb" = (
+/obj/structure/surface/table,
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/machinery/power/apc/no_power/north,
-/turf/open/floor/prison/greencorner/north,
-/area/desert_dam/building/dorms/hallway_northwing)
-"ca" = (
-/obj/structure/bed/chair{
-	dir = 4
-	},
-/turf/open/floor/prison/green/north,
-/area/desert_dam/building/dorms/hallway_northwing)
-"cb" = (
-/obj/structure/surface/table,
-/obj/item/device/radio,
-/turf/open/floor/prison/green/north,
-/area/desert_dam/building/dorms/hallway_northwing)
+/obj/effect/spawner/random/toolbox,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/dorms/restroom)
 "cc" = (
-/obj/structure/surface/table,
-/obj/item/ashtray/bronze,
-/turf/open/floor/prison/green/north,
-/area/desert_dam/building/dorms/hallway_northwing)
+/obj/structure/closet/secure_closet/personal,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/dorms/restroom)
 "cd" = (
-/obj/structure/surface/table,
-/turf/open/floor/wood,
-/area/desert_dam/building/dorms/hallway_northwing)
+/obj/structure/closet/secure_closet/personal,
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/dorms/restroom)
 "ce" = (
-/turf/open/floor/wood,
-/area/desert_dam/building/dorms/hallway_northwing)
-"cf" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/prison,
-/area/desert_dam/building/dorms/hallway_northwing)
-"cg" = (
-/obj/structure/bed/chair/wood/normal{
+/obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor/wood,
-/area/desert_dam/building/dorms/hallway_northwing)
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/dorms/restroom)
+"cf" = (
+/obj/structure/surface/table,
+/turf/open/floor/prison/green/west,
+/area/desert_dam/building/dorms/hallway_westwing)
+"cg" = (
+/turf/open/floor/prison,
+/area/desert_dam/building/dorms/hallway_westwing)
 "ch" = (
-/obj/structure/bed,
-/turf/open/floor/wood,
-/area/desert_dam/building/dorms/hallway_northwing)
+/turf/open/floor/prison/green/east,
+/area/desert_dam/building/dorms/hallway_westwing)
 "ci" = (
-/obj/structure/closet/cabinet,
-/turf/open/floor/wood,
-/area/desert_dam/building/dorms/hallway_northwing)
+/obj/structure/window/framed/colony,
+/turf/open/floor/plating,
+/area/desert_dam/building/dorms/hallway_westwing)
 "cj" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/disposalpipe/segment,
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
-/area/desert_dam/exterior/valley/valley_civilian)
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
+/turf/open/floor/prison,
+/area/desert_dam/building/dorms/hallway_westwing)
 "ck" = (
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal3"
-	},
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/disposalpipe/segment,
-/turf/open/asphalt,
-/area/desert_dam/exterior/valley/valley_civilian)
+/obj/structure/machinery/vending/snack,
+/turf/open/floor/prison/greenfull/northwest,
+/area/desert_dam/building/dorms/hallway_northwing)
 "cl" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Restroom"
@@ -617,98 +686,70 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_civilian)
 "cn" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/disposalpipe/segment,
-/turf/open/asphalt,
-/area/desert_dam/exterior/valley/valley_civilian)
+/obj/structure/machinery/vending/cigarette/wy,
+/turf/open/floor/prison/greenfull/northwest,
+/area/desert_dam/building/dorms/hallway_northwing)
 "co" = (
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating,
 /area/desert_dam/building/mining/workshop)
 "cp" = (
-/obj/structure/desertdam/decals/road_stop{
-	icon_state = "stop_decal5"
-	},
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/disposalpipe/segment,
-/turf/open/asphalt,
-/area/desert_dam/exterior/valley/valley_civilian)
+/obj/structure/machinery/vending/coffee,
+/turf/open/floor/prison/greenfull/northwest,
+/area/desert_dam/building/dorms/hallway_northwing)
 "cq" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
-	},
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 6
-	},
-/turf/open/asphalt,
-/area/desert_dam/exterior/valley/valley_civilian)
+/obj/structure/machinery/vending/cola,
+/turf/open/floor/prison/greenfull/northwest,
+/area/desert_dam/building/dorms/hallway_northwing)
 "cr" = (
 /obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/plating,
 /area/desert_dam/building/cafeteria/backroom)
 "cs" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/asphalt,
-/area/desert_dam/exterior/valley/valley_civilian)
+/obj/structure/surface/table,
+/turf/open/floor/prison/greenfull/northwest,
+/area/desert_dam/building/dorms/hallway_northwing)
 "ct" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 1
 	},
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/asphalt,
-/area/desert_dam/exterior/valley/valley_civilian)
+/turf/open/floor/prison/greenfull/northwest,
+/area/desert_dam/building/dorms/hallway_northwing)
 "cu" = (
-/obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/prison/kitchen/southwest,
-/area/desert_dam/building/cafeteria/cafeteria)
-"cv" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/prison,
-/area/desert_dam/building/cafeteria/loading)
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 1;
+	name = "\improper Restroom"
+	},
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/dorms/restroom)
+"cv" = (
+/obj/structure/machinery/light,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/green,
+/area/desert_dam/building/dorms/hallway_northwing)
 "cw" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
-	},
-/obj/structure/pipes/standard/manifold/hidden/green,
-/turf/open/floor/prison/kitchen/southwest,
-/area/desert_dam/building/cafeteria/cafeteria)
+/turf/open/floor/prison/greencorner/west,
+/area/desert_dam/building/dorms/hallway_northwing)
 "cx" = (
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor/prison/kitchen/southwest,
-/area/desert_dam/building/cafeteria/cafeteria)
+/turf/open/floor/prison,
+/area/desert_dam/building/dorms/hallway_northwing)
 "cy" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 10
-	},
-/turf/open/floor/prison/kitchen/southwest,
-/area/desert_dam/building/cafeteria/cafeteria)
+/turf/open/floor/prison/greencorner,
+/area/desert_dam/building/dorms/hallway_northwing)
 "cz" = (
-/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/green,
+/area/desert_dam/building/dorms/hallway_northwing)
+"cA" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/prison/sterile_white,
-/area/desert_dam/building/cafeteria/cafeteria)
+/turf/open/floor/prison/green,
+/area/desert_dam/building/dorms/hallway_northwing)
 "cB" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -718,11 +759,102 @@
 	},
 /turf/open/floor/prison,
 /area/desert_dam/building/cafeteria/loading)
+"cC" = (
+/obj/structure/machinery/light,
+/obj/structure/pipes/vents/pump,
+/turf/open/floor/prison/green,
+/area/desert_dam/building/dorms/hallway_northwing)
+"cD" = (
+/turf/open/floor/prison/greencorner/west,
+/area/desert_dam/building/dorms/hallway_northwing)
+"cE" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/prison,
+/area/desert_dam/building/dorms/hallway_northwing)
+"cF" = (
+/turf/open/floor/prison/greencorner,
+/area/desert_dam/building/dorms/hallway_northwing)
+"cG" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/closed/wall,
+/area/desert_dam/building/dorms/hallway_northwing)
+"cH" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison,
+/area/desert_dam/building/dorms/hallway_northwing)
+"cI" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison,
+/area/desert_dam/building/dorms/hallway_northwing)
+"cJ" = (
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 1
+	},
+/turf/open/floor/prison,
+/area/desert_dam/building/dorms/hallway_northwing)
+"cK" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/prison,
+/area/desert_dam/building/dorms/hallway_northwing)
 "cL" = (
 /obj/structure/machinery/light,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/building/cafeteria/cafeteria)
+"cM" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/prison,
+/area/desert_dam/building/dorms/hallway_northwing)
+"cN" = (
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison,
+/area/desert_dam/building/dorms/hallway_northwing)
+"cO" = (
+/obj/structure/disposalpipe/junction{
+	dir = 1;
+	icon_state = "pipe-y"
+	},
+/obj/structure/pipes/standard/manifold/hidden/green,
+/turf/open/floor/prison,
+/area/desert_dam/building/dorms/hallway_northwing)
+"cP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 10
+	},
+/turf/open/floor/prison,
+/area/desert_dam/building/dorms/hallway_northwing)
+"cQ" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/machinery/door/airlock/almayer/maint/colony,
+/turf/open/floor/prison,
+/area/desert_dam/building/dorms/hallway_northwing)
 "cR" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Workshop Foyer"
@@ -735,6 +867,7 @@
 /area/desert_dam/building/mining/workshop)
 "cT" = (
 /obj/structure/surface/table,
+/obj/item/storage/bag/ore,
 /turf/open/floor/prison/darkyellow2/southeast,
 /area/desert_dam/building/mining/workshop)
 "cU" = (
@@ -744,14 +877,34 @@
 /obj/structure/barricade/plasteel/wired,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/desert_dam/exterior/valley/valley_civilian)
+"cW" = (
+/turf/open/floor/prison/green/north,
+/area/desert_dam/building/dorms/hallway_northwing)
 "cX" = (
-/obj/structure/surface/table,
-/obj/item/reagent_container/food/snacks/bun,
-/obj/item/reagent_container/food/snacks/bun,
-/obj/item/reagent_container/food/snacks/cheesewedge,
-/obj/item/reagent_container/food/snacks/donut,
-/turf/open/floor/prison/kitchen/southwest,
-/area/desert_dam/building/cafeteria/cafeteria)
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/green/north,
+/area/desert_dam/building/dorms/hallway_northwing)
+"cY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/prison/green/north,
+/area/desert_dam/building/dorms/hallway_northwing)
+"cZ" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/greencorner/east,
+/area/desert_dam/building/dorms/hallway_northwing)
+"da" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison,
+/area/desert_dam/building/dorms/hallway_northwing)
+"db" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/prison,
+/area/desert_dam/building/dorms/hallway_northwing)
 "dc" = (
 /obj/structure/desertdam/decals/road_stop{
 	dir = 8;
@@ -759,6 +912,9 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_civilian)
+"dd" = (
+/turf/open/floor/prison,
+/area/desert_dam/building/dorms/hallway_northwing)
 "de" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal3"
@@ -776,10 +932,41 @@
 /obj/structure/machinery/reagentgrinder,
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/building/cafeteria/cafeteria)
+"dg" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/open/floor/prison,
+/area/desert_dam/building/dorms/hallway_northwing)
+"dh" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 1;
+	name = "\improper Dormitories Bedroom"
+	},
+/turf/open/floor/wood,
+/area/desert_dam/building/dorms/hallway_northwing)
+"di" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table,
+/turf/open/floor/prison/green/northwest,
+/area/desert_dam/building/dorms/hallway_northwing)
+"dj" = (
+/obj/structure/surface/table,
+/obj/effect/spawner/random/toolbox,
+/turf/open/floor/prison/green/north,
+/area/desert_dam/building/dorms/hallway_northwing)
 "dk" = (
 /obj/structure/flora/grass/desert/lightgrass_11,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_civilian)
+"dl" = (
+/obj/structure/surface/table,
+/turf/open/floor/prison/green/north,
+/area/desert_dam/building/dorms/hallway_northwing)
+"dm" = (
+/obj/structure/flora/pottedplant,
+/turf/open/floor/prison/green/north,
+/area/desert_dam/building/dorms/hallway_northwing)
 "dn" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
@@ -787,6 +974,40 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_civilian)
+"do" = (
+/obj/structure/machinery/atm{
+	name = "Weyland-Yutani Automatic Teller Machine";
+	pixel_y = 30
+	},
+/turf/open/floor/prison/greencorner/east,
+/area/desert_dam/building/dorms/hallway_northwing)
+"dp" = (
+/obj/structure/barricade/wooden{
+	dir = 1
+	},
+/turf/open/floor/prison,
+/area/desert_dam/building/dorms/hallway_northwing)
+"dq" = (
+/obj/structure/barricade/wooden{
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/prison,
+/area/desert_dam/building/dorms/hallway_northwing)
+"dr" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/prison/greencorner/north,
+/area/desert_dam/building/dorms/hallway_northwing)
+"ds" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor/prison/green/north,
+/area/desert_dam/building/dorms/hallway_northwing)
 "dt" = (
 /obj/structure/disposalpipe/segment{
 	dir = 2;
@@ -797,6 +1018,16 @@
 	},
 /turf/open/floor/prison,
 /area/desert_dam/building/cafeteria/loading)
+"du" = (
+/obj/structure/surface/table,
+/obj/item/device/radio,
+/turf/open/floor/prison/green/north,
+/area/desert_dam/building/dorms/hallway_northwing)
+"dv" = (
+/obj/structure/surface/table,
+/obj/item/ashtray/bronze,
+/turf/open/floor/prison/green/north,
+/area/desert_dam/building/dorms/hallway_northwing)
 "dw" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -807,6 +1038,46 @@
 	},
 /turf/open/floor/prison/kitchen/southwest,
 /area/desert_dam/building/cafeteria/cafeteria)
+"dx" = (
+/obj/structure/surface/table,
+/turf/open/floor/wood,
+/area/desert_dam/building/dorms/hallway_northwing)
+"dy" = (
+/turf/open/floor/wood,
+/area/desert_dam/building/dorms/hallway_northwing)
+"dz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/prison,
+/area/desert_dam/building/dorms/hallway_northwing)
+"dA" = (
+/obj/structure/bed/chair/wood/normal{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/desert_dam/building/dorms/hallway_northwing)
+"dB" = (
+/obj/structure/bed,
+/turf/open/floor/wood,
+/area/desert_dam/building/dorms/hallway_northwing)
+"dC" = (
+/obj/structure/closet/cabinet,
+/turf/open/floor/wood,
+/area/desert_dam/building/dorms/hallway_northwing)
+"dD" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
+/area/desert_dam/exterior/valley/valley_civilian)
+"dE" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
 "dF" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Mess Hall"
@@ -814,13 +1085,49 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/building/cafeteria/cafeteria)
+"dG" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"dH" = (
+/obj/structure/desertdam/decals/road_stop{
+	icon_state = "stop_decal5"
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"dI" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 6
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
 "dJ" = (
 /turf/open/floor/prison/darkyellow2/northeast,
 /area/desert_dam/building/mining/workshop)
+"dK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
 "dL" = (
 /obj/structure/surface/table,
-/obj/item/reagent_container/food/snacks/cookie,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/tool/kitchen/utensil/fork{
+	pixel_x = -1;
+	pixel_y = 3
+	},
 /turf/open/floor/prison/kitchen/southwest,
 /area/desert_dam/building/cafeteria/cafeteria)
 "dM" = (
@@ -832,10 +1139,80 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/desert_dam/exterior/valley/valley_civilian)
+"dN" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"dO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
+"dP" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/prison,
+/area/desert_dam/building/cafeteria/loading)
 "dQ" = (
 /obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/plating,
 /area/desert_dam/building/cafeteria/backroom)
+"dR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/obj/structure/pipes/standard/manifold/hidden/green,
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
+"dS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
+"dT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 10
+	},
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
+"dU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/cafeteria/cafeteria)
+"dV" = (
+/obj/structure/machinery/power/apc/no_power/west,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 6
+	},
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/cafeteria/cafeteria)
 "ee" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -925,8 +1302,8 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/closet/toolcloset,
 /obj/effect/landmark/objective_landmark/science,
+/obj/structure/closet/secure_closet/miner,
 /turf/open/floor/prison/darkbrown2/northwest,
 /area/desert_dam/building/mining/workshop_foyer)
 "fy" = (
@@ -937,7 +1314,7 @@
 /area/desert_dam/building/cafeteria/loading)
 "fz" = (
 /obj/structure/surface/rack,
-/obj/effect/spawner/random/tech_supply,
+/obj/item/tool/pickaxe/hammer,
 /turf/open/floor/prison/darkbrown2,
 /area/desert_dam/building/mining/workshop_foyer)
 "fC" = (
@@ -1222,7 +1599,10 @@
 /area/desert_dam/exterior/valley/valley_civilian)
 "jS" = (
 /obj/structure/surface/rack,
-/obj/effect/spawner/random/toolbox,
+/obj/item/tool/pickaxe,
+/obj/item/tool/pickaxe{
+	pixel_y = -7
+	},
 /turf/open/floor/prison,
 /area/desert_dam/building/mining/workshop)
 "kb" = (
@@ -1354,10 +1734,8 @@
 /turf/open/asphalt,
 /area/desert_dam/building/cafeteria/loading)
 "lv" = (
-/obj/item/stack/sheet/plasteel{
-	amount = 10
-	},
 /obj/structure/surface/rack,
+/obj/item/stack/sheet/plasteel/small_stack,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/mining/workshop)
 "lL" = (
@@ -1497,8 +1875,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/mining/workshop)
 "nX" = (
-/obj/structure/surface/rack,
-/obj/item/stack/sheet/metal,
+/obj/structure/closet/crate/miningcar,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/mining/workshop)
 "ok" = (
@@ -1534,8 +1911,8 @@
 /turf/open/floor/prison,
 /area/desert_dam/exterior/valley/valley_civilian)
 "oA" = (
-/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/close,
+/obj/structure/closet/crate/plastic,
 /turf/open/floor/plating,
 /area/desert_dam/building/cafeteria/backroom)
 "oG" = (
@@ -1554,10 +1931,8 @@
 /area/desert_dam/exterior/valley/valley_civilian)
 "oP" = (
 /obj/structure/surface/rack,
-/obj/item/stack/sheet/metal,
-/obj/item/stack/sheet/plasteel{
-	amount = 10
-	},
+/obj/item/stack/sheet/metal/small_stack,
+/obj/item/stack/sheet/plasteel/small_stack,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/mining/workshop)
 "oV" = (
@@ -1682,7 +2057,7 @@
 /area/desert_dam/exterior/valley/valley_civilian)
 "qW" = (
 /obj/structure/surface/rack,
-/obj/effect/spawner/random/technology_scanner,
+/obj/item/device/flashlight/lantern,
 /turf/open/floor/prison/darkbrown2,
 /area/desert_dam/building/mining/workshop_foyer)
 "qX" = (
@@ -1706,17 +2081,12 @@
 /obj/structure/barricade/metal/wired,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
 /area/desert_dam/exterior/valley/valley_civilian)
-"rl" = (
-/obj/structure/surface/table,
-/obj/item/reagent_container/food/snacks/chips,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/kitchen/southwest,
-/area/desert_dam/building/cafeteria/cafeteria)
 "rx" = (
 /obj/structure/surface/table,
-/obj/item/reagent_container/food/snacks/chips,
-/obj/item/reagent_container/food/snacks/cookie,
-/obj/item/reagent_container/food/snacks/donut,
+/obj/item/reagent_container/food/condiment/saltshaker{
+	pixel_x = -8;
+	pixel_y = 3
+	},
 /turf/open/floor/prison/kitchen/southwest,
 /area/desert_dam/building/cafeteria/cafeteria)
 "ry" = (
@@ -1791,18 +2161,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/kitchen/southwest,
 /area/desert_dam/building/cafeteria/cafeteria)
-"sU" = (
-/obj/structure/machinery/power/apc/no_power/west,
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
-	},
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 6
-	},
-/turf/open/floor/prison/sterile_white,
-/area/desert_dam/building/cafeteria/cafeteria)
 "sW" = (
 /obj/structure/barricade/sandbags/wired{
 	icon_state = "sandbag_0"
@@ -1846,10 +2204,15 @@
 /area/desert_dam/building/cafeteria/cafeteria)
 "tz" = (
 /obj/structure/surface/table,
-/obj/item/reagent_container/food/snacks/candy,
-/obj/item/reagent_container/food/snacks/bun,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/reagent_container/food/condiment/saltshaker{
+	pixel_x = -10;
+	pixel_y = 8
+	},
+/obj/item/reagent_container/food/condiment/peppermill{
+	pixel_y = 11
+	},
 /turf/open/floor/prison/kitchen/southwest,
 /area/desert_dam/building/cafeteria/cafeteria)
 "tD" = (
@@ -1884,9 +2247,14 @@
 /area/desert_dam/exterior/valley/valley_civilian)
 "tQ" = (
 /obj/structure/surface/table,
-/obj/item/reagent_container/food/snacks/chips,
-/obj/item/reagent_container/food/snacks/cookie,
-/obj/item/reagent_container/food/snacks/donkpocket,
+/obj/item/trash/tray{
+	pixel_y = 5;
+	pixel_x = 3
+	},
+/obj/item/reagent_container/food/snacks/carrotcakeslice{
+	pixel_x = 2;
+	pixel_y = 3
+	},
 /turf/open/floor/prison/kitchen/southwest,
 /area/desert_dam/building/cafeteria/cafeteria)
 "tV" = (
@@ -1903,7 +2271,7 @@
 /area/event/metal/dynamic/lit)
 "um" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/reagent_container/food/snacks/bigbiteburger,
+/obj/item/reagent_container/food/snacks/flour,
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/building/cafeteria/cafeteria)
 "un" = (
@@ -1942,11 +2310,6 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/building/cafeteria/cafeteria)
-"uQ" = (
-/obj/structure/surface/table,
-/obj/item/reagent_container/food/snacks/donut,
-/turf/open/floor/prison/kitchen/southwest,
-/area/desert_dam/building/cafeteria/cafeteria)
 "uW" = (
 /turf/closed/wall/r_wall,
 /area/desert_dam/building/mining/workshop_foyer)
@@ -1961,7 +2324,7 @@
 /area/desert_dam/building/mining/workshop_foyer)
 "ve" = (
 /obj/structure/surface/rack,
-/obj/item/clothing/head/welding,
+/obj/item/tool/shovel,
 /turf/open/floor/prison,
 /area/desert_dam/building/mining/workshop)
 "vj" = (
@@ -2020,11 +2383,15 @@
 /area/desert_dam/exterior/valley/valley_civilian)
 "wi" = (
 /obj/structure/surface/table,
-/obj/item/reagent_container/food/snacks/candy,
-/obj/item/reagent_container/food/snacks/candy,
-/obj/item/reagent_container/food/snacks/candy,
-/obj/item/reagent_container/food/snacks/donkpocket,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/reagent_container/food/condiment/saltshaker{
+	pixel_x = 6;
+	pixel_y = 3
+	},
+/obj/item/reagent_container/food/condiment/peppermill{
+	pixel_x = 3;
+	pixel_y = 9
+	},
 /turf/open/floor/prison/kitchen/southwest,
 /area/desert_dam/building/cafeteria/cafeteria)
 "wl" = (
@@ -2165,7 +2532,7 @@
 /area/desert_dam/exterior/valley/valley_civilian)
 "yF" = (
 /obj/structure/surface/rack,
-/obj/effect/spawner/random/technology_scanner,
+/obj/item/device/flashlight/lantern,
 /turf/open/floor/prison,
 /area/desert_dam/building/mining/workshop)
 "yL" = (
@@ -2332,6 +2699,7 @@
 /turf/open/floor/interior/wood,
 /area/desert_dam/exterior/valley/valley_civilian)
 "BI" = (
+/obj/structure/closet/crate/miningcar,
 /turf/open/floor/prison/darkyellow2,
 /area/desert_dam/building/mining/workshop)
 "BS" = (
@@ -2580,6 +2948,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/item/tool/kitchen/knife/butcher,
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/building/cafeteria/cafeteria)
 "FL" = (
@@ -2717,7 +3086,7 @@
 /turf/open/floor/interior/wood,
 /area/desert_dam/exterior/valley/valley_civilian)
 "HR" = (
-/obj/structure/closet/toolcloset,
+/obj/structure/closet/secure_closet/miner,
 /turf/open/floor/prison/darkbrown2/north,
 /area/desert_dam/building/mining/workshop_foyer)
 "HV" = (
@@ -2771,6 +3140,16 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/crate/freezer/rations,
 /turf/open/floor/prison/floor_marked/southwest,
 /area/desert_dam/building/cafeteria/loading)
 "IG" = (
@@ -3003,6 +3382,11 @@
 /area/desert_dam/building/mining/workshop)
 "MM" = (
 /obj/structure/machinery/power/apc/no_power/north,
+/obj/structure/largecrate/empty/case/double,
+/obj/item/clothing/head/hardhat/orange{
+	pixel_y = 7;
+	pixel_x = 4
+	},
 /turf/open/floor/prison/darkbrowncorners2/east,
 /area/desert_dam/building/mining/workshop_foyer)
 "MT" = (
@@ -3064,7 +3448,7 @@
 /turf/open/floor/prison/kitchen/southwest,
 /area/desert_dam/building/cafeteria/cafeteria)
 "NI" = (
-/obj/structure/closet/crate/secure,
+/obj/structure/ore_box,
 /turf/open/floor/prison/floor_marked/southwest,
 /area/desert_dam/building/mining/workshop_foyer)
 "NL" = (
@@ -3186,10 +3570,14 @@
 /area/event/metal/dynamic/lit)
 "PU" = (
 /obj/structure/surface/table,
-/obj/item/reagent_container/food/snacks/bun,
-/obj/item/reagent_container/food/snacks/bun,
-/obj/item/reagent_container/food/snacks/cheesewedge,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/trash/tray{
+	pixel_y = 6
+	},
+/obj/item/tool/kitchen/utensil/spoon{
+	pixel_x = 13;
+	pixel_y = 10
+	},
 /turf/open/floor/prison/kitchen/southwest,
 /area/desert_dam/building/cafeteria/cafeteria)
 "PX" = (
@@ -3235,7 +3623,10 @@
 /area/desert_dam/building/cafeteria/cafeteria)
 "Qv" = (
 /obj/structure/surface/table,
-/obj/item/reagent_container/food/snacks/bun,
+/obj/item/trash/tray{
+	pixel_x = -2;
+	pixel_y = 5
+	},
 /turf/open/floor/prison/kitchen/southwest,
 /area/desert_dam/building/cafeteria/cafeteria)
 "QK" = (
@@ -3296,8 +3687,11 @@
 /area/desert_dam/exterior/valley/valley_civilian)
 "Rt" = (
 /obj/structure/surface/table,
-/obj/item/reagent_container/food/snacks/donkpocket,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/trash/tray{
+	pixel_x = 2;
+	pixel_y = 10
+	},
 /turf/open/floor/prison/kitchen/southwest,
 /area/desert_dam/building/cafeteria/cafeteria)
 "Ry" = (
@@ -3389,8 +3783,11 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_civilian)
 "SP" = (
-/obj/structure/surface/rack,
-/obj/effect/spawner/random/bomb_supply,
+/obj/structure/closet/secure_closet,
+/obj/item/explosive/plastic{
+	desc = "A compact explosive charge for controlled demolitions. Looks to be made from C4";
+	name = "Mining explosives"
+	},
 /turf/open/floor/prison,
 /area/desert_dam/building/mining/workshop)
 "SR" = (
@@ -3463,8 +3860,15 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
 /area/event/dynamic/lit)
 "Uf" = (
-/obj/item/reagent_container/glass/bucket/mopbucket,
-/obj/item/tool/mop,
+/obj/item/reagent_container/glass/bucket/mopbucket{
+	pixel_x = 3;
+	pixel_y = 12
+	},
+/obj/item/tool/mop{
+	layer = 4;
+	pixel_y = 12;
+	pixel_x = -13
+	},
 /turf/open/floor/plating,
 /area/desert_dam/building/cafeteria/backroom)
 "Uj" = (
@@ -3476,15 +3880,25 @@
 /area/desert_dam/exterior/valley/valley_civilian)
 "Um" = (
 /obj/structure/surface/table,
-/obj/item/reagent_container/food/snacks/cheesewedge,
-/obj/item/reagent_container/food/snacks/chips,
-/obj/item/reagent_container/food/snacks/cookie,
+/obj/item/reagent_container/food/condiment/saltshaker{
+	pixel_x = 8
+	},
+/obj/item/reagent_container/food/condiment/peppermill{
+	pixel_x = 5;
+	pixel_y = 8
+	},
 /turf/open/floor/prison/kitchen/southwest,
 /area/desert_dam/building/cafeteria/cafeteria)
 "Uq" = (
-/obj/structure/largecrate/random,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/crate/plastic,
+/obj/item/reagent_container/food/snacks/grown/banana,
+/obj/item/reagent_container/food/snacks/grown/banana,
+/obj/item/reagent_container/food/snacks/grown/banana,
+/obj/item/reagent_container/food/snacks/grown/banana,
+/obj/item/reagent_container/food/snacks/grown/banana,
+/obj/item/reagent_container/food/snacks/grown/banana,
 /turf/open/floor/prison/floor_marked/southwest,
 /area/desert_dam/building/cafeteria/loading)
 "Ur" = (
@@ -3523,7 +3937,7 @@
 /turf/open/floor/interior/wood,
 /area/desert_dam/exterior/valley/valley_civilian)
 "UU" = (
-/obj/structure/largecrate/random,
+/obj/structure/ore_box,
 /turf/open/floor/vault2/west,
 /area/desert_dam/building/mining/workshop)
 "UY" = (
@@ -3599,11 +4013,6 @@
 "Xb" = (
 /turf/open/floor/strata/floor3/east,
 /area/event/metal/dynamic/lit)
-"Xk" = (
-/obj/structure/surface/table,
-/obj/item/reagent_container/food/snacks/candy,
-/turf/open/floor/prison/kitchen/southwest,
-/area/desert_dam/building/cafeteria/cafeteria)
 "Xl" = (
 /obj/structure/barricade/metal/wired{
 	dir = 1
@@ -3689,10 +4098,6 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_civilian)
-"YP" = (
-/obj/structure/surface/rack,
-/turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/building/mining/workshop)
 "YQ" = (
 /obj/structure/surface/rack,
 /turf/open/floor/plating,
@@ -3745,8 +4150,7 @@
 /area/desert_dam/exterior/valley/valley_civilian)
 "Zt" = (
 /obj/structure/surface/rack,
-/obj/effect/spawner/random/tech_supply,
-/obj/effect/spawner/random/tech_supply,
+/obj/item/storage/bag/ore,
 /turf/open/floor/prison/darkbrown2,
 /area/desert_dam/building/mining/workshop_foyer)
 "Zv" = (
@@ -3766,11 +4170,8 @@
 /area/desert_dam/exterior/valley/valley_civilian)
 "ZI" = (
 /obj/structure/surface/table,
-/obj/item/reagent_container/food/snacks/candy,
-/obj/item/reagent_container/food/snacks/candy,
-/obj/item/reagent_container/food/snacks/candy,
-/obj/item/reagent_container/food/snacks/chips,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/tool/kitchen/utensil/fork,
 /turf/open/floor/prison/kitchen/southwest,
 /area/desert_dam/building/cafeteria/cafeteria)
 "ZJ" = (
@@ -3841,15 +4242,15 @@ AQ
 id
 id
 id
-bG
-bu
-bh
-af
-af
-af
-af
-af
-af
+cW
+cH
+cv
+bo
+bo
+bo
+bo
+bo
+bo
 wK
 "}
 (2,1,1) = {"
@@ -3895,19 +4296,19 @@ nB
 fC
 NL
 AQ
-cd
-cd
+dx
+dx
 id
-bG
-bw
-bi
-aX
-aU
-aM
-ab
-aA
-ab
-ab
+cW
+cI
+cw
+ci
+cf
+bX
+bj
+bL
+bj
+bj
 "}
 (3,1,1) = {"
 NL
@@ -3952,19 +4353,19 @@ nB
 fC
 NL
 AQ
-cg
-ce
+dA
+dy
 id
-bG
-bw
+cW
+cI
 pO
-aY
-aV
-ac
-aH
-ac
-ac
-ac
+cj
+cg
+bk
+bS
+bk
+bk
+bk
 "}
 (4,1,1) = {"
 xI
@@ -3983,18 +4384,18 @@ BW
 BW
 Cx
 Cx
-Ry
+aW
 Cx
 ff
 Qj
 Qj
-uQ
+fL
 tQ
 Um
 kY
 kY
-Qv
-cX
+fL
+fL
 xo
 ff
 IG
@@ -4009,19 +4410,19 @@ nB
 fC
 NL
 AQ
-ce
-ce
+dy
+dy
 id
-bG
-by
-bj
-aB
-aB
-ad
-ad
-aB
-ad
-ad
+cW
+cJ
+cx
+bM
+bM
+bm
+bm
+bM
+bm
+bm
 "}
 (5,1,1) = {"
 kV
@@ -4039,19 +4440,19 @@ BW
 BW
 BW
 Cx
-Ry
+aZ
 Ry
 hV
 ff
 Qj
 ee
-rl
+dL
 tV
 NE
 oK
 oK
 Qv
-fL
+aG
 mK
 ff
 IG
@@ -4066,19 +4467,19 @@ nB
 fC
 NL
 AQ
+dB
+dy
+dh
+cX
+cI
+cy
+ci
 ch
-ce
-bQ
-bI
-bw
+bY
 bk
-aX
-aW
-aN
-ac
-aC
-ap
-ae
+bN
+bB
+bn
 "}
 (6,1,1) = {"
 BW
@@ -4097,7 +4498,7 @@ BW
 BW
 Cx
 OV
-Ry
+aX
 Cx
 QR
 FC
@@ -4123,19 +4524,19 @@ nB
 fC
 KB
 AQ
-ci
-ce
+dC
+dy
 id
-bI
-bu
-bh
-af
-af
-af
-aJ
-af
-af
-af
+cX
+cH
+cv
+bo
+bo
+bo
+bT
+bo
+bo
+bo
 "}
 (7,1,1) = {"
 BW
@@ -4183,16 +4584,16 @@ AQ
 AQ
 AQ
 id
-bK
+cY
+cH
+cz
+ck
 bu
-bm
-aZ
-ak
-aO
-aE
-aD
-ak
-ag
+bZ
+bP
+bO
+bu
+bp
 "}
 (8,1,1) = {"
 BW
@@ -4210,8 +4611,8 @@ ET
 Cx
 Cx
 gw
-Ry
-Ry
+ba
+aY
 Cx
 gS
 ff
@@ -4239,17 +4640,17 @@ ww
 ww
 RT
 AQ
-bR
-bL
+di
+cZ
+cH
+cz
+cn
 bu
-bm
-ba
-ak
-aP
-aE
-aD
-aq
-ah
+ca
+bP
+bO
+bC
+bq
 "}
 (9,1,1) = {"
 BW
@@ -4267,7 +4668,7 @@ JL
 Cx
 Uf
 Ry
-Ry
+bb
 YQ
 Cx
 XL
@@ -4278,7 +4679,7 @@ wi
 ZI
 oK
 oK
-NE
+aJ
 PU
 fL
 ff
@@ -4296,17 +4697,17 @@ JX
 Bu
 sf
 OF
-bS
-bM
+dj
+da
+cH
+cz
+cp
 bu
-bm
-bb
-ak
-aQ
-aE
-aD
-aq
-ai
+cb
+bP
+bO
+bC
+br
 "}
 (10,1,1) = {"
 BW
@@ -4322,22 +4723,22 @@ ww
 RT
 FX
 Cx
-dQ
-Ry
+bd
+aX
 Ry
 oA
 Cx
-ff
+aU
 Qj
 Qr
-Xk
+fL
 Rt
 gC
 oK
-He
+aL
 rX
 tz
-NE
+aF
 cL
 FL
 FL
@@ -4351,19 +4752,19 @@ tn
 DF
 ik
 Gu
-NL
+xK
 OF
-bT
+dl
 pO
-bz
-bm
-bd
-ak
-aR
-aD
-aE
-aq
-ah
+cK
+cz
+cq
+bu
+cc
+bO
+bP
+bC
+bq
 "}
 (11,1,1) = {"
 BW
@@ -4389,7 +4790,7 @@ Ty
 si
 Fn
 mg
-mg
+aK
 oK
 oK
 mg
@@ -4410,17 +4811,17 @@ Fu
 Gu
 Pu
 OF
-bU
+dm
 pO
-bz
-bm
-be
-ak
-aS
-aE
-aE
-ak
-aj
+cK
+cz
+cs
+bu
+cd
+bP
+bP
+bu
+bt
 "}
 (12,1,1) = {"
 BW
@@ -4467,17 +4868,17 @@ Fu
 RC
 Oc
 id
-bW
+do
 pO
-bA
-bn
-bf
-ak
-aR
-aD
-aD
-ak
-ak
+cM
+cA
+ct
+bu
+cc
+bO
+bO
+bu
+bu
 "}
 (13,1,1) = {"
 BW
@@ -4496,13 +4897,13 @@ JL
 FL
 NC
 ff
-sU
+dV
 uM
-cz
+dU
 yS
-cw
+dR
 oK
-oK
+aO
 kY
 oK
 He
@@ -4524,17 +4925,17 @@ nB
 hd
 RY
 GG
-bX
+dp
 pO
-bB
-bo
-ak
-ak
-ak
-aK
-ak
-ak
-al
+cN
+cC
+bu
+bu
+bu
+bU
+bu
+bu
+bw
 "}
 (14,1,1) = {"
 BW
@@ -4557,7 +4958,7 @@ iW
 QR
 ff
 ff
-cx
+dS
 QR
 QR
 QR
@@ -4572,26 +4973,26 @@ IG
 bH
 Fu
 wq
-cq
-cn
-cp
-cn
-ck
+dI
+dG
+dH
+dG
+dE
 Ym
 RI
-cj
-cf
-bY
-bN
-bC
-bp
-ak
-aF
-aT
-aF
-aF
-au
-am
+dD
+dz
+dq
+db
+cO
+cD
+bu
+bQ
+ce
+bQ
+bQ
+bD
+by
 "}
 (15,1,1) = {"
 kr
@@ -4611,14 +5012,14 @@ FL
 um
 ee
 iW
-NW
+aV
 ff
 QR
-cx
+aT
 QR
 QR
 QR
-oK
+aN
 oK
 QR
 QR
@@ -4629,7 +5030,7 @@ IG
 bH
 Tz
 wq
-cs
+dK
 zN
 Yi
 vD
@@ -4638,17 +5039,17 @@ Fu
 Wt
 kp
 id
-bZ
-bO
-bD
-bq
-bg
-av
-av
-aG
-aG
-av
-an
+dr
+dd
+cP
+cE
+cu
+bE
+bE
+bR
+bR
+bE
+bz
 "}
 (16,1,1) = {"
 zN
@@ -4671,7 +5072,7 @@ zK
 NW
 ff
 hX
-cx
+dS
 kY
 kY
 kY
@@ -4686,7 +5087,7 @@ dF
 Zb
 Av
 wq
-ct
+dN
 dn
 JY
 vD
@@ -4695,17 +5096,17 @@ Fu
 Gu
 NL
 OF
-ca
-bO
+ds
+dd
 pO
-br
-ak
-aF
-ao
-ao
-ao
-aw
-ao
+cF
+bu
+bQ
+bA
+bA
+bA
+bG
+bA
 "}
 (17,1,1) = {"
 vD
@@ -4728,11 +5129,11 @@ zK
 xr
 ff
 hX
-cy
-cu
-cu
-cu
-cu
+dT
+dO
+dO
+dO
+dO
 vj
 oK
 oK
@@ -4743,26 +5144,26 @@ Qj
 YD
 Av
 wq
-cs
+dK
 zN
 JY
-vD
+ag
 IH
 Fu
 Gu
-NL
+ac
 OF
-cb
-bP
+du
+dg
 pO
-bm
-ak
-ay
-ak
-ay
-ak
-ay
-ak
+cz
+bu
+bI
+bu
+bI
+bu
+bI
+bu
 "}
 (18,1,1) = {"
 vD
@@ -4791,7 +5192,7 @@ QV
 QV
 oK
 oK
-kt
+aK
 QV
 QV
 ff
@@ -4800,7 +5201,7 @@ IG
 bH
 Fu
 Wa
-cs
+dK
 zN
 Yi
 vD
@@ -4809,17 +5210,17 @@ Fu
 Gu
 NL
 OF
-cc
-bP
+dv
+dg
 pO
-bm
-ak
-az
-ak
-az
-ak
-az
-ak
+cz
+bu
+bK
+bu
+bK
+bu
+bK
+bu
 "}
 (19,1,1) = {"
 dc
@@ -4857,7 +5258,7 @@ QR
 bH
 Fu
 Wa
-ct
+dN
 dn
 Yi
 vD
@@ -4865,18 +5266,18 @@ IH
 Fu
 Gu
 NL
-bt
-bt
-bt
-bE
-bt
-aL
-aL
-aL
-aL
-ak
-ak
-ak
+cG
+cG
+cG
+cQ
+cG
+bW
+bW
+bW
+bW
+bu
+bu
+bu
 "}
 (20,1,1) = {"
 zN
@@ -4967,7 +5368,7 @@ ff
 ff
 bc
 QR
-NL
+xK
 Qt
 Fu
 Lx
@@ -5129,7 +5530,7 @@ iE
 JN
 iE
 xN
-xN
+aP
 Qc
 iE
 FL
@@ -5185,7 +5586,7 @@ Gg
 fy
 gU
 iE
-Qc
+aQ
 xN
 ns
 iE
@@ -5262,11 +5663,11 @@ IH
 Fu
 nW
 Nz
-nX
+ad
 Kc
 lv
+ab
 Kc
-YP
 BI
 Zi
 BW
@@ -5295,17 +5696,17 @@ OS
 iE
 iE
 dt
-cv
-cv
-cv
-cv
-cv
-cv
+dP
+dP
+dP
+dP
+dP
+dP
 IY
 za
 un
 iE
-iE
+aH
 Iy
 Ut
 yL
@@ -5474,7 +5875,7 @@ RP
 RP
 lq
 iE
-ID
+aM
 Qc
 iE
 Im
@@ -5812,7 +6213,7 @@ Iy
 Iy
 AO
 Wa
-vD
+aR
 vD
 IH
 bH
@@ -5946,7 +6347,7 @@ IH
 rb
 nW
 Nz
-jS
+ae
 zk
 Kc
 Kc
@@ -6003,7 +6404,7 @@ IH
 rb
 nW
 Nz
-yF
+af
 zk
 zk
 Kc
@@ -6395,9 +6796,9 @@ Ub
 wZ
 uw
 uw
+aq
 uw
-uw
-uw
+ak
 uw
 vQ
 AA
@@ -6539,10 +6940,10 @@ BW
 BW
 BW
 BW
+bh
 uw
 uw
-uw
-uw
+ay
 Ub
 Ub
 Ub
@@ -6596,10 +6997,10 @@ BW
 BW
 BW
 BW
+bi
 uw
 uw
 uw
-uw
 Ub
 Ub
 Ub
@@ -6622,17 +7023,17 @@ Ub
 Ub
 Ub
 uw
+ay
+au
 uw
 uw
-uw
-uw
-uw
+aj
 BW
 BW
 BW
 Hc
 Lr
-gb
+NI
 vY
 gb
 Qf
@@ -6679,10 +7080,10 @@ Ub
 Ub
 Ub
 uw
-uw
-uw
-uw
-uw
+az
+av
+an
+al
 uw
 BW
 BW
@@ -6711,9 +7112,9 @@ BW
 BW
 BW
 BW
+al
 uw
 uw
-uw
 Ub
 Ub
 Ub
@@ -6735,13 +7136,13 @@ Ub
 Ub
 Ub
 Ub
-uw
-uw
-uw
-uw
-uw
+aD
+aA
+aw
+ao
 uw
 uw
+ah
 BW
 BW
 SR
@@ -6769,36 +7170,36 @@ BW
 BW
 BW
 uw
+be
+uw
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+uw
+aB
+ao
+ap
 uw
 uw
-Ub
-Ub
-Ub
-Ub
-Ub
-Ub
-Ub
-Ub
-Ub
-Ub
-Ub
-Ub
-Ub
-Ub
-Ub
-Ub
-Ub
-Ub
-Ub
-Ub
-Ub
-uw
-uw
-uw
-uw
-uw
-uw
-uw
+ai
 BW
 BW
 BW
@@ -6825,9 +7226,9 @@ BW
 BW
 BW
 BW
+bg
 uw
 uw
-uw
 Ub
 Ub
 Ub
@@ -6850,8 +7251,8 @@ Ub
 Ub
 Ub
 uw
-uw
-uw
+aC
+al
 uw
 uw
 uw
@@ -6910,7 +7311,7 @@ uw
 uw
 uw
 uw
-uw
+am
 BW
 BW
 BW
@@ -6997,6 +7398,7 @@ BW
 BW
 BW
 BW
+bf
 uw
 uw
 uw
@@ -7008,20 +7410,19 @@ uw
 uw
 uw
 uw
+aS
+uw
+uw
+al
 uw
 uw
 uw
 uw
+aE
 uw
 uw
 uw
-uw
-uw
-uw
-uw
-uw
-uw
-uw
+ah
 BW
 BW
 BW

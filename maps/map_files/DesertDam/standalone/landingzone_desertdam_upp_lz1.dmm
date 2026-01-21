@@ -237,23 +237,15 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/crate/plastic,
 /obj/item/reagent_container/food/snacks/grown/corn,
 /obj/item/reagent_container/food/snacks/grown/corn,
 /obj/item/reagent_container/food/snacks/grown/corn,
 /obj/item/reagent_container/food/snacks/grown/corn,
 /obj/item/reagent_container/food/snacks/grown/corn,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /turf/open/floor/prison/floor_marked/southwest,
 /area/desert_dam/building/cafeteria/loading)
 "aN" = (
@@ -299,14 +291,6 @@
 /turf/open/desert/dirt,
 /area/event/dynamic/lit)
 "aT" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -1194,7 +1178,6 @@
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/building/cafeteria/cafeteria)
 "dV" = (
-/obj/structure/machinery/power/apc/no_power/west,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -1203,11 +1186,6 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/building/cafeteria/cafeteria)
 "ee" = (
@@ -3134,18 +3112,10 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/crate/freezer/rations,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/closet/crate/freezer/rations,
 /turf/open/floor/prison/floor_marked/southwest,
 /area/desert_dam/building/cafeteria/loading)
 "IG" = (

@@ -103,6 +103,7 @@
 /area/desert_dam/building/security/lobby)
 "js" = (
 /obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/security/lobby)
 "jM" = (
@@ -198,6 +199,9 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/rods,
 /obj/effect/decal/cleanable/blood,
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 4
+	},
 /turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/security/lobby)
 "sn" = (
@@ -239,9 +243,9 @@
 /turf/open/floor/prison/red/west,
 /area/desert_dam/building/security/lobby)
 "vD" = (
-/obj/structure/pipes/vents/pump,
 /obj/structure/disposalpipe/segment,
 /obj/item/shard,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/platingdmg3,
 /area/desert_dam/building/security/lobby)
 "vQ" = (
@@ -310,6 +314,7 @@
 "Ce" = (
 /obj/structure/disposalpipe/segment,
 /obj/item/shard,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/security/lobby)
 "Cp" = (
@@ -339,6 +344,7 @@
 "EH" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/security/lobby)
 "Ft" = (
@@ -431,6 +437,7 @@
 "ON" = (
 /obj/structure/disposalpipe/segment,
 /obj/item/stack/rods,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_security)
 "OT" = (
@@ -441,6 +448,7 @@
 /area/desert_dam/exterior/valley/valley_security)
 "Pu" = (
 /obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/desert_dam/exterior/valley/valley_security)
 "Qo" = (
@@ -449,10 +457,17 @@
 "Qt" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_security)
 "Rg" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/item/pipe{
+	color = "green";
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 5
+	},
 /turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/security/lobby)
 "Rn" = (
@@ -510,6 +525,7 @@
 /area/desert_dam/exterior/valley/valley_security)
 "YD" = (
 /obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_security)
 "YT" = (

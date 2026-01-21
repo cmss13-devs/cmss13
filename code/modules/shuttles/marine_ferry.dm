@@ -531,7 +531,7 @@
 	sleep(100)
 	moving_status = SHUTTLE_CRASHED
 
-	if(SSticker.mode)
+	if(SSticker.mode && !SSticker.mode.is_in_endgame)
 		SSticker.mode.is_in_endgame = TRUE
 		SSticker.mode.force_end_at = world.time + 15000 // 25 mins
 		if(istype(SSticker.mode, /datum/game_mode/colonialmarines))

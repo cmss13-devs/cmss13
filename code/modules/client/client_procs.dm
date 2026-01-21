@@ -285,7 +285,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 			continue
 
 		log_admin("PROCESS_PREAUTHORIZATION: making http request to [oidc_endpoint] with access_code=[access_code]")
-		var/datum/http_request/request = new(RUSTG_HTTP_METHOD_GET, oidc_endpoint, null, list(
+		var/datum/http_request/request = new
+		request.prepare(RUSTG_HTTP_METHOD_GET, oidc_endpoint, null, list(
 			"Authorization" = "Bearer [access_code]"
 		))
 		request.execute_blocking()

@@ -736,9 +736,15 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 
 /datum/config_entry/keyed_list/oidc_endpoint_to_type
 	protection = CONFIG_ENTRY_LOCKED
+	key_mode = KEY_MODE_TEXT_UNALTERED
+	value_mode = VALUE_MODE_TEXT
 
 /datum/config_entry/keyed_list/oidc_type_to_username
 	protection = CONFIG_ENTRY_LOCKED
+	key_mode = KEY_MODE_TEXT_UNALTERED
+	value_mode = VALUE_MODE_TEXT
 
 /datum/config_entry/keyed_list/oidc_type_to_ckey
 	protection = CONFIG_ENTRY_LOCKED
+	key_mode = KEY_MODE_TEXT_UNALTERED
+	value_mode = VALUE_MODE_TEXT

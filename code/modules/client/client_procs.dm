@@ -293,69 +293,54 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 		var/datum/http_response/response = request.into_response()
 
-		if(!response.errored && !response.error)
-			log_admin("PROCESS_PREAUTHORIZATION: got response, body=[response.body]")
-			var/response_decoded = json_decode(response.body)
+		if(response.errored || response.error)
+			continue
 
-			var/ckey_to_find = CONFIG_GET(keyed_list/oidc_type_to_ckey)[type]
-			log_admin("PROCESS_PREAUTHORIZATION: ckey_to_find=[ckey_to_find]")
-			if(!ckey_to_find)
-				log_admin("PROCESS_PREAUTHORIZATION: no ckey_to_find for type=[type], skipping")
-				continue
+		var/response_decoded = json_decode(response.body)
 
-			var/fallback = splittext(ckey_to_find, "?")
-			if(length(fallback) == 2)
-				fallback = fallback[2]
-				ckey_to_find = fallback[1]
-				log_admin("PROCESS_PREAUTHORIZATION: fallback engaged, fallback=[fallback], ckey_to_find=[ckey_to_find]")
-			else
-				fallback = null
+		var/ckey_to_find = CONFIG_GET(keyed_list/oidc_type_to_ckey)[type]
+		if(!ckey_to_find)
+			continue
 
-			var/found_ckey = response_decoded
-			for(var/split in splittext(ckey_to_find, "."))
-				found_ckey = found_ckey[split]
+		var/fallback = splittext(ckey_to_find, "?")
+		if(length(fallback) == 2)
+			ckey_to_find = fallback[1]
+			fallback = fallback[2]
+		else
+			fallback = null
 
-			log_admin("PROCESS_PREAUTHORIZATION: found_ckey after split=[found_ckey]")
+		var/found_ckey = response_decoded
+		for(var/split in splittext(ckey_to_find, "."))
+			found_ckey = found_ckey[split]
+
+		if(!length(found_ckey))
+			if(length(fallback))
+				found_ckey = response_decoded[fallback]
 
 			if(!length(found_ckey))
-				if(length(fallback))
-					found_ckey = response_decoded[fallback]
-					log_admin("PROCESS_PREAUTHORIZATION: found_ckey fallback=[found_ckey]")
+				continue
 
-				if(!length(found_ckey))
-					log_admin("PROCESS_PREAUTHORIZATION: still no found_ckey, skipping")
-					continue
+		ckey = found_ckey
 
-			ckey = found_ckey
-			log_admin("PROCESS_PREAUTHORIZATION: set ckey=[ckey]")
+		var/is_banned = world.IsBanned(ckey, address, computer_id, byond_user = FALSE)
+		if(is_banned)
+			to_chat_immediate("You are unable to connect to this server: [is_banned["reason"]]")
+			qdel(src)
+			return FALSE
 
-			var/is_banned = world.IsBanned(ckey, address, computer_id, byond_user = FALSE)
-			if(is_banned)
-				to_chat_immediate("You are unable to connect to this server: [is_banned["reason"]]")
-				qdel(src)
-				return FALSE
-
-			var/username_to_find = CONFIG_GET(keyed_list/oidc_type_to_username)[type]
-			log_admin("PROCESS_PREAUTHORIZATION: username_to_find=[username_to_find]")
-			if(!username_to_find)
-				log_admin("PROCESS_PREAUTHORIZATION: no username_to_find for type=[type], breaking")
-				break
-
-			var/found_username = response_decoded
-			for(var/split in splittext(username_to_find, "."))
-				found_username = found_username[split]
-
-			log_admin("PROCESS_PREAUTHORIZATION: found_username after split=[found_username]")
-
-			if(!length(found_username))
-				log_admin("PROCESS_PREAUTHORIZATION: no found_username, breaking")
-				break
-
-			external_username = found_username
-			log_admin("PROCESS_PREAUTHORIZATION: set external_username=[external_username]")
+		var/username_to_find = CONFIG_GET(keyed_list/oidc_type_to_username)[type]
+		if(!username_to_find)
 			break
-		else
-			log_admin("PROCESS_PREAUTHORIZATION: response errored or error present, skipping")
+
+		var/found_username = response_decoded
+		for(var/split in splittext(username_to_find, "."))
+			found_username = found_username[split]
+
+		if(!length(found_username))
+			break
+
+		external_username = found_username
+		break
 
 	///////////
 	//CONNECT//

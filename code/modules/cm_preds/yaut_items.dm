@@ -975,7 +975,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 					if(O == H)
 						continue
 					O.show_message(SPAN_WARNING("[icon2html(src, O)] <B>[H] gets caught in \the [src].</B>"), SHOW_MESSAGE_VISIBLE)
-			else if(isanimal(AM) && !istype(AM, /mob/living/simple_animal/parrot))
+			else if(isanimal(AM) && !istype(AM, /mob/living/simple_animal/small/parrot))
 				armed = FALSE
 				var/mob/living/simple_animal/SA = AM
 				SA.health -= 20

@@ -1,5 +1,5 @@
 /obj/item/device/megaphone
-	name = "megaphone"
+	name = "\improper megaphone"
 	desc = "A device used to project your voice. Loudly. Pressing unique action will toggle voice amplification on and off. While active on your active hand, speaking will project your message to a much larger area."
 	icon_state = "megaphone"
 	item_state = "megaphone"
@@ -26,9 +26,9 @@
 /obj/item/device/megaphone/unique_action(mob/living/user)
 	amplifying = !amplifying
 	if(amplifying)
-		to_chat(user, SPAN_HELPFUL("You toggle the [src] on, amplifying your voice so long as it is on your active hand."))
+		to_chat(user, SPAN_HELPFUL("You toggle the [name] on, amplifying your voice so long as it is on your active hand."))
 	else
-		to_chat(user, SPAN_NOTICE("You toggle the [src] off."))
+		to_chat(user, SPAN_NOTICE("You toggle the [name] off."))
 
 	playsound(loc, 'sound/weapons/handling/safety_toggle.ogg', 25, 1, 6)
 
@@ -45,7 +45,7 @@
 		return
 
 	if(!COOLDOWN_FINISHED(src, spam_cooldown))
-		to_chat(user, SPAN_DANGER("\The [src] needs to recharge! Wait [COOLDOWN_SECONDSLEFT(src, spam_cooldown)] second(s)."))
+		to_chat(user, SPAN_DANGER("The [name] needs to recharge! Wait [COOLDOWN_SECONDSLEFT(src, spam_cooldown)] second(s)."))
 		return
 
 	var/message = tgui_input_text(user, "Shout a message?", "\improper [name]", multiline = TRUE)
@@ -78,7 +78,7 @@
 
 		for(var/mob/listener in listeners)
 			if(!ishumansynth_strict(listener) && !isobserver(listener))
-				listener.show_message("[user] says something to the [name], but you can't understand it.")
+				listener.show_message("[user] says something into the [name], but you can't understand it.")
 				continue
 			var/broadcast = message
 
@@ -96,7 +96,7 @@
 						audience.set_hushed(3 SECONDS)
 						to_chat(audience, SPAN_WARNING("You hush yourself as [user] broadcasts authoritatively through the [src]!"))
 					else
-						to_chat(audience, SPAN_WARNING("You hear [user] broadcast authoritatively... but you don't particularly care for it."))
+						to_chat(audience, SPAN_WARNING("You hear [user] broadcasting authoritatively... but you don't particularly care for it."))
 			langchat_long_listeners += listener
 
 		playsound(loc, 'sound/items/megaphone.ogg', 100, FALSE, TRUE)
@@ -106,4 +106,4 @@
 
 	// not on active hand
 	else
-		to_chat(user, SPAN_DANGER("You can only broadcast with the [name] when it is on your active hand!"))
+		to_chat(user, SPAN_DANGER("You can only broadcast with the [name] when it is in your active hand!"))

@@ -5952,6 +5952,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/desert_dam/building/security/maint/west)
+"ate" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "damtemple_intact"
+	},
+/turf/closed/wall/rock/orange,
+/area/desert_dam/exterior/rock/level1)
 "atf" = (
 /obj/structure/machinery/power/apc/no_power/north,
 /obj/structure/pipes/vents/pump{
@@ -7696,6 +7702,7 @@
 /area/desert_dam/interior/dam_interior/primary_tool_storage/server)
 "ayx" = (
 /obj/structure/platform/stone/runed_sandstone/east,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "ayy" = (
@@ -12987,6 +12994,9 @@
 "aOs" = (
 /turf/open/floor/prison/yellow/east,
 /area/desert_dam/building/hydroponics/offices)
+"aOt" = (
+/turf/open/desert/dirt/desert_transition_corner1/east,
+/area/desert_dam/interior/caves/temple)
 "aOu" = (
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
@@ -14570,7 +14580,7 @@
 	dir = 5;
 	icon_state = "p_stair_full"
 	},
-/turf/open/floor/corsat/squareswood/north,
+/turf/open/desert/rock/deep/rock4,
 /area/desert_dam/interior/caves/temple)
 "aTQ" = (
 /obj/structure/cargo_container/hybrisa/containersextended/emptymedicalleft,
@@ -14909,6 +14919,12 @@
 /obj/structure/platform/metal/kutjevo_smooth_immune/east,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/building/medical/stairwell/north)
+"aUZ" = (
+/turf/open/desert/desert_shore/shore_edge1,
+/area/desert_dam/interior/caves/temple)
+"aVa" = (
+/turf/open/desert/desert_shore/desert_shore1,
+/area/desert_dam/interior/caves/temple)
 "aVb" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -15567,6 +15583,9 @@
 	},
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/disposals)
+"aXo" = (
+/turf/open/gm/river/desert/shallow,
+/area/desert_dam/interior/caves/temple)
 "aXp" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#da822a";
@@ -15790,7 +15809,7 @@
 /turf/open/desert/dirt/desert_transition_edge1,
 /area/desert_dam/exterior/valley/valley_hydro)
 "aXS" = (
-/obj/structure/xenoautopsy/tank/hugger/yautja,
+/obj/structure/xenoautopsy/tank/broken/yautja,
 /turf/open/shuttle/red,
 /area/desert_dam/interior/caves/temple)
 "aXT" = (
@@ -16340,6 +16359,10 @@
 	},
 /turf/open/desert/rock/deep/rock3,
 /area/desert_dam/interior/caves/west_caves)
+"aZo" = (
+/obj/item/stack/medical/advanced/ointment/predator,
+/turf/open/desert/rock/deep/transition,
+/area/desert_dam/interior/caves/temple)
 "aZp" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#da822a";
@@ -17272,6 +17295,9 @@
 	},
 /turf/open/desert/dirt/desert_transition_edge1,
 /area/desert_dam/exterior/valley/valley_civilian)
+"bcm" = (
+/turf/open/desert/desert_shore/shore_edge1/north,
+/area/desert_dam/interior/caves/temple)
 "bcn" = (
 /obj/structure/flora/grass/desert/lightgrass_1,
 /turf/open/desert/dirt/desert_transition_corner1/north,
@@ -17608,6 +17634,7 @@
 /area/desert_dam/interior/caves/temple)
 "bdu" = (
 /obj/structure/platform_decoration/stone/runed_sandstone/west,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "bdv" = (
@@ -20386,9 +20413,6 @@
 	},
 /turf/open/floor/wood,
 /area/desert_dam/building/administration/office)
-"blD" = (
-/turf/closed/wall/mineral/sandstone/runed,
-/area/desert_dam/exterior/rock/level1)
 "blE" = (
 /obj/effect/hunter/bridge_border/brown{
 	dir = 8
@@ -21705,15 +21729,11 @@
 /obj/structure/platform/metal/kutjevo_smooth_immune/east,
 /turf/open_space,
 /area/desert_dam/exterior/rock)
-"bpl" = (
-/obj/structure/prop/brazier/torch,
-/turf/closed/wall/mineral/sandstone/runed/decor,
-/area/desert_dam/exterior/rock/level1)
 "bpm" = (
 /obj/structure/machinery/door/airlock/sandstone/runed{
 	name = "Strange Temple"
 	},
-/turf/open/floor/sandstone/runed,
+/turf/open/desert/rock/deep/rock4,
 /area/desert_dam/interior/caves/temple)
 "bpn" = (
 /obj/effect/decal/warning_stripes{
@@ -22339,89 +22359,10 @@
 /obj/structure/machinery/colony_floodlight,
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_crashsite)
-"brl" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/stack/medical/advanced/ointment/predator{
-	pixel_x = 5;
-	pixel_y = 5
-	},
-/obj/item/stack/medical/advanced/ointment/predator{
-	pixel_x = -7;
-	pixel_y = 5
-	},
-/turf/open/floor/corsat/squareswood/north,
-/area/desert_dam/exterior/rock/level1)
-"brm" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/stack/medical/splint{
-	name = "splints";
-	pixel_x = -1;
-	pixel_y = 4
-	},
-/obj/item/stack/medical/splint{
-	name = "splints";
-	pixel_x = -1;
-	pixel_y = 4
-	},
-/turf/open/floor/corsat/squareswood/north,
-/area/desert_dam/exterior/rock/level1)
-"brn" = (
-/obj/structure/prop/brazier/torch,
-/turf/closed/wall/mineral/sandstone/runed,
-/area/desert_dam/exterior/rock/level1)
-"bro" = (
-/turf/open/floor/sandstone/runed,
-/area/desert_dam/exterior/rock/level1)
-"brp" = (
-/obj/structure/surface/rack{
-	color = "#6b675e";
-	layer = 2.79
-	},
-/obj/item/tank/oxygen/yellow{
-	pixel_x = -4
-	},
-/obj/item/tank/nitrogen,
-/obj/item/tank/nitrogen{
-	pixel_x = 5
-	},
-/turf/open/floor/strata/grey_multi_tiles,
-/area/desert_dam/exterior/rock/level1)
-"brq" = (
-/obj/structure/surface/rack{
-	color = "#6b675e";
-	layer = 2.79
-	},
-/obj/item/stack/medical/advanced/bruise_pack/predator{
-	pixel_x = -7
-	},
-/obj/item/stack/medical/advanced/ointment/predator{
-	pixel_x = 5
-	},
-/turf/open/floor/strata/grey_multi_tiles,
-/area/desert_dam/exterior/rock/level1)
 "brr" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/water_treatment_two/lobby)
-"brs" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/tool/surgery/surgicaldrill/predatorsurgicaldrill,
-/obj/item/tool/surgery/scalpel/predatorscalpel,
-/obj/item/tool/surgery/retractor/predatorretractor,
-/obj/item/tool/surgery/hemostat/predatorhemostat,
-/obj/item/tool/surgery/circular_saw/predatorbonesaw,
-/obj/item/tool/surgery/cautery/predatorcautery,
-/obj/item/tool/surgery/bonesetter/predatorbonesetter,
-/obj/item/tool/surgery/bonegel/predatorbonegel,
-/obj/item/tool/surgery/FixOVein/predatorFixOVein,
-/turf/open/floor/strata/grey_multi_tiles,
-/area/desert_dam/interior/caves/temple)
 "brt" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
@@ -22437,59 +22378,6 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
-"brw" = (
-/obj/structure/machinery/optable/yautja,
-/turf/open/floor/strata/grey_multi_tiles,
-/area/desert_dam/interior/caves/temple)
-"brx" = (
-/turf/open/floor/corsat/squareswood/north,
-/area/desert_dam/exterior/rock/level1)
-"bry" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/restraint/legcuffs/beartrap{
-	pixel_x = -1;
-	pixel_y = 8
-	},
-/turf/open/floor/strata/grey_multi_tiles,
-/area/desert_dam/interior/caves/temple)
-"brz" = (
-/obj/structure/bed/chair/comfy/yautja,
-/turf/open/floor/strata/grey_multi_tiles,
-/area/desert_dam/interior/caves/temple)
-"brA" = (
-/obj/structure/closet/yautja,
-/obj/item/reagent_container/glass/rag/polishing_rag,
-/obj/item/reagent_container/glass/rag/polishing_rag,
-/obj/item/reagent_container/glass/rag/polishing_rag,
-/turf/open/floor/corsat/squareswood/north,
-/area/desert_dam/interior/caves/temple)
-"brB" = (
-/obj/structure/curtain/red,
-/turf/open/floor/sandstone/runed,
-/area/desert_dam/interior/caves/temple)
-"brC" = (
-/obj/structure/machinery/door/window{
-	dir = 8
-	},
-/turf/open/floor/corsat/squareswood/north,
-/area/desert_dam/interior/caves/temple)
-"brD" = (
-/obj/structure/xenoautopsy,
-/turf/open/floor/strata/grey_multi_tiles,
-/area/desert_dam/interior/caves/temple)
-"brE" = (
-/obj/structure/xenoautopsy/tank/hugger/yautja,
-/turf/open/floor/strata/grey_multi_tiles,
-/area/desert_dam/exterior/rock/level1)
-"brF" = (
-/obj/structure/xenoautopsy,
-/turf/open/floor/strata/grey_multi_tiles,
-/area/desert_dam/exterior/rock/level1)
-"brG" = (
-/turf/template_noop,
-/area/desert_dam/interior/caves/temple)
 "brH" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
@@ -22505,19 +22393,6 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/building/cafeteria/loading)
-"brJ" = (
-/obj/structure/bed/chair/comfy/yautja{
-	dir = 8
-	},
-/turf/open/floor/corsat/squareswood/north,
-/area/desert_dam/interior/caves/temple)
-"brK" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/reagent_container/food/drinks/coffeecup,
-/turf/open/floor/corsat/squareswood/north,
-/area/desert_dam/exterior/rock/level1)
 "brL" = (
 /obj/structure/window/framed/hangar,
 /turf/open/floor/plating,
@@ -22528,111 +22403,19 @@
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_labs)
-"brN" = (
-/obj/structure/bed/chair/comfy/yautja{
-	dir = 8
-	},
-/turf/open/floor/corsat/squareswood/north,
-/area/desert_dam/exterior/rock/level1)
-"brO" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/tool/crowbar/yautja,
-/turf/open/floor/corsat/squareswood/north,
-/area/desert_dam/interior/caves/temple)
-"brP" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/weapon/yautja/duelknife,
-/turf/open/floor/corsat/squareswood/north,
-/area/desert_dam/interior/caves/temple)
-"brQ" = (
-/turf/closed/wall/mineral/sandstone/runed/decor,
-/area/desert_dam/exterior/rock/level1)
-"brR" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/tool/wrench/yautja,
-/turf/open/floor/corsat/squareswood/north,
-/area/desert_dam/interior/caves/temple)
-"brS" = (
-/obj/item/hunting_trap{
-	desc = "A bizarre alien device used for trapping and killing prey.";
-	name = "Alien Mine"
-	},
-/turf/open/floor/sandstone/runed,
-/area/desert_dam/interior/caves/temple)
-"brT" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/tool/wirecutters/yautja,
-/turf/open/floor/corsat/squareswood/north,
-/area/desert_dam/interior/caves/temple)
-"brU" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/weapon/gun/energy/yautja/plasmarifle{
-	anchored = 1;
-	desc = "A long-barreled heavy plasma weapon capable of leveling down an entire building. This one seems to be damaged beyond use.";
-	name = "damaged plasma rifle"
-	},
-/turf/open/floor/strata/grey_multi_tiles,
-/area/desert_dam/interior/caves/temple)
 "brV" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 5
 	},
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_labs)
-"brW" = (
-/obj/structure/machinery/autolathe/yautja,
-/turf/open/floor/strata/grey_multi_tiles,
-/area/desert_dam/interior/caves/temple)
-"brX" = (
-/obj/item/skull/warrior{
-	pixel_y = 36;
-	anchored = 1
-	},
-/turf/open/floor/corsat/squareswood/north,
-/area/desert_dam/interior/caves/temple)
 "brY" = (
 /obj/effect/decal/sand_overlay/sand2/corner2,
 /turf/open/asphalt/cement,
 /area/desert_dam/exterior/valley/valley_wilderness)
-"brZ" = (
-/obj/item/skull/corroder{
-	pixel_y = 34;
-	anchored = 1
-	},
-/turf/open/floor/corsat/squareswood/north,
-/area/desert_dam/interior/caves/temple)
-"bsa" = (
-/turf/open/floor/strata/grey_multi_tiles,
-/area/desert_dam/interior/caves/temple)
 "bsb" = (
-/obj/structure/bed/bedroll,
-/turf/open/floor/corsat/squareswood/north,
-/area/desert_dam/interior/caves/temple)
-"bsc" = (
-/obj/structure/surface/rack{
-	color = "#6b675e";
-	layer = 2.79
-	},
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/metal/large_stack,
-/obj/item/stack/sheet/mineral/platinum{
-	amount = 50
-	},
-/turf/open/floor/strata/grey_multi_tiles,
-/area/desert_dam/interior/caves/temple)
-"bsd" = (
-/obj/structure/closet/crate/critter,
-/turf/open/floor/corsat/squareswood/north,
+/obj/structure/closet/yautja,
+/turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "bse" = (
 /obj/structure/machinery/light,
@@ -22641,25 +22424,6 @@
 /obj/effect/landmark/crap_item,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/control_room)
-"bsf" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/weapon/chainofcommand,
-/turf/open/floor/corsat/squareswood/north,
-/area/desert_dam/interior/caves/temple)
-"bsg" = (
-/obj/structure/curtain/red,
-/turf/open/floor/corsat/squareswood/north,
-/area/desert_dam/interior/caves/temple)
-"bsh" = (
-/turf/closed/wall/mineral/sandstone/runed{
-	turf_flags = 16
-	},
-/area/desert_dam/exterior/rock/level1)
-"bsi" = (
-/turf/template_noop,
-/area/desert_dam/exterior/rock/level1)
 "bsj" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/sand_overlay/sand2{
@@ -22667,89 +22431,18 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_wilderness)
-"bsk" = (
-/obj/effect/decal/cleanable/cobweb{
-	dir = 8
-	},
-/obj/effect/decal/remains/human,
-/turf/open/floor/sandstone/runed,
-/area/desert_dam/interior/caves/temple)
 "bsl" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_wilderness)
-"bsm" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/structure/window/phoronreinforced{
-	dir = 8;
-	icon_state = "phoronrwindow"
-	},
-/obj/structure/window/phoronreinforced{
-	dir = 4;
-	icon_state = "phoronrwindow"
-	},
-/obj/structure/window/phoronreinforced{
-	icon_state = "phoronrwindow"
-	},
-/obj/structure/window/phoronreinforced{
-	dir = 1;
-	icon_state = "phoronrwindow"
-	},
-/obj/item/weapon/sword/katana{
-	color = "#b2ffff";
-	desc = "A finely made Japanese sword, with a well sharpened blade. It appears to have cobalt infused within the blade. There are Japanese engravings on the blade which say 'He who wields this sword becomes the next Titan.'.";
-	name = "ancient katana";
-	unacidable = 1
-	},
-/turf/open/floor/corsat/squareswood/north,
-/area/desert_dam/interior/caves/temple)
 "bsn" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/cell_stripe/north,
 /area/desert_dam/building/warehouse/warehouse)
-"bso" = (
-/turf/closed/wall/mineral/sandstone/runed/decor{
-	turf_flags = 16
-	},
-/area/desert_dam/exterior/rock/level1)
 "bsp" = (
 /obj/effect/stairs/up,
 /turf/open/desert/rock,
 /area/desert_dam/interior/caves/pred_ship)
-"bsq" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/structure/machinery/chem_dispenser/soda/yautja{
-	pixel_y = 9
-	},
-/turf/open/floor/corsat/squareswood/north,
-/area/desert_dam/interior/caves/temple)
-"bsr" = (
-/obj/structure/surface/rack,
-/obj/item/tool/pickaxe,
-/turf/open/desert/rock,
-/area/desert_dam/exterior/rock/level1)
-"bss" = (
-/obj/structure/closet/coffin/predator,
-/turf/open/floor/corsat/squareswood/north,
-/area/desert_dam/exterior/rock/level1)
-"bst" = (
-/obj/structure/closet/coffin/predator,
-/obj/item/storage/large_holster/katana,
-/turf/open/floor/corsat/squareswood/north,
-/area/desert_dam/interior/caves/temple)
-"bsu" = (
-/obj/structure/surface/rack,
-/obj/item/clothing/head/hardhat,
-/turf/open/desert/rock,
-/area/desert_dam/interior/caves/temple)
-"bsv" = (
-/obj/item/device/flashlight/lantern,
-/turf/open/desert/rock,
-/area/desert_dam/interior/caves/temple)
 "bsw" = (
 /obj/structure/machinery/power/apc/no_power/north,
 /obj/structure/largecrate/random/mini{
@@ -22758,9 +22451,6 @@
 	},
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/garage)
-"bsx" = (
-/turf/open/desert/rock/deep/rock3,
-/area/desert_dam/exterior/rock/level1)
 "bsy" = (
 /obj/structure/stairs/multiz/up{
 	dir = 8
@@ -23466,9 +23156,127 @@
 /obj/effect/stairs/down,
 /turf/open_space,
 /area/desert_dam/building/medical/stairwell/upper_north)
+"bur" = (
+/turf/open/desert/desert_shore/shore_corner1/north,
+/area/desert_dam/interior/caves/temple)
+"bus" = (
+/obj/structure/platform/stone/runed_sandstone/east,
+/turf/open/desert/desert_shore/shore_corner1/west,
+/area/desert_dam/interior/caves/temple)
+"but" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/desert/rock/deep/rock4,
+/area/desert_dam/interior/caves/temple)
+"buu" = (
+/turf/open/desert/desert_shore/desert_shore1/north,
+/area/desert_dam/interior/caves/temple)
+"buv" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/turf/open/desert/rock/deep/transition,
+/area/desert_dam/interior/caves/temple)
+"buw" = (
+/obj/effect/decal/remains/human,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/corsat/squareswood/north,
+/area/desert_dam/interior/caves/temple)
 "bux" = (
 /turf/open/asphalt/cement/cement14,
 /area/desert_dam/interior/dam_interior/central_tunnel)
+"buy" = (
+/obj/structure/xenoautopsy/tank/broken/yautja,
+/turf/open/desert/rock/deep/rock4,
+/area/desert_dam/interior/caves/temple)
+"buz" = (
+/obj/structure/machinery/door/airlock/sandstone/runed{
+	density = 0;
+	icon_state = "door_open";
+	name = "Strange Temple";
+	opacity = 0
+	},
+/obj/structure/inflatable/popped/door,
+/turf/open/floor/sandstone/runed,
+/area/desert_dam/interior/caves/temple)
+"buA" = (
+/obj/effect/decal/remains/xeno{
+	pixel_x = 31
+	},
+/turf/open/desert/dirt/rock1,
+/area/desert_dam/interior/caves/temple)
+"buB" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/desert/rock/deep/transition/north,
+/area/desert_dam/interior/caves/temple)
+"buC" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/sandstone/runed,
+/area/desert_dam/interior/caves/temple)
+"buD" = (
+/obj/structure/prop/colorable_rock/colorable/alt{
+	dir = 4;
+	color = "#da822a"
+	},
+/turf/open/desert/rock/deep/rock3,
+/area/desert_dam/interior/caves/temple)
+"buE" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/desert/rock/deep/rock4,
+/area/desert_dam/interior/caves/temple)
+"buF" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/squareswood/north,
+/area/desert_dam/interior/caves/temple)
+"buG" = (
+/obj/item/tool/pickaxe/drill,
+/obj/structure/closet/yautja,
+/turf/open/desert/rock/deep/transition/northeast,
+/area/desert_dam/interior/caves/temple)
+"buH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/remains/human,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/desert/rock/deep,
+/area/desert_dam/interior/caves/temple)
+"buI" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/desert/rock/deep/rock3,
+/area/desert_dam/interior/caves/temple)
+"buJ" = (
+/obj/structure/inflatable/popped,
+/turf/open/desert/rock,
+/area/desert_dam/interior/caves/temple)
+"buK" = (
+/obj/structure/inflatable/popped/door,
+/turf/open/desert/rock,
+/area/desert_dam/interior/caves/temple)
+"buL" = (
+/obj/structure/inflatable,
+/turf/open/desert/rock,
+/area/desert_dam/interior/caves/temple)
+"buM" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/corsat/squareswood/north,
+/area/desert_dam/interior/caves/temple)
+"buN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/inflatable/popped/door,
+/turf/open/desert/rock/deep/rock4,
+/area/desert_dam/interior/caves/temple)
+"buO" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1
+	},
+/turf/open/desert/rock,
+/area/desert_dam/interior/caves/temple)
+"buP" = (
+/obj/structure/prop/colorable_rock/colorable/alt{
+	dir = 1;
+	color = "#da822a"
+	},
+/turf/open/desert/rock,
+/area/desert_dam/interior/caves/temple)
 "buV" = (
 /obj/structure/prop/hybrisa/xenobiology/small/empty,
 /turf/open/floor/prison/darkpurple2/west,
@@ -23745,13 +23553,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/weapon/sword{
-	pixel_x = 7
-	},
-/obj/item/weapon/sword{
-	pixel_x = -7
-	},
-/turf/open/floor/corsat/squareswood/north,
+/turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "bAG" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -24543,7 +24345,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/turf/open/floor/strata/grey_multi_tiles,
+/turf/open/desert/rock/deep/rock3,
 /area/desert_dam/interior/caves/temple)
 "bRb" = (
 /obj/structure/prop/colorable_rock/colorable/alt{
@@ -28188,6 +27990,7 @@
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "dnR" = (
 /obj/structure/platform/stone/runed_sandstone/west,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "dnV" = (
@@ -30018,18 +29821,7 @@
 /turf/open/desert/dirt/desert_transition_edge1/northwest,
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "dYA" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/stack/medical/advanced/bruise_pack/predator{
-	pixel_x = -7;
-	pixel_y = 5
-	},
-/obj/item/stack/medical/advanced/bruise_pack/predator{
-	pixel_x = 5;
-	pixel_y = 5
-	},
-/turf/open/floor/corsat/squareswood/north,
+/turf/open/desert/rock/deep/rock4,
 /area/desert_dam/interior/caves/temple)
 "dYC" = (
 /turf/open/desert/dirt/desert_transition_corner1/north,
@@ -31890,7 +31682,7 @@
 /obj/structure/bed/chair/comfy/yautja{
 	dir = 4
 	},
-/turf/open/floor/sandstone/runed,
+/turf/open/desert/rock/deep/transition,
 /area/desert_dam/interior/caves/temple)
 "eMS" = (
 /obj/effect/decal/warning_stripes{
@@ -38974,7 +38766,7 @@
 /area/desert_dam/building/water_treatment_one/purification)
 "hvA" = (
 /obj/structure/platform/stone/runed_sandstone/east,
-/turf/open/gm/river/desert/deep,
+/turf/open/gm/river/desert/shallow,
 /area/desert_dam/interior/caves/temple)
 "hvE" = (
 /obj/structure/surface/table/woodentable,
@@ -39121,10 +38913,7 @@
 /obj/effect/decal/remains/xeno{
 	pixel_x = 31
 	},
-/obj/structure/showcase/yautja{
-	dir = 8
-	},
-/turf/open/floor/corsat/squareswood/north,
+/turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "hyd" = (
 /obj/structure/window/reinforced,
@@ -40950,29 +40739,14 @@
 /turf/open/asphalt,
 /area/desert_dam/building/warehouse/warehouse)
 "iiK" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/reagent_container/food/snacks/xenomeatbreadslice{
-	desc = "A slice of delicious meatbread. It seems to be made out of a long forgotten xenomorph. The bread is still melting from all that acid, should you be even eating this?";
-	name = "Primordial Corroder's xenomeatbread slice"
+/obj/item/stack/sheet/mineral/sandstone{
+	amount = 50
 	},
 /obj/effect/decal/remains/xeno{
 	pixel_x = 1;
 	pixel_y = 31
 	},
-/obj/item/reagent_container/food/drinks/drinkingglass{
-	pixel_x = 9;
-	pixel_y = 13
-	},
-/obj/item/reagent_container/food/drinks/drinkingglass{
-	pixel_x = -8;
-	pixel_y = 15
-	},
-/obj/item/reagent_container/food/drinks/drinkingglass{
-	pixel_y = 17
-	},
-/turf/open/floor/corsat/squareswood/north,
+/turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "iiO" = (
 /obj/structure/platform/metal/almayer/east,
@@ -41571,6 +41345,7 @@
 /area/desert_dam/building/dorms/hallway_northwing)
 "ito" = (
 /obj/structure/platform_decoration/stone/runed_sandstone/north,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "its" = (
@@ -42080,6 +41855,7 @@
 /area/desert_dam/interior/dam_interior/break_room)
 "iDi" = (
 /obj/structure/platform_decoration/stone/runed_sandstone,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "iDy" = (
@@ -43104,8 +42880,8 @@
 	},
 /area/desert_dam/interior/dam_interior/hanger)
 "iYw" = (
-/obj/structure/reagent_dispensers/tank/water/yautja,
-/turf/open/floor/corsat/squareswood/north,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/turf/open/desert/rock/deep,
 /area/desert_dam/interior/caves/temple)
 "iYE" = (
 /turf/open/asphalt/cement_sunbleached,
@@ -43255,9 +43031,6 @@
 /area/desert_dam/building/dorms/hallway_westwing)
 "jcW" = (
 /obj/effect/decal/sand_overlay/sand1,
-/obj/item/weapon/ice_axe/red{
-	pixel_y = 3
-	},
 /obj/effect/stairs/up,
 /turf/open/desert/rock,
 /area/desert_dam/interior/caves/temple)
@@ -46000,6 +45773,9 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/mining/workshop)
 "kfD" = (
+/obj/item/weapon/ice_axe/red{
+	pixel_y = 3
+	},
 /obj/item/lightstick/red/variant/planted,
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
@@ -47170,11 +46946,6 @@
 	},
 /turf/open/floor/whiteblue/west,
 /area/desert_dam/interior/lab_northeast/east_lab_lobby)
-"kEH" = (
-/obj/structure/machinery/iv_drip,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony,
-/turf/open/floor/prison/sterile_white/west,
-/area/desert_dam/building/medical/east_wing_hallway)
 "kFa" = (
 /turf/open/floor/prison/darkred2/northeast,
 /area/desert_dam/building/security/armory)
@@ -48080,14 +47851,9 @@
 	color = "#6b675e"
 	},
 /obj/item/weapon/harpoon/yautja{
-	name = "Alien Harpoon";
-	pixel_x = -7
+	name = "Alien Harpoon"
 	},
-/obj/item/weapon/harpoon/yautja{
-	name = "Alien Harpoon";
-	pixel_x = 6
-	},
-/turf/open/floor/corsat/squareswood/north,
+/turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "kZR" = (
 /obj/structure/machinery/power/power_generator/port_gen/pacman,
@@ -49208,10 +48974,6 @@
 /obj/structure/surface/table,
 /turf/open/floor/whitegreen/west,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
-"lvT" = (
-/obj/structure/closet/coffin/predator,
-/turf/open/floor/corsat/squareswood/north,
-/area/desert_dam/interior/caves/temple)
 "lwr" = (
 /obj/structure/machinery/light,
 /obj/structure/machinery/door_control{
@@ -51568,7 +51330,7 @@
 	icon_state = "gib6"
 	},
 /obj/structure/machinery/light/small{
-	dir = 4
+	dir = 8
 	},
 /turf/open/floor/freezerfloor,
 /area/desert_dam/building/cafeteria/cold_room)
@@ -54811,13 +54573,8 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/reagent_container/food/drinks/bottle/melonliquor{
-	desc = "A bottle of liquid xenomorph plasma. Surprisingly it smells and tastes good.";
-	name = "Serpentine plasma juice";
-	pixel_y = 9;
-	pixel_x = -8
-	},
-/turf/open/floor/corsat/squareswood/north,
+/obj/item/weapon/broken_bottle,
+/turf/open/desert/rock/deep/rock4,
 /area/desert_dam/interior/caves/temple)
 "nHC" = (
 /obj/structure/machinery/light,
@@ -57548,13 +57305,10 @@
 /turf/open/desert/dirt/desert_transition_corner1,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "oHv" = (
-/obj/structure/surface/rack{
-	color = "#6b675e";
-	layer = 2.79
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
 	},
-/obj/item/tool/weldingtool/yautja,
-/obj/item/clothing/glasses/welding/superior,
-/turf/open/floor/strata/grey_multi_tiles,
+/turf/open/desert/rock/deep,
 /area/desert_dam/interior/caves/temple)
 "oHy" = (
 /obj/structure/surface/table/reinforced,
@@ -57705,8 +57459,8 @@
 /turf/open/floor/prison/darkbrown2/north,
 /area/desert_dam/building/warehouse/warehouse)
 "oKX" = (
-/obj/structure/reagent_dispensers/tank/fuel/yautja,
-/turf/open/floor/strata/grey_multi_tiles,
+/obj/structure/closet/coffin/predator,
+/turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "oLa" = (
 /obj/structure/machinery/disposal,
@@ -63412,14 +63166,6 @@
 	icon = 'icons/obj/structures/morgue.dmi';
 	name = "alien sarcophagus"
 	},
-/obj/item/clothing/mask/gas/yautja/damaged{
-	anchored = 1;
-	color = "#880808";
-	desc = "A clan mask of uncertain origin, whoever wore it must have been cruel and sadistic.";
-	icon_state = "pred_mask_elder_tr";
-	name = "ancient clan mask";
-	pixel_y = 30
-	},
 /turf/open/floor/corsat/squareswood/north,
 /area/desert_dam/interior/caves/temple)
 "qRM" = (
@@ -64856,13 +64602,11 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/warehouse/loading)
 "rvd" = (
-/obj/structure/machinery/power/smes/magical{
-	capacity = 9e+008;
-	charge = 9e+008;
-	dir = 4;
-	name = "plasma power generator"
+/obj/structure/prop/colorable_rock/colorable/alt{
+	dir = 1;
+	color = "#da822a"
 	},
-/turf/open/floor/strata/grey_multi_tiles,
+/turf/open/desert/rock/deep,
 /area/desert_dam/interior/caves/temple)
 "rvf" = (
 /obj/effect/decal/cleanable/dirt,
@@ -66635,12 +66379,6 @@
 /obj/effect/decal/strata_decals/grime/grime3,
 /turf/open/floor/freezerfloor,
 /area/desert_dam/interior/lab_northeast/east_lab_lobby)
-"sgA" = (
-/obj/effect/decal/cleanable/cobweb,
-/obj/structure/closet/crate/critter,
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor/corsat/squareswood/north,
-/area/desert_dam/interior/caves/temple)
 "sgF" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/prison/bright_clean2,
@@ -67601,6 +67339,7 @@
 /area/desert_dam/building/bar/backroom)
 "sys" = (
 /obj/structure/platform_decoration/stone/runed_sandstone/east,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "syy" = (
@@ -69754,6 +69493,7 @@
 /area/shuttle/trijent_shuttle/lz2)
 "tqs" = (
 /obj/structure/platform/stone/runed_sandstone,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "tqy" = (
@@ -71669,7 +71409,7 @@
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/desert_dam/building/security/staffroom)
 "ubM" = (
-/turf/open/gm/river/desert/deep,
+/turf/open/desert/desert_shore/desert_shore1/west,
 /area/desert_dam/interior/caves/temple)
 "ubZ" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
@@ -71735,7 +71475,7 @@
 /area/desert_dam/exterior/valley/valley_mining)
 "udm" = (
 /obj/structure/prop/brazier,
-/turf/open/floor/corsat/squareswood/north,
+/turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "udo" = (
 /obj/effect/decal/warning_stripes{
@@ -73199,7 +72939,7 @@
 /obj/item/reagent_container/food/snacks/stew,
 /obj/item/tool/kitchen/utensil/spoon,
 /obj/structure/machinery/power/apc/fully_broken/no_cell/north,
-/turf/open/floor/corsat/squareswood/north,
+/turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "uFw" = (
 /obj/structure/largecrate/supply{
@@ -73725,7 +73465,7 @@
 /obj/structure/bed/chair/comfy/yautja{
 	dir = 1
 	},
-/turf/open/floor/sandstone/runed,
+/turf/open/desert/rock/deep/transition/north,
 /area/desert_dam/interior/caves/temple)
 "uSb" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -75183,21 +74923,11 @@
 	},
 /area/desert_dam/building/warehouse/warehouse)
 "vvm" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/reagent_container/food/snacks/resin_fruit/greater{
-	pixel_x = -26;
-	pixel_y = 4
-	},
 /obj/effect/decal/remains/xeno{
 	pixel_x = 1;
 	pixel_y = 31
 	},
-/obj/structure/machinery/microwave/yautja{
-	pixel_y = 7
-	},
-/turf/open/floor/corsat/squareswood/north,
+/turf/open/desert/rock/deep/transition/west,
 /area/desert_dam/interior/caves/temple)
 "vvn" = (
 /obj/structure/girder/displaced,
@@ -75661,14 +75391,9 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/water_treatment_two/control_room)
 "vFl" = (
-/obj/effect/decal/cleanable/cobweb2,
-/obj/item/tool/kitchen/tray{
-	pixel_y = -3
-	},
-/obj/item/reagent_container/food/snacks/meat{
-	pixel_y = -6
-	},
-/turf/open/floor/corsat/squareswood/north,
+/obj/item/tool/pickaxe,
+/obj/effect/decal/remains/human,
+/turf/open/desert/rock,
 /area/desert_dam/interior/caves/temple)
 "vFw" = (
 /obj/effect/decal/warning_stripes{
@@ -76212,7 +75937,7 @@
 /area/desert_dam/building/medical/east_wing_hallway)
 "vQV" = (
 /obj/structure/platform_decoration/stone/runed_sandstone/west,
-/turf/open/gm/river/desert/deep,
+/turf/open/desert/desert_shore/desert_shore1,
 /area/desert_dam/interior/caves/temple)
 "vRa" = (
 /turf/open/floor/prison/whitegreenfull/southwest,
@@ -76846,6 +76571,7 @@
 /area/desert_dam/interior/dam_interior/hangar_storage)
 "weL" = (
 /obj/structure/platform/stone/runed_sandstone/north,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "weO" = (
@@ -77664,7 +77390,7 @@
 /area/desert_dam/building/water_treatment_two/overlook)
 "wuR" = (
 /obj/structure/platform_decoration/stone/runed_sandstone,
-/turf/open/gm/river/desert/deep,
+/turf/open/desert/desert_shore/shore_edge1/east,
 /area/desert_dam/interior/caves/temple)
 "wvb" = (
 /obj/effect/decal/cleanable/dirt,
@@ -78195,8 +77921,8 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/desert_dam/exterior/valley/valley_medical)
 "wHJ" = (
-/obj/effect/decal/sand_overlay/sand1,
 /obj/item/lightstick/red/variant/planted,
+/obj/effect/decal/sand_overlay/sand1,
 /turf/open/desert/rock,
 /area/desert_dam/interior/caves/temple)
 "wIc" = (
@@ -78554,8 +78280,10 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/desert_dam/exterior/valley/valley_medical)
 "wQg" = (
-/obj/structure/bed/alien/yautja,
-/turf/open/floor/corsat/squareswood/north,
+/obj/structure/bed/alien{
+	color = "#aba9a9"
+	},
+/turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "wQi" = (
 /obj/structure/disposalpipe/segment,
@@ -79014,12 +78742,8 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/purification)
 "wZW" = (
-/obj/structure/xenoautopsy/tank/hugger/yautja,
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
-	},
-/turf/open/shuttle/red,
+/obj/structure/xenoautopsy/tank/broken/yautja,
+/turf/open/desert/rock/deep/rock3,
 /area/desert_dam/interior/caves/temple)
 "xak" = (
 /obj/effect/decal/medical_decals{
@@ -79247,15 +78971,7 @@
 /turf/open/floor/prison/red/north,
 /area/desert_dam/interior/lab_northeast/east_lab_east_entrance)
 "xeB" = (
-/obj/structure/surface/rack{
-	color = "#6b675e";
-	layer = 2.79
-	},
-/obj/item/stack/revival_jelly{
-	amount = 1;
-	name = "strange jelly"
-	},
-/obj/item/xeno_egg,
+/obj/effect/decal/cleanable/blood/gibs/xeno/body,
 /turf/open/floor/corsat/squareswood/north,
 /area/desert_dam/interior/caves/temple)
 "xeE" = (
@@ -81474,7 +81190,7 @@
 	color = "#6b675e"
 	},
 /obj/item/stack/yautja_rope,
-/turf/open/floor/corsat/squareswood/north,
+/turf/open/desert/rock/deep/rock4,
 /area/desert_dam/interior/caves/temple)
 "xYT" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -133055,25 +132771,25 @@ rfS
 rfS
 rfS
 rfS
-bsi
-bsi
-bsi
-brG
-brG
-brG
-brG
-brG
-brG
-brG
-blD
-blD
-blD
-blD
-blD
-blD
-blD
-blD
 rfS
+rfS
+rfS
+fhO
+fhO
+fhO
+fhO
+fhO
+fhO
+fhO
+rfS
+rfS
+rfS
+rfS
+rfS
+rfS
+rfS
+rfS
+ate
 rfS
 rfS
 rfS
@@ -133289,24 +133005,24 @@ rfS
 rfS
 rfS
 rfS
-bsi
-brG
-brG
-brG
-brG
-brG
-brG
-brG
-brG
-brG
-blD
-blD
+rfS
+fhO
+fhO
+fhO
+fhO
+fhO
+fhO
+fhO
+fhO
+fhO
+rfS
+rfS
+bcm
 ubM
 ubM
 ubM
-ubM
-ddi
-ddi
+aUZ
+aOt
 rfS
 rfS
 rfS
@@ -133524,23 +133240,23 @@ rfS
 rfS
 rfS
 rfS
+fhO
+fhO
+fhO
 bGD
+fhO
+fhO
+fhO
 bGD
-bGD
-bGD
-bGD
-brS
-bGD
-bGD
-bro
-blD
-ddi
-ubM
-ubM
-ubM
-ubM
-ddi
-ddi
+rfS
+rfS
+bcm
+bur
+aXo
+aXo
+aXo
+aVa
+dMk
 rfS
 rfS
 rfS
@@ -133758,23 +133474,23 @@ rfS
 rfS
 rfS
 rfS
-bGD
-bGD
+aXj
+fhO
+fhO
+buA
 bGD
 hyb
-bGD
-hyb
-bGD
-bro
-bro
-blD
-ubM
-ubM
-ubM
-ubM
-ubM
-ubM
-ddi
+fhO
+rfS
+rfS
+rfS
+buu
+aXo
+aXo
+aXo
+aXo
+aVa
+dMk
 rfS
 rfS
 rfS
@@ -133993,22 +133709,22 @@ rfS
 rfS
 rfS
 ddi
+bGD
+dMk
+bGD
+buz
+bGD
 ddi
-ddi
-ddi
-bpm
-ddi
-ddi
-brx
-brx
-blD
+rfS
+rfS
+rfS
 wuR
-hvA
+bus
 hvA
 hvA
 hvA
 vQV
-blD
+rfS
 rfS
 rfS
 rfS
@@ -134220,7 +133936,7 @@ ueS
 bsy
 bnZ
 eRt
-bsx
+rfS
 rfS
 rfS
 rfS
@@ -134228,21 +133944,21 @@ rfS
 rfS
 ddi
 bsb
-bsb
-bsb
+rGx
+dMk
+dMk
 bGD
-ryR
 ddi
-brK
-brx
-blD
-blD
+rfS
+rfS
+rfS
+rfS
 bGD
 bGD
 bGD
 bGD
-blD
-blD
+rfS
+rfS
 rfS
 rfS
 rfS
@@ -134454,22 +134170,22 @@ dMk
 dMk
 bob
 bnY
-dMk
+buP
 rfS
 rfS
 rfS
 rfS
 rfS
 fMa
+gso
+rGx
+dMk
+dMk
+seM
 bGD
-bGD
-bGD
-bGD
-ryR
-xyL
-brx
-brx
-ddi
+rfS
+rfS
+twm
 aTP
 azj
 azj
@@ -134693,21 +134409,21 @@ dMk
 rfS
 rfS
 rfS
-blD
+rfS
 ddi
+buC
+rGx
+dMk
+dMk
+seM
 bGD
-ryR
-ryR
-bGD
-ryR
+rfS
 ddi
-brN
-brJ
-ddi
-ryR
-bGD
-bGD
-bGD
+dMk
+xfa
+twm
+twm
+twm
 bGD
 ddi
 rfS
@@ -134925,25 +134641,25 @@ dMk
 dMk
 dMk
 dMk
-bsu
-bsr
-blD
-sgA
+dMk
+rfS
+rfS
+buC
 bGD
-ryR
-ddi
-bpm
-ddi
-ddi
-ddi
-ddi
-ddi
-brA
+buB
+dMk
+dMk
+seM
 bGD
 bGD
-bGD
-brl
-blD
+rGx
+doK
+ndE
+dMk
+dMk
+aZo
+rfS
+rfS
 rfS
 rfS
 rfS
@@ -135157,27 +134873,27 @@ dMk
 dMk
 dMk
 dMk
+buO
 dMk
 dMk
+rfS
+buG
+twm
+twm
+iEk
+bGD
 dMk
-bjR
+xfa
+twm
+twm
+iEk
 xyL
-bsb
-bGD
-bsd
-ddi
-bGD
-brT
-brR
-brO
-xYM
-ddi
 iYw
-ryR
-bGD
-bro
-brm
-bpl
+doK
+dMk
+rfS
+rfS
+rfS
 rfS
 rfS
 rfS
@@ -135391,25 +135107,25 @@ ndE
 dMk
 dMk
 dMk
-kiN
+dMk
+dMk
+dMk
+buJ
 dMk
 dMk
 dMk
 ddi
-bsb
-bGD
+ddi
+dMk
+dMk
+dMk
+dMk
+dMk
 ddi
 ddi
 bGD
-bGD
-bGD
-bGD
-ryR
-ddi
-ddi
-ryR
-bGD
-bGD
+dMk
+seM
 dYA
 ddi
 rfS
@@ -135628,24 +135344,24 @@ dMk
 dMk
 dMk
 dMk
+buK
 dMk
-ddi
 vFl
-bsk
+dMk
 xyL
 kZI
+neO
+doK
+doK
+doK
+ndE
+dMk
+dMk
+dMk
+dMk
 bGD
 bGD
 bGD
-bGD
-bGD
-bGD
-brB
-bGD
-bGD
-bGD
-bGD
-bpm
 bGD
 jcW
 rfS
@@ -135861,26 +135577,26 @@ dMk
 dMk
 uWW
 dMk
-bsv
 dMk
+buL
 ddi
-ddi
-ddi
-ddi
-ryR
-bGD
+dMk
+dMk
+dMk
+dMk
+seM
 iDi
 ayx
 bdu
+rGx
+kiN
 bGD
-ryR
-ddi
-ryR
-bGD
+dMk
+dMk
 eMK
+dYA
 bGD
-bpm
-bGD
+dMk
 kfD
 rfS
 rfS
@@ -136095,22 +135811,22 @@ rfS
 rfS
 dMk
 dMk
-eRt
+dMk
+buL
 ddi
-xyL
-bsq
 bGD
-bpm
-bGD
-bGD
+dMk
+dMk
+dMk
+seM
 tqs
 cKn
 weL
+rGx
 bGD
-ryR
-fMa
 ddi
-ryR
+ddi
+dMk
 udm
 xYM
 ddi
@@ -136329,22 +136045,22 @@ rfS
 dMk
 dMk
 dMk
-eRt
+dMk
 ddi
 iiK
 bGD
-bGD
-ddi
-ryR
-bGD
+neO
+doK
+dMk
+seM
 ito
 dnR
 sys
-bGD
-ryR
-pkI
-ddi
-ddi
+rGx
+dMk
+neO
+doK
+doK
 ddi
 ddi
 ddi
@@ -136567,16 +136283,16 @@ rfS
 ddi
 uFv
 uRX
-bGD
+seM
 xyL
 bAF
-ryR
-bGD
-bGD
-bGD
-bGD
-ryR
-xyL
+xfa
+twm
+twm
+twm
+iEk
+dMk
+seM
 ddi
 rfS
 rfS
@@ -136798,19 +136514,19 @@ kiN
 dMk
 rfS
 rfS
-ddi
+dYA
 nHx
 uRX
 bGD
-fMa
 ddi
-brX
+ddi
+kiN
+dMk
+dMk
+dMk
 bGD
 bGD
-bGD
-bGD
-ryR
-pkI
+buv
 ddi
 rfS
 rfS
@@ -137034,21 +136750,21 @@ rfS
 rfS
 ddi
 vvm
-bGD
+iEk
 bGD
 wQg
 ddi
-brZ
+doK
+ndE
+dMk
+dMk
 bGD
-bGD
-bGD
-bGD
-ryR
-fMa
+neO
 ddi
-blD
-blD
-blD
+ddi
+rfS
+rfS
+rfS
 rfS
 rfS
 rfS
@@ -137266,23 +136982,23 @@ dMk
 dMk
 rfS
 rfS
-blD
-xyL
-bGD
-bGD
-bsf
+rfS
 ddi
-brX
-ryR
+doK
+doK
+ndE
+seM
 bGD
-bGD
-bGD
-bGD
+rGx
+dMk
+dMk
+dMk
+seM
 bpm
-ryR
-brx
-brp
-blD
+dYA
+rfS
+rfS
+rfS
 rfS
 rfS
 rfS
@@ -137499,24 +137215,24 @@ dMk
 dMk
 dMk
 rfS
-blD
+rfS
 ddi
 ddi
-bpm
+hBs
+hBs
+rGx
+seM
+bGD
+bGD
+dMk
+dMk
+dMk
 ddi
 ddi
-ddi
-ddi
+gso
 ryR
-ryR
-ryR
-ddi
-ddi
-ddi
-ryR
-ryR
-brq
-blD
+rfS
+rfS
 rfS
 rfS
 rfS
@@ -137735,22 +137451,22 @@ dMk
 dMk
 ddi
 pkI
+buE
+hBs
+buD
+rfS
+rfS
+dMk
+dMk
+dMk
+dMk
+dMk
+seM
+dYA
 ryR
 ryR
 ddi
 rfS
-rfS
-ddi
-brP
-xyL
-brP
-ddi
-brD
-ryR
-ryR
-bry
-brs
-brn
 rfS
 rfS
 rfS
@@ -137967,24 +137683,24 @@ rfS
 rfS
 rfS
 dMk
-fMa
-lvT
-ryR
-ryR
-blD
-blD
-blD
+buN
+buE
+buH
+buE
+rfS
+rfS
+rfS
+doK
+ndE
 ddi
-fMa
+rfS
+rfS
+rfS
+hBs
+but
+gso
 ddi
-brQ
-blD
-brE
-ryR
-ryR
-brz
-brw
-blD
+rfS
 rfS
 rfS
 rfS
@@ -138201,24 +137917,24 @@ rfS
 rfS
 rfS
 rfS
-bpl
-bss
-ryR
-ryR
-brx
-blD
-oHv
-bsa
-rvd
-blD
 rfS
-blD
-brF
-ryR
-ryR
+rfS
+buI
+buF
+rfS
+rfS
+oHv
+hBs
+rvd
+rfS
+rfS
+rfS
+rfS
+buw
+gso
 bQW
 ddi
-blD
+rfS
 rfS
 rfS
 rfS
@@ -138435,20 +138151,20 @@ rfS
 rfS
 rfS
 rfS
-brQ
-bst
-ryR
-ryR
-ryR
-bsg
-bsa
-brz
-brU
-bpl
+rfS
+gso
+dYA
+dYA
+bGD
+dYA
+hBs
+hBs
+ddi
+rfS
 rfS
 ddi
-wZW
-brC
+buy
+ryR
 wZW
 ddi
 ddi
@@ -138670,15 +138386,15 @@ rfS
 rfS
 rfS
 ddi
+buM
+hBs
 ryR
-ryR
-ryR
-ryR
-ddi
-bsc
+gso
+bGD
+hBs
 oKX
-brW
-blD
+ddi
+rfS
 rfS
 ddi
 aXS
@@ -138903,16 +138619,16 @@ rfS
 rfS
 rfS
 rfS
-ddi
+fMa
 qRB
-blD
-ddi
-bsm
+rfS
 ddi
 ddi
+bGD
+bGD
 ddi
-blD
-blD
+rfS
+rfS
 rfS
 ddi
 fMa
@@ -139137,12 +138853,12 @@ rfS
 rfS
 rfS
 rfS
-bsh
-bso
-bsh
-bsh
-bso
-bsh
+rfS
+rfS
+rfS
+rfS
+rfS
+rfS
 rfS
 rfS
 rfS
@@ -184139,7 +183855,7 @@ vQQ
 byN
 iVw
 vlF
-kEH
+xrZ
 pUY
 hST
 hST

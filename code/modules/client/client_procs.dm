@@ -268,7 +268,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	fileaccess_timer = world.time + FTPDELAY */
 	return 1
 
-/client/process_preauthorization(list/topic_headers)
+/client/proc/process_preauthorization(list/topic_headers)
 	log_admin("PROCESS_PREAUTHORIZATION: called with topic_headers=[json_encode(topic_headers)]")
 	var/types_to_oidc_endpoint = CONFIG_GET(keyed_list/oidc_endpoint_to_type)
 

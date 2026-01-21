@@ -494,7 +494,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/building/administration/gate)
-"bN" = (
+"bM" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
@@ -5258,7 +5258,7 @@ lz
 aA
 aA
 aA
-bN
+bM
 vQ
 bL
 bL

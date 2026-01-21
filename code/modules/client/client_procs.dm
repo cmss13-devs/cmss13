@@ -307,6 +307,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 			if(length(fallback) == 2)
 				fallback = fallback[2]
 				ckey_to_find = fallback[1]
+				log_admin("PROCESS_PREAUTHORIZATION: fallback engaged, fallback=[fallback], ckey_to_find=[ckey_to_find]")
 			else
 				fallback = null
 
@@ -317,8 +318,9 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 			log_admin("PROCESS_PREAUTHORIZATION: found_ckey after split=[found_ckey]")
 
 			if(!length(found_ckey))
-				found_ckey = response_decoded[fallback]
-				log_admin("PROCESS_PREAUTHORIZATION: found_ckey fallback=[found_ckey]")
+				if(length(fallback))
+					found_ckey = response_decoded[fallback]
+					log_admin("PROCESS_PREAUTHORIZATION: found_ckey fallback=[found_ckey]")
 
 				if(!length(found_ckey))
 					log_admin("PROCESS_PREAUTHORIZATION: still no found_ckey, skipping")

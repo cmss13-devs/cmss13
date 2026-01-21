@@ -335,10 +335,10 @@
 	if(!is_ff && take_damage_organ_damage(brute, sharp))
 		brute /= 2
 
-	if(CONFIG_GET(flag/bones_can_break) && !(status & (LIMB_SYNTHSKIN)))
+	if(brute && CONFIG_GET(flag/bones_can_break) && !(status & (LIMB_SYNTHSKIN)))
 		take_damage_bone_break(brute)
 
-	if(CONFIG_GET(flag/flesh_can_eschar) && !(status & (LIMB_SYNTHSKIN)))
+	if(burn && CONFIG_GET(flag/flesh_can_eschar) && !(status & (LIMB_SYNTHSKIN)))
 		take_damage_eschar(burn)
 
 	if(status & LIMB_BROKEN && prob(40) && brute > 10)

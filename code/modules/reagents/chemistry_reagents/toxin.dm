@@ -352,7 +352,7 @@
 	id = "phenol_formaldehyde"
 	description = "Phenol-Formaldehyde Resin is a common molding polymer used in production of many small parts. It has great stress capacity and proven itself over many decades."
 	reagent_state = SOLID
-	chemclass = CHEM_CLASS_RARE
+	chemclass = CHEM_CLASS_HYDRO
 	color = "#909648"
 	properties = list(PROPERTY_TOXIC = 3)
 

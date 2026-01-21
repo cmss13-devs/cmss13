@@ -259,6 +259,14 @@
 	SSprojectiles.queue_projectile(src)
 
 /obj/projectile/proc/update_angle(turf/source_turf, turf/aim_turf)
+	var/datum/turf_reservation/reservation = SSmapping.used_turfs[loc]
+	if(reservation && (reservation.is_below(source_turf, aim_turf)))
+		source_turf = SSmapping.get_turf_above(source_turf)
+	else
+		if(reservation && (reservation.is_below(aim_turf, source_turf)))
+			aim_turf = SSmapping.get_turf_above(aim_turf)
+
+
 	p_x = clamp(p_x, -16, 16)
 	p_y = clamp(p_y, -16, 16)
 

@@ -1,0 +1,4 @@
+author: "Puckaboo2"
+delete-after: True
+changes:
+  - bugfix: "Unlit matches, cigs, and closed lighters no longer say they burn your target."

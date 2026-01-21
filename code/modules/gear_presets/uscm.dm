@@ -1502,7 +1502,7 @@
 	job_title = JOB_MARINE_RAIDER
 	role_comm_title = "Op."
 	languages = list(LANGUAGE_TSL, LANGUAGE_ENGLISH)
-	skills = /datum/skills/commando/deathsquad
+	skills = /datum/skills/hunted_specops // instant injectors but not instant trauma kits
 	paygrades = list(PAY_SHORT_ME6 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME7 = JOB_PLAYTIME_TIER_3)
 
 	minimap_icon = "sof_sg"
@@ -1584,7 +1584,6 @@
 	job_title = JOB_MARINE_RAIDER_SL
 	role_comm_title = "TL."
 	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_MO2 = JOB_PLAYTIME_TIER_3)
-	skills = /datum/skills/commando/deathsquad/leader
 
 	minimap_icon = "leader"
 

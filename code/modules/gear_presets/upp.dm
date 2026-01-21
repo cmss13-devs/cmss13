@@ -4343,7 +4343,7 @@
 /datum/equipment_preset/upp/commando/hunted
 	name = "UPP Commando (Hunted)"
 	faction = FACTION_HUNTED_UPP
-	skills = /datum/skills/commando/deathsquad // to match the other hunted elite presets
+	skills = /datum/skills/hunted_specops/scout // instant injectors but not instant trauma kits, can use cloak
 
 /datum/equipment_preset/upp/commando/hunted/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP, WEAR_BODY)
@@ -4373,7 +4373,7 @@
 /datum/equipment_preset/upp/commando/medic/hunted
 	name = "UPP Commando Medic (Hunted)"
 	faction = FACTION_HUNTED_UPP
-	skills = /datum/skills/commando/deathsquad
+	skills = /datum/skills/hunted_specops/scout/medic // instant trauma kits & can revive others
 
 /datum/equipment_preset/upp/commando/medic/hunted/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP/medic, WEAR_BODY)
@@ -4411,7 +4411,7 @@
 /datum/equipment_preset/upp/commando/leader/hunted
 	name = "UPP Commando Leader (Hunted)"
 	faction = FACTION_HUNTED_UPP
-	skills = /datum/skills/commando/deathsquad
+	skills = /datum/skills/hunted_specops/scout
 
 /datum/equipment_preset/upp/commando/leader/hunted/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP, WEAR_BODY)
@@ -4436,7 +4436,3 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large, WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medical/socmed/not_op, WEAR_L_STORE)
-
-	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/box/handcuffs, WEAR_IN_BACK)

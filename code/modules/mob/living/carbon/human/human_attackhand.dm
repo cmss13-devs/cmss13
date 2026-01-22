@@ -303,17 +303,18 @@
 
 		var/postscript
 		if(org.status & LIMB_UNCALIBRATED_PROSTHETIC)
-			postscript += SPAN_BOLD(" (NONFUNCTIONAL)")
+			postscript += " (NONFUNCTIONAL)"
 		if(org.status & LIMB_BROKEN)
-			postscript += SPAN_BOLD(" (BROKEN)")
-		if(org.status & LIMB_SPLINTED_INDESTRUCTIBLE))
-			postscript += SPAN_BOLD(" (NANOSPLINTED)")
+			postscript += " (BROKEN)"
+		if(org.status & LIMB_SPLINTED_INDESTRUCTIBLE)
+			postscript += " (NANOSPLINTED)"
 		else if(org.status & LIMB_SPLINTED)
-			postscript += SPAN_BOLD(" (SPLINTED)")
+			postscript += " (SPLINTED)"
 		if(org.status & LIMB_THIRD_DEGREE_BURNS)
-			postscript += SPAN_BOLD(" (SEVERE BURN)")
+			postscript += " (SEVERE BURN)"
 		if(org.status & LIMB_ESCHAR)
-			postscript += SPAN_BOLD(" (ESCHAR)")
+			postscript += " (ESCHAR)"
+		postscript = SPAN_BOLD(post_script)
 
 		if(postscript)
 			limb_message += "\t My [org.display_name] is [SPAN_WARNING("[english_list(status, final_comma_text = ",")].[postscript]")]"

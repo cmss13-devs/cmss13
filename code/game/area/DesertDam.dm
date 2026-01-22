@@ -270,6 +270,10 @@
 	icon_state = "green"
 	ceiling = CEILING_METAL
 
+/area/desert_dam/interior/dam_interior/elevator_maint
+	name = "Elevator Maintenance Shaft"
+	icon_state = "yellow"
+
 /area/desert_dam/interior/caves
 	name = "Caves"
 	ceiling = CEILING_DEEP_UNDERGROUND

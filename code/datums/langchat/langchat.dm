@@ -83,10 +83,12 @@
 		langchat_scrambled_image.maptext_y -= LANGCHAT_MESSAGE_POP_Y_SINK
 		langchat_scrambled_image.maptext_x = get_maxptext_x_offset(langchat_scrambled_image)
 
+	langchat_image.pixel_x = 0
 	langchat_image.pixel_y = 0
 	langchat_image.alpha = 0
 	langchat_image.color = override_color ? override_color : langchat_color
 
+	langchat_scrambled_image.pixel_x = 0
 	langchat_scrambled_image.pixel_y = 0
 	langchat_scrambled_image.alpha = 0
 	langchat_scrambled_image.color = override_color ? override_color : langchat_color
@@ -205,20 +207,18 @@
 			langchat_image.alpha = LANGCHAT_MAX_ALPHA
 			animate(langchat_image, pixel_y = langchat_image.pixel_y + LANGCHAT_MESSAGE_PANIC_POP_Y_SINK, time = LANGCHAT_MESSAGE_PANIC_POP_TIME)
 			animate(pixel_x = langchat_image.pixel_x - LANGCHAT_MESSAGE_PANIC_SHAKE_SIZE, time = LANGCHAT_MESSAGE_PANIC_SHAKE_TIME_TAKEN, easing = CUBIC_EASING)
+			for(var/i = 1 to LANGCHAT_MESSAGE_PANIC_SHAKE_TIMES)
+				animate(pixel_x = langchat_image.pixel_x + LANGCHAT_MESSAGE_PANIC_SHAKE_SIZE, time = 2*LANGCHAT_MESSAGE_PANIC_SHAKE_TIME_TAKEN, easing = CUBIC_EASING)
+				animate(pixel_x = langchat_image.pixel_x - LANGCHAT_MESSAGE_PANIC_SHAKE_SIZE, time = 2*LANGCHAT_MESSAGE_PANIC_SHAKE_TIME_TAKEN, easing = CUBIC_EASING)
+			animate(pixel_x = langchat_image.pixel_x, time = LANGCHAT_MESSAGE_PANIC_SHAKE_TIME_TAKEN, easing = CUBIC_EASING)
 
 			langchat_scrambled_image.alpha = LANGCHAT_MAX_ALPHA
 			animate(langchat_scrambled_image, pixel_y = langchat_scrambled_image.pixel_y + LANGCHAT_MESSAGE_PANIC_POP_Y_SINK, time = LANGCHAT_MESSAGE_PANIC_POP_TIME)
-			animate(langchat_scrambled_image, pixel_x = langchat_scrambled_image.pixel_x - LANGCHAT_MESSAGE_PANIC_SHAKE_SIZE, time = LANGCHAT_MESSAGE_PANIC_SHAKE_TIME_TAKEN, easing = CUBIC_EASING)
-
+			animate(pixel_x = langchat_scrambled_image.pixel_x - LANGCHAT_MESSAGE_PANIC_SHAKE_SIZE, time = LANGCHAT_MESSAGE_PANIC_SHAKE_TIME_TAKEN, easing = CUBIC_EASING)
 			for(var/i = 1 to LANGCHAT_MESSAGE_PANIC_SHAKE_TIMES)
-				animate(pixel_x = langchat_image.pixel_x + 2*LANGCHAT_MESSAGE_PANIC_SHAKE_SIZE, time = 2*LANGCHAT_MESSAGE_PANIC_SHAKE_TIME_TAKEN, easing = CUBIC_EASING)
-				animate(pixel_x = langchat_image.pixel_x - 2*LANGCHAT_MESSAGE_PANIC_SHAKE_SIZE, time = LANGCHAT_MESSAGE_PANIC_SHAKE_TIME_TAKEN, easing = CUBIC_EASING)
-
-				animate(langchat_scrambled_image, pixel_x = langchat_scrambled_image.pixel_x + 2*LANGCHAT_MESSAGE_PANIC_SHAKE_SIZE, time = 2*LANGCHAT_MESSAGE_PANIC_SHAKE_TIME_TAKEN, easing = CUBIC_EASING)
-				animate(langchat_scrambled_image, pixel_x = langchat_scrambled_image.pixel_x - 2*LANGCHAT_MESSAGE_PANIC_SHAKE_SIZE, time = LANGCHAT_MESSAGE_PANIC_SHAKE_TIME_TAKEN, easing = CUBIC_EASING)
-
-			animate(pixel_x = langchat_image.pixel_x + LANGCHAT_MESSAGE_PANIC_SHAKE_SIZE, time = LANGCHAT_MESSAGE_PANIC_SHAKE_TIME_TAKEN, easing = CUBIC_EASING)
-			animate(langchat_scrambled_image, pixel_x = langchat_scrambled_image.pixel_x + LANGCHAT_MESSAGE_PANIC_SHAKE_SIZE, time = LANGCHAT_MESSAGE_PANIC_SHAKE_TIME_TAKEN, easing = CUBIC_EASING)
+				animate(pixel_x = langchat_scrambled_image.pixel_x + LANGCHAT_MESSAGE_PANIC_SHAKE_SIZE, time = 2*LANGCHAT_MESSAGE_PANIC_SHAKE_TIME_TAKEN, easing = CUBIC_EASING)
+				animate(pixel_x = langchat_scrambled_image.pixel_x - LANGCHAT_MESSAGE_PANIC_SHAKE_SIZE, time = 2*LANGCHAT_MESSAGE_PANIC_SHAKE_TIME_TAKEN, easing = CUBIC_EASING)
+			animate(pixel_x = langchat_scrambled_image.pixel_x, time = LANGCHAT_MESSAGE_PANIC_SHAKE_TIME_TAKEN, easing = CUBIC_EASING)
 
 		if(LANGCHAT_FAST_POP)
 			langchat_image.alpha = 0

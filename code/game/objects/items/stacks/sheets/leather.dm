@@ -88,7 +88,7 @@
 	icon_state = "sheet-wetleather"
 	sheettype = "leather"
 	stack_id = "wet leather"
-	var/wetness = 30 //Reduced when exposed to high temperatures
+	var/wetness = 30 //Reduced when exposed to high temperatures.
 	var/drying_threshold_temperature = 500 //Kelvin to start drying
 
 /obj/item/stack/sheet/leather

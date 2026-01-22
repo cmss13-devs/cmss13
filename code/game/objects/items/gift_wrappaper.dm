@@ -42,16 +42,16 @@
 /obj/effect/spresent/relaymove(mob/user)
 	if (user.stat)
 		return
-	to_chat(user, SPAN_NOTICE(" You can't move."))
+	to_chat(user, SPAN_NOTICE("You can't move."))
 
 /obj/effect/spresent/attackby(obj/item/W as obj, mob/user as mob)
 	..()
 
 	if (!HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
-		to_chat(user, SPAN_NOTICE(" I need wirecutters for that."))
+		to_chat(user, SPAN_NOTICE("I need wirecutters for that."))
 		return
 
-	to_chat(user, SPAN_NOTICE(" You cut open the present."))
+	to_chat(user, SPAN_NOTICE("You cut open the present."))
 
 	for(var/mob/M in src) //Should only be one but whatever.
 		M.forceMove(src.loc)
@@ -126,14 +126,14 @@
 /obj/item/wrapping_paper/attackby(obj/item/W as obj, mob/user as mob)
 	..()
 	if (!( locate(/obj/structure/surface/table, src.loc) ))
-		to_chat(user, SPAN_NOTICE(" You MUST put the paper on a table!"))
+		to_chat(user, SPAN_NOTICE("You MUST put the paper on a table!"))
 	if (W.w_class < 4)
 		var/obj/item/left_item = user.l_hand
 		var/obj/item/right_item = user.r_hand
 		if ( (left_item && HAS_TRAIT(left_item, TRAIT_TOOL_WIRECUTTERS)) || (right_item && HAS_TRAIT(right_item, TRAIT_TOOL_WIRECUTTERS)) )
 			var/a_used = 2 ** (src.w_class - 1)
 			if (src.amount < a_used)
-				to_chat(user, SPAN_NOTICE(" You need more paper!"))
+				to_chat(user, SPAN_NOTICE("You need more paper!"))
 				return
 			else
 				if(istype(W, /obj/item/smallDelivery) || istype(W, /obj/item/gift)) //No gift wrapping gifts!
@@ -154,9 +154,9 @@
 				deconstruct(TRUE)
 				return
 		else
-			to_chat(user, SPAN_NOTICE(" You need scissors!"))
+			to_chat(user, SPAN_NOTICE("You need scissors!"))
 	else
-		to_chat(user, SPAN_NOTICE(" The object is FAR too large!"))
+		to_chat(user, SPAN_NOTICE("The object is FAR too large!"))
 	return
 
 /obj/item/wrapping_paper/deconstruct(disassembled = TRUE)
@@ -189,6 +189,6 @@
 			msg_admin_attack("[key_name(user)] used [src] to wrap [key_name(H)] in [get_area(user)] ([user.loc.x], [user.loc.y], [user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
 
 		else
-			to_chat(user, SPAN_NOTICE(" You need more paper."))
+			to_chat(user, SPAN_NOTICE("You need more paper."))
 	else
 		to_chat(user, "They are moving around too much. A straightjacket would help.")

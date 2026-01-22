@@ -102,7 +102,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	if(health <= 0)
 		toggled = FALSE // requires flipping on again once repaired
 	if(health < initial(health))
-		desc = "[initial(desc)] [SPAN_WARNING(" It is damaged and needs a welder for repairs!")]"
+		desc = "[initial(desc)] [SPAN_WARNING("It is damaged and needs a welder for repairs!")]"
 	else
 		desc = initial(desc)
 	update_state()
@@ -245,7 +245,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 		to_chat(user, SPAN_NOTICE("\The [src] is already turned [on ? "on" : "off"]!"))
 		return
 	if(stat & NOPOWER)
-		to_chat(user, SPAN_WARNING("\The [src] makes a small plaintful beep, and nothing happens. It seems to be out of power."))
+		to_chat(user, SPAN_WARNING("\The [src] makes a small plaintive beep, and nothing happens. It seems to be out of power."))
 		return FALSE
 	if(toggle_cooldown > world.time) //cooldown only to prevent spam toggling
 		to_chat(user, SPAN_WARNING("\The [src]'s processors are still cooling! Wait before trying to flip the switch again."))
@@ -428,7 +428,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	network = "tcommsat"
 	autolinkers = list("hub", "relay", "s_relay", "medical",
 		"common", "command", "engineering", "squads", "security",
-		"receiverA", "receiverB",  "broadcasterA", "broadcasterB")
+		"receiverA", "receiverB", "broadcasterA", "broadcasterB")
 
 /obj/structure/machinery/telecomms/hub/preset_cent
 	id = "CentComm Hub"
@@ -452,7 +452,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	id = "Receiver B"
 	network = "tcommsat"
 	autolinkers = list("receiverB") // link to relay
-	freq_listening = list(COMM_FREQ, ENG_FREQ, SEC_FREQ, MED_FREQ, REQ_FREQ, SENTRY_FREQ, WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, YAUT_OVR_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ)
+	freq_listening = list(COMM_FREQ, ENG_FREQ, SEC_FREQ, MED_FREQ, REQ_FREQ, SENTRY_FREQ, WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, YAUT_OVR_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ, WY_PUB_FREQ, WY_SEC_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ)
 
 	//Common and other radio frequencies for people to freely use
 /obj/structure/machinery/telecomms/receiver/preset/Initialize(mapload, ...)
@@ -483,7 +483,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 /obj/structure/machinery/telecomms/bus/preset_three
 	id = "Bus 3"
 	network = "tcommsat"
-	freq_listening = list(SEC_FREQ, COMM_FREQ, WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, YAUT_OVR_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ, CBRN_FREQ)
+	freq_listening = list(SEC_FREQ, COMM_FREQ, WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, YAUT_OVR_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ, WY_PUB_FREQ, WY_SEC_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ, CBRN_FREQ)
 	autolinkers = list("processor3", "security", "command", "JTAC")
 
 /obj/structure/machinery/telecomms/bus/preset_four
@@ -564,7 +564,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 
 /obj/structure/machinery/telecomms/server/presets/command
 	id = "Command Server"
-	freq_listening = list(COMM_FREQ, WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, YAUT_OVR_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ, CBRN_FREQ)
+	freq_listening = list(COMM_FREQ, WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, YAUT_OVR_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ, WY_PUB_FREQ, WY_SEC_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ, CBRN_FREQ)
 	autolinkers = list("command")
 
 /obj/structure/machinery/telecomms/server/presets/engineering

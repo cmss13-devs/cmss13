@@ -4,8 +4,8 @@
 
 #define COMSIG_KB_CUSTOM_KEYBIND_DOWN "keybinding_custom_down"
 
-#define KEYBIND_CUSTOM_MAX 20
-#define KEYBIND_CUSTOM_PICKSAY_MAX 20
+#define KEYBIND_CUSTOM_MAX 60
+#define KEYBIND_CUSTOM_PICKSAY_MAX 30
 
 //Signals
 

@@ -300,6 +300,7 @@
 
 		if(!length(status))
 			status += "OK"
+
 		var/postscript
 		if(org.status & LIMB_UNCALIBRATED_PROSTHETIC)
 			postscript += SPAN_BOLD(" (NONFUNCTIONAL)")

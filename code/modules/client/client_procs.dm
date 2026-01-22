@@ -819,7 +819,7 @@ CLIENT_VERB(read_key_up, key as text|null)
 						var/looc = tgui_say_create_open_command(LOOC_CHANNEL)
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[looc]")
 					else
-					 winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=looc")
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=looc")
 					winset(src, "tgui_say.browser", "focus=true")
 				if(ADMIN_CHANNEL)
 					if(admin_holder?.check_for_rights(R_MOD))

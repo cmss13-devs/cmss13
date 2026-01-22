@@ -638,6 +638,10 @@
 		return FALSE
 	if(target.z != user.z)
 		return FALSE
+	var/area/targ_area = get_area(targeted_atom)
+	if(targ_area.ceiling >= CEILING_PROTECTION_TIER_1)
+		to_chat(user, SPAN_WARNING("INVALID TARGET: target must be visible from high altitude."))
+		return
 
 	var/list/modifiers = params2list(params) //Only single clicks.
 	if(modifiers[MIDDLE_CLICK] || modifiers[SHIFT_CLICK] || modifiers[ALT_CLICK] || modifiers[CTRL_CLICK])
@@ -678,7 +682,13 @@
 		var/turf/target_2 = locate(T.x,T.y,T.z)
 		var/turf/target_3 = locate(T.x - offset_x,T.y - offset_y,T.z)
 		var/turf/target_4 = locate(T.x - (offset_x*2),T.y - (offset_y*2),T.z)
-		sleep(50) //AWW YEAH
+		playsound(target, 'sound/effects/rocketpod_fire.ogg', 70, 1)
+		sleep(2 SECONDS) //AWW YEAH
+		new /obj/effect/overlay/temp/blinking_laser(target)
+		new /obj/effect/overlay/temp/blinking_laser(target_2)
+		new /obj/effect/overlay/temp/blinking_laser(target_3)
+		new /obj/effect/overlay/temp/blinking_laser(target_4)
+		sleep(1 SECONDS)
 		var/datum/cause_data/cause_data = create_cause_data("artillery fire", user)
 		flame_radius(cause_data, 3, target, , , , , )
 		explosion(target,  -1, 2, 3, 5, , , , cause_data)
@@ -716,6 +726,10 @@
 		var/turf/target = locate(T.x + rand(-2,2),T.y + rand(-2,2),T.z)
 		var/turf/target_2 = locate(T.x + rand(-2,2),T.y + rand(-2,2),T.z)
 		var/turf/target_3 = locate(T.x + rand(-2,2),T.y + rand(-2,2),T.z)
+		playsound(target, 'sound/weapons/gun_mortar_travel.ogg', 50, 1)
+		sleep(4 SECONDS)
+		new /obj/effect/overlay/temp/blinking_laser(target)
+		sleep(1 SECONDS)
 		if(target && istype(target))
 			qdel(lasertarget)
 			var/datum/cause_data/cause_data = create_cause_data("artillery fire", user)

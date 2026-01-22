@@ -1,26 +1,60 @@
 // Notify all preds with the bracer icon
-/proc/message_all_yautja(msg, soundeffect = TRUE)
-	for(var/mob/living/carbon/human/Y in GLOB.yautja_mob_list)
-		// Send message to the bracer; appear multiple times if we have more bracers
-		for(var/obj/item/clothing/gloves/yautja/hunter/G in Y.contents)
-			to_chat(Y, SPAN_YAUTJABOLD("[icon2html(G)] \The <b>[G]</b> beeps: [msg]"))
-			if(G.notification_sound)
-				playsound(Y.loc, 'sound/items/pred_bracer.ogg', 75, 1)
+/proc/message_all_yautja(msg, soundeffect = TRUE, broadcast_networks = list(YAUTJA_NET_HUNTING))
+	for(var/mob/living/carbon/human/yautja in GLOB.yautja_mob_list)
+		if(pred_can_receive_message(yautja, broadcast_networks))
+			// Send message to the bracer; appear multiple times if we have more bracers
+			for(var/obj/item/clothing/gloves/yautja/hunter/bracer in yautja.contents)
+				to_chat(yautja, SPAN_YAUTJABOLD("[icon2html(bracer)] \The <b>[bracer]</b> beeps: [msg]"))
+				if(bracer.notification_sound)
+					playsound(yautja.loc, 'sound/items/pred_bracer.ogg', 75, 1)
 
-/proc/elder_overseer_message(text = "", title_text = "Elder Overseer", elder_user = "AutomatedMessage") // you can override the title_text if you want.
+/proc/elder_overseer_message(text = "", title_text = "Elder Overseer", elder_user = "AutomatedMessage", broadcast_network = YAUTJA_NET_ALL) // you can override the title_text if you want.
+	var/new_title_text = title_text
+	if(new_title_text == "Elder Overseer")
+		switch(broadcast_network)//Horrific code, fix it.
+			if(YAUTJA_NET_BADBLOOD)
+				new_title_text = "Exile Broadcast"
+			if(YAUTJA_NET_STRANDED)
+				new_title_text = "Faint Broadcast"
+			if(YAUTJA_NET_ALL)
+				new_title_text = "Unidentified Broadcast"
 	for(var/mob/living/carbon/human/hunter as anything in GLOB.yautja_mob_list)
-		if(!hunter.client)
+		if(!pred_can_receive_message(hunter, list(broadcast_network)))
 			continue
-		if(hunter.stat == DEAD)
-			continue
+		if((elder_user = "AutomatedMessage") && (broadcast_network == YAUTJA_NET_ALL))
+			switch(hunter.faction)//Horrific code, fix it.
+				if(FACTION_YAUTJA, FACTION_YAUTJA_YOUNG)
+					new_title_text = "Elder Overseer"
+				if(FACTION_YAUTJA_BADBLOOD)
+					new_title_text = "Exile Broadcast"
+				if(FACTION_YAUTJA_STRANDED)
+					new_title_text = "Faint Broadcast"
 		text = "[SPAN_YAUTJABOLDBIG("<b>[text]<b>")]"
-		hunter.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /atom/movable/screen/text/screen_text/command_order/yautja, override_color = "#af0614")
+		hunter.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[new_title_text]</u></span><br>" + text, /atom/movable/screen/text/screen_text/command_order/yautja, override_color = "#af0614")
 		var/elder_picked = pick('sound/voice/pred_elder_overseer_1.ogg', 'sound/voice/pred_elder_overseer_2.ogg', 'sound/voice/pred_elder_overseer_3.ogg', 'sound/voice/pred_elder_overseer_4.ogg')
 		playsound_client(hunter.client, elder_picked, 25)
-		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat_spaced), hunter, "[SPAN_YAUTJABOLDBIG("Overseer Message Log")]<br><br>[SPAN_YAUTJABOLDBIG("[title_text]")]<br><br>[SPAN_YAUTJABOLD(text)]", MESSAGE_TYPE_RADIO), 12 SECONDS)
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat_spaced), hunter, "[SPAN_YAUTJABOLDBIG("Message Log:")]<br>[SPAN_YAUTJABOLDBIG("[new_title_text]")]<br><br>[SPAN_YAUTJABOLD(text)]", MESSAGE_TYPE_RADIO), 12 SECONDS)
 	if(elder_user != "AutomatedMessage")
-		message_admins("[elder_user] has created a Yautja Elder Overseer message")
-		log_admin("[elder_user] created a predator council message: [text]")
+		message_admins("[elder_user] has created a Yautja Elder Overseer message for [broadcast_network]")
+		log_admin("Yautja Overseer message: [text]")
+
+/proc/pred_can_receive_message(mob/hunter, broadcast_networks = YAUTJA_NET_HUNTING)
+	if(!ismob(hunter) || !hunter.client || (hunter.stat == DEAD))
+		return FALSE
+	var/list/check_networks = broadcast_networks
+	if(!islist(check_networks))
+		check_networks = list(check_networks)
+	for(var/network in check_networks)
+		if(network == YAUTJA_NET_ALL)
+			return TRUE
+		if(network == hunter.faction)
+			return TRUE
+		for(var/obj/item/clothing/gloves/yautja/hunter/bracer in hunter.contents)
+			if(network in bracer.received_networks)
+				return TRUE
+		if(!(network in FACTION_LIST_ALL_YAUTJA))//If this somehow isn't sending to a Yautja faction, it will instead send to all of them.
+			return TRUE
+	return FALSE
 
 /client/proc/pred_council_message()
 	set name = "Yautja Overseer Report"
@@ -47,9 +81,24 @@
 	if(!input)
 		return FALSE
 	if(is_living_yautja)
-		elder_overseer_message(input, mob.real_name, "[key_name(src)]")
+		var/target_net = mob.faction
+		if(!(target_net in FACTION_LIST_ALL_YAUTJA))
+			target_net = YAUTJA_NET_HUNTING
+		elder_overseer_message(input, mob.real_name, "[key_name(src)]", target_net)
 		return TRUE
-	elder_overseer_message(input, elder_user = "[key_name(src)]")
+
+	var/new_broadcast_network = YAUTJA_NET_HUNTING
+	var/choice = tgui_alert(usr, "Who is this announcement for?", "Target Network?", list("Hunting Party", "Bad-Bloods", "Stranded", "All"))
+	switch(choice)
+		if("Hunting Party")
+			new_broadcast_network = YAUTJA_NET_HUNTING
+		if("Bad-Bloods")
+			new_broadcast_network = YAUTJA_NET_BADBLOOD
+		if("Stranded")
+			new_broadcast_network = YAUTJA_NET_STRANDED
+		if("All")
+			new_broadcast_network = YAUTJA_NET_ALL
+	elder_overseer_message(input, elder_user = "[key_name(src)]", broadcast_network = new_broadcast_network)
 	return TRUE
 
 /mob/living/carbon/human/proc/message_thrall(msg)
@@ -234,7 +283,9 @@
 				if(hunter_data.prey == T)
 					to_chat(src, SPAN_YAUTJABOLD("You have claimed [T] as your trophy."))
 					emote("roar2")
-					message_all_yautja("[src.real_name] has claimed [T] as their trophy.")
+					var/obj/item/clothing/gloves/yautja/hunter/bracer = gloves
+					if(istype(bracer))
+						message_all_yautja("[src.real_name] has claimed [T] as their trophy.", broadcast_networks = bracer.received_networks)
 					hunter_data.prey = null
 				else
 					to_chat(src, SPAN_NOTICE("You finish butchering!"))
@@ -260,7 +311,9 @@
 			if(hunter_data.prey == T)
 				to_chat(src, SPAN_YAUTJABOLD("You have claimed [T] as your trophy."))
 				emote("roar2")
-				message_all_yautja("[src.real_name] has claimed [T] as their trophy.")
+				var/obj/item/clothing/gloves/yautja/hunter/bracer = gloves
+				if(istype(bracer))
+					message_all_yautja("[src.real_name] has claimed [T] as their trophy.", broadcast_networks = bracer.received_networks)
 				hunter_data.prey = null
 			else
 				to_chat(src, SPAN_NOTICE("You finish butchering!"))

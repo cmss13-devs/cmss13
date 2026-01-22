@@ -14,6 +14,7 @@
 		TRAIT_DEXTROUS,
 		TRAIT_EMOTE_CD_EXEMPT,
 		TRAIT_IRON_TEETH,
+		TRAIT_UNSTRIPPABLE,
 	)
 	unarmed_type = /datum/unarmed_attack/punch/strong
 	secondary_unarmed_type = /datum/unarmed_attack/bite/strong
@@ -113,36 +114,36 @@
 
 	xeno_message(SPAN_XENOANNOUNCE("The hive senses that a headhunter has been infected! The thick resin nest is now available in the special structures list!"),hivenumber = hive.hivenumber)
 
-/datum/species/yautja/handle_death(mob/living/carbon/human/H, gibbed)
+/datum/species/yautja/handle_death(mob/living/carbon/human/dead_yautja, gibbed)
 	if(gibbed)
-		GLOB.yautja_mob_list -= H
+		GLOB.yautja_mob_list -= dead_yautja
 
-	for(var/mob/living/carbon/M in H.hunter_data.dishonored_targets)
+	for(var/mob/living/carbon/M in dead_yautja.hunter_data.dishonored_targets)
 		M.hunter_data.dishonored_set = null
-		H.hunter_data.dishonored_targets -= M
-	for(var/mob/living/carbon/M in H.hunter_data.honored_targets)
+		dead_yautja.hunter_data.dishonored_targets -= M
+	for(var/mob/living/carbon/M in dead_yautja.hunter_data.honored_targets)
 		M.hunter_data.honored_set = null
-		H.hunter_data.honored_targets -= M
-	for(var/mob/living/carbon/M in H.hunter_data.gear_targets)
+		dead_yautja.hunter_data.honored_targets -= M
+	for(var/mob/living/carbon/M in dead_yautja.hunter_data.gear_targets)
 		M.hunter_data.gear_set = null
-		H.hunter_data.gear_targets -= M
+		dead_yautja.hunter_data.gear_targets -= M
 
-	if(H.hunter_data.prey)
-		var/mob/living/carbon/M = H.hunter_data.prey
-		H.hunter_data.prey = null
+	if(dead_yautja.hunter_data.prey)
+		var/mob/living/carbon/M = dead_yautja.hunter_data.prey
+		dead_yautja.hunter_data.prey = null
 		M.hunter_data.hunter = null
 		M.hud_set_hunter()
 
-	set_predator_status(H, gibbed ? "Gibbed" : "Dead")
+	set_predator_status(dead_yautja, gibbed ? "Gibbed" : "Dead")
 
 	// Notify all yautja so they start the gear recovery
-	message_all_yautja("[H.real_name] has died at \the [get_area_name(H)].")
+	message_all_yautja("[dead_yautja.real_name] has died at \the [get_area_name(dead_yautja)].", list(dead_yautja.faction))
 
-	if(H.hunter_data.thrall)
-		var/mob/living/carbon/T = H.hunter_data.thrall
-		message_all_yautja("[H.real_name]'s Thrall, [T.real_name] is now masterless.")
-		H.message_thrall("Your master has fallen!")
-		H.hunter_data.thrall = null
+	if(dead_yautja.hunter_data.thrall)
+		var/mob/living/carbon/T = dead_yautja.hunter_data.thrall
+		message_all_yautja("[dead_yautja.real_name]'s Thrall, [T.real_name] is now masterless.", list(dead_yautja.faction))
+		dead_yautja.message_thrall("Your master has fallen!")
+		dead_yautja.hunter_data.thrall = null
 
 /datum/species/yautja/handle_dead_death(mob/living/carbon/human/predator, gibbed)
 	set_predator_status(predator, gibbed ? "Gibbed" : "Dead")
@@ -164,16 +165,26 @@
 			return FALSE
 	return TRUE
 
-/datum/species/yautja/proc/set_predator_status(mob/living/carbon/human/H, status = "Alive")
-	if(!H.persistent_username)
+/datum/species/yautja/proc/set_predator_status(mob/living/carbon/human/predator, status = "Alive")
+	if(!predator.persistent_username)
 		return
 	var/datum/game_mode/GM
 	if(SSticker?.mode)
 		GM = SSticker.mode
-		if(H.persistent_username in GM.predators)
-			GM.predators[H.persistent_username]["Status"] = status
+		if(predator.persistent_username in GM.yautja_hunters)
+			GM.yautja_hunters[predator.persistent_username]["Status"] = status
+		else if(predator.persistent_username in GM.yautja_youngbloods)
+			GM.yautja_youngbloods[predator.persistent_username]["Status"] = status
+		else if(predator.persistent_username in GM.yautja_badbloods)
+			GM.yautja_badbloods[predator.persistent_username]["Status"] = status
+		else if(predator.faction == FACTION_YAUTJA_YOUNG)
+			GM.yautja_youngbloods[predator.persistent_username] = list("Name" = predator.real_name, "Status" = status)
+		else if(predator.faction == FACTION_YAUTJA_STRANDED)
+			GM.yautja_stranded[predator.persistent_username] = list("Name" = predator.real_name, "Status" = status)
+		else if(predator.faction == FACTION_YAUTJA_BADBLOOD)
+			GM.yautja_badbloods[predator.persistent_username] = list("Name" = predator.real_name, "Status" = status)
 		else
-			GM.predators[H.persistent_username] = list("Name" = H.real_name, "Status" = status)
+			GM.yautja_hunters[predator.persistent_username] = list("Name" = predator.real_name, "Status" = status)
 
 /datum/species/yautja/post_species_loss(mob/living/carbon/human/H)
 	..()

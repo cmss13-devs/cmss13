@@ -722,7 +722,9 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 
 	var/image/holder = hud_list[HUNTER_CLAN]
 	var/new_icon_state = "predhud"
-	if(client?.check_whitelist_status(WHITELIST_YAUTJA_LEADER))
+	if(faction == FACTION_YAUTJA_BADBLOOD)
+		new_icon_state = "badbloodhud"
+	else if(client?.check_whitelist_status(WHITELIST_YAUTJA_LEADER))
 		new_icon_state = "leaderhud"
 	else if(client?.check_whitelist_status(WHITELIST_YAUTJA_COUNCIL))
 		new_icon_state = "councilhud"
@@ -733,7 +735,8 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 		var/datum/entity/clan/player_clan = GET_CLAN(client.clan_info.clan_id)
 		player_clan.sync()
 
-		holder.color = player_clan.color
+		if(!(faction == FACTION_YAUTJA_BADBLOOD))
+			holder.color = player_clan.color
 
 	hud_list[HUNTER_CLAN] = holder
 

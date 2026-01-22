@@ -22,5 +22,8 @@
 /datum/lazy_template/fax_response_base
 	map_name = "fax_responder_base"
 
+/datum/lazy_template/predsurv_base
+	map_name = "predsurv_base"
+
 /datum/lazy_template/ssv_rostock
 	map_name = "ssv_rostock"

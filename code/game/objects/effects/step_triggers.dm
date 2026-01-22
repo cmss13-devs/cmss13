@@ -245,6 +245,28 @@
 	teleport_z = place.z
 	..(young_hunter, 1)
 
+/obj/effect/step_trigger/teleporter/yautja_survivor/Trigger(mob/living/user) // For whitelised preds
+
+	var/mob/living/traveler = user
+
+	if(!istype(traveler))
+		return
+
+	if(!HAS_TRAIT(traveler, TRAIT_YAUTJA_TECH))
+		to_chat(traveler, SPAN_WARNING("You aren't sure how you got here, but you are sure you aren't leaving!"))
+		return
+
+	var/turf/destination
+	if(length(GLOB.yautja_teleports)) //We have some possible locations.
+		var/pick = tgui_input_list(traveler, "Where do you wish to start? You cannot return here, so ensure you have your equipment.", "Locations", GLOB.yautja_teleport_descs) //Pick one of them in the list.)
+		destination = GLOB.yautja_teleport_descs[pick]
+	if(!destination || (traveler.loc != loc))
+		return
+	teleport_x = destination.x //Configure the destination locations.
+	teleport_y = destination.y
+	teleport_z = destination.z
+	..(traveler, 1) //Run the parent proc for teleportation.
+
 /* Random teleporter, teleports atoms to locations ranging from teleport_x - teleport_x_offset, etc */
 
 /obj/effect/step_trigger/teleporter/random

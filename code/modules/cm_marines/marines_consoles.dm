@@ -499,6 +499,19 @@
 		return
 	if(inoperable())
 		return
+	if(ishuman(user) && HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
+		var/mob/living/carbon/human/human_user = user
+		var/obj/item/clothing/gloves/yautja/hunter/bracer = human_user.gloves
+		var/modified = FALSE
+		if(istype(bracer) && bracer.badblood && bracer.embedded_id)
+			for(var/faction_tag in factions)
+				if(!(faction_tag in bracer.embedded_id.faction_group))
+					bracer.embedded_id.faction_group += faction_tag
+					modified = TRUE
+		if(modified)
+			to_chat(user, SPAN_YAUTJABOLD("Your bracer has begun to mimic the human IFF signatures."))
+			return
+
 	user.set_interaction(src)
 	tgui_interact(user)
 
@@ -769,6 +782,7 @@
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 	icon_state = "crew"
 	faction = FACTION_YAUTJA
+	extra_factions = list(FACTION_YAUTJA_YOUNG)
 	crew_monitor_type = /datum/crewmonitor/yautja
 
 /obj/structure/machinery/computer/crew/upp
@@ -789,6 +803,7 @@
 
 /obj/structure/machinery/computer/crew/yautja
 	faction = FACTION_YAUTJA
+	extra_factions = list(FACTION_YAUTJA_YOUNG)
 
 GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 
@@ -1234,6 +1249,18 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				JOB_TWE_REPRESENTATIVE = 201,
 				JOB_COLONEL = 201
 			)
+		if(FACTION_YAUTJA, FACTION_YAUTJA_YOUNG)
+			jobs = list(
+				CLAN_RANK_ADMIN = 00,
+				CLAN_RANK_LEADER = 10,
+				CLAN_RANK_ELDER = 20,
+				CLAN_RANK_ELITE = 30,
+				CLAN_RANK_BLOODED = 40,
+				YAUTJA_YOUNG_NONWL_L = 50,
+				CLAN_RANK_YOUNG = 51,
+				CLAN_RANK_UNBLOODED = 60,
+				JOB_BADBLOOD = 70,
+			)
 		else
 			jobs = list()
 
@@ -1247,8 +1274,10 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 		if(!isyautja(human_mob))
 			continue
 
-		if(faction != human_mob.faction)
+		if((faction != human_mob.faction) && !(human_mob.faction in extra_factions))
 			continue
+
+		var/assignment_title = get_assignment_title(human_mob)
 
 		// Check if z-level is correct
 		var/turf/pos = get_turf(human_mob)
@@ -1260,13 +1289,15 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 			"ref" = REF(human_mob),
 			"name" = human_mob.real_name,
 			"ijob" = UNKNOWN_JOB_ID,
-			"assignment" = "Hunter",
+			"assignment" = assignment_title,
 			"oxydam" = round(human_mob.getOxyLoss(), 1),
 			"toxdam" = round(human_mob.getToxLoss(), 1),
 			"burndam" = round(human_mob.getFireLoss(), 1),
 			"brutedam" = round(human_mob.getBruteLoss(), 1),
 			"can_track" = TRUE,
 		)
+		if(assignment_title in jobs)
+			entry["ijob"] = jobs[assignment_title]
 
 		if(is_mainship_level(pos.z))
 			entry["side"] = "Almayer"
@@ -1281,6 +1312,36 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 	last_update = world.time
 
 	return results
+
+/datum/crewmonitor/yautja/proc/get_assignment_title(mob/living/carbon/human/hunter)
+	var/assignment_title = "Yautja"
+	if(!hunter)
+		return assignment_title
+	var/preset_name = hunter.assigned_equipment_preset?.name
+	if(!preset_name)
+		return assignment_title
+
+	switch(preset_name)
+		if(YAUTJA_ANCIENT)
+			assignment_title = CLAN_RANK_ADMIN
+		if(YAUTJA_LEADER)
+			assignment_title = CLAN_RANK_LEADER
+		if(YAUTJA_ELDER)
+			assignment_title = CLAN_RANK_ELDER
+		if(YAUTJA_ELITE)
+			assignment_title = CLAN_RANK_ELITE
+		if(YAUTJA_BLOODED)
+			assignment_title = CLAN_RANK_BLOODED
+		if(YOUNGBLOOD_ERT_LEADER)
+			assignment_title = YAUTJA_YOUNG_NONWL_L
+		if(YAUTJA_YOUNGBLOOD, YOUNGBLOOD_ERT_MEMBER)
+			assignment_title = CLAN_RANK_YOUNG
+		if(YAUTJA_UNBLOODED)
+			assignment_title = CLAN_RANK_UNBLOODED
+		if(YAUTJA_BADBLOOD)
+			assignment_title = JOB_BADBLOOD
+
+	return assignment_title
 
 #undef SENSOR_LIVING
 #undef SENSOR_VITALS

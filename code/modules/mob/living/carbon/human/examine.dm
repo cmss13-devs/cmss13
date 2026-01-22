@@ -556,7 +556,7 @@
 	if(isyautja(user))
 		var/obj/item/clothing/gloves/yautja/hunter/bracers = gloves
 		if(istype(bracers) && bracers.name_active)
-			. += SPAN_BLUE("Their bracers identifies them as [SPAN_BOLD("[real_name].")]")
+			. += SPAN_BLUE("Their bracers identify them as [SPAN_BOLD("[real_name].")]")
 		. += SPAN_BLUE("[src] has the scent of [life_kills_total] defeated prey.")
 		if(src.hunter_data.hunted)
 			. += SPAN_ORANGE("[src] is being hunted by [src.hunter_data.hunter.real_name].")
@@ -571,6 +571,8 @@
 		else if(src.hunter_data.gear)
 			. += SPAN_RED("[src] was marked as carrying gear by [src.hunter_data.gear_set].")
 
+		if(faction == FACTION_YAUTJA_BADBLOOD)
+			. += SPAN_RED("THEY ARE A BAD BLOOD!")
 
 //Helper procedure. Called by /mob/living/carbon/human/get_examine_text() and /mob/living/carbon/human/Topic() to determine HUD access to security and medical records.
 /proc/hasHUD(mob/passed_mob, hudtype)

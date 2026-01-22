@@ -150,6 +150,12 @@ WARNING!*/
 	else
 		jobs += "<td width='20%'><a href='byond://?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=[ERT_JOB_YOUNGBLOOD];jobban4=\ref[M]'>[ERT_JOB_YOUNGBLOOD]</a></td>"
 
+	//Yautja Survivor
+	if(jobban_isbanned(M, JOB_PRED_SURVIVOR, P) || isbanned_dept)
+		jobs += "<td width='20%'><a href='byond://?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=[JOB_PRED_SURVIVOR];jobban4=\ref[M]'><font color=red>[JOB_PRED_SURVIVOR]</font></a></td>"
+	else
+		jobs += "<td width='20%'><a href='byond://?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=[JOB_PRED_SURVIVOR];jobban4=\ref[M]'>[JOB_PRED_SURVIVOR]</a></td>"
+
 	//Survivor
 	if(jobban_isbanned(M, "Survivor", P) || isbanned_dept)
 		jobs += "<td width='20%'><a href='byond://?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=Survivor;jobban4=\ref[M]'><font color=red>Survivor</font></a></td>"

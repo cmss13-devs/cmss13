@@ -540,6 +540,11 @@
 			groundside_humans++
 			continue
 
+		if(isyautja(current_mob))
+			groundside_humans++
+			groundside_humans++
+			continue
+
 		if(isxeno(current_mob))
 			groundside_xenos++
 			continue

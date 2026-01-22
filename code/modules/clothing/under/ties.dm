@@ -1396,6 +1396,7 @@ Wrist Accessories
 	name = "potato cover"
 	desc = "ahelp if you see this."
 	garbage = TRUE // for all intents and purposes, yes
+	flags_obj = OBJ_IS_HELMET_GARB
 	w_class = SIZE_TINY
 	worn_accessory_slot = ACCESSORY_SLOT_HELM_C
 	worn_accessory_limit = 2 // cover a helmet with a raincover and a netting i guess

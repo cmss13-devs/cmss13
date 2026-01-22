@@ -1,0 +1,5 @@
+author: "Nihisohel"
+delete-after: True
+changes:
+  - rscadd: "You can now attach helmet covers as real accessories, not as a helmet garb, on your helmets"
+  - code_imp: "NOTE: This does not support non-marine parent helmets (E.G. Riot helmet)"

@@ -1,6 +1,6 @@
 
 /obj/structure/machinery/microwave
-	name = "Microwave"
+	name = "microwave"
 	icon = 'icons/obj/structures/machinery/kitchen.dmi'
 	icon_state = "mw"
 	layer = ABOVE_TABLE_LAYER
@@ -97,7 +97,7 @@
 			)
 			if (do_after(user, 2 SECONDS * user.get_skill_duration_multiplier(SKILL_DOMESTIC), INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 				user.visible_message(
-					SPAN_NOTICE("[user]  has cleaned  the microwave."),
+					SPAN_NOTICE("[user] has cleaned the microwave."),
 					SPAN_NOTICE("You have cleaned the microwave.")
 				)
 				dirty = 0 // It's clean!
@@ -118,15 +118,15 @@
 			new O.type (src)
 			S.use(1)
 			user.visible_message(
-				SPAN_NOTICE("[user] has added one of \the [O]s to \the [src]."),
-				SPAN_NOTICE("You add one of \the [O]s to \the [src]."))
+				SPAN_NOTICE("[user] has added one of \the [O] to [src]."),
+				SPAN_NOTICE("You add one of \the [O] to [src]."))
 		else
 		// user.before_take_item(O) //This just causes problems so far as I can tell. -Pete
 			if(user.drop_held_item())
 				O.forceMove(src)
 				user.visible_message(
-					SPAN_NOTICE("[user] has added \the [O] to \the [src]."),
-					SPAN_NOTICE("You add \the [O] to \the [src]. \this"))
+					SPAN_NOTICE("[user] has added \the [O] to [src]."),
+					SPAN_NOTICE("You add \the [O] to \the [src].))
 
 	else if(istype(O,/obj/item/reagent_container/glass) || istype(O,/obj/item/reagent_container/food/drinks) || istype(O,/obj/item/reagent_container/food/condiment)) // TODO: typecache this
 		if (!O.reagents)

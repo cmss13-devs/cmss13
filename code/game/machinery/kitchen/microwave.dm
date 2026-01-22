@@ -126,7 +126,7 @@
 				O.forceMove(src)
 				user.visible_message(
 					SPAN_NOTICE("[user] has added \the [O] to [src]."),
-					SPAN_NOTICE("You add \the [O] to \the [src].))
+					SPAN_NOTICE("You add \the [O] to \the [src]."))
 
 	else if(istype(O,/obj/item/reagent_container/glass) || istype(O,/obj/item/reagent_container/food/drinks) || istype(O,/obj/item/reagent_container/food/condiment)) // TODO: typecache this
 		if (!O.reagents)

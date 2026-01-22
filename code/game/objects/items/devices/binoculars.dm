@@ -639,13 +639,7 @@
 	if(target.z != user.z)
 		return FALSE
 	var/area/targ_area = get_area(targeted_atom)
-	var/is_outside = FALSE
-	switch(targ_area.ceiling)
-		if(CEILING_NONE)
-			is_outside = TRUE
-		if(CEILING_GLASS)
-			is_outside = TRUE
-	if(!is_outside)
+	if(targ_area.ceiling >= CEILING_PROTECTION_TIER_1)
 		to_chat(user, SPAN_WARNING("INVALID TARGET: target must be visible from high altitude."))
 		return
 

@@ -487,7 +487,7 @@
 	SStracking.start_tracking("hive_[src.hivenumber]", src)
 
 	//WO GAMEMODE
-	if(SSticker?.mode?.hardcore)  // WO toggle for evolutions
+	if(SSticker?.mode?.hardcore)
 		hardcore = TRUE
 	time_of_birth = world.time
 

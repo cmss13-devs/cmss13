@@ -118,8 +118,8 @@
 			new O.type (src)
 			S.use(1)
 			user.visible_message(
-				SPAN_NOTICE("[user] has added one of \the [O] to [src]."),
-				SPAN_NOTICE("You add one of \the [O] to [src]."))
+				SPAN_NOTICE("[user] has added one of \the [O]\s to [src]."),
+				SPAN_NOTICE("You add one of \the [O]\s to [src]."))
 		else
 		// user.before_take_item(O) //This just causes problems so far as I can tell. -Pete
 			if(user.drop_held_item())

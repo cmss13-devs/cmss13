@@ -811,6 +811,9 @@
 /turf/open/gm/river/pool
 	name = "pool"
 
+/turf/open/gm/river/pool/no_overlay
+	no_overlay = TRUE
+
 /turf/open/gm/river/shallow_ocean_shallow_ocean
 	name = "shallow ocean"
 	default_name = "shallow ocean"

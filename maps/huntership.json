@@ -1,0 +1,22 @@
+{
+    "map_name": "Hunter Ship",
+    "map_path": "map_files/Hunter_Ship",
+    "map_file": "Hunter_Ship.dmm",
+    "webmap_url": "Huntership",
+    "traits": [
+        {
+            "Background Map": true,
+            "Up": 1
+        },
+        {
+            "Background Map": true,
+            "Up": 1,
+            "Down": -1
+        },
+        {
+            "Background Map": true,
+            "Down": -1
+        }
+    ],
+    "nightmare_path": "maps/Nightmare/maps/Hunter_Ship/"
+}

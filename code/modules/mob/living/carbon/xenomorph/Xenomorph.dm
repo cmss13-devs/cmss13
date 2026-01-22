@@ -426,7 +426,7 @@
 			old_xeno.iff_tag = null
 
 	if(hive)
-		for(var/trait in hive.hive_inherant_traits)
+		for(var/trait in hive.hive_inherited_traits)
 			ADD_TRAIT(src, trait, TRAIT_SOURCE_HIVE)
 
 	//Set caste stuff
@@ -973,7 +973,7 @@
 /mob/living/carbon/xenomorph/get_eye_protection()
 	return EYE_PROTECTION_WELDING
 
-/mob/living/carbon/xenomorph/get_pull_miltiplier()
+/mob/living/carbon/xenomorph/get_pull_multiplier()
 	return pull_multiplier
 
 /mob/living/carbon/xenomorph/proc/set_faction(new_faction = FACTION_XENOMORPH)
@@ -990,7 +990,7 @@
 
 	new_hive.add_xeno(src)
 
-	for(var/trait in new_hive.hive_inherant_traits)
+	for(var/trait in new_hive.hive_inherited_traits)
 		ADD_TRAIT(src, trait, TRAIT_SOURCE_HIVE)
 
 	generate_name()

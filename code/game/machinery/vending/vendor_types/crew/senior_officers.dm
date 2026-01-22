@@ -361,8 +361,8 @@ GLOBAL_LIST_INIT(cm_vending_gear_xo, list(
 		list("Flechette Shells", 20, /obj/item/ammo_magazine/shotgun/flechette, null, VENDOR_ITEM_REGULAR),
 
 		list("SPECIALIZATION KIT (CHOOSE 1)", 0, null, null, null),
-		list("Essential Engineer Set", 0, /obj/effect/essentials_set/engi, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_RECOMMENDED),
-		list("Essential Medical Set", 0, /obj/effect/essentials_set/medic, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_RECOMMENDED),
+		list("Essential Engineer Set", 0, /obj/effect/essentials_set/engi, MARINE_CAN_BUY_SPECIALIZATION, VENDOR_ITEM_RECOMMENDED),
+		list("Essential Medical Set", 0, /obj/effect/essentials_set/medic, MARINE_CAN_BUY_SPECIALIZATION, VENDOR_ITEM_RECOMMENDED),
 
 		list("EXPLOSIVES", 0, null, null, null),
 		list("HEDP Grenade Pack", 15, /obj/item/storage/box/packet/high_explosive, null, VENDOR_ITEM_REGULAR),

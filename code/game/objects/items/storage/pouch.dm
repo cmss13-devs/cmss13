@@ -253,6 +253,10 @@
 	name = "filled first-aid pouch"
 	desc = "A four-pocket pouch that contains a first-aid autoinjector, bandages, ointment, and splints."
 
+/obj/item/storage/pouch/firstaid/full/alternate/wy
+	name = "W-Y first-aid pouch"
+	icon_state = "wy_firstaid"
+
 /obj/item/storage/pouch/firstaid/full/alternate/fill_preset_inventory()
 	new /obj/item/reagent_container/hypospray/autoinjector/tricord(src)
 	new /obj/item/stack/medical/splint(src)
@@ -265,6 +269,10 @@
 /obj/item/storage/pouch/firstaid/full/pills
 	name = "pill bottle first-aid pouch"
 	desc = "A four-pocket pouch that contains a variety of pill packets for treating many injuries."
+
+/obj/item/storage/pouch/firstaid/full/pills/wy
+	name = "W-Y first-aid pouch"
+	icon_state = "wy_firstaid"
 
 /obj/item/storage/pouch/firstaid/full/pills/fill_preset_inventory()
 	new /obj/item/storage/pill_bottle/packet/bicaridine(src)

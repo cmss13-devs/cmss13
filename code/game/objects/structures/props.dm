@@ -391,7 +391,7 @@
 	icon = 'icons/obj/resin_objects.dmi'
 	icon_state = "watertank"
 
-//industructible props
+//indestructible props
 /obj/structure/prop/invuln
 	name = "instanceable object"
 	desc = "This needs to be defined by a coder."
@@ -502,7 +502,7 @@
 
 /obj/structure/prop/brazier/frame/full
 	name = "empty full brazier"
-	desc = "An empty brazier. Yet it's also full. What???  Use something hot to ignite it, like a welding tool."
+	desc = "An empty brazier. Yet it's also full. What??? Use something hot to ignite it, like a welding tool."
 	icon_state = "brazier_frame_filled"
 	frame_type = /obj/structure/prop/brazier
 	state = STATE_IGNITE
@@ -516,7 +516,7 @@
 
 /obj/structure/prop/brazier/frame/full/torch
 	name = "unlit torch"
-	desc = "It's a torch, but it's not lit.  Use something hot to ignite it, like a welding tool."
+	desc = "It's a torch, but it's not lit. Use something hot to ignite it, like a welding tool."
 	icon_state = "torch_frame"
 	frame_type = /obj/structure/prop/brazier/torch
 
@@ -803,7 +803,7 @@
 
 /obj/structure/prop/vehicles/tank/twe
 	name = "\improper FV150 Shobo MKII"
-	desc = "The FV150 Shobo MKII is a Combat Reconnaissance Vehicle Tracked, abbreviated to CVR(T) in official documentation. It was co-developed in 2175 by Weyland-Yutani and Gallar Co., a Titan based heavy vehicle manufacturer. Taking into account lessons learned from the MkI's performance in the Australian Wars, major structual changes were made, and the MKII went into production in 2178. It is armed with a twin 30mm cannon and a L56A2 10x28mm coaxial, complimented by its ammunition stores of 170 rounds of 30mm and 1600 rounds of 10x28mm. The maximum speed of the Shobo is 60 mph, but on a standard deployment after the ammo stores are fully loaded and the terrain is taken into account, it consistently sits at 55mph."
+	desc = "The FV150 Shobo MKII is a Combat Reconnaissance Vehicle Tracked, abbreviated to CVR(T) in official documentation. It was co-developed in 2175 by Weyland-Yutani and Gallar Co., a Titan based heavy vehicle manufacturer. Taking into account lessons learned from the MkI's performance in the Australian Wars, major structural changes were made, and the MKII went into production in 2178. It is armed with a twin 30mm cannon and a L56A2 10x28mm coaxial, complimented by its ammunition stores of 170 rounds of 30mm and 1600 rounds of 10x28mm. The maximum speed of the Shobo is 60 mph, but on a standard deployment after the ammo stores are fully loaded and the terrain is taken into account, it consistently sits at 55mph."
 	icon = 'icons/obj/vehicles/twe_tank.dmi'
 	icon_state = "twe_tank"
 	density = TRUE
@@ -953,7 +953,7 @@
 
 /obj/structure/prop/invuln/fusion_reactor
 	name = "\improper S-52 fusion reactor"
-	desc = "A Westingland S-52 Fusion Reactor.  Takes fuels cells and converts them to power.  Also produces a large amount of heat."
+	desc = "A Westingland S-52 Fusion Reactor. Takes fuels cells and converts them to power. Also produces a large amount of heat."
 	icon = 'icons/obj/structures/machinery/fusion_eng.dmi'
 	icon_state = "off"
 

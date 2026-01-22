@@ -823,7 +823,7 @@
 
 	decloak(wearer, TRUE, DECLOAK_EXTINGUISHER)
 
-/obj/item/clothing/gloves/yautja/hunter/decloak(mob/user, forced, force_multipler = DECLOAK_FORCED)
+/obj/item/clothing/gloves/yautja/hunter/decloak(mob/user, forced, force_multiplier = DECLOAK_FORCED)
 	if(!user)
 		return
 
@@ -833,7 +833,7 @@
 	UnregisterSignal(user, COMSIG_HUMAN_PRE_BULLET_ACT)
 	UnregisterSignal(user, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
 
-	var/decloak_timer = (DECLOAK_STANDARD * force_multipler)
+	var/decloak_timer = (DECLOAK_STANDARD * force_multiplier)
 	if(forced)
 		cloak_malfunction = world.time + decloak_timer
 
@@ -974,7 +974,7 @@
 	if(boomer.stat == DEAD)
 		to_chat(boomer, SPAN_WARNING("Little too late for that now!"))
 		return
-	if(boomer.health < HEALTH_THRESHOLD_CRIT)
+	if(boomer.health < boomer.health_threshold_crit)
 		to_chat(boomer, SPAN_WARNING("As you fall into unconsciousness you fail to activate your self-destruct device before you collapse."))
 		return
 	if(boomer.stat != CONSCIOUS)

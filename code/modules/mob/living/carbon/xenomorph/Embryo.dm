@@ -257,7 +257,7 @@
 		new_xeno = new(affected_mob)
 
 	if(hive)
-		hive.add_xeno(new_xeno)
+		new_xeno.set_hive_and_update(hive.hivenumber)
 		if(!affected_mob.first_xeno && hive.hive_location && !ismonkey(affected_mob))
 			hive.increase_larva_after_burst(is_nested)
 			hive.hive_ui.update_burrowed_larva()
@@ -284,7 +284,7 @@
 		to_chat(new_xeno, "Talk in Hivemind using <strong>;</strong> (e.g. ';My life for the queen!')")
 		playsound_client(new_xeno.client, 'sound/effects/xeno_newlarva.ogg', 25, 1)
 
-	// Inform observers to grab some popcorn if it isnt nested
+	// Inform observers to grab some popcorn if it isn't nested
 	if(!HAS_TRAIT(affected_mob, TRAIT_NESTED))
 		var/area/burst_area = get_area(src)
 		var/area_text = burst_area ? " at <b>[burst_area]</b>" : ""
@@ -337,9 +337,9 @@
 
 	for(var/mob/living/carbon/xenomorph/larva/larva_embryo in victim)
 		var/datum/hive_status/hive = GLOB.hive_datum[larva_embryo.hivenumber]
+		larva_embryo.grant_spawn_protection(1 SECONDS)
 		larva_embryo.forceMove(get_turf(victim)) //moved to the turf directly so we don't get stuck inside a cryopod or another mob container.
 		SEND_SIGNAL(larva_embryo, COMSIG_MOVABLE_Z_CHANGED, 0, (get_turf(victim)).z)
-		larva_embryo.grant_spawn_protection(1 SECONDS)
 		playsound(larva_embryo, pick('sound/voice/alien_chestburst.ogg','sound/voice/alien_chestburst2.ogg'), 25)
 
 		if(larva_embryo.client)

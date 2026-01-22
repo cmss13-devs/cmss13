@@ -43,6 +43,7 @@ type ChemMasterData = {
   };
   buffer?: Reagent[];
   mode: BooleanLike;
+  bottle_autoselect: BooleanLike;
   pill_or_bottle_icon: string;
   pill_icon_choices: number;
   bottle_icon_choices: number;
@@ -250,7 +251,7 @@ export const ChemMaster = () => {
   };
 
   return (
-    <Window width={550} height={600}>
+    <Window width={600} height={600}>
       <Window.Content
         className="ChemMaster"
         onClick={() => setDeletingPreset(null)}
@@ -291,6 +292,17 @@ export const ChemMaster = () => {
                             ? 'Deselect All'
                             : 'Select All'}
                         </Button>
+                        <Button.Checkbox
+                          checked={data.bottle_autoselect}
+                          tooltip={
+                            'If checked, new pill bottles will be autoselected'
+                          }
+                          onClick={() => {
+                            act('bottle_autoselect_toggle');
+                          }}
+                        >
+                          Auto-select
+                        </Button.Checkbox>
                       </Stack.Item>
                     )}
                     <Stack.Item ml={data.pill_bottles.length > 1 ? 1 : 0}>
@@ -1598,6 +1610,8 @@ const Reagents = (props: {
               <ReagentButton amount={1} reagent={reagent} type={type} />
               <ReagentButton amount={5} reagent={reagent} type={type} />
               <ReagentButton amount={10} reagent={reagent} type={type} />
+              <ReagentButton amount={15} reagent={reagent} type={type} />
+              <ReagentButton amount={20} reagent={reagent} type={type} />
               <ReagentButton amount={30} reagent={reagent} type={type} />
               <ReagentButton amount={60} reagent={reagent} type={type} />
               <ReagentButton amount={'All'} reagent={reagent} type={type} />

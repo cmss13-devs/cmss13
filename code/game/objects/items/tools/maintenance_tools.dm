@@ -266,7 +266,6 @@
 
 			limb.heal_damage(15, 0, TRUE)
 			human.pain.recalculate_pain()
-			human.UpdateDamageIcon()
 			user.visible_message(SPAN_WARNING("\The [user] patches some dents on \the [human]'s [limb.display_name] with \the [src]."),
 								SPAN_WARNING("You patch some dents on \the [human]'s [limb.display_name] with \the [src]."))
 			return
@@ -413,7 +412,7 @@
 			if(EYE_PROTECTION_FLAVOR)
 				to_chat(user, SPAN_DANGER("Your eyes sting a little."))
 				E.take_damage(rand(1, 2), TRUE)
-				if(E.damage > 8) // dont abuse your funny flavor glasses
+				if(E.damage > 8) // don't abuse your funny flavor glasses
 					E.take_damage(2, TRUE)
 			if(EYE_PROTECTION_NONE)
 				to_chat(user, SPAN_WARNING("Your eyes burn."))
@@ -738,12 +737,12 @@ Welding backpack
 			return
 		else
 			if(T.reagents.total_volume == T.max_fuel)
-				to_chat(user, SPAN_NOTICE(" \The [src] is already full!"))
+				to_chat(user, SPAN_NOTICE("\The [src] is already full!"))
 				return
 			if(T.welding)
 				to_chat(user, SPAN_DANGER("That was close!"))
 			src.reagents.trans_to(W, T.max_fuel)
-			to_chat(user, SPAN_NOTICE(" Welder refilled!"))
+			to_chat(user, SPAN_NOTICE("Welder refilled!"))
 			playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
 			return
 	if(istype(W, /obj/item/ammo_magazine/flamer_tank))

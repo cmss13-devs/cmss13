@@ -2,7 +2,7 @@
 	///unique to every upgrade. not the name of the item. name of the upgrade
 	var/name = "Upgrade."
 	///name of upgrades, not items. Items are at research_upgrades.dm somewhere in item folder.
-	var/desc = "something is broken. yippee!!"
+	var/desc = "Something is broken. yippee!!"
 	///which behavior should this type follow. Should this be completely excluded from the buy menu? should it be one of the dropdown options? or a normal item?
 	var/behavior = RESEARCH_UPGRADE_EXCLUDE_BUY // should this be on the list?
 	/// the price of the upgrade, refer to this: 500 is a runner, 8k is queen. T3 is usually 3k, woyer is 2k.
@@ -15,9 +15,9 @@
 	var/clearance_req = 5
 	///The change of price for item per purchase, recommended for mass producing stuff or limited upgrade.
 	var/change_purchase = 0
-	///the minimum price which we cant go any cheaper usually dont need to set this if change price is 0 or positive
+	///the minimum price which we can't go any cheaper usually don't need to set this if change price is 0 or positive
 	var/minimum_price = 0
-	///the maximum price which we cant go any more expensive, usually dont need to set this if change price is 0 or negative
+	///the maximum price which we can't go any more expensive, usually don't need to set this if change price is 0 or negative
 	var/maximum_price = INFINITY
 
 ///gets called once the product is purchased, override if you need to pass any special arguments or have special behavior on purchase.
@@ -43,7 +43,7 @@
 	clearance_req = 1
 
 /datum/research_upgrades/machinery/autodoc/internal_bleed/on_purchase(turf/machine_loc)
-	new /obj/item/research_upgrades/autodoc(machine_loc, RESEARCH_UPGRADE_TIER_1)
+	new /obj/item/research_upgrades/autodoc(machine_loc)
 
 /datum/research_upgrades/machinery/autodoc/broken_bone
 	name = "AutoDoc Bone Fracture Repair"
@@ -53,7 +53,7 @@
 	clearance_req = 3
 
 /datum/research_upgrades/machinery/autodoc/broken_bone/on_purchase(turf/machine_loc)
-	new /obj/item/research_upgrades/autodoc(machine_loc, RESEARCH_UPGRADE_TIER_2)
+	new /obj/item/research_upgrades/autodoc/tier2(machine_loc)
 
 /datum/research_upgrades/machinery/autodoc/organ_damage
 	name = "AutoDoc Broken Organ Repair"
@@ -63,7 +63,7 @@
 	clearance_req = 2
 
 /datum/research_upgrades/machinery/autodoc/organ_damage/on_purchase(turf/machine_loc)
-	new /obj/item/research_upgrades/autodoc(machine_loc, RESEARCH_UPGRADE_TIER_3)
+	new /obj/item/research_upgrades/autodoc/tier3(machine_loc)
 
 /datum/research_upgrades/machinery/autodoc/larva_removal
 	name = "AutoDoc Embryo Removal"
@@ -73,7 +73,7 @@
 	clearance_req = 6
 
 /datum/research_upgrades/machinery/autodoc/larva_removal/on_purchase(turf/machine_loc)
-	new /obj/item/research_upgrades/autodoc(machine_loc, RESEARCH_UPGRADE_TIER_4)
+	new /obj/item/research_upgrades/autodoc/tier4(machine_loc)
 
 /datum/research_upgrades/machinery/grinderspeed
 	name = "Reagent-Grinder Upgrade"
@@ -148,7 +148,7 @@
 	upgrade_type = ITEM_ACCESSORY_UPGRADE
 
 /datum/research_upgrades/item/nanosplints/on_purchase(turf/machine_loc)
-	new /obj/item/stack/medical/splint/nano/research(machine_loc, 5)//adjust this to change amount of nanosplints in a stack, cant be higher than five, go change max_amount in the nanosplint itself, then change it.
+	new /obj/item/stack/medical/splint/nano/research(machine_loc, 5)//adjust this to change amount of nanosplints in a stack, can't be higher than five, go change max_amount in the nanosplint itself, then change it.
 
 /datum/research_upgrades/item/flamer_tank
 	name = "Upgraded Incinerator Tank"

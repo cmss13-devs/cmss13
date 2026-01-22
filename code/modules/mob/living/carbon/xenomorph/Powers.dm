@@ -553,7 +553,7 @@
 
 		for(var/mob/living/carbon/xenomorph/X in hive.totalXenos)
 			to_chat(X, SPAN_XENOANNOUNCE("[src.name] has declared: [NM.mark_meaning.desc] in [sanitize_area(current_area_name)]! (<a href='byond://?src=\ref[X];overwatch=1;target=\ref[NM]'>Watch</a>) (<a href='byond://?src=\ref[X];track=1;target=\ref[NM]'>Track</a>)"))
-			//this is killing the tgui chat and I dont know why
+			//this is killing the tgui chat and I don't know why
 	return TRUE
 
 /mob/living/carbon/xenomorph/proc/maybe_convert_to_weedbound(turf/current_turf, datum/resin_construction/resin_construct, thick = FALSE)

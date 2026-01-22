@@ -13,10 +13,10 @@
 /// CDOC, Doctor
 #define PAY_SHORT_CDOC "CDOC"
 
-// CCMOA, Assistant Professor
+/// CCMOA, Assistant Professor
 #define PAY_SHORT_CCMOA "CCMOA"
 
-// CCMOB, Associate Professor
+/// CCMOB, Associate Professor
 #define PAY_SHORT_CCMOB "CCMOB"
 
 /// CCMOC, Professor

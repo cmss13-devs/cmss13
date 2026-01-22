@@ -1,6 +1,6 @@
 #define WO_MAX_WAVE 15
 
-//Global proc for checking if the game is whiskey outpost so I dont need to type if(gamemode == whiskey outpost) 50000 times
+//Global proc for checking if the game is whiskey outpost so I don't need to type if(gamemode == whiskey outpost) 50000 times
 /proc/Check_WO()
 	if(SSticker.mode == GAMEMODE_WHISKEY_OUTPOST || GLOB.master_mode == GAMEMODE_WHISKEY_OUTPOST)
 		return 1
@@ -11,6 +11,7 @@
 	config_tag = GAMEMODE_WHISKEY_OUTPOST
 	required_players = 140
 	xeno_bypass_timer = 1
+	static_comms_amount = 0
 	flags_round_type = MODE_NEW_SPAWN
 	role_mappings = list(
 		/datum/job/command/commander/whiskey = JOB_CO,
@@ -40,11 +41,11 @@
 
 	latejoin_larva_drop = 0 //You never know
 
-	//var/mob/living/carbon/human/Commander //If there is no Commander, marines wont get any supplies
+	//var/mob/living/carbon/human/Commander //If there is no Commander, marines won't get any supplies
 	//No longer relevant to the game mode, since supply drops are getting changed.
 	var/checkwin_counter = 0
 	var/finished = 0
-	var/has_started_timer = 10 //This is a simple timer so we don't accidently check win conditions right in post-game
+	var/has_started_timer = 10 //This is a simple timer so we don't accidentally check win conditions right in post-game
 	var/randomovertime = 0 //This is a simple timer so we can add some random time to the game mode.
 	var/spawn_next_wave = 12 MINUTES //Spawn first batch at ~12 minutes
 	var/last_wave_time = 0 // Stores the time the last wave (wave 15) started
@@ -74,7 +75,7 @@
 	var/list/whiskey_outpost_waves = list()
 
 	hardcore = TRUE
-	starting_round_modifiers = list(/datum/gamemode_modifier/permadeath)
+	starting_round_modifiers = list(/datum/gamemode_modifier/permadeath, /datum/gamemode_modifier/more_crit, /datum/gamemode_modifier/disable_wj_spawns)
 
 	votable = TRUE
 	vote_cycle = 75 // approx. once every 5 days, if it wins the vote
@@ -119,24 +120,24 @@
 	CONFIG_SET(flag/remove_gun_restrictions, TRUE)
 	sleep(10)
 	to_world(SPAN_ROUND_HEADER("The current game mode is - WHISKEY OUTPOST!"))
-	to_world(SPAN_ROUNDBODY("It is the year 2177 on the planet LV-624, five years before the arrival of the USS Almayer and the 2nd 'Falling Falcons' Battalion in the sector"))
-	to_world(SPAN_ROUNDBODY("The 3rd 'Dust Raiders' Battalion is charged with establishing a USCM presence in the Neroid Sector"))
-	to_world(SPAN_ROUNDBODY("[SSmapping.configs[GROUND_MAP].map_name], one of the Dust Raider bases being established in the sector, has come under attack from unrecognized alien forces"))
-	to_world(SPAN_ROUNDBODY("With casualties mounting and supplies running thin, the Dust Raiders at [SSmapping.configs[GROUND_MAP].map_name] must survive for an hour to alert the rest of their battalion in the sector"))
+	to_world(SPAN_ROUNDBODY("It is the year 2177 on the planet LV-624, five years before the arrival of the USS Almayer and the 2nd 'Falling Falcons' Battalion in the sector."))
+	to_world(SPAN_ROUNDBODY("The 3rd 'Dust Raiders' Battalion is charged with establishing a USCM presence in the Neroid Sector."))
+	to_world(SPAN_ROUNDBODY("[SSmapping.configs[GROUND_MAP].map_name], one of the Dust Raider bases being established in the sector, has come under attack from unrecognized alien forces."))
+	to_world(SPAN_ROUNDBODY("With casualties mounting and supplies running thin, the Dust Raiders at [SSmapping.configs[GROUND_MAP].map_name] must survive for an hour to alert the rest of their battalion in the sector."))
 	to_world(SPAN_ROUNDBODY("Hold out for as long as you can."))
 	world << sound('sound/effects/siren.ogg')
 
 	sleep(10)
 	switch(map_locale) //Switching it up.
 		if(0)
-			marine_announcement("This is Captain Hans Naiche, commander of the 3rd Battalion 'Dust Raiders' forces here on LV-624. In our attempts to establish a base on this planet, several of our patrols were wiped out by hostile creatures.  We're setting up a distress call, but we need you to hold [SSmapping.configs[GROUND_MAP].map_name] in order for our engineers to set up the relay. We're prepping several M402 mortar units to provide fire support. If they overrun your positon, we will be wiped out with no way to call for help. Hold the line or we all die.", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
+			marine_announcement("This is Captain Hans Naiche, commander of the 3rd Battalion 'Dust Raiders' forces here on LV-624. In our attempts to establish a base on this planet, several of our patrols were wiped out by hostile creatures. We're setting up a distress call, but we need you to hold [SSmapping.configs[GROUND_MAP].map_name] in order for our engineers to set up the relay. We're prepping several M402 mortar units to provide fire support. If they overrun your position, we will be wiped out with no way to call for help. Hold the line or we all die.", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
 	addtimer(CALLBACK(src, PROC_REF(story_announce), 0), 3 MINUTES)
 	return ..()
 
 /datum/game_mode/whiskey_outpost/proc/story_announce(time)
 	switch(time)
 		if(0)
-			marine_announcement("This is Captain Hans Naiche, Commander of the 3rd Bataillion, 'Dust Raiders' forces on LV-624. As you already know, several of our patrols have gone missing and were likely wiped out by hostile local creatures as we attempted to set up our base.", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
+			marine_announcement("This is Captain Hans Naiche, Commander of the 3rd Battalion, 'Dust Raiders' forces on LV-624. As you already know, several of our patrols have gone missing and were likely wiped out by hostile local creatures as we attempted to set up our base.", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
 		if(1)
 			marine_announcement("Our scouts report increased activity in the area and given our intel, we're already preparing for the worst. We're setting up a comms relay to send out a distress call, but we're going to need time while our engineers get everything ready. All other stations should prepare accordingly and maximize combat readiness, effective immediately.", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
 		if(2)
@@ -158,7 +159,7 @@
 			SSitem_cleanup.delete_almayer()
 
 
-//PROCCESS
+//PROCESS
 /datum/game_mode/whiskey_outpost/process(delta_time)
 	. = ..()
 	checkwin_counter++
@@ -192,11 +193,19 @@
 	var/wave = pick(whiskey_outpost_waves[xeno_wave])
 	spawn_whiskey_outpost_xenos(wave)
 	announce_xeno_wave(wave)
+	announce_dchat("A new xenomorph wave is available, use the Join as Xeno verb to take one of them.")
+	if(xeno_wave == 1)
+		xeno_announcement("It is time, dear Queen. Release the hive!", XENO_HIVE_NORMAL, SPAN_ANNOUNCEMENT_HEADER_BLUE("[QUEEN_MOTHER_ANNOUNCE]"))
 	if(xeno_wave == 7)
 		//Wave when Marines get reinforcements!
 		get_specific_call(/datum/emergency_call/wo, FALSE, TRUE) // "Marine Reinforcements (Squad)"
+	if(xeno_wave == 14)
+		xeno_announcement("We sense that they are sending signals for help, we have little time left. We have granted you vision of all humans in the area, slaughter them all!", XENO_HIVE_NORMAL, SPAN_ANNOUNCEMENT_HEADER_BLUE("[QUEEN_MOTHER_ANNOUNCE]"))
+		var/datum/hive_status/main_hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
+		main_hive.see_humans_on_tacmap = TRUE
+		main_hive.tacmap_requires_queen_ovi = FALSE
+		SEND_SIGNAL(main_hive, COMSIG_XENO_REVEAL_TACMAP)
 	xeno_wave = min(xeno_wave + 1, WO_MAX_WAVE)
-
 
 /datum/game_mode/whiskey_outpost/proc/announce_xeno_wave(datum/whiskey_outpost_wave/wave_data)
 	if(!istype(wave_data))
@@ -500,14 +509,14 @@
 			for(var/path in spawnitems)
 				new path(crate)
 
-//Whiskey Outpost Recycler Machine. Teleports objects to centcomm so it doesnt lag
+//Whiskey Outpost Recycler Machine. Teleports objects to centcomm so it doesn't lag
 /obj/structure/machinery/wo_recycler
 	icon = 'icons/obj/structures/machinery/recycling.dmi'
 	icon_state = "grinder-o0"
 	var/icon_on = "grinder-o1"
 
 	name = "Recycler"
-	desc = "Instructions: Place objects you want to destroy on top of it and use the machine. Use with care"
+	desc = "Instructions: Place objects you want to destroy on top of it and use the machine. Use with care."
 	density = FALSE
 	anchored = TRUE
 	unslashable = TRUE
@@ -536,7 +545,7 @@
 				if(istype(O,/obj/structure/closet/crate))
 					var/obj/structure/closet/crate/C = O
 					if(length(C.contents))
-						to_chat(user, SPAN_DANGER("[O] must be emptied before it can be recycled"))
+						to_chat(user, SPAN_DANGER("[O] must be emptied before it can be recycled."))
 						continue
 					new /obj/item/stack/sheet/metal(get_step(src,dir))
 					O.forceMove(get_turf(locate(84,237,2))) //z.2

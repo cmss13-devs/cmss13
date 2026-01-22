@@ -1391,12 +1391,6 @@
 	},
 /turf/open/desert/dirt/desert_transition_edge1/southeast,
 /area/desert_dam/exterior/valley/bar_valley_dam)
-"AT" = (
-/turf/closed/shuttle/ert/transparent{
-	name = "Fulcrum";
-	icon_state = "T2"
-	},
-/area/desert_dam/building/bar/bar)
 "Bj" = (
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/backroom)
@@ -2009,6 +2003,12 @@
 	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/desert_dam/building/bar/bar)
+"Om" = (
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "T7";
+	name = "Fulcrum"
+	},
+/area/desert_dam/building/bar/bar)
 "Ou" = (
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 8
@@ -2124,6 +2124,12 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
+"QA" = (
+/turf/closed/shuttle/ert/transparent{
+	name = "Fulcrum";
+	icon_state = "T2"
+	},
+/area/desert_dam/building/bar/bar)
 "QG" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/chem_dispenser/soda{
@@ -2610,12 +2616,6 @@
 /obj/structure/machinery/light,
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
-"YS" = (
-/turf/closed/shuttle/ert/transparent{
-	icon_state = "T7";
-	name = "Fulcrum"
-	},
-/area/desert_dam/building/bar/bar)
 "YY" = (
 /obj/structure/shuttle/part/ert/transparent{
 	name = "Fulcrum";
@@ -2787,7 +2787,7 @@ Yq
 aO
 tW
 nz
-YS
+Om
 ai
 Qc
 wy
@@ -2824,7 +2824,7 @@ jt
 Rs
 aj
 HP
-YS
+Om
 QK
 CL
 tM
@@ -2861,8 +2861,8 @@ Xh
 BM
 ds
 HP
-YS
-YS
+Om
+Om
 pO
 kM
 xN
@@ -2907,7 +2907,7 @@ bY
 bY
 bY
 Ul
-AT
+QA
 EO
 zZ
 jm
@@ -3127,15 +3127,15 @@ WK
 zM
 ak
 NK
-YS
-YS
+Om
+Om
 QK
 CL
 tM
 Kf
 Oj
-AT
-AT
+QA
+QA
 EO
 md
 kf
@@ -3166,7 +3166,7 @@ zM
 YA
 So
 NK
-YS
+Om
 pO
 kM
 ah
@@ -3205,7 +3205,7 @@ in
 XF
 aT
 NK
-YS
+Om
 BB
 eU
 Eb

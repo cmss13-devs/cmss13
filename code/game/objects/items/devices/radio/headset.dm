@@ -183,7 +183,7 @@
 			recalculateChannels()
 			to_chat(user, SPAN_NOTICE("You pop out the encryption keys in \the [src]!"))
 		else
-			to_chat(user, SPAN_NOTICE("This headset doesn't have any encryption keys!  How useless..."))
+			to_chat(user, SPAN_NOTICE("This headset doesn't have any encryption keys! How useless..."))
 
 	if(istype(W, /obj/item/device/encryptionkey/))
 		for (var/obj/item/device/encryptionkey/key as anything in keys)

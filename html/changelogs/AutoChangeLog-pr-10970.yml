@@ -1,0 +1,4 @@
+author: "FourkhanDaKhan"
+delete-after: True
+changes:
+  - rscadd: "Re-adds the tacmap popup window."

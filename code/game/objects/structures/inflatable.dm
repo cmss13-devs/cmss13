@@ -18,7 +18,7 @@
 		return
 	if(do_after(user, 0.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD, src))
 		playsound(loc, 'sound/items/zip.ogg', 25, TRUE)
-		to_chat(user, SPAN_NOTICE(" You inflate [src]."))
+		to_chat(user, SPAN_NOTICE("You inflate [src]."))
 		var/obj/structure/inflatable/R = new inflatable_type(usr.loc)
 		src.transfer_fingerprints_to(R)
 		R.add_fingerprint(user)
@@ -259,7 +259,7 @@
 		//src.transfer_fingerprints_to(R)
 		qdel(src)
 	else
-		//to_chat(user, SPAN_NOTICE(" You slowly deflate the inflatable wall."))
+		//to_chat(user, SPAN_NOTICE("You slowly deflate the inflatable wall."))
 		visible_message("[src] slowly deflates.")
 		flick("door_deflating", src)
 		spawn(50)

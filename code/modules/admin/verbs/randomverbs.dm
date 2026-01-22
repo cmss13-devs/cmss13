@@ -36,7 +36,7 @@
 			msg += "[key_name(C, 1, 1, CLIENT_IS_STAFF(src))]: account is [C.player_age] days old<br>"
 
 	if(missing_ages)
-		to_chat(src, "Some accounts did not have proper ages set in their clients.  This function requires database to be present.")
+		to_chat(src, "Some accounts did not have proper ages set in their clients. This function requires database to be present.")
 
 	if(msg != "")
 		show_browser(src, msg, "Check New Players", "Player_age_check")
@@ -112,7 +112,7 @@
 		else
 			usr.invisibility = 70
 			usr.layer = BELOW_MOB_LAYER
-			to_chat(usr, SPAN_WARNING("Your ghost is now invisibile to other ghosts."))
+			to_chat(usr, SPAN_WARNING("Your ghost is now invisible to other ghosts."))
 		log_admin("Admin [key_name(src)] has toggled Ordukai Mode.")
 	else
 		to_chat(usr, SPAN_WARNING("You need to be a ghost in order to use this."))

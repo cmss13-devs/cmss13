@@ -9,7 +9,7 @@
 /area/shuttle/drop1
 	//soundscape_playlist = list('sound/soundscape/drum1.ogg')
 	soundscape_interval = 30 //seconds
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOBURROW
 	is_landing_zone = TRUE
 	ceiling = CEILING_REINFORCED_METAL
 	base_lighting_alpha = 0
@@ -65,7 +65,7 @@
 /area/shuttle/drop2
 	//soundscape_playlist = list('sound/soundscape/drum1.ogg')
 	soundscape_interval = 30 //seconds
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOBURROW
 	is_landing_zone = TRUE
 	ceiling = CEILING_REINFORCED_METAL
 	base_lighting_alpha = 0
@@ -118,7 +118,7 @@
 /area/shuttle/drop3
 	//soundscape_playlist = list('sound/soundscape/drum1.ogg')
 	soundscape_interval = 30 //seconds
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOBURROW
 	is_landing_zone = TRUE
 	ceiling = CEILING_REINFORCED_METAL
 	base_lighting_alpha = 0
@@ -176,7 +176,7 @@
 
 /area/shuttle/drop_upp
 	soundscape_interval = 30 //seconds
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOBURROW
 	is_landing_zone = TRUE
 	ceiling = CEILING_REINFORCED_METAL
 	base_lighting_alpha = 0

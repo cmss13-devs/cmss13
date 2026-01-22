@@ -63,16 +63,16 @@
 		add_pmcs = FALSE
 	UnregisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP)
 
-/obj/structure/machinery/computer/groundside_operations/attack_remote(mob/user as mob)
+/obj/structure/machinery/computer/groundside_operations/attack_remote(mob/user)
 	return attack_hand(user)
 
-/obj/structure/machinery/computer/groundside_operations/attack_hand(mob/user as mob)
+/obj/structure/machinery/computer/groundside_operations/attack_hand(mob/user)
 	if(..() || !allowed(user) || inoperable())
 		return
 
 	ui_interact(user)
 
-/obj/structure/machinery/computer/groundside_operations/ui_interact(mob/user as mob)
+/obj/structure/machinery/computer/groundside_operations/ui_interact(mob/user)
 	user.set_interaction(src)
 
 	var/dat = "<head><title>Groundside Operations Console</title></head><body>"

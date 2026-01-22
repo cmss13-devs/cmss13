@@ -14922,6 +14922,20 @@
 /obj/structure/platform/metal/kutjevo_smooth_immune/east,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/building/medical/stairwell/north)
+"aUZ" = (
+/obj/structure/prop/invuln/rope{
+	pixel_x = -1;
+	pixel_y = 22
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/bar_valley_dam)
+"aVa" = (
+/obj/structure/prop/invuln/rope{
+	pixel_x = 13;
+	pixel_y = 32
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_northwest)
 "aVb" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -22215,6 +22229,10 @@
 /obj/structure/prop/dam/large_boulder/boulder2{
 	pixel_x = -8;
 	density = 0
+	},
+/obj/structure/prop/invuln/rope{
+	pixel_x = -12;
+	pixel_y = 3
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
@@ -51787,9 +51805,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/freezerfloor,
 /area/desert_dam/building/cafeteria/cold_room)
-"muF" = (
-/turf/closed/wall/rock/orange,
-/area/sky/level5)
 "muO" = (
 /turf/open/floor/prison/darkbrowncorners3/east,
 /area/desert_dam/interior/dam_interior/hanger)
@@ -154885,7 +154900,7 @@ jCF
 dzn
 cBg
 qQK
-shB
+aVa
 qsL
 eeH
 hWv
@@ -156629,7 +156644,7 @@ sdg
 gtD
 sdg
 sdg
-uqQ
+aUZ
 uqQ
 epd
 qaR
@@ -287579,7 +287594,7 @@ clp
 clp
 clp
 clp
-asI
+clp
 asI
 asI
 asI
@@ -288999,16 +289014,16 @@ clp
 clp
 clp
 clp
+asI
+asI
+asI
+asI
+asI
+asI
+asI
+asI
 clp
-asI
-asI
-asI
-asI
-asI
-asI
-asI
 clp
-asI
 clp
 clp
 clp
@@ -293465,7 +293480,7 @@ clp
 clp
 clp
 clp
-gil
+asI
 asI
 asI
 asI
@@ -295831,8 +295846,8 @@ clp
 clp
 clp
 clp
-gil
-gil
+asI
+asI
 clp
 clp
 clp
@@ -296064,9 +296079,9 @@ clp
 clp
 clp
 clp
-gil
-gil
-gil
+asI
+asI
+asI
 clp
 clp
 clp
@@ -296298,9 +296313,9 @@ clp
 clp
 clp
 clp
-gil
-gil
-gil
+asI
+asI
+asI
 clp
 clp
 clp
@@ -296532,10 +296547,10 @@ clp
 clp
 clp
 clp
-gil
-gil
-gil
-gil
+asI
+asI
+asI
+asI
 clp
 clp
 clp
@@ -296766,10 +296781,10 @@ clp
 clp
 clp
 clp
-gil
-gil
-gil
-gil
+asI
+asI
+asI
+asI
 clp
 clp
 clp
@@ -297002,8 +297017,8 @@ clp
 clp
 clp
 clp
-gil
-gil
+asI
+asI
 clp
 clp
 clp
@@ -344910,7 +344925,7 @@ ksD
 ksD
 ksD
 ksD
-uWQ
+ksD
 uWQ
 uWQ
 uWQ
@@ -346339,7 +346354,7 @@ uWQ
 uWQ
 uWQ
 ksD
-uWQ
+ksD
 ksD
 ksD
 ksD
@@ -347718,7 +347733,7 @@ uWQ
 uWQ
 uWQ
 uWQ
-muF
+uWQ
 ksD
 ksD
 ksD
@@ -352676,7 +352691,7 @@ ksD
 ksD
 ksD
 ksD
-uWQ
+ksD
 uWQ
 uWQ
 uWQ

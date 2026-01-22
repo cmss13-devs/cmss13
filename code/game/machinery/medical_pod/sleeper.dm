@@ -84,7 +84,7 @@
 /obj/structure/machinery/sleep_console/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "Sleeper", "Sleeper", 550, 775)
+		ui = new(user, src, "Sleeper", "Sleeper", 550, 700)
 		ui.open()
 
 /obj/structure/machinery/sleep_console/ui_state(mob/user)

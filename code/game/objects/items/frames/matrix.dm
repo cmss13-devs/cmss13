@@ -1,6 +1,6 @@
 /obj/item/frame/matrix_frame
 	name = "matrix frame"
-	desc = "An assembly for the dropship camera matrix, installed into the weapons console. Has a complex series of lenses which allow light to pass through the fluid. \nBecause the fluids of the vial are spread evenly inside, it cannot be removed after it has been inserted. "
+	desc = "An assembly for the dropship camera matrix, installed into the weapons console. Has a complex series of lenses which allow light to pass through the fluid. \nBecause the fluids of the vial are spread evenly inside, it cannot be removed after it has been inserted."
 	icon = 'icons/obj/items/devices.dmi'
 	icon_state = "matrix"
 	matter = list("metal" = 7500)
@@ -13,7 +13,7 @@
 //Upgrade types
 //Matrix default - the default dropship camera system you start with
 //Matrix NVG - guidance camera gets NVG filter depending on the potency of the property
-//Matrix wide - gives a wider view which depends on the potency of the proeprty
+//Matrix wide - gives a wider view which depends on the potency of the property
 
 /obj/item/frame/matrix_frame/attackby(obj/item/W, mob/user as mob)
 	switch(state)

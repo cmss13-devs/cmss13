@@ -41,11 +41,11 @@
 /obj/item/clothing/accessory/proc/can_attach_to(mob/user, obj/item/clothing/C)
 	return TRUE
 
-//when user attached an accessory to S
-/obj/item/clothing/accessory/proc/on_attached(obj/item/clothing/S, mob/living/user, silent)
-	if(!istype(S))
+//when user attached an accessory to clothing/clothes
+/obj/item/clothing/accessory/proc/on_attached(obj/item/clothing/clothes, mob/living/user, silent)
+	if(!istype(clothes))
 		return
-	has_suit = S
+	has_suit = clothes
 	forceMove(has_suit)
 	has_suit.overlays += get_inv_overlay()
 
@@ -53,11 +53,24 @@
 		if(!silent)
 			to_chat(user, SPAN_NOTICE("You attach \the [src] to \the [has_suit]."))
 		src.add_fingerprint(user)
+
+	if(ismob(clothes.loc))
+		var/mob/wearer = clothes.loc
+		if(LAZYLEN(actions))
+			for(var/datum/action/action in actions)
+				action.give_to(wearer)
 	return TRUE
 
-/obj/item/clothing/accessory/proc/on_removed(mob/living/user, obj/item/clothing/C)
+/obj/item/clothing/accessory/proc/on_removed(mob/living/user, obj/item/clothing/clothes)
 	if(!has_suit)
 		return
+
+	if(ismob(clothes.loc))
+		var/mob/wearer = clothes.loc
+		if(LAZYLEN(actions))
+			for(var/datum/action/action in actions)
+				action.remove_from(wearer)
+
 	has_suit.overlays -= get_inv_overlay()
 	has_suit = null
 	if(usr)

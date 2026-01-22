@@ -188,3 +188,86 @@
   - bugfix: Contract recipe generation should account for when recipes don't pass
       the occupied recipe check.
   - bugfix: Transmute volume decrease fix, reagent overflow small fix.
+2026-01-21:
+  AnCopper:
+  - qol: Added a "Copy Coordinates" button to the Laser Designator/Binoculars UI
+  Bibby0110:
+  - bugfix: Restore ghost appearance now changes your chat name
+  Ediblebomb:
+  - maptweak: Walkways in the RMC ERT map now line up with the RMC ERT shuttle's doors.
+  FebrezeNinja:
+  - qol: ChemMaster toggle to allow pill bottle auto-selection
+  Nihisohel:
+  - bugfix: You will no longer be able to use the offhand 'item' as a deadly weapon.
+  - bugfix: Items will no longer be inaccessible when attempting to place an item
+      on a limbless slot in the TGUI strip panel
+  - rscadd: Adds the old disposable camera as a 3 point loadout purchase, go out and
+      do some Frank West larp I guess
+  - balance: Changed the size of the old disposable camera from small to tiny.
+  - bugfix: Adds a delay to picture taking as to not lag the server
+  - qol: Pressing Unique-action on polaroid cameras will now switch its focus.
+  - rscdel: Removed the change focus verb for redundancy.
+  Nihisohel, EldritchSack for the sprites:
+  - rscadd: Whistles are now automatically used when an order is being given
+  - rscadd: Additionally, adds a trench whistle, capable of further enhancing leadership
+      orders at the cost of longer cooldown, slowing you down momentarily, and audibly
+      revealing your location
+  - balance: Changed the normal whistle cooldown from 10 seconds to 5 seconds, putting
+      my trust in everyone not to spam this shit
+  - balance: These trench whistles are only available to SLs, COs, and XOs, and remains
+      a vendor choice for the FTLs and SOs
+  PoltavskaPraca:
+  - bugfix: fixed wrong window break message
+  Puckaboo2:
+  - rscadd: You can pour the contents of pill bottles into glass reagent containers.
+  - spellcheck: Fixes some spelling and grammar errors.
+  - refactor: Refactors pill bottle dumping into the ChemMaster.
+  Sergeys:
+  - bugfix: fixed that some items cannot be crafted at low amount of crafting resources.
+  aquariofury:
+  - soundadd: adds two pain sfx that were already in the game files
+  ori-disillusion-mirnov:
+  - bugfix: you cant buckle xenos
+2026-01-22:
+  Bibby0110:
+  - balance: Adds a 10 minute cooldown per-xeno for becoming the "last-stand" xenomorph
+      and getting a full-heal
+  DarkLordCabbage:
+  - balance: increased insulation of tents from 0.4 to 0.7 (enough to stop armorless
+      people from taking cold damage while inside)
+  Drathek:
+  - balance: Direct fire can no longer occur during a fire mission
+  - bugfix: Fixed some dropship weapon error messages
+  - ui: Polished various aspects of the dropship weapon panel
+  JackieEstegado:
+  - balance: Fractures can no longer be gained without taking brute damage or burns/eschar
+      without burn damage.
+  - bugfix: Fixed a case where one could have severe burns that could not be treated.
+  MistChristmas:
+  - spellcheck: Fixed some examine instances not accounting for gender/obscured face.
+  - maptweak: Removed a computer place ontop of the decryption computers. Removed
+      a duplicate Field Doctor Locker. Restored the Privacy button in the ORs.
+  Puckaboo2:
+  - bugfix: Unlit matches, cigs, and closed lighters no longer say they burn your
+      target.
+  cuberound:
+  - bugfix: fixes multiz connecting for lazy loaded maps
+  ori-disillusion-mirnov:
+  - rscadd: added a falling shell effect for OBs and mortars
+  realforest2001:
+  - rscadd: Added the Weyland-Yutani Corporate Bodyguard, the personal protector of
+      the on-board Liaison.
+  - rscadd: Added an armor suit and cap for the bodyguard.
+  - rscadd: Added a WY Security radio channel for use by Bodyguards and Sec Goons.
+      Also added motion sensors for this channel.
+  - rscadd: Added a WY Public radio channel for shared use. Allows division of Corporate
+      secure comms and a more generalised radio channel.
+  - rscdel: Removed WY encryption keys from WY radios, as they have the channel by
+      default already.
+  - rscadd: Added Weyland Yutani security paygrades, and applies them to the relevant
+      presets.
+  - maptweak: Mapping contributed by Syndro101 and LCMS1
+  - maptweak: Re-mapped the Corporate Liaison's Office to fit the Bodyguard. The original
+      office room is now the entryway with the security desk.
+  zzzmike:
+  - bugfix: hijack timer will not reset if second dropship is hijacked

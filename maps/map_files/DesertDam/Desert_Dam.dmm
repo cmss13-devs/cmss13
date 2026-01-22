@@ -14922,16 +14922,6 @@
 /obj/structure/platform/metal/kutjevo_smooth_immune/east,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/building/medical/stairwell/north)
-"aUZ" = (
-/turf/closed/wall/hangar{
-	name = "Elevator Shaft";
-	unacidable = 1;
-	turf_flags = 16
-	},
-/area/desert_dam/interior/dam_interior/elevator_maint)
-"aVa" = (
-/turf/open/floor/plating/warnplate/southwest,
-/area/desert_dam/interior/dam_interior/elevator_maint)
 "aVb" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -20430,10 +20420,6 @@
 	},
 /turf/open/floor/wood,
 /area/desert_dam/building/administration/office)
-"blD" = (
-/obj/structure/machinery/light,
-/turf/open/floor/plating/warnplate,
-/area/desert_dam/interior/dam_interior/elevator_maint)
 "blE" = (
 /obj/effect/hunter/bridge_border/brown{
 	dir = 8
@@ -21750,14 +21736,6 @@
 /obj/structure/platform/metal/kutjevo_smooth_immune/east,
 /turf/open_space,
 /area/desert_dam/exterior/rock)
-"bpl" = (
-/turf/open/floor/plating/warnplate/southeast,
-/area/desert_dam/interior/dam_interior/elevator_maint)
-"bpm" = (
-/turf/closed/wall/r_wall/bunker{
-	name = "reinforced metal wall"
-	},
-/area/desert_dam/interior/dam_interior/elevator_maint)
 "bpn" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -22410,6 +22388,13 @@
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "brl" = (
+/turf/closed/wall/hangar{
+	name = "Elevator Shaft";
+	unacidable = 1;
+	turf_flags = 16
+	},
+/area/desert_dam/interior/dam_interior/elevator_maint)
+"brm" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 8
 	},
@@ -22420,7 +22405,26 @@
 	},
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_crashsite)
-"brm" = (
+"brn" = (
+/turf/open/floor/plating/warnplate/southwest,
+/area/desert_dam/interior/dam_interior/elevator_maint)
+"bro" = (
+/obj/structure/machinery/light,
+/turf/open/floor/plating/warnplate,
+/area/desert_dam/interior/dam_interior/elevator_maint)
+"brp" = (
+/turf/open/floor/plating/warnplate/southeast,
+/area/desert_dam/interior/dam_interior/elevator_maint)
+"brq" = (
+/turf/closed/wall/r_wall/bunker{
+	name = "reinforced metal wall"
+	},
+/area/desert_dam/interior/dam_interior/elevator_maint)
+"brr" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/building/water_treatment_two/lobby)
+"brs" = (
 /obj/structure/largecrate/random/mini/small_case{
 	pixel_x = 9;
 	pixel_y = 10
@@ -22430,34 +22434,6 @@
 	pixel_y = 8
 	},
 /turf/open/asphalt/tile,
-/area/desert_dam/exterior/valley/valley_crashsite)
-"brn" = (
-/obj/structure/inflatable/door,
-/turf/open/floor/interior/plastic,
-/area/desert_dam/exterior/valley/valley_crashsite)
-"bro" = (
-/obj/effect/decal/sand_overlay/sand1{
-	dir = 8
-	},
-/obj/structure/largecrate/supply/supplies/water,
-/turf/open/asphalt/tile,
-/area/desert_dam/exterior/valley/valley_crashsite)
-"brp" = (
-/obj/effect/decal/sand_overlay/sand2,
-/turf/open/floor/plating,
-/area/desert_dam/exterior/valley/valley_crashsite)
-"brq" = (
-/obj/effect/decal/sand_overlay/sand2/corner2{
-	dir = 8
-	},
-/turf/open/asphalt/tile,
-/area/desert_dam/exterior/valley/valley_crashsite)
-"brr" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/building/water_treatment_two/lobby)
-"brs" = (
-/turf/open/floor/interior/plastic,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "brt" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
@@ -22475,74 +22451,59 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "brw" = (
-/obj/structure/largecrate/supply/generator,
+/obj/structure/inflatable/door,
 /turf/open/floor/interior/plastic,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "brx" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 8
 	},
-/obj/structure/closet/crate/science,
-/obj/item/storage/toolbox/mechanical,
+/obj/structure/largecrate/supply/supplies/water,
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bry" = (
-/obj/structure/machinery/power/power_generator/port_gen/pacman,
-/turf/open/floor/plating,
-/area/desert_dam/exterior/valley/valley_crashsite)
+/turf/open/floor/plating/warnplate/west,
+/area/desert_dam/interior/dam_interior/elevator_maint)
 "brz" = (
-/obj/structure/surface/table,
-/obj/item/tool/wirecutters/yautja,
-/turf/open/floor/interior/plastic,
-/area/desert_dam/exterior/valley/valley_crashsite)
+/obj/structure/ladder/multiz,
+/obj/effect/stairs/up,
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/elevator_maint)
 "brA" = (
-/obj/item/clipboard{
-	pixel_x = 2;
-	pixel_y = -3
-	},
-/turf/open/floor/interior/plastic,
-/area/desert_dam/exterior/valley/valley_crashsite)
+/turf/open/floor/plating/warnplate/east,
+/area/desert_dam/interior/dam_interior/elevator_maint)
 "brB" = (
-/obj/structure/inflatable,
-/obj/effect/decal/sand_overlay/sand1{
+/obj/structure/machinery/door/airlock/almayer/maint/colony,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/sand_overlay/sand2{
 	dir = 8
 	},
-/turf/open/floor/interior/plastic,
-/area/desert_dam/exterior/valley/valley_crashsite)
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/elevator_maint)
 "brC" = (
-/obj/structure/machinery/power/apc/no_power/west,
+/obj/effect/decal/sand_overlay/sand2,
 /turf/open/floor/plating,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "brD" = (
-/obj/structure/surface/table,
-/obj/item/stack/yautja_rope{
-	pixel_x = -4;
-	pixel_y = -3
-	},
-/obj/item/reagent_container/dropper{
-	pixel_x = 1;
-	pixel_y = 9
-	},
-/turf/open/floor/interior/plastic,
-/area/desert_dam/exterior/valley/valley_crashsite)
-"brE" = (
-/obj/structure/bed/chair{
+/obj/effect/decal/sand_overlay/sand2/corner2{
 	dir = 8
 	},
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"brE" = (
 /turf/open/floor/interior/plastic,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "brF" = (
-/obj/structure/bed/chair{
-	dir = 4
-	},
+/obj/structure/largecrate/supply/generator,
 /turf/open/floor/interior/plastic,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "brG" = (
-/obj/structure/surface/table,
-/obj/structure/machinery/microwave/yautja{
-	pixel_y = 7
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
 	},
-/turf/open/floor/interior/plastic,
+/obj/structure/closet/crate/science,
+/obj/item/storage/toolbox/mechanical,
+/turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "brH" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo,
@@ -22560,17 +22521,13 @@
 /turf/open/asphalt,
 /area/desert_dam/building/cafeteria/loading)
 "brJ" = (
-/obj/structure/inflatable,
-/obj/effect/decal/sand_overlay/sand2/corner2{
-	dir = 1
-	},
-/turf/open/floor/interior/plastic,
-/area/desert_dam/exterior/valley/valley_crashsite)
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/warnplate/northwest,
+/area/desert_dam/interior/dam_interior/elevator_maint)
 "brK" = (
-/obj/structure/surface/rack,
-/obj/item/tool/minihoe/yautja,
-/turf/open/floor/interior/plastic,
-/area/desert_dam/exterior/valley/valley_crashsite)
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/warnplate/north,
+/area/desert_dam/interior/dam_interior/elevator_maint)
 "brL" = (
 /obj/structure/window/framed/hangar,
 /turf/open/floor/plating,
@@ -22582,20 +22539,103 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_labs)
 "brN" = (
+/turf/open/floor/plating/warnplate/northeast,
+/area/desert_dam/interior/dam_interior/elevator_maint)
+"brO" = (
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
+/turf/open/floor/plating,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"brP" = (
+/obj/structure/surface/table,
+/obj/item/tool/wirecutters/yautja,
+/turf/open/floor/interior/plastic,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"brQ" = (
+/obj/item/clipboard{
+	pixel_x = 2;
+	pixel_y = -3
+	},
+/turf/open/floor/interior/plastic,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"brR" = (
+/obj/structure/inflatable,
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/turf/open/floor/interior/plastic,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"brS" = (
+/obj/structure/machinery/power/apc/no_power/west,
+/turf/open/floor/plating,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"brT" = (
+/obj/structure/surface/table,
+/obj/item/stack/yautja_rope{
+	pixel_x = -4;
+	pixel_y = -3
+	},
+/obj/item/reagent_container/dropper{
+	pixel_x = 1;
+	pixel_y = 9
+	},
+/turf/open/floor/interior/plastic,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"brU" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/open/floor/interior/plastic,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"brV" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 5
+	},
+/turf/open/asphalt/cement_sunbleached,
+/area/desert_dam/exterior/valley/valley_labs)
+"brW" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor/interior/plastic,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"brX" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/microwave/yautja{
+	pixel_y = 7
+	},
+/turf/open/floor/interior/plastic,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"brY" = (
+/obj/effect/decal/sand_overlay/sand2/corner2,
+/turf/open/asphalt/cement,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"brZ" = (
+/obj/structure/inflatable,
+/obj/effect/decal/sand_overlay/sand2/corner2{
+	dir = 1
+	},
+/turf/open/floor/interior/plastic,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"bsa" = (
+/obj/structure/surface/rack,
+/obj/item/tool/minihoe/yautja,
+/turf/open/floor/interior/plastic,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"bsb" = (
 /obj/structure/largecrate/random/mini/small_case/b{
 	pixel_x = -7;
 	pixel_y = 13
 	},
 /turf/open/floor/interior/plastic,
 /area/desert_dam/exterior/valley/valley_crashsite)
-"brO" = (
+"bsc" = (
 /obj/item/tool/pen/clicky{
 	pixel_x = 6;
 	pixel_y = -2
 	},
 /turf/open/floor/interior/plastic,
 /area/desert_dam/exterior/valley/valley_crashsite)
-"brP" = (
+"bsd" = (
 /obj/structure/surface/table,
 /obj/item/stack/cable_coil/cyan{
 	pixel_x = -2;
@@ -22607,66 +22647,78 @@
 	},
 /turf/open/floor/interior/plastic,
 /area/desert_dam/exterior/valley/valley_crashsite)
-"brQ" = (
+"bse" = (
+/obj/structure/machinery/light,
+/obj/structure/machinery/power/apc/no_power/east,
+/obj/structure/surface/rack,
+/obj/effect/landmark/crap_item,
+/turf/open/floor/prison,
+/area/desert_dam/building/water_treatment_two/control_room)
+"bsf" = (
 /obj/structure/reagent_dispensers/tank/water/yautja,
 /turf/open/floor/interior/plastic,
 /area/desert_dam/exterior/valley/valley_crashsite)
-"brR" = (
+"bsg" = (
 /obj/structure/prop/server_equipment/laptop/on{
 	pixel_y = -2
 	},
 /obj/structure/surface/table,
 /turf/open/floor/interior/plastic,
 /area/desert_dam/exterior/valley/valley_crashsite)
-"brS" = (
+"bsh" = (
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 9
 	},
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_crashsite)
-"brT" = (
+"bsi" = (
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 1
 	},
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_crashsite)
-"brU" = (
+"bsj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 1
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"bsk" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 5
 	},
 /obj/structure/machinery/colony_floodlight,
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_crashsite)
-"brV" = (
-/obj/effect/decal/sand_overlay/sand1{
-	dir = 5
-	},
-/turf/open/asphalt/cement_sunbleached,
-/area/desert_dam/exterior/valley/valley_labs)
-"brW" = (
+"bsl" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"bsm" = (
 /obj/structure/platform/metal/kutjevo_smooth_immune/east,
 /obj/structure/platform/metal/kutjevo_smooth_immune/west,
 /obj/effect/stairs/down,
 /turf/open_space,
 /area/desert_dam/building/warehouse/office)
-"brX" = (
+"bsn" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/cell_stripe/north,
+/area/desert_dam/building/warehouse/warehouse)
+"bso" = (
 /obj/structure/platform/metal/kutjevo_smooth_immune/east,
 /obj/effect/stairs/down,
 /turf/open_space,
 /area/desert_dam/building/water_treatment_one/overlook)
-"brY" = (
-/obj/effect/decal/sand_overlay/sand2/corner2,
-/turf/open/asphalt/cement,
-/area/desert_dam/exterior/valley/valley_wilderness)
-"brZ" = (
+"bsp" = (
 /obj/structure/platform/metal/kutjevo_smooth_immune,
 /obj/effect/stairs/down,
 /turf/open_space,
 /area/desert_dam/building/medical/stairwell/upper)
-"bsa" = (
+"bsq" = (
 /turf/closed/wall/prison,
 /area/desert_dam/building/security/maint/east)
-"bsb" = (
+"bsr" = (
 /obj/item/explosive/plastic/hybrisa/mining{
 	name = "large mining charge";
 	icon_state = "custom_plastic_explosive_locked";
@@ -22679,32 +22731,25 @@
 	},
 /turf/open/desert/dirt/desert_transition_edge1/west,
 /area/desert_dam/exterior/valley/bar_valley_dam)
-"bsc" = (
+"bss" = (
 /obj/structure/prop/dam/wide_boulder/boulder1,
 /turf/open/desert/rock,
 /area/desert_dam/exterior/valley/bar_valley_dam)
-"bse" = (
-/obj/structure/machinery/light,
-/obj/structure/machinery/power/apc/no_power/east,
-/obj/structure/surface/rack,
-/obj/effect/landmark/crap_item,
-/turf/open/floor/prison,
-/area/desert_dam/building/water_treatment_two/control_room)
-"bsf" = (
+"bst" = (
 /obj/structure/cable/white{
 	icon_state = "1-2";
 	level = 2
 	},
 /turf/open/desert/dirt/desert_transition_edge1/northwest,
 /area/desert_dam/exterior/valley/bar_valley_dam)
-"bsh" = (
+"bsu" = (
 /obj/structure/prop/colorable_rock/colorable/alt{
 	dir = 4;
 	color = "#da822a"
 	},
 /turf/open/desert/dirt/desert_transition_edge1/northeast,
 /area/desert_dam/exterior/valley/bar_valley_dam)
-"bsi" = (
+"bsv" = (
 /obj/item/explosive/plastic/hybrisa/mining{
 	name = "large mining charge";
 	icon_state = "custom_plastic_explosive_locked";
@@ -22721,14 +22766,15 @@
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
-"bsj" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/sand_overlay/sand2{
-	dir = 1
+"bsw" = (
+/obj/structure/machinery/power/apc/no_power/north,
+/obj/structure/largecrate/random/mini{
+	pixel_x = 13;
+	pixel_y = 5
 	},
-/turf/open/asphalt,
-/area/desert_dam/exterior/valley/valley_wilderness)
-"bsk" = (
+/turf/open/floor/prison,
+/area/desert_dam/building/water_treatment_one/garage)
+"bsx" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#da822a";
 	pixel_y = -1;
@@ -22740,11 +22786,7 @@
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
-"bsl" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt,
-/area/desert_dam/exterior/valley/valley_wilderness)
-"bsm" = (
+"bsy" = (
 /obj/item/tool/pickaxe/drill{
 	pixel_x = -4;
 	pixel_y = -7
@@ -22755,17 +22797,13 @@
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
-"bsn" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/cell_stripe/north,
-/area/desert_dam/building/warehouse/warehouse)
-"bso" = (
+"bsz" = (
 /obj/item/tool/pickaxe{
 	pixel_y = -8
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
-"bsp" = (
+"bsA" = (
 /obj/structure/closet/crate/explosives,
 /obj/item/explosive/plastic{
 	pixel_x = 5
@@ -22776,7 +22814,7 @@
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
-"bsq" = (
+"bsB" = (
 /obj/item/explosive/plastic/hybrisa/mining{
 	name = "large mining charge";
 	icon_state = "custom_plastic_explosive_locked";
@@ -22788,7 +22826,7 @@
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
-"bsr" = (
+"bsC" = (
 /obj/structure/cable/white{
 	icon_state = "1-10";
 	level = 2
@@ -22799,83 +22837,10 @@
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
-"bss" = (
+"bsD" = (
 /obj/structure/cable/white{
 	icon_state = "2-10";
 	level = 2
-	},
-/turf/open/desert/dirt,
-/area/desert_dam/exterior/valley/bar_valley_dam)
-"bst" = (
-/obj/item/weapon/gun/pistol/holdout{
-	pixel_x = -2;
-	pixel_y = 4
-	},
-/turf/open/desert/dirt,
-/area/desert_dam/exterior/valley/bar_valley_dam)
-"bsu" = (
-/obj/item/restraint/handcuffs,
-/turf/open/desert/dirt,
-/area/desert_dam/exterior/valley/bar_valley_dam)
-"bsv" = (
-/obj/structure/prop/colorable_rock/colorable/alt{
-	color = "#da822a";
-	dir = 8
-	},
-/turf/open/desert/dirt,
-/area/desert_dam/exterior/valley/bar_valley_dam)
-"bsw" = (
-/obj/structure/machinery/power/apc/no_power/north,
-/obj/structure/largecrate/random/mini{
-	pixel_x = 13;
-	pixel_y = 5
-	},
-/turf/open/floor/prison,
-/area/desert_dam/building/water_treatment_one/garage)
-"bsy" = (
-/obj/structure/cable/white{
-	icon_state = "1-10";
-	level = 2
-	},
-/obj/structure/cable/white{
-	icon_state = "1-2";
-	level = 2
-	},
-/turf/open/desert/dirt,
-/area/desert_dam/exterior/valley/bar_valley_dam)
-"bsz" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/turf/open/desert/dirt,
-/area/desert_dam/exterior/valley/bar_valley_dam)
-"bsA" = (
-/obj/item/ammo_casing/bullet,
-/turf/open/desert/dirt,
-/area/desert_dam/exterior/valley/bar_valley_dam)
-"bsB" = (
-/obj/structure/prop/dam/large_boulder/boulder2{
-	pixel_x = -15;
-	density = 0;
-	pixel_y = -5
-	},
-/obj/structure/stairs/multiz/down{
-	dir = 8;
-	alpha = 0
-	},
-/turf/open/desert/dirt,
-/area/desert_dam/exterior/valley/bar_valley_dam)
-"bsC" = (
-/obj/structure/platform/stone/kutjevo_colorable_immune{
-	color = "#724119"
-	},
-/turf/open_space,
-/area/sky)
-"bsD" = (
-/obj/structure/prop/colorable_rock/colorable{
-	color = "#da822a";
-	pixel_y = -1;
-	dir = 10
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
@@ -22889,16 +22854,91 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_security)
 "bsF" = (
+/obj/item/weapon/gun/pistol/holdout{
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/bar_valley_dam)
+"bsG" = (
+/obj/item/restraint/handcuffs,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/bar_valley_dam)
+"bsH" = (
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#da822a";
+	dir = 8
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/bar_valley_dam)
+"bsI" = (
+/obj/structure/cable/white{
+	icon_state = "1-10";
+	level = 2
+	},
+/obj/structure/cable/white{
+	icon_state = "1-2";
+	level = 2
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/bar_valley_dam)
+"bsJ" = (
+/obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
-"bsG" = (
+"bsK" = (
+/obj/effect/decal/medical_decals{
+	dir = 4;
+	icon_state = "triagedecaldir"
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/medical/helipad_triage)
+"bsL" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/bar_valley_dam)
+"bsM" = (
+/obj/structure/prop/dam/large_boulder/boulder2{
+	pixel_x = -15;
+	density = 0;
+	pixel_y = -5
+	},
+/obj/structure/stairs/multiz/down{
+	dir = 8;
+	alpha = 0
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/bar_valley_dam)
+"bsN" = (
+/obj/structure/platform/stone/kutjevo_colorable_immune{
+	color = "#724119"
+	},
+/turf/open_space,
+/area/sky)
+"bsO" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 10
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/bar_valley_dam)
+"bsP" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/bar_valley_dam)
+"bsQ" = (
 /obj/effect/landmark/corpsespawner/miner,
 /obj/effect/decal/cleanable/blood,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
-"bsH" = (
+"bsR" = (
 /obj/item/map/desert_dam,
 /obj/structure/prop/dam/wide_boulder/boulder1{
 	pixel_x = 8;
@@ -22911,27 +22951,21 @@
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
-"bsI" = (
+"bsS" = (
 /obj/structure/stairs/multiz/down{
 	dir = 8
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
-"bsJ" = (
+"bsT" = (
 /obj/effect/stairs/down,
 /turf/open_space,
 /area/sky)
-"bsK" = (
-/obj/effect/decal/medical_decals{
-	dir = 4;
-	icon_state = "triagedecaldir"
-	},
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor/prison/sterile_white/west,
-/area/desert_dam/building/medical/helipad_triage)
-"bsL" = (
+"bsU" = (
+/obj/effect/decal/sand_overlay/sand1,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
+/area/desert_dam/exterior/valley/valley_civilian)
+"bsV" = (
 /obj/item/explosive/plastic/hybrisa/mining{
 	name = "large mining charge";
 	icon_state = "custom_plastic_explosive_locked";
@@ -22943,14 +22977,21 @@
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
-"bsM" = (
+"bsW" = (
 /obj/structure/cable/white{
 	icon_state = "4-8";
 	level = 2
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
-"bsN" = (
+"bsX" = (
+/obj/structure/window/framed/bunker/reinforced,
+/turf/open/floor/plating,
+/area/desert_dam/interior/lab_northeast/east_lab_west_entrance)
+"bsY" = (
+/turf/closed/wall/r_wall/bunker,
+/area/desert_dam/interior/dam_interior/office)
+"bsZ" = (
 /obj/item/device/flashlight/lantern/on{
 	pixel_x = -6;
 	pixel_y = 3
@@ -22964,7 +23005,7 @@
 	},
 /turf/open/desert/dirt/desert_transition_edge1/southwest,
 /area/desert_dam/exterior/valley/bar_valley_dam)
-"bsO" = (
+"bta" = (
 /obj/item/tool/pickaxe{
 	pixel_x = -4;
 	pixel_y = 11
@@ -22975,7 +23016,7 @@
 	},
 /turf/open/desert/dirt/desert_transition_edge1,
 /area/desert_dam/exterior/valley/bar_valley_dam)
-"bsP" = (
+"btb" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gibleg";
 	pixel_x = -8;
@@ -22987,7 +23028,11 @@
 	},
 /turf/open/desert/dirt/desert_transition_edge1,
 /area/desert_dam/exterior/valley/bar_valley_dam)
-"bsQ" = (
+"btc" = (
+/obj/structure/filtration/collector_pipes,
+/turf/open/floor/filtrationside/west,
+/area/desert_dam/exterior/valley/valley_hydro)
+"btd" = (
 /obj/item/explosive/grenade/flashbang,
 /obj/structure/cable/white{
 	icon_state = "1-9";
@@ -22995,7 +23040,7 @@
 	},
 /turf/open/desert/dirt/desert_transition_edge1/southeast,
 /area/desert_dam/exterior/valley/bar_valley_dam)
-"bsR" = (
+"bte" = (
 /obj/structure/stairs/multiz/down{
 	dir = 8
 	},
@@ -23006,41 +23051,33 @@
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
-"bsS" = (
+"btf" = (
 /obj/structure/platform/stone/kutjevo_colorable_immune/north{
 	color = "#724119"
 	},
 /turf/open_space,
 /area/sky)
-"bsT" = (
+"btg" = (
+/turf/open/floor/prison/darkbrowncorners2/southwest,
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
+"bth" = (
 /obj/structure/platform_decoration/stone/kutjevo_colorable_immune/east{
 	color = "#724119"
 	},
 /turf/open_space,
 /area/sky)
-"bsU" = (
-/obj/effect/decal/sand_overlay/sand1,
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
-/area/desert_dam/exterior/valley/valley_civilian)
-"bsV" = (
+"bti" = (
 /obj/structure/prop/dam/wide_boulder/boulder1,
 /turf/open/desert/dirt/desert_transition_edge1/west,
 /area/desert_dam/exterior/valley/bar_valley_dam)
-"bsW" = (
+"btj" = (
 /obj/structure/cable/white{
 	icon_state = "2-6";
 	level = 2
 	},
 /turf/open/desert/rock,
 /area/desert_dam/exterior/valley/bar_valley_dam)
-"bsX" = (
-/obj/structure/window/framed/bunker/reinforced,
-/turf/open/floor/plating,
-/area/desert_dam/interior/lab_northeast/east_lab_west_entrance)
-"bsY" = (
-/turf/closed/wall/r_wall/bunker,
-/area/desert_dam/interior/dam_interior/office)
-"bsZ" = (
+"btk" = (
 /obj/item/weapon/gun/pistol/holdout{
 	pixel_x = -2;
 	pixel_y = -5
@@ -23051,7 +23088,7 @@
 	},
 /turf/open/desert/dirt/desert_transition_edge1/east,
 /area/desert_dam/exterior/valley/bar_valley_dam)
-"bta" = (
+"btl" = (
 /obj/structure/prop/hybrisa/misc/detonator{
 	pixel_y = 7
 	},
@@ -23060,103 +23097,66 @@
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
-"btb" = (
+"btm" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 9
 	},
 /turf/open/floor/almayer_hull/outerhull_dir,
 /area/desert_dam/exterior/roof)
-"btc" = (
-/obj/structure/filtration/collector_pipes,
-/turf/open/floor/filtrationside/west,
-/area/desert_dam/exterior/valley/valley_hydro)
-"btd" = (
+"btn" = (
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 1
 	},
 /turf/open/floor/almayer_hull/outerhull_dir,
 /area/desert_dam/exterior/roof)
-"bte" = (
+"bto" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
 	},
 /turf/open/floor/almayer_hull,
 /area/desert_dam/exterior/roof)
-"btf" = (
+"btp" = (
 /obj/structure/prop/colorable_rock/colorable/alt{
 	color = "#da822a";
 	dir = 4
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
-"btg" = (
-/turf/open/floor/prison/darkbrowncorners2/southwest,
-/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
-"bth" = (
+"btq" = (
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 8
 	},
 /turf/open/floor/almayer_hull,
 /area/desert_dam/exterior/roof)
-"bti" = (
-/obj/structure/platform/metal/kutjevo_smooth_immune,
-/obj/effect/stairs/down,
-/turf/open_space,
-/area/desert_dam/building/water_treatment_two/overlook)
-"btj" = (
-/obj/structure/platform/metal/kutjevo_smooth_immune/west,
-/obj/effect/stairs/down,
-/turf/open_space,
-/area/desert_dam/building/medical/stairwell/upper_north)
-"btk" = (
-/turf/open/floor/plating/warnplate/west,
-/area/desert_dam/interior/dam_interior/elevator_maint)
-"btl" = (
-/obj/structure/ladder/multiz,
-/obj/effect/stairs/up,
-/turf/open/floor/plating,
-/area/desert_dam/interior/dam_interior/elevator_maint)
-"btm" = (
-/turf/open/floor/plating/warnplate/east,
-/area/desert_dam/interior/dam_interior/elevator_maint)
-"btn" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/sand_overlay/sand2{
-	dir = 8
-	},
-/turf/open/floor/plating,
-/area/desert_dam/interior/dam_interior/elevator_maint)
-"bto" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/warnplate/northwest,
-/area/desert_dam/interior/dam_interior/elevator_maint)
-"btp" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/warnplate/north,
-/area/desert_dam/interior/dam_interior/elevator_maint)
-"btq" = (
-/turf/open/floor/plating/warnplate/northeast,
-/area/desert_dam/interior/dam_interior/elevator_maint)
 "btr" = (
 /turf/open/floor/coagulation/icon8_3,
 /area/desert_dam/exterior/valley/valley_hydro)
 "bts" = (
+/obj/structure/platform/metal/kutjevo_smooth_immune,
+/obj/effect/stairs/down,
+/turf/open_space,
+/area/desert_dam/building/water_treatment_two/overlook)
+"btt" = (
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
+/obj/effect/stairs/down,
+/turf/open_space,
+/area/desert_dam/building/medical/stairwell/upper_north)
+"btu" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
 	},
 /turf/open/floor/almayer_hull/outerhull_dir/north,
 /area/desert_dam/exterior/roof)
-"btt" = (
+"btv" = (
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 1
 	},
 /turf/open/floor/almayer_hull/outerhull_dir/north,
 /area/desert_dam/exterior/roof)
-"btu" = (
+"btw" = (
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/roof)
-"btv" = (
+"btx" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#da822a";
 	pixel_y = -1;
@@ -23164,14 +23164,8 @@
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/roof)
-"btw" = (
-/turf/open/desert/dirt/desert_transition_edge1/southwest,
-/area/desert_dam/exterior/roof)
-"btx" = (
-/turf/open/desert/dirt/desert_transition_edge1,
-/area/desert_dam/exterior/roof)
 "bty" = (
-/turf/open/desert/dirt/desert_transition_edge1/west,
+/turf/open/desert/dirt/desert_transition_edge1/southwest,
 /area/desert_dam/exterior/roof)
 "btz" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -23180,14 +23174,10 @@
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_medical)
 "btA" = (
-/turf/open/desert/rock,
+/turf/open/desert/dirt/desert_transition_edge1,
 /area/desert_dam/exterior/roof)
 "btB" = (
-/obj/structure/prop/colorable_rock/colorable/alt{
-	dir = 4;
-	color = "#da822a"
-	},
-/turf/open/desert/rock,
+/turf/open/desert/dirt/desert_transition_edge1/west,
 /area/desert_dam/exterior/roof)
 "btC" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -23203,21 +23193,17 @@
 /turf/open/desert/dirt,
 /area/desert_dam/interior/caves/central_caves)
 "btE" = (
-/turf/open/desert/dirt/desert_transition_edge1/northwest,
+/turf/open/desert/rock,
 /area/desert_dam/exterior/roof)
 "btF" = (
-/obj/structure/prop/colorable_rock/colorable{
-	color = "#da822a";
-	pixel_y = -1;
-	dir = 4
+/obj/structure/prop/colorable_rock/colorable/alt{
+	dir = 4;
+	color = "#da822a"
 	},
-/turf/open/desert/dirt,
+/turf/open/desert/rock,
 /area/desert_dam/exterior/roof)
 "btG" = (
-/obj/effect/decal/sand_overlay/sand1{
-	dir = 10
-	},
-/turf/open/floor/plating,
+/turf/open/desert/dirt/desert_transition_edge1/northwest,
 /area/desert_dam/exterior/roof)
 "btH" = (
 /obj/structure/machinery/light,
@@ -23228,11 +23214,25 @@
 /turf/open/floor/prison/whitegreen/north,
 /area/desert_dam/building/medical/outgoing)
 "btJ" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 4
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/roof)
+"btK" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 10
+	},
+/turf/open/floor/plating,
+/area/desert_dam/exterior/roof)
+"btL" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light,
 /turf/open/floor/plating/warnplate,
 /area/desert_dam/interior/dam_interior/elevator_maint)
-"btK" = (
+"btM" = (
 /obj/structure/largecrate/random/case{
 	pixel_x = -1;
 	pixel_y = 7
@@ -23243,7 +23243,7 @@
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/roof)
-"btL" = (
+"btN" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
 	},
@@ -23257,15 +23257,6 @@
 	},
 /turf/open/floor/plating,
 /area/desert_dam/exterior/roof)
-"btM" = (
-/obj/structure/ladder/multiz,
-/obj/effect/stairs/down,
-/turf/open/floor/plating,
-/area/desert_dam/interior/dam_interior/elevator_maint)
-"btN" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/warnplate/east,
-/area/desert_dam/interior/dam_interior/elevator_maint)
 "btO" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/metal/medium_stack,
@@ -23276,19 +23267,28 @@
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/interior/dam_interior/workshop)
 "btP" = (
-/turf/open/floor/plating/warnplate/northwest,
+/obj/structure/ladder/multiz,
+/obj/effect/stairs/down,
+/turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/elevator_maint)
 "btQ" = (
-/turf/open/floor/plating/warnplate/north,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/warnplate/east,
 /area/desert_dam/interior/dam_interior/elevator_maint)
 "btR" = (
+/turf/open/floor/plating/warnplate/northwest,
+/area/desert_dam/interior/dam_interior/elevator_maint)
+"btS" = (
+/turf/open/floor/plating/warnplate/north,
+/area/desert_dam/interior/dam_interior/elevator_maint)
+"btT" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 2
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/elevator_maint)
-"btS" = (
+"btU" = (
 /obj/structure/prop/structure_lattice{
 	dir = 4
 	},
@@ -23300,35 +23300,42 @@
 	},
 /turf/open/floor/plating/warnplate/southwest,
 /area/desert_dam/interior/dam_interior/elevator_maint)
-"btT" = (
+"btV" = (
 /obj/item/tool/warning_cone{
 	pixel_x = -13;
 	pixel_y = 11
 	},
 /turf/open/floor/plating/warnplate,
 /area/desert_dam/interior/dam_interior/elevator_maint)
-"btU" = (
+"btW" = (
 /turf/open/floor/plating/warnplate,
 /area/desert_dam/interior/dam_interior/elevator_maint)
-"btV" = (
+"btX" = (
 /obj/structure/machinery/light,
 /obj/structure/cable/heavyduty{
 	icon_state = "1-2"
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/desert_dam/interior/dam_interior/elevator_maint)
-"btW" = (
+"btY" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/warnplate,
 /area/desert_dam/interior/dam_interior/elevator_maint)
-"btX" = (
+"btZ" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/computer/objective{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/desert_dam/building/medical/CMO)
+"bua" = (
 /obj/item/trash/cigbutt{
 	pixel_x = -7;
 	pixel_y = 2
 	},
 /turf/open/floor/plating/warnplate,
 /area/desert_dam/interior/dam_interior/elevator_maint)
-"btY" = (
+"bub" = (
 /obj/structure/prop/structure_lattice{
 	dir = 4
 	},
@@ -23340,26 +23347,19 @@
 	},
 /turf/open/floor/plating/warnplate/southeast,
 /area/desert_dam/interior/dam_interior/elevator_maint)
-"btZ" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/computer/objective{
-	dir = 4
-	},
-/turf/open/floor/wood,
-/area/desert_dam/building/medical/CMO)
-"bua" = (
+"buc" = (
 /obj/structure/prop/invuln/lifeboat_hatch_placeholder{
 	layer = 2.1
 	},
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/elevator_maint)
-"bub" = (
+"bud" = (
 /obj/structure/prop/invuln/lifeboat_hatch_placeholder/terminal{
 	layer = 2.1
 	},
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/elevator_maint)
-"buc" = (
+"bue" = (
 /obj/effect/hybrisa/misc/fake/wire/blue{
 	dir = 4;
 	pixel_y = -4
@@ -23376,7 +23376,7 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/desert_dam/interior/dam_interior/elevator_maint)
-"bud" = (
+"buf" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/power/apc/no_power/west,
 /obj/structure/cable/white{
@@ -23384,13 +23384,13 @@
 	},
 /turf/open/floor/plating/warnplate/west,
 /area/desert_dam/interior/dam_interior/elevator_maint)
-"bue" = (
+"bug" = (
 /obj/structure/cable/white{
 	icon_state = "4-5"
 	},
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/elevator_maint)
-"buf" = (
+"buh" = (
 /obj/structure/cable/white{
 	icon_state = "8-10"
 	},
@@ -23398,16 +23398,6 @@
 	pixel_x = 4;
 	pixel_y = 7
 	},
-/turf/open/floor/plating,
-/area/desert_dam/interior/dam_interior/elevator_maint)
-"bug" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "1-2"
-	},
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/desert_dam/interior/dam_interior/elevator_maint)
-"buh" = (
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/elevator_maint)
 "bui" = (
@@ -23419,38 +23409,48 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "buj" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/desert_dam/interior/dam_interior/elevator_maint)
+"buk" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/elevator_maint)
+"bul" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable/white{
 	icon_state = "9-10"
 	},
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/elevator_maint)
-"buk" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/warnplate/west,
-/area/desert_dam/interior/dam_interior/elevator_maint)
-"bul" = (
-/obj/structure/cable/white{
-	icon_state = "1-10"
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
-/area/desert_dam/interior/dam_interior/elevator_maint)
 "bum" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/cable/white{
-	icon_state = "1-6"
-	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/warnplate/west,
 /area/desert_dam/interior/dam_interior/elevator_maint)
 "bun" = (
 /obj/structure/flora/pottedplant,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/hallway)
 "buo" = (
+/obj/structure/cable/white{
+	icon_state = "1-10"
+	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/elevator_maint)
 "bup" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable/white{
+	icon_state = "1-6"
+	},
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/elevator_maint)
+"buq" = (
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/elevator_maint)
+"bur" = (
 /obj/structure/largecrate/random/case{
 	pixel_x = -2;
 	pixel_y = 5
@@ -23461,7 +23461,7 @@
 	},
 /turf/open/floor/plating/warnplate/east,
 /area/desert_dam/interior/dam_interior/elevator_maint)
-"buq" = (
+"bus" = (
 /obj/structure/largecrate/random/mini{
 	layer = 4;
 	pixel_x = 1;
@@ -23469,7 +23469,7 @@
 	},
 /turf/open/floor/plating/warnplate/west,
 /area/desert_dam/interior/dam_interior/elevator_maint)
-"bur" = (
+"but" = (
 /obj/effect/hybrisa/misc/fake/wire/yellow{
 	dir = 4
 	},
@@ -23482,14 +23482,14 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/desert_dam/interior/dam_interior/elevator_maint)
-"bus" = (
+"buu" = (
 /obj/structure/largecrate/random/case/small{
 	pixel_x = 2;
 	pixel_y = 8
 	},
 /turf/open/floor/plating/warnplate/east,
 /area/desert_dam/interior/dam_interior/elevator_maint)
-"but" = (
+"buv" = (
 /obj/structure/prop/structure_lattice{
 	dir = 4
 	},
@@ -23501,7 +23501,7 @@
 	},
 /turf/open/floor/plating/warnplate/northwest,
 /area/desert_dam/interior/dam_interior/elevator_maint)
-"buu" = (
+"buw" = (
 /obj/structure/largecrate/random/case/small,
 /obj/structure/largecrate/random/mini/small_case{
 	pixel_x = 5;
@@ -23509,7 +23509,10 @@
 	},
 /turf/open/floor/plating/warnplate/north,
 /area/desert_dam/interior/dam_interior/elevator_maint)
-"buv" = (
+"bux" = (
+/turf/open/asphalt/cement/cement14,
+/area/desert_dam/interior/dam_interior/central_tunnel)
+"buy" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light{
 	dir = 1
@@ -23519,7 +23522,7 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/desert_dam/interior/dam_interior/elevator_maint)
-"buw" = (
+"buz" = (
 /obj/structure/prop/hybrisa/misc/metergreen{
 	pixel_y = 32
 	},
@@ -23528,17 +23531,14 @@
 	},
 /turf/open/floor/plating/warnplate/north,
 /area/desert_dam/interior/dam_interior/elevator_maint)
-"bux" = (
-/turf/open/asphalt/cement/cement14,
-/area/desert_dam/interior/dam_interior/central_tunnel)
-"buy" = (
+"buA" = (
 /obj/structure/largecrate/random/barrel/purewhite{
 	pixel_x = -2;
 	pixel_y = 3
 	},
 /turf/open/floor/plating/warnplate/north,
 /area/desert_dam/interior/dam_interior/elevator_maint)
-"buz" = (
+"buB" = (
 /obj/structure/prop/structure_lattice{
 	dir = 4
 	},
@@ -173176,10 +173176,10 @@ usF
 usF
 usF
 kPy
-aUZ
-aUZ
-aUZ
-aUZ
+brl
+brl
+brl
+brl
 jIU
 jIU
 jIU
@@ -173410,10 +173410,10 @@ usF
 usF
 usF
 kPy
-bto
-btk
-aVa
-aUZ
+brJ
+bry
+brn
+brl
 qaR
 qaR
 qaR
@@ -173644,10 +173644,10 @@ usF
 usF
 usF
 kPy
-btp
-btl
-blD
-aUZ
+brK
+brz
+bro
+brl
 qaR
 qaR
 qaR
@@ -173878,10 +173878,10 @@ usF
 usF
 usF
 kPy
-btq
-btm
-bpl
-aUZ
+brN
+brA
+brp
+brl
 qaR
 qaR
 qaR
@@ -174112,10 +174112,10 @@ usF
 usF
 usF
 kPy
-bpm
-btn
-bpm
-aUZ
+brq
+brB
+brq
+brl
 qaR
 aeD
 aeD
@@ -179025,8 +179025,8 @@ dHb
 scz
 qaR
 anS
-brC
-bry
+brS
+brO
 anS
 qaR
 qaR
@@ -179261,7 +179261,7 @@ fIf
 gWc
 aOl
 lzZ
-brp
+brC
 qaR
 qaR
 qaR
@@ -179489,13 +179489,13 @@ dHb
 dHb
 dHb
 dHb
-brS
+bsh
 eSj
 eSj
-brJ
+brZ
 swT
 swT
-brq
+brD
 iVF
 iVF
 iVF
@@ -179722,15 +179722,15 @@ wPj
 bnT
 dHb
 dHb
-brS
+bsh
 kbg
 jYv
 swT
-brK
-brD
-brz
+bsa
+brT
+brP
 swT
-brm
+brs
 jYv
 jYv
 tXz
@@ -179956,13 +179956,13 @@ wPj
 wXJ
 dHb
 dHb
-brT
+bsi
 jYv
 swT
-brQ
-brN
+bsf
+bsb
+brU
 brE
-brs
 acG
 swT
 jYv
@@ -180192,13 +180192,13 @@ vdV
 vdV
 epj
 ljU
-brn
-brs
-brs
-brs
-brs
-brs
-brn
+brw
+brE
+brE
+brE
+brE
+brE
+brw
 ljU
 ljU
 vni
@@ -180426,13 +180426,13 @@ gvx
 gvx
 iBJ
 tjK
-brn
-brs
-brO
-brs
-brs
-brs
-brn
+brw
+brE
+bsc
+brE
+brE
+brE
+brw
 tjK
 tjK
 xTM
@@ -180661,11 +180661,11 @@ vDK
 jfW
 jYv
 swT
-brR
-brs
+bsg
+brE
+brW
+brQ
 brF
-brA
-brw
 swT
 jYv
 jYv
@@ -180892,12 +180892,12 @@ jjM
 qKr
 vDK
 vDK
-brU
+bsk
 uFk
 jYv
 swT
-brP
-brG
+bsd
+brX
 dzK
 swT
 gSO
@@ -181130,12 +181130,12 @@ vDK
 bIQ
 dGI
 dGI
-brB
-brB
-brB
+brR
+brR
+brR
+brG
 brx
-bro
-brl
+brm
 brk
 brj
 vDK
@@ -209363,7 +209363,7 @@ acm
 acm
 acz
 act
-brW
+bsm
 acn
 ack
 acj
@@ -211855,8 +211855,8 @@ wnN
 wnN
 wnN
 apw
-bsa
-bsa
+bsq
+bsq
 aru
 arc
 aqF
@@ -212089,13 +212089,13 @@ wnN
 wnN
 wnN
 wnN
-bsL
-bsa
-bsa
-bsa
-bsa
-bsa
-bsa
+bsV
+bsq
+bsq
+bsq
+bsq
+bsq
+bsq
 wnN
 wnN
 wnN
@@ -212323,13 +212323,13 @@ wnN
 wnN
 wnN
 wnN
-bsM
-bsD
-bsq
-bsq
-bsi
-bsf
-bsb
+bsW
+bsO
+bsB
+bsB
+bsv
+bst
+bsr
 wnN
 wnN
 wnN
@@ -212556,14 +212556,14 @@ wnN
 wnN
 wnN
 wnN
-bsV
-bsN
-bsy
-bsy
-bsr
-bsk
+bti
+bsZ
+bsI
+bsI
+bsC
+bsx
 oIi
-bsc
+bss
 wnN
 wnN
 wnN
@@ -212791,11 +212791,11 @@ wnN
 wnN
 wnN
 hjB
-bsO
-bsF
+bta
+bsP
 uqQ
-bss
-bsm
+bsD
+bsy
 oIi
 hjB
 wnN
@@ -213024,13 +213024,13 @@ wnN
 wnN
 wnN
 wnN
-bsW
-bsP
-bsG
+btj
+btb
+bsQ
+bsJ
+bsF
 bsz
-bst
-bso
-bsh
+bsu
 wnN
 wnN
 wnN
@@ -213257,13 +213257,13 @@ wnN
 wnN
 wnN
 wnN
-bsh
-bsZ
-bsQ
-bsH
-bsA
 bsu
-bsp
+btk
+btd
+bsR
+bsL
+bsG
+bsA
 wnN
 wnN
 wnN
@@ -213492,11 +213492,11 @@ wnN
 wnN
 wnN
 uqQ
-bta
-bsR
-bsI
-bsB
-bsv
+btl
+bte
+bsS
+bsM
+bsH
 wnN
 wnN
 wnN
@@ -213727,9 +213727,9 @@ wnN
 uqQ
 uqQ
 uqQ
-bsS
-bsJ
-bsC
+btf
+bsT
+bsN
 uqQ
 wnN
 wnN
@@ -213958,10 +213958,10 @@ wnN
 wnN
 wnN
 wnN
+btp
+uqQ
+uqQ
 btf
-uqQ
-uqQ
-bsS
 ipW
 ipW
 wnN
@@ -214194,8 +214194,8 @@ wnN
 wnN
 uqQ
 uqQ
-btb
-bsT
+btm
+bth
 ipW
 ipW
 wnN
@@ -214425,10 +214425,10 @@ wnN
 wnN
 wnN
 wnN
-bth
-bte
-bte
-btd
+btq
+bto
+bto
+btn
 ipW
 ipW
 ipW
@@ -223149,7 +223149,7 @@ aNP
 aNC
 aNI
 cJS
-brX
+bso
 vwm
 aVx
 adC
@@ -229797,24 +229797,24 @@ wnN
 wnN
 wnN
 wnN
-aUZ
-aUZ
-aUZ
-aUZ
-aUZ
-aUZ
-aUZ
-aUZ
+brl
+brl
+brl
+brl
+brl
+brl
+brl
+brl
 wnN
 wnN
-btF
+btJ
+btw
+btw
+btw
+btw
+btw
+btw
 btu
-btu
-btu
-btu
-btu
-btu
-bts
 dsS
 dsS
 dsS
@@ -230031,24 +230031,24 @@ wnN
 wnN
 wnN
 wnN
-aUZ
-but
-buq
-buk
-bud
-btk
-btS
-aUZ
+brl
+buv
+bus
+bum
+buf
+bry
+btU
+brl
 wnN
-btK
+btM
+btw
+btw
+btw
+btw
+btw
+btw
+btw
 btu
-btu
-btu
-btu
-btu
-btu
-btu
-bts
 dsS
 dsS
 dsS
@@ -230265,24 +230265,24 @@ wnN
 wnN
 wnN
 wnN
-aUZ
-buu
-bua
-buh
-bue
-bua
-btT
-aUZ
+brl
+buw
+buc
+buk
+bug
+buc
+btV
+brl
 wnN
-btL
+btN
+btK
 btG
-btE
-bty
+btB
+btB
 bty
 btw
+btw
 btu
-btu
-bts
 dsS
 dsS
 aTI
@@ -230499,24 +230499,24 @@ wnN
 wnN
 wnN
 wnN
-aUZ
-btQ
-bub
-bul
-buf
-bub
-btU
-bpm
-bpm
-bpm
-bpm
-bpm
-btB
+brl
+btS
+bud
+buo
+buh
+bud
+btW
+brq
+brq
+brq
+brq
+brq
+btF
+btE
 btA
 btx
-btv
+btw
 btu
-bts
 jKa
 dsS
 aTK
@@ -230733,24 +230733,24 @@ wnN
 wnN
 wnN
 wnN
-aUZ
-buv
-bur
-bug
-bug
-buc
-btV
-bpm
-btP
-btk
-aVa
-bpm
+brl
+buy
+but
+buj
+buj
+bue
+btX
+brq
+btR
+bry
+brn
+brq
 wnN
 wnN
 wnN
 wnN
 wnN
-btt
+btv
 dsS
 dsS
 dsS
@@ -230967,18 +230967,18 @@ wnN
 wnN
 wnN
 wnN
-aUZ
-buw
-bua
-bum
-buh
-bua
-btW
-btR
-btQ
-btM
-btJ
-bpm
+brl
+buz
+buc
+bup
+buk
+buc
+btY
+btT
+btS
+btP
+btL
+brq
 wnN
 wnN
 wnN
@@ -231201,18 +231201,18 @@ wnN
 wnN
 wnN
 wnN
-aUZ
-buy
-bub
-buo
-buj
-bub
-btX
-bpm
-btq
-btN
-bpl
-bpm
+brl
+buA
+bud
+buq
+bul
+bud
+bua
+brq
+brN
+btQ
+brp
+brq
 wnN
 wnN
 wnN
@@ -231435,18 +231435,18 @@ ipW
 ipW
 ipW
 wnN
-aUZ
-buz
-bus
-bup
-btm
-btm
-btY
-bpm
-bpm
-bpm
-bpm
-bpm
+brl
+buB
+buu
+bur
+brA
+brA
+bub
+brq
+brq
+brq
+brq
+brq
 wnN
 ipW
 ipW
@@ -231669,14 +231669,14 @@ ipW
 ipW
 ipW
 ipW
-bpm
-bpm
-bpm
-bpm
-bpm
-bpm
-bpm
-bpm
+brq
+brq
+brq
+brq
+brq
+brq
+brq
+brq
 ipW
 ipW
 ipW
@@ -237814,7 +237814,7 @@ nrV
 nwP
 aVL
 fcn
-btj
+btt
 jWX
 nrV
 oga
@@ -240885,7 +240885,7 @@ kJR
 qsU
 rAc
 qMT
-brZ
+bsp
 rAc
 vpq
 awO
@@ -244845,7 +244845,7 @@ xEW
 xEW
 hBd
 gAD
-bti
+bts
 cvs
 wuL
 bce

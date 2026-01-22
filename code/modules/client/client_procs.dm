@@ -275,8 +275,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if(!length(types_to_oidc_endpoint))
 		return
 
-	for(var/oidc_endpoint, type in types_to_oidc_endpoint)
-		var/access_code = topic_headers[type]
+	for(var/oidc_endpoint, oidc_type in types_to_oidc_endpoint)
+		var/access_code = topic_headers[oidc_type]
 		if(!access_code)
 			continue
 
@@ -292,7 +292,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 		var/response_decoded = json_decode(response.body)
 
-		var/ckey_to_find = CONFIG_GET(keyed_list/oidc_type_to_ckey)[type]
+		var/ckey_to_find = CONFIG_GET(keyed_list/oidc_type_to_ckey)[oidc_type]
 		if(!ckey_to_find)
 			continue
 
@@ -317,7 +317,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 			if(!length(found_ckey))
 				continue
 
-		log_access("PREAUTHORIZATION: user [found_ckey] connected via [type].")
+		log_access("PREAUTHORIZATION: user [found_ckey] connected via [oidc_type].")
 		ckey = found_ckey
 
 		var/is_banned = world.IsBanned(ckey, address, computer_id, byond_user = FALSE)

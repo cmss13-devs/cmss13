@@ -111,13 +111,13 @@
 		is_admin = 1
 
 	if (!CONFIG_GET(flag/respawn) && !is_admin)
-		to_chat(usr, SPAN_NOTICE(" Respawn is disabled."))
+		to_chat(usr, SPAN_NOTICE("Respawn is disabled."))
 		return
 	if (stat != 2)
-		to_chat(usr, SPAN_NOTICE(" <B>You must be dead to use this!</B>"))
+		to_chat(usr, SPAN_NOTICE("<B>You must be dead to use this!</B>"))
 		return
 	if (SSticker.mode && (SSticker.mode.name == "meteor" || SSticker.mode.name == "epidemic")) //BS12 EDIT
-		to_chat(usr, SPAN_NOTICE(" Respawn is disabled for this roundtype."))
+		to_chat(usr, SPAN_NOTICE("Respawn is disabled for this roundtype."))
 		return
 	else
 		var/deathtime = world.time - src.timeofdeath
@@ -137,7 +137,7 @@
 
 	log_game("[usr.name]/[usr.key] used abandon mob.")
 
-	to_chat(usr, SPAN_NOTICE(" <B>Make sure to play a different character, and please roleplay correctly!</B>"))
+	to_chat(usr, SPAN_NOTICE("<B>Make sure to play a different character, and please roleplay correctly!</B>"))
 
 	if(!client)
 		log_game("[usr.key] AM failed due to disconnect.")
@@ -269,7 +269,10 @@
 		to_chat(src, SPAN_WARNING("You cannot look up here."))
 		return
 
-	var/turf/above = locate(x, y, z+1)
+	var/turf/above = SSmapping.get_turf_above(loc)
+	if(!isturf(above))
+		to_chat(src, SPAN_WARNING("You cannot look up here."))
+		return
 
 	if(!istransparentturf(above))
 		to_chat(src, SPAN_WARNING("You cannot look up here."))

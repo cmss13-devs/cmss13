@@ -215,7 +215,7 @@
 	lighting_holder.set_light_range(vehicle_light_range)
 	toggle_cameras_status(TRUE)
 	update_icon()
-	user.visible_message(SPAN_NOTICE("[user] finishes [repair_message] on \the [src]."), SPAN_NOTICE("You finish [repair_message] on \the [src]. Hull integrity is at [SPAN_HELPFUL(100.0*health/max_hp)]%. "))
+	user.visible_message(SPAN_NOTICE("[user] finishes [repair_message] on \the [src]."), SPAN_NOTICE("You finish [repair_message] on \the [src]. Hull integrity is at [SPAN_HELPFUL(100.0*health/max_hp)]%."))
 	return
 
 //Special case for entering the vehicle without using the verb
@@ -262,7 +262,7 @@
 	if(X.caste == XENO_CASTE_RAVAGER || X.caste == XENO_CASTE_QUEEN)
 		damage_mult = 2
 
-	//Frenzy auras stack in a way, then the raw value is multipled by two to get the additive modifier
+	//Frenzy auras stack in a way, then the raw value is multiplied by two to get the additive modifier
 	if(X.frenzy_aura > 0)
 		damage += (X.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER)
 
@@ -506,7 +506,7 @@
 		currently_dragged = G.grabbed_thing
 
 	if(currently_dragged != dragged_atom)
-		to_chat(user, SPAN_WARNING("You stop fiting [dragged_atom] inside \the [src]!"))
+		to_chat(user, SPAN_WARNING("You stop fitting [dragged_atom] inside \the [src]!"))
 		return
 
 	var/success = interior.enter(dragged_atom, entrance_used)

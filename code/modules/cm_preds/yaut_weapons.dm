@@ -551,7 +551,7 @@
 	add_verb(user, /mob/living/carbon/human/proc/call_combi)
 	linked_to = user
 
-	var/list/tether_effects = apply_tether(user, src, range = 6, resistable = FALSE)
+	var/list/tether_effects = apply_tether(user, src, range = 6, resistible = FALSE)
 	chain = tether_effects["tetherer_tether"]
 	RegisterSignal(chain, COMSIG_PARENT_QDELETING, PROC_REF(cleanup_chain))
 	RegisterSignal(src, COMSIG_ITEM_PICKUP, PROC_REF(on_pickup))
@@ -732,8 +732,8 @@
 	if(isyautja(hit_atom))
 		var/mob/living/carbon/human/human = hit_atom
 		if(human.put_in_hands(src))
-			hit_atom.visible_message(SPAN_NOTICE("[hit_atom] expertly catches [src] out of the air. "),
-				SPAN_NOTICE(" You easily catch [src]. "))
+			hit_atom.visible_message(SPAN_NOTICE("[hit_atom] expertly catches [src] out of the air."),
+				SPAN_NOTICE("You easily catch [src]."))
 			return
 	..()
 

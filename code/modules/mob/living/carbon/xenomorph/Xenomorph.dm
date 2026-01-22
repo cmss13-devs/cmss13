@@ -84,7 +84,7 @@
 	var/slash_sound = "alien_claw_flesh"
 	health = 5
 	maxHealth = 5
-	var/crit_health = -100 // What negative healthy they die in.
+	health_threshold_dead = -100 // What negative healthy they die in.
 	var/gib_chance  = 5 // % chance of them exploding when taking damage. Goes up with damage inflicted.
 	speed = -0.5 // Speed. Positive makes you go slower. (1.5 is equivalent to FAT mutation)
 	can_crawl = FALSE
@@ -426,7 +426,7 @@
 			old_xeno.iff_tag = null
 
 	if(hive)
-		for(var/trait in hive.hive_inherant_traits)
+		for(var/trait in hive.hive_inherited_traits)
 			ADD_TRAIT(src, trait, TRAIT_SOURCE_HIVE)
 
 	//Set caste stuff
@@ -484,9 +484,8 @@
 	SStracking.start_tracking("hive_[src.hivenumber]", src)
 
 	//WO GAMEMODE
-	if(SSticker?.mode?.hardcore)  //Prevents healing and queen evolution
+	if(SSticker?.mode?.hardcore)
 		hardcore = TRUE
-		can_heal = FALSE
 	time_of_birth = world.time
 
 	//Minimap
@@ -974,7 +973,7 @@
 /mob/living/carbon/xenomorph/get_eye_protection()
 	return EYE_PROTECTION_WELDING
 
-/mob/living/carbon/xenomorph/get_pull_miltiplier()
+/mob/living/carbon/xenomorph/get_pull_multiplier()
 	return pull_multiplier
 
 /mob/living/carbon/xenomorph/proc/set_faction(new_faction = FACTION_XENOMORPH)
@@ -991,7 +990,7 @@
 
 	new_hive.add_xeno(src)
 
-	for(var/trait in new_hive.hive_inherant_traits)
+	for(var/trait in new_hive.hive_inherited_traits)
 		ADD_TRAIT(src, trait, TRAIT_SOURCE_HIVE)
 
 	generate_name()

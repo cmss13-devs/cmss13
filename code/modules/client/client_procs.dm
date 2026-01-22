@@ -268,6 +268,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	fileaccess_timer = world.time + FTPDELAY */
 	return 1
 
+/// Handles authorization passed from external providers via DreamSeeker launch parameters (eg, byond://play.cm-ss13.com:1234?auth_token=xxxx)
 /client/proc/process_preauthorization(list/topic_headers)
 	var/types_to_oidc_endpoint = CONFIG_GET(keyed_list/oidc_endpoint_to_type)
 
@@ -316,11 +317,13 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 			if(!length(found_ckey))
 				continue
 
+		log_access("PREAUTHORIZATION: user [found_ckey] connected via [type].")
 		ckey = found_ckey
 
 		var/is_banned = world.IsBanned(ckey, address, computer_id, byond_user = FALSE)
 		if(is_banned)
 			to_chat_immediate("You are unable to connect to this server: [is_banned["reason"]]")
+			log_access("PREAUTHORIZATION: user [found_ckey] disconnected due to IsBanned check.")
 			qdel(src)
 			return FALSE
 
@@ -338,6 +341,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		if(!length(found_username))
 			break
 
+		log_access("PREAUTHORIZATION: user [found_ckey] assigned username [found_username].")
 		external_username = found_username
 		break
 

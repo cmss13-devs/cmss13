@@ -502,7 +502,7 @@
 
 /obj/structure/prop/brazier/frame/full
 	name = "empty full brazier"
-	desc = "An empty brazier. Yet it's also full. What???  Use something hot to ignite it, like a welding tool."
+	desc = "An empty brazier. Yet it's also full. What??? Use something hot to ignite it, like a welding tool."
 	icon_state = "brazier_frame_filled"
 	frame_type = /obj/structure/prop/brazier
 	state = STATE_IGNITE
@@ -516,7 +516,7 @@
 
 /obj/structure/prop/brazier/frame/full/torch
 	name = "unlit torch"
-	desc = "It's a torch, but it's not lit.  Use something hot to ignite it, like a welding tool."
+	desc = "It's a torch, but it's not lit. Use something hot to ignite it, like a welding tool."
 	icon_state = "torch_frame"
 	frame_type = /obj/structure/prop/brazier/torch
 
@@ -953,7 +953,7 @@
 
 /obj/structure/prop/invuln/fusion_reactor
 	name = "\improper S-52 fusion reactor"
-	desc = "A Westingland S-52 Fusion Reactor.  Takes fuels cells and converts them to power.  Also produces a large amount of heat."
+	desc = "A Westingland S-52 Fusion Reactor. Takes fuels cells and converts them to power. Also produces a large amount of heat."
 	icon = 'icons/obj/structures/machinery/fusion_eng.dmi'
 	icon_state = "off"
 

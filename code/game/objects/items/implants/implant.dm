@@ -378,7 +378,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 	if (src.uses < 1) return 0
 	if (emote == "pale")
 		src.uses--
-		to_chat(source, SPAN_NOTICE(" You feel a sudden surge of energy!"))
+		to_chat(source, SPAN_NOTICE("You feel a sudden surge of energy!"))
 		source.set_effect(0, STUN)
 		source.set_effect(0, WEAKEN)
 		source.set_effect(0, PARALYZE)

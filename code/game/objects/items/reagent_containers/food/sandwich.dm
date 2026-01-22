@@ -34,12 +34,12 @@
 		to_chat(user, SPAN_DANGER("\The [src] is already massive! You can't add more without ruining it."))
 		return
 	else if(istype(W,/obj/item/shard))
-		to_chat(user, SPAN_NOTICE(" You hide [W] in \the [src]."))
+		to_chat(user, SPAN_NOTICE("You hide [W] in \the [src]."))
 		user.drop_inv_item_to_loc(W, src)
 		update()
 		return
 	else if(istype(W,/obj/item/reagent_container/food/snacks))
-		to_chat(user, SPAN_NOTICE(" You layer [W] over \the [src]."))
+		to_chat(user, SPAN_NOTICE("You layer [W] over \the [src]."))
 		var/obj/item/reagent_container/F = W
 		if(F.reagents)
 			F.reagents.trans_to(src, F.reagents.total_volume)

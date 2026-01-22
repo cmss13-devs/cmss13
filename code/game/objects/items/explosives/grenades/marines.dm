@@ -576,7 +576,7 @@
 		sentry_stun.sentry_range = 0 // Temporarily "disable" the sentry by killing its range then setting it back.
 		new /obj/effect/overlay/temp/elec_arc(get_turf(sentry_stun))  // sprites are meh but we need visual indication that the sentry was messed up
 		addtimer(VARSET_CALLBACK(sentry_stun, sentry_range, initial(sentry_stun.sentry_range)), 5 SECONDS) // assure to set it back
-		sentry_stun.visible_message(SPAN_DANGER("[src]'s screen flickers violently as it's shocked!"))
+		sentry_stun.visible_message(SPAN_DANGER("[src]'s screen flicks violently as it's shocked!"))
 		sentry_stun.visible_message(SPAN_DANGER("[src] says \"ERROR: Fire control system resetting due to critical voltage fluctuation!\""))
 		sparka.set_up(1, 1, sentry_stun)
 		sparka.start()

@@ -135,10 +135,10 @@
 					var/known_access_rights = get_access(ACCESS_LIST_MARINE_ALL)
 					for(var/A in target_id_card.access)
 						if(A in known_access_rights)
-							contents += "  [get_access_desc(A)]<br>"
+							contents += " [get_access_desc(A)]<br>"
 					contents += "<br><u>Modification Log:</u><br>"
 					for(var/change in target_id_card.modification_log)
-						contents += "  [change]<br>"
+						contents += " [change]<br>"
 
 					var/obj/item/paper/P = new /obj/item/paper(src.loc)
 					P.name = "Access Report"
@@ -712,7 +712,7 @@
 
 /obj/structure/machinery/computer/crew
 	name = "crew monitoring computer"
-	desc = "Used to monitor active health sensors built into the wearer's uniform.  You can see that the console highlights ship areas with BLUE and remote locations with RED."
+	desc = "Used to monitor active health sensors built into the wearer's uniform. You can see that the console highlights ship areas with BLUE and remote locations with RED."
 	icon_state = "crew"
 	circuit = /obj/item/circuitboard/computer/crew
 	density = TRUE

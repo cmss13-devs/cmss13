@@ -434,7 +434,7 @@
 					failed = TRUE
 					break
 				var/area/target_area = get_area(turf_to_check)
-				if(target_area.flags_area & AREA_NOTUNNEL)
+				if(target_area.flags_area & AREA_NOBURROW)
 					failed = TRUE
 					break
 				for(var/obj/structure/struct in turf_to_check)

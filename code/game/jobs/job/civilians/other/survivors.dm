@@ -99,7 +99,7 @@ GLOBAL_LIST_EMPTY(spawned_survivors)
 		to_chat(survivor, "<h2>You are a survivor!</h2>")
 		to_chat(survivor, SPAN_NOTICE(SSmapping.configs[GROUND_MAP].survivor_message))
 		to_chat(survivor, SPAN_NOTICE("You are fully aware of the xenomorph threat and are able to use this knowledge as you see fit."))
-		to_chat(survivor, SPAN_NOTICE("You are NOT aware of the marines or their intentions. "))
+		to_chat(survivor, SPAN_NOTICE("You are NOT aware of the marines or their intentions."))
 
 	if(story_text)
 		to_chat(survivor, story_text)

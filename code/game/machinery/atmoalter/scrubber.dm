@@ -59,7 +59,7 @@
 	name = "[name] (ID [id])"
 
 /obj/structure/machinery/portable_atmospherics/powered/scrubber/huge/attack_hand(mob/user as mob)
-		to_chat(usr, SPAN_NOTICE(" You can't directly interact with this machine. Use the scrubber control console."))
+		to_chat(usr, SPAN_NOTICE("You can't directly interact with this machine. Use the scrubber control console."))
 
 /obj/structure/machinery/portable_atmospherics/powered/scrubber/huge/update_icon()
 	src.overlays = 0
@@ -73,12 +73,12 @@
 /obj/structure/machinery/portable_atmospherics/powered/scrubber/huge/attackby(obj/item/I as obj, mob/user as mob)
 	if(HAS_TRAIT(I, TRAIT_TOOL_WRENCH))
 		if(on)
-			to_chat(user, SPAN_NOTICE(" Turn it off first!"))
+			to_chat(user, SPAN_NOTICE("Turn it off first!"))
 			return
 
 		anchored = !anchored
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-		to_chat(user, SPAN_NOTICE(" You [anchored ? "wrench" : "unwrench"] \the [src]."))
+		to_chat(user, SPAN_NOTICE("You [anchored ? "wrench" : "unwrench"] \the [src]."))
 
 		return
 
@@ -100,7 +100,7 @@
 
 /obj/structure/machinery/portable_atmospherics/powered/scrubber/huge/stationary/attackby(obj/item/I as obj, mob/user as mob)
 	if(HAS_TRAIT(I, TRAIT_TOOL_WRENCH))
-		to_chat(user, SPAN_NOTICE(" The bolts are too tight for you to unscrew!"))
+		to_chat(user, SPAN_NOTICE("The bolts are too tight for you to unscrew!"))
 		return
 
 	. = ..()

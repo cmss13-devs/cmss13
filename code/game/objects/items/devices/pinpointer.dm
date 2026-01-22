@@ -18,11 +18,11 @@
 	if(!active)
 		active = 1
 		workdisk()
-		to_chat(usr, SPAN_NOTICE(" You activate the pinpointer."))
+		to_chat(usr, SPAN_NOTICE("You activate the pinpointer."))
 	else
 		active = 0
 		icon_state = "pinoff"
-		to_chat(usr, SPAN_NOTICE(" You deactivate the pinpointer."))
+		to_chat(usr, SPAN_NOTICE("You deactivate the pinpointer."))
 
 /obj/item/device/pinpointer/proc/workdisk()
 	if(!active)
@@ -48,7 +48,7 @@
 	. = ..()
 	for(var/obj/structure/machinery/nuclearbomb/bomb in GLOB.machines)
 		if(bomb.timing)
-			. += "Extreme danger.  Arming signal detected.   Time remaining: [bomb.timeleft]"
+			. += "Extreme danger. Arming signal detected. Time remaining: [bomb.timeleft]"
 
 
 /obj/item/device/pinpointer/advpinpointer
@@ -68,11 +68,11 @@
 			worklocation()
 		if(mode == 2)
 			workobj()
-		to_chat(usr, SPAN_NOTICE(" You activate the pinpointer."))
+		to_chat(usr, SPAN_NOTICE("You activate the pinpointer."))
 	else
 		active = 0
 		icon_state = "pinoff"
-		to_chat(usr, SPAN_NOTICE(" You deactivate the pinpointer."))
+		to_chat(usr, SPAN_NOTICE("You deactivate the pinpointer."))
 
 
 /obj/item/device/pinpointer/advpinpointer/proc/worklocation()

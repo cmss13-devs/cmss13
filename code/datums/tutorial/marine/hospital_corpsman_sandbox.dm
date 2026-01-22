@@ -46,7 +46,7 @@
 	/// List of ACTIVELY MOVING patient NPCs
 	var/list/mob/living/carbon/human/realistic_dummy/active_agents = list()
 	/// List of NPC inventory items that needs to be removed when they asked to leave
-	var/list/obj/item/clothing/suit/storage/marine/medium/cleanup = list()
+	var/list/obj/item/cleanup = list()
 	/// Ref to any patient NPC actively moving
 	var/mob/living/carbon/human/realistic_dummy/active_agent
 	/// Ref to late-spawned patient NPC that has a chance to appear during a treatment phase

@@ -1,5 +1,0 @@
-author: "JackieEstegado"
-delete-after: True
-changes:
-  - balance: "Fractures can no longer be gained without taking brute damage or burns/eschar without burn damage."
-  - bugfix: "Fixed a case where one could have severe burns that could not be treated."

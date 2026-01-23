@@ -1,9 +1,4 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"ac" = (
-/obj/structure/platform/metal/almayer_smooth/east,
-/obj/structure/platform/metal/almayer_smooth/east,
-/turf/open_space,
-/area/tdome)
 "aq" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_20"
@@ -5015,7 +5010,7 @@ vm
 fG
 fm
 Ah
-ac
+mS
 ty
 vm
 fG

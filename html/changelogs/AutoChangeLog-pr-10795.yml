@@ -1,4 +1,0 @@
-author: "PoltavskaPraca"
-delete-after: True
-changes:
-  - bugfix: "fixed wrong window break message"

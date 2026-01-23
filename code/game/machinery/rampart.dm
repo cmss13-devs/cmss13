@@ -1,8 +1,9 @@
 /obj/structure/machinery/rampart
-	icon = 'icons/obj/structures/props/natural/boulder_largedark.dmi'
-	icon_state = "boulder_largedark1"
+	icon = 'icons/obj/structures/machinery/rampart.dmi'
+	icon_state = "rampart"
 	dir = EAST
 	layer = UNDERFLOOR_OBJ_LAYER
+	name = "rampart"
 	var/offset_on_deploy = 64
 	var/obj/docking_port/stationary/marine_dropship/linked_port
 

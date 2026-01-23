@@ -1,7 +1,0 @@
-author: "Stakeyng Drathek"
-delete-after: True
-changes:
-  - qol: "added 40 more say/picksay/me bind slots (60 total)"
-  - qol: "added 10 more options per picksay (30 total)"
-  - qol: "limited the amount of characters per emote and picksay option to 256"
-  - bugfix: "Fixed custom picksays not displaying the right mode when loading existing bindings"

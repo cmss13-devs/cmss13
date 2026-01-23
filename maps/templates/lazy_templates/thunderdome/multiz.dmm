@@ -254,6 +254,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/tdome/northeast,
 /area/tdome)
 "uU" = (
@@ -401,6 +402,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/tdome/northeast,
 /area/tdome)
 "ET" = (

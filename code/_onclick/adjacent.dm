@@ -32,7 +32,7 @@
 			return TRUE
 
 	//we have checked if the neighbor is not above us in open space or below us if we are open space
-	if(z != neighbor.z)
+	if(neighbor.z && (z != neighbor.z))
 		return FALSE
 
 	var/turf/T0 = get_turf(neighbor)

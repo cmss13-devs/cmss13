@@ -207,7 +207,7 @@
 			t_him = "them"
 
 	if(w_uniform)
-		w_uniform.add_fingerprint(M)
+		w_uniform.add_fingerprint(Mob)
 
 	if(HAS_TRAIT(src, TRAIT_FLOORED) || HAS_TRAIT(src, TRAIT_KNOCKEDOUT) || body_position == LYING_DOWN || sleeping)
 		if(client)

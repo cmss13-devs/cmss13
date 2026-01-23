@@ -17,26 +17,29 @@ GLOBAL_LIST_EMPTY(ckey_to_controller)
 	var/static/server_html = {"
 <!DOCTYPE html>
 <html>
-  <head>
-    <script>
-      window.contact = (endpoint) => {
-        const port = %SERVER_PORT%;
-        fetch(`http://localhost:${port}/${endpoint}`).then((response) => {
-          const contentType = response.headers.get('content-type');
-          if (contentType && contentType.includes('application/json')) {
-            response.json().then((object) => {
-              BYOND.command(`.controller ${JSON.stringify(object)}`);
-            });
-          }
-        })
-      }
-    </script>
-  </head>
-  <body>
-    <script>
-      window.contact("status");
-    </script>
-  </body>
+
+<head>
+	<script>
+		window.contact = (endpoint) => {
+			const port = 1234;
+			fetch(`http://localhost:${port}/${endpoint}`).then((response) => {
+				const contentType = response.headers.get('content-type');
+				if (contentType && contentType.includes('application/json')) {
+					response.json().then((object) => {
+						BYOND.command(`.controller ${JSON.stringify(object)}`);
+					});
+				}
+			})
+		}
+	</script>
+</head>
+
+<body>
+	<script>
+		window.contact("status");
+	</script>
+</body>
+
 </html>
 "}
 

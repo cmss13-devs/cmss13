@@ -316,7 +316,7 @@
 			postscript += " (ESCHAR)"
 
 		if(postscript)
-			limb_message += "\t My [org.display_name] is [SPAN_WARNING("[english_list(status, final_comma_text = ",")].SPAN_BOLD("[postscript]")")]"
+			limb_message += "\t My [org.display_name] is [SPAN_WARNING("[english_list(status, final_comma_text = ",")].[SPAN_BOLD(postscript)]"
 		else
 			limb_message += "\t My [org.display_name] is [status[1] == "OK" ? SPAN_NOTICE("OK.") : SPAN_WARNING("[english_list(status, final_comma_text = ",")].")]"
 	to_chat(src, boxed_message(limb_message.Join("\n")))

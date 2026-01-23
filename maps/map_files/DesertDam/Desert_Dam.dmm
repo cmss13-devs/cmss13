@@ -14922,9 +14922,6 @@
 /obj/structure/platform/metal/kutjevo_smooth_immune/east,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/building/medical/stairwell/north)
-"aUZ" = (
-/turf/closed/wall/r_wall/unmeltable,
-/area/desert_dam/exterior/rock/level3)
 "aVb" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -23570,6 +23567,9 @@
 	},
 /turf/open/floor/plating/warnplate/northeast,
 /area/desert_dam/interior/dam_interior/elevator_maint)
+"buE" = (
+/turf/closed/wall/r_wall/unmeltable,
+/area/desert_dam/exterior/rock/level3)
 "buV" = (
 /obj/structure/prop/hybrisa/xenobiology/small/empty,
 /turf/open/floor/prison/darkpurple2/west,
@@ -201020,7 +201020,7 @@ ipW
 ipW
 ipW
 wnN
-aUZ
+buE
 adG
 adG
 adG
@@ -208274,7 +208274,7 @@ ipW
 ipW
 ipW
 ipW
-aUZ
+buE
 adG
 adG
 adG

@@ -965,6 +965,7 @@
 #include "code\game\machinery\newscaster.dm"
 #include "code\game\machinery\nuclearbomb.dm"
 #include "code\game\machinery\OpTable.dm"
+#include "code\game\machinery\rampart.dm"
 #include "code\game\machinery\recharger.dm"
 #include "code\game\machinery\rechargestation.dm"
 #include "code\game\machinery\robot_fabricator.dm"

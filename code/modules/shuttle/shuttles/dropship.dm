@@ -211,6 +211,7 @@
 	dheight = 10
 
 	var/list/landing_lights = list()
+	var/list/ramparts = list()
 	var/auto_open = FALSE
 	var/landing_lights_on = FALSE
 	var/xeno_announce = FALSE
@@ -232,7 +233,7 @@
 
 /obj/docking_port/stationary/marine_dropship/proc/link_landing_lights()
 	var/list/coords = return_coords()
-	var/scan_range = 5
+	var/scan_range = 8
 	var/x0 = coords[1] - scan_range
 	var/y0 = coords[2] - scan_range
 	var/x1 = coords[3] + scan_range
@@ -240,10 +241,14 @@
 
 	for(var/xscan = x0; xscan < x1; xscan++)
 		for(var/yscan = y0; yscan < y1; yscan++)
-			var/turf/searchspot = locate(xscan, yscan, src.z)
-			for(var/obj/structure/machinery/landinglight/light in searchspot)
-				landing_lights += light
-				light.linked_port = src
+			for(var/zscan = src.z; zscan < src.z+2; zscan++)
+				var/turf/searchspot = locate(xscan, yscan, zscan)
+				for(var/obj/structure/machinery/landinglight/light in searchspot)
+					landing_lights += light
+					light.linked_port = src
+				for(var/obj/structure/machinery/rampart/rampart in searchspot)
+					ramparts += rampart
+					rampart.linked_port = src
 
 /obj/docking_port/stationary/marine_dropship/proc/turn_on_landing_lights()
 	for(var/obj/structure/machinery/landinglight/light in landing_lights)
@@ -262,6 +267,7 @@
 /obj/docking_port/stationary/marine_dropship/on_arrival(obj/docking_port/mobile/arriving_shuttle)
 	. = ..()
 	turn_off_landing_lights()
+	deploy_ramparts()
 	var/obj/docking_port/mobile/marine_dropship/dropship = arriving_shuttle
 
 	if(auto_open && istype(arriving_shuttle, /obj/docking_port/mobile/marine_dropship))
@@ -276,13 +282,21 @@
 	if(xeno_announce)
 		xeno_announcement(SPAN_XENOANNOUNCE("The dropship has landed."), "everything")
 		xeno_announce = FALSE
-
 	for(var/obj/structure/dropship_equipment/eq as anything in dropship.equipments)
 		eq.on_arrival()
+
+/obj/docking_port/stationary/marine_dropship/proc/deploy_ramparts()
+	for(var/obj/structure/machinery/rampart/rampart in ramparts)
+		rampart.deploy()
 
 /obj/docking_port/stationary/marine_dropship/on_dock_ignition(obj/docking_port/mobile/departing_shuttle)
 	. = ..()
 	turn_on_landing_lights()
+	retract_ramparts()
+
+/obj/docking_port/stationary/marine_dropship/proc/retract_ramparts()
+	for(var/obj/structure/machinery/rampart/rampart in ramparts)
+		rampart.undeploy()
 
 /obj/docking_port/stationary/marine_dropship/on_departure(obj/docking_port/mobile/departing_shuttle)
 	. = ..()

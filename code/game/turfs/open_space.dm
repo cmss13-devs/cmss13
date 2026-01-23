@@ -107,3 +107,6 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	ADD_TRAIT(src, TURF_Z_TRANSPARENT_TRAIT, TRAIT_SOURCE_INHERENT)
 	icon_state = "transparent"
 	return INITIALIZE_HINT_LATELOAD
+
+/turf/solid_open_space/walkable
+	density = FALSE

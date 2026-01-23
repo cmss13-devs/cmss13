@@ -302,6 +302,7 @@
 			status += "OK"
 
 		var/postscript
+		var/post_script
 		if(org.status & LIMB_UNCALIBRATED_PROSTHETIC)
 			postscript += " (NONFUNCTIONAL)"
 		if(org.status & LIMB_BROKEN)
@@ -314,7 +315,7 @@
 			postscript += " (SEVERE BURN)"
 		if(org.status & LIMB_ESCHAR)
 			postscript += " (ESCHAR)"
-		postscript = SPAN_BOLD(post_script)
+		post_script = SPAN_BOLD(postscript)
 
 		if(postscript)
 			limb_message += "\t My [org.display_name] is [SPAN_WARNING("[english_list(status, final_comma_text = ",")].[postscript]")]"

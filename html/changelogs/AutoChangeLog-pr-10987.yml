@@ -1,6 +1,0 @@
-author: "Killfish"
-delete-after: True
-changes:
-  - rscadd: "Added Hive Stat Modifiers, allowing increases or decreases to certain stats of all Xenos in a specific Hive."
-  - balance: "Xenos belonging to the Forsaken Hive have increased stats pertaining to combat. Be afraid of them."
-  - rscdel: "Removed a few long-unused relics from the Xenomorph Maturation era."

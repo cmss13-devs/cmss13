@@ -37,7 +37,7 @@
 	// State
 	var/dodge_activated = FALSE
 
-/datum/behavior_delegate/praetorian_dancer/proc/apply_tag(mob/living/carbon/target_carbon)
+/datum/behavior_delegate/praetorian_dancer/melee_attack_additional_effects_target(mob/living/carbon/target_carbon)
 	if(!isxeno_human(target_carbon))
 		return
 
@@ -53,9 +53,6 @@
 	if(ishuman(target_carbon))
 		var/mob/living/carbon/human/target_human = target_carbon
 		target_human.update_xeno_hostile_hud()
-
-/datum/behavior_delegate/praetorian_dancer/melee_attack_additional_effects_target(mob/living/carbon/target_carbon)
-	apply_tag(target_carbon)
 
 /datum/action/xeno_action/activable/prae_impale/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/dancer_user = owner

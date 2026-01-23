@@ -21,7 +21,7 @@ GLOBAL_LIST_EMPTY(ckey_to_controller)
 <head>
 	<script>
 		window.contact = (endpoint) => {
-			const port = 1234;
+			const port = %SERVER_PORT%;
 			fetch(`http://localhost:${port}/${endpoint}`).then((response) => {
 				const contentType = response.headers.get('content-type');
 				if (contentType && contentType.includes('application/json')) {

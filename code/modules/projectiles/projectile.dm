@@ -91,6 +91,9 @@
 	var/damage_boosted = 0
 	var/last_damage_mult = 1
 
+	/// The turf we are animating to
+	var/turf/vis_target
+
 /obj/projectile/Initialize(mapload, datum/cause_data/cause_data)
 	. = ..()
 	path = list()
@@ -236,6 +239,7 @@
 		bonus_projectile_check = 1 //Mark this projectile as having spawned a set of bonus projectiles.
 
 	path = get_line(starting, target_turf)
+	normalize_vis_target()
 	p_x += clamp((rand()-0.5)*scatter*3, -8, 8)
 	p_y += clamp((rand()-0.5)*scatter*3, -8, 8)
 	update_angle(starting, target_turf)
@@ -304,6 +308,17 @@
 
 	return FALSE
 
+/// Lazyloaded multiz needs to obtain correct vis target on the same fake level for visual
+/obj/projectile/proc/normalize_vis_target()
+	vis_target = path[length(path)]
+	var/datum/turf_reservation/reservation = SSmapping.used_turfs[vis_target]
+	if(reservation)
+		while(reservation.is_below(vis_target, vis_source))
+			vis_target = SSmapping.get_turf_above(vis_target)
+		while(reservation.is_below(vis_source, vis_target))
+			vis_target = SSmapping.get_turf_below(vis_target)
+
+
 /// Animates the projectile across the process'ed flight.
 /obj/projectile/proc/animate_flight(turf/start_turf, start_pixel_x, start_pixel_y, delta_time)
 	//Get pixelspace coordinates of start and end of visual path
@@ -311,7 +326,6 @@
 	var/pixel_x_source = vis_source.x * world.icon_size + vis_source_pixel_x
 	var/pixel_y_source = vis_source.y * world.icon_size + vis_source_pixel_y
 
-	var/turf/vis_target = path[length(path)]
 	var/pixel_x_target = vis_target.x * world.icon_size + p_x
 	var/pixel_y_target = vis_target.y * world.icon_size + p_y
 
@@ -405,6 +419,7 @@
 /obj/projectile/proc/retarget(atom/new_target, keep_angle = FALSE)
 	var/turf/current_turf = get_turf(src)
 	path = get_line(current_turf, new_target)
+	normalize_vis_target()
 	path.Cut(1, 2) // remove the turf we're already on
 	var/atom/source = keep_angle ? original : current_turf
 	update_angle(source, new_target)

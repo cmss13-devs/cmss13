@@ -49,7 +49,7 @@ GLOBAL_LIST_EMPTY(ckey_to_controller)
 /datum/control_server/proc/send_to_controller(endpoint)
 	controlling << output(endpoint, "control-server.browser:contact")
 
-CLIENT_VERB(control_server_input)
+CLIENT_VERB(control_server_input, input as text)
 	set name = ".controller"
 
 	var/datum/control_server/controller = GLOB.ckey_to_controller[ckey]

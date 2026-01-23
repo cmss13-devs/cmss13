@@ -510,19 +510,6 @@
 	if((ammo.flags_ammo_behavior & AMMO_XENO) && (isfacehugger(L) || L.stat == DEAD)) //xeno ammo is NEVER meant to hit or damage dead people. If you want to add a xeno ammo that DOES then make a new flag that makes it ignore this check.
 		return FALSE
 
-	if(isxeno(L))
-		if(!((ammo.flags_ammo_behavior & AMMO_SNIPER) || (ammo.flags_ammo_behavior & AMMO_ROCKET)))
-			if(L.body_position != LYING_DOWN && L.stat != UNCONSCIOUS) //We don't want to "somehow" dodge bullets when lying down/unconscious.
-				var/mob/living/carbon/xenomorph/xeno = L
-				var/dodge_roll = rand(1, 100)
-				if(dodge_roll <= xeno.dodge_chance)
-					xeno.xeno_jitter(5 DECISECONDS)
-					if(src.ammo.sound_miss)
-						playsound_client(xeno.client, src.ammo.sound_miss, get_turf(xeno), 75, TRUE)
-						xeno.visible_message(SPAN_AVOIDHARM("The [xeno] darts aside, evading [src]!"),
-							SPAN_AVOIDHARM("You react fast, and [src] narrowly misses you!"), null, 4, CHAT_TYPE_TAKING_HIT)
-					return FALSE
-
 	var/hit_chance = L.get_projectile_hit_chance(src)
 
 	if(hit_chance) // Calculated from combination of both ammo accuracy and gun accuracy
@@ -908,6 +895,17 @@
 				return FALSE
 			if(X.hivenumber == hivenumber)
 				return FALSE
+
+		if(!((ammo_flags & AMMO_SNIPER) || (ammo_flags & AMMO_ROCKET)))
+			if(body_position != LYING_DOWN && stat != UNCONSCIOUS) //We don't want to "somehow" dodge bullets when lying down/unconscious.
+				var/dodge_roll = rand(1, 100)
+				if(dodge_roll <= dodge_chance)
+					xeno_jitter(5 DECISECONDS)
+					if(P.ammo.sound_miss)
+						playsound_client(client, P.ammo.sound_miss, get_turf(src), 75, TRUE)
+						visible_message(SPAN_AVOIDHARM("The [src] darts aside, evading [P]!"),
+						SPAN_AVOIDHARM("You react fast, and [P] narrowly misses you!"), null, 4, CHAT_TYPE_TAKING_HIT)
+					return FALSE
 
 		if(mob_size == MOB_SIZE_SMALL)
 			. -= 10

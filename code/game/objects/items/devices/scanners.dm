@@ -298,11 +298,11 @@ K9 SCANNER
 				else
 					recent_fail = 1
 		if(dat)
-			to_chat(user, SPAN_NOTICE(" Chemicals found: [dat]"))
+			to_chat(user, SPAN_NOTICE("Chemicals found: [dat]"))
 		else
-			to_chat(user, SPAN_NOTICE(" No active chemical agents found in [O]."))
+			to_chat(user, SPAN_NOTICE("No active chemical agents found in [O]."))
 	else
-		to_chat(user, SPAN_NOTICE(" No significant chemical agents found in [O]."))
+		to_chat(user, SPAN_NOTICE("No significant chemical agents found in [O]."))
 
 	return
 

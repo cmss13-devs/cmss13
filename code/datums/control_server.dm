@@ -20,18 +20,23 @@ GLOBAL_LIST_EMPTY(ckey_to_controller)
   <head>
     <script>
       window.contact = (endpoint) => {
-      	const port = %SERVER_PORT%;
-      	fetch(`http://localhost:${port}/${endpoint}`).then((response) => {
-			const contentType = response.headers.get('content-type');
-			if (contentType && contentType.includes('application/json')) {
-				response.json().then((object) => {
-					BYOND.command(`.controller ${JSON.stringify(object)}`);
-				});
-			}
-		})
+        const port = %SERVER_PORT%;
+        fetch(`http://localhost:${port}/${endpoint}`).then((response) => {
+          const contentType = response.headers.get('content-type');
+          if (contentType && contentType.includes('application/json')) {
+            response.json().then((object) => {
+              BYOND.command(`.controller ${JSON.stringify(object)}`);
+            });
+          }
+        })
       }
     </script>
   </head>
+  <body>
+    <script>
+     window.contact("status");
+    </script>
+  </body>
 </html>
 "}
 
@@ -50,10 +55,6 @@ GLOBAL_LIST_EMPTY(ckey_to_controller)
 
 	controlling << browse(replacetext(server_html, "%SERVER_PORT%", port), "window=control-server,size=1x1,titlebar=0,can_resize=0")
 	winset(controlling, "control-server", "is-visible=false")
-
-	sleep(5)
-
-	send_to_controller("status")
 
 /datum/control_server/proc/send_to_controller(endpoint)
 	controlling << output(endpoint, "control-server.browser:contact")

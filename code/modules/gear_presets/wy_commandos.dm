@@ -503,6 +503,7 @@
 
 	assignment = JOB_WY_COMMANDO_GUNNER
 	job_title = JOB_WY_COMMANDO_GUNNER
+	skills = /datum/skills/hunted_specops/smartgun
 	minimap_icon = "pmc_sg"
 	paygrades = list(PAY_SHORT_WY_GUN = JOB_PLAYTIME_TIER_0)
 

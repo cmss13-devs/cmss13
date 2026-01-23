@@ -1547,6 +1547,7 @@
 
 /datum/equipment_preset/uscm/hunted/marsoc/sg
 	name = "Marine Raider Smartgunner (Hunted)"
+	skills = /datum/skills/hunted_specops/smartgun
 
 /datum/equipment_preset/uscm/hunted/marsoc/sg/load_status(mob/living/carbon/human/new_human)
 	new_human.nutrition = NUTRITION_NORMAL

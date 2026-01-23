@@ -218,7 +218,7 @@
 			else
 				set_resting(FALSE)
 		Mob.visible_message(SPAN_NOTICE("[Mob] shakes [src] trying to wake [t_him] up!"),
-			SPAN_NOTICE("You shake [src],trying to wake [t_him] up!"), null, 4)
+			SPAN_NOTICE("You shake [src], trying to wake [t_him] up!"), null, 4)
 	else if(HAS_TRAIT(src, TRAIT_INCAPACITATED))
 		Mob.visible_message(SPAN_NOTICE("[Mob] shakes [src], trying to shake [t_him] out of his stupor!"),
 			SPAN_NOTICE("You shake [src], trying to shake [t_him] out of his stupor!"), null, 4)

@@ -57,9 +57,6 @@
 /datum/behavior_delegate/praetorian_dancer/melee_attack_additional_effects_target(mob/living/carbon/target_carbon)
 	apply_tag(target_carbon)
 
-/datum/behavior_delegate/praetorian_dancer/melee_tackle_additional_effects_target(mob/living/carbon/target_carbon)
-	apply_tag(target_carbon)
-
 /datum/action/xeno_action/activable/prae_impale/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/dancer_user = owner
 
@@ -123,6 +120,12 @@
 	dancer_user.visible_message(SPAN_DANGER("\The [dancer_user] violently slices [target_atom] with its tail[buffed?" twice":""]!"),
 					SPAN_DANGER("We slice [target_atom] with our tail[buffed?" twice":""]!"))
 
+	var/list/attack_data = list(
+			"attacker" = dancer_user,
+			"target" = target_carbon,
+			"damage" = damage
+		)
+
 	if(buffed)
 		dancer_user.animation_attack_on(target_atom)
 		dancer_user.flick_attack_overlay(target_atom, "tail")
@@ -132,16 +135,13 @@
 		playsound(target_carbon, 'sound/weapons/alien_tail_attack.ogg', 30, TRUE)
 
 		damage = get_xeno_damage_slash(target_carbon, rand(dancer_user.melee_damage_lower, dancer_user.melee_damage_upper))
-		var/list/attack_data = list(
-			"attacker" = dancer_user,
-			"target" = target_carbon,
-			"damage" = damage
-		)
-		addtimer(CALLBACK(src, /datum/action/xeno_action/activable/prae_impale/proc/delayed_impale_strike, attack_data), 4 DECISECONDS)
+		addtimer(CALLBACK(src, /datum/action/xeno_action/activable/prae_impale/proc/impale_strike, attack_data), 4 DECISECONDS)
+	else
+		addtimer(CALLBACK(src, /datum/action/xeno_action/activable/prae_impale/proc/impale_strike, attack_data))
 
 	return ..()
 
-/datum/action/xeno_action/activable/prae_impale/proc/delayed_impale_strike(list/attack_data)
+/datum/action/xeno_action/activable/prae_impale/proc/impale_strike(list/attack_data)
 	var/mob/living/carbon/xenomorph/attacker = attack_data["attacker"]
 	var/mob/living/carbon/target = attack_data["target"]
 	var/damage = attack_data["damage"]

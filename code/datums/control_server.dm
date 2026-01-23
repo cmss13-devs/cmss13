@@ -34,7 +34,7 @@ GLOBAL_LIST_EMPTY(ckey_to_controller)
   </head>
   <body>
     <script>
-     window.contact("status");
+      window.contact("status");
     </script>
   </body>
 </html>

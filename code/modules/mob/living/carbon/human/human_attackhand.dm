@@ -302,7 +302,6 @@
 			status += "OK"
 
 		var/postscript
-		var/post_script
 		if(org.status & LIMB_UNCALIBRATED_PROSTHETIC)
 			postscript += " (NONFUNCTIONAL)"
 		if(org.status & LIMB_BROKEN)
@@ -315,10 +314,9 @@
 			postscript += " (SEVERE BURN)"
 		if(org.status & LIMB_ESCHAR)
 			postscript += " (ESCHAR)"
-		post_script = SPAN_BOLD(postscript)
 
 		if(postscript)
-			limb_message += "\t My [org.display_name] is [SPAN_WARNING("[english_list(status, final_comma_text = ",")].[postscript]")]"
+			limb_message += "\t My [org.display_name] is [SPAN_WARNING("[english_list(status, final_comma_text = ",")].SPAN_BOLD("[postscript]")")]"
 		else
 			limb_message += "\t My [org.display_name] is [status[1] == "OK" ? SPAN_NOTICE("OK.") : SPAN_WARNING("[english_list(status, final_comma_text = ",")].")]"
 	to_chat(src, boxed_message(limb_message.Join("\n")))

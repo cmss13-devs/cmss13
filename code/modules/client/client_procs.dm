@@ -275,6 +275,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if(!length(types_to_oidc_endpoint))
 		return
 
+	var/pre_ckey = ckey
+
 	for(var/oidc_endpoint, oidc_type in types_to_oidc_endpoint)
 		var/access_code = topic_headers[oidc_type]
 		if(!access_code)
@@ -344,6 +346,11 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		log_access("PREAUTHORIZATION: user [found_ckey] assigned username [found_username].")
 		external_username = found_username
 		break
+
+	if(pre_ckey != ckey)
+		var/launcher_port = topic_headers["launcher_port"]
+		if(launcher_port)
+			var/datum/control_server/server = new(src, launcher_port)
 
 	///////////
 	//CONNECT//

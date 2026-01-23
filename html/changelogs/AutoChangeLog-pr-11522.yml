@@ -1,4 +1,0 @@
-author: "larentoun"
-delete-after: True
-changes:
-  - bugfix: "Xenomorphs with Seethrough Mob enabled (only Queen has it right now) now will properly show wounds from damage on their icons."

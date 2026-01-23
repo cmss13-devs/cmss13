@@ -351,6 +351,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		var/launcher_port = topic_headers["launcher_port"]
 		if(launcher_port)
 			var/datum/control_server/server = new(src, launcher_port)
+			server.setup()
 
 	///////////
 	//CONNECT//

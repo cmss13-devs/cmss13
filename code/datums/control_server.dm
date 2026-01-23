@@ -6,12 +6,12 @@ GLOBAL_LIST_EMPTY(ckey_to_controller)
 
 	var/initialised = FALSE
 
-	var/static/server_html = {"""
+	var/static/server_html = {"
 <!DOCTYPE html>
 <html>
   <head>
     <script>
-      window.contactController = (endpoint) => {
+      window.contact = (endpoint) => {
       	const port = %SERVER_PORT%;
       	fetch(`http://localhost:${port}/${endpoint}`).then((response) => {
 			const contentType = response.headers.get('content-type');
@@ -25,7 +25,7 @@ GLOBAL_LIST_EMPTY(ckey_to_controller)
     </script>
   </head>
 </html>
-	"""}
+"}
 
 /datum/control_server/New(client/controlling, port)
 	src.controlling = controlling
@@ -47,7 +47,7 @@ GLOBAL_LIST_EMPTY(ckey_to_controller)
 	send_to_controller("status")
 
 /datum/control_server/proc/send_to_controller(endpoint)
-	controlling << output(endpoint, "control-server.browser:contactController")
+	controlling << output(endpoint, "control-server.browser:contact")
 
 CLIENT_VERB(control_server_input)
 	set name = ".controller"

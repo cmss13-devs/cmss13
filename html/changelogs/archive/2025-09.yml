@@ -352,3 +352,34 @@
   realforest2001:
   - code_imp: Changed each xeno hive name into a define.
   - rscadd: Added restriction variables on what factions each Xeno hive can ally with.
+2025-09-28:
+  byondsucks:
+  - bugfix: All CLF survs now spawn with bayonets.
+2025-09-29:
+  Drathek:
+  - bugfix: Orbit menu should no longer be finding null named mobs to crash on (also
+      has fallback behavior to name them as Unknown)
+  - bugfix: 'New players (or atleast one that has never saved preferences before)
+      now have their preferences sanitized immediately: For example this makes it
+      so fax responder names are randomized to begin with'
+  - bugfix: A few equipment presents (cmb, contractor, and royal marine) now will
+      have different hair colors
+  - code_imp: Various code standardization related to names and gender
+  - admin: Aghost observers are now hidden in Orbit menu
+  - spellcheck: Fixed a typo of clearence and reworked various balloon alerts to satisfy
+      new lints
+  - code_imp: Expanded balloon alert testing and changed the as anything optimization
+      check from o?range and o?hearers to o?range and o?view
+  - bugfix: Ctrl clicking a xeno now can give a timer how long until the afk xeno
+      can be taken over if its within the next 30s
+  - admin: Ctrl clicking a xeno no longer gives a message just because they're aghosted
+  sippykot:
+  - balance: added IFF to P9 SHARP
+2025-09-30:
+  Killfish:
+  - balance: Eating too much Nutriment will make you sick and slow you down until
+      you barf. Current threshold is 60u.
+  Red-byte3D:
+  - bugfix: RMC Marksman now spawns with the proper ammo
+  - bugfix: Xenomorphs now properly unhaul people they're carrying on death, hopefully
+      no more people going to space afterwards

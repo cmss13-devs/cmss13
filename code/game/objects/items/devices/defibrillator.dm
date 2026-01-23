@@ -281,7 +281,7 @@
 				P.trigger(target)
 				target.reagents.remove_reagent(R.id, 1)
 				break
-	if(target.health > HEALTH_THRESHOLD_DEAD)
+	if(target.health > target.health_threshold_dead)
 		user.visible_message(SPAN_NOTICE("[icon2html(src, viewers(src))] \The [src] beeps: [fluff_revive_message]."))
 		msg_admin_niche("[key_name_admin(user)] successfully revived [key_name_admin(target)] with [src].")
 		playsound(get_turf(src), sound_success, 25, 0)
@@ -372,6 +372,15 @@
 	sound_safety_on = 'sound/machines/click.ogg'
 	sound_safety_off = 'sound/machines/click.ogg'
 	sound_release = 'sound/items/synth_reset_key/release.ogg'
+
+/obj/item/device/defibrillator/synthetic/Initialize()
+	. = ..()
+	if(istype(src, /obj/item/device/defibrillator/synthetic/seegson))
+		AddElement(/datum/element/corp_label/seegson)
+	if(istype(src, /obj/item/device/defibrillator/synthetic/hyperdyne))
+		AddElement(/datum/element/corp_label/hyperdyne)
+	if(istypestrict(src, /obj/item/device/defibrillator/synthetic) || istypestrict(src, /obj/item/device/defibrillator/synthetic/noskill))
+		AddElement(/datum/element/corp_label/wy)
 
 /obj/item/device/defibrillator/synthetic/update_icon()
 	icon_state = initial(icon_state)

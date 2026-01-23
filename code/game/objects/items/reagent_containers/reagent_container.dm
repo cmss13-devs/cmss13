@@ -10,7 +10,7 @@
 	/// How many units of reagent get transfered out of the container at a time
 	var/amount_per_transfer_from_this = 5
 	/// A list of possible amounts that can be transferred
-	var/possible_transfer_amounts = list(5, 10, 15, 25, 30)
+	var/possible_transfer_amounts = list(5, 10, 15, 20, 25, 30)
 	/// The maximum volume the container can hold
 	var/volume = 30
 	/// Can we see what's in it?
@@ -94,10 +94,10 @@
 
 /datum/action/item_action/reagent_container/set_transfer_amount/New(mob/living/user, obj/item/holder)
 	..()
-	button.name = name
+	button.name = "Set Transfer Amount of [holder_item]"
 	button.overlays.Cut()
-	var/image/button_overlay = image(holder_item.icon, button, holder_item.icon_state)
-	button.overlays += button_overlay
+	action_icon_state = "transfer_liquid"
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
 	container = holder_item
 
 /datum/action/item_action/reagent_container/set_transfer_amount/action_activate()

@@ -53,6 +53,8 @@
 				var/obj/structure/machinery/power/apc/cur_apc = found_apcs[1]
 				var/apc_notes = "APC loc: ([cur_apc.x],[cur_apc.y]) [cur_apc.loc?.type]"
 				TEST_FAIL("[cur_area] ([cur_area.type]) has an APC with an inaccessible terminal!\n\t[apc_notes]")
+			if(cur_area.used_equip < 0 || cur_area.used_light < 0 || cur_area.used_environ < 0 || cur_area.used_oneoff < 0)
+				TEST_FAIL("[cur_area] ([cur_area.type]) has [cur_area.used_equip] Eqp, [cur_area.used_light] Lgt, [cur_area.used_environ] Env, [cur_area.used_oneoff] OneOff power used!")
 			continue // Pass
 		if(apc_count > 1)
 			var/apc_notes = "APC locs: "

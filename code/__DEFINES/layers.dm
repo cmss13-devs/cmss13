@@ -11,7 +11,7 @@
 
 //#define AREA_LAYER 1
 
-#define DISPLACEMENT_PLATE_RENDER_LAYER 1
+#define DISPLACEMENT_PLATE_RENDER_LAYER 10
 #define DISPLACEMENT_PLATE_RENDER_TARGET "*DISPLACEMENT_PLATE_RENDER_TARGET"
 
 #define UNDER_TURF_LAYER 1.99
@@ -20,6 +20,7 @@
 
 #define ABOVE_TURF_LAYER 2.01
 #define WALL_LAYER 2.02
+#define ABOVE_WALL_LAYER 2.03
 
 #define LATTICE_LAYER 2.15
 
@@ -172,11 +173,19 @@
 
 #define HUD_LAYER 19
 #define ABOVE_HUD_LAYER 20
-
 #define CINEMATIC_LAYER 21
+#define TACMAP_LAYER 22
+#define INTRO_LAYER 23
 
 /// for areas, so they appear above everything else on map file.
 #define AREAS_LAYER 999
+
+//Float layers. These layer over normal layers, but a high float layer will layer over a lower float layer (i.e. -1 over -2)
+#define BELOW_FLOAT_LAYER -2
+#define STANDARD_FLOAT_LAYER -1
+#define ABOVE_FLOAT_LAYER -0.9
+#define HIGH_FLOAT_LAYER -0.8
+#define VERY_HIGH_FLOAT_LAYER -0.7
 
 //---------- EMISSIVES -------------
 //Layering order of these is not particularly meaningful.
@@ -223,6 +232,7 @@
 #define LOWEST_EVER_PLANE -200
 
 #define OPEN_SPACE_PLANE_END -20
+
 // Do no put anything between these two, adjust more z level support as needed
 #define OPEN_SPACE_PLANE_START -9
 
@@ -230,19 +240,28 @@
 
 /// Floor plane, self explanatory. Used for Ambient Occlusion filter
 #define FLOOR_PLANE -7
-/// Game Plane, where most of the game objects reside
-#define GAME_PLANE -6
-/// Above Game Plane. For things which are above game objects, but below screen effects.
-#define ABOVE_GAME_PLANE -5
 
-///Slightly above the game plane but does not catch mouse clicks. Useful for certain visuals that should be clicked through, like seethrough trees
-#define SEETHROUGH_PLANE -2
-
-/// Roof plane, disappearing when entering buildings
-#define ROOF_PLANE -4
+#define TURF_PLANE -6
 
 /// To keep from conflicts with SEE_BLACKNESS internals
 #define BLACKNESS_PLANE 0
+
+
+/// Game Plane, where most of the game objects reside
+#define GAME_PLANE 1
+
+/// Above Game Plane. For things which are above game objects, but below screen effects.
+#define ABOVE_GAME_PLANE 2
+
+///Slightly above the game plane but does not catch mouse clicks. Useful for certain visuals that should be clicked through, like seethrough trees
+#define SEETHROUGH_PLANE 3
+
+/// Roof plane, disappearing when entering buildings
+#define ROOF_PLANE 4
+
+/// For turfs and things we want to appear *over* blackness
+#define ABOVE_BLACKNESS_PLANE 5
+#define ABOVE_BLACKNESS_BACKDROP_PLANE 6
 
 #define GHOST_PLANE 80
 
@@ -257,7 +276,6 @@
 #define RENDER_PLANE_GAME 990
 #define RENDER_PLANE_NON_GAME 995
 
-#define ESCAPE_MENU_PLANE 997
 
 #define RENDER_PLANE_MASTER 999
 
@@ -267,9 +285,10 @@
 /// HUD layer defines
 #define HUD_PLANE 1000
 #define ABOVE_HUD_PLANE 1100
-
+#define TACMAP_PLANE 1149
+#define ABOVE_TACMAP_PLANE 1150
 #define CINEMATIC_PLANE 1200
-
+#define ESCAPE_MENU_PLANE 1300
 
 /// Plane master controller keys
 #define PLANE_MASTERS_GAME "plane_masters_game"

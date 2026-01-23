@@ -282,6 +282,10 @@
 	internal_slots = 6
 	direct_draw = FALSE
 
+/obj/item/weapon/gun/launcher/grenade/m92/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/armat)
+
 /obj/item/weapon/gun/launcher/grenade/m92/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 14, "rail_y" = 22, "under_x" = 19, "under_y" = 14, "stock_x" = 19, "stock_y" = 14)
 
@@ -384,6 +388,10 @@
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 	)
+
+/obj/item/weapon/gun/launcher/grenade/m81/m85a1/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/armat)
 
 /obj/item/weapon/gun/launcher/grenade/m81/m85a1/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18, "rail_x" = 18, "rail_y" = 21, "under_x" = 19, "under_y" = 14, "stock_x" = 14, "stock_y" = 14)

@@ -100,7 +100,6 @@ GLOBAL_LIST_INIT(autolathe_wire_descriptions, flatten_numeric_alist(alist(
 		return
 	if(shocked)
 		shock(user, 50)
-		return
 	tgui_interact(user)
 
 /obj/structure/machinery/autolathe/tgui_interact(mob/user, datum/tgui/ui)

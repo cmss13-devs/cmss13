@@ -677,7 +677,7 @@
 /mob/living/carbon/xenomorph/proc/add_fire_immunity_signals()
 	var/valid_immunity = fire_immunity
 	if(fire_immunity & FIRE_IMMUNITY_XENO_FRENZY)
-		valid_immunity -= FIRE_IMMUNITY_XENO_FRENZY
+		valid_immunity &= ~FIRE_IMMUNITY_XENO_FRENZY
 
 	switch(valid_immunity)
 		if(FIRE_IMMUNITY_NO_DAMAGE)

@@ -581,15 +581,6 @@
 
 /obj/item/weapon/gun/smg/pps43/extended_mag
 	current_mag = /obj/item/ammo_magazine/smg/pps43/extended
-
-/obj/item/weapon/gun/smg/pps43/corporate
-	desc = "An outdated, but reliable and powerful, submachinegun originating in the Union of Progressive Peoples, it is still now modified to be used by Weyland-Yutani corporate security forces. It is usually used with a 35 round stick magazine, or a 71 round drum."
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_WY_RESTRICTED
-
-/obj/item/weapon/gun/smg/pps43/corporate/Initialize()
-	. = ..()
-	AddElement(/datum/element/corp_label/wy)
-
 //-------------------------------------------------------
 //Type 64
 

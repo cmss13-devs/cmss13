@@ -78,7 +78,6 @@ GLOBAL_LIST_INIT(cm_vending_gear_corporate_security_full, list(
 	list("NSG23 Assault Rifle", 0, /obj/effect/essentials_set/wy_nsg23, MARINE_CAN_BUY_KIT, VENDOR_ITEM_REGULAR),
 	list("M16A5 Rifle", 15, /obj/effect/essentials_set/wy_m16a5, MARINE_CAN_BUY_KIT, VENDOR_ITEM_REGULAR),
 	list("MP5A5 Submachine Gun", 10, /obj/effect/essentials_set/wy_mp5a5, MARINE_CAN_BUY_KIT, VENDOR_ITEM_REGULAR),
-	list("Type-19 Submachine Gun", 15, /obj/effect/essentials_set/wy_pps43, MARINE_CAN_BUY_KIT, VENDOR_ITEM_REGULAR),
 	list("FN P90 Submachine Gun", 15, /obj/effect/essentials_set/wy_p90, MARINE_CAN_BUY_KIT, VENDOR_ITEM_REGULAR),
 
 	list("SIDEARM (CHOOSE 1)", 0, null, null, null),
@@ -112,8 +111,6 @@ GLOBAL_LIST_INIT(cm_vending_gear_corporate_security_full, list(
 	list("M16 Extended Magazine (5.56x45mm)", 8, /obj/item/ammo_magazine/rifle/m16/ext, null, VENDOR_ITEM_REGULAR),
 	list("M16 AP Magazine (5.56x45mm)", 8, /obj/item/ammo_magazine/rifle/m16/ap , null, VENDOR_ITEM_REGULAR),
 	list("MP5 Magazine (9mm)", 6, /obj/item/ammo_magazine/smg/mp5 , null, VENDOR_ITEM_REGULAR),
-	list("Type-19 Stick Magazine (7.62x25mm)", 6, /obj/item/ammo_magazine/smg/pps43 , null, VENDOR_ITEM_REGULAR),
-	list("Type-19 Drum Nagazine (7.62x25mm)", 10, /obj/item/ammo_magazine/smg/pps43/extended , null, VENDOR_ITEM_REGULAR),
 	list("FN P90 Magazine (5.7x28mm)", 6, /obj/item/ammo_magazine/smg/p90 , null, VENDOR_ITEM_REGULAR),
 	list("FN P90 AP Magazine (5.7x28mm)", 10, /obj/item/ammo_magazine/smg/p90/ap , null, VENDOR_ITEM_REGULAR),
 	list("L54 Magazine (9mm)", 2, /obj/item/ammo_magazine/pistol/l54, null, VENDOR_ITEM_REGULAR),
@@ -203,14 +200,6 @@ GLOBAL_LIST_INIT(cm_vending_gear_corporate_security_full, list(
 		/obj/item/ammo_magazine/smg/mp5,
 		/obj/item/ammo_magazine/smg/mp5,
 		/obj/item/ammo_magazine/smg/mp5,
-	)
-
-/obj/effect/essentials_set/wy_pps43
-	spawned_gear_list = list(
-		/obj/item/weapon/gun/smg/pps43/corporate,
-		/obj/item/ammo_magazine/smg/pps43,
-		/obj/item/ammo_magazine/smg/pps43,
-		/obj/item/ammo_magazine/smg/pps43,
 	)
 
 /obj/effect/essentials_set/wy_p90

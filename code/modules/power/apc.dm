@@ -364,7 +364,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, flatten_numeric_alist(alist(
 /obj/structure/machinery/power/apc/proc/make_terminal()
 	//Create a terminal object at the same position as original turf loc
 	//Wires will attach to this
-	terminal = new/obj/structure/terminal(src.loc)
+	terminal = new/obj/structure/terminal(loc)
 	terminal.setDir(dir)
 	terminal.master = src
 

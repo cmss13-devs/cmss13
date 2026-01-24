@@ -4,6 +4,40 @@
 /obj/item/storage/box/mre/upp,
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/desert_dam/exterior/valley/valley_civilian)
+"ab" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 4
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"ac" = (
+/obj/effect/decal/sand_overlay/sand1/corner1,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"ad" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 8
+	},
+/turf/open/mars/mars_dirt_5,
+/area/desert_dam/exterior/valley/valley_civilian)
+"ae" = (
+/obj/effect/decal/sand_overlay/sand1/corner1,
+/turf/open/mars/mars_dirt_5,
+/area/desert_dam/exterior/valley/valley_civilian)
+"af" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached,
+/area/desert_dam/exterior/valley/valley_civilian)
+"ag" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 4
+	},
+/turf/open/mars/mars_dirt_5,
+/area/desert_dam/exterior/valley/valley_civilian)
 "bm" = (
 /obj/structure/machinery/light/double{
 	dir = 4;
@@ -114,10 +148,6 @@
 	dir = 4
 	},
 /turf/open/mars/mars_dirt_5,
-/area/desert_dam/exterior/valley/valley_civilian)
-"hv" = (
-/obj/effect/decal/sand_overlay/sand1/corner1,
-/turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_civilian)
 "hK" = (
 /obj/structure/prop/invuln/fire{
@@ -323,20 +353,9 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_civilian)
-"ul" = (
-/obj/effect/decal/sand_overlay/sand1/corner1,
-/turf/open/mars/mars_dirt_5,
-/area/desert_dam/exterior/valley/valley_civilian)
 "uw" = (
 /obj/effect/decal/sand_overlay/sand1,
 /turf/open/desert/dirt,
-/area/desert_dam/exterior/valley/valley_civilian)
-"uG" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/sand_overlay/sand1{
-	dir = 4
-	},
-/turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_civilian)
 "uK" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -471,12 +490,6 @@
 	},
 /turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/valley_civilian)
-"zS" = (
-/obj/effect/decal/sand_overlay/sand1/corner1{
-	dir = 8
-	},
-/turf/open/mars/mars_dirt_5,
-/area/desert_dam/exterior/valley/valley_civilian)
 "As" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 10
@@ -549,22 +562,9 @@
 	name = "Buran"
 	},
 /area/desert_dam/exterior/valley/valley_civilian)
-"DN" = (
-/obj/effect/decal/sand_overlay/sand1/corner1{
-	dir = 4
-	},
-/turf/open/asphalt,
-/area/desert_dam/exterior/valley/valley_civilian)
 "DO" = (
 /obj/structure/flora/grass/desert/lightgrass_9,
 /obj/effect/decal/cleanable/blood/splatter,
-/turf/open/mars/mars_dirt_5,
-/area/desert_dam/exterior/valley/valley_civilian)
-"Ef" = (
-/obj/effect/decal/cleanable/blood/splatter,
-/obj/effect/decal/sand_overlay/sand1/corner1{
-	dir = 4
-	},
 /turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/valley_civilian)
 "Eh" = (
@@ -1098,7 +1098,7 @@ sl
 nX
 xM
 VD
-hv
+ac
 Jb
 Xn
 Hm
@@ -1137,7 +1137,7 @@ As
 xK
 Zz
 Sf
-DN
+ab
 Xq
 Xq
 Xq
@@ -1243,7 +1243,7 @@ JW
 Tn
 TT
 xz
-zS
+ad
 nj
 As
 la
@@ -1275,9 +1275,9 @@ nX
 nX
 nX
 Mp
-Ef
+ag
 Yv
-zS
+ad
 PS
 hK
 nA
@@ -1287,7 +1287,7 @@ ig
 Yv
 Yv
 DO
-zS
+ad
 As
 fL
 im
@@ -1352,7 +1352,7 @@ kV
 dN
 Yv
 Yv
-zS
+ad
 As
 nX
 Lc
@@ -1404,7 +1404,7 @@ Zm
 bV
 xt
 Yv
-ul
+ae
 UK
 xz
 xE
@@ -1416,7 +1416,7 @@ Yv
 Yv
 Yv
 Yv
-ul
+ae
 nd
 nX
 nn
@@ -1435,7 +1435,7 @@ Hu
 bV
 cG
 xt
-ul
+ae
 nd
 nX
 TT
@@ -1479,7 +1479,7 @@ yl
 fA
 kd
 Yv
-ul
+ae
 nd
 nX
 fp
@@ -1510,7 +1510,7 @@ la
 eC
 Dd
 UB
-ul
+ae
 nd
 nX
 BE
@@ -1574,8 +1574,8 @@ la
 la
 pF
 xt
-zS
-uG
+ad
+af
 HP
 qD
 cp

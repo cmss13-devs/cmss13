@@ -500,14 +500,6 @@
 	},
 /turf/open/floor/wood,
 /area/desert_dam/building/water_treatment_one/hallway)
-"iw" = (
-/obj/structure/catwalk,
-/obj/structure/machinery/shower{
-	pixel_y = 16
-	},
-/obj/structure/curtain/open/shower,
-/turf/open/floor/plating,
-/area/desert_dam/building/water_treatment_one/breakroom)
 "iC" = (
 /obj/structure/barricade/wooden,
 /turf/open/floor/prison/bright_clean/southwest,
@@ -1070,6 +1062,14 @@
 /area/desert_dam/building/water_treatment_one/lobby)
 "AX" = (
 /turf/open/floor/whiteyellow/southeast,
+/area/desert_dam/building/water_treatment_one/breakroom)
+"Bl" = (
+/obj/structure/catwalk,
+/obj/structure/machinery/shower{
+	pixel_y = 16
+	},
+/obj/structure/curtain/open/shower,
+/turf/open/floor/plating,
 /area/desert_dam/building/water_treatment_one/breakroom)
 "Bt" = (
 /obj/structure/disposalpipe/segment,
@@ -1852,7 +1852,7 @@ od
 zP
 hc
 vz
-iw
+Bl
 qc
 Ps
 vz
@@ -1876,7 +1876,7 @@ FC
 zP
 aq
 vz
-iw
+Bl
 Vm
 af
 vz

@@ -63,6 +63,26 @@
 	},
 /turf/open/desert/rock/deep/transition/north,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"ak" = (
+/obj/effect/decal/sand_overlay/sand2,
+/turf/open/floor/plating/burnt_platingdmg3,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"al" = (
+/turf/open/asphalt/cement/cement15,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"am" = (
+/turf/open/asphalt/cement/cement1,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"an" = (
+/turf/open/asphalt/cement/cement3,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"ao" = (
+/turf/open/asphalt/cement/cement4,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"ap" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement/cement12,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "aq" = (
 /turf/closed/wall,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
@@ -195,9 +215,6 @@
 	},
 /turf/open/asphalt/cement/cement4,
 /area/desert_dam/interior/dam_interior/south_tunnel)
-"jP" = (
-/turf/open/asphalt/cement/cement1,
-/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "kf" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -351,9 +368,6 @@
 /obj/structure/barricade/wooden,
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
-"to" = (
-/turf/open/asphalt/cement/cement15,
-/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "ts" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
@@ -365,9 +379,6 @@
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "tL" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
-/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
-"uq" = (
-/turf/open/asphalt/cement/cement4,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "ur" = (
 /obj/effect/decal/cleanable/dirt,
@@ -530,10 +541,6 @@
 	icon_state = "road_edge_decal4"
 	},
 /turf/open/asphalt,
-/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
-"Hg" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement/cement12,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "Hm" = (
 /obj/effect/decal/sand_overlay/sand1,
@@ -880,10 +887,6 @@
 /obj/item/stack/rods,
 /turf/open/asphalt/cement/cement4,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
-"Xw" = (
-/obj/effect/decal/sand_overlay/sand2,
-/turf/open/floor/plating/burnt_platingdmg3,
-/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "Xz" = (
 /turf/closed/wall/r_wall/bunker,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
@@ -910,9 +913,6 @@
 /obj/effect/spawner/gibspawner/xeno,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
-"Zm" = (
-/turf/open/asphalt/cement/cement3,
-/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "Zn" = (
 /turf/open/desert/rock/deep/transition/north,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
@@ -982,7 +982,7 @@ Xz
 Xz
 Ep
 oW
-jP
+am
 SH
 Ha
 kf
@@ -1013,7 +1013,7 @@ Nh
 cp
 et
 AT
-Xw
+ak
 Xz
 Bv
 "}
@@ -1032,7 +1032,7 @@ Zn
 aj
 Xz
 oC
-Zm
+an
 nK
 Ha
 PN
@@ -1079,9 +1079,9 @@ Gz
 MP
 ur
 Md
-Hg
+ap
 WW
-uq
+ao
 Si
 rs
 Ha
@@ -1108,7 +1108,7 @@ sW
 hE
 Si
 Ik
-to
+al
 Ha
 PN
 et
@@ -1132,7 +1132,7 @@ Tr
 MZ
 Xz
 ij
-to
+al
 Bu
 PL
 Wl

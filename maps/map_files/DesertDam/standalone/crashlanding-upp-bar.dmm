@@ -40,6 +40,31 @@
 	},
 /turf/open/floor/grimy,
 /area/desert_dam/building/bar/bar)
+"ah" = (
+/obj/structure/barricade/sandbags/wired,
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 8
+	},
+/turf/open/mars/mars_dirt_5,
+/area/desert_dam/exterior/valley/bar_valley_dam)
+"ai" = (
+/obj/structure/barricade/sandbags/wired,
+/obj/effect/decal/sand_overlay/sand1/corner1,
+/turf/open/mars/mars_dirt_5,
+/area/desert_dam/exterior/valley/bar_valley_dam)
+"aj" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 8
+	},
+/turf/open/mars/mars_dirt_5,
+/area/desert_dam/exterior/valley/bar_valley_dam)
+"ak" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 1
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
+/area/desert_dam/exterior/valley/bar_valley_dam)
 "am" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal11"
@@ -342,13 +367,6 @@
 /obj/structure/desertdam/decals/road_edge,
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
-"gq" = (
-/obj/structure/barricade/sandbags/wired,
-/obj/effect/decal/sand_overlay/sand1/corner1{
-	dir = 8
-	},
-/turf/open/mars/mars_dirt_5,
-/area/desert_dam/exterior/valley/bar_valley_dam)
 "gA" = (
 /obj/structure/disposalpipe/segment,
 /obj/item/ammo_casing/bullet,
@@ -1012,12 +1030,6 @@
 /obj/structure/flora/grass/desert/lightgrass_10,
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/desert/dirt,
-/area/desert_dam/exterior/valley/bar_valley_dam)
-"up" = (
-/obj/effect/decal/sand_overlay/sand1/corner1{
-	dir = 8
-	},
-/turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "uA" = (
 /obj/structure/surface/table/almayer,
@@ -1777,11 +1789,6 @@
 /obj/effect/decal/cleanable/blood/oil/streak,
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)
-"GL" = (
-/obj/structure/barricade/sandbags/wired,
-/obj/effect/decal/sand_overlay/sand1/corner1,
-/turf/open/mars/mars_dirt_5,
-/area/desert_dam/exterior/valley/bar_valley_dam)
 "GP" = (
 /obj/item/prop/colony/used_flare,
 /turf/open/floor/grimy,
@@ -2020,13 +2027,6 @@
 /obj/effect/spawner/gibspawner/human,
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)
-"MN" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/sand_overlay/sand1{
-	dir = 1
-	},
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
-/area/desert_dam/exterior/valley/bar_valley_dam)
 "MW" = (
 /obj/effect/decal/sand_overlay/sand1,
 /obj/structure/barricade/sandbags/wired{
@@ -2993,7 +2993,7 @@ YY
 Cm
 nk
 bO
-up
+aj
 pk
 xT
 xT
@@ -3108,7 +3108,7 @@ wZ
 gM
 kf
 kf
-up
+aj
 jC
 IU
 PY
@@ -3150,7 +3150,7 @@ cR
 kf
 kf
 kf
-up
+aj
 pk
 xT
 xT
@@ -3189,7 +3189,7 @@ kf
 Di
 md
 tl
-gq
+ah
 QI
 xT
 xT
@@ -3265,7 +3265,7 @@ Jd
 kf
 tl
 np
-GL
+ai
 Nj
 pu
 xT
@@ -3476,7 +3476,7 @@ ln
 ln
 ln
 wJ
-MN
+ak
 DR
 xr
 kD

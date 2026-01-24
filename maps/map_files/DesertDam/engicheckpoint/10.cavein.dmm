@@ -69,6 +69,22 @@
 	},
 /turf/open/desert/rock/deep/transition/north,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"al" = (
+/turf/open/asphalt/cement/cement15,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"am" = (
+/turf/open/asphalt/cement/cement1,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"an" = (
+/turf/open/asphalt/cement/cement3,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"ao" = (
+/turf/open/asphalt/cement/cement4,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"ap" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement/cement12,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "bg" = (
 /obj/structure/bed,
 /obj/structure/machinery/light{
@@ -143,9 +159,6 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
-"fz" = (
-/turf/open/asphalt/cement/cement3,
-/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "fJ" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal4"
@@ -179,10 +192,6 @@
 	dir = 8
 	},
 /turf/open/asphalt/cement/cement1,
-/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
-"iT" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement/cement12,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "je" = (
 /turf/open/asphalt/cement,
@@ -627,9 +636,6 @@
 /obj/item/storage/donut_box,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
-"KR" = (
-/turf/open/asphalt/cement/cement4,
-/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "NU" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal3"
@@ -702,9 +708,6 @@
 "UK" = (
 /turf/open/desert/rock/deep,
 /area/desert_dam/interior/dam_interior/south_tunnel)
-"VP" = (
-/turf/open/asphalt/cement/cement15,
-/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "WV" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/device/flashlight/lamp,
@@ -713,9 +716,6 @@
 "WW" = (
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
-"YU" = (
-/turf/open/asphalt/cement/cement1,
-/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "ZU" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -788,7 +788,7 @@ fN
 fN
 Jm
 Cj
-YU
+am
 rb
 le
 pT
@@ -838,7 +838,7 @@ pC
 ak
 fN
 gQ
-fz
+an
 Cr
 le
 pT
@@ -885,9 +885,9 @@ uX
 qc
 sv
 fJ
-iT
+ap
 we
-KR
+ao
 je
 Sv
 le
@@ -914,7 +914,7 @@ sv
 DR
 je
 je
-VP
+al
 le
 pT
 lU
@@ -938,7 +938,7 @@ hO
 AU
 fN
 AM
-VP
+al
 bC
 le
 Sn

@@ -4140,9 +4140,6 @@
 	},
 /turf/open/gm/coast/dirt/beachcorner,
 /area/strata/exterior/deep_jungle/tearlake)
-"alz" = (
-/turf/open/slippery/hull/dir/southeast,
-/area/strata/interior/outpost/admin)
 "alA" = (
 /obj/structure/flora/bush/ausbushes/reedbush{
 	pixel_y = 30
@@ -14291,8 +14288,8 @@
 /turf/open/asphalt/cement,
 /area/strata/exterior/mining_outpost_exterior)
 "aNO" = (
-/turf/closed/wall/strata_outpost,
-/area/strata/exterior/deep_jungle/platform_east)
+/turf/open/slippery/hull/dir/southeast,
+/area/strata/interior/outpost/admin)
 "aNP" = (
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/south_outpost)
@@ -14931,7 +14928,7 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/interior/outpost/foyer)
 "aPA" = (
-/turf/closed/wall/wood,
+/turf/closed/wall/strata_outpost,
 /area/strata/exterior/deep_jungle/platform_east)
 "aPB" = (
 /obj/structure/flora/pottedplant{
@@ -15366,11 +15363,8 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/flight_control_exterior)
 "aQJ" = (
-/obj/structure/bed/chair{
-	dir = 1
-	},
-/turf/open/floor/strata/blue1,
-/area/strata/interior/bball)
+/turf/closed/wall/wood,
+/area/strata/exterior/deep_jungle/platform_east)
 "aQK" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/pipes/standard/simple/hidden/cyan,
@@ -15569,6 +15563,12 @@
 /obj/effect/landmark/corpsespawner/chef,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/outpost/canteen/bar)
+"aRo" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/open/floor/strata/blue1,
+/area/strata/interior/bball)
 "aRp" = (
 /obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
@@ -77376,7 +77376,7 @@ bQk
 bQk
 bQk
 bHT
-aQJ
+aRo
 bKn
 dWm
 cdA
@@ -77551,7 +77551,7 @@ bRP
 bQZ
 bQl
 bHT
-aQJ
+aRo
 cci
 cdA
 aOv
@@ -77726,7 +77726,7 @@ bfn
 bFl
 bhA
 bHT
-aQJ
+aRo
 bKp
 cdA
 awU
@@ -77901,7 +77901,7 @@ bRQ
 bFl
 bQm
 bHS
-aQJ
+aRo
 cci
 bOV
 cci
@@ -78076,7 +78076,7 @@ bRR
 bFs
 eIR
 afj
-aQJ
+aRo
 cci
 cci
 cci
@@ -80040,7 +80040,7 @@ bfV
 bfV
 bfV
 bfV
-alz
+aNO
 eFF
 blN
 biH
@@ -87912,7 +87912,7 @@ gol
 gol
 gol
 aac
-aNO
+aPA
 bbK
 aWI
 xjr
@@ -88085,7 +88085,7 @@ cjr
 cjr
 cjr
 cjr
-aPA
+aQJ
 aac
 aac
 aSz
@@ -88256,7 +88256,7 @@ aEt
 aFG
 bCj
 aac
-aPA
+aQJ
 cjr
 cjr
 aac
@@ -88614,7 +88614,7 @@ aac
 cjr
 cjr
 cjr
-aNO
+aPA
 acc
 acc
 acc

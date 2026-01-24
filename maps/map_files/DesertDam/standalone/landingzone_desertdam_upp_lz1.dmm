@@ -40,10 +40,54 @@
 /obj/structure/machinery/light,
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/building/cafeteria/cafeteria)
+"bj" = (
+/obj/structure/surface/rack,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/building/mining/workshop)
+"bk" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 4
+	},
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_civilian)
 "bl" = (
 /obj/structure/largecrate/random,
 /turf/open/floor/prison,
 /area/desert_dam/building/mining/workshop)
+"bm" = (
+/obj/structure/surface/table,
+/obj/item/reagent_container/food/snacks/bun,
+/obj/item/reagent_container/food/snacks/bun,
+/obj/item/reagent_container/food/snacks/cheesewedge,
+/obj/item/reagent_container/food/snacks/donut,
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
+"bn" = (
+/obj/structure/surface/table,
+/obj/item/reagent_container/food/snacks/bun,
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
+"bo" = (
+/obj/structure/surface/table,
+/obj/item/reagent_container/food/snacks/donut,
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
+"bp" = (
+/obj/structure/surface/table,
+/obj/item/reagent_container/food/snacks/chips,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
+"bq" = (
+/obj/structure/surface/table,
+/obj/item/reagent_container/food/snacks/candy,
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
+"br" = (
+/obj/structure/machinery/power/apc/no_power/west,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/cafeteria/cafeteria)
 "bs" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/extinguisher_cabinet{
@@ -52,6 +96,9 @@
 /obj/item/tool/kitchen/knife/butcher,
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/building/cafeteria/cafeteria)
+"bt" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached16,
+/area/desert_dam/exterior/valley/valley_civilian)
 "bv" = (
 /turf/open/floor/freezerfloor,
 /area/desert_dam/building/cafeteria/cafeteria)
@@ -151,14 +198,6 @@
 	dir = 6
 	},
 /turf/open/floor/prison/sterile_white,
-/area/desert_dam/building/cafeteria/cafeteria)
-"cX" = (
-/obj/structure/surface/table,
-/obj/item/reagent_container/food/snacks/bun,
-/obj/item/reagent_container/food/snacks/bun,
-/obj/item/reagent_container/food/snacks/cheesewedge,
-/obj/item/reagent_container/food/snacks/donut,
-/turf/open/floor/prison/kitchen/southwest,
 /area/desert_dam/building/cafeteria/cafeteria)
 "dc" = (
 /obj/structure/desertdam/decals/road_stop{
@@ -1087,12 +1126,6 @@
 /obj/structure/barricade/metal/wired,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
 /area/desert_dam/exterior/valley/valley_civilian)
-"rl" = (
-/obj/structure/surface/table,
-/obj/item/reagent_container/food/snacks/chips,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/kitchen/southwest,
-/area/desert_dam/building/cafeteria/cafeteria)
 "rx" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/chips,
@@ -1166,11 +1199,6 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/kitchen/southwest,
-/area/desert_dam/building/cafeteria/cafeteria)
-"sU" = (
-/obj/structure/machinery/power/apc/no_power/west,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/sterile_white,
 /area/desert_dam/building/cafeteria/cafeteria)
 "sW" = (
 /obj/structure/barricade/sandbags/wired{
@@ -1305,11 +1333,6 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/sterile_white,
-/area/desert_dam/building/cafeteria/cafeteria)
-"uQ" = (
-/obj/structure/surface/table,
-/obj/item/reagent_container/food/snacks/donut,
-/turf/open/floor/prison/kitchen/southwest,
 /area/desert_dam/building/cafeteria/cafeteria)
 "uW" = (
 /turf/closed/wall/r_wall,
@@ -2570,11 +2593,6 @@
 	},
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/building/cafeteria/cafeteria)
-"Qv" = (
-/obj/structure/surface/table,
-/obj/item/reagent_container/food/snacks/bun,
-/turf/open/floor/prison/kitchen/southwest,
-/area/desert_dam/building/cafeteria/cafeteria)
 "QK" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached19,
 /area/desert_dam/exterior/valley/valley_civilian)
@@ -2939,11 +2957,6 @@
 "Xb" = (
 /turf/open/floor/strata/floor3/east,
 /area/event/metal/dynamic/lit)
-"Xk" = (
-/obj/structure/surface/table,
-/obj/item/reagent_container/food/snacks/candy,
-/turf/open/floor/prison/kitchen/southwest,
-/area/desert_dam/building/cafeteria/cafeteria)
 "Xl" = (
 /obj/structure/barricade/metal/wired{
 	dir = 1
@@ -2969,9 +2982,6 @@
 /obj/structure/machinery/vending/cola,
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/building/cafeteria/cafeteria)
-"Yc" = (
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached16,
-/area/desert_dam/exterior/valley/valley_civilian)
 "Yd" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 5
@@ -2989,12 +2999,6 @@
 	icon_state = "stop_decal5"
 	},
 /turf/open/asphalt,
-/area/desert_dam/exterior/valley/valley_civilian)
-"Yj" = (
-/obj/effect/decal/sand_overlay/sand1/corner1{
-	dir = 4
-	},
-/turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_civilian)
 "Ym" = (
 /obj/effect/decal/cleanable/dirt,
@@ -3030,10 +3034,6 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_civilian)
-"YP" = (
-/obj/structure/surface/rack,
-/turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/building/mining/workshop)
 "YQ" = (
 /obj/structure/surface/rack,
 /turf/open/floor/plating,
@@ -3326,13 +3326,13 @@ Cx
 ff
 Qj
 Qj
-uQ
+bo
 tQ
 Um
 kY
 kY
-Qv
-cX
+bn
+bm
 xo
 ff
 IG
@@ -3383,12 +3383,12 @@ hV
 ff
 Qj
 ee
-rl
+bp
 tV
 NE
 oK
 oK
-Qv
+bn
 fL
 mK
 ff
@@ -3668,7 +3668,7 @@ Cx
 ff
 Qj
 Qr
-Xk
+bq
 Rt
 gC
 oK
@@ -3834,7 +3834,7 @@ JL
 FL
 NC
 ff
-sU
+br
 uM
 Qj
 yS
@@ -4192,7 +4192,7 @@ Qq
 bc
 QR
 QR
-Yj
+bk
 Fu
 Wa
 Ou
@@ -4604,7 +4604,7 @@ nX
 Kc
 lv
 Kc
-YP
+bj
 BI
 Zi
 BW
@@ -5077,7 +5077,7 @@ BW
 BW
 BW
 BW
-Yc
+bt
 Wa
 vD
 nU

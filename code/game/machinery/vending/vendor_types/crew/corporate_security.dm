@@ -121,6 +121,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_corporate_security_full, list(
 	list("L54 AP magazine (9mm)", 4, /obj/item/ammo_magazine/pistol/l54/ap, null, VENDOR_ITEM_REGULAR),
 	list("Spearhead Hollowpoint Speed Loader (.357)", 4, /obj/item/ammo_magazine/revolver/cmb, null, VENDOR_ITEM_REGULAR),
 	list("Spearhead Speed Loader (.357)", 6, /obj/item/ammo_magazine/revolver/cmb/normalpoint, null, VENDOR_ITEM_REGULAR),
+	list("Desert Eagle magazine (.50)", 8, /obj/item/ammo_magazine/pistol/heavy, null, VENDOR_ITEM_REGULAR),
 
 	list("RAIL ATTACHMENTS (CHOOSE 2)", 0, null, null, null),
 	list("Red-Dot Sight", 0, /obj/item/attachable/reddot, CIVILIAN_CAN_BUY_GLASSES, VENDOR_ITEM_REGULAR),

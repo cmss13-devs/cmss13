@@ -35527,9 +35527,6 @@
 	icon_state = "SW-out";
 	pixel_y = 0
 	},
-/obj/structure/sign/poster{
-	pixel_y = -26
-	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/flooredge/north,
 /area/almayer/squads/delta)
@@ -39681,11 +39678,14 @@
 /turf/open/floor/almayer,
 /area/almayer/command/corporateliaison)
 "bTJ" = (
-/obj/structure/sign/poster{
-	pixel_x = 25;
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/poster/propaganda{
+	pixel_x = 26
+	},
+/obj/structure/sign/poster/propaganda{
+	pixel_x = 34;
 	pixel_y = 7
 	},
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/flooredge/northwest,
 /area/almayer/squads/support)
 "bTK" = (
@@ -41583,6 +41583,14 @@
 /obj/structure/sign/nosmoking_1{
 	pixel_y = -28
 	},
+/obj/item/ashtray/bronze{
+	pixel_x = -9;
+	pixel_y = 1
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = -7;
+	pixel_y = 13
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/platoon2_shared)
 "bYu" = (
@@ -42293,7 +42301,7 @@
 /area/almayer/living/briefing)
 "bZQ" = (
 /obj/structure/machinery/cm_vending/gear/tl,
-/turf/open/floor/almayer/emerald/northwest,
+/turf/open/floor/almayer/plate,
 /area/almayer/squads/bravo)
 "bZR" = (
 /obj/structure/machinery/status_display{
@@ -42533,6 +42541,7 @@
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 4
 	},
+/obj/item/device/binoculars/civ,
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/platoon2_shared)
 "cay" = (
@@ -42565,6 +42574,12 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 8
+	},
+/obj/item/facepaint/black{
+	pixel_x = 6
+	},
+/obj/item/facepaint/brown{
+	pixel_x = -7
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/platoon2_shared)
@@ -45475,6 +45490,9 @@
 	icon_state = "NE-out";
 	pixel_x = 1;
 	pixel_y = 1
+	},
+/obj/structure/sign/poster/pinup{
+	pixel_x = 26
 	},
 /turf/open/floor/almayer/flooredge/southwest,
 /area/almayer/squads/delta)
@@ -62167,6 +62185,9 @@
 	layer = 3.3
 	},
 /obj/structure/machinery/power/apc/almayer/north,
+/obj/structure/sign/poster/music{
+	pixel_x = -27
+	},
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/squads/alpha)
 "ioM" = (
@@ -69068,7 +69089,7 @@
 /area/almayer/maint/hull/lower/l_f_s)
 "lrT" = (
 /obj/structure/machinery/cm_vending/clothing/tl/bravo,
-/turf/open/floor/almayer/emerald/west,
+/turf/open/floor/almayer/plate,
 /area/almayer/squads/bravo)
 "lrW" = (
 /obj/structure/surface/rack,
@@ -87966,7 +87987,7 @@
 	layer = 3.33;
 	pixel_x = 1
 	},
-/obj/structure/sign/poster{
+/obj/structure/sign/poster/safety{
 	pixel_y = 32
 	},
 /turf/open/floor/almayer/mono,
@@ -95576,6 +95597,9 @@
 /obj/structure/machinery/disposal{
 	pixel_x = -1;
 	pixel_y = 1
+	},
+/obj/structure/disposalpipe/trunk{
+	dir = 4
 	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/squads/bravo)

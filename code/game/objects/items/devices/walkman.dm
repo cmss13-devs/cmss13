@@ -365,33 +365,6 @@
 		var/mob/living/carbon/human/H = loc
 		H.regenerate_icons()
 
-/obj/item/device/walkman/black_band
-	name = "Synsound Walkman (Black Band)"
-	desc = "A Synsound cassette player that first hit the market over 200 years ago. Crazy how these never went out of style. This one has a black band."
-
-/obj/item/device/walkman/black_band/Initialize()
-	. = ..()
-	name = "Synsound Walkman" // band color in the name was only for the vendor
-	design = rand(1, 13)
-	icon_state = "walkman_[design]"
-	update_icon()
-
-/obj/item/device/walkman/black_band/update_icon()
-	overlays.Cut()
-	if(tape)
-		if(!paused)
-			overlays += "+Playing"
-			overlays += "+Play_or_pause"
-		else
-			overlays += "+Inserted"
-			overlays += "+Buttons_default"
-	else
-		overlays += "+Buttons_default"
-	overlays += "+Black_band"
-
-	if(ishuman(loc))
-		var/mob/living/carbon/human/H = loc
-		H.regenerate_icons()
 /*
 	TAPES
 */

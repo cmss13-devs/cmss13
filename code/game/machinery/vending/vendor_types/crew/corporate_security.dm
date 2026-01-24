@@ -87,6 +87,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_corporate_security_full, list(
 	list("VP78 Pistol", 8, /obj/item/storage/belt/gun/m4a3/wy/vp78, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
 	list("L54 Service Pistol", 0, /obj/item/storage/belt/gun/l54/corporate/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
 	list("Spearhead Autorevolver", 8, /obj/item/storage/belt/gun/m44/wy/revolver/cmb, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
+	list("Desert Eagle", 25, /obj/item/storage/belt/gun/m4a3/heavy/corporate, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
 
 	list("PRIMARY AMMUNITION", 0, null, null, null),
 	list("X21 Shock Slugs", 10, /obj/item/ammo_magazine/shotgun/beanbag/es7, null, VENDOR_ITEM_REGULAR),

@@ -283,6 +283,15 @@
 	recoil = RECOIL_AMOUNT_TIER_5
 	recoil_unwielded = RECOIL_AMOUNT_TIER_3
 
+/obj/item/weapon/gun/pistol/heavy/corporate
+	desc = "The handcannon that needs no introduction, the Desert Eagle is expensive, unwieldy, and extremely heavy for a pistol. However, it more than makes up for its weighty build \
+	with its powerful shots, capable of stopping a human, or even a bear, dead in their tracks. This one is modifed to be used by Weyland-Yutani Corporate Security"
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_WY_RESTRICTED
+
+/obj/item/weapon/gun/pistol/heavy/corporate/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/weapon/gun/pistol/heavy/co
 	name = "polished Desert Eagle"
 	icon_state = "c_deagle"

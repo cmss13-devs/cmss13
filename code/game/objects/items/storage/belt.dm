@@ -1726,6 +1726,15 @@
 	new /obj/item/ammo_magazine/pistol/heavy(src)
 	new /obj/item/ammo_magazine/pistol/heavy(src)
 
+/obj/item/storage/belt/gun/m4a3/heavy/corporate/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/heavy/corporate())
+	new /obj/item/ammo_magazine/pistol/heavy(src)
+	new /obj/item/ammo_magazine/pistol/heavy(src)
+	new /obj/item/ammo_magazine/pistol/heavy(src)
+	new /obj/item/ammo_magazine/pistol/heavy(src)
+	new /obj/item/ammo_magazine/pistol/heavy(src)
+	new /obj/item/ammo_magazine/pistol/heavy(src)
+
 /obj/item/storage/belt/gun/m4a3/heavy/co/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/heavy/co())
 	new /obj/item/ammo_magazine/pistol/heavy/super/highimpact(src)

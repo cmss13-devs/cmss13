@@ -1,7 +1,7 @@
 /datum/xeno_strain/venator
 	name = SPITTER_VENATOR
-	description = " fill in later"
-	flavor_description = " fill in later"
+	description = "At the cost of a little bit of your health and your spray and enhanced spit, you gain some armor, and further enhance your acid glands. You can store acid in these glands to increase the rate in which you can fire off your projectiles, yet considerably weaken your armor plating by doing so, up to a maximum of 5 times. Your spit now does considerably more damage as well as apply a lingering acid effect, while you now gain the ability to launch a blob of acid at a medium distance, which leaves behind a small area of acid, amplified if it hits a target directly by stunning the target. Additionally you can also now spit your acid in a wide arc, shooting multiple smaller pellets that inflict a small amount of damage but also coat the target in a layer of burning acid."
+	flavor_description = "Your acid burns as much as my fury, let your acid blot out the sun, let them choke on their own misery."
 	icon_state_prefix = "Venator"
 	actions_to_remove = list(
 		/datum/action/xeno_action/activable/tail_stab/spitter,

@@ -239,10 +239,10 @@
 		bonus_projectile_check = 1 //Mark this projectile as having spawned a set of bonus projectiles.
 
 	path = get_line(starting, target_turf)
-	normalize_vis_target()
 	p_x += clamp((rand()-0.5)*scatter*3, -8, 8)
 	p_y += clamp((rand()-0.5)*scatter*3, -8, 8)
 	update_angle(starting, target_turf)
+	normalize_vis_target()
 
 	src.speed = speed
 	// Randomize speed by a small factor to help bullet animations look okay

@@ -358,3 +358,10 @@
       will properly show wounds from damage on their icons.
   ori-disillusion-mirnov:
   - bugfix: ridden runners cannot ventcrawl
+2026-01-24:
+  MistChristmas:
+  - bugfix: Decon-ing an APC and reconstructing it elsewhere no longer stops it from
+      charging
+  - code_imp: Terminals are now somewhat fluff and not a powernet object.
+  Red-byte3D:
+  - balance: Dirlock now has slowdown again

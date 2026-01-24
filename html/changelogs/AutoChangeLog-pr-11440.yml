@@ -1,5 +1,0 @@
-author: "MistChristmas"
-delete-after: True
-changes:
-  - bugfix: "Decon-ing an APC and reconstructing it elsewhere no longer stops it from charging"
-  - code_imp: "Terminals are now somewhat fluff and not a powernet object."

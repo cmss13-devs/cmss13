@@ -30,6 +30,7 @@
 /obj/item/device/walkman/Initialize()
 	. = ..()
 	design = rand(1, 13)
+	icon_state = "walkman_[design]"
 	update_icon()
 	AddElement(/datum/element/corp_label/synsound)
 
@@ -168,9 +169,9 @@
 	to_chat(user,SPAN_INFO("You change the song."))
 
 	// this kinda sucks but i couldnt think of a better way
-	overlays -= "+Buttons_default"
-	overlays -= "+Play_or_pause"
-	overlays += "+Next_song"
+	LAZYREMOVE(overlays, "+Buttons_default")
+	LAZYREMOVE(overlays, "+Play_or_pause")
+	LAZYADD(overlays, "+Next_song")
 	sleep(0.7 SECONDS)
 	update_icon()
 
@@ -178,8 +179,6 @@
 /obj/item/device/walkman/update_icon()
 	..()
 	overlays.Cut()
-	if(design)
-		overlays += "+Walkman_[design]"
 	if(tape)
 		if(!paused)
 			overlays += "+Playing"
@@ -267,9 +266,9 @@
 	to_chat(user,SPAN_INFO("You restart the song."))
 
 	// this kinda sucks but i couldnt think of a better way
-	overlays -= "+Buttons_default"
-	overlays -= "+Play_or_pause"
-	overlays += "+Restart"
+	LAZYREMOVE(overlays, "+Buttons_default")
+	LAZYREMOVE(overlays, "+Play_or_pause")
+	LAZYADD(overlays, "+Restart")
 	sleep(0.7 SECONDS)
 	update_icon()
 
@@ -346,12 +345,11 @@
 	. = ..()
 	name = "Synsound Walkman" // band color in the name was only for the vendor
 	design = rand(1, 14)
+	icon_state = "walkman_[design]"
 	update_icon()
 
 /obj/item/device/walkman/white_band/update_icon()
 	overlays.Cut()
-	if(design)
-		overlays += "+Walkman_[design]"
 	if(tape)
 		if(!paused)
 			overlays += "+Playing"
@@ -375,12 +373,11 @@
 	. = ..()
 	name = "Synsound Walkman" // band color in the name was only for the vendor
 	design = rand(1, 13)
+	icon_state = "walkman_[design]"
 	update_icon()
 
 /obj/item/device/walkman/black_band/update_icon()
 	overlays.Cut()
-	if(design)
-		overlays += "+Walkman_[design]"
 	if(tape)
 		if(!paused)
 			overlays += "+Playing"

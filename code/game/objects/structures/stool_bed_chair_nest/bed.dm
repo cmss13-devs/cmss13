@@ -127,7 +127,7 @@
 	if(buckled_bodybag)
 		return
 	if(ishuman(mob))
-		if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_stripdrag_enemy) && (mob.stat == DEAD || mob.health < HEALTH_THRESHOLD_CRIT) && !mob.get_target_lock(user.faction_group) && !(mob.status_flags & PERMANENTLY_DEAD))
+		if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_stripdrag_enemy) && (mob.stat == DEAD || mob.health < mob.health_threshold_crit) && !mob.get_target_lock(user.faction_group) && !(mob.status_flags & PERMANENTLY_DEAD))
 			to_chat(user, SPAN_WARNING("You can't buckle a crit or dead member of another faction! ."))
 			return FALSE
 	..()
@@ -228,6 +228,10 @@
 	base_bed_icon = "roller"
 	is_allowed_atop_vehicle = TRUE // Allows roller beds, exceptionally, as structures, to be used atop vehicles such as the tank.
 
+/obj/structure/bed/roller/Initialize(mapload, ...)
+	. = ..()
+	RegisterSignal(src, COMSIG_MOVABLE_PREBUCKLE, PROC_REF(check_buckle))
+
 /obj/structure/bed/roller/MouseDrop(atom/over_object)
 	if(foldabletype && !buckled_mob && !buckled_bodybag)
 		var/mob/living/carbon/human/user = over_object
@@ -249,6 +253,22 @@
 			to_chat(user, SPAN_DANGER("You cannot buckle someone who is handcuffed onto this bed."))
 			return
 	..()
+
+/// Signal handler for COMSIG_MOVABLE_PREBUCKLE to potentially block buckling.
+/obj/structure/bed/roller/proc/check_buckle(obj/bed, mob/buckle_target, mob/user)
+	SIGNAL_HANDLER
+
+	if(buckle_target.mob_size <= MOB_SIZE_XENO)
+		if(buckle_target.stat == DEAD || HAS_TRAIT(buckle_target, TRAIT_OPPOSABLE_THUMBS))
+			return
+
+	if(buckle_target.mob_size > MOB_SIZE_HUMAN)
+		if(!can_carry_big)
+			to_chat(user, SPAN_WARNING("[buckle_target] is too big to buckle in."))
+			return COMPONENT_BLOCK_BUCKLE
+		if(buckle_target.stat != DEAD)
+			to_chat(user, SPAN_WARNING("[buckle_target] resists your attempt to buckle!"))
+			return COMPONENT_BLOCK_BUCKLE
 
 /obj/structure/bed/roller/Collided(atom/movable/moving_atom)
 	if(!isxeno(moving_atom))
@@ -299,7 +319,7 @@
 	deploy_roller(user, user.loc)
 
 /// Handles the switch between a item/roller to a structure/bed/roller, and storing one within the other when not in use
-/obj/item/roller/proc/deploy_roller(mob/user, atom/location)
+/obj/item/roller/proc/deploy_roller(mob/user, atom/location, mob/target_mob)
 	if(!length(contents))
 		new rollertype(src)
 	var/obj/structure/bed/roller/roller = locate(rollertype) in contents
@@ -316,10 +336,16 @@
 		else if (!T && roller.is_atop_vehicle) // only remove from vehicle if it is atop a vehicle to begin with
 			roller.tank_on_top_of.obj_clear_on_top(roller)
 	SEND_SIGNAL(user, COMSIG_MOB_ITEM_ROLLER_DEPLOYED, roller)
+	if(target_mob)
+		roller.buckle_mob(target_mob, user)
 
 /obj/item/roller/afterattack(obj/target, mob/user, proximity)
 	if(!proximity)
 		return
+	if(ismob(target))
+		var/turf/target_turf = get_turf(target)
+		if(!target_turf.density)
+			deploy_roller(user, target_turf, target)
 	if(isturf(target))
 		var/turf/T = target
 		if(!T.density)

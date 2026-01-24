@@ -24365,13 +24365,13 @@
 /turf/open/floor/wood,
 /area/prison/library)
 "bRr" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 1
 	},
 /turf/open/floor/prison/darkyellow2/north,
 /area/prison/engineering)
 "bRs" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 1
 	},
 /obj/item/clothing/gloves/yellow,

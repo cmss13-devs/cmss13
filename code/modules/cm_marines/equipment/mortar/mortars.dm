@@ -533,6 +533,7 @@
 		)
 	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/mortar_laser_warning))
 		new /obj/effect/overlay/temp/blinking_laser(target)
+	new /obj/effect/overlay/temp/mortar_impact (target, shell)
 	sleep(2 SECONDS) // Wait out the rest of the landing time
 	target.ceiling_debris_check(2)
 	if(!protected_by_pylon(TURF_PROTECTION_MORTAR, target))

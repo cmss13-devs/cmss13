@@ -167,6 +167,8 @@
 #define TRAIT_HAULED "hauled"
 // only used by valkyrie
 #define TRAIT_VALKYRIE_ARMORED "trait_valkyrie_armored"
+/// Prevents mob from riding mobs when buckled onto something
+#define TRAIT_CANT_RIDE "cant_ride"
 
 // SPECIES TRAITS
 /// Knowledge of Yautja technology

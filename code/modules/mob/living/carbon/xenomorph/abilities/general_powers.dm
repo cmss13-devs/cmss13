@@ -743,6 +743,10 @@
 	if(!xeno.hive)
 		return FALSE
 
+	if(SSticker?.mode?.hardcore)
+		to_chat(xeno, SPAN_XENOWARNING("The hive is too inexperienced to design constructions."))
+		return FALSE
+
 	//Make sure construction is unrestricted
 	if(IS_NORMAL_XENO(xeno))
 		if(!HAS_FLAG(xeno.hive.hive_flags, XENO_CONSTRUCTION_NORMAL))

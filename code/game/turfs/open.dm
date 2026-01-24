@@ -71,7 +71,7 @@
 			overlays += I
 
 	if(scorchedness)
-		if(!icon_state_before_scorching) //I hate you mappers, stop var editting turfs
+		if(!icon_state_before_scorching) //I hate you mappers, stop var editing turfs
 			icon_state_before_scorching = icon_state
 		var/new_icon_state = "[icon_state_before_scorching]_scorched[scorchedness]"
 		if(icon_state != new_icon_state) //no point in updating the icon_state if it would be updated to be the same thing that it was
@@ -130,7 +130,7 @@
 			for(var/i in GLOB.cardinals)
 				singe_target = get_step(src, i)
 				if(istype(singe_target, /turf/open))
-					if(singe_target.scorchable && !singe_target.scorchedness)  //much recurision checking
+					if(singe_target.scorchable && !singe_target.scorchedness)  //much recursion checking
 						singe_target.scorch(1)
 
 	update_icon()
@@ -184,6 +184,35 @@
 		return
 
 	INVOKE_ASYNC(crosser, TYPE_PROC_REF(/atom/movable, throw_atom), (get_step(src, dir)), 50, SPEED_FAST, null, TRUE)
+
+/turf/open/slippery/hull
+	name = "sloped roof"
+	icon = 'icons/turf/almayer.dmi'
+	icon_state = "outerhull"
+
+/turf/open/slippery/hull/dir
+	icon_state = "outerhull_dir"
+
+/turf/open/slippery/hull/dir/southwest
+	dir = SOUTHWEST
+
+/turf/open/slippery/hull/dir/north
+	dir = NORTH
+
+/turf/open/slippery/hull/dir/east
+	dir = EAST
+
+/turf/open/slippery/hull/dir/northeast
+	dir = NORTHEAST
+
+/turf/open/slippery/hull/dir/southeast
+	dir = SOUTHEAST
+
+/turf/open/slippery/hull/dir/west
+	dir = WEST
+
+/turf/open/slippery/hull/dir/northwest
+	dir = NORTHWEST
 
 
 // Prison grass
@@ -713,7 +742,7 @@
 				if(istype(H.gloves,/obj/item/clothing/gloves/yautja/hunter))
 					var/obj/item/clothing/gloves/yautja/hunter/Y = H.gloves
 					if(Y && istype(Y) && HAS_TRAIT(H, TRAIT_CLOAKED))
-						to_chat(H, SPAN_WARNING(" Your bracers hiss and spark as they short out!"))
+						to_chat(H, SPAN_WARNING("Your bracers hiss and spark as they short out!"))
 						Y.decloak(H, TRUE, DECLOAK_SUBMERGED)
 
 		else if(isxeno(C))
@@ -965,6 +994,15 @@
 /turf/open/asphalt/cement/cement15
 	icon_state = "cement15"
 
+/turf/open/asphalt/cement/cement18
+	icon_state = "cement18"
+
+/turf/open/asphalt/cement/cement19
+	icon_state = "cement19"
+
+/turf/open/asphalt/cement/cement16
+	icon_state = "cement16"
+
 /turf/open/asphalt/cement/cement2
 	icon_state = "cement2"
 
@@ -1163,7 +1201,7 @@
 
 		//piranhas - 25% chance to be an omnipresent risk, although they do practically no damage
 		if(prob(25))
-			to_chat(M, SPAN_NOTICE(" You feel something slithering around your legs."))
+			to_chat(M, SPAN_NOTICE("You feel something slithering around your legs."))
 			if(prob(50))
 				spawn(rand(25,50))
 					var/turf/T = get_turf(M)

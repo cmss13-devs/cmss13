@@ -934,7 +934,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	armed = FALSE
 	anchored = TRUE
 
-	var/list/tether_effects = apply_tether(src, C, range = tether_range, resistable = TRUE)
+	var/list/tether_effects = apply_tether(src, C, range = tether_range, resistible = TRUE)
 	tether_effect = tether_effects["tetherer_tether"]
 	RegisterSignal(tether_effect, COMSIG_PARENT_QDELETING, PROC_REF(disarm))
 
@@ -975,7 +975,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 					if(O == H)
 						continue
 					O.show_message(SPAN_WARNING("[icon2html(src, O)] <B>[H] gets caught in \the [src].</B>"), SHOW_MESSAGE_VISIBLE)
-			else if(isanimal(AM) && !istype(AM, /mob/living/simple_animal/parrot))
+			else if(isanimal(AM) && !istype(AM, /mob/living/simple_animal/small/parrot))
 				armed = FALSE
 				var/mob/living/simple_animal/SA = AM
 				SA.health -= 20
@@ -1129,7 +1129,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 		return
 	handle_dissolve(target, user)
 
-///Checks for permission and items dissallowed to be dissolved.
+///Checks for permission and items unallowed to be dissolved.
 /obj/item/tool/yautja_cleaner/proc/can_dissolve(obj/item/target, mob/user)
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		to_chat(user, SPAN_WARNING("You have no idea what this even does."))

@@ -1296,12 +1296,21 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
 /proc/get_line(atom/start_atom, atom/end_atom, include_start_atom = TRUE)
 	var/turf/start_turf = get_turf(start_atom)
 	var/turf/end_turf = get_turf(end_atom)
+	var/turf/end_turf_fall = end_turf //in case we are going cross fake z levels we store here the end tile to fall to
 	var/start_z
 
 	if(end_atom.z > start_atom.z)
 		start_z = end_atom.z
 	else
 		start_z = start_atom.z
+
+	var/datum/turf_reservation/reservation = SSmapping.used_turfs[start_turf]
+	if(reservation)
+		if(reservation.is_below(start_turf, end_turf))
+			start_turf = SSmapping.get_turf_above(start_turf)
+		else
+			if(reservation.is_below(end_turf, start_turf))
+				end_turf = SSmapping.get_turf_above(end_turf)
 
 	var/list/line = list()
 	if(include_start_atom)
@@ -1323,7 +1332,7 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
 		y += step_y
 		line += locate(x, y, start_z)
 
-	line += end_turf
+	line += end_turf_fall
 
 	return line
 

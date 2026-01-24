@@ -166,6 +166,7 @@ SUBSYSTEM_DEF(hijack)
 ///Called when the dropship has been called by the xenos
 /datum/controller/subsystem/hijack/proc/call_shuttle()
 	hijack_status = HIJACK_OBJECTIVES_SHIP_INBOUND
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_HIJACK_INBOUND)
 
 ///Called when the xeno dropship crashes into the Almayer and announces the current status of various objectives to marines
 /datum/controller/subsystem/hijack/proc/announce_status_on_crash()

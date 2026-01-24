@@ -356,6 +356,14 @@
 		/obj/item/attachable/suppressor,
 	)
 
+/obj/item/weapon/gun/smg/mp5/mp5a5/corporate
+	desc = "A Weyland-Yutani modified German design, this was one of the most widely used submachine guns in the world, this MP5A5 comes equipped with a Weyland-Yutani ID Lock."
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_WY_RESTRICTED
+
+/obj/item/weapon/gun/smg/mp5/mp5a5/corporate/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 //-------------------------------------------------------
 //MP27, based on the MP27, based on the M7.
 
@@ -573,6 +581,15 @@
 
 /obj/item/weapon/gun/smg/pps43/extended_mag
 	current_mag = /obj/item/ammo_magazine/smg/pps43/extended
+
+/obj/item/weapon/gun/smg/pps43/corporate
+	desc = "An outdated, but reliable and powerful, submachinegun originating in the Union of Progressive Peoples, it is still now modified to be used by Weyland-Yutani corporate security forces. It is usually used with a 35 round stick magazine, or a 71 round drum."
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_WY_RESTRICTED
+
+/obj/item/weapon/gun/smg/pps43/corporate/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 //-------------------------------------------------------
 //Type 64
 
@@ -975,9 +992,17 @@
 
 /obj/item/weapon/gun/smg/p90/twe
 	name = "\improper FN-TWE P90 submachinegun"
-	desc = "A variation of the FN P90 submachine gun. Used by mercenaries and royal marines commandos. This weapon only accepts 5.7x28mm rounds."
+	desc = "A variation of the FN P90 submachine gun. Used by mercenaries and royal marines commandos. This weapon only accepts 5.7x28mm rounds, has an integrated ID-Lock and an ammo-counter."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/TWE/smgs.dmi'
 	icon_state = "p90_twe"
 	item_state = "p90_twe"
 
 	current_mag = /obj/item/ammo_magazine/smg/p90/ap
+
+/obj/item/weapon/gun/smg/p90/corporate
+	desc = "A variation of the FN P90 submachine gun. Used by Weyland-Yutani corporate security. This weapon only accepts 5.7x28mm rounds."
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_ANTIQUE|GUN_WY_RESTRICTED
+
+/obj/item/weapon/gun/smg/p90/corporate/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)

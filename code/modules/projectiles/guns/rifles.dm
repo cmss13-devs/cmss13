@@ -1093,6 +1093,15 @@
 		/obj/item/attachable/lasersight,
 	)
 
+/obj/item/weapon/gun/rifle/m16/m16a5/corporate
+	name = "\improper M16A5 rifle"
+	desc = "Modernized version of M16 platform rifle, modified to be used by Weyland-Yutani Corporate Security. It is chambered in 5.56x45mm."
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ANTIQUE|GUN_WY_RESTRICTED
+
+/obj/item/weapon/gun/rifle/m16/m16a5/corporate/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/weapon/gun/rifle/m16/m16a5/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 34, "muzzle_y" = 17 ,"rail_x" = 11, "rail_y" = 20, "under_x" = 24, "under_y" = 14, "stock_x" = 15, "stock_y" = 14)
 

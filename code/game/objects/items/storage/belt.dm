@@ -1989,6 +1989,11 @@
 	for(var/i = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/revolver/pkd(src)
 
+/obj/item/storage/belt/gun/m44/wy/revolver/cmb/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/revolver/cmb/corporate())
+	for(var/i = 1 to storage_slots - 1)
+		new /obj/item/ammo_magazine/internal/revolver/cmb/hollowpoint(src)
+
 /obj/item/storage/belt/gun/m44/m2049/nogun/fill_preset_inventory()
 	for(var/i = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/revolver/pkd(src)
@@ -3011,5 +3016,10 @@
 
 /obj/item/storage/belt/gun/l54/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/l54())
+	for(var/i in 1 to storage_slots - 1)
+		new /obj/item/ammo_magazine/pistol/l54(src)
+
+/obj/item/storage/belt/gun/l54/corporate/full/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/l54/corporate())
 	for(var/i in 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/pistol/l54(src)

@@ -5416,11 +5416,6 @@
 	pixel_y = -8
 	},
 /obj/structure/largecrate/random/barrel/blue,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/sign/safety/hvac_old{
 	pixel_x = 8;
 	pixel_y = -25
@@ -6173,11 +6168,6 @@
 "aoQ" = (
 /obj/effect/landmark/late_join/charlie,
 /obj/effect/landmark/start/marine/charlie,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/support)
 "aoR" = (
@@ -6927,15 +6917,6 @@
 /obj/structure/sign/safety/ladder{
 	pixel_x = 33;
 	pixel_y = -8
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/sign/safety/ladder{
-	pixel_x = 8;
-	pixel_y = -25
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_a_s)
@@ -8065,24 +8046,6 @@
 	},
 /turf/open/floor/almayer/green/north,
 /area/almayer/hallways/upper/fore_hallway)
-"atA" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/sign/safety/hvac_old{
-	pixel_x = 8;
-	pixel_y = -25
-	},
-/turf/closed/wall/almayer,
-/area/almayer/squads/support)
 "atB" = (
 /turf/open/floor/almayer/plating_striped/west,
 /area/almayer/hallways/lower/starboard_midship_hallway)
@@ -8717,14 +8680,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/surface/table/almayer,
-/obj/item/tool/hand_labeler,
-/obj/structure/machinery/power/apc/almayer/north,
 /turf/open/floor/almayer/mono,
 /area/almayer/squads/alpha)
 "avw" = (
@@ -15670,17 +15625,6 @@
 /obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/almayer/plate,
 /area/almayer/engineering/upper_engineering)
-"aON" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/closed/wall/almayer,
-/area/almayer/squads/platoon2_shared)
 "aOO" = (
 /obj/effect/decal/heavy_cable/cable_horizontal,
 /obj/structure/barricade/handrail/no_vault{
@@ -16437,34 +16381,6 @@
 "aQL" = (
 /turf/closed/wall/almayer,
 /area/almayer/squads/bravo)
-"aQM" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/book/manual/engineering_guide{
-	pixel_x = 6;
-	pixel_y = 6
-	},
-/obj/item/prop/helmetgarb/gunoil{
-	pixel_x = -8
-	},
-/obj/structure/sign/nosmoking_1{
-	pixel_x = 25;
-	pixel_y = -7
-	},
-/turf/open/floor/almayer/flooredge,
-/area/almayer/squads/alpha)
 "aQN" = (
 /obj/structure/stairs,
 /obj/structure/platform/metal/almayer_smooth/east,
@@ -22000,25 +21916,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
-"bdJ" = (
-/obj/structure/machinery/cryopod/right{
-	pixel_y = 6
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/cm_vending/gear/spec,
-/obj/structure/sign/safety/hazard{
-	pixel_y = 25
-	},
-/obj/structure/sign/safety/ammunition{
-	pixel_x = 15;
-	pixel_y = 25
-	},
-/turf/open/floor/almayer/cargo,
-/area/almayer/squads/alpha)
 "bdK" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -22742,17 +22639,6 @@
 /obj/structure/platform_decoration/metal/almayer,
 /turf/open/floor/almayer/no_build,
 /area/almayer/middeck/engineer)
-"bfx" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/closed/wall/almayer,
-/area/almayer/squads/platoon1_shared)
 "bfy" = (
 /obj/structure/disposalpipe/segment{
 	dir = 2;
@@ -22762,14 +22648,6 @@
 /turf/open/floor/almayer/mono,
 /area/almayer/squads/alpha)
 "bfz" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/structure/sign/safety/hvac_old{
 	pixel_x = 8;
 	pixel_y = 25
@@ -22800,20 +22678,6 @@
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/medical/containment/cell/cl)
-"bfD" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/closed/wall/almayer,
-/area/almayer/squads/platoon1_shared)
 "bfF" = (
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/engineer)
@@ -26529,22 +26393,6 @@
 	},
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/medical)
-"bnr" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 5
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/machinery/light,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/squads/platoon1_shared)
 "bns" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -26562,20 +26410,6 @@
 	},
 /turf/open/floor/almayer/flooredge/northeast,
 /area/almayer/squads/delta)
-"bnu" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/squads/platoon1_shared)
 "bnv" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
@@ -27499,17 +27333,6 @@
 "bpK" = (
 /obj/structure/machinery/door/airlock/almayer/marine/alpha/sl,
 /turf/open/floor/almayer/test_floor4,
-/area/almayer/squads/alpha)
-"bpL" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/sign/poster{
-	pixel_y = 32
-	},
-/turf/closed/wall/almayer,
 /area/almayer/squads/alpha)
 "bpM" = (
 /obj/structure/prop/invuln/lattice_prop{
@@ -29918,22 +29741,6 @@
 	},
 /turf/open/floor/almayer/no_build,
 /area/almayer/middeck/maintenance/sf)
-"buN" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/cm_vending/gear/smartgun,
-/obj/structure/sign/safety/hazard{
-	pixel_x = 15;
-	pixel_y = -25
-	},
-/obj/structure/sign/safety/ammunition{
-	pixel_y = -25
-	},
-/turf/closed/wall/almayer,
-/area/almayer/squads/platoon1_shared)
 "buO" = (
 /obj/structure/machinery/cm_vending/gear/medic,
 /turf/open/floor/almayer/plate,
@@ -36459,22 +36266,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/upper/u_f_s)
-"bLd" = (
-/obj/structure/machinery/cm_vending/clothing/marine/support{
-	pixel_y = 0;
-	density = 0;
-	pixel_x = -26
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/status_display{
-	pixel_y = 30
-	},
-/turf/open/floor/almayer/cargo,
-/area/almayer/squads/support)
 "bLe" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -36483,14 +36274,6 @@
 /obj/structure/machinery/firealarm{
 	dir = 1;
 	pixel_y = -28
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/sign/prop3{
-	pixel_y = -31
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/lower/port_midship_hallway)
@@ -36668,15 +36451,6 @@
 /obj/structure/machinery/vending/cola{
 	pixel_x = -1
 	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 1;
-	name = "ship-grade camera"
-	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/briefing)
 "bLC" = (
@@ -36756,17 +36530,6 @@
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 1
 	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/sign/safety/security{
-	pixel_y = -25
-	},
-/obj/structure/sign/safety/restrictedarea{
-	pixel_y = -39
-	},
 /turf/open/floor/prison/kitchen,
 /area/almayer/living/grunt_rnr)
 "bLM" = (
@@ -36836,38 +36599,6 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/medical/operating_room_two)
-"bLU" = (
-/obj/structure/window/framed/almayer,
-/obj/structure/machinery/door/firedoor/border_only/almayer,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/sign/safety/security{
-	pixel_x = 15;
-	pixel_y = 25
-	},
-/obj/structure/sign/safety/restrictedarea{
-	pixel_y = 39;
-	pixel_x = 15
-	},
-/turf/open/floor/plating,
-/area/almayer/living/grunt_rnr)
-"bLV" = (
-/obj/structure/machinery/vending/cola{
-	pixel_x = -1
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/camera/autoname/almayer{
-	name = "ship-grade camera"
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/living/briefing)
 "bLW" = (
 /obj/structure/machinery/camera/autoname/almayer{
 	name = "ship-grade camera"
@@ -36914,14 +36645,6 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/lower/starboard_midship_hallway)
 "bMd" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
-	pixel_y = 25
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/sign/prop3{
 	pixel_y = 26
 	},
@@ -36931,16 +36654,6 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/bed/chair/comfy/delta{
 	dir = 1
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/prop/holidays/string_lights{
-	dir = 4;
-	pixel_x = -28
 	},
 /turf/open/floor/almayer/flooredge/south,
 /area/almayer/living/briefing)
@@ -36960,30 +36673,6 @@
 "bMi" = (
 /turf/open/floor/almayer/orange/west,
 /area/almayer/squads/bravo)
-"bMj" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	layer = 3.3
-	},
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/disposalpipe/segment,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/sign/safety/hvac_old{
-	pixel_x = 8;
-	pixel_y = -25
-	},
-/turf/open/floor/almayer/flooredge/east,
-/area/almayer/squads/platoon1_shared)
 "bMk" = (
 /obj/structure/sign/safety/storage{
 	pixel_x = 8;
@@ -37005,11 +36694,6 @@
 	pixel_x = 1;
 	dir = 8
 	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/firealarm{
 	dir = 1;
@@ -37017,31 +36701,9 @@
 	},
 /turf/open/floor/almayer/mono,
 /area/almayer/squads/delta)
-"bMo" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/machinery/alarm/almayer{
-	dir = 1
-	},
-/turf/closed/wall/almayer,
-/area/almayer/squads/platoon1_shared)
 "bMp" = (
 /obj/structure/machinery/light{
 	dir = 8
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/light{
-	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/alpha)
@@ -39551,17 +39213,6 @@
 /area/almayer/squads/delta)
 "bSK" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/storage/toolbox/mechanical{
-	pixel_x = 1;
-	pixel_y = 7
-	},
-/obj/item/tool/wrench,
 /obj/structure/sign/nosmoking_1{
 	pixel_x = 25;
 	pixel_y = -7
@@ -40188,14 +39839,6 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
 /turf/open/floor/almayer/mono,
 /area/almayer/squads/bravo)
 "bUj" = (
@@ -40584,18 +40227,6 @@
 /obj/structure/largecrate/random/barrel/blue,
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_a_p)
-"bVj" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/sign/safety/hvac_old{
-	pixel_x = 8;
-	pixel_y = -25
-	},
-/turf/closed/wall/almayer,
-/area/almayer/maint/hull/lower/l_a_p)
 "bVk" = (
 /obj/structure/largecrate/random/barrel/red,
 /obj/effect/decal/cleanable/dirt,
@@ -40704,21 +40335,6 @@
 "bVz" = (
 /turf/closed/wall/almayer/reinforced,
 /area/almayer/maint/hull/lower/l_a_p)
-"bVA" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/sign/safety/distribution_pipes{
-	pixel_x = 8;
-	pixel_y = 25
-	},
-/turf/closed/wall/almayer,
-/area/almayer/maint/hull/lower/l_a_p)
 "bVB" = (
 /obj/structure/machinery/cryopod/right{
 	pixel_y = 6;
@@ -40730,22 +40346,6 @@
 /obj/effect/landmark/start/marine/leader/charlie,
 /obj/effect/landmark/late_join/charlie,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/squads/support)
-"bVD" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/sign/safety/water{
-	pixel_x = 8;
-	pixel_y = 25
-	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/support)
 "bVE" = (
@@ -41482,11 +41082,6 @@
 /obj/effect/landmark/start/marine/engineer/kilo,
 /obj/effect/landmark/late_join/kilo,
 /obj/effect/decal/cleanable/dirt,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/support)
 "bXr" = (
@@ -41722,15 +41317,6 @@
 /obj/structure/largecrate/random/barrel/yellow,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/l_a_p)
-"bXS" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/largecrate/random/secure,
-/turf/open/space/basic,
-/area/space)
 "bXT" = (
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F";
@@ -42202,15 +41788,6 @@
 "bYW" = (
 /turf/closed/wall/almayer/reinforced,
 /area/almayer/shipboard/panic)
-"bYX" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/living/briefing)
 "bYY" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
@@ -42255,15 +41832,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/upper_engineering/notunnel)
-"bZd" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/almayer/plate,
-/area/almayer/living/briefing)
 "bZe" = (
 /turf/open/floor/almayer/red/north,
 /area/almayer/lifeboat_pumps/north1)
@@ -42286,11 +41854,6 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/bravo)
 "bZi" = (
@@ -43073,14 +42636,6 @@
 	dir = 8;
 	name = "Oscar squad chair"
 	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/bed/chair/comfy/charlie{
-	dir = 1
-	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/flooredge/northeast,
 /area/almayer/living/briefing)
@@ -43559,19 +43114,6 @@
 /obj/structure/surface/table/reinforced/black,
 /turf/open/floor/almayer/red/north,
 /area/almayer/living/cryo_cells)
-"ccc" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 1;
-	name = "ship-grade camera"
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/hallways/lower/port_midship_hallway)
 "ccd" = (
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep,
 /turf/open/floor/almayer/red/northeast,
@@ -44301,22 +43843,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/cargo_arrow,
 /area/almayer/living/briefing)
-"cdU" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/cm_vending/gear/smartgun,
-/obj/structure/sign/safety/ammunition{
-	pixel_x = 15;
-	pixel_y = 25
-	},
-/obj/structure/sign/safety/hazard{
-	pixel_y = 25
-	},
-/turf/closed/wall/almayer,
-/area/almayer/squads/bravo)
 "cdV" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -44804,7 +44330,6 @@
 /turf/open/floor/almayer/silver/northwest,
 /area/almayer/shipboard/brig/cic_hallway)
 "cfa" = (
-/obj/structure/pipes/vents/pump/on,
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -44812,16 +44337,6 @@
 	icon_state = "SE-out";
 	pixel_y = 0;
 	pixel_x = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "SE-out";
-	pixel_y = 1;
-	pixel_x = 1
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/lower/port_aft_hallway)
@@ -44968,22 +44483,6 @@
 	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/squads/bravo)
-"cfp" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/cm_vending/gear/spec,
-/obj/structure/sign/safety/ammunition{
-	pixel_x = 15;
-	pixel_y = 25
-	},
-/obj/structure/sign/safety/hazard{
-	pixel_y = 25
-	},
-/turf/closed/wall/almayer,
-/area/almayer/squads/support)
 "cfr" = (
 /obj/structure/surface/table/reinforced/almayer_blend,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
@@ -45476,21 +44975,6 @@
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/almayer/plate,
 /area/almayer/living/grunt_rnr)
-"cgx" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/sign/safety/security{
-	pixel_y = -25
-	},
-/obj/structure/sign/safety/restrictedarea{
-	pixel_y = -39
-	},
-/turf/open/floor/prison/kitchen,
-/area/almayer/living/grunt_rnr)
 "cgz" = (
 /obj/structure/sink{
 	dir = 1;
@@ -45609,17 +45093,6 @@
 /obj/structure/machinery/firealarm{
 	pixel_y = 26;
 	pixel_x = -1
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/sign/safety/security{
-	pixel_y = 25
-	},
-/obj/structure/sign/safety/restrictedarea{
-	pixel_y = 39
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/grunt_rnr)
@@ -46048,31 +45521,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/flooredge,
 /area/almayer/hallways/lower/starboard_midship_hallway)
-"chN" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/squads/platoon2_shared)
-"chP" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/machinery/camera/autoname/almayer,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/squads/platoon2_shared)
 "chQ" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -46095,14 +45543,6 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/effect/decal/cleanable/dirt,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/structure/sign/safety/hvac_old{
 	pixel_x = 8;
 	pixel_y = 25
@@ -46133,23 +45573,6 @@
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/lower/starboard_midship_hallway)
-"chW" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/pipes/vents/scrubber{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/machinery/alarm/almayer{
-	dir = 1
-	},
-/turf/closed/wall/almayer,
-/area/almayer/squads/support)
 "chX" = (
 /obj/structure/disposalpipe/junction{
 	dir = 4;
@@ -46338,19 +45761,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/living/briefing)
-"ciA" = (
-/obj/structure/disposalpipe/segment,
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/camera/autoname/almayer{
-	name = "ship-grade camera"
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/hallways/lower/starboard_midship_hallway)
 "ciB" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -46596,16 +46006,6 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/bed/chair/comfy/delta{
 	dir = 1
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/prop/holidays/string_lights{
-	dir = 4;
-	pixel_x = -28
 	},
 /turf/open/floor/almayer/flooredge/north,
 /area/almayer/living/briefing)
@@ -46858,39 +46258,9 @@
 	},
 /turf/open/floor/almayer/flooredge/southeast,
 /area/almayer/living/briefing)
-"cjR" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/living/briefing)
-"cjS" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/prop/holidays/string_lights{
-	dir = 4;
-	pixel_x = -28
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/living/briefing)
 "cjT" = (
 /obj/structure/bed/chair/comfy/delta{
 	dir = 8
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/bed/chair/comfy/bravo{
-	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/flooredge/southeast,
@@ -47156,27 +46526,6 @@
 /obj/item/ammo_magazine/smartgun,
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/platoon1_shared)
-"ckA" = (
-/obj/structure/machinery/cm_vending/clothing/marine/delta{
-	density = 0;
-	pixel_x = -26
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/turf/open/floor/almayer/cargo,
-/area/almayer/squads/delta)
-"ckB" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/squads/delta)
 "ckC" = (
 /obj/structure/sign/poster/pinup{
 	pixel_x = -30
@@ -47249,34 +46598,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_f_s)
-"ckJ" = (
-/obj/structure/bed/chair/comfy/delta{
-	dir = 8
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/bed/chair/comfy/bravo{
-	dir = 1
-	},
-/turf/open/floor/almayer/flooredge/east,
-/area/almayer/living/briefing)
-"ckK" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/closed/wall/almayer,
-/area/almayer/squads/platoon1_shared)
 "ckL" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out";
@@ -47693,19 +47014,6 @@
 /obj/effect/landmark/start/marine/medic/charlie,
 /obj/effect/landmark/late_join/charlie,
 /obj/effect/decal/cleanable/dirt,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/cm_vending/gear/spec,
-/obj/structure/sign/safety/hazard{
-	pixel_x = 15;
-	pixel_y = -25
-	},
-/obj/structure/sign/safety/ammunition{
-	pixel_y = -25
-	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/support)
 "clT" = (
@@ -47730,20 +47038,6 @@
 	layer = 3.33;
 	pixel_x = 1;
 	pixel_y = 0
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/cm_vending/gear/smartgun,
-/obj/structure/sign/safety/hazard{
-	pixel_x = 15;
-	pixel_y = -25
-	},
-/obj/structure/sign/safety/ammunition{
-	pixel_y = -25
 	},
 /turf/open/floor/almayer/mono,
 /area/almayer/squads/bravo)
@@ -47771,11 +47065,6 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
 	},
 /turf/open/floor/almayer/flooredge,
 /area/almayer/squads/alpha)
@@ -48773,17 +48062,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/flooredge/northeast,
 /area/almayer/squads/alpha)
-"cog" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/surface/table/almayer,
-/obj/item/tool/hand_labeler,
-/obj/structure/machinery/power/apc/almayer/north,
-/turf/closed/wall/almayer,
-/area/almayer/squads/bravo)
 "coh" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out";
@@ -48820,18 +48098,6 @@
 	},
 /turf/open/floor/almayer/mono,
 /area/almayer/squads/alpha)
-"col" = (
-/obj/structure/machinery/cryopod/right{
-	pixel_y = 6;
-	dir = 4
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/turf/open/floor/almayer/cargo,
-/area/almayer/squads/delta)
 "com" = (
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F";
@@ -49474,18 +48740,6 @@
 	},
 /turf/open/floor/almayer/green/north,
 /area/almayer/hallways/lower/starboard_midship_hallway)
-"cpD" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/sign/safety/escapepod{
-	pixel_x = 8;
-	pixel_y = 25
-	},
-/turf/open/floor/almayer/cargo_arrow/north,
-/area/almayer/hallways/lower/starboard_midship_hallway)
 "cpE" = (
 /obj/structure/sign/safety/escapepod{
 	pixel_x = 7;
@@ -49586,18 +48840,6 @@
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_a_s)
-"cpT" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/sign/safety/water{
-	pixel_x = 8;
-	pixel_y = -25
-	},
-/turf/open/space/basic,
-/area/space)
 "cpU" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "Secretroom";
@@ -49607,18 +48849,6 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/maint/hull/lower/l_m_s)
-"cpV" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/sign/safety/hvac_old{
-	pixel_x = 8;
-	pixel_y = 25
-	},
-/turf/open/space,
-/area/space)
 "cpW" = (
 /obj/structure/surface/table/almayer,
 /obj/item/reagent_container/food/drinks/cans/souto/diet/lime{
@@ -49641,18 +48871,6 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/maint/hull/lower/l_m_s)
-"cpZ" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/sign/safety/hvac_old{
-	pixel_x = 8;
-	pixel_y = 25
-	},
-/turf/closed/wall/almayer/outer,
-/area/almayer/maint/hull/lower/l_a_s)
 "cqa" = (
 /obj/structure/sign/safety/hvac_old{
 	pixel_x = 8;
@@ -51177,15 +50395,6 @@
 /turf/open/floor/almayer/green/northwest,
 /area/almayer/hallways/lower/port_midship_hallway)
 "cSQ" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/pipes/standard/manifold/hidden/supply,
 /obj/structure/machinery/light,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/platoon1_shared)
@@ -52875,18 +52084,6 @@
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/shipboard/sea_office)
-"dFL" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/sign/safety/hvac_old{
-	pixel_x = 8;
-	pixel_y = -25
-	},
-/turf/open/space/basic,
-/area/space)
 "dFM" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -53035,21 +52232,9 @@
 "dJI" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/bed/chair/comfy/delta,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/bed/chair/comfy/bravo{
-	dir = 4
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/sign/arcturianstopsign{
 	pixel_y = 32
-	},
-/obj/structure/prop/holidays/string_lights{
-	dir = 4;
-	pixel_x = -28
 	},
 /turf/open/floor/almayer/flooredge/south,
 /area/almayer/living/briefing)
@@ -53716,39 +52901,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/lifeboat)
-"ebp" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	layer = 3.3
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	layer = 2.5;
-	pixel_x = 16;
-	pixel_y = 16
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	layer = 3.33;
-	pixel_y = -15;
-	pixel_x = -12
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/bed/chair/comfy/bravo{
-	dir = 4
-	},
-/obj/structure/prop/holidays/string_lights{
-	dir = 4;
-	pixel_x = -28
-	},
-/turf/open/floor/almayer/flooredge/south,
-/area/almayer/living/briefing)
 "ebI" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal3";
@@ -53773,19 +52925,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/l_a_s)
-"ecj" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/largecrate/supply/supplies/mre,
-/obj/structure/sign/safety/water{
-	pixel_x = 8;
-	pixel_y = 25
-	},
-/turf/closed/wall/almayer,
-/area/almayer/maint/hull/lower/l_m_p)
 "eco" = (
 /obj/structure/sign/safety/restrictedarea{
 	pixel_x = -17;
@@ -55770,26 +54909,6 @@
 /obj/structure/machinery/photocopier,
 /turf/open/floor/almayer/mono,
 /area/almayer/living/briefing)
-"eUh" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/sign/safety/ammunition{
-	pixel_x = 15;
-	pixel_y = 25
-	},
-/obj/structure/sign/safety/hazard{
-	pixel_y = 25
-	},
-/obj/structure/machinery/disposal,
-/obj/structure/disposalpipe/trunk,
-/turf/closed/wall/almayer,
-/area/almayer/squads/bravo)
 "eUn" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
@@ -56169,11 +55288,6 @@
 	pixel_x = 26;
 	pixel_y = 1
 	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
 	pixel_x = 1;
@@ -56183,16 +55297,6 @@
 	icon_state = "NW-out";
 	pixel_x = -1;
 	pixel_y = 1
-	},
-/obj/structure/surface/table/almayer,
-/obj/item/trash/USCMtray{
-	pixel_y = 7
-	},
-/obj/item/reagent_container/food/condiment/hotsauce/tabasco{
-	pixel_x = 11
-	},
-/obj/structure/machinery/camera/autoname/almayer{
-	name = "ship-grade camera"
 	},
 /turf/open/floor/almayer/blue2/northeast,
 /area/almayer/squads/delta)
@@ -56998,18 +56102,6 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/port_point_defense)
 "fvV" = (
-/obj/structure/sign/safety/security{
-	pixel_x = 15;
-	pixel_y = 26
-	},
-/obj/structure/sign/safety/restrictedarea{
-	pixel_y = 26
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -58970,33 +58062,6 @@
 /obj/structure/reagent_dispensers/tank/fuel/custom,
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/starboard_point_defense)
-"guW" = (
-/obj/structure/machinery/cm_vending/clothing/marine/alpha{
-	density = 0;
-	pixel_y = 16
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/clothing/mask/gas{
-	pixel_y = 7
-	},
-/obj/item/clothing/mask/gas{
-	pixel_y = 3
-	},
-/obj/item/storage/fancy/candle_box{
-	pixel_x = 6;
-	pixel_y = -2
-	},
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 8;
-	name = "ship-grade camera"
-	},
-/turf/open/floor/almayer/cargo,
-/area/almayer/squads/alpha)
 "gvg" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out"
@@ -60548,18 +59613,6 @@
 "hdT" = (
 /turf/open/floor/almayer/plating_striped/north,
 /area/almayer/underdeck/req)
-"hdV" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/sign/safety/escapepod{
-	pixel_x = 8;
-	pixel_y = -25
-	},
-/turf/open/floor/almayer/cargo_arrow,
-/area/almayer/hallways/lower/port_midship_hallway)
 "hec" = (
 /turf/open/floor/almayer/sterile_green_side/west,
 /area/almayer/medical/medical_science)
@@ -60595,27 +59648,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/flooredgesmooth2/south,
 /area/almayer/engineering/lower)
-"hfa" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/sign/safety/ammunition{
-	pixel_x = 15;
-	pixel_y = 25
-	},
-/obj/structure/sign/safety/hazard{
-	pixel_y = 25
-	},
-/obj/structure/machinery/disposal,
-/obj/structure/disposalpipe/trunk,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/squads/alpha)
 "hfb" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -60768,18 +59800,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/cic_hallway)
-"hiP" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/sign/safety/escapepod{
-	pixel_x = 8;
-	pixel_y = 25
-	},
-/turf/open/floor/almayer/green/north,
-/area/almayer/hallways/lower/starboard_midship_hallway)
 "hji" = (
 /turf/open/floor/almayer/mono,
 /area/almayer/squads/support)
@@ -60833,17 +59853,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/port_point_defense)
-"hkC" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/sign/safety/escapepod{
-	pixel_y = -25
-	},
-/turf/open/floor/almayer,
-/area/almayer/hallways/lower/port_fore_hallway)
 "hkG" = (
 /obj/structure/sign/safety/ammunition{
 	pixel_y = -25
@@ -61251,12 +60260,6 @@
 /obj/structure/sign/poster/io{
 	pixel_x = -23
 	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/coatrack,
 /obj/structure/sign/poster/clf{
 	pixel_x = -28
 	},
@@ -61643,15 +60646,6 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/lower/port_fore_hallway)
 "hCf" = (
-/obj/structure/sign/safety/maint{
-	pixel_x = 7;
-	pixel_y = -26
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/sign/safety/manualopenclose{
 	pixel_x = 15;
 	pixel_y = -25
@@ -62040,18 +61034,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_f_p)
-"hNv" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/sign/safety/escapepod{
-	pixel_x = 8;
-	pixel_y = -25
-	},
-/turf/open/floor/almayer/green,
-/area/almayer/hallways/lower/port_midship_hallway)
 "hNw" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -62302,16 +61284,6 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/maint/hull/upper/u_f_s)
-"hSw" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/disposal,
-/obj/structure/disposalpipe/trunk,
-/turf/open/floor/almayer/plate,
-/area/almayer/maint/hull/lower/l_m_p)
 "hSI" = (
 /obj/structure/machinery/door/airlock/almayer/medical{
 	access_modified = 1;
@@ -62512,35 +61484,6 @@
 /obj/structure/platform_decoration/metal/almayer/north,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/underdeck/req)
-"hXd" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/ammo_box/magazine/misc/mre{
-	pixel_x = 4;
-	pixel_y = 15
-	},
-/obj/item/storage/box/mre/wy{
-	pixel_x = 5;
-	pixel_y = 2
-	},
-/obj/item/tool/kitchen/utensil/pfork{
-	pixel_x = -8;
-	pixel_y = 7
-	},
-/obj/item/tool/kitchen/utensil/pfork{
-	pixel_x = -7;
-	pixel_y = 8
-	},
-/obj/structure/sign/nosmoking_1{
-	pixel_x = 25;
-	pixel_y = 8
-	},
-/turf/closed/wall/almayer,
-/area/almayer/squads/alpha)
 "hXg" = (
 /obj/vehicle/powerloader,
 /obj/structure/platform/metal/almayer/west,
@@ -62694,20 +61637,6 @@
 /obj/structure/platform/metal/almayer/east,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
-"ial" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/machinery/camera/autoname/almayer{
-	name = "ship-grade camera"
-	},
-/turf/closed/wall/almayer,
-/area/almayer/squads/platoon1_shared)
 "iat" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
@@ -62816,21 +61745,6 @@
 /obj/structure/machinery/power/apc/almayer/north,
 /turf/open/floor/almayer,
 /area/almayer/maint/hull/upper/u_f_p)
-"ien" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/sign/safety/distribution_pipes{
-	pixel_x = 8;
-	pixel_y = 25
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/maint/hull/lower/l_a_p)
 "ieu" = (
 /obj/structure/window/reinforced{
 	dir = 4;
@@ -63727,18 +62641,6 @@
 	},
 /turf/open/floor/almayer/orange/north,
 /area/almayer/engineering/lower)
-"iyS" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/machinery/light,
-/turf/closed/wall/almayer,
-/area/almayer/squads/bravo)
 "iyY" = (
 /obj/structure/platform_decoration/metal/almayer,
 /turf/open/floor/almayer/plating_striped/northwest,
@@ -65038,23 +63940,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/req)
-"jaf" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/bed/chair/comfy/bravo{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/prop/holidays/string_lights{
-	dir = 4;
-	pixel_x = -28
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/living/briefing)
 "jak" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -65625,27 +64510,6 @@
 "jkD" = (
 /obj/structure/bed/chair/comfy/delta{
 	dir = 8
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/surface/table/almayer,
-/obj/item/paper_bin/uscm{
-	pixel_x = 9;
-	pixel_y = 6
-	},
-/obj/item/tool/pen{
-	pixel_x = 9;
-	pixel_y = 2
-	},
-/obj/item/tool/pen{
-	pixel_x = 9;
-	pixel_y = 9
-	},
-/obj/structure/machinery/light{
-	dir = 4
 	},
 /turf/open/floor/almayer/flooredge/east,
 /area/almayer/living/briefing)
@@ -66433,28 +65297,6 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/command/corporateliaison)
-"jEA" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/prop/invuln/overhead_pipe{
-	pixel_x = 12
-	},
-/obj/structure/prop/invuln/overhead_pipe{
-	pixel_x = 12;
-	pixel_y = 12
-	},
-/obj/structure/sign/safety/water{
-	pixel_x = 8;
-	pixel_y = 25
-	},
-/turf/closed/wall/almayer/outer,
-/area/almayer/maint/hull/lower/l_a_p)
 "jEM" = (
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_a_s)
@@ -67675,17 +66517,6 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/maint/hull/upper/u_a_s)
-"kiU" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/squads/platoon1_shared)
 "kiX" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk,
@@ -68269,22 +67100,7 @@
 	layer = 3.33;
 	pixel_y = 1
 	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 6
-	},
-/obj/structure/bed/chair/comfy/bravo{
-	dir = 4
-	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/prop/holidays/string_lights{
-	dir = 4;
-	pixel_x = -28
-	},
 /turf/open/floor/almayer/flooredge/north,
 /area/almayer/living/briefing)
 "kwd" = (
@@ -68622,18 +67438,6 @@
 	},
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/shipboard/brig/medical)
-"kDd" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/sign/safety/water{
-	pixel_x = 8;
-	pixel_y = -25
-	},
-/turf/closed/wall/almayer,
-/area/almayer/squads/alpha)
 "kDk" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out";
@@ -68687,27 +67491,6 @@
 "kEg" = (
 /obj/structure/bed/chair/comfy/delta{
 	dir = 8
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/surface/table/almayer,
-/obj/item/toy/deck{
-	pixel_x = -6;
-	pixel_y = -2
-	},
-/obj/item/toy/deck/uno{
-	pixel_x = 6;
-	pixel_y = -1
-	},
-/obj/structure/sign/poster{
-	desc = "YOU ALWAYS KNOW A WORKING JOE. YOU ALWAYS KNOW A WORKING JOE. YOU ALWAYS KNOW A WORKING JOE. YOU ALWAYS KNOW A WORKING JOE. YOU ALWAYS KNOW A WORKING JOE.";
-	icon_state = "poster11";
-	name = "YOU ALWAYS KNOW A WORKING JOE.";
-	pixel_x = 27;
-	serial_number = 11
 	},
 /turf/open/floor/almayer/flooredge/northeast,
 /area/almayer/living/briefing)
@@ -68985,24 +67768,6 @@
 	},
 /turf/open/floor/almayer/mono,
 /area/almayer/squads/alpha)
-"kLm" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/sign/safety/distribution_pipes{
-	pixel_x = 8;
-	pixel_y = 25
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/maint/hull/lower/l_m_p)
 "kLE" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/poddoor/almayer{
@@ -69891,32 +68656,9 @@
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
 "lgF" = (
-/obj/effect/decal/cleanable/dirt,
 /obj/structure/sign/poster{
 	icon_state = "poster14";
 	pixel_x = -27
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/surface/table/almayer,
-/obj/item/device/flashlight/lamp{
-	layer = 3.3;
-	pixel_x = 15
-	},
-/obj/item/paper_bin/uscm{
-	pixel_x = -7;
-	pixel_y = 6
-	},
-/obj/item/tool/pen{
-	pixel_x = -11;
-	pixel_y = 5
-	},
-/obj/item/tool/pen{
-	pixel_x = -10;
-	pixel_y = -2
 	},
 /obj/structure/machinery/light{
 	dir = 8
@@ -70253,25 +68995,6 @@
 "loP" = (
 /turf/closed/wall/almayer,
 /area/almayer/engineering/laundry)
-"loS" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/item/device/radio/intercom{
-	freerange = 1;
-	name = "General Listening Channel";
-	pixel_y = -29
-	},
-/turf/closed/wall/almayer,
-/area/almayer/squads/support)
 "loV" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/almayer/plating_striped/west,
@@ -70709,31 +69432,16 @@
 /area/almayer/medical/medical_science)
 "lAa" = (
 /obj/structure/surface/table/almayer,
-/obj/item/device/lightreplacer{
-	pixel_x = -6;
-	pixel_y = 15
-	},
 /obj/item/storage/toolbox/emergency,
-/obj/structure/sign/safety/water{
-	pixel_x = 8;
-	pixel_y = 32
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/surface/table/almayer,
 /obj/item/device/lightreplacer{
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/obj/item/storage/toolbox/emergency,
 /obj/structure/sign/safety/water{
 	pixel_x = 8;
 	pixel_y = 25
 	},
-/turf/closed/wall/almayer/outer/internal,
+/turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_m_p)
 "lAl" = (
 /obj/structure/machinery/cm_vending/clothing/marine/delta{
@@ -70809,12 +69517,6 @@
 	dir = 4;
 	name = "ship-grade camera"
 	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/bed/chair/comfy/delta,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/plate,
 /area/almayer/living/briefing)
@@ -70885,19 +69587,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/upper/s_bow)
-"lDV" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/effect/landmark/start/marine/medic/bravo,
-/obj/effect/landmark/late_join/bravo,
-/obj/structure/sign/safety/cryo{
-	pixel_y = 25
-	},
-/turf/closed/wall/almayer,
-/area/almayer/squads/delta)
 "lEe" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
@@ -71794,23 +70483,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/stern)
-"meu" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/sign/poster{
-	pixel_y = -32
-	},
-/turf/closed/wall/almayer,
-/area/almayer/squads/support)
 "meE" = (
 /obj/structure/sign/safety/maint{
 	pixel_x = 47;
@@ -71985,17 +70657,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/command/cichallway)
-"miV" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/closed/wall/almayer,
-/area/almayer/squads/bravo)
 "mje" = (
 /obj/structure/machinery/light,
 /obj/structure/closet/secure_closet/guncabinet/red/cic_armory_mk1_rifle_ap,
@@ -72029,18 +70690,6 @@
 /turf/open/floor/almayer/flooredge/southwest,
 /area/almayer/squads/bravo)
 "mkw" = (
-/obj/structure/sign/safety/security{
-	pixel_y = -26
-	},
-/obj/structure/sign/safety/restrictedarea{
-	pixel_x = 15;
-	pixel_y = -26
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/sign/safety/security{
 	pixel_y = -25;
 	pixel_x = 15
@@ -72312,22 +70961,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer/orange/west,
 /area/almayer/hallways/lower/port_umbilical)
-"mqK" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/cm_vending/gear/spec,
-/obj/structure/sign/safety/hazard{
-	pixel_x = 15;
-	pixel_y = -25
-	},
-/obj/structure/sign/safety/ammunition{
-	pixel_y = -25
-	},
-/turf/closed/wall/almayer,
-/area/almayer/squads/delta)
 "mqU" = (
 /obj/structure/machinery/cm_vending/sorted/medical{
 	pixel_x = -1
@@ -72472,19 +71105,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_f_p)
-"mvl" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/pipes/standard/manifold/hidden/supply,
-/obj/structure/machinery/light,
-/turf/closed/wall/almayer,
-/area/almayer/squads/support)
 "mvy" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1
@@ -72811,22 +71431,6 @@
 /obj/structure/sign/safety/ladder{
 	pixel_x = 33;
 	pixel_y = -8
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/prop/invuln/overhead_pipe{
-	pixel_x = 12;
-	pixel_y = 12
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
-/obj/structure/sign/safety/ladder{
-	pixel_x = 8;
-	pixel_y = 25
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_a_p)
@@ -73384,21 +71988,6 @@
 "mNG" = (
 /obj/structure/sign/safety/stairs{
 	pixel_x = 15;
-	pixel_y = 26
-	},
-/obj/structure/sign/safety/west{
-	pixel_y = 26
-	},
-/obj/structure/sign/safety/escapepod{
-	pixel_y = 40
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/sign/safety/stairs{
-	pixel_x = 15;
 	pixel_y = 25
 	},
 /obj/structure/sign/safety/west{
@@ -73543,28 +72132,7 @@
 	dir = 8;
 	name = "Oscar squad chair"
 	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/surface/table/almayer,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/paper_bin/uscm{
-	pixel_x = 9;
-	pixel_y = 6
-	},
-/obj/item/tool/pen{
-	pixel_x = 9;
-	pixel_y = 2
-	},
-/obj/item/tool/pen{
-	pixel_x = 9;
-	pixel_y = 9
-	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
 /turf/open/floor/almayer/flooredge/east,
 /area/almayer/living/briefing)
 "mRH" = (
@@ -74297,18 +72865,6 @@
 /area/almayer/squads/bravo)
 "nhE" = (
 /obj/structure/sign/safety/maint{
-	pixel_y = 26
-	},
-/obj/structure/sign/safety/storage{
-	pixel_x = 15;
-	pixel_y = 26
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/sign/safety/maint{
 	pixel_y = 25
 	},
 /obj/structure/sign/safety/storage{
@@ -74668,17 +73224,6 @@
 	},
 /turf/open/floor/almayer/orangecorner,
 /area/almayer/hallways/lower/port_aft_hallway)
-"nny" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/closed/wall/almayer,
-/area/almayer/squads/alpha)
 "nnD" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -76195,19 +74740,6 @@
 "nVQ" = (
 /obj/structure/machinery/light,
 /obj/structure/sign/safety/security{
-	pixel_y = -26
-	},
-/obj/structure/sign/safety/restrictedarea{
-	pixel_x = 15;
-	pixel_y = -26
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/light,
-/obj/structure/sign/safety/security{
 	pixel_y = -25
 	},
 /obj/structure/sign/safety/restrictedarea{
@@ -76325,17 +74857,6 @@
 "nYE" = (
 /turf/open/floor/almayer/uscm/directional/west,
 /area/almayer/command/lifeboat)
-"nYR" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/sign/safety/cryo{
-	pixel_y = 25
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/hallways/lower/starboard_aft_hallway)
 "nZf" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 1
@@ -78028,18 +76549,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer/green,
 /area/almayer/hallways/lower/starboard_midship_hallway)
-"oHt" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/sign/safety/cryo{
-	pixel_x = 8;
-	pixel_y = -25
-	},
-/turf/open/floor/almayer,
-/area/almayer/hallways/lower/port_aft_hallway)
 "oHx" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1
@@ -78405,28 +76914,7 @@
 /turf/open/floor/almayer/silver/southeast,
 /area/almayer/command/cichallway)
 "oPz" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/surface/table/almayer,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/device/flashlight/lamp{
-	pixel_x = 15
-	},
-/obj/item/paper_bin/uscm{
-	pixel_x = -7;
-	pixel_y = 6
-	},
-/obj/item/tool/pen{
-	pixel_x = -9;
-	pixel_y = 3
-	},
-/obj/item/tool/pen{
-	pixel_x = 4;
-	pixel_y = -4
-	},
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -78578,28 +77066,6 @@
 /obj/item/tool/crew_monitor,
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/upper/u_m_s)
-"oSL" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/sign/safety/hazard{
-	pixel_x = 15;
-	pixel_y = -25
-	},
-/obj/structure/sign/safety/ammunition{
-	pixel_y = -25
-	},
-/obj/structure/machinery/disposal,
-/obj/structure/disposalpipe/trunk{
-	dir = 1
-	},
-/turf/closed/wall/almayer,
-/area/almayer/squads/alpha)
 "oSM" = (
 /turf/open/floor/almayer,
 /area/almayer/hallways/lower/port_midship_hallway)
@@ -80787,22 +79253,6 @@
 	},
 /turf/open/floor/almayer/mono,
 /area/almayer/squads/support)
-"pYh" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/sign/safety/one{
-	pixel_x = 32;
-	pixel_y = -8
-	},
-/obj/structure/sign/safety/ammunition{
-	pixel_x = 32;
-	pixel_y = 7
-	},
-/turf/open/floor/almayer/flooredge/southeast,
-/area/almayer/hallways/lower/starboard_midship_hallway)
 "pYo" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -80855,17 +79305,6 @@
 "pZK" = (
 /turf/open/floor/almayer/orangecorner/north,
 /area/almayer/engineering/upper_engineering/port)
-"pZR" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/bed/chair/comfy/alpha{
-	dir = 1
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/living/briefing)
 "pZS" = (
 /obj/structure/bed/sofa/south/grey/left,
 /turf/open/floor/almayer/silver/north,
@@ -81255,24 +79694,6 @@
 "qhT" = (
 /turf/open/floor/almayer/orangecorner,
 /area/almayer/hallways/upper/aft_hallway)
-"qhU" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 1;
-	name = "ship-grade camera"
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/squads/platoon1_shared)
 "qid" = (
 /obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12
@@ -82262,20 +80683,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/stern)
-"qCc" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/sign/safety/security{
-	pixel_y = 25
-	},
-/obj/structure/sign/safety/restrictedarea{
-	pixel_y = 39
-	},
-/turf/open/floor/prison/kitchen,
-/area/almayer/living/grunt_rnr)
 "qCo" = (
 /obj/structure/pipes/vents/pump{
 	dir = 1
@@ -82419,20 +80826,8 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/processing)
 "qEz" = (
-/obj/structure/sign/safety/stairs{
-	pixel_x = 15;
-	pixel_y = -26
-	},
-/obj/structure/sign/safety/west{
-	pixel_y = -26
-	},
 /obj/structure/sign/safety/escapepod{
 	pixel_y = -40
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
 	},
 /obj/structure/machinery/door_control{
 	id = "laddersouthwest";
@@ -83283,12 +81678,6 @@
 /area/almayer/engineering/lower/workshop)
 "qXo" = (
 /obj/structure/largecrate/black_market/confiscated_weaponry,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/seed_extractor,
 /turf/open/floor/almayer/cargo,
 /area/almayer/maint/hull/lower/l_m_p)
 "qXE" = (
@@ -83356,24 +81745,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/lower/port_midship_hallway)
-"qYZ" = (
-/obj/structure/window/framed/almayer,
-/obj/structure/machinery/door/firedoor/border_only/almayer,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/sign/safety/security{
-	pixel_y = -25;
-	pixel_x = 15
-	},
-/obj/structure/sign/safety/restrictedarea{
-	pixel_x = 15;
-	pixel_y = -39
-	},
-/turf/open/floor/plating,
-/area/almayer/living/grunt_rnr)
 "qZe" = (
 /obj/structure/largecrate/random,
 /turf/open/floor/plating/plating_catwalk/no_build,
@@ -83443,20 +81814,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/underdeck/hangar)
-"raK" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/squads/platoon2_shared)
 "raO" = (
 /obj/structure/bed/sofa/south/grey/right,
 /turf/open/floor/almayer/plate,
@@ -83638,18 +81995,6 @@
 "rdZ" = (
 /turf/open/floor/plating,
 /area/almayer/command/corporateliaison)
-"rec" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/bed/chair/comfy/bravo{
-	dir = 1
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/closed/wall/almayer,
-/area/almayer/living/briefing)
 "ren" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -83948,15 +82293,6 @@
 "rmz" = (
 /obj/structure/sign/safety/conference_room{
 	pixel_x = 14;
-	pixel_y = 26
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/sign/safety/conference_room{
-	pixel_x = 14;
 	pixel_y = 25
 	},
 /turf/open/floor/almayer,
@@ -84110,21 +82446,6 @@
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/underdeck)
-"rqz" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/sign/safety/autoopenclose{
-	pixel_y = 25
-	},
-/obj/structure/sign/safety/water{
-	pixel_x = 15;
-	pixel_y = 25
-	},
-/turf/open/space/basic,
-/area/space)
 "rqD" = (
 /obj/structure/bed/chair/comfy{
 	dir = 8
@@ -84233,21 +82554,6 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/command/computerlab)
 "rsP" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/sign/safety/autoopenclose{
-	pixel_x = 8;
-	pixel_y = -32
-	},
-/obj/structure/bed/chair{
-	dir = 1
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -84838,16 +83144,6 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/lower/starboard_midship_hallway)
 "rHq" = (
-/obj/structure/sign/safety/storage{
-	pixel_x = 7;
-	pixel_y = -26
-	},
-/obj/structure/ladder/multiz,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/sign/safety/storage{
 	pixel_x = 8;
 	pixel_y = -25
@@ -86019,26 +84315,8 @@
 /area/almayer/medical/lockerroom)
 "sgm" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/surface/table/almayer,
 /obj/structure/machinery/firealarm{
 	pixel_y = 28
-	},
-/obj/item/reagent_container/food/condiment/hotsauce/cholula{
-	pixel_x = 10;
-	pixel_y = 14
-	},
-/obj/item/trash/USCMtray{
-	pixel_x = -4;
-	pixel_y = 4
-	},
-/obj/item/reagent_container/food/snacks/hotdog{
-	pixel_x = -7;
-	pixel_y = 5
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/briefing)
@@ -86681,18 +84959,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/command/securestorage)
-"suH" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/sign/safety/hvac_old{
-	pixel_x = 8;
-	pixel_y = -25
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/hallways/lower/starboard_midship_hallway)
 "suJ" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	name = "\improper Core Hatch"
@@ -86734,22 +85000,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/lower/starboard_midship_hallway)
-"svF" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/prop/invuln/overhead_pipe{
-	pixel_x = 12
-	},
-/obj/effect/landmark/yautja_teleport,
-/obj/structure/sign/safety/hvac_old{
-	pixel_x = 8;
-	pixel_y = -25
-	},
-/turf/open/floor/almayer_hull/outerhull_dir,
-/area/space)
 "swd" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out"
@@ -86869,17 +85119,6 @@
 /obj/structure/cryofeed/right,
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/underdeck/hangar)
-"syj" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/sign/safety/escapepod{
-	pixel_y = 25
-	},
-/turf/open/floor/almayer,
-/area/almayer/hallways/lower/starboard_fore_hallway)
 "syl" = (
 /obj/structure/machinery/light/red{
 	dir = 4;
@@ -87099,18 +85338,6 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/mono,
-/area/almayer/squads/delta)
-"sEg" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/sign/safety/hvac_old{
-	pixel_x = 8;
-	pixel_y = 25
-	},
-/turf/closed/wall/almayer,
 /area/almayer/squads/delta)
 "sEp" = (
 /obj/structure/disposalpipe/segment{
@@ -87694,24 +85921,6 @@
 	},
 /turf/open/floor/almayer/bluefull,
 /area/almayer/command/cicconference)
-"sUO" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 1;
-	name = "ship-grade camera"
-	},
-/turf/closed/wall/almayer,
-/area/almayer/squads/support)
 "sUS" = (
 /obj/structure/disposalpipe/junction{
 	dir = 4;
@@ -87920,18 +86129,6 @@
 	pixel_x = -3;
 	pixel_y = 5
 	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/storage/box/flashbangs{
-	pixel_x = -5;
-	pixel_y = 5
-	},
-/obj/item/restraint/handcuffs,
-/obj/item/storage/firstaid/regular,
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -88264,21 +86461,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/lower/repair_bay)
-"tgz" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/sign/safety/distribution_pipes{
-	pixel_y = -25
-	},
-/obj/structure/sign/safety/manualopenclose{
-	pixel_x = 15;
-	pixel_y = -25
-	},
-/turf/open/floor/almayer,
-/area/almayer/hallways/lower/port_midship_hallway)
 "tgJ" = (
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/warden_office)
@@ -88792,7 +86974,7 @@
 	pixel_y = 9
 	},
 /obj/item/storage/toolbox/mechanical/green,
-/turf/closed/wall/almayer/outer/internal,
+/turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_m_p)
 "trb" = (
 /obj/structure/window/framed/almayer/hull,
@@ -88973,18 +87155,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/redcorner/west,
 /area/almayer/shipboard/weapon_room)
-"tvl" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/sign/safety/distribution_pipes{
-	pixel_x = 8;
-	pixel_y = 25
-	},
-/turf/open/floor/almayer,
-/area/almayer/hallways/lower/starboard_midship_hallway)
 "tvt" = (
 /obj/structure/window/framed/almayer/hull,
 /turf/open/floor/plating,
@@ -89369,21 +87539,6 @@
 	},
 /turf/open/floor/almayer/silver/northeast,
 /area/almayer/command/combat_correspondent)
-"tEO" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/effect/landmark/start/marine/medic/charlie,
-/obj/effect/landmark/late_join/charlie,
-/obj/structure/sign/safety/cryo{
-	pixel_x = 8;
-	pixel_y = -25
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/maint/hull/lower/l_a_p)
 "tFe" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -89646,11 +87801,6 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/upper/u_m_s)
 "tJV" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/machinery/vending/hydronutrients,
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_m_p)
@@ -90386,32 +88536,16 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
 "udf" = (
-/obj/structure/sign/safety/maint{
-	pixel_x = 15;
-	pixel_y = 26
-	},
-/obj/structure/sign/safety/storage{
-	pixel_y = 26
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
 	pixel_y = 1
 	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/sign/safety/maint{
 	pixel_x = 15;
 	pixel_y = 25
 	},
 /obj/structure/sign/safety/storage{
 	pixel_y = 25
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "NW-out";
-	pixel_y = 3
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/lower/port_aft_hallway)
@@ -90773,15 +88907,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/plating_striped,
 /area/almayer/underdeck/req)
-"ukV" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep,
-/turf/open/floor/almayer,
-/area/almayer/hallways/lower/port_midship_hallway)
 "uli" = (
 /turf/open/floor/grass,
 /area/almayer/living/starboard_garden)
@@ -91517,24 +89642,6 @@
 	pixel_x = 1;
 	pixel_y = -5
 	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/disposalpipe/trunk{
-	dir = 8
-	},
-/obj/structure/machinery/disposal,
-/obj/structure/machinery/firealarm{
-	dir = 4;
-	pixel_x = 21;
-	pixel_y = -6
-	},
-/obj/structure/sign/safety/terminal{
-	pixel_x = 32;
-	pixel_y = 9
-	},
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
 "uBO" = (
@@ -91961,14 +90068,6 @@
 /turf/open/floor/almayer,
 /area/almayer/living/port_emb)
 "uNf" = (
-/obj/structure/sign/safety/conference_room{
-	pixel_y = 26
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/sign/safety/conference_room{
 	pixel_y = 25
 	},
@@ -92412,18 +90511,6 @@
 	},
 /turf/open/floor/almayer/silver,
 /area/almayer/shipboard/brig/cic_hallway)
-"uVp" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/sign/safety/water{
-	pixel_x = 8;
-	pixel_y = 25
-	},
-/turf/closed/wall/almayer/outer,
-/area/almayer/maint/hull/lower/l_a_p)
 "uVv" = (
 /obj/structure/pipes/standard/manifold/hidden/supply/no_boom{
 	dir = 1
@@ -92674,18 +90761,6 @@
 "vaS" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/mp_bunks)
-"vaV" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/sign/safety/hvac_old{
-	pixel_x = 8;
-	pixel_y = 25
-	},
-/turf/open/floor/almayer_hull/outerhull_dir/north,
-/area/space)
 "vaZ" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/almayer/plating_striped/northeast,
@@ -92885,37 +90960,6 @@
 /obj/structure/pipes/vents/scrubber,
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/general_equipment)
-"vgn" = (
-/obj/structure/machinery/firealarm{
-	pixel_y = -28;
-	pixel_x = -1
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/surface/table/almayer,
-/obj/effect/decal/cleanable/dirt,
-/obj/item/paper_bin/uscm{
-	pixel_x = 9;
-	pixel_y = 6
-	},
-/obj/item/tool/pen{
-	pixel_x = 9;
-	pixel_y = 2
-	},
-/obj/item/tool/pen{
-	pixel_x = 9;
-	pixel_y = 9
-	},
-/obj/structure/sign/poster{
-	icon_state = "poster14";
-	pixel_x = 27
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/living/briefing)
 "vgv" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -93492,26 +91536,6 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/device/camera_film{
-	layer = 3.03;
-	pixel_x = 4;
-	pixel_y = 1
-	},
-/obj/item/stack/sheet/cardboard/small_stack{
-	layer = 3.02;
-	pixel_x = -5;
-	pixel_y = 3
-	},
-/obj/structure/sign/nosmoking_1{
-	pixel_x = 25;
-	pixel_y = 8
-	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/bravo)
 "vqK" = (
@@ -93776,18 +91800,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/engineering/upper_engineering/starboard)
-"vvH" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/sign/safety/storage{
-	pixel_x = 8;
-	pixel_y = -25
-	},
-/turf/closed/wall/almayer,
-/area/almayer/maint/hull/lower/l_m_s)
 "vvY" = (
 /obj/structure/sink{
 	dir = 1;
@@ -94748,20 +92760,6 @@
 /obj/structure/ladder/multiz,
 /turf/open/floor/plating/almayer,
 /area/almayer/living/briefing)
-"vPK" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/cryopod{
-	pixel_y = 6
-	},
-/obj/structure/sign/safety/maint{
-	pixel_y = -25
-	},
-/turf/closed/wall/almayer,
-/area/almayer/squads/support)
 "vPR" = (
 /obj/structure/closet/bombcloset,
 /turf/open/floor/almayer/cargo,
@@ -95060,31 +93058,6 @@
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/medical_science)
 "vWB" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/ashtray/plastic,
-/obj/item/trash/cigbutt/bcigbutt,
-/obj/item/trash/cigbutt{
-	pixel_x = -1;
-	pixel_y = 17
-	},
-/obj/item/trash/cigbutt{
-	icon_state = "ucigbutt";
-	pixel_x = 2;
-	pixel_y = 8
-	},
-/obj/item/tool/lighter/random{
-	pixel_x = -8;
-	pixel_y = 7
-	},
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 8;
-	name = "ship-grade camera"
-	},
 /turf/open/floor/almayer/flooredge/northwest,
 /area/almayer/squads/bravo)
 "vWG" = (
@@ -95233,24 +93206,6 @@
 "vYM" = (
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cicconference)
-"vZb" = (
-/obj/structure/machinery/cryopod/right{
-	pixel_y = 6
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/cryopod{
-	pixel_y = 6
-	},
-/obj/structure/sign/safety/maint{
-	pixel_x = 15;
-	pixel_y = 25
-	},
-/turf/open/floor/almayer/cargo,
-/area/almayer/squads/delta)
 "vZv" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /turf/open/floor/almayer,
@@ -96225,43 +94180,10 @@
 "wsS" = (
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/hallways/lower/starboard_midship_hallway)
-"wtk" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/sign/safety/water{
-	pixel_x = 8;
-	pixel_y = 25
-	},
-/turf/open/floor/almayer_hull,
-/area/space)
 "wtm" = (
 /obj/structure/platform_decoration/metal/almayer/east,
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/upper/u_a_s)
-"wtn" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/sign/safety/hvac_old{
-	pixel_x = 8;
-	pixel_y = 25
-	},
-/obj/item/storage/firstaid{
-	pixel_x = 5;
-	pixel_y = 13
-	},
-/obj/item/clipboard,
-/obj/item/paper,
-/turf/open/space/basic,
-/area/space)
 "wty" = (
 /obj/effect/spawner/random/toolbox,
 /obj/structure/largecrate/random/barrel/red,
@@ -96516,18 +94438,6 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/operating_room_four)
-"wxu" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/sign/safety/water{
-	pixel_x = 8;
-	pixel_y = -25
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/maint/hull/lower/l_m_p)
 "wxy" = (
 /turf/closed/wall/almayer/outer,
 /area/almayer/maint/hull/upper/p_stern)
@@ -97194,19 +95104,6 @@
 	pixel_x = -17;
 	pixel_y = -10
 	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/sign/safety/two{
-	pixel_x = 32;
-	pixel_y = -8
-	},
-/obj/structure/sign/safety/ammunition{
-	pixel_x = 32;
-	pixel_y = 7
-	},
 /turf/open/floor/almayer/flooredge/northeast,
 /area/almayer/hallways/lower/starboard_midship_hallway)
 "wMv" = (
@@ -97564,25 +95461,6 @@
 /obj/structure/machinery/door/airlock/almayer/marine/bravo/medic{
 	dir = 4
 	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/sign/safety/hazard{
-	pixel_x = 15;
-	pixel_y = -25
-	},
-/obj/structure/sign/safety/ammunition{
-	pixel_y = -25
-	},
-/obj/structure/machinery/disposal,
-/obj/structure/disposalpipe/trunk{
-	dir = 1
-	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/squads/bravo)
 "wVA" = (
@@ -97850,19 +95728,6 @@
 /obj/structure/largecrate/random/mini{
 	pixel_y = 13
 	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/surface/table/almayer,
-/obj/item/tool/kitchen/knife,
-/obj/item/tool/kitchen/utensil/fork{
-	pixel_x = 7
-	},
-/obj/item/tool/kitchen/utensil/spoon{
-	pixel_x = -8
-	},
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -97996,21 +95861,6 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/living/cafeteria_officer)
-"xfq" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/sign/safety/hvac_old{
-	pixel_x = 8;
-	pixel_y = -25
-	},
-/obj/item/clipboard,
-/obj/item/paper,
-/obj/item/tool/pen,
-/turf/open/space/basic,
-/area/space)
 "xfr" = (
 /obj/structure/platform/metal/almayer,
 /obj/structure/platform/metal/almayer/east,
@@ -98075,28 +95925,6 @@
 "xgP" = (
 /turf/open/floor/almayer/sterile_green_corner/north,
 /area/almayer/medical/upper_medical)
-"xgS" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/prop/invuln/overhead_pipe{
-	pixel_x = 12
-	},
-/obj/structure/prop/invuln/overhead_pipe{
-	pixel_x = 12;
-	pixel_y = 12
-	},
-/obj/structure/sign/safety/distribution_pipes{
-	pixel_x = 8;
-	pixel_y = 25
-	},
-/turf/open/floor/almayer_hull,
-/area/space)
 "xhn" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/almayer/mono,
@@ -98404,22 +96232,6 @@
 	},
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/living/commandbunks)
-"xpl" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/sign/safety/four{
-	pixel_x = 31;
-	pixel_y = -8
-	},
-/obj/structure/sign/safety/ammunition{
-	pixel_x = 32;
-	pixel_y = 7
-	},
-/turf/open/floor/almayer,
-/area/almayer/hallways/lower/port_midship_hallway)
 "xpw" = (
 /obj/structure/machinery/medical_pod/sleeper{
 	dir = 8
@@ -98596,21 +96408,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/lower/cryo_cells)
-"xsv" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/sign/safety/water{
-	pixel_x = 8;
-	pixel_y = 25
-	},
-/turf/closed/wall/almayer,
-/area/almayer/maint/hull/lower/l_a_p)
 "xsw" = (
 /turf/open/floor/almayer/sterile_green_side/southeast,
 /area/almayer/medical/lower_medical_medbay)
@@ -98770,18 +96567,6 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/lower/starboard_midship_hallway)
 "xwm" = (
-/obj/structure/sign/safety/security{
-	pixel_x = 15;
-	pixel_y = 26
-	},
-/obj/structure/sign/safety/restrictedarea{
-	pixel_y = 26
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/sign/safety/security{
 	pixel_x = 15;
 	pixel_y = 25
@@ -100616,18 +98401,6 @@
 /obj/structure/closet/radiation,
 /turf/open/floor/almayer/cargo,
 /area/almayer/engineering/lower/engine_core)
-"ylN" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/sign/safety/galley{
-	pixel_x = 8;
-	pixel_y = 25
-	},
-/turf/open/floor/almayer,
-/area/almayer/hallways/lower/starboard_aft_hallway)
 "ymg" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
@@ -147026,7 +144799,7 @@ eKT
 wan
 cTC
 aQF
-syj
+qPk
 aiG
 aiE
 aix
@@ -147052,7 +144825,7 @@ abW
 abL
 abx
 mDZ
-hkC
+knm
 cbW
 xOL
 gGI
@@ -148167,7 +145940,7 @@ bdd
 bdd
 bdd
 bJt
-bLU
+cev
 cev
 bJt
 spF
@@ -148177,7 +145950,7 @@ jMr
 cfc
 bJt
 cev
-qYZ
+cev
 bJt
 bdd
 bdd
@@ -148709,7 +146482,7 @@ hAz
 mgb
 lHG
 bYV
-hSw
+xbg
 qxE
 mgb
 vSp
@@ -148787,13 +146560,13 @@ cdd
 bJt
 cgJ
 cgB
-cgx
+cex
 cex
 cfQ
 fnx
 cfn
 bDs
-qCc
+bDs
 cey
 bLL
 bJt
@@ -148876,7 +146649,7 @@ bCg
 bqZ
 dGU
 lgF
-pZR
+bqZ
 qkY
 mho
 bdd
@@ -149120,7 +146893,7 @@ sNI
 sgD
 sgD
 kUR
-bYX
+kiX
 bqZ
 bdd
 bXG
@@ -149288,7 +147061,7 @@ asr
 fUA
 uwt
 rLP
-cjR
+fUA
 fZG
 phd
 bdd
@@ -149491,10 +147264,10 @@ ktR
 bdd
 cmB
 dJI
-jaf
+cbK
 kwc
-ebp
-cjS
+kWN
+bqZ
 cjj
 bMe
 vuA
@@ -149738,7 +147511,7 @@ vKe
 rCO
 rCO
 eYF
-bZd
+vMM
 cab
 bdd
 cNX
@@ -149782,7 +147555,7 @@ aaa
 kyw
 eqm
 lfx
-vvH
+bwG
 cpU
 cpU
 aaJ
@@ -149812,7 +147585,7 @@ iEM
 atH
 atH
 bdd
-bLV
+bLB
 cha
 fUA
 fUA
@@ -149904,11 +147677,11 @@ bdd
 bdd
 sgm
 kEg
-ckJ
+jkD
 jkD
 cjT
-vgn
-rec
+eeh
+bdd
 bdd
 fZE
 naa
@@ -150013,7 +147786,7 @@ cjU
 kFs
 vuA
 fZE
-tvl
+fZE
 naa
 fZE
 fZE
@@ -150062,11 +147835,11 @@ nsY
 nsY
 nsY
 nsY
-ecj
+mJO
 mJO
 mJO
 nEl
-wxu
+xbg
 lyW
 aaa
 aaa
@@ -150312,7 +148085,7 @@ cob
 cob
 dsY
 aAU
-pYh
+xZR
 cmG
 wMl
 aAU
@@ -150358,7 +148131,7 @@ oSM
 exc
 oSM
 bYo
-xpl
+oSM
 exc
 mqt
 vno
@@ -150424,7 +148197,7 @@ tpR
 tpR
 tpR
 osQ
-ciA
+cih
 cih
 chX
 atH
@@ -150452,7 +148225,7 @@ brq
 brq
 ccJ
 qWx
-ccc
+qWx
 qWx
 jhA
 jhA
@@ -150509,7 +148282,7 @@ ycl
 ycl
 ycl
 bwG
-hiP
+eNL
 fEF
 tLZ
 atH
@@ -150562,9 +148335,9 @@ oSM
 oSM
 oSM
 vra
-ukV
+oSM
 oNj
-ukV
+oSM
 vra
 gll
 oSM
@@ -150573,7 +148346,7 @@ oSM
 brq
 wcD
 ter
-hNv
+eWv
 mJO
 plv
 plv
@@ -150624,7 +148397,7 @@ cnz
 aLT
 aLT
 aLT
-nny
+aLT
 aLT
 meQ
 xwl
@@ -150668,7 +148441,7 @@ bZx
 aQL
 aQL
 aQL
-miV
+aQL
 aQL
 lpt
 qYQ
@@ -150921,7 +148694,7 @@ ycl
 ycl
 ycl
 cmC
-cpD
+atD
 fEF
 ktl
 aLT
@@ -150985,7 +148758,7 @@ dnE
 aQL
 xzI
 ter
-hdV
+akB
 cnd
 plv
 plv
@@ -151095,7 +148868,7 @@ plv
 plv
 plv
 mJO
-kLm
+nEl
 xbg
 oqI
 iDk
@@ -151132,7 +148905,7 @@ sNL
 ygB
 aLT
 coI
-hfa
+bdr
 aLT
 wnY
 xHp
@@ -151142,7 +148915,7 @@ esn
 nFK
 aLT
 aLT
-oSL
+aLT
 aLT
 aLT
 fZE
@@ -151176,7 +148949,7 @@ awE
 dnP
 aQL
 aQL
-eUh
+aQL
 aQL
 bpC
 bZy
@@ -151355,7 +149128,7 @@ ciD
 cij
 dAm
 aCX
-suH
+atH
 bdd
 beQ
 beQ
@@ -151445,9 +149218,9 @@ bdr
 bMp
 asl
 bdr
-hXd
-guW
-aQM
+aLT
+rtA
+ipE
 asy
 aLT
 bMh
@@ -151718,8 +149491,8 @@ wDr
 nGM
 hIp
 tcO
-xgS
-svF
+aag
+ajZ
 aaC
 aaa
 aab
@@ -151732,7 +149505,7 @@ aaa
 aab
 bdH
 aaC
-vaV
+aad
 aag
 emA
 ikT
@@ -151821,7 +149594,7 @@ wDr
 aUE
 gEh
 tcO
-wtk
+aag
 ajZ
 aaC
 aaa
@@ -152071,7 +149844,7 @@ ciE
 ciE
 ciE
 ciE
-buN
+ciE
 ciE
 fZE
 eFa
@@ -152101,10 +149874,10 @@ oYi
 mkx
 dNW
 aQL
-cdU
 aQL
 aQL
-cog
+aQL
+aQL
 aQL
 bZC
 cdP
@@ -152170,7 +149943,7 @@ aQT
 aUZ
 cmc
 clt
-kiU
+cfb
 ckw
 ckc
 cjs
@@ -152267,13 +150040,13 @@ bco
 aMB
 bdA
 coi
-bfD
+ciE
 cnF
 aQT
 aUZ
 cmc
 clt
-bnr
+aUZ
 aUZ
 aUZ
 aUZ
@@ -152311,13 +150084,13 @@ cdV
 bYs
 bYs
 bYs
-raK
+bYs
 bZD
 bgW
 bYt
 dpO
 bXK
-iyS
+aQL
 bXo
 clJ
 bVn
@@ -152435,7 +150208,7 @@ gEh
 sOD
 gEh
 xhO
-ien
+xhO
 tcO
 tcO
 tcO
@@ -152457,7 +150230,7 @@ aad
 aag
 aag
 aag
-cpZ
+emA
 emA
 emA
 emA
@@ -152538,7 +150311,7 @@ tcO
 tcO
 tcO
 tcO
-jEA
+tcO
 tcO
 aag
 aag
@@ -152576,13 +150349,13 @@ aLT
 coO
 coy
 wMG
-bfx
+ciE
 aPj
 aPl
 ckf
 aPn
 clx
-bnu
+cfb
 cfb
 aUZ
 aUZ
@@ -152614,19 +150387,19 @@ sSa
 bRo
 dOG
 gKw
-tgz
+oSM
 cci
 bYs
 bYs
 bYs
 bYs
-chN
+bYt
 bZG
 bZk
 bYx
 ckR
 bXM
-loS
+bVK
 bVK
 bVK
 bVK
@@ -152723,7 +150496,7 @@ cgr
 bMy
 cgr
 caG
-aON
+cbR
 bZH
 bZl
 bYy
@@ -152782,13 +150555,13 @@ iDf
 coP
 coz
 aLT
-ial
+ciE
 aPj
 cno
 cjx
 cmh
 clz
-qhU
+cfb
 cfb
 cfb
 aUZ
@@ -152826,13 +150599,13 @@ bYt
 bYt
 bYt
 bYt
-chP
+bYt
 bZI
 bZm
 bYA
 bYd
 bXM
-sUO
+bVK
 bVB
 bWS
 clZ
@@ -152891,7 +150664,7 @@ cnp
 cfb
 cmi
 clA
-bMj
+cky
 cky
 cjw
 cjw
@@ -152935,7 +150708,7 @@ bZn
 bYs
 dpO
 ckX
-atA
+bVK
 bXp
 clL
 bWA
@@ -153194,7 +150967,7 @@ iSZ
 coR
 nuN
 wMG
-bfD
+ciE
 rGj
 aQT
 cfb
@@ -153238,13 +151011,13 @@ cbR
 cbw
 cbc
 caJ
-raK
+bYs
 bZK
 bZp
 bYs
 bYb
 ckX
-mvl
+bVK
 bVB
 bWU
 bWD
@@ -153297,13 +151070,13 @@ iDf
 cjc
 cjc
 wMG
-bMo
+ciE
 ciE
 ciE
 cmR
 cmm
 clB
-ckK
+ciE
 ciE
 ciE
 ciE
@@ -153341,19 +151114,19 @@ bVK
 bVK
 bVK
 bVK
-chW
+bVK
 rvT
 bZq
 bYB
 bVK
 bVK
-meu
+bVK
 bXp
 bWU
 bWE
 bWi
 bVL
-xsv
+ljv
 xhO
 cZp
 tcO
@@ -153394,12 +151167,12 @@ aaa
 emA
 cpH
 vPv
-kDd
 aLT
-bdJ
+aLT
+wMG
 uJU
 wMG
-bpL
+aLT
 bSJ
 ciE
 ciE
@@ -153407,10 +151180,10 @@ ciE
 cmn
 clC
 ciE
-ckA
+hMX
 cki
 bsS
-mqK
+bSJ
 bSJ
 bqc
 tcS
@@ -153440,10 +151213,10 @@ ekM
 aVM
 uPE
 bVK
-cfp
+bVK
 cgu
 rUh
-bLd
+rUh
 bVK
 bZL
 bZs
@@ -153559,8 +151332,8 @@ clG
 bWF
 bVK
 bVK
-bVA
-bVj
+ljv
+ljv
 bUM
 tcO
 bdH
@@ -153599,13 +151372,13 @@ aaa
 aaa
 emA
 oTA
-sEg
+bSJ
 bSJ
 cnK
 cnK
 coS
 cnK
-col
+cnK
 cnK
 bSJ
 bSJ
@@ -153613,7 +151386,7 @@ cmU
 cmq
 clO
 oiQ
-ckB
+bUN
 clg
 cjB
 cje
@@ -153868,7 +151641,7 @@ bWX
 bWH
 bWk
 bVP
-bVD
+ozT
 ljv
 bUR
 tcO
@@ -154014,7 +151787,7 @@ ikT
 bSJ
 bSJ
 kPJ
-vZb
+kPJ
 tnY
 kPJ
 tIQ
@@ -154072,7 +151845,7 @@ rPE
 bVK
 bWZ
 hcI
-vPK
+bVK
 bVK
 ljv
 bVk
@@ -154287,7 +152060,7 @@ tcO
 bdH
 bdH
 bdH
-aaa
+bdH
 aaa
 bdH
 bdH
@@ -154388,9 +152161,9 @@ ffx
 bUW
 tcO
 bdH
-dFL
 bdH
-aaa
+bdH
+bdH
 aaa
 bdH
 bdH
@@ -154493,7 +152266,7 @@ tcO
 bdH
 bdH
 bdH
-aaa
+bdH
 aaa
 bdH
 bdH
@@ -154596,7 +152369,7 @@ tcO
 bdH
 bdH
 bdH
-aaa
+bdH
 aaa
 bdH
 bdH
@@ -154648,7 +152421,7 @@ bRg
 clT
 bSJ
 nci
-ylN
+bqc
 qIf
 bqc
 bbr
@@ -154699,7 +152472,7 @@ tcO
 bdH
 bdH
 bdH
-aaa
+bdH
 aaa
 bdH
 bdH
@@ -154802,7 +152575,7 @@ bdH
 bdH
 bdH
 bdH
-aaa
+bdH
 aaa
 bdH
 bdH
@@ -154831,8 +152604,8 @@ aaa
 aaa
 aaa
 aaa
-cpV
-cpT
+bdH
+bdH
 bdH
 bdH
 emA
@@ -154905,7 +152678,7 @@ bdH
 bdH
 bdH
 bdH
-aaa
+bdH
 aaa
 bdH
 bdH
@@ -155005,7 +152778,7 @@ mAV
 tcO
 bdH
 bdH
-rqz
+bdH
 bdH
 bdH
 bdH
@@ -155189,7 +152962,7 @@ krA
 bbs
 wMI
 vuV
-oHt
+uPE
 ccp
 ljv
 cft
@@ -155212,7 +152985,7 @@ tcO
 bdH
 bdH
 bdH
-dFL
+bdH
 bdH
 bdH
 bdH
@@ -155463,7 +153236,7 @@ com
 ikT
 bSJ
 bSJ
-lDV
+bSJ
 bSJ
 hEb
 bSe
@@ -155472,7 +153245,7 @@ bSJ
 bSJ
 bSJ
 ciP
-nYR
+lhs
 bww
 chU
 bbs
@@ -155507,7 +153280,7 @@ oXb
 lYg
 oka
 ljv
-tEO
+bUW
 bVm
 rYp
 rYp
@@ -155721,7 +153494,7 @@ bXx
 tcO
 tcO
 tcO
-uVp
+tcO
 tcO
 tcO
 bdH
@@ -155762,7 +153535,7 @@ bdH
 aaa
 bdH
 bdH
-wtn
+bdH
 bdH
 bdH
 bdH
@@ -156232,7 +154005,7 @@ bdH
 bdH
 bdH
 bdH
-aaa
+bdH
 aaa
 aaa
 aaa
@@ -156333,9 +154106,9 @@ ajZ
 bdH
 bdH
 bdH
-xfq
 bdH
-aaa
+bdH
+bdH
 aaa
 aaa
 aaa
@@ -156642,7 +154415,7 @@ ajZ
 bdH
 bdH
 bdH
-bXS
+bdH
 bdH
 bdH
 bdH
@@ -156847,10 +154620,10 @@ aag
 ajZ
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa

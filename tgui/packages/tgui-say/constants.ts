@@ -320,18 +320,6 @@ export const RADIO_PREFIXES = {
     id: 'wysec',
     label: 'W-Y Sec',
   },
-  ':1 ': {
-    id: 'wypub',
-    label: 'W-Y Pub',
-  },
-  '.1 ': {
-    id: 'wypub',
-    label: 'W-Y Pub',
-  },
-  '#1 ': {
-    id: 'wypub',
-    label: 'W-Y Pub',
-  },
   ':z ': {
     id: 'highcom',
     label: 'HC',
@@ -352,13 +340,25 @@ export const RADIO_PREFIXES = {
     id: 'sof',
     label: 'SOF',
   },
-  ':2': {
+  ':2 ': {
     id: 'colony',
     label: 'Colony',
   },
-  '.2': {
+  '.2 ': {
     id: 'colony',
     label: 'Colony',
+  },
+  ':3 ': {
+    id: 'wypub',
+    label: 'W-Y Pub',
+  },
+  '.3 ': {
+    id: 'wypub',
+    label: 'W-Y Pub',
+  },
+  '#3 ': {
+    id: 'wypub',
+    label: 'W-Y Pub',
   },
 } as const;
 

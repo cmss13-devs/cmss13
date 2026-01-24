@@ -983,7 +983,7 @@
 	dir = 1;
 	icon_state = "pwall"
 	},
-/area/kutjevo/interior/oob)
+/area/space)
 "FJ" = (
 /obj/structure/machinery/light{
 	dir = 4

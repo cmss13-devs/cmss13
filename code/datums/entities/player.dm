@@ -8,8 +8,6 @@
 	var/whitelist_status
 	var/whitelist_flags
 
-	var/discord_link_id
-
 	var/last_login
 
 	var/is_permabanned = FALSE
@@ -45,7 +43,6 @@
 	var/migrating_bans = FALSE
 	var/migrating_jobbans = FALSE
 
-	var/datum/entity/discord_link/discord_link
 	var/datum/entity/player/permaban_admin
 	var/datum/entity/player/time_ban_admin
 	var/list/datum/entity/player_note/notes
@@ -70,7 +67,6 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		"permaban_reason" = DB_FIELDTYPE_STRING_MAX,
 		"permaban_date" = DB_FIELDTYPE_STRING_LARGE,
 		"whitelist_status" = DB_FIELDTYPE_STRING_MAX,
-		"discord_link_id" = DB_FIELDTYPE_BIGINT,
 		"permaban_admin_id" = DB_FIELDTYPE_BIGINT,
 		"is_time_banned" = DB_FIELDTYPE_INT,
 		"time_ban_reason" = DB_FIELDTYPE_STRING_MAX,
@@ -418,8 +414,6 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		permaban_admin = DB_ENTITY(/datum/entity/player, permaban_admin_id)
 	if(time_ban_admin_id)
 		time_ban_admin = DB_ENTITY(/datum/entity/player, time_ban_admin_id)
-	if(discord_link_id)
-		discord_link = DB_ENTITY(/datum/entity/discord_link, discord_link_id)
 
 	if(whitelist_status)
 		var/list/whitelists = splittext(whitelist_status, "|")
@@ -783,7 +777,6 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	var/admin
 	var/last_known_cid
 	var/last_known_ip
-	var/discord_link_id
 	var/whitelist_status
 
 /datum/entity_view_meta/players
@@ -801,6 +794,5 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		"admin" = DB_CASE(DB_COMP("is_permabanned", DB_EQUALS, 1), "permabanning_admin.ckey", "banning_admin.ckey"),
 		"last_known_ip",
 		"last_known_cid",
-		"discord_link_id",
 		"whitelist_status"
 		)

@@ -1,10 +1,10 @@
 #define APC_WIRE_MAIN_POWER 1
 #define APC_WIRE_IDSCAN 2
 
-GLOBAL_LIST_INIT(apc_wire_descriptions, list(
-		APC_WIRE_MAIN_POWER   = "Main power",
-		APC_WIRE_IDSCAN   = "ID scanner"
-	))
+GLOBAL_LIST_INIT(apc_wire_descriptions, flatten_numeric_alist(alist(
+		APC_WIRE_MAIN_POWER = "Main power",
+		APC_WIRE_IDSCAN = "ID scanner",
+	)))
 
 #define APC_COVER_CLOSED 0
 #define APC_COVER_OPEN 1
@@ -364,7 +364,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 /obj/structure/machinery/power/apc/proc/make_terminal()
 	//Create a terminal object at the same position as original turf loc
 	//Wires will attach to this
-	terminal = new/obj/structure/machinery/power/terminal(src.loc)
+	terminal = new/obj/structure/terminal(loc)
 	terminal.setDir(dir)
 	terminal.master = src
 
@@ -733,7 +733,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 				user.visible_message(SPAN_NOTICE("[user] wires [src]'s frame."),
 				SPAN_NOTICE("You wire [src]'s frame."))
 				make_terminal()
-				terminal.connect_to_network()
+				connect_to_network()
 	else if(HAS_TRAIT(attacking_item, TRAIT_TOOL_WIRECUTTERS) && terminal && opened && has_electronics != 2)
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You have no idea what to do with [attacking_item]."))
@@ -748,7 +748,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			if(!terminal)
 				to_chat(user, SPAN_WARNING("[src] lacks a terminal to remove."))
 				return
-			if (prob(50) && electrocute_mob(user, terminal.powernet, terminal))
+			if (prob(50) && electrocute_mob(user, powernet, terminal))
 				var/datum/effect_system/spark_spread/spark = new /datum/effect_system/spark_spread
 				spark.set_up(5, 1, src)
 				spark.start()
@@ -895,7 +895,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 		else if(grabber.species.can_shred(grabber))
 			var/allcut = TRUE
-			for(var/wire = 1; wire < length(get_wire_descriptions()); wire++)
+			for(var/wire = 1; wire < length(GLOB.apc_wire_descriptions); wire++)
 				if(!isWireCut(wire))
 					allcut = FALSE
 					break
@@ -906,7 +906,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			SPAN_WARNING("You slash [src]!"))
 			playsound(src.loc, 'sound/weapons/slash.ogg', 25, 1)
 			if(wiresexposed)
-				for(var/wire = 1; wire < length(get_wire_descriptions()); wire++)
+				for(var/wire = 1; wire < length(GLOB.apc_wire_descriptions); wire++)
 					cut(wire, user)
 				update_icon()
 				visible_message(SPAN_WARNING("[src]'s wires are shredded!"))
@@ -949,12 +949,6 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		area.update_power_channels((equipment > 1), (lighting > 1), (environ > 1))
 	else
 		area.update_power_channels(FALSE, FALSE, FALSE)
-
-/obj/structure/machinery/power/apc/proc/get_wire_descriptions()
-	return list(
-		APC_WIRE_MAIN_POWER   = "Main power",
-		APC_WIRE_IDSCAN    = "ID scanner"
-	)
 
 /obj/structure/machinery/power/apc/proc/isWireCut(wire)
 	var/wireFlag = getWireFlag(wire)
@@ -1077,32 +1071,9 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			spark.start()
 			visible_message(SPAN_WARNING("[src] suddenly lets out a blast of smoke and some sparks!"))
 
-/obj/structure/machinery/power/apc/surplus()
-	if(terminal)
-		return terminal.surplus()
-	else
-		return 0
-
-/obj/structure/machinery/power/apc/proc/last_surplus()
-	if(terminal && terminal.powernet)
-		return terminal.powernet.last_surplus()
-	else
-		return 0
-
 //Returns 1 if the APC should attempt to charge
 /obj/structure/machinery/power/apc/proc/attempt_charging()
 	return (chargemode && charging == APC_CHARGING && operating)
-
-/obj/structure/machinery/power/apc/add_load(amount)
-	if(terminal && terminal.powernet)
-		return terminal.powernet.draw_power(amount)
-	return 0
-
-/obj/structure/machinery/power/apc/avail()
-	if(terminal)
-		return terminal.avail()
-	else
-		return 0
 
 /obj/structure/machinery/power/apc/process()
 	if(stat & (BROKEN|MAINT))
@@ -1134,8 +1105,8 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	var/power_excess = 0
 
 	var/perapc = 0
-	if(terminal && terminal.powernet)
-		perapc = terminal.powernet.perapc
+	if(powernet)
+		perapc = powernet.perapc
 
 	if(debug)
 		log_debug( "Status: [main_status] - Excess: [excess] - Last Equip: [lastused_equip] - Last Light: [lastused_light]")
@@ -1270,7 +1241,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		if(chargemode)
 			if(!charging)
 				//last_surplus() overestimates the amount of power available for charging, but it's equivalent to what APCs were doing before.
-				if(last_surplus() * CELLRATE >= cell_maxcharge * CHARGELEVEL)
+				if(powernet?.last_surplus() * CELLRATE >= cell_maxcharge * CHARGELEVEL)
 					chargecount++
 				else
 					chargecount = 0
@@ -1387,7 +1358,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 /obj/structure/machinery/power/apc/wires_cut/Initialize(mapload, ndir, building)
 	. = ..()
 	wiresexposed = TRUE
-	for(var/wire = 1; wire < length(get_wire_descriptions()); wire++)
+	for(var/wire = 1; wire < length(GLOB.apc_wire_descriptions); wire++)
 		cut(wire)
 	update_icon()
 	beenhit = 4
@@ -1398,7 +1369,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 /obj/structure/machinery/power/apc/fully_broken/Initialize(mapload, ndir, building)
 	. = ..()
 	wiresexposed = TRUE
-	for(var/wire = 1; wire < length(get_wire_descriptions()); wire++)
+	for(var/wire = 1; wire < length(GLOB.apc_wire_descriptions); wire++)
 		cut(wire)
 	beenhit = 4
 	set_broken()

@@ -60,6 +60,11 @@ $scrollbar-color-multiplier: 0.5 !default;
   );
 
   @include meta.load-css(
+    '~tgui/styles/components/RoundGauge',
+    $with: ('ring-color': base.$color-fg)
+  );
+
+  @include meta.load-css(
     '~tgui/styles/components/ProgressBar',
     $with: ('color-default-fill': base.$color-fg)
   );

@@ -14,8 +14,16 @@
 	if(!skills)
 		return FALSE
 	var/order_level = skills.get_skill_level(SKILL_LEADERSHIP)
-	if(!order_level)
-		order_level = SKILL_LEAD_TRAINED
+
+	switch(order_level)
+		if(SKILL_LEAD_TRAINED)
+			order_level = 1
+		if(SKILL_LEAD_SKILLED)
+			order_level = 1.5
+		if(SKILL_LEAD_EXPERT)
+			order_level = 2
+		if(SKILL_LEAD_MASTER)
+			order_level = 3
 
 	if(!order)
 		order = tgui_input_list(src, "Choose an order", "Order to send", list(COMMAND_ORDER_MOVE, COMMAND_ORDER_HOLD, COMMAND_ORDER_FOCUS, "help", "cancel"))
@@ -32,23 +40,47 @@
 	command_aura_available = FALSE
 	var/command_aura_strength = order_level
 	var/command_aura_duration = (order_level + 1) * 10 SECONDS
+	var/command_aura_cooldown = COMMAND_ORDER_COOLDOWN
+	var/command_aura_range = COMMAND_ORDER_RANGE
 
-	var/turf/T = get_turf(src)
-	for(var/mob/living/carbon/human/H in range(COMMAND_ORDER_RANGE, T))
-		if(H.stat == DEAD)
-			continue
-		if(!ishumansynth_strict(H))
-			continue
-		H.activate_order_buff(order, command_aura_strength, command_aura_duration)
+	// whistle checks
+	var/obj/item/clothing/accessory/device/whistle/whistling = locate() in src.contents
+	var/list/leader_clothes = list(w_uniform, wear_suit)
+	for(var/obj/item/clothing/accessory in leader_clothes)
+		if(!whistling && accessory?.accessories)
+			whistling = locate() in accessory.accessories
+			if(whistling)
+				break
 
-	if(loc != T) //if we were inside something, the range() missed us.
+	var/leader_sound = null
+	if(whistling && whistling.leader_whistle)
+		command_aura_strength += 1.25 // just a minor buff :)
+		command_aura_cooldown += 800 //deciseconds, equivalent to 240 seconds with the default cooldown
+		command_aura_range += 3
+		switch(order)
+			if(COMMAND_ORDER_MOVE)
+				leader_sound = 'sound/items/whistles/trench_whistle_move.ogg'
+			if(COMMAND_ORDER_HOLD)
+				leader_sound = 'sound/items/whistles/trench_whistle_hold.ogg'
+			if(COMMAND_ORDER_FOCUS)
+				leader_sound = 'sound/items/whistles/trench_whistle_focus.ogg'
+
+	var/turf/turf = get_turf(src)
+	for(var/mob/living/carbon/human/inspiring in range(command_aura_range, turf))
+		if(inspiring.stat == DEAD)
+			continue
+		if(!ishumansynth_strict(inspiring))
+			continue
+		inspiring.activate_order_buff(order, command_aura_strength, command_aura_duration)
+
+	if(loc != turf) //if we were inside something, the range() missed us.
 		activate_order_buff(order, command_aura_strength, command_aura_duration)
 
 	for(var/datum/action/A in actions)
 		A.update_button_icon()
 
 	// 1min cooldown on orders
-	addtimer(CALLBACK(src, PROC_REF(make_aura_available)), COMMAND_ORDER_COOLDOWN)
+	addtimer(CALLBACK(src, PROC_REF(make_aura_available)), command_aura_cooldown)
 
 	if(src.client?.prefs?.toggle_prefs & TOGGLE_LEADERSHIP_SPOKEN_ORDERS)
 		var/spoken_order = ""
@@ -62,6 +94,9 @@
 		say(spoken_order) // if someone thinks about adding new lines, it'll be better to split the current ones we have into two different lists per order for readability, and have a coin flip pick between spoken_orders 1 or 2
 	else
 		visible_message(SPAN_BOLDNOTICE("[src] gives an order to [order]!"), SPAN_BOLDNOTICE("You give an order to [order]!"))
+
+	if(whistling)
+		whistling.whistle_playsound(src, bypass_cooldown = TRUE, custom_sound = leader_sound, leader_slowdown = TRUE)
 
 /mob/living/carbon/human/proc/make_aura_available()
 	to_chat(src, SPAN_NOTICE("You can issue an order again."))
@@ -126,18 +161,18 @@
 
 /mob/living/carbon/human/proc/cycle_voice_level()
 	if(!HAS_TRAIT(src, TRAIT_LEADERSHIP)) // just in case
-		to_chat(src, SPAN_WARNING("You don't particularly understand how to speak... 'authoritatively .'"))
+		to_chat(src, SPAN_WARNING("You don't particularly understand how to speak... 'authoritatively.'"))
 		return
 
 	switch(langchat_styles)
 		if("", null)
 			langchat_styles = "langchat_smaller_bolded"
-			to_chat(src, SPAN_NOTICE("You will now speak authoritatively ."))
+			to_chat(src, SPAN_NOTICE("You will now speak authoritatively."))
 			return
 
 		if("langchat_smaller_bolded")
 			langchat_styles = "langchat_bolded"
-			to_chat(src, SPAN_NOTICE("You will now speak loudly and authoritatively ."))
+			to_chat(src, SPAN_NOTICE("You will now speak loudly and authoritatively."))
 			return
 
 		if("langchat_bolded")

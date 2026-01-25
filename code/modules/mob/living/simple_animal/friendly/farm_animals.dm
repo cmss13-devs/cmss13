@@ -5,10 +5,10 @@
 	icon_state = "goat"
 	icon_living = "goat"
 	icon_dead = "goat_dead"
-	speak = list("EHEHEHEHEH","eh?")
-	speak_emote = list("brays")
-	emote_hear = list("brays")
-	emote_see = list("shakes its head", "stamps a foot", "glares around")
+	speak = list("MEHEHEHEHEH!","Mehh?","Maa!","MAAAA!","Mehh!","AAAAAAAAAA!")
+	speak_emote = list("bleats")
+	emote_hear = list("bleats.")
+	emote_see = list("shakes its head.", "wiggles its tail.", "stamps a foot.", "glares around.")
 	speak_chance = 1
 	turns_per_move = 5
 	see_in_dark = 6
@@ -68,17 +68,17 @@
 	else
 		..()
 //cow
-/mob/living/simple_animal/cow
+/mob/living/simple_animal/big/cow
 	name = "cow"
 	desc = "Known for their milk, just don't tip them over."
 	icon_state = "cow"
 	icon_living = "cow"
 	icon_dead = "cow_dead"
 	icon_gib = "cow_gib"
-	speak = list("moo?","moo","MOOOOOO")
+	speak = list("Moo?","Moo.", "Mooooo!","Mmmmmm.","MrrrrrOOOOOO!","MOOOOOO!")
 	speak_emote = list("moos","moos hauntingly")
-	emote_hear = list("brays")
-	emote_see = list("shakes its head")
+	emote_hear = list("moos.")
+	emote_see = list("shakes its head.", "flicks its ear", "swishes its tail.", "licks at its side.")
 	speak_chance = 1
 	turns_per_move = 5
 	see_in_dark = 6
@@ -91,18 +91,18 @@
 	health = 50
 	var/datum/reagents/udder = null
 
-/mob/living/simple_animal/cow/New()
+/mob/living/simple_animal/big/cow/New()
 	udder = new(50)
 	udder.my_atom = src
 	..()
 
-/mob/living/simple_animal/cow/Destroy()
+/mob/living/simple_animal/big/cow/Destroy()
 	if(udder)
 		udder.my_atom = null
 	QDEL_NULL(udder)
 	return ..()
 
-/mob/living/simple_animal/cow/attackby(obj/item/O as obj, mob/user as mob)
+/mob/living/simple_animal/big/cow/attackby(obj/item/O as obj, mob/user as mob)
 	var/obj/item/reagent_container/glass/G = O
 	if(stat == CONSCIOUS && istype(G) && G.is_open_container())
 		user.visible_message(SPAN_NOTICE("[user] milks [src] using \the [O]."))
@@ -114,13 +114,13 @@
 	else
 		..()
 
-/mob/living/simple_animal/cow/Life(delta_time)
+/mob/living/simple_animal/big/cow/Life(delta_time)
 	. = ..()
 	if(stat == CONSCIOUS)
 		if(udder && prob(5))
 			udder.add_reagent("milk", rand(5, 10))
 
-/mob/living/simple_animal/cow/death()
+/mob/living/simple_animal/big/cow/death()
 	. = ..()
 	if(!.)
 		return //was already dead
@@ -129,7 +129,7 @@
 		if(user)
 			user.count_niche_stat(STATISTICS_NICHE_COW)
 
-/mob/living/simple_animal/cow/attack_hand(mob/living/carbon/M as mob)
+/mob/living/simple_animal/big/cow/attack_hand(mob/living/carbon/M as mob)
 	if(!stat && M.a_intent == INTENT_DISARM && icon_state != icon_dead)
 		M.visible_message(SPAN_WARNING("[M] tips over [src]."),
 			SPAN_NOTICE("You tip over [src]."))
@@ -139,24 +139,24 @@
 			if(!stat && M)
 				icon_state = icon_living
 				var/list/responses = list( "[src] looks at you imploringly.",
-											"[src] looks at you pleadingly",
+											"[src] looks at you pleadingly.",
 											"[src] looks at you with a resigned expression.",
 											"[src] seems resigned to its fate.")
 				to_chat(M, pick(responses))
 	else
 		..()
 
-/mob/living/simple_animal/chick
+/mob/living/simple_animal/small/chick
 	name = "\improper chick"
 	desc = "Adorable! They make such a racket though."
 	icon_state = "chick"
 	icon_living = "chick"
 	icon_dead = "chick_dead"
 	icon_gib = "chick_gib"
-	speak = list("Cherp.","Cherp?","Chirrup.","Cheep!")
+	speak = list("Chirp.","Chirp?","Chirrup.","Cheep!","Peep!")
 	speak_emote = list("cheeps")
-	emote_hear = list("cheeps")
-	emote_see = list("pecks at the ground","flaps its tiny wings")
+	emote_hear = list("cheeps.")
+	emote_see = list("pecks at the ground.","flaps its tiny wings.", "scratches around with its foot, looking for scraps.")
 	speak_chance = 2
 	turns_per_move = 2
 	meat_type = /obj/item/reagent_container/food/snacks/meat
@@ -169,39 +169,34 @@
 	var/amount_grown = 0
 	mob_size = MOB_SIZE_SMALL
 
-/mob/living/simple_animal/chick/New()
+/mob/living/simple_animal/small/chick/New()
 	..()
 	pixel_x = rand(-6, 6)
 	pixel_y = rand(0, 10)
 
-/mob/living/simple_animal/chick/initialize_pass_flags(datum/pass_flags_container/PF)
-	..()
-	if (PF)
-		PF.flags_pass = PASS_UNDER
-
-/mob/living/simple_animal/chick/Life(delta_time)
+/mob/living/simple_animal/small/chick/Life(delta_time)
 	. = ..()
 	if(!.)
 		return
 	if(stat == CONSCIOUS)
 		amount_grown += rand(1,2)
 		if(amount_grown >= 100)
-			new /mob/living/simple_animal/chicken(loc)
+			new /mob/living/simple_animal/small/chicken(loc)
 			qdel(src)
 
 GLOBAL_VAR_INIT(MAX_CHICKENS, 50)
 GLOBAL_VAR_INIT(chicken_count, 0)
 
-/mob/living/simple_animal/chicken
+/mob/living/simple_animal/small/chicken
 	name = "\improper chicken"
 	desc = "Hopefully the eggs are good this season."
 	icon_state = "chicken"
 	icon_living = "chicken"
 	icon_dead = "chicken_dead"
-	speak = list("Cluck!","BWAAAAARK BWAK BWAK BWAK!","Bwaak bwak.")
+	speak = list("Cluck!", "Bawk bwak.", "Bwarrrrk...", "Bawk!", "Bawk bawk bwak.", "BWAAAAARK BWAK BWAK BWAK!","Bwaak bwak.")
 	speak_emote = list("clucks","croons")
-	emote_hear = list("clucks")
-	emote_see = list("pecks at the ground","flaps its wings viciously")
+	emote_hear = list("clucks.")
+	emote_see = list("pecks at the ground.","flaps its wings viciously.", "scratches around with its foot, looking for scraps.")
 	speak_chance = 2
 	turns_per_move = 3
 	meat_type = /obj/item/reagent_container/food/snacks/meat
@@ -215,7 +210,7 @@ GLOBAL_VAR_INIT(chicken_count, 0)
 	var/body_color
 	mob_size = MOB_SIZE_SMALL
 
-/mob/living/simple_animal/chicken/New()
+/mob/living/simple_animal/small/chicken/New()
 	if(!body_color)
 		body_color = pick( list("brown","black","white") )
 	icon_state = "chicken_[body_color]"
@@ -226,12 +221,7 @@ GLOBAL_VAR_INIT(chicken_count, 0)
 	pixel_y = rand(0, 10)
 	GLOB.chicken_count++
 
-/mob/living/simple_animal/chicken/initialize_pass_flags(datum/pass_flags_container/PF)
-	..()
-	if (PF)
-		PF.flags_pass = PASS_UNDER
-
-/mob/living/simple_animal/chicken/death()
+/mob/living/simple_animal/small/chicken/death()
 	..()
 	GLOB.chicken_count--
 	if(last_damage_data)
@@ -239,7 +229,7 @@ GLOBAL_VAR_INIT(chicken_count, 0)
 		if(user)
 			user.count_niche_stat(STATISTICS_NICHE_CHICKEN)
 
-/mob/living/simple_animal/chicken/attackby(obj/item/O as obj, mob/user as mob)
+/mob/living/simple_animal/small/chicken/attackby(obj/item/O as obj, mob/user as mob)
 	if(istype(O, /obj/item/reagent_container/food/snacks/grown/wheat)) //feedin' dem chickens
 		if(!stat && eggsleft < 8)
 			user.visible_message(SPAN_NOTICE("[user] feeds [O] to [name]! It clucks happily."),SPAN_NOTICE("You feed [O] to [name]! It clucks happily."))
@@ -248,11 +238,11 @@ GLOBAL_VAR_INIT(chicken_count, 0)
 			eggsleft += rand(1, 4)
 			//world << eggsleft
 		else
-			to_chat(user, SPAN_NOTICE(" [name] doesn't seem hungry!"))
+			to_chat(user, SPAN_NOTICE("[name] doesn't seem hungry!"))
 	else
 		..()
 
-/mob/living/simple_animal/chicken/Life(delta_time)
+/mob/living/simple_animal/small/chicken/Life(delta_time)
 	. = ..()
 	if(!.)
 		return
@@ -271,7 +261,7 @@ GLOBAL_VAR_INIT(chicken_count, 0)
 		amount_grown += rand(1,2)
 		if(amount_grown >= 100)
 			visible_message("[src] hatches with a quiet cracking sound.")
-			new /mob/living/simple_animal/chick(get_turf(src))
+			new /mob/living/simple_animal/small/chick(get_turf(src))
 			STOP_PROCESSING(SSobj, src)
 			qdel(src)
 	else

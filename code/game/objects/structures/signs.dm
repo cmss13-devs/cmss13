@@ -100,7 +100,7 @@
 
 /obj/structure/sign/uacqs
 	name = "\improper UACQS Plaque"
-	desc = "a UACQS sign"
+	desc = "A UACQS sign."
 	icon_state = "roplaque"
 	deconstructable = FALSE
 
@@ -174,7 +174,7 @@
 
 /obj/structure/sign/flag/upp
 	name = "\improper Union of Progressive Peoples Flag"
-	desc = "Unity through Strength, Freedom through Unity"
+	desc = "Unity through Strength, Freedom through Unity."
 	icon_state = "upp_flag"
 
 //=====================//
@@ -640,7 +640,7 @@
 
 /obj/structure/sign/ROsign
 	name = "\improper USCM Requisitions Office Guidelines"
-	desc = " 1. You are not entitled to service or equipment. Attachments are a privilege, not a right.\n 2. You must be fully dressed to obtain service. Cryosleep underwear is non-permissible.\n 3. The Quartermaster has the final say and the right to decline service. Only the Acting Commanding Officer may override their decisions.\n 4. Please treat your Requsitions staff with respect. They work hard."
+	desc = "1. You are not entitled to service or equipment. Attachments are a privilege, not a right.\n 2. You must be fully dressed to obtain service. Cryosleep underwear is non-permissible.\n 3. The Quartermaster has the final say and the right to decline service. Only the Acting Commanding Officer may override their decisions.\n 4. Please treat your Requsitions staff with respect. They work hard."
 	icon_state = "roplaque"
 	deconstructable = FALSE
 

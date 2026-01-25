@@ -192,7 +192,7 @@ All ShuttleMove procs go here
 	var/turf/T = loc
 	hide(T.intact_tile)
 
-/obj/structure/machinery/power/terminal/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
+/obj/structure/terminal/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
 	. = ..()
 	var/turf/T = src.loc
 	if(level==1)

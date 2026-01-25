@@ -134,7 +134,7 @@
 #define TRIM_TEXT(text) (trim_reduced(text))
 
 /**
- * Helper and recommened way to load a map file
+ * Helper and recommend way to load a map file
  * - dmm_file: The path to the map file
  * - x_offset: The x offset to load the map at
  * - y_offset: The y offset to load the map at
@@ -337,14 +337,14 @@
 	SSatoms.map_loader_begin(REF(src))
 
 	// Loading used to be done in this proc
-	// We make the assumption that if the inner procs runtime, we WANT to do cleanup on them, but we should stil tell our parents we failed
+	// We make the assumption that if the inner procs runtime, we WANT to do cleanup on them, but we should still tell our parents we failed
 	// Since well, we did
-	var/sucessful = FALSE
+	var/successful = FALSE
 	switch(map_format)
 		if(MAP_TGM)
-			sucessful = _tgm_load(x_offset, y_offset, z_offset, crop_map, no_changeturf, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, place_on_top, new_z, delete)
+			successful = _tgm_load(x_offset, y_offset, z_offset, crop_map, no_changeturf, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, place_on_top, new_z, delete)
 		else
-			sucessful = _dmm_load(x_offset, y_offset, z_offset, crop_map, no_changeturf, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, place_on_top, new_z, delete)
+			successful = _dmm_load(x_offset, y_offset, z_offset, crop_map, no_changeturf, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, place_on_top, new_z, delete)
 
 	// And we are done lads, call it off
 	SSatoms.map_loader_stop(REF(src))
@@ -368,7 +368,7 @@
 		testing("Skipped loading [turfsSkipped] default turfs")
 	#endif
 
-	return sucessful
+	return successful
 
 // Wanna clear something up about maps, talking in 255x255 here
 // In the tgm format, each gridset contains 255 lines, each line representing one tile, with 255 total gridsets
@@ -422,7 +422,7 @@
 		x_delta_with = min(x_delta_with, world.maxx)
 
 	// We're gonna skip all the entries above the upper x, or maxx if cropMap is set
-	// The last column is guarantees to have the highest x value we;ll encounter
+	// The last column is guaranteed to have the highest x value we;ll encounter
 	// Even if z scales, this still works
 	var/datum/grid_set/last_column = gridSets[length(gridSets)]
 	var/final_x = last_column.xcrd + x_relative_to_absolute
@@ -631,7 +631,7 @@
 			expanded_x = TRUE
 
 		// We're gonna track the first and last pairs of coords we find
-		// The first x is guarantees to be the lowest, the first y the highest, and vis versa
+		// The first x is guaranteed to be the lowest, the first y the highest, and vis versa
 		// This is faster then doing mins and maxes inside the hot loop below
 		var/first_found = FALSE
 		var/first_x = 0
@@ -1053,7 +1053,7 @@ GLOBAL_LIST_EMPTY(map_model_default)
 	if(text[1] == "\"")
 		// insert implied locate \" and length("\"") here
 		// It's a minimal timesave but it is a timesave
-		// Safe becuase we're guarantees trimmed constants
+		// Safe becuase we're guaranteed trimmed constants
 		return copytext(text, 2, -1)
 
 	// list

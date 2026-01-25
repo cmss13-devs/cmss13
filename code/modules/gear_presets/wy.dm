@@ -213,7 +213,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/mod88/flashlight, WEAR_IN_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/mod88, WEAR_IN_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/mod88, WEAR_IN_ACCESSORY)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY/guard, WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY/security/guard, WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest/security, WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc/sec, WEAR_HEAD)

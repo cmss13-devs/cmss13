@@ -369,7 +369,7 @@
 
 /mob/living/simple_animal/can_be_pulled_by(mob/pulling_mob)
 	if(locate(/obj/item/explosive/plastic) in contents)
-		to_chat(pulling_mob, SPAN_WARNING("You leave \the [src] alone. It's got live explosives on it!"))
+		to_chat(pulling_mob, SPAN_WARNING("You leave [src] alone. It's got live explosives on it!"))
 		return FALSE
 	return ..()
 
@@ -387,7 +387,7 @@
 							M.show_message(SPAN_NOTICE("[user] applies [MED] on [src]"), SHOW_MESSAGE_VISIBLE)
 					return
 		else
-			to_chat(user, SPAN_NOTICE(" this [src] is dead, medical items won't bring it back to life."))
+			to_chat(user, SPAN_NOTICE("[src] is dead, medical items won't bring it back to life."))
 			return
 	if(meat_type && (stat == DEAD)) //if the animal has a meat, and if it is dead.
 		if(istype(O, /obj/item/tool/kitchen/knife) || istype(O, /obj/item/tool/kitchen/knife/butcher))
@@ -481,5 +481,22 @@
 	if(user && error_msg)
 		to_chat(user, SPAN_WARNING("You aren't sure how to inject this animal!"))
 	return FALSE
+
+/mob/living/simple_animal/small
+	name = "small animal"
+
+/mob/living/simple_animal/small/initialize_pass_flags(datum/pass_flags_container/pass_flags)
+	..()
+	if(pass_flags)
+		pass_flags.flags_pass = PASS_MOB_THRU|PASS_FLAGS_CRAWLER
+		pass_flags.flags_can_pass_all = PASS_ALL|PASS_OVER_THROW_ITEM
+
+/mob/living/simple_animal/big
+	name = "big animal"
+
+/mob/living/simple_animal/big/initialize_pass_flags(datum/pass_flags_container/pass_flags)
+	..()
+	if(pass_flags)
+		pass_flags.flags_can_pass_all = PASS_OVER_THROW_ITEM
 
 #undef OVERLAY_FIRE_LAYER

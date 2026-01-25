@@ -38,7 +38,7 @@
 		if(regular_update && ((getOxyLoss() > 50)))
 			apply_effect(3, PARALYZE)
 
-		if((src.species.flags & HAS_HARDCRIT) && HEALTH_THRESHOLD_CRIT > health)
+		if((species.flags & HAS_HARDCRIT) && health_threshold_crit > health)
 			var/already_in_crit = FALSE
 			for(var/datum/effects/crit/C in effects_list)
 				already_in_crit = TRUE
@@ -123,10 +123,10 @@
 			pain.apply_pain_reduction(PAIN_REDUCTION_FULL)
 			paralyzed--
 
-		if(drowsyness)
-			drowsyness = max(0,drowsyness - 2)
+		if(drowsiness)
+			drowsiness = max(0,drowsiness - 2)
 			EyeBlur(2)
-			if(drowsyness > 10 && prob(5))
+			if(drowsiness > 10 && prob(5))
 				sleeping++
 				apply_effect(5, PARALYZE)
 

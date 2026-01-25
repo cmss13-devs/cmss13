@@ -142,7 +142,7 @@ About Reagents:
 		on_mob_life(mob/M)
 			This proc is called everytime the mobs life proc executes.
 			This is the place where you put damage for toxins ,
-			drowsyness for sleep toxins etc etc.
+			drowsiness for sleep toxins etc etc.
 			You'll want to call the parents proc by using ..() .
 			If you don't, the chemical will stay in the mob forever -
 			unless you write your own piece of code to slowly remove it.
@@ -204,7 +204,7 @@ About Recipes:
 			This is a list of the ids of the required catalysts.
 			Functionally similar to required_reagents, it is a list of reagents that are required
 			for the reaction. However, unlike required_reagents, catalysts are NOT consumed.
-			They mearly have to be present in the container.
+			They merely have to be present in the container.
 
 		result_amount
 			This is the amount of the resulting reagent this recipe will produce.

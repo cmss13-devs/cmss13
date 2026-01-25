@@ -171,7 +171,7 @@
 
 	log_say("[key_name(src)] communed to [key_name(M)]: [text] (AREA: [get_area_name(loc)])")
 
-	to_chat(M, SPAN_NOTICE(" Like lead slabs crashing into the ocean, alien thoughts drop into your mind: [text]"))
+	to_chat(M, SPAN_NOTICE("Like lead slabs crashing into the ocean, alien thoughts drop into your mind: [text]"))
 	if(istype(M,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
 		if(H.species.name == species.name)
@@ -289,7 +289,7 @@
 //	SEND_SIGNAL(src, COMSIG_LIVING_RESTING, new_resting, silent, instant)
 //	update_resting() // HUD icons
 
-/mob/living/carbon/human/proc/toggle_inherent_nightvison()
+/mob/living/carbon/human/proc/toggle_inherent_nightvision()
 	set category = "Synthetic"
 	set name = "Toggle Nightvision"
 	set desc = "Toggles inherent nightvision."

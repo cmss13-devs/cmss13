@@ -11,6 +11,7 @@
 	can_hold = list() //Nada. Once you take the stuff out it doesn't fit back in.
 	max_w_class = 0
 	foldable = null
+	unacidable = TRUE
 	/// For statistics tracking. The kit's name
 	var/kit_name = ""
 
@@ -202,6 +203,7 @@
 	name = "\improper SHARP Operator equipment case"
 	desc = "A large case containing a P9 SHARP rifle, M3-G4 Grenadier armor and helmet, and various pieces of additional equipment.\nDrag this sprite onto yourself to open it up!"
 	kit_overlay = "grenadier"
+	kit_name = "sharp_operator"
 
 /obj/item/storage/box/spec/sharp_operator/fill_preset_inventory()
 	new /obj/item/weapon/gun/rifle/sharp(src)

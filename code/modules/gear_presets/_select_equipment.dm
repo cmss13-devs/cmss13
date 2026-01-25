@@ -760,8 +760,6 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 			new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/metal_foam(new_human), WEAR_IN_BACK)
 		if(2)
 			new_human.equip_to_slot_or_del(new /obj/structure/closet/bodybag/tarp/reactive(new_human), WEAR_IN_BACK)
-		if(3)
-			new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/antiweed(new_human), WEAR_IN_BACK)
 
 
 /datum/equipment_preset/proc/add_random_cl_survivor_loot(mob/living/carbon/human/new_human) // Loot Generation associated with CL survivor. Makes them a little more valuable and not a useless pick.

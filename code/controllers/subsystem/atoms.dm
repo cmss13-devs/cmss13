@@ -41,13 +41,13 @@ SUBSYSTEM_DEF(atoms)
 	if(initialized == INITIALIZATION_INSSATOMS)
 		return
 
-	set_tracked_initalized(INITIALIZATION_INNEW_MAPLOAD)
+	set_tracked_initialized(INITIALIZATION_INNEW_MAPLOAD)
 
 	fix_atoms_locs(atoms)
 
 	// This may look a bit odd, but if the actual atom creation runtimes for some reason, we absolutely need to set initialized BACK
 	CreateAtoms(atoms)
-	clear_tracked_initalize()
+	clear_tracked_initialize()
 
 	InitializeLateLoaders()
 
@@ -182,13 +182,13 @@ SUBSYSTEM_DEF(atoms)
 			A.loc = A.loc
 
 /datum/controller/subsystem/atoms/proc/map_loader_begin()
-	set_tracked_initalized(INITIALIZATION_INSSATOMS)
+	set_tracked_initialized(INITIALIZATION_INSSATOMS)
 
 /datum/controller/subsystem/atoms/proc/map_loader_stop()
-	clear_tracked_initalize()
+	clear_tracked_initialize()
 
 /// Use this to set initialized to prevent error states where old_initialized is overridden. It keeps happening and it's cheesing me off
-/datum/controller/subsystem/atoms/proc/set_tracked_initalized(value)
+/datum/controller/subsystem/atoms/proc/set_tracked_initialized(value)
 	if(!initialized_changed)
 		old_initialized = initialized
 		initialized = value
@@ -197,7 +197,7 @@ SUBSYSTEM_DEF(atoms)
 		debug_log("We started maploading while we were already maploading. You doing something odd?")
 	initialized_changed += 1
 
-/datum/controller/subsystem/atoms/proc/clear_tracked_initalize()
+/datum/controller/subsystem/atoms/proc/clear_tracked_initialize()
 	initialized_changed -= 1
 	if(!initialized_changed)
 		initialized = old_initialized

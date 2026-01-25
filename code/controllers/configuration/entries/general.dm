@@ -161,6 +161,9 @@ Administrative related.
 /datum/config_entry/string/ooc_color_maint
 	config_entry_value = "#00ffff"
 
+/datum/config_entry/string/ooc_color_subs
+	config_entry_value = "#8956FB"
+
 /datum/config_entry/string/ooc_color_default
 	config_entry_value = "#b82e00"
 
@@ -577,15 +580,6 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 	default = 0
 	min_val = 0
 
-/datum/config_entry/string/bot_prefix
-	protection = CONFIG_ENTRY_LOCKED
-
-/datum/config_entry/string/bot_command
-	protection = CONFIG_ENTRY_LOCKED
-
-/datum/config_entry/number/certification_minutes
-	protection = CONFIG_ENTRY_LOCKED
-
 /datum/config_entry/number/topic_max_size
 	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED
 
@@ -733,3 +727,9 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 
 /datum/config_entry/string/sentry_dsn
 	protection = CONFIG_ENTRY_HIDDEN
+
+/datum/config_entry/str_list/ignored_cids
+	protection = CONFIG_ENTRY_LOCKED
+
+/// Appended to CLIENT_VERB(showrevinfo)
+/datum/config_entry/string/code_modifications_message

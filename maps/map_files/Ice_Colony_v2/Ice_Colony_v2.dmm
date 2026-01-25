@@ -2,13 +2,6 @@
 "aaa" = (
 /turf/open/space,
 /area/space)
-"aab" = (
-/obj/structure/machinery/shower{
-	dir = 4
-	},
-/obj/structure/catwalk,
-/turf/open/floor/freezerfloor,
-/area/ice_colony/surface/dorms/restroom_w)
 "aac" = (
 /turf/closed/ice_rock/corners,
 /area/ice_colony/exterior/surface/cliff)
@@ -3318,6 +3311,13 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/clearing/north)
+"amy" = (
+/obj/structure/machinery/shower{
+	dir = 4
+	},
+/obj/structure/catwalk,
+/turf/open/floor/freezerfloor,
+/area/ice_colony/surface/dorms/restroom_w)
 "amz" = (
 /obj/structure/ice/thin/straight,
 /turf/open/ice,
@@ -54780,7 +54780,7 @@ abL
 abL
 abL
 akC
-aab
+amy
 alk
 alO
 alk

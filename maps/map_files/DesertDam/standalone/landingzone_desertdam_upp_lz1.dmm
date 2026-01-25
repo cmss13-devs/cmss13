@@ -347,24 +347,19 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/cafeteria/backroom)
 "be" = (
-/obj/structure/fence,
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached20,
-/area/event/dynamic/lit)
-"bf" = (
 /obj/structure/flora/bush/desert{
 	icon_state = "tree_3"
 	},
 /turf/open/desert/dirt,
 /area/event/dynamic/lit)
-"bg" = (
+"bf" = (
 /obj/structure/prop/colorable_rock/colorable/alt{
 	color = "#da822a";
 	dir = 4
 	},
 /turf/open/desert/dirt,
 /area/event/dynamic/lit)
-"bh" = (
+"bg" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#da822a";
 	pixel_y = -1;
@@ -372,7 +367,7 @@
 	},
 /turf/open/desert/dirt,
 /area/event/dynamic/lit)
-"bi" = (
+"bh" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#da822a";
 	pixel_y = -1;
@@ -380,24 +375,32 @@
 	},
 /turf/open/desert/dirt,
 /area/event/dynamic/lit)
-"bk" = (
+"bi" = (
+/obj/structure/prop/colorable_rock/colorable/alt{
+	dir = 1;
+	color = "#da822a"
+	},
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
+"bj" = (
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 4
 	},
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_civilian)
+"bk" = (
+/obj/structure/fence,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached20,
+/area/event/dynamic/lit)
 "bl" = (
 /obj/structure/largecrate/random,
 /turf/open/floor/prison,
 /area/desert_dam/building/mining/workshop)
-"bn" = (
-/obj/structure/surface/table,
-/obj/item/trash/tray{
-	pixel_x = -2;
-	pixel_y = 5
-	},
-/turf/open/floor/prison/kitchen/southwest,
-/area/desert_dam/building/cafeteria/cafeteria)
+"bm" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached16,
+/area/desert_dam/exterior/valley/valley_civilian)
 "bs" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/extinguisher_cabinet{
@@ -406,17 +409,6 @@
 /obj/item/tool/kitchen/knife/butcher,
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/building/cafeteria/cafeteria)
-"bt" = (
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached16,
-/area/desert_dam/exterior/valley/valley_civilian)
-"bu" = (
-/obj/structure/prop/colorable_rock/colorable/alt{
-	dir = 1;
-	color = "#da822a"
-	},
-/turf/open/desert/dirt,
-/area/event/dynamic/lit)
 "bv" = (
 /turf/open/floor/freezerfloor,
 /area/desert_dam/building/cafeteria/cafeteria)
@@ -2940,6 +2932,14 @@
 	},
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/building/cafeteria/cafeteria)
+"Qv" = (
+/obj/structure/surface/table,
+/obj/item/trash/tray{
+	pixel_x = -2;
+	pixel_y = 5
+	},
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
 "QK" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached19,
 /area/desert_dam/exterior/valley/valley_civilian)
@@ -3748,7 +3748,7 @@ tV
 NE
 oK
 oK
-bn
+Qv
 aG
 mK
 ff
@@ -4552,7 +4552,7 @@ Qq
 bc
 QR
 QR
-bk
+bj
 Fu
 Wa
 Ou
@@ -5437,7 +5437,7 @@ BW
 BW
 BW
 BW
-bt
+bm
 Wa
 vD
 nU
@@ -5956,7 +5956,7 @@ gK
 xc
 Hv
 gK
-be
+bk
 Hv
 gK
 Uc
@@ -6237,7 +6237,7 @@ BW
 BW
 BW
 BW
-bi
+bh
 uw
 uw
 ay
@@ -6294,7 +6294,7 @@ BW
 BW
 BW
 BW
-bu
+bi
 uw
 uw
 uw
@@ -6467,7 +6467,7 @@ BW
 BW
 BW
 uw
-bf
+be
 uw
 Ub
 Ub
@@ -6523,7 +6523,7 @@ BW
 BW
 BW
 BW
-bh
+bg
 uw
 uw
 Ub
@@ -6695,7 +6695,7 @@ BW
 BW
 BW
 BW
-bg
+bf
 uw
 uw
 uw

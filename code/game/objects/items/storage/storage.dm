@@ -643,10 +643,15 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	return attempt_item_insertion(W, FALSE, user)
 
 /// Dragging a storage item to another will move the contents of the dragged item into the target storage if possible.
-/obj/item/storage/MouseDrop_T(atom/movable/C, mob/user)
-	if(!istype(C, /obj/item/storage))
+/obj/item/storage/MouseDrop_T(atom/movable/dragged_thing, mob/user)
+	if(!istype(dragged_thing, /obj/item/storage))
 		return ..()
-	var/obj/item/storage/storage_being_dragged_in = C
+	var/obj/item/storage/storage_being_dragged_in = dragged_thing
+	if(!(storage_flags & STORAGE_ALLOW_EMPTY))
+		to_chat(user, SPAN_WARNING("You can't dump items into [src]."))
+	if(!(storage_being_dragged_in.storage_flags & STORAGE_ALLOW_EMPTY))
+		to_chat(user, SPAN_WARNING("You can't dump items from [storage_being_dragged_in]."))
+		return
 	dump_into(storage_being_dragged_in, user)
 
 /obj/item/storage/equipped(mob/user, slot, silent)

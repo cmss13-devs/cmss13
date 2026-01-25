@@ -660,7 +660,7 @@
 	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
 		return FALSE
 
-	if(fire_immunity & (FIRE_IMMUNITY_NO_DAMAGE || FIRE_IMMUNITY_COMPLETE))
+	if(caste.fire_immunity & FIRE_IMMUNITY_NO_DAMAGE)
 		burn_amount *= 0.5
 
 	apply_damage(burn_amount, BURN)

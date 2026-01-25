@@ -133,11 +133,6 @@
 	var/weed_level = WEED_LEVEL_STANDARD
 	var/acid_level = 0
 
-	// Fire Immunity/Vulnerability/Resistance
-	// Basically copies of the respective vars on caste_datum for referance simplicity
-	var/fire_immunity = FIRE_IMMUNITY_NONE
-	var/fire_modifier_mult = 0
-
 	/// The xeno's strain, if they've taken one.
 	var/datum/xeno_strain/strain = null
 
@@ -433,8 +428,18 @@
 	if(caste_type && GLOB.xeno_datum_list[caste_type])
 		caste = GLOB.xeno_datum_list[caste_type]
 
-		//Fire immunity stuff
-		set_initial_fire_immunity()
+		//Fire immunity signals
+		if (HAS_FLAG(caste.fire_immunity, FIRE_IMMUNITY_NO_DAMAGE | FIRE_IMMUNITY_NO_IGNITE | FIRE_IMMUNITY_XENO_FRENZY))
+			if(caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE)
+				RegisterSignal(src, COMSIG_LIVING_PREIGNITION, PROC_REF(fire_immune))
+
+			RegisterSignal(src, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED), PROC_REF(flamer_crossed_immune))
+		else
+			UnregisterSignal(src, list(
+				COMSIG_LIVING_PREIGNITION,
+				COMSIG_LIVING_FLAMER_CROSSED,
+				COMSIG_LIVING_FLAMER_FLAMED
+			))
 
 		if(caste.spit_types && length(caste.spit_types))
 			ammo = GLOB.ammo_list[caste.spit_types[1]]
@@ -573,135 +578,26 @@
 /mob/living/carbon/xenomorph/initialize_stamina()
 	stamina = new /datum/stamina/none(src)
 
-// Fire Immunity Signal Procs
-// No Damage - Can be set on fire, but will not take damage. No preignition proc.
-/mob/living/carbon/xenomorph/proc/flamer_cross_no_damage(mob/living/carbon/xenomorph/xeno, datum/reagent/reagent_thing)
+/mob/living/carbon/xenomorph/proc/fire_immune(mob/living/L)
 	SIGNAL_HANDLER
 
-	if(reagent_thing.fire_penetrating)
+	if(L.fire_reagent?.fire_penetrating && !HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
+		return
+
+	return COMPONENT_CANCEL_IGNITION
+
+/mob/living/carbon/xenomorph/proc/flamer_crossed_immune(mob/living/L, datum/reagent/R)
+	SIGNAL_HANDLER
+
+	if(R.fire_penetrating)
 		return
 
 	. = COMPONENT_NO_BURN
-
-	if(fire_immunity & FIRE_IMMUNITY_XENO_FRENZY)
+	// Burrowed xenos also cannot be ignited
+	if((caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE) || HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
+		. |= COMPONENT_NO_IGNITE
+	if(caste.fire_immunity & FIRE_IMMUNITY_XENO_FRENZY)
 		. |= COMPONENT_XENO_FRENZY
-
-// No Ignition - Cannot be set on fire, but will take damage. Has preignition and flamer proc
-/mob/living/carbon/xenomorph/proc/preignition_no_ignition(mob/living/carbon/xenomorph/xeno)
-	SIGNAL_HANDLER
-
-	if(xeno.fire_reagent?.fire_penetrating && !HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
-		return
-
-	return COMPONENT_CANCEL_IGNITION
-
-/mob/living/carbon/xenomorph/proc/flamer_cross_no_ignition(mob/living/carbon/xenomorph/xeno, datum/reagent/reagent_thing)
-	SIGNAL_HANDLER
-
-	if(reagent_thing.fire_penetrating)
-		return
-
-	. |= COMPONENT_NO_IGNITE
-
-	if(fire_immunity & FIRE_IMMUNITY_XENO_FRENZY)
-		. |= COMPONENT_XENO_FRENZY
-
-// Complete Immunity - Cannot be set on fire and will not take damage
-/mob/living/carbon/xenomorph/proc/preignition_complete_immunity(mob/living/carbon/xenomorph/xeno)
-	SIGNAL_HANDLER
-
-	if(xeno.fire_reagent?.fire_penetrating && !HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
-		return
-
-	return COMPONENT_CANCEL_IGNITION
-
-/mob/living/carbon/xenomorph/proc/flamer_cross_complete_immunity(mob/living/carbon/xenomorph/xeno, datum/reagent/reagent_thing)
-	SIGNAL_HANDLER
-
-	if(reagent_thing.fire_penetrating)
-		return
-
-	. |= COMPONENT_NO_IGNITE
-	. |= COMPONENT_NO_BURN
-
-	if(fire_immunity & FIRE_IMMUNITY_XENO_FRENZY)
-		. |= COMPONENT_XENO_FRENZY
-
-// Burrower Immunity - Same as Complete Immunity, however requires TRAIT_ABILITY_BURROWED for effects to kick in
-/mob/living/carbon/xenomorph/proc/preignition_burrower_immunity(mob/living/carbon/xenomorph/xeno)
-	SIGNAL_HANDLER
-
-	if(!HAS_TRAIT(xeno, TRAIT_ABILITY_BURROWED))
-		return
-
-	if(xeno.fire_reagent?.fire_penetrating && !HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
-		return
-
-	return COMPONENT_CANCEL_IGNITION
-
-/mob/living/carbon/xenomorph/proc/flamer_cross_burrower_immunity(mob/living/carbon/xenomorph/xeno, datum/reagent/reagent_thing)
-	SIGNAL_HANDLER
-
-	if(!HAS_TRAIT(xeno, TRAIT_ABILITY_BURROWED))
-		return
-
-	if(reagent_thing.fire_penetrating)
-		return
-
-	. |= COMPONENT_NO_IGNITE
-	. |= COMPONENT_NO_BURN
-
-	if(fire_immunity & FIRE_IMMUNITY_XENO_FRENZY)
-		. |= COMPONENT_XENO_FRENZY
-
-/// Registers the caste_datum's fire immunity info onto the mob, then adds signals. The mob immunity is what gets altered by strains and/or other things.
-/mob/living/carbon/xenomorph/proc/set_initial_fire_immunity()
-	fire_immunity = caste.fire_immunity
-	fire_modifier_mult = caste.fire_modifier_mult
-	add_fire_immunity_signals()
-
-/// Removes any registered signals, re-registers the the caste_datum's initial fire immunity info onto the mob, then reapplies signals.
-/// As the caste info should *NOT* be changed by anything, this is more of an admin failsafe to make *absolutely sure* that the Xeno is back to initial fire immunity should something go wrong somehow.
-/mob/living/carbon/xenomorph/proc/reset_to_initial_fire_immunity()
-	remove_fire_immunity_signals()
-	fire_immunity = initial(caste.fire_immunity)
-	fire_modifier_mult = initial(caste.fire_modifier_mult)
-	add_fire_immunity_signals()
-
-/// Removes and readds fire immunity signals. This is to account for frequently shifting immunities, like hivebuff.
-/mob/living/carbon/xenomorph/proc/refresh_fire_immunity()
-	remove_fire_immunity_signals()
-	add_fire_immunity_signals()
-
-/// The actual proc that adds fire immunity signals based on fire immunity flags registered to the Xenomorph.
-/mob/living/carbon/xenomorph/proc/add_fire_immunity_signals()
-	var/valid_immunity = fire_immunity
-	if(fire_immunity & FIRE_IMMUNITY_XENO_FRENZY)
-		valid_immunity -= FIRE_IMMUNITY_XENO_FRENZY
-
-	switch(valid_immunity)
-		if(FIRE_IMMUNITY_NO_DAMAGE)
-			RegisterSignal(src, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED), PROC_REF(flamer_cross_no_damage))
-
-		if(FIRE_IMMUNITY_NO_IGNITE)
-			RegisterSignal(src, COMSIG_LIVING_PREIGNITION, PROC_REF(preignition_no_ignition))
-			RegisterSignal(src, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED), PROC_REF(flamer_cross_no_ignition))
-
-		if(FIRE_IMMUNITY_COMPLETE)
-			RegisterSignal(src, COMSIG_LIVING_PREIGNITION, PROC_REF(preignition_complete_immunity))
-			RegisterSignal(src, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED), PROC_REF(flamer_cross_complete_immunity))
-
-		if(FIRE_IMMUNITY_BURROWER)
-			RegisterSignal(src, COMSIG_LIVING_PREIGNITION, PROC_REF(preignition_burrower_immunity))
-			RegisterSignal(src, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED), PROC_REF(flamer_cross_burrower_immunity))
-
-/// Removes all fire immunity related signals on a Xenomorph.
-/mob/living/carbon/xenomorph/proc/remove_fire_immunity_signals()
-		UnregisterSignal(src, list(
-			COMSIG_LIVING_PREIGNITION,
-			COMSIG_LIVING_FLAMER_CROSSED,
-			COMSIG_LIVING_FLAMER_FLAMED
-		))
 
 //Off-load this proc so it can be called freely
 //Since Xenos change names like they change shoes, we need somewhere to hammer in all those legos
@@ -1030,7 +926,6 @@
 	recalculate_damage()
 	recalculate_evasion()
 	recalculate_tackle()
-	recalculate_fire_immunity()
 
 /mob/living/carbon/xenomorph/proc/recalculate_tackle()
 	tackle_min = caste.tackle_min
@@ -1115,8 +1010,6 @@
 	if(hive)
 		evasion += hive.hive_stat_modifier_flat["evasion"]
 		evasion *= hive.hive_stat_modifier_multiplier["evasion"]
-
-/mob/living/carbon/xenomorph/proc/recalculate_fire_immunity()
 
 /mob/living/carbon/xenomorph/proc/recalculate_actions()
 	recalculate_acid()
@@ -1226,7 +1119,7 @@
 	. = ..()
 	if (. & IGNITE_IGNITED)
 		RegisterSignal(src, COMSIG_XENO_PRE_HEAL, PROC_REF(cancel_heal))
-		if(!(fire_immunity & (FIRE_IMMUNITY_NO_DAMAGE || FIRE_IMMUNITY_COMPLETE)) || fire_reagent.fire_penetrating)
+		if(!caste || !(caste.fire_immunity & FIRE_IMMUNITY_NO_DAMAGE) || fire_reagent.fire_penetrating)
 			INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, emote), "roar")
 
 /mob/living/carbon/xenomorph/ExtinguishMob()

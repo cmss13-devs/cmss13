@@ -388,17 +388,11 @@
 	},
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_civilian)
-"bk" = (
-/obj/structure/fence,
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached20,
-/area/event/dynamic/lit)
 "bl" = (
 /obj/structure/largecrate/random,
 /turf/open/floor/prison,
 /area/desert_dam/building/mining/workshop)
 "bm" = (
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached16,
 /area/desert_dam/exterior/valley/valley_civilian)
 "bs" = (
@@ -3169,7 +3163,6 @@
 	pixel_y = 26;
 	layer = 2.7
 	},
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached20,
 /area/event/dynamic/lit)
 "Uf" = (
@@ -5956,7 +5949,7 @@ gK
 xc
 Hv
 gK
-bk
+xc
 Hv
 gK
 Uc

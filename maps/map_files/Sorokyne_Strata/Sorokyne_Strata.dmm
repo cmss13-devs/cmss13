@@ -9070,13 +9070,13 @@
 /area/strata/interior/parts_storage)
 "ayH" = (
 /obj/effect/decal/cleanable/blood/oil,
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 1
 	},
 /turf/open/floor/strata,
 /area/strata/interior/outpost/engi)
 "ayI" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 1
 	},
 /turf/open/floor/strata/multi_tiles/southwest,
@@ -13032,7 +13032,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/marsh/center)
 "aKi" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 4
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
@@ -21553,7 +21553,7 @@
 /turf/open/floor/strata/orange_cover,
 /area/strata/exterior/tcomms_vehicle_yard)
 "bje" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 4
 	},
 /turf/open/floor/strata/floor3,
@@ -32146,7 +32146,7 @@
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/strata/interior/mining_outpost/maintenance)
 "bOw" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 1
 	},
 /turf/open/floor/prison/floor_plate,
@@ -45909,7 +45909,7 @@
 /turf/open/floor/strata/orange_cover,
 /area/strata/interior/outpost/engi/drome)
 "lrd" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 1
 	},
 /turf/open/asphalt/cement,
@@ -51050,7 +51050,7 @@
 /turf/open/gm/dirt/brown,
 /area/strata/exterior/deep_jungle/south)
 "sau" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 8
 	},
 /obj/structure/machinery/light/small,
@@ -55587,7 +55587,7 @@
 /area/strata/exterior/mining_outpost_exterior)
 "xJb" = (
 /obj/effect/landmark/objective_landmark/science,
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 4
 	},
 /turf/open/floor/strata/floor3/east,

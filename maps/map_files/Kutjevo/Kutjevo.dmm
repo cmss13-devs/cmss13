@@ -1281,7 +1281,7 @@
 /turf/open/floor/coagulation/icon7_8_2,
 /area/kutjevo/interior/oob)
 "aeN" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 8
 	},
 /turf/open/floor/kutjevo/colors/orange,
@@ -10121,7 +10121,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/exterior/runoff_dunes)
 "nXX" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 8
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -15979,7 +15979,7 @@
 /area/kutjevo/interior/colony_south)
 "xlD" = (
 /obj/structure/machinery/light,
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 8
 	},
 /turf/open/floor/kutjevo/colors/orange,
@@ -16205,7 +16205,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/colony_south/power2)
 "xGI" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 4
 	},
 /turf/open/floor/kutjevo/multi_tiles,

@@ -1926,7 +1926,7 @@
 /turf/open/floor/darkyellow2/northwest,
 /area/ice_colony/surface/substation/smes)
 "ahy" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 4
 	},
 /turf/open/floor/darkyellow2/north,
@@ -2091,7 +2091,7 @@
 /turf/open/floor/darkyellow2/east,
 /area/ice_colony/surface/substation/smes)
 "aia" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 1
 	},
 /turf/open/floor/darkyellow2/west,
@@ -2284,7 +2284,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/ice_colony/exterior/surface/clearing/north)
 "aiK" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 1
 	},
 /turf/open/floor/darkyellow2/east,
@@ -2392,7 +2392,7 @@
 /turf/open/floor/dark2,
 /area/ice_colony/surface/substation/smes)
 "ajd" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 4
 	},
 /turf/open/floor/darkyellow2,
@@ -2493,7 +2493,7 @@
 /turf/open/floor/darkyellow2/northwest,
 /area/ice_colony/surface/engineering)
 "ajv" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 8
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -2603,7 +2603,7 @@
 /turf/open/floor/darkyellow2/southwest,
 /area/ice_colony/surface/engineering)
 "ajO" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 8
 	},
 /turf/open/floor/darkyellowcorners2/west,
@@ -15361,7 +15361,7 @@
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/underground/hangar)
 "biI" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 8
 	},
 /turf/open/floor/plating/icefloor,
@@ -15455,7 +15455,7 @@
 /turf/open/floor/darkbrown2/northeast,
 /area/ice_colony/underground/requesition/lobby)
 "bjd" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 8
 	},
 /obj/structure/machinery/door_control{
@@ -18716,7 +18716,7 @@
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/bball)
 "bwg" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 4
 	},
 /turf/open/floor/plating,

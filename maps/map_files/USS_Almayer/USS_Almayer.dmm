@@ -9547,7 +9547,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/upper/mess)
 "ayd" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 8
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -46450,7 +46450,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/upper/mess)
 "eet" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 1
 	},
 /turf/open/floor/almayer/orange/north,
@@ -52900,7 +52900,7 @@
 /turf/open/floor/almayer/emerald/east,
 /area/almayer/hallways/lower/port_midship_hallway)
 "gPc" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 1
 	},
 /turf/open/floor/almayer/orange/northwest,
@@ -68971,7 +68971,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/command/lifeboat)
 "nDa" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 4
 	},
 /turf/open/floor/almayer/tcomms,

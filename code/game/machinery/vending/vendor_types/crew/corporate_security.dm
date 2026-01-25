@@ -3,7 +3,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_corporate_security, list(
 	list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
 	list("Headset", 0, /obj/item/device/radio/headset/distress/WY/security/guard, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
 	list("WY MRE", 0, /obj/item/storage/box/mre, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
-	list("PMC MRE", 2, /obj/item/storage/box/mre/pmc, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 	list("Corporate Boots", 0, /obj/item/clothing/shoes/veteran/pmc/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
 	list("SecHUD Glasses", 0, /obj/item/clothing/glasses/sunglasses/sechud/blue, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_MANDATORY),
 	list("Prescription SecHUD Glasses", 0, /obj/item/clothing/glasses/sunglasses/sechud/blue/prescription, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_MANDATORY),

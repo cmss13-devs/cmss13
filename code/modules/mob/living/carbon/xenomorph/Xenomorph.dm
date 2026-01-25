@@ -431,8 +431,8 @@
 		CRASH("Attempted to create a new xenomorph [src] without caste datum.")
 	caste = GLOB.xeno_datum_list[caste_type]
 
-	//Fire immunity signals
-	RegisterSignal(src, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED), PROC_REF(flamer_crossed_immune))
+	//Fire immunity check signals
+	RegisterSignal(src, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED), PROC_REF(flamer_crossed))
 
 	if(caste.spit_types && length(caste.spit_types))
 		ammo = GLOB.ammo_list[caste.spit_types[1]]
@@ -568,7 +568,8 @@
 /mob/living/carbon/xenomorph/initialize_stamina()
 	stamina = new /datum/stamina/none(src)
 
-/mob/living/carbon/xenomorph/proc/flamer_crossed_immune(mob/living/target, datum/reagent/applied_reagent)
+/// Signal handler for COMSIG_LIVING_FLAMER_CROSSED and COMSIG_LIVING_FLAMER_FLAMED to check fire_immunity result
+/mob/living/carbon/xenomorph/proc/flamer_crossed(mob/living/target, datum/reagent/applied_reagent)
 	SIGNAL_HANDLER
 
 	if(applied_reagent?.fire_penetrating && !(fire_immunity & FIRE_IMMUNITY_IGNORE_PEN))

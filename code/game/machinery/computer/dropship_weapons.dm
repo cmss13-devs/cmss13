@@ -62,7 +62,7 @@
 
 /obj/structure/machinery/computer/dropship_weapons/on_unset_interaction(mob/user)
 	. = ..()
-	
+
 	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
 	tacmap_component.on_unset_interaction(user)
 
@@ -78,7 +78,7 @@
 		/*to_chat(user, SPAN_WARNING("Weapons modification access denied, attempting to launch simulation."))
 
 		if(!selected_firemission)
-			to_chat(user, SPAN_WARNING("Firemission must be selected before attempting to run the simulation"))
+			to_chat(user, SPAN_WARNING("Firemission must be selected before attempting to run the simulation."))
 			return TRUE
 
 		tgui_interact(user)
@@ -93,7 +93,7 @@
 		if(matrix.state == ASSEMBLY_LOCKED)
 			user.drop_held_item(W, src)
 			W.forceMove(src)
-			to_chat(user, SPAN_NOTICE("You swap the matrix in the dropship guidance camera system, destroying the older part in the process"))
+			to_chat(user, SPAN_NOTICE("You swap the matrix in the dropship guidance camera system, destroying the older part in the process."))
 			upgraded = matrix.upgrade
 			power = matrix.power
 
@@ -158,6 +158,7 @@
 
 	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
 	tacmap_component.on_unset_interaction(user)
+	tacmap_component.ui_close(user)
 	SEND_SIGNAL(src, COMSIG_CAMERA_UNREGISTER_UI, user)
 	simulation.stop_watching(user)
 
@@ -278,7 +279,7 @@
 
 		if("execute_simulated_firemission")
 			if(!configuration)
-				to_chat(user, SPAN_WARNING("No configured firemission"))
+				to_chat(user, SPAN_WARNING("No configured firemission."))
 				return
 			simulate_firemission(user)
 			. = TRUE
@@ -286,7 +287,7 @@
 		if("switch_firemission")
 			configuration = tgui_input_list(user, "Select firemission to simulate", "Select firemission", firemission_envelope.missions, 30 SECONDS)
 			if(!selected_firemission)
-				to_chat(user, SPAN_WARNING("No configured firemission"))
+				to_chat(user, SPAN_WARNING("No configured firemission."))
 				return
 			if(!configuration)
 				configuration = selected_firemission
@@ -393,7 +394,7 @@
 				return TRUE
 
 		if("firemission-create")
-			var/name = params["firemission_name"]
+			var/name = strip_html(params["firemission_name"], MAX_NAME_LEN)
 			var/length = params["firemission_length"]
 			var/length_n = text2num(length)
 			if(!length_n)
@@ -696,7 +697,7 @@
 		to_chat(weapon_operator, SPAN_WARNING("You don't have the training to fire this weapon!"))
 		return FALSE
 	if(!dropship.in_flyby && DEW.fire_mission_only)
-		to_chat(weapon_operator, SPAN_WARNING("[DEW] requires a fire mission flight type to be fired."))
+		to_chat(weapon_operator, SPAN_WARNING("[DEW] requires a Fire Mission flight type to be fired."))
 		return FALSE
 
 	if(!DEW.ammo_equipped || DEW.ammo_equipped.ammo_count <= 0)
@@ -704,6 +705,9 @@
 		return FALSE
 	if(DEW.last_fired > world.time - DEW.firing_delay)
 		to_chat(weapon_operator, SPAN_WARNING("[DEW] just fired, wait for it to cool down."))
+		return FALSE
+	if(firemission_envelope.stat > FIRE_MISSION_STATE_IDLE && firemission_envelope.stat < FIRE_MISSION_STATE_COOLDOWN)
+		to_chat(weapon_operator, SPAN_WARNING("A Fire Mission is already underway."))
 		return FALSE
 
 	var/datum/cas_iff_group/cas_group = GLOB.cas_groups[faction]
@@ -776,7 +780,7 @@
 		to_chat(weapon_operator, SPAN_WARNING("Can't delete selected Fire Mission."))
 		return FALSE
 	var/result = firemission_envelope.delete_firemission(firemission_tag)
-	if(result != 1)
+	if(!result)
 		to_chat(weapon_operator, SPAN_WARNING("Unable to delete Fire Mission while in combat."))
 		return FALSE
 	return TRUE
@@ -785,7 +789,7 @@
 	if(!skillcheck(weapon_operator, SKILL_PILOT, SKILL_PILOT_TRAINED)) //only pilots can fire dropship weapons.
 		to_chat(weapon_operator, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 		return FALSE
-	if(firemission_envelope.stat > FIRE_MISSION_STATE_IN_TRANSIT && firemission_envelope.stat < FIRE_MISSION_STATE_COOLDOWN)
+	if(firemission_envelope.stat > FIRE_MISSION_STATE_IDLE && firemission_envelope.stat < FIRE_MISSION_STATE_COOLDOWN)
 		to_chat(weapon_operator, SPAN_WARNING("Fire Mission already underway."))
 		return FALSE
 	if(firemission_tag > length(firemission_envelope.missions))
@@ -814,7 +818,7 @@
 	if(!skillcheck(weapons_operator, SKILL_PILOT, SKILL_PILOT_TRAINED)) //only pilots can fire dropship weapons.
 		to_chat(weapons_operator, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 		return FALSE
-	if(firemission_envelope.stat > FIRE_MISSION_STATE_IN_TRANSIT && firemission_envelope.stat < FIRE_MISSION_STATE_COOLDOWN)
+	if(firemission_envelope.stat > FIRE_MISSION_STATE_IDLE && firemission_envelope.stat < FIRE_MISSION_STATE_COOLDOWN)
 		to_chat(weapons_operator, SPAN_WARNING("Fire Mission already underway."))
 		return FALSE
 	if(dropship.mode != SHUTTLE_CALL)
@@ -839,10 +843,10 @@
 	if (!istype(dropship))
 		return FALSE
 	if (!dropship.in_flyby || dropship.mode != SHUTTLE_CALL)
-		to_chat(user, SPAN_WARNING("Has to be in Fly By mode"))
+		to_chat(user, SPAN_WARNING("Has to be in Fly By mode."))
 		return FALSE
 	if (dropship.timer && dropship.timeLeft(1) < firemission_envelope.flyoff_period)
-		to_chat(user, SPAN_WARNING("Not enough time to complete the Fire Mission"))
+		to_chat(user, SPAN_WARNING("Not enough time to complete the Fire Mission."))
 		return FALSE
 	var/datum/cas_signal/recorded_loc = firemission_envelope.recorded_loc
 	var/obj/source = recorded_loc.signal_loc
@@ -854,19 +858,19 @@
 	var/result = firemission_envelope.execute_firemission(recorded_loc, target, dir, fmId)
 	if(result != FIRE_MISSION_ALL_GOOD)
 		to_chat(user, SPAN_WARNING("Screen beeps with an error: [firemission_envelope.mission_error]"))
+		return FALSE
 	return TRUE
 
 /obj/structure/machinery/computer/dropship_weapons/proc/update_location(mob/user, new_location)
 	var/result = firemission_envelope.change_target_loc(new_location)
-	if(result<1)
+	if(!result)
 		to_chat(user, SPAN_WARNING("Screen beeps with an error: [firemission_envelope.mission_error]"))
 		return FALSE
 	return TRUE
 
-
 /obj/structure/machinery/computer/dropship_weapons/proc/update_direction(mob/user, new_direction)
 	var/result = firemission_envelope.change_direction(new_direction)
-	if(result<1)
+	if(!result)
 		to_chat(user, SPAN_WARNING("Screen beeps with an error: [firemission_envelope.mission_error]"))
 		return FALSE
 	return TRUE
@@ -930,10 +934,10 @@
 
 /obj/structure/machinery/computer/dropship_weapons/proc/simulate_firemission(mob/living/user)
 	if(!configuration)
-		to_chat(user, SPAN_WARNING("Configure a firemission before attempting to run the simulation"))
+		to_chat(user, SPAN_WARNING("Configure a firemission before attempting to run the simulation."))
 		return
 	if(configuration.check(src) != FIRE_MISSION_ALL_GOOD)
-		to_chat(user, SPAN_WARNING("Configured firemission has errors, fix the errors before attempting to run the simulation"))
+		to_chat(user, SPAN_WARNING("Configured firemission has errors, fix the errors before attempting to run the simulation."))
 		return
 
 	simulation.spawn_mobs(user)

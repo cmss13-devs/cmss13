@@ -64,7 +64,7 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 
 	if(!GLOB.RoleAuthority)
 		GLOB.RoleAuthority = new /datum/authority/branch/role()
-		to_world(SPAN_DANGER("\b Job setup complete"))
+		to_world(SPAN_DANGER("\b Job setup complete."))
 
 	initiate_minimap_icons()
 
@@ -384,7 +384,7 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 #endif
 	UNTIL(SSticker.initialized)
 
-	// Run unit tests on lobby as neeeded
+	// Run unit tests on lobby as needed
 #ifdef UNIT_TESTS
 	RunUnitTests(TEST_STAGE_PREGAME)
 	UNTIL(!SSticker.delay_start)

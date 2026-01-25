@@ -2837,7 +2837,7 @@
 /turf/open/floor/prison/whitepurple/northwest,
 /area/fiorina/station/research_cells/west)
 "bTC" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 8
 	},
 /turf/open/floor/prison/bluecorner/east,
@@ -11683,7 +11683,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/transit_hub)
 "iNt" = (
-/obj/item/device/whistle,
+/obj/item/clothing/accessory/device/whistle,
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/station/medbay)
 "iOa" = (
@@ -30486,7 +30486,7 @@
 /turf/open/space/basic,
 /area/fiorina/oob)
 "xpO" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 1
 	},
 /turf/open/floor/prison/darkbrownfull2,

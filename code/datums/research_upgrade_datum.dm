@@ -2,7 +2,7 @@
 	///unique to every upgrade. not the name of the item. name of the upgrade
 	var/name = "Upgrade."
 	///name of upgrades, not items. Items are at research_upgrades.dm somewhere in item folder.
-	var/desc = "something is broken. yippee!!"
+	var/desc = "Something is broken. yippee!!"
 	///which behavior should this type follow. Should this be completely excluded from the buy menu? should it be one of the dropdown options? or a normal item?
 	var/behavior = RESEARCH_UPGRADE_EXCLUDE_BUY // should this be on the list?
 	/// the price of the upgrade, refer to this: 500 is a runner, 8k is queen. T3 is usually 3k, woyer is 2k.
@@ -43,7 +43,7 @@
 	clearance_req = 1
 
 /datum/research_upgrades/machinery/autodoc/internal_bleed/on_purchase(turf/machine_loc)
-	new /obj/item/research_upgrades/autodoc(machine_loc, RESEARCH_UPGRADE_TIER_1)
+	new /obj/item/research_upgrades/autodoc(machine_loc)
 
 /datum/research_upgrades/machinery/autodoc/broken_bone
 	name = "AutoDoc Bone Fracture Repair"
@@ -53,7 +53,7 @@
 	clearance_req = 3
 
 /datum/research_upgrades/machinery/autodoc/broken_bone/on_purchase(turf/machine_loc)
-	new /obj/item/research_upgrades/autodoc(machine_loc, RESEARCH_UPGRADE_TIER_2)
+	new /obj/item/research_upgrades/autodoc/tier2(machine_loc)
 
 /datum/research_upgrades/machinery/autodoc/organ_damage
 	name = "AutoDoc Broken Organ Repair"
@@ -63,7 +63,7 @@
 	clearance_req = 2
 
 /datum/research_upgrades/machinery/autodoc/organ_damage/on_purchase(turf/machine_loc)
-	new /obj/item/research_upgrades/autodoc(machine_loc, RESEARCH_UPGRADE_TIER_3)
+	new /obj/item/research_upgrades/autodoc/tier3(machine_loc)
 
 /datum/research_upgrades/machinery/autodoc/larva_removal
 	name = "AutoDoc Embryo Removal"
@@ -73,7 +73,7 @@
 	clearance_req = 6
 
 /datum/research_upgrades/machinery/autodoc/larva_removal/on_purchase(turf/machine_loc)
-	new /obj/item/research_upgrades/autodoc(machine_loc, RESEARCH_UPGRADE_TIER_4)
+	new /obj/item/research_upgrades/autodoc/tier4(machine_loc)
 
 /datum/research_upgrades/machinery/grinderspeed
 	name = "Reagent-Grinder Upgrade"

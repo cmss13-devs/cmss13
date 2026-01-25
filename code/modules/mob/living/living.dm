@@ -73,8 +73,7 @@
 		for(var/obj/limb/affecting in H.limbs)
 			if(!affecting)
 				continue
-			if(affecting.take_damage(0, divided_damage+extradam)) //TODO: fix the extradam stuff. Or, ebtter yet...rewrite this entire proc ~Carn
-				H.UpdateDamageIcon()
+			affecting.take_damage(0, divided_damage+extradam) //TODO: fix the extradam stuff. Or, better yet...rewrite this entire proc ~Carn
 		H.updatehealth()
 		return 1
 
@@ -108,7 +107,7 @@
 
 	if(passed_object)
 		if(recursion > 8)
-			debug_log("Recursion went long for get_contents() for [src] ending at the object [passed_object]. Likely object_one is holding object_two which is holding object_one ad naseum.")
+			debug_log("Recursion went long for get_contents() for [src] ending at the object [passed_object]. Likely object_one is holding object_two which is holding object_one ad nauseum.")
 			return total_contents
 
 		total_contents += passed_object.contents
@@ -151,7 +150,7 @@
 		if(client)
 			to_chat(usr, "[src]'s Metainfo:<br>[client.prefs.metadata]")
 		else
-			to_chat(usr, "[src] does not have any stored infomation!")
+			to_chat(usr, "[src] does not have any stored information!")
 	else
 		to_chat(usr, "OOC Metadata is not supported by this server!")
 
@@ -227,7 +226,7 @@
 /mob/living/resist_grab(moving_resist)
 	if(!pulledby)
 		return
-	// vars for checks of strengh
+	// vars for checks of strength
 	var/pulledby_is_strong = HAS_TRAIT(pulledby, TRAIT_SUPER_STRONG)
 	var/src_is_strong = HAS_TRAIT(src, TRAIT_SUPER_STRONG)
 
@@ -263,11 +262,11 @@
 		. += 10
 		do_bump_delay = 0
 
-	if (drowsyness > 0)
+	if (drowsiness > 0)
 		. += 6
 
-	if(pulling && pulling.drag_delay && get_pull_miltiplier()) //Dragging stuff can slow you down a bit.
-		var/pull_delay = pulling.get_pull_drag_delay() * get_pull_miltiplier()
+	if(pulling && pulling.drag_delay && get_pull_multiplier()) //Dragging stuff can slow you down a bit.
+		var/pull_delay = pulling.get_pull_drag_delay() * get_pull_multiplier()
 
 		var/grab_level_delay = 0
 		switch(grab_level)
@@ -301,7 +300,7 @@
 		. = drag_delay
 
 //whether we are slowed when dragging things
-/mob/living/proc/get_pull_miltiplier()
+/mob/living/proc/get_pull_multiplier()
 	if(!HAS_TRAIT(src, TRAIT_DEXTROUS))
 		if(grab_level == GRAB_CARRY)
 			return 0.1
@@ -504,7 +503,7 @@
 // If this proc causes issues you can probably disable it until then.
 /mob/living/carbon/update_stat()
 	if(stat != DEAD)
-		if(health <= HEALTH_THRESHOLD_DEAD)
+		if(health <= health_threshold_dead)
 			death()
 			return
 		else if(HAS_TRAIT(src, TRAIT_KNOCKEDOUT))
@@ -558,6 +557,7 @@
 		return
 	. = lying_angle
 	lying_angle = new_lying
+	SEND_SIGNAL(src, COMSIG_LIVING_SET_LYING_ANGLE)
 	if(lying_angle != lying_prev)
 		update_transform(instant_update = on_movement) // Don't use transition for eg. crawling movement, because we already have the movement glide
 		lying_prev = lying_angle

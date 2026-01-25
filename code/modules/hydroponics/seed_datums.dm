@@ -376,7 +376,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 				maturation = max(0,  min(30,  maturation   + (rand(-1,1)   * degree)))
 				if(prob(degree*5))
 					harvest_repeat = !harvest_repeat
-			if(11) //Bioluminecence
+			if(11) //Bioluminescence
 				if(prob(degree*2))
 					biolum = !biolum
 					if(biolum)
@@ -1621,7 +1621,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 	seed_noun = "data"
 	display_name = "runtimes"
 	packet_icon = "seed-replicapod"
-	products = list(/mob/living/simple_animal/cat/Runtime)
+	products = list(/mob/living/simple_animal/small/cat/Runtime)
 	plant_icon = "replicapod"
 
 	requires_nutrients = 0

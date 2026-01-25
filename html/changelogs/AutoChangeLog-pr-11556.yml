@@ -1,4 +1,0 @@
-author: "zzzmike"
-delete-after: True
-changes:
-  - bugfix: "hijack timer will not reset if second dropship is hijacked"

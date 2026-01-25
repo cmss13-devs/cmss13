@@ -41025,7 +41025,7 @@
 /turf/open/floor/strata/cyan2/east,
 /area/lv522/indoors/a_block/medical)
 "viE" = (
-/obj/structure/machinery/power/terminal,
+/obj/structure/terminal,
 /turf/open/floor/plating,
 /area/lv522/indoors/lone_buildings/engineering)
 "viG" = (
@@ -42021,7 +42021,7 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/colony_streets/north_street)
 "vHo" = (
-/obj/structure/machinery/power/terminal,
+/obj/structure/terminal,
 /obj/item/clothing/head/welding,
 /turf/open/floor/plating,
 /area/lv522/indoors/lone_buildings/engineering)

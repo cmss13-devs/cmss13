@@ -13909,14 +13909,14 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/engineering)
 "bmT" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 1
 	},
 /obj/structure/machinery/light,
 /turf/open/floor/plating,
 /area/bigredv2/outside/engineering)
 "bmV" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -19775,7 +19775,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/item/frame/rack,
 /obj/effect/spawner/random/toolbox,
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 1
 	},
 /obj/structure/pipes/valve/open,
@@ -26090,7 +26090,7 @@
 /turf/open/floor/asteroidplating,
 /area/bigredv2/outside/space_port_lz2)
 "kPu" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 1
 	},
 /obj/structure/pipes/valve/open,

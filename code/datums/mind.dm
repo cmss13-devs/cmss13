@@ -69,8 +69,8 @@
 		if(new_character.client)
 			new_character.client.init_verbs()
 			new_character.client.change_view(GLOB.world_view_size) //reset view range to default.
-			new_character.client.pixel_x = 0
-			new_character.client.pixel_y = 0
+			new_character.client.set_pixel_x(0)
+			new_character.client.set_pixel_y(0)
 			if(usr && usr.open_uis)
 				for(var/datum/nanoui/ui in usr.open_uis)
 					if(ui.allowed_user_stat == -1)

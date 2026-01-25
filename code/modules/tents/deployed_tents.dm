@@ -15,7 +15,8 @@
 	var/y_dim = 4
 
 	/// How much cold protection to add to entering humans - Full body clothing means complete (1) protection
-	var/cold_protection_factor = 0.4
+	/// Insulated enough to protect armorless patients in the medical tent
+	var/cold_protection_factor = 0.7
 
 	/// Roof display icon_state or null to disable
 	var/roof_state
@@ -112,7 +113,7 @@
 
 	return XENO_ATTACK_ACTION
 
-/obj/structure/tent/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/tent/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	if(unslashable || health <= 0)
 		return TAILSTAB_COOLDOWN_NONE
 	playsound(src, 'sound/items/paper_ripped.ogg', 25, 1)
@@ -124,6 +125,7 @@
 	else
 		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
 		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
 
 /obj/structure/tent/attackby(obj/item/item, mob/user)

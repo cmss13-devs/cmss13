@@ -124,7 +124,6 @@
 		)
 
 	if(buffed)
-		impale_strike(attack_data)
 		dancer_user.emote("roar") // Feedback for the player that we got the magic double impale
 		addtimer(CALLBACK(src, PROC_REF(impale_strike), attack_data), 4 DECISECONDS)
 	impale_strike(attack_data)

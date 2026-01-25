@@ -124,17 +124,10 @@
 		)
 
 	if(buffed)
-		dancer_user.animation_attack_on(target_atom)
-		dancer_user.flick_attack_overlay(target_atom, "tail")
+		impale_strike(attack_data)
 		dancer_user.emote("roar") // Feedback for the player that we got the magic double impale
-
-		target_carbon.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, "chest", 10)
-		playsound(target_carbon, 'sound/weapons/alien_tail_attack.ogg', 30, TRUE)
-
-		damage = get_xeno_damage_slash(target_carbon, rand(dancer_user.melee_damage_lower, dancer_user.melee_damage_upper))
-		addtimer(CALLBACK(src, /datum/action/xeno_action/activable/prae_impale/proc/impale_strike, attack_data), 4 DECISECONDS)
-	else
-		addtimer(CALLBACK(src, /datum/action/xeno_action/activable/prae_impale/proc/impale_strike, attack_data))
+		addtimer(CALLBACK(src, PROC_REF(impale_strike), attack_data), 4 DECISECONDS)
+	impale_strike(attack_data)
 
 	return ..()
 

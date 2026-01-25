@@ -896,7 +896,7 @@
 			if(X.hivenumber == hivenumber)
 				return FALSE
 
-		if(!((ammo_flags & AMMO_SNIPER) || (ammo_flags & AMMO_ROCKET)))
+		if(dodge_chance && !((ammo_flags & AMMO_SNIPER) || (ammo_flags & AMMO_ROCKET)))
 			if(body_position != LYING_DOWN && stat != UNCONSCIOUS) //We don't want to "somehow" dodge bullets when lying down/unconscious.
 				var/dodge_roll = rand(1, 100)
 				if(dodge_roll <= dodge_chance)

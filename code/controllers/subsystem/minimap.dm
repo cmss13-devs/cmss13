@@ -1272,12 +1272,12 @@ SUBSYSTEM_DEF(minimaps)
 /atom/movable/screen/minimap_tool/draw_tool/teal
 	screen_loc = "14,12"
 	active_mouse_icon = 'icons/ui_icons/minimap_mouse/draw_blue.dmi'
-	color = MINIMAP_DRAWING_BLUE
+	color = MINIMAP_DRAWING_TEAL
 
 /atom/movable/screen/minimap_tool/draw_tool/lime
 	screen_loc = "14,11"
 	active_mouse_icon = 'icons/ui_icons/minimap_mouse/draw_green.dmi'
-	color = MINIMAP_DRAWING_BLUE
+	color = MINIMAP_DRAWING_LIME
 
 /atom/movable/screen/minimap_tool/draw_tool/erase
 	icon_state = "erase"

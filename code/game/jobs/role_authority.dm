@@ -273,6 +273,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		var/datum/job/job = GLOB.RoleAuthority.roles_for_mode[player.job]
 
 		if(!job || !job.gear_preset)
+			qdel(test_human)
 			continue
 
 		var/datum/equipment_preset/preset = new job.gear_preset

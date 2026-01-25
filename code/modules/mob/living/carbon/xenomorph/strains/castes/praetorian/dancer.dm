@@ -122,12 +122,11 @@
 			"target" = target_carbon,
 			"damage" = damage
 		)
+	impale_strike(attack_data)
 
 	if(buffed)
-		impale_strike(attack_data)
 		dancer_user.emote("roar") // Feedback for the player that we got the magic double impale
 		addtimer(CALLBACK(src, PROC_REF(impale_strike), attack_data), 4 DECISECONDS)
-	impale_strike(attack_data)
 
 	return ..()
 
@@ -136,7 +135,7 @@
 	var/mob/living/carbon/target = attack_data["target"]
 	var/damage = attack_data["damage"]
 
-	if(!attacker || !target || target.stat == DEAD)
+	if(!attacker || !target || target.stat == DEAD || QDELETED(attacker) || QDELETED(target))
 		return
 
 	attacker.animation_attack_on(target)

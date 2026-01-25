@@ -667,10 +667,10 @@
 	UnregisterSignal(user, COMSIG_LIVING_FLAMER_CROSSED)
 	..()
 
-/obj/item/clothing/suit/storage/marine/light/vest/fire_light/proc/flamer_fire_crossed_callback(mob/living/L, datum/reagent/R)
+/obj/item/clothing/suit/storage/marine/light/vest/fire_light/proc/flamer_fire_crossed_callback(mob/living/target, datum/reagent/fire_reagent)
 	SIGNAL_HANDLER
 
-	if(R.fire_penetrating)
+	if(fire_reagent?.fire_penetrating)
 		return
 
 	return COMPONENT_NO_IGNITE

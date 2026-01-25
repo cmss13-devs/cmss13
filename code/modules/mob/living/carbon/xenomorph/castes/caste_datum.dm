@@ -42,7 +42,6 @@
 
 	///Chance of deflecting projectiles.
 	var/armor_deflection = 0
-	var/fire_immunity = FIRE_IMMUNITY_NONE
 	var/fire_intensity_resistance = 0
 
 	/// Windup for spits

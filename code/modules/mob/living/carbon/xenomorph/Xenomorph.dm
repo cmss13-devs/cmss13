@@ -128,10 +128,12 @@
 	var/armor_integrity_max = 100
 	var/armor_integrity_last_damage_time = 0
 	var/armor_integrity_immunity_time = 0
+
 	var/pull_multiplier = 1
 	var/aura_strength = 0 // Pheromone strength
 	var/weed_level = WEED_LEVEL_STANDARD
 	var/acid_level = 0
+	var/fire_immunity = FIRE_IMMUNITY_NONE
 
 	/// The xeno's strain, if they've taken one.
 	var/datum/xeno_strain/strain = null
@@ -425,41 +427,29 @@
 			ADD_TRAIT(src, trait, TRAIT_SOURCE_HIVE)
 
 	//Set caste stuff
-	if(caste_type && GLOB.xeno_datum_list[caste_type])
-		caste = GLOB.xeno_datum_list[caste_type]
-
-		//Fire immunity signals
-		if (HAS_FLAG(caste.fire_immunity, FIRE_IMMUNITY_NO_DAMAGE | FIRE_IMMUNITY_NO_IGNITE | FIRE_IMMUNITY_XENO_FRENZY))
-			if(caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE)
-				RegisterSignal(src, COMSIG_LIVING_PREIGNITION, PROC_REF(fire_immune))
-
-			RegisterSignal(src, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED), PROC_REF(flamer_crossed_immune))
-		else
-			UnregisterSignal(src, list(
-				COMSIG_LIVING_PREIGNITION,
-				COMSIG_LIVING_FLAMER_CROSSED,
-				COMSIG_LIVING_FLAMER_FLAMED
-			))
-
-		if(caste.spit_types && length(caste.spit_types))
-			ammo = GLOB.ammo_list[caste.spit_types[1]]
-
-		acid_splash_cooldown = caste.acid_splash_cooldown
-
-		if(caste.adjust_size_x != 1)
-			var/matrix/matrix = matrix()
-			matrix.Scale(caste.adjust_size_x, caste.adjust_size_y)
-			apply_transform(matrix)
-
-		behavior_delegate = new caste.behavior_delegate_type()
-		behavior_delegate.bound_xeno = src
-		behavior_delegate.add_to_xeno()
-		resin_build_order = caste.resin_build_order
-
-		job = caste.caste_type // Used for tracking the caste playtime
-
-	else
+	if(!caste_type || !GLOB.xeno_datum_list[caste_type])
 		CRASH("Attempted to create a new xenomorph [src] without caste datum.")
+	caste = GLOB.xeno_datum_list[caste_type]
+
+	//Fire immunity signals
+	RegisterSignal(src, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED), PROC_REF(flamer_crossed_immune))
+
+	if(caste.spit_types && length(caste.spit_types))
+		ammo = GLOB.ammo_list[caste.spit_types[1]]
+
+	acid_splash_cooldown = caste.acid_splash_cooldown
+
+	if(caste.adjust_size_x != 1)
+		var/matrix/matrix = matrix()
+		matrix.Scale(caste.adjust_size_x, caste.adjust_size_y)
+		apply_transform(matrix)
+
+	behavior_delegate = new caste.behavior_delegate_type()
+	behavior_delegate.bound_xeno = src
+	behavior_delegate.add_to_xeno()
+	resin_build_order = caste.resin_build_order
+
+	job = caste.caste_type // Used for tracking the caste playtime
 
 	if(mob_size < MOB_SIZE_BIG)
 		mob_flags |= SQUEEZE_UNDER_VEHICLES
@@ -578,25 +568,21 @@
 /mob/living/carbon/xenomorph/initialize_stamina()
 	stamina = new /datum/stamina/none(src)
 
-/mob/living/carbon/xenomorph/proc/fire_immune(mob/living/L)
+/mob/living/carbon/xenomorph/proc/flamer_crossed_immune(mob/living/target, datum/reagent/applied_reagent)
 	SIGNAL_HANDLER
 
-	if(L.fire_reagent?.fire_penetrating && !HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
+	if(applied_reagent?.fire_penetrating && !(fire_immunity & FIRE_IMMUNITY_IGNORE_PEN))
 		return
 
-	return COMPONENT_CANCEL_IGNITION
-
-/mob/living/carbon/xenomorph/proc/flamer_crossed_immune(mob/living/L, datum/reagent/R)
-	SIGNAL_HANDLER
-
-	if(R.fire_penetrating)
-		return
-
-	. = COMPONENT_NO_BURN
 	// Burrowed xenos also cannot be ignited
-	if((caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE) || HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
+	var/burrowed = HAS_TRAIT(src, TRAIT_ABILITY_BURROWED)
+
+	. = NONE
+	if((fire_immunity & FIRE_IMMUNITY_NO_DAMAGE) || burrowed)
+		. |= COMPONENT_NO_BURN
+	if((fire_immunity & FIRE_IMMUNITY_NO_IGNITE) || burrowed)
 		. |= COMPONENT_NO_IGNITE
-	if(caste.fire_immunity & FIRE_IMMUNITY_XENO_FRENZY)
+	if(fire_immunity & FIRE_IMMUNITY_XENO_FRENZY)
 		. |= COMPONENT_XENO_FRENZY
 
 //Off-load this proc so it can be called freely
@@ -1115,11 +1101,17 @@
 	visible_message(SPAN_DANGER("<b>[src] manages to remove [legcuffed]!</b>"), SPAN_NOTICE("We successfully remove [legcuffed]."))
 	drop_inv_item_on_ground(legcuffed)
 
-/mob/living/carbon/xenomorph/IgniteMob()
+/mob/living/carbon/xenomorph/IgniteMob(force)
+	var/penetrating = fire_reagent?.fire_penetrating && !(fire_immunity & FIRE_IMMUNITY_IGNORE_PEN)
+	if(!force && !penetrating)
+		if((fire_immunity & FIRE_IMMUNITY_NO_IGNITE) || HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
+			return IGNITE_FAILED
+
 	. = ..()
+
 	if (. & IGNITE_IGNITED)
 		RegisterSignal(src, COMSIG_XENO_PRE_HEAL, PROC_REF(cancel_heal))
-		if(!caste || !(caste.fire_immunity & FIRE_IMMUNITY_NO_DAMAGE) || fire_reagent.fire_penetrating)
+		if(!(fire_immunity & FIRE_IMMUNITY_NO_DAMAGE) || penetrating || force)
 			INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, emote), "roar")
 
 /mob/living/carbon/xenomorph/ExtinguishMob()

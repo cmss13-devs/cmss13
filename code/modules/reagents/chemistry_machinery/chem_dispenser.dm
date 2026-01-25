@@ -52,6 +52,7 @@
 	var/hacked_check = DISPENSER_UNHACKABLE
 	/// Additional reagents gotten when it is hacked
 	var/hacked_reagents = list()
+	var/list/no_cost_reagents = list("water")
 
 /obj/structure/machinery/chem_dispenser/medbay
 	network = "Medbay"
@@ -194,7 +195,10 @@
 				var/space = current_reagent.maximum_volume - current_reagent.total_volume
 
 				current_reagent.add_reagent(reagent_name, min(amount, chem_storage.energy * 10, space))
-				chem_storage.energy = max(chem_storage.energy - min(amount, chem_storage.energy * 10, space) / 10, 0)
+				if(reagent_name in no_cost_reagents)
+					chem_storage.energy = 0
+				else
+					chem_storage.energy = max(chem_storage.energy - min(amount, chem_storage.energy * 10, space) / 10, 0)
 
 			. = TRUE
 

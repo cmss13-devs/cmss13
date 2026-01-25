@@ -2,6 +2,13 @@
 "aaa" = (
 /turf/open/space,
 /area/space)
+"aab" = (
+/obj/structure/machinery/shower{
+	dir = 4
+	},
+/obj/structure/catwalk,
+/turf/open/floor/freezerfloor,
+/area/ice_colony/surface/dorms/restroom_w)
 "aac" = (
 /turf/closed/ice_rock/corners,
 /area/ice_colony/exterior/surface/cliff)
@@ -2919,10 +2926,9 @@
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/clearing/north)
 "akU" = (
+/obj/structure/catwalk,
 /obj/structure/machinery/shower{
-	dir = 4;
-	pixel_x = 5;
-	pixel_y = -8
+	dir = 4
 	},
 /turf/open/floor/freezerfloor,
 /area/ice_colony/surface/dorms/restroom_w)
@@ -2948,13 +2954,13 @@
 /obj/structure/machinery/shower{
 	dir = 8
 	},
+/obj/structure/catwalk,
 /turf/open/floor/freezerfloor,
 /area/ice_colony/surface/dorms/restroom_w)
 "ala" = (
+/obj/structure/catwalk,
 /obj/structure/machinery/shower{
-	dir = 4;
-	pixel_x = 5;
-	pixel_y = -8
+	dir = 4
 	},
 /turf/open/floor/freezerfloor,
 /area/ice_colony/surface/dorms/restroom_e)
@@ -2981,6 +2987,7 @@
 	dir = 8
 	},
 /obj/item/tool/soap,
+/obj/structure/catwalk,
 /turf/open/floor/freezerfloor,
 /area/ice_colony/surface/dorms/restroom_e)
 "alh" = (
@@ -3129,13 +3136,12 @@
 /turf/open/floor/darkgreen2/northeast,
 /area/ice_colony/surface/hydroponics/north)
 "alO" = (
-/obj/structure/machinery/shower{
-	dir = 4;
-	pixel_x = 5;
-	pixel_y = -8
-	},
 /obj/effect/landmark/survivor_spawner,
 /obj/item/storage/toolbox/emergency,
+/obj/structure/catwalk,
+/obj/structure/machinery/shower{
+	dir = 4
+	},
 /turf/open/floor/freezerfloor,
 /area/ice_colony/surface/dorms/restroom_w)
 "alQ" = (
@@ -3144,6 +3150,7 @@
 	},
 /obj/effect/landmark/corpsespawner/bridgeofficer,
 /obj/effect/decal/cleanable/blood,
+/obj/structure/catwalk,
 /turf/open/floor/freezerfloor,
 /area/ice_colony/surface/dorms/restroom_e)
 "alR" = (
@@ -3363,6 +3370,7 @@
 /obj/structure/machinery/shower{
 	dir = 8
 	},
+/obj/structure/catwalk,
 /turf/open/floor/freezerfloor,
 /area/ice_colony/surface/dorms/restroom_e)
 "amJ" = (
@@ -23678,6 +23686,7 @@
 	},
 /obj/structure/window/reinforced,
 /obj/structure/machinery/door/window/westleft,
+/obj/structure/catwalk,
 /turf/open/floor/white,
 /area/ice_colony/underground/security/brig)
 "bPI" = (
@@ -24019,6 +24028,7 @@
 	dir = 8
 	},
 /obj/structure/machinery/door/window/westleft,
+/obj/structure/catwalk,
 /turf/open/floor/white,
 /area/ice_colony/underground/security/brig)
 "bQS" = (
@@ -54770,7 +54780,7 @@ abL
 abL
 abL
 akC
-akU
+aab
 alk
 alO
 alk

@@ -14287,9 +14287,6 @@
 /obj/item/clothing/mask/gas/upp_pfb,
 /turf/open/asphalt/cement,
 /area/strata/exterior/mining_outpost_exterior)
-"aNO" = (
-/turf/open/slippery/hull/dir/southeast,
-/area/strata/interior/outpost/admin)
 "aNP" = (
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/south_outpost)
@@ -80040,7 +80037,7 @@ bfV
 bfV
 bfV
 bfV
-aNO
+cik
 eFF
 blN
 biH
@@ -123148,7 +123145,7 @@ vJQ
 vJQ
 eZm
 lyh
-vCe
+ngA
 ngA
 rpb
 rpb
@@ -132888,7 +132885,7 @@ rpb
 rpb
 rpb
 vCe
-rpb
+vCe
 vCe
 vCe
 vCe
@@ -133062,7 +133059,7 @@ rpb
 rpb
 rpb
 rpb
-vCe
+ngA
 vCe
 vCe
 vCe
@@ -167949,7 +167946,7 @@ vCe
 vCe
 vCe
 vCe
-vCe
+ngA
 ngA
 rpb
 rpb
@@ -177525,7 +177522,7 @@ vCe
 vCe
 vCe
 vCe
-vCe
+rpb
 rpb
 rpb
 rpb
@@ -177689,7 +177686,7 @@ rpb
 rpb
 rpb
 vCe
-rpb
+vCe
 vCe
 vCe
 vCe
@@ -177863,7 +177860,7 @@ rpb
 rpb
 rpb
 rpb
-vCe
+ngA
 vCe
 vCe
 vCe

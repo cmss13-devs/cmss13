@@ -23,11 +23,8 @@
 #define TOGGLE_IGNORE_SELF (1<<0)
 ///Determines whether help intent will be completely harmless
 #define TOGGLE_HELP_INTENT_SAFETY (1<<1)
-// Deprecated. Can't remove this or bitshift values down because it would fuck up the savefiles
-// Feel free to replace this whatever you want, if you can find a useful toggle for it. Alternatively, don't because savefiles using flags
-// Is a complete and utter mistake.
-///UNUSED CURRENTLY
-#define TOGGLE_FREE_PLACE_YOUR_OWN_TOGGLE_HERE (1<<2)
+//Toggles whether cocking a gun should drop its bullet or moves it to your empty hand
+#define TOGGLE_COCKING_TO_HAND (1<<2)
 ///This toggles whether attacks for xeno use directional attacks
 #define TOGGLE_DIRECTIONAL_ATTACK (1<<3)
 ///This toggles whether guns with auto ejectors will not auto eject their magazines
@@ -68,6 +65,8 @@
 #define TOGGLE_AUTO_SHOVE_OFF (1<<20)
 ///Toggles whether activating marine leader orders will be spoken or not
 #define TOGGLE_LEADERSHIP_SPOKEN_ORDERS (1<<21)
+
+// NOTE: Don't add flags past 1<<23, it'll break things due to BYOND limitations.
 //=================================================
 
 #define JOB_SLOT_RANDOMISED_SLOT -1

@@ -48,6 +48,20 @@
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
 	return XENO_ATTACK_ACTION
 
+/obj/structure/dropship_equipment/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
+	if(unslashable || health <= 0)
+		return TAILSTAB_COOLDOWN_NONE
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	update_health(xeno.melee_damage_upper)
+	if(health <= 0)
+		xeno.visible_message(SPAN_DANGER("[xeno] smashes [src] with its tail!"),
+		SPAN_DANGER("We smash [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	else
+		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
+		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno.tail_stab_animation(src, blunt_stab)
+	return TAILSTAB_COOLDOWN_NORMAL
+
 /obj/structure/dropship_equipment/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/powerloader_clamp))
 		var/obj/item/powerloader_clamp/PC = I
@@ -210,11 +224,11 @@
 		.["engaged"] = length(sentrygun.targets)
 
 /obj/structure/dropship_equipment/sentry_holder/on_launch()
-	if(ship_base && ship_base.base_category == DROPSHIP_WEAPON) //only external sentires are automatically undeployed
+	if(ship_base && ship_base.base_category == DROPSHIP_WEAPON) //only external sentries are automatically undeployed
 		undeploy_sentry()
 
 /obj/structure/dropship_equipment/sentry_holder/on_arrival()
-	if(ship_base && auto_deploy && ship_base.base_category == DROPSHIP_WEAPON) //only external sentires are automatically deployed
+	if(ship_base && auto_deploy && ship_base.base_category == DROPSHIP_WEAPON) //only external sentries are automatically deployed
 		deploy_sentry()
 
 /obj/structure/dropship_equipment/sentry_holder/equipment_interact(mob/user)
@@ -725,7 +739,7 @@
 		var/total_seconds = max(floor(ammo_travelling_time / 10), 1)
 		for(var/i in 0 to total_seconds)
 			sleep(1 SECONDS)
-			new /obj/effect/overlay/temp/blinking_laser (impact) //no decreased accuracy if laser dissapears, it will land where it is telegraphed to land
+			new /obj/effect/overlay/temp/blinking_laser (impact) //no decreased accuracy if laser disappears, it will land where it is telegraphed to land
 
 	if(ammo_warn_sound)
 		playsound(impact, ammo_warn_sound, ammo_warn_sound_volume, 1,15)
@@ -760,7 +774,7 @@
 
 /obj/structure/dropship_equipment/weapon/heavygun
 	name = "\improper GAU-21 30mm cannon"
-	desc = "A dismounted GAU-21 'Rattler' 30mm rotary cannon. It seems to be missing its feed links and has exposed connection wires. Capable of firing 5200 rounds a minute, feared by many for its power. Earned the nickname 'Rattler' from the vibrations it would cause on dropships in its initial production run. Accepts PGU-100/PGU-105 ammo crates"
+	desc = "A dismounted GAU-21 'Rattler' 30mm rotary cannon. It seems to be missing its feed links and has exposed connection wires. Capable of firing 5200 rounds a minute, feared by many for its power. Earned the nickname 'Rattler' from the vibrations it would cause on dropships in its initial production run. Accepts PGU-100/PGU-105 ammo crates."
 	icon_state = "30mm_cannon"
 	firing_sound = 'sound/effects/gau_incockpit.ogg'
 	point_cost = 400
@@ -947,7 +961,7 @@
 		return FALSE
 
 	if(busy_winch)
-		to_chat(user, SPAN_WARNING(" The winch is already in motion."))
+		to_chat(user, SPAN_WARNING("The winch is already in motion."))
 		return FALSE
 
 	if(world.time < medevac_cooldown)
@@ -987,7 +1001,7 @@
 		return
 
 	if(busy_winch)
-		to_chat(user, SPAN_WARNING(" The winch is already in motion."))
+		to_chat(user, SPAN_WARNING("The winch is already in motion."))
 		return
 
 	if(world.time < medevac_cooldown)
@@ -995,7 +1009,7 @@
 		return
 
 	if(selected_stretcher == linked_stretcher) //already linked to us, unlink it
-		to_chat(user, SPAN_NOTICE(" You move your dropship away from that stretcher's beacon."))
+		to_chat(user, SPAN_NOTICE("You move your dropship away from that stretcher's beacon."))
 		linked_stretcher.visible_message(SPAN_NOTICE("[linked_stretcher] detects a dropship is no longer overhead."))
 		linked_stretcher.linked_medevac = null
 		linked_stretcher = null
@@ -1051,7 +1065,7 @@
 	if(!ship_base) //not installed
 		return
 	if(!skillcheck(user, SKILL_PILOT, SKILL_PILOT_TRAINED) && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_DOCTOR))
-		to_chat(user, SPAN_WARNING(" You don't know how to use [src]."))
+		to_chat(user, SPAN_WARNING("You don't know how to use [src]."))
 		return
 
 	if(!linked_shuttle)
@@ -1062,7 +1076,7 @@
 		return
 
 	if(busy_winch)
-		to_chat(user, SPAN_WARNING(" The winch is already in motion."))
+		to_chat(user, SPAN_WARNING("The winch is already in motion."))
 		return
 
 	if(!linked_stretcher)
@@ -1072,7 +1086,7 @@
 	if(!is_ground_level(linked_stretcher.z))
 		linked_stretcher.linked_medevac = null
 		linked_stretcher = null
-		to_chat(user, SPAN_WARNING(" There seems to be no medevac stretcher connected to [src]."))
+		to_chat(user, SPAN_WARNING("There seems to be no medevac stretcher connected to [src]."))
 		return
 
 	if(world.time < medevac_cooldown)
@@ -1224,14 +1238,14 @@
 		return
 
 	if(busy_winch)
-		to_chat(user, SPAN_WARNING(" The winch is already in motion."))
+		to_chat(user, SPAN_WARNING("The winch is already in motion."))
 		return
 
 	if(world.time < fulton_cooldown)
 		to_chat(user, SPAN_WARNING("[src] was just used, you need to wait a bit before using it again."))
 		return
 
-	to_chat(user, SPAN_NOTICE(" You move your dropship above the selected balloon's beacon."))
+	to_chat(user, SPAN_NOTICE("You move your dropship above the selected balloon's beacon."))
 
 	activate_winch(user, fult)
 
@@ -1245,7 +1259,7 @@
 		return FALSE
 
 	if(busy_winch)
-		to_chat(user, SPAN_WARNING(" The winch is already in motion."))
+		to_chat(user, SPAN_WARNING("The winch is already in motion."))
 		return FALSE
 
 	if(world.time < fulton_cooldown)
@@ -1308,14 +1322,14 @@
 		return
 
 	if(busy_winch)
-		to_chat(user, SPAN_WARNING(" The winch is already in motion."))
+		to_chat(user, SPAN_WARNING("The winch is already in motion."))
 		return
 
 	if(world.time < fulton_cooldown)
 		to_chat(user, SPAN_WARNING("[src] was just used, you need to wait a bit before using it again."))
 		return
 
-	to_chat(user, SPAN_NOTICE(" You move your dropship above the selected balloon's beacon."))
+	to_chat(user, SPAN_NOTICE("You move your dropship above the selected balloon's beacon."))
 
 	activate_winch(user, fulton)
 

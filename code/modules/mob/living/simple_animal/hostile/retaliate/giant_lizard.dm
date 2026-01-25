@@ -7,7 +7,7 @@
 
 /mob/living/simple_animal/hostile/retaliate/giant_lizard
 	name = "giant lizard"
-	desc = "A large, wolf-like reptile. Its eyes are keenly focused on yours."
+	desc = "A large, synapsid-like creature. Its eyes are keenly focused on yours."
 	icon = 'icons/mob/mob_64.dmi'
 	icon_state = "Giant Lizard Running"
 	icon_living = "Giant Lizard Running"
@@ -35,7 +35,7 @@
 	speak_chance = 2
 	speak_emote = "hisses"
 	emote_hear = list("hisses.", "growls.", "roars.", "bellows.")
-	emote_see = list("shakes its head.", "wags its tail.", "yawns.")
+	emote_see = list("shakes its head.", "wags its tail.", "yawns.", "licks its eyeball.")
 
 	melee_damage_lower = 20
 	melee_damage_upper = 25
@@ -164,7 +164,7 @@
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/initialize_pass_flags(datum/pass_flags_container/pass_flags_container)
 	..()
 	if(pass_flags_container)
-		pass_flags_container.flags_pass |= PASS_FLAGS_CRAWLER
+		pass_flags_container.flags_pass |= PASS_FLAGS_CRAWLER|PASS_OVER_THROW_ITEM
 
 //regular pain datum will make the mob die when trying to pounce after taking enough damage.
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/initialize_pain()
@@ -367,7 +367,7 @@
 		handle_blood_splatter(get_dir(attacker.loc, loc))
 	return ..()
 
-/mob/living/simple_animal/hostile/retaliate/giant_lizard/apply_damage(damage, damagetype, def_zone, used_weapon, sharp, edge, force, enviro)
+/mob/living/simple_animal/hostile/retaliate/giant_lizard/apply_damage(damage, damagetype, def_zone, used_weapon, sharp, edge, force, enviro, chemical = FALSE)
 	Retaliate()
 	aggression_value = clamp(aggression_value + 5, 0, 30)
 	. = ..()
@@ -909,7 +909,7 @@
 
 	if(ishuman(pounced_mob) && (pounced_mob.dir in reverse_nearby_direction(dir)))
 		var/mob/living/carbon/human/human = pounced_mob
-		if(human.check_shields(15, "the pounce")) //Human shield block.
+		if(human.check_shields("the pounce", get_dir(human, src), attack_type = SHIELD_ATTACK_POUNCE, custom_response = TRUE)) //Human shield block.
 			visible_message(SPAN_DANGER("[src] slams into [human]!"))
 			KnockDown(1)
 			Stun(1)
@@ -917,20 +917,13 @@
 			playsound(human, "bonk", 75, FALSE) //bonk
 			return
 
-		if(isyautja(human))
-			if(human.check_shields(0, "the pounce", 1))
-				visible_message(SPAN_DANGER("[human] blocks the pounce of [src] with the combistick!"))
-				apply_effect(3, WEAKEN)
-				throwing = FALSE
-				playsound(human, "bonk", 75, FALSE)
-				return
-			else if(prob(75)) //Body slam.
-				visible_message(SPAN_DANGER("[human] body slams [src]!"))
-				KnockDown(3)
-				Stun(3)
-				throwing = FALSE
-				playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
-				return
+		if(isyautja(human) && prob(75))//Body slam.
+			visible_message(SPAN_DANGER("[human] body slams [src]!"))
+			KnockDown(3)
+			Stun(3)
+			throwing = FALSE
+			playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
+			return
 		if(iscolonysynthetic(human) && prob(60))
 			visible_message(SPAN_DANGER("[human] withstands being pounced and slams down [src]!"))
 			KnockDown(1.5)

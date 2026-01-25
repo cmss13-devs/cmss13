@@ -35,7 +35,7 @@
 		to_chat(giver, SPAN_WARNING("[src]'s hands are full."))
 		return
 	giver.mob_flags |= GIVING
-	if(tgui_alert(src, "[giver] wants to give you \a [I]?", "You are being offered an item", list("No", "Yes"), 10 SECONDS) == "Yes")
+	if(tgui_alert(src, "[giver] wants to give you \a [I]?", "You are being offered an item", list("Yes", "No"), 10 SECONDS) == "Yes")
 		giver.mob_flags &= ~GIVING
 		if(!I || !giver || !istype(I))
 			return

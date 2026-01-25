@@ -1,0 +1,4 @@
+author: "larentoun"
+delete-after: True
+changes:
+  - maptweak: "LV624 LZ1 is now correctly called \"LZ1 Nexus\", instead of being \"Alamo Landing Zone\"."

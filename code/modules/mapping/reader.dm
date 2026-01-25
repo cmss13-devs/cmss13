@@ -28,7 +28,7 @@
 #define MAP_DMM "dmm"
 /**
  * TGM SPEC:
- * TGM is a derivation of DMM, with restrictions placed on it
+ * TGM is a derivative of DMM, with restrictions placed on it
  * to make it easier to parse and to reduce merge conflicts/ease their resolution
  *
  * Requirements:
@@ -422,8 +422,8 @@
 		x_delta_with = min(x_delta_with, world.maxx)
 
 	// We're gonna skip all the entries above the upper x, or maxx if cropMap is set
-	// The last column is guarenteed to have the highest x value we;ll encounter
-	// Even if z scales, this stilll works
+	// The last column is guaranteed to have the highest x value we;ll encounter
+	// Even if z scales, this still works
 	var/datum/grid_set/last_column = gridSets[length(gridSets)]
 	var/final_x = last_column.xcrd + x_relative_to_absolute
 
@@ -481,7 +481,7 @@
 
 		// We're gonna track the first and last pairs of coords we find
 		// Since x is always incremented in steps of 1, we only need to deal in y
-		// The first x is guarenteed to be the lowest, the first y the highest, and vis versa
+		// The first x is guaranteed to be the lowest, the first y the highest, and vis versa
 		// This is faster then doing mins and maxes inside the hot loop below
 		var/first_found = FALSE
 		var/first_y = 0
@@ -631,7 +631,7 @@
 			expanded_x = TRUE
 
 		// We're gonna track the first and last pairs of coords we find
-		// The first x is guarenteed to be the lowest, the first y the highest, and vis versa
+		// The first x is guaranteed to be the lowest, the first y the highest, and vis versa
 		// This is faster then doing mins and maxes inside the hot loop below
 		var/first_found = FALSE
 		var/first_x = 0
@@ -934,6 +934,11 @@ GLOBAL_LIST_EMPTY(map_model_default)
 //			old_area.turfs_to_uncontain += crds
 //			area_instance.contained_turfs.Add(crds)
 		area_instance.contents.Add(crds)
+		if(old_area)
+			// Make sure atoms leave their old area and enter the new area
+			for(var/atom/turf_atom as anything in crds.GetAllTurfStrictContents())
+				old_area.Exited(turf_atom)
+				area_instance.Entered(turf_atom, crds)
 
 		if(GLOB.use_preloader)
 			world.preloader_load(area_instance)
@@ -1048,7 +1053,7 @@ GLOBAL_LIST_EMPTY(map_model_default)
 	if(text[1] == "\"")
 		// insert implied locate \" and length("\"") here
 		// It's a minimal timesave but it is a timesave
-		// Safe becuase we're guarenteed trimmed constants
+		// Safe becuase we're guaranteed trimmed constants
 		return copytext(text, 2, -1)
 
 	// list

@@ -2,10 +2,10 @@
 	name = "ancient alien bracers"
 	desc = "A pair of strange, alien bracers."
 
-	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon = 'icons/obj/items/hunter/pred_bracers.dmi'
 	icon_state = "bracer"
 	item_icons = list(
-		WEAR_HANDS = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
+		WEAR_HANDS = 'icons/mob/humans/onmob/hunter/pred_bracers.dmi'
 	)
 
 	siemens_coefficient = 0
@@ -48,6 +48,8 @@
 	COOLDOWN_DECLARE(bracer_recharge)
 	/// What minimap icon this bracer should have
 	var/minimap_icon
+	///sprite style
+	var/material
 
 /obj/item/clothing/gloves/yautja/equipped(mob/user, slot)
 	. = ..()
@@ -97,7 +99,7 @@
 
 		charge = min(charge + charge_increase, charge_max)
 		var/perc_charge = (charge / charge_max * 100)
-		human_holder.update_power_display(perc_charge)
+		human_holder.update_power_display(perc_charge, material)
 
 	//Non-Yautja have a chance to get stunned with each power drain
 	if(!HAS_TRAIT(human_holder, TRAIT_CLOAKED))
@@ -158,7 +160,7 @@
 
 	charge -= amount
 	var/perc = (charge / charge_max * 100)
-	human.update_power_display(perc)
+	human.update_power_display(perc, material)
 
 	return TRUE
 
@@ -292,7 +294,7 @@
 	if(right_bracer_attachment)
 		. += SPAN_NOTICE("The right bracer attachment is [right_bracer_attachment.attached_weapon].")
 
-/obj/item/clothing/gloves/yautja/hunter/Initialize(mapload, new_translator_type, new_invis_sound, new_caster_material, new_owner_rank)
+/obj/item/clothing/gloves/yautja/hunter/Initialize(mapload, new_translator_type, new_invis_sound, new_caster_material, new_owner_rank, new_bracer_material)
 	. = ..()
 	if(new_owner_rank)
 		owner_rank = new_owner_rank
@@ -304,6 +306,9 @@
 	if(new_caster_material)
 		caster_material = new_caster_material
 	caster = new(src, FALSE, caster_material)
+	if(new_bracer_material)
+		icon_state = "bracer_" + new_bracer_material
+		material = new_bracer_material
 
 /obj/item/clothing/gloves/yautja/hunter/emp_act(severity)
 	. = ..()
@@ -458,7 +463,7 @@
 
 /obj/item/bracer_attachments/wristblades
 	name = "wristblade bracer attachment"
-	desc = "A pair of huge, serrated blades"
+	desc = "A pair of huge, serrated blades."
 	icon_state = "wrist"
 	item_state = "wristblade"
 	attached_weapon_type = /obj/item/weapon/bracer_attachment/wristblades
@@ -467,7 +472,7 @@
 
 /obj/item/bracer_attachments/scimitars
 	name = "scimitar bracer attachment"
-	desc = "A pair of huge, serrated blades"
+	desc = "A pair of huge, serrated blades."
 	icon_state = "scim"
 	item_state = "scim"
 	attached_weapon_type = /obj/item/weapon/bracer_attachment/scimitar
@@ -476,12 +481,22 @@
 
 /obj/item/bracer_attachments/scimitars_alt
 	name = "scimitar bracer attachment"
-	desc = "A pair of huge, serrated blades"
+	desc = "A pair of huge, serrated blades."
 	icon_state = "scim_alt"
 	item_state = "scim_alt"
 	attached_weapon_type = /obj/item/weapon/bracer_attachment/scimitar/alt
 	deployment_sound = 'sound/weapons/scims_alt_on.ogg'
 	retract_sound = 'sound/weapons/scims_alt_off.ogg'
+
+/obj/item/bracer_attachments/shield
+	name ="shield bracer attachment"
+	desc ="A shield made of concentric metal alloy plates. The plates fold into one another for compact storage while still providing superior protection."
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "bracer_shield_off"
+	item_state = "bracer_shield_off"
+	attached_weapon_type = /obj/item/weapon/shield/riot/yautja/bracer_shield
+	deployment_sound = 'sound/weapons/wristblades_on.ogg'
+	retract_sound = 'sound/weapons/wristblades_off.ogg'
 
 /obj/item/clothing/gloves/yautja/hunter/attackby(obj/item/attacking_item, mob/user)
 	if(!istype(attacking_item, /obj/item/bracer_attachments))
@@ -644,7 +659,7 @@
 		return
 
 	var/mob/living/carbon/human/hunter = user
-	var/atom/hunter_eye = hunter.client.eye
+	var/atom/hunter_eye = hunter.client.get_eye()
 
 	var/dead_on_planet = 0
 	var/dead_on_almayer = 0
@@ -808,7 +823,7 @@
 
 	decloak(wearer, TRUE, DECLOAK_EXTINGUISHER)
 
-/obj/item/clothing/gloves/yautja/hunter/decloak(mob/user, forced, force_multipler = DECLOAK_FORCED)
+/obj/item/clothing/gloves/yautja/hunter/decloak(mob/user, forced, force_multiplier = DECLOAK_FORCED)
 	if(!user)
 		return
 
@@ -818,7 +833,7 @@
 	UnregisterSignal(user, COMSIG_HUMAN_PRE_BULLET_ACT)
 	UnregisterSignal(user, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
 
-	var/decloak_timer = (DECLOAK_STANDARD * force_multipler)
+	var/decloak_timer = (DECLOAK_STANDARD * force_multiplier)
 	if(forced)
 		cloak_malfunction = world.time + decloak_timer
 
@@ -959,7 +974,7 @@
 	if(boomer.stat == DEAD)
 		to_chat(boomer, SPAN_WARNING("Little too late for that now!"))
 		return
-	if(boomer.health < HEALTH_THRESHOLD_CRIT)
+	if(boomer.health < boomer.health_threshold_crit)
 		to_chat(boomer, SPAN_WARNING("As you fall into unconsciousness you fail to activate your self-destruct device before you collapse."))
 		return
 	if(boomer.stat != CONSCIOUS)
@@ -1444,9 +1459,9 @@
 /// The actual unlock/lock function.
 /obj/item/clothing/gloves/yautja/proc/toggle_lock_internal(mob/wearer, force_lock)
 	if(((flags_item & NODROP) || (flags_inventory & CANTSTRIP)) && !force_lock)
-		return unlock_bracer()
+		return unlock_bracer(wearer)
 
-	return lock_bracer()
+	return lock_bracer(wearer)
 
 /obj/item/clothing/gloves/yautja/proc/lock_bracer(mob/wearer)
 	flags_item |= NODROP
@@ -1456,6 +1471,7 @@
 			to_chat(wearer, SPAN_WARNING("The bracer clamps securely around your forearm and beeps in a comfortable, familiar way."))
 		else
 			to_chat(wearer, SPAN_WARNING("The bracer clamps painfully around your forearm and beeps angrily. It won't come off!"))
+	playsound(src, 'sound/items/air_release.ogg', 15, 1)
 	return TRUE
 
 /obj/item/clothing/gloves/yautja/proc/unlock_bracer(mob/wearer)
@@ -1466,4 +1482,5 @@
 			to_chat(wearer, SPAN_WARNING("The bracer beeps pleasantly, releasing its grip on your forearm."))
 		else
 			to_chat(wearer, SPAN_WARNING("With an angry blare, the bracer releases your forearm."))
+	playsound(src, 'sound/items/air_release.ogg', 15, 1)
 	return TRUE

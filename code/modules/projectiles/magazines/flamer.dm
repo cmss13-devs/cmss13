@@ -82,7 +82,7 @@
 /obj/item/ammo_magazine/flamer_tank/afterattack(obj/target, mob/user , flag) //refuel at fueltanks when we run out of ammo.
 	if(get_dist(user,target) > 1)
 		return ..()
-	if(!istype(target, /obj/structure/reagent_dispensers/fueltank) && !istype(target, /obj/item/tool/weldpack) && !istype(target, /obj/item/storage/backpack/marine/engineerpack) && !istype(target, /obj/item/ammo_magazine/flamer_tank))
+	if(!istype(target, /obj/structure/reagent_dispensers/tank/fuel) && !istype(target, /obj/item/tool/weldpack) && !istype(target, /obj/item/storage/backpack/marine/engineerpack) && !istype(target, /obj/item/ammo_magazine/flamer_tank))
 		return ..()
 
 	if(!target.reagents || length(target.reagents.reagent_list) < 1)
@@ -151,13 +151,13 @@
 		for(var/datum/reagent/R in reagents.reagent_list)
 			. += SPAN_NOTICE(" [R.volume] units of [R.name].")
 	else
-		. += SPAN_NOTICE("Nothing.")
+		. += SPAN_NOTICE(" Nothing.")
 
 // This is gellie fuel. Green Flames.
 /obj/item/ammo_magazine/flamer_tank/gellied
 	name = "M240 incinerator tank (B-Gel)"
 	desc = "A fuel tank full of specialized Ultra Thick Napthal Fuel type B-Gel, a gelled variant of napalm that is easily extinguished, but shoots further and lingers for longer. Handle with exceptional care."
-	desc_lore = "Unlike its liquid contemporaries, this gelled variant of napalm is easily extinguished, but shoots far and lingers on the ground in a viscous mess. The gel reacts violently with inorganic materials to break them down, forming an extremely sticky crytallized goo."
+	desc_lore = "Unlike its liquid contemporaries, this gelled variant of napalm is easily extinguished, but shoots far and lingers on the ground in a viscous mess. The gel reacts violently with inorganic materials to break them down, forming an extremely sticky crystallized goo."
 	caliber = "Napalm Gel"
 	flamer_chem = "napalmgel"
 	max_rounds = 200
@@ -188,12 +188,12 @@
 	if(!set_pressure)
 		to_chat(usr, SPAN_WARNING("You can't find that setting on the regulator!"))
 	else
-		to_chat(usr, SPAN_NOTICE("You set the pressure regulator to [set_pressure] U/t"))
+		to_chat(usr, SPAN_NOTICE("You set the pressure regulator to [set_pressure] U/t."))
 		fuel_pressure = set_pressure
 
 /obj/item/ammo_magazine/flamer_tank/custom/get_examine_text(mob/user)
 	. = ..()
-	. += SPAN_NOTICE("The pressure regulator is set to: [src.fuel_pressure] U/t")
+	. += SPAN_NOTICE("The pressure regulator is set to: [src.fuel_pressure] U/t.")
 
 // Pyro regular flamer tank just bigger than the base flamer tank.
 /obj/item/ammo_magazine/flamer_tank/large

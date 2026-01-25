@@ -1196,7 +1196,7 @@
 /area/lv759/indoors/spaceport/docking_bay_2)
 "fM" = (
 /obj/effect/decal/cleanable/liquid_fuel,
-/obj/structure/reagent_dispensers/fueltank/spacecraft,
+/obj/structure/reagent_dispensers/tank/fuel/spacecraft,
 /obj/effect/decal/cleanable/liquid_fuel,
 /turf/open/floor/strata/blue3/east,
 /area/lv759/indoors/spaceport/docking_bay_2)
@@ -1412,7 +1412,7 @@
 "gU" = (
 /obj/effect/decal/cleanable/liquid_fuel,
 /obj/structure/pipes/vents/pump_hybrisa,
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/corsat,
 /area/lv759/indoors/spaceport/maintenance_east)
 "gV" = (
@@ -1709,7 +1709,7 @@
 	icon_state = "igniter0";
 	name = "floor panel"
 	},
-/obj/structure/reagent_dispensers/fueltank/spacecraft,
+/obj/structure/reagent_dispensers/tank/fuel/spacecraft,
 /turf/open/floor/corsat/officetiles,
 /area/lv759/indoors/spaceport/engineering)
 "io" = (
@@ -3843,7 +3843,7 @@
 /turf/closed/wall/hybrisa/spaceport/reinforced,
 /area/lv759/indoors/spaceport/kitchen)
 "va" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /obj/item/tool/mop,
 /turf/open/floor/almayer/plating/northeast,
 /area/lv759/indoors/spaceport/baggagehandling)
@@ -4932,7 +4932,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
-/obj/structure/reagent_dispensers/fueltank/spacecraft,
+/obj/structure/reagent_dispensers/tank/fuel/spacecraft,
 /obj/effect/decal/cleanable/liquid_fuel,
 /turf/open/floor/corsat,
 /area/lv759/indoors/spaceport/engineering)
@@ -6172,7 +6172,7 @@
 /turf/open/floor/strata/multi_tiles,
 /area/lv759/indoors/spaceport/docking_bay_1)
 "HP" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/corsat,
 /area/lv759/indoors/spaceport/maintenance_east)
 "HR" = (
@@ -8148,7 +8148,7 @@
 	layer = 3.33
 	},
 /obj/effect/decal/strata_decals/catwalk/prison,
-/obj/structure/reagent_dispensers/fueltank/spacecraft,
+/obj/structure/reagent_dispensers/tank/fuel/spacecraft,
 /obj/structure/platform/metal/strata/west,
 /turf/open/floor/shiva/radiator_tile2,
 /area/lv759/indoors/spaceport/docking_bay_2)
@@ -8862,7 +8862,7 @@
 /turf/open/floor/strata/multi_tiles,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "Zu" = (
-/obj/structure/reagent_dispensers/fueltank/spacecraft,
+/obj/structure/reagent_dispensers/tank/fuel/spacecraft,
 /turf/open/floor/plating,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "Zw" = (

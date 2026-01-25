@@ -921,7 +921,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 4
 	},
 /turf/open/floor/prison/cell_stripe/east,
@@ -71066,13 +71066,13 @@
 	capacity = 1e+006;
 	dir = 1
 	},
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 4
 	},
 /turf/open/floor/corsat,
 /area/tyrargo/underground/engineering)
 "dwj" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -71271,7 +71271,7 @@
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/tyrargo/underground/apartment)
 "dwK" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 4
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
@@ -74686,7 +74686,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 4
 	},
 /turf/open/floor/prison/cell_stripe/east,

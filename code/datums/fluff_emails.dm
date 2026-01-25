@@ -17,7 +17,7 @@
 					<br>
 					<br>
 					Maybe that reserve grunt in Echo Company just about gutted himself with one of our blades in his bunk,
-					and maybe one of them accidentaly got flashed in front of one of the officers during a 'disagreement',
+					and maybe one of them accidentally got flashed in front of one of the officers during a 'disagreement',
 					but neither of those things are 'explicitly' OUR faults.
 					<br>
 					<br>

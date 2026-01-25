@@ -1207,6 +1207,18 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	new /obj/item/tool/surgery/healing_gel/(src)
 	new /obj/item/tool/surgery/healing_gel/(src)
 
+/obj/item/storage/medicomp/thrall/fill_preset_inventory()
+	new /obj/item/tool/surgery/stabilizer_gel(src)
+	new /obj/item/tool/surgery/healing_gun(src)
+	new /obj/item/tool/surgery/wound_clamp(src)
+	new /obj/item/device/healthanalyzer/alien(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/yautja/thrall(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/yautja/thrall(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/yautja/thrall(src)
+	new /obj/item/tool/surgery/healing_gel/(src)
+	new /obj/item/tool/surgery/healing_gel/(src)
+	new /obj/item/tool/surgery/healing_gel/(src)
+
 /obj/item/storage/medicomp/update_icon()
 	if(!length(contents))
 		icon_state = "medicomp_open"

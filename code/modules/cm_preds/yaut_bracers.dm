@@ -1178,6 +1178,42 @@
 	user.put_in_active_hand(O)
 	playsound(src, 'sound/machines/click.ogg', 15, 1)
 	return TRUE
+
+/obj/item/clothing/gloves/yautja/hunter/verb/human_injectors()
+	set name = "Create Human Stabilising Crystal"
+	set category = "Yautja.Utility"
+	set desc = "Create a focus crystal to stabilize humans."
+	set src in usr
+	. = human_injectors_internal(usr, FALSE)
+
+/obj/item/clothing/gloves/yautja/hunter/proc/human_injectors_internal(mob/user, forced = FALSE)
+	if(user.is_mob_incapacitated())
+		return FALSE
+
+	. = check_random_function(user, forced)
+	if(.)
+		return
+
+	if(user.get_active_hand())
+		to_chat(user, SPAN_WARNING("Your active hand must be empty!"))
+		return FALSE
+
+	if(TIMER_COOLDOWN_CHECK(src, YAUTJA_CREATE_CRYSTAL_COOLDOWN))
+		var/remaining_time = DisplayTimeText(S_TIMER_COOLDOWN_TIMELEFT(src, YAUTJA_CREATE_CRYSTAL_COOLDOWN))
+		to_chat(user, SPAN_WARNING("You recently synthesized a stabilising crystal. A new crystal will be available in [remaining_time]."))
+		return FALSE
+
+	if(!drain_power(user, 400))
+		return FALSE
+
+	S_TIMER_COOLDOWN_START(src, YAUTJA_CREATE_CRYSTAL_COOLDOWN, 2 MINUTES)
+
+	to_chat(user, SPAN_NOTICE("You feel a faint hiss and a crystalline injector drops into your hand."))
+	var/obj/item/reagent_container/hypospray/autoinjector/yautja/thrall/O = new(user)
+	user.put_in_active_hand(O)
+	playsound(src, 'sound/machines/click.ogg', 15, 1)
+	return TRUE
+
 #undef YAUTJA_CREATE_CRYSTAL_COOLDOWN
 
 /obj/item/clothing/gloves/yautja/hunter/verb/healing_capsule()

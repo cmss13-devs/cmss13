@@ -143,7 +143,7 @@ GLOBAL_LIST_INIT(cm_vending_thrall, list(
 
 GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 		list("Blooded Equipment", 0, null, null, null),
-		list("Blooded Equipment", 0, list(/obj/item/device/thrall_teleporter, /obj/item/storage/medicomp/full), MARINE_CAN_BUY_KIT, VENDOR_ITEM_REGULAR),
+		list("Blooded Equipment", 0, list(/obj/item/device/thrall_teleporter, /obj/item/storage/medicomp/thrall), MARINE_CAN_BUY_KIT, VENDOR_ITEM_REGULAR),
 
 		list("Blooded Bracer Material (CHOOSE 1)", 0, null, null, null),
 		list("Ebony", 0, list(/obj/item/clothing/gloves/yautja/hunter/bloodedthrall, /obj/item/bracer_attachments/wristblades, /obj/item/bracer_attachments/wristblades), MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_RECOMMENDED),

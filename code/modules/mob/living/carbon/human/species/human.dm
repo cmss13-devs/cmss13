@@ -127,6 +127,8 @@
 /datum/species/human/hero/thrall
 	name = "Thrall"
 	name_plural = "Thralls"
+	pain_type = /datum/pain/yautja
+	stamina_type = /datum/stamina/none
 	flags = HAS_SKIN_TONE|HAS_LIPS|HAS_UNDERWEAR|HAS_HARDCRIT|HAS_SKIN_COLOR|NO_SHRAPNEL
 	mob_inherent_traits = list(
 		TRAIT_DEXTROUS,
@@ -144,8 +146,8 @@
 	)
 
 /datum/species/human/hero/thrall/handle_post_spawn(mob/living/carbon/human/thrall)
-	thrall.universal_understand = FALSE
-	return ..()
+	thrall.universal_understand = TRUE
+	thrall.status_flags |= NO_PERMANENT_DAMAGE
 
 /datum/species/human/hero/thrall/handle_death(mob/living/carbon/human/thrall)
 	GLOB.yautja_mob_list -= thrall

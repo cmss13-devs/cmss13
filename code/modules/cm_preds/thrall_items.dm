@@ -160,6 +160,9 @@
 
 /obj/item/storage/box/bracer/fill_preset_inventory()
 	new /obj/item/clothing/gloves/yautja/thrall(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/yautja/thrall(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/yautja/thrall(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/yautja/thrall(src)
 
 ///Relay beacon for blooded thralls, only capable of teleporting back to the Yautja Ship
 /obj/item/device/thrall_teleporter

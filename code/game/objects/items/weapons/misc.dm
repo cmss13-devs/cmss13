@@ -108,7 +108,6 @@
 	shield_flags = CAN_BLOCK_POUNCE
 	w_class = SIZE_MASSIVE
 	embeddable = FALSE
-	flags_item = ADJACENT_CLICK_DELAY
 	attack_verb = list("thwacked", "smacked")
 	attack_speed = 1 SECONDS
 	shield_type = SHIELD_ABSOLUTE
@@ -129,7 +128,6 @@
 	flags_equip_slot = NO_FLAGS
 	force = MELEE_FORCE_TIER_4
 	throwforce = 100 //Does high damage but can't be spammed
-	flags_item = ADJACENT_CLICK_DELAY
 	sharp = IS_SHARP_ITEM_SIMPLE
 	embeddable = FALSE
 	w_class = SIZE_MASSIVE

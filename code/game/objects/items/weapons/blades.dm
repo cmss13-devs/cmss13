@@ -411,7 +411,6 @@
 	force = MELEE_FORCE_TIER_4
 	throwforce = MELEE_FORCE_TIER_5
 	flags_atom = QUICK_DRAWABLE
-	flags_item = ADJACENT_CLICK_DELAY
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	sharp = IS_SHARP_ITEM_ACCURATE
 	edge = TRUE

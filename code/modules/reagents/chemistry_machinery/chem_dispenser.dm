@@ -196,7 +196,7 @@
 
 				current_reagent.add_reagent(reagent_name, min(amount, chem_storage.energy * 10, space))
 				if(reagent_name in no_cost_reagents)
-					chem_storage.energy = 0
+					return
 				else
 					chem_storage.energy = max(chem_storage.energy - min(amount, chem_storage.energy * 10, space) / 10, 0)
 

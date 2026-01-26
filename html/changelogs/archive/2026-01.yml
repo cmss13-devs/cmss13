@@ -271,3 +271,97 @@
       office room is now the entryway with the security desk.
   zzzmike:
   - bugfix: hijack timer will not reset if second dropship is hijacked
+2026-01-23:
+  FourkhanDaKhan:
+  - rscadd: Re-adds the tacmap popup window.
+  Killfish:
+  - rscadd: Added Hive Stat Modifiers, allowing increases or decreases to certain
+      stats of all Xenos in a specific Hive.
+  - balance: Xenos belonging to the Forsaken Hive have increased stats pertaining
+      to combat. Be afraid of them.
+  - rscdel: Removed a few long-unused relics from the Xenomorph Maturation era.
+  Nihisohel:
+  - rscadd: You can now attach helmet covers as real accessories, not as a helmet
+      garb, on your helmets
+  - code_imp: 'NOTE: This does not support non-marine parent helmets (E.G. Riot helmet)'
+  - bugfix: You can take the essential fireteam utilities with either specialization
+      as the FTL now
+  - bugfix: XOs can also take either specialization kit with the whistle now
+  - bugfix: The action button for using the whistle is now shown when attached on
+      the uniform
+  - code_imp: Some minor backend for UI_action_buttons for accessories
+  - spellcheck: Switches UK specialisation to US specialization wording introduced
+      from trench whistles
+  Puckaboo2:
+  - spellcheck: Removes extra spaces between punctuation.
+  - spellcheck: Lots of spellchecks.
+  - soundadd: Adds The Marine's Hymn to Marine Major endgame tracks.
+  - bugfix: Helmets despawn like armors during the med challenge tutorial.
+  - spellcheck: '''Resistible'', multiple'', ''multiplied'', and ''inheritable'' are
+      no longer misspelled anywhere, among other words.'
+  Stakeyng Drathek:
+  - qol: added 40 more say/picksay/me bind slots (60 total)
+  - qol: added 10 more options per picksay (30 total)
+  - qol: limited the amount of characters per emote and picksay option to 256
+  - bugfix: Fixed custom picksays not displaying the right mode when loading existing
+      bindings
+  Unknownity:
+  - balance: Whiskey Outpost now supports roundstart Queens. Simply ready up while
+      having the Queen job preference set to high. You will spawn in a cave, providing
+      ovi support to xenos until 1:00 ingame hour time after which you can join the
+      hive with the final assault. You are also able to evolve into a Queen if nobody
+      decides to become one roundstart.
+  - balance: Burrowers in Whiskey Outpost can burrow again while still be able to
+      make tunnels, in exchange most of the bunker inside locations have been reinforced
+      against xeno tunnels.
+  - balance: Whiskey Outpost xeno waves have been modified to allow sentinels, more
+      hivelords, early drones and low amount of early ravagers and boilers. Wave 14
+      also grants xenos perma tacmap with humans visible.
+  - balance: Xenomorphs in Whiskey Outpost are now able to rest, avoiding bodyblock
+      issues and being able to passively heal, Reminder you don't need to die for
+      the next wave to progress.
+  - balance: Deevolution is now disabled in Whiskey Outpost.
+  - balance: Advanced Laser Designators found in Whiskey Outpost now provide sound
+      and blinking laser warnings to its CAS and Mortar airstrikes.
+  - balance: M56Ds on WO have had their AP decreased to 25 from 50. Removed some of
+      them placed on the map too.
+  - balance: Removed most of the starter Mortar incendiary shell supply in WO, replaced
+      them with frag shells.
+  - rscadd: Added crit and dead threshold increase gamemode modifier and added it
+      to WO. Humans now die at -150 health, getting extra 50 health. They now also
+      go into hard crit at -100 health. previously from -50, so you can stay awake
+      before then if you are on pain meds.
+  - rscadd: Added a gamemode modifier that disables Working Joes from spawning entirely,
+      currently only enabled on WO.
+  - rscadd: The Whiskey Outpost Combat Reporter now has access to the broadcasting
+      camera and portable fax backpack, check your closet! There's now also a television
+      outside medbay in WO.
+  - rscadd: Comtechs now have their own vendors in Whiskey Outpost, found in the Bunker
+      in their own special room and in Pillbox Beer. In exchange they lose 1 full
+      construction pouch of mats.
+  - rscadd: Added variations of Autodocs and Sleepers that are already fully upgraded,
+      these have been placed on Whiskey Outpost.
+  - rscadd: Added RecVendors also known as Walkman Vendors in Whiskey Outpost.
+  - rscadd: Renamed area_notunnel flag to area_noburrow, added a new area flag using
+      the old name used for disallowing the creation of xeno tunnels.
+  - bugfix: Fixed some grass tiles in Whiskey Outpost and added APCs to two areas
+      where they were missing and needed power.
+  - bugfix: Fixed Destination Taggers that are used in Whiskey Outpost. PSA, Wrap
+      crates with the wrappers and use the tagger on it then use the delivery chute!
+  - bugfix: Fixes ghosts/observers being able to health scan xenomorphs and simple
+      mobs.
+  - refactor: Refactored health_threshold_crit and dead code, merges xeno crit_health
+      into health threshold_dead.
+  - ui: Tweaked sleeper UI to handle more chems.
+  larentoun:
+  - bugfix: Xenomorphs with Seethrough Mob enabled (only Queen has it right now) now
+      will properly show wounds from damage on their icons.
+  ori-disillusion-mirnov:
+  - bugfix: ridden runners cannot ventcrawl
+2026-01-24:
+  MistChristmas:
+  - bugfix: Decon-ing an APC and reconstructing it elsewhere no longer stops it from
+      charging
+  - code_imp: Terminals are now somewhat fluff and not a powernet object.
+  Red-byte3D:
+  - balance: Dirlock now has slowdown again

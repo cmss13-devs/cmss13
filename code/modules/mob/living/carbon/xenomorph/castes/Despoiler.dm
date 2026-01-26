@@ -56,7 +56,7 @@
 	)
 
 	icon_xeno = 'icons/mob/xenos/castes/tier_3/despoiler.dmi'
-	icon_xenonid = 'icons/mob/xenonids/castes/tier_3/praetorian.dmi' // if someone makes xenoid sprites in future feel free to
+	icon_xenonid = null // if someone makes xenoid sprites in future feel free to
 	acid_overlay = "Despoiler-Spit"
 
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'

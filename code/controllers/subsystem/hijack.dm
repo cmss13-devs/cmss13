@@ -530,6 +530,7 @@ SUBSYSTEM_DEF(hijack)
 	set waitfor = FALSE
 
 	sd_detonated = TRUE
+	SSticker?.roundend_check_paused = TRUE
 
 	var/list/ship_zs = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
 	var/list/ground_zs = SSmapping.levels_by_trait(ZTRAIT_GROUND)
@@ -600,10 +601,11 @@ SUBSYSTEM_DEF(hijack)
 
 
 	sleep(0.5 SECONDS)
-	if(SSticker.mode)
-		SSticker.mode.check_win()
 
-	if(!SSticker.mode) //Just a safety, just in case a mode isn't running, somehow.
+	SSticker?.roundend_check_paused = FALSE
+	if(SSticker?.mode)
+		SSticker.mode.check_win()
+	else //Just a safety, just in case a mode isn't running, somehow.
 		to_world(SPAN_ROUNDBODY("Resetting in 30 seconds!"))
 		sleep(30 SECONDS)
 		log_game("Rebooting due to nuclear detonation.")

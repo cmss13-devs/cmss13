@@ -1,4 +1,21 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/bed/chair/bolted{
+	dir = 4;
+	pixel_x = 7;
+	pixel_y = -6;
+	buckling_x = 7;
+	buckling_y = -6
+	},
+/turf/open/floor/diner/white_red,
+/area/adminlevel/ert_station/pizza_station)
+"ac" = (
+/turf/open/floor/diner/white_red,
+/area/adminlevel/ert_station/pizza_station)
+"ad" = (
+/obj/structure/bed/sofa/diner_n_s,
+/turf/open/floor/diner/white_red,
+/area/adminlevel/ert_station/pizza_station)
 "ae" = (
 /obj/structure/machinery/door_control{
 	id = "kitchen_pizza_time";
@@ -26,7 +43,20 @@
 /obj/item/spacecash/c500,
 /obj/item/spacecash/c500,
 /obj/item/spacecash/c500,
-/turf/open/floor/cmo,
+/turf/open/floor/diner/white_blue,
+/area/adminlevel/ert_station/pizza_station)
+"ag" = (
+/obj/structure/sign/safety/hazard{
+	pixel_x = 15;
+	pixel_y = -32
+	},
+/obj/structure/sign/safety/airlock{
+	pixel_y = -32
+	},
+/obj/structure/prop/souto_land/streamer{
+	dir = 9
+	},
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "ah" = (
 /obj/structure/prop/invuln{
@@ -45,15 +75,48 @@
 	},
 /turf/open/floor/almayer_hull,
 /area/adminlevel/ert_station/pizza_station)
-"am" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/barricade/handrail/pizza{
+"ai" = (
+/obj/structure/bed/chair/bolted{
 	dir = 4;
-	pixel_y = -3
+	pixel_x = 7;
+	buckling_x = 7
 	},
-/obj/structure/barricade/handrail/pizza{
-	pixel_y = -3
+/obj/structure/sign/safety/hazard{
+	pixel_x = 15;
+	pixel_y = -32
 	},
+/obj/structure/sign/safety/airlock{
+	pixel_y = -32
+	},
+/obj/structure/prop/souto_land/streamer{
+	dir = 6
+	},
+/turf/open/floor/diner/white_red,
+/area/adminlevel/ert_station/pizza_station)
+"aj" = (
+/obj/structure/prop/souto_land/streamer{
+	dir = 6
+	},
+/obj/structure/surface/table/reinforced/diner_white,
+/obj/item/tool/kitchen/tray{
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/snacks/sliceable/pizza/meatpizza{
+	pixel_y = 5
+	},
+/turf/open/floor/diner/white_red,
+/area/adminlevel/ert_station/pizza_station)
+"ak" = (
+/obj/structure/prop/souto_land/streamer{
+	dir = 9
+	},
+/obj/structure/surface/table/reinforced/diner_white,
+/obj/item/reagent_container/food/drinks/cans/souto/diet/classic{
+	pixel_y = 8
+	},
+/turf/open/floor/diner/white_red,
+/area/adminlevel/ert_station/pizza_station)
+"am" = (
 /obj/item/reagent_container/food/drinks/cans/souto/cherry{
 	pixel_x = -8;
 	layer = 2.97
@@ -80,7 +143,8 @@
 	layer = 4.2;
 	pixel_y = 36
 	},
-/turf/open/floor/prison/kitchen,
+/obj/structure/surface/table/reinforced/diner_white,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "an" = (
 /obj/structure/bed/chair/bolted{
@@ -108,14 +172,14 @@
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
 	},
-/turf/open/floor/prison/kitchen,
+/turf/open/floor/diner/white_black,
 /area/adminlevel/ert_station/pizza_station)
 "aA" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/microwave{
 	pixel_y = 8
 	},
-/turf/open/floor/prison/kitchen,
+/turf/open/floor/diner/white_blue,
 /area/adminlevel/ert_station/pizza_station)
 "aD" = (
 /obj/structure/sign/safety/nonpress_0g{
@@ -208,12 +272,12 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/turf/open/floor/prison/kitchen,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "bT" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/recharger,
-/turf/open/floor/cmo,
+/turf/open/floor/diner/white_blue,
 /area/adminlevel/ert_station/pizza_station)
 "bU" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -248,15 +312,15 @@
 /obj/item/reagent_container/food/condiment/peppermill{
 	pixel_x = 4
 	},
-/turf/open/floor/cmo,
+/turf/open/floor/diner/white_blue,
 /area/adminlevel/ert_station/pizza_station)
 "cE" = (
-/obj/structure/surface/table/reinforced/cloth,
 /obj/item/trash/ceramic_plate{
 	pixel_y = 4;
 	pixel_x = -2
 	},
-/turf/open/floor/redyellowfull,
+/obj/structure/surface/table/reinforced/diner_white,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "cI" = (
 /obj/structure/disposalpipe/segment{
@@ -265,7 +329,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 9
 	},
-/turf/open/floor/blueyellowfull,
+/turf/open/floor/diner/red_yellow,
 /area/adminlevel/ert_station/pizza_station)
 "cK" = (
 /obj/effect/decal/warning_stripes{
@@ -288,20 +352,6 @@
 	},
 /turf/open/floor/prison,
 /area/adminlevel/ert_station/pizza_station)
-"cO" = (
-/obj/structure/barricade/handrail/pizza{
-	dir = 8;
-	pixel_y = -3
-	},
-/obj/structure/barricade/handrail/pizza{
-	dir = 1;
-	pixel_y = 12
-	},
-/obj/structure/prop/souto_land/streamer{
-	dir = 6
-	},
-/turf/open/floor/redyellowfull,
-/area/adminlevel/ert_station/pizza_station)
 "cP" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/trash/ceramic_plate{
@@ -316,7 +366,7 @@
 /obj/item/trash/ceramic_plate{
 	pixel_y = 14
 	},
-/turf/open/floor/prison/kitchen,
+/turf/open/floor/diner/white_black,
 /area/adminlevel/ert_station/pizza_station)
 "dc" = (
 /obj/structure/disposalpipe/segment{
@@ -328,13 +378,10 @@
 /turf/open/floor/prison/red/east,
 /area/adminlevel/ert_station/pizza_station)
 "dh" = (
-/obj/structure/surface/table/reinforced/cloth,
-/obj/item/reagent_container/food/drinks/cans/souto/diet/cranberry{
-	pixel_y = 20;
-	layer = 3.03;
-	pixel_x = 4
+/obj/structure/bed/sofa/diner_n_s{
+	dir = 1
 	},
-/turf/open/floor/redyellowfull,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "dS" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
@@ -347,13 +394,13 @@
 /turf/open/floor/almayer/test_floor4,
 /area/adminlevel/ert_station/pizza_station)
 "ec" = (
-/obj/structure/surface/table/reinforced/cloth,
 /obj/item/reagent_container/food/snacks/birthdaycakeslice,
 /obj/item/reagent_container/food/drinks/cans/dr_gibb{
 	pixel_x = -8;
 	pixel_y = -6
 	},
-/turf/open/floor/redyellowfull,
+/obj/structure/surface/table/reinforced/diner_red,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "ef" = (
 /obj/structure/surface/rack,
@@ -365,10 +412,9 @@
 	pixel_x = 1;
 	pixel_y = -5
 	},
-/turf/open/floor/cmo,
+/turf/open/floor/diner/white_blue,
 /area/adminlevel/ert_station/pizza_station)
 "eh" = (
-/obj/structure/surface/table/reinforced/cloth,
 /obj/item/reagent_container/food/snacks/omelette{
 	pixel_y = 2;
 	pixel_x = 1
@@ -385,7 +431,8 @@
 	pixel_y = 13;
 	pixel_x = 5
 	},
-/turf/open/floor/redyellowfull,
+/obj/structure/surface/table/reinforced/diner_white,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "ei" = (
 /obj/structure/disposalpipe/segment,
@@ -411,7 +458,7 @@
 	pixel_x = -11;
 	pixel_y = -1
 	},
-/turf/open/floor/cmo,
+/turf/open/floor/diner/white_blue,
 /area/adminlevel/ert_station/pizza_station)
 "eI" = (
 /obj/structure/platform/metal/kutjevo_smooth,
@@ -437,7 +484,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/turf/open/floor/cmo,
+/turf/open/floor/diner/white_blue,
 /area/adminlevel/ert_station/pizza_station)
 "eW" = (
 /turf/open/mars_dirt/mars_cave_11,
@@ -451,7 +498,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/turf/open/floor/prison/kitchen,
+/turf/open/floor/diner/white_black,
 /area/adminlevel/ert_station/pizza_station)
 "fj" = (
 /obj/structure/closet/firecloset/full,
@@ -475,7 +522,6 @@
 /turf/open/space,
 /area/space)
 "fN" = (
-/obj/structure/surface/table/reinforced/cloth,
 /obj/item/reagent_container/food/drinks/cans/souto/peach{
 	pixel_y = 14;
 	pixel_x = -4
@@ -484,16 +530,14 @@
 	pixel_y = 9
 	},
 /obj/structure/machinery/light,
-/turf/open/floor/redyellowfull,
+/obj/structure/surface/table/reinforced/diner_red,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "fO" = (
 /obj/structure/platform_decoration/metal/kutjevo/east,
 /turf/open/space/basic,
 /area/space)
 "gb" = (
-/obj/structure/barricade/handrail/pizza{
-	pixel_y = -3
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 8;
 	icon_state = "pipe-c"
@@ -501,13 +545,15 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 9
 	},
-/turf/open/floor/blueyellowfull,
+/turf/open/floor/diner/red_yellow,
+/area/adminlevel/ert_station/pizza_station)
+"gd" = (
+/obj/structure/prop/souto_land/streamer{
+	dir = 6
+	},
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "gu" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/barricade/handrail/pizza{
-	pixel_y = -3
-	},
 /obj/item/storage/box/drinkingglasses{
 	layer = 2.97;
 	pixel_x = 12
@@ -522,15 +568,13 @@
 	pixel_x = -2;
 	layer = 2.97
 	},
-/turf/open/floor/prison/kitchen,
+/obj/structure/surface/table/reinforced/diner_white,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "gy" = (
-/obj/structure/barricade/handrail/pizza{
-	dir = 8
-	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/blueyellowfull,
+/turf/open/floor/diner/red_yellow,
 /area/adminlevel/ert_station/pizza_station)
 "gU" = (
 /obj/effect/decal/warning_stripes{
@@ -552,18 +596,18 @@
 /obj/structure/sign/safety/restrictedarea{
 	pixel_y = 32
 	},
-/turf/open/floor/prison/kitchen,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "ha" = (
 /obj/structure/platform_decoration/metal/kutjevo/north,
 /turf/open/space,
 /area/space)
 "hb" = (
-/obj/structure/barricade/handrail/pizza{
-	dir = 1;
-	pixel_y = 12
+/obj/structure/bed/chair/bolted{
+	pixel_y = -1;
+	buckling_y = -1
 	},
-/turf/open/floor/redyellowfull,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "hc" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
@@ -585,15 +629,6 @@
 /turf/open/floor/prison/greenblue/north,
 /area/adminlevel/ert_station/pizza_station)
 "hR" = (
-/obj/structure/barricade/handrail/pizza{
-	dir = 8;
-	pixel_y = -3
-	},
-/obj/structure/bed/chair/bolted{
-	dir = 4;
-	pixel_x = 7;
-	buckling_x = 7
-	},
 /obj/structure/sign/safety/hazard{
 	pixel_x = 15;
 	pixel_y = -32
@@ -604,7 +639,10 @@
 /obj/structure/prop/souto_land/streamer{
 	dir = 6
 	},
-/turf/open/floor/redyellowfull,
+/obj/structure/bed/sofa/diner_n_s{
+	dir = 1
+	},
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "hX" = (
 /obj/structure/bed/chair/bolted{
@@ -614,7 +652,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor/redyellowfull,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "ic" = (
 /obj/item/trash/plate{
@@ -629,10 +667,6 @@
 /obj/item/trash/plate{
 	pixel_y = 10
 	},
-/obj/structure/surface/table/almayer,
-/obj/structure/barricade/handrail/pizza{
-	pixel_y = -3
-	},
 /obj/item/reagent_container/food/drinks/drinkingglass{
 	pixel_y = 14;
 	pixel_x = 11
@@ -641,7 +675,8 @@
 	pixel_y = 9;
 	pixel_x = 12
 	},
-/turf/open/floor/prison/kitchen,
+/obj/structure/surface/table/reinforced/diner_white,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "im" = (
 /obj/structure/bed/chair/janicart,
@@ -714,12 +749,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/pizza_station)
-"jo" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/turf/open/floor/cmo,
-/area/adminlevel/ert_station/pizza_station)
 "jq" = (
 /obj/structure/sink{
 	dir = 4;
@@ -737,16 +766,6 @@
 	pixel_y = 13
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/adminlevel/ert_station/pizza_station)
-"jx" = (
-/obj/structure/bed/chair/bolted{
-	dir = 4;
-	pixel_x = 7;
-	pixel_y = -6;
-	buckling_x = 7;
-	buckling_y = -6
-	},
-/turf/open/floor/redyellowfull,
 /area/adminlevel/ert_station/pizza_station)
 "jy" = (
 /obj/structure/surface/table/almayer,
@@ -772,22 +791,13 @@
 /turf/open/mars/mars_cave_10,
 /area/space)
 "jT" = (
-/obj/structure/barricade/handrail/pizza{
-	pixel_y = -3
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/turf/open/floor/blueyellowfull,
-/area/adminlevel/ert_station/pizza_station)
-"jV" = (
-/obj/structure/barricade/handrail/pizza{
-	dir = 8
-	},
-/turf/open/floor/redyellowfull,
+/turf/open/floor/diner/red_yellow,
 /area/adminlevel/ert_station/pizza_station)
 "kz" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
@@ -798,14 +808,11 @@
 /turf/open/floor/almayer/test_floor4,
 /area/adminlevel/ert_station/pizza_station)
 "kW" = (
-/obj/structure/barricade/handrail/pizza{
-	dir = 8
-	},
 /obj/structure/prop/souto_land/streamer{
 	dir = 1;
 	pixel_y = 9
 	},
-/turf/open/floor/redyellowfull,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "la" = (
 /obj/structure/blocker/invisible_wall,
@@ -823,10 +830,6 @@
 	},
 /area/adminlevel/ert_station/pizza_station)
 "lv" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/barricade/handrail/pizza{
-	pixel_y = -3
-	},
 /obj/item/reagent_container/food/drinks/drinkingglass/cola{
 	pixel_y = 8;
 	pixel_x = -2
@@ -835,10 +838,10 @@
 	pixel_y = 5;
 	pixel_x = -11
 	},
-/turf/open/floor/prison/kitchen,
+/obj/structure/surface/table/reinforced/diner_white,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "lw" = (
-/obj/structure/surface/table/reinforced/cloth,
 /obj/item/reagent_container/food/condiment/coldsauce{
 	pixel_y = 22;
 	pixel_x = -10
@@ -853,7 +856,8 @@
 /obj/item/clothing/mask/cigarette{
 	pixel_y = 8
 	},
-/turf/open/floor/redyellowfull,
+/obj/structure/surface/table/reinforced/diner_red,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "lx" = (
 /obj/structure/platform/metal/kutjevo_smooth/north,
@@ -866,7 +870,6 @@
 /turf/open/space/basic,
 /area/space)
 "ly" = (
-/obj/structure/surface/table/reinforced/cloth,
 /obj/item/reagent_container/food/drinks/cans/souto/grape{
 	pixel_y = 16;
 	pixel_x = 9
@@ -875,17 +878,10 @@
 	pixel_y = 12;
 	pixel_x = 5
 	},
-/turf/open/floor/redyellowfull,
+/obj/structure/surface/table/reinforced/diner_red,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "lB" = (
-/obj/structure/barricade/handrail/pizza{
-	dir = 8;
-	pixel_y = -3
-	},
-/obj/structure/barricade/handrail/pizza{
-	dir = 1;
-	pixel_y = 12
-	},
 /obj/item/storage/briefcase/stowaway{
 	pixel_y = 11;
 	layer = 4.11
@@ -893,14 +889,13 @@
 /obj/structure/prop/souto_land/streamer{
 	dir = 6
 	},
-/turf/open/floor/redyellowfull,
+/obj/structure/bed/sofa/diner_n_s,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "lE" = (
 /obj/structure/machinery/vending/dinnerware,
-/obj/structure/barricade/handrail/pizza{
-	pixel_y = -3
-	},
-/turf/open/floor/prison/kitchen,
+/obj/structure/surface/table/reinforced/diner_white,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "lH" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
@@ -929,15 +924,15 @@
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_x = -30
 	},
-/turf/open/floor/prison/bright_clean2,
+/turf/open/floor/diner/white_black,
 /area/adminlevel/ert_station/pizza_station)
 "ma" = (
-/obj/structure/surface/table/reinforced/cloth,
 /obj/item/storage/donut_box{
 	pixel_y = 10;
 	pixel_x = 1
 	},
-/turf/open/floor/redyellowfull,
+/obj/structure/surface/table/reinforced/diner_white,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "me" = (
 /turf/open/mars_dirt/mars_cave_8,
@@ -962,14 +957,6 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station/pizza_station)
 "mk" = (
-/obj/structure/barricade/handrail/pizza{
-	dir = 4;
-	pixel_y = -3
-	},
-/obj/structure/barricade/handrail/pizza{
-	dir = 4;
-	pixel_y = 16
-	},
 /obj/structure/machinery/vending/snack{
 	layer = 4.15;
 	pixel_y = 3
@@ -977,10 +964,6 @@
 /turf/open/floor/prison/bright_clean2,
 /area/adminlevel/ert_station/pizza_station)
 "mt" = (
-/obj/structure/barricade/handrail/pizza{
-	dir = 8;
-	pixel_y = -3
-	},
 /obj/structure/bed/chair/bolted{
 	dir = 4;
 	pixel_x = 7;
@@ -989,7 +972,7 @@
 /obj/structure/prop/souto_land/streamer{
 	dir = 6
 	},
-/turf/open/floor/redyellowfull,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "mP" = (
 /obj/structure/disposalpipe/segment,
@@ -997,7 +980,7 @@
 /obj/structure/sign/safety/fridge{
 	pixel_x = 32
 	},
-/turf/open/floor/prison/bright_clean2,
+/turf/open/floor/diner/white_black,
 /area/adminlevel/ert_station/pizza_station)
 "nf" = (
 /turf/closed/shuttle/ert{
@@ -1022,7 +1005,7 @@
 /obj/item/pizzabox{
 	pixel_y = 14
 	},
-/turf/open/floor/cmo,
+/turf/open/floor/diner/white_blue,
 /area/adminlevel/ert_station/pizza_station)
 "ny" = (
 /obj/structure/closet/secure_closet/fridge/fish/stock,
@@ -1032,10 +1015,6 @@
 /turf/open/floor/prison/greenblue,
 /area/adminlevel/ert_station/pizza_station)
 "nA" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/barricade/handrail/pizza{
-	pixel_y = -3
-	},
 /obj/item/reagent_container/food/drinks/cans/tonic{
 	pixel_x = -15;
 	pixel_y = 10
@@ -1050,10 +1029,11 @@
 	pixel_x = 3;
 	layer = 2.97
 	},
-/turf/open/floor/prison/kitchen,
+/obj/structure/surface/table/reinforced/diner_white,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "nB" = (
-/turf/open/floor/cmo,
+/turf/open/floor/diner/white_blue,
 /area/adminlevel/ert_station/pizza_station)
 "nK" = (
 /obj/structure/surface/table/reinforced,
@@ -1067,7 +1047,7 @@
 /obj/structure/machinery/firealarm{
 	pixel_x = -24
 	},
-/turf/open/floor/cmo,
+/turf/open/floor/diner/white_blue,
 /area/adminlevel/ert_station/pizza_station)
 "nU" = (
 /obj/structure/prop/souto_land/streamer{
@@ -1086,7 +1066,7 @@
 	buckling_x = -7
 	},
 /obj/structure/machinery/light,
-/turf/open/floor/redyellowfull,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "oh" = (
 /obj/structure/pipes/standard/manifold/fourway/hidden/supply,
@@ -1097,7 +1077,7 @@
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 8
 	},
-/turf/open/floor/prison/bright_clean2,
+/turf/open/floor/diner/white_black,
 /area/adminlevel/ert_station/pizza_station)
 "oo" = (
 /obj/structure/closet/emcloset,
@@ -1107,7 +1087,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 9
 	},
-/turf/open/floor/cmo,
+/turf/open/floor/diner/white_blue,
 /area/adminlevel/ert_station/pizza_station)
 "oy" = (
 /obj/structure/bedsheetbin{
@@ -1175,7 +1155,7 @@
 	pixel_x = -7;
 	buckling_x = -7
 	},
-/turf/open/floor/redyellowfull,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "pT" = (
 /obj/structure/closet/crate/freezer/rations,
@@ -1230,11 +1210,12 @@
 /turf/open/space/basic,
 /area/space)
 "qs" = (
-/obj/structure/surface/table/reinforced/cloth,
+/obj/structure/surface/table/reinforced/diner_white,
 /obj/item/reagent_container/food/drinks/cans/souto/diet/classic{
-	pixel_x = -2
+	pixel_x = 4;
+	pixel_y = 11
 	},
-/turf/open/floor/redyellowfull,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "qt" = (
 /turf/open/mars_dirt/mars_cave_6,
@@ -1243,14 +1224,14 @@
 /obj/structure/surface/table/reinforced,
 /obj/item/book/manual/chef_recipes,
 /obj/item/clothing/head/chefhat,
-/turf/open/floor/cmo,
+/turf/open/floor/diner/white_blue,
 /area/adminlevel/ert_station/pizza_station)
 "qy" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/juicer{
 	pixel_y = 9
 	},
-/turf/open/floor/cmo,
+/turf/open/floor/diner/white_blue,
 /area/adminlevel/ert_station/pizza_station)
 "qA" = (
 /obj/effect/decal/warning_stripes{
@@ -1260,12 +1241,9 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/turf/open/floor/prison/kitchen,
+/turf/open/floor/diner/white_black,
 /area/adminlevel/ert_station/pizza_station)
 "qU" = (
-/obj/structure/barricade/handrail/pizza{
-	dir = 8
-	},
 /obj/structure/bed/chair/bolted{
 	dir = 4;
 	pixel_x = 7;
@@ -1274,14 +1252,13 @@
 /obj/structure/machinery/alarm{
 	pixel_y = 25
 	},
-/turf/open/floor/redyellowfull,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "qX" = (
 /obj/structure/platform_decoration/metal/kutjevo/west,
 /turf/open/space/basic,
 /area/space)
 "rj" = (
-/obj/structure/surface/table/reinforced/cloth,
 /obj/item/trash/ceramic_plate{
 	pixel_y = 1;
 	pixel_x = 2
@@ -1298,7 +1275,8 @@
 	pixel_x = 16;
 	dir = 1
 	},
-/turf/open/floor/redyellowfull,
+/obj/structure/surface/table/reinforced/diner_white,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "rk" = (
 /obj/structure/platform_decoration/metal/kutjevo/west,
@@ -1311,7 +1289,7 @@
 	pixel_y = 12;
 	buckling_y = 12
 	},
-/turf/open/floor/redyellowfull,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "rK" = (
 /obj/structure/surface/table/almayer,
@@ -1359,12 +1337,12 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 6
 	},
-/turf/open/floor/prison/kitchen,
+/turf/open/floor/diner/white_black,
 /area/adminlevel/ert_station/pizza_station)
 "sp" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/tool/kitchen/pizzacutter,
-/turf/open/floor/prison/kitchen,
+/turf/open/floor/diner/white_black,
 /area/adminlevel/ert_station/pizza_station)
 "sx" = (
 /obj/structure/disposalpipe/segment,
@@ -1375,7 +1353,6 @@
 /turf/open/mars_dirt/mars_cave_7,
 /area/space)
 "sI" = (
-/obj/structure/surface/table/reinforced/cloth,
 /obj/item/tool/kitchen/tray{
 	pixel_y = 13;
 	pixel_x = 16
@@ -1392,14 +1369,15 @@
 	pixel_y = 3;
 	pixel_x = -1
 	},
-/turf/open/floor/redyellowfull,
+/obj/structure/surface/table/reinforced/diner_red,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "sJ" = (
 /obj/structure/machinery/vending/ingredients,
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor/cmo,
+/turf/open/floor/diner/white_blue,
 /area/adminlevel/ert_station/pizza_station)
 "sW" = (
 /obj/structure/blocker/invisible_wall,
@@ -1417,7 +1395,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
-/turf/open/floor/prison/kitchen,
+/turf/open/floor/diner/white_black,
 /area/adminlevel/ert_station/pizza_station)
 "td" = (
 /obj/effect/decal/warning_stripes{
@@ -1432,26 +1410,6 @@
 	dir = 8
 	},
 /turf/open/floor/corsat/retrosquareslight,
-/area/adminlevel/ert_station/pizza_station)
-"tp" = (
-/obj/structure/bed/chair/bolted{
-	dir = 4;
-	pixel_y = 17;
-	pixel_x = 10;
-	buckling_y = 17;
-	buckling_x = 10
-	},
-/obj/structure/machinery/light,
-/turf/open/floor/redyellowfull,
-/area/adminlevel/ert_station/pizza_station)
-"tq" = (
-/obj/structure/disposalpipe/segment{
-	dir = 8
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/turf/open/floor/prison/kitchen,
 /area/adminlevel/ert_station/pizza_station)
 "ty" = (
 /obj/effect/decal/warning_stripes{
@@ -1468,7 +1426,6 @@
 /turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/ert_station/pizza_station)
 "tC" = (
-/obj/structure/surface/table/reinforced/cloth,
 /obj/item/reagent_container/food/condiment/peppermill{
 	pixel_x = 13;
 	pixel_y = 12
@@ -1484,7 +1441,8 @@
 	pixel_x = -1;
 	pixel_y = 9
 	},
-/turf/open/floor/redyellowfull,
+/obj/structure/surface/table/reinforced/diner_red,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "tH" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -1527,7 +1485,7 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 8
 	},
-/turf/open/floor/redyellowfull,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "ub" = (
 /obj/structure/disposalpipe/segment,
@@ -1546,7 +1504,7 @@
 /turf/open/space,
 /area/space)
 "uo" = (
-/obj/structure/window/framed/almayer/hull,
+/obj/structure/window/framed/diner/hull,
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/pizza_station)
 "uz" = (
@@ -1567,7 +1525,7 @@
 /obj/structure/machinery/processor{
 	pixel_y = 10
 	},
-/turf/open/floor/cmo,
+/turf/open/floor/diner/white_blue,
 /area/adminlevel/ert_station/pizza_station)
 "uK" = (
 /obj/structure/platform/metal/kutjevo_smooth,
@@ -1581,9 +1539,6 @@
 	},
 /turf/open/space,
 /area/space)
-"uN" = (
-/turf/open/floor/redyellowfull,
-/area/adminlevel/ert_station/pizza_station)
 "uY" = (
 /obj/structure/surface/table/almayer,
 /obj/item/storage/box/cups,
@@ -1678,7 +1633,7 @@
 	icon_state = "pipe-c"
 	},
 /obj/structure/pipes/standard/manifold/hidden/supply,
-/turf/open/floor/prison/kitchen,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "wa" = (
 /obj/structure/disposalpipe/segment{
@@ -1692,7 +1647,7 @@
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
 	},
-/turf/open/floor/prison/kitchen,
+/turf/open/floor/diner/white_black,
 /area/adminlevel/ert_station/pizza_station)
 "wb" = (
 /obj/structure/platform/metal/kutjevo_smooth,
@@ -1711,7 +1666,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor/cmo,
+/turf/open/floor/diner/white_blue,
 /area/adminlevel/ert_station/pizza_station)
 "wo" = (
 /obj/structure/bed/chair/bolted{
@@ -1730,7 +1685,6 @@
 /turf/open/floor/prison/redcorner/east,
 /area/adminlevel/ert_station/pizza_station)
 "wu" = (
-/obj/structure/surface/table/reinforced/cloth,
 /obj/item/trash/ceramic_plate{
 	pixel_y = 4;
 	pixel_x = -2
@@ -1743,7 +1697,8 @@
 	pixel_y = 6;
 	pixel_x = -1
 	},
-/turf/open/floor/redyellowfull,
+/obj/structure/surface/table/reinforced/diner_red,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "wz" = (
 /turf/open/floor/prison/red/north,
@@ -1754,14 +1709,6 @@
 /turf/open/space/basic,
 /area/space)
 "wP" = (
-/obj/structure/barricade/handrail/pizza{
-	dir = 8;
-	pixel_y = -3
-	},
-/obj/structure/barricade/handrail/pizza{
-	dir = 1;
-	pixel_y = 12
-	},
 /obj/structure/prop/souto_land/streamer{
 	dir = 6
 	},
@@ -1781,7 +1728,7 @@
 	pixel_x = 2;
 	pixel_y = 6
 	},
-/turf/open/floor/redyellowfull,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "wQ" = (
 /obj/structure/disposalpipe/segment{
@@ -1807,7 +1754,6 @@
 /turf/open/space/basic,
 /area/space)
 "xh" = (
-/obj/structure/surface/table/reinforced/cloth,
 /obj/item/reagent_container/food/condiment/peppermill{
 	pixel_x = -10;
 	pixel_y = 12
@@ -1824,21 +1770,8 @@
 	pixel_y = 8;
 	pixel_x = 3
 	},
-/turf/open/floor/redyellowfull,
-/area/adminlevel/ert_station/pizza_station)
-"xl" = (
-/obj/structure/surface/table/reinforced/cloth,
-/obj/item/tool/kitchen/tray{
-	pixel_y = 20
-	},
-/obj/item/reagent_container/food/snacks/sliceable/pizza/meatpizza{
-	pixel_y = 20
-	},
-/obj/item/reagent_container/food/drinks/cans/beer{
-	pixel_x = 5;
-	pixel_y = 6
-	},
-/turf/open/floor/redyellowfull,
+/obj/structure/surface/table/reinforced/diner_red,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "xp" = (
 /obj/structure/platform/metal/kutjevo_smooth,
@@ -1860,7 +1793,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
-/turf/open/floor/cmo,
+/turf/open/floor/diner/white_blue,
 /area/adminlevel/ert_station/pizza_station)
 "xV" = (
 /obj/structure/pipes/vents/pump{
@@ -1869,7 +1802,6 @@
 /turf/open/floor/prison/blue_plate,
 /area/adminlevel/ert_station/pizza_station)
 "xX" = (
-/obj/structure/surface/table/reinforced/cloth,
 /obj/item/trash/plate{
 	pixel_y = 3;
 	pixel_x = 1
@@ -1877,7 +1809,8 @@
 /obj/item/reagent_container/food/snacks/mushroompizzaslice{
 	pixel_y = 4
 	},
-/turf/open/floor/redyellowfull,
+/obj/structure/surface/table/reinforced/diner_red,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "yg" = (
 /obj/structure/platform_decoration/metal/kutjevo,
@@ -1896,10 +1829,6 @@
 /turf/open/floor/prison/red/southwest,
 /area/adminlevel/ert_station/pizza_station)
 "ys" = (
-/obj/structure/barricade/handrail/pizza{
-	dir = 4;
-	pixel_y = -3
-	},
 /obj/structure/bed/chair/bolted{
 	dir = 8;
 	pixel_x = -7;
@@ -1915,13 +1844,9 @@
 /obj/structure/prop/souto_land/streamer{
 	dir = 9
 	},
-/turf/open/floor/redyellowfull,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "yE" = (
-/obj/structure/barricade/handrail/pizza{
-	pixel_y = -3
-	},
-/obj/structure/surface/table/almayer,
 /obj/item/trash/ceramic_plate{
 	pixel_y = 6
 	},
@@ -1933,7 +1858,8 @@
 	pixel_y = 15;
 	pixel_x = 2
 	},
-/turf/open/floor/prison/kitchen,
+/obj/structure/surface/table/reinforced/diner_white,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "yG" = (
 /obj/structure/pipes/vents/scrubber{
@@ -1955,7 +1881,7 @@
 	pixel_x = 32
 	},
 /obj/structure/closet/firecloset/full,
-/turf/open/floor/prison/kitchen,
+/turf/open/floor/diner/white_black,
 /area/adminlevel/ert_station/pizza_station)
 "yP" = (
 /obj/structure/surface/rack,
@@ -1971,7 +1897,7 @@
 /obj/structure/sign/safety/galley{
 	pixel_x = -17
 	},
-/turf/open/floor/prison/kitchen,
+/turf/open/floor/diner/white_black,
 /area/adminlevel/ert_station/pizza_station)
 "zh" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -1985,7 +1911,6 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station/pizza_station)
 "zl" = (
-/obj/structure/surface/table/reinforced/cloth,
 /obj/item/reagent_container/food/condiment/hotsauce/cholula{
 	pixel_y = 28;
 	pixel_x = 16
@@ -2007,13 +1932,10 @@
 	pixel_x = 3
 	},
 /obj/structure/machinery/light,
-/turf/open/floor/redyellowfull,
+/obj/structure/surface/table/reinforced/diner_red,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "zx" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/barricade/handrail/pizza{
-	pixel_y = -3
-	},
 /obj/item/trash/ceramic_plate{
 	pixel_y = 2
 	},
@@ -2026,13 +1948,10 @@
 /obj/item/trash/ceramic_plate{
 	pixel_y = 8
 	},
-/turf/open/floor/prison/kitchen,
+/obj/structure/surface/table/reinforced/diner_white,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "zz" = (
-/obj/structure/barricade/handrail/pizza{
-	dir = 4;
-	pixel_y = -3
-	},
 /obj/structure/bed/chair/bolted{
 	dir = 8;
 	pixel_x = -7;
@@ -2041,7 +1960,7 @@
 /obj/structure/prop/souto_land/streamer{
 	dir = 9
 	},
-/turf/open/floor/redyellowfull,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "zC" = (
 /obj/structure/bed/chair/bolted{
@@ -2049,7 +1968,7 @@
 	pixel_x = 7;
 	buckling_x = 7
 	},
-/turf/open/floor/redyellowfull,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "zE" = (
 /obj/structure/machinery/door_control/airlock{
@@ -2089,7 +2008,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor/cmo,
+/turf/open/floor/diner/white_blue,
 /area/adminlevel/ert_station/pizza_station)
 "Ac" = (
 /obj/structure/closet/secure_closet/fridge/dry,
@@ -2099,17 +2018,14 @@
 /obj/structure/sign/safety/galley{
 	pixel_x = -24
 	},
-/turf/open/floor/cmo,
+/turf/open/floor/diner/white_blue,
 /area/adminlevel/ert_station/pizza_station)
 "Aj" = (
-/obj/structure/barricade/handrail/pizza{
-	dir = 8
-	},
 /obj/structure/sign/safety/bathunisex{
 	pixel_x = 15;
 	pixel_y = 32
 	},
-/turf/open/floor/blueyellowfull,
+/turf/open/floor/diner/red_yellow,
 /area/adminlevel/ert_station/pizza_station)
 "Ao" = (
 /obj/structure/disposalpipe/segment{
@@ -2122,7 +2038,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/turf/open/floor/prison/kitchen,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "Au" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -2131,7 +2047,6 @@
 /turf/open/floor/prison/red/west,
 /area/adminlevel/ert_station/pizza_station)
 "Ax" = (
-/obj/structure/surface/table/reinforced/cloth,
 /obj/item/reagent_container/food/condiment/hotsauce/franks{
 	pixel_y = -3;
 	pixel_x = 16
@@ -2145,13 +2060,14 @@
 	pixel_x = -2;
 	pixel_y = -2
 	},
-/turf/open/floor/redyellowfull,
+/obj/structure/surface/table/reinforced/diner_red,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "AB" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
 	},
-/turf/open/floor/cmo,
+/turf/open/floor/diner/white_blue,
 /area/adminlevel/ert_station/pizza_station)
 "AD" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
@@ -2171,7 +2087,7 @@
 /area/adminlevel/ert_station/pizza_station)
 "AV" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/blueyellowfull,
+/turf/open/floor/diner/red_yellow,
 /area/adminlevel/ert_station/pizza_station)
 "AW" = (
 /obj/effect/decal/warning_stripes{
@@ -2194,7 +2110,7 @@
 	icon_state = "W"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/cmo,
+/turf/open/floor/diner/white_blue,
 /area/adminlevel/ert_station/pizza_station)
 "By" = (
 /obj/structure/machinery/suit_storage_unit/standard_unit{
@@ -2223,7 +2139,7 @@
 /obj/item/trash/plate{
 	pixel_y = 10
 	},
-/turf/open/floor/prison/kitchen,
+/turf/open/floor/diner/white_black,
 /area/adminlevel/ert_station/pizza_station)
 "BC" = (
 /obj/structure/surface/table/reinforced,
@@ -2237,7 +2153,7 @@
 	pixel_y = 11
 	},
 /obj/structure/machinery/light,
-/turf/open/floor/prison/kitchen,
+/turf/open/floor/diner/white_black,
 /area/adminlevel/ert_station/pizza_station)
 "BJ" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -2261,6 +2177,15 @@
 	},
 /turf/open/floor/prison/yellow/west,
 /area/adminlevel/ert_station/pizza_station)
+"BV" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/diner/white_red,
+/area/adminlevel/ert_station/pizza_station)
 "Ck" = (
 /obj/structure/sink{
 	dir = 1;
@@ -2276,12 +2201,12 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station/pizza_station)
 "Cp" = (
-/obj/structure/surface/table/reinforced/cloth,
 /obj/item/reagent_container/food/drinks/cans/waterbottle{
 	pixel_x = -6;
 	pixel_y = 14
 	},
-/turf/open/floor/redyellowfull,
+/obj/structure/surface/table/reinforced/diner_red,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "Cv" = (
 /obj/structure/closet/secure_closet/freezer/fridge/full,
@@ -2298,11 +2223,6 @@
 	},
 /turf/open/floor/prison/greenblue/north,
 /area/adminlevel/ert_station/pizza_station)
-"CO" = (
-/obj/structure/disposalpipe/segment,
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/prison/kitchen,
-/area/adminlevel/ert_station/pizza_station)
 "CP" = (
 /turf/open/floor/almayer_hull,
 /area/space)
@@ -2317,21 +2237,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/turf/open/floor/prison/kitchen,
-/area/adminlevel/ert_station/pizza_station)
-"Db" = (
-/obj/structure/barricade/handrail/pizza{
-	dir = 4;
-	pixel_y = -3
-	},
-/obj/structure/barricade/handrail/pizza{
-	dir = 1;
-	pixel_y = 12
-	},
-/obj/structure/prop/souto_land/streamer{
-	dir = 9
-	},
-/turf/open/floor/redyellowfull,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "Dd" = (
 /obj/structure/pipes/vents/pump{
@@ -2348,7 +2254,7 @@
 	pixel_y = 4
 	},
 /obj/item/reagent_container/food/snacks/sliceable/bread,
-/turf/open/floor/cmo,
+/turf/open/floor/diner/white_blue,
 /area/adminlevel/ert_station/pizza_station)
 "DF" = (
 /obj/structure/disposalpipe/segment{
@@ -2361,7 +2267,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/turf/open/floor/prison/kitchen,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "DH" = (
 /obj/structure/platform/metal/kutjevo_smooth,
@@ -2394,7 +2300,7 @@
 /turf/open/floor/prison/red,
 /area/adminlevel/ert_station/pizza_station)
 "Ei" = (
-/turf/closed/wall/almayer/outer,
+/turf/closed/wall/diner/hull,
 /area/adminlevel/ert_station/pizza_station)
 "Ep" = (
 /obj/structure/machinery/door/poddoor/almayer/open{
@@ -2426,6 +2332,13 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/adminlevel/ert_station/pizza_station)
+"EX" = (
+/obj/structure/window/framed/diner/hull,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/pizza_station)
 "EZ" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8
@@ -2433,16 +2346,15 @@
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
 	},
-/turf/open/floor/prison/kitchen,
+/turf/open/floor/diner/white_black,
 /area/adminlevel/ert_station/pizza_station)
 "Fd" = (
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor/prison/bright_clean2,
+/turf/open/floor/diner/white_black,
 /area/adminlevel/ert_station/pizza_station)
 "Ff" = (
-/obj/structure/surface/table/reinforced/cloth,
 /obj/item/trash/plate{
 	pixel_y = 10;
 	pixel_x = 1
@@ -2465,7 +2377,8 @@
 	pixel_y = 2;
 	pixel_x = 8
 	},
-/turf/open/floor/redyellowfull,
+/obj/structure/surface/table/reinforced/diner_red,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "Fj" = (
 /obj/structure/closet/crate/freezer,
@@ -2494,7 +2407,7 @@
 /obj/item/reagent_container/food/snacks/sliceable/pizza/meatpizza{
 	pixel_y = 5
 	},
-/turf/open/floor/prison/kitchen,
+/turf/open/floor/diner/white_black,
 /area/adminlevel/ert_station/pizza_station)
 "FB" = (
 /obj/structure/machinery/light{
@@ -2503,7 +2416,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 5
 	},
-/turf/open/floor/prison/kitchen,
+/turf/open/floor/diner/white_black,
 /area/adminlevel/ert_station/pizza_station)
 "FD" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
@@ -2521,17 +2434,9 @@
 /area/adminlevel/ert_station/pizza_station)
 "FS" = (
 /obj/structure/machinery/light,
-/turf/open/floor/redyellowfull,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "FY" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/barricade/handrail/pizza{
-	dir = 8;
-	pixel_y = -3
-	},
-/obj/structure/barricade/handrail/pizza{
-	pixel_y = -3
-	},
 /obj/item/reagent_container/food/drinks/cans/cola{
 	pixel_y = 6;
 	pixel_x = -6
@@ -2548,7 +2453,14 @@
 	pixel_x = 11;
 	pixel_y = 5
 	},
-/turf/open/floor/prison/kitchen,
+/obj/structure/surface/table/reinforced/diner_white,
+/turf/open/floor/diner/white_red,
+/area/adminlevel/ert_station/pizza_station)
+"FZ" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/diner/white_blue,
 /area/adminlevel/ert_station/pizza_station)
 "Gd" = (
 /obj/structure/prop/souto_land/pole{
@@ -2576,16 +2488,7 @@
 	name = "EAT - poster";
 	pixel_y = 30
 	},
-/turf/open/floor/redyellowfull,
-/area/adminlevel/ert_station/pizza_station)
-"Gj" = (
-/obj/structure/barricade/handrail/pizza{
-	dir = 8
-	},
-/obj/structure/barricade/handrail/pizza{
-	pixel_y = -3
-	},
-/turf/open/floor/redyellowfull,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "Gm" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -2604,7 +2507,6 @@
 /turf/open/space/basic,
 /area/space)
 "Gp" = (
-/obj/structure/surface/table/reinforced/cloth,
 /obj/item/reagent_container/food/snacks/mushroomsoup{
 	pixel_y = 6
 	},
@@ -2612,7 +2514,8 @@
 	pixel_y = 4;
 	pixel_x = 7
 	},
-/turf/open/floor/redyellowfull,
+/obj/structure/surface/table/reinforced/diner_white,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "Gt" = (
 /obj/structure/machinery/atm{
@@ -2650,10 +2553,6 @@
 /turf/open/space,
 /area/space)
 "HL" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/barricade/handrail/pizza{
-	pixel_y = -3
-	},
 /obj/item/reagent_container/food/drinks/coffeecup{
 	pixel_x = -5;
 	pixel_y = 4
@@ -2665,10 +2564,10 @@
 /obj/item/reagent_container/food/drinks/coffeecup{
 	pixel_y = 2
 	},
-/turf/open/floor/prison/kitchen,
+/obj/structure/surface/table/reinforced/diner_white,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "HQ" = (
-/obj/structure/surface/table/reinforced/cloth,
 /obj/item/trash/plate{
 	pixel_y = 5
 	},
@@ -2676,7 +2575,8 @@
 	pixel_y = 10;
 	pixel_x = -1
 	},
-/turf/open/floor/redyellowfull,
+/obj/structure/surface/table/reinforced/diner_red,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "Ib" = (
 /obj/structure/pipes/vents/pump{
@@ -2685,7 +2585,7 @@
 /turf/open/floor/prison/red/west,
 /area/adminlevel/ert_station/pizza_station)
 "Iq" = (
-/obj/structure/surface/table/reinforced/cloth,
+/obj/structure/surface/table/reinforced/diner_white,
 /obj/item/reagent_container/food/drinks/cans/beer{
 	pixel_x = 5;
 	pixel_y = 13
@@ -2697,7 +2597,7 @@
 	pixel_x = -1;
 	pixel_y = 3
 	},
-/turf/open/floor/redyellowfull,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "ID" = (
 /turf/closed/wall/rock/red,
@@ -2731,7 +2631,7 @@
 "JP" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/tool/kitchen/knife/butcher,
-/turf/open/floor/cmo,
+/turf/open/floor/diner/white_blue,
 /area/adminlevel/ert_station/pizza_station)
 "JR" = (
 /obj/structure/bed/sofa/vert/grey/bot,
@@ -2752,30 +2652,15 @@
 /obj/item/reagent_container/glass/bucket{
 	pixel_x = 9
 	},
-/turf/open/floor/prison/kitchen,
-/area/adminlevel/ert_station/pizza_station)
-"JV" = (
-/obj/structure/barricade/handrail/pizza{
-	dir = 1;
-	pixel_y = 12
-	},
-/obj/structure/bed/chair/bolted{
-	pixel_y = -1;
-	buckling_y = -1
-	},
-/turf/open/floor/redyellowfull,
+/turf/open/floor/diner/white_black,
 /area/adminlevel/ert_station/pizza_station)
 "Kb" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/barricade/handrail/pizza{
-	dir = 4;
-	pixel_y = -3
-	},
 /obj/item/corncob,
 /obj/item/corncob{
 	pixel_y = 7
 	},
-/turf/open/floor/prison/kitchen,
+/obj/structure/surface/table/reinforced/diner_white,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "Kc" = (
 /obj/structure/sign/safety/airlock{
@@ -2813,7 +2698,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor/prison/kitchen,
+/turf/open/floor/diner/white_black,
 /area/adminlevel/ert_station/pizza_station)
 "KB" = (
 /obj/structure/sign/safety/bathunisex{
@@ -2829,24 +2714,19 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station/pizza_station)
-"KC" = (
-/obj/structure/barricade/handrail/pizza{
-	dir = 8;
-	pixel_y = -3
+"KU" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
 	},
-/obj/structure/prop/souto_land/streamer{
-	dir = 6
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
 	},
-/turf/open/floor/redyellowfull,
+/turf/open/floor/diner/white_black,
 /area/adminlevel/ert_station/pizza_station)
 "KY" = (
 /turf/open/floor/prison/blue_plate,
 /area/adminlevel/ert_station/pizza_station)
 "La" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/barricade/handrail/pizza{
-	pixel_y = -3
-	},
 /obj/item/reagent_container/food/condiment/hotsauce/franks/macho{
 	pixel_y = 11;
 	pixel_x = -6
@@ -2861,13 +2741,14 @@
 /obj/item/reagent_container/food/condiment/hotsauce/cholula{
 	pixel_y = 6
 	},
-/turf/open/floor/prison/kitchen,
+/obj/structure/surface/table/reinforced/diner_white,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "Lk" = (
 /obj/structure/pipes/vents/scrubber{
 	dir = 4
 	},
-/turf/open/floor/cmo,
+/turf/open/floor/diner/white_blue,
 /area/adminlevel/ert_station/pizza_station)
 "Ln" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -2883,16 +2764,6 @@
 	},
 /turf/open/floor/plating/prison,
 /area/adminlevel/ert_station/pizza_station)
-"Ly" = (
-/obj/structure/barricade/handrail/pizza{
-	dir = 4
-	},
-/obj/structure/barricade/handrail/pizza{
-	dir = 1;
-	pixel_y = 12
-	},
-/turf/open/floor/redyellowfull,
-/area/adminlevel/ert_station/pizza_station)
 "LH" = (
 /obj/structure/bed/chair/bolted{
 	dir = 1;
@@ -2903,7 +2774,7 @@
 	dir = 8;
 	pixel_y = 9
 	},
-/turf/open/floor/redyellowfull,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "Mj" = (
 /obj/structure/bed/chair/dropship/pilot{
@@ -2919,9 +2790,6 @@
 "Mk" = (
 /obj/structure/machinery/vending/coffee{
 	pixel_y = 12
-	},
-/obj/structure/barricade/handrail/pizza{
-	pixel_y = -3
 	},
 /turf/open/floor/prison/bright_clean2,
 /area/adminlevel/ert_station/pizza_station)
@@ -2939,14 +2807,9 @@
 /obj/structure/surface/table/reinforced,
 /obj/item/pizzabox/meat,
 /obj/item/tool/kitchen/pizzacutter,
-/turf/open/floor/cmo,
+/turf/open/floor/diner/white_blue,
 /area/adminlevel/ert_station/pizza_station)
 "MK" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/barricade/handrail/pizza{
-	dir = 8;
-	pixel_y = -3
-	},
 /obj/item/reagent_container/food/drinks/bottle/wine{
 	pixel_y = 7;
 	pixel_x = -6
@@ -2958,7 +2821,8 @@
 /obj/item/reagent_container/food/drinks/bottle/whiskey{
 	pixel_x = -4
 	},
-/turf/open/floor/prison/kitchen,
+/obj/structure/surface/table/reinforced/diner_white,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "MS" = (
 /obj/structure/machinery/shower{
@@ -3014,7 +2878,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor/redyellowfull,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "Nl" = (
 /turf/open/floor/prison,
@@ -3079,7 +2943,7 @@
 /obj/structure/sign/safety/water{
 	pixel_x = 38
 	},
-/turf/open/floor/cmo,
+/turf/open/floor/diner/white_blue,
 /area/adminlevel/ert_station/pizza_station)
 "NT" = (
 /obj/structure/platform_decoration/metal/kutjevo/west,
@@ -3097,7 +2961,6 @@
 /turf/open/floor/almayer/test_floor4,
 /area/adminlevel/ert_station/pizza_station)
 "Og" = (
-/obj/structure/surface/table/reinforced/cloth,
 /obj/item/reagent_container/food/snacks/sliceable/pizza/mushroompizza{
 	pixel_y = -2;
 	pixel_x = -16
@@ -3110,22 +2973,13 @@
 	pixel_y = 8;
 	pixel_x = -1
 	},
-/turf/open/floor/redyellowfull,
+/obj/structure/surface/table/reinforced/diner_red,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "Oh" = (
 /obj/structure/prop/souto_land/streamer{
 	pixel_y = 9;
 	pixel_x = 1
-	},
-/turf/open/floor/prison/red,
-/area/adminlevel/ert_station/pizza_station)
-"OE" = (
-/obj/structure/prop/souto_land/streamer{
-	pixel_y = 9;
-	pixel_x = -1
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
 	},
 /turf/open/floor/prison/red,
 /area/adminlevel/ert_station/pizza_station)
@@ -3147,37 +3001,29 @@
 	pixel_y = 3;
 	layer = 4.15
 	},
-/obj/structure/barricade/handrail/pizza{
-	dir = 8
-	},
 /turf/open/floor/prison/bright_clean2,
 /area/adminlevel/ert_station/pizza_station)
 "OQ" = (
-/obj/structure/barricade/handrail/pizza{
-	dir = 1;
-	pixel_y = 12
-	},
-/obj/structure/barricade/handrail/pizza{
-	dir = 8;
-	pixel_y = 13
-	},
-/obj/structure/barricade/handrail/pizza{
-	dir = 8
-	},
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_27";
 	pixel_y = 13;
 	pixel_x = -2;
 	layer = 4.11
 	},
-/turf/open/floor/redyellowfull,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "OS" = (
 /turf/open/floor/prison/red/east,
 /area/adminlevel/ert_station/pizza_station)
 "Pa" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/cmo,
+/turf/open/floor/diner/white_blue,
+/area/adminlevel/ert_station/pizza_station)
+"Pd" = (
+/obj/structure/prop/souto_land/streamer{
+	dir = 9
+	},
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "Pi" = (
 /obj/structure/disposalpipe/segment{
@@ -3189,10 +3035,6 @@
 /turf/open/floor/prison/red/north,
 /area/adminlevel/ert_station/pizza_station)
 "Pl" = (
-/obj/structure/barricade/handrail/pizza{
-	dir = 1;
-	pixel_y = 12
-	},
 /obj/structure/reagent_dispensers/water_cooler/stacks{
 	density = 0;
 	pixel_x = -8;
@@ -3205,14 +3047,14 @@
 	pixel_y = 2;
 	layer = 4.12
 	},
-/turf/open/floor/redyellowfull,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "Pn" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/clothing/suit/chef/classic,
 /obj/item/clothing/gloves/latex,
 /obj/item/clothing/suit/chef/classic,
-/turf/open/floor/prison/kitchen,
+/turf/open/floor/diner/white_blue,
 /area/adminlevel/ert_station/pizza_station)
 "Pq" = (
 /obj/structure/platform/metal/kutjevo_smooth,
@@ -3228,7 +3070,7 @@
 	pixel_x = -2;
 	pixel_y = 8
 	},
-/turf/open/floor/prison/kitchen,
+/turf/open/floor/diner/white_black,
 /area/adminlevel/ert_station/pizza_station)
 "Py" = (
 /obj/structure/platform/metal/kutjevo_smooth/north,
@@ -3245,8 +3087,8 @@
 /turf/open/space/basic,
 /area/space)
 "PH" = (
-/obj/structure/surface/table/reinforced/cloth,
-/turf/open/floor/redyellowfull,
+/obj/structure/surface/table/reinforced/diner_red,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "PL" = (
 /obj/structure/sign/safety/airlock{
@@ -3262,7 +3104,7 @@
 /obj/structure/pipes/vents/scrubber{
 	dir = 1
 	},
-/turf/open/floor/prison/kitchen,
+/turf/open/floor/diner/white_black,
 /area/adminlevel/ert_station/pizza_station)
 "QN" = (
 /obj/effect/decal/warning_stripes{
@@ -3275,7 +3117,6 @@
 /turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/ert_station/pizza_station)
 "Ra" = (
-/obj/structure/surface/table/reinforced/cloth,
 /obj/item/trash/plate{
 	pixel_y = 10
 	},
@@ -3288,7 +3129,8 @@
 	pixel_x = -11;
 	layer = 3.03
 	},
-/turf/open/floor/redyellowfull,
+/obj/structure/surface/table/reinforced/diner_white,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "Rf" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
@@ -3296,13 +3138,6 @@
 	dir = 4
 	},
 /turf/open/floor/almayer/test_floor4,
-/area/adminlevel/ert_station/pizza_station)
-"Rh" = (
-/obj/structure/window/framed/almayer/hull,
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2
-	},
-/turf/open/floor/plating,
 /area/adminlevel/ert_station/pizza_station)
 "RC" = (
 /obj/structure/platform_decoration/metal/kutjevo/north,
@@ -3313,18 +3148,7 @@
 /obj/structure/platform/metal/kutjevo_smooth,
 /turf/open/space/basic,
 /area/space)
-"RN" = (
-/obj/structure/barricade/handrail/pizza{
-	dir = 1;
-	pixel_y = 12;
-	layer = 4.11
-	},
-/turf/open/floor/redyellowfull,
-/area/adminlevel/ert_station/pizza_station)
 "RP" = (
-/obj/structure/barricade/handrail/pizza{
-	dir = 8
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4;
 	icon_state = "pipe-c"
@@ -3332,7 +3156,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 6
 	},
-/turf/open/floor/blueyellowfull,
+/turf/open/floor/diner/red_yellow,
 /area/adminlevel/ert_station/pizza_station)
 "RV" = (
 /obj/item/clothing/suit/chef/classic,
@@ -3342,7 +3166,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor/cmo,
+/turf/open/floor/diner/white_blue,
 /area/adminlevel/ert_station/pizza_station)
 "Se" = (
 /obj/structure/bed/chair/bolted{
@@ -3353,7 +3177,7 @@
 /obj/structure/prop/souto_land/streamer{
 	pixel_y = 9
 	},
-/turf/open/floor/redyellowfull,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "Sg" = (
 /obj/structure/platform/metal/kutjevo_smooth/north,
@@ -3370,12 +3194,6 @@
 	},
 /turf/open/floor/prison/red/north,
 /area/adminlevel/ert_station/pizza_station)
-"Sp" = (
-/obj/structure/barricade/handrail/pizza{
-	dir = 4
-	},
-/turf/open/floor/redyellowfull,
-/area/adminlevel/ert_station/pizza_station)
 "Sq" = (
 /obj/structure/kitchenspike,
 /obj/item/reagent_container/food/snacks/meat{
@@ -3388,7 +3206,6 @@
 /turf/open/floor/prison/greenblue,
 /area/adminlevel/ert_station/pizza_station)
 "Sr" = (
-/obj/structure/surface/table/reinforced/cloth,
 /obj/item/reagent_container/food/drinks/cans/beer{
 	pixel_x = -13;
 	pixel_y = -6
@@ -3405,12 +3222,13 @@
 	pixel_y = 5;
 	pixel_x = 1
 	},
-/turf/open/floor/redyellowfull,
+/obj/structure/surface/table/reinforced/diner_white,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "Sz" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/prison/bright_clean2,
+/turf/open/floor/diner/white_black,
 /area/adminlevel/ert_station/pizza_station)
 "SL" = (
 /obj/structure/surface/table/almayer,
@@ -3436,7 +3254,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/turf/open/floor/prison/kitchen,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "SV" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
@@ -3449,7 +3267,6 @@
 /turf/open/floor/almayer/test_floor4,
 /area/adminlevel/ert_station/pizza_station)
 "Te" = (
-/obj/structure/surface/table/reinforced/cloth,
 /obj/item/reagent_container/food/condiment/hotsauce/cholula{
 	pixel_y = 28;
 	pixel_x = 16
@@ -3470,7 +3287,8 @@
 	pixel_y = 13;
 	pixel_x = 5
 	},
-/turf/open/floor/redyellowfull,
+/obj/structure/surface/table/reinforced/diner_white,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "Tu" = (
 /obj/structure/disposalpipe/segment{
@@ -3480,22 +3298,18 @@
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
 	},
-/turf/open/floor/prison/kitchen,
+/turf/open/floor/diner/white_black,
 /area/adminlevel/ert_station/pizza_station)
 "TC" = (
 /turf/open/floor/prison/yellowcorner,
 /area/adminlevel/ert_station/pizza_station)
 "TD" = (
-/turf/open/floor/prison/bright_clean2,
+/turf/open/floor/diner/white_black,
 /area/adminlevel/ert_station/pizza_station)
 "TE" = (
 /turf/open/mars_dirt/mars_cave_3,
 /area/space)
 "TH" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/barricade/handrail/pizza{
-	pixel_y = -3
-	},
 /obj/item/storage/box/drinkingglasses{
 	layer = 2.97;
 	pixel_x = 14
@@ -3503,7 +3317,8 @@
 /obj/item/reagent_container/food/drinks/bottle/orangejuice{
 	layer = 2.97
 	},
-/turf/open/floor/prison/kitchen,
+/obj/structure/surface/table/reinforced/diner_white,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "TK" = (
 /turf/closed/shuttle/ert,
@@ -3526,7 +3341,7 @@
 	pixel_y = -1
 	},
 /obj/structure/pipes/standard/manifold/fourway/hidden/supply,
-/turf/open/floor/cmo,
+/turf/open/floor/diner/white_blue,
 /area/adminlevel/ert_station/pizza_station)
 "TY" = (
 /obj/structure/bed/chair{
@@ -3548,7 +3363,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor/redyellowfull,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "Uu" = (
 /obj/structure/disposalpipe/segment{
@@ -3560,13 +3375,9 @@
 /obj/structure/machinery/power/apc/antag{
 	dir = 1
 	},
-/turf/open/floor/prison/kitchen,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "Ux" = (
-/obj/structure/barricade/handrail/pizza{
-	dir = 1;
-	pixel_y = 12
-	},
 /obj/structure/bed/chair/bolted{
 	pixel_y = -1;
 	buckling_y = -1
@@ -3574,13 +3385,13 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor/redyellowfull,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "UB" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 6
 	},
-/turf/open/floor/cmo,
+/turf/open/floor/diner/white_blue,
 /area/adminlevel/ert_station/pizza_station)
 "Vj" = (
 /obj/structure/closet/secure_closet/fridge/dry/stock,
@@ -3624,10 +3435,6 @@
 /turf/open/space/basic,
 /area/space)
 "VD" = (
-/obj/structure/barricade/handrail/pizza{
-	dir = 1;
-	pixel_y = 12
-	},
 /obj/structure/reagent_dispensers/water_cooler/stacks{
 	density = 0;
 	pixel_x = -3;
@@ -3637,7 +3444,7 @@
 /obj/structure/surface/table/almayer{
 	layer = 4.02
 	},
-/turf/open/floor/redyellowfull,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "VK" = (
 /turf/open/floor/prison/yellow/southwest,
@@ -3656,7 +3463,7 @@
 	pixel_y = 30;
 	serial_number = 12
 	},
-/turf/open/floor/redyellowfull,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "VQ" = (
 /obj/structure/disposalpipe/segment{
@@ -3665,7 +3472,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/turf/open/floor/prison/kitchen,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "VS" = (
 /obj/structure/surface/table/almayer,
@@ -3686,7 +3493,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/turf/open/floor/cmo,
+/turf/open/floor/diner/white_blue,
 /area/adminlevel/ert_station/pizza_station)
 "Wb" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -3699,13 +3506,20 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/test_floor4,
 /area/adminlevel/ert_station/pizza_station)
+"Ws" = (
+/obj/structure/prop/souto_land/streamer{
+	pixel_y = 9;
+	pixel_x = -1
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/prison/red,
+/area/adminlevel/ert_station/pizza_station)
 "WL" = (
-/obj/structure/window/framed/almayer/hull,
+/obj/structure/window/framed/diner/hull,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/plating,
-/area/adminlevel/ert_station/pizza_station)
-"WP" = (
-/turf/open/floor/prison/kitchen,
 /area/adminlevel/ert_station/pizza_station)
 "WS" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
@@ -3718,9 +3532,7 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Kitchen and Cleaning"
-	},
+/obj/structure/machinery/door/airlock/multi_tile/diner,
 /turf/open/floor/almayer/test_floor4,
 /area/adminlevel/ert_station/pizza_station)
 "Xa" = (
@@ -3761,7 +3573,7 @@
 	pixel_x = -6;
 	pixel_y = 5
 	},
-/turf/open/floor/prison/kitchen,
+/turf/open/floor/diner/white_black,
 /area/adminlevel/ert_station/pizza_station)
 "Xn" = (
 /obj/structure/platform_decoration/metal/kutjevo/east,
@@ -3791,7 +3603,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/turf/open/floor/prison/kitchen,
+/turf/open/floor/diner/white_black,
 /area/adminlevel/ert_station/pizza_station)
 "Xw" = (
 /obj/structure/platform/metal/kutjevo_smooth,
@@ -3802,7 +3614,7 @@
 /obj/structure/surface/table/reinforced,
 /obj/item/reagent_container/food/snacks/sliceable/flatdough,
 /obj/item/tool/kitchen/rollingpin,
-/turf/open/floor/cmo,
+/turf/open/floor/diner/white_blue,
 /area/adminlevel/ert_station/pizza_station)
 "XB" = (
 /obj/structure/machinery/shower{
@@ -3834,12 +3646,6 @@
 	},
 /turf/open/floor/prison/red,
 /area/adminlevel/ert_station/pizza_station)
-"XZ" = (
-/obj/structure/barricade/handrail/pizza{
-	pixel_y = -3
-	},
-/turf/open/floor/redyellowfull,
-/area/adminlevel/ert_station/pizza_station)
 "Ya" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
@@ -3848,9 +3654,7 @@
 	dir = 4;
 	icon_state = "pipe-c"
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "STAFF ONLY"
-	},
+/obj/structure/machinery/door/airlock/multi_tile/diner,
 /turf/open/floor/almayer/test_floor4,
 /area/adminlevel/ert_station/pizza_station)
 "Yf" = (
@@ -3874,10 +3678,9 @@
 	pixel_y = 3;
 	pixel_x = 6
 	},
-/turf/open/floor/cmo,
+/turf/open/floor/diner/white_blue,
 /area/adminlevel/ert_station/pizza_station)
 "Yj" = (
-/obj/structure/surface/table/reinforced/cloth,
 /obj/item/tool/kitchen/utensil/pknife{
 	pixel_x = -6
 	},
@@ -3893,7 +3696,8 @@
 	pixel_y = -2;
 	pixel_x = 16
 	},
-/turf/open/floor/redyellowfull,
+/obj/structure/surface/table/reinforced/diner_red,
+/turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "Ym" = (
 /obj/structure/sign/safety/nonpress_0g{
@@ -3970,7 +3774,7 @@
 /turf/open/floor/almayer_hull,
 /area/adminlevel/ert_station/pizza_station)
 "YO" = (
-/turf/closed/wall/almayer,
+/turf/closed/wall/diner,
 /area/adminlevel/ert_station/pizza_station)
 "ZD" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -4000,7 +3804,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
-/turf/open/floor/cmo,
+/turf/open/floor/diner/white_blue,
 /area/adminlevel/ert_station/pizza_station)
 "ZV" = (
 /obj/structure/bed/sofa/vert/grey,
@@ -4021,7 +3825,7 @@
 /obj/item/tool/kitchen/tray{
 	pixel_y = 12
 	},
-/turf/open/floor/prison/kitchen,
+/turf/open/floor/diner/white_black,
 /area/adminlevel/ert_station/pizza_station)
 
 (1,1,1) = {"
@@ -4519,7 +4323,7 @@ Ei
 hX
 Ff
 rA
-uN
+ac
 Pl
 TY
 Ei
@@ -4563,12 +4367,12 @@ Ei
 Ei
 Ei
 Gh
-Ly
-Sp
-uN
-Sp
-RN
-jx
+ac
+ac
+ac
+ac
+ac
+aa
 FS
 Ei
 Yy
@@ -4614,10 +4418,10 @@ ug
 Au
 vr
 yr
-uN
+ac
 wu
 ly
-Rh
+EX
 Yy
 Yy
 Yy
@@ -4661,10 +4465,10 @@ zQ
 oU
 vi
 Gm
-uN
+ac
 ec
 xh
-Rh
+EX
 Yy
 Yy
 Yy
@@ -4693,7 +4497,7 @@ pD
 TE
 pD
 qt
-Rh
+EX
 qv
 nB
 ZR
@@ -4703,15 +4507,15 @@ Pn
 nB
 nB
 jy
-tq
+BV
 MK
 FY
 wz
 Gm
-hb
+ac
 pS
 pS
-Rh
+EX
 Yy
 Yy
 Yy
@@ -4740,25 +4544,25 @@ pD
 sB
 TE
 TE
-Rh
+EX
 Dx
 nB
-jo
+FZ
 np
 JP
 aA
 Lk
 nB
 uY
-tq
-WP
+BV
+ac
 TH
 wz
 uz
-cO
-KC
+gd
+gd
 mt
-Rh
+EX
 Yy
 Yy
 Ei
@@ -4787,7 +4591,7 @@ TE
 sB
 TE
 pD
-Rh
+EX
 Yf
 UB
 AB
@@ -4797,15 +4601,15 @@ Pa
 ov
 nB
 jf
-tq
-WP
+BV
+ac
 La
 wz
 nU
-uN
+ac
 Ax
 tC
-Rh
+EX
 Yy
 Yy
 Ei
@@ -4836,7 +4640,7 @@ lg
 sB
 Ei
 sJ
-jo
+FZ
 nB
 ae
 YO
@@ -4845,11 +4649,11 @@ Ab
 bT
 YO
 Ao
-WP
+ac
 lv
 wz
-OE
-uN
+Ws
+ac
 HQ
 fN
 Ei
@@ -4892,11 +4696,11 @@ YO
 YO
 YO
 Uu
-WP
+ac
 nA
 sa
 aP
-Db
+Pd
 zz
 ys
 Ei
@@ -4931,7 +4735,7 @@ TE
 uo
 Ps
 fg
-WP
+TD
 zf
 WZ
 TD
@@ -4939,7 +4743,7 @@ Fd
 lN
 Ya
 bB
-WP
+ac
 lE
 wz
 Gm
@@ -4978,15 +4782,15 @@ pD
 uo
 JU
 Tu
-CO
-CO
+Sz
+Sz
 NG
 mP
 ok
 Sz
 BJ
 vX
-WP
+ac
 yE
 wz
 hc
@@ -5024,8 +4828,8 @@ TE
 ID
 Ei
 cP
-tq
-WP
+KU
+TD
 Bz
 YO
 YO
@@ -5033,12 +4837,12 @@ AD
 YO
 YO
 gV
-WP
+ac
 zx
 DW
 Eh
 lB
-mt
+aj
 hR
 Ei
 ah
@@ -5080,13 +4884,13 @@ yK
 yP
 YO
 VQ
-WP
+ac
 ic
 wz
 nU
-hb
+ac
 Iq
-xl
+ac
 Ei
 Yy
 Yy
@@ -5118,8 +4922,8 @@ ID
 ID
 Ei
 ZX
-tq
-WP
+KU
+TD
 Fz
 YO
 eo
@@ -5127,13 +4931,13 @@ yG
 Xq
 YO
 CT
-WP
+ac
 HL
 wz
 XV
-uN
-pS
-tp
+ac
+ac
+FS
 Ei
 Yy
 Yy
@@ -5166,7 +4970,7 @@ Ei
 Ei
 Xj
 Xr
-WP
+TD
 sp
 YO
 ZM
@@ -5174,11 +4978,11 @@ KY
 Sq
 YO
 DF
-WP
+ac
 gu
 wz
-OE
-hb
+Ws
+ad
 qs
 dh
 Ei
@@ -5225,9 +5029,9 @@ Kb
 am
 wz
 Gd
-Db
-zz
-ys
+Pd
+ak
+ag
 Ei
 ah
 bd
@@ -5367,8 +5171,8 @@ OK
 wQ
 uz
 wP
-KC
-hR
+gd
+ai
 Ei
 ah
 bd
@@ -5408,12 +5212,12 @@ oD
 YO
 YO
 qU
-jV
-Gj
+ac
+ac
 mk
 wQ
 aJ
-hb
+ac
 PH
 zl
 Ei
@@ -5456,14 +5260,14 @@ MS
 YO
 rj
 ma
-uN
+ac
 MX
 Pi
 Xg
-hb
+ac
 Cp
 lw
-Rh
+EX
 Yy
 Yy
 Ei
@@ -5492,7 +5296,7 @@ Yy
 Yy
 Yy
 Yy
-Rh
+EX
 Fj
 td
 Fp
@@ -5503,14 +5307,14 @@ bo
 YO
 Sr
 Ra
-uN
+ac
 jb
 xc
 qb
-uN
+ac
 pS
 pS
-Rh
+EX
 Yy
 Yy
 Ei
@@ -5539,7 +5343,7 @@ Yy
 Yy
 Yy
 Yy
-Rh
+EX
 wX
 tM
 hv
@@ -5550,14 +5354,14 @@ YO
 YO
 VN
 pS
-XZ
+ac
 jT
 So
 Oh
-uN
+ac
 zC
 zC
-Rh
+EX
 Yy
 Yy
 Yy
@@ -5601,10 +5405,10 @@ gy
 gb
 XD
 eK
-hb
+ac
 Yj
 sI
-Rh
+EX
 Yy
 Yy
 Yy
@@ -5633,7 +5437,7 @@ ID
 Vx
 Yy
 Yy
-Rh
+EX
 vq
 QN
 Yv
@@ -5645,13 +5449,13 @@ NV
 AV
 cI
 OQ
-jV
-uN
+ac
+ac
 kW
-RN
+ac
 Og
 xX
-Rh
+EX
 Yy
 Yy
 Yy
@@ -5680,7 +5484,7 @@ Vx
 Vx
 Vx
 Vx
-Rh
+EX
 vq
 ap
 Kd
@@ -5691,11 +5495,11 @@ Ck
 YO
 YO
 tX
-JV
+hb
 Gp
 Te
 Se
-hb
+ac
 pS
 nX
 Ei

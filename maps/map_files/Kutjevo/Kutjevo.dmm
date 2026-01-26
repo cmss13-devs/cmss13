@@ -5626,8 +5626,8 @@
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/exterior/scrubland)
 "gGz" = (
-/obj/structure/platform_decoration/stone/kutjevo,
-/obj/structure/platform_decoration/stone/kutjevo/north,
+/obj/structure/platform/stone/kutjevo/west,
+/obj/structure/platform/stone/kutjevo/north,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_north)
 "gHh" = (
@@ -8032,7 +8032,7 @@
 /area/kutjevo/interior/colony_south/power2)
 "kFx" = (
 /obj/structure/platform/stone/kutjevo,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/structure/platform/stone/kutjevo/west,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_north)
 "kFF" = (
@@ -9757,7 +9757,6 @@
 /area/kutjevo/interior/complex/botany)
 "ntr" = (
 /obj/structure/platform_decoration/stone/kutjevo/west,
-/obj/structure/platform_decoration/stone/kutjevo,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_north)
 "nty" = (
@@ -11285,7 +11284,6 @@
 "pxl" = (
 /obj/structure/platform/stone/kutjevo,
 /obj/structure/platform/stone/kutjevo/east,
-/obj/structure/platform/stone/kutjevo/west,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_north)
 "pyp" = (
@@ -13065,7 +13063,6 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_northeast)
 "szg" = (
-/obj/structure/platform_decoration/stone/kutjevo/east,
 /obj/structure/platform_decoration/stone/kutjevo/north,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_north)
@@ -13699,7 +13696,6 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/oob)
 "tsr" = (
-/obj/structure/platform/stone/kutjevo/north,
 /obj/structure/platform/stone/kutjevo/west,
 /obj/structure/platform/stone/kutjevo,
 /turf/open/auto_turf/sand/layer0,
@@ -45859,10 +45855,10 @@ bEH
 bkR
 bkR
 wTt
-hUk
 wTt
+wTt
+jBX
 kFx
-hUk
 wTt
 wTt
 wTt
@@ -46028,7 +46024,7 @@ bkR
 wTt
 wTt
 wTt
-gGz
+wTt
 pxl
 wTt
 wTt
@@ -46204,7 +46200,7 @@ bEH
 wTt
 bEH
 bEH
-hUk
+wTt
 hUk
 hUk
 hUk
@@ -46371,7 +46367,7 @@ hUk
 hUk
 hUk
 wTt
-hUk
+wTt
 hUk
 hUk
 hUk
@@ -46538,7 +46534,7 @@ hUk
 hUk
 hUk
 wTt
-hUk
+wTt
 hUk
 hUk
 hUk
@@ -47038,7 +47034,7 @@ bEH
 hUk
 hUk
 hUk
-hUk
+gGz
 tsr
 hUk
 hUk
@@ -47205,7 +47201,7 @@ tyq
 bEH
 bEH
 hUk
-hUk
+wTt
 szg
 hUk
 hUk

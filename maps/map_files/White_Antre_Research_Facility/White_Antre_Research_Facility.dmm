@@ -749,7 +749,7 @@
 /turf/open/floor/prison/darkyellow2/west,
 /area/white_antre/indoors/main_level/east_containment)
 "ach" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 4
 	},
 /turf/open/floor/prison/darkyellow2/east,
@@ -51967,7 +51967,7 @@
 	},
 /area/white_antre/indoors/pmc_dropship)
 "enE" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 1
 	},
 /turf/open/floor/prison,

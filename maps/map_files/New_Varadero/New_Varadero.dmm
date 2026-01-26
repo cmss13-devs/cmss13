@@ -263,6 +263,12 @@
 	},
 /turf/closed/wall,
 /area/varadero/interior/technical_storage)
+"aaX" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "HospitalAlternate"
+	},
+/turf/closed/wall/r_wall/unmeltable,
+/area/varadero/interior/medical)
 "abf" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
@@ -39066,7 +39072,7 @@ nxW
 qcN
 qcN
 qcN
-lGp
+aaX
 hYp
 uqx
 hYp

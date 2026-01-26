@@ -50,10 +50,14 @@ type Keybind = {
 };
 
 type Data = {
-  player_keybinds: Record<string, string>;
-  custom_keybinds: (null | CustomKeybind)[];
   glob_keybinds: Record<string, Keybind[]>;
   byond_keymap: Record<string, string>;
+  max_custom_keybinds: number;
+  max_custom_keybind_picksays: number;
+  max_say_length: number;
+  max_emote_length: number;
+  player_keybinds: Record<string, string>;
+  custom_keybinds: (null | CustomKeybind)[];
 };
 
 type CustomKeybind = {
@@ -66,8 +70,13 @@ type CustomKeybind = {
 
 export const KeyBinds = (props) => {
   const { act, data } = useBackend<Data>();
-  const { player_keybinds, glob_keybinds, byond_keymap, custom_keybinds } =
-    data;
+  const {
+    glob_keybinds,
+    byond_keymap,
+    max_custom_keybinds,
+    player_keybinds,
+    custom_keybinds,
+  } = data;
 
   const [selectedTab, setSelectedTab] = useState('ALL');
   const [searchTerm, setSearchTerm] = useState('');
@@ -242,15 +251,19 @@ const CustomKeybinds = (props: {
 }) => {
   const { index, keybind } = props;
 
-  const { act } = useBackend();
+  const { act, data } = useBackend<Data>();
+  const { max_custom_keybind_picksays, max_say_length, max_emote_length } =
+    data;
 
   const [pendingKeybind, setPendingKeybind] = useState<CustomKeybind>();
   const [isEditingContents, setIsEditingContents] = useState(false);
   const [inputValue, setInputValue] = useState('');
   const [picksayOptions, setPicksayOptions] = useState<string[]>([]);
 
-  const currentType = pendingKeybind?.type || keybind?.type;
-  const isPicksay = currentType === 'PICKSAY';
+  const currentType =
+    pendingKeybind?.type?.toLowerCase() || keybind?.type?.toLowerCase();
+  const isPicksay = currentType === 'picksay';
+  const isEmote = currentType === 'me';
 
   const handleStartEditing = () => {
     setIsEditingContents(true);
@@ -281,7 +294,10 @@ const CustomKeybinds = (props: {
   };
 
   const handleAddPicksayOption = () => {
-    if (inputValue.trim() && picksayOptions.length < 20) {
+    if (
+      inputValue.trim() &&
+      picksayOptions.length < max_custom_keybind_picksays
+    ) {
       setPicksayOptions((prev) => [...prev, inputValue.trim()]);
       setInputValue('');
     }
@@ -327,7 +343,7 @@ const CustomKeybinds = (props: {
                     <Input
                       fluid
                       placeholder="Add an option..."
-                      maxLength={1024}
+                      maxLength={max_emote_length}
                       value={inputValue}
                       onInput={(_, val) => setInputValue(val)}
                       onEnter={() => handleAddPicksayOption()}
@@ -336,7 +352,9 @@ const CustomKeybinds = (props: {
                   <Flex.Item ml={1}>
                     <Button
                       icon="plus"
-                      disabled={picksayOptions.length >= 20}
+                      disabled={
+                        picksayOptions.length >= max_custom_keybind_picksays
+                      }
                       onClick={() => handleAddPicksayOption()}
                     >
                       Add
@@ -366,8 +384,8 @@ const CustomKeybinds = (props: {
             <Flex.Item mb={1}>
               <Input
                 fluid
-                maxLength={1024}
                 placeholder="Enter content..."
+                maxLength={isEmote ? max_emote_length : max_say_length}
                 value={inputValue}
                 onInput={(_, val) => setInputValue(val)}
                 onEnter={() => handleConfirmContents()}

@@ -168,7 +168,7 @@
 ////////// Dancer Abilities
 
 /datum/action/xeno_action/activable/tail_stab/harpoon_tail
-	name = "Tail Harpoon"
+	name = "Harpoon Tail"
 	action_icon_state = "tail_harpoon"
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_TAIL_STAB

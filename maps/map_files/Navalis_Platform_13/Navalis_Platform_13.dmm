@@ -21385,7 +21385,7 @@
 /area/navalis/indoors/industrial/mining)
 "cnG" = (
 /obj/structure/platform/metal/almayer/west,
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 1
 	},
 /turf/open/floor/plating/kutjevo,
@@ -29877,7 +29877,7 @@
 /area/navalis/indoors/command/office)
 "iKJ" = (
 /obj/structure/platform/metal/almayer/east,
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 1
 	},
 /turf/open/floor/plating/kutjevo,

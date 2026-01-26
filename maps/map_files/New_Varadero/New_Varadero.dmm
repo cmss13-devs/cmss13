@@ -7038,7 +7038,7 @@
 /area/varadero/interior/hall_SE)
 "fvu" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = EngineeringHoldout
+	insert_tag = "EngineeringHoldout"
 	},
 /turf/closed/wall,
 /area/varadero/interior/technical_storage)

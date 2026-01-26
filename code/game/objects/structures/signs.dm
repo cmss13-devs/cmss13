@@ -576,12 +576,12 @@
 
 /obj/structure/sign/safety/luggageclaim
 	name = "\improper luggage claim semiotic"
-	desc = "Semiotic Standard denoting the presecense of a luggage claim area nearby."
+	desc = "Semiotic Standard denoting the presence of a luggage claim area nearby."
 	icon_state = "luggageclaim"
 
 /obj/structure/sign/safety/landingzone
 	name = "\improper landing zone semiotic"
-	desc = "Semiotic Standard denoting the presecense of a landing zone nearby."
+	desc = "Semiotic Standard denoting the presence of a landing zone nearby."
 	icon_state = "landingzone"
 
 /obj/structure/sign/safety/zero

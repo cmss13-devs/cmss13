@@ -329,7 +329,7 @@
 /obj/structure/sign/safety/landingzone{
 	pixel_x = 7;
 	pixel_y = 11;
-	desc = "A traffic signal denoting the presecense of a landing zone nearby.";
+	desc = "A traffic signal denoting the presence of a landing zone nearby.";
 	name = "\improper landing zone traffic signal"
 	},
 /obj/structure/sign/safety/east{
@@ -563,7 +563,7 @@
 /obj/structure/sign/safety/landingzone{
 	pixel_x = 7;
 	pixel_y = 11;
-	desc = "A traffic signal denoting the presecense of a landing zone nearby.";
+	desc = "A traffic signal denoting the presence of a landing zone nearby.";
 	name = "\improper landing zone traffic signal"
 	},
 /obj/structure/sign/safety/south{

@@ -26753,7 +26753,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
 /area/desert_dam/exterior/valley/valley_medical)
 "dlK" = (
-/obj/structure/surface/table/gamblingtable,
+/obj/structure/surface/table/woodentable/gamblingtable,
 /obj/item/spacecash/c10,
 /obj/item/toy/deck{
 	pixel_y = -10;
@@ -29713,7 +29713,7 @@
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
 "etc" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Treatment Controlroom"
+	name = "\improper Treatment Control Room"
 	},
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/water_treatment_two/hallway)
@@ -46894,7 +46894,7 @@
 "laB" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 2;
-	name = "\improper Treatment Controlroom"
+	name = "\improper Treatment Control Room"
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -52157,7 +52157,7 @@
 "nej" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 2;
-	name = "\improper Floodgate Controlroom"
+	name = "\improper Floodgate Control Room"
 	},
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/desert_dam/building/water_treatment_one/floodgate_control)
@@ -55332,7 +55332,7 @@
 /turf/open/floor/prison/blue,
 /area/desert_dam/building/administration/hallway)
 "onQ" = (
-/obj/structure/surface/table/gamblingtable,
+/obj/structure/surface/table/woodentable/gamblingtable,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/item/spacecash/ewallet{
 	pixel_y = 3
@@ -55996,7 +55996,7 @@
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/interior/dam_interior/workshop)
 "oBe" = (
-/obj/structure/surface/table/gamblingtable,
+/obj/structure/surface/table/woodentable/gamblingtable,
 /obj/item/spacecash/c10{
 	pixel_y = 16;
 	pixel_x = -3
@@ -59928,9 +59928,7 @@
 /area/desert_dam/exterior/rock)
 "qaS" = (
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 8;
-	health = 25000
+	dir = 8
 	},
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/dam_interior/hangar_storage)
@@ -71328,7 +71326,7 @@
 /turf/open/desert/dirt/desert_transition_edge1/east,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "urh" = (
-/obj/structure/surface/table/gamblingtable,
+/obj/structure/surface/table/woodentable/gamblingtable,
 /obj/item/spacecash/c10{
 	pixel_y = 5;
 	pixel_x = -3

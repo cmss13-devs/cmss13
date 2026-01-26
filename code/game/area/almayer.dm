@@ -451,7 +451,7 @@
 /area/almayer/maint/lower/cryo_cells
 	name = "\improper Lower Deck Cryo Cells Maintenance"
 
-// Upper maintainance areas
+// Upper maintenance areas
 /area/almayer/maint/upper
 	name = "\improper Upper Deck Maintenance"
 	icon_state = "upperhull"

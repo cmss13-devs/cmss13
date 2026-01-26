@@ -1,0 +1,899 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ah" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/reagent_container/hypospray/tricordrazine{
+	pixel_x = -14;
+	pixel_y = 2
+	},
+/obj/item/reagent_container/food/snacks/bigbiteburger{
+	pixel_y = 8;
+	pixel_x = 6
+	},
+/turf/open/floor/shiva/blue,
+/area/varadero/interior/technical_storage)
+"aY" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/blood/drip,
+/obj/item/ammo_casing/cartridge{
+	current_icon = s
+	},
+/obj/item/ammo_casing/cartridge{
+	current_icon = s
+	},
+/turf/open/floor/shiva,
+/area/varadero/interior/technical_storage)
+"bw" = (
+/obj/structure/closet/emcloset,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/shiva/yellow/north,
+/area/varadero/interior/technical_storage)
+"cJ" = (
+/obj/structure/closet/fireaxecabinet{
+	pixel_x = -32
+	},
+/turf/open/floor/shiva/blue/west,
+/area/varadero/interior/technical_storage)
+"dN" = (
+/obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/shiva/yellow/north,
+/area/varadero/interior/technical_storage)
+"ea" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/reagent_container/glass/bucket{
+	pixel_x = 6;
+	pixel_y = 14
+	},
+/obj/item/storage/box/pillbottles{
+	pixel_x = -4;
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/cigarette/weed,
+/turf/open/floor/shiva/blue/east,
+/area/varadero/interior/technical_storage)
+"ej" = (
+/obj/structure/closet/hydrant{
+	pixel_y = 32
+	},
+/obj/structure/surface/table,
+/obj/item/device/sentry_computer{
+	open = 1
+	},
+/obj/item/pamphlet/skill/engineer{
+	pixel_x = -7;
+	pixel_y = 5
+	},
+/turf/open/floor/shiva/yellow/north,
+/area/varadero/interior/technical_storage)
+"er" = (
+/obj/structure/window_frame/colony,
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/varadero/interior/technical_storage)
+"fL" = (
+/turf/open/floor/shiva/yellow/east,
+/area/varadero/interior/technical_storage)
+"jg" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/circuitboard/computer/crew{
+	pixel_x = -5;
+	pixel_y = 8
+	},
+/obj/item/storage/box/trackimp{
+	pixel_x = 5;
+	pixel_y = 1
+	},
+/obj/item/paper/crumpled{
+	pixel_x = 6;
+	pixel_y = 18
+	},
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/shiva/blue/west,
+/area/varadero/interior/technical_storage)
+"jr" = (
+/obj/structure/window_frame/colony/reinforced,
+/obj/structure/window_frame/colony/reinforced,
+/obj/item/shard,
+/obj/item/stack/rods{
+	pixel_x = -11
+	},
+/turf/open/floor/plating,
+/area/varadero/interior/technical_storage)
+"jD" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 10
+	},
+/obj/item/prop/alien/hugger{
+	pixel_y = 4;
+	pixel_x = 5
+	},
+/turf/open/floor/shiva/multi_tiles,
+/area/varadero/interior/technical_storage)
+"jE" = (
+/obj/structure/machinery/power/apc/no_power/north,
+/obj/item/cell/high,
+/obj/item/circuitboard/apc{
+	pixel_x = 9;
+	pixel_y = 10
+	},
+/obj/item/tool/crowbar/red{
+	pixel_x = -10;
+	pixel_y = -21
+	},
+/turf/open/floor/plating,
+/area/varadero/interior/technical_storage)
+"kr" = (
+/obj/structure/window_frame/colony/reinforced,
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/varadero/interior/technical_storage)
+"kt" = (
+/obj/effect/landmark/objective_landmark/medium,
+/obj/structure/closet/crate/hydroponics/prespawned,
+/turf/open/floor/shiva/blue,
+/area/varadero/interior/technical_storage)
+"kO" = (
+/obj/structure/bed/chair{
+	pixel_x = 4;
+	pixel_y = 10
+	},
+/obj/item/paper/crumpled/bloody{
+	pixel_x = -12;
+	pixel_y = 10
+	},
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/shiva,
+/area/varadero/interior/technical_storage)
+"kY" = (
+/obj/item/stack/sheet/wood/small_stack{
+	pixel_y = 11
+	},
+/obj/structure/barricade/sandbags/wired{
+	pixel_y = -5
+	},
+/turf/open/floor/shiva/yellow/southeast,
+/area/varadero/interior/technical_storage)
+"lb" = (
+/obj/structure/window_frame/colony/reinforced,
+/obj/item/shard,
+/obj/item/stack/rods{
+	pixel_x = 7
+	},
+/turf/open/floor/plating,
+/area/varadero/interior/technical_storage)
+"lj" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/prop/server_equipment/laptop/on{
+	pixel_x = -1;
+	pixel_y = 3
+	},
+/turf/open/floor/shiva/blue/north,
+/area/varadero/interior/technical_storage)
+"lE" = (
+/obj/structure/prop/ice_colony/dense/planter_box/plated{
+	dir = 9;
+	icon_state = "planter_box_soil"
+	},
+/obj/structure/flora/bush/ausbushes/pointybush{
+	pixel_y = 11
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/technical_storage)
+"lX" = (
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk,
+/turf/open/floor/shiva/yellow/northeast,
+/area/varadero/interior/technical_storage)
+"mE" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/circuitboard/computer/atmos_alert,
+/obj/item/circuitboard/machine/smes{
+	pixel_x = -7;
+	pixel_y = 7
+	},
+/obj/item/storage/box/mousetraps{
+	pixel_x = 5;
+	pixel_y = 13
+	},
+/obj/structure/machinery/firealarm{
+	dir = 8;
+	pixel_x = -24
+	},
+/turf/open/floor/shiva/blue/southwest,
+/area/varadero/interior/technical_storage)
+"no" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/spawner/random/gun/pistol,
+/obj/item/ammo_casing/bullet{
+	current_icon = casing_1
+	},
+/obj/item/ammo_casing/bullet{
+	current_icon = casing_1
+	},
+/turf/open/floor/plating,
+/area/varadero/interior/technical_storage)
+"nL" = (
+/obj/structure/machinery/door/airlock/almayer/engineering{
+	dir = 1;
+	name = "\improper Underground Technical Storage";
+	req_access_txt = "100";
+	welded = 1
+	},
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/technical_storage)
+"pg" = (
+/obj/structure/closet/crate/hydroponics/prespawned,
+/turf/open/floor/shiva/blue/southeast,
+/area/varadero/interior/technical_storage)
+"pi" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 4
+	},
+/turf/open/floor/shiva/yellow/east,
+/area/varadero/interior/technical_storage)
+"pz" = (
+/obj/structure/closet/secure_closet/engineering_welding,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/shiva/blue/north,
+/area/varadero/interior/technical_storage)
+"qg" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/shiva,
+/area/varadero/interior/technical_storage)
+"qE" = (
+/turf/open/floor/shiva/yellow/west,
+/area/varadero/interior/technical_storage)
+"qY" = (
+/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
+/turf/open/floor/shiva/yellow/north,
+/area/varadero/interior/technical_storage)
+"rn" = (
+/obj/structure/barricade/sandbags/wired{
+	pixel_y = -5;
+	dir = 8
+	},
+/obj/item/ammo_casing/shell,
+/obj/item/ammo_casing/shell,
+/obj/item/ammo_casing/shell,
+/turf/open/floor/shiva,
+/area/varadero/interior/technical_storage)
+"rC" = (
+/obj/structure/surface/table{
+	flipped = 1
+	},
+/turf/open/floor/shiva,
+/area/varadero/interior/technical_storage)
+"rU" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/shiva,
+/area/varadero/interior/technical_storage)
+"sB" = (
+/obj/structure/machinery/door/airlock/almayer/maint{
+	name = "\improper Underground Maintenance";
+	req_access_txt = "100";
+	req_one_access = null;
+	welded = 1
+	},
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/technical_storage)
+"tP" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/item/storage/firstaid,
+/turf/open/floor/shiva/yellow/north,
+/area/varadero/interior/technical_storage)
+"uf" = (
+/obj/structure/surface/table,
+/obj/item/cell/high/empty,
+/obj/structure/machinery/cell_charger,
+/obj/structure/machinery/firealarm{
+	dir = 8;
+	pixel_x = -24
+	},
+/turf/open/floor/shiva/yellow/southwest,
+/area/varadero/interior/technical_storage)
+"uh" = (
+/obj/structure/pipes/vents/pump{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/shiva/multi_tiles,
+/area/varadero/interior/technical_storage)
+"uH" = (
+/obj/item/ammo_casing/shell,
+/turf/open/floor/shiva,
+/area/varadero/interior/technical_storage)
+"uR" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/alarm{
+	dir = 4;
+	pixel_x = -24
+	},
+/obj/item/stack/sandbags/large_stack,
+/obj/item/stack/barbed_wire/full_stack{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/floor/shiva/yellow/northwest,
+/area/varadero/interior/technical_storage)
+"uZ" = (
+/obj/structure/window_frame/colony/reinforced,
+/obj/item/shard,
+/obj/item/stack/rods,
+/turf/open/floor/plating,
+/area/varadero/interior/technical_storage)
+"vw" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/newspaper{
+	layer = 2.99;
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/item/device/camera{
+	pixel_x = -5;
+	pixel_y = 9
+	},
+/turf/open/floor/shiva/blue/east,
+/area/varadero/interior/technical_storage)
+"vy" = (
+/turf/open/floor/shiva,
+/area/varadero/interior/technical_storage)
+"vX" = (
+/obj/item/trash/wy_chips_pepper{
+	pixel_x = -6;
+	pixel_y = -11
+	},
+/obj/item/prop/alien/hugger{
+	pixel_y = 6
+	},
+/turf/open/floor/shiva,
+/area/varadero/interior/technical_storage)
+"wk" = (
+/obj/structure/barricade/sandbags/wired{
+	pixel_y = -5
+	},
+/turf/open/floor/shiva/yellow,
+/area/varadero/interior/technical_storage)
+"wE" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/shiva,
+/area/varadero/interior/technical_storage)
+"wJ" = (
+/turf/open/floor/shiva/blue/east,
+/area/varadero/interior/technical_storage)
+"wP" = (
+/obj/structure/machinery/vending/security,
+/turf/open/floor/shiva/blue/northwest,
+/area/varadero/interior/technical_storage)
+"xP" = (
+/obj/effect/spawner/random/gun/shotgun,
+/turf/open/floor/shiva,
+/area/varadero/interior/technical_storage)
+"yI" = (
+/obj/structure/tunnel/maint_tunnel,
+/turf/open/floor/shiva/blue,
+/area/varadero/interior/technical_storage)
+"zQ" = (
+/obj/structure/machinery/cm_vending/sorted/tech/comp_storage,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/shiva/blue/north,
+/area/varadero/interior/technical_storage)
+"Ah" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/shiva/multi_tiles,
+/area/varadero/interior/technical_storage)
+"AG" = (
+/obj/structure/disposalpipe/segment,
+/obj/effect/landmark/objective_landmark/far,
+/obj/item/ammo_casing/cartridge{
+	current_icon = s
+	},
+/obj/item/ammo_casing/cartridge{
+	current_icon = s
+	},
+/turf/open/floor/shiva,
+/area/varadero/interior/technical_storage)
+"Bi" = (
+/obj/structure/bed/chair/comfy/beige{
+	dir = 8
+	},
+/obj/item/paper/crumpled{
+	pixel_x = 15;
+	pixel_y = -9
+	},
+/turf/open/floor/shiva/multi_tiles,
+/area/varadero/interior/technical_storage)
+"Di" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/clothing/mask/cigarette/cigar/tarbacks{
+	pixel_x = -7;
+	pixel_y = 8
+	},
+/obj/item/tool/lighter/zippo/black{
+	pixel_x = -5;
+	pixel_y = 7
+	},
+/obj/item/ashtray/plastic{
+	pixel_x = 6;
+	pixel_y = -4
+	},
+/obj/item/device/flashlight/lamp/green{
+	pixel_x = 3;
+	pixel_y = 11;
+	on = 1
+	},
+/turf/open/floor/shiva/blue,
+/area/varadero/interior/technical_storage)
+"EB" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/obj/structure/machinery/storm_siren{
+	dir = 8;
+	pixel_x = 3
+	},
+/turf/open/floor/shiva/yellow/east,
+/area/varadero/interior/technical_storage)
+"Fm" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	icon_state = "chestdrawer";
+	pixel_x = 8;
+	pixel_y = 11
+	},
+/obj/structure/filingcabinet{
+	density = 0;
+	icon_state = "chestdrawer";
+	pixel_x = -8;
+	pixel_y = 11
+	},
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/shiva/blue/north,
+/area/varadero/interior/technical_storage)
+"Gm" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/clothing/gloves/botanic_leather,
+/obj/item/clothing/mask/cigarette/weed{
+	pixel_x = -11;
+	pixel_y = 16
+	},
+/obj/item/clothing/mask/cigarette/weed{
+	pixel_x = -9;
+	pixel_y = 13
+	},
+/obj/structure/machinery/light,
+/turf/open/floor/shiva/blue,
+/area/varadero/interior/technical_storage)
+"GU" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/light,
+/obj/item/circuitboard/computer/powermonitor,
+/obj/item/stack/cable_coil/cut{
+	pixel_y = 12
+	},
+/turf/open/floor/shiva/blue,
+/area/varadero/interior/technical_storage)
+"GY" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating,
+/area/varadero/interior/technical_storage)
+"Ha" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/reagent_container/glass/paint/black{
+	pixel_x = 8;
+	pixel_y = 10
+	},
+/obj/item/tool/wirecutters/clippers,
+/obj/item/reagent_container/food/drinks/h_chocolate{
+	pixel_x = -6;
+	pixel_y = 12
+	},
+/turf/open/floor/shiva/blue/northeast,
+/area/varadero/interior/technical_storage)
+"Iq" = (
+/obj/structure/pipes/vents/pump{
+	dir = 4
+	},
+/obj/effect/landmark/corpsespawner/security,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/gibs/body,
+/turf/open/floor/shiva,
+/area/varadero/interior/technical_storage)
+"IE" = (
+/turf/closed/wall/r_wall,
+/area/varadero/interior/technical_storage)
+"IS" = (
+/obj/structure/machinery/cm_vending/sorted/tech/comp_storage{
+	req_access_txt = "102"
+	},
+/turf/open/floor/shiva/yellow/north,
+/area/varadero/interior/technical_storage)
+"Kg" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/microwave{
+	desc = "There's two of them.";
+	pixel_x = -3;
+	pixel_y = 7
+	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/shiva/blue/north,
+/area/varadero/interior/technical_storage)
+"KI" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/machinery/door/airlock/almayer/secure{
+	dir = 2;
+	icon_state = "door_locked";
+	locked = 1;
+	name = "Underground Secure Technical Storage";
+	req_access_txt = "100";
+	welded = 1;
+	panel_open = 1
+	},
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/technical_storage)
+"Lc" = (
+/obj/structure/surface/table{
+	flipped = 1s
+	},
+/turf/open/floor/shiva,
+/area/varadero/interior/technical_storage)
+"Lo" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/technical_storage)
+"LP" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/machinery/door/airlock/almayer/engineering{
+	dir = 1;
+	name = "\improper Underground Technical Storage";
+	req_access_txt = "100";
+	welded = 1
+	},
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/technical_storage)
+"MC" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/decal/cleanable/blood/gibs/xeno/body,
+/turf/open/floor/plating,
+/area/varadero/interior/technical_storage)
+"MU" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/technical_storage)
+"Ng" = (
+/turf/closed/wall,
+/area/varadero/interior/technical_storage)
+"Nl" = (
+/obj/structure/barricade/sandbags/wired{
+	pixel_y = -5
+	},
+/turf/open/floor/shiva/yellowfull/west,
+/area/varadero/interior/technical_storage)
+"NA" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/tool/screwdriver{
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/item/tool/plantspray/pests/old/phosmet{
+	pixel_x = -6;
+	pixel_y = 14
+	},
+/obj/item/weapon/wirerod{
+	pixel_x = 8
+	},
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/shiva/blue,
+/area/varadero/interior/technical_storage)
+"Op" = (
+/obj/item/tool/wrench{
+	pixel_x = -9;
+	pixel_y = 14
+	},
+/obj/effect/landmark/corpsespawner/engineer,
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/shiva/multi_tiles,
+/area/varadero/interior/technical_storage)
+"OK" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/barricade/sandbags/wired{
+	pixel_y = 10;
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/technical_storage)
+"OM" = (
+/obj/structure/dispenser,
+/turf/open/floor/shiva/blue/north,
+/area/varadero/interior/technical_storage)
+"Py" = (
+/obj/item/tool/wrench{
+	pixel_y = -20
+	},
+/obj/effect/decal/cleanable/blood/xtracks,
+/obj/item/stack/tile/plasteel{
+	pixel_x = -12;
+	pixel_y = -4
+	},
+/turf/open/floor/shiva,
+/area/varadero/interior/technical_storage)
+"PA" = (
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/technical_storage)
+"Qv" = (
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 4
+	},
+/obj/structure/machinery/defenses/sentry/premade/dumb{
+	desc = "A deployable, semi-automated turret with AI targeting capabilities. Armed with an M30 Autocannon and a high-capacity drum magazine. This one's IFF system has been fried via acid damage, and it will open fire on any targets within range.";
+	name = "Damaged UA-577 Gauss Turret";
+	health = 100;
+	omni_directional = 1
+	},
+/turf/open/floor/shiva,
+/area/varadero/interior/technical_storage)
+"Rf" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/barricade/sandbags/wired{
+	pixel_y = -5
+	},
+/turf/open/floor/shiva/yellowfull/west,
+/area/varadero/interior/technical_storage)
+"RF" = (
+/turf/open/floor/shiva/multi_tiles,
+/area/varadero/interior/technical_storage)
+"SC" = (
+/obj/structure/sign/poster/propaganda,
+/turf/closed/wall/r_wall,
+/area/varadero/interior/technical_storage)
+"Tc" = (
+/obj/item/device/flashlight{
+	on = 1
+	},
+/obj/item/paper/janitor{
+	pixel_y = 8;
+	pixel_x = -8
+	},
+/obj/effect/decal/cleanable/blood/xtracks,
+/turf/open/floor/shiva,
+/area/varadero/interior/technical_storage)
+"Ts" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/item/stack/tile/plasteel{
+	pixel_x = -14;
+	pixel_y = 16
+	},
+/turf/open/floor/shiva/multi_tiles,
+/area/varadero/interior/technical_storage)
+"UA" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/shiva,
+/area/varadero/interior/technical_storage)
+"Wk" = (
+/obj/effect/spawner/random/toolbox,
+/turf/open/floor/shiva/multi_tiles,
+/area/varadero/interior/technical_storage)
+"WQ" = (
+/obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
+/turf/open/floor/shiva/blue/north,
+/area/varadero/interior/technical_storage)
+"Yd" = (
+/obj/structure/bed/chair{
+	dir = 8;
+	pixel_x = -10
+	},
+/turf/open/floor/shiva,
+/area/varadero/interior/technical_storage)
+"Yo" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/computer/communications{
+	dir = 4
+	},
+/turf/open/floor/shiva/blue/west,
+/area/varadero/interior/technical_storage)
+"ZX" = (
+/obj/structure/closet/secure_closet/engineering_electrical,
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/shiva/blue/north,
+/area/varadero/interior/technical_storage)
+
+(1,1,1) = {"
+IE
+IE
+IE
+GY
+SC
+IE
+IE
+IE
+GY
+er
+GY
+IE
+IE
+"}
+(2,1,1) = {"
+GY
+wP
+cJ
+jg
+Yo
+mE
+GY
+uR
+qE
+rn
+vy
+uf
+IE
+"}
+(3,1,1) = {"
+IE
+zQ
+RF
+RF
+Bi
+GU
+Ng
+IS
+vX
+Yd
+uH
+wk
+lb
+"}
+(4,1,1) = {"
+IE
+WQ
+RF
+RF
+RF
+NA
+Ng
+tP
+kO
+xP
+Lc
+wk
+kr
+"}
+(5,1,1) = {"
+GY
+ZX
+Ah
+uh
+Ah
+ah
+GY
+bw
+Tc
+Iq
+Lc
+Nl
+kr
+"}
+(6,1,1) = {"
+GY
+pz
+RF
+no
+Op
+kt
+IE
+ej
+Py
+MC
+rC
+PA
+nL
+"}
+(7,1,1) = {"
+GY
+Fm
+Wk
+jD
+Ts
+MU
+KI
+OK
+aY
+Qv
+wE
+Rf
+uZ
+"}
+(8,1,1) = {"
+IE
+OM
+RF
+lE
+RF
+yI
+Ng
+jE
+qg
+AG
+UA
+Lo
+LP
+"}
+(9,1,1) = {"
+GY
+lj
+RF
+lE
+RF
+Di
+GY
+qY
+rU
+vy
+vy
+Nl
+kr
+"}
+(10,1,1) = {"
+IE
+Kg
+RF
+lE
+RF
+Gm
+Ng
+dN
+rU
+vy
+vy
+wk
+jr
+"}
+(11,1,1) = {"
+GY
+Ha
+wJ
+vw
+ea
+pg
+Ng
+lX
+EB
+pi
+fL
+kY
+kr
+"}
+(12,1,1) = {"
+IE
+GY
+sB
+IE
+GY
+GY
+IE
+GY
+IE
+sB
+GY
+IE
+IE
+"}

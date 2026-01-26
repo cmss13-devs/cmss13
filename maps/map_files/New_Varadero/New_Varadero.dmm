@@ -7036,6 +7036,12 @@
 	},
 /turf/open/floor/wood,
 /area/varadero/interior/hall_SE)
+"fvu" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = engineering_holdout
+	},
+/turf/closed/wall,
+/area/varadero/interior/technical_storage)
 "fvw" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/chem_dispenser/soda/beer{
@@ -39076,7 +39082,7 @@ ykw
 ykw
 ykw
 bIt
-bIt
+fvu
 kGM
 sDj
 wir

@@ -257,6 +257,12 @@
 	},
 /turf/open/floor/shiva/blue/north,
 /area/varadero/interior/administration)
+"aaW" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "EngineeringHoldout"
+	},
+/turf/closed/wall,
+/area/varadero/interior/technical_storage)
 "abf" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
@@ -7036,12 +7042,6 @@
 	},
 /turf/open/floor/wood,
 /area/varadero/interior/hall_SE)
-"fvu" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "EngineeringHoldout"
-	},
-/turf/closed/wall,
-/area/varadero/interior/technical_storage)
 "fvw" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/chem_dispenser/soda/beer{
@@ -39082,7 +39082,7 @@ ykw
 ykw
 ykw
 bIt
-fvu
+aaW
 kGM
 sDj
 wir

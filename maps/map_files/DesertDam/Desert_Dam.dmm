@@ -25369,7 +25369,7 @@
 /turf/open/floor/freezerfloor,
 /area/desert_dam/building/security/prison)
 "cLH" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt/greenglow{
@@ -29118,7 +29118,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/hangar_storage)
 "egr" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 1
 	},
 /turf/open/floor/prison/bright_clean2/southwest,
@@ -35763,7 +35763,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "gJE" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -36159,7 +36159,7 @@
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/backroom)
 "gPO" = (
-/obj/structure/machinery/power/terminal,
+/obj/structure/terminal,
 /turf/open/floor/plating/warnplate/northeast,
 /area/desert_dam/interior/dam_interior/smes_backup)
 "gPR" = (
@@ -36309,7 +36309,7 @@
 /turf/open/desert/cave/cave_shore/southeast,
 /area/desert_dam/interior/dam_interior/western_dam_cave)
 "gTh" = (
-/obj/structure/machinery/power/terminal,
+/obj/structure/terminal,
 /turf/open/floor/plating/warnplate/northwest,
 /area/desert_dam/interior/dam_interior/smes_backup)
 "gTt" = (
@@ -49193,7 +49193,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/medical/maint/south)
 "lUp" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 1
 	},
 /turf/open/floor/plating/warnplate,
@@ -53092,7 +53092,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/overlook)
 "nwE" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 1
 	},
 /turf/open/floor/plating/warnplate,
@@ -57898,7 +57898,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/water_treatment_one/control_room)
 "pnS" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 1
 	},
 /turf/open/floor/prison,
@@ -70793,7 +70793,7 @@
 /turf/open/desert/desert_shore/shore_edge1,
 /area/desert_dam/interior/caves/temple)
 "uhB" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -75269,7 +75269,7 @@
 /turf/open/floor/prison/darkpurple2,
 /area/desert_dam/interior/lab_northeast/east_lab_excavation)
 "vWi" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 1
 	},
 /turf/open/floor/vault2/northeast,

@@ -1,9 +1,58 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/plating,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"ab" = (
+/obj/structure/disposalpipe/broken,
+/obj/item/pipe{
+	color = "green";
+	pixel_x = -2;
+	pixel_y = 5
+	},
+/turf/open/floor/platingdmg1,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"ac" = (
+/obj/structure/disposalpipe/broken{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"ad" = (
+/obj/structure/surface/table,
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/white,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"ae" = (
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 4
+	},
+/turf/open/floor/whitegreen/west,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"af" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/white,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"ag" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/white,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "aG" = (
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/plating,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "bB" = (
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
 /turf/open/floor/whitegreencorner,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "ce" = (
@@ -43,6 +92,8 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
 	},
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/desert_dam/exterior/valley/valley_labs)
 "eK" = (
@@ -101,6 +152,7 @@
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "nV" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/whitegreen/east,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "od" = (
@@ -120,6 +172,7 @@
 /area/desert_dam/exterior/valley/valley_labs)
 "oI" = (
 /obj/effect/decal/cleanable/blood/drip,
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/platingdmg3,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "pp" = (
@@ -149,6 +202,12 @@
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "rH" = (
 /obj/effect/decal/sand_overlay/sand1,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_labs)
 "tc" = (
@@ -182,6 +241,8 @@
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "wP" = (
 /obj/item/stack/rods,
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/plating,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "yL" = (
@@ -251,6 +312,8 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
 	},
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_labs)
 "Hp" = (
@@ -320,6 +383,9 @@
 	icon_state = "gib6";
 	pixel_y = 12
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/white,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "RK" = (
@@ -348,6 +414,9 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/desert_dam/exterior/valley/valley_labs)
 "Uv" = (
+/obj/structure/pipes/vents/pump{
+	dir = 1
+	},
 /turf/open/floor/platingdmg3,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "UF" = (
@@ -370,6 +439,13 @@
 "Xn" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 10
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 5
 	},
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_labs)
@@ -412,7 +488,7 @@ dm
 FH
 eK
 DT
-Tt
+ae
 Tt
 QE
 Tt
@@ -442,7 +518,7 @@ dm
 aG
 tC
 zM
-zM
+af
 zM
 BQ
 oj
@@ -457,7 +533,7 @@ dm
 aG
 tC
 zM
-fw
+ag
 IH
 zM
 ce
@@ -472,7 +548,7 @@ dm
 aG
 tC
 zM
-zM
+af
 cp
 pp
 ZW
@@ -490,7 +566,7 @@ zM
 bB
 nV
 oI
-pp
+ac
 PN
 vA
 XF
@@ -521,8 +597,8 @@ ro
 qa
 qa
 Uv
-PN
-pp
+ab
+aa
 wP
 ed
 Gn
@@ -549,7 +625,7 @@ Ey
 zM
 zL
 Xt
-Xt
+ad
 Fr
 KT
 pp

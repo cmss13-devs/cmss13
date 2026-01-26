@@ -21,6 +21,9 @@
 "aA" = (
 /obj/item/ammo_casing,
 /obj/item/prop/helmetgarb/spent_buckshot,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/security/lobby)
 "aC" = (
@@ -28,12 +31,16 @@
 /obj/item/shard,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/security/lobby)
 "aI" = (
 /obj/structure/disposalpipe/segment,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_security)
 "bc" = (
@@ -109,6 +116,7 @@
 "jg" = (
 /obj/structure/disposalpipe/segment,
 /obj/item/shard,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/desert_dam/exterior/valley/valley_security)
 "jL" = (
@@ -157,8 +165,8 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/security/lobby)
 "nT" = (
-/obj/structure/pipes/vents/pump,
 /obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/security/lobby)
 "oJ" = (
@@ -215,6 +223,7 @@
 /obj/item/ammo_casing,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/corpsespawner/clf,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_security)
 "sw" = (
@@ -230,6 +239,7 @@
 	health = 45;
 	icon_state = "folding_3"
 	},
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/security/lobby)
 "sL" = (
@@ -346,6 +356,7 @@
 /area/desert_dam/exterior/valley/valley_security)
 "AO" = (
 /obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_security)
 "AX" = (
@@ -402,6 +413,7 @@
 /area/desert_dam/exterior/valley/valley_security)
 "Gi" = (
 /obj/effect/spawner/random/gun/cmb,
+/obj/structure/pipes/vents/pump,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/security/lobby)
 "Gp" = (
@@ -531,6 +543,9 @@
 /obj/item/ammo_casing,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/corpsespawner/trijent/nspa_constable,
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 4
+	},
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/security/lobby)
 "NW" = (
@@ -540,6 +555,7 @@
 "Oq" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/machinery/deployable/barrier,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/plating,
 /area/desert_dam/building/security/lobby)
 "OC" = (
@@ -608,6 +624,7 @@
 	pixel_x = -12;
 	pixel_y = 16
 	},
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/security/lobby)
 "RS" = (

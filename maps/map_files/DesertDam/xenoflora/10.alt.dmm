@@ -5,6 +5,77 @@
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_labs)
+"ab" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/white,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"ac" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/white,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"ad" = (
+/obj/structure/disposalpipe/junction{
+	dir = 4;
+	icon_state = "pipe-j2"
+	},
+/turf/open/floor/white,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"ae" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	dir = 2;
+	name = "\improper Xenoflora"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/white,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"af" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 5
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/white,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"ag" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 10
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/white,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"ah" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/white,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"ai" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/white,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"aj" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 10
+	},
+/turf/open/floor/white,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"ak" = (
+/obj/structure/machinery/door/window/southleft{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/white,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "bE" = (
 /obj/structure/surface/table,
 /obj/effect/decal/cleanable/dirt,
@@ -28,6 +99,8 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Xenoflora"
 	},
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/white,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "dl" = (
@@ -97,6 +170,8 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
 	},
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_labs)
 "jS" = (
@@ -195,6 +270,12 @@
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "uo" = (
 /obj/effect/decal/sand_overlay/sand1,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_labs)
 "vM" = (
@@ -204,6 +285,13 @@
 "ws" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 10
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 5
 	},
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_labs)
@@ -356,6 +444,7 @@
 	pixel_x = 2;
 	pixel_y = 21
 	},
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/white,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "MQ" = (
@@ -366,11 +455,17 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
 	},
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/desert_dam/exterior/valley/valley_labs)
 "NN" = (
 /obj/structure/window/reinforced{
 	dir = 4
+	},
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 1
 	},
 /turf/open/floor/whitegreen,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
@@ -380,6 +475,11 @@
 "Pb" = (
 /obj/structure/machinery/door/window/southleft{
 	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c";
+	level = 2
 	},
 /turf/open/floor/white,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
@@ -402,6 +502,10 @@
 /area/desert_dam/exterior/rock)
 "So" = (
 /obj/effect/decal/cleanable/blood/drip,
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
 /turf/open/floor/white,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "Ss" = (
@@ -436,6 +540,10 @@
 	dir = 4;
 	pixel_y = 4
 	},
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 2
+	},
 /turf/open/floor/whitegreen/north,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "Uw" = (
@@ -449,6 +557,9 @@
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_labs)
 "VM" = (
+/obj/structure/pipes/vents/pump{
+	dir = 1
+	},
 /turf/open/floor/whitegreencorner/north,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "VV" = (
@@ -573,7 +684,7 @@ Kc
 (5,1,1) = {"
 Fm
 Ut
-Pb
+ak
 Uw
 bT
 Qi
@@ -588,12 +699,12 @@ Kc
 (6,1,1) = {"
 Fm
 Xe
+ac
 ex
 ex
 ex
 ex
-ex
-ex
+ac
 tl
 OP
 Kc
@@ -605,10 +716,10 @@ Fm
 td
 So
 Md
-ex
-ex
-ex
-ex
+ah
+ah
+ah
+ad
 jj
 OP
 Kc
@@ -623,7 +734,7 @@ lZ
 ki
 AP
 ex
-ex
+ac
 HC
 Fm
 XI
@@ -638,7 +749,7 @@ ex
 Un
 bE
 ex
-ex
+ac
 VV
 Fm
 Cs
@@ -653,7 +764,7 @@ Ek
 Fm
 Fm
 ex
-Ek
+ae
 Fm
 Fm
 mr
@@ -668,7 +779,7 @@ ex
 Yw
 VM
 ex
-ex
+ac
 MQ
 Fm
 pz
@@ -681,9 +792,9 @@ Jj
 ex
 ex
 ex
-ex
-ex
-ex
+aj
+ai
+af
 Yw
 DG
 ha
@@ -698,8 +809,8 @@ ex
 mF
 mF
 ex
-ex
-ex
+ag
+ab
 cz
 MT
 jz

@@ -16116,15 +16116,6 @@
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sp)
-"aQb" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 5
-	},
-/turf/open/floor/almayer,
-/area/almayer/shipboard/brig/cic_hallway)
 "aQc" = (
 /obj/effect/decal/heavy_cable/node_n_e,
 /turf/open/floor/plating/plating_catwalk/no_build,
@@ -36395,7 +36386,7 @@
 	dir = 4
 	},
 /obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 8
+	dir = 1
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/starboard_hallway)
@@ -41418,9 +41409,7 @@
 /area/almayer/shipboard/brig/cic_hallway)
 "cgT" = (
 /obj/structure/disposalpipe/junction,
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 5
-	},
+/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cic_hallway)
 "cgU" = (
@@ -49603,6 +49592,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 1;
 	icon_state = "pipe-c"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 5
 	},
 /turf/open/floor/almayer/red/west,
 /area/almayer/shipboard/brig/starboard_hallway)
@@ -69086,9 +69078,6 @@
 /area/almayer/shipboard/starboard_point_defense)
 "nFI" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 4;
 	id = "kitchen";
@@ -71338,9 +71327,6 @@
 /turf/open/floor/almayer/green/west,
 /area/almayer/hallways/upper/fore_hallway)
 "oyC" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 10
-	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/starboard_hallway)
 "oyG" = (
@@ -84901,6 +84887,7 @@
 /turf/open/floor/almayer/green/west,
 /area/almayer/hallways/upper/fore_hallway)
 "udx" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/blue/west,
 /area/almayer/living/pilotbunks)
 "udG" = (
@@ -88581,13 +88568,11 @@
 /turf/open/floor/almayer/flooredge/north,
 /area/almayer/command/corporateliaison)
 "vzy" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 5
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 2;
 	icon_state = "pipe-c"
 	},
+/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/redcorner/west,
 /area/almayer/shipboard/brig/starboard_hallway)
 "vzz" = (
@@ -93510,13 +93495,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/lower/port_midship_hallway)
-"xuc" = (
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
-	},
-/turf/open/floor/almayer,
-/area/almayer/shipboard/brig/cic_hallway)
 "xud" = (
 /obj/structure/platform_decoration/metal/almayer,
 /obj/structure/machinery/power/apc/almayer/east,
@@ -94937,9 +94915,6 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/offices/flight)
 "xWv" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 10
-	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cic_hallway)
 "xWO" = (
@@ -195608,7 +195583,7 @@ rWs
 rWs
 rQt
 cgT
-xuc
+omy
 gXx
 wdh
 wIC
@@ -195711,7 +195686,7 @@ uVA
 eAF
 wIQ
 xWv
-aQb
+uwN
 vka
 jUY
 wIC

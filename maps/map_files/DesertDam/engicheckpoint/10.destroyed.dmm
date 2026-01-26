@@ -16,6 +16,9 @@
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "ac" = (
 /obj/structure/machinery/light,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "ad" = (
@@ -63,8 +66,53 @@
 	},
 /turf/open/desert/rock/deep/transition/north,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"ak" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/structure/pipes/standard/manifold/hidden/green,
+/obj/structure/disposalpipe/junction{
+	dir = 8
+	},
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"al" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment,
+/turf/open/asphalt/cement/cement12,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"am" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment,
+/turf/open/asphalt/cement,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"an" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment,
+/turf/open/asphalt/cement,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"ao" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"ap" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/interior/wood/alt,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "aq" = (
 /turf/closed/wall,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"ar" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "by" = (
 /obj/effect/decal/sand_overlay/sand2/corner2{
@@ -77,9 +125,6 @@
 /turf/open/asphalt/cement/cement12,
 /area/desert_dam/interior/dam_interior/south_tunnel)
 "cp" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/structure/machinery/door/poddoor/almayer/planet_side_blastdoor{
 	id = "dam_stormlock_east";
 	name = "\improper Storm Lock";
@@ -93,9 +138,6 @@
 "cK" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
 	},
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/south_tunnel)
@@ -122,6 +164,12 @@
 "ey" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal4"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
@@ -196,9 +244,6 @@
 /turf/open/asphalt/cement/cement4,
 /area/desert_dam/interior/dam_interior/south_tunnel)
 "kf" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/structure/barricade/deployable{
 	dir = 8
 	},
@@ -225,9 +270,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "nz" = (
@@ -252,6 +294,8 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment,
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "oC" = (
@@ -284,22 +328,15 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "pV" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/ammo_casing,
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment,
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
-"qc" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/asphalt,
-/area/desert_dam/exterior/valley/bar_valley_dam)
 "qd" = (
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 4
@@ -341,11 +378,14 @@
 	amount = 2
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/vents/pump,
 /turf/open/floor/interior/wood,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "sW" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/barricade/wooden,
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment,
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "ts" = (
@@ -389,6 +429,12 @@
 	icon_state = "road_edge_decal4"
 	},
 /obj/effect/decal/cleanable/blood,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "xQ" = (
@@ -447,6 +493,12 @@
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal4"
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/south_tunnel)
 "Bu" = (
@@ -488,6 +540,11 @@
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "EY" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
 /turf/open/floor/plating/burnt_platingdmg3,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "Gc" = (
@@ -502,6 +559,9 @@
 "Gz" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/ammo_casing,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/interior/wood,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "GA" = (
@@ -519,6 +579,12 @@
 "Ha" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal4"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
 	},
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
@@ -548,6 +614,8 @@
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "Ik" = (
 /obj/effect/decal/cleanable/blood,
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment,
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "IK" = (
@@ -675,6 +743,12 @@
 	name = "\improper Storm Lock";
 	dir = 4
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "Nk" = (
@@ -701,6 +775,8 @@
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "NW" = (
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "NZ" = (
@@ -722,10 +798,10 @@
 /obj/structure/barricade/deployable{
 	dir = 4
 	},
-/turf/open/asphalt,
-/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
-"PN" = (
 /obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /turf/open/asphalt,
@@ -771,9 +847,6 @@
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "Sr" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/south_tunnel)
 "SA" = (
@@ -812,6 +885,8 @@
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "Ua" = (
 /obj/item/stack/rods,
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "Um" = (
@@ -836,9 +911,6 @@
 "Wl" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
 	},
 /obj/structure/barricade/deployable{
 	dir = 4
@@ -884,12 +956,10 @@
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "YK" = (
 /obj/item/ammo_casing,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/interior/wood,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "YX" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/effect/spawner/gibspawner/xeno,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
@@ -978,9 +1048,9 @@ Bv
 Bv
 aq
 NW
-iy
-iy
-iy
+ar
+ar
+ao
 RA
 NL
 Zn
@@ -1005,7 +1075,7 @@ aq
 JM
 Nk
 Nk
-JM
+ap
 RA
 NJ
 Zn
@@ -1015,7 +1085,7 @@ oC
 Si
 nK
 Ha
-PN
+et
 et
 JW
 Wi
@@ -1065,7 +1135,7 @@ Si
 Si
 rs
 Ha
-PN
+et
 et
 JW
 LJ
@@ -1085,12 +1155,12 @@ Ua
 pV
 oA
 sW
-hE
-Si
+an
+am
 Ik
-rs
-Ha
-PN
+al
+ak
+et
 et
 MK
 Um
@@ -1140,7 +1210,7 @@ Xz
 NZ
 Xz
 Nh
-PN
+et
 da
 JW
 Xz
@@ -1165,7 +1235,7 @@ jt
 tL
 Qg
 Ha
-PN
+et
 yI
 JW
 HY
@@ -1215,7 +1285,7 @@ JL
 SZ
 qd
 ey
-qc
+zX
 zX
 jg
 Hm

@@ -15,6 +15,21 @@
 /obj/item/prop/colony/used_flare,
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/dam_interior/lower_stairwell)
+"ac" = (
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 8
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/lower_stairwell)
+"ad" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/vents/pump{
+	dir = 8
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/lower_stairwell)
 "ai" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/prison/southwest,
@@ -39,10 +54,12 @@
 "ds" = (
 /obj/structure/disposalpipe/segment,
 /obj/item/ammo_casing,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/lower_stairwell)
 "dA" = (
 /obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/plating/burnt_platingdmg3,
 /area/desert_dam/interior/dam_interior/smes_backup)
 "dC" = (
@@ -88,7 +105,6 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/smes_backup)
 "fc" = (
-/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/sheet/metal,
 /obj/item/shard,
@@ -103,20 +119,18 @@
 /area/desert_dam/interior/dam_interior/lower_stairwell)
 "hm" = (
 /obj/structure/machinery/disposal,
-/obj/structure/disposalpipe/trunk{
-	dir = 1
-	},
 /obj/structure/machinery/light{
 	dir = 8
+	},
+/obj/structure/disposalpipe/trunk{
+	dir = 4
 	},
 /turf/open/floor/prison/darkyellow2/southwest,
 /area/desert_dam/interior/dam_interior/smes_backup)
 "hr" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/pipes/standard/manifold/hidden/green{
-	dir = 4
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/lower_stairwell)
 "id" = (
@@ -182,6 +196,10 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_room)
 "pj" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
 /turf/open/floor/prison/darkyellow2,
 /area/desert_dam/interior/dam_interior/smes_backup)
 "pq" = (
@@ -221,15 +239,13 @@
 /turf/open/floor/prison/darkyellow2,
 /area/desert_dam/interior/dam_interior/lower_stairwell)
 "tH" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 5
-	},
 /obj/structure/disposalpipe/junction{
 	dir = 8
 	},
 /obj/structure/barricade/wooden{
 	dir = 8
 	},
+/obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/lower_stairwell)
 "uQ" = (
@@ -248,12 +264,6 @@
 	},
 /turf/open/floor/prison/darkyellowcorners2/north,
 /area/desert_dam/interior/dam_interior/smes_backup)
-"vZ" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/interior/dam_interior/lower_stairwell)
 "yn" = (
 /obj/structure/largecrate/empty/case/double,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -265,9 +275,6 @@
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/engine_room)
 "zm" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
 /obj/item/shard,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/lower_stairwell)
@@ -283,6 +290,9 @@
 /area/desert_dam/interior/dam_interior/lower_stairwell)
 "AC" = (
 /obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /turf/open/floor/prison/bright_clean/southwest,
@@ -346,10 +356,12 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 5
+	},
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/smes_backup)
 "FT" = (
-/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/burnt_platingdmg3,
 /area/desert_dam/interior/dam_interior/smes_backup)
@@ -358,9 +370,6 @@
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/smes_backup)
 "Gd" = (
-/obj/structure/pipes/vents/pump{
-	dir = 8
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/barricade/wooden{
 	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
@@ -381,6 +390,7 @@
 "GI" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/smes_backup)
 "It" = (
@@ -396,13 +406,16 @@
 	dir = 2;
 	name = "\improper Engineering Hallway"
 	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/lower_stairwell)
 "JB" = (
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/smes_backup)
 "Ks" = (
-/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/ammo_casing,
 /turf/open/floor/prison/bright_clean/southwest,
@@ -414,16 +427,13 @@
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "Lu" = (
-/obj/structure/pipes/standard/manifold/hidden/green{
-	dir = 8
-	},
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/prop/colony/used_flare,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/lower_stairwell)
 "LR" = (
-/obj/structure/disposalpipe/segment,
 /obj/structure/largecrate/random/barrel/yellow{
 	pixel_x = -5
 	},
@@ -460,14 +470,14 @@
 /turf/open/floor/plating/warnplate/southwest,
 /area/desert_dam/interior/dam_interior/smes_backup)
 "Sd" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
 /obj/structure/disposalpipe/junction{
 	dir = 8;
 	icon_state = "pipe-j2"
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 10
+	},
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/lower_stairwell)
 "Sf" = (
@@ -504,10 +514,6 @@
 /area/desert_dam/interior/dam_interior/lower_stairwell)
 "WM" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
-	},
 /obj/item/clothing/gloves/yellow,
 /turf/open/floor/prison/darkyellow2/west,
 /area/desert_dam/interior/dam_interior/smes_backup)
@@ -555,13 +561,6 @@
 /obj/item/stack/sandbags/large_stack,
 /turf/open/floor/plating/warnplate/west,
 /area/desert_dam/interior/dam_interior/smes_backup)
-"Zy" = (
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
-	},
-/turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/interior/dam_interior/smes_backup)
 "ZL" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -574,7 +573,7 @@ Cn
 Cn
 Cn
 AU
-vZ
+jC
 Ji
 dC
 BW
@@ -607,14 +606,14 @@ VU
 Ra
 Ra
 Lu
-Ra
+ac
 hr
 tH
 re
 FU
 pq
 SF
-Zy
+JB
 JB
 pj
 BW
@@ -624,7 +623,7 @@ kl
 kl
 kl
 Gd
-kl
+ad
 ZL
 Sd
 ds

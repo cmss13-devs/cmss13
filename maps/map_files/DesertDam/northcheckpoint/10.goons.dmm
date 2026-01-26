@@ -1,6 +1,9 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
 /obj/effect/decal/cleanable/blood/xeno,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /turf/open/floor/prison/floor_plate/southwest,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "ab" = (
@@ -28,6 +31,31 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"ad" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"ae" = (
+/obj/structure/desertdam/decals/road_edge,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"af" = (
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 4
+	},
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"ag" = (
+/obj/structure/machinery/door/poddoor/almayer/planet_side_blastdoor{
+	id = "dam_checkpoint_northwest";
+	name = "\improper Checkpoint Lock"
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "aM" = (
 /obj/item/ammo_magazine/rifle{
 	current_rounds = 0
@@ -36,6 +64,7 @@
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "aP" = (
 /obj/item/stack/sheet/metal,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "be" = (
@@ -146,6 +175,7 @@
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "lu" = (
 /obj/item/stack/sheet/metal,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "mS" = (
@@ -246,6 +276,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "wR" = (
@@ -263,6 +294,7 @@
 /obj/effect/decal/cleanable/blood,
 /obj/effect/spawner/random/gun/corporate,
 /obj/effect/landmark/corpsespawner/wygoon/trijent,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "xP" = (
@@ -319,6 +351,7 @@
 /obj/item/ammo_magazine/rifle{
 	current_rounds = 0
 	},
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "DQ" = (
@@ -388,6 +421,7 @@
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "HO" = (
 /obj/item/prop/colony/used_flare,
+/obj/structure/pipes/vents/pump,
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "JA" = (
@@ -476,10 +510,14 @@
 	pixel_x = 4;
 	pixel_y = 12
 	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "QE" = (
 /obj/effect/spawner/gibspawner/xeno,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "QM" = (
@@ -487,6 +525,9 @@
 /obj/item/tool/stamp,
 /obj/effect/landmark/objective_landmark/far,
 /obj/item/shard,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "QO" = (
@@ -706,7 +747,7 @@ DR
 GK
 QO
 sl
-QO
+ae
 QO
 QO
 xP
@@ -717,15 +758,15 @@ VY
 nN
 "}
 (10,1,1) = {"
-fx
+ag
 wH
-OR
-OR
+ad
+af
 xG
-OR
-OR
+ad
+ad
 lu
-OR
+ad
 aP
 CH
 QE

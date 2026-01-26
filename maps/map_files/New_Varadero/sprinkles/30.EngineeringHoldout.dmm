@@ -536,10 +536,11 @@
 /turf/open/floor/shiva/floor3,
 /area/template_noop)
 "Lc" = (
-/obj/structure/surface/table{
-	flipped = 1s
+/obj/structure/barricade/sandbags/wired{
+	pixel_y = -5
 	},
-/turf/open/floor/shiva,
+/obj/item/ammo_casing/shell,
+/turf/open/floor/shiva/yellow,
 /area/template_noop)
 "Lo" = (
 /obj/structure/disposalpipe/segment,
@@ -562,13 +563,6 @@
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/effect/decal/cleanable/blood/gibs/xeno/body,
 /turf/open/floor/plating,
-/area/template_noop)
-"MR" = (
-/obj/structure/barricade/sandbags/wired{
-	pixel_y = -5
-	},
-/obj/item/ammo_casing/shell,
-/turf/open/floor/shiva/yellow,
 /area/template_noop)
 "MU" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -768,7 +762,7 @@ Ng
 tP
 kO
 xP
-Lc
+rC
 wk
 kr
 "}
@@ -783,7 +777,7 @@ GY
 bw
 Tc
 Iq
-Lc
+rC
 Nl
 kr
 "}
@@ -859,7 +853,7 @@ dN
 rU
 vy
 uH
-MR
+Lc
 jr
 "}
 (11,1,1) = {"

@@ -4,7 +4,7 @@
 /turf/open/floor/plating/platingdmg2,
 /area/lv624/lazarus/corporate_dome)
 "ab" = (
-/obj/item/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
 /turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
 "ac" = (
@@ -44,7 +44,7 @@
 /turf/open/floor/whiteblue/east,
 /area/lv624/lazarus/corporate_dome)
 "ag" = (
-/obj/item/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/landing_zones/lz2)
 "aQ" = (
@@ -253,7 +253,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/item/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
 /turf/open/floor/whiteblue/east,
 /area/lv624/lazarus/corporate_dome)
 "kU" = (
@@ -297,7 +297,7 @@
 /area/lv624/lazarus/corporate_dome)
 "mg" = (
 /obj/effect/decal/cleanable/blood,
-/obj/item/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
 /turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
 "mi" = (
@@ -314,7 +314,7 @@
 /area/lv624/lazarus/corporate_dome)
 "mw" = (
 /obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon,
-/obj/item/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
 /turf/open/floor/dark,
 /area/lv624/lazarus/corporate_dome)
 "mK" = (
@@ -675,7 +675,7 @@
 /turf/open/floor/whiteblue/west,
 /area/lv624/lazarus/corporate_dome)
 "Hn" = (
-/obj/item/ammo_casing/bullet{
+/obj/effect/decal/ammo_casing{
 	icon_state = "cartridge_9_1"
 	},
 /obj/effect/decal/cleanable/blood/gibs/xeno,
@@ -792,7 +792,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/corporate_dome)
 "Pr" = (
-/obj/item/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
 /turf/open/floor/whiteyellowcorner/east,
 /area/lv624/lazarus/corporate_dome)
 "Qi" = (
@@ -880,7 +880,7 @@
 /area/lv624/lazarus/corporate_dome)
 "Wx" = (
 /obj/effect/decal/cleanable/blood/drip,
-/obj/item/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
 /turf/open/floor/whiteyellowcorner,
 /area/lv624/lazarus/corporate_dome)
 "Xc" = (
@@ -888,7 +888,7 @@
 	dir = 4;
 	health = 200
 	},
-/obj/item/ammo_casing/cartridge,
+/obj/effect/decal/ammo_casing/cartridge,
 /turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
 "Xf" = (

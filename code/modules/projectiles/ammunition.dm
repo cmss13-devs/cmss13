@@ -1,4 +1,4 @@
-//Magazine items, and casings.
+//Magazine items, casings in decals\casings.dm.
 /*
 Boxes of ammo. Certain weapons have internal boxes of ammo that cannot be removed and function as part of the weapon.
 They're all essentially identical when it comes to getting the job done.
@@ -328,72 +328,3 @@ If it is the same and the other stack isn't full, transfer an amount (default 1)
 	if(bullet.handful_color)
 		color = bullet.handful_color
 	update_icon()
-
-//----------------------------------------------------------------//
-
-
-/*
-Doesn't do anything or hold anything anymore.
-Generated per the various mags, and then changed based on the number of
-casings. .dir is the main thing that controls the icon. It modifies
-the icon_state to look like more casings are hitting the ground.
-There are 8 directions, 8 bullets are possible so after that it tries to grab the next
-icon_state while reseting the direction. After 16 casings, it just ignores new
-ones. At that point there are too many anyway. Shells and bullets leave different
-items, so they do not intersect. This is far more efficient than using Bl*nd() or
-Turn() or Shift() as there is virtually no overhead. ~N
-*/
-/obj/item/ammo_casing
-	name = "spent casing"
-	desc = "Empty and useless now."
-	icon = 'icons/obj/items/casings.dmi'
-	icon_state = "casing"
-	throwforce = 1
-	w_class = SIZE_TINY
-	layer = LOWER_ITEM_LAYER //Below other objects
-	dir = NORTH //Always north when it spawns.
-	flags_atom = FPRINT|CONDUCT|DIRLOCK
-	matter = list("metal" = 8) //tiny amount of metal
-	var/current_casings = 1 //This is manipulated in the procs that use these.
-	var/max_casings = 16
-	var/current_icon = 0
-	var/number_of_states = 10 //How many variations of this item there are.
-	garbage = TRUE
-
-/obj/item/ammo_casing/Initialize()
-	. = ..()
-	pixel_x = rand(-2.0, 2) //Want to move them just a tad.
-	pixel_y = rand(-2.0, 2)
-	icon_state += "_[rand(1,number_of_states)]" //Set the icon to it.
-
-//This does most of the heavy lifting. It updates the icon and name if needed, then changes .dir to simulate new casings.
-/obj/item/ammo_casing/update_icon()
-	if(max_casings >= current_casings)
-		if(current_casings == 2)
-			name += "s" //In case there is more than one.
-		if(floor((current_casings-1)/8) > current_icon)
-			current_icon++
-			icon_state += "_[current_icon]"
-
-		var/I = current_casings*8 // For the metal.
-		matter = list("metal" = I)
-		var/base_direction = current_casings - (current_icon * 8)
-		setDir(base_direction + floor(base_direction)/3)
-		switch(current_casings)
-			if(3 to 5)
-				w_class = SIZE_SMALL //Slightly heavier.
-			if(9 to 10)
-				w_class = SIZE_MEDIUM //Can't put it in your pockets and stuff.
-
-
-//Making child objects so that locate() and istype() doesn't screw up.
-/obj/item/ammo_casing/bullet
-
-/obj/item/ammo_casing/cartridge
-	name = "spent cartridge"
-	icon_state = "cartridge"
-
-/obj/item/ammo_casing/shell
-	name = "spent shell"
-	icon_state = "shell"
-

@@ -199,7 +199,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		/obj/item/attachable/compensator,
 	)
 
-	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG|GUN_AUTO_EJECT_CASINGS
 
 /obj/item/weapon/gun/shotgun/merc/Initialize(mapload, spawn_empty)
 	. = ..()
@@ -256,6 +256,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	icon_state = "es7"
 	item_state = "es7"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/WY/shotguns.dmi'
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG|GUN_AUTO_EJECT_CASINGS
 	gauge = "20g"
 	hud_offset = -5
 	pixel_x = -5
@@ -318,7 +319,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/WY/shotguns.dmi'
 	icon_state = "mk221"
 	item_state = "mk221"
-
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG|GUN_AUTO_EJECT_CASINGS
 	fire_sound = "gun_shotgun_tactical"
 	firesound_volume = 20
 	current_mag = /obj/item/ammo_magazine/internal/shotgun
@@ -414,7 +415,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/buckshot
 
 	flags_equip_slot = SLOT_WAIST|SLOT_BACK
-	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG|GUN_AUTO_EJECT_CASINGS
 	auto_retrieval_slot = WEAR_J_STORE
 	start_automatic = TRUE
 
@@ -476,7 +477,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		/obj/item/attachable/burstfire_assembly,
 		/obj/item/attachable/stock/type23, // Stock
 		)
-	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_INTERNAL_MAG
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_INTERNAL_MAG|GUN_AUTO_EJECT_CASINGS
 	flags_equip_slot = SLOT_BACK
 	map_specific_decoration = FALSE
 	gauge = "8g"
@@ -569,7 +570,6 @@ can cause issues with ammo types getting mixed up during the burst.
 		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/stock/type23, //Stock
 	)
-	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_INTERNAL_MAG
 	flags_equip_slot = SLOT_BACK
 	map_specific_decoration = FALSE
 	gauge = "8g"
@@ -731,6 +731,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		playsound(user, break_sound, 25, 1)
 	else
 		playsound(user, seal_sound, 25, 1)
+		eject_casing() // very cool
 
 
 /obj/item/weapon/gun/shotgun/double/with_stock/handle_starting_attachment()
@@ -764,7 +765,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	icon_state = "sshotgun"
 	item_state = "sshotgun"
 	flags_equip_slot = SLOT_WAIST
-	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG|GUN_MANUAL_EJECT_CASINGS
 
 /obj/item/weapon/gun/shotgun/double/sawn/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 19, "rail_x" = 11, "rail_y" = 20, "under_x" = 15, "under_y" = 14,  "stock_x" = 18, "stock_y" = 16)
@@ -1009,13 +1010,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	aim_slowdown = SLOWDOWN_ADS_LMG //Quite slow, but VB has light-armor slowdown and doesn't feel pain.
 	civilian_usable_override = FALSE
 	var/braced = FALSE
-	var/fired_shots = 0 //How many shots were fired since it was last closed, for casing ejection purposes.
-	var/image/fired_casing
-
-/obj/item/weapon/gun/shotgun/double/twobore/Initialize(mapload, spawn_empty)
-	. = ..()
-	fired_casing = image('icons/obj/items/weapons/projectiles.dmi', "casing_twobore", ABOVE_BLOOD_LAYER)
-	fired_casing.appearance_flags = PIXEL_SCALE
+	var/fired_shots = 0 //How many shots were fired since it was last closed, for casing ejection purposes. // somewhat deprecated now, but still used for the messaging
 
 /obj/item/weapon/gun/shotgun/double/twobore/set_gun_config_values()
 	..()
@@ -1066,11 +1061,8 @@ can cause issues with ammo types getting mixed up during the burst.
 	else
 		to_chat(user, SPAN_NOTICE("Two empty shells fall to [floor] as you open the [initial(name)]."))
 
-	playsound(user, "gun_casing_shotgun", 25, TRUE)
+	eject_casing()
 
-	for(var/I in 1 to fired_shots)
-		fired_casing.transform = matrix(rand(0,359), MATRIX_ROTATE)*matrix(rand(-14,14), rand(-14,14), MATRIX_TRANSLATE)
-		floor.overlays += fired_casing
 	fired_shots = 0
 
 /obj/item/weapon/gun/shotgun/double/twobore/Fire(atom/target, mob/living/carbon/human/user, params, reflex = 0, dual_wield) //Using this instead of apply_bullet_effects() as RPG does so I get more granular angles than just user direction.
@@ -1312,6 +1304,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	ready_shotgun_tube()
 
 	playsound(user, pump_sound, 10, 1)
+	eject_casing()
 	recent_pump = world.time
 	if (in_chamber)
 		pumped = TRUE

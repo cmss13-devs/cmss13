@@ -186,7 +186,7 @@
 	///What attachments this gun starts with THAT CAN BE REMOVED. Important to avoid nuking the attachments on restocking! Added on New()
 	var/list/starting_attachment_types = null
 
-	var/flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
+	var/flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AUTO_EJECT_CASINGS
 	///Only guns of the same category can be fired together while dualwielding.
 	var/gun_category
 
@@ -247,6 +247,8 @@
 	var/projectile_type = /obj/projectile
 	/// The multiplier for how much slower this should fire in automatic mode. 1 is normal, 1.2 is 20% slower, 2 is 100% slower, etc. Protected due to it never needing to be edited.
 	VAR_PROTECTED/autofire_slow_mult = 1
+	/// How many empty shell casings are in the gun?
+	var/empty_casings = 0
 
 	/// Whether the weapon has expended it's "second wind" and lost its acid protection.
 	var/has_second_wind = TRUE
@@ -1320,6 +1322,14 @@ and you're good to go.
 		projectile_to_fire.def_zone = user.zone_selected
 
 	play_firing_sounds(projectile_to_fire, user)
+	if(flags_gun_features & (GUN_INTERNAL_MAG|GUN_MANUAL_EJECT_CASINGS)) //snowflake define for bolt actions or other weird guns that eject casings manually
+		empty_casings++ // accurate case ejections for these guns would be better
+
+	else if(prob(15) && flags_gun_features & GUN_AUTO_EJECT_CASINGS) // dont want to litter the ground too much, also dont want to unnecessarily increase the count for caseless weapons
+		empty_casings++
+
+	if((flags_gun_features & GUN_AUTO_EJECT_CASINGS))
+		eject_casing()
 
 	simulate_recoil(dual_wield, user, target)
 
@@ -1555,6 +1565,17 @@ and you're good to go.
 
 		user.track_shot(initial(name))
 		apply_bullet_effects(projectile_to_fire, user, bullets_fired, dual_wield) //We add any damage effects that we need.
+
+		// eject casing logic for PBs
+		if(flags_gun_features & (GUN_INTERNAL_MAG|GUN_MANUAL_EJECT_CASINGS))
+			empty_casings++
+
+		else if(prob(15) && flags_gun_features & GUN_AUTO_EJECT_CASINGS)
+			empty_casings++
+
+		if((flags_gun_features & GUN_AUTO_EJECT_CASINGS))
+			eject_casing()
+		//end
 
 		SEND_SIGNAL(projectile_to_fire, COMSIG_BULLET_USER_EFFECTS, user)
 		SEND_SIGNAL(user, COMSIG_BULLET_DIRECT_HIT, attacked_mob)
@@ -2212,6 +2233,15 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 	current_mag.current_rounds--
 
+	if(flags_gun_features & (GUN_INTERNAL_MAG|GUN_MANUAL_EJECT_CASINGS))
+		empty_casings++
+
+	else if (flags_gun_features & GUN_AUTO_EJECT_CASINGS) // drop a casing and prove a point
+		empty_casings++
+
+	if((flags_gun_features & GUN_AUTO_EJECT_CASINGS))
+		eject_casing()
+
 	if(gun_area.ceiling <= CEILING_GLASS)
 		gun_turf.ceiling_debris()
 
@@ -2268,3 +2298,29 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 			if(!explo_proof) // heavy explosions don't care if the weapon has it's protection left; else you'd get weird situations where OBs/yautja SD/etc leave damaged but working guns everywhere.
 				visible_message(SPAN_DANGER(SPAN_UNDERLINE("[src] [msg]")))
 				deconstruct(FALSE)
+
+/// For ejecting the spent casing from corresponding guns
+/obj/item/weapon/gun/proc/eject_casing()
+	if(empty_casings <= 0)
+		return
+
+	if(!ammo)
+		return
+
+	if(empty_casings >= 1)
+		if(ammo.shell_casing)
+			var/turf/ejection_turf = get_turf(src)
+			if(!ejection_turf)
+				return
+
+			for(var/ejecting = 1 to empty_casings)
+				var/obj/effect/decal/ammo_casing/casing = new ammo.shell_casing
+				var/image/casing_image = casing.actual_casing
+				if(casing_image)
+					casing_image.transform = matrix(rand(0,359), MATRIX_ROTATE) * matrix(rand(-14,14), rand(-14,14), MATRIX_TRANSLATE)
+					ejection_turf.overlays += casing_image
+
+				var/eject_noise = casing.ejection_sfx
+				playsound(loc, eject_noise, 25, TRUE)
+
+	empty_casings = 0

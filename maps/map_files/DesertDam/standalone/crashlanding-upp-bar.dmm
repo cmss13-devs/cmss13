@@ -54,7 +54,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "aO" = (
@@ -105,7 +105,7 @@
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/backroom)
 "bI" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
 /turf/open/desert/dirt/desert_transition_edge1/northeast,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "bJ" = (
@@ -343,7 +343,7 @@
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "gA" = (
 /obj/structure/disposalpipe/segment,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "gM" = (
@@ -351,7 +351,7 @@
 /turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "gN" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
 /obj/effect/decal/cleanable/blood,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
@@ -372,7 +372,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "hi" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "hk" = (
@@ -471,7 +471,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "iI" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
 /turf/open/desert/rock,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "iL" = (
@@ -534,7 +534,7 @@
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/building/bar/bar)
 "jw" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
 /turf/open/desert/dirt/desert_transition_edge1/southeast,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "jy" = (
@@ -567,7 +567,7 @@
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal2"
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "ki" = (
@@ -663,7 +663,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "mT" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
 /obj/structure/machinery/light/double{
 	dir = 1
 	},
@@ -681,7 +681,7 @@
 /area/desert_dam/building/bar/bar)
 "np" = (
 /obj/structure/flora/grass/desert/lightgrass_1,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
 /turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "nt" = (
@@ -753,7 +753,7 @@
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/bar)
 "oF" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
 /obj/item/ammo_magazine/rifle/type71/heap{
 	current_rounds = 0
 	},
@@ -770,7 +770,7 @@
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "oN" = (
 /obj/effect/decal/sand_overlay/sand1,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "pk" = (
@@ -952,7 +952,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "tl" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
 /turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "tu" = (
@@ -1058,7 +1058,7 @@
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal5"
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "vR" = (
@@ -1211,7 +1211,7 @@
 	},
 /area/desert_dam/building/bar/bar)
 "xP" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
 /turf/open/desert/dirt/desert_transition_edge1/northwest,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "xT" = (
@@ -1631,7 +1631,7 @@
 /area/desert_dam/building/bar/bar)
 "Ec" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "Eg" = (
@@ -1679,7 +1679,7 @@
 	icon_state = "W"
 	},
 /obj/structure/disposalpipe/segment,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "Fa" = (
@@ -1722,7 +1722,7 @@
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "FF" = (
 /obj/structure/disposalpipe/segment,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
 /obj/item/prop/colony/used_flare,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
@@ -1737,7 +1737,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "Gd" = (
@@ -1952,7 +1952,7 @@
 /turf/open/desert/dirt/desert_transition_edge1/southwest,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "LD" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
 /turf/open/desert/dirt/desert_transition_edge1/west,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "LF" = (
@@ -1969,7 +1969,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached16,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "Ms" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
 /obj/item/prop/colony/usedbandage{
 	dir = 1
 	},
@@ -2108,7 +2108,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "OZ" = (
@@ -2372,7 +2372,7 @@
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "TH" = (
 /obj/effect/decal/sand_overlay/sand1,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
 /obj/effect/landmark/crap_item,
 /turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
@@ -2390,7 +2390,7 @@
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/bar/bar_restroom)
 "Ug" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "Ui" = (
@@ -2451,7 +2451,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "Vg" = (
@@ -2608,7 +2608,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 6
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
 /turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "Xv" = (
@@ -2668,7 +2668,7 @@
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal3"
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "YK" = (

@@ -89,6 +89,7 @@
 	name = "crude sniper bullet"
 	damage = 42
 	penetration = ARMOR_PENETRATION_TIER_6
+	shell_casing = /obj/effect/decal/ammo_casing/cartridge
 
 /datum/ammo/bullet/sniper/crude/on_hit_mob(mob/M, obj/projectile/P)
 	. = ..()
@@ -98,6 +99,7 @@
 	name = "armor-piercing sniper bullet"
 	damage = 80
 	penetration = ARMOR_PENETRATION_TIER_10
+	shell_casing = /obj/effect/decal/ammo_casing/cartridge //traditionally, SVDs use casings
 
 /datum/ammo/bullet/sniper/anti_materiel
 	name = "anti-materiel sniper bullet"
@@ -107,6 +109,7 @@
 	damage = 125
 	shell_speed = AMMO_SPEED_TIER_6
 	penetration = ARMOR_PENETRATION_TIER_10 + ARMOR_PENETRATION_TIER_5
+	shell_casing = /obj/effect/decal/ammo_casing/cartridge // I would be surprised if something as powerful as this would not need a casing
 
 /datum/ammo/bullet/sniper/anti_materiel/proc/stopping_power_knockback(mob/living/living_mob, obj/projectile/fired_projectile)
 	var/stopping_power = min(CEILING((fired_projectile.damage/30), 1), 5) // This is from bullet damage, and does not take Aimed Shot into account.
@@ -275,6 +278,7 @@
 	handful_state = "vulture_bullet"
 	sound_hit = 'sound/bullets/bullet_vulture_impact.ogg'
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_SNIPER|AMMO_IGNORE_COVER|AMMO_ANTIVEHICLE
+	shell_casing = /obj/effect/decal/ammo_casing/cartridge
 
 /datum/ammo/bullet/sniper/anti_materiel/vulture/on_hit_mob(mob/hit_mob, obj/projectile/bullet)
 	. = ..()
@@ -317,6 +321,7 @@
 	damage = 150
 	shell_speed = AMMO_SPEED_TIER_6 + AMMO_SPEED_TIER_2
 	penetration = ARMOR_PENETRATION_TIER_10 + ARMOR_PENETRATION_TIER_5
+	shell_casing = /obj/effect/decal/ammo_casing/cartridge
 
 /datum/ammo/bullet/sniper/elite/set_bullet_traits()
 	. = ..()

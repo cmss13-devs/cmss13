@@ -80,7 +80,7 @@
 		return
 
 	if (HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
-		to_chat(user, "It's a holotable!  There are no bolts!")
+		to_chat(user, "It's a holotable! There are no bolts!")
 		return
 
 	. = ..()

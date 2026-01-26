@@ -414,6 +414,8 @@
 #define WALL_AICORE "aiwall"
 #define WALL_UPP_SHIP "uppwall_interior"
 #define WALL_UPP_BASE "uppwall"
+#define WALL_ANCIENT_BASE "ancient_stone"
+#define WALL_RUNEDSTONE "runedstone"
 
 //Defines for dropship weapon gimbals
 #define GIMBAL_LEFT -1

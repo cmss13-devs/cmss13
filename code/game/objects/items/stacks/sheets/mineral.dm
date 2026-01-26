@@ -31,11 +31,23 @@ GLOBAL_LIST_INIT(runedsandstone_recipes, list ( \
 	new/datum/stack_recipe("dark temple door", /obj/structure/machinery/door/airlock/sandstone/runed/dark, 15, time = 10, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
 	new/datum/stack_recipe_list("temple walls",list( \
 		new/datum/stack_recipe("temple wall", /turf/closed/wall/mineral/sandstone/runed, 5, time = 50, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
-		new/datum/stack_recipe("runed temple wall", /turf/closed/wall/mineral/sandstone/runed/decor, 5, time = 50, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
-		new/datum/stack_recipe("dark engraved wall", /turf/closed/wall/cult, 5, time = 50, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
+		new/datum/stack_recipe("decorated temple wall 1", /turf/closed/wall/mineral/sandstone/runed/decor, 5, time = 50, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
+		new/datum/stack_recipe("decorated temple wall 2", /turf/closed/wall/mineral/sandstone/runed/decor_2, 5, time = 50, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
+		new/datum/stack_recipe("decorated temple wall 3", /turf/closed/wall/mineral/sandstone/runed/decor_3, 5, time = 50, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
+		new/datum/stack_recipe("dark temple wall", /turf/closed/wall/cult/dark_temple, 5, time = 50, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
 		), 5), \
 	new/datum/stack_recipe_list("temple floors",list( \
-		new/datum/stack_recipe("tan floor", /turf/open/floor/sandstone/runed, 1, on_floor = 1), \
+		new/datum/stack_recipe("temple floor", /turf/open/floor/sandstone/runed, 1, on_floor = 1), \
+		new/datum/stack_recipe("temple floor deco square vertical", /turf/open/floor/ancient_temple/deco/deco_alt, 1, on_floor = 1), \
+		new/datum/stack_recipe("temple floor deco square horizontal", /turf/open/floor/ancient_temple/deco/deco_alt/east, 1, on_floor = 1), \
+		new/datum/stack_recipe("temple floor deco diamond pattern", /turf/open/floor/ancient_temple/deco/deco_1, 1, on_floor = 1), \
+		new/datum/stack_recipe("temple floor deco pattern vertical", /turf/open/floor/ancient_temple/deco, 1, on_floor = 1), \
+		new/datum/stack_recipe("temple floor deco pattern horizontal", /turf/open/floor/ancient_temple/deco/deco_0, 1, on_floor = 1), \
+		new/datum/stack_recipe("dark temple floor deco square vertical", /turf/open/floor/ancient_temple/deco/dark/deco_alt, 1, on_floor = 1), \
+		new/datum/stack_recipe("dark temple floor deco square horizontal", /turf/open/floor/ancient_temple/deco/dark/deco_alt/east, 1, on_floor = 1), \
+		new/datum/stack_recipe("dark temple floor deco diamond pattern", /turf/open/floor/ancient_temple/deco/dark/deco_1, 1, on_floor = 1), \
+		new/datum/stack_recipe("dark temple floor deco pattern vertical", /turf/open/floor/ancient_temple/deco/dark, 1, on_floor = 1), \
+		new/datum/stack_recipe("dark temple floor deco pattern horizontal", /turf/open/floor/ancient_temple/deco/dark/deco_0, 1, on_floor = 1), \
 		new/datum/stack_recipe("engraved floor", /turf/open/floor/sandstone/cult, 1, on_floor = 1), \
 		new/datum/stack_recipe("dark red floor", /turf/open/floor/sandstone/red, 1, on_floor = 1), \
 		new/datum/stack_recipe("sun runed floor", /turf/open/floor/sandstone/red2, 1, on_floor = 1), \
@@ -45,6 +57,7 @@ GLOBAL_LIST_INIT(runedsandstone_recipes, list ( \
 	new/datum/stack_recipe("wall torch frame", /obj/item/prop/torch_frame, 2, time = 2 SECONDS, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
 	new/datum/stack_recipe("alien chair", /obj/structure/bed/chair/comfy/yautja, 2, time = 2 SECONDS, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
 	new/datum/stack_recipe("alien bed", /obj/structure/bed/alien/yautja, 3, time = 3 SECONDS, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
+	new/datum/stack_recipe("ancient statue", /obj/structure/showcase/yautja/ancient, 10, time = 30, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
 	new/datum/stack_recipe("tan statue", /obj/structure/showcase/yautja, 10, time = 30, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
 	new/datum/stack_recipe("grey statue", /obj/structure/showcase/yautja/alt, 10, time = 30, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
 	))
@@ -134,7 +147,7 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 	desc = "Sandstone is sand cemented into stone. A common building material for primitive civilizations, but it can still make a good enough wall. This one has strange runes embued into the brick."
 	singular_name = "runed sandstone brick"
 	icon_state = "sheet-runedsandstone"
-	amount_sprites = FALSE
+	amount_sprites = TRUE
 	black_market_value = 15
 
 /obj/item/stack/sheet/mineral/sandstone/runed/large_stack

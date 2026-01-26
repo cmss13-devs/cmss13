@@ -1038,6 +1038,13 @@
 	base_icon_state = "ancient_shield_alt"
 	item_state = "ancient_shield_alt"
 
+/obj/item/weapon/shield/riot/yautja/ancient/temple
+	name = "ancient shield"
+	desc = "A large, ancient shield forged from an unknown alloy. Its time-worn surface and masterful craftsmanship hint at a forgotten purpose and a history lost to time."
+	icon_state = "ancient_shield_temple"
+	base_icon_state = "ancient_shield_temple"
+	item_state = "ancient_shield_temple"
+
 /obj/item/weapon/shield/riot/yautja/bracer_shield
 	name = "bracer shield"
 	desc = "A shield made of concentric metal alloy plates. The plates fold into one another for compact storage while still providing superior protection."

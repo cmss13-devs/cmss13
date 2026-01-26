@@ -5,6 +5,143 @@
 	},
 /turf/open/floor/shiva/floor3,
 /area/template_noop)
+"ab" = (
+/obj/item/weapon/gun/rifle/m41a,
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_casing/shell{
+	icon_state = "cartridge_3_1"
+	},
+/turf/open/floor/shiva/snow_mat/east,
+/area/template_noop)
+"ac" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/surface/table{
+	color = "#8B7B5B"
+	},
+/obj/structure/machinery/hybrisa/coffee_machine{
+	pixel_x = 1;
+	pixel_y = 10
+	},
+/turf/open/floor/shiva/snow_mat/west,
+/area/template_noop)
+"ad" = (
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 1
+	},
+/obj/structure/surface/table{
+	color = "#8B7B5B"
+	},
+/obj/item/clothing/under/rank/medical/pharmacist{
+	pixel_x = -7;
+	pixel_y = 12
+	},
+/obj/item/toy/plush/therapy/random_color,
+/turf/open/floor/shiva/snow_mat/east,
+/area/template_noop)
+"ae" = (
+/obj/structure/window_frame/colony,
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/template_noop)
+"af" = (
+/obj/structure/machinery/iv_drip,
+/turf/open/floor/shiva/multi_tiles/west,
+/area/template_noop)
+"ag" = (
+/obj/item/trash/used_stasis_bag,
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"ah" = (
+/obj/structure/bed/hybrisa/hospital/hospitaldivider{
+	pixel_y = 5;
+	layer = 3.8
+	},
+/turf/open/floor/shiva/red/north,
+/area/template_noop)
+"ai" = (
+/obj/structure/flora/pottedplant/random,
+/turf/open/floor/shiva/wred/west,
+/area/template_noop)
+"aj" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/structure/bed/roller/hospital/bloody,
+/obj/effect/landmark/corpsespawner/colonist/burst,
+/obj/effect/decal/cleanable/blood/gibs/core,
+/turf/open/floor/shiva/multi_tiles,
+/area/template_noop)
+"ak" = (
+/obj/item/shard,
+/obj/structure/window_frame/colony,
+/turf/open/floor/plating,
+/area/template_noop)
+"al" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/shiva/wred/west,
+/area/template_noop)
+"am" = (
+/obj/effect/decal/hybrisa/bloodtrail{
+	pixel_x = 5;
+	dir = 1
+	},
+/turf/open/floor/shiva/multi_tiles,
+/area/template_noop)
+"an" = (
+/obj/structure/pipes/standard/manifold/fourway/hidden/green,
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"ao" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"ap" = (
+/obj/effect/landmark/corpsespawner/doctor,
+/obj/effect/decal/cleanable/blood/gibs/core,
+/turf/open/floor/shiva/snow_mat/east,
+/area/template_noop)
+"aq" = (
+/obj/item/prop/alien/hugger,
+/turf/open/floor/shiva/snow_mat/east,
+/area/template_noop)
+"ar" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"as" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"at" = (
+/obj/structure/disposalpipe/junction{
+	dir = 1;
+	icon_state = "pipe-j2"
+	},
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"au" = (
+/obj/structure/largecrate/random/mini/med{
+	pixel_x = -7;
+	pixel_y = 14
+	},
+/obj/structure/largecrate/random/mini/med{
+	pixel_y = 12;
+	pixel_x = 9
+	},
+/turf/open/floor/shiva/redfull,
+/area/template_noop)
 "ax" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor/shiva/red/west,
@@ -17,27 +154,11 @@
 /area/template_noop)
 "aW" = (
 /obj/structure/machinery/light,
+/obj/structure/reagent_dispensers/tank/fuel/oxygentank,
 /turf/open/floor/shiva/red/east,
 /area/template_noop)
 "bb" = (
-/obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = -2;
-	pixel_y = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	layer = 3.3;
-	pixel_y = 4
-	},
-/obj/structure/bed{
-	can_buckle = 0
-	},
-/obj/structure/bed{
-	buckling_y = 13;
-	layer = 3.5;
-	pixel_y = 13
-	},
+/obj/structure/bed/roller/hospital_empty/bigrollerempty3,
 /turf/open/floor/shiva/multi_tiles/west,
 /area/template_noop)
 "bi" = (
@@ -56,12 +177,6 @@
 	req_one_access = null
 	},
 /turf/open/floor/shiva/wred,
-/area/template_noop)
-"bO" = (
-/obj/structure/pipes/standard/manifold/fourway/hidden/green,
-/obj/effect/landmark/corpsespawner/doctor,
-/obj/effect/decal/cleanable/vomit,
-/turf/open/floor/shiva/floor3,
 /area/template_noop)
 "bT" = (
 /obj/item/storage/firstaid/o2{
@@ -88,18 +203,12 @@
 /area/template_noop)
 "bY" = (
 /obj/structure/pipes/vents/pump,
+/obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/shiva/red,
 /area/template_noop)
 "cq" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/shiva/floor3,
-/area/template_noop)
-"dd" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/item/tool/crowbar,
-/turf/open/floor/shiva/snow_mat/west,
 /area/template_noop)
 "dt" = (
 /obj/structure/flora/pottedplant{
@@ -251,13 +360,6 @@
 	},
 /turf/open/floor/shiva/floor3,
 /area/template_noop)
-"iE" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor/shiva/snow_mat/east,
-/area/template_noop)
 "iX" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -283,6 +385,8 @@
 /turf/open/floor/shiva/multi_tiles,
 /area/template_noop)
 "js" = (
+/obj/effect/landmark/corpsespawner/doctor,
+/obj/effect/decal/cleanable/blood/gibs/body,
 /turf/open/floor/shiva/snow_mat/north,
 /area/template_noop)
 "jx" = (
@@ -337,10 +441,6 @@
 	},
 /turf/open/floor/shiva/redfull,
 /area/template_noop)
-"kF" = (
-/obj/item/cpr_dummy,
-/turf/open/floor/shiva/floor3,
-/area/template_noop)
 "kX" = (
 /obj/structure/disposalpipe/segment{
 	dir = 2;
@@ -374,8 +474,7 @@
 /area/template_noop)
 "mu" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/storage/box/beakers,
-/obj/item/reagent_container/glass/beaker/bluespace,
+/obj/item/bodybag/cryobag,
 /turf/open/floor/shiva/multi_tiles/southeast,
 /area/template_noop)
 "mw" = (
@@ -465,6 +564,11 @@
 "pd" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/bed/hybrisa/hospital/hospitaldivider{
+	pixel_y = 5;
+	layer = 3.8;
+	dir = 1
+	},
 /turf/open/floor/shiva/red/north,
 /area/template_noop)
 "po" = (
@@ -529,6 +633,14 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/structure/reagent_dispensers/water_cooler{
+	pixel_y = 22;
+	pixel_x = -7
+	},
+/obj/structure/bed/chair{
+	dir = 8;
+	pixel_y = 7
+	},
 /turf/open/floor/shiva/snow_mat/north,
 /area/template_noop)
 "rb" = (
@@ -545,7 +657,7 @@
 /turf/open/floor/shiva/snow_mat/east,
 /area/template_noop)
 "rZ" = (
-/obj/effect/decal/cleanable/vomit,
+/obj/structure/machinery/iv_drip,
 /turf/open/floor/shiva/redfull,
 /area/template_noop)
 "sh" = (
@@ -608,6 +720,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/structure/flora/pottedplant/random,
 /turf/open/floor/shiva/red,
 /area/template_noop)
 "vj" = (
@@ -622,26 +735,8 @@
 /turf/open/floor/shiva/redfull,
 /area/template_noop)
 "vn" = (
-/obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = -2;
-	pixel_y = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	layer = 3.3;
-	pixel_y = 4
-	},
-/obj/structure/bed{
-	can_buckle = 0
-	},
-/obj/structure/bed{
-	buckling_y = 13;
-	layer = 3.5;
-	pixel_y = 13
-	},
-/obj/item/toy/plush/farwa,
 /obj/structure/machinery/light,
+/obj/structure/bed/roller/hospital_empty/bigrollerempty3,
 /turf/open/floor/shiva/floor3,
 /area/template_noop)
 "vu" = (
@@ -714,13 +809,6 @@
 	},
 /turf/open/floor/shiva/wredfull,
 /area/template_noop)
-"xi" = (
-/obj/item/stack/cable_coil/cut{
-	pixel_x = 5;
-	pixel_y = 4
-	},
-/turf/open/floor/shiva/snow_mat/east,
-/area/template_noop)
 "xu" = (
 /obj/structure/machinery/door/airlock/almayer/medical{
 	dir = 1;
@@ -751,6 +839,10 @@
 /obj/structure/closet/hydrant{
 	pixel_y = 32
 	},
+/obj/item/prop/alien/hugger{
+	pixel_y = 5;
+	pixel_x = -8
+	},
 /turf/open/floor/shiva/red/east,
 /area/template_noop)
 "zc" = (
@@ -776,6 +868,7 @@
 /obj/structure/pipes/standard/manifold/visible{
 	dir = 1
 	},
+/obj/structure/largecrate/random/barrel/medical,
 /turf/open/floor/shiva/multi_tiles,
 /area/template_noop)
 "zC" = (
@@ -813,8 +906,6 @@
 /area/template_noop)
 "Ar" = (
 /obj/structure/machinery/optable,
-/obj/effect/landmark/corpsespawner/colonist/burst,
-/obj/effect/decal/cleanable/blood,
 /turf/open/floor/shiva/snow_mat/east,
 /area/template_noop)
 "AD" = (
@@ -840,6 +931,9 @@
 "BS" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
+	},
+/obj/effect/decal/hybrisa/bloodtrail{
+	pixel_x = 4
 	},
 /turf/open/floor/shiva/multi_tiles/southeast,
 /area/template_noop)
@@ -885,25 +979,8 @@
 /turf/open/floor/shiva/redfull,
 /area/template_noop)
 "DC" = (
-/obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = -2;
-	pixel_y = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	layer = 3.3;
-	pixel_y = 4
-	},
-/obj/structure/bed{
-	can_buckle = 0
-	},
-/obj/structure/bed{
-	buckling_y = 13;
-	layer = 3.5;
-	pixel_y = 13
-	},
 /obj/structure/machinery/light,
+/obj/structure/bed/roller/hospital_empty/bigrollerempty3,
 /turf/open/floor/shiva/multi_tiles/west,
 /area/template_noop)
 "DQ" = (
@@ -983,10 +1060,12 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/structure/flora/pottedplant/random,
 /turf/open/floor/shiva/redfull/west,
 /area/template_noop)
 "GU" = (
 /obj/effect/decal/cleanable/blood/gibs,
+/obj/effect/spawner/random/gun/pistol/midchance,
 /turf/open/floor/shiva/snow_mat/east,
 /area/template_noop)
 "GV" = (
@@ -1010,7 +1089,6 @@
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
-/obj/effect/landmark/corpsespawner/doctor,
 /obj/effect/decal/cleanable/blood/gibs,
 /turf/open/floor/shiva/redfull,
 /area/template_noop)
@@ -1049,11 +1127,6 @@
 "Is" = (
 /obj/structure/machinery/chem_master,
 /turf/open/floor/shiva/red/northeast,
-/area/template_noop)
-"Iy" = (
-/obj/effect/decal/cleanable/blood,
-/obj/item/weapon/gun/rifle/m41a,
-/turf/open/floor/shiva/redfull,
 /area/template_noop)
 "Iz" = (
 /turf/template_noop,
@@ -1144,6 +1217,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/item/ammo_casing/bullet,
 /turf/open/floor/shiva/multi_tiles/southeast,
 /area/template_noop)
 "Lu" = (
@@ -1278,18 +1352,10 @@
 /area/template_noop)
 "PL" = (
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/shiva/snow_mat/east,
 /area/template_noop)
 "PQ" = (
-/obj/item/device/cassette_tape/heavymetal{
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/obj/item/clothing/ears/earmuffs{
-	icon_state = "earmuffs2";
-	pixel_x = 5;
-	pixel_y = -3
-	},
 /turf/open/floor/shiva/red/east,
 /area/template_noop)
 "PZ" = (
@@ -1345,7 +1411,19 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark/corpsespawner/colonist/burst,
+/obj/structure/surface/table{
+	color = "#8B7B5B"
+	},
+/obj/structure/machinery/microwave{
+	pixel_y = 18
+	},
+/obj/item/reagent_container/food/snacks/packaged_burger{
+	pixel_x = -8
+	},
+/obj/item/reagent_container/food/snacks/packaged_burger{
+	pixel_x = 2;
+	pixel_y = 2
+	},
 /turf/open/floor/shiva/snow_mat/east,
 /area/template_noop)
 "RU" = (
@@ -1393,6 +1471,10 @@
 	icon_state = "pipe-c"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/item/restraint/handcuffs{
+	pixel_x = -6;
+	pixel_y = 5
+	},
 /turf/open/floor/shiva/multi_tiles,
 /area/template_noop)
 "Tc" = (
@@ -1422,12 +1504,19 @@
 /turf/open/floor/shiva/wredfull,
 /area/template_noop)
 "UZ" = (
+/obj/effect/decal/hybrisa/bloodtrail{
+	pixel_x = 5;
+	dir = 9;
+	pixel_y = 7
+	},
+/obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/shiva/red,
 /area/template_noop)
 "Vy" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/device/flashlight/lamp/green{
-	pixel_y = 7
+	pixel_y = 7;
+	on = 1
 	},
 /turf/open/floor/shiva/redfull/west,
 /area/template_noop)
@@ -1448,15 +1537,14 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/blood/drip,
-/obj/item/ammo_casing/shell{
-	icon_state = "cartridge_3_1"
-	},
 /turf/open/floor/shiva/wredfull,
 /area/template_noop)
 "Wi" = (
 /obj/structure/machinery/light{
 	dir = 4
 	},
+/obj/effect/landmark/corpsespawner/colonist/burst,
+/obj/item/trash/used_stasis_bag,
 /turf/open/floor/shiva/redfull/west,
 /area/template_noop)
 "Wp" = (
@@ -1500,6 +1588,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/blood/tracks/wheels,
 /turf/open/floor/shiva/multi_tiles,
 /area/template_noop)
 "XT" = (
@@ -1517,12 +1606,10 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/structure/bed/chair/wheelchair,
 /turf/open/floor/shiva/greenfull/west,
 /area/template_noop)
 "Ym" = (
-/obj/structure/bed/chair/office/light{
-	dir = 4
-	},
 /turf/open/floor/shiva/multi_tiles/southeast,
 /area/template_noop)
 "YM" = (
@@ -1538,6 +1625,7 @@
 	pixel_y = 13;
 	pixel_x = -15
 	},
+/obj/item/clothing/gloves/latex,
 /turf/open/floor/shiva/redfull,
 /area/template_noop)
 "Zr" = (
@@ -1559,6 +1647,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/shiva/wredfull,
 /area/template_noop)
 "ZA" = (
@@ -1566,6 +1655,7 @@
 	dir = 4
 	},
 /obj/structure/pipes/standard/manifold/hidden/green,
+/obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/shiva/floor3,
 /area/template_noop)
 "ZI" = (
@@ -1623,7 +1713,7 @@ eU
 Ya
 rA
 YM
-kF
+rA
 rA
 rA
 rA
@@ -1640,9 +1730,9 @@ zC
 "}
 (4,1,1) = {"
 IF
+as
 cq
-bO
-cq
+an
 cq
 dx
 dx
@@ -1660,6 +1750,7 @@ eU
 "}
 (5,1,1) = {"
 eo
+at
 eo
 iB
 Ih
@@ -1669,10 +1760,9 @@ rA
 rA
 rA
 rA
-rA
 zC
-mo
-Em
+ac
+ab
 eU
 OM
 zc
@@ -1690,7 +1780,7 @@ jE
 jE
 NI
 fY
-eU
+ae
 RL
 js
 zC
@@ -1701,7 +1791,7 @@ zC
 (7,1,1) = {"
 eU
 He
-rA
+ar
 mw
 fY
 hg
@@ -1711,7 +1801,7 @@ XT
 FN
 oN
 eU
-ke
+ad
 PL
 in
 gv
@@ -1748,11 +1838,11 @@ SO
 wn
 hG
 HC
-Iy
+vS
 nM
-eU
+ae
 rW
-xi
+Em
 eU
 kw
 zc
@@ -1762,7 +1852,7 @@ eU
 eU
 He
 Cp
-mw
+ao
 jE
 BH
 hh
@@ -1771,7 +1861,7 @@ Dy
 vS
 Db
 eU
-dd
+mo
 Em
 eU
 gi
@@ -1823,9 +1913,9 @@ eU
 vw
 hh
 my
+al
 Hu
-Hu
-Hu
+ai
 Hu
 OP
 uQ
@@ -1840,7 +1930,7 @@ zC
 "}
 (14,1,1) = {"
 eU
-vS
+au
 VI
 WO
 zK
@@ -1926,10 +2016,10 @@ MM
 kX
 KT
 Xk
-uQ
+ah
 TP
 rA
-Jr
+af
 eU
 Iz
 Iz
@@ -1943,10 +2033,10 @@ eU
 jr
 jE
 UZ
-jE
+am
 BS
-Xk
-uQ
+aj
+ah
 QD
 rA
 vn
@@ -1969,7 +2059,7 @@ SR
 pd
 Nw
 aa
-Jr
+af
 eU
 Iz
 Iz
@@ -2024,7 +2114,7 @@ zC
 zC
 eU
 zC
-eU
+ak
 zC
 zC
 Qo
@@ -2082,7 +2172,7 @@ Iz
 Iz
 xu
 vS
-Em
+ap
 Ar
 ke
 us
@@ -2102,12 +2192,12 @@ Iz
 Iz
 eU
 Id
-Em
+aq
 EC
-iE
+rW
 jx
 zC
-rA
+ag
 YM
 IV
 zC

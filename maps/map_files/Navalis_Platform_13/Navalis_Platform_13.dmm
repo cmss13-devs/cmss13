@@ -26361,7 +26361,7 @@
 	pixel_x = 3;
 	pixel_y = 4
 	},
-/obj/item/device/whistle{
+/obj/item/clothing/accessory/device/whistle{
 	pixel_x = 4;
 	pixel_y = -3
 	},

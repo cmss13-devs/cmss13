@@ -6,6 +6,7 @@
 	icon_state_prefix = "Dancer"
 
 	actions_to_remove = list(
+		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/activable/xeno_spit,
 		/datum/action/xeno_action/activable/pounce/base_prae_dash,
 		/datum/action/xeno_action/activable/prae_acid_ball,
@@ -14,6 +15,7 @@
 		/datum/action/xeno_action/activable/xeno_spit/praetorian,
 	)
 	actions_to_add = list(
+		/datum/action/xeno_action/activable/tail_stab/harpoon_tail,
 		/datum/action/xeno_action/activable/prae_impale,
 		/datum/action/xeno_action/onclick/prae_dodge,
 		/datum/action/xeno_action/activable/prae_tail_trip,
@@ -24,10 +26,11 @@
 /datum/xeno_strain/dancer/apply_strain(mob/living/carbon/xenomorph/praetorian/prae)
 	prae.armor_modifier -= XENO_ARMOR_MOD_VERY_SMALL
 	prae.speed_modifier += XENO_SPEED_FASTMOD_TIER_5
-	prae.dodge_chance = 18
 	prae.regeneration_multiplier = XENO_REGEN_MULTIPLIER_TIER_7
 	prae.plasma_types = list(PLASMA_CATECHOLAMINE)
 	prae.claw_type = CLAW_TYPE_SHARP
+	prae.dodge_chance = 18
+	prae.received_phero_caps["recovery"] = 3 //need to be limited, regens too fast.
 
 	prae.recalculate_everything()
 
@@ -36,6 +39,16 @@
 
 	// State
 	var/dodge_activated = FALSE
+	var/dodge_start_time = -1
+	var/dodge_time = 10 SECONDS
+
+/datum/behavior_delegate/praetorian_dancer/append_to_stat()
+	. = list()
+	. += "Dodge Chance: [bound_xeno.dodge_chance]%"
+	if(dodge_start_time != -1)
+		var/time_left = (dodge_time-(world.time - dodge_start_time)) / 10
+		. += "Dodge Remaining: [time_left] second\s."
+		return
 
 /datum/behavior_delegate/praetorian_dancer/melee_attack_additional_effects_target(mob/living/carbon/target_carbon)
 	if(!isxeno_human(target_carbon))
@@ -53,6 +66,31 @@
 	if(ishuman(target_carbon))
 		var/mob/living/carbon/human/target_human = target_carbon
 		target_human.update_xeno_hostile_hud()
+
+/datum/action/xeno_action/activable/tail_stab/harpoon_tail/ability_act(mob/living/carbon/xenomorph/xeno, mob/living/carbon/target, obj/limb/limb)
+	if(!istype(xeno) || !istype(target))
+		return
+
+	if(xeno.a_intent == INTENT_DISARM)
+		target.last_damage_data = create_cause_data(initial(xeno.caste_type), xeno)
+
+		xeno.visible_message(
+			SPAN_XENOWARNING("\The [xeno] smash [target] with the crooked part of its tail!"),
+			SPAN_XENOWARNING("We smash [target] with the crooked part of our tail!")
+		)
+		xeno.animation_attack_on(target)
+		xeno.flick_attack_overlay(target, "slam")
+
+		if(xeno.behavior_delegate)
+			xeno.behavior_delegate.melee_attack_additional_effects_target(target)
+
+		playsound(target, "punch", 25, TRUE)
+		target.apply_damage(blunt_damage, BRUTE, "chest")
+		apply_cooldown(cooldown_modifier = 0.4)
+		update_button_icon()
+		return target
+
+	return ..()
 
 /datum/action/xeno_action/activable/prae_impale/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/dancer_user = owner
@@ -147,38 +185,43 @@
 
 /datum/action/xeno_action/onclick/prae_dodge/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/dodge_user = owner
-
-	if(!action_cooldown_check())
-		return
-
 	if(!istype(dodge_user) || !dodge_user.check_state())
-		return
-
-	if(!check_and_use_plasma_owner())
 		return
 
 	var/datum/behavior_delegate/praetorian_dancer/behavior = dodge_user.behavior_delegate
 	if(!istype(behavior))
 		return
 
+	if(behavior.dodge_activated)
+		remove_effects(1.0)
+		return
+
+	if(!action_cooldown_check())
+		return
+
+	if(!check_and_use_plasma_owner(200))
+		return
+
 	behavior.dodge_activated = TRUE
+	behavior.dodge_start_time = world.time
 	button.icon_state = "template_active"
-	to_chat(dodge_user, SPAN_XENOHIGHDANGER("We can now dodge through mobs!"))
 	dodge_user.speed_modifier -= speed_buff_amount
 	dodge_user.dodge_chance += 20
 	dodge_user.add_temp_pass_flags(PASS_MOB_THRU)
 	dodge_user.recalculate_speed()
+	dodge_user.balloon_alert(dodge_user, "we start our evasive stance!", text_color = "#7d32bb", delay = 1 SECONDS)
 
 	INVOKE_ASYNC(src, PROC_REF(create_afterimage_sequence), dodge_user, duration)
 
-	addtimer(CALLBACK(src, PROC_REF(remove_effects)), duration)
+	if(dodge_timer != TIMER_ID_NULL)
+		deltimer(dodge_timer)
 
-	apply_cooldown()
+	dodge_timer = addtimer(CALLBACK(src, PROC_REF(remove_effects)), duration, TIMER_STOPPABLE)
+
 	return ..()
 
-/datum/action/xeno_action/onclick/prae_dodge/proc/remove_effects()
+/datum/action/xeno_action/onclick/prae_dodge/proc/remove_effects(refund_multiplier = 1.0)
 	var/mob/living/carbon/xenomorph/dodge_remove = owner
-
 	if(!istype(dodge_remove))
 		return
 
@@ -186,14 +229,32 @@
 	if(!istype(behavior))
 		return
 
-	if(behavior.dodge_activated)
-		behavior.dodge_activated = FALSE
-		button.icon_state = "template_xeno"
-		dodge_remove.speed_modifier += speed_buff_amount
-		dodge_remove.dodge_chance -= 20
-		dodge_remove.remove_temp_pass_flags(PASS_MOB_THRU)
-		dodge_remove.recalculate_speed()
-		to_chat(dodge_remove, SPAN_XENOHIGHDANGER("We can no longer dodge through mobs!"))
+	if(!behavior.dodge_activated)
+		return
+
+	behavior.dodge_activated = FALSE
+	button.icon_state = "template_xeno"
+	dodge_remove.speed_modifier += speed_buff_amount
+	dodge_remove.dodge_chance -= 20
+	dodge_remove.remove_temp_pass_flags(PASS_MOB_THRU)
+	dodge_remove.recalculate_speed()
+	dodge_remove.reset_position_to_initial()
+	dodge_remove.balloon_alert(dodge_remove, "our evasive stance fades", text_color = "#7d32bb", delay = 1 SECONDS)
+
+	if(dodge_timer != TIMER_ID_NULL)
+		deltimer(dodge_timer)
+		dodge_timer = TIMER_ID_NULL
+
+	var/recharge_time = behavior.dodge_time
+	if(behavior.dodge_start_time > 0)
+		refund_multiplier = clamp(refund_multiplier, 0, 1)
+		var/used_ratio = (world.time - behavior.dodge_start_time) / duration
+		used_ratio = clamp(used_ratio, 0, 1)
+		var/remaining = 1 - used_ratio
+		recharge_time = behavior.dodge_time - remaining * refund_multiplier * behavior.dodge_time
+
+	behavior.dodge_start_time = -1
+	apply_cooldown_override(recharge_time)
 
 /datum/action/xeno_action/onclick/prae_dodge/proc/create_afterimage_sequence(mob/living/carbon/xenomorph/dodge_user, duration)
 	if(!dodge_user || !dodge_user.loc)
@@ -213,6 +274,9 @@
 		return
 
 	var/mob/living/carbon/xenomorph/dodge_user = state.owner
+	var/datum/behavior_delegate/praetorian_dancer/behavior = dodge_user.behavior_delegate
+	if(!istype(behavior) || !behavior.dodge_activated)
+		return
 	var/turf/current_position = get_turf(dodge_user.loc)
 
 	if(current_position && current_position != state.last_turf)

@@ -167,6 +167,13 @@
 
 ////////// Dancer Abilities
 
+/datum/action/xeno_action/activable/tail_stab/harpoon_tail
+	name = "Tail Harpoon"
+	action_icon_state = "tail_harpoon"
+	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_TAIL_STAB
+	var/blunt_damage = 8
+
 /datum/action/xeno_action/activable/prae_impale
 	name = "Impale"
 	action_icon_state = "prae_impale"
@@ -185,11 +192,10 @@
 	macro_path = /datum/action/xeno_action/verb/verb_prae_dodge
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	action_type = XENO_ACTION_CLICK
-	plasma_cost = 200
-	xeno_cooldown = 19 SECONDS
 
 	// Config
-	var/duration = 7 SECONDS
+	var/duration = 10 SECONDS
+	var/dodge_timer = TIMER_ID_NULL
 	var/speed_buff_amount = 0.5
 	var/afterimage_interval = 2 DECISECONDS
 

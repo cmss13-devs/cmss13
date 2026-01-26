@@ -14,9 +14,7 @@
 "aY" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/blood/drip,
-/obj/item/ammo_casing/cartridge{
-	current_icon = s
-	},
+/obj/item/ammo_casing/cartridge,
 /obj/item/ammo_casing/cartridge,
 /turf/open/floor/shiva,
 /area/template_noop)
@@ -378,13 +376,6 @@
 /obj/structure/tunnel/maint_tunnel,
 /turf/open/floor/shiva/blue,
 /area/template_noop)
-"zt" = (
-/obj/structure/barricade/sandbags/wired{
-	pixel_y = -5
-	},
-/obj/item/ammo_casing/shell,
-/turf/open/floor/shiva/yellow,
-/area/template_noop)
 "zQ" = (
 /obj/structure/machinery/cm_vending/sorted/tech/comp_storage,
 /obj/structure/machinery/light{
@@ -571,6 +562,13 @@
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/effect/decal/cleanable/blood/gibs/xeno/body,
 /turf/open/floor/plating,
+/area/template_noop)
+"MR" = (
+/obj/structure/barricade/sandbags/wired{
+	pixel_y = -5
+	},
+/obj/item/ammo_casing/shell,
+/turf/open/floor/shiva/yellow,
 /area/template_noop)
 "MU" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -861,7 +859,7 @@ dN
 rU
 vy
 uH
-zt
+MR
 jr
 "}
 (11,1,1) = {"

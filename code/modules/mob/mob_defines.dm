@@ -47,7 +47,6 @@
 	var/recalculate_move_delay = TRUE // Whether move delay needs to be recalculated, on by default so that new mobs actually get movement delay calculated upon creation
 	var/crawling = FALSE
 	var/can_crawl = TRUE
-	var/dirlock_slowdown = TRUE // are they slowed down by dirlocking
 	var/monkeyizing = null //Carbon
 	var/hand = null
 

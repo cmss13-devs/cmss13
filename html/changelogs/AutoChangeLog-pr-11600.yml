@@ -1,0 +1,4 @@
+author: "MistChristmas"
+delete-after: True
+changes:
+  - soundtweak: "Marine winning_triumph3: Marine Hymm is now normalised to -8db"

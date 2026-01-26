@@ -117,7 +117,7 @@
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
 		var/obj/docking_port/mobile/shuttle = SSshuttle.getShuttle(shuttleId)
-		var/name = shuttle?.name
+		var/name = capitalize(shuttle?.name)
 		if(can_change_shuttle)
 			name = "Remote"
 		ui = new(user, src, "DropshipFlightControl", "[name] Flight Computer")
@@ -329,6 +329,7 @@
 		xeno_message(SPAN_XENOANNOUNCE("The doors of the metal bird have been overridden! Rejoice!"), 3, xeno.hivenumber)
 		message_admins("[key_name(xeno)] has locked the dropship '[dropship]'", xeno.x, xeno.y, xeno.z)
 		notify_ghosts(header = "Dropship Locked", message = "[xeno] has locked [dropship]!", source = xeno, action = NOTIFY_ORBIT)
+		SScmtv.spectate_event("Dropship Locked", src)
 		return
 
 	if(dropship_control_lost)
@@ -347,6 +348,9 @@
 			return
 		hijack(xeno)
 		return
+
+/obj/structure/machinery/computer/shuttle/dropship/flight/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
+	return TAILSTAB_COOLDOWN_NONE
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/update_icon()
 	. = ..()
@@ -369,6 +373,7 @@
 		return
 
 	var/datum/dropship_hijack/almayer/hijack = new()
+	SShijack.call_shuttle()
 	dropship.hijack = hijack
 	hijack.shuttle = dropship
 	hijack.target_crash_site(result)
@@ -389,7 +394,7 @@
 	xeno_message(SPAN_XENOANNOUNCE("The Queen has commanded the metal bird to depart for the metal hive in the sky! Rejoice!"), 3, hivenumber)
 	xeno_message(SPAN_XENOANNOUNCE("The hive swells with power! You will now steadily gain pooled larva over time."), 2, hivenumber)
 	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
-	hive.abandon_on_hijack()
+	addtimer(CALLBACK(hive, TYPE_PROC_REF(/datum/hive_status, abandon_on_hijack)), DROPSHIP_WARMUP_TIME, TIMER_UNIQUE)
 	var/original_evilution = hive.evolution_bonus
 	hive.override_evilution(XENO_HIJACK_EVILUTION_BUFF, TRUE)
 	if(hive.living_xeno_queen)
@@ -408,9 +413,14 @@
 		colonial_marines.add_current_round_status_to_end_results("Hijack")
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/hijack_general_quarters()
+	var/datum/ares_datacore/datacore = GLOB.ares_datacore
 	if(GLOB.security_level < SEC_LEVEL_RED)
 		set_security_level(SEC_LEVEL_RED, no_sound = TRUE, announce = FALSE)
+	if(!COOLDOWN_FINISHED(datacore, ares_quarters_cooldown))
+		return FALSE
+	COOLDOWN_START(datacore, ares_quarters_cooldown, 10 MINUTES)
 	shipwide_ai_announcement("ATTENTION! GENERAL QUARTERS. ALL HANDS, MAN YOUR BATTLESTATIONS.", MAIN_AI_SYSTEM, 'sound/effects/GQfullcall.ogg')
+	return TRUE
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/remove_door_lock()
 	if(door_control_cooldown)

@@ -204,8 +204,6 @@
 	)
 	var/cover_open = FALSE //if the gun's feed-cover is open or not.
 
-
-
 /obj/item/weapon/gun/pkp/handle_starting_attachment()
 	..()
 
@@ -224,6 +222,7 @@
 
 /obj/item/weapon/gun/pkp/Initialize(mapload, spawn_empty)
 	. = ..()
+	AddElement(/datum/element/corp_label/norcomm)
 	if(current_mag && current_mag.current_rounds > 0)
 		load_into_chamber()
 

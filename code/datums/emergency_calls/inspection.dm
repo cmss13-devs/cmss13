@@ -4,6 +4,7 @@
 	mob_max = 2
 	mob_min = 1
 	probability = 0
+	ert_message = "A Provost investigation has been requested!"
 
 /datum/emergency_call/inspection_provost/New()
 	..()
@@ -57,6 +58,7 @@
 	mob_max = 2
 	mob_min = 1
 	probability = 0
+	ert_message = "A USCM High Command investigation has been requested!"
 
 /datum/emergency_call/inspection_hc/New()
 	..()
@@ -91,11 +93,13 @@
 	name = "Inspection - Corporate"
 	mob_max = 2
 	mob_min = 1
+	shuttle_id = MOBILE_SHUTTLE_ID_ERT2
 	home_base = /datum/lazy_template/ert/weyland_station
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_pmc
 	item_spawn = /obj/effect/landmark/ert_spawns/distress_pmc/item
 	max_heavies = 1
 	probability = 0
+	ert_message = "A Weyland-Yutani investigation has been requested!"
 
 /datum/emergency_call/inspection_wy/New()
 	..()
@@ -125,7 +129,7 @@
 		to_chat(H, SPAN_ROLE_BODY("Remember that the USCM, or at least some parts of it, may be hostile towards your presence on the ship. Unless ordered otherwise by Dispatch, you and your Team Leader are to avoid open conflict with the Marines. Your main priority is making sure that your Lead survives to write the report they are due."))
 		to_chat(H, SPAN_WARNING("Unless ordered otherwise by Dispatch, you are to avoid open conflict with the Marines. Your priority is the safety of your team, if the ship gets to hot, your best bet is evacuation. Ahelp if you have any more questions or wish to release this character for other players."))
 	else
-		arm_equipment(H, /datum/equipment_preset/pmc/pmc_detainer, TRUE, TRUE)
+		arm_equipment(H, /datum/equipment_preset/pmc/pmc_security, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are part of a Weyland-Yutani PMC Investigation Team!"))
 		to_chat(H, SPAN_ROLE_BODY("While officially your outfit does mundane security work for Weyland-Yutani, in practice you serve as both official and unofficial investigators into conduct of Company personnel. The Lead Investigator is in charge, your duty is to provide backup, counsel and any other form of assistance you can render to make sure their mission is a success."))
 		to_chat(H, SPAN_ROLE_BODY("Remember that the USCM, or at least some parts of it, may be hostile towards your presence on the ship. Unless ordered otherwise by Dispatch, you and your Team Leader are to avoid open conflict with the Marines. Your main priority is making sure that your Lead survives to write the report they are due."))
@@ -146,6 +150,7 @@
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_pmc
 	item_spawn = /obj/effect/landmark/ert_spawns/distress_pmc/item
 	probability = 0
+	ert_message = "A corporate lawyer beacon has been activated!"
 
 /datum/emergency_call/inspection_wy/lawyer/New()
 	..()
@@ -183,6 +188,7 @@
 	mob_min = 1
 	probability = 0
 	home_base = /datum/lazy_template/ert/weyland_station
+	ert_message = "A Colonial Marshal investigation has been requested!"
 
 	var/max_synths = 1
 	var/synths = 0
@@ -285,6 +291,7 @@
 	max_synths = 0
 	will_spawn_icc_liaison = TRUE
 	will_spawn_cmb_observer = FALSE
+	ert_message = "A blackmarket investigation has been requested!"
 
 /datum/emergency_call/inspection_cmb/black_market/New()
 	..()

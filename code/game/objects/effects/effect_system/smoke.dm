@@ -14,11 +14,14 @@
 	anchored = TRUE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	layer = ABOVE_MOB_LAYER + 0.1 //above mobs and barricades
+	flags_atom = NO_ZFALL
 	var/amount = 2
 	var/spread_speed = 1 //time in decisecond for a smoke to spread one tile.
 	var/time_to_live = 8
 	var/smokeranking = SMOKE_RANK_HARMLESS //Override priority. A higher ranked smoke cloud will displace lower and equal ones on spreading.
 	var/datum/cause_data/cause_data = null
+	//does it obscure aim
+	var/obscuring = TRUE
 
 	//Remove this bit to use the old smoke
 	icon = 'icons/effects/96x96.dmi'
@@ -69,7 +72,7 @@
 
 /obj/effect/particle_effect/smoke/Crossed(atom/movable/moveable)
 	..()
-	if(istype(moveable, /obj/projectile/beam))
+	if(istype(moveable, /obj/projectile/beam) && obscuring)
 		var/obj/projectile/beam/beam = moveable
 		beam.damage /= 2
 	if(iscarbon(moveable))
@@ -87,6 +90,7 @@
 		return
 
 	var/turf/start_turf = get_turf(src)
+	var/list/turfs_to_spread = list()
 	if(!start_turf)
 		return
 	for(var/i in GLOB.cardinals)
@@ -101,7 +105,33 @@
 				qdel(foundsmoke)
 			else
 				continue
-		var/obj/effect/particle_effect/smoke/smoke = new type(cur_turf, amount, cause_data)
+		turfs_to_spread += cur_turf
+
+
+
+	var/turf/below = SSmapping.get_turf_below(loc)
+	var/turf/above = SSmapping.get_turf_above(loc)
+	if(below && istype(loc,/turf/open_space))
+		var/obj/effect/particle_effect/smoke/foundsmoke = locate() in below
+		if(foundsmoke)
+			if(foundsmoke.smokeranking <= src.smokeranking)
+				qdel(foundsmoke)
+				turfs_to_spread += below
+		else
+			turfs_to_spread += below
+
+
+	if(above && istype(above,/turf/open_space))
+		var/obj/effect/particle_effect/smoke/foundsmoke = locate() in above
+		if(foundsmoke)
+			if(foundsmoke.smokeranking <= src.smokeranking)
+				qdel(foundsmoke)
+				turfs_to_spread += above
+		else
+			turfs_to_spread += above
+
+	for(var/turf/spread in turfs_to_spread)
+		var/obj/effect/particle_effect/smoke/smoke = new type(spread, amount, cause_data)
 		smoke.setDir(pick(GLOB.cardinals))
 		smoke.time_to_live = time_to_live
 		if(smoke.amount > 0)
@@ -818,6 +848,31 @@
 
 /datum/effect_system/smoke_spread/king_doom
 	smoke_type = /obj/effect/particle_effect/smoke/king
+
+/obj/effect/particle_effect/smoke/decomposing_enzymes
+	opacity = FALSE
+	color = "#ddfc6d"
+	anchored = TRUE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	time_to_live = 6
+	spread_speed = 1
+	alpha = 60
+	obscuring = FALSE
+	var/remove_chem = 3
+	var/acid_increment_amount = 10
+
+/obj/effect/particle_effect/smoke/decomposing_enzymes/affect(mob/living/carbon/affected_mob)
+	. = ..()
+	apply_neuro(affected_mob, 0, remove_chem, TRUE, TRUE, TRUE, FALSE)
+	var/datum/effects/acid/acid_effect = locate() in affected_mob.effects_list
+	if(!acid_effect)
+		return
+	acid_effect.enhance_acid(super_acid = FALSE)
+	acid_effect.increment_duration(acid_increment_amount)
+
+
+/datum/effect_system/smoke_spread/decomposing_enzymes
+	smoke_type = /obj/effect/particle_effect/smoke/decomposing_enzymes
 
 /datum/effect_system/smoke_spread/xeno_acid
 	smoke_type = /obj/effect/particle_effect/smoke/xeno_burn

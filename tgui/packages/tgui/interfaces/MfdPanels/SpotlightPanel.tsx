@@ -50,7 +50,7 @@ const SpotPanel = (
   return (
     <Stack>
       <Stack.Item width="100px">
-        <svg />
+        <svg overflow="visible" />
       </Stack.Item>
       <Stack.Item>
         <Stack vertical width="300px" align="center">
@@ -61,7 +61,7 @@ const SpotPanel = (
         </Stack>
       </Stack.Item>
       <Stack.Item width="100px">
-        <svg />
+        <svg overflow="visible" />
       </Stack.Item>
     </Stack>
   );

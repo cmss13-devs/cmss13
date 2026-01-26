@@ -91,6 +91,7 @@
 @include meta.load-css('./interfaces/TechNode.scss');
 @include meta.load-css('./interfaces/Vending.scss');
 @include meta.load-css('./interfaces/VendingSorted.scss');
+@include meta.load-css('./interfaces/StackReceipts.scss');
 @include meta.load-css('./interfaces/common/Dpad.scss');
 @include meta.load-css('./interfaces/common/ElectricalPanel.scss');
 @include meta.load-css('./interfaces/TacticalMap.scss');
@@ -106,7 +107,7 @@
 @include meta.load-css('./layouts/TitleBar.scss');
 @include meta.load-css('./layouts/Window.scss');
 
-@include meta.load-css('highlight.js/scss/github-dark.scss');
+@include meta.load-css('~highlight.js/scss/a11y-dark.scss');
 
 // NT Theme
 .Layout__content {

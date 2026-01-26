@@ -147,7 +147,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun/l56a2/elite, WEAR_J_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m56_goggles, WEAR_EYES)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/smartgunner/commando/full, WEAR_WAIST)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_sg/full, WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_sg/commando, WEAR_L_STORE)
 
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/baton, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector/hacked/pmc, WEAR_IN_BACK)
@@ -189,7 +189,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun/l56a2/elite, WEAR_J_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m56_goggles, WEAR_EYES)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/smartgunner/commando/full, WEAR_WAIST)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_sg/full, WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_sg/commando, WEAR_L_STORE)
 
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/baton, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector/hacked/pmc, WEAR_IN_BACK)
@@ -214,15 +214,16 @@
 
 /datum/equipment_preset/pmc/commando/leader/load_name(mob/living/carbon/human/new_human, randomise) //reference to Theo Stern from A:DD
 	new_human.gender = MALE
+
 	var/datum/preferences/human = new()
 	human.randomize_appearance(new_human)
-	var/random_name
 
+	var/random_name
 	new_human.h_style = "Cpl. Dietrich"
 	new_human.f_style = "Soulful Selleck"
-	random_name = "[pick(GLOB.first_names_male)] [pick(GLOB.last_names)]"
-
+	random_name = random_name(new_human.gender)
 	new_human.change_real_name(new_human, random_name)
+
 	new_human.age = rand(30,40)
 	new_human.r_facial = 0
 	new_human.g_facial = 0
@@ -400,7 +401,7 @@
 
 		list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		list("Autoinjector Pouch (Full)", 0, /obj/item/storage/pouch/autoinjector/full/wy, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
-		list("First-Aid Pouch (Refillable Injectors)", 0, /obj/item/storage/pouch/firstaid/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+		list("First-Aid Pouch (Refillable Autoinjectors)", 0, /obj/item/storage/pouch/firstaid/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("First-Aid Pouch (Splints, Gauze, Ointment)", 0, /obj/item/storage/pouch/firstaid/full/alternate, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("First-Aid Pouch (Pill Packets)", 0, /obj/item/storage/pouch/firstaid/full/pills, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
 		list("Flare Pouch (Full)", 0, /obj/item/storage/pouch/flare/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),

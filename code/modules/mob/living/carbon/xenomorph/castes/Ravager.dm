@@ -59,7 +59,6 @@
 		/datum/action/xeno_action/activable/pounce/charge,
 		/datum/action/xeno_action/onclick/empower,
 		/datum/action/xeno_action/activable/scissor_cut,
-		/datum/action/xeno_action/onclick/tacmap,
 	)
 
 	icon_xeno = 'icons/mob/xenos/castes/tier_3/ravager.dmi'
@@ -144,7 +143,7 @@
 		xeno.visible_message(SPAN_XENODANGER("[xeno] starts empowering!"), SPAN_XENODANGER("We start empowering ourself!"))
 		activated_once = TRUE
 		button.icon_state = "template_active"
-		get_inital_shield()
+		get_initial_shield()
 		addtimer(CALLBACK(src, PROC_REF(timeout)), time_until_timeout)
 		apply_cooldown()
 		return ..()
@@ -156,7 +155,7 @@
 	var/datum/behavior_delegate/ravager_base/behavior = xeno.behavior_delegate
 
 	activated_once = FALSE
-	button.icon_state = "template"
+	button.icon_state = "template_xeno_xeno"
 	xeno.visible_message(SPAN_XENOWARNING("[xeno] gets empowered by the surrounding enemies!"), SPAN_XENOWARNING("We feel a rush of power from the surrounding enemies!"))
 	xeno.create_empower()
 
@@ -218,7 +217,7 @@
 	xeno.visible_message(SPAN_DANGER("[xeno]'s glow slowly dims."), SPAN_XENOHIGHDANGER("Our glow fades away, the power leaving our form!"))
 	xeno.remove_filter("empower_rage")
 
-/datum/action/xeno_action/onclick/empower/proc/get_inital_shield()
+/datum/action/xeno_action/onclick/empower/proc/get_initial_shield()
 	var/mob/living/carbon/xenomorph/xeno = owner
 
 	if(!activated_once)
@@ -253,7 +252,7 @@
 	behavior.mid_charge = TRUE
 	xeno.visible_message(SPAN_XENODANGER("[xeno] uses its shield to bash [human] as it charges at them!"), SPAN_XENODANGER("We use our shield to bash [human] as we charge at them!"))
 	human.apply_effect(behavior.knockdown_amount, WEAKEN)
-	human.attack_alien(xeno, rand(xeno.melee_damage_lower, xeno.melee_damage_upper))
+	human.attack_alien(xeno, rand(xeno.melee_damage_lower, xeno.melee_damage_upper), unblockable=TRUE)
 	behavior.mid_charge = FALSE
 
 	var/facing = get_dir(xeno, human)

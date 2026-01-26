@@ -12,7 +12,6 @@
 	var/obj/item/camera_holder = null
 	var/datum/squad/current_squad = null
 
-	var/datum/tacmap/tacmap
 	var/minimap_type = MINIMAP_FLAG_USCM
 
 	var/is_announcement_active = TRUE
@@ -27,20 +26,18 @@
 
 	var/list/concurrent_users = list()
 
+	var/minimap_flag = MINIMAP_FLAG_USCM
+
 /obj/structure/machinery/computer/groundside_operations/Initialize()
 	if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
 		add_pmcs = FALSE
 	else if(SSticker.current_state < GAME_STATE_PLAYING)
 		RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, PROC_REF(disable_pmc))
-	if(announcement_faction == FACTION_MARINE)
-		tacmap = new /datum/tacmap/drawing(src, minimap_type)
-	else
-		tacmap = new(src, minimap_type) // Non-drawing version
 
+	AddComponent(/datum/component/tacmap, has_drawing_tools = TRUE, minimap_flag = minimap_flag, has_update = TRUE)
 	return ..()
 
 /obj/structure/machinery/computer/groundside_operations/Destroy()
-	QDEL_NULL(tacmap)
 	QDEL_NULL(cam)
 	current_squad = null
 	concurrent_users = null
@@ -66,16 +63,16 @@
 		add_pmcs = FALSE
 	UnregisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP)
 
-/obj/structure/machinery/computer/groundside_operations/attack_remote(mob/user as mob)
+/obj/structure/machinery/computer/groundside_operations/attack_remote(mob/user)
 	return attack_hand(user)
 
-/obj/structure/machinery/computer/groundside_operations/attack_hand(mob/user as mob)
+/obj/structure/machinery/computer/groundside_operations/attack_hand(mob/user)
 	if(..() || !allowed(user) || inoperable())
 		return
 
 	ui_interact(user)
 
-/obj/structure/machinery/computer/groundside_operations/ui_interact(mob/user as mob)
+/obj/structure/machinery/computer/groundside_operations/ui_interact(mob/user)
 	user.set_interaction(src)
 
 	var/dat = "<head><title>Groundside Operations Console</title></head><body>"
@@ -103,6 +100,10 @@
 	show_browser(user, dat, name, "groundside_operations", width = 600, height = 700)
 	concurrent_users += WEAKREF(user)
 	onclose(user, "groundside_operations")
+
+/obj/structure/machinery/computer/groundside_operations/ui_close(mob/user)
+	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
+	tacmap_component.close_popout_tacmaps(user)
 
 /obj/structure/machinery/computer/groundside_operations/proc/get_overwatch_info()
 	var/dat = ""
@@ -226,11 +227,10 @@
 
 	usr.set_interaction(src)
 	switch(href_list["operation"])
-
 		if("mapview")
-			tacmap.tgui_interact(usr)
-			return
-
+			var/mob/user = usr
+			var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
+			tacmap_component.show_tacmap(user)
 		if("announce")
 			var/mob/living/carbon/human/human_user = usr
 			var/obj/item/card/id/idcard = human_user.get_active_hand()
@@ -278,16 +278,7 @@
 			open_medal_panel(usr, src)
 
 		if("selectlz")
-			if(SSticker.mode.active_lz)
-				return
-			var/lz_choices = list("lz1", "lz2")
-			var/new_lz = tgui_input_list(usr, "Select primary LZ", "LZ Select", lz_choices)
-			if(!new_lz)
-				return
-			if(new_lz == "lz1")
-				SSticker.mode.select_lz(locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz1))
-			else
-				SSticker.mode.select_lz(locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz2))
+			SSticker.mode.pick_a_lz(usr)
 
 		if("pick_squad")
 			var/list/squad_list = list()
@@ -315,7 +306,7 @@
 
 		if("use_cam")
 			if(isRemoteControlling(usr))
-				to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Unable to override console camera viewer. Track with camera instead. ")]")
+				to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Unable to override console camera viewer. Track with camera instead.")]")
 				return
 
 			if(current_squad || show_command_squad)
@@ -382,6 +373,9 @@
 
 /obj/structure/machinery/computer/groundside_operations/on_unset_interaction(mob/user)
 	..()
+
+	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
+	tacmap_component.on_unset_interaction(user)
 
 	if(!isRemoteControlling(user))
 		if(cam)

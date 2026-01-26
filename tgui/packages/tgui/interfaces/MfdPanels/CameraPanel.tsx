@@ -143,10 +143,12 @@ const CameraPanel = () => {
   return (
     <Box className="NavigationMenu">
       <ByondUi
-        className="CameraPanel"
-        params={{
+        winsetParams={{
           id: data.camera_map_ref,
           type: 'map',
+        }}
+        boxProps={{
+          className: 'CameraPanel',
         }}
       />
     </Box>

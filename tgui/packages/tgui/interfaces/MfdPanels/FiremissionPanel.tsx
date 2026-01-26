@@ -297,7 +297,7 @@ const ViewFiremissionMfdPanel = (
                   </Stack.Item>
                 </Stack>
               </Stack.Item>
-              <Stack.Item>
+              <Stack.Item width="100%">
                 <FiremissionView
                   panelStateId={props.panelStateId}
                   fm={firemission}
@@ -430,7 +430,7 @@ const FiremissionView = (
       </Stack.Item>
       {!editFm &&
         weaponData.map((x) => (
-          <Stack.Item key={x.mount_point}>
+          <Stack.Item key={x.mount_point} grow>
             <FMOffsetStack
               displayDetail={displayDetail}
               fm={props.fm}
@@ -442,10 +442,16 @@ const FiremissionView = (
           </Stack.Item>
         ))}
       {editFm && selectedWeapon === undefined && (
-        <Stack.Item>Select weapon on right panel</Stack.Item>
+        <Stack.Item grow>
+          <Stack vertical className="FireMissionStack">
+            <Stack.Item height="130px" />
+            <Divider />
+            <Stack.Item>Select weapon on right panel</Stack.Item>
+          </Stack>
+        </Stack.Item>
       )}
       {editFm && selectedWeapon && (
-        <Stack.Item key={selectedWeapon.mount_point}>
+        <Stack.Item grow key={selectedWeapon.mount_point}>
           <FMOffsetStack
             displayDetail={displayDetail}
             fm={props.fm}
@@ -483,14 +489,16 @@ const OffsetOverview = (
   const ammoConsumption = weaponFm.offsets
     .map((x) => (x !== '-' ? (props.equipment.burst ?? 0) : 0))
     .reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+  const ammoReadout =
+    props.equipment.ammo === null || props.equipment.ammo === undefined
+      ? 'DEPLETED'
+      : props.equipment.ammo + '/' + props.equipment.max_ammo;
   return (
     <>
       <Stack.Item className="FireMissionOffsetLabel">
         {props.equipment.shorthand} {props.equipment.mount_point}
       </Stack.Item>
-      <Stack.Item className="FireMissionOffsetLabel">
-        {props.equipment.ammo} / {props.equipment.max_ammo}
-      </Stack.Item>
+      <Stack.Item className="FireMissionOffsetLabel">{ammoReadout}</Stack.Item>
       <Stack.Item className="FireMissionOffsetLabel">
         {ammoConsumption}
       </Stack.Item>
@@ -517,15 +525,21 @@ const OffsetDetailed = (
       (accumulator, currentValue) => (accumulator ?? 0) + (currentValue ?? 0),
       0,
     );
+  const ammoReadout =
+    props.equipment.ammo === null || props.equipment.ammo === undefined
+      ? 'DEPLETED'
+      : props.equipment.ammo +
+        '/' +
+        props.equipment.max_ammo +
+        ' using ' +
+        ammoConsumption +
+        ' per run';
   return (
     <>
       <Stack.Item className="FireMissionOffsetLabel">
         {props.equipment.shorthand} {props.equipment.mount_point}
       </Stack.Item>
-      <Stack.Item className="FireMissionOffsetLabel">
-        {props.equipment.ammo} / {props.equipment.max_ammo} using{' '}
-        {ammoConsumption} per run.
-      </Stack.Item>
+      <Stack.Item className="FireMissionOffsetLabel">{ammoReadout}</Stack.Item>
       <Stack.Item className="FireMissionOffsetLabel">
         {availableGimbals.min} to {availableGimbals.max}
       </Stack.Item>
@@ -558,9 +572,9 @@ const FMOffsetError = (
           equipment={props.equipment}
         />
       )}
-      <Stack.Item height="25px" />
+      <Stack.Item height="26px" />
       <Divider />
-      <Stack.Item className="FireMissionError">
+      <Stack.Item className="FireMissionError" width="100%">
         Unable to set firemission offsets.
         <br />
         Offsets depend on ammunition.

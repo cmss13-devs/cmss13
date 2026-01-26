@@ -2,6 +2,7 @@
 	name = "head"
 	icon = 'icons/obj/items/clothing/hats/hats.dmi'
 	flags_armor_protection = BODY_FLAG_HEAD
+	flags_bodypart_hidden = BODY_FLAG_HEAD
 	flags_equip_slot = SLOT_HEAD
 	w_class = SIZE_SMALL
 	blood_overlay_type = "helmet"
@@ -410,8 +411,14 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	/obj/item/clothing/glasses/mgoggles/black/prescription = PREFIX_HAT_GARB_OVERRIDE,
 	/obj/item/clothing/glasses/mgoggles/orange = PREFIX_HAT_GARB_OVERRIDE,
 	/obj/item/clothing/glasses/mgoggles/orange/prescription = PREFIX_HAT_GARB_OVERRIDE,
-	/obj/item/clothing/glasses/mgoggles/v2 = NO_GARB_OVERRIDE,
-	/obj/item/clothing/glasses/mgoggles/v2/prescription = NO_GARB_OVERRIDE,
+	/obj/item/clothing/glasses/mgoggles/v2 = PREFIX_HAT_GARB_OVERRIDE,
+	/obj/item/clothing/glasses/mgoggles/v2/prescription = PREFIX_HAT_GARB_OVERRIDE,
+	/obj/item/clothing/glasses/mgoggles/v2/blue = PREFIX_HAT_GARB_OVERRIDE,
+	/obj/item/clothing/glasses/mgoggles/v2/blue/prescription = PREFIX_HAT_GARB_OVERRIDE,
+	/obj/item/clothing/glasses/mgoggles/v2/polarized_blue = PREFIX_HAT_GARB_OVERRIDE,
+	/obj/item/clothing/glasses/mgoggles/v2/polarized_blue/prescription = PREFIX_HAT_GARB_OVERRIDE,
+	/obj/item/clothing/glasses/mgoggles/v2/polarized_orange = PREFIX_HAT_GARB_OVERRIDE,
+	/obj/item/clothing/glasses/mgoggles/v2/polarized_orange/prescription = PREFIX_HAT_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/helmet_nvg = PREFIX_HAT_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/helmet_nvg/cosmetic = PREFIX_HAT_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/helmet_nvg/marsoc = PREFIX_HAT_GARB_OVERRIDE,

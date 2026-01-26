@@ -252,11 +252,11 @@
 						continue
 					else if(current.original_id == reagent.original_id || current.id == reagent.original_id)
 						//Merge into the original
-						var/volume_factor = clamp((max(current.overdose - reagent.overdose, 5) / 5)-1, 1, 3)
-						if(max(current.overdose, 5)/5 < 3)
+						var/volume_factor = clamp((max(abs(current.overdose - reagent.overdose), 5) / 5), 1, 3)
+						if(max(current.overdose, 5)/5 < 2)
 							volume_factor = 1
 						reagent_list -= reagent
-						current.volume += floor(reagent.volume / volume_factor)
+						add_reagent(current.id, floor(reagent.volume / volume_factor))
 						var/list/seen = viewers(4, get_turf(my_atom))
 						for(var/mob/seen_mob in seen)
 							if(volume_factor == 1)
@@ -282,7 +282,7 @@
 					total_matching_reagents++
 					multipliers += floor(get_reagent_amount(required_reagent) / reaction.required_reagents[required_reagent])
 				for(var/catalyst in reaction.required_catalysts)
-					if(catalyst == "silver" && istype(my_atom, /obj/item/reagent_container/glass/beaker/silver))
+					if(catalyst == "silver" && istype(my_atom, /obj/item/reagent_container/glass/beaker/catalyst/silver))
 						total_matching_catalysts++
 						continue
 					if(!has_reagent(catalyst, reaction.required_catalysts[catalyst]))
@@ -307,7 +307,7 @@
 					var/created_volume = reaction.result_amount*multiplier
 
 					if(reaction.result)
-						multiplier = max(multiplier, 1) //this shouldnt happen ...
+						multiplier = max(multiplier, 1) //this shouldn't happen ...
 						set_data(reaction.result, preserved_data)
 					if(CHECK_BITFIELD(reaction.reaction_type, CHEM_REACTION_CALM) && !CHECK_BITFIELD(reaction.reaction_type, CHEM_REACTION_ENDOTHERMIC)) //mix the chemicals
 						if(endothermic_reaction_occuring)
@@ -751,7 +751,7 @@
 				shards += floor(reagent.volume)
 			else if(reagent.id == "phoron" && reagent.volume >= EXPLOSION_PHORON_THRESHOLD)
 				shard_type = /datum/ammo/bullet/shrapnel/incendiary
-			else if(reagent.id == "sulphuric acid" && reagent.volume >= EXPLOSION_ACID_THRESHOLD)
+			else if(reagent.id == "pacid" && reagent.volume >= EXPLOSION_ACID_THRESHOLD)
 				shard_type = /datum/ammo/bullet/shrapnel/hornet_rounds
 			else if(reagent.id == "neurotoxinplasma" && reagent.volume >= EXPLOSION_NEURO_THRESHOLD)
 				shard_type = /datum/ammo/bullet/shrapnel/neuro

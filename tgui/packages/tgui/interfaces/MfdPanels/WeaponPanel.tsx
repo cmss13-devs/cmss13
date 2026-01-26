@@ -96,6 +96,10 @@ const WeaponPanel = (props: {
   readonly color?: string;
 }) => {
   const { data } = useBackend<EquipmentContext>();
+  const ammoReadout =
+    props.equipment.ammo === null || props.equipment.ammo === undefined
+      ? 'DEPLETED'
+      : props.equipment.ammo + ' / ' + props.equipment.max_ammo;
   const { isOnCooldown, remainingTime } = useFiringCooldown(props.equipment);
   const { selectedTarget } = useLazeTarget();
 
@@ -108,7 +112,7 @@ const WeaponPanel = (props: {
   return (
     <Stack>
       <Stack.Item>
-        <svg height="501" width="100">
+        <svg height="501" width="100" overflow="visible">
           <text
             stroke={props.color || '#00e94e'}
             x={60}
@@ -165,9 +169,7 @@ const WeaponPanel = (props: {
               <h3>{props.equipment.ammo_name}</h3>
             </Stack.Item>
             <Stack.Item>
-              <h3>
-                Ammo {props.equipment.ammo} / {props.equipment.max_ammo}
-              </h3>
+              <h3>Ammo {ammoReadout}</h3>
             </Stack.Item>
             {isOnCooldown && (
               <Stack.Item>
@@ -232,7 +234,7 @@ const WeaponPanel = (props: {
         </Box>
       </Stack.Item>
       <Stack.Item>
-        <svg width="50px" height="500px">
+        <svg width="50px" height="500px" overflow="visible">
           <g transform="translate(-10)">
             {data.targets_data.length === 0 && (
               <text

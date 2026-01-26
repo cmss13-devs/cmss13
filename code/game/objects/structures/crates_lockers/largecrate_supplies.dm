@@ -227,6 +227,11 @@
 	desc = "A case containing twenty-five 80mm flare mortar shells."
 	supplies = list(/obj/item/mortar_shell/flare = 25)
 
+/obj/structure/largecrate/supply/explosives/mortar_frag
+	name = "80mm frag mortar shell case (x25)"
+	desc = "A case containing twenty-five 80mm frag mortar shells."
+	supplies = list(/obj/item/mortar_shell/frag = 25)
+
 
 /obj/structure/largecrate/supply/supplies
 	name = "supplies crate"
@@ -298,7 +303,7 @@
 /obj/structure/largecrate/supply/generator
 	name = "\improper P.A.C.M.A.N. crate"
 	desc = "A crate containing a P.A.C.M.A.N. generator, some fuel, and some cable coil to get your power up and going."
-	supplies = list(/obj/structure/machinery/power/port_gen/pacman = 1, /obj/item/stack/sheet/mineral/phoron/medium_stack = 1, /obj/item/stack/cable_coil/yellow = 3)
+	supplies = list(/obj/structure/machinery/power/power_generator/port_gen/pacman = 1, /obj/item/stack/sheet/mineral/phoron/medium_stack = 1, /obj/item/stack/cable_coil/yellow = 3)
 
 /obj/structure/largecrate/supply/medicine
 	name = "medical crate"

@@ -11,6 +11,7 @@
 	can_bloody = FALSE
 	layer = UNDER_TURF_LAYER
 	supports_surgery = FALSE
+	minimap_color = MINIMAP_BLACK
 	is_weedable = NOT_WEEDABLE
 
 /turf/open/space/basic/New() //Do not convert to Initialize
@@ -53,7 +54,7 @@
 			return
 		var/obj/item/stack/rods/R = C
 		if (R.use(1))
-			to_chat(user, SPAN_NOTICE(" Constructing support lattice ..."))
+			to_chat(user, SPAN_NOTICE("Constructing support lattice ..."))
 			playsound(src, 'sound/weapons/Genhit.ogg', 25, 1)
 			ReplaceWithLattice()
 		return

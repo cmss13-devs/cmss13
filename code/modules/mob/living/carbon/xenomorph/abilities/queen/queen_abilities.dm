@@ -37,7 +37,6 @@
 	no_cooldown_msg = FALSE // Needed for onclick actions
 	ability_primacy = XENO_SCREECH
 
-
 /datum/action/xeno_action/activable/queen_give_plasma
 	name = "Give Plasma (400)"
 	action_icon_state = "queen_give_plasma"
@@ -173,7 +172,7 @@
 	hide_from(Q)
 
 /datum/action/xeno_action/activable/bombard/queen/get_bombard_source()
-	var/mob/hologram/queen/H = owner?.client?.eye
+	var/mob/hologram/queen/H = owner?.client?.get_eye()
 	if(istype(H))
 		return H
 	return owner

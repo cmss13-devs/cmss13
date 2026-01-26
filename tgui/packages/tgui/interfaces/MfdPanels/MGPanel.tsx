@@ -14,11 +14,15 @@ const MgPanel = (
   },
 ) => {
   const mgData = props.data as MGSpec;
+  const ammoReadout =
+    mgData.rounds === null || mgData.rounds === undefined
+      ? 'DEPLETED'
+      : mgData.rounds + ' / ' + mgData.max_rounds;
 
   return (
     <Stack>
       <Stack.Item width="100px">
-        <svg />
+        <svg overflow="visible" />
       </Stack.Item>
       <Stack.Item>
         <Stack vertical width="300px" align="center">
@@ -39,9 +43,7 @@ const MgPanel = (
             </h3>
           </Stack.Item>
           <Stack.Item>
-            <h3>
-              Ammo: {mgData.rounds} / {mgData.max_rounds}
-            </h3>
+            <h3>Ammo: {ammoReadout}</h3>
           </Stack.Item>
           <Stack.Item>
             <h3>
@@ -56,7 +58,7 @@ const MgPanel = (
         </Stack>
       </Stack.Item>
       <Stack.Item width="100px">
-        <svg />
+        <svg overflow="visible" />
       </Stack.Item>
     </Stack>
   );

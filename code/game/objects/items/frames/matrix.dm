@@ -1,6 +1,6 @@
 /obj/item/frame/matrix_frame
 	name = "matrix frame"
-	desc = "An assembly for the dropship camera matrix, installed into the weapons console. Has a complex series of lenses which allow light to pass through the fluid. \nBecause the fluids of the vial are spread evenly inside, it cannot be removed after it has been inserted. "
+	desc = "An assembly for the dropship camera matrix, installed into the weapons console. Has a complex series of lenses which allow light to pass through the fluid. \nBecause the fluids of the vial are spread evenly inside, it cannot be removed after it has been inserted."
 	icon = 'icons/obj/items/devices.dmi'
 	icon_state = "matrix"
 	matter = list("metal" = 7500)
@@ -13,7 +13,7 @@
 //Upgrade types
 //Matrix default - the default dropship camera system you start with
 //Matrix NVG - guidance camera gets NVG filter depending on the potency of the property
-//Matrix wide - gives a wider view which depends on the potency of the proeprty
+//Matrix wide - gives a wider view which depends on the potency of the property
 
 /obj/item/frame/matrix_frame/attackby(obj/item/W, mob/user as mob)
 	switch(state)
@@ -22,7 +22,7 @@
 				user.drop_held_item(W)
 				W.forceMove(src)
 				state = ASSEMBLY_UNLOCKED
-				to_chat(user, SPAN_NOTICE("You add the vial to the matrix, and the testing indicator lights up with green"))
+				to_chat(user, SPAN_NOTICE("You add the vial to the matrix, and the testing indicator lights up with green."))
 				desc = initial(desc) + "\nThe vial is installed but is not screwed."
 				var/datum/reagent/S = W.reagents.reagent_list[1]
 				if(S.get_property(PROPERTY_PHOTOSENSITIVE) && !S.get_property(PROPERTY_CRYSTALLIZATION))
@@ -52,10 +52,10 @@
 			if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				state = ASSEMBLY_LOCKED
-				to_chat(user, SPAN_NOTICE("You lock the matrix assembly"))
+				to_chat(user, SPAN_NOTICE("You lock the matrix assembly."))
 				desc = initial(desc) + "\n The vial is installed and screwed in place."
 		if(ASSEMBLY_LOCKED)
 			if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				state = ASSEMBLY_UNLOCKED
-				to_chat(user, SPAN_NOTICE("You unlock the matrix assembly"))
+				to_chat(user, SPAN_NOTICE("You unlock the matrix assembly."))

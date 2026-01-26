@@ -86,7 +86,7 @@ export const FultonMfdPanel = (props: MfdProps) => {
       <Box className="NavigationMenu">
         <Stack>
           <Stack.Item>
-            <svg width="60px">
+            <svg width="60px" overflow="visible">
               {all_targets.length > 0 && (
                 <path
                   fillOpacity="0"
@@ -151,7 +151,7 @@ export const FultonMfdPanel = (props: MfdProps) => {
             </Stack>
           </Stack.Item>
           <Stack.Item>
-            <svg width="60px">
+            <svg width="60px" overflow="visible">
               {all_targets.length > 5 && (
                 <path
                   fillOpacity="0"

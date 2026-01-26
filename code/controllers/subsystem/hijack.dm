@@ -163,6 +163,11 @@ SUBSYSTEM_DEF(hijack)
 	current_run_progress_additive = 0
 	current_run_progress_multiplicative = 1
 
+///Called when the dropship has been called by the xenos
+/datum/controller/subsystem/hijack/proc/call_shuttle()
+	hijack_status = HIJACK_OBJECTIVES_SHIP_INBOUND
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_HIJACK_INBOUND)
+
 ///Called when the xeno dropship crashes into the Almayer and announces the current status of various objectives to marines
 /datum/controller/subsystem/hijack/proc/announce_status_on_crash()
 	var/message = ""
@@ -218,13 +223,13 @@ SUBSYSTEM_DEF(hijack)
 
 	switch(announce)
 		if(1)
-			marine_announcement("Emergency fuel replenishment is at 25 percent. Lifeboat early launch is now available. Recommendation: wait for 100% fuel for safety purposes.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
+			marine_announcement("Emergency fuel replenishment is at 25%. Lifeboat early launch is now available. Recommendation: wait for 100% fuel for safety purposes.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
 		if(2)
-			marine_announcement("Emergency fuel replenishment is at 50 percent.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
+			marine_announcement("Emergency fuel replenishment is at 50%.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
 		if(3)
-			marine_announcement("Emergency fuel replenishment is at 75 percent.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
+			marine_announcement("Emergency fuel replenishment is at 75%.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
 		if(4)
-			marine_announcement("Emergency fuel replenishment is at 100 percent. Safe utilization of lifeboats and pods is now possible.", HIJACK_ANNOUNCE)
+			marine_announcement("Emergency fuel replenishment is at 100%. Safe utilization of lifeboats and pods is now possible.", HIJACK_ANNOUNCE)
 			if(!admin_sd_blocked)
 				addtimer(CALLBACK(src, PROC_REF(unlock_self_destruct)), 8 SECONDS)
 
@@ -301,7 +306,7 @@ SUBSYSTEM_DEF(hijack)
 	sd_unlocked = TRUE
 	marine_announcement("Fuel reserves full. Manual detonation of fuel reserves by overloading the on-board fusion reactors now possible.", HIJACK_ANNOUNCE)
 
-/datum/controller/subsystem/hijack/proc/on_generator_overload(obj/structure/machinery/power/reactor/source, new_overloading)
+/datum/controller/subsystem/hijack/proc/on_generator_overload(obj/structure/machinery/power/power_generator/reactor/source, new_overloading)
 	SIGNAL_HANDLER
 
 	if(!generator_ever_overloaded)
@@ -352,6 +357,7 @@ SUBSYSTEM_DEF(hijack)
 /datum/controller/subsystem/hijack/proc/detonate_sd()
 	set waitfor = FALSE
 	sd_detonated = TRUE
+	SSticker?.roundend_check_paused = TRUE
 	var/creak_picked = pick('sound/effects/creak1.ogg', 'sound/effects/creak2.ogg', 'sound/effects/creak3.ogg')
 	for(var/mob/current_mob as anything in GLOB.mob_list)
 		var/turf/current_turf = get_turf(current_mob)
@@ -421,10 +427,11 @@ SUBSYSTEM_DEF(hijack)
 
 
 	sleep(0.5 SECONDS)
-	if(SSticker.mode)
-		SSticker.mode.check_win()
 
-	if(!SSticker.mode) //Just a safety, just in case a mode isn't running, somehow.
+	SSticker?.roundend_check_paused = FALSE
+	if(SSticker?.mode)
+		SSticker.mode.check_win()
+	else //Just a safety, just in case a mode isn't running, somehow.
 		to_world(SPAN_ROUNDBODY("Resetting in 30 seconds!"))
 		sleep(30 SECONDS)
 		log_game("Rebooting due to nuclear detonation.")

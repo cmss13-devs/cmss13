@@ -282,7 +282,7 @@ const EquipmentPanel = (props: {
   const themeColor = getThemeColor(props.color);
   return (
     <Box className="NavigationMenu">
-      <svg height="501" width="501">
+      <svg height="501" width="501" overflow="visible">
         <defs>
           <pattern
             id="diagonalHatch"

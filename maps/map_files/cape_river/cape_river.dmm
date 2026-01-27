@@ -68,7 +68,7 @@
 /turf/open/desert/rock/deep/transition/northwest,
 /area/caperiver/outdoors/scrublands/north_west)
 "aao" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 8
 	},
 /turf/open/floor/plating/kutjevo,
@@ -36764,7 +36764,7 @@
 /turf/open/floor/dark,
 /area/caperiver/indoors/conambase/research_w)
 "gum" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 1
 	},
 /turf/open/floor/plating/kutjevo,
@@ -43278,7 +43278,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/caperiver/oob)
 "les" = (
-/obj/structure/machinery/power/terminal,
+/obj/structure/terminal,
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -58754,7 +58754,7 @@
 /turf/open/desert/dirt/desert_transition_edge1/east,
 /area/caperiver/outdoors/mining_base_exterior/north)
 "wvo" = (
-/obj/structure/machinery/power/terminal,
+/obj/structure/terminal,
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	layer = 3.33;

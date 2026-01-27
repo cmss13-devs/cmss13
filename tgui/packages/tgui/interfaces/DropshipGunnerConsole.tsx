@@ -262,7 +262,7 @@ const WeaponsMfdPanel = (props) => {
 };
 
 const BaseMfdPanel = (props: MfdProps) => {
-  const { data } = useBackend<EquipmentContext>();
+  const { data, act } = useBackend<EquipmentContext>();
   const { setPanelState } = mfdState(props.panelStateId);
   const { setWeaponState } = useWeaponState(props.panelStateId);
   const { otherPanelState } = otherMfdState(props.otherPanelStateId);
@@ -284,8 +284,8 @@ const BaseMfdPanel = (props: MfdProps) => {
       bottomButtons={[
         {},
         {
-          children: otherPanelState !== 'map' ? 'MAPS' : undefined,
-          onClick: () => setPanelState('map'),
+          children: 'MAPS',
+          onClick: () => act('mapview'),
         },
         {
           children: otherPanelState !== 'camera' ? 'CAMS' : undefined,

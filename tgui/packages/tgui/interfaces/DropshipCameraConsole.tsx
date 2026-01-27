@@ -1,3 +1,4 @@
+import { useBackend } from 'tgui/backend';
 import { Box, Stack } from 'tgui/components';
 import { Window } from 'tgui/layouts';
 
@@ -52,6 +53,7 @@ export type DropshipEquipment = {
 };
 
 const BaseMfdPanel = (props: MfdProps) => {
+  const { act } = useBackend();
   const { setPanelState } = mfdState(props.panelStateId);
   const { otherPanelState } = otherMfdState(props.otherPanelStateId);
 
@@ -68,8 +70,8 @@ const BaseMfdPanel = (props: MfdProps) => {
       bottomButtons={[
         {},
         {
-          children: otherPanelState !== 'map' ? 'MAPS' : undefined,
-          onClick: () => setPanelState('map'),
+          children: 'MAPS',
+          onClick: () => act('mapview'),
         },
         {
           children: otherPanelState !== 'camera' ? 'CAMS' : undefined,

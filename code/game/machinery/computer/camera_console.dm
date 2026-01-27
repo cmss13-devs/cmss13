@@ -26,6 +26,8 @@
 
 	// camera setup
 	AddComponent(/datum/component/camera_manager)
+	AddComponent(/datum/component/tacmap, has_drawing_tools = FALSE, minimap_flag = MINIMAP_FLAG_USCM, has_update = FALSE)
+
 	SEND_SIGNAL(src, COMSIG_CAMERA_CLEAR)
 
 	if(colony_camera_mapload && mapload && is_ground_level(z))
@@ -118,6 +120,16 @@
 	. = ..()
 	if(.)
 		return
+
+	if(action == "mapview")
+		var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
+		if(tacmap_component)
+			var/mob/user = usr
+			if(user in tacmap_component.interactees)
+				tacmap_component.on_unset_interaction(user)
+			else
+				tacmap_component.show_tacmap(user)
+		return TRUE
 
 	if(action == "switch_camera")
 		var/c_tag = params["name"]
@@ -419,7 +431,6 @@
 	explo_proof = TRUE
 
 	var/shuttle_tag
-	var/datum/tacmap/tacmap
 	var/minimap_type = MINIMAP_FLAG_USCM
 	var/camera_target_id
 	var/camera_width = 11
@@ -440,14 +451,13 @@
 	. = ..()
 
 	// Initialize tacmap
-	tacmap = new(src, minimap_type)
+	AddComponent(/datum/component/tacmap, has_drawing_tools = FALSE, minimap_flag = minimap_type, has_update = FALSE)
 
 	// Add camera management component
 	AddComponent(/datum/component/camera_manager)
 	SEND_SIGNAL(src, COMSIG_CAMERA_CLEAR)
 
 /obj/structure/machinery/computer/cameras/dropship/Destroy()
-	QDEL_NULL(tacmap)
 	return ..()
 
 /obj/structure/machinery/computer/cameras/dropship/attack_hand(mob/user)
@@ -470,15 +480,10 @@
 			RegisterSignal(dropship, COMSIG_DROPSHIP_REMOVE_EQUIPMENT, PROC_REF(equipment_update))
 		registered = TRUE
 
-	if(!tacmap.map_holder)
-		var/level = SSmapping.levels_by_trait(tacmap.targeted_ztrait)
-		if(level && length(level))
-			tacmap.map_holder = SSminimaps.fetch_tacmap_datum(level[1], tacmap.allowed_flags)
+	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
 
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		if(tacmap.map_holder)
-			user.client.register_map_obj(tacmap.map_holder.map)
 		SEND_SIGNAL(src, COMSIG_CAMERA_REGISTER_UI, user)
 		ui = new(user, src, "DropshipCameraConsole", "Camera Console")
 		ui.open()
@@ -497,8 +502,9 @@
 
 /obj/structure/machinery/computer/cameras/dropship/ui_static_data(mob/user)
 	. = list()
-	if(tacmap.map_holder)
-		.["tactical_map_ref"] = tacmap.map_holder.map_ref
+	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
+	if(tacmap_component && tacmap_component.map_holder)
+		.["tactical_map_ref"] = tacmap_component.map_holder.map_ref
 	.["camera_map_ref"] = camera_map_name
 
 /obj/structure/machinery/computer/cameras/dropship/ui_data(mob/user)

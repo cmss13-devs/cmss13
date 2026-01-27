@@ -1314,10 +1314,10 @@
 		// Link the console to this specific heavygun/bay
 		var/obj/structure/machinery/computer/dropship_weapons/belly_gun/belly_console = personal_console
 		belly_console.linked_heavygun = src
-		personal_console.minimap_type = MINIMAP_FLAG_USCM
 		personal_console.pixel_y = -4
-		if(personal_console.tacmap && personal_console.tacmap.map_holder)
-			personal_console.camera_mapname_update(personal_console, personal_console.tacmap.map_holder.map_ref)
+		var/datum/component/tacmap/tacmap_component = personal_console.GetComponent(/datum/component/tacmap)
+		if(tacmap_component && tacmap_component.map_holder)
+			personal_console.camera_mapname_update(personal_console, tacmap_component.map_holder.map_ref)
 
 	// Remove console when uninstalled
 	else if(!ship_base && personal_console && !QDELETED(personal_console))

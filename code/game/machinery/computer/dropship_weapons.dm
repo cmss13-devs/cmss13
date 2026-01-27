@@ -1275,10 +1275,19 @@
 	//acutal firemission
 	configuration.simulate_execute_firemission(src, get_turf(simulation.sim_camera), user)
 
+/obj/structure/machinery/computer/dropship_weapons/belly_gun/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+
 /obj/structure/machinery/computer/dropship_weapons/belly_gun/tgui_interact(mob/user, datum/tgui/ui)
-	if(!tacmap.map_holder)
-		var/level = SSmapping.levels_by_trait(tacmap.targeted_ztrait)
-		tacmap.map_holder = SSminimaps.fetch_tacmap_datum(level[1], tacmap.allowed_flags)
+	// close the current bellygun console if you try to interact with another, prevents 1 person from using 2 consoles
+	for(var/datum/tgui/existing_ui in SStgui.open_uis)
+		if(existing_ui.interface == "DropshipGunnerConsole" && existing_ui.user == user && existing_ui.src_object != src)
+			existing_ui.close()
+
+	user.set_interaction(src)
+
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		SEND_SIGNAL(src, COMSIG_CAMERA_REGISTER_UI, user)

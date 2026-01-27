@@ -295,9 +295,6 @@
 	},
 /turf/open/floor/plating,
 /area/event/dynamic/lit)
-"eS" = (
-/turf/closed/wall/rock/brown,
-/area/varadero/interior_protected/caves/central)
 "eW" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
@@ -1760,9 +1757,6 @@
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/central)
-"GQ" = (
-/turf/closed/wall/rock/brown,
-/area/varadero/interior/caves/east)
 "GT" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/floor/strata/floor3/east,
@@ -2028,7 +2022,7 @@
 	req_access_txt = "100";
 	req_one_access = null
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/toilets)
 "MS" = (
 /obj/structure/machinery/storm_siren{
@@ -2746,7 +2740,7 @@
 /area/varadero/interior_protected/caves/central)
 
 (1,1,1) = {"
-GQ
+VX
 SV
 SV
 pJ
@@ -2784,16 +2778,16 @@ HH
 HH
 HH
 HJ
-eS
-eS
-eS
-eS
-eS
-eS
-eS
-eS
-eS
-eS
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
 HH
 HJ
 HH
@@ -2803,7 +2797,7 @@ VX
 VX
 "}
 (2,1,1) = {"
-GQ
+VX
 SV
 aj
 pJ
@@ -2841,16 +2835,16 @@ tM
 tM
 HH
 Ba
-eS
-eS
-eS
-eS
-eS
-eS
-eS
-eS
-eS
-eS
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
 HJ
 HH
 HH
@@ -2860,7 +2854,7 @@ VX
 VX
 "}
 (3,1,1) = {"
-GQ
+VX
 SV
 Rc
 pJ
@@ -2898,16 +2892,16 @@ kF
 kF
 HH
 HH
-eS
-eS
-eS
-eS
-eS
-eS
-eS
-eS
-eS
-eS
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
 HH
 HH
 HH
@@ -2917,7 +2911,7 @@ VX
 VX
 "}
 (4,1,1) = {"
-GQ
+VX
 SV
 SV
 pJ
@@ -2955,15 +2949,15 @@ HH
 Jf
 HH
 HH
-eS
-eS
-eS
-eS
-eS
-eS
-eS
-eS
-eS
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
 HH
 HH
 HH
@@ -2974,8 +2968,8 @@ VX
 VX
 "}
 (5,1,1) = {"
-GQ
-GQ
+VX
+VX
 SV
 pJ
 cL
@@ -2999,23 +2993,23 @@ bv
 bv
 HH
 HH
-eS
-eS
+VX
+VX
 HH
 HH
 HH
 HH
 HH
-eS
+VX
 HH
 HH
 HH
 kF
 HH
-eS
-eS
-eS
-eS
+VX
+VX
+VX
+VX
 bN
 HJ
 HJ
@@ -3031,15 +3025,15 @@ VX
 VX
 "}
 (6,1,1) = {"
-GQ
-GQ
-GQ
+VX
+VX
+VX
 aZ
 cL
 pJ
 xP
-GQ
-GQ
+VX
+VX
 EM
 EM
 EM
@@ -3048,15 +3042,15 @@ EM
 EM
 Wk
 Wk
-GQ
-GQ
-eS
+VX
+VX
+VX
 bT
-eS
-eS
+VX
+VX
 HJ
 HJ
-eS
+VX
 HH
 HH
 HH
@@ -3070,8 +3064,8 @@ YQ
 fe
 HH
 HH
-eS
-eS
+VX
+VX
 HJ
 ty
 HJ
@@ -3088,14 +3082,14 @@ VX
 VX
 "}
 (7,1,1) = {"
-GQ
-GQ
-GQ
+VX
+VX
+VX
 pJ
 Fr
 pJ
 xP
-GQ
+VX
 EM
 vx
 EM
@@ -3119,16 +3113,16 @@ HJ
 HH
 HH
 HH
-eS
-eS
-eS
+VX
+VX
+VX
 HH
 HH
 HH
 Kq
 HH
-eS
-eS
+VX
+VX
 FY
 HJ
 HJ
@@ -3152,7 +3146,7 @@ pJ
 cL
 pJ
 xP
-GQ
+VX
 Wk
 EM
 Wk
@@ -3176,16 +3170,16 @@ De
 HH
 HH
 HH
-eS
-eS
-eS
-eS
+VX
+VX
+VX
+VX
 YQ
 HH
 Kq
 HH
-eS
-eS
+VX
+VX
 HJ
 HJ
 HJ
@@ -3232,9 +3226,9 @@ HH
 HH
 HH
 HH
-eS
-eS
-eS
+VX
+VX
+VX
 De
 HH
 HH
@@ -3282,16 +3276,16 @@ HH
 HH
 HH
 HH
-eS
-eS
+VX
+VX
 HH
 HH
 HH
 HH
 HJ
-eS
-eS
-eS
+VX
+VX
+VX
 HH
 HH
 HH
@@ -3339,15 +3333,15 @@ HH
 HJ
 HJ
 HH
-eS
-eS
+VX
+VX
 HH
 HH
 HH
 HH
 HJ
 HJ
-eS
+VX
 HH
 HH
 HH
@@ -3544,7 +3538,7 @@ zS
 aa
 "}
 (15,1,1) = {"
-GQ
+VX
 EM
 EM
 EM
@@ -3601,8 +3595,8 @@ CT
 CT
 "}
 (16,1,1) = {"
-GQ
-GQ
+VX
+VX
 EM
 EM
 EM

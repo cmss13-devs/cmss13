@@ -365,3 +365,15 @@
   - code_imp: Terminals are now somewhat fluff and not a powernet object.
   Red-byte3D:
   - balance: Dirlock now has slowdown again
+2026-01-26:
+  Drathek:
+  - bugfix: Self destruct now pauses win condition checks during SD sequence and is
+      explicitly a draw
+  - code_imp: Cleaned up some win condition handling
+  MistChristmas:
+  - soundtweak: 'Marine winning_triumph3: Marine Hymm is now normalised to -8db'
+  larentoun:
+  - bugfix: Mutated Despoiler is now Green Despoiler, not invisible one.
+  - bugfix: Mutated King is also Green now.
+  - maptweak: LV624 LZ1 is now correctly called "LZ1 Nexus", instead of being "Alamo
+      Landing Zone".

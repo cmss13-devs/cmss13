@@ -8312,7 +8312,7 @@
 /area/almayer/engineering/upper_engineering)
 "auM" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light_construct{
+/obj/structure/machinery/light{
 	dir = 4
 	},
 /turf/open/floor/wood/ship,

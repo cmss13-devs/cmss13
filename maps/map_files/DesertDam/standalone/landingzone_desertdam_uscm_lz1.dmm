@@ -248,9 +248,11 @@
 /turf/open/floor/prison/blue/west,
 /area/desert_dam/building/administration/gate)
 "aW" = (
-/obj/structure/bed/sofa/vert/white,
-/turf/open/floor/prison,
-/area/desert_dam/building/administration/gate)
+/obj/structure/shuttle/part/dropship3/transparent/engine_right_exhaust{
+	name = "\improper Tornado"
+	},
+/turf/open/floor/prison/darkyellow2/west,
+/area/lv522/landing_zone_forecon/UD6_Tornado)
 "aX" = (
 /obj/item/card/id/visa{
 	desc = "A United Americas entry visa. A rare commodity out here on the rim.";
@@ -268,10 +270,10 @@
 /turf/open/floor/darkred2/southwest,
 /area/desert_dam/building/administration/lobby)
 "aZ" = (
-/obj/structure/shuttle/part/dropship3/transparent/engine_right_exhaust{
+/obj/structure/shuttle/part/dropship3/transparent/engine_left_cap{
 	name = "\improper Tornado"
 	},
-/turf/open/floor/prison/darkyellow2/west,
+/turf/open/floor/prison/darkyellow2/east,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "ba" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -287,9 +289,11 @@
 /turf/open/floor/prison/blue/west,
 /area/desert_dam/building/administration/gate)
 "bc" = (
-/obj/structure/bed/sofa/vert/white/top,
-/turf/open/floor/prison,
-/area/desert_dam/building/administration/gate)
+/obj/structure/shuttle/part/dropship3/transparent/engine_right_cap{
+	name = "\improper Tornado"
+	},
+/turf/open/floor/prison/darkyellow2/west,
+/area/lv522/landing_zone_forecon/UD6_Tornado)
 "bd" = (
 /turf/open/floor/prison/bluecorner/west,
 /area/desert_dam/building/administration/breakroom)
@@ -433,36 +437,28 @@
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/building/administration/breakroom)
 "bC" = (
-/obj/structure/shuttle/part/dropship3/transparent/engine_left_cap{
-	name = "\improper Tornado"
-	},
-/turf/open/floor/prison/darkyellow2/east,
-/area/lv522/landing_zone_forecon/UD6_Tornado)
-"bD" = (
-/obj/structure/shuttle/part/dropship3/transparent/engine_right_cap{
-	name = "\improper Tornado"
-	},
-/turf/open/floor/prison/darkyellow2/west,
-/area/lv522/landing_zone_forecon/UD6_Tornado)
-"bE" = (
 /obj/structure/machinery/door/airlock/dropship_hatch/two,
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
-"bF" = (
+"bD" = (
 /turf/closed/shuttle/dropship3{
 	icon_state = "81"
 	},
 /area/lv522/landing_zone_forecon/UD6_Tornado)
-"bG" = (
+"bE" = (
 /obj/structure/shuttle/part/dropship3/transparent/outer_left_weapons,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
-"bH" = (
+"bF" = (
 /obj/structure/shuttle/part/dropship3/transparent/inner_left_weapons,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
-"bI" = (
+"bG" = (
 /obj/structure/shuttle/part/dropship3/transparent/inner_right_weapons,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"bH" = (
+/obj/structure/shuttle/part/dropship3/transparent/outer_right_weapons,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "bJ" = (
@@ -475,10 +471,6 @@
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/darkred2,
 /area/desert_dam/building/administration/lobby)
-"bL" = (
-/obj/structure/shuttle/part/dropship3/transparent/outer_right_weapons,
-/turf/open/floor/prison/floor_plate/southwest,
-/area/lv522/landing_zone_forecon/UD6_Tornado)
 "bX" = (
 /obj/structure/barricade/metal/wired{
 	dir = 4
@@ -2672,11 +2664,6 @@
 	icon_state = "23"
 	},
 /area/lv522/landing_zone_forecon/UD6_Tornado)
-"PX" = (
-/obj/structure/window/framed/colony/reinforced,
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/plating,
-/area/desert_dam/building/administration/hallway)
 "Qa" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal4"
@@ -3158,10 +3145,6 @@
 /obj/structure/flora/grass/desert/heavygrass_4,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/landing_pad_one)
-"YX" = (
-/obj/structure/bed/sofa/vert/white/bot,
-/turf/open/floor/prison,
-/area/desert_dam/building/administration/gate)
 "Zb" = (
 /obj/structure/shuttle/part/dropship3/transparent/lower_right_wing{
 	name = "\improper Tornado"
@@ -3373,7 +3356,7 @@ vC
 vC
 vC
 vC
-bC
+aZ
 EC
 gJ
 aD
@@ -3476,13 +3459,13 @@ Ia
 BC
 gU
 gU
-bG
+bE
 fn
 up
 cm
 IB
-bE
-bE
+bC
+bC
 bJ
 op
 kV
@@ -3531,7 +3514,7 @@ Ia
 BC
 gU
 gU
-bH
+bF
 FK
 JA
 FX
@@ -3697,7 +3680,7 @@ BC
 dw
 En
 Ya
-bF
+bD
 QZ
 Zo
 Zo
@@ -3751,7 +3734,7 @@ Ia
 BC
 gU
 gU
-bI
+bG
 FK
 gV
 Qx
@@ -3806,7 +3789,7 @@ Ia
 BC
 gU
 gU
-bL
+bH
 No
 XG
 Wp
@@ -3923,10 +3906,10 @@ hN
 it
 it
 it
-bD
+bc
 Wn
 iQ
-aZ
+aW
 it
 it
 it
@@ -5093,9 +5076,9 @@ SA
 (35,1,1) = {"
 ZT
 GE
-bc
-aW
-YX
+aI
+FU
+RE
 aO
 GE
 aI
@@ -5649,7 +5632,7 @@ pL
 eX
 Eh
 jA
-PX
+Bq
 be
 rG
 rG

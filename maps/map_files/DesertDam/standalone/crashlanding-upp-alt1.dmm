@@ -5,6 +5,40 @@
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/desert_dam/exterior/valley/valley_civilian)
 "ab" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 4
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"ac" = (
+/obj/effect/decal/sand_overlay/sand1/corner1,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"ad" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 8
+	},
+/turf/open/mars/mars_dirt_5,
+/area/desert_dam/exterior/valley/valley_civilian)
+"ae" = (
+/obj/effect/decal/sand_overlay/sand1/corner1,
+/turf/open/mars/mars_dirt_5,
+/area/desert_dam/exterior/valley/valley_civilian)
+"af" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached,
+/area/desert_dam/exterior/valley/valley_civilian)
+"ag" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 4
+	},
+/turf/open/mars/mars_dirt_5,
+/area/desert_dam/exterior/valley/valley_civilian)
+"ah" = (
 /obj/structure/shuttle/part/ert/transparent/left_engine{
 	name = "Buran"
 	},
@@ -309,13 +343,6 @@
 /obj/effect/decal/sand_overlay/sand1,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_civilian)
-"uG" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/sand_overlay/sand1{
-	dir = 1
-	},
-/turf/open/asphalt/cement_sunbleached,
-/area/desert_dam/exterior/valley/valley_civilian)
 "uK" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal4"
@@ -361,9 +388,6 @@
 	},
 /area/desert_dam/exterior/valley/valley_civilian)
 "wl" = (
-/obj/effect/decal/sand_overlay/sand1{
-	dir = 1
-	},
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 5
 	},
@@ -1045,7 +1069,7 @@ sl
 nX
 xM
 VD
-nX
+ac
 Jb
 Xn
 Hm
@@ -1084,7 +1108,7 @@ As
 xK
 Zz
 Sf
-Pr
+ab
 Xq
 Xq
 Xq
@@ -1190,7 +1214,7 @@ JW
 Tn
 TT
 xz
-Yv
+ad
 nj
 As
 la
@@ -1202,7 +1226,7 @@ nj
 YZ
 Yv
 Yv
-Yv
+jX
 Qj
 wl
 BU
@@ -1222,9 +1246,9 @@ nX
 nX
 nX
 Mp
-ym
+ag
 Yv
-Yv
+ad
 PS
 hK
 nA
@@ -1234,7 +1258,7 @@ ig
 Yv
 Yv
 DO
-Yv
+ad
 As
 fL
 im
@@ -1299,7 +1323,7 @@ kV
 dN
 Yv
 Yv
-Yv
+ad
 As
 nX
 Lc
@@ -1318,7 +1342,7 @@ EW
 Zm
 LD
 BJ
-Yv
+YZ
 Yv
 Yv
 Lt
@@ -1351,7 +1375,7 @@ Zm
 bV
 xt
 Yv
-Yv
+ae
 UK
 xz
 xE
@@ -1363,7 +1387,7 @@ Yv
 Yv
 Yv
 Yv
-Yv
+ae
 nd
 nX
 nn
@@ -1382,7 +1406,7 @@ Hu
 bV
 cG
 xt
-Yv
+ae
 nd
 nX
 TT
@@ -1424,9 +1448,9 @@ la
 la
 yl
 fA
-ab
+ah
 Yv
-Yv
+ae
 nd
 nX
 fp
@@ -1457,7 +1481,7 @@ la
 Kr
 Dd
 UB
-Yv
+ae
 nd
 nX
 BE
@@ -1521,9 +1545,9 @@ la
 la
 pF
 xt
-nd
-nX
-uG
+ad
+af
+HP
 qD
 cp
 xp

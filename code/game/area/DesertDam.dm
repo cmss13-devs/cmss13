@@ -1114,6 +1114,7 @@
 /area/desert_dam/exterior/valley/valley_wilderness
 	name = "Wilderness Valley"
 	icon_state = "central"
+	always_unpowered = 0
 
 //Rivers
 /area/desert_dam/exterior/river

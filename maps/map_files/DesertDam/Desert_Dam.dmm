@@ -2499,6 +2499,10 @@
 	},
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/break_room/upper)
+"ahJ" = (
+/obj/structure/flora/grass/desert/lightgrass_8,
+/turf/open/desert/rock/deep/transition/west,
+/area/desert_dam/exterior/valley/valley_wilderness)
 "ahK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table,
@@ -8164,6 +8168,10 @@
 "azM" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/spawner/random/pills/highchance,
+/obj/item/tool/surgery/surgical_line{
+	pixel_x = -5;
+	pixel_y = -6
+	},
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/desert_dam/building/medical/primary_storage)
 "azN" = (
@@ -12208,9 +12216,6 @@
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/building/administration/upper_hallway)
 "aLZ" = (
-/obj/effect/decal/sand_overlay/sand1/corner1{
-	dir = 4
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
@@ -14944,6 +14949,21 @@
 /obj/structure/platform/metal/kutjevo_smooth_immune/east,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/building/medical/stairwell/north)
+"aUZ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1;
+	layer = 2
+	},
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 8
+	},
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"aVa" = (
+/obj/effect/decal/sand_overlay/sand2/corner2,
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_wilderness)
 "aVb" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -20449,6 +20469,12 @@
 	},
 /turf/open/floor/wood,
 /area/desert_dam/building/administration/office)
+"blD" = (
+/obj/effect/decal/sand_overlay/sand2/corner2{
+	dir = 4
+	},
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_wilderness)
 "blE" = (
 /obj/effect/hunter/bridge_border/brown{
 	dir = 8
@@ -23669,6 +23695,25 @@
 	},
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_medical)
+"bvc" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 2
+	},
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 8
+	},
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"bvd" = (
+/obj/structure/surface/table/almayer,
+/obj/effect/spawner/random/pills/highchance,
+/obj/item/storage/surgical_tray/empty{
+	pixel_x = 4;
+	pixel_y = -9
+	},
+/turf/open/floor/prison/whitegreenfull/southwest,
+/area/desert_dam/building/medical/primary_storage)
 "bve" = (
 /obj/vehicle/train/cargo/trolley,
 /obj/effect/decal/cleanable/dirt,
@@ -25731,7 +25776,10 @@
 /area/desert_dam/building/hydroponics/hydroponics_breakroom)
 "coo" = (
 /obj/structure/surface/table/almayer,
-/obj/item/device/defibrillator,
+/obj/item/device/defibrillator{
+	pixel_x = -3;
+	pixel_y = 5
+	},
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/medical/primary_storage)
 "coC" = (
@@ -27598,6 +27646,14 @@
 /obj/structure/surface/table/almayer,
 /obj/effect/spawner/random/pills/lowchance,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/storage/syringe_case{
+	pixel_x = -6;
+	pixel_y = 9
+	},
+/obj/item/reagent_container/hypospray/autoinjector/emergency{
+	pixel_x = 4;
+	pixel_y = -9
+	},
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/desert_dam/building/medical/primary_storage)
 "cZT" = (
@@ -28456,7 +28512,10 @@
 /obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent/engi{
 	pixel_x = -32
 	},
-/turf/open/desert/rock/deep/transition/southwest,
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 5
+	},
+/turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "drB" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -37284,6 +37343,10 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/item/stack/medical/splint{
+	pixel_x = 6;
+	pixel_y = 4
+	},
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/medical/primary_storage)
 "gMu" = (
@@ -39950,10 +40013,13 @@
 /area/desert_dam/building/water_treatment_two)
 "hMa" = (
 /obj/structure/surface/table/almayer,
-/obj/item/storage/firstaid/regular,
 /obj/item/storage/firstaid/regular{
-	pixel_x = 3;
-	pixel_y = -2
+	pixel_x = -4;
+	pixel_y = 5
+	},
+/obj/item/storage/firstaid/regular{
+	pixel_x = 4;
+	pixel_y = -3
 	},
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/desert_dam/building/medical/primary_storage)
@@ -47736,10 +47802,8 @@
 	icon_state = "S"
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "E"
-	},
-/obj/effect/decal/sand_overlay/sand1{
-	dir = 1
+	icon_state = "E";
+	pixel_x = 1
 	},
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/exterior/valley/valley_medical)
@@ -47919,6 +47983,10 @@
 /obj/structure/surface/table/almayer,
 /obj/item/storage/fancy/vials/random,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/tool/surgery/synthgraft{
+	pixel_x = 8;
+	pixel_y = 13
+	},
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/desert_dam/building/medical/primary_storage)
 "kUz" = (
@@ -50919,11 +50987,14 @@
 /area/desert_dam/exterior/river/riverside_central_north)
 "meM" = (
 /obj/structure/surface/table/almayer,
-/obj/item/storage/firstaid/adv,
+/obj/item/storage/firstaid/adv{
+	pixel_x = 4;
+	pixel_y = 8
+	},
 /obj/item/storage/firstaid/adv{
 	layer = 3.1;
-	pixel_x = 3;
-	pixel_y = -2
+	pixel_x = 2;
+	pixel_y = -9
 	},
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/desert_dam/building/medical/primary_storage)
@@ -60794,6 +60865,10 @@
 /obj/structure/surface/table/almayer,
 /obj/effect/spawner/random/pills,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/storage/pouch/medical/full/pills{
+	pixel_x = 8;
+	pixel_y = 4
+	},
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/desert_dam/building/medical/primary_storage)
 "pUb" = (
@@ -61151,8 +61226,15 @@
 /area/desert_dam/exterior/valley/valley_civilian)
 "qbe" = (
 /obj/structure/surface/table/almayer,
-/obj/item/tool/portadialysis,
+/obj/item/tool/portadialysis{
+	pixel_x = 4;
+	pixel_y = -5
+	},
 /obj/effect/decal/cleanable/dirt,
+/obj/item/reagent_container/hypospray{
+	pixel_x = -11;
+	pixel_y = 12
+	},
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/desert_dam/building/medical/primary_storage)
 "qbj" = (
@@ -64251,8 +64333,11 @@
 /turf/open/gm/river/desert/deep/covered,
 /area/desert_dam/exterior/river/filtration_a)
 "rhr" = (
-/obj/structure/flora/grass/desert/lightgrass_8,
-/turf/open/desert/rock/deep/rock3,
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 6
+	},
+/obj/structure/machinery/power/apc/no_power/west,
+/turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "rhB" = (
 /obj/structure/machinery/computer/med_data,
@@ -71710,6 +71795,10 @@
 "udG" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/spawner/random/pills/midchance,
+/obj/item/reagent_container/hypospray/autoinjector/emergency{
+	pixel_x = 5;
+	pixel_y = 8
+	},
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/desert_dam/building/medical/primary_storage)
 "udL" = (
@@ -169264,7 +169353,7 @@ aLZ
 fDa
 dbK
 dHl
-qaR
+brn
 qaR
 qaR
 qaR
@@ -169493,12 +169582,12 @@ mJF
 qaR
 qaR
 qaR
-qaR
+brn
 kPR
 cRc
 ckJ
 dHl
-qaR
+brn
 qaR
 qaR
 qaR
@@ -174357,12 +174446,12 @@ mUT
 iCL
 ihw
 dqS
-aeD
-hxO
+bvc
+blD
 oJY
 reX
-wSl
-aeD
+aVa
+aUZ
 rhr
 aeD
 aeD
@@ -174598,7 +174687,7 @@ xDb
 wSl
 fdY
 tuC
-fdY
+ahJ
 are
 oId
 oId
@@ -240659,7 +240748,7 @@ vNN
 vRa
 tOD
 tfv
-azM
+bvd
 pTO
 qbe
 cZQ

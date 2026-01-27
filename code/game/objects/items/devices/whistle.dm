@@ -23,6 +23,12 @@
 	var/leader_whistle = FALSE
 	COOLDOWN_DECLARE(spam_cooldown)
 
+/obj/item/clothing/accessory/device/whistle/ui_action_click(mob/user, action)
+	if(has_suit && has_suit.loc == user)
+		attack_self(user)
+		return
+	return ..()
+
 /obj/item/clothing/accessory/device/whistle/attack_self(mob/user)
 	..()
 	whistle_playsound(user)

@@ -2914,7 +2914,7 @@
 /turf/open/floor/prison/whitepurple/northwest,
 /area/fiorina/station/research_cells/west)
 "bTC" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 8
 	},
 /turf/open/floor/prison/bluecorner/east,
@@ -30545,7 +30545,7 @@
 /turf/open/space/basic,
 /area/fiorina/oob)
 "xpO" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 1
 	},
 /turf/open/floor/prison/darkbrownfull2,

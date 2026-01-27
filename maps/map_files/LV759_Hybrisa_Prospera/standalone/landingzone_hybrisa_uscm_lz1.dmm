@@ -1386,7 +1386,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/lv759/outdoors/landing_zone_2)
 "dO" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 8
 	},
 /obj/structure/machinery/fuelcell_recycler,
@@ -1777,7 +1777,7 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/landing_zone_2)
 "hH" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 8
 	},
 /obj/effect/decal/cleanable/liquid_fuel,
@@ -4771,7 +4771,7 @@
 /turf/open/floor/almayer/plate,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
 "XO" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 4
 	},
 /obj/structure/prop/static_tank/fuel,
@@ -4922,7 +4922,7 @@
 /turf/open/floor/hybrisa/metal/grated/north,
 /area/lv759/outdoors/mining_outpost/south_entrance)
 "ZT" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 4
 	},
 /obj/structure/prop/static_tank/fuel,

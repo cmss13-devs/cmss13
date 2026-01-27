@@ -5839,7 +5839,7 @@
 /turf/open/floor/corsat/red/southeast,
 /area/corsat/gamma/airlock/north/id)
 "axp" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 1
 	},
 /turf/open/floor/corsat/plate,
@@ -7251,7 +7251,7 @@
 /turf/open/floor/corsat/plate,
 /area/corsat/sigma/southeast/generator)
 "aCA" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 1
 	},
 /turf/open/floor/corsat/yellow/north,

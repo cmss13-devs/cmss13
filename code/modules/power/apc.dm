@@ -364,7 +364,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, flatten_numeric_alist(alist(
 /obj/structure/machinery/power/apc/proc/make_terminal()
 	//Create a terminal object at the same position as original turf loc
 	//Wires will attach to this
-	terminal = new/obj/structure/machinery/power/terminal(src.loc)
+	terminal = new/obj/structure/terminal(loc)
 	terminal.setDir(dir)
 	terminal.master = src
 
@@ -733,7 +733,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, flatten_numeric_alist(alist(
 				user.visible_message(SPAN_NOTICE("[user] wires [src]'s frame."),
 				SPAN_NOTICE("You wire [src]'s frame."))
 				make_terminal()
-				terminal.connect_to_network()
+				connect_to_network()
 	else if(HAS_TRAIT(attacking_item, TRAIT_TOOL_WIRECUTTERS) && terminal && opened && has_electronics != 2)
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You have no idea what to do with [attacking_item]."))
@@ -748,7 +748,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, flatten_numeric_alist(alist(
 			if(!terminal)
 				to_chat(user, SPAN_WARNING("[src] lacks a terminal to remove."))
 				return
-			if (prob(50) && electrocute_mob(user, terminal.powernet, terminal))
+			if (prob(50) && electrocute_mob(user, powernet, terminal))
 				var/datum/effect_system/spark_spread/spark = new /datum/effect_system/spark_spread
 				spark.set_up(5, 1, src)
 				spark.start()
@@ -1071,32 +1071,9 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, flatten_numeric_alist(alist(
 			spark.start()
 			visible_message(SPAN_WARNING("[src] suddenly lets out a blast of smoke and some sparks!"))
 
-/obj/structure/machinery/power/apc/surplus()
-	if(terminal)
-		return terminal.surplus()
-	else
-		return 0
-
-/obj/structure/machinery/power/apc/proc/last_surplus()
-	if(terminal && terminal.powernet)
-		return terminal.powernet.last_surplus()
-	else
-		return 0
-
 //Returns 1 if the APC should attempt to charge
 /obj/structure/machinery/power/apc/proc/attempt_charging()
 	return (chargemode && charging == APC_CHARGING && operating)
-
-/obj/structure/machinery/power/apc/add_load(amount)
-	if(terminal && terminal.powernet)
-		return terminal.powernet.draw_power(amount)
-	return 0
-
-/obj/structure/machinery/power/apc/avail()
-	if(terminal)
-		return terminal.avail()
-	else
-		return 0
 
 /obj/structure/machinery/power/apc/process()
 	if(stat & (BROKEN|MAINT))
@@ -1128,8 +1105,8 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, flatten_numeric_alist(alist(
 	var/power_excess = 0
 
 	var/perapc = 0
-	if(terminal && terminal.powernet)
-		perapc = terminal.powernet.perapc
+	if(powernet)
+		perapc = powernet.perapc
 
 	if(debug)
 		log_debug( "Status: [main_status] - Excess: [excess] - Last Equip: [lastused_equip] - Last Light: [lastused_light]")
@@ -1264,7 +1241,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, flatten_numeric_alist(alist(
 		if(chargemode)
 			if(!charging)
 				//last_surplus() overestimates the amount of power available for charging, but it's equivalent to what APCs were doing before.
-				if(last_surplus() * CELLRATE >= cell_maxcharge * CHARGELEVEL)
+				if(powernet?.last_surplus() * CELLRATE >= cell_maxcharge * CHARGELEVEL)
 					chargecount++
 				else
 					chargecount = 0

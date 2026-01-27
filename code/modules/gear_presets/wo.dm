@@ -674,6 +674,8 @@
 	var/back_item = /obj/item/storage/backpack/marine/satchel
 	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
 		back_item = /obj/item/storage/backpack/marine
+	else if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 3))
+		back_item = /obj/item/storage/backpack/marine/satchel/chestrig
 
 	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
 
@@ -710,6 +712,8 @@
 	var/back_item = /obj/item/storage/backpack/marine/satchel
 	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
 		back_item = /obj/item/storage/backpack/marine
+	else if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 3))
+		back_item = /obj/item/storage/backpack/marine/satchel/chestrig
 
 	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
 
@@ -844,6 +848,8 @@
 	var/back_item = /obj/item/storage/backpack/marine/satchel
 	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
 		back_item = /obj/item/storage/backpack/marine
+	else if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 3))
+		back_item = /obj/item/storage/backpack/marine/satchel/chestrig
 
 	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
 

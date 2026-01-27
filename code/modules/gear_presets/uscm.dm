@@ -79,6 +79,8 @@
 	var/back_item = /obj/item/storage/backpack/marine/satchel
 	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
 		back_item = /obj/item/storage/backpack/marine
+	else if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 3))
+		back_item = /obj/item/storage/backpack/marine/satchel/chestrig
 
 	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
 
@@ -111,6 +113,8 @@
 	var/back_item = /obj/item/storage/backpack/marine/satchel
 	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
 		back_item = /obj/item/storage/backpack/marine
+	else if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 3))
+		back_item = /obj/item/storage/backpack/marine/satchel/chestrig
 
 	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
 
@@ -290,6 +294,8 @@
 	var/back_item = /obj/item/storage/backpack/marine/satchel
 	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
 		back_item = /obj/item/storage/backpack/marine
+	else if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 3))
+		back_item = /obj/item/storage/backpack/marine/satchel/chestrig
 
 	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/specrag(new_human), WEAR_HEAD)
@@ -381,6 +387,8 @@
 	var/back_item = /obj/item/storage/backpack/marine/satchel
 	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
 		back_item = /obj/item/storage/backpack/marine
+	else if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 3))
+		back_item = /obj/item/storage/backpack/marine/satchel/chestrig
 
 	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
 
@@ -446,6 +454,8 @@
 	var/back_item = /obj/item/storage/backpack/marine/satchel
 	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
 		back_item = /obj/item/storage/backpack/marine
+	else if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 3))
+		back_item = /obj/item/storage/backpack/marine/satchel/chestrig
 
 	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
 
@@ -523,8 +533,15 @@
 	new_human.nutrition = NUTRITION_NORMAL
 
 /datum/equipment_preset/uscm/leader_equipped/load_gear(mob/living/carbon/human/new_human)
+	//backpack
+	var/back_item = /obj/item/storage/backpack/marine/satchel
+	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
+		back_item = /obj/item/storage/backpack/marine
+	else if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 3))
+		back_item = /obj/item/storage/backpack/marine/satchel/chestrig
+	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
+
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine(new_human), WEAR_BODY)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/leader(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/cryo/lead(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/medium/leader(new_human), WEAR_JACKET)
@@ -709,9 +726,15 @@
 	new_human.nutrition = NUTRITION_NORMAL
 
 /datum/equipment_preset/uscm/specialist_equipped/load_gear(mob/living/carbon/human/new_human)
-	//TODO: add backpacks and satchels
+	//backpack
+	var/back_item = /obj/item/storage/backpack/marine/satchel
+	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
+		back_item = /obj/item/storage/backpack/marine
+	else if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 3))
+		back_item = /obj/item/storage/backpack/marine/satchel/chestrig
+	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
+
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine(new_human), WEAR_BODY)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/webbing(new_human), WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/large_holster/m39/full(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39(new_human), WEAR_IN_BACK)
@@ -779,7 +802,14 @@
 	new_human.nutrition = NUTRITION_NORMAL
 
 /datum/equipment_preset/uscm/tl_equipped/load_gear(mob/living/carbon/human/new_human)
-	//TODO: add backpacks and satchels
+	//backpack
+	var/back_item = /obj/item/storage/backpack/marine/satchel
+	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
+		back_item = /obj/item/storage/backpack/marine
+	else if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 3))
+		back_item = /obj/item/storage/backpack/marine/satchel/chestrig
+	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
+
 	var/obj/item/clothing/under/marine/rto/U = new(new_human)
 	var/obj/item/clothing/accessory/storage/webbing/W = new()
 	U.attach_accessory(new_human, W)
@@ -1245,7 +1275,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full(new_human), WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/alternate(new_human), WEAR_R_STORE)
 	spawn_marine_fluff_items(new_human)
-	
+
 //## Team Leader ##//
 /datum/equipment_preset/uscm/pve/tl
 	name = "USCM Solar Devils Team Leader"

@@ -894,34 +894,6 @@
 /obj/structure/fence/slim/dark/door,
 /turf/open/floor/prison/floor_plate,
 /area/lv522/outdoors/colony_streets/east_central_street)
-"adu" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
-/obj/structure/cable/heavyduty{
-	icon_state = "1-2"
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
-/obj/structure/fence/slim/dark/door{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/lv522/outdoors/colony_streets/north_west_street)
 "adv" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -1209,17 +1181,6 @@
 	},
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/colony_streets/north_west_street)
-"aej" = (
-/obj/structure/fence,
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/turf/open/floor/prison/floor_plate,
-/area/lv522/outdoors/colony_streets/north_west_street)
 "aek" = (
 /obj/structure/fence,
 /obj/effect/decal/warning_stripes{
@@ -1252,11 +1213,6 @@
 /obj/structure/cable/heavyduty{
 	icon_state = "1-2"
 	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 1
@@ -1264,7 +1220,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/obj/structure/fence/slim/dark,
 /turf/open/floor/plating,
 /area/lv522/outdoors/colony_streets/north_west_street)
 "aeo" = (
@@ -1272,6 +1227,19 @@
 	dir = 8
 	},
 /turf/open/auto_turf/shale/layer2,
+/area/lv522/outdoors/colony_streets/north_west_street)
+"aep" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/structure/fence/slim/dark/door{
+	dir = 4
+	},
+/turf/open/floor/prison/floor_plate,
 /area/lv522/outdoors/colony_streets/north_west_street)
 "aeD" = (
 /obj/structure/largecrate/random,
@@ -51260,7 +51228,7 @@ clY
 clY
 sjY
 hJZ
-aej
+adv
 hJZ
 hJZ
 hJZ
@@ -51466,7 +51434,7 @@ clY
 clY
 sjY
 hJZ
-aej
+adv
 thI
 hJZ
 adN
@@ -51672,7 +51640,7 @@ sjY
 clY
 clY
 hJZ
-aej
+adv
 thI
 hJZ
 tPv
@@ -52081,7 +52049,7 @@ saQ
 sHy
 sNk
 acB
-aek
+aep
 aek
 ien
 ien
@@ -52905,7 +52873,7 @@ sDf
 sLZ
 acB
 acB
-adu
+aen
 aen
 aeg
 aeg

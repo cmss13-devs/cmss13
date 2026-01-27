@@ -27375,7 +27375,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/security/northern_hallway)
 "cVq" = (
-/obj/structure/machinery/door/poddoor/almayer/locked{
+/obj/structure/machinery/door/poddoor/almayer/locked/elevator{
 	dir = 4;
 	id = null;
 	name = "\improper Elevator Lock"
@@ -34603,7 +34603,7 @@
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/central_tunnel)
 "fLw" = (
-/obj/structure/machinery/door/poddoor/almayer/locked{
+/obj/structure/machinery/door/poddoor/almayer/locked/elevator{
 	dir = 4;
 	id = null;
 	name = "\improper Elevator Lock"
@@ -61501,7 +61501,7 @@
 /turf/open/desert/desert_shore/shore_edge1,
 /area/desert_dam/exterior/river/riverside_east)
 "qic" = (
-/obj/structure/machinery/door/poddoor/almayer/locked{
+/obj/structure/machinery/door/poddoor/almayer/locked/elevator{
 	dir = 4;
 	id = null;
 	name = "\improper Elevator Lock"
@@ -81524,7 +81524,7 @@
 /turf/open/floor/freezerfloor,
 /area/desert_dam/building/hydroponics/hydroponics_breakroom)
 "ybV" = (
-/obj/structure/machinery/door/poddoor/almayer/locked{
+/obj/structure/machinery/door/poddoor/almayer/locked/elevator{
 	dir = 4;
 	id = null;
 	name = "\improper Elevator Lock"

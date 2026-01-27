@@ -61,6 +61,9 @@
 	unslashable = TRUE
 	unacidable = TRUE
 
+/obj/structure/machinery/door/poddoor/almayer/locked/elevator
+	explo_proof = TRUE
+
 /obj/structure/machinery/door/poddoor/almayer/locked/attackby(obj/item/C as obj, mob/user as mob)
 	if(HAS_TRAIT(C, TRAIT_TOOL_CROWBAR))
 		return

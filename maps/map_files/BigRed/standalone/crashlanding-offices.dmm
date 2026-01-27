@@ -841,7 +841,6 @@
 /obj/effect/landmark/corpsespawner/pmc,
 /obj/item/weapon/gun/rifle/nsg23/no_lock,
 /turf/open/floor/platingdmg1,
-/turf/open/floor/whiteyellowfull/east,
 /area/bigredv2/outside/office_complex)
 "zl" = (
 /obj/structure/pipes/standard/simple/hidden/green{

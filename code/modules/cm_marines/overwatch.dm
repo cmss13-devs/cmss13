@@ -774,7 +774,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 		if("watch_camera")
 			if(isRemoteControlling(user))
-				to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("Unable to override console camera viewer. Track with camera instead. ")]")
+				to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("Unable to override console camera viewer. Track with camera instead.")]")
 				return
 			if(!params["target_ref"])
 				return
@@ -916,7 +916,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 				if(announcement_type == "shipside")
 					shipwide_ai_announcement(input, COMMAND_SHIP_ANNOUNCE, signature = signed)
-					message_admins("[key_name(user)] has made a shipwide annoucement.")
+					message_admins("[key_name(user)] has made a shipwide announcement.")
 					log_announcement("[key_name(user)] has announced the following to the ship: [input]")
 					COOLDOWN_START(src, cooldown_shipside_message, COOLDOWN_COMM_MESSAGE)
 				else
@@ -930,9 +930,9 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 		if("messageUSCM")
 			if(!COOLDOWN_FINISHED(src, cooldown_central))
-				to_chat(user, SPAN_WARNING("Arrays are re-cycling.  Please stand by."))
+				to_chat(user, SPAN_WARNING("Arrays are re-cycling. Please stand by."))
 				return FALSE
-			var/input = stripped_input(user, "Please choose a message to transmit to USCM.  Please be aware that this process is very expensive, and abuse will lead to termination.  Transmission does not guarantee a response. There is a small delay before you may send another message. Be clear and concise.", "To abort, send an empty message.", "")
+			var/input = stripped_input(user, "Please choose a message to transmit to USCM. Please be aware that this process is very expensive, and abuse will lead to termination. Transmission does not guarantee a response. There is a small delay before you may send another message. Be clear and concise.", "To abort, send an empty message.", "")
 			if(!input || !(user in dview(1, src)) || !COOLDOWN_FINISHED(src, cooldown_central))
 				return FALSE
 
@@ -1190,6 +1190,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		user.unset_interaction()
 	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
 	tacmap_component.on_unset_interaction(user)
+	tacmap_component.close_popout_tacmaps(user)
 
 /// checks if the human has an overwatch camera at all
 /obj/structure/machinery/computer/overwatch/proc/marine_has_camera(mob/living/carbon/human/marine)

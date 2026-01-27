@@ -1,13 +1,23 @@
+#define DSN_CONFIG CONFIG_GET(string/sentry_dsn)
+#define ENDPOINT_CONFIG CONFIG_GET(string/sentry_endpoint)
+
 SUBSYSTEM_DEF(sentry)
 	name = "Sentry"
 	wait = 2 SECONDS
-	flags = SS_NO_INIT
 	runlevels = RUNLEVELS_DEFAULT | RUNLEVEL_LOBBY
 
 	var/list/datum/error_envelope/envelopes = list()
 
 	var/static/list/characters = splittext("abcdef012345679", "")
 	var/list/hashed_context = list()
+
+/datum/controller/subsystem/sentry/Initialize()
+	. = ..()
+	var/config_dsn = DSN_CONFIG
+	var/config_endpoint = ENDPOINT_CONFIG
+	if(!config_dsn || !config_endpoint)
+		can_fire = FALSE
+		return SS_INIT_NO_NEED
 
 /datum/controller/subsystem/sentry/fire(resumed)
 	var/static/list/headers = list(
@@ -21,7 +31,11 @@ SUBSYSTEM_DEF(sentry)
 
 	var/static/dsn
 	if(!dsn)
-		dsn = CONFIG_GET(string/sentry_dsn)
+		dsn = DSN_CONFIG
+
+	var/static/endpoint
+	if(!endpoint)
+		endpoint = ENDPOINT_CONFIG
 
 	for(var/datum/error_envelope/error as anything in envelopes)
 		var/event_id = get_uuid()
@@ -85,14 +99,12 @@ SUBSYSTEM_DEF(sentry)
 		)
 
 		var/event = json_encode(event_parts)
-
 		var/event_header = "{\"type\":\"event\",\"length\":[length(event)]}"
-
 		var/assembled = "[header]\n[event_header]\n[event]\n"
 
-		rustg_http_request_async(RUSTG_HTTP_METHOD_POST, CONFIG_GET(string/sentry_endpoint), assembled, headers, null)
+		rustg_http_request_async(RUSTG_HTTP_METHOD_POST, endpoint, assembled, headers, null)
 
-	envelopes = list()
+	envelopes.Cut()
 
 /// Generates a 32 character hex UUID, as random as BYOND will be
 /datum/controller/subsystem/sentry/proc/get_uuid()
@@ -111,3 +123,6 @@ SUBSYSTEM_DEF(sentry)
 
 	src.error = error
 	src.stacktrace = stacktrace
+
+#undef DSN_CONFIG
+#undef ENDPOINT_CONFIG

@@ -1163,8 +1163,10 @@
 	// clamp back to maximum inaccuracy
 	ammo_accuracy_range = min(ammo_accuracy_range, ammo_max_inaccuracy)
 
-	var/list/possible_turfs = RANGE_TURFS(ammo_accuracy_range, target_turf)
-	var/turf/impact = pick(possible_turfs)
+	// in case of a null turf, ensure we repick one
+	if(!impact)
+		possible_turfs = RANGE_TURFS(ammo_accuracy_range, target_turf)
+		impact = pick(possible_turfs)
 
 	if(ammo_travelling_time && istype(SA, /obj/structure/ship_ammo/rocket/thermobaric))
 		playsound(impact, ammo_warn_sound, ammo_warn_sound_volume, 1, 15)

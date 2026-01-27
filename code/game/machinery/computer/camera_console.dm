@@ -480,8 +480,6 @@
 			RegisterSignal(dropship, COMSIG_DROPSHIP_REMOVE_EQUIPMENT, PROC_REF(equipment_update))
 		registered = TRUE
 
-	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
-
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		SEND_SIGNAL(src, COMSIG_CAMERA_REGISTER_UI, user)

@@ -37,18 +37,65 @@
 /datum/behavior_delegate/praetorian_dancer
 	name = "Praetorian Dancer Behavior Delegate"
 
-	// State
+	/// Is Dodge ability active?
 	var/dodge_activated = FALSE
+	/// Is dodge_time is activated (used for countdown)
 	var/dodge_start_time = -1
+	/// How long we want dodge active.
 	var/dodge_time = 10 SECONDS
+	/// How much refund we want to get back? 1.0 is 1s used to 1s cooldown, 2.0 is 1s used 2s cooldown.
+	var/refund_multiplier = 2.0
+	/// Used in calculation, its finalized number will be displayed as cooldown.
+	var/recharge_time = null
+
+	/// How long ago we slashed target?
+	var/last_slash_time = 0
+	/// How long slash bonus should last?
+	var/slash_time = 6 SECONDS
+	/// How many slashes we can do before hitting cap.
+	var/max_slashes = 3
+	/// How many slashed did we do already.
+	var/current_slashes = 0
+	/// How much % increase to dodge_chance we gain per slash.
+	var/dodge_per_slash = 3
 
 /datum/behavior_delegate/praetorian_dancer/append_to_stat()
 	. = list()
 	. += "Dodge Chance: [bound_xeno.dodge_chance]%"
+	. += "Slash Dodge Stacks: [current_slashes]/[max_slashes]"
+	if(current_slashes > 0)
+		var/time_left = (slash_time - (world.time - last_slash_time)) / 10
+		. += "Slash Dodge Remaining: [time_left] second\s."
 	if(dodge_start_time != -1)
 		var/time_left = (dodge_time-(world.time - dodge_start_time)) / 10
 		. += "Dodge Remaining: [time_left] second\s."
 		return
+
+/datum/behavior_delegate/praetorian_dancer/on_life()
+	if(current_slashes <= 0)
+		return
+
+	if((world.time - last_slash_time) <= slash_time)
+		return
+
+	reset_slash_dodge()
+
+/datum/behavior_delegate/praetorian_dancer/proc/reset_slash_dodge()
+	if(current_slashes <= 0)
+		return
+
+	bound_xeno.dodge_chance -= current_slashes * dodge_per_slash
+	current_slashes = 0
+
+/datum/behavior_delegate/praetorian_dancer/melee_attack_additional_effects_self()
+	if((world.time - last_slash_time) > slash_time)
+		reset_slash_dodge()
+
+	if(current_slashes < max_slashes)
+		current_slashes++
+		bound_xeno.dodge_chance += dodge_per_slash
+
+	last_slash_time = world.time
 
 /datum/behavior_delegate/praetorian_dancer/melee_attack_additional_effects_target(mob/living/carbon/target_carbon)
 	if(!isxeno_human(target_carbon))
@@ -75,7 +122,7 @@
 		target.last_damage_data = create_cause_data(initial(xeno.caste_type), xeno)
 
 		xeno.visible_message(
-			SPAN_XENOWARNING("\The [xeno] smash [target] with the crooked part of its tail!"),
+			SPAN_XENOWARNING("[xeno] smash [target] with the crooked part of its tail!"),
 			SPAN_XENOWARNING("We smash [target] with the crooked part of our tail!")
 		)
 		xeno.animation_attack_on(target)
@@ -193,7 +240,7 @@
 		return
 
 	if(behavior.dodge_activated)
-		remove_effects(1.0)
+		remove_effects()
 		return
 
 	if(!action_cooldown_check())
@@ -220,7 +267,7 @@
 
 	return ..()
 
-/datum/action/xeno_action/onclick/prae_dodge/proc/remove_effects(refund_multiplier = 1.0)
+/datum/action/xeno_action/onclick/prae_dodge/proc/remove_effects()
 	var/mob/living/carbon/xenomorph/dodge_remove = owner
 	if(!istype(dodge_remove))
 		return
@@ -245,16 +292,12 @@
 		deltimer(dodge_timer)
 		dodge_timer = TIMER_ID_NULL
 
-	var/recharge_time = behavior.dodge_time
 	if(behavior.dodge_start_time > 0)
-		refund_multiplier = clamp(refund_multiplier, 0, 1)
-		var/used_ratio = (world.time - behavior.dodge_start_time) / duration
-		used_ratio = clamp(used_ratio, 0, 1)
-		var/remaining = 1 - used_ratio
-		recharge_time = behavior.dodge_time - remaining * refund_multiplier * behavior.dodge_time
+		var/used_ratio = round((world.time - behavior.dodge_start_time) / duration, 0.1)
+		behavior.recharge_time = max(behavior.dodge_time * used_ratio * behavior.refund_multiplier, 5 SECONDS)
 
 	behavior.dodge_start_time = -1
-	apply_cooldown_override(recharge_time)
+	apply_cooldown_override(behavior.recharge_time)
 
 /datum/action/xeno_action/onclick/prae_dodge/proc/create_afterimage_sequence(mob/living/carbon/xenomorph/dodge_user, duration)
 	if(!dodge_user || !dodge_user.loc)

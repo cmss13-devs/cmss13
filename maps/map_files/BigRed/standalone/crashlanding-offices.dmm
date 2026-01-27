@@ -1170,7 +1170,7 @@
 /obj/item/clothing/head/helmet/marine/veteran/pmc,
 /obj/item/clothing/under/marine/veteran/pmc,
 /obj/item/clothing/head/helmet/marine/veteran/pmc/black,
-/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/bigredv2/outside/office_complex)
 "Oi" = (
 /obj/structure/bed/chair{

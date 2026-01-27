@@ -100,10 +100,8 @@
 /area/fiorina/station/clf_ship)
 "ap" = (
 /obj/item/ammo_casing/bullet,
-/obj/structure/machinery/defenses/sentry/premade/dumb{
-	dir = 1;
-	faction_group = list("CLF");
-	selected_categories = list("IFF STATUS" = "CLF")
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
+	dir = 1
 	},
 /turf/open/floor/plating/platebot,
 /area/fiorina/station/clf_ship)
@@ -213,8 +211,19 @@
 /obj/item/flag/plantable/clf,
 /turf/open/floor/plating/platingdmg3,
 /area/fiorina/station/clf_ship)
+"aH" = (
+/obj/structure/machinery/iv_drip,
+/obj/item/reagent_container/blood/OMinus,
+/turf/open/floor/almayer/emerald/west,
+/area/fiorina/station/clf_ship)
 "aI" = (
 /turf/open/floor/almayer/blue/southwest,
+/area/fiorina/station/clf_ship)
+"aJ" = (
+/obj/structure/terminal{
+	dir = 8
+	},
+/turf/open/floor/almayer,
 /area/fiorina/station/clf_ship)
 "aM" = (
 /obj/structure/machinery/light,
@@ -274,7 +283,7 @@
 "du" = (
 /obj/structure/window/framed/prison/reinforced/hull,
 /turf/open/floor/plating/prison,
-/area/fiorina/station/park)
+/area/fiorina/oob)
 "dy" = (
 /turf/closed/shuttle/ert{
 	icon_state = "stan_rightengine"
@@ -298,9 +307,6 @@
 	},
 /turf/open/floor/almayer/cargo,
 /area/fiorina/station/clf_ship)
-"dK" = (
-/turf/closed/wall/r_wall/prison_unmeltable,
-/area/fiorina/station/botany)
 "dR" = (
 /obj/structure/machinery/light,
 /obj/structure/closet/coffin/woodencrate,
@@ -565,13 +571,11 @@
 /turf/open/floor/plating,
 /area/fiorina/station/park)
 "kw" = (
-/obj/structure/machinery/defenses/sentry/premade/dumb{
-	dir = 8;
-	faction_group = list("CLF");
-	selected_categories = list("IFF STATUS" = "CLF")
-	},
 /obj/structure/machinery/light{
 	dir = 1
+	},
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
+	dir = 8
 	},
 /turf/open/floor/almayer/orange/north,
 /area/fiorina/station/clf_ship)
@@ -765,10 +769,8 @@
 /turf/open/floor/almayer,
 /area/fiorina/station/clf_ship)
 "qR" = (
-/obj/structure/machinery/defenses/sentry/premade/dumb{
-	dir = 4;
-	faction_group = list("CLF");
-	selected_categories = list("IFF STATUS" = "CLF")
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
+	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/fiorina/station/clf_ship)
@@ -992,9 +994,6 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/plating,
 /area/fiorina/station/park)
-"zm" = (
-/turf/closed/wall/r_wall/prison_unmeltable,
-/area/fiorina/tumor/aux_engi)
 "zw" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -1018,10 +1017,8 @@
 /turf/closed/wall/r_wall/prison,
 /area/fiorina/station/botany)
 "Ah" = (
-/obj/structure/machinery/defenses/sentry/premade/dumb{
-	dir = 4;
-	faction_group = list("CLF");
-	selected_categories = list("IFF STATUS" = "CLF")
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/fiorina/station/clf_ship)
@@ -1247,7 +1244,10 @@
 	},
 /obj/structure/surface/rack,
 /obj/item/storage/belt/medical/full,
-/obj/item/storage/belt/medical/full,
+/obj/item/storage/belt/medical/full{
+	pixel_x = 2;
+	pixel_y = 4
+	},
 /obj/item/storage/firstaid/regular,
 /turf/open/floor/almayer/emerald/southeast,
 /area/fiorina/station/clf_ship)
@@ -1506,13 +1506,13 @@
 /area/fiorina/station/clf_ship)
 "NS" = (
 /turf/closed/wall/r_wall/prison_unmeltable,
-/area/fiorina/station/park)
+/area/fiorina/oob)
 "OF" = (
 /turf/open/floor/prison/greenblue,
 /area/fiorina/station/botany)
 "OH" = (
 /turf/closed/wall/mineral/bone_resin,
-/area/fiorina/tumor/aux_engi)
+/area/fiorina/oob)
 "OQ" = (
 /turf/open/floor/damaged3/west,
 /area/fiorina/station/park)
@@ -2160,7 +2160,7 @@ rJ
 kw
 ra
 VS
-DF
+aJ
 iZ
 rJ
 XF
@@ -2258,7 +2258,7 @@ ei
 ei
 "}
 (8,1,1) = {"
-zm
+NS
 ai
 lF
 ad
@@ -2291,7 +2291,7 @@ gT
 RN
 ci
 fS
-fS
+aH
 fS
 aM
 SB
@@ -2300,7 +2300,7 @@ ei
 ei
 "}
 (9,1,1) = {"
-zm
+NS
 HD
 HD
 OQ
@@ -2342,7 +2342,7 @@ ei
 ei
 "}
 (10,1,1) = {"
-zm
+NS
 ae
 jz
 aD
@@ -2510,7 +2510,7 @@ Da
 yJ
 "}
 (14,1,1) = {"
-dK
+NS
 js
 jz
 dW

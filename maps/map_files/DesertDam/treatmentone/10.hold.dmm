@@ -435,11 +435,6 @@
 	},
 /turf/open/floor/prison/red/northeast,
 /area/desert_dam/building/water_treatment_one/lobby)
-"kw" = (
-/obj/structure/curtain/open/shower,
-/obj/structure/machinery/shower,
-/turf/open/floor/plating,
-/area/desert_dam/building/water_treatment_one/breakroom)
 "kI" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
@@ -1121,7 +1116,6 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/lobby)
 "MW" = (
-/obj/structure/flora/pottedplant,
 /turf/open/floor/whiteyellowcorner/north,
 /area/desert_dam/building/water_treatment_one/breakroom)
 "MY" = (
@@ -1424,7 +1418,10 @@
 /turf/open/floor/wood,
 /area/desert_dam/building/water_treatment_one/hallway)
 "Xw" = (
-/obj/structure/machinery/shower,
+/obj/structure/catwalk,
+/obj/structure/machinery/shower{
+	pixel_y = 16
+	},
 /obj/structure/curtain/open/shower,
 /turf/open/floor/plating,
 /area/desert_dam/building/water_treatment_one/breakroom)
@@ -1633,7 +1630,7 @@ Pp
 MY
 aq
 di
-kw
+Xw
 VE
 ag
 di

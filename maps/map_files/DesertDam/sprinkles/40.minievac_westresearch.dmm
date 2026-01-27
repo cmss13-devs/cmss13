@@ -4,6 +4,9 @@
 /obj/structure/prop/hybrisa/vehicles/Armored_Truck/WY_Black,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_wilderness)
+"ab" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached16,
+/area/desert_dam/exterior/valley/valley_wilderness)
 "an" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "csplatter1"
@@ -516,7 +519,7 @@ OD
 "}
 (6,1,1) = {"
 rp
-Bh
+ab
 Dd
 Su
 Nm

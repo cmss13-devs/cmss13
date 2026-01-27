@@ -2499,13 +2499,6 @@
 	},
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/break_room/upper)
-"ahJ" = (
-/obj/structure/largecrate/random/secure{
-	pixel_y = 5;
-	pixel_x = -3
-	},
-/turf/open/floor/prison/southwest,
-/area/desert_dam/interior/dam_interior/hangar_storage)
 "ahK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table,
@@ -18460,15 +18453,7 @@
 	pixel_y = -11;
 	density = 0
 	},
-/obj/structure/stairs/multiz/up{
-	dir = 1
-	},
 /obj/effect/stairs/up,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/prop/dam/wide_boulder/boulder1{
 	pixel_x = -6;
 	pixel_y = 6;
@@ -144202,7 +144187,7 @@ asT
 lZB
 eYE
 eYE
-ahJ
+uEo
 osd
 lZB
 gaz

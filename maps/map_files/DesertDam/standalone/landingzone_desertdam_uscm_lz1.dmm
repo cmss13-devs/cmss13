@@ -242,10 +242,6 @@
 /obj/structure/closet/crate/foodcart,
 /turf/open/floor/prison/blue/west,
 /area/desert_dam/building/administration/gate)
-"aW" = (
-/obj/structure/bed/sofa/vert/white,
-/turf/open/floor/prison,
-/area/desert_dam/building/administration/gate)
 "aX" = (
 /obj/item/card/id/visa{
 	desc = "A United Americas entry visa. A rare commodity out here on the rim.";
@@ -274,10 +270,6 @@
 	pixel_y = 5
 	},
 /turf/open/floor/prison/blue/west,
-/area/desert_dam/building/administration/gate)
-"bc" = (
-/obj/structure/bed/sofa/vert/white/top,
-/turf/open/floor/prison,
 /area/desert_dam/building/administration/gate)
 "bd" = (
 /turf/open/floor/prison/bluecorner/west,
@@ -2618,11 +2610,6 @@
 	icon_state = "23"
 	},
 /area/lv522/landing_zone_forecon/UD6_Tornado)
-"PX" = (
-/obj/structure/window/framed/colony/reinforced,
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/plating,
-/area/desert_dam/building/administration/hallway)
 "Qa" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal4"
@@ -3098,10 +3085,6 @@
 /obj/structure/flora/grass/desert/heavygrass_4,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/landing_pad_one)
-"YX" = (
-/obj/structure/bed/sofa/vert/white/bot,
-/turf/open/floor/prison,
-/area/desert_dam/building/administration/gate)
 "Zb" = (
 /turf/closed/shuttle/dropship3/tornado{
 	icon_state = "65"
@@ -5032,9 +5015,9 @@ SA
 (35,1,1) = {"
 ZT
 GE
-bc
-aW
-YX
+aI
+FU
+RE
 aO
 GE
 aI
@@ -5588,7 +5571,7 @@ pL
 eX
 Eh
 jA
-PX
+Bq
 be
 rG
 rG

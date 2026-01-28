@@ -372,7 +372,7 @@ This function restores all limbs.
 /*
 	Describes how human mobs get damage applied.
 	Less clear vars:
-	* permanent_kill: whether this attack causes human to become irrevivable
+	* permanent_kill: whether this attack causes human to become unrevivable
 */
 /mob/living/carbon/human/apply_damage(damage = 0, damagetype = BRUTE, def_zone = null, \
 	sharp = 0, edge = 0, obj/used_weapon = null, no_limb_loss = FALSE, \

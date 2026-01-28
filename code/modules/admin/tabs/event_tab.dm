@@ -750,7 +750,7 @@
 /client
 	var/remote_control = FALSE
 
-/client/proc/toogle_door_control()
+/client/proc/toggle_door_control()
 	set name = "Toggle Remote Control"
 	set category = "Admin.Events"
 
@@ -817,7 +817,7 @@
 		<A href='byond://?src=\ref[src];[HrefToken()];events=jelly'>Award a royal jelly</A><BR>
 		<A href='byond://?src=\ref[src];[HrefToken()];events=nuke'>Spawn a nuke</A><BR>
 		<A href='byond://?src=\ref[src];[HrefToken()];events=pmcguns'>Toggle PMC gun restrictions</A><BR>
-		<A href='byond://?src=\ref[src];[HrefToken()];events=monkify'>Turn everyone into monkies</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=monkify'>Turn everyone into monkeys</A><BR>
 		<A href='byond://?src=\ref[src];[HrefToken()];events=xenothumbs'>Give or take opposable thumbs and gun permits from xenos</A><BR>
 		<A href='byond://?src=\ref[src];[HrefToken()];events=xenocards'>Give or take card playing abilities from xenos</A><BR>
 		<BR>

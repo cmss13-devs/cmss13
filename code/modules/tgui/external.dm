@@ -42,7 +42,7 @@
  *
  * required user mob The mob interacting with the UI.
  *
- * return list Statuic Data to be sent to the UI.
+ * return list Static Data to be sent to the UI.
  */
 /datum/proc/ui_static_data(mob/user)
 	return list()
@@ -76,7 +76,7 @@
 /**
  * public
  *
- * Called on a UI when the UI receieves a href.
+ * Called on a UI when the UI receives a href.
  * Think of this as Topic().
  *
  * required action string The action/button that has been invoked by the user.

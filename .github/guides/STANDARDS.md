@@ -127,7 +127,7 @@ This is a simple one - as we will eventually move to 515, we will need to ditch 
 
 ### PROC_REF Macros
  When referencing procs in RegisterSignal, Callback and other procs you should use PROC_REF, TYPE_PROC_REF and GLOBAL_PROC_REF macros.
- They ensure compilation fails if the reffered to procs change names or get removed.
+ They ensure compilation fails if the referred to procs change names or get removed.
  The macro to be used depends on how the proc you're in relates to the proc you want to use:
 
  PROC_REF if the proc you want to use is defined on the current proc type or any of it's ancestor types.
@@ -278,9 +278,9 @@ Bad:
 		add_overlay(icon(broken_icon))  //this icon gets created, passed to byond, converted to an appearance, then deleted.
 		return
 	if (is_on)
-		add_overlay("on") //also bad, the converstion to an appearance still has to happen
+		add_overlay("on") //also bad, the conversion to an appearance still has to happen
 	else
-		add_overlay(iconstate2appearance(icon, "off")) //this might seem alright, but not storing the value just moves the repeated appearance generation to this proc rather then the core overlay management. It would only be acceptable (and to some degree perferred) if this overlay is only ever added once (like in init code)
+		add_overlay(iconstate2appearance(icon, "off")) //this might seem alright, but not storing the value just moves the repeated appearance generation to this proc rather then the core overlay management. It would only be acceptable (and to some degree preferred) if this overlay is only ever added once (like in init code)
 ```
 
 Good:
@@ -441,7 +441,7 @@ As hinted at before, `. = ..()` is *extremely* common. This will call the parent
 	visible_message("Whack!")
 ```
 
-...is completely accepted, and in fact, usually *prefered* over:
+...is completely accepted, and in fact, usually *preferred* over:
 
 ```dm
 /obj/item/spoon/attack()
@@ -481,7 +481,7 @@ Meaning:
 
 For this reason, it is acceptable for `.` to be used in places where consumers can reasonably continue in the event of a runtime.
 
-If you are using `.` in this case (or for another case that might be acceptable, other than most uses of `. = ..()`), it is still prefered that you explicitly `return .` in order to prevent both editor issues and readability/error-prone issues.
+If you are using `.` in this case (or for another case that might be acceptable, other than most uses of `. = ..()`), it is still preferred that you explicitly `return .` in order to prevent both editor issues and readability/error-prone issues.
 
 ```dm
 /proc/uh_oh()

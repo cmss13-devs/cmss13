@@ -903,7 +903,7 @@
 	icon = 'icons/obj/structures/props/ice_colony/fabs_greebles.dmi'
 	icon_state = "antenna"
 	layer = ABOVE_MOB_LAYER
-	desc = "Windsocks, Air-Con units, solarpanels, oh my!"
+	desc = "Windsocks, Air-Con units, solar panels, oh my!"
 	density = FALSE
 
 

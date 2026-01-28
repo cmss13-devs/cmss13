@@ -131,7 +131,7 @@
       shotgun spit cooldown by half a second.
   - tweak: Reduced round start PO slots from 4 to 2. Reduced total PO slots from 4
       to 3
-  - tweak: Members of same faction should deal less permanent damage to eachother.
+  - tweak: Members of same faction should deal less permanent damage to each other.
       Internal bleeding removed from Friendly Fire damage. Bone Break removed from
       Friendly Fire damage. Organ Damage removed from Friendly Fire damage. Delimb
       chance nullified for Friendly Fire damage. Shrapnel chance nullified for Friendly
@@ -142,7 +142,7 @@
   - tweak: Buffed the damage of the machete, fireaxe (wielded), and most of the sword
       lineup. (event swords mostly, claymore, katana etc)
   - rscadd: Changed riot shield functionality. You can now activate it to raise/lower
-      your blocking stance. This slows your movementspeed, but greatly increases the
+      your blocking stance. This slows your movement speed, but greatly increases the
       block chance. A successful block will make you lower the shield.
   - tweak: Riot shield on your back now has a small chance to block damage.
   - tweak: Lowered the bonus damage% of the melee skill somewhat.
@@ -169,7 +169,7 @@
   - tweak: RO and CTs can now access Engineering comms.
   - rscadd: CL received exclusive WY comms encryption key (:y). They can also give
       it out to their mooks using their special briefcase. WY PMCs can also access
-      this channel. Have fun scheeming!
+      this channel. Have fun scheming!
   - rscdel: ASRS will stop sending motion detectors, plastic explosives, Mod 88, M44
       crates on its own.
   - tweak: Sentry ammo and fuel tanks have a lower priority in ASRS automatic dispensing
@@ -184,7 +184,7 @@
   - tweak: Water now has a -3 modifier to fire intensity.
   - tweak: Made hypermetabolic a negative property.
   - tweak: Halved how powerful hypometabolic is per level.
-  - tweak: Tweaked how thanatometabolic affects effectiveness.
+  - tweak: Tweaked how thanatometabolizing affects effectiveness.
   - spellcheck: Hypermetabolic code is called EMB not EBM.
   UnwaveringGrey:
   - bugfix: Fixed MP berets not giving decap protection.
@@ -239,14 +239,14 @@
   - bugfix: Synth survivors shouldn't get broken bones anymore.
   - tweak: Ghosted larva can be taken over by other players without the usual cooldown.
   - tweak: Weston-Yamada has released a new line of more aerodynamic paper products.
-      The reductino of drag will increase the travel distance of WY-branded paper
+      The reduction of drag will increase the travel distance of WY-branded paper
       7-fold! This has already been touted as a great victory for WY research staff
       that have been dreaming of toss-based research paper sorting for years.
   - rscadd: To go along with the new aerodynamic paper, Weston-Yamata has released
       a line of corporate-exclusive clicky pens, with stylish black, blue and red
       ink colour variants. Now the CLs will be able to engage with the old traditions
-      of clicking their pens idilly during boring meetings.
-  - tweak: Synthetics (as well as non-cliented mobs) have aquired access to a larger
+      of clicking their pens idly during boring meetings.
+  - tweak: Synthetics (as well as non-cliented mobs) have acquired access to a larger
       pool of audible emotes. The Company believes that making their product be able
       to audibly express pain will lead to higher customer satisfaction and less amount
       of missed maintenance cycles.
@@ -359,7 +359,7 @@
       over time.
   - tweak: Adjusted most ability damage values slightly to compensate for the armour.
   - tweak: Removed the RNG chance of marine armour blocking attacks.
-  - tweak: Berserker Eviscarate and Vanguard Pierce now ignores 20% of the target
+  - tweak: Berserker Eviscerate and Vanguard Pierce now ignores 20% of the target
       armour and Dancer Impale ignores 10%.
   - tweak: Heavy armour no longer cover feet and hands.
   - bugfix: Fixed Spitter acid spit not applying DoT to barricades.
@@ -429,7 +429,7 @@
   - imageadd: Slightly adjusted the S4 Telescopic attached icon.
   - imageadd: Added Redikal.zip's animated muzzle flash.
   - rscadd: Added the M44 Custom.
-  - rscadd: Armed the Requisitions Officer and Senioer Enlisted Advisor with the M44
+  - rscadd: Armed the Requisitions Officer and Senior Enlisted Advisor with the M44
       Custom.
   - soundadd: Changed the firing audio of the M41AE2 (HPR), L42A, MAR40, MAR30, and
       M16.
@@ -451,7 +451,7 @@
   - bugfix: Squashed some null errors around uniforms, praetorian powers, mutator
       lists, reagent samples, etc.
   - tweak: SEAs now start with a back item.
-  - tweak: You can't add a sandwitch to a sandwitch anymore to avoid sandwitchceptions
+  - tweak: You can't add a sandwich to a sandwich anymore to avoid sandwichceptions
       causing bugs.
   - rscdel: Collapsed unused cloaking device into the chameleon projector.
   - bugfix: Fixed runtime bugs around primary LZ, reagents, mutators, reviving, movement

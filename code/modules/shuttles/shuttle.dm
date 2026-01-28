@@ -17,7 +17,7 @@
 
 	var/arrive_time = 0 //the time at which the shuttle arrives when long jumping
 
-	//Important note: Shuttle code is a mess, recharge vars will only work fully on ferry type shuttles, aka everything but specops snowflake
+	//Important note: Shuttle code is a mess, recharge vars will only work fully on ferry type shuttles, aka everything but spec ops snowflake
 	var/recharge_time = SHUTTLE_RECHARGE //Default recharge time attached to the shuttle itself
 	var/recharging = 0 //How long until the shuttle has recharged and is ready to move again. Now a countdown instead of a boolean. Do NOT set this to a decimal
 

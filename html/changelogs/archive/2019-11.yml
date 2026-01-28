@@ -40,7 +40,7 @@
       that can hold up to 6 vials. Click the vial pouch with a vial box to move all
       the vials into the pouch or vice versa.
   - tweak: Tweaked the Researcher's starting loadout. Their pouches are replaced with
-      the vial and chemist pouch respectively, in addition to a syringe in their labcoat.
+      the vial and chemist pouch respectively, in addition to a syringe in their lab coat.
   - tweak: You can now empty blood packs with the centrifuge.
   - tweak: Planetside research notes will no longer be about clearance level 1 chems.
   - tweak: You can now change the transfer amount of syringes and also use them on
@@ -54,7 +54,7 @@
   - spellcheck: Renamed the incorrectly titled Van Dyke moustache to Horseshoe moustache.
       Character saves are unaffected.
   - spellcheck: The multitool has been renamed to 'Security Access Tuner'
-  - imageadd: Metal, plasteel, sandbags, helmets, flametanks, magazines, speedloaders,
+  - imageadd: Metal, plasteel, sandbags, helmets, flame tanks, magazines, speedloaders,
       motion detectors, data detectors, entrenching tools, flashbangs, HEDP, HEFA,
       incen, smoke, phos,  training grenades, (standard) loading rigs, G-41 backpacks,
       machete holsters, marinepacks, access tuners, crowbars, wrenches, cutters, rebreathers,
@@ -143,7 +143,7 @@
   - bugfix: Fixed a bunch of symmetrical inconsistencies for lights on the Almayer.
   Vampmare:
   - rscadd: Added the S-V42 Prototype Smartpack. A backpack with inbuilt flashlight
-      that unlocks special abilities if equipped by a Synthethic. First ability is
+      that unlocks special abilities if equipped by a synthetic. First ability is
       Protective Form, the Synthetic gains insane protection but is unable to attack
       for a short duration. Second ability is Immobile Form, the Synthetic becomes
       unable to move, but also unable to be moved by others. Last ability is Repair
@@ -181,7 +181,7 @@
   - bugfix: Cannot add assemblies to grenades with assemblies
   - tweak: Hive status xeno counts are centered
   - tweak: Can now print hand labelers from and put them in the autolathe
-  - tweak: Ejecting beakers/pill bottles from the chem master/chem dispenser will
+  - tweak: Ejecting beakers/pill bottles from the chemmaster/chem dispenser will
       try to put them in your hands first
   - rscadd: 'Can empty storage items (i.e. bags and backpacks) by using them in your
       hand. There will be a ~2 second delay before it will empty. Items that previously

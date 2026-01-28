@@ -10,7 +10,7 @@
       a click delay
   Red-byte3D:
   - balance: AMR sniper spec magazines reduced to 2 for the box.
-  - balance: requistions amr sniper spec magazine order reduced to 3 mags.
+  - balance: requisitions amr sniper spec magazine order reduced to 3 mags.
   Syndro101:
   - rscadd: Added a new area for the sector relay.
   - mapadd: Added new offices for Fax Responders.
@@ -30,13 +30,13 @@
   harryob:
   - ui: adds a pretty tgui for pred prefs
   realforest2001:
-  - code_imp: Reorganises how paperwork gets image references, and moves them to a
+  - code_imp: Reorganizes how paperwork gets image references, and moves them to a
       new folder.
   - rscadd: Added prefab paperwork forms for use by Military Police and the Corporate
       Liaison.
   - imageadd: Added a dark background often used by staff faxes for easy referencing.
   - imageadd: Updated WY and USCM logos to higher quality versions.
-  - code_imp: Reorganises the fountain pen into a subtype of obj/item/tool/pen/multicolor
+  - code_imp: Reorganizes the fountain pen into a subtype of obj/item/tool/pen/multicolor
       to make the functionality usable in multiple pens.
   - rscadd: Adds a provost pen, a variant of multicolor pen that can switch between
       Black, White, Orange, Blue, Green and Red. Intended for use in filling out MP
@@ -45,7 +45,7 @@
   Blundir:
   - rscadd: hud icon for loader
   - rscadd: minimap/orbit icons for loader and spotter
-  - bugfix: upp political commisar having incorrect minimap/orbit icon
+  - bugfix: upp political commissar having incorrect minimap/orbit icon
   - bugfix: k9 handler pamphlet making all corpsmen have minimap/orbit icon of k9
       handler instead of corpsman one
   Drathek:
@@ -112,7 +112,7 @@
   - bugfix: Fixed some gearsets having improper radio/chat prefixes.
   Blundir:
   - imageadd: resprites all beret object icons and makes them match the onmob sprites,
-      beret format standartization
+      beret format standardization
   nauticall:
   - ui: Changed the crew manifest to TGUI.
   private-tristan:
@@ -136,12 +136,12 @@
   - rscadd: rank icons now work in asay and mentorsay chats
   - bugfix: fixed some broken ranks icons not working
   Diegoflores31:
-  - balance: Shrapnell accuracy and damage increased
-  - balance: Shrapnell now does 60% bonus damage to xenomorphs
-  - balance: Shrapnell slows xenomorphs on hit
-  - balance: Custom rockets will now shoot their shrapnell on a 90 degree angle
+  - balance: Shrapnel accuracy and damage increased
+  - balance: Shrapnel now does 60% bonus damage to xenomorphs
+  - balance: Shrapnel slows xenomorphs on hit
+  - balance: Custom rockets will now shoot their shrapnel on a 90 degree angle
   cuberound:
-  - rscadd: UPP req  console, dropship part fabricato and tank part fabricator
+  - rscadd: UPP req  console, dropship part fabricator and tank part fabricator
 2025-01-09:
   AndroBetel:
   - spellcheck: Formatting of M10 auto pistol.
@@ -149,7 +149,7 @@
   FebrezeNinja:
   - bugfix: Added a missing reference check to flight/ui_act
   harryob:
-  - rscadd: added client settings to the statbrowser - under the "Options" buttn
+  - rscadd: added client settings to the statbrowser - under the "Options" button
   - ui: added a search bar to the portable crew monitor
   private-tristan:
   - bugfix: Neuraline no longer generates in recipes, and is unobtainable from botany.
@@ -218,7 +218,7 @@
       file.
   - balance: The PMC fatigues (and by proxy the WY security fatigues) can now wear
       normal clothes on top of them.
-  - balance: The Labcoat can now store a bunch more medical stuff, including all surgical
+  - balance: The lab coat can now store a bunch more medical stuff, including all surgical
       tools, space cleaner, blood bags, and a few more.
   - balance: Most jackets can now store the large general pouch in their suit slot,
       like armors already could.
@@ -249,7 +249,7 @@
       with negative chemical properties
 2025-01-16:
   Blundir:
-  - rscadd: Chief Medical Officer's Labcoat
+  - rscadd: Chief Medical Officer's lab coat
   Crowford:
   - imageadd: replaced trap1, trap0, trapacid1, trapacid2, trapacid3 and trap gas
       with better sprites.
@@ -271,7 +271,7 @@
   - bugfix: fixed co and so uniforms not having working camo variants
 2025-01-17:
   Blundir:
-  - rscadd: WY research consultant labcoat
+  - rscadd: WY research consultant lab coat
   - rscadd: WY research consultant now has a coherent set of items at their disposal
   - rscadd: WY research new looks
   - bugfix: fixes WY research consultant not having their gun spawn
@@ -286,7 +286,7 @@
       2.5
   - balance: Synthetic smart-pack no longer is an exoskeleton nor has any abilities
       other then a built in light and is a normal backpack.
-  - spellcheck: Description and name of the smart pack changed
+  - spellcheck: Description and name of the smartpack changed
 2025-01-18:
   Blundir:
   - rscadd: now all WY jobs have a hud icon and a minimap icon
@@ -336,8 +336,8 @@
   - qol: Added a "Send thoughts" panel like the "Manage Hive" one, putting in psychic
       radiance,  whisper and queen word in there.
   - code_imp: var changes on burrower abilities and moved burrower abilities from
-      abilities.dm into burrower_abilities.dm thats alot of abilities.
-  - code_imp: Moved Queen abiliites from abilities.dm into its own respective file
+      abilities.dm into burrower_abilities.dm thats a lot of abilities.
+  - code_imp: Moved Queen abilities from abilities.dm into its own respective file
       and reworked them into procs
   - rscdel: Removed unused queen ability code such as the beacon, the boiler gas and
       the barricade
@@ -351,11 +351,11 @@
   - imageadd: New sprites for the old formal black and white uniforms, falcon jacket
       and a new plain jacket.
   - rscadd: New uscm officer formal uniform sprite
-  - imagedel: Removes old unused suprised that this pr replaces
+  - imagedel: Removes old unused surprised that this pr replaces
 2025-01-22:
   Blundir:
   - rscadd: adds support for a headset to have multiple faction huds, instead of being
-      harcoded to one main one
+      hardcoded to one main one
   - rscadd: 'some headsets can now see multiple huds: CL can see USCM, WY, PMC; CO,
       XO can see USCM, WY, CMB, etc'
   - rscadd: mp and hg headsets can now track cmp
@@ -505,7 +505,7 @@
   ihatethisengine:
   - bugfix: fixes jima name stacking
   nauticall:
-  - rscadd: Changed most structure lights in the game to be either an incandascent
+  - rscadd: Changed most structure lights in the game to be either an incandescent
       warm white/yellow, or a cold blue, depending on their bulb color.
   private-tristan:
   - rscadd: When 2 charger crushers collide, they now cause a tremor, knocking down

@@ -11,7 +11,7 @@
 	)
 
 /datum/skills/honor_guard/vet
-	name = "Honor Guard Verteran" //SO
+	name = "Honor Guard Veteran" //SO
 	skills = list(
 		SKILL_VEHICLE = SKILL_VEHICLE_CREWMAN,
 		SKILL_POWERLOADER = SKILL_POWERLOADER_MASTER,

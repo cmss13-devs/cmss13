@@ -441,7 +441,7 @@
 		list("Roller Bed", 0, /obj/item/roller, VENDOR_ITEM_REGULAR),
 		list("Table", 3, /obj/item/frame/table, VENDOR_ITEM_REGULAR),
 		list("Rack", 3, /obj/item/frame/rack, VENDOR_ITEM_REGULAR),
-		list("Cliboard", 4, /obj/item/clipboard, VENDOR_ITEM_REGULAR),
+		list("Clipboard", 4, /obj/item/clipboard, VENDOR_ITEM_REGULAR),
 		list("Pen", 4, /obj/item/tool/pen, VENDOR_ITEM_REGULAR),
 		list("Chair", 2, /obj/item/weapon/twohanded/folded_metal_chair, VENDOR_ITEM_REGULAR),
 

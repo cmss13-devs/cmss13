@@ -1,6 +1,6 @@
 // Paygrade shorthand defines, to allow clearer designation.
 
-// Dutches Dozen
+// Dutch's Dozen
 /// DTC, Dutch's Dozen Standard Mercenary
 #define PAY_SHORT_DTC "DTC"
 

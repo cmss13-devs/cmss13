@@ -52,7 +52,7 @@
 		return
 
 
-//Transfers blood from container to human, respecting blood types compatability.
+//Transfers blood from container to human, respecting blood types compatibility.
 /mob/living/carbon/human/inject_blood(obj/item/reagent_container/container, amount)
 	var/datum/reagent/blood/B = locate() in container.reagents.reagent_list
 

@@ -16,7 +16,7 @@
 	var/freqlock = TRUE
 	var/ignore_z = FALSE
 	var/freerange = 0 // 0 - Sanitize frequencies, 1 - Full range
-	var/list/channels = list() //see communications.dm for full list. First channes is a "default" for :h
+	var/list/channels = list() //see communications.dm for full list. First channels is a "default" for :h
 	var/subspace_transmission = 0
 	/// If true, subspace_transmission can be toggled at will.
 	var/subspace_switchable = FALSE

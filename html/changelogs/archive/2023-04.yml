@@ -348,7 +348,7 @@
       to distribute medical supplies.
   - maptweak: reduce the size of the reception office and remove is wall and window
       to make it so that personnel inside can act quickly when patient arrived.
-  - mapadd: added multiple empty medikit to avoid marines clustering the floor when
+  - mapadd: added multiple empty medkit to avoid marines clustering the floor when
       making their loadout.
   - maptweak: move all the empty pill bottle in a closet to a spot in the chemistry
       room.
@@ -373,8 +373,8 @@
   - bugfix: Fixed duplicate APCs in Kutjevo - Autodoc Hallway
   - bugfix: Fixed and moved floating APC in Kutjevo - Autodoc Hallway
   - bugfix: Fixed duplicate APCs in Kutjevo - Treatment plant.
-  - bugfix: Fixed duplicate APCS in Kutjevo - Botony East Hall
-  - bugfix: Fixed duplicate APCS in Kutjevo - Botony Bay
+  - bugfix: Fixed duplicate APCS in Kutjevo - Botany East Hall
+  - bugfix: Fixed duplicate APCS in Kutjevo - Botany Bay
   - bugfix: Fixed missing APC in Kutjevo - Powerplant Access Hall
   - bugfix: Fixed missing APC in Kutjevo - Medbay Stormlocks
   - bugfix: Fixed missing APC in Kutjevo - Hydroelectric Dam Comms Relay

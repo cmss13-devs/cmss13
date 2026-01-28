@@ -6,7 +6,7 @@ Healing
 	Little bit hidden.
 	Lowers resistance tremendously.
 	Decreases stage speed tremendously.
-	Decreases transmittablity temrendously.
+	Decreases transmittability tremendously.
 	Fatal Level.
 
 Bonus

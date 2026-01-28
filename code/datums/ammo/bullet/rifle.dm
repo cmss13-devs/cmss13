@@ -16,7 +16,7 @@
 	shell_speed = AMMO_SPEED_TIER_6
 	effective_range_max = 7
 	damage_falloff = DAMAGE_FALLOFF_TIER_7
-	max_range = 24 //So S8 users don't have their bullets magically disappaer at 22 tiles (S8 can see 24 tiles)
+	max_range = 24 //So S8 users don't have their bullets magically disappear at 22 tiles (S8 can see 24 tiles)
 
 /datum/ammo/bullet/rifle/holo_target
 	name = "holo-targeting rifle bullet"

@@ -48,7 +48,7 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 	if(taskbar_icon)
 		GLOB.available_taskbar_icons |= taskbar_icon
 
-/datum/game_mode/proc/announce() //to be calles when round starts
+/datum/game_mode/proc/announce() //to be called when round starts
 	to_world("<B>Notice</B>: [src] did not define announce()")
 
 ///can_start()

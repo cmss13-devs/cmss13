@@ -52,7 +52,7 @@
 
 /*
  * Stoppable timer cooldowns.
- * Use indexes the same as the regular tiemr cooldowns.
+ * Use indexes the same as the regular timer cooldowns.
  * They make use of the TIMER_COOLDOWN_CHECK() and TIMER_COOLDOWN_END() macros the same, just not the TIMER_COOLDOWN_START() one.
  * A bit more expensive than the regular timers, but can be reset before they end and the time left can be checked.
 */

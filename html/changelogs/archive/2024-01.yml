@@ -104,7 +104,7 @@
       as some pens in req area to interact with noticeboard
   Drathek:
   - refactor: Refactored the overlay_lighting component to better handle objects deleting
-  - bugfix: Fix putting lights in bags somereason keeping the light on
+  - bugfix: Fix putting lights in bags some reason keeping the light on
   - ui: Polished various aspects of the new dropship weapons UI
   - bugfix: Fixed CAS direct firing
   - bugfix: Fixed Medevac buttons not moving the dropship (still currently requires
@@ -157,14 +157,14 @@
 2024-01-15:
   InsaneRed:
   - qol: Moves "Banish, Re-admit and De-evolving" queen abilities into one list, making
-      the queen ui  less clutterier
+      the queen ui  less cluttery
   Stakeyng:
   - rscadd: Added the ability to combine prescription glasses with eyewear for varying
       roles
   private-tristan:
   - bugfix: removed a light fixture being doubled on trijent
   - maptweak: moved some trijent lights in marshals off windows
-  - maptweak: Alamayer PermaBrig Chairs face the right way
+  - maptweak: Almayer PermaBrig Chairs face the right way
 2024-01-16:
   Drathek:
   - bugfix: Fix all hands on deck message not sending to those in cryopods
@@ -188,7 +188,7 @@
   Birdtalon:
   - bugfix: Fixed buckled mobs unable to move after being thrown by a xeno.
   Drathek:
-  - code_imp: Cleaned up some oversights in attachment Detatch logic
+  - code_imp: Cleaned up some oversights in attachment detatch logic
   SabreML:
   - rscadd: Added a 'balloon alert' when toggling Crest Defense as a Defender.
   - code_imp: Made balloon alerts centre themselves on xeno sprites.
@@ -208,7 +208,7 @@
       autolathe.
   Huffie56:
   - rscdel: deleting machinery called centrifuge in distillery/main.dm and deleted
-      the distellery/main.dm file and folder.
+      the distillery/main.dm file and folder.
   - refactor: move all the machinery of distillery/main.dm into machinery.dm and remove
       all their added functionality.
   - rscdel: Remove all the manuals that were nothing to do with CM lore. (cloning,
@@ -233,7 +233,7 @@
   - soundadd: added unique sound for minimap updates
   - soundadd: added unique fax sound for fax announcements.
   cuberound:
-  - bugfix: lowers volume of neurohalucination from 100 (no outher sounds are so laud)
+  - bugfix: lowers volume of neurohalucination from 100 (no other sounds are so laud)
       to 65 (just about under queen screech level).
   fira:
   - rscdel: Removed AIs.
@@ -309,7 +309,7 @@
   SpartanBobby:
   - maptweak: A bunch of edits to big red and big red nightmares for the following
       areas, Northcaves, Medical Morgue, maint between cargo and general store, LZ2,
-      North Libary, EVA, dorms bathroom
+      North Library, EVA, dorms bathroom
   VileBeggar:
   - balance: M39 burst scatter multiplier reduced from 7 to 4.
   fira:
@@ -338,7 +338,7 @@
   - bugfix: corrected the name of an area from "Lower Deck Starboard Hull" to "Lower
       Deck Starboard-Aft Hull".
   - bugfix: added apc's to area that where missing one.
-  - maptweak: added some areas to almayers (constr site, Starboard-Bow Maintenance,
+  - maptweak: added some areas to almayer (constr site, Starboard-Bow Maintenance,
       Bow Hull(port and starboard),cryo maintenance.
   Johannes2262:
   - rscadd: Added three more magazines to each of the MP's handgun cases
@@ -414,7 +414,7 @@
   - refactor: STUI is now a TSX component
 2024-01-31:
   Birdtalon:
-  - code_imp: Added procs for applying a root (immobilise)
+  - code_imp: Added procs for applying a root (immobilize)
   Contrabang:
   - bugfix: Chestbursting larva no longer get hive orders when there are no hive orders
   CyberSpyXD:
@@ -428,8 +428,8 @@
   - rscadd: Adds a variation of the chef's apron, "Medical's apron", to be used by
       medical personnel, mainly nurses.
   - bugfix: Fixed the code in the prep vendors to make things of different groups
-      not act like they are of the same group, like how you couldn't take a labcoat
-      and a snowcoat, only one of both, which does not make sense.
+      not act like they are of the same group, like how you couldn't take a lab coat
+      and a snow coat, only one of both, which does not make sense.
   - code_imp: Update of the medical's vendor preps. Exclusion of most part of medical's
       equipment when waking up from cryo. Addition of latejoin landmarks to the same
       place where they usually wake up as firstjoiners.

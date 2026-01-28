@@ -96,7 +96,7 @@
 	)
 	to_hold = /obj/item/ammo_magazine/handful/shotgun/incendiary
 
-//unused due to thermal/wallpìercing combo
+//unused due to thermal/wall-piercing combo
 /obj/item/ammo_kit/penetrating
 	name = "wall-penetrating ammo kit"
 	icon_state = "kit_penetrating"

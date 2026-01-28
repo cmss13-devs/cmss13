@@ -68,7 +68,7 @@
 
 /datum/ammo/bullet/shrapnel/incendiary
 	name = "flaming shrapnel"
-	icon_state = "beanbag" // looks suprisingly a lot like flaming shrapnel chunks
+	icon_state = "beanbag" // looks surprisingly a lot like flaming shrapnel chunks
 	flags_ammo_behavior = AMMO_STOPPED_BY_COVER
 	shell_speed = AMMO_SPEED_TIER_1
 	damage = 20

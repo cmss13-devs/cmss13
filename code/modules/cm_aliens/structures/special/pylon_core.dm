@@ -266,7 +266,7 @@
 			if((!worm.ckey || worm.stat == DEAD) && worm.burrowable && (worm.hivenumber == linked_hive.hivenumber) && !QDELETED(worm))
 				visible_message(SPAN_XENODANGER("[worm] quickly burrows into \the [src]."))
 				if(!worm.banished)
-					// Goob job bringing her back home, but no doubling please
+					// Good job bringing her back home, but no doubling please
 					linked_hive.stored_larva++
 					linked_hive.hive_ui.update_burrowed_larva()
 				qdel(worm)

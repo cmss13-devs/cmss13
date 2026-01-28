@@ -58,9 +58,9 @@ def handle_issue(pid, pat, repo_path):
             response = requests.put(reopen_url, headers={"Private-Token": pat})
 
             # Issue was successfully re-opened
-            # Leave a comment to know that it was re-opened because the runtime re-occured
+            # Leave a comment to know that it was re-opened because the runtime re-occurred
             if response.status_code == 200:
-                comment = "The issue has been re-opened due to the runtime re-occuring. Details are provided below.\n\n{}".format(runtime.get_body())
+                comment = "The issue has been re-opened due to the runtime re-occurring. Details are provided below.\n\n{}".format(runtime.get_body())
 
                 comment_url = COMMENT_ISSUE_URL.format(pid, iid, comment)
                 requests.post(comment_url, headers={"Private-Token": pat})

@@ -52,27 +52,27 @@
 /// RNO6, General
 #define PAY_SHORT_RNO9 "RNO9"
 
-/// EMP, Emperess, based off the mention of "her majesty" in the ARPG
+/// EMP, Empress, based off the mention of "her majesty" in the ARPG
 #define PAY_SHORT_EMP "EMP"
 
 /// IASF Ranks
 
-// IASF Nito rikushi - E1 - Private
+// IASF Nito Rikushi - E1 - Private
 #define PAY_SHORT_IASFE1 "IASFE1"
 
-//Itto rikushi - E2 - Private First Class
+//Itto Rikushi - E2 - Private First Class
 #define PAY_SHORT_IASFE2 "IASFE2"
 
 //Rikushicho - E3 - Corporal
 #define PAY_SHORT_IASFE3 "IASFE3"
 
-//Santo rikuso - E4 - Sergeant
+//Santo Rikuso - E4 - Sergeant
 #define PAY_SHORT_IASFE4 "IASFE4"
 
-//Nito rikuso - E5 - Staff Sergeant
+//Nito Rikuso - E5 - Staff Sergeant
 #define PAY_SHORT_IASFE5 "IASFE5"
 
-//Itto rikuso - E6 - Sergeant 1st Class
+//Itto Rikuso - E6 - Sergeant 1st Class
 #define PAY_SHORT_IASFE6 "IASFE6"
 
 //Rikusocho - E7 - 1st Sergeant

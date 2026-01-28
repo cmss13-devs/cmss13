@@ -5,7 +5,7 @@
 
 /datum/origin/uscm/luna
 	name = ORIGIN_USCM_LUNA
-	desc = "You were born on a moonbase orbiting the earth. Pretty fuckin' cool if you ask me."
+	desc = "You were born on a moon base orbiting the earth. Pretty fuckin' cool if you ask me."
 
 
 /datum/origin/uscm/other
@@ -25,7 +25,7 @@
 
 /datum/origin/uscm/aw
 	name = ORIGIN_USCM_AW
-	desc = "You were a product of an experimental military programme that sought to breed the perfect supersoldier. In some aspects, they've succeeded."
+	desc = "You were a product of an experimental military programme that sought to breed the perfect super soldier. In some aspects, they've succeeded."
 
 /datum/origin/uscm/aw/generate_human_name(gender = MALE)
 	switch(gender)

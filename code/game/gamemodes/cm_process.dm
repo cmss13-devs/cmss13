@@ -126,7 +126,7 @@ of predators), but can be added to include variant game modes (like humans vs. h
 		if(M.id == podlock_id && M.density)
 			M.open()
 
-// Variables for the below function that we need to keep throught the round
+// Variables for the below function that we need to keep through the round
 GLOBAL_VAR_INIT(peak_humans, 1)
 GLOBAL_VAR_INIT(peak_xenos, 1)
 

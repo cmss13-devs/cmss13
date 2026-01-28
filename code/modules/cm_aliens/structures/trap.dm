@@ -48,9 +48,9 @@
 		if(RESIN_TRAP_HUGGER)
 			. += "There's a little one inside."
 		if(RESIN_TRAP_GAS)
-			. += "It's filled with pressurised gas."
+			. += "It's filled with pressurized gas."
 		if(RESIN_TRAP_ACID1, RESIN_TRAP_ACID2, RESIN_TRAP_ACID3)
-			. += "It's filled with pressurised acid."
+			. += "It's filled with pressurized acid."
 
 /obj/effect/alien/resin/trap/proc/forsaken_handling()
 	SIGNAL_HANDLER

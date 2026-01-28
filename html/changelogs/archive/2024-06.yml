@@ -46,7 +46,7 @@
   - rscadd: contraband ammo selection in black market
   - rscadd: tons of new ammo boxes
   GrrrKitten:
-  - rscadd: replaces the old ethnicity system with a new skintone system
+  - rscadd: replaces the old ethnicity system with a new skin tone system
   - imageadd: Resprites humans, adds 9 new mix and match body options to replace the
       old 3 options
   - rscadd: resprites dogtags and adds an accessory dogtag that can be made visible
@@ -125,7 +125,7 @@
   - bugfix: Vehicle elevator no longer incorrectly rotates vehicles
   - rscadd: New ARC exterior and interior
   - balance: ARC now fits 5 humans instead of 7
-  - balance: ARC now fits 4 xenos intead of 5
+  - balance: ARC now fits 4 xenos instead of 5
   - balance: ARC's RE700 turret armor pen 10->15
   - balance: On account of the smaller size, the ARC no longer has a nanomed.
   Zonespace27:
@@ -200,7 +200,7 @@
   Red-byte3D:
   - balance: Re-adds Vehicle Crewmen
   - balance: Tank now unlocks at 200 pop.
-  - balance: Re-adds tank and its attachements back to the tank-bay.
+  - balance: Re-adds tank and its attachments back to the tank-bay.
   - balance: You can no longer have the ARC & TANK in the same round. if the arc is
       bought the tank is unavailable and vice versa.
   Zonespace27:

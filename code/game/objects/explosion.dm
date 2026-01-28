@@ -21,7 +21,7 @@
 
 
 
-//A very crude linear approximatiaon of pythagoras theorem. (this is still used by chemsmoke)
+//A very crude linear approximation of pythagoras theorem. (this is still used by chemsmoke)
 
 /proc/cheap_pythag(dx, dy)
 	dx = abs(dx); dy = abs(dy);

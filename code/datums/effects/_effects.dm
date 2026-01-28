@@ -5,7 +5,7 @@
 
 	How does it work?
 	Atom has a var/list/effects_list which is used to hold all the active effects on that atom.
-	A subystem called "Effects" is used to process() every effect every second.
+	A subsystem called "Effects" is used to process() every effect every second.
 
 	How to create one?
 	Make a new /datum/effects/name in the folder effects
@@ -36,7 +36,7 @@
 	var/obj_icon_state_path = null //The icon_state path for objs
 	var/mob_icon_state_path = null //The icon_state path for mobs
 	var/datum/cause_data/cause_data = null //Cause data for statistics
-	var/show_baloon_alert = FALSE //Used to limit balloon alerts
+	var/show_balloon_alert = FALSE //Used to limit balloon alerts
 
 /datum/effects/New(atom/thing, mob/from = null, last_dmg_source = null, zone = "chest")
 	if(!validate_atom(thing) || QDELETED(thing))

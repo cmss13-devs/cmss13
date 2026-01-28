@@ -92,7 +92,7 @@
       each other anymore. When ramming into multitile vehicle, both vehicles' last
       movement direction and momentum are taken into account and damage taken by vehicles
       is increased respectively.
-  - tweak: Vehicle skills requirements for Tank and APC were icnreased to Crewman
+  - tweak: Vehicle skills requirements for Tank and APC were increased to Crewman
       level.
   - bugfix: Fixed Toggle Gyrostabilizer verb not working.
   - tweak: 'Tank movement. Regular treads speed was increased. Robustreads speed was
@@ -161,7 +161,7 @@
   TobiNerd:
   - bugfix: Chefs can now cut food on tables again.
   Vicacrov:
-  - bugfix: 'Fixed the incediary OB''s colour: it''s white again.'
+  - bugfix: 'Fixed the incendiary OB''s colour: it''s white again.'
   - rscadd: Added a debug verb for firing OBs. Expect abombs to be more creative from
       now o- I mean, it is a very useful tool for testing. Really.
   - bugfix: Fixed two survivor loadouts not having boots on CORSAT.
@@ -170,7 +170,7 @@
 2020-09-11:
   Jeser:
   - rscdel: Removed Vehicle Crewman role population lock. Rejoice!
-  - rscadd: Added tank population lock in Vehicle ASRS Console. Currenty set to 90
+  - rscadd: Added tank population lock in Vehicle ASRS Console. Currently set to 90
       USCM personnel. Tank won't be opened even if population will satisfy requirements
       later in round to prevent Crewmen sitting half a round not taking APC, hoping
       to get tank. Staff can enable/disable lock if needed.
@@ -275,11 +275,11 @@
       If a bone start knitting before a splint is applied, it will take significantly
       longer to knit, even if a splint is applied afterward. '
   - bugfix: Thwei now once again mends unsplinted bones, albeit slower.
-  - bugfix: Regulating now work as intended and prevents overdosis on the attached
+  - bugfix: Regulating now work as intended and prevents overdoses on the attached
       reagent.
   - bugfix: Thwei now gives some DEFCON when scanned via the Advanced XRF Scanner.
   - bugfix: Thwei no longer gives more research credits if scanned more than one time.
-  - tweak: The DNA desintegrating message about 20000$ being sent to the Almayer is
+  - tweak: The DNA disintegrating message about 20000$ being sent to the Almayer is
       now true. Those may be found in the DEFCON assets.
   - tweak: Hypometabolism is now a flat 35% duration increase per level.
   - tweak: Hypermetabolism is now a flat 25% metabolism increase per level. On most
@@ -363,7 +363,7 @@
   Segrain:
   - bugfix: Plants in hydroponics trays now properly progress through visual stages
       of growth.
-  - tweak: Customising chemicals in synthesis simulator now lists all properties in
+  - tweak: Customizing chemicals in synthesis simulator now lists all properties in
       the new chemical's name.
   - bugfix: Fixed a rare issue with synthesis simulator refusing to correctly make
       a new custom chemical.
@@ -435,7 +435,7 @@
   Frozentsbgg:
   - tweak: Fixed Spacejam Ticket to display correct memorial date
   Spartanbobby:
-  - rscadd: Adds Type 80 Bayonet,lucky strike and emerald green cigerette packets
+  - rscadd: Adds Type 80 Bayonet,lucky strike and emerald green cigarette packets
       to custom loadout for 4 points, 1 point and 1 point
   Waltermeldron:
   - rscadd: Tiers will now show up in the playtime menu when you unlock them.

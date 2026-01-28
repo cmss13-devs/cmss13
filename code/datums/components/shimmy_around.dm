@@ -3,7 +3,7 @@
 
 /**
  * A component to act on the signal COMSIG_STRUCTURE_COLLIDED to shimmy around a dense structure
- * NOTE: If any part of the Collided proc chain is overriden from obj/structure you must ensure the signal is sent
+ * NOTE: If any part of the Collided proc chain is overridden from obj/structure you must ensure the signal is sent
  */
 /datum/component/shimmy_around
 	/// The structure that we are bound to
@@ -174,7 +174,7 @@
 	if(mob.loc != destination)
 		if(layer_changing)
 			UnregisterSignal(mob, COMSIG_LIVING_SHIMMY_LAYER)
-		return // Merely checking the return value for Move is insufficent to detect a mob swap
+		return // Merely checking the return value for Move is insufficient to detect a mob swap
 
 	// Override their layer if needed
 	var/animate_time = min(mob.move_delay + extra_delay, MAX_ANIMATE_TIME)

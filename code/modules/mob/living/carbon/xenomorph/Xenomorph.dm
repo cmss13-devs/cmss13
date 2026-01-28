@@ -472,7 +472,7 @@
 
 	toggle_xeno_hostilehud()
 	recalculate_everything()
-	toggle_xeno_mobhud() //This is a verb, but fuck it, it just werks
+	toggle_xeno_mobhud() //This is a verb, but fuck it, it just works
 
 	. = ..()
 

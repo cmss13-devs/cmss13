@@ -79,7 +79,7 @@
 				sleep(3)
 				step_to(src,movement_target,1)
 
-				if(movement_target) //Not redundant due to sleeps, Item can be gone in 6 decisecomds
+				if(movement_target) //Not redundant due to sleeps, Item can be gone in 6 deciseconds
 					if (movement_target.loc.x < src.x)
 						setDir(WEST)
 					else if (movement_target.loc.x > src.x)
@@ -170,7 +170,7 @@
 		pass_flags.flags_pass = PASS_MOB_THRU|PASS_FLAGS_CRAWLER
 		pass_flags.flags_can_pass_all = PASS_ALL^PASS_OVER_THROW_ITEM
 
-//pupplies cannot wear anything.
+//puppies cannot wear anything.
 /mob/living/simple_animal/big/corgi/puppy/Topic(href, href_list)
 	if(href_list["remove_inv"] || href_list["add_inv"])
 		to_chat(usr, SPAN_DANGER("You can't fit this on [src]."))

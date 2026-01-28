@@ -267,6 +267,9 @@
 	var/obj/item/skull/skull = /obj/item/skull
 	var/obj/item/pelt/pelt = /obj/item/pelt
 
+	///For custom strain damage states
+	var/damage_state_prefix
+
 
 	//////////////////////////////////////////////////////////////////
 	//
@@ -428,10 +431,10 @@
 	if(hive)
 		for(var/trait in hive.hive_inherited_traits)
 			ADD_TRAIT(src, trait, TRAIT_SOURCE_HIVE)
-
 	//Set caste stuff
 	if(caste_type && GLOB.xeno_datum_list[caste_type])
 		caste = GLOB.xeno_datum_list[caste_type]
+		damage_state_prefix = caste.caste_type
 
 		//Fire immunity stuff
 		set_initial_fire_immunity()

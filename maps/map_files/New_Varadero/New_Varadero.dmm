@@ -91,6 +91,12 @@
 /obj/structure/machinery/power/apc/fully_broken/no_cell/north,
 /turf/open/floor/corsat/squareswood/north,
 /area/varadero/interior_protected/vessel)
+"aar" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "EngineeringHoldout"
+	},
+/turf/closed/wall,
+/area/varadero/interior/technical_storage)
 "aas" = (
 /obj/structure/prop/rock/brown,
 /turf/open/gm/dirt,
@@ -302,6 +308,12 @@
 /obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/ocean/deep_ocean,
 /area/varadero/exterior/farocean)
+"abd" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "HospitalAlternate"
+	},
+/turf/closed/wall/r_wall/unmeltable,
+/area/varadero/interior/oob)
 "abf" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
@@ -38731,7 +38743,7 @@ nxW
 qcN
 qcN
 qcN
-huF
+abd
 hYp
 uqx
 hYp
@@ -38747,7 +38759,7 @@ ykw
 ykw
 ykw
 bIt
-bIt
+aar
 kGM
 sDj
 wir

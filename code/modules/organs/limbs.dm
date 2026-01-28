@@ -443,11 +443,11 @@
 		if(wound.damage_type == CUT || wound.damage_type == BRUISE)
 			var/old_brute = brute
 			brute = wound.heal_damage(brute)
-			owner.pain.apply_pain(brute - old_brute, BRUTE)
+			owner.pain.recalculate_pain()
 		else if(wound.damage_type == BURN)
 			var/old_burn = burn
 			burn = wound.heal_damage(burn)
-			owner.pain.apply_pain(burn - old_burn, BURN)
+			owner.pain.recalculate_pain()
 
 	//Sync the organ's damage with its wounds
 	update_damages()
@@ -526,7 +526,7 @@ This function completely restores a damaged organ to perfect condition.
 		status &= ~LIMB_SPLINTED
 		playsound(get_turf(loc), 'sound/items/splintbreaks.ogg', 20)
 		to_chat(owner, SPAN_HIGHDANGER("The splint on your [display_name] comes apart!"))
-		owner.pain.apply_pain(PAIN_BONE_BREAK_SPLINTED)
+		owner.pain.recalculate_pain()
 		owner.update_med_icon()
 
 	// first check whether we can widen an existing wound
@@ -657,8 +657,8 @@ This function completely restores a damaged organ to perfect condition.
 	if(knitting_time > 0)
 		if(world.time > knitting_time)
 			to_chat(owner, SPAN_WARNING("The bones in your [display_name] feel fully knitted."))
-			owner.pain.apply_pain(-PAIN_BONE_BREAK)
 			status &= ~LIMB_BROKEN //Let it be known that this code never unbroke the limb.
+			owner.pain.recalculate_pain()
 			knitting_time = -1
 
 ///Updating wounds. Handles wound natural I had some free spachealing, internal bleedings and infections
@@ -719,13 +719,7 @@ This function completely restores a damaged organ to perfect condition.
 				heal_amt = min(max_burn_heal, heal_amt)
 				if(heal_amt <= 0)
 					continue
-
-			if(wound.damage_type == BRUISE || wound.damage_type == CUT)
-				owner.pain.apply_pain(-heal_amt, BRUTE)
-			else if(wound.damage_type == BURN)
-				owner.pain.apply_pain(-heal_amt, BURN)
-			else
-				owner.pain.recalculate_pain()
+			owner.pain.recalculate_pain()
 
 			var/old_damage = wound.damage
 			wound.heal_damage(heal_amt)
@@ -913,7 +907,7 @@ This function completely restores a damaged organ to perfect condition.
 			status = LIMB_DESTROYED|LIMB_ROBOT
 		else
 			status = LIMB_DESTROYED|LIMB_ORGANIC
-			owner.pain.apply_pain(PAIN_BONE_BREAK)
+			owner.pain.recalculate_pain()
 		if(amputation)
 			status |= LIMB_AMPUTATED
 		for(var/i in implants)
@@ -1224,7 +1218,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 					l.status = LIMB_ROBOT|LIMB_UNCALIBRATED_PROSTHETIC
 		else
 			status |= LIMB_BROKEN
-			owner.pain.apply_pain(PAIN_BONE_BREAK)
+			owner.pain.recalculate_pain()
 			broken_description = pick("broken","fracture","hairline fracture")
 			perma_injury = min_broken_damage
 	else
@@ -1383,10 +1377,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 			if(indestructible_splints)
 				status |= LIMB_SPLINTED_INDESTRUCTIBLE
 
-			if(status & LIMB_BROKEN)
-				owner.pain.apply_pain(-PAIN_BONE_BREAK_SPLINTED)
-			else
-				owner.pain.apply_pain(PAIN_BONE_BREAK_SPLINTED)
+			owner.pain.recalculate_pain()
 			. = TRUE
 			owner.update_med_icon()
 

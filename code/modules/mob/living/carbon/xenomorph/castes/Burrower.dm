@@ -36,6 +36,11 @@
 
 	minimap_icon = "burrower"
 
+/datum/caste_datum/burrower/New(mob/living/carbon/xenomorph/burrower)
+	. = ..()
+
+	resin_build_order = GLOB.resin_build_order_burrower
+
 /mob/living/carbon/xenomorph/burrower
 	caste_type = XENO_CASTE_BURROWER
 	name = XENO_CASTE_BURROWER
@@ -44,6 +49,7 @@
 	icon_size = 64
 	icon_state = "Burrower Walking"
 	layer = MOB_LAYER
+	claw_type = CLAW_TYPE_VERY_SHARP
 	plasma_stored = 100
 	plasma_types = list(PLASMA_PURPLE)
 	pixel_x = -12
@@ -61,11 +67,12 @@
 		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/activable/corrosive_acid,
 		/datum/action/xeno_action/activable/place_construction,
-		/datum/action/xeno_action/onclick/build_tunnel,
 		/datum/action/xeno_action/onclick/plant_weeds, //first macro
-		/datum/action/xeno_action/onclick/place_trap, //second macro
-		/datum/action/xeno_action/activable/burrow, //third macro
+		/datum/action/xeno_action/activable/burrow, //second macro
+		/datum/action/xeno_action/onclick/choose_resin/burrower,
+		/datum/action/xeno_action/activable/secrete_resin, //third macro
 		/datum/action/xeno_action/onclick/tremor, //fourth macro
+		/datum/action/xeno_action/onclick/build_tunnel,
 		/datum/action/xeno_action/active_toggle/toggle_meson_vision,
 		)
 

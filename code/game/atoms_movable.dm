@@ -293,6 +293,7 @@
 	unacidable = TRUE
 
 	var/list/image/hud_list
+	var/displacement_cover = FALSE
 
 //REDIRECT TO MASTER//
 /atom/movable/clone/attack_remote(mob/user)
@@ -317,11 +318,13 @@
 	return src.mstr.bullet_act(P)
 /////////////////////
 
-/atom/movable/proc/create_clone_movable(shift_x, shift_y)
+/atom/movable/proc/create_clone_movable(shift_x, shift_y, displacer = FALSE)
 	var/atom/movable/clone/C = new /atom/movable/clone(src.loc)
 	C.density = FALSE
 	C.proj_x = shift_x
 	C.proj_y = shift_y
+	if(displacer)
+		C.displacement_cover = TRUE
 
 	GLOB.clones.Add(C)
 	C.mstr = src //Link clone and master
@@ -335,6 +338,9 @@
 
 	clone.anchored = anchored //Some of these may be suitable for Init
 	clone.appearance = appearance
+	if(clone.displacement_cover)
+		clone.plane = 10
+		clone.alpha = 40
 	clone.dir = dir
 	clone.flags_atom = flags_atom
 	clone.density = density

@@ -1,0 +1,39 @@
+/obj/item/hardpoint/support/humvee_flare_launcher
+	name = "\improper M-77F Flare Launcher"
+	desc = "A support module for the M24-JTMV that shoots flares."
+	icon = 'icons/obj/vehicles/hardpoints/humvee.dmi'
+
+	icon_state = "humveelauncher"
+	disp_icon = "humvee"
+	disp_icon_state = "humveelauncher"
+	activation_sounds = list('sound/weapons/gun_m92_attachable.ogg')
+
+	damage_multiplier = 0.1
+
+	activatable = TRUE
+
+	health = 300
+	firing_arc = 120
+
+	ammo = new /obj/item/ammo_magazine/hardpoint/flare_launcher
+	max_clips = 3
+
+	use_muzzle_flash = TRUE
+	angle_muzzleflash = FALSE
+	muzzleflash_icon_state = "muzzle_laser"
+
+	muzzle_flash_pos = list(
+		"1" = list(-27, -28),
+		"2" = list(-5, -37),
+		"4" = list(-12, -19),
+		"8" = list(-21, -42)
+	)
+
+	scatter = 6
+	fire_delay = 3.0 SECONDS
+
+/obj/item/hardpoint/support/humvee_flare_launcher/set_bullet_traits()
+	..()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
+	))

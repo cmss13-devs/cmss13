@@ -1148,7 +1148,7 @@
 
 	. = ..()
 
-/mob/living/carbon/human/proc/set_species(new_species, default_color)
+/mob/living/carbon/human/proc/set_species(new_species, default_color, default_species = "Human")
 	if(!new_species)
 		new_species = "Human"
 
@@ -1163,9 +1163,11 @@
 
 	species = GLOB.all_species[new_species]
 
-	// If an invalid new_species value is passed, just default to human
-	if (!istype(species))
-		species = GLOB.all_species["Human"]
+	// If an invalid new_species value is passed, defualt to set defualt, if that fails fallback just default to human
+	if(!istype(species))
+		species = GLOB.all_species[default_species]
+		if(!istype(species))
+			species = GLOB.all_species["Human"]
 
 	if(oldspecies)
 		//additional things to change when we're no longer that species
@@ -1197,6 +1199,8 @@
 		g_hair = hex2num(copytext(species.hair_color, 4, 6))
 		b_hair = hex2num(copytext(species.hair_color, 6, 8))
 
+	if(species.no_grad_style)
+		grad_style = "None"
 	// Switches old pain and stamina over
 	species.initialize_pain(src)
 	species.initialize_stamina(src)
@@ -1588,7 +1592,7 @@
 	. = ..(mapload, SYNTH_GEN_THREE)
 
 /mob/living/carbon/human/synthetic/old/Initialize(mapload)
-	. = ..(mapload, SYNTH_COLONY)
+	. = ..(mapload, SYNTH_GEN_TWO)
 
 /mob/living/carbon/human/synthetic/combat/Initialize(mapload)
 	. = ..(mapload, SYNTH_COMBAT)

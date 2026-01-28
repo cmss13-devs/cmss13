@@ -7,6 +7,10 @@
 /obj/item/clothing/head/helmet/marine/veteran/cmb,
 /turf/open/floor/prison,
 /area/fiorina/station/security)
+"ac" = (
+/obj/effect/landmark/survivor_spawner/fiorina_armory_cmb_synth,
+/turf/open/floor/prison/redfull,
+/area/fiorina/station/security)
 "am" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/donut_box{
@@ -1651,7 +1655,7 @@ YL
 DH
 AY
 DH
-xW
+ac
 xW
 FZ
 sq

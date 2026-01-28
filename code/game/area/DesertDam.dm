@@ -7,6 +7,14 @@
 	ambience_exterior = AMBIENCE_TRIJENT
 	minimap_color = MINIMAP_AREA_COLONY
 
+/area/desert_dam/oob
+	name = "Out Of Bounds"
+	icon_state = "unknown"
+	requires_power = FALSE
+	ceiling = CEILING_MAX
+	is_resin_allowed = FALSE
+	flags_area = AREA_NOTUNNEL|AREA_UNWEEDABLE
+
 //INTERIOR
 // areas under rock
 /area/desert_dam/interior
@@ -261,6 +269,10 @@
 	name = "Garage"
 	icon_state = "green"
 	ceiling = CEILING_METAL
+
+/area/desert_dam/interior/dam_interior/elevator_maint
+	name = "Elevator Maintenance Shaft"
+	icon_state = "yellow"
 
 /area/desert_dam/interior/caves
 	name = "Caves"
@@ -1076,6 +1088,7 @@
 	name = "Medical Valley"
 	icon_state = "valley"
 	unoviable_timer = FALSE
+	always_unpowered = 0
 
 /area/desert_dam/exterior/valley/valley_hydro
 	name = "Hydro Valley"
@@ -1101,6 +1114,7 @@
 /area/desert_dam/exterior/valley/valley_wilderness
 	name = "Wilderness Valley"
 	icon_state = "central"
+	always_unpowered = 0
 
 //Rivers
 /area/desert_dam/exterior/river

@@ -228,6 +228,17 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 	Master.Shutdown()
 	send_reboot_sound()
 	var/server = CONFIG_GET(string/server)
+
+	/// If any of our clients are preauthorised from outside the game,
+	/// the software they launched with needs to be notified to process
+	/// a reconnection, including regenerating tokens, rich presence
+	for(var/ckey, control_server in GLOB.ckey_to_controller)
+		var/datum/control_server/control = control_server
+		if(!control.initialised)
+			continue
+
+		control.send_to_controller("restart")
+
 	for(var/thing in GLOB.clients)
 		if(!thing)
 			continue

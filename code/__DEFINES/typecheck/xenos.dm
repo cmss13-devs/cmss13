@@ -23,8 +23,10 @@
 #define isspitter(A) (istype(A, /mob/living/carbon/xenomorph/spitter))
 #define iswarrior(A) (istype(A, /mob/living/carbon/xenomorph/warrior))
 #define isburrower(A) (istype(A, /mob/living/carbon/xenomorph/burrower))
+#define isreaper(A) (istype(A, /mob/living/carbon/xenomorph/reaper))
+#define isking(A) (istype(A, /mob/living/carbon/xenomorph/king))
 
-#define isxeno_builder(A) (isdrone(A) || ishivelord(A) || iscarrier(A) || isburrower(A) || isqueen(A))
+#define isxeno_builder(A) (isdrone(A) || ishivelord(A) || iscarrier(A) || isburrower(A) || isreaper(A) || isqueen(A))
 
 /// Returns true if the xenomorph can not harm the passed carbon mob.
 /mob/living/carbon/xenomorph/proc/can_not_harm(mob/living/carbon/attempt_harm_mob, check_hive_flags=TRUE)

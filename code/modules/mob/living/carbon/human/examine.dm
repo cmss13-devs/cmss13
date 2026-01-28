@@ -31,6 +31,8 @@
 			msg += "<span style='font-weight: bold; color: purple;'>You sense this creature is dead.\n</span>"
 		else if(stat || !client)
 			msg += SPAN_XENOWARNING("It doesn't seem responsive.\n")
+
+
 		msg += "</span>"
 		return list(msg)
 

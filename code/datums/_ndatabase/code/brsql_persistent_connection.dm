@@ -65,11 +65,14 @@
 		"min_threads" = min_threads,
 		"max_threads" = max_threads,
 	)
+	log_sql("Connecting to database pool at [ipaddress]:[port], database: [database]")
 	connection_result = rustg_sql_connect_pool(json_encode(options))
 	connection_handle = json_decode(connection_result)["handle"]
 	if(!connection_handle)
+		log_sql("Failed to connect to database pool - no handle returned. Result: [connection_result]")
 		status = DB_CONNECTION_BROKEN
 		return FALSE
+	log_sql("Successfully connected to database pool. Handle: [connection_handle]")
 	status = DB_CONNECTION_READY
 	return TRUE
 
@@ -77,6 +80,7 @@
 	if(connection_ready())
 		return
 	if(status == DB_CONNECTION_BROKEN)
+		log_sql("Attempting to reconnect to database pool at [ipaddress]:[port]")
 		var/options = list(
 			"host" = ipaddress,
 			"port" = port,
@@ -88,6 +92,10 @@
 		)
 		connection_result = rustg_sql_connect_pool(json_encode(options))
 		connection_handle = json_decode(connection_result)["handle"]
+		if(connection_handle)
+			log_sql("Successfully reconnected to database pool. Handle: [connection_handle]")
+		else
+			log_sql("Failed to reconnect to database pool. Result: [connection_result]")
 
 /datum/db/connection/brsql_connection/query()
 	if(connection_ready())
@@ -96,9 +104,12 @@
 		var/query_parameters = (length(args) > 1) ? args.Copy(2) : list()
 		pq.parameters = query_parameters
 		var/text = json_encode(query_parameters)
+		log_sql("Query #[query_number + 1]: Executing async query: [query_text]")
 		pq.job_id = rustg_sql_query_async(connection_handle, query_text, text)
+		log_sql("Query #[query_number + 1]: Assigned job_id: [pq.job_id]")
 		query_number++
 		return pq
+	log_sql("Query failed: Connection not ready (status: [status])")
 	return null
 	
 /datum/db/connection/brsql_connection/get_adapter()

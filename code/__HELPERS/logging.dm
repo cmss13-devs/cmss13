@@ -104,6 +104,9 @@ GLOBAL_VAR_INIT(log_end, world.system_type == UNIX ? ascii2text(13) : "")
 	GLOB.STUI.admin.Add("\[[time]]GAME: [text]")
 	GLOB.STUI.processing |= STUI_LOG_ADMIN
 
+/proc/log_sql(text)
+	WRITE_LOG(GLOB.world_game_log, "SQL: [text]")
+
 /proc/log_interact(mob/living/carbon/origin, mob/living/carbon/target, msg)
 	var/time = time_stamp()
 	if (CONFIG_GET(flag/log_interact))

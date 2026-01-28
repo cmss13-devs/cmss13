@@ -170,3 +170,6 @@ GLOBAL_LIST_EMPTY_TYPED(personal_thunderdomes, /datum/personal_thunderdome)
 
 /datum/lazy_template/thunderdome/snakey
 	map_name = "snakey"
+
+/datum/lazy_template/thunderdome/multiz
+	map_name = "multiz"

@@ -40,27 +40,6 @@
 /turf/open/snow/Initialize(mapload, ...)
 	. = ..()
 	update_icon(1,1)
-	is_weedable = bleed_layer ? NOT_WEEDABLE : FULLY_WEEDABLE
-
-/turf/open/snow/Entered(atom/movable/AM)
-	if(bleed_layer > 0)
-		if(iscarbon(AM))
-			var/mob/living/carbon/C = AM
-			var/slow_amount = 0.75
-			var/can_stuck = 1
-			if(istype(C, /mob/living/carbon/xenomorph)||isyautja(C))
-				slow_amount = 0.25
-				can_stuck = 0
-			var/new_slowdown = C.next_move_slowdown + (slow_amount * bleed_layer)
-			if(!HAS_TRAIT(C, TRAIT_HAULED))
-				if(prob(2))
-					to_chat(C, SPAN_WARNING("Moving through [src] slows you down.")) //Warning only
-				else if(can_stuck && bleed_layer == 3 && prob(2))
-					to_chat(C, SPAN_WARNING("You get stuck in [src] for a moment!"))
-					new_slowdown += 10
-				C.next_move_slowdown = new_slowdown
-	..()
-
 
 //Update icon
 /turf/open/snow/update_icon(update_full, skip_sides)
@@ -117,10 +96,6 @@
 
 					I.layer = layer + 0.001 + bleed_layer * 0.0001
 					overlays += I
-
-		//a bit odd to have it here but weedability should be linked to visual show of snow
-		is_weedable = bleed_layer ? NOT_WEEDABLE : FULLY_WEEDABLE
-
 
 //Explosion act
 /turf/open/snow/ex_act(severity)

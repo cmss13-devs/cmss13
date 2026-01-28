@@ -26,7 +26,7 @@
 
 /turf
 	icon = 'icons/turf/floors/floors.dmi'
-	plane = TURF_PLANE
+	plane = GAME_PLANE
 
 	///Used by floors to indicate the floor is a tile (otherwise its plating)
 	var/intact_tile = TRUE

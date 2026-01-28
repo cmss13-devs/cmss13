@@ -149,7 +149,7 @@
 
 		xeno.visible_message(
 			SPAN_XENOWARNING("[xeno] smash [target] with flat side of its tail!"),
-			SPAN_XENOWARNING("We smash [target] with flat side of its tail!")
+			SPAN_XENOWARNING("We smash [target] with flat side of our tail!")
 		)
 		xeno.animation_attack_on(target)
 		xeno.flick_attack_overlay(target, "slam")

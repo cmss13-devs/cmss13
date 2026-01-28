@@ -408,9 +408,6 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	var/datum/effects/tethering/tether_effect
 
 	var/raised = FALSE
-	var/zlevel_transfer = FALSE
-	var/zlevel_transfer_timer = TIMER_ID_NULL
-	var/zlevel_transfer_timeout = 5 SECONDS
 	var/can_be_raised = TRUE // This is for items like the scout helmet where you don't need to raise it.
 
 /obj/item/phone/Initialize(mapload)
@@ -478,14 +475,13 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 		if(!QDESTROYING(tether_effect))
 			qdel(tether_effect)
 		tether_effect = null
-	if(!do_zlevel_check())
-		on_beam_removed()
+	on_beam_removed()
 
 /obj/item/phone/attack_hand(mob/user)
 	if(attached_to && get_dist(user, attached_to) > attached_to.range)
+		to_chat(user, SPAN_WARNING("The [src] is tethered too far away to pick up!"))
 		return FALSE
 	return ..()
-
 
 /obj/item/phone/proc/on_beam_removed()
 	if(!attached_to)
@@ -577,40 +573,6 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	. = ..()
 	if(.)
 		reset_tether()
-
-/obj/item/phone/proc/do_zlevel_check()
-	if(!attached_to || !loc.z || !attached_to.z)
-		return FALSE
-
-	if(zlevel_transfer)
-		if(loc.z == attached_to.z)
-			zlevel_transfer = FALSE
-			if(zlevel_transfer_timer)
-				deltimer(zlevel_transfer_timer)
-			UnregisterSignal(attached_to, COMSIG_MOVABLE_MOVED)
-			return FALSE
-		return TRUE
-
-	if(attached_to && loc.z != attached_to.z)
-		zlevel_transfer = TRUE
-		zlevel_transfer_timer = addtimer(CALLBACK(src, PROC_REF(try_doing_tether)), zlevel_transfer_timeout, TIMER_UNIQUE|TIMER_STOPPABLE)
-		RegisterSignal(attached_to, COMSIG_MOVABLE_MOVED, PROC_REF(transmitter_move_handler))
-		return TRUE
-	return FALSE
-
-/obj/item/phone/proc/transmitter_move_handler(datum/source)
-	SIGNAL_HANDLER
-	zlevel_transfer = FALSE
-	if(zlevel_transfer_timer)
-		deltimer(zlevel_transfer_timer)
-	UnregisterSignal(attached_to, COMSIG_MOVABLE_MOVED)
-	reset_tether()
-
-/obj/item/phone/proc/try_doing_tether()
-	zlevel_transfer_timer = TIMER_ID_NULL
-	zlevel_transfer = FALSE
-	UnregisterSignal(attached_to, COMSIG_MOVABLE_MOVED)
-	reset_tether()
 
 /obj/structure/transmitter/no_dnd
 	do_not_disturb = PHONE_DND_FORBIDDEN

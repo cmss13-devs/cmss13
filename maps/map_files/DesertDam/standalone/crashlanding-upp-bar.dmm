@@ -66,12 +66,12 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "al" = (
-/obj/structure/shuttle/part/ert/transparent{
-	name = "Fulcrum";
-	icon_state = "rightengine_1"
+/obj/structure/girder,
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 1
 	},
-/turf/open/floor/plating/platingdmg3/west,
-/area/desert_dam/building/bar/bar)
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "am" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal11"
@@ -82,19 +82,32 @@
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "an" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/south_tunnel_entrance)
+"ao" = (
+/obj/structure/shuttle/part/ert/transparent{
+	name = "Fulcrum";
+	icon_state = "rightengine_1"
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/desert_dam/building/bar/bar)
+"ap" = (
 /turf/closed/shuttle/ert/transparent{
 	name = "Fulcrum";
 	icon_state = "T5"
 	},
 /area/desert_dam/building/bar/bar)
-"ao" = (
+"aq" = (
 /obj/structure/shuttle/part/ert/transparent{
 	icon_state = "T11";
 	name = "Fulcrum"
 	},
 /turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/bar/bar)
-"ap" = (
+"ar" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/shuttle/part/ert/transparent{
 	icon_state = "T16";
@@ -102,19 +115,6 @@
 	},
 /turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/bar/bar)
-"aq" = (
-/obj/structure/girder,
-/obj/effect/decal/sand_overlay/sand1{
-	dir = 1
-	},
-/turf/open/floor/plating,
-/area/desert_dam/interior/dam_interior/south_tunnel_entrance)
-"ar" = (
-/obj/effect/decal/sand_overlay/sand1/corner1{
-	dir = 1
-	},
-/turf/open/floor/plating,
-/area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "aw" = (
 /obj/effect/decal/sand_overlay/sand1,
 /obj/effect/decal/sand_overlay/sand1{
@@ -2846,7 +2846,7 @@ aO
 tW
 nz
 Om
-an
+ap
 Qc
 wy
 vy
@@ -2880,7 +2880,7 @@ oD
 Xw
 jt
 Rs
-ao
+aq
 HP
 Om
 QK
@@ -3183,7 +3183,7 @@ WG
 UB
 WK
 zM
-ap
+ar
 NK
 Om
 Om
@@ -3227,7 +3227,7 @@ NK
 Om
 pO
 kM
-al
+ao
 zM
 wE
 tK
@@ -3280,7 +3280,7 @@ TH
 Ug
 KC
 Iu
-aq
+al
 xT
 xT
 xT
@@ -3356,7 +3356,7 @@ UK
 Ug
 KC
 oK
-ar
+an
 tR
 Ae
 xG

@@ -1040,12 +1040,6 @@
 	},
 /turf/open/floor/plating,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
-"adK" = (
-/obj/structure/shuttle/part/dropship3/transparent/inner_left_weapons{
-	name = "\improper Typhoon"
-	},
-/turf/open/auto_turf/shale/layer1,
-/area/lv522/landing_zone_forecon/UD6_Typhoon)
 "adP" = (
 /obj/structure/barricade/deployable{
 	dir = 4
@@ -26748,6 +26742,12 @@
 /obj/structure/machinery/light/small,
 /turf/open/floor/prison/greenfull,
 /area/lv522/indoors/a_block/fitness)
+"obe" = (
+/obj/structure/shuttle/part/dropship3/transparent/inner_left_weapons{
+	name = "\improper Typhoon"
+	},
+/turf/open/auto_turf/shale/layer1,
+/area/lv522/landing_zone_forecon/UD6_Typhoon)
 "obl" = (
 /obj/structure/platform_decoration/metal/almayer/east,
 /turf/open/auto_turf/sand_white/layer0,
@@ -49905,7 +49905,7 @@ cpy
 cpy
 cpy
 cpy
-adK
+obe
 pRM
 qnk
 qHA

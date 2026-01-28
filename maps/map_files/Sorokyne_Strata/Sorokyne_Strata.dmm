@@ -22555,7 +22555,9 @@
 /turf/open/floor/strata/cyan1/east,
 /area/strata/interior/outpost/med)
 "bmi" = (
-/obj/structure/machinery/door/airlock/dropship_hatch,
+/obj/structure/machinery/door/airlock/dropship_hatch{
+	dir = 8
+	},
 /turf/open/floor/almayer/test_floor6,
 /area/strata/interior/outpost/engi/drome/shuttle)
 "bmj" = (
@@ -39645,9 +39647,7 @@
 /turf/open/floor/strata/fake_wood,
 /area/strata/interior/outpost/security)
 "ddU" = (
-/obj/structure/machinery/door/airlock/dropship_hatch{
-	dir = 8
-	},
+/obj/structure/machinery/door/airlock/dropship_hatch,
 /turf/open/floor/almayer/test_floor6,
 /area/strata/interior/outpost/engi/drome/shuttle)
 "den" = (
@@ -80731,7 +80731,7 @@ baY
 cgN
 cgO
 cnS
-bmi
+ddU
 grs
 cnS
 mPj
@@ -81606,7 +81606,7 @@ baY
 cgR
 cgQ
 coD
-ddU
+bmi
 coD
 coD
 mUU

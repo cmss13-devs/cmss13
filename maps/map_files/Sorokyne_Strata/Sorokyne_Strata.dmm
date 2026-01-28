@@ -1753,15 +1753,13 @@
 /turf/open/floor/strata/floor3,
 /area/strata/interior/outpost/admin)
 "aeY" = (
-/turf/closed/shuttle/ert{
-	icon_state = "upp27";
-	opacity = 0
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "upp27"
 	},
 /area/strata/interior/research)
 "aeZ" = (
-/turf/closed/shuttle/ert{
-	icon_state = "upp25"
-	},
+/obj/structure/shuttle/part/ert/front_right_upp,
+/turf/open/floor/plating,
 /area/strata/interior/research)
 "afa" = (
 /obj/structure/barricade/handrail/strata{
@@ -2911,7 +2909,7 @@
 /area/strata/interior/research)
 "aim" = (
 /turf/closed/shuttle/ert{
-	icon_state = "upp_leftengine"
+	icon_state = "upp_leftengine_clean"
 	},
 /area/strata/interior/research)
 "ain" = (
@@ -3185,9 +3183,8 @@
 /turf/open/gm/dirt/brown,
 /area/strata/exterior/landing_zones/near_lz2)
 "ajb" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_3";
-	opacity = 0
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "leftengine_3_clean"
 	},
 /area/strata/interior/research)
 "ajc" = (
@@ -3428,9 +3425,8 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/research)
 "ajF" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_2";
-	opacity = 0
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "leftengine_2"
 	},
 /area/strata/interior/research)
 "ajG" = (
@@ -3625,10 +3621,8 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/interior/research)
 "akh" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_1";
-	opacity = 0
-	},
+/obj/structure/shuttle/part/ert/transparent/left_engine,
+/turf/open/floor/plating,
 /area/strata/interior/research)
 "aki" = (
 /turf/closed/shuttle/ert{
@@ -3653,10 +3647,8 @@
 /turf/open/gm/dirt/brown,
 /area/strata/exterior/far_north_outpost)
 "akm" = (
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_1";
-	opacity = 0
-	},
+/obj/structure/shuttle/part/ert/transparent/right_engine,
+/turf/open/floor/plating,
 /area/strata/interior/research)
 "akn" = (
 /obj/structure/disposalpipe/segment{
@@ -4140,6 +4132,11 @@
 	},
 /turf/open/gm/coast/dirt/beachcorner,
 /area/strata/exterior/deep_jungle/tearlake)
+"alz" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp_leftengine_clean"
+	},
+/area/strata/interior/outpost/engi/drome/shuttle_MK3)
 "alA" = (
 /obj/structure/flora/bush/ausbushes/reedbush{
 	pixel_y = 30
@@ -17981,7 +17978,9 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/marsh/center)
 "aYf" = (
-/obj/structure/machinery/door/airlock/dropship_hatch,
+/obj/structure/machinery/door/airlock/dropship_hatch{
+	dir = 8
+	},
 /turf/open/floor/almayer/test_floor6,
 /area/strata/interior/outpost/engi/drome/shuttle_MK3)
 "aYg" = (
@@ -18597,7 +18596,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/marsh/crash)
 "aZU" = (
-/turf/closed/shuttle/ert{
+/turf/closed/shuttle/ert/transparent{
 	icon_state = "upp27"
 	},
 /area/strata/interior/outpost/engi/drome/shuttle_MK3)
@@ -18614,9 +18613,8 @@
 	pixel_x = 11;
 	pixel_y = 15
 	},
-/turf/closed/shuttle/ert{
-	icon_state = "upp25"
-	},
+/obj/structure/shuttle/part/ert/front_right_upp,
+/turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/interior/outpost/engi/drome/shuttle_MK3)
 "aZW" = (
 /obj/structure/prop/colorable_rock/colorable{
@@ -22557,8 +22555,10 @@
 /turf/open/floor/strata/cyan1/east,
 /area/strata/interior/outpost/med)
 "bmi" = (
-/obj/structure/machinery/door/airlock/dropship_hatch,
-/turf/open/floor/strata/multi_tiles/southwest,
+/obj/structure/machinery/door/airlock/dropship_hatch{
+	dir = 8
+	},
+/turf/open/floor/almayer/test_floor6,
 /area/strata/interior/outpost/engi/drome/shuttle)
 "bmj" = (
 /obj/structure/machinery/weather_siren{
@@ -27790,9 +27790,8 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/deep_jungle/old_tunnels)
 "bBO" = (
-/turf/closed/shuttle/ert{
-	icon_state = "upp20"
-	},
+/obj/structure/shuttle/part/ert/front_left_upp,
+/turf/open/floor/plating,
 /area/strata/interior/research)
 "bBP" = (
 /obj/structure/prop/colorable_rock/colorable{
@@ -32710,15 +32709,13 @@
 /turf/open/floor/strata/red1,
 /area/strata/interior/bball)
 "bQi" = (
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_3";
-	opacity = 0
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "rightengine_3"
 	},
 /area/strata/interior/research)
 "bQj" = (
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_2";
-	opacity = 0
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "rightengine_2"
 	},
 /area/strata/interior/research)
 "bQk" = (
@@ -32875,7 +32872,6 @@
 /turf/open/floor/plating,
 /area/strata/interior/research)
 "bQF" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/structure/cargo_container/upp_small/container_16/right,
 /turf/open/floor/plating,
 /area/strata/interior/research)
@@ -37678,19 +37674,17 @@
 /turf/open/floor/plating/platebot,
 /area/strata/interior/outpost/engi/drome)
 "cgO" = (
-/turf/closed/shuttle/ert{
-	icon_state = "upp20"
-	},
+/obj/structure/shuttle/part/ert/front_left_upp,
+/turf/open/floor/plating/platebot,
 /area/strata/interior/outpost/engi/drome/shuttle)
 "cgP" = (
-/turf/closed/shuttle/ert{
+/turf/closed/shuttle/ert/transparent{
 	icon_state = "upp27"
 	},
 /area/strata/interior/outpost/engi/drome/shuttle)
 "cgQ" = (
-/turf/closed/shuttle/ert{
-	icon_state = "upp25"
-	},
+/obj/structure/shuttle/part/ert/front_right_upp,
+/turf/open/floor/plating/platebot,
 /area/strata/interior/outpost/engi/drome/shuttle)
 "cgR" = (
 /obj/effect/decal/cleanable/blood/oil,
@@ -39653,10 +39647,8 @@
 /turf/open/floor/strata/fake_wood,
 /area/strata/interior/outpost/security)
 "ddU" = (
-/obj/structure/machinery/door/airlock/dropship_hatch{
-	dir = 8
-	},
-/turf/open/floor/strata/multi_tiles/southwest,
+/obj/structure/machinery/door/airlock/dropship_hatch,
+/turf/open/floor/almayer/test_floor6,
 /area/strata/interior/outpost/engi/drome/shuttle)
 "den" = (
 /obj/structure/machinery/power/apc/no_power/east,
@@ -41244,10 +41236,8 @@
 /turf/open/asphalt/cement/cement4,
 /area/strata/exterior/tcomms_engineering_parts_storage)
 "fkD" = (
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_1";
-	opacity = 0
-	},
+/obj/structure/shuttle/part/ert/transparent/right_engine,
+/turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/interior/outpost/engi/drome/shuttle_MK3)
 "fkK" = (
 /obj/structure/largecrate/random,
@@ -41888,10 +41878,8 @@
 /turf/open/floor/strata/orange_cover,
 /area/strata/exterior/marsh/water_marshes)
 "gab" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_1";
-	opacity = 0
-	},
+/obj/structure/shuttle/part/ert/transparent/left_engine,
+/turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/interior/outpost/engi/drome/shuttle_MK3)
 "gaq" = (
 /obj/structure/largecrate/random,
@@ -42584,9 +42572,8 @@
 /turf/open/floor/strata,
 /area/strata/interior/underground_dorms/admin3)
 "gTE" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_3";
-	opacity = 0
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "leftengine_3"
 	},
 /area/strata/interior/outpost/engi/drome/shuttle_MK3)
 "gTM" = (
@@ -47953,9 +47940,7 @@
 /turf/open/floor/strata/floor2,
 /area/strata/exterior/deep_jungle/planet_core_research_station_exterior)
 "ocH" = (
-/obj/structure/machinery/door/airlock/dropship_hatch{
-	dir = 8
-	},
+/obj/structure/machinery/door/airlock/dropship_hatch,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/almayer/test_floor6,
 /area/strata/interior/outpost/engi/drome/shuttle_MK3)
@@ -48092,9 +48077,8 @@
 /turf/closed/wall/strata_outpost/reinforced,
 /area/strata/interior/underground_dorms/med2)
 "okM" = (
-/turf/closed/shuttle/ert{
-	icon_state = "upp20"
-	},
+/obj/structure/shuttle/part/ert/front_left_upp,
+/turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/interior/outpost/engi/drome/shuttle_MK3)
 "okW" = (
 /obj/structure/platform/stone/soro,
@@ -49124,9 +49108,8 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/outpost/engi/drome)
 "pDz" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_3";
-	opacity = 0
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "leftengine_3"
 	},
 /area/strata/interior/outpost/engi/drome/shuttle)
 "pDJ" = (
@@ -49194,9 +49177,8 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/interior/mining_outpost/south_dormitories)
 "pGt" = (
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_3";
-	opacity = 0
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "rightengine_3"
 	},
 /area/strata/interior/outpost/engi/drome/shuttle)
 "pGy" = (
@@ -50738,9 +50720,8 @@
 /turf/open/floor/strata/orange_cover,
 /area/strata/interior/outpost/engi/drome)
 "rFn" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_2";
-	opacity = 0
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "leftengine_2"
 	},
 /area/strata/interior/outpost/engi/drome/shuttle)
 "rFN" = (
@@ -50832,9 +50813,8 @@
 /turf/open/floor/plating/platebot,
 /area/strata/interior/outpost/engi/drome/shuttle)
 "rMv" = (
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_2";
-	opacity = 0
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "rightengine_2"
 	},
 /area/strata/interior/outpost/engi/drome/shuttle)
 "rMx" = (
@@ -52401,9 +52381,8 @@
 	pixel_x = 11;
 	pixel_y = 15
 	},
-/turf/closed/shuttle/ert{
-	icon_state = "upp25"
-	},
+/obj/structure/shuttle/part/ert/front_right_upp,
+/turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/interior/outpost/engi/drome/shuttle_MK3)
 "tLs" = (
 /obj/structure/barricade/wooden{
@@ -53980,10 +53959,8 @@
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/exterior/deep_jungle/platform_east)
 "vDr" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_1";
-	opacity = 0
-	},
+/obj/structure/shuttle/part/ert/transparent/left_engine,
+/turf/open/floor/plating/platebot,
 /area/strata/interior/outpost/engi/drome/shuttle)
 "vDU" = (
 /obj/effect/blocker/sorokyne_hot_water,
@@ -54157,10 +54134,8 @@
 /turf/open/floor/strata/orange_cover,
 /area/strata/interior/outpost/canteen)
 "vOf" = (
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_1";
-	opacity = 0
-	},
+/obj/structure/shuttle/part/ert/transparent/right_engine,
+/turf/open/floor/plating/platebot,
 /area/strata/interior/outpost/engi/drome/shuttle)
 "vOi" = (
 /obj/structure/surface/rack{
@@ -55276,9 +55251,8 @@
 /turf/open/floor/strata/purp2,
 /area/strata/interior/planet_core_research_station)
 "xsH" = (
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_3";
-	opacity = 0
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "rightengine_3"
 	},
 /area/strata/interior/outpost/engi/drome/shuttle_MK3)
 "xtw" = (
@@ -58551,7 +58525,7 @@ aYa
 sMX
 iEo
 qSo
-nxF
+alz
 gab
 bhO
 aQg
@@ -96096,7 +96070,7 @@ pZM
 bDq
 azU
 bRl
-bRl
+aeW
 bRl
 aeY
 agq

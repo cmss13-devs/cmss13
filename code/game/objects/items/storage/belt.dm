@@ -16,7 +16,7 @@
 	cant_hold = list(/obj/item/weapon/throwing_knife)
 	///TRUE Means that it closes a flap over its contents, and therefore update_icon should lift that flap when opened. If it doesn't have _half and _full iconstates, this doesn't matter either way.
 	var/flap = TRUE
-	/// Indiciates whether the _half and _full overlays should be applied in update_icon
+	/// Indicates whether the _half and _full overlays should be applied in update_icon
 	var/skip_fullness_overlays = FALSE
 
 /obj/item/storage/belt/equipped(mob/user, slot)
@@ -44,11 +44,11 @@
 	else
 		overlays += "+[icon_state]_full"
 
-/obj/item/storage/belt/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/ammo_magazine/shotgun))
+/obj/item/storage/belt/attackby(obj/item/Weapon, mob/user)
+	if(istype(Weapon, /obj/item/ammo_magazine/shotgun))
 		if(/obj/item/ammo_magazine/handful in src.can_hold)
-			var/obj/item/ammo_magazine/shotgun/M = W
-			dump_ammo_to(M,user, M.transfer_handful_amount)
+			var/obj/item/ammo_magazine/shotgun/Mob = Weapon
+			dump_ammo_to(Mob,user, Mob.transfer_handful_amount)
 			return
 	. = ..()
 

@@ -82,11 +82,6 @@
 /area/shiva/interior/colony/s_admin)
 "aq" = (
 /obj/effect/landmark/survivor_spawner/shivas_panic_room_synth,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)

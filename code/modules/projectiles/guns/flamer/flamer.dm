@@ -552,7 +552,7 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	icon = 'icons/effects/fire.dmi'
 	icon_state = "dynamic_2"
-	layer = BELOW_OBJ_LAYER
+	layer = FACEHUGGER_LAYER
 
 	light_system = STATIC_LIGHT
 	light_on = TRUE

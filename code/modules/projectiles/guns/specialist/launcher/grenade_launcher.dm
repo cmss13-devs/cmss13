@@ -169,6 +169,12 @@
 
 /obj/item/weapon/gun/launcher/grenade/afterattack(atom/target, mob/user, flag) //Not actually after the attack. After click, more like.
 	if(able_to_fire(user))
+		// Check if watching a ladder
+		if(user.interactee && istype(user.interactee, /obj/structure/ladder))
+			var/obj/structure/ladder/ladder = user.interactee
+			if(ladder.is_watching)
+				to_chat(user, SPAN_WARNING("You can't shoot while looking from the ladder!"))
+				return
 		if(get_dist(target,user) <= 2)
 			var/obj/item/explosive/grenade/nade = cylinder.contents[1]
 			if(nade.dangerous)

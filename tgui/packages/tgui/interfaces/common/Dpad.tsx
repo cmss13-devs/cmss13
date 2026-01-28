@@ -2,6 +2,8 @@ import { useBackend } from 'tgui/backend';
 import { Box, Button, Stack } from 'tgui/components';
 
 import {
+  useDirectFireXOffsetValue,
+  useDirectFireYOffsetValue,
   useFiremissionXOffsetValue,
   useFiremissionYOffsetValue,
   useLazeTarget,
@@ -33,27 +35,52 @@ const SvgButton = (props: {
 };
 
 export const Dpad = (props) => {
-  const { act } = useBackend();
+  const { act, data } = useBackend();
   const { selectedTarget } = useLazeTarget();
 
   const { fmXOffsetValue, setFmXOffsetValue } = useFiremissionXOffsetValue();
   const { fmYOffsetValue, setFmYOffsetValue } = useFiremissionYOffsetValue();
+  const { directXOffsetValue, setDirectXOffsetValue } =
+    useDirectFireXOffsetValue();
+  const { directYOffsetValue, setDirectYOffsetValue } =
+    useDirectFireYOffsetValue();
 
   const min_value = -12;
   const max_value = 12;
-  const updateOffset = (e, xValue, yValue) => {
-    if (xValue < min_value || yValue < min_value) {
+
+  const canModifyDirectOffset =
+    typeof data === 'object' &&
+    data !== null &&
+    'can_modify_direct_offset' in data
+      ? (data as any).can_modify_direct_offset
+      : false;
+
+  const updateOffset = (e, newFmx, newDirectX, newFmy, newDirectY) => {
+    const safeDirectX = canModifyDirectOffset ? newDirectX : directXOffsetValue;
+    const safeDirectY = canModifyDirectOffset ? newDirectY : directYOffsetValue;
+
+    if (
+      newFmx < min_value ||
+      newFmx > max_value ||
+      safeDirectX < min_value ||
+      safeDirectX > max_value ||
+      newFmy < min_value ||
+      newFmy > max_value ||
+      safeDirectY < min_value ||
+      safeDirectY > max_value
+    ) {
       return;
     }
-    if (xValue > max_value || yValue > max_value) {
-      return;
-    }
-    setFmXOffsetValue(xValue);
-    setFmYOffsetValue(yValue);
+    setFmXOffsetValue(newFmx);
+    setFmYOffsetValue(newFmy);
+    setDirectXOffsetValue(safeDirectX);
+    setDirectYOffsetValue(safeDirectY);
     act('firemission-dual-offset-camera', {
       target_id: selectedTarget,
-      x_offset_value: xValue,
-      y_offset_value: yValue,
+      x_offset_value: newFmx,
+      y_offset_value: newFmy,
+      direct_x_offset_value: safeDirectX,
+      direct_y_offset_value: safeDirectY,
     });
   };
 
@@ -66,7 +93,15 @@ export const Dpad = (props) => {
             <Stack.Item className="container">
               <SvgButton
                 onClick={(e) =>
-                  updateOffset(e, fmXOffsetValue - 1, fmYOffsetValue)
+                  updateOffset(
+                    e,
+                    fmXOffsetValue - 1,
+                    canModifyDirectOffset
+                      ? directXOffsetValue - 1
+                      : directXOffsetValue,
+                    fmYOffsetValue,
+                    directYOffsetValue,
+                  )
                 }
               />
             </Stack.Item>
@@ -79,18 +114,34 @@ export const Dpad = (props) => {
               <SvgButton
                 transform="rotate(90 12.5 12.5)"
                 onClick={(e) =>
-                  updateOffset(e, fmXOffsetValue, fmYOffsetValue + 1)
+                  updateOffset(
+                    e,
+                    fmXOffsetValue,
+                    directXOffsetValue,
+                    fmYOffsetValue + 1,
+                    canModifyDirectOffset
+                      ? directYOffsetValue + 1
+                      : directYOffsetValue,
+                  )
                 }
               />
             </Stack.Item>
             <Stack.Item className="container">
-              <Button onClick={() => updateOffset(undefined, 0, 0)} />
+              <Button onClick={() => updateOffset(undefined, 0, 0, 0, 0)} />
             </Stack.Item>
             <Stack.Item className="container">
               <SvgButton
                 transform="rotate(-90 12.5 12.5)"
                 onClick={(e) =>
-                  updateOffset(e, fmXOffsetValue, fmYOffsetValue - 1)
+                  updateOffset(
+                    e,
+                    fmXOffsetValue,
+                    directXOffsetValue,
+                    fmYOffsetValue - 1,
+                    canModifyDirectOffset
+                      ? directYOffsetValue - 1
+                      : directYOffsetValue,
+                  )
                 }
               />
             </Stack.Item>
@@ -103,7 +154,15 @@ export const Dpad = (props) => {
               <SvgButton
                 transform="rotate(-180 12.5 12.5)"
                 onClick={(e) =>
-                  updateOffset(e, fmXOffsetValue + 1, fmYOffsetValue)
+                  updateOffset(
+                    e,
+                    fmXOffsetValue + 1,
+                    canModifyDirectOffset
+                      ? directXOffsetValue + 1
+                      : directXOffsetValue,
+                    fmYOffsetValue,
+                    directYOffsetValue,
+                  )
                 }
               />
             </Stack.Item>

@@ -7,6 +7,7 @@ import { Icon } from 'tgui/components';
 import { MfdPanel, type MfdProps } from './MultifunctionDisplay';
 import { mfdState, useEquipmentState } from './stateManagers';
 import type { MedevacContext, MedevacTargets } from './types';
+import { useSupportCooldown } from './WeaponPanel';
 
 const MedevacOccupant = (props: { readonly data: MedevacTargets }) => (
   <Box>
@@ -58,6 +59,11 @@ export const MedevacMfdPanel = (props: MfdProps) => {
   const result = data.equipment_data.find(
     (x) => x.mount_point === equipmentState,
   );
+
+  const { isOnCooldown, remainingTime } = useSupportCooldown(
+    (result as any) || {},
+  );
+
   const medevacs = data.medevac_targets === null ? [] : data.medevac_targets;
   const medevac_mapper = (x: number) => {
     const target = medevacs.length > x ? medevacs[x] : undefined;
@@ -88,6 +94,7 @@ export const MedevacMfdPanel = (props: MfdProps) => {
   return (
     <MfdPanel
       panelStateId={props.panelStateId}
+      color={props.color}
       leftButtons={left_targets}
       rightButtons={[
         {
@@ -125,35 +132,35 @@ export const MedevacMfdPanel = (props: MfdProps) => {
               {all_targets.length > 0 && (
                 <path
                   fillOpacity="0"
-                  stroke="#00e94e"
+                  stroke={props.color || '#00e94e'}
                   d="M 50 50 l -20 0 l -20 -20 l -20 0"
                 />
               )}
               {all_targets.length > 1 && (
                 <path
                   fillOpacity="0"
-                  stroke="#00e94e"
+                  stroke={props.color || '#00e94e'}
                   d="M 50 100 l -20 0 l -20 30 l -20 0"
                 />
               )}
               {all_targets.length > 2 && (
                 <path
                   fillOpacity="0"
-                  stroke="#00e94e"
+                  stroke={props.color || '#00e94e'}
                   d="M 50 155 l -20 0 l -20 80 l -20 0"
                 />
               )}
               {all_targets.length > 3 && (
                 <path
                   fillOpacity="0"
-                  stroke="#00e94e"
+                  stroke={props.color || '#00e94e'}
                   d="M 50 210 l -20 0 l -20 120 l -20 0"
                 />
               )}
               {all_targets.length > 4 && (
                 <path
                   fillOpacity="0"
-                  stroke="#00e94e"
+                  stroke={props.color || '#00e94e'}
                   d="M 50 260 l -20 0 l -20 170 l -20 0"
                 />
               )}
@@ -164,6 +171,20 @@ export const MedevacMfdPanel = (props: MfdProps) => {
               <Stack.Item>
                 <h3>Medevac Requests</h3>
               </Stack.Item>
+              {isOnCooldown && (
+                <Stack.Item>
+                  <h3 style={{ color: '#ff8c00' }}>
+                    <Icon name="clock" /> Cooldown: {remainingTime}s
+                  </h3>
+                </Stack.Item>
+              )}
+              {!isOnCooldown && result && (
+                <Stack.Item>
+                  <h3 style={{ color: '#00e94e' }}>
+                    <Icon name="crosshairs" /> Ready to Extract
+                  </h3>
+                </Stack.Item>
+              )}
               {all_targets.map((x) => (
                 <>
                   <Stack.Item key={x.occupant} width="100%" minHeight="32px">
@@ -179,21 +200,21 @@ export const MedevacMfdPanel = (props: MfdProps) => {
               {all_targets.length > 5 && (
                 <path
                   fillOpacity="0"
-                  stroke="#00e94e"
+                  stroke={props.color || '#00e94e'}
                   d="M 0 310 l 20 0 l 20 -180 l 20 0"
                 />
               )}
               {all_targets.length > 6 && (
                 <path
                   fillOpacity="0"
-                  stroke="#00e94e"
+                  stroke={props.color || '#00e94e'}
                   d="M 0 360 l 20 0 l 20 -130 l 20 0"
                 />
               )}
               {all_targets.length > 7 && (
                 <path
                   fillOpacity="0"
-                  stroke="#00e94e"
+                  stroke={props.color || '#00e94e'}
                   d="M 0 410 l 20 0 l 20 -80 l 20 0"
                 />
               )}

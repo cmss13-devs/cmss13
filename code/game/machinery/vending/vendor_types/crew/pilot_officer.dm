@@ -174,7 +174,9 @@ GLOBAL_LIST_INIT(cm_vending_clothing_pilot_officer, list(
 		list("Fire Extinguisher (portable)", 5, /obj/item/tool/extinguisher/mini, null, VENDOR_ITEM_REGULAR),
 		list("Whistle", 5, /obj/item/clothing/accessory/device/whistle, null, VENDOR_ITEM_REGULAR),
 		list("Binoculars", 5, /obj/item/device/binoculars, null, VENDOR_ITEM_REGULAR),
-		list("Motion Detector", 15, /obj/item/device/motiondetector, null, VENDOR_ITEM_RECOMMENDED)
+		list("Motion Detector", 15, /obj/item/device/motiondetector, null, VENDOR_ITEM_RECOMMENDED),
+		list("Maintenance Computer", 15, /obj/item/device/dropship_computer, null, VENDOR_ITEM_RECOMMENDED),
+		list("Aircraft Maintenance Computer", 15, /obj/item/device/dropship_handheld, null, VENDOR_ITEM_RECOMMENDED)
 	))
 
 GLOBAL_LIST_INIT(cm_vending_clothing_dropship_crew_chief, list(
@@ -292,7 +294,9 @@ GLOBAL_LIST_INIT(cm_vending_clothing_dropship_crew_chief, list(
 		list("Fire Extinguisher (portable)", 5, /obj/item/tool/extinguisher/mini, null, VENDOR_ITEM_REGULAR),
 		list("Binoculars", 5, /obj/item/device/binoculars, null, VENDOR_ITEM_REGULAR),
 		list("Whistle", 5, /obj/item/clothing/accessory/device/whistle, null, VENDOR_ITEM_REGULAR),
-		list("Motion Detector", 15, /obj/item/device/motiondetector, null, VENDOR_ITEM_RECOMMENDED)
+		list("Motion Detector", 15, /obj/item/device/motiondetector, null, VENDOR_ITEM_RECOMMENDED),
+		list("Maintenance Computer", 15, /obj/item/device/dropship_computer, null, VENDOR_ITEM_RECOMMENDED),
+		list("Aircraft Maintenance Computer", 15, /obj/item/device/dropship_handheld, null, VENDOR_ITEM_RECOMMENDED)
 	))
 
 //MARINE_CAN_BUY_SHOES MARINE_CAN_BUY_UNIFORM currently not used

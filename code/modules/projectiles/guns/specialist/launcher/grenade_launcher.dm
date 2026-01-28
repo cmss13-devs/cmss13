@@ -13,6 +13,7 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/grenade_launchers_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/grenade_launchers_righthand.dmi'
 	)
+	flags_xeno_examine = EXAMINE_FLAG_GRENADELAUNCHER
 
 	fire_sound = 'sound/weapons/armbomb.ogg'
 	cocked_sound = 'sound/weapons/gun_m92_cocked.ogg'
@@ -269,6 +270,7 @@
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/grenade_launchers.dmi'
 	icon_state = "m92"
 	item_state = "m92"
+	flags_xeno_examine = EXAMINE_FLAG_SHOTGUN|EXAMINE_FLAG_UNIQUEDANGER
 	unacidable = TRUE
 	explo_proof = TRUE
 	matter = list("metal" = 6000)

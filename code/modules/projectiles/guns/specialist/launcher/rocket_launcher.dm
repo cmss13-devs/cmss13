@@ -13,6 +13,7 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/rocket_launchers_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/rocket_launchers_righthand.dmi'
 	)
+	flags_xeno_examine = EXAMINE_FLAG_ROCKETLAUNCHER|EXAMINE_FLAG_GENERICDANGER
 	unacidable = TRUE
 	explo_proof = TRUE
 
@@ -220,6 +221,7 @@
 /obj/item/weapon/gun/launcher/rocket/m5
 	name = "\improper M5 RPG"
 	desc = "The M5 RPG is the primary anti-armor weapon of the USCM. Used to take out light-tanks and enemy structures, the M5 RPG is a dangerous weapon with a variety of combat uses."
+	flags_xeno_examine = EXAMINE_FLAG_ROCKETLAUNCHER|EXAMINE_FLAG_UNIQUEDANGER
 	map_specific_decoration = TRUE
 	has_empty_icon = TRUE
 	auto_retrieval_slot = WEAR_J_STORE
@@ -242,6 +244,7 @@
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/event.dmi'
 	icon_state = "m57a4"
 	item_state = "m57a4"
+	flags_xeno_examine = EXAMINE_FLAG_ROCKETLAUNCHER|EXAMINE_FLAG_UNIQUEDANGER
 
 	current_mag = /obj/item/ammo_magazine/rocket/m57a4
 	aim_slowdown = SLOWDOWN_ADS_SUPERWEAPON
@@ -440,6 +443,7 @@
 	)
 	icon_state = "m6h"
 	item_state = "m6h"
+	flags_xeno_examine = EXAMINE_FLAG_ROCKETLAUNCHER|EXAMINE_FLAG_NONCOMBAT
 
 	current_mag = /obj/item/ammo_magazine/rocket/brute
 	skill_locked = TRUE

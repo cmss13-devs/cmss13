@@ -6,6 +6,7 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/smgs_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/smgs_righthand.dmi'
 	)
+	flags_xeno_examine = EXAMINE_FLAG_SMG
 	mouse_pointer = 'icons/effects/mouse_pointer/pistol_mouse.dmi'
 
 	reload_sound = 'sound/weapons/handling/smg_reload.ogg'

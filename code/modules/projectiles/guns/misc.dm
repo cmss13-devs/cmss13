@@ -14,6 +14,7 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/machineguns_righthand.dmi'
 	)
 	mouse_pointer = 'icons/effects/mouse_pointer/lmg_mouse.dmi'
+	flags_xeno_examine = EXAMINE_FLAG_MACHINEGUN
 
 	fire_sound = 'sound/weapons/gun_minigun.ogg'
 	cocked_sound = 'sound/weapons/gun_minigun_cocked.ogg'
@@ -83,6 +84,7 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/machineguns_righthand.dmi'
 	)
 	mouse_pointer = 'icons/effects/mouse_pointer/lmg_mouse.dmi'
+	flags_xeno_examine = EXAMINE_FLAG_MACHINEGUN
 
 	fire_sound = 'sound/weapons/gun_m60.ogg'
 	cocked_sound = 'sound/weapons/gun_m60_cocked.ogg'
@@ -186,6 +188,7 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/machineguns_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/machineguns_righthand.dmi'
 	)
+	flags_xeno_examine = EXAMINE_FLAG_MACHINEGUN
 	fire_sound = 'sound/weapons/gun_mg.ogg'
 	cocked_sound = 'sound/weapons/gun_m60_cocked.ogg'
 	current_mag = /obj/item/ammo_magazine/pkp

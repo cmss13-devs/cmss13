@@ -12,6 +12,7 @@
 
 	flags_equip_slot = SLOT_BACK
 	w_class = SIZE_LARGE
+	flags_xeno_examine = EXAMINE_FLAG_RIFLE
 	force = 5
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
 	gun_category = GUN_CATEGORY_RIFLE
@@ -508,6 +509,7 @@
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/assault_rifles.dmi'
 	icon_state = "m46c"
 	item_state = "m46c"
+	flags_xeno_examine = EXAMINE_FLAG_RIFLE|EXAMINE_FLAG_UNIQUEDANGER
 	fire_sound = "gun_pulse"
 	reload_sound = 'sound/weapons/handling/m41_reload.ogg'
 	unload_sound = 'sound/weapons/handling/m41_unload.ogg'
@@ -909,6 +911,7 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/machineguns_righthand.dmi'
 	)
 	mouse_pointer = 'icons/effects/mouse_pointer/lmg_mouse.dmi'
+	flags_xeno_examine = EXAMINE_FLAG_MACHINEGUN
 
 	fire_sound = 'sound/weapons/gun_mar40.ogg'
 	reload_sound = 'sound/weapons/handling/gun_mar40_reload.ogg'
@@ -1422,6 +1425,7 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/machineguns_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/machineguns_righthand.dmi'
 	)
+	flags_xeno_examine = EXAMINE_FLAG_MACHINEGUN
 	mouse_pointer = 'icons/effects/mouse_pointer/lmg_mouse.dmi'
 
 	reload_sound = 'sound/weapons/handling/hpr_reload.ogg'
@@ -2059,6 +2063,7 @@
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/marksman_rifles.dmi'
 	icon_state = "abr40"
 	item_state = "abr40"
+	flags_xeno_examine = EXAMINE_FLAG_SNIPER
 	current_mag = /obj/item/ammo_magazine/rifle/l42a/abr40
 	attachable_allowed = list(
 		//Barrel,
@@ -2461,7 +2466,7 @@
 
 /obj/item/weapon/gun/rifle/l64a3
 	name = "\improper L64A3 battle rifle"
-	desc = "A lightweight designated marksman rifle developed by Howatomo Precision Machining for the Royal Marines and Imperial Armed Space Forces. valued for its reliability."
+	desc = "A lightweight designated marksman rifle developed by Howatomo Precision Machining for the Royal Marines and Imperial Armed Space Forces. Valued for its reliability."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/TWE/marksman_rifles.dmi'
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/marksman_rifles.dmi',
@@ -2571,6 +2576,7 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/shotguns_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/shotguns_righthand.dmi'
 	)
+	flags_xeno_examine = EXAMINE_FLAG_SHOTGUN
 	mouse_pointer = 'icons/effects/mouse_pointer/shotgun_mouse.dmi'
 
 	fire_sound = 'sound/weapons/gun_shotgun_xm51.ogg'

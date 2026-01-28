@@ -13,6 +13,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/shotguns_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/shotguns_righthand.dmi'
 	)
+	flags_xeno_examine = EXAMINE_FLAG_SHOTGUN
 	mouse_pointer = 'icons/effects/mouse_pointer/shotgun_mouse.dmi'
 
 	accuracy_mult = 1.15
@@ -192,6 +193,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/shotguns.dmi'
 	icon_state = "cshotgun"
 	item_state = "cshotgun"
+	flags_xeno_examine = EXAMINE_FLAG_SHOTGUN|EXAMINE_FLAG_GENERICDANGER
 
 	fire_sound = 'sound/weapons/gun_shotgun_automatic.ogg'
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/merc
@@ -410,6 +412,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/shotguns.dmi'
 	icon_state = "mk210"
 	item_state = "mk210"
+	flags_xeno_examine = EXAMINE_FLAG_SHOTGUN|EXAMINE_FLAG_GENERICDANGER
 
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/buckshot
 
@@ -873,6 +876,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	icon_state = "mou"
 	item_state = "mou"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/shotguns.dmi'
+	flags_xeno_examine = EXAMINE_FLAG_SHOTGUN|EXAMINE_FLAG_GENERICDANGER
 	fire_sound = 'sound/weapons/gun_mou53.ogg'
 	reload_sound = 'sound/weapons/handling/gun_mou_reload.ogg'//unique shell insert
 	flags_equip_slot = SLOT_BACK
@@ -992,6 +996,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/event.dmi'
 	icon_state = "twobore"
 	item_state = "twobore"
+	flags_xeno_examine = EXAMINE_FLAG_SNIPER|EXAMINE_FLAG_UNIQUEDANGER
 	unacidable = TRUE
 	explo_proof = TRUE
 	force = 20 //Big heavy elephant gun.

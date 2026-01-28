@@ -155,6 +155,7 @@
 	edge = 1
 	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK
+	flags_xeno_examine = EXAMINE_FLAG_HEAVYBLADE
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_item = TWOHANDED
 	attack_verb = list("attacked", "chopped", "cleaved", "torn", "cut")
@@ -189,6 +190,7 @@
 	edge = 0
 	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK
+	flags_xeno_examine = EXAMINE_FLAG_HEAVYBLUNT
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_item = TWOHANDED
 	attack_verb = list("smashed", "beaten", "slammed", "struck", "smashed", "battered", "cracked")
@@ -215,6 +217,7 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/energy_righthand.dmi'
 	)
 	force = 3
+	flags_xeno_examine = EXAMINE_FLAG_HEAVYBLADE|EXAMINE_FLAG_GENERICDANGER
 	throwforce = 5
 	throw_speed = SPEED_FAST
 	throw_range = 5
@@ -269,6 +272,7 @@
 	throw_speed = SPEED_VERY_FAST
 	edge = 1
 	sharp = IS_SHARP_ITEM_SIMPLE
+	flags_xeno_examine = EXAMINE_FLAG_SPEAR
 	flags_item = TWOHANDED
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("attacked", "stabbed", "jabbed", "torn", "gored")
@@ -286,6 +290,7 @@
 	desc = "A crude but intimidatingly bulky shaped explosive charge, fixed to the end of a pole. To use it, one must grasp it firmly in both hands, and thrust the prongs of the shaped charge into the target. That the resulting explosion occurs directly in front of the user's face was not an apparent concern of the designer. A true hero's weapon."
 	force = MELEE_FORCE_WEAK
 	force_wielded = 1
+	flags_xeno_examine = EXAMINE_FLAG_SPEAR|EXAMINE_FLAG_EXPLODES
 	attack_verb = list("whacked")
 	hitsound = "swing_hit"
 	shield_chance = SHIELD_CHANCE_NONE
@@ -371,6 +376,7 @@
 	item_state = "d2_breacher"
 	force = MELEE_FORCE_NORMAL
 	force_wielded = MELEE_FORCE_NORMAL
+	flags_xeno_examine = EXAMINE_FLAG_HEAVYBLUNT
 	w_class = SIZE_LARGE
 	flags_item = TWOHANDED
 	flags_equip_slot = SLOT_BACK
@@ -383,6 +389,7 @@
 	icon_state = "syn_breacher"
 	item_state = "syn_breacher"
 	force_wielded = MELEE_FORCE_VERY_STRONG
+	flags_xeno_examine = EXAMINE_FLAG_HEAVYBLUNT|EXAMINE_FLAG_GENERICDANGER
 	really_heavy = TRUE
 	shield_chance = SHIELD_CHANCE_MEDHIGH
 	var/move_delay_addition = 1.5

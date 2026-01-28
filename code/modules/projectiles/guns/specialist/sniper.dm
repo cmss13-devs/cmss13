@@ -11,6 +11,7 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/marksman_rifles_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/marksman_rifles_righthand.dmi'
 	)
+	flags_xeno_examine = EXAMINE_FLAG_SNIPER
 	mouse_pointer = 'icons/effects/mouse_pointer/sniper_mouse.dmi'
 
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
@@ -327,6 +328,7 @@
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/marksman_rifles.dmi'
 	icon_state = "m42a"
 	item_state = "m42a"
+	flags_xeno_examine = EXAMINE_FLAG_RIFLE|EXAMINE_FLAG_UNIQUEDANGER
 	unacidable = TRUE
 	explo_proof = TRUE
 
@@ -407,6 +409,7 @@
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/marksman_rifles.dmi'
 	icon_state = "xm43e1"
 	item_state = "xm43e1"
+	flags_xeno_examine = EXAMINE_FLAG_RIFLE|EXAMINE_FLAG_UNIQUEDANGER
 	unacidable = TRUE
 	explo_proof = TRUE
 	aiming_time = 2 SECONDS
@@ -485,6 +488,7 @@
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/WY/marksman_rifles.dmi'
 	icon_state = "m42c"
 	item_state = "m42c" //NEEDS A TWOHANDED STATE
+	flags_xeno_examine = EXAMINE_FLAG_RIFLE|EXAMINE_FLAG_UNIQUEDANGER
 
 	fire_sound = 'sound/weapons/sniper_heavy.ogg'
 	current_mag = /obj/item/ammo_magazine/sniper/elite

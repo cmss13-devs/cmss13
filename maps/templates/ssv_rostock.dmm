@@ -21,7 +21,7 @@
 /turf/open/floor/corsat/plate,
 /area/rostock/lower_deck/ammunition_storage)
 "aad" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 4
 	},
 /turf/open/floor/almayer/tcomms,
@@ -5363,7 +5363,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 4
 	},
 /turf/open/floor/almayer/tcomms,
@@ -25145,7 +25145,7 @@
 /obj/item/storage/fancy/cigarettes/blackpack,
 /obj/item/storage/large_holster/ceremonial_sword/full,
 /obj/item/clothing/under/marine/veteran/UPP/officer,
-/obj/item/device/whistle,
+/obj/item/clothing/accessory/device/whistle,
 /obj/item/clothing/suit/gimmick/jason,
 /obj/item/clothing/suit/storage/snow_suit/soviet,
 /obj/item/clothing/suit/storage/webbing,
@@ -28363,7 +28363,7 @@
 /obj/structure/closet,
 /obj/item/storage/large_holster/ceremonial_sword/full,
 /obj/item/clothing/under/marine/veteran/UPP/officer,
-/obj/item/device/whistle,
+/obj/item/clothing/accessory/device/whistle,
 /obj/item/clothing/suit/storage/webbing,
 /obj/item/storage/backpack/lightpack,
 /turf/open/floor/wood,
@@ -30587,7 +30587,7 @@
 /obj/structure/closet,
 /obj/item/storage/large_holster/ceremonial_sword/full,
 /obj/item/clothing/under/marine/veteran/UPP/officer,
-/obj/item/device/whistle,
+/obj/item/clothing/accessory/device/whistle,
 /obj/item/clothing/suit/storage/webbing,
 /obj/item/storage/backpack/lightpack,
 /obj/item/clothing/suit/storage/snow_suit/soviet,

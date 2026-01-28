@@ -20,6 +20,7 @@
 	var/condi = 0
 	var/useramount = 30 // Last used amount
 	var/pillamount = 16
+	var/bottle_autoselect = FALSE //Toggle for whether extra new bottles are added to to_fill list
 	var/bottlesprite = "1" //yes, strings
 	var/pillsprite = "1"
 	var/client/has_sprites = list()
@@ -64,16 +65,16 @@
 		icon_state = (beaker?"[base_state]1":"[base_state]0")
 
 
-/obj/structure/machinery/chem_master/attackby(obj/item/inputed_item, mob/living/user)
-	if(istype(inputed_item, /obj/item/reagent_container/glass))
+/obj/structure/machinery/chem_master/attackby(obj/item/inputted_item, mob/living/user)
+	if(istype(inputted_item, /obj/item/reagent_container/glass))
 		var/obj/item/old_beaker = beaker
-		beaker = inputed_item
-		user.drop_inv_item_to_loc(inputed_item, src)
+		beaker = inputted_item
+		user.drop_inv_item_to_loc(inputted_item, src)
 		if(old_beaker)
-			to_chat(user, SPAN_NOTICE("You swap out \the [old_beaker] for \the [inputed_item]."))
+			to_chat(user, SPAN_NOTICE("You swap out \the [old_beaker] for \the [inputted_item]."))
 			user.put_in_hands(old_beaker)
 		else
-			to_chat(user, SPAN_NOTICE("You add the beaker to the machine!"))
+			to_chat(user, SPAN_NOTICE("You add \the [inputted_item] to the machine!"))
 		SStgui.update_uis(src)
 		update_icon()
 		return
@@ -81,11 +82,11 @@
 	if(!pill_maker)
 		return
 
-	if(istype(inputed_item, /obj/item/storage/pill_bottle))
-		var/obj/item/storage/pill_bottle/bottle = inputed_item
+	if(istype(inputted_item, /obj/item/storage/pill_bottle))
+		var/obj/item/storage/pill_bottle/bottle = inputted_item
 
 		if(length(loaded_pill_bottles) >= max_bottles_count)
-			to_chat(user, SPAN_WARNING("Machine is fully loaded by pill bottles."))
+			to_chat(user, SPAN_WARNING("[src] is fully loaded with pill bottles."))
 			return
 
 		add_pill_bottle(bottle)
@@ -95,37 +96,32 @@
 		SStgui.update_uis(src)
 		return
 
-	if(istype(inputed_item, /obj/item/storage/box/pillbottles))
-		var/obj/item/storage/box/pillbottles/box = inputed_item
-		if(!box)
-			return
+	if(istype(inputted_item, /obj/item/storage/box/pillbottles))
+
+		var/obj/item/storage/box/pillbottles/box = inputted_item
 
 		if(length(loaded_pill_bottles) >= max_bottles_count)
-			to_chat(user, SPAN_WARNING("Machine is fully loaded by pill bottles."))
+			to_chat(user, SPAN_WARNING("[src] is fully loaded with pill bottles."))
 			return
 
-		if(length(box.contents) == 0)
-			to_chat(user, SPAN_WARNING("[box.name] is empty and cannot be unloaded into the [name]."))
+		if(length(box.contents) <= 0)
+			to_chat(user, SPAN_WARNING("\The [box] is empty and cannot be unloaded into [src]."))
 			return
 
-		user.visible_message(SPAN_NOTICE("[user] starts to empty \the [box.name] into the [name]..."),
-		SPAN_NOTICE("You start to empty the [box.name] into the [name]..."))
-
+		user.visible_message(SPAN_NOTICE("[user] starts to empty \the [box] into [src]..."),
+		SPAN_NOTICE("You start to empty \the [box] into [src]..."))
 		var/waiting_time = min(length(box.contents), max_bottles_count - length(loaded_pill_bottles)) * box.time_to_empty
 
-		if(waiting_time <= 0) //well, something went wrong
-			return
-
 		if(!do_after(user, waiting_time, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
+			user.visible_message(SPAN_NOTICE("[user] stops trying to empty \the [box] into [src]."),
+			SPAN_WARNING("You get distracted and stop trying to empty \the [box] into [src]."))
 			return
 
 		playsound(user.loc, box.use_sound, 25, TRUE, 3)
 
 		for(var/obj/item/storage/pill_bottle/bottle in box.contents)
-			if(!bottle)
-				continue
 			if(length(loaded_pill_bottles) >= max_bottles_count)
-				to_chat(user, SPAN_WARNING("[name] is fully loaded by pill bottles."))
+				to_chat(user, SPAN_WARNING("[src] is fully loaded with pill bottles."))
 				return
 			add_pill_bottle(bottle)
 			box.forced_item_removal(bottle)
@@ -133,12 +129,10 @@
 		SStgui.update_uis(src)
 
 /obj/structure/machinery/chem_master/proc/add_pill_bottle(obj/item/storage/pill_bottle/bottle)
-	if(!bottle)
-		return
 
 	loaded_pill_bottles += bottle
 
-	if (length(loaded_pill_bottles) == 1 || length(loaded_pill_bottles_to_fill) == 0)
+	if (length(loaded_pill_bottles) == 1 || length(loaded_pill_bottles_to_fill) == 0 || bottle_autoselect)
 		loaded_pill_bottles_to_fill += bottle
 
 
@@ -166,6 +160,7 @@
 	.["mode"] = mode
 	.["pillsprite"] = pillsprite
 	.["bottlesprite"] = bottlesprite
+	.["bottle_autoselect"] = bottle_autoselect
 
 	.["pill_bottles"] = list()
 	if(length(loaded_pill_bottles) > 0)
@@ -571,15 +566,15 @@
 				for(var/obj/item/storage/pill_bottle/bottle in loaded_pill_bottles_to_fill)
 					var/obj/item/storage/pill_bottle/main_bottle = loaded_pill_bottles_to_fill[1]
 					var/datum/component/label/label_component_on_main_bottle = main_bottle.GetComponent(/datum/component/label)
-					var/datum/component/label/label_component_on_inputed_bottle = bottle.GetComponent(/datum/component/label)
+					var/datum/component/label/label_component_on_inputted_bottle = bottle.GetComponent(/datum/component/label)
 
-					if(label_component_on_main_bottle != label_component_on_inputed_bottle)
+					if(label_component_on_main_bottle != label_component_on_inputted_bottle)
 						bottle.AddComponent(/datum/component/label, label_component_on_main_bottle.label_name)
 						if(length(main_bottle.maptext_label) < 4)
 							bottle.maptext_label = main_bottle.maptext_label
 							bottle.update_icon()
-					else if(label_component_on_inputed_bottle != label_component_on_main_bottle)
-						qdel(label_component_on_inputed_bottle)
+					else if(label_component_on_inputted_bottle != label_component_on_main_bottle)
+						qdel(label_component_on_inputted_bottle)
 					bottle.icon_state = main_bottle.icon_state
 					for(var/iterator in 1 to to_create)
 						var/obj/item/reagent_container/pill/creating_pill = new(loc)
@@ -704,6 +699,10 @@
 				loaded_pill_bottles_to_fill = LAZYCOPY(loaded_pill_bottles)
 			else
 				loaded_pill_bottles_to_fill = list()
+			return TRUE
+
+		if("bottle_autoselect_toggle")
+			bottle_autoselect = !bottle_autoselect
 			return TRUE
 
 /obj/structure/machinery/chem_master/attack_hand(mob/living/user)

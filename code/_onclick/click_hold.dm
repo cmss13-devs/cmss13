@@ -31,10 +31,17 @@
 	mouse_trace_history = null
 	LAZYADD(mouse_trace_history, A)
 
+	var/list/mods = params2list(params)
+	if(mods[LEFT_CLICK] && mods[RIGHT_CLICK])
+		if(mods[BUTTON] == RIGHT_CLICK)
+			mods -= LEFT_CLICK
+		else
+			mods -= RIGHT_CLICK
+		params = list2params(mods)
+
 	if(SEND_SIGNAL(mob, COMSIG_MOB_MOUSEDOWN, A, T, skin_ctl, params) & COMSIG_MOB_CLICK_CANCELED)
 		return
 
-	var/list/mods = params2list(params)
 	if(mods[LEFT_CLICK])
 		SEND_SIGNAL(src, COMSIG_CLIENT_LMB_DOWN, A, mods)
 		lmb_last_mousedown_mods = mods

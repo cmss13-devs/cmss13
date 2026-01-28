@@ -37,15 +37,23 @@
 /datum/behavior_delegate/praetorian_dancer
 	name = "Praetorian Dancer Behavior Delegate"
 
+	/// How much time is left on timer. (used for status)
+	var/time_left = null
+
+	/// How much damage Harpoon Tail on DISARM mode do. (pierces armor)
+	var/blunt_damage = 8
+	/// Harpoon Tail mode, used only to display in status.
+	var/tail_mode = null
+
 	/// Is Dodge ability active?
 	var/dodge_activated = FALSE
-	/// Is dodge_time is activated (used for countdown)
+	/// Is dodge_time activate? (used for countdown)
 	var/dodge_start_time = -1
-	/// How long we want dodge active.
-	var/dodge_time = 10 SECONDS
+	/// For how long dodge should be active.
+	var/dodge_time = 7 SECONDS
 	/// How much refund we want to get back? 1.0 is 1s used to 1s cooldown, 2.0 is 1s used 2s cooldown.
 	var/refund_multiplier = 2.0
-	/// Used in calculation, its finalized number will be displayed as cooldown.
+	/// Used in calculation, finalized number will be displayed as cooldown.
 	var/recharge_time = null
 
 	/// How long ago we slashed target?
@@ -54,7 +62,7 @@
 	var/slash_time = 6 SECONDS
 	/// How many slashes we can do before hitting cap.
 	var/max_slashes = 3
-	/// How many slashed did we do already.
+	/// How many slashes did we do already.
 	var/current_slashes = 0
 	/// How much % increase to dodge_chance we gain per slash.
 	var/dodge_per_slash = 3
@@ -63,11 +71,16 @@
 	. = list()
 	. += "Dodge Chance: [bound_xeno.dodge_chance]%"
 	. += "Slash Dodge Stacks: [current_slashes]/[max_slashes]"
+	intent_detection()
+	. += "Harpoon Tail Intent: [tail_mode]"
+	if(tail_mode == "Blunt")
+		. += "Damage: [blunt_damage] AP"
+		. += "Cooldown: 4 seconds."
 	if(current_slashes > 0)
-		var/time_left = (slash_time - (world.time - last_slash_time)) / 10
+		calculate_time(slash_time, last_slash_time)
 		. += "Slash Dodge Remaining: [time_left] second\s."
 	if(dodge_start_time != -1)
-		var/time_left = (dodge_time-(world.time - dodge_start_time)) / 10
+		calculate_time(dodge_time, dodge_start_time)
 		. += "Dodge Remaining: [time_left] second\s."
 		return
 
@@ -79,13 +92,6 @@
 		return
 
 	reset_slash_dodge()
-
-/datum/behavior_delegate/praetorian_dancer/proc/reset_slash_dodge()
-	if(current_slashes <= 0)
-		return
-
-	bound_xeno.dodge_chance -= current_slashes * dodge_per_slash
-	current_slashes = 0
 
 /datum/behavior_delegate/praetorian_dancer/melee_attack_additional_effects_self()
 	if((world.time - last_slash_time) > slash_time)
@@ -114,16 +120,36 @@
 		var/mob/living/carbon/human/target_human = target_carbon
 		target_human.update_xeno_hostile_hud()
 
+/datum/behavior_delegate/praetorian_dancer/proc/reset_slash_dodge()
+	if(current_slashes <= 0)
+		return
+
+	bound_xeno.dodge_chance -= current_slashes * dodge_per_slash
+	current_slashes = 0
+
+/datum/behavior_delegate/praetorian_dancer/proc/calculate_time(full_time, when_started)
+	time_left = (full_time - (world.time - when_started)) / 10
+
+/datum/behavior_delegate/praetorian_dancer/proc/intent_detection()
+	if(bound_xeno && bound_xeno.a_intent == INTENT_DISARM)
+		tail_mode = "Blunt"
+	else
+		tail_mode = "Normal"
+
 /datum/action/xeno_action/activable/tail_stab/harpoon_tail/ability_act(mob/living/carbon/xenomorph/xeno, mob/living/carbon/target, obj/limb/limb)
 	if(!istype(xeno) || !istype(target))
+		return
+
+	var/datum/behavior_delegate/praetorian_dancer/behavior = xeno.behavior_delegate
+	if(!istype(behavior))
 		return
 
 	if(xeno.a_intent == INTENT_DISARM)
 		target.last_damage_data = create_cause_data(initial(xeno.caste_type), xeno)
 
 		xeno.visible_message(
-			SPAN_XENOWARNING("[xeno] smash [target] with the crooked part of its tail!"),
-			SPAN_XENOWARNING("We smash [target] with the crooked part of our tail!")
+			SPAN_XENOWARNING("[xeno] smash [target] with flat side of its tail!"),
+			SPAN_XENOWARNING("We smash [target] with flat side of its tail!")
 		)
 		xeno.animation_attack_on(target)
 		xeno.flick_attack_overlay(target, "slam")
@@ -132,7 +158,7 @@
 			xeno.behavior_delegate.melee_attack_additional_effects_target(target)
 
 		playsound(target, "punch", 25, TRUE)
-		target.apply_damage(blunt_damage, BRUTE, "chest")
+		target.apply_damage(behavior.blunt_damage, BRUTE, "chest")
 		apply_cooldown(cooldown_modifier = 0.4)
 		update_button_icon()
 		return target

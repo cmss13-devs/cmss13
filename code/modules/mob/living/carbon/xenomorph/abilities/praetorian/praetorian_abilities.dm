@@ -172,7 +172,6 @@
 	action_icon_state = "tail_harpoon"
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_TAIL_STAB
-	var/blunt_damage = 8
 
 /datum/action/xeno_action/activable/prae_impale
 	name = "Impale"
@@ -184,7 +183,7 @@
 	plasma_cost = 80
 	var/range = 2
 
-	var/impale_click_miss_cooldown = 0.8 SECONDS
+	var/impale_click_miss_cooldown = 0.7 SECONDS
 
 /datum/action/xeno_action/onclick/prae_dodge
 	name = "Dodge"
@@ -208,7 +207,7 @@
 	xeno_cooldown = 13 SECONDS
 	plasma_cost = 30
 
-	var/tail_click_miss_cooldown = 0.8 SECONDS
+	var/tail_click_miss_cooldown = 0.7 SECONDS
 
 	// Config
 	var/range = 2

@@ -208,6 +208,10 @@
 	color = "#ff4040"
 	hivenumber = XENO_HIVE_ALPHA
 
+/obj/item/xeno_egg/kseries
+	color = "#ffff80"
+	hivenumber = XENO_HIVE_K_SERIES
+
 /obj/item/xeno_egg/forsaken
 	color = "#cc8ec4"
 	hivenumber = XENO_HIVE_FORSAKEN

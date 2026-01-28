@@ -29,12 +29,12 @@
 /datum/db/query/brsql/read_single()
 	if(status >= DB_QUERY_FINISHED) //broken or finished
 		return
-	
+
 	status = DB_QUERY_STARTED
 	var/job_result = rustg_sql_check_query(job_id)
 	if(job_result == RUSTG_JOB_NO_RESULTS_YET)
 		return
-	
+
 	var/result = json_decode(job_result)
 	switch(result["status"])
 		if("ok")
@@ -53,13 +53,16 @@
 					results.Add(list(adapted_row))
 			affected_rows = result["affected"]
 			last_insert_id = result["last_insert_id"]
+			log_sql("Query job_id [job_id]: Completed successfully. Rows affected: [affected_rows], Results: [length(results)], Last insert ID: [last_insert_id]")
 			status = DB_QUERY_FINISHED
 			return
 		if("err")
 			error = result["data"]
+			log_sql("Query job_id [job_id]: ERROR - [error]")
 			status = DB_QUERY_BROKEN
 			return
 		if("offline")
 			error = "CONNECTION OFFLINE"
+			log_sql("Query job_id [job_id]: ERROR - Connection offline")
 			status = DB_QUERY_BROKEN
 			return

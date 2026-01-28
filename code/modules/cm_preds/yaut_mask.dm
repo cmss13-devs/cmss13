@@ -10,6 +10,7 @@
 	item_icons = list(
 		WEAR_FACE = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
 	)
+	var/base_state = "pred_mask1"
 	icon_state = "pred_mask1_ebony"
 	item_state = "helmet"
 	item_state_slots = list(WEAR_FACE = "pred_mask1_ebony")
@@ -43,9 +44,11 @@
 	black_market_value = 100
 	var/list/mask_huds = list(MOB_HUD_XENO_STATUS, MOB_HUD_HUNTER, MOB_HUD_HUNTER_CLAN, MOB_HUD_MEDICAL_OBSERVER)
 	var/thrall = FALSE //Used to affect icon generation.
+	var/mask_light_mode = YAUTJA_MASK_LIGHTS_OFF
+	var/mask_light_color = "#F9E8BE"
 
 	///A list of all intrinsic mask actions
-	var/list/mask_actions = list(/datum/action/predator_action/mask/zoom, /datum/action/predator_action/mask/visor)
+	var/list/mask_actions = list(/datum/action/predator_action/mask/zoom, /datum/action/predator_action/mask/visor, /datum/action/predator_action/mask/lights)
 
 /obj/item/clothing/mask/gas/yautja/New(location, mask_number = rand(1,17), armor_material = "ebony", legacy = "None")
 	..()
@@ -57,18 +60,22 @@
 		switch(legacy)
 			if("Dragon")
 				icon_state = "pred_mask_elder_tr"
+				base_state = icon_state
 				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elder_tr")
 				return
 			if("Swamp")
 				icon_state = "pred_mask_elder_joshuu"
+				base_state = icon_state
 				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elder_joshuu")
 				return
 			if("Enforcer")
 				icon_state = "pred_mask_elder_feweh"
+				base_state = icon_state
 				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elder_feweh")
 				return
 			if("Collector")
 				icon_state = "pred_mask_elder_n"
+				base_state = icon_state
 				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elder_n")
 				return
 
@@ -114,17 +121,19 @@
 	set name = "Toggle Mask Zoom"
 	set desc = "Toggle your mask's zoom function."
 	set src in usr
-	if(!usr || usr.stat)
+
+	var/mob/user = usr
+	if(!user || user.stat)
 		return
 
-	zoom(usr, 11, 12)
-	update_zoom_action(src, usr)
+	zoom(user, 11, 12)
+	update_zoom_action(src, user)
 	if(zoom)
 		RegisterSignal(src, COMSIG_ITEM_UNZOOM, PROC_REF(update_zoom_action))
-		playsound(src, 'sound/effects/pred_zoom_on.ogg', 50, FALSE, 2)
+		playsound_client(user.client, 'sound/effects/pred_zoom_on.ogg', user, 50, 1)
 		return
 	else
-		playsound(src, 'sound/effects/pred_zoom_off.ogg', 50, FALSE, 2)
+		playsound_client(user.client, 'sound/effects/pred_zoom_off.ogg', user, 50, 1)
 
 /obj/item/clothing/mask/gas/yautja/proc/update_zoom_action(source, mob/living/user)
 	UnregisterSignal(src, COMSIG_ITEM_UNZOOM)
@@ -180,7 +189,7 @@
 		if(VISION_MODE_OFF)
 			to_chat(user, SPAN_NOTICE("You deactivate your visor."))
 
-	playsound(src, 'sound/effects/pred_vision.ogg', 15, 1)
+	playsound_client(user.client, 'sound/effects/pred_vision.ogg', user, 40, 1)
 	user.update_inv_glasses()
 
 	var/datum/action/predator_action/mask/visor/visor_action
@@ -191,6 +200,81 @@
 
 #undef VISION_MODE_OFF
 #undef VISION_MODE_NVG
+
+/obj/item/clothing/mask/gas/yautja/verb/togglelights()
+	set name = "Toggle Mask Lights"
+	set desc = "Toggle your mask visor lights."
+	set src in usr
+	if(!usr || usr.stat)
+		return
+	var/mob/living/carbon/human/user = usr
+	if(!istype(user))
+		return
+	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH) && !user.hunter_data.thralled)
+		to_chat(user, SPAN_WARNING("You have no idea how to work this thing!"))
+		return
+	if(src != user.wear_mask) //sanity
+		to_chat(user, SPAN_WARNING("You must wear \the [src]!"))
+		return
+	var/obj/item/clothing/gloves/yautja/bracer = user.gloves
+	if(!bracer || !istype(bracer))
+		to_chat(user, SPAN_WARNING("You must be wearing your bracers, as they have the power source."))
+		return
+
+	cycle_light_mode(user)
+
+/obj/item/clothing/mask/gas/yautja/proc/cycle_light_mode(mob/living/carbon/human/hunter)
+	switch(mask_light_mode)
+		if(YAUTJA_MASK_LIGHTS_OFF)
+			set_light_mode(YAUTJA_MASK_LIGHTS_ON, hunter)
+		if(YAUTJA_MASK_LIGHTS_ON)
+			set_light_mode(YAUTJA_MASK_LIGHTS_GHOST, hunter)
+		if(YAUTJA_MASK_LIGHTS_GHOST)
+			set_light_mode(YAUTJA_MASK_LIGHTS_OFF, hunter)
+
+/obj/item/clothing/mask/gas/yautja/proc/set_light_mode(new_mode, mob/living/carbon/human/hunter, force = FALSE)
+	var/mob/living/carbon/human/user = hunter
+	if(!user)
+		return FALSE
+	if((new_mode == mask_light_mode) && !force)
+		return FALSE
+
+	mask_light_mode = new_mode
+	var/datum/action/predator_action/mask/lights/lights_action
+	for(lights_action as anything in user.actions)
+		if(istypestrict(lights_action, /datum/action/predator_action/mask/lights))
+			lights_action.update_button_icon(mask_light_mode)
+			break
+
+	switch(new_mode)
+		if(YAUTJA_MASK_LIGHTS_ON)
+			to_chat(user, SPAN_NOTICE("You activate your mask lights."))
+		if(YAUTJA_MASK_LIGHTS_GHOST)
+			to_chat(user, SPAN_NOTICE("Your mask lights will now bypass your cloak."))
+		if(YAUTJA_MASK_LIGHTS_OFF)
+			to_chat(user, SPAN_NOTICE("You deactivate your mask lights."))
+
+	playsound_client(user.client, "pred_light_toggle", hunter, 40, 1)
+	user.update_inv_wear_mask()
+
+/obj/item/clothing/mask/gas/yautja/get_mob_overlay(mob/user_mob, slot, default_bodytype = "Default")
+	var/image/the_mask = ..()
+
+	if(slot != WEAR_FACE || !mask_light_mode)
+		return the_mask
+
+	var/image/light_overlay = overlay_image('icons/mob/humans/onmob/hunter/mask_light.dmi', "[base_state]_light", mask_light_color)
+	the_mask.overlays += light_overlay
+
+	switch(mask_light_mode)
+		if(YAUTJA_MASK_LIGHTS_ON)
+			the_mask.overlays += light_overlay
+			the_mask.overlays += emissive_appearance(icon = 'icons/mob/humans/onmob/hunter/mask_light.dmi', icon_state = "[base_state]_light")
+		if(YAUTJA_MASK_LIGHTS_GHOST)
+			light_overlay = overlay_image('icons/mob/humans/onmob/hunter/mask_light.dmi', "[base_state]_light", mask_light_color, RESET_ALPHA|KEEP_APART)
+			the_mask.overlays += light_overlay
+			the_mask.overlays += emissive_appearance(icon = 'icons/mob/humans/onmob/hunter/mask_light.dmi', icon_state = "[base_state]_light")
+	return the_mask
 
 /obj/item/clothing/mask/gas/yautja/dropped(mob/living/carbon/human/user) //Clear the gogglors if the helmet is removed.
 	STOP_PROCESSING(SSobj, src)
@@ -224,6 +308,8 @@
 			if(!bracer || !istype(bracer))
 				return FALSE
 			add_vision(user)
+		if(mask_light_mode)
+			set_light_mode(mask_light_mode, user, TRUE)
 	..()
 
 /obj/item/clothing/mask/gas/yautja/thrall

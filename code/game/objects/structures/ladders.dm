@@ -14,7 +14,11 @@
 	var/is_watching = 0
 	var/obj/structure/machinery/camera/cam
 	var/busy = FALSE //Ladders are wonderful creatures, only one person can use it at a time
-	var/static/list/direction_selection = list("up" = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_ladder_up"), "down" = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_ladder_down"))
+
+	/// The list of available directions to the image used to represent it, for the radial menu
+	var/list/direction_selection
+	/// The list of available directions to the directions the player will move
+	var/list/selection_to_queue
 
 
 /obj/structure/ladder/Initialize(mapload, ...)
@@ -29,10 +33,8 @@
 /obj/structure/ladder/get_examine_text(mob/user)
 	. = ..()
 	. += SPAN_NOTICE("Drag-click to look up or down [src].")
-	. += SPAN_NOTICE("Ctrl-click to go up, Alt-click to go down.")
 	if(ishuman(user))
 		. += SPAN_NOTICE("Click [src] with unprimed grenades/flares to prime and toss it up or down.")
-		. += SPAN_NOTICE("Ctrl-click or Alt-click with grenades/flares to throw in that direction.")
 
 /obj/structure/ladder/LateInitialize()
 	. = ..()
@@ -77,101 +79,84 @@
 	else //wtf make your ladders properly assholes
 		icon_state = "ladder00"
 
-/obj/structure/ladder/attack_hand(mob/living/user)
-	if(user.stat || get_dist(user, src) > 1 || user.blinded || user.body_position == LYING_DOWN || user.buckled || user.anchored)
-		return
-	if(busy)
-		to_chat(user, SPAN_WARNING("Someone else is currently using [src]."))
-		return
-
-	var/direction
-	if(up && down)
-		var/choice = lowertext(show_radial_menu(user, src, direction_selection, require_near = TRUE))
-		if(choice == "up")
-			direction = "up"
-		else if(choice == "down")
-			direction = "down"
-		else
-			return //User cancelled or invalid choice
-	else if(up)
-		direction = "up"
-	else if(down)
-		direction = "down"
-	else
-		return FALSE //No valid directions
-
-	climb_ladder(user, direction)
-
-//Helper function to handle climbing logic for both manual clicks and modifier clicks
-/obj/structure/ladder/proc/climb_ladder(mob/living/user, direction)
+/obj/structure/ladder/attack_hand(mob/living/user, click_parameters)
 	if(user.stat || get_dist(user, src) > 1 || user.blinded || user.body_position == LYING_DOWN || user.buckled || user.anchored || user.interactee)
-		return FALSE
+		return
 	if(busy)
 		to_chat(user, SPAN_WARNING("Someone else is currently using [src]."))
-		return FALSE
+		return
 
 	var/ladder_dir_name
-	var/obj/structure/ladder/ladder_dest
+	var/selected_ladder_dest
+
+	if(click_parameters[CTRL_CLICK])
+		selected_ladder_dest = "up"
+
+	if(click_parameters[ALT_CLICK])
+		selected_ladder_dest = "down"
+
+	if(!length(direction_selection))
+		direction_selection = get_ladder_images()
+
+	if(length(direction_selection) > 1)
+		if(!selected_ladder_dest)
+			selected_ladder_dest = lowertext(show_radial_menu(user, src, direction_selection, require_near = TRUE))
+
+		if(!selected_ladder_dest)
+			return
+
+		if(selected_ladder_dest == "up" || selected_ladder_dest == "down")
+			ladder_dir_name = selected_ladder_dest
+
+		if(!ladder_dir_name)
+			var/to_follow = selection_to_queue[selected_ladder_dest]
+
+			var/obj/structure/ladder/moving_ladder = src
+			for(var/dir in to_follow)
+				if(!moving_ladder.move_to(user, dir))
+					break
+
+				moving_ladder = locate(/obj/structure/ladder) in get_turf(user)
+
+			return
+
+	else if(up)
+		ladder_dir_name = "up"
+	else if(down)
+		ladder_dir_name = "down"
+	else
+		return FALSE //just in case
+
+	if(!ladder_dir_name)
+		return
+
+	move_to(user, ladder_dir_name)
+
+/// Does the work of actually moving the move up/down
+/obj/structure/ladder/proc/move_to(mob/living/user, direction)
+	var/obj/structure/ladder/destination_ladder
 
 	if(direction == "up")
-		if(!up)
-			return FALSE
-		ladder_dir_name = "up"
-		ladder_dest = up
-	else if(direction == "down")
-		if(!down)
-			return FALSE
-		ladder_dir_name = "down"
-		ladder_dest = down
+		destination_ladder = up
 	else
-		return FALSE
-
-	if(!ladder_dest)
-		return FALSE
+		destination_ladder = down
 
 	step(user, get_dir(user, src))
-	user.visible_message(SPAN_NOTICE("[user] starts climbing [ladder_dir_name] [src]."),
-	SPAN_NOTICE("You start climbing [ladder_dir_name] [src]."))
+	user.visible_message(SPAN_NOTICE("[user] starts climbing [direction] [src]."),
+	SPAN_NOTICE("You start climbing [direction] [src]."))
 	busy = TRUE
 	if(do_after(user, 20, INTERRUPT_INCAPACITATED|INTERRUPT_OUT_OF_RANGE|INTERRUPT_RESIST, BUSY_ICON_GENERIC, src, INTERRUPT_NONE))
 		if(!user.is_mob_incapacitated() && get_dist(user, src) <= 1 && !user.blinded && user.body_position != LYING_DOWN && !user.buckled && !user.anchored)
-			visible_message(SPAN_NOTICE("[user] climbs [ladder_dir_name] [src].")) //Hack to give a visible message to the people here without duplicating user message
-			user.visible_message(SPAN_NOTICE("[user] climbs [ladder_dir_name] [src]."),
-			SPAN_NOTICE("You climb [ladder_dir_name] [src]."))
-			ladder_dest.add_fingerprint(user)
-			user.trainteleport(ladder_dest.loc)
+			visible_message(SPAN_NOTICE("[user] climbs [direction] [src].")) //Hack to give a visible message to the people here without duplicating user message
+			user.visible_message(SPAN_NOTICE("[user] climbs [direction] [src]."),
+			SPAN_NOTICE("You climb [direction] [src]."))
+			destination_ladder.add_fingerprint(user)
+			user.trainteleport(destination_ladder.loc)
+
+			. = TRUE
+
 	busy = FALSE
 	add_fingerprint(user)
-	return TRUE
-
-//Alt click to go down
-/obj/structure/ladder/proc/alt_click_action(mob/user)
-	if(!isliving(user))
-		return
-	climb_ladder(user, "down")
-
-//Ctrl click to go up
-/obj/structure/ladder/proc/ctrl_click_action(mob/user)
-	if(!isliving(user))
-		return
-	climb_ladder(user, "up")
-
-//Override clicked to handle modifier clicks
-/obj/structure/ladder/clicked(mob/user, list/mods)
-	// If user is holding a throwable item, let attackby handle the modifier clicks
-	if(isliving(user))
-		var/mob/living/living_user = user
-		var/obj/item/held_item = living_user.get_active_hand()
-		if(held_item && (istype(held_item, /obj/item/explosive/grenade) || istype(held_item, /obj/item/device/flashlight)))
-			return FALSE // Let attackby handle this
-
-	if(mods[ALT_CLICK])
-		alt_click_action(user)
-		return TRUE
-	if(mods[CTRL_CLICK])
-		ctrl_click_action(user)
-		return TRUE
-	return ..()
 
 /obj/structure/ladder/check_eye(mob/living/user)
 	//Are we capable of looking?
@@ -350,6 +335,62 @@
 
 	// Use the helper function to throw the item
 	throw_item_ladder(W, user, direction)
+
+/// Returns all the ladders above/below this ladder
+/obj/structure/ladder/proc/get_ladders_recursive(direction = "up")
+	var/obj/structure/ladder/new_ladder
+
+	if(direction == "up" && up)
+		new_ladder = up
+	else if (direction == "down" && down)
+		new_ladder = down
+
+	if(!new_ladder)
+		return
+
+	var/list/obj/structure/ladder/ladder_list = list(new_ladder)
+
+	while((direction == "up" && new_ladder.up) || (direction == "down" && new_ladder.down))
+		new_ladder = direction == "up" ? new_ladder.up : new_ladder.down
+		ladder_list += new_ladder
+
+	return ladder_list
+
+/// Formats the ladders above/below for radial images
+/obj/structure/ladder/proc/get_ladder_images()
+	var/list/selection = list()
+
+	selection_to_queue = list()
+
+	for(var/direction in list("up", "down"))
+		var/list/obj/structure/ladder/ladder_list = get_ladders_recursive(direction)
+
+		for(var/i in 1 to length(ladder_list))
+			var/direction_name = direction
+			var/image/direction_icon = image('icons/mob/radial.dmi', icon_state = "radial_ladder_[direction]")
+
+			if(i > 1)
+				direction_name += " (x[i])"
+				direction_icon = image('icons/effects/effects.dmi', icon_state = "nothing")
+
+				var/total_range = world.icon_size / 3
+				var/gap = total_range / (i - 1)
+
+				for(var/arrow_number in 0 to i - 1)
+					var/image/new_icon = image('icons/mob/radial.dmi', icon_state = "radial_ladder_[direction]")
+					new_icon.transform = matrix().Translate((gap * arrow_number) - (total_range / 2), 0)
+
+					direction_icon.overlays += new_icon
+
+			selection[direction_name] = direction_icon
+
+			var/list/queued_ladders = list()
+			for(var/queue in 1 to i)
+				queued_ladders += direction
+
+			selection_to_queue[direction_name] = queued_ladders
+
+	return selection
 
 /obj/structure/ladder/fragile_almayer //goes away on hijack
 	name = "rickety ladder"

@@ -306,6 +306,10 @@
 	},
 /turf/open/floor/prison/kitchen/southwest,
 /area/fiorina/station/civres_blue)
+"abe" = (
+/obj/effect/landmark/mainship_crashsite,
+/turf/closed/wall/mineral/bone_resin,
+/area/fiorina/oob)
 "abG" = (
 /obj/item/trash/chunk,
 /turf/open/floor/prison/whitegreen/north,
@@ -37151,7 +37155,7 @@ yhu
 yhu
 uNM
 baC
-baC
+abe
 tan
 ble
 hvL

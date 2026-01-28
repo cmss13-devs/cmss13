@@ -14811,10 +14811,7 @@
 /turf/open/floor/shiva/yellowfull/west,
 /area/shiva/interior/aux_power)
 "lnm" = (
-/turf/closed/shuttle{
-	dir = 1;
-	icon_state = "pwall"
-	},
+/turf/closed/cordon,
 /area/space)
 "lnH" = (
 /obj/structure/flora/bush/snow{

@@ -34,37 +34,57 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 /turf/open_space/attack_hand(mob/user)
 	climb_down(user)
 
+/turf/open_space/Enter(atom/movable/mover, atom/forget)
+	. = ..()
+	if(. && !mover.throwing && isliving(mover) && check_blocked())
+		to_chat(mover, SPAN_WARNING("It would be too dangerous to go that way."))
+		return FALSE
+
 /turf/open_space/Entered(atom/movable/entered_movable, atom/old_loc)
 	. = ..()
-
 	check_fall(entered_movable)
 
 /turf/open_space/on_throw_end(atom/movable/thrown_atom)
 	check_fall(thrown_atom)
 
+/turf/open_space/update_vis_contents()
+	if(!istransparentturf(src))
+		return
+
+	vis_contents.Cut()
+	for(var/obj/vis_contents_holder/holder in src)
+		qdel(holder)
+
+	var/turf/below = get_turf_below()
+	var/depth = 0
+	while(below)
+		new /obj/vis_contents_holder(src, below, depth)
+		if(!istransparentturf(below))
+			break
+		below = SSmapping.get_turf_below(below)
+		depth++
+
+/turf/open_space/proc/get_turf_below()
+	return SSmapping.get_turf_below(src)
+
 /turf/open_space/proc/climb_down(mob/user)
 	if(user.action_busy)
 		return
 
-	var/turf/current_turf = get_turf(src)
-
-	if(!istype(current_turf, /turf/open_space))
+	if(check_blocked())
+		to_chat(user, SPAN_WARNING("It would be too dangerous to go that way."))
 		return
 
 	var/climb_down_time = 1 SECONDS
-
 	if(ishuman_strict(user))
 		climb_down_time = 2.5 SECONDS
-
-	if(isxeno(user))
+	else if(isxeno(user))
 		var/mob/living/carbon/xenomorph/xeno_victim = user
 		if(xeno_victim.mob_size >= MOB_SIZE_BIG)
 			climb_down_time = 3 SECONDS
 		else
 			climb_down_time = 1 SECONDS
 
-	if(user.action_busy)
-		return
 	user.visible_message(SPAN_WARNING("[user] starts climbing down."), SPAN_WARNING("You start climbing down."))
 
 	if(!do_after(user, climb_down_time, INTERRUPT_ALL, BUSY_ICON_CLIMBING))
@@ -73,20 +93,19 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 
 	user.visible_message(SPAN_WARNING("[user] climbs down."), SPAN_WARNING("You climb down."))
 
-	var/turf/below = SSmapping.get_turf_below(current_turf)
+	var/turf/below = get_turf_below()
 	while(istype(below, /turf/open_space))
 		below = SSmapping.get_turf_below(below)
 
 	user.forceMove(below)
 	return
 
-/turf/open_space/proc/check_fall(atom/movable/movable)
+/turf/open_space/proc/check_fall(atom/movable/movable, kill_if_blocked=TRUE)
 	if(movable.flags_atom & NO_ZFALL)
 		return
 
 	var/height = 1
-	var/turf/below = SSmapping.get_turf_below(get_turf(src))
-
+	var/turf/below = get_turf_below()
 	while(istype(below, /turf/open_space))
 		below = SSmapping.get_turf_below(below)
 		height++
@@ -94,6 +113,26 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	movable.forceMove(below)
 	movable.onZImpact(below, height)
 
+	if(kill_if_blocked && isliving(movable) && check_blocked())
+		var/mob/living/living_mob = movable
+		living_mob.death(create_cause_data("falling from a high place"))
+
+/// Returns a boolean whether the turf is closed and has no opening in any cardinal direction
+/turf/proc/check_blocked()
+	return FALSE
+
+/turf/closed/check_blocked()
+	for(var/direction in GLOB.cardinals)
+		var/turf/side = get_step(src, direction)
+		if(istype(side, /turf/open))
+			return FALSE
+	return TRUE
+
+/turf/open_space/check_blocked()
+	var/turf/below = get_turf_below()
+	if(!below)
+		return TRUE
+	return below.check_blocked()
 
 /turf/solid_open_space
 	name = "open space"
@@ -107,3 +146,71 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	ADD_TRAIT(src, TURF_Z_TRANSPARENT_TRAIT, TRAIT_SOURCE_INHERENT)
 	icon_state = "transparent"
 	return INITIALIZE_HINT_LATELOAD
+
+
+/// A variant of open_space intended for say the shipmap to fake the below turf as the groundmap
+/turf/open_space/ground_level
+	/// A offset in x to adjust what it deemed the below turf (adjusting this after Initialize requires update_vis_contents)
+	var/offset_x = 0
+	/// A offset in y to adjust what it deemed the below turf (adjusting this after Initialize requires update_vis_contents)
+	var/offset_y = 0
+	/// A minimum Z to use when determing the lowest ground Z
+	var/min_ground_z = 0
+	/// A specific z to adjust what it deemed the below turf (updated automatically in update_vis_contents)
+	var/target_z = 0
+	/// A cache of open_space z to ground z representative of the height
+	var/static/alist/z_mapping = alist()
+
+/turf/open_space/ground_level/Initialize(mapload, list/arguments)
+	var/arg_count = length(arguments)
+	if(arg_count >= 2)
+		offset_x = arguments[1]
+		offset_y = arguments[2]
+		if(arg_count >= 3)
+			min_ground_z = max(arguments[3], 0)
+	return ..()
+
+/turf/open_space/ground_level/get_turf_below()
+	return locate(x + offset_x, y + offset_y, target_z)
+
+/turf/open_space/ground_level/update_vis_contents()
+	target_z = z_mapping[z]
+	if(target_z)
+		return ..()
+
+	// target_z hasn't been determined yet for this z
+	var/list/ground_zs = SSmapping.levels_by_trait(ZTRAIT_GROUND)
+	if(z in ground_zs)
+		CRASH("[src] at [x],[y],[z] is already on the ground level so should be handled using /turf/open_space instead!")
+
+	if(!length(ground_zs))
+		return ..() // There is no ground z level (probably unit testing)
+
+	// Figure out how high up we are already
+	// Assumption: Going ZTRAIT_DOWN keeps you within this ZTRAIT
+	var/height = 0
+	var/current_z = z
+	var/offset = SSmapping.level_trait(current_z, ZTRAIT_DOWN)
+	while(offset)
+		height++
+		current_z += offset
+		offset = SSmapping.level_trait(current_z, ZTRAIT_DOWN)
+
+	// Figure out lowest ground z
+	// Assumption: Going ZTRAIT_DOWN keeps you within ZTRAIT_GROUND
+	current_z = min_ground_z || ground_zs[1]
+	offset = SSmapping.level_trait(current_z, ZTRAIT_DOWN)
+	while(offset && current_z != min_ground_z)
+		current_z += offset
+		offset = SSmapping.level_trait(current_z, ZTRAIT_DOWN)
+
+	// Now figure out target z
+	offset = SSmapping.level_trait(current_z, ZTRAIT_UP)
+	while(height > 0 && offset)
+		height--
+		current_z += offset
+		offset = SSmapping.level_trait(current_z, ZTRAIT_UP)
+
+	target_z = current_z
+	z_mapping[z] = current_z
+	return ..()

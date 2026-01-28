@@ -468,7 +468,7 @@
 
 /obj/structure/ship_ammo/minirocket/incendiary
 	name = "\improper AGR-59-I 'Mini-Mike'"
-	desc = "The AGR-59-I 'Mini-Mike' incendiary minirocket is a cheap and efficient means of putting hate down range AND setting them on fire! Though rockets lack a guidance package, it makes up for it in ammunition count. Can be loaded into the LAU-229 Rocket Pod."
+	desc = "The AGR-59-I 'Mini-Mike' incendiary minirocket is a cheap and efficient means of putting hate down range AND setting them on fire! Upon impact, incendiary flames are left in the area. Though rockets lack a guidance package, it makes up for it in ammunition count. Can be loaded into the LAU-229 Rocket Pod."
 	icon_state = "minirocket_inc"
 	point_cost = 500
 	fire_mission_delay = 3 //high cooldown
@@ -477,6 +477,24 @@
 	..()
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(fire_spread), impact, create_cause_data(initial(name), source_mob), 3, 25, 20, "#EE6515"), 0.5 SECONDS)
 
+/obj/structure/ship_ammo/minirocket/flare
+	name = "\improper AGR-59-F 'Mini-Mike'"
+	desc = "The AGR-59-F 'Mini-Mike' flare minirocket is a cheap and efficient means of putting hate down range AND lighting up the area! Upon impact, star shell ash is spread in the area. As a result, the explosion yield is weaker than its counterparts. Though rockets lack a guidance package, it makes up for it in ammunition count. Can be loaded into the LAU-229 Rocket Pod."
+	icon_state = "minirocket_flr"
+	point_cost = 400
+	fire_mission_delay = 3 //high cooldown
+
+/obj/structure/ship_ammo/minirocket/flare/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
+	impact.ceiling_debris_check(2)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), impact, 150, 44, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), source_mob)), 0.5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(explosion_particles), impact, 4), 0.5 SECONDS)
+
+	// starshell ash spread
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(create_shrapnel), impact, 3, 0, 360, /datum/ammo/flare/starshell, create_cause_data(initial(name), source_mob), FALSE, 100), 0.6 SECONDS)
+
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(smoke_spread), impact, 1, /obj/effect/particle_effect/smoke, null, 1), 1 SECONDS)
+	if(!ammo_count && loc)
+		qdel(src) //deleted after last minirocket is fired and impact the ground.
 //missiles
 
 /obj/structure/ship_ammo/missile

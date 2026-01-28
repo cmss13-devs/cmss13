@@ -256,7 +256,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(hair_gradient_list, /datum/sprite_accessory/hair_g
 GLOBAL_REFERENCE_LIST_INDEXED(yautja_hair_styles_list, /datum/sprite_accessory/yautja_hair, name)
 
 	//Backpacks
-GLOBAL_LIST_INIT(backbaglist, list("Backpack", "Satchel"))
+GLOBAL_LIST_INIT(backbaglist, list("Backpack", "Satchel", "Chestrig"))
 
 	//NVG colors
 GLOBAL_LIST_INIT(nvg_color_list, list("Green", "White", "Yellow", "Orange", "Red", "Blue"))

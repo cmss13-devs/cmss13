@@ -2197,7 +2197,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	character.underwear = underwear
 	character.undershirt = undershirt
 
-	if(backbag > 2 || backbag < 1)
+	if(backbag > 3 || backbag < 1)
 		backbag = 2 //Same as above
 	character.backbag = backbag
 
@@ -2271,7 +2271,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	character.underwear = underwear
 	character.undershirt = undershirt
 
-	if(backbag > 2 || backbag < 1)
+	if(backbag > 3 || backbag < 1)
 		backbag = 2 //Same as above
 	character.backbag = backbag
 

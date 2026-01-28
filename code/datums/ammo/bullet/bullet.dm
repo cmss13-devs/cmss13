@@ -39,7 +39,7 @@
 
 	INVOKE_ASYNC(src, PROC_REF(attempt_battlefield_execution), src, execution_target, firing_projectile, user, fired_from)
 
-	return COMPONENT_CANCEL_AMMO_POINT_BLANK
+	return COMPONENT_CANCEL_BATTLEFIELD_EXECUTION
 
 /datum/ammo/bullet/proc/attempt_battlefield_execution(datum/ammo/firing_ammo, mob/living/carbon/human/execution_target, obj/projectile/firing_projectile, mob/living/user, obj/item/weapon/gun/fired_from)
 	user.affected_message(execution_target,
@@ -47,7 +47,7 @@
 		SPAN_HIGHDANGER("[user] aims \the [fired_from] directly at your head!"),
 		SPAN_DANGER("[user] aims \the [fired_from] at [execution_target]'s head!"))
 
-	user.next_move += 1.1 SECONDS //PB has no click delay; readding it here to prevent people accidentally queuing up multiple executions.
+	user.next_move += 1.25 SECONDS //PB has no click delay; readding it here to prevent people accidentally queuing up multiple executions.
 
 	if(!do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || !user.Adjacent(execution_target))
 		fired_from.delete_bullet(firing_projectile, TRUE)

@@ -344,8 +344,8 @@
 					return
 				dumping = TRUE
 
-			var/transfering   = 0   // Amount of bullets we're trying to transfer
-			var/transferable  = 0   // Amount of bullets that can actually be transfered
+			var/transferring   = 0   // Amount of bullets we're trying to transfer
+			var/transferable  = 0   // Amount of bullets that can actually be transferred
 			do
 				// General checking
 				if(dumping)
@@ -355,24 +355,24 @@
 				if(transferable < 1)
 					to_chat(user, SPAN_NOTICE("You cannot transfer any more rounds."))
 
-				// Half-Loop 1: Start transfering
-				else if(!transfering)
-					transfering = min(transferable, 48) // Max per transfer
+				// Half-Loop 1: Start transferring
+				else if(!transferring)
+					transferring = min(transferable, 48) // Max per transfer
 					if(!do_after(user, 1.5 SECONDS, INTERRUPT_ALL, dumping ? BUSY_ICON_HOSTILE : BUSY_ICON_FRIENDLY))
 						to_chat(user, SPAN_NOTICE("You stop transferring rounds."))
 						transferable = 0
 
 				// Half-Loop 2: Process transfer
 				else
-					transfering = min(transfering, transferable)
-					transferable -= transfering
+					transferring = min(transferring, transferable)
+					transferable -= transferring
 					if(dumping)
-						transfering = -transfering
-					AM.current_rounds += transfering
-					bullet_amount  -= transfering
+						transferring = -transferring
+					AM.current_rounds += transferring
+					bullet_amount  -= transferring
 					playsound(src, pick('sound/weapons/handling/mag_refill_1.ogg', 'sound/weapons/handling/mag_refill_2.ogg', 'sound/weapons/handling/mag_refill_3.ogg'), 20, TRUE, 6)
-					to_chat(user, SPAN_NOTICE("You have transferred [abs(transfering)] round\s to [dumping ? src : AM]."))
-					transfering = 0
+					to_chat(user, SPAN_NOTICE("You have transferred [abs(transferring)] round\s to [dumping ? src : AM]."))
+					transferring = 0
 
 			while(transferable >= 1)
 

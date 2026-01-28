@@ -14,6 +14,7 @@
 #define SQUAD_CBRN "CBRN"
 #define SQUAD_FORECON "FORECON"
 #define SQUAD_SOLAR "Solar Devils"
+#define SQUAD_ARMY "US Army"
 
 // Job name defines
 #define JOB_SQUAD_MARINE "Rifleman"
@@ -353,6 +354,21 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_FORECON_SMARTGUNNER "Reconnaissance Smartgunner"
 
 #define JOB_FORECON_LIST list(JOB_FORECON_CO, JOB_FORECON_SL, JOB_FORECON_SYN, JOB_FORECON_SNIPER, JOB_FORECON_MARKSMAN, JOB_FORECON_SUPPORT, JOB_FORECON_RIFLEMAN, JOB_FORECON_SMARTGUNNER)
+
+//-------- US ARMY --------//
+
+#define JOB_ARMY_TROOPER "US Army Trooper"
+#define JOB_ARMY_ENGI "US Army Combat Engineering Technician"
+#define JOB_ARMY_MEDIC "US Army Combat Medical Technician"
+#define JOB_ARMY_MARKSMAN "US Army Marksman"
+#define JOB_ARMY_SMARTGUNNER "US Army Heavy Gunner"
+#define JOB_ARMY_SNCO "US Army Squad Leader"
+#define JOB_ARMY_CO "US Army Commander"
+#define JOB_ARMY_SYN "US Army Synthetic"
+
+
+#define JOB_ARMY_LIST list(JOB_ARMY_TROOPER, JOB_ARMY_ENGI, JOB_ARMY_MEDIC, JOB_ARMY_MARKSMAN, JOB_ARMY_SMARTGUNNER, JOB_ARMY_SNCO, JOB_ARMY_CO, JOB_ARMY_SYN)
+
 
 //-------- UPP --------//
 #define JOB_UPP	"UPP Ryadovoy"

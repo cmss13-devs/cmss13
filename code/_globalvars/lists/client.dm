@@ -42,6 +42,7 @@ GLOBAL_LIST_INIT(_kbMap, list(
 	"VOLUMEMUTE" = "VolumeMute",
 	"VOLUMEUP" = "VolumeUp",
 	"VOLUMEDOWN" = "VolumeDown",
+	"TAB" = "Tab", // seems unnecessary?
 	))
 
 ///List of ckeys that have seen a blurb of a given key.

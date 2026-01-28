@@ -283,7 +283,9 @@
 				if(PAY_SHORT_WYC7, PAY_SHORT_WYC6)
 					return WY_COMP_ACCESS_SUPERVISOR
 		if(card.assignment == JOB_CORPORATE_LIAISON)
-			return WY_COMP_ACCESS_LIAISON
+			return WY_COMP_ACCESS_LIAISON //4
+		if(card.assignment == JOB_CORPORATE_BODYGUARD)
+			return WY_COMP_ACCESS_LIAISON_GUARD //3
 		if(card.paygrade && (card.paygrade == PAY_SHORT_WYC5 || card.paygrade == PAY_SHORT_WYC4))
 			return WY_COMP_ACCESS_CORPORATE_SENIOR
 		return WY_COMP_ACCESS_CORPORATE
@@ -298,6 +300,8 @@
 			return "Logged Out"
 		if(WY_COMP_ACCESS_FORBIDDEN)
 			return "Unauthorized User"
+		if(WY_COMP_ACCESS_LIAISON_GUARD)
+			return "Weyland-Yutani Personal Protection"
 		if(WY_COMP_ACCESS_LIAISON)
 			return "Weyland-Yutani Liaison"
 		if(WY_COMP_ACCESS_CORPORATE)
@@ -321,15 +325,17 @@
 			continue
 		if(!target_door.density)
 			continue
+
 		target_door.unlock(force)
-		target_door.open(force)
+		addtimer(CALLBACK(target_door, TYPE_PROC_REF(/obj/structure/machinery/door/airlock, open), force), 1 SECONDS)
+		addtimer(CALLBACK(target_door, TYPE_PROC_REF(/obj/structure/machinery/door/airlock, lock), force), 2 SECONDS)
 		open_cell_door = TRUE
 
 	return TRUE
 
 // Closes and unlocks doors, power check
-/obj/structure/machinery/computer/wy_intranet/proc/close_door()
-	if(inoperable())
+/obj/structure/machinery/computer/wy_intranet/proc/close_door(force = FALSE)
+	if(inoperable() && !force)
 		return FALSE
 
 	for(var/obj/structure/machinery/door/airlock/target_door in targets)
@@ -337,8 +343,10 @@
 			continue
 		if(target_door.density)
 			continue
-		target_door.close()
-		addtimer(CALLBACK(target_door, TYPE_PROC_REF(/obj/structure/machinery/door/airlock, lock)), 1 SECONDS)
+
+		target_door.unlock(force)
+		addtimer(CALLBACK(target_door, TYPE_PROC_REF(/obj/structure/machinery/door/airlock, close), force), 1 SECONDS)
+		addtimer(CALLBACK(target_door, TYPE_PROC_REF(/obj/structure/machinery/door/airlock, lock), force), 2 SECONDS)
 		open_cell_door = FALSE
 
 	return TRUE
@@ -424,7 +432,7 @@
 			vent_tag_num++
 
 		var/list/current_vent = list()
-		var/is_available = COOLDOWN_FINISHED(vent, vent_trigger_cooldown)
+		var/is_available = (COOLDOWN_FINISHED(vent, vent_trigger_cooldown) && !vent.welded)
 		current_vent["vent_tag"] = vent.vent_tag
 		current_vent["ref"] = "\ref[vent]"
 		current_vent["available"] = is_available

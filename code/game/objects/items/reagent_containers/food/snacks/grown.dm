@@ -99,13 +99,12 @@
 
 /obj/item/reagent_container/food/snacks/grown/nettle/pickup(mob/living/carbon/human/user, silent)
 	. = ..()
-	if(!istype(user) || user.gloves)
+	if(!istype(user))
 		return FALSE
-
-	to_chat(user, SPAN_DANGER("The nettle burns your bare hand!"))
-	var/obj/limb/affecting = user.get_limb(user.hand ? "l_hand":"r_hand")
-	affecting.take_damage(0, force)
-	return TRUE
+	if(!user.gloves)
+		to_chat(user, SPAN_DANGER("The nettle burns your bare hand!"))
+		var/obj/limb/affecting = user.get_limb(user.hand ? "l_hand":"r_hand")
+		affecting.take_damage(0, force)
 
 /obj/item/reagent_container/food/snacks/grown/nettle/death
 	plantname = "deathnettle"
@@ -120,10 +119,11 @@
 	user.apply_internal_damage(potency/potency_divisior, user.internal_organs_by_name["liver"])
 
 /obj/item/reagent_container/food/snacks/grown/nettle/death/pickup(mob/living/carbon/human/user)
-
-	if(..() && prob(50))
+	. = ..()
+	if(!user.gloves && prob(50))
 		user.apply_effect(5, PARALYZE)
 		to_chat(user, SPAN_DANGER("You are stunned by the deathnettle as you try to pick it up!"))
+		return FALSE
 
 /obj/item/reagent_container/food/snacks/grown/harebell
 	name = "harebell"

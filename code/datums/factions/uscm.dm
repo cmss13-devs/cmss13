@@ -101,8 +101,20 @@
 			if(JOB_CO)
 				marine_rk = "co"
 				border_rk = "command"
-			if(JOB_USCM_OBSV)
-				marine_rk = "vo"
+			if(JOB_USCM_OBSV)//USCM Observer Team
+				marine_rk = "visit_co"
+				border_rk = "command"
+			if(JOB_USCM_OBSV_JNR)//USCM Observer Team
+				marine_rk = "visit_xo"
+				border_rk = "command"
+			if(JOB_USCM_HG_SL)//USCM Observer Team
+				marine_rk = "visit_hgl"
+				border_rk = "command"
+			if(JOB_USCM_HG)//USCM Observer Team
+				marine_rk = "visit_hg"
+				border_rk = "command"
+			if(JOB_USCM_SEA)//USCM Observer Team
+				marine_rk = "visit_sea"
 				border_rk = "command"
 			if(JOB_SO)
 				marine_rk = "so"

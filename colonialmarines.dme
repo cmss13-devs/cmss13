@@ -1942,6 +1942,7 @@
 #include "code\modules\gear_presets\uscm_police.dm"
 #include "code\modules\gear_presets\uscm_ship.dm"
 #include "code\modules\gear_presets\uscm_synths.dm"
+#include "code\modules\gear_presets\uscm_visiting_officers.dm"
 #include "code\modules\gear_presets\whiteout.dm"
 #include "code\modules\gear_presets\wo.dm"
 #include "code\modules\gear_presets\wy.dm"

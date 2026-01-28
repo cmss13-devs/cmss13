@@ -312,7 +312,7 @@
 
 /obj/item/clothing/gloves/yautja/hunter/emp_act(severity)
 	. = ..()
-	charge = max(charge - (1000/severity), 0) //someone made weaker emp have higer severity so we divide
+	charge = max(charge - (1000/severity), 0) //someone made weaker emp have higher severity so we divide
 	if(ishuman(loc))
 		var/mob/living/carbon/human/wearer = loc
 		if(wearer.gloves == src)
@@ -440,7 +440,7 @@
 	var/obj/item/attached_weapon
 	///Attachment deployment sound
 	var/deployment_sound
-	///Attachment rectraction sound
+	///Attachment retraction sound
 	var/retract_sound
 
 /obj/item/bracer_attachments/Initialize(mapload, ...)
@@ -503,12 +503,12 @@
 		return ..()
 
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
-		to_chat(user, SPAN_WARNING("You do not know how to attach the [attacking_item] to the [src]."))
+		to_chat(user, SPAN_WARNING("You do not know how to attach the [attacking_item] to \the [src]."))
 		return
 
 	var/obj/item/bracer_attachments/bracer_attachment = attacking_item
 	if(!bracer_attachment.attached_weapon_type)
-		CRASH("[key_name(user)] attempted to attach the [bracer_attachment] to the [src], with no valid attached_weapon.")
+		CRASH("[key_name(user)] attempted to attach the [bracer_attachment] to \the [src], with no valid attached_weapon.")
 
 	if(left_bracer_attachment && right_bracer_attachment)
 		to_chat(user, SPAN_WARNING("You already have the maximum amount of bracer attachments on [src]."))
@@ -1088,7 +1088,7 @@
 
 /obj/item/clothing/gloves/yautja/hunter/verb/remote_kill()
 	set name = "Remotely Kill Youngblood"
-	set desc = "Remotley kill a youngblood for breaking the honour code."
+	set desc = "Remotely kill a youngblood for breaking the honour code."
 	set category = "Yautja.Misc"
 	set src in usr
 	. = remote_kill_internal(usr, FALSE)

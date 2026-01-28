@@ -1001,12 +1001,12 @@
 
 /obj/item/weapon/gun/smartgun/clf
 	name = "\improper scavenged M56 'Freedom' smartgun"
-	desc = "A smartgun abomination made from salvaged-parts sloppily wired and welded together, it appears to be rusted across it's frame. As whoever made this thing, clearly had no resources or proper tools to assemble it to an efficient usable state."
-	desc_lore = {"After long-fiery battles that partook within the Neroid Sector of the frontier, the United States Colonial Marines were pushed out by Colonial Liberation Front cells. Through a set of tactics, utilizing guerilla warfare mostly based around hit-and runs to compensate for the lack of proper logistics.
+	desc = "A smartgun abomination made from salvaged parts sloppily-wired and welded together. It appears to be rusted across its frame.Whoever made this thing clearly had no resources or proper tools to assemble it to an efficient, usable state."
+	desc_lore = {"After long, fiery battles that had partaken within the Neroid Sector of the frontier, the United States Colonial Marines were pushed out by Colonial Liberation Front cells through a set of tactics, utilizing guerilla warfare mostly based around hit and runs to compensate for the lack of proper logistics.
 
-		On it's aftermath gear unrecovered was left on the way, which the front proceeded to use to their own advantage. Taking what they could from the corpses of the infantry left behind to cover their needs, the mechanisms and electronics from the M56A2's were extracted from the broken-down exemplarys. Then placed into a makeshift frame although primitive and rudimentary due to no detailed schematics or resources at hand. Then issued out as  a desperate measure of giving an equal fire-support weapon to it's troops.
+		During the aftermath, the front took what they could from the corpses of the infantry left behind to cover their needs, including the mechanisms and electronics from the M56A2's that were extracted from the broken-down exemplaries and placed into a makeshift frame.  Although primitive and rudimentary due to no detailed schematics or resources at hand, they issued this out as desperate measure of giving an equal fire-support weapon to its troops.
 
-		After studys done on this frankenstein of a weapon by the USCM, it reportedly was using parts from the slightly outdated M56, mainly it's barrel to outfit it, as  an unintentioned flaw it jams constantly requiring extensive  and frequent maintenance making it almost unreliable. The M57 and L56A2 were also scrapped for spare-parts to put it together, as the rarity of parts themselves was a prominent fabrication issue for the insurgency cells."}
+		After studies done on this frankenstein of a weapon by the USCM, it reportedly was using parts from the slightly outdated M56, mainly its barrel to outfit it. Unfortunately, the makeshift weapon jams constantly and requiring extensive and frequent maintenance, it almost unreliable. The M57 and L56A2 were also scrapped for spare parts to put it together, as the rarity of parts themselves was a prominent fabrication issue for the insurgency cells."}
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/machineguns.dmi'
 	icon_state = "m56f"
 	item_state = "m56f"
@@ -1076,7 +1076,7 @@
 				toggle_ammo_type(user)
 			if(7)
 				toggle_lethal_mode(user)
-		to_chat(user, SPAN_HIGHDANGER("The [src] electronics malfunctions!"))
+		to_chat(user, SPAN_HIGHDANGER("\The [src] electronics malfunctions!"))
 		var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
 		sparks.set_up(5, 3, src)
 		sparks.start()
@@ -1190,7 +1190,7 @@
 //  Solar devils SG, frontline mode only
 
 /obj/item/weapon/gun/smartgun/pve
-	desc = "The actual firearm in the 4-piece M56A2 Smartgun System. This is a variant used by the Solar Devils Batallion, utilizing a 'frontline only' IFF system that refuses to fire if a friendly would be hit."
+	desc = "The actual firearm in the 4-piece M56A2 Smartgun System. This is a variant used by the Solar Devils Battalion, utilizing a 'frontline only' IFF system that refuses to fire if a friendly would be hit."
 	actions_types = list(
 		/datum/action/item_action/smartgun/toggle_accuracy_improvement,
 		/datum/action/item_action/smartgun/toggle_ammo_type,

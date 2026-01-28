@@ -118,26 +118,27 @@
 			new O.type (src)
 			S.use(1)
 			user.visible_message(
-				SPAN_NOTICE("[user] has added one of [O] to \the [src]."),
-				SPAN_NOTICE("You add one of [O] to \the [src]."))
+				SPAN_NOTICE("[user] has added one of \the [O]\s to [src]."),
+				SPAN_NOTICE("You add one of \the [O]\s to [src]."))
 		else
 		// user.before_take_item(O) //This just causes problems so far as I can tell. -Pete
 			if(user.drop_held_item())
 				O.forceMove(src)
 				user.visible_message(
-					SPAN_NOTICE("[user] has added \the [O] to \the [src]."),
+					SPAN_NOTICE("[user] has added \the [O] to [src]."),
 					SPAN_NOTICE("You add \the [O] to \the [src]."))
+
 	else if(istype(O,/obj/item/reagent_container/glass) || istype(O,/obj/item/reagent_container/food/drinks) || istype(O,/obj/item/reagent_container/food/condiment)) // TODO: typecache this
 		if (!O.reagents)
 			return 1
 		for (var/datum/reagent/R in O.reagents.reagent_list)
 			if (!(R.id in acceptable_reagents))
-				to_chat(user, SPAN_DANGER("Your [O] contains components unsuitable for cookery."))
+				to_chat(user, SPAN_DANGER("\The [O] contains components unsuitable for cookery."))
 				return 1
 	else if(istype(O,/obj/item/grab))
 		return 1
 	else
-		to_chat(user, SPAN_DANGER("You have no idea what you can cook with this [O]."))
+		to_chat(user, SPAN_DANGER("You have no idea what you can cook with \the [O]."))
 		return 1
 	src.updateUsrDialog()
 
@@ -305,13 +306,13 @@
 	src.updateUsrDialog()
 
 /obj/structure/machinery/microwave/proc/abort()
-	src.operating = 0 // Turn it off again aferwards
+	src.operating = 0 // Turn it off again afterwards
 	src.icon_state = "mw"
 	src.updateUsrDialog()
 
 /obj/structure/machinery/microwave/proc/stop()
 	playsound(src.loc, 'sound/machines/ding.ogg', 25, 1)
-	src.operating = 0 // Turn it off again aferwards
+	src.operating = 0 // Turn it off again afterwards
 	src.icon_state = "mw"
 	src.updateUsrDialog()
 
@@ -334,7 +335,7 @@
 	dirty = 100 // Make it dirty so it can't be used util cleaned
 	flags_atom = null //So you can't add condiments
 	icon_state = "mwbloody" // Make it look dirty too
-	operating = 0 // Turn it off again aferwards
+	operating = 0 // Turn it off again afterwards
 	updateUsrDialog()
 
 /obj/structure/machinery/microwave/proc/broke()
@@ -345,7 +346,7 @@
 	visible_message(SPAN_DANGER("The microwave breaks!")) //Let them know they're stupid
 	broken = 2 // Make it broken so it can't be used util fixed
 	flags_atom = null //So you can't add condiments
-	operating = 0 // Turn it off again aferwards
+	operating = 0 // Turn it off again afterwards
 	updateUsrDialog()
 
 /obj/structure/machinery/microwave/proc/fail()

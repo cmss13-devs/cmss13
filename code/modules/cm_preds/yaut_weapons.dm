@@ -295,7 +295,7 @@
 		if(door.heavy)
 			to_chat(usr, SPAN_DANGER("[door] is too heavy to be forced open."))
 			return FALSE
-		user.visible_message(SPAN_DANGER("[user] grips [door] with their [name] and strains to smash it open..."), SPAN_DANGER("You grip the [door] by the gap and strain to force it open..."))
+		user.visible_message(SPAN_DANGER("[user] grips [door] with their [name] and strains to smash it open..."), SPAN_DANGER("You grip [door] by the gap and strain to force it open..."))
 		if(do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && door.density)
 			user.visible_message(SPAN_DANGER("[user] forces [door] open with the [name]!"), SPAN_DANGER("You force [door] open with the [name]."))
 			door.open(TRUE)
@@ -307,7 +307,7 @@
 		if(door.isSwitchingStates || user.a_intent == INTENT_HARM)
 			return
 		if(door.density)
-			user.visible_message(SPAN_DANGER("[user] grips [door] with their [name] and strains to smash it open..."), SPAN_DANGER("You grip the [door] by the gap and strain to force it open..."))
+			user.visible_message(SPAN_DANGER("[user] grips [door] with their [name] and strains to smash it open..."), SPAN_DANGER("You grip[door] by the gap and strain to force it open..."))
 			playsound(user, 'sound/weapons/wristblades_hit.ogg', 15, TRUE)
 			if(do_after(user, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && door.density)
 				user.visible_message(SPAN_DANGER("[user] forces [door] open using the [name]!"), SPAN_DANGER("You force [door] open with your [name]."))
@@ -1176,13 +1176,13 @@
 
 	var/obj/item/clothing/accessory/limb/skeleton/head/skull = attacking_item
 	if(skull_attached)
-		to_chat(user, SPAN_WARNING("You already have a [skull] mounted on [src]."))
+		to_chat(user, SPAN_WARNING("You already have \a [skull] mounted on [src]."))
 		return
 
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		to_chat(user, SPAN_WARNING("Why would you want to do this!?."))
 		return
-	user.visible_message(SPAN_NOTICE("[user] mounts the [skull] with [src]."), SPAN_NOTICE("You mount [skull] to [src]."))
+	user.visible_message(SPAN_NOTICE("[user] mounts \the [skull] with [src]."), SPAN_NOTICE("You mount \the [skull] to [src]."))
 	user.drop_inv_item_to_loc(skull, src)
 	skull_attached = TRUE
 	update_icon()

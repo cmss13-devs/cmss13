@@ -262,8 +262,8 @@
 			CHECK_TICK
 	return res
 
-/obj/item/device/camera/proc/get_mob_descriptions(turf/the_turf, existing_descripion)
-	var/mob_detail = existing_descripion
+/obj/item/device/camera/proc/get_mob_descriptions(turf/the_turf, existing_description)
+	var/mob_detail = existing_description
 	for(var/mob/living/carbon/cur_carbon in the_turf)
 		if(cur_carbon.invisibility)
 			continue
@@ -293,7 +293,7 @@
 		to_chat(user, SPAN_WARNING("[src] is still processing the last photo, hold your horses!"))
 		return
 	if(pictures_left <= 0)
-		to_chat(user, SPAN_WARNING("There isn't enough film in the [src] to take a photo."))
+		to_chat(user, SPAN_WARNING("There isn't enough film in \the [src] to take a photo."))
 		return
 	if(ismob(target.loc) || isstorage(target.loc) || user.contains(target) || istype(target, /atom/movable/screen))
 		return
@@ -382,7 +382,7 @@
 	explo_proof = TRUE
 	w_class = SIZE_HUGE
 	flags_item = NO_FLAGS
-	flags_equip_slot = NO_FLAGS //cannot be equiped
+	flags_equip_slot = NO_FLAGS //cannot be equipped
 	var/active = FALSE
 	var/obj/structure/machinery/camera/correspondent/linked_cam
 

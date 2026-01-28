@@ -26,7 +26,7 @@
 	// Are we trying to immobilize the vehicle?
 	if(istype(O, /obj/item/vehicle_clamp))
 		if(clamped)
-			to_chat(user, SPAN_WARNING("[src] already has a [O.name] attached."))
+			to_chat(user, SPAN_WARNING("[src] already has \a [O.name] attached."))
 			return
 
 		//only can clamp friendly vehicles

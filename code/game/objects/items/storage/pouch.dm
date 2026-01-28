@@ -67,14 +67,14 @@
 
 /obj/item/storage/pouch/general/medium
 	name = "medium general pouch"
-	desc = "A general-purpose pouch used to carry a variety of differently sized items."
+	desc = "A general-purpose pouch used to carry a variety of differently sized items. It has enough space for two small or four tiny items."
 	icon_state = "medium_drop"
 	storage_slots = null
 	max_storage_space = 4
 
 /obj/item/storage/pouch/general/large
 	name = "large general pouch"
-	desc = "A general-purpose pouch used to carry more differently sized items."
+	desc = "A general-purpose pouch used to carry more differently sized items. It has enough space for three small or six tiny items."
 	icon_state = "large_drop"
 	storage_slots = null
 	max_storage_space = 6
@@ -103,7 +103,7 @@
 
 /obj/item/storage/pouch/bayonet
 	name = "bayonet sheath"
-	desc = "Knife to meet you!"
+	desc = "Knife to meet you! It has enough space for five bayonets."
 	can_hold = list(
 		/obj/item/weapon/throwing_knife,
 		/obj/item/attachable/bayonet,
@@ -143,7 +143,7 @@
 
 /obj/item/storage/pouch/survival
 	name = "survival pouch"
-	desc = "A pouch given to colonists in the event of an emergency."
+	desc = "A pouch with six pockets, given to colonists in the event of an emergency."
 	icon_state = "tools"
 	storage_slots = 7
 	max_w_class = SIZE_MEDIUM
@@ -186,7 +186,7 @@
 
 /obj/item/storage/pouch/survival/synth
 	name = "synth survival pouch"
-	desc = "An emergency pouch given to synthetics in the event of an emergency."
+	desc = "An emergency pouch with six pockets, given to synthetics in the event of an emergency."
 	icon_state = "tools"
 	storage_slots = 6
 	max_w_class = SIZE_MEDIUM
@@ -221,7 +221,7 @@
 
 /obj/item/storage/pouch/firstaid
 	name = "first-aid pouch"
-	desc = "A small pouch that can hold basic medical equipment, such as autoinjectors and bandages."
+	desc = "A small pouch with four pockets that can hold basic medical equipment, such as autoinjectors and bandages."
 	icon_state = "firstaid"
 	storage_slots = 4
 	can_hold = list(
@@ -236,7 +236,8 @@
 	icon_state = "wy_firstaid"
 
 /obj/item/storage/pouch/firstaid/full
-	desc = "Contains a variety of autoinjectors for quickly treating injuries."
+	name = "autoinjector first-aid pouch"
+	desc = "A four-pocket pouch that contains a variety of autoinjectors for quickly treating injuries."
 
 /obj/item/storage/pouch/firstaid/full/fill_preset_inventory()
 	new /obj/item/reagent_container/hypospray/autoinjector/bicaridine(src)
@@ -248,7 +249,9 @@
 	icon_state = "wy_firstaid"
 
 /obj/item/storage/pouch/firstaid/full/alternate
-	desc = "Contains a first-aid autoinjector, bandages, ointment, and splints."
+
+	name = "filled first-aid pouch"
+	desc = "A four-pocket pouch that contains a first-aid autoinjector, bandages, ointment, and splints."
 
 /obj/item/storage/pouch/firstaid/full/alternate/wy
 	name = "W-Y first-aid pouch"
@@ -264,7 +267,8 @@
 	icon_state = "wy_firstaid"
 
 /obj/item/storage/pouch/firstaid/full/pills
-	desc = "Contains a variety of pill packets for treating many injuries."
+	name = "pill bottle first-aid pouch"
+	desc = "A four-pocket pouch that contains a variety of pill packets for treating many injuries."
 
 /obj/item/storage/pouch/firstaid/full/pills/wy
 	name = "W-Y first-aid pouch"
@@ -299,14 +303,15 @@
 	new /obj/item/reagent_container/pill/bicaridine/natural(src)
 
 /obj/item/storage/pouch/firstaid/ert
-	desc = "It can contain autoinjectors, ointments, and bandages. This one has some extra stuff."
+	name = "emergency first-aid pouch"
+	desc = "A five-pocket pouch can contain autoinjectors, ointments, and bandages. This one has some extra stuff."
 	icon_state = "firstaid"
 	storage_slots = 5
 
 /obj/item/storage/pouch/firstaid/ert/fill_preset_inventory()
-	new /obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/ez/bicaridine(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/ez/kelotane(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/ez/tramadol(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/emergency(src)
 	new /obj/item/stack/medical/bruise_pack(src)
 
@@ -379,7 +384,7 @@
 ///CO pouch. This pouch can hold only 1 of each type of item: 1 sidearm, 1 pair of binoculars, 1 CO tablet
 /obj/item/storage/pouch/pistol/command
 	name = "command pouch"
-	desc = "A specialized, sturdy pouch issued to Commanding Officers. Can hold their sidearm, the command tablet and a set of binoculars."
+	desc = "A specialized, sturdy pouch with three pockets, issued to Commanding Officers. Can hold their sidearm, the command tablet and a set of binoculars."
 	storage_slots = 3
 	icon_state = "command_pouch"
 	can_hold = list(
@@ -464,7 +469,7 @@
 
 /obj/item/storage/pouch/magazine
 	name = "magazine pouch"
-	desc = "It can carry magazines."
+	desc = "It can carry up to three magazines."
 	icon_state = "medium_ammo_mag"
 	max_w_class = SIZE_MEDIUM
 	storage_slots = 3
@@ -497,7 +502,7 @@
 
 /obj/item/storage/pouch/magazine/large
 	name = "large magazine pouch"
-	desc = "It can carry many magazines."
+	desc = "It can carry four magazines."
 	icon_state = "large_ammo_mag"
 	storage_slots = 4
 
@@ -506,7 +511,7 @@
 
 /obj/item/storage/pouch/magazine/pistol
 	name = "pistol magazine pouch"
-	desc = "It can carry pistol magazines and revolver speedloaders."
+	desc = "It can carry up to 4 pistol magazines or revolver speedloaders."
 	max_w_class = SIZE_SMALL
 	icon_state = "pistol_mag"
 	storage_slots = 4
@@ -519,7 +524,7 @@
 
 /obj/item/storage/pouch/magazine/pistol/large
 	name = "large pistol magazine pouch"
-	desc = "It can carry many pistol magazines or revolver speedloaders."
+	desc = "It can carry six pistol magazines or revolver speedloaders."
 	storage_slots = 6
 	icon_state = "large_pistol_mag"
 
@@ -604,7 +609,7 @@
 
 /obj/item/storage/pouch/magazine/large/pmc_sg
 	name = "smartgun drum pouch"
-	desc = "A heavy pouch designed for carrying a surplus of smargun drums."
+	desc = "A heavy pouch designed for carrying up to three smartgun drums."
 	icon_state = "wy_sgdrums_ammo"
 	storage_slots = 3
 	can_hold = list(
@@ -654,7 +659,7 @@
 
 /obj/item/storage/pouch/shotgun
 	name = "shotgun shell pouch"
-	desc = "It can contain handfuls of shells, or bullets if you choose to for some reason."
+	desc = "It has five pockets that can contain handfuls of shells, or bullets if you choose to for some reason."
 	icon_state = "medium_shotshells"
 	max_w_class = SIZE_SMALL
 	storage_slots = 5
@@ -685,7 +690,7 @@
 
 /obj/item/storage/pouch/shotgun/large
 	name = "large shotgun shell pouch"
-	desc = "It can contain more handfuls of shells, or bullets if you choose to for some reason."
+	desc = "It has seven pockets that can contain more handfuls of shells, or bullets if you choose to for some reason."
 	icon_state = "large_shotshells"
 	storage_slots = 7
 
@@ -707,7 +712,7 @@
 
 /obj/item/storage/pouch/explosive
 	name = "explosive pouch"
-	desc = "It can carry grenades, plastic explosives, mine boxes, and other explosives."
+	desc = "It can carry six grenades, plastic explosives, mine boxes, and other explosives."
 	icon_state = "large_explosive"
 	storage_slots = 6
 	max_w_class = SIZE_MEDIUM
@@ -742,7 +747,7 @@
 
 /obj/item/storage/pouch/medical
 	name = "medical pouch"
-	desc = "It can carry small medical supplies."
+	desc = "A pouch with four pockets for carrying medical supplies."
 	icon_state = "medical"
 	storage_slots = 4
 
@@ -777,7 +782,7 @@
 
 /obj/item/storage/pouch/medical/socmed
 	name = "tactical medical pouch"
-	desc = "A heavy pouch containing everything one needs to get themselves back on their feet. Quite the selection."
+	desc = "A heavy pouch with thirteen pockets that can contain everything one needs to get themselves back on their feet. It has quite the selection."
 	icon_state = "socmed"
 	storage_slots = 13
 	can_hold = list(
@@ -849,7 +854,7 @@
 
 /obj/item/storage/pouch/medical/socmed/dutch
 	name = "\improper Dutch's Medical Pouch"
-	desc = "A pouch bought from a black market trader by Dutch quite a few years ago. Rumoured to be stolen from secret USCM assets. Its contents have been slowly used up and replaced over the years."
+	desc = "A pouch bought from a black market trader by Dutch quite a few years ago. Rumoured to be stolen from secret USCM assets. Its contents have been slowly used up and replaced over the years. It has thirteen pockets."
 
 /obj/item/storage/pouch/medical/socmed/dutch/fill_preset_inventory()
 	new /obj/item/device/healthanalyzer(src)
@@ -868,11 +873,11 @@
 
 /obj/item/storage/pouch/medical/socmed/dutch/unmarked
 	name = "tactical medical pouch"
-	desc = "A heavy pouch containing everything one needs to get themselves back on their feet. Quite the selection. Somehow, the whole pouch manages to look classified, you feel like you're going to get court-marshalled for even looking at it."
+	desc = "A heavy pouch with thirteen pockets that can contain everything one needs to get themselves back on their feet. It has quite the selection. Somehow, the whole pouch manages to look classified, you feel like you're going to get court-marshalled for even looking at it."
 
 /obj/item/storage/pouch/first_responder
 	name = "first responder pouch"
-	desc = "A pouch designed for carrying supplies to assist medical personnel and quickly respond to injuries on the battlefield without immediately treating them. Can hold supplies such as roller beds, stasis bags, and health analysers."
+	desc = "A pouch with four slots, designed for carrying supplies to assist medical personnel and quickly respond to injuries on the battlefield without immediately treating them. Can hold supplies such as roller beds, stasis bags, and health analysers."
 	icon_state = "frt_med"
 	storage_slots = 4
 
@@ -898,7 +903,7 @@
 
 /obj/item/storage/pouch/vials
 	name = "vial pouch"
-	desc = "A pouch for carrying glass vials."
+	desc = "A pouch with six pockets for carrying vials."
 	icon_state = "vial"
 	storage_slots = 6
 	can_hold = list(/obj/item/reagent_container/glass/beaker/vial)
@@ -916,7 +921,7 @@
 
 /obj/item/storage/pouch/chem
 	name = "chemistry pouch"
-	desc = "A pouch for carrying glass beakers."
+	desc = "A pouch with two big pockets for carrying up two bottles or beakers of any size."
 	icon_state = "chemist"
 	storage_slots = 2
 	can_hold = list(
@@ -930,7 +935,7 @@
 
 /obj/item/storage/pouch/autoinjector
 	name = "autoinjector pouch"
-	desc = "A pouch specifically for autoinjectors."
+	desc = "A pouch with seven pockets specifically for autoinjectors."
 	icon_state = "injectors"
 	storage_slots = 7
 	can_hold = list(/obj/item/reagent_container/hypospray/autoinjector)
@@ -949,7 +954,7 @@
 
 /obj/item/storage/pouch/syringe
 	name = "syringe pouch"
-	desc = "It can carry syringes."
+	desc = "It can carry up to six syringes."
 	icon_state = "syringe"
 	storage_slots = 6
 	can_hold = list(/obj/item/reagent_container/syringe)
@@ -962,7 +967,7 @@
 	name = "engineer kit pouch"
 	storage_flags = STORAGE_FLAGS_POUCH
 	icon_state = "construction"
-	desc = "It's specifically made to hold engineering items. Requires engineering skills to use effectively."
+	desc = "A six-pocketed engineer's best friend. Requires engineering skills to use effectively."
 	storage_slots = 6
 	can_hold_skill = list(
 		/obj/item/circuitboard = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
@@ -985,7 +990,7 @@
 	name = "medical kit pouch"
 	storage_flags = STORAGE_FLAGS_POUCH
 	icon_state = "medkit"
-	desc = "It's specifically made to hold medical items. Requires medical skills to use effectively."
+	desc = "A seven-pocketed doctor's best friend. Requires medical skills to use effectively."
 	storage_slots = 7
 	can_hold_skill = list(
 		/obj/item/device/healthanalyzer = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
@@ -1089,40 +1094,39 @@
 	new /obj/item/stack/medical/splint(src)
 
 /obj/item/storage/pouch/pressurized_reagent_canister
-	name = "Pressurized Reagent Canister Pouch"
+	name = "\improper Pressurized Reagent Canister Pouch"
 	max_w_class = SIZE_SMALL
 	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD
 	icon_state = "pressurized_reagent_canister"
-	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser."
+	desc = "A pouch that can carry one custom autoinjector and one pressurized reagent canister that you can fill with a reagent tank or chemical dispenser."
 	can_hold = list(/obj/item/reagent_container/hypospray/autoinjector/empty)
 	var/obj/item/reagent_container/glass/pressurized_canister/inner
 	matter = list("plastic" = 2000, "glass" = 2000)
 	flags_item = NOBLUDGEON
 
-
-/obj/item/storage/pouch/pressurized_reagent_canister/bicaridine
-	name = "Pressurized Reagent Canister Pouch (Bicaridine)"
-	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser. This one came pre-filled with the reliable brute-mending Bicaridine."
-
-/obj/item/storage/pouch/pressurized_reagent_canister/kelotane
-	name = "Pressurized Reagent Canister Pouch (Kelotane)"
-	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser. This one came pre-filled with the reliable burn-healing Kelotane."
-
-/obj/item/storage/pouch/pressurized_reagent_canister/tricordrazine
-	name = "Pressurized Reagent Canister Pouch (Tricordrazine)"
-	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser. This one came pre-filled with the reliable medicine that slowly heals brute, burn, toxin, and oxy damage, Tricordrazine."
+/obj/item/storage/pouch/pressurized_reagent_canister/damage_mend
+	name = "\improper Pressurized Reagent Canister Pouch (Damage Mending Mix)"
+	desc = "A pouch that carries a 15u reagent pouch autoinjector and a pressurized reagent canister filled with equal parts Bicaridine, Kelotane, and Tricordrazine to quickly heal brute and burn damage accumulated on the field. You can refill 160 units of each reagent with a reagent tank or chemical dispenser."
 
 /obj/item/storage/pouch/pressurized_reagent_canister/oxycodone
-	name = "Pressurized Reagent Canister Pouch (Field Anesthetic)"
-	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser. This one came pre-filled with the most robust painkiller available from your local chem dispenser, Oxycodone."
+	name = "\improper Pressurized Reagent Canister Pouch (Field Anesthetic)"
+	desc = "A pouch that carries a 5u reagent pouch autoinjector and a pressurized reagent canister filled with the most robust painkiller, Oxycodone, that you can refill with a reagent tank or chemical dispenser. The dosage is small to gauge the amount of anesthetic needed for minor or complicated surgeries, and to reduce the occurrences of overdoses."
 
-/obj/item/storage/pouch/pressurized_reagent_canister/revival_tricord
-	name = "Pressurized Reagent Canister Pouch (Tricordrazine Revival Mix)"
-	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser. This one came pre-filled with equal-parts Epinephrine, Inaprovaline, and Tricordrazine for stablizing and minimizing damage to defibrillated patients."
+/obj/item/storage/pouch/pressurized_reagent_canister/revival_oxy
+	name = "\improper Pressurized Reagent Canister Pouch (Oxycodone Revival Mix)"
+	desc = "A pouch that carries a 15u custom autoinjector and a pressurized reagent canister filled with equal-parts Oxycodone, Inaprovaline, and Epinephrine for quickly getting marines in pain crit up and back on their feet. You can refill 160 units of each reagent with a reagent tank or chemical dispenser."
 
 /obj/item/storage/pouch/pressurized_reagent_canister/revival_peri
-	name = "Pressurized Reagent Canister Pouch (Peridaxon Revival Mix)"
-	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser. This one came pre-filled with equal-parts Epinephrine, Inaprovaline, and Peridaxon to stablize patients and stave off symptoms of post-defibrillation heart damage."
+	name = "\improper Pressurized Reagent Canister Pouch (Peridaxon Revival Mix)"
+	desc = "A pouch that carries a 15u custom autoinjector and a pressurized reagent canister filled with equal-parts Epinephrine, Inaprovaline, and Peridaxon for stabilizing and staving off effects of defibrillation-related heart damage. You can refill 160 units of each reagent with a reagent tank or chemical dispenser."
+
+/obj/item/storage/pouch/pressurized_reagent_canister/revival_tricord
+	name = "\improper Pressurized Reagent Canister Pouch (Tricordrazine Revival Mix)"
+	desc = "A pouch that carries a 15u custom autoinjector and a pressurized reagent canister filled with equal-parts Epinephrine, Inaprovaline, and Tricordrazine for stabilizing and minimizing damage to defibrillated patients. You can refill 160 units of each reagent with a reagent tank or chemical dispenser."
+
+/obj/item/storage/pouch/pressurized_reagent_canister/surgery_prep
+	name = "\improper Pressurized Reagent Canister Pouch (Surgery Prep Mix)"
+	desc = "A pouch that carries a 15u custom autoinjector and a pressurized reagent canister filled with 280u Oxycodone, 160u Dexalin+, and 40u Peridaxon to locally anesthetize patients and prevent them from dying on the table due to the effects of organ damage or suffocating from low blood. You can refill the pouch's canister with a reagent tank or chemical dispenser."
 
 /obj/item/storage/pouch/pressurized_reagent_canister/Initialize()
 	. = ..()
@@ -1142,21 +1146,45 @@
 		A.update_icon()
 	update_icon()
 
-/obj/item/storage/pouch/pressurized_reagent_canister/bicaridine/Initialize()
+/obj/item/storage/pouch/pressurized_reagent_canister/damage_mend/Initialize()
 	. = ..()
-	fill_with("bicaridine")
 
-/obj/item/storage/pouch/pressurized_reagent_canister/kelotane/Initialize()
-	. = ..()
-	fill_with("kelotane")
+	//we don't call fill_with because of the complex mix of chemicals we have
+	inner.reagents.add_reagent("bicaridine", inner.volume/3)
+	inner.reagents.add_reagent("kelotane", inner.volume/3)
+	inner.reagents.add_reagent("tricordrazine", inner.volume/3)
+	if(length(contents) > 0)
+		var/obj/item/reagent_container/hypospray/autoinjector/empty/medic/A = contents[1]
+		A.reagents.add_reagent("bicaridine", A.volume/3)
+		A.reagents.add_reagent("kelotane", A.volume/3)
+		A.reagents.add_reagent("tricordrazine", A.volume/3)
+		A.update_uses_left()
+		A.update_icon()
+	update_icon()
 
 /obj/item/storage/pouch/pressurized_reagent_canister/oxycodone/Initialize()
 	. = ..()
+	if(length(contents))
+		for(var/obj/item/reagent_container/hypospray/autoinjector/empty/autoinjector in contents)
+			qdel(autoinjector) //delete current autoinjector because parent spawned a 15u one and we want a 5u one here. If there's a better way of doing this, let me know, please.
+			new /obj/item/reagent_container/hypospray/autoinjector/empty/medic/extrasmall(src)
 	fill_with("oxycodone")
+	update_icon()
 
-/obj/item/storage/pouch/pressurized_reagent_canister/tricordrazine/Initialize()
+/obj/item/storage/pouch/pressurized_reagent_canister/revival_oxy/Initialize()
 	. = ..()
-	fill_with("tricordrazine")
+	//we don't call fill_with because of the complex mix of chemicals we have
+	inner.reagents.add_reagent("adrenaline", inner.volume/3)
+	inner.reagents.add_reagent("inaprovaline", inner.volume/3)
+	inner.reagents.add_reagent("oxycodone", inner.volume/3)
+	if(length(contents) > 0)
+		var/obj/item/reagent_container/hypospray/autoinjector/empty/medic/A = contents[1]
+		A.reagents.add_reagent("adrenaline", A.volume/3)
+		A.reagents.add_reagent("inaprovaline", A.volume/3)
+		A.reagents.add_reagent("oxycodone", A.volume/3)
+		A.update_uses_left()
+		A.update_icon()
+	update_icon()
 
 /obj/item/storage/pouch/pressurized_reagent_canister/revival_tricord/Initialize()
 	. = ..()
@@ -1188,10 +1216,26 @@
 		A.update_icon()
 	update_icon()
 
+/obj/item/storage/pouch/pressurized_reagent_canister/surgery_prep/Initialize()
+	. = ..()
+
+	//My special recipe: tried, tested, and true! -- Puckaboo2
+	inner.reagents.add_reagent("oxycodone", inner.volume*(7/12)) //280u
+	inner.reagents.add_reagent("dexalinp", inner.volume/3) //160u
+	inner.reagents.add_reagent("peridaxon", inner.volume/12) //40u. Peri and Dexalin only need to last long enough to give more blood/fix IB/complete organ repair surgery.
+	if(length(contents) > 0)
+		var/obj/item/reagent_container/hypospray/autoinjector/empty/medic/A = contents[1]
+		A.reagents.add_reagent("oxycodone", A.volume*(7/12))
+		A.reagents.add_reagent("dexalinp", A.volume/3)
+		A.reagents.add_reagent("peridaxon", A.volume/12)
+		A.update_uses_left()
+		A.update_icon()
+	update_icon()
+
 /obj/item/storage/pouch/pressurized_reagent_canister/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/reagent_container/glass/pressurized_canister))
 		if(inner)
-			to_chat(user, SPAN_WARNING("There already is a container inside [src]!"))
+			to_chat(user, SPAN_WARNING("There already is a canister inside [src]!"))
 		else
 			user.drop_inv_item_to_loc(W, src)
 			inner = W
@@ -1230,7 +1274,7 @@
 	if(istype(target, /obj/structure/machinery/chem_dispenser))
 		var/obj/structure/machinery/chem_dispenser/cd = target
 		if(!cd.beaker)
-			to_chat(user, SPAN_NOTICE("You unhook the inner container and connect it to [target]."))
+			to_chat(user, SPAN_NOTICE("You unhook the inner canister and connect it to [target]."))
 			inner.forceMove(cd)
 			cd.beaker = inner
 			inner = null
@@ -1310,9 +1354,9 @@
 	if(isxeno(user))
 		return
 	if(!inner)
-		return "This [src] has no container inside!"
+		return "[src] has no cansiter inside!"
 	if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_TRAINED))
-		return "This [src] contains: [get_reagent_list_text()]"
+		return "[src] contains: [get_reagent_list_text()]"
 	else
 		return "You don't know what's in it."
 
@@ -1335,26 +1379,30 @@
 	else
 		. = "No reagents"
 
-/obj/item/storage/pouch/pressurized_reagent_canister/verb/flush_container()
+/obj/item/storage/pouch/pressurized_reagent_canister/verb/flush_canister_in_pouch()
 	set category = "Weapons"
-	set name = "Flush Container"
-	set desc = "Forces the container to empty its reagents."
+	set name = "Flush Canister In Pouch"
+	set desc = "Forces the reagent canister inside the pouch to empty its reagents."
 	set src in usr
 	if(!inner)
-		to_chat(usr, SPAN_WARNING("There is no container inside this pouch!"))
+		to_chat(usr, SPAN_WARNING("There is no canister inside [src]!"))
+		return
+	if(inner.reagents.total_volume <= 0)
+		to_chat(usr, SPAN_NOTICE("The canister inside [src] is empty, already!"))
 		return
 
 	to_chat(usr, SPAN_NOTICE("You hold down the emergency flush button. Wait 3 seconds..."))
-	if(do_after(usr, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-		if(inner)
-			to_chat(usr, SPAN_NOTICE("You flush the [src]."))
-			inner.reagents.clear_reagents()
-			update_icon()
+	if(!do_after(usr, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+		to_chat(usr, SPAN_WARNING("You get distracted and stop trying to empty [inner]."))
+		return
+	to_chat(usr, SPAN_NOTICE("You flush [inner]."))
+	inner.reagents.clear_reagents()
+	update_icon()
 
 /obj/item/storage/pouch/pressurized_reagent_canister/verb/remove_canister()
 	set category = "Weapons"
 	set name = "Remove Canister"
-	set desc = "Removes the Pressurized Canister from the pouch."
+	set desc = "Removes the Pressurized Reagent Canister from the pouch."
 	set src in usr
 	if(!inner)
 		to_chat(usr, SPAN_WARNING("There is no container inside this pouch!"))
@@ -1367,9 +1415,53 @@
 	inner = null
 	update_icon()
 
+/obj/item/storage/pouch/pressurized_reagent_canister/verb/flush_autoinjector()
+	set category = "Weapons"
+	set name = "Flush Autoinjector"
+	set desc = "Forces the autoinjector inside the reagent canister pouch to dump whatever reagents it can into the canister and flush the rest."
+	set src in usr
+
+	for(var/obj/item/reagent_container/hypospray/autoinjector/empty/autoinjector as anything in contents)
+		if(!autoinjector)
+			to_chat(usr, SPAN_NOTICE("[src] does not have an autoinjector for you to flush."))
+		if(!inner) //no tank in pouch, so it acts as flushing an autoinjector in your hand
+			if(autoinjector.reagents.total_volume <= 0)
+				to_chat(usr, SPAN_NOTICE("[autoinjector] is already empty."))
+				return
+
+			to_chat(usr, SPAN_NOTICE("You hold down the emergency flush button. Wait 1 second..."))
+
+			if(!do_after(usr, 1 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+				to_chat(usr, SPAN_WARNING("You get distracted and stop trying to flush [autoinjector]."))
+				return
+
+			to_chat(usr, SPAN_NOTICE("You flush [autoinjector] without a canister to dump its contents in."))
+			autoinjector.reagents.clear_reagents()
+			autoinjector.uses_left = 0
+			update_icon()
+		else
+			if(autoinjector.reagents.total_volume <= 0)
+				to_chat(usr, SPAN_NOTICE("[autoinjector] is already empty."))
+				return
+
+			to_chat(usr, SPAN_NOTICE("You hold down the emergency flush button. Wait 1 second..."))
+			if(!do_after(usr, 1 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+				to_chat(usr, SPAN_WARNING("You get distracted and stop trying to flush [autoinjector]."))
+				return
+			var/amount = autoinjector.reagents.total_volume + inner.reagents.total_volume
+			if(amount > inner.reagents.maximum_volume)
+				to_chat(usr,SPAN_WARNING("You dump whatever of [autoinjector]'s contents you can into [inner] and flush the rest."))
+			else
+				to_chat(usr,SPAN_WARNING("You flush [autoinjector]'s contents into [inner]."))
+
+			autoinjector.reagents.trans_to(inner, autoinjector.reagents.total_volume) //dump the reagents in the autoinjector back in the canister, as a treat. They don't overflow the canister.
+			autoinjector.uses_left = 0
+			update_icon()
+
+
 /obj/item/storage/pouch/document
 	name = "large document pouch"
-	desc = "It can contain papers, folders, disks, technical manuals, and clipboards."
+	desc = "A deceptively-stretchy pouch with twenty-one pockets that can contain papers, folders, disks, technical manuals, and clipboards."
 	icon_state = "document"
 	storage_slots = 21
 	max_w_class = SIZE_MEDIUM
@@ -1387,12 +1479,12 @@
 
 /obj/item/storage/pouch/document/small
 	name = "small document pouch"
-	desc = "A smaller version of the document pouch. It can contain papers, folders, disks, technical manuals, and clipboards."
+	desc = "A much smaller version of the document pouch with seven pockets that can contain papers, folders, disks, technical manuals, and clipboards."
 	storage_slots = 7
 
 /obj/item/storage/pouch/flare
 	name = "flare pouch"
-	desc = "A pouch designed to hold flares. Refillable with an M94 flare pack."
+	desc = "A pouch designed to hold up to sixteen flares. Refillable with an M94 flare pack."
 	max_w_class = SIZE_SMALL
 	storage_slots = 16
 	max_storage_space = 16
@@ -1422,7 +1514,7 @@
 
 /obj/item/storage/pouch/electronics
 	name = "electronics pouch"
-	desc = "It is designed to hold most electronics, power cells and circuit boards."
+	desc = "A pouch with six pockets, designed to hold most electronics, power cells and circuit boards."
 	icon_state = "electronics"
 	storage_slots = 6
 	can_hold = list(
@@ -1447,7 +1539,7 @@
 
 /obj/item/storage/pouch/construction
 	name = "construction pouch"
-	desc = "It's designed to hold construction materials - glass/metal sheets, metal rods, barbed wire, cable coil, and empty sandbags. It also has two hooks for an entrenching tool and light replacer."
+	desc = "A small pouch with three pockets, designed to hold construction materials - glass/metal sheets, metal rods, barbed wire, cable coil, and empty sandbags. It also has two hooks for an entrenching tool and light replacer."
 	storage_slots = 3
 	max_w_class = SIZE_MEDIUM
 	icon_state = "construction"
@@ -1486,7 +1578,7 @@
 
 /obj/item/storage/pouch/tools
 	name = "tools pouch"
-	desc = "It's designed to hold maintenance tools - screwdriver, wrench, cable coil, etc. It also has a hook for an entrenching tool or light replacer."
+	desc = "A pouch with four pockets, designed to hold maintenance tools - screwdriver, wrench, cable coil, etc. It also has a hook for an entrenching tool or light replacer."
 	storage_slots = 4
 	max_w_class = SIZE_MEDIUM
 	icon_state = "tools"
@@ -1521,7 +1613,7 @@
 
 /obj/item/storage/pouch/tools/tactical
 	name = "tactical tools pouch"
-	desc = "This particular toolkit full of sharp, heavy objects was designed for breaking into things rather than fixing them. Still does the latter pretty well, though."
+	desc = "This particular eight-pocket toolkit is full of sharp, heavy objects designed for breaking into things rather than fixing them. Still does the latter pretty well, though."
 	icon_state = "soctools"
 	storage_slots = 8
 
@@ -1582,7 +1674,7 @@
 
 /obj/item/storage/pouch/tools/tactical/upp
 	name = "synthetic tools pouch"
-	desc = "Special issue tools pouch for UPP synthetics. Due to the enhanced strength of the synthetic and its inability to feel discomfort, this pouch is designed to maximize internal space with no concern for its wearer's comfort."
+	desc = "A seven-pocket tools pouch for UPP synthetics. Due to the enhanced strength of the synthetic and its inability to feel discomfort, this pouch is designed to maximize internal space with no concern for its wearer's comfort."
 	icon_state = "tools"
 	storage_slots = 7
 
@@ -1630,7 +1722,7 @@
 
 /obj/item/storage/pouch/tools/tactical/sec
 	name = "tactical security pouch"
-	desc = "A custom fit security pouch, capable of fitting a variety of security tools in different compartments."
+	desc = "A custom fit security pouch with five pockets, capable of fitting a variety of security tools in different compartments."
 	storage_slots = 5
 	can_hold = list(
 		/obj/item/explosive/grenade/flashbang,
@@ -1739,7 +1831,7 @@
 
 /obj/item/storage/pouch/cassette
 	name = "cassette pouch"
-	desc = "A finely crafted pouch, made specifically to keep cassettes safe during wartime."
+	desc = "A finely crafted pouch, made specifically to keep up to three cassettes safe during wartime."
 	icon_state = "cassette_pouch_closed"
 	item_state_slots = list(WEAR_AS_GARB = "cassette_pouch")
 	item_icons = list(

@@ -121,6 +121,20 @@
 	icon_state = "singularity_s1"
 
 
+/obj/item/toy/minesweeper_handheld
+	name = "Double CLF Attack: IED Edition Portable"
+	desc = "After series of unfortunate events related with delicate eletronics and high explosive, It was deemed neceesary to somehow combat this rise in casualties that would be otherwise avoided given proper training. This is the solution - a handheld device immitating such eletronics packaged into a game."
+	icon_state = "game_kit"
+	/// minesweeper game for changing the frequency
+	var/obj/structure/machinery/computer/arcade/minesweeper/minesweeper_game
+
+/obj/item/toy/minesweeper_handheld/Initialize(mapload, ...)
+	. = ..()
+	minesweeper_game = new(src, list(8,8), 10, TRUE)
+
+/obj/item/toy/minesweeper_handheld/attack_self(mob/user)
+	. = ..()
+	minesweeper_game.attack_hand(user)
 /*
  * Crayons
  */

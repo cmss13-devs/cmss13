@@ -496,10 +496,29 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_CIA "Intelligence Analyst"
 #define JOB_CIA_LIAISON "Intelligence Liaison Officer"
 #define JOB_CIA_UACQS_SEC "UACQS Security"
+#define JOB_CIA_UACQS_SECL "UACQS Security Lead"
 #define JOB_CIA_UACQS_ADMN "UACQS Administrator"
 #define JOB_CIA_UACQS_COMR "UACQS Commissioner"
+#define JOB_CIA_UACQS_DG "UACQS Director General"
+#define JOB_CIA_UACQS_SG "UACQS Secretary General"
 
-#define JOB_CIA_ROLES_LIST list(JOB_CIA, JOB_CIA_LIAISON, JOB_CIA_UACQS_SEC, JOB_CIA_UACQS_ADMN, JOB_CIA_UACQS_COMR)
+#define JOB_CIA_GRS_OPR "Global Response Operator"
+#define JOB_CIA_GRS_MED "Global Response Medic"
+#define JOB_CIA_GRS_ENG "Global Response Technician"
+#define JOB_CIA_GRS_HVY "Global Response Heavy Operator"
+#define JOB_CIA_GRS_SNP "Global Response Advanced Marksman"
+#define JOB_CIA_GRS_TL "Global Response Team Leader"
+#define JOB_CIA_GRS_DCDR "Global Response Deputy Commander"
+#define JOB_CIA_GRS_CDR "Global Response Commander"
+#define JOB_CIA_GRS_SYN "Global Response Synthetic"
+
+#define JOB_UACQS_ROLES_LIST list(JOB_CIA_UACQS_SEC, JOB_CIA_UACQS_SECL, JOB_CIA_UACQS_ADMN, JOB_CIA_UACQS_COMR, JOB_CIA_UACQS_DG, JOB_CIA_UACQS_SG)
+#define JOB_GRS_ROLES_LIST list(JOB_CIA_GRS_OPR, JOB_CIA_GRS_MED, JOB_CIA_GRS_ENG, JOB_CIA_GRS_HVY, JOB_CIA_GRS_SNP, JOB_CIA_GRS_TL, JOB_CIA_GRS_DCDR, JOB_CIA_GRS_CDR, JOB_CIA_GRS_SYN)
+#define JOB_CIA_ROLES_LIST JOB_UACQS_ROLES_LIST + JOB_GRS_ROLES_LIST
+
+#define JOB_UA_PEACEKEEPER "United Americas Peacekeeper"
+#define JOB_UA_RIOT_OFFICER "United Americas Riot Officer"
+
 //-------- DUTCH'S DOZEN --------//
 #define JOB_DUTCH_ARNOLD "Dutch's Dozen - Dutch"
 #define JOB_DUTCH_RIFLEMAN "Dutch's Dozen - Rifleman"

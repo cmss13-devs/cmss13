@@ -39,6 +39,125 @@
 	flags_atom = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE|NO_GAMEMODE_SKIN
 	storage_slots = 4
 
+//======================//Global Response Staff\\======================\\
+//=======================================================================\\
+
+/obj/item/clothing/suit/storage/marine/sof/grs
+	name = "\improper GRS Armor"
+	desc = "A dark set of armor used by the Global Response Staff."
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
+	)
+	icon_state = "cia_light"
+	item_state_slots = list(WEAR_JACKET = "cia_light")
+	flags_atom = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE|NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/marsoc/grs)
+
+/obj/item/clothing/suit/storage/marine/sof/grs/damaged
+	name = "\improper damaged GRS Armor"
+	desc = "A dark set of armor used by the Global Response Staff. This set has been compromised and is not as protective."
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
+	armor_rad = CLOTHING_ARMOR_MEDIUM
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+
+/obj/item/clothing/suit/storage/marine/sof/grs/synth
+	name = "\improper GRS Synthetic Armor"
+	desc = "A dark set of armor used by the Global Response Staff synthetics. It has all the armor inserts removed for high speed and an internal toolbelt."
+	armor_melee = CLOTHING_ARMOR_NONE
+	armor_bullet = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_NONE
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_NONE
+	slowdown = SLOWDOWN_ARMOR_SUPER_LIGHT
+	storage_slots = 7
+	flags_marine_armor = ARMOR_LAMP_OVERLAY|SYNTH_ALLOWED
+
+/obj/item/clothing/suit/storage/marine/sof/grs/synth/Initialize()
+	. = ..()
+	fill_pockets()
+
+/obj/item/clothing/suit/storage/marine/sof/grs/synth/proc/fill_pockets()
+	if(!pockets)
+		return FALSE
+
+	pockets.can_hold = list(
+		/obj/item/tool/screwdriver,
+		/obj/item/tool/wrench,
+		/obj/item/tool/weldingtool,
+		/obj/item/tool/crowbar,
+		/obj/item/tool/wirecutters,
+		/obj/item/stack/cable_coil,
+		/obj/item/device/multitool,
+		/obj/item/tool/shovel/etool,
+		/obj/item/weapon/gun/smg/nailgun/compact,
+		/obj/item/device/defibrillator/synthetic,
+		/obj/item/stack/rods,
+	)
+
+	new /obj/item/tool/screwdriver/tactical(pockets)
+	new /obj/item/tool/wrench(pockets)
+	new /obj/item/tool/weldingtool(pockets)
+	new /obj/item/tool/crowbar/tactical(pockets)
+	new /obj/item/tool/wirecutters/tactical(pockets)
+	new /obj/item/stack/cable_coil(pockets)
+	new /obj/item/device/multitool/antag(pockets)
+	return TRUE
+
+/obj/item/clothing/suit/storage/marine/smartgunner/veteran/sof/grs
+	name = "\improper GRS Smartgun Harness"
+	desc = "A dark set of armor used by the Global Response Staff. This variant is designed to hold a smartgun system."
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
+	)
+	icon_state = "cia_sg"
+	item_state_slots = list(WEAR_JACKET = "cia_sg")
+	flags_atom = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE|NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/marsoc/grs)
+
+/obj/item/clothing/suit/storage/marine/smartgunner/veteran/sof/grs/damaged
+	name = "\improper damaged GRS Smartgun Harness"
+	desc = "A dark set of armor used by the Global Response Staff. This variant is designed to hold a smartgun system. This set has been compromised and is not as protective."
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
+	armor_rad = CLOTHING_ARMOR_MEDIUM
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+
+/obj/item/clothing/suit/storage/marine/ghillie/grs
+	name = "\improper GRS Marksman Armor"
+	desc = "A dark set of armor used by the Global Response Staff. This lighter variant is designed to be used by an Advanced Marksman and provides adaptive camoflauge."
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
+	)
+	icon_state = "cia_sniper"
+	flags_atom = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE|NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/marsoc/grs)
+
+	armor_melee = CLOTHING_ARMOR_HIGH
+	armor_bullet = CLOTHING_ARMOR_HIGH
+	armor_bomb = CLOTHING_ARMOR_VERYHIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
+	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+
+/obj/item/clothing/suit/storage/marine/ghillie/grs/damaged
+	name = "\improper damaged GRS Marksman Armor"
+	desc = "A dark set of armor used by the Global Response Staff. This lighter variant is designed to be used by an Advanced Marksman and provides adaptive camoflauge. This set has been compromised and is not as protective."
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
+	armor_rad = CLOTHING_ARMOR_MEDIUM
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+
 //=============================//GENERIC FACTIONAL ARMOR ITEM\\==================================\\
 //=======================================================================\\
 

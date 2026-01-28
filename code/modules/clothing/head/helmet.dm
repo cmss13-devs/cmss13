@@ -1508,6 +1508,76 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	built_in_visors = list(new /obj/item/device/helmet_visor/night_vision/marine_raider, new /obj/item/device/helmet_visor/security)
 	start_down_visor_type = /obj/item/device/helmet_visor/night_vision/marine_raider
 
+/obj/item/clothing/head/helmet/marine/sof/grs
+	name = "\improper GRS Operator Helmet"
+	desc = "A GRS variant of the standard M10 pattern. The front plate is reinforced, fits tighter and also protects from flashbangs."
+	icon_state = "cia_helmet"
+	armor_energy = CLOTHING_ARMOR_HIGH
+	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bullet = CLOTHING_ARMOR_HIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
+	flags_marine_helmet = HELMET_GARB_OVERLAY|HELMET_DAMAGE_OVERLAY
+	clothing_traits = list(TRAIT_EAR_PROTECTION)
+	built_in_visors = list(new /obj/item/device/helmet_visor/night_vision/marine_raider)
+	start_down_visor_type = null
+
+/obj/item/clothing/head/helmet/marine/radio_helmet/grs
+	name = "\improper GRS R.T. Operator Helmet"
+	desc = "A GRS variant of the standard M10 pattern. The front plate is reinforced, fits tighter and also protects from flashbangs. This version has a built in radio-telephone."
+	icon_state = "cia_helmet_t"
+	item_state = "cia_helmet_t"
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
+	)
+	armor_energy = CLOTHING_ARMOR_HIGH
+	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bullet = CLOTHING_ARMOR_HIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
+	flags_marine_helmet = HELMET_GARB_OVERLAY|HELMET_DAMAGE_OVERLAY
+	clothing_traits = list(TRAIT_EAR_PROTECTION)
+	built_in_visors = list(new /obj/item/device/helmet_visor/night_vision/marine_raider)
+	start_down_visor_type = null
+	phone_category = "GRS"
+	networks_receive = FACTION_LIST_CIA
+	networks_transmit = FACTION_LIST_CIA_MARINE
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+
+/obj/item/clothing/head/helmet/marine/sof/grs/damaged
+	name = "\improper damaged GRS Operator Helmet"
+	desc = "A GRS variant of the standard M10 pattern. The front plate is reinforced, fits tighter and also protects from flashbangs. This one has been compromised and is not as protective."
+	armor_energy = CLOTHING_ARMOR_MEDIUM
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	built_in_visors = list(new /obj/item/device/helmet_visor/night_vision)
+
+/obj/item/clothing/head/helmet/marine/radio_helmet/grs/damaged
+	name = "\improper damaged GRS R.T. Operator Helmet"
+	desc = "A GRS variant of the standard M10 pattern. The front plate is reinforced, fits tighter and also protects from flashbangs. This version has a built in radio-telephone. This one has been compromised and is not as protective."
+	armor_energy = CLOTHING_ARMOR_MEDIUM
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+
+/obj/item/clothing/head/helmet/marine/sof/grs/sniper
+	name = "\improper GRS Marksman Hood"
+	desc = "A hood used by GRS Advanced Marksmen. Whilst not quite as protective as a combat helmet it keeps the operator warm and provides effective camoflauge."
+	icon_state = "cia_hood"
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+
 //FIORINA / UA RIOT CONTROL HELMET//
 
 /obj/item/clothing/head/helmet/marine/veteran/ua_riot

@@ -920,6 +920,43 @@
 	SIGNAL_HANDLER
 	linked_human = null
 
+/obj/item/weapon/gun/smartgun/cia_grs
+	name = "\improper R56A2 'Ronin' smartgun"
+	desc = "The actual firearm in the 2-piece R56A2 Smartgun system, a custom built smartgun platform used by the Global Response Staff."
+	icon_state = "m50r"
+	item_state = "m50r"
+	gun_faction = FACTION_CIA
+	has_cover = FALSE
+
+	current_mag = /obj/item/ammo_magazine/smartgun/holo_targetting/grs
+	ammo = /datum/ammo/bullet/smartgun/holo_target
+	ammo_primary_def = /datum/ammo/bullet/smartgun/holo_target
+	ammo_secondary_def = /datum/ammo/bullet/smartgun/holo_target/ap
+	ammo_primary_alt = /datum/ammo/bullet/smartgun/holo_target/alt
+	ammo_secondary_alt = /datum/ammo/bullet/smartgun/holo_target/ap/alt
+
+	actions_types = list(
+		/datum/action/item_action/smartgun/toggle_accuracy_improvement,
+		/datum/action/item_action/smartgun/toggle_frontline_mode,
+		/datum/action/item_action/smartgun/toggle_aim_assist,
+		/datum/action/item_action/smartgun/toggle_lethal_mode,
+		/datum/action/item_action/smartgun/toggle_motion_detector,
+		/datum/action/item_action/smartgun/toggle_recoil_compensation,
+	)
+
+/obj/item/weapon/gun/smartgun/cia_grs/Initialize(mapload, ...)
+	. = ..()
+	toggle_aim_assist(null, TRUE)
+
+/obj/item/weapon/gun/smartgun/cia_grs/elite
+	name = "\improper R56A2D 'Reaper' smartgun"
+	current_mag = /obj/item/ammo_magazine/smartgun/dirty/grs
+	ammo = /datum/ammo/bullet/smartgun/dirty
+	ammo_primary_def = /datum/ammo/bullet/smartgun/dirty
+	ammo_secondary_def = /datum/ammo/bullet/smartgun/dirty/armor_piercing
+	ammo_primary_alt = /datum/ammo/bullet/smartgun/dirty/alt
+	ammo_secondary_alt = /datum/ammo/bullet/smartgun/dirty/armor_piercing/alt
+
 //TERMINATOR SMARTGUN
 /obj/item/weapon/gun/smartgun/terminator
 	name = "\improper M57R 'Terminator' smartgun"

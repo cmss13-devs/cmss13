@@ -562,6 +562,8 @@
 /datum/equipment_preset/corpse/ua_riot
 	name = "Corpse - UA Officer"
 	assignment = "United Americas Riot Officer"
+	faction = FACTION_UA
+	faction_group = FACTION_LIST_SURVIVOR_UA
 	idtype = /obj/item/card/id/silver
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
@@ -1767,5 +1769,37 @@
 	name = "Corpse - Burst - Xenoarchaeologist"
 	assignment = "Xenoarchaeologist"
 	xenovictim = TRUE
+
+//*****************************************************************************************************/
+
+//GRS Operator
+
+/datum/equipment_preset/corpse/grs
+	name = "Corpse - Global Response Operator"
+	languages = list(LANGUAGE_ENGLISH)
+	assignment = JOB_CIA_GRS_OPR
+	job_title = JOB_CIA_GRS_OPR
+	paygrades = list(PAY_SHORT_GRS_OPR = JOB_PLAYTIME_TIER_0)
+
+/datum/equipment_preset/corpse/grs/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/cia_grs/survivor, WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/sof/grs/damaged, WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/marsoc/grs, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/sof/grs/damaged, WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/cia_knife, WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/black, WEAR_BACK)
+
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/holster, WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/m4a3/m4a4/tactical, WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/ap, WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/ap, WEAR_IN_ACCESSORY)
+
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/marine/black, WEAR_WAIST)
+
+	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medical/socmed/not_op, WEAR_R_STORE)
+
 
 //*****************************************************************************************************/

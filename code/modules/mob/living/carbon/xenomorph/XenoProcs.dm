@@ -779,9 +779,6 @@
 		qdel(applicable_nest)
 
 /mob/living/carbon/xenomorph/proc/update_minimap_icon()
-	if(istype(caste, /datum/caste_datum/queen))
-		return
-
 	SSminimaps.remove_marker(src)
 	add_minimap_marker()
 

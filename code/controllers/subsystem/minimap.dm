@@ -864,7 +864,7 @@ SUBSYSTEM_DEF(minimaps)
 	. = ..()
 
 /datum/action/minimap/xeno/see_humans
-	minimap_flags = MINIMAP_FLAG_XENO|MINIMAP_FLAG_USCM|MINIMAP_FLAG_WY|MINIMAP_FLAG_WY|MINIMAP_FLAG_UPP
+	minimap_flags = MINIMAP_FLAG_ALL_XENO|MINIMAP_FLAG_USCM|MINIMAP_FLAG_WY|MINIMAP_FLAG_WY|MINIMAP_FLAG_UPP
 
 /datum/action/minimap/xeno/action_activate()
 	var/mob/living/carbon/xenomorph/xeno = owner

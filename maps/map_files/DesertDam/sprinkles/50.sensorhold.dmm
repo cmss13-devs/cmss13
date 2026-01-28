@@ -58,7 +58,7 @@
 /obj/structure/stairs,
 /obj/structure/platform/metal/almayer/east,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement_sunbleached,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "r" = (
 /obj/structure/barricade/deployable{
@@ -82,7 +82,7 @@
 "u" = (
 /obj/structure/stairs,
 /obj/structure/platform/metal/almayer/west,
-/turf/open/asphalt/cement_sunbleached,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "v" = (
 /obj/effect/decal/warning_stripes{
@@ -108,7 +108,7 @@
 	dir = 1
 	},
 /obj/structure/platform/metal/almayer/east,
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "E" = (
 /obj/effect/decal/warning_stripes{
@@ -179,7 +179,7 @@
 	},
 /obj/structure/platform/metal/almayer/west,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "U" = (
 /obj/structure/platform/metal/almayer/west,

@@ -152,10 +152,6 @@
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
 	dir = 4
 	},
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
 "aC" = (
@@ -340,6 +336,16 @@
 /obj/structure/machinery/vending/snack,
 /turf/open/floor/almayer/green/north,
 /area/lv624/lazarus/crashed_ship)
+"bd" = (
+/obj/structure/terminal{
+	dir = 1
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv624/lazarus/crashed_ship)
+"be" = (
+/obj/item/shard,
+/turf/open/floor/damaged3/west,
+/area/lv624/lazarus/crashed_ship)
 "bf" = (
 /obj/structure/surface/rack,
 /obj/item/ammo_magazine/shotgun/buckshot,
@@ -347,6 +353,11 @@
 /obj/item/ammo_magazine/shotgun/buckshot,
 /obj/item/ammo_magazine/shotgun/buckshot,
 /turf/open/floor/almayer/orange/southwest,
+/area/lv624/lazarus/crashed_ship)
+"bg" = (
+/obj/item/stack/rods,
+/obj/item/shard,
+/turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
 "by" = (
 /turf/closed/wall/rock/brown,
@@ -366,12 +377,8 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
 "ch" = (
-/obj/structure/surface/rack,
-/obj/item/roller,
-/obj/item/roller{
-	pixel_x = 3;
-	pixel_y = 2
-	},
+/obj/structure/surface/table/reinforced/prison,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/almayer/emerald,
 /area/lv624/lazarus/crashed_ship)
 "dt" = (
@@ -416,6 +423,10 @@
 /turf/open/floor/platingdmg1,
 /area/lv624/ground/caves/south_west_caves)
 "fe" = (
+/obj/item/storage/backpack/general_belt,
+/obj/item/storage/backpack/general_belt{
+	pixel_y = 7
+	},
 /obj/item/weapon/gun/rifle/m16,
 /obj/item/weapon/gun/rifle/m16{
 	pixel_x = 5;
@@ -583,13 +594,14 @@
 /area/lv624/lazarus/crashed_ship)
 "jI" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/storage/surgical_tray{
-	pixel_x = -4;
-	pixel_y = 4
-	},
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = 25
 	},
+/obj/item/reagent_container/spray/cleaner{
+	pixel_y = 4;
+	pixel_x = -8
+	},
+/obj/item/storage/box/masks,
 /turf/open/floor/almayer/emerald/north,
 /area/lv624/lazarus/crashed_ship)
 "jO" = (
@@ -713,14 +725,6 @@
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
 	dir = 4
 	},
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
 "mK" = (
@@ -975,14 +979,6 @@
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
 	dir = 8
 	},
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
 /turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "xl" = (
@@ -1197,9 +1193,12 @@
 /turf/open/floor/almayer/green/east,
 /area/lv624/lazarus/crashed_ship)
 "DO" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/storage/firstaid/regular,
-/obj/effect/landmark/objective_landmark/science,
+/obj/structure/surface/rack,
+/obj/item/storage/firstaid/adv{
+	pixel_x = 3;
+	pixel_y = 5
+	},
+/obj/item/storage/firstaid/adv,
 /turf/open/floor/almayer/emerald/north,
 /area/lv624/lazarus/crashed_ship)
 "DS" = (
@@ -1285,15 +1284,16 @@
 /area/lv624/lazarus/crashed_ship)
 "Gm" = (
 /obj/structure/surface/rack,
-/obj/item/storage/firstaid/adv{
-	pixel_x = 3;
-	pixel_y = 5
-	},
-/obj/item/storage/firstaid/adv,
 /obj/structure/machinery/light/small{
 	dir = 1;
 	pixel_y = 20
 	},
+/obj/item/storage/belt/medical/full,
+/obj/item/storage/belt/medical/full{
+	pixel_x = 2;
+	pixel_y = 4
+	},
+/obj/item/storage/firstaid/regular,
 /turf/open/floor/almayer/emerald/north,
 /area/lv624/lazarus/crashed_ship)
 "GQ" = (
@@ -1515,10 +1515,11 @@
 /area/lv624/lazarus/crashed_ship)
 "Op" = (
 /obj/structure/surface/rack,
-/obj/item/storage/backpack/general_belt{
-	pixel_y = 7
+/obj/item/roller,
+/obj/item/roller{
+	pixel_x = 3;
+	pixel_y = 2
 	},
-/obj/item/storage/backpack/general_belt,
 /turf/open/floor/almayer/emerald/north,
 /area/lv624/lazarus/crashed_ship)
 "Ot" = (
@@ -1537,14 +1538,6 @@
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
 	dir = 4
 	},
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
 /turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
 "OL" = (
@@ -1552,6 +1545,8 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/lv624/lazarus/crashed_ship)
 "OS" = (
+/obj/structure/machinery/iv_drip,
+/obj/item/reagent_container/blood/OMinus,
 /turf/open/floor/almayer/emerald/southwest,
 /area/lv624/lazarus/crashed_ship)
 "OU" = (
@@ -1587,12 +1582,9 @@
 /area/lv624/lazarus/crashed_ship)
 "PR" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/storage/belt/medical/full,
-/obj/item/storage/belt/medical/full{
-	pixel_x = 2;
+/obj/item/storage/surgical_tray{
 	pixel_y = 4
 	},
-/obj/item/storage/firstaid/regular,
 /turf/open/floor/almayer/emerald/northwest,
 /area/lv624/lazarus/crashed_ship)
 "Qc" = (
@@ -2335,7 +2327,7 @@ ro
 wR
 xh
 wV
-lr
+bd
 gQ
 OZ
 Xq
@@ -2653,8 +2645,8 @@ Yj
 by
 Ab
 Ab
-Xx
-Bc
+bg
+be
 ro
 gX
 Dp

@@ -102,6 +102,19 @@
 	},
 /turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/bar/bar)
+"aq" = (
+/obj/structure/girder,
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/south_tunnel_entrance)
+"ar" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "aw" = (
 /obj/effect/decal/sand_overlay/sand1,
 /obj/effect/decal/sand_overlay/sand1{
@@ -170,6 +183,9 @@
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "bN" = (
 /obj/item/stack/sheet/metal,
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 1
+	},
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "bO" = (
@@ -3264,7 +3280,7 @@ TH
 Ug
 KC
 Iu
-Db
+aq
 xT
 xT
 xT
@@ -3340,7 +3356,7 @@ UK
 Ug
 KC
 oK
-VI
+ar
 tR
 Ae
 xG

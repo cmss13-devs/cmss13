@@ -441,24 +441,32 @@
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "bD" = (
-/turf/closed/shuttle/dropship3{
+/turf/closed/shuttle/dropship3/tornado{
 	icon_state = "81"
 	},
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "bE" = (
-/obj/structure/shuttle/part/dropship3/transparent/outer_left_weapons,
+/obj/structure/shuttle/part/dropship3/transparent/outer_left_weapons{
+	name = "\improper Tornado"
+	},
 /turf/open/floor/prison/floor_plate/southwest,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "bF" = (
-/obj/structure/shuttle/part/dropship3/transparent/inner_left_weapons,
+/obj/structure/shuttle/part/dropship3/transparent/inner_left_weapons{
+	name = "\improper Tornado"
+	},
 /turf/open/floor/prison/floor_plate/southwest,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "bG" = (
-/obj/structure/shuttle/part/dropship3/transparent/inner_right_weapons,
+/obj/structure/shuttle/part/dropship3/transparent/inner_right_weapons{
+	name = "\improper Tornado"
+	},
 /turf/open/floor/prison/floor_plate/southwest,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "bH" = (
-/obj/structure/shuttle/part/dropship3/transparent/outer_right_weapons,
+/obj/structure/shuttle/part/dropship3/transparent/outer_right_weapons{
+	name = "\improper Tornado"
+	},
 /turf/open/floor/prison/floor_plate/southwest,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "bJ" = (

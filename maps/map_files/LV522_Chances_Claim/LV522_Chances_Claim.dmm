@@ -1006,11 +1006,46 @@
 /obj/structure/machinery/door/airlock/dropship_hatch/two,
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
+"adE" = (
+/turf/closed/shuttle/dropship3/tornado{
+	icon_state = "81"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"adF" = (
+/obj/structure/shuttle/part/dropship3/transparent/outer_left_weapons{
+	name = "\improper Tornado"
+	},
+/turf/open/floor/plating,
+/area/lv522/landing_zone_forecon/UD6_Tornado)
 "adG" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/reagent_container/food/condiment/saltshaker,
 /turf/open/floor/prison/darkredfull2,
 /area/lv522/indoors/lone_buildings/chunk)
+"adH" = (
+/obj/structure/shuttle/part/dropship3/transparent/inner_left_weapons{
+	name = "\improper Tornado"
+	},
+/turf/open/floor/plating,
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"adI" = (
+/obj/structure/shuttle/part/dropship3/transparent/inner_right_weapons{
+	name = "\improper Tornado"
+	},
+/turf/open/floor/plating,
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"adJ" = (
+/obj/structure/shuttle/part/dropship3/transparent/outer_right_weapons{
+	name = "\improper Tornado"
+	},
+/turf/open/floor/plating,
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"adK" = (
+/obj/structure/shuttle/part/dropship3/transparent/inner_left_weapons{
+	name = "\improper Typhoon"
+	},
+/turf/open/auto_turf/shale/layer1,
+/area/lv522/landing_zone_forecon/UD6_Typhoon)
 "adP" = (
 /obj/structure/barricade/deployable{
 	dir = 4
@@ -29956,7 +29991,7 @@
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "pRM" = (
 /turf/closed/shuttle/dropship3/typhoon{
-	icon_state = "81"
+	icon_state = "76"
 	},
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "pRR" = (
@@ -49870,7 +49905,7 @@ cpy
 cpy
 cpy
 cpy
-rBU
+adK
 pRM
 qnk
 qHA
@@ -83053,7 +83088,7 @@ qUL
 qUL
 nSF
 qUL
-qUL
+adF
 sCp
 toY
 uwQ
@@ -83259,7 +83294,7 @@ qUL
 qUL
 nSF
 qUL
-sct
+adH
 sIA
 dpS
 qbP
@@ -83878,7 +83913,7 @@ qUL
 rii
 rCi
 ssU
-sKi
+adE
 bYC
 dNx
 dNx
@@ -84083,7 +84118,7 @@ qUL
 qUL
 qUL
 pTW
-swr
+adI
 sIA
 goC
 jAX
@@ -84289,7 +84324,7 @@ qUL
 qUL
 qUL
 qUL
-qUL
+adJ
 tcu
 tSo
 vjv

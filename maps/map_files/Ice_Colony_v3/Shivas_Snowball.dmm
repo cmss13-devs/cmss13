@@ -18437,9 +18437,6 @@
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/plating,
 /area/shiva/interior/bar)
-"pLf" = (
-/turf/closed/wall/shiva/ice,
-/area/shiva/exterior/cp_s_research)
 "pLn" = (
 /obj/structure/machinery/light/double{
 	dir = 1;
@@ -52718,7 +52715,7 @@ rZt
 asz
 asz
 puZ
-pLf
+kVd
 uzu
 kVd
 uzu

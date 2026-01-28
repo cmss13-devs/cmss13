@@ -22556,7 +22556,7 @@
 /area/strata/interior/outpost/med)
 "bmi" = (
 /obj/structure/machinery/door/airlock/dropship_hatch,
-/turf/open/floor/strata/multi_tiles/southwest,
+/turf/open/floor/almayer/test_floor6,
 /area/strata/interior/outpost/engi/drome/shuttle)
 "bmj" = (
 /obj/structure/machinery/weather_siren{
@@ -39648,7 +39648,7 @@
 /obj/structure/machinery/door/airlock/dropship_hatch{
 	dir = 8
 	},
-/turf/open/floor/strata/multi_tiles/southwest,
+/turf/open/floor/almayer/test_floor6,
 /area/strata/interior/outpost/engi/drome/shuttle)
 "den" = (
 /obj/structure/machinery/power/apc/no_power/east,

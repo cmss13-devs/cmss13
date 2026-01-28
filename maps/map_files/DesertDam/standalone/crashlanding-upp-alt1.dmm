@@ -117,12 +117,6 @@
 	name = "Buran"
 	},
 /area/desert_dam/exterior/valley/valley_civilian)
-"fL" = (
-/obj/effect/decal/sand_overlay/sand1/corner1{
-	dir = 1
-	},
-/turf/open/desert/dirt,
-/area/desert_dam/exterior/valley/valley_civilian)
 "gb" = (
 /obj/structure/desertdam/decals/road_edge,
 /turf/open/asphalt,
@@ -454,18 +448,6 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/valley/valley_civilian)
-"zE" = (
-/obj/effect/decal/sand_overlay/sand1/corner1{
-	dir = 1
-	},
-/obj/effect/decal/sand_overlay/sand1{
-	dir = 8
-	},
-/obj/effect/decal/sand_overlay/sand1{
-	dir = 4
-	},
-/turf/open/mars/mars_dirt_5,
-/area/desert_dam/exterior/valley/valley_civilian)
 "zO" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 8
@@ -795,6 +777,9 @@
 	},
 /obj/structure/shuttle/part/ert/front_left_upp{
 	name = "Buran"
+	},
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 4
 	},
 /turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/valley_civilian)
@@ -1138,7 +1123,7 @@ Mp
 Sb
 zO
 ge
-zE
+ge
 OB
 JG
 Xq
@@ -1260,7 +1245,7 @@ Yv
 DO
 ad
 As
-fL
+nX
 im
 mN
 Pr

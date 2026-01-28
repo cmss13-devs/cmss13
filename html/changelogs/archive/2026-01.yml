@@ -144,3 +144,258 @@
 2026-01-19:
   realforest2001:
   - rscadd: Cryoing as a predator will now open the slot again.
+2026-01-20:
+  BOBAMA, Drathek:
+  - rscadd: New thematic gun spawners for mappers
+  - balance: Current gun spawners no longer spawn absurd quantities of rocket launchers
+      or Type19s
+  - bugfix: gun spawners now spawn ammo for shotguns and GLs
+  - bugfix: minor GC issue with mutliz stairs and build_blocker
+  - mapadd: Trijent Z levels
+  - mapadd: A lot of new nightmare inserts to Trijent
+  - maptweak: Original Trijent Z is now more detailed
+  Bibby0110:
+  - bugfix: CIC tablet now closes when you die/fall unconscious
+  Puckaboo2:
+  - code_imp: Adds a global hijack signal for coding and signalling goodness.
+  - rscadd: Adds emergency medical wall lockers with surgical vests, surgical beds,
+      and portable dialysis machines. The lockers cannot be unlocked; they open on
+      their own only during hijack.
+  - imageadd: Adds sprites to the new lockers.
+  - maptweak: Adds the emergency surgical wall lockers to the medical bay in the clothing
+      vending room.
+  Syndro101:
+  - bugfix: fixed issues outlined in issue 5966 with semiotics, lights and cameras
+  - maptweak: tweaked ship lights, cameras and semiotics
+  frans feiffer (sprite for tan saddle), ori:
+  - rscadd: added event-only runner saddles
+  - code_imp: buckling is now /atom/movable/ instead of /obj/ and moves the move and
+      forcemove procs of obj to just be part of the procs in movement.dm
+  - imageadd: added sprites for runner saddles
+  hry-gh:
+  - rscadd: added the ability to configure custom keybinds in your keybind settings,
+      these can be use to define up to 20 say/me/picksay keybinds to say whatever
+      you want
+  kiVts:
+  - balance: Tweaked OD for contracts to make intermediate more appealing.
+  - balance: Intermediates have much less properties on average
+  - balance: Value of a property is now accounted for in the price of a operation
+  - balance: Intermediate and hard level can now have more than 3 chemicals in the
+      recipe, made hard chemicals slightly harder to come by.
+  - balance: Made Optimized slightly better, changed Coniine chemical properties,
+      buffed paining by 10x, made Thymol effects slightly better.
+  - balance: having any negative in the chemical gives you a discount of 2 credits.
+  - bugfix: Contract recipe generation should account for when recipes don't pass
+      the occupied recipe check.
+  - bugfix: Transmute volume decrease fix, reagent overflow small fix.
+2026-01-21:
+  AnCopper:
+  - qol: Added a "Copy Coordinates" button to the Laser Designator/Binoculars UI
+  Bibby0110:
+  - bugfix: Restore ghost appearance now changes your chat name
+  Ediblebomb:
+  - maptweak: Walkways in the RMC ERT map now line up with the RMC ERT shuttle's doors.
+  FebrezeNinja:
+  - qol: ChemMaster toggle to allow pill bottle auto-selection
+  Nihisohel:
+  - bugfix: You will no longer be able to use the offhand 'item' as a deadly weapon.
+  - bugfix: Items will no longer be inaccessible when attempting to place an item
+      on a limbless slot in the TGUI strip panel
+  - rscadd: Adds the old disposable camera as a 3 point loadout purchase, go out and
+      do some Frank West larp I guess
+  - balance: Changed the size of the old disposable camera from small to tiny.
+  - bugfix: Adds a delay to picture taking as to not lag the server
+  - qol: Pressing Unique-action on polaroid cameras will now switch its focus.
+  - rscdel: Removed the change focus verb for redundancy.
+  Nihisohel, EldritchSack for the sprites:
+  - rscadd: Whistles are now automatically used when an order is being given
+  - rscadd: Additionally, adds a trench whistle, capable of further enhancing leadership
+      orders at the cost of longer cooldown, slowing you down momentarily, and audibly
+      revealing your location
+  - balance: Changed the normal whistle cooldown from 10 seconds to 5 seconds, putting
+      my trust in everyone not to spam this shit
+  - balance: These trench whistles are only available to SLs, COs, and XOs, and remains
+      a vendor choice for the FTLs and SOs
+  PoltavskaPraca:
+  - bugfix: fixed wrong window break message
+  Puckaboo2:
+  - rscadd: You can pour the contents of pill bottles into glass reagent containers.
+  - spellcheck: Fixes some spelling and grammar errors.
+  - refactor: Refactors pill bottle dumping into the ChemMaster.
+  Sergeys:
+  - bugfix: fixed that some items cannot be crafted at low amount of crafting resources.
+  aquariofury:
+  - soundadd: adds two pain sfx that were already in the game files
+  ori-disillusion-mirnov:
+  - bugfix: you cant buckle xenos
+2026-01-22:
+  Bibby0110:
+  - balance: Adds a 10 minute cooldown per-xeno for becoming the "last-stand" xenomorph
+      and getting a full-heal
+  DarkLordCabbage:
+  - balance: increased insulation of tents from 0.4 to 0.7 (enough to stop armorless
+      people from taking cold damage while inside)
+  Drathek:
+  - balance: Direct fire can no longer occur during a fire mission
+  - bugfix: Fixed some dropship weapon error messages
+  - ui: Polished various aspects of the dropship weapon panel
+  JackieEstegado:
+  - balance: Fractures can no longer be gained without taking brute damage or burns/eschar
+      without burn damage.
+  - bugfix: Fixed a case where one could have severe burns that could not be treated.
+  MistChristmas:
+  - spellcheck: Fixed some examine instances not accounting for gender/obscured face.
+  - maptweak: Removed a computer place ontop of the decryption computers. Removed
+      a duplicate Field Doctor Locker. Restored the Privacy button in the ORs.
+  Puckaboo2:
+  - bugfix: Unlit matches, cigs, and closed lighters no longer say they burn your
+      target.
+  cuberound:
+  - bugfix: fixes multiz connecting for lazy loaded maps
+  ori-disillusion-mirnov:
+  - rscadd: added a falling shell effect for OBs and mortars
+  realforest2001:
+  - rscadd: Added the Weyland-Yutani Corporate Bodyguard, the personal protector of
+      the on-board Liaison.
+  - rscadd: Added an armor suit and cap for the bodyguard.
+  - rscadd: Added a WY Security radio channel for use by Bodyguards and Sec Goons.
+      Also added motion sensors for this channel.
+  - rscadd: Added a WY Public radio channel for shared use. Allows division of Corporate
+      secure comms and a more generalised radio channel.
+  - rscdel: Removed WY encryption keys from WY radios, as they have the channel by
+      default already.
+  - rscadd: Added Weyland Yutani security paygrades, and applies them to the relevant
+      presets.
+  - maptweak: Mapping contributed by Syndro101 and LCMS1
+  - maptweak: Re-mapped the Corporate Liaison's Office to fit the Bodyguard. The original
+      office room is now the entryway with the security desk.
+  zzzmike:
+  - bugfix: hijack timer will not reset if second dropship is hijacked
+2026-01-23:
+  FourkhanDaKhan:
+  - rscadd: Re-adds the tacmap popup window.
+  Killfish:
+  - rscadd: Added Hive Stat Modifiers, allowing increases or decreases to certain
+      stats of all Xenos in a specific Hive.
+  - balance: Xenos belonging to the Forsaken Hive have increased stats pertaining
+      to combat. Be afraid of them.
+  - rscdel: Removed a few long-unused relics from the Xenomorph Maturation era.
+  Nihisohel:
+  - rscadd: You can now attach helmet covers as real accessories, not as a helmet
+      garb, on your helmets
+  - code_imp: 'NOTE: This does not support non-marine parent helmets (E.G. Riot helmet)'
+  - bugfix: You can take the essential fireteam utilities with either specialization
+      as the FTL now
+  - bugfix: XOs can also take either specialization kit with the whistle now
+  - bugfix: The action button for using the whistle is now shown when attached on
+      the uniform
+  - code_imp: Some minor backend for UI_action_buttons for accessories
+  - spellcheck: Switches UK specialisation to US specialization wording introduced
+      from trench whistles
+  Puckaboo2:
+  - spellcheck: Removes extra spaces between punctuation.
+  - spellcheck: Lots of spellchecks.
+  - soundadd: Adds The Marine's Hymn to Marine Major endgame tracks.
+  - bugfix: Helmets despawn like armors during the med challenge tutorial.
+  - spellcheck: '''Resistible'', multiple'', ''multiplied'', and ''inheritable'' are
+      no longer misspelled anywhere, among other words.'
+  Stakeyng Drathek:
+  - qol: added 40 more say/picksay/me bind slots (60 total)
+  - qol: added 10 more options per picksay (30 total)
+  - qol: limited the amount of characters per emote and picksay option to 256
+  - bugfix: Fixed custom picksays not displaying the right mode when loading existing
+      bindings
+  Unknownity:
+  - balance: Whiskey Outpost now supports roundstart Queens. Simply ready up while
+      having the Queen job preference set to high. You will spawn in a cave, providing
+      ovi support to xenos until 1:00 ingame hour time after which you can join the
+      hive with the final assault. You are also able to evolve into a Queen if nobody
+      decides to become one roundstart.
+  - balance: Burrowers in Whiskey Outpost can burrow again while still be able to
+      make tunnels, in exchange most of the bunker inside locations have been reinforced
+      against xeno tunnels.
+  - balance: Whiskey Outpost xeno waves have been modified to allow sentinels, more
+      hivelords, early drones and low amount of early ravagers and boilers. Wave 14
+      also grants xenos perma tacmap with humans visible.
+  - balance: Xenomorphs in Whiskey Outpost are now able to rest, avoiding bodyblock
+      issues and being able to passively heal, Reminder you don't need to die for
+      the next wave to progress.
+  - balance: Deevolution is now disabled in Whiskey Outpost.
+  - balance: Advanced Laser Designators found in Whiskey Outpost now provide sound
+      and blinking laser warnings to its CAS and Mortar airstrikes.
+  - balance: M56Ds on WO have had their AP decreased to 25 from 50. Removed some of
+      them placed on the map too.
+  - balance: Removed most of the starter Mortar incendiary shell supply in WO, replaced
+      them with frag shells.
+  - rscadd: Added crit and dead threshold increase gamemode modifier and added it
+      to WO. Humans now die at -150 health, getting extra 50 health. They now also
+      go into hard crit at -100 health. previously from -50, so you can stay awake
+      before then if you are on pain meds.
+  - rscadd: Added a gamemode modifier that disables Working Joes from spawning entirely,
+      currently only enabled on WO.
+  - rscadd: The Whiskey Outpost Combat Reporter now has access to the broadcasting
+      camera and portable fax backpack, check your closet! There's now also a television
+      outside medbay in WO.
+  - rscadd: Comtechs now have their own vendors in Whiskey Outpost, found in the Bunker
+      in their own special room and in Pillbox Beer. In exchange they lose 1 full
+      construction pouch of mats.
+  - rscadd: Added variations of Autodocs and Sleepers that are already fully upgraded,
+      these have been placed on Whiskey Outpost.
+  - rscadd: Added RecVendors also known as Walkman Vendors in Whiskey Outpost.
+  - rscadd: Renamed area_notunnel flag to area_noburrow, added a new area flag using
+      the old name used for disallowing the creation of xeno tunnels.
+  - bugfix: Fixed some grass tiles in Whiskey Outpost and added APCs to two areas
+      where they were missing and needed power.
+  - bugfix: Fixed Destination Taggers that are used in Whiskey Outpost. PSA, Wrap
+      crates with the wrappers and use the tagger on it then use the delivery chute!
+  - bugfix: Fixes ghosts/observers being able to health scan xenomorphs and simple
+      mobs.
+  - refactor: Refactored health_threshold_crit and dead code, merges xeno crit_health
+      into health threshold_dead.
+  - ui: Tweaked sleeper UI to handle more chems.
+  larentoun:
+  - bugfix: Xenomorphs with Seethrough Mob enabled (only Queen has it right now) now
+      will properly show wounds from damage on their icons.
+  ori-disillusion-mirnov:
+  - bugfix: ridden runners cannot ventcrawl
+2026-01-24:
+  MistChristmas:
+  - bugfix: Decon-ing an APC and reconstructing it elsewhere no longer stops it from
+      charging
+  - code_imp: Terminals are now somewhat fluff and not a powernet object.
+  Red-byte3D:
+  - balance: Dirlock now has slowdown again
+2026-01-26:
+  Drathek:
+  - bugfix: Self destruct now pauses win condition checks during SD sequence and is
+      explicitly a draw
+  - code_imp: Cleaned up some win condition handling
+  MistChristmas:
+  - soundtweak: 'Marine winning_triumph3: Marine Hymm is now normalised to -8db'
+  larentoun:
+  - bugfix: Mutated Despoiler is now Green Despoiler, not invisible one.
+  - bugfix: Mutated King is also Green now.
+  - maptweak: LV624 LZ1 is now correctly called "LZ1 Nexus", instead of being "Alamo
+      Landing Zone".
+2026-01-28:
+  Nemesis1337, Zenith:
+  - bugfix: corrected broken icon states across all maps
+  - bugfix: corrected rotations of tiles and objects on Shivas and CORSAT
+  - bugfix: fixed broken bolt buttons on Shivas
+  - code_imp: adding glass to the window frame will now create the correct window
+  - balance: changed scrapeaway walls in west caves to only block the LZ
+  - balance: added empty IV bags and IV drips to all CLF inserts that didn't have
+      it
+  - imageadd: added new window variants for Shivas
+  - imagetweak: Shivas windows and walls are now darker
+  - maptweak: added missing tiles below windows and doors (Shivas and Fiorina)
+  - maptweak: added missing wiring terminals to SMESes on (Shivas, Fiorina and Kutjevo)
+  - maptweak: replaced unweedable turf in ETA (Solaris)
+  - maptweak: replaced old turrets in the CLF insert (Fiorina)
+  - maptweak: replaced old fences with the new slim fences and fence doors (Chance's
+      Claim)
+  - maptweak: replaced a prop M41AE2 with a functional one (Solaris)
+  - maptweak: updated basketball court visuals (Shivas and Fiorina)
+  - maptweak: tweaked area markers across all maps
+  - maptweak: changed scrapeaway walls in west caves to only block the LZ (Solaris)
+  - maptweak: removed duplicate objects (Solaris, Chance's Claim, Varadero, CORSAT)

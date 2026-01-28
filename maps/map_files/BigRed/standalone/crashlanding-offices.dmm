@@ -10,9 +10,7 @@
 /turf/open/floor/wall_thermite,
 /area/bigredv2/outside/office_complex)
 "ac" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/liquid_fuel,
-/turf/open/floor/asteroidfloor/north,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/se)
 "ad" = (
 /obj/effect/decal/cleanable/liquid_fuel,
@@ -248,12 +246,8 @@
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/bigredv2/outside/office_complex)
 "aV" = (
-/obj/structure/bed/chair/dropship/passenger{
-	dir = 4
-	},
-/obj/effect/landmark/survivor_spawner/bigred_crashed_pmc_synth,
-/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
-/area/bigredv2/outside/office_complex)
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+/area/bigredv2/outside/se)
 "aW" = (
 /obj/structure/bed/chair/dropship/pilot{
 	dir = 1
@@ -275,15 +269,30 @@
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/office_complex)
+"aZ" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement_sunbleached,
+/area/bigredv2/outside/se)
 "ba" = (
 /obj/structure/window_frame/solaris,
 /obj/item/shard,
 /obj/item/stack/rods,
 /turf/open/floor/plating,
 /area/bigredv2/outside/office_complex)
+"bb" = (
+/turf/open/asphalt/cement_sunbleached,
+/area/bigredv2/outside/se)
 "bc" = (
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/bigredv2/outside/office_complex)
+"bd" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt{
+	pixel_x = -1;
+	pixel_y = 17
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+/area/bigredv2/outside/se)
 "be" = (
 /turf/open/floor,
 /area/bigredv2/outside/office_complex)
@@ -291,10 +300,31 @@
 /obj/structure/bed/chair/office/light,
 /turf/open/floor,
 /area/bigredv2/outside/office_complex)
+"bg" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
+/area/bigredv2/outside/se)
+"bh" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
+/area/bigredv2/outside/se)
+"bi" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
+/area/bigredv2/outside/se)
 "bj" = (
 /turf/closed/shuttle/ert{
 	icon_state = "wy16"
 	},
+/area/bigredv2/outside/office_complex)
+"bk" = (
+/turf/open/floor/delivery,
+/area/bigredv2/outside/office_complex)
+"bl" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 4
+	},
+/obj/effect/landmark/survivor_spawner/bigred_crashed_pmc_synth,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/bigredv2/outside/office_complex)
 "bm" = (
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_left_to_right,
@@ -337,7 +367,7 @@
 	dir = 1;
 	name = "\improper Private Office"
 	},
-/turf/open/floor,
+/turf/open/floor/delivery,
 /area/bigredv2/outside/office_complex)
 "bJ" = (
 /obj/structure/machinery/door/airlock/almayer/generic,
@@ -465,7 +495,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Office Complex Janitor Room"
 	},
-/turf/open/floor,
+/turf/open/floor/delivery,
 /area/bigredv2/outside/office_complex)
 "dn" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
@@ -565,11 +595,12 @@
 /turf/open/floor/platingdmg1,
 /area/bigredv2/outside/office_complex)
 "jl" = (
-/turf/open/floor/asteroidwarning,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/se)
 "jo" = (
 /obj/item/tool/warning_cone,
-/turf/open/floor/asteroidwarning/southeast,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/bigredv2/outside/se)
 "jr" = (
 /obj/effect/decal/cleanable/dirt,
@@ -622,7 +653,7 @@
 /turf/open/floor/redcorner/east,
 /area/bigredv2/outside/office_complex)
 "mP" = (
-/turf/open/floor/asteroidwarning/southwest,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
 /area/bigredv2/outside/se)
 "nn" = (
 /obj/effect/decal/cleanable/dirt,
@@ -827,7 +858,7 @@
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/corpsespawner/pmc,
 /obj/item/weapon/gun/rifle/nsg23/no_lock,
-/turf/open/shuttle/dropship/light_grey_single_wide_up_to_down,
+/turf/open/floor/whiteyellowfull/east,
 /area/bigredv2/outside/office_complex)
 "zl" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -840,7 +871,7 @@
 	name = "\improper Office Complex Janitor Room";
 	welded = 1
 	},
-/turf/open/floor/whiteyellowfull/east,
+/turf/open/floor/delivery,
 /area/bigredv2/outside/office_complex)
 "zv" = (
 /obj/structure/janitorialcart,
@@ -935,9 +966,6 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/platingdmg1,
-/area/bigredv2/outside/office_complex)
-"Db" = (
-/turf/open/floor/whiteyellowfull/east,
 /area/bigredv2/outside/office_complex)
 "Dn" = (
 /obj/structure/surface/table,
@@ -1052,9 +1080,6 @@
 "HP" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
 /area/bigredv2/outside/e)
-"Ic" = (
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
-/area/bigredv2/outside/c)
 "Ik" = (
 /turf/open/floor/asteroidwarning/east,
 /area/bigredv2/outside/e)
@@ -1135,7 +1160,9 @@
 /turf/open/floor/plating/platingdmg3,
 /area/bigredv2/outside/office_complex)
 "Na" = (
-/turf/open/floor/asteroidfloor/north,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/flora/grass/desert/lightgrass_1,
+/turf/open/asphalt/cement_sunbleached,
 /area/bigredv2/outside/se)
 "Nc" = (
 /obj/structure/surface/rack,
@@ -1252,10 +1279,6 @@
 /obj/item/stack/rods,
 /turf/open/floor/plating/platingdmg3,
 /area/bigredv2/outside/office_complex)
-"Tk" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/asteroidfloor/north,
-/area/bigredv2/outside/se)
 "Ts" = (
 /turf/open/floor/white,
 /area/bigredv2/outside/office_complex)
@@ -1373,7 +1396,7 @@
 /turf/open/floor/plating/panelscorched,
 /area/bigredv2/outside/office_complex)
 "XS" = (
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+/turf/open/floor/asteroidwarning/northeast,
 /area/bigredv2/outside/c)
 "Yd" = (
 /obj/effect/decal/cleanable/dirt,
@@ -1684,8 +1707,8 @@ aa
 Eq
 "}
 (11,1,1) = {"
-Ic
 tz
+Lx
 SK
 SK
 SK
@@ -1711,7 +1734,7 @@ ab
 tG
 "}
 (12,1,1) = {"
-XS
+FV
 ap
 ap
 ap
@@ -1776,7 +1799,7 @@ Vg
 aw
 qw
 ws
-aV
+bl
 zH
 hl
 hl
@@ -1924,7 +1947,7 @@ cN
 cN
 di
 ac
-jl
+aV
 "}
 (20,1,1) = {"
 ai
@@ -1932,7 +1955,7 @@ Be
 ka
 Au
 Au
-qY
+Tb
 aO
 aB
 bA
@@ -1950,7 +1973,7 @@ cO
 cU
 dd
 Rd
-ac
+bg
 Na
 "}
 (21,1,1) = {"
@@ -1977,8 +2000,8 @@ JH
 ah
 af
 ae
-ac
-Na
+bh
+aZ
 "}
 (22,1,1) = {"
 BX
@@ -2004,8 +2027,8 @@ al
 QD
 ag
 WB
-Tk
-Na
+bh
+bb
 "}
 (23,1,1) = {"
 Iz
@@ -2031,8 +2054,8 @@ Fp
 aj
 Cy
 dk
-Tk
-jl
+bh
+aV
 "}
 (24,1,1) = {"
 qf
@@ -2057,9 +2080,9 @@ Cy
 Cz
 Pv
 pu
-be
-Tk
-jl
+bk
+bh
+bd
 "}
 (25,1,1) = {"
 ai
@@ -2078,13 +2101,13 @@ be
 ap
 mx
 UB
-Db
+bk
 UB
 zh
 am
 OH
 hU
 ap
-Na
+bi
 jo
 "}

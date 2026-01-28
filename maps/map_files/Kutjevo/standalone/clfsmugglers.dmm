@@ -4,10 +4,29 @@
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/exterior/clf_lz)
 "ab" = (
-/obj/effect/landmark/survivor_spawner/clf_synth/kutjevo,
+/obj/structure/surface/rack,
+/obj/item/storage/belt/medical/full,
+/obj/item/storage/belt/medical/full{
+	pixel_x = 2;
+	pixel_y = 4
+	},
+/obj/item/storage/firstaid/regular,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/clf_lz)
 "ac" = (
+/obj/structure/surface/rack,
+/obj/item/roller,
+/obj/item/roller{
+	pixel_x = 3;
+	pixel_y = 2
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/clf_lz)
+"ad" = (
+/obj/effect/landmark/survivor_spawner/clf_synth/kutjevo,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/clf_lz)
+"ae" = (
 /obj/effect/landmark/survivor_spawner/clf_coordinator/kutjevo,
 /turf/open/floor/almayer,
 /area/kutjevo/interior/colony/clf_shuttle)
@@ -367,13 +386,6 @@
 "qx" = (
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/stonyfields)
-"qP" = (
-/obj/structure/surface/rack,
-/obj/item/storage/belt/medical/full,
-/obj/item/storage/belt/medical/full,
-/obj/item/storage/firstaid/regular,
-/turf/open/auto_turf/sand/layer1,
-/area/kutjevo/exterior/clf_lz)
 "ru" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -539,6 +551,7 @@
 /area/kutjevo/interior/colony/clf_shuttle)
 "Ax" = (
 /obj/structure/machinery/iv_drip,
+/obj/item/reagent_container/blood/OMinus,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/clf_lz)
 "AT" = (
@@ -2353,13 +2366,13 @@ mr
 mr
 cf
 oH
-cf
-tZ
-qP
-cf
-cf
-cf
+ac
 ab
+tZ
+cf
+cf
+cf
+ad
 cf
 zp
 Ok
@@ -2791,7 +2804,7 @@ SV
 QI
 YQ
 Nk
-ac
+ae
 Qy
 Ni
 YQ

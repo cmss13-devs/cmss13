@@ -40,6 +40,31 @@
 	},
 /turf/open/floor/grimy,
 /area/desert_dam/building/bar/bar)
+"ah" = (
+/obj/structure/barricade/sandbags/wired,
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 8
+	},
+/turf/open/mars/mars_dirt_5,
+/area/desert_dam/exterior/valley/bar_valley_dam)
+"ai" = (
+/obj/structure/barricade/sandbags/wired,
+/obj/effect/decal/sand_overlay/sand1/corner1,
+/turf/open/mars/mars_dirt_5,
+/area/desert_dam/exterior/valley/bar_valley_dam)
+"aj" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 8
+	},
+/turf/open/mars/mars_dirt_5,
+/area/desert_dam/exterior/valley/bar_valley_dam)
+"ak" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 1
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
+/area/desert_dam/exterior/valley/bar_valley_dam)
 "am" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal11"
@@ -72,6 +97,7 @@
 /obj/item/reagent_container/food/drinks/flask/canteen{
 	desc = "You take a sip from your trusty UPP canteen..."
 	},
+/obj/effect/decal/sand_overlay/sand1/corner1,
 /turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "be" = (
@@ -742,6 +768,7 @@
 /area/desert_dam/building/bar/bar)
 "oo" = (
 /obj/structure/flora/grass/desert/heavygrass_4,
+/obj/effect/decal/sand_overlay/sand1/corner1,
 /turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "oy" = (
@@ -1053,6 +1080,7 @@
 /area/desert_dam/building/bar/bar_restroom)
 "vy" = (
 /obj/item/prop/colony/used_flare,
+/obj/effect/decal/sand_overlay/sand1,
 /turf/open/floor/plating,
 /area/desert_dam/building/bar/bar_restroom)
 "vP" = (
@@ -1085,6 +1113,9 @@
 /area/desert_dam/building/bar/bar)
 "wp" = (
 /obj/structure/flora/grass/desert/heavygrass_10,
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 4
+	},
 /turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "wq" = (
@@ -1583,6 +1614,7 @@
 	},
 /area/desert_dam/building/bar/bar)
 "Dt" = (
+/obj/effect/decal/sand_overlay/sand1/corner1,
 /turf/open/floor/plating/platingdmg3,
 /area/desert_dam/building/bar/bar_restroom)
 "Du" = (
@@ -1615,7 +1647,7 @@
 "DR" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/sand_overlay/sand1,
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "DZ" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -1819,6 +1851,7 @@
 /obj/item/prop/colony/usedbandage{
 	dir = 5
 	},
+/obj/effect/decal/sand_overlay/sand1/corner1,
 /turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "Iu" = (
@@ -1839,6 +1872,12 @@
 /area/desert_dam/building/bar/bar)
 "IU" = (
 /obj/item/tool/shovel,
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 8
+	},
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 1
+	},
 /turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "IW" = (
@@ -2674,6 +2713,9 @@
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "YK" = (
 /obj/item/stack/rods,
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 8
+	},
 /turf/open/floor/plating,
 /area/desert_dam/building/bar/bar)
 "YM" = (
@@ -2952,7 +2994,7 @@ YY
 Cm
 nk
 bO
-kf
+aj
 pk
 xT
 xT
@@ -3067,7 +3109,7 @@ wZ
 gM
 kf
 kf
-kf
+aj
 jC
 IU
 PY
@@ -3109,7 +3151,7 @@ cR
 kf
 kf
 kf
-kf
+aj
 pk
 xT
 xT
@@ -3148,7 +3190,7 @@ kf
 Di
 md
 tl
-OS
+ah
 QI
 xT
 xT
@@ -3224,7 +3266,7 @@ Jd
 kf
 tl
 np
-OS
+ai
 Nj
 pu
 xT
@@ -3435,7 +3477,7 @@ ln
 ln
 ln
 wJ
-lC
+ak
 DR
 xr
 kD

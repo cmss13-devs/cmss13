@@ -226,8 +226,11 @@
 				deconstruct(FALSE)
 
 /obj/item/mob_launch_collision(mob/living/L)
-	forceMove(L.loc)
-	..()
+	. = ..()
+	if (. & ((COMSIG_MOB_PREPARED_SWING_PASSTHROUGH|COMSIG_MOB_PREPARED_SWING_SWUNG)))
+		return
+	if(loc == get_turf(src))
+		forceMove(L.loc)
 
 //user: The mob that is suiciding
 //damagetype: The type of damage the item will inflict on the user

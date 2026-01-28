@@ -676,3 +676,64 @@
 		icon_state = "runner_beret"
 		return
 	icon_state = "runner"
+
+/obj/item/toy/baseball
+	name = "\improper baseball"
+	desc = "A baseball, a small ball in classic white with 108 stitches exactly. Just looking at it makes you want to play catch."
+	icon_state = "baseball"
+	throw_range = 10
+	force = MELEE_FORCE_TIER_1
+
+/obj/item/toy/baseball/attackby(obj/item/attacking_object, mob/user)
+	. = ..()
+	if(istype(attacking_object, /obj/item/toy/baseball_mitt))
+		var/obj/item/toy/baseball_mitt/mitt_picking_up = attacking_object
+		mitt_picking_up.attackby(src, user)
+
+/obj/item/toy/baseball_mitt
+	name = "\improper baseball mitt"
+	desc = "A glove especially designed for baseball, specifically catching them, webbed fingers and a decent synthetic leather make it ideal for the sport."
+	icon_state = "baseball_mitt"
+	item_state = "baseball_mitt"
+	var/obj/item/toy/baseball/ball
+
+/obj/item/toy/baseball_mitt/update_icon()
+	if(ball)
+		icon_state = "[initial(icon_state)]_ball"
+	else
+		icon_state = "[initial(icon_state)]"
+
+/obj/item/toy/baseball_mitt/attack_hand(mob/user)
+	if(ball && loc == user)
+		user.put_in_active_hand(ball)
+		to_chat(user, SPAN_NOTICE("You retrieve [ball] from [src]."))
+		ball = null
+		update_icon()
+	else
+		. = ..()
+
+/obj/item/toy/baseball_mitt/attackby(obj/item/attacking_object, mob/user)
+	. = ..()
+	if(istype(attacking_object, /obj/item/toy/baseball/))
+		ball = attacking_object
+		user.drop_inv_item_to_loc(ball, src)
+		to_chat(user, SPAN_NOTICE("You place [attacking_object] in [src]."))
+		update_icon()
+
+/obj/item/toy/baseball_mitt/proc/catch_ball(mob/user, obj/item/toy/baseball/catching_ball)
+	if(istype(catching_ball))
+		user.drop_inv_item_to_loc(catching_ball, src)
+		ball = catching_ball
+		user.visible_message(SPAN_NOTICE("[user] catches [catching_ball] with [src]!"), SPAN_NOTICE("You catch [catching_ball] with [src]!"))
+		update_icon()
+		return COMSIG_MOB_CATCHING_OBJECT_CAUGHT
+	else
+		return COMSIG_MOB_CATCHING_OBJECT_DROPPED
+
+/obj/item/toy/baseball_mitt/pickup(mob/user)
+	. = ..()
+	RegisterSignal(user, COMSIG_MOB_CATCHING_OBJECT, PROC_REF(catch_ball))
+
+/obj/item/toy/baseball_mitt/dropped(mob/user)
+	. = ..()
+	UnregisterSignal(user, COMSIG_MOB_CATCHING_OBJECT)

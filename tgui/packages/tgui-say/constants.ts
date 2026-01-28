@@ -169,12 +169,12 @@ export const RADIO_PREFIXES = {
     label: 'UPP CCT',
   },
   ':k ': {
-    id: 'sof',
-    label: 'SOF',
+    id: 'kilo',
+    label: 'Kilo',
   },
   '.k ': {
-    id: 'sof',
-    label: 'SOF',
+    id: 'kilo',
+    label: 'Kilo',
   },
   '#k ': {
     id: 'specops',
@@ -209,12 +209,12 @@ export const RADIO_PREFIXES = {
     label: 'UPP Engi',
   },
   ':o ': {
-    id: 'colony',
-    label: 'Colony',
+    id: 'oscar',
+    label: 'Oscar',
   },
   '.o ': {
-    id: 'colony',
-    label: 'Colony',
+    id: 'oscar',
+    label: 'Oscar',
   },
   '#o ': {
     id: 'pmc-cct',
@@ -320,18 +320,6 @@ export const RADIO_PREFIXES = {
     id: 'wysec',
     label: 'W-Y Sec',
   },
-  ':1 ': {
-    id: 'wypub',
-    label: 'W-Y Pub',
-  },
-  '.1 ': {
-    id: 'wypub',
-    label: 'W-Y Pub',
-  },
-  '#1 ': {
-    id: 'wypub',
-    label: 'W-Y Pub',
-  },
   ':z ': {
     id: 'highcom',
     label: 'HC',
@@ -343,6 +331,34 @@ export const RADIO_PREFIXES = {
   '#z ': {
     id: 'pmc-cmd',
     label: 'PMC Cmd.',
+  },
+  ':1 ': {
+    id: 'sof',
+    label: 'SOF',
+  },
+  '.1 ': {
+    id: 'sof',
+    label: 'SOF',
+  },
+  ':2 ': {
+    id: 'colony',
+    label: 'Colony',
+  },
+  '.2 ': {
+    id: 'colony',
+    label: 'Colony',
+  },
+  ':3 ': {
+    id: 'wypub',
+    label: 'W-Y Pub',
+  },
+  '.3 ': {
+    id: 'wypub',
+    label: 'W-Y Pub',
+  },
+  '#3 ': {
+    id: 'wypub',
+    label: 'W-Y Pub',
   },
 } as const;
 

@@ -30,6 +30,8 @@ $alpha: hsl(0, 72%, 50%);
 $bravo: hsl(39, 85%, 42%);
 $charlie: hsl(300, 33%, 50%);
 $delta: hsl(203, 100%, 41%);
+$kilo: hsl(177, 94%, 32%);
+$oscar: hsl(94, 25%, 42%);
 $echo: hsl(158, 49%, 47%);
 $foxtrot: hsl(22, 41%, 48%);
 $jtac: hsl(311, 49%, 45%);
@@ -68,6 +70,8 @@ $_channel_map: (
   'bravo': $bravo,
   'charlie': $charlie,
   'delta': $delta,
+  'kilo': $kilo,
+  'oscar': $oscar,
   'echo': $echo,
   'foxtrot': $foxtrot,
   'jtac': $jtac,

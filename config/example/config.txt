@@ -155,6 +155,9 @@ TICKLAG 0.5
 ## Uncomment this to have country flags pop up in OOC alongside names if the user has the pref turned on (uses IP-API)
 #OOC_COUNTRY_FLAGS
 
+## If this is 'Xenonid' (no '') it will override defaults. No other entry (for now) does anything.
+DEFAULT_HOSTILE_SPRITES Xeno
+
 ## Comment this out to disable automuting
 #AUTOMUTE_ON
 

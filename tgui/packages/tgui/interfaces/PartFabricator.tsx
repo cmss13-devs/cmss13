@@ -17,7 +17,7 @@ type EquipmentCategories = {
 
 type Data = {
   Equipment: EquipmentCategories;
-  Ammo: DataEntry[];
+  Ammo: EquipmentCategories;
   points: number;
   omnisentrygun_price: number;
   BuildQueue: { name: string; cost: number; index: number }[];
@@ -78,46 +78,50 @@ const GeneralPanel = (props) => {
           <Flex.Item width="2rem" />
           <Flex.Item grow={1}>
             <Section title="Ammo">
-              <LabeledList>
-                {Ammo.map((Ammo) => (
-                  <LabeledList.Item
-                    key={Ammo.name}
-                    label={Ammo.name}
-                    className="underline"
-                    buttons={
-                      Ammo.name === 'A/C-49-P Air Deployable Sentry' ? (
-                        <Button
-                          icon="wrench"
-                          tooltip={Ammo.desc}
-                          tooltipPosition="left"
-                          onClick={() =>
-                            act('produce', {
-                              index: Ammo.index,
-                              is_ammo: Ammo.is_ammo,
-                            })
-                          }
-                        >
-                          {'Fabricate  (' + omnisentrygun_price + ')'}
-                        </Button>
-                      ) : (
-                        <Button
-                          icon="wrench"
-                          tooltip={Ammo.desc}
-                          tooltipPosition="left"
-                          onClick={() =>
-                            act('produce', {
-                              index: Ammo.index,
-                              is_ammo: Ammo.is_ammo,
-                            })
-                          }
-                        >
-                          {'Fabricate  (' + Ammo.cost + ')'}
-                        </Button>
-                      )
-                    }
-                  />
-                ))}
-              </LabeledList>
+              {Object.entries(Ammo).map(([categoryName, ammoList]) => (
+                <Section key={categoryName} title={categoryName}>
+                  <LabeledList>
+                    {ammoList.map((ammo) => (
+                      <LabeledList.Item
+                        key={ammo.name}
+                        label={ammo.name}
+                        className="underline"
+                        buttons={
+                          ammo.name === 'A/C-49-P Air Deployable Sentry' ? (
+                            <Button
+                              icon="wrench"
+                              tooltip={ammo.desc}
+                              tooltipPosition="left"
+                              onClick={() =>
+                                act('produce', {
+                                  index: ammo.index,
+                                  is_ammo: ammo.is_ammo,
+                                })
+                              }
+                            >
+                              {'Fabricate  (' + omnisentrygun_price + ')'}
+                            </Button>
+                          ) : (
+                            <Button
+                              icon="wrench"
+                              tooltip={ammo.desc}
+                              tooltipPosition="left"
+                              onClick={() =>
+                                act('produce', {
+                                  index: ammo.index,
+                                  is_ammo: ammo.is_ammo,
+                                })
+                              }
+                            >
+                              {'Fabricate  (' + ammo.cost + ')'}
+                            </Button>
+                          )
+                        }
+                      />
+                    ))}
+                  </LabeledList>
+                </Section>
+              ))}
             </Section>
           </Flex.Item>
         </Flex>

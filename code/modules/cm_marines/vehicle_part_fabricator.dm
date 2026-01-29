@@ -1,4 +1,34 @@
 
+// static lookup table for ammo categories
+/proc/get_ammo_category(ammo_type)
+	switch(ammo_type)
+		if(/obj/structure/ship_ammo/rocket)
+			return "Rocket Pod"
+		if(/obj/structure/ship_ammo/rocket/napalm)
+			return "Rocket Pod"
+		if(/obj/structure/ship_ammo/rocket/widowmaker, /obj/structure/ship_ammo/rocket/banshee, /obj/structure/ship_ammo/rocket/keeper, /obj/structure/ship_ammo/rocket/harpoon, /obj/structure/ship_ammo/rocket/thermobaric)
+			return "Rocket Pod"
+		if(/obj/structure/ship_ammo/missile, /obj/structure/ship_ammo/missile/zeus, /obj/structure/ship_ammo/missile/sgw, /obj/structure/ship_ammo/missile/banshee, /obj/structure/ship_ammo/missile/hellhound)
+			return "Missile Silo"
+		else
+			if(ispath(ammo_type, /obj/structure/ship_ammo/heavygun/bellygun))
+				return "Belly Gun"
+			else if(ispath(ammo_type, /obj/structure/ship_ammo/heavygun))
+				return "GAU Cannon"
+			else if(ispath(ammo_type, /obj/structure/ship_ammo/laser_battery))
+				return "Laser Battery"
+			else if(ispath(ammo_type, /obj/structure/ship_ammo/minirocket))
+				return "Minirocket Pod"
+			else if(ispath(ammo_type, /obj/structure/ship_ammo/bomb))
+				return "Bomb Bay"
+			else if(ispath(ammo_type, /obj/structure/ship_ammo/sentry))
+				return "Launch Bay"
+			else if(ispath(ammo_type, /obj/structure/ship_ammo/flare))
+				return "Flare Launcher"
+			else
+				return "Uncategorized"
+
+
 /obj/structure/machinery/part_fabricator
 	name = "part fabricator"
 	desc = "A large automated 3D printer for producing runtime errors."
@@ -253,25 +283,50 @@
 /obj/structure/machinery/part_fabricator/dropship/spend_point_store(number = 1)
 	linked_supply_controller.dropship_points -= number
 
-GLOBAL_LIST_EMPTY(cached_dropship_equipment_categories)
+// static lookup table for equipment
+/proc/get_equipment_categories(equipment_type)
+	// weapons
+	if(ispath(equipment_type, /obj/structure/dropship_equipment/weapon))
+		// adds bellygun to the weapon category
+		if(ispath(equipment_type, /obj/structure/dropship_equipment/weapon/heavygun/bay))
+			return list("dropship_crew_weapon")
+		else if(ispath(equipment_type, /obj/structure/dropship_equipment/weapon/heavygun) || \
+				ispath(equipment_type, /obj/structure/dropship_equipment/weapon/laser_beam_gun) || \
+				ispath(equipment_type, /obj/structure/dropship_equipment/weapon/rocket_pod) || \
+				ispath(equipment_type, /obj/structure/dropship_equipment/weapon/missile_silo) || \
+				ispath(equipment_type, /obj/structure/dropship_equipment/weapon/bomb_bay) || \
+				ispath(equipment_type, /obj/structure/dropship_equipment/weapon/minirocket_pod) || \
+				ispath(equipment_type, /obj/structure/dropship_equipment/weapon/flare_launcher) || \
+				ispath(equipment_type, /obj/structure/dropship_equipment/weapon/launch_bay))
+			return list("dropship_weapon")
+		else
+			return list("dropship_weapon", "dropship_crew_weapon")
 
-// Initialize the equipment categories
-/proc/init_dropship_equipment_categories()
-	if(length(GLOB.cached_dropship_equipment_categories))
-		return
+	// electronics
+	else if(ispath(equipment_type, /obj/structure/dropship_equipment/electronics))
+		return list("dropship_electronics")
 
-	for(var/build_type in typesof(/obj/structure/dropship_equipment))
-		var/obj/structure/dropship_equipment/temp_instance = new build_type(null)
-		var/list/equip_cats = temp_instance.equip_categories ? temp_instance.equip_categories.Copy() : list()
-		temp_instance.loc = null
-		qdel(temp_instance)
+	// fuel systems
+	else if(ispath(equipment_type, /obj/structure/dropship_equipment/fuel))
+		return list("dropship_fuel_equipment")
 
-		// Store the categories for this equipment type
-		GLOB.cached_dropship_equipment_categories[build_type] = equip_cats
+	// computers
+	else if(ispath(equipment_type, /obj/structure/dropship_equipment/adv_comp))
+		return list("dropship_computer")
+
+	// crew weapons
+	else if(ispath(equipment_type, /obj/structure/dropship_equipment/sentry_holder) || \
+			ispath(equipment_type, /obj/structure/dropship_equipment/rappel_system) || \
+			ispath(equipment_type, /obj/structure/dropship_equipment/fulton_system) || \
+			ispath(equipment_type, /obj/structure/dropship_equipment/medevac_system) || \
+			ispath(equipment_type, /obj/structure/dropship_equipment/mg_holder) || \
+			ispath(equipment_type, /obj/structure/dropship_equipment/paradrop_system) || \
+			ispath(equipment_type, /obj/structure/dropship_equipment/autoreloader))
+		return list("dropship_crew_weapon")
+	else
+		return list()
 
 /obj/structure/machinery/part_fabricator/dropship/ui_static_data(mob/user)
-	init_dropship_equipment_categories()
-
 	var/list/static_data = list()
 	static_data["Equipment"] = list()
 
@@ -298,7 +353,7 @@ GLOBAL_LIST_EMPTY(cached_dropship_equipment_categories)
 		var/build_description = initial(dropship_equipment_data.desc)
 		var/build_cost = initial(dropship_equipment_data.point_cost)
 
-		var/list/equip_cats = GLOB.cached_dropship_equipment_categories[build_type]
+		var/list/equip_cats = get_equipment_categories(build_type)
 
 		if(build_cost)
 			var/equipment_data = list(
@@ -329,6 +384,20 @@ GLOBAL_LIST_EMPTY(cached_dropship_equipment_categories)
 	)
 
 	static_data["Ammo"] = list()
+
+	// separating ammo into categories like equipment
+	var/list/ammo_by_category = list()
+	ammo_by_category["GAU Cannon"] = list()
+	ammo_by_category["Belly Gun"] = list()
+	ammo_by_category["Laser Battery"] = list()
+	ammo_by_category["Rocket Pod"] = list()
+	ammo_by_category["Missile Silo"] = list()
+	ammo_by_category["Minirocket Pod"] = list()
+	ammo_by_category["Bomb Bay"] = list()
+	ammo_by_category["Launch Bay"] = list()
+	ammo_by_category["Flare Launcher"] = list()
+	ammo_by_category["Uncategorized"] = list()
+
 	is_ammo = 1
 	index = 1
 	for(var/build_type in typesof(/obj/structure/ship_ammo))
@@ -343,14 +412,42 @@ GLOBAL_LIST_EMPTY(cached_dropship_equipment_categories)
 		var/build_description = initial(ship_ammo_data.desc)
 		var/build_cost = initial(ship_ammo_data.point_cost)
 		if(build_cost)
-			static_data["Ammo"] += list(list(
+			var/ammo_data = list(
 				"name" = capitalize_first_letters(build_name),
 				"desc" = build_description,
 				"cost" = build_cost,
 				"index" = index,
 				"is_ammo" = is_ammo
-			))
+			)
+
+			// categorize based on ammo type
+			var/category = get_ammo_category(build_type)
+			ammo_by_category[category] += list(ammo_data)
+
 		index += 1
+
+	// ammo categories that have items only appear
+	static_data["Ammo"] = list()
+	if(length(ammo_by_category["GAU Cannon"]))
+		static_data["Ammo"]["GAU Cannon"] = ammo_by_category["GAU Cannon"]
+	if(length(ammo_by_category["Belly Gun"]))
+		static_data["Ammo"]["Belly Gun"] = ammo_by_category["Belly Gun"]
+	if(length(ammo_by_category["Laser Battery"]))
+		static_data["Ammo"]["Laser Battery"] = ammo_by_category["Laser Battery"]
+	if(length(ammo_by_category["Rocket Pod"]))
+		static_data["Ammo"]["Rocket Pod"] = ammo_by_category["Rocket Pod"]
+	if(length(ammo_by_category["Missile Silo"]))
+		static_data["Ammo"]["Missile Silo"] = ammo_by_category["Missile Silo"]
+	if(length(ammo_by_category["Minirocket Pod"]))
+		static_data["Ammo"]["Minirocket Pod"] = ammo_by_category["Minirocket Pod"]
+	if(length(ammo_by_category["Bomb Bay"]))
+		static_data["Ammo"]["Bomb Bay"] = ammo_by_category["Bomb Bay"]
+	if(length(ammo_by_category["Launch Bay"]))
+		static_data["Ammo"]["Launch Bay"] = ammo_by_category["Launch Bay"]
+	if(length(ammo_by_category["Flare Launcher"]))
+		static_data["Ammo"]["Flare Launcher"] = ammo_by_category["Flare Launcher"]
+	if(length(ammo_by_category["Uncategorized"]))
+		static_data["Ammo"]["Uncategorized"] = ammo_by_category["Uncategorized"]
 
 	return static_data
 

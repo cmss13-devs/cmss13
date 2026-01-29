@@ -290,22 +290,22 @@
 					return TRUE
 				weld.eyecheck(user)
 			// Play sounds and effects
-			if(next_step == "CROWBAR")
+			if(ispath(next_step, /obj/item/tool/crowbar))
 				playsound(src, 'sound/items/Crowbar.ogg', 25, 1)
-			else if(next_step == "SCREWDRIVER")
+			else if(ispath(next_step, /obj/item/tool/screwdriver))
 				playsound(src, 'sound/items/Screwdriver.ogg', 25, 1)
-			else if(next_step == "WELDER")
+			else if(ispath(next_step, /obj/item/tool/weldingtool))
 				playsound(src, 'sound/items/Welder.ogg', 25, 1)
-			else if(next_step == "WIRECUTTERS")
+			else if(ispath(next_step, /obj/item/tool/wirecutters))
 				playsound(src, 'sound/items/Wirecutter.ogg', 25, 1)
 				var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
 				sparks.set_up(5, 1, src.loc)
 				sparks.start()
-			else if(next_step == "WRENCH")
+			else if(ispath(next_step, /obj/item/tool/wrench))
 				playsound(src, 'sound/items/Ratchet.ogg', 25, 1)
-			else if(next_step == "MULTITOOL")
+			else if(ispath(next_step, /obj/item/device/multitool))
 				playsound(src, 'sound/items/tick.ogg', 35, 1)
-			else if(next_step == "CABLE COIL")
+			else if(ispath(next_step, /obj/item/stack/cable_coil))
 				playsound(src, 'sound/items/component_pickup.ogg', 35, 1)
 			// Advance repair step
 			effect.repair_step_index++

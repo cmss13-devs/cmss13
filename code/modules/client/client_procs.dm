@@ -329,7 +329,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 			qdel(src)
 			return FALSE
 
-		var/username_to_find = CONFIG_GET(keyed_list/oidc_type_to_username)[type]
+		var/username_to_find = CONFIG_GET(keyed_list/oidc_type_to_username)[oidc_type]
 		if(!username_to_find)
 			break
 

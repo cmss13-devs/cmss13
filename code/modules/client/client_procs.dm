@@ -347,11 +347,10 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		external_username = found_username
 		break
 
-	if(pre_ckey != ckey)
-		var/launcher_port = topic_headers["launcher_port"]
-		if(launcher_port)
-			var/datum/control_server/server = new(src, launcher_port)
-			server.setup()
+	var/launcher_port = topic_headers["launcher_port"]
+	if(launcher_port)
+		var/datum/control_server/server = new(src, launcher_port)
+		server.setup()
 
 	///////////
 	//CONNECT//

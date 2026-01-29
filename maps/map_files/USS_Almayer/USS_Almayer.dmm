@@ -14145,6 +14145,19 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/stair_clone/upper/port_aft)
+"aKB" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/toolbox/mechanical,
+/obj/item/clothing/head/welding{
+	pixel_x = 6;
+	pixel_y = 12
+	},
+/obj/item/stack/cable_coil/cyan{
+	pixel_x = -11;
+	pixel_y = -4
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/hallways/hangar)
 "aKC" = (
 /obj/structure/machinery/light,
 /turf/open_space,
@@ -18016,6 +18029,18 @@
 /obj/structure/airlock_assembly,
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/maintenance/sp)
+"aUE" = (
+/obj/structure/surface/table/almayer,
+/obj/item/device/dropship_computer{
+	pixel_x = 0;
+	pixel_y = 6
+	},
+/obj/item/device/dropship_handheld{
+	pixel_x = 8;
+	pixel_y = 9
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/hallways/hangar)
 "aUF" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer/no_build/test_floor4,
@@ -19824,6 +19849,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/shipboard/navigation)
+"aYH" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/floor/almayer,
+/area/almayer/hallways/hangar)
 "aYI" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -22833,6 +22862,18 @@
 /obj/item/device/dropship_handheld{
 	pixel_x = -3;
 	pixel_y = 7
+	},
+/obj/item/stack/cable_coil/green{
+	pixel_x = 10;
+	pixel_y = -7
+	},
+/obj/item/storage/toolbox/mechanical/green{
+	pixel_x = -4;
+	pixel_y = -14
+	},
+/obj/item/clothing/glasses/welding{
+	pixel_x = -3;
+	pixel_y = -9
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
@@ -135082,7 +135123,7 @@ aYu
 ilG
 aYt
 bfJ
-aYt
+aYH
 btO
 btO
 btO
@@ -137248,7 +137289,7 @@ eXq
 eXq
 kqv
 pcl
-bxQ
+aKB
 pcl
 gHZ
 pcl
@@ -137351,7 +137392,7 @@ eXq
 eXq
 aYt
 pcl
-bFG
+aUE
 aJn
 gpi
 pcl

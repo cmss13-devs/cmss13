@@ -239,10 +239,10 @@
 		bonus_projectile_check = 1 //Mark this projectile as having spawned a set of bonus projectiles.
 
 	path = get_line(starting, target_turf)
+	normalize_vis_target()
 	p_x += clamp((rand()-0.5)*scatter*3, -8, 8)
 	p_y += clamp((rand()-0.5)*scatter*3, -8, 8)
 	update_angle(starting, target_turf)
-	normalize_vis_target()
 
 	src.speed = speed
 	// Randomize speed by a small factor to help bullet animations look okay
@@ -263,9 +263,6 @@
 	SSprojectiles.queue_projectile(src)
 
 /obj/projectile/proc/update_angle(turf/source_turf, turf/aim_turf)
-	var/datum/turf_reservation/reservation = SSmapping.used_turfs[loc]
-
-
 	p_x = clamp(p_x, -16, 16)
 	p_y = clamp(p_y, -16, 16)
 
@@ -308,9 +305,9 @@
 	vis_target = path[length(path)]
 	var/datum/turf_reservation/reservation = SSmapping.used_turfs[vis_target]
 	if(reservation)
-		while(reservation.is_below(vis_target, vis_source))
+		while(reservation.is_below(vis_target, starting))
 			vis_target = SSmapping.get_turf_above(vis_target)
-		while(reservation.is_below(vis_source, vis_target))
+		while(reservation.is_below(starting, vis_target))
 			vis_target = SSmapping.get_turf_below(vis_target)
 
 

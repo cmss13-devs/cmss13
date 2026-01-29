@@ -443,9 +443,18 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/upper/s_stern)
 "abd" = (
-/obj/structure/sign/banners/colonial_marines_flag,
-/turf/closed/wall/almayer,
-/area/almayer/living/pilotbunks)
+/obj/structure/surface/table/almayer,
+/obj/item/storage/toolbox/mechanical,
+/obj/item/clothing/head/welding{
+	pixel_x = 6;
+	pixel_y = 12
+	},
+/obj/item/stack/cable_coil/cyan{
+	pixel_x = -11;
+	pixel_y = -4
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/hallways/hangar)
 "abe" = (
 /obj/structure/machinery/power/apc/almayer/hardened/south,
 /turf/open/floor/almayer/plate,
@@ -902,9 +911,17 @@
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/medical_science)
 "acm" = (
-/obj/structure/sign/calendar/ua,
-/turf/closed/wall/almayer,
-/area/almayer/living/pilotbunks)
+/obj/structure/surface/table/almayer,
+/obj/item/device/dropship_computer{
+	pixel_x = 0;
+	pixel_y = 6
+	},
+/obj/item/device/dropship_handheld{
+	pixel_x = 8;
+	pixel_y = 9
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/hallways/hangar)
 "acn" = (
 /obj/structure/stairs/multiz/down{
 	dir = 1
@@ -14146,17 +14163,8 @@
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/stair_clone/upper/port_aft)
 "aKB" = (
-/obj/structure/surface/table/almayer,
-/obj/item/storage/toolbox/mechanical,
-/obj/item/clothing/head/welding{
-	pixel_x = 6;
-	pixel_y = 12
-	},
-/obj/item/stack/cable_coil/cyan{
-	pixel_x = -11;
-	pixel_y = -4
-	},
-/turf/open/floor/almayer/test_floor4,
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
 "aKC" = (
 /obj/structure/machinery/light,
@@ -18030,17 +18038,9 @@
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/maintenance/sp)
 "aUE" = (
-/obj/structure/surface/table/almayer,
-/obj/item/device/dropship_computer{
-	pixel_x = 0;
-	pixel_y = 6
-	},
-/obj/item/device/dropship_handheld{
-	pixel_x = 8;
-	pixel_y = 9
-	},
-/turf/open/floor/almayer/test_floor4,
-/area/almayer/hallways/hangar)
+/obj/structure/sign/banners/colonial_marines_flag,
+/turf/closed/wall/almayer,
+/area/almayer/living/pilotbunks)
 "aUF" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer/no_build/test_floor4,
@@ -19850,9 +19850,9 @@
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/shipboard/navigation)
 "aYH" = (
-/obj/effect/decal/cleanable/blood/oil/streak,
-/turf/open/floor/almayer,
-/area/almayer/hallways/hangar)
+/obj/structure/sign/calendar/ua,
+/turf/closed/wall/almayer,
+/area/almayer/living/pilotbunks)
 "aYI" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -133985,7 +133985,7 @@ iWH
 aqe
 apI
 apy
-abd
+aUE
 apd
 bTU
 gZK
@@ -134191,7 +134191,7 @@ rMO
 aqj
 rMO
 apC
-acm
+aYH
 aph
 xNz
 utK
@@ -135123,7 +135123,7 @@ aYu
 ilG
 aYt
 bfJ
-aYH
+aKB
 btO
 btO
 btO
@@ -137289,7 +137289,7 @@ eXq
 eXq
 kqv
 pcl
-aKB
+abd
 pcl
 gHZ
 pcl
@@ -137392,7 +137392,7 @@ eXq
 eXq
 aYt
 pcl
-aUE
+acm
 aJn
 gpi
 pcl

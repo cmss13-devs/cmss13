@@ -212,7 +212,7 @@ export const PlayerPanel = (props) => {
                         }
                       />
                     )) || (
-                    <Box inline>
+                    <Box inline style={{ wordBreak: 'break-all' }}>
                       {client_username && client_username !== client_key
                         ? `${client_username} (${client_key})`
                         : client_key}

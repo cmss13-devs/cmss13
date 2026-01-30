@@ -31,6 +31,7 @@
 	prae.claw_type = CLAW_TYPE_SHARP
 	prae.dodge_chance = 18
 	prae.received_phero_caps["recovery"] = 3 //need to be limited, regens too fast.
+	prae.received_phero_caps["frenzy"] = 2.7 //zoom too fast, moderate increase in speed.
 
 	prae.recalculate_everything()
 
@@ -39,6 +40,11 @@
 
 	/// How much time is left on timer. (used for status)
 	var/time_left = null
+
+	/// List of targets, used to spread yellow marks.
+	var/list/candidates = list()
+	/// How many targets got yellow tag.
+	var/spread_count = 0
 
 	/// How much damage Harpoon Tail on DISARM mode do. (pierces armor)
 	var/blunt_damage = 8
@@ -128,30 +134,29 @@
 	if(!origin)
 		return
 
-	var/spread_count = 0
-
 	for(var/mob/living/carbon/human/human_target in view(5, origin))
+		if(human_target == target_carbon)
+			continue
+		if(human_target.stat == DEAD)
+			continue
+		if(!isxeno_human(human_target))
+			continue
+		if(locate(/datum/effects/dancer_tag) in human_target.effects_list)
+			continue
+		if(locate(/datum/effects/dancer_tag_spread) in human_target.effects_list)
+			continue
+		candidates += human_target
+
+	if(!length(candidates))
+		return
+
+	candidates = sort_list_dist(candidates, origin)
+	for(var/mob/living/carbon/human/human_target in candidates)
 		if(spread_count >= 5)
 			break
 
-		if(human_target == target_carbon)
-			continue
-
-		if(human_target.stat == DEAD)
-			continue
-
-		if(!isxeno_human(human_target))
-			continue
-
-		if(locate(/datum/effects/dancer_tag) in human_target.effects_list)
-			continue
-
-		if(locate(/datum/effects/dancer_tag_spread) in human_target.effects_list)
-			continue
-
 		new /datum/effects/dancer_tag_spread(human_target, bound_xeno)
 		human_target.update_xeno_hostile_hud()
-
 		spread_count++
 
 /datum/behavior_delegate/praetorian_dancer/proc/reset_slash_dodge()

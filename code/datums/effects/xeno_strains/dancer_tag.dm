@@ -62,5 +62,5 @@
 /datum/effects/dancer_tag_spread/Destroy()
 	if(ishuman(affected_atom))
 		var/mob/living/carbon/human/target_human = affected_atom
-		addtimer(CALLBACK(target_human, TYPE_PROC_REF(/mob/living/carbon/human, update_xeno_hostile_hud)), 3)
+		target_human.update_xeno_hostile_hud()
 	return ..()

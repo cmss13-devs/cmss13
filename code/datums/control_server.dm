@@ -31,14 +31,15 @@ GLOBAL_LIST_EMPTY(ckey_to_controller)
 
 		window.contact = (endpoint, params) => {
 			const url = params ? `http://localhost:${port}/${endpoint}?${params}` : `http://localhost:${port}/${endpoint}`;
-			fetch(url).then((response) => {
+			return fetch(url).then((response) => {
 				const contentType = response.headers.get('content-type');
 				if (contentType && contentType.includes('application/json')) {
-					response.json().then((object) => {
+					return response.json().then((object) => {
 						BYOND.command(`.controller ${JSON.stringify(object)}`);
+						return object;
 					});
 				}
-			})
+			});
 		}
 
 		window.pong = () => {
@@ -48,12 +49,20 @@ GLOBAL_LIST_EMPTY(ckey_to_controller)
 			}
 		}
 
+		function reconnect() {
+			window.contact('get-url').then((response) => {
+				if (response && response.url) {
+					location.href = response.url;
+				}
+			});
+		}
+
 		function ping() {
 			if (awaitingPong) {
 				failedPings++;
 				if (failedPings >= MAX_FAILED_PINGS) {
 					failedPings = 0;
-					window.contact('restart', 'reason=' + encodeURIComponent('Disconnected from the game server.'));
+					window.contact('restart', 'reason=' + encodeURIComponent('Disconnected from the game server...'));
 					return;
 				}
 			}
@@ -65,7 +74,7 @@ GLOBAL_LIST_EMPTY(ckey_to_controller)
 					awaitingPong = false;
 					if (failedPings >= MAX_FAILED_PINGS) {
 						failedPings = 0;
-						window.contact('restart', 'reason=' + encodeURIComponent('Disconnected from the game server.'));
+						window.contact('restart', 'reason=' + encodeURIComponent('Disconnected from the game server...'));
 					}
 				}
 			}, PONG_TIMEOUT);

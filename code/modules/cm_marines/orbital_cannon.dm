@@ -404,6 +404,8 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 			SPAN_HIGHDANGER("The sky erupts into flames [SPAN_UNDERLINE(relative_dir ? ("to the " + dir2text(relative_dir)) : "right above you")]!"), SHOW_MESSAGE_VISIBLE, \
 			SPAN_HIGHDANGER("You hear a very loud sound coming from above to the [SPAN_UNDERLINE(relative_dir ? ("to the " + dir2text(relative_dir)) : "right above you")]!"), SHOW_MESSAGE_AUDIBLE \
 		)
+		//onscreen alert outside of chat
+		M.balloon_alert(M, "The sky erupts into flames [SPAN_UNDERLINE(relative_dir ? ("to the " + dir2text(relative_dir)) : "right above you")]!", text_color = "#ff1100ad")
 	sleep(OB_TRAVEL_TIMING/3)
 
 	for(var/mob/M in long_range(25, target))
@@ -415,13 +417,28 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 			SPAN_HIGHDANGER("The sky roars louder [SPAN_UNDERLINE(relative_dir ? ("to the " + dir2text(relative_dir)) : "right above you")]!"), SHOW_MESSAGE_VISIBLE, \
 			SPAN_HIGHDANGER("The sound becomes louder [SPAN_UNDERLINE(relative_dir ? ("to the " + dir2text(relative_dir)) : "right above you")]!"), SHOW_MESSAGE_AUDIBLE \
 		)
+
+		M.balloon_alert(M, "The sky roars louder [SPAN_UNDERLINE(relative_dir ? ("to the " + dir2text(relative_dir)) : "right above you")]!", text_color = "#ff1100ad")
 	sleep(OB_TRAVEL_TIMING/3)
 
 	for(var/mob/M in long_range(15, target))
-		M.show_message( \
-			SPAN_HIGHDANGER("OH GOD THE SKY WILL EXPLODE!!!"), SHOW_MESSAGE_VISIBLE, \
-			SPAN_HIGHDANGER("YOU SHOULDN'T BE HERE!"), SHOW_MESSAGE_AUDIBLE \
-		)
+
+		//differentiate between xenos and marines for HRP
+		if(isxeno(M))
+			M.show_message( \
+				SPAN_HIGHDANGER("OUR SKY IS BOOMING!!!"), SHOW_MESSAGE_VISIBLE, \
+				SPAN_HIGHDANGER("YOU SHOULDN'T BE HERE!"), SHOW_MESSAGE_AUDIBLE \
+			)
+			M.balloon_alert(M, "OUR SKY IS BOOMING!!!", text_color = "#ff1100ad")
+
+		else
+			M.show_message( \
+				SPAN_HIGHDANGER("OH GOD THE SKY WILL EXPLODE!!!"), SHOW_MESSAGE_VISIBLE, \
+				SPAN_HIGHDANGER("YOU SHOULDN'T BE HERE!"), SHOW_MESSAGE_AUDIBLE \
+			)
+			M.balloon_alert(M, "OH GOD THE SKY WILL EXPLODE!!!", text_color = "#ff1100ad")
+
+
 	sleep(OB_TRAVEL_TIMING/3)
 
 	if(GLOB.orbital_cannon_cancellation["[cancellation_token]"]) // the cancelling notification is in the topic

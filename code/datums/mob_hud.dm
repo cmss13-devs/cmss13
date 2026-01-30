@@ -864,10 +864,18 @@ GLOBAL_DATUM_INIT(hud_icon_hudfocus, /image, image('icons/mob/hud/human_status.d
 		slow_holder.overlays += image('icons/mob/hud/hud.dmi', "xeno_slow")
 
 	var/tag_found = FALSE
-	for (var/datum/effects/dancer_tag/DT in effects_list)
-		if (!QDELETED(DT))
+	for(var/datum/effects/dancer_tag/normal_tag in effects_list)
+		if(!QDELETED(normal_tag))
 			tag_found = TRUE
 			break
+
+	if(tag_found)
+		tag_holder.overlays += image('icons/mob/hud/hud.dmi', src, "prae_tag")
+	else
+		for(var/datum/effects/dancer_tag_spread/special_tag in effects_list)
+			if(!QDELETED(special_tag))
+				tag_holder.overlays += image('icons/mob/hud/hud.dmi', src, "prae_tag_yellow")
+				break
 
 	if (tag_found)
 		tag_holder.overlays += image('icons/mob/hud/hud.dmi', src, "prae_tag")

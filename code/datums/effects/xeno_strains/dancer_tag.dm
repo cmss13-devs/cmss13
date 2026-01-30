@@ -3,9 +3,11 @@
 	duration = null
 	flags = DEL_ON_DEATH | INF_DURATION
 
+	var/mob/living/carbon/xenomorph/source_xeno
 
 /datum/effects/dancer_tag/New(atom/A, mob/from = null, last_dmg_source = null, zone = "chest", ttl = 35)
 	. = ..(A, from, last_dmg_source, zone)
+	source_xeno = from
 
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(qdel), src), ttl)
 
@@ -38,4 +40,27 @@
 	var/mob/living/carbon/human/H = affected_atom
 	addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, update_xeno_hostile_hud)), 3)
 
+	return ..()
+
+/datum/effects/dancer_tag_spread
+	effect_name = "dancer spread tag"
+	duration = null
+	flags = DEL_ON_DEATH | INF_DURATION
+
+	var/mob/living/carbon/xenomorph/source_xeno
+
+/datum/effects/dancer_tag_spread/New(atom/target_atom, mob/from = null)
+	. = ..(target_atom, from)
+	source_xeno = from
+
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(qdel), src), 5 SECONDS)
+
+	if(ishuman(target_atom))
+		var/mob/living/carbon/human/target_human = target_atom
+		target_human.update_xeno_hostile_hud()
+
+/datum/effects/dancer_tag_spread/Destroy()
+	if(ishuman(affected_atom))
+		var/mob/living/carbon/human/target_human = affected_atom
+		addtimer(CALLBACK(target_human, TYPE_PROC_REF(/mob/living/carbon/human, update_xeno_hostile_hud)), 3)
 	return ..()

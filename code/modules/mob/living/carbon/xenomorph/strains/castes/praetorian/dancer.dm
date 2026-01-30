@@ -120,6 +120,40 @@
 		var/mob/living/carbon/human/target_human = target_carbon
 		target_human.update_xeno_hostile_hud()
 
+/datum/behavior_delegate/praetorian_dancer/on_kill_mob(mob/living/carbon/target_carbon)
+	if(!isxeno_human(target_carbon))
+		return
+
+	var/turf/origin = get_turf(target_carbon)
+	if(!origin)
+		return
+
+	var/spread_count = 0
+
+	for(var/mob/living/carbon/human/human_target in view(5, origin))
+		if(spread_count >= 5)
+			break
+
+		if(human_target == target_carbon)
+			continue
+
+		if(human_target.stat == DEAD)
+			continue
+
+		if(!isxeno_human(human_target))
+			continue
+
+		if(locate(/datum/effects/dancer_tag) in human_target.effects_list)
+			continue
+
+		if(locate(/datum/effects/dancer_tag_spread) in human_target.effects_list)
+			continue
+
+		new /datum/effects/dancer_tag_spread(human_target, bound_xeno)
+		human_target.update_xeno_hostile_hud()
+
+		spread_count++
+
 /datum/behavior_delegate/praetorian_dancer/proc/reset_slash_dodge()
 	if(current_slashes <= 0)
 		return
@@ -214,6 +248,12 @@
 	for(var/datum/effects/dancer_tag/dancer_tag_effect in target_carbon.effects_list)
 		buffed = TRUE
 		qdel(dancer_tag_effect)
+		break
+
+	for(var/datum/effects/dancer_tag_spread/dancer_tag_spread in target_carbon.effects_list)
+		buffed = TRUE
+		qdel(dancer_tag_spread)
+		apply_cooldown_override(1 SECONDS)
 		break
 
 	if(ishuman(target_carbon))
@@ -495,6 +535,12 @@
 	var/buffed = FALSE
 
 	var/datum/effects/dancer_tag/dancer_tag_effect = locate() in target_carbon.effects_list
+	var/datum/effects/dancer_tag_spread/dancer_tag_spread = locate() in target_carbon.effects_list
+
+	if(dancer_tag_spread)
+		buffed = TRUE
+		qdel(dancer_tag_spread)
+		apply_cooldown_override(1 SECONDS)
 
 	if(dancer_tag_effect)
 		buffed = TRUE

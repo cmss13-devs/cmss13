@@ -29,8 +29,9 @@ GLOBAL_LIST_EMPTY(ckey_to_controller)
 		const PING_INTERVAL = 2000;
 		const PONG_TIMEOUT = 1500;
 
-		window.contact = (endpoint) => {
-			fetch(`http://localhost:${port}/${endpoint}`).then((response) => {
+		window.contact = (endpoint, params) => {
+			const url = params ? `http://localhost:${port}/${endpoint}?${params}` : `http://localhost:${port}/${endpoint}`;
+			fetch(url).then((response) => {
 				const contentType = response.headers.get('content-type');
 				if (contentType && contentType.includes('application/json')) {
 					response.json().then((object) => {
@@ -52,7 +53,8 @@ GLOBAL_LIST_EMPTY(ckey_to_controller)
 				failedPings++;
 				if (failedPings >= MAX_FAILED_PINGS) {
 					failedPings = 0;
-					window.contact('restart');
+					window.contact('restart', 'reason=' + encodeURIComponent('Disconnected from the game server.'));
+					return;
 				}
 			}
 			awaitingPong = true;
@@ -63,7 +65,7 @@ GLOBAL_LIST_EMPTY(ckey_to_controller)
 					awaitingPong = false;
 					if (failedPings >= MAX_FAILED_PINGS) {
 						failedPings = 0;
-						window.contact('restart');
+						window.contact('restart', 'reason=' + encodeURIComponent('Disconnected from the game server.'));
 					}
 				}
 			}, PONG_TIMEOUT);
@@ -98,11 +100,18 @@ GLOBAL_LIST_EMPTY(ckey_to_controller)
 	controlling << browse(replacetext(server_html, "%SERVER_PORT%", port), "window=control-server,size=1x1,titlebar=0,can_resize=0")
 	winset(controlling, "control-server", "is-visible=false")
 
-/datum/control_server/proc/send_to_controller(endpoint)
-	controlling << output(endpoint, "control-server.browser:contact")
+/datum/control_server/proc/restart(reason = "Unknown")
+	send_to_controller("restart", list("reason" = reason))
+
+/datum/control_server/proc/send_to_controller(endpoint, params)
+	var/params_string = list2params(params)
+
+	controlling << output(list2params(list(endpoint, params_string)), "control-server.browser:contact")
 
 /client/verb/control_server_input(input as text)
 	set name = ".controller"
+	set hidden = TRUE
+	set category = null
 
 	var/datum/control_server/controller = GLOB.ckey_to_controller[ckey]
 	if(!istype(controller))
@@ -112,6 +121,8 @@ GLOBAL_LIST_EMPTY(ckey_to_controller)
 
 /client/verb/control_server_ping()
 	set name = ".controller_ping"
+	set hidden = TRUE
+	set category = null
 
 	var/datum/control_server/controller = GLOB.ckey_to_controller[ckey]
 	if(!istype(controller))

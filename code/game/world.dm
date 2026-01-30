@@ -237,7 +237,7 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 		if(!control.initialised)
 			continue
 
-		control.send_to_controller("restart")
+		control.restart("Server restarting...")
 
 	for(var/thing in GLOB.clients)
 		if(!thing)

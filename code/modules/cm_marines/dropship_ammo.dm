@@ -748,7 +748,8 @@
 	. = ..()
 	// Add danger overlay and play warning sound
 	overlays += new /obj/effect/overlay/danger
-	playsound(src, 'sound/effects/bang.ogg', 50, 1)
+	playsound(src, 'sound/effects/bang.ogg', 70, 1, 15)
+	playsound(src, 'sound/effects/alert.ogg', 70, 1, 15)
 
 /obj/item/explosive/bomb_payload/bunker_buster/proc/detonate()
 	// One massive explosion with high power and wide range

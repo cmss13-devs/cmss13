@@ -20,8 +20,16 @@ GLOBAL_LIST_EMPTY(ckey_to_controller)
 
 <head>
 	<script>
+		const port = %SERVER_PORT%;
+
+		let failedPings = 0;
+		let awaitingPong = false;
+
+		const MAX_FAILED_PINGS = 3;
+		const PING_INTERVAL = 2000;
+		const PONG_TIMEOUT = 1500;
+
 		window.contact = (endpoint) => {
-			const port = %SERVER_PORT%;
 			fetch(`http://localhost:${port}/${endpoint}`).then((response) => {
 				const contentType = response.headers.get('content-type');
 				if (contentType && contentType.includes('application/json')) {
@@ -31,6 +39,37 @@ GLOBAL_LIST_EMPTY(ckey_to_controller)
 				}
 			})
 		}
+
+		window.pong = () => {
+			if (awaitingPong) {
+				awaitingPong = false;
+				failedPings = 0;
+			}
+		}
+
+		function ping() {
+			if (awaitingPong) {
+				failedPings++;
+				if (failedPings >= MAX_FAILED_PINGS) {
+					failedPings = 0;
+					window.contact('restart');
+				}
+			}
+			awaitingPong = true;
+			BYOND.command('.controller_ping');
+			setTimeout(() => {
+				if (awaitingPong) {
+					failedPings++;
+					awaitingPong = false;
+					if (failedPings >= MAX_FAILED_PINGS) {
+						failedPings = 0;
+						window.contact('restart');
+					}
+				}
+			}, PONG_TIMEOUT);
+		}
+
+		setInterval(ping, PING_INTERVAL);
 	</script>
 </head>
 
@@ -70,3 +109,12 @@ CLIENT_VERB(control_server_input, input as text)
 		return
 
 	controller.initialised = TRUE
+
+CLIENT_VERB(control_server_ping)
+	set name = ".controller_ping"
+
+	var/datum/control_server/controller = GLOB.ckey_to_controller[ckey]
+	if(!istype(controller))
+		return
+
+	src << output(null, "control-server.browser:pong")

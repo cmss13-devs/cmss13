@@ -61,6 +61,8 @@
 	var/refund_multiplier = 2.0
 	/// Used in calculation, finalized number will be displayed as cooldown.
 	var/recharge_time = null
+	/// Cooldown after activation to prevent accidental double click.
+	var/safe_click_cooldown = 0
 
 	/// How long ago we slashed target?
 	var/last_slash_time = 0
@@ -127,6 +129,9 @@
 		target_human.update_xeno_hostile_hud()
 
 /datum/behavior_delegate/praetorian_dancer/on_kill_mob(mob/living/carbon/target_carbon)
+	candidates.Cut()
+	spread_count = 0
+
 	if(!isxeno_human(target_carbon))
 		return
 
@@ -322,6 +327,7 @@
 
 	behavior.dodge_activated = TRUE
 	behavior.dodge_start_time = world.time
+	behavior.safe_click_cooldown = world.time + 1 SECONDS
 	button.icon_state = "template_active"
 	dodge_user.speed_modifier -= speed_buff_amount
 	dodge_user.dodge_chance += 20
@@ -348,6 +354,10 @@
 		return
 
 	if(!behavior.dodge_activated)
+		return
+
+	if(world.time < behavior.safe_click_cooldown)
+		to_chat(dodge_remove, SPAN_XENOWARNING("We need a moment before breaking our evasive stance!"))
 		return
 
 	behavior.dodge_activated = FALSE

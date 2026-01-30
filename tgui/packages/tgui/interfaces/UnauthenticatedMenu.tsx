@@ -22,25 +22,40 @@ export const UnauthenticatedMenu = () => {
   const [browserOpened, setBrowserOpened] = useState(false);
 
   useEffect(() => {
-    Byond.subscribeTo('logged_in', (payload: { access_code: string }) => {
-      window.serverStorage.setItem(
-        'access_code',
-        JSON.stringify({
-          time: Date.now(),
-          code: payload.access_code,
-        }),
-      );
-    });
+    const initialize = () => {
+      Byond.subscribeTo('logged_in', (payload: { access_code: string }) => {
+        window.serverStorage.setItem(
+          'access_code',
+          JSON.stringify({
+            time: Date.now(),
+            code: payload.access_code,
+          }),
+        );
+      });
 
-    const code = window.serverStorage.getItem('access_code');
-    if (code) {
-      const json = JSON.parse(code);
-      if (json.time > Date.now() - MAX_TIMEOUT) {
-        act('recall_code', { code: json.code });
+      const code = window.serverStorage.getItem('access_code');
+      if (code) {
+        const json = JSON.parse(code);
+        if (json.time > Date.now() - MAX_TIMEOUT) {
+          act('recall_code', { code: json.code });
+        }
       }
-    }
 
-    Byond.subscribeTo('banned', (payload) => setIsBanned(payload.reason));
+      Byond.subscribeTo('banned', (payload) => setIsBanned(payload.reason));
+    };
+
+    if (!window.serverStorage) {
+      Byond.winset(null, 'browser-options', '+byondstorage');
+
+      const listener = () => {
+        document.removeEventListener('byondstorageupdated', listener);
+        setTimeout(initialize, 1);
+      };
+
+      document.addEventListener('byondstorageupdated', listener);
+    } else {
+      initialize();
+    }
   }, []);
 
   return (

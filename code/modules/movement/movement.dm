@@ -58,7 +58,7 @@
 
 /atom/movable/Move(NewLoc, direct)
 	// If Move is not valid, exit
-	if (SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_MOVE, NewLoc) & COMPONENT_CANCEL_MOVE)
+	if(SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_MOVE, NewLoc) & COMPONENT_CANCEL_MOVE)
 		return FALSE
 
 	var/atom/oldloc = loc
@@ -78,7 +78,7 @@
 		Moved(oldloc, direct)
 
 	handle_rotation()
-	
+
 
 /// Called when a movable atom has hit an atom via movement
 /atom/movable/proc/Collide(atom/A)

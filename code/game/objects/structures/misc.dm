@@ -399,7 +399,7 @@
 
 /obj/structure/stairs/multiz/proc/on_turf_entered(turf/source, atom/movable/enterer)
 	SIGNAL_HANDLER
-	if(!istype(enterer, /mob))
+	if(!istype(enterer, /mob) && !istype(enterer, /obj/vehicle))
 		return
 
 	RegisterSignal(enterer, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(on_premove))

@@ -75,6 +75,8 @@
 	for(var/obj/item/hardpoint/H in hardpoints)
 		H.on_move(old_turf, current_loc, direction)
 
+
+
 	if(movement_sound && world.time > move_next_sound_play)
 		playsound(src, movement_sound, vol = 20, sound_range = 30)
 		move_next_sound_play = world.time + 10
@@ -162,12 +164,16 @@
 	min_turf = locate(new_loc.x + bound_x_tiles, new_loc.y + bound_y_tiles, z)
 
 	for(var/turf/T as anything in CORNER_BLOCK(min_turf, bound_width_tiles, bound_height_tiles))
+		if(SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_MOVE, T) & COMPONENT_CANCEL_MOVE)
+			can_move = FALSE
+			break
 		// only check the turfs we're moving to
 		if(T in old_turfs)
 			continue
 
 		if(!T.Enter(src))
 			can_move = FALSE
+			break
 
 	// Crashed with something that stopped us
 	if(!can_move)

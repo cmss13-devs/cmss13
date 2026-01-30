@@ -60,7 +60,7 @@
 		else if(!on && powered)
 			to_chat(user, SPAN_WARNING("Turn on the engine first."))
 		else
-			. = step(src, direction)
+			. = Move(get_step(src, direction), direction)
 
 /obj/vehicle/attackby(obj/item/W, mob/user)
 	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))

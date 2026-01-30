@@ -275,8 +275,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if(!length(types_to_oidc_endpoint))
 		return
 
-	var/pre_ckey = ckey
-
 	for(var/oidc_endpoint, oidc_type in types_to_oidc_endpoint)
 		var/access_code = topic_headers[oidc_type]
 		if(!access_code)

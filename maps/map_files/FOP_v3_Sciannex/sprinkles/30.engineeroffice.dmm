@@ -20,7 +20,7 @@
 /area/template_noop)
 "o" = (
 /turf/closed/wall/mineral/bone_resin,
-/area/template_noop)
+/area/fiorina/oob)
 "s" = (
 /turf/open/floor/prison/greenfull/northwest,
 /area/template_noop)

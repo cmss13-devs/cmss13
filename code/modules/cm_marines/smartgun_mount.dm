@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////
-//Mounted MG, Replacment for the current jury rig code.
+//Mounted MG, Replacement for the current jury rig code.
 
 // First thing we need is the ammo drum for this thing.
 /obj/item/ammo_magazine/m56d
@@ -189,7 +189,7 @@
 
 /obj/item/device/m56d_post //Adding this because I was fucken stupid and put a obj/structure/machinery in a box. Realized I couldn't take it out
 	name = "\improper M56D folded mount"
-	desc = "The folded, foldable tripod mount for the M56D.  (Place on ground and drag to you to unfold)."
+	desc = "The folded, foldable tripod mount for the M56D. (Place on ground and drag to you to unfold)."
 	unacidable = TRUE
 	w_class = SIZE_MEDIUM
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi'
@@ -460,7 +460,7 @@
 
 
 
-// The actual Machinegun itself, going to borrow some stuff from current sentry code to make sure it functions. Also because they're similiar.
+// The actual Machinegun itself, going to borrow some stuff from current sentry code to make sure it functions. Also because they're similar.
 /obj/structure/machinery/m56d_hmg
 	name = "\improper M56D heavy machine gun"
 	desc = "A deployable, heavy machine gun. While it is capable of taking the same rounds as the M56, it fires specialized tungsten rounds for increased armor penetration.<br>Drag its sprite onto yourself to man it. Ctrl-click it to cycle through firemodes."
@@ -1127,7 +1127,7 @@
 		display_ammo()
 	SEND_SIGNAL(src, COMSIG_GUN_STOP_FIRE)
 
-///Update the target if you draged your mouse
+///Update the target if you dragged your mouse
 /obj/structure/machinery/m56d_hmg/proc/change_target(datum/source, atom/src_object, atom/over_object, turf/src_location, turf/over_location, src_control, over_control, params)
 	SIGNAL_HANDLER
 	set_target(get_turf_on_clickcatcher(over_object, operator, params))
@@ -1213,6 +1213,9 @@
 		health = health_max
 	update_damage_state()
 	update_icon()
+
+/obj/structure/machinery/m56d_hmg/mg_turret/whiskey
+	ammo = /datum/ammo/bullet/machinegun/whiskey
 
 /obj/structure/machinery/m56d_hmg/mg_turret/dropship
 	name = "\improper scoped M56D heavy machine gun"

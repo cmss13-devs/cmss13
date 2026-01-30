@@ -430,6 +430,10 @@
 			if(buckle_target.loc != loc)
 				return
 			. = buckle_mob(buckle_target)
+	if(buckle_target.mob_size > MOB_SIZE_HUMAN)
+		if(buckle_target.stat != DEAD)
+			to_chat(user, SPAN_WARNING("[buckle_target] resists your attempt to buckle!"))
+			return
 	if(SEND_SIGNAL(src, COMSIG_MOVABLE_PREBUCKLE, buckle_target, user, ride_check_flags, force, check_loc, lying_buckle, hands_needed, target_hands_needed, silent) & COMPONENT_BLOCK_BUCKLE)
 		return
 	do_buckle(buckle_target, user)

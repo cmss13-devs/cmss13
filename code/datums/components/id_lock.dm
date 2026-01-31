@@ -19,7 +19,7 @@
 	if(!registered_id)
 		if(!TIMER_COOLDOWN_CHECK(src, COOLDOWN_IDLOCK_TEXTALERT))
 			human_user.balloon_alert(user, "Requires an ID!")
-			to_chat(human_user, SPAN_NOTICE("This item requires an ID scan to equip."))
+			to_chat(human_user, SPAN_NOTICE("This item requires a valid ID to equip."))
 			TIMER_COOLDOWN_START(src, COOLDOWN_IDLOCK_TEXTALERT, 1 SECONDS)
 		return COMPONENT_CANCEL_EQUIP
 

@@ -649,7 +649,7 @@
 		/obj/item/storage/belt/gun/xm51,
 	)
 	slowdown = 1
-	flags_inventory = NOPRESSUREDMAGE
+	flags_inventory = BLOCKSHARPOBJ
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
 	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROT
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS

@@ -87,10 +87,10 @@
 	GLOB.crew_manifest.open_ui(src)
 
 //can't inject synths
-/mob/living/silicon/can_inject(mob/user, error_msg)
-	if(error_msg)
+/mob/living/silicon/can_inject(mob/user)
+	if(user)
 		to_chat(user, SPAN_WARNING("The armored plating is too tough."))
-	return 0
+	return FALSE
 
 
 //Silicon mob language procs

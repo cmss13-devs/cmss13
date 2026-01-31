@@ -27,10 +27,10 @@
 #define FRACTURE "fracture"
 #define ESCHAR_INJURY "eschar"
 
-/datum/tutorial/marine/hospital_corpsman_sandbox
-	name = "Marine - Hospital Corpsman (Sandbox)"
+/datum/tutorial/marine/hospital_corpsman
+	name = "Marine - Hospital Corpsman"
 	desc = "Test your medical skills against an endless wave of wounded Marines!"
-	tutorial_id = "marine_hm_3"
+	tutorial_id = "marine_hm_1"
 	required_tutorial = "marine_basic_1"
 	icon_state = "medic"
 	tutorial_template = /datum/map_template/tutorial/s15x10/hm
@@ -93,7 +93,7 @@
 	/// List of supply room vendors to be restocked before a supply phase
 	var/list/supply_vendors = list()
 
-/datum/tutorial/marine/hospital_corpsman_sandbox/start_tutorial(mob/starting_mob)
+/datum/tutorial/marine/hospital_corpsman/start_tutorial(mob/starting_mob)
 	. = ..()
 	if(!.)
 		return
@@ -104,7 +104,7 @@
 	message_to_player("Welcome to the Hospital Corpsman tutorial sandbox mode!")
 	message_to_player("Gear up in your preferred HM kit, then press the orange 'Ready Up' arrow at the top of your HUD to begin the first round!")
 
-/datum/tutorial/marine/hospital_corpsman_sandbox/proc/handle_round_progression()
+/datum/tutorial/marine/hospital_corpsman/proc/handle_round_progression()
 
 	var/difficulty_upgrade_warning = null
 
@@ -167,7 +167,7 @@
 	addtimer(CALLBACK(src, PROC_REF(spawn_agents)), 2 SECONDS)
 	terminate_movement_timer = addtimer(CALLBACK(src, PROC_REF(terminate_agent_processing)), 15 SECONDS, TIMER_STOPPABLE)
 
-/datum/tutorial/marine/hospital_corpsman_sandbox/proc/end_supply_phase()
+/datum/tutorial/marine/hospital_corpsman/proc/end_supply_phase()
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor, prep_door)
 	var/turf/boundry = get_turf(loc_from_corner(4, 1))
@@ -180,7 +180,7 @@
 	remove_action(tutorial_mob, /datum/action/hm_tutorial/sandbox/ready_up)
 	handle_round_progression()
 
-/datum/tutorial/marine/hospital_corpsman_sandbox/proc/begin_supply_phase()
+/datum/tutorial/marine/hospital_corpsman/proc/begin_supply_phase()
 
 	restock_supply_room()
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor, prep_door)
@@ -199,12 +199,12 @@
 	last_resupply_round = survival_wave
 	give_action(tutorial_mob, /datum/action/hm_tutorial/sandbox/ready_up, null, null, src)
 
-/datum/tutorial/marine/hospital_corpsman_sandbox/proc/restock_supply_room()
+/datum/tutorial/marine/hospital_corpsman/proc/restock_supply_room()
 
 	for(var/obj/structure/machinery/cm_vending/sorted/medical/supply_vendor in supply_vendors)
 		supply_vendor.populate_product_list(1.2)
 
-/datum/tutorial/marine/hospital_corpsman_sandbox/proc/spawn_agents()
+/datum/tutorial/marine/hospital_corpsman/proc/spawn_agents()
 	SIGNAL_HANDLER
 
 	for(var/i in 1 to (rand(min_survival_agents, max_survival_agents)))
@@ -223,7 +223,7 @@
 	if((survival_difficulty >= TUTORIAL_HM_INJURY_SEVERITY_FATAL) && prob(75))	// If above difficulty FATAL, starts a random timer to spawn a booboo agent
 		booboo_timer = addtimer(CALLBACK(src, PROC_REF(eval_booboo_agent)), (rand(15,25)) SECONDS, TIMER_STOPPABLE)
 
-/datum/tutorial/marine/hospital_corpsman_sandbox/proc/simulate_condition(mob/living/carbon/human/target)
+/datum/tutorial/marine/hospital_corpsman/proc/simulate_condition(mob/living/carbon/human/target)
 	SIGNAL_HANDLER
 
 	// Simulates patient NPC injuries
@@ -260,7 +260,7 @@
 	RegisterSignal(target, COMSIG_LIVING_REJUVENATED, PROC_REF(make_agent_leave)) // for debugging
 
 // 'bypass' variable used by the rejuvenate proc to override health checks
-/datum/tutorial/marine/hospital_corpsman_sandbox/proc/final_health_checks(mob/living/carbon/human/target, bypass)
+/datum/tutorial/marine/hospital_corpsman/proc/final_health_checks(mob/living/carbon/human/target, bypass)
 	SIGNAL_HANDLER
 
 	// Makes sure complex injuries are treated once 70% health is reached
@@ -279,8 +279,8 @@
 			for(var/datum/wound/wound as anything in limb.wounds)
 				if(wound.internal)
 					injury_type |= INTERNAL_BLEEDING
-					RegisterSignal(limb, COMSIG_LIMB_SURGERY_STEP_SUCCESS, PROC_REF(health_tasks_handler_surgery))
-					break
+					RegisterSignal(limb, COMSIG_LIMB_SURGERY_STEP_SUCCESS, PROC_REF(health_tasks_handler_surgery), TRUE)
+					// give me a "break", get it?
 		if(length(injury_type))
 			healing_tasks[limb] = injury_type
 	if(!length(healing_tasks) || bypass)
@@ -289,16 +289,16 @@
 		agent_healing_tasks[target] = healing_tasks
 
 /// Signal handler for COMSIG_LIVING_LIMB_SPLINTED
-/datum/tutorial/marine/hospital_corpsman_sandbox/proc/health_tasks_handler_splinted(obj/limb/limb, mob/living/user)
+/datum/tutorial/marine/hospital_corpsman/proc/health_tasks_handler_splinted(obj/limb/limb, mob/living/user)
 	SIGNAL_HANDLER
 	health_tasks_handler(limb)
 
 /// Signal handler for COMSIG_LIMB_SURGERY_STEP_SUCCESS
-/datum/tutorial/marine/hospital_corpsman_sandbox/proc/health_tasks_handler_surgery(obj/limb/limb, mob/living/user, datum/surgery/surgery, obj/item/tool)
+/datum/tutorial/marine/hospital_corpsman/proc/health_tasks_handler_surgery(obj/limb/limb, mob/living/user, datum/surgery/surgery, obj/item/tool)
 	SIGNAL_HANDLER
 	health_tasks_handler(limb, surgery)
 
-/datum/tutorial/marine/hospital_corpsman_sandbox/proc/health_tasks_handler(obj/limb/limb, datum/surgery/surgery)
+/datum/tutorial/marine/hospital_corpsman/proc/health_tasks_handler(obj/limb/limb, datum/surgery/surgery)
 	var/mob/living/carbon/human/realistic_dummy/target = limb.owner
 	var/list/healing_tasks = agent_healing_tasks[target]
 	var/list/injury_type = healing_tasks[limb]
@@ -327,7 +327,7 @@
 	if(!length(healing_tasks))
 		make_agent_leave(target)
 
-/datum/tutorial/marine/hospital_corpsman_sandbox/proc/eval_agent_status()
+/datum/tutorial/marine/hospital_corpsman/proc/eval_agent_status()
 
 	for(var/mob/living/carbon/human/target as anything in agents)
 		if(target.stat != CONSCIOUS) // are they awake?
@@ -340,7 +340,7 @@
 			active_agents |= target
 			movement_handler()
 
-/datum/tutorial/marine/hospital_corpsman_sandbox/proc/handle_speech(mob/living/carbon/human/target)
+/datum/tutorial/marine/hospital_corpsman/proc/handle_speech(mob/living/carbon/human/target)
 
 	var/list/help_me = list()
 
@@ -370,7 +370,7 @@
 
 	target.say("[pick(help_me)]")
 
-/datum/tutorial/marine/hospital_corpsman_sandbox/proc/movement_handler()
+/datum/tutorial/marine/hospital_corpsman/proc/movement_handler()
 
 	listclearnulls(dragging_agents)
 	listclearnulls(active_agents)
@@ -379,7 +379,7 @@
 	for(var/mob/living/carbon/human/active_agent as anything in active_agents)
 		move_agent(active_agent, active_agents)
 
-/datum/tutorial/marine/hospital_corpsman_sandbox/proc/terminate_agent_processing()
+/datum/tutorial/marine/hospital_corpsman/proc/terminate_agent_processing()
 
 	if(terminate_movement_timer)
 		deltimer(terminate_movement_timer)
@@ -398,7 +398,7 @@
 	listclearnulls(dragging_agents)
 	listclearnulls(active_agents)
 
-/datum/tutorial/marine/hospital_corpsman_sandbox/proc/move_agent(mob/agent, list/agent_list)
+/datum/tutorial/marine/hospital_corpsman/proc/move_agent(mob/agent, list/agent_list)
 
 	var/dropoff_point_offset
 	var/mob/living/carbon/human/target = agent
@@ -438,7 +438,7 @@
 		if(agent in active_agents)
 			agent_list -= agent
 
-/datum/tutorial/marine/hospital_corpsman_sandbox/proc/make_dragging_agent_leave(mob/living/carbon/human/dragging_agent)
+/datum/tutorial/marine/hospital_corpsman/proc/make_dragging_agent_leave(mob/living/carbon/human/dragging_agent)
 
 	if(dragging_agent in dragging_agents)	// failsafe in case the dragging NPC never had their movement code stopped
 		dragging_agents -= dragging_agent
@@ -447,7 +447,7 @@
 	animate(dragging_agent, 2.5 SECONDS, alpha = 0, easing = CUBIC_EASING)
 
 // NOTE: bypass variable is a boolean used in the simulate_evac proc, used to stop to the balloon text from playing
-/datum/tutorial/marine/hospital_corpsman_sandbox/proc/make_agent_leave(mob/living/carbon/human/realistic_dummy/agent, bypass)
+/datum/tutorial/marine/hospital_corpsman/proc/make_agent_leave(mob/living/carbon/human/realistic_dummy/agent, bypass)
 	SIGNAL_HANDLER
 
 	UnregisterSignal(agent, COMSIG_LIVING_REJUVENATED)
@@ -471,7 +471,7 @@
 	if(!length(agents))
 		INVOKE_ASYNC(src, PROC_REF(handle_round_progression))
 
-/datum/tutorial/marine/hospital_corpsman_sandbox/proc/eval_booboo_agent()
+/datum/tutorial/marine/hospital_corpsman/proc/eval_booboo_agent()
 	SIGNAL_HANDLER
 
 	var/mob/living/carbon/human/realistic_dummy/active_agent = new(agent_spawn_location)
@@ -497,7 +497,7 @@
 	RegisterSignal(active_agent, COMSIG_HUMAN_HM_TUTORIAL_TREATED, PROC_REF(make_agent_leave))
 	RegisterSignal(active_agent, COMSIG_HUMAN_SET_UNDEFIBBABLE, PROC_REF(make_agent_leave))
 
-/datum/tutorial/marine/hospital_corpsman_sandbox/proc/simulate_evac(datum/source, mob/living/carbon/human/target)
+/datum/tutorial/marine/hospital_corpsman/proc/simulate_evac(datum/source, mob/living/carbon/human/target)
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/bed/medevac_stretcher/prop, medevac_bed)
 
@@ -529,18 +529,18 @@
 		playsound(medevac_bed.loc, 'sound/machines/twobeep.ogg', 20)
 		return
 
-/datum/tutorial/marine/hospital_corpsman_sandbox/proc/animate_medevac_bed(mob/living/carbon/human/target)
+/datum/tutorial/marine/hospital_corpsman/proc/animate_medevac_bed(mob/living/carbon/human/target)
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/bed/medevac_stretcher/prop, medevac_bed)
 	medevac_bed.update_icon()
 	flick("winched_stretcher", medevac_bed)
 
-/datum/tutorial/marine/hospital_corpsman_sandbox/process(delta_time)
+/datum/tutorial/marine/hospital_corpsman/process(delta_time)
 
 	if(length(dragging_agents) || length(active_agents))
 		movement_handler()
 
-/datum/tutorial/marine/hospital_corpsman_sandbox/proc/item_cleanup(obj/item/dropped)
+/datum/tutorial/marine/hospital_corpsman/proc/item_cleanup(obj/item/dropped)
 	SIGNAL_HANDLER
 	if(dropped in cleanup)
 		cleanup -= dropped
@@ -554,7 +554,7 @@
 		cleanup |= dropped // marks item for removal once the dummy is ready
 		UnregisterSignal(dropped, COMSIG_ITEM_UNEQUIPPED)
 
-/datum/tutorial/marine/hospital_corpsman_sandbox/init_mob()
+/datum/tutorial/marine/hospital_corpsman/init_mob()
 	. = ..()
 	arm_equipment(tutorial_mob, /datum/equipment_preset/tutorial/fed)
 	tutorial_mob.set_skills(/datum/skills/combat_medic)
@@ -562,8 +562,7 @@
 	tutorial_mob.job = JOB_SQUAD_MEDIC
 	tutorial_mob.forceMove(get_turf(loc_from_corner(0,1))) // spawn point
 
-
-/datum/tutorial/marine/hospital_corpsman_sandbox/init_map()
+/datum/tutorial/marine/hospital_corpsman/init_map()
 
 	new /obj/structure/machinery/cm_vending/clothing/medic/tutorial(loc_from_corner(2, 0))
 	new /obj/structure/machinery/cm_vending/gear/medic/tutorial/(loc_from_corner(3, 0))
@@ -582,16 +581,23 @@
 	add_to_tracking_atoms(medevac_bed)
 	RegisterSignal(medevac_bed, COMSIG_LIVING_BED_BUCKLED, PROC_REF(simulate_evac))
 
-/datum/tutorial/marine/hospital_corpsman_sandbox/proc/init_npcs()
+/datum/tutorial/marine/hospital_corpsman/proc/init_npcs()
 
 	CMO_npc = new(loc_from_corner(7, 7))
 	arm_equipment(CMO_npc, /datum/equipment_preset/uscm_ship/uscm_medical/cmo/npc)
+	CMO_npc.status_flags |= GODMODE
+	SShuman.processable_human_list -= CMO_npc
 
-/datum/tutorial/marine/hospital_corpsman_sandbox/proc/init_dragging_agent(mob/living/carbon/human/dragging_agent)
+	GLOB.human_mob_list -= CMO_npc
+	GLOB.alive_human_list -= CMO_npc
+	GLOB.mob_list -= CMO_npc
+	GLOB.alive_mob_list -= CMO_npc
+
+/datum/tutorial/marine/hospital_corpsman/proc/init_dragging_agent(mob/living/carbon/human/dragging_agent)
 	arm_equipment(dragging_agent, /datum/equipment_preset/uscm/tutorial_rifleman)
 	dragging_agent.a_intent = INTENT_DISARM
 
-/datum/tutorial/marine/hospital_corpsman_sandbox/Destroy(force)
+/datum/tutorial/marine/hospital_corpsman/Destroy(force)
 	STOP_PROCESSING(SSfastobj, src)
 	if(booboo_timer)
 		deltimer(booboo_timer)
@@ -607,12 +613,28 @@
 	QDEL_LIST(dragging_agents)
 	return ..()
 
+/mob/living/carbon/human/realistic_dummy/can_inject(mob/user, obj/item/reagent_container/injector)
+	return forced_overdose_protection(user, injector)
+
+/mob/living/carbon/human/realistic_dummy/forced_overdose_protection(mob/user, obj/item/reagent_container/reagent_container)
+	if(!reagent_container.reagents)
+		return TRUE
+	for(var/datum/reagent/contained_reagent in reagent_container.reagents.reagent_list)
+		var/datum/reagent/dummy_reagent = locate(contained_reagent) in reagents.reagent_list
+		if(!dummy_reagent)
+			continue
+		if(dummy_reagent.volume + contained_reagent.volume > dummy_reagent.overdose)
+			playsound(user.loc, dummy_reagent.name == "Peridaxon" ? 'sound/misc/sadtrombone.ogg' : 'sound/machines/ding_short.ogg')
+			user.balloon_alert_to_viewers("Whoops! I almost overdosed my patient.", null, DEFAULT_MESSAGE_RANGE, null, COLOR_GREEN)
+			return FALSE	// normandy got sick of your medevac calls
+	return TRUE
+
 /datum/action/hm_tutorial/sandbox/ready_up
 	name = "Ready Up"
 	action_icon_state = "walkman_next"
 	var/datum/weakref/tutorial
 
-/datum/action/hm_tutorial/sandbox/ready_up/New(Target, override_icon_state, datum/tutorial/marine/hospital_corpsman_sandbox/selected_tutorial)
+/datum/action/hm_tutorial/sandbox/ready_up/New(Target, override_icon_state, datum/tutorial/marine/hospital_corpsman/selected_tutorial)
 	. = ..()
 	tutorial = WEAKREF(selected_tutorial)
 
@@ -621,7 +643,7 @@
 	if(!tutorial)
 		return
 
-	var/datum/tutorial/marine/hospital_corpsman_sandbox/selected_tutorial = tutorial.resolve()
+	var/datum/tutorial/marine/hospital_corpsman/selected_tutorial = tutorial.resolve()
 
 	selected_tutorial.end_supply_phase()
 

@@ -65,71 +65,73 @@
 		. += "[pill_desc]\n"
 	. += ..()
 
-/obj/item/reagent_container/pill/attack(mob/M, mob/user)
-	if(M == user)
-		if(istype(M, /mob/living/carbon/human))
-			var/mob/living/carbon/human/H = M
-			if(H.species.flags & IS_SYNTHETIC)
-				to_chat(H, SPAN_DANGER("You can't eat \the [fluff_text]s."))
+/obj/item/reagent_container/pill/attack(mob/target, mob/user)
+	if(target == user)
+		if(istype(target, /mob/living/carbon/human))
+			var/mob/living/carbon/human/target_human = target
+			if(target_human.species.flags & IS_SYNTHETIC)
+				to_chat(target_human, SPAN_DANGER("You can't eat \the [fluff_text]s."))
 				return
 
-		M.visible_message(SPAN_NOTICE("[user] swallows [src]."),
+		target.visible_message(SPAN_NOTICE("[user] swallows [src]."),
 		SPAN_HELPFUL("You swallow [src]."))
 		var/list/reagents_in_pill = list()
 		for(var/datum/reagent/R in reagents.reagent_list)
 			reagents_in_pill += R.name
 		var/contained = english_list(reagents_in_pill)
 		msg_admin_niche("[key_name(user)] swallowed [src] (REAGENTS: [contained]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
-		M.drop_inv_item_on_ground(src) //icon update
+		target.drop_inv_item_on_ground(src) //icon update
 		if(reagents && reagents.total_volume)
 			reagents.set_source_mob(user)
-			reagents.trans_to_ingest(M, reagents.total_volume)
+			reagents.trans_to_ingest(target, reagents.total_volume)
 
 		qdel(src)
 		return 1
 
-	else if(istype(M, /mob/living/carbon/human) )
-		var/mob/living/carbon/human/H = M
-		if(H.species.flags & IS_SYNTHETIC)
-			to_chat(H, SPAN_DANGER("They have a monitor for a head, where do you think you're going to put that?"))
+	else if(istype(target, /mob/living/carbon/human) )
+		var/mob/living/carbon/human/target_human = target
+		if(target_human.species.flags & IS_SYNTHETIC)
+			to_chat(target_human, SPAN_DANGER("They have a monitor for a head, where do you think you're going to put that?"))
 			return
 
-		user.affected_message(M,
-			SPAN_HELPFUL("You <b>start feeding</b> [M] a [fluff_text]."),
+		user.affected_message(target,
+			SPAN_HELPFUL("You <b>start feeding</b> [target] a [fluff_text]."),
 			SPAN_HELPFUL("[user] <b>starts feeding</b> you a [fluff_text]."),
-			SPAN_NOTICE("[user] starts feeding [M] a [fluff_text]."))
+			SPAN_NOTICE("[user] starts feeding [target] a [fluff_text]."))
 
 		var/ingestion_time = 30
 		if(user.skills)
 			ingestion_time = max(10, 30 - 10*user.skills.get_skill_level(SKILL_MEDICAL))
 
-		if(!do_after(user, ingestion_time, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, M, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
+		if(!do_after(user, ingestion_time, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 			return
 		if(QDELETED(src))
+			return
+		if(!target_human.forced_overdose_protection(user, src))
 			return
 
 		user.drop_inv_item_on_ground(src) //icon update
 
-		user.affected_message(M,
-			SPAN_HELPFUL("You <b>fed</b> [M] a [fluff_text]."),
+		user.affected_message(target,
+			SPAN_HELPFUL("You <b>fed</b> [target] a [fluff_text]."),
 			SPAN_HELPFUL("[user] <b>fed</b> you a [fluff_text]."),
-			SPAN_NOTICE("[user] fed [M] a [fluff_text]."))
+			SPAN_NOTICE("[user] fed [target] a [fluff_text]."))
 		user.count_niche_stat(STATISTICS_NICHE_PILLS)
 
 		var/rgt_list_text = get_reagent_list_text()
 
-		M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been fed [src.name] by [key_name(user)] Reagents: [rgt_list_text]</font>")
-		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Fed [M.name] by [key_name(M)] Reagents: [rgt_list_text]</font>")
-		msg_admin_attack("[key_name(user)] fed [key_name(M)] with [src.name] (REAGENTS: [rgt_list_text]) (INTENT: [uppertext(intent_text(user.a_intent))]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
+		target.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been fed [src.name] by [key_name(user)] Reagents: [rgt_list_text]</font>")
+		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Fed [target.name] by [key_name(target)] Reagents: [rgt_list_text]</font>")
+		msg_admin_attack("[key_name(user)] fed [key_name(target)] with [src.name] (REAGENTS: [rgt_list_text]) (INTENT: [uppertext(intent_text(user.a_intent))]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
 
 		if(reagents && reagents.total_volume)
 			reagents.set_source_mob(user)
-			reagents.trans_to_ingest(M, reagents.total_volume)
+			reagents.trans_to_ingest(target, reagents.total_volume)
 		qdel(src)
 
-		return 1
+		return TRUE
 
-	return 0
+	return FALSE
 
 /obj/item/reagent_container/pill/afterattack(obj/target, mob/user, proximity)
 	if(!proximity)

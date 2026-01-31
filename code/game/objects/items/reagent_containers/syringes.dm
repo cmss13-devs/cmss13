@@ -5,6 +5,7 @@
 #define SYRINGE_INJECT 1
 #define SYRINGE_BROKEN 2
 
+// entire file marked for inspection
 /obj/item/reagent_container/syringe
 	name = "syringe"
 	desc = "A syringe."
@@ -166,7 +167,7 @@
 				var/mob/living/M = target
 				if(!istype(M))
 					return
-				if(!M.can_inject(user, TRUE))
+				if(!M.can_inject(user, src))
 					return
 				if(target != user)
 

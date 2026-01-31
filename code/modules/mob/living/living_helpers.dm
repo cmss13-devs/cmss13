@@ -5,8 +5,12 @@
 /mob/living/proc/has_eyes()
 	return 1
 
-/mob/living/proc/can_inject()
-	return 1
+/mob/living/proc/can_inject(mob/user, obj/item/reagent_container/injector)
+	return TRUE
+
+/// Returns FALSE if the mob should prevent itself from becoming chemically overdosed
+/mob/living/proc/forced_overdose_protection(mob/user, obj/item/reagent_container/reagent_container)
+	return TRUE
 
 /mob/living/proc/start_audio_emote_cooldown(cooldown_time = 20 SECONDS)
 	recent_audio_emote = TRUE

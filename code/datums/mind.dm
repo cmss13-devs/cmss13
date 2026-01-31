@@ -83,7 +83,7 @@
 
 	// comm_title is probably null when this is called.
 	var/datum/highlight_keywords_payload/payload = new(new_character)
-	new_character.client.tgui_panel.window.send_message("settings/updateHighlightKeywords", payload.to_list())
+	new_character.client?.tgui_panel.window.send_message("settings/updateHighlightKeywords", payload.to_list())
 
 	new_character.refresh_huds(current) //inherit the HUDs from the old body
 	new_character.aghosted = FALSE //reset aghost and away timer

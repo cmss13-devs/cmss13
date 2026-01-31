@@ -4,6 +4,8 @@
 
 	//NOTE: Breathing happens once per FOUR TICKS, unless the last breath fails. In which case it happens once per ONE TICK! So oxyloss healing is done once per 4 ticks while oxyloss damage is applied once per tick!
 
+	if(status_flags & GODMODE)
+		return TRUE	// i am a god, but i will pretend to breathe
 	if(reagents.has_reagent("lexorin"))
 		return
 	if(istype(loc, /obj/structure/machinery/cryo_cell))

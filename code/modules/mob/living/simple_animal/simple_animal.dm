@@ -477,8 +477,8 @@
 /mob/living/simple_animal/proc/stop_moving()
 	walk_to(src, 0) // stops us dead in our tracks
 
-/mob/living/simple_animal/can_inject(mob/user, error_msg)
-	if(user && error_msg)
+/mob/living/simple_animal/can_inject(mob/user)
+	if(user)
 		to_chat(user, SPAN_WARNING("You aren't sure how to inject this animal!"))
 	return FALSE
 

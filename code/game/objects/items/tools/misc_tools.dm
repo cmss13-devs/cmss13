@@ -394,7 +394,7 @@
 	if(!(istype(M)))
 		return
 	..()
-	if(M.can_inject(user, TRUE))
+	if(M.can_inject(user, src))
 		if(reagents.total_volume)
 			if(M.reagents)
 				reagents.trans_to(M, 50)

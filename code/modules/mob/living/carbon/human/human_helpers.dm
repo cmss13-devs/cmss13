@@ -175,28 +175,21 @@
 	for(var/obj/limb/L as anything in limbs)
 		L.icon_name = get_limb_icon_name(species, body_size_icon, body_type_icon, gender, L.display_name, skin_color_icon, body_presentation)
 
-/mob/living/carbon/human/can_inject(mob/user, error_msg, target_zone)
-	if(species?.flags & IS_SYNTHETIC)
-		if(user && error_msg)
-			to_chat(user, SPAN_WARNING("[src] has no flesh to inject."))
-		return FALSE
-	. = TRUE
+/mob/living/carbon/human/can_inject(mob/user)
 	if(!user)
-		target_zone = pick("chest","chest","chest","left leg","right leg","left arm", "right arm", "head")
-	else if(!target_zone)
-		target_zone = user.zone_selected
+		return FALSE
+	if(species?.flags & IS_SYNTHETIC)
+		to_chat(user, SPAN_WARNING("[src] has no flesh to inject."))
+		return FALSE
+	if(user.zone_selected == "head")
+		if(head?.flags_inventory & BLOCKSHARPOBJ)
+			to_chat(user, SPAN_WARNING("There is no exposed flesh or thin material on their head to inject into."))
+			return FALSE
+	else if(wear_suit?.flags_inventory & BLOCKSHARPOBJ)
+		to_chat(user, SPAN_WARNING("There is no exposed flesh or thin material on their body to inject into."))
+		return FALSE
 
-	switch(target_zone)
-		if("head")
-			if(head && head.flags_inventory & NOPRESSUREDMAGE)
-				. = 0
-		else
-			if(wear_suit && wear_suit.flags_inventory & NOPRESSUREDMAGE)
-				. = 0
-	if(!. && error_msg && user)
-		// Might need re-wording.
-		to_chat(user, SPAN_WARNING("There is no exposed flesh or thin material [target_zone == "head" ? "on their head" : "on their body"] to inject into."))
-
+	return TRUE
 
 /mob/living/carbon/human/has_brain()
 	var/datum/internal_organ/brain = LAZYACCESS(internal_organs_by_name, "brain")

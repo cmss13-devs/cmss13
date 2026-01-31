@@ -399,3 +399,10 @@
   - maptweak: tweaked area markers across all maps
   - maptweak: changed scrapeaway walls in west caves to only block the LZ (Solaris)
   - maptweak: removed duplicate objects (Solaris, Chance's Claim, Varadero, CORSAT)
+2026-01-31:
+  Unknownity:
+  - maptweak: All ERT stations who had sleepers and autodocs have recieved upgrades
+      to said machines.
+  kiVts:
+  - rscadd: Fire-penetrating now makes particles appear on a fire
+  - balance: Made white-flame harder to get.

@@ -1,0 +1,4 @@
+author: "TrollerNoob"
+delete-after: True
+changes:
+  - rscadd: "Added Chestrig as a selectable backpack you can spawn with. Find it in Backpack Types."

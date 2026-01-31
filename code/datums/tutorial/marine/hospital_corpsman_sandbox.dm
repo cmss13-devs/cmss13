@@ -624,8 +624,8 @@
 		if(!dummy_reagent)
 			continue
 		if(dummy_reagent.volume + contained_reagent.volume > dummy_reagent.overdose)
-			playsound(user.loc, dummy_reagent.name == "Peridaxon" ? 'sound/misc/sadtrombone.ogg' : 'sound/machines/ding_short.ogg')
-			user.balloon_alert_to_viewers("Whoops! I almost overdosed my patient.", null, DEFAULT_MESSAGE_RANGE, null, COLOR_GREEN)
+			playsound(user.loc, 'sound/machines/ding_short.ogg')
+			user.balloon_alert_to_viewers("whoops! I almost overdosed my patient", null, DEFAULT_MESSAGE_RANGE, null, COLOR_GREEN)
 			return FALSE	// normandy got sick of your medevac calls
 	return TRUE
 

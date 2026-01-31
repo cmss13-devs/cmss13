@@ -140,10 +140,17 @@
 	var/pictures_max = 10
 	var/pictures_left = 10
 	var/size = 7
+	var/cooldown = 0
+	var/static/list/possible_focus = list(1, 3, 5, 7)
+
+/obj/item/device/camera/unique_action(mob/user)
+	change_size(user)
 
 /obj/item/device/camera/get_examine_text(mob/user)
 	. = ..()
-	. += "It has [pictures_left] photos left."
+	. += SPAN_NOTICE("It has [pictures_left] photos left.")
+	. += SPAN_NOTICE("It is currently set to take [size]x[size] photos. Press Unique Action to change the focus.")
+
 
 /obj/item/device/camera/attack_self(mob/user) //wielding capabilities
 	. = ..()
@@ -156,14 +163,16 @@
 	..()
 	unwield(user)
 
-/obj/item/device/camera/verb/change_size()
-	set name = "Set Photo Focus"
-	set src in usr
-	set category = "Object"
-	var/nsize = tgui_input_list(usr, "Photo Size","Pick a size of resulting photo.", list(1,3,5,7))
-	if(nsize)
-		size = nsize
-		to_chat(usr, SPAN_NOTICE("Camera will now take [size]x[size] photos."))
+/obj/item/device/camera/proc/change_size(mob/user)
+	var/current_focus = possible_focus.Find(size)
+	if(!current_focus) // just in case lol
+		size = possible_focus[1]
+	else
+		var/next_focus = (current_focus % possible_focus.len) + 1
+		size = possible_focus[next_focus]
+
+	to_chat(user, SPAN_NOTICE("[src] will now take [size]x[size] photos."))
+	playsound(loc, 'sound/weapons/handling/safety_toggle.ogg', 25, 1, 6)
 
 /obj/item/device/camera/attack(mob/living/carbon/human/M, mob/user)
 	return
@@ -280,6 +289,9 @@
 	return mob_detail
 
 /obj/item/device/camera/afterattack(atom/target as mob|obj|turf|area, mob/user as mob, flag)
+	if(world.time < cooldown)
+		to_chat(user, SPAN_WARNING("[src] is still processing the last photo, hold your horses!"))
+		return
 	if(pictures_left <= 0)
 		to_chat(user, SPAN_WARNING("There isn't enough film in the [src] to take a photo."))
 		return
@@ -289,6 +301,7 @@
 	playsound(loc, pick('sound/items/polaroid1.ogg', 'sound/items/polaroid2.ogg'), 15, 1)
 	pictures_left--
 	to_chat(user, SPAN_NOTICE("[pictures_left] photos left."))
+	cooldown = world.time + 3 SECONDS // an addtimer for a cooldown is kinda overkill dont you think
 
 	addtimer(CALLBACK(src, PROC_REF(captureimage), target, user, flag), 1 SECONDS)
 
@@ -344,9 +357,16 @@
 
 /obj/item/device/camera/oldcamera
 	name = "Old Camera"
-	desc = "An old, slightly beat-up digital camera, with a cheap photo printer taped on. It's a nice shade of blue."
+	desc = "An old, slightly beat-up retro-esque polaroid camera, it's antiquated enough to be marked as a collectors item, probably. It's a nice shade of blue."
 	icon_state = "oldcamera"
+	w_class = SIZE_TINY
+	pictures_max = 0 // think disposable camera
 	pictures_left = 30
+
+/obj/item/device/camera/oldcamera/attackby(obj/item/film, mob/user)
+	if(istype(film, /obj/item/device/camera_film))
+		to_chat(user, SPAN_NOTICE("Try as you might, but you can't seem to open up the [src] to insert some film, oh well."))
+		return
 
 /obj/item/device/broadcasting
 	name = "Broadcasting Camera"
@@ -389,6 +409,11 @@
 	flags_atom |= (USES_HEARING|USES_SEEING)
 	handle_move()
 	SEND_SIGNAL(src, COMSIG_BROADCAST_GO_LIVE)
+
+	var/turf/user_turf = get_turf(user)
+	if(is_ground_level(user_turf.z))
+		SScmtv.change_observed_mob(user, set_showtime = INFINITY)
+
 	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(handle_move))
 	to_chat(user, SPAN_NOTICE("[src] begins to buzz softly as you go live."))
 	update_icon()
@@ -397,6 +422,10 @@
 	active = FALSE
 	flags_atom &= ~(USES_HEARING|USES_SEEING)
 	linked_cam.status = FALSE
+
+	if(SScmtv.current_perspective == user)
+		SScmtv.reset_perspective("Broadcasting ended as turned off.")
+
 	UnregisterSignal(src, COMSIG_MOVABLE_MOVED)
 	to_chat(user, SPAN_NOTICE("[src] goes silent as the broadcast stops."))
 	update_icon()
@@ -412,9 +441,16 @@
 	. = ..()
 	linked_cam.view_range = 4
 
+	if(active && SScmtv.current_perspective == user)
+		SScmtv.reset_perspective("Broadcasting ended as dropped.")
+
 /obj/item/device/broadcasting/pickup(mob/user, silent)
 	. = ..()
 	linked_cam.view_range = 7
+
+	var/turf/user_turf = get_turf(user)
+	if(active && is_ground_level(user_turf.z))
+		SScmtv.change_observed_mob(user, set_showtime = INFINITY)
 
 /obj/item/device/broadcasting/attack_self(mob/user)
 	. = ..()

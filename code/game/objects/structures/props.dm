@@ -257,6 +257,10 @@
 	desc = "Yutani OS is a proprietary operating system used by the Company to run most all of their servers, banking, and management systems. A code leak in 2144 led some amateur hackers to believe that Yutani OS is loosely based on the 2017 release of TempleOS. But the Company has refuted these claims."
 	icon_state = "yutani_server_on"
 
+/obj/structure/prop/server_equipment/yutani_server/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/structure/prop/server_equipment/yutani_server/broken
 	icon_state = "yutani_server_broken"
 
@@ -387,10 +391,10 @@
 	icon = 'icons/obj/resin_objects.dmi'
 	icon_state = "watertank"
 
-//industructible props
+//indestructible props
 /obj/structure/prop/invuln
 	name = "instanceable object"
-	desc = "this needs to be defined by a coder"
+	desc = "This needs to be defined by a coder."
 	icon = 'icons/obj/structures/structures.dmi'
 	icon_state = "structure_lattice"
 	explo_proof = TRUE
@@ -498,7 +502,7 @@
 
 /obj/structure/prop/brazier/frame/full
 	name = "empty full brazier"
-	desc = "An empty brazier. Yet it's also full. What???  Use something hot to ignite it, like a welding tool."
+	desc = "An empty brazier. Yet it's also full. What??? Use something hot to ignite it, like a welding tool."
 	icon_state = "brazier_frame_filled"
 	frame_type = /obj/structure/prop/brazier
 	state = STATE_IGNITE
@@ -512,7 +516,7 @@
 
 /obj/structure/prop/brazier/frame/full/torch
 	name = "unlit torch"
-	desc = "It's a torch, but it's not lit.  Use something hot to ignite it, like a welding tool."
+	desc = "It's a torch, but it's not lit. Use something hot to ignite it, like a welding tool."
 	icon_state = "torch_frame"
 	frame_type = /obj/structure/prop/brazier/torch
 
@@ -701,6 +705,16 @@
 		attack_hand(xeno)
 		return XENO_NONCOMBAT_ACTION
 
+/obj/structure/prop/ice_colony/dense/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
+	if(unslashable)
+		return TAILSTAB_COOLDOWN_NONE
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	deconstruct(FALSE)
+	xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
+	SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno.tail_stab_animation(src, blunt_stab)
+	return TAILSTAB_COOLDOWN_NORMAL
+
 /obj/structure/prop/ice_colony/dense/ice_tray
 	name = "ice slab tray"
 	icon_state = "ice_tray"
@@ -750,7 +764,7 @@
 	projectile_coverage = 0
 	density = FALSE
 	icon = 'icons/obj/structures/props/holiday_props.dmi'
-	desc = "parent object for temporary holiday structures. If you are reading this, go find a mapper and tell them to search up error code: TOO MUCH EGGNOG"//hello future mapper. Next time use the sub types or instance the desc. Thanks -past mapper.
+	desc = "Parent object for temporary holiday structures. If you are reading this, go find a mapper and tell them to search up error code: TOO MUCH EGGNOG"//hello future mapper. Next time use the sub types or instance the desc. Thanks -past mapper.
 	layer = 4
 	health = 50
 	anchored = TRUE
@@ -789,7 +803,7 @@
 
 /obj/structure/prop/vehicles/tank/twe
 	name = "\improper FV150 Shobo MKII"
-	desc = "The FV150 Shobo MKII is a Combat Reconnaissance Vehicle Tracked, abbreviated to CVR(T) in official documentation. It was co-developed in 2175 by Weyland-Yutani and Gallar Co., a Titan based heavy vehicle manufacturer. Taking into account lessons learned from the MkI's performance in the Australian Wars, major structual changes were made, and the MKII went into production in 2178. It is armed with a twin 30mm cannon and a L56A2 10x28mm coaxial, complimented by its ammunition stores of 170 rounds of 30mm and 1600 rounds of 10x28mm. The maximum speed of the Shobo is 60 mph, but on a standard deployment after the ammo stores are fully loaded and the terrain is taken into account, it consistently sits at 55mph."
+	desc = "The FV150 Shobo MKII is a Combat Reconnaissance Vehicle Tracked, abbreviated to CVR(T) in official documentation. It was co-developed in 2175 by Weyland-Yutani and Gallar Co., a Titan based heavy vehicle manufacturer. Taking into account lessons learned from the MkI's performance in the Australian Wars, major structural changes were made, and the MKII went into production in 2178. It is armed with a twin 30mm cannon and a L56A2 10x28mm coaxial, complimented by its ammunition stores of 170 rounds of 30mm and 1600 rounds of 10x28mm. The maximum speed of the Shobo is 60 mph, but on a standard deployment after the ammo stores are fully loaded and the terrain is taken into account, it consistently sits at 55mph."
 	icon = 'icons/obj/vehicles/twe_tank.dmi'
 	icon_state = "twe_tank"
 	density = TRUE
@@ -908,7 +922,7 @@
 
 /obj/structure/prop/invuln/remote_console_pod
 	name = "Remote Console Pod"
-	desc = "A drop pod used to launch remote piloting equipment to USCM areas of operation"
+	desc = "A drop pod used to launch remote piloting equipment to USCM areas of operation."
 	icon = 'icons/obj/structures/droppod_32x64.dmi'
 	icon_state = "techpod_open"
 	layer = DOOR_CLOSED_LAYER
@@ -939,7 +953,7 @@
 
 /obj/structure/prop/invuln/fusion_reactor
 	name = "\improper S-52 fusion reactor"
-	desc = "A Westingland S-52 Fusion Reactor.  Takes fuels cells and converts them to power.  Also produces a large amount of heat."
+	desc = "A Westingland S-52 Fusion Reactor. Takes fuels cells and converts them to power. Also produces a large amount of heat."
 	icon = 'icons/obj/structures/machinery/fusion_eng.dmi'
 	icon_state = "off"
 
@@ -1083,6 +1097,20 @@
 		SPAN_DANGER("You slash [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	return XENO_ATTACK_ACTION
 
+/obj/structure/prop/wooden_cross/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
+	if(unslashable || health <= 0)
+		return TAILSTAB_COOLDOWN_NONE
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	update_health(xeno.melee_damage_upper)
+	if(health <= 0)
+		xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
+		SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	else
+		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
+		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno.tail_stab_animation(src, blunt_stab)
+	return TAILSTAB_COOLDOWN_NORMAL
+
 /obj/structure/prop/wooden_cross/update_icon()
 	if(tagged)
 		overlays += mutable_appearance('icons/obj/structures/props/furniture/crosses.dmi', "cross_overlay")
@@ -1181,3 +1209,35 @@
 	if(initial(emote.sound))
 		playsound(loc, initial(emote.sound), 50, FALSE)
 	return TRUE
+
+// Body Bag Pile
+
+/obj/structure/prop/body_bag_pile
+	name = "bodybag pile"
+	desc = "A grim mound of body bags stacked haphazardly."
+	icon = 'icons/obj/structures/props/64x64_bodybag_pile.dmi'
+	icon_state = "bodybag_pile"
+	bound_height = 64
+	bound_width = 64
+	density = TRUE
+	layer = BIG_XENO_LAYER
+
+/obj/structure/prop/body_bag_pile/charred
+	name = "charred bodybag pile"
+	desc = "A grim mound of body bags stacked haphazardly, their surfaces blackened and blistered from intense heat. The contents are partially burned."
+	icon = 'icons/obj/structures/props/64x64_bodybag_pile.dmi'
+	icon_state = "bodybag_pile"
+	bound_height = 64
+	bound_width = 64
+	density = TRUE
+	dir = 4
+	layer = BIG_XENO_LAYER
+
+/obj/effect/decal/large_stain
+	name = "large stain"
+	desc = FALSE
+	icon = 'icons/obj/structures/props/64x64_bodybag_pile.dmi'
+	icon_state = "large_stain"
+	layer = TURF_LAYER
+	plane = FLOOR_PLANE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT

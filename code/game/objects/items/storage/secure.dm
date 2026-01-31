@@ -46,7 +46,7 @@
 				if (prob(40))
 					l_setshort = 1
 					l_set = 0
-					user.show_message(text(SPAN_DANGER("Internal memory reset.  Please give it a few seconds to reinitialize.")), SHOW_MESSAGE_VISIBLE)
+					user.show_message(text(SPAN_DANGER("Internal memory reset. Please give it a few seconds to reinitialize.")), SHOW_MESSAGE_VISIBLE)
 					sleep(80)
 					l_setshort = 0
 					l_hacking = 0
@@ -84,7 +84,7 @@
 	if (!locked)
 		message = "*****"
 	dat += text("<HR>\n>[]<BR>\n<A href='byond://?src=\ref[];type=1'>1</A>-<A href='byond://?src=\ref[];type=2'>2</A>-<A href='byond://?src=\ref[];type=3'>3</A><BR>\n<A href='byond://?src=\ref[];type=4'>4</A>-<A href='byond://?src=\ref[];type=5'>5</A>-<A href='byond://?src=\ref[];type=6'>6</A><BR>\n<A href='byond://?src=\ref[];type=7'>7</A>-<A href='byond://?src=\ref[];type=8'>8</A>-<A href='byond://?src=\ref[];type=9'>9</A><BR>\n<A href='byond://?src=\ref[];type=R'>R</A>-<A href='byond://?src=\ref[];type=0'>0</A>-<A href='byond://?src=\ref[];type=E'>E</A><BR>\n</TT>", message, src, src, src, src, src, src, src, src, src, src, src, src)
-	user << browse(dat, "window=caselock;size=300x280")
+	user << browse(HTML_SKELETON(dat), "window=caselock;size=300x280")
 
 /obj/item/storage/secure/Topic(href, href_list)
 	..()

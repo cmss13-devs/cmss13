@@ -89,7 +89,7 @@
 					user_id_card = I
 			if(authenticate(user, user_id_card))
 				return TRUE
-			// Well actualy we have no button for auth card ejection, so just spit it back in user's face
+			// Well actually we have no button for auth card ejection, so just spit it back in user's face
 			else
 				if(!user_id_card)
 					return
@@ -135,10 +135,10 @@
 					var/known_access_rights = get_access(ACCESS_LIST_MARINE_ALL)
 					for(var/A in target_id_card.access)
 						if(A in known_access_rights)
-							contents += "  [get_access_desc(A)]<br>"
+							contents += " [get_access_desc(A)]<br>"
 					contents += "<br><u>Modification Log:</u><br>"
 					for(var/change in target_id_card.modification_log)
-						contents += "  [change]<br>"
+						contents += " [change]<br>"
 
 					var/obj/item/paper/P = new /obj/item/paper(src.loc)
 					P.name = "Access Report"
@@ -521,7 +521,7 @@
 
 //This console changes a marine's squad. It's very simple.
 //It also does not: change or increment the squad count (used in the login randomizer), nor does it check for jobs.
-//Which means you could get sillyiness like "Alpha Sulaco Chief Medical Officer" or "Delta Logistics Officer".
+//Which means you could get silliness like "Alpha Sulaco Chief Medical Officer" or "Delta Logistics Officer".
 //But in the long run it's not really a big deal.
 
 /obj/structure/machinery/computer/squad_changer
@@ -712,7 +712,7 @@
 
 /obj/structure/machinery/computer/crew
 	name = "crew monitoring computer"
-	desc = "Used to monitor active health sensors built into the wearer's uniform.  You can see that the console highlights ship areas with BLUE and remote locations with RED."
+	desc = "Used to monitor active health sensors built into the wearer's uniform. You can see that the console highlights ship areas with BLUE and remote locations with RED."
 	icon_state = "crew"
 	circuit = /obj/item/circuitboard/computer/crew
 	density = TRUE
@@ -799,6 +799,7 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 #define RAIDER_OFFICER_SQUAD "SOF [JOB_MARINE_RAIDER_CMD]"
 #define RAIDER_SL_SQUAD "SOF [JOB_MARINE_RAIDER_SL]"
 #define RAIDER_SQUAD "SOF [JOB_MARINE_RAIDER]"
+#define RAIDER_SG_SQUAD "SOF [JOB_MARINE_RAIDER_SG]"
 
 /datum/crewmonitor
 	/// List of user -> UI source
@@ -982,6 +983,7 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				RAIDER_OFFICER_SQUAD = 11,
 				JOB_SO = 12,
 				JOB_SEA = 13,
+				JOB_SYNTH_CMD = 14,
 				// 20-29: Aux Command
 				JOB_AUXILIARY_OFFICER = 20,
 				JOB_SYNTH = 21,
@@ -989,6 +991,7 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				JOB_DROPSHIP_PILOT = 23,
 				JOB_DROPSHIP_CREW_CHIEF = 24,
 				JOB_INTEL = 25,
+				JOB_SYNTH_INTEL = 25,
 				JOB_CIA_LIAISON = 26,
 				JOB_TANK_CREW = 27,
 				// 30-39: Security
@@ -996,21 +999,26 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				JOB_PROVOST_TML = 30,
 				JOB_WARDEN = 31,
 				JOB_PROVOST_ENFORCER = 31,
+				JOB_POLICE_HG = 32,
 				JOB_RIOT_CHIEF = 32,
 				JOB_RIOT = 33,
 				JOB_POLICE = 34,
-				JOB_PROVOST_ADVISOR = 35,
+				JOB_SYNTH_MP = 35,
+				JOB_PROVOST_ADVISOR = 36,
 				// 40-49: MedSci
 				JOB_CMO = 40,
 				JOB_RESEARCHER = 41,
 				JOB_DOCTOR = 42,
 				JOB_SURGEON = 42,
+				JOB_PHARMACIST = 42,
 				JOB_FIELD_DOCTOR = 43,
-				JOB_NURSE = 44,
+				JOB_SYNTH_MED = 44,
+				JOB_NURSE = 45,
 				// 50-59: Engineering
 				JOB_CHIEF_ENGINEER = 50,
-				JOB_ORDNANCE_TECH = 51,
-				JOB_MAINT_TECH = 52,
+				JOB_SYNTH_ENG = 51,
+				JOB_ORDNANCE_TECH = 52,
+				JOB_MAINT_TECH = 53,
 				// 60-69: Cargo
 				JOB_CHIEF_REQUISITION = 60,
 				JOB_CARGO_TECH = 61,
@@ -1019,8 +1027,9 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				JOB_SYNTH_K9 = 71,
 				// 150+: Civilian/other
 				JOB_CORPORATE_LIAISON = 150,
-				JOB_CIA = 151,
-				JOB_PASSENGER = 152,
+				JOB_CORPORATE_BODYGUARD = 151,
+				JOB_CIA = 152,
+				JOB_PASSENGER = 153,
 				// Non Almayer jobs lower then registered
 				JOB_SYNTH_SURVIVOR = 160,
 				JOB_SURVIVOR = 161,
@@ -1069,7 +1078,7 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				JOB_PMC_INVESTIGATOR = 224,
 				JOB_PMC_ENGINEER = 225,
 				JOB_PMC_STANDARD = 226,
-				JOB_PMC_DETAINER = 227,
+				JOB_PMC_SECURITY = 227,
 				JOB_PMC_CROWD_CONTROL = 228,
 				JOB_PMC_DOCTOR = 229,
 				JOB_WY_GOON_LEAD = 230,
@@ -1079,7 +1088,8 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				JOB_MARINE_RAIDER_SL = 130,
 				RAIDER_SL_SQUAD = 130,
 				JOB_MARINE_RAIDER = 131,
-				RAIDER_SQUAD = 131,
+				JOB_MARINE_RAIDER_SG = 132,
+				RAIDER_SQUAD = 132,
 
 				JOB_FORECON_CO = 140,
 				JOB_FORECON_SL = 140,
@@ -1151,7 +1161,7 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				// 60-69: Investigation Team
 				JOB_PMC_LEAD_INVEST = 60,
 				JOB_PMC_INVESTIGATOR = 61,
-				JOB_PMC_DETAINER = 62,
+				JOB_PMC_SECURITY = 62,
 				JOB_PMC_CROWD_CONTROL = 63,
 
 				// 70-79 PMCs Combat Team

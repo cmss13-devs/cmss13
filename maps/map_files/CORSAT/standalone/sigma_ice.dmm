@@ -465,11 +465,6 @@
 	},
 /turf/open/auto_turf/snow/layer3,
 /area/corsat/sigma/biodome/ice)
-"kt" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/ice,
-/area/corsat/sigma/biodome/ice)
 "kv" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor/asteroidfloor/north,
@@ -1345,7 +1340,8 @@
 /area/corsat/sigma/airlock/control)
 "Eg" = (
 /obj/structure/machinery/computer/general_air_control/large_tank_control{
-	name = "CO2 Control"
+	name = "CO2 Control";
+	dir = 4
 	},
 /obj/structure/surface/table/almayer{
 	dir = 4
@@ -3983,8 +3979,8 @@ vU
 Sl
 Sl
 Sl
-kt
-kt
+Sl
+Sl
 kI
 Sl
 Sl

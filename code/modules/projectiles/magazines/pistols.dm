@@ -422,10 +422,10 @@ Unlike other pistols, it can be equipped with limited mods (small muzzle, magazi
 */
 
 /obj/item/ammo_magazine/pistol/m10
-	name = "\improper M10 HV magazine (10x20mm)"
+	name = "\improper M10 HV magazine (10x20mm-APC)"
 	desc = "A compact 40-round high-velocity magazine, designed for rapid reloads and reliable performance in close-quarters combat."
-	default_ammo = /datum/ammo/bullet/smg/m39
-	caliber = "10x20mm"
+	default_ammo = /datum/ammo/bullet/pistol/m10
+	caliber = "10x20mm-APC"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/pistols.dmi'
 	icon_state = "m10"
 	bonus_overlay = "m10_overlay"
@@ -434,23 +434,55 @@ Unlike other pistols, it can be equipped with limited mods (small muzzle, magazi
 	gun_type = /obj/item/weapon/gun/pistol/m10
 
 /obj/item/ammo_magazine/pistol/m10/extended
-	name = "\improper M10 HV extended magazine (10x20mm)"
-	desc = "An extended 10x20mm 78-round high-velocity magazine, offering additional firepower for sustained engagements without significantly increasing reload time."
-	default_ammo = /datum/ammo/bullet/smg/m39
-	caliber = "10x20mm"
+	name = "\improper M10 HV extended magazine (10x20mm-APC)"
+	desc = "An extended 62-round high-velocity magazine, offering additional firepower for sustained engagements without significantly increasing reload time."
+	default_ammo = /datum/ammo/bullet/pistol/m10
+	caliber = "10x20mm-APC"
 	icon_state = "m10_ext"
 	bonus_overlay = "m10_ex_overlay"
-	max_rounds = 78
+	max_rounds = 62
 	gun_type = /obj/item/weapon/gun/pistol/m10
 
 /obj/item/ammo_magazine/pistol/m10/drum
-	name = "\improper M10 HV drum magazine (10x20mm)"
-	desc = "A super-extended 10x20mm 92-round drum magazine designed for prolonged firefights, delivering maximum ammunition capacity at the cost of a longer reload."
-	default_ammo = /datum/ammo/bullet/smg/m39
-	caliber = "10x20mm"
+	name = "\improper M10 HV drum magazine (10x20mm-APC)"
+	desc = "A super-extended 84-round drum magazine designed for prolonged firefights, delivering maximum ammunition capacity at the cost of a longer reload."
+	default_ammo = /datum/ammo/bullet/pistol/m10
+	caliber = "10x20mm-APC"
 	icon_state = "m10_drum"
 	bonus_overlay = "m10_drum_overlay"
-	max_rounds = 92
+	max_rounds = 84
+	gun_type = /obj/item/weapon/gun/pistol/m10
+
+/obj/item/ammo_magazine/pistol/m10/ap
+	name = "\improper M10 AP magazine (10x20mm-APC)"
+	desc = "A 40-round magazine loaded with armor-piercing rounds. Designed to punch through body armor and light cover, though with reduced muzzle velocity compared to standard HV loads."
+	default_ammo = /datum/ammo/bullet/pistol/m10/ap
+	caliber = "10x20mm-APC"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/pistols.dmi'
+	icon_state = "m10_ap"
+	bonus_overlay = "m10_ap_overlay"
+	bonus_overlay_icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/pistols.dmi'
+	max_rounds = 40
+	gun_type = /obj/item/weapon/gun/pistol/m10
+
+/obj/item/ammo_magazine/pistol/m10/ap/extended
+	name = "\improper M10 AP extended magazine (10x20mm-APC)"
+	desc = "A 62-round extended magazine loaded with armor-piercing rounds. Designed to punch through body armor and light cover, though with reduced muzzle velocity compared to standard HV loads."
+	default_ammo = /datum/ammo/bullet/pistol/m10/ap
+	caliber = "10x20mm-APC"
+	icon_state = "m10_ap_ext"
+	bonus_overlay = "m10_ap_ex_overlay"
+	max_rounds = 62
+	gun_type = /obj/item/weapon/gun/pistol/m10
+
+/obj/item/ammo_magazine/pistol/m10/ap/drum
+	name = "\improper M10 AP drum magazine (10x20mm-APC)"
+	desc = "A super-extended 84-round drum loaded with armor-piercing rounds. Designed to punch through body armor and light cover, though with reduced muzzle velocity compared to standard HV loads."
+	default_ammo = /datum/ammo/bullet/pistol/m10/ap
+	caliber = "10x20mm-APC"
+	icon_state = "m10_ap_drum"
+	bonus_overlay = "m10_ap_drum_overlay"
+	max_rounds = 84
 	gun_type = /obj/item/weapon/gun/pistol/m10
 
 //-------------------------------------------------------

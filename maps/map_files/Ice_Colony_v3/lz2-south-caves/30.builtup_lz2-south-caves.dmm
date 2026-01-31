@@ -10,9 +10,6 @@
 "c" = (
 /turf/open/auto_turf/snow/layer4,
 /area/shiva/exterior/cp_lz2)
-"d" = (
-/turf/closed/wall/shiva/ice,
-/area/shiva/interior/caves/s_lz2)
 "e" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/multi_tiles,
@@ -128,13 +125,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/lz2_habs)
-"G" = (
-/obj/item/shard{
-	icon_state = "large";
-	name = "ice shard"
-	},
-/turf/closed/wall/shiva/prefabricated/pink,
-/area/shiva/interior/lz2_habs)
 "H" = (
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/interior/caves/s_lz2)
@@ -199,7 +189,7 @@
 /area/shiva/interior/lz2_habs)
 "W" = (
 /turf/closed/wall/shiva/prefabricated/reinforced/hull,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/interior/oob)
 "X" = (
 /obj/item/weapon/gun/boltaction,
 /obj/structure/surface/rack,
@@ -355,23 +345,23 @@ s
 a
 a
 a
-d
+i
 x
 x
 x
 "}
 (10,1,1) = {"
 a
-G
 a
 a
 a
-G
 a
 a
 a
-d
-d
+a
+a
+i
+i
 x
 r
 "}

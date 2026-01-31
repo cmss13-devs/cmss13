@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////
-//Mounted MG, Replacment for the current jury rig code.
+//Mounted MG, Replacement for the current jury rig code.
 
 // First thing we need is the ammo drum for this thing.
 /obj/item/ammo_magazine/m56d
@@ -42,12 +42,13 @@
 	w_class = SIZE_HUGE
 	flags_equip_slot = SLOT_BACK
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi'
+	icon_state = "M56D_gun_e"
+	item_state = "M56D_gun"
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/machineguns.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/machineguns_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/machineguns_righthand.dmi'
 	)
-	icon_state = "M56D_gun_e"
 	///How many rounds are in the weapon. This is useful if we break down our guns.
 	var/rounds = 0
 	///Indicates whether the M56D will come with its folding mount already attached
@@ -188,11 +189,17 @@
 
 /obj/item/device/m56d_post //Adding this because I was fucken stupid and put a obj/structure/machinery in a box. Realized I couldn't take it out
 	name = "\improper M56D folded mount"
-	desc = "The folded, foldable tripod mount for the M56D.  (Place on ground and drag to you to unfold)."
+	desc = "The folded, foldable tripod mount for the M56D. (Place on ground and drag to you to unfold)."
 	unacidable = TRUE
 	w_class = SIZE_MEDIUM
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi'
 	icon_state = "folded_mount"
+	item_state = "folded_mount"
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/machineguns.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/machineguns_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/machineguns_righthand.dmi'
+	)
 
 /// Causes the tripod to unfold
 /obj/item/device/m56d_post/attack_self(mob/user)
@@ -453,7 +460,7 @@
 
 
 
-// The actual Machinegun itself, going to borrow some stuff from current sentry code to make sure it functions. Also because they're similiar.
+// The actual Machinegun itself, going to borrow some stuff from current sentry code to make sure it functions. Also because they're similar.
 /obj/structure/machinery/m56d_hmg
 	name = "\improper M56D heavy machine gun"
 	desc = "A deployable, heavy machine gun. While it is capable of taking the same rounds as the M56, it fires specialized tungsten rounds for increased armor penetration.<br>Drag its sprite onto yourself to man it. Ctrl-click it to cycle through firemodes."
@@ -995,30 +1002,30 @@
 			if(NORTH)
 				diff_y = -16 + user_old_y
 				if(user.client)
-					user.client.pixel_x = 0
-					user.client.pixel_y = viewoffset
+					user.client.set_pixel_x(0)
+					user.client.set_pixel_y(viewoffset)
 			if(SOUTH)
 				diff_y = 16 + user_old_y
 				if(user.client)
-					user.client.pixel_x = 0
-					user.client.pixel_y = -viewoffset
+					user.client.set_pixel_x(0)
+					user.client.set_pixel_y(-viewoffset)
 			if(EAST)
 				diff_x = -16 + user_old_x
 				if(user.client)
-					user.client.pixel_x = viewoffset
-					user.client.pixel_y = 0
+					user.client.set_pixel_x(viewoffset)
+					user.client.set_pixel_y(0)
 			if(WEST)
 				diff_x = 16 + user_old_x
 				if(user.client)
-					user.client.pixel_x = -viewoffset
-					user.client.pixel_y = 0
+					user.client.set_pixel_x(-viewoffset)
+					user.client.set_pixel_y(0)
 
 		animate(user, pixel_x=diff_x, pixel_y=diff_y, 0.4 SECONDS)
 	else
 		if(user.client)
 			user.client.change_view(GLOB.world_view_size)
-			user.client.pixel_x = 0
-			user.client.pixel_y = 0
+			user.client.set_pixel_x(0)
+			user.client.set_pixel_y(0)
 		animate(user, pixel_x=user_old_x, pixel_y=user_old_y, 4, 1)
 
 /obj/structure/machinery/m56d_hmg/check_eye(mob/living/user)
@@ -1075,7 +1082,7 @@
 
 	if(display_ammo)
 		var/chambered = in_chamber ? TRUE : FALSE
-		to_chat(operator, SPAN_DANGER("[rounds][chambered ? "+1" : ""] / [rounds_max] ROUNDS REMAINING"))
+		to_chat(operator, SPAN_DANGER("[rounds][chambered ? "+1" : ""] / [rounds_max] ROUNDS REMAINING."))
 
 /// Toggles the gun's firemode one down the list
 /obj/structure/machinery/m56d_hmg/proc/do_toggle_firemode(mob/user, new_firemode)
@@ -1120,7 +1127,7 @@
 		display_ammo()
 	SEND_SIGNAL(src, COMSIG_GUN_STOP_FIRE)
 
-///Update the target if you draged your mouse
+///Update the target if you dragged your mouse
 /obj/structure/machinery/m56d_hmg/proc/change_target(datum/source, atom/src_object, atom/over_object, turf/src_location, turf/over_location, src_control, over_control, params)
 	SIGNAL_HANDLER
 	set_target(get_turf_on_clickcatcher(over_object, operator, params))
@@ -1206,6 +1213,9 @@
 		health = health_max
 	update_damage_state()
 	update_icon()
+
+/obj/structure/machinery/m56d_hmg/mg_turret/whiskey
+	ammo = /datum/ammo/bullet/machinegun/whiskey
 
 /obj/structure/machinery/m56d_hmg/mg_turret/dropship
 	name = "\improper scoped M56D heavy machine gun"

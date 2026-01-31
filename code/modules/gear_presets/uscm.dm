@@ -237,6 +237,7 @@
 		back_item = /obj/item/storage/backpack/marine
 
 	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/io(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/intel(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
 
@@ -255,7 +256,7 @@
 
 	var/obj/item/clothing/under/marine/officer/intel/U = new(new_human)
 	new_human.equip_to_slot_or_del(U, WEAR_BODY)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/intel(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/io(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/vp78(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/rto/intel(new_human), WEAR_HEAD)
@@ -859,6 +860,88 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medical/socmed/full, WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/tactical/full, WEAR_R_STORE)
 
+/datum/equipment_preset/uscm/marsoc/sg
+	name = "Marine Raider Smartgunner (!DEATHSQUAD!)"
+	assignment = "Marine Raider Smartgunner"
+	job_title = JOB_MARINE_RAIDER_SG
+
+	minimap_icon = "sof_sg"
+
+/datum/equipment_preset/uscm/marsoc/sg/load_gear(mob/living/carbon/human/new_human)
+	//face
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/sof, WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc/marsoc, WEAR_FACE)
+	//head
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/sof, WEAR_HEAD)
+	//uniform
+	var/obj/item/clothing/under/marine/veteran/marsoc/M = new()
+	var/obj/item/clothing/accessory/storage/black_vest/W = new()
+	M.attach_accessory(new_human, W)
+	new_human.equip_to_slot_or_del(M, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/screwdriver/tactical, WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/wirecutters/tactical, WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical, WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_ACCESSORY)
+	//jacket
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/smartgunner/veteran/sof, WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/m1911, WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/m1911, WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/m1911, WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/smartgun_battery, WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun/terminator, WEAR_J_STORE)
+	//eyes
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m56_goggles/whiteout, WEAR_EYES)
+	//back
+	new_human.equip_to_slot_or_del(new /obj/item/storage/large_holster/machete/smartgunner/full, WEAR_BACK)
+	//waist
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/smartgunner/marsoc/full, WEAR_WAIST)
+	//limbs
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine, WEAR_HANDS)
+	//pockets
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medical/socmed/full, WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_sg/marsoc/full, WEAR_R_STORE)
+
+/datum/equipment_preset/uscm/marsoc/sg/low_threat
+	name = "Marine Raider Smartgunner"
+
+/datum/equipment_preset/uscm/marsoc/sg/low_threat/load_gear(mob/living/carbon/human/new_human)
+	//face
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/sof, WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc/marsoc, WEAR_FACE)
+	//head
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/sof, WEAR_HEAD)
+	//uniform
+	var/obj/item/clothing/under/marine/veteran/marsoc/M = new()
+	var/obj/item/clothing/accessory/storage/black_vest/W = new()
+	M.attach_accessory(new_human, W)
+	new_human.equip_to_slot_or_del(M, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/screwdriver/tactical, WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/wirecutters/tactical, WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical, WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_ACCESSORY)
+	//jacket
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/smartgunner/veteran/sof, WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/m1911, WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/m1911, WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/m1911, WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/smartgun_battery, WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun/terminator/low_threat, WEAR_J_STORE)
+	//eyes
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m56_goggles/whiteout, WEAR_EYES)
+	//back
+	new_human.equip_to_slot_or_del(new /obj/item/storage/large_holster/machete/smartgunner/full, WEAR_BACK)
+	//waist
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/smartgunner/marsoc/full_low_threat, WEAR_WAIST)
+	//limbs
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine, WEAR_HANDS)
+	//pockets
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medical/socmed/not_op, WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_sg/marsoc/full_low_threat, WEAR_R_STORE)
+
 //Covert Raiders
 /datum/equipment_preset/uscm/marsoc/covert
 	name = "Marine Raider (!DEATHSQUAD! Covert)"
@@ -866,10 +949,22 @@
 
 /datum/equipment_preset/uscm/marsoc/covert/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = MALE
-	new_human.change_real_name(new_human, "[pick(GLOB.nato_phonetic_alphabet)]")
+	new_human.change_real_name(new_human, capitalize(pick(GLOB.nato_phonetic_alphabet)))
 	new_human.age = rand(20,30)
 
 /datum/equipment_preset/uscm/marsoc/covert/load_rank(mob/living/carbon/human/new_human)
+	return PAY_SHORT_CDNM
+
+/datum/equipment_preset/uscm/marsoc/sg/covert
+	name = "Marine Raider Smartgunner (!DEATHSQUAD! Covert)"
+	uses_special_name = TRUE
+
+/datum/equipment_preset/uscm/marsoc/sg/covert/load_name(mob/living/carbon/human/new_human, randomise)
+	new_human.gender = MALE
+	new_human.change_real_name(new_human, capitalize(pick(GLOB.nato_phonetic_alphabet)))
+	new_human.age = rand(20,30)
+
+/datum/equipment_preset/uscm/marsoc/sg/covert/load_rank(mob/living/carbon/human/new_human)
 	return PAY_SHORT_CDNM
 
 //Team Leader
@@ -894,7 +989,7 @@
 
 /datum/equipment_preset/uscm/marsoc/sl/covert/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = MALE
-	new_human.change_real_name(new_human, "[pick(GLOB.nato_phonetic_alphabet)]")
+	new_human.change_real_name(new_human, capitalize(pick(GLOB.nato_phonetic_alphabet)))
 	new_human.age = rand(20,30)
 
 /datum/equipment_preset/uscm/marsoc/sl/covert/load_rank(mob/living/carbon/human/new_human)
@@ -998,7 +1093,7 @@
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues)
 
 /datum/equipment_preset/uscm/pve/load_status(mob/living/carbon/human/new_human)
-	new_human.nutrition = NUTRITION_MAX
+	new_human.nutrition = NUTRITION_NORMAL
 
 /datum/equipment_preset/uscm/pve/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine(new_human), WEAR_BODY)
@@ -1120,6 +1215,9 @@
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues)
 
+/datum/equipment_preset/uscm/pve/sg/load_status(mob/living/carbon/human/new_human)
+	new_human.nutrition = NUTRITION_NORMAL
+
 /datum/equipment_preset/uscm/pve/sg/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(new_human), WEAR_HEAD)
@@ -1147,9 +1245,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full(new_human), WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/alternate(new_human), WEAR_R_STORE)
 	spawn_marine_fluff_items(new_human)
-
-/datum/equipment_preset/uscm/pve/sg/load_status(mob/living/carbon/human/new_human)
-
+	
 //## Team Leader ##//
 /datum/equipment_preset/uscm/pve/tl
 	name = "USCM Solar Devils Team Leader"
@@ -1287,7 +1383,7 @@
 	minimap_icon = "private"
 
 /datum/equipment_preset/uscm/hunted/rifleman/load_status(mob/living/carbon/human/new_human)
-	new_human.nutrition = NUTRITION_MAX
+	new_human.nutrition = NUTRITION_NORMAL
 
 /datum/equipment_preset/uscm/hunted/rifleman/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine(new_human), WEAR_BODY)
@@ -1334,7 +1430,7 @@
 	minimap_icon = "tl"
 
 /datum/equipment_preset/uscm/hunted/tl/load_status(mob/living/carbon/human/new_human)
-	new_human.nutrition = NUTRITION_NORMAL
+	new_human.nutrition = NUTRITION_MAX
 
 /datum/equipment_preset/uscm/hunted/tl/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine(new_human), WEAR_BODY)
@@ -1375,6 +1471,9 @@
 	skills = /datum/skills/smartgunner_pve
 
 	minimap_icon = "smartgunner"
+
+/datum/equipment_preset/uscm/hunted/sg/load_status(mob/living/carbon/human/new_human)
+	new_human.nutrition = NUTRITION_NORMAL
 
 /datum/equipment_preset/uscm/hunted/sg/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine(new_human), WEAR_BODY)

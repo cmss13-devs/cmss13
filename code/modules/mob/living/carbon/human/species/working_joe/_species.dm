@@ -32,6 +32,7 @@
 /datum/species/synthetic/colonial/working_joe/handle_post_spawn(mob/living/carbon/human/joe)
 	. = ..()
 	give_action(joe, /datum/action/joe_emote_panel)
+	joe.AddElement(/datum/element/corp_label/seegson)
 
 // Special death noise for Working Joe
 /datum/species/synthetic/colonial/working_joe/handle_death(mob/living/carbon/human/dying_joe, gibbed)

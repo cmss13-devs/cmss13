@@ -33,7 +33,7 @@ FROM byond AS cm-builder
 COPY tools/docker/nodesource.gpg /usr/share/keyrings/nodesource.gpg
 COPY tools/docker/nodesource.list /etc/apt/sources.list.d/
 COPY tools/docker/apt-node-prefs /etc/apt/preferences/
-RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y nodejs yarn g++-multilib && apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y nodejs bun g++-multilib && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # TGUI deps pre-caching, thin out files to serve as basis for layer caching
 FROM node:${NODE_VERSION}-buster AS tgui-thin
@@ -45,7 +45,7 @@ RUN find packages \! -name "package.json" -mindepth 2 -maxdepth 2 -print | xargs
 FROM node:${NODE_VERSION}-buster AS tgui-deps
 COPY --from=tgui-thin tgui /tgui
 WORKDIR /tgui
-RUN yarn install --immutable
+RUN bun install --immutable
 
 # Game source cache stage: remove irrelevant dupes not dockerignored to prevent cache misses
 FROM ${UTILITY_BASE_IMAGE} AS source-cache
@@ -58,7 +58,7 @@ FROM cm-builder AS cm-build-standalone
 ARG PROJECT_NAME
 COPY --from=source-cache /src /build
 WORKDIR /build
-COPY --from=tgui-deps /tgui/.yarn/cache tgui/.yarn/cache
+COPY --from=tgui-deps /tgui/node_modules tgui/node_modules
 RUN ./tools/docker/juke-build.sh
 
 # Helper Stage just packaging locally provided resources

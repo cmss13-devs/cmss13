@@ -43,7 +43,6 @@
 	var/stat_msg1
 	var/stat_msg2
 
-	var/datum/tacmap/drawing/tacmap
 	var/minimap_type = MINIMAP_FLAG_USCM
 
 	processing = TRUE
@@ -51,10 +50,8 @@
 /obj/structure/machinery/computer/communications/Initialize()
 	. = ..()
 	start_processing()
-	tacmap = new(src, minimap_type)
 
 /obj/structure/machinery/computer/communications/Destroy()
-	QDEL_NULL(tacmap)
 	return ..()
 
 /obj/structure/machinery/computer/communications/process()
@@ -67,9 +64,6 @@
 
 	usr.set_interaction(src)
 	switch(href_list["operation"])
-		if("mapview")
-			tacmap.tgui_interact(usr)
-
 		if("main")
 			state = STATE_DEFAULT
 
@@ -309,9 +303,9 @@
 		if("messageUSCM")
 			if(authenticated == 2)
 				if(world.time < cooldown_central + COOLDOWN_COMM_CENTRAL)
-					to_chat(usr, SPAN_WARNING("Arrays recycling.  Please stand by."))
+					to_chat(usr, SPAN_WARNING("Arrays recycling. Please stand by."))
 					return FALSE
-				var/input = stripped_input(usr, "Please choose a message to transmit to USCM.  Please be aware that this process is very expensive, and abuse will lead to termination.  Transmission does not guarantee a response. There is a small delay before you may send another message. Be clear and concise.", "To abort, send an empty message.", "")
+				var/input = stripped_input(usr, "Please choose a message to transmit to USCM. Please be aware that this process is very expensive, and abuse will lead to termination. Transmission does not guarantee a response. There is a small delay before you may send another message. Be clear and concise.", "To abort, send an empty message.", "")
 				if(!input || !(usr in dview(1, src)) || authenticated != 2 || world.time < cooldown_central + COOLDOWN_COMM_CENTRAL)
 					return FALSE
 
@@ -330,16 +324,7 @@
 			state = STATE_ALERT_LEVEL
 
 		if("selectlz")
-			if(!SSticker.mode.active_lz)
-				var/lz_choices = list("lz1", "lz2")
-				var/new_lz = tgui_input_list(usr, "Select primary LZ", "LZ Select", lz_choices)
-				if(!new_lz)
-					return
-				if(new_lz == "lz1")
-					SSticker.mode.select_lz(locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz1))
-				else
-					SSticker.mode.select_lz(locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz2))
-
+			SSticker.mode.pick_a_lz(usr)
 
 		else
 			return FALSE

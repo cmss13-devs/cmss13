@@ -13,19 +13,22 @@
 	var/temp_delta = 5
 	/// The kind of thing to try and locate in loc to persist the effect
 	var/cause_path
+	/// Whether the damage is considered to be from an environmental source
+	var/enviro = FALSE
 
 	/// Parent as a living mob
 	var/mob/living/living_parent
 
-/datum/component/damage_over_time/InheritComponent(cause_path, dam_amount, dam_type, target_temp, temp_delta, synth_dmg_mult, pred_dmg_mult, warning_message)
+/datum/component/damage_over_time/InheritComponent(cause_path, dam_amount, dam_type, target_temp, temp_delta, synth_dmg_mult, pred_dmg_mult, warning_message, enviro)
 	return // Ultimately just here to suppress named arg errors
 
-/datum/component/damage_over_time/Initialize(cause_path, dam_amount=5, dam_type=BURN, target_temp=T90C, temp_delta=5, synth_dmg_mult=0.5, pred_dmg_mult=0.5, warning_message="You feel your body start to shake as the scalding water sears your skin, heat overwhelming your senses...")
+/datum/component/damage_over_time/Initialize(cause_path, dam_amount=5, dam_type=BURN, target_temp=T90C, temp_delta=5, synth_dmg_mult=0.5, pred_dmg_mult=0.5, warning_message="You feel your body start to shake as the scalding water sears your skin, heat overwhelming your senses...", enviro=FALSE)
 	src.dam_amount = dam_amount
 	src.dam_type = dam_type
 	src.target_temp = target_temp
 	src.temp_delta = temp_delta
 	src.cause_path = cause_path
+	src.enviro = enviro
 
 	living_parent = parent
 
@@ -61,12 +64,12 @@
 		return
 
 	if(living_parent.body_position == STANDING_UP)
-		living_parent.apply_damage(dam_amount,dam_type,"l_leg")
-		living_parent.apply_damage(dam_amount,dam_type,"l_foot")
-		living_parent.apply_damage(dam_amount,dam_type,"r_leg")
-		living_parent.apply_damage(dam_amount,dam_type,"r_foot")
+		living_parent.apply_damage(dam_amount, dam_type, "l_leg", enviro=enviro)
+		living_parent.apply_damage(dam_amount, dam_type, "l_foot", enviro=enviro)
+		living_parent.apply_damage(dam_amount, dam_type, "r_leg", enviro=enviro)
+		living_parent.apply_damage(dam_amount, dam_type, "r_foot", enviro=enviro)
 	else
-		living_parent.apply_damage(5*dam_amount,dam_type)
+		living_parent.apply_damage(5*dam_amount, dam_type, enviro=enviro)
 
 	if(temp_delta)
 		if(living_parent.bodytemperature + temp_delta < target_temp)

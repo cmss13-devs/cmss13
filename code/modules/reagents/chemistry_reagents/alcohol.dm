@@ -60,7 +60,7 @@
  * Sets only reagent ethanol to CHEM_CLASS_COMMON allowing for Turing machine to dispense it
  *
  * Sets ethanol to CHEM_CLASS_COMMON inheriting everything from /datum/reagent/ethanol.
- * seems wonky to do double naming but cant have turing be super booze disp
+ * seems wonky to do double naming but can't have turing be super booze disp
  */
 /datum/reagent/ethanol/ethanol
 	chemclass = CHEM_CLASS_BASIC

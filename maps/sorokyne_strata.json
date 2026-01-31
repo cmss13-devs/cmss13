@@ -16,6 +16,14 @@
         "/datum/equipment_preset/survivor/upp_miner",
         "/datum/equipment_preset/survivor/upp_fire_fighter"
     ],
+	"synth_survivor_types": [
+        "/datum/equipment_preset/synth/survivor/sorokyne/engineer",
+        "/datum/equipment_preset/synth/survivor/sorokyne/security",
+        "/datum/equipment_preset/synth/survivor/sorokyne/scientist",
+        "/datum/equipment_preset/synth/survivor/sorokyne/civilian",
+        "/datum/equipment_preset/synth/survivor/sorokyne/doctor",
+        "/datum/equipment_preset/synth/survivor/sorokyne/corporate"
+    ],
     "CO_insert_survivor_types": [
         "/datum/equipment_preset/survivor/clf/coordinator"
     ],
@@ -26,12 +34,32 @@
         875,
         0.0
     ],
+    "co_briefing": {
+        "Hawks": "maps/map_briefings/commanding_officer/sorokyne/SOROKYNEcpo.html",
+        "Doves": "maps/map_briefings/commanding_officer/sorokyne/SOROKYNEhmm.html",
+        "Magpies": "maps/map_briefings/commanding_officer/sorokyne/SOROKYNEmodi.html",
+        "Unaligned": "maps/map_briefings/commanding_officer/sorokyne/SOROKYNEunaligned.html"
+    },
     "map_item_type": "/obj/item/map/sorokyne_map",
     "announce_text": "An automated distress signal has been recieved from a mining colony on border world LV-976, \"Sorokyne Outpost\". A response team from the ###SHIPNAME### will be dispatched shortly to investigate.",
     "monkey_types": [
         "stok"
     ],
-    "traits": [{ "Ground": true }],
+    "traits": [
+        {
+            "Ground": true,
+            "Up": 1
+        },
+        {
+            "Ground": true,
+            "Up": 1,
+            "Down": -1
+        },
+        {
+            "Ground": true,
+            "Down": -1
+        }
+    ],
     "nightmare_path": "maps/Nightmare/maps/Sorokyne_Strata/",
     "xvx_hives": {
         "xeno_hive_alpha": 0,

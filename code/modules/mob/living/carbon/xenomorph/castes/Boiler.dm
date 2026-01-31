@@ -22,9 +22,9 @@
 	acid_level = 3
 	caste_luminosity = 2
 	spit_types = list(/datum/ammo/xeno/boiler_gas/acid, /datum/ammo/xeno/boiler_gas)
-	fire_immunity = FIRE_VULNERABILITY
+	fire_immunity = FIRE_MODIFIER
 	// 3x fire damage
-	fire_vulnerability_mult = FIRE_MULTIPLIER_DEADLY
+	fire_modifier_mult = FIRE_MULTIPLIER_DEADLY
 
 	tackle_min = 2
 	tackle_max = 6
@@ -56,6 +56,8 @@
 	icon_xeno = 'icons/mob/xenos/castes/tier_3/boiler.dmi'
 	icon_xenonid = 'icons/mob/xenonids/castes/tier_3/boiler.dmi'
 
+	acid_overlay = icon('icons/mob/xenos/castes/tier_3/boiler.dmi', "Boiler-Spit")
+
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
 	weed_food_states = list("Boiler_1","Boiler_2","Boiler_3")
 	weed_food_states_flipped = list("Boiler_1","Boiler_2","Boiler_3")
@@ -73,7 +75,6 @@
 		/datum/action/xeno_action/activable/spray_acid/boiler, //3rd macro
 		/datum/action/xeno_action/onclick/toggle_long_range/boiler, //4th macro
 		/datum/action/xeno_action/onclick/acid_shroud, //5th macro
-		/datum/action/xeno_action/onclick/tacmap,
 	)
 	skull = /obj/item/skull/boiler
 	pelt = /obj/item/pelt/boiler
@@ -84,8 +85,6 @@
 	smoke.attach(src)
 	smoke.cause_data = create_cause_data(initial(caste_type), src)
 	see_in_dark = 20
-
-	update_icon_source()
 
 /mob/living/carbon/xenomorph/boiler/Destroy()
 	if(smoke)
@@ -213,6 +212,7 @@
 				continue
 
 			xeno_action.apply_cooldown_override(cooldown_duration)
+
 
 /datum/action/xeno_action/onclick/acid_shroud/use_ability(atom/affected_atom)
 	var/datum/effect_system/smoke_spread/xeno_acid/spicy_gas

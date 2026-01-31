@@ -59,6 +59,20 @@
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
 	return XENO_ATTACK_ACTION
 
+/obj/structure/ship_ammo/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
+	if(unslashable || health <= 0)
+		return TAILSTAB_COOLDOWN_NONE
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	update_health(xeno.melee_damage_upper)
+	if(health <= 0)
+		xeno.visible_message(SPAN_DANGER("[xeno] smashes [src] with its tail!"),
+		SPAN_DANGER("We smash [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	else
+		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
+		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno.tail_stab_animation(src, blunt_stab)
+	return TAILSTAB_COOLDOWN_NORMAL
+
 /obj/structure/ship_ammo/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/powerloader_clamp))
 		var/obj/item/powerloader_clamp/PC = I
@@ -206,7 +220,7 @@
 /obj/structure/ship_ammo/heavygun/antitank
 	name = "\improper PGU-105 30mm Anti-tank ammo crate"
 	icon_state = "30mm_crate_hv"
-	desc = "A crate full of PGU-105 Specialized 30mm APFSDS Titanium-Tungsten alloy penetrators, made for countering peer and near peer APCs, IFVs, and MBTs in CAS support. It is designed to penetrate up to the equivalent 1350mm of RHA when launched from a GAU-21. It is much less effective against soft targets however, in which case 30mm ball ammunition is recommended. WARNING: discarding petals from the ammunition can be harmful if the dropship does not pull out at the needed speeds. Please consult page 3574 of the manual, available for order at any ARMAT store. Can be loaded into the GAU-21 30mm cannon."
+	desc = "A crate full of PGU-105 Specialized 30mm APFSDS Titanium-Tungsten alloy penetrators, made for countering peer and near peer APCs, IFVs, and MBTs in CAS support. It is designed to penetrate up to the equivalent 1350mm of RHA when launched from a GAU-21. It is much less effective against soft targets however, in which case 30mm ball ammunition is recommended. WARNING: discarding petals from the ammunition can be harmful if the dropship does not pull out at the needed speeds. Please consult page 3574 of the manual, available for order at any Armat store. Can be loaded into the GAU-21 30mm cannon."
 	travelling_time = 60
 	point_cost = 325
 	shrapnel_type = /datum/ammo/bullet/shrapnel/gau/at
@@ -218,7 +232,7 @@
 /obj/structure/ship_ammo/laser_battery
 	name = "\improper BTU-17/LW Hi-Cap Laser Battery"
 	icon_state = "laser_battery"
-	desc = "A high-capacity laser battery used to power laser beam weapons.  Can be loaded into the LWU-6B Laser Cannon."
+	desc = "A high-capacity laser battery used to power laser beam weapons. Can be loaded into the LWU-6B Laser Cannon."
 	travelling_time = 10
 	ammo_count = 100
 	max_ammo_count = 100
@@ -426,11 +440,11 @@
 	accuracy_range = 0 // pinpoint
 	max_inaccuracy = 0
 	/// Special structures it needs to break with drop pod
-	var/list/breakeable_structures = list(/obj/structure/barricade, /obj/structure/surface/table)
+	var/list/breakable_structures = list(/obj/structure/barricade, /obj/structure/surface/table)
 
 /obj/structure/ship_ammo/sentry/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
 	var/obj/structure/droppod/equipment/sentry/droppod = new(impact, /obj/structure/machinery/defenses/sentry/launchable, source_mob)
-	droppod.special_structures_to_damage = breakeable_structures
+	droppod.special_structures_to_damage = breakable_structures
 	droppod.special_structure_damage = 500
 	droppod.drop_time = 5 SECONDS
 	droppod.launch(impact)

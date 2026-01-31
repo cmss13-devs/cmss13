@@ -33,6 +33,10 @@
 	for(var/action_path in actions_to_add)
 		give_action(xeno, action_path)
 
+	var/datum/action/minimap/ref = xeno.minimap_ref.resolve()
+	ref.remove_from(xeno)
+	ref.give_to(xeno, ref)
+
 	// Update the xeno's behavior delegate.
 	if(behavior_delegate_type)
 		if(xeno.behavior_delegate)
@@ -94,13 +98,14 @@
 	// Create the strain datum and apply it to the xeno.
 	var/datum/xeno_strain/strain_instance = new chosen_strain()
 	if(strain_instance._add_to_xeno(src))
+		overlays -= acid_overlay
 		xeno_jitter(1.5 SECONDS)
 		// If it applied successfully, add it to the logs.
 		log_strain("[name] purchased strain '[strain_instance.type]'")
 
 /mob/living/carbon/xenomorph/verb/reset_strain()
 	set name = "Reset Strain"
-	set desc = "Reset your strain"
+	set desc = "Reset your strain."
 	set category = "Alien"
 
 	// Firstly, make sure the xeno is actually able to take a strain.
@@ -108,7 +113,7 @@
 		return
 
 	if(!COOLDOWN_FINISHED(src, next_strain_reset))
-		to_chat(src, SPAN_WARNING("We lack the strength to reset our strain. We will be able to reset it in [round((next_strain_reset - world.time) / 600, 1)] minutes"))
+		to_chat(src, SPAN_WARNING("We lack the strength to reset our strain. We will be able to reset it in [round((next_strain_reset - world.time) / 600, 1)] minutes."))
 		return
 
 	// Show the user the strain's description, and double check that they want it.

@@ -128,6 +128,7 @@
 		user.visible_message(SPAN_WARNING("[user] plants [name] on [target]!"),
 		SPAN_WARNING("You plant [name] on [target]! Timer counting down from [timer]."))
 		active = TRUE
+		anchored = TRUE
 		addtimer(CALLBACK(src, PROC_REF(prime)), timer * 10)
 
 /obj/item/explosive/plastic/attackby(obj/item/W, mob/user)
@@ -173,6 +174,7 @@
 			if(!isigniter(detonator.a_left) && !issignaller(detonator.a_left))
 				detonator.a_left.activate()
 	active = FALSE
+	anchored = FALSE
 	update_icon()
 
 /obj/item/explosive/plastic/proc/can_place(mob/user, atom/target)

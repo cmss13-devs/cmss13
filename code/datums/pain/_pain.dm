@@ -111,7 +111,7 @@
 	update_pain_level()
 
 /datum/pain/proc/apply_pain_reduction(amount = 0)
-	if(last_reduction_update > world.time || amount <= reduction_pain) // Needed so pain meds cant spam us, neccesary evil.
+	if(last_reduction_update > world.time || amount <= reduction_pain) // Needed so pain meds can't spam us, neccesary evil.
 		return
 
 	last_reduction_update = world.time + 10 SECONDS

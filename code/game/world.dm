@@ -64,15 +64,14 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 
 	if(!GLOB.RoleAuthority)
 		GLOB.RoleAuthority = new /datum/authority/branch/role()
-		to_world(SPAN_DANGER("\b Job setup complete"))
+		to_world(SPAN_DANGER("\b Job setup complete."))
 
 	initiate_minimap_icons()
 
 	change_tick_lag(CONFIG_GET(number/ticklag))
 
-	// As of byond 515.1637 time2text now treats 0 like it does negative numbers so the hour is wrong
-	// We could instead use world.timezone but IMO better to not assume lummox will keep time2text in parity with it
-	GLOB.timezoneOffset = text2num(time2text(10,"hh")) * 36000
+	// I hate that this logic keeps having to change
+	GLOB.timezoneOffset = world.timezone * 36000
 
 	Master.Initialize(10, FALSE, TRUE)
 
@@ -327,7 +326,7 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 	SStimer.reset_buckets()
 
 /**
- * Handles incresing the world's maxx var and intializing the new turfs and assigning them to the global area.
+ * Handles incresing the world's maxx var and initializing the new turfs and assigning them to the global area.
  * If map_load_z_cutoff is passed in, it will only load turfs up to that z level, inclusive.
  * This is because maploading will handle the turfs it loads itself.
  */
@@ -385,7 +384,7 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 #endif
 	UNTIL(SSticker.initialized)
 
-	// Run unit tests on lobby as neeeded
+	// Run unit tests on lobby as needed
 #ifdef UNIT_TESTS
 	RunUnitTests(TEST_STAGE_PREGAME)
 	UNTIL(!SSticker.delay_start)

@@ -1,0 +1,4 @@
+author: "Unknownity"
+delete-after: True
+changes:
+  - maptweak: "All ERT stations who had sleepers and autodocs have recieved upgrades to said machines."

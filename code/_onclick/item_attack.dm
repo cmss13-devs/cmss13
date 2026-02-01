@@ -1,3 +1,4 @@
+
 // Called when the item is in the active hand, and clicked; alternately, there is an 'activate held object' verb or you can hit pagedown.
 /obj/item/proc/attack_self(mob/user)
 	SHOULD_CALL_PARENT(TRUE)

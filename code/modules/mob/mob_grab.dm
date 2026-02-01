@@ -1,5 +1,6 @@
 #define UPGRADE_COOLDOWN 2 SECONDS
 
+
 /obj/item/grab
 	name = "grab"
 	icon_state = "reinforce"
@@ -14,13 +15,16 @@
 	var/last_upgrade = 0 //used for cooldown between grab upgrades.
 
 
+
 /obj/item/grab/Initialize()
 	. = ..()
 	last_upgrade = world.time
 
+
 /obj/item/grab/dropped(mob/user)
 	user.stop_pulling()
 	. = ..()
+
 
 /obj/item/grab/Destroy()
 	grabbed_thing = null
@@ -30,17 +34,18 @@
 		M.stop_pulling()
 	. = ..()
 
+
 /obj/item/grab/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	if(!user)
-	return
+		return
 	if(user.pulling == user.buckled)
-	return //can't move the thing you're sitting on.
+		return //can't move the thing you're sitting on.
 	if(user.grab_level >= GRAB_CARRY)
-	return
+		return
 	if(istype(target, /obj/effect))//if you click a blood splatter with a grab instead of the turf,
-	target = get_turf(target) //we still try to move the grabbed thing to the turf.
+		target = get_turf(target) //we still try to move the grabbed thing to the turf.
 	if(isturf(target))
-	var/turf/T = target
+		var/turf/T = target
 		if(!T.density && T.Adjacent(user))
 			var/data = SEND_SIGNAL(user.pulling, COMSIG_MOVABLE_PULLED, src)
 			if(!(data & COMPONENT_IGNORE_ANCHORED) && user.pulling.anchored)
@@ -54,6 +59,7 @@
 			return ATTACKBY_HINT_UPDATE_NEXT_MOVE
 
 
+
 /obj/item/grab/attack_self(mob/user)
 	..()
 	var/grab_delay = UPGRADE_COOLDOWN
@@ -61,14 +67,17 @@
 	SEND_SIGNAL(user, COMSIG_MOB_GRAB_UPGRADE, grabdata)
 	grab_delay = grabdata["grab_delay"]
 
+
 	if(!ismob(grabbed_thing) || world.time < (last_upgrade + grab_delay * user.get_skill_duration_multiplier(SKILL_CQC)))
 		return
+
 
 	if(!ishuman(user)) //only humans can reinforce a grab.
 		if (isxeno(user))
 			var/mob/living/carbon/xenomorph/xeno = user
 			xeno.pull_power(grabbed_thing)
 		return
+
 
 
 	var/mob/victim = grabbed_thing
@@ -83,27 +92,33 @@
 		return //can't tighten your grip on mobs bigger than you and mobs you can't push.
 	last_upgrade = world.time
 
+
 	switch(user.grab_level)
 		if(GRAB_PASSIVE)
 			progress_passive(user, victim)
 		if(GRAB_AGGRESSIVE)
 			progress_aggressive(user, victim)
 
+
 	if(user.grab_level >= GRAB_AGGRESSIVE)
 		ADD_TRAIT(victim, TRAIT_FLOORED, CHOKEHOLD_TRAIT)
+
 
 /obj/item/grab/proc/progress_passive(mob/living/carbon/human/user, mob/living/victim)
 	if(SEND_SIGNAL(victim, COMSIG_MOB_AGGRESSIVELY_GRABBED, user) & COMSIG_MOB_AGGRESIVE_GRAB_CANCEL)
 		to_chat(user, SPAN_WARNING("You can't grab [victim] aggressively!"))
 		return
 
+
 	user.grab_level = GRAB_AGGRESSIVE
 	playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
+
 
 	var/user_fake = "a tall host"
 	if(!ishuman(user)) user_fake = "[user]"
 	var/victim_fake = "a tall host"
 	if(!ishuman(victim)) victim_fake = "[victim]"
+
 
 	for(var/mob/M_view in viewers(user))
 		if(!M_view.client) continue
@@ -112,14 +127,17 @@
 		else
 			to_chat(M_view, SPAN_WARNING("[user] has grabbed [victim] aggressively!"))
 
+
 /obj/item/grab/proc/progress_aggressive(mob/living/carbon/human/user, mob/living/victim)
 	user.grab_level = GRAB_CHOKE
 	playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
+
 
 	var/user_fake = "a tall host"
 	if(!ishuman(user)) user_fake = "[user]"
 	var/victim_fake = "a tall host"
 	if(!ishuman(victim)) victim_fake = "[victim]"
+
 
 	for(var/mob/M_view in viewers(user))
 		if(!M_view.client) continue
@@ -128,9 +146,11 @@
 		else
 			to_chat(M_view, SPAN_WARNING("[user] holds [victim] by the neck and starts choking them!"))
 
+
 	msg_admin_attack("[key_name(user)] started to choke [key_name(victim)] at [get_area_name(victim)]", victim.loc.x, victim.loc.y, victim.loc.z)
 	victim.Move(user.loc, get_dir(victim.loc, user.loc))
 	victim.update_transform(TRUE)
+
 
 /obj/item/grab/attack(mob/living/dragged_mob, mob/living/user)
 	if(dragged_mob == grabbed_thing)
@@ -167,10 +187,12 @@
 			return
 		SEND_SIGNAL(xeno, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
 
+
 		var/x_desc = GLOB.xeno_caste_descriptors[xeno.caste_type] || "strange"
 		var/xeno_fake = "a [x_desc] alien"
 		var/target_fake = "a tall host"
 		if(!ishuman(pulled)) target_fake = "[pulled]"
+
 
 		for(var/mob/M_view in viewers(xeno))
 			if(!M_view.client) continue
@@ -181,6 +203,7 @@
 			else
 				to_chat(M_view, SPAN_DANGER("[xeno_fake] starts to restrain [pulled]!"))
 
+
 		if(HAS_TRAIT(xeno, TRAIT_CLOAKED)) //cloaked don't show the visible message, so we gotta work around
 			to_chat(pulled, FONT_SIZE_HUGE(SPAN_DANGER("[xeno_fake] is trying to restrain you!")))
 		if(do_after(xeno, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
@@ -190,5 +213,5 @@
 			if(xeno.pulling == pulled && !pulled.buckled && (pulled.stat != DEAD || pulled.chestburst) && !xeno.hauled_mob?.resolve()) //make sure you've still got them in your claws, and alive
 				if(SEND_SIGNAL(pulled, COMSIG_MOB_HAULED, xeno) & COMPONENT_CANCEL_HAUL)
 					return FALSE
-			xeno.haul(pulled)
-			xeno.stop_pulling()
+				xeno.haul(pulled)
+				xeno.stop_pulling()

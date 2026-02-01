@@ -1756,11 +1756,6 @@
 /obj/structure/surface/table,
 /turf/open/floor/darkyellow2,
 /area/desert_dam/interior/dam_interior/control_room)
-"aft" = (
-/obj/structure/machinery/power/apc/no_power/south,
-/obj/structure/surface/table,
-/turf/open/floor/darkyellow2,
-/area/desert_dam/interior/dam_interior/control_room)
 "afu" = (
 /obj/structure/surface/table,
 /obj/item/paper{
@@ -2201,6 +2196,7 @@
 	pixel_x = -4;
 	pixel_y = 6
 	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/darkyellow2/north,
 /area/desert_dam/interior/dam_interior/control_room)
 "agO" = (
@@ -225480,7 +225476,7 @@ xLi
 dBg
 agd
 afK
-aft
+afs
 vcr
 ipW
 ipW

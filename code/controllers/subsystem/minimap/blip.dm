@@ -2,6 +2,8 @@
 	name = "tacmap blip"
 	icon = null
 	icon_state = ""
+	appearance_flags = NONE
+
 	var/image/blip_image
 
 	var/datum/weakref/human_weakref = null
@@ -10,8 +12,8 @@
 /atom/movable/screen/onscreen_tacmap_blip/New(image/blip_image, atom/target)
 	to_world(SPAN_DEBUG("XXX new blip: target: [target]"))
 	src.blip_image = blip_image
-	src.blip_image.loc = src
 	src.overlays += src.blip_image
+
 
 	if (ishuman(target))
 		human_weakref = WEAKREF(target)

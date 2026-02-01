@@ -228,3 +228,50 @@
 
 	..()
 
+/mob/living/carbon/xenomorph/proc/start_listening_for_tacmap_clicks()
+	if (!tacmap_click_listener_initialized)
+		tacmap_click_listener_initialized = TRUE
+	else
+		return
+
+	SSminimaps.blip_click_listener_manager.register_xeno_blip_click_listener(src, CALLBACK(src, PROC_REF(tacmap_blip_callback)))
+
+/mob/living/carbon/xenomorph/proc/stop_listening_for_tacmap_clicks()
+	if (tacmap_click_listener_initialized)
+		tacmap_click_listener_initialized = FALSE
+	else
+		return
+
+	SSminimaps.blip_click_listener_manager.deregister_xeno_blip_click_listener(src)
+
+/mob/living/carbon/xenomorph/proc/tacmap_blip_callback(mob/clicker, mob/living/carbon/xenomorph/click_target)
+	if (clicker != src)
+		return
+
+	var/is_queen = caste_type == XENO_CASTE_QUEEN
+
+	if(!hive.living_xeno_queen && !hive.allow_no_queen_actions)
+		to_chat(src, SPAN_WARNING("There is no Queen. We are alone."))
+		return
+
+	if (observed_xeno)
+		if (is_queen)
+			var/mob/living/carbon/xenomorph/old_xeno = observed_xeno
+			overwatch(observed_xeno, TRUE)
+			if (old_xeno)
+				old_xeno.hud_set_queen_overwatch()
+		else
+			overwatch(observed_xeno, TRUE)
+		return
+
+	if (click_target.stat == DEAD || should_block_game_interaction(click_target) || !check_state(TRUE))
+		overwatch(observed_xeno, TRUE) // Cancel OW
+	else
+		if (!is_queen) // Regular Xeno OW vs Queen
+			overwatch(click_target)
+		else // We are a queen
+			var/mob/living/carbon/xenomorph/old_xeno = observed_xeno
+			overwatch(click_target, FALSE)
+			if (old_xeno)
+				old_xeno.hud_set_queen_overwatch()
+			click_target.hud_set_queen_overwatch()

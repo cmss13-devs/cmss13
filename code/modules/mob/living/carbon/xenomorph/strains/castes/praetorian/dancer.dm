@@ -72,8 +72,9 @@
 /datum/behavior_delegate/praetorian_dancer/append_to_stat()
 	. = list()
 	. += "Guaranteed Dodge every [bound_xeno.dodge_threshold] bullet."
+	. += "Yellow Mark Spread Delay: 5 seconds."
 	intent_detection()
-	. += "Harpoon Tail Intent: [tail_mode]"
+	. += "Tail Lance Intent: [tail_mode]"
 	if(tail_mode == "Blunt")
 		. += "Damage: [blunt_damage] AP"
 		. += "Cooldown: 3 seconds."

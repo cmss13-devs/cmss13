@@ -139,7 +139,7 @@
 	if(!origin)
 		return
 
-	if(world.time < last_dancer_spread_time + 5 SECONDS)
+	if(world.time < last_dancer_spread_time + 7 SECONDS)
 		return
 
 	if(world.time < source.last_target_spread_time + 17 SECONDS)

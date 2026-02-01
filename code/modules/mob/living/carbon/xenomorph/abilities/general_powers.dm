@@ -77,8 +77,20 @@
 	if(node)
 		to_convert = node.children.Copy()
 
-	xeno.visible_message(SPAN_XENONOTICE("\The [xeno] regurgitates a pulsating node and plants it on the ground!"),
-	SPAN_XENONOTICE("We regurgitate a pulsating node and plant it on the ground!"), null, 5)
+
+	var/x_desc = GLOB.xeno_caste_descriptors[xeno.caste_type] || "strange"
+	var/xeno_fake = "a [x_desc] alien"
+
+	for(var/mob/M in viewers(xeno))
+		if(!M.client) continue
+		if(M == xeno)
+			to_chat(M, SPAN_XENONOTICE("We regurgitate a pulsating node and plant it on the ground!"))
+		else if(isxeno(M))
+			to_chat(M, SPAN_XENONOTICE("<b>[xeno]</b> regurgitates a pulsating node and plants it on the ground!"))
+		else
+			to_chat(M, SPAN_XENONOTICE("<b>[xeno_fake]</b> regurgitates a pulsating node and plants it on the ground!"))
+
+
 	var/obj/effect/alien/weeds/node/new_node = new node_type(xeno.loc, src, xeno)
 
 	if(to_convert)
@@ -397,8 +409,21 @@
 	target.set_state(RESIN_TRAP_ACID1 + acid_level - 1)
 
 	playsound(target, 'sound/effects/refill.ogg', 25, 1)
-	visible_message(SPAN_XENOWARNING("[src] pressurises the resin trap with acid!"),
-	SPAN_XENOWARNING("You pressurise the resin trap with acid!"), null, 5)
+
+
+	var/x_desc = GLOB.xeno_caste_descriptors[caste_type] || "strange"
+	var/xeno_fake = "a [x_desc] alien"
+
+	for(var/mob/M in viewers(src))
+		if(!M.client) continue
+		if(M == src)
+			to_chat(M, SPAN_XENOWARNING("You pressurise the resin trap with acid!"))
+		else if(isxeno(M))
+			to_chat(M, SPAN_XENOWARNING("<b>[src]</b> pressurises the resin trap with acid!"))
+		else
+			to_chat(M, SPAN_XENOWARNING("<b>[xeno_fake]</b> pressurises the resin trap with acid!"))
+
+
 	return TRUE
 
 #undef ACID_COST_LEVEL_1
@@ -421,8 +446,17 @@
 	if(!pheromone)
 		if(current_aura)
 			current_aura = null
-			visible_message(SPAN_XENOWARNING("\The [src] stops emitting pheromones."),
-			SPAN_XENOWARNING("We stop emitting pheromones."), null, 5)
+			var/x_desc = GLOB.xeno_caste_descriptors[caste_type] || "strange"
+			var/xeno_fake = "a [x_desc] alien"
+
+			for(var/mob/M in viewers(src))
+				if(!M.client) continue
+				if(M == src)
+					to_chat(M, SPAN_XENOWARNING("We stop emitting pheromones."))
+				else if(isxeno(M))
+					to_chat(M, SPAN_XENOWARNING("<b>[src]</b> stops emitting pheromones."))
+				else
+					to_chat(M, SPAN_XENOWARNING("<b>[xeno_fake]</b> stops emitting pheromones."))
 		else
 			if(!check_plasma(emit_cost))
 				to_chat(src, SPAN_XENOWARNING("We do not have enough plasma!"))
@@ -451,8 +485,19 @@
 			return
 		use_plasma(emit_cost)
 		current_aura = pheromone
-		visible_message(SPAN_XENOWARNING("\The [src] begins to emit strange-smelling pheromones."),
-		SPAN_XENOWARNING("We begin to emit '[pheromone]' pheromones."), null, 5)
+
+		var/x_desc = GLOB.xeno_caste_descriptors[caste_type] || "strange"
+		var/xeno_fake = "a [x_desc] alien"
+
+		for(var/mob/M in viewers(src))
+			if(!M.client) continue
+			if(M == src)
+				to_chat(M, SPAN_XENOWARNING("We begin to emit '[pheromone]' pheromones."))
+			else if(isxeno(M))
+				to_chat(M, SPAN_XENOWARNING("<b>[src]</b> begins to emit strange-smelling pheromones."))
+			else
+				to_chat(M, SPAN_XENOWARNING("<b>[xeno_fake]</b> begins to emit strange-smelling pheromones."))
+
 		SEND_SIGNAL(src, COMSIG_XENO_START_EMIT_PHEROMONES, pheromone)
 		playsound(loc, "alien_drool", 25)
 
@@ -546,7 +591,29 @@
 			xeno.anchored = FALSE
 		post_windup_effects()
 
-	xeno.visible_message(SPAN_XENOWARNING("[xeno] [action_text][findtext(action_text, "e", -1) || findtext(action_text, "p", -1) ? "s" : "es"] at [target]!"), SPAN_XENOWARNING("We [action_text] at [target]!"))
+
+	var/verb_suffix = (findtext(action_text, "e", -1) || findtext(action_text, "p", -1)) ? "s" : "es"
+	var/x_desc = GLOB.xeno_caste_descriptors[xeno.caste_type] || "strange"
+	var/xeno_fake = "a [x_desc] alien"
+
+	var/target_fake = "[target]"
+	if(ishuman(target))
+		var/mob/living/carbon/human/H = target
+		var/h_desc = GLOB.human_gender_descriptors[H.gender] || "strange"
+		target_fake = "a [h_desc] tall host"
+
+	for(var/mob/M in viewers(xeno))
+		if(!M.client) continue
+		if(M == xeno)
+
+			to_chat(M, SPAN_XENOWARNING("We [action_text] at [target_fake]!"))
+		else if(isxeno(M))
+
+			to_chat(M, SPAN_XENOWARNING("<b>[xeno]</b> [action_text][verb_suffix] at [target_fake]!"))
+		else
+
+			to_chat(M, SPAN_XENOWARNING("<b>[xeno_fake]</b> [action_text][verb_suffix] at [target]!"))
+
 
 	pre_pounce_effects()
 
@@ -596,7 +663,18 @@
 		return
 
 	playsound(get_turf(X), 'sound/effects/refill.ogg', 25, 1)
-	X.visible_message(SPAN_XENOWARNING("[X] vomits a flood of acid!"), SPAN_XENOWARNING("We vomit a flood of acid!"), null, 5)
+
+	var/x_desc = GLOB.xeno_caste_descriptors[X.caste_type] || "strange"
+	var/xeno_fake = "a [x_desc] alien"
+
+	for(var/mob/M in viewers(X))
+		if(!M.client) continue
+		if(M == X)
+			to_chat(M, SPAN_XENOWARNING("We vomit a flood of acid!"))
+		else if(isxeno(M))
+			to_chat(M, SPAN_XENOWARNING("<b>[X]</b> vomits a flood of acid!"))
+		else
+			to_chat(M, SPAN_XENOWARNING("<b>[xeno_fake]</b> vomits a flood of acid!"))
 
 	apply_cooldown()
 
@@ -927,8 +1005,19 @@
 		if(xeno.ammo.pre_spit_warn)
 			playsound(xeno.loc,"alien_drool", 55, 1)
 		to_chat(xeno, SPAN_WARNING("We begin to prepare a large spit!"))
-		xeno.visible_message(SPAN_WARNING("[xeno] prepares to spit a massive glob!"),
-		SPAN_WARNING("We begin to spit [xeno.ammo.name]!"))
+
+		var/x_desc = GLOB.xeno_caste_descriptors[xeno.caste_type] || "strange"
+		var/xeno_fake = "a [x_desc] alien"
+
+		for(var/mob/M in viewers(xeno))
+			if(!M.client) continue
+			if(M == xeno)
+				to_chat(M, SPAN_WARNING("We begin to spit [xeno.ammo.name]!"))
+			else if(isxeno(M))
+				to_chat(M, SPAN_WARNING("<b>[xeno]</b> prepares to spit a massive glob!"))
+			else
+				to_chat(M, SPAN_WARNING("<b>[xeno_fake]</b> prepares to spit a massive glob!"))
+
 		if (!do_after(xeno, xeno.ammo.spit_windup, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
 			to_chat(xeno, SPAN_XENODANGER("We decide to cancel our spit."))
 			spitting = FALSE
@@ -939,9 +1028,23 @@
 		spitting = FALSE
 		return
 
-	xeno.visible_message(SPAN_XENOWARNING("[xeno] spits at [atom]!"),
+	var/x_desc2 = GLOB.xeno_caste_descriptors[xeno.caste_type] || "strange"
+	var/xeno_fake2 = "a [x_desc2] alien"
+	var/target_fake = "[atom]"
+	if(ishuman(atom))
+		var/mob/living/carbon/human/H = atom
+		var/h_desc = GLOB.human_gender_descriptors[H.gender] || "strange"
+		target_fake = "a [h_desc] tall host"
 
-	SPAN_XENOWARNING("We spit [xeno.ammo.name] at [atom]!") )
+	for(var/mob/M in viewers(xeno))
+		if(!M.client) continue
+		if(M == xeno)
+			to_chat(M, SPAN_XENOWARNING("We spit [xeno.ammo.name] at [atom]!"))
+		else if(isxeno(M))
+			to_chat(M, SPAN_XENOWARNING("<b>[xeno]</b> spits at [ishuman(atom) ? "a tall host" : atom]!"))
+		else
+			to_chat(M, SPAN_XENOWARNING("<b>[xeno_fake2]</b> spits at [target_fake]!"))
+
 	playsound(xeno.loc, sound_to_play, 25, 1)
 
 	var/obj/projectile/proj = new (current_turf, create_cause_data(xeno.ammo.name, xeno))
@@ -980,7 +1083,18 @@
 	if (!xeno.can_bombard_turf(turf, range, bombard_source))
 		return FALSE
 
-	xeno.visible_message(SPAN_XENODANGER("[xeno] digs itself into place!"), SPAN_XENODANGER("We dig ourself into place!"))
+	var/x_desc = GLOB.xeno_caste_descriptors[xeno.caste_type] || "strange"
+	var/xeno_fake = "a [x_desc] alien"
+
+	for(var/mob/M in viewers(xeno))
+		if(!M.client) continue
+		if(M == xeno)
+			to_chat(M, SPAN_XENODANGER("We dig ourself into place!"))
+		else if(isxeno(M))
+			to_chat(M, SPAN_XENODANGER("<b>[xeno]</b> digs itself into place!"))
+		else
+			to_chat(M, SPAN_XENODANGER("<b>[xeno_fake]</b> digs itself into place!"))
+
 	if (!do_after(xeno, activation_delay, interrupt_flags, BUSY_ICON_HOSTILE))
 		to_chat(xeno, SPAN_XENODANGER("We decide to cancel our bombard."))
 		return FALSE
@@ -993,7 +1107,23 @@
 
 	apply_cooldown()
 
-	xeno.visible_message(SPAN_XENODANGER("[xeno] launches a massive ball of acid at [atom]!"), SPAN_XENODANGER("You launch a massive ball of acid at [atom]!"))
+	var/x_desc2 = GLOB.xeno_caste_descriptors[xeno.caste_type] || "strange"
+	var/xeno_fake2 = "a [x_desc2] alien"
+	var/target_fake = "[atom]"
+	if(ishuman(atom))
+		var/mob/living/carbon/human/H = atom
+		var/h_desc = GLOB.human_gender_descriptors[H.gender] || "strange"
+		target_fake = "a [h_desc] tall host"
+
+	for(var/mob/M in viewers(xeno))
+		if(!M.client) continue
+		if(M == xeno)
+			to_chat(M, SPAN_XENODANGER("You launch a massive ball of acid at [atom]!"))
+		else if(isxeno(M))
+			to_chat(M, SPAN_XENODANGER("<b>[xeno]</b> launches a massive ball of acid at [ishuman(atom) ? "a tall host" : atom]!"))
+		else
+			to_chat(M, SPAN_XENODANGER("<b>[xeno_fake2]</b> launches a massive ball of acid at [target_fake]!"))
+
 	playsound(get_turf(xeno), 'sound/effects/blobattack.ogg', 25, 1)
 
 	recursive_spread(turf, effect_range, effect_range)
@@ -1139,7 +1269,17 @@
 		return ..()
 
 	if(!isxeno_human(targetted_atom))
-		stabbing_xeno.visible_message(SPAN_XENOWARNING("\The [stabbing_xeno] swipes their tail through the air!"), SPAN_XENOWARNING("We swipe our tail through the air!"))
+		var/x_desc = GLOB.xeno_caste_descriptors[stabbing_xeno.caste_type] || "strange"
+		var/xeno_fake = "a [x_desc] alien"
+
+		for(var/mob/M in viewers(stabbing_xeno))
+			if(!M.client) continue
+			if(M == stabbing_xeno)
+				to_chat(M, SPAN_XENOWARNING("We swipe our tail through the air!"))
+			else if(isxeno(M))
+				to_chat(M, SPAN_XENOWARNING("<b>[stabbing_xeno]</b> swipes their tail through the air!"))
+			else
+				to_chat(M, SPAN_XENOWARNING("<b>[xeno_fake]</b> swipes their tail through the air!"))
 		apply_cooldown(cooldown_modifier = 0.1)
 		xeno_attack_delay(stabbing_xeno)
 		playsound(stabbing_xeno, "alien_tail_swipe", 50, TRUE)
@@ -1200,17 +1340,38 @@
 
 	var/stab_overlay
 
+	var/x_desc = GLOB.xeno_caste_descriptors[stabbing_xeno.caste_type] || "strange"
+	var/xeno_fake = "a [x_desc] alien"
+	var/target_fake = "a tall host"
+
 	if(blunt_stab)
-		stabbing_xeno.visible_message(SPAN_XENOWARNING("\The [stabbing_xeno] swipes its tail into [target]'s [limb ? limb.display_name : "chest"], bashing it!"), SPAN_XENOWARNING("We swipe our tail into [target]'s [limb? limb.display_name : "chest"], bashing it!"))
+		for(var/mob/M in viewers(stabbing_xeno))
+			if(!M.client) continue
+			if(M == stabbing_xeno)
+				to_chat(M, SPAN_XENOWARNING("We swipe our tail into [target]'s [limb? limb.display_name : "chest"], bashing it!"))
+			else if(isxeno(M))
+				to_chat(M, SPAN_XENOWARNING("<b>[stabbing_xeno]</b> swipes its tail into [ishuman(target) ? "a tall host" : target]'s [limb ? limb.display_name : "chest"], bashing it!"))
+			else
+				to_chat(M, SPAN_XENOWARNING("<b>[xeno_fake]</b> swipes its tail into [target_fake]'s [limb ? limb.display_name : "chest"], bashing it!"))
+
 		if(prob(1))
 			playsound(target, 'sound/effects/comical_bonk.ogg', 50, TRUE)
 		else
 			playsound(target, "punch", 50, TRUE)
 		stab_overlay = "slam"
 	else
-		stabbing_xeno.visible_message(SPAN_XENOWARNING("\The [stabbing_xeno] skewers [target] through the [limb ? limb.display_name : "chest"] with its razor sharp tail!"), SPAN_XENOWARNING("We skewer [target] through the [limb? limb.display_name : "chest"] with our razor sharp tail!"))
+		for(var/mob/M in viewers(stabbing_xeno))
+			if(!M.client) continue
+			if(M == stabbing_xeno)
+				to_chat(M, SPAN_XENOWARNING("We skewer [target] through the [limb? limb.display_name : "chest"] with our razor sharp tail!"))
+			else if(isxeno(M))
+				to_chat(M, SPAN_XENOWARNING("<b>[stabbing_xeno]</b> skewers [ishuman(target) ? "a tall host" : target] through the [limb ? limb.display_name : "chest"] with its razor sharp tail!"))
+			else
+				to_chat(M, SPAN_XENOWARNING("<b>[xeno_fake]</b> skewers [target_fake] through the [limb ? limb.display_name : "chest"] with its razor sharp tail!"))
+
 		playsound(target, "alien_bite", 50, TRUE)
 		stab_overlay = "tail"
+
 	log_attack("[key_name(stabbing_xeno)] tailstabbed [key_name(target)] at [get_area_name(stabbing_xeno)]")
 	target.attack_log += text("\[[time_stamp()]\] <font color='orange'>was tailstabbed by [key_name(stabbing_xeno)]</font>")
 	stabbing_xeno.attack_log += text("\[[time_stamp()]\] <font color='red'>tailstabbed [key_name(target)]</font>")

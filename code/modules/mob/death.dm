@@ -48,8 +48,34 @@
 	if(stat == DEAD)
 		return 0
 
-	if(!gibbed)
-		visible_message("<b>[src.name]</b> [deathmessage]")
+	if(!gibbed && deathmessage)
+		if(ishuman(src))
+			var/mob/living/carbon/human/H = src
+			var/gender_desc = GLOB.human_gender_descriptors[H.gender] || "strange"
+			var/fake_name = "a [gender_desc] tall host"
+
+			for(var/mob/M in viewers(src))
+				if(M.client)
+					if(isxeno(M))
+						to_chat(M, "<b>[fake_name]</b> [deathmessage]")
+					else
+						to_chat(M, "<b>[src]</b> [deathmessage]")
+
+		else if(isxeno(src))
+			var/mob/living/carbon/xenomorph/X = src
+			var/caste_desc = "strange"
+			if(X.caste && X.caste.caste_type)
+				caste_desc = GLOB.xeno_caste_descriptors[X.caste.caste_type] || "strange"
+			var/fake_name = "a [caste_desc] alien"
+
+			for(var/mob/M in viewers(src))
+				if(M.client)
+					if(isxeno(M))
+						to_chat(M, "<b>[src]</b> [deathmessage]")
+					else
+						to_chat(M, "<b>[fake_name]</b> [deathmessage]")
+		else
+			visible_message("<b>[name]</b> [deathmessage]")
 
 	if(cause_data && !istype(cause_data))
 		stack_trace("death called with string cause ([cause_data]) instead of datum")

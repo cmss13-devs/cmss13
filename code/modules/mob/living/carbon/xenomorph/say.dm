@@ -69,7 +69,13 @@
 
 	if(speaking_noise)
 		playsound(loc, speaking_noise, 25, 1)
-	..(message, speaking, verb, null, null, message_range, null)
+
+	for(var/mob/M in viewers(message_range, src))
+		if(!M.client) continue // Skip NPCs
+
+		var/heard_name = get_heard_name(M)
+
+		to_chat(M, ("<b>[heard_name]</b> [verb], '[message]'"))
 
 /mob/living/carbon/xenomorph/say_understands(mob/other, datum/language/speaking = null)
 	if(isxeno(other))

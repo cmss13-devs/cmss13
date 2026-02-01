@@ -1,4 +1,3 @@
-
 // Called when the item is in the active hand, and clicked; alternately, there is an 'activate held object' verb or you can hit pagedown.
 /obj/item/proc/attack_self(mob/user)
 	SHOULD_CALL_PARENT(TRUE)
@@ -21,7 +20,23 @@
 	. = ..()
 	if(W && !.)
 		if(!(W.flags_item & NOBLUDGEON))
-			visible_message(SPAN_DANGER("[src] has been hit by [user] with [W]."), null, null, 5, CHAT_TYPE_MELEE_HIT)
+
+			var/user_xeno = "[user]"
+			var/user_human = "[user]"
+			if(isxeno(user))
+				var/mob/living/carbon/xenomorph/X = user
+				var/x_desc = GLOB.xeno_caste_descriptors[X.caste_type] || "strange"
+				user_human = "a [x_desc] alien"
+			else if(ishuman(user))
+				user_xeno = "a tall host"
+
+			for(var/mob/M_view in viewers(src))
+				if(!M_view.client) continue
+				if(isxeno(M_view))
+					to_chat(M_view, SPAN_DANGER("[src] has been hit by [user_xeno] with [W]."))
+				else
+					to_chat(M_view, SPAN_DANGER("[src] has been hit by [user_human] with [W]."))
+
 			user.animation_attack_on(src)
 			user.flick_attack_overlay(src, "punch")
 			return ATTACKBY_HINT_UPDATE_NEXT_MOVE
@@ -65,19 +80,47 @@
 			to_chat(H, SPAN_DANGER("You are currently unable to attack."))
 			return FALSE
 
-	var/showname = "."
+	var/user_xeno_view = "[user]"
+	var/user_human_view = "[user]"
+	if(isxeno(user))
+		var/mob/living/carbon/xenomorph/X = user
+		var/x_desc = GLOB.xeno_caste_descriptors[X.caste_type] || "strange"
+		user_human_view = "a [x_desc] alien"
+	else if(ishuman(user))
+		user_xeno_view = "a tall host"
+
+	var/target_xeno_view = "[M]"
+	var/target_human_view = "[M]"
+	if(isxeno(M))
+		var/mob/living/carbon/xenomorph/X = M
+		var/x_desc = GLOB.xeno_caste_descriptors[X.caste_type] || "strange"
+		target_human_view = "a [x_desc] alien"
+	else if(ishuman(M))
+		target_xeno_view = "a tall host"
+
+	var/showname_xeno = "."
+	var/showname_human = "."
 	if(user)
 		if(M == user)
-			showname = " by themselves."
+			showname_xeno = " by themselves."
+			showname_human = " by themselves."
 		else
-			showname = " by [user]."
-	if(!(user in viewers(M, null)))
-		showname = "."
+			showname_xeno = " by [user_xeno_view]."
+			showname_human = " by [user_human_view]."
+	// Note: The original visibility check for showname is omitted for simplicity
+	// but the loop naturally handles visibility via `viewers`.
 
 	if (user.a_intent == INTENT_HELP && ((user.client?.prefs && user.client?.prefs?.toggle_prefs & TOGGLE_HELP_INTENT_SAFETY) || (user.mob_flags & SURGERY_MODE_ON)))
 		playsound(loc, 'sound/effects/pop.ogg', 25, 1)
-		user.visible_message(SPAN_NOTICE("[M] has been poked with [src][showname]"),
-			SPAN_NOTICE("You poke [M == user ? "yourself":M] with [src]."), null, 4)
+
+		for(var/mob/M_view in viewers(user))
+			if(!M_view.client) continue
+			if(M_view == user)
+				to_chat(M_view, SPAN_NOTICE("You poke [M == user ? "yourself":M] with [src]."))
+			else if(isxeno(M_view))
+				to_chat(M_view, SPAN_NOTICE("[target_xeno_view] has been poked with [src][showname_xeno]"))
+			else
+				to_chat(M_view, SPAN_NOTICE("[target_human_view] has been poked with [src][showname_human]"))
 
 		return FALSE
 
@@ -97,8 +140,15 @@
 		var/used_verb = "attacked"
 		if(LAZYLEN(attack_verb))
 			used_verb = pick(attack_verb)
-		user.visible_message(SPAN_DANGER("[M] has been [used_verb] with [src][showname]."),
-			SPAN_DANGER("You [used_verb] [M == user ? "yourself":M] with [src]."), null, 5, CHAT_TYPE_MELEE_HIT)
+
+		for(var/mob/M_view in viewers(user))
+			if(!M_view.client) continue
+			if(M_view == user)
+				to_chat(M_view, SPAN_DANGER("You [used_verb] [M == user ? "yourself":M] with [src]."))
+			else if(isxeno(M_view))
+				to_chat(M_view, SPAN_DANGER("[target_xeno_view] has been [used_verb] with [src][showname_xeno]"))
+			else
+				to_chat(M_view, SPAN_DANGER("[target_human_view] has been [used_verb] with [src][showname_human]"))
 
 		user.animation_attack_on(M)
 		user.flick_attack_overlay(M, "punch")

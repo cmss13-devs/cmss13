@@ -169,8 +169,30 @@
 	if(!step(living_mob, direction))
 		living_mob.animation_attack_on(get_step(living_mob, direction))
 		playsound(living_mob.loc, "punch", 25, 1)
-		living_mob.visible_message(SPAN_DANGER("[living_mob] slams into an obstacle!"),
-			isxeno(living_mob) ? SPAN_XENODANGER("You slam into an obstacle!") : SPAN_HIGHDANGER("You slam into an obstacle!"), null, 4, CHAT_TYPE_TAKING_HIT)
+
+		var/victim_xeno_view = "[living_mob]"
+		var/victim_human_view = "[living_mob]"
+		if(isxeno(living_mob))
+			var/mob/living/carbon/xenomorph/X = living_mob
+			var/x_desc = GLOB.xeno_caste_descriptors[X.caste_type] || "strange"
+			victim_human_view = "a [x_desc] alien"
+		else if(ishuman(living_mob))
+			var/mob/living/carbon/human/H = living_mob
+			var/h_desc = GLOB.human_gender_descriptors[H.gender] || "strange"
+			victim_xeno_view = "a [h_desc] tall host"
+
+		for(var/mob/M_view in viewers(living_mob))
+			if(!M_view.client) continue
+			if(M_view == living_mob)
+				if(isxeno(living_mob))
+					to_chat(M_view, SPAN_XENODANGER("You slam into an obstacle!"))
+				else
+					to_chat(M_view, SPAN_HIGHDANGER("You slam into an obstacle!"))
+			else if(isxeno(M_view))
+				to_chat(M_view, SPAN_DANGER("[victim_xeno_view] slams into an obstacle!"))
+			else
+				to_chat(M_view, SPAN_DANGER("[victim_human_view] slams into an obstacle!"))
+
 		living_mob.apply_damage(MELEE_FORCE_TIER_2, enviro=damage_enviro)
 
 ///The applied effects for knockback(), overwrite to change slow/stun amounts for different ammo datums
@@ -215,8 +237,29 @@
 		if(P.firer == M)
 			continue
 		if(show_message)
-			var/msg = "You are hit by backlash from \a </b>[P.name]</b>!"
-			M.visible_message(SPAN_DANGER("[M] is hit by backlash from \a [P.name]!"),isxeno(M) ? SPAN_XENODANGER("[msg]"):SPAN_HIGHDANGER("[msg]"))
+			var/victim_xeno_view = "[M]"
+			var/victim_human_view = "[M]"
+			if(isxeno(M))
+				var/mob/living/carbon/xenomorph/X = M
+				var/x_desc = GLOB.xeno_caste_descriptors[X.caste_type] || "strange"
+				victim_human_view = "a [x_desc] alien"
+			else if(ishuman(M))
+				var/mob/living/carbon/human/H = M
+				var/h_desc = GLOB.human_gender_descriptors[H.gender] || "strange"
+				victim_xeno_view = "a [h_desc] tall host"
+
+			for(var/mob/M_view in viewers(M))
+				if(!M_view.client) continue
+				if(M_view == M)
+					if(isxeno(M))
+						to_chat(M_view, SPAN_XENODANGER("You are hit by backlash from \a [P.name]!"))
+					else
+						to_chat(M_view, SPAN_HIGHDANGER("You are hit by backlash from \a [P.name]!"))
+				else if(isxeno(M_view))
+					to_chat(M_view, SPAN_DANGER("[victim_xeno_view] is hit by backlash from \a [P.name]!"))
+				else
+					to_chat(M_view, SPAN_DANGER("[victim_human_view] is hit by backlash from \a [P.name]!"))
+
 		var/damage = P.damage/damage_div
 
 		var/mob/living/carbon/xenomorph/XNO = null

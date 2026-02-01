@@ -12,7 +12,23 @@
 	if (!check_and_use_plasma_owner())
 		return
 
-	xeno.visible_message(SPAN_XENOWARNING("[xeno] fires a burst of bone chips at [affected_atom]!"), SPAN_XENOWARNING("We fire a burst of bone chips at [affected_atom]!"))
+	var/x_desc = GLOB.xeno_caste_descriptors[xeno.caste_type] || "strange"
+	var/xeno_fake = "a [x_desc] alien"
+
+	var/target_fake = "[affected_atom]"
+	if(ishuman(affected_atom))
+		var/mob/living/carbon/human/H = affected_atom
+		var/h_desc = GLOB.human_gender_descriptors[H.gender] || "strange"
+		target_fake = "a [h_desc] tall host"
+
+	for(var/mob/M_view in viewers(xeno))
+		if(!M_view.client) continue
+		if(M_view == xeno)
+			to_chat(M_view, SPAN_XENOWARNING("We fire a burst of bone chips at [target_fake]!"))
+		else if(isxeno(M_view))
+			to_chat(M_view, SPAN_XENOWARNING("[xeno] fires a burst of bone chips at [target_fake]!"))
+		else
+			to_chat(M_view, SPAN_XENOWARNING("[xeno_fake] fires a burst of bone chips at [affected_atom]!"))
 
 	var/turf/target = locate(affected_atom.x, affected_atom.y, affected_atom.z)
 	var/obj/projectile/projectile = new /obj/projectile(xeno.loc, create_cause_data(initial(xeno.caste_type), xeno))

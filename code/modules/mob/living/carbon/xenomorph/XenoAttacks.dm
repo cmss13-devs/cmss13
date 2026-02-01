@@ -12,7 +12,17 @@
 		else
 			M.animation_attack_on(src)
 			M.flick_attack_overlay(src, "punch")
-			visible_message(SPAN_DANGER("[S] [S.attacktext] [src]!"), null, null, 5, CHAT_TYPE_MELEE_HIT)
+
+			var/x_desc = GLOB.xeno_caste_descriptors[caste_type] || "strange"
+			var/xeno_fake = "a [x_desc] alien"
+
+			for(var/mob/M_view in viewers(src))
+				if(!M_view.client) continue
+				if(isxeno(M_view))
+					to_chat(M_view, SPAN_DANGER("[S] [S.attacktext] [src]!"))
+				else
+					to_chat(M_view, SPAN_DANGER("[S] [S.attacktext] [xeno_fake]!"))
+
 			var/damage = rand(S.melee_damage_lower, S.melee_damage_upper)
 			apply_damage(damage, BRUTE, enviro=TRUE)
 			last_damage_data = create_cause_data(initial(M.name), M)
@@ -35,11 +45,35 @@
 						if(!M.ally_of_hivenumber(hivenumber))
 							M.KnockDown(rand(caste.tacklestrength_min, caste.tacklestrength_max))
 							playsound(M.loc, 'sound/weapons/pierce.ogg', 25, TRUE)
-							M.visible_message(SPAN_WARNING("\The [M] tried to open \the [backpack] on [src] but instead gets a tail swipe to the head!"))
+
+							var/x_desc = GLOB.xeno_caste_descriptors[caste_type] || "strange"
+							var/xeno_fake = "a [x_desc] alien"
+							var/human_fake = "a tall host"
+							if(!ishuman(M)) human_fake = "[M]"
+
+							for(var/mob/M_view in viewers(src))
+								if(!M_view.client) continue
+								if(M_view == M)
+									to_chat(M_view, SPAN_WARNING("You tried to open \the [backpack] on [src] but instead get a tail swipe to the head!"))
+								else if(isxeno(M_view))
+									to_chat(M_view, SPAN_WARNING("\The [human_fake] tried to open \the [backpack] on [src] but instead gets a tail swipe to the head!"))
+								else
+									to_chat(M_view, SPAN_WARNING("\The [M] tried to open \the [backpack] on [xeno_fake] but instead gets a tail swipe to the head!"))
+
 							return FALSE
 
-					M.visible_message(SPAN_NOTICE("\The [M] starts opening \the [backpack] on [src]"),
-					SPAN_NOTICE("You begin to open \the [backpack] on [src], so you can check its contents."), null, 5, CHAT_TYPE_FLUFF_ACTION)
+					var/x_desc = GLOB.xeno_caste_descriptors[caste_type] || "strange"
+					var/xeno_fake = "a [x_desc] alien"
+
+					for(var/mob/M_view in viewers(src))
+						if(!M_view.client) continue
+						if(M_view == M)
+							to_chat(M_view, SPAN_NOTICE("You begin to open \the [backpack] on [src], so you can check its contents."))
+						else if(isxeno(M_view))
+							to_chat(M_view, SPAN_NOTICE("\The [M] starts opening \the [backpack] on [src]"))
+						else
+							to_chat(M_view, SPAN_NOTICE("\The [M] starts opening \the [backpack] on [xeno_fake]"))
+
 					if(!do_after(M, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC, src, INTERRUPT_MOVED, BUSY_ICON_GENERIC)) //Timed opening.
 						to_chat(M, SPAN_WARNING("You were interrupted!"))
 						return FALSE
@@ -48,12 +82,28 @@
 						return FALSE
 					backpack.open(M)
 					return
+
+			var/x_desc = GLOB.xeno_caste_descriptors[caste_type] || "strange"
+			var/xeno_fake = "a [x_desc] alien"
+
 			if(stat == DEAD)
-				M.visible_message(SPAN_WARNING("\The [M] pokes \the [src], but nothing happens."),
-				SPAN_WARNING("You poke \the [src], but nothing happens."), null, 5, CHAT_TYPE_FLUFF_ACTION)
+				for(var/mob/M_view in viewers(src))
+					if(!M_view.client) continue
+					if(M_view == M)
+						to_chat(M_view, SPAN_WARNING("You poke [xeno_fake], but nothing happens."))
+					else if(isxeno(M_view))
+						to_chat(M_view, SPAN_WARNING("\The [M] pokes \the [src], but nothing happens."))
+					else
+						to_chat(M_view, SPAN_WARNING("\The [M] pokes [xeno_fake], but nothing happens."))
 			else
-				M.visible_message(SPAN_WARNING("\The [M] pokes \the [src]."),
-				SPAN_WARNING("You poke \the [src]."), null, 5, CHAT_TYPE_FLUFF_ACTION)
+				for(var/mob/M_view in viewers(src))
+					if(!M_view.client) continue
+					if(M_view == M)
+						to_chat(M_view, SPAN_WARNING("You poke [xeno_fake]."))
+					else if(isxeno(M_view))
+						to_chat(M_view, SPAN_WARNING("\The [M] pokes \the [src]."))
+					else
+						to_chat(M_view, SPAN_WARNING("\The [M] pokes [xeno_fake]."))
 
 		if(INTENT_GRAB)
 			if(M == src || anchored)
@@ -70,13 +120,32 @@
 			//friendly lessers, huggers and larva can be pushed around
 			if(M.ally_of_hivenumber(hivenumber) && mob_size < MOB_SIZE_XENO_SMALL && prob(85))
 				playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
-				M.visible_message(SPAN_DANGER("[M] shoves [src]!"), null, null, 5, CHAT_TYPE_COMBAT_ACTION)
+
+				var/x_desc = GLOB.xeno_caste_descriptors[caste_type] || "strange"
+				var/xeno_fake = "a [x_desc] alien"
+
+				for(var/mob/M_view in viewers(src))
+					if(!M_view.client) continue
+					if(isxeno(M_view))
+						to_chat(M_view, SPAN_DANGER("[M] shoves [src]!"))
+					else
+						to_chat(M_view, SPAN_DANGER("[M] shoves [xeno_fake]!"))
+
 				apply_effect(1, WEAKEN)
 				return
 
 			var/shove_sound = pick('sound/weapons/punchmiss.ogg', 'sound/weapons/thudswoosh.ogg')
 			playsound(loc, shove_sound, 25, 1, 7)
-			visible_message(SPAN_DANGER("[M] tries to shove [src]!"), null, null, 5, CHAT_TYPE_COMBAT_ACTION)
+
+			var/x_desc = GLOB.xeno_caste_descriptors[caste_type] || "strange"
+			var/xeno_fake = "a [x_desc] alien"
+
+			for(var/mob/M_view in viewers(src))
+				if(!M_view.client) continue
+				if(isxeno(M_view))
+					to_chat(M_view, SPAN_DANGER("[M] tries to shove [src]!"))
+				else
+					to_chat(M_view, SPAN_DANGER("[M] tries to shove [xeno_fake]!"))
 
 		if(INTENT_HARM)
 			var/datum/unarmed_attack/attack = M.species.unarmed
@@ -94,7 +163,17 @@
 
 				playsound(loc, attack.attack_sound, 25, 1)
 				var/picked_verb = pick(attack.attack_verb)
-				visible_message(SPAN_DANGER("[M] [picked_verb]ed [src]!"), null, null, 5, CHAT_TYPE_MELEE_HIT)
+
+				var/x_desc = GLOB.xeno_caste_descriptors[caste_type] || "strange"
+				var/xeno_fake = "a [x_desc] alien"
+
+				for(var/mob/M_view in viewers(src))
+					if(!M_view.client) continue
+					if(isxeno(M_view))
+						to_chat(M_view, SPAN_DANGER("[M] [picked_verb]ed [src]!"))
+					else
+						to_chat(M_view, SPAN_DANGER("[M] [picked_verb]ed [xeno_fake]!"))
+
 				log_attack("[key_name(M)] [picked_verb]ed [key_name(src)] at [get_area_name(M)]")
 				attack_log += text("\[[time_stamp()]\] <font color='orange'>was [picked_verb]ed by [key_name(M)]</font>")
 				M.attack_log += text("\[[time_stamp()]\] <font color='red'>[picked_verb]ed [key_name(src)]</font>")
@@ -102,7 +181,16 @@
 				updatehealth()
 			else
 				playsound(loc, attack.miss_sound, 25, 1)
-				visible_message(SPAN_DANGER("[M] tried to [pick(attack.attack_verb)] [src]!"), null, null, 5, CHAT_TYPE_MELEE_HIT)
+
+				var/x_desc = GLOB.xeno_caste_descriptors[caste_type] || "strange"
+				var/xeno_fake = "a [x_desc] alien"
+
+				for(var/mob/M_view in viewers(src))
+					if(!M_view.client) continue
+					if(isxeno(M_view))
+						to_chat(M_view, SPAN_DANGER("[M] tried to [pick(attack.attack_verb)] [src]!"))
+					else
+						to_chat(M_view, SPAN_DANGER("[M] tried to [pick(attack.attack_verb)] [xeno_fake]!"))
 
 	return
 

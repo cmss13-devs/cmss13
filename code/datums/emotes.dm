@@ -124,11 +124,42 @@
 				continue
 			if(ghost.client.prefs.toggles_chat & CHAT_GHOSTSIGHT && !(ghost in viewers(user_turf, null)))
 				ghost.show_message(formatted_message)
-	if(emote_type & EMOTE_AUDIBLE) //emote is audible
-		var/formatted_deaf_message = "<b>[paygrade][user]</b> [alt_message ? alt_message : key_third_person] silently."
-		user.audible_message(formatted_message, deaf_message = formatted_deaf_message)
-	else if(emote_type & EMOTE_VISIBLE)	//emote is visible
-		user.visible_message(formatted_message, blind_message = SPAN_EMOTE("You see how <b>[user]</b> [msg]"))
+
+	var/list/recipients = list()
+	if(emote_type & EMOTE_AUDIBLE)
+		recipients = hearers(user)
+	else if(emote_type & EMOTE_VISIBLE)
+		recipients = viewers(user)
+
+	for(var/mob/M in recipients)
+		if(!M.client) continue
+
+
+		var/display_name = "<b>[paygrade][user]</b>"
+
+		//Xeno User -> Human Viewer
+		if(isxeno(user) && ishuman(M))
+			var/mob/living/carbon/xenomorph/X = user
+			var/x_desc = GLOB.xeno_caste_descriptors[X.caste_type] || "strange"
+			display_name = "<b>a [x_desc] alien</b>"
+
+		//Human User -> Xeno Viewer
+		else if(ishuman(user) && isxeno(M))
+			var/mob/living/carbon/human/H = user
+			var/h_desc = GLOB.human_gender_descriptors[H.gender] || "peculiar"
+			display_name = "<b>a [h_desc] tall host</b>"
+
+
+		if(emote_type & EMOTE_AUDIBLE)
+			if(M.ear_deaf)
+				if(M in viewers(user))
+					to_chat(M, "[display_name] [alt_message ? alt_message : key_third_person] silently.")
+			else
+				to_chat(M, "[display_name] [msg]")
+		else if(emote_type & EMOTE_VISIBLE)
+			if(M in viewers(user))
+				to_chat(M, "[display_name] [msg]")
+
 	if(emote_type & EMOTE_IMPORTANT)
 		for(var/mob/living/viewer in viewers())
 			if(is_blind(viewer) && isdeaf(viewer))
@@ -343,7 +374,22 @@
 			if(ghost.client.prefs.toggles_chat & CHAT_GHOSTSIGHT && !(ghost in viewers(origin_turf, null)))
 				to_chat(ghost, rendered_text)
 
-	visible_message(rendered_text)
+	for(var/mob/M in viewers(src))
+		if(!M.client) continue
+
+		var/display_name = "<b>[paygrade][src]</b>"
+
+		if(isxeno(src) && ishuman(M))
+			var/mob/living/carbon/xenomorph/X = src
+			var/x_desc = GLOB.xeno_caste_descriptors[X.caste_type] || "strange"
+			display_name = "<b>a [x_desc] alien</b>"
+		else if(ishuman(src) && isxeno(M))
+			var/mob/living/carbon/human/H = src
+			var/h_desc = GLOB.human_gender_descriptors[H.gender] || "peculiar"
+			display_name = "<b>a [h_desc] tall host</b>"
+
+		to_chat(M, "[display_name] [text]")
+
 	var/list/viewers = get_mobs_in_view(7, src)
 	for(var/mob/current_mob in viewers)
 		if(!(current_mob.client?.prefs.toggles_langchat & LANGCHAT_SEE_EMOTES))

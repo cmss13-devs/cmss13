@@ -153,7 +153,25 @@
 
 			new /obj/effect/xenomorph/acid_damage_delay(turf, damage, 7, FALSE, "You are blasted with a stream of high-velocity acid!", xeno)
 
-		xeno.visible_message(SPAN_XENODANGER("[xeno] fires a massive blast of acid at [affected_atom]!"), SPAN_XENODANGER("We fire a massive blast of acid at [affected_atom]!"))
+
+	var/x_desc = GLOB.xeno_caste_descriptors[xeno.caste_type] || "strange"
+	var/xeno_fake = "a [x_desc] alien"
+
+	var/target_fake = "[affected_atom]"
+	if(ishuman(affected_atom))
+		var/mob/living/carbon/human/H = affected_atom
+		var/h_desc = GLOB.human_gender_descriptors[H.gender] || "strange"
+		target_fake = "a [h_desc] tall host"
+
+	for(var/mob/M_view in viewers(xeno))
+		if(!M_view.client) continue
+		if(M_view == xeno)
+			to_chat(M_view, SPAN_XENODANGER("We fire a massive blast of acid at [target_fake]!"))
+		else if(isxeno(M_view))
+			to_chat(M_view, SPAN_XENODANGER("[xeno] fires a massive blast of acid at [target_fake]!"))
+		else
+			to_chat(M_view, SPAN_XENODANGER("[xeno_fake] fires a massive blast of acid at [affected_atom]!"))
+
 		remove_stack_effects("We feel our speed return to normal!")
 		return TRUE
 

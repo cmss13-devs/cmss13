@@ -14,7 +14,10 @@
 
 		if(icon)
 			msg += "[icon2html(icon, user)] "
-		msg += "<EM>[src]</EM>!\n"
+
+		var/gender_desc = GLOB.human_gender_descriptors[src.gender] || "strange"
+
+		msg += "<EM>a [gender_desc] tallhost!</EM>!\n"
 
 		if(species && species.flags & IS_SYNTHETIC)
 			msg += "<span style='font-weight: bold; color: purple;'>You sense this creature is not organic.\n</span>"

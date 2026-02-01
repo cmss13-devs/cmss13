@@ -31,7 +31,7 @@
 
 	var/list/datum/autopsy_data/autopsy_data = list()
 	var/list/trace_chemicals = list() // traces of chemicals in the organ,
-									  // links chemical IDs to number of ticks for which they'll stay in the blood
+									// links chemical IDs to number of ticks for which they'll stay in the blood
 
 	var/obj/limb/parent
 	var/list/obj/limb/children
@@ -547,9 +547,23 @@ This function completely restores a damaged organ to perfect condition.
 					owner.add_splatter_floor(get_turf(loc))
 				if(prob(25))
 					//maybe have a separate message for BRUISE type damage?
-					owner.visible_message(SPAN_WARNING("The wound on [owner.name]'s [display_name] widens with a nasty ripping noise."),
-					SPAN_WARNING("The wound on your [display_name] widens with a nasty ripping noise."),
-					SPAN_WARNING("You hear a nasty ripping noise, as if flesh is being torn apart."))
+					var/gender_desc = GLOB.human_gender_descriptors[owner.gender] || "strange"
+					var/fake_name = "a [gender_desc] tall host"
+					var/msg_rest = "'s [display_name] widens with a nasty ripping noise."
+					var/msg_blind = SPAN_WARNING("You hear a nasty ripping noise, as if flesh is being torn apart.")
+
+					for(var/mob/M in viewers(owner))
+						if(!M.client) continue
+
+						if(M == owner)
+							to_chat(M, SPAN_WARNING("The wound on your [display_name] widens with a nasty ripping noise."))
+							to_chat(M, msg_blind)
+						else if(isxeno(M))
+							to_chat(M, SPAN_WARNING("The wound on [fake_name][msg_rest]"))
+							to_chat(M, msg_blind)
+						else
+							to_chat(M, SPAN_WARNING("The wound on [owner][msg_rest]"))
+							to_chat(M, msg_blind)
 				return
 
 	//Creating wound
@@ -1034,9 +1048,22 @@ This function completely restores a damaged organ to perfect condition.
 		if(delete_limb)
 			qdel(organ)
 		else
-			owner.visible_message(SPAN_WARNING("[owner.name]'s [display_name] flies off in an arc!"),
-			SPAN_HIGHDANGER("<b>Your [display_name] goes flying off!</b>"),
-			SPAN_WARNING("You hear a terrible sound of ripping tendons and flesh!"), 3)
+			var/gender_desc = GLOB.human_gender_descriptors[owner.gender] || "strange"
+			var/fake_name = "a [gender_desc] tall host"
+			var/msg_end = "'s [display_name] flies off in an arc!"
+
+			for(var/mob/M in viewers(owner))
+				if(!M.client)
+					continue
+				if(M == owner)
+					to_chat(M, SPAN_HIGHDANGER("<b>Your [display_name] goes flying off!</b>"))
+					to_chat(M, SPAN_WARNING("You hear a terrible sound of ripping tendons and flesh!"))
+				else if(isxeno(M))
+					to_chat(M, SPAN_WARNING("[fake_name][msg_end]"))
+					to_chat(M, SPAN_WARNING("You hear a terrible sound of ripping tendons and flesh!"))
+				else
+					to_chat(M, SPAN_WARNING("[owner][msg_end]"))
+					to_chat(M, SPAN_WARNING("You hear a terrible sound of ripping tendons and flesh!"))
 
 			// Checks if the mob can feel pain or if they have at least oxycodone level of painkiller
 			if(body_part != BODY_FLAG_HEAD && owner.pain.feels_pain && owner.pain.reduction_pain < PAIN_REDUCTION_HEAVY)
@@ -1171,9 +1198,19 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 		return
 
 	if(owner.status_flags & NO_PERMANENT_DAMAGE)
-		owner.visible_message(
-			SPAN_WARNING("[owner] withstands the blow!"),
-			SPAN_WARNING("Your [display_name] withstands the blow!"))
+
+		var/gender_desc = GLOB.human_gender_descriptors[owner.gender] || "strange"
+		var/fake_name = "a [gender_desc] tall host"
+
+		for(var/mob/M in viewers(owner))
+			if(!M.client) continue
+			if(M == owner)
+				to_chat(M, SPAN_WARNING("Your [display_name] manages to withstand the blow!"))
+			else if(isxeno(M))
+				to_chat(M, SPAN_WARNING("[fake_name] seems to withstand the blow!"))
+			else
+				to_chat(M, SPAN_WARNING("[owner] seems to withstand the blow!"))
+
 		return
 
 	//stops division by zero
@@ -1197,22 +1234,41 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 
 	if(prob(bonebreak_probability))
 		owner.recalculate_move_delay = TRUE
+
+
+		var/gender_desc = GLOB.human_gender_descriptors[owner.gender] || "strange"
+		var/fake_name = "a [gender_desc] tall host"
+
 		if(status & (LIMB_ROBOT))
-			owner.visible_message(
-				SPAN_WARNING("You see sparks coming from [owner]'s [display_name]!"),
-				SPAN_HIGHDANGER("Something feels like it broke in your [display_name] as it spits out sparks!"),
-				SPAN_HIGHDANGER("You hear electrical sparking!"))
+			for(var/mob/M in viewers(owner))
+				if(!M.client) continue
+				if(M == owner)
+					to_chat(M, SPAN_HIGHDANGER("Something feels like it broke in your [display_name] as it spits out sparks!"))
+					to_chat(M, SPAN_HIGHDANGER("You hear electrical sparking!"))
+				else if(isxeno(M))
+					to_chat(M, SPAN_WARNING("You see sparks coming from [fake_name]'s [display_name]!"))
+				else
+					to_chat(M, SPAN_WARNING("You see sparks coming from [owner]'s [display_name]!"))
+
 			var/datum/effect_system/spark_spread/spark_system = new()
 			spark_system.set_up(5, 0, owner)
 			spark_system.attach(owner)
 			spark_system.start()
 			QDEL_IN(spark_system, 1 SECONDS)
 		else
-			owner.visible_message(
-				SPAN_WARNING("You hear a loud cracking sound coming from [owner]!"),
-				SPAN_HIGHDANGER("Something feels like it shattered in your [display_name]!"),
-				SPAN_HIGHDANGER("You hear a sickening crack!"))
+			for(var/mob/M in viewers(owner))
+				if(!M.client) continue
+				if(M == owner)
+					to_chat(M, SPAN_HIGHDANGER("Something feels like it shattered in your [display_name]!"))
+					to_chat(M, SPAN_HIGHDANGER("You hear a sickening crack!"))
+				else if(isxeno(M))
+					to_chat(M, SPAN_WARNING("You hear a loud cracking sound coming from [fake_name]!"))
+				else
+					to_chat(M, SPAN_WARNING("You hear a loud cracking sound coming from [owner]!"))
+
 			playsound(owner, "bone_break", 45, TRUE)
+
+
 		start_processing()
 		if(status & LIMB_ROBOT)
 			status = LIMB_ROBOT|LIMB_UNCALIBRATED_PROSTHETIC
@@ -1228,20 +1284,42 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 			broken_description = pick("broken","fracture","hairline fracture")
 			perma_injury = min_broken_damage
 	else
-		owner.visible_message(
-			SPAN_WARNING("[owner] seems to withstand the blow!"),
-			SPAN_WARNING("Your [display_name] manages to withstand the blow!"))
+
+		var/gender_desc = GLOB.human_gender_descriptors[owner.gender] || "strange"
+		var/fake_name = "a [gender_desc] tall host"
+
+		for(var/mob/M in viewers(owner))
+			if(!M.client) continue
+			if(M == owner)
+				to_chat(M, SPAN_WARNING("Your [display_name] manages to withstand the blow!"))
+			else if(isxeno(M))
+				to_chat(M, SPAN_WARNING("[fake_name] seems to withstand the blow!"))
+			else
+				to_chat(M, SPAN_WARNING("[owner] seems to withstand the blow!"))
+
 
 /obj/limb/proc/eschar()
 	if(status & (LIMB_ESCHAR|LIMB_DESTROYED|LIMB_UNCALIBRATED_PROSTHETIC|LIMB_SYNTHSKIN))
 		return //we already have eschar or can not take it
 
+
+	var/gender_desc = GLOB.human_gender_descriptors[owner.gender] || "strange"
+	var/fake_name = "a [gender_desc] tall host"
+
 	//robot limb part
 	if(status & (LIMB_ROBOT))
-		owner.visible_message(
-			SPAN_WARNING("You see sparks coming from [owner]'s [display_name]!"),
-			SPAN_HIGHDANGER("Something feels like it broke in your [display_name] as it spits out sparks!"),
-			SPAN_HIGHDANGER("You hear electrical sparking!"))
+
+		for(var/mob/M in viewers(owner))
+			if(!M.client) continue
+			if(M == owner)
+				to_chat(M, SPAN_HIGHDANGER("Something feels like it broke in your [display_name] as it spits out sparks!"))
+				to_chat(M, SPAN_HIGHDANGER("You hear electrical sparking!"))
+			else if(isxeno(M))
+				to_chat(M, SPAN_WARNING("You see sparks coming from [fake_name]'s [display_name]!"))
+			else
+				to_chat(M, SPAN_WARNING("You see sparks coming from [owner]'s [display_name]!"))
+
+
 		var/datum/effect_system/spark_spread/spark_system = new()
 		spark_system.set_up(5, 0, owner)
 		spark_system.attach(owner)
@@ -1259,10 +1337,18 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 		return
 
 	//flesh limb part
-	owner.visible_message(
-		SPAN_WARNING("You hear flesh on [owner] sizzling!"),
-		SPAN_HIGHDANGER("Your [display_name] feels burned!"),
-		SPAN_HIGHDANGER("Your stomach turns as the flesh on your [display_name] chars!"))
+
+	for(var/mob/M in viewers(owner))
+		if(!M.client) continue
+		if(M == owner)
+			to_chat(M, SPAN_HIGHDANGER("Your [display_name] feels burned!"))
+			to_chat(M, SPAN_HIGHDANGER("Your stomach turns as the flesh on your [display_name] chars!"))
+		else if(isxeno(M))
+			to_chat(M, SPAN_WARNING("You hear flesh on [fake_name] sizzling!"))
+		else
+			to_chat(M, SPAN_WARNING("You hear flesh on [owner] sizzling!"))
+
+
 	status |= LIMB_ESCHAR
 	status &= ~LIMB_THIRD_DEGREE_BURNS
 	owner.pain.apply_pain(PAIN_ESCHAR)
@@ -1332,7 +1418,19 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 		if(prob(15))
 			owner.drop_inv_item_on_ground(c_hand)
 			var/emote_scream = pick("screams in pain and", "lets out a sharp cry and", "cries out and")
-			owner.emote("me", 1, "[(!owner.pain.feels_pain) ? "" : emote_scream ] drops what they were holding in their [hand_name]!")
+
+			var/gender_desc = GLOB.human_gender_descriptors[owner.gender] || "strange"
+			var/fake_name = "a [gender_desc] tall host"
+			var/msg_content = "[(!owner.pain.feels_pain) ? "" : emote_scream ] drops what they were holding in their [hand_name]!"
+
+			for(var/mob/M in viewers(owner))
+				if(!M.client)
+					continue
+				if(isxeno(M))
+					to_chat(M, SPAN_EMOTE("<b>[fake_name]</b> [msg_content]"))
+				else
+					to_chat(M, SPAN_EMOTE("<b>[owner]</b> [msg_content]"))
+
 	if(is_malfunctioning())
 		if(prob(10))
 			owner.drop_inv_item_on_ground(c_hand)

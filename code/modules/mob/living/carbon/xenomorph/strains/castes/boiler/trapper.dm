@@ -200,7 +200,31 @@
 	if(empowered)
 		acid_bolt_message = "a powerful bolt of acid"
 
-	xeno.visible_message(SPAN_XENODANGER("[xeno] fires " + acid_bolt_message + " at [affected_atom]!"), SPAN_XENODANGER("We fire " + acid_bolt_message + " at [affected_atom]!"))
+
+	var/x_desc = GLOB.xeno_caste_descriptors[xeno.caste_type] || "strange"
+	var/xeno_fake = "a [x_desc] alien"
+
+	var/target_xeno_view = "[affected_atom]"
+	var/target_human_view = "[affected_atom]"
+
+	if(ishuman(affected_atom))
+		var/mob/living/carbon/human/H = affected_atom
+		var/h_desc = GLOB.human_gender_descriptors[H.gender] || "strange"
+		target_xeno_view = "a [h_desc] tall host"
+	else if(isxeno(affected_atom))
+		var/mob/living/carbon/xenomorph/X = affected_atom
+		var/t_desc = GLOB.xeno_caste_descriptors[X.caste_type] || "strange"
+		target_human_view = "a [t_desc] alien"
+
+	for(var/mob/M_view in viewers(xeno))
+		if(!M_view.client) continue
+		if(M_view == xeno)
+			to_chat(M_view, SPAN_XENODANGER("We fire [acid_bolt_message] at [target_xeno_view]!"))
+		else if(isxeno(M_view))
+			to_chat(M_view, SPAN_XENODANGER("[xeno] fires [acid_bolt_message] at [target_xeno_view]!"))
+		else
+			to_chat(M_view, SPAN_XENODANGER("[xeno_fake] fires [acid_bolt_message] at [target_human_view]!"))
+
 	new /obj/effect/xenomorph/acid_damage_delay/boiler_landmine(turf, damage, delay, empowered, "You are blasted with " + acid_bolt_message + "!", xeno)
 
 	for (var/turf/target_turf in orange(1, turf))

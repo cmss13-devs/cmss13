@@ -241,3 +241,19 @@ for it but just ignore it.
 			return
 		hud_typing = NONE
 		remove_typing_indicator()
+
+
+/mob/proc/get_heard_name(mob/listener)
+	. = name
+
+	//Xeno Listener | Human Speaker
+	if(isxeno(listener) && ishuman(src))
+		var/mob/living/carbon/human/H = src
+		var/h_desc = GLOB.human_gender_descriptors[H.gender] || "strange"
+		return "a [h_desc] tall host"
+
+	//Human Listener | Xeno Speaker
+	else if(ishuman(listener) && isxeno(src))
+		var/mob/living/carbon/xenomorph/X = src
+		var/x_desc = GLOB.xeno_caste_descriptors[X.caste_type] || "strange"
+		return "a [x_desc] alien"

@@ -178,7 +178,27 @@
 			italics = 1
 			message_range = 2
 
-		..(message, speaking, verb, alt_name, italics, message_range, speech_sound, sound_vol, 0, message_mode) //ohgod we should really be passing a datum here.
+		if(speech_sound)
+			playsound(src, speech_sound, sound_vol)
+
+		var/h_desc = GLOB.human_gender_descriptors[gender] || "strange"
+		var/obfuscated_name = "a [h_desc] tall host"
+
+
+		for(var/mob/M in viewers(message_range, src))
+			if(!M.client) continue //Skip NPC's
+
+			if(isxeno(M))
+				to_chat(M, "<b>[obfuscated_name]</b> [verb], \"[message]\"")
+			else
+				var/human_name = name
+				if(alt_name) human_name += " [alt_name]"
+
+				var/final_msg = "<b>[human_name]</b> [verb], \"[message]\""
+
+				if(italics) final_msg = "<i>[final_msg]</i>"
+
+				to_chat(M, final_msg)
 
 		INVOKE_ASYNC(src, TYPE_PROC_REF(/mob/living/carbon/human, say_to_radios), used_radios, message, message_mode, verb, speaking)
 

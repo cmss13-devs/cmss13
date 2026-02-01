@@ -114,6 +114,40 @@ GLOBAL_LIST_INIT_TYPED(resin_mark_meanings, /datum/xeno_mark_define, setup_resin
 /// Xeno caste datums
 GLOBAL_REFERENCE_LIST_INDEXED(xeno_datum_list, /datum/caste_datum, caste_type)
 
+// Obfuscated Xeno Names
+GLOBAL_LIST_INIT(xeno_caste_descriptors, list(
+	XENO_CASTE_BOILER       = "bloated",
+	XENO_CASTE_BURROWER     = "tremoring",
+	XENO_CASTE_CARRIER      = "encumbered",
+	XENO_CASTE_CRUSHER      = "massive",
+	XENO_CASTE_DEFENDER     = "heavily armored",
+	XENO_CASTE_DESPOILER    = "vile",
+	XENO_CASTE_DRONE        = "worker",
+	XENO_CASTE_FACEHUGGER   = "scuttling",
+	XENO_CASTE_HELLHOUND    = "feral",
+	XENO_CASTE_HIVELORD     = "encumbered",
+	XENO_CASTE_KING         = "incomprehensible",
+	XENO_CASTE_LARVA        = "small",
+	XENO_CASTE_LESSER_DRONE = "simple",
+	XENO_CASTE_LURKER       = "cloaked",
+	XENO_CASTE_PRAETORIAN   = "imposing",
+	XENO_CASTE_PREDALIEN    = "nightmarish",
+	XENO_CASTE_QUEEN        = "royal",
+	XENO_CASTE_RAVAGER      = "razor-sharp",
+	XENO_CASTE_RUNNER       = "fast",
+	XENO_CASTE_SENTINEL     = "venomous",
+	XENO_CASTE_SPITTER      = "acid-dripping",
+	XENO_CASTE_WARRIOR      = "powerful"
+))
+
+// Obfuscate Human Names
+GLOBAL_LIST_INIT(human_gender_descriptors, list(
+	MALE					= "bulky",
+	FEMALE					= "slender",
+	PLURAL					= "peculiar",
+	NEUTER					= "featureless"
+))
+
 //Chem Stuff
 GLOBAL_LIST(chemical_reactions_filtered_list) //List of all /datum/chemical_reaction datums filtered by reaction components. Used during chemical reactions
 GLOBAL_LIST(chemical_reactions_list) //List of all /datum/chemical_reaction datums indexed by reaction id. Used to search for the result instead of the components.

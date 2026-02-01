@@ -785,7 +785,15 @@
 			return XENO_VISION_LEVEL_NO_NVG
 
 /mob/living/carbon/xenomorph/get_examine_text(mob/user)
-	. = ..()
+	. = list()
+	var/display_name = name
+	if(ishuman(user))
+		var/x_desc = GLOB.xeno_caste_descriptors[caste_type] || "strange"
+		display_name = "a [x_desc] alien"
+	. += "<span class='info'>This is <EM>[display_name]</EM>!</span>"
+	if(desc)
+		. += desc
+
 	if(HAS_TRAIT(src, TRAIT_SIMPLE_DESC))
 		return list(desc)
 
@@ -829,6 +837,8 @@
 		. += SPAN_NOTICE("It has an IFF tag sticking out of its carapace.")
 	if(organ_removed)
 		. += "It seems to have its carapace cut open."
+
+	return .
 
 /mob/living/carbon/xenomorph/Destroy()
 	GLOB.living_xeno_list -= src

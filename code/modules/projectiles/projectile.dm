@@ -1264,8 +1264,29 @@
 	if(!P)
 		return
 	if(damaging && COOLDOWN_FINISHED(src, shot_cooldown))
-		visible_message(SPAN_DANGER("[src] is hit by the [P.name] in the [parse_zone(P.def_zone)]!"),
-			SPAN_HIGHDANGER("[isxeno(src) ? "We" : "You"] are hit by the [P.name] in the [parse_zone(P.def_zone)]!"), null, 4, CHAT_TYPE_TAKING_HIT)
+		var/victim_xeno_view = "[src]"
+		var/victim_human_view = "[src]"
+		if(isxeno(src))
+			var/mob/living/carbon/xenomorph/X = src
+			var/x_desc = GLOB.xeno_caste_descriptors[X.caste_type] || "strange"
+			victim_human_view = "a [x_desc] alien"
+		else if(ishuman(src))
+			var/mob/living/carbon/human/H = src
+			var/h_desc = GLOB.human_gender_descriptors[H.gender] || "strange"
+			victim_xeno_view = "a [h_desc] tall host"
+
+		var/zone_text = parse_zone(P.def_zone)
+
+		for(var/mob/M_view in viewers(src))
+			if(!M_view.client) continue
+			if(M_view == src)
+				var/self_text = isxeno(src) ? "We" : "You"
+				to_chat(M_view, SPAN_HIGHDANGER("[self_text] are hit by the [P.name] in the [zone_text]!"))
+			else if(isxeno(M_view))
+				to_chat(M_view, SPAN_DANGER("[victim_xeno_view] is hit by the [P.name] in the [zone_text]!"))
+			else
+				to_chat(M_view, SPAN_DANGER("[victim_human_view] is hit by the [P.name] in the [zone_text]!"))
+
 		COOLDOWN_START(src, shot_cooldown, 1 SECONDS)
 
 	var/shot_from = P.shot_from ? " from \a [P.shot_from]" : ""

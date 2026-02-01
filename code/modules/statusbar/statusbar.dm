@@ -5,7 +5,18 @@
 		winset(client, "mapwindow.status_bar", "is-visible=false");\
 		return;\
 	}\
-	winset(client, "mapwindow.status_bar", "text=\"[name]\"");\
+	var/display_text = name;\
+	if(isxeno(usr) && ishuman(src)) {\
+		var/mob/living/carbon/human/H = src;\
+		var/h_desc = GLOB.human_gender_descriptors[H.gender] || "strange";\
+		display_text = "a [h_desc] tall host";\
+	}\
+	else if(ishuman(usr) && isxeno(src)) {\
+		var/mob/living/carbon/xenomorph/X = src;\
+		var/x_desc = GLOB.xeno_caste_descriptors[X.caste_type] || "strange";\
+		display_text = "a [x_desc] alien";\
+	}\
+	winset(client, "mapwindow.status_bar", "text=\"[display_text]\"");\
 };\
 ##type/MouseExited(location, control, params){\
 	var/client/client = usr.client;\

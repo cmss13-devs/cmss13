@@ -38,14 +38,10 @@
 	src.update_loc_on_minimap(source)
 
 /atom/movable/screen/onscreen_tacmap_blip/clicked(mob/user, list/mods)
-	to_world(SPAN_DEBUG("XXX clicked!"))
-
 	var/mob/living/carbon/human/maybe_human = human_weakref ? human_weakref.resolve() : null
 	if (maybe_human != null)
-		to_world(SPAN_DEBUG("XXX maybe_human!"))
-		SSminimaps.human_tacmap_blip_clicked(user, maybe_human)
+		SSminimaps.handle_click_on_human_blip(user, maybe_human)
 
 	var/mob/living/carbon/xenomorph/maybe_xeno = xeno_weakref ? xeno_weakref.resolve() : null
 	if (maybe_xeno)
-		to_world(SPAN_DEBUG("XXX maybe_xeno!"))
-		SSminimaps.xeno_tacmap_blip_clicked(user, maybe_xeno)
+		SSminimaps.handle_click_on_xeno_blip(user, maybe_xeno)

@@ -50,10 +50,14 @@ SUBSYSTEM_DEF(minimaps)
 	///assoc list of minimap objects that are hashed so we have to update as few as possible
 	var/list/hashed_minimaps = list()
 
+	var/datum/minimap_blip_click_listener_manager/blip_click_listener_manager
+
 /datum/controller/subsystem/minimaps/Initialize()
 	initialized = TRUE
 	for(var/datum/space_level/z_level as anything in SSmapping.z_list)
 		load_new_z(null, z_level)
+
+	blip_click_listener_manager = new()
 
 	return SS_INIT_SUCCESS
 
@@ -411,11 +415,13 @@ SUBSYSTEM_DEF(minimaps)
 	drawn_images[hash] = mona_lisa_image
 	return mona_lisa_image
 
-/datum/controller/subsystem/minimaps/proc/human_tacmap_blip_clicked(mob/clicker, mob/living/carbon/human/human_from_blip)
+/datum/controller/subsystem/minimaps/proc/handle_click_on_human_blip(mob/clicker, mob/living/carbon/human/human_from_blip)
 	to_world(SPAN_DEBUG("SSmm: clicker: [clicker], target: [human_from_blip]"))
+	blip_click_listener_manager.handle_click_on_human_blip(clicker, human_from_blip)
 
-/datum/controller/subsystem/minimaps/proc/xeno_tacmap_blip_clicked(mob/clicker, mob/living/carbon/xenomorph/xeno_from_blip)
+/datum/controller/subsystem/minimaps/proc/handle_click_on_xeno_blip(mob/clicker, mob/living/carbon/xenomorph/xeno_from_blip)
 	to_world(SPAN_DEBUG("SSmm: clicker: [clicker], target: [xeno_from_blip]"))
+	blip_click_listener_manager.handle_click_on_xeno_blip(clicker, xeno_from_blip)
 
 ///Default HUD screen minimap object
 /atom/movable/screen/minimap

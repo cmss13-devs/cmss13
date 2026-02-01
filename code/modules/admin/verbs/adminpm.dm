@@ -204,7 +204,7 @@
 			SEND_SIGNAL(src, COMSIG_ADMIN_HELP_RECEIVED, msg)
 			//omg this is dumb, just fill in both their tickets
 			var/interaction_message = "<font color='green'>PM from-<b>[key_name(src, recipient, TRUE, show_username = TRUE)]</b> to-<b>[key_name(recipient, src, TRUE, show_username = TRUE)]</b>: [msg]</font>"
-			var/player_interaction_message = "<font color='green'>PM from-<b>[src.username()]</b> to-<b>[recipient.username()]</b>: [msg]</font>"
+			var/player_interaction_message = "<font color='green'>PM from-<b>[key_name(src, recipient, FALSE)]</b> to-<b>[key_name(recipient, src, FALSE)]</b>: [msg]</font>"
 			admin_ticket_log(src, interaction_message, log_in_blackbox = FALSE, player_message = player_interaction_message)
 			if(recipient != src) //reeee
 				admin_ticket_log(recipient, interaction_message, log_in_blackbox = FALSE, player_message = player_interaction_message)
@@ -213,7 +213,7 @@
 			current_ticket.player_replied = TRUE
 			SEND_SIGNAL(current_ticket, COMSIG_ADMIN_HELP_REPLIED)
 			var/replymsg = "Reply PM from-<b>[key_name(src, recipient, TRUE, show_username = TRUE)]</b>: <span class='linkify'>[msg]</span>"
-			var/player_replymsg = "Reply PM from-<b>[src.username()]</b>: <span class='linkify'>[msg]</span>"
+			var/player_replymsg = "Reply PM from-<b>[key_name(src, recipient, FALSE)]</b>: <span class='linkify'>[msg]</span>"
 			admin_ticket_log(src, "<font color='red'>[replymsg]</font>", log_in_blackbox = FALSE, player_message = player_replymsg)
 			to_chat(recipient,
 				type = MESSAGE_TYPE_ADMINPM,
@@ -244,7 +244,7 @@
 				confidential = TRUE)
 			to_chat(recipient,
 				type = MESSAGE_TYPE_ADMINPM,
-				html = SPAN_ADMINSAY("Admin PM from-<b>[admin_holder?.fakekey ? "an Administrator" : username()]</b>: <span class='linkify'>[msg]</span>"),
+				html = SPAN_ADMINSAY("Admin PM from-<b>[key_name(src, recipient, 0)]</b>: <span class='linkify'>[msg]</span>"),
 				confidential = TRUE)
 			to_chat(recipient,
 				type = MESSAGE_TYPE_ADMINPM,

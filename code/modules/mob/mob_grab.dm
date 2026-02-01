@@ -201,3 +201,4 @@
 					return FALSE
 				xeno.haul(pulled)
 				xeno.stop_pulling()
+

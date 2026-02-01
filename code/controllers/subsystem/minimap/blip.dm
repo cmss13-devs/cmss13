@@ -4,8 +4,8 @@
 	icon_state = ""
 	var/image/blip_image
 
-	var/mob/living/carbon/human/maybe_human = null
-	var/mob/living/carbon/xenomorph/maybe_xeno = null
+	var/datum/weakref/human_weakref = null
+	var/datum/weakref/xeno_weakref = null
 
 /atom/movable/screen/onscreen_tacmap_blip/New(image/blip_image, atom/target)
 	to_world(SPAN_DEBUG("XXX new blip: target: [target]"))
@@ -14,10 +14,10 @@
 	src.overlays += src.blip_image
 
 	if (ishuman(target))
-		maybe_human = target
+		human_weakref = WEAKREF(target)
 
 	if (isxeno(target))
-		maybe_xeno = target
+		xeno_weakref = WEAKREF(target)
 
 	// N.B. this could probably just be compile-time set to HIGH_FLOAT_LAYER, but doing it this way in case the layer changes later.
 	src.layer = blip_image.layer
@@ -37,11 +37,15 @@
 	SIGNAL_HANDLER
 	src.update_loc_on_minimap(source)
 
-/atom/movable/screen/onscreen_tacmap_blip/clicked(atom/source, list/mods)
+/atom/movable/screen/onscreen_tacmap_blip/clicked(mob/user, list/mods)
 	to_world(SPAN_DEBUG("XXX clicked!"))
 
-	if (src.maybe_human)
+	var/mob/living/carbon/human/maybe_human = human_weakref ? human_weakref.resolve() : null
+	if (maybe_human != null)
 		to_world(SPAN_DEBUG("XXX maybe_human!"))
+		SSminimaps.human_tacmap_blip_clicked(user, maybe_human)
 
-	if (src.maybe_xeno)
+	var/mob/living/carbon/xenomorph/maybe_xeno = xeno_weakref ? xeno_weakref.resolve() : null
+	if (maybe_xeno)
 		to_world(SPAN_DEBUG("XXX maybe_xeno!"))
+		SSminimaps.xeno_tacmap_blip_clicked(user, maybe_xeno)

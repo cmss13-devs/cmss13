@@ -34,3 +34,7 @@
 
 /datum/minimap_updater/proc/add_image_to_updater(image/new_image)
 	src.overlays_to_add += new_image
+
+/datum/minimap_updater/proc/update_minimap()
+	src.minimap.vis_contents = src.blips
+	src.minimap.overlays = src.overlays_to_add

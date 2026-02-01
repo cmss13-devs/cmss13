@@ -31,7 +31,7 @@
 
 	var/list/datum/autopsy_data/autopsy_data = list()
 	var/list/trace_chemicals = list() // traces of chemicals in the organ,
-									// links chemical IDs to number of ticks for which they'll stay in the blood
+									  // links chemical IDs to number of ticks for which they'll stay in the blood
 
 	var/obj/limb/parent
 	var/list/obj/limb/children

@@ -29,9 +29,9 @@
 	prae.regeneration_multiplier = XENO_REGEN_MULTIPLIER_TIER_7
 	prae.plasma_types = list(PLASMA_CATECHOLAMINE)
 	prae.claw_type = CLAW_TYPE_SHARP
-	prae.dodge_chance = 18
+	prae.dodge_bullet = 6
 	prae.received_phero_caps["recovery"] = 3 //need to be limited, regens too fast.
-	prae.received_phero_caps["frenzy"] = 2.7 //zoom too fast, moderate increase in speed.
+	prae.ignore_aura = "frenzy"  //we dont want to zoom fast randomly, it breaks muscule memory.
 
 	prae.recalculate_everything()
 
@@ -64,52 +64,29 @@
 	/// Cooldown after activation to prevent accidental double click.
 	var/safe_click_cooldown = 0
 
-	/// How long ago we slashed target?
-	var/last_slash_time = 0
-	/// How long slash bonus should last?
-	var/slash_time = 6 SECONDS
-	/// How many slashes we can do before hitting cap.
-	var/max_slashes = 3
-	/// How many slashes did we do already.
-	var/current_slashes = 0
-	/// How much % increase to dodge_chance we gain per slash.
-	var/dodge_per_slash = 3
+	/// How much dodge cooldown we decrease when slashing target?
+	var/dodge_coldown_decrease = 1.5 SECONDS
 
 /datum/behavior_delegate/praetorian_dancer/append_to_stat()
 	. = list()
-	. += "Dodge Chance: [bound_xeno.dodge_chance]%"
-	. += "Slash Dodge Stacks: [current_slashes]/[max_slashes]"
+	. += "Dodge Interval: [bound_xeno.count_shoot_bullets]/[bound_xeno.dodge_bullet]"
+	. += "Decrease Dodge Cooldown per Slash: -[dodge_coldown_decrease/10] seconds."
 	intent_detection()
 	. += "Harpoon Tail Intent: [tail_mode]"
 	if(tail_mode == "Blunt")
 		. += "Damage: [blunt_damage] AP"
-		. += "Cooldown: 4 seconds."
-	if(current_slashes > 0)
-		calculate_time(slash_time, last_slash_time)
-		. += "Slash Dodge Remaining: [time_left] second\s."
+		. += "Cooldown: 3 seconds."
 	if(dodge_start_time != -1)
 		calculate_time(dodge_time, dodge_start_time)
 		. += "Dodge Remaining: [time_left] second\s."
 		return
 
-/datum/behavior_delegate/praetorian_dancer/on_life()
-	if(current_slashes <= 0)
-		return
-
-	if((world.time - last_slash_time) <= slash_time)
-		return
-
-	reset_slash_dodge()
-
 /datum/behavior_delegate/praetorian_dancer/melee_attack_additional_effects_self()
-	if((world.time - last_slash_time) > slash_time)
-		reset_slash_dodge()
+	..()
 
-	if(current_slashes < max_slashes)
-		current_slashes++
-		bound_xeno.dodge_chance += dodge_per_slash
-
-	last_slash_time = world.time
+	var/datum/action/xeno_action/onclick/prae_dodge/action_time = get_action(bound_xeno, /datum/action/xeno_action/onclick/prae_dodge)
+	if(!action_time.action_cooldown_check())
+		action_time.reduce_cooldown(dodge_coldown_decrease)
 
 /datum/behavior_delegate/praetorian_dancer/melee_attack_additional_effects_target(mob/living/carbon/target_carbon)
 	if(!isxeno_human(target_carbon))
@@ -148,7 +125,7 @@
 			continue
 		if(locate(/datum/effects/dancer_tag) in human_target.effects_list)
 			continue
-		if(locate(/datum/effects/dancer_tag_spread) in human_target.effects_list)
+		if(locate(/datum/effects/dancer_tag/spread) in human_target.effects_list)
 			continue
 		candidates += human_target
 
@@ -160,16 +137,9 @@
 		if(spread_count >= 5)
 			break
 
-		new /datum/effects/dancer_tag_spread(human_target, bound_xeno)
+		new /datum/effects/dancer_tag/spread(human_target, bound_xeno)
 		human_target.update_xeno_hostile_hud()
 		spread_count++
-
-/datum/behavior_delegate/praetorian_dancer/proc/reset_slash_dodge()
-	if(current_slashes <= 0)
-		return
-
-	bound_xeno.dodge_chance -= current_slashes * dodge_per_slash
-	current_slashes = 0
 
 /datum/behavior_delegate/praetorian_dancer/proc/calculate_time(full_time, when_started)
 	time_left = (full_time - (world.time - when_started)) / 10
@@ -203,7 +173,7 @@
 
 		playsound(target, "punch", 25, TRUE)
 		target.apply_damage(behavior.blunt_damage, BRUTE, "chest")
-		apply_cooldown(cooldown_modifier = 0.4)
+		apply_cooldown(cooldown_modifier = 0.3)
 		update_button_icon()
 		return target
 
@@ -255,15 +225,15 @@
 
 	apply_cooldown()
 	var/buffed = FALSE
+	for(var/datum/effects/dancer_tag/spread/tag_spread in target_carbon.effects_list)
+		buffed = TRUE
+		qdel(tag_spread)
+		apply_cooldown_override()
+		break
+
 	for(var/datum/effects/dancer_tag/dancer_tag_effect in target_carbon.effects_list)
 		buffed = TRUE
 		qdel(dancer_tag_effect)
-		break
-
-	for(var/datum/effects/dancer_tag_spread/dancer_tag_spread in target_carbon.effects_list)
-		buffed = TRUE
-		qdel(dancer_tag_spread)
-		apply_cooldown_override(1 SECONDS)
 		break
 
 	if(ishuman(target_carbon))
@@ -330,7 +300,7 @@
 	behavior.safe_click_cooldown = world.time + 1 SECONDS
 	button.icon_state = "template_active"
 	dodge_user.speed_modifier -= speed_buff_amount
-	dodge_user.dodge_chance += 20
+	dodge_user.dodge_bullet -= 3
 	dodge_user.add_temp_pass_flags(PASS_MOB_THRU)
 	dodge_user.recalculate_speed()
 	dodge_user.balloon_alert(dodge_user, "we start our evasive stance!", text_color = "#7d32bb", delay = 1 SECONDS)
@@ -363,11 +333,11 @@
 	behavior.dodge_activated = FALSE
 	button.icon_state = "template_xeno"
 	dodge_remove.speed_modifier += speed_buff_amount
-	dodge_remove.dodge_chance -= 20
+	dodge_remove.dodge_bullet += 3
 	dodge_remove.remove_temp_pass_flags(PASS_MOB_THRU)
 	dodge_remove.recalculate_speed()
 	dodge_remove.reset_position_to_initial()
-	dodge_remove.balloon_alert(dodge_remove, "our evasive stance fades", text_color = "#7d32bb", delay = 1 SECONDS)
+	dodge_remove.balloon_alert(dodge_remove, "our evasive stance fades", text_color = "#bb5d32", delay = 1 SECONDS)
 
 	if(dodge_timer != TIMER_ID_NULL)
 		deltimer(dodge_timer)
@@ -550,12 +520,12 @@
 	var/buffed = FALSE
 
 	var/datum/effects/dancer_tag/dancer_tag_effect = locate() in target_carbon.effects_list
-	var/datum/effects/dancer_tag_spread/dancer_tag_spread = locate() in target_carbon.effects_list
+	var/datum/effects/dancer_tag/spread/tag_spread = locate() in target_carbon.effects_list
 
-	if(dancer_tag_spread)
+	if(tag_spread)
 		buffed = TRUE
-		qdel(dancer_tag_spread)
-		apply_cooldown_override(1 SECONDS)
+		qdel(tag_spread)
+		apply_cooldown_override()
 
 	if(dancer_tag_effect)
 		buffed = TRUE

@@ -904,16 +904,18 @@
 			if(X.hivenumber == hivenumber)
 				return FALSE
 
-		if(dodge_chance && !((ammo_flags & AMMO_SNIPER) || (ammo_flags & AMMO_ROCKET)))
-			if(body_position != LYING_DOWN && stat != UNCONSCIOUS) //We don't want to "somehow" dodge bullets when lying down/unconscious.
-				var/dodge_roll = rand(1, 100)
-				if(dodge_roll <= dodge_chance)
-					xeno_jitter(5 DECISECONDS)
-					if(P.ammo.sound_miss)
-						playsound_client(client, P.ammo.sound_miss, get_turf(src), 75, TRUE)
-					visible_message(SPAN_AVOIDHARM("The [src] darts aside, evading [P]!"),
-						SPAN_AVOIDHARM("You react fast, and [P] narrowly misses you!"), null, 4, CHAT_TYPE_TAKING_HIT)
-					return FALSE
+		if(dodge_bullet > 0)
+			if(!(ammo_flags & (AMMO_SNIPER | AMMO_ROCKET)))
+				if(body_position != LYING_DOWN && stat != UNCONSCIOUS)
+					count_shoot_bullets++
+					if(count_shoot_bullets >= dodge_bullet)
+						count_shoot_bullets = 0
+						xeno_jitter(5 DECISECONDS)
+						if(P.ammo.sound_miss)
+							playsound_client(client, P.ammo.sound_miss, get_turf(src), 75, TRUE)
+						visible_message(SPAN_AVOIDHARM("The [src] darts aside, evading [P]!"),
+							SPAN_AVOIDHARM("You react fast, and [P] narrowly misses you!"), null, 4, CHAT_TYPE_TAKING_HIT)
+						return FALSE
 
 		if(mob_size == MOB_SIZE_SMALL)
 			. -= 10

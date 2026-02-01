@@ -876,7 +876,7 @@ GLOBAL_DATUM_INIT(hud_icon_hudfocus, /image, image('icons/mob/hud/human_status.d
 		tag_holder.overlays += image('icons/mob/hud/hud.dmi', src, "prae_tag")
 
 	var/spread_tag_found = FALSE
-	for(var/datum/effects/dancer_tag_spread/spread_tag in effects_list)
+	for(var/datum/effects/dancer_tag/spread/spread_tag in effects_list)
 		if(!QDELETED(spread_tag))
 			spread_tag_found = TRUE
 			break

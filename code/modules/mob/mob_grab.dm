@@ -71,7 +71,6 @@
 		return
 
 
-
 	var/mob/victim = grabbed_thing
 	var/max_grab_size = user.mob_size
 	/// Amazing what you can do with a bit of dexterity.

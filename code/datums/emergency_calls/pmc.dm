@@ -11,7 +11,7 @@
 
 	max_smartgunners = 1
 	max_medics = 2
-	max_heavies = 0
+	max_heavies = 1
 	var/max_synths = 1
 	var/synths = 0
 

@@ -19,7 +19,7 @@
 	monkey_amount = 5
 	corpses_to_spawn = 0
 	flags_round_type = MODE_INFESTATION|MODE_FOG_ACTIVATED|MODE_NEW_SPAWN
-	static_comms_amount = 1
+	static_comms_amount = 2
 	var/round_status_flags
 	var/next_stat_check = 0
 	var/list/running_round_stats = list()
@@ -360,18 +360,21 @@
 		var/rendered_announce_text = replacetext(SSmapping.configs[GROUND_MAP].announce_text, "###SHIPNAME###", MAIN_SHIP_NAME)
 		marine_announcement(rendered_announce_text, "[MAIN_SHIP_NAME]")
 
-/datum/game_mode/proc/ares_command_check()
+/datum/game_mode/proc/ares_command_check(mob/living/carbon/human/commander = null, force = FALSE)
+	/// Job of the person being auto-promoted.
 	var/role_in_charge
+	/// human being auto-promoted.
 	var/mob/living/carbon/human/person_in_charge
-
-	var/list/role_needs_id = list(JOB_SO, JOB_CHIEF_ENGINEER, JOB_DROPSHIP_PILOT, JOB_CAS_PILOT, JOB_INTEL, JOB_FIELD_DOCTOR, JOB_DOCTOR, JOB_CHIEF_REQUISITION)
-	var/list/role_needs_comms = list(JOB_CHIEF_POLICE, JOB_CMO, JOB_CHIEF_ENGINEER, JOB_DROPSHIP_PILOT, JOB_CAS_PILOT, JOB_INTEL, JOB_FIELD_DOCTOR, JOB_DOCTOR, JOB_CHIEF_REQUISITION)
+	/// Extra info to add to the ARES announcement announcing the promotion.
 	var/announce_addendum
 
 	//Basically this follows the list of command staff in order of CoC,
 	//then if the role lacks senior command access it gives the person that access
 
-	if(GLOB.marine_leaders[JOB_CO] || GLOB.marine_leaders[JOB_XO])
+	if(SSticker.mode.acting_commander && !force) // If there's already an aCO; don't set a new one, unless forced.
+		return
+
+	if((GLOB.marine_leaders[JOB_CO] || GLOB.marine_leaders[JOB_XO]) && !force)
 		return
 	//If we have a CO or XO, we're good no need to announce anything.
 
@@ -387,33 +390,38 @@
 		if(job_by_chain == JOB_DOCTOR && GLOB.marine_officers[JOB_DOCTOR])
 			person_in_charge = pick(GLOB.marine_officers[JOB_DOCTOR])
 			break
+
 		//If the job is a list we have to stop here
 		if(person_in_charge)
-			continue
+			break
 
 		var/datum/job/job_datum = GLOB.RoleAuthority.roles_for_mode[job_by_chain]
-		person_in_charge = job_datum.get_active_player_on_job()
+		person_in_charge = job_datum?.get_active_player_on_job()
 		if(!isnull(person_in_charge))
 			break
 
-	if(isnull(person_in_charge))
-		return
+	if(commander) // pre-provided commander overrides the automatic selection.
+		person_in_charge = commander
+		role_in_charge = person_in_charge.job
 
-	if(LAZYFIND(role_needs_comms, role_in_charge))
-		//If the role needs comms we let them know about the headset.
-		announce_addendum += "\nA Command headset is available in the CIC Command Tablet cabinet."
+	if(!person_in_charge)
+		return log_admin("No valid commander found for automatic promotion.")
 
-	if(LAZYFIND(role_needs_id, role_in_charge))
-		//If the role needs senior command access, we need to add it to the ID card.
-		var/obj/item/card/id/card = person_in_charge.get_idcard()
-		if(card)
-			var/list/access = card.access
-			access.Add(list(ACCESS_MARINE_SENIOR, ACCESS_MARINE_DATABASE))
+	SSticker.mode.acting_commander = person_in_charge // Prevents double-dipping.
+
+	var/obj/item/card/id/card = person_in_charge.get_idcard()
+	if(card)
+		var/static/to_add = list(ACCESS_MARINE_SENIOR, ACCESS_MARINE_DATABASE, ACCESS_MARINE_COMMAND)
+		var/new_access = card.access | to_add
+		if(card.access ~! new_access)
+			card.access = new_access
 			announce_addendum += "\nSenior Command access added to ID."
 
+	announce_addendum += "\nA Command headset is available in the Command Tablet cabinet."
+
 	//does an announcement to the crew about the commander & alerts admins to that change for logs.
-	shipwide_ai_announcement("Due to the absence of command staff, commander authority now falls to [role_in_charge] [person_in_charge], who will assume command until further notice. Please direct all inquiries and follow instructions accordingly. [announce_addendum]", MAIN_AI_SYSTEM, 'sound/misc/interference.ogg')
-	message_admins("[key_name(person_in_charge, 1)] [ADMIN_JMP_USER(person_in_charge)] has been designated the operation commander.")
+	shipwide_ai_announcement("Acting Commander authority has been transferred to: [role_in_charge] [person_in_charge], who will assume command until further notice. Please direct all inquiries and follow instructions accordingly. [announce_addendum]", MAIN_AI_SYSTEM, 'sound/misc/interference.ogg')
+	message_admins("[key_name(person_in_charge, TRUE)] [ADMIN_JMP_USER(person_in_charge)] has been designated the operation commander.")
 	return
 
 
@@ -665,7 +673,7 @@
 				GLOB.round_statistics.current_map.total_xeno_victories++
 				GLOB.round_statistics.current_map.total_xeno_majors++
 		if(MODE_INFESTATION_M_MAJOR)
-			musical_track = pick('sound/theme/winning_triumph1.ogg','sound/theme/winning_triumph2.ogg')
+			musical_track = pick('sound/theme/winning_triumph1.ogg','sound/theme/winning_triumph2.ogg','sound/theme/winning_triumph3.ogg')
 			end_icon = "marine_major"
 			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
 				GLOB.round_statistics.current_map.total_marine_victories++

@@ -1,5 +1,0 @@
-author: "Nihisohel"
-delete-after: True
-changes:
-  - qol: "Squad prep vendors can now vend to hand again, following preferences, while also allowing equipment to be auto equipped, if possible."
-  - qol: "Surplus clothing vendors now have the auto-equip flag"

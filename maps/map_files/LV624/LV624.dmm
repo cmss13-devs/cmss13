@@ -37358,7 +37358,14 @@
 /turf/open/floor/wood/ship,
 /area/lv624/lazarus/medbay)
 "hbK" = (
-/turf/closed/wall/r_wall/unmeltable,
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
+/turf/open/hybrisa/street/cement2,
 /area/lv624/ground/colony/phi_lab/cargo)
 "hbU" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -45711,6 +45718,10 @@
 "qkj" = (
 /turf/open/gm/dirtmud/dirtmud_corner_outer/west,
 /area/lv624/ground/colony/west_nexus_road)
+"qla" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/turf/closed/wall/r_wall/unmeltable,
+/area/lv624/ground/colony/phi_lab)
 "qlD" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/largecrate/supply/supplies/water,
@@ -75485,7 +75496,7 @@ adM
 bAg
 bAg
 bAg
-bEH
+qla
 hbK
 bEm
 bzO

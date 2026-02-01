@@ -181,7 +181,7 @@
 	pixel_x = 7;
 	pixel_y = 10
 	},
-/obj/item/clothing/accessory/medal/bronze/science{
+/obj/item/clothing/accessory/medal/bronze{
 	pixel_x = -5
 	},
 /turf/open/floor/strata/white_cyan1/east,

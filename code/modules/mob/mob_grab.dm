@@ -1,6 +1,5 @@
 #define UPGRADE_COOLDOWN 2 SECONDS
 
-
 /obj/item/grab
 	name = "grab"
 	icon_state = "reinforce"
@@ -15,16 +14,13 @@
 	var/last_upgrade = 0 //used for cooldown between grab upgrades.
 
 
-
 /obj/item/grab/Initialize()
 	. = ..()
 	last_upgrade = world.time
 
-
 /obj/item/grab/dropped(mob/user)
 	user.stop_pulling()
 	. = ..()
-
 
 /obj/item/grab/Destroy()
 	grabbed_thing = null
@@ -33,7 +29,6 @@
 		M.grab_level = 0
 		M.stop_pulling()
 	. = ..()
-
 
 /obj/item/grab/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	if(!user)
@@ -59,7 +54,6 @@
 			return ATTACKBY_HINT_UPDATE_NEXT_MOVE
 
 
-
 /obj/item/grab/attack_self(mob/user)
 	..()
 	var/grab_delay = UPGRADE_COOLDOWN
@@ -67,10 +61,8 @@
 	SEND_SIGNAL(user, COMSIG_MOB_GRAB_UPGRADE, grabdata)
 	grab_delay = grabdata["grab_delay"]
 
-
 	if(!ismob(grabbed_thing) || world.time < (last_upgrade + grab_delay * user.get_skill_duration_multiplier(SKILL_CQC)))
 		return
-
 
 	if(!ishuman(user)) //only humans can reinforce a grab.
 		if (isxeno(user))
@@ -92,23 +84,19 @@
 		return //can't tighten your grip on mobs bigger than you and mobs you can't push.
 	last_upgrade = world.time
 
-
 	switch(user.grab_level)
 		if(GRAB_PASSIVE)
 			progress_passive(user, victim)
 		if(GRAB_AGGRESSIVE)
 			progress_aggressive(user, victim)
 
-
 	if(user.grab_level >= GRAB_AGGRESSIVE)
 		ADD_TRAIT(victim, TRAIT_FLOORED, CHOKEHOLD_TRAIT)
-
 
 /obj/item/grab/proc/progress_passive(mob/living/carbon/human/user, mob/living/victim)
 	if(SEND_SIGNAL(victim, COMSIG_MOB_AGGRESSIVELY_GRABBED, user) & COMSIG_MOB_AGGRESIVE_GRAB_CANCEL)
 		to_chat(user, SPAN_WARNING("You can't grab [victim] aggressively!"))
 		return
-
 
 	user.grab_level = GRAB_AGGRESSIVE
 	playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
@@ -150,7 +138,6 @@
 	msg_admin_attack("[key_name(user)] started to choke [key_name(victim)] at [get_area_name(victim)]", victim.loc.x, victim.loc.y, victim.loc.z)
 	victim.Move(user.loc, get_dir(victim.loc, user.loc))
 	victim.update_transform(TRUE)
-
 
 /obj/item/grab/attack(mob/living/dragged_mob, mob/living/user)
 	if(dragged_mob == grabbed_thing)

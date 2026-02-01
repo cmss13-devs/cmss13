@@ -67,7 +67,7 @@ GLOBAL_PROTECT(roles_allowed_minimap_draw)
  * Fire() for this subsystem doens't actually updates anything, and purely just reapplies the overlays that it already tracks
  * actual updating of marker locations is handled by [/datum/controller/subsystem/minimaps/proc/on_move]
  * and zlevel changes are handled in [/datum/controller/subsystem/minimaps/proc/on_z_change]
- * tracking of the actual atoms you want to be drawn on is done by means of datums holding info pertaining to them with [/datum/hud_displays]
+ * tracking of the actual atoms you want to be drawn on is done by means of datums holding info pertaining to them with [/datum/minimap_z_level_holder]
  *
  * Todo
  * *: add fetching of images to allow stuff like adding/removing xeno crowns easily
@@ -80,17 +80,17 @@ SUBSYSTEM_DEF(minimaps)
 	wait = 10
 	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 	///Minimap hud display datums sorted by zlevel
-	var/list/datum/hud_displays/minimaps_by_z = list()
+	var/list/datum/minimap_z_level_holder/minimaps_by_z = list()
 	///Assoc list of blips we hold by their source
 	var/list/atom/movable/screen/onscreen_tacmap_blip/blips_by_source = list()
 	///the update target datums, sorted by update flag type
 	var/list/update_targets = list()
-	///Nonassoc list of updators we want to have their overlays reapplied
-	var/list/datum/minimap_updator/update_targets_unsorted = list()
+	///Nonassoc list of updaters we want to have their overlays reapplied
+	var/list/datum/minimap_updater/update_targets_unsorted = list()
 	///Assoc list of removal callbacks to invoke to remove images from the raw lists
 	var/list/datum/callback/removal_cbs = list()
 	///list of holders for data relating to tracked zlevel and tracked atum
-	var/list/datum/minimap_updator/updators_by_datum = list()
+	var/list/datum/minimap_updater/updaters_by_datum = list()
 	///assoc list of hash = image of images drawn by players
 	var/list/image/drawn_images = list()
 	///list of callbacks we need to invoke late because Initialize happens early, or a Z-level was loaded after init
@@ -115,23 +115,23 @@ SUBSYSTEM_DEF(minimaps)
 	update_targets = SSminimaps.update_targets
 	update_targets_unsorted = SSminimaps.update_targets_unsorted
 	removal_cbs = SSminimaps.removal_cbs
-	updators_by_datum = SSminimaps.updators_by_datum
+	updaters_by_datum = SSminimaps.updaters_by_datum
 	drawn_images = SSminimaps.drawn_images
 
 /datum/controller/subsystem/minimaps/fire(resumed)
 	var/static/iteration = 0
 	var/depthcount = 0
-	for(var/datum/minimap_updator/updator as anything in update_targets_unsorted)
+	for(var/datum/minimap_updater/updator as anything in update_targets_unsorted)
 		if(depthcount < iteration) //under high load update in chunks
 			depthcount++
 			continue
 
-		var/atom/movable/screen/minimap/target = updator.minimap
+		var/atom/movable/screen/minimap/target = updater.minimap
 		if(istype(target) && !target.live)
-			update_targets_unsorted -= updator
+			update_targets_unsorted -= updater
 
-		updator.minimap.vis_contents = updator.blips
-		updator.minimap.overlays = updator.overlays_to_add
+		updater.minimap.vis_contents = updator.blips
+		updater.minimap.overlays = updator.overlays_to_add
 		depthcount++
 		iteration++
 		if(MC_TICK_CHECK)
@@ -143,7 +143,7 @@ SUBSYSTEM_DEF(minimaps)
 	SIGNAL_HANDLER
 
 	var/level = z_level.z_value
-	minimaps_by_z["[level]"] = new /datum/hud_displays
+	minimaps_by_z["[level]"] = new /datum/minimap_z_level_holder
 	if(!is_mainship_level(level) && !is_ground_level(level) && !(SSmapping.level_trait(level, ZTRAIT_AWAY))) //todo: maybe move this around
 		return
 	var/icon/icon_gen = new('icons/ui_icons/minimap.dmi') //600x600 blank icon template for drawing on the map
@@ -214,44 +214,44 @@ SUBSYSTEM_DEF(minimaps)
 	LAZYREMOVE(earlyadds, "[level]")
 
 /**
- * Adds an atom to the processing updators that will have blips drawn on them
+ * Adds an atom to the processing updaters that will have blips drawn on them
  * Arguments:
  * * target: the target we want to be updating the overlays on
  * * flags: flags for the types of blips we want to be updated
  * * ztarget: zlevel we want to be updated with
  */
 /datum/controller/subsystem/minimaps/proc/add_to_updaters(atom/target, flags, ztarget, drawing, labels)
-	var/datum/minimap_updator/holder = new(target, ztarget, drawing)
+	var/datum/minimap_updater/updater = new(target, ztarget, drawing)
 	for(var/flag in bitfield2list(flags))
-		LAZYADD(update_targets["[flag]"], holder)
+		LAZYADD(update_targets["[flag]"], updater)
 
 		for (var/blip in minimaps_by_z["[ztarget]"].blips_raw["[flag]"])
-			holder.add_blip(blip)
+			updater.add_blip(blip)
 
-		if(holder.drawing)
-			holder.add_image(drawn_images["[ztarget]-[flag]"])
+		if(updater.drawing)
+			updater.add_image(drawn_images["[ztarget]-[flag]"])
 
 		if(!labels)
 			continue
-		LAZYADD(update_targets["[flag]label"], holder)
+		LAZYADD(update_targets["[flag]label"], updater)
 		for (var/blip in minimaps_by_z["[ztarget]"].blips_raw["[flag]label"])
-			holder.add_blip(blip)
+			updater.add_blip(blip)
 
-		if(holder.drawing)
-			holder.add_image(drawn_images["[ztarget]-[flag]label"])
+		if(updater.drawing)
+			updater.add_image(drawn_images["[ztarget]-[flag]label"])
 
-	updators_by_datum[target] = holder
-	update_targets_unsorted += holder
-	RegisterSignal(target, COMSIG_PARENT_QDELETING, PROC_REF(remove_updator))
+	updaters_by_datum[target] = updater
+	update_targets_unsorted += updater
+	RegisterSignal(target, COMSIG_PARENT_QDELETING, PROC_REF(remove_updater))
 
 /**
  * Removes a atom from the subsystems updating overlays
  */
-/datum/controller/subsystem/minimaps/proc/remove_updator(atom/target)
+/datum/controller/subsystem/minimaps/proc/remove_updater(atom/target)
 	SIGNAL_HANDLER
 	UnregisterSignal(target, COMSIG_PARENT_QDELETING)
-	var/datum/minimap_updator/holder = updators_by_datum[target]
-	updators_by_datum -= target
+	var/datum/minimap_updater/holder = updaters_by_datum[target]
+	updaters_by_datum -= target
 	for(var/key in update_targets)
 		LAZYREMOVE(update_targets[key], holder)
 	update_targets_unsorted -= holder
@@ -262,7 +262,7 @@ SUBSYSTEM_DEF(minimaps)
  * raw lists just store the images, while the normal ones are assoc list of [tracked_atom] = image
  * the raw lists are to speed up the Fire() of the subsystem so we don't have to filter through
  */
-/datum/hud_displays
+/datum/minimap_z_level_holder
 	///Actual icon of the drawn zlevel with all of it's atoms
 	var/icon/hud_image
 	///Assoc list of updating images; list("[flag]" = list([source] = blip)
@@ -280,7 +280,7 @@ SUBSYSTEM_DEF(minimaps)
 	///max y for this zlevel
 	var/y_max = 1
 
-/datum/hud_displays/New()
+/datum/minimap_z_level_holder/New()
 	..()
 	for(var/flag in GLOB.all_minimap_flags)
 		blips_assoc["[flag]"] = list()
@@ -291,7 +291,7 @@ SUBSYSTEM_DEF(minimaps)
 /**
  * Holder datum to ease updating of atoms to update
  */
-/datum/minimap_updator
+/datum/minimap_updater
 	/// Atom to update with the overlays
 	var/atom/movable/minimap
 	///Target zlevel we want to be updating to
@@ -303,10 +303,10 @@ SUBSYSTEM_DEF(minimaps)
 	/// List of images to add to the map's overlays
 	var/list/image/overlays_to_add
 
-	/// does this updator showing map drawing
+	/// does this updater showing map drawing
 	var/drawing
 
-/datum/minimap_updator/New(minimap, ztarget, drawing)
+/datum/minimap_updater/New(minimap, ztarget, drawing)
 	..()
 	src.minimap = minimap
 	src.ztarget = ztarget
@@ -314,11 +314,11 @@ SUBSYSTEM_DEF(minimaps)
 	blips = list()
 	overlays_to_add = list()
 
-/datum/minimap_updator/proc/add_blip(atom/movable/screen/onscreen_tacmap_blip/blip)
+/datum/minimap_updater/proc/add_blip(atom/movable/screen/onscreen_tacmap_blip/blip)
 	to_world(SPAN_DEBUG("add blip: [blip]"))
 	src.blips += blip
 
-/datum/minimap_updator/proc/add_image(image/new_image)
+/datum/minimap_updater/proc/add_image(image/new_image)
 	src.overlays_to_add += new_image
 
 /**
@@ -359,9 +359,9 @@ SUBSYSTEM_DEF(minimaps)
 			flag = "[flag]label"
 		minimaps_by_z["[target_turf.z]"].blips_assoc["[flag]"][target] = blip
 		minimaps_by_z["[target_turf.z]"].blips_raw["[flag]"] += blip
-		for(var/datum/minimap_updator/updator as anything in update_targets["[flag]"])
-			if(target_turf.z == updator.ztarget)
-				updator.blips += blip
+		for(var/datum/minimap_updater/updator as anything in update_targets["[flag]"])
+			if(target_turf.z == updater.ztarget)
+				updater.blips += blip
 	if(ismovableatom(target))
 		RegisterSignal(target, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(on_z_change))
 		blip.RegisterSignal(target, COMSIG_MOVABLE_MOVED, TYPE_PROC_REF(/atom/movable/screen/onscreen_tacmap_blip, minimap_on_move))
@@ -389,13 +389,13 @@ SUBSYSTEM_DEF(minimaps)
 	var/turf/target_turf = get_turf(target)
 	for(var/flag in bitfield2list(hud_flags))
 		minimaps_by_z["[target_turf.z]"].blips_raw["[flag]"] -= blip
-		for(var/datum/minimap_updator/updator as anything in update_targets["[flag]"])
-			if(updator.ztarget == target_turf.z)
-				updator.blips -= blip
+		for(var/datum/minimap_updater/updator as anything in update_targets["[flag]"])
+			if(updater.ztarget == target_turf.z)
+				updater.blips -= blip
 		minimaps_by_z["[target_turf.z]"].blips_raw["[flag]label"] -= blip
-		for(var/datum/minimap_updator/updator as anything in update_targets["[flag]label"])
-			if(updator.ztarget == target_turf.z)
-				updator.blips -= blip
+		for(var/datum/minimap_updater/updator as anything in update_targets["[flag]label"])
+			if(updater.ztarget == target_turf.z)
+				updater.blips -= blip
 	blip.UnregisterSignal(target, COMSIG_MOVABLE_MOVED)
 	removal_cbs -= target
 
@@ -410,7 +410,7 @@ SUBSYSTEM_DEF(minimaps)
 	UnregisterSignal(source, list(COMSIG_PARENT_QDELETING, COMSIG_MOVABLE_Z_CHANGED))
 	var/turf/source_turf = get_turf(source)
 	for(var/flag in GLOB.all_minimap_flags)
-		// Delete the key from the associative list
+		// Delete the key from the associative lists
 		minimaps_by_z["[source_turf.z]"].blips_assoc["[flag]"] -= source
 		minimaps_by_z["[source_turf.z]"].blips_assoc["[flag]label"] -= source
 	blips_by_source -= source
@@ -424,7 +424,7 @@ SUBSYSTEM_DEF(minimaps)
  */
 /datum/controller/subsystem/minimaps/proc/on_z_change(atom/movable/source, oldz, newz)
 	SIGNAL_HANDLER
-	var/image/blip
+	var/atom/movable/screen/onscreen_tacmap_blip/blip
 	// Assumption: Never would a label be attached to a moveable atom
 	for(var/flag in GLOB.all_minimap_flags)
 		if(!minimaps_by_z["[oldz]"]?.blips_assoc["[flag]"][source])
@@ -433,13 +433,13 @@ SUBSYSTEM_DEF(minimaps)
 			blip = minimaps_by_z["[oldz]"].blips_assoc["[flag]"][source]
 			blip.minimap_on_move(source, null)
 		// todo maybe make update_targets also sort by zlevel?
-		for(var/datum/minimap_updator/updator as anything in update_targets["[flag]"])
-			if(updator.ztarget == oldz)
-				updator.blips -= blip
-			else if(updator.ztarget == newz)
-				updator.blips += blip
+		for(var/datum/minimap_updater/updator as anything in update_targets["[flag]"])
+			if(updater.ztarget == oldz)
+				updater.blips -= blip
+			else if(updater.ztarget == newz)
+				updater.blips += blip
 		minimaps_by_z["[newz]"].blips_assoc["[flag]"][source] = blip
-		minimaps_by_z["[oldz]"].blips_assoc["[flag]"] -= source
+		minimaps_by_z["[oldz]"].blips_assoc["[flag]"] -= blip
 
 		minimaps_by_z["[newz]"].blips_raw["[flag]"] += blip
 		minimaps_by_z["[oldz]"].blips_raw["[flag]"] -= blip
@@ -485,9 +485,9 @@ SUBSYSTEM_DEF(minimaps)
 	mona_lisa_image.icon = icon('icons/ui_icons/minimap.dmi')
 	if(minimaps_by_z["[zlevel]"])
 		minimaps_by_z["[zlevel]"].drawing_image = mona_lisa_image
-	for(var/datum/minimap_updator/updator as anything in update_targets["[minimap_flag]"])
-		if(zlevel == updator.ztarget && updator.drawing)
-			updator.overlays_to_add += mona_lisa_image
+	for(var/datum/minimap_updater/updator as anything in update_targets["[minimap_flag]"])
+		if(zlevel == updater.ztarget && updator.drawing)
+			updater.overlays_to_add += mona_lisa_image
 	drawn_images[hash] = mona_lisa_image
 	return mona_lisa_image
 
@@ -606,7 +606,7 @@ SUBSYSTEM_DEF(minimaps)
 	if(live)
 		return
 
-	SSminimaps.remove_updator(src)
+	SSminimaps.remove_updater(src)
 	SSminimaps.add_to_updaters(src, minimap_flags, target, drawing, labels=drawing)
 
 /atom/movable/screen/minimap/Destroy()
@@ -651,7 +651,7 @@ SUBSYSTEM_DEF(minimaps)
 		return
 
 	var/list/pixel_coords = params2screenpixel(modifiers["screen-loc"])
-	var/zlevel = SSminimaps.updators_by_datum[src].ztarget
+	var/zlevel = SSminimaps.updaters_by_datum[src].ztarget
 	var/x = (pixel_coords[1] - SSminimaps.minimaps_by_z["[zlevel]"].x_offset + plane_master.cur_x_shift)  / MINIMAP_SCALE
 	var/y = (pixel_coords[2] - SSminimaps.minimaps_by_z["[zlevel]"].y_offset + plane_master.cur_y_shift)  / MINIMAP_SCALE
 	var/c_x = clamp(CEILING(x, 1), 1, world.maxx)

@@ -10,7 +10,6 @@
 	var/datum/weakref/xeno_weakref = null
 
 /atom/movable/screen/onscreen_tacmap_blip/New(image/blip_image, atom/target)
-	to_world(SPAN_DEBUG("XXX new blip: target: [target]"))
 	src.blip_image = blip_image
 	src.overlays += src.blip_image
 

@@ -416,11 +416,9 @@ SUBSYSTEM_DEF(minimaps)
 	return mona_lisa_image
 
 /datum/controller/subsystem/minimaps/proc/handle_click_on_human_blip(mob/clicker, mob/living/carbon/human/human_from_blip)
-	to_world(SPAN_DEBUG("SSmm: clicker: [clicker], target: [human_from_blip]"))
 	blip_click_listener_manager.handle_click_on_human_blip(clicker, human_from_blip)
 
 /datum/controller/subsystem/minimaps/proc/handle_click_on_xeno_blip(mob/clicker, mob/living/carbon/xenomorph/xeno_from_blip)
-	to_world(SPAN_DEBUG("SSmm: clicker: [clicker], target: [xeno_from_blip]"))
 	blip_click_listener_manager.handle_click_on_xeno_blip(clicker, xeno_from_blip)
 
 ///Default HUD screen minimap object

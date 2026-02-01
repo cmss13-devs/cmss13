@@ -26,7 +26,6 @@
 	overlays_to_add = list()
 
 /datum/minimap_updater/proc/add_blip_to_updater(atom/movable/screen/onscreen_tacmap_blip/blip)
-	to_world(SPAN_DEBUG("add blip -> updater: [blip]"))
 	src.blips += blip
 
 /datum/minimap_updater/proc/remove_blip_from_updater(atom/movable/screen/onscreen_tacmap_blip/blip)

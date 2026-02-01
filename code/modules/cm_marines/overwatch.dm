@@ -84,9 +84,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	SSminimaps.blip_click_listener_manager.register_human_blip_click_listener(src, CALLBACK(src, PROC_REF(tacmap_blip_callback)))
 
 /obj/structure/machinery/computer/overwatch/proc/tacmap_blip_callback(mob/clicker, mob/living/carbon/human/clicked)
-	to_world(SPAN_DEBUG("tacmap_blip_cb: [src], [clicker], [clicked]"))
 	if (clicker.interactee != src)
-		to_world(SPAN_DEBUG("clicker_interactee: [clicker.interactee]"))
 		return
 
 	if (!current_squad)

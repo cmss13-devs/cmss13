@@ -283,6 +283,14 @@
 		var/datum/character_trait/character_trait = GLOB.character_traits[trait]
 		character_trait.apply_trait(new_human, src)
 
+/// condensed the backpack selector into a proc, 1 = bag, 2 = satchel, 3 = chestrig
+/datum/equipment_preset/proc/get_backpack_item(mob/living/carbon/human/new_human, default_backpack = /obj/item/storage/backpack/marine/satchel, primary_backpack = /obj/item/storage/backpack/marine)
+	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
+		return primary_backpack
+	else if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 3))
+		return /obj/item/storage/backpack/marine/satchel/chestrig
+	return default_backpack
+
 /datum/equipment_preset/strip //For removing all equipment
 	name = "*strip*"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -760,8 +768,6 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 			new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/metal_foam(new_human), WEAR_IN_BACK)
 		if(2)
 			new_human.equip_to_slot_or_del(new /obj/structure/closet/bodybag/tarp/reactive(new_human), WEAR_IN_BACK)
-		if(3)
-			new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/antiweed(new_human), WEAR_IN_BACK)
 
 
 /datum/equipment_preset/proc/add_random_cl_survivor_loot(mob/living/carbon/human/new_human) // Loot Generation associated with CL survivor. Makes them a little more valuable and not a useless pick.

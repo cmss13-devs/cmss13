@@ -67,11 +67,11 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 /// Attempt to wear this equipment, in the given slot if possible. If not, any slot is used.
 /datum/gear/proc/equip_to_user(mob/living/carbon/human/user, override_checks = FALSE, drop_instead_of_del = TRUE)
 	if(!override_checks && allowed_roles && !(user.job in allowed_roles))
-		to_chat(user, SPAN_WARNING("Gear [display_name] cannot be equipped: Invalid Role"))
+		to_chat(user, SPAN_WARNING("Gear [display_name] cannot be equipped: Invalid Role."))
 		return
 
 	if(!override_checks && allowed_origins && !(user.origin in allowed_origins))
-		to_chat(user, SPAN_WARNING("Gear [display_name] cannot be equipped: Invalid Origin"))
+		to_chat(user, SPAN_WARNING("Gear [display_name] cannot be equipped: Invalid Origin."))
 		return
 
 	if(!(slot && user.equip_to_slot_or_del(new path, slot)))
@@ -465,19 +465,19 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 
 /datum/gear/helmet_garb/netting
 	display_name = "Helmet netting"
-	path = /obj/item/prop/helmetgarb/netting
+	path = /obj/item/clothing/accessory/helmet/cover/netting
 
 /datum/gear/helmet_garb/netting/desert
 	display_name = "Desert Helmet netting"
-	path = /obj/item/prop/helmetgarb/netting/desert
+	path = /obj/item/clothing/accessory/helmet/cover/netting/desert
 
 /datum/gear/helmet_garb/netting/jungle
 	display_name = "Jungle Helmet netting"
-	path = /obj/item/prop/helmetgarb/netting/jungle
+	path = /obj/item/clothing/accessory/helmet/cover/netting/jungle
 
 /datum/gear/helmet_garb/netting/urban
 	display_name = "Urban Helmet netting"
-	path = /obj/item/prop/helmetgarb/netting/urban
+	path = /obj/item/clothing/accessory/helmet/cover/netting/urban
 
 /datum/gear/helmet_garb/lucky_feather
 	display_name = "Lucky feather, red"
@@ -505,19 +505,19 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 
 /datum/gear/helmet_garb/raincover
 	display_name = "Rain cover"
-	path = /obj/item/prop/helmetgarb/raincover
+	path = /obj/item/clothing/accessory/helmet/cover/raincover
 
 /datum/gear/helmet_garb/raincover/jungle
 	display_name = "Jungle Rain cover"
-	path = /obj/item/prop/helmetgarb/raincover/jungle
+	path = /obj/item/clothing/accessory/helmet/cover/raincover/jungle
 
 /datum/gear/helmet_garb/raincover/desert
 	display_name = "Desert Rain cover"
-	path = /obj/item/prop/helmetgarb/raincover/desert
+	path = /obj/item/clothing/accessory/helmet/cover/raincover/desert
 
 /datum/gear/helmet_garb/raincover/urban
 	display_name = "Urban Rain cover"
-	path = /obj/item/prop/helmetgarb/raincover/urban
+	path = /obj/item/clothing/accessory/helmet/cover/raincover/urban
 
 /datum/gear/helmet_garb/rabbits_foot
 	display_name = "Rabbit's foot"
@@ -639,6 +639,11 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	display_name = "Camera"
 	path = /obj/item/device/camera
 	fluff_cost = 2
+
+/datum/gear/toy/camera/disposable
+	display_name = "Old Disposable Camera"
+	path = /obj/item/device/camera/oldcamera
+	fluff_cost = 3
 
 /datum/gear/toy/mags
 	fluff_cost = 1

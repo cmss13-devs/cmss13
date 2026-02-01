@@ -125,7 +125,7 @@
 
 /obj/item/storage/belt/utility/construction
 	name = "\improper M277 pattern construction rig"
-	desc = "The M277 is a common rig used by Combat Technicians to carry around materials and other supplies. It consists of a modular belt with various clips. This version sarafices storage space for specialized material loading clips."
+	desc = "The M277 is a common rig used by Combat Technicians to carry around materials and other supplies. It consists of a modular belt with various clips. This version sacrifices storage space for specialized material loading clips."
 	storage_slots = 6
 	can_hold = list(
 		/obj/item/tool/crowbar,
@@ -1070,6 +1070,20 @@
 	for(var/i in 1 to storage_slots)
 		new /obj/item/ammo_magazine/handful/shotgun/heavy/slug(src)
 
+/obj/item/storage/belt/shotgun/black/es7_mixed/fill_preset_inventory()
+	for(var/i in 1 to (storage_slots/2))
+		new /obj/item/ammo_magazine/handful/shotgun/slug/es7(src)
+	for(var/i in 1 to (storage_slots/2))
+		new /obj/item/ammo_magazine/handful/shotgun/beanbag/es7(src)
+
+/obj/item/storage/belt/shotgun/black/es7_stun/fill_preset_inventory()
+	for(var/i in 1 to storage_slots)
+		new /obj/item/ammo_magazine/handful/shotgun/beanbag/es7(src)
+
+/obj/item/storage/belt/shotgun/black/es7_lethal/fill_preset_inventory()
+	for(var/i in 1 to storage_slots)
+		new /obj/item/ammo_magazine/handful/shotgun/slug/es7(src)
+
 /obj/item/storage/belt/shotgun/van_bandolier
 	name = "two bore bandolier"
 	desc = "A leather bandolier designed to hold extremely heavy shells. Can be attached to armor, worn over the back, or attached to belt loops."
@@ -1327,13 +1341,6 @@
 	else
 		return ..()
 
-/obj/item/storage/belt/grenade/bugkiller
-
-/obj/item/storage/belt/grenade/bugkiller/fill_preset_inventory()
-	new /obj/item/explosive/grenade/custom/antiweed(src)
-	new /obj/item/explosive/grenade/custom/antiweed(src)
-	new /obj/item/explosive/grenade/custom/antiweed(src)
-
 ////////////////////////////// GUN BELTS /////////////////////////////////////
 
 /obj/item/storage/belt/gun
@@ -1352,7 +1359,7 @@
 	max_w_class = SIZE_MEDIUM
 	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_ALLOW_QUICKDRAW
 	///Array of holster slots and stats to use for them. First layer is "1", "2" etc. Guns are stored in both the slot and the holstered_guns list which keeps track of which was last inserted.
-	var/list/obj/item/weapon/gun/holster_slots = list(
+	var/list/list/obj/item/weapon/gun/holster_slots = list(
 		"1" = list(
 			"gun" = null,
 			"underlay_sprite" = null,

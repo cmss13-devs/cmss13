@@ -507,7 +507,7 @@ t. optimisticdude
 		return
 	if(active)
 		resetting = 1
-		to_chat(usr, "Resetting tool. This will take a few seconds...  Do not attempt to use the tool during the reset or it may malfunction.")
+		to_chat(usr, "Resetting tool. This will take a few seconds... Do not attempt to use the tool during the reset or it may malfunction.")
 		while(active) //While keep running until it's reset (in case of lag-spam)
 			active = 0 //Sets it to not active
 			to_chat(usr, "Processing...")

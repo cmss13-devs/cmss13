@@ -240,8 +240,7 @@ Everything below isn't used or out of place.
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest/sanitation(new_human), WEAR_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/commando/cbrn(new_human), WEAR_FEET)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/cbrn_non_armored(new_human), WEAR_HANDS)
-			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
-			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/grenade/bugkiller(new_human), WEAR_WAIST)
+			new_human.equip_to_slot_or_del(new /obj/item/reagent_container/glass/watertank/fuel(new_human), WEAR_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas(new_human), WEAR_FACE)
 		if(2) // Janitor
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/janitor(new_human), WEAR_BODY)
@@ -494,7 +493,7 @@ Everything below isn't used or out of place.
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	assignment = JOB_WY_GOON
 	job_title = JOB_WY_GOON
-	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_WY_SEC = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/silver/cl
 	skills = /datum/skills/civilian/survivor/goon
 	faction = FACTION_WY

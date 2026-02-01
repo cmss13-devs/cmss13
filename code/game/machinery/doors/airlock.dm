@@ -254,7 +254,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, flatten_numeric_alist(alist(
 
 	switch(wire)
 		if(AIRLOCK_WIRE_MAIN_POWER)
-			//Cutting either one disables the main door power, but unless backup power is also cut, the backup power re-powers the door in 10 seconds. While unpowered, the door may be crowbarred open, but bolts-raising will not work. Cutting these wires may electocute the user.
+			//Cutting either one disables the main door power, but unless backup power is also cut, the backup power re-powers the door in 10 seconds. While unpowered, the door may be crowbarred open, but bolts-raising will not work. Cutting these wires may electrocute the user.
 			loseMainPower()
 			shock(usr, 50)
 
@@ -263,7 +263,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, flatten_numeric_alist(alist(
 			lock()
 
 		if(AIRLOCK_WIRE_BACKUP_POWER)
-			//Cutting either one disables the backup door power (allowing it to be crowbarred open, but disabling bolts-raising), but may electocute the user.
+			//Cutting either one disables the backup door power (allowing it to be crowbarred open, but disabling bolts-raising), but may electrocute the user.
 			loseBackupPower()
 			shock(usr, 50)
 
@@ -684,7 +684,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, flatten_numeric_alist(alist(
 			construction_busy = TRUE
 			if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 				construction_busy = FALSE
-				to_chat(user, SPAN_NOTICE(" You removed the airlock electronics!"))
+				to_chat(user, SPAN_NOTICE("You removed the airlock electronics!"))
 
 				var/obj/structure/airlock_assembly/doors_assembly = new assembly_type(loc)
 				if(istype(doors_assembly, /obj/structure/airlock_assembly/multi_tile))
@@ -922,7 +922,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, flatten_numeric_alist(alist(
 					qdel(x)
 				break
 
-/obj/structure/machinery/door/airlock/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/machinery/door/airlock/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	if(isElectrified() && arePowerSystemsOn())
 		var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
 		sparks.set_up(5, 1, src)
@@ -931,8 +931,8 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, flatten_numeric_alist(alist(
 		xeno.Stun(1)
 
 	playsound(src, 'sound/effects/metalhit.ogg', 50, TRUE)
-	xeno.visible_message(SPAN_XENOWARNING("\The [xeno] strikes \the [src] with its tail!"), SPAN_XENOWARNING("You strike \the [src] with your tail!"))
-	xeno.emote("tail")
+	xeno.visible_message(SPAN_XENOWARNING("[xeno] strikes [src] with its tail!"), SPAN_XENOWARNING("We strike [src] with our tail!"))
+	xeno.tail_stab_animation(src, blunt_stab)
 	var/damage = xeno.melee_damage_upper * TAILSTAB_AIRLOCK_DAMAGE_MULTIPLIER
 	take_damage(damage, xeno)
 	return TAILSTAB_COOLDOWN_NORMAL

@@ -168,7 +168,7 @@
 ////////// Dancer Abilities
 
 /datum/action/xeno_action/activable/tail_stab/harpoon_tail
-	name = "Harpoon Tail"
+	name = "Tail Lance"
 	action_icon_state = "tail_harpoon"
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_TAIL_STAB
@@ -196,7 +196,7 @@
 	var/duration = 10 SECONDS
 	var/dodge_timer = TIMER_ID_NULL
 	var/speed_buff_amount = 0.5
-	var/afterimage_interval = 2 DECISECONDS
+	var/afterimage_interval = 1 DECISECONDS
 
 /datum/action/xeno_action/activable/prae_tail_trip
 	name = "Tail Trip"

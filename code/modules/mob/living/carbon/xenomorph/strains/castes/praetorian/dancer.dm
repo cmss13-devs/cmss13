@@ -29,9 +29,8 @@
 	prae.regeneration_multiplier = XENO_REGEN_MULTIPLIER_TIER_7
 	prae.plasma_types = list(PLASMA_CATECHOLAMINE)
 	prae.claw_type = CLAW_TYPE_SHARP
-	prae.dodge_bullet = 6
-	prae.received_phero_caps["recovery"] = 3 //need to be limited, regens too fast.
-	prae.ignore_aura = "frenzy"  //we dont want to zoom fast randomly, it breaks muscule memory.
+	prae.dodge_threshold = 6
+	prae.received_phero_caps["recovery"] = 3 //need to be limited, regens too fast with high strength phermones.
 
 	prae.recalculate_everything()
 
@@ -41,7 +40,10 @@
 	/// How much time is left on timer. (used for status)
 	var/time_left = null
 
-	/// List of targets, used to spread yellow marks.
+	/// Check for slashed target that had yellow tag
+	var/spread_slash_triggered = FALSE
+
+	/// List of targets, used to spread yellow tag.
 	var/list/candidates = list()
 	/// How many targets got yellow tag.
 	var/spread_count = 0
@@ -64,13 +66,12 @@
 	/// Cooldown after activation to prevent accidental double click.
 	var/safe_click_cooldown = 0
 
-	/// How much dodge cooldown we decrease when slashing target?
-	var/dodge_coldown_decrease = 1.5 SECONDS
+	/// Timer to prevent dancer from spreading yellow tags.
+	var/last_dancer_spread_time = 0
 
 /datum/behavior_delegate/praetorian_dancer/append_to_stat()
 	. = list()
-	. += "Dodge Interval: [bound_xeno.count_shoot_bullets]/[bound_xeno.dodge_bullet]"
-	. += "Decrease Dodge Cooldown per Slash: -[dodge_coldown_decrease/10] seconds."
+	. += "Guaranteed Dodge every [bound_xeno.dodge_threshold] bullet."
 	intent_detection()
 	. += "Harpoon Tail Intent: [tail_mode]"
 	if(tail_mode == "Blunt")
@@ -84,48 +85,86 @@
 /datum/behavior_delegate/praetorian_dancer/melee_attack_additional_effects_self()
 	..()
 
-	var/datum/action/xeno_action/onclick/prae_dodge/action_time = get_action(bound_xeno, /datum/action/xeno_action/onclick/prae_dodge)
-	if(!action_time.action_cooldown_check())
-		action_time.reduce_cooldown(dodge_coldown_decrease)
+	if(!spread_slash_triggered)
+		return
+
+	spread_slash_triggered = FALSE
+
+	var/datum/action/xeno_action/activable/prae_impale/impale_action = get_action(bound_xeno, /datum/action/xeno_action/activable/prae_impale)
+	if(!impale_action.action_cooldown_check())
+		impale_action.reduce_cooldown(5 SECONDS)
+
+	var/datum/action/xeno_action/activable/prae_tail_trip/tail_trip_action = get_action(bound_xeno, /datum/action/xeno_action/activable/prae_tail_trip)
+	if(!tail_trip_action.action_cooldown_check())
+		tail_trip_action.reduce_cooldown(5 SECONDS)
 
 /datum/behavior_delegate/praetorian_dancer/melee_attack_additional_effects_target(mob/living/carbon/target_carbon)
 	if(!isxeno_human(target_carbon))
 		return
 
-	if(target_carbon.stat)
-		return
-
 	// Clean up all tags to 'refresh' our TTL
-	for(var/datum/effects/dancer_tag/target_tag in target_carbon.effects_list)
+	for(var/datum/effects/dancer_tag/normal/target_tag in target_carbon.effects_list)
 		qdel(target_tag)
 
-	new /datum/effects/dancer_tag(target_carbon, bound_xeno, , , 35)
+	new /datum/effects/dancer_tag/normal(target_carbon, bound_xeno, , , 35)
 
 	if(ishuman(target_carbon))
 		var/mob/living/carbon/human/target_human = target_carbon
 		target_human.update_xeno_hostile_hud()
 
-/datum/behavior_delegate/praetorian_dancer/on_kill_mob(mob/living/carbon/target_carbon)
-	candidates.Cut()
-	spread_count = 0
+	var/consumed_spread = FALSE
+	for(var/datum/effects/dancer_tag/spread/spread_tag in target_carbon.effects_list)
+		qdel(spread_tag)
+		consumed_spread = TRUE
+		break
 
+	if(consumed_spread)
+		spread_slash_triggered = TRUE
+
+	if(target_carbon.stat == UNCONSCIOUS)
+		try_spread_tags_from(target_carbon)
+
+/datum/behavior_delegate/praetorian_dancer/on_kill_mob(mob/living/carbon/target_carbon)
 	if(!isxeno_human(target_carbon))
 		return
 
-	var/turf/origin = get_turf(target_carbon)
+	try_spread_tags_from(target_carbon)
+
+/datum/behavior_delegate/praetorian_dancer/proc/try_spread_tags_from(mob/living/carbon/human/source)
+	if(!isxeno_human(source))
+		return
+
+	var/turf/origin = get_turf(source)
 	if(!origin)
 		return
 
+	if(world.time < last_dancer_spread_time + 5 SECONDS)
+		return
+
+	if(world.time < source.last_target_spread_time + 17 SECONDS)
+		return
+	source.last_target_spread_time = world.time
+
+	if(!(locate(/datum/effects/dancer_tag/prevent) in source.effects_list))
+		new /datum/effects/dancer_tag/prevent(source, bound_xeno)
+
+	candidates.Cut()
+	var/spread_count = 0
+
 	for(var/mob/living/carbon/human/human_target in view(5, origin))
-		if(human_target == target_carbon)
+		if(human_target == source)
 			continue
 		if(human_target.stat == DEAD)
 			continue
+		if(human_target.stat == UNCONSCIOUS)
+			continue
 		if(!isxeno_human(human_target))
 			continue
-		if(locate(/datum/effects/dancer_tag) in human_target.effects_list)
+		if(locate(/datum/effects/dancer_tag/normal) in human_target.effects_list)
 			continue
 		if(locate(/datum/effects/dancer_tag/spread) in human_target.effects_list)
+			continue
+		if(locate(/datum/effects/dancer_tag/prevent) in human_target.effects_list)
 			continue
 		candidates += human_target
 
@@ -140,6 +179,9 @@
 		new /datum/effects/dancer_tag/spread(human_target, bound_xeno)
 		human_target.update_xeno_hostile_hud()
 		spread_count++
+
+		if(spread_count)
+			last_dancer_spread_time = world.time
 
 /datum/behavior_delegate/praetorian_dancer/proc/calculate_time(full_time, when_started)
 	time_left = (full_time - (world.time - when_started)) / 10
@@ -231,7 +273,7 @@
 		apply_cooldown_override()
 		break
 
-	for(var/datum/effects/dancer_tag/dancer_tag_effect in target_carbon.effects_list)
+	for(var/datum/effects/dancer_tag/normal/dancer_tag_effect in target_carbon.effects_list)
 		buffed = TRUE
 		qdel(dancer_tag_effect)
 		break
@@ -300,7 +342,7 @@
 	behavior.safe_click_cooldown = world.time + 1 SECONDS
 	button.icon_state = "template_active"
 	dodge_user.speed_modifier -= speed_buff_amount
-	dodge_user.dodge_bullet -= 3
+	dodge_user.dodge_threshold -= 3
 	dodge_user.add_temp_pass_flags(PASS_MOB_THRU)
 	dodge_user.recalculate_speed()
 	dodge_user.balloon_alert(dodge_user, "we start our evasive stance!", text_color = "#7d32bb", delay = 1 SECONDS)
@@ -333,7 +375,7 @@
 	behavior.dodge_activated = FALSE
 	button.icon_state = "template_xeno"
 	dodge_remove.speed_modifier += speed_buff_amount
-	dodge_remove.dodge_bullet += 3
+	dodge_remove.dodge_threshold += 3
 	dodge_remove.remove_temp_pass_flags(PASS_MOB_THRU)
 	dodge_remove.recalculate_speed()
 	dodge_remove.reset_position_to_initial()
@@ -461,7 +503,7 @@
 	icon = 'icons/mob/xenos/castes/tier_3/praetorian.dmi'
 	layer = MOB_LAYER
 	var/fade_step = 0
-	var/fade_max_steps = 4
+	var/fade_max_steps = 3
 	var/fade_delay = 1 DECISECONDS
 
 /datum/action/xeno_action/activable/prae_tail_trip/use_ability(atom/target_atom)
@@ -519,7 +561,7 @@
 
 	var/buffed = FALSE
 
-	var/datum/effects/dancer_tag/dancer_tag_effect = locate() in target_carbon.effects_list
+	var/datum/effects/dancer_tag/normal/dancer_tag_effect = locate() in target_carbon.effects_list
 	var/datum/effects/dancer_tag/spread/tag_spread = locate() in target_carbon.effects_list
 
 	if(tag_spread)

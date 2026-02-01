@@ -29,6 +29,7 @@
 #define NEW_PLAYER_HUD "29" //Makes it easy to see new players.
 #define SPYCAM_HUD "30" //Remote control spy cameras.
 #define XENO_HOSTILE_TAG_SPREAD "31" // dancer prae yellow 'tag'
+#define XENO_HOSTILE_TAG_PREVENT "32" // dancer prae gray 'tag'
 
 //data HUD (medhud, sechud) defines
 #define MOB_HUD_SECURITY_BASIC 1

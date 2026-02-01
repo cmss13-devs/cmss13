@@ -8,6 +8,9 @@ GLOBAL_LIST_EMPTY(ckey_to_controller)
 	/// The client that we are connected to
 	var/client/controlling
 
+	/// The ckey of the client we are connected to
+	var/controlling_ckey
+
 	/// The port that their external software is running on
 	var/port
 
@@ -95,9 +98,18 @@ GLOBAL_LIST_EMPTY(ckey_to_controller)
 
 /datum/control_server/New(client/controlling, port)
 	src.controlling = controlling
+	src.controlling_ckey = controlling.ckey
 	src.port = port
 
 	GLOB.ckey_to_controller[controlling.ckey] = src
+
+	RegisterSignal(controlling, COMSIG_PARENT_QDELETING, PROC_REF(handle_parent_qdel))
+	RegisterSignal(controlling, COMSIG_CLIENT_MOB_LOGGED_IN, PROC_REF(handle_parent_login))
+
+/datum/control_server/Destroy(force, ...)
+	. = ..()
+
+	GLOB.ckey_to_controller -= controlling_ckey
 
 /// Initialises our browser and triggers communication with the server
 /datum/control_server/proc/setup()
@@ -116,6 +128,16 @@ GLOBAL_LIST_EMPTY(ckey_to_controller)
 	var/params_string = list2params(params)
 
 	controlling << output(list2params(list(endpoint, params_string)), "control-server.browser:contact")
+
+/datum/control_server/proc/handle_parent_qdel()
+	SIGNAL_HANDLER
+
+	qdel(src)
+
+/datum/control_server/proc/handle_parent_login(client/parent, mob/new_mob)
+	SIGNAL_HANDLER
+
+	addtimer(CALLBACK(parent, TYPE_PROC_REF(/client, enable_hardware_graphics)), 1 SECONDS)
 
 /client/verb/control_server_input(input as text)
 	set name = ".controller"

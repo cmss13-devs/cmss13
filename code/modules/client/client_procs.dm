@@ -519,7 +519,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	connection_time = world.time
 
-	winset(src, null, "command=\".configure graphics-hwmode on\"")
+	enable_hardware_graphics()
 	winset(src, "map", "style=\"[MAP_STYLESHEET]\"")
 
 	send_assets()
@@ -853,6 +853,9 @@ CLIENT_VERB(read_key_up, key as text|null)
 				if(WHISPER_CHANNEL)
 					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=whisper")
 					winset(src, "tgui_say.browser", "focus=true")
+
+/client/proc/enable_hardware_graphics()
+	winset(src, null, "command=\".configure graphics-hwmode on\"")
 
 /client/proc/update_fullscreen()
 	if(prefs.toggle_prefs & TOGGLE_FULLSCREEN)

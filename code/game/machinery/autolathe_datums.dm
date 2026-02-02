@@ -336,6 +336,23 @@
 	path = /obj/item/ammo_magazine/flamer_tank/smoke
 	category = AUTOLATHE_CATEGORY_EXPLOSIVES
 
+//Armylathe ordnance cartridges
+
+/datum/autolathe/recipe/armylathe/cartridge_smoke
+	name = "Smoke Ordnance Cartridge"
+	path = /obj/item/reagent_container/cartridge/smoke
+	category = AUTOLATHE_CATEGORY_CARTRIDGES
+
+/datum/autolathe/recipe/armylathe/cartridge_flash
+	name = "Flash Ordnance Cartridge"
+	path = /obj/item/reagent_container/cartridge/flash
+	category = AUTOLATHE_CATEGORY_CARTRIDGES
+
+/datum/autolathe/recipe/armylathe/cartridge_shrapnel
+	name = "Shrapnel Ordnance Cartridge"
+	path = /obj/item/reagent_container/cartridge/shrapnel
+	category = AUTOLATHE_CATEGORY_CARTRIDGES
+
 //Medilathe recipes
 /datum/autolathe/recipe/medilathe
 	category = AUTOLATHE_CATEGORY_MEDICAL

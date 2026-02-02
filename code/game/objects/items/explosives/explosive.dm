@@ -192,8 +192,8 @@
 			to_chat(user, SPAN_DANGER("The [name] can not hold more cartridges."))
 			return
 		else
-			if(user.temp_drop_inv_item(W))
-				to_chat(user, SPAN_NOTICE("You add \the [W] to the assembly."))
+			if(user.temp_drop_inv_item(C))
+				to_chat(user, SPAN_NOTICE("You add \the [C] to the assembly."))
 				C.forceMove(src)
 				cartridges += C
 				assembly_stage = ASSEMBLY_UNLOCKED

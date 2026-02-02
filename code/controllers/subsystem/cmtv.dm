@@ -588,6 +588,9 @@ SUBSYSTEM_DEF(cmtv)
 	if(is_opted_out && world.time - 5 MINUTES < is_opted_out)
 		return TRUE
 
+	if(possible_player.client.prefs.CMTV_toggle_optout)
+		return TRUE
+
 	if(!possible_player.client)
 		return TRUE
 

@@ -12,9 +12,9 @@
 	/// The 'height' of the ladder. higher numbers are considered physically higher
 	var/height = 0
 	/// The ladder below this one
-	var/obj/structure/ladder/down = null
+	var/obj/structure/ladder/down
 	/// The ladder above this one
-	var/obj/structure/ladder/up = null
+	var/obj/structure/ladder/up
 	var/is_watching = 0
 	var/obj/structure/machinery/camera/cam
 	/// Ladders are wonderful creatures, only one person can use it at a time

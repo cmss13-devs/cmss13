@@ -1,4 +1,16 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/item/trash/c_tube,
+/turf/open/floor/cmo,
+/area/varadero/interior/library/restaraunt)
+"ab" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/device/flashlight/lamp/green{
+	pixel_y = -2
+	},
+/obj/effect/landmark/crap_item,
+/turf/open/floor/wood,
+/area/varadero/interior/library/restaraunt)
 "ba" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -9,6 +21,18 @@
 "bl" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/window/eastright,
+/obj/item/trash/waffles{
+	pixel_y = -3;
+	name = "empty plate"
+	},
+/obj/item/trash/waffles{
+	pixel_y = -1;
+	name = "empty plate"
+	},
+/obj/item/trash/waffles{
+	pixel_y = 1;
+	name = "empty plate"
+	},
 /turf/open/floor/cmo,
 /area/varadero/interior/library/restaraunt)
 "cl" = (
@@ -31,8 +55,8 @@
 /turf/open/floor/cmo,
 /area/varadero/interior/library/restaraunt)
 "cy" = (
-/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/window,
+/obj/structure/machinery/vending/dinnerware,
 /turf/open/floor/cmo,
 /area/varadero/interior/library/restaraunt)
 "dl" = (
@@ -92,6 +116,9 @@
 	pixel_y = -5;
 	pixel_x = 2
 	},
+/obj/item/device/flashlight/lamp/green{
+	pixel_y = 12
+	},
 /turf/open/floor/wood,
 /area/varadero/interior/library/restaraunt)
 "ha" = (
@@ -141,7 +168,6 @@
 /area/varadero/interior/library/restaraunt)
 "ol" = (
 /mob/living/simple_animal/small/mouse,
-/obj/effect/decal/cleanable/blood/oil/streak,
 /turf/open/floor/cmo,
 /area/varadero/interior/library/restaraunt)
 "on" = (
@@ -151,6 +177,9 @@
 /obj/structure/machinery/alarm{
 	dir = 8;
 	pixel_x = 24
+	},
+/obj/structure/machinery/light{
+	dir = 4
 	},
 /turf/open/floor/wood,
 /area/varadero/interior/library/restaraunt)
@@ -192,6 +221,10 @@
 "uH" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/effect/landmark/objective_landmark/close,
+/obj/item/device/flashlight/lamp/green{
+	pixel_y = 12;
+	on = 1
+	},
 /turf/open/floor/wood,
 /area/varadero/interior/library/restaraunt)
 "vt" = (
@@ -204,7 +237,12 @@
 /area/varadero/interior/library/restaraunt)
 "vS" = (
 /obj/structure/machinery/storm_siren{
-	pixel_y = 9
+	pixel_y = 9;
+	pixel_x = -7
+	},
+/obj/structure/machinery/light/small{
+	dir = 1;
+	pixel_x = 5
 	},
 /turf/open/floor/wood,
 /area/varadero/interior/library/restaraunt)
@@ -217,7 +255,12 @@
 	pixel_y = -4;
 	pixel_x = 5
 	},
-/obj/structure/machinery/door/window/eastleft,
+/obj/item/shard,
+/obj/item/trash/waffles{
+	pixel_y = 9;
+	name = "empty plate";
+	pixel_x = -2
+	},
 /turf/open/floor/cmo,
 /area/varadero/interior/library/restaraunt)
 "xa" = (
@@ -225,6 +268,7 @@
 /obj/item/trash/candle{
 	pixel_y = 7
 	},
+/obj/structure/machinery/light/small,
 /turf/open/floor/wood,
 /area/varadero/interior/library/restaraunt)
 "xI" = (
@@ -257,7 +301,15 @@
 /turf/open/floor/wood/wood_broken2,
 /area/varadero/interior/library/restaraunt)
 "zv" = (
-/obj/structure/machinery/door/window/eastleft,
+/obj/effect/decal/cleanable/blood/drip,
+/obj/item/shard,
+/obj/item/stack/rods{
+	pixel_x = 7;
+	pixel_y = 7
+	},
+/obj/item/circuitboard/airlock{
+	pixel_y = 6
+	},
 /turf/open/floor/cmo,
 /area/varadero/interior/library/restaraunt)
 "Ag" = (
@@ -267,6 +319,9 @@
 /area/varadero/interior/library/restaraunt)
 "AG" = (
 /obj/structure/surface/table/woodentable/fancy,
+/obj/item/device/flashlight/lamp/green{
+	pixel_y = -2
+	},
 /turf/open/floor/wood,
 /area/varadero/interior/library/restaraunt)
 "AP" = (
@@ -275,6 +330,7 @@
 	pixel_x = -2;
 	pixel_y = 4
 	},
+/obj/structure/machinery/light,
 /turf/open/floor/cmo,
 /area/varadero/interior/library/restaraunt)
 "BJ" = (
@@ -300,11 +356,21 @@
 	name = "oven"
 	},
 /obj/structure/surface/table/almayer,
+/obj/structure/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/cmo,
 /area/varadero/interior/library/restaraunt)
 "Dh" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/item/tool/kitchen/utensil/pspoon,
+/obj/item/tool/kitchen/utensil/pspoon{
+	pixel_y = 5;
+	pixel_x = 8
+	},
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/obj/item/reagent_container/food/snacks/meatballsoup,
 /turf/open/floor/wood,
 /area/varadero/interior/library/restaraunt)
 "FB" = (
@@ -347,11 +413,16 @@
 /area/varadero/interior/library/restaraunt)
 "Kt" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/trash/snack_bowl{
-	pixel_y = 6;
-	pixel_x = 4
-	},
 /obj/structure/machinery/door/window/eastright,
+/obj/item/trash/waffles{
+	pixel_y = -3;
+	name = "empty plate"
+	},
+/obj/item/trash/waffles{
+	pixel_y = 9;
+	name = "empty plate";
+	pixel_x = 3
+	},
 /turf/open/floor/cmo,
 /area/varadero/interior/library/restaraunt)
 "Nf" = (
@@ -385,6 +456,9 @@
 	pixel_y = -24
 	},
 /obj/effect/decal/cleanable/blood/drip,
+/obj/structure/machinery/light/small{
+	pixel_x = 5
+	},
 /turf/open/floor/wood,
 /area/varadero/interior/library/restaraunt)
 "Rf" = (
@@ -454,6 +528,7 @@
 	dir = 4;
 	pixel_x = 7
 	},
+/obj/effect/spawner/random/toy,
 /turf/open/floor/wood,
 /area/varadero/interior/library/restaraunt)
 
@@ -465,7 +540,7 @@ ha
 Xx
 dl
 un
-un
+ha
 un
 Nf
 "}
@@ -485,7 +560,7 @@ ha
 ha
 co
 oX
-oX
+aa
 sP
 eR
 oW
@@ -568,7 +643,7 @@ un
 (10,1,1) = {"
 ha
 Dh
-yZ
+ab
 kZ
 ba
 kZ
@@ -605,10 +680,10 @@ kZ
 ha
 un
 un
-un
+ha
 No
 ha
-un
+ha
 un
 un
 Nf

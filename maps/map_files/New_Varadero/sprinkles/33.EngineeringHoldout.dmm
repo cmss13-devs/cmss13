@@ -50,9 +50,6 @@
 /turf/open/floor/shiva/blue/east,
 /area/template_noop)
 "ej" = (
-/obj/structure/closet/hydrant{
-	pixel_y = 32
-	},
 /obj/structure/surface/table,
 /obj/item/device/sentry_computer{
 	open = 1
@@ -109,7 +106,6 @@
 /area/template_noop)
 "jE" = (
 /obj/structure/machinery/power/apc/no_power/north,
-/obj/item/cell/high,
 /obj/item/circuitboard/apc{
 	pixel_x = 9;
 	pixel_y = 10
@@ -118,6 +114,7 @@
 	pixel_x = -10;
 	pixel_y = -21
 	},
+/obj/effect/spawner/random/powercell,
 /turf/open/floor/plating,
 /area/template_noop)
 "kr" = (

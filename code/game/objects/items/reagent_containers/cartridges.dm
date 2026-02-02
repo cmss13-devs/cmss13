@@ -16,7 +16,7 @@
 	var/has_lid = TRUE
 	var/base_name = " "
 
-	var/is_functional = FALSE
+	var/has_required_reagents = FALSE
 	var/has_disallowed_reagents = FALSE
 	var/list/obj/inherent_reagents = list()
 	var/list/obj/required_reagents = list()
@@ -250,7 +250,7 @@
 
 /obj/item/reagent_container/cartridge/proc/update_validity()
 	if(!reagents)
-		is_functional = FALSE
+		has_required_reagents = FALSE
 		has_disallowed_reagents = FALSE
 		return
 
@@ -261,12 +261,12 @@
 				has_disallowed_reagents = TRUE
 				break
 
-	is_functional = TRUE
+	has_required_reagents = TRUE
 	if(length(required_reagents))
 		for(var/req_id in required_reagents)
 			var/needed_amount = required_reagents[req_id]
 			if(!reagents.has_reagent(req_id, needed_amount))
-				is_functional = FALSE
+				has_required_reagents = FALSE
 				break
 
 /obj/item/reagent_container/cartridge/on_reagent_change()
@@ -298,7 +298,7 @@
 /obj/item/reagent_container/cartridge/smoke/update_icon()
 	overlays.Cut()
 
-	if(is_functional && !has_disallowed_reagents)
+	if(has_required_reagents && !has_disallowed_reagents)
 		overlays += image('icons/obj/items/chemistry.dmi', src, "cartridge_valid")
 
 	if(reagents && reagents.total_volume)
@@ -334,7 +334,7 @@
 /obj/item/reagent_container/cartridge/flash/update_icon()
 	overlays.Cut()
 
-	if(is_functional && !has_disallowed_reagents)
+	if(has_required_reagents && !has_disallowed_reagents)
 		overlays += image('icons/obj/items/chemistry.dmi', src, "cartridge_valid")
 
 	if(reagents && reagents.total_volume)
@@ -371,7 +371,7 @@
 /obj/item/reagent_container/cartridge/shrapnel/update_icon()
 	overlays.Cut()
 
-	if(is_functional && !has_disallowed_reagents)
+	if(has_required_reagents && !has_disallowed_reagents)
 		overlays += image('icons/obj/items/chemistry.dmi', src, "cartridge_valid")
 
 	if(reagents && reagents.total_volume)

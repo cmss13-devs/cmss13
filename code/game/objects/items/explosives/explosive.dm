@@ -182,7 +182,7 @@
 				to_chat(user, SPAN_DANGER("\the [W] is empty."))
 	else if (istype(W, /obj/item/reagent_container/cartridge) && (!assembly_stage || assembly_stage == ASSEMBLY_UNLOCKED))
 		var/obj/item/reagent_container/cartridge/C = W
-		if (!C.is_functional)
+		if (!C.has_required_reagents)
 			to_chat(user, SPAN_DANGER("The [name] has not been filled with the required chemicals."))
 			return
 		if (C.has_disallowed_reagents)

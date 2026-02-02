@@ -231,18 +231,13 @@
 /mob/living/carbon/xenomorph/proc/start_listening_for_tacmap_clicks()
 	if (!tacmap_click_listener_initialized)
 		tacmap_click_listener_initialized = TRUE
-	else
-		return
-
-	RegisterSignal(SSminimaps, COMSIG_XENO_TACMAP_BLIP_CLICKED, PROC_REF(tacmap_blip_callback))
+		RegisterSignal(SSminimaps, COMSIG_XENO_TACMAP_BLIP_CLICKED, PROC_REF(tacmap_blip_callback))
 
 /mob/living/carbon/xenomorph/proc/stop_listening_for_tacmap_clicks()
 	if (tacmap_click_listener_initialized)
 		tacmap_click_listener_initialized = FALSE
-	else
-		return
+		UnregisterSignal(SSminimaps, COMSIG_XENO_TACMAP_BLIP_CLICKED, PROC_REF(tacmap_blip_callback))
 
-	UnregisterSignal(SSminimaps, COMSIG_XENO_TACMAP_BLIP_CLICKED, PROC_REF(tacmap_blip_callback))
 
 /mob/living/carbon/xenomorph/proc/tacmap_blip_callback(_SSminimaps, mob/clicker, mob/living/carbon/xenomorph/click_target)
 	SIGNAL_HANDLER

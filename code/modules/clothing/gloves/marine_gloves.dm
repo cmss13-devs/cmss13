@@ -162,11 +162,21 @@
 	icon_state = "insulated"
 	item_state = "insulated"
 
+/obj/item/clothing/gloves/marine/veteran/ppo
+	name = "\improper WY PPO gloves"
+	desc = "Standard issue kevlon fiber gloves manufactured for and by Weyland-Yutani Personal Protection division. They are insulated against electrical shock."
+	icon_state = "ppo"
+	item_state = "ppo"
+
 /obj/item/clothing/gloves/marine/veteran/pmc
 	name = "\improper WY PMC gloves"
 	desc = "Standard issue kevlon fiber gloves manufactured for and by Weyland-Yutani PMC dispatch division. They are insulated against electrical shock."
 	icon_state = "pmc"
 	item_state = "pmc"
+
+/obj/item/clothing/gloves/marine/veteran/pmc/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/clothing/gloves/marine/veteran/pmc/commando
 	name = "\improper W-Y Commando gloves"
@@ -235,6 +245,10 @@
 	unacidable = TRUE
 	adopts_squad_color = FALSE
 
+/obj/item/clothing/gloves/marine/veteran/souto/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/souta)
+
 /obj/item/clothing/gloves/marine/veteran/insulated/van_bandolier
 	name = "custom shooting gloves"
 	desc = "Highly protective against injury, temperature, and electric shock. Cool in the summer, warm in the winter, and a secure grip on any surface. You could buy a lot for the price of these, and they're worth every penny."
@@ -253,6 +267,10 @@
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	unacidable = TRUE
 	adopts_squad_color = FALSE
+
+/obj/item/clothing/gloves/marine/joe/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/seegson)
 
 //=ROYAL MARINES=\\
 

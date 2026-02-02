@@ -18,7 +18,7 @@
 	flags_armor_protection = 0
 	toggleable = TRUE
 	hud_type = MOB_HUD_MEDICAL_ADVANCED
-	actions_types = list(/datum/action/item_action/toggle, /datum/action/item_action/view_publications)
+	actions_types = list(/datum/action/item_action/toggle/hudgoggles, /datum/action/item_action/view_publications)
 	req_skill = SKILL_MEDICAL
 	req_skill_level = SKILL_MEDICAL_MEDIC
 
@@ -32,9 +32,7 @@
 	name = "View Research Publications"
 	button.name = name
 	button.overlays.Cut()
-	var/image/IMG = image('icons/obj/structures/machinery/computer.dmi', button, "research")
-	IMG.pixel_x = 0
-	IMG.pixel_y = -5
+	var/image/IMG = image('icons/mob/hud/actions.dmi', button, "research")
 	button.overlays += IMG
 
 /datum/action/item_action/view_publications/update_button_icon()
@@ -158,7 +156,7 @@
 	toggleable = TRUE
 	flags_armor_protection = 0
 	hud_type = MOB_HUD_SECURITY_ADVANCED
-	actions_types = list(/datum/action/item_action/toggle)
+	actions_types = list(/datum/action/item_action/toggle/hudgoggles)
 
 /obj/item/clothing/glasses/hud/security/prescription
 	name = "\improper Prescription PatrolMate HUD"

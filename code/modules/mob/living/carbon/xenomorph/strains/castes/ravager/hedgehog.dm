@@ -177,7 +177,7 @@
 		return
 
 	shield_active = FALSE
-	button.icon_state = "template"
+	button.icon_state = "template_xeno"
 
 	for (var/datum/xeno_shield/shield in xeno.xeno_shields)
 		if (shield.shield_source == XENO_SHIELD_SOURCE_HEDGE_RAV)

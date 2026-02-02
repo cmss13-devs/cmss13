@@ -138,7 +138,7 @@
 			is_animating = FALSE //animation finished
 			return
 
-/obj/structure/closet/bodybag/tarp/open()
+/obj/structure/closet/bodybag/tarp/open(mob/user, force)
 	COOLDOWN_START(src, toggle_delay, 3 SECONDS) //3 seconds must pass before tarp can be closed
 	. = ..()
 	handle_cloaking()

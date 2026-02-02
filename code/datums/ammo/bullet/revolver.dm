@@ -175,7 +175,7 @@
 	..()
 	cell_explosion(T, 120, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_cause_data)
 
-/datum/ammo/bullet/revolver/webley //Mateba round without the knockdown.
+/datum/ammo/bullet/revolver/webley //Mateba(Unica) round without the knockdown.
 	name = ".455 Webley bullet"
 	damage = 60
 	damage_var_low = PROJECTILE_VARIANCE_TIER_8

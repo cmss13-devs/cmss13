@@ -165,6 +165,12 @@
 	.["hive_location"] = hive_location
 	.["burrowed_larva"] = burrowed_larva
 	.["evilution_level"] = evilution_level
+	.["evilution_note"] = ""
+	if(!assoc_hive.allow_no_queen_evo)
+		if(!assoc_hive.living_xeno_queen)
+			.["evilution_note"] = " (NO QUEEN)"
+		else if(!(assoc_hive.living_xeno_queen.ovipositor || assoc_hive.evolution_without_ovipositor))
+			.["evilution_note"] = " (NO OVIPOSITOR)"
 	.["pylon_status"] = pylon_status
 	.["xeno_background"] = xeno_background
 
@@ -193,7 +199,7 @@
 
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
-		ui = new(user, src, "HiveStatus", "[assoc_hive.name] Status")
+		ui = new(user, src, "HiveStatus", "[capitalize(assoc_hive.name)] Status")
 		ui.open()
 		ui.set_autoupdate(FALSE)
 

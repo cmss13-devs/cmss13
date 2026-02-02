@@ -151,7 +151,7 @@
 			if(living_carbon.mob_size <= MOB_SIZE_XENO)
 				living_carbon.visible_message(SPAN_DANGER("The barbed wire slices into [living_carbon]!"),
 				SPAN_DANGER("The barbed wire slices into you!"))
-				living_carbon.apply_damage(10)
+				living_carbon.apply_damage(10, enviro=TRUE)
 				living_carbon.apply_effect(2, WEAKEN) //Leaping into barbed wire is VERY bad
 				playsound(living_carbon, "bonk", 75, FALSE)
 	..()

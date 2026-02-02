@@ -14,6 +14,7 @@ import './styles/themes/crt/crt-green.scss';
 import './styles/themes/crt/crt-lobby.scss';
 import './styles/themes/crt/crt-lobby-red.scss';
 import './styles/themes/crt/crt-red.scss';
+import './styles/themes/crt/crt-purple.scss';
 import './styles/themes/crt/crt-white.scss';
 import './styles/themes/crt/crt-upp.scss';
 import './styles/themes/crt/crt-yellow.scss';
@@ -40,7 +41,7 @@ import './styles/themes/xeno.scss';
 import './styles/themes/hive_status.scss';
 
 import { perf } from 'common/perf';
-import { setupHotReloading } from 'tgui-dev-server/link/client.mjs';
+import { setupHotReloading } from 'tgui-dev-server/link/client';
 
 import { App } from './App';
 import { setGlobalStore } from './backend';

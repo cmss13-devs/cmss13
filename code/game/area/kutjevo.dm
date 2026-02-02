@@ -41,7 +41,7 @@
 	icon_state = "oob"
 	requires_power = FALSE
 	is_resin_allowed = FALSE
-	flags_area = AREA_NOTUNNEL|AREA_UNWEEDABLE
+	flags_area = AREA_NOBURROW|AREA_UNWEEDABLE
 
 /area/kutjevo/interior/oob/dev_room
 	name = "Kutjevo - Credits Room"
@@ -324,7 +324,14 @@
 	icon_state = "colony_caves_3"
 
 /area/kutjevo/interior/colony_south/power2
-	name = "Kutjevo - South Colony Treatment Plant"
+	name = "Kutjevo - South Colony Treatment Plant - North"
+	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
+	icon_state = "colony_caves_3"
+	minimap_color = MINIMAP_AREA_ENGI_CAVE
+	unoviable_timer = FALSE
+
+/area/kutjevo/interior/colony_south/power2/south
+	name = "Kutjevo - South Colony Treatment Plant - South"
 	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
 	icon_state = "colony_caves_3"
 	minimap_color = MINIMAP_AREA_ENGI_CAVE

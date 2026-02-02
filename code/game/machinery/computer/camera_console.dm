@@ -29,6 +29,8 @@
 	SEND_SIGNAL(src, COMSIG_CAMERA_CLEAR)
 
 	if(colony_camera_mapload && mapload && is_ground_level(z))
+		if(SSmapping.configs[GROUND_MAP].map_name == MAP_WHISKEY_OUTPOST)
+			return FALSE
 		network = list(CAMERA_NET_COLONY)
 
 
@@ -377,7 +379,7 @@
 	network = list(CAMERA_NET_CONTAINMENT, CAMERA_NET_RESEARCH)
 
 /obj/structure/machinery/computer/cameras/containment/hidden
-	network = list(CAMERA_NET_CONTAINMENT, CAMERA_NET_CONTAINMENT_HIDDEN, CAMERA_NET_RESEARCH)
+	network = list(CAMERA_NET_CONTAINMENT, CAMERA_NET_RESEARCH, CAMERA_NET_CONTAINMENT_HIDDEN)
 
 /obj/structure/machinery/computer/cameras/almayer_network
 	network = list(CAMERA_NET_ALMAYER)
@@ -429,8 +431,9 @@
 	name = "\improper 'Saipan' camera controls"
 	network = list(CAMERA_NET_RESEARCH, CAMERA_NET_LASER_TARGETS)
 
-/obj/structure/machinery/computer/cameras/yautja
-	name = "Hellhound Observation Interface"
+/obj/structure/machinery/computer/cameras/internal
+	name = "Internal Camera Link"
+	desc = "If you can see this, someone messed up."
 	alpha = 0
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	density = FALSE
@@ -438,10 +441,14 @@
 	idle_power_usage = 0
 	active_power_usage = 0
 	needs_power = FALSE
-	network = list(CAMERA_NET_YAUTJA)
+	network = list(CAMERA_NET_ALMAYER)
 	explo_proof = TRUE
 
-/obj/structure/machinery/computer/cameras/yautja/Initialize()
+/obj/structure/machinery/computer/cameras/internal/yautja
+	name = "Hellhound Observation Interface"
+	network = list(CAMERA_NET_YAUTJA)
+
+/obj/structure/machinery/computer/cameras/internal/yautja/Initialize()
 	. = ..()
 	SEND_SIGNAL(src, COMSIG_CAMERA_SET_NVG, 5, NV_COLOR_RED)
 

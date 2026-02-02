@@ -48,6 +48,7 @@
 	LAZYINITLIST(simulations)
 	LAZYINITLIST(property_costs)
 	LAZYINITLIST(recipe_targets)
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/structure/machinery/chem_simulator/power_change()
 	..()
@@ -325,7 +326,7 @@
 					continue
 				switch(mode)
 					if(MODE_AMPLIFY)
-						property_costs[P.name] = max(min(P.level - 1, PROPERTY_COST_MAX), 1)
+						property_costs[P.name] = max(min(P.level + P.value - 1, PROPERTY_COST_MAX), 1)
 					if(MODE_SUPPRESS)
 						property_costs[P.name] = 2
 					if(MODE_RELATE)
@@ -335,12 +336,12 @@
 							else if(reference_property.rarity < PROPERTY_RARE)
 								property_costs[P.name] = P.level
 							else
-								property_costs[P.name] = P.level * PROPERTY_MULTIPLIER_RARE
+								property_costs[P.name] = (P.level * PROPERTY_MULTIPLIER_RARE) + P.value
 						else
-							property_costs[P.name] = P.level * 1
-		if(only_positive)
+							property_costs[P.name] = P.level + P.value
+		if(!only_positive)
 			for(var/P in property_costs)
-				property_costs[P] = property_costs[P] + 1
+				property_costs[P] = max(property_costs[P] - 2, 1)
 	GLOB.chemical_data.has_new_properties = FALSE
 
 /obj/structure/machinery/chem_simulator/proc/calculate_new_od_level()
@@ -365,7 +366,7 @@
 		for(var/i = 0 to 5) //5 attempts at modifying the recipe before elevating recipe length
 			if(LAZYLEN(R.required_reagents) > 2)
 				LAZYREMOVE(R.required_reagents, pick(R.required_reagents))
-			var/new_component_id = R.add_component(tier = max(min(target.data.chemclass, CHEM_CLASS_COMMON), target.data.gen_tier, 1))
+			var/new_component_id = R.add_component(tier = max(target.data.gen_tier-1, 1))
 			var/datum/reagent/new_component = GLOB.chemical_reagents_list[new_component_id]
 			//Make sure we don't have an identical reaction and that the component is identified
 			if(R.check_duplicate() || R.check_reaction_uses_all_default_medical() || new_component.chemclass >= CHEM_CLASS_SPECIAL)

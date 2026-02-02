@@ -13,6 +13,7 @@ const PAGES = {
   login: () => Login,
   main: () => MainMenu,
   vents: () => SecVents,
+  printer: () => Printer,
 };
 
 type Data = {
@@ -29,6 +30,9 @@ type Data = {
   cell_flash_cooldown: number;
   sec_flash_cooldown: number;
   security_vents: VentRecord[];
+  restricted_camera: BooleanLike;
+  printer_cooldown: BooleanLike;
+  available_documents: string[];
 };
 
 export const WYComputer = (props) => {
@@ -100,7 +104,7 @@ const Login = (props) => {
       <Box mb="2rem" fontFamily="monospace">
         WY-DOS Executive
       </Box>
-      <Box fontFamily="monospace">Version 1.3.7</Box>
+      <Box fontFamily="monospace">Version 1.3.8</Box>
       <Box fontFamily="monospace">Copyright © 2182, Weyland Yutani Corp.</Box>
 
       <Button
@@ -133,6 +137,8 @@ const MainMenu = (props) => {
     open_cell_shutters,
     cell_flash_cooldown,
     sec_flash_cooldown,
+    restricted_camera,
+    printer_cooldown,
   } = data;
 
   return (
@@ -176,11 +182,32 @@ const MainMenu = (props) => {
 
       <Section>
         <h1 style={{ textAlign: 'center' }}>Navigation Menu</h1>
-
-        {access_level >= 4 && (
+        {access_level >= 2 && (
           <Stack>
             <Stack.Item grow>
-              <h3>Intranet Tier 4</h3>
+              <h3>Intranet Tier 2</h3>
+            </Stack.Item>
+            <Stack.Item>
+              <Button
+                tooltip="Access the document printer."
+                icon="paper"
+                ml="auto"
+                px="2rem"
+                width="100%"
+                bold
+                onClick={() => act('page_printer')}
+                disabled={printer_cooldown}
+              >
+                Document Printer
+              </Button>
+            </Stack.Item>
+          </Stack>
+        )}
+
+        {access_level >= 5 && (
+          <Stack>
+            <Stack.Item grow>
+              <h3>Intranet Tier 5</h3>
             </Stack.Item>
             <Stack.Item>
               <Button
@@ -198,7 +225,7 @@ const MainMenu = (props) => {
           </Stack>
         )}
       </Section>
-      {(access_level === 3 || access_level >= 5) && (
+      {(access_level === 3 || access_level === 4 || access_level >= 6) && (
         <Section>
           <h1 style={{ textAlign: 'center' }}>Security Protocols</h1>
           {!!has_room_divider && !has_hidden_cell && (
@@ -231,7 +258,7 @@ const MainMenu = (props) => {
           >
             Security Flash
           </Button.Confirm>
-          {(access_level === 3 || access_level >= 6) && (
+          {(access_level === 3 || access_level === 4 || access_level >= 7) && (
             <Button
               align="center"
               tooltip="Release stored CN20-X nerve gas from security vents."
@@ -246,71 +273,102 @@ const MainMenu = (props) => {
               Nerve Gas Control
             </Button>
           )}
-        </Section>
-      )}
-      {(access_level === 3 || access_level >= 5) && !!has_hidden_cell && (
-        <Section>
-          <h1 style={{ textAlign: 'center' }}>Hidden Cell Controls</h1>
-          {!!has_room_divider && (
-            <Button.Confirm
+          {!restricted_camera && (
+            <Button
               align="center"
-              tooltip="Activate/Deactivate the concealed Room Divider."
-              icon="fingerprint"
-              color={open_divider ? 'green' : 'red'}
+              tooltip="Open the available intranet camera feeds."
+              icon="camera"
+              color="yellow"
               ml="auto"
               px="2rem"
               width="100%"
               bold
-              onClick={() => act('unlock_divider')}
-              disabled={!has_room_divider}
+              onClick={() => act('open_cameras')}
             >
-              Room Divider
-            </Button.Confirm>
+              Access Camera Feed
+            </Button>
           )}
-          <Button.Confirm
-            align="center"
-            tooltip="Open/Close the cell security shutters."
-            icon={open_cell_shutters ? 'lock-open' : 'lock'}
-            color={open_cell_shutters ? 'green' : 'red'}
-            ml="auto"
-            px="2rem"
-            width="100%"
-            bold
-            onClick={() => act('cell_shutters')}
-            disabled={!has_hidden_cell}
-          >
-            Door Shutters
-          </Button.Confirm>
-          <Button.Confirm
-            align="center"
-            tooltip="Open/Close the cell door."
-            icon={open_cell_door ? 'door-open' : 'door-closed'}
-            color={open_cell_door ? 'green' : 'red'}
-            ml="auto"
-            px="2rem"
-            width="100%"
-            bold
-            onClick={() => act('cell_door')}
-            disabled={!has_hidden_cell}
-          >
-            Door Control
-          </Button.Confirm>
-          <Button.Confirm
-            align="center"
-            tooltip="Activate the cell's flashbulb."
-            icon="lightbulb"
-            color="yellow"
-            ml="auto"
-            px="2rem"
-            width="100%"
-            bold
-            onClick={() => act('cell_flash')}
-            disabled={cell_flash_cooldown}
-          >
-            Cell Flash
-          </Button.Confirm>
         </Section>
       )}
+      {(access_level === 3 || access_level === 4 || access_level >= 6) &&
+        !!has_hidden_cell && (
+          <Section>
+            <h1 style={{ textAlign: 'center' }}>Hidden Cell Controls</h1>
+            {!!has_room_divider && (
+              <Button.Confirm
+                align="center"
+                tooltip="Activate/Deactivate the concealed Room Divider."
+                icon="fingerprint"
+                color={open_divider ? 'green' : 'red'}
+                ml="auto"
+                px="2rem"
+                width="100%"
+                bold
+                onClick={() => act('unlock_divider')}
+                disabled={!has_room_divider}
+              >
+                Room Divider
+              </Button.Confirm>
+            )}
+            <Button.Confirm
+              align="center"
+              tooltip="Open/Close the cell security shutters."
+              icon={open_cell_shutters ? 'lock-open' : 'lock'}
+              color={open_cell_shutters ? 'green' : 'red'}
+              ml="auto"
+              px="2rem"
+              width="100%"
+              bold
+              onClick={() => act('cell_shutters')}
+              disabled={!has_hidden_cell}
+            >
+              Door Shutters
+            </Button.Confirm>
+            <Button.Confirm
+              align="center"
+              tooltip="Open/Close the cell door."
+              icon={open_cell_door ? 'door-open' : 'door-closed'}
+              color={open_cell_door ? 'green' : 'red'}
+              ml="auto"
+              px="2rem"
+              width="100%"
+              bold
+              onClick={() => act('cell_door')}
+              disabled={!has_hidden_cell}
+            >
+              Door Control
+            </Button.Confirm>
+            <Button.Confirm
+              align="center"
+              tooltip="Activate the cell's flashbulb."
+              icon="lightbulb"
+              color="yellow"
+              ml="auto"
+              px="2rem"
+              width="100%"
+              bold
+              onClick={() => act('cell_flash')}
+              disabled={cell_flash_cooldown}
+            >
+              Cell Flash
+            </Button.Confirm>
+            {!!restricted_camera && (
+              <Button
+                align="center"
+                tooltip="Open the available intranet camera feeds."
+                icon="camera"
+                color="yellow"
+                ml="auto"
+                px="2rem"
+                width="100%"
+                bold
+                onClick={() => act('open_cameras')}
+              >
+                Access Camera Feed
+              </Button>
+            )}
+          </Section>
+        )}
     </>
   );
 };
@@ -378,11 +436,85 @@ const SecVents = (props) => {
               tooltip="Release Gas"
               width="100%"
               disabled={
-                (access_level < 6 && access_level !== 3) || !vent.available
+                (access_level < 7 && access_level !== 3) || !vent.available
               }
               onClick={() => act('trigger_vent', { vent: vent.ref })}
             >
               {vent.vent_tag}
+            </Button.Confirm>
+          );
+        })}
+      </Section>
+    </>
+  );
+};
+
+const Printer = (props) => {
+  const { data, act } = useBackend<Data>();
+  const {
+    logged_in,
+    access_text,
+    last_page,
+    current_menu,
+    available_documents,
+    printer_cooldown,
+  } = data;
+
+  return (
+    <>
+      <Section>
+        <Flex align="center">
+          <Box>
+            <Button
+              icon="arrow-left"
+              px="2rem"
+              textAlign="center"
+              tooltip="Go back"
+              onClick={() => act('go_back')}
+              disabled={last_page === current_menu}
+            />
+            <Button
+              icon="house"
+              ml="auto"
+              mr="1rem"
+              tooltip="Navigation Menu"
+              onClick={() => act('home')}
+              disabled={current_menu === 'main'}
+            />
+          </Box>
+
+          <h3>
+            {logged_in}, {access_text}
+          </h3>
+
+          <Button.Confirm
+            icon="circle-user"
+            ml="auto"
+            px="2rem"
+            bold
+            onClick={() => act('logout')}
+          >
+            Logout
+          </Button.Confirm>
+        </Flex>
+      </Section>
+
+      <Section>
+        <h1 style={{ textAlign: 'center' }}>Document Printer Library</h1>
+      </Section>
+      <Section>
+        {available_documents.map((document, i) => {
+          return (
+            <Button.Confirm
+              key={i}
+              align="center"
+              icon="printer"
+              tooltip="Print this document."
+              width="100%"
+              disabled={printer_cooldown}
+              onClick={() => act('print_document', { document_name: document })}
+            >
+              {document}
             </Button.Confirm>
           );
         })}

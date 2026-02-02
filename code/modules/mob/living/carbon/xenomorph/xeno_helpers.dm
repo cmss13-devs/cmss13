@@ -1,5 +1,5 @@
 /mob/living/carbon/xenomorph/can_ventcrawl()
-	return (mob_size < MOB_SIZE_BIG && caste.can_vent_crawl)
+	return (mob_size < MOB_SIZE_BIG && caste.can_vent_crawl && !LAZYLEN(buckled_mobs))
 
 /mob/living/carbon/xenomorph/ventcrawl_carry()
 	var/mob/living/carbon/human/user = hauled_mob?.resolve()
@@ -13,15 +13,17 @@
 	return FALSE
 
 /mob/living/carbon/xenomorph/proc/can_destroy_special()
-	if(hive)
-		if(IS_XENO_LEADER(src))
-			if(hive.destruction_allowed == NORMAL_XENO || hive.destruction_allowed == XENO_LEADER)
-				return TRUE
-		if(hive.destruction_allowed == NORMAL_XENO && isxeno_builder(src))
+	if(!hive)
+		return FALSE
+	if(isqueen(src))
+		if(HAS_FLAG(hive.hive_flags, XENO_DECONSTRUCTION_QUEEN))
 			return TRUE
-		if(isqueen(src))
+	else if(IS_XENO_LEADER(src))
+		if(HAS_FLAG(hive.hive_flags, XENO_DECONSTRUCTION_LEADERS))
 			return TRUE
-
+	else if(isxeno_builder(src))
+		if(HAS_FLAG(hive.hive_flags, XENO_DECONSTRUCTION_NORMAL))
+			return TRUE
 	return FALSE
 
 /mob/living/carbon/xenomorph/proc/get_plasma_percentage()

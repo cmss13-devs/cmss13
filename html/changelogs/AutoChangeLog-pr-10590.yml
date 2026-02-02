@@ -1,4 +1,0 @@
-author: "Red-byte3D"
-delete-after: True
-changes:
-  - bugfix: "Spit overlays no longer get added on when you chose an ability after you die or are knocked down"

@@ -453,10 +453,12 @@ const SentryCamera = (props: { readonly sentry_data: SentrySpec[] }) => {
         <Flex justify="center">
           <Flex.Item>
             <ByondUi
-              className="CameraBox"
-              params={{
+              winsetParams={{
                 id: data.mapRef,
                 type: 'map',
+              }}
+              boxProps={{
+                className: 'CameraBox',
               }}
             />
           </Flex.Item>

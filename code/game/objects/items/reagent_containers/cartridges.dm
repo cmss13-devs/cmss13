@@ -16,11 +16,11 @@
 	var/has_lid = TRUE
 	var/base_name = " "
 
-	var/has_required_reagents = FALSE
-	var/has_disallowed_reagents = FALSE
 	var/list/obj/inherent_reagents = list()
 	var/list/obj/required_reagents = list()
 	var/list/obj/allowed_reagents = list()
+	var/has_required_reagents = FALSE
+	var/has_disallowed_reagents = FALSE
 
 	var/list/can_be_placed_into = list(
 		/obj/structure/machinery/chem_master/,

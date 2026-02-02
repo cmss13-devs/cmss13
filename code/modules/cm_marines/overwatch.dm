@@ -81,9 +81,11 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		ob_cannon_safety = GLOB.ob_cannon_safety
 
 	AddComponent(/datum/component/tacmap, has_drawing_tools=TRUE, minimap_flag=minimap_flag, has_update=TRUE)
-	SSminimaps.blip_click_listener_manager.register_human_blip_click_listener(src, CALLBACK(src, PROC_REF(tacmap_blip_callback)))
+	RegisterSignal(SSminimaps, COMSIG_HUMAN_TACMAP_BLIP_CLICKED, PROC_REF(tacmap_blip_callback))
 
-/obj/structure/machinery/computer/overwatch/proc/tacmap_blip_callback(mob/clicker, mob/living/carbon/human/clicked)
+/obj/structure/machinery/computer/overwatch/proc/tacmap_blip_callback(_SSminimaps, mob/clicker, mob/living/carbon/human/clicked)
+	SIGNAL_HANDLER
+
 	if (clicker.interactee != src)
 		return
 
@@ -91,7 +93,8 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		return
 
 	// GOC can overwatch anybody
-	if(!istype(src, /obj/structure/machinery/computer/overwatch/groundside_operations) && (clicked.assigned_squad && clicked.assigned_squad != current_squad))
+	var/is_groundside_operations = istype(src, /obj/structure/machinery/computer/overwatch/groundside_operations)
+	if(!is_groundside_operations && (!clicked.assigned_squad || clicked.assigned_squad != current_squad))
 		to_chat(clicker, SPAN_WARNING("That marine is from the wrong squad for this console."))
 		return
 
@@ -101,7 +104,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	GLOB.active_overwatch_consoles -= src
 	current_orbital_cannon = null
 	concurrent_users = null
-	SSminimaps.blip_click_listener_manager.deregister_human_blip_click_listener(src)
+	UnregisterSignal(SSminimaps, COMSIG_HUMAN_TACMAP_BLIP_CLICKED)
 	if(!camera_holder)
 		return ..()
 	disconnect_holder()

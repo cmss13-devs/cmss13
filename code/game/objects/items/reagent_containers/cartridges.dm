@@ -365,7 +365,7 @@
 	item_state = "cartridge_shrapnel"
 	matter = list("metal" = 3750, "plasteel" = 3750)
 	volume = 10
-	inherent_reagents = list("iron" = 64)
+	inherent_reagents = list("iron" = 64, "anfo" = 1) // we add a tiny bit of ANFO, else shrapnel wouldn't spawn (kind of a silly fix)
 	allowed_reagents = list("phoron", "pacid", "neurotoxinplasma")
 
 /obj/item/reagent_container/cartridge/shrapnel/update_icon()

@@ -431,15 +431,6 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
 "abb" = (
-/obj/structure/machinery/door/airlock/almayer/maint/reinforced{
-	access_modified = 1;
-	dir = 1;
-	req_one_access = null;
-	req_one_access_txt = "7;19"
-	},
-/turf/open/floor/almayer/no_build/test_floor4,
-/area/almayer/middeck/maintenance/pb)
-"abb" = (
 /obj/structure/cryofeed,
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 4;
@@ -4590,26 +4581,6 @@
 /obj/item/storage/box/mre,
 /obj/item/device/radio/marine,
 /obj/item/clothing/accessory/patch/medic_patch,
-/obj/item/book/manual/surgery,
-/obj/item/book/manual/chemistry,
-/obj/item/book/manual/medical_diagnostics_manual,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/closet/secure_closet{
-	name = "Field Doctor's locker"
-	},
-/obj/item/clothing/shoes/marine{
-	layer = 4.1
-	},
-/obj/item/clothing/suit/storage/marine/light/vest,
-/obj/item/clothing/head/helmet/marine/medic,
-/obj/item/storage/box/mre,
-/obj/item/device/radio/marine,
-/obj/item/clothing/accessory/patch/medic_patch,
-/obj/effect/decal/cleanable/dirt,
 /obj/item/book/manual/surgery,
 /obj/item/book/manual/chemistry,
 /obj/item/book/manual/medical_diagnostics_manual,

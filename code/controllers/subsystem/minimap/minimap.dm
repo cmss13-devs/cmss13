@@ -407,7 +407,7 @@ SUBSYSTEM_DEF(minimaps)
 		minimaps_by_z["[zlevel]"].drawing_image = mona_lisa_image
 	for(var/datum/minimap_updater/updater as anything in update_targets["[minimap_flag]"])
 		if(zlevel == updater.ztarget && updater.drawing)
-			updater.overlays_to_add += mona_lisa_image
+			updater.add_image_to_updater(mona_lisa_image)
 	drawn_images[hash] = mona_lisa_image
 	return mona_lisa_image
 

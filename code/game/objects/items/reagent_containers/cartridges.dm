@@ -327,8 +327,8 @@
 	icon_state = "cartridge_flash"
 	item_state = "cartridge_flash"
 	inherent_reagents = list("sulfur" = 60, "potassium" = 60)
-	required_reagents = list("aluminium" = 60)
-	allowed_reagents = list("aluminium")
+	required_reagents = list("aluminum" = 60)
+	allowed_reagents = list("aluminum")
 
 /obj/item/reagent_container/cartridge/flash/update_icon()
 	overlays.Cut()

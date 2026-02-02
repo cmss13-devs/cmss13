@@ -174,6 +174,10 @@
 	icon_state = "grass1"
 	is_weedable = NOT_WEEDABLE
 
+/turf/open/slippery/Enter(atom/movable/mover, atom/forget)
+	. = ..()
+	if(isliving(mover))
+		return FALSE
 
 /turf/open/slippery/Entered(atom/movable/crosser)
 	. = ..()

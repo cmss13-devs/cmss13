@@ -192,11 +192,12 @@
 			to_chat(user, SPAN_DANGER("The [name] can not hold more cartridges."))
 			return
 		else
-			to_chat(user, SPAN_NOTICE("You add \the [W] to the assembly."))
-			C.forceMove(src)
-			cartridges += C
-			assembly_stage = ASSEMBLY_UNLOCKED
-			desc = initial(desc) + "\n Contains [length(containers)] containers, [length(cartridges)] cartridges[detonator?" and detonator":""]"
+			if(user.temp_drop_inv_item(W))
+				to_chat(user, SPAN_NOTICE("You add \the [W] to the assembly."))
+				C.forceMove(src)
+				cartridges += C
+				assembly_stage = ASSEMBLY_UNLOCKED
+				desc = initial(desc) + "\n Contains [length(containers)] containers, [length(cartridges)] cartridges[detonator?" and detonator":""]"
 
 /obj/item/explosive/proc/activate_sensors()
 	if(!detonator || active || assembly_stage < ASSEMBLY_LOCKED)

@@ -46,6 +46,7 @@
 	. = ..()
 	base_name = name
 	update_validity()
+	update_icon()
 	ADD_TRAIT(src, TRAIT_REACTS_UNSAFELY, TRAIT_SOURCE_INHERENT)
 
 /obj/item/reagent_container/cartridge/get_examine_text(mob/user)

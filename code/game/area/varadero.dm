@@ -277,7 +277,7 @@
 
 /area/varadero/interior/library/restaraunt
 	name = "New Varadero Restaraunt"
-	icon = "icons/turf/hybrisareas.dmi"
+	icon = 'icons/turf/hybrisareas.dmi'
 	icon_state ="pizza"
 
 /area/varadero/interior/court

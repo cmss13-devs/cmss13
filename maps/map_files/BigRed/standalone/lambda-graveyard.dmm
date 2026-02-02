@@ -48,9 +48,6 @@
 "n" = (
 /turf/open/mars/mars_dirt_9,
 /area/bigredv2/outside/se)
-"o" = (
-/turf/closed/wall/solaris/rock,
-/area/bigredv2/outside/se)
 "p" = (
 /obj/structure/prop/dam/large_boulder/boulder2,
 /turf/open/mars,
@@ -72,7 +69,7 @@
 /area/bigredv2/outside/se)
 "D" = (
 /turf/closed/wall/solaris/reinforced,
-/area/bigredv2/caves)
+/area/bigredv2/outside/se)
 
 (1,1,1) = {"
 e
@@ -126,10 +123,10 @@ a
 e
 a
 a
-o
-o
-o
-o
+s
+s
+s
+s
 a
 a
 a
@@ -138,12 +135,12 @@ a
 e
 a
 a
-o
-o
-o
-o
-o
-o
+s
+s
+s
+s
+s
+s
 a
 "}
 (7,1,1) = {"
@@ -151,12 +148,12 @@ e
 a
 a
 a
-o
-o
-o
-o
-o
-o
+s
+s
+s
+s
+s
+s
 "}
 (8,1,1) = {"
 e
@@ -211,7 +208,7 @@ e
 a
 a
 a
-o
+s
 q
 a
 a
@@ -222,8 +219,8 @@ t
 e
 a
 a
-o
-o
+s
+s
 q
 a
 a
@@ -233,9 +230,9 @@ t
 (14,1,1) = {"
 e
 a
-o
-o
-o
+s
+s
+s
 a
 a
 a
@@ -245,8 +242,8 @@ t
 (15,1,1) = {"
 e
 j
-o
-o
+s
+s
 q
 a
 a
@@ -257,7 +254,7 @@ t
 (16,1,1) = {"
 f
 k
-o
+s
 q
 a
 a

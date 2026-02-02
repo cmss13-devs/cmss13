@@ -46,21 +46,21 @@
 			if(anchored)
 				var/temp = ""
 				if(width == 1)
-					temp += "It looks like a [SPAN_HELPFUL("wrench")] will unsecure it. "
-				helpmessage += "[temp]You can insert an [SPAN_HELPFUL("airlock circuit")]. "
+					temp += "It looks like a [SPAN_HELPFUL("wrench")] will unsecure it."
+				helpmessage += "[temp]You can insert an [SPAN_HELPFUL("airlock circuit")]."
 				if(!glass)
-					helpmessage += "Insert some [SPAN_HELPFUL("glass sheets")] to add windows to it. "
+					helpmessage += "Insert some [SPAN_HELPFUL("glass sheets")] to add windows to it."
 				else if(glass == AIRLOCK_GLASSIN)
-					helpmessage += "You can take out the windows with a [SPAN_HELPFUL("screwdriver")]. "
+					helpmessage += "You can take out the windows with a [SPAN_HELPFUL("screwdriver")]."
 			else
-				helpmessage += "It looks like a [SPAN_HELPFUL("wrench")] will secure it. "
+				helpmessage += "It looks like a [SPAN_HELPFUL("wrench")] will secure it."
 		if(STATE_CIRCUIT)
-			helpmessage += "Add [SPAN_HELPFUL("cable coil")] to the circuit. "
+			helpmessage += "Add [SPAN_HELPFUL("cable coil")] to the circuit."
 		if(STATE_WIRES)
-			helpmessage += "Secure the circuit with a [SPAN_HELPFUL("screwdriver")]. "
+			helpmessage += "Secure the circuit with a [SPAN_HELPFUL("screwdriver")]."
 		if(STATE_SCREWDRIVER)
-			helpmessage += "Use a [SPAN_HELPFUL("Multitool")] to change its type. "
-			helpmessage += "You can [SPAN_HELPFUL("Weld")] it all in place. "
+			helpmessage += "Use a [SPAN_HELPFUL("Multitool")] to change its type."
+			helpmessage += "You can [SPAN_HELPFUL("Weld")] it all in place."
 	helpmessage += "You can name it with a [SPAN_HELPFUL("pen")]."
 	. += SPAN_NOTICE(helpmessage)
 
@@ -141,11 +141,11 @@
 						to_chat(user, SPAN_WARNING("\The [src] cannot be secured here!"))
 						return
 				playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
-				to_chat(user, SPAN_NOTICE(" You start [anchored? "un" : ""]securing the airlock assembly!"))
+				to_chat(user, SPAN_NOTICE("You start [anchored? "un" : ""]securing the airlock assembly!"))
 				if(!do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					return
 				playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
-				to_chat(user, SPAN_NOTICE(" You [anchored? "un" : ""]secured the airlock assembly!"))
+				to_chat(user, SPAN_NOTICE("You [anchored? "un" : ""]secured the airlock assembly!"))
 				anchored = !anchored
 				return
 
@@ -264,7 +264,7 @@
 	. = ..()
 
 /obj/structure/airlock_assembly/update_icon()
-	if(state == STATE_SCREWDRIVER) /// they just look diferent on their last step
+	if(state == STATE_SCREWDRIVER) /// they just look different on their last step
 		icon_state = "assembly_[glass ? "glass_" : ""][airlock_type][state]"
 	else
 		icon_state = "assembly_[glass ? "glass_" : ""]generic[state]"

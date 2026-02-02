@@ -362,7 +362,7 @@
 /area/adminlevel/ert_station/weyland_station)
 "gf" = (
 /obj/structure/machinery/body_scanconsole,
-/obj/structure/machinery/autodoc_console{
+/obj/structure/machinery/autodoc_console/upgraded{
 	dir = 1
 	},
 /turf/open/floor/corsat/green/north,
@@ -761,7 +761,7 @@
 /turf/open/floor/corsat/yellow/southeast,
 /area/adminlevel/ert_station/weyland_station)
 "mm" = (
-/obj/structure/machinery/medical_pod/sleeper,
+/obj/structure/machinery/medical_pod/sleeper/upgraded,
 /turf/open/floor/corsat/green/east,
 /area/adminlevel/ert_station/weyland_station)
 "mn" = (

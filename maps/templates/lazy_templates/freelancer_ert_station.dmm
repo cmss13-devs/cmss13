@@ -131,7 +131,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station)
 "fX" = (
-/obj/structure/machinery/medical_pod/sleeper,
+/obj/structure/machinery/medical_pod/sleeper/upgraded,
 /turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/ert_station)
 "fY" = (
@@ -759,7 +759,7 @@
 /turf/open/floor/prison/kitchen,
 /area/adminlevel/ert_station)
 "KN" = (
-/obj/structure/machinery/autodoc_console,
+/obj/structure/machinery/autodoc_console/upgraded,
 /turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/ert_station)
 "Lh" = (

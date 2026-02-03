@@ -291,8 +291,8 @@
 	desc = "A special cartridge for explosive casings. This one creates chemical smoke. Requires to be filled with sugar. Can hold up to 60 units."
 	icon_state = "cartridge_smoke"
 	item_state = "cartridge_smoke"
-	inherent_reagents = list("phosphorus" = 60, "potassium" = 60)
-	required_reagents = list("sugar" = 60)
+	inherent_reagents = list("phosphorus" = 30, "potassium" = 30)
+	required_reagents = list("sugar" = 30)
 	allowed_reagents = list("sugar")
 
 /obj/item/reagent_container/cartridge/smoke/update_icon()

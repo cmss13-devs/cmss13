@@ -112,3 +112,44 @@ GLOBAL_LIST_INIT_TYPED(underwear_f, /datum/sprite_accessory/underwear, setup_und
 	gender = NEUTER
 	camo_conforming = FALSE
 
+/datum/sprite_accessory/underwear/fire_boxers
+	name = "Fire Boxers"
+	icon_state = "fire_boxers"
+	gender = NEUTER
+	camo_conforming = FALSE
+
+/datum/sprite_accessory/underwear/lightning_boxers
+	name = "Lightning Boxers"
+	icon_state = "lightning_boxers"
+	gender = NEUTER
+	camo_conforming = FALSE
+
+/datum/sprite_accessory/underwear/heart_boxers
+	name = "Heart Boxers"
+	icon_state = "heart_boxers"
+	gender = NEUTER
+	camo_conforming = FALSE
+
+/datum/sprite_accessory/underwear/checkered_boxers
+	name = "Checkered Boxers"
+	icon_state = "checkered_boxers"
+	gender = NEUTER
+	camo_conforming = FALSE
+
+/datum/sprite_accessory/underwear/pink_boxers
+	name = "Pink Boxers"
+	icon_state = "pink_boxers"
+	gender = NEUTER
+	camo_conforming = FALSE
+
+/datum/sprite_accessory/underwear/blue_boxers
+	name = "Blue Boxers"
+	icon_state = "blue_boxers"
+	gender = NEUTER
+	camo_conforming = FALSE
+
+/datum/sprite_accessory/underwear/wy_boxers
+	name = "W-Y Boxers"
+	icon_state = "wy_boxers"
+	gender = NEUTER
+	camo_conforming = FALSE

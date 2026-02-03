@@ -150,3 +150,21 @@ GLOBAL_LIST_INIT_TYPED(undershirt_f, /datum/sprite_accessory/undershirt, setup_u
 	icon_state = "b_strapless"
 	gender = FEMALE
 	camo_conforming = FALSE
+
+/datum/sprite_accessory/undershirt/uscm_shirt
+	name = "USCM Shirt"
+	icon_state = "uscm_shirt"
+	gender = NEUTER
+	camo_conforming = FALSE
+
+/datum/sprite_accessory/undershirt/wy_shirt
+	name = "W-Y Shirt"
+	icon_state = "wy_shirt"
+	gender = NEUTER
+	camo_conforming = FALSE
+
+/datum/sprite_accessory/undershirt/fullbody_bandages
+	name = "Fullbody Bandages"
+	icon_state = "fullbody_bandages"
+	gender = NEUTER
+	camo_conforming = FALSE

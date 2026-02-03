@@ -889,16 +889,16 @@
 				else
 					return FALSE
 
-/mob/living/carbon/xenomorph/get_projectile_hit_chance(obj/projectile/proj)
+/mob/living/carbon/xenomorph/get_projectile_hit_chance(obj/projectile/bullet)
 	. = ..()
 	if(.)
-		var/ammo_flags = proj.ammo.flags_ammo_behavior | proj.projectile_override_flags
-		if(SEND_SIGNAL(proj, COMSIG_BULLET_CHECK_MOB_SKIPPING, src) & COMPONENT_SKIP_MOB\
-			|| proj.runtime_iff_group && get_target_lock(proj.runtime_iff_group))
+		var/ammo_flags = bullet.ammo.flags_ammo_behavior | bullet.projectile_override_flags
+		if(SEND_SIGNAL(bullet, COMSIG_BULLET_CHECK_MOB_SKIPPING, src) & COMPONENT_SKIP_MOB\
+			|| bullet.runtime_iff_group && get_target_lock(bullet.runtime_iff_group))
 			return FALSE
 
 		if(ammo_flags & AMMO_SKIPS_ALIENS)
-			var/mob/living/carbon/xenomorph/xeno = proj.firer
+			var/mob/living/carbon/xenomorph/xeno = bullet.firer
 			if(!istype(xeno))
 				return FALSE
 			if(xeno.hivenumber == hivenumber)
@@ -920,10 +920,10 @@
 					last_projectile_time = 0
 
 					xeno_jitter(5 DECISECONDS)
-					if(proj.ammo.sound_miss)
-						playsound_client(client, proj.ammo.sound_miss, get_turf(src), 75, TRUE)
-					visible_message(SPAN_AVOIDHARM("The [src] darts aside, evading [proj]!"),
-						SPAN_AVOIDHARM("You react fast, and [proj] narrowly misses you!"), null, 4, CHAT_TYPE_TAKING_HIT)
+					if(bullet.ammo.sound_miss)
+						playsound_client(client, bullet.ammo.sound_miss, get_turf(src), 75, TRUE)
+					visible_message(SPAN_AVOIDHARM("The [src] darts aside, evading [bullet]!"),
+						SPAN_AVOIDHARM("You react fast, and [bullet] narrowly misses you!"), null, 4, CHAT_TYPE_TAKING_HIT)
 					return FALSE
 
 		if(mob_size == MOB_SIZE_SMALL)

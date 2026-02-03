@@ -34,6 +34,12 @@
 
 	prae.recalculate_everything()
 
+#define DANCER_ABILITY_CD_REDUCTION 5 SECONDS
+#define DANCER_LAST_TAG_SPREAD_TIME 7 SECONDS
+#define DANCER_YELLOW_TAG_SPREAD_CD 20 SECONDS
+#define DANCER_DODGE_TIME 7 SECONDS
+#define DANCER_TAG_SPREAD_COUNT 5
+
 /datum/behavior_delegate/praetorian_dancer
 	name = "Praetorian Dancer Behavior Delegate"
 
@@ -55,10 +61,8 @@
 
 	/// Is Dodge ability active?
 	var/dodge_activated = FALSE
-	/// Is dodge_time activate? (used for countdown)
+	/// Used to countdown DANCER_DODGE_TIME.
 	var/dodge_start_time = -1
-	/// For how long dodge should be active.
-	var/dodge_time = 7 SECONDS
 	/// How much refund we want to get back? 1.0 is 1s used to 1s cooldown, 2.0 is 1s used 2s cooldown.
 	var/refund_multiplier = 2.0
 	/// Used in calculation, finalized number will be displayed as cooldown.
@@ -71,7 +75,7 @@
 
 /datum/behavior_delegate/praetorian_dancer/append_to_stat()
 	. = list()
-	. += "Guaranteed Dodge every [bound_xeno.dodge_threshold] bullet."
+	. += "Guaranteed Dodge every [bound_xeno.dodge_threshold] bullet\s."
 	. += "Yellow Tag Spread Delay: 5 seconds."
 	intent_detection()
 	. += "Tail Lance Intent: [tail_mode]"
@@ -79,7 +83,7 @@
 		. += "Damage: [blunt_damage] AP"
 		. += "Cooldown: 3 seconds."
 	if(dodge_start_time != -1)
-		calculate_time(dodge_time, dodge_start_time)
+		time_left = (DANCER_DODGE_TIME - (world.time - dodge_start_time)) / 10
 		. += "Dodge Remaining: [time_left] second\s."
 		return
 
@@ -93,11 +97,11 @@
 
 	var/datum/action/xeno_action/activable/prae_impale/impale_action = get_action(bound_xeno, /datum/action/xeno_action/activable/prae_impale)
 	if(!impale_action.action_cooldown_check())
-		impale_action.reduce_cooldown(5 SECONDS)
+		impale_action.reduce_cooldown(DANCER_ABILITY_CD_REDUCTION)
 
 	var/datum/action/xeno_action/activable/prae_tail_trip/tail_trip_action = get_action(bound_xeno, /datum/action/xeno_action/activable/prae_tail_trip)
 	if(!tail_trip_action.action_cooldown_check())
-		tail_trip_action.reduce_cooldown(5 SECONDS)
+		tail_trip_action.reduce_cooldown(DANCER_ABILITY_CD_REDUCTION)
 
 /datum/behavior_delegate/praetorian_dancer/melee_attack_additional_effects_target(mob/living/carbon/target_carbon)
 	if(!isxeno_human(target_carbon))
@@ -139,15 +143,12 @@
 	if(!origin)
 		return
 
-	if(world.time < last_dancer_spread_time + 7 SECONDS)
+	if(world.time < last_dancer_spread_time + DANCER_LAST_TAG_SPREAD_TIME)
 		return
 
-	if(world.time < source.last_target_spread_time + 17 SECONDS)
+	if(world.time < source.last_target_spread_time + DANCER_YELLOW_TAG_SPREAD_CD)
 		return
 	source.last_target_spread_time = world.time
-
-	if(!(locate(/datum/effects/dancer_tag/prevent) in source.effects_list))
-		new /datum/effects/dancer_tag/prevent(source, bound_xeno)
 
 	candidates.Cut()
 	var/spread_count = 0
@@ -165,8 +166,6 @@
 			continue
 		if(locate(/datum/effects/dancer_tag/spread) in human_target.effects_list)
 			continue
-		if(locate(/datum/effects/dancer_tag/prevent) in human_target.effects_list)
-			continue
 		candidates += human_target
 
 	if(!length(candidates))
@@ -174,7 +173,7 @@
 
 	candidates = sort_list_dist(candidates, origin)
 	for(var/mob/living/carbon/human/human_target in candidates)
-		if(spread_count >= 5)
+		if(spread_count >= DANCER_TAG_SPREAD_COUNT)
 			break
 
 		new /datum/effects/dancer_tag/spread(human_target, bound_xeno)
@@ -183,9 +182,6 @@
 
 		if(spread_count)
 			last_dancer_spread_time = world.time
-
-/datum/behavior_delegate/praetorian_dancer/proc/calculate_time(full_time, when_started)
-	time_left = (full_time - (world.time - when_started)) / 10
 
 /datum/behavior_delegate/praetorian_dancer/proc/intent_detection()
 	if(bound_xeno && bound_xeno.a_intent == INTENT_DISARM)
@@ -388,7 +384,7 @@
 
 	if(behavior.dodge_start_time > 0)
 		var/used_ratio = round((world.time - behavior.dodge_start_time) / duration, 0.1)
-		behavior.recharge_time = max(behavior.dodge_time * used_ratio * behavior.refund_multiplier, 5 SECONDS)
+		behavior.recharge_time = max(DANCER_DODGE_TIME * used_ratio * behavior.refund_multiplier, 5 SECONDS)
 
 	behavior.dodge_start_time = -1
 	apply_cooldown_override(behavior.recharge_time)

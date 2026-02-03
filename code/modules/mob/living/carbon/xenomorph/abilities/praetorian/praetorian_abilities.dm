@@ -193,7 +193,7 @@
 	action_type = XENO_ACTION_CLICK
 
 	// Config
-	var/duration = 10 SECONDS
+	var/duration = 7 SECONDS
 	var/dodge_timer = TIMER_ID_NULL
 	var/speed_buff_amount = 0.5
 	var/afterimage_interval = 1 DECISECONDS

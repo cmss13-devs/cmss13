@@ -46,10 +46,3 @@
 /datum/effects/dancer_tag/spread/New(atom/target_atom, mob/from = null)
 	. = ..(target_atom, from, null, "chest", 7 SECONDS)
 
-/datum/effects/dancer_tag/prevent
-	effect_name = "dancer tag prevent"
-	flags = INF_DURATION
-
-/datum/effects/dancer_tag/prevent/New(atom/target_atom, mob/from = null)
-	. = ..(target_atom, from, null, "chest", 17 SECONDS)
-

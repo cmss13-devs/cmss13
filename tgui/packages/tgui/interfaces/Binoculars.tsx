@@ -4,19 +4,6 @@ import { Window } from 'tgui/layouts';
 
 type Data = { xcoord: number; ycoord: number; zcoord: number };
 
-const copyToClipboard = (text) => {
-  const textArea = document.createElement('textarea');
-  textArea.value = text;
-  document.body.appendChild(textArea);
-  textArea.select();
-  try {
-    document.execCommand('copy');
-  } catch (err) {
-    console.error('Failed to copy text', err);
-  }
-  document.body.removeChild(textArea);
-};
-
 export const Binoculars = () => {
   const { data } = useBackend<Data>();
 
@@ -28,9 +15,9 @@ export const Binoculars = () => {
 
   return (
     <Window width={450} height={300}>
-      {' '}
       <Window.Content scrollable>
         <Section
+          fill
           title="SIMPLIFIED COORDINATES OF TARGET"
           textAlign="center"
           fontSize="15px"
@@ -38,15 +25,16 @@ export const Binoculars = () => {
           <Box fontSize="30px" mb={2}>
             LONGITUDE : {x_coord}, LATITUDE : {y_coord}, HEIGHT : {z_coord}
           </Box>
-          <Box textAlign="center">
-            <Button
-              icon="clipboard"
-              content="Copy Coordinates"
-              tooltip="Copies 'X,Y,Z' to clipboard"
-              fontSize="18px"
-              onClick={() => copyToClipboard(coordinatesString)}
-            />
-          </Box>
+          <Button
+            align="center"
+            minWidth="70%"
+            icon="clipboard"
+            tooltip="Copies recorded coordinates to clipboard"
+            fontSize="20px"
+            onClick={() => navigator.clipboard.writeText(coordinatesString)}
+          >
+            Copy Coordinates
+          </Button>
         </Section>
       </Window.Content>
     </Window>

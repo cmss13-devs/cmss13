@@ -179,16 +179,34 @@
 	start_time = world.time
 	xeno.speed_modifier += XENO_SPEED_SLOWMOD_TIER_3
 	xeno.recalculate_speed()
-	max_charge_notification_timer = addtimer(CALLBACK(src, PROC_REF(notify_max_charge)), max_charge_time, TIMER_STOPPABLE)
-	RegisterSignal(owner, COMSIG_MOB_MOUSEUP, PROC_REF(release_barrage), target)
+	var/max_charge_notification_timer = addtimer(CALLBACK(src, PROC_REF(notify_max_charge)), max_charge_time, TIMER_STOPPABLE)
+	var/list/timers = list()
+	timers += max_charge_notification_timer
+	for(var/index in 0 to 3)
+		timers += addtimer(CALLBACK(src, PROC_REF(update_barrage_charge_overlay), index), index * (max_charge_time / 3), TIMER_STOPPABLE)
+
+	RegisterSignal(owner, COMSIG_MOB_MOUSEUP, PROC_REF(release_barrage), target, timers)
+
+
+/datum/action/xeno_action/activable/acid_barrage/proc/update_barrage_charge_overlay(stage)
+	if(charge_overlay)
+		owner.overlays -= charge_overlay
+	charge_overlay = image('icons/mob/do_afters.dmi', "charge_[stage]", pixel_x = 10, pixel_y = 54)
+	charge_overlay.layer = FLY_LAYER
+	charge_overlay.plane = ABOVE_GAME_PLANE
+	owner.overlays |= charge_overlay
 
 /datum/action/xeno_action/activable/acid_barrage/proc/notify_max_charge()
 	to_chat(owner, SPAN_XENOHIGHDANGER("Our acid barrage is full!"))
 
-/datum/action/xeno_action/activable/acid_barrage/proc/release_barrage(atom/source, atom/target)
+/datum/action/xeno_action/activable/acid_barrage/proc/release_barrage(atom/source, atom/target, list/timers)
+	if(charge_overlay)
+		owner.overlays -= charge_overlay
+		charge_overlay = null
 	var/mob/living/carbon/xenomorph/despoiler/xeno = owner
 	UnregisterSignal(owner, COMSIG_MOB_MOUSEUP)
-	deltimer(max_charge_notification_timer)
+	for(var/timer in timers)
+		deltimer(timer)
 	xeno.speed_modifier -= XENO_SPEED_SLOWMOD_TIER_3
 	xeno.recalculate_speed()
 

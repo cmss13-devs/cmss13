@@ -14,8 +14,8 @@
 	var/max_volley = 8
 	var/empower_modifier = 6
 	var/max_charge_time = 3 SECONDS
-	var/max_charge_notification_timer
 	var/scatter = 30 // Degrees
+	var/image/charge_overlay
 
 /datum/action/xeno_action/activable/pounce/caustic_embrace
 	name = "Caustic Embrace"

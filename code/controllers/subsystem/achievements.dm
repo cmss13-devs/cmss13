@@ -65,10 +65,6 @@ SUBSYSTEM_DEF(achievements)
 	request.prepare(RUSTG_HTTP_METHOD_GET, "[api_url]?ckey=[url_encode(ckey)]&instance=[instance]", "", headers)
 	request.execute_blocking()
 
-	var/datum/http_request/request = request.into_response()
-	if(!request.is_complete())
-		continue
-
 	var/datum/http_response/response = request.into_response()
 
 	if(response.errored)

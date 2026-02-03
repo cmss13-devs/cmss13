@@ -299,6 +299,12 @@
 		var/obj/item/reagent_container/new_container = new other_container.type()
 		other_container.reagents.copy_to(new_container, other_container.reagents.total_volume, TRUE, TRUE, TRUE)
 		containers += new_container
+	for(var/obj/item/reagent_container/cartridge/other_cartridge in other.cartridges)
+		var/obj/item/reagent_container/cartridge/new_cartridge = new other_cartridge.type()
+		if(other_cartridge.reagents && new_cartridge.reagents)
+			other_cartridge.reagents.copy_to(new_cartridge, other_cartridge.reagents.total_volume)
+		new_cartridge.inherent_reagents = other_cartridge.inherent_reagents.Copy()
+		cartridges += new_cartridge
 
 /obj/item/explosive/proc/toggle_blast_dampener_verb()
 	set category = "Weapons"

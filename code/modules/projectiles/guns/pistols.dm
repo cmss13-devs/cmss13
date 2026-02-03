@@ -933,7 +933,6 @@
 	recoil_unwielded = RECOIL_AMOUNT_TIER_5
 
 
-
 //-------------------------------------------------------
 /*
 Auto 9 The gun RoboCop uses. A better version of the VP78, with more rounds per magazine. Probably the best pistol around, but takes no attachments.

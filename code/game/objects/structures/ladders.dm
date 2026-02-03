@@ -3,17 +3,22 @@
 	desc = "A sturdy metal ladder."
 	icon = 'icons/obj/structures/ladders.dmi'
 	icon_state = "ladder11"
-	var/id = null
-	var/height = 0 //The 'height' of the ladder. higher numbers are considered physically higher
-	var/obj/structure/ladder/down = null //The ladder below this one
-	var/obj/structure/ladder/up = null //The ladder above this one
 	anchored = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
 	layer = LADDER_LAYER
+	/// Used to link up ladders that are above and below
+	var/id = null
+	/// The 'height' of the ladder. higher numbers are considered physically higher
+	var/height = 0
+	/// The ladder below this one
+	var/obj/structure/ladder/down
+	/// The ladder above this one
+	var/obj/structure/ladder/up
 	var/is_watching = 0
 	var/obj/structure/machinery/camera/cam
-	var/busy = FALSE //Ladders are wonderful creatures, only one person can use it at a time
+	/// Ladders are wonderful creatures, only one person can use it at a time
+	var/busy = FALSE
 	var/static/list/direction_selection = list("up" = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_ladder_up"), "down" = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_ladder_down"))
 
 
@@ -52,17 +57,15 @@
 	update_icon()
 
 /obj/structure/ladder/Destroy()
-	if(down)
-		if(istype(down))
-			down.up = null
-		down = null
-	if(up)
-		if(istype(up))
-			up.down = null
-		up = null
+	if(istype(down))
+		down.up = null
+	if(istype(up))
+		up.down = null
+	down = null
+	up = null
 	QDEL_NULL(cam)
 	GLOB.ladder_list -= src
-	. = ..()
+	return ..()
 
 /obj/structure/ladder/update_icon()
 	if(up && down)
@@ -142,6 +145,8 @@
 			user.trainteleport(ladder_dest.loc)
 	busy = FALSE
 	add_fingerprint(user)
+	if(ladder_dest.up && ladder_dest.down) // Make sure it has a up and down before opening the radial wheel, otherwise it sends you
+		ladder_dest.attack_hand(user)
 	return TRUE
 
 //Alt click to go down

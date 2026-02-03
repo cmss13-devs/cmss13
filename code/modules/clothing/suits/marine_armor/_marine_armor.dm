@@ -415,22 +415,20 @@
 	name = "\improper modified M3 pattern marine armor 'A'"
 	desc = "A heavily altered suit of lightweight M3 pattern marine armor. The joints have been cut away to enhance mobility while additional pads have been fastened around the shoulders. It is incredibly beat-down."
 	icon_state = "MA"
-	specialty = "M3 pattern marine"
+	specialty = "M3 pattern mod-'A' marine"
 
 /obj/item/clothing/suit/storage/marine/medium/leader/mod_b
 	name = "\improper modified M3 pattern marine armor 'B'"
 	desc = "A heavily altered suit of lightweight M3 pattern marine armor. The joints have been cut away to enhance mobility while additional pads have been fastened around the shoulders. It is incredibly beat-down."
-	icon_state = "MA"
+	icon_state = "MB"
 	armor_melee = CLOTHING_ARMOR_MEDIUM
-	armor_rad = CLOTHING_ARMOR_MEDIUM
-	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_LEGS
 	storage_slots = 4
-	specialty = "M3 pattern marine"
+	specialty = "M3 pattern mod-'B' marine"
 
 /obj/item/clothing/suit/storage/marine/medium/leader/mod_c
 	name = "\improper modified M3 pattern marine armor 'C'"
 	desc = "A heavily altered suit of lightweight M3 pattern marine armor. The joints have been cut away to enhance mobility while additional pads have been fastened around the shoulders. It is incredibly beat-down."
-	icon_state = "MA"
+	icon_state = "MC"
 	slowdown = SLOWDOWN_ARMOR_LIGHT
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
@@ -439,7 +437,7 @@
 	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	storage_slots = 2
-	specialty = "M3 pattern marine"
+	specialty = "M3 pattern mod-'C' marine"
 
 /obj/item/clothing/suit/storage/marine/tanker
 	name = "\improper M3 pattern tanker armor"

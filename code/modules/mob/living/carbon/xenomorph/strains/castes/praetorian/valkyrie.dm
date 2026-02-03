@@ -54,7 +54,7 @@
 	base_fury = min(fury_max, base_fury + fury_per_life)
 
 	var/mob/living/carbon/xenomorph/praetorian/praetorian = bound_xeno
-	var/image/holder = praetorian.hud_list[PLASMA_HUD]
+	var/image/holder = praetorian.hud_list[SPECIAL_HUD]
 	holder.overlays.Cut()
 
 	if(praetorian.stat == DEAD)
@@ -65,7 +65,7 @@
 		holder.overlays += image('icons/mob/hud/hud.dmi', "xenoenergy[percentage_energy]")
 
 /datum/behavior_delegate/praetorian_valkyrie/handle_death(mob/M)
-	var/image/holder = bound_xeno.hud_list[PLASMA_HUD]
+	var/image/holder = bound_xeno.hud_list[SPECIAL_HUD]
 	holder.overlays.Cut()
 
 /datum/behavior_delegate/praetorian_valkyrie/melee_attack_additional_effects_self()

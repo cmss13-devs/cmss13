@@ -18,11 +18,9 @@
 
 		if (XENO_ACTION_QUEUE)
 			handle_xeno_macro_actionqueue(xeno, action)
-
 		else
 			log_debug("Xeno action [action.name] is misconfigured. Code: XENO_ACTION_MACRO_1")
 			log_admin("Xeno action [action.name] is misconfigured. Tell the devs. Code: XENO_ACTION_MACRO_1")
-
 
 /proc/handle_xeno_macro_click(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/action)
 	action.button.clicked(xeno)

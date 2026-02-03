@@ -22,8 +22,10 @@
 	var/hits_multiplier = 1
 	/// The maximum allowed duration per acid_level
 	var/static/list/tier_max_duarions = list(20, 40, 80)
+	/// Callback when dealing damage
+	var/datum/callback/damage_callback = null
 
-/datum/effects/acid/New(atom/atom, mob/from = null, last_dmg_source = null, zone = "chest")
+/datum/effects/acid/New(atom/atom, mob/from = null, last_dmg_source = null, zone = "chest", datum/callback/damage_callback = null)
 	..(atom, from, last_dmg_source, zone)
 	if(ishuman(atom))
 		var/mob/living/carbon/human/human = atom
@@ -37,6 +39,8 @@
 		obj_target.update_icon()
 
 	handle_weather()
+
+	src.damage_callback = damage_callback
 
 	RegisterSignal(SSdcs, COMSIG_GLOB_WEATHER_CHANGE, PROC_REF(handle_weather))
 
@@ -63,6 +67,9 @@
 	affected_mob.last_damage_data = cause_data
 	for(var/i in 1 to hits_multiplier)
 		affected_mob.apply_armoured_damage(damage_per_process_human, ARMOR_BIO, BURN, pick(damage_areas), 40)
+
+	if(damage_callback)
+		damage_callback.Invoke(damage_per_process_human * hits_multiplier)
 	increment_duration()
 	return TRUE
 

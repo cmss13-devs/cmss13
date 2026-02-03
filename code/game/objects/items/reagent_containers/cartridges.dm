@@ -16,6 +16,7 @@
 	var/has_lid = TRUE
 	var/base_name = " "
 
+	var/ireagent_base_amount = 30
 	var/list/obj/inherent_reagents = list()
 	var/list/obj/required_reagents = list()
 	var/list/obj/allowed_reagents = list()
@@ -288,12 +289,17 @@
 
 /obj/item/reagent_container/cartridge/smoke
 	name = "smoke ordnance cartridge"
-	desc = "A special cartridge for explosive casings. This one creates chemical smoke. Requires to be filled with sugar. Can hold up to 60 units."
+	desc = "A special cartridge for explosive casings. This one creates chemical smoke. Requires to be filled with sugar."
 	icon_state = "cartridge_smoke"
 	item_state = "cartridge_smoke"
-	inherent_reagents = list("phosphorus" = 30, "potassium" = 30)
-	required_reagents = list("sugar" = 30)
+	volume = 30
+	ireagent_base_amount = 30
 	allowed_reagents = list("sugar")
+
+/obj/item/reagent_container/cartridge/smoke/Initialize()
+	inherent_reagents = list("phosphorus" = ireagent_base_amount, "potassium" = ireagent_base_amount)
+	required_reagents = list("sugar" = ireagent_base_amount)
+	. = ..()
 
 /obj/item/reagent_container/cartridge/smoke/update_icon()
 	overlays.Cut()
@@ -322,12 +328,17 @@
 
 /obj/item/reagent_container/cartridge/flash
 	name = "flash ordnance cartridge"
-	desc = "A special cartridge for explosive casings. This one creates a flash of light. Requires to be filled with aluminium. Can hold up to 60 units."
+	desc = "A special cartridge for explosive casings. This one emits light once activated. Requires to be filled with aluminium."
 	icon_state = "cartridge_flash"
 	item_state = "cartridge_flash"
-	inherent_reagents = list("sulfur" = 60, "potassium" = 60)
-	required_reagents = list("aluminum" = 60)
+	volume = 60
+	ireagent_base_amount = 60
 	allowed_reagents = list("aluminum")
+
+/obj/item/reagent_container/cartridge/flash/Initialize()
+	inherent_reagents = list("sulfur" = ireagent_base_amount, "potassium" = ireagent_base_amount)
+	required_reagents = list("aluminum" = ireagent_base_amount)
+	. = ..()
 
 /obj/item/reagent_container/cartridge/flash/update_icon()
 	overlays.Cut()
@@ -354,15 +365,34 @@
 		var/image/lid = image(icon, src, "cartridge_lid")
 		overlays += lid
 
+/obj/item/reagent_container/cartridge/flash/active
+	name = "active flash ordnance cartridge"
+	desc = "An active flash ordnance cartridge. The plasteel exterior is barely withstanding the strong exothermic reaction taking place therein."
+	icon_state = "cartridge_flash_active"
+	item_state = "cartridge_flash_active"
+	anchored = TRUE
+	volume = 180
+
+/obj/item/reagent_container/cartridge/flash/active/New()
+	..()
+	flags_atom = flags_atom & ~OPENCONTAINER // close the container because the reaction is scary
+
+/obj/item/reagent_container/cartridge/flash/active/attack_hand(mob/user)
+	to_chat(user, "[src] is too hot. You will burn your hand if you pick it up.")
+
 /obj/item/reagent_container/cartridge/shrapnel
 	name = "shrapnel ordnance cartridge"
-	desc = "A special cartridge for explosive casings. This one is filled with shrapnel by default. Additives can be added to modify the shrapnel. Requires explosive force from the casing itself to propel the shards. Can hold up to 10 units."
+	desc = "A special cartridge for explosive casings. This one is filled with shrapnel by default. Some specific additives can optionally be added to modify the shrapnel."
 	icon_state = "cartridge"
 	item_state = "cartridge"
-	matter = list("metal" = 1875, "plasteel" = 3750)
+	matter = list("metal" = 3750, "plasteel" = 3750)
+	ireagent_base_amount = 16
 	volume = 10
-	inherent_reagents = list("iron" = 64)
 	allowed_reagents = list("phoron", "pacid", "neurotoxinplasma")
+
+/obj/item/reagent_container/cartridge/shrapnel/Initialize()
+	inherent_reagents = list("iron" = ireagent_base_amount)
+	. = ..()
 
 /obj/item/reagent_container/cartridge/shrapnel/update_icon()
 	overlays.Cut()
@@ -371,17 +401,7 @@
 		overlays += image('icons/obj/items/chemistry.dmi', src, "cartridge_valid")
 
 	if(reagents && reagents.total_volume)
-		var/image/filling = image('icons/obj/items/reagentfillings.dmi', src, "cartridge-1")
-
-		var/percent = floor((reagents.total_volume / volume) * 100)
-		switch(percent)
-			if(0 to 25)
-				filling.icon_state = "cartridge-1"
-			if(26 to 49)
-				filling.icon_state = "cartridge-2"
-			if(50 to INFINITY)
-				filling.icon_state = "cartridge-3"
-
+		var/image/filling = image('icons/obj/items/reagentfillings.dmi', src, "cartridge-3")
 		filling.color = mix_color_from_reagents(reagents.reagent_list)
 		overlays += filling
 

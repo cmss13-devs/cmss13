@@ -254,7 +254,7 @@
 		reagents.source_mob = WEAKREF(cause_mob)
 		msg_admin_niche("[key_name(cause_mob)] detonated custom explosive by [key_name(creator)]: [name] (REAGENTS: [reagent_list_text]) in [get_area(src)] [ADMIN_JMP(loc)]", loc.x, loc.y, loc.z)
 
-	if(length(containers) + length(cartridges) < 1)
+	if(length(containers) + length(cartridges) < 2)
 		reagents.trigger_volatiles = TRUE //Explode on the first transfer
 
 	for(var/obj/item/reagent_container/glass/G in containers)
@@ -264,10 +264,10 @@
 			reagents.trigger_volatiles = TRUE //So it doesn't explode before transfering the last container
 
 	for(var/obj/item/reagent_container/cartridge/C in cartridges)
+		C.reagents.trans_to(src, C.reagents.total_volume)
 		for(var/reagent_id in C.inherent_reagents)
 			var/reagent_volume = C.inherent_reagents[reagent_id]
 			reagents.add_reagent(reagent_id, reagent_volume)
-		C.reagents.trans_to(src, C.reagents.total_volume)
 		i--
 		if(reagents && i <= 1)
 			reagents.trigger_volatiles = TRUE //So it doesn't explode before transfering the last container
@@ -288,8 +288,29 @@
 			C.drop_inv_item_on_ground(src)
 			C.toggle_throw_mode(THROW_MODE_OFF)
 
+		var/flash_cartridges = 0
+		var/found_flash = FALSE
+		for(var/obj/item/reagent_container/cartridge/C in cartridges)
+			if(istype(C, /obj/item/reagent_container/cartridge/flash))
+				found_flash = TRUE
+				flash_cartridges++
+
+		if(found_flash)
+			// technically rather dirty solution since it does the flash powder reaction twice, but the one in the casing doesn't apply properly
+			var/obj/item/reagent_container/cartridge/flash/active/F = new(src.loc)
+			var/flash_volume = flash_cartridges * F.ireagent_base_amount
+			var/square_amount = sqrt(flash_volume)
+			var/flash_lifetime = max(((-150 / square_amount) - 2 * sqrt(flash_volume + 2000) + 120), 0.1) MINUTES // flash powder formula
+			while(flash_cartridges > 0)
+				F.reagents.add_reagent("aluminum", F.ireagent_base_amount)
+				F.reagents.add_reagent("sulfur", F.ireagent_base_amount)
+				F.reagents.add_reagent("potassium", F.ireagent_base_amount)
+				flash_cartridges--
+				QDEL_IN(F, flash_lifetime)
+
+
 		invisibility = INVISIBILITY_MAXIMUM //Why am i doing this?
-		QDEL_IN(src, 50) //To make sure all reagents can work correctly before deleting the grenade.
+		QDEL_IN(src, 5) //To make sure all reagents can work correctly before deleting the grenade.
 
 /obj/item/explosive/proc/make_copy_of(obj/item/explosive/other)
 	cause_data = other.cause_data

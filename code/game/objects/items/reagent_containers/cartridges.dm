@@ -289,7 +289,7 @@
 
 /obj/item/reagent_container/cartridge/smoke
 	name = "smoke ordnance cartridge"
-	desc = "An experimental cartridge for explosive casings. May react unexpectedly. This one creates chemical smoke. Requires to be filled with sugar."
+	desc = "An experimental cartridge for explosive casings. May react in an unexpected way. This one creates chemical smoke. Requires to be filled with sugar."
 	icon_state = "cartridge_smoke"
 	item_state = "cartridge_smoke"
 	volume = 30
@@ -328,7 +328,7 @@
 
 /obj/item/reagent_container/cartridge/flash
 	name = "flash ordnance cartridge"
-	desc = "An experimental cartridge for explosive casings. May react unexpectedly. This one is designed to spew flames and emits light once activated. Requires to be filled with aluminium."
+	desc = "An experimental cartridge for explosive casings. May react in an unexpected way. This one is designed to spew flames and emits light once activated. Requires to be filled with aluminium."
 	icon_state = "cartridge_flash"
 	item_state = "cartridge_flash"
 	volume = 60
@@ -378,7 +378,7 @@
 
 /obj/item/reagent_container/cartridge/shrapnel
 	name = "shrapnel ordnance cartridge"
-	desc = "An experimental cartridge for explosive casings. May react unexpectedly. This one is filled with shrapnel by default. Some specific additives can optionally be added to enhance the metal fragments therein."
+	desc = "An experimental cartridge for explosive casings. May react in an unexpected way. This one is filled with shrapnel by default. Some specific additives can optionally be added to enhance the metal fragments therein."
 	icon_state = "cartridge"
 	item_state = "cartridge"
 	matter = list("metal" = 3750, "plasteel" = 3750)

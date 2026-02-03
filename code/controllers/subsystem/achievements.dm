@@ -132,7 +132,19 @@ SUBSYSTEM_DEF(achievements)
 
 	var/datum/http_request/request = new
 	request.prepare(RUSTG_HTTP_METHOD_POST, api_url, json_encode(request_body), headers)
-	request.begin_async()
+	request.execute_blocking()
+
+	var/datum/http_response/response = request.into_response()
+
+	if(response.errored)
+		log_debug("Achievements API error reporting completion for [ckey] ([achievement.key]): [response.error]")
+		return
+
+	if(response.status_code < 200 || response.status_code >= 300)
+		log_debug("Achievements API returned status [response.status_code] when reporting completion for [ckey] ([achievement.key])")
+		return
+
+	log_debug("Successfully reported achievement '[achievement.key]' completion for [ckey]")
 
 /datum/achievement_manager
 	/// The client that we're managing
@@ -194,9 +206,9 @@ SUBSYSTEM_DEF(achievements)
 
 /// When the achievement has been accomplished and should be reported to the backend
 /datum/achievement/proc/achieved(client/achiever)
-	SSachievements.report_achievement_completed(achiever.ckey, key)
+	SSachievements.report_achievement_completed(achiever.ckey, src)
 
-	unregister_mob()
+	unregister_mob(achiever.mob)
 
 	achiever.achievement_manager.achievements -= src
 

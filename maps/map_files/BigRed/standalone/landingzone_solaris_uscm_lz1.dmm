@@ -45,9 +45,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/bigredv2/outside/space_port)
-"ah" = (
-/turf/closed/wall/solaris/rock,
-/area/bigredv2/outside/marshal_office)
 "ak" = (
 /obj/effect/decal/strata_decals/grime/grime1{
 	dir = 1
@@ -1259,7 +1256,8 @@
 /area/bigredv2/outside/space_port)
 "Dw" = (
 /obj/structure/showcase{
-	icon_state = "bus"
+	icon_state = "bus";
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	},
 /turf/open/floor/greengrid,
 /area/bigredv2/outside/telecomm)
@@ -5139,8 +5137,8 @@ DO
 DO
 DO
 DO
-ah
-ah
+DO
+DO
 DO
 DO
 DO
@@ -5192,9 +5190,9 @@ DO
 DO
 DO
 DO
-ah
-ah
-ah
+DO
+DO
+DO
 DO
 DO
 DO
@@ -5246,8 +5244,8 @@ DO
 DO
 DO
 DO
-ah
-ah
+DO
+DO
 DO
 DO
 DO
@@ -5300,9 +5298,9 @@ DO
 DO
 DO
 DO
-ah
-ah
-ah
+DO
+DO
+DO
 DO
 DO
 DO
@@ -5354,9 +5352,9 @@ DO
 DO
 DO
 DO
-ah
-ah
-ah
+DO
+DO
+DO
 DO
 DO
 DO

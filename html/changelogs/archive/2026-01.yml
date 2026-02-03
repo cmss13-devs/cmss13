@@ -358,3 +358,51 @@
       will properly show wounds from damage on their icons.
   ori-disillusion-mirnov:
   - bugfix: ridden runners cannot ventcrawl
+2026-01-24:
+  MistChristmas:
+  - bugfix: Decon-ing an APC and reconstructing it elsewhere no longer stops it from
+      charging
+  - code_imp: Terminals are now somewhat fluff and not a powernet object.
+  Red-byte3D:
+  - balance: Dirlock now has slowdown again
+2026-01-26:
+  Drathek:
+  - bugfix: Self destruct now pauses win condition checks during SD sequence and is
+      explicitly a draw
+  - code_imp: Cleaned up some win condition handling
+  MistChristmas:
+  - soundtweak: 'Marine winning_triumph3: Marine Hymm is now normalised to -8db'
+  larentoun:
+  - bugfix: Mutated Despoiler is now Green Despoiler, not invisible one.
+  - bugfix: Mutated King is also Green now.
+  - maptweak: LV624 LZ1 is now correctly called "LZ1 Nexus", instead of being "Alamo
+      Landing Zone".
+2026-01-28:
+  Nemesis1337, Zenith:
+  - bugfix: corrected broken icon states across all maps
+  - bugfix: corrected rotations of tiles and objects on Shivas and CORSAT
+  - bugfix: fixed broken bolt buttons on Shivas
+  - code_imp: adding glass to the window frame will now create the correct window
+  - balance: changed scrapeaway walls in west caves to only block the LZ
+  - balance: added empty IV bags and IV drips to all CLF inserts that didn't have
+      it
+  - imageadd: added new window variants for Shivas
+  - imagetweak: Shivas windows and walls are now darker
+  - maptweak: added missing tiles below windows and doors (Shivas and Fiorina)
+  - maptweak: added missing wiring terminals to SMESes on (Shivas, Fiorina and Kutjevo)
+  - maptweak: replaced unweedable turf in ETA (Solaris)
+  - maptweak: replaced old turrets in the CLF insert (Fiorina)
+  - maptweak: replaced old fences with the new slim fences and fence doors (Chance's
+      Claim)
+  - maptweak: replaced a prop M41AE2 with a functional one (Solaris)
+  - maptweak: updated basketball court visuals (Shivas and Fiorina)
+  - maptweak: tweaked area markers across all maps
+  - maptweak: changed scrapeaway walls in west caves to only block the LZ (Solaris)
+  - maptweak: removed duplicate objects (Solaris, Chance's Claim, Varadero, CORSAT)
+2026-01-31:
+  Unknownity:
+  - maptweak: All ERT stations who had sleepers and autodocs have recieved upgrades
+      to said machines.
+  kiVts:
+  - rscadd: Fire-penetrating now makes particles appear on a fire
+  - balance: Made white-flame harder to get.

@@ -98,3 +98,6 @@
 
 /// From /mob/living/carbon/human/death(cause, gibbed)
 #define COMSIG_XENO_REVEAL_TACMAP "xeno_reveal_tacmap"
+
+/// From /mob/living/carbon/xenomorph/larva/proc/chest_burst
+#define COMSIG_XENO_BURSTED "xeno_burst"

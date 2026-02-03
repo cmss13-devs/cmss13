@@ -133,3 +133,6 @@
 
 	/// If this client has any windows scaling applied
 	var/window_scaling
+
+	/// Controller for mob achievements. If present, the mob is eligible for achievements that are unattained
+	var/datum/achievement_manager/achievement_manager

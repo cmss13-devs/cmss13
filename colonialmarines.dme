@@ -1193,7 +1193,6 @@
 #include "code\game\objects\effects\spawners\prop_gun_spawner.dm"
 #include "code\game\objects\effects\spawners\random.dm"
 #include "code\game\objects\effects\spawners\spawner.dm"
-#include "code\game\objects\effects\spawners\vaultspawner.dm"
 #include "code\game\objects\effects\spawners\wo_spawners\players.dm"
 #include "code\game\objects\effects\spawners\wo_spawners\supplies.dm"
 #include "code\game\objects\items\ashtray.dm"

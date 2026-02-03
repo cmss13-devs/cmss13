@@ -69,7 +69,7 @@ GLOBAL_REAL_VAR(total_runtimes)
 		catch
 
 	// Single error logging to STUI
-	var/text = "\[[time_stamp()]]RUNTIME: [E.name] - [E.file]@[E.line][E.desc]"
+	var/text = "\[[time_stamp()]]RUNTIME: [E.name] - [E.file]@[E.line]"
 	if(GLOB?.STUI?.runtime)
 		GLOB.STUI.runtime.Add(text)
 		GLOB.STUI.processing |= STUI_LOG_RUNTIME

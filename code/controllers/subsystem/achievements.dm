@@ -57,10 +57,6 @@ SUBSYSTEM_DEF(achievements)
 	if(api_key)
 		headers["Authorization"] = "Bearer [api_key]"
 
-	var/list/request_body = list(
-		"ckey" = ckey,
-	)
-
 	var/datum/http_request/request = new
 	request.prepare(RUSTG_HTTP_METHOD_GET, "[api_url]?ckey=[url_encode(ckey)]&instance=[instance]", "", headers)
 	request.execute_blocking()
@@ -69,11 +65,11 @@ SUBSYSTEM_DEF(achievements)
 
 	if(response.errored)
 		log_debug("Achievements API error for [ckey]: [response.error]")
-		continue
+		return
 
 	if(response.status_code != 200)
 		log_debug("Achievements API returned status [response.status_code] for [ckey]")
-		continue
+		return
 
 	handle_achievements_response(ckey, response.body)
 
@@ -97,7 +93,7 @@ SUBSYSTEM_DEF(achievements)
 	if(!client)
 		return
 
-	var/datum/achievement_manager/manager = new(client, achievements)
+	new /datum/achievement_manager(client, achievements)
 
 /// Notify a client that they've unlocked an achievement
 /datum/controller/subsystem/achievements/proc/notify_achievement_unlocked(client/target, name, description)

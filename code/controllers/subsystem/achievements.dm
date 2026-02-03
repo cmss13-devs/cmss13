@@ -169,7 +169,8 @@ SUBSYSTEM_DEF(achievements)
 		if(!istype(achievement_datum))
 			continue
 
-		src.achievements += achievement_datum
+		var/datum/achievement/my_achievement = new achievement_datum.type
+		src.achievements += my_achievement
 
 		achievement_datum.register_mob(current_mob)
 

@@ -266,7 +266,7 @@
 	for(var/obj/item/reagent_container/cartridge/C in cartridges)
 		for(var/reagent_id in C.inherent_reagents)
 			var/reagent_volume = C.inherent_reagents[reagent_id]
-			C.reagents.add_reagent(reagent_id, reagent_volume)
+			reagents.add_reagent(reagent_id, reagent_volume)
 		C.reagents.trans_to(src, C.reagents.total_volume)
 		i--
 		if(reagents && i <= 1)

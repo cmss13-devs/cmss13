@@ -306,18 +306,18 @@
 
 		var/percent = floor((reagents.total_volume / volume) * 100)
 		switch(percent)
-			if(0 to 11)
+			if(0 to 25)
 				filling.icon_state = "cartridge-1"
-			if(12 to 22)
+			if(26 to 49)
 				filling.icon_state = "cartridge-2"
-			if(23 to INFINITY)
+			if(50 to INFINITY)
 				filling.icon_state = "cartridge-3"
 
 		filling.color = mix_color_from_reagents(reagents.reagent_list)
 		overlays += filling
 
 	if(!is_open_container())
-		var/image/lid = image(icon, src, "[initial(icon_state)]_lid")
+		var/image/lid = image(icon, src, "cartridge_lid")
 		overlays += lid
 
 /obj/item/reagent_container/cartridge/flash
@@ -340,18 +340,18 @@
 
 		var/percent = floor((reagents.total_volume / volume) * 100)
 		switch(percent)
-			if(0 to 11)
+			if(0 to 25)
 				filling.icon_state = "cartridge-1"
-			if(12 to 22)
+			if(26 to 49)
 				filling.icon_state = "cartridge-2"
-			if(23 to INFINITY)
+			if(50 to INFINITY)
 				filling.icon_state = "cartridge-3"
 
 		filling.color = mix_color_from_reagents(reagents.reagent_list)
 		overlays += filling
 
 	if(!is_open_container())
-		var/image/lid = image(icon, src, "[initial(icon_state)]_lid")
+		var/image/lid = image(icon, src, "cartridge_lid")
 		overlays += lid
 
 /obj/item/reagent_container/cartridge/shrapnel
@@ -375,16 +375,16 @@
 
 		var/percent = floor((reagents.total_volume / volume) * 100)
 		switch(percent)
-			if(0 to 11)
+			if(0 to 25)
 				filling.icon_state = "cartridge-1"
-			if(12 to 22)
+			if(26 to 49)
 				filling.icon_state = "cartridge-2"
-			if(23 to INFINITY)
+			if(50 to INFINITY)
 				filling.icon_state = "cartridge-3"
 
 		filling.color = mix_color_from_reagents(reagents.reagent_list)
 		overlays += filling
 
 	if(!is_open_container())
-		var/image/lid = image(icon, src, "[initial(icon_state)]_lid")
+		var/image/lid = image(icon, src, "cartridge_lid")
 		overlays += lid

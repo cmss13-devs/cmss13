@@ -310,7 +310,7 @@
 
 
 		invisibility = INVISIBILITY_MAXIMUM //Why am i doing this?
-		QDEL_IN(src, 5) //To make sure all reagents can work correctly before deleting the grenade.
+		QDEL_IN(src, 50) //To make sure all reagents can work correctly before deleting the grenade.
 
 /obj/item/explosive/proc/make_copy_of(obj/item/explosive/other)
 	cause_data = other.cause_data

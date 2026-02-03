@@ -1,7 +1,7 @@
 /datum/xeno_strain/dancer
 	// My name is Cuban Pete, I'm the King of the Rumba Beat
 	name = PRAETORIAN_DANCER
-	description = "You lose all of your acid-based abilities and a small amount of your armor in exchange for increased movement speed, evasion, and unparalleled agility that gives you an ability to move even more quickly, dodge bullets, and phase through enemies and allies alike. By slashing enemies, you temporarily increase your movement speed and you also you apply a tag that changes how your two new tail abilities function. By tagging enemies, you will make Impale hit twice instead of once and make Tail Trip knock enemies down instead of stunning them."
+	description = "You lose all acid-based abilities and a small amount of your armor in exchange for increased movement speed, evasion, and unparalleled agility. This strain excels at rapid repositioning, bullet dodging, and phasing effortlessly through enemies and allies alike. Slashing enemies applies a red tag, altering how your tail abilities function. Tagged enemies cause Impale to strike twice and transform Tail Trip into a powerful knockdown instead of a brief stun. Your new Tail Stab adapts to your intent. When used in Disarm mode, it becomes a Blunt, armor-piercing strike. When enemies are brought close to death or slain by your claws, yellow tags spread to nearby foes. Slashing yellow-tagged enemies reduces the cooldown of your tail abilities, and using a tail ability on a yellow-tagged target grants no cooldown penalty."
 	flavor_description = "A performance fit for a Queen, this one will become my instrument of death."
 	icon_state_prefix = "Dancer"
 

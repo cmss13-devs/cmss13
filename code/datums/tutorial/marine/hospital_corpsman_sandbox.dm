@@ -223,30 +223,32 @@
 	if((survival_difficulty >= TUTORIAL_HM_INJURY_SEVERITY_FATAL) && prob(75))	// If above difficulty FATAL, starts a random timer to spawn a booboo agent
 		booboo_timer = addtimer(CALLBACK(src, PROC_REF(eval_booboo_agent)), (rand(15,25)) SECONDS, TIMER_STOPPABLE)
 
+/// Simulates HM tutorial patient injuries
 /datum/tutorial/marine/hospital_corpsman/proc/simulate_condition(mob/living/carbon/human/target)
 	SIGNAL_HANDLER
-
-	// Simulates patient NPC injuries
 
 	var/damage_amount_split = ((rand(1, 100)) / 100)	// How damage should be split between brute and burn
 	var/list/limbs = target.limbs
 	var/amount_of_parts = rand(1, 6)	// Amount of times to roll for a limb fracture
 	var/patient_type = pick(75;PATIENT_TYPE_MUNDANE, 15;PATIENT_TYPE_ORGAN, 10;PATIENT_TYPE_TOXIN) // 75% chance for mundane damage, 15% for organ damage, 10% for toxin
 
-	if(patient_type >= PATIENT_TYPE_MUNDANE)
-		for(var/i in 1 to amount_of_parts)
-			var/obj/limb/selected_limb = pick(limbs)
-			var/damage_amount = (rand((40 * survival_difficulty), (50 * survival_difficulty)))
-			selected_limb.take_damage(round((damage_amount * damage_amount_split) / amount_of_parts), round((damage_amount * (1 - damage_amount_split)) / amount_of_parts))
-			if((damage_amount > selected_limb.min_broken_damage) && prob(survival_difficulty * 7))
-				selected_limb.fracture()
-			if((damage_amount > selected_limb.min_eschar_damage) && prob(survival_difficulty * 3))
-				selected_limb.eschar()
-	if(patient_type == PATIENT_TYPE_ORGAN)	// applies organ damage AS WELL as mundane damage if type 2
-		var/datum/internal_organ/organ = pick(target.internal_organs)
-		target.apply_internal_damage(rand(1,(survival_difficulty*3.75)), "[organ.name]")
-	else if(patient_type == PATIENT_TYPE_TOXIN)	// applies toxin damage AS WELL as mundane damage if type 3
-		target.setToxLoss(rand(1,10*survival_difficulty))
+	for(var/i in 1 to amount_of_parts)
+		var/obj/limb/selected_limb = pick(limbs)
+		var/damage_amount = (rand((40 * survival_difficulty), (50 * survival_difficulty)))
+		var/calculated_brute_damage = round((damage_amount * damage_amount_split) / amount_of_parts)
+		var/calculated_burn_damage = round((damage_amount * (1 - damage_amount_split)) / amount_of_parts)
+		selected_limb.take_damage(calculated_brute_damage, calculated_burn_damage)
+		if((damage_amount > selected_limb.min_broken_damage) && prob(survival_difficulty * 7))
+			selected_limb.fracture()
+		if((damage_amount > selected_limb.min_eschar_damage) && prob(survival_difficulty * 3))
+			selected_limb.eschar()
+
+	switch(patient_type)
+		if(PATIENT_TYPE_ORGAN)
+			var/datum/internal_organ/organ = pick(target.internal_organs)
+			target.apply_internal_damage(rand(1, (survival_difficulty * 3.75)), "[organ.name]")
+		if(PATIENT_TYPE_TOXIN)
+			target.setToxLoss(rand(1, survival_difficulty * 10))
 
 	if(prob(40))	// Simulates premedicated patients
 		var/datum/reagent/medical/reagent = pick(premeds)
@@ -271,15 +273,15 @@
 		var/list/injury_type = list()
 		if((limb.status & LIMB_BROKEN) && !(limb.status & LIMB_SPLINTED))
 			injury_type |= FRACTURE
-			RegisterSignal(limb, COMSIG_LIVING_LIMB_SPLINTED, PROC_REF(health_tasks_handler_splinted))
+			RegisterSignal(limb, COMSIG_LIVING_LIMB_SPLINTED, PROC_REF(health_tasks_handler))
 		if((limb.status & LIMB_ESCHAR))
 			injury_type |= ESCHAR_INJURY
-			RegisterSignal(limb, COMSIG_LIMB_SURGERY_STEP_SUCCESS, PROC_REF(health_tasks_handler_surgery))
+			RegisterSignal(limb, COMSIG_LIMB_SURGERY_STEP_SUCCESS, PROC_REF(health_tasks_handler))
 		if(limb.can_bleed_internally)
 			for(var/datum/wound/wound as anything in limb.wounds)
 				if(wound.internal)
 					injury_type |= INTERNAL_BLEEDING
-					RegisterSignal(limb, COMSIG_LIMB_SURGERY_STEP_SUCCESS, PROC_REF(health_tasks_handler_surgery), TRUE)
+					RegisterSignal(limb, COMSIG_LIMB_SURGERY_STEP_SUCCESS, PROC_REF(health_tasks_handler), TRUE)
 					// give me a "break", get it?
 		if(length(injury_type))
 			healing_tasks[limb] = injury_type
@@ -288,17 +290,9 @@
 	else
 		agent_healing_tasks[target] = healing_tasks
 
-/// Signal handler for COMSIG_LIVING_LIMB_SPLINTED
-/datum/tutorial/marine/hospital_corpsman/proc/health_tasks_handler_splinted(obj/limb/limb, mob/living/user)
-	SIGNAL_HANDLER
-	health_tasks_handler(limb)
-
-/// Signal handler for COMSIG_LIMB_SURGERY_STEP_SUCCESS
-/datum/tutorial/marine/hospital_corpsman/proc/health_tasks_handler_surgery(obj/limb/limb, mob/living/user, datum/surgery/surgery, obj/item/tool)
-	SIGNAL_HANDLER
-	health_tasks_handler(limb, surgery)
-
 /datum/tutorial/marine/hospital_corpsman/proc/health_tasks_handler(obj/limb/limb, datum/surgery/surgery)
+	SIGNAL_HANDLER
+
 	var/mob/living/carbon/human/realistic_dummy/target = limb.owner
 	var/list/healing_tasks = agent_healing_tasks[target]
 	var/list/injury_type = healing_tasks[limb]
@@ -344,10 +338,7 @@
 
 	var/list/help_me = list()
 
-	if(target in dragging_agents)
-		target.emote("medic")
-		return
-	if(prob(25))
+	if(target in dragging_agents || prob(25))
 		target.emote("medic")
 		return
 	for(var/obj/limb/limb as anything in target.limbs)

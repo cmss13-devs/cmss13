@@ -23,7 +23,7 @@
 
 	var/fire_penetrating = FALSE
 
-
+// file marked for inspection
 /datum/reagents/New(maximum=100)
 	maximum_volume = maximum
 
@@ -126,7 +126,7 @@
 	return the_id
 
 /// Transfers to the reagents datum of an object
-/datum/reagents/proc/trans_to(atom/target, amount=1, multiplier=1, preserve_data=1, reaction = TRUE)
+/datum/reagents/proc/trans_to(atom/target, amount = 1, multiplier = 1, preserve_data = TRUE, reaction = TRUE)
 	var/datum/reagents/R = target?.reagents
 	if(R && !locked && !R.locked && total_volume > 0)
 		return trans_to_datum(R, amount, multiplier, preserve_data, reaction)

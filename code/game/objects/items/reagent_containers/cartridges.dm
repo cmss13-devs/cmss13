@@ -359,7 +359,7 @@
 	desc = "A special cartridge for explosive casings. This one is filled with shrapnel by default. Additives can be added to modify the shrapnel. Requires explosive force from the casing itself to propel the shards. Can hold up to 10 units."
 	icon_state = "cartridge"
 	item_state = "cartridge"
-	matter = list("metal" = 3750, "plasteel" = 3750)
+	matter = list("metal" = 1875, "plasteel" = 3750)
 	volume = 10
 	inherent_reagents = list("iron" = 64)
 	allowed_reagents = list("phoron", "pacid", "neurotoxinplasma")

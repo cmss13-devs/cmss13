@@ -40,7 +40,7 @@ GLOBAL_REAL_VAR(total_runtimes)
 		runtime_hashes[hash]++
 		// Repeat runtimes aren't logged every time
 		if(!(runtime_hashes[hash] % 100))
-			var/text = "\[[time_stamp()]]RUNTIME: [E.name] - [E.file]@[E.line] ([runtime_hashes[hash]] total)"
+			var/text = "\[[time_stamp()]]RUNTIME: [E.name] - [E.file]@[E.line] ([runtime_hashes[hash]] total) [E.desc]"
 			if(GLOB?.STUI?.runtime)
 				GLOB.STUI.runtime.Add(text)
 				GLOB.STUI.processing |= STUI_LOG_RUNTIME

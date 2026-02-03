@@ -388,8 +388,10 @@
 		return
 
 	playsound(loc, "sound/bullets/acid_impact1.ogg", 15)
-	if(isliving(movable))
-		var/mob/living/target_mob = movable
-		if(!target_mob.ally_of_hivenumber(hivenumber))
-			target_mob.next_move_slowdown = max(target_mob.next_move_slowdown, slow_amt)
-			carbon.apply_armoured_damage(damage, damage_type = BURN, def_zone = pick(target_limbs))
+	if(!isliving(movable))
+		return
+		
+	var/mob/living/target_mob = movable
+	if(!target_mob.ally_of_hivenumber(hivenumber))
+		target_mob.next_move_slowdown = max(target_mob.next_move_slowdown, slow_amt)
+		carbon.apply_armoured_damage(damage, damage_type = BURN, def_zone = pick(target_limbs))

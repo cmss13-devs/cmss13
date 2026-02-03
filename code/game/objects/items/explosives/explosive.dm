@@ -254,20 +254,20 @@
 		reagents.source_mob = WEAKREF(cause_mob)
 		msg_admin_niche("[key_name(cause_mob)] detonated custom explosive by [key_name(creator)]: [name] (REAGENTS: [reagent_list_text]) in [get_area(src)] [ADMIN_JMP(loc)]", loc.x, loc.y, loc.z)
 
-	if(length(containers) + length(cartridges) < 2)
-		reagents.trigger_volatiles = TRUE //Explode on the first transfer
-
-	for(var/obj/item/reagent_container/glass/G in containers)
-		G.reagents.trans_to(src, G.reagents.total_volume)
+	for(var/obj/item/reagent_container/cartridge/C in cartridges)
+		for(var/reagent_id in C.inherent_reagents)
+			var/reagent_volume = C.inherent_reagents[reagent_id]
+			reagents.add_reagent(reagent_id, reagent_volume)
+		C.reagents.trans_to(src, C.reagents.total_volume)
 		i--
 		if(reagents && i <= 1)
 			reagents.trigger_volatiles = TRUE //So it doesn't explode before transfering the last container
 
-	for(var/obj/item/reagent_container/cartridge/C in cartridges)
-		C.reagents.trans_to(src, C.reagents.total_volume)
-		for(var/reagent_id in C.inherent_reagents)
-			var/reagent_volume = C.inherent_reagents[reagent_id]
-			reagents.add_reagent(reagent_id, reagent_volume)
+	if(length(containers) < 2)
+		reagents.trigger_volatiles = TRUE //Explode on the first transfer
+
+	for(var/obj/item/reagent_container/glass/G in containers)
+		G.reagents.trans_to(src, G.reagents.total_volume)
 		i--
 		if(reagents && i <= 1)
 			reagents.trigger_volatiles = TRUE //So it doesn't explode before transfering the last container

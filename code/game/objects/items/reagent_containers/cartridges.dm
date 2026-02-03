@@ -289,7 +289,7 @@
 
 /obj/item/reagent_container/cartridge/smoke
 	name = "smoke ordnance cartridge"
-	desc = "A special cartridge for explosive casings. This one creates chemical smoke. Requires to be filled with sugar."
+	desc = "An experimental cartridge for explosive casings. May react unexpectedly. This one creates chemical smoke. Requires to be filled with sugar."
 	icon_state = "cartridge_smoke"
 	item_state = "cartridge_smoke"
 	volume = 30
@@ -328,7 +328,7 @@
 
 /obj/item/reagent_container/cartridge/flash
 	name = "flash ordnance cartridge"
-	desc = "A special cartridge for explosive casings. This one emits light once activated. Requires to be filled with aluminium."
+	desc = "An experimental cartridge for explosive casings. May react unexpectedly. This one is designed to spew flames and emits light once activated. Requires to be filled with aluminium."
 	icon_state = "cartridge_flash"
 	item_state = "cartridge_flash"
 	volume = 60
@@ -367,22 +367,18 @@
 
 /obj/item/reagent_container/cartridge/flash/active
 	name = "active flash ordnance cartridge"
-	desc = "An active flash ordnance cartridge. The plasteel exterior is barely withstanding the strong exothermic reaction taking place therein."
+	desc = "An active flash ordnance cartridge, emitting light. The plasteel exterior is barely withstanding the strong exothermic reaction taking place therein."
 	icon_state = "cartridge_flash_active"
 	item_state = "cartridge_flash_active"
 	anchored = TRUE
 	volume = 180
-
-/obj/item/reagent_container/cartridge/flash/active/New()
-	..()
-	flags_atom = flags_atom & ~OPENCONTAINER // close the container because the reaction is scary
 
 /obj/item/reagent_container/cartridge/flash/active/attack_hand(mob/user)
 	to_chat(user, "[src] is too hot. You will burn your hand if you pick it up.")
 
 /obj/item/reagent_container/cartridge/shrapnel
 	name = "shrapnel ordnance cartridge"
-	desc = "A special cartridge for explosive casings. This one is filled with shrapnel by default. Some specific additives can optionally be added to modify the shrapnel."
+	desc = "An experimental cartridge for explosive casings. May react unexpectedly. This one is filled with shrapnel by default. Some specific additives can optionally be added to enhance the metal fragments therein."
 	icon_state = "cartridge"
 	item_state = "cartridge"
 	matter = list("metal" = 3750, "plasteel" = 3750)

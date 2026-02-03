@@ -125,7 +125,6 @@
 	last_combat_time = world.time
 
 /datum/behavior_delegate/despoiler_base/melee_attack_modify_burn_damage(original_damage, mob/living/carbon/target_carbon)
-	var/mob/living/carbon/xenomorph/despoiler/xeno = bound_xeno
 	if (!isxeno_human(target_carbon))
 		return original_damage
 

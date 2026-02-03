@@ -263,9 +263,9 @@
 
 	has_required_reagents = TRUE
 	if(length(required_reagents))
-		for(var/req_id in required_reagents)
-			var/needed_amount = required_reagents[req_id]
-			if(!reagents.has_reagent(req_id, needed_amount))
+		for(var/reagent_id in required_reagents)
+			var/reagent_volume = required_reagents[reagent_id]
+			if(!reagents.has_reagent(reagent_id, reagent_volume))
 				has_required_reagents = FALSE
 				break
 
@@ -310,10 +310,8 @@
 				filling.icon_state = "cartridge-1"
 			if(12 to 22)
 				filling.icon_state = "cartridge-2"
-			if(23 to 43)
+			if(23 to INFINITY)
 				filling.icon_state = "cartridge-3"
-			if(44 to INFINITY)
-				filling.icon_state = "cartridge-4"
 
 		filling.color = mix_color_from_reagents(reagents.reagent_list)
 		overlays += filling
@@ -346,10 +344,8 @@
 				filling.icon_state = "cartridge-1"
 			if(12 to 22)
 				filling.icon_state = "cartridge-2"
-			if(23 to 43)
+			if(23 to INFINITY)
 				filling.icon_state = "cartridge-3"
-			if(44 to INFINITY)
-				filling.icon_state = "cartridge-4"
 
 		filling.color = mix_color_from_reagents(reagents.reagent_list)
 		overlays += filling
@@ -360,12 +356,12 @@
 
 /obj/item/reagent_container/cartridge/shrapnel
 	name = "shrapnel ordnance cartridge"
-	desc = "A special cartridge for explosive casings. This one is filled with shrapnel by default. Additives can be added to modify the shrapnel. Can hold up to 10 units."
-	icon_state = "cartridge_shrapnel"
-	item_state = "cartridge_shrapnel"
+	desc = "A special cartridge for explosive casings. This one is filled with shrapnel by default. Additives can be added to modify the shrapnel. Requires explosive force from the casing itself to propel the shards. Can hold up to 10 units."
+	icon_state = "cartridge"
+	item_state = "cartridge"
 	matter = list("metal" = 3750, "plasteel" = 3750)
 	volume = 10
-	inherent_reagents = list("iron" = 64, "anfo" = 1) // we add a tiny bit of ANFO, else shrapnel wouldn't spawn (kind of a silly fix)
+	inherent_reagents = list("iron" = 64)
 	allowed_reagents = list("phoron", "pacid", "neurotoxinplasma")
 
 /obj/item/reagent_container/cartridge/shrapnel/update_icon()
@@ -375,14 +371,16 @@
 		overlays += image('icons/obj/items/chemistry.dmi', src, "cartridge_valid")
 
 	if(reagents && reagents.total_volume)
-		var/image/filling = image('icons/obj/items/reagentfillings.dmi', src, "[icon_state]-1")
+		var/image/filling = image('icons/obj/items/reagentfillings.dmi', src, "cartridge-1")
 
 		var/percent = floor((reagents.total_volume / volume) * 100)
 		switch(percent)
-			if(0 to 5)
-				filling.icon_state = "[icon_state]-1"
-			if(5 to INFINITY)
-				filling.icon_state = "[icon_state]-2"
+			if(0 to 11)
+				filling.icon_state = "cartridge-1"
+			if(12 to 22)
+				filling.icon_state = "cartridge-2"
+			if(23 to INFINITY)
+				filling.icon_state = "cartridge-3"
 
 		filling.color = mix_color_from_reagents(reagents.reagent_list)
 		overlays += filling

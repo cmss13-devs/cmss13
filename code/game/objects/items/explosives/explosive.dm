@@ -223,9 +223,8 @@
 			has_reagents = 1
 			reagents.allow_star_shape = allow_star_shape
 			break
-	for(var/obj/item/reagent_container/cartridge/G in cartridges)
+	if(length(cartridges))
 		has_reagents = 1
-		break
 
 	if(!has_reagents)
 		update_icon()
@@ -242,12 +241,12 @@
 			reagent_list_text += " [R.volume] [R.name], "
 		i++
 	for(var/obj/item/reagent_container/cartridge/C in cartridges)
-		if(!C.reagents)
-			continue
-		for(var/datum/reagent/R in C.reagents.reagent_list)
-			reagent_list_text += " [R.volume] [R.name], "
-		for (var/datum/reagent/R in C.inherent_reagents)
-			reagent_list_text += " [R.volume] [R.name], "
+		if (C.reagents)
+			for(var/datum/reagent/R in C.reagents.reagent_list)
+				reagent_list_text += " [R.volume] [R.name], "
+		for(var/reagent_id in C.inherent_reagents)
+			var/reagent_volume = C.inherent_reagents[reagent_id]
+			reagent_list_text += " [reagent_volume] [reagent_id], "
 		i++
 
 	var/mob/cause_mob = cause_data?.resolve_mob()
@@ -255,7 +254,7 @@
 		reagents.source_mob = WEAKREF(cause_mob)
 		msg_admin_niche("[key_name(cause_mob)] detonated custom explosive by [key_name(creator)]: [name] (REAGENTS: [reagent_list_text]) in [get_area(src)] [ADMIN_JMP(loc)]", loc.x, loc.y, loc.z)
 
-	if(length(containers) + length(cartridges) < 2)
+	if(length(containers) + length(cartridges) < 1)
 		reagents.trigger_volatiles = TRUE //Explode on the first transfer
 
 	for(var/obj/item/reagent_container/glass/G in containers)
@@ -265,8 +264,9 @@
 			reagents.trigger_volatiles = TRUE //So it doesn't explode before transfering the last container
 
 	for(var/obj/item/reagent_container/cartridge/C in cartridges)
-		for (var/datum/reagent/R in C.inherent_reagents)
-			C.reagents.add_reagent(R)
+		for(var/reagent_id in C.inherent_reagents)
+			var/reagent_volume = C.inherent_reagents[reagent_id]
+			C.reagents.add_reagent(reagent_id, reagent_volume)
 		C.reagents.trans_to(src, C.reagents.total_volume)
 		i--
 		if(reagents && i <= 1)

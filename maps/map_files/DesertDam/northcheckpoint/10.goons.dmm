@@ -10,7 +10,7 @@
 /obj/effect/spawner/random/claymore/midchance{
 	dir = 8
 	},
-/turf/open/asphalt/cement,
+/turf/open/asphalt/cement/cement4,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "ac" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -92,7 +92,7 @@
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "hR" = (
-/turf/open/asphalt/cement,
+/turf/open/asphalt/cement/cement4,
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "il" = (
 /obj/effect/decal/cleanable/blood/xeno,
@@ -197,7 +197,7 @@
 /turf/open/desert/rock/deep,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "rV" = (
-/turf/open/asphalt/cement,
+/turf/open/asphalt/cement/cement4,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "sl" = (
 /obj/structure/desertdam/decals/road_edge,
@@ -274,7 +274,7 @@
 /obj/item/ammo_magazine/rifle{
 	current_rounds = 0
 	},
-/turf/open/asphalt/cement,
+/turf/open/asphalt/cement/cement4,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "Af" = (
 /obj/effect/decal/sand_overlay/sand2{
@@ -306,7 +306,7 @@
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 4
 	},
-/turf/open/asphalt/cement,
+/turf/open/asphalt/cement/cement4,
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "Cy" = (
 /obj/item/stack/rods,
@@ -567,7 +567,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/asphalt/cement,
+/turf/open/asphalt/cement/cement4,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "VP" = (
 /obj/structure/desertdam/decals/road_edge,
@@ -587,7 +587,7 @@
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "Zq" = (
 /obj/item/prop/colony/used_flare,
-/turf/open/asphalt/cement,
+/turf/open/asphalt/cement/cement4,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 
 (1,1,1) = {"

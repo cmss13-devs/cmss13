@@ -1,7 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
 /turf/closed/wall/r_wall/prison_unmeltable,
-/area/template_noop)
+/area/fiorina/oob)
 "b" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -49,7 +49,7 @@
 "x" = (
 /obj/structure/window/framed/prison/reinforced/hull,
 /turf/open/floor/plating/prison,
-/area/template_noop)
+/area/fiorina/oob)
 "y" = (
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor/carpet,
@@ -70,7 +70,7 @@
 "L" = (
 /obj/structure/lattice,
 /turf/open/space,
-/area/template_noop)
+/area/fiorina/oob)
 "O" = (
 /obj/structure/xenoautopsy/tank/broken,
 /turf/open/floor/carpet,

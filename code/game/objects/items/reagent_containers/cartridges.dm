@@ -331,8 +331,8 @@
 	desc = "An experimental cartridge for explosive casings. May react in an unexpected way. This one is designed to spew flames and emits light once activated. Requires to be filled with aluminium."
 	icon_state = "cartridge_flash"
 	item_state = "cartridge_flash"
-	volume = 60
-	ireagent_base_amount = 60
+	volume = 10
+	ireagent_base_amount = 10
 	allowed_reagents = list("aluminum")
 
 /obj/item/reagent_container/cartridge/flash/Initialize()
@@ -351,11 +351,11 @@
 
 		var/percent = floor((reagents.total_volume / volume) * 100)
 		switch(percent)
-			if(0 to 25)
+			if(0 to 3)
 				filling.icon_state = "cartridge-1"
-			if(26 to 49)
+			if(4 to 6)
 				filling.icon_state = "cartridge-2"
-			if(50 to INFINITY)
+			if(7 to INFINITY)
 				filling.icon_state = "cartridge-3"
 
 		filling.color = mix_color_from_reagents(reagents.reagent_list)
@@ -371,7 +371,7 @@
 	icon_state = "cartridge_flash_active"
 	item_state = "cartridge_flash_active"
 	anchored = TRUE
-	volume = 180
+	volume = 90 // 3 flash cartridge reactions added together
 
 /obj/item/reagent_container/cartridge/flash/active/attack_hand(mob/user)
 	to_chat(user, "[src] is too hot. You will burn your hand if you pick it up.")

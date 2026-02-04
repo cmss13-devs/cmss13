@@ -298,15 +298,16 @@
 		if(found_flash)
 			// technically rather dirty solution since it does the flash powder reaction twice, but the one in the casing doesn't apply properly
 			var/obj/item/reagent_container/cartridge/flash/active/F = new(src.loc)
-			var/flash_volume = flash_cartridges * F.ireagent_base_amount
+			var/reagent_volume = flash_cartridges * F.ireagent_base_amount
+			var/flash_multiplier = 3 // flash_powder.result_amount
+			var/flash_volume = reagent_volume * flash_multiplier
 			var/square_amount = sqrt(flash_volume)
 			var/flash_lifetime = max(((-150 / square_amount) - 2 * sqrt(flash_volume + 2000) + 120), 0.1) MINUTES // flash powder formula
-			while(flash_cartridges > 0)
-				F.reagents.add_reagent("aluminum", F.ireagent_base_amount)
-				F.reagents.add_reagent("sulfur", F.ireagent_base_amount)
-				F.reagents.add_reagent("potassium", F.ireagent_base_amount)
-				flash_cartridges--
-				QDEL_IN(F, flash_lifetime)
+			F.reagents.add_reagent("aluminum", reagent_volume)
+			F.reagents.add_reagent("sulfur", reagent_volume)
+			F.reagents.add_reagent("potassium", reagent_volume)
+			// TODO: sizzling out sound effect
+			QDEL_IN(F, flash_lifetime)
 
 
 		invisibility = INVISIBILITY_MAXIMUM //Why am i doing this?

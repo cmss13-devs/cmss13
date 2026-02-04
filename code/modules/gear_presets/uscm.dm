@@ -425,7 +425,7 @@
 /datum/equipment_preset/uscm/leader/veteran
 	name = "USCM Veteran Squad Leader"
 
-	paygrades = PAY_SHORT_ME8
+	paygrades = list(PAY_SHORT_ME8 = JOB_PLAYTIME_TIER_0)
 	minimum_age = 30
 
 /datum/equipment_preset/uscm/leader/veteran/load_gear(mob/living/carbon/human/new_human)
@@ -534,7 +534,7 @@
 	name = "USCM Veteran Squad Leader (Equppied)"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
-	paygrades = PAY_SHORT_ME8
+	paygrades = list(PAY_SHORT_ME8 = JOB_PLAYTIME_TIER_0)
 	minimum_age = 30
 
 /datum/equipment_preset/uscm/leader_equipped/veteran/load_gear(mob/living/carbon/human/new_human)

@@ -56,13 +56,11 @@ def get_labels(pr):
             continue
         labels[fileToPrefix[prefix]] = True
 
-    changelog_match = re.search(r"🆑(.*)/🆑", pr.body, re.S | re.M)
+    changelog_match = re.search(r"(?:🆑|:cl:)(.*)/(?:🆑|:cl:)", pr.body, re.S | re.M)
     if changelog_match is None:
-        changelog_match = re.search(r":cl:(.*)/:cl:", pr.body, re.S | re.M)
-        if changelog_match is None:
-            print("::warning ::No changelog detected.")
-            labels[missingLogLabel] = True
-            return labels, False
+        print("::warning ::No changelog detected.")
+        labels[missingLogLabel] = True
+        return labels, False
 
     lines = changelog_match.group(1).split('\n')
     failed = len(lines) <= 2 # Make sure its not an empty changelog

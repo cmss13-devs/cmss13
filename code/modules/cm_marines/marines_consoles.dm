@@ -89,7 +89,7 @@
 					user_id_card = I
 			if(authenticate(user, user_id_card))
 				return TRUE
-			// Well actualy we have no button for auth card ejection, so just spit it back in user's face
+			// Well actually we have no button for auth card ejection, so just spit it back in user's face
 			else
 				if(!user_id_card)
 					return
@@ -135,10 +135,10 @@
 					var/known_access_rights = get_access(ACCESS_LIST_MARINE_ALL)
 					for(var/A in target_id_card.access)
 						if(A in known_access_rights)
-							contents += "  [get_access_desc(A)]<br>"
+							contents += " [get_access_desc(A)]<br>"
 					contents += "<br><u>Modification Log:</u><br>"
 					for(var/change in target_id_card.modification_log)
-						contents += "  [change]<br>"
+						contents += " [change]<br>"
 
 					var/obj/item/paper/P = new /obj/item/paper(src.loc)
 					P.name = "Access Report"
@@ -521,7 +521,7 @@
 
 //This console changes a marine's squad. It's very simple.
 //It also does not: change or increment the squad count (used in the login randomizer), nor does it check for jobs.
-//Which means you could get sillyiness like "Alpha Sulaco Chief Medical Officer" or "Delta Logistics Officer".
+//Which means you could get silliness like "Alpha Sulaco Chief Medical Officer" or "Delta Logistics Officer".
 //But in the long run it's not really a big deal.
 
 /obj/structure/machinery/computer/squad_changer
@@ -712,7 +712,7 @@
 
 /obj/structure/machinery/computer/crew
 	name = "crew monitoring computer"
-	desc = "Used to monitor active health sensors built into the wearer's uniform.  You can see that the console highlights ship areas with BLUE and remote locations with RED."
+	desc = "Used to monitor active health sensors built into the wearer's uniform. You can see that the console highlights ship areas with BLUE and remote locations with RED."
 	icon_state = "crew"
 	circuit = /obj/item/circuitboard/computer/crew
 	density = TRUE
@@ -1027,8 +1027,9 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				JOB_SYNTH_K9 = 71,
 				// 150+: Civilian/other
 				JOB_CORPORATE_LIAISON = 150,
-				JOB_CIA = 151,
-				JOB_PASSENGER = 152,
+				JOB_CORPORATE_BODYGUARD = 151,
+				JOB_CIA = 152,
+				JOB_PASSENGER = 153,
 				// Non Almayer jobs lower then registered
 				JOB_SYNTH_SURVIVOR = 160,
 				JOB_SURVIVOR = 161,
@@ -1077,7 +1078,7 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				JOB_PMC_INVESTIGATOR = 224,
 				JOB_PMC_ENGINEER = 225,
 				JOB_PMC_STANDARD = 226,
-				JOB_PMC_DETAINER = 227,
+				JOB_PMC_SECURITY = 227,
 				JOB_PMC_CROWD_CONTROL = 228,
 				JOB_PMC_DOCTOR = 229,
 				JOB_WY_GOON_LEAD = 230,
@@ -1160,7 +1161,7 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				// 60-69: Investigation Team
 				JOB_PMC_LEAD_INVEST = 60,
 				JOB_PMC_INVESTIGATOR = 61,
-				JOB_PMC_DETAINER = 62,
+				JOB_PMC_SECURITY = 62,
 				JOB_PMC_CROWD_CONTROL = 63,
 
 				// 70-79 PMCs Combat Team

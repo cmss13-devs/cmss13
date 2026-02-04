@@ -1,0 +1,2 @@
+/obj/item/device/whistle/@SUBTYPES : /obj/item/clothing/accessory/device/whistle/@SUBTYPES{@OLD}
+

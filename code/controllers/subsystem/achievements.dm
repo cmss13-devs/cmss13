@@ -172,7 +172,7 @@ SUBSYSTEM_DEF(achievements)
 		var/datum/achievement/my_achievement = new achievement_datum.type
 		src.achievements += my_achievement
 
-		achievement_datum.register_mob(current_mob)
+		my_achievement.register_mob(current_mob)
 
 	RegisterSignal(owner, COMSIG_PARENT_PREQDELETED, PROC_REF(handle_client_qdeleting))
 	RegisterSignal(owner, COMSIG_CLIENT_MOB_LOGGED_IN, PROC_REF(handle_mob_logged_in))

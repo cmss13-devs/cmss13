@@ -422,6 +422,17 @@
 	var/back_item = get_backpack_item(new_human)
 	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
 
+/datum/equipment_preset/uscm/leader/veteran
+	name = "USCM Veteran Squad Leader"
+	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
+
+	paygrades = PAY_SHORT_ME8
+	minimum_age = 30
+	skills = /datum/skills/SL
+
+/datum/equipment_preset/uscm/leader/veteran/load_gear(mob/living/carbon/human/new_human)
+	. = ..()
+
 /datum/equipment_preset/uscm/leader/cryo
 	name = "USCM Cryo Squad Leader"
 	auto_squad_name = SQUAD_MARINE_CRYO

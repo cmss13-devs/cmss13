@@ -34,16 +34,6 @@
 
 	vis_flags = VIS_INHERIT_PLANE
 
-	/// Is this item allowed atop a climbable vehicle?
-	/// Not at all intended for structures: This is meant for grabbable items. Weapons, ammo, pizza crates, etc...
-	/// ...However, defining it as part of obj instead of obj/item helps us handle exceptions.
-	/// E.G: Exceptionally, as QoL for corpsmen: bodybags, stasis bags, and roller beds are allowed.
-	var/is_allowed_atop_vehicle = FALSE
-	/// Tracks whether this item is currently atop a vehicle.
-	var/is_atop_vehicle = FALSE
-	/// Which vehicle are we ontop of?
-	var/tmp/obj/vehicle/multitile/tank/tank_on_top_of = null
-
 /obj/Initialize(mapload, ...)
 	. = ..()
 	if(garbage)
@@ -242,127 +232,6 @@
 		buckle_mob(M, user)
 	else . = ..()
 
-/obj/proc/afterbuckle(mob/M as mob) // Called after somebody buckled / unbuckled
-	handle_rotation() // To be removed when we have full dir support in set_buckled
-	SEND_SIGNAL(src, COMSIG_OBJ_AFTER_BUCKLE, buckled_mob)
-	if(!buckled_mob)
-		UnregisterSignal(M, COMSIG_PARENT_QDELETING)
-		if(isliving(M))
-			var/mob/living/living_M
-			if(living_M.tank_on_top_of)
-				living_M.tank_on_top_of.clear_on_top(living_M)
-	else
-		RegisterSignal(buckled_mob, COMSIG_PARENT_QDELETING, PROC_REF(unbuckle))
-		if(isliving(M))
-			var/mob/living/living_M
-			if(src.is_atop_vehicle)
-				src.tank_on_top_of.mark_on_top(living_M)
-	return buckled_mob
-
-/obj/proc/unbuckle()
-	SIGNAL_HANDLER
-	if(buckled_mob && buckled_mob.buckled == src)
-		buckled_mob.clear_alert(ALERT_BUCKLED)
-		buckled_mob.set_buckled(null)
-		buckled_mob.anchored = initial(buckled_mob.anchored)
-
-		var/M = buckled_mob
-		REMOVE_TRAITS_IN(buckled_mob, TRAIT_SOURCE_BUCKLE)
-		buckled_mob = null
-
-		afterbuckle(M)
-
-
-/obj/proc/manual_unbuckle(mob/user as mob)
-	if(buckled_mob)
-		if(buckled_mob.buckled == src)
-			if(buckled_mob != user)
-				buckled_mob.visible_message(
-					SPAN_NOTICE("[buckled_mob.name] was unbuckled by [user.name]!"),
-					SPAN_NOTICE("You were unbuckled from [src] by [user.name]."),
-					SPAN_NOTICE("You hear metal clanking."))
-			else
-				buckled_mob.visible_message(
-					SPAN_NOTICE("[buckled_mob.name] unbuckled [buckled_mob.p_them()]self!"),
-					SPAN_NOTICE("You unbuckle yourself from [src]."),
-					SPAN_NOTICE("You hear metal clanking."))
-			unbuckle(buckled_mob)
-			add_fingerprint(user)
-			return 1
-
-	return 0
-
-
-//trying to buckle a mob
-/obj/proc/buckle_mob(mob/M, mob/user)
-	if (!ismob(M) || (get_dist(src, user) > 1) || user.stat || buckled_mob || M.buckled || !isturf(user.loc))
-		return
-
-	if (user.is_mob_incapacitated() || HAS_TRAIT(user, TRAIT_IMMOBILIZED) || HAS_TRAIT(user, TRAIT_FLOORED))
-		to_chat(user, SPAN_WARNING("You can't do this right now."))
-		return
-
-	if (isxeno(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
-		to_chat(user, SPAN_WARNING("You don't have the dexterity to do that, try a nest."))
-		return
-	if (iszombie(user))
-		return
-
-	if(density)
-		density = FALSE
-		if(!step(M, get_dir(M, src)) && loc != M.loc)
-			density = TRUE
-			return
-		density = TRUE
-	else
-		if(M.loc != src.loc)
-			step_towards(M, src) //buckle if you're right next to it
-			if(M.loc != src.loc)
-				return
-			. = buckle_mob(M)
-	if (M.mob_size <= MOB_SIZE_XENO)
-		if ((M.stat == DEAD && istype(src, /obj/structure/bed/roller) || HAS_TRAIT(M, TRAIT_OPPOSABLE_THUMBS)))
-			do_buckle(M, user)
-			return
-	if ((M.mob_size > MOB_SIZE_HUMAN))
-		if(istype(src, /obj/structure/bed/roller))
-			var/obj/structure/bed/roller/roller = src
-			if(!roller.can_carry_big)
-				to_chat(user, SPAN_WARNING("[M] is too big to buckle in."))
-				return
-			if(M.stat != DEAD)
-				to_chat(user, SPAN_WARNING("[M] resists your attempt to buckle!"))
-				return
-		if(M.stat != DEAD)
-			return
-	do_buckle(M, user)
-
-// the actual buckling proc
-// Yes I know this is not style but its unreadable otherwise
-/obj/proc/do_buckle(mob/living/target, mob/user)
-	send_buckling_message(target, user)
-	if (src && src.loc)
-		target.throw_alert(ALERT_BUCKLED, /atom/movable/screen/alert/buckled)
-		target.set_buckled(src)
-		target.forceMove(src.loc)
-		target.setDir(dir)
-		src.buckled_mob = target
-		src.add_fingerprint(user)
-		afterbuckle(target)
-		return TRUE
-
-/obj/proc/send_buckling_message(mob/M, mob/user)
-	if (M == user)
-		M.visible_message(
-			SPAN_NOTICE("[M] buckles in!"),
-			SPAN_NOTICE("You buckle yourself to [src]."),
-			SPAN_NOTICE("You hear metal clanking."))
-	else
-		M.visible_message(
-			SPAN_NOTICE("[M] is buckled in to [src] by [user]!"),
-			SPAN_NOTICE("You are buckled in to [src] by [user]."),
-			SPAN_NOTICE("You hear metal clanking."))
-
 /obj/Moved(atom/oldloc, direction, Forced = FALSE)
 	. = ..()
 	if(is_atop_vehicle && isturf(loc))
@@ -404,18 +273,6 @@
 	// Bring the buckled_mob with us. No Move(), on_move callbacks, or any of this bullshit, we just got teleported
 	if(buckled_mob && loc == dest)
 		buckled_mob.forceMove(dest)
-
-/obj/proc/handle_buckled_mob_movement(NewLoc, direct)
-	if(!buckled_mob.Move(NewLoc, direct))
-		forceMove(buckled_mob.loc)
-		last_move_dir = buckled_mob.last_move_dir
-		buckled_mob.inertia_dir = last_move_dir
-		return FALSE
-
-	// Even if the movement is entirely managed by the object, notify the buckled mob that it's moving for its handler.
-	//It won't be called otherwise because it's a function of client_move or pulled mob, neither of which accounts for this.
-	SEND_SIGNAL(buckled_mob, COMSIG_MOB_MOVE_OR_LOOK, TRUE, direct, direct)
-	return TRUE
 
 /obj/BlockedPassDirs(atom/movable/mover, target_dir)
 	if(mover == buckled_mob) //can't collide with the thing you're buckled to

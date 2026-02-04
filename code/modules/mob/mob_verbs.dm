@@ -289,7 +289,7 @@
 		to_chat(src, SPAN_WARNING("You cannot look up here."))
 		return
 
-  // this is probably a bit hacky.
+	// this is probably a bit hacky.
 	if(!(vehicle_turf == null))
 		above = locate(vehicle_turf.x, vehicle_turf.y, vehicle_turf.z+1)
 

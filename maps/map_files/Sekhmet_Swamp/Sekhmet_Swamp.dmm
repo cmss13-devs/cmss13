@@ -1261,6 +1261,39 @@
 /obj/structure/largecrate/random/secure,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/sekhmet/outside/temple_outer)
+"aec" = (
+/obj/structure/surface/table/almayer{
+	color = "#8B9490"
+	},
+/obj/item/ammo_box/magazine/ak4047,
+/turf/open/floor/prison/bright_clean2,
+/area/sekhmet/int_heavy/low_level_gen)
+"aed" = (
+/obj/structure/machinery/door/airlock/upp/generic/autoname{
+	req_access = null
+	},
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/sekhmet/int_reg/warehouse)
+"aee" = (
+/obj/structure/machinery/door/airlock/upp/generic/autoname{
+	req_access = null;
+	dir = 2
+	},
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/sekhmet/int_reg/warehouse)
+"aef" = (
+/obj/structure/machinery/door/airlock/multi_tile/upp/generic/autoname{
+	req_access = null
+	},
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/sekhmet/int_reg/warehouse)
+"aeg" = (
+/obj/structure/machinery/door/airlock/upp/generic/autoname{
+	req_access = null;
+	dir = 2
+	},
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/sekhmet/int_glass/offices)
 "aex" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/strata,
@@ -2725,7 +2758,6 @@
 /area/sekhmet/int_heavy/low_level_gen)
 "bhU" = (
 /obj/structure/cargo_container/horizontal/blue/middle{
-	color = "#77b300";
 	pixel_x = 5;
 	pixel_y = 6;
 	layer = 2.98
@@ -4377,7 +4409,6 @@
 /area/sekhmet/outside/southeast_road)
 "cvP" = (
 /obj/structure/cargo_container/horizontal/blue/bottom{
-	color = "#77b300";
 	pixel_x = 5;
 	pixel_y = 6;
 	layer = 2.98
@@ -5049,7 +5080,6 @@
 /area/sekhmet/int_heavy/research)
 "cVU" = (
 /obj/structure/cargo_container/horizontal/blue/bottom{
-	color = "#77b300";
 	pixel_x = 5;
 	pixel_y = 6;
 	layer = 2.98
@@ -6048,7 +6078,6 @@
 /area/sekhmet/int_heavy/low_level_rsr)
 "dRp" = (
 /obj/structure/cargo_container/horizontal/blue/middle{
-	color = "#77b300";
 	pixel_x = 5;
 	pixel_y = 6;
 	layer = 2.98
@@ -6882,10 +6911,6 @@
 	pixel_y = 10
 	},
 /obj/item/ammo_magazine/rifle/type71{
-	pixel_x = 14;
-	pixel_y = 11
-	},
-/obj/item/ammo_magazine/rifle/type71{
 	pixel_x = 8;
 	pixel_y = 7
 	},
@@ -7423,7 +7448,6 @@
 /area/sekhmet/int_reg/complex_intel)
 "eSY" = (
 /obj/structure/cargo_container/horizontal/blue/top{
-	color = "#77b300";
 	pixel_x = 5;
 	pixel_y = 6;
 	layer = 2.98
@@ -8575,7 +8599,6 @@
 /area/sekhmet/int_heavy/research)
 "fMm" = (
 /obj/structure/cargo_container/horizontal/blue/top{
-	color = "#77b300";
 	pixel_x = 5;
 	pixel_y = 6;
 	layer = 2.98
@@ -9291,16 +9314,30 @@
 /turf/open/floor/prison/bright_clean2,
 /area/sekhmet/int_reg/complex_intel)
 "gkY" = (
-/obj/item/ammo_box/magazine/type64{
-	pixel_x = -7;
-	pixel_y = 12
-	},
 /obj/structure/machinery/light/small{
 	light_color = "#C02526";
 	color = "#C02526"
 	},
 /obj/structure/surface/table/almayer{
 	color = "#8B9490"
+	},
+/obj/item/ammo_box/magazine/ak4047{
+	pixel_x = -6;
+	pixel_y = 8
+	},
+/obj/item/ammo_magazine/rifle/type71{
+	pixel_x = -2
+	},
+/obj/item/ammo_magazine/rifle/type71{
+	pixel_x = -8
+	},
+/obj/item/ammo_magazine/shotgun/heavy/buckshot{
+	pixel_y = 7;
+	pixel_x = 9
+	},
+/obj/item/ammo_magazine/shotgun/heavy/slug{
+	pixel_x = 9;
+	pixel_y = -1
 	},
 /turf/open/floor/strata/floor2,
 /area/sekhmet/int_reg/complex_operation)
@@ -10697,7 +10734,6 @@
 /area/sky)
 "hkH" = (
 /obj/structure/cargo_container/horizontal/blue/top{
-	color = "#77b300";
 	pixel_x = 5;
 	pixel_y = 6;
 	layer = 2.98
@@ -13882,15 +13918,13 @@
 	req_access = null;
 	name = "gun locker"
 	},
-/obj/item/ammo_magazine/pistol/t73_impact,
-/obj/item/ammo_magazine/pistol/t73_impact,
 /obj/structure/machinery/light/small{
 	light_color = "#C02526";
 	color = "#C02526"
 	},
 /obj/item/weapon/gun/pistol/t73/leader,
-/obj/item/weapon/gun/pistol/t73/leader,
-/obj/item/weapon/gun/pistol/t73/leader,
+/obj/item/ammo_magazine/pistol/t73,
+/obj/item/ammo_magazine/pistol/t73,
 /turf/open/floor/prison/bright_clean2,
 /area/sekhmet/int_heavy/low_level_gen)
 "jFe" = (
@@ -14012,6 +14046,7 @@
 	colony_camera_mapload = 0;
 	network = list("Sekhmet")
 	},
+/obj/structure/platform/metal/shiva/west,
 /turf/open/floor/strata/floor2,
 /area/sekhmet/int_reg/engineering)
 "jKT" = (
@@ -14740,7 +14775,7 @@
 	req_access = null;
 	name = "gun locker"
 	},
-/obj/item/weapon/gun/rifle/type71,
+/obj/item/weapon/gun/rifle/ak4047,
 /turf/open/floor/prison/bright_clean2,
 /area/sekhmet/int_heavy/low_level_gen)
 "kky" = (
@@ -15742,9 +15777,6 @@
 /obj/structure/largecrate,
 /turf/open/floor/strata/floor2,
 /area/sekhmet/int_reg/warehouse)
-"ldL" = (
-/turf/open/auto_turf/strata_grass/layer0,
-/area/sekhmet/outside/swamp)
 "ldY" = (
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/sekhmet/int_reg/catwalk)
@@ -18551,7 +18583,6 @@
 	name = "gun locker"
 	},
 /obj/item/weapon/gun/smg/bizon/upp,
-/obj/item/weapon/gun/smg/bizon/upp,
 /turf/open/floor/prison/bright_clean2,
 /area/sekhmet/int_heavy/low_level_gen)
 "nkg" = (
@@ -19276,6 +19307,7 @@
 /area/sekhmet/int_heavy/low_level_gen)
 "nMq" = (
 /obj/structure/machinery/recharge_station,
+/obj/structure/platform/metal/shiva/west,
 /turf/open/floor/strata/floor2,
 /area/sekhmet/int_reg/engineering)
 "nMw" = (
@@ -21483,9 +21515,9 @@
 	pixel_y = 15;
 	pixel_x = 6
 	},
-/obj/item/ammo_box/rounds/type71{
-	pixel_x = -6;
-	pixel_y = -1
+/obj/item/ammo_box/magazine/type71/empty{
+	pixel_x = 2;
+	pixel_y = -2
 	},
 /turf/open/floor/strata,
 /area/sekhmet/int_reg/military_hangar)
@@ -22132,8 +22164,8 @@
 	name = "gun locker"
 	},
 /obj/item/weapon/gun/rifle/type71,
-/obj/item/weapon/gun/smg/bizon,
-/obj/item/weapon/gun/smg/bizon,
+/obj/item/weapon/gun/rifle/ak4047,
+/obj/item/weapon/gun/rifle/ak4047,
 /turf/open/floor/strata/floor2,
 /area/sekhmet/int_reg/complex_operation)
 "qbT" = (
@@ -23569,10 +23601,6 @@
 	pixel_y = 15;
 	name = "equipment locker";
 	pixel_x = 1
-	},
-/obj/item/clothing/head/welding{
-	color = "#ace600";
-	name = "Helmet"
 	},
 /obj/item/clothing/suit/storage/marine/faction/UPP/army,
 /obj/item/clothing/suit/storage/marine/faction/UPP/army,
@@ -25908,13 +25936,13 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/weapon/gun/rifle/type71{
-	pixel_x = -1;
-	pixel_y = 6
-	},
-/obj/item/weapon/gun/rifle/type71{
+/obj/item/weapon/gun/rifle/ak4047{
 	pixel_x = 0;
-	pixel_y = -3
+	pixel_y = 7
+	},
+/obj/item/weapon/gun/rifle/ak4047{
+	pixel_x = 0;
+	pixel_y = -4
 	},
 /turf/open/floor/corsat/marked,
 /area/sekhmet/int_reg/military_hangar)
@@ -27434,12 +27462,12 @@
 /obj/structure/surface/table/almayer{
 	color = "#8B9490"
 	},
-/obj/item/ammo_box/magazine/type71{
-	pixel_x = 6;
-	pixel_y = 9
-	},
 /obj/item/storage/box/packet/high_explosive/upp,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_box/magazine/ak4047{
+	pixel_x = 5;
+	pixel_y = 8
+	},
 /turf/open/floor/strata,
 /area/sekhmet/int_reg/military_hangar)
 "uri" = (
@@ -32059,7 +32087,6 @@
 /area/sekhmet/int_reg/complex_operation)
 "xXD" = (
 /obj/structure/cargo_container/horizontal/blue/middle{
-	color = "#77b300";
 	pixel_x = 5;
 	pixel_y = 6;
 	layer = 2.98
@@ -49607,7 +49634,7 @@ vbY
 vbY
 vbY
 vbY
-nFa
+vbY
 aif
 kBp
 gSR
@@ -49769,8 +49796,8 @@ vbY
 vbY
 vbY
 vbY
-nFa
-aif
+vbY
+vbY
 gSR
 itR
 aif
@@ -49934,7 +49961,7 @@ vbY
 vbY
 vbY
 vbY
-aif
+vbY
 aif
 aif
 nFa
@@ -50096,7 +50123,7 @@ vbY
 vbY
 vbY
 keq
-lVl
+fjk
 lVl
 aif
 aif
@@ -50253,10 +50280,10 @@ vVl
 aif
 aif
 aif
-vbY
-vbY
-vbY
-vbY
+aif
+aif
+aif
+aif
 psu
 fjk
 fjk
@@ -50416,7 +50443,7 @@ aDW
 tnU
 crK
 cmN
-vbY
+crK
 jEs
 aif
 keq
@@ -50901,7 +50928,7 @@ cmN
 crK
 ksN
 cmN
-pmh
+aec
 crK
 lBM
 aif
@@ -77190,7 +77217,7 @@ jFO
 jfF
 kah
 kah
-chP
+aed
 kah
 kah
 jfF
@@ -78315,13 +78342,13 @@ xGW
 xGW
 umx
 yks
-chP
+aef
 kjH
 jjR
 jjR
 mXl
 kjH
-chP
+aee
 kjH
 rSm
 rSm
@@ -78801,7 +78828,7 @@ mxU
 xGW
 umx
 yks
-chP
+aef
 kjH
 qoG
 jjR
@@ -80106,7 +80133,7 @@ aay
 jfF
 kah
 kah
-chP
+aed
 kah
 kah
 jfF
@@ -81288,7 +81315,7 @@ aDJ
 ybn
 vUN
 pBz
-ldL
+exp
 exp
 exp
 exp
@@ -81451,7 +81478,7 @@ ybn
 vUN
 pBz
 exp
-ldL
+exp
 exp
 exp
 cHW
@@ -81612,7 +81639,7 @@ ybn
 ybn
 vUN
 pBz
-ldL
+exp
 exp
 exp
 exp
@@ -81775,9 +81802,9 @@ ybn
 vUN
 pBz
 pBz
-ldL
 exp
-ldL
+exp
+exp
 lzJ
 cHW
 jpn
@@ -81938,7 +81965,7 @@ vUN
 pBz
 pBz
 pBz
-ldL
+exp
 exp
 pBz
 pBz
@@ -82100,8 +82127,8 @@ qrg
 pBz
 sUs
 pBz
-ldL
-ldL
+exp
+exp
 exp
 pBz
 hCr
@@ -82262,7 +82289,7 @@ hzt
 bsP
 bsP
 bsP
-jXE
+mma
 mma
 mma
 bsP
@@ -82423,11 +82450,11 @@ bsP
 bsP
 bsP
 bsP
-jXE
-jXE
+mma
+mma
 bsP
 mma
-jXE
+mma
 bsP
 kkC
 kkC
@@ -82586,15 +82613,15 @@ kkC
 bsP
 mma
 bsP
-jXE
-jXE
-jXE
 mma
-jXE
+mma
+mma
+mma
+bsP
 bsP
 kkC
 bsP
-jXE
+mma
 mma
 mma
 mma
@@ -82749,15 +82776,15 @@ mma
 mma
 mma
 mma
-jXE
-jXE
+mma
+mma
 wqi
+bsP
+bsP
 mma
-jXE
-jXE
-jXE
 mma
-jXE
+mma
+bsP
 mma
 mma
 mma
@@ -82910,15 +82937,15 @@ bsP
 bsP
 mma
 mma
-jXE
+mma
 mma
 bsP
 kkC
 bsP
+bsP
 mma
-jXE
-jXE
-jXE
+mma
+mma
 mma
 bsP
 bsP
@@ -83073,15 +83100,15 @@ mma
 mma
 mma
 mma
-jXE
-jXE
 bsP
-jXE
-jXE
-mma
+bsP
+bsP
+bsP
 bsP
 mma
-jXE
+bsP
+mma
+bsP
 bsP
 kkC
 maD
@@ -83236,15 +83263,15 @@ bsP
 mma
 mma
 mma
-jXE
-mma
-jXE
-mma
-jXE
+bsP
+bsP
+bsP
 mma
 bsP
 mma
-jXE
+bsP
+mma
+bsP
 mma
 maD
 aoO
@@ -83399,15 +83426,15 @@ mma
 bsP
 bsP
 mma
-jXE
+bsP
 mma
 bsP
 bsP
-jXE
+bsP
 mma
-jXE
+bsP
 mma
-jXE
+bsP
 aoO
 aoO
 rnj
@@ -83568,7 +83595,7 @@ bsP
 bsP
 bsP
 wqi
-jXE
+bsP
 mma
 skE
 ads
@@ -91547,7 +91574,7 @@ wJm
 uNA
 oTJ
 lVJ
-cFD
+aeg
 iwv
 kHg
 rdV
@@ -92195,7 +92222,7 @@ pQf
 iLO
 oTJ
 iUA
-cFD
+aeg
 iAI
 gWX
 rdV

@@ -249,11 +249,6 @@ GENERAL_PROTECT_DATUM(/mob/unauthenticated)
 		client.external_username = found_username
 		break
 
-	var/launcher_port = topic_headers["launcher_port"]
-	if(launcher_port)
-		var/datum/control_server/server = new(client, launcher_port)
-		server.setup()
-
 	if(new_ckey)
 		log_in()
 

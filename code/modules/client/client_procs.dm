@@ -268,9 +268,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	fileaccess_timer = world.time + FTPDELAY */
 	return 1
 
-/// Handles authorization passed from external providers via DreamSeeker launch parameters (eg, byond://play.cm-ss13.com:1234?auth_token=xxxx)
-/client/proc/process_preauthorization(list/topic_headers)
-
 	///////////
 	//CONNECT//
 	///////////
@@ -314,6 +311,11 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	PreLogin()
 
 	. = ..() //calls mob.Login()
+
+	var/launcher_port = topic_list["launcher_port"]
+	if(launcher_port)
+		var/datum/control_server/server = new(src, launcher_port)
+		server.setup()
 
 	PostLogin()
 

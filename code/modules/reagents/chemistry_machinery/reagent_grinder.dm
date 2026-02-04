@@ -320,7 +320,7 @@
 
 		var/allowed = get_allowed_juice_by_id(O)
 		if(isnull(allowed))
-			break
+			continue
 
 		for(var/r_id in allowed)
 
@@ -355,7 +355,7 @@
 
 		var/allowed = get_allowed_snack_by_id(O)
 		if(isnull(allowed))
-			break
+			continue
 
 		for(var/r_id in allowed)
 

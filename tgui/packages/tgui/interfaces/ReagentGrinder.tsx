@@ -39,137 +39,148 @@ export const ReagentGrinder = (props: {}) => {
 
   return (
     <Window width={450} height={500} theme="nologo">
-      <Window.Content scrollable>
-        <Stack fill vertical>
-          <Stack.Item>
-            <Section title="Processing Chamber">
-              {inuse ? (
-                <Box color="yellow">Processing... Please wait.</Box>
-              ) : hasChamberContents ? (
-                <LabeledList>
-                  {chamberContents.map((item, index) => (
-                    <LabeledList.Item
-                      key={`${item.name}-${item.amount}`}
-                      label={item.name}
-                    >
-                      x{item.amount}
-                    </LabeledList.Item>
-                  ))}
-                </LabeledList>
-              ) : (
-                <Box color="label">Chamber is empty.</Box>
-              )}
-            </Section>
-          </Stack.Item>
+      <Window.Content>
+        <Section fill scrollable>
+          <Stack fill vertical>
+            <Stack.Item>
+              <Section title="Processing Chamber">
+                {inuse ? (
+                  <Box color="yellow">Processing... Please wait.</Box>
+                ) : hasChamberContents ? (
+                  <LabeledList>
+                    {chamberContents.map((item, index) => (
+                      <LabeledList.Item
+                        key={`${item.name}-${item.amount}`}
+                        label={item.name}
+                      >
+                        x{item.amount}
+                      </LabeledList.Item>
+                    ))}
+                  </LabeledList>
+                ) : (
+                  <Box color="label">Chamber is empty.</Box>
+                )}
+              </Section>
+            </Stack.Item>
 
-          {!inuse && (
-            <>
-              <Stack.Item>
-                <Section
-                  title="Beaker"
-                  buttons={
-                    isBeakerLoaded ? (
-                      <Button
-                        icon="eject"
-                        content="Detach"
-                        onClick={() => act('detach')}
-                      />
-                    ) : null
-                  }
-                >
-                  {!isBeakerLoaded ? (
-                    <Box color="bad">No beaker attached.</Box>
-                  ) : hasBeakerContents ? (
-                    <LabeledList>
-                      {beakerContents.map((reagent, index) => (
-                        <LabeledList.Item key={reagent.id} label={reagent.name}>
-                          <Box inline>{reagent.volume} units</Box>
-                          {hasStorage ? (
+            {!inuse && (
+              <>
+                <Stack.Item>
+                  <Section
+                    title="Beaker"
+                    buttons={
+                      isBeakerLoaded ? (
+                        <Button icon="eject" onClick={() => act('detach')}>
+                          Detach
+                        </Button>
+                      ) : null
+                    }
+                  >
+                    {!isBeakerLoaded ? (
+                      <Box color="bad">No beaker attached.</Box>
+                    ) : hasBeakerContents ? (
+                      <LabeledList>
+                        {beakerContents.map((reagent, index) => (
+                          <LabeledList.Item
+                            key={reagent.id}
+                            label={reagent.name}
+                          >
+                            <Box inline>{reagent.volume} units</Box>
+                            {hasStorage ? (
+                              <Button
+                                ml={1}
+                                icon="wine-bottle"
+                                onClick={() =>
+                                  act('bottle', { id: reagent.id })
+                                }
+                              >
+                                Bottle
+                              </Button>
+                            ) : null}
                             <Button
                               ml={1}
-                              icon="wine-bottle"
-                              content="Bottle"
-                              onClick={() => act('bottle', { id: reagent.id })}
-                            />
-                          ) : null}
-                          <Button
-                            ml={1}
-                            icon="trash"
-                            content="Dispose"
-                            color="bad"
-                            onClick={() => act('dispose', { id: reagent.id })}
-                          />
-                        </LabeledList.Item>
-                      ))}
-                    </LabeledList>
-                  ) : (
-                    <Box color="label">Beaker is empty.</Box>
-                  )}
-                </Section>
-              </Stack.Item>
+                              icon="trash"
+                              color="bad"
+                              onClick={() => act('dispose', { id: reagent.id })}
+                            >
+                              Dispose
+                            </Button>
+                          </LabeledList.Item>
+                        ))}
+                      </LabeledList>
+                    ) : (
+                      <Box color="label">Beaker is empty.</Box>
+                    )}
+                  </Section>
+                </Stack.Item>
 
-              <Stack.Item>
-                <Section title="Controls">
-                  <Stack>
-                    <Stack.Item grow>
-                      <Button
-                        fluid
-                        icon="mortar-pestle"
-                        content="Grind"
-                        disabled={!canProcess}
-                        tooltip={
-                          !canProcess
-                            ? !isBeakerLoaded
-                              ? 'No beaker attached'
-                              : !hasChamberContents
-                                ? 'Chamber is empty'
-                                : 'Currently processing'
-                            : null
-                        }
-                        onClick={() => act('grind')}
-                      />
-                    </Stack.Item>
-                    <Stack.Item grow>
-                      <Button
-                        fluid
-                        icon="blender"
-                        content="Juice"
-                        disabled={!canProcess}
-                        tooltip={
-                          !canProcess
-                            ? !isBeakerLoaded
-                              ? 'No beaker attached'
-                              : !hasChamberContents
-                                ? 'Chamber is empty'
-                                : 'Currently processing'
-                            : null
-                        }
-                        onClick={() => act('juice')}
-                      />
-                    </Stack.Item>
-                  </Stack>
-                  <Button
-                    mt={1}
-                    fluid
-                    icon="sign-out-alt"
-                    content="Eject Chamber Contents"
-                    disabled={!hasChamberContents}
-                    onClick={() => act('eject')}
-                  />
-                  {canConnect ? (
+                <Stack.Item>
+                  <Section title="Controls">
+                    <Stack>
+                      <Stack.Item grow>
+                        <Button
+                          fluid
+                          icon="mortar-pestle"
+                          disabled={!canProcess}
+                          tooltip={
+                            !canProcess
+                              ? !isBeakerLoaded
+                                ? 'No beaker attached'
+                                : !hasChamberContents
+                                  ? 'Chamber is empty'
+                                  : 'Currently processing'
+                              : null
+                          }
+                          onClick={() => act('grind')}
+                        >
+                          Grind
+                        </Button>
+                      </Stack.Item>
+                      <Stack.Item grow>
+                        <Button
+                          fluid
+                          icon="blender"
+                          disabled={!canProcess}
+                          tooltip={
+                            !canProcess
+                              ? !isBeakerLoaded
+                                ? 'No beaker attached'
+                                : !hasChamberContents
+                                  ? 'Chamber is empty'
+                                  : 'Currently processing'
+                              : null
+                          }
+                          onClick={() => act('juice')}
+                        >
+                          Juice
+                        </Button>
+                      </Stack.Item>
+                    </Stack>
                     <Button
                       mt={1}
                       fluid
-                      icon="link"
-                      content="Connect to Smartfridge"
-                      onClick={() => act('connect')}
-                    />
-                  ) : null}
-                </Section>
-              </Stack.Item>
-            </>
-          )}
-        </Stack>
+                      icon="sign-out-alt"
+                      disabled={!hasChamberContents}
+                      onClick={() => act('eject')}
+                    >
+                      Eject Chamber Contents
+                    </Button>
+                    {canConnect ? (
+                      <Button
+                        mt={1}
+                        fluid
+                        icon="link"
+                        onClick={() => act('connect')}
+                      >
+                        Connect to Smartfridge
+                      </Button>
+                    ) : null}
+                  </Section>
+                </Stack.Item>
+              </>
+            )}
+          </Stack>
+        </Section>
       </Window.Content>
     </Window>
   );

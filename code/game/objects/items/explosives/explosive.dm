@@ -254,23 +254,25 @@
 		reagents.source_mob = WEAKREF(cause_mob)
 		msg_admin_niche("[key_name(cause_mob)] detonated custom explosive by [key_name(creator)]: [name] (REAGENTS: [reagent_list_text]) in [get_area(src)] [ADMIN_JMP(loc)]", loc.x, loc.y, loc.z)
 
+	// Cartridge inherent reagents are added first (without counting them down)
 	for(var/obj/item/reagent_container/cartridge/C in cartridges)
 		for(var/reagent_id in C.inherent_reagents)
 			var/reagent_volume = C.inherent_reagents[reagent_id]
 			reagents.add_reagent(reagent_id, reagent_volume)
-		C.reagents.trans_to(src, C.reagents.total_volume)
-		i--
-		if(reagents && i <= 1)
-			reagents.trigger_volatiles = TRUE //So it doesn't explode before transfering the last container
 
-	if(length(containers) < 2)
-		reagents.trigger_volatiles = TRUE //Explode on the first transfer
-
+	// Then we add container reagents
 	for(var/obj/item/reagent_container/glass/G in containers)
 		G.reagents.trans_to(src, G.reagents.total_volume)
 		i--
 		if(reagents && i <= 1)
-			reagents.trigger_volatiles = TRUE //So it doesn't explode before transfering the last container
+			reagents.trigger_volatiles = TRUE //So it doesn't explode before transfering the last cartridge/container
+
+	// Last, we add the remaining reagents in the cartridges and trigger cartridge chemical reactions
+	for(var/obj/item/reagent_container/cartridge/C in cartridges)
+		C.reagents.trans_to(src, C.reagents.total_volume)
+		i--
+		if(reagents && i <= 1)
+			reagents.trigger_volatiles = TRUE //So it doesn't explode before transfering the last cartridge/container
 
 	if(reagents)
 		reagents.trigger_volatiles = FALSE

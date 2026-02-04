@@ -1294,6 +1294,41 @@
 	},
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/sekhmet/int_glass/offices)
+"aeh" = (
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/prison/bright_clean2,
+/area/sekhmet/int_heavy/low_level_rsr)
+"aei" = (
+/turf/closed/wall/upp_ship/reinforced/outer,
+/area/sekhmet/int_heavy/low_level_gen)
+"aej" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/plating/kutjevo,
+/area/sekhmet/int_reg/ship2)
+"aek" = (
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/kutjevo/plate,
+/area/sekhmet/outside/southroad)
+"ael" = (
+/turf/open/floor/plating/kutjevo,
+/area/sekhmet/outside/airfield)
+"aem" = (
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/plating/kutjevo,
+/area/sekhmet/outside/airfield)
+"aen" = (
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/kutjevo/plate,
+/area/sekhmet/outside/southeast_road)
+"aeo" = (
+/obj/structure/machinery/power/apc/no_power/east,
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/sekhmet/int_glass/offices)
+"aep" = (
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/prison/bright_clean2,
+/area/sekhmet/int_glass/complex_generic)
 "aex" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/strata,
@@ -3167,7 +3202,7 @@
 	pixel_y = -12
 	},
 /obj/structure/surface/table/reinforced/almayer_B,
-/turf/open/shuttle/black,
+/turf/open/floor/plating/kutjevo,
 /area/sekhmet/int_reg/ship1)
 "byi" = (
 /obj/structure/closet/firecloset,
@@ -18588,11 +18623,6 @@
 "nkg" = (
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/sekhmet/int_reg/engineering)
-"nkC" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/power/apc/power/west,
-/turf/open/floor/prison/bright_clean2,
-/area/sekhmet/int_glass/complex_generic)
 "nkF" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/floor/plating/warnplate/east,
@@ -20438,11 +20468,6 @@
 	},
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/sekhmet/int_reg/complex_operation)
-"ozl" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/power/apc/power/east,
-/turf/open/floor/prison/bright_clean2,
-/area/sekhmet/int_glass/complex_generic)
 "oAb" = (
 /obj/structure/surface/rack{
 	color = "#6b675e";
@@ -20829,7 +20854,7 @@
 "oQE" = (
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/elevatorshaft,
-/area/sky)
+/area/sekhmet/int_heavy/low_level_gen)
 "oQH" = (
 /turf/open/gm/coast/beachcorner2/south_west,
 /area/sekhmet/outside/temple_outer)
@@ -22597,7 +22622,7 @@
 "quo" = (
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/corsat,
-/area/sky)
+/area/sekhmet/int_heavy/low_level_gen)
 "quz" = (
 /obj/structure/machinery/light/small{
 	dir = 8;
@@ -23483,7 +23508,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/elevator/access,
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/corsat,
-/area/sky)
+/area/sekhmet/int_heavy/low_level_gen)
 "rdS" = (
 /obj/structure/flora/jungle/vines/light_1,
 /turf/closed/wall/rock{
@@ -24356,10 +24381,6 @@
 	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/sekhmet/int_reg/engineering)
-"rKy" = (
-/obj/structure/machinery/power/apc/power/west,
-/turf/open/floor/corsat,
-/area/sekhmet/int_heavy/research)
 "rKG" = (
 /obj/structure/machinery/light/small{
 	dir = 4;
@@ -26614,7 +26635,7 @@
 "tES" = (
 /obj/structure/sign/safety/elevator,
 /turf/closed/wall/upp_ship/reinforced/outer,
-/area/sky)
+/area/sekhmet/int_heavy/low_level_gen)
 "tGX" = (
 /obj/structure/largecrate/supply/weapons{
 	pixel_x = -13;
@@ -28711,7 +28732,8 @@
 /area/sekhmet/outside/swamp)
 "voZ" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/turf/open/shuttle/black,
+/obj/structure/machinery/power/apc/power/south,
+/turf/open/floor/plating/kutjevo,
 /area/sekhmet/int_reg/ship1)
 "vqf" = (
 /obj/structure/platform/metal/shiva/east,
@@ -31464,7 +31486,7 @@
 /area/sekhmet/int_glass/complex_generic)
 "xtY" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/turf/open/floor/kutjevo/grey,
+/turf/open/floor/plating/kutjevo,
 /area/sekhmet/int_reg/ship2)
 "xul" = (
 /obj/structure/cargo_container/canc/tan/right,
@@ -40619,12 +40641,12 @@ cit
 cit
 "}
 (51,1,1) = {"
-tAB
-tAB
-tAB
-tAB
-tAB
-tAB
+aei
+aei
+aei
+aei
+aei
+aei
 cit
 cit
 cit
@@ -40786,7 +40808,7 @@ quo
 quo
 quo
 quo
-tAB
+aei
 cit
 cit
 cit
@@ -40948,7 +40970,7 @@ oQE
 oQE
 oQE
 oQE
-tAB
+aei
 cit
 cit
 cit
@@ -41110,7 +41132,7 @@ oQE
 oQE
 oQE
 oQE
-tAB
+aei
 cit
 cit
 cit
@@ -41272,7 +41294,7 @@ oQE
 oQE
 oQE
 oQE
-tAB
+aei
 cit
 cit
 cit
@@ -41434,7 +41456,7 @@ oQE
 oQE
 oQE
 oQE
-tAB
+aei
 cit
 cit
 cit
@@ -41596,7 +41618,7 @@ quo
 quo
 quo
 quo
-tAB
+aei
 cit
 cit
 cit
@@ -41753,12 +41775,12 @@ cit
 cit
 "}
 (58,1,1) = {"
-tAB
-tAB
-tAB
-tAB
-tAB
-tAB
+aei
+aei
+aei
+aei
+aei
+aei
 cit
 cit
 cit
@@ -41915,12 +41937,12 @@ cit
 cit
 "}
 (59,1,1) = {"
-tAB
-tAB
-tAB
-tAB
-tAB
-tAB
+aei
+aei
+aei
+aei
+aei
+aei
 cit
 cit
 cit
@@ -42077,12 +42099,12 @@ cit
 cit
 "}
 (60,1,1) = {"
-tAB
-tAB
-tAB
-tAB
-tAB
-tAB
+aei
+aei
+aei
+aei
+aei
+aei
 cit
 cit
 cit
@@ -42244,7 +42266,7 @@ quo
 quo
 quo
 quo
-tAB
+aei
 cit
 cit
 cit
@@ -42406,7 +42428,7 @@ oQE
 oQE
 oQE
 oQE
-tAB
+aei
 cit
 cit
 cit
@@ -42568,7 +42590,7 @@ oQE
 oQE
 oQE
 oQE
-tAB
+aei
 cit
 cit
 cit
@@ -42730,7 +42752,7 @@ oQE
 oQE
 oQE
 oQE
-tAB
+aei
 cit
 cit
 cit
@@ -42892,7 +42914,7 @@ oQE
 oQE
 oQE
 oQE
-tAB
+aei
 cit
 cit
 cit
@@ -43054,7 +43076,7 @@ quo
 quo
 quo
 quo
-tAB
+aei
 cit
 cit
 cit
@@ -43211,12 +43233,12 @@ cit
 cit
 "}
 (67,1,1) = {"
-tAB
-tAB
-tAB
-tAB
-tAB
-tAB
+aei
+aei
+aei
+aei
+aei
+aei
 cit
 cit
 cit
@@ -58704,7 +58726,7 @@ mvl
 asx
 awi
 tJv
-kuO
+aeh
 kME
 qRg
 oPu
@@ -72973,7 +72995,7 @@ mui
 mui
 jNo
 svT
-mui
+ael
 mui
 nnm
 nnm
@@ -73135,7 +73157,7 @@ mui
 xTT
 jNo
 svT
-mui
+aem
 mui
 mui
 nnm
@@ -77846,7 +77868,7 @@ wlK
 wlK
 wlK
 wlK
-mxU
+aek
 mxU
 fxj
 mxU
@@ -85531,7 +85553,7 @@ aoO
 sip
 sip
 ons
-nkC
+qiC
 abW
 fQE
 eha
@@ -85715,7 +85737,7 @@ qsI
 vlo
 jaZ
 xsl
-vlo
+aep
 vlo
 mXK
 sip
@@ -86211,7 +86233,7 @@ cGr
 eOd
 xmX
 fVb
-ozl
+qiC
 vlo
 xsl
 sip
@@ -90759,7 +90781,7 @@ mma
 mma
 mma
 cFD
-som
+aeo
 qDM
 qDM
 qDM
@@ -91277,7 +91299,7 @@ iew
 iew
 iew
 iew
-eHe
+aen
 eHe
 eHe
 eHe
@@ -94701,7 +94723,7 @@ rsv
 uiK
 uHt
 uHt
-rKy
+uHt
 sES
 eZo
 qCx
@@ -103290,7 +103312,7 @@ uPp
 uPp
 uPp
 dxe
-xtY
+aej
 nAj
 wda
 wda

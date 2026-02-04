@@ -119,6 +119,11 @@ GLOBAL_LIST_INIT(cm_vending_gear_leader, list(
 		list("Medical Radio Encryption Key", 3, /obj/item/device/encryptionkey/med, null, VENDOR_ITEM_REGULAR),
 	))
 
+GLOBAL_LIST_INIT(cm_vending_gear_veteran_leader, list(
+		//MMTODO - fix this with the actual proper gear.
+
+	))
+
 /obj/structure/machinery/cm_vending/gear/leader
 	name = "\improper ColMarTech Squad Leader Gear Rack"
 	desc = "An automated gear rack for Squad Leaders."
@@ -127,7 +132,12 @@ GLOBAL_LIST_INIT(cm_vending_gear_leader, list(
 	vendor_role = list(JOB_SQUAD_LEADER)
 	req_access = list(ACCESS_MARINE_LEADER)
 
-/obj/structure/machinery/cm_vending/gear/leader/get_listed_products(mob/user)
+/obj/structure/machinery/cm_vending/gear/leader/get_listed_products(mob/living/carbon/human/user)
+	if(user?.wear_id)
+	//	var/obj/item/card/id/id_card = user.wear_id
+
+	//	if(id_card.paygrade == ) //MMTODO - add proper PAY_SHORT here
+	//		return GLOB.cm_vending_gear_veteran_leader
 	return GLOB.cm_vending_gear_leader
 
 //------------CLOTHING VENDOR---------------

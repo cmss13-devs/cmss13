@@ -890,7 +890,7 @@
 /obj/item/weapon/gun/pistol/vp78/whiteout
 	starting_attachment_types = list(/obj/item/attachable/heavy_barrel, /obj/item/attachable/reflex)
 
-/obj/item/weapon/gun/pistol/vp78m6
+/obj/item/weapon/gun/pistol/vp78/vp78m6
 	name = "\improper VP78M6 pistol"
 	desc = "The VP78M6, often called the 'Mod Six', or just 'Sixes', are enhanced variants of the VP78 combat pistol. Smoother trigger assemblies, formed grips, longer shrouded barrels. These M6's have been modified to have special counterweights in the receivers and under the barrels to resist muzzle climb, allowing for much better handling, so much better, in fact, that holding just one doesn't feel right."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/pistols.dmi'
@@ -910,15 +910,23 @@
 		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
-		/obj/item/attachable/lasersight,
+		/obj/item/attachable/lasersight/vp,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/extended_barrel,
 	)
 
-/obj/item/weapon/gun/pistol/vp78m6/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 22,"rail_x" = 10, "rail_y" = 23, "under_x" = 20, "under_y" = 17, "stock_x" = 18, "stock_y" = 14)
+/obj/item/weapon/gun/pistol/vp78/vp78m6/handle_starting_attachment()
+	..()
+	var/obj/item/attachable/lasersight/vp/VP = new(src)
+	VP.flags_attach_features &= ~ATTACH_REMOVABLE
+	VP.hidden = FALSE
+	VP.Attach(src)
+	update_attachable(VP.slot)
 
-/obj/item/weapon/gun/pistol/vp78m6/set_gun_config_values()
+/obj/item/weapon/gun/pistol/vp78/vp78m6/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 20,"rail_x" = 10, "rail_y" = 23, "under_x" = 21, "under_y" = 13, "stock_x" = 18, "stock_y" = 14)
+
+/obj/item/weapon/gun/pistol/vp78/vp78m6/set_gun_config_values()
 	..()
 	set_fire_delay(FIRE_DELAY_TIER_7)
 	set_burst_amount(BURST_AMOUNT_TIER_3)

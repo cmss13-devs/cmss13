@@ -152,10 +152,7 @@
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/WY/pistols.dmi'
 	icon_state = "vp78"
 	max_rounds = 18
-	gun_type = list(
-		/obj/item/weapon/gun/pistol/vp78,
-		/obj/item/weapon/gun/pistol/vp78m6,
-	)
+	gun_type = /obj/item/weapon/gun/pistol/vp78
 	ammo_band_icon = "+vp78_band"
 	ammo_band_icon_empty = "+vp78_band_e"
 

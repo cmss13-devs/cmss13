@@ -2038,7 +2038,7 @@
 	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 	storage_slots = 8
 	can_hold = list(
-		/obj/item/weapon/gun/pistol/vp78m6,
+		/obj/item/weapon/gun/pistol/vp78/vp78m6,
 		/obj/item/ammo_magazine/pistol/vp78,
 	)
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
@@ -2054,8 +2054,8 @@
 	. = ..()
 
 /obj/item/storage/belt/gun/vp78m6/dual_holster/full/fill_preset_inventory()
-	handle_item_insertion(new /obj/item/weapon/gun/pistol/vp78m6())
-	handle_item_insertion(new /obj/item/weapon/gun/pistol/vp78m6())
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/vp78/vp78m6())
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/vp78/vp78m6())
 	for(var/i = 1 to storage_slots - 2)
 		new /obj/item/ammo_magazine/pistol/vp78(src)
 

@@ -376,6 +376,11 @@
 /obj/item/reagent_container/cartridge/flash/active/attack_hand(mob/user)
 	to_chat(user, "[src] is too hot. You will burn your hand if you pick it up.")
 
+/obj/item/reagent_container/cartridge/flash/active/Destroy()
+	visible_message("[src] melts into a sizzling plasteel puddle!")
+	playsound(src, "acid_sizzle", 25, TRUE)
+	return ..()
+
 /obj/item/reagent_container/cartridge/shrapnel
 	name = "shrapnel ordnance cartridge"
 	desc = "An experimental cartridge for explosive casings. May react in an unexpected way. This one is filled with shrapnel by default. Some specific additives can optionally be added to enhance the metal fragments therein."

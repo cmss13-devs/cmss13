@@ -306,7 +306,6 @@
 			F.reagents.add_reagent("aluminum", reagent_volume)
 			F.reagents.add_reagent("sulfur", reagent_volume)
 			F.reagents.add_reagent("potassium", reagent_volume)
-			// TODO: sizzling out sound effect
 			QDEL_IN(F, flash_lifetime)
 
 

@@ -1,0 +1,4 @@
+author: "ihatethisengine"
+delete-after: True
+changes:
+  - balance: "removed aimed shot from PMC sniper spec"

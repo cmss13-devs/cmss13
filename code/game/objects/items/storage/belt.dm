@@ -2036,15 +2036,15 @@
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts.dmi',
 	)
 	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
-	storage_slots = 6
+	storage_slots = 8
 	can_hold = list(
 		/obj/item/weapon/gun/pistol/vp78m6,
 		/obj/item/ammo_magazine/pistol/vp78,
 	)
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 	holster_slots = list(
-		"1" = list("icon_x" = -9, "icon_y" = -3),
-		"2" = list("icon_x" = 9, "icon_y" = -3))
+		"1" = list("icon_x" = 0, "icon_y" = 0),
+		"2" = list("icon_x" = 0, "icon_y" = 0))
 	skip_fullness_overlays = TRUE
 
 /obj/item/storage/belt/gun/vp78m6/dual_holster/Initialize()

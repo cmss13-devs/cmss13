@@ -424,11 +424,9 @@
 
 /datum/equipment_preset/uscm/leader/veteran
 	name = "USCM Veteran Squad Leader"
-	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
 	paygrades = PAY_SHORT_ME8
 	minimum_age = 30
-	skills = /datum/skills/SL
 
 /datum/equipment_preset/uscm/leader/veteran/load_gear(mob/living/carbon/human/new_human)
 	. = ..()
@@ -531,6 +529,17 @@
 /datum/equipment_preset/uscm/leader_equipped/cryo
 	name = "USCM Cryo Squad Leader (Equipped)"
 	auto_squad_name = SQUAD_MARINE_CRYO
+
+/datum/equipment_preset/uscm/leader_equipped/veteran
+	name = "USCM Veteran Squad Leader (Equppied)"
+	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
+
+	paygrades = PAY_SHORT_ME8
+	minimum_age = 30
+
+/datum/equipment_preset/uscm/leader_equipped/veteran/load_gear(mob/living/carbon/human/new_human)
+	. = ..()
+	//MMTODO - add in the funny vSL gun and set here
 
 //*****************************************************************************************************/
 

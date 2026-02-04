@@ -172,7 +172,7 @@ GENERAL_PROTECT_DATUM(/mob/unauthenticated)
 
 /// Handles authorization passed from external providers via DreamSeeker launch parameters (eg, byond://play.cm-ss13.com:1234?auth_token=xxxx)
 /mob/unauthenticated/proc/process_preauthorization(list/topic_headers)
-	set waitfor = TRUE
+	set waitfor = FALSE
 
 	var/types_to_oidc_endpoint = CONFIG_GET(keyed_list/oidc_endpoint_to_type)
 

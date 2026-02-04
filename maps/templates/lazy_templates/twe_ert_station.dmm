@@ -1696,7 +1696,7 @@
 /turf/closed/wall/r_wall/elevator,
 /area/adminlevel/ert_station/royal_marines_station)
 "Oi" = (
-/obj/structure/machinery/medical_pod/sleeper,
+/obj/structure/machinery/medical_pod/sleeper/upgraded,
 /turf/open/floor/almayer/sterile_green,
 /area/adminlevel/ert_station/royal_marines_station)
 "Os" = (
@@ -1808,7 +1808,7 @@
 /turf/open/floor/almayer/sterile_green,
 /area/adminlevel/ert_station/royal_marines_station)
 "PU" = (
-/obj/structure/machinery/medical_pod/autodoc,
+/obj/structure/machinery/medical_pod/autodoc/unskilled,
 /turf/open/floor/almayer/sterile_green,
 /area/adminlevel/ert_station/royal_marines_station)
 "PY" = (
@@ -2276,7 +2276,7 @@
 /turf/open/void,
 /area/adminlevel/ert_station/royal_marines_station)
 "Yk" = (
-/obj/structure/machinery/autodoc_console,
+/obj/structure/machinery/autodoc_console/upgraded,
 /turf/open/floor/almayer/sterile_green,
 /area/adminlevel/ert_station/royal_marines_station)
 "YI" = (

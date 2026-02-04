@@ -52,6 +52,31 @@ GLOBAL_LIST_EMPTY(ckey_to_controller)
 				}
 			});
 		}
+
+		function ping() {
+			if (awaitingPong) {
+				failedPings++;
+				if (failedPings >= MAX_FAILED_PINGS) {
+					failedPings = 0;
+					window.reconnect();
+					return;
+				}
+			}
+			awaitingPong = true;
+			BYOND.command('.controller_ping');
+			setTimeout(() => {
+				if (awaitingPong) {
+					failedPings++;
+					awaitingPong = false;
+					if (failedPings >= MAX_FAILED_PINGS) {
+						failedPings = 0;
+						window.reconnect();
+					}
+				}
+			}, PONG_TIMEOUT);
+		}
+
+		setInterval(ping, PING_INTERVAL);
 	</script>
 </head>
 

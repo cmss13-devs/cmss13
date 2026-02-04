@@ -154,7 +154,7 @@
 	max_rounds = 18
 	gun_type = list(
 		/obj/item/weapon/gun/pistol/vp78,
-		/obj/item/weapon/gun/pistol/vp78m6
+		/obj/item/weapon/gun/pistol/vp78m6,
 	)
 	ammo_band_icon = "+vp78_band"
 	ammo_band_icon_empty = "+vp78_band_e"

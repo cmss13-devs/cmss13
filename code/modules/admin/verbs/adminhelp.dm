@@ -346,7 +346,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	headers["Content-Type"] = "application/json"
 	var/datum/http_request/request = new()
 	request.prepare(RUSTG_HTTP_METHOD_POST, webhook, json_encode(webhook_info), headers, "tmp/response.json")
-	request.begin_async()
+	request.execute_fire_and_forget()
 
 /datum/admin_help/Destroy()
 	RemoveActive()

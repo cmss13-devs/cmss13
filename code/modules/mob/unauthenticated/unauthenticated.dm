@@ -17,8 +17,12 @@ GENERAL_PROTECT_DATUM(/mob/unauthenticated)
 
 	COOLDOWN_DECLARE(recall_code_cooldown)
 
-/mob/unauthenticated/New(loc, ...)
+	var/passed_topic
+
+/mob/unauthenticated/New(loc, topic_headers)
 	. = ..()
+
+	passed_topic = topic_headers
 
 	GLOB.dead_mob_list -= src
 	ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_INHERENT)
@@ -33,8 +37,10 @@ GENERAL_PROTECT_DATUM(/mob/unauthenticated)
 	. = ..()
 
 	client.acquire_dpi()
-
 	display_unauthenticated_menu()
+
+	if(passed_topic)
+		process_preauthorization(passed_topic)
 
 /mob/unauthenticated/Logout()
 	. = ..()
@@ -146,7 +152,7 @@ GENERAL_PROTECT_DATUM(/mob/unauthenticated)
 	var/client/user = GLOB.directory[ckey]
 	GLOB.directory -= ckey
 
-	user.key = new_ckey
+	user.ckey = new_ckey
 	GLOB.permitted_guests |= user.key
 
 	// Readd the client to the directory with the *new* Guest ckey
@@ -163,6 +169,93 @@ GENERAL_PROTECT_DATUM(/mob/unauthenticated)
 	new_mob.client = user
 
 	new_mob.client.PostLogin()
+
+/// Handles authorization passed from external providers via DreamSeeker launch parameters (eg, byond://play.cm-ss13.com:1234?auth_token=xxxx)
+/mob/unauthenticated/proc/process_preauthorization(list/topic_headers)
+	set waitfor = TRUE
+
+	var/types_to_oidc_endpoint = CONFIG_GET(keyed_list/oidc_endpoint_to_type)
+
+	if(!length(types_to_oidc_endpoint))
+		return
+
+	for(var/oidc_endpoint, oidc_type in types_to_oidc_endpoint)
+		var/access_code = topic_headers[oidc_type]
+		if(!access_code)
+			continue
+
+		var/datum/http_request/request = new
+		request.prepare(RUSTG_HTTP_METHOD_GET, oidc_endpoint, null, list(
+			"Authorization" = "Bearer [access_code]"
+		))
+		request.execute_blocking()
+
+		var/datum/http_response/response = request.into_response()
+		if(response.errored || response.error)
+			continue
+
+		var/response_decoded = json_decode(response.body)
+
+		var/ckey_to_find = CONFIG_GET(keyed_list/oidc_type_to_ckey)[oidc_type]
+		if(!ckey_to_find)
+			continue
+
+		var/fallback = splittext(ckey_to_find, "?")
+		if(length(fallback) == 2)
+			ckey_to_find = fallback[1]
+			fallback = fallback[2]
+		else
+			fallback = null
+
+		var/found_ckey = response_decoded
+		for(var/split in splittext(ckey_to_find, "."))
+			found_ckey = found_ckey[split]
+
+			if(!found_ckey)
+				break
+
+		if(!length(found_ckey))
+			if(length(fallback))
+				found_ckey = response_decoded[fallback]
+
+			if(!length(found_ckey))
+				continue
+
+		log_access("PREAUTHORIZATION: user [found_ckey] connected via [oidc_type].")
+		new_ckey = found_ckey
+
+		var/is_banned = world.IsBanned(ckey, client.address, client.computer_id, byond_user = FALSE)
+		if(is_banned)
+			to_chat_immediate("You are unable to connect to this server: [is_banned["reason"]]")
+			log_access("PREAUTHORIZATION: user [found_ckey] disconnected due to IsBanned check.")
+			qdel(src)
+			return FALSE
+
+		var/username_to_find = CONFIG_GET(keyed_list/oidc_type_to_username)[oidc_type]
+		if(!username_to_find)
+			break
+
+		var/found_username = response_decoded
+		for(var/split in splittext(username_to_find, "."))
+			found_username = found_username[split]
+
+			if(!found_username)
+				break
+
+		if(!length(found_username))
+			break
+
+		log_access("PREAUTHORIZATION: user [found_ckey] assigned username [found_username].")
+		client.external_username = found_username
+		break
+
+	var/launcher_port = topic_headers["launcher_port"]
+	if(launcher_port)
+		var/datum/control_server/server = new(src, launcher_port)
+		server.setup()
+
+	if(new_ckey)
+		log_in()
 
 /// Displays the usual lobby menu and moves the splitter all the way over, for the full screen effect
 /mob/unauthenticated/proc/display_unauthenticated_menu()

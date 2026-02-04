@@ -251,7 +251,7 @@ GENERAL_PROTECT_DATUM(/mob/unauthenticated)
 
 	var/launcher_port = topic_headers["launcher_port"]
 	if(launcher_port)
-		var/datum/control_server/server = new(src, launcher_port)
+		var/datum/control_server/server = new(client, launcher_port)
 		server.setup()
 
 	if(new_ckey)

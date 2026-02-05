@@ -99,6 +99,11 @@
 	if(seed && seed.immutable > 0)
 		return 0
 
+	bullet_ping(Proj)
+	if(Proj.damage)
+		take_damage(Proj.damage, Proj.firer)
+		return TRUE
+
 	..()
 
 /obj/structure/machinery/portable_atmospherics/hydroponics/process()

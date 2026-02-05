@@ -7,6 +7,8 @@ GLOBAL_LIST_INIT_TYPED(underwear_f, /datum/sprite_accessory/underwear, setup_und
 		var/datum/sprite_accessory/underwear/underwear_datum = new underwear_type
 		if(restricted_gender && underwear_datum.gender != restricted_gender && (underwear_datum.gender == MALE || underwear_datum.gender == FEMALE))
 			continue
+		if(underwear_datum.avaliability_restricted)
+			continue
 		if(underwear_datum.camo_conforming)
 			underwear_list["[underwear_datum.name] (Camo Conforming)"] = underwear_datum
 		else
@@ -16,6 +18,8 @@ GLOBAL_LIST_INIT_TYPED(underwear_f, /datum/sprite_accessory/underwear, setup_und
 /datum/sprite_accessory/underwear
 	icon = 'icons/mob/humans/underwear.dmi'
 	var/camo_conforming = FALSE
+	/// If this underwear shouldn't be avaliable in character creation normally
+	var/avaliability_restricted = FALSE
 
 /datum/sprite_accessory/underwear/proc/get_image(mob_gender)
 	var/selected_icon_state = icon_state
@@ -117,39 +121,46 @@ GLOBAL_LIST_INIT_TYPED(underwear_f, /datum/sprite_accessory/underwear, setup_und
 	icon_state = "fire_boxers"
 	gender = NEUTER
 	camo_conforming = FALSE
+	avaliability_restricted = TRUE
 
 /datum/sprite_accessory/underwear/lightning_boxers
 	name = "Lightning Boxers"
 	icon_state = "lightning_boxers"
 	gender = NEUTER
 	camo_conforming = FALSE
+	avaliability_restricted = TRUE
 
 /datum/sprite_accessory/underwear/heart_boxers
 	name = "Heart Boxers"
 	icon_state = "heart_boxers"
 	gender = NEUTER
 	camo_conforming = FALSE
+	avaliability_restricted = TRUE
 
 /datum/sprite_accessory/underwear/checkered_boxers
 	name = "Checkered Boxers"
 	icon_state = "checkered_boxers"
 	gender = NEUTER
 	camo_conforming = FALSE
+	avaliability_restricted = TRUE
 
 /datum/sprite_accessory/underwear/pink_boxers
 	name = "Pink Boxers"
 	icon_state = "pink_boxers"
 	gender = NEUTER
 	camo_conforming = FALSE
+	avaliability_restricted = TRUE
 
 /datum/sprite_accessory/underwear/blue_boxers
 	name = "Blue Boxers"
 	icon_state = "blue_boxers"
 	gender = NEUTER
 	camo_conforming = FALSE
+	avaliability_restricted = TRUE
 
 /datum/sprite_accessory/underwear/wy_boxers
 	name = "W-Y Boxers"
 	icon_state = "wy_boxers"
 	gender = NEUTER
 	camo_conforming = FALSE
+	avaliability_restricted = TRUE

@@ -350,7 +350,7 @@
 	/// Icon state for opened razor
 	var/enabled_icon = "razor_open"
 	/// Icon state for closed razor
-	var/disabled_icon = "razor_off"
+	var/disabled_icon = "razor_closed"
 	/// Prevents stacking the opening proc if it isn't instant
 	var/changing_state = FALSE
 	/// If the razor is able to be used

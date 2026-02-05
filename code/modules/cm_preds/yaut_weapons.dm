@@ -60,13 +60,15 @@
 	w_class = SIZE_HUGE
 	edge = TRUE
 	sharp = IS_SHARP_ITEM_ACCURATE
-	flags_item = NOSHIELD|NODROP|ITEM_PREDATOR|ADJACENT_CLICK_DELAY
+	flags_item = NODROP|ITEM_PREDATOR|ADJACENT_CLICK_DELAY
 	flags_equip_slot = NO_FLAGS
 	hitsound = 'sound/weapons/wristblades_hit.ogg'
 	attack_speed = 6
 	force = MELEE_FORCE_TIER_4
 	pry_capable = IS_PRY_CAPABLE_FORCE
 	attack_verb = list("sliced", "slashed", "jabbed", "torn", "gored")
+
+	shield_sound = 'sound/items/parry.ogg'
 
 	var/speed_bonus_amount
 
@@ -120,7 +122,7 @@
 /obj/item/weapon/bracer_attachment/chain_gauntlets
 	name = "chain gauntlets"
 	plural_name = "wrist blades"
-	desc = "gauntlets made out of alien alloy, chains wrapped around it imply this was made for hand to hand combat, with some range."
+	desc = "Gauntlets made out of alien alloy, chains wrapped around it imply this was made for hand to hand combat, with some range."
 	icon_state = "metal_gauntlet"
 	hitsound = null
 	item_state = "gauntlet"
@@ -144,7 +146,7 @@
 		. += "Stack up your combo meter by using [SPAN_RED("HARM")] intent, you can then use these combo stacks on different intents to do different finishers."
 		. += "Finish your combo on [SPAN_GREEN("HELP")] intent to slam the target to the ground, incapacitating them for a few seconds, if the target is a xenomorph you do extra damage as well."
 		. += "Finish your combo on [SPAN_BLUE("SHOVE")] intent to throw the target away from you, if you have some chains wrapped around the gauntlet, you'll pull them back towards you. If you are using the special ability, the throw range will be further."
-		. += "Finish your combo on [SPAN_ORANGE("GRAB")] intent to do an execution that instantly kills your target, they must already be unconcious or in critical state."
+		. += "Finish your combo on [SPAN_ORANGE("GRAB")] intent to do an execution that instantly kills your target, they must already be unconscious or in critical state."
 
 /obj/item/weapon/bracer_attachment/chain_gauntlets/attack(mob/living/carbon/target, mob/living/carbon/human/user)
 	. = ..()
@@ -168,7 +170,7 @@
 			if(combo_counter >= 4 && target != user)
 				var/facing = get_dir(user, target)
 				var/reverse_facing = get_dir(target, user)
-				if(has_chain) // Generating the chain for the effect, its a bullet so it looks like youre "throwing it / it looks like its travelling"
+				if(has_chain) // Generating the chain for the effect, its a bullet so it looks like you're "throwing it / it looks like its travelling"
 					var/obj/projectile/hook_projectile = new /obj/projectile(user.loc, create_cause_data("hook"), user)
 					var/datum/ammo/ammoDatum = GLOB.ammo_list[/datum/ammo/yautja/gauntlet_hook]
 					hook_projectile.generate_bullet(ammoDatum, bullet_generator = user)
@@ -210,7 +212,7 @@
 				playsound(target, 'sound/effects/bang.ogg', 25, 0)
 				playsound(target,"slam", 50, 1)
 				animate(target, pixel_y = 0, time = 4, easing = BOUNCE_EASING)
-				sleep(10) // This is so people dont spam click and lineup 300 executions, i know its probably not the best way to do it.
+				sleep(10) // This is so people don't spam click and lineup 300 executions, i know its probably not the best way to do it.
 				executing = FALSE
 
 		if((INTENT_HARM)) // This is how you farm combo counters, so there's no special interaction.
@@ -367,6 +369,11 @@
 	flags_item = ITEM_PREDATOR|ADJACENT_CLICK_DELAY
 	var/human_adapted = FALSE
 
+	shield_type = SHIELD_DIRECTIONAL
+	shield_chance = SHIELD_CHANCE_LOW
+	shield_sound = 'sound/items/parry.ogg'
+	shield_flags = CAN_SHIELD_BASH
+
 /obj/item/weapon/yautja/chain
 	name = "chainwhip"
 	desc = "A segmented, lightweight whip made of durable, acid-resistant metal. Not very common among Yautja Hunters, but still a dangerous weapon capable of shredding prey."
@@ -385,6 +392,8 @@
 	attack_speed = 0.8 SECONDS
 	hitsound = 'sound/weapons/chain_whip.ogg'
 
+	shield_type = SHIELD_NONE
+	shield_chance = SHIELD_CHANCE_NONE
 
 /obj/item/weapon/yautja/chain/attack(mob/target, mob/living/user)
 	. = ..()
@@ -408,6 +417,8 @@
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	attack_speed = 1 SECONDS
 	unacidable = TRUE
+
+	shield_chance = SHIELD_CHANCE_MED
 
 /obj/item/weapon/yautja/sword/alt_1
 	name = "rending sword"
@@ -449,6 +460,7 @@
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	unacidable = TRUE
+	shield_flags = CAN_BLOCK_POUNCE|CAN_SHIELD_BASH
 
 /obj/item/weapon/yautja/scythe/attack(mob/living/target as mob, mob/living/carbon/human/user as mob)
 	. = ..()
@@ -467,11 +479,14 @@
 	icon_state = "predscythe_alt"
 	item_state = "scythe_dual"
 
+	shield_chance = SHIELD_CHANCE_MED
+
 /obj/item/weapon/yautja/sword/staff
 	name = "cruel staff"
 	desc = "A wicked and battered staff wrapped in worn crimson rags. A crescent shaped blade adorns the top, while the bottom is rounded and blunt."
 	icon_state = "staff"
 	item_state = "staff"
+	shield_flags = CAN_BLOCK_POUNCE|CAN_SHIELD_BASH //A little gift for the staff, not that it makes much difference for Yautja themselves.
 
 //Combistick
 /obj/item/weapon/yautja/chained/combistick
@@ -492,6 +507,13 @@
 	edge = TRUE
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("speared", "stabbed", "impaled")
+
+	shield_type = SHIELD_DIRECTIONAL_TWOHANDS
+	shield_chance = SHIELD_CHANCE_HIGH
+	shield_projectile_mult = PROJECTILE_BLOCK_PERC_40
+	shield_flags = CAN_BLOCK_POUNCE|CAN_SHIELD_BASH
+	///The stored chance for when unfolded.
+	var/active_shield_chance = SHIELD_CHANCE_HIGH
 
 	var/force_wielded = MELEE_FORCE_TIER_6
 	var/force_unwielded = MELEE_FORCE_TIER_2
@@ -529,7 +551,7 @@
 	add_verb(user, /mob/living/carbon/human/proc/call_combi)
 	linked_to = user
 
-	var/list/tether_effects = apply_tether(user, src, range = 6, resistable = FALSE)
+	var/list/tether_effects = apply_tether(user, src, range = 6, resistible = FALSE)
 	chain = tether_effects["tetherer_tether"]
 	RegisterSignal(chain, COMSIG_PARENT_QDELETING, PROC_REF(cleanup_chain))
 	RegisterSignal(src, COMSIG_ITEM_PICKUP, PROC_REF(on_pickup))
@@ -588,9 +610,6 @@
 			return TRUE
 		user.visible_message(SPAN_WARNING("<b>[user] yanks [src]'s chain back, letting [src] fall at [user.p_their()]!</b>"), SPAN_WARNING("<b>You yank [src]'s chain back, letting it drop at your feet!</b>"))
 		cleanup_chain()
-
-/obj/item/weapon/yautja/chained/combistick/IsShield()
-	return on
 
 /obj/item/weapon/yautja/chained/combistick/verb/fold_combistick()
 	set category = "Weapons"
@@ -653,6 +672,7 @@
 			overlays.Cut()
 			add_blood(blood_color)
 		on = TRUE
+		shield_chance = active_shield_chance
 		update_icon()
 	else
 		unwield(user)
@@ -667,6 +687,7 @@
 		attack_verb = list("thwacked", "smacked")
 		overlays.Cut()
 		on = FALSE
+		shield_chance = SHIELD_CHANCE_NONE
 		update_icon()
 
 	if(istype(user,/mob/living/carbon/human))
@@ -711,8 +732,8 @@
 	if(isyautja(hit_atom))
 		var/mob/living/carbon/human/human = hit_atom
 		if(human.put_in_hands(src))
-			hit_atom.visible_message(SPAN_NOTICE(" [hit_atom] expertly catches [src] out of the air. "),
-				SPAN_NOTICE(" You easily catch [src]. "))
+			hit_atom.visible_message(SPAN_NOTICE("[hit_atom] expertly catches [src] out of the air."),
+				SPAN_NOTICE("You easily catch [src]."))
 			return
 	..()
 
@@ -735,6 +756,8 @@
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("slashed", "chopped", "diced")
 
+	shield_chance = SHIELD_CHANCE_VLOW
+
 /obj/item/weapon/yautja/knife
 	name = "ceremonial dagger"
 	desc = "A viciously sharp dagger inscribed with ancient Yautja markings. Smells thickly of blood. Carried by some hunters."
@@ -753,6 +776,9 @@
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	actions_types = list(/datum/action/item_action/toggle/use)
 	unacidable = TRUE
+
+	shield_chance = SHIELD_CHANCE_NONE
+	shield_type = SHIELD_NONE
 
 /obj/item/weapon/yautja/knife/attack(mob/living/target, mob/living/carbon/human/user)
 	if(target.stat != DEAD)
@@ -943,6 +969,85 @@
 	to_chat(user, SPAN_WARNING("You finish flaying [current_limb]."))
 	current_limb.flayed = TRUE
 
+/obj/item/weapon/shield/riot/yautja
+	name = "clan shield"
+	desc = "A large tribal shield made of a strange metal alloy. The face of the shield bears three skulls, two human, one alien."
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "shield"
+	base_icon_state = "shield"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi',
+		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
+	)
+	item_state = "shield"
+	flags_item = ITEM_PREDATOR
+	flags_equip_slot = SLOT_BACK
+
+	shield_type = SHIELD_DIRECTIONAL
+	readied_block = SHIELD_CHANCE_VHIGH
+	passive_block = SHIELD_CHANCE_MED
+
+	blocks_on_back = FALSE
+
+	COOLDOWN_DECLARE(attack_cooldown)
+	var/cooldown_time = 25 SECONDS
+
+/obj/item/weapon/shield/riot/yautja/raise_shield(mob/user)
+	..()
+	item_state = "[base_icon_state]_ready"
+	if(user.r_hand == src)
+		user.update_inv_r_hand()
+	if(user.l_hand == src)
+		user.update_inv_l_hand()
+
+/obj/item/weapon/shield/riot/yautja/lower_shield(mob/user)
+	..()
+	item_state = base_icon_state
+	if(user.r_hand == src)
+		user.update_inv_r_hand()
+	if(user.l_hand == src)
+		user.update_inv_l_hand()
+
+/obj/item/weapon/shield/riot/yautja/attack(mob/living/target, mob/living/user)
+	. = ..()
+	if(. && (COOLDOWN_FINISHED(src, attack_cooldown)))
+		COOLDOWN_START(src, attack_cooldown, cooldown_time)
+		target.throw_atom(get_step(target, user.dir), 1, SPEED_AVERAGE, user, FALSE)
+		target.apply_effect(3, DAZE)
+		target.apply_effect(5, SLOW)
+
+
+/obj/item/weapon/shield/riot/yautja/ancient
+	name = "ancient shield"
+	desc = "A large, ancient shield forged from an unknown golden alloy, gleaming with a luminous brilliance. Its worn surface and masterful craftsmanship hint at a forgotten purpose and a history lost to time."
+	icon = 'icons/obj/items/weapons/melee/shields.dmi'
+	icon_state = "ancient_shield"
+	base_icon_state = "ancient_shield"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/shields_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/shields_righthand.dmi',
+		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
+	)
+	item_state = "ancient_shield"
+
+/obj/item/weapon/shield/riot/yautja/ancient/alt
+	name = "ancient shield"
+	desc = "A large, ornately crafted shield forged from an unknown alloy. The colossal metal skull of a Xenomorph dominates the center, its jagged edges and hollow eyes giving it a fearsome presence. The masterful craftsmanship and weathered battle scars whisper of long-forgotten hunts and a legacy etched in blood."
+	icon_state = "ancient_shield_alt"
+	base_icon_state = "ancient_shield_alt"
+	item_state = "ancient_shield_alt"
+
+/obj/item/weapon/shield/riot/yautja/bracer_shield
+	name = "bracer shield"
+	desc = "A shield made of concentric metal alloy plates. The plates fold into one another for compact storage while still providing superior protection."
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "bracer_shield"
+	base_icon_state = "bracer_shield"
+	item_state = "bracer_shield"
+	flags_equip_slot = NO_FLAGS
+	flags_item = NODROP|ITEM_PREDATOR
+
 /*#########################################
 ########### Two Handed Weapons ############
 #########################################*/
@@ -955,13 +1060,14 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
 	)
 
-	flags_item = NOSHIELD|TWOHANDED|ITEM_PREDATOR|ADJACENT_CLICK_DELAY
+	flags_item = UNBLOCKABLE|TWOHANDED|ITEM_PREDATOR|ADJACENT_CLICK_DELAY
 	unacidable = TRUE
 	flags_equip_slot = SLOT_BACK
 	w_class = SIZE_LARGE
 	throw_speed = SPEED_VERY_FAST
 	edge = TRUE
 	hitsound = 'sound/weapons/bladeslice.ogg'
+	shield_flags = CAN_SHIELD_BASH
 	var/human_adapted = FALSE
 
 /obj/item/weapon/twohanded/yautja/spear
@@ -969,11 +1075,12 @@
 	desc = "A spear of exquisite design, used by an ancient civilisation."
 	icon_state = "spearhunter"
 	item_state = "spearhunter"
-	flags_item = NOSHIELD|TWOHANDED|ADJACENT_CLICK_DELAY
+	flags_item = TWOHANDED|ADJACENT_CLICK_DELAY
 	force = MELEE_FORCE_TIER_3
 	force_wielded = MELEE_FORCE_TIER_7
 	sharp = IS_SHARP_ITEM_SIMPLE
 	attack_verb = list("attacked", "stabbed", "jabbed", "torn", "gored")
+	shield_sound = 'sound/items/block_shield.ogg'
 
 	var/busy_fishing = FALSE
 	var/common_weight = 60
@@ -990,7 +1097,7 @@
 		busy_fishing = TRUE
 		user.visible_message(SPAN_NOTICE("[user] starts aiming \the [src] at the water..."), SPAN_NOTICE("You prepare to catch something in the water..."), max_distance = 3)
 		if(do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-			if(prob(60)) // fishing rods are prefered
+			if(prob(60)) // fishing rods are preferred
 				busy_fishing = FALSE
 				to_chat(user, SPAN_WARNING("You fail to catch anything!"))
 				return
@@ -1034,8 +1141,8 @@
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	attack_verb = list("sliced", "slashed", "carved", "diced", "gored")
 	attack_speed = 14 //Default is 7.
+	shield_flags = CAN_BLOCK_POUNCE|CAN_SHIELD_BASH
 	var/skull_attached = FALSE
-
 
 /obj/item/weapon/twohanded/yautja/glaive/attack(mob/living/target, mob/living/carbon/human/user)
 	. = ..()
@@ -1089,7 +1196,7 @@
 	throwforce = MELEE_FORCE_WEAK
 	icon_state = "glaive_alt"
 	item_state = "glaive_alt"
-	flags_item = NOSHIELD|TWOHANDED|ADJACENT_CLICK_DELAY
+	flags_item = TWOHANDED|ADJACENT_CLICK_DELAY
 
 /obj/item/weapon/twohanded/yautja/glaive/longaxe
 	name = "longaxe"
@@ -1117,6 +1224,8 @@
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	attack_speed = 9
 
+	shield_chance = SHIELD_CHANCE_VLOW
+
 /obj/item/weapon/yautja/duelclub
 	name = "duelling club"
 	desc = "A crude metal club adorned with a skull. Used as a non-lethal training weapon for young yautja honing their combat skills."
@@ -1132,6 +1241,9 @@
 	throwforce = 7
 	attack_verb = list("smashed", "beaten", "slammed", "struck", "smashed", "battered", "cracked")
 	hitsound = 'sound/weapons/genhit3.ogg'
+
+	shield_chance = SHIELD_CHANCE_VLOW
+	shield_sound = 'sound/items/block_shield.ogg'
 
 /obj/item/weapon/yautja/duelaxe
 	name = "duelling hatchet"
@@ -1150,6 +1262,8 @@
 	attack_verb = list("chopped", "torn", "cut")
 	hitsound = 'sound/weapons/bladeslice.ogg'
 
+	shield_chance = SHIELD_CHANCE_VLOW
+
 /obj/item/weapon/yautja/duelknife
 	name = "duelling knife"
 	desc = "A length of leather-bound wood studded with razor-sharp teeth. How crude."
@@ -1163,6 +1277,9 @@
 	throwforce = MELEE_FORCE_STRONG
 	edge = 1
 	attack_speed = 12
+
+	shield_chance = SHIELD_CHANCE_NONE
+	shield_type = SHIELD_NONE
 
 /*#########################################
 ############## Ranged Weapons #############
@@ -1284,7 +1401,7 @@
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle
 	name = "plasma rifle"
-	desc = "A long-barreled heavy plasma weapon. Intended for combat, not hunting. Has an integrated battery that allows for a functionally unlimited amount of shots to be discharged. Equipped with an internal gyroscopic stabilizer allowing its operator to fire the weapon one-handed if desired"
+	desc = "A long-barreled heavy plasma weapon. Intended for combat, not hunting. Has an integrated battery that allows for a functionally unlimited amount of shots to be discharged. Equipped with an internal gyroscopic stabilizer allowing its operator to fire the weapon one-handed if desired."
 	icon_state = "plasmarifle"
 	item_state = "plasmarifle"
 	unacidable = TRUE
@@ -1497,14 +1614,10 @@
 	var/base_item_state = "plasma_wear"
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	item_icons = list(
-		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
-		WEAR_J_STORE = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
+		WEAR_BACK = 'icons/mob/humans/onmob/hunter/suit_storage.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/hunter/suit_storage.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
-	)
-	item_state_slots = list(
-		WEAR_BACK = "plasma_wear_off",
-		WEAR_J_STORE = "plasma_wear_off"
 	)
 	fire_sound = 'sound/weapons/pred_plasmacaster_fire.ogg'
 	ammo = /datum/ammo/energy/yautja/caster/bolt/single_stun
@@ -1529,8 +1642,6 @@
 /obj/item/weapon/gun/energy/yautja/plasma_caster/Initialize(mapload, spawn_empty, caster_material = "ebony")
 	icon_state = "[base_icon_state]_[caster_material]"
 	item_state = "[base_item_state]_[caster_material]"
-	item_state_slots[WEAR_BACK] = "[base_item_state]_off_[caster_material]"
-	item_state_slots[WEAR_J_STORE] = "[base_item_state]_off_[caster_material]"
 	. = ..()
 	source = loc
 	verbs -= /obj/item/weapon/gun/verb/field_strip
@@ -1592,7 +1703,7 @@
 	switch(mode)
 		if("stun")
 			mode = "lethal"
-			to_chat(usr, SPAN_YAUTJABOLD("[src.source] beeps: [src] is now set to [mode] mode"))
+			to_chat(usr, SPAN_YAUTJABOLD("[src.source] beeps: [src] is now set to [mode] mode."))
 			strength = "plasma bolt"
 			charge_cost = 100
 			set_fire_delay(FIRE_DELAY_TIER_6 * 3)
@@ -1602,7 +1713,7 @@
 
 		if("lethal")
 			mode = "stun"
-			to_chat(usr, SPAN_YAUTJABOLD("[src.source] beeps: [src] is now set to [mode] mode"))
+			to_chat(usr, SPAN_YAUTJABOLD("[src.source] beeps: [src] is now set to [mode] mode."))
 			strength = "stun bolts"
 			charge_cost = 30
 			set_fire_delay(FIRE_DELAY_TIER_6)
@@ -1665,7 +1776,7 @@
 
 /obj/item/weapon/gun/bow
 	name = "hunting bow"
-	desc = "An abnormal-sized weapon with an exeptionally tight string. Requires extraordinary strength to draw."
+	desc = "An abnormal-sized weapon with an exceptionally tight string. Requires extraordinary strength to draw."
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "bow"
 	item_state = "bow"

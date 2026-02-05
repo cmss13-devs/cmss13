@@ -42,7 +42,7 @@
 /obj/structure/machinery/computer/almayer_control/tgui_interact(mob/user, datum/tgui/ui, datum/ui_state/state)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "AlmayerControl", "[name]")
+		ui = new(user, src, "AlmayerControl", "[capitalize(name)]")
 		ui.open()
 
 /obj/structure/machinery/computer/almayer_control/ui_status(mob/user, datum/ui_state/state)
@@ -181,9 +181,9 @@
 
 		if("messageUSCM")
 			if(!COOLDOWN_FINISHED(src, cooldown_central))
-				to_chat(user, SPAN_WARNING("Arrays are re-cycling.  Please stand by."))
+				to_chat(user, SPAN_WARNING("Arrays are re-cycling. Please stand by."))
 				return FALSE
-			var/input = stripped_input(user, "Please choose a message to transmit to USCM.  Please be aware that this process is very expensive, and abuse will lead to termination.  Transmission does not guarantee a response. There is a small delay before you may send another message. Be clear and concise.", "To abort, send an empty message.", "")
+			var/input = stripped_input(user, "Please choose a message to transmit to USCM. Please be aware that this process is very expensive, and abuse will lead to termination. Transmission does not guarantee a response. There is a small delay before you may send another message. Be clear and concise.", "To abort, send an empty message.", "")
 			if(!input || !(user in dview(1, src)) || !COOLDOWN_FINISHED(src, cooldown_central))
 				return FALSE
 
@@ -220,7 +220,7 @@
 
 			COOLDOWN_START(src, cooldown_message, COOLDOWN_COMM_MESSAGE)
 			shipwide_ai_announcement(input, COMMAND_SHIP_ANNOUNCE, signature = signed)
-			message_admins("[key_name(user)] has made a shipwide annoucement.")
+			message_admins("[key_name(user)] has made a shipwide announcement.")
 			log_announcement("[key_name(user)] has announced the following to the ship: [input]")
 			. = TRUE
 

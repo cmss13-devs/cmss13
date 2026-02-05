@@ -49,7 +49,7 @@
 	to_chat(M, SPAN_WARNING(FONT_SIZE_BIG("Glory to Podpolkovnik Ganbaatar.")))
 	to_chat(M, SPAN_WARNING(FONT_SIZE_BIG("Glory to the Smoldering Sons.")))
 	to_chat(M, SPAN_WARNING(FONT_SIZE_BIG("Glory to the UPP.")))
-	to_chat(M, SPAN_WARNING(FONT_SIZE_HUGE("YOU ARE [hostility? "HOSTILE":"FRIENDLY"] to the USCM")))
+	to_chat(M, SPAN_WARNING(FONT_SIZE_HUGE("YOU ARE [hostility? "HOSTILE":"FRIENDLY"] to the USCM.")))
 
 ///////////////////UPP///////////////////////////
 

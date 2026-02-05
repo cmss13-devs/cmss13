@@ -54,7 +54,7 @@
 		processing_tray.seed = processing_tray.seed.diverge()
 		processing_tray.seed.potency += rand(1,potency*2)
 		processing_tray.seed.nutrient_consumption += 0.3*(potency*2)
-		c_turf.visible_message(SPAN_NOTICE("\The [processing_tray.seed.display_name] rustles as its branches bow"))
+		c_turf.visible_message(SPAN_NOTICE("\The [processing_tray.seed.display_name] rustles as its branches bow."))
 		processing_tray.potency_counter = 0
 
 /datum/chem_property/neutral/nutritious
@@ -106,7 +106,7 @@
 	M.overeatduration = 0
 	if(M.reagents.remove_all_type(/datum/reagent/ethanol, potency, 0, 1)) //Ketosis causes rapid metabolization of alcohols
 		M.confused = min(M.confused + potency,10*potency)
-		M.drowsyness = min(M.drowsyness + potency,15*potency)
+		M.drowsiness = min(M.drowsiness + potency,15*potency)
 
 /datum/chem_property/neutral/ketogenic/process_overdose(mob/living/M, potency = 1, delta_time)
 	M.nutrition = max(M.nutrition - 5 * potency * delta_time, 0)
@@ -163,7 +163,7 @@
 			return
 
 	mob.dizziness = min(mob.dizziness + POTENCY_MULTIPLIER_VVLOW * potency * delta_time, POTENCY_MULTIPLIER_VHIGH * potency)
-	mob.drowsyness = min(mob.drowsyness + POTENCY_MULTIPLIER_LOW * potency * delta_time, POTENCY_MULTIPLIER_VHIGH * potency)
+	mob.drowsiness = min(mob.drowsiness + POTENCY_MULTIPLIER_LOW * potency * delta_time, POTENCY_MULTIPLIER_VHIGH * potency)
 
 	if(prob(50 * delta_time) || potency >= 5)
 		mob.confused = min(mob.confused + POTENCY_MULTIPLIER_LOW * potency * delta_time, POTENCY_MULTIPLIER_VHIGH * potency)
@@ -174,7 +174,7 @@
 	mob.apply_damage(POTENCY_MULTIPLIER_LOW * potency * delta_time, OXY)
 
 	mob.dizziness = min(mob.dizziness + POTENCY_MULTIPLIER_VLOW * potency * delta_time, POTENCY_MULTIPLIER_HIGHEXTREMEINTER * potency)
-	mob.drowsyness = min(mob.drowsyness + potency * delta_time, POTENCY_MULTIPLIER_HIGHEXTREMEINTER * potency)
+	mob.drowsiness = min(mob.drowsiness + potency * delta_time, POTENCY_MULTIPLIER_HIGHEXTREMEINTER * potency)
 
 	if(prob(POTENCY_MULTIPLIER_MEDIUM * delta_time))
 		mob.sleeping = min(mob.sleeping + POTENCY_MULTIPLIER_LOW * potency * delta_time, POTENCY_MULTIPLIER_HIGHEXTREMEINTER * potency)
@@ -193,7 +193,7 @@
 
 	mob.confused = min(mob.confused + POTENCY_MULTIPLIER_MEDIUM * potency * delta_time, POTENCY_MULTIPLIER_EXTREME * potency)
 	mob.dizziness = min(mob.dizziness + POTENCY_MULTIPLIER_LOW * potency * delta_time, POTENCY_MULTIPLIER_EXTREME * potency)
-	mob.drowsyness = min(mob.drowsyness + POTENCY_MULTIPLIER_MEDIUM * potency * delta_time, POTENCY_MULTIPLIER_EXTREME * potency)
+	mob.drowsiness = min(mob.drowsiness + POTENCY_MULTIPLIER_MEDIUM * potency * delta_time, POTENCY_MULTIPLIER_EXTREME * potency)
 	mob.slurring = min(mob.slurring + potency * delta_time, POTENCY_MULTIPLIER_EXTREME * potency)
 
 	if(prob(POTENCY_MULTIPLIER_VHIGH * potency * delta_time))
@@ -234,26 +234,26 @@
 	M.apply_damage(0.5 * potency * delta_time, BRAIN)
 	M.apply_effect(20, PARALYZE)
 
-/datum/chem_property/neutral/relaxing
-	name = PROPERTY_RELAXING
-	code = "RLX"
-	description = "Has a sedative effect on neuromuscular junctions depressing the force of muscle contractions. High concentrations can cause respiratory failure and cardiac arrest."
+/datum/chem_property/neutral/antispasmodic
+	name = PROPERTY_ANTISPASMODIC
+	code = "ASP"
+	description = "Relaxes smooth muscles and treats muscle spasms by blocking the neurotransmitter acetylcholine. High concentrations can cause respiratory failure and cardiac arrest."
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_STIMULANT
 
-/datum/chem_property/neutral/relaxing/process(mob/living/M, potency = 1, delta_time)
+/datum/chem_property/neutral/antispasmodic/process(mob/living/M, potency = 1, delta_time)
 	M.reagent_move_delay_modifier += potency
 	if(prob(5 * delta_time))
 		M.emote("yawn")
 	M.recalculate_move_delay = TRUE
 
-/datum/chem_property/neutral/relaxing/process_overdose(mob/living/M, potency = 1, delta_time)
+/datum/chem_property/neutral/antispasmodic/process_overdose(mob/living/M, potency = 1, delta_time)
 	//heart beats slower
 	M.reagent_move_delay_modifier += POTENCY_MULTIPLIER_MEDIUM * potency
 	if(prob(10))
 		to_chat(M, SPAN_WARNING("You feel incredibly weak!"))
 
-/datum/chem_property/neutral/relaxing/process_critical(mob/living/M, potency = 1, delta_time)
+/datum/chem_property/neutral/antispasmodic/process_critical(mob/living/M, potency = 1, delta_time)
 	//heart stops beating, lungs stop working
 	if(prob(7.5 * potency * delta_time))
 		M.apply_effect(potency, PARALYZE)
@@ -330,21 +330,21 @@
 
 /datum/chem_property/neutral/hypothermic/process_overdose(mob/living/M, potency = 1)
 	M.bodytemperature = max(0, M.bodytemperature - POTENCY_MULTIPLIER_VHIGH * potency)
-	M.drowsyness  = max(M.drowsyness, 30)
+	M.drowsiness  = max(M.drowsiness, 30)
 
 /datum/chem_property/neutral/hypothermic/process_critical(mob/living/M, potency = 1, delta_time)
 	M.apply_effect(20, PARALYZE)
 
-/datum/chem_property/neutral/balding
-	name = PROPERTY_BALDING
-	code = "BLD"
-	description = "Damages the hair follicles in the skin causing extreme alopecia, also refered to as baldness."
+/datum/chem_property/neutral/atrichogenic
+	name = PROPERTY_ATRICHOGENIC
+	code = "ATR"
+	description = "Damages the hair follicles in the skin to disrupt the hair growth cycle, causing extreme alopecia, also referred to as baldness."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_IRRITANT
 	value = 0
 	max_level = 2
 
-/datum/chem_property/neutral/balding/process(mob/living/M, potency = 1, delta_time)
+/datum/chem_property/neutral/atrichogenic/process(mob/living/M, potency = 1, delta_time)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if((H.h_style != "Bald" || H.f_style != "Shaved"))
@@ -353,21 +353,21 @@
 			H.f_style = "Shaved"
 			H.update_hair()
 
-/datum/chem_property/neutral/balding/process_overdose(mob/living/M, potency = 1)
+/datum/chem_property/neutral/atrichogenic/process_overdose(mob/living/M, potency = 1)
 	M.adjustCloneLoss(POTENCY_MULTIPLIER_LOW * potency)
 
-/datum/chem_property/neutral/balding/process_critical(mob/living/M, potency = 1, delta_time)
+/datum/chem_property/neutral/atrichogenic/process_critical(mob/living/M, potency = 1, delta_time)
 	M.adjustCloneLoss(0.5 * potency * delta_time)
 
-/datum/chem_property/neutral/fluffing
-	name = PROPERTY_FLUFFING
-	code = "FLF"
-	description = "Accelerates cell division in the hair follicles resulting in random and excessive hairgrowth. Found to increase yeilds in plants."
+/datum/chem_property/neutral/trichogenic
+	name = PROPERTY_TRICHOGENIC
+	code = "TRI"
+	description = "Accelerates cell division in the hair follicles resulting in random and excessive hair growth. Found to increase yields in plants."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_IRRITANT
 	value = 0
 
-/datum/chem_property/neutral/fluffing/process(mob/living/M, potency = 1, delta_time)
+/datum/chem_property/neutral/trichogenic/process(mob/living/M, potency = 1, delta_time)
 	if(prob(2.5 * potency * delta_time) && ishuman(M))
 		var/mob/living/carbon/human/H = M
 		H.h_style = "Bald"
@@ -378,16 +378,16 @@
 		H.update_hair()
 		to_chat(M, SPAN_NOTICE("Your head feels different..."))
 
-/datum/chem_property/neutral/fluffing/process_overdose(mob/living/M, potency = 1, delta_time)
+/datum/chem_property/neutral/trichogenic/process_overdose(mob/living/M, potency = 1, delta_time)
 	if(prob(2.5 * potency * delta_time))
 		to_chat(M, SPAN_WARNING("You feel itchy all over!"))
 		M.take_limb_damage(potency) //Hair growing inside your body
 
-/datum/chem_property/neutral/fluffing/process_critical(mob/living/M, potency = 1, delta_time)
+/datum/chem_property/neutral/trichogenic/process_critical(mob/living/M, potency = 1, delta_time)
 	to_chat(M, SPAN_WARNING("You feel like something is penetrating your skull!"))
 	M.apply_damage(0.5 * potency * delta_time, BRAIN) //Hair growing into brain
 
-/datum/chem_property/neutral/fluffing/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
+/datum/chem_property/neutral/trichogenic/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
 	. = ..()
 	if(!processing_tray.seed)
 		return
@@ -503,7 +503,7 @@
 /datum/chem_property/neutral/antihallucinogenic
 	name = PROPERTY_ANTIHALLUCINOGENIC
 	code = "AHL"
-	description = "Stabilizes perseptive abnormalities such as hallucinations caused by mindbreaker toxin."
+	description = "Stabilizes perceptive abnormalities such as hallucinations caused by mindbreaker toxin."
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_STIMULANT
 	value = 1
@@ -542,14 +542,14 @@
 		return
 	processing_tray.metabolism_adjust += clamp(20*potency, 0, 130)
 
-/datum/chem_property/neutral/sedative
-	name = PROPERTY_SEDATIVE
-	code = "SDT"
+/datum/chem_property/neutral/hypnotic
+	name = PROPERTY_HYPNOTIC
+	code = "HYP"
 	description = "Causes the body to release melatonin resulting in increased sleepiness."
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_STIMULANT
 
-/datum/chem_property/neutral/sedative/process(mob/living/M, potency = 1, delta_time)
+/datum/chem_property/neutral/hypnotic/process(mob/living/M, potency = 1, delta_time)
 	if(M.confused < 25 && M.sleeping < 20)
 		M.confused += POTENCY_MULTIPLIER_MEDIUM * potency
 	if(M.confused > 25)
@@ -558,10 +558,10 @@
 	else if(prob(25))
 		M.emote("yawn")
 
-/datum/chem_property/neutral/sedative/process_overdose(mob/living/M, potency = 1, delta_time)
+/datum/chem_property/neutral/hypnotic/process_overdose(mob/living/M, potency = 1, delta_time)
 	M.adjust_effect(0.5 * potency * delta_time, PARALYZE)
 
-/datum/chem_property/neutral/sedative/process_critical(mob/living/M, potency = 1)
+/datum/chem_property/neutral/hypnotic/process_critical(mob/living/M, potency = 1)
 	M.apply_damage(POTENCY_MULTIPLIER_VHIGH * potency, OXY)
 
 /datum/chem_property/neutral/hyperthrottling
@@ -662,7 +662,7 @@
 	M.apply_effect(20, PARALYZE)
 
 /datum/chem_property/neutral/thermostabilizing/process_critical(mob/living/M, potency = 1, delta_time)
-	M.drowsyness  = max(M.drowsyness, 30)
+	M.drowsiness  = max(M.drowsiness, 30)
 
 /datum/chem_property/neutral/focusing
 	name = PROPERTY_FOCUSING
@@ -677,7 +677,7 @@
 	M.stuttering = max(M.stuttering - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 	M.confused = max(M.confused - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 	M.ReduceEyeBlur(POTENCY_MULTIPLIER_MEDIUM * potency)
-	M.drowsyness = max(M.drowsyness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
+	M.drowsiness = max(M.drowsiness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 	M.dizziness = max(M.dizziness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 	M.jitteriness = max(M.jitteriness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 	if(potency >= POTENCY_MAX_TIER_1)
@@ -703,11 +703,11 @@
 /datum/chem_property/neutral/transformative/process(mob/living/M, potency = 1, delta_time)
 	var/true_heal = heal_amount * potency * delta_time
 	if(M.getBruteLoss())
-		M.apply_damage(-true_heal, BRUTE)
-		M.apply_damage(true_heal * 0.1, TOX)
+		M.apply_damage(-true_heal, BRUTE, chemical=TRUE)
+		M.apply_damage(true_heal * 0.1, TOX, chemical=TRUE)
 	if(M.getFireLoss())
-		M.apply_damage(-true_heal, BURN)
-		M.apply_damage(true_heal * 0.1, TOX)
+		M.apply_damage(-true_heal, BURN, chemical=TRUE)
+		M.apply_damage(true_heal * 0.1, TOX, chemical=TRUE)
 
 /datum/chem_property/neutral/transformative/process_overdose(mob/living/M, potency = 1)
 	M.apply_damage(heal_amount * (potency * POTENCY_MULTIPLIER_LOW), TOX)

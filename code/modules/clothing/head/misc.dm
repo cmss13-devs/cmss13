@@ -134,7 +134,7 @@
 
 /obj/item/clothing/head/director
 	name = "director's hat"
-	desc = "Belongs to someone very important. Has minor protection to all damage types"
+	desc = "Belongs to someone very important. Has minor protection to all damage types."
 	icon_state = "director_hat"
 	item_state = "director_hat"
 	icon = 'icons/obj/items/clothing/hats/formal_hats.dmi'

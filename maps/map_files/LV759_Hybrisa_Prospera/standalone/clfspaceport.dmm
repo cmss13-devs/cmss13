@@ -607,9 +607,16 @@
 	pixel_x = 4;
 	pixel_y = 8
 	},
+/obj/structure/machinery/iv_drip{
+	pixel_y = 10;
+	pixel_x = 5
+	},
 /obj/structure/largecrate/supply/ammo/m56d,
 /obj/structure/machinery/light/blue{
 	dir = 4
+	},
+/obj/item/reagent_container/blood/OMinus{
+	pixel_x = 5
 	},
 /turf/open/floor/almayer/test_floor5,
 /area/lv759/indoors/spaceport/clf_dropship)
@@ -702,6 +709,10 @@
 	},
 /obj/item/storage/belt/medical/full{
 	pixel_y = 17
+	},
+/obj/item/storage/belt/medical/full{
+	pixel_y = 19;
+	pixel_x = 2
 	},
 /obj/item/storage/firstaid/regular{
 	pixel_y = 23

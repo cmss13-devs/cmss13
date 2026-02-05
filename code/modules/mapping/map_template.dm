@@ -62,10 +62,6 @@
 			if(istype(movable_in_turf, /obj/docking_port/stationary))
 				ports += movable_in_turf
 
-	// Not sure if there is some importance here to make sure the area is in z
-	// first or not.  Its defined In Initialize yet its run first in templates
-	// BEFORE so... hummm
-	SSmapping.reg_in_areas_in_z(areas)
 	if(!SSatoms.initialized)
 		return
 

@@ -160,7 +160,7 @@ CLIENT_VERB(drop_item)
 		to_chat(src, SPAN_NOTICE("You cannot crawl while a xeno is grabbing you."))
 		return
 
-	//Check if you are being grabbed and if so attemps to break it
+	//Check if you are being grabbed and if so attempts to break it
 	if(mob.pulledby)
 		if(mob.is_mob_restrained(0))
 			next_movement = world.time + 20 //to reduce the spam
@@ -185,9 +185,8 @@ CLIENT_VERB(drop_item)
 		if(mob.next_move_slowdown)
 			move_delay += mob.next_move_slowdown
 			mob.next_move_slowdown = 0
-		if(mob.dirlock_slowdown) //humans can dirlock with no slowdown
-			if((mob.flags_atom & DIRLOCK) && mob.dir != direct)
-				move_delay += MOVE_REDUCTION_DIRECTION_LOCKED // by Geeves
+		if((mob.flags_atom & DIRLOCK) && mob.dir != direct)
+			move_delay += MOVE_REDUCTION_DIRECTION_LOCKED // by Geeves
 
 		mob.cur_speed = clamp(10/(move_delay + 0.5), MIN_SPEED, MAX_SPEED)
 		next_movement = world.time + MINIMAL_MOVEMENT_INTERVAL // We pre-set this now for the crawling case. If crawling do_after fails, next_movement would be set after the attempt end instead of now.
@@ -256,7 +255,7 @@ CLIENT_VERB(drop_item)
 
 	//Check to see if we slipped
 	if(prob(Process_Spaceslipping(5)))
-		to_chat(src, SPAN_NOTICE(" <B>You slipped!</B>"))
+		to_chat(src, SPAN_NOTICE("<B>You slipped!</B>"))
 		src.inertia_dir = src.last_move_dir
 		step(src, src.inertia_dir)
 		return 0
@@ -296,7 +295,7 @@ CLIENT_VERB(drop_item)
 		dense_object++
 
 	//Lastly attempt to locate any dense objects we could push off of
-	//TODO: If we implement objects drifing in space this needs to really push them
+	//TODO: If we implement objects drifting in space this needs to really push them
 	//Due to a few issues only anchored and dense objects will now work.
 	if(!dense_object)
 		for(var/obj/O in oview(1, src))
@@ -308,7 +307,7 @@ CLIENT_VERB(drop_item)
 
 
 /mob/proc/Process_Spaceslipping(prob_slip = 5)
-	//Setup slipage
+	//Setup slippage
 	//If knocked out we might just hit it and stop.  This makes it possible to get dead bodies and such.
 	if(stat)
 		prob_slip = 0  // Changing this to zero to make it line up with the comment.

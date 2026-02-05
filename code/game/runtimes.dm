@@ -49,23 +49,24 @@ GLOBAL_REAL_VAR(total_runtimes)
 		return
 	runtime_hashes[hash] = 1
 
-	var/depth = 1
-	var/list/datum/static_callee/error_callees = list()
+	if(SSsentry?.can_fire)
+		var/depth = 1
+		var/list/datum/static_callee/error_callees = list()
 
-	try
-		for(var/callee/called = caller, called, called = called.caller)
-			error_callees += clone_callee(called)
-			depth++
+		try
+			for(var/callee/called = caller, called, called = called.caller)
+				error_callees += clone_callee(called)
+				depth++
 
-			if(depth > MAXIMUM_STACK_DEPTH)
-				break
-		reverse_range(error_callees)
+				if(depth > MAXIMUM_STACK_DEPTH)
+					break
+			reverse_range(error_callees)
 
-		SSsentry.envelopes += new /datum/error_envelope(
-			E.name,
-			error_callees,
-		)
-	catch
+			SSsentry.envelopes += new /datum/error_envelope(
+				E.name,
+				error_callees,
+			)
+		catch
 
 	// Single error logging to STUI
 	var/text = "\[[time_stamp()]]RUNTIME: [E.name] - [E.file]@[E.line]"

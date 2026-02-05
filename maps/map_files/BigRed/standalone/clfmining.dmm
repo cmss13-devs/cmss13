@@ -242,6 +242,18 @@
 /obj/item/ammo_magazine/smg/fp9000,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
+"aN" = (
+/obj/structure/largecrate/random,
+/obj/item/reagent_container/food/drinks/bottle/goldschlager{
+	pixel_y = 15
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"aO" = (
+/obj/structure/machinery/iv_drip,
+/obj/item/reagent_container/blood/OMinus,
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/caves/mining)
 "aP" = (
 /obj/structure/disposalpipe/broken{
 	dir = 4
@@ -362,7 +374,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/item/frame/rack,
 /obj/effect/spawner/random/toolbox,
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 1
 	},
 /obj/structure/pipes/valve/open,
@@ -924,8 +936,12 @@
 /area/bigredv2/caves/mining)
 "nB" = (
 /obj/structure/surface/rack,
-/obj/item/reagent_container/food/drinks/bottle/goldschlager,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/storage/backpack/general_belt{
+	pixel_y = 7
+	},
+/obj/item/storage/backpack/general_belt,
+/obj/item/defenses/handheld/planted_flag/clf,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "nI" = (
@@ -937,7 +953,6 @@
 /turf/open/mars_cave/mars_cave_13,
 /area/bigredv2/caves/mining)
 "nW" = (
-/obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
 	dir = 8
@@ -1082,10 +1097,11 @@
 /area/bigredv2/caves/mining)
 "qR" = (
 /obj/structure/surface/rack,
-/obj/item/storage/backpack/general_belt,
-/obj/item/storage/backpack/general_belt,
-/obj/item/storage/backpack/general_belt,
-/obj/item/defenses/handheld/planted_flag/clf,
+/obj/item/roller,
+/obj/item/roller{
+	pixel_x = 3;
+	pixel_y = 2
+	},
 /turf/open/mars_cave/mars_cave_13,
 /area/bigredv2/caves/mining)
 "qU" = (
@@ -1886,8 +1902,6 @@
 "DN" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/burger,
-/obj/effect/decal/cleanable/dirt,
-/obj/item/trash/burger,
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
 	dir = 8
 	},
@@ -2250,6 +2264,7 @@
 "Jw" = (
 /obj/structure/machinery/optable,
 /obj/item/tank/anesthetic,
+/obj/item/clothing/mask/breath/medical,
 /turf/open/mars_cave/mars_cave_13,
 /area/bigredv2/caves/mining)
 "JA" = (
@@ -2335,13 +2350,6 @@
 /turf/open/mars_cave/mars_cave_13,
 /area/bigredv2/caves/mining)
 "Lo" = (
-/obj/effect/decal/cleanable/blood/drip{
-	pixel_x = -8;
-	pixel_y = 6
-	},
-/obj/effect/decal/cleanable/blood/drip{
-	pixel_x = 6
-	},
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_x = -8;
 	pixel_y = 6
@@ -2717,7 +2725,7 @@
 /turf/open/mars_cave/mars_dirt_7,
 /area/bigredv2/caves/mining)
 "Qb" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 1
 	},
 /obj/structure/pipes/valve/open,
@@ -3164,7 +3172,10 @@
 "XQ" = (
 /obj/structure/surface/rack,
 /obj/item/storage/belt/medical/full,
-/obj/item/storage/belt/medical/full,
+/obj/item/storage/belt/medical/full{
+	pixel_x = 2;
+	pixel_y = 4
+	},
 /obj/item/storage/firstaid/regular,
 /turf/open/mars_cave/mars_cave_13,
 /area/bigredv2/caves/mining)
@@ -3636,7 +3647,7 @@ zj
 QF
 EE
 mV
-CO
+aN
 ZM
 Rn
 bc
@@ -4248,7 +4259,7 @@ kH
 LW
 zb
 uy
-FO
+aO
 DV
 FO
 FO

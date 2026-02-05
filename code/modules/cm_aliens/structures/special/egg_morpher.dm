@@ -128,7 +128,7 @@
 	if(!range_bounds)
 		range_bounds = SQUARE(x, y, EGGMORPG_RANGE)
 
-	var/list/targets = SSquadtree.players_in_range(range_bounds, z, QTREE_SCAN_MOBS | QTREE_EXCLUDE_OBSERVER)
+	var/list/targets = SSquadtree.players_in_range(range_bounds, z, QTREE_SCAN_MOBS | QTREE_FILTER_LIVING)
 	if(isnull(targets) || !length(targets))
 		return
 
@@ -200,7 +200,7 @@
 
 /mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher(obj/effect/alien/resin/special/eggmorph/morpher in oview(1))
 	set name = "Set Hugger Reserve"
-	set desc = "Set Hugger Reserve"
+	set desc = "Set Hugger Reserve."
 	set category = null
 
 	if(!istype(morpher))

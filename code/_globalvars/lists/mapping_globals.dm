@@ -32,6 +32,11 @@ GLOBAL_LIST_EMPTY(latejoin_by_job)
 
 GLOBAL_LIST_EMPTY(zombie_landmarks)
 
+GLOBAL_LIST_EMPTY(event_mob_landmarks)
+GLOBAL_LIST_EMPTY(event_mob_landmarks_delayed)
+GLOBAL_VAR_INIT(event_mob_number, 1)
+GLOBAL_LIST_EMPTY(event_mob_players)
+
 GLOBAL_LIST_EMPTY(newplayer_start)
 GLOBAL_LIST_EMPTY_TYPED(observer_starts, /obj/effect/landmark/observer_start)
 GLOBAL_LIST_EMPTY_TYPED(spycam_starts, /obj/effect/landmark/spycam_start)

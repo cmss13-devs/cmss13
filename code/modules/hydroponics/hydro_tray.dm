@@ -67,7 +67,7 @@
 		"Lifespan" = 0,
 		"Potency" = 0,
 		"Maturity" = 0,
-		"Bioluminecence" = 0,
+		"Bioluminescence" = 0,
 		"Flowers" = 0,
 		"New Chems" = 0,
 		"New Chems2" = 0,
@@ -219,7 +219,7 @@
 		animate(src, transform = matrix(rand(1,-1), rand(-0.5,0.5), MATRIX_TRANSLATE), time = 0.5, easing = EASE_IN)
 		animate(transform = matrix(rand(-0.5,0.5), rand(1,-1), MATRIX_TRANSLATE), time = 0.5)
 		animate(transform = matrix(0, 0, MATRIX_TRANSLATE), time = 0.5, easing = EASE_OUT)
-		visible_message(SPAN_NOTICE("[src] shakes itself in attempt to harvest its products"))
+		visible_message(SPAN_NOTICE("[src] shakes itself in attempt to harvest its products."))
 		harvest(null, TRUE) //this is ok
 
 	check_level_sanity()

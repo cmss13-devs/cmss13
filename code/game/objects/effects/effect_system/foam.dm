@@ -227,6 +227,13 @@
 
 	return XENO_ATTACK_ACTION
 
+/obj/structure/foamed_metal/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
+	take_damage(xeno.melee_damage_upper * FOAMED_METAL_XENO_SLASH)
+	xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
+	SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno.tail_stab_animation(src, blunt_stab)
+	return TAILSTAB_COOLDOWN_NORMAL
+
 #undef FOAMED_METAL_FIRE_ACT_DMG
 #undef FOAMED_METAL_XENO_SLASH
 #undef FOAMED_METAL_ITEM_MELEE

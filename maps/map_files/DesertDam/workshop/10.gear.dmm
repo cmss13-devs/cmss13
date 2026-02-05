@@ -1,0 +1,177 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/interior/dam_interior/workshop)
+"c" = (
+/obj/structure/surface/rack,
+/obj/item/storage/firstaid,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/interior/dam_interior/workshop)
+"e" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/shoes/veteran/pmc,
+/obj/item/clothing/shoes/veteran/pmc{
+	pixel_x = 4;
+	pixel_y = 3
+	},
+/obj/item/clothing/shoes/veteran/pmc{
+	pixel_x = -3;
+	pixel_y = 4
+	},
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/interior/dam_interior/workshop)
+"h" = (
+/obj/structure/surface/rack,
+/obj/item/storage/fancy/cigarettes/wypacket,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/interior/dam_interior/workshop)
+"i" = (
+/obj/structure/surface/rack,
+/obj/item/stack/sheet/wood/medium_stack,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/interior/dam_interior/workshop)
+"j" = (
+/obj/structure/surface/rack,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/interior/dam_interior/workshop)
+"n" = (
+/obj/structure/surface/rack,
+/obj/item/storage/pouch/firstaid/ert{
+	pixel_x = -5
+	},
+/obj/item/storage/pouch/firstaid/ert{
+	pixel_x = 6
+	},
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/interior/dam_interior/workshop)
+"x" = (
+/turf/open/asphalt/cement/cement1,
+/area/desert_dam/interior/dam_interior/workshop)
+"z" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment,
+/turf/open/asphalt/cement/cement3,
+/area/desert_dam/interior/dam_interior/workshop)
+"C" = (
+/obj/structure/surface/rack,
+/obj/item/storage/box/mousetraps,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/interior/dam_interior/workshop)
+"D" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/mask/rebreather/scarf/tan,
+/obj/item/clothing/mask/rebreather/scarf/tan,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/interior/dam_interior/workshop)
+"F" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/accessory/storage/webbing/five_slots,
+/obj/item/clothing/accessory/storage/webbing/five_slots,
+/obj/item/clothing/accessory/storage/webbing/five_slots,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/interior/dam_interior/workshop)
+"G" = (
+/obj/structure/surface/rack,
+/obj/item/stack/sheet/metal/medium_stack,
+/obj/item/stack/sheet/metal/medium_stack{
+	pixel_y = 3;
+	pixel_x = 3
+	},
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/interior/dam_interior/workshop)
+"H" = (
+/obj/structure/surface/rack,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/interior/dam_interior/workshop)
+"J" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement/cement3,
+/area/desert_dam/interior/dam_interior/workshop)
+"K" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/mask/rebreather/scarf,
+/obj/item/clothing/mask/rebreather/scarf,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/interior/dam_interior/workshop)
+"Q" = (
+/obj/structure/surface/rack,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/interior/dam_interior/workshop)
+"R" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/accessory/storage/webbing,
+/obj/item/clothing/accessory/storage/webbing,
+/obj/item/clothing/accessory/storage/webbing,
+/obj/item/clothing/glasses/sunglasses,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/interior/dam_interior/workshop)
+"V" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/mask/gas,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/interior/dam_interior/workshop)
+"W" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/interior/dam_interior/workshop)
+
+(1,1,1) = {"
+i
+a
+G
+a
+V
+"}
+(2,1,1) = {"
+H
+a
+c
+a
+h
+"}
+(3,1,1) = {"
+Q
+a
+j
+a
+C
+"}
+(4,1,1) = {"
+a
+W
+W
+W
+W
+"}
+(5,1,1) = {"
+J
+J
+z
+z
+J
+"}
+(6,1,1) = {"
+x
+x
+x
+x
+x
+"}
+(7,1,1) = {"
+n
+a
+F
+a
+D
+"}
+(8,1,1) = {"
+R
+a
+e
+a
+K
+"}

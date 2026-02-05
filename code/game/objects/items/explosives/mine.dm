@@ -48,7 +48,12 @@
 	QDEL_NULL(tripwire)
 	. = ..()
 
-/obj/item/explosive/mine/ex_act()
+/obj/item/explosive/mine/ex_act(severity, direction, datum/cause_data/cause_data, pierce=0, enviro=FALSE)
+	var/mob/blame = cause_data?.resolve_mob()
+	if(!cause_data)
+		cause_data = create_cause_data(initial(name), blame, src)
+	else if(blame)
+		cause_data.weak_mob = WEAKREF(blame)
 	prime() //We don't care about how strong the explosion was.
 
 /obj/item/explosive/mine/emp_act()
@@ -297,6 +302,11 @@
 		if(spit_hit_count >= 2) // Check if hit two times
 			visible_message(SPAN_DANGER("[src] is hit by [xeno_projectile] and violently detonates!")) // Acid is hot for claymore
 			triggered = TRUE
+			var/mob/blame = xeno_projectile.weapon_cause_data?.resolve_mob()
+			if(!cause_data)
+				cause_data = create_cause_data(initial(name), blame, src)
+			else if(blame)
+				cause_data.weak_mob = WEAKREF(blame)
 			prime()
 			if(!QDELETED(src))
 				disarm()
@@ -432,6 +442,8 @@
 	set waitfor = FALSE
 	if(!cause_data)
 		cause_data = create_cause_data(initial(name), user, src)
+	else if(user)
+		cause_data.weak_mob = WEAKREF(user)
 	if(mine_level == 1)
 		explosion_size = 100
 	else if(mine_level == 2)
@@ -493,6 +505,11 @@
 	var/damage = bullet.damage
 	health -= damage
 	..()
+	var/mob/blame = bullet.weapon_cause_data?.resolve_mob()
+	if(!cause_data)
+		cause_data = create_cause_data(initial(name), blame, src)
+	else if(blame)
+		cause_data.weak_mob = WEAKREF(blame)
 	healthcheck()
 	return TRUE
 
@@ -509,6 +526,8 @@
 	set waitfor = FALSE
 	if(!cause_data)
 		cause_data = create_cause_data(initial(name), user, src)
+	else if(user)
+		cause_data.weak_mob = WEAKREF(user)
 	if(mine_level == 1)
 		var/datum/effect_system/smoke_spread/phosphorus/smoke = new /datum/effect_system/smoke_spread/phosphorus/sharp
 		var/smoke_radius = 2

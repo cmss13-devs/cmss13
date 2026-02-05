@@ -43,7 +43,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_smartgun, list(
 
 		list("UTILITIES", 0, null, null, null),
 		list("Fire Extinguisher (Portable)", 5, /obj/item/tool/extinguisher/mini, null, VENDOR_ITEM_REGULAR),
-		list("Whistle", 5, /obj/item/device/whistle, null, VENDOR_ITEM_REGULAR),
+		list("Whistle", 5, /obj/item/clothing/accessory/device/whistle, null, VENDOR_ITEM_REGULAR),
 		list("Roller Bed", 5, /obj/item/roller, null, VENDOR_ITEM_REGULAR),
 		list("Fulton Device Stack", 5, /obj/item/stack/fulton, null, VENDOR_ITEM_REGULAR),
 		list("DV9 Smartgun Battery", 15, /obj/item/smartgun_battery, null, VENDOR_ITEM_REGULAR),

@@ -37,7 +37,7 @@
 
 /datum/ares_link/tgui_interact(mob/user, datum/tgui/ui)
 	if(!interface || !admin_interface)
-		to_chat(user, SPAN_WARNING("ARES ADMIN DATA LINK FAILED"))
+		to_chat(user, SPAN_WARNING("ARES ADMIN DATA LINK FAILED."))
 		return FALSE
 	ui = SStgui.try_update_ui(user, GLOB.ares_link, ui)
 	if(!ui)
@@ -46,7 +46,7 @@
 
 /datum/ares_link/ui_data(mob/user)
 	if(!interface)
-		to_chat(user, SPAN_WARNING("ARES ADMIN DATA LINK FAILED"))
+		to_chat(user, SPAN_WARNING("ARES ADMIN DATA LINK FAILED."))
 		return FALSE
 	var/list/data = datacore.get_interface_data()
 

@@ -86,7 +86,7 @@
 
 /obj/item/holder/cat/kitten
 	name = "kitten"
-	desc = "D'aaawwww"
+	desc = "D'aaawwww."
 	icon_state = "kitten_rest"
 
 /obj/item/holder/cat/Jones

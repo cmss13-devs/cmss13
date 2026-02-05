@@ -57,6 +57,9 @@
 /datum/config_entry/flag/bones_can_break
 	config_entry_value = TRUE
 
+/datum/config_entry/flag/flesh_can_eschar
+	config_entry_value = TRUE
+
 /datum/config_entry/flag/allow_synthetic_gun_use
 
 /datum/config_entry/flag/remove_gun_restrictions
@@ -141,5 +144,64 @@
 /datum/config_entry/number/nuclear_lock_marines_percentage
 	min_val = 0
 	config_entry_value = 0	// Type 0 to disable lock
+	max_val = 100
+	integer = TRUE
+
+/// The rate of comms clarity percent decay per fire of SSradio (30 SECONDS)
+/datum/config_entry/number/announcement_clarity_decay
+	min_val = 0
+	config_entry_value = 2.5
+	max_val = 100
+
+/// The grace period in deciseconds given to solve encryption challenges (before they decay)
+/datum/config_entry/number/announcement_challenge_grace
+	min_val = 0
+	config_entry_value = 1 MINUTES // 600
+	integer = TRUE
+
+/// String challenges that should all be similar in length.
+/// Any non-alpha character will be treated as a -. Any longer than the first will be trimmed.
+/datum/config_entry/str_list/announcement_challenges
+	dupes_allowed = FALSE
+	config_entry_value = list(
+		"WEYLAND",
+		"-YUTANI",
+		"COMPANY",
+		"ALMAYER",
+		"GENESIS",
+		"SCIENCE",
+		"ANDROID",
+		"WHISKEY",
+		"CHARLIE",
+		"FOXTROT",
+		"JULIETT",
+		"MARINES",
+		"TRACTOR",
+		"UNIFORM",
+		"RAIDERS",
+		"ROSETTA",
+		"SCANNER",
+		"SHADOWS",
+		"SHUTTLE",
+		"TACHYON",
+		"WARSHIP",
+		"ROSTOCK",
+	)
+
+/datum/config_entry/str_list/announcement_challenges/ValidateAndSet(str_val)
+	// Force captialized
+	return ..(uppertext(str_val))
+
+/// The minimum clarity percent for overwatch and announcements if transmitted to a z without coms
+/datum/config_entry/number/announcement_min_clarity
+	min_val = 0
+	config_entry_value = 45
+	max_val = 100
+	integer = TRUE
+
+/// The maximum clarity percent for overwatch and announcements if transmitted to a z without coms
+/datum/config_entry/number/announcement_max_clarity
+	min_val = 0
+	config_entry_value = 95
 	max_val = 100
 	integer = TRUE

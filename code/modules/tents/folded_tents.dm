@@ -16,7 +16,7 @@
 
 /obj/item/folded_tent/Initialize(mapload, ...)
 	. = ..()
-	if(template_preset == "abstract") //So spawning an abstract tent wont fail create and destroy
+	if(template_preset == "abstract") //So spawning an abstract tent won't fail create and destroy
 		return
 	set_template(SSmapping.tent_type_templates[template_preset])
 	if(!template)

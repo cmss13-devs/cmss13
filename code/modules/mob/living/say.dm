@@ -26,10 +26,11 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	":u" = RADIO_CHANNEL_REQ, ".u" = RADIO_CHANNEL_REQ, "#u" = RADIO_CHANNEL_UPP_GEN,
 	":v" = RADIO_CHANNEL_COMMAND , ".v" = RADIO_CHANNEL_COMMAND , "#v" = RADIO_CHANNEL_UPP_CMD,
 	":x" = RADIO_CHANNEL_HYPERDYNE, ".x" = RADIO_CHANNEL_HYPERDYNE, "#x" = RADIO_CHANNEL_HYPERDYNE,
-	":y" = RADIO_CHANNEL_WY, ".y" = RADIO_CHANNEL_WY, "#y" = RADIO_CHANNEL_WY,
+	":y" = RADIO_CHANNEL_WY, ".y" = RADIO_CHANNEL_WY, "#y" = RADIO_CHANNEL_WY_SEC,
 	":z" = RADIO_CHANNEL_HIGHCOM, ".z" = RADIO_CHANNEL_HIGHCOM, "#z" = RADIO_CHANNEL_PMC_CMD,
 
-	//0-9 available
+	":1" = RADIO_CHANNEL_WY_PUB, ".1" = RADIO_CHANNEL_WY_PUB, "#1" = RADIO_CHANNEL_WY_PUB,
+	//1-9 available
 ))
 
 /proc/channel_to_prefix(channel)
@@ -56,7 +57,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 			html = "\n<font color='red' size='4'><b>Your message has been automatically filtered due to its contents. Trying to circumvent this filter will get you banned.</b></font>",
 			)
 		SEND_SOUND(user, sound('sound/effects/adminhelp_new.ogg'))
-		log_admin("[user.ckey] triggered the chat filter with the following message: [message].")
+		log_admin("[user?.ckey] triggered the chat filter with the following message: [message].")
 		return FALSE
 
 	return TRUE
@@ -171,7 +172,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		if(not_dead_speaker)
 			langchat_speech(message, listening, speaking)
 		for(var/mob/M as anything in listening)
-			M.hear_say(message, verb, speaking, alt_name, italics, src, speech_sound, sound_vol)
+			M.hear_say(message, verb, speaking, alt_name, italics, src, speech_sound, sound_vol, message_mode)
 
 		for(var/obj/hearing_obj as anything in listening_obj)
 			if(hearing_obj) //It's possible that it could be deleted in the meantime.

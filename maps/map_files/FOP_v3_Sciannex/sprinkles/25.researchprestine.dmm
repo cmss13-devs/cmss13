@@ -3,17 +3,9 @@
 /obj/effect/decal/cleanable/blood/gibs/xeno,
 /turf/open/floor/prison/sterile_white/southwest,
 /area/template_noop)
-"aU" = (
-/obj/structure/sign/poster{
-	icon_state = "poster12";
-	pixel_x = 6;
-	pixel_y = 8
-	},
-/turf/open/space/basic,
-/area/template_noop)
 "bz" = (
 /turf/closed/wall/r_wall/prison_unmeltable,
-/area/template_noop)
+/area/fiorina/oob)
 "bO" = (
 /turf/open/floor/prison/floorscorched1,
 /area/template_noop)
@@ -62,13 +54,6 @@
 /obj/item/device/flashlight/lamp/tripod,
 /obj/structure/machinery/light/double/blue,
 /turf/open/floor/prison/whitepurple,
-/area/template_noop)
-"fk" = (
-/obj/item/explosive/grenade/incendiary/molotov{
-	pixel_x = 8;
-	pixel_y = 7
-	},
-/turf/open/space/basic,
 /area/template_noop)
 "gy" = (
 /turf/open/floor/prison/whitepurple/west,
@@ -135,10 +120,6 @@
 	},
 /obj/effect/spawner/random/pills/lowchance,
 /turf/open/floor/prison/whitepurple/southwest,
-/area/template_noop)
-"mz" = (
-/obj/item/tool/kitchen/utensil/pspoon,
-/turf/open/space/basic,
 /area/template_noop)
 "no" = (
 /obj/structure/barricade/metal/wired{
@@ -371,7 +352,7 @@
 	desc = "A huge chunk of metal used to seperate rooms.";
 	name = "metal wall"
 	},
-/area/template_noop)
+/area/fiorina/oob)
 "Hf" = (
 /obj/effect/decal/cleanable/blood/tracks/footprints,
 /turf/open/floor/prison/whitepurple/north,
@@ -501,10 +482,6 @@
 "NI" = (
 /turf/open/floor/prison/sterile_white/southwest,
 /area/template_noop)
-"Oo" = (
-/obj/effect/spawner/gibspawner/human,
-/turf/open/space/basic,
-/area/template_noop)
 "Pd" = (
 /obj/effect/decal/cleanable/blood/tracks/footprints,
 /turf/open/floor/prison/whitepurple/east,
@@ -589,7 +566,7 @@
 /area/template_noop)
 "Zi" = (
 /turf/open/space/basic,
-/area/template_noop)
+/area/fiorina/oob)
 "Zw" = (
 /obj/structure/bed{
 	icon_state = "abed"
@@ -861,7 +838,7 @@ LM
 (14,1,1) = {"
 cz
 GR
-mz
+Zi
 Zi
 GR
 DE
@@ -881,7 +858,7 @@ LM
 (15,1,1) = {"
 Gy
 GR
-Oo
+Zi
 Zi
 GR
 zA
@@ -901,8 +878,8 @@ LM
 (16,1,1) = {"
 wv
 GR
-aU
-fk
+Zi
+Zi
 GR
 LQ
 Mo

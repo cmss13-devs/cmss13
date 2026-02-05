@@ -48,6 +48,7 @@
 /obj/item/device/cotablet/ui_close(mob/user)
 	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
 	tacmap_component.on_unset_interaction(user)
+	tacmap_component.close_popout_tacmaps(user)
 
 /obj/item/device/cotablet/ui_static_data(mob/user)
 	var/list/data = list()
@@ -76,10 +77,8 @@
 	if(!on)
 		return UI_DISABLED
 
-	return UI_INTERACTIVE
-
 /obj/item/device/cotablet/ui_state(mob/user)
-	return GLOB.inventory_state
+	return GLOB.not_incapacitated_and_inventory_state
 
 /obj/item/device/cotablet/tgui_interact(mob/user, datum/tgui/ui, datum/ui_state/state)
 	ui = SStgui.try_update_ui(user, src, ui)

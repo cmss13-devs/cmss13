@@ -226,7 +226,7 @@
 /datum/reagent/frostoil
 	name = "Frost Oil"
 	id = "frostoil"
-	description = "A special oil that noticably chills the body. Extracted from Ice Peppers."
+	description = "A special oil that noticeably chills the body. Extracted from Ice Peppers."
 	reagent_state = LIQUID
 	color = "#B31008" // rgb: 139, 166, 233
 	chemclass = CHEM_CLASS_RARE
@@ -250,29 +250,27 @@
 	reagent_state = LIQUID
 	color = "#badb9e" // rgb: 139, 166, 233
 	chemclass = CHEM_CLASS_HYDRO
-	properties = list(PROPERTY_ANTIPARASITIC = 0.5)
+	properties = list(PROPERTY_ANTIPARASITIC = 1.5)
 
-/datum/reagent/psoralen //cabbage, doesnt make sense but eh
+/datum/reagent/psoralen //cabbage, doesn't make sense but eh
 	name = "Psoralen"
 	id = "psoralen"
-	description = "Naturally occuring carcinogenic, used commonly as mutagen for DNA research."
+	description = "Naturally occurring carcinogenic, used commonly as mutagen for DNA research."
 	reagent_state = LIQUID
 	color = "#c9ca75" // rgb: 139, 166, 233
-
 	chemclass = CHEM_CLASS_HYDRO
 	properties = list(PROPERTY_CARCINOGENIC = 6)
 
 /datum/reagent/coniine //carrot
 	name = "Coniine"
 	id = "coniine"
-	description = "Potent neurotoxic chemical commonly used as a murder weapon, death is caused by respiration failure and paralysis"
+	description = "Potent toxic chemical causing loss of consciousness and respiratory failure in matter of seconds, although it was studied for a long time, it could have some undocumented use."
 	reagent_state = LIQUID
 	overdose = LOW_REAGENTS_OVERDOSE
 	overdose_critical = LOW_REAGENTS_OVERDOSE_CRITICAL
 	color = "#8f947b" // rgb: 139, 166, 233
 	chemclass = CHEM_CLASS_HYDRO
-	properties = list(PROPERTY_SEDATIVE = 5)
-
+	properties = list(PROPERTY_HYPNOTIC = 7, PROPERTY_HYPOXEMIC = 6, PROPERTY_EXCRETING = 2, PROPERTY_HEPATOPEUTIC = 2)
 /datum/reagent/zygacine
 	name = "Zygacine"
 	id = "zygacine"
@@ -293,12 +291,12 @@
 	overdose_critical = LOWM_REAGENTS_OVERDOSE_CRITICAL
 	color = "#9ec265" // rgb: 139, 166, 233
 	chemclass = CHEM_CLASS_HYDRO
-	properties = list(PROPERTY_CARDIOPEUTIC = 3, PROPERTY_FLUFFING = 1)
+	properties = list(PROPERTY_CARDIOPEUTIC = 3, PROPERTY_TRICHOGENIC = 1)
 
 /datum/reagent/urishiol
 	name = "Urishiol"
 	id = "urishiol"
-	description = "Potent skin and tissue irratant causing burns which lasts weeks after the contact is made, commonly encountered in plants like Poision Ivy, Poison Oak, and simular"
+	description = "Potent skin and tissue irritant causing burns which lasts weeks after the contact is made, commonly encountered in plants like Poison Ivy, Poison Oak, and similar toxicodendrons."
 	overdose = LOW_REAGENTS_OVERDOSE
 	overdose_critical = LOW_REAGENTS_OVERDOSE_CRITICAL
 	custom_metabolism = AMOUNT_PER_TIME(15, 20 MINUTES)
@@ -345,7 +343,7 @@
 /datum/reagent/coco
 	name = "Coco Powder"
 	id = "coco"
-	description = "The cocoa bean or simply cocoa, which is also called the cacao bean or cacao, is the dried and fully fermented seed of Theobroma cacao, from which cocoa solids and cocoa butter can be extracted. "
+	description = "The cocoa bean or simply cocoa, which is also called the cacao bean or cacao, is the dried and fully fermented seed of Theobroma cacao, from which cocoa solids and cocoa butter can be extracted."
 	reagent_state = SOLID
 	nutriment_factor = 5 * REAGENTS_METABOLISM
 	color = "#302000" // rgb: 48, 32, 0
@@ -406,7 +404,7 @@
 /datum/reagent/enzyme
 	name = "Universal Enzyme"
 	id = "enzyme"
-	description = "A universal enzyme used in the preperation of certain chemicals and foods."
+	description = "A universal enzyme used in the preparation of certain chemicals and foods."
 	reagent_state = LIQUID
 	color = "#365E30" // rgb: 54, 94, 48
 	overdose = REAGENTS_OVERDOSE

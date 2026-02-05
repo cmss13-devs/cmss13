@@ -61,6 +61,8 @@ CLIENT_VERB(ooc, msg as text)
 			display_colour = prefs.ooccolor
 	else if(donator)
 		display_colour = prefs.ooccolor
+	else if(SScmtv.is_subscriber(src))
+		display_colour = CONFIG_GET(string/ooc_color_subs)
 	if(!display_colour) // if invalid R_COLOR choice
 		display_colour = CONFIG_GET(string/ooc_color_default)
 
@@ -86,6 +88,9 @@ CLIENT_VERB(ooc, msg as text)
 		prefix += "[country2chaticon(country, GLOB.clients)]"
 	if(donator)
 		prefix += "[icon2html(GLOB.ooc_rank_dmi, GLOB.clients, "Donator")]"
+	if(SScmtv.is_subscriber(src))
+		var/static/sub_icon = icon('icons/effects/effects.dmi', "sub")
+		prefix += "[icon2html(sub_icon, GLOB.clients)]"
 	if(isCouncil(src))
 		prefix += "[icon2html(GLOB.ooc_rank_dmi, GLOB.clients, "WhitelistCouncil")]"
 	var/comm_award = find_community_award_icons()
@@ -130,7 +135,7 @@ CLIENT_VERB(looc, msg as text)
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		if(!GLOB.looc_allowed)
-			to_chat(src, SPAN_DANGER("LOOC is globally muted"))
+			to_chat(src, SPAN_DANGER("LOOC is globally muted."))
 			return
 		if(!GLOB.dlooc_allowed && (mob.stat != CONSCIOUS || isobserver(mob)))
 			to_chat(usr, SPAN_DANGER("Sorry, you cannot utilize LOOC while dead or incapacitated."))
@@ -192,7 +197,7 @@ CLIENT_VERB(looc, msg as text)
 
 CLIENT_VERB(round_info)
 	set name = "Current Map" //Gave this shit a shorter name so you only have to time out "ooc" rather than "ooc message" to use it --NeoFite
-	set desc = "Information about the current round"
+	set desc = "Information about the current round."
 	set category = "OOC"
 	to_chat_spaced(usr, html = FONT_SIZE_LARGE(SPAN_NOTICE("The current map is [SSmapping.configs[GROUND_MAP].map_name]")))
 
@@ -200,7 +205,7 @@ CLIENT_VERB(round_info)
 // If this happens, let the player manually close them all
 CLIENT_VERB(fixnanoui)
 	set name = "Fix Interfaces"
-	set desc = "Fixes all broken interfaces by forcing all existing ones to close"
+	set desc = "Fixes all broken interfaces by forcing all existing ones to close."
 	set category = "OOC.Fix"
 
 	if(!mob)
@@ -223,7 +228,7 @@ CLIENT_VERB(fixnanoui)
 CLIENT_VERB(fit_viewport)
 	set name = "Fit Viewport"
 	set category = "OOC"
-	set desc = "Fit the width of the map window to match the viewport"
+	set desc = "Fit the width of the map window to match the viewport."
 
 	// Fetch aspect ratio
 	var/view_size = getviewsize(view)

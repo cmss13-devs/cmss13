@@ -1,7 +1,7 @@
 
 /obj/structure/lawnmower
 	name = "Lawnmower"
-	desc = "An armored vehicle, highly effective at close range combat"
+	desc = "An armored vehicle, highly effective at close range combat."
 	icon = 'icons/obj/structures/mememower.dmi'
 	icon_state = "lawnmower"
 	dir = WEST

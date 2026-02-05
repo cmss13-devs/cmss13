@@ -97,7 +97,7 @@
 /datum/design_mark
 	var/name = "xeno_declare"
 	var/icon_state = "empty"
-	var/desc = "Xenos make psychic markers with this meaning as positional lasting communication to eachother"
+	var/desc = "Xenos make psychic markers with this meaning as positional lasting communication to eachother."
 
 /datum/design_mark/resin_wall
 	name = "Resin Wall"
@@ -1147,7 +1147,7 @@
 	if(owner.client.prefs.no_radials_preference)
 		choice = tgui_input_list(owner, "Choose Desing Option", "Pick", options, theme="hive_status")
 	else
-		choice = show_radial_menu(owner, owner?.client.eye, options, radius = 50)
+		choice = show_radial_menu(owner, owner?.client.get_eye(), options, radius = 50)
 
 	var/des = FALSE
 	var/rem = FALSE

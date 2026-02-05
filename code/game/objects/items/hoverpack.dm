@@ -154,7 +154,7 @@
 	if(last_fuel)
 		fuel_used = last_fuel
 
-	to_chat(user, SPAN_BOLDNOTICE(" PROPELLANT EXPENDED: [round(fuel_used/reservoir.reagents.maximum_volume * 100, 0.1)]% <br> PROPELLANT REMAINING: [round(reservoir.reagents.total_volume/reservoir.reagents.maximum_volume * 100, 0.1)]%"))
+	to_chat(user, SPAN_BOLDNOTICE("PROPELLANT EXPENDED: [round(fuel_used/reservoir.reagents.maximum_volume * 100, 0.1)]% <br> PROPELLANT REMAINING: [round(reservoir.reagents.total_volume/reservoir.reagents.maximum_volume * 100, 0.1)]%"))
 	update_icon()
 	playsound(user, 'sound/items/jetpack_sound.ogg', 45, TRUE)
 
@@ -253,7 +253,7 @@
 
 /obj/item/reagent_container/glass/beaker/reservoir
 	name = "internal propellant tank"
-	desc = "You shouldn't be able to see this"
+	desc = "You shouldn't be able to see this."
 	volume = 90
 	amount_per_transfer_from_this = 10
 

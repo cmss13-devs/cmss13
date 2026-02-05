@@ -119,7 +119,7 @@
 
 /datum/whiskey_outpost_wave/wave1
 	wave_number = 1
-	wave_castes = list(XENO_CASTE_RUNNER)
+	wave_castes = list(XENO_CASTE_RUNNER, XENO_CASTE_DRONE)
 	sound_effect = list('sound/effects/siren.ogg')
 	command_announcement = list("We're tracking the creatures that wiped out our patrols. They're heading towards your outpost, multiple small life-signs detected. We're attempting to establish a signal with the USS Alistoun, stand by.", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
 	scaling_factor = 0.3
@@ -132,7 +132,8 @@
 		XENO_CASTE_RUNNER,
 		XENO_CASTE_RUNNER,
 		XENO_CASTE_RUNNER,
-		XENO_CASTE_RUNNER,
+		XENO_CASTE_SENTINEL,
+		XENO_CASTE_DRONE,
 	)
 	scaling_factor = 0.4
 	wave_delay = 1 MINUTES //Early, quick waves
@@ -141,10 +142,11 @@
 	wave_number = 3
 	wave_castes = list(
 		XENO_CASTE_RUNNER,
-		XENO_CASTE_RUNNER,
+		XENO_CASTE_SENTINEL,
 		XENO_CASTE_LURKER,
 		XENO_CASTE_SPITTER,
 		XENO_CASTE_DEFENDER,
+		XENO_CASTE_DRONE,
 	)
 	scaling_factor = 0.6
 	wave_delay = 1 MINUTES //Early, quick waves
@@ -153,7 +155,7 @@
 	wave_number = 4
 	wave_castes = list(
 		XENO_CASTE_RUNNER,
-		XENO_CASTE_RUNNER,
+		XENO_CASTE_SENTINEL,
 		XENO_CASTE_LURKER,
 		XENO_CASTE_LURKER,
 		XENO_CASTE_SPITTER,
@@ -167,7 +169,7 @@
 	wave_number = 5
 	wave_castes = list(
 		XENO_CASTE_RUNNER,
-		XENO_CASTE_RUNNER,
+		XENO_CASTE_SENTINEL,
 		XENO_CASTE_LURKER,
 		XENO_CASTE_LURKER,
 		XENO_CASTE_SPITTER,
@@ -181,7 +183,7 @@
 	wave_number = 6
 	wave_castes = list(
 		XENO_CASTE_RUNNER,
-		XENO_CASTE_RUNNER,
+		XENO_CASTE_SENTINEL,
 		XENO_CASTE_LURKER,
 		XENO_CASTE_LURKER,
 		XENO_CASTE_LURKER,
@@ -198,7 +200,7 @@
 	wave_number = 7
 	wave_castes = list(XENO_CASTE_BURROWER)
 	wave_type = WO_STATIC_WAVE
-	number_of_xenos = 3
+	number_of_xenos = 4
 	command_announcement = list("This is First Lieutenant Ike Saker, Executive Officer of Captain Naiche. The Captain is still trying to get off world contact. An engineer platoon managed to destroy the main entrance into this valley; this should give you a short break while the aliens find another way in. We are receiving reports of seismic waves occurring nearby, there might be creatures burrowing underground. Keep an eye on your defenses. I have also received word that marines evacuating from an overrun outpost are coming to reinforce you. I used to be stationed with them, those troops are top notch.", "First Lieutenant Ike Saker, 3rd Battalion Command, LV-624 Garrison")
 
 /datum/whiskey_outpost_wave/wave8
@@ -213,11 +215,12 @@
 		XENO_CASTE_DEFENDER,
 		XENO_CASTE_DRONE,
 		XENO_CASTE_WARRIOR,
+		XENO_CASTE_HIVELORD,
 	)
 	sound_effect = list()
 	command_announcement = list("Captain Naiche speaking, we've been unsuccessful in establishing offworld communication so far. We're prepping our M402 mortars to destroy the inbound forces on the main road. Stand by for fire support.", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
 
-/datum/whiskey_outpost_wave/wave9 //Ravager and Praetorian Added, Tier II more common, Tier I less common
+/datum/whiskey_outpost_wave/wave9 // Tier II more common, Tier I less common, Early Ravs and Early Boiler (Ideal only 1 boiler)
 	wave_number = 9
 	wave_castes = list(
 		XENO_CASTE_RUNNER,
@@ -227,15 +230,17 @@
 		XENO_CASTE_LURKER,
 		XENO_CASTE_LURKER,
 		XENO_CASTE_LURKER,
-		XENO_CASTE_SPITTER,
+		XENO_CASTE_SENTINEL,
 		XENO_CASTE_SPITTER,
 		XENO_CASTE_SPITTER,
 		XENO_CASTE_SPITTER,
 		XENO_CASTE_DEFENDER,
 		XENO_CASTE_DEFENDER,
 		XENO_CASTE_DRONE,
-		XENO_CASTE_DRONE,
+		XENO_CASTE_HIVELORD,
 		XENO_CASTE_WARRIOR,
+		XENO_CASTE_RAVAGER,
+		XENO_CASTE_BOILER,
 	)
 	sound_effect = list('sound/voice/alien_queen_command.ogg')
 	command_announcement = list("Our garrison forces are reaching seventy percent casualties. We're losing our grip here. It appears that the vanguard of the hostile force is still approaching, and most of the other Dust Raider platoons have been shattered. We need you to hold.", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
@@ -250,14 +255,14 @@
 		XENO_CASTE_LURKER,
 		XENO_CASTE_LURKER,
 		XENO_CASTE_LURKER,
-		XENO_CASTE_SPITTER,
+		XENO_CASTE_SENTINEL,
 		XENO_CASTE_SPITTER,
 		XENO_CASTE_SPITTER,
 		XENO_CASTE_SPITTER,
 		XENO_CASTE_DEFENDER,
 		XENO_CASTE_DEFENDER,
 		XENO_CASTE_DRONE,
-		XENO_CASTE_DRONE,
+		XENO_CASTE_HIVELORD,
 		XENO_CASTE_WARRIOR,
 	)
 
@@ -271,14 +276,14 @@
 		XENO_CASTE_LURKER,
 		XENO_CASTE_LURKER,
 		XENO_CASTE_LURKER,
-		XENO_CASTE_SPITTER,
+		XENO_CASTE_SENTINEL,
 		XENO_CASTE_SPITTER,
 		XENO_CASTE_SPITTER,
 		XENO_CASTE_SPITTER,
 		XENO_CASTE_DEFENDER,
 		XENO_CASTE_DEFENDER,
 		XENO_CASTE_DRONE,
-		XENO_CASTE_DRONE,
+		XENO_CASTE_HIVELORD,
 		XENO_CASTE_WARRIOR,
 		XENO_CASTE_WARRIOR,
 	)
@@ -293,14 +298,14 @@
 		XENO_CASTE_LURKER,
 		XENO_CASTE_LURKER,
 		XENO_CASTE_LURKER,
-		XENO_CASTE_SPITTER,
+		XENO_CASTE_SENTINEL,
 		XENO_CASTE_SPITTER,
 		XENO_CASTE_SPITTER,
 		XENO_CASTE_SPITTER,
 		XENO_CASTE_DEFENDER,
 		XENO_CASTE_DEFENDER,
 		XENO_CASTE_DRONE,
-		XENO_CASTE_DRONE,
+		XENO_CASTE_HIVELORD,
 		XENO_CASTE_WARRIOR,
 		XENO_CASTE_WARRIOR,
 		XENO_CASTE_RAVAGER,

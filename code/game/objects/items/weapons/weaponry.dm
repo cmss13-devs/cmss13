@@ -1,5 +1,5 @@
 /obj/item/weapon/banhammer
-	desc = "A banhammer"
+	desc = "A banhammer."
 	name = "banhammer"
 	icon = 'icons/obj/items/toy.dmi'
 	icon_state = "toyhammer"
@@ -83,6 +83,7 @@
 	throwforce = 7
 	attack_verb = list("smashed", "beaten", "slammed", "struck", "smashed", "battered", "cracked")
 	hitsound = 'sound/weapons/genhit3.ogg'
+	shield_flags = CAN_SHIELD_BASH
 
 /obj/item/weapon/baseballbat/metal
 	name = "\improper metal baseball bat"

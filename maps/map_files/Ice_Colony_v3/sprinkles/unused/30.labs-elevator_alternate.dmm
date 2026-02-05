@@ -5,15 +5,23 @@
 	id = "garage_ice_labs";
 	name = "\improper Garage Shutters"
 	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/research_hab)
 "b" = (
-/obj/structure/curtain/black,
+/obj/structure/curtain/colorable_transparent{
+	color = "#22282c";
+	alpha = 235
+	},
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
 "c" = (
 /obj/effect/spawner/random/tool,
 /turf/open/floor/shiva/multi_tiles,
+/area/shiva/interior/colony/research_hab)
+"d" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/closed/wall/shiva/prefabricated/orange,
 /area/shiva/interior/colony/research_hab)
 "e" = (
 /obj/effect/decal/warning_stripes{
@@ -63,6 +71,7 @@
 	id = "garage_ice_labs";
 	name = "garage shutter control"
 	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/shiva/prefabricated/orange,
 /area/shiva/interior/colony/research_hab)
 "w" = (
@@ -134,7 +143,10 @@
 /area/shiva/interior/colony/research_hab)
 "X" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/curtain/black,
+/obj/structure/curtain/colorable_transparent{
+	color = "#22282c";
+	alpha = 235
+	},
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
 "Z" = (
@@ -143,7 +155,7 @@
 /area/shiva/interior/colony/research_hab)
 
 (1,1,1) = {"
-I
+d
 I
 I
 I
@@ -224,7 +236,7 @@ e
 I
 "}
 (10,1,1) = {"
-I
+d
 I
 I
 I

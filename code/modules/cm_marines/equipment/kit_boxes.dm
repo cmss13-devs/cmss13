@@ -11,6 +11,7 @@
 	can_hold = list() //Nada. Once you take the stuff out it doesn't fit back in.
 	max_w_class = 0
 	foldable = null
+	unacidable = TRUE
 	/// For statistics tracking. The kit's name
 	var/kit_name = ""
 
@@ -202,6 +203,7 @@
 	name = "\improper SHARP Operator equipment case"
 	desc = "A large case containing a P9 SHARP rifle, M3-G4 Grenadier armor and helmet, and various pieces of additional equipment.\nDrag this sprite onto yourself to open it up!"
 	kit_overlay = "grenadier"
+	kit_name = "sharp_operator"
 
 /obj/item/storage/box/spec/sharp_operator/fill_preset_inventory()
 	new /obj/item/weapon/gun/rifle/sharp(src)
@@ -277,7 +279,16 @@
 	squad_assignment_update = FALSE
 	allowed_roles_list = list(JOB_SQUAD_MARINE, JOB_WO_SQUAD_MARINE)
 
-/obj/item/spec_kit/rifleman/jobless
+/obj/item/spec_kit/rifleman/can_use(mob/living/carbon/human/user)
+	for(var/allowed_role in allowed_roles_list)
+		if(user.job == allowed_role)
+			if(!skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_DEFAULT))//Expects no skill in specialist weapons at all.
+				to_chat(user, SPAN_WARNING("You already have specialization, give this kit to someone else!"))
+				return FALSE
+			return TRUE
+
+/obj/item/spec_kit/jobless
+	squad_assignment_update = FALSE
 	allowed_roles_list = list()
 
 /obj/item/spec_kit/cryo
@@ -320,17 +331,6 @@
 	for(var/allowed_role in allowed_roles_list)
 		if(user.job == allowed_role)
 			if(!skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && !skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL))
-				to_chat(user, SPAN_WARNING("You already have specialization, give this kit to someone else!"))
-				return FALSE
-			return TRUE
-
-/obj/item/spec_kit/rifleman/can_use(mob/living/carbon/human/user)
-	if(!length(allowed_roles_list))
-		return TRUE
-
-	for(var/allowed_role in allowed_roles_list)
-		if(user.job == allowed_role)//Alternate check to normal kit as this is distributed to people without SKILL_SPEC_TRAINED.
-			if(skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_KITTED) && !skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL))
 				to_chat(user, SPAN_WARNING("You already have specialization, give this kit to someone else!"))
 				return FALSE
 			return TRUE

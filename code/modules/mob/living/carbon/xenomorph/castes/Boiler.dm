@@ -22,9 +22,9 @@
 	acid_level = 3
 	caste_luminosity = 2
 	spit_types = list(/datum/ammo/xeno/boiler_gas/acid, /datum/ammo/xeno/boiler_gas)
-	fire_immunity = FIRE_VULNERABILITY
+	fire_immunity = FIRE_MODIFIER
 	// 3x fire damage
-	fire_vulnerability_mult = FIRE_MULTIPLIER_DEADLY
+	fire_modifier_mult = FIRE_MULTIPLIER_DEADLY
 
 	tackle_min = 2
 	tackle_max = 6
@@ -85,8 +85,6 @@
 	smoke.attach(src)
 	smoke.cause_data = create_cause_data(initial(caste_type), src)
 	see_in_dark = 20
-
-	update_icon_source()
 
 /mob/living/carbon/xenomorph/boiler/Destroy()
 	if(smoke)

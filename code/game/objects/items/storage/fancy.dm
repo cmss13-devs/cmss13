@@ -1,6 +1,6 @@
 /*
  * The 'fancy' path is for objects like donut boxes that show how many items are in the storage item on the sprite itself
- * .. Sorry for the shitty path name, I couldnt think of a better one.
+ * .. Sorry for the shitty path name, I couldn't think of a better one.
  *
  * WARNING: var/icon_type is used for both examine text and sprite name. Please look at the procs below and adjust your sprite names accordingly
  * TODO: Cigarette boxes should be ported to this standard
@@ -596,7 +596,7 @@
 
 /obj/item/storage/fancy/trading_card/Initialize()
 	if(!collection_color)
-		collection_color = pick("red", "green", "blue") // because of vodoo shenanigans with fill_preset_inventory happening during parent's initalize this'll have to run prior to that
+		collection_color = pick("red", "green", "blue") // because of vodoo shenanigans with fill_preset_inventory happening during parent's initialize this'll have to run prior to that
 
 	. = ..()
 

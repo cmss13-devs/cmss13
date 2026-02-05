@@ -7,7 +7,7 @@
 	if(!hive)
 		return
 
-	if((!hive.living_xeno_queen || SSmapping.configs[GROUND_MAP].map_name == MAP_WHISKEY_OUTPOST) && !hive.allow_no_queen_actions) //No Hive status on WO
+	if((!hive.living_xeno_queen) && !hive.allow_no_queen_actions)
 		to_chat(src, SPAN_WARNING("There is no Queen. We are alone."))
 		return
 
@@ -104,7 +104,7 @@
 
 /mob/living/carbon/xenomorph/verb/toggle_auto_shove()
 	set name = "Toggle Automatic Shove"
-	set desc = "Toggles whethever you will automatically shove people as the Queen"
+	set desc = "Toggles whethever you will automatically shove people as the Queen."
 	set category = "Alien"
 
 
@@ -160,9 +160,15 @@
 	set category = "Alien"
 	GLOB.tacmap_viewer.tgui_interact(src)
 
+/mob/living/carbon/xenomorph/look_up()
+	if(is_zoomed)
+		to_chat(src, SPAN_WARNING("You cannot look up while zoomed!"))
+		return
+
+	. = ..()
 // /mob/living/carbon/xenomorph/verb/enter_tree()
 // set name = "Enter Techtree"
-// set desc = "Enter the Xenomorph techtree"
+// set desc = "Enter the Xenomorph techtree."
 // set category = "Alien.Techtree"
 
 // var/datum/techtree/T = GET_TREE(TREE_XENO)

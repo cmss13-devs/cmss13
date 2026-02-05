@@ -21,11 +21,13 @@ $departmental-colors: (
 
 $status-colors: (
   'active': colors.$green,
-  'inactive': colors.$orange,
-  'ssd': colors.$yellow,
-  'unfit': colors.$pink,
-  'disabled': colors.$grey,
+  'injured': colors.$blue,
   'deceased': colors.$red,
+  'inactive': colors.$yellow,
+  'ssd': colors.$orange,
+  'unknown': colors.$pink,
+  'disabled': colors.$grey,
+  'incarcerated': colors.$light-grey,
 );
 
 .row-even {

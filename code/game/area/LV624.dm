@@ -408,7 +408,7 @@
 /area/lv624/lazarus/secure_storage
 	name = "\improper Secure Storage"
 	icon_state = "storage"
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOBURROW
 	linked_lz = DROPSHIP_LZ2
 
 /area/lv624/lazarus/robotics

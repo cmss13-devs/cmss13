@@ -20,7 +20,7 @@
 
 	inherent_verbs = list(
 		/mob/living/carbon/human/synthetic/proc/toggle_HUD,
-		/mob/living/carbon/human/proc/toggle_inherent_nightvison,
+		/mob/living/carbon/human/proc/toggle_inherent_nightvision,
 		/mob/living/carbon/human/synthetic/synth_k9/proc/toggle_scent_tracking,
 		/mob/living/carbon/human/synthetic/synth_k9/proc/toggle_binocular_vision,
 	)

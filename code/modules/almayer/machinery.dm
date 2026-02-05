@@ -110,7 +110,7 @@
 	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
 	tacmap_component.on_unset_interaction(user)
 
-//Bugfix to handle cases for ghosts/observers that dont automatically close uis on move.
+//Bugfix to handle cases for ghosts/observers that don't automatically close uis on move.
 /obj/structure/machinery/prop/almayer/CICmap/proc/on_move(mob/source, oldloc)
 	SIGNAL_HANDLER
 	if(Adjacent(source))

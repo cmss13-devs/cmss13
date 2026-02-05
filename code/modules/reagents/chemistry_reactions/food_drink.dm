@@ -801,11 +801,25 @@
 	required_reagents = list("orangejuice" = 2, "cola" = 1)
 	result_amount = 2
 
+/datum/chemical_reaction/chocolate_milk
+	name = "Chocolate Milk"
+	id = "chocolate_milk"
+	result = "chocolate_milk"
+	required_reagents = list("chocolatesyrup" = 1, "milk" = 4)
+	result_amount = 5
+
 /datum/chemical_reaction/milkshake
 	name = "Milkshake"
 	id = "milkshake"
 	result = "milkshake"
 	required_reagents = list("cream" = 1, "ice" = 2, "milk" = 2)
+	result_amount = 5
+
+/datum/chemical_reaction/milkshake/chocolate
+	name = "Chocolate Milkshake"
+	id = "chocolate_milkshake"
+	result = "chocolate_milkshake"
+	required_reagents = list("cream" = 1, "ice" = 2, "chocolate_milk" = 2)
 	result_amount = 5
 
 /datum/chemical_reaction/rewriter

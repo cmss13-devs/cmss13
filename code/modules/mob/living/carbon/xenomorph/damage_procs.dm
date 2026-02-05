@@ -136,7 +136,7 @@
 
 	return modified_damage
 
-/mob/living/carbon/xenomorph/apply_damage(damage = 0, damagetype = BRUTE, def_zone = null, used_weapon = null, sharp = 0, edge = 0, force = FALSE, enviro = FALSE)
+/mob/living/carbon/xenomorph/apply_damage(damage = 0, damagetype = BRUTE, def_zone = null, used_weapon = null, sharp = 0, edge = 0, force = FALSE, enviro = FALSE , chemical = FALSE)
 	if(!damage)
 		return
 
@@ -271,7 +271,7 @@
 		var/splash_chance = 40 //Base chance of getting splashed. Decreases with # of victims.
 		var/i = 0 //Tally up our victims.
 
-		for(var/mob/living/carbon/human/victim in orange(radius, src)) //Loop through all nearby victims, including the tile.
+		for(var/mob/living/carbon/human/victim in range(radius, src)) //Loop through all nearby victims, including the tile.
 			splash_chance = 65 - (i * 5)
 			if(HAS_TRAIT(victim, TRAIT_HAULED))
 				continue

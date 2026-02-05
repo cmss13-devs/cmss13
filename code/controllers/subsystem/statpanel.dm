@@ -115,7 +115,7 @@ SUBSYSTEM_DEF(statpanels)
 	return
 
 /datum/controller/subsystem/statpanels/proc/set_MC_tab(client/target)
-	var/turf/eye_turf = get_turf(target.eye)
+	var/turf/eye_turf = get_turf(target.get_eye())
 	var/coord_entry = COORD(eye_turf)
 	if(!mc_data)
 		generate_mc_data()

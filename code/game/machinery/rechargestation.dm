@@ -34,7 +34,7 @@
 
 /obj/structure/machinery/recharge_station/Destroy()
 	if(occupant)
-		to_chat(occupant, SPAN_NOTICE(" <B>Critical failure of [name]. Unit ejected.</B>"))
+		to_chat(occupant, SPAN_NOTICE("<B>Critical failure of [name]. Unit ejected.</B>"))
 		go_out()
 	return ..()
 
@@ -54,7 +54,7 @@
 
 	if(current_internal_charge <= 0)
 		if(occupant)
-			to_chat(occupant, SPAN_NOTICE(" <B>The [name] is currently out of power. Please come back later!</B>"))
+			to_chat(occupant, SPAN_NOTICE("<B>The [name] is currently out of power. Please come back later!</B>"))
 			go_out()
 
 	var/chargemode = 0
@@ -201,7 +201,7 @@
 	var/mob/living/synth = occupant
 
 	if(synth.client)
-		synth.client.eye = synth.client.mob
+		synth.client.set_eye(synth.client.mob)
 		synth.client.perspective = MOB_PERSPECTIVE
 
 	synth.forceMove(loc)
@@ -239,7 +239,7 @@
 	M.stop_pulling()
 	if(M && M.client)
 		M.client.perspective = EYE_PERSPECTIVE
-		M.client.eye = src
+		M.client.set_eye(src)
 	M.forceMove(src)
 	src.occupant = M
 	start_processing()
@@ -257,10 +257,10 @@
 		//Whoever had it so that a borg with a dead cell can't enter this thing should be shot. --NEO
 		return
 	if (!issynth(usr))
-		to_chat(usr, SPAN_NOTICE(" <B>Only non-organics may enter the [name]!</B>"))
+		to_chat(usr, SPAN_NOTICE("<B>Only non-organics may enter the [name]!</B>"))
 		return
 	if (src.occupant)
-		to_chat(usr, SPAN_NOTICE(" <B>The [name] is already occupied!</B>"))
+		to_chat(usr, SPAN_NOTICE("<B>The [name] is already occupied!</B>"))
 		return
 	move_mob_inside(usr)
 	return

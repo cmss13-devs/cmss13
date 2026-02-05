@@ -34,23 +34,25 @@ Put screenshots and videos here with an empty line between the screenshots and t
 
 :cl:
 add: Added something
-del: Removed old things
-qol: made something easier to use
+admin: messed with admin stuff
 balance: rebalanced something
-fix: fixed a few things
-spellcheck: fixed a few typos
-ui: changed something relating to user interfaces
 code: changed some code
-refactor: refactored some code
-soundadd: added a new sound thingy
-sounddel: removed an old sound thingy
+config: changed some config setting
+del: Removed old things
+fix: fixed a few things
 imageadd: added some icons and images
 imagedel: deleted some icons and images
+imagetweak: tweaked some icons and images
 mapadd: added a new map or section to a map
 maptweak: tweaked a map
-config: changed some config setting
-admin: messed with admin stuff
+qol: made something easier to use
+refactor: refactored some code
 server: something server ops should know
+soundadd: added a new sound thingy
+sounddel: removed an old sound thingy
+soundtweak: tweaked a sound thingy
+spellcheck: fixed a few typos
+ui: changed something relating to user interfaces
 /:cl:
 
 <!-- Both :cl:'s are required for the changelog to work! -->

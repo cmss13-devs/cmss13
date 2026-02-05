@@ -34,10 +34,9 @@
 	if(!is_mob_incapacitated() && pipe)
 		return pipe
 
-/mob/living/simple_animal/mouse/can_ventcrawl()
+/mob/living/simple_animal/small/can_ventcrawl()
 	return TRUE
-
-/mob/living/simple_animal/spiderbot/can_ventcrawl()
+/mob/living/simple_animal/big/corgi/puppy/can_ventcrawl()
 	return TRUE
 
 /mob/living/proc/handle_ventcrawl(atom/clicked_on)
@@ -73,7 +72,7 @@
 	if(W)
 		var/mob/living/carbon/xenomorph/X = src
 		if(!istype(X) || X.hivenumber != W.linked_hive.hivenumber)
-			to_chat(src, SPAN_WARNING("The weeds are blocking the entrance of this vent"))
+			to_chat(src, SPAN_WARNING("The weeds are blocking the entrance of this vent."))
 			return
 
 	if(length(vent_found.connected_to))

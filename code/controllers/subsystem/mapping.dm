@@ -407,11 +407,6 @@ SUBSYSTEM_DEF(mapping)
 	used_turfs.Cut()
 	reserve_turfs(clearing, await = TRUE)
 
-/datum/controller/subsystem/mapping/proc/reg_in_areas_in_z(list/areas)
-	for(var/B in areas)
-		var/area/A = B
-		A.reg_in_areas_in_z()
-
 /// Takes a z level datum, and tells the mapping subsystem to manage it
 /// Also handles things like plane offset generation, and other things that happen on a z level to z level basis
 /datum/controller/subsystem/mapping/proc/manage_z_level(datum/space_level/new_z, filled_with_space, contain_turfs = TRUE)

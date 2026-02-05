@@ -1272,6 +1272,10 @@
 /obj/item/clothing/under/marine/veteran/dutch/ranger
 	icon_state = "dutch_jumpsuit2"
 
+/obj/item/clothing/under/marine/veteran/dutch/vietnam
+	name = "\improper US Army uniform"
+	desc = "Standard-issue Army uniform. Used during the Vietnam War."
+
 /obj/item/clothing/under/marine/veteran/van_bandolier
 	name = "hunting clothes"
 	desc = "A set of tailored clothes, made from fine but sturdy reinforced fabrics. Protects from thorns, weather, and the cuts and scrapes that forever bedevil outdoorsmen."
@@ -1906,7 +1910,7 @@
 
 /obj/item/clothing/under/marine/veteran/royal_marine
 	name = "royal marines commando uniform"
-	desc = "The field uniform of the royal marines commando. They have shards of light Kevlar to help protect against stabbing weapons and bullets. Onpar with similar USCM equipment"
+	desc = "The field uniform of the royal marines commando. They have shards of light Kevlar to help protect against stabbing weapons and bullets. Onpar with similar USCM equipment."
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/TWE.dmi'
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/TWE.dmi',
@@ -1921,7 +1925,7 @@
 
 /obj/item/clothing/under/marine/veteran/royal_marine/lt
 	name = "royal marines commando officers uniform"
-	desc = "The officers uniform of the royal marines commando. They have shards of light Kevlar to help protect against stabbing weapons and bullets. Onpar with similar USCM equipment"
+	desc = "The officers uniform of the royal marines commando. They have shards of light Kevlar to help protect against stabbing weapons and bullets. Onpar with similar USCM equipment."
 	icon_state = "rmc_uniform_lt"
 	worn_state = "rmc_uniform_lt"
 

@@ -50,6 +50,9 @@
 /obj/structure/machinery/door_control/attack_alien(mob/user as mob)
 	return
 
+/obj/structure/machinery/door_control/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
+	return TAILSTAB_COOLDOWN_NONE
+
 /obj/structure/machinery/door_control/attackby(obj/item/W, mob/user as mob)
 	return src.attack_hand(user)
 
@@ -125,7 +128,7 @@
 		return
 
 	if(!allowed(user) && (wires & 1) && !force )
-		to_chat(user, SPAN_DANGER("Access Denied"))
+		to_chat(user, SPAN_DANGER("Access Denied."))
 		flick(initial(icon_state) + "-denied",src)
 		return
 
@@ -172,7 +175,7 @@
 		return
 
 	if(!allowed(user) && (wires & 1) && !force)
-		to_chat(user, SPAN_DANGER("Access Denied"))
+		to_chat(user, SPAN_DANGER("Access Denied."))
 		flick(initial(icon_state) + "-denied",src)
 		return
 
@@ -243,29 +246,54 @@
 
 /obj/structure/machinery/door_control/cl
 	req_access_txt = "200"
+	needs_power = FALSE
+	use_power = FALSE
+
 // seperating quarter and office because we might want to allow more access to the office than quarter in the future.
 /obj/structure/machinery/door_control/cl/office
-/obj/structure/machinery/door_control/cl/office/door
+
+/obj/structure/machinery/door_control/cl/office/lobby_door
+	name = "Lobby Door Shutter"
+	id = "cl_lobby_door"
+
+/obj/structure/machinery/door_control/cl/office/office_door
 	name = "Office Door Shutter"
+	id = "cl_office_door_s"
+
+/obj/structure/machinery/door_control/cl/office/office_door_remote
+	name = "Office Door Control"
 	id = "cl_office_door"
-/obj/structure/machinery/door_control/cl/office/window
+	normaldoorcontrol = TRUE
+
+
+/obj/structure/machinery/door_control/cl/office/lobby_window
+	name = "Lobby Windows Shutters"
+	id = "cl_lobby_windows"
+
+/obj/structure/machinery/door_control/cl/office/office_window
 	name = "Office Windows Shutters"
 	id = "cl_office_windows"
+
 /obj/structure/machinery/door_control/cl/office/divider
 	name = "Room Divider"
 	id = "RoomDivider"
+
 //special button that unlock the cl lock on is evac pod door bypassing general lockdown.
 /obj/structure/machinery/door_control/cl/office/evac
 	name = "Evac Pod Door Control"
 	id = "cl_evac"
 	normaldoorcontrol = 1
+
 /obj/structure/machinery/door_control/cl/quarter
-/obj/structure/machinery/door_control/cl/quarter/officedoor
+
+/obj/structure/machinery/door_control/cl/quarter/office_door
 	name = "Quarter Door Shutter"
 	id = "cl_quarter_door"
+
 /obj/structure/machinery/door_control/cl/quarter/backdoor
 	name = "Maintenance Door Shutter"
 	id = "cl_quarter_maintenance"
+
 /obj/structure/machinery/door_control/cl/quarter/windows
 	name = "Quarter Windows Shutters"
 	id = "cl_quarter_windows"

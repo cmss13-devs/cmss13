@@ -114,7 +114,7 @@
 
 /turf/closed/wall/almayer/white/hull
 	name = "ultra reinforced hull"
-	desc = "An extremely reinforced metal wall used to isolate potentially dangerous areas"
+	desc = "An extremely reinforced metal wall used to isolate potentially dangerous areas."
 	icon_state = "hull"
 	turf_flags = TURF_HULL
 
@@ -236,7 +236,7 @@
 
 /turf/closed/wall/almayer/aicore/hull
 	name = "ultra reinforced hull"
-	desc = "An extremely reinforced metal wall used to isolate potentially dangerous areas"
+	desc = "An extremely reinforced metal wall used to isolate potentially dangerous areas."
 	icon_state = "hull"
 	turf_flags = TURF_HULL
 
@@ -252,7 +252,7 @@
 
 /turf/closed/wall/almayer/aicore/white/hull
 	name = "ultra reinforced hull"
-	desc = "An extremely reinforced metal wall used to isolate potentially dangerous areas"
+	desc = "An extremely reinforced metal wall used to isolate potentially dangerous areas."
 	icon_state = "hull"
 	turf_flags = TURF_HULL
 
@@ -270,14 +270,14 @@
 
 /turf/closed/wall/sulaco/hull
 	name = "outer hull"
-	desc = "A reinforced outer hull, probably to prevent breaches"
+	desc = "A reinforced outer hull, probably to prevent breaches."
 	walltype = WALL_SULACO
 	turf_flags = TURF_HULL
 
 
 /turf/closed/wall/sulaco/unmeltable
 	name = "outer hull"
-	desc = "A reinforced outer hull, probably to prevent breaches"
+	desc = "A reinforced outer hull, probably to prevent breaches."
 	walltype = WALL_SULACO
 	turf_flags = TURF_HULL
 
@@ -309,7 +309,7 @@
 
 /turf/closed/wall/upp_ship/reinforced/outer
 	name = "ultra reinforced hull"
-	desc = "An extremely reinforced metal wall used to isolate potentially dangerous areas"
+	desc = "An extremely reinforced metal wall used to isolate potentially dangerous areas."
 	turf_flags = TURF_HULL
 	icon_state = "uppwall_hull"
 
@@ -327,7 +327,7 @@
 
 /turf/closed/wall/almayer/upp/reinforced/outer
 	name = "ultra reinforced hull"
-	desc = "An extremely reinforced metal wall used to isolate potentially dangerous areas"
+	desc = "An extremely reinforced metal wall used to isolate potentially dangerous areas."
 	turf_flags = TURF_HULL
 	icon_state = "hull"
 
@@ -381,7 +381,7 @@
 
 /turf/closed/wall/mineral
 	name = "mineral wall"
-	desc = "This shouldn't exist"
+	desc = "This shouldn't exist."
 	icon = 'icons/turf/walls/stone.dmi'
 	icon_state = "stone"
 	walltype = WALL_STONE
@@ -509,7 +509,7 @@
 
 /turf/closed/wall/cult
 	name = "wall"
-	desc = "The patterns engraved on the wall seem to shift as you try to focus on them. You feel sick"
+	desc = "The patterns engraved on the wall seem to shift as you try to focus on them. You feel sick."
 	icon = 'icons/turf/walls/cult.dmi'
 	icon_state = "cult"
 	walltype = WALL_CULT
@@ -715,7 +715,7 @@
 /turf/closed/wall/dev/reinforced
 	name = "greybox reinforced wall"
 	icon_state = "devwall_r"
-	desc = "Just like in the orange box! This one is reinforced"
+	desc = "Just like in the orange box! This one is reinforced."
 	walltype = WALL_DEVWALL_R
 	damage_cap = HEALTH_WALL_REINFORCED
 
@@ -756,7 +756,7 @@
 /turf/closed/wall/kutjevo/colony/reinforced
 	name = "reinforced colony wall"
 	icon_state = "colonyr"
-	desc = "Dusty worn down walls that were once built to last. This one is reinforced"
+	desc = "Dusty worn down walls that were once built to last. This one is reinforced."
 	walltype = WALL_KUTJEVO_COLONYR
 	damage_cap = HEALTH_WALL_REINFORCED
 

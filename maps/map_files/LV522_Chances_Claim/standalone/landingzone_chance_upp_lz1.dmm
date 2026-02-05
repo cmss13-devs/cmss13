@@ -1,4 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/closed/wall/solaris/reinforced/hull,
+/area/lv522/oob)
 "ad" = (
 /obj/structure/machinery/colony_floodlight{
 	layer = 4.3
@@ -79,7 +82,7 @@
 	pixel_y = 6
 	},
 /turf/open/auto_turf/sand_white/layer0,
-/area/event/dynamic/lit)
+/area/lv522/oob)
 "bZ" = (
 /turf/open/floor/prison/floor_plate,
 /area/event/dynamic/lit)
@@ -235,9 +238,6 @@
 	},
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/prison/blue/west,
-/area/event/metal/dynamic/lit)
-"hp" = (
-/turf/closed/wall/solaris/reinforced/hull/lv522,
 /area/event/metal/dynamic/lit)
 "hI" = (
 /obj/item/prop/colony/used_flare,
@@ -400,9 +400,6 @@
 	},
 /turf/open/asphalt/cement/cement1,
 /area/lv522/outdoors/colony_streets/north_east_street)
-"mo" = (
-/turf/closed/wall/strata_ice/dirty,
-/area/event/dynamic/lit)
 "mQ" = (
 /obj/item/prop/colony/used_flare,
 /turf/open/floor/prison,
@@ -991,7 +988,7 @@
 /area/event/dynamic/lit)
 "Fa" = (
 /turf/closed/wall/shiva/prefabricated/reinforced/hull,
-/area/lv522/outdoors/colony_streets/north_east_street)
+/area/lv522/oob)
 "Fe" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper A-Block - Colony Operations Centre Airlock"
@@ -1207,9 +1204,6 @@
 	},
 /obj/structure/barricade/metal/wired,
 /turf/open/auto_turf/sand_white/layer0,
-/area/lv522/outdoors/colony_streets/north_east_street)
-"Pb" = (
-/turf/closed/wall/strata_ice/dirty,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "Pg" = (
 /obj/structure/platform_decoration/metal/almayer,
@@ -2729,7 +2723,7 @@ wE
 tt
 tt
 tt
-mo
+aE
 Wa
 er
 DN
@@ -2825,7 +2819,7 @@ wE
 qK
 tt
 tt
-td
+aa
 da
 Uu
 Uu
@@ -3701,7 +3695,7 @@ er
 er
 tt
 tt
-td
+aa
 Id
 cb
 Tu
@@ -4097,7 +4091,7 @@ Uu
 Uu
 Uu
 Uu
-Pb
+aE
 aE
 aE
 aE
@@ -4212,7 +4206,7 @@ er
 er
 tt
 tt
-td
+aa
 Id
 yH
 Tu
@@ -4645,7 +4639,7 @@ Ly
 Ly
 wE
 er
-mo
+aE
 aE
 aE
 tt
@@ -4869,7 +4863,7 @@ aE
 aE
 tt
 tt
-td
+aa
 Qr
 Uu
 Tu
@@ -5003,11 +4997,11 @@ uE
 VG
 wE
 aE
-hp
+Em
 kn
 AS
 HI
-hp
+Em
 aE
 wE
 Ly
@@ -5076,11 +5070,11 @@ nJ
 kx
 aE
 aE
-hp
-hp
+Em
+Em
 hg
-hp
-hp
+Em
+Em
 aE
 aE
 aE
@@ -5150,9 +5144,9 @@ Ly
 aE
 aE
 aE
-hp
-hp
-hp
+Em
+Em
+Em
 aE
 aE
 aE

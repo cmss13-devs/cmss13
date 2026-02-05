@@ -9,6 +9,18 @@
 	ert_message = "Prey is being set loose in the Yautja Hunting Grounds"
 	var/hunt_name
 	var/message = "You are still expected to uphold the RP of the standard as this character!"
+	var/mercs = 0
+	var/royal_marines= 0
+	var/upp = 0
+	var/clf = 0
+	var/pmc = 0
+	var/misc = 0
+	var/max_mercs = 1
+	var/max_royal_marines= 1
+	var/max_upp = 1
+	var/max_clf = 1
+	var/max_pmc = 1
+	var/max_misc = 1
 
 /datum/emergency_call/pred/mixed
 	name = "Hunting Grounds - Multi Faction - Small"
@@ -18,6 +30,8 @@
 	max_clf = 1
 	max_upp = 1
 	max_royal_marines = 1
+	max_pmc = 1
+	max_misc = 1
 
 /datum/emergency_call/pred/mixed/spawn_candidates(quiet_launch, announce_incoming, override_spawn_loc)
 	. = ..()
@@ -61,10 +75,22 @@
 		to_chat(hunted, SPAN_BOLD("You were starting to get sick and tired of these Australians. Posted and wrangled around Oceania, you had spent the last half decade from refugee camp to metropolis, making sure order was maintained most of the time and partaking in a riot action now and then. You were ready to give about anything for your job to be more interesting, and like a monkey's paw, the wish came true. One night, your barracks got blown up before your very eyes while on guard duty, and to your dismay, it was not a terrorist. You attempted to gun the monster down, but failed, your friends torn apart before your very eyes. Being the last one alive, the thing takes you with it, shackles you, and throws you into a cell. You black out again, and wake up here, wherever you are. At least you hope things will be more interesting now, or so you tell yourself."))
 	else if(clf < max_clf && HAS_FLAG(hunted.client.prefs.toggles_ert_pred, PLAY_CLF))
 		clf++
-		var/list/hunted_types = list(/datum/equipment_preset/clf/soldier/hunted, /datum/equipment_preset/clf/leader/hunted, /datum/equipment_preset/clf/engineer/hunted)
+		var/list/hunted_types = list(/datum/equipment_preset/clf/soldier/hunted, /datum/equipment_preset/clf/leader/hunted, /datum/equipment_preset/clf/engineer/hunted, /datum/equipment_preset/clf/specialist/hunted)
 		var/hunted_type = pick(hunted_types)
 		arm_equipment(hunted, hunted_type , TRUE, TRUE)
 		to_chat(hunted, SPAN_BOLD("Your whole life was a struggle. Fighting tooth and nail for the independence of your colony from one master to the next, with not much change, your home ended up crushed under the boot of the oppressor. Filled with rage, you traveled with your cell of freedom fighters from one system to the next, wreaking havoc and mayhem, which eventually makes you notorious for your brutal executions of government officials and military. While on a raid gone wrong, your comrades get slaughtered by a marine squad, and as you scamper to get away, something else catches you off guard. KO'd and taken away, you wake up in conditions not much different from your previous ones, determined to get revenge against your oppressor once more."))
+	else if(pmc < max_pmc && HAS_FLAG(hunted.client.prefs.toggles_ert_pred, PLAY_PMC))
+		pmc++
+		var/list/hunted_types = list(/datum/equipment_preset/pmc/pmc_standard/hunted, /datum/equipment_preset/pmc/pmc_medic/hunted, /datum/equipment_preset/pmc/technician/hunted, /datum/equipment_preset/goon/standard/hunted, /datum/equipment_preset/goon/lead/hunted)
+		var/hunted_type = pick(hunted_types)
+		arm_equipment(hunted, hunted_type , TRUE, TRUE)
+		to_chat(hunted, SPAN_BOLD("You were one of the best on Weyland-Yutani's payroll, or so they told you. Working under the corporate overlords for years, you had a comfortable and cushy job. If you got hurt, the excellent healthcare never got you close to death. You were recently sent to guard a corporate site's premises off the grid on an unfamiliar planet. They didn't tell what were you guarding, all that you managed to see was a couple of elite units and some scientists moving a heavy duty roller bed with a heavily disfigured alien body on it covered by a tarp. What you were doing was an easy task..or so you thought. One day you witnessed an explosion in the facility and your fellow units being vaporized by some kind of plasma projectiles, you tried to run but a net has suddenly launched infront of you and knocked you out down to the ground. You wake up here with most of your gear intact. For the first time, you are on your own."))
+	else if(misc < max_misc && HAS_FLAG(hunted.client.prefs.toggles_ert_pred, PLAY_HUNT_MISC))
+		misc++
+		var/list/hunted_types = list(/datum/equipment_preset/other/hunted/roman, /datum/equipment_preset/other/hunted/roman/centurion, /datum/equipment_preset/other/hunted/roman/eaglebearer, /datum/equipment_preset/other/hunted/vietnam)
+		var/hunted_type = pick(hunted_types)
+		arm_equipment(hunted, hunted_type , TRUE, TRUE)
+		to_chat(hunted, SPAN_BOLD("You were an ancient warrior of a different era. While you were on your usual daily routine, a humanoid monstrous beast appeared in front of you, shackled you and taken you captive. You passed out due to sheer horror and woke up inside an incomprehensible structure with a window to the stars. You were dragged away and were forced to be put inside some kind of pod, it was closed shut and the last thing you remember was that you felt very cold. You wake up again with everything you had before you got kidnapped but the environment and the air you are in feels completely different. Its time to put your survival skills to the test."))
 	else
 		var/list/hunted_types = list(/datum/equipment_preset/uscm/hunted/rifleman,/datum/equipment_preset/uscm/hunted/tl, /datum/equipment_preset/uscm/hunted/sg,)
 		var/hunted_type = pick(hunted_types)
@@ -82,6 +108,8 @@
 	max_clf = 2
 	max_upp = 2
 	max_royal_marines = 1
+	max_pmc = 1
+	max_misc = 2
 	max_mercs = 1
 
 
@@ -93,6 +121,8 @@
 	max_clf = 2
 	max_upp = 1
 	max_royal_marines = 2
+	max_pmc = 1
+	max_misc = 2
 	max_mercs = 2
 
 /datum/emergency_call/pred/mixed/harder
@@ -103,6 +133,8 @@
 	max_clf = 2
 	max_upp = 2
 	max_royal_marines = 3
+	max_pmc = 1
+	max_misc = 2
 	max_mercs = 2
 
 /datum/emergency_call/pred/xeno
@@ -134,9 +166,9 @@
 
 	if(xeno_t3 < max_xeno_t3 && HAS_FLAG(current_mob.client.prefs.toggles_ert_pred, PLAY_XENO_T3))
 		xeno_t3++
-		var/list/xeno_types = list(/mob/living/carbon/xenomorph/praetorian, /mob/living/carbon/xenomorph/ravager)
+		var/list/xeno_types = list(/mob/living/carbon/xenomorph/praetorian, /mob/living/carbon/xenomorph/ravager, /mob/living/carbon/xenomorph/despoiler)
 		var/xeno_type = pick(xeno_types)
-		new_xeno = new xeno_type(spawn_loc, null, XENO_HIVE_FERAL)
+		new_xeno = new xeno_type(spawn_loc, null, XENO_HIVE_HUNTED)
 		player.transfer_to(new_xeno, TRUE)
 		QDEL_NULL(current_mob)
 		to_chat(new_xeno, SPAN_BOLD("You are a xenomorph let loose on a strange planet."))
@@ -144,20 +176,20 @@
 		xeno_t2++
 		var/list/xeno_types = list(/mob/living/carbon/xenomorph/lurker, /mob/living/carbon/xenomorph/warrior)
 		var/xeno_type = pick(xeno_types)
-		new_xeno = new xeno_type(spawn_loc, null, XENO_HIVE_FERAL)
+		new_xeno = new xeno_type(spawn_loc, null, XENO_HIVE_HUNTED)
 		player.transfer_to(new_xeno, TRUE)
 		QDEL_NULL(current_mob)
 		to_chat(new_xeno, SPAN_BOLD("You are a xenomorph let loose on a strange planet."))
 	else
 		var/list/xeno_types = list(/mob/living/carbon/xenomorph/warrior)
 		var/xeno_type = pick(xeno_types)
-		new_xeno = new xeno_type(spawn_loc, null, XENO_HIVE_FERAL)
+		new_xeno = new xeno_type(spawn_loc, null, XENO_HIVE_HUNTED)
 		player.transfer_to(new_xeno, TRUE)
 		to_chat(new_xeno, SPAN_BOLD("You are a xenomorph let loose on a strange planet."))
 
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), new_xeno.client, 'sound/misc/hunt_begin.ogg'), 10 SECONDS)
 	show_blurb(new_xeno, 15, message, null, "center", "center", COLOR_RED, null, null, 1)
-	new /obj/effect/alien/weeds/node/feral(spawn_loc)
+	new /obj/effect/alien/weeds/node/pylon/hunted(spawn_loc)
 
 /datum/emergency_call/pred/xeno/med
 	name = "Hunting Grounds - Xenos - Medium"
@@ -184,10 +216,13 @@
 	probability = 0
 	mob_max = 3
 	mob_min = 1
-	objectives = "Hunt down and defeat prey within the hunting grounds to earn your mark. You may not: Stun hit prey, hit prey in cloak or excessively run away to heal."
 	ert_message = "A group of Yautja Youngbloods are being awakened for a hunt"
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress/hunt_spawner/pred
 	shuttle_id = ""
+
+/datum/emergency_call/young_bloods/New()
+	. = ..()
+	objectives = "Hunt down and defeat prey within the hunting grounds to earn your mark. While hunting, you are not allowed to: Stun hit prey, hit prey while cloaked, excessively run away to heal and steal hunted marks of your fellow youngbloods!"
 
 /datum/emergency_call/young_bloods/remove_nonqualifiers(list/datum/mind/candidates_list)
 	var/list/datum/mind/youngblood_candidates_clean = list()

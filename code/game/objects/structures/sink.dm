@@ -34,7 +34,7 @@
 		to_chat(user, SPAN_DANGER("Someone's already washing here."))
 		return
 
-	to_chat(usr, SPAN_NOTICE(" You start washing your hands."))
+	to_chat(usr, SPAN_NOTICE("You start washing your hands."))
 	flick("sink_animation_fill", src) //<- play the filling animation then automatically switch back to the loop
 	icon_state = "sink_animation_fill_loop" //<- set it to the loop
 	addtimer(CALLBACK(src, PROC_REF(stop_flow)), 6 SECONDS)
@@ -87,7 +87,7 @@
 	if(!I || !istype(I,/obj/item))
 		return
 
-	to_chat(usr, SPAN_NOTICE(" You start washing \the [I]."))
+	to_chat(usr, SPAN_NOTICE("You start washing \the [I]."))
 
 	busy = TRUE
 	sleep(40)

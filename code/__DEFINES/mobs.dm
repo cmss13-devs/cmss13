@@ -1,9 +1,6 @@
 /// Multiplier for Stun/KD/KO/etc durations in new backend, due to old system being based on life ticks
 #define GLOBAL_STATUS_MULTIPLIER 20 // each in-code unit is worth 20ds of duration
 
-#define HEALTH_THRESHOLD_DEAD -100
-#define HEALTH_THRESHOLD_CRIT -50
-
 //Some mob defines below
 #define AI_CAMERA_LUMINOSITY 6
 
@@ -137,6 +134,7 @@
 #define XENO_HIVE_MUTATED "xeno_hive_mutated"
 #define XENO_HIVE_FORSAKEN "xeno_hive_forsaken"
 #define XENO_HIVE_YAUTJA "xeno_hive_yautja"
+#define XENO_HIVE_HUNTED "xeno_hive_hunted"
 #define XENO_HIVE_RENEGADE "xeno_hive_renegade"
 
 #define XENO_HIVE_TUTORIAL "xeno_hive_tutorial"

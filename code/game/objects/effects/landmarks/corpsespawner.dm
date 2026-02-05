@@ -96,6 +96,14 @@
 	name = "Weyland-Yutani Kutjevo Corporate Security"
 	equip_path = /datum/equipment_preset/corpse/pmc/goon/kutjevo
 
+/obj/effect/landmark/corpsespawner/wygoon/trijent
+	name = "Weyland-Yutani Trijent Corporate Security"
+	equip_path = /datum/equipment_preset/corpse/pmc/goon/trijent
+
+/obj/effect/landmark/corpsespawner/wygoon/lead/trijent
+	name = "Weyland-Yutani Trijent Corporate Security Lead"
+	equip_path = /datum/equipment_preset/corpse/pmc/goon/lead/trijent
+
 
 ///CM specific jobs///
 
@@ -295,7 +303,7 @@
 
 //*****************************************************************************************************/
 
-// Colonial Marshals
+// NSPA
 
 /obj/effect/landmark/corpsespawner/hybrisa/nspa_constable
 	name = "Corpse - NSPA Constable"
@@ -304,6 +312,14 @@
 /obj/effect/landmark/corpsespawner/hybrisa/nspa_constable/burst
 	name = "Corpse - Burst - NSPA Constable"
 	equip_path = /datum/equipment_preset/corpse/hybrisa/nspa_constable/burst
+
+/obj/effect/landmark/corpsespawner/trijent/nspa_constable/
+	name = "Corpse - Trijent NSPA Constable"
+	equip_path = /datum/equipment_preset/corpse/hybrisa/nspa_constable/trijent
+
+/obj/effect/landmark/corpsespawner/trijent/nspa_constable/burst
+	name = "Corpse - Burst - Trijent NSPA Constable"
+	equip_path = /datum/equipment_preset/corpse/hybrisa/nspa_constable/trijent/burst
 
 //*****************************************************************************************************/
 

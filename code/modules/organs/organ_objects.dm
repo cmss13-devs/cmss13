@@ -227,7 +227,7 @@
 	if(robotic)
 		return
 
-	to_chat(user, SPAN_NOTICE(" You take an experimental bite out of \the [src]."))
+	to_chat(user, SPAN_NOTICE("You take an experimental bite out of \the [src]."))
 	var/datum/reagent/blood/B = locate(/datum/reagent/blood) in reagents.reagent_list
 	if(B)
 		var/turf/TU = get_turf(src)

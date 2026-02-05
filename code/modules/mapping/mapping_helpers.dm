@@ -100,7 +100,7 @@
 
 	qdel(src)
 
-GLOBAL_LIST_INIT_TYPED(sentry_spawns, /obj/effect/sentry_landmark, list())
+GLOBAL_LIST_INIT_TYPED(sentry_spawns, /list/obj/effect/sentry_landmark, list())
 
 /// Allows a mapper to override the location of turrets on specific LZs, in specific placements. If multiple
 /// are placed, it picks randomly.

@@ -234,7 +234,7 @@
 	id = "Boat1-D1";
 	throw_dir = 1
 	},
-/turf/open/shuttle/lifeboat/test_floor4,
+/turf/open/floor/almayer/test_floor4,
 /area/shuttle/lifeboat)
 "CI" = (
 /turf/template_noop,
@@ -316,10 +316,10 @@
 	id = "Boat1-D2";
 	throw_dir = 1
 	},
-/turf/open/shuttle/lifeboat/test_floor4,
+/turf/open/floor/almayer/test_floor4,
 /area/shuttle/lifeboat)
 "Nm" = (
-/turf/open/shuttle/lifeboat/test_floor4,
+/turf/open/floor/almayer/test_floor4,
 /area/shuttle/lifeboat)
 "Ob" = (
 /turf/closed/shuttle/lifeboat{

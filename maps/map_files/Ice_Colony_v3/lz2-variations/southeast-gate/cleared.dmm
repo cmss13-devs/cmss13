@@ -1,7 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
 /turf/closed/wall/shiva/prefabricated/reinforced/hull,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/interior/oob)
 "c" = (
 /obj/item/lightstick/red/spoke/planted{
 	layer = 3.1;
@@ -16,7 +16,7 @@
 	pixel_y = 22
 	},
 /turf/closed/wall/shiva/prefabricated/reinforced/hull,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/interior/oob)
 "h" = (
 /obj/item/stack/sheet/metal/small_stack,
 /turf/open/floor/shiva/multi_tiles/east,
@@ -31,7 +31,7 @@
 	pixel_y = 22
 	},
 /turf/closed/wall/shiva/prefabricated/reinforced/hull,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/interior/oob)
 "o" = (
 /turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
@@ -63,14 +63,14 @@
 	pixel_y = 23
 	},
 /turf/closed/wall/shiva/prefabricated/reinforced/hull,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/interior/oob)
 "z" = (
 /obj/structure/machinery/landinglight/ds2/spoke{
 	pixel_x = -2;
 	pixel_y = 23
 	},
 /turf/closed/wall/shiva/prefabricated/reinforced/hull,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/interior/oob)
 "A" = (
 /obj/item/lightstick/red/spoke/planted{
 	layer = 2.99;

@@ -5,7 +5,6 @@
 /area/shiva/interior/colony/s_admin)
 "ab" = (
 /obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
 /turf/open/floor/plating/platingdmg1,
 /area/shiva/interior/colony/s_admin)
 "ac" = (
@@ -117,6 +116,17 @@
 /obj/item/flag/plantable/clf,
 /turf/open/floor/corsat/cargo,
 /area/shiva/interior/colony/clf_shuttle)
+"av" = (
+/obj/structure/machinery/light/double,
+/turf/open/floor/shiva/snow_mat/east,
+/area/shiva/interior/colony/botany)
+"aw" = (
+/obj/structure/machinery/light/double{
+	dir = 1;
+	pixel_y = 9
+	},
+/turf/open/floor/shiva/snow_mat/east,
+/area/shiva/interior/colony/botany)
 "aC" = (
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/junkyard/cp_bar)
@@ -256,7 +266,7 @@
 	dir = 1;
 	name = "\improper Colony Garage Repair Station"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/shiva/north,
 /area/shiva/interior/garage)
 "eT" = (
 /turf/closed/shuttle/ert{
@@ -527,7 +537,7 @@
 /turf/open/floor/shiva/greenfull,
 /area/shiva/interior/colony/botany)
 "nN" = (
-/obj/structure/window/framed/shiva,
+/obj/structure/window/framed/shiva/grey,
 /turf/open/floor/plating,
 /area/shiva/interior/garage)
 "oa" = (
@@ -548,7 +558,7 @@
 /obj/structure/machinery/door/airlock/almayer/medical/colony{
 	name = "\improper Colony Dormitories"
 	},
-/turf/open/floor/shiva/north,
+/turf/open/floor/shiva/multi_tiles/west,
 /area/shiva/interior/colony/botany)
 "oV" = (
 /obj/structure/machinery/door/poddoor/almayer{
@@ -798,10 +808,10 @@
 /area/shiva/interior/colony/s_admin)
 "tS" = (
 /obj/item/stack/rods,
-/obj/structure/window_frame/colony/reinforced,
 /obj/item/shard{
 	icon_state = "large"
 	},
+/obj/structure/window_frame/shiva/grey,
 /turf/open/floor/plating,
 /area/shiva/interior/garage)
 "tW" = (
@@ -884,7 +894,7 @@
 /obj/item/shard{
 	icon_state = "large"
 	},
-/obj/structure/window_frame/colony/reinforced,
+/obj/structure/window_frame/shiva,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/s_admin)
 "xw" = (
@@ -1058,7 +1068,7 @@
 /area/shiva/exterior/junkyard/cp_bar)
 "BZ" = (
 /turf/closed/wall/shiva/ice,
-/area/shiva/exterior/junkyard/cp_bar)
+/area/shiva/interior/oob)
 "Cb" = (
 /obj/structure/machinery/light/double,
 /turf/open/floor/shiva/multi_tiles/west,
@@ -1201,10 +1211,6 @@
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/s_admin)
-"Ff" = (
-/obj/structure/window/framed/shiva,
-/turf/open/floor/shiva/north,
-/area/shiva/interior/colony/botany)
 "Fl" = (
 /obj/structure/machinery/light/double,
 /turf/open/floor/shiva/green/southeast,
@@ -1467,10 +1473,10 @@
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_left_to_right,
 /area/shiva/interior/colony/clf_shuttle)
 "KE" = (
-/obj/structure/window_frame/colony/reinforced,
 /obj/item/shard{
 	icon_state = "medium"
 	},
+/obj/structure/window_frame/shiva/grey,
 /turf/open/floor/plating,
 /area/shiva/interior/garage)
 "KK" = (
@@ -1674,7 +1680,7 @@
 /area/shiva/exterior/junkyard)
 "Ri" = (
 /obj/item/stack/rods,
-/obj/structure/window_frame/colony/reinforced,
+/obj/structure/window_frame/shiva,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/s_admin)
 "Rk" = (
@@ -1754,9 +1760,6 @@
 /obj/item/weapon/gun/smg/fp9000,
 /turf/open/floor/shiva/multi_tiles,
 /area/shiva/interior/colony/s_admin)
-"Tn" = (
-/turf/closed/wall/shiva/ice,
-/area/shiva/interior/colony/s_admin)
 "TW" = (
 /obj/effect/decal/cleanable/blood{
 	layer = 3
@@ -1807,12 +1810,6 @@
 /obj/item/ammo_box/magazine/misc/mre/wy,
 /turf/open/floor/corsat/cargo,
 /area/shiva/interior/colony/clf_shuttle)
-"Vy" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	name = "\improper Panic Room Shutters"
-	},
-/turf/open/floor/plating,
-/area/shiva/interior/colony/s_admin)
 "Vz" = (
 /obj/item/lightstick/red/spoke/planted{
 	pixel_x = 12;
@@ -1885,6 +1882,11 @@
 /area/shiva/exterior/junkyard/cp_bar)
 "XC" = (
 /obj/structure/surface/rack,
+/obj/item/storage/belt/medical/full,
+/obj/item/storage/belt/medical/full{
+	pixel_x = 2;
+	pixel_y = 4
+	},
 /obj/item/storage/firstaid/adv{
 	pixel_x = 3;
 	pixel_y = 5
@@ -2068,16 +2070,16 @@ NC
 ZQ
 NC
 Gz
-Tn
-Tn
-Tn
-Tn
-Tn
-Tn
+BZ
+BZ
+BZ
+BZ
+BZ
+BZ
 rY
 rY
-Tn
-Tn
+BZ
+BZ
 Gz
 Gz
 Gz
@@ -2096,15 +2098,15 @@ CA
 NC
 NC
 Gz
-Tn
-Tn
-Tn
-Tn
-Tn
-Tn
-Tn
-Tn
-Tn
+BZ
+BZ
+BZ
+BZ
+BZ
+BZ
+BZ
+BZ
+BZ
 Gz
 Gz
 mz
@@ -2124,15 +2126,15 @@ bL
 Me
 Cb
 Gz
-Tn
-Tn
-Tn
-Tn
-Tn
-Tn
-Tn
-Tn
-Tn
+BZ
+BZ
+BZ
+BZ
+BZ
+BZ
+BZ
+BZ
+BZ
 Gz
 DL
 EM
@@ -2302,7 +2304,7 @@ Kf
 Co
 pM
 DH
-Vy
+ZO
 af
 Bi
 pX
@@ -2792,9 +2794,9 @@ wr
 "}
 (27,1,1) = {"
 tY
-CA
-NC
-NC
+Me
+Me
+Me
 DU
 DU
 DU
@@ -2820,9 +2822,9 @@ wr
 "}
 (28,1,1) = {"
 SD
-bL
-Me
-Cb
+aw
+NC
+av
 DU
 DU
 DU
@@ -2849,7 +2851,7 @@ wr
 (29,1,1) = {"
 SD
 oP
-Ff
+tY
 oP
 DU
 DU

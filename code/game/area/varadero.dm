@@ -78,7 +78,7 @@
 	ceiling = CEILING_MAX
 	icon_state = "oob"
 	is_resin_allowed = FALSE
-	flags_area = AREA_NOTUNNEL|AREA_UNWEEDABLE
+	flags_area = AREA_NOBURROW|AREA_UNWEEDABLE
 
 //landing zone computers
 
@@ -138,13 +138,13 @@
 /area/varadero/exterior/eastocean
 	name = "New Varadero - East Ocean"
 	linked_lz = DROPSHIP_LZ2
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOBURROW
 	icon_state = "varadero2"
 	minimap_color = MINIMAP_AREA_CONTESTED_ZONE
 
 /area/varadero/exterior/farocean
 	name = "New Varadero - Far Ocean"
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOBURROW
 	icon_state = "varadero3"
 	minimap_color = MINIMAP_AREA_CONTESTED_ZONE
 

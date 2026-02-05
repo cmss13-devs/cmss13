@@ -834,7 +834,7 @@
 /turf/open/floor/wood,
 /area/adminlevel/chinook/event)
 "cM" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 8
 	},
 /obj/effect/decal/warning_stripes{
@@ -4468,7 +4468,7 @@
 /turf/open/floor/almayer/bluecorner/north,
 /area/adminlevel/chinook/offices)
 "rH" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 4
 	},
 /turf/open/floor/almayer/plating/northeast,

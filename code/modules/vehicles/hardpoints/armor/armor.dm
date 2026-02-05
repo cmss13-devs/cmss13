@@ -1,6 +1,6 @@
 /obj/item/hardpoint/armor
 	name = "armor hardpoint"
-	desc = "primary armor source"
+	desc = "Primary armor source."
 
 	slot = HDPT_ARMOR
 	hdpt_layer = HDPT_LAYER_ARMOR

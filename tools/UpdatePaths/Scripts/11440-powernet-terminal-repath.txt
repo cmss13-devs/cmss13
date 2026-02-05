@@ -1,0 +1,1 @@
+/obj/structure/machinery/power/terminal : /obj/structure/terminal{@OLD}

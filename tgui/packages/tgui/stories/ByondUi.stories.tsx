@@ -23,7 +23,7 @@ function Story() {
     <>
       <Section title="Button">
         <ByondUi
-          params={{
+          winsetParams={{
             type: 'button',
             text: 'Button',
           }}

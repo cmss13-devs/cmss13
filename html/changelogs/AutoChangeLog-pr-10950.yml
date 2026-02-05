@@ -1,9 +1,0 @@
-author: "Puckaboo2"
-delete-after: True
-changes:
-  - qol: "Adds a fill indicator on reagent tanks that fills every 20%."
-  - qol: "Added a dispensing and filling indicator to reagent tanks that changes from green to orange."
-  - qol: "Adds the following transfer amounts to tanks: 15, 25, 80, 120, 150, and 240."
-  - bugfix: "Added missing overlays to Yautja tanks."
-  - imageadd: "Restock carts now have proper icons with fill overlays that add and remove a little box every 5 units of supplies."
-  - code_imp: "Repaths reagent tanks for consistency."

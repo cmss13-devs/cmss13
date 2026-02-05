@@ -55,7 +55,7 @@
 		user.visible_message(
 			SPAN_NOTICE("[user] recklessly starts to [pick("smash", "crack", "break")] the [target.caste_type]'s carapace apart with [tool] as acidic blood begins to burst through the corpse's seams!"),
 			SPAN_NOTICE("You recklessly start to [pick("smash", "crack", "break")] the [target.caste_type]'s carapace apart using [tool] as acidic blood begins to burst through the corpse's seams!"))
-			//we dont really need a log interact since we're working with dead bodies... I hope
+			//we don't really need a log interact since we're working with dead bodies... I hope
 
 /datum/surgery_step/xenomorph/cut_exoskeleton/success(mob/living/carbon/human/user, mob/living/carbon/xenomorph/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	if(tool_type == /obj/item/tool/surgery/circular_saw)

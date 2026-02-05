@@ -91,6 +91,8 @@ PLANT_CUT_MACHETE = 3 = Needs at least a machete to be cut down
 	qdel(src)
 
 /obj/structure/flora/ex_act(power)
+	if(explo_proof)
+		return
 	if(power >= EXPLOSION_THRESHOLD_VLOW)
 		deconstruct(FALSE)
 
@@ -153,14 +155,37 @@ PLANT_CUT_MACHETE = 3 = Needs at least a machete to be cut down
 	icon = 'icons/obj/structures/props/natural/vegetation/ground_map64.dmi'
 	desc = "What an enormous tree!"
 	density = FALSE
+	unacidable = TRUE
+	unslashable = TRUE
+	explo_proof = TRUE
 	layer = ABOVE_XENO_LAYER
 
 // LV-624's Yggdrasil Tree
-/obj/structure/flora/tree/jungle/bigtreeTR
+/obj/structure/roof/flora/tree/jungle/bigtreeTR
+	name = "huge tree"
+	desc = "What an enormous tree!"
+	icon = 'icons/obj/structures/props/natural/vegetation/ground_map64.dmi'
 	icon_state = "bigtreeTR"
+	density = FALSE
+	unacidable = TRUE
+	unslashable = TRUE
+	explo_proof = TRUE
+	layer = ABOVE_XENO_LAYER
+	bound_height = 128
+	bound_width = 128
 
-/obj/structure/flora/tree/jungle/bigtreeTL
+/obj/structure/roof/flora/tree/jungle/bigtreeTL
+	name = "huge tree"
+	desc = "What an enormous tree!"
+	icon = 'icons/obj/structures/props/natural/vegetation/ground_map64.dmi'
 	icon_state = "bigtreeTL"
+	density = FALSE
+	unacidable = TRUE
+	unslashable = TRUE
+	explo_proof = TRUE
+	layer = ABOVE_XENO_LAYER
+	bound_height = 128
+	bound_width = 128
 
 /obj/structure/flora/tree/jungle/bigtreeBOT
 	icon_state = "bigtreeBOT"
@@ -365,7 +390,7 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 /obj/structure/flora/grass/tallgrass/ice
 	color = COLOR_G_ICE
 	icon_state = "tallgrass"
-	desc = "A large swathe of bristling snowgrass"
+	desc = "A large swathe of bristling snowgrass."
 
 /obj/structure/flora/grass/tallgrass/ice/corner
 	icon_state = "tallgrass_corner"
@@ -388,7 +413,7 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 /obj/structure/flora/grass/tallgrass/jungle
 	color = COLOR_G_JUNG
 	icon_state = "tallgrass"
-	desc = "A clump of vibrant jungle grasses"
+	desc = "A clump of vibrant jungle grasses."
 	fire_flag = FLORA_BURN_SPREAD_ONCE
 
 /obj/structure/flora/grass/tallgrass/jungle/corner
@@ -803,6 +828,16 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	current_xenomorph.animation_attack_on(src)
 	playsound(src, 'sound/effects/vegetation_hit.ogg', 25, 1)
 	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] slashes at [src]!"),
-	SPAN_DANGER("You slash at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	SPAN_DANGER("We slash at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
 	return XENO_ATTACK_ACTION
+
+/obj/structure/flora/jungle/thickbush/large_jungle_bush/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
+	if(unslashable)
+		return TAILSTAB_COOLDOWN_NONE
+	playsound(src, 'sound/effects/vegetation_hit.ogg', 25, 1)
+	xeno.visible_message(SPAN_DANGER("[xeno] slashes at [src] with its tail!"),
+	SPAN_DANGER("We slash at [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	update_health(xeno.melee_damage_upper)
+	xeno.tail_stab_animation(src, blunt_stab)
+	return TAILSTAB_COOLDOWN_NORMAL

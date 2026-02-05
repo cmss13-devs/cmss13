@@ -49,15 +49,6 @@
 /datum/chem_property/negative/toxic/process_critical(mob/living/M, potency = 1)
 	M.apply_damage(potency * POTENCY_MULTIPLIER_VHIGH, TOX)
 
-/datum/chem_property/negative/toxic/reaction_obj(obj/O, volume, potency = 1)
-	if(istype(O,/obj/effect/alien/weeds/))
-		var/obj/effect/alien/weeds/alien_weeds = O
-		alien_weeds.take_damage(25 * potency) // Kills alien weeds on touch
-		return
-	if(istype(O,/obj/effect/glowshroom))
-		qdel(O)
-		return
-
 /datum/chem_property/negative/toxic/reaction_mob(mob/living/M, method=TOUCH, volume, potency = 1)
 	if(!iscarbon(M))
 		return
@@ -131,8 +122,7 @@
 				var/mob/living/carbon/human/H = M
 				var/obj/limb/affecting = H.get_limb("head")
 				if(affecting)
-					if(affecting.take_damage(4, 2))
-						H.UpdateDamageIcon()
+					affecting.take_damage(4, 2)
 					if(prob(meltprob))
 						if(H.pain.feels_pain)
 							H.emote("scream")
@@ -195,33 +185,33 @@
 	if(processing_tray.pestlevel > 0)
 		processing_tray.pestlevel += -1*(potency*2)*volume
 
-/datum/chem_property/negative/paining
-	name = PROPERTY_PAINING
-	code = "PNG"
+/datum/chem_property/negative/neuropathic
+	name = PROPERTY_NEUROPATHIC
+	code = "NPT"
 	description = "Activates the somatosensory system causing neuropathic pain all over the body. Unlike nociceptive pain, this is not caused to any tissue damage and is solely perceptive."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_STIMULANT
 	value = -1
 
-/datum/chem_property/negative/paining/on_delete(mob/living/M)
+/datum/chem_property/negative/neuropathic/on_delete(mob/living/M)
 	..()
 
 	M.pain.recalculate_pain()
 
-/datum/chem_property/negative/paining/process(mob/living/M, potency = 1, delta_time)
+/datum/chem_property/negative/neuropathic/process(mob/living/M, potency = 1, delta_time)
 	if(!(..()))
 		return
 
-	M.pain.apply_pain(PROPERTY_PAINING_PAIN * potency)
+	M.pain.apply_pain(PROPERTY_NEUROPATHIC_PAIN * potency)
 
-/datum/chem_property/negative/paining/process_overdose(mob/living/M, potency = 1, delta_time)
+/datum/chem_property/negative/neuropathic/process_overdose(mob/living/M, potency = 1, delta_time)
 	if(!(..()))
 		return
 
-	M.pain.apply_pain(PROPERTY_PAINING_PAIN_OD * potency)
+	M.pain.apply_pain(PROPERTY_NEUROPATHIC_PAIN_OD * potency)
 	M.take_limb_damage(0.5 * potency * delta_time)
 
-/datum/chem_property/negative/paining/process_critical(mob/living/M, potency = 1)
+/datum/chem_property/negative/neuropathic/process_critical(mob/living/M, potency = 1)
 	M.take_limb_damage(POTENCY_MULTIPLIER_MEDIUM * potency)
 
 /datum/chem_property/negative/hemolytic
@@ -242,7 +232,7 @@
 		return
 	var/mob/living/carbon/C = M
 	C.blood_volume = max(C.blood_volume - 4 * potency *  delta_time, 0)
-	M.drowsyness = min(M.drowsyness + 0.5 * potency * delta_time, 15 * potency)
+	M.drowsiness = min(M.drowsiness + 0.5 * potency * delta_time, 15 * potency)
 	M.reagent_move_delay_modifier += potency
 	M.recalculate_move_delay = TRUE
 	if(prob(5 * delta_time))
@@ -252,9 +242,9 @@
 	M.apply_damage(POTENCY_MULTIPLIER_VHIGH * potency, OXY)
 
 /datum/chem_property/negative/hemorrhaging
-	name = PROPERTY_HEMORRAGING
+	name = PROPERTY_HEMORRHAGING
 	code = "HMR"
-	description = "Ruptures endothelial cells making up bloodvessels, causing blood to escape from the circulatory system. Persistant mutagen to plants."
+	description = "Ruptures endothelial cells making up blood vessels, causing blood to escape from the circulatory system. Persistent mutagen to plants."
 	rarity = PROPERTY_UNCOMMON
 	value = 1
 	cost_penalty = FALSE
@@ -393,7 +383,7 @@
 /datum/chem_property/negative/nephrotoxic/process_critical(mob/living/M, potency = 1)
 	M.apply_damage(POTENCY_MULTIPLIER_VHIGH * potency, TOX)
 
-//Applies mutation cancel onto hydrotray plants, prevents tolerance adjustment, parasitic and carnivorus
+//Applies mutation cancel onto hydrotray plants, prevents tolerance adjustment, parasitic and carnivorous
 /datum/chem_property/negative/nephrotoxic/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
 	. = ..()
 	if(!processing_tray.seed)
@@ -466,8 +456,8 @@
 		return
 	if (processing_tray.mutation_controller["Potency"] > potency*-2)
 		processing_tray.mutation_controller["Potency"] = potency*-2
-	if (processing_tray.mutation_controller["Bioluminecence"] > potency*-2)
-		processing_tray.mutation_controller["Bioluminecence"] = potency*-2
+	if (processing_tray.mutation_controller["Bioluminescence"] > potency*-2)
+		processing_tray.mutation_controller["Bioluminescence"] = potency*-2
 	if (processing_tray.mutation_controller["Flowers"] > potency*-2)
 		processing_tray.mutation_controller["Flowers"] = potency*-2
 
@@ -516,7 +506,7 @@
 	M.apply_damage(POTENCY_MULTIPLIER_HIGH * potency, BRAIN)
 	M.jitteriness = min(M.jitteriness + potency, POTENCY_MULTIPLIER_HIGH * potency)
 	if(prob(50))
-		M.drowsyness = min(M.drowsyness + potency, POTENCY_MULTIPLIER_HIGH * potency)
+		M.drowsiness = min(M.drowsiness + potency, POTENCY_MULTIPLIER_HIGH * potency)
 	if(prob(10))
 		M.emote("drool")
 

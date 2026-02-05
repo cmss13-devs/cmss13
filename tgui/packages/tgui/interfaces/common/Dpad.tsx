@@ -12,7 +12,7 @@ const SvgButton = (props: {
   readonly onClick?: (e: any) => void;
 }) => {
   return (
-    <svg height="100" width="100">
+    <svg height="100" width="100" overflow="visible">
       <g transform={props.transform} onClick={props.onClick}>
         <path
           stroke="#808080"

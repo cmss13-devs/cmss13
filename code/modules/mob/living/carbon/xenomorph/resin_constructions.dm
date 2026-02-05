@@ -74,7 +74,7 @@
 		return FALSE
 
 	if(istype(T, /turf/closed/wall)) // Can't build in walls with no density
-		to_chat(X, SPAN_WARNING("This area is too unstable to support a construction"))
+		to_chat(X, SPAN_WARNING("This area is too unstable to support a construction."))
 		return FALSE
 
 	if(!X.check_alien_construction(T, check_doors = !can_build_on_doors))

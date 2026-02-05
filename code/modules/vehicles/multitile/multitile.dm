@@ -380,7 +380,7 @@
 			H.deactivate()
 			H.remove_buff(src)
 		else
-			all_broken = 0 //if something exists but isnt broken
+			all_broken = 0 //if something exists but isn't broken
 
 	if(all_broken)
 		toggle_cameras_status()

@@ -100,7 +100,7 @@
 
 /obj/item/clothing/head/surgery/blue
 	name = "doctor's surgical cap"
-	desc = "A cap doctors wear during operations. Keeps their hair from tickling your internal organs. Typically worn by doctors, this one reminds you of blueberries. "
+	desc = "A cap doctors wear during operations. Keeps their hair from tickling your internal organs. Typically worn by doctors, this one reminds you of blueberries."
 	icon_state = "surgcap_blue"
 
 /obj/item/clothing/head/surgery/lightblue

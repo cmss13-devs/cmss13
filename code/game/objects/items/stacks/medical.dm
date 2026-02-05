@@ -54,8 +54,6 @@
 		to_chat(user, SPAN_WARNING("This isn't useful at all on a robotic limb."))
 		return 1
 
-	H.UpdateDamageIcon()
-
 /obj/item/stack/medical/bruise_pack
 	name = "roll of gauze"
 	singular_name = "medical gauze"
@@ -139,7 +137,9 @@
 					SPAN_HELPFUL("You <b>salve the burns</b> on [possessive] <b>[affecting.display_name]</b>."),
 					SPAN_HELPFUL("[user] <b>salves the burns</b> on your <b>[affecting.display_name]</b>."),
 					SPAN_NOTICE("[user] salves the burns on [possessive_their] [affecting.display_name]."))
+				affecting.status &= ~LIMB_THIRD_DEGREE_BURNS
 				affecting.heal_damage(burn = heal_burn)
+
 				use(1)
 				playsound(user, 'sound/handling/ointment_spreading.ogg', 25, 1, 2)
 			if(WOUNDS_ALREADY_TREATED)
@@ -214,11 +214,6 @@
 	. = ..()
 	heal_brute = initial(heal_brute) * 3 // 3x stronger
 
-/obj/item/stack/medical/advanced/bruise_pack/upgraded/low_amount/Initialize(mapload, ...)
-	. = ..()
-	amount = rand(1,4)
-	update_icon()
-
 /obj/item/stack/medical/advanced/bruise_pack/predator
 	name = "mending herbs"
 	singular_name = "mending herb"
@@ -271,7 +266,9 @@
 				//If a suture datum exists, apply half the damage as grafts. This ensures consistency in healing amounts.
 				if(SEND_SIGNAL(affecting, COMSIG_LIMB_ADD_SUTURES, FALSE, TRUE, heal_amt * 0.5))
 					heal_amt *= 0.5
+				affecting.status &= ~LIMB_THIRD_DEGREE_BURNS
 				affecting.heal_damage(burn = heal_amt)
+
 				use(1)
 			if(WOUNDS_ALREADY_TREATED)
 				to_chat(user, SPAN_WARNING("The burns on [possessive] [affecting.display_name] have already been treated."))
@@ -294,11 +291,6 @@
 /obj/item/stack/medical/advanced/ointment/upgraded/Initialize(mapload, ...)
 	. = ..()
 	heal_burn = initial(heal_burn) * 3 // 3x stronger
-
-/obj/item/stack/medical/advanced/ointment/upgraded/low_amount/Initialize(mapload, ...)
-	. = ..()
-	amount = rand(1,4)
-	update_icon()
 
 /obj/item/stack/medical/advanced/ointment/predator
 	name = "soothing herbs"
@@ -391,10 +383,5 @@
 
 	stack_id = "nano splint"
 
-/obj/item/stack/medical/splint/nano/low_amount/Initialize(mapload, ...)
-	. = ..()
-	amount = rand(1,2)
-	update_icon()
-
 /obj/item/stack/medical/splint/nano/research
-	desc = "Advanced technology allows these splints to hold bones in place while being flexible and damage-resistant. Those are made from durable carbon fiber and dont look cheap, better use them sparingly."
+	desc = "Advanced technology allows these splints to hold bones in place while being flexible and damage-resistant. Those are made from durable carbon fiber and don't look cheap, better use them sparingly."

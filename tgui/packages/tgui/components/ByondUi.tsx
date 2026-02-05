@@ -1,77 +1,34 @@
 import { debounce } from 'common/timer';
 import { useEffect, useRef } from 'react';
 
-import { type BoxProps, computeBoxProps } from './Box';
-
-type ByondUiElement = {
-  render: (params: Record<string, any>) => void;
-  unmount: () => void;
-};
+import { computeBoxProps } from './Box';
 
 type BoundingBox = {
   pos: number[];
   size: number[];
 };
 
-type SampleByondParams = Partial<{
-  /** Can be auto-generated. */
-  id: string;
-  /**  Defaults to the current window */
-  parent: string;
-  /** The type of control. Read-only. */
-  type: string;
-  /** Text shown in label/button/input. For input controls this setting is only available at runtime. */
-  text: string;
-}>;
-
-type Props = Partial<{
-  /** An object with parameters, which are directly passed to
-   * the `winset` proc call.
-   *
-   * You can find a full reference of these parameters
-   * in [BYOND controls and parameters guide](https://secure.byond.com/docs/ref/skinparams.html). */
-  params: SampleByondParams & Record<string, any>;
-}> &
-  BoxProps;
-
-// Stack of currently allocated BYOND UI element ids.
-const byondUiStack: Array<string | null> = [];
-
-function createByondUiElement(elementId: string | undefined): ByondUiElement {
-  // Reserve an index in the stack
-  const index = byondUiStack.length;
-  byondUiStack.push(null);
-  // Get a unique id
-  const id = elementId || `byondui_${index}`;
-
-  // Return a control structure
-  return {
-    render: (params: SampleByondParams) => {
-      byondUiStack[index] = id;
-
-      Byond.winset(id, { ...params, style: Byond.styleSheet });
-    },
-    unmount: () => {
-      byondUiStack[index] = null;
-      Byond.winset(id, {
-        parent: '',
-      });
-    },
-  } as ByondUiElement;
+function joinComma(num1: number, num2: number): string {
+  return `${num1},${num2}`;
 }
 
-window.addEventListener('beforeunload', () => {
-  // Cleanly unmount all visible UI elements
-  for (let index = 0; index < byondUiStack.length; index++) {
-    const id = byondUiStack[index];
-    if (typeof id === 'string') {
-      byondUiStack[index] = null;
-      Byond.winset(id, {
-        parent: '',
-      });
-    }
-  }
-});
+function byondFmtPos(pos: number[]): string {
+  return joinComma(pos[0], pos[1]);
+}
+
+function byondFmtSize(size: number[]): string {
+  const xSize = size[0];
+  const ySize = size[1];
+  return `${xSize}x${ySize}`;
+}
+
+type ByondUiElement = {
+  render: (
+    containerRef: React.Ref<HTMLDivElement>,
+    params: Record<string, any>,
+  ) => void;
+  unmount: () => void;
+};
 
 /**
  * Get the bounding box of the DOM element in display-pixels.
@@ -89,6 +46,79 @@ function getBoundingBox(element: HTMLDivElement): BoundingBox {
   };
 }
 
+type SampleWinsetParams = Partial<{
+  /** Can be auto-generated. */
+  id: string;
+  /**  Defaults to the current window */
+  parent: string;
+  /** The type of control. Read-only. */
+  type: string;
+  /** Text shown in label/button/input. For input controls this setting is only available at runtime. */
+  text: string;
+  /**
+   * You can find a full list of possible parameters
+   * in [BYOND controls and parameters guide](https://secure.byond.com/docs/ref/skinparams.html). */
+}>;
+
+function callWinset(
+  index: number,
+  id: string,
+  constParams: any,
+  container: React.RefObject<HTMLDivElement>,
+) {
+  byondUiStack[index] = id;
+
+  const element = container.current;
+  if (!element) {
+    return;
+  }
+  const box = getBoundingBox(element);
+
+  let params = { ...constParams };
+  params['pos'] = byondFmtPos(box.pos);
+  params['size'] = byondFmtSize(box.size);
+
+  Byond.winset(id, { ...params, style: Byond.styleSheet });
+}
+
+function createByondUiElement(elementId: string | undefined): ByondUiElement {
+  // Reserve an index in the stack
+  const index = byondUiStack.length;
+  byondUiStack.push(null);
+  // Get a unique id
+  const id = elementId || `byondui_${index}`;
+
+  // Return a control structure
+  return {
+    render: (
+      containerRef: React.RefObject<HTMLDivElement>,
+      constParams: Record<string, any>,
+    ) => {
+      callWinset(index, id, constParams, containerRef);
+    },
+    unmount: () => {
+      byondUiStack[index] = null;
+      Byond.winset(id, {
+        parent: '',
+      });
+    },
+  } as ByondUiElement;
+}
+
+type ByondUiProps = Partial<{
+  /**
+   * Parameters passed directly to the underlying winset() BYOND call.
+   * You can find a full reference of these parameters
+   * in [BYOND controls and parameters guide](https://secure.byond.com/docs/ref/skinparams.html). */
+  winsetParams: SampleWinsetParams & Record<string, any>;
+
+  /** params passed to calculateBoxProps from ../box.tsx */
+  boxProps: Record<string, any>;
+}>;
+
+// Stack of currently allocated BYOND UI element ids.
+const byondUiStack: Array<string | null> = [];
+
 /**
  * ## ByondUi
  * Displays a BYOND UI element on top of the browser, and leverages browser's
@@ -99,7 +129,7 @@ function getBoundingBox(element: HTMLDivElement): BoundingBox {
  * @example
  * ```tsx
  * <ByondUi
- *   params={{
+ *   winsetParams={{
  *    id: 'test_button', // optional, can be auto-generated
  *    parent: 'some_container', // optional, defaults to the current window
  *    type: 'button',
@@ -110,7 +140,7 @@ function getBoundingBox(element: HTMLDivElement): BoundingBox {
  * @example
  * ```tsx
  * <ByondUi
- *   params={{
+ *   winsetParams={{
  *    id: 'test_map',
  *    type: 'map',
  *   }} />
@@ -118,23 +148,19 @@ function getBoundingBox(element: HTMLDivElement): BoundingBox {
  *
  * It supports a full set of `Box` properties for layout purposes.
  */
-export function ByondUi(props: Props) {
-  const { params, ...rest } = props;
+export function ByondUi(props: ByondUiProps) {
+  const winsetParams = props.winsetParams;
+  const boxProps = props.boxProps;
 
   const containerRef = useRef<HTMLDivElement>(null);
-  const byondUiElement = useRef(createByondUiElement(params?.id));
+  const byondUiElement = useRef(createByondUiElement(winsetParams?.id));
 
   function updateRender() {
-    const element = containerRef.current;
-    if (!element) return;
-
-    const box = getBoundingBox(element);
-    byondUiElement.current.render({
+    const constParams = {
       parent: Byond.windowId,
-      ...params,
-      pos: `${box.pos[0]},${box.pos[1]}`,
-      size: `${box.size[0]}x${box.size[1]}`,
-    });
+      ...winsetParams,
+    };
+    byondUiElement.current.render(containerRef, { ...constParams });
   }
 
   const handleResize = debounce(() => {
@@ -152,9 +178,22 @@ export function ByondUi(props: Props) {
   }, []);
 
   return (
-    <div ref={containerRef} {...computeBoxProps(rest)}>
+    <div ref={containerRef} {...computeBoxProps(boxProps)}>
       {/* Filler */}
       <div style={{ minHeight: '22px' }} />
     </div>
   );
 }
+
+window.addEventListener('beforeunload', () => {
+  // Cleanly unmount all visible UI elements
+  for (let index = 0; index < byondUiStack.length; index++) {
+    const id = byondUiStack[index];
+    if (typeof id === 'string') {
+      byondUiStack[index] = null;
+      Byond.winset(id, {
+        parent: '',
+      });
+    }
+  }
+});

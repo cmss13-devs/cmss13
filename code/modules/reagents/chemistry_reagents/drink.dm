@@ -26,7 +26,7 @@
 	if(adj_dizzy)
 		M.dizziness = max(0,M.dizziness + adj_dizzy * delta_time)
 	if(adj_drowsy)
-		M.drowsyness = max(0,M.drowsyness + adj_drowsy * delta_time)
+		M.drowsiness = max(0,M.drowsiness + adj_drowsy * delta_time)
 	if(adj_sleepy)
 		M.sleeping = max(0,M.sleeping + adj_sleepy * delta_time)
 
@@ -35,7 +35,7 @@
 	adj_temp = 0
 
 
-//FRIUT JUICE//
+//FRUIT JUICE//
 
 /datum/reagent/drink/orangejuice
 	name = "Orange juice"
@@ -180,7 +180,7 @@
 /datum/reagent/drink/milk/coconut
 	name = "Coconut Milk"
 	id = "coconutmilk"
-	description = "A very light, half opague milk from coconuts, barely has any taste on its own."
+	description = "A very light, half opaque milk from coconuts, barely has any taste on its own."
 	color = "#DFDFC7" // rgb: 223, 223, 199
 	chemclass = CHEM_CLASS_NONE
 	flags = REAGENT_NO_GENERATION
@@ -197,11 +197,25 @@
 	description = "A rich, sweet, non-alcoholic beverage traditionally consumed around Christmastime."
 	color = "#DFD7AF" // rgb: 223, 215, 175
 
+/datum/reagent/drink/milk/chocolate
+	name = "Chocolate Milk"
+	id = "chocolate_milk"
+	description = "Nectar of the gods and nectar of the cow. Fucking delicious."
+	color = "#AD8F70" // rgb: 123, 63, 0
+
 /datum/reagent/drink/cold/milkshake
 	name = "Milkshake"
 	description = "Glorious brainfreezing mixture."
 	id = "milkshake"
-	color = "#AEE5E4" // rgb" 174, 229, 228
+	color = "#AEE5E4" // rgb: 174, 229, 228
+	adj_temp = -2
+	target_temp = T0C
+
+/datum/reagent/drink/cold/milkshake/chocolate
+	name = "Chocolate Milkshake"
+	description = "Glorious brainfreezing mixture in classic chocolate flavor."
+	id = "chocolate_milkshake"
+	color = "#AF9B86" // rgb: 175, 155, 134
 	adj_temp = -2
 	target_temp = T0C
 
@@ -223,7 +237,7 @@
 /datum/reagent/drink/souto
 	name = "Souto Classic"
 	id = "souto_classic"
-	description = "A tangerine flavored soda that's canned in Havana"
+	description = "A tangerine flavored soda that's canned in Havana."
 	color = "#802b00"
 	adj_drowsy = -10
 	chemclass = CHEM_CLASS_RARE
@@ -231,37 +245,37 @@
 /datum/reagent/drink/souto/cherry
 	name = "Cherry Souto"
 	id = "souto_cherry"
-	description = "A cherry flavored soda that's canned in Havanna"
+	description = "A cherry flavored soda that's canned in Havana."
 	color = COLOR_MAROON
 
 /datum/reagent/drink/souto/lime
 	name = "Lime Souto"
 	id = "souto_lime"
-	description = "A lime flavored soda that's canned in Havanna"
+	description = "A lime flavored soda that's canned in Havana."
 	color = "#878F00"
 
 /datum/reagent/drink/souto/grape
 	name = "Grape Souto"
 	id = "souto_grape"
-	description = "A grape flavored soda that's canned in Havanna"
+	description = "A grape flavored soda that's canned in Havana."
 	color = "#421C52"
 
 /datum/reagent/drink/souto/blueraspberry
 	name = "Blue Raspberry Souto"
 	id = "souto_blueraspberry"
-	description = "A blue fruit flavored soda that's canned in Havana"
+	description = "A blue fruit flavored soda that's canned in Havana."
 	color = "#005B96"
 
 /datum/reagent/drink/souto/peach
 	name = "Peach Souto"
 	id = "souto_peach"
-	description = "A peach flavored soda with flecks of peach pit floating inside that's canned in Havana"
+	description = "A peach flavored soda with flecks of peach pit floating inside that's canned in Havana."
 	color = "#FFE5B4"
 
 /datum/reagent/drink/souto/cranberry
 	name = "Cranberry Souto"
 	id = "souto_cranberry"
-	description = "A cranberry flavored soda that's canned in Havana"
+	description = "A cranberry flavored soda that's canned in Havana."
 	color = "#950714"
 
 /datum/reagent/drink/souto/vanilla
@@ -322,7 +336,7 @@
 	M.make_jittery(20)
 	M.druggy = max(M.druggy, 30)
 	M.dizziness +=5
-	M.drowsyness = 0
+	M.drowsiness = 0
 
 /datum/reagent/drink/cold/spacemountainwind
 	name = "Mountain Wind"
@@ -526,6 +540,12 @@
 	id = "lemonade"
 	color = COLOR_YELLOW
 
+/datum/reagent/drink/chocolate
+	name = "Chocolate Syrup"
+	description = "Nectar of the gods."
+	id = "chocolatesyrup"
+	color = "#7B3F00" // rgb: 123, 163, 0
+
 //*****************************************************************************************************/
 //***************************************Remove When Safe**********************************************/
 //*****************************************************************************************************/
@@ -679,7 +699,7 @@
 	color = "#FF8CFF" // rgb: 255, 140, 255
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
-	properties = list(PROPERTY_NEOGENETIC = 0.5, PROPERTY_ANTICORROSIVE = 0.5, PROPERTY_ANTITOXIC = 0.5, PROPERTY_OXYGENATING = 0.5, PROPERTY_RELAXING = 1)
+	properties = list(PROPERTY_NEOGENETIC = 0.5, PROPERTY_ANTICORROSIVE = 0.5, PROPERTY_ANTITOXIC = 0.5, PROPERTY_OXYGENATING = 0.5, PROPERTY_ANTISPASMODIC = 1)
 	adj_dizzy = -3
 	chemclass = CHEM_CLASS_RARE
 

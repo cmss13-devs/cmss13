@@ -75,6 +75,7 @@
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/gyro,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/bipod,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/extended_barrel/vented,
@@ -167,6 +168,7 @@
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/bipod,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/extended_barrel/vented,
@@ -267,6 +269,7 @@
 		/obj/item/attachable/attached_gun/shotgun,
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/attached_gun/flamer/advanced,
+		/obj/item/attachable/flashlight/under_barrel,
 	)
 	random_spawn_muzzle = list(
 		/obj/item/attachable/suppressor,
@@ -488,12 +491,12 @@
 	current_mag = /obj/item/ammo_magazine/rifle/m41aMK1/ap
 
 /obj/item/weapon/gun/rifle/m41aMK1/anchorpoint
-	desc = "A classic M41 MK1 Pulse Rifle painted in a fresh coat of the classic Humbrol 170 camoflauge. This one appears to be used by the Colonial Marine contingent aboard Anchorpoint Station, and is equipped with an underbarrel shotgun. Uses 10x24mm caseless ammunition."
+	desc = "A classic M41 MK1 Pulse Rifle painted in a fresh coat of the classic Humbrol 170 camouflage. This one appears to be used by the Colonial Marine contingent aboard Anchorpoint Station, and is equipped with an underbarrel shotgun. Uses 10x24mm caseless ammunition."
 	starting_attachment_types = list(/obj/item/attachable/stock/rifle/collapsible, /obj/item/attachable/attached_gun/shotgun)
 	current_mag = /obj/item/ammo_magazine/rifle/m41aMK1/ap
 
 /obj/item/weapon/gun/rifle/m41aMK1/anchorpoint/gl
-	desc = "A classic M41 MK1 Pulse Rifle painted in a fresh coat of the classic Humbrol 170 camoflauge. This one appears to be used by the Colonial Marine contingent aboard Anchorpoint Station, and is equipped with an underbarrel grenade launcher. Uses 10x24mm caseless ammunition."
+	desc = "A classic M41 MK1 Pulse Rifle painted in a fresh coat of the classic Humbrol 170 camouflage. This one appears to be used by the Colonial Marine contingent aboard Anchorpoint Station, and is equipped with an underbarrel grenade launcher. Uses 10x24mm caseless ammunition."
 	starting_attachment_types = list(/obj/item/attachable/stock/rifle/collapsible, /obj/item/attachable/attached_gun/grenade/mk1)
 
 //----------------------------------------------
@@ -544,6 +547,7 @@
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/extended_barrel/vented,
 		/obj/item/attachable/scope/mini,
@@ -748,6 +752,7 @@
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/gyro,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/bipod,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/extended_barrel/vented,
@@ -843,6 +848,7 @@
 		/obj/item/attachable/angledgrip,
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/bipod,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/extended_barrel/vented,
@@ -913,6 +919,7 @@
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/scope/slavic,
 	)
@@ -923,7 +930,7 @@
 		/obj/item/attachable/scope/slavic,
 		/obj/item/attachable/magnetic_harness,
 	)
-	random_spawn_under = list() //prevents equiping invalid attachments from base
+	random_spawn_under = list() //prevents equipping invalid attachments from base
 	random_spawn_muzzle = list()
 
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_WIELDED_FIRING_ONLY
@@ -989,6 +996,7 @@
 		/obj/item/attachable/flashlight/grip,
 		/obj/item/attachable/gyro,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/bipod,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/extended_barrel/vented,
@@ -1071,6 +1079,7 @@
 		/obj/item/attachable/flashlight/grip,
 		/obj/item/attachable/gyro,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/bipod,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/extended_barrel/vented,
@@ -1105,7 +1114,7 @@
 
 /obj/item/weapon/gun/rifle/m16/grenadier
 	name = "\improper M16 grenadier rifle"
-	desc = "An old, reliable design first adopted by the U.S. military in the 1960s. Something like this belongs in a museum of war history. It is chambered in 5.56x45mm. This one has an irremovable M203 grenade launcher attached to it, holds one propriatary 40mm shell at a time, it lacks modern IFF systems and will impact the first target it hits; introduce your little friend."
+	desc = "An old, reliable design first adopted by the U.S. military in the 1960s. Something like this belongs in a museum of war history. It is chambered in 5.56x45mm. This one has an irremovable M203 grenade launcher attached to it, holds one proprietary 40mm shell at a time, it lacks modern IFF systems and will impact the first target it hits; introduce your little friend."
 	icon_state = "m16g"
 	item_state = "m16"
 	fire_sound = 'sound/weapons/gun_m16.ogg'
@@ -1165,7 +1174,7 @@
 
 /obj/item/weapon/gun/rifle/xm177
 	name = "\improper XM177E2 carbine"
-	desc = "An old design, essentially a shortened M16A1 with a collapsable stock. It is chambered in 5.56x45mm. The short length inhibits the attachment of most underbarrel attachments, and the barrel moderator prohibits the attachment of all muzzle devices."
+	desc = "An old design, essentially a shortened M16A1 with a collapsible stock. It is chambered in 5.56x45mm. The short length inhibits the attachment of most underbarrel attachments, and the barrel moderator prohibits the attachment of all muzzle devices."
 	desc_lore = "A carbine similar to the M16A1, with a collapsible stock and a distinct flash suppressor. A stamp on the receiver reads: 'COLT AR-15 - PROPERTY OF U.S. GOVT - XM177E2 - CAL 5.56MM' \nA design originating from the Vietnam War, the XM177, also known as the Colt Commando or GAU-5/A, was an improvement on the CAR-15 Model 607, fixing multiple issues found with the limited service of the Model 607 with Special Forces. The XM177 saw primary use with Army Special Forces and Navy Seals operating as commandos. \nHow this got here is a mystery."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/assault_rifles.dmi'
 	icon_state = "xm177"
@@ -1202,6 +1211,7 @@
 	random_spawn_under = list(
 		/obj/item/attachable/verticalgrip,
 		/obj/item/attachable/lasersight,
+		/obj/item/attachable/flashlight/under_barrel,
 	)
 
 	starting_attachment_types = list(/obj/item/attachable/stock/xm177)
@@ -1235,6 +1245,7 @@
 		/obj/item/attachable/scope/mini,
 		/obj/item/attachable/verticalgrip,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/stock/xm177,
 		/obj/item/attachable/stock/xm177/car15a3,
@@ -1259,7 +1270,7 @@
 /obj/item/weapon/gun/rifle/ar10
 	name = "\improper AR10 rifle"
 	desc = "An earlier version of the more widespread M16 rifle. Considered to be the father of the 20th century rifle. How one of these ended up here is a mystery of its own. It is chambered in 7.62x51mm."
-	desc_lore = "The AR10 was initially manufactured by the Armalite corporation (bought by Weyland-Yutani in 2002) in the 1950s. It was the first production rifle to incorporate many new and innovative features, such as a gas operated bolt and carrier system. Only 10,000 were ever produced, and the only national entities to use them were Portugal and Sudan. Since the end of the 20th century, these rifles - alongside the far more common M16 and AR15 - have floated around the less civillised areas of space, littering jungles and colony floors with their uncommon cased ammunition - a rarity since the introduction of pulse munitions. This rifle has the word \"Salazar\" engraved on its side."
+	desc_lore = "The AR10 was initially manufactured by the Armalite corporation (bought by Weyland-Yutani in 2002) in the 1950s. It was the first production rifle to incorporate many new and innovative features, such as a gas operated bolt and carrier system. Only 10,000 were ever produced, and the only national entities to use them were Portugal and Sudan. Since the end of the 20th century, these rifles - alongside the far more common M16 and AR15 - have floated around the less civilized areas of space, littering jungles and colony floors with their uncommon cased ammunition - a rarity since the introduction of pulse munitions. This rifle has the word \"Salazar\" engraved on its side."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/assault_rifles.dmi'
 	icon_state = "ar10"
 	item_state = "ar10"
@@ -1291,6 +1302,7 @@
 		/obj/item/attachable/angledgrip,
 		/obj/item/attachable/flashlight/grip,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/bipod,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/extended_barrel/vented,
@@ -1366,7 +1378,7 @@
 
 /obj/item/weapon/gun/rifle/m16/grenadier/dutch
 	name = "\improper Dutch's Grenadier M16A1"
-	desc = "A modified M16 employed by Dutch's Dozen mercenaries. It has 'CLOAKER KILLER' printed on a label on the side. It is chambered in 5.56x45mm. This one has an irremovable M203 grenade launcher attached to it, holds one propriatary 40mm shell at a time, it lacks modern IFF systems and will impact the first target it hits; introduce your little friend."
+	desc = "A modified M16 employed by Dutch's Dozen mercenaries. It has 'CLOAKER KILLER' printed on a label on the side. It is chambered in 5.56x45mm. This one has an irremovable M203 grenade launcher attached to it, holds one proprietary 40mm shell at a time, it lacks modern IFF systems and will impact the first target it hits; introduce your little friend."
 	current_mag = /obj/item/ammo_magazine/rifle/m16/ap
 	starting_attachment_types = list(/obj/item/attachable/scope/mini, /obj/item/attachable/bayonet)
 
@@ -1427,6 +1439,7 @@
 		/obj/item/attachable/angledgrip,
 		/obj/item/attachable/flashlight/grip,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/bipod,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/extended_barrel/vented,
@@ -1523,6 +1536,7 @@
 		/obj/item/attachable/extended_barrel/vented,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/verticalgrip, // Underbarrel
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/flashlight/grip,
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/burstfire_assembly,
@@ -1610,7 +1624,7 @@
 
 /obj/item/weapon/gun/rifle/type71/flamer
 	name = "\improper Type 71-F pulse rifle"
-	desc = " This appears to be a less common variant of the Type 71 with an integrated flamethrower that seems especially powerful."
+	desc = "This appears to be a less common variant of the Type 71 with an integrated flamethrower that seems especially powerful."
 	attachable_allowed = list(
 		/obj/item/attachable/flashlight, // Rail
 		/obj/item/attachable/magnetic_harness,
@@ -1696,6 +1710,7 @@
 		/obj/item/attachable/extended_barrel/vented,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/verticalgrip, // Underbarrel
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/burstfire_assembly,
 		/obj/item/attachable/attached_gun/extinguisher,
 		)
@@ -1808,6 +1823,7 @@
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/gyro,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/bipod,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/extended_barrel/vented,
@@ -1897,6 +1913,7 @@
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/extended_barrel/vented,
 		/obj/item/attachable/magnetic_harness,
@@ -1909,7 +1926,10 @@
 		/obj/item/attachable/alt_iff_scope,
 		/obj/item/attachable/flashlight/grip,
 		/obj/item/attachable/attached_gun/extinguisher,
+		/obj/item/attachable/attached_gun/flare_launcher,
 	)
+
+	starting_attachment_types = list(/obj/item/attachable/attached_gun/flare_launcher)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	wield_delay = WIELD_DELAY_VERY_FAST
@@ -1985,6 +2005,7 @@
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/extended_barrel/vented,
 		/obj/item/attachable/magnetic_harness,
@@ -2286,7 +2307,7 @@
 
 /obj/item/weapon/gun/rifle/l23
 	name = "\improper L23 assault rifle"
-	desc = "A rare sight, this rifle is seen most commonly in the hands of Three World Empire RMCs. Compared to the M41A MK2, it has noticeably improved handling and vastly improved performance. This one is painted in RMC's purple-blue camouflage"
+	desc = "A rare sight, this rifle is seen most commonly in the hands of Three World Empire RMCs. Compared to the M41A MK2, it has noticeably improved handling and vastly improved performance. This one is painted in RMC's purple-blue camouflage."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/TWE/assault_rifles.dmi'
 	icon_state = "l23"
 	item_state = "l23"
@@ -2308,6 +2329,7 @@
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/bipod,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/extended_barrel/vented,
@@ -2370,7 +2392,7 @@
 //***************************************************************//
 /obj/item/weapon/gun/rifle/l23/breacher // One-handed UBS rifle
 	name = "\improper L23-B assault rifle"
-	desc = "A rare sight, this rifle is seen most commonly in the hands of Three World Empire RMCs. This particular model was modified to facilitate RMC operations in tight quarters, allowing for it to be fired one-handed. This however crippled its stopping power due to a shorter barrel needed to make it compact. Burst fire still kicks like a mule. Compared to the M41A MK2, it has noticeably improved handling and vastly improved performance. This one is painted in RMC's purple-blue camouflage"
+	desc = "A rare sight, this rifle is seen most commonly in the hands of Three World Empire RMCs. This particular model was modified to facilitate RMC operations in tight quarters, allowing for it to be fired one-handed. This however crippled its stopping power due to a shorter barrel needed to make it compact. Burst fire still kicks like a mule. Compared to the M41A MK2, it has noticeably improved handling and vastly improved performance. This one is painted in RMC's purple-blue camouflage."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/TWE/assault_rifles.dmi'
 	icon_state = "l23"
 	item_state = "l23"
@@ -2464,6 +2486,7 @@
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/extended_barrel/vented,
 		/obj/item/attachable/magnetic_harness,
@@ -2505,7 +2528,7 @@
 
 /obj/item/weapon/gun/rifle/l64a3/marksman
 	name = "\improper L64A3 battle rifle"
-	desc = "A lightweight designated marksman rifle developed by Howatomo Precision Machining for the Royal Marines and Imperial Armed Space Forces.  Reliable and deadly."
+	desc = "A lightweight designated marksman rifle developed by Howatomo Precision Machining for the Royal Marines and Imperial Armed Space Forces. Reliable and deadly."
 
 	current_mag = /obj/item/ammo_magazine/rifle/l64/ap
 
@@ -2578,6 +2601,7 @@
 		/obj/item/attachable/gyro,
 		/obj/item/attachable/flashlight/grip,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/stock/xm51,
 	)

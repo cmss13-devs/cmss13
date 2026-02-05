@@ -63,6 +63,15 @@
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/floor/kutjevo/multi_tiles/southeast,
 /area/kutjevo/exterior/lz_dunes)
+"ao" = (
+/obj/structure/window/framed/kutjevo/reinforced,
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	dir = 4;
+	name = "\improper Landing Zone Shutters";
+	id = "kutjevo_landingzone_ne"
+	},
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/exterior/lz_dunes)
 "as" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 5
@@ -360,6 +369,7 @@
 /turf/open/floor/kutjevo/tan/alt_edge/east,
 /area/kutjevo/exterior/lz_dunes)
 "lB" = (
+/obj/structure/bed/chair/office/light,
 /turf/open/floor/kutjevo/colors/red/inner_corner/west,
 /area/kutjevo/exterior/lz_dunes)
 "lO" = (
@@ -376,13 +386,6 @@
 	pixel_y = 20
 	},
 /turf/open/auto_turf/sand/layer0,
-/area/kutjevo/exterior/lz_dunes)
-"lV" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer/open{
-	id = "kutjevo_landingzone_sw";
-	name = "\improper Landing Zone Shutters"
-	},
-/turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/exterior/lz_dunes)
 "md" = (
 /obj/structure/sink{
@@ -868,9 +871,9 @@
 "BK" = (
 /obj/structure/window/framed/kutjevo/reinforced,
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
-	id = "kutjevo_landingzone";
+	dir = 4;
 	name = "\improper Landing Zone Shutters";
-	dir = 8
+	id = "kutjevo_landingzone_e"
 	},
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/exterior/lz_dunes)
@@ -980,19 +983,12 @@
 	dir = 1;
 	icon_state = "pwall"
 	},
-/area/kutjevo/interior/oob)
+/area/space)
 "FJ" = (
 /obj/structure/machinery/light{
 	dir = 4
 	},
 /turf/open/floor/kutjevo/tan/alt_edge/west,
-/area/kutjevo/exterior/lz_dunes)
-"FQ" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer/open{
-	id = "kutjevo_landingzone_sw2";
-	name = "\improper Landing Zone Shutters"
-	},
-/turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/exterior/lz_dunes)
 "Ge" = (
 /obj/effect/decal/cleanable/blood/xeno,
@@ -1055,21 +1051,9 @@
 	dir = 1;
 	pixel_x = 15
 	},
-/obj/structure/machinery/door_control/brbutton/alt{
-	health = null;
-	id = "kutjevo_landingzone_ne";
-	idle_power_usage = 0;
-	name = "Hydroponics West Lock Override";
-	pixel_x = -14;
-	pixel_y = 11
-	},
-/obj/structure/machinery/door_control/brbutton/alt{
-	health = null;
-	id = "kutjevo_landingzone";
-	idle_power_usage = 0;
-	name = "Hydroponics East Lock Override";
-	pixel_x = -14;
-	pixel_y = -3
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = -5;
+	pixel_y = 9
 	},
 /turf/open/floor/kutjevo/colors/red,
 /area/kutjevo/exterior/lz_dunes)
@@ -1240,25 +1224,17 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/door_control/brbutton/alt{
 	health = null;
-	id = "kutjevo_landingzone_sw2";
+	id = "kutjevo_landingzone_ne";
 	idle_power_usage = 0;
-	name = "Hydroponics East Lock Override";
-	pixel_x = -8;
+	name = "Landing Zone North-East Lock Override";
+	pixel_x = 8;
 	pixel_y = 11
 	},
 /obj/structure/machinery/door_control/brbutton/alt{
 	health = null;
-	id = "kutjevo_landingzone_s";
+	id = "kutjevo_landingzone";
 	idle_power_usage = 0;
-	name = "Hydroponics West Lock Override";
-	pixel_x = 5;
-	pixel_y = 11
-	},
-/obj/structure/machinery/door_control/brbutton/alt{
-	health = null;
-	id = "kutjevo_landingzone_sw";
-	idle_power_usage = 0;
-	name = "Hydroponics East Lock Override";
+	name = "Landing Zone Monitoring Lock Override";
 	pixel_x = -8;
 	pixel_y = -3
 	},
@@ -1266,9 +1242,17 @@
 	health = null;
 	id = "kutjevo_landingzone_e";
 	idle_power_usage = 0;
-	name = "Hydroponics West Lock Override";
-	pixel_x = 5;
+	name = "Landing Zone East Lock Override";
+	pixel_x = 8;
 	pixel_y = -3
+	},
+/obj/structure/machinery/door_control/brbutton/alt{
+	health = null;
+	id = "kutjevo_landingzone_s";
+	idle_power_usage = 0;
+	name = "Landing Zone South Lock Override";
+	pixel_x = -8;
+	pixel_y = 11
 	},
 /turf/open/floor/kutjevo/colors/red,
 /area/kutjevo/exterior/lz_dunes)
@@ -1388,9 +1372,9 @@
 /obj/item/shard,
 /obj/item/stack/rods,
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
-	id = "kutjevo_landingzone";
+	dir = 4;
 	name = "\improper Landing Zone Shutters";
-	dir = 8
+	id = "kutjevo_landingzone_ne"
 	},
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/exterior/lz_dunes)
@@ -2518,12 +2502,12 @@ ks
 rY
 Is
 ho
-FQ
+ex
 up
 up
 Kl
 ho
-lV
+ex
 Fb
 bT
 zc
@@ -2570,12 +2554,12 @@ vI
 wY
 Is
 NK
-FQ
+ex
 ab
 Pp
 Pp
 aa
-lV
+ex
 SP
 bT
 bT
@@ -2622,12 +2606,12 @@ hA
 wY
 ac
 PB
-FQ
+ex
 Pp
 ab
 Pp
 PB
-lV
+ex
 SP
 bT
 zc
@@ -2674,12 +2658,12 @@ ag
 wY
 ad
 PB
-FQ
+ex
 Pp
 xp
 WO
 PB
-lV
+ex
 SP
 bT
 bT
@@ -2726,12 +2710,12 @@ ks
 ae
 Is
 ho
-FQ
+ex
 up
 ho
 up
 mf
-lV
+ex
 Fg
 bT
 sL
@@ -3147,8 +3131,8 @@ lm
 lm
 lm
 lm
-Xq
-Xq
+Lg
+Lg
 aw
 zc
 sL
@@ -3197,9 +3181,9 @@ up
 lm
 lm
 lm
-Xq
-Xq
-Xq
+Lg
+Lg
+Lg
 Rg
 Kf
 Xr
@@ -3455,8 +3439,8 @@ UB
 Pn
 Vg
 lm
-Xq
-Xq
+Lg
+Lg
 sL
 bT
 zc
@@ -3486,15 +3470,15 @@ Bd
 lm
 Pd
 Pd
-BK
+ao
 lm
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
 lm
 BK
 BK
@@ -3507,8 +3491,8 @@ Kc
 up
 up
 lm
-Xq
-Xq
+Lg
+Lg
 sL
 zc
 bT
@@ -3540,13 +3524,13 @@ Sd
 Ty
 Rg
 lm
-Xq
-Xq
-Xq
+Lg
+Lg
+Lg
 sL
 sL
-Xq
-Xq
+Lg
+Lg
 lm
 wV
 Rg
@@ -3559,7 +3543,7 @@ lO
 lm
 lm
 lm
-Xq
+Lg
 sL
 xy
 bT
@@ -3796,15 +3780,15 @@ qQ
 zc
 zc
 sL
-Xq
+Lg
 sL
 zc
 zc
 IP
 xy
 GD
-Xq
-Xq
+Lg
+Lg
 JU
 zc
 xy
@@ -3847,16 +3831,16 @@ qQ
 LF
 TS
 sL
-Xq
-Xq
-Xq
+Lg
+Lg
+Lg
 sL
 pF
 GD
 sU
 Rg
-Xq
-Xq
+Lg
+Lg
 at
 at
 at
@@ -3899,15 +3883,15 @@ Zo
 qQ
 LF
 Zo
-Xq
-Xq
+Lg
+Lg
 sL
 xy
 zc
 MR
 Rg
-Xq
-Xq
+Lg
+Lg
 zJ
 nh
 nh
@@ -3951,15 +3935,15 @@ AL
 KS
 KS
 KS
-Xq
-Xq
+Lg
+Lg
 bd
 bd
 bd
-Xq
-Xq
-Xq
-Xq
+Lg
+Lg
+Lg
+Lg
 nh
 nh
 nh

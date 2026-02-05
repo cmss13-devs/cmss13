@@ -12,7 +12,7 @@
 
 /datum/emergency_call/royal_marines/New()
 	..()
-	arrival_message = "[MAIN_SHIP_NAME], this is [pick_weight(list("HMS Patna"= 50, "HMS Thunderchild" = 50))]; we are responding to your distress call and boarding in accordance with the Military Aid Act of 2177, Authentication code Lima-18153. "
+	arrival_message = "[MAIN_SHIP_NAME], this is [pick_weight(list("HMS Patna"= 50, "HMS Thunderchild" = 50))]; we are responding to your distress call and boarding in accordance with the Military Aid Act of 2177, Authentication code Lima-18153."
 	objectives = "Ensure the survival of the [MAIN_SHIP_NAME], eliminate any hostiles, and assist the crew in any way possible."
 
 
@@ -64,7 +64,7 @@
 	to_chat(spawning_mob, SPAN_BOLD("You were born in the Three World Empire to a [pick_weight(list("average" = 75, "poor" = 15, "well-established" = 10))] family."))
 	to_chat(spawning_mob, SPAN_BOLD("Joining the Royal Marines gave you a lot of combat experience and useful skills."))
 	to_chat(spawning_mob, SPAN_BOLD("You are [pick_weight(list("unaware" = 70, "faintly aware" = 20, "knowledgeable" = 10))] of the xenomorph threat."))
-	to_chat(spawning_mob, SPAN_BOLD("You are a citizen of the three world empire and joined the Royal Marines Commando"))
+	to_chat(spawning_mob, SPAN_BOLD("You are a citizen of the three world empire and joined the Royal Marines Commando."))
 	to_chat(spawning_mob, SPAN_BOLD("You are apart of a jointed UA/TWE taskforce onboard the HMS Patna and Thunderchild."))
 	to_chat(spawning_mob, SPAN_BOLD("Under the directive of the RMC high command, you have been assisting USCM forces with maintaining peace in the area."))
 	to_chat(spawning_mob, SPAN_BOLD("Assist the USCMC Force of the [MAIN_SHIP_NAME] however you can."))

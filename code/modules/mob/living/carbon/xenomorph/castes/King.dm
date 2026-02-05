@@ -305,7 +305,7 @@
 		return
 
 	var/area/target_area = get_area(target_turf)
-	if(target_area.flags_area & AREA_NOTUNNEL)
+	if(target_area.flags_area & AREA_NOBURROW)
 		to_chat(xeno, SPAN_XENONOTICE("We cannot leap to that area!"))
 
 	var/list/leap_line = get_line(xeno, target)
@@ -374,9 +374,8 @@
 	owner.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	SLEEP_CHECK_DEATH(7, owner)
 
-	while(target_turf && owner.loc != target_turf)
-		owner.forceMove(get_step(owner, get_dir(owner, target_turf)))
-		SLEEP_CHECK_DEATH(0.5, owner)
+	SLEEP_CHECK_DEATH(0.5 * (abs(owner.x-target_turf.x) + abs(owner.y - target_turf.y) + abs(owner.z - target_turf.z)), owner)
+	owner.forceMove(target_turf)
 
 	animate(owner, alpha = 100, transform = matrix()*0.7, time = 7)
 	var/descentTime = 5

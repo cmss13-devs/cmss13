@@ -31,7 +31,7 @@
  * * asset_name - the identifier of the asset.
  * * asset - the actual asset file (or an asset_cache_item datum).
  * * file_hash - optional, a hash of the contents of the asset files contents. used so asset_cache_item doesnt have to hash it again
- * * dmi_file_path - optional, means that the given asset is from the rsc and thus we dont need to do some expensive operations
+ * * dmi_file_path - optional, means that the given asset is from the rsc and thus we don't need to do some expensive operations
  */
 /datum/asset_transport/proc/register_asset(asset_name, asset, file_hash, dmi_file_path)
 	var/datum/asset_cache_item/ACI = asset

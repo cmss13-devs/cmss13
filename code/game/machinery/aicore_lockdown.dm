@@ -13,6 +13,9 @@
 /obj/structure/machinery/aicore_lockdown/attack_alien(mob/user as mob)
 	return FALSE
 
+/obj/structure/machinery/aicore_lockdown/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
+	return TAILSTAB_COOLDOWN_NONE
+
 /obj/structure/machinery/aicore_lockdown/attackby(obj/item/attacking_item, mob/user)
 	return attack_hand(user)
 
@@ -20,7 +23,7 @@
 	if(isxeno(user))
 		return FALSE
 	if(!allowed(user))
-		to_chat(user, SPAN_DANGER("Access Denied"))
+		to_chat(user, SPAN_DANGER("Access Denied."))
 		flick(initial(icon_state) + "-denied", src)
 		return FALSE
 

@@ -265,7 +265,7 @@
 		STOP_PROCESSING(SSobj, src)
 		return
 
-	var/list/targets = SSquadtree.players_in_range(SQUARE(M.x, M.y, area_range), M.z, QTREE_SCAN_MOBS | QTREE_EXCLUDE_OBSERVER)
+	var/list/targets = SSquadtree.players_in_range(SQUARE(M.x, M.y, area_range), M.z, QTREE_SCAN_MOBS | QTREE_FILTER_LIVING)
 	if(!targets)
 		return
 

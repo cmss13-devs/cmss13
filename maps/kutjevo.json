@@ -36,11 +36,31 @@
     "map_item_type": "/obj/item/map/kutjevo_map",
     "announce_text": "An automated distress signal has been received from Weyland-Yutani colony Kutjevo Refinery, known for botanical research, export, and raw materials processing and refinement. The ###SHIPNAME### has been dispatched to investigate.",
     "liaison_briefing": "maps/map_briefings/cl_brief_kutjevo.html",
+    "co_briefing": {
+        "Hawks": "maps/map_briefings/commanding_officer/kutjevo/KUTJEVOcpo.html",
+        "Doves": "maps/map_briefings/commanding_officer/kutjevo/KUTJEVOhmm.html",
+        "Magpies": "maps/map_briefings/commanding_officer/kutjevo/KUTJEVOmodi.html",
+        "Unaligned": "maps/map_briefings/commanding_officer/kutjevo/KUTJEVOunaligned.html"
+    },
     "monkey_types": [
         "neaera",
         "stok"
 	],
-	"traits": [{ "Ground": true }],
+	"traits": [
+        {
+            "Ground": true,
+            "Up": 1
+        },
+        {
+            "Ground": true,
+            "Up": 1,
+            "Down": -1
+        },
+        {
+            "Ground": true,
+            "Down": -1
+        }
+    ],
     "nightmare_path": "maps/Nightmare/maps/Kutjevo/",
     "camouflage": "desert",
     "gamemodes": [

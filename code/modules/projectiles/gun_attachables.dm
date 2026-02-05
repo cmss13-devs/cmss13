@@ -4180,7 +4180,7 @@ Defined in conflicts.dm of the #defines folder.
 	desc = "A set of rugged telescopic poles to keep a weapon stabilized during firing."
 	icon_state = "bipod_m41ae2"
 	attach_icon = "bipod_m41ae2_a"
-	heavy_bipod = TRUE
+	heavy_bipod = FALSE
 	camo_bipod = TRUE // this bipod has a camo skin
 
 /obj/item/attachable/bipod/m41ae2/Initialize(mapload, ...)

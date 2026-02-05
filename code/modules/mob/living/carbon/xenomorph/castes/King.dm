@@ -80,7 +80,7 @@
 	. = ..()
 	AddComponent(/datum/component/footstep, 2 , 35, 11, 4, "alien_footstep_large")
 	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(post_move))
-	if(!should_block_game_interaction(src)) // don't let admin-level kings mess up alliances
+	if(!should_block_game_interaction(src, TRUE)) // don't let admin-level kings mess up alliances
 		hive = GLOB.hive_datum[hivenumber]
 		hive.banned_allies = list("All")
 		if(hive.break_all_alliances())

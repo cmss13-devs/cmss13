@@ -13,8 +13,6 @@
 	job_options = list(SQUADLEAD = "SL", VET_SQUADLEAD = "vSL")
 
 /datum/job/marine/leader/filter_job_option(mob/job_applicant)
-	. = ..()
-
 	var/list/filtered_job_options = list(job_options[1])
 
 	if(job_applicant?.client?.prefs)

@@ -20,9 +20,12 @@
 
 	if(src.heavy_shots >= src.stun_threshold)
 		var/mob/living/carbon/xenomorph/target_shot = parent
-		to_chat(target_shot, SPAN_XENOHIGHDANGER("The massive impact knocks us off balance!"))
 
-		target_shot.KnockDown(0.5)// Did you know i spent 2 hours trying to see what the issue was here using apply_effect(3, stun)? and for some reason stun doesnt knock people down, thanks harryob.
+		if(target_shot.mob_size >= MOB_SIZE_BIG)
+			return
+		else
+			to_chat(target_shot, SPAN_XENOHIGHDANGER("The massive impact knocks us off balance!"))
+			target_shot.KnockDown(0.5)// Did you know i spent 2 hours trying to see what the issue was here using apply_effect(3, stun)? and for some reason stun doesnt knock people down, thanks harryob.
 
 		qdel(src)
 	return

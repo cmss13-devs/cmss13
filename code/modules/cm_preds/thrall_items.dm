@@ -65,6 +65,7 @@
 		/obj/item/weapon/gun/pistol/action,
 		/obj/item/weapon/gun/pistol/clfpistol,
 		/obj/item/weapon/folding_knife,
+		/obj/item/weapon/knife,
 	)
 
 /obj/item/clothing/shoes/yautja/thrall/silver

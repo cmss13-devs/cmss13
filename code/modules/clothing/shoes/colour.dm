@@ -49,6 +49,7 @@
 		/obj/item/weapon/gun/pistol/clfpistol,
 		/obj/item/tool/screwdriver,
 		/obj/item/weapon/folding_knife,
+		/obj/item/weapon/knife,
 	)
 
 /obj/item/clothing/shoes/white

@@ -10,7 +10,7 @@ SUBSYSTEM_DEF(achievements)
 	var/list/datum/achievement/all_achivements = list()
 
 	var/list/datum/achievement_to_check/queries_to_check = list()
-	var/list/datum/achievement_to_check/sets_to_check = list()
+	var/list/datum/achievement_to_check/grants_to_check = list()
 
 /datum/controller/subsystem/achievements/Initialize()
 	var/api_url = CONFIG_GET(string/achievements_api_url)
@@ -56,15 +56,15 @@ SUBSYSTEM_DEF(achievements)
 
 	queries_to_check -= handled_queries
 
-	var/handled_sets = list()
-	for(var/datum/achievement_to_check/set in sets_to_check)
-		if(!set.request.is_complete())
+	var/handled_grants = list()
+	for(var/datum/achievement_to_check/grant in grants_to_check)
+		if(!grant.request.is_complete())
 			continue
 
-		handle_achievement_set_complete(set.ckey, set.request, set.achievement)
-		handled_sets += set
+		handle_achievement_set_complete(grant.ckey, grant.request, grant.achievement)
+		handled_grants += grant
 
-	sets_to_check -= handled_sets
+	grants_to_check -= handled_grants
 
 /// Signal handler for when a client logs in
 /datum/controller/subsystem/achievements/proc/on_client_login(source, client/new_client)
@@ -171,7 +171,7 @@ SUBSYSTEM_DEF(achievements)
 	request.prepare(RUSTG_HTTP_METHOD_POST, api_url, json_encode(request_body), headers)
 	request.begin_async()
 
-	sets_to_check += new /datum/achievement_to_check(ckey, request, achievement)
+	grants_to_check += new /datum/achievement_to_check(ckey, request, achievement)
 
 /datum/controller/subsystem/achievements/proc/handle_achievement_set_complete(ckey, datum/http_request/request, datum/achievement/achievement)
 	var/datum/http_response/response = request.into_response()

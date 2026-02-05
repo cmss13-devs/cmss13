@@ -124,7 +124,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_leader, list(
 	desc = "An automated gear rack for Squad Leaders."
 	icon_state = "sl_gear"
 	show_points = TRUE
-	vendor_role = list(JOB_SQUAD_LEADER)
+	vendor_role = list(JOB_VET_SQUAD_LEADER, JOB_SQUAD_LEADER)
 	req_access = list(ACCESS_MARINE_LEADER)
 
 /obj/structure/machinery/cm_vending/gear/leader/get_listed_products(mob/user)
@@ -253,7 +253,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_vet_leader, list(
 	name = "\improper ColMarTech Squad Leader Equipment Rack"
 	desc = "An automated rack hooked up to a colossal storage of Squad Leader standard-issue equipment."
 	req_access = list(ACCESS_MARINE_LEADER)
-	vendor_role = list(JOB_SQUAD_LEADER)
+	vendor_role = list(JOB_VET_SQUAD_LEADER, JOB_SQUAD_LEADER)
 
 /obj/structure/machinery/cm_vending/clothing/leader/get_listed_products(mob/living/carbon/human/user)
 	if(user?.wear_id)

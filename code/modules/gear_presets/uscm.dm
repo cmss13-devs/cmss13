@@ -425,6 +425,8 @@
 /datum/equipment_preset/uscm/leader/veteran
 	name = "USCM Veteran Squad Leader"
 
+	assignment = JOB_VET_SQUAD_LEADER
+	job_title = JOB_VET_SQUAD_LEADER
 	paygrades = list(PAY_SHORT_ME8 = JOB_PLAYTIME_TIER_0)
 	minimum_age = 30
 

@@ -1245,8 +1245,6 @@ can cause issues with ammo types getting mixed up during the burst.
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/attached_gun/extinguisher,
 		/obj/item/attachable/stock/shotgun,
-		/obj/item/attachable/cosmetic/m37_shell_rack,
-		/obj/item/attachable/cosmetic/m37_ported,
 	)
 	map_specific_decoration = TRUE
 
@@ -1375,6 +1373,8 @@ can cause issues with ammo types getting mixed up during the burst.
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/attached_gun/extinguisher,
 		/obj/item/attachable/stock/synth/collapsible,
+		/obj/item/attachable/cosmetic/m37_shell_rack,
+		/obj/item/attachable/cosmetic/m37_ported,
 	)
 
 /obj/item/weapon/gun/shotgun/pump/dual_tube

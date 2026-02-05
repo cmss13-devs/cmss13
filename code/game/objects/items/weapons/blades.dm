@@ -234,7 +234,7 @@
 /obj/item/weapon/knife
 	name ="knife"
 	desc = "A bog-standard knife. This should not be seen normally, file an issue if you see this!"
-	icon_state = "knife"
+	icon_state = "shiv"
 	icon = 'icons/obj/items/weapons/melee/knives.dmi'
 	item_icons = list(
 		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/objects.dmi',

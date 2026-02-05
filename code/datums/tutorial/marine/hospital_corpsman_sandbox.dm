@@ -335,18 +335,11 @@
 			movement_handler()
 
 /datum/tutorial/marine/hospital_corpsman/proc/handle_speech(mob/living/carbon/human/target)
-
-	var/list/help_me = list()
-
 	if(target in dragging_agents || prob(25))
 		target.emote("medic")
 		return
-	for(var/obj/limb/limb as anything in target.limbs)
-		if(limb.status & LIMB_BROKEN)
-			var/targetlimb = limb.display_name
-			help_me |= list("Need a [targetlimb] splint please Doc", "Splint [targetlimb]", "Can you splint my [targetlimb] please")
 
-	help_me |= list(
+	var/list/help_me = list(
 		"Doc can I get some pills?",
 		"Need a patch up please",
 		"Im hurt Doc...",
@@ -359,6 +352,13 @@
 		"HEEEELP MEEEEEE!!!!!"
 	)
 
+	for(var/obj/limb/limb as anything in target.limbs)
+		var/targetlimb = limb.display_name
+		if(limb.status & LIMB_BROKEN)
+			help_me |= list("Need a [targetlimb] splint please Doc", "Splint [targetlimb]", "Can you splint my [targetlimb] please")
+		if(limb.status & LIMB_ESCHAR)
+			help_me |= list("Need a [targetlimb] splint please Doc", "Splint [targetlimb]", "Can you splint my [targetlimb] please")
+
 	target.say("[pick(help_me)]")
 
 /datum/tutorial/marine/hospital_corpsman/proc/movement_handler()
@@ -370,6 +370,7 @@
 	for(var/mob/living/carbon/human/active_agent as anything in active_agents)
 		move_agent(active_agent, active_agents)
 
+/// Shuts down the NPC movement processing, and moves all active patients to their destination turfs
 /datum/tutorial/marine/hospital_corpsman/proc/terminate_agent_processing()
 
 	if(terminate_movement_timer)

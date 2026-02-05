@@ -172,7 +172,7 @@
 			if(xeno.behavior_delegate)
 				damage = xeno.behavior_delegate.melee_attack_modify_damage(damage, src)
 
-			//Frenzy auras stack in a way, then the raw value is multipled by two to get the additive modifier
+			//Frenzy auras stack in a way, then the raw value is multiplied by two to get the additive modifier
 			if(xeno.frenzy_aura > 0)
 				damage += (xeno.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER)
 

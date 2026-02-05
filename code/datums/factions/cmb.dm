@@ -51,9 +51,6 @@
 		if(JOB_SQUAD_SMARTGUN)
 			hud_icon_state = "gun"
 			anchorpoint_marine = TRUE
-		if(JOB_SQUAD_LEADER)
-			hud_icon_state = "leader"
-			anchorpoint_marine = TRUE
 
 	if(anchorpoint_marine)
 		var/image/IMG = image('icons/mob/hud/factions/marine.dmi', H, "hudsquad")

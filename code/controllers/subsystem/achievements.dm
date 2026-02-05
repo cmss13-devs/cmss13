@@ -1,13 +1,16 @@
 /// Subsystem that queries an external API for player achievements
 SUBSYSTEM_DEF(achievements)
 	name = "Achievements"
-	flags = SS_NO_FIRE
+	wait = 2 SECONDS
 	init_order = SS_INIT_ACHIEVEMENTS
 	priority = SS_PRIORITY_ACHIEVEMENTS
 	runlevels = RUNLEVELS_DEFAULT|RUNLEVEL_LOBBY
 
 	/// Associated list of key -> achievement datum
 	var/list/datum/achievement/all_achivements = list()
+
+	var/list/datum/achievement_to_check/queries_to_check = list()
+	var/list/datum/achievement_to_check/sets_to_check = list()
 
 /datum/controller/subsystem/achievements/Initialize()
 	var/api_url = CONFIG_GET(string/achievements_api_url)
@@ -30,6 +33,38 @@ SUBSYSTEM_DEF(achievements)
 		query_achievements_for_player(client.ckey)
 
 	return SS_INIT_SUCCESS
+
+/datum/achievement_to_check
+	var/ckey
+	var/datum/http_request/request
+
+	var/datum/achievement/achievement
+
+/datum/achievement_to_check/New(ckey, request, achievement)
+	src.ckey = ckey
+	src.request = request
+	src.achievement = achievement
+
+/datum/controller/subsystem/achievements/fire(resumed)
+	var/handled_queries = list()
+	for(var/datum/achievement_to_check/query in queries_to_check)
+		if(!query.request.is_complete())
+			continue
+
+		handle_achievements_response(query.ckey, query.request)
+		handled_queries += query
+
+	queries_to_check -= handled_queries
+
+	var/handled_sets = list()
+	for(var/datum/achievement_to_check/set in sets_to_check)
+		if(!set.request.is_complete())
+			continue
+
+		handle_achievement_set_complete(set.ckey, set.request, set.achievement)
+		handled_sets += set
+
+	sets_to_check -= handled_sets
 
 /// Signal handler for when a client logs in
 /datum/controller/subsystem/achievements/proc/on_client_login(source, client/new_client)
@@ -59,8 +94,12 @@ SUBSYSTEM_DEF(achievements)
 
 	var/datum/http_request/request = new
 	request.prepare(RUSTG_HTTP_METHOD_GET, "[api_url]?ckey=[url_encode(ckey)]&instance=[instance]", "", headers)
-	request.execute_blocking()
+	request.begin_async()
 
+	queries_to_check += new /datum/achievement_to_check(ckey, request)
+
+/// Handle the API response and grant achievements to the player
+/datum/controller/subsystem/achievements/proc/handle_achievements_response(ckey, datum/http_request/request)
 	var/datum/http_response/response = request.into_response()
 
 	if(response.errored)
@@ -71,10 +110,8 @@ SUBSYSTEM_DEF(achievements)
 		log_debug("Achievements API returned status [response.status_code] for [ckey]")
 		return
 
-	handle_achievements_response(ckey, response.body)
+	var/body = response.body
 
-/// Handle the API response and grant achievements to the player
-/datum/controller/subsystem/achievements/proc/handle_achievements_response(ckey, body)
 	var/list/data
 	try
 		data = json_decode(body)
@@ -132,8 +169,11 @@ SUBSYSTEM_DEF(achievements)
 
 	var/datum/http_request/request = new
 	request.prepare(RUSTG_HTTP_METHOD_POST, api_url, json_encode(request_body), headers)
-	request.execute_blocking()
+	request.begin_async()
 
+	sets_to_check += new /datum/achievement_to_check(ckey, request, achievement)
+
+/datum/controller/subsystem/achievements/proc/handle_achievement_set_complete(ckey, datum/http_request/request, datum/achievement/achievement)
 	var/datum/http_response/response = request.into_response()
 
 	if(response.errored)

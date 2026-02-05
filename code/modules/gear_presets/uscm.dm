@@ -426,6 +426,7 @@
 	name = "USCM Veteran Squad Leader"
 
 	paygrades = list(PAY_SHORT_ME8 = JOB_PLAYTIME_TIER_0)
+	role_comm_title = "vSL"
 	minimum_age = 30
 
 /datum/equipment_preset/uscm/leader/veteran/load_gear(mob/living/carbon/human/new_human)

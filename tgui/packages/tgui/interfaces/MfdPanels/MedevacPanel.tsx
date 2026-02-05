@@ -121,7 +121,7 @@ export const MedevacMfdPanel = (props: MfdProps) => {
       <Box className="NavigationMenu">
         <Flex justify="space-between">
           <Flex.Item>
-            <svg width="60px">
+            <svg width="60px" overflow="visible">
               {all_targets.length > 0 && (
                 <path
                   fillOpacity="0"
@@ -175,7 +175,7 @@ export const MedevacMfdPanel = (props: MfdProps) => {
             </Stack>
           </Flex.Item>
           <Flex.Item>
-            <svg width="60px">
+            <svg width="60px" overflow="visible">
               {all_targets.length > 5 && (
                 <path
                   fillOpacity="0"

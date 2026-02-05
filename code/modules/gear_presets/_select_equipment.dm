@@ -283,6 +283,14 @@
 		var/datum/character_trait/character_trait = GLOB.character_traits[trait]
 		character_trait.apply_trait(new_human, src)
 
+/// condensed the backpack selector into a proc, 1 = bag, 2 = satchel, 3 = chestrig
+/datum/equipment_preset/proc/get_backpack_item(mob/living/carbon/human/new_human, default_backpack = /obj/item/storage/backpack/marine/satchel, primary_backpack = /obj/item/storage/backpack/marine)
+	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
+		return primary_backpack
+	else if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 3))
+		return /obj/item/storage/backpack/marine/satchel/chestrig
+	return default_backpack
+
 /datum/equipment_preset/strip //For removing all equipment
 	name = "*strip*"
 	flags = EQUIPMENT_PRESET_EXTRA

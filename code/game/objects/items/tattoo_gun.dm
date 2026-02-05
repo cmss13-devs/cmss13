@@ -182,79 +182,79 @@
 	to_chat(target, SPAN_NOTICE("You finish tattooing yourself."))
 
 /obj/item/tattoo_gun/uscm
-	name = "USCM chest tattoo"
-	desc = "A device with attached multi-ink canister used for tattooing, with the capacity for doing it oneself. This one is the good ol' USCM logo!"
+	name = "USCM chest tattoo gun"
+	desc = "A device with attached multi-ink canister used for tattooing, designed specifically for self-application. This one is the good ol' USCM logo!"
 	tattoos_to_apply = list(
 		/datum/tattoo_info/uscm_chest,
 	)
 
 /obj/item/tattoo_gun/uscm_retro
-	name = "retro USCM chest tattoo"
-	desc = "A device with attached multi-ink canister used for tattooing, with the capacity for doing it oneself. This one is an older variant of the USCM logo!"
+	name = "retro USCM chest tattoo gun"
+	desc = "A device with attached multi-ink canister used for tattooing, designed specifically for self-application. This one is an older variant of the USCM logo!"
 	tattoos_to_apply = list(
 		/datum/tattoo_info/uscm_retro_chest,
 	)
 
 /obj/item/tattoo_gun/anchor
-	name = "anchor back tattoo"
-	desc = "A device with attached multi-ink canister used for tattooing, with the capacity for doing it oneself. This one is a navy classic for your back; an anchor!"
+	name = "anchor back tattoo gun"
+	desc = "A device with attached multi-ink canister used for tattooing, designed specifically for self-application. This one is a navy classic for your back; an anchor!"
 	tattoos_to_apply = list(
 		/datum/tattoo_info/anchor_back,
 	)
 
 /obj/item/tattoo_gun/black_star
-	name = "star back tattoo"
-	desc = "A device with attached multi-ink canister used for tattooing, with the capacity for doing it oneself. This one is a simple, black star for your back!"
+	name = "star back tattoo gun"
+	desc = "A device with attached multi-ink canister used for tattooing, designed specifically for self-application. This one is a simple, black star for your back!"
 	tattoos_to_apply = list(
 		/datum/tattoo_info/black_star_back,
 	)
 
 /obj/item/tattoo_gun/skull
-	name = "skull back tattoo"
-	desc = "A device with attached multi-ink canister used for tattooing, with the capacity for doing it oneself. This one is a large skull!"
+	name = "skull back tattoo gun"
+	desc = "A device with attached multi-ink canister used for tattooing, designed specifically for self-application. This one is a large skull!"
 	tattoos_to_apply = list(
 		/datum/tattoo_info/skull_back,
 	)
 
 /obj/item/tattoo_gun/right_arm_sleeve
-	name = "right arm sleeve tattoo"
-	desc = "A device with attached multi-ink canister used for tattooing, with the capacity for doing it oneself. This one is a tattoo sleeve for your right arm!"
+	name = "right arm sleeve tattoo gun"
+	desc = "A device with attached multi-ink canister used for tattooing, designed specifically for self-application. This one is a tattoo sleeve for your right arm!"
 	tattoos_to_apply = list(
 		/datum/tattoo_info/sleeve_right_arm,
 	)
 
 /obj/item/tattoo_gun/left_arm_sleeve
-	name = "left arm sleeve tattoo"
-	desc = "A device with attached multi-ink canister used for tattooing, with the capacity for doing it oneself. This one is a tattoo sleeve for your left arm!"
+	name = "left arm sleeve tattoo gun"
+	desc = "A device with attached multi-ink canister used for tattooing, designed specifically for self-application. This one is a tattoo sleeve for your left arm!"
 	tattoos_to_apply = list(
 		/datum/tattoo_info/sleeve_left_arm,
 	)
 
 /obj/item/tattoo_gun/both_arm_sleeve
-	name = "left & right arm sleeve tattoo"
-	desc = "A device with attached multi-ink canister used for tattooing, with the capacity for doing it oneself. This one is tattoo sleeves for both your arms!"
+	name = "left & right arm sleeve tattoo gun"
+	desc = "A device with attached multi-ink canister used for tattooing, designed specifically for self-application. This one is tattoo sleeves for both your arms!"
 	tattoos_to_apply = list(
 		/datum/tattoo_info/sleeve_left_arm,
 		/datum/tattoo_info/sleeve_right_arm,
 	)
 
 /obj/item/tattoo_gun/right_blood_pauldron
-	name = "right blood pauldron tattoo"
-	desc = "A device with attached multi-ink canister used for tattooing, with the capacity for doing it oneself. This one is a blood-red pauldron for your right arm!"
+	name = "right blood pauldron tattoo gun"
+	desc = "A device with attached multi-ink canister used for tattooing, designed specifically for self-application. This one is a blood-red pauldron for your right arm!"
 	tattoos_to_apply = list(
 		/datum/tattoo_info/blood_pauldron_right_arm,
 	)
 
 /obj/item/tattoo_gun/left_blood_pauldron
-	name = "left blood pauldron tattoo"
-	desc = "A device with attached multi-ink canister used for tattooing, with the capacity for doing it oneself. This one is a blood-red pauldron for your left arm!"
+	name = "left blood pauldron tattoo gun"
+	desc = "A device with attached multi-ink canister used for tattooing, designed specifically for self-application. This one is a blood-red pauldron for your left arm!"
 	tattoos_to_apply = list(
 		/datum/tattoo_info/blood_pauldron_left_arm,
 	)
 
 /obj/item/tattoo_gun/black_tribal
-	name = "black tribal tattoo"
-	desc = "A device with attached multi-ink canister used for tattooing, with the capacity for doing it oneself. This one is a large black tribal tattoo!"
+	name = "black tribal tattoo gun"
+	desc = "A device with attached multi-ink canister used for tattooing, designed specifically for self-application. This one is a large black tribal tattoo!"
 	tattoos_to_apply = list(
 		/datum/tattoo_info/black_tribal_chest,
 		/datum/tattoo_info/black_tribal_back,
@@ -263,8 +263,8 @@
 	)
 
 /obj/item/tattoo_gun/blue_tribal
-	name = "blue tribal tattoo"
-	desc = "A device with attached multi-ink canister used for tattooing, with the capacity for doing it oneself. This one is a large blue tribal tattoo!"
+	name = "blue tribal tattoo gun"
+	desc = "A device with attached multi-ink canister used for tattooing, designed specifically for self-application. This one is a large blue tribal tattoo!"
 	tattoos_to_apply = list(
 		/datum/tattoo_info/blue_tribal_chest,
 		/datum/tattoo_info/blue_tribal_back,

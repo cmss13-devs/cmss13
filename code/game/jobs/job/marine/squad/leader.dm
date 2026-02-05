@@ -1,3 +1,6 @@
+#define SQUADLEAD "Squad Leader"
+#define VET_SQUADLEAD "Veteran Squad Leader"
+
 /datum/job/marine/leader
 	title = JOB_SQUAD_LEADER
 	total_positions = 4
@@ -6,6 +9,23 @@
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_SQUAD
 	gear_preset = /datum/equipment_preset/uscm/leader
 	entry_message_body = "<a href='"+WIKI_PLACEHOLDER+"'>You are responsible for the men and women of your squad.</a> Make sure they are on task, working together, and communicating. You are also in charge of communicating with command and letting them know about the situation first hand. Keep out of harm's way."
+
+	job_options = list(SQUADLEAD = "SL", VET_SQUADLEAD = "vSL")
+
+/datum/job/marine/leader/filter_job_option(mob/job_applicant)
+	. = ..()
+
+	var/list/filtered_job_options = list(job_options[1])
+
+	if(job_applicant.client.check_whitelist_status(WHITELIST_COMMANDER))
+		filtered_job_options += list(job_options[2])
+
+/datum/job/marine/leader/handle_job_options(option)
+	switch(option)
+		if(SQUADLEAD)
+			gear_preset = /datum/equipment_preset/uscm/leader
+		if(VET_SQUADLEAD)
+			gear_preset = /datum/equipment_preset/uscm/leader/veteran
 
 /datum/job/marine/leader/whiskey
 	title = JOB_WO_SQUAD_LEADER

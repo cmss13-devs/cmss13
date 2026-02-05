@@ -258,7 +258,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_vet_leader, list(
 /obj/structure/machinery/cm_vending/clothing/leader/get_listed_products(mob/living/carbon/human/user)
 	if(user?.wear_id)
 		var/obj/item/card/id/id_card = user.wear_id
-		if(id_card.paygrade == PAY_SHORT_ME8) //Checks for vSL
+		if(id_card.paygrade == PAY_SHORT_ME8E) //Checks for vSL
 			return GLOB.cm_vending_clothing_vet_leader
 	return GLOB.cm_vending_clothing_leader
 

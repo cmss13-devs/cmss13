@@ -344,7 +344,7 @@
 	add_filter("motionblur", 1, motion_blur_filter(x = 0, y = 1)) // Light vertical blur
 	layer = initial(layer)
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	pixel_y = 4000 // Between mortar and minirocket
+	pixel_y = 4000
 	animate(src, pixel_y = 0, time=8) // Stop at ground level
 	animate(icon_state=null, icon=null, time=2)
 
@@ -355,7 +355,7 @@
 	var/atom/missile_ammo
 	var/size_mod = 1.4
 
-/obj/effect/overlay/temp/cas_missile_impact/Initialize(mapload, atom/owner, missile_size = 1.4)
+/obj/effect/overlay/temp/cas_missile_impact/Initialize(mapload, atom/owner, missile_size = 1.3)
 	. = ..()
 	if (!owner)
 		log_debug("Created a [type] without `owner`")
@@ -365,14 +365,14 @@
 	size_mod = missile_size
 	icon = missile_ammo.icon
 	icon_state = "[initial(missile_ammo.icon_state)]_proj"
-	transform = matrix().Turn(-90) // Angled approach like a guided missile
+	transform = matrix().Turn(90)
 	transform *= size_mod
 	add_filter("motionblur", 1, motion_blur_filter(x = 2, y = 0)) // Same as cas_rocket_impact
 	layer = initial(layer)
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	pixel_x = -16 // Center larger icons properly
-	pixel_y = 4000 // Higher start than rockets
-	animate(src, pixel_y = 0, time=10) // Slower descent for larger missile
+	pixel_x = -16 // -16 is to center 64x64 ammo
+	pixel_y = 4000
+	animate(src, pixel_y = 0, time=10)
 	animate(icon_state=null, icon=null, time=2)
 
 // this is for bombs from the bomb bay

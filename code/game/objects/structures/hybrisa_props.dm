@@ -1829,7 +1829,7 @@
 
 /obj/structure/mug_rack/update_icon()
 	overlays.Cut()
-	if(amount == 0)
+	if(!amount)
 		return
 
 	if(amount < initial(amount) / 3)
@@ -1845,10 +1845,10 @@
 /obj/structure/mug_rack/attackby(obj/item/item, mob/user)
 	if(istype(item, /obj/item/reagent_container/food/drinks/coffeecup))
 		if(user.drop_held_item())
-			qdel(item)
 			amount++
 			to_chat(user, SPAN_NOTICE("You put [item] in [src]."))
 			update_icon()
+			qdel(item)
 
 /obj/structure/mug_rack/attack_hand(mob/user)
 	if(amount >= 1)

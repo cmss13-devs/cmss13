@@ -53,7 +53,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	var/add_pmcs = FALSE
 	var/show_command_squad = FALSE
 	var/tgui_interaction_distance = 1
-
+	/// Can this overwatch console override / not care about the current overwatch officer
 	var/can_override_overwatch_officer = FALSE
 
 	/// requesting a distress beacon
@@ -75,13 +75,14 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	show_command_squad = TRUE
 	tgui_interaction_distance = 3
 	can_override_overwatch_officer = TRUE
+	/// Squad role within Assault, Support and Security - decides which section it will be able to watch. If it stays as null it will allow to view all of them
 	var/role
 
 /obj/structure/machinery/computer/overwatch/groundside_operations/section
 	name = "Section Overwatch Console"
 	icon_state = "overwatch"
 	no_skill_req = FALSE
-	req_access = null
+	req_access = list(ACCESS_MARINE_COMMAND)
 
 /obj/structure/machinery/computer/overwatch/Initialize()
 	. = ..()

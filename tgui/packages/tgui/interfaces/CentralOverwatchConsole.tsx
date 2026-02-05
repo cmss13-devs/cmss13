@@ -373,22 +373,24 @@ const CombinedSquadPanel = (props: Props) => {
                               onClick={() => setMinimised(!minimised)}
                             />
                           </Flex.Item>
-                          <Flex.Item grow>
-                            <Button
-                              pl="15px"
-                              inline
-                              width="100%"
-                              icon="bullhorn"
-                              m="0px"
-                              onClick={() =>
-                                act('announce', {
-                                  announcement_type: 'groundside',
-                                })
-                              }
-                            >
-                              MAKE AN ANNOUNCEMENT
-                            </Button>
-                          </Flex.Item>
+                          {!!data.executive && (
+                            <Flex.Item grow>
+                              <Button
+                                pl="15px"
+                                inline
+                                width="100%"
+                                icon="bullhorn"
+                                m="0px"
+                                onClick={() =>
+                                  act('announce', {
+                                    announcement_type: 'groundside',
+                                  })
+                                }
+                              >
+                                MAKE AN ANNOUNCEMENT
+                              </Button>
+                            </Flex.Item>
+                          )}
                         </Flex>
                       </Table.Cell>
                     </Table.Row>
@@ -616,21 +618,6 @@ const CombinedSquadPanel = (props: Props) => {
                                     onClick={() => act('sl_message')}
                                   >
                                     MESSAGE SQUAD LEADER
-                                  </Button>
-                                </Stack.Item>
-                                <Stack.Item>
-                                  <Button
-                                    icon="user"
-                                    inline
-                                    width="100%"
-                                    compact
-                                  >
-                                    Overwatch Officer
-                                    <Box>
-                                      {squad.overwatch_officer
-                                        ? squad.overwatch_officer
-                                        : 'NONE'}
-                                    </Box>
                                   </Button>
                                 </Stack.Item>
                               </Box>

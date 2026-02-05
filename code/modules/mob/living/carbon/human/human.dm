@@ -115,8 +115,6 @@
 		. += "Operation Name: [GLOB.round_statistics.round_name]"
 
 	if(assigned_squad)
-		if(assigned_squad.overwatch_officer)
-			. += "Overwatch Officer: [assigned_squad.overwatch_officer.get_paygrade()][assigned_squad.overwatch_officer.name]"
 		if(assigned_squad.primary_objective || assigned_squad.secondary_objective)
 			var/turf/current_turf = get_turf(src)
 			var/is_shipside = is_mainship_level(current_turf?.z)

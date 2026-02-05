@@ -603,10 +603,10 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	var/list/preferred_squads = force_client ? force_client.prefs?.preferred_squad : human.client?.prefs?.preferred_squad
 	if(islist(preferred_squads) && length(preferred_squads))
 		var/list/ordered_squads = list()
-		for(var/squad in preferred_squads)
-			for(var/datum/squad/_squad in usable_squads)
-				if(_squad.name == squad || _squad.equivalent_name == squad)
-					ordered_squads += _squad
+		for(var/squad_in_pref in preferred_squads)
+			for(var/datum/squad/squad_in_usable in usable_squads)
+				if(squad_in_usable.name == squad_in_pref || squad_in_usable.equivalent_name == squad_in_pref)
+					ordered_squads += squad_in_usable
 					continue
 		has_squad_pref = TRUE
 		usable_squads = ordered_squads

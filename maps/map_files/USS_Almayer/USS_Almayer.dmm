@@ -443,18 +443,14 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/upper/s_stern)
 "abd" = (
-/obj/structure/surface/table/almayer,
-/obj/item/storage/toolbox/mechanical,
-/obj/item/clothing/head/welding{
-	pixel_x = 6;
-	pixel_y = 12
+/obj/structure/machinery/door/airlock/almayer/maint/reinforced{
+	access_modified = 1;
+	dir = 1;
+	req_one_access = null;
+	req_one_access_txt = "7;19"
 	},
-/obj/item/stack/cable_coil/cyan{
-	pixel_x = -11;
-	pixel_y = -4
-	},
-/turf/open/floor/almayer/test_floor4,
-/area/almayer/hallways/hangar)
+/turf/open/floor/almayer/no_build/test_floor4,
+/area/almayer/middeck/maintenance/pb)
 "abe" = (
 /obj/structure/machinery/power/apc/almayer/hardened/south,
 /turf/open/floor/almayer/plate,
@@ -912,13 +908,14 @@
 /area/almayer/medical/medical_science)
 "acm" = (
 /obj/structure/surface/table/almayer,
-/obj/item/device/dropship_computer{
-	pixel_x = 0;
-	pixel_y = 6
+/obj/item/storage/toolbox/mechanical,
+/obj/item/clothing/head/welding{
+	pixel_x = 6;
+	pixel_y = 12
 	},
-/obj/item/device/dropship_handheld{
-	pixel_x = 8;
-	pixel_y = 9
+/obj/item/stack/cable_coil/cyan{
+	pixel_x = -11;
+	pixel_y = -4
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/hallways/hangar)
@@ -4582,6 +4579,10 @@
 /turf/open/floor/almayer/plating_stripedcorner/west,
 /area/almayer/hallways/lower/port_midship_hallway)
 "akE" = (
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera"
+	},
+/obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/secure_closet{
 	name = "Field Doctor's locker"
 	},
@@ -4593,7 +4594,6 @@
 /obj/item/storage/box/mre,
 /obj/item/device/radio/marine,
 /obj/item/clothing/accessory/patch/medic_patch,
-/obj/effect/decal/cleanable/dirt,
 /obj/item/book/manual/surgery,
 /obj/item/book/manual/chemistry,
 /obj/item/book/manual/medical_diagnostics_manual,
@@ -8353,7 +8353,7 @@
 /area/almayer/engineering/upper_engineering)
 "auM" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light_construct{
+/obj/structure/machinery/light{
 	dir = 4
 	},
 /turf/open/floor/wood/ship,
@@ -14163,8 +14163,16 @@
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/stair_clone/upper/port_aft)
 "aKB" = (
-/obj/effect/decal/cleanable/blood/oil/streak,
-/turf/open/floor/almayer,
+/obj/structure/surface/table/almayer,
+/obj/item/device/dropship_computer{
+	pixel_x = 0;
+	pixel_y = 6
+	},
+/obj/item/device/dropship_handheld{
+	pixel_x = 8;
+	pixel_y = 9
+	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/hallways/hangar)
 "aKC" = (
 /obj/structure/machinery/light,
@@ -14742,8 +14750,11 @@
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/hydroponics)
 "aMe" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	dir = 1
+/obj/structure/machinery/door/airlock/almayer/maint/reinforced{
+	access_modified = 1;
+	dir = 1;
+	req_one_access = null;
+	req_one_access_txt = "7;19"
 	},
 /turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/middeck/maintenance/bow)
@@ -18038,9 +18049,9 @@
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/maintenance/sp)
 "aUE" = (
-/obj/structure/sign/banners/colonial_marines_flag,
-/turf/closed/wall/almayer,
-/area/almayer/living/pilotbunks)
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/floor/almayer,
+/area/almayer/hallways/hangar)
 "aUF" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer/no_build/test_floor4,
@@ -19850,7 +19861,7 @@
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/shipboard/navigation)
 "aYH" = (
-/obj/structure/sign/calendar/ua,
+/obj/structure/sign/banners/colonial_marines_flag,
 /turf/closed/wall/almayer,
 /area/almayer/living/pilotbunks)
 "aYI" = (
@@ -20410,6 +20421,10 @@
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sp)
+"aZU" = (
+/obj/structure/sign/calendar/ua,
+/turf/closed/wall/almayer,
+/area/almayer/living/pilotbunks)
 "aZV" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo,
 /turf/open/floor/almayer/plate,
@@ -133985,7 +134000,7 @@ iWH
 aqe
 apI
 apy
-aUE
+aYH
 apd
 bTU
 gZK
@@ -134191,7 +134206,7 @@ rMO
 aqj
 rMO
 apC
-aYH
+aZU
 aph
 xNz
 utK
@@ -135123,7 +135138,7 @@ aYu
 ilG
 aYt
 bfJ
-aKB
+aUE
 btO
 btO
 btO
@@ -137289,7 +137304,7 @@ eXq
 eXq
 kqv
 pcl
-abd
+acm
 pcl
 gHZ
 pcl
@@ -137392,7 +137407,7 @@ eXq
 eXq
 aYt
 pcl
-acm
+aKB
 aJn
 gpi
 pcl
@@ -162745,7 +162760,7 @@ aMh
 aMK
 aMu
 aMj
-aNU
+abd
 aZo
 bay
 bwN

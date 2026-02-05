@@ -2197,8 +2197,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	character.underwear = underwear
 	character.undershirt = undershirt
 
-	if(backbag > 2 || backbag < 1)
-		backbag = 2 //Same as above
+	backbag = sanitize_integer(backbag, 1, length(GLOB.backbaglist), initial(backbag))
 	character.backbag = backbag
 
 	//Debugging report to track down a bug, which randomly assigned the plural gender to people.
@@ -2271,8 +2270,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	character.underwear = underwear
 	character.undershirt = undershirt
 
-	if(backbag > 2 || backbag < 1)
-		backbag = 2 //Same as above
+	backbag = sanitize_integer(backbag, 1, length(GLOB.backbaglist), initial(backbag))
 	character.backbag = backbag
 
 	//Debugging report to track down a bug, which randomly assigned the plural gender to people.

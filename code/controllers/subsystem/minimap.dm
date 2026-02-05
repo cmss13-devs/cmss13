@@ -5,7 +5,7 @@
 /// List of minimap_flag=world.time for a faction wide cooldown on tacmap submissions
 GLOBAL_VAR_INIT(faction_tacmap_cooldown, alist()) // TODO: Change to GLOBAL_ALIST_EMPTY
 ///A player needs to be unbanned from ALL these roles in order to be able to use the minimap drawing tool
-GLOBAL_LIST_INIT(roles_allowed_minimap_draw, list(JOB_VET_SQUAD_LEADER, JOB_SQUAD_LEADER, JOB_SQUAD_TEAM_LEADER, JOB_SO, JOB_XO, JOB_CO))
+GLOBAL_LIST_INIT(roles_allowed_minimap_draw, list(JOB_SQUAD_LEADER, JOB_SQUAD_TEAM_LEADER, JOB_SO, JOB_XO, JOB_CO))
 GLOBAL_PROTECT(roles_allowed_minimap_draw)
 
 /**

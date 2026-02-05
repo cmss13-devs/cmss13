@@ -17,8 +17,9 @@
 
 	var/list/filtered_job_options = list(job_options[1])
 
-	if(job_applicant.client.check_whitelist_status(WHITELIST_COMMANDER))
-		filtered_job_options += list(job_options[2])
+	if(job_applicant?.client?.prefs)
+		if(job_applicant.client.check_whitelist_status(WHITELIST_COMMANDER))
+			filtered_job_options += list(job_options[2])
 
 /datum/job/marine/leader/handle_job_options(option)
 	switch(option)

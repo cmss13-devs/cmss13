@@ -194,6 +194,8 @@
 
 /datum/equipment_preset/cmb/leader/riot
 	name = "CMB - The Colonial Marshal Riot Control"
+	role_comm_title = "CMB MAR RC"
+	assignment = "CMB Riot Control Marshal"
 
 /datum/equipment_preset/cmb/leader/riot/load_gear(mob/living/carbon/human/new_human)
 	//clothes
@@ -522,7 +524,7 @@
 	name = "CMB - Colonial Marshal Investigative Synthetic"
 	paygrades = list(PAY_SHORT_CMBS = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/deputy
-	role_comm_title = "CMB Syn"
+	role_comm_title = "CMB Inv. Syn"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	minimap_icon = "cmb_syn"
@@ -624,8 +626,8 @@
 /datum/equipment_preset/cmb/synth/riot
 	name = "CMB - Colonial Marshal Riot Control Synthetic"
 	paygrades = list(PAY_SHORT_CMBRS = JOB_PLAYTIME_TIER_0)
-
-	minimap_icon = "pmc_syn"
+	role_comm_title = "CMB RC Syn"
+	minimap_icon = "pmc_syn" //actually not PMC, it just has the same color palette as CMB
 
 	assignment = "CMB Riot Control Synthetic"
 	job_title = JOB_CMB_RSYN

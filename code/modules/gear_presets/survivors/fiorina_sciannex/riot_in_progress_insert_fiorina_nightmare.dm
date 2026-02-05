@@ -24,7 +24,8 @@
 	idtype = /obj/item/card/id/deputy/riot
 	job_title = JOB_CMB_RIOT
 	skills = /datum/skills/cmb
-	minimap_icon = "deputy"
+	minimap_icon = "mp"
+	minimap_background = "background_cmb"
 
 /datum/equipment_preset/survivor/cmb/riot/load_gear(mob/living/carbon/human/new_human)
 
@@ -90,7 +91,7 @@
 /datum/equipment_preset/synth/survivor/cmb/riotsynth
 	name = "Survivor - Synthetic - CMB Riot Control Synthetic"
 	paygrades = list(PAY_SHORT_CMBRS = JOB_PLAYTIME_TIER_0)
-	role_comm_title = "CMB Syn"
+	role_comm_title = "CMB RC Syn"
 	faction = FACTION_MARSHAL
 	faction_group = list(FACTION_MARSHAL, FACTION_MARINE, FACTION_SURVIVOR)
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -99,7 +100,7 @@
 	languages = ALL_SYNTH_LANGUAGES
 	idtype = /obj/item/card/id/deputy/riot
 	skills = /datum/skills/synthetic/cmb
-	minimap_icon = "cmb_syn"
+	minimap_icon = "pmc_syn"
 	minimap_background = "background_cmb"
 
 /datum/equipment_preset/synth/survivor/cmb/riotsynth/load_race(mob/living/carbon/human/new_human)

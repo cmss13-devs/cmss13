@@ -858,11 +858,16 @@ Additional game mode variables.
 	new_queen.generate_name()
 
 	SSround_recording.recorder.track_player(new_queen)
-
-	to_chat(new_queen, "<B>You are now the alien queen!</B>")
-	to_chat(new_queen, "<B>Your job is to spread the hive.</B>")
-	to_chat(new_queen, "<B>You should start by building a hive core.</B>")
-	to_chat(new_queen, "Talk in Hivemind using <strong>;</strong> (e.g. ';Hello my children!')")
+	if(Check_WO())
+		to_chat(new_queen, "<B>You are now the alien queen!</B>")
+		to_chat(new_queen, "<B>Your job is to assist the hive in assaulting the human outpost!</B>")
+		to_chat(new_queen, "<B>You should start by planting weeds and growing an ovipositor, your children will appear around round time 0:20. You will be able to leave your cave after the round time reaches 1:00.</B>")
+		to_chat(new_queen, "Talk in Hivemind using <strong>;</strong> (e.g. ';Hello my children!')")
+	else
+		to_chat(new_queen, "<B>You are now the alien queen!</B>")
+		to_chat(new_queen, "<B>Your job is to spread the hive.</B>")
+		to_chat(new_queen, "<B>You should start by building a hive core.</B>")
+		to_chat(new_queen, "Talk in Hivemind using <strong>;</strong> (e.g. ';Hello my children!')")
 
 	new_queen.update_icons()
 
@@ -943,7 +948,7 @@ Additional game mode variables.
 				to_chat(H, "<h2>You are a survivor!</h2>")
 				to_chat(H, SPAN_NOTICE(SSmapping.configs[GROUND_MAP].survivor_message))
 				to_chat(H, SPAN_NOTICE("You are fully aware of the xenomorph threat and are able to use this knowledge as you see fit."))
-				to_chat(H, SPAN_NOTICE("You are NOT aware of the marines or their intentions. "))
+				to_chat(H, SPAN_NOTICE("You are NOT aware of the marines or their intentions."))
 		if(spawner.story_text)
 			. = 1
 			spawn(6)
@@ -1147,6 +1152,10 @@ Additional game mode variables.
 		if(show_warning)
 			to_chat(joe_candidate, SPAN_WARNING("You are not whitelisted! You may apply on the forums to be whitelisted as a synth."))
 		return
+
+	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_wj_spawns))
+		to_chat(joe_candidate, SPAN_WARNING("Working Joes are disabled from spawning!"))
+		return FALSE
 
 	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_wj_respawns) && (joe_candidate.ckey in joes)) // No joe respawns if already a joe before
 		to_chat(joe_candidate, SPAN_WARNING("Working Joe respawns are disabled!"))

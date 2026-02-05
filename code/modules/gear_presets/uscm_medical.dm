@@ -92,12 +92,7 @@
 
 /datum/equipment_preset/uscm_ship/uscm_medical/doctor/surgeon
 	name = "USCM Surgeon"
-
 	assignment = JOB_SURGEON
-	job_title = JOB_SURGEON
-	role_comm_title = "Sgn"
-	minimap_icon = "surgeon"
-	minimap_background = "background_medical"
 
 /datum/equipment_preset/uscm_ship/uscm_medical/doctor/surgeon/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel
@@ -112,12 +107,7 @@
 
 /datum/equipment_preset/uscm_ship/uscm_medical/doctor/pharmacist
 	name = "USCM Pharmaceutical Physician"
-
 	assignment = JOB_PHARMACIST
-	job_title = JOB_PHARMACIST
-	role_comm_title = "Phm"
-	minimap_icon = "pharmacist"
-	minimap_background = "background_medical"
 
 /datum/equipment_preset/uscm_ship/uscm_medical/doctor/pharmacist/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel
@@ -164,12 +154,12 @@
 	assignment = JOB_NURSE
 	job_title = JOB_NURSE
 	paygrades = list(PAY_SHORT_ME4 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_1)
-	role_comm_title = "Nrs"
+	role_comm_title = "Nurse"
 	skills = /datum/skills/nurse
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE, ACCESS_MARINE_DATABASE)
 
 	minimap_icon = "nurse"
-	minimap_background = "background_medical"
+	minimap_background = "background_shipside"
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/nco)
 	dress_hat = list(/obj/item/clothing/head/marine/dress_cover)
@@ -199,11 +189,11 @@
 	skills = /datum/skills/researcher
 
 	faction = FACTION_WY
-	faction_group =	FACTION_LIST_MARINE_WY //WY personnel, they're just working on the Almayer.
+	faction_group =	FACTION_LIST_MARINE_WY
 	origin_override = ORIGIN_CIVILIAN
 
-	minimap_icon = "goon_sci" //WY personnel, they're just working on the Almayer.
-	minimap_background = "background_goon" //WY personnel, they're just working on the Almayer.
+	minimap_icon = "researcher"
+	minimap_background = "background_goon"
 	utility_under = list(/obj/item/clothing/under/marine/officer/researcher)
 	utility_hat = list()
 	utility_gloves = list()

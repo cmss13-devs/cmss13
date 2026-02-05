@@ -123,6 +123,9 @@
 /obj/structure/ship_ammo/proc/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
 	return
 
+/obj/structure/ship_ammo/proc/get_impact_visual_type()
+	return null
+
 /obj/structure/ship_ammo/proc/can_fire_at(turf/impact, mob/user)
 	return TRUE
 
@@ -191,6 +194,9 @@
 	. = ..()
 	. += "It has [ammo_count] round\s."
 
+/obj/structure/ship_ammo/heavygun/get_impact_visual_type()
+	return /obj/effect/overlay/temp/cas_cannon_impact
+
 /obj/structure/ship_ammo/heavygun/show_loaded_desc(mob/user)
 	if(ammo_count)
 		return "It's loaded with \a [src] containing [ammo_count] round\s."
@@ -213,6 +219,9 @@
 	var/turf/impact_tile = pick(turf_list)
 	var/obj/structure/dropship_equipment/weapon/typed_weapon = fired_from
 	var/datum/cause_data/cause_data = create_cause_data(typed_weapon.name, source_mob)
+
+	new /obj/effect/overlay/temp/cas_cannon_impact(impact_tile, src)
+
 	impact_tile.ex_act(EXPLOSION_THRESHOLD_VLOW, pick(GLOB.alldirs), cause_data)
 	create_shrapnel(impact_tile,1,0,0,shrapnel_type,cause_data,FALSE,100)
 	for(var/atom/movable/explosion_effect in impact_tile)
@@ -343,6 +352,9 @@
 /obj/structure/ship_ammo/rocket/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
 	qdel(src)
 
+/obj/structure/ship_ammo/rocket/get_impact_visual_type()
+	return /obj/effect/overlay/temp/cas_rocket_impact
+
 //this one is air-to-air only
 /obj/structure/ship_ammo/rocket/widowmaker
 	name = "\improper AIM-224B 'Widowmaker'"
@@ -368,7 +380,7 @@
 	impact.ceiling_debris_check(3)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), impact, 225, 40, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), source_mob)), 0.5 SECONDS) //Small explosive power compensated by its fire + white phosphorous effect
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(fire_spread), impact, create_cause_data(initial(name), source_mob), 4, 15, 50, "#00b8ff"), 1 SECONDS) //Very intense but the fire doesn't last very long
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(smoke_spread), impact, 4, /obj/effect/particle_effect/smoke/phosphorus), null, 6)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(smoke_spread), impact, 4, /obj/effect/particle_effect/smoke/phosphorus, null, 4), 1.3 SECONDS)
 	QDEL_IN(src, 0.5 SECONDS)
 
 /obj/structure/ship_ammo/rocket/keeper
@@ -457,6 +469,9 @@
 	if(!ammo_count && loc)
 		qdel(src) //deleted after last minirocket is fired and impact the ground.
 
+/obj/structure/ship_ammo/minirocket/get_impact_visual_type()
+	return /obj/effect/overlay/temp/cas_minirocket_impact
+
 /obj/structure/ship_ammo/minirocket/show_loaded_desc(mob/user)
 	if(ammo_count)
 		return "It's loaded with \a [src] containing [ammo_count] minirocket\s."
@@ -519,6 +534,9 @@
 
 /obj/structure/ship_ammo/missile/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
 	qdel(src)
+
+/obj/structure/ship_ammo/missile/get_impact_visual_type()
+	return /obj/effect/overlay/temp/cas_missile_impact
 
 /obj/structure/ship_ammo/missile/show_loaded_desc(mob/user)
 	if(ammo_count)
@@ -627,6 +645,9 @@
 /obj/structure/ship_ammo/bomb/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
 	qdel(src)
 
+/obj/structure/ship_ammo/bomb/get_impact_visual_type()
+	return /obj/effect/overlay/temp/cas_bomb_impact
+
 /obj/structure/ship_ammo/bomb/show_loaded_desc(mob/user)
 	if(ammo_count)
 		return "It's loaded with \a [src] containing [ammo_count] bomb\s."
@@ -718,16 +739,11 @@
 
 /obj/structure/ship_ammo/bomb/bunkerbuster/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
 	impact.ceiling_debris_check(3)
-	// Create the physical bomb object that lands first
-	var/obj/item/explosive/bomb_payload/bunker_buster/bomb_obj = new(impact)
-	bomb_obj.source_mob = source_mob
-	bomb_obj.fired_from_name = initial(name)
-
 	// Make debris fall from the ceiling when the bomb lands
 	impact.ceiling_debris(3)
 
-	// Schedule the delayed explosion
-	addtimer(CALLBACK(bomb_obj, TYPE_PROC_REF(/obj/item/explosive/bomb_payload/bunker_buster, detonate)), 2 SECONDS)
+	// schedules the bunkerbuster payload creation
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(create_bunker_buster_payload), impact, source_mob, initial(name)), 0.6 SECONDS)
 
 	QDEL_IN(src, 0.1 SECONDS)
 
@@ -986,6 +1002,8 @@
 		to_chat(user, SPAN_WARNING("You can't pick this up by hand."))
 		return FALSE
 
+//Procs
+
 // Proc to create warning dots for cluster/incendiary bombs
 /obj/structure/ship_ammo/proc/create_warning_dot(turf/target_turf)
 	new /obj/effect/overlay/temp/blinking_laser(target_turf)
@@ -993,9 +1011,29 @@
 // Global procedures for cluster/incendiary bomb effects
 /proc/fire_in_a_hole_cluster(turf/target_turf, explosion_power, explosion_falloff, weapon_name, mob/source_mob)
 	new /obj/effect/overlay/temp/blinking_laser(target_turf)
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), target_turf, explosion_power, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(weapon_name, source_mob)), 1 SECONDS)
+	// unique projectile anim for the cluster part of the explosion
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(create_cluster_impact_visual), target_turf, /obj/structure/ship_ammo/bomb/cluster), 0.3 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), target_turf, explosion_power, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(weapon_name, source_mob)), 1.5 SECONDS)
 
 /proc/fire_in_a_hole_incendiary(turf/target_turf, explosion_power, explosion_falloff, weapon_name, mob/source_mob)
 	new /obj/effect/overlay/temp/blinking_laser(target_turf)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), target_turf, explosion_power, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(weapon_name, source_mob)), 1 SECONDS)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(fire_spread), target_turf, create_cause_data(weapon_name, source_mob), 3, 30, 25, "#EE6515"), 1.2 SECONDS)
+
+// bunker buster payload proc to use with addtimer
+/proc/create_bunker_buster_payload(turf/impact, mob/source_mob, fired_from_name)
+	var/obj/item/explosive/bomb_payload/bunker_buster/bomb_obj = new(impact)
+	bomb_obj.source_mob = source_mob
+	bomb_obj.fired_from_name = fired_from_name
+
+	// Schedule the delayed explosion
+	addtimer(CALLBACK(bomb_obj, TYPE_PROC_REF(/obj/item/explosive/bomb_payload/bunker_buster, detonate)), 2 SECONDS)
+
+// for use with cluster bomb falling projectile visuals (fatty, chubby, etc)
+/proc/create_cluster_impact_visual(turf/target_turf, bomb_type = /obj/structure/ship_ammo/bomb/cluster)
+	if(!target_turf)
+		return
+	// create a temporary bomb object for the visual effect
+	var/obj/structure/ship_ammo/bomb/temp_bomb = new bomb_type()
+	new /obj/effect/overlay/temp/cas_cluster_impact(target_turf, temp_bomb, 1.2)
+	qdel(temp_bomb)

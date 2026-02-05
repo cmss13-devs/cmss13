@@ -273,6 +273,161 @@
 	animate(src, pixel_y = -50, time=2 SECONDS)
 	animate(icon_state=null, icon=null, time=2) // to vanish it immediately
 
+// animation of the rocket actually hitting the ground
+/obj/effect/overlay/temp/cas_rocket_impact
+	name = "cas rocket impact animation"
+	effect_duration = 18
+	var/atom/rocket_ammo
+	var/size_mod = 1.2
+
+/obj/effect/overlay/temp/cas_rocket_impact/Initialize(mapload, atom/owner, rocket_size = 1.2)
+	. = ..()
+	if (!owner)
+		log_debug("Created a [type] without `owner`")
+		qdel(src)
+		return
+	rocket_ammo = owner
+	size_mod = rocket_size
+	icon = rocket_ammo.icon
+	icon_state = "[initial(rocket_ammo.icon_state)]_proj"
+	transform = matrix().Turn(90)
+	transform *= size_mod
+	add_filter("motionblur", 1, motion_blur_filter(x = 2, y = 0)) // Same as OB impact
+	layer = initial(layer)
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	pixel_x = -16
+	pixel_y = 4000
+	animate(src, pixel_y = 0, time=10)
+	animate(icon_state=null, icon=null, time=2)
+
+// this is for minirockets
+/obj/effect/overlay/temp/cas_minirocket_impact
+	name = "cas minirocket impact animation"
+	effect_duration = 15
+	var/atom/minirocket_ammo
+
+/obj/effect/overlay/temp/cas_minirocket_impact/Initialize(mapload, atom/owner)
+	. = ..()
+	if (!owner)
+		log_debug("Created a [type] without `owner`")
+		qdel(src)
+		return
+	minirocket_ammo = owner
+	icon = minirocket_ammo.icon
+	icon_state = "[initial(minirocket_ammo.icon_state)]_proj"
+	transform = matrix().Turn(90)
+	transform *= 0.8
+	add_filter("motionblur", 1, motion_blur_filter(x = 1, y = 0))
+	layer = initial(layer)
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	pixel_y = 4000
+	animate(src, pixel_y = 0, time=8)
+	animate(icon_state=null, icon=null, time=2)
+
+// this is for the gau
+/obj/effect/overlay/temp/cas_cannon_impact
+	name = "cas cannon impact animation"
+	effect_duration = 12
+	var/atom/cannon_ammo
+
+/obj/effect/overlay/temp/cas_cannon_impact/Initialize(mapload, atom/owner)
+	. = ..()
+	if (!owner)
+		log_debug("Created a [type] without `owner`")
+		qdel(src)
+		return
+	cannon_ammo = owner
+	icon = cannon_ammo.icon
+	icon_state = "[initial(cannon_ammo.icon_state)]_proj"
+	transform = matrix().Turn(-180) // Straight down
+	transform *= 1.2 // Smaller projectile
+	add_filter("motionblur", 1, motion_blur_filter(x = 0, y = 1)) // Light vertical blur
+	layer = initial(layer)
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	pixel_y = 4000 // Between mortar and minirocket
+	animate(src, pixel_y = 0, time=8) // Stop at ground level
+	animate(icon_state=null, icon=null, time=2)
+
+// this is for the missile silo
+/obj/effect/overlay/temp/cas_missile_impact
+	name = "cas missile impact animation"
+	effect_duration = 18
+	var/atom/missile_ammo
+	var/size_mod = 1.4
+
+/obj/effect/overlay/temp/cas_missile_impact/Initialize(mapload, atom/owner, missile_size = 1.4)
+	. = ..()
+	if (!owner)
+		log_debug("Created a [type] without `owner`")
+		qdel(src)
+		return
+	missile_ammo = owner
+	size_mod = missile_size
+	icon = missile_ammo.icon
+	icon_state = "[initial(missile_ammo.icon_state)]_proj"
+	transform = matrix().Turn(-90) // Angled approach like a guided missile
+	transform *= size_mod
+	add_filter("motionblur", 1, motion_blur_filter(x = 2, y = 0)) // Same as cas_rocket_impact
+	layer = initial(layer)
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	pixel_x = -16 // Center larger icons properly
+	pixel_y = 4000 // Higher start than rockets
+	animate(src, pixel_y = 0, time=10) // Slower descent for larger missile
+	animate(icon_state=null, icon=null, time=2)
+
+// this is for bombs from the bomb bay
+/obj/effect/overlay/temp/cas_bomb_impact
+	name = "cas bomb impact animation"
+	effect_duration = 18
+	var/atom/bomb_ammo
+	var/size_mod = 1.0
+
+/obj/effect/overlay/temp/cas_bomb_impact/Initialize(mapload, atom/owner, bomb_size = 1.3)
+	. = ..()
+	if (!owner)
+		log_debug("Created a [type] without `owner`")
+		qdel(src)
+		return
+	bomb_ammo = owner
+	size_mod = bomb_size
+	icon = bomb_ammo.icon
+	icon_state = "[initial(bomb_ammo.icon_state)]_proj"
+	transform = matrix().Turn(-90)
+	transform *= size_mod
+	add_filter("motionblur", 1, motion_blur_filter(x = 2, y = 0))
+	layer = initial(layer)
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	pixel_x = -16
+	pixel_y = 4000
+	animate(src, pixel_y = 0, time=15)
+	animate(icon_state=null, icon=null, time=2)
+
+// this is for the cluster part of explosions
+/obj/effect/overlay/temp/cas_cluster_impact
+	name = "cas cluster impact animation"
+	effect_duration = 18
+	var/atom/bomb_ammo
+	var/size_mod = 1.5
+
+/obj/effect/overlay/temp/cas_cluster_impact/Initialize(mapload, atom/owner, bomb_size = 1.3)
+	. = ..()
+	if (!owner)
+		log_debug("Created a [type] without `owner`")
+		qdel(src)
+		return
+	bomb_ammo = owner
+	size_mod = bomb_size
+	icon = bomb_ammo.icon
+	icon_state = "[initial(bomb_ammo.icon_state)]_mini"
+	transform = matrix().Turn(-90)
+	transform *= size_mod
+	layer = initial(layer)
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	pixel_x = -16
+	pixel_y = 2000
+	animate(src, pixel_y = 0, time=10)
+	animate(icon_state=null, icon=null, time=2)
+
 /obj/effect/overlay/temp/guidance_laser
 	name = "guidance laser"
 	anchored = TRUE

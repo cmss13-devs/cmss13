@@ -1204,6 +1204,12 @@
 	if(ammo_warn_sound)
 		playsound(impact, ammo_warn_sound, ammo_warn_sound_volume, 1,15)
 	new /obj/effect/overlay/temp/blinking_laser (impact)
+
+	// projectile falling effect like mortar/ob
+	var/impact_visual_type = SA.get_impact_visual_type()
+	if(impact_visual_type)
+		new impact_visual_type(impact, SA)
+
 	sleep(10)
 	SA.source_mob = user
 	SA.detonate_on(impact, src)
@@ -1237,6 +1243,12 @@
 
 	var/list/possible_turfs = RANGE_TURFS(ammo_accuracy_range, target_turf)
 	var/turf/impact = pick(possible_turfs)
+
+	// projectile falling effect like mortar/ob
+	var/impact_visual_type = SA.get_impact_visual_type()
+	if(impact_visual_type)
+		new impact_visual_type(impact, SA)
+
 	sleep(3)
 	SA.source_mob = user
 	SA.detonate_on(impact, src)
@@ -2589,6 +2601,12 @@
 
 	var/list/possible_turfs = RANGE_TURFS(ammo_accuracy_range, target_turf)
 	var/turf/impact = pick(possible_turfs)
+
+	// projectile falling effect like mortar/ob
+	var/impact_visual_type = SA.get_impact_visual_type()
+	if(impact_visual_type)
+		new impact_visual_type(impact, SA)
+
 	sleep(3)
 	SA.source_mob = user
 	SA.detonate_on(impact, src)

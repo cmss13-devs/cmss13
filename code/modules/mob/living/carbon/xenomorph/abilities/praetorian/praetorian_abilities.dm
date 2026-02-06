@@ -367,7 +367,7 @@
 	xeno_cooldown = 10 SECONDS
 	plasma_cost = 180
 
-	confing
+	//Config variables
 	var/max_distance = 7
 	var/windup = 6
 	var/retrieve_cost = 100

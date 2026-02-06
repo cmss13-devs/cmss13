@@ -176,6 +176,10 @@ GLOBAL_LIST_INIT(tacmap_holders, list())
 	map_ref = "tacmap_[REF(src)]_map"
 	map = SSminimaps.fetch_minimap_object(zlevel, flags, live=TRUE, popup=popup, drawing=drawing)
 
+	if(!map)
+		log_debug("Minimap creation failed for zlevel [zlevel] with flags [flags]")
+		return
+
 	map.screen_loc = "[map_ref]:1,1"
 	map.assigned_map = map_ref
 	map.appearance_flags = NONE

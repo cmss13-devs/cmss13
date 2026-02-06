@@ -1,0 +1,5 @@
+author: "Drulikar"
+delete-after: True
+changes:
+  - admin: "Admins get more access to log getter verbs"
+  - rscdel: "Removed getruntimelog and giveruntimelog since they aren't really applicable to how TGS logs dream daemon logs"

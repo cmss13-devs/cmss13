@@ -233,50 +233,54 @@
 
 	playsound(loc, 'sound/effects/bamf.ogg', 50, 1)
 	var/reagent_list_text = ""
-	var/i = 0
+	var/total_holders_count = 0 //non-empty containers / cartridges
+
 	for(var/obj/O in containers)
-		if(!O.reagents)
-			continue
-		for(var/datum/reagent/R in O.reagents.reagent_list)
-			reagent_list_text += " [R.volume] [R.name], "
-		i++
-	for(var/obj/item/reagent_container/cartridge/C in cartridges)
-		if (C.reagents)
-			for(var/datum/reagent/R in C.reagents.reagent_list)
+		if(O.reagents && O.reagents.total_volume > 0)
+			for(var/datum/reagent/R in O.reagents.reagent_list)
 				reagent_list_text += " [R.volume] [R.name], "
+			total_holders_count++
+
+	for(var/obj/item/reagent_container/cartridge/C in cartridges)
+		// inherent reagents
 		for(var/reagent_id in C.inherent_reagents)
 			var/reagent_volume = C.inherent_reagents[reagent_id]
 			reagent_list_text += " [reagent_volume] [reagent_id], "
-		i++
+		// transferable reagents
+		if(C.reagents && C.reagents.total_volume > 0)
+			for(var/datum/reagent/R in C.reagents.reagent_list)
+				reagent_list_text += " [R.volume] [R.name], "
+			total_holders_count++
 
 	var/mob/cause_mob = cause_data?.resolve_mob()
 	if(cause_mob) //so we don't message for simulations
 		reagents.source_mob = WEAKREF(cause_mob)
 		msg_admin_niche("[key_name(cause_mob)] detonated custom explosive by [key_name(creator)]: [name] (REAGENTS: [reagent_list_text]) in [get_area(src)] [ADMIN_JMP(loc)]", loc.x, loc.y, loc.z)
 
-	// Cartridge inherent reagents are added first (without counting them down)
+	// inherent transfers
 	for(var/obj/item/reagent_container/cartridge/C in cartridges)
 		for(var/reagent_id in C.inherent_reagents)
 			var/reagent_volume = C.inherent_reagents[reagent_id]
 			reagents.add_reagent(reagent_id, reagent_volume)
 
-	// Then we add container reagents
+	// container reagents added second
 	for(var/obj/item/reagent_container/glass/G in containers)
-		G.reagents.trans_to(src, G.reagents.total_volume)
-		i--
-		if(reagents && i <= 1)
-			reagents.trigger_volatiles = TRUE //So it doesn't explode before transfering the last cartridge/container
+		if (G.reagents && G.reagents.total_volume > 0)
+			if(total_holders_count <= 1)
+				reagents.trigger_volatiles = TRUE //Sets the next (final) transfer to trigger explosives
+			G.reagents.trans_to(src, G.reagents.total_volume)
+			total_holders_count--
 
-	// Last, we add the remaining reagents in the cartridges and trigger cartridge chemical reactions
+	// cartridge reagents added last
 	for(var/obj/item/reagent_container/cartridge/C in cartridges)
-		C.reagents.trans_to(src, C.reagents.total_volume)
-		i--
-		if(reagents && i <= 1)
-			reagents.trigger_volatiles = TRUE //So it doesn't explode before transfering the last cartridge/container
+		if (C.reagents && C.reagents.total_volume > 0)
+			if(total_holders_count <= 1)
+				reagents.trigger_volatiles = TRUE //Sets the next (final) transfer to trigger explosives
+			C.reagents.trans_to(src, C.reagents.total_volume)
+			total_holders_count--
 
 	if(reagents)
 		reagents.trigger_volatiles = FALSE
-
 
 	if(!QDELETED(src)) //the possible reactions didn't qdel src
 		if(reagents.total_volume) //The possible reactions didnt use up all reagents.
@@ -284,6 +288,7 @@
 			steam.set_up(10, 0, get_turf(src))
 			steam.attach(src)
 			steam.start()
+			reagents.clear_reagents()
 
 		if(iscarbon(loc))//drop dat grenade if it goes off in your hand
 			var/mob/living/carbon/C = loc

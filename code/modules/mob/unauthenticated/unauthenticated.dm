@@ -37,10 +37,11 @@ GENERAL_PROTECT_DATUM(/mob/unauthenticated)
 	. = ..()
 
 	client.acquire_dpi()
-	display_unauthenticated_menu()
 
 	if(passed_topic)
 		process_preauthorization(passed_topic)
+	else
+		display_unauthenticated_menu()
 
 /mob/unauthenticated/Logout()
 	. = ..()
@@ -188,7 +189,9 @@ GENERAL_PROTECT_DATUM(/mob/unauthenticated)
 		request.prepare(RUSTG_HTTP_METHOD_GET, oidc_endpoint, null, list(
 			"Authorization" = "Bearer [access_code]"
 		))
-		request.execute_blocking()
+		request.begin_async()
+
+		UNTIL(request.is_complete())
 
 		var/datum/http_response/response = request.into_response()
 		if(response.errored || response.error)

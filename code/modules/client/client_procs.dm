@@ -94,6 +94,10 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 				topiclimiter[ADMINSWARNED_AT] = minute
 				msg += " Administrators have been informed."
 				log_game("[key_name(src)] Has hit the per-minute topic limit of [mtl] topic calls in a given game minute")
+
+				#warn Do not merge this PR with this in it.
+				log_game("Topic body was: [href].")
+
 				message_admins("[key_name(usr)] Has hit the per-minute topic limit of [mtl] topic calls in a given game minute")
 			to_chat(src, SPAN_DANGER("[msg]"))
 			return

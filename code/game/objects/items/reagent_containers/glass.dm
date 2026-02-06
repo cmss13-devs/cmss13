@@ -684,7 +684,12 @@
 	desc = "A pressurized container to fill with reagents and the inner part of a pressurized reagent canister pouch. Only compatible with its pouch, machinery, or a storage tank."
 	icon = 'icons/obj/items/tank.dmi'
 	icon_state = "pressurized_reagent_container"
-	item_state = "anesthetic"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tanks_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tanks_righthand.dmi',
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/misc.dmi'
+	)
+	item_state = "reagent"
 	amount_per_transfer_from_this = 0
 	possible_transfer_amounts = null
 	volume = 480

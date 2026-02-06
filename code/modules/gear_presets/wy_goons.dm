@@ -63,9 +63,9 @@
 /datum/equipment_preset/goon/standard
 	name = "Weyland-Yutani Corporate Security Goon"
 	flags = EQUIPMENT_PRESET_EXTRA
-
 	assignment = JOB_WY_GOON
 	job_title = JOB_WY_GOON
+	role_comm_title = "CS"
 	paygrades = list(PAY_SHORT_WY_SEC = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/wy_goon
 	minimap_icon = "goon_standard"
@@ -145,7 +145,7 @@
 /datum/equipment_preset/goon/engineer
 	name = "Weyland-Yutani Corporate Security Technician"
 	flags = EQUIPMENT_PRESET_EXTRA
-
+	role_comm_title = "CS Tech"
 	assignment = JOB_WY_GOON_TECH
 	job_title = JOB_WY_GOON_TECH
 	paygrades = list(PAY_SHORT_WY_SEC_SPEC = JOB_PLAYTIME_TIER_0)
@@ -192,7 +192,7 @@
 /datum/equipment_preset/goon/medic
 	name = "Weyland-Yutani Corporate Security Medic"
 	flags = EQUIPMENT_PRESET_EXTRA
-
+	role_comm_title = "CS Med"
 	assignment = JOB_WY_GOON_MEDIC
 	job_title = JOB_WY_GOON_MEDIC
 	paygrades = list(PAY_SHORT_WY_SEC_SPEC = JOB_PLAYTIME_TIER_0)
@@ -250,7 +250,7 @@
 /datum/equipment_preset/goon/lead
 	name = "Weyland-Yutani Corporate Security Lead"
 	flags = EQUIPMENT_PRESET_EXTRA
-
+	role_comm_title = "CSL"
 	assignment = JOB_WY_GOON_LEAD
 	job_title = JOB_WY_GOON_LEAD
 	paygrades = list(PAY_SHORT_WY_SEC_LEAD = JOB_PLAYTIME_TIER_0)
@@ -333,7 +333,7 @@
 /datum/equipment_preset/goon/researcher
 	name = "Weyland-Yutani Corporate Research Consultant"
 	flags = EQUIPMENT_PRESET_EXTRA
-
+	role_comm_title = "RC"
 	assignment = JOB_WY_RESEARCHER
 	job_title = JOB_WY_RESEARCHER
 	paygrades = list(PAY_SHORT_CDOC = JOB_PLAYTIME_TIER_0)
@@ -379,7 +379,7 @@
 /datum/equipment_preset/goon/researcher/lead
 	name = "Weyland-Yutani Corporate Research Consultant (Lead)"
 	flags = EQUIPMENT_PRESET_EXTRA
-
+	role_comm_title = "RCL"
 	assignment = JOB_WY_RESEARCH_LEAD
 	job_title = JOB_WY_RESEARCH_LEAD
 	paygrades = list(PAY_SHORT_CCMO = JOB_PLAYTIME_TIER_0)

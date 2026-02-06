@@ -1201,6 +1201,32 @@
 			)
 		sleep(10)
 
+	// text and audio warnings for fatty
+	if(istype(SA, /obj/structure/ship_ammo/rocket/fatty))
+		playsound(target_turf, 'sound/weapons/gun_mortar_travel.ogg', 50, 1) // Audio warning for fatty cluster rockets
+		sleep(25)
+		var/relative_dir
+		for(var/mob/mob in range(15, target_turf))
+			if(get_turf(mob) == target_turf)
+				relative_dir = 0
+			else
+				relative_dir = Get_Compass_Dir(mob, target_turf)
+			mob.show_message( \
+				SPAN_DANGER("A ROCKET IS COMING DOWN [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_VISIBLE, \
+				SPAN_DANGER("YOU HEAR SOMETHING COMING DOWN [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_AUDIBLE \
+			)
+		sleep(25) // Sleep a bit to give a message
+		for(var/mob/mob in range(10, target_turf))
+			if(get_turf(mob) == target_turf)
+				relative_dir = 0
+			else
+				relative_dir = Get_Compass_Dir(mob, target_turf)
+			mob.show_message( \
+				SPAN_HIGHDANGER("A ROCKET IS ABOUT TO IMPACT [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_VISIBLE, \
+				SPAN_HIGHDANGER("YOU HEAR SOMETHING VERY CLOSE [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_AUDIBLE \
+			)
+		sleep(10)
+
 	if(ammo_warn_sound)
 		playsound(impact, ammo_warn_sound, ammo_warn_sound_volume, 1,15)
 	new /obj/effect/overlay/temp/blinking_laser (impact)

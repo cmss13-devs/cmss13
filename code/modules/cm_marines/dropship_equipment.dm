@@ -1394,8 +1394,6 @@
 		to_chat(user, SPAN_WARNING("You need hands to unload the ammunition."))
 		return
 
-	var/mob/living/carbon/human/human_user = user
-
 	to_chat(user, SPAN_NOTICE("You begin manually unloading [ammo_equipped] from [src]."))
 	if(!do_after(user, 20, INTERRUPT_NO_NEEDHAND | BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, target = src))
 		to_chat(user, SPAN_WARNING("You stop unloading the ammunition."))
@@ -1569,8 +1567,6 @@
 	if(!istype(user, /mob/living/carbon/human))
 		to_chat(user, SPAN_WARNING("You need hands to unload the ammunition."))
 		return
-
-	var/mob/living/carbon/human/human_user = user
 
 	to_chat(user, SPAN_NOTICE("You begin manually unloading [ammo_equipped] from [src]."))
 	if(!do_after(user, 20, INTERRUPT_NO_NEEDHAND | BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, target = src))

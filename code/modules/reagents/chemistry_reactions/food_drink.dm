@@ -176,7 +176,7 @@
 	required_reagents = list("electrolyte_orange_beverage" = 1, "water" = 5)
 	result_amount = 5
 
-/datum/chemical_reaction/electrolyte_lemonline_beverage
+/datum/chemical_reaction/electrolyte_lemonlime_beverage
 	name = "Electrolyte Lemon-Lime Beverage"
 	id = "electrolyte_lemonlime_beverage"
 	result = "lemon_lime"

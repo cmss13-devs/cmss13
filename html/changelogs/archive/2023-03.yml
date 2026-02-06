@@ -76,11 +76,11 @@
   - balance: 'Globber Active 5 - Zoom: Short-ranged zoom with no windup.'
   - balance: 'Globber Passive: Globber features armor, but it is weaker against flames!
       Stay away from fire!'
-  - refactor: Refractored some minor spit code and icons
+  - refactor: Refactored some minor spit code and icons
   - balance: Neuro has been completely reworked to deal mainly stamina damage, causes
-      dizzyness and has a small chance to make you 'stumble' in a random direction
+      dizziness and has a small chance to make you 'stumble' in a random direction
       along with minor tox damage. Stay out of it!
-  - rscadd: Completly reworked neuro gas, it now uses a proper effect with escalating
+  - rscadd: Completely reworked neuro gas, it now uses a proper effect with escalating
       effects the larger the dosage rather than RNG.
   - bugfix: Acid now deals damage to cades and now has a good chance of going over
       instead of being airtight
@@ -176,7 +176,7 @@
 2023-03-13:
   LC4492:
   - bugfix: Fixed poorly made yummy-tummies around the engineering area.
-  - maptweak: The upper engineering area have been properly tweaked to accomodate
+  - maptweak: The upper engineering area have been properly tweaked to accommodate
       a shared bunk room for the enlisted ranks of the engineering department, a proper
       cryosleep room and gave the Chief Engineer his own chamber to sleep in.
   Morrow:
@@ -221,7 +221,7 @@
   - refactor: the interior manager is gone, long live ssinterior
   - bugfix: whitelisted predators can now use apostrophes in their flavour texts
   realforest2001:
-  - bugfix: Dropships can no longer squish oneanother on Chance's Claim.
+  - bugfix: Dropships can no longer squish one another on Chance's Claim.
 2023-03-17:
   NewyearnewmeUwu:
   - maptweak: removed yet another default ss13 door from big red
@@ -265,7 +265,7 @@
   - balance: added a mechanic for COs to reduce transport and OB cooldown times, and
       increase hijack transport times
   Morrow:
-  - bugfix: Removes unintentional survsynth USCM IFF.
+  - bugfix: Removes unintentional synthvivor USCM IFF.
   NewyearnewmeUwu:
   - maptweak: the lambda graveyard on Solaris Ridge no longer spawns a clown
   fira:
@@ -289,7 +289,7 @@
   - bugfix: DCC is no longer able to launch flybys
   - bugfix: Queen is once again able to force open dropship airlocks
   realforest2001:
-  - rscadd: Adds two variables to yautja cloaks for admin customisation. cloak_alpha
+  - rscadd: Adds two variables to yautja cloaks for admin customization. cloak_alpha
       and true_cloak, true cloak will make the invisibility 100% effective.
 2023-03-21:
   BeagleGaming1:
@@ -343,7 +343,7 @@
   Tsunamico:
   - spellcheck: A minimal change to the text!
   harryob:
-  - qol: id locks can now be removed icly
+  - qol: id locks can now be removed ICly
   realforest2001:
   - bugfix: Create Bank Account verb now correctly assigns a paygrade to ID
   - bugfix: Fixes camel case in hellhound typepath causing duplication of entries
@@ -477,7 +477,7 @@
   - rscadd: Tapes now have a unique renaming system.
   realforest2001:
   - code_imp: Adds procs to bioscans to make them individually callable and a little
-      more optimised.
+      more optimized.
 2023-03-31:
   NewyearnewmeUwu:
   - bugfix: Corrosive tail stabs now properly credit their users for kills.

@@ -51,7 +51,7 @@ interface DropshipNavigationProps extends NavigationProps {
   shuttle_id: string;
   door_status: Array<DoorStatus>;
   has_flight_optimisation?: 0 | 1;
-  is_flight_optimised?: 0 | 1;
+  is_flight_optimized?: 0 | 1;
   can_fly_by?: 0 | 1;
   can_set_automated?: 0 | 1;
   primary_lz?: string;

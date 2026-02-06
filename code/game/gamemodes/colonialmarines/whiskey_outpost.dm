@@ -290,7 +290,7 @@
 		log_game("Round end result - marines won")
 		to_world(SPAN_ROUND_HEADER("Against the onslaught, the marines have survived."))
 		to_world(SPAN_ROUNDBODY("The signal rings out to the USS Alistoun, and Dust Raiders stationed elsewhere in the Neroid Sector begin to converge on LV-624."))
-		to_world(SPAN_ROUNDBODY("Eventually, the Dust Raiders secure LV-624 and the entire Neroid Sector in 2182, pacifiying it and establishing peace in the sector for decades to come."))
+		to_world(SPAN_ROUNDBODY("Eventually, the Dust Raiders secure LV-624 and the entire Neroid Sector in 2182, pacifying it and establishing peace in the sector for decades to come."))
 		to_world(SPAN_ROUNDBODY("The USS Almayer and the 2nd 'Falling Falcons' Battalion are never sent to the sector and are spared their fate in 2186."))
 		world << sound('sound/misc/hell_march.ogg')
 		if(GLOB.round_statistics)

@@ -40,8 +40,8 @@
       is deleted.
   Khadd:
   - bugfix: largecrates now take damage and break if hit enough times by a projectile
-  - bugfix: construction nodes cant be placed inside of walls and such anymore
-  - bugfix: sandbags cant be fully built up with just one bag anymore
+  - bugfix: construction nodes can't be placed inside of walls and such anymore
+  - bugfix: sandbags can't be fully built up with just one bag anymore
   LynxSolstice:
   - maptweak: Replaced the IFF locked M41As in the PMC nightmare that spawn on the
       ground with the new no_lock variant.
@@ -412,7 +412,7 @@
   realforest2001:
   - rscadd: Added an admin button for an ARES bioscan. Slightly refactored how Bioscans
       trigger for marines, relying on an ARES processor.
-  - rscadd: Added individual proccessors for ARES systems. These are WIP and will
+  - rscadd: Added individual processors for ARES systems. These are WIP and will
       eventually have damage and repair interactions.
   - rscadd: Added an ARES interaction console in the AI Core room, which holds logs
       for most ARES functions.
@@ -427,7 +427,7 @@
   - rscadd: Added subtypes of air pipes that don't explode on hijack, used these in
       ARES core.
   - maptweak: Remodelled ARES Core onto a fake-z, and added the new processors.
-  - bugfix: door_control buttons now respect being indestructable when processing
+  - bugfix: door_control buttons now respect being indestructible when processing
       explosions.
   - maptweak: Fixed the M39s overflowing in brig armory due to use of landmarks.
 2023-06-30:

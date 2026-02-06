@@ -41,7 +41,7 @@
 	icon_state = "ass_line"
 
 /area/desert_dam/interior/lab_northeast/east_lab_maintenence
-	name = "East Lab Maintenence"
+	name = "East Lab Maintenance"
 	icon_state = "maintcentral"
 	unoviable_timer = 25 MINUTES
 
@@ -991,7 +991,7 @@
 
 //Valleys
 //Near LZ
-//TODO: incorporate valleys and substrations for floodlight coverage
+//TODO: incorporate valleys and substations for floodlight coverage
 
 /area/desert_dam/exterior/valley
 	name = "Valley"

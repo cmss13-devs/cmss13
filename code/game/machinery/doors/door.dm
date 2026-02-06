@@ -27,7 +27,7 @@
 	/// Time to open/close airlock, default is 1 second.
 	var/openspeed = 1 SECONDS
 	/// Fixes multi_tile doors opacity issues.
-	var/list/filler_turfs = list() //Previously this was just var, because no one had forseen someone creating doors more than 2 tiles wide
+	var/list/filler_turfs = list() //Previously this was just var, because no one had foreseen someone creating doors more than 2 tiles wide
 	/// Stops it being forced open through normal means (Hunters/Zombies/Aliens).
 	var/heavy = FALSE
 	/// Resistance to masterkey
@@ -235,7 +235,7 @@
 	if(operating != DOOR_OPERATING_OPENING)
 		return
 	if(QDELETED(src))
-		return // Specifically checked because of the possiible addtimer
+		return // Specifically checked because of the possible addtimer
 
 	layer = open_layer
 	density = FALSE

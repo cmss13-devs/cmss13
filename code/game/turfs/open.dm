@@ -115,7 +115,7 @@
 			return
 
 		if(1) // 1 only singes
-			if(!scorchedness) // we only singe that which hasnt burned
+			if(!scorchedness) // we only singe that which hasn't burned
 				scorchedness = 1
 
 		if(2 to 30)
@@ -167,7 +167,7 @@
 	can_bloody = FALSE
 	supports_surgery = FALSE
 
-//Slipery slope
+//Slippery slope
 /turf/open/slippery
 	name = "sloped roof"
 	icon = 'icons/turf/floors/floors.dmi'
@@ -1068,7 +1068,7 @@
 	icon_state = "cement_sunbleached9"
 
 
-// Jungle turfs (Whiksey Outpost)
+// Jungle turfs (Whiskey Outpost)
 
 
 /turf/open/jungle
@@ -1168,7 +1168,7 @@
 /turf/open/jungle/impenetrable/Initialize(mapload, ...)
 	. = ..()
 	var/obj/structure/flora/jungle/thickbush/bush = new(src)
-	bush.indestructable = TRUE
+	bush.indestructible = TRUE
 
 /turf/open/jungle/impenetrable/grass_clear
 	icon_state = "grass_clear"

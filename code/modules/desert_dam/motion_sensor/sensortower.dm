@@ -1,4 +1,4 @@
-//sensor tower for deser dam. It is there to add the xeno's to the tactical map for marines.
+//sensor tower for desert dam. It is there to add the xeno's to the tactical map for marines.
 
 #define SENSORTOWER_BUILDSTATE_WORKING 0
 #define SENSORTOWER_BUILDSTATE_BLOWTORCH 1
@@ -101,7 +101,7 @@
 	if(user.is_mob_incapacitated())
 		return FALSE
 	if(!ishuman(user))
-		to_chat(user, SPAN_DANGER("You have no idea how to use that.")) //No xenos or mankeys
+		to_chat(user, SPAN_DANGER("You have no idea how to use that.")) //No xenos or monkeys
 		return FALSE
 
 	add_fingerprint(user)

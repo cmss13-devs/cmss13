@@ -66,7 +66,7 @@
 	sniper_rifle.aimed_shot_cooldown = world.time
 
 /*
-		ACTIONS SPECIALSIT SNIPER CAN TAKE
+		ACTIONS SPECIALIST SNIPER CAN TAKE
 */
 /datum/action/item_action/specialist/aimed_shot/action_activate()
 	. = ..()

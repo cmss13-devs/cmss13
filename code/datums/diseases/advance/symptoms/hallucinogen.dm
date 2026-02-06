@@ -1,7 +1,7 @@
 /*
 //////////////////////////////////////
 
-Hallucigen
+Hallucinogen
 
 	Very noticeable.
 	Lowers resistance considerably.
@@ -15,16 +15,16 @@ Bonus
 //////////////////////////////////////
 */
 
-/datum/symptom/hallucigen
+/datum/symptom/hallucinogen
 
-	name = "Hallucigen"
+	name = "Hallucinogen"
 	stealth = -2
 	resistance = -3
 	stage_speed = -3
 	transmittable = -1
 	level = 5
 
-/datum/symptom/hallucigen/Activate(datum/disease/advance/A)
+/datum/symptom/hallucinogen/Activate(datum/disease/advance/A)
 	..()
 	if(prob(SYMPTOM_ACTIVATION_PROB))
 		var/mob/living/carbon/M = A.affected_mob

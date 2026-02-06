@@ -9,18 +9,18 @@
 	if(!sheet)
 		new_sheet = TRUE
 		sheet = new /obj/item/paper
-	var/new_name = input(usr, "Enter new item name:", "Customising paper", sheet.name) as text|null
+	var/new_name = input(usr, "Enter new item name:", "Customizing paper", sheet.name) as text|null
 	if(!new_name)
 		if(new_sheet)
 			qdel(sheet)
 		return
-	var/new_text = input(usr, "Enter new content:", "Customising [new_name]", sheet.info) as message|null
+	var/new_text = input(usr, "Enter new content:", "Customizing [new_name]", sheet.info) as message|null
 	if(!new_text)
 		if(new_sheet)
 			qdel(sheet)
 		return
 	show_browser(usr, "<body class='paper'>[new_text]</body>", "Custom paper preview", "custom_paper_preview", width = DEFAULT_PAPER_WIDTH, height = DEFAULT_PAPER_HEIGHT)
-	if(alert(usr, "Make this new content?", "Customising [new_name]", "OK", "Cancel") == "Cancel")
+	if(alert(usr, "Make this new content?", "Customizing [new_name]", "OK", "Cancel") == "Cancel")
 		close_browser(usr, "custom_paper_preview")
 		if(new_sheet)
 			qdel(sheet)

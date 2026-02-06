@@ -13,7 +13,7 @@ SUBSYSTEM_DEF(sound)
 	if(!resumed) // Controller first firing for this tick
 		run_queue = template_queue.Copy()
 		template_queue = list()
-		run_hearers = null // null explicitely indicates we need to do ranging!
+		run_hearers = null // null explicitly indicates we need to do ranging!
 
 	for(var/datum/sound_template/run_template in run_queue)
 		if(!run_hearers) // Initialize for handling next template

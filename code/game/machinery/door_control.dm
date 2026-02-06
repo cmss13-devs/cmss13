@@ -249,7 +249,7 @@
 	needs_power = FALSE
 	use_power = FALSE
 
-// seperating quarter and office because we might want to allow more access to the office than quarter in the future.
+// separating quarter and office because we might want to allow more access to the office than quarter in the future.
 /obj/structure/machinery/door_control/cl/office
 
 /obj/structure/machinery/door_control/cl/office/lobby_door

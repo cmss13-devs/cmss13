@@ -123,7 +123,7 @@
  * Emissive overlays are pasted with an atom color that converts them to be entirely some specific color.
  * Emissive blockers are pasted with an atom color that converts them to be entirely some different color.
  * Emissive overlays and emissive blockers are put onto the same plane.
- * The layers for the emissive overlays and emissive blockers cause them to mask eachother similar to normal BYOND objects.
+ * The layers for the emissive overlays and emissive blockers cause them to mask each other similar to normal BYOND objects.
  * A color matrix filter is applied to the emissive plane to mask out anything that isn't whatever the emissive color is.
  * This is then used to alpha mask the lighting plane.
  */
@@ -256,7 +256,7 @@
 	filters += filter(type = "drop_shadow", color = "#04080FAA", size = -20)
 
 /atom/movable/screen/plane_master/seethrough
-	name = "seethrough plane"
+	name = "see-through plane"
 	plane = SEETHROUGH_PLANE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 

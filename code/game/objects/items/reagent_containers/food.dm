@@ -15,7 +15,7 @@
 /obj/item/reagent_container/food/Initialize()
 	. = ..()
 	if (!pixel_x && !pixel_y)
-		src.pixel_x = rand(-6.0, 6) //Randomizes postion
+		src.pixel_x = rand(-6.0, 6) //Randomizes position
 		src.pixel_y = rand(-6.0, 6)
 	RegisterSignal(src, COMSIG_ITEM_DROPPED, PROC_REF(update_last_dropped_by))
 

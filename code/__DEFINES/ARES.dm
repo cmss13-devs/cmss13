@@ -65,7 +65,7 @@
 /// Self-Returned Access Ticket
 #define TICKET_RETURNED "returned"
 
-/// Checks for if buttons can be used, these may yet be removed and internalised to the UI programming
+/// Checks for if buttons can be used, these may yet be removed and internalized to the UI programming
 #define TICKET_OPEN "OPEN"
 #define TICKET_CLOSED "CLOSED"
 

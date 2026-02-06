@@ -25,7 +25,7 @@
 	return ..()
 
 /datum/map_template/shuttle/preload_size(path, cache)
-	. = ..(path, TRUE) // Done this way because we still want to know if someone actualy wanted to cache the map
+	. = ..(path, TRUE) // Done this way because we still want to know if someone actually wanted to cache the map
 	if(!cached_map)
 		return
 

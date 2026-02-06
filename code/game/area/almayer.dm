@@ -2,7 +2,7 @@
 // Fore = West  | Aft = East //
 // Port = South | Starboard = North //
 // Bow = Western|Stern = Eastern //(those are the front and back small sections)
-// Naming convention is to start by port or starboard then put eitheir (bow,fore,midship,aft,stern)
+// Naming convention is to start by port or starboard then put either (bow,fore,midship,aft,stern)
 /area/almayer
 	icon = 'icons/turf/area_almayer.dmi'
 	// ambience = list('sound/ambience/shipambience.ogg')
@@ -451,7 +451,7 @@
 /area/almayer/maint/lower/cryo_cells
 	name = "\improper Lower Deck Cryo Cells Maintenance"
 
-// Upper maintainance areas
+// Upper maintenance areas
 /area/almayer/maint/upper
 	name = "\improper Upper Deck Maintenance"
 	icon_state = "upperhull"

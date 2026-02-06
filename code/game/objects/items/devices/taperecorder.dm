@@ -478,7 +478,7 @@
 	var/list/storedinfo_currentside = storedinfo.Copy()
 	var/list/timestamp_currentside = timestamp.Copy()
 	var/used_capacity_currentside = used_capacity
-	//then we overwite our current side with our other side
+	//then we overwrite our current side with our other side
 	storedinfo = storedinfo_otherside.Copy()
 	timestamp = timestamp_otherside.Copy()
 	used_capacity = used_capacity_otherside

@@ -12,7 +12,7 @@
   - tweak: splints now play a sound when they \"come apart\" due to damage, includes
       special cases like the warrior's punch and the two bore rifle
   Shad0vvs:
-  - bugfix: Hitbox for the pill bottle and autoinjector labels are now nonexistant.
+  - bugfix: Hitbox for the pill bottle and autoinjector labels are now nonexistent.
   - tweak: Added the mob that caused the death in observer death messages.
   - rscadd: SEA is alerted to new characters that join with less than 5 hours total.
   - tweak: Allow changing of limb aiming after starting surgery step.
@@ -35,7 +35,7 @@
   - rscadd: Added a CCT (combat controller) channel for HvH, it's the JTAC counterpart
       for the other team.
   - rscadd: Added a CLF channel, instead of just using the Dutch channel.
-  - rscadd: Added faction-specific radio towers, you can no longer piggyback off eachother's
+  - rscadd: Added faction-specific radio towers, you can no longer piggyback off each other's
       radio towers. This affects normal gameplay as well, so let me know if bugs crop
       up.
   - rscadd: Added faction-specific crew monitoring consoles, no longer will medbay
@@ -115,7 +115,7 @@
   - bugfix: Sentries will no longer try to shoot targets if there is something directly
       in front of them that would stop them from shooting, such as a wall.
   ghostsheet, stan_albatross:
-  - rscadd: General pouch uses a weight system similar to a stachel or backpack.
+  - rscadd: General pouch uses a weight system similar to a satchel or backpack.
   - tweak: General pouch can only hold 1 medium item, mags included, while not being
       able to hold medkits or bible.
   sg2002:
@@ -198,7 +198,7 @@
   - rscadd: The embryos inside hugged hosts turn into the Forsaken hive rather than
       insta-killing the host upon hijack.
   Kugamo:
-  - imageadd: Adds new sprites for various doors that didnt have varients before.
+  - imageadd: Adds new sprites for various doors that didn't have variants before.
   - maptweak: Replaces doubled single doors with single double doors on Almayer.
   Segrain:
   - bugfix: Using E to quickly store an item in container no longer breaks if the
@@ -253,7 +253,7 @@
 2022-03-16:
   Geeves, Triiodine:
   - rscadd: PMCs, UPP, and CLF now have Squad HUDs that appear over their special
-      units, just like the USCM. Factions cannot see eachother's Squad HUDs, only
+      units, just like the USCM. Factions cannot see each other's Squad HUDs, only
       their own.
   - tweak: Mutineers now have a mutiny flag set on them, rather than changing faction.
       This will avoid oddities with IFF, and also allow mutineers of other factions
@@ -278,7 +278,7 @@
   - rscadd: Surgical line is now in doctor and ERT medic starting loadouts, Wey-Med
       Plus, synth, and antag vendors, and surgical kits. Ditto for new Synth-Graft
       mentioned below.
-  - tweak: Surgical line/synth graft now fits in medical pouch, first-responder pouch,
+  - tweak: Surgical line/synth-graft now fits in medical pouch, first-responder pouch,
       and medic rig belt. Think of it like a hypospray, storagewise - a touch too
       bulky to cram in the clown car lifesaver belt.
   - tweak: Tweaked some ERT loadouts a bit. Mostly moving defibs, health scanners,
@@ -291,7 +291,7 @@
       cause it to fail. Suturing surgical incisions closed is still a surgery.
   - tweak: Fixovein/cable coil/headbands no longer work for suturing wounds; they
       can still be used for stitching amputation stumps & closing surgical incisions.
-  - tweak: Suture line split into two items - current one to heal brute, new Synthgraft
+  - tweak: Suture line split into two items - current one to heal brute, new synth-graft
       to heal burns.
   - tweak: 'Can only suture up to half of a wound''s damage, the rest needs to be
       healed normally. '
@@ -346,14 +346,14 @@
       small short stories, lore is awesome.
   Shad0vvs:
   - bugfix: Thralls can now set their own mask visors.
-  - tweak: Minor grammar fix on the error message when interacting with Yajuta masks.
+  - tweak: Minor grammar fix on the error message when interacting with Yautja masks.
   - rscadd: Adds a new admin verb on the player panel that allows admins to place
       a default or custom onscreen alert to get a players attention.
   - tweak: Changes the briefcase and rolling pin to be more in line with a bottle
       head hit if you have no helmet rather than a stun.
   - tweak: Changed the eggs and weeds on the Yautja ship to be forsaken instead of
       alpha.
-  - rscadd: Added 10 surgical lines and 10 Synthgrafts to the Yautja ship.
+  - rscadd: Added 10 surgical lines and 10 synth-grafts to the Yautja ship.
   - rscadd: Added Forsaken eggs and weeds to be used when mapping, along with alpha
       and forsaken nests.
   - tweak: Ports fullscreen from TG plus input cleanup.
@@ -369,7 +369,7 @@
   - tweak: reduced the price of the base medkit in said vendors from 6 to 5 points.
   - rscadd: Added radial menus for pheromone selection. Sprites by Kugamo.
   forest2001:
-  - rscadd: Staff can now fire customised OBs with event verbs.
+  - rscadd: Staff can now fire customized OBs with event verbs.
   - rscadd: Using the same verb, staff can spawn their custom OBs as warheads without
       firing.
   - tweak: Incendiary OBs now have a set-able dynamic fire colour variable (overrides
@@ -458,7 +458,7 @@
   - bugfix: Fixed the names of the unnamed airlocks on Kutjevo Refinery, they are
       no longer called \\"Airlock\\".
   ihatethisengine2:
-  - bugfix: RTOs can be transfered to another squad as intended.
+  - bugfix: RTOs can be transferred to another squad as intended.
 2022-03-30:
   Binbers:
   - tweak: Different levels of grab offer different chances for successful resisting

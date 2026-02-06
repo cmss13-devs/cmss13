@@ -277,7 +277,7 @@
 	sound = 'sound/voice/joe/use_of_lighting.ogg'
 	haz_sound = 'sound/voice/joe/use_of_lighting_haz.ogg'
 	upp_joe_sound = 'sound/voice/joe/upp_joe/osvetitelnogo.ogg'
-	say_message = "An unauthorised use of lighting equipment."
+	say_message = "An unauthorized use of lighting equipment."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 

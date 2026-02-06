@@ -123,7 +123,7 @@
 /datum/equipment_preset/survivor/forecon/tech
 	name = "Survivor - USCM Reconnaissance Support Technician"
 	assignment = JOB_FORECON_SUPPORT
-	skills = /datum/skills/military/survivor/forecon_techician
+	skills = /datum/skills/military/survivor/forecon_technician
 	minimap_icon = "engi"
 
 /datum/equipment_preset/survivor/forecon/tech/load_gear(mob/living/carbon/human/new_human)

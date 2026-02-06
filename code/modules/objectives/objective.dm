@@ -8,7 +8,7 @@
 	var/list/required_objectives //List of objectives that are required to complete this objectives.
 	var/list/enables_objectives //List of objectives that require this objective to complete.
 	var/objective_flags = NO_FLAGS // functionality related flags.
-	var/number_of_clues_to_generate = 1 // miminum number of clues we generate for the objective(aka how many things will point to this objective).
+	var/number_of_clues_to_generate = 1 // minimum number of clues we generate for the objective(aka how many things will point to this objective).
 	var/controller = TREE_NONE // Controlling tree - this is the tree-faction we consider in control of the objective for purpose of awarding points.
 
 /datum/cm_objective/New()

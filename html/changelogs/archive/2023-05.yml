@@ -137,7 +137,7 @@
       expected asset_cache_confirm_arrival, a tgui_Topic, or rate limited will be
       logged.'
   FreetoZ:
-  - bugfix: hotifx for cas
+  - bugfix: hotfix for cas
 2023-05-07:
   Diegoflores31:
   - bugfix: Fixed Queen being able to hijack the shuttle from far away
@@ -209,7 +209,7 @@
   TeDGamer:
   - bugfix: Infected mobs tackle counters no longer reset instantly.
   blackcrystall:
-  - bugfix: bioscan larvaes issue fixed
+  - bugfix: bioscan larvas issue fixed
 2023-05-12:
   BeagleGaming1:
   - bugfix: Fixes a runtime involving vehicle hardpoints
@@ -220,9 +220,9 @@
   - bugfix: Fixed ATM not resetting failed attempts on successful login
   - bugfix: Fixed vendors not checking access requirements
   - soundadd: Added a ker-chunk sound for vending
-  - spellcheck: Improperified all /obj/structure/machinery/vending names
+  - spellcheck: Improperlified all /obj/structure/machinery/vending names
   - code_imp: Cleanup vending.dm
-  - bugfix: Fix a runtime with the weldersatchel in the synth snowflake vendor
+  - bugfix: Fix a runtime with the welder satchel in the synth snowflake vendor
   - bugfix: Fix several runtimes regarding surgery movements
   - bugfix: Fix a runtime with the bad_leg trait in character creator
   - bugfix: Fix a warning about incorrect Z level count
@@ -260,7 +260,7 @@
       hit targeted limbs instead of only chest
 2023-05-14:
   Drathek:
-  - bugfix: Fixed attack log not occuring when a thrown weapon gibs its target
+  - bugfix: Fixed attack log not occurring when a thrown weapon gibs its target
   Morrow:
   - balance: Adds a throw delay of 0.4 seconds which takes effect after throwing twice.
       Two hands, two throws.
@@ -564,7 +564,7 @@
   LynxSolstice:
   - rscadd: Field kit for all roles. (spawner with a map). Sandbags and E-Tool buyable
       in the rifleman vendor.
-  - code_imp: Moved the map from a _KIT bitflag to a new bitflag, added the fieldkit
+  - code_imp: Moved the map from a _KIT bitflag to a new bitflag, added the field kit
       to all squad roles.
   - balance: Added half stacks of sandbags to the rifleman vendor, buyable for one
       stack each for 5 points.

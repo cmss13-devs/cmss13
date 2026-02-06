@@ -1,5 +1,5 @@
 /datum/supply_packs/upp/potato_crate
-	name = "UPP Surplus boxes of potato (x10 boxes) (x700 potatos)"
+	name = "UPP Surplus boxes of potato (x10 boxes) (x700 potatoes)"
 	contains = list(
 		/obj/item/storage/box/potato,
 		/obj/item/storage/box/potato,

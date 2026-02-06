@@ -675,7 +675,7 @@
 			loaded_pill_bottles -= loaded_pill_bottles[bottle_index]
 
 			if(length(loaded_pill_bottles_to_fill) == 0 && length(loaded_pill_bottles) > 0)
-				loaded_pill_bottles_to_fill += loaded_pill_bottles[1] //Indexs starting at one - Kill me
+				loaded_pill_bottles_to_fill += loaded_pill_bottles[1] //Indexes starting at one - Kill me
 
 			if(length(loaded_pill_bottles) == 1)
 				loaded_pill_bottles_to_fill = LAZYCOPY(loaded_pill_bottles)

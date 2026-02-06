@@ -49,7 +49,7 @@
 /obj/item/reagent_container/food/snacks/mre_food/upp/snack/riceball
 	name = "rice ball"
 	icon_state = "riceball"
-	desc = "Cooked rice in a form of a ball, has a slighly buttery taste, doesn't fall apart, surprisingly."
+	desc = "Cooked rice in a form of a ball, has a slightly buttery taste, doesn't fall apart, surprisingly."
 
 /obj/item/reagent_container/food/snacks/mre_food/upp/snack/riceball/Initialize()
 	. = ..()

@@ -190,7 +190,7 @@
 					desc = "Looks and feels starched, cold to the touch."
 				if(SQUAD_MARINE_INTEL)
 					icon_state = "beret_intel"
-					desc = "Looks more intellegent than the person wearing it."
+					desc = "Looks more intelligent than the person wearing it."
 		else
 			icon_state = "beret"
 			desc = initial(desc)
@@ -560,7 +560,7 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	icon_state = "booniehat"
 	flipping_message = list(
 		"flipped" = "You tuck the hat's chinstrap away. Hopefully the wind doesn't nick it...",
-		"unflipped" = "You hook the hat's chinstrap under your chin. Peace of mind is worth a little embarassment."
+		"unflipped" = "You hook the hat's chinstrap under your chin. Peace of mind is worth a little embarrassment."
 		)
 
 /obj/item/clothing/head/cmcap/boonie/tan
@@ -580,7 +580,7 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 /obj/item/clothing/head/cmcap/co
 	name = "\improper USCM Commanding officer cap"
 	icon_state = "cocap"
-	desc = "A hat usually worn by senior officers in the USCM. While it provides no protection, some officers wear it in the field to make themselves more recognisable."
+	desc = "A hat usually worn by senior officers in the USCM. While it provides no protection, some officers wear it in the field to make themselves more recognizable."
 
 /obj/item/clothing/head/cmcap/co/formal
 	name = "\improper USCM formal Commanding Officer's white cap"
@@ -614,7 +614,7 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 
 /obj/item/clothing/head/cmcap/bridge
 	name = "\improper USCM officer cap"
-	desc = "A hat usually worn by officers in the USCM. While it provides no protection, some officers wear it in the field to make themselves more recognisable."
+	desc = "A hat usually worn by officers in the USCM. While it provides no protection, some officers wear it in the field to make themselves more recognizable."
 	icon_state = "cap_officer"
 
 /obj/item/clothing/head/cmcap/flap
@@ -946,7 +946,7 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 
 /obj/item/clothing/head/CMB
 	name = "\improper Colonial Marshal Bureau cap"
-	desc = "A dark cap enscribed with the powerful letters of 'MARSHAL' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
+	desc = "A dark cap inscribed with the powerful letters of 'MARSHAL' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/CMB.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/CMB.dmi'
@@ -1166,7 +1166,7 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 
 /obj/item/clothing/head/beret/royal_marine
 	name = "royal marine beret"
-	desc = "A green beret belonging to the royal marines commando. This beret symbolizes a royal marines ability to fight in any environment, desert, sea, artic or space a royal marine will always be ready."
+	desc = "A green beret belonging to the royal marines commando. This beret symbolizes a royal marines ability to fight in any environment, desert, sea, arctic or space a royal marine will always be ready."
 	icon_state = "rmc_beret"
 	item_state = "rmc_beret"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/TWE.dmi'

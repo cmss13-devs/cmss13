@@ -125,6 +125,9 @@
 	icon_state = "detective_grey"
 	worn_state = "detective_grey"
 
+/*
+ * Head of Security
+ */
 /obj/item/clothing/under/rank/warden/navyblue
 	desc = "The insignia on this uniform tells you that this uniform belongs to the Warden."
 	name = "warden's uniform"

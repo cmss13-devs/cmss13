@@ -294,7 +294,7 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 	new /obj/item/tool/shovel/spade(src)
 	new /obj/item/reagent_container/glass/bucket(src)
 
-//ALAMAYER CARGO CLOSET
+//ALMAYER CARGO CLOSET
 /obj/structure/closet/secure_closet/req_officer
 	name = "\improper RO's Locker"
 	req_access = list(ACCESS_MARINE_RO)

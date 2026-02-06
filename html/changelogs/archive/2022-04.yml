@@ -53,7 +53,7 @@
       in-game)
   - maptweak: added two sentries to the south side of the ship in the LV CLF nightmare
       insert
-  - rscadd: Added a specialised anti-vehicle single shot RPG for use in HvH events.
+  - rscadd: Added a specialized anti-vehicle single shot RPG for use in HvH events.
       Its name is somewhat familiar. It can be folded up with unique-action and unfolded
       with Z (attack_self)
   - rscadd: Added anti-tank rockets for all rocket launchers, admin spawn only
@@ -189,7 +189,7 @@
   - bugfix: Actual squad leaders no longer lose ability to issue orders when replaced
       by acting squad leader.
   - rscadd: 'New keybinds for humans: Issue Order (opens the menu for choosing the
-      order to issue), Issue Move order, Issue Hold order, Issue Focus order (selfdescriptive).
+      order to issue), Issue Move order, Issue Hold order, Issue Focus order (self descriptive).
       Not bound to anything by default - set your own keys.'
   - rscadd: 'New keybinds for xenomorphs: Emit Pheromones, Emit Frenzy pheromone,
       Emit Warding pheromone, Emit Recovery pheromone. As above, but activating main
@@ -278,7 +278,7 @@
   - server: Containers now properly includes youtube-dl, fixing usage of 'Play Internet
       Sound'
   Geeves:
-  - bugfix: Fixed job roles being overriden by their equipped versions on some occasions.
+  - bugfix: Fixed job roles being overridden by their equipped versions on some occasions.
   - rscadd: Your whitelist status now updates your uniform when you select CO or Synth,
       meaning CO leaders will show the beret type and Synth will show the uniform
       drip.
@@ -388,7 +388,7 @@
   - bugfix: Fixed a bug where smart weapons cached your IFF and didn't bother to set
       the new IFF if you picked up an ID with a different IFF group.
   Stan_Albatross:
-  - bugfix: fixed some issues with misalignement of the north facing open and closed
+  - bugfix: fixed some issues with misalignment of the north facing open and closed
       sprites for the folding metal cade, and misalignment of the barbed wire on the
       north facing closed plasteel cade sprite.
   - bugfix: when you take off glasses, they will now properly go away from your onmob
@@ -403,13 +403,13 @@
   Spircen:
   - bugfix: Survivor Engineer for Trijent its back on the kind of survivors you can
       spawn as
-  - bugfix: Burger in hand item no longer dissapears after you remove the package.
+  - bugfix: Burger in hand item no longer disappears after you remove the package.
   50RemAndCounting:
   - qol: Rearranged the Strip clickdrag menu items so that (Exo)suit, Suit storage
       and Back item slot buttons are always on the top of the body parts list.
   - soundadd: ports the boatswain sound effect from Baystation 12 to be used by ARES
       when announcing a CO/SEA on deck.
-  - bugfix: made the defib noises, telephone rining and Desert Eagle firing sounds
+  - bugfix: made the defib noises, telephone ringing and Desert Eagle firing sounds
       a bit quieter.
 2022-04-28:
   50RemAndCounting:
@@ -418,7 +418,7 @@
   Geeves:
   - balance: The XvX Slash Damage modifier has been lowered to x1.5 from x2.25.
   Spircen:
-  - bugfix: Cigarrete Vendor at Hangar now puts the items over it instead of under
+  - bugfix: Cigarette Vendor at Hangar now puts the items over it instead of under
       it.
   Stan_Albatross:
   - bugfix: fixes unload-weapon not swapping hands

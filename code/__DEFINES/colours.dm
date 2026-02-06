@@ -128,7 +128,7 @@
 #define LIGHT_COLOR_FLARE   "#FA644B"
 /// Weird color, between yellow and green, very slimy. rgb(175, 200, 75)
 #define LIGHT_COLOR_SLIME_LAMP "#AFC84B"
-/// Incandascent warm white, for usage in lights. rgb(255, 239, 210)
+/// Incandescent warm white, for usage in lights. rgb(255, 239, 210)
 #define LIGHT_COLOR_TUNGSTEN "#FFEFD2"
 /// Barely visible cyan-ish hue, as the doctor prescribed. rgb(240, 250, 250)
 #define LIGHT_COLOR_HALOGEN "#F0FAFA"

@@ -189,7 +189,7 @@
 
 /* Predator Ship Teleporter - set in each individual gamemode */
 
-/obj/effect/step_trigger/teleporter/yautja_ship/Trigger(mob/living/user) // For whitelised preds
+/obj/effect/step_trigger/teleporter/yautja_ship/Trigger(mob/living/user) // For whitelisted preds
 
 	var/mob/living/traveler = user
 

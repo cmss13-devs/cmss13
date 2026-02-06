@@ -2,7 +2,7 @@ Changelogs are included with commits as text .yml files created individually by 
 
 #######################################################
 
-TO MAKE A CHANGELOG .YML ENTRRY
+TO MAKE A CHANGELOG .YML ENTRY
 
 1. Make a copy of the file example.yml in html/changelogs and rename it to [YOUR USERNAME]-PR-[YOUR PR NUMBER].yml or [YOUR USERNAME]-[YOUR BRANCH NAME]. Only the username is strictly required, anything else is organizational and can be ignored if you so wish.
 
@@ -12,7 +12,7 @@ TO MAKE A CHANGELOG .YML ENTRRY
 
 4. (Optional) set the change prefix (rscadd) to a different one listed above in example.yml (this affects what icon is used for your changelog entry)
 
-5. When commiting make sure your .yml file is included in the commit (it will usually be unticked as an unversioned file)
+5. When committing make sure your .yml file is included in the commit (it will usually be unticked as an unversioned file)
 
 #######################################################
 

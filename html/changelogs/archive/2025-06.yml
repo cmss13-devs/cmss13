@@ -31,7 +31,7 @@
   DarkLordCabbage:
   - rscdel: Removed CPR'ing synths
   - qol: You can now use the hand labeler to label crates
-  - bugfix: Prevents an error message  about ejecting an occupant from an auotdoc
+  - bugfix: Prevents an error message  about ejecting an occupant from an autodoc
       if there is no occupant.
   Joelampost:
   - bugfix: Fixes the area checks for the hunting grounds
@@ -268,14 +268,14 @@
   Venuska1117:
   - qol: Facehugger and Larva now get 1 sec cooldown on *roar emote.
   - rscadd: Added "heartbeat" animation to speed fruit sprite.
-  - rscadd: Added description when examinating hardened weeds node, describing the
+  - rscadd: Added description when examining hardened weeds node, describing the
       20% growth boost.
-  - soundadd: Added audiable sound clue when fruits are expiring.
+  - soundadd: Added audible sound clue when fruits are expiring.
   - balance: Gardener drones can now unroot and feed fruits twice as fast (from 2
       second to 1 second), that doesn't change when trying to eat mature fruit from
       ground.
   - balance: Gardener resin surge now instantly mature fruits, but in exchange you
-      get applyied dynamic cooldown based on fruit growth using previous code maturity
+      get applied dynamic cooldown based on fruit growth using previous code maturity
       + cooldown time.
   - balance: Added sound for shield fruit overshield expire.
   - balance: Spore fruit effect time is increased from 60s to 90s
@@ -285,7 +285,7 @@
   - qol: Unrooted fruits sprites now show description accurate "roots", so they can
       be more easy recognized from immature fruits.
   - qol: Added fruit counter for healer drone in status tab.
-  - qol: Added balloon alerts in same color as fruits that inform you biefly of effects
+  - qol: Added balloon alerts in same color as fruits that inform you briefly of effects
       when consuming fruit and when fruit expires.
   - bugfix: Returned Gardener fruit counter as status tab information.
   - bugfix: Added missing plasma fruit glow, now it glow blue instead of green.
@@ -316,7 +316,7 @@
       box's one.
   - bugfix: Fixes the radiopack's on_mob showing to be on the left hand when being
       held on the right hand.
-  - bugfix: The game will now properly use the in_hands storaged for the toy light-swords.
+  - bugfix: The game will now properly use the in_hands stored for the toy light-swords.
   - code_imp: Adds the missing item_states to the satchel code.
   - code_imp: Adds the new patch of code that allows the use of all versions of the
       toy light-sword, instead of just the blue one.
@@ -344,7 +344,7 @@
   private-tristan:
   - rscadd: During hijack, xenos can now view tacmap when the queen is off ovipositor
       when xenos outnumber marines by 20%.
-  - balance: Hives with "allow_no_queen_actions" (notably Feral, Yautuja, and Forsaken)
+  - balance: Hives with "allow_no_queen_actions" (notably Feral, Yautja, and Forsaken)
       hives can now always view tacmap.
   - balance: Forsaken hive is capable of seeing humans on tacmap.
 2025-06-28:
@@ -368,7 +368,7 @@
   MistChristmas, Drathek:
   - rscadd: Languages use '!' prefix instead of sharing prefixes with Radio Channels.
       Provost channel changed to '#l'.
-  - code_imp: Re-org RADIO_PREFIXES, langauges, and department radio keys into mostly
+  - code_imp: Re-org RADIO_PREFIXES, languages, and department radio keys into mostly
       alphabetical order. Remove Uppercase instances. Add missing colours for tgui
       say.
   - qol: Languages pop up in TGUI-say if you switch to them whilst not being on a

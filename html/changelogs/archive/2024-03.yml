@@ -7,7 +7,7 @@
   Drathek BadAtThisGame:
   - maptweak: Fixed various nightmare inserts that were not spawning; removing or
       disabling others that were not in use.
-  - maptweak: Updated containerroom_xenos insert for Solaris Ridge to include coms
+  - maptweak: Updated containerroom_xenos insert for Solaris Ridge to include comms
       tower (BadAtThisGame)
   - code_imp: Nightmare errors are now a runtime.
   Huffie56:
@@ -70,7 +70,7 @@
   - bugfix: MPs can now use Riot Breaching Charges as intended.
 2024-03-05:
   Segrain:
-  - admin: Marking tickets properly recognises your ckey.
+  - admin: Marking tickets properly recognizes your ckey.
   ZephyrTFA, harryob:
   - rscadd: framework for new ert stations ported from tgstation/tgstation#71785,
       by ZephyrTFA
@@ -179,7 +179,7 @@
   - balance: adding the ability for to buy smartgun DV9 battery for 15 points in SG
       vendor.
   Segrain:
-  - qol: Middleclicking beds/chairs/etc is now a shortcut for buckling to them.
+  - qol: Middle clicking beds/chairs/etc is now a shortcut for buckling to them.
 2024-03-16:
   nauticall:
   - bugfix: Makes pill bottle caps appear on closed pill bottles again.
@@ -266,7 +266,7 @@
   - rscadd: Added a couple of fortunes in strings/fortunes.txt
   - spellcheck: fixed a grammar error I found in strings/fortunes.txt
   Segrain:
-  - admin: Spawning nondeathsquad MARSOC now properly recognises "current location"
+  - admin: Spawning nondeathsquad MARSOC now properly recognizes "current location"
       option.
   ihatethisengine:
   - bugfix: Fixed delayed launch launching lifeboat even if locked by queen
@@ -279,9 +279,9 @@
   - bugfix: move semiotic in north evac pod so you can't see it when your behind in
       hull maintenance.
   InsaneRed:
-  - balance: Wardens can heal eachother once again, but only half the health
+  - balance: Wardens can heal each other once again, but only half the health
   - qol: Gives SPAN_XENOHIGHDANGER to heal/reju on positives, since its very easy
-      to miss if you actually healed soembody.
+      to miss if you actually healed somebody.
   MobiusWon:
   - rscadd: Uniforms vend with USCM patch.
   SabreML:
@@ -297,7 +297,7 @@
       restriction on respawn removed.
   - admin: New flag to disable Working Joe respawns
   - rscadd: Hazard Joes now have their own emotes
-  - code_imp: Hazard Joes now a seperate species
+  - code_imp: Hazard Joes now a separate species
   - code_imp: Updated isworkingjoe and new ishazardjoe define
   - refactor: Working Joe emotes and emote categories now a globally defined list
   - soundadd: New Hazard Joe voicelines
@@ -316,8 +316,8 @@
   - rscdel: Clicking yourself no longer removes your own holocard.
 2024-03-29:
   SpartanBobby:
-  - maptweak: Changes to hullwall placment on Kutjevo this PR should allow you to
-      break open much more of the colony buildings aswell as get into new areas to
+  - maptweak: Changes to hullwall placement on Kutjevo this PR should allow you to
+      break open much more of the colony buildings as well as get into new areas to
       flank and play around
   blackdragonTOW:
   - code_imp: Added a third level of zoom to the Toggle Zoom verb

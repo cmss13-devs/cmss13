@@ -120,7 +120,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		C.current_ticket.AddInteraction("Client reconnected.")
 		log_ahelp(C.current_ticket.id, "Reconnected", "Client reconnected", C.ckey)
 
-//Dissasociate ticket
+//Disassociate ticket
 /datum/admin_help_tickets/proc/ClientLogout(client/C)
 	if(C.current_ticket)
 		var/datum/admin_help/T = C.current_ticket

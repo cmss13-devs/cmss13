@@ -98,7 +98,7 @@
 	return TRUE
 
 /datum/keybinding/xenomorph/emit_pheromones/frenzy
-	name = "emit_pheromones_fernzy"
+	name = "emit_pheromones_frenzy"
 	full_name = "Emit Frenzy pheromone"
 	description = "Increased run speed, damage and chance to knock off headhunter masks."
 	keybind_signal = COMSIG_KB_XENO_EMIT_PHEROMONES_FRENZY

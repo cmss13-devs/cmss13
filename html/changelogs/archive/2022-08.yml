@@ -10,7 +10,7 @@
   - rscadd: 'The old IO office has been refurbished to serve a new purpose: being
       an office for IOs'
   - rscadd: Data Detectors have been made available to marine vendors
-  - rscadd: ARES now yells at command when comms are estabilished
+  - rscadd: ARES now yells at command when comms are established
   - rscadd: Marines can now get small document pouches from their vendor
   - balance: Requisitions no longer receives points every 30 minutes
   - balance: Reduced number of roundstart OBs from 4 to 2
@@ -68,7 +68,7 @@
   - code_imp: refactored how defib sprites are applied to use overlays
 2022-08-03:
   Segrain:
-  - bugfix: Professor Dummy being unhugable now properly means that it cannot be infected
+  - bugfix: Professor Dummy being unhuggable now properly means that it cannot be infected
       by other methods too.
   - bugfix: Professor Dummy can no longer be abused for spawning unhealthy amount
       of severed limb items.
@@ -220,7 +220,7 @@
   50RemAndCounting:
   - soundadd: readded old Almayer/Sulaco ambient noise.
   Shad0vvs:
-  - bugfix: Fixed possible null runtime in prefrences_savefile.
+  - bugfix: Fixed possible null runtime in preferences_savefile.
   stanalbatross:
   - bugfix: you can no longer build windows on the same tile as an m56d, this will
       prevent abuse via firing "through" a window on the same tile as you
@@ -266,7 +266,7 @@
   - rscadd: ARES will now announce over the radio when cryopods auto-eject someone
 2022-08-14:
   Diegoflores31:
-  - bugfix: Bodyscanner no longer dissapears marines if they hop inside at the same
+  - bugfix: Bodyscanner no longer disappears marines if they hop inside at the same
       time.
   Joe Lampost:
   - bugfix: Fixed the plasma caster being able to be deleted by explosions which breaks
@@ -371,7 +371,7 @@
       exploded.
 2022-08-20:
   Drulikar:
-  - bugfix: Fixed power APCs being unbreakable (atleast not by small/med xenos) after
+  - bugfix: Fixed power APCs being unbreakable (at least not by small/med xenos) after
       basic repairs have been made (mending wires and closing panel)
   - bugfix: Xenos now cut all power APC wires, not just all - 1 because of an off-by-one
       error
@@ -464,10 +464,10 @@
   - bugfix: Command tablet not finding any mobs visible for its print medal message.
       It should also print the medals faster since it is prior to a database call.
   - admin: Added "Award a royal jelly" to admin Events Panel that picks a hive, and
-      awards a royal jelly (with overrideable giver attribution).
+      awards a royal jelly (with overridable giver attribution).
   - admin: Added tgui Medals Panel to view marine and xeno medals/jelly, rescind medals
       from that round (actually deleting the items too), and add medals/jelly (with
-      overrideable giver attribution for xenos or overrideable medal location for
+      overridable giver attribution for xenos or overridable medal location for
       marines).
   - admin: Added href link to open Medals Panel in message when a medal is created/deleted.
   Git-Nivrak:
@@ -492,7 +492,7 @@
       Ballistic goggle sprites changed to look like they have 1 piece lenses instead
       of being green glasses
   - rscadd: Changes to all eye HUD glasses sprites except M4RA and M56 glasses to
-      be monacles
+      be monocles
   Segrain:
   - bugfix: Inputting numbers once again accepts negative values where relevant (e.g.
       coordinates).

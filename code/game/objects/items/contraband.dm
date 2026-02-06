@@ -43,7 +43,7 @@
 	reagents.add_reagent("hippiesdelight", 100)
 
 /obj/item/weapon/baton/damaged
-	name = "damaged stunbaton"
+	name = "damaged stun baton"
 	desc = "A stun baton for incapacitating people with. This one seems pretty broken and beat up, especially around the on/off switch.."
 	force = 12
 	has_user_lock = FALSE

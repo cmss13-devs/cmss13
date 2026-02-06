@@ -425,18 +425,18 @@
 
 /obj/item/device/defibrillator/synthetic/hyperdyne
 	name = "Hyperdyne synthetic reset key"
-	desc = "An independant Hyperdyne design, based on a previous collaboration with Weyland-Yutani, this device can fix major glitches or programming errors of synthetic units, as well as being able to restart a synthetic that has suffered critical failure. It can only be used once before being reset."
+	desc = "An independent Hyperdyne design, based on a previous collaboration with Weyland-Yutani, this device can fix major glitches or programming errors of synthetic units, as well as being able to restart a synthetic that has suffered critical failure. It can only be used once before being reset."
 	icon_state = "hyper_reset_key"
 
 /obj/item/device/defibrillator/synthetic/hyperdyne/noskill
 	name = "SMART Hyperdyne synthetic reset key"
-	desc = "An independant Hyperdyne design, based on a previous collaboration with Weyland-Yutani, this device can fix major glitches or programming errors of synthetic units, as well as being able to restart a synthetic that has suffered critical failure. It can only be used once before being reset. This one has a microfunction AI and can be operated by anyone."
+	desc = "An independent Hyperdyne design, based on a previous collaboration with Weyland-Yutani, this device can fix major glitches or programming errors of synthetic units, as well as being able to restart a synthetic that has suffered critical failure. It can only be used once before being reset. This one has a microfunction AI and can be operated by anyone."
 	icon_state = "hyper_reset_ns_key"
 	noskill = TRUE
 
 /obj/item/device/defibrillator/synthetic/seegson
 	name = "Seegson Working Joe reboot key"
-	desc = "Seegson tool required in a repair of Working Joe units that suffered critical failures, reboots unit system to a factory settings. Isn't compatible with sythetics of Hyperdyne, Weyland-Yutani and other designs. It can only be used once before being reset."
+	desc = "Seegson tool required in a repair of Working Joe units that suffered critical failures, reboots unit system to a factory settings. Isn't compatible with synthetics of Hyperdyne, Weyland-Yutani and other designs. It can only be used once before being reset."
 	icon_state = "seeg_reset_key"
 	sound_success = 'sound/items/synth_reset_key/seegson_revive.ogg'
 	synthetic_type_locked = /datum/equipment_preset/synth/working_joe

@@ -239,7 +239,7 @@
   Molto:
   - rscadd: Added a new hairstyle (Overeye Long)
   Nancok:
-  - spellcheck: Xenos no longer attempt to caress with non existant scythe-arms and
+  - spellcheck: Xenos no longer attempt to caress with non-existent scythe-arms and
       now use their claws instead.
   - tweak: 'allow storing sidearm magazine boxes on the back slot  '
   - tweak: allow storing **primary** magazine boxes on the back slot, too
@@ -264,7 +264,7 @@
   - experiment: Reduced the price of folding barricade crates.
   - experiment: Reduced the price of the SMES parts kit in ASRS.
   - experiment: Reduced the price of specialist ammo across the board
-  - rscadd: Added x2 Broilter-T Fuelpacks to the flamethrower crate in ASRS.
+  - rscadd: Added x2 Broiler-T Fuelpacks to the flamethrower crate in ASRS.
   - experiment: Changed all loose grenade crates to contain two grenade packets of
       the correct type (x3 grenades per packet), increasing the grenade count of each
       crate by 1. 6 from 5.
@@ -276,25 +276,25 @@
       replaced with a medical pouch with the same contents. This version is marked
       (splints) in vendors.
   - rscadd: Added a variant of the medical pouch that has 4 pill bottles (Tramadol,
-      Bicardine, Kelotane, and Dexalin respectively). This version is marked (pills)
+      Bicaridine, Kelotane, and Dexalin respectively). This version is marked (pills)
       in vendors.
   - rscdel: Removed attachments from all squad vendors (excluding the attachment vendor
       in general prep of course).
   - rscdel: Removed all marine kits from standard play. The Honor Guard kits remain
       on the upperdeck.
-  - rscadd: Added the restriced firearms category to squad role vendors and reqiusitions.
-      These guncases can be purchased with squad points, most do not come with ammunition.
+  - rscadd: Added the restricted firearms category to squad role vendors and requisitions.
+      These gun cases can be purchased with squad points, most do not come with ammunition.
       However, ammunition can freely be acquired in general squad prep weapon / ammo
       vendors.
   - rscadd: Added the utilities section to squad role vendors, this section contains
-      (most) of the parts and items found in the aforemention removed kits as well
+      (most) of the parts and items found in the aforementioned removed kits as well
       as some bonuses. This includes the ever important SensorMate hud.
-  - experiment: The M2C and M56D heavy machine guns, as well as the M240 guncases
+  - experiment: The M2C and M56D heavy machine guns, as well as the M240 gun cases
       can only be acquired by squad engineers, or at requisitions.
   - experiment: The VP78 Hand Cannon, SU-6 Smart Pistol, MOU53 Break Action Shotgun,
       and M41AE2 Heavy Pulse Rifle are available to all squad roles as point purchases.
       They can also be gotten at Req.
-  - experiment: The M41A MK1 can be obtained at requsitions alone. It is not available
+  - experiment: The M41A MK1 can be obtained at requisitions alone. It is not available
       in squad vendors.
   - rscadd: Added the explosives section to (most) squad role vendors. This section
       contains grenade packets. Grenade packets contain x3 of the stated grenade type.
@@ -321,13 +321,13 @@
   - rscadd: The new machete pouch has been added as standard equipment for the smartgunner.
   - rscadd: Add the new IMP logistics backpack to req alongside all the other speciality
       bags and backpacks.
-  - rscadd: Added pre-filled medical pouchs (aforementioned splints and pill variants)
+  - rscadd: Added pre-filled medical pouches (aforementioned splints and pill variants)
       to req alongside the empty variants.
   - spellcheck: Added the MK2 designation to M41A ammunition in vendors that also
       have M41A MK1 magazines.
   - spellcheck: Changed 'barrel' to 'muzzle' in attachment vendors.
   - rscadd: Added the M10 technician helmet to the surplus uniform vendor and req.
-  - rscadd: Added skill-less variants of kelotane, bicardine, and emergency auto injectors.
+  - rscadd: Added skill-less variants of kelotane, bicaridine, and emergency auto injectors.
   - experiment: Changed medium metal stacks to contain 30 metal from 25.
   - rscadd: Added the 'med-small-stack' of metal which contains 20 sheets, and the
       'med-large-stack' which contains 40 sheets for use by mappers. The same has
@@ -393,13 +393,13 @@
   - bugfix: The baton slug now actually hits Aliens.
   - bugfix: The Logistics Satchel object should now appear on 'classic' skin maps.
   - bugfix: RTO's now have access to the other first-aid pouch types.
-  - experiment: Reduced the price of VP78 guncases across the board (by 4 and 5 respectively
+  - experiment: Reduced the price of VP78 gun cases across the board (by 4 and 5 respectively
       depending on initial price point).
   - experiment: Increased the frequency of Magnetic Harnesses in Req and Squad Req.
   - experiment: Increased the frequency of Composite Barricades in Req and Squad req.
   - experiment: Increased the frequency of holo-target rounds in Req by a factor of
       2.
-  - bugfix: Re-added holo-target magazines to guncases.
+  - bugfix: Re-added holo-target magazines to gun cases.
 2021-11-26:
   Nanu:
   - tweak: The Revolvers (Not Mateba) no longer stuns humans on hit with regular ammo.
@@ -511,7 +511,7 @@
   - tweak: Only people part of the marine faction are able to see what the primary
       LZ is in the Status panel now.
   Stan_Albatross:
-  - tweak: When you set orders via overwatch, they will appear in chat for those recieving
+  - tweak: When you set orders via overwatch, they will appear in chat for those receiving
       them as well.
   - tweak: When you overwatch message a squad or SL, or set orders, the message/orders
       that you sent will be shown back to you.

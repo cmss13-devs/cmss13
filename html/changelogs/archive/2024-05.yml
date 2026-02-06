@@ -19,7 +19,7 @@
       pipes from bellow the windows.
   - maptweak: Starboard aft hull removed the two walls.
   - maptweak: Upper engi area around lobby remove pipping going bellow window also
-      rework the area to better fit aestetic of almayer.
+      rework the area to better fit aesthetic of almayer.
   - maptweak: some apc are a bit moved around to avoid them having a small light on
       them.
   HumiliatedGoblin:
@@ -99,7 +99,7 @@
   - rscadd: Cable restraints can now be adjusted via right-click to fit on wrists
       or ankles.
   - rscadd: Prison shoe chains now require ankle restraints rather than handcuffs.
-  - rscadd: Prison shoes that have been chained now have an equp and unequip delay
+  - rscadd: Prison shoes that have been chained now have an equip and unequip delay
       to account for the chains, proportionate to the breakout time of the item used
       in the chains.
 2024-05-11:
@@ -110,7 +110,7 @@
   - balance: projectiles can pass fences
   ihatethisengine:
   - rscadd: Added paradropping
-  - rscdel: Removed rappeling
+  - rscdel: Removed rappelling
   - rscadd: Infection icon now has lower alpha if the human is dead
   iloveloopers:
   - rscadd: Adds in a new incinerator smoke tank that turns any reagent inside it
@@ -226,7 +226,7 @@
   - ui: VOX panel's second tab now doesn't overlap the other buttons
   - ui: Wiring panel for some machines is now restored to use circular indicators
       again
-  - ui: Smart fridge interface is more in line with sorted inventories as far as layout
+  - ui: Smartfridge interface is more in line with sorted inventories as far as layout
       & tooltips
   - ui: Tacmap drawing interface is tweaked a little to deal with the changes to dropdowns
       + clicking the tab is now disabled again until the tacmap is ready (It needs

@@ -158,7 +158,7 @@
 	desc = "An oily empty bag that once held Weyland-Yutani Pepper Chips."
 
 //////////////////////
-///Ciagarette Butts///
+///Cigarette Butts///
 //////////////////////
 
 /obj/item/trash/cigbutt

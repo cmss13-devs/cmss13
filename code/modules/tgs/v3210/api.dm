@@ -77,7 +77,7 @@
 		if (logs.len >= 2)
 			originmastercommit = logs[2]
 		else
-			TGS_ERROR_LOG("Error parsing origin commmit logs")
+			TGS_ERROR_LOG("Error parsing origin commit logs")
 
 	if(world.system_type != MS_WINDOWS)
 		TGS_ERROR_LOG("This API version is only supported on Windows. Not running on Windows. Aborting initialization!")

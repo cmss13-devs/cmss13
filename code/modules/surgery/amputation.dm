@@ -343,7 +343,7 @@
 
 /datum/surgery_step/sever_prosthetic_clamps/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
-		SPAN_NOTICE("You start carefully cutting through the jammed clamps holding what's left of [target]'s prosthesic [surgery.affected_limb.display_name] on with \the [tool]."),
+		SPAN_NOTICE("You start carefully cutting through the jammed clamps holding what's left of [target]'s prosthetic [surgery.affected_limb.display_name] on with \the [tool]."),
 		SPAN_NOTICE("[user] starts carefully cutting through the jammed clamps holding what's left of your prosthetic [surgery.affected_limb.display_name] on with \the [tool]."),
 		SPAN_NOTICE("[user] starts carefully cutting through the jammed clamps holding what's left of [target]'s prosthetic [surgery.affected_limb.display_name] on with \the [tool]."))
 

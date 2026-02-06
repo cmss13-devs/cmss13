@@ -141,7 +141,7 @@ ON_CONFIG_LOAD(/datum/autoreply/mentor/macros)
 
 /datum/autoreply/mentor/synthkey
 	title = "H: Synthetic Reset Key"
-	message = "Synthetics cannot be restarted with a normal defibrilator and instead require a unique item called the Synthetic Reset Key. This functions the same as a defibrilator but only for synthetics. It can be used by anyone with engineering training and acquired from various squad role vendors. Most synthetics will carry one at all times."
+	message = "Synthetics cannot be restarted with a normal defibrillator and instead require a unique item called the Synthetic Reset Key. This functions the same as a defibrillator but only for synthetics. It can be used by anyone with engineering training and acquired from various squad role vendors. Most synthetics will carry one at all times."
 
 /datum/autoreply/mentor/radio
 	title = "H: Radio"

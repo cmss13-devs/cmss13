@@ -39,7 +39,7 @@ Destruction in inevitable. At the very least, you can assist in preventing other
 
 
 //*************************************
-//---------EXECUITIVE OFFICER-----------
+//---------EXECUTIVE OFFICER-----------
 //*************************************/
 /datum/job/command/executive/whiskey
 	title = JOB_WO_XO

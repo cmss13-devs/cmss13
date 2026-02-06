@@ -119,7 +119,7 @@ SUBSYSTEM_DEF(nightmare)
 		data = json_decode(data)
 	return parse_tree(data)
 
-/// Instanciates nmnodes from parsed JSON
+/// Instantiates nmnodes from parsed JSON
 /datum/controller/subsystem/nightmare/proc/parse_tree(list/parsed)
 	RETURN_TYPE(/list/datum/nmnode)
 	if(!islist(parsed))
@@ -136,7 +136,7 @@ SUBSYSTEM_DEF(nightmare)
 			nodes += N
 	return nodes
 
-/// Instanciate a single nmnode from its JSON definition
+/// Instantiate a single nmnode from its JSON definition
 /datum/controller/subsystem/nightmare/proc/read_node(list/parsed)
 	RETURN_TYPE(/datum/nmnode)
 	var/jsontype = parsed["type"]
@@ -144,7 +144,7 @@ SUBSYSTEM_DEF(nightmare)
 	if(nodetype)
 		return new nodetype(parsed)
 	else
-		CRASH("Tried to instanciate an invalid node type")
+		CRASH("Tried to instantiate an invalid node type")
 
 /// Returns whether the ground context indicates a hostile survivor scenario
 /datum/controller/subsystem/nightmare/proc/get_scenario_is_hostile_survivor()

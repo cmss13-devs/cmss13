@@ -168,7 +168,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 //Cryopods themselves.
 /obj/structure/machinery/cryopod
 	name = "hypersleep chamber"
-	desc = "A large automated capsule with LED displays intended to put anyone inside into 'hypersleep', a form of non-cryogenic statis used on most ships, linked to a long-term hypersleep bay on a lower level."
+	desc = "A large automated capsule with LED displays intended to put anyone inside into 'hypersleep', a form of non-cryogenic stasis used on most ships, linked to a long-term hypersleep bay on a lower level."
 	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
 	icon_state = "body_scanner_open"
 	density = TRUE
@@ -559,7 +559,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 /obj/structure/machinery/cryopod/MouseDrop_T(mob/target, mob/user)
 	. = ..()
 	var/mob/living/H = user
-	if(!istype(H) || target != user) //cant make others get in. they need to be willing so this is superflous to enable
+	if(!istype(H) || target != user) //can't make others get in. they need to be willing so this is superflous to enable
 		return
 
 	move_inside(target)

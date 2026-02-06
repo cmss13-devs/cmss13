@@ -11,7 +11,7 @@
 	var/upgrade_type
 	///Path to the item, upgrade, if any.
 	var/item_reference
-	///Clearance requirment to buy this upgrade. 5x is level 6. Why is it not that way? no one knows.
+	///Clearance requirement to buy this upgrade. 5x is level 6. Why is it not that way? no one knows.
 	var/clearance_req = 5
 	///The change of price for item per purchase, recommended for mass producing stuff or limited upgrade.
 	var/change_purchase = 0

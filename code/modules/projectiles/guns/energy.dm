@@ -269,7 +269,7 @@
 	. = ..()
 	overlays += charge_icon + "_[mode]"
 
-/// Changes between targetting wanted persons or any persons. Originally used by unique_action, made own proc to allow for use in action button too.
+/// Changes between targeting wanted persons or any persons. Originally used by unique_action, made own proc to allow for use in action button too.
 /obj/item/weapon/gun/energy/taser/proc/change_mode(mob/user)
 	switch(mode)
 		if(TASER_MODE_P)

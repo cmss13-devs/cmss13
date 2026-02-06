@@ -38,7 +38,7 @@
 		src.bonus_damage_stacks += BDS.bonus_damage_stacks
 		src.last_stack = BDS.last_stack
 
-	// if a different type of holo targetting bullet hits a mob and has a bigger bonus cap, it will get applied.
+	// if a different type of holo targeting bullet hits a mob and has a bigger bonus cap, it will get applied.
 	if(src.bonus_damage_cap_increase < bonus_damage_cap_increase)
 		src.bonus_damage_cap_increase = bonus_damage_cap_increase
 		src.bonus_damage_cap = initial(bonus_damage_cap) + src.bonus_damage_cap_increase

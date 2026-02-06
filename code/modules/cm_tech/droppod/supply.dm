@@ -3,7 +3,7 @@
 	drop_time = 10 SECONDS
 	dropping_time = 2 SECONDS
 	open_time = 2 SECONDS
-	/// The contained parimary object, used as a replacer for the droppod icon
+	/// The contained primary object, used as a replacer for the droppod icon
 	var/obj/structure/package
 
 /obj/structure/droppod/supply/Initialize(mapload, obj/structure/package)

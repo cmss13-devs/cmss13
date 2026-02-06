@@ -1,4 +1,4 @@
-//------------WHISKEY OUTPOST VENDOR VEERSIONS---------------
+//------------WHISKEY OUTPOST VENDOR VERSIONS---------------
 
 //------------UNIFORM VENDOR---------------
 

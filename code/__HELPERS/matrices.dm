@@ -92,13 +92,13 @@ c f 1
 /////////////////////
 
 /* Documenting a couple of potentially useful color matrices here to inspire ideas
-// Greyscale - indentical to saturation @ 0
+// Greyscale - identical to saturation @ 0
 list(LUMA_R,LUMA_R,LUMA_R,0, LUMA_G,LUMA_G,LUMA_G,0, LUMA_B,LUMA_B,LUMA_B,0, 0,0,0,1, 0,0,0,0)
 
 // Color inversion
 list(-1,0,0,0, 0,-1,0,0, 0,0,-1,0, 0,0,0,1, 1,1,1,0)
 
-// Sepiatone
+// Sepia tone
 list(0.393,0.349,0.272,0, 0.769,0.686,0.534,0, 0.189,0.168,0.131,0, 0,0,0,1, 0,0,0,0)
 */
 

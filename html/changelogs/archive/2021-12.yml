@@ -16,7 +16,7 @@
       chance.
   - bugfix: (Actually from Nov 29th, 2021, but it wasn't properly included in there)
       Airburst grenades, such as AGM-F and Hornet, no longer duplicates their guaranteed-hit
-      projectiles in certains circumstance (such as having ghosts observing you).
+      projectiles in certain circumstances (such as having ghosts observing you).
 2021-12-06:
   Morrow:
   - bugfix: No longer able to use sandstone to bypass construction checks.
@@ -95,9 +95,9 @@
   - tweak: Added a synth-specific version of the snow suit with no armour for the
       snowflake vendor
   - tweak: 'All synth specific exosuit/coat items (bomber jackets, synth snow suit,
-      synth external webbing, and windbreakers) can now hold the same items : analysers,
+      synth external webbing, and windbreakers) can now hold the same items : analyzers,
       multitools, pipe painters, radios, t-ray scanners, crowbars, screwdrivers, welding
-      tools, wirecutters, wrenches, gas masks, flashlights, health analysers, hyposprays,
+      tools, wirecutters, wrenches, gas masks, flashlights, health analyzers, hyposprays,
       emergency oxygen tanks, pens, binoculars, and the crew monitor.'
   - maptweak: you can no longer early weed on the metal tiles just outside the LZs
       on LV-642.
@@ -160,7 +160,7 @@
   - tweak: The recipe to produce cheese now makes immature cheese.
   - maptweak: The cheese on the Almayer has been replaced by mature cheese.
   - rscadd: Added a new nightmare insert for the armoury on LV, containing cheese,
-      and a note explaining the prescence of cheese.
+      and a note explaining the presence of cheese.
   forest2001:
   - tweak: SEA had a base paygrade drop down to Gunnery Sergeant (Again)
   - rscadd: SEAs can now choose a promotion path in preferences, Command path will
@@ -223,7 +223,7 @@
   - rscadd: Added a new variant of the M3A1 Synthetic Utility Vest which changes colour
       depending on the map (Mission-specific camo patterns), selectable alongside
       the existing gray vest.
-  - tweak: Moved the Hazard Vest and the labcoats from the Synthetic Gear Vendor to
+  - tweak: Moved the Hazard Vest and the lab coats from the Synthetic Gear Vendor to
       the Snowflake Vendor.
   Geeves:
   - rscadd: Elder Yautja can now set their communicator's volume at will, it starts
@@ -236,7 +236,7 @@
   Nancok:
   - tweak: 'Reduced time required to clear snow as xeno to 12 ticks (down from 25)  '
   Nanu:
-  - tweak: The throwing knive has had its damage reduced to 75dmg on un-armored xenos.
+  - tweak: The throwing knife has had its damage reduced to 75dmg on un-armored xenos.
   - tweak: 'The MOU has been moved from the squad vendors to req. '
   - tweak: Increases the fire delay to 1.5 from 0.5 when un-cloaking as a scout spec.
   Segrain:
@@ -248,7 +248,7 @@
   forest2001:
   - tweak: Renamed /datum/job/distress to /datum/job/special
   - bugfix: Warden and Admirals now have functional sechud icons again.
-  - tweak: Categorised the hud.dmi file, as it was a complete mess. Ordered security
+  - tweak: Categorized the hud.dmi file, as it was a complete mess. Ordered security
       and squad huds to be all in the same order.
   - tweak: Changed icon names for squad hud and sec hud to be easily distinguished.
   - tweak: Renamed the hud_icons.dmi file to hud_yautja.dmi, as it only contained

@@ -43,7 +43,7 @@
  * No extra padding is permitted
  * Many values are supported. See parse_constant()
  * Strings must be wrapped in "...", files in '...', and lists in list(...)
- * Files are kinda susy, and may not actually work. buyer beware
+ * Files are kinda sussy, and may not actually work. buyer beware
  * Lists support assoc values as expected
  * These constants can be further embedded into lists
  *
@@ -134,7 +134,7 @@
 #define TRIM_TEXT(text) (trim_reduced(text))
 
 /**
- * Helper and recommend way to load a map file
+ * Helper and recommended way to load a map file
  * - dmm_file: The path to the map file
  * - x_offset: The x offset to load the map at
  * - y_offset: The y offset to load the map at
@@ -206,7 +206,7 @@
 
 	var/stored_index = 1
 	var/list/regexOutput
-	//multiz lool
+	//multiz lol
 	dmm_regex.next = stored_index // CM addition: Necessary to reset start position in case of loading the same file concurrently. Putting it in Find() below is NOT enough!
 	while(dmm_regex.Find(tfile, stored_index))
 		stored_index = dmm_regex.next
@@ -523,7 +523,7 @@
 			bounds[MAP_MAXZ] = max(bounds[MAP_MAXZ], zcrd)
 	return TRUE
 
-/// Stanrdard loading, not used in production
+/// Standard loading, not used in production
 /// Doesn't take advantage of any tgm optimizations, which makes it slower but also more general
 /// Use this if for some reason your map format is messy
 /datum/parsed_map/proc/_dmm_load(x_offset, y_offset, z_offset, crop_map, no_changeturf, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, place_on_top, new_z, delete)
@@ -706,7 +706,7 @@ GLOBAL_LIST_EMPTY(map_model_default)
 	var/editing = FALSE
 	for(var/model_key in grid_models)
 		// We're going to split models by newline
-		// This guarentees that each entry will be of interest to us
+		// This guarantees that each entry will be of interest to us
 		// Then we'll process them step by step
 		// Hopefully this reduces the cost from read_list that we'd otherwise have
 		var/list/lines = splittext(grid_models[model_key], "\n")
@@ -839,7 +839,7 @@ GLOBAL_LIST_EMPTY(map_model_default)
 			var/member_string = model_path.group[1]
 			model_index = model_path.next
 			//findtext is a bit expensive, lets only do this if the last char of our string is a } (IE: we know we have vars)
-			//this saves about 25 miliseconds on my machine. Not a major optimization
+			//this saves about 25 milliseconds on my machine. Not a major optimization
 			if(member_string[length(member_string)] == "}")
 				variables_start = findtext(member_string, "{")
 
@@ -893,7 +893,7 @@ GLOBAL_LIST_EMPTY(map_model_default)
 	return .
 
 /datum/parsed_map/proc/build_coordinate(list/model, turf/crds, no_changeturf as num, placeOnTop as num, new_z, delete)
-	// If we don't have a turf, nothing we will do next will actually acomplish anything, so just go back
+	// If we don't have a turf, nothing we will do next will actually accomplish anything, so just go back
 	// Note, this would actually drop area vvs in the tile, but like, why tho
 	if(!crds)
 		return
@@ -904,7 +904,7 @@ GLOBAL_LIST_EMPTY(map_model_default)
 	// We use static lists here because it's cheaper then passing them around
 	var/static/list/default_list = GLOB.map_model_default
 	////////////////
-	//Instanciation
+	//Instantiation
 	////////////////
 
 	if(turf_blacklist?[crds])
@@ -972,11 +972,11 @@ GLOBAL_LIST_EMPTY(map_model_default)
 			world.preloader_load(instance)
 	// If this isn't template work, we didn't change our turf and we changed area, then we've gotta handle area lighting transfer
 	else if(!no_changeturf && old_area)
-		// Don't do contain/uncontain stuff, this happens a few lines up when the area actally changes
+		// Don't do contain/uncontain stuff, this happens a few lines up when the area actually changes
 		crds.on_change_area(old_area, crds.loc)
 	MAPLOADING_CHECK_TICK
 
-	//finally instance all remainings objects/mobs
+	//finally instance all remaining objects/mobs
 	for(var/atom_index in 1 to index-1)
 		if(members_attributes[atom_index] != default_list)
 			world.preloader_setup(members_attributes[atom_index], members[atom_index])
@@ -1031,7 +1031,7 @@ GLOBAL_LIST_EMPTY(map_model_default)
 		var/left_constant = parse_constant(trim_left)
 		if(position)
 			old_position = position + length(text[position])
-		if(!left_constant) // damn newlines man. Exists to provide behavior consistency with the above loop. not a major cost becuase this path is cold
+		if(!left_constant) // damn newlines man. Exists to provide behavior consistency with the above loop. not a major cost because this path is cold
 			continue
 
 		if(equal_position && !isnum(left_constant))
@@ -1053,7 +1053,7 @@ GLOBAL_LIST_EMPTY(map_model_default)
 	if(text[1] == "\"")
 		// insert implied locate \" and length("\"") here
 		// It's a minimal timesave but it is a timesave
-		// Safe becuase we're guaranteed trimmed constants
+		// Safe because we're guaranteed trimmed constants
 		return copytext(text, 2, -1)
 
 	// list

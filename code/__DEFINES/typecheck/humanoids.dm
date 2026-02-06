@@ -22,7 +22,7 @@
 #define isinfiltratorsynthetic(A) (ishuman(A) && istype(A?:species, /datum/species/synthetic/infiltrator))
 #define isk9synth(A) (ishuman(A) && istype(A?:species, /datum/species/synthetic/synth_k9))
 
-//Specic group checks, use instead of typechecks (but use traits instead)
+//Specific group checks, use instead of typechecks (but use traits instead)
 #define issamespecies(A, B) (A.species?.group == B.species?.group)
 #define isspecieshuman(A) (A.species?.group == SPECIES_HUMAN)
 #define isspeciesmonkey(A) (A.species?.group == SPECIES_MONKEY)

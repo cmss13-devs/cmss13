@@ -1563,7 +1563,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 
 /obj/item/tool/wirecutters/yautja
 	name = "\improper alien wirecutters"
-	desc = "This cuts wires, also flesh. Made of some razorsharp animal teeth."
+	desc = "This cuts wires, also flesh. Made of some razor sharp animal teeth."
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "wirescutter"
 	item_state = "wirescutter"
@@ -1574,7 +1574,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 
 /obj/item/tool/screwdriver/yautja
 	name = "\improper alien screwdriver"
-	desc = "Some hightech screwing abilities."
+	desc = "Some high tech screwing abilities."
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "screwdriver"
 	item_state = "screwdriver"

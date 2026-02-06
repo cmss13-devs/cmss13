@@ -122,7 +122,7 @@
 	shipwide_ai_announcement("WARNING, [capitalize(name)] HIT SHIP HULL, CAUSED MASSIVE DAMAGE!", MAIN_AI_SYSTEM, 'sound/effects/double_klaxon.ogg')
 
 /datum/space_weapon_ammo/rocket_launcher/swing_rockets
-	name = "Swing High Pierce Shreder Rockets"
+	name = "Swing High Pierce Shredder Rockets"
 	base_miss_chance = 0
 
 /datum/space_weapon_ammo/rocket_launcher/swing_rockets/hit_target(picked_atom)

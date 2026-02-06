@@ -110,7 +110,7 @@
 	if(survivor.direction == dying.direction)
 		survivor.power += dying.power
 
-	// Two waves travling towards each other weakens the explosion
+	// Two waves travelling towards each other weakens the explosion
 	if(survivor.direction == GLOB.reverse_dir[dying.direction])
 		survivor.power -= dying.power
 

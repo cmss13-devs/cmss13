@@ -85,7 +85,7 @@
   - bugfix: fixes pred round chance being borked
 2024-10-08:
   Drathek:
-  - rscadd: Added xeno queue information when attempting a xeno late join while inelgible
+  - rscadd: Added xeno queue information when attempting a xeno late join while ineligible
       (from the lobby and first time after death)
   - qol: Streamlined the xeno late join process from lobby (offers observation and
       sets xeno preference)
@@ -153,7 +153,7 @@
   - bugfix: fixed spriting issues with ceremonial cape and armour 5
 2024-10-16:
   JayTacos:
-  - rscadd: Added a varient of combistick that has no block chance.
+  - rscadd: Added a variant of combistick that has no block chance.
   private-tristan:
   - rscadd: Req line tutorial NPCs have a bigger list of items to ask for.
 2024-10-17:
@@ -223,7 +223,7 @@
       type bullet only
   - code_imp: squads now have lists for roles limit and taken number, not hardcoded
       role list in vars, plus one letter vars change
-  - bugfix: Underbarel flamer no more can drain fuel from empty tanks
+  - bugfix: Underbarrel flamer no more can drain fuel from empty tanks
   - qol: Discord Certify only visible if you don't have linked discord acc
   Blundir:
   - rscadd: adds unique APOLLO pda to CE vendor
@@ -272,13 +272,13 @@
   - qol: more items count as helmet accessories (Multiple glasses, walkman/cassettes/cassette
       pouch, playing cards, uniform patches, candle)
   TheManWithNoHands:
-  - balance: rebalances hornet shells, increasing the spread cone to 25, inceasing
+  - balance: rebalances hornet shells, increasing the spread cone to 25, increasing
       the projectile count to 15, lowers projectile dmg to 8.
-  - balance: Inceases Star shell fuel time from 30-60 seconds to 4.5- 5.5 minutes.
-      Increases starshell applyd fire stacks from 1 to 2
+  - balance: Increases Star shell fuel time from 30-60 seconds to 4.5- 5.5 minutes.
+      Increases starshell applied fire stacks from 1 to 2
   - code_imp: changed the icon path of LTAA mags to be not literally the painless
       mag
-  - imageadd: changed LTAA-AP minigun, 20m Autocanon, DRG-N flamer, LTAA-AP mag, DRG-N
+  - imageadd: changed LTAA-AP minigun, 20m Autocannon, DRG-N flamer, LTAA-AP mag, DRG-N
       mag, to use green tank camo
   VileBeggar:
   - rscadd: Dual-tube shotguns (like the HG-37) can now rechamber their currently
@@ -309,7 +309,7 @@
   - rscadd: WY Headsets to WY roles on Fiorina
 2024-10-28:
   Blundir:
-  - rscadd: returned bimex description and flash protection, but price of it inscread
+  - rscadd: returned bimex description and flash protection, but price of it increased
       from 2 to 5 pref points
   - rscadd: minimap icons for all factions, roles, etc
   - code_imp: tweaked how icons are assembled, added support for custom icon background
@@ -328,8 +328,8 @@
   - balance: The surgical case can now hold Surgical Line, Synthetic-Graft, and Fix-O-Vein
       (for real this time)
   Venuska1117:
-  - code_imp: Removed code for some boudlers, removed code makes boulders meltable
-      and destructable by large explosions.
+  - code_imp: Removed code for some boulders, removed code makes boulders meltable
+      and destructible by large explosions.
   cuberound:
   - bugfix: vehicle light turns back on after the vehicle is fixed
   deathrobotpunch:
@@ -345,7 +345,7 @@
   - spellcheck: Added description to blowtorches.
   Ansekishokuu:
   - qol: Squad engineer vendors now have welding visor.
-  - qol: Organized the corpsman vendor so that the perixadon revival mix is near the
+  - qol: Organized the corpsman vendor so that the peridaxon revival mix is near the
       tricordrazine revival mix.
   BeagleGaming1:
   - bugfix: fixed a bug with the pixel shift keybindings
@@ -382,12 +382,12 @@
   MistChristmas, Private-Tristan:
   - balance: You can no longer crawl while being grabbed by a xenomorph.
   TheManWithNoHands:
-  - rscadd: 'Added vendor description to: AC3-E autocanon, LTAA-AP Minigun, DRG-N
+  - rscadd: 'Added vendor description to: AC3-E autocannon, LTAA-AP Minigun, DRG-N
       Flamer, LTB canon, LZR-N Flamer, TOW launcher, M56cupola, and M92T Grenade Launcher.'
   - rscadd: 'Expanded the description of: LTAA-AP Minigun, TOW launcher, M56cupola,
-      M92T Grenade Launcher and the magazins of the AC3-E autocanon, LTAA-AP Minigun,
+      M92T Grenade Launcher and the magazines of the AC3-E autocannon, LTAA-AP Minigun,
       DRG-N Flamer, LZR-N Flamer, and M92T Grenade Launcher. As well as for the snowplow
-      hardpoint and heavy and ligth treads.'
+      hardpoint and heavy and light treads.'
   Unknownity:
   - bugfix: Fixes missing paygrades,ranks and comms titles to PMC Survivors and PMC
       Medic. Fixes certain PMC Survivors having incorrect headsets.
@@ -435,7 +435,7 @@
       areas.
   - maptweak: Big Red, South West Cave now has timed blockers to hinder a SW hive
       and Marines alike from going a straight line to attack each other. These blockers
-      dissappear in a "cavein" at fourty minutes, Roughly on average twenty minutes
+      disappear in a "cavein" at fourty minutes, Roughly on average twenty minutes
       after marines land.
   - balance: Queens can only ovi and build the hivecore on "their" side of the map
       at roundstart, this protection drops off 25min from roundstart.

@@ -86,7 +86,7 @@
 		BB.go_out() //This doesn't need flashiness as you can just WASD to walk out anyways
 
 	//getting out of autodoc, resist does the emergency eject
-	//regular ejection is done with verbs and doesnt work for half the time
+	//regular ejection is done with verbs and doesn't work for half the time
 	if(loc && (istype(loc, /obj/structure/machinery/medical_pod/autodoc)))
 		var/obj/structure/machinery/medical_pod/autodoc/BB = loc
 		if (alert(usr, "Would you like to emergency eject out of [BB]? A surgery may be in progress.", "Confirm", "Yes", "No") == "Yes")
@@ -94,7 +94,7 @@
 			to_chat(usr, SPAN_NOTICE ("You are now leaving [BB]"))
 			playsound(src, 'sound/machines/beepalert.ogg', 30)
 			if(do_after(src, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, BB))//5 sec delay
-				BB.go_out() //Eject doesnt work you have to force it
+				BB.go_out() //Eject doesn't work you have to force it
 		else
 			return
 

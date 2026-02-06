@@ -34,7 +34,7 @@
 /obj/item/implant/proc/islegal()
 	return 0
 
-/obj/item/implant/proc/meltdown() //breaks it down, making implant unrecongizeable
+/obj/item/implant/proc/meltdown() //breaks it down, making implant unrecognizable
 	to_chat(imp_in, SPAN_WARNING("You feel something melting inside [part ? "your [part.display_name]" : "you"]!"))
 	if (part)
 		part.take_damage(burn = 15, used_weapon = "Electronics meltdown")

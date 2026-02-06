@@ -205,7 +205,7 @@
 	if(istype(behavior) && isxeno(user))
 		. += "it has [SPAN_GREEN(behavior.acid_amount)] acid!"
 
-/datum/behavior_delegate/runner_acider/proc/combat_gen_end() //This proc is triggerd once the combat acid timer runs out.
+/datum/behavior_delegate/runner_acider/proc/combat_gen_end() //This proc is triggered once the combat acid timer runs out.
 	combat_gen_active = FALSE //turns combat acid off
 
 	drool_overlay_active = FALSE //turns the drool overlay off

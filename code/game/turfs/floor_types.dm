@@ -819,7 +819,7 @@
 	icon_state = "emeraldfull2"
 
 
-// All ORANGE (its called orange but its infact yellow, deal with it) tiles (normal, smooth edge, smooth borderless, smooth ends, corners, full, full smooth)
+// All ORANGE (its called orange but its in fact yellow, deal with it) tiles (normal, smooth edge, smooth borderless, smooth ends, corners, full, full smooth)
 
 /turf/open/floor/almayer/orange
 	icon_state = "orange"

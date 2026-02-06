@@ -1,4 +1,4 @@
-/* Diffrent misc types of sheets
+/* Different misc types of sheets
  * Contains:
  * Metal
  * Plasteel

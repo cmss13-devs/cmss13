@@ -13,8 +13,8 @@
 #define ATMOS_FILTER_EFFICIENCY 2.5
 
 //will not bother pumping or filtering if the gas source as fewer than this amount of moles, to help with performance.
-#define MINUMUM_MOLES_TO_PUMP 0.01
-#define MINUMUM_MOLES_TO_FILTER 0.1
+#define MINIMUM_MOLES_TO_PUMP 0.01
+#define MINIMUM_MOLES_TO_FILTER 0.1
 
 //The flow rate/effectiveness of various atmos devices is limited by their internal volume, so for many atmos devices these will control maximum flow rates in L/s
 #define ATMOS_DEFAULT_VOLUME_PUMP 200 //L
@@ -39,7 +39,7 @@
 #define BROKEN 16
 #define NOPOWER 32
 #define POWEROFF 64 // tbd
-#define MAINT 128 // under maintaince
+#define MAINT 128 // under maintenance
 #define EMPED 256 // temporary broken by EMP pulse
 #define TIPPED_OVER 512 // for tipped over vendors
 #define IN_USE 1024 // to show that it's actively used right now. Vending an object, for example.

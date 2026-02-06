@@ -125,7 +125,7 @@ const MainMenu = (props) => {
               icon={soundicon}
               ml="auto"
               mr="1rem"
-              tooltip="Mute/Un-Mute notifcation sounds."
+              tooltip="Mute/Un-Mute notification sounds."
               onClick={() => act('toggle_sound')}
             />
           </Box>

@@ -90,7 +90,7 @@
 #define CHEM_EFFECT_RESIST_FRACTURE (1<<0)
 #define CHEM_EFFECT_RESIST_NEURO (1<<1)
 #define CHEM_EFFECT_HYPER_THROTTLE (1<<2) //universal understand but not speech
-#define CHEM_EFFECT_ORGAN_STASIS (1<<3) //peri stabiliser
+#define CHEM_EFFECT_ORGAN_STASIS (1<<3) //peri stabilizer
 #define CHEM_EFFECT_NO_BLEEDING (1<<4) //replacement for quickclot
 
 //REACTION FLAGS
@@ -121,7 +121,7 @@
 
 /// Used to restrict recipes in the generator from employing all reagents of this type
 #define REAGENT_TYPE_MEDICAL (1<<0)
-/// Whether the reagent shows up on health analysers.
+/// Whether the reagent shows up on health analyzers.
 #define REAGENT_SCANNABLE (1<<1)
 /// Whether the reagent canNOT be ingested and must be delivered through injection. Used by electrogenetic property.
 #define REAGENT_NOT_INGESTIBLE (1<<2)

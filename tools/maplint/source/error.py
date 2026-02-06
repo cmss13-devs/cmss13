@@ -25,7 +25,7 @@ class MaplintError(Exception):
     """The optional dm code suggestion snippet"""
 
     dm_sub_suggestion: Optional[str] = None
-    """The optional dm code suggestion snippet for any subtype. Seperate for de-duping."""
+    """The optional dm code suggestion snippet for any subtype. Separate for de-duping."""
 
     def __init__(self, message: str, file_name: str, line_number = 1, path_suggestion = "", dm_suggestion = "", dm_sub_suggestion = ""):
         Exception.__init__(self, message)

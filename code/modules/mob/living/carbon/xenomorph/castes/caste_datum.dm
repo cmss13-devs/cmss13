@@ -141,7 +141,7 @@
 /datum/caste_datum/New()
 	. = ..()
 
-	//Initialise evolution and upgrade thresholds in one place, once and for all
+	//Initialize evolution and upgrade thresholds in one place, once and for all
 	evolution_threshold = 0
 	if(evolution_allowed)
 		switch(tier)

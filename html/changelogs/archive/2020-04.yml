@@ -2,7 +2,7 @@
   Atebite:
   - bugfix: The vehicle part fabricator is no longer acidable
   - bugfix: The tank's artillery module can now be used. It's currently based on tank
-      dirrection. This is a temporary solution until I can figure out how to make
+      direction. This is a temporary solution until I can figure out how to make
       the zoom track the turret direction instead.
   - bugfix: Fix various vehicle module buffs not being applied correctly.
   Jeser:
@@ -168,7 +168,7 @@
       cable coil, hypospray and a battery.
   - rscadd: Added a new type of randomly spawned research note, research grants. Scanning
       these at the research data terminal will reward research credits.
-  - rscadd: 'Added the chemical properties excreting, hypometabolizing, hypermetabolizing,
+  - rscadd: 'Added the chemical properties excreting, hypometabolic, hypermetabolic,
       sedative. Inspiration from #8970 by Watermelon914.'
   - rscadd: 'Added 10 rare chemical properties. One rare property will now spawn in
       clearance level 3 and 4 chemicals at a 30% and 100% rate respectively, to make
@@ -217,7 +217,7 @@
   - rscadd: 'Ravager Stat Changes: Increased movement speed, decreased armor.'
   - rscadd: 'Base Ravager Passive: Cruelty. Your slashes gain more damage based on
       the amount of shield you have.'
-  - rscadd: 'Base Ravager Ability #1: Lunge. Dash 4 tiles targetting anything. If
+  - rscadd: 'Base Ravager Ability #1: Lunge. Dash 4 tiles targeting anything. If
       you have more than 150 shield, knock down on impact. The cooldown is reduced
       by one second whenever you slash.'
   - rscadd: 'Base Ravager Ability #2: Scissor Cut. Deal light damage to targets in
@@ -392,7 +392,7 @@
       deals 50% additional damage and slows the target.'
   - rscadd: Reworked Spitter.
   - rscadd: 'Spitter stat changes: Removed evasion, decreased movespeed.'
-  - rscdel: Removed Vomitter Spitter.
+  - rscdel: Removed Vomiter Spitter.
   - rscadd: 'Spitter Passive Ability: Corroder. Your spits apply a DoT effect to targets.
       This can only be used against the same target once every 15 seconds.'
   - rscadd: 'Spitter Active Ability #1: Acid Spit. Higher DPS than before, but much

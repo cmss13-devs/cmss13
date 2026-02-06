@@ -8,7 +8,7 @@
 	req_role = null
 	listed_products = list(
 		list("WEAPONS", 0, null, null, null),
-		list("Configured Stunbaton", 25, /obj/item/weapon/baton/antag, "white", "A stun baton with more charge, tuned to work only for agents."),
+		list("Configured Stun Baton", 25, /obj/item/weapon/baton/antag, "white", "A stun baton with more charge, tuned to work only for agents."),
 		list("Tranquilizer Gun", 25, /obj/item/weapon/gun/pistol/tranquilizer, "white", "A tranquilizer gun. Comes with 5 darts. Deals no damage, knockout guaranteed."),
 		list("Chloroform Cloth", 18, /obj/item/weapon/chloroform, "white", "A cloth dosed with chloroform. Has 8 effective uses and can only be used whilst behind a target. You must be in disarm intent to use."),
 
@@ -155,7 +155,7 @@
 		list("Clipboard", 1, /obj/item/clipboard, "white", "A clipboard, for storing all that writing."),
 
 		list("WEAPONS", 0, null, null, null),
-		list("Configured Stunbaton", 25, /obj/item/weapon/baton/antag, "white", "A stun baton with more charge."),
+		list("Configured Stun Baton", 25, /obj/item/weapon/baton/antag, "white", "A stun baton with more charge."),
 		list("Tranquilizer Gun", 25, /obj/item/weapon/gun/pistol/tranquilizer, "white", "A tranquilizer gun. Comes with 5 darts. Deals no damage, knockout guaranteed."),
 		list("Chloroform Cloth", 18, /obj/item/weapon/chloroform, "white", "A cloth dosed with chloroform. Has 8 effective uses and can only be used whilst behind a target. You must be in disarm intent to use."),
 		list("Sedative Pen", 15, /obj/item/tool/pen/sleepypen, "white", "A sedative syringe disguised as a pen. Can be used to stealthily knock out targets."),

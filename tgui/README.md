@@ -26,7 +26,7 @@ This project uses React. Take your time to read the guide:
 
 - [React guide](https://react.dev/learn)
 
-If you were already familiar with an older, Ractive-based tgui and want to
+If you were already familiar with an older, Reactive-based tgui and want to
 translate concepts between old and new tgui, read this
 [interface conversion guide](docs/converting-old-tgui-interfaces.md).
 

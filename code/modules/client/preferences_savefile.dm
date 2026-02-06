@@ -147,7 +147,7 @@
 		sound_toggles |= (SOUND_FAX_MACHINE)
 		S["toggles_sound"] << sound_toggles
 
-	if(savefile_version < 25) //renemes nanotrasen to wy
+	if(savefile_version < 25) //renames nanotrasen to wy
 		var/relation
 		S["nanotrasen_relation"] >> relation
 		S["weyland_yutani_relation"] << relation

@@ -1,6 +1,6 @@
 #define EGGMORPG_RANGE 2
 
-//Eggmorpher - Basically a big reusable egg
+//Egg morpher - Basically a big reusable egg
 /obj/effect/alien/resin/special/eggmorph
 	name = XENO_STRUCTURE_EGGMORPH
 	desc = "A disgusting biomass generator that reeks of rotting flesh. Capable of producing facehuggers on its own."
@@ -11,7 +11,7 @@
 
 	///How many huggers are stored in the egg morpher currently.
 	var/stored_huggers = 0
-	///Max amount of huggers that can be stored in the egg morpoher.
+	///Max amount of huggers that can be stored in the egg morpher.
 	var/huggers_max_amount = 12
 	///Max amount of huggers that can grow by itself.
 	var/huggers_to_grow_max = 6

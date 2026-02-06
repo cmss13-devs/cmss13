@@ -1,6 +1,6 @@
 /datum/law/civilian_law/terror_association
 	name = "Terror Association"
-	desc = "Being a member of, or providing aid to a member of, a terrorist organisation."
+	desc = "Being a member of, or providing aid to a member of, a terrorist organization."
 	brig_time = PERMABRIG_SENTENCE
 	conditions = "Not applicable if the defendant has engaged in terror attacks. Not applicable for execution on its own."
 

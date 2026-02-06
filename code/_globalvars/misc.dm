@@ -15,7 +15,7 @@ GLOBAL_LIST_EMPTY(asset_log)
 //It's a conversion constant. power_used*CELLRATE = charge_provided, or charge_used/CELLRATE = power_provided
 #define CELLRATE 0.006
 
-// Cap for how fast cells charge, as a percentage-per-tick (0.01 means cellcharge is capped to 1% per second)
+// Cap for how fast cells charge, as a percentage-per-tick (0.01 means cell charge is capped to 1% per second)
 #define CHARGELEVEL 0.001
 
 GLOBAL_VAR(VehicleElevatorConsole)
@@ -56,8 +56,8 @@ GLOBAL_LIST_EMPTY(tagger_locations)
 GLOBAL_LIST_INIT(alphabet_uppercase, list("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"))
 GLOBAL_LIST_INIT(alphabet_lowercase, list("a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"))
 
-GLOBAL_LIST_INIT(greek_letters, list("Alpha", "Beta", "Gamma", "Delta", "Epsilon", "Zeta", "Eta", "Theta", "Iota", "Kappa", "Lambda", "Mu", "Nu", "Xi", "Omnicron", "Pi", "Rho", "Sigma", "Tau", "Upsilon", "Phi", "Chi", "Psi", "Omega"))
-GLOBAL_LIST_INIT(nato_phonetic_alphabet, list("Alpha", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot", "Golf", "Hotel", "India", "Juliett", "Kilo", "Lima", "Mike", "November", "Oscar", "Papa", "Quebec", "Romeo", "Sierra", "Tango", "Uniform", "Victor", "Whiskey", "X-Ray", "Yankee", "Zulu"))
+GLOBAL_LIST_INIT(greek_letters, list("Alpha", "Beta", "Gamma", "Delta", "Epsilon", "Zeta", "Eta", "Theta", "Iota", "Kappa", "Lambda", "Mu", "Nu", "Xi", "Omicron", "Pi", "Rho", "Sigma", "Tau", "Upsilon", "Phi", "Chi", "Psi", "Omega"))
+GLOBAL_LIST_INIT(nato_phonetic_alphabet, list("Alpha", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot", "Golf", "Hotel", "India", "Juliet", "Kilo", "Lima", "Mike", "November", "Oscar", "Papa", "Quebec", "Romeo", "Sierra", "Tango", "Uniform", "Victor", "Whiskey", "X-Ray", "Yankee", "Zulu"))
 
 //Used for autocall procs on ERT
 GLOBAL_VAR_INIT(distress_cancel, FALSE)
@@ -122,7 +122,7 @@ GLOBAL_VAR_INIT(time_offset, setup_offset())
 GLOBAL_VAR(larva_pool_candidate_count)
 
 //Coordinate obsfucator
-//Used by the rangefinders and linked systems to prevent coords collection/prefiring
+//Used by the rangefinders and linked systems to prevent coords collection/pre-firing
 /// A number between -500 and 500.
 GLOBAL_VAR(obfs_x)
 /// A number between -500 and 500.

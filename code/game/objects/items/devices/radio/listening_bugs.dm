@@ -258,7 +258,7 @@
 
 
 // ENCRYPTION KEYS FOR LISTENING IN!
-//REQURIES SUBSPACE ACTIVATION ON THE BUGS FIRST!
+//REQUIRES SUBSPACE ACTIVATION ON THE BUGS FIRST!
 /obj/item/device/encryptionkey/listening_bug
 	desc = "A small encryption key for listening to a secret broadcasting device! Unlikely to work if the device is not using subspace communications!"
 	icon_state = "stripped_key"

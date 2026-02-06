@@ -43,7 +43,7 @@
 	density = FALSE
 
 	var/id_tag
-	//var/radio_power_use = 50 //power used to xmit signals
+	//var/radio_power_use = 50 //power used to emit signals
 
 	var/frequency = 1379
 	var/radio_filter = null

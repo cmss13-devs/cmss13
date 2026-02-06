@@ -18,7 +18,7 @@
       people can enter Autodocs.
   - rscadd: Added ability to resist to exit hypersleep chambers, cryocells, sleepers,
       bodyscanners and autodocs.
-  - rscadd: Added emergency ejection for Autodocs. You really arent meant to exit
+  - rscadd: Added emergency ejection for Autodocs. You really aren't meant to exit
       these machines while they are working so this function is only available for
       the patient, if they resist.
   - tweak: Exiting a hypersleep pod messages admins and logs now, much like entering
@@ -87,7 +87,7 @@
   - tweak: Full autoinjector pouch is no longer available in the RTO's equipment vendor.
   Frans_Feiffer, Stan_Albatross:
   - tweak: Resprited PMC armours, jumpsuits, and helmets. Sprites by Frans.
-  - tweak: PMC jumpsuits now have rollable sleeves, and the standard one has a removeable
+  - tweak: PMC jumpsuits now have rollable sleeves, and the standard one has a removable
       jacket.
   - tweak: there is now a 50% chance for PMC standards and detainers to spawn with
       \"light\" PMC armour, with less armour but more speed.
@@ -116,7 +116,7 @@
   - tweak: Buffs DS crash explosions so they clear walls better.
   forest2001:
   - wip: Updates to PMC Paygrades.
-  - tweak: Categorised PMC paygrades between Standard, Field Specialists, Elite and
+  - tweak: Categorized PMC paygrades between Standard, Field Specialists, Elite and
       Command.
   - tweak: PMC Paygrades are no longer numerical, (PMC1, PMC2 etc.) and instead relate
       to their actual role.
@@ -267,7 +267,7 @@
   - tweak: Screwdrivers can now fit in Boot Slot
   - tweak: Screwdrivers can now fit in Mask Slot
   Jackie_Estegado:
-  - bugfix: OB now gives warning if targeted coords are completly off-map, not only
+  - bugfix: OB now gives warning if targeted coords are completely off-map, not only
       if is in space.
   - bugfix: Standalone grenade launchers can no longer fire molotovs or flashbangs,
       just like the underbarrel ones.
@@ -310,7 +310,7 @@
   - tweak: Targeting with bandages/ointment/kits works on the limb targeted at the
       start of the process rather than the end.
   Stan_Albatross:
-  - tweak: nerfed standard minisentry damage, nerfed flamer minisentry fire rate
+  - tweak: nerfed standard mini sentry damage, nerfed flamer mini sentry fire rate
   - tweak: buffed bell range and slowdown length
   - tweak: buffed flag order strength and range
   - tweak: You can now make your flavour text as long in your preferences as you can

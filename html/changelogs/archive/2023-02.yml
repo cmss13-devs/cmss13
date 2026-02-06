@@ -78,7 +78,7 @@
   - refactor: the tacmap is now better, everywhere it appears, for the queen and cic
   - ui: the orbit menu now has icons (from the minimap)
   - rscadd: ghosts now get a minimap
-  - bugfix: extended now actually works, and doesn't spawn in inhuman abombinations
+  - bugfix: extended now actually works, and doesn't spawn in inhuman abominations
 2023-02-06:
   BeagleGaming1:
   - bugfix: Crew Monitoring computers can now be deconstructed the same way as any
@@ -133,14 +133,14 @@
   - bugfix: PMC Smartgunner now appropriately a VP78 to go along with their VP78 magazines
   - bugfix: Whiteout now appropriately have night vision.
   - bugfix: M41A/2 now appropriately comes equipped with a collapsible stock.
-  - spellcheck: PMC smartgun drum now has a seperate description and name from base
+  - spellcheck: PMC smartgun drum now has a separate description and name from base
       SG to match its different appearance.
   harryob:
   - bugfix: you can now unbind special keybinds, and your keybind preferences won't
       be forgotten
   - admin: msay now appears within tgui-say
   stanalbatross:
-  - refactor: refactored /gib so it cannot be written in a bugcausing way
+  - refactor: refactored /gib so it cannot be written in a bug-causing way
   - bugfix: fixed 2 runtimes
   theflyingflail:
   - bugfix: 'fixed skylight nightmare insert survivor spawner
@@ -180,7 +180,7 @@
       with three spare holotarget magazines on their webbing.
   - balance: Like the bolt-action rifle's sprite implies, this is now the new Basira-Armstrong
       rifle.
-  - rscadd: Its stats have recieved an overhaul and it can now hold its own against
+  - rscadd: Its stats have received an overhaul and it can now hold its own against
       a Xenomorph (or marine if you're CLF)
   - rscadd: Additionally, its bullets will push back (not stun) targets within three
       meters, to increase viability for colony usage.
@@ -273,7 +273,7 @@
   - bugfix: Riot Control lockers open on code blue, the correct level for their use.
   - bugfix: Fixes two random brig doors in the middle of CIC hallway
   stanalbatross:
-  - bugfix: fixed the healthscanner not showing the colour of chems and advice
+  - bugfix: fixed the health scanner not showing the colour of chems and advice
 2023-02-17:
   BeagleGaming1:
   - bugfix: Makes CHUNK boxes not lethal
@@ -310,7 +310,7 @@
   - maptweak: opened up 2 spots in Trijent's sand temple area
   carlarctg:
   - rscadd: Adds a new (and currently the only) random event, 'Economy Inflation'.
-      The USS Almayer recieves a broad-band signal sent to all nearby UA-affiliated
+      The USS Almayer receives a broad-band signal sent to all nearby UA-affiliated
       colonies and vessels that requests a specific kind of vendors stationed on them
       have their prices increased, due to some randomly-selected incident backstory.
       There will be a random delay before the change comes into effect, so make sure

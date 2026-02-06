@@ -122,7 +122,7 @@
 	AddComponent(/datum/component/tent_supported_object)
 	return ..()
 
-/// Hotdrinks vendor
+/// Hot drinks vendor
 /obj/structure/machinery/vending/coffee/tent
 	unacidable = FALSE
 	needs_power = FALSE

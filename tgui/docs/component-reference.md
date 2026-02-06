@@ -703,7 +703,7 @@ A notice box, which warns you about something very important.
 - See inherited props: [Box](#box)
 - `info: boolean` - Info box
 - `success: boolean` - Success box
-- `warning: bolean` - Warning box
+- `warning: boolean` - Warning box
 - `danger: boolean` - Danger box
 
 ### `NumberInput`
@@ -809,9 +809,9 @@ The alert on the gauge is optional, and will only be shown if the `alertAfter` p
 
 - See inherited props: [Box](#box)
 - `value: number` - The current value of the metric.
-- `minValue: number` (default: 0) - The lower bound of the guage.
-- `maxValue: number` (default: 1) - The upper bound of the guage.
-- `ranges: { color: [from, to] }` (default: `{ "good": [0, 1] }`) - Provide regions of the guage to color between two specified values of the metric.
+- `minValue: number` (default: 0) - The lower bound of the gauge.
+- `maxValue: number` (default: 1) - The upper bound of the gauge.
+- `ranges: { color: [from, to] }` (default: `{ "good": [0, 1] }`) - Provide regions of the gauge to color between two specified values of the metric.
 - `alertAfter: number` (optional) - When provided, will cause an alert symbol on the gauge to begin flashing in the color upon which the needle currently rests, as defined in `ranges`.
 - `alertBefore: number` (optional) - As with alertAfter, but alerts below a value. If both are set, and alertAfter comes earlier, the alert will only flash when the needle is between both values. Otherwise, the alert will flash when on the active side of either threshold.
 - `format: function(value) => string` (optional) - When provided, will be used to format the value of the metric for display.

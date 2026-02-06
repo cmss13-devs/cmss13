@@ -475,7 +475,7 @@
 		ADD_TRAIT(newblood, TRAIT_YAUTJA_TECH, "Yautja Tech")
 		to_chat(newblood, SPAN_YAUTJABOLD("You are a Blooded Thrall. Focus on interacting with Predators and developing your reputation. You should be observant and discreet while exercising discretionary restraint when hunting worthy prey. Learn Yautja lore and their Honor Code. If you have any questions, ask the whitelisted players in LOOC."))
 
-		newblood.set_skills(/datum/skills/yautja/warrior) //Overrides exsiting skill path to allow for use of the medicomp. SKills never updated to proper hero mob status prior to this.
+		newblood.set_skills(/datum/skills/yautja/warrior) //Overrides existing skill path to allow for use of the medicomp. SKills never updated to proper hero mob status prior to this.
 		newblood.hunter_data.blooded_set = src
 		newblood.hunter_data.blooded = TRUE
 		newblood.hunter_data.blooded_reason = reason

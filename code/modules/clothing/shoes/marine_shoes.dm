@@ -223,7 +223,7 @@
 
 /obj/item/clothing/shoes/marine/corporate
 	name = "rugged boots"
-	desc = "These synth-leather boots seem high quality when first worn, but quickly detoriate, especially in the environments the corporate security members these are issued to operate in. Still, better than nothing."
+	desc = "These synth-leather boots seem high quality when first worn, but quickly deteriorate, especially in the environments the corporate security members these are issued to operate in. Still, better than nothing."
 
 /obj/item/clothing/shoes/marine/corporate/knife
 	spawn_item_type = /obj/item/attachable/bayonet

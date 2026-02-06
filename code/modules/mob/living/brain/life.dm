@@ -95,7 +95,7 @@
 					silent = 1
 					if(!alert)//Sounds an alarm, but only once per 'level'
 						INVOKE_ASYNC(src, PROC_REF(emote), "alarm")
-						to_chat(src, SPAN_DANGER("Major electrical distruption detected: System rebooting."))
+						to_chat(src, SPAN_DANGER("Major electrical disruption detected: System rebooting."))
 						alert = 1
 					if(prob(75))
 						emp_damage--

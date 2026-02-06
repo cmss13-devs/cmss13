@@ -17,7 +17,7 @@
 	black_market_value = 35
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/flags_embryo = NO_FLAGS
-	///The objects in this list will be skipped when checking for obstrucing objects.
+	///The objects in this list will be skipped when checking for obstructing objects.
 	var/static/list/object_whitelist = list(/obj/structure/machinery/light, /obj/structure/machinery/light_construct)
 
 /obj/item/xeno_egg/Initialize(mapload, hive)

@@ -184,7 +184,7 @@
 
 /// From /obj/item/grab/proc/progress_passive() : (mob/living/carbon/human/grabber)
 #define COMSIG_MOB_AGGRESSIVELY_GRABBED "mob_aggressively_grabbed"
-	#define COMSIG_MOB_AGGRESIVE_GRAB_CANCEL (1<<0)
+	#define COMSIG_MOB_AGGRESSIVE_GRAB_CANCEL (1<<0)
 
 /// Cancels all running cloaking effects on target
 #define COMSIG_MOB_EFFECT_CLOAK_CANCEL "mob_effect_cloak_cancel"

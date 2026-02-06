@@ -153,7 +153,7 @@
 	charger_ability.stop_momentum()
 
 
-// Barine Vending machines
+// Marine Vending machines
 
 /obj/structure/machinery/cm_vending/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
 	if(charger_ability.momentum >= CCA_MOMENTUM_LOSS_THIRD)
@@ -589,7 +589,7 @@
 		return
 	qdel(src)
 	playsound(src, "sound/effects/metal_crash.ogg", 25, TRUE)
-	return XENO_CHARGE_TRY_MOVE // bulldoze that shitty bed and keep going, should run over the buckled mob aswell unless crusher turns last second for some reason
+	return XENO_CHARGE_TRY_MOVE // bulldoze that shitty bed and keep going, should run over the buckled mob as well unless crusher turns last second for some reason
 
 // Filing Cabinets
 
@@ -610,8 +610,8 @@
 	charger_ability.stop_momentum()
 
 // Legacy Tank dispenser
-// Todo: Give this and other shitty fucking indestructible legacy items proper destruction mechanics. This includes being vunerable to bullets,explosions, etc and not just the charger.
-// For now this is fine since priority is charger, and I'm not willing to spend all day looking for bumfuck legacy item #382321 thats used a total of three times in the entireity of CM and adding health and everything to it.
+// Todo: Give this and other shitty fucking indestructible legacy items proper destruction mechanics. This includes being vulnerable to bullets,explosions, etc and not just the charger.
+// For now this is fine since priority is charger, and I'm not willing to spend all day looking for bumfuck legacy item #382321 thats used a total of three times in the entirety of CM and adding health and everything to it.
 
 /obj/structure/dispenser/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
 	if(!charger_ability.momentum)

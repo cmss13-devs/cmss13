@@ -260,7 +260,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		to_chat(src, "<font color='red'>Error: AllowUpload(): File Upload too large. Upload Limit: [UPLOAD_LIMIT/1024]KiB.</font>")
 		return 0
 /* //Don't need this at the moment. But it's here if it's needed later.
-	//Helps prevent multiple files being uploaded at once. Or right after eachother.
+	//Helps prevent multiple files being uploaded at once. Or right after each other.
 	var/time_to_wait = fileaccess_timer - world.time
 	if(time_to_wait > 0)
 		to_chat(src, "<font color='red'>Error: AllowUpload(): Spam prevention. Please wait [floor(time_to_wait/10)] seconds.</font>")
@@ -359,7 +359,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		var/datum/admins/admin = new("!localhost!", RL_HOST, ckey)
 		admin.associate(src, force = TRUE)
 
-	//Admin Authorisation
+	//Admin Authorization
 	var/holder = GLOB.admin_datums[ckey]
 	if(holder)
 		INVOKE_ASYNC(holder, TYPE_PROC_REF(/datum/admins, associate), src)
@@ -550,7 +550,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		return inactivity
 	return 0
 
-//send resources to the client. It's here in its own proc so we can move it around easiliy if need be
+//send resources to the client. It's here in its own proc so we can move it around easily if need be
 /client/proc/send_assets()
 	spawn (10) //removing this spawn causes all clients to not get verbs.
 		//load info on what assets the client has
@@ -913,7 +913,7 @@ CLIENT_VERB(action_hide_menu)
 	selected_action.player_hidden = !selected_action.player_hidden
 	user.update_action_buttons()
 
-	if(!selected_action.player_hidden && selected_action.hidden) //Inform the player that even if they are unhiding it, itll still not be visible
+	if(!selected_action.player_hidden && selected_action.hidden) //Inform the player that even if they are unhiding it, it'll still not be visible
 		to_chat(user, SPAN_NOTICE("[selected_action] is forcefully hidden, bypassing player unhiding."))
 
 

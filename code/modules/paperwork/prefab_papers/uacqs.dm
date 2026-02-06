@@ -145,7 +145,7 @@
 	dat += "<hr style=\"margin-top:5px; margin-bottom:15px;\">"
 	dat += "<p class=\"message-subdata-text\">- AUTHORISED PERSONNEL ONLY -</p>"
 	dat += "<hr style=\"margin-top:5px; margin-bottom:15px;\">"
-	dat += "</div> <!-- /Heasder Info -->"
+	dat += "</div> <!-- /Header Info -->"
 	dat += ""
 
 	dat += "<div class=\"message-body-text\">"

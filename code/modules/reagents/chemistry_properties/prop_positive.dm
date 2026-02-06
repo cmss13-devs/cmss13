@@ -123,7 +123,7 @@
 /datum/chem_property/positive/hemogenic
 	name = PROPERTY_HEMOGENIC
 	code = "HMG"
-	description = "Increases the production of erythrocytes (red blood cells) in the bonemarrow, leading to polycythemia, an elevated volume of erythrocytes in the blood."
+	description = "Increases the production of erythrocytes (red blood cells) in the bone marrow, leading to polycythemia, an elevated volume of erythrocytes in the blood."
 	rarity = PROPERTY_COMMON
 
 /datum/chem_property/positive/hemogenic/process(mob/living/M, potency = 1, delta_time)
@@ -939,7 +939,7 @@
 /datum/chem_property/positive/explosive
 	name = PROPERTY_EXPLOSIVE
 	code = "EXP"
-	description = "The chemical is highly explosive. Do not ignite. Careful when handling, sensitivity is based off the OD threshold, which can lead to spontanous detonation."
+	description = "The chemical is highly explosive. Do not ignite. Careful when handling, sensitivity is based off the OD threshold, which can lead to spontaneous detonation."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_REACTANT|PROPERTY_TYPE_COMBUSTIBLE
 	volatile = TRUE
@@ -956,7 +956,7 @@
 	holder.falloff_modifier += -3 / level
 	..()
 
-//properties for CAS matrixes
+//properties for CAS matrices
 /datum/chem_property/positive/photosensitive
 	name = PROPERTY_PHOTOSENSITIVE
 	code = "PTS"
@@ -1124,7 +1124,7 @@
 /datum/chem_property/positive/aiding
 	name = PROPERTY_AIDING
 	code = "AID"
-	description = "Fixes genetic defects, disfigurments, disabilities. In plants removes compounds modfying yield and mutation."
+	description = "Fixes genetic defects, disfigurements, disabilities. In plants removes compounds modifying yield and mutation."
 	rarity = PROPERTY_DISABLED
 	category = PROPERTY_TYPE_MEDICINE
 	value = 1

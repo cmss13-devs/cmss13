@@ -210,7 +210,7 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 /obj/effect/vehicle_spawner/apc/plain/load_hardpoints(obj/vehicle/multitile/apc/V)
 	V.add_hardpoint(new /obj/item/hardpoint/locomotion/apc_wheels)
 
-//PRESET: default hardpoints, destroyed (this one spawns on VASRS elevatorfor VCs)
+//PRESET: default hardpoints, destroyed (this one spawns on VASRS elevator for VCs)
 /obj/effect/vehicle_spawner/apc/decrepit/spawn_vehicle()
 	var/obj/vehicle/multitile/apc/APC = new (loc)
 

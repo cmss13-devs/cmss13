@@ -139,7 +139,7 @@
  *the track() proc, and fill the objects list with lists containing the
  *atoms' names and REFs. The objects list is handed to the tgui screen
  *for displaying to, and being selected by, the user. A two second
- *sleep is used to delay the scan, both for thematical reasons as well
+ *sleep is used to delay the scan, both for thematic reasons as well
  *as to limit the load players may place on the server using these
  *somewhat costly loops.
 */

@@ -84,7 +84,7 @@
 #define TGS_EVENT_REPO_FETCH 2
 /// When the repository test merges. Parameters: PR Number, PR Sha, (Nullable) Comment made by TGS user.
 #define TGS_EVENT_REPO_MERGE_PULL_REQUEST 3
-/// Before the repository makes a sychronize operation. Parameters: Absolute repostiory path.
+/// Before the repository makes a synchronize operation. Parameters: Absolute repository path.
 #define TGS_EVENT_REPO_PRE_SYNCHRONIZE 4
 /// Before a engine install operation begins. Parameters: Version string of the installing engine.
 #define TGS_EVENT_ENGINE_INSTALL_START 5
@@ -117,7 +117,7 @@
 // #define TGS_EVENT_WORLD_REBOOT 20
 /// Watchdog event when TgsInitializationComplete() is called. No parameters.
 #define TGS_EVENT_WORLD_PRIME 21
-// DMAPI also doesnt implement this
+// DMAPI also doesn't implement this
 // #define TGS_EVENT_DREAM_DAEMON_LAUNCH 22
 /// After a single submodule update is performed. Parameters: Updated submodule name.
 #define TGS_EVENT_REPO_SUBMODULE_UPDATE 23
@@ -281,7 +281,7 @@
 
 /// User definable handler for TGS events This abstract version SHOULD be overridden to be used.
 /datum/tgs_event_handler
-	/// If the handler receieves [TGS_EVENT_HEALTH_CHECK] events.
+	/// If the handler receives [TGS_EVENT_HEALTH_CHECK] events.
 	var/receive_health_checks = FALSE
 
 /**

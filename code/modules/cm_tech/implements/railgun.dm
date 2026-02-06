@@ -57,7 +57,7 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 
 	if(!GLOB.railgun_eye_location)
 #ifndef UNIT_TESTS
-		stack_trace("Railgun eye location is not initialised! There is no landmark for it on [SSmapping.configs[GROUND_MAP].map_name]")
+		stack_trace("Railgun eye location is not initialized! There is no landmark for it on [SSmapping.configs[GROUND_MAP].map_name]")
 #endif
 		return INITIALIZE_HINT_QDEL
 	target_z = GLOB.railgun_eye_location.z_pos

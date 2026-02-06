@@ -281,7 +281,7 @@
   totalepicness:
   - qol: Liquid tanks are now destroyable by bullets and xenos alike
   - qol: Water tanks can now be wrenched and unwrenched at will.
-  - bugfix: Fixed the random anchored watertanks in Almayer
+  - bugfix: Fixed the random anchored water tanks in Almayer
   - bugfix: Fixed anchored OT custom reagent tanks in OT fuel room
 2022-09-17:
   Stan_Albatross, Thwomper:
@@ -298,13 +298,13 @@
   - imageadd: 'Updated, resprited, or otherwise replaced the following sprites: Bay12
       Incinerator trashcans, morgue boxes and trays, telescreens, floor igniters,
       retro televisions, gas sensors, stationary flashbulbs, glass cases (lamarr and
-      captain''s lazer gun), Falling Falcon''s patch, USCM patch, ties, armbands,
+      captain''s laser gun), Falling Falcon''s patch, USCM patch, ties, armbands,
       signal wands, mineral coins, toyhammer, banana, manuals and books, mesh grilles,
       T-Comms stock parts, regular stock parts, assemblies (igniter, timer, signaler,
       etc..), telebaton, harpoon, energy swords, energy cutlass, HEFA sword, handmade
       stunprod, butterfly knife, wired rod, stun baton, cult tome, cult sword, mercenary
       sword, captain''s sword, riot shield, switchblade, scythe, claymore, ceremonial
-      unathi knife, LTB projectiles, missle projectiles, and sledgehammers.'
+      unathi knife, LTB projectiles, missile projectiles, and sledgehammers.'
   - imageadd: 'Added, but did not code in: Maintenance jacks and station handaxes.'
 2022-09-19:
   mullenpaul:
@@ -421,13 +421,13 @@
   - rscdel: Deleted campaign operation title since that's outside our usual round's
       scope, deleted some LRP prefixes like 69-420, and some lrp postfixes like unga-bald.
   Segrain:
-  - bugfix: Protheses printers no longer cause runtime errors by trying to exist.
+  - bugfix: Prothesis printers no longer cause runtime errors by trying to exist.
   - bugfix: Spawning humans no longer spam messages and sounds for being equipped.
   StarkSilence:
   - qol: Simplified TGUI Health Scanner interface for readability.
   stanalbatross:
-  - bugfix: the healthscanner will now show IB properly
-  - bugfix: the healthscanner will now properly show frac info to medics
+  - bugfix: the health scanner will now show IB properly
+  - bugfix: the health scanner will now properly show frac info to medics
   - qol: changed the frac message colour to white to make it stand out more
   - bugfix: fixed some bad del runtimes on init
 2022-09-29:

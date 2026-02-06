@@ -365,7 +365,7 @@
 
 /obj/item/weapon/gun/launcher/grenade/m81/m85a1//m85a1 variant for marines
 	name = "\improper M85A1 grenade launcher"
-	desc = "A heavy, low-angle, break-action 40mm grenade launcher. Archaic in core design, inferior to more modern semi automatic M92, M95 grenade launchers and M94 impact launcher, but doesn't require a magnetic armature or an advanced expertice to operate, not to mention near flawless reliability, extremely low cost and low weight due to mostly being made out of polymer materials."
+	desc = "A heavy, low-angle, break-action 40mm grenade launcher. Archaic in core design, inferior to more modern semi automatic M92, M95 grenade launchers and M94 impact launcher, but doesn't require a magnetic armature or an advanced expertise to operate, not to mention near flawless reliability, extremely low cost and low weight due to mostly being made out of polymer materials."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/grenade_launchers.dmi'
 	icon_state = "m85a1"
 	item_state = "m85a1"

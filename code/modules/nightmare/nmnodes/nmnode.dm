@@ -1,4 +1,4 @@
-/// Decriptive nightmare config nodes loaded from config files
+/// Descriptive nightmare config nodes loaded from config files
 /datum/nmnode
 	/// Unique identifier for referencing in JSON configuration
 	var/id = "abstract"

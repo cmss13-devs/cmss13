@@ -28,7 +28,7 @@ GLOBAL_LIST_EMPTY(jobban_keylist)
 /// Returns a reason if player (mob) is banned from rank, returns null otherwise
 /proc/jobban_isbanned(mob/player, rank, datum/entity/player/player_entity = null)
 	if(!rank)
-		return "Non-existant job"
+		return "Non-existent job"
 	rank = ckey(rank)
 	if(player_entity)
 		// asking for a friend

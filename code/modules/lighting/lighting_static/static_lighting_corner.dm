@@ -45,7 +45,7 @@
 		// Now, we go north!
 		process_next = get_step(process_next, NORTH)
 	else
-		// Yes this is slightly slower then having a guarenteeed turf, but there aren't many null turfs
+		// Yes this is slightly slower then having a guaranteed turf, but there aren't many null turfs
 		// So this is pretty damn fast
 		process_next = locate(x, y + 1, z)
 
@@ -175,16 +175,16 @@
 
 	if(master_NE)
 		master_NE.lighting_corner_SW = null
-		master_NE.lighting_corners_initialised = FALSE
+		master_NE.lighting_corners_initialized = FALSE
 	if(master_SE)
 		master_SE.lighting_corner_NW = null
-		master_SE.lighting_corners_initialised = FALSE
+		master_SE.lighting_corners_initialized = FALSE
 	if(master_SW)
 		master_SW.lighting_corner_NE = null
-		master_SW.lighting_corners_initialised = FALSE
+		master_SW.lighting_corners_initialized = FALSE
 	if(master_NW)
 		master_NW.lighting_corner_SE = null
-		master_NW.lighting_corners_initialised = FALSE
+		master_NW.lighting_corners_initialized = FALSE
 	if(needs_update)
 		SSlighting.corners_queue -= src
 	return ..()

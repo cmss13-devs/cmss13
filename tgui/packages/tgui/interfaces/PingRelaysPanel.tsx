@@ -62,7 +62,7 @@ class PingApp extends Component<PingAppProps> {
     this.pinger.ping(
       'http://' + pingURL,
       (error: string | null, pong: number) => {
-        // reading state is too unreliable now somereason so we have to use realCurrentIndex
+        // reading state is too unreliable now some reason so we have to use realCurrentIndex
         let index = retryIndex === -1 ? this.realCurrentIndex++ : retryIndex;
 
         if (error !== null && retryIndex === -1) {

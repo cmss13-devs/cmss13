@@ -112,7 +112,7 @@
 
 /datum/construction_template/proc/complete()
 	if(!build_loc)
-		log_debug("Constuction template ([name]) completed construction without a build location")
+		log_debug("Construction template ([name]) completed construction without a build location")
 		return
 	new build_type(build_loc)
 	qdel(src)

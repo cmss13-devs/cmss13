@@ -51,7 +51,7 @@
   - admin: Added logging for shuttle manipulation.
   - bugfix: Fixes hunting ground spawner code checking for if theres people above
       the min_mob instead of below
-  - rscadd: Hunting ground prey and youngblood now reset their timers if nobody elligible
+  - rscadd: Hunting ground prey and youngblood now reset their timers if nobody eligible
       were found
   - bugfix: Strain resetting no longer gives you an evolution button as facehugger
   Syndro101:
@@ -218,7 +218,7 @@
 2025-03-16:
   Drathek:
   - bugfix: Fixed browsers sometimes not handling a mob passed instead of a client
-      (VV bitfields & tickets atleast)
+      (VV bitfields & tickets at least)
   MistChristmas:
   - bugfix: Allows Supply Drop Console to accept 0 values. Allows OW consoles to save
       coords with 0 values.
@@ -235,7 +235,7 @@
       passes through or not.
   Red-byte3D:
   - rscadd: added Keybinds for vehicles
-  - code_imp: cleaned some unused shift click vehicle code since it wasnt used
+  - code_imp: cleaned some unused shift click vehicle code since it wasn't used
   - bugfix: Nested people dont stop you from shooting with ALT IFF
   - bugfix: You can no longer have nvgs without the filter by using an exploit
   XQ:
@@ -284,7 +284,7 @@
   - rscadd: Examine IFF now works with non Alt-IFF weapons like the SU-6 Smartpistol
   Red-byte3D:
   - bugfix: Ravagers and Lurkers now only return harm intent on targetted carbons.
-  - bugfix: King can no longer infinetly stun mobs via cade
+  - bugfix: King can no longer infinitely stun mobs via cade
   - code_imp: Rewrites vanguard shield code
   Unknownity:
   - bugfix: Hellhound's "Find Owner" ability now uses the same hotkey as XENO_PRIMARY_ACTION
@@ -302,7 +302,7 @@
 2025-03-22:
   Aurallianz:
   - rscadd: tracking to the CMP headset (CO,XO,MW)
-  - bugfix: added propper warden headset (no-longer slumming it with the CMPs')
+  - bugfix: added proper warden headset (no-longer slumming it with the CMPs')
   - rscadd: added tracking to the warden headset (CO,XO,CMP)
   - rscadd: added a Military Warden Tracker accessible by (MP Headset, CMP Headset,
       Honor Guard headset) (new sprite added)
@@ -310,7 +310,7 @@
   - rscadd: 'survivor improvised flamethrower inspired by Alien: Isolation and Alien
       props'
   - bugfix: fixed empty flamethrower having no suit storage sprite
-  - maptweak: changed all mapped flamethrowers to the new one, execept the ones on
+  - maptweak: changed all mapped flamethrowers to the new one, except the ones on
       NV and LV522
   - soundadd: all flamers now have fry fire sound
   Detective-Google:
@@ -332,7 +332,7 @@
       decide to die anymore). They will now no longer be permanently stunned by explosions.
   ihatethisengine:
   - balance: raised the timer of techwebs nuke to 3 minutes and made it uncancelable,
-      nuke autotriggers after decryption is finished.
+      nuke auto triggers after decryption is finished.
 2025-03-24:
   Aurallianz:
   - bugfix: fixes nuke Before Decryption
@@ -340,7 +340,7 @@
   - bugfix: CLF surv synths now have CLF IFF and survival pouches containing working
       radios.
   DarkLordCabbage:
-  - spellcheck: Fixes some minor grammer errors in the forbiddance/allowance of the
+  - spellcheck: Fixes some minor grammar errors in the forbiddance/allowance of the
       construction/destruction of special structures.
   Detective-Google:
   - balance: upgraded backpacks and webbings now cost experimental tools points in
@@ -354,7 +354,7 @@
   Nomoresolvalou:
   - balance: UBS attachment now only knockback stuns in a 1 tile range
   Red-byte3D:
-  - bugfix: Neuro hallucination sounds are no extremly loud.
+  - bugfix: Neuro hallucination sounds are no extremely loud.
   - code_imp: playsound_client is now base 35 so its not as loud.
   TotalEpicness5:
   - qol: Soro storm and blizzard effects are now 40% more transparent and less distracting.

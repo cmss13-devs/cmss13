@@ -152,7 +152,7 @@
   - bugfix: Fix remove iv needing power to operate.
   - rscadd: Update the MP and Warden vendor to fallow more the standard of the rifleman
       vendor.
-  - rscadd: change the selection of the handgun from a full belt to a handgun case(3magazin,one
+  - rscadd: change the selection of the handgun from a full belt to a handgun case (3 magazines, one
       railgunlight and the gun.).
   Morrow:
   - balance: 'Across the board firerate nerfs with the exceptions of: M37 shotgun,
@@ -175,7 +175,7 @@
   - code_imp: Fixes a lingering reference to the mob when a IV drip machine is destroyed.
   Zonespace27:
   - bugfix: A pile of guns no longer have burst fire (who weren't meant to)
-  - bugfix: The combichain can now be yanked back if droppeed.
+  - bugfix: The combichain can now be yanked back if dropped.
 2023-08-12:
   BeagleGaming1:
   - balance: Defibrillators are guaranteed to deal heart damage on successful revives
@@ -294,7 +294,7 @@
   - bugfix: Fixed a cade attack exploit
   Huffie56:
   - bugfix: you will no longer be able to feed without any limit  with the fork.
-  - bugfix: Whiskey Outpost Chem master will now be connected to the smartfridge.
+  - bugfix: Whiskey Outpost Chemmaster will now be connected to the smartfridge.
   harryob:
   - rscadd: you always see lobby art while the world is setting up
   realforest2001:
@@ -312,7 +312,7 @@
   - rscadd: Added various new accesses to colonial doors, added WY_SECURITY and WY_RESEARCH
       to marine research doors.
   - maptweak: Added reinforced piping to lifeboats area. Didn't make much sense for
-      a cruicial part of the evacuation procedures to be prone to spontaneous explosions
+      a crucial part of the evacuation procedures to be prone to spontaneous explosions
       that can singlehandedly end a marine evacuation without hostiles ever seeing
       it.
   - maptweak: Added reinforced piping to the research closed loop (it's a closed loop).
@@ -376,7 +376,7 @@
       the exact same as M41A however.
   - balance: Fixes UPP support armor, given to medics on their person and officers
       in their vendor, lighter version of UPP armor, exchanges protection for speed.
-  - balance: Seperates SVD bullet damage from crude rifle bullet and buffs it as a
+  - balance: Separates SVD bullet damage from crude rifle bullet and buffs it as a
       hard-hitting AP bullet.
   - balance: Rebalances UPP revolver(now ZHNK-72), much harder hitting and has higher
       AP, but rarer, shrapnelshot extremely rare and good.

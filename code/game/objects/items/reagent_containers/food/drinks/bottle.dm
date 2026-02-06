@@ -1,9 +1,9 @@
 
-///////////////////////////////////////////////Alchohol bottles and juice mixers! -Agouri //////////////////////////
+///////////////////////////////////////////////Alcohol bottles and juice mixers! -Agouri //////////////////////////
 //Functionally identical to regular drinks. The only difference is that the default bottle size is 100. - Darem
 //Bottles now weaken and break when smashed on people's heads. - Giacom
 
-//Booze bottles have two unqiue functions: They be used to smack someone in the head and turned into a molotov.
+//Booze bottles have two unique functions: They be used to smack someone in the head and turned into a molotov.
 
 /obj/item/reagent_container/food/drinks/bottle
 	amount_per_transfer_from_this = 5

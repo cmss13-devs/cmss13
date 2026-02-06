@@ -9,7 +9,7 @@
 	starting_xenomorph_type = /mob/living/carbon/xenomorph/drone
 	required_tutorial = "ss13_intents_1"
 
-// START OF SCRITPING
+// START OF SCRIPTING
 
 /datum/tutorial/xenomorph/basic/start_tutorial(mob/starting_mob)
 	. = ..()
@@ -150,7 +150,7 @@
 	add_to_tracking_atoms(morpher)
 	add_highlight(morpher, COLOR_YELLOW)
 	message_to_player("In the south west is an egg morpher. Click the egg morpher to take a <b>facehugger</b>.")
-	update_objective("Take a facehugger from the eggmorpher.")
+	update_objective("Take a facehugger from the egg morpher.")
 	RegisterSignal(xeno, COMSIG_XENO_TAKE_HUGGER_FROM_MORPHER, PROC_REF(take_facehugger_phase))
 
 /datum/tutorial/xenomorph/basic/proc/take_facehugger_phase(source, hugger)
@@ -174,7 +174,7 @@
 	morpher.stored_huggers = 1
 	add_highlight(morpher, COLOR_YELLOW)
 	message_to_player("Click the egg morpher to take a <b>facehugger</b>.")
-	update_objective("Take a facehugger from the eggmorpher.")
+	update_objective("Take a facehugger from the egg morpher.")
 	RegisterSignal(xeno, COMSIG_XENO_TAKE_HUGGER_FROM_MORPHER, PROC_REF(take_facehugger_phase))
 
 /datum/tutorial/xenomorph/basic/proc/nest_cap_phase()

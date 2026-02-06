@@ -14,7 +14,7 @@
 
 		var/list/contents = list()
 		for(var/obj/contents_type as anything in my_pack.contains)
-			//So long as there is something in the contaienr it will add it to the list
+			//So long as there is something in the container it will add it to the list
 			if(!length(my_pack.contains))
 				return
 			contents += contents_type::name

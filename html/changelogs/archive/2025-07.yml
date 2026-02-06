@@ -19,7 +19,7 @@
   - rscadd: Radial menu for ladders, being presented for going up and down has never
       looked better
   - bugfix: Praetorian strains now properly get their acid removed
-  - bugfix: Your patients now need a head if you want to attach the anasthetic mask
+  - bugfix: Your patients now need a head if you want to attach the anesthetic mask
       on them
   Zenith:
   - bugfix: Fixes a mistake from a previous PR that had overwritten a RMC helmet for
@@ -72,7 +72,7 @@
   - bugfix: fixed the RMC Service Obj sprite being different from it's worn sprite
   Zenith:
   - bugfix: added both Hyperdyne & the IASF to the follow menu.
-  - imageadd: addeded iasf background icon & swapped around CO squad_menu icon to
+  - imageadd: added iasf background icon & swapped around CO squad_menu icon to
       gold.
   nyozzl:
   - rscadd: Added mess tent
@@ -186,7 +186,7 @@
   - bugfix: Fixed multiple crash causes in particle editor e.g. touching gradients
       or transform at all
   - qol: When picking icons in VV Filteriffic or Particle editor, you can now specify
-      just a dmi path, and in the case of Filteriffic customize the icon paramters
+      just a dmi path, and in the case of Filteriffic customize the icon parameters
   - code_imp: Moved matrix identities to a define file and ported a filter qdel check
       from TG
   - rscadd: Fun facts can now have whitelist/blacklists for role and faction. Namely
@@ -196,7 +196,7 @@
   - code_imp: Death statistics are no longer deleted since GLOB.round_statistics holds
       on to them
   Red-byte3D:
-  - bugfix: You can now fire underbarrel extuingishers on flamers when they are not
+  - bugfix: You can now fire underbarrel extinguishers on flamers when they are not
       loaded again
 2025-07-21:
   Zenith:

@@ -1,4 +1,4 @@
-// Group to populate with all the explosives exept OB and mortar shell
+// Group to populate with all the explosives except OB and mortar shell
 
 /datum/supply_packs/explosives
 	name = "surplus explosives crate (claymore mine x5, M40 HIDP x2, M40 HEDP x2, M15 Frag x2, M12 Blast x2, M40 MFHS x2)"
@@ -138,7 +138,7 @@
 	group = "Explosives"
 
 /datum/supply_packs/explosives_M40_CCDP_crate
-	name = "M40 WPDP chemical compund grenade box crate (x25)"
+	name = "M40 WPDP chemical compound grenade box crate (x25)"
 	contains = list(
 		/obj/item/storage/box/nade_box/phophorus,
 	)

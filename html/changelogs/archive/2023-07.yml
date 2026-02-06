@@ -205,7 +205,7 @@
       that t-shape or cross, or spans more than 5 tiles away from you.
   Drathek, Steelpoint:
   - bugfix: Fixed possible hardeletes for predator landmarks and vehicles. Predator
-      teleporation descriptions now do not change if the area is altered at runtime
+      teleportation descriptions now do not change if the area is altered at runtime
       so they can still be found correctly.
   theselfish:
   - rscadd: SOs may now get coats in their vendor.
@@ -262,7 +262,7 @@
       east beach. New SW cave section. Opened up the walkway west of LZ1. Enhanced
       survivor loot and mats to a comparable degree to current maps. Many small changes
       to lessen chokes and offer more route choice for xenos and marines alike. Removed
-      Spearhead/Rival and laser pistols. Swapped fawras for monkeys. Added more survivor-type
+      Spearhead/Rival and laser pistols. Swapped farwas for monkeys. Added more survivor-type
       choices. Added a bar area and decrepit truck to the north beach.
   - config: Enabled NV again as a map in maps.txt.
   Awantje:
@@ -295,7 +295,7 @@
       gain per bullet reduced (20 to 10), added shard gain per slash (15)
   Huffie56:
   - bugfix: fix some area having no apc on the almayer making them not behave like
-      they should specialy when hijack happen.
+      they should especially when hijack happen.
   IowaPotatoFarmer:
   - rscadd: The PMC Crash on Solaris Ridge now spawns one PMC medic survivor and one
       PMC engineer survivor.
@@ -339,7 +339,7 @@
   Morrow:
   - bugfix: Colonial Marshal ERT now uses their own faction
   - bugfix: Anchorpoint marines now use the proper define for USCM
-  - rscadd: Added sounds for inserting and removing knifes to the knife webbing
+  - rscadd: Added sounds for inserting and removing knives to the knife webbing
   - rscadd: Added draw delay for knives to the knife webbing
   - rscadd: Allowed using quickdraw with the knife webbing
   - rscadd: Allowed knife webbing to be alt-clicked to draw from it
@@ -371,7 +371,7 @@
   Ben10083:
   - qol: Ghosts now informed when a non-nested host is about to chestburst
   ClairionCM:
-  - rscadd: Chem ERT objectives now mention that they cant deploy without explicit
+  - rscadd: Chem ERT objectives now mention that they can't deploy without explicit
       permission.
   Drathek:
   - bugfix: 'Fixed the prompt when nested to ghost: Now uses a TGUI prompt and sets
@@ -447,7 +447,7 @@
   - balance: The Uzi and Mac-15 now have full-auto
   Drathek:
   - bugfix: Fixed xeno hide ability not checking for busy status.
-  - bugfix: Fix bodybags not accepting warm (recent) dead bodies even if unreviveable
+  - bugfix: Fix bodybags not accepting warm (recent) dead bodies even if unrevivable
   - code_imp: Added additional lints to dmi/test.py to test for duplicate state names
       and excessive quantity and added another type path to the missing_icons unit_test.
   - imageadd: Renamed and moved some icons around to comply with new testing.
@@ -532,7 +532,7 @@
       levels on their bracer chips.
   - maptweak: Changed the doors on the Yautja ship to be their own subtypes, with
       certain ones being locked to Yautja or certain Yautja Ranks.
-  - code_imp: Slightly modernised obj/proc/allowed, and also made it check for access
+  - code_imp: Slightly modernized obj/proc/allowed, and also made it check for access
       on bracer chips if present.
   - maptweak: Replaced the unworthy prey section of the Yautja Ship with a secondary
       armory for plasma rifles, however the door is inaccessible to most Yautja. Intended
@@ -588,7 +588,7 @@
       to see more of the colony used and to incentivize flanking
   ghostsheet:
   - bugfix: Advanced mini flamer can no longer nerf itself by changing mode.
-  - rscadd: HG 37-12 pump shotgun's intergrated stock no longer give any stat change.
+  - rscadd: HG 37-12 pump shotgun's integrated stock no longer give any stat change.
   ihatethisengine:
   - rscadd: Added announcements for xenos about forming and breaking alliances.
   - rscadd: Xenos with IFF tag now have a choice to stay loyal to USCM when Queen

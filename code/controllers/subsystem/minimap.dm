@@ -432,7 +432,7 @@ SUBSYSTEM_DEF(minimaps)
 		return hashed_minimaps[hash]
 	var/atom/movable/screen/minimap/map = new(null, null, zlevel, flags, live, popup, drawing)
 	if (!map.icon) //Don't wanna save an unusable minimap for a z-level.
-		CRASH("Empty and unusable minimap generated for '[zlevel]-[flags]-[live]-[popup]'") //Can be caused by atoms calling this proc before minimap subsystem initializing.
+		CRASH("Empty and unusable minimap generated for '[zlevel]-[flags]-[live]-[popup]-[drawing]'") //Can be caused by atoms calling this proc before minimap subsystem initializing.
 	hashed_minimaps[hash] = map
 	return map
 

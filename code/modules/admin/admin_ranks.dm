@@ -244,6 +244,8 @@ GLOBAL_LIST_EMPTY(admin_ranks) //list of all ranks with associated rights
  * ```
  */
 /proc/fetch_api_admins()
+	set waitfor = FALSE
+
 	var/api_url = CONFIG_GET(string/cmdb_url)
 	var/api_key = CONFIG_GET(string/cmdb_api_key)
 
@@ -258,7 +260,9 @@ GLOBAL_LIST_EMPTY(admin_ranks) //list of all ranks with associated rights
 
 	var/datum/http_request/request = new
 	request.prepare(RUSTG_HTTP_METHOD_GET, api_url, null, list("Authorization" = "Bearer [api_key]"))
-	request.execute_blocking()
+	request.begin_async()
+
+	UNTIL(request.is_complete())
 
 	var/datum/http_response/response = request.into_response()
 
@@ -292,7 +296,7 @@ GLOBAL_LIST_EMPTY(admin_ranks) //list of all ranks with associated rights
 		var/current_rights = GLOB.admin_ranks[group_name]
 		var/new_rights = get_rights(group_ranks[instance_name])
 
-		if(current_rights && current_rights != new_rights)
+		if(current_rights != new_rights)
 			dirty_groups += group_name
 
 		GLOB.admin_ranks[group_name] = new_rights
@@ -303,7 +307,7 @@ GLOBAL_LIST_EMPTY(admin_ranks) //list of all ranks with associated rights
 	var/list/changed_users = list()
 
 	for(var/user in users)
-		if(!("display_name" in user) || !("groups" in user)  || !("ckey" in user))
+		if(!("display_name" in user) || !("groups" in user) || !("ckey" in user))
 			log_admin("\[ADMIN_API\] Invalid entry ([user]) in API response, skipping!")
 			continue
 

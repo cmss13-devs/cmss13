@@ -39,7 +39,10 @@ SUBSYSTEM_DEF(ipcheck)
 
 	var/datum/http_request/request = new
 	request.prepare(RUSTG_HTTP_METHOD_GET, query)
-	request.execute_blocking()
+	request.begin_async()
+
+	UNTIL(request.is_complete())
+
 	var/datum/http_response/response = request.into_response()
 
 	var/list/data

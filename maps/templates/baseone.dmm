@@ -9,9 +9,6 @@
 /obj/structure/ladder,
 /turf/open/mars_cave,
 /area/adminlevel/bunker01/caves)
-"ad" = (
-/turf/closed/wall/r_wall,
-/area/adminlevel/bunker01/caves)
 "ae" = (
 /turf/closed/wall/r_wall,
 /area/adminlevel/bunker01/bathroom)
@@ -21,7 +18,7 @@
 	department = "CLASSIFIED"
 	},
 /turf/open/floor/almayer/emerald/northwest,
-/area/adminlevel/bunker01/caves)
+/area/adminlevel/bunker01/command)
 "ag" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/paper_bin,
@@ -49,7 +46,7 @@
 "al" = (
 /obj/structure/safe,
 /turf/open/floor/carpet/edge/northeast,
-/area/adminlevel/bunker01/bathroom)
+/area/adminlevel/bunker01/command)
 "am" = (
 /turf/closed/wall,
 /area/adminlevel/bunker01/bathroom)
@@ -112,7 +109,7 @@
 	dir = 1
 	},
 /turf/open/floor/almayer/emerald/west,
-/area/adminlevel/bunker01/caves)
+/area/adminlevel/bunker01/command)
 "av" = (
 /obj/structure/bed/chair/comfy{
 	dir = 8
@@ -180,7 +177,7 @@
 	icon_state = "pipe-c"
 	},
 /turf/open/floor/carpet/edge/east,
-/area/adminlevel/bunker01/bathroom)
+/area/adminlevel/bunker01/command)
 "aB" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -210,7 +207,7 @@
 "aF" = (
 /obj/structure/curtain/shower,
 /turf/open/floor/prison/sterile_white/south,
-/area/adminlevel/bunker01/caves)
+/area/adminlevel/bunker01/bathroom)
 "aG" = (
 /obj/structure/machinery/shower{
 	dir = 8;
@@ -221,7 +218,7 @@
 	pixel_y = 20
 	},
 /turf/open/floor/prison/sterile_white/south,
-/area/adminlevel/bunker01/caves)
+/area/adminlevel/bunker01/bathroom)
 "aH" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/computer/secure_data{
@@ -230,7 +227,7 @@
 	req_one_access = null
 	},
 /turf/open/floor/almayer/emerald/southwest,
-/area/adminlevel/bunker01/caves)
+/area/adminlevel/bunker01/command)
 "aI" = (
 /obj/structure/machinery/power/apc/antag{
 	dir = 2
@@ -265,7 +262,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/carpet/edge/east,
-/area/adminlevel/bunker01/bathroom)
+/area/adminlevel/bunker01/command)
 "aN" = (
 /obj/structure/pipes/vents/pump{
 	dir = 8
@@ -286,9 +283,6 @@
 	},
 /turf/open/floor/prison/sterile_white/south,
 /area/adminlevel/bunker01/bathroom)
-"aQ" = (
-/turf/closed/wall,
-/area/adminlevel/bunker01/caves)
 "aR" = (
 /obj/structure/sign/safety/ladder{
 	pixel_y = 32
@@ -310,7 +304,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/carpet/edge/southeast,
-/area/adminlevel/bunker01/bathroom)
+/area/adminlevel/bunker01/command)
 "aV" = (
 /obj/structure/sink{
 	dir = 1;
@@ -338,14 +332,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison/sterile_white/south,
 /area/adminlevel/bunker01/bathroom)
-"aY" = (
-/obj/structure/closet/secure_closet/personal,
-/turf/open/floor/almayer,
-/area/adminlevel/bunker01/caves)
-"aZ" = (
-/obj/structure/closet/secure_closet/personal,
-/turf/open/floor/almayer,
-/area/adminlevel/bunker01/command)
 "ba" = (
 /obj/structure/ladder,
 /obj/structure/machinery/light/small{
@@ -353,10 +339,7 @@
 	pixel_y = 20
 	},
 /turf/open/floor/almayer,
-/area/adminlevel/bunker01/command)
-"bb" = (
-/turf/closed/wall,
-/area/adminlevel/bunker01/command)
+/area/adminlevel/bunker01/bedroom)
 "bc" = (
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 1;
@@ -403,10 +386,7 @@
 "bk" = (
 /obj/structure/closet/firecloset,
 /turf/open/floor/almayer,
-/area/adminlevel/bunker01/caves)
-"bl" = (
-/turf/open/floor/almayer,
-/area/adminlevel/bunker01/caves)
+/area/adminlevel/bunker01/bedroom)
 "bm" = (
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/bedroom)
@@ -506,11 +486,6 @@
 /obj/structure/machinery/colony_floodlight,
 /turf/open/floor/almayer/blue/northeast,
 /area/adminlevel/bunker01/hydroponics)
-"bE" = (
-/obj/structure/bed,
-/obj/item/bedsheet/brown,
-/turf/open/floor/almayer,
-/area/adminlevel/bunker01/caves)
 "bF" = (
 /obj/structure/bed,
 /obj/item/bedsheet/brown,
@@ -558,7 +533,7 @@
 	dir = 4
 	},
 /turf/open/floor/prison/sterile_white/south,
-/area/adminlevel/bunker01/bedroom)
+/area/adminlevel/bunker01/kitchen)
 "bL" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 10;
@@ -761,16 +736,7 @@
 "cj" = (
 /obj/structure/closet/secure_closet/personal,
 /turf/open/floor/almayer,
-/area/adminlevel/bunker01/storage)
-"ck" = (
-/obj/structure/machinery/light,
-/turf/open/floor/almayer,
-/area/adminlevel/bunker01/storage)
-"cl" = (
-/obj/structure/bed,
-/obj/item/bedsheet/brown,
-/turf/open/floor/almayer,
-/area/adminlevel/bunker01/storage)
+/area/adminlevel/bunker01/bedroom)
 "cm" = (
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/storage)
@@ -810,7 +776,7 @@
 /obj/structure/machinery/vending/dinnerware,
 /obj/structure/machinery/door/firedoor/border_only/almayer/antag,
 /turf/open/floor/prison/sterile_white/south,
-/area/adminlevel/bunker01/bedroom)
+/area/adminlevel/bunker01/kitchen)
 "cu" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/tool/kitchen/rollingpin,
@@ -866,7 +832,7 @@
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/firedoor/border_only/almayer/antag,
 /turf/open/floor/prison/sterile_white/south,
-/area/adminlevel/bunker01/bedroom)
+/area/adminlevel/bunker01/kitchen)
 "cG" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
@@ -920,7 +886,7 @@
 /obj/item/storage/box/lights/mixed,
 /obj/item/storage/box/lights/mixed,
 /turf/open/floor/almayer/green/northwest,
-/area/adminlevel/bunker01/caves)
+/area/adminlevel/bunker01/storage)
 "cM" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/glass{
@@ -992,7 +958,7 @@
 	icon_state = "tube1"
 	},
 /turf/open/floor/almayer/green/southwest,
-/area/adminlevel/bunker01/caves)
+/area/adminlevel/bunker01/storage)
 "cV" = (
 /turf/open/floor/almayer/green,
 /area/adminlevel/bunker01/storage)
@@ -1051,7 +1017,7 @@
 /obj/structure/largecrate/supply/supplies/metal,
 /obj/structure/largecrate/supply/supplies/metal,
 /turf/open/floor/almayer/cargo,
-/area/adminlevel/bunker01/caves)
+/area/adminlevel/bunker01/storage)
 "dg" = (
 /obj/structure/largecrate/supply/supplies/plasteel,
 /obj/structure/largecrate/supply/supplies/plasteel,
@@ -1102,16 +1068,6 @@
 	name = "\improper Tools";
 	req_access_txt = "201";
 	req_one_access = null
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/adminlevel/bunker01/storage)
-"dn" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4;
-	icon_state = "intact-supply"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/storage)
@@ -1336,7 +1292,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/mainroom)
 "dT" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 1;
 	icon_state = "term"
 	},
@@ -1346,7 +1302,7 @@
 /turf/open/floor/almayer/orange/west,
 /area/adminlevel/bunker01/engineering)
 "dU" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 1;
 	icon_state = "term"
 	},
@@ -1422,9 +1378,6 @@
 "ee" = (
 /obj/structure/closet/crate/secure/mortar_ammo/mortar_kit,
 /turf/open/floor/almayer/cargo,
-/area/adminlevel/bunker01/mainroom)
-"ef" = (
-/turf/open/mars_cave,
 /area/adminlevel/bunker01/mainroom)
 "eg" = (
 /obj/structure/machinery/light/small{
@@ -1617,7 +1570,7 @@
 "eD" = (
 /obj/structure/sign/safety/electronics,
 /turf/closed/wall/r_wall,
-/area/adminlevel/bunker01/engineering)
+/area/adminlevel/bunker01/security)
 "eE" = (
 /turf/closed/wall/r_wall,
 /area/adminlevel/bunker01/security)
@@ -2026,9 +1979,6 @@
 	},
 /turf/open/floor/almayer/sterile_green,
 /area/adminlevel/bunker01/medbay)
-"fA" = (
-/turf/closed/wall/rock/brown,
-/area/adminlevel/bunker01/mainroom)
 "fB" = (
 /obj/structure/machinery/power/apc/antag{
 	dir = 8;
@@ -2530,7 +2480,7 @@
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer/antag,
 /turf/open/floor/almayer,
-/area/adminlevel/bunker01/medbay)
+/area/adminlevel/bunker01/security)
 "gR" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
@@ -2672,9 +2622,7 @@
 "hf" = (
 /obj/structure/sink{
 	dir = 4;
-	icon_state = "sink";
-	pixel_x = 11;
-	pixel_y = 0
+	pixel_x = 11
 	},
 /turf/open/floor/almayer/sterile_green_side/east,
 /area/adminlevel/bunker01/medbay)
@@ -2947,10 +2895,10 @@ ab
 ab
 ab
 ab
-ad
-ad
-ad
-ad
+cB
+cB
+cB
+cB
 du
 du
 du
@@ -2984,12 +2932,12 @@ ab
 ab
 ab
 ab
-ad
-ad
-ad
-ad
-ad
-ad
+cC
+cC
+cC
+cC
+cC
+cB
 cL
 cU
 df
@@ -2999,7 +2947,7 @@ dT
 eh
 eu
 eB
-du
+eE
 eE
 eE
 eE
@@ -3025,11 +2973,11 @@ ab
 ab
 ab
 ab
-ad
-ad
+cC
+cC
 bk
-aY
-aY
+cj
+cj
 cj
 cA
 cM
@@ -3041,7 +2989,7 @@ dU
 ei
 eu
 eC
-du
+eE
 eE
 fj
 eE
@@ -3063,16 +3011,16 @@ aa
 aa
 ab
 ab
-ad
-ad
-ad
-ad
-ad
-aY
-bl
-bl
-bl
-ck
+ai
+ai
+ai
+ai
+ai
+cj
+bm
+bm
+bm
+cn
 cA
 cN
 cV
@@ -3083,7 +3031,7 @@ cA
 ej
 eu
 eB
-du
+eE
 eR
 fk
 eE
@@ -3105,16 +3053,16 @@ aa
 aa
 ab
 ab
-ad
+ai
 af
 au
 aH
-ad
-aY
-bl
-bE
-bE
-cl
+ai
+cj
+bm
+bF
+bF
+bF
 cA
 cO
 cW
@@ -3125,7 +3073,7 @@ dV
 ek
 ev
 eD
-du
+eE
 eS
 fl
 eE
@@ -3147,16 +3095,16 @@ aa
 ab
 ab
 ab
-ad
+ai
 ag
 av
 aI
 ai
-aZ
+cj
 bm
 bm
 bR
-cm
+bm
 cA
 cP
 cm
@@ -3189,7 +3137,7 @@ aa
 aa
 ab
 ab
-ad
+ai
 ah
 aw
 aJ
@@ -3198,7 +3146,7 @@ ba
 bm
 bF
 bS
-cl
+bF
 cA
 cQ
 cX
@@ -3231,16 +3179,16 @@ aa
 aa
 ab
 ab
-ad
+ai
 ai
 ax
 ai
 ai
-bb
+bd
 bn
 bm
 bT
-cm
+bm
 cA
 cR
 cY
@@ -3273,16 +3221,16 @@ aa
 aa
 ab
 ab
-ad
+ai
 aj
 ay
 aK
 aS
-bb
+bd
 bo
 bF
 bS
-cl
+bF
 cA
 cA
 cA
@@ -3315,20 +3263,20 @@ aa
 aa
 ab
 ab
-ad
+ai
 ak
 az
 aL
 aT
-bb
+bd
 bp
 bm
 bT
 cn
-cB
-cB
-cB
-dn
+cC
+cC
+cZ
+dE
 dA
 dO
 dX
@@ -3357,7 +3305,7 @@ aa
 aa
 ab
 ab
-ad
+ai
 al
 aA
 aM
@@ -3426,9 +3374,9 @@ fD
 fV
 fw
 fw
-fw
+eE
 gQ
-fw
+eE
 fw
 fw
 ab
@@ -3651,7 +3599,7 @@ aa
 ab
 ab
 ab
-ad
+ae
 as
 aE
 aO
@@ -3693,18 +3641,18 @@ aa
 aa
 ab
 ab
-ad
+ae
 at
 ap
 aP
 ap
-bd
-bd
+bh
+bh
 bK
-bd
+bh
 ct
 cF
-bd
+bh
 dd
 ds
 dG
@@ -3735,10 +3683,10 @@ aa
 aa
 ab
 ab
-ad
-ad
+ae
+ae
 aF
-aQ
+am
 aF
 bh
 bx
@@ -3778,9 +3726,9 @@ aa
 aa
 ab
 ab
-ad
+ae
 aG
-aQ
+am
 aG
 bh
 by
@@ -3820,10 +3768,10 @@ aa
 aa
 ab
 ab
-ad
-ad
-ad
-ad
+ae
+ae
+ae
+ae
 bi
 bz
 bM
@@ -4129,12 +4077,12 @@ aa
 aR
 ab
 ab
-ef
-ef
-ef
-ef
-ef
-ef
+ab
+ab
+ab
+ab
+ab
+ab
 fw
 fw
 fw
@@ -4171,13 +4119,13 @@ ab
 ab
 ab
 ab
-ef
-ef
-ef
-ef
-ef
-ef
-fA
+ab
+ab
+ab
+ab
+ab
+ab
+aa
 aa
 aa
 aa

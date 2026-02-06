@@ -1,0 +1,13 @@
+2026-02-01:
+  TrollerNoob:
+  - rscadd: Added Chestrig as a selectable backpack you can spawn with. Find it in
+      Backpack Types.
+2026-02-03:
+  Ediblebomb:
+  - maptweak: The maintenance doors leading into the orbital bombardment control room
+      on both decks now have the correctg access requirements in place.
+  Xander3359:
+  - qol: Ladders will automatically show the radial wheel after being used
+2026-02-04:
+  ihatethisengine:
+  - balance: removed aimed shot from PMC sniper spec

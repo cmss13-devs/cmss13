@@ -27,9 +27,8 @@
 	var/numapc = 0
 
 	if(LAZYLEN(nodes)) // Added to fix a bad list bug -- TLE
-		for(var/obj/structure/machinery/power/terminal/term in nodes)
-			if( istype( term.master, /obj/structure/machinery/power/apc ) )
-				numapc++
+		for(var/obj/structure/machinery/power/apc/apc in nodes)
+			numapc++
 
 	netexcess = avail - load
 

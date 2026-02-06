@@ -898,11 +898,8 @@
 	item_state = "vp78m6"
 
 	fire_sound = 'sound/weapons/gun_vp78m6_fire.ogg' // yes we are normalized bro -8db :D
-	reload_sound = 'sound/weapons/gun_vp78_reload.ogg'
-	unload_sound = 'sound/weapons/gun_vp78_unload.ogg'
-	current_mag = /obj/item/ammo_magazine/pistol/vp78
 	force = 8
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
+
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/suppressor/sleek,
@@ -917,11 +914,11 @@
 
 /obj/item/weapon/gun/pistol/vp78/vp78m6/handle_starting_attachment()
 	..()
-	var/obj/item/attachable/lasersight/vp/VP = new(src)
-	VP.flags_attach_features &= ~ATTACH_REMOVABLE
-	VP.hidden = FALSE
-	VP.Attach(src)
-	update_attachable(VP.slot)
+	var/obj/item/attachable/lasersight/vp/attachment = new(src)
+	attachment.flags_attach_features &= ~ATTACH_REMOVABLE
+	attachment.hidden = FALSE
+	attachment.Attach(src)
+	update_attachable(attachment.slot)
 
 /obj/item/weapon/gun/pistol/vp78/vp78m6/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 20,"rail_x" = 10, "rail_y" = 23, "under_x" = 21, "under_y" = 13, "stock_x" = 18, "stock_y" = 14)

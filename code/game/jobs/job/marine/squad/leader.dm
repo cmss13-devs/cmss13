@@ -21,6 +21,8 @@
 		if(job_applicant.client.check_whitelist_status(WHITELIST_COMMANDER))
 			filtered_job_options += list(job_options[2])
 
+	return filtered_job_options
+
 /datum/job/marine/leader/handle_job_options(option)
 	switch(option)
 		if(SQUADLEAD)

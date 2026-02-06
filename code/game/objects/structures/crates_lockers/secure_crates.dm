@@ -227,3 +227,33 @@
 	climbable = TRUE
 	update_icon()
 	return TRUE
+
+//special version, able to store dropship ammo only
+/obj/structure/closet/crate/secure/ds
+	name = "secure dropship ammunition crate"
+	desc = "A secure crate capable of storing dropship ammunition."
+	icon_state = "secure_locked_ds"
+	icon_opened = "secure_open_ds"
+	icon_locked = "secure_locked_ds"
+	icon_unlocked = "secure_unlocked_ds"
+
+/obj/structure/closet/crate/secure/ds/close()
+	if(!opened)
+		return FALSE
+	if(!can_close())
+		return FALSE
+
+	playsound(src.loc, 'sound/machines/click.ogg', 15, 1)
+	var/itemcount = 0
+	for(var/obj/O in get_turf(src))
+		if(itemcount >= storage_capacity)
+			break
+		if(!istype(O, /obj/structure/ship_ammo))
+			continue
+		O.forceMove(src)
+		itemcount++
+
+	opened = FALSE
+	climbable = TRUE
+	update_icon()
+	return TRUE

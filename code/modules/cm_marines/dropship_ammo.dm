@@ -445,9 +445,35 @@
 		victim.throw_atom(impact, 2, 15, src, TRUE) // Implosion throws affected towards center of vacuum
 	QDEL_IN(src, 0.9 SECONDS)
 
+/obj/structure/ship_ammo/rocket/fatty
+	name = "\improper SM-17 'Fatty'"
+	desc = "The SM-17 'Fatty' is a cluster-bomb type ordnance that only requires laser-guidance when first launched. After being temporarily recalled due to its inbalanced friendly to foe casualty ratio, it has been reintroduced to fleets in limited capacities. Can be loaded into the LAU-444 Guided Missile Launcher."
+	icon_state = "fatty"
+	ammo_id = "f"
+	travelling_time = 70 //slower
+	point_cost = 0 // zero means unbuildable
+	fire_mission_delay = 0 //0 means unusable
+
+/obj/structure/ship_ammo/rocket/fatty/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
+	impact.ceiling_debris_check(3)
+	// Initial small explosion
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), impact, 150, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), source_mob)), 0.5 SECONDS)
+
+	// Cluster explosions after delay, green warning dot effect appears on all clusters
+	var/list/impact_coords = list(list(-4,4),list(0,5),list(4,4),list(-5,0),list(5,0),list(-4,-4),list(0,-5), list(4,-4))
+
+	var/cached_name = initial(name)
+	var/mob/cached_source_mob = source_mob
+
+	for(var/i=1 to 8)
+		var/list/coords = impact_coords[i]
+		var/turf/T = locate(impact.x+coords[1], impact.y+coords[2], impact.z)
+		if(T)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(fire_in_a_hole_cluster), T, 275, 50, cached_name, cached_source_mob, /obj/structure/ship_ammo/rocket/fatty), (1.5 + i * 0.1) SECONDS)
+
+	QDEL_IN(src, 2.5 SECONDS)
 
 //minirockets
-
 /obj/structure/ship_ammo/minirocket
 	name = "\improper AGR-59 'Mini-Mike'"
 	desc = "The AGR-59 'Mini-Mike' minirocket is a cheap and efficient means of putting hate down range. Though rockets lack a guidance package, it makes up for it in ammunition count. Can be loaded into the LAU-229 Rocket Pod."
@@ -548,7 +574,7 @@
 
 /obj/structure/ship_ammo/missile/zeus
 	name = "\improper MK.12 'Zeus'"
-	desc = "The MK.12 'Zeus' is an unguided, spin stabilized rocket system which has become a mainstay option for low altitude air strikes against personnel. Its nickname 'Zeus' comes from its resembelance to a bolt of lightning when striking upon targets. It is capable of being fired from the Mk.14 Missile Silo."
+	desc = "The MK.12 'Zeus' is an unguided, spin stabilized rocket system which has become a mainstay option for low altitude air strikes against personnel. Its nickname 'Zeus' comes from its resembelance to a bolt of lightning when striking upon targets. Can be loaded into the Mk.14 Missile Silo."
 	icon_state = "zeus"
 	ammo_id = "z"
 	travelling_time = 40
@@ -564,7 +590,7 @@
 
 /obj/structure/ship_ammo/missile/sgw
 	name = "\improper MK.91 'SGW'"
-	desc = "The MK.91 'SGW' is short range 'fire and forget' missile designed for use against light armor and entrenched positions. Its popularity skyrocketed upon rumors of a single well placed payload decimating an entire CLF guerilla bunker. It is capable of being fired from the Mk.14 Missile Silo."
+	desc = "The MK.91 'SGW' is short range 'fire and forget' missile designed for use against light armor and entrenched positions. Its popularity skyrocketed upon rumors of a single well placed payload decimating an entire CLF guerilla bunker. Can be loaded into the Mk.14 Missile Silo."
 	icon_state = "sgw"
 	ammo_id = "sg"
 	travelling_time = 40
@@ -583,7 +609,7 @@
 
 /obj/structure/ship_ammo/missile/banshee
 	name = "\improper MK.25 'Banshee'"
-	desc = "The Mk.25 'Banshee' is modified version of the standard AGM-228, designed for use in missile silos. As opposed to releasing a flaming willypete compound, it instead employs incendiary flechette capable of puncturing and igniting heavy armor. It is capable of being fired from the Mk.14 Missile Silo."
+	desc = "The Mk.25 'Banshee' is modified version of the standard AGM-228, designed for use in missile silos. As opposed to releasing a flaming willypete compound, it instead employs incendiary flechette capable of puncturing and igniting heavy armor. Can be loaded into the Mk.14 Missile Silo."
 	icon_state = "bansheeM"
 	ammo_id = "bm"
 	travelling_time = 40
@@ -601,11 +627,11 @@
 
 /obj/structure/ship_ammo/missile/hellhound
 	name = "\improper ATM-230D 'HELLHOUND IV'"
-	desc = "The ATM-230D 'HELLHOUND IV' is the latest installment of multi-role tactical missiles employed by gunship pilots. Designed specifically for use against high priority targets such as vehicles, buildings and bunkers, it houses a complicated three stage motor. It is capable of piercing through caves. It is capable of being fired from the Mk.14 Missile Silo."
+	desc = "The ATM-230D 'HELLHOUND IV' is the latest installment of multi-role tactical missiles employed by gunship pilots. Designed specifically for use against high priority targets such as vehicles, buildings and bunkers, it houses a complicated three stage motor. It can penetrate through caves. Can be loaded into the Mk.14 Missile Silo."
 	icon_state = "hellhound"
 	ammo_id = "h"
 	travelling_time = 40
-	point_cost = 500
+	point_cost = 0 // 0 means unbuildable
 	ammo_count = 4
 	max_ammo_count = 4
 	fire_mission_delay = 6 // very high cooldown
@@ -658,7 +684,7 @@
 
 /obj/structure/ship_ammo/bomb/cluster
 	name = "\improper SM-21 'Chubby'"
-	desc = "The SM-21 'Chubby' is a cluster-bomb type ordnance that only requires laser-guidance when first launched. Derived from the popular SM-17 'Fatty', this is a smaller and more compact version of its predecessor, primarily used against target rich environments. It can penetrate through metal ceilings. It is capable of being dropped from the LAB-107 Bomb Bay."
+	desc = "The SM-21 'Chubby' is a cluster-bomb type ordnance that only requires laser-guidance when first launched. Derived from the popular SM-17 'Fatty', this is a smaller and more compact version of its predecessor, primarily used against target rich environments. It can penetrate through metal ceilings. Can be loaded into the LAB-107 Bomb Bay."
 	icon_state = "chubby"
 	ammo_id = "c"
 	travelling_time = 70 //slow but accurate
@@ -697,7 +723,7 @@
 
 /obj/structure/ship_ammo/bomb/incendiary
 	name = "\improper AGM-81 'Firecracker'"
-	desc = "The AGM-81 'Firecracker' is a cluster incendiary bomb designed for area denial and anti-personnel use. A more streamlined version of the AGM-99 'Napalm', it earned its nickname 'Firecracker' due to the crackling of its incendiary reaction upon detonation. It can penetrate through metal ceilings. It is capable of being dropped from the LAB-107 Bomb Bay."
+	desc = "The AGM-81 'Firecracker' is a cluster incendiary bomb designed for area denial and anti-personnel use. A more streamlined version of the AGM-99 'Napalm', it earned its nickname 'Firecracker' due to the crackling of its incendiary reaction upon detonation. It can penetrate through metal ceilings. Can be loaded into the LAB-107 Bomb Bay."
 	icon_state = "firecracker"
 	ammo_id = "fr"
 	travelling_time = 70 // slow but powerful
@@ -721,20 +747,20 @@
 		var/turf/target_turf = pick(target_turfs)
 		selected_turfs += target_turf
 		if(target_turf)
-			// Schedule warning dot, explosion and fire (using global procs to avoid src dependency)
+			// Schedule warning dot, explosion and fire
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(fire_in_a_hole_incendiary), target_turf, 150, 50, cached_name, cached_source_mob), (0.3 + incendiary_index * 0.1) SECONDS)
 
 	QDEL_IN(src, 0.5 SECONDS)
 
 /obj/structure/ship_ammo/bomb/bunkerbuster
 	name = "\improper AGM-98 'MOP'"
-	desc = "The latest cutting edge installment of heavy duty missiles, the AGM-98 'Massive Ordinance Penetrator' is a heavy duty bunker busting bomb designed to penetrate hardened structures and deliver a devastating payload. It is intentionally set to a delayed fuse to further maximize penetration before detonation. It can penetrate through caves. It is capable of being dropped from the LAB-107 Bomb Bay."
+	desc = "The latest cutting edge installment of heavy duty missiles, the AGM-98 'Massive Ordinance Penetrator' is a heavy duty bunker busting bomb designed to penetrate hardened structures and deliver a devastating payload. It is intentionally set to a delayed fuse to further maximize penetration before detonation. It can penetrate through caves. Can be loaded into the LAB-107 Bomb Bay."
 	icon_state = "bunkerbuster"
 	ammo_id = "bb"
 	travelling_time = 80 // very slow but powerful and accurate
 	accuracy_range = 1
 	max_inaccuracy = 2
-	point_cost = 800
+	point_cost = 0 // 0 means unbuildable
 	cavebreaker = TRUE // Designed for bunker busting
 
 /obj/structure/ship_ammo/bomb/bunkerbuster/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
@@ -1009,10 +1035,10 @@
 	new /obj/effect/overlay/temp/blinking_laser(target_turf)
 
 // Global procedures for cluster/incendiary bomb effects
-/proc/fire_in_a_hole_cluster(turf/target_turf, explosion_power, explosion_falloff, weapon_name, mob/source_mob)
+/proc/fire_in_a_hole_cluster(turf/target_turf, explosion_power, explosion_falloff, weapon_name, mob/source_mob, bomb_type = /obj/structure/ship_ammo)
 	new /obj/effect/overlay/temp/blinking_laser(target_turf)
 	// unique projectile anim for the cluster part of the explosion
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(create_cluster_impact_visual), target_turf, /obj/structure/ship_ammo/bomb/cluster), 0.3 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(create_cluster_impact_visual), target_turf, bomb_type), 0.3 SECONDS)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), target_turf, explosion_power, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(weapon_name, source_mob)), 1.5 SECONDS)
 
 /proc/fire_in_a_hole_incendiary(turf/target_turf, explosion_power, explosion_falloff, weapon_name, mob/source_mob)

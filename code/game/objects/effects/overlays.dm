@@ -419,7 +419,6 @@
 	size_mod = bomb_size
 	icon = bomb_ammo.icon
 	icon_state = "[initial(bomb_ammo.icon_state)]_mini"
-	transform = matrix().Turn(-90)
 	transform *= size_mod
 	layer = initial(layer)
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT

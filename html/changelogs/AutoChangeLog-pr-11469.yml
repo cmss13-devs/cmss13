@@ -1,0 +1,5 @@
+author: "Nihisohel"
+delete-after: True
+changes:
+  - balance: "Readds the barrel charger to marine vendors at very limited quantities and low opportunistic restocks"
+  - imageadd: "Adds a new barrel charger sprite, old one is still retained in its dmi file for legacy"

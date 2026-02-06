@@ -33,6 +33,8 @@
 			hud_icon_state = "sec"
 		if(JOB_WY_SEC_SYNTH)
 			hud_icon_state = "synth"
+		if(JOB_WY_PILOT)
+			hud_icon_state = "pilot"
 		if(JOB_TRAINEE)
 			hud_icon_state = "trainee"
 		if(JOB_JUNIOR_EXECUTIVE)

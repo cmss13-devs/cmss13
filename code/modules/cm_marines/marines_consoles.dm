@@ -1145,6 +1145,7 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				JOB_SENIOR_EXECUTIVE = 22,
 				JOB_EXECUTIVE = 23,
 				JOB_JUNIOR_EXECUTIVE = 24,
+				JOB_WY_PILOT = 24,
 				// 30-38: Security
 				JOB_WY_GOON_LEAD = 30,
 				JOB_WY_GOON_MEDIC = 31,

@@ -48,7 +48,7 @@ GLOBAL_LIST_EMPTY(ckey_to_controller)
 		window.reconnect = () => {
 			window.contact('get-url').then((response) => {
 				if (response?.url) {
-					BYOND.command(`.link ${response.url}`)
+					BYOND.command(`.url ${response.url}`)
 				}
 			});
 		}

@@ -42,6 +42,10 @@
 /obj/structure/machinery/computer/shuttle/dropship/flight/Initialize(mapload, ...)
 	. = ..()
 	compatible_landing_zones = get_landing_zones()
+	AddComponent(/datum/component/tacmap, has_drawing_tools = FALSE, minimap_flag = MINIMAP_FLAG_USCM, has_update = TRUE, drawing = FALSE)
+	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
+	if(tacmap_component)
+		tacmap_component.map_holder = new(null, 2, MINIMAP_FLAG_USCM, FALSE)
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/Destroy()
 	. = ..()
@@ -116,6 +120,17 @@
 /obj/structure/machinery/computer/shuttle/dropship/flight/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
+		var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
+		if(tacmap_component)
+			if(!tacmap_component.map_holder)
+				tacmap_component.map_holder = new(null, 2, MINIMAP_FLAG_USCM, FALSE, FALSE)
+				tacmap_component.is_embedded = TRUE
+				// moved 50 pixels south to algin in the center
+				var/matrix/transform = matrix()
+				transform.Translate(-32, 14)
+				tacmap_component.map_holder.map.transform = transform
+				tacmap_component.map = tacmap_component.map_holder.map
+			user.client.register_map_obj(tacmap_component.map_holder.map)
 		var/obj/docking_port/mobile/shuttle = SSshuttle.getShuttle(shuttleId)
 		var/name = capitalize(shuttle?.name)
 		if(can_change_shuttle)
@@ -147,6 +162,21 @@
 		return GLOB.never_state
 	return GLOB.not_incapacitated_and_adjacent_strict_state
 
+/obj/structure/machinery/computer/shuttle/dropship/flight/ui_close(mob/user)
+	. = ..()
+	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
+	if(tacmap_component)
+		tacmap_component.on_unset_interaction(user)
+		tacmap_component.ui_close(user)
+		if(tacmap_component.map_holder)
+			user.client?.clear_map(tacmap_component.map_holder.map_ref)
+			tacmap_component.map = null
+			qdel(tacmap_component.map_holder)
+			tacmap_component.map_holder = null
+			tacmap_component.interactees -= user
+	user.client?.clear_map()
+	return FALSE
+
 /obj/structure/machinery/computer/shuttle/dropship/flight/ui_static_data(mob/user)
 	. = ..(user)
 	compatible_landing_zones = get_landing_zones()
@@ -161,6 +191,10 @@
 	.["alternative_shuttles"] = list()
 	if(can_change_shuttle)
 		.["alternative_shuttles"] = alternative_shuttles()
+
+	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
+	if(tacmap_component && tacmap_component.map_holder)
+		.["tactical_map_ref"] = tacmap_component.map_holder.map_ref
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/alternative_shuttles()
 	. = list()
@@ -442,6 +476,9 @@
 	.["is_disabled"] = disabled
 	if(shuttle?.is_hijacked)
 		.["is_disabled"] = TRUE
+	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
+	if(tacmap_component?.map_holder)
+		.["tactical_map_ref"] = tacmap_component.map_holder.map_ref
 	.["locked_down"] = FALSE
 	.["can_fly_by"] = !is_remote
 	.["can_set_automated"] = is_remote
@@ -645,6 +682,24 @@
 		if ("change_shuttle")
 			var/new_shuttle = params["new_shuttle"]
 			return set_shuttle(new_shuttle)
+
+		if("mapview")
+			var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
+			if(!tacmap_component.map_holder)
+				tacmap_component.map_holder = new(null, 2, MINIMAP_FLAG_USCM, FALSE, FALSE)
+				tacmap_component.map = tacmap_component.map_holder.map
+				// moved 50 pixels south to algin in the center
+				var/matrix/transform = matrix()
+				transform.Translate(-32, 14)
+				tacmap_component.map_holder.map.transform = transform
+				user.client.register_map_obj(tacmap_component.map_holder.map)
+				tacmap_component.interactees += user
+			else
+				tacmap_component.on_unset_interaction(user)
+				user.client.clear_map(tacmap_component.map_holder.map_ref)
+				tacmap_component.map = null
+				qdel(tacmap_component.map_holder)
+				tacmap_component.map_holder = null
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/set_shuttle(new_shuttle)
 	var/mob/user = usr

@@ -63,7 +63,7 @@
 
 	// camera setup
 	AddComponent(/datum/component/camera_manager)
-	AddComponent(/datum/component/tacmap, has_drawing_tools = FALSE, minimap_flag = minimap_flag, has_update = FALSE)
+	AddComponent(/datum/component/tacmap, has_drawing_tools = FALSE, minimap_flag = minimap_flag, has_update = TRUE)
 	SEND_SIGNAL(src, COMSIG_CAMERA_CLEAR)
 
 /obj/structure/machinery/computer/dropship_weapons/Destroy()
@@ -163,6 +163,17 @@
 
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
+		var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
+		if(tacmap_component)
+			if(!tacmap_component.map_holder)
+				tacmap_component.map_holder = new(null, 2, minimap_flag, FALSE, FALSE)
+				tacmap_component.is_embedded = TRUE
+				// moved 50 pixels south to align in the center
+				var/matrix/transform = matrix()
+				transform.Translate(-32, 14)
+				tacmap_component.map_holder.map.transform = transform
+				tacmap_component.map = tacmap_component.map_holder.map
+			user.client.register_map_obj(tacmap_component.map_holder.map)
 		SEND_SIGNAL(src, COMSIG_CAMERA_REGISTER_UI, user)
 		ui = new(user, src, "DropshipWeaponsConsole", "Weapons Console")
 		ui.open()
@@ -171,8 +182,15 @@
 	. = ..()
 
 	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
-	tacmap_component.on_unset_interaction(user)
-	tacmap_component.ui_close(user)
+	if(tacmap_component)
+		tacmap_component.on_unset_interaction(user)
+		tacmap_component.ui_close(user)
+		if(tacmap_component.map_holder)
+			user.client?.clear_map(tacmap_component.map_holder.map_ref)
+			tacmap_component.map = null
+			qdel(tacmap_component.map_holder)
+			tacmap_component.map_holder = null
+			tacmap_component.interactees -= user
 	SEND_SIGNAL(src, COMSIG_CAMERA_UNREGISTER_UI, user)
 	simulation.stop_watching(user)
 
@@ -193,6 +211,9 @@
 /obj/structure/machinery/computer/dropship_weapons/ui_static_data(mob/user)
 	. = list()
 	.["camera_map_ref"] = camera_map_name
+	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
+	if(tacmap_component && tacmap_component.map_holder)
+		.["tactical_map_ref"] = tacmap_component.map_holder.map_ref
 
 /obj/structure/machinery/computer/dropship_weapons/ui_data(mob/user)
 	. = list()
@@ -621,10 +642,21 @@
 			return TRUE
 		if("mapview")
 			var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
-			if(user in tacmap_component.interactees)
-				tacmap_component.on_unset_interaction(user)
+			if(!tacmap_component.map_holder)
+				tacmap_component.map_holder = new(null, 2, minimap_flag, FALSE, FALSE)
+				tacmap_component.map = tacmap_component.map_holder.map
+				// moved 50 pixels south to align in the center
+				var/matrix/transform = matrix()
+				transform.Translate(-32, 14)
+				tacmap_component.map_holder.map.transform = transform
+				user.client.register_map_obj(tacmap_component.map_holder.map)
+				tacmap_component.interactees += user
 			else
-				tacmap_component.show_tacmap(user)
+				tacmap_component.on_unset_interaction(user)
+				user.client.clear_map(tacmap_component.map_holder.map_ref)
+				tacmap_component.map = null
+				qdel(tacmap_component.map_holder)
+				tacmap_component.map_holder = null
 
 		if("rappel-lock")
 			var/obj/docking_port/mobile/marine_dropship/linked_shuttle = SSshuttle.getShuttle(shuttle_tag)

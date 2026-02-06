@@ -1385,6 +1385,29 @@
 		personal_console = null
 	return ..()
 
+/obj/structure/dropship_equipment/weapon/heavygun/bay/attack_hand(mob/user)
+	if(!ammo_equipped)
+		to_chat(user, SPAN_WARNING("[src] is not loaded with any ammunition."))
+		return
+
+	if(!istype(user, /mob/living/carbon/human))
+		to_chat(user, SPAN_WARNING("You need hands to unload the ammunition."))
+		return
+
+	var/mob/living/carbon/human/human_user = user
+
+	to_chat(user, SPAN_NOTICE("You begin manually unloading [ammo_equipped] from [src]."))
+	if(!do_after(user, 20, INTERRUPT_NO_NEEDHAND | BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, target = src))
+		to_chat(user, SPAN_WARNING("You stop unloading the ammunition."))
+		return
+
+	ammo_equipped.forceMove(get_turf(src))
+	to_chat(user, SPAN_NOTICE("You manually unload [ammo_equipped] from [src]. The ammunition falls to the ground."))
+
+	ammo_equipped = null
+	update_icon()
+	return TRUE
+
 
 /obj/structure/dropship_equipment/weapon/rocket_pod
 	name = "\improper LAU-444 Guided Missile Launcher"
@@ -1537,6 +1560,29 @@
 			icon_state = "flare_launcher_installed"
 		else
 			icon_state = "flare_launcher"
+
+/obj/structure/dropship_equipment/weapon/flare_launcher/attack_hand(mob/user)
+	if(!ammo_equipped)
+		to_chat(user, SPAN_WARNING("[src] is not loaded with any ammunition."))
+		return
+
+	if(!istype(user, /mob/living/carbon/human))
+		to_chat(user, SPAN_WARNING("You need hands to unload the ammunition."))
+		return
+
+	var/mob/living/carbon/human/human_user = user
+
+	to_chat(user, SPAN_NOTICE("You begin manually unloading [ammo_equipped] from [src]."))
+	if(!do_after(user, 20, INTERRUPT_NO_NEEDHAND | BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, target = src))
+		to_chat(user, SPAN_WARNING("You stop unloading the ammunition."))
+		return
+
+	ammo_equipped.forceMove(get_turf(src))
+	to_chat(user, SPAN_NOTICE("You manually unload [ammo_equipped] from [src]. The ammunition falls to the ground."))
+
+	ammo_equipped = null
+	update_icon()
+	return TRUE
 
 /obj/structure/dropship_equipment/weapon/bomb_bay
 	name = "\improper LAB-107 Bomb Bay"

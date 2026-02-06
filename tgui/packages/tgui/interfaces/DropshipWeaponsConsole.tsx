@@ -293,7 +293,7 @@ const WeaponsMfdPanel = (props) => {
 };
 
 const BaseMfdPanel = (props: MfdProps) => {
-  const { setPanelState } = mfdState(props.panelStateId);
+  const { setPanelState, panelState } = mfdState(props.panelStateId);
   const { otherPanelState } = otherMfdState(props.otherPanelStateId);
   const { act } = useBackend<DropshipProps>();
 
@@ -315,11 +315,11 @@ const BaseMfdPanel = (props: MfdProps) => {
       bottomButtons={[
         {},
         {
-          children: otherPanelState !== 'map' ? 'MAPS' : undefined,
-          onClick: () => act('mapview'),
+          children: panelState !== 'map' ? 'MAPS' : undefined,
+          onClick: () => setPanelState('map'),
         },
         {
-          children: otherPanelState !== 'camera' ? 'CAMS' : undefined,
+          children: panelState !== 'camera' ? 'CAMS' : undefined,
           onClick: () => setPanelState('camera'),
         },
       ]}

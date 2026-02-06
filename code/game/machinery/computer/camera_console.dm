@@ -451,7 +451,7 @@
 	. = ..()
 
 	// Initialize tacmap
-	AddComponent(/datum/component/tacmap, has_drawing_tools = FALSE, minimap_flag = minimap_type, has_update = FALSE)
+	AddComponent(/datum/component/tacmap, has_drawing_tools = FALSE, minimap_flag = MINIMAP_FLAG_USCM, has_update = TRUE)
 
 	// Add camera management component
 	AddComponent(/datum/component/camera_manager)
@@ -482,12 +482,34 @@
 
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
+		var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
+		if(tacmap_component)
+			if(!tacmap_component.map_holder)
+				tacmap_component.map_holder = new(null, 2, MINIMAP_FLAG_USCM, FALSE, FALSE)
+				tacmap_component.is_embedded = TRUE
+				// moved 50 pixels south to align in the center
+				var/matrix/transform = matrix()
+				transform.Translate(-32, 14)
+				tacmap_component.map_holder.map.transform = transform
+				tacmap_component.map = tacmap_component.map_holder.map
+			user.client.register_map_obj(tacmap_component.map_holder.map)
 		SEND_SIGNAL(src, COMSIG_CAMERA_REGISTER_UI, user)
 		ui = new(user, src, "DropshipCameraConsole", "Camera Console")
 		ui.open()
 
 /obj/structure/machinery/computer/cameras/dropship/ui_close(mob/user)
 	. = ..()
+	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
+	if(tacmap_component)
+		tacmap_component.on_unset_interaction(user)
+		tacmap_component.ui_close(user)
+		if(tacmap_component.map_holder)
+			user.client?.clear_map(tacmap_component.map_holder.map_ref)
+			tacmap_component.map = null
+			qdel(tacmap_component.map_holder)
+			tacmap_component.map_holder = null
+			tacmap_component.interactees -= user
+	user.client?.clear_map()
 	SEND_SIGNAL(src, COMSIG_CAMERA_UNREGISTER_UI, user)
 
 /obj/structure/machinery/computer/cameras/dropship/ui_status(mob/user, datum/ui_state/state)
@@ -564,6 +586,28 @@
 			)
 
 /obj/structure/machinery/computer/cameras/dropship/ui_act(action, params)
+	if(action == "mapview")
+		var/mob/user = usr
+		if(!user || !user.client)
+			return TRUE
+		var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
+		if(!tacmap_component.map_holder)
+			tacmap_component.map_holder = new(null, 2, minimap_type, FALSE, FALSE) // drawing=FALSE, popup=FALSE
+			tacmap_component.map = tacmap_component.map_holder.map
+			// moved 50 pixels south to align in the center
+			var/matrix/transform = matrix()
+			transform.Translate(-32, 14)
+			tacmap_component.map_holder.map.transform = transform
+			user.client.register_map_obj(tacmap_component.map_holder.map)
+			tacmap_component.interactees += user
+		else
+			tacmap_component.on_unset_interaction(user)
+			user.client.clear_map(tacmap_component.map_holder.map_ref)
+			tacmap_component.map = null
+			qdel(tacmap_component.map_holder)
+			tacmap_component.map_holder = null
+		return TRUE
+
 	. = ..()
 	if(.)
 		return

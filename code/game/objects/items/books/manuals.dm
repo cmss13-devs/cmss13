@@ -506,8 +506,8 @@
 /obj/item/book/manual/surgery
 	name = "Surgical Reference Manual"
 	desc = "A detailed reference manual for surgical procedures. To be read mid-surgery when you forget a simple surgical step."
-	icon_state = "book_medical"
-	item_state = "book_medical"
+	icon_state = "book_surgery"
+	item_state = "book_surgery"
 	author = "Colonial Marines Bureau of Medicine and Surgery"
 	title = "Surgical Reference Manual"
 
@@ -873,7 +873,7 @@
 
 /obj/item/book/manual/nuclear
 	name = "Fission Mailed: How to Operate a Blockbuster"
-	desc = "A book containing important information and instructions regarding the operation of a 'Blockbuster' Large Atomic Fission Demolition Device"
+	desc = "A book containing important information and instructions regarding the operation of a 'Blockbuster' Large Atomic Fission Demolition Device."
 	icon_state = "book_nuclear"
 	item_state = "book_nuclear"
 	author = "Nuclear Regulatory Commission of the United Americas"

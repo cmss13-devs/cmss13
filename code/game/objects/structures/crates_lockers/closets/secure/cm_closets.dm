@@ -198,7 +198,7 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 	new /obj/item/storage/belt/security/MP(src)
 	new /obj/item/device/flashlight(src)
 	new /obj/item/clothing/glasses/sunglasses/sechud(src)
-	new /obj/item/device/radio/headset/almayer/cmpcom(src)
+	new /obj/item/device/radio/headset/almayer/mcom/cmp(src)
 	new /obj/item/weapon/gun/energy/taser(src)
 	new /obj/item/weapon/baton(src)
 	new /obj/item/storage/backpack/security (src)
@@ -307,7 +307,7 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 
 /obj/structure/closet/secure_closet/req_officer/Initialize()
 	. = ..()
-	new /obj/item/device/radio/headset/almayer/qm(src)
+	new /obj/item/device/radio/headset/almayer/mcom/qm(src)
 	new /obj/item/clothing/under/rank/qm_suit(src)
 	new /obj/item/clothing/shoes/marine(src)
 	new /obj/item/storage/belt/marine(src)
@@ -348,7 +348,7 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 
 /obj/structure/closet/secure_closet/sea/Initialize()
 	. = ..()
-	new /obj/item/device/whistle(src)
+	new /obj/item/clothing/accessory/device/whistle(src)
 	new /obj/item/device/binoculars/range(src)
 	new /obj/item/clothing/suit/armor/bulletproof/badge(src)
 	new /obj/item/clothing/under/marine/officer/bridge(src)
@@ -356,11 +356,11 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 	new /obj/item/storage/backpack/marine/satchel(src)
 
 /obj/structure/closet/secure_closet/cmdcabinet
-	name = "command tablet cabinet"
-	desc = "A bulletproof cabinet containing the command tablet for usage by the CO and XO. Opens only to them and department heads."
+	name = "heavyduty wall cabinet"
+	desc = "A bulletproof cabinet containing whatever important goodies to justify locking it inside."
+	req_one_access = list(ACCESS_MARINE_SENIOR)
 	density = FALSE
 	store_mobs = FALSE
-	req_one_access = list(ACCESS_MARINE_SENIOR)
 	icon_state = "secure_locked_cmdcabinet"
 	icon_closed = "secure_unlocked_cmdcabinet"
 	icon_locked = "secure_locked_cmdcabinet"
@@ -368,6 +368,16 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 	icon_broken = "secure_locked_cmdcabinet"
 	icon_off = "secure_unlocked_cmdcabinet"
 	wall_mounted = TRUE
+
+/obj/structure/closet/secure_closet/cmdcabinet/marine
+	name = "command tablet cabinet"
+	desc = "A bulletproof cabinet containing the command tablet for usage by the CO and XO. Opens only to them and department heads."
+	req_one_access = list(ACCESS_MARINE_SENIOR)
+
+/obj/structure/closet/secure_closet/cmdcabinet/marine/Initialize()
+	. = ..()
+	new /obj/item/device/radio/headset/almayer/mcom/spare(src)
+	new /obj/item/device/cotablet(src)
 
 /obj/structure/closet/secure_closet/cmdcabinet/comms_mp
 	name = "communications cabinet"

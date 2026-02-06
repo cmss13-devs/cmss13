@@ -41,7 +41,7 @@ About the Holder:
 
 		metabolize(mob/M)
 			This proc is called by the mobs life proc. It simply calls on_mob_life for
-			all contained reagents. You shouldnt have to use this one directly.
+			all contained reagents. You shouldn't have to use this one directly.
 
 		handle_reactions()
 			This proc check all recipes and, on a match, uses them.
@@ -72,7 +72,7 @@ About the Holder:
 			proc. The method var is used for reaction on mobs. It simply tells
 			us if the mob TOUCHed the reagent or if it INGESTed the reagent.
 			Since the volume can be checked in a reagents proc, you might want to
-			use the volume_modifier var to modifiy the passed value without actually
+			use the volume_modifier var to modify the passed value without actually
 			changing the volume of the reagents.
 			If you're not sure if you need to use this the answer is very most likely 'No'.
 			You'll want to use this proc whenever an atom first comes in
@@ -81,7 +81,7 @@ About the Holder:
 
 		add_reagent(reagent, amount, data)
 			Attempts to add X of the matching reagent to the holder.
-			You wont use this much. Mostly in new procs for pre-filled
+			You won't use this much. Mostly in new procs for pre-filled
 			objects.
 
 		remove_reagent(reagent, amount)
@@ -121,14 +121,14 @@ About Reagents:
 	rejuvs over water to ... iron. Each reagent also has a few procs - i'll explain those below.
 
 		reaction_mob(mob/M, method=TOUCH)
-			This is called by the holder's reation proc.
+			This is called by the holder's reaction proc.
 			This version is only called when the reagent
 			reacts with a mob. The method var can be either
 			TOUCH or INGEST. You'll want to put stuff like
 			acid-facemelting in here.
 
 		reaction_obj(obj/O)
-			This is called by the holder's reation proc.
+			This is called by the holder's reaction proc.
 			This version is called when the reagents reacts
 			with an object. You'll want to put stuff like
 			object melting in here ... or something. i dunno.
@@ -142,7 +142,7 @@ About Reagents:
 		on_mob_life(mob/M)
 			This proc is called everytime the mobs life proc executes.
 			This is the place where you put damage for toxins ,
-			drowsyness for sleep toxins etc etc.
+			drowsiness for sleep toxins etc etc.
 			You'll want to call the parents proc by using ..() .
 			If you don't, the chemical will stay in the mob forever -
 			unless you write your own piece of code to slowly remove it.
@@ -197,14 +197,14 @@ About Recipes:
 		required_reagents
 			This is a list of ids of the required reagents.
 			Each id also needs an associated value that gives us the minimum required amount
-			of that reagent. The handle_reaction proc can detect mutiples of the same recipes
+			of that reagent. The handle_reaction proc can detect multiples of the same recipes
 			so for most cases you want to set the required amount to 1.
 
 		required_catalysts (Added May 2011)
 			This is a list of the ids of the required catalysts.
 			Functionally similar to required_reagents, it is a list of reagents that are required
 			for the reaction. However, unlike required_reagents, catalysts are NOT consumed.
-			They mearly have to be present in the container.
+			They merely have to be present in the container.
 
 		result_amount
 			This is the amount of the resulting reagent this recipe will produce.

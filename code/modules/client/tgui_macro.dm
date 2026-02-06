@@ -24,11 +24,16 @@ GLOBAL_LIST_EMPTY(ui_data_keybindings)
 /datum/tgui_macro/ui_data(mob/user)
 	. = list()
 	.["player_keybinds"] = prefs.key_bindings
+	.["custom_keybinds"] = prefs.custom_keybinds
 
 /datum/tgui_macro/ui_static_data(mob/user)
 	. = list()
 	.["glob_keybinds"] = GLOB.ui_data_keybindings
 	.["byond_keymap"] = GLOB._kbMap
+	.["max_custom_keybinds"] = KEYBIND_CUSTOM_MAX
+	.["max_custom_keybind_picksays"] = KEYBIND_CUSTOM_PICKSAY_MAX
+	.["max_say_length"] = MAX_MESSAGE_LEN
+	.["max_emote_length"] = MAX_EMOTE_LEN
 
 /datum/tgui_macro/ui_state(mob/user)
 	return GLOB.always_state
@@ -120,6 +125,55 @@ GLOBAL_LIST_EMPTY(ui_data_keybindings)
 
 			prefs.save_preferences()
 			INVOKE_ASYNC(owner, /client/proc/set_macros)
+			return TRUE
+
+		if("set_custom_keybinds")
+			var/index = params["index"]
+			if(index > KEYBIND_CUSTOM_MAX)
+				return TRUE
+
+			var/keybind_type = params["keybind_type"]
+			if(!(keybind_type in list(KEYBIND_TYPE_SAY, KEYBIND_TYPE_ME, KEYBIND_TYPE_PICKSAY)))
+				return TRUE
+
+			var/keybind = params["keybind"]
+			if(!keybind)
+				return TRUE
+
+			var/contents = params["contents"]
+
+			switch(keybind_type)
+				if(KEYBIND_TYPE_PICKSAY)
+					if(!islist(contents))
+						contents = list(contents)
+
+					var/list/list_contents = contents
+					if(length(contents) > KEYBIND_CUSTOM_PICKSAY_MAX)
+						list_contents.len = KEYBIND_CUSTOM_PICKSAY_MAX
+
+					for(var/i in 1 to length(contents))
+						list_contents[i] = strip_html(contents[i], MAX_EMOTE_LEN)
+
+				if(KEYBIND_TYPE_ME)
+					if(islist(contents))
+						contents = jointext(contents, ", ")
+					contents = strip_html(contents, MAX_EMOTE_LEN)
+
+				else
+					if(islist(contents))
+						contents = jointext(contents, ", ")
+					contents = strip_html(contents, MAX_MESSAGE_LEN)
+
+			for(var/i in GLOB._kbMap)
+				keybind = replacetext(keybind, i, GLOB._kbMap[i])
+
+			var/when_human = sanitize_integer(params["when_human"], FALSE, TRUE, TRUE)
+			var/when_xeno = sanitize_integer(params["when_xeno"], FALSE, TRUE, TRUE)
+
+			prefs.custom_keybinds[index] = list("type" = keybind_type, "keybinding" = keybind, "contents" = contents, "when_human" = when_human, "when_xeno" = when_xeno)
+			prefs.load_custom_keybinds()
+
+			prefs.save_preferences()
 			return TRUE
 
 		if("clear_all_keybinds")

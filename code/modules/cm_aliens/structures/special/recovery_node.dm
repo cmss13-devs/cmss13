@@ -54,7 +54,7 @@
 	var/mob/living/carbon/xenomorph/picked_candidate = pick(plasma_candidates)
 	picked_candidate.visible_message(SPAN_HELPFUL("[picked_candidate] glows as a warm aura envelops them."),
 			SPAN_HELPFUL("We feel a warm aura envelop us."))
-
+	picked_candidate.flick_heal_overlay(2 SECONDS, "#0e6faf")
 	picked_candidate.gain_plasma(replenish_amount)
 
 //Recovery Node - Heals xenomorphs around it
@@ -119,5 +119,5 @@
 	var/mob/living/carbon/xenomorph/picked_candidate = pick(heal_candidates)
 	picked_candidate.visible_message(SPAN_HELPFUL("\The [picked_candidate] glows as a warm aura envelops them."),
 			SPAN_HELPFUL("We feel a warm aura envelop us."))
-
+	picked_candidate.flick_heal_overlay(2 SECONDS, "#00B800")
 	picked_candidate.gain_health(heal_amount)

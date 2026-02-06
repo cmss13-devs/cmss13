@@ -190,14 +190,14 @@
 
 /obj/structure/closet/crate/alpha
 	name = "alpha squad crate"
-	desc = "A crate with alpha squad's symbol on it. "
+	desc = "A crate with alpha squad's symbol on it."
 	icon_state = "closed_alpha"
 	icon_opened = "open_alpha"
 	icon_closed = "closed_alpha"
 
 /obj/structure/closet/crate/ammo
 	name = "ammunitions crate"
-	desc = "An ammunitions crate"
+	desc = "An ammunitions crate."
 	icon_state = "closed_ammo"
 	icon_opened = "open_ammo"
 	icon_closed = "closed_ammo"
@@ -225,35 +225,35 @@
 
 /obj/structure/closet/crate/bravo
 	name = "bravo squad crate"
-	desc = "A crate with bravo squad's symbol on it. "
+	desc = "A crate with bravo squad's symbol on it."
 	icon_state = "closed_bravo"
 	icon_opened = "open_bravo"
 	icon_closed = "closed_bravo"
 
 /obj/structure/closet/crate/charlie
 	name = "charlie squad crate"
-	desc = "A crate with charlie squad's symbol on it. "
+	desc = "A crate with charlie squad's symbol on it."
 	icon_state = "closed_charlie"
 	icon_opened = "open_charlie"
 	icon_closed = "closed_charlie"
 
 /obj/structure/closet/crate/construction
 	name = "construction crate"
-	desc = "A construction crate"
+	desc = "A construction crate."
 	icon_state = "closed_construction"
 	icon_opened = "open_construction"
 	icon_closed = "closed_construction"
 
 /obj/structure/closet/crate/delta
 	name = "delta squad crate"
-	desc = "A crate with delta squad's symbol on it. "
+	desc = "A crate with delta squad's symbol on it."
 	icon_state = "closed_delta"
 	icon_opened = "open_delta"
 	icon_closed = "closed_delta"
 
 /obj/structure/closet/crate/explosives
 	name = "explosives crate"
-	desc = "An explosives crate"
+	desc = "An explosives crate."
 	icon_state = "closed_explosives"
 	icon_opened = "open_explosives"
 	icon_closed = "closed_explosives"
@@ -407,7 +407,7 @@
 
 /obj/structure/closet/crate/empexplosives
 	name = "electromagnetic explosives crate"
-	desc = "An explosives crate, containing EMP grenades"
+	desc = "An explosives crate, containing EMP grenades."
 	icon_state = "closed_explosives"
 	icon_opened = "open_explosives"
 	icon_closed = "closed_explosives"

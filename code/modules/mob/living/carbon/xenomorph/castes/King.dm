@@ -80,10 +80,11 @@
 	. = ..()
 	AddComponent(/datum/component/footstep, 2 , 35, 11, 4, "alien_footstep_large")
 	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(post_move))
-	hive = GLOB.hive_datum[hivenumber]
-	hive.banned_allies = list("All")
-	if(hive.break_all_alliances())
-		xeno_message(SPAN_XENOANNOUNCE("With the arrival of the King, all alliances have been broken."), 3, hivenumber)
+	if(!should_block_game_interaction(src, TRUE)) // don't let admin-level kings mess up alliances
+		hive = GLOB.hive_datum[hivenumber]
+		hive.banned_allies = list("All")
+		if(hive.break_all_alliances())
+			xeno_message(SPAN_XENOANNOUNCE("With the arrival of the King, all alliances have been broken."), 3, hivenumber)
 
 /mob/living/carbon/xenomorph/king/initialize_pass_flags(datum/pass_flags_container/pass_flags)
 	. = ..()
@@ -305,7 +306,7 @@
 		return
 
 	var/area/target_area = get_area(target_turf)
-	if(target_area.flags_area & AREA_NOTUNNEL)
+	if(target_area.flags_area & AREA_NOBURROW)
 		to_chat(xeno, SPAN_XENONOTICE("We cannot leap to that area!"))
 
 	var/list/leap_line = get_line(xeno, target)
@@ -374,9 +375,8 @@
 	owner.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	SLEEP_CHECK_DEATH(7, owner)
 
-	while(target_turf && owner.loc != target_turf)
-		owner.forceMove(get_step(owner, get_dir(owner, target_turf)))
-		SLEEP_CHECK_DEATH(0.5, owner)
+	SLEEP_CHECK_DEATH(0.5 * (abs(owner.x-target_turf.x) + abs(owner.y - target_turf.y) + abs(owner.z - target_turf.z)), owner)
+	owner.forceMove(target_turf)
 
 	animate(owner, alpha = 100, transform = matrix()*0.7, time = 7)
 	var/descentTime = 5

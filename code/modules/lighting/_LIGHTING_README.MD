@@ -19,7 +19,7 @@ var/light_on
 
 Additionally, we have SSlighting, the lighting subsystem which handles lighting updates for Static and Hybrid lighting.
 This subsystems processes enqueued lighting object, corner and source updates, as well as taking enqueued hybrid lighting updates.
-You shouldnt really be touching this as it primarily just stops too many updates from happening at once.
+You shouldn't really be touching this as it primarily just stops too many updates from happening at once.
 
 ## The Lighting systems
 As mentioned previously,lighting is split into three seperate systems who's functionality, benefits and downsides will be discussed below

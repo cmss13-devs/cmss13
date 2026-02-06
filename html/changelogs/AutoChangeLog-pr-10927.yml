@@ -1,5 +1,0 @@
-author: "dawsonkeyes"
-delete-after: True
-changes:
-  - bugfix: "hunting bow quiver back onmobs update properly"
-  - bugfix: "pred weapons now visually show up on you when stored in the suit slot"

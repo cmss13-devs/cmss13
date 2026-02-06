@@ -55,7 +55,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/engineering)
 "aT" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/darkyellow2/east,
 /area/bigredv2/outside/engineering)
 "aU" = (
@@ -519,7 +519,10 @@
 /turf/open/floor/plating/panelscorched,
 /area/bigredv2/outside/engineering)
 "cD" = (
-/obj/structure/machinery/computer/area_atmos,
+/obj/structure/machinery/computer/area_atmos{
+	dir = 1
+	},
+/obj/structure/surface/table,
 /turf/open/floor/darkyellow2/southeast,
 /area/bigredv2/outside/engineering)
 "cE" = (
@@ -533,7 +536,7 @@
 /area/bigredv2/outside/engineering)
 "cF" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/darkyellow2/east,
 /area/bigredv2/outside/engineering)
 "cG" = (

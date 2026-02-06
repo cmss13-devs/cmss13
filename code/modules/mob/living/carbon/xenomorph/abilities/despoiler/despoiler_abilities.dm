@@ -16,6 +16,7 @@
 	var/max_charge_time = 3 SECONDS
 	var/scatter = 30 // Degrees
 	var/image/charge_overlay
+	var/list/timers = list()
 
 /datum/action/xeno_action/activable/pounce/caustic_embrace
 	name = "Caustic Embrace"

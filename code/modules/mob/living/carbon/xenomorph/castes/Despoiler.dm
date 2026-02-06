@@ -156,6 +156,7 @@
 	RegisterSignal(user, COMSIG_MOB_MOUSEDOWN, PROC_REF(on_mouse_down))
 
 /datum/action/xeno_action/activable/acid_barrage/proc/on_mouse_down(mob/source, atom/target, turf, skin_ctl, params)
+	SIGNAL_HANDLER
 	var/list/mods = params2list(params)
 	source.click(target, mods)
 
@@ -179,12 +180,10 @@
 	xeno.speed_modifier += XENO_SPEED_SLOWMOD_TIER_3
 	xeno.recalculate_speed()
 	var/max_charge_notification_timer = addtimer(CALLBACK(src, PROC_REF(notify_max_charge)), max_charge_time, TIMER_STOPPABLE)
-	var/list/timers = list()
 	timers += max_charge_notification_timer
 	for(var/index in 0 to 3)
 		timers += addtimer(CALLBACK(src, PROC_REF(update_barrage_charge_overlay), index), index * (max_charge_time / 3), TIMER_STOPPABLE)
-
-	RegisterSignal(owner, COMSIG_MOB_MOUSEUP, PROC_REF(release_barrage), target, timers)
+	RegisterSignal(owner, COMSIG_MOB_MOUSEUP, PROC_REF(release_barrage), timers)
 
 
 /datum/action/xeno_action/activable/acid_barrage/proc/update_barrage_charge_overlay(stage)
@@ -198,14 +197,16 @@
 /datum/action/xeno_action/activable/acid_barrage/proc/notify_max_charge()
 	to_chat(owner, SPAN_XENOHIGHDANGER("Our acid barrage is full!"))
 
-/datum/action/xeno_action/activable/acid_barrage/proc/release_barrage(atom/source, atom/target, list/timers)
+/datum/action/xeno_action/activable/acid_barrage/proc/release_barrage(atom/source, atom/target, turf, skin_ctl, params)
+	SIGNAL_HANDLER
+	for(var/timer in timers)
+		deltimer(timer)
+	timers.Cut()
 	if(charge_overlay)
 		owner.overlays -= charge_overlay
 		charge_overlay = null
 	var/mob/living/carbon/xenomorph/despoiler/xeno = owner
 	UnregisterSignal(owner, COMSIG_MOB_MOUSEUP)
-	for(var/timer in timers)
-		deltimer(timer)
 	xeno.speed_modifier -= XENO_SPEED_SLOWMOD_TIER_3
 	xeno.recalculate_speed()
 
@@ -390,7 +391,7 @@
 	playsound(loc, "sound/bullets/acid_impact1.ogg", 15)
 	if(!isliving(movable))
 		return
-		
+
 	var/mob/living/target_mob = movable
 	if(!target_mob.ally_of_hivenumber(hivenumber))
 		target_mob.next_move_slowdown = max(target_mob.next_move_slowdown, slow_amt)

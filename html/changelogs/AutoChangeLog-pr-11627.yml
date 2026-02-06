@@ -1,0 +1,5 @@
+author: "rattybag"
+delete-after: True
+changes:
+  - refactor: "refactored reagent grinder to use TGUI"
+  - ui: "reagent grinder interface now uses TGUI"

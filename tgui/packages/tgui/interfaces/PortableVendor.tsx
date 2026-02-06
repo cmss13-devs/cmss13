@@ -44,9 +44,12 @@ const RecordEntry = (props: RecordEntryProps) => {
   }
 
   return (
-    <Stack>
+    <Stack color={record.color}>
       <Stack.Item>
-        <Button onClick={() => act('vend', { choice: record.index })}>
+        <Button
+          onClick={() => act('vend', { choice: record.index })}
+          color={record.color}
+        >
           {record.name}
         </Button>
       </Stack.Item>

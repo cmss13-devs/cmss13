@@ -440,6 +440,7 @@
 	item_state = "headset"
 	frequency = PUB_FREQ
 	has_hud = TRUE
+	additional_hud_types = list(MOB_HUD_FACTION_CIA)
 	minimap_type = /datum/action/minimap/marine
 
 /obj/item/device/radio/headset/almayer/verb/enter_tree()
@@ -514,7 +515,7 @@
 	name = "marine military police radio headset"
 	desc = "This is used by marine military police members. Channels are as follows: :p - military police, :v - marine command. :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
 	icon_state = "sec_headset"
-	additional_hud_types = list(MOB_HUD_FACTION_CMB)
+	additional_hud_types = list(MOB_HUD_FACTION_CMB, MOB_HUD_FACTION_CIA)
 	initial_keys = list(/obj/item/device/encryptionkey/almayer, /obj/item/device/encryptionkey/mmpo)
 	frequency = SEC_FREQ
 	locate_setting = TRACKER_CMP
@@ -529,8 +530,8 @@
 	name = "marine honor guard radio headset"
 	desc = "This is used by members of the marine honor guard. Channels are as follows: :p - military police, :v - marine command. :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
 	icon_state = "sec_headset"
+	additional_hud_types = list(MOB_HUD_FACTION_CMB, MOB_HUD_FACTION_CIA)
 	initial_keys = list(/obj/item/device/encryptionkey/almayer, /obj/item/device/encryptionkey/mmpo)
-	additional_hud_types = list(MOB_HUD_FACTION_CMB)
 	frequency = SEC_FREQ
 	volume = RADIO_VOLUME_RAISED
 	locate_setting = TRACKER_CO
@@ -700,7 +701,8 @@
 	desc = "Issued only to senior command staff. Channels are as follows: :v - marine command, :p - military police, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC,  :t - intel."
 	icon_state = "mco_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/cmpcom/cdrcom)
-	additional_hud_types = list(MOB_HUD_FACTION_WY, MOB_HUD_FACTION_CMB)
+	additional_hud_types = list(MOB_HUD_FACTION_WY, MOB_HUD_FACTION_CMB, MOB_HUD_FACTION_CIA)
+	volume = RADIO_VOLUME_CRITICAL
 	minimap_type = /datum/action/minimap/marine/live
 
 /obj/item/device/radio/headset/almayer/mcom/spare
@@ -770,8 +772,40 @@
 	name = "radio headset"
 	desc = "A radio headset."
 	frequency = CIA_FREQ
-	initial_keys = list(/obj/item/device/encryptionkey/cia, /obj/item/device/encryptionkey/soc, /obj/item/device/encryptionkey/almayer)
+	maximum_keys = 3
+	initial_keys = list(/obj/item/device/encryptionkey/cmpcom/cdrcom, /obj/item/device/encryptionkey/soc, /obj/item/device/encryptionkey/almayer)
+	hud_type = MOB_HUD_FACTION_CIA
+	additional_hud_types = list(MOB_HUD_FACTION_MARINE, MOB_HUD_FACTION_CMB, MOB_HUD_FACTION_WY, MOB_HUD_FACTION_UPP, MOB_HUD_FACTION_PMC, MOB_HUD_FACTION_IASF, MOB_HUD_FACTION_TWE)
 
+/obj/item/device/radio/headset/almayer/cia/uacqs
+	name = "UACQS radio headset"
+	desc = "A radio headset used by the United Americas Commission for Quality and Standards."
+	icon_state = "uacqs_headset"
+	ignore_z = TRUE
+
+/obj/item/device/radio/headset/almayer/cia/uacqs/com
+	name = "UACQS Commissioner radio headset"
+	desc = "A radio headset used by top brass of the United Americas Commission for Quality and Standards."
+	icon_state = "ms_headset"
+	maximum_keys = 4
+	initial_keys = list(/obj/item/device/encryptionkey/cmpcom/cdrcom, /obj/item/device/encryptionkey/cia_grs, /obj/item/device/encryptionkey/soc, /obj/item/device/encryptionkey/almayer)
+
+/obj/item/device/radio/headset/almayer/cia_grs
+	name = "GRS radio headset"
+	desc = "A radio headset used by members of the Global Response Staff."
+	icon_state = "soc_headset"
+	frequency = CIA_GRS_FREQ
+	maximum_keys = 4
+	initial_keys = list(/obj/item/device/encryptionkey/cmpcom/cdrcom, /obj/item/device/encryptionkey/cia, /obj/item/device/encryptionkey/soc, /obj/item/device/encryptionkey/almayer)
+	hud_type = MOB_HUD_FACTION_CIA
+	additional_hud_types = list(MOB_HUD_FACTION_MARINE, MOB_HUD_FACTION_CMB, MOB_HUD_FACTION_WY, MOB_HUD_FACTION_UPP, MOB_HUD_FACTION_PMC, MOB_HUD_FACTION_IASF, MOB_HUD_FACTION_TWE)
+	ignore_z = TRUE
+
+/obj/item/device/radio/headset/almayer/cia_grs/hvh
+	initial_keys = list(/obj/item/device/encryptionkey/cia, /obj/item/device/encryptionkey/colony)
+
+/obj/item/device/radio/headset/almayer/cia_grs/survivor
+	initial_keys = list(/obj/item/device/encryptionkey/colony)
 
 //############################## ALPHA ###############################
 /obj/item/device/radio/headset/almayer/marine/alpha
@@ -1388,7 +1422,7 @@
 	initial_keys = list(/obj/item/device/encryptionkey/cmb)
 	has_hud = TRUE
 	hud_type = MOB_HUD_FACTION_CMB
-	additional_hud_types = list(MOB_HUD_FACTION_MARINE)
+	additional_hud_types = list(MOB_HUD_FACTION_MARINE, MOB_HUD_FACTION_CIA)
 
 /obj/item/device/radio/headset/distress/CMB/limited
 	name = "\improper Damaged CMB Earpiece"
@@ -1419,7 +1453,7 @@
 	icon_state = "mhc_headset"
 	frequency = HC_FREQ
 	initial_keys = list(/obj/item/device/encryptionkey/highcom)
-	additional_hud_types = list(MOB_HUD_FACTION_WY, MOB_HUD_FACTION_CMB, MOB_HUD_FACTION_TWE, MOB_HUD_FACTION_MARINE)
+	additional_hud_types = list(MOB_HUD_FACTION_WY, MOB_HUD_FACTION_CMB, MOB_HUD_FACTION_CIA, MOB_HUD_FACTION_TWE, MOB_HUD_FACTION_MARINE)
 	volume = RADIO_VOLUME_CRITICAL
 	has_hud = TRUE
 	hud_type = MOB_HUD_SECURITY_ADVANCED
@@ -1430,7 +1464,7 @@
 	icon_state = "pvst_headset"
 	frequency = PVST_FREQ
 	initial_keys = list(/obj/item/device/encryptionkey/provost)
-	additional_hud_types = list(MOB_HUD_FACTION_CMB, MOB_HUD_FACTION_MARINE)
+	additional_hud_types = list(MOB_HUD_FACTION_CMB, MOB_HUD_FACTION_CIA, MOB_HUD_FACTION_MARINE)
 	volume = RADIO_VOLUME_CRITICAL
 	has_hud = TRUE
 	hud_type = MOB_HUD_SECURITY_ADVANCED
@@ -1441,7 +1475,7 @@
 	icon_state = "soc_headset"
 	frequency = SOF_FREQ
 	initial_keys = list(/obj/item/device/encryptionkey/soc)
-	additional_hud_types = list(MOB_HUD_FACTION_WY, MOB_HUD_FACTION_CMB, MOB_HUD_FACTION_TWE)
+	additional_hud_types = list(MOB_HUD_FACTION_WY, MOB_HUD_FACTION_CMB, MOB_HUD_FACTION_CIA, MOB_HUD_FACTION_TWE)
 	volume = RADIO_VOLUME_IMPORTANT
 
 /obj/item/device/radio/headset/almayer/sof/survivor_forecon

@@ -87,7 +87,26 @@
 	icon_state = "mp5"
 	gun_type = /obj/item/weapon/gun/smg/mp5
 	max_rounds = 30 //Also comes in 10 and 40.
+	ammo_band_icon = "+mp5_band"
+	ammo_band_icon_empty = "+mp5_band_e"
 
+/obj/item/ammo_magazine/smg/mp5/ap
+	name = "\improper MP5 AP magazine (9mm)"
+	desc = "A 9mm AP magazine for the MP5."
+	default_ammo = /datum/ammo/bullet/smg/ap
+	caliber = "9mm"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/smgs.dmi'
+	icon_state = "mp5"
+	gun_type = /obj/item/weapon/gun/smg/mp5
+	max_rounds = 30
+	ammo_band_color = AMMO_BAND_COLOR_AP
+
+/obj/item/ammo_magazine/smg/mp5/mp5a5_heap
+	name = "\improper MP5A5 HEAP magazine (9mm)"
+	desc = "A 9mm high-explosive armor-piercing magazine for the MP5A5."
+	default_ammo = /datum/ammo/bullet/smg/heap
+	gun_type = /obj/item/weapon/gun/smg/mp5/mp5a5
+	ammo_band_color = AMMO_BAND_COLOR_HEAP
 
 //-------------------------------------------------------
 //MP27, based on the MP27, based on the M7.

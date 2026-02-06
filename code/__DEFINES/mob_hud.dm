@@ -51,11 +51,12 @@
 #define MOB_HUD_FACTION_NSPA 19
 #define MOB_HUD_FACTION_PAP 20
 #define MOB_HUD_FACTION_WO 21
-#define MOB_HUD_HUNTER 22
-#define MOB_HUD_HUNTER_CLAN 23
-#define MOB_HUD_EXECUTE 24
-#define MOB_HUD_NEW_PLAYER 25
-#define MOB_HUD_SPYCAMS 26
+#define MOB_HUD_FACTION_CIA 22
+#define MOB_HUD_HUNTER 23
+#define MOB_HUD_HUNTER_CLAN 24
+#define MOB_HUD_EXECUTE 25
+#define MOB_HUD_NEW_PLAYER 26
+#define MOB_HUD_SPYCAMS 27
 
 //for SL/FTL/LZ targeting on locator huds
 #define TRACKER_SL "track_sl"

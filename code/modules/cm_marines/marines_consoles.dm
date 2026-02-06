@@ -967,15 +967,18 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				JOB_ACMC = 0,
 				JOB_PROVOST_CMARSHAL = 0,
 				JOB_GENERAL = 0,
+				JOB_CIA_UACQS_SG = 0,
 				JOB_PROVOST_SMARSHAL = 1,//Grade O9
 				JOB_PROVOST_MARSHAL = 2,//Grade O7
 				JOB_PROVOST_DMARSHAL = 3,//Grade O6
+				JOB_CIA_UACQS_DG = 3,
 				JOB_COLONEL = 4,//Grade O6
 				JOB_PROVOST_CINSPECTOR = 5,
+				JOB_CIA_UACQS_COMR = 5,
 				JOB_PROVOST_INSPECTOR = 6,
-				JOB_CIA_UACQS_COMR = 7,
-				JOB_CIA_UACQS_ADMN = 8,
-				JOB_CIA_UACQS_SEC = 9,
+				JOB_CIA_UACQS_ADMN = 6,
+				JOB_CIA_UACQS_SECL = 7,
+				JOB_CIA_UACQS_SEC = 8,
 				// 10-19: Command
 				JOB_CO = 10,
 				JOB_XO = 11,
@@ -1087,9 +1090,15 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				// Appear at bottom of squad list
 				JOB_MARINE_RAIDER_SL = 130,
 				RAIDER_SL_SQUAD = 130,
+				JOB_CIA_GRS_CDR = 130,
+				JOB_CIA_GRS_TL = 130,
 				JOB_MARINE_RAIDER = 131,
 				JOB_MARINE_RAIDER_SG = 132,
 				RAIDER_SQUAD = 132,
+				JOB_CIA_GRS_HVY = 131,
+				JOB_CIA_GRS_MED = 132,
+				JOB_CIA_GRS_ENG = 133,
+				JOB_CIA_GRS_OPR =  134,
 
 				JOB_FORECON_CO = 140,
 				JOB_FORECON_SL = 140,
@@ -1232,7 +1241,32 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				// 200-229: Visitors
 				JOB_UPP_REPRESENTATIVE = 201,
 				JOB_TWE_REPRESENTATIVE = 201,
-				JOB_COLONEL = 201
+				JOB_COLONEL = 201,
+			)
+		if(FACTION_CIA, FACTION_UA)
+			jobs = list(
+				JOB_CIA_UACQS_SG = 00,
+				JOB_CIA_UACQS_DG = 00,
+
+				JOB_CIA_GRS_CDR = 10,
+				JOB_CIA_GRS_DCDR = 11,
+
+				JOB_CIA_UACQS_COMR = 20,
+				JOB_CIA_UACQS_ADMN = 21,
+				JOB_CIA_UACQS_SECL = 22,
+				JOB_CIA_UACQS_SEC = 23,
+
+				JOB_CIA_GRS_TL = 30,
+				JOB_CIA_GRS_SNP = 31,
+				JOB_CIA_GRS_HVY = 32,
+				JOB_CIA_GRS_MED = 33,
+				JOB_CIA_GRS_ENG = 34,
+				JOB_CIA_GRS_OPR = 35,
+
+				JOB_CIA_LIAISON = 51,
+
+				JOB_UA_PEACEKEEPER = 61,
+				JOB_UA_RIOT_OFFICER = 62,
 			)
 		else
 			jobs = list()

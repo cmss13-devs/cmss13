@@ -330,6 +330,50 @@
 	)
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
+/obj/item/storage/belt/medical/lifesaver/full/dutch/black/grs/fill_preset_inventory()
+	new /obj/item/stack/medical/advanced/bruise_pack/upgraded(src)
+	new /obj/item/stack/medical/advanced/bruise_pack/upgraded(src)
+	new /obj/item/stack/medical/advanced/ointment/upgraded(src)
+	new /obj/item/stack/medical/advanced/ointment/upgraded(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/adrenaline(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/dexalinp(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone(src)
+	new /obj/item/storage/pill_bottle/bicaridine(src)
+	new /obj/item/storage/pill_bottle/dexalin(src)
+	new /obj/item/storage/pill_bottle/antitox(src)
+	new /obj/item/storage/pill_bottle/kelotane(src)
+	new /obj/item/storage/pill_bottle/inaprovaline(src)
+	new /obj/item/storage/pill_bottle/tramadol(src)
+	new /obj/item/storage/pill_bottle/peridaxon(src)
+	new /obj/item/stack/medical/splint/nano(src)
+	new /obj/item/device/healthanalyzer(src)
+	new /obj/item/storage/pill_bottle/imidazoline(src)
+	new /obj/item/storage/pill_bottle/alkysine(src)
+	new /obj/item/bodybag/cryobag(src)
+	new /obj/item/bodybag/cryobag(src)
+
+/obj/item/storage/belt/medical/lifesaver/full/dutch/black/grs_weak/fill_preset_inventory()
+	new /obj/item/stack/medical/advanced/bruise_pack(src)
+	new /obj/item/stack/medical/advanced/bruise_pack(src)
+	new /obj/item/stack/medical/advanced/ointment(src)
+	new /obj/item/stack/medical/advanced/ointment(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/adrenaline(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/dexalinp(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone(src)
+	new /obj/item/storage/pill_bottle/bicaridine(src)
+	new /obj/item/storage/pill_bottle/dexalin(src)
+	new /obj/item/storage/pill_bottle/antitox(src)
+	new /obj/item/storage/pill_bottle/kelotane(src)
+	new /obj/item/storage/pill_bottle/inaprovaline(src)
+	new /obj/item/storage/pill_bottle/tramadol(src)
+	new /obj/item/storage/pill_bottle/peridaxon(src)
+	new /obj/item/stack/medical/splint/nano(src)
+	new /obj/item/device/healthanalyzer(src)
+	new /obj/item/storage/pill_bottle/imidazoline(src)
+	new /obj/item/storage/pill_bottle/alkysine(src)
+	new /obj/item/bodybag/cryobag(src)
+
+
 /obj/item/storage/belt/medical/lifesaver/wy
 	name = "\improper WY-TM625 pattern medical bag"
 	desc = "The WY-TM625 is the standard load-bearing equipment of the W-Y security forces. This configuration mounts a duffel bag filled with a range of injectors and light medical supplies, and is common among medics. \nRight click its sprite and click \"toggle belt mode\" to take pills out of bottles by simply clicking them."
@@ -777,6 +821,15 @@
 	else
 		return ..()
 
+/obj/item/storage/belt/marine/black
+	icon = 'icons/obj/items/clothing/belts/belts_by_map/snow.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/snow.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
+
 /obj/item/storage/belt/marine/dutch
 	name = "ammo load rig"
 	desc = "Good for carrying around extra ammo in the heat of the jungle. Made of special rot-resistant fabric."
@@ -805,6 +858,52 @@
 /obj/item/storage/belt/marine/m16/ap/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/m16/ap (src)
+
+/obj/item/storage/belt/marine/black/m16/fill_preset_inventory() // Black Belt, M16
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/m16 (src)
+
+/obj/item/storage/belt/marine/black/m16/ap/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/m16/ap (src)
+
+/obj/item/storage/belt/marine/black/m16a5/fill_preset_inventory() // Black Belt, M16A5 and A6
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/m16/m16a5 (src)
+
+/obj/item/storage/belt/marine/black/m16a5/ap/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/m16/m16a5/ap (src)
+
+/obj/item/storage/belt/marine/black/m16a5/weak/fill_preset_inventory()
+		new /obj/item/ammo_magazine/rifle/m16/m16a5/ap (src)
+		new /obj/item/ammo_magazine/rifle/m16/m16a5/ext (src)
+		new /obj/item/ammo_magazine/rifle/m16/m16a5/ext (src)
+		new /obj/item/ammo_magazine/rifle/m16/m16a5 (src)
+		new /obj/item/ammo_magazine/rifle/m16/m16a5 (src)
+
+/obj/item/storage/belt/marine/black/m16a5/heap/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/m16/m16a5/heap (src)
+
+/obj/item/storage/belt/marine/black/m47/fill_preset_inventory() // Black Belt, M47 GRS Pulse Rifle
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/m47 (src)
+
+/obj/item/storage/belt/marine/black/m47/ap/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/m47/ap (src)
+
+/obj/item/storage/belt/marine/black/m47/weak/fill_preset_inventory()
+		new /obj/item/ammo_magazine/rifle/m47/ap (src)
+		new /obj/item/ammo_magazine/rifle/m47/le (src)
+		new /obj/item/ammo_magazine/rifle/m47/le (src)
+		new /obj/item/ammo_magazine/rifle/m47 (src)
+		new /obj/item/ammo_magazine/rifle/m47 (src)
+
+/obj/item/storage/belt/marine/black/m47/heap/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/m47/heap (src)
 
 /obj/item/storage/belt/marine/mar40/fill_preset_inventory() // Mar40
 	for(var/i = 1 to storage_slots)
@@ -875,6 +974,15 @@
 	new /obj/item/ammo_magazine/smartgun(src)
 	new /obj/item/ammo_magazine/smartgun(src)
 	new /obj/item/ammo_magazine/smartgun(src)
+
+/obj/item/storage/belt/marine/smartgunner/full/black
+	icon = 'icons/obj/items/clothing/belts/belts_by_map/snow.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/snow.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
 /obj/item/storage/belt/marine/sharp
 	name = "\improper M103 pattern SHARP magazine belt"
@@ -1084,6 +1192,14 @@
 	for(var/i in 1 to storage_slots)
 		new /obj/item/ammo_magazine/handful/shotgun/slug/es7(src)
 
+/obj/item/storage/belt/shotgun/black/es7_lethal/half/fill_preset_inventory()
+	for(var/i in 1 to (storage_slots/ 2))
+		new /obj/item/ammo_magazine/handful/shotgun/slug/es7(src)
+
+/obj/item/storage/belt/shotgun/black/es7_incendiary/fill_preset_inventory()
+	for(var/i in 1 to storage_slots)
+		new /obj/item/ammo_magazine/handful/shotgun/slug/es7/incendiary(src)
+
 /obj/item/storage/belt/shotgun/van_bandolier
 	name = "two bore bandolier"
 	desc = "A leather bandolier designed to hold extremely heavy shells. Can be attached to armor, worn over the back, or attached to belt loops."
@@ -1166,6 +1282,23 @@
 	max_w_class = SIZE_SMALL
 	max_storage_space = 28
 	can_hold = list(/obj/item/ammo_magazine/handful)
+
+/obj/item/storage/belt/shotgun/xm88/black
+	icon = 'icons/obj/items/clothing/belts/belts_by_map/snow.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/snow.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
+
+/obj/item/storage/belt/shotgun/xm88/black/full_cia/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/handful/lever_action/xm88/cia_iff(src)
+
+/obj/item/storage/belt/shotgun/xm88/black/half_full_cia/fill_preset_inventory()
+	for(var/i = 1 to (storage_slots / 2))
+		new /obj/item/ammo_magazine/handful/lever_action/xm88/cia_iff(src)
 
 /obj/item/storage/belt/shotgun/xm88/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/ammo_magazine/lever_action/xm88))
@@ -1615,6 +1748,24 @@
 	new /obj/item/ammo_magazine/pistol(src)
 	new /obj/item/ammo_magazine/pistol(src)
 
+/obj/item/storage/belt/gun/m4a3/m4a4_tactical
+	icon = 'icons/obj/items/clothing/belts/belts_by_map/snow.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/snow.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
+
+/obj/item/storage/belt/gun/m4a3/m4a4_tactical/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/m4a3/m4a4/tactical())
+	new /obj/item/ammo_magazine/pistol/hp(src)
+	new /obj/item/ammo_magazine/pistol/hp(src)
+	new /obj/item/ammo_magazine/pistol/ap(src)
+	new /obj/item/ammo_magazine/pistol/ap(src)
+	new /obj/item/ammo_magazine/pistol/ap(src)
+	new /obj/item/ammo_magazine/pistol/ap(src)
+
 /obj/item/storage/belt/gun/m4a3/mod88/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/mod88())
 	for(var/i = 1 to storage_slots - 1)
@@ -1703,6 +1854,30 @@
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/m1911/custom())
 	new /obj/item/ammo_magazine/pistol/m1911/highimpact(src)
 	new /obj/item/ammo_magazine/pistol/m1911/highimpact(src)
+	new /obj/item/ammo_magazine/pistol/m1911/highimpact(src)
+	new /obj/item/ammo_magazine/pistol/m1911/highimpact(src)
+	new /obj/item/ammo_magazine/pistol/m1911/highimpact/ap(src)
+	new /obj/item/ammo_magazine/pistol/m1911/highimpact/ap(src)
+
+/obj/item/storage/belt/gun/m4a3/m1911/commander/tactical/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/m1911/custom/tactical())
+	new /obj/item/ammo_magazine/pistol/m1911/highimpact(src)
+	new /obj/item/ammo_magazine/pistol/m1911/highimpact(src)
+	new /obj/item/ammo_magazine/pistol/m1911/highimpact(src)
+	new /obj/item/ammo_magazine/pistol/m1911/highimpact(src)
+	new /obj/item/ammo_magazine/pistol/m1911/highimpact/ap(src)
+	new /obj/item/ammo_magazine/pistol/m1911/highimpact/ap(src)
+
+/obj/item/storage/belt/gun/m4a3/m1911/commander/tactical/half/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/m1911/custom/tactical())
+	new /obj/item/ammo_magazine/pistol/m1911/highimpact(src)
+	new /obj/item/ammo_magazine/pistol/m1911/highimpact(src)
+	new /obj/item/ammo_magazine/pistol/m1911/highimpact/ap(src)
+
+/obj/item/storage/belt/gun/m4a3/m1911/commander/tactical/boom/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/m1911/custom/tactical())
+	new /obj/item/ammo_magazine/pistol/m1911/highimpact/explosive(src)
+	new /obj/item/ammo_magazine/pistol/m1911/highimpact/explosive(src)
 	new /obj/item/ammo_magazine/pistol/m1911/highimpact(src)
 	new /obj/item/ammo_magazine/pistol/m1911/highimpact(src)
 	new /obj/item/ammo_magazine/pistol/m1911/highimpact/ap(src)
@@ -1851,6 +2026,27 @@
 	handle_item_insertion(new /obj/item/weapon/gun/smg/m39/elite/compact(src))
 	for(var/i = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/smg/m39/ap(src)
+
+/obj/item/storage/belt/gun/m39/mp5a6
+	name = "\improper M276 pattern MP5A6 holster rig"
+	desc = "Special issue variant of the M276 designed to holster a MP5A6 submachine gun and two spare magazines. Extremely rare and only issued on special request."
+	gun_has_gamemode_skin = FALSE
+	can_hold = list(
+		/obj/item/weapon/gun/smg/mp5/mp5a5/mp5a6,
+		/obj/item/ammo_magazine/smg/mp5,
+		/obj/item/ammo_magazine/smg/mp5/ap,
+		/obj/item/ammo_magazine/smg/mp5/mp5a5_heap,
+	)
+
+/obj/item/storage/belt/gun/m39/mp5a6/full/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/smg/mp5/mp5a5/mp5a6(src))
+	for(var/i = 1 to storage_slots - 1)
+		new /obj/item/ammo_magazine/smg/mp5/ap(src)
+
+/obj/item/storage/belt/gun/m39/mp5a6/heap/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/smg/mp5/mp5a5/mp5a6/heap(src))
+	for(var/i = 1 to storage_slots - 1)
+		new /obj/item/ammo_magazine/smg/mp5/mp5a5_heap(src)
 
 #define MAXIMUM_MAGAZINE_COUNT 2
 

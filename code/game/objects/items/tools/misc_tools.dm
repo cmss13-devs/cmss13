@@ -367,43 +367,79 @@
 /*
  * Antag pens
  */
-/obj/item/tool/pen/sleepypen
+
+/obj/item/tool/pen/syringe
 	desc = "It's a black ink pen with a sharp point and a carefully engraved \"Waffle Co.\""
 	flags_atom = FPRINT|OPENCONTAINER
-	flags_equip_slot = SLOT_WAIST
+	var/skillless = TRUE
 
-/obj/item/tool/pen/sleepypen/Initialize()
+/obj/item/tool/pen/syringe/proc/get_reagent_list_text()
+	if(!reagents || !LAZYLEN(reagents.reagent_list))
+		return "No reagents"
+
+	var/total_reagent_desc = ""
+	for(var/datum/reagent/current_reagent as anything in reagents.reagent_list)
+		if(total_reagent_desc != "")
+			total_reagent_desc += ", "
+		total_reagent_desc += "[current_reagent.name] ([current_reagent.volume]u)"
+
+	return total_reagent_desc
+
+/obj/item/tool/pen/syringe/get_examine_text(mob/user)
 	. = ..()
-	create_reagents(30)
-	reagents.add_reagent("chloralhydrate", 15)
+	if(skillcheckexplicit(user, SKILL_ANTAG, SKILL_ANTAG_AGENT))
+		. += SPAN_ORANGE("It has an internal syringe system that can be refilled with chemicals.")
+		. += SPAN_ORANGE("It contains: [get_reagent_list_text()].")
 
-/obj/item/tool/pen/sleepypen/attack(mob/M as mob, mob/user as mob)
-	if(!(istype(M,/mob)))
-		return
-	..()
-	if(reagents.total_volume)
-		if(M.reagents)
-			reagents.trans_to(M, 50)
-	return
-
-/obj/item/tool/pen/paralysis
-	flags_atom = FPRINT|OPENCONTAINER
-	flags_equip_slot = SLOT_WAIST
-
-/obj/item/tool/pen/paralysis/attack(mob/living/M as mob, mob/user as mob)
-	if(!(istype(M)))
-		return
-	..()
-	if(M.can_inject(user, TRUE))
-		if(reagents.total_volume)
-			if(M.reagents)
-				reagents.trans_to(M, 50)
-
-/obj/item/tool/pen/paralysis/Initialize()
+/obj/item/tool/pen/syringe/Initialize()
 	. = ..()
 	create_reagents(50)
+	add_default_contents()
+
+/obj/item/tool/pen/syringe/proc/add_default_contents()
+	reagents.add_reagent("chloralhydrate", 15)
+
+/obj/item/tool/pen/syringe/attack(mob/target as mob, mob/user as mob)
+	if(!istype(target))
+		return FALSE
+	..()
+	if(user.a_intent == INTENT_HELP)
+		return FALSE
+	var/has_skill = skillcheckexplicit(user, SKILL_ANTAG, SKILL_ANTAG_AGENT)
+	if(skillless || has_skill)
+		if(reagents.total_volume && target.reagents)
+			reagents.trans_to(target, 50)
+			if(has_skill)
+				to_chat(user, SPAN_HIGHDANGER("You trigger the internal syringe, depleting the contents into [target]!"))
+	return TRUE
+
+/obj/item/tool/pen/syringe/paralysis/add_default_contents()
 	reagents.add_reagent("zombiepowder", 10)
 	reagents.add_reagent("cryptobiolin", 15)
+
+/obj/item/tool/pen/syringe/uacqs_fountain
+	name = "UACQS fountain pen"
+	desc = "Detailed with golden accents and intricate mechanics, the pen allows for a swift change between a myriad of ink colors with a simple twist. A product of precision engineering, each mechanism inside the pen is designed to provide a seamless, effortless transition from one color to the next, creating an instrument of luxurious versatility."
+	icon_state = "fountain_pen"
+	item_state = "fountain_pen"
+	item_state_slots = list(WEAR_AS_GARB = "fountain_pen")
+	matter = list("metal" = 20, "gold" = 10)
+	pen_color = "white"
+	var/list/colour_list = list("white", "red", "blue", "green", "orange", "black")
+	var/current_colour_index = 1
+	skillless = FALSE
+
+/obj/item/tool/pen/syringe/uacqs_fountain/attack_self(mob/living/carbon/human/user)
+	if(!on)
+		return ..()
+
+	current_colour_index = (current_colour_index % length(colour_list)) + 1
+	pen_color = colour_list[current_colour_index]
+	balloon_alert(user,"you twist the pen and change the ink color to [pen_color]")
+	update_pen_state()
+
+/obj/item/tool/pen/syringe/uacqs_fountain/add_default_contents()
+	reagents.add_reagent("gasptoxin", 5)
 
 /*
  * Stamps
@@ -480,6 +516,10 @@
 /obj/item/tool/stamp/ro
 	name = "quartermaster's rubber stamp"
 	icon_state = "stamp-ro"
+
+/obj/item/tool/stamp/uacqs
+	name = "UACQS rubber stamp"
+	icon_state = "stamp-uacqs"
 
 /obj/item/tool/carpenters_hammer //doesn't do anything, yet
 	name = "carpenter's hammer"

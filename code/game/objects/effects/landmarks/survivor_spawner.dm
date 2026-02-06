@@ -458,6 +458,48 @@
 
 	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
 
+//Big Red GRS Survivors
+
+/obj/effect/landmark/survivor_spawner/bigred_crashed_grs
+	icon_state = "surv_grs"
+	equipment = /datum/equipment_preset/cia_global_response/standard/weak/survivor
+	synth_equipment = /datum/equipment_preset/cia_global_response/synth/weak/survivor
+	CO_equipment = /datum/equipment_preset/cia_global_response/commander/weak/survivor
+	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
+	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your primary objective is to survive. You believe a second dropship crashed somewhere to the north, which was carrying additional supplies.</span>")
+	story_text = "You are a Global Response Operator. Your ship was enroute to Solaris Ridge on a classified mission. On the way, your ship received a distress signal from the colony about an attack. Worried that it might be a CLF attack, your pilot set full speed for the colony. However, during atmospheric entry the engine failed and you fell unconscious from the G-Forces. You wake up wounded... and see that the ship has crashed onto the colony. Your squadmates lie dead beside you, but there's some missing. Perhaps they survived and moved elsewhere? You need to find out what happened to the colony, see if you can find any of your squadmates, and find a way to contact Headquarters."
+	roundstart_damage_min = 3
+	roundstart_damage_max = 10
+	roundstart_damage_times = 2
+
+	spawn_priority = SPAWN_PRIORITY_MEDIUM
+
+/obj/effect/landmark/survivor_spawner/bigred_crashed_grs/medic
+	equipment = /datum/equipment_preset/cia_global_response/medic/weak/survivor
+	story_text = "You are a Global Response Medic. Your ship was enroute to Solaris Ridge on a classified mission. On the way, your ship received a distress signal from the colony about an attack. Worried that it might be a CLF attack, your pilot set full speed for the colony. However, during atmospheric entry the engine failed and you fell unconscious from the G-Forces. You wake up wounded... and see that the ship has crashed onto the colony. Your squadmates lie dead beside you, but there's some missing. Perhaps they survived and moved elsewhere? You need to find out what happened to the colony, see if you can find any of your squadmates, and find a way to contact Headquarters."
+	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
+
+/obj/effect/landmark/survivor_spawner/bigred_crashed_grs/engineer
+	equipment = /datum/equipment_preset/cia_global_response/engineer/weak/survivor
+	story_text = "You are a Global Response Engineer. Your ship was enroute to Solaris Ridge on a classified mission. On the way, your ship received a distress signal from the colony about an attack. Worried that it might be a CLF attack, your pilot set full speed for the colony. However, during atmospheric entry the engine failed and you fell unconscious from the G-Forces. You wake up wounded... and see that the ship has crashed onto the colony. Your squadmates lie dead beside you, but there's some missing. Perhaps they survived and moved elsewhere? You need to find out what happened to the colony, see if you can find any of your squadmates, and find a way to contact Headquarters."
+	spawn_priority = SPAWN_PRIORITY_HIGH
+
+/obj/effect/landmark/survivor_spawner/bigred_crashed_grs/smartgun
+	equipment = /datum/equipment_preset/cia_global_response/heavy/weak/survivor
+	story_text = "You are a Global Response Heavy Operator. Your ship was enroute to Solaris Ridge on a classified mission. On the way, your ship received a distress signal from the colony about an attack. Worried that it might be a CLF attack, your pilot set full speed for the colony. However, during atmospheric entry the engine failed and you fell unconscious from the G-Forces. You wake up wounded... and see that the ship has crashed onto the colony. Your squadmates lie dead beside you, but there's some missing. Perhaps they survived and moved elsewhere? You need to find out what happened to the colony, see if you can find any of your squadmates, and find a way to contact Headquarters."
+	spawn_priority = SPAWN_PRIORITY_HIGH
+
+/obj/effect/landmark/survivor_spawner/bigred_crashed_grs/sniper
+	equipment = /datum/equipment_preset/cia_global_response/sniper/weak/survivor
+	story_text = "You are a Global Response Advanced Marksman. Your ship was enroute to Solaris Ridge on a classified mission. On the way, your ship received a distress signal from the colony about an attack. Worried that it might be a CLF attack, your pilot set full speed for the colony. However, during atmospheric entry the engine failed and you fell unconscious from the G-Forces. You wake up wounded... and see that the ship has crashed onto the colony. Your squadmates lie dead beside you, but there's some missing. Perhaps they survived and moved elsewhere? You need to find out what happened to the colony, see if you can find any of your squadmates, and find a way to contact Headquarters."
+	spawn_priority = SPAWN_PRIORITY_HIGH
+
+/obj/effect/landmark/survivor_spawner/bigred_crashed_grs/leader
+	equipment = /datum/equipment_preset/cia_global_response/leader/weak/survivor
+	story_text = "You are a Global Response Team Leader. Your ship was enroute to Solaris Ridge on a classified mission. On the way, your ship received a distress signal from the colony about an attack. Worried that it might be a CLF attack, your pilot set full speed for the colony. However, during atmospheric entry the engine failed and you fell unconscious from the G-Forces. You wake up wounded... and see that the ship has crashed onto the colony. Your squadmates lie dead beside you, but there's some missing. Perhaps they survived and moved elsewhere? You need to find out what happened to the colony, see if you can find any of your squadmates, and find a way to contact Headquarters."
+	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
+
 //Shivas Panic Room Survivors//
 
 /obj/effect/landmark/survivor_spawner/shivas_panic_room_commando

@@ -14,6 +14,20 @@
 		"path": "standalone/crashlanding-eva.dmm",
 		"when": { "lvevent": "pmccrash" }
 	},
+    {
+		"type": "map_insert",
+		"landmark": "crashlanding-offices",
+		"chance": 1.0,
+		"path": "standalone/crashlanding-offices-grs.dmm",
+		"when": { "lvevent": "grscrash" }
+	},
+    {
+		"type": "map_insert",
+		"landmark": "crashlanding-eva",
+		"chance": 1.0,
+		"path": "standalone/crashlanding-eva-grs.dmm",
+		"when": { "lvevent": "grscrash" }
+	},
 	{ "type": "map_insert", "chance": 0.50, "landmark": "lambda-graveyard", "path": "standalone/lambda-graveyard.dmm" },
 	{ "type": "pick",     "chance": 0.50, "choices": [
 		{ "type": "map_insert", "landmark": "lambda-cave-mushroom", "path": "standalone/lambda-cave_mushroom.dmm" },

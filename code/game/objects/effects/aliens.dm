@@ -257,6 +257,7 @@
 	icon_state = "acid2-strong"
 	damage_amount = 30
 	time_to_live = 2 SECONDS
+	stun_duration = 0
 
 /obj/effect/xenomorph/spray/despoiler/apply_spray(mob/living/carbon/carbon)
 	. = ..()

@@ -58,6 +58,7 @@
 		var/already_protected = (protected_turf.turf_protection_flags & TURF_PROTECTION_ANTIAIR)
 
 		protected_turf.turf_protection_flags |= TURF_PROTECTION_ANTIAIR
+		protected_turf.turf_protection_flags |= TURF_PROTECTION_CHAFF
 		if(!protected_turf.antiair_effect_type)
 			protected_turf.antiair_effect_type = /datum/dropship_antiair/boiler_corrosion
 		// Set the antiair applier to reference this pylon's hive for announcements
@@ -95,6 +96,7 @@
 
 		if(!still_protected)
 			protected_turf.turf_protection_flags &= ~TURF_PROTECTION_ANTIAIR
+			protected_turf.turf_protection_flags &= ~TURF_PROTECTION_CHAFF
 			protected_turf.antiair_effect_type = null
 			protected_turf.antiair_applier = null
 			// Only remove overlays if we're sure no other protection systems need them

@@ -90,7 +90,8 @@
 /mob/living/carbon/xenomorph/despoiler/apply_damage(damage, damagetype, def_zone, used_weapon, sharp, edge, force, enviro, chemical)
 	. = ..()
 	var/datum/behavior_delegate/despoiler_base/delegate = behavior_delegate
-	delegate.increase_hypertension(damage)
+	if(damage > 0)
+		delegate.increase_hypertension(damage)
 
 /datum/behavior_delegate/despoiler_base
 	name = "Base Despoiler Behavior Delegate"

@@ -1,0 +1,4 @@
+author: "hry-gh"
+delete-after: True
+changes:
+  - server: "added the ability to get admins/admin_ranks from an api endpoint"

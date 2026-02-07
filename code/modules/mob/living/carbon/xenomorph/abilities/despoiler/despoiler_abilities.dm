@@ -34,7 +34,7 @@
 	freeze_self = FALSE
 
 	var/empowered_distance = 5
-	var/weaken_duration = 1 SECONDS
+	var/weaken_duration = 1
 	var/damage = 30
 
 /datum/action/xeno_action/onclick/oozing_wounds
@@ -52,6 +52,8 @@
 	xeno_cooldown = 20 SECONDS
 	ability_primacy = XENO_PRIMARY_ACTION_4
 	plasma_cost = 0
+
+	var/duration = 10 SECONDS
 
 /datum/action/xeno_action/activable/tail_stab/despoiler
 	name = "Finishing Acid Stab"

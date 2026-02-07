@@ -87,10 +87,16 @@
 
 	. += "Hypertension: [delegate.hypertension] / [delegate.hypertension_to_stacks_ratio]"
 
+/mob/living/carbon/xenomorph/despoiler/apply_damage(damage, damagetype, def_zone, used_weapon, sharp, edge, force, enviro, chemical)
+	. = ..()
+	var/datum/behavior_delegate/despoiler_base/delegate = behavior_delegate
+	delegate.increase_hypertension(damage)
+
 /datum/behavior_delegate/despoiler_base
 	name = "Base Despoiler Behavior Delegate"
 
 	var/next_ability_empowered = FALSE
+	var/image/empowered_overlay
 
 	// State
 	var/hypertension_stacks = 0
@@ -114,11 +120,6 @@
 		hypertension_stacks = max(0, hypertension_stacks - 1)
 		var/mob/living/carbon/xenomorph/despoiler/xeno = bound_xeno
 		xeno.update_hypertension()
-
-/datum/behavior_delegate/despoiler_base/on_hitby_projectile(datum/ammo/ammo)
-	last_combat_time = world.time
-	increase_hypertension(ammo.damage * 2)
-	return
 
 /datum/behavior_delegate/despoiler_base/melee_attack_additional_effects_self()
 	..()
@@ -199,6 +200,7 @@
 
 /datum/action/xeno_action/activable/acid_barrage/proc/release_barrage(atom/source, atom/target, turf, skin_ctl, params)
 	SIGNAL_HANDLER
+	apply_cooldown()
 	for(var/timer in timers)
 		deltimer(timer)
 	timers.Cut()
@@ -216,6 +218,7 @@
 	if(delegate.next_ability_empowered)
 		delegate.next_ability_empowered = FALSE
 		modifier += empower_modifier
+		xeno.overlays -= delegate.empowered_overlay
 
 	var/barrage_size = max(round((time_charged / max_charge_time) * max_volley), min_volley) + modifier
 	playsound(xeno, 'sound/voice/xeno_praetorian_screech.ogg', 75, 0, status = 0)
@@ -251,6 +254,7 @@
 
 	if(delegate.next_ability_empowered)
 		delegate.next_ability_empowered = FALSE
+		xeno.overlays -= delegate.empowered_overlay
 		return // Handled in additional_effects()
 
 	var/list/turfs = orange(1, get_turf(xeno)) - get_step(xeno.loc, REVERSE_DIR(xeno.dir))
@@ -310,6 +314,7 @@
 
 	if(empowered)
 		delegate.next_ability_empowered = FALSE
+		xeno.overlays -= delegate.empowered_overlay
 
 	for(var/turf/turf in orange(acid_range, get_turf(xeno)))
 		if(get_dist_sqrd(turf, xeno) > acid_range ** 2)
@@ -345,7 +350,21 @@
 
 	delegate.hypertension_stacks--
 	delegate.next_ability_empowered = TRUE
+	delegate.empowered_overlay = image('icons/mob/xenos/castes/tier_3/despoiler.dmi', "hypertension")
+	delegate.empowered_overlay.layer = FLY_LAYER
+	delegate.empowered_overlay.plane = ABOVE_GAME_PLANE
+	xeno.overlays |= delegate.empowered_overlay
 	to_chat(owner, SPAN_XENOHIGHDANGER("We catalyze our acid and empowerd our next ability!"))
+	addtimer(CALLBACK(src, PROC_REF(debuff_next_ability)), duration)
+
+// Waited too long
+/datum/action/xeno_action/onclick/catalyze/proc/debuff_next_ability()
+	var/mob/living/carbon/xenomorph/despoiler/xeno = owner
+	var/datum/behavior_delegate/despoiler_base/delegate = xeno.behavior_delegate
+	if(delegate.next_ability_empowered)
+		to_chat(owner, SPAN_XENOHIGHDANGER("We waited too long, our next ability is no longer empowered!"))
+		xeno.overlays -= delegate.empowered_overlay
+		delegate.next_ability_empowered = FALSE
 
 /obj/effect/lingering_acid
 	name = "acid"

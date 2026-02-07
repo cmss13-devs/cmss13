@@ -428,6 +428,7 @@
 #include "code\datums\autocells\vomit_wave.dm"
 #include "code\datums\balloon_alerts\balloon_alerts.dm"
 #include "code\datums\components\_component.dm"
+#include "code\datums\components\acid_immunity.dm"
 #include "code\datums\components\armor_link.dm"
 #include "code\datums\components\bad_leg.dm"
 #include "code\datums\components\bonus_damage_stack.dm"

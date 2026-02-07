@@ -176,6 +176,14 @@
 	statuscode = 200
 	response = "Lookup successful."
 
+/datum/world_topic/refresh_admins
+	key = "refresh_admins"
+
+/datum/world_topic/refresh_admins/Run(list/input)
+	. = ..()
+
+	load_admins()
+
 /datum/world_topic/cmtv
 	key = "cmtv"
 	required_params = list("command")

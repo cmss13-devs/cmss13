@@ -231,6 +231,9 @@
  */
 /datum/tgui_window/proc/close(can_be_suspended = TRUE)
 	if(!client)
+		release_lock()
+		status = TGUI_WINDOW_CLOSED
+		message_queue = null
 		return
 	if(mouse_event_macro_set)
 		remove_mouse_macro()

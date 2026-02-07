@@ -9,4 +9,4 @@
 <strong>Isssue Tracker:</strong> <a href="https://github.com/cmss13-devs/cmss13/issues">https://github.com/cmss13-devs/cmss13/issues</a>
 <br>
 <br>
-Dont forget to make and set confing/role_whitelist.txt and confing/admins.txt for access to whitelists and other staff ranks, and other settings.
+Dont forget to make and set config/role_whitelist.txt and config/admins.txt for access to whitelists and other staff ranks, and other settings.

@@ -1,0 +1,4 @@
+author: "Bibby0110"
+delete-after: True
+changes:
+  - bugfix: "Kings spawned in hunting grounds won't affect their primary hive wrt. alliances"

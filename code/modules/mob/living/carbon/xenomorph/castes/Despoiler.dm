@@ -91,7 +91,8 @@
 	. = ..()
 	var/datum/behavior_delegate/despoiler_base/delegate = behavior_delegate
 	if(damage > 0)
-		delegate.increase_hypertension(damage)
+		delegate.last_combat_time = world.time
+		delegate.increase_hypertension(round(damage))
 
 /datum/behavior_delegate/despoiler_base
 	name = "Base Despoiler Behavior Delegate"

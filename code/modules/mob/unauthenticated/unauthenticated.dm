@@ -39,7 +39,10 @@ GENERAL_PROTECT_DATUM(/mob/unauthenticated)
 /mob/unauthenticated/Logout()
 	. = ..()
 
-	QDEL_NULL(unauthenticated_menu)
+	if(unauthenticated_menu)
+		unauthenticated_menu.unsubscribe()
+		unauthenticated_menu.close(FALSE)
+		unauthenticated_menu = null
 	qdel(src)
 
 /mob/unauthenticated/set_logged_in_mob()

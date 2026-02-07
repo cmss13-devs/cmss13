@@ -176,6 +176,7 @@
 	if(!check_and_use_plasma_owner())
 		return
 
+	// Prevent some mouse down shenangians
 	apply_cooldown()
 
 	to_chat(owner, SPAN_XENOHIGHDANGER("We slow down as we begin charging a barrage of acid!"))
@@ -202,7 +203,8 @@
 
 /datum/action/xeno_action/activable/acid_barrage/proc/release_barrage(atom/source, atom/target, turf, skin_ctl, params)
 	SIGNAL_HANDLER
-	apply_cooldown()
+	// The real cooldown starts here
+	apply_cooldown_override(xeno_cooldown)
 	for(var/timer in timers)
 		deltimer(timer)
 	timers.Cut()

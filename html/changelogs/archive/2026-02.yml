@@ -11,3 +11,21 @@
 2026-02-04:
   ihatethisengine:
   - balance: removed aimed shot from PMC sniper spec
+2026-02-07:
+  Bibby0110:
+  - bugfix: Kings spawned in hunting grounds won't affect their primary hive wrt.
+      alliances
+  Drulikar:
+  - admin: Admins get more access to log getter verbs
+  - rscdel: Removed getruntimelog and giveruntimelog since they aren't really applicable
+      to how TGS logs dream daemon logs
+  Nihisohel:
+  - balance: Readds the barrel charger to marine vendors at very limited quantities
+      and low opportunistic restocks
+  - imageadd: Adds a new barrel charger sprite, old one is still retained in its dmi
+      file for legacy
+  Xander3359:
+  - spellcheck: spellcheck confing
+  rattybag:
+  - refactor: refactored reagent grinder to use TGUI
+  - ui: reagent grinder interface now uses TGUI

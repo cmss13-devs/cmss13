@@ -27,7 +27,7 @@ and organ transplant code which may come in handy in future but haven't been edi
 
 /datum/surgery_step/repair_organs
 	name = "Repair Damaged Organs"
-	desc = "repair the organ damage"
+	desc = "repair damaged organs"
 	//Tools used to fix damaged organs. Predator herbs may be herbal and organic, but are not as good for surgery.
 	tools = list(
 		/obj/item/stack/medical/advanced/bruise_pack = SURGERY_TOOL_MULT_IDEAL,
@@ -36,6 +36,10 @@ and organ transplant code which may come in handy in future but haven't been edi
 	)
 	time = 3 SECONDS
 	repeat_step = TRUE
+	preop_sound = 'sound/handling/clothingrustle1.ogg'
+	//success handled in repeat code
+	failure_sound = 'sound/surgery/organ2.ogg'
+	var/use_stack = 1
 
 /datum/surgery_step/repair_organs/repeat_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	for(var/datum/internal_organ/IO as anything in surgery.affected_limb.internal_organs)
@@ -54,7 +58,7 @@ and organ transplant code which may come in handy in future but haven't been edi
 		if(/obj/item/stack/medical/bruise_pack)
 			toolname = "the gauze"
 		if(/obj/item/stack/medical/advanced/bruise_pack)
-			toolname = "regenerative membrane"
+			toolname = "a regenerative membrane"
 		else
 			toolname = "the poultice"
 
@@ -69,23 +73,29 @@ and organ transplant code which may come in handy in future but haven't been edi
 			SPAN_NOTICE("[user] begins to treat your damaged [damaged_organs[1]] with [toolname]."),
 			SPAN_NOTICE("[user] begins to treat [target]'s damaged [damaged_organs[1]] with [toolname]."))
 
-	target.custom_pain("The pain in your [surgery.affected_limb.display_name] is living hell!", 1)
+	target.custom_pain("You feel [toolname] moving the organs around in your [surgery.affected_limb.display_name]! The pressure is maddening!", 1)
 	playsound(target.loc, 'sound/handling/bandage.ogg', 25, TRUE)
 	log_interact(user, target, "[key_name(user)] began mending organs in [key_name(target)]'s [surgery.affected_limb.display_name], beginning [surgery].")
 
 /datum/surgery_step/repair_organs/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	log_interact(user, target, "[key_name(user)] mended an organ in [key_name(target)]'s [surgery.affected_limb.display_name], possibly ending [surgery].")
-	for(var/datum/internal_organ/I as anything in surgery.affected_limb.internal_organs)
-		if(I && I.damage > 0 && I.robotic != ORGAN_ROBOT)
-			user.affected_message(target,
-				SPAN_NOTICE("You finish treating [target]'s damaged [I.name]."),
-				SPAN_NOTICE("[user] finishes treating your damaged [I.name]."),
-				SPAN_NOTICE("[user] finishes treating [target]'s damaged [I.name]."))
+	if(istype(tool, /obj/item/stack/medical))
+		var/obj/item/stack/medical/packs = tool
+		if(!packs.use(use_stack))
+			to_chat(user, SPAN_BOLDWARNING("You don't have enough of [packs] to finish repairing organs!"))
+			return FALSE
+		else
+			for(var/datum/internal_organ/I as anything in surgery.affected_limb.internal_organs)
+				if(I && I.damage > 0 && I.robotic != ORGAN_ROBOT)
+					user.affected_message(target,
+						SPAN_NOTICE("You finish treating [target]'s damaged [I.name]."),
+						SPAN_NOTICE("[user] finishes treating your damaged [I.name]. It never felt better!"),
+						SPAN_NOTICE("[user] finishes treating [target]'s damaged [I.name]."))
 
-			user.count_niche_stat(STATISTICS_NICHE_SURGERY_ORGAN_REPAIR)
-			I.rejuvenate()
-			target.pain.recalculate_pain()
-			break
+					log_interact(user, target, "[key_name(user)] mended an organ in [key_name(target)]'s [surgery.affected_limb.display_name], possibly ending [surgery].")
+					user.count_niche_stat(STATISTICS_NICHE_SURGERY_ORGAN_REPAIR)
+					I.rejuvenate()
+					target.pain.recalculate_pain()
+					break
 
 /datum/surgery_step/repair_organs/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
@@ -93,6 +103,8 @@ and organ transplant code which may come in handy in future but haven't been edi
 		SPAN_WARNING("[user]'s hand slips, bruising your organs and contaminating your [surgery.affected_limb.cavity]!"),
 		SPAN_WARNING("[user]'s hand slips, bruising [target]'s organs and contaminating \his [surgery.affected_limb.cavity]!"))
 
+	if(target.stat == CONSCIOUS)
+		target.emote("pain")
 	var/dam_amt = 2
 	switch(tool_type)
 		if(/obj/item/stack/medical/bruise_pack)

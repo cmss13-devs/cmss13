@@ -83,7 +83,7 @@
 	time = 2 SECONDS
 
 	preop_sound = 'sound/surgery/hemostat1.ogg'
-	success_sound = 'sound/surgery/hemostat1.ogg'
+	success_sound = 'sound/surgery/hemostat2.ogg'
 	failure_sound = 'sound/surgery/organ1.ogg'
 
 /datum/surgery_step/lift_corneas/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)

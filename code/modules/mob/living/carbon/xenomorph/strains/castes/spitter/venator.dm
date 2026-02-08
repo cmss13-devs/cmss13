@@ -1,0 +1,183 @@
+/datum/xeno_strain/venator
+	name = SPITTER_VENATOR
+	description = "At the cost of a little bit of your health and your spray and enhanced spit, you gain some armor, and further enhance your acid glands. You can store acid in these glands to increase the rate in which you can fire off your projectiles, yet considerably weaken your armor plating by doing so, up to a maximum of 5 times. Your spit now does considerably more damage as well as apply a lingering acid effect, while you now gain the ability to launch a blob of acid at a medium distance, which leaves behind a small area of acid, amplified if it hits a target directly by stunning the target. Additionally you can also now spit your acid in a wide arc, shooting multiple smaller pellets that inflict a small amount of damage but also coat the target in a layer of burning acid."
+	flavor_description = "Your acid burns as much as my fury, let your acid blot out the sun, let them choke on their own misery."
+	icon_state_prefix = "Venator"
+	actions_to_remove = list(
+		/datum/action/xeno_action/activable/tail_stab/spitter,
+		/datum/action/xeno_action/activable/xeno_spit/spitter,
+		/datum/action/xeno_action/onclick/charge_spit,
+		/datum/action/xeno_action/activable/spray_acid/spitter,
+	)
+	actions_to_add = list(
+		/datum/action/xeno_action/activable/tail_stab,
+		/datum/action/xeno_action/activable/xeno_spit/bombard/venetor/corosive_spit,
+		/datum/action/xeno_action/activable/xeno_spit/bombard/venetor/acid_blob,
+		/datum/action/xeno_action/activable/xeno_spit/bombard/venetor/enzymatic_breath,
+		/datum/action/xeno_action/onclick/store_acid,
+	)
+	behavior_delegate_type = /datum/behavior_delegate/spitter_venator
+
+/datum/xeno_strain/venator/apply_strain(mob/living/carbon/xenomorph/spitter/spitter)
+	if(!istype(spitter))
+		return FALSE
+
+	spitter.tileoffset = 0
+	spitter.armor_modifier += XENO_ARMOR_MOD_SMALL // 25 armor
+	spitter.health_modifier -= XENO_HEALTH_MOD_SMALL_MED // 500 hp
+
+	spitter.speed_modifier += XENO_SPEED_TIER_2
+	spitter.melee_damage_upper = XENO_DAMAGE_TIER_2
+	spitter.plasma_gain = XENO_PLASMA_GAIN_TIER_8
+	spitter.recalculate_everything()
+	spitter.damage_state_prefix = icon_state_prefix
+
+/datum/action/xeno_action/activable/xeno_spit/bombard/venetor
+	xeno_cooldown = 11 SECONDS
+	cooldown_duration = 11 SECONDS
+	var/stored_cooldown = 1 SECONDS
+	action_types_to_cd = list(
+		/datum/action/xeno_action/activable/xeno_spit/bombard/venetor/corosive_spit,
+		/datum/action/xeno_action/activable/xeno_spit/bombard/venetor/acid_blob,
+		/datum/action/xeno_action/activable/xeno_spit/bombard/venetor/enzymatic_breath,
+	)
+	var/second_cooldown_duration = 4 SECONDS
+	var/action_types_to_secondary_cd = list(
+		/datum/action/xeno_action/onclick/store_acid,
+	)
+	var/datum/ammo/xeno/ammo
+
+/datum/action/xeno_action/activable/xeno_spit/bombard/venetor/can_use_action()
+	. = ..()
+	if(owner && owner.action_busy)
+		return FALSE
+
+/datum/action/xeno_action/activable/xeno_spit/bombard/venetor/use_ability(atom/affected_atom)
+	var/mob/living/carbon/xenomorph/spitter/xeno = owner
+	var/datum/behavior_delegate/delegate = xeno.behavior_delegate
+	var/datum/behavior_delegate/spitter_venator/venator_delegate
+	if(istype(delegate, /datum/behavior_delegate/spitter_venator))
+		venator_delegate = delegate
+		if(venator_delegate.acid_stored > 0)
+			cooldown_duration = stored_cooldown
+	. = ..()
+	if(!.)
+		return FALSE
+	cooldown_duration = initial(cooldown_duration)
+
+
+	if(venator_delegate)
+		venator_delegate.use_acid()
+	for (var/action_type in action_types_to_secondary_cd)
+		var/datum/action/xeno_action/xeno_action = get_action(xeno, action_type)
+		if (!istype(xeno_action))
+			continue
+		xeno_action.apply_cooldown_override(second_cooldown_duration)
+
+/datum/action/xeno_action/activable/xeno_spit/bombard/venetor/action_activate()
+	. = ..()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!xeno.check_state())
+		return
+
+	xeno.ammo = GLOB.ammo_list[ammo]
+
+
+/datum/action/xeno_action/activable/xeno_spit/bombard/venetor/corosive_spit
+	name = "corosive spit"
+	action_icon_state = "xeno_spit"
+	plasma_cost = 45
+	ammo = /datum/ammo/xeno/acid/spatter/venator_corrosive_spit
+	ability_primacy = XENO_PRIMARY_ACTION_1
+
+/datum/action/xeno_action/activable/xeno_spit/bombard/venetor/acid_blob
+	name = "acid blob"
+	action_icon_state = "acid_glob"
+	plasma_cost = 65
+	ammo = /datum/ammo/xeno/acid/venator_acid_blob
+	ability_primacy = XENO_PRIMARY_ACTION_2
+
+/datum/action/xeno_action/activable/xeno_spit/bombard/venetor/enzymatic_breath
+	name = "enzymatic breath"
+	action_icon_state = "breath"
+	plasma_cost = 55
+	ammo = /datum/ammo/xeno/acid/spatter/venator_enzymatic_breath
+	ability_primacy = XENO_PRIMARY_ACTION_3
+
+
+/datum/action/xeno_action/onclick/store_acid
+	name = "store acid"
+	action_icon_state = "store_acid_base"
+	xeno_cooldown = 5 SECONDS
+	plasma_cost = 150
+	ability_primacy = XENO_PRIMARY_ACTION_4
+
+/datum/action/xeno_action/onclick/store_acid/can_use_action()
+	. = ..()
+
+	if(!.)
+		return FALSE
+	if(owner && owner.action_busy)
+		return FALSE
+	var/mob/living/carbon/xenomorph/xeno = owner
+	var/datum/behavior_delegate/spitter_venator/delegate = xeno.behavior_delegate
+	if(delegate.acid_stored >= delegate.max_acid_stored)
+		return FALSE
+
+/datum/action/xeno_action/onclick/store_acid/update_button_icon()
+	. = ..()
+	if(!button || !owner)
+		return
+	var/mob/living/carbon/xenomorph/xeno = owner
+	var/datum/behavior_delegate/spitter_venator/delegate = xeno.behavior_delegate
+
+
+	button.overlays.Cut(2,0)
+	if(!delegate.acid_stored)
+		return
+	button.overlays += image(icon_file, button, "charge_[delegate.acid_stored]")
+
+
+
+/datum/action/xeno_action/onclick/store_acid/use_ability(atom/target)
+	. = ..()
+	if(!.)
+		return FALSE
+	if(!action_cooldown_check())
+		return FALSE
+	var/mob/living/carbon/xenomorph/xeno = owner
+	var/datum/behavior_delegate/spitter_venator/delegate = xeno.behavior_delegate
+	if(!delegate)
+		return
+	if(!check_and_use_plasma_owner())
+		return
+	delegate.store_acid()
+	apply_cooldown()
+
+
+
+
+/datum/behavior_delegate/spitter_venator
+	var/acid_stored = 0
+	var/max_acid_stored = 5
+	var/armor_reduction_per_stored = 5
+
+/datum/behavior_delegate/spitter_venator/proc/store_acid()
+	if(acid_stored == max_acid_stored)
+		return FALSE
+	acid_stored ++
+	bound_xeno.armor_modifier -= armor_reduction_per_stored
+	bound_xeno.recalculate_armor()
+	return TRUE
+
+/datum/behavior_delegate/spitter_venator/proc/use_acid()
+	if(acid_stored == 0)
+		return FALSE
+	acid_stored --
+	bound_xeno.armor_modifier += armor_reduction_per_stored
+	bound_xeno.recalculate_armor()
+	return TRUE
+
+
+
+

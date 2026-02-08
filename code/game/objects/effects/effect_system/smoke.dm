@@ -760,6 +760,91 @@
 		if(smoke.amount > 0)
 			smoke.spread_smoke()
 
+/////////////////////////////////////////
+// Reaper Smoke
+/////////////////////////////////////////
+
+/obj/effect/particle_effect/smoke/reaper_mist
+	time_to_live = 10
+	color = "#c5bc81"
+	anchored = TRUE
+	spread_speed = 3
+	smokeranking = SMOKE_RANK_HIGH
+	opacity = FALSE
+	alpha = 60
+
+	var/hivenumber = XENO_HIVE_NORMAL
+	var/immediate_toxin_damage = 0.5
+	var/toxin_reagent_amount = 1
+
+/obj/effect/particle_effect/smoke/reaper_mist/Initialize(mapload, amount, datum/cause_data/cause_data)
+	if(istype(cause_data))
+		var/datum/ui_state/hive_state/cause_data_hive_state = GLOB.hive_state[cause_data.faction]
+		var/new_hive_number = cause_data_hive_state?.hivenumber
+		if(new_hive_number)
+			hivenumber = new_hive_number
+			set_hive_data(src, new_hive_number)
+
+	return ..()
+
+/obj/effect/particle_effect/smoke/reaper_mist/affect(mob/living/carbon/affected_mob)
+	. = ..()
+	if(!.)
+		return FALSE
+
+	if(affected_mob.stat == DEAD)
+		return FALSE
+
+	if(affected_mob.ally_of_hivenumber(hivenumber))
+		return FALSE
+
+	if(issynth(affected_mob))
+		return FALSE
+
+	if(isyautja(affected_mob) && prob(50))
+		return FALSE
+
+	if(HAS_TRAIT(affected_mob, TRAIT_NESTED) && affected_mob.status_flags & XENO_HOST)
+		return FALSE
+
+	affected_mob.last_damage_data = cause_data
+
+	var/mob/living/carbon/xenomorph/affected_xeno = affected_mob
+	if(isxeno(affected_mob) && !isreaper(affected_xeno)) // Reapers get to ignore effects for sovl
+		if(isqueen(affected_xeno))
+			if(prob(50))
+				to_chat(affected_xeno, SPAN_XENODANGER("We feel lethargy approach but manage to shrug it off!"))
+			affected_xeno.set_effect(1, SLOW)
+		else
+			if(prob(10))
+				to_chat(affected_xeno, SPAN_XENOHIGHDANGER("We feel very lethargic!"))
+			affected_xeno.set_effect(1, SUPERSLOW)
+
+	if(!issynth(affected_mob))
+		affected_xeno.set_effect(2, SLOW)
+		affected_mob.apply_damage(2, OXY)
+		affected_mob.apply_damage(immediate_toxin_damage, TOX)
+		affected_mob.reagents.add_reagent("sepsicine", toxin_reagent_amount)
+		affected_mob.reagents.set_source_mob(src, /datum/reagent/toxin/sepsicine)
+
+		if(affected_mob.coughedtime < world.time && !affected_mob.stat)
+			affected_mob.coughedtime = world.time + 2 SECONDS
+			if(ishuman(affected_mob))
+				if(prob(40))
+					if(prob(50))
+						affected_mob.emote("cough")
+					else
+						affected_mob.emote("gasp")
+				else if(prob(20))
+					to_chat(affected_mob, SPAN_DANGER("You feel lightheaded!"))
+					affected_mob.set_effect(2, DAZE)
+				else if(prob(20))
+					to_chat(affected_mob, SPAN_DANGER("The smell makes you feel sick!"))
+					affected_mob.apply_damage(immediate_toxin_damage, TOX)
+
+	affected_mob.last_damage_data = cause_data
+	return TRUE
+
 
 /////////////////////////////////////////////
 // Smoke spread
@@ -899,3 +984,6 @@
 		smoke.time_to_live = lifetime
 	if(smoke.amount > 0)
 		smoke.spread_smoke(direction)
+
+/datum/effect_system/smoke_spread/reaper_mist
+	smoke_type = /obj/effect/particle_effect/smoke/reaper_mist

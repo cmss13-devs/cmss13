@@ -1236,3 +1236,37 @@
 	target.handle_blood_splatter(get_dir(owner.loc, target.loc))
 	return target
 
+/datum/action/xeno_action/activable/retrieve_hugger_egg/use_ability(atom/thing)
+	var/mob/living/carbon/xenomorph/reaper/xeno = owner
+
+	if(thing == xeno)
+		var/action_icon_result
+		if(getting_egg == TRUE)
+			action_icon_result = "throw_hugger"
+			to_chat(xeno, SPAN_XENONOTICE("We will now retrieve facehuggers from our storage."))
+			getting_egg = FALSE
+			xeno.update_icons()
+		else
+			action_icon_result = "retrieve_egg"
+			to_chat(xeno, SPAN_XENONOTICE("We will now retrieve eggs from our storage."))
+			getting_egg = TRUE
+			xeno.update_icons()
+		button.overlays.Cut()
+		button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, action_icon_result)
+		return ..()
+
+	if(getting_egg)
+		xeno.retrieve_egg(thing)
+	else
+		xeno.retrieve_hugger(thing)
+	return ..()
+
+/datum/action/xeno_action/onclick/set_hugger_reserve/use_ability(atom/Atom)
+	var/mob/living/carbon/xenomorph/egg_hauler = owner
+	egg_hauler.huggers_reserved = tgui_input_number(usr,
+		"How many facehuggers would you like to keep safe from Observers wanting to join as facehuggers?",
+		"How many to reserve?",
+		egg_hauler.huggers_reserved, egg_hauler.huggers_max, 0
+	)
+	to_chat(egg_hauler, SPAN_XENONOTICE("We reserve [egg_hauler.huggers_reserved] facehuggers for ourself."))
+	return ..()

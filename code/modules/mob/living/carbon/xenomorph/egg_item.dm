@@ -175,15 +175,12 @@
 	if(!isxeno(user))
 		return
 
-	var/mob/living/carbon/xenomorph/X = user
-	if(iscarrier(X))
-		var/mob/living/carbon/xenomorph/carrier/C = X
-		C.store_egg(src)
+	var/mob/living/carbon/xenomorph/xeno = user
+	if(xeno.eggs_max > 0)
+		xeno.store_egg(src)
 	else
 		var/turf/T = get_turf(user)
 		plant_egg(user, T)
-
-
 
 //Deal with picking up facehuggers. "attack_alien" is the universal 'xenos click something while unarmed' proc.
 /obj/item/xeno_egg/attack_alien(mob/living/carbon/xenomorph/user)

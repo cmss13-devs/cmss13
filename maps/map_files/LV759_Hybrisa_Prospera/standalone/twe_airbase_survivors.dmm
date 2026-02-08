@@ -84,6 +84,14 @@
 	},
 /turf/open/hybrisa/street/cement2,
 /area/lv759/outdoors/colony_streets/north_west_street)
+"ai" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
+/obj/effect/landmark/survivor_spawner/twe/iasf/synth,
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/hangar)
 "aj" = (
 /turf/closed/wall/hybrisa/marhsalls,
 /area/lv759/indoors/twe_souter_outpost/armoury)
@@ -2495,6 +2503,7 @@
 	pixel_x = -10;
 	pixel_y = 8
 	},
+/obj/effect/landmark/survivor_spawner/twe/iasf/commander,
 /turf/open/floor/prison,
 /area/lv759/indoors/twe_souter_outpost/flight)
 "tr" = (
@@ -5945,7 +5954,7 @@ lH
 Kl
 GE
 hi
-hi
+ai
 GE
 hi
 hi

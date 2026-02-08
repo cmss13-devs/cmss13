@@ -127,6 +127,14 @@
 	},
 /turf/open/floor/shiva/snow_mat/east,
 /area/shiva/interior/colony/botany)
+"ax" = (
+/obj/effect/landmark/survivor_spawner/clf_coordinator/shivas,
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"ay" = (
+/obj/effect/landmark/survivor_spawner/clf_synth/shivas,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/s_admin)
 "aC" = (
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/junkyard/cp_bar)
@@ -2334,7 +2342,7 @@ an
 ad
 Kf
 JM
-DH
+ax
 DH
 Ms
 DH
@@ -2473,7 +2481,7 @@ Co
 pM
 DH
 Gz
-EM
+ay
 DH
 DH
 DH

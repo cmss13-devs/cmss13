@@ -359,6 +359,10 @@
 /obj/item/shard,
 /turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
+"bh" = (
+/obj/effect/landmark/survivor_spawner/clf_synth,
+/turf/open/floor/almayer/bluecorner/north,
+/area/lv624/lazarus/crashed_ship)
 "by" = (
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/west_caves)
@@ -1447,6 +1451,7 @@
 	dir = 1;
 	pixel_y = 20
 	},
+/obj/effect/landmark/survivor_spawner/clf_coordinator,
 /turf/open/floor/almayer/bluecorner/east,
 /area/lv624/lazarus/crashed_ship)
 "MO" = (
@@ -2754,7 +2759,7 @@ DS
 jH
 uX
 Xq
-xI
+bh
 yX
 NI
 jr

@@ -319,6 +319,13 @@
 "bk" = (
 /turf/open/floor/delivery,
 /area/bigredv2/outside/office_complex)
+"bl" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 4
+	},
+/obj/effect/landmark/survivor_spawner/bigred_crashed_pmc_synth,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
+/area/bigredv2/outside/office_complex)
 "bm" = (
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_left_to_right,
 /area/bigredv2/outside/office_complex)
@@ -779,6 +786,7 @@
 /area/bigredv2/outside/e)
 "vw" = (
 /obj/item/limb/arm/l_arm,
+/obj/effect/landmark/survivor_spawner/bigred_crashed_pmc_commander,
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_left_to_right,
 /area/bigredv2/outside/office_complex)
 "vH" = (
@@ -1791,7 +1799,7 @@ Vg
 aw
 qw
 ws
-hl
+bl
 zH
 hl
 hl

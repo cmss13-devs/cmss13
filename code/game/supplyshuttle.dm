@@ -1395,6 +1395,21 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 /datum/vehicle_order/arc/has_vehicle_lock()
 	return
 
+/datum/vehicle_order/humvee
+	name = "M2420 JTMV-HWC Heavy Weapon Carrier"
+	ordered_vehicle = /obj/effect/vehicle_spawner/humvee
+
+/datum/vehicle_order/humvee/medical
+	name = "M2421 JTMV-Ambulance"
+	ordered_vehicle = /obj/effect/vehicle_spawner/humvee/medical
+
+/datum/vehicle_order/humvee/transport
+	name = "M2422 JTMV-Utility"
+	ordered_vehicle = /obj/effect/vehicle_spawner/humvee/transport
+
+/datum/vehicle_order/humvee/has_vehicle_lock()
+	return
+
 /obj/structure/machinery/computer/supply/asrs/vehicle/Initialize()
 	. = ..()
 

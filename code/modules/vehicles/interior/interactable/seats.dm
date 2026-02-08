@@ -92,6 +92,9 @@
 	seat = VEHICLE_GUNNER
 	required_skill = SKILL_VEHICLE_CREWMAN
 
+/obj/structure/bed/chair/comfy/vehicle/gunner/humvee
+	required_skill = SKILL_VEHICLE_SMALL // less skill required as it's not complicated. Some driving required so you won't have everyone fighting over it, subject to change.
+
 /obj/structure/bed/chair/comfy/vehicle/gunner/do_buckle(mob/target, mob/user)
 	// Gunning always requires crewman-level skill
 	if(!skillcheck(target, SKILL_VEHICLE, required_skill))

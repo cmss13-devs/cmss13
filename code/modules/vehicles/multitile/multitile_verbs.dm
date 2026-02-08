@@ -238,6 +238,9 @@
 	for(var/obj/item/hardpoint/holder/tank_turret/TT in V.hardpoints)
 		T = TT
 		break
+	for(var/obj/item/hardpoint/holder/humvee_turret/TT in V.hardpoints)
+		T = TT
+		break
 	if(!T)
 		return
 	T.toggle_gyro(usr)

@@ -1,5 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_bridge)
 "ab" = (
@@ -60,27 +61,32 @@
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_east)
 "ao" = (
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/desert_dam/exterior/valley/valley_bridge)
 "ap" = (
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/desert_dam/exterior/valley/valley_bridge)
 "aq" = (
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 4
 	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_bridge)
 "ar" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
 	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_bridge)
 "as" = (
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 1
 	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_bridge)
 "at" = (
@@ -250,7 +256,7 @@
 /area/desert_dam/exterior/river/riverside_east)
 "be" = (
 /obj/structure/stairs{
-	dir = 8
+	dir = 4
 	},
 /obj/structure/platform/metal/stair_cut/platform_right,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
@@ -281,14 +287,14 @@
 /area/desert_dam/exterior/river/riverside_east)
 "bl" = (
 /obj/structure/stairs{
-	dir = 8
+	dir = 4
 	},
 /obj/structure/platform/metal/almayer,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
 /area/desert_dam/exterior/valley/valley_medical)
 "bm" = (
 /obj/structure/platform/metal/almayer,
-/turf/open/asphalt/cement_sunbleached,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/valley/valley_medical)
 "bn" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -297,18 +303,14 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/desert_dam/exterior/valley/valley_medical)
 "bo" = (
-/obj/structure/stairs{
-	dir = 1
-	},
+/obj/structure/stairs,
 /obj/structure/platform/metal/almayer/west,
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/desert_dam/exterior/valley/valley_medical)
 "bp" = (
-/obj/structure/stairs{
-	dir = 1
-	},
+/obj/structure/stairs,
 /obj/structure/platform/metal/almayer/east,
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/desert_dam/exterior/valley/valley_medical)
 
 (1,1,1) = {"

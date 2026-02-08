@@ -82,7 +82,7 @@
 	var/accuracy_range_falloff = 10
 
 	/// Is this a lone (0), original (1), or bonus (2) projectile. Used in gun.dm and fire_bonus_projectiles() currently.
-	var/bonus_projectile_check = 0
+	var/bonus_projectile_check = PROJECTILE_LONE
 
 	/// What atom did this last receive a registered signal from? Used by damage_boost.dm
 	var/datum/weakref/last_atom_signaled = null
@@ -233,7 +233,7 @@
 	if(ammo.bonus_projectiles_amount && ammo.bonus_projectiles_type)
 		randomize_speed = FALSE
 		ammo.fire_bonus_projectiles(src, gun_damage_mult, projectile_max_range_add, gun_bonus_proj_scatter)
-		bonus_projectile_check = 1 //Mark this projectile as having spawned a set of bonus projectiles.
+		bonus_projectile_check = PROJECTILE_ORIGINAL //Mark this projectile as having spawned a set of bonus projectiles.
 
 	path = get_line(starting, target_turf)
 	p_x += clamp((rand()-0.5)*scatter*3, -8, 8)

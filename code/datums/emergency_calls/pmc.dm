@@ -38,7 +38,7 @@
 	else if(synths < max_synths && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_SYNTH) && mob.client.check_whitelist_status(WHITELIST_SYNTHETIC))
 		synths++
 		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani PMC Support Synthetic!"))
-		arm_equipment(mob, /datum/equipment_preset/pmc/synth, TRUE, TRUE)
+		arm_equipment(mob, /datum/equipment_preset/synth/pmc, TRUE, TRUE)
 	else if(medics < max_medics && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(mob.client, JOB_SQUAD_MEDIC, time_required_for_job))
 		medics++
 		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani PMC Medic!"))

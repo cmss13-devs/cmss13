@@ -22,7 +22,6 @@
 	var/datum/unarmed_attack/secondary_unarmed // For empty hand harm-intent attack if the first fails.
 	var/slowdown = 0
 	var/gluttonous // Can eat some mobs. 1 for monkeys, 2 for people.
-	var/rarity_value = 1  // Relative rarity/collector value for this species. Only used by ninja and cultists atm.
 	var/unarmed_type =    /datum/unarmed_attack
 	var/secondary_unarmed_type = /datum/unarmed_attack/bite
 	var/pain_type   = /datum/pain/human
@@ -76,6 +75,7 @@
 	var/flesh_color = "#FFC896" //Pink.
 	var/base_color   //Used when setting species.
 	var/hair_color   //If the species only has one hair color
+	var/no_grad_style //Hair gradients or no
 
 	//Currently, this is only used for flavor in surgery messages. Can be changed for individual species (i.e. synths)
 	var/flesh_type = "flesh"

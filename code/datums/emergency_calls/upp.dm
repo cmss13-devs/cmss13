@@ -68,8 +68,8 @@
 		to_chat(H, SPAN_ROLE_HEADER("You are an Officer of the Union of Progressive People, a powerful socialist state that rivals the United Americas!"))
 	else if(synths < max_synths && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_SYNTH) && H.client.check_whitelist_status(WHITELIST_SYNTHETIC))
 		synths++
-		to_chat(H, SPAN_ROLE_HEADER("You are a Combat Synthetic of the Union of Progressive People, a powerful socialist state that rivals the United Americas!"))
-		arm_equipment(H, /datum/equipment_preset/upp/synth/dressed, TRUE, TRUE)
+		to_chat(H, SPAN_ROLE_HEADER("You are a Synthetic of the Union of Progressive People, a powerful socialist state that rivals the United Americas!"))
+		arm_equipment(H, /datum/equipment_preset/synth/upp/dressed, TRUE, TRUE)
 	else if(medics < max_medics && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(H.client, JOB_SQUAD_MEDIC, time_required_for_job))
 		medics++
 		to_chat(H, SPAN_ROLE_HEADER("You are a Medic of the Union of Progressive People, a powerful socialist state that rivals the United Americas!"))

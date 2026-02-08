@@ -39,7 +39,7 @@
 	else if(synths < max_synths && HAS_FLAG(mob?.client.prefs.toggles_ert, PLAY_SYNTH) && mob.client.check_whitelist_status(WHITELIST_SYNTHETIC))
 		synths++
 		to_chat(mob, SPAN_ROLE_HEADER("You are a CMB Investigative Synthetic!"))
-		arm_equipment(mob, /datum/equipment_preset/cmb/synth, TRUE, TRUE)
+		arm_equipment(mob, /datum/equipment_preset/synth/cmb, TRUE, TRUE)
 	else if(!icc_liaison && will_spawn_icc_liaison && check_timelock(mob.client, JOB_CORPORATE_LIAISON, time_required_for_job))
 		icc_liaison = mob
 		to_chat(mob, SPAN_ROLE_HEADER("You are a CMB-attached Interstellar Commerce Commission Liaison!"))
@@ -253,7 +253,7 @@
 	else if(synths < max_synths && HAS_FLAG(mob?.client.prefs.toggles_ert, PLAY_SYNTH) && mob.client.check_whitelist_status(WHITELIST_SYNTHETIC))
 		synths++
 		to_chat(mob, SPAN_ROLE_HEADER("You are a CMB Riot Control Synthetic!"))
-		arm_equipment(mob, /datum/equipment_preset/cmb/synth/riot, TRUE, TRUE)
+		arm_equipment(mob, /datum/equipment_preset/synth/cmb/riot, TRUE, TRUE)
 	else
 		to_chat(mob, SPAN_ROLE_HEADER("You are a Riot Control Officer!"))
 		arm_equipment(mob, /datum/equipment_preset/cmb/riot, TRUE, TRUE)

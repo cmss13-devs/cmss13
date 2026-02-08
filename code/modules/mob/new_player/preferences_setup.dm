@@ -362,7 +362,7 @@
 		if(JOB_UPP_COMMISSAR)
 			return /datum/equipment_preset/upp/commissar/dressed
 		if(JOB_UPP_SUPPORT_SYNTH)
-			return /datum/equipment_preset/upp/synth/dressed
+			return /datum/equipment_preset/synth/upp/dressed
 		if(JOB_UPP_JOE)
 			return /datum/equipment_preset/synth/working_joe/upp
 		if(JOB_UPP_PILOT)

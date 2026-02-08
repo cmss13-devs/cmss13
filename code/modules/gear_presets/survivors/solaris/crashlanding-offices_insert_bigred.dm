@@ -275,24 +275,18 @@
 		ACCESS_CIVILIAN_MEDBAY,
 		ACCESS_CIVILIAN_COMMAND,
 	)
-	skills = /datum/skills/synthetic
 	idtype = /obj/item/card/id/pmc
 	assignment = JOB_PMC_SYNTH
 	job_title = JOB_PMC_SYNTH
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "WY Syn"
-	skills = /datum/skills/synthetic
-	preset_generation_support = FALSE
+
 	minimap_icon = "pmc_syn"
 	minimap_background = "background_pmc"
 	origin_override = ORIGIN_WY_PMC
 
-/datum/equipment_preset/synth/survivor/pmc/load_race(mob/living/carbon/human/new_human)
-	new_human.set_species(SYNTH_GEN_THREE)
-
-/datum/equipment_preset/synth/survivor/pmc/load_skills(mob/living/carbon/human/new_human)
-	new_human.set_skills(/datum/skills/synthetic)
-	new_human.allow_gun_usage = FALSE
+	skills = /datum/skills/synthetic
+	locked_generation = SYNTH_GEN_THREE
 
 /datum/equipment_preset/synth/survivor/pmc/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc(new_human), WEAR_BODY)

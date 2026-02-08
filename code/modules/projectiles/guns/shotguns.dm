@@ -88,8 +88,17 @@ can cause issues with ammo types getting mixed up during the burst.
 		if(in_chamber)
 			in_chamber = null
 			var/obj/item/ammo_magazine/handful/new_handful = retrieve_shell(ammo.type)
-			playsound(user, reload_sound, 25, TRUE)
-			new_handful.forceMove(get_turf(src))
+			if(user)
+				for(var/obj/item/ammo_magazine/handful/hand in user.get_hands())
+					if(hand && hand.default_ammo == new_handful.default_ammo && hand.current_rounds < hand.max_rounds)
+						hand.transfer_ammo(new_handful, user, 1)
+						qdel(new_handful)
+						new_handful = null
+						break
+				if(new_handful)
+					user.put_in_hands(new_handful)
+				playsound(user, reload_sound, 25, TRUE)
+				to_chat(user, SPAN_WARNING("You eject a shell from the [src]'s chamber."))
 			if(flags_gun_features & GUN_AMMO_COUNTER && user)
 				var/chambered = in_chamber ? TRUE : FALSE //useless, but for consistency
 				if(!silent)
@@ -109,18 +118,26 @@ can cause issues with ammo types getting mixed up during the burst.
 	var/obj/item/ammo_magazine/handful/new_handful = retrieve_shell(current_mag.chamber_contents[current_mag.chamber_position])
 
 	if(user)
-		user.put_in_hands(new_handful)
-		playsound(user, reload_sound, 25, 1)
+		for(var/obj/item/ammo_magazine/handful/hand in user.get_hands())
+			if(hand && hand.default_ammo == new_handful.default_ammo && hand.current_rounds < hand.max_rounds)
+				hand.transfer_ammo(new_handful, user, 1)
+				qdel(new_handful)
+				new_handful = null
+				break
+		if(new_handful)
+			user.put_in_hands(new_handful)
+		playsound(user, reload_sound, 25, TRUE)
 	else
 		new_handful.forceMove(get_turf(src))
 
 	current_mag.current_rounds--
 	current_mag.chamber_contents[current_mag.chamber_position] = "empty"
 	current_mag.chamber_position--
-	return 1
+	return TRUE
 
 		//While there is a much smaller way to do this,
 		//this is the most resource efficient way to do it.
+		// what the hell are you talking about cm dev
 /obj/item/weapon/gun/shotgun/proc/retrieve_shell(selection)
 	var/datum/ammo/A = GLOB.ammo_list[selection]
 	var/obj/item/ammo_magazine/handful/new_handful = new A.handful_type()
@@ -1300,9 +1317,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	if(world.time < (recent_pump + pump_delay) )
 		return //Don't spam it.
 	if(pumped)
-		if (world.time > (message + pump_delay))
-			to_chat(usr, SPAN_WARNING("<i>[src] already has a shell in the chamber!<i>"))
-			message = world.time
+		to_chat(user, SPAN_WARNING("<i>[src] already has a shell in the chamber!<i>"))
 		return
 	if(in_chamber) //eject the chambered round
 		in_chamber = null
@@ -1312,6 +1327,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	ready_shotgun_tube()
 
 	playsound(user, pump_sound, 10, 1)
+	to_chat(user, SPAN_WARNING("<i>You pump [src], loading a shell into the chamber!<i>"))
 	recent_pump = world.time
 	if (in_chamber)
 		pumped = TRUE

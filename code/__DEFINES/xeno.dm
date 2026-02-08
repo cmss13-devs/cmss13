@@ -715,12 +715,11 @@
 #define QUEEN_SPAWN_TIMEOUT (1 MINUTES)
 
 #define FIRE_IMMUNITY_NONE				0
-#define FIRE_IMMUNITY_NO_DAMAGE			(1<<0) // Will not take damage from fire, but can be set on fire
-#define FIRE_IMMUNITY_NO_IGNITE			(1<<1) // Cannot be set on fire, but will take damage
-#define FIRE_IMMUNITY_COMPLETE			(1<<2) // Cannot be set on fire and will not take damage from fire
-#define FIRE_IMMUNITY_BURROWER			(1<<3) // Bespoke variant for Burrower so we don't need to constantly add and remove signals
-#define FIRE_IMMUNITY_XENO_FRENZY		(1<<4) // Will have COMPONENT_XENO_FRENZY added
-#define FIRE_MODIFIER					(1<<5) // Indicates vulnerability/resistance rather than immunity
+#define FIRE_IMMUNITY_NO_DAMAGE			(1<<0)
+#define FIRE_IMMUNITY_NO_IGNITE			(1<<1)
+#define FIRE_IMMUNITY_XENO_FRENZY		(1<<2)
+#define FIRE_VULNERABILITY				(1<<3)
+#define FIRE_IMMUNITY_IGNORE_PEN		(1<<4)
 
 #define FIRE_MULTIPLIER_BASE	 	1
 #define FIRE_MULTIPLIER_LOW		 	1.25

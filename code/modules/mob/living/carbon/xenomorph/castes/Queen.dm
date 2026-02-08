@@ -23,7 +23,6 @@
 
 	is_intelligent = 1
 	evolution_allowed = FALSE
-	fire_immunity = FIRE_IMMUNITY_COMPLETE
 	caste_desc = "The Queen, in all her glory."
 	spit_types = list(/datum/ammo/xeno/toxin/queen, /datum/ammo/xeno/acid/spatter)
 	can_hold_facehuggers = 0
@@ -287,6 +286,8 @@
 	small_explosives_stun = FALSE
 	pull_speed = 3 //screech/neurodragging is cancer, at the very absolute least get some runner to do it for teamwork
 	organ_value = 8000 // queen is expensive
+	claw_type = CLAW_TYPE_VERY_SHARP
+	fire_immunity = FIRE_IMMUNITY_NO_DAMAGE|FIRE_IMMUNITY_NO_IGNITE
 
 	icon_xeno = 'icons/mob/xenos/castes/tier_4/queen.dmi'
 	icon_xenonid = 'icons/mob/xenonids/castes/tier_4/queen.dmi'
@@ -371,7 +372,6 @@
 		/datum/action/xeno_action/activable/xeno_spit/queen_macro, //third macro
 		/datum/action/xeno_action/onclick/shift_spits, //second macro
 	)
-	claw_type = CLAW_TYPE_VERY_SHARP
 
 	skull = /obj/item/skull/queen
 	pelt = /obj/item/pelt/queen

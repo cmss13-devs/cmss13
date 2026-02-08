@@ -188,7 +188,7 @@
 	if(!affected_atom || affected_atom.layer >= FLY_LAYER || !isturf(xeno.loc))
 		return
 
-	if(!check_clear_path_to_target(xeno, affected_atom, TRUE, TRAPPER_VIEWRANGE))
+	if(!check_clear_path_to_target(xeno, affected_atom, TRUE, TRAPPER_VIEWRANGE, FALSE))
 		to_chat(xeno, SPAN_XENOWARNING("Something is in the way!"))
 		return
 

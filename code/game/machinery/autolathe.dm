@@ -569,8 +569,8 @@ GLOBAL_LIST_INIT(autolathe_wire_descriptions, flatten_numeric_alist(alist(
 	recipes = null
 	categories = null
 	disabled_categories = AUTOLATHE_ARMYLATHE_DISABLED_CATS_LIST
-	storage_capacity = list("metal" = 0, "plastic" = 0)
-	stored_material =  list("metal" = 0, "plastic" = 0)
+	storage_capacity = list("metal" = 0, "plasteel" = 0, "plastic" = 0)
+	stored_material =  list("metal" = 0, "plasteel" = 0, "plastic" = 0)
 	components = list(
 		/obj/item/circuitboard/machine/autolathe/armylathe,
 		/obj/item/stock_parts/matter_bin,
@@ -582,7 +582,7 @@ GLOBAL_LIST_INIT(autolathe_wire_descriptions, flatten_numeric_alist(alist(
 	)
 
 /obj/structure/machinery/autolathe/armylathe/full
-	stored_material =  list("metal" = 56250, "plastic" = 20000) //15 metal and 10 plastic sheets
+	stored_material =  list("metal" = 56250, "plasteel" = 56250, "plastic" = 20000) //15 metal, 15 plasteel, and 10 plastic sheets
 
 /obj/structure/machinery/autolathe/armylathe/attack_hand(mob/user)
 	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))

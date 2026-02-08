@@ -1298,6 +1298,7 @@
 #include "code\game\objects\items\reagent_containers\autoinjectors.dm"
 #include "code\game\objects\items\reagent_containers\beverages.dm"
 #include "code\game\objects\items\reagent_containers\blood_pack.dm"
+#include "code\game\objects\items\reagent_containers\cartridges.dm"
 #include "code\game\objects\items\reagent_containers\dropper.dm"
 #include "code\game\objects\items\reagent_containers\food.dm"
 #include "code\game\objects\items\reagent_containers\glass.dm"

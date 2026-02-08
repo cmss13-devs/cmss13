@@ -125,7 +125,7 @@
 		RG.reagents.add_reagent("water", remaining_space)
 		user.visible_message(SPAN_NOTICE("[user] fills \the [RG] completely using \the [src]."), SPAN_NOTICE("You fill \the [RG] completely using \the [src]."))
 	else
-		user.visible_message(SPAN_NOTICE("[user] tries to fill \the [RG] but it's already full."), SPAN_NOTICE("The [RG] is already full."))
+		user.visible_message(SPAN_NOTICE("[user] tries to fill \the [RG] but it's already full."), SPAN_NOTICE("\The [RG] is already full."))
 
 	return TRUE
 

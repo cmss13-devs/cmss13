@@ -368,7 +368,7 @@ GLOBAL_LIST_EMPTY_TYPED(item_storage_box_cache, /datum/item_storage_box)
 	sample_object = null
 	return ..()
 
-//This proc determins the size of the inventory to be displayed. Please touch it only if you know what you're doing.
+//This proc determines the size of the inventory to be displayed. Please touch it only if you know what you're doing.
 /obj/item/storage/proc/orient2hud()
 
 	var/adjusted_contents = length(contents)
@@ -493,7 +493,7 @@ GLOBAL_LIST_EMPTY_TYPED(item_storage_box_cache, /datum/item_storage_box)
 
 	if (!w_limit_bypassed && W.w_class > max_w_class)
 		if(!stop_messages)
-			to_chat(usr, SPAN_NOTICE("[W] is too long for this [src]."))
+			to_chat(usr, SPAN_NOTICE("[W] is too long for [src]."))
 		return 0
 
 	//Checks if there is room for the item.

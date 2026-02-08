@@ -590,7 +590,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		var/obj/item/device/helmet_visor/new_visor = attacking_item
 
 		if(!new_visor.can_attach_to(src))
-			to_chat(user, SPAN_NOTICE("The [new_visor] does not fit on the [src]."))
+			to_chat(user, SPAN_NOTICE("The [new_visor] does not fit on \the [src]."))
 			return
 
 		if(length(inserted_visors) >= max_inserted_visors)
@@ -605,7 +605,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 			return
 
 		inserted_visors += new_visor
-		to_chat(user, SPAN_NOTICE("You connect [new_visor] to the [src]."))
+		to_chat(user, SPAN_NOTICE("You connect [new_visor] to \the [src]."))
 		new_visor.forceMove(src)
 		if(!(locate(/datum/action/item_action/cycle_helmet_huds) in actions))
 			var/datum/action/item_action/cycle_helmet_huds/new_action = new(src)
@@ -1327,7 +1327,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	inserted_visors = list(new /obj/item/device/helmet_visor/po_visor)
 	max_inserted_visors = 1
 
-/obj/item/clothing/head/helmet/marine/pilot/novisor //For vendors that give sepreate visor options
+/obj/item/clothing/head/helmet/marine/pilot/novisor //For vendors that give separate visor options
 	inserted_visors = list()
 
 /obj/item/clothing/head/helmet/marine/pilot/tex

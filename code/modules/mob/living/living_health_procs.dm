@@ -275,6 +275,18 @@
 	SetSuperslow(superslowed + amount)
 	return
 
+/mob/living/proc/hushed(amount)
+	hushed = max(max(hushed, amount), 0)
+	return
+
+/mob/living/proc/set_hushed(amount)
+	hushed = max(amount, 0)
+	return
+
+/mob/living/proc/adjust_hushed(amount)
+	hushed = max(hushed + amount, 0)
+	return
+
 /* KnockDown (Flooring) */
 /// Overridable handler to adjust the numerical value of status effects. Expand as needed
 /mob/living/proc/GetKnockDownDuration(amount)
@@ -599,6 +611,7 @@
 	set_effect(0, SLOW)
 	set_effect(0, SUPERSLOW)
 	set_effect(0, WEAKEN)
+	set_effect(0, HUSHED)
 	ExtinguishMob()
 	fire_stacks = 0
 

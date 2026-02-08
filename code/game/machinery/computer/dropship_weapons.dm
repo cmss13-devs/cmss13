@@ -571,8 +571,8 @@
 	var/cam_width = camera_width
 	var/cam_height = camera_height
 	if(upgraded == MATRIX_WIDE)
-		cam_width = cam_width * 1.5
-		cam_height = cam_height * 1.5
+		cam_width = cam_width * max(1+(power/10), 1) // minimun of 1 , max of x2 of the normal vision
+		cam_height = cam_height * max(1+(power/10), 1)
 
 	SEND_SIGNAL(src, COMSIG_CAMERA_SET_TARGET, target.linked_cam, cam_width, cam_height)
 

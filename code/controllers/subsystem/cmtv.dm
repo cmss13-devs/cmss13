@@ -591,6 +591,9 @@ SUBSYSTEM_DEF(cmtv)
 	if(!possible_player.client)
 		return TRUE
 
+	if(possible_player.client.prefs.CMTV_toggle_optout)
+		return TRUE
+
 	if(!isturf(possible_player.loc))
 		return TRUE
 

@@ -274,6 +274,9 @@
 	icon_state = "headbandred"
 	item_state_slots = list(WEAR_AS_GARB = "headbandred")
 
+/obj/item/clothing/head/headband/red/static
+	flags_atom = NO_GAMEMODE_SKIN
+
 /obj/item/clothing/head/headband/tan
 	icon_state = "headbandtan"
 	item_state_slots = list(WEAR_AS_GARB = "headbandtan")

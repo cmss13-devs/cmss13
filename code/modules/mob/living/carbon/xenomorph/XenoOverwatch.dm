@@ -228,3 +228,42 @@
 
 	..()
 
+/mob/living/carbon/xenomorph/proc/start_listening_for_tacmap_clicks()
+	if (!tacmap_click_listener_initialized)
+		tacmap_click_listener_initialized = TRUE
+		RegisterSignal(SSminimaps, COMSIG_XENO_TACMAP_BLIP_CLICKED, PROC_REF(tacmap_blip_callback))
+
+/mob/living/carbon/xenomorph/proc/stop_listening_for_tacmap_clicks()
+	if (tacmap_click_listener_initialized)
+		tacmap_click_listener_initialized = FALSE
+		UnregisterSignal(SSminimaps, COMSIG_XENO_TACMAP_BLIP_CLICKED, PROC_REF(tacmap_blip_callback))
+
+
+/mob/living/carbon/xenomorph/proc/tacmap_blip_callback(_SSminimaps, mob/clicker, mob/living/carbon/xenomorph/click_target)
+	SIGNAL_HANDLER
+
+	if (clicker != src)
+		return
+
+	var/is_queen = caste_type == XENO_CASTE_QUEEN
+
+	if (observed_xeno)
+		if (is_queen)
+			var/mob/living/carbon/xenomorph/old_xeno = observed_xeno
+			overwatch(observed_xeno, TRUE)
+			if (old_xeno)
+				old_xeno.hud_set_queen_overwatch()
+		else
+			overwatch(observed_xeno, TRUE)
+
+	if (click_target.stat == DEAD || should_block_game_interaction(click_target) || !check_state(TRUE))
+		overwatch(observed_xeno, TRUE) // Cancel OW
+	else
+		if (!is_queen) // Regular Xeno OW vs Queen
+			overwatch(click_target, FALSE)
+		else // We are a queen
+			var/mob/living/carbon/xenomorph/old_xeno = observed_xeno
+			overwatch(click_target, FALSE)
+			if (old_xeno)
+				old_xeno.hud_set_queen_overwatch()
+			click_target.hud_set_queen_overwatch()

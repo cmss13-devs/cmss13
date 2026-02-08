@@ -628,6 +628,7 @@
 	desc = "A square metal surface resting on its fat metal bottom. You can't flip something that doesn't have legs."
 	icon_state = "reqStable" //instance, this is a static table for req.
 	table_prefix = "reqS"
+	plane = TURF_PLANE
 	tiles_with = list(
 		/obj/structure/window/framed/almayer,
 		/obj/structure/machinery/door/airlock,

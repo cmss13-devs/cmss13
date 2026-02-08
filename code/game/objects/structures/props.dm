@@ -419,6 +419,7 @@
 	desc = "You'll need more than a prybar for this one."
 	icon = 'icons/obj/structures/machinery/bolt_target.dmi'
 	icon_state = "closed"
+	plane = FLOOR_PLANE
 
 /obj/structure/prop/invuln/lifeboat_hatch_placeholder/terminal
 	icon = 'icons/obj/structures/machinery/bolt_terminal.dmi'

@@ -5,6 +5,7 @@
 	icon = 'icons/obj/structures/props/watercloset.dmi'
 	icon_state = "mirror"
 	density = FALSE
+	plane = TURF_PLANE
 	anchored = TRUE
 	var/shattered = 0
 

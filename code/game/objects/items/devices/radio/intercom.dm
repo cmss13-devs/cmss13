@@ -6,6 +6,7 @@
 	w_class = SIZE_LARGE
 	canhear_range = 2
 	flags_atom = FPRINT|CONDUCT|NOBLOODY
+	plane = TURF_PLANE
 	var/number = 0
 	var/anyai = 1
 	var/list/mob/living/silicon/ai/ai

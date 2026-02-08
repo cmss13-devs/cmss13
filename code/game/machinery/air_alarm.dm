@@ -81,6 +81,7 @@ GLOBAL_LIST_INIT(aalarm_mode_descriptions, flatten_numeric_alist(alist(
 	icon_state = "alarm0"
 	anchored = TRUE
 	use_power = USE_POWER_IDLE
+	plane = TURF_PLANE
 	idle_power_usage = 80
 	active_power_usage = 1000 //For heating/cooling rooms. 1000 joules equates to about 1 degree every 2 seconds for a single tile of air.
 	power_channel = POWER_CHANNEL_ENVIRON

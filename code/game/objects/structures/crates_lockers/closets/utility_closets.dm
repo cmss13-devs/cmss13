@@ -206,6 +206,7 @@
 	icon_opened = "hydrant_open"
 	anchored = TRUE
 	density = FALSE
+	plane = TURF_PLANE
 	wall_mounted = 1
 	store_mobs = FALSE
 	var/spawn_empty = FALSE

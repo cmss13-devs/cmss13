@@ -94,6 +94,10 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 				topiclimiter[ADMINSWARNED_AT] = minute
 				msg += " Administrators have been informed."
 				log_game("[key_name(src)] Has hit the per-minute topic limit of [mtl] topic calls in a given game minute")
+
+				#warn Do not merge this PR with this in it.
+				log_game("Topic body was: [href].")
+
 				message_admins("[key_name(usr)] Has hit the per-minute topic limit of [mtl] topic calls in a given game minute")
 			to_chat(src, SPAN_DANGER("[msg]"))
 			return
@@ -268,12 +272,14 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	fileaccess_timer = world.time + FTPDELAY */
 	return 1
 
-
 	///////////
 	//CONNECT//
 	///////////
 /client/New(TopicData)
 	soundOutput = new /datum/soundOutput(src)
+
+	var/topic_list = params2list(TopicData)
+
 	TopicData = null //Prevent calls to client.Topic from connect
 
 	if(!(connection in list("seeker", "web"))) //Invalid connection type.
@@ -302,13 +308,18 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		preload_rsc = external_rsc_urls[next_external_rsc]
 
 	// we should interrupt this here, now
-	if(IsGuestKey(key) && length(CONFIG_GET(keyed_list/auth_urls)) && !check_localhost_status())
-		mob = new /mob/unauthenticated(locate(1, 1, 1))
+	if(IsGuestKey(key) && (length(CONFIG_GET(keyed_list/auth_urls)) || length(CONFIG_GET(keyed_list/oidc_endpoint_to_type))) && !check_localhost_status())
+		mob = new /mob/unauthenticated(locate(1, 1, 1), topic_list)
 		return mob
 
 	PreLogin()
 
 	. = ..() //calls mob.Login()
+
+	var/launcher_port = topic_list["launcher_port"]
+	if(launcher_port)
+		var/datum/control_server/server = new(src, launcher_port)
+		server.setup()
 
 	PostLogin()
 
@@ -435,7 +446,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	connection_time = world.time
 
-	winset(src, null, "command=\".configure graphics-hwmode on\"")
+	enable_hardware_graphics()
 	winset(src, "map", "style=\"[MAP_STYLESHEET]\"")
 
 	send_assets()
@@ -769,6 +780,9 @@ CLIENT_VERB(read_key_up, key as text|null)
 				if(WHISPER_CHANNEL)
 					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=whisper")
 					winset(src, "tgui_say.browser", "focus=true")
+
+/client/proc/enable_hardware_graphics()
+	winset(src, null, "command=\".configure graphics-hwmode on\"")
 
 /client/proc/update_fullscreen()
 	if(prefs.toggle_prefs & TOGGLE_FULLSCREEN)

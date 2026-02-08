@@ -54,13 +54,9 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 
 	init_global_referenced_datums()
 
-	var/testing_locally = (world.params && world.params["local_test"])
-	var/running_tests = (world.params && world.params["run_tests"])
 	#if defined(AUTOWIKI) || defined(UNIT_TESTS)
-	running_tests = TRUE
+	sleep_offline = FALSE
 	#endif
-	// Only do offline sleeping when the server isn't running unit tests or hosting a local dev test
-	sleep_offline = (!running_tests && !testing_locally)
 
 	if(!GLOB.RoleAuthority)
 		GLOB.RoleAuthority = new /datum/authority/branch/role()
@@ -89,19 +85,6 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 	GLOB.obfs_x = rand(-500, 500) //A number between -500 and 500
 	GLOB.obfs_y = rand(-500, 500) //A number between -500 and 500
 	GLOB.obfs_z = rand(-10, 10)   //A number between -10 and 10
-
-	// If the server's configured for local testing, get everything set up ASAP.
-	// Shamelessly stolen from the test manager's host_tests() proc
-	if(testing_locally)
-		GLOB.master_mode = "Extended"
-
-		// Wait for the game ticker to initialize
-		while(!SSticker.initialized)
-			sleep(10)
-
-		// Start the game ASAP
-		SSticker.request_start()
-	return
 
 /proc/start_logging()
 	GLOB.round_id = SSentity_manager.round.id
@@ -228,6 +211,17 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 	Master.Shutdown()
 	send_reboot_sound()
 	var/server = CONFIG_GET(string/server)
+
+	/// If any of our clients are preauthorised from outside the game,
+	/// the software they launched with needs to be notified to process
+	/// a reconnection, including regenerating tokens, rich presence
+	for(var/ckey, control_server in GLOB.ckey_to_controller)
+		var/datum/control_server/control = control_server
+		if(!control.initialised)
+			continue
+
+		control.restart("Server restarting...")
+
 	for(var/thing in GLOB.clients)
 		if(!thing)
 			continue

@@ -28,6 +28,9 @@ GLOBAL_LIST(ob_type_fuel_requirements)
 	COOLDOWN_DECLARE(ob_chambering_cooldown) //cooldown for chambering the gun
 	var/chamber_cooldown_time = 250 SECONDS
 
+	var/failed_launch = FALSE
+	var/failed_attempts = 0
+
 /obj/structure/orbital_cannon/New()
 	..()
 	if(!GLOB.almayer_orbital_cannon)
@@ -205,10 +208,39 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 			return abs(GLOB.ob_type_fuel_requirements[3] - tray.fuel_amt)
 	return 0
 
-/obj/structure/orbital_cannon/proc/fire_ob_cannon(turf/T, mob/user, squad_behalf)
+/obj/structure/orbital_cannon/proc/get_offset_turf(turf/target_tile)
+	var/inaccurate_fuel = get_misfuel_amount()
+	var/offset_x = (inaccurate_fuel + 1) * round(rand(-3,3), 1)
+	var/offset_y = (inaccurate_fuel + 1) * round(rand(-3,3), 1)
+	var/target_x = clamp(target_tile.x + offset_x, 1, world.maxx)
+	var/target_y = clamp(target_tile.y + offset_y, 1, world.maxy)
+
+	var/turf/target_turf = locate(target_x, target_y, target_tile.z)
+	if(target_turf.turf_flags & TURF_HULL)
+		failed_attempts++
+		if(failed_attempts < 3)
+			return get_offset_turf(target_tile)
+		failed_launch = TRUE
+		return
+
+	var/message = "Orbital bombardment original target was ([target_tile.x],[target_tile.y],[target_tile.z]) - offset by [abs(offset_x)+abs(offset_y)]"
+	if(inaccurate_fuel)
+		message += " - It was misfueled by [inaccurate_fuel] units!"
+	message_admins(message, target_tile.x, target_tile.y, target_tile.z)
+	return target_turf
+
+/obj/structure/orbital_cannon/proc/fire_ob_cannon(turf/original_target, mob/user, squad_behalf)
 	set waitfor = 0
 
 	if(!chambered_tray || !loaded_tray || !tray || !tray.warhead || ob_cannon_busy)
+		return
+	failed_launch = FALSE
+	failed_attempts = 0
+	var/turf/target = get_offset_turf(original_target)
+	var/area/target_area = get_area(target)
+
+	if(failed_launch)
+		message_admins(FONT_SIZE_HUGE("ALERT: Repeated orbital bombardment failure due to unbreakable turfs at ([target.x],[target.y],[target.z])"), target.x, target.y, target.z)
 		return
 
 	flick("OBC_firing", src)
@@ -223,21 +255,8 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 	playsound(loc, 'sound/weapons/vehicles/smokelauncher_fire.ogg', 70, 1)
 	playsound(loc, 'sound/weapons/pred_plasma_shot.ogg', 70, 1)
 
-	var/inaccurate_fuel = get_misfuel_amount()
-	var/area/area = get_area(T)
-	var/off_x = (inaccurate_fuel + 1) * round(rand(-3,3), 1)
-	var/off_y = (inaccurate_fuel + 1) * round(rand(-3,3), 1)
-	var/target_x = clamp(T.x + off_x, 1, world.maxx)
-	var/target_y = clamp(T.y + off_y, 1, world.maxy)
-	var/turf/target = locate(target_x, target_y, T.z)
-	var/area/target_area = get_area(target)
-
 	message_admins(FONT_SIZE_HUGE("ALERT: [key_name(user)] fired an orbital bombardment in '[target_area]' for squad '[squad_behalf]' landing at ([target.x],[target.y],[target.z])"), target.x, target.y, target.z)
-	var/message = "Orbital bombardment original target was ([T.x],[T.y],[T.z]) - offset by [abs(off_x)+abs(off_y)]"
-	if(inaccurate_fuel)
-		message += " - It was misfueled by [inaccurate_fuel] units!"
-	message_admins(message, T.x, T.y, T.z)
-	log_attack("[key_name(user)] fired an orbital bombardment in [area.name] for squad '[squad_behalf]'")
+	log_attack("[key_name(user)] fired an orbital bombardment in [target_area.name] for squad '[squad_behalf]'")
 
 	if(user)
 		tray.warhead.source_mob = user

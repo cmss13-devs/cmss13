@@ -229,6 +229,7 @@
 	hunter.set_languages(list(LANGUAGE_YAUTJA))
 	hunter.hud_used?.hide_actions_toggle.update_button_icon(hunter)
 	give_action(hunter, /datum/action/yautja_emote_panel)
+	give_action(hunter, /datum/action/predator_action/leap)
 	give_action(hunter, /datum/action/predator_action/mark_for_hunt)
 	give_action(hunter, /datum/action/predator_action/mark_panel)
 	return ..()

@@ -1,0 +1,33 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><base href="../../../"><link rel="stylesheet" href="dmdoc.css"><title>maps/Nightmare/doc/Quickstart.md - byond</title></head><body><header><a href="index.html">byond</a> - <a href="index.html#modules">Modules</a> - <a href="index.html#types">Types</a></header><main><h1>CM-SS13 Nightmare: Quick Start <aside>maps/Nightmare/doc/Quickstart.md</aside> <a href="https://github.com/cmss13-devs/cmss13/blob/1ce601c8c1c984080a82f42b65ce9ee6b48f00da/maps/Nightmare/doc/Quickstart.md"><img src="git.png" width="16" height="16" title="maps/Nightmare/doc/Quickstart.md"></a></h1><table class="summary" cellspacing="0"><tr><td colspan="2"><p>Nightmare is a system used to introduce round variations. No two rounds should be same, beyond simply changing people and map. Unknowns and changes maintain the game fresh. This is primarily done by dynamically changing the game map.</p>
+<h2 id="the-scenario">The Scenario</h2>
+<p>The Scenario is a set of parameters that direct what Nightmare will do - for example, LV-624 fog gap location. On startup, the game will automatically generate a Scenario, which can then be edited by Admins while in the Lobby to fine-tune or for event running purposes.</p>
+<h2 id="configuration">Configuration</h2>
+<p>Nightmare works via configuration files. Each map is setup with a folder containing them, for example <code>maps/Nightmare/maps/LV624/</code>. The two main files are <code>scenario.json</code> which is used to generate the scenario, and <code>nightmare.json</code> which describes the actual game setup.</p>
+<h3 id="format">Format</h3>
+<p>Configuration contains a list of &quot;nodes&quot;, JSON objects that describe an action to perform. The <code>type</code> defines what to do, <code>chance</code>is probability of doing it, <code>when</code> adds conditions to do it. Different types of nodes will also take extra arguments to work (for example, a <code>map_insert</code> needs a <code>path</code> to the map inserted)</p>
+<h2 id="adding-map-insertions">Adding map insertions</h2>
+<p>The primary purpose of Nightmare is to change the round by &quot;inserting&quot; maps, which is replacing chunks of the game map by different ones. This can be done by adding to the nightmare files.</p>
+<h3 id="map-landmarks">Map Landmarks</h3>
+<p>To know where to insert map files, we use a landmark object. This means placing <code>/obj/effect/landmark/nightmare</code> on the main map to mark the location, with an <code>insert_tag</code> to identify them.</p>
+<h3 id="example-1-map-sprinkles">Example 1: Map Sprinkles</h3>
+<p>The <code>map_sprinkle</code> node is usually already configured on maps, with a folder such as <code>maps/Nightmare/maps/BigRed/sprinkles</code>. It allows to randomly insert standalone map changes, by directly using map files.</p>
+<p>Each file will randomly be inserted depending on its name: <code>40.viro_open.dmm</code> for example has 40% chance to be included at <code>viro_open</code> landmark. You can drop in extra files to take advantage of this.</p>
+<h3 id="example-2-map-variations">Example 2: Map Variations</h3>
+<p><code>map_variations</code> work similarly, but only pick one file in the folder at random. For example, if you have three files:</p>
+<ul>
+<li><code>armory/10.cheese.dmm</code></li>
+<li><code>armory/10.extra.dmm</code></li>
+<li><code>armory/20.looted.dmm</code>
+One of the map files will be inserted at <code>armory</code> at random, weighted by the number in their name.</li>
+</ul>
+<h3 id="example-3-custom-inserts">Example 3: Custom inserts</h3>
+<p>Sometimes you might want to do more complicated things, in which case you can edit the configuration files.
+Exact usage goes beyond this quick start guide, but to take an example:</p>
+<pre><code>{
+  &quot;type&quot;: &quot;map_insert&quot;,                          # Insert a map
+  &quot;landmark&quot;: &quot;lv-rightsidepass&quot;,                # at lv-rightsidepass
+  &quot;chance&quot;: 0.7,                                 # with 70% chance
+  &quot;path&quot;: &quot;standalone/rightsidepass.dmm&quot;,        # from file standalone/rightsidepass.dmm
+  &quot;when&quot;: { &quot;mainpath&quot;: &quot;right&quot; }                # when &quot;mainpath&quot; is &quot;right&quot;
+},
+</code></pre></td></tr></table></main><footer>colonialmarines.dme <a href="https://github.com/cmss13-devs/cmss13/tree/1ce601c8c1c984080a82f42b65ce9ee6b48f00da">1ce601c</a> (master) — <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/crates/dmdoc/README.md">dmdoc 1.11.0</a></footer></body></html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><base href="../../../"><link rel="stylesheet" href="dmdoc.css"><title>code/datums/tutorial/creating_a_tutorial.md - byond</title></head><body><header><a href="index.html">byond</a> - <a href="index.html#modules">Modules</a> - <a href="index.html#types">Types</a></header><main><h1>Tutorial Creation <aside>code/datums/tutorial/creating_a_tutorial.md</aside> <a href="https://github.com/cmss13-devs/cmss13/blob/1ce601c8c1c984080a82f42b65ce9ee6b48f00da/code/datums/tutorial/creating_a_tutorial.md"><img src="git.png" width="16" height="16" title="code/datums/tutorial/creating_a_tutorial.md"></a></h1><table class="summary" cellspacing="0"><tr><td colspan="2"><h2 id="step-1-identifying-the-goal">Step 1: Identifying the Goal</h2>
+<p>Your first objective when making a tutorial should be to have a clear and concise vision of what you want the tutorial to convey to the user. People absorb information better in smaller chunks, so you should ideally keep a tutorial to one section of information at a time.</p>
+<p>For example, if you are making a tutorial for new CM players, it should be split into multiple parts like:</p>
+<ul>
+<li>Basics</li>
+<li>Medical</li>
+<li>Weaponry</li>
+<li>Requisitions/Communication</li>
+</ul>
+<h2 id="step-2-coding">Step 2: Coding</h2>
+<p>For an example of the current code standards for tutorials, see <a href="https://github.com/cmss13-devs/cmss13/pull/4442/files#diff-843b2f84360b9b932dfc960027992f2b5117667962bfa8da14f9a35f0179a926">this</a> file.</p>
+<p>The API for tutorials is designed to be very simple, so I'll go over all the base <code>/datum/tutorial</code> procs and some vars here:</p>
+<h3 id="variables">Variables</h3>
+<ul>
+<li><code>name&lt;string&gt;</code>
+<ul>
+<li>This is the player-facing name of the tutorial.</li>
+</ul>
+</li>
+<li><code>tutorial_id&lt;string&gt;</code>
+<ul>
+<li>This is the back-end ID of the tutorial, used for save files. Try not to change a tutorial's ID after it's on the live server.</li>
+</ul>
+</li>
+<li><code>category&lt;string&gt;</code>
+<ul>
+<li>This is what category the tutorial should be under. Use the <code>TUTORIAL_CATEGORY_XXXX</code> macros.</li>
+</ul>
+</li>
+<li><code>tutorial_template&lt;/datum/map_template/tutorial&gt;</code>
+<ul>
+<li>This is what type the map template of the tutorial should be. The default space is 12x12; ideally make it so it fits the given scale of the tutorial with some wiggle room for the player to move around.</li>
+</ul>
+</li>
+<li><code>parent_path&lt;path&gt;</code>
+<ul>
+<li>This is the top-most parent <code>/datum/tutorial</code> path, used to exclude abstract parents from the tutorial menu. For example, <code>/datum/tutorial/marine/basic</code> would have a <code>parent_path</code> of <code>/datum/tutorial/marine</code>, since that path is the top-most abstract path.</li>
+</ul>
+</li>
+<li><code>completion_marked&lt;bool&gt;</code>
+<ul>
+<li>If this is <code>TRUE</code>, the tutorial will be marked as completed if ended in any way. You can modify this with <code>mark_completed()</code> but is not necessary if <code>end_tutorial(TRUE)</code> is called.</li>
+</ul>
+</li>
+</ul>
+<h3 id="procs">Procs</h3>
+<ul>
+<li><code>start_tutorial(mob/starting_mob)</code>
+<ul>
+<li>This proc starts the tutorial, setting up the map template and player. This should be overridden with a parent call before any overridden code.</li>
+</ul>
+</li>
+<li><code>end_tutorial(completed = FALSE)</code>
+<ul>
+<li>This proc ends the tutorial, sending the player back to the lobby and deleting the tutorial itself. A parent call on any subtypes should be at the end of the overridden segment. If <code>completed</code> is <code>TRUE</code>, then the tutorial will save as a completed one for the user. If <code>mark_completed()</code> was called previously, the tutorial will count as completed regardless of if this is called with an argument of <code>TRUE</code> or <code>FALSE</code>.</li>
+</ul>
+</li>
+<li><code>add_highlight(atom/target, color = &quot;#d19a02&quot;)</code>
+<ul>
+<li>This proc adds a highlight filter around an atom, by default <span style="color:#d19a02">this</span> color. Successive calls of highlight on the same atom will override the last.</li>
+</ul>
+</li>
+<li><code>remove_highlight(atom/target)</code>
+<ul>
+<li>This proc removes the tutorial highlight from a target.</li>
+</ul>
+</li>
+<li><code>add_to_tracking_atoms(atom/reference)</code>
+<ul>
+<li>This proc will add a reference to the tutorial's tracked atom dictionary. For what a tracked atom is, see Step 2.1.</li>
+</ul>
+</li>
+<li><code>remove_from_tracking_atoms(atom/reference)</code>
+<ul>
+<li>This proc will remove a reference from the tutorial's tracked atom dictionary. For what a tracked atom is, see Step 2.1.</li>
+</ul>
+</li>
+<li><code>message_to_player(message)</code>
+<ul>
+<li>This proc is the ideal way to communicate to a player. It is visually similar to overwatch messages or weather alerts, but appears and disappears much faster. The messages sent should be consise, but can have a degree of dialogue to them.</li>
+</ul>
+</li>
+<li><code>update_objective(message)</code>
+<ul>
+<li>This proc is used to update the player's objective in their status panel. This should be only what is required and how to do it without any dialogue or extra text.</li>
+</ul>
+</li>
+<li><code>init_mob()</code>
+<ul>
+<li>This proc is used to initialize the mob and set them up correctly.</li>
+</ul>
+</li>
+<li><code>init_map()</code>
+<ul>
+<li>This proc does nothing by default, but can be overriden to spawn any atoms necessary for the tutorial from the very start.</li>
+</ul>
+</li>
+<li><code>tutorial_end_in(time = 5 SECONDS, completed = TRUE)</code>
+<ul>
+<li>This proc will end the tutorial in the given time, defaulting to 5 seconds. Once the proc is called, the player will be booted back to the menu screen after the time is up. Will mark the tutorial as completed if <code>completed</code> is <code>TRUE</code></li>
+</ul>
+</li>
+<li><code>loc_from_corner(offset_x = 0, offset_y = 0)</code>
+<ul>
+<li>This proc will return a turf offset from the bottom left corner of the tutorial zone. Keep in mind, the bottom left corner is NOT on a wall, it is on the first floor on the bottom left corner. <code>offset_x</code> and <code>offset_y</code> are used to offset what turf you want to get, and should never be negative.</li>
+</ul>
+</li>
+<li><code>on_ghost(datum/source, mob/dead/observer/ghost)</code>
+<ul>
+<li>This proc is used to properly end and clean up the tutorial should a player ghost out. You shouldn't need to override or modify this when making a tutorial.</li>
+</ul>
+</li>
+<li><code>signal_end_tutorial(datum/source)</code>
+<ul>
+<li>This proc is used to call <code>end_tutorial()</code> via signals. If something (e.g. a player dying) should send a signal that ends the tutorial, have the signal call this proc.</li>
+</ul>
+</li>
+<li><code>on_logout(datum/source)</code>
+<ul>
+<li>This proc is called when a player logs out, disconnecting their client from the server. As with <code>on_ghost()</code> and similar procs, it cleans up and ends the tutorial.</li>
+</ul>
+</li>
+<li><code>generate_binds()</code>
+<ul>
+<li>This proc generates a dictionary of the player's keybinds, in the form of {&quot;action_name&quot; : &quot;key_to_press&quot;}. This is used for the <code>retrieve_bind()</code> proc to be able to tell the user what buttons to press.</li>
+</ul>
+</li>
+<li><code>retrieve_bind(action_name)</code>
+<ul>
+<li>This proc will be one you'll get a fair amount of use from. Whenever you tell the user to do something like &quot;drop an item&quot;, you should tell them what button to press by calling <code>retrieve_bind(&quot;drop_item&quot;)</code> in the string telling them to drop an item.</li>
+</ul>
+</li>
+<li><code>mark_completed()</code>
+<ul>
+<li>This proc can be used as an alternative to calling <code>end_tutorial(TRUE)</code>. Calling this proc means any method of exiting the tutorial (ghosting, dying, pressing the exit button) will mark the tutorial as completed.</li>
+</ul>
+</li>
+</ul>
+<h2 id="step-2-1-tracking-atoms">Step 2.1: Tracking Atoms</h2>
+<p>Naturally, you will need to keep track of certain objects or mobs for signal purposes, so the tracking system exists to fill that purpose. When you add a reference to the tracking atom list with <code>add_to_tracking_atoms()</code>, it gets put into a dictionary of <code>{path : reference}</code>. Because of this limitation, you should not track more than 1 object of the same type. To get a tracked atom, use of the <code>TUTORIAL_ATOM_FROM_TRACKING(path, varname)</code> macro is recommended. <code>path</code> should be replaced with the precise typepath of the tracked atom, and <code>varname</code> should be replaced with the variable name you wish to use. If an object is going to be deleted, remove it with <code>remove_from_tracking_atoms()</code> first.</p>
+<h2 id="step-2-2-scripting-format">Step 2.2: Scripting Format</h2>
+<p>Any proc whose main purpose is to advance the tutorial will be hereon referred to as a &quot;script proc&quot;, as part of the entire &quot;script&quot;. In the vast majority of cases, a script proc should hand off to the next using signals. Here is an example from <code>basic_marine.dm</code>:</p>
+<pre><code class="language-javascript">/datum/tutorial/marine/basic/proc/on_cryopod_exit()
+	SIGNAL_HANDLER
+
+	UnregisterSignal(tracking_atoms[/obj/structure/machinery/cryopod/tutorial], COMSIG_CRYOPOD_GO_OUT)
+	message_to_player(&quot;Good. You may notice the yellow \&quot;food\&quot; icon on the right side of your screen. Proceed to the outlined &lt;b&gt;Food Vendor&lt;/b&gt; and vend the &lt;b&gt;USCM Protein Bar&lt;/b&gt;.&quot;)
+	update_objective(&quot;Vend a &lt;b&gt;USCM Protein Bar&lt;/b&gt; from the outlined &lt;b&gt;ColMarTech Food Vendor&lt;/b&gt;.&quot;)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/machinery/cm_vending/sorted/marine_food/tutorial, food_vendor)
+	add_highlight(food_vendor)
+	food_vendor.req_access = list()
+	RegisterSignal(food_vendor, COMSIG_VENDOR_SUCCESSFUL_VEND, PROC_REF(on_food_vend))
+
+</code></pre>
+<p>Line-by-line:</p>
+<ul>
+<li><code>SIGNAL_HANDLER</code> is necessary as this proc was called via signal.</li>
+<li>Here we are unregistering the signal we registered in the previous proc to call this one, which inthis case was waiting for the player to leave the tracked cryopod.</li>
+<li>Now, we tell the user the next step in the script, which is sent to their screen.</li>
+<li>Here we update the player's status panel with similar info to the above line, but far morecondensed.</li>
+<li>Since we need to access the food vendor, we use the <code>TUTORIAL_ATOM_FROM_TRACKING()</code> macro to get aref to it.</li>
+<li>We add a yellow outline to the food vendor to make it more clear what is wanted of the player</li>
+<li>The tutorial food vendors are locked to <code>ACCESS_TUTORIAL_LOCKED</code> by default, so here we remove thataccess requirement</li>
+<li>And finally, we register a signal for the next script proc, waiting for the user to vend something from the food vendor.</li>
+</ul>
+<h2 id="step-2-3-quirks-tips">Step 2.3: Quirks &amp; Tips</h2>
+<ul>
+<li>Generally speaking, you will want to create <code>/tutorial</code> subtypes of anything you add in the tutorial, should it need any special functions or similar.</li>
+<li>Restrict access from players as much as possible. As seen in the example above, restricting access to vendors and similar machines is recommended to prevent sequence breaking. Additionally, avoid adding anything that detracts from the tutorial itself.</li>
+<li>Attempt to avoid softlocks when possible. If someone could reasonably do something (e.g. firing every bullet they have at a ranged target and missing, now unable to kill them and progress) that could softlock them, then there should be a fallback of some sort. However, accomodations don't need to be made for people who purposefully cause a softlock; there's a &quot;stop tutorial&quot; button for a reason.</li>
+<li>When calling <code>message_to_player()</code> or <code>update_objective()</code>, <strong>bold</strong> the names of objects, items, and keybinds.</li>
+<li>Attempt to bind as many scripting signals to the <code>tutorial_mob</code> as possible. The nature of SS13 means something as sequence-heavy as this will always be fragile, so keeping the fragility we can affect to a minimum is imperative.</li>
+</ul></td></tr></table></main><footer>colonialmarines.dme <a href="https://github.com/cmss13-devs/cmss13/tree/1ce601c8c1c984080a82f42b65ce9ee6b48f00da">1ce601c</a> (master) — <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/crates/dmdoc/README.md">dmdoc 1.11.0</a></footer></body></html>

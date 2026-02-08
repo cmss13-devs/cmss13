@@ -1,0 +1,17 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><base href="../../../"><link rel="stylesheet" href="dmdoc.css"><title>maps/Nightmare/doc/Design.md - byond</title></head><body><header><a href="index.html">byond</a> - <a href="index.html#modules">Modules</a> - <a href="index.html#types">Types</a></header><main><h1>CM-SS13 Nightmare Design Notes <aside>maps/Nightmare/doc/Design.md</aside> <a href="https://github.com/cmss13-devs/cmss13/blob/1ce601c8c1c984080a82f42b65ce9ee6b48f00da/maps/Nightmare/doc/Design.md"><img src="git.png" width="16" height="16" title="maps/Nightmare/doc/Design.md"></a></h1><table class="summary" cellspacing="0"><tr><td colspan="2"><p>The Nightmare system is intended to be a replacement for legacy &quot;Nightmare Creator&quot;. Its primary function is to change the game map, but is being expanded to encompass more dynamic round variations.</p>
+<h2 id="lifecycle">Lifecycle</h2>
+<p>Nightmare is resovled in three phases:</p>
+<ul>
+<li>The Scenario is resolved at game init</li>
+<li>The Main Configuration is resolved at game start</li>
+<li>The resulting Tasks to effect the game are then executed</li>
+</ul>
+<h2 id="the-scenario">The Scenario</h2>
+<p>By design, the scenario is initialized at game init to leave game staff the possibility to adjust  it before game start.
+This makes it possible to override or tweak what Nightmare will do, for example for event running purposes.</p>
+<p>In addition, the Scenario is meant to provide a guard against overcomplex usage: the creator is expected to first use the scenario step to define pivotal elements (eg. LV-624 fog gap location), then act upon them with simplified logic.</p>
+<p><strong>This means the scenario can only define logical flow, and the main configuration can only use it.</strong></p>
+<p>Fencing such usage prevents logical loops or procedural logic to keep things as simple as possible</p>
+<h2 id="contexts-and-scoping">Contexts and Scoping</h2>
+<p>Because Nightmare's primary usage is to affect the game maps, each map is handled individually through a <code>nmcontext</code>. Each context contains relevant information to resolve configured steps. This allows to take action upon loading everything on a map, or to have operations scoped to a Z-Level, etc...</p>
+<p>In addition to the contexts for ground and ship map, we also have a &quot;global&quot; context. It is meant for any dynamic actions that do not concern the maps directly : for example changing jobs, game mode, etc.</p></td></tr></table></main><footer>colonialmarines.dme <a href="https://github.com/cmss13-devs/cmss13/tree/1ce601c8c1c984080a82f42b65ce9ee6b48f00da">1ce601c</a> (master) — <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/crates/dmdoc/README.md">dmdoc 1.11.0</a></footer></body></html>

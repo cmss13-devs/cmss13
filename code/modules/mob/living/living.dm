@@ -487,7 +487,7 @@
 			clear_fullscreen("flash", 20)
 		return TRUE
 
-/mob/living/create_clone_movable(shift_x, shift_y)
+/mob/living/create_clone_movable(shift_x, shift_y, displacer = FALSE)
 	..()
 	src.clone.hud_list = new /list(length(src.hud_list))
 	for(var/h in src.hud_possible) //Clone HUD

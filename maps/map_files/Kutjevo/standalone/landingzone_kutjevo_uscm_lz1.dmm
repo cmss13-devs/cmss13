@@ -1,18 +1,154 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/fence,
+/turf/open/floor/almayer/research/containment/floor2/west,
+/area/kutjevo/exterior/telecomm/lz2_south)
+"ab" = (
+/obj/structure/largecrate/random/barrel/yellow,
+/turf/open/floor/kutjevo/plate,
+/area/kutjevo/exterior/telecomm/lz2_south)
+"ac" = (
+/obj/effect/decal/cleanable/dirt/alt_dirt,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/telecomm/lz2_south)
+"ad" = (
+/obj/structure/fence/slim/door{
+	dir = 4
+	},
+/turf/open/floor/almayer/research/containment/floor2/west,
+/area/kutjevo/exterior/telecomm/lz2_south)
+"ae" = (
+/obj/item/tool/warning_cone{
+	pixel_x = 4;
+	pixel_y = 9
+	},
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/telecomm/lz2_south)
+"af" = (
+/obj/item/tool/warning_cone{
+	pixel_x = 4;
+	pixel_y = -1
+	},
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/telecomm/lz2_south)
+"ag" = (
+/obj/structure/fence,
+/turf/open/floor/kutjevo/plate,
+/area/kutjevo/exterior/telecomm/lz2_south)
 "ah" = (
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/Northwest_Colony)
+"ai" = (
+/obj/effect/decal/cleanable/dirt/alt_dirt,
+/turf/open/floor/kutjevo/plate,
+/area/kutjevo/exterior/telecomm/lz2_south)
+"aj" = (
+/obj/item/tool/warning_cone{
+	pixel_x = -7;
+	pixel_y = -11
+	},
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/telecomm/lz2_south)
+"ak" = (
+/obj/effect/decal/cleanable/dirt/alt_dirt,
+/obj/structure/bed/chair{
+	dir = 8;
+	pixel_y = 3
+	},
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/telecomm/lz2_south)
+"al" = (
+/obj/structure/flora/grass/desert/lightgrass_12,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/Northwest_Colony)
+"am" = (
+/obj/structure/flora/grass/desert/lightgrass_5,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/Northwest_Colony)
+"an" = (
+/obj/structure/fence,
+/turf/open/floor/almayer/research/containment/floor2,
+/area/kutjevo/exterior/telecomm/lz2_south)
+"ao" = (
+/obj/structure/fence/slim/door,
+/turf/open/floor/almayer/research/containment/floor2,
+/area/kutjevo/exterior/telecomm/lz2_south)
+"ap" = (
+/obj/structure/flora/grass/desert/lightgrass_6,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/Northwest_Colony)
+"aq" = (
+/obj/structure/flora/grass/desert/lightgrass_1,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/Northwest_Colony)
 "ar" = (
 /turf/open/floor/kutjevo/tan/alt_edge,
 /area/kutjevo/exterior/lz_pad)
+"as" = (
+/obj/structure/flora/bush/desert{
+	icon_state = "tree_3"
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/Northwest_Colony)
+"at" = (
+/obj/structure/flora/grass/desert/lightgrass_10,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/Northwest_Colony)
 "au" = (
 /obj/structure/surface/rack,
 /turf/open/floor/kutjevo/plate,
 /area/kutjevo/exterior/lz_pad)
+"av" = (
+/turf/open/desert/rock/deep,
+/area/kutjevo/exterior/Northwest_Colony)
+"aw" = (
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#8D8468";
+	dir = 4;
+	pixel_y = -6
+	},
+/turf/open/desert/rock/deep,
+/area/kutjevo/exterior/Northwest_Colony)
 "ax" = (
 /obj/structure/platform_decoration/stone/kutjevo/west,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/scrubland)
+"ay" = (
+/obj/structure/flora/grass/desert/lightgrass_10,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/Northwest_Colony)
+"az" = (
+/obj/structure/flora/grass/desert/lightgrass_4,
+/turf/open/desert/rock/deep/rock4,
+/area/kutjevo/exterior/Northwest_Colony)
+"aA" = (
+/turf/open/desert/rock/deep/transition/west,
+/area/kutjevo/exterior/Northwest_Colony)
+"aB" = (
+/turf/open/desert/rock,
+/area/kutjevo/exterior/Northwest_Colony)
+"aC" = (
+/obj/structure/flora/bush/desert{
+	icon_state = "tree_2";
+	pixel_y = 14
+	},
+/turf/open/desert/rock/deep/transition/north,
+/area/kutjevo/exterior/Northwest_Colony)
+"aD" = (
+/turf/open/desert/rock/deep/transition/north,
+/area/kutjevo/exterior/Northwest_Colony)
+"aE" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#8D8468";
+	dir = 9;
+	pixel_x = 7;
+	pixel_y = 7
+	},
+/turf/open/desert/rock/deep,
+/area/kutjevo/exterior/Northwest_Colony)
+"aF" = (
+/turf/open/desert/rock/deep/rock3,
+/area/kutjevo/exterior/Northwest_Colony)
 "aG" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/cameras{
@@ -20,13 +156,120 @@
 	},
 /turf/open/floor/kutjevo/colors/orange/edge/west,
 /area/kutjevo/interior/complex/Northwest_Security_Checkpoint)
+"aH" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#8D8468";
+	dir = 8;
+	pixel_x = -3;
+	pixel_y = -1
+	},
+/turf/open/desert/rock/deep,
+/area/kutjevo/exterior/Northwest_Colony)
+"aI" = (
+/obj/structure/flora/grass/desert/lightgrass_4,
+/turf/open/desert/rock/deep,
+/area/kutjevo/exterior/Northwest_Colony)
+"aJ" = (
+/turf/open/desert/rock/deep/rock4,
+/area/kutjevo/exterior/Northwest_Colony)
+"aK" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#8D8468";
+	pixel_x = 4;
+	pixel_y = 23
+	},
+/turf/open/desert/rock/deep,
+/area/kutjevo/exterior/Northwest_Colony)
+"aL" = (
+/obj/structure/flora/grass/desert/lightgrass_1,
+/turf/open/desert/rock/deep/transition/west,
+/area/kutjevo/exterior/Northwest_Colony)
+"aM" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 4
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/Northwest_Colony)
+"aN" = (
+/obj/structure/flora/grass/tallgrass/desert,
+/turf/open/auto_turf/sand/layer2,
+/area/kutjevo/exterior/scrubland)
+"aO" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/turf/open/auto_turf/sand/layer2,
+/area/kutjevo/exterior/Northwest_Colony)
+"aP" = (
+/obj/structure/flora/grass/desert/lightgrass_3,
+/turf/open/desert/rock,
+/area/kutjevo/exterior/Northwest_Colony)
+"aQ" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 4
+	},
+/turf/open/desert/rock,
+/area/kutjevo/exterior/Northwest_Colony)
 "aR" = (
 /turf/open/floor/almayer/research/containment/floor1,
 /area/kutjevo/exterior/Northwest_Colony)
+"aS" = (
+/obj/structure/flora/grass/tallgrass/desert,
+/obj/structure/platform_decoration/stone/kutjevo/west,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/Northwest_Colony)
+"aT" = (
+/obj/structure/flora/grass/tallgrass/desert,
+/obj/structure/platform/stone/kutjevo/north,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/scrubland)
 "aU" = (
 /obj/item/stack/sheet/metal,
 /turf/open/floor/kutjevo/tan/alt_edge/east,
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
+"aV" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 8
+	},
+/obj/structure/platform_decoration/stone/kutjevo/east,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/interior/oob)
+"aW" = (
+/obj/structure/flora/grass/desert/heavygrass_10,
+/turf/open/desert/rock/deep,
+/area/kutjevo/exterior/Northwest_Colony)
+"aX" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#967969";
+	dir = 8
+	},
+/turf/open/desert/rock/deep,
+/area/kutjevo/exterior/Northwest_Colony)
+"aY" = (
+/obj/structure/flora/grass/desert/heavygrass_4,
+/turf/open/desert/rock/deep,
+/area/kutjevo/exterior/Northwest_Colony)
+"aZ" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#8D8468";
+	pixel_x = 8;
+	pixel_y = -2
+	},
+/turf/open/desert/rock/deep,
+/area/kutjevo/exterior/Northwest_Colony)
+"ba" = (
+/obj/structure/flora/grass/desert/lightgrass_6,
+/turf/open/desert/rock/deep/transition/north,
+/area/kutjevo/exterior/Northwest_Colony)
+"bb" = (
+/obj/structure/flora/grass/desert/lightgrass_10,
+/turf/open/desert/rock/deep,
+/area/kutjevo/exterior/Northwest_Colony)
+"bc" = (
+/obj/structure/flora/grass/tallgrass/desert,
+/obj/structure/platform/stone/kutjevo/east,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/Northwest_Colony)
 "bd" = (
 /obj/structure/bed,
 /obj/structure/window/reinforced{
@@ -52,11 +295,143 @@
 	},
 /turf/open/floor/kutjevo/tan/grey_edge/west,
 /area/kutjevo/interior/complex/Northwest_Dorms)
+"be" = (
+/turf/closed/wall/kutjevo/rock/border,
+/area/kutjevo/exterior/scrubland)
+"bf" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 8
+	},
+/obj/structure/platform/stone/kutjevo/west,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/scrubland)
+"bg" = (
+/obj/structure/flora/grass/desert/lightgrass_1,
+/turf/open/desert/rock/deep,
+/area/kutjevo/exterior/Northwest_Colony)
 "bh" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 10
 	},
 /turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/Northwest_Colony)
+"bi" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 5
+	},
+/turf/open/desert/rock,
+/area/kutjevo/exterior/Northwest_Colony)
+"bj" = (
+/obj/structure/flora/grass/tallgrass/desert,
+/turf/open/desert/rock,
+/area/kutjevo/exterior/Northwest_Colony)
+"bk" = (
+/obj/structure/flora/grass/tallgrass/desert,
+/obj/structure/platform_decoration/stone/kutjevo,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/Northwest_Colony)
+"bl" = (
+/obj/structure/flora/grass/tallgrass/desert,
+/obj/structure/platform/stone/kutjevo,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/scrubland)
+"bm" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 8
+	},
+/obj/structure/platform_decoration/stone/kutjevo/north,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/interior/oob)
+"bn" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#8D8468";
+	dir = 8;
+	pixel_x = -3;
+	pixel_y = -1
+	},
+/turf/open/desert/rock/deep/rock3,
+/area/kutjevo/exterior/Northwest_Colony)
+"bo" = (
+/obj/structure/flora/grass/desert/lightgrass_8,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/Northwest_Colony)
+"bp" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#8D8468";
+	dir = 8
+	},
+/turf/open/desert/rock/deep/rock3,
+/area/kutjevo/exterior/Northwest_Colony)
+"bq" = (
+/obj/structure/flora/grass/desert/lightgrass_3,
+/turf/open/desert/rock/deep/rock4,
+/area/kutjevo/exterior/Northwest_Colony)
+"br" = (
+/obj/structure/flora/grass/desert/lightgrass_2,
+/turf/open/desert/rock/deep/transition/west,
+/area/kutjevo/exterior/Northwest_Colony)
+"bs" = (
+/obj/structure/flora/grass/desert/heavygrass_3,
+/turf/open/desert/rock/deep,
+/area/kutjevo/exterior/Northwest_Colony)
+"bt" = (
+/obj/structure/flora/grass/desert/heavygrass_7,
+/turf/open/desert/rock/deep,
+/area/kutjevo/exterior/Northwest_Colony)
+"bu" = (
+/obj/structure/flora/grass/desert/lightgrass_5,
+/turf/open/desert/rock/deep,
+/area/kutjevo/exterior/Northwest_Colony)
+"bv" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 6
+	},
+/turf/open/desert/rock,
+/area/kutjevo/exterior/Northwest_Colony)
+"bw" = (
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#8D8468";
+	dir = 4;
+	pixel_y = -1
+	},
+/turf/open/desert/rock/deep,
+/area/kutjevo/exterior/Northwest_Colony)
+"bx" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#8D8468";
+	dir = 8;
+	pixel_y = 6;
+	pixel_x = 2
+	},
+/turf/open/desert/rock/deep,
+/area/kutjevo/exterior/Northwest_Colony)
+"by" = (
+/obj/structure/flora/grass/desert/lightgrass_4,
+/turf/open/desert/rock,
+/area/kutjevo/exterior/Northwest_Colony)
+"bz" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 4;
+	pixel_x = -4;
+	pixel_y = 5
+	},
+/turf/open/desert/rock/deep,
+/area/kutjevo/exterior/Northwest_Colony)
+"bA" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/desert/rock/deep/rock4,
+/area/kutjevo/exterior/Northwest_Colony)
+"bB" = (
+/obj/structure/flora/grass/desert/lightgrass_12,
+/turf/open/desert/rock/deep,
+/area/kutjevo/exterior/Northwest_Colony)
+"bC" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#967969";
+	dir = 8
+	},
+/turf/open/desert/rock/deep/rock4,
 /area/kutjevo/exterior/Northwest_Colony)
 "bN" = (
 /obj/item/stack/sheet/metal,
@@ -152,7 +527,7 @@
 /area/kutjevo/exterior/scrubland)
 "eD" = (
 /obj/structure/barricade/metal/wired,
-/turf/open/auto_turf/sand/layer1,
+/turf/open/desert/rock/deep,
 /area/kutjevo/exterior/Northwest_Colony)
 "eQ" = (
 /obj/structure/machinery/recharge_station,
@@ -291,10 +666,6 @@
 "jM" = (
 /turf/open/floor/kutjevo/tan/alt_edge/north,
 /area/kutjevo/exterior/lz_pad)
-"jZ" = (
-/obj/effect/landmark/static_comms/net_two,
-/turf/open/floor/kutjevo/plate,
-/area/kutjevo/exterior/telecomm/lz2_south)
 "kg" = (
 /obj/structure/machinery/landinglight/ds2{
 	dir = 4
@@ -425,12 +796,6 @@
 "nd" = (
 /turf/open/desert/desert_shore/desert_shore1/north,
 /area/kutjevo/exterior/lz_pad)
-"nt" = (
-/obj/structure/barricade/plasteel/wired{
-	dir = 4
-	},
-/turf/open/auto_turf/sand/layer1,
-/area/kutjevo/exterior/Northwest_Colony)
 "oj" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/metal/large_stack,
@@ -852,10 +1217,6 @@
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/complex/Northwest_Security_Checkpoint)
-"Ag" = (
-/obj/structure/machinery/light,
-/turf/open/floor/kutjevo/multi_tiles,
-/area/kutjevo/exterior/telecomm/lz2_south)
 "As" = (
 /obj/item/stack/sheet/metal,
 /turf/open/floor/kutjevo/tan,
@@ -1193,10 +1554,6 @@
 	},
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/Northwest_Colony)
-"IY" = (
-/obj/structure/machinery/power/apc/no_power/east,
-/turf/open/floor/kutjevo/multi_tiles,
-/area/kutjevo/exterior/telecomm/lz2_south)
 "Je" = (
 /obj/structure/window/framed/kutjevo,
 /turf/open/floor/plating/kutjevo,
@@ -1500,8 +1857,8 @@
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/complex/Northwest_Dorms)
 "SB" = (
-/obj/structure/barricade/metal/wired,
-/turf/open/auto_turf/sand/layer0,
+/obj/structure/barricade/plasteel/wired,
+/turf/open/desert/rock/deep/rock4,
 /area/kutjevo/exterior/Northwest_Colony)
 "SH" = (
 /turf/open/auto_turf/sand/layer2,
@@ -2094,13 +2451,13 @@ Uo
 xP
 Te
 oL
-lr
+bC
 SB
-ah
+av
 sb
 sb
 sb
-vj
+bt
 sb
 sb
 sb
@@ -2167,16 +2524,16 @@ oj
 xP
 AY
 oL
-ah
-SB
-ah
-lr
-lr
-lr
-ah
-vj
-vj
-lr
+aJ
+bA
+aJ
+av
+av
+av
+av
+av
+bn
+av
 sb
 sb
 sb
@@ -2240,17 +2597,17 @@ di
 hA
 vn
 oL
-ah
+aJ
 eD
-ah
-ah
-lr
-lr
-lr
-ah
-ah
-ah
-lr
+aJ
+av
+av
+av
+aF
+aF
+aF
+av
+aW
 sb
 sb
 sb
@@ -2313,20 +2670,20 @@ xP
 xP
 AY
 oL
-ah
-SB
-ah
-ah
-ah
-lr
-lr
-lr
-lr
-lr
-lr
-lr
-lr
-lr
+av
+eD
+aK
+av
+av
+av
+aF
+aJ
+aJ
+aF
+av
+av
+aJ
+aI
 sb
 sb
 sb
@@ -2386,21 +2743,21 @@ xP
 xP
 Te
 oL
-lr
-lr
+av
+bB
 sb
 sb
 sb
-ah
-lr
-lr
-lr
-ah
-ah
-lr
-ah
-lr
-lr
+bw
+av
+av
+av
+av
+av
+aF
+aF
+aJ
+av
 sb
 sb
 sb
@@ -2467,13 +2824,13 @@ sb
 sb
 sb
 sb
-ah
-ah
-ah
-ah
-lr
-lr
-lr
+av
+av
+aF
+av
+av
+aF
+aE
 sb
 sb
 sb
@@ -2542,12 +2899,12 @@ sb
 sb
 sb
 sb
-ah
-ah
-lr
-lr
-lr
-lr
+aX
+av
+aJ
+av
+av
+av
 sb
 sb
 sb
@@ -2616,12 +2973,12 @@ sb
 sb
 sb
 sb
-ah
-lr
-lr
-ah
-lr
-lr
+av
+aF
+av
+aF
+az
+av
 sb
 sb
 sb
@@ -2688,13 +3045,13 @@ sb
 sb
 sb
 sb
-vj
-ah
-ah
-ah
-ah
-ah
-lr
+aY
+av
+av
+aJ
+aF
+av
+aw
 sb
 sb
 sb
@@ -2761,12 +3118,12 @@ sb
 sb
 sb
 sb
-vj
-vj
-ah
-ah
-ah
-ah
+av
+aJ
+aJ
+aJ
+aF
+av
 sb
 sb
 sb
@@ -2834,11 +3191,11 @@ sb
 sb
 sb
 sb
-lr
-ah
-ah
-lr
-ah
+aZ
+av
+av
+av
+av
 sb
 sb
 sb
@@ -2907,12 +3264,12 @@ sb
 sb
 sb
 sb
-lr
-ah
-ah
-lr
-ah
-ah
+aA
+aA
+aA
+aA
+aA
+aA
 sb
 sb
 sb
@@ -2981,11 +3338,11 @@ sb
 sb
 sb
 sb
+aB
 lr
-ah
+aB
 lr
-ah
-ah
+aB
 sb
 sb
 sb
@@ -3054,12 +3411,12 @@ sb
 lr
 lr
 lr
-ah
-ah
 lr
 lr
 lr
-ah
+lr
+lr
+vj
 sb
 sb
 sb
@@ -3129,11 +3486,11 @@ lr
 lr
 lr
 lr
-xa
-xa
-xa
-xa
-sb
+vj
+vj
+lr
+ah
+ah
 sb
 sb
 sb
@@ -3201,12 +3558,12 @@ lr
 lr
 lr
 lr
+vj
+vj
 lr
-jh
-jh
-jh
-jh
-sb
+lr
+lr
+ah
 sb
 sb
 sb
@@ -3275,11 +3632,11 @@ lr
 lr
 lr
 lr
-jh
-xa
-jZ
-Ag
-QE
+lr
+lr
+lr
+lr
+lr
 sb
 sb
 sb
@@ -3348,17 +3705,17 @@ lr
 lr
 lr
 lr
-jh
-xa
-xa
-jh
-QE
+lr
+lr
+lr
+lr
 sb
 sb
 sb
 sb
-sb
-sb
+lr
+lr
+lr
 "}
 (23,1,1) = {"
 sb
@@ -3418,20 +3775,20 @@ lr
 lr
 lr
 lr
+Sw
+aO
+aO
+Sw
+Sw
+Sw
+fw
+sb
+sb
+ap
+lr
+lr
 lr
 ah
-ah
-jh
-jh
-jh
-IY
-QE
-sb
-sb
-sb
-sb
-sb
-sb
 "}
 (24,1,1) = {"
 sb
@@ -3490,21 +3847,21 @@ lr
 lr
 lr
 lr
-lr
+kJ
 lr
 lr
 ah
-xa
-xa
-QE
-QE
-QE
-sb
-sb
-sb
-sb
-sb
-sb
+lr
+lr
+lr
+lr
+lr
+lr
+lr
+lr
+lr
+lr
+lr
 "}
 (25,1,1) = {"
 sb
@@ -3562,7 +3919,7 @@ lr
 lr
 lr
 lr
-lr
+bo
 sb
 lr
 lr
@@ -3571,13 +3928,13 @@ lr
 lr
 lr
 lr
-sb
-sb
-sb
-sb
-sb
-sb
-sb
+lr
+lr
+lr
+lr
+lr
+lr
+lr
 "}
 (26,1,1) = {"
 sb
@@ -3644,13 +4001,13 @@ lr
 lr
 lr
 lr
-sb
-sb
-sb
-sb
-sb
-sb
-sb
+lr
+lr
+lr
+lr
+lr
+lr
+lr
 "}
 (27,1,1) = {"
 sb
@@ -3712,18 +4069,18 @@ sb
 sb
 sb
 lr
-fw
-Sw
-Sw
-nt
+lr
+lr
+lr
 ah
-sb
-sb
-sb
-sb
-sb
-sb
-sb
+ah
+ah
+ah
+lr
+lr
+lr
+lr
+lr
 "}
 (28,1,1) = {"
 sb
@@ -3784,19 +4141,19 @@ sb
 sb
 sb
 sb
-sb
+lr
 lr
 lr
 ah
 ah
-sb
-sb
-sb
-sb
-sb
-sb
-sb
-sb
+ah
+ah
+ah
+ah
+am
+lr
+lr
+lr
 "}
 (29,1,1) = {"
 sb
@@ -3856,17 +4213,17 @@ sb
 sb
 sb
 sb
-sb
-sb
+aD
+lr
 lr
 ah
 ah
 ah
 ah
+vj
+ah
 sb
-sb
-sb
-sb
+ah
 sb
 sb
 sb
@@ -3925,18 +4282,18 @@ sb
 sb
 sb
 sb
-sb
-sb
-sb
-sb
-sb
-sb
-lr
+av
+bs
+av
+aZ
+aD
 lr
 ah
+lr
 ah
 ah
-vj
+ah
+ah
 sb
 sb
 sb
@@ -3997,15 +4354,15 @@ TB
 sb
 sb
 sb
-sb
-sb
-sb
-sb
-sb
-sb
-sb
-ah
+bx
+av
+av
+av
+av
+aD
 lr
+vj
+ah
 lr
 ah
 ah
@@ -4015,7 +4372,7 @@ sb
 sb
 sb
 sb
-sb
+vj
 "}
 (32,1,1) = {"
 sb
@@ -4070,25 +4427,25 @@ TB
 sb
 sb
 sb
-sb
-sb
-sb
-sb
-sb
-sb
-sb
+av
+av
+aJ
+av
+av
+aD
+lr
+vj
 ah
 lr
 lr
 lr
 lr
+ah
+aq
+ah
 lr
-ah
-ah
-ah
-sb
-sb
-sb
+lr
+lr
 "}
 (33,1,1) = {"
 sb
@@ -4142,16 +4499,16 @@ cB
 TB
 sb
 sb
-sb
-sb
-sb
-sb
-sb
-sb
-sb
-sb
-sb
-ah
+av
+av
+av
+aJ
+av
+av
+aD
+lr
+lr
+vj
 lr
 lr
 ah
@@ -4160,8 +4517,8 @@ ah
 ah
 ah
 ah
-sb
-sb
+lr
+lr
 "}
 (34,1,1) = {"
 sb
@@ -4215,16 +4572,16 @@ cF
 TB
 sb
 sb
-sb
-sb
-sb
-sb
-sb
-sb
-sb
-sb
-sb
-ah
+aY
+av
+av
+av
+aF
+av
+aD
+lr
+lr
+vj
 lr
 lr
 lr
@@ -4233,8 +4590,8 @@ ah
 lr
 lr
 ah
-sb
-sb
+lr
+lr
 "}
 (35,1,1) = {"
 sb
@@ -4288,26 +4645,26 @@ mg
 TB
 sb
 sb
+aF
+av
+aJ
+av
+av
+av
+ba
 sb
-sb
-sb
-sb
-sb
-sb
-sb
-sb
-sb
-sb
+lr
+lr
 ah
 ah
 ah
 lr
 lr
 lr
-ah
-ah
-sb
-sb
+QE
+aa
+ad
+aa
 "}
 (36,1,1) = {"
 sb
@@ -4361,26 +4718,26 @@ ZY
 TB
 sb
 sb
+bz
+av
+av
+aF
+av
+bg
 sb
 sb
 sb
-sb
-sb
-sb
-sb
-sb
-sb
-sb
-ah
-lr
-lr
-lr
 lr
 ah
-vj
+lr
+lr
+lr
+lr
 ah
-sb
-sb
+an
+ai
+xa
+ab
 "}
 (37,1,1) = {"
 sb
@@ -4434,11 +4791,11 @@ TB
 TB
 sb
 sb
-sb
-sb
-sb
-sb
-sb
+av
+aF
+av
+av
+bp
 sb
 sb
 sb
@@ -4450,10 +4807,10 @@ lr
 lr
 lr
 lr
-ah
-vj
-sb
-sb
+an
+jh
+ae
+ac
 "}
 (38,1,1) = {"
 sb
@@ -4507,11 +4864,11 @@ TB
 TB
 sb
 sb
-sb
-sb
-sb
-sb
-sb
+av
+av
+av
+av
+aF
 sb
 sb
 sb
@@ -4523,10 +4880,10 @@ ah
 lr
 lr
 lr
-lr
-ah
-sb
-sb
+ao
+aj
+jh
+xa
 "}
 (39,1,1) = {"
 sb
@@ -4580,12 +4937,12 @@ yX
 TB
 sb
 sb
-sb
-sb
-sb
-sb
-sb
-sb
+bs
+av
+aF
+aF
+bq
+aw
 sb
 sb
 sb
@@ -4596,10 +4953,10 @@ vj
 lr
 lr
 lr
-lr
-lr
-sb
-sb
+an
+jh
+af
+xa
 "}
 (40,1,1) = {"
 sb
@@ -4654,6 +5011,11 @@ TB
 sb
 sb
 sb
+bw
+av
+aJ
+av
+av
 sb
 sb
 sb
@@ -4661,18 +5023,13 @@ sb
 sb
 sb
 sb
-sb
-sb
-sb
-sb
-sb
-ah
+at
 lr
 lr
-ah
-lr
-sb
-sb
+an
+ak
+jh
+jh
 "}
 (41,1,1) = {"
 sb
@@ -4727,25 +5084,25 @@ TB
 sb
 sb
 sb
+av
+av
+aF
+av
+av
+bb
 sb
 sb
 sb
 sb
-sb
-sb
-sb
-sb
-sb
-sb
-sb
-sb
+aC
+lr
 ah
 lr
 lr
-ah
-sb
-sb
-sb
+QE
+ag
+ag
+QE
 "}
 (42,1,1) = {"
 sb
@@ -4800,24 +5157,24 @@ TB
 sb
 sb
 sb
+av
+av
+aF
+aJ
+av
+av
 sb
 sb
 sb
 sb
-sb
-sb
-sb
-sb
-sb
-sb
-sb
-vj
+aD
+lr
 lr
 ah
+ah
 lr
-ah
-ah
-sb
+al
+lr
 sb
 "}
 (43,1,1) = {"
@@ -4873,21 +5230,21 @@ TB
 sb
 sb
 sb
-sb
-sb
-sb
-sb
-sb
-sb
-sb
-sb
-sb
-sb
-sb
-vj
+aE
+av
+av
+aJ
+aF
+av
+av
+av
+aK
+av
+aD
+lr
 vj
 ah
-lr
+vj
 lr
 lr
 lr
@@ -4946,21 +5303,21 @@ TB
 sb
 sb
 sb
-sb
-sb
-sb
-sb
-sb
-sb
-sb
-sb
-sb
-sb
-sb
-ah
+av
+av
+av
+av
+aF
+aF
+aF
+av
+av
+av
+aD
+lr
 vj
 ah
-lr
+vj
 lr
 lr
 lr
@@ -5020,17 +5377,17 @@ sb
 sb
 sb
 sb
-sb
-sb
-sb
-sb
-sb
-sb
-sb
-sb
-sb
-sb
-sb
+bu
+av
+av
+aJ
+aJ
+av
+aF
+av
+av
+aD
+ay
 lr
 lr
 lr
@@ -5093,19 +5450,19 @@ sb
 sb
 sb
 sb
+av
+av
+av
+av
+aJ
+av
+aF
+av
+aH
 sb
 sb
 sb
-sb
-sb
-sb
-sb
-sb
-sb
-sb
-sb
-sb
-lr
+as
 lr
 ah
 lr
@@ -5166,14 +5523,14 @@ sb
 sb
 sb
 sb
-sb
-sb
-sb
-sb
-sb
-sb
-sb
-sb
+aA
+aA
+br
+aA
+aA
+aA
+aA
+aL
 sb
 sb
 sb
@@ -5238,15 +5595,15 @@ sb
 sb
 sb
 sb
-sb
-sb
-sb
-sb
-sb
-sb
-sb
-sb
-sb
+by
+bv
+aQ
+aQ
+bi
+aB
+aP
+aB
+aB
 sb
 sb
 sb
@@ -5313,13 +5670,13 @@ sb
 sb
 sb
 sb
-sb
-sb
-sb
-sb
-sb
-sb
-sb
+bj
+bj
+bj
+aQ
+aQ
+aM
+aM
 sb
 sb
 sb
@@ -5387,12 +5744,12 @@ sb
 sb
 sb
 sb
-sb
-sb
-sb
-sb
-sb
-sb
+GR
+bk
+bc
+aS
+GR
+GR
 sb
 Bh
 Bh
@@ -5461,11 +5818,11 @@ sb
 sb
 sb
 eg
+bl
+be
+aT
 eg
-eg
-eg
-eg
-sb
+aN
 PG
 Bh
 dI
@@ -5534,9 +5891,9 @@ sb
 sb
 jI
 jI
-sb
-jI
-sb
+bm
+bf
+aV
 jI
 PG
 Bh

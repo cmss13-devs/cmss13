@@ -225,6 +225,11 @@
 					return
 	. = ..()
 
+/obj/structure/barricade/handrail/take_damage(acided = FALSE)
+	if(acided)
+		on_acid = TRUE
+	return ..()
+
 /obj/structure/barricade/handrail/no_vault
 	autoclimb = FALSE
 

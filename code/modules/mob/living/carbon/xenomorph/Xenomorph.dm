@@ -207,6 +207,8 @@
 	var/plasmapool_modifier = 1
 	var/plasmagain_modifier = 0
 	var/tackle_chance_modifier = 0
+	var/tacklestrength_min_modifier = 0
+	var/tacklestrength_max_modifier = 0
 	var/regeneration_multiplier = 1
 	var/speed_modifier = 0
 	var/phero_modifier = 0
@@ -315,11 +317,15 @@
 	var/obj/effect/alien/resin/fruit/selected_fruit = null
 	var/list/built_structures = list()
 
-	// Designer stuff
+	/// the typepath of the designer placeable we wanna put down.
 	var/obj/effect/alien/resin/design/selected_design = null
+	/// List of available design marks for this designer.
 	var/list/available_design = list()
+	/// Stores the current design nodes placed by the designer.
 	var/list/current_design = list()
+	/// Maximum design nodes the designer can place.
 	var/max_design_nodes = 0
+	/// Currently selected design mark to place
 	var/selected_design_mark
 
 	var/icon_xeno
@@ -330,6 +336,9 @@
 	var/acid_overlay
 
 	bubble_icon = "alien"
+
+	/// Custom action mouse cursor
+	var/active_action_cursor
 
 	/////////////////////////////////////////////////////////////////////
 	//
@@ -703,6 +712,28 @@
 			COMSIG_LIVING_FLAMER_FLAMED
 		))
 
+/mob/living/carbon/xenomorph/proc/set_action_cursor(mouse_pointer)
+	if(!client)
+		return
+	if(active_action_cursor)
+		UnregisterSignal(client, COMSIG_CLIENT_RESET_VIEW)
+	active_action_cursor = mouse_pointer
+	client.mouse_pointer_icon = mouse_pointer
+	RegisterSignal(client, COMSIG_CLIENT_RESET_VIEW, PROC_REF(handle_view))
+
+/mob/living/carbon/xenomorph/proc/clear_action_cursor()
+	if(!client)
+		return
+	active_action_cursor = null
+	client.mouse_pointer_icon = null
+	UnregisterSignal(client, COMSIG_CLIENT_RESET_VIEW)
+
+/mob/living/carbon/xenomorph/proc/handle_view(client/user)
+	SIGNAL_HANDLER
+	if(active_action_cursor)
+		if(user?.prefs?.custom_cursors)
+			user.mouse_pointer_icon = active_action_cursor
+
 //Off-load this proc so it can be called freely
 //Since Xenos change names like they change shoes, we need somewhere to hammer in all those legos
 //We set their name first, then update their real_name AND their mind name
@@ -1036,8 +1067,8 @@
 	tackle_min = caste.tackle_min
 	tackle_max = caste.tackle_max
 	tackle_chance = caste.tackle_chance + tackle_chance_modifier
-	tacklestrength_min = caste.tacklestrength_min
-	tacklestrength_max = caste.tacklestrength_max
+	tacklestrength_min = caste.tacklestrength_min + tacklestrength_min_modifier
+	tacklestrength_max = caste.tacklestrength_max + tacklestrength_max_modifier
 
 /mob/living/carbon/xenomorph/proc/recalculate_health()
 	var/new_max_health = nocrit ? health_modifier + maxHealth : health_modifier + caste.max_health

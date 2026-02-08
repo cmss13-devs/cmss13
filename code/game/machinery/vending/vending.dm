@@ -129,14 +129,15 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 
 /obj/structure/machinery/vending/update_icon()
 	overlays.Cut()
-	if(panel_open)
+	if(panel_open || stat & REPAIR_STEP_ONE)
 		overlays += image(icon, "[initial(icon_state)]-panel")
 	if(stat & BROKEN)
 		icon_state = "[initial(icon_state)]-broken"
-	else if(stat & NOPOWER)
+		return
+	if(stat & NOPOWER)
 		icon_state = "[initial(icon_state)]-off"
-	else
-		icon_state = initial(icon_state)
+		return
+	icon_state = initial(icon_state)
 
 /obj/structure/machinery/vending/ex_act(severity)
 	switch(severity)
@@ -190,17 +191,18 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 
 	var/possessive = include_name ? "[src]'s" : "Its"
 	var/nominative = include_name ? "[src]" : "It"
-
-	if(stat & BROKEN)
-		return "[possessive] broken panel still needs to be <b>unscrewed</b> and removed."
+	if(is_tipped_over)
+		return "[nominative] needs to be uprighted."
+	else if(stat & BROKEN)
+		return "[possessive] broken panel still needs to be [SPAN_BOLD("unscrewed")] and removed."
 	else if(stat & REPAIR_STEP_ONE)
-		return "[possessive] broken wires still need to be <b>cut</b> and removed from the vendor."
+		return "[possessive] broken wires still need to be [SPAN_BOLD("cut")] and removed from the vendor."
 	else if(stat & REPAIR_STEP_TWO)
-		return "[nominative] needs to have <b>new wiring</b> installed."
+		return "[nominative] needs to have [SPAN_BOLD("new wiring")] installed."
 	else if(stat & REPAIR_STEP_THREE)
-		return "[nominative] needs to have a <b>metal</b> panel installed."
+		return "[nominative] needs to have a [SPAN_BOLD("metal")] panel installed."
 	else if(stat & REPAIR_STEP_FOUR)
-		return "[possessive] new panel needs to be <b>fastened</b> to it."
+		return "[possessive] new panel needs to be [SPAN_BOLD("fastened")] to it."
 	else
 		return "[nominative] is being affected by some power-related issue."
 
@@ -224,8 +226,8 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 				to_chat(user, SPAN_WARNING("You stop unscrewing [src]'s broken panel."))
 				return FALSE
 			to_chat(user, SPAN_NOTICE("You unscrew [src]'s broken panel and remove it, exposing many broken wires."))
-			stat &= ~BROKEN
 			stat |= REPAIR_STEP_ONE
+			update_icon()
 			return TRUE
 		else if(stat & REPAIR_STEP_FOUR)
 			to_chat(user, SPAN_NOTICE("You start to fasten [src]'s new panel."))
@@ -233,7 +235,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 				to_chat(user, SPAN_WARNING("You stop fastening [src]'s new panel."))
 				return FALSE
 			to_chat(user, SPAN_NOTICE("You fasten [src]'s new panel, fully repairing the vendor."))
-			stat &= ~REPAIR_STEP_FOUR
+			stat &= ~(REPAIR_STEP_FOUR|BROKEN)
 			stat |= FULLY_REPAIRED
 			update_icon()
 			return TRUE
@@ -949,6 +951,19 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 	stat |= BROKEN
 	update_icon()
 
+/obj/structure/machinery/vending/proc/tip_over()
+	var/matrix/A = matrix()
+	is_tipped_over = TRUE
+	density = FALSE
+	A.Turn(90)
+	apply_transform(A)
+	malfunction()
+
+/obj/structure/machinery/vending/proc/flip_back()
+	is_tipped_over = FALSE
+	density = TRUE
+	var/matrix/A = matrix()
+	apply_transform(A)
 
 //Somebody cut an important wire and now we're following a new definition of "pitch."
 /obj/structure/machinery/vending/proc/throw_item()

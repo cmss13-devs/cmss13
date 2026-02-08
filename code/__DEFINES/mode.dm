@@ -232,6 +232,7 @@ DEFINE_BITFIELD(whitelist_status, list(
 #define OBJECTIVE_INACTIVE (1<<0)
 #define OBJECTIVE_ACTIVE (1<<1)
 #define OBJECTIVE_COMPLETE (1<<2)
+#define OBJECTIVE_DELETED (1<<3)
 
 // Functionality flags
 #define OBJECTIVE_DO_NOT_TREE (1<<0) // Not part of the 'clue' tree

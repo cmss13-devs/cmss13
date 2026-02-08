@@ -3,7 +3,7 @@
 // and abilities files hold the object declarations for the abilities
 
 // Plant weeds
-/datum/action/xeno_action/onclick/plant_weeds/use_ability(atom/A)
+/datum/action/xeno_action/onclick/plant_weeds/use_ability(atom/atom)
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if(!action_cooldown_check())
 		return
@@ -131,41 +131,41 @@
 	return ..()
 
 // Shift spits
-/datum/action/xeno_action/onclick/shift_spits/use_ability(atom/A)
-	var/mob/living/carbon/xenomorph/X = owner
-	if(!X.check_state())
+/datum/action/xeno_action/onclick/shift_spits/use_ability(atom/atom)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!xeno.check_state())
 		return
-	for(var/i in 1 to length(X.caste.spit_types))
-		if(X.ammo == GLOB.ammo_list[X.caste.spit_types[i]])
-			if(i == length(X.caste.spit_types))
-				X.ammo = GLOB.ammo_list[X.caste.spit_types[1]]
+	for(var/i in 1 to length(xeno.caste.spit_types))
+		if(xeno.ammo == GLOB.ammo_list[xeno.caste.spit_types[i]])
+			if(i == length(xeno.caste.spit_types))
+				xeno.ammo = GLOB.ammo_list[xeno.caste.spit_types[1]]
 			else
-				X.ammo = GLOB.ammo_list[X.caste.spit_types[i+1]]
+				xeno.ammo = GLOB.ammo_list[xeno.caste.spit_types[i+1]]
 			break
-	to_chat(X, SPAN_NOTICE("We will now spit [X.ammo.name] ([X.ammo.spit_cost] plasma)."))
+	to_chat(xeno, SPAN_NOTICE("We will now spit [xeno.ammo.name] ([xeno.ammo.spit_cost] plasma)."))
 	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, "shift_spit_[X.ammo.icon_state]")
+	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, "shift_spit_[xeno.ammo.icon_state]")
 	return ..()
 
-/datum/action/xeno_action/onclick/release_haul/use_ability(atom/A)
-	var/mob/living/carbon/xenomorph/X = owner
-	if(!X.check_state())
+/datum/action/xeno_action/onclick/release_haul/use_ability(atom/atom)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!xeno.check_state())
 		return
 
-	if(!isturf(X.loc))
-		to_chat(X, SPAN_WARNING("We cannot put them down here."))
+	if(!isturf(xeno.loc))
+		to_chat(xeno, SPAN_WARNING("We cannot put them down here."))
 		return
 
-	X.release_haul(TRUE)
+	xeno.release_haul(TRUE)
 
 	return ..()
 
-/datum/action/xeno_action/onclick/choose_resin/use_ability(atom/A)
-	var/mob/living/carbon/xenomorph/X = owner
-	if(!X.check_state())
+/datum/action/xeno_action/onclick/choose_resin/use_ability(atom/atom)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!xeno.check_state())
 		return
 
-	tgui_interact(X)
+	tgui_interact(xeno)
 	return ..()
 
 /datum/action/xeno_action/onclick/choose_resin/ui_assets(mob/user)
@@ -174,34 +174,34 @@
 	)
 
 /datum/action/xeno_action/onclick/choose_resin/ui_static_data(mob/user)
-	var/mob/living/carbon/xenomorph/X = user
-	if(!istype(X))
+	var/mob/living/carbon/xenomorph/xeno = user
+	if(!istype(xeno))
 		return
 
 	. = list()
 
 	var/list/constructions = list()
-	for(var/type in X.resin_build_order)
+	for(var/type in xeno.resin_build_order)
 		var/list/entry = list()
-		var/datum/resin_construction/RC = GLOB.resin_constructions_list[type]
+		var/datum/resin_construction/resin_construct = GLOB.resin_constructions_list[type]
 
-		entry["name"] = RC.name
-		entry["desc"] = RC.desc
-		entry["image"] = replacetext(RC.construction_name, " ", "-")
-		entry["plasma_cost"] = RC.cost
-		entry["max_per_xeno"] = RC.max_per_xeno
+		entry["name"] = resin_construct.name
+		entry["desc"] = resin_construct.desc
+		entry["image"] = replacetext(resin_construct.construction_name, " ", "-")
+		entry["plasma_cost"] = resin_construct.cost
+		entry["max_per_xeno"] = resin_construct.max_per_xeno
 		entry["id"] = "[type]"
 		constructions += list(entry)
 
 	.["constructions"] = constructions
 
 /datum/action/xeno_action/onclick/choose_resin/ui_data(mob/user)
-	var/mob/living/carbon/xenomorph/X = user
-	if(!istype(X))
+	var/mob/living/carbon/xenomorph/xeno = user
+	if(!istype(xeno))
 		return
 
 	. = list()
-	.["selected_resin"] = X.selected_resin
+	.["selected_resin"] = xeno.selected_resin
 
 
 /datum/action/xeno_action/onclick/choose_resin/tgui_interact(mob/user, datum/tgui/ui)
@@ -223,18 +223,18 @@
 	if(.)
 		return
 
-	var/mob/living/carbon/xenomorph/X = usr
-	if(!istype(X))
+	var/mob/living/carbon/xenomorph/xeno = usr
+	if(!istype(xeno))
 		return
 
 	switch(action)
 		if("choose_resin")
 			var/selected_type = text2path(params["type"])
-			if(!(selected_type in X.resin_build_order))
+			if(!(selected_type in xeno.resin_build_order))
 				return
 			//update the button's overlay with new choice
 			update_button_icon(selected_type, to_chat=TRUE)
-			X.selected_resin = selected_type
+			xeno.selected_resin = selected_type
 			. = TRUE
 		if("refresh_ui")
 			. = TRUE
@@ -277,7 +277,7 @@
 
 // leader Marker
 
-/datum/action/xeno_action/activable/info_marker/use_ability(atom/A, mods)
+/datum/action/xeno_action/activable/info_marker/use_ability(atom/atom, mods)
 	if(!..())
 		return FALSE
 
@@ -287,50 +287,50 @@
 	if(!action_cooldown_check())
 		return
 
-	var/mob/living/carbon/xenomorph/X = owner
-	if(!X.check_state(TRUE))
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!xeno.check_state(TRUE))
 		return FALSE
 
-	if(ismob(A)) //anticheese : if they click a mob, it will cancel.
-		to_chat(X, SPAN_XENOWARNING("We can't place resin markers on living things!"))
+	if(ismob(atom)) //anticheese : if they click a mob, it will cancel.
+		to_chat(xeno, SPAN_XENOWARNING("We can't place resin markers on living things!"))
 		return FALSE //this is because xenos have thermal vision and can see mobs through walls - which would negate not being able to place them through walls
 
-	if(isstorage(A.loc) || X.contains(A) || istype(A, /atom/movable/screen))
+	if(isstorage(atom.loc) || xeno.contains(atom) || istype(atom, /atom/movable/screen))
 		return FALSE
-	var/turf/target_turf = get_turf(A)
+	var/turf/target_turf = get_turf(atom)
 
-	if(!SSmapping.same_z_map(X.loc.z, target_turf.loc.z))
-		to_chat(X, SPAN_XENOWARNING("Our mind cannot reach that far."))
+	if(!SSmapping.same_z_map(xeno.loc.z, target_turf.loc.z))
+		to_chat(xeno, SPAN_XENOWARNING("Our mind cannot reach that far."))
 		return
 
-	if(!X.hive.living_xeno_queen || !SSmapping.same_z_map(X.hive.living_xeno_queen.z, X.z))
-		to_chat(X, SPAN_XENOWARNING("Our psychic link is gone, the Queen is either dead or too far away!"))
+	if(!xeno.hive.living_xeno_queen || !SSmapping.same_z_map(xeno.hive.living_xeno_queen.z, xeno.z))
+		to_chat(xeno, SPAN_XENOWARNING("Our psychic link is gone, the Queen is either dead or too far away!"))
 		return
 
 	var/tally = 0
 
-	for(var/obj/effect/alien/resin/marker/MRK in X.hive.resin_marks)
-		if(MRK.createdby == X.nicknumber)
+	for(var/obj/effect/alien/resin/marker/hive_marker in xeno.hive.resin_marks)
+		if(hive_marker.createdby == xeno.nicknumber)
 			tally++
 	if(tally >= max_markers)
-		to_chat(X, SPAN_XENOWARNING("We have reached the maximum number of resin marks."))
+		to_chat(xeno, SPAN_XENOWARNING("We have reached the maximum number of resin marks."))
 		var/list/promptlist = list("Yes", "No")
-		var/obj/effect/alien/resin/marker/Goober = null
+		var/obj/effect/alien/resin/marker/goober = null
 		var/promptuser = null
-		for(var/i=1, i<=length(X.hive.resin_marks))
-			Goober = X.hive.resin_marks[i]
-			if(Goober.createdby == X.nicknumber)
-				promptuser = tgui_input_list(X, "Remove oldest placed mark: '[Goober.mark_meaning.name]!'?", "Mark limit reached.", promptlist, theme="hive_status")
+		for(var/i=1, i<=length(xeno.hive.resin_marks))
+			goober = xeno.hive.resin_marks[i]
+			if(goober.createdby == xeno.nicknumber)
+				promptuser = tgui_input_list(xeno, "Remove oldest placed mark: '[goober.mark_meaning.name]!'?", "Mark limit reached.", promptlist, theme="hive_status")
 				break
 			i++
 		if(promptuser == "No")
 			return
 		else if(promptuser == "Yes")
-			qdel(Goober)
-			if(X.make_marker(target_turf))
+			qdel(goober)
+			if(xeno.make_marker(target_turf))
 				apply_cooldown()
 				return TRUE
-	else if(X.make_marker(target_turf))
+	else if(xeno.make_marker(target_turf))
 		apply_cooldown()
 		return TRUE
 
@@ -457,8 +457,8 @@
 		playsound(loc, "alien_drool", 25)
 
 	if(isqueen(src) && hive && length(hive.xeno_leader_list) && anchored)
-		for(var/mob/living/carbon/xenomorph/L in hive.xeno_leader_list)
-			L.handle_xeno_leader_pheromones()
+		for(var/mob/living/carbon/xenomorph/leader in hive.xeno_leader_list)
+			leader.handle_xeno_leader_pheromones()
 
 /datum/action/xeno_action/activable/pounce/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
@@ -517,23 +517,23 @@
 					to_chat(xeno, SPAN_WARNING("You can't jump over an object in your path."))
 					return
 
-		if (!do_after(xeno, 0.5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
+		if(!do_after(xeno, 0.5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 			return
 
 	if(target.z != xeno.z && xeno.mob_size >= MOB_SIZE_BIG)
-		if (!do_after(xeno, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+		if(!do_after(xeno, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			return
 
 	apply_cooldown()
 
-	if (windup)
+	if(windup)
 		xeno.set_face_dir(get_cardinal_dir(xeno, target))
-		if (!windup_interruptable)
+		if(!windup_interruptable)
 			ADD_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))
 			xeno.anchored = TRUE
 		pre_windup_effects()
 
-		if (!do_after(xeno, windup_duration, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
+		if(!do_after(xeno, windup_duration, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 			to_chat(xeno, SPAN_XENODANGER("We cancel our [action_text]!"))
 			if (!windup_interruptable)
 				REMOVE_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))
@@ -541,7 +541,7 @@
 			post_windup_effects(interrupted = TRUE)
 			return
 
-		if (!windup_interruptable)
+		if(!windup_interruptable)
 			REMOVE_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))
 			xeno.anchored = FALSE
 		post_windup_effects()
@@ -562,32 +562,32 @@
 	return TRUE
 
 // Massive, customizable spray_acid
-/datum/action/xeno_action/activable/spray_acid/use_ability(atom/A)
-	var/mob/living/carbon/xenomorph/X = owner
+/datum/action/xeno_action/activable/spray_acid/use_ability(atom/atom)
+	var/mob/living/carbon/xenomorph/xeno = owner
 
 	if(!action_cooldown_check())
 		return
 
-	if(!A)
+	if(!atom)
 		return
 
-	if(A.layer >= FLY_LAYER)
+	if(atom.layer >= FLY_LAYER)
 		return
 
-	if(!isturf(X.loc))
-		to_chat(X, SPAN_XENOWARNING("We can't [action_text] from here!"))
+	if(!isturf(xeno.loc))
+		to_chat(xeno, SPAN_XENOWARNING("We can't [action_text] from here!"))
 		return
 
-	if(!X.check_state() || X.action_busy)
+	if(!xeno.check_state() || xeno.action_busy)
 		return
 
-	if (activation_delay)
-		if(!do_after(X, activation_delay_length, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
-			to_chat(X, SPAN_XENOWARNING("We decide to cancel our acid spray."))
+	if(activation_delay)
+		if(!do_after(xeno, activation_delay_length, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
+			to_chat(xeno, SPAN_XENOWARNING("We decide to cancel our acid spray."))
 			end_cooldown()
 			return
 
-	if (!action_cooldown_check())
+	if(!action_cooldown_check())
 		return
 
 	apply_cooldown()
@@ -595,17 +595,17 @@
 	if(!check_and_use_plasma_owner())
 		return
 
-	playsound(get_turf(X), 'sound/effects/refill.ogg', 25, 1)
-	X.visible_message(SPAN_XENOWARNING("[X] vomits a flood of acid!"), SPAN_XENOWARNING("We vomit a flood of acid!"), null, 5)
+	playsound(get_turf(xeno), 'sound/effects/refill.ogg', 25, 1)
+	xeno.visible_message(SPAN_XENOWARNING("[xeno] vomits a flood of acid!"), SPAN_XENOWARNING("We vomit a flood of acid!"), null, 5)
 
 	apply_cooldown()
 
 	// Build our list of target turfs based on
-	if (spray_type == ACID_SPRAY_LINE)
-		X.do_acid_spray_line(get_line(X, A, include_start_atom = FALSE), spray_effect_type, spray_distance)
+	if(spray_type == ACID_SPRAY_LINE)
+		xeno.do_acid_spray_line(get_line(xeno, atom, include_start_atom = FALSE), spray_effect_type, spray_distance)
 
-	else if (spray_type == ACID_SPRAY_CONE)
-		X.do_acid_spray_cone(get_turf(A), spray_effect_type, spray_distance)
+	else if(spray_type == ACID_SPRAY_CONE)
+		xeno.do_acid_spray_cone(get_turf(atom), spray_effect_type, spray_distance)
 
 	return ..()
 
@@ -635,47 +635,6 @@
 	SIGNAL_HANDLER
 	if(!QDELETED(source) && (new_stat >= UNCONSCIOUS && old_stat <= UNCONSCIOUS))
 		post_attack()
-
-/datum/action/xeno_action/onclick/place_trap/use_ability(atom/A)
-	var/mob/living/carbon/xenomorph/X = owner
-	if(!X.check_state())
-		return
-
-	if (istype(X, /mob/living/carbon/xenomorph/burrower))
-		var/mob/living/carbon/xenomorph/burrower/B = X
-		if (HAS_TRAIT(B, TRAIT_ABILITY_BURROWED))
-			return
-
-	var/turf/T = get_turf(X)
-	if(!istype(T))
-		to_chat(X, SPAN_XENOWARNING("We can't do that here."))
-		return
-	var/area/AR = get_area(T)
-	if(istype(AR,/area/shuttle/drop1/lz1) || istype(AR,/area/shuttle/drop2/lz2) || SSinterior.in_interior(owner))
-		to_chat(X, SPAN_WARNING("We sense this is not a suitable area for creating a resin hole."))
-		return
-	var/obj/effect/alien/weeds/alien_weeds = T.check_xeno_trap_placement(X)
-	if(!alien_weeds)
-		return
-	if(istype(alien_weeds, /obj/effect/alien/weeds/node))
-		to_chat(X, SPAN_NOTICE("We start uprooting the node so we can put the resin hole in its place..."))
-		if(!do_after(X, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC, target, INTERRUPT_ALL))
-			return
-		if(!T.check_xeno_trap_placement(X))
-			return
-		var/obj/effect/alien/weeds/the_replacer = new /obj/effect/alien/weeds(T)
-		the_replacer.hivenumber = X.hivenumber
-		the_replacer.linked_hive = X.hive
-		set_hive_data(the_replacer, X.hivenumber)
-		qdel(alien_weeds)
-
-	if(!X.check_plasma(plasma_cost))
-		return
-	X.use_plasma(plasma_cost)
-	playsound(X.loc, "alien_resin_build", 25)
-	new /obj/effect/alien/resin/trap(T, X)
-	to_chat(X, SPAN_XENONOTICE("We place a resin hole on the weeds, it still needs a sister to fill it with acid."))
-	return ..()
 
 /turf/proc/check_xeno_trap_placement(mob/living/carbon/xenomorph/xeno)
 	if(is_weedable < FULLY_WEEDABLE || !can_xeno_build(src))
@@ -808,7 +767,6 @@
 	if(!spacecheck(xeno, target_turf, structure_template))
 		// spacecheck already cleans up the template
 		return FALSE
-
 	if((choice == XENO_STRUCTURE_EGGMORPH) && locate(/obj/structure/flora/grass/tallgrass) in target_turf)
 		to_chat(xeno, SPAN_WARNING("The tallgrass is preventing us from building the egg morpher!"))
 		qdel(structure_template)
@@ -874,25 +832,25 @@
 
 // XSS Spacecheck
 
-/datum/action/xeno_action/activable/place_construction/proc/spacecheck(mob/living/carbon/xenomorph/X, turf/T, datum/construction_template/xenomorph/tem)
+/datum/action/xeno_action/activable/place_construction/proc/spacecheck(mob/living/carbon/xenomorph/xeno, turf/turf, datum/construction_template/xenomorph/tem)
 	if(tem.block_range)
-		for(var/turf/TA in range(tem.block_range, T))
-			if(!X.check_alien_construction(TA, FALSE, TRUE, ignore_nest = TRUE))
-				to_chat(X, SPAN_WARNING("We need more open space to build here."))
+		for(var/turf/turf_target in range(tem.block_range, turf))
+			if(!xeno.check_alien_construction(turf_target, FALSE, TRUE, ignore_nest = TRUE))
+				to_chat(xeno, SPAN_WARNING("We need more open space to build here."))
 				qdel(tem)
 				return FALSE
-		if(!X.check_alien_construction(T, ignore_nest = TRUE))
-			to_chat(X, SPAN_WARNING("We need more open space to build here."))
+		if(!xeno.check_alien_construction(turf, ignore_nest = TRUE))
+			to_chat(xeno, SPAN_WARNING("We need more open space to build here."))
 			qdel(tem)
 			return FALSE
-		var/obj/effect/alien/weeds/alien_weeds = locate() in T
-		if(!alien_weeds || alien_weeds.weed_strength < WEED_LEVEL_HIVE || alien_weeds.linked_hive.hivenumber != X.hivenumber)
-			to_chat(X, SPAN_WARNING("We can only shape on [lowertext(GLOB.hive_datum[X.hivenumber].prefix)]hive weeds. We must find a hive node or core before we start building!"))
+		var/obj/effect/alien/weeds/alien_weeds = locate() in turf
+		if(!alien_weeds || alien_weeds.weed_strength < WEED_LEVEL_HIVE || alien_weeds.linked_hive.hivenumber != xeno.hivenumber)
+			to_chat(xeno, SPAN_WARNING("We can only shape on [lowertext(GLOB.hive_datum[xeno.hivenumber].prefix)]hive weeds. We must find a hive node or core before we start building!"))
 			qdel(tem)
 			return FALSE
-		if(T.density)
+		if(turf.density)
 			qdel(tem)
-			to_chat(X, SPAN_WARNING("We need empty space to build this."))
+			to_chat(xeno, SPAN_WARNING("We need empty space to build this."))
 			return FALSE
 	return TRUE
 
@@ -919,7 +877,7 @@
 	if(!current_turf)
 		return
 
-	if (!check_plasma_owner())
+	if(!check_plasma_owner())
 		return
 
 	if(xeno.ammo.spit_windup)
@@ -929,7 +887,7 @@
 		to_chat(xeno, SPAN_WARNING("We begin to prepare a large spit!"))
 		xeno.visible_message(SPAN_WARNING("[xeno] prepares to spit a massive glob!"),
 		SPAN_WARNING("We begin to spit [xeno.ammo.name]!"))
-		if (!do_after(xeno, xeno.ammo.spit_windup, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+		if(!do_after(xeno, xeno.ammo.spit_windup, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
 			to_chat(xeno, SPAN_XENODANGER("We decide to cancel our spit."))
 			spitting = FALSE
 			return
@@ -960,7 +918,7 @@
 /datum/action/xeno_action/activable/bombard/use_ability(atom/atom)
 	var/mob/living/carbon/xenomorph/xeno = owner
 
-	if (!istype(xeno) || !xeno.check_state() || !action_cooldown_check() || xeno.action_busy)
+	if(!istype(xeno) || !xeno.check_state() || !action_cooldown_check() || xeno.action_busy)
 		return FALSE
 
 	var/turf/turf = get_turf(atom)
@@ -969,7 +927,7 @@
 		to_chat(xeno, SPAN_XENODANGER("We can't bombard that!"))
 		return FALSE
 
-	if (!check_plasma_owner())
+	if(!check_plasma_owner())
 		return FALSE
 
 	if(turf.z != xeno.z)
@@ -977,18 +935,18 @@
 		return FALSE
 
 	var/atom/bombard_source = get_bombard_source()
-	if (!xeno.can_bombard_turf(turf, range, bombard_source))
+	if(!xeno.can_bombard_turf(turf, range, bombard_source))
 		return FALSE
 
 	xeno.visible_message(SPAN_XENODANGER("[xeno] digs itself into place!"), SPAN_XENODANGER("We dig ourself into place!"))
-	if (!do_after(xeno, activation_delay, interrupt_flags, BUSY_ICON_HOSTILE))
+	if(!do_after(xeno, activation_delay, interrupt_flags, BUSY_ICON_HOSTILE))
 		to_chat(xeno, SPAN_XENODANGER("We decide to cancel our bombard."))
 		return FALSE
 
-	if (!xeno.can_bombard_turf(turf, range, bombard_source)) //Second check in case something changed during the do_after.
+	if(!xeno.can_bombard_turf(turf, range, bombard_source)) //Second check in case something changed during the do_after.
 		return FALSE
 
-	if (!check_and_use_plasma_owner())
+	if(!check_and_use_plasma_owner())
 		return FALSE
 
 	apply_cooldown()
@@ -1000,33 +958,32 @@
 
 	return ..()
 
-/datum/action/xeno_action/activable/bombard/proc/recursive_spread(turf/T, dist_left, orig_depth)
-	if(!istype(T))
+/datum/action/xeno_action/activable/bombard/proc/recursive_spread(turf/turf, dist_left, orig_depth)
+	if(!istype(turf))
 		return
 	else if(dist_left == 0)
 		return
-	else if(istype(T, /turf/closed) || istype(T, /turf/open/space))
+	else if(istype(turf, /turf/closed) || istype(turf, /turf/open/space))
 		return
-	else if(!T.can_bombard(owner))
+	else if(!turf.can_bombard(owner))
 		return
 
-	addtimer(CALLBACK(src, PROC_REF(new_effect), T, owner), 2*(orig_depth - dist_left))
+	addtimer(CALLBACK(src, PROC_REF(new_effect), turf, owner), 2*(orig_depth - dist_left))
 
-	for(var/mob/living/L in T)
-		to_chat(L, SPAN_XENOHIGHDANGER("You see a massive ball of acid flying towards you!"))
+	for(var/mob/living/living in turf)
+		to_chat(living, SPAN_XENOHIGHDANGER("You see a massive ball of acid flying towards you!"))
 
 	for(var/dirn in GLOB.alldirs)
-		recursive_spread(get_step(T, dirn), dist_left - 1, orig_depth)
+		recursive_spread(get_step(turf, dirn), dist_left - 1, orig_depth)
 
-
-/datum/action/xeno_action/activable/bombard/proc/new_effect(turf/T, mob/living/carbon/xenomorph/X)
-	if(!istype(T))
+/datum/action/xeno_action/activable/bombard/proc/new_effect(turf/turf, mob/living/carbon/xenomorph/xeno)
+	if(!istype(turf))
 		return
 
-	for(var/obj/effect/xenomorph/boiler_bombard/BB in T)
+	if(locate(/obj/effect/xenomorph/boiler_bombard) in turf)
 		return
 
-	new effect_type(T, X)
+	new effect_type(turf, xeno)
 
 /datum/action/xeno_action/activable/bombard/proc/get_bombard_source()
 	return owner
@@ -1034,13 +991,13 @@
 /turf/proc/can_bombard(mob/bombarder)
 	if(!can_be_dissolved() && density)
 		return FALSE
-	for(var/atom/A in src)
-		if(istype(A, /obj/structure/machinery))
+	for(var/atom/atom in src)
+		if(istype(atom, /obj/structure/machinery))
 			continue // Machinery shouldn't block boiler gas (e.g. computers)
-		if(ismob(A))
+		if(ismob(atom))
 			continue // Mobs shouldn't block boiler gas
 
-		if(A && A.unacidable && A.density && !(A.flags_atom & ON_BORDER))
+		if(atom && atom.unacidable && atom.density && !(atom.flags_atom & ON_BORDER))
 			return FALSE
 
 	return TRUE
@@ -1052,7 +1009,7 @@
 	var/turf/current = bombard_source.loc
 	var/turf/target_turf = get_turf(target)
 
-	if (get_dist_sqrd(current, target_turf) > (range*range))
+	if(get_dist_sqrd(current, target_turf) > (range*range))
 		to_chat(src, SPAN_XENODANGER("That is too far away!"))
 		return
 
@@ -1065,8 +1022,8 @@
 		if(current.opacity)
 			. = FALSE
 		if(.)
-			for(var/atom/A in current)
-				if(A.opacity)
+			for(var/atom/atom in current)
+				if(atom.opacity)
 					. = FALSE
 					break
 		if(!.)
@@ -1095,7 +1052,7 @@
 	if(!action_cooldown_check())
 		return FALSE
 
-	if (world.time <= stabbing_xeno.next_move)
+	if(world.time <= stabbing_xeno.next_move)
 		return FALSE
 
 	if(stabbing_xeno.z != targetted_atom.z)
@@ -1154,7 +1111,7 @@
 		return FALSE
 
 	var/obj/limb/limb = target.get_limb(check_zone(stabbing_xeno.zone_selected))
-	if (ishuman(target) && (!limb || (limb.status & LIMB_DESTROYED)))
+	if(ishuman(target) && (!limb || (limb.status & LIMB_DESTROYED)))
 		to_chat(stabbing_xeno, (SPAN_WARNING("What [limb.display_name]?")))
 		return FALSE
 

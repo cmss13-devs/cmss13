@@ -108,6 +108,7 @@
 		<th class="noPadCell"></th>
 		<th>Name</th>
 		<th>Rank</th>
+		<th>Ancillary</th>
 		{{if data.player_modify_ranks}}
 			<th></th>
 		{{/if}}
@@ -124,6 +125,7 @@
 			<td class="noPadCell"></td>
 			<td id="clan_name">{{:keys.name}}</td>
 			<td>{{:keys.rank}}</td>
+			<td>{{:keys.ancillary}}</td>
 			{{if data.player_rank_pos > keys.rank_pos}}
 				{{if data.player_modify_ranks}}
 					<td><div unselectable="on">{{:helper.link('Set Rank', '', { 'clan_target_href' : keys.player_id, 'clan_action': 'modifyrank' })}}</div></td>

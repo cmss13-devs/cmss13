@@ -582,7 +582,6 @@
 /mob/living/carbon/get_examine_text(mob/user)
 	. = ..()
 	if(isyautja(user))
-		. += SPAN_BLUE("[src] is worth [max(life_kills_total, default_honor_value)] honor.")
 		if(src.hunter_data.hunted)
 			. += SPAN_ORANGE("[src] is being hunted by [src.hunter_data.hunter.real_name].")
 

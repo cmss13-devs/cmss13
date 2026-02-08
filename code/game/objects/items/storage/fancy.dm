@@ -534,7 +534,26 @@
 /obj/item/storage/fancy/vials/random
 	unacidable = TRUE
 	is_random = TRUE
+	is_objective = TRUE
 
+/obj/item/storage/fancy/vials/random/handle_item_insertion(obj/item/storage/S)
+	. = ..()
+	if(length(contents))
+		for(var/obj/item/reagent_container/glass/beaker/vial/random/objective_vial in contents)
+			if(objective_vial.is_objective)
+				is_objective = TRUE
+				break
+
+/obj/item/storage/fancy/vials/random/remove_from_storage(obj/item/W, atom/new_location)
+	. = ..()
+	is_objective = FALSE
+	if(!length(contents))
+		return
+	else
+		for(var/obj/item/reagent_container/glass/beaker/vial/random/objective_vial in contents)
+			if(objective_vial.is_objective)
+				is_objective = TRUE
+				break
 
 /obj/item/storage/fancy/vials/empty
 	start_vials = 0

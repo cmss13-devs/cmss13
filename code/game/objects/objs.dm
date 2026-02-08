@@ -31,6 +31,8 @@
 	var/flags_obj = NO_FLAGS
 	/// set when a player uses a pen on a renamable object
 	var/renamedByPlayer = FALSE
+	/// lets us know if the item is an objective or not
+	var/is_objective = FALSE
 
 	vis_flags = VIS_INHERIT_PLANE
 

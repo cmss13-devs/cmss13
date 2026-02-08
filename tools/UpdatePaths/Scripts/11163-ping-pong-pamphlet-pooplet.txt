@@ -1,0 +1,7 @@
+/obj/item/pamphlet/skill/jtac/@SUBTYPES : /obj/item/pamphlet/upgradeable/jtac/@SUBTYPES{@OLD}
+/obj/item/pamphlet/skill/engineer/@SUBTYPES : /obj/item/pamphlet/upgradeable/engineer/@SUBTYPES{@OLD}
+/obj/item/pamphlet/engineer/@SUBTYPES : /obj/item/pamphlet/upgradeable/engineer/@SUBTYPES{@OLD}
+/obj/item/pamphlet/skill/powerloader/@SUBTYPES : /obj/item/pamphlet/upgradeable/powerloader/@SUBTYPES{@OLD}
+/obj/item/pamphlet/skill/machinegunner/@SUBTYPES : /obj/item/pamphlet/upgradeable/machinegunner/@SUBTYPES{@OLD}
+/obj/item/pamphlet/skill/medical/@SUBTYPES : /obj/item/pamphlet/upgradeable/medical/@SUBTYPES{@OLD}
+/obj/item/pamphlet/skill/police/@SUBTYPES : /obj/item/pamphlet/upgradeable/police/@SUBTYPES{@OLD}

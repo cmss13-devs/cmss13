@@ -18,20 +18,4 @@
 	new /obj/item/stack/cable_coil(src,30,color)
 	new /obj/item/tool/wirecutters(src)
 	new /obj/item/device/multitool(src)
-	new /obj/item/pamphlet/engineer/antag(src)
-
-/obj/item/pamphlet/skill/engineer/antag
-	name = "suspicious looking pamphlet"
-	desc = "A pamphlet used to quickly impart vital knowledge. This one has an engineering insignia. This one is written in code-speak."
-	trait = /datum/character_trait/skills/miniengie/antag
-	bypass_pamphlet_limit = TRUE
-
-/obj/item/pamphlet/engineer/antag/attack_self(mob/living/carbon/human/user)
-	if(!user.skills || !istype(user))
-		return
-
-	if(!skillcheckexplicit(user, SKILL_ANTAG, SKILL_ANTAG_AGENT))
-		to_chat(user, SPAN_WARNING("This pamphlet is written in code-speak! You don't quite understand it."))
-		return
-
-	. = ..()
+	new /obj/item/pamphlet/antag/skill/engineer(src)

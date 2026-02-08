@@ -16122,10 +16122,10 @@
 	},
 /obj/structure/surface/rack,
 /obj/item/storage/toolbox/mechanical,
-/obj/item/pamphlet/skill/powerloader,
-/obj/item/pamphlet/skill/powerloader,
-/obj/item/pamphlet/skill/powerloader,
-/obj/item/pamphlet/skill/powerloader,
+/obj/item/pamphlet/upgradeable/powerloader,
+/obj/item/pamphlet/upgradeable/powerloader,
+/obj/item/pamphlet/upgradeable/powerloader,
+/obj/item/pamphlet/upgradeable/powerloader,
 /turf/open/floor/corsat/plate,
 /area/rostock/req)
 "lOh" = (
@@ -22304,16 +22304,16 @@
 /obj/item/storage/backpack/marine/satchel/rto/small/upp_net,
 /obj/item/storage/backpack/marine/satchel/rto/small/upp_net,
 /obj/item/storage/backpack/marine/satchel/rto/small/upp_net,
-/obj/item/pamphlet/skill/jtac,
-/obj/item/pamphlet/skill/jtac,
-/obj/item/pamphlet/skill/jtac,
-/obj/item/pamphlet/skill/jtac,
-/obj/item/pamphlet/skill/jtac,
-/obj/item/pamphlet/skill/jtac,
-/obj/item/pamphlet/skill/jtac,
-/obj/item/pamphlet/skill/jtac,
-/obj/item/pamphlet/skill/jtac,
-/obj/item/pamphlet/skill/jtac,
+/obj/item/pamphlet/upgradeable/jtac,
+/obj/item/pamphlet/upgradeable/jtac,
+/obj/item/pamphlet/upgradeable/jtac,
+/obj/item/pamphlet/upgradeable/jtac,
+/obj/item/pamphlet/upgradeable/jtac,
+/obj/item/pamphlet/upgradeable/jtac,
+/obj/item/pamphlet/upgradeable/jtac,
+/obj/item/pamphlet/upgradeable/jtac,
+/obj/item/pamphlet/upgradeable/jtac,
+/obj/item/pamphlet/upgradeable/jtac,
 /turf/open/floor/prison/floor_marked/west,
 /area/rostock/req)
 "qUb" = (
@@ -24636,8 +24636,8 @@
 /area/rostock/hangar/hangarbay)
 "sVs" = (
 /obj/structure/surface/table/almayer,
-/obj/item/pamphlet/skill/powerloader,
-/obj/item/pamphlet/skill/powerloader,
+/obj/item/pamphlet/upgradeable/powerloader,
+/obj/item/pamphlet/upgradeable/powerloader,
 /obj/structure/machinery/door_control{
 	id = "DeployUPPHanger";
 	name = "Workshop Shutters";

@@ -631,12 +631,14 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 		/obj/item/reagent_container/food/snacks/grown/ambrosiavulgaris,
 		/obj/item/clothing/accessory/tie/horrible,
 		/obj/item/toy/inflatable_duck,
-		/obj/item/pamphlet/skill/powerloader,
+		/obj/item/pamphlet/upgradeable/powerloader,
 		/obj/item/pamphlet/language/russian,
 		/obj/item/pamphlet/language/japanese,
 		/obj/item/pamphlet/language/chinese,
 		/obj/item/pamphlet/language/german,
 		/obj/item/pamphlet/language/spanish,
+		/obj/item/pamphlet/language/scandinavian,
+		/obj/item/pamphlet/language/french,
 	)
 	dollar_cost = 30
 	crate_heat = -2

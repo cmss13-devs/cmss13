@@ -281,6 +281,7 @@ const marineSplitter = (members: Array<Observable>) => {
   const SOFSquad: Array<Observable> = [];
   const other: Array<Observable> = [];
   const provost: Array<Observable> = [];
+  const observer: Array<Observable> = [];
 
   members.forEach((x) => {
     if (x.mutiny_status?.includes('Mutineer')) {
@@ -311,6 +312,14 @@ const marineSplitter = (members: Array<Observable>) => {
       SOFSquad.push(x);
     } else if (x.job?.includes('Provost')) {
       provost.push(x);
+    } else if (x.job?.includes('Observer')) {
+      observer.push(x);
+    } else if (x.job?.includes('USCM Honor Guard')) {
+      observer.push(x);
+    } else if (x.job?.includes('USCM Lead Honor Guard')) {
+      observer.push(x);
+    } else if (x.job?.includes('USCM Senior Enlisted Advisor')) {
+      observer.push(x);
     } else {
       other.push(x);
     }
@@ -331,6 +340,7 @@ const marineSplitter = (members: Array<Observable>) => {
     buildSquadObservable('SOF', 'red', SOFSquad),
     buildSquadObservable('Other', 'grey', other),
     buildSquadObservable('Provost', 'red', provost),
+    buildSquadObservable('Observers', 'green', observer),
   ];
   return squads;
 };

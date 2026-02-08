@@ -87,6 +87,42 @@
 			handle_player_entrance(user)
 			return
 
+	if(istype(O, /obj/item/explosive/grenade))
+		var/obj/item/explosive/grenade/nade = O
+		if(nade.antigrief_protection && user.faction == FACTION_MARINE && explosive_antigrief_check(nade, user))
+			to_chat(user, SPAN_WARNING("\The [nade.name]'s safe-area accident inhibitor prevents you from priming the grenade!"))
+			// Let staff know, in case someone's actually about to try to grief
+			msg_admin_niche("[key_name(user)] attempted to prime \a [nade.name] in [get_area(src)] [ADMIN_JMP(src.loc)]")
+			return
+		if(door_locked && health > 0 && (!allowed(user) || !get_target_lock(user.faction_group)))
+			to_chat(user, SPAN_WARNING("\The [src] is locked!"))
+			return
+
+		var/mob_x = user.x - x
+		var/mob_y = user.y - y
+		var/entrance_used = null
+		for(var/entrance in entrances)
+			var/entrance_coord = entrances[entrance]
+			if(mob_x == entrance_coord[1] && mob_y == entrance_coord[2])
+				entrance_used = entrance
+				break
+		if(entrance_used) //if we are at a door, throw it in, else do nothing.
+			user.visible_message(SPAN_WARNING("[user] takes position to throw [nade] through the door of the [src]."),
+			SPAN_WARNING("You take position to throw [nade] through the door of the [src]."))
+			if(!do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+				return
+			if(mob_x != user.x - x || mob_y != user.y - y)
+				return
+
+			user.visible_message(SPAN_WARNING("[user] throws [nade] through the door of the [src]!"),
+			SPAN_WARNING("You throw [nade] through the door of the [src]."))
+
+			user.drop_held_item()
+			interior.enter(nade, entrance_used)
+			if(!nade.active)
+				nade.activate(user)
+		return
+
 	if(istype(O, /obj/item/device/motiondetector))
 		if(!interior)
 			to_chat(user, SPAN_WARNING("It appears that [O] cannot establish borders of space inside \the [src]. (PLEASE, TELL A DEV, SOMETHING BROKE)"))

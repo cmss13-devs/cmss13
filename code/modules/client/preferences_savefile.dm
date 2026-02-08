@@ -311,6 +311,7 @@
 	S["ghost_vision_pref"] >> ghost_vision_pref
 	S["ghost_orbit"] >> ghost_orbit
 	S["auto_observe"] >> auto_observe
+	S["CMTV_toggle_optout"] >> CMTV_toggle_optout
 
 	S["human_name_ban"] >> human_name_ban
 
@@ -464,6 +465,7 @@
 	ghost_vision_pref = sanitize_inlist(ghost_vision_pref, list(GHOST_VISION_LEVEL_NO_NVG, GHOST_VISION_LEVEL_MID_NVG, GHOST_VISION_LEVEL_HIGH_NVG, GHOST_VISION_LEVEL_FULL_NVG), GHOST_VISION_LEVEL_MID_NVG)
 	ghost_orbit = sanitize_inlist(ghost_orbit, GLOB.ghost_orbits, initial(ghost_orbit))
 	auto_observe = sanitize_integer(auto_observe, 0, 1, 1)
+	CMTV_toggle_optout = sanitize_integer(CMTV_toggle_optout, 0, 1, 0)
 	playtime_perks = sanitize_integer(playtime_perks, 0, 1, 1)
 	skip_playtime_ranks = sanitize_integer(skip_playtime_ranks, 0, 1, 1)
 	show_queen_name = sanitize_integer(show_queen_name, FALSE, TRUE, FALSE)
@@ -586,6 +588,7 @@
 	S["ghost_vision_pref"] << ghost_vision_pref
 	S["ghost_orbit"] << ghost_orbit
 	S["auto_observe"] << auto_observe
+	S["CMTV_toggle_optout"] << CMTV_toggle_optout
 
 	S["human_name_ban"] << human_name_ban
 

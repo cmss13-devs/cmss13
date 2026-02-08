@@ -537,12 +537,6 @@
 	},
 /turf/open/floor/plating/warnplate/west,
 /area/desert_dam/interior/dam_interior/smes_backup)
-"Zm" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/closed/wall/hangar{
-	name = "reinforced metal wall"
-	},
-/area/desert_dam/interior/dam_interior/lower_stairwell)
 "Zn" = (
 /obj/structure/pipes/vents/pump{
 	dir = 1
@@ -693,7 +687,7 @@ YL
 eH
 eH
 eH
-Zm
+eH
 ns
 Rx
 BW
@@ -710,7 +704,7 @@ qR
 eH
 eH
 eH
-Zm
+eH
 Cm
 nN
 BW

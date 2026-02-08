@@ -141,10 +141,10 @@
 
 //leadership skill
 #define SKILL_LEAD_NOVICE 0 //Anyone but the above. Using SL items is possible but painfully slow
-#define SKILL_LEAD_TRAINED 1 //Team leaders, departmental heads, junior officers
-#define SKILL_LEAD_SKILLED 2 //Combat-tested enlisted personnel, such as SLs
-#define SKILL_LEAD_EXPERT 3 //Combat-tested or combat directive Officers, like SOs
-#define SKILL_LEAD_MASTER 4 //XO, CO, basically any senior officer
+#define SKILL_LEAD_TRAINED 1 //FTL, PO, IO, MW
+#define SKILL_LEAD_SKILLED 2 //SL
+#define SKILL_LEAD_EXPERT 3 //CMP, CMO, QM, SO
+#define SKILL_LEAD_MASTER 4 //CE, ASO, XO, CO
 #define SKILL_LEAD_MAX 4
 
 //overwatch skill

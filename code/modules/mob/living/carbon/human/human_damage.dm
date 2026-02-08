@@ -430,7 +430,7 @@ This function restores all limbs.
 					damage *= burn_mod
 			organ.take_damage(0, damage, sharp, edge, used_weapon, no_limb_loss = no_limb_loss, attack_source = firer)
 
-	pain.apply_pain(damage, damagetype)
+	pain.recalculate_pain()
 
 	if(damagetype != HALLOSS && damage > 0)
 		life_damage_taken_total += damage
@@ -472,7 +472,7 @@ This function restores all limbs.
 			// The damage is negative so we want to heal, but heal damage only takes positive numbers.
 			I.heal_damage(-1 * damage)
 
-	pain.apply_pain(damage * PAIN_ORGAN_DAMAGE_MULTIPLIER)
+	pain.recalculate_pain()
 
 /mob/living/carbon/human/apply_stamina_damage(damage, def_zone, armor_type)
 	if(!def_zone || !armor_type || !stamina)

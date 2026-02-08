@@ -120,7 +120,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
  */
 
 
-/datum/authority/branch/role/proc/setup_candidates_and_roles(list/overwritten_roles_for_mode)
+/datum/authority/branch/role/proc/setup_candidates_and_roles(list/overwritten_roles_for_mode, list/random_players)
 	//===============================================================\\
 	//PART I: Get roles relevant to the mode
 
@@ -229,6 +229,8 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	// Assign the roles, this time for real, respecting limits we have established.
 	var/list/roles_left = assign_roles(temp_roles_for_mode, unassigned_players)
 
+	test_squads(random_players)
+
 	var/alternate_option_assigned = 0;
 	for(var/mob/new_player/M in unassigned_players)
 		switch(M.client.prefs.alternate_option)
@@ -259,6 +261,41 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 
 	/*===============================================================*/
 
+// Assigns players to squads to check if they should be returned to lobby
+/datum/authority/branch/role/proc/test_squads(list/random_players)
+	var/list/mob/living/carbon/human/test_humans = list()
+	var/list/mob/new_player/player_refs = alist()
+	for(var/mob/new_player/player in random_players)
+		if(!player || !player.ready || !player.mind || !player.job)
+			continue
+
+		var/mob/living/carbon/human/test_human = new
+		var/datum/job/job = GLOB.RoleAuthority.roles_for_mode[player.job]
+
+		if(!job || !job.gear_preset)
+			qdel(test_human)
+			continue
+
+		var/datum/equipment_preset/preset = new job.gear_preset
+		test_human.faction = preset.faction
+		test_human.job = job.title
+		if(job.flags_startup_parameters & ROLE_ADD_TO_SQUAD && test_human.job != JOB_INTEL)
+			test_humans += test_human
+			player_refs[test_human] = player
+			GLOB.RoleAuthority.randomize_squad(test_human, force_client=player.client)
+
+	for(var/mob/living/carbon/human/test_human in test_humans)
+		if(istype(test_human.assigned_squad, /datum/squad/marine/cryo))
+			test_human.assigned_squad.forget_marine_in_squad(test_human)
+			free_role(GLOB.RoleAuthority.roles_for_mode[test_human.job], force = TRUE)
+			unassigned_players += player_refs[test_human]
+			player_refs[test_human].job = null
+		else
+			test_human.assigned_squad.forget_marine_in_squad(test_human)
+		qdel(test_human)
+
+	for(var/datum/squad/squad in squads)
+		squad.roles_in = list()
 /**
 * Assign roles to the players. Return roles that are still avialable.
 * If count is true, return role balancing weight instead.
@@ -386,8 +423,8 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 
 	return TRUE
 
-/datum/authority/branch/role/proc/free_role(datum/job/J, latejoin = 1) //Want to make sure it's a job, and nothing like a MODE or special role.
-	if(istype(J) && J.total_positions != -1 && J.get_total_positions(latejoin) >= J.current_positions)
+/datum/authority/branch/role/proc/free_role(datum/job/J, latejoin = 1, force = FALSE) //Want to make sure it's a job, and nothing like a MODE or special role.
+	if((istype(J) && J.total_positions != -1 && J.get_total_positions(latejoin) >= J.current_positions) || force)
 		J.current_positions--
 		return 1
 
@@ -474,6 +511,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 
 	if(new_job.flags_startup_parameters & ROLE_ADD_TO_SQUAD) //Are we a muhreen? Randomize our squad. This should go AFTER IDs. //TODO Robust this later.
 		randomize_squad(new_human)
+
 	if(!late_join)
 		prioritize_specialist(new_human)
 
@@ -531,7 +569,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	SSround_recording.recorder.track_player(new_human)
 
 //This proc is a bit of a misnomer, since there's no actual randomization going on.
-/datum/authority/branch/role/proc/randomize_squad(mob/living/carbon/human/human, skip_limit = FALSE)
+/datum/authority/branch/role/proc/randomize_squad(mob/living/carbon/human/human, skip_limit = FALSE, client/force_client = null)
 	if(!human)
 		return
 
@@ -556,24 +594,31 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		slot_check = GET_DEFAULT_ROLE(human.job)
 
 	//we make a list of squad that is randomized so alpha isn't always lowest squad.
-	var/list/mixed_squads = list()
+	var/list/usable_squads = list()
 	for(var/datum/squad/squad in squads)
 		if(squad.roundstart && squad.usable && squad.faction == human.faction && squad.name != "Root")
-			mixed_squads += squad
+			usable_squads += squad
 
-	var/preferred_squad = human.client?.prefs?.preferred_squad
-	if(preferred_squad == "None")
-		preferred_squad = null
+	var/has_squad_pref = FALSE
+	var/list/preferred_squads = force_client ? force_client.prefs?.preferred_squad : human.client?.prefs?.preferred_squad
+	if(islist(preferred_squads) && length(preferred_squads))
+		var/list/ordered_squads = list()
+		for(var/squad_in_pref in preferred_squads)
+			for(var/datum/squad/squad_in_usable in usable_squads)
+				if(squad_in_usable.name == squad_in_pref || squad_in_usable.equivalent_name == squad_in_pref)
+					ordered_squads += squad_in_usable
+					continue
+		has_squad_pref = TRUE
+		usable_squads = ordered_squads
 
 	var/datum/squad/lowest
-	for(var/datum/squad/squad in mixed_squads)
+	for(var/datum/squad/squad in usable_squads)
 		if(slot_check && !isnull(squad.roles_cap[slot_check]) && !skip_limit)
 			if(squad.roles_in[slot_check] >= squad.roles_cap[slot_check])
 				continue
 
-		if(preferred_squad && (squad.name == preferred_squad || squad.equivalent_name == preferred_squad)) //fav squad or faction equivalent has a spot for us, no more searching needed.
-			if(squad.put_marine_in_squad(human))
-				return
+		if(has_squad_pref && squad.put_marine_in_squad(human))
+			return
 
 		if(!lowest || (slot_check && lowest.roles_in[slot_check] > squad.roles_in[slot_check]))
 			lowest = squad

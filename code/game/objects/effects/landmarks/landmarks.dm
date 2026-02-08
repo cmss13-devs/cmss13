@@ -493,26 +493,6 @@
 	var/job
 	var/job_list
 
-/obj/effect/landmark/late_join/alpha
-	name = "alpha late join"
-	icon_state = "late_join_alpha"
-	squad = SQUAD_MARINE_1
-
-/obj/effect/landmark/late_join/bravo
-	name = "bravo late join"
-	icon_state = "late_join_bravo"
-	squad = SQUAD_MARINE_2
-
-/obj/effect/landmark/late_join/charlie
-	name = "charlie late join"
-	icon_state = "late_join_charlie"
-	squad = SQUAD_MARINE_3
-
-/obj/effect/landmark/late_join/delta
-	name = "delta late join"
-	icon_state = "late_join_delta"
-	squad = SQUAD_MARINE_4
-
 /obj/effect/landmark/late_join/working_joe
 	name = "working joe late join"
 	icon_state = "late_join_misc"

@@ -91,6 +91,12 @@
 /obj/structure/machinery/power/apc/fully_broken/no_cell/north,
 /turf/open/floor/corsat/squareswood/north,
 /area/varadero/interior_protected/vessel)
+"aar" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "EngineeringHoldout"
+	},
+/turf/closed/wall,
+/area/varadero/interior/technical_storage)
 "aas" = (
 /obj/structure/prop/rock/brown,
 /turf/open/gm/dirt,
@@ -302,6 +308,21 @@
 /obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/ocean/deep_ocean,
 /area/varadero/exterior/farocean)
+"abd" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "HospitalAlternate"
+	},
+/turf/closed/wall/r_wall/unmeltable,
+/area/varadero/interior/oob)
+"abe" = (
+/obj/structure/sign/safety/airlock{
+	pixel_x = 8
+	},
+/obj/effect/landmark/nightmare{
+	insert_tag = "LibraryIntoRestaraunt"
+	},
+/turf/closed/wall,
+/area/varadero/interior/library)
 "abf" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
@@ -309,6 +330,15 @@
 /mob/living/simple_animal/small/mouse,
 /turf/open/floor/shiva/multi_tiles/southeast,
 /area/varadero/interior/medical)
+"abg" = (
+/obj/structure/machinery/door/airlock/almayer/medical/glass{
+	dir = 1;
+	name = "\improper Underground Library";
+	req_one_access = null;
+	req_access = null
+	},
+/turf/open/floor/wood,
+/area/varadero/interior/library)
 "abl" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/device/radio,
@@ -38731,7 +38761,7 @@ nxW
 qcN
 qcN
 qcN
-huF
+abd
 hYp
 uqx
 hYp
@@ -38747,7 +38777,7 @@ ykw
 ykw
 ykw
 bIt
-bIt
+aar
 kGM
 sDj
 wir
@@ -45625,7 +45655,7 @@ qaY
 mRq
 sXb
 mRq
-xzj
+abe
 oxA
 oMs
 hca
@@ -46708,7 +46738,7 @@ qqM
 hsl
 hyr
 giN
-dVq
+abg
 tzw
 jzZ
 jzZ

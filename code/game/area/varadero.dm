@@ -275,6 +275,11 @@
 	linked_lz = DROPSHIP_LZ1
 	minimap_color = MINIMAP_AREA_COMMAND_CAVE
 
+/area/varadero/interior/library/restaraunt
+	name = "New Varadero Restaraunt"
+	icon = 'icons/turf/hybrisareas.dmi'
+	icon_state ="pizza"
+
 /area/varadero/interior/court
 	name = "New Varadero - Basketball Court"
 	icon_state = "req4"

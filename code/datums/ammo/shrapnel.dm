@@ -187,6 +187,18 @@
 	if(isxeno(M))
 		M.apply_effect(0.4, SLOW)
 
+/datum/ammo/bullet/shrapnel/hdsg
+	name = "high-dispersive cluster bomblet"
+	icon_state = "hdsg_bomblet"
+	max_range = 1
+	accuracy = HIT_ACCURACY_TIER_1
+
+
+/datum/ammo/bullet/shrapnel/hdsg/do_at_max_range(obj/projectile/cluster_bomblet)
+	cell_explosion(get_turf(cluster_bomblet), 50, 20, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL_HALF)
+
+/datum/ammo/bullet/shrapnel/hdsg/on_hit_mob(mob/mob_target, obj/projectile/cluster_bomblet)
+	cell_explosion(mob_target, 50, 20, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL_HALF)
 /*
 //========
 					CAS 30mm impacters

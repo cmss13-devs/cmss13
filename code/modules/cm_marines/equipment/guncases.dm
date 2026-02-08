@@ -452,6 +452,18 @@
 	new /obj/item/ammo_magazine/pistol(src)
 	new /obj/item/ammo_magazine/pistol(src)
 
+//MK481
+/obj/item/storage/box/guncase/mk481
+	name = "\improper MK481 Heavy Shotgun case"
+	desc = "A gun case containing a MK481 Heavy Shotgun and a box of high-dispersive shock grenades."
+	storage_slots = 3
+	can_hold = list(/obj/item/weapon/gun/shotgun/pump/mk481,/obj/item/ammo_magazine/shotgun/hdsg,/obj/item/ammo_magazine/shotgun/buckshot)
+
+/obj/item/storage/box/guncase/mk481/fill_preset_inventory()
+	new /obj/item/weapon/gun/shotgun/pump/mk481(src)
+	new /obj/item/ammo_magazine/shotgun/hdsg(src)
+	new /obj/item/ammo_magazine/shotgun/buckshot(src)
+
 // -------- UPP Gun Kits --------
 
 /obj/item/storage/box/guncase/type19

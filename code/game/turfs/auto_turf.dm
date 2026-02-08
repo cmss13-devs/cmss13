@@ -165,12 +165,9 @@
 
 /turf/open/auto_turf/snow/Initialize(mapload, ...)
 	. = ..()
-	is_weedable = bleed_layer ? NOT_WEEDABLE : FULLY_WEEDABLE
 
 /turf/open/auto_turf/snow/changing_layer(new_layer)
 	. = ..()
-	is_weedable = bleed_layer ? NOT_WEEDABLE : FULLY_WEEDABLE
-
 
 /turf/open/auto_turf/snow/insert_self_into_baseturfs()
 	baseturfs += /turf/open/auto_turf/snow/layer0
@@ -227,25 +224,6 @@
 		changing_layer(new_layer)
 
 	return XENO_NO_DELAY_ACTION
-
-/turf/open/auto_turf/snow/Entered(atom/movable/AM)
-	if(bleed_layer > 0)
-		if(iscarbon(AM))
-			var/mob/living/carbon/C = AM
-			var/slow_amount = 0.35
-			var/can_stuck = 1
-			if(istype(C, /mob/living/carbon/xenomorph)||isyautja(C))
-				slow_amount = 0.15
-				can_stuck = 0
-			var/new_slowdown = C.next_move_slowdown + (slow_amount * bleed_layer)
-			if(!HAS_TRAIT(C, TRAIT_HAULED))
-				if(prob(2))
-					to_chat(C, SPAN_WARNING("Moving through [src] slows you down.")) //Warning only
-				else if(can_stuck && bleed_layer == 4 && prob(2))
-					to_chat(C, SPAN_WARNING("You get stuck in [src] for a moment!"))
-					new_slowdown += 10
-				C.next_move_slowdown = new_slowdown
-	..()
 
 /turf/open/auto_turf/snow/layer0 //still have to manually define the layers for the editor
 	icon_state = "snow_0"

@@ -117,6 +117,9 @@
 #define PLASMA_NEUROTOXIN "neurotoxinplasma"
 #define PLASMA_ROYAL "royalplasma"
 
+// Xenomorph-exclusive reagent identifiers
+#define REAGENT_XENO_NEUROTOXIN "xeno_neurotoxin"
+
 // Flags for Reagent
 
 /// Used to restrict recipes in the generator from employing all reagents of this type

@@ -26,6 +26,12 @@
 		* Passing through in this case ignores anything with the throwpass flag, such as tables, racks, and morgue trays.
 */
 /turf/Adjacent(atom/neighbor, atom/target = null, list/ignore_list)
+	var/turf/target_turf_above = SSmapping.get_turf_above(get_turf(neighbor))
+	if(target_turf_above && istype(target_turf_above, /turf/open_space))
+		if(Adjacent(target_turf_above, target, ignore_list))
+			return TRUE
+
+	//we have checked if the neighbor is not above us in open space or below us if we are open space
 	if(neighbor.z && (z != neighbor.z))
 		return FALSE
 

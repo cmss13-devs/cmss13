@@ -37,7 +37,7 @@
 
 /obj/item/storage/pouch/get_examine_text(mob/user)
 	. = ..()
-	. += "Can be worn by attaching it to a pocket."
+	. += SPAN_ORANGE("Can be worn by attaching it to a pocket.")
 
 
 /obj/item/storage/pouch/equipped(mob/user, slot)
@@ -315,14 +315,23 @@
 
 ///Pistol pouch.
 /obj/item/storage/pouch/pistol
-	name = "sidearm pouch"
-	desc = "You could carry a pistol in this; more importantly, you could draw it quickly. Useful for emergencies."
+	name = "sidearm holster"
+	desc = "You could carry a pistol in this; more importantly, you could draw it quickly, and safely when attached to the cord. Useful for emergencies."
 	icon_state = "pistol"
 	use_sound = null
 	max_w_class = SIZE_MEDIUM
-	can_hold = list(/obj/item/weapon/gun/pistol, /obj/item/weapon/gun/revolver,/obj/item/weapon/gun/flare)
+	can_hold = list(
+		/obj/item/weapon/gun/pistol,
+		/obj/item/weapon/gun/revolver,
+		/obj/item/weapon/gun/flare,
+		/obj/item/weapon/gun/energy/taser,
+	)
 	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD|STORAGE_ALLOW_QUICKDRAW
 	flap = FALSE
+	allow_drop_retrieval = TRUE
+	sling_range = 3
+	retrieval_name = "cord"
+	tether_icon = "rope"
 
 	///Display code pulled from belt.dm gun belt. Can shave quite a lot off because this pouch can only hold one item at a time.
 	var/obj/item/weapon/gun/current_gun //The gun it holds, used for referencing later so we can update the icon.
@@ -351,14 +360,14 @@
 			to_chat(usr, SPAN_WARNING("[src] already holds a gun."))
 		return FALSE
 
-/obj/item/storage/pouch/pistol/_item_insertion(obj/item/I, prevent_warning = 0, mob/user)
-	if(isgun(I))
-		current_gun = I
+/obj/item/storage/pouch/pistol/_item_insertion(obj/item/object, prevent_warning = 0, mob/user)
+	if(isgun(object))
+		current_gun = object
 		update_gun_icon()
 	..()
 
-/obj/item/storage/pouch/pistol/_item_removal(obj/item/I, atom/new_location)
-	if(I == current_gun)
+/obj/item/storage/pouch/pistol/_item_removal(obj/item/object, atom/new_location)
+	if(object == current_gun)
 		current_gun = null
 		update_gun_icon()
 	..()
@@ -375,6 +384,66 @@
 		playsound(src, sheatheSound, 15, TRUE)
 		underlays -= gun_underlay
 		gun_underlay = null
+
+/obj/item/storage/pouch/pistol/mag_carrier
+	name = "sidearm carrier"
+	desc = "You could carry a pistol in this; more importantly, you could draw it quickly, and although it lacks a cord, it can carry an extra magazine, of any kind, provided it fits the damn thing. Useful for emergencies."
+	storage_slots = 2 // one pistol, one mag
+	icon_state = "pistol_pouch"
+	can_hold = list(
+		/obj/item/weapon/gun/pistol,
+		/obj/item/weapon/gun/revolver,
+		/obj/item/weapon/gun/flare,
+		/obj/item/weapon/gun/energy/taser,
+		// magazine
+		/obj/item/ammo_magazine/rifle,
+		/obj/item/ammo_magazine/smg,
+		/obj/item/ammo_magazine/pistol,
+		/obj/item/ammo_magazine/revolver,
+		/obj/item/ammo_magazine/sniper,
+		/obj/item/ammo_magazine/handful,
+	)
+	allow_drop_retrieval = FALSE
+	var/obj/item/ammo_magazine/inserted_mag
+
+	icon_x = -3
+	icon_y = 0
+
+/obj/item/storage/pouch/pistol/mag_carrier/Destroy()
+	inserted_mag = null
+	. = ..()
+
+/obj/item/storage/pouch/pistol/mag_carrier/on_stored_atom_del(atom/movable/AM)
+	if(AM == inserted_mag)
+		inserted_mag = null
+		update_icon()
+	..()
+
+/obj/item/storage/pouch/pistol/mag_carrier/can_be_inserted(obj/item/object, mob/user, stop_messages = FALSE)
+	. = ..()
+	if(!.)
+		return
+	if(inserted_mag && istype(object, /obj/item/ammo_magazine))
+		if(!stop_messages)
+			to_chat(usr, SPAN_WARNING("[src] already holds a magazine."))
+		return FALSE
+
+/obj/item/storage/pouch/pistol/mag_carrier/_item_insertion(obj/item/object, prevent_warning = 0, mob/user)
+	if(istype(object, /obj/item/ammo_magazine))
+		inserted_mag = object
+		update_icon()
+	..()
+
+/obj/item/storage/pouch/pistol/mag_carrier/_item_removal(obj/item/object, atom/new_location)
+	if(object == inserted_mag)
+		inserted_mag = null
+		update_icon()
+	..()
+
+/obj/item/storage/pouch/pistol/mag_carrier/update_icon()
+	overlays.Cut()
+	if(inserted_mag)
+		overlays += "+pistol_pouch_mag"
 
 ///CO pouch. This pouch can hold only 1 of each type of item: 1 sidearm, 1 pair of binoculars, 1 CO tablet
 /obj/item/storage/pouch/pistol/command
@@ -393,6 +462,7 @@
 	var/obj/item/device/cotablet/tablet
 	icon_x = -6
 	icon_y = 0
+	allow_drop_retrieval = FALSE
 
 /obj/item/storage/pouch/pistol/command/Destroy()
 	binos = null
@@ -406,30 +476,30 @@
 	else if(AM == tablet)
 		tablet = null
 
-/obj/item/storage/pouch/pistol/command/can_be_inserted(obj/item/I, mob/user, stop_messages = FALSE)
+/obj/item/storage/pouch/pistol/command/can_be_inserted(obj/item/object, mob/user, stop_messages = FALSE)
 	. = ..()
 	if(!.)
 		return
-	if(binos && istype(I, /obj/item/device/binoculars))
+	if(binos && istype(object, /obj/item/device/binoculars))
 		if(!stop_messages)
 			to_chat(usr, SPAN_WARNING("[src] already holds a pair of binoculars."))
 		return FALSE
-	else if(tablet && istype(I, /obj/item/device/cotablet))
+	else if(tablet && istype(object, /obj/item/device/cotablet))
 		if(!stop_messages)
 			to_chat(usr, SPAN_WARNING("[src] already holds a tablet."))
 		return FALSE
 
-/obj/item/storage/pouch/pistol/command/_item_insertion(obj/item/I, prevent_warning = 0, mob/user)
-	if(istype(I, /obj/item/device/binoculars))
-		binos = I
-	else if(istype(I, /obj/item/device/cotablet))
-		tablet = I
+/obj/item/storage/pouch/pistol/command/_item_insertion(obj/item/object, prevent_warning = 0, mob/user)
+	if(istype(object, /obj/item/device/binoculars))
+		binos = object
+	else if(istype(object, /obj/item/device/cotablet))
+		tablet = object
 	..()
 
-/obj/item/storage/pouch/pistol/command/_item_removal(obj/item/I, atom/new_location)
-	if(I == binos)
+/obj/item/storage/pouch/pistol/command/_item_removal(obj/item/object, atom/new_location)
+	if(object == binos)
 		binos = null
-	else if(I == tablet)
+	else if(object == tablet)
 		tablet = null
 	..()
 
@@ -451,10 +521,10 @@
 /obj/item/storage/pouch/pistol/command/attack_hand(mob/user, mods) //Mostly copied from gunbelt.
 	if(current_gun && ishuman(user) && loc == user)
 		if(mods && mods[ALT_CLICK] && length(contents) > 1) //Withdraw the most recently inserted nongun item if possible.
-			var/obj/item/I = contents[length(contents)]
-			if(isgun(I))
-				I = contents[length(contents) - 1]
-			I.attack_hand(user)
+			var/obj/item/object = contents[length(contents)]
+			if(isgun(object))
+				object = contents[length(contents) - 1]
+			object.attack_hand(user)
 		else
 			current_gun.attack_hand(user)
 		return
@@ -1662,80 +1732,18 @@
 	new /obj/item/reagent_container/spray/pepper(src)
 
 /obj/item/storage/pouch/sling
-	name = "sling strap"
-	desc = "Keeps a single item attached to a strap."
+	name = "sling pouch"
+	desc = "Keeps a single item tethered to a strap, allowing for easy retrieval."
 	storage_slots = 1
 	max_w_class = SIZE_MEDIUM
 	icon_state = "sling"
 	can_hold = list(/obj/item/device, /obj/item/tool)
 	bypass_w_limit = list(/obj/item/tool/shovel/etool)
 	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD
-	var/sling_range = 2
-	var/obj/item/slung
-
-/obj/item/storage/pouch/sling/get_examine_text(mob/user)
-	. = ..()
-	if(slung && slung.loc != src)
-		. += "\The [slung] is attached to the sling."
-
-/obj/item/storage/pouch/sling/can_be_inserted(obj/item/I, mob/user, stop_messages = FALSE)
-	if(slung)
-		if(slung != I)
-			if(!stop_messages)
-				to_chat(usr, SPAN_WARNING("\the [slung] is already attached to the sling."))
-			return FALSE
-	else if(SEND_SIGNAL(I, COMSIG_DROP_RETRIEVAL_CHECK) & COMPONENT_DROP_RETRIEVAL_PRESENT)
-		if(!stop_messages)
-			to_chat(usr, SPAN_WARNING("[I] is already attached to another sling."))
-		return FALSE
-	return ..()
-
-/obj/item/storage/pouch/sling/_item_insertion(obj/item/I, prevent_warning = FALSE, mob/user)
-	if(!slung)
-		slung = I
-		slung.AddElement(/datum/element/drop_retrieval/pouch_sling, src)
-		if(!prevent_warning)
-			to_chat(user, SPAN_NOTICE("You attach the sling to [I]."))
-	..()
-
-/obj/item/storage/pouch/sling/attack_self(mob/user)
-	if(slung)
-		to_chat(user, SPAN_NOTICE("You retract the sling from [slung]."))
-		unsling()
-		return
-	return ..()
-
-/obj/item/storage/pouch/sling/proc/unsling()
-	if(!slung)
-		return
-	slung.RemoveElement(/datum/element/drop_retrieval/pouch_sling, src)
-	slung = null
-
-/obj/item/storage/pouch/sling/proc/sling_return(mob/living/carbon/human/user)
-	if(!slung || !slung.loc)
-		return FALSE
-	if(slung.loc == user)
-		return TRUE
-	if(!isturf(slung.loc))
-		return FALSE
-	if(get_dist(slung, src) > sling_range)
-		return FALSE
-	if(handle_item_insertion(slung))
-		if(user)
-			to_chat(user, SPAN_NOTICE("[slung] snaps back into [src]."))
-		return TRUE
-
-/obj/item/storage/pouch/sling/proc/attempt_retrieval(mob/living/carbon/human/user)
-	if(sling_return(user))
-		return
-	unsling()
-	if(user && src.loc == user)
-		to_chat(user, SPAN_WARNING("The sling of your [src] snaps back empty!"))
-
-/obj/item/storage/pouch/sling/proc/handle_retrieval(mob/living/carbon/human/user)
-	if(slung && slung.loc == src)
-		return
-	addtimer(CALLBACK(src, PROC_REF(attempt_retrieval), user), 0.3 SECONDS, TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
+	allow_drop_retrieval = TRUE
+	sling_range = 2
+	retrieval_name = "sling"
+	tether_icon = "rope"
 
 /obj/item/storage/pouch/cassette
 	name = "cassette pouch"
@@ -1766,11 +1774,11 @@
 				var/obj/item/device/cassette_tape/first_tape = contents[1]
 				underlays += image(first_tape.icon, null, first_tape.icon_state, pixel_y = -4)
 				var/obj/item/device/cassette_tape/second_tape = contents[2]
-				var/image/I = image(second_tape.icon, null, second_tape.icon_state, pixel_y = 5)
+				var/image/object = image(second_tape.icon, null, second_tape.icon_state, pixel_y = 5)
 				var/matrix/M = matrix()
 				M.Turn(180)
-				I.transform = M
-				underlays += I
+				object.transform = M
+				underlays += object
 			if(1)
 				icon_state = "[base_icon_state]_1"
 				var/obj/item/device/cassette_tape/first_tape = contents[1]

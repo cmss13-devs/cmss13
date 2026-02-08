@@ -53,18 +53,131 @@
 /datum/element/drop_retrieval/gun/dropped(obj/item/weapon/gun/G, mob/user)
 	G.handle_retrieval(user, retrieval_slot)
 
-/datum/element/drop_retrieval/pouch_sling
-	compatible_types = list(/obj/item/device, /obj/item/tool)
-	var/obj/item/storage/pouch/sling/container
+//-------------------------------------------------------
 
-/datum/element/drop_retrieval/pouch_sling/Attach(datum/target, obj/item/storage/pouch/sling/new_container)
+// STORAGE - SPECIFIC RETRIEVAL START
+
+/datum/element/drop_retrieval/storage
+	compatible_types = list(/obj/item)
+	var/obj/item/storage/container
+	var/datum/effects/tethering/active_tether
+
+/datum/element/drop_retrieval/storage/Attach(datum/target, obj/item/storage/new_container)
 	. = ..()
 	if(.)
 		return
 	container = new_container
+	UnregisterSignal(target, COMSIG_MOVABLE_PRE_THROW) // necessary since we are calling parent
+	RegisterSignal(target, COMSIG_MOVABLE_MOVED, PROC_REF(check_tether))
+	RegisterSignal(container, COMSIG_MOVABLE_MOVED, PROC_REF(container_moved))
+	RegisterSignal(target, COMSIG_ITEM_PICKUP, PROC_REF(check_pickup))
 
-/datum/element/drop_retrieval/pouch_sling/dropped(obj/item/I, mob/user)
-	container.handle_retrieval(user)
+/datum/element/drop_retrieval/storage/Detach(datum/source, force)
+	if(active_tether)
+		UnregisterSignal(active_tether, COMSIG_PARENT_QDELETING)
+		QDEL_NULL(active_tether)
+	UnregisterSignal(source, COMSIG_MOVABLE_MOVED)
+	UnregisterSignal(source, COMSIG_ITEM_PICKUP)
+	if(container)
+		UnregisterSignal(container, COMSIG_MOVABLE_MOVED)
+	return ..()
+
+/datum/element/drop_retrieval/storage/dropped(obj/item/object, mob/user)
+	maintain_tether()
+
+/datum/element/drop_retrieval/storage/proc/check_tether(atom/movable/source)
+	SIGNAL_HANDLER
+
+	if(active_tether)
+		if(source.loc == container)
+			QDEL_NULL(active_tether)
+			return
+		var/atom/current_target = active_tether.tethered?.affected_atom
+		var/atom/desired_target = get_tether_target()
+		if(current_target != desired_target)
+			qdel(active_tether)
+
+	maintain_tether()
+
+/datum/element/drop_retrieval/storage/proc/container_moved(datum/source)
+	SIGNAL_HANDLER
+
+	if(active_tether)
+		var/atom/current_anchor = active_tether.affected_atom
+		var/atom/desired_anchor = get_anchor()
+		if(current_anchor != desired_anchor)
+			qdel(active_tether)
+
+	maintain_tether()
+
+/datum/element/drop_retrieval/storage/proc/check_pickup(obj/item/source, mob/user) // ordinarily attack_hand would be cleaner here, but signal shenanigans
+	SIGNAL_HANDLER
+
+	var/atom/anchor = get_anchor()
+	if(get_dist(user, anchor) > container.sling_range)
+		to_chat(user, SPAN_WARNING("\The [source] is tethered too far away to pick up!"))
+		return COMSIG_ITEM_PICKUP_CANCELLED
+
+/datum/element/drop_retrieval/storage/proc/tether_deleted(datum/source)
+	SIGNAL_HANDLER
+
+	if(active_tether == source)
+		active_tether = null
+
+	maintain_tether()
+
+/datum/element/drop_retrieval/storage/proc/maintain_tether()
+	if(active_tether)
+		return
+
+	var/obj/item/object = container.slung_item
+	if(!object || object.loc == container)
+		return
+
+	var/atom/anchor = get_anchor()
+	var/atom/target = get_tether_target()
+
+	if(anchor == target) // lets not tether to self
+		return
+
+	if(get_dist(anchor, target) > container.sling_range) // really annoying edgecase code i needed to do here if the storage item is picked up farther than the sling_range yet phone.dm has this handled safely somehow, probably some element limitation or something w/e - nihi
+		container.unsling(forced = TRUE)
+		return
+
+	var/list/tether_data = apply_tether(anchor, target, range = container.sling_range, icon = container.tether_icon)
+	active_tether = tether_data["tetherer_tether"]
+	RegisterSignal(active_tether, COMSIG_PARENT_QDELETING, PROC_REF(tether_deleted))
+
+/datum/element/drop_retrieval/storage/proc/get_anchor()
+	var/atom/object = container
+	var/i = 0
+	while(object && !ismob(object) && i < 10)
+		if(isturf(object.loc))
+			return object
+		object = object.loc
+		i++
+	if(ismob(object))
+		return object
+	return container
+
+/datum/element/drop_retrieval/storage/proc/get_tether_target() // god just drive me insane, tldr responsible for checking where the item currently is
+	var/obj/item/object = container.slung_item
+	if(!object)
+		return null
+	var/atom/item = object
+	var/i = 0
+	while(item && !ismob(item) && i < 10)
+		if(isturf(item.loc))
+			return item
+		item = item.loc
+		i++
+	if(ismob(item))
+		return item
+	return object
+
+// STORAGE - SPECIFIC RETRIEVAL END
+
+//-------------------------------------------------------
 
 /datum/element/drop_retrieval/mister
 	compatible_types = list(/obj/item/reagent_container/spray/mister)

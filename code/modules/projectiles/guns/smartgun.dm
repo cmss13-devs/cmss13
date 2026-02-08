@@ -47,7 +47,7 @@
 		/datum/action/item_action/smartgun/toggle_accuracy_improvement,
 		/datum/action/item_action/smartgun/toggle_ammo_type,
 		/datum/action/item_action/smartgun/toggle_auto_fire,
-		/datum/action/item_action/smartgun/toggle_frontline_mode,
+		/datum/action/item_action/smartgun/toggle_direct_mode,
 		/datum/action/item_action/smartgun/toggle_lethal_mode,
 		/datum/action/item_action/smartgun/toggle_motion_detector,
 		/datum/action/item_action/smartgun/toggle_recoil_compensation,
@@ -66,18 +66,18 @@
 	var/datum/ammo/ammo_primary //Toggled ammo type
 	/// The current AP ammo datum
 	var/datum/ammo/ammo_secondary //Toggled ammo type
-	/// Non-Frontline mode normal ammo datum
+	/// Non-Direct mode normal ammo datum
 	var/datum/ammo/ammo_primary_def = /datum/ammo/bullet/smartgun
-	/// Non-Frontline mode AP ammo datum
+	/// Non-Direct mode AP ammo datum
 	var/datum/ammo/ammo_secondary_def = /datum/ammo/bullet/smartgun/armor_piercing
-	/// Frontline mode normal ammo datum
+	/// Direct mode normal ammo datum
 	var/datum/ammo/ammo_primary_alt = /datum/ammo/bullet/smartgun/alt
-	/// Frontline mode AP ammo datum
+	/// Direct mode AP ammo datum
 	var/datum/ammo/ammo_secondary_alt = /datum/ammo/bullet/smartgun/armor_piercing/alt
 	/// Whether IFF mode is toggled on
 	var/iff_enabled = TRUE //Begin with the safety on.
-	/// Whether Frontline mode is toggled on
-	var/frontline_enabled = FALSE //Begin with Frontline mode off.
+	/// Whether Direct mode is toggled on
+	var/direct_enabled = FALSE //Begin with Direct mode off.
 	/// Whether we are using AP ammo currently
 	var/secondary_toggled = FALSE
 	/// If the gun should have custom overlay for cover depending on whether it has a drum or not
@@ -159,7 +159,7 @@
 		scatter = SCATTER_AMOUNT_TIER_6
 		recoil = RECOIL_AMOUNT_TIER_3
 		damage_mult = BASE_BULLET_DAMAGE_MULT
-	if(!iff_enabled || frontline_enabled)
+	if(!iff_enabled || direct_enabled)
 		ammo_primary = ammo_primary_alt
 		ammo_secondary = ammo_secondary_alt
 	else
@@ -179,7 +179,7 @@
 		rounds = current_mag.current_rounds
 	var/message = "[rounds ? "Ammo counter shows [rounds] round\s remaining." : "It's dry."]"
 	. += message
-	. += "Frontline mode is [frontline_enabled ?  "<B>on</b>" : "<B>off</b>"]."
+	. += "Direct mode is [direct_enabled ?  "<B>on</b>" : "<B>off</b>"]."
 	. += "The restriction system is [iff_enabled ? "<B>on</b>" : "<B>off</b>"]."
 
 	if(battery && get_dist(user, src) <= 1)
@@ -371,23 +371,23 @@
 	button.overlays.Cut()
 	button.overlays += image ('icons/mob/hud/actions.dmi', button, action_icon_state)
 
-/datum/action/item_action/smartgun/toggle_frontline_mode/New(Target, obj/item/holder)
+/datum/action/item_action/smartgun/toggle_direct_mode/New(Target, obj/item/holder)
 	. = ..()
-	name = "Toggle Frontline Mode"
-	action_icon_state = "frontline_toggle_off"
-	listen_signal = COMSIG_KB_HUMAN_WEAPON_TOGGLE_FRONTLINE_MODE
+	name = "Toggle Direct Mode"
+	action_icon_state = "direct_toggle_off"
+	listen_signal = COMSIG_KB_HUMAN_WEAPON_TOGGLE_DIRECT_MODE
 	button.name = name
 	button.overlays.Cut()
 	button.overlays += image ('icons/mob/hud/actions.dmi', button, action_icon_state)
 
-/datum/action/item_action/smartgun/toggle_frontline_mode/action_activate()
+/datum/action/item_action/smartgun/toggle_direct_mode/action_activate()
 	. = ..()
 	var/obj/item/weapon/gun/smartgun/gun = holder_item
-	gun.toggle_frontline_mode(owner)
-	if(gun.frontline_enabled)
-		action_icon_state = "frontline_toggle_on"
+	gun.toggle_direct_mode(owner)
+	if(gun.direct_enabled)
+		action_icon_state = "direct_toggle_on"
 	else
-		action_icon_state = "frontline_toggle_off"
+		action_icon_state = "direct_toggle_off"
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
 
@@ -434,24 +434,24 @@
 
 //more general procs
 
-/obj/item/weapon/gun/smartgun/proc/toggle_frontline_mode(mob/user, silent)
-	to_chat(user, "[icon2html(src, user)] You [frontline_enabled? "<B>disable</b>" : "<B>enable</b>"] [src]'s frontline mode. You will now [frontline_enabled ? "be able to shoot through friendlies" : "deal increased damage but be unable to shoot through friendlies"].")
+/obj/item/weapon/gun/smartgun/proc/toggle_direct_mode(mob/user, silent)
+	to_chat(user, "[icon2html(src, user)] You [direct_enabled? "<B>disable</b>" : "<B>enable</b>"] [src]'s direct mode. You will now [direct_enabled ? "suffer from normal damage falloff but be able to shoot through friendlies" : "deal full damage at any range within 7 tiles but be unable to shoot through friendlies"].")
 	if(!silent)
-		balloon_alert(user, "frontline mode [frontline_enabled ? "disabled" : "enabled"]")
+		balloon_alert(user, "direct mode [direct_enabled ? "disabled" : "enabled"]")
 		playsound(loc,'sound/machines/click.ogg', 25, 1)
-	frontline_enabled = !frontline_enabled
-///Determines the color of the muzzle flash, depending on whether frontline mode is enabled or not.
-	if (!frontline_enabled)
+	direct_enabled = !direct_enabled
+///Determines the color of the muzzle flash, depending on whether direct mode is enabled or not.
+	if (!direct_enabled)
 		muzzle_flash = "muzzle_flash_blue"
 		muzzle_flash_color = COLOR_MUZZLE_BLUE
 	else
 		muzzle_flash = "muzzle_flash"
 		muzzle_flash_color = COLOR_VERY_SOFT_YELLOW
 
-	SEND_SIGNAL(src, COMSIG_GUN_ALT_IFF_TOGGLED, frontline_enabled)
+	SEND_SIGNAL(src, COMSIG_GUN_ALT_IFF_TOGGLED, direct_enabled)
 	recalculate_attachment_bonuses()
-///Having the SG check it's config after toggling frontline mode & IFF is essential, or it won't update properly.
-///e.g. turning IFF off, firing once, turning IFF on will let the user fire frontline bullets over friendlies if the gun doesn't check.
+///Having the SG check it's config after toggling direct mode & IFF is essential, or it won't update properly.
+///e.g. turning IFF off, firing once, turning IFF on will let the user fire direct bullets over friendlies if the gun doesn't check.
 	set_gun_config_values()
 
 /obj/item/weapon/gun/smartgun/able_to_fire(mob/living/user)
@@ -502,15 +502,15 @@
 		add_bullet_trait(BULLET_TRAIT_ENTRY_ID("iff", /datum/element/bullet_trait_iff))
 		drain += 10
 		MD.iff_signal = gun_faction
-		SEND_SIGNAL(src, COMSIG_GUN_ALT_IFF_TOGGLED, frontline_enabled)
+		SEND_SIGNAL(src, COMSIG_GUN_ALT_IFF_TOGGLED, direct_enabled)
 	if(!iff_enabled)
 		remove_bullet_trait("iff")
 		drain -= 10
 		MD.iff_signal = null
 		SEND_SIGNAL(src, COMSIG_GUN_ALT_IFF_TOGGLED, FALSE)
 		recalculate_attachment_bonuses()
-///Having the SG check it's config after toggling frontline mode & IFF is essential, or it won't update properly.
-///e.g. turning IFF off, firing once, turning IFF on will let the user fire frontline bullets over friendlies if the gun doesn't check.
+///Having the SG check it's config after toggling direct mode & IFF is essential, or it won't update properly.
+///e.g. turning IFF off, firing once, turning IFF on will let the user fire direct bullets over friendlies if the gun doesn't check.
 	set_gun_config_values()
 
 /obj/item/weapon/gun/smartgun/Fire(atom/target, mob/living/user, params, reflex = 0, dual_wield)
@@ -931,7 +931,7 @@
 	ammo_primary_def = /datum/ammo/bullet/smartgun/heap
 	actions_types = list(
 		/datum/action/item_action/smartgun/toggle_accuracy_improvement,
-		/datum/action/item_action/smartgun/toggle_frontline_mode,
+		/datum/action/item_action/smartgun/toggle_direct_mode,
 		/datum/action/item_action/smartgun/toggle_aim_assist,
 		/datum/action/item_action/smartgun/toggle_lethal_mode,
 		/datum/action/item_action/smartgun/toggle_motion_detector,
@@ -961,7 +961,7 @@
 		/datum/action/item_action/smartgun/toggle_accuracy_improvement,
 		/datum/action/item_action/smartgun/toggle_ammo_type,
 		/datum/action/item_action/smartgun/toggle_aim_assist,
-		/datum/action/item_action/smartgun/toggle_frontline_mode,
+		/datum/action/item_action/smartgun/toggle_direct_mode,
 		/datum/action/item_action/smartgun/toggle_lethal_mode,
 		/datum/action/item_action/smartgun/toggle_motion_detector,
 		/datum/action/item_action/smartgun/toggle_recoil_compensation,
@@ -1067,7 +1067,7 @@
 			if(2)
 				toggle_auto_fire(user)
 			if(3)
-				toggle_frontline_mode(user)
+				toggle_direct_mode(user)
 			if(4)
 				toggle_motion_detector(user)
 			if(5)
@@ -1187,10 +1187,10 @@
 	. = ..()
 	AddElement(/datum/element/corp_label/norcomm)
 
-//  Solar devils SG, frontline mode only
+//  Solar devils SG, direct mode only
 
 /obj/item/weapon/gun/smartgun/pve
-	desc = "The actual firearm in the 4-piece M56A2 Smartgun System. This is a variant used by the Solar Devils Batallion, utilizing a 'frontline only' IFF system that refuses to fire if a friendly would be hit."
+	desc = "The actual firearm in the 4-piece M56A2 Smartgun System. This is a variant used by the Solar Devils Batallion, utilizing a 'direct only' IFF system that refuses to fire if a friendly would be hit."
 	actions_types = list(
 		/datum/action/item_action/smartgun/toggle_accuracy_improvement,
 		/datum/action/item_action/smartgun/toggle_ammo_type,
@@ -1202,7 +1202,7 @@
 
 /obj/item/weapon/gun/smartgun/pve/Initialize(mapload, ...)
 	. = ..()
-	toggle_frontline_mode(null, TRUE)
+	toggle_direct_mode(null, TRUE)
 
 /obj/item/weapon/gun/smartgun/pve/set_gun_config_values()
 	..()

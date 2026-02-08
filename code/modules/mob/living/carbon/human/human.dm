@@ -4,6 +4,9 @@
 	GLOB.alive_human_list += src
 	SShuman.processable_human_list += src
 
+	RegisterSignal(src, COMSIG_DEATH_DATA_UPDATE, PROC_REF(on_death_signal))
+	RegisterSignal(src, COMSIG_DEATH_DATA_PHASE_GENERATION, PROC_REF(phase_create))
+
 	if(!species)
 		if(new_species)
 			set_species(new_species)
@@ -1890,3 +1893,41 @@
 			return method ? ">250" : "extremely weak and fast, patient's artery feels like a thread"
 // output for machines^ ^^^^^^^output for people^^^^^^^^^
 
+
+/mob/living/carbon/human
+	var/list/death_variables = list()
+	var/list/death_phase_waves = list()
+	var/corpse_already_analyzed = FALSE  // Track if this corpse has been analyzed
+/mob/living/carbon/human/proc/on_death_signal()
+	SIGNAL_HANDLER
+
+	// Initialize death variables when the mob dies. Raw values for when the mob died.
+	LAZYSET(death_variables, CORPSE_BRUTE_DAMAGE, getBruteLoss())
+	LAZYSET(death_variables, CORPSE_BURN_DAMAGE, getFireLoss())
+	LAZYSET(death_variables, CORPSE_TOXIN_DAMAGE, getToxLoss())
+	LAZYSET(death_variables, CORPSE_OXYGEN_DAMAGE, getOxyLoss())
+	LAZYSET(death_variables, CORPSE_BROKEN_BONES, count_broken_bones())
+	LAZYSET(death_variables, CORPSE_PAIN_DAMAGE, pain.get_pain_percentage())
+	//code for larva parasitization
+	if(chestburst == 2)
+		LAZYSET(death_variables, CORPSE_PARASITIZATION, 100)
+	else
+		// Check if corpse has a larvae inside
+		var/obj/item/alien_embryo/embryo = locate(/obj/item/alien_embryo) in src
+		if(embryo)
+			// Calculate parasitization percentage based on embryo development
+			// counter increases to about 450 before bursting, so we scale to 100%
+			var/parasitization_percent = min((embryo.counter / 450) * 100, 100)
+			LAZYSET(death_variables, CORPSE_PARASITIZATION, parasitization_percent)
+		else
+			LAZYSET(death_variables, CORPSE_PARASITIZATION, 0)
+
+
+/mob/living/carbon/human/proc/phase_create()
+	SIGNAL_HANDLER
+	// Possible phase values (0-2 in 0.5 intervals)
+	var/list/phase_options = list(0.0, 0.5, 1.0, 1.5, 2.0)
+
+	// Iterate over existing death_variables and assign random phases
+	for(var/damage_type in death_variables)
+		LAZYSET(death_phase_waves, damage_type, pick(phase_options))

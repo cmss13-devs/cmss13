@@ -966,13 +966,13 @@
 			var/obj/structure/dropship_equipment/autoreloader/auto = equipment
 			data["reload_cooldown"] = auto.reload_cooldown
 			data["stored_ammo"] = list()
-			for(var/obj/structure/ship_ammo/A in auto.stored_ammo)
+			for(var/obj/structure/ship_ammo/Ammo in auto.stored_ammo)
 				data["stored_ammo"] += list(list(
-					"name" = A.name,
-					"ammo_count" = A.ammo_count,
-					"max_ammo_count" = A.max_ammo_count,
-					"ammo_name" = A.ammo_name,
-					"ref" = ref(A)
+					"name" = Ammo.name,
+					"ammo_count" = Ammo.ammo_count,
+					"max_ammo_count" = Ammo.max_ammo_count,
+					"ammo_name" = Ammo.ammo_name,
+					"ref" = ref(Ammo)
 				))
 
 		. += list(data)

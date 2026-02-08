@@ -171,6 +171,9 @@
 			else
 				PC.update_icon("ds_ammo")
 
+// Proc to create warning dots for cluster/incendiary bombs
+/obj/structure/ship_ammo/proc/create_warning_dot(turf/target_turf)
+	new /obj/effect/overlay/temp/blinking_laser(target_turf)
 
 //30mm gun
 
@@ -447,7 +450,7 @@
 
 /obj/structure/ship_ammo/rocket/fatty
 	name = "\improper SM-17 'Fatty'"
-	desc = "The SM-17 'Fatty' is a cluster-bomb type ordnance that only requires laser-guidance when first launched. After being temporarily recalled due to its inbalanced friendly to foe casualty ratio, it has been reintroduced to fleets in limited capacities. Can be loaded into the LAU-444 Guided Missile Launcher."
+	desc = "The SM-17 'Fatty' is a cluster-bomb type ordnance that only requires laser-guidance when first launched. After being temporarily recalled due to its inbalanced friendly to foe casualty ratio, it has been reintroduced to fleets in limited capacity. Can be loaded into the LAU-444 Guided Missile Launcher."
 	icon_state = "fatty"
 	ammo_id = "f"
 	travelling_time = 70 //slower
@@ -467,9 +470,9 @@
 
 	for(var/i=1 to 8)
 		var/list/coords = impact_coords[i]
-		var/turf/T = locate(impact.x+coords[1], impact.y+coords[2], impact.z)
-		if(T)
-			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(fire_in_a_hole_cluster), T, 275, 50, cached_name, cached_source_mob, /obj/structure/ship_ammo/rocket/fatty), (1.5 + i * 0.1) SECONDS)
+		var/turf/Turf = locate(impact.x+coords[1], impact.y+coords[2], impact.z)
+		if(Turf)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(fire_in_a_hole_cluster), Turf, 275, 50, cached_name, cached_source_mob, /obj/structure/ship_ammo/rocket/fatty), (1.5 + i * 0.1) SECONDS)
 
 	QDEL_IN(src, 2.5 SECONDS)
 
@@ -1029,10 +1032,6 @@
 		return FALSE
 
 //Procs
-
-// Proc to create warning dots for cluster/incendiary bombs
-/obj/structure/ship_ammo/proc/create_warning_dot(turf/target_turf)
-	new /obj/effect/overlay/temp/blinking_laser(target_turf)
 
 // Global procedures for cluster/incendiary bomb effects
 /proc/fire_in_a_hole_cluster(turf/target_turf, explosion_power, explosion_falloff, weapon_name, mob/source_mob, bomb_type = /obj/structure/ship_ammo)

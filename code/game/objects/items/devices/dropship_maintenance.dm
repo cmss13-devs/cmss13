@@ -56,12 +56,12 @@
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED) && !skillcheck(user, SKILL_PILOT, SKILL_PILOT_TRAINED))
 			to_chat(user, SPAN_WARNING("You don't understand how to scan anything with this!"))
 			return
-		var/obj/structure/dropship_equipment/weapon/W = target
-		if(!length(W.active_effects))
-			to_chat(user, SPAN_NOTICE("[W] does not appear to be damaged."))
+		var/obj/structure/dropship_equipment/weapon/weapon = target
+		if(!length(weapon.active_effects))
+			to_chat(user, SPAN_NOTICE("[weapon] does not appear to be damaged."))
 			return
 		var found = FALSE
-		for(var/datum/dropship_antiair/effect in W.active_effects)
+		for(var/datum/dropship_antiair/effect in weapon.active_effects)
 			if(effect && length(effect.repair_steps))
 				found = TRUE
 		if(!found)
@@ -71,16 +71,16 @@
 			return
 
 		// Check if weapon is already scanned
-		if(W in src.scanned_weapons)
-			to_chat(user, SPAN_NOTICE("[W] has already been scanned."))
+		if(weapon in src.scanned_weapons)
+			to_chat(user, SPAN_NOTICE("[weapon] has already been scanned."))
 			return
 
 		// Store original mount point when first scanned
-		var/original_mount_point = W.ship_base?.attach_id
-		src.original_mount_points[W] = original_mount_point
+		var/original_mount_point = weapon.ship_base?.attach_id
+		src.original_mount_points[weapon] = original_mount_point
 
 		// Add weapon to scanned list
-		src.scanned_weapons += W
+		src.scanned_weapons += weapon
 		playsound(src, 'sound/mecha/lowpower.ogg', 50, 1)
 		to_chat(user, SPAN_NOTICE("Repair scan complete. [length(src.scanned_weapons)] weapon[length(src.scanned_weapons) == 1 ? "" : "s"] scanned. Use the maintenance computer to continue repairs."))
 		update_icon()

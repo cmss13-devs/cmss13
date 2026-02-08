@@ -128,7 +128,7 @@
 							for(var/idx = 1; idx <= length(record.offsets); idx++)
 								record.offsets[idx] = "-"
 
-					found = TRUE
+					found=TRUE
 					break
 		if(!found)
 			bad_records.Add(record)
@@ -138,7 +138,7 @@
 			var/weapon_attach_id = weapon.ship_base.attach_id
 			for(var/datum/cas_fire_mission_record/record in records)
 				if(record.weapon?.ship_base?.attach_id == weapon_attach_id)
-					found = TRUE
+					found=TRUE
 					break
 		if(!found)
 			missing_weapons.Add(weapon)
@@ -357,11 +357,11 @@
 					var/list/selected = list()
 					for(var/i = 1, i <= num_to_affect, i++)
 						selected += eligible_weapons[i]
-					for(var/obj/structure/dropship_equipment/weapon/w in selected)
+					for(var/obj/structure/dropship_equipment/weapon/weapon in selected)
 						if(ispath(shootloc.antiair_effect_type))
-							w.apply_antiair_effect(new shootloc.antiair_effect_type())
-							antiair_affected_this_execution += w
-							just_affected += w
+							weapon.apply_antiair_effect(new shootloc.antiair_effect_type())
+							antiair_affected_this_execution += weapon
+							just_affected += weapon
 				// Shuttle shake and explosion/sparks, only once per shuttle per firemission if any weapon was affected this step
 				if(just_affected.len && linked_console.shuttle_tag && !(linked_console.shuttle_tag in shuttles_with_antiair_fx))
 					shuttles_with_antiair_fx += linked_console.shuttle_tag

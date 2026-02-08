@@ -245,12 +245,12 @@
 
 	playsound(src.loc, 'sound/machines/click.ogg', 15, 1)
 	var/itemcount = 0
-	for(var/obj/O in get_turf(src))
+	for(var/obj/Ammo in get_turf(src))
 		if(itemcount >= storage_capacity)
 			break
-		if(!istype(O, /obj/structure/ship_ammo))
+		if(!istype(Ammo, /obj/structure/ship_ammo))
 			continue
-		O.forceMove(src)
+		Ammo.forceMove(src)
 		itemcount++
 
 	opened = FALSE

@@ -285,22 +285,15 @@
 
 // static lookup table for equipment
 /proc/get_equipment_categories(equipment_type)
-	// weapons
-	if(ispath(equipment_type, /obj/structure/dropship_equipment/weapon))
-		// adds bellygun to the weapon category
-		if(ispath(equipment_type, /obj/structure/dropship_equipment/weapon/heavygun/bay))
-			return list("dropship_crew_weapon")
-		else if(ispath(equipment_type, /obj/structure/dropship_equipment/weapon/heavygun) || \
-				ispath(equipment_type, /obj/structure/dropship_equipment/weapon/laser_beam_gun) || \
-				ispath(equipment_type, /obj/structure/dropship_equipment/weapon/rocket_pod) || \
-				ispath(equipment_type, /obj/structure/dropship_equipment/weapon/missile_silo) || \
-				ispath(equipment_type, /obj/structure/dropship_equipment/weapon/bomb_bay) || \
-				ispath(equipment_type, /obj/structure/dropship_equipment/weapon/minirocket_pod) || \
-				ispath(equipment_type, /obj/structure/dropship_equipment/weapon/flare_launcher) || \
-				ispath(equipment_type, /obj/structure/dropship_equipment/weapon/launch_bay))
-			return list("dropship_weapon")
-		else
-			return list("dropship_weapon", "dropship_crew_weapon")
+	// special weapon cases first
+	if(ispath(equipment_type, /obj/structure/dropship_equipment/weapon/flare_launcher))
+		return list("dropship_electronics")
+	else if(ispath(equipment_type, /obj/structure/dropship_equipment/weapon/heavygun/bay) || \
+			ispath(equipment_type, /obj/structure/dropship_equipment/weapon/launch_bay))
+		return list("dropship_crew_weapon")
+	// all other weapons go to weapon category
+	else if(ispath(equipment_type, /obj/structure/dropship_equipment/weapon))
+		return list("dropship_weapon")
 
 	// electronics
 	else if(ispath(equipment_type, /obj/structure/dropship_equipment/electronics))
@@ -374,14 +367,20 @@
 				equipment_by_category["Uncategorized"] += list(equipment_data)
 		index += 1
 
-	static_data["Equipment"] = list(
-		"Weapon" = equipment_by_category["dropship_weapon"],
-		"Crew Weapon" = equipment_by_category["dropship_crew_weapon"],
-		"Electronics" = equipment_by_category["dropship_electronics"],
-		"Fuel Equipment" = equipment_by_category["dropship_fuel_equipment"],
-		"Computer" = equipment_by_category["dropship_computer"],
-		"Uncategorized" = equipment_by_category["Uncategorized"]
-	)
+	// equipment categories that have items only appear
+	static_data["Equipment"] = list()
+	if(length(equipment_by_category["dropship_weapon"]))
+		static_data["Equipment"]["Weapon"] = equipment_by_category["dropship_weapon"]
+	if(length(equipment_by_category["dropship_crew_weapon"]))
+		static_data["Equipment"]["Crew Weapon"] = equipment_by_category["dropship_crew_weapon"]
+	if(length(equipment_by_category["dropship_electronics"]))
+		static_data["Equipment"]["Electronics"] = equipment_by_category["dropship_electronics"]
+	if(length(equipment_by_category["dropship_fuel_equipment"]))
+		static_data["Equipment"]["Fuel Equipment"] = equipment_by_category["dropship_fuel_equipment"]
+	if(length(equipment_by_category["dropship_computer"]))
+		static_data["Equipment"]["Computer"] = equipment_by_category["dropship_computer"]
+	if(length(equipment_by_category["Uncategorized"]))
+		static_data["Equipment"]["Uncategorized"] = equipment_by_category["Uncategorized"]
 
 	static_data["Ammo"] = list()
 

@@ -100,16 +100,16 @@
 	if(!istype(at))
 		at = get_turf(src)
 	var/obj/effect/overlay/temp/psychic_blip/blip = new()
-	var/image/I = blip.get_blip_image()
-	I.loc = at
-	linked_mob.client.images += I
+	var/image/blip_image = blip.get_blip_image()
+	blip_image.loc = at
+	linked_mob.client.images += blip_image
 	SEND_SOUND(linked_mob, sound('sound/effects/alien_psychic_warning.ogg', volume = 60))
-	addtimer(CALLBACK(src, PROC_REF(clear_psychic_blip), I, blip), 1 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(clear_psychic_blip), blip_image, blip), 1 SECONDS)
 
 
-/mob/hologram/queen/proc/clear_psychic_blip(image/I, obj/effect/overlay/temp/psychic_blip/blip)
-	if(linked_mob && linked_mob.client && I)
-		linked_mob.client.images -= I
+/mob/hologram/queen/proc/clear_psychic_blip(image/blip_image, obj/effect/overlay/temp/psychic_blip/blip)
+	if(linked_mob && linked_mob.client && blip_image)
+		linked_mob.client.images -= blip_image
 	if(blip)
 		qdel(blip)
 

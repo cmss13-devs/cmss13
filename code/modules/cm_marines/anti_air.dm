@@ -140,19 +140,27 @@ GLOBAL_DATUM(almayer_aa_cannon, /obj/structure/anti_air_cannon)
 /datum/dropship_antiair
 	var/name = "antiair effect"
 	var/description = "This equipment has been affected by anti-air defenses."
-	var/examine_text = "The skies are protected by an antiair defense system." // This is the examine text for the tile, think metal roofs etc
-	var/duration = null // default: infinite duration unless set by effect type
+	var/examine_text = "The skies are protected by an antiair defense system." /// This is the examine text for the tile, think metal roofs etc
+	/// default: infinite duration unless set by effect type
+	var/duration = null
 	var/list/repair_steps = list()
-	var/antiair_fire = FALSE // blocks weapon from firing
-	var/antiair_reload = FALSE // blocks weapon from being reloaded
-	var/antiair_destroy = FALSE // destroys the weapon after the duration
+	/// blocks weapon from firing
+	var/antiair_fire = FALSE
+	/// blocks weapon from being reloaded
+	var/antiair_reload = FALSE
+	/// destroys the weapon after the duration
+	var/antiair_destroy = FALSE
 	var/list/tools = list(/obj/item/tool/weldingtool, /obj/item/tool/screwdriver, /obj/item/tool/wrench, /obj/item/tool/wirecutters, /obj/item/tool/crowbar, /obj/item/device/multitool, /obj/item/stack/cable_coil)
 	var/repairing = FALSE
 	var/repair_step_index = 1
-	var/effect_id = null // Unique identifier for this effect instance
-	var/creation_time = null // So we know when it was applied
-	var/repair_steps_count = 3 // Number of repair steps for this effect
-	var/antiair_message = null // Custom message for when this antiair effect triggers during CAS, use PLANE as the placeholder for the DS name, it'll be converted into dropship/bird for marine/xeno
+	/// Unique identifier for this effect instance
+	var/effect_id = null
+	/// So we know when it was applied
+	var/creation_time = null
+	/// Number of repair steps for this effect
+	var/repair_steps_count = 3
+	/// Custom message for when this antiair effect triggers during CAS, use PLANE as the placeholder for the DS name, it'll be converted into dropship/bird for marine/xeno
+	var/antiair_message = null
 
 /datum/dropship_antiair/New()
 	..()
@@ -229,7 +237,7 @@ GLOBAL_DATUM(almayer_aa_cannon, /obj/structure/anti_air_cannon)
 	name = "Corrosive Acid Damage"
 	description = "Corrosive acid is eating through the equipment!"
 	examine_text = "A thick smog of acidic gas lingers above."
-	duration = 1800
+	duration = 1800 // 3 minutes, should be plenty of time for POs to fix even when solo
 	antiair_reload = TRUE
 	antiair_destroy = TRUE
 	tools = list(/obj/item/tool/weldingtool, /obj/item/tool/screwdriver, /obj/item/tool/wrench, /obj/item/tool/wirecutters, /obj/item/tool/crowbar)

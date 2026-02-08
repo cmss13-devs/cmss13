@@ -14,13 +14,13 @@
 	if(!type_to_give)
 		return
 
-	var/datum/supply_order/O = new /datum/supply_order()
-	O.ordernum = GLOB.supply_controller.ordernum++
+	var/datum/supply_order/supply_order = new /datum/supply_order()
+	supply_order.ordernum = GLOB.supply_controller.ordernum++
 	var/actual_type = GLOB.supply_packs_types[type_to_give]
-	O.objects = list(GLOB.supply_packs_datums[actual_type])
-	O.orderedby = MAIN_AI_SYSTEM
+	supply_order.objects = list(GLOB.supply_packs_datums[actual_type])
+	supply_order.orderedby = MAIN_AI_SYSTEM
 
-	GLOB.supply_controller.shoppinglist += O
+	GLOB.supply_controller.shoppinglist += supply_order
 
 /datum/tech/repeatable/dropship/bunkerbuster
 	name = "AGM-98 'MOP' Bunker Buster Bombs"

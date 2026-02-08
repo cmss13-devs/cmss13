@@ -97,7 +97,8 @@
 					return TRUE
 				to_chat(user, SPAN_NOTICE("You begin loading [ammo] into [src]."))
 				playsound(src, 'sound/machines/hydraulics_1.ogg', 40, 1)
-				if(!do_after(user, 20, INTERRUPT_NO_NEEDHAND | BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, target = src))
+				var/load_time = max(5, 20 - (user.skills.get_skill_level(SKILL_ENGINEER) * 5))
+				if(!do_after(user, load_time, INTERRUPT_NO_NEEDHAND | BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, target = src))
 					to_chat(user, SPAN_WARNING("You stop loading [ammo] into [src]."))
 					return TRUE
 				// Directly add ammo to stored_ammo list
@@ -180,8 +181,9 @@
 			hand_ammo.icon_state = handheld_ammo.icon_state
 			hand_ammo.handheld = TRUE
 		if(stackable_ammo && ammo_equipped && hand_ammo && hand_ammo.type == ammo_equipped.type)
-			// Add a 2 second do_after before stacking
-			if(!do_after(user, 20, INTERRUPT_NO_NEEDHAND | BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, target = src))
+			// scales off of engineering, 2 seconds for untrained
+			var/load_time = max(5, 20 - (user.skills.get_skill_level(SKILL_ENGINEER) * 5))
+			if(!do_after(user, load_time, INTERRUPT_NO_NEEDHAND | BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, target = src))
 				to_chat(user, SPAN_WARNING("You stop topping off [src] with the ammo."))
 				return TRUE
 			var/amt_to_add = min(hand_ammo.ammo_count, ammo_equipped.max_ammo_count - ammo_equipped.ammo_count)
@@ -221,7 +223,8 @@
 			qdel(proto)
 			if(compatible)
 				to_chat(user, SPAN_NOTICE("You begin installing [handheld_ammo.name] into [src]."))
-				if(!do_after(user, 20, INTERRUPT_NO_NEEDHAND | BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, target = src))
+				var/load_time = max(5, 20 - (user.skills.get_skill_level(SKILL_ENGINEER) * 5))
+				if(!do_after(user, load_time, INTERRUPT_NO_NEEDHAND | BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, target = src))
 					to_chat(user, SPAN_WARNING("You stop installing [handheld_ammo.name] into [src]."))
 					return TRUE
 				var/obj/structure/ship_ammo/installed = new typepath(src)
@@ -326,11 +329,11 @@
 		to_chat(user, SPAN_WARNING("No malfunctions are available to repair."))
 	return TRUE
 
-/obj/structure/dropship_equipment/proc/load_ammo(obj/item/powerloader_clamp/PC, mob/living/user)
+/obj/structure/dropship_equipment/proc/load_ammo(obj/item/powerloader_clamp/powerloader_clamp, mob/living/user)
 	if(istype(src, /obj/structure/dropship_equipment/weapon))
-		var/obj/structure/dropship_equipment/weapon/W = src
-		if(W.antiair_reload)
-			to_chat(user, SPAN_WARNING("[W] is damaged and cannot be reloaded!"))
+		var/obj/structure/dropship_equipment/weapon/weapon = src
+		if(weapon.antiair_reload)
+			to_chat(user, SPAN_WARNING("[weapon] is damaged and cannot be reloaded!"))
 			return
 
 	// Prevent loading bomb bay ammo while shuttle is in flight
@@ -339,28 +342,28 @@
 			to_chat(user, SPAN_WARNING("You cannot load ammo while the dropship is in flight or busy!"))
 			return
 
-	if(!ship_base || !uses_ammo || ammo_equipped || !istype(PC.loaded, /obj/structure/ship_ammo))
+	if(!ship_base || !uses_ammo || ammo_equipped || !istype(powerloader_clamp.loaded, /obj/structure/ship_ammo))
 		return
-	var/obj/structure/ship_ammo/SA = PC.loaded
+	var/obj/structure/ship_ammo/ship_ammo = powerloader_clamp.loaded
 
 	// Prevent loading any ship_ammo with safety enabled
-	if(SA.safety_enabled)
-		to_chat(user, SPAN_WARNING("You must disable the safety on [SA] before loading it into [src]!"))
+	if(ship_ammo.safety_enabled)
+		to_chat(user, SPAN_WARNING("You must disable the safety on [ship_ammo] before loading it into [src]!"))
 		return
 
 	// Check if equipment_type is a list
-	if(istype(SA.equipment_type, /list))
-		var/eq_types = SA.equipment_type
+	if(istype(ship_ammo.equipment_type, /list))
+		var/eq_types = ship_ammo.equipment_type
 		var/found = FALSE
 		for(var/eq_type in eq_types)
 			if(istype(src, eq_type))  // Check if THIS object is of the allowed type
 				found = TRUE
 				break
 		if(!found)
-			to_chat(user, SPAN_WARNING("[SA] doesn't fit in [src]."))
+			to_chat(user, SPAN_WARNING("[ship_ammo] doesn't fit in [src]."))
 			return
-	else if(!istype(src, SA.equipment_type))
-		to_chat(user, SPAN_WARNING("[SA] doesn't fit in [src]."))
+	else if(!istype(src, ship_ammo.equipment_type))
+		to_chat(user, SPAN_WARNING("[ship_ammo] doesn't fit in [src]."))
 		return
 
 	playsound(src, 'sound/machines/hydraulics_1.ogg', 40, 1)
@@ -371,23 +374,23 @@
 		return
 
 	// Default behavior for weapons and other equipment
-	if(!ammo_equipped && PC.loaded == SA && PC.linked_powerloader && PC.linked_powerloader.buckled_mob == user)
-		SA.forceMove(src)
-		PC.loaded = null
+	if(!ammo_equipped && powerloader_clamp.loaded == ship_ammo && powerloader_clamp.linked_powerloader && powerloader_clamp.linked_powerloader.buckled_mob == user)
+		ship_ammo.forceMove(src)
+		powerloader_clamp.loaded = null
 		playsound(src, 'sound/machines/hydraulics_2.ogg', 40, 1)
-		PC.update_icon()
-		to_chat(user, SPAN_NOTICE("You load [SA] into [src]."))
-		ammo_equipped = SA
+		powerloader_clamp.update_icon()
+		to_chat(user, SPAN_NOTICE("You load [ship_ammo] into [src]."))
+		ammo_equipped = ship_ammo
 		update_equipment()
 
-/obj/structure/dropship_equipment/proc/unload_ammo(obj/item/powerloader_clamp/PC, mob/living/user)
+/obj/structure/dropship_equipment/proc/unload_ammo(obj/item/powerloader_clamp/powerloader_clamp, mob/living/user)
 	playsound(src, 'sound/machines/hydraulics_2.ogg', 40, 1)
 	var/point_loc = ship_base ? ship_base.loc : null
 	if(!do_after(user, 30 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
 	if(point_loc && ship_base.loc != point_loc) //dropship flew away
 		return
-	if(!ammo_equipped || !PC.linked_powerloader || PC.linked_powerloader.buckled_mob != user)
+	if(!ammo_equipped || !powerloader_clamp.linked_powerloader || powerloader_clamp.linked_powerloader.buckled_mob != user)
 		return
 	if(!ammo_equipped.ammo_count)
 		ammo_equipped.moveToNullspace()
@@ -395,13 +398,13 @@
 		qdel(ammo_equipped)
 	else
 		if(ammo_equipped.ammo_name == "rocket")
-			PC.grab_object(user, ammo_equipped, "ds_rocket")
+			powerloader_clamp.grab_object(user, ammo_equipped, "ds_rocket")
 		else
-			PC.grab_object(user, ammo_equipped, "ds_ammo")
+			powerloader_clamp.grab_object(user, ammo_equipped, "ds_ammo")
 	ammo_equipped = null
 	update_icon()
 
-/obj/structure/dropship_equipment/proc/grab_equipment(obj/item/powerloader_clamp/PC, mob/living/user)
+/obj/structure/dropship_equipment/proc/grab_equipment(obj/item/powerloader_clamp/powerloader_clamp, mob/living/user)
 	playsound(loc, 'sound/machines/hydraulics_2.ogg', 40, 1)
 	var/duration_time = 10
 	var/point_loc
@@ -414,9 +417,9 @@
 		return
 	if(point_loc && ship_base && ship_base.loc != point_loc) //dropship flew away
 		return
-	if(!PC.linked_powerloader || PC.loaded || PC.linked_powerloader.buckled_mob != user)
+	if(!powerloader_clamp.linked_powerloader || powerloader_clamp.loaded || powerloader_clamp.linked_powerloader.buckled_mob != user)
 		return
-	PC.grab_object(user, src, "ds_gear", 'sound/machines/hydraulics_1.ogg')
+	powerloader_clamp.grab_object(user, src, "ds_gear", 'sound/machines/hydraulics_1.ogg')
 	if(ship_base)
 		ship_base.installed_equipment = null
 		ship_base = null
@@ -1047,6 +1050,52 @@
 		else
 			linked_console.selected_equipment = src
 
+/obj/structure/dropship_equipment/weapon/attack_hand(mob/user)
+	if(!ammo_equipped)
+		to_chat(user, SPAN_WARNING("[src] is not loaded with any ammunition."))
+		return
+
+	if(!istype(user, /mob/living/carbon/human))
+		to_chat(user, SPAN_WARNING("You need hands to unload the ammunition."))
+		return
+
+	// Check if this ammo type can be converted to handheld
+	if(!ammo_equipped.handheld_type)
+		to_chat(user, SPAN_WARNING("This ammunition type cannot be unloaded by hand."))
+		return
+
+	// Only allow people that have at least level 1 in Piloting or Engineering to manually unload
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED) && !skillcheck(user, SKILL_PILOT, SKILL_PILOT_TRAINED))
+		to_chat(user, SPAN_WARNING("You don't understand how to safely unload this equipment!"))
+		return
+
+	to_chat(user, SPAN_NOTICE("You begin manually unloading [ammo_equipped] from [src]."))
+	// Skill-based timing: 2 seconds base, -0.5 per skill level, minimum 0.5 seconds
+	var/unload_time = max(5, 20 - (user.skills.get_skill_level(SKILL_ENGINEER) * 5))
+	if(!do_after(user, unload_time, INTERRUPT_NO_NEEDHAND | BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, target = src))
+		to_chat(user, SPAN_WARNING("You stop unloading the ammunition."))
+		return
+
+	// Create handheld version
+	var/obj/item/ship_ammo_handheld/handheld_ammo = new ammo_equipped.handheld_type()
+	handheld_ammo.ammo_count = ammo_equipped.ammo_count
+	handheld_ammo.max_ammo_count = ammo_equipped.max_ammo_count
+	handheld_ammo.safety_enabled = ammo_equipped.safety_enabled
+	handheld_ammo.structure_type = ammo_equipped.type
+	handheld_ammo.update_icon()
+
+	var/mob/living/carbon/human/human_user = user
+	if(human_user.put_in_hands(handheld_ammo))
+		to_chat(user, SPAN_NOTICE("You manually unload [handheld_ammo] from [src]."))
+		qdel(ammo_equipped)
+		ammo_equipped = null
+		update_icon()
+	else
+		qdel(handheld_ammo)
+		to_chat(user, SPAN_WARNING("You need a free hand to hold the unloaded ammunition."))
+
+	return TRUE
+
 /obj/structure/dropship_equipment/weapon/get_examine_text(mob/user)
 	. = ..()
 	if(ammo_equipped)
@@ -1088,12 +1137,12 @@
 
 	if(firing_sound)
 		playsound(loc, firing_sound, 70, 1)
-	var/obj/structure/ship_ammo/SA = ammo_equipped //necessary because we nullify ammo_equipped when firing big rockets
-	var/ammo_max_inaccuracy = SA.max_inaccuracy
-	var/ammo_accuracy_range = SA.accuracy_range
-	var/ammo_travelling_time = SA.travelling_time //how long the rockets/bullets take to reach the ground target.
-	var/ammo_warn_sound = SA.warning_sound
-	var/ammo_warn_sound_volume = SA.warning_sound_volume
+	var/obj/structure/ship_ammo/ammo = ammo_equipped //necessary because we nullify ammo_equipped when firing big rockets
+	var/ammo_max_inaccuracy = ammo.max_inaccuracy
+	var/ammo_accuracy_range = ammo.accuracy_range
+	var/ammo_travelling_time = ammo.travelling_time //how long the rockets/bullets take to reach the ground target.
+	var/ammo_warn_sound = ammo.warning_sound
+	var/ammo_warn_sound_volume = ammo.warning_sound_volume
 	deplete_ammo()
 	last_fired = world.time
 
@@ -1134,7 +1183,7 @@
 				if(Mob_Pilot)
 					impact_overlay.update_visibility_for_mob(Mob_Pilot)
 
-	msg_admin_niche("[key_name(user)] is direct-firing [SA] onto [selected_target] at ([target_turf.x],[target_turf.y],[target_turf.z]) [ADMIN_JMP(target_turf)]")
+	msg_admin_niche("[key_name(user)] is direct-firing [ammo] onto [selected_target] at ([target_turf.x],[target_turf.y],[target_turf.z]) [ADMIN_JMP(target_turf)]")
 	if(ammo_travelling_time)
 		var/total_seconds = max(floor(ammo_travelling_time/10),1)
 		for(var/second_index in 0 to total_seconds)
@@ -1168,7 +1217,7 @@
 		possible_turfs = RANGE_TURFS(ammo_accuracy_range, target_turf)
 		impact = pick(possible_turfs)
 
-	if(ammo_travelling_time && istype(SA, /obj/structure/ship_ammo/rocket/thermobaric))
+	if(ammo_travelling_time && istype(ammo, /obj/structure/ship_ammo/rocket/thermobaric))
 		playsound(impact, ammo_warn_sound, ammo_warn_sound_volume, 1, 15)
 		var/total_seconds = max(floor(ammo_travelling_time / 10), 1)
 		for(var/i in 0 to total_seconds)
@@ -1202,7 +1251,7 @@
 		sleep(10)
 
 	// text and audio warnings for fatty
-	if(istype(SA, /obj/structure/ship_ammo/rocket/fatty))
+	if(istype(ammo, /obj/structure/ship_ammo/rocket/fatty))
 		playsound(target_turf, 'sound/weapons/gun_mortar_travel.ogg', 50, 1) // Audio warning for fatty cluster rockets
 		sleep(25)
 		var/relative_dir
@@ -1232,13 +1281,13 @@
 	new /obj/effect/overlay/temp/blinking_laser (impact)
 
 	// projectile falling effect like mortar/ob
-	var/impact_visual_type = SA.get_impact_visual_type()
+	var/impact_visual_type = ammo.get_impact_visual_type()
 	if(impact_visual_type)
-		new impact_visual_type(impact, SA)
+		new impact_visual_type(impact, ammo)
 
 	sleep(10)
-	SA.source_mob = user
-	SA.detonate_on(impact, src)
+	ammo.source_mob = user
+	ammo.detonate_on(impact, src)
 	// Impact reticle overlay
 	if(impact_overlay)
 		impact_overlay.remove_from_all_clients()
@@ -1255,8 +1304,8 @@
 	if(firing_sound)
 		playsound(loc, firing_sound, 70, 1)
 		playsound(target_turf, firing_sound, 70, 1)
-	var/obj/structure/ship_ammo/SA = ammo_equipped //necessary because we nullify ammo_equipped when firing big rockets
-	var/ammo_accuracy_range = SA.accuracy_range
+	var/obj/structure/ship_ammo/ammo = ammo_equipped //necessary because we nullify ammo_equipped when firing big rockets
+	var/ammo_accuracy_range = ammo.accuracy_range
 	// no warning sound and no travel time
 	deplete_ammo()
 	last_fired = world.time
@@ -1271,13 +1320,13 @@
 	var/turf/impact = pick(possible_turfs)
 
 	// projectile falling effect like mortar/ob
-	var/impact_visual_type = SA.get_impact_visual_type()
+	var/impact_visual_type = ammo.get_impact_visual_type()
 	if(impact_visual_type)
-		new impact_visual_type(impact, SA)
+		new impact_visual_type(impact, ammo)
 
 	sleep(3)
-	SA.source_mob = user
-	SA.detonate_on(impact, src)
+	ammo.source_mob = user
+	ammo.detonate_on(impact, src)
 
 /obj/structure/dropship_equipment/weapon/heavygun
 	name = "\improper GAU-21 30mm cannon"
@@ -1384,28 +1433,6 @@
 		QDEL_NULL(personal_console)
 		personal_console = null
 	return ..()
-
-/obj/structure/dropship_equipment/weapon/heavygun/bay/attack_hand(mob/user)
-	if(!ammo_equipped)
-		to_chat(user, SPAN_WARNING("[src] is not loaded with any ammunition."))
-		return
-
-	if(!istype(user, /mob/living/carbon/human))
-		to_chat(user, SPAN_WARNING("You need hands to unload the ammunition."))
-		return
-
-	to_chat(user, SPAN_NOTICE("You begin manually unloading [ammo_equipped] from [src]."))
-	if(!do_after(user, 20, INTERRUPT_NO_NEEDHAND | BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, target = src))
-		to_chat(user, SPAN_WARNING("You stop unloading the ammunition."))
-		return
-
-	ammo_equipped.forceMove(get_turf(src))
-	to_chat(user, SPAN_NOTICE("You manually unload [ammo_equipped] from [src]. The ammunition falls to the ground."))
-
-	ammo_equipped = null
-	update_icon()
-	return TRUE
-
 
 /obj/structure/dropship_equipment/weapon/rocket_pod
 	name = "\improper LAU-444 Guided Missile Launcher"
@@ -1559,27 +1586,6 @@
 		else
 			icon_state = "flare_launcher"
 
-/obj/structure/dropship_equipment/weapon/flare_launcher/attack_hand(mob/user)
-	if(!ammo_equipped)
-		to_chat(user, SPAN_WARNING("[src] is not loaded with any ammunition."))
-		return
-
-	if(!istype(user, /mob/living/carbon/human))
-		to_chat(user, SPAN_WARNING("You need hands to unload the ammunition."))
-		return
-
-	to_chat(user, SPAN_NOTICE("You begin manually unloading [ammo_equipped] from [src]."))
-	if(!do_after(user, 20, INTERRUPT_NO_NEEDHAND | BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, target = src))
-		to_chat(user, SPAN_WARNING("You stop unloading the ammunition."))
-		return
-
-	ammo_equipped.forceMove(get_turf(src))
-	to_chat(user, SPAN_NOTICE("You manually unload [ammo_equipped] from [src]. The ammunition falls to the ground."))
-
-	ammo_equipped = null
-	update_icon()
-	return TRUE
-
 /obj/structure/dropship_equipment/weapon/bomb_bay
 	name = "\improper LAB-107 Bomb Bay"
 	desc = "A bomb bay capable of dropping unguided munitions by utilizing ejector racks. Ordinance released from these bomb cradles are capable of penetrating fortified bunkers, leading to it being commonly employed against CLF hideouts. Munitions must be manually locked into place after loading. Fits inside the dropship's crew weapon emplacement. Moving this will require some sort of lifter. Accepts select AGM and AIM missile systems."
@@ -1667,14 +1673,14 @@
 	..()
 
 // Reset locked_ammo when ammo is loaded
-/obj/structure/dropship_equipment/weapon/bomb_bay/load_ammo(obj/item/powerloader_clamp/PC, mob/living/user)
+/obj/structure/dropship_equipment/weapon/bomb_bay/load_ammo(obj/item/powerloader_clamp/powerloader_clamp, mob/living/user)
 	..()
 	if(ammo_equipped) // If ammo was successfully loaded
 		locked_ammo = FALSE // Reset the locked state
 		update_icon()
 
 // Reset locked_ammo when ammo is unloaded
-/obj/structure/dropship_equipment/weapon/bomb_bay/unload_ammo(obj/item/powerloader_clamp/PC, mob/living/user)
+/obj/structure/dropship_equipment/weapon/bomb_bay/unload_ammo(obj/item/powerloader_clamp/powerloader_clamp, mob/living/user)
 	locked_ammo = FALSE // Reset the locked state
 	..()
 	update_icon()
@@ -2521,12 +2527,12 @@
 		icon = 'icons/obj/structures/props/dropship/dropship_equipment64.dmi'
 		icon_state = "autoreloader_installed"
 		bound_height = 64
-		density = FALSE // Only not dense when installed
+		density = FALSE // Not dense when installed
 	else
 		icon = 'icons/obj/structures/props/dropship/dropship_equipment.dmi'
 		icon_state = "autoreloader"
 		bound_height = 32
-		density = TRUE // Dense when installed
+		density = TRUE // Dense when not installed
 
 /obj/structure/dropship_equipment/autoreloader/update_icon()
 	if(selected_ammo)
@@ -2657,8 +2663,8 @@
 /obj/structure/dropship_equipment/weapon/proc/open_simulated_fire_firemission(obj/selected_target, mob/user = usr)
 	set waitfor = FALSE
 	var/turf/target_turf = get_turf(selected_target)
-	var/obj/structure/ship_ammo/SA = ammo_equipped //necessary because we nullify ammo_equipped when firing big rockets
-	var/ammo_accuracy_range = SA.accuracy_range
+	var/obj/structure/ship_ammo/ammo = ammo_equipped //necessary because we nullify ammo_equipped when firing big rockets
+	var/ammo_accuracy_range = ammo.accuracy_range
 	// no warning sound and no travel time
 	last_fired = world.time
 
@@ -2671,13 +2677,13 @@
 	var/turf/impact = pick(possible_turfs)
 
 	// projectile falling effect like mortar/ob
-	var/impact_visual_type = SA.get_impact_visual_type()
+	var/impact_visual_type = ammo.get_impact_visual_type()
 	if(impact_visual_type)
-		new impact_visual_type(impact, SA)
+		new impact_visual_type(impact, ammo)
 
 	sleep(3)
-	SA.source_mob = user
-	SA.detonate_on(impact, src)
+	ammo.source_mob = user
+	ammo.detonate_on(impact, src)
 
 //anti-air backend
 /obj/structure/dropship_equipment/proc/apply_antiair_effect(datum/dropship_antiair/effect)

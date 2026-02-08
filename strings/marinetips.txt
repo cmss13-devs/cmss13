@@ -113,7 +113,8 @@ DCC and Maintenance Technicians are faster at repairing damaged dropship equipme
 The Skyspit ability also doubles as a way to extinguish flares in the sky, such as from a mortar or dropship's flare launcher.
 The Skyspit ability and antiair pylon only affect firemissions. Suborbital direct fires are unaffected, be aware!
 The chaff from a Boiler's neuorotoxic Skyspit prevents all CAS suborbital direct fire and pilot vision, but firemissions are unaffected. Be aware!
-Bombs dropped from the Bomb Bay and certain missiles are capable of being direct fired on metal roofs, but not through chaff!
+Bombs dropped from the Bomb Bay and certain rockets are capable of being direct fired on metal roofs, but not through chaff!
 The dropship's camera console is capable of using auxiliary equipment such as the Medevac. Copilots, be useful!
 The Queen's Skyspit ability is smaller and lasts shorter than the Boiler's, but it is much faster!
 CAS can not see into metal or stronger roofs, be sure to give proper directions FTLs!
+The spore pylon obscures pilot vision while preventing suborbital direct fire, and it inflicts equipment damage during firemission runs. But it does nothing to Mortar or OB, watch out!

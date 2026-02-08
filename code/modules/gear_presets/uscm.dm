@@ -422,6 +422,16 @@
 	var/back_item = get_backpack_item(new_human)
 	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
 
+/datum/equipment_preset/uscm/leader/veteran
+	name = "USCM Veteran Squad Leader"
+
+	paygrades = list(PAY_SHORT_ME8E = JOB_PLAYTIME_TIER_0)
+	role_comm_title = "vSL"
+	minimum_age = 30
+
+/datum/equipment_preset/uscm/leader/veteran/load_gear(mob/living/carbon/human/new_human)
+	. = ..()
+
 /datum/equipment_preset/uscm/leader/cryo
 	name = "USCM Cryo Squad Leader"
 	auto_squad_name = SQUAD_MARINE_CRYO
@@ -520,6 +530,17 @@
 /datum/equipment_preset/uscm/leader_equipped/cryo
 	name = "USCM Cryo Squad Leader (Equipped)"
 	auto_squad_name = SQUAD_MARINE_CRYO
+
+/datum/equipment_preset/uscm/leader_equipped/veteran
+	name = "USCM Veteran Squad Leader (Equppied)"
+	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
+
+	paygrades = list(PAY_SHORT_ME8E = JOB_PLAYTIME_TIER_0)
+	minimum_age = 30
+
+/datum/equipment_preset/uscm/leader_equipped/veteran/load_gear(mob/living/carbon/human/new_human)
+	. = ..()
+	//MMTODO - add in the funny vSL gun and set here
 
 //*****************************************************************************************************/
 

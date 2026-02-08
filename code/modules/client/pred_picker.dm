@@ -69,6 +69,7 @@
 	.["translators"] = PRED_TRANSLATORS
 	.["invisibility_sounds"] = PRED_INVIS_SOUNDS
 	.["legacies"] = PRED_LEGACIES
+	.["light_colors"] = PRED_LIGHT_COLORS
 
 
 /datum/pred_picker/ui_data(mob/user)
@@ -106,6 +107,7 @@
 	.["bracer_material"] = prefs.predator_bracer_material
 
 	.["cape_color"] = prefs.predator_cape_color
+	.["light_color"] = prefs.predator_light_color
 
 /datum/pred_picker/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
@@ -283,6 +285,13 @@
 				return
 
 			prefs.predator_cape_color = sanitize_hexcolor(color)
+
+		if("light_color")
+			var/selected = params["selected"]
+			if(!selected || !(selected in PRED_LIGHT_COLORS))
+				return
+
+			prefs.predator_light_color = selected
 
 	prefs.update_preview_icon()
 	return TRUE

@@ -439,6 +439,8 @@
 				sound = pick('sound/voice/pred_pain_rare1.ogg')
 			if("pred_death")
 				sound = pick('sound/voice/pred_death1.ogg', 'sound/voice/pred_death2.ogg')
+			if("pred_light_toggle")
+				sound = pick('sound/effects/pred_lights_toggle1.ogg', 'sound/effects/pred_lights_toggle2.ogg', 'sound/effects/pred_lights_toggle3.ogg', 'sound/effects/pred_lights_toggle4.ogg')
 			if("clownstep")
 				sound = pick('sound/effects/clownstep1.ogg', 'sound/effects/clownstep2.ogg')
 			if("giant_lizard_growl")

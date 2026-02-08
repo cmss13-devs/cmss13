@@ -63,5 +63,8 @@ endmap
 map new_varadero
 endmap
 
+map cape_river
+endmap
+
 map whiskey_outpost_v2
 endmap

@@ -248,6 +248,7 @@
 #include "code\_onclick\hud\radial_persistent.dm"
 #include "code\_onclick\hud\screen_object_holder.dm"
 #include "code\_onclick\hud\screen_objects.dm"
+#include "code\_onclick\hud\screentip.dm"
 #include "code\_onclick\hud\yautja.dm"
 #include "code\_onclick\hud\rendering\plane_master.dm"
 #include "code\_onclick\hud\rendering\plane_master_controller.dm"

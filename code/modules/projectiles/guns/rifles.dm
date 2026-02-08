@@ -91,6 +91,8 @@
 		/obj/item/attachable/alt_iff_scope,
 		/obj/item/attachable/scope,
 		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/cosmetic/m41a_jungle_wrap,
+		/obj/item/attachable/cosmetic/m41a_black_wrap,
 	)
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	starting_attachment_types = list(/obj/item/attachable/attached_gun/grenade, /obj/item/attachable/stock/rifle/collapsible)
@@ -98,7 +100,7 @@
 	start_automatic = TRUE
 
 /obj/item/weapon/gun/rifle/m41a/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 18,"rail_x" = 12, "rail_y" = 23, "under_x" = 24, "under_y" = 13, "stock_x" = 24, "stock_y" = 13)
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 18,"rail_x" = 12, "rail_y" = 23, "under_x" = 24, "under_y" = 13, "stock_x" = 24, "stock_y" = 13, "cosmetic_x" = 16, "cosmetic_y" = 16)
 
 /obj/item/weapon/gun/rifle/m41a/Initialize(mapload, ...)
 	. = ..()
@@ -1927,6 +1929,9 @@
 		/obj/item/attachable/flashlight/grip,
 		/obj/item/attachable/attached_gun/extinguisher,
 		/obj/item/attachable/attached_gun/flare_launcher,
+		/obj/item/attachable/cosmetic/m4ra_leather_grip,
+		/obj/item/attachable/cosmetic/m4ra_red_wrap,
+		/obj/item/attachable/cosmetic/m4ra_black_wrap,
 	)
 
 	starting_attachment_types = list(/obj/item/attachable/attached_gun/flare_launcher)
@@ -1943,7 +1948,7 @@
 	AddElement(/datum/element/corp_label/armat)
 
 /obj/item/weapon/gun/rifle/m4ra/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 43, "muzzle_y" = 17,"rail_x" = 22, "rail_y" = 21, "under_x" = 30, "under_y" = 13, "stock_x" = 24, "stock_y" = 13, "special_x" = 37, "special_y" = 16)
+	attachable_offset = list("muzzle_x" = 43, "muzzle_y" = 17,"rail_x" = 22, "rail_y" = 21, "under_x" = 30, "under_y" = 13, "stock_x" = 24, "stock_y" = 13, "special_x" = 37, "special_y" = 16, "cosmetic_x" = 16, "cosmetic_y" = 16)
 
 /obj/item/weapon/gun/rifle/m4ra/set_gun_config_values()
 	..()

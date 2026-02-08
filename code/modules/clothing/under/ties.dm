@@ -1489,6 +1489,56 @@ Wrist Accessories
 
 	. += " It reads: [SPAN_NOTICE("[worldtime2text()]")]"
 
+/obj/item/clothing/accessory/wrist/watch/leather_watch
+	name = "leather wrist watch"
+	desc = "A good quality analogue wrist watch with leather straps. Its quiet ticking is oddly relaxing."
+	icon_state = "leather"
+
+/obj/item/clothing/accessory/wrist/watch/silver_watch
+	name = "silver wrist watch"
+	desc = "A fine quality analogue wrist watch of polished silver. It feels weighty and robust."
+	icon_state = "silver"
+
+/obj/item/clothing/accessory/wrist/watch/gold_watch
+	name = "gold wrist watch"
+	desc = "A high quality analogue wrist watch of shiny gold. You feel like you've release a highly successful LP."
+	icon_state = "gold"
+
+/obj/item/clothing/accessory/wrist/watch/pulsemaster
+	name = "pulsemaster"
+	desc = "A lightweight black watch with a built-in pulsometer. A popular choice among military grunts."
+	icon_state = "pulsemaster"
+
+/obj/item/clothing/accessory/wrist/watch/two_tone
+	name = "two-tone wrist watch"
+	desc = "An expensive analogue wrist watch of gold and steel. Probably worth several paychecks."
+	icon_state = "two_tone"
+
+/obj/item/clothing/accessory/wrist/watch/bishop
+	name = "black chronograph wrist watch"
+	desc = "An asymmetric, analogue wrist watch with stopwatch functions and a 24-hour indicator. The combination of black and red makes it feel elite."
+	icon_state = "bishop"
+
+/obj/item/clothing/accessory/wrist/watch/two_face
+	name = "two-faced wrist watch"
+	desc = "A strange analogue wrist watch of with two seperate faces. Looking at it brings a strange sense of equilibrium."
+	icon_state = "two_face"
+
+/obj/item/clothing/accessory/wrist/watch/allen
+	name = "E-125 wrist watch"
+	desc = "An nice digital wrist watch by Samani with two faces; one displaying the time and the other a whole calender!"
+	icon_state = "allen"
+
+/obj/item/clothing/accessory/wrist/watch/burke
+	name = "analogue-digital chronograph wrist watch"
+	desc = "A fancy analogue/digital wrist watch with all manner of features; an alarm, a tachymeter, day/date display. Really, what doesn't it have!"
+	icon_state = "burke"
+
+/obj/item/clothing/accessory/wrist/watch/ripley
+	name = "silver chronograph wrist watch"
+	desc = "An asymmetric, analogue wrist watch with stopwatch functions and a 24-hour indicator. Simple, yet so very distinct."
+	icon_state = "ripley"
+
 
 //TEMPORARY
 

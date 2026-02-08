@@ -1219,6 +1219,7 @@
 #include "code\game\objects\items\research_upgrades.dm"
 #include "code\game\objects\items\shards.dm"
 #include "code\game\objects\items\stock_parts.dm"
+#include "code\game\objects\items\tattoo_gun.dm"
 #include "code\game\objects\items\trash.dm"
 #include "code\game\objects\items\XMAS.dm"
 #include "code\game\objects\items\books\book.dm"

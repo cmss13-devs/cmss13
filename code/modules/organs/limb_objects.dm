@@ -129,6 +129,10 @@
 			overlays.Add(hair) //icon.Blend(hair, ICON_OVERLAY)
 			overlays.Add(eyes) //icon.Blend(hair, ICON_OVERLAY)
 
+	if(H.head_tattoo)
+		var/image/tattoo = image('icons/mob/humans/onmob/tattoos.dmi', "[H.head_tattoo]", layer = -BODYPARTS_LAYER)
+		. += tattoo
+
 	if(H.lip_style && (H.species && H.species.flags & HAS_LIPS))
 		var/icon/lipstick = new/icon('icons/mob/humans/onmob/human_face.dmi', "paint_[H.lip_style]")
 		overlays += lipstick

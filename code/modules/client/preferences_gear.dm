@@ -1244,7 +1244,7 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 
 /datum/gear/misc/straight_razor
 	display_name = "Cut-throat razor"
-	path = /obj/item/weapon/straight_razor
+	path = /obj/item/weapon/folding_knife/straight_razor
 	fluff_cost = 2
 
 /datum/gear/misc/watch

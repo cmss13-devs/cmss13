@@ -4276,3 +4276,73 @@ Defined in conflicts.dm of the #defines folder.
 	icon_state = null
 	attach_icon = "m56c_flag"
 	flags_attach_features = NO_FLAGS
+
+/obj/item/attachable/cosmetic/m41a_jungle_wrap
+	name = "M41A jungle wrap"
+	desc = "A strip of green cloth to be wrapped around an M41A."
+	icon = 'icons/obj/items/weapons/guns/attachments/battlepass_fluff.dmi'
+	icon_state = null
+	attach_icon = "m41a_jungle_wrap"
+
+/obj/item/attachable/cosmetic/m41a_black_wrap
+	name = "M41A black wrap"
+	desc = "A strip of black cloth to be wrapped around an M41A."
+	icon = 'icons/obj/items/weapons/guns/attachments/battlepass_fluff.dmi'
+	icon_state = null
+	attach_icon = "m41a_black_wrap"
+
+/obj/item/attachable/cosmetic/m39_grip
+	name = "M39 black grip"
+	desc = "A custom black grip for an M39."
+	icon = 'icons/obj/items/weapons/guns/attachments/battlepass_fluff.dmi'
+	icon_state = null
+	attach_icon = "m39_grip"
+
+/obj/item/attachable/cosmetic/m39_ported
+	name = "M39 ported barrel"
+	desc = "A custom ported barrel for an M39."
+	icon = 'icons/obj/items/weapons/guns/attachments/battlepass_fluff.dmi'
+	icon_state = null
+	attach_icon = "m39_ported"
+
+/obj/item/attachable/cosmetic/m39_black_wrap
+	name = "M39 black wrap"
+	desc = "A strip of black cloth to be wrapped around an M39."
+	icon = 'icons/obj/items/weapons/guns/attachments/battlepass_fluff.dmi'
+	icon_state = null
+	attach_icon = "m39_black_wrap"
+
+/obj/item/attachable/cosmetic/m4ra_leather_grip
+	name = "M4RA leather grip"
+	desc = "Some leather straps to be wrapped around an M4RA grip."
+	icon = 'icons/obj/items/weapons/guns/attachments/battlepass_fluff.dmi'
+	icon_state = null
+	attach_icon = "m4ra_leather_grip"
+
+/obj/item/attachable/cosmetic/m4ra_red_wrap
+	name = "M4RA red wrap"
+	desc = "A strip of red cloth to be wrapped around an M4RA."
+	icon = 'icons/obj/items/weapons/guns/attachments/battlepass_fluff.dmi'
+	icon_state = null
+	attach_icon = "m4ra_red_wrap"
+
+/obj/item/attachable/cosmetic/m4ra_black_wrap
+	name = "M4RA black wrap"
+	desc = "A strip of black cloth to be wrapped around an M4RA."
+	icon = 'icons/obj/items/weapons/guns/attachments/battlepass_fluff.dmi'
+	icon_state = null
+	attach_icon = "m4ra_black_wrap"
+
+/obj/item/attachable/cosmetic/m37_shell_rack
+	name = "M37 shell rack"
+	desc = "A shell rack for an M37. The shells seem to be empty."
+	icon = 'icons/obj/items/weapons/guns/attachments/battlepass_fluff.dmi'
+	icon_state = null
+	attach_icon = "m37_shell_rack"
+
+/obj/item/attachable/cosmetic/m37_ported
+	name = "M37 ported barrel"
+	desc = "A custom ported barrel for an M37."
+	icon = 'icons/obj/items/weapons/guns/attachments/battlepass_fluff.dmi'
+	icon_state = null
+	attach_icon = "m37_ported"

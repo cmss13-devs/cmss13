@@ -93,67 +93,6 @@
 	force = MELEE_FORCE_STRONG
 	w_class = SIZE_MEDIUM
 
-/obj/item/weapon/butterfly
-	name = "butterfly knife"
-	desc = "A basic metal blade concealed in a lightweight plasteel grip. Small enough when folded to fit in a pocket."
-	icon_state = "butterflyknife"
-	item_state = null
-	icon = 'icons/obj/items/weapons/melee/knives.dmi'
-	item_icons = list(
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_righthand.dmi'
-	)
-	hitsound = null
-	var/active = 0
-	w_class = SIZE_TINY
-	force = MELEE_FORCE_WEAK
-	sharp = 0
-	edge = 0
-	throw_speed = SPEED_VERY_FAST
-	throw_range = 4
-	throwforce = 7
-	attack_verb = list("patted", "tapped")
-	attack_speed = 10
-
-
-/obj/item/weapon/butterfly/attack_self(mob/user)
-	..()
-
-	active = !active
-	if(active)
-		to_chat(user, SPAN_NOTICE("You flip out your [src]."))
-		playsound(user, 'sound/weapons/flipblade.ogg', 15, 1)
-		force = MELEE_FORCE_STRONG //bay adjustments
-		throwforce = MELEE_FORCE_NORMAL
-		edge = 1
-		sharp = IS_SHARP_ITEM_ACCURATE
-		hitsound = 'sound/weapons/bladeslice.ogg'
-		icon_state += "_open"
-		w_class = SIZE_MEDIUM
-		attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
-	else
-		to_chat(user, SPAN_NOTICE("[src] can now be concealed."))
-		force = initial(force)
-		edge = 0
-		sharp = 0
-		hitsound = initial(hitsound)
-		icon_state = initial(icon_state)
-		w_class = initial(w_class)
-		attack_verb = initial(attack_verb)
-		add_fingerprint(user)
-
-/obj/item/weapon/butterfly/switchblade
-	name = "switchblade"
-	desc = "A classic switchblade with gold engraving. Just holding it makes you feel like a gangster."
-	icon_state = "switchblade"
-
-/obj/item/weapon/butterfly/katana
-	name = "katana"
-	desc = "A ancient weapon from Japan."
-	icon_state = "samurai"
-	icon = 'icons/obj/items/weapons/melee/swords.dmi'
-	force = MELEE_FORCE_VERY_STRONG
-
 /obj/item/weapon/wirerod
 	name = "wired rod"
 	desc = "A rod with some wire wrapped around the top. It'd be easy to attach something to the top bit."

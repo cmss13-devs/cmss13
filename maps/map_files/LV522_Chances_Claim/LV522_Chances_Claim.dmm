@@ -44757,7 +44757,7 @@
 	pixel_x = -5;
 	pixel_y = 8
 	},
-/obj/item/weapon/butterfly/switchblade{
+/obj/item/weapon/folding_knife/switchblade{
 	pixel_x = 11;
 	pixel_y = 4
 	},

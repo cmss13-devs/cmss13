@@ -527,7 +527,6 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	var/datum/highlight_keywords_payload/payload = new(new_mob)
 	new_mob.client.tgui_panel.window.send_message("settings/updateHighlightKeywords", payload.to_list())
 
-	SEND_SIGNAL(new_human, COMSIG_POST_SPAWN_UPDATE)
 	SSround_recording.recorder.track_player(new_human)
 
 //This proc is a bit of a misnomer, since there's no actual randomization going on.

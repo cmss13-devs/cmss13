@@ -336,6 +336,7 @@
 	matter = list("metal" = 20, "gold" = 10)
 	colour_list = list("red", "blue", "green", "yellow", "purple", "pink", "brown", "black", "orange") // Can add more colors as required
 	var/owner_name
+	var/register_attempted
 
 /obj/item/tool/pen/multicolor/fountain/Initialize()
 	. = ..()
@@ -343,13 +344,34 @@
 
 /obj/item/tool/pen/multicolor/fountain/pickup(mob/user, silent)
 	. = ..()
-	if(!owner_name)
-		RegisterSignal(user, COMSIG_POST_SPAWN_UPDATE, PROC_REF(set_owner), override = TRUE)
+	if(!register_attempted)
+		register_attempted = TRUE
+		RegisterSignal(user, COMSIG_POST_VANITY_UPDATE, PROC_REF(set_owner), override = TRUE)
+
+/obj/item/tool/pen/multicolor/fountain/on_enter_storage(obj/item/storage/inventory)
+	. = ..()
+	if(!register_attempted)
+		register_attempted = TRUE
+		var/mob/living/carbon/human/human_user
+		if(ishuman(inventory.loc))
+			human_user = inventory.loc
+		else if(ishuman(inventory.loc?.loc))
+			human_user = inventory.loc.loc
+		else if(ishuman(inventory.loc?.loc?.loc))
+			human_user = inventory.loc.loc.loc
+		if(human_user)
+			RegisterSignal(human_user, COMSIG_POST_VANITY_UPDATE, PROC_REF(set_owner), override = TRUE)
+
+/obj/item/tool/pen/multicolor/fountain/dropped(mob/user)
+	. = ..()
+	if(!register_attempted)
+		register_attempted = TRUE
+		RegisterSignal(user, COMSIG_POST_VANITY_UPDATE, PROC_REF(set_owner), override = TRUE)
 
 ///Sets the owner of the pen to who it spawns with, requires var/source for signals
 /obj/item/tool/pen/multicolor/fountain/proc/set_owner(datum/source)
 	SIGNAL_HANDLER
-	UnregisterSignal(source, COMSIG_POST_SPAWN_UPDATE)
+	UnregisterSignal(source, COMSIG_POST_VANITY_UPDATE)
 	var/mob/living/carbon/human/user = source
 	owner_name = user.name
 

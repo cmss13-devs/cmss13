@@ -75,7 +75,7 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 		return
 
 	if(!(slot && user.equip_to_slot_or_del(new path, slot)))
-		var/obj/equipping_gear = new path
+		var/obj/item/equipping_gear = new path
 		if(user.equip_to_appropriate_slot(equipping_gear))
 			return
 
@@ -84,6 +84,7 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 
 		if(drop_instead_of_del)
 			equipping_gear.forceMove(get_turf(user))
+			equipping_gear.dropped(user)
 			return
 
 		qdel(equipping_gear)

@@ -197,10 +197,10 @@
 	force = 12
 	attack_verb = list("bludgeoned", "struck", "cracked")
 	flags_equip_slot = SLOT_WAIST|SLOT_BACK
-	can_hold = list(/obj/item/weapon/sword/dragon_katana)
+	can_hold = list(/obj/item/weapon/sword/katana/dragon)
 
 /obj/item/storage/large_holster/dragon_katana/full/fill_preset_inventory()
-	new /obj/item/weapon/sword/dragon_katana(src)
+	new /obj/item/weapon/sword/katana/dragon(src)
 
 /obj/item/storage/large_holster/m39
 	name = "\improper M276 pattern M39 holster rig"

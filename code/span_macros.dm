@@ -13,6 +13,7 @@
 #define SPAN_XENOQUEEN(X) "<span class='xenoqueen'>[X]</span>"
 #define SPAN_XENOANNOUNCE(X) "<span class='xenoannounce'>[X]</span>"
 #define SPAN_XENONOTICE(X) "<span class='xenonotice'>[X]</span>"
+#define SPAN_XENOBOLD(X) "<span style='font-weight: bold; color: purple;'>[X]</span>" // Note: see if this should be stylesheet'd instead
 #define SPAN_XENOBOLDNOTICE(X) "<span class='xenoboldnotice'>[X]</span>"
 #define SPAN_XENODANGER(X) "<span class='xenodanger'>[X]</span>"
 #define SPAN_XENOHIGHDANGER(X) "<span class='xenohighdanger'>[X]</span>"

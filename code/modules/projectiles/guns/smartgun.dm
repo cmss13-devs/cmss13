@@ -15,6 +15,7 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/smartguns_righthand.dmi'
 	)
 	mouse_pointer = 'icons/effects/mouse_pointer/smartgun_mouse.dmi'
+	flags_xeno_examine = EXAMINE_FLAG_MACHINEGUN
 
 	fire_sound = "gun_smartgun"
 	fire_rattle = "gun_smartgun_rattle"

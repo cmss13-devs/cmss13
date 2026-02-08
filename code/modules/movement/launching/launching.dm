@@ -8,6 +8,7 @@
 	var/speed
 	var/atom/thrower
 	var/spin
+	var/relaunched
 
 	// A list of callbacks to invoke when an atom of a specific type is hit (keys are typepaths and values are proc paths)
 	// These should only be for CUSTOM procs to invoke when an atom of a specific type is collided with, otherwise will default to using
@@ -79,7 +80,8 @@
 			else
 				CB.Invoke(hit_atom)
 	else if (isliving(hit_atom))
-		mob_launch_collision(hit_atom)
+		if(mob_launch_collision(hit_atom) & (COMSIG_MOB_PREPARED_SWING_PASSTHROUGH|COMSIG_MOB_PREPARED_SWING_SWUNG))
+			return
 	else if (isobj(hit_atom)) // Thrown object hits another object and moves it
 		obj_launch_collision(hit_atom)
 	else if (isturf(hit_atom))
@@ -92,7 +94,7 @@
 
 /atom/movable/proc/mob_launch_collision(mob/living/L)
 	if (!rebounding)
-		L.hitby(src)
+		return L.hitby(src)
 
 /atom/movable/proc/obj_launch_collision(obj/O)
 	if (!O.anchored && !rebounding && !isxeno(src))
@@ -219,26 +221,27 @@
 		sleep(delay)
 
 	//done throwing, either because it hit something or it finished moving
-	if ((isobj(src) || ismob(src)) && throwing && !early_exit)
-		var/turf/T = get_turf(src)
-		if(!istype(T))
-			return
-		var/atom/hit_atom = ismob(LM.target) ? null : T // TODO, just check for LM.target, the ismob is to prevent funky behavior with grenades 'n crates
-		if(!hit_atom)
-			for(var/atom/A in T)
-				if(A == LM.target)
-					hit_atom = A
-					break
-			if(!hit_atom && tracking && get_dist(src, LM.target) <= 1 && get_dist(start_turf, LM.target) <= 1) // If we missed, but we are tracking and the target is still next to us and the turf we launched from, then we still count it as a hit
-				hit_atom = LM.target
-		launch_impact(hit_atom)
-	if (loc)
-		throwing = FALSE
-		rebounding = FALSE
-		cur_speed = old_speed
-		remove_temp_pass_flags(pass_flags)
-		LM.invoke_end_throw_callbacks(src)
-	QDEL_NULL(launch_metadata)
+	if(!LM.relaunched)
+		if ((isobj(src) || ismob(src)) && throwing && !early_exit)
+			var/turf/T = get_turf(src)
+			if(!istype(T))
+				return
+			var/atom/hit_atom = ismob(LM.target) ? null : T // TODO, just check for LM.target, the ismob is to prevent funky behavior with grenades 'n crates
+			if(!hit_atom)
+				for(var/atom/A in T)
+					if(A == LM.target)
+						hit_atom = A
+						break
+				if(!hit_atom && tracking && get_dist(src, LM.target) <= 1 && get_dist(start_turf, LM.target) <= 1) // If we missed, but we are tracking and the target is still next to us and the turf we launched from, then we still count it as a hit
+					hit_atom = LM.target
+			launch_impact(hit_atom)
+		if (loc)
+			throwing = FALSE
+			rebounding = FALSE
+			cur_speed = old_speed
+			remove_temp_pass_flags(pass_flags)
+			LM.invoke_end_throw_callbacks(src)
+		QDEL_NULL(launch_metadata)
 
 /atom/movable/proc/throw_random_direction(range, speed = 0, atom/thrower, spin, launch_type = NORMAL_LAUNCH, pass_flags = NO_FLAGS)
 	var/throw_direction = pick(CARDINAL_ALL_DIRS)
@@ -252,3 +255,29 @@
 		furthest_turf = temp_turf
 
 	throw_atom(furthest_turf, range, speed, thrower, spin, launch_type, pass_flags)
+
+/atom/movable/proc/throw_in_random_direction_from_arc(range, speed = 0, atom/thrower, spin, launch_type = NORMAL_LAUNCH, pass_flags = NO_FLAGS, directional = NORTH)
+	var/directions = get_directions_in_arc(directional)
+	var/starting_turf = get_turf(src)
+	var/selected_turf = starting_turf
+
+	var/list/key_points = list()
+	var/list/turf/turfs_to_pick = list()
+	var/range_bonus = 0
+
+	for(var/direction in directions)
+		if(speed > SPEED_FAST && range > 2)
+			if(range_bonus == 0)
+				range_bonus = 1
+			else if(range_bonus == 2 || range_bonus == 1)
+				range_bonus = 0
+			if(length(key_points) == 2)
+				range_bonus = 2
+		key_points += get_ranged_target_turf(selected_turf, direction, range + range_bonus)
+	for(var/i in 1 to length(key_points)-1)
+		turfs_to_pick += get_line(key_points[i], key_points[i+1])
+
+	selected_turf = pick(turfs_to_pick)
+	range = get_dist(starting_turf, selected_turf)
+
+	throw_atom(selected_turf, range, speed, thrower, spin, launch_type, pass_flags)

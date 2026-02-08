@@ -84,6 +84,79 @@
 	attack_verb = list("smashed", "beaten", "slammed", "struck", "smashed", "battered", "cracked")
 	hitsound = 'sound/weapons/genhit3.ogg'
 	shield_flags = CAN_SHIELD_BASH
+	var/swing_prepared_time = 3 SECONDS
+	var/next_swing
+	var/prepared_to_swing = FALSE
+	var/list/hit_message_list = list("bunts it", "whacks it", "sends it", "drives it hard", "launches it flying")
+	var/list/miss_message_list = list("swings and misses!", "swings way too early!","swings late!")
+
+/obj/item/weapon/baseballbat/attack_self(mob/living/carbon/human/user)
+	. = ..()
+	if(world.time < next_swing)
+		to_chat(user, SPAN_WARNING("You can't swing [src] yet."))
+		return
+	prepared_to_swing = TRUE
+	user.visible_message(SPAN_NOTICE("[user] prepares to swing [src]."), SPAN_NOTICE("You prepare to swing [src]."))
+	RegisterSignal(user, COMSIG_MOB_PREPARED_SWING, PROC_REF(swing))
+	next_swing = world.time + swing_prepared_time
+	addtimer(CALLBACK(src, PROC_REF(removed_prepared_swing), user), swing_prepared_time)
+	user.Superslow(4)
+
+/obj/item/weapon/baseballbat/proc/swing(mob/living/carbon/human/user, obj/item/hit_object, datum/launch_metadata/launch_data)
+	if(QDELETED(hit_object))
+		return
+
+	removed_prepared_swing(user, TRUE)
+
+	var/size_bonus
+	switch(hit_object.w_class)
+		if(SIZE_TINY)
+			size_bonus = 1.1
+		if(SIZE_SMALL)
+			size_bonus = 1.3
+		if(SIZE_MEDIUM)
+			size_bonus = 0.9
+		else
+			playsound(src, hitsound, 40, sound_range = 7)
+			do_item_attack_animation(hit_object, null, src)
+			user.visible_message(SPAN_NOTICE("[user] slams the bat into [hit_object] stopping it."), SPAN_NOTICE("You slam the bat into [hit_object] stopping it, but not much more."))
+			hit_object.forceMove(get_step(user.loc, user.dir))
+			return COMSIG_MOB_PREPARED_SWING_SWUNG
+
+	var/max_throw_range = clamp(ceil(throw_range * 1.5), 3, 10)
+	var/launch = pick(HIGH_LAUNCH, NORMAL_LAUNCH)
+	var/random_speed = (rand(2, 15)) / 10
+	var/range = clamp(floor((rand(3, 7)* random_speed) * size_bonus), 1, max_throw_range)
+	var/speed = clamp(((hit_object.throw_speed / 2) * random_speed * (launch == HIGH_LAUNCH ? 0.7 : 1)) * size_bonus, MIN_SPEED, SPEED_REALLY_FAST)
+	var/hit_chance = 55 * size_bonus
+
+	launch_data.relaunched = TRUE
+
+	if(prob(hit_chance))
+		user.visible_message(SPAN_NOTICE("[user] hits the [hit_object] and [hit_message_list[ceil(range/2)]] [launch == HIGH_LAUNCH ? "in a high arc" : "in a flat arc"] with [src]!"), \
+		SPAN_NOTICE("You hits the [hit_object] and [hit_message_list[ceil(range/2)]] [launch == HIGH_LAUNCH ? "in a high arc" : "in a flat arc"] with [src]!"))
+
+		do_item_attack_animation(hit_object, null, src)
+		hit_object.throw_in_random_direction_from_arc(range, speed, user, TRUE, launch, directional = user.dir)
+		return COMSIG_MOB_PREPARED_SWING_SWUNG
+	else
+		hit_object.forceMove(user.loc)
+
+		if(prob(90))
+			var/miss_message = pick(miss_message_list)
+			user.visible_message(SPAN_NOTICE("[user] [miss_message]"), SPAN_NOTICE("You [miss_message]"))
+		else
+			user.visible_message(SPAN_NOTICE("[user] doesn't swing at all!"), SPAN_NOTICE("You were way too late and don't swing at all! How embarassing!"))
+
+		hit_object.throw_atom(launch_data.target, launch_data.range, launch_data.speed, user, TRUE, NORMAL_LAUNCH)
+		return COMSIG_MOB_PREPARED_SWING_PASSTHROUGH
+
+/obj/item/weapon/baseballbat/proc/removed_prepared_swing(mob/living/carbon/human/user, swung = FALSE)
+	if(prepared_to_swing)
+		prepared_to_swing = FALSE
+		UnregisterSignal(user, COMSIG_MOB_PREPARED_SWING)
+		if(!swung)
+			user.visible_message(SPAN_NOTICE("[user] lowers [src]"), SPAN_NOTICE("You lower [src]."), null, 3)
 
 /obj/item/weapon/baseballbat/metal
 	name = "\improper metal baseball bat"

@@ -147,6 +147,9 @@
 	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, "shift_spit_[X.ammo.icon_state]")
 	return ..()
 
+/datum/action/xeno_action/onclick/release_haul/can_use_action()
+	return TRUE //we should be allways able to do this
+
 /datum/action/xeno_action/onclick/release_haul/use_ability(atom/A)
 	var/mob/living/carbon/xenomorph/X = owner
 	if(!X.check_state())
@@ -459,6 +462,7 @@
 	if(isqueen(src) && hive && length(hive.xeno_leader_list) && anchored)
 		for(var/mob/living/carbon/xenomorph/L in hive.xeno_leader_list)
 			L.handle_xeno_leader_pheromones()
+
 
 /datum/action/xeno_action/activable/pounce/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner

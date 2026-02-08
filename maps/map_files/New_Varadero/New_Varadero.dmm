@@ -92,8 +92,11 @@
 /turf/open/floor/corsat/squareswood/north,
 /area/varadero/interior_protected/vessel)
 "aar" = (
-/turf/closed/wall/rock/brown,
-/area/varadero/interior/caves/north_research)
+/obj/effect/landmark/nightmare{
+	insert_tag = "EngineeringHoldout"
+	},
+/turf/closed/wall,
+/area/varadero/interior/technical_storage)
 "aas" = (
 /obj/structure/prop/rock/brown,
 /turf/open/gm/dirt,
@@ -306,11 +309,20 @@
 /turf/open/gm/river/ocean/deep_ocean,
 /area/varadero/exterior/farocean)
 "abd" = (
-/turf/open/floor/shiva/yellow/north,
-/area/varadero/interior/comms1)
+/obj/effect/landmark/nightmare{
+	insert_tag = "HospitalAlternate"
+	},
+/turf/closed/wall/r_wall/unmeltable,
+/area/varadero/interior/oob)
 "abe" = (
-/turf/open/floor/shiva/yellowfull/west,
-/area/varadero/interior/comms1)
+/obj/structure/sign/safety/airlock{
+	pixel_x = 8
+	},
+/obj/effect/landmark/nightmare{
+	insert_tag = "LibraryIntoRestaraunt"
+	},
+/turf/closed/wall,
+/area/varadero/interior/library)
 "abf" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
@@ -319,22 +331,26 @@
 /turf/open/floor/shiva/multi_tiles/southeast,
 /area/varadero/interior/medical)
 "abg" = (
-/obj/effect/landmark/static_comms/net_one,
-/turf/open/floor/platebot,
-/area/varadero/interior/comms1)
+/obj/structure/machinery/door/airlock/almayer/medical/glass{
+	dir = 1;
+	name = "\improper Underground Library";
+	req_one_access = null;
+	req_access = null
+	},
+/turf/open/floor/wood,
+/area/varadero/interior/library)
 "abh" = (
-/turf/open/floor/platebot,
-/area/varadero/interior/comms1)
-"abi" = (
-/turf/open/floor/shiva/yellow/west,
-/area/varadero/interior/comms1)
-"abj" = (
-/obj/structure/prop/rock/brown,
 /turf/closed/wall/rock/brown,
 /area/varadero/interior/caves/north_research)
+"abi" = (
+/turf/open/floor/shiva/yellow/north,
+/area/varadero/interior/comms1)
+"abj" = (
+/turf/open/floor/shiva/yellowfull/west,
+/area/varadero/interior/comms1)
 "abk" = (
-/obj/structure/machinery/power/apc/power/north,
-/turf/open/floor/shiva/yellow/west,
+/obj/effect/landmark/static_comms/net_one,
+/turf/open/floor/platebot,
 /area/varadero/interior/comms1)
 "abl" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -342,6 +358,20 @@
 /turf/open/floor/shiva/red/southwest,
 /area/varadero/interior/security)
 "abm" = (
+/turf/open/floor/platebot,
+/area/varadero/interior/comms1)
+"abn" = (
+/turf/open/floor/shiva/yellow/west,
+/area/varadero/interior/comms1)
+"abo" = (
+/obj/structure/prop/rock/brown,
+/turf/closed/wall/rock/brown,
+/area/varadero/interior/caves/north_research)
+"abp" = (
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/shiva/yellow/west,
+/area/varadero/interior/comms1)
+"abq" = (
 /turf/closed/wall/r_wall/unmeltable,
 /area/varadero/interior/cargo)
 "abu" = (
@@ -35236,11 +35266,11 @@ pGs
 pGs
 pGs
 pGs
-abm
-abm
-abm
-abm
-abm
+abq
+abq
+abq
+abq
+abq
 nbB
 ykM
 dpW
@@ -35418,11 +35448,11 @@ pGs
 pGs
 pGs
 huF
-abm
+abq
 rQe
 vFs
 iqv
-abm
+abq
 huF
 nbB
 fQK
@@ -36728,10 +36758,10 @@ nfX
 tng
 pGs
 pGs
-abj
-aar
-aar
-aar
+abo
+abh
+abh
+abh
 xCn
 xCn
 xCn
@@ -37092,9 +37122,9 @@ miU
 jcN
 gHT
 xpP
-abh
-abg
-abd
+abm
+abk
+abi
 xpP
 pGs
 pGs
@@ -37274,9 +37304,9 @@ lSg
 lSg
 gKw
 xpP
-abh
-abh
-abd
+abm
+abm
+abi
 xpP
 pGs
 pGs
@@ -37456,9 +37486,9 @@ wVI
 pGJ
 lsU
 xpP
-abk
-abi
-abe
+abp
+abn
+abj
 xpP
 pGJ
 pGJ
@@ -38753,7 +38783,7 @@ nxW
 qcN
 qcN
 qcN
-huF
+abd
 hYp
 uqx
 hYp
@@ -38769,7 +38799,7 @@ ykw
 ykw
 ykw
 bIt
-bIt
+aar
 kGM
 sDj
 wir
@@ -45647,7 +45677,7 @@ qaY
 mRq
 sXb
 mRq
-xzj
+abe
 oxA
 oMs
 hca
@@ -46730,7 +46760,7 @@ qqM
 hsl
 hyr
 giN
-dVq
+abg
 tzw
 jzZ
 jzZ

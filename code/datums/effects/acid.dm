@@ -63,6 +63,7 @@
 	affected_mob.last_damage_data = cause_data
 	for(var/i in 1 to hits_multiplier)
 		affected_mob.apply_armoured_damage(damage_per_process_human, ARMOR_BIO, BURN, pick(damage_areas), 40)
+
 	increment_duration()
 	return TRUE
 

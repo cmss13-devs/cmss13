@@ -175,10 +175,10 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/camera(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK) // Needs backpack for loadout gear to spawn
 
-/datum/equipment_preset/uscm_ship/reporter/load_preset(mob/living/carbon/human/new_human, randomise, count_participant, client/mob_client, show_job_gear)
+/datum/equipment_preset/uscm_ship/reporter/load_vendor_points(mob/living/carbon/human/new_human, client/mob_client)
 	. = ..()
-	new_human.marine_buyable_categories[CIVILIAN_CAN_BUY_BACKPACK] = 1
-	new_human.marine_buyable_categories[CIVILIAN_CAN_BUY_UTILITY] = 1
+	new_human.vendor_buyable_categories[CIVILIAN_CAN_BUY_BACKPACK] = 1
+	new_human.vendor_buyable_categories[CIVILIAN_CAN_BUY_UTILITY] = 1
 
 /datum/equipment_preset/uscm_ship/reporter_uscm
 	name = "Combat Correspondent"

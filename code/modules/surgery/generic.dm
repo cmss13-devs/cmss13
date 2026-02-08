@@ -12,7 +12,11 @@
 	required_surgery_skill = SKILL_SURGERY_NOVICE
 	steps = list(
 		/datum/surgery_step/incision,
+		/datum/surgery_step/cauterize/abort,
+		/datum/surgery_step/suture_incision/abort,
 		/datum/surgery_step/clamp_bleeders_step,
+		/datum/surgery_step/cauterize/abort,
+		/datum/surgery_step/suture_incision/abort,
 		/datum/surgery_step/retract_skin,
 	)
 	lying_required = FALSE
@@ -395,6 +399,33 @@
 	log_interact(user, target, "[key_name(user)] failed to cauterize an incision in [key_name(target)]'s [surgery.affected_limb.display_name], aborting [surgery].")
 	return FALSE
 
+/datum/surgery_step/cauterize/abort
+	name = "Abort Surgery"
+	desc = "close the incision early"
+
+/datum/surgery_step/cauterize/abort/skip_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
+	return TRUE //If you opened the wrong limb or you need to close an autopsy incision; this has you covered. Different from amputation abortion.
+
+/datum/surgery_step/cauterize/abort/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	user.affected_message(target,
+		SPAN_NOTICE("You cauterize the incision on [target]'s [surgery.affected_limb.display_name]."),
+		SPAN_NOTICE("[user] cauterizes the incision on your [surgery.affected_limb.display_name]."),
+		SPAN_NOTICE("[user] cauterizes the incision on [target]'s [surgery.affected_limb.display_name]."))
+	switch(target_zone)
+		if("head")
+			target.overlays -= image('icons/mob/humans/dam_human.dmi', "skull_surgery_closed")
+			target.overlays -= image('icons/mob/humans/dam_human.dmi', "skull_surgery_open")
+		if("chest")
+			target.overlays -= image('icons/mob/humans/dam_human.dmi', "chest_surgery_closed")
+			target.overlays -= image('icons/mob/humans/dam_human.dmi', "chest_surgery_open")
+
+	to_chat(target, SPAN_NOTICE("You feel better."))
+	target.incision_depths[target_zone] = SURGERY_DEPTH_SURFACE
+	surgery.affected_limb.remove_all_bleeding(TRUE, FALSE)
+	target.pain.recalculate_pain()
+	complete(target, surgery)
+	log_interact(user, target, "[key_name(user)] cauterized an incision in [key_name(target)]'s [surgery.affected_limb.display_name], ending [surgery].")
+
 //////////////////////////////////////////////////////////////////
 // BONE-OPENING SURGERIES //
 //////////////////////////////////////////////////////////////////
@@ -406,6 +437,7 @@
 	required_surgery_skill = SKILL_SURGERY_TRAINED
 	steps = list(
 		/datum/surgery_step/saw_encased,
+		/datum/surgery_step/clamp_bleeders_step, //oop i forgor, also cuz you can't clamp bleeders here, normally, for some reason
 		/datum/surgery_step/open_encased_step,
 		/datum/surgery_step/mend_encased,
 	)
@@ -552,6 +584,7 @@
 	steps = list(
 		/datum/surgery_step/close_encased_step,
 		/datum/surgery_step/open_encased_step,
+		/datum/surgery_step/clamp_bleeders_step, //oop i forgor, also cuz you can't clamp bleeders here, normally, for some reason
 		/datum/surgery_step/mend_encased,
 	)
 	pain_reduction_required = PAIN_REDUCTION_HEAVY

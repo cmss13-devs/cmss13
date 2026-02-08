@@ -74,6 +74,7 @@
 	desc = "A standard military beanie, often worn by non-combat military personnel and support crews, though it is not uncommon to see combat personnel who no longer care about self-preservation wearing one of these as well. Popular due to being comfortable and snug."
 	icon = 'icons/obj/items/clothing/hats/hats.dmi'
 	icon_state = "beanie_cargo"
+	blood_overlay_type = "surgcap"
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats.dmi'
 	)
@@ -92,6 +93,7 @@
 	desc = "A hat typically worn by the field-officers of the USCM. Occasionally they find their way down the ranks into the hands of squad-leaders and decorated grunts."
 	icon = 'icons/obj/items/clothing/hats/berets.dmi'
 	icon_state = "beret"
+	blood_overlay_type = "beret"
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/berets.dmi'
 	)
@@ -200,6 +202,7 @@
 	name = "Tan Beret"
 	desc = "A nice fashionable beret, popular with executives."
 	icon_state = "berettan"
+	blood_overlay_type = "beret"
 	icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi'
@@ -558,6 +561,7 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	name = "\improper USCM boonie hat"
 	desc = "A floppy bush hat. Protects only from the sun and rain, but very comfortable."
 	icon_state = "booniehat"
+	blood_overlay_type = "booniehat"
 	flipping_message = list(
 		"flipped" = "You tuck the hat's chinstrap away. Hopefully the wind doesn't nick it...",
 		"unflipped" = "You hook the hat's chinstrap under your chin. Peace of mind is worth a little embarassment."

@@ -501,7 +501,6 @@
 	walltype = WALL_BONE_RESIN
 	turf_flags = TURF_HULL
 
-
 /turf/closed/wall/mineral/bone
 	is_weedable = NOT_WEEDABLE
 
@@ -643,6 +642,29 @@
 		var/turf/turf_to_check = get_step(src, direction)
 		if(!isnull(turf_to_check) && !turf_to_check.density && !(istype(turf_to_check, /turf/open/space)))
 			minimap_color = MINIMAP_SOLID
+
+/turf/closed/wall/strata_ice/forest
+	name = "forest vegetation"
+	icon = 'icons/turf/walls/forest_veg.dmi'
+	icon_state = "forest_veg"
+	desc = "Exceptionally dense vegetation that you can't see through."
+	walltype = WALL_FOREST //Thick forest, not metal.
+	turf_flags = TURF_HULL
+
+/turf/closed/wall/strata_ice/forest/rock
+	name = "rock columns"
+	icon_state = "rock_forest"
+	desc = "Exceptionally dense rock formations."
+	walltype = WALL_FOREST_ROCK //Rock but near a forest not jungle.
+	turf_flags = TURF_HULL
+
+/turf/closed/wall/strata_ice/forest/rock/dirty
+	name = "rock columns"
+	icon_state = "rock_forest_dirty"
+	desc = "Exceptionally dense rock formations."
+	walltype = WALL_FOREST_ROCK_DIRTY //Dirty rock but near a forest not jungle.
+	turf_flags = TURF_HULL
+
 
 /turf/closed/wall/strata_outpost_ribbed //this guy is our reinforced replacement
 	name = "ribbed outpost walls"

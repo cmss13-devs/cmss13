@@ -1,0 +1,1531 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/largecrate/supply/supplies/tables_racks,
+/turf/open/floor/almayer/plate,
+/area/tyrargo/indoors/heyst/upper)
+"ab" = (
+/turf/open/floor/almayer/test_floor7,
+/area/tyrargo/indoors/heyst/upper)
+"ac" = (
+/obj/structure/largecrate/supply/supplies/flares,
+/turf/open/floor/almayer/test_floor7,
+/area/tyrargo/indoors/heyst/upper)
+"ad" = (
+/obj/structure/largecrate/supply/ammo/m41a/half,
+/obj/structure/largecrate/supply/ammo/m41a/half{
+	pixel_x = 4;
+	pixel_y = 10
+	},
+/turf/open/floor/almayer/test_floor7,
+/area/tyrargo/indoors/heyst/upper)
+"ai" = (
+/obj/effect/decal/cleanable/dirt{
+	icon_state = "thermite";
+	name = "impact"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/tyrargo/outdoors/outskirts/central)
+"al" = (
+/obj/structure/platform_decoration/metal/kutjevo/north,
+/turf/open_space,
+/area/tyrargo/indoors/heyst/upper)
+"au" = (
+/obj/structure/machinery/light_construct{
+	dir = 4
+	},
+/obj/effect/decal/heavy_cable/node_west,
+/obj/effect/decal/heavy_cable/node_south,
+/turf/open/floor/plating/plating_catwalk,
+/area/tyrargo/indoors/heyst/upper)
+"av" = (
+/obj/structure/barricade/handrail{
+	dir = 8
+	},
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/turf/open/floor/plating/plating_catwalk,
+/area/tyrargo/indoors/heyst/upper)
+"aW" = (
+/turf/open/floor/almayer/orange/northwest,
+/area/tyrargo/indoors/heyst/upper)
+"by" = (
+/obj/effect/spawner/random/gun/uscm_primary/highchance,
+/turf/open/floor/almayer/plate,
+/area/tyrargo/indoors/heyst/upper)
+"bH" = (
+/obj/structure/prop/hybrisa/misc/machinery/screens/redalert{
+	light_color = "#FF0000";
+	light_on = 1;
+	light_power = 3;
+	light_range = 5;
+	pixel_x = 32
+	},
+/turf/open/floor/almayer/orange/west,
+/area/tyrargo/indoors/heyst/upper)
+"bU" = (
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/turf/open_space,
+/area/tyrargo/indoors/heyst/upper)
+"cD" = (
+/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/turf/open_space,
+/area/tyrargo/indoors/heyst/upper)
+"cH" = (
+/obj/structure/machinery/computer3/laptop/secure_data,
+/turf/open/floor/almayer/test_floor7,
+/area/tyrargo/indoors/heyst/upper)
+"cM" = (
+/turf/open/floor/almayer_hull/outerhull_dir_alt/northeast,
+/area/tyrargo/outdoors/outskirts/central)
+"cS" = (
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/turf/open_space,
+/area/tyrargo/indoors/heyst/upper)
+"cT" = (
+/turf/open_space,
+/area/tyrargo/indoors/heyst/upper)
+"dT" = (
+/obj/effect/decal/cleanable/dirt{
+	icon_state = "thermite";
+	name = "impact"
+	},
+/obj/structure/machinery/light_construct{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/tyrargo/indoors/heyst/upper)
+"ei" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/turf/open/floor/plating/plating_catwalk,
+/area/tyrargo/indoors/heyst/upper)
+"em" = (
+/obj/structure/barricade/handrail{
+	dir = 1
+	},
+/obj/structure/barricade/handrail{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt{
+	icon_state = "thermite";
+	name = "impact"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/tyrargo/indoors/heyst/upper)
+"gl" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/gun/uscm_secondary/highchance,
+/turf/open/floor/almayer/orange/east,
+/area/tyrargo/indoors/heyst/upper)
+"gB" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/almayer/plate,
+/area/tyrargo/indoors/heyst/upper)
+"gO" = (
+/turf/open/floor/almayer_hull/outerhull_dir_alt/southwest,
+/area/tyrargo/outdoors/outskirts/central)
+"if" = (
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn,
+/turf/open/floor/almayer/plate,
+/area/tyrargo/indoors/heyst/upper)
+"ii" = (
+/turf/open/floor/plating/plating_catwalk,
+/area/tyrargo/indoors/heyst/upper)
+"iq" = (
+/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/turf/open_space,
+/area/tyrargo/indoors/heyst/upper)
+"iF" = (
+/obj/structure/barricade/handrail{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/plate,
+/area/tyrargo/indoors/heyst/upper)
+"iK" = (
+/obj/structure/barricade/handrail{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/plate,
+/area/tyrargo/indoors/heyst/upper)
+"jh" = (
+/obj/structure/machinery/light_construct{
+	dir = 8
+	},
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/turf/open/floor/plating/plating_catwalk,
+/area/tyrargo/indoors/heyst/upper)
+"jw" = (
+/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/kutjevo_smooth,
+/turf/open_space,
+/area/tyrargo/indoors/heyst/upper)
+"jx" = (
+/obj/item/frame/table/almayer,
+/turf/open/floor/almayer/plate,
+/area/tyrargo/indoors/heyst/upper)
+"jR" = (
+/turf/open/floor/almayer_hull/outerhull_dir_alt/northwest,
+/area/tyrargo/outdoors/outskirts/central)
+"kE" = (
+/obj/structure/window/framed/almayer,
+/turf/open/floor/plating,
+/area/tyrargo/indoors/heyst/upper)
+"ne" = (
+/obj/structure/machinery/light_construct{
+	dir = 8
+	},
+/turf/open/floor/almayer/plate,
+/area/tyrargo/indoors/heyst/upper)
+"nF" = (
+/obj/structure/barricade/handrail{
+	dir = 8
+	},
+/turf/open/floor/plating/platingdmg2,
+/area/tyrargo/indoors/heyst/upper)
+"nK" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33;
+	pixel_x = -3
+	},
+/obj/structure/barricade/handrail{
+	dir = 4
+	},
+/turf/open/floor/almayer/plate,
+/area/tyrargo/indoors/heyst/upper)
+"nN" = (
+/turf/open/floor/plating/panelscorched,
+/area/tyrargo/outdoors/outskirts/central)
+"oG" = (
+/obj/structure/barricade/handrail,
+/turf/open/floor/almayer/no_build/plating,
+/area/tyrargo/indoors/heyst/upper)
+"oI" = (
+/obj/structure/barricade/handrail{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt{
+	icon_state = "thermite";
+	name = "impact"
+	},
+/turf/open/floor/almayer/plate,
+/area/tyrargo/indoors/heyst/upper)
+"oP" = (
+/obj/structure/barricade/handrail{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt{
+	icon_state = "thermite";
+	name = "impact"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/platingdmg2,
+/area/tyrargo/outdoors/outskirts/central)
+"pl" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/gun/uscm_primary/highchance,
+/turf/open/floor/plating/plating_catwalk,
+/area/tyrargo/indoors/heyst/upper)
+"pt" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/obj/effect/decal/heavy_cable/node_north,
+/obj/effect/decal/heavy_cable/node_west,
+/turf/open/floor/plating/plating_catwalk,
+/area/tyrargo/indoors/heyst/upper)
+"pw" = (
+/obj/effect/decal/cleanable/dirt{
+	icon_state = "thermite";
+	name = "impact"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/tyrargo/indoors/heyst/upper)
+"pz" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/turf/open/floor/plating/plating_catwalk,
+/area/tyrargo/indoors/heyst/upper)
+"pG" = (
+/obj/effect/decal/heavy_cable/cable_vertical,
+/turf/open/floor/plating/plating_catwalk,
+/area/tyrargo/indoors/heyst/upper)
+"qd" = (
+/turf/open/floor/almayer_hull/outerhull_dir/northeast,
+/area/tyrargo/outdoors/outskirts/central)
+"rf" = (
+/turf/open/floor/almayer_hull/outerhull_dir/north,
+/area/tyrargo/outdoors/outskirts/central)
+"rq" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/tyrargo/indoors/heyst/upper)
+"rG" = (
+/turf/open/floor/almayer/plate,
+/area/tyrargo/indoors/heyst/upper)
+"rR" = (
+/obj/structure/barricade/handrail{
+	dir = 8
+	},
+/obj/item/stack/sheet/wood,
+/turf/open/floor/plating/plating_catwalk,
+/area/tyrargo/indoors/heyst/upper)
+"sc" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn,
+/turf/open/floor/almayer,
+/area/tyrargo/indoors/heyst/upper)
+"tk" = (
+/obj/structure/largecrate/supply,
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/turf/open/floor/plating/plating_catwalk,
+/area/tyrargo/indoors/heyst/upper)
+"tr" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/plate,
+/area/tyrargo/indoors/heyst/upper)
+"tK" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light_construct{
+	dir = 4
+	},
+/turf/open/floor/almayer/plate,
+/area/tyrargo/indoors/heyst/upper)
+"us" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/remains/robot,
+/obj/effect/spawner/random/gun/uscm_secondary/highchance,
+/turf/open/floor/almayer/plate,
+/area/tyrargo/indoors/heyst/upper)
+"uH" = (
+/obj/structure/platform/metal/kutjevo_smooth/east,
+/turf/open_space,
+/area/tyrargo/indoors/heyst/upper)
+"uL" = (
+/turf/open/floor/almayer_hull/outerhull_dir/east,
+/area/tyrargo/outdoors/outskirts/central)
+"uX" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/floor/almayer/test_floor7,
+/area/tyrargo/indoors/heyst/upper)
+"vj" = (
+/obj/structure/barricade/handrail{
+	dir = 8
+	},
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/structure/barricade/handrail{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/tyrargo/indoors/heyst/upper)
+"vF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/effect/decal/heavy_cable/node_south,
+/turf/open/floor/plating/plating_catwalk,
+/area/tyrargo/indoors/heyst/upper)
+"vP" = (
+/turf/open/floor/plating/burnt_platingdmg3,
+/area/tyrargo/outdoors/outskirts/central)
+"wf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/heavy_cable/cable_vertical,
+/turf/open/floor/plating/plating_catwalk,
+/area/tyrargo/indoors/heyst/upper)
+"wg" = (
+/obj/structure/platform/metal/kutjevo_smooth,
+/turf/open_space,
+/area/tyrargo/indoors/heyst/upper)
+"wj" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/plating_catwalk,
+/area/tyrargo/indoors/heyst/upper)
+"wY" = (
+/turf/closed/wall/almayer,
+/area/tyrargo/indoors/heyst/upper)
+"xg" = (
+/turf/open/floor/almayer_hull/outerhull_dir/northwest,
+/area/tyrargo/outdoors/outskirts/central)
+"xl" = (
+/obj/structure/stairs/multiz/down{
+	dir = 1
+	},
+/turf/open/floor/almayer_hull,
+/area/tyrargo/indoors/heyst/upper)
+"xU" = (
+/obj/structure/barricade/handrail{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/plating/plating_catwalk,
+/area/tyrargo/indoors/heyst/upper)
+"yu" = (
+/turf/open/floor/almayer_hull/outerhull_dir,
+/area/tyrargo/outdoors/outskirts/central)
+"zy" = (
+/obj/structure/platform_decoration/metal/kutjevo,
+/turf/open_space,
+/area/tyrargo/indoors/heyst/upper)
+"zJ" = (
+/obj/effect/decal/remains/robot,
+/turf/open/floor/plating,
+/area/tyrargo/outdoors/outskirts/central)
+"Ac" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer,
+/area/tyrargo/indoors/heyst/upper)
+"Aw" = (
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/turf/open_space,
+/area/tyrargo/indoors/heyst/upper)
+"Bc" = (
+/obj/effect/decal/cleanable/dirt{
+	icon_state = "thermite";
+	name = "impact"
+	},
+/turf/open/floor/plating,
+/area/tyrargo/outdoors/outskirts/central)
+"Bf" = (
+/obj/structure/barricade/handrail{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/generic,
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn,
+/turf/open/floor/almayer/plate,
+/area/tyrargo/indoors/heyst/upper)
+"Bt" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/plate,
+/area/tyrargo/indoors/heyst/upper)
+"Bv" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/orange/east,
+/area/tyrargo/indoors/heyst/upper)
+"BD" = (
+/obj/effect/decal/remains/robot,
+/turf/open/floor/plating/burnt_platingdmg3,
+/area/tyrargo/outdoors/outskirts/central)
+"Da" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/remains/robot,
+/turf/open/floor/almayer/plate,
+/area/tyrargo/indoors/heyst/upper)
+"DZ" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/orange/northeast,
+/area/tyrargo/indoors/heyst/upper)
+"Fk" = (
+/obj/structure/barricade/handrail{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/tyrargo/indoors/heyst/upper)
+"Gn" = (
+/obj/structure/barricade/handrail{
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/tyrargo/indoors/heyst/upper)
+"GM" = (
+/obj/structure/platform_decoration/metal/kutjevo,
+/obj/structure/blocker/invisible_wall,
+/turf/open_space,
+/area/tyrargo/indoors/heyst/upper)
+"Hw" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/almayer/plate,
+/area/tyrargo/indoors/heyst/upper)
+"Ii" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/heavy_cable/node_north,
+/turf/open/floor/plating/plating_catwalk,
+/area/tyrargo/indoors/heyst/upper)
+"Iq" = (
+/obj/structure/barricade/handrail{
+	dir = 4
+	},
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/turf/open/floor/plating/plating_catwalk,
+/area/tyrargo/indoors/heyst/upper)
+"IE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/heavy_cable/node_east,
+/obj/effect/decal/heavy_cable/node_north,
+/turf/open/floor/plating/plating_catwalk,
+/area/tyrargo/indoors/heyst/upper)
+"Jk" = (
+/obj/effect/decal/cleanable/generic,
+/obj/structure/machinery/light_construct{
+	dir = 8
+	},
+/obj/effect/decal/heavy_cable/node_south,
+/obj/effect/decal/heavy_cable/node_east,
+/turf/open/floor/plating/plating_catwalk,
+/area/tyrargo/indoors/heyst/upper)
+"JG" = (
+/obj/structure/platform_decoration/metal/kutjevo/north,
+/obj/structure/blocker/invisible_wall,
+/turf/open_space,
+/area/tyrargo/indoors/heyst/upper)
+"Ks" = (
+/obj/structure/barricade/handrail{
+	dir = 4
+	},
+/obj/item/stack/sheet/wood,
+/turf/open/floor/plating/plating_catwalk,
+/area/tyrargo/indoors/heyst/upper)
+"KH" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/structure/machinery/light_construct{
+	dir = 8
+	},
+/turf/open/floor/almayer/orange/southeast,
+/area/tyrargo/indoors/heyst/upper)
+"Lx" = (
+/obj/structure/barricade/handrail{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/generic,
+/obj/structure/machinery/light_construct,
+/turf/open/floor/plating/plating_catwalk,
+/area/tyrargo/indoors/heyst/upper)
+"LF" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open_space,
+/area/tyrargo/indoors/heyst/upper)
+"Mo" = (
+/obj/structure/machinery/light_construct{
+	dir = 4
+	},
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/turf/open/floor/plating/plating_catwalk,
+/area/tyrargo/indoors/heyst/upper)
+"Ne" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/obj/structure/stairs/multiz/down,
+/turf/open/floor/almayer_hull,
+/area/tyrargo/indoors/heyst/upper)
+"Ny" = (
+/obj/structure/barricade/handrail{
+	dir = 1
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/tyrargo/indoors/heyst/upper)
+"NH" = (
+/obj/structure/prop/hybrisa/misc/machinery/screens/redalert{
+	light_color = "#FF0000";
+	light_on = 1;
+	light_power = 3;
+	light_range = 5;
+	pixel_x = -32
+	},
+/turf/open/floor/almayer/orange/east,
+/area/tyrargo/indoors/heyst/upper)
+"NT" = (
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn,
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/turf/open/floor/plating/plating_catwalk,
+/area/tyrargo/indoors/heyst/upper)
+"NV" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn,
+/turf/open/floor/almayer/plate,
+/area/tyrargo/indoors/heyst/upper)
+"Ob" = (
+/obj/structure/barricade/handrail{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/plating_catwalk,
+/area/tyrargo/indoors/heyst/upper)
+"Oc" = (
+/obj/structure/largecrate/random/case/small,
+/turf/open/floor/almayer/plate,
+/area/tyrargo/indoors/heyst/upper)
+"Oi" = (
+/obj/structure/barricade/handrail{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn,
+/turf/open/floor/plating/plating_catwalk,
+/area/tyrargo/indoors/heyst/upper)
+"OK" = (
+/obj/effect/decal/cleanable/dirt{
+	icon_state = "thermite";
+	name = "impact"
+	},
+/turf/open/floor/almayer,
+/area/tyrargo/indoors/heyst/upper)
+"OZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/structure/prop/hybrisa/misc/machinery/screens/redalert{
+	light_color = "#FF0000";
+	light_on = 1;
+	light_power = 3;
+	light_range = 5;
+	pixel_x = -32
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/tyrargo/indoors/heyst/upper)
+"Qa" = (
+/obj/structure/barricade/handrail{
+	dir = 4
+	},
+/obj/structure/barricade/handrail{
+	dir = 1
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/tyrargo/indoors/heyst/upper)
+"Qt" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/frame/table/almayer,
+/turf/open/floor/almayer/plate,
+/area/tyrargo/indoors/heyst/upper)
+"Qw" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/obj/structure/machinery/light_construct{
+	dir = 4
+	},
+/turf/open/floor/almayer/orange/southwest,
+/area/tyrargo/indoors/heyst/upper)
+"QC" = (
+/obj/effect/decal/heavy_cable/node_north,
+/turf/open/floor/plating/plating_catwalk,
+/area/tyrargo/indoors/heyst/upper)
+"QE" = (
+/obj/structure/barricade/handrail{
+	dir = 8
+	},
+/obj/structure/barricade/handrail{
+	dir = 1
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/tyrargo/indoors/heyst/upper)
+"Ra" = (
+/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/kutjevo_smooth/east,
+/turf/open_space,
+/area/tyrargo/indoors/heyst/upper)
+"Rf" = (
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth/east,
+/turf/open_space,
+/area/tyrargo/indoors/heyst/upper)
+"RX" = (
+/turf/open_space,
+/area/tyrargo/outdoors/outskirts/central)
+"Sg" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/almayer,
+/area/tyrargo/indoors/heyst/upper)
+"Sx" = (
+/turf/open/floor/almayer,
+/area/tyrargo/indoors/heyst/upper)
+"SG" = (
+/obj/effect/decal/cleanable/generic,
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/turf/open/floor/plating/plating_catwalk,
+/area/tyrargo/indoors/heyst/upper)
+"SK" = (
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn,
+/obj/effect/decal/cleanable/dirt{
+	icon_state = "thermite";
+	name = "impact"
+	},
+/turf/open/floor/almayer/plate,
+/area/tyrargo/indoors/heyst/upper)
+"TH" = (
+/obj/structure/barricade/handrail,
+/turf/open/floor/plating/plating_catwalk,
+/area/tyrargo/indoors/heyst/upper)
+"TR" = (
+/turf/open/floor/almayer_hull/outerhull_dir_alt/southeast,
+/area/tyrargo/outdoors/outskirts/central)
+"UC" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/plate,
+/area/tyrargo/indoors/heyst/upper)
+"Vb" = (
+/turf/open/floor/plating/platingdmg3,
+/area/tyrargo/outdoors/outskirts/central)
+"Vh" = (
+/turf/open/floor/almayer_hull/outerhull_dir/southeast,
+/area/tyrargo/outdoors/outskirts/central)
+"Vp" = (
+/obj/structure/barricade/handrail{
+	dir = 8
+	},
+/obj/structure/barricade/handrail{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/plating_catwalk,
+/area/tyrargo/indoors/heyst/upper)
+"Vy" = (
+/turf/open/floor/almayer_hull/outerhull_dir/west,
+/area/tyrargo/outdoors/outskirts/central)
+"VB" = (
+/obj/item/tool/weldpack{
+	pixel_x = -2
+	},
+/turf/open/floor/almayer/plate,
+/area/tyrargo/indoors/heyst/upper)
+"VR" = (
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/turf/open_space,
+/area/tyrargo/indoors/heyst/upper)
+"Wt" = (
+/turf/template_noop,
+/area/template_noop)
+"WG" = (
+/obj/structure/barricade/handrail{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/plating_catwalk,
+/area/tyrargo/indoors/heyst/upper)
+"WU" = (
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/turf/open/floor/plating/plating_catwalk,
+/area/tyrargo/indoors/heyst/upper)
+"Xv" = (
+/turf/open/floor/almayer_hull/outerhull_dir/southwest,
+/area/tyrargo/outdoors/outskirts/central)
+"Yf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 30
+	},
+/turf/open/floor/almayer,
+/area/tyrargo/indoors/heyst/upper)
+"YB" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = 4
+	},
+/obj/structure/barricade/handrail{
+	dir = 8
+	},
+/turf/open/floor/almayer/plate,
+/area/tyrargo/indoors/heyst/upper)
+"Zj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn,
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/turf/open/floor/plating/plating_catwalk,
+/area/tyrargo/indoors/heyst/upper)
+"Zr" = (
+/obj/structure/largecrate/random/barrel/green,
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/structure/prop/hybrisa/misc/machinery/screens/redalert{
+	light_color = "#FF0000";
+	light_on = 1;
+	light_power = 3;
+	light_range = 5;
+	pixel_x = 32
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/tyrargo/indoors/heyst/upper)
+"ZC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/turf/open/floor/plating/plating_catwalk,
+/area/tyrargo/indoors/heyst/upper)
+
+(1,1,1) = {"
+Wt
+Wt
+Wt
+wY
+kE
+kE
+wY
+Vy
+Vy
+Vy
+Vy
+Vy
+Xv
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+"}
+(2,1,1) = {"
+Bc
+nN
+vP
+wY
+xl
+cT
+wY
+kE
+wY
+wY
+wY
+wY
+cM
+Xv
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+"}
+(3,1,1) = {"
+Wt
+zJ
+ai
+jh
+VB
+YB
+WU
+ei
+OZ
+Zj
+ne
+wY
+wY
+yu
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+"}
+(4,1,1) = {"
+Wt
+vP
+oP
+WG
+iF
+Bf
+Fk
+Fk
+Fk
+ii
+rG
+Oc
+wY
+yu
+Wt
+Wt
+Wt
+Wt
+Wt
+xg
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+wY
+kE
+kE
+kE
+wY
+Vy
+Xv
+Wt
+"}
+(5,1,1) = {"
+Wt
+Wt
+Wt
+bU
+bU
+bU
+bU
+bU
+cD
+em
+ii
+wf
+wY
+yu
+Wt
+Wt
+Wt
+Wt
+Wt
+rf
+wY
+wY
+kE
+kE
+kE
+wY
+wY
+wY
+Bv
+gl
+Bv
+wY
+wY
+cM
+Xv
+"}
+(6,1,1) = {"
+Wt
+Wt
+Wt
+cT
+cT
+cT
+cT
+cT
+al
+cD
+Ny
+wf
+wY
+cM
+Vy
+Vy
+Vy
+Vy
+Vy
+TR
+wY
+Jk
+WU
+WU
+WU
+DZ
+NH
+KH
+WU
+Iq
+Iq
+QC
+wY
+wY
+yu
+"}
+(7,1,1) = {"
+Wt
+Wt
+RX
+cT
+cT
+cT
+cT
+cT
+cT
+wg
+Ny
+wf
+wY
+kE
+kE
+wY
+wY
+kE
+kE
+wY
+wY
+Sx
+Sx
+OK
+Sx
+Ac
+sc
+Sx
+TH
+cS
+cD
+Qa
+rq
+kE
+yu
+"}
+(8,1,1) = {"
+Wt
+RX
+RX
+cT
+cT
+cT
+cT
+cT
+cT
+wg
+Ny
+vF
+tr
+WU
+tk
+NT
+jh
+SG
+WU
+WU
+UC
+pt
+jx
+rG
+rG
+rG
+ii
+gB
+TH
+Aw
+JG
+cD
+Ny
+kE
+yu
+"}
+(9,1,1) = {"
+Wt
+Wt
+RX
+cT
+cT
+cT
+cT
+cT
+cT
+wg
+Ny
+pG
+Hw
+Fk
+Fk
+xU
+Ks
+Fk
+Fk
+Fk
+Da
+wj
+by
+ad
+uX
+rG
+ii
+aa
+TH
+Aw
+LF
+wg
+Ny
+wY
+yu
+"}
+(10,1,1) = {"
+Wt
+Wt
+Wt
+cT
+cT
+cT
+cT
+cT
+cT
+wg
+Ny
+pG
+wY
+VR
+iq
+iq
+iq
+iq
+iq
+jw
+wY
+Bt
+Bt
+ab
+ab
+if
+rG
+rG
+TH
+Aw
+LF
+wg
+Lx
+wY
+yu
+"}
+(11,1,1) = {"
+Wt
+Wt
+RX
+cT
+cT
+cT
+cT
+cT
+cT
+wg
+Ny
+wf
+Hw
+Gn
+Gn
+Gn
+Ob
+Oi
+rR
+Gn
+Hw
+ii
+Bt
+cH
+ac
+rG
+pw
+Qt
+TH
+Aw
+LF
+wg
+Ny
+wY
+yu
+"}
+(12,1,1) = {"
+Wt
+RX
+RX
+cT
+cT
+cT
+cT
+cT
+cT
+wg
+Ny
+vF
+us
+WU
+WU
+WU
+Mo
+ZC
+WU
+ei
+NV
+IE
+Bt
+rG
+rG
+rG
+pl
+Bt
+TH
+Aw
+GM
+Ra
+Ny
+kE
+yu
+"}
+(13,1,1) = {"
+Wt
+Wt
+RX
+cT
+cT
+cT
+cT
+cT
+cT
+wg
+Ny
+pG
+wY
+kE
+kE
+wY
+wY
+kE
+kE
+wY
+wY
+Yf
+Sx
+Sx
+Sg
+Ac
+Ac
+Ac
+TH
+Rf
+Ra
+Vp
+wj
+kE
+yu
+"}
+(14,1,1) = {"
+Wt
+Wt
+Wt
+cT
+cT
+cT
+cT
+cT
+zy
+Ra
+Ny
+pG
+wY
+jR
+uL
+uL
+uL
+uL
+uL
+gO
+wY
+au
+pz
+WU
+WU
+aW
+bH
+Qw
+WU
+vj
+av
+Ii
+wY
+wY
+yu
+"}
+(15,1,1) = {"
+Wt
+Wt
+RX
+uH
+uH
+uH
+uH
+uH
+Ra
+QE
+ii
+pG
+wY
+yu
+Wt
+Wt
+Wt
+Wt
+Wt
+rf
+wY
+wY
+kE
+kE
+kE
+wY
+wY
+wY
+oG
+cT
+Ne
+wY
+wY
+jR
+Vh
+"}
+(16,1,1) = {"
+Wt
+Wt
+Wt
+nF
+oI
+iK
+Ob
+Ob
+Ob
+ii
+SK
+gB
+wY
+yu
+Wt
+Wt
+Wt
+Wt
+Wt
+qd
+uL
+uL
+uL
+uL
+uL
+uL
+uL
+wY
+kE
+kE
+kE
+wY
+uL
+Vh
+Wt
+"}
+(17,1,1) = {"
+Wt
+Wt
+Vb
+dT
+rG
+nK
+WU
+WU
+Zr
+ZC
+tK
+wY
+wY
+yu
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+"}
+(18,1,1) = {"
+Wt
+Wt
+BD
+wY
+xl
+cT
+wY
+kE
+wY
+wY
+wY
+wY
+jR
+Vh
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+"}
+(19,1,1) = {"
+Wt
+Wt
+Wt
+wY
+kE
+kE
+wY
+uL
+uL
+uL
+uL
+uL
+Vh
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+"}

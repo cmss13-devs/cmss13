@@ -413,6 +413,11 @@
 	icon_state = "afric_zimmerman"
 	density = FALSE
 
+/obj/structure/prop/invuln/static_corpse/afric_zimmer/trooper
+	name = "Unknown Trooper"
+	desc = "What remains of a unknown trooper. May they rest in peace."
+	icon_state = "army_guy"
+
 /obj/structure/prop/invuln/lifeboat_hatch_placeholder
 	density = FALSE
 	name = "non-functional hatch"
@@ -785,6 +790,8 @@
 	name = "M1 pattern festive needle torus"
 	desc = "In 2140 after a two different sub levels of the São Luís Bay Underground Habitat burned out (evidence points to a Bladerunner incident, but local police denies such claims) due to actual wreaths made with REAL needles, these have been issued ever since. They're made of ''''''pine'''''' scented poly-kevlon. According to the grunts from the American Corridor, during the SACO riots, protestors would pack these things into pillow cases, forming rudimentary body armor against soft point ballistics."
 	icon_state = "wreath"
+
+
 /obj/structure/prop/vehicles
 	name = "van"
 	desc = "An old van, seems to be broken down."
@@ -807,6 +814,358 @@
 	icon = 'icons/obj/vehicles/twe_tank.dmi'
 	icon_state = "twe_tank"
 	density = TRUE
+
+// USCM VTOL
+
+/obj/structure/prop/vehicles/aircraft/vtol
+	name = "\improper AD-71E VTOL"
+	desc = "A twin tilt-jet VTOL, the Blackfoot is the Bearcat's ugly big sister. For what she lacks in fire power and agility, she more than makes up for in utility and love handles. First tested by UA Northridge on American soil, the Blackfoot is currently undergoing active combat trials. This craft appears to be undergoing maintenance and is not ready to fly."
+	icon = 'icons/obj/vehicles/vtol_prop.dmi'
+	icon_state = "vtol"
+	density = FALSE
+	unslashable = TRUE
+	unacidable = TRUE
+	explo_proof = TRUE
+
+/obj/structure/prop/vehicles/aircraft/vtol/damaged
+	name = "\improper Crashed AD-71E VTOL"
+	desc = "A twin tilt-jet VTOL, the Blackfoot is the Bearcat's ugly big sister. For what she lacks in fire power and agility, she more than makes up for in utility and love handles. First tested by UA Northridge on American soil, the Blackfoot is currently undergoing active combat trials. This craft appears to have crash landed, and is inoperable."
+	icon_state = "vtol_damaged"
+
+// USCM Aerospace Fighter
+
+/obj/structure/prop/vehicles/aircraft/aircraft
+	name = "\improper EVAC-3 Aerospace fighter"
+	desc = "A state of the art EVAC-3F aerospace fighter used by the USCM. This fighter has seen better days with extensive internal wiring damage and unfinished repairs to the bomb-bays."
+	icon = 'icons/obj/vehicles/aircraft_prop.dmi'
+	icon_state = "evac_uscm"
+	density = FALSE
+	unslashable = TRUE
+	unacidable = TRUE
+	explo_proof = TRUE
+
+/obj/structure/prop/vehicles/aircraft/aircraft/usaf
+	icon_state = "evac_usaf"
+	desc = "High tech, silver coated EVAC-3 aerospace fighter used by the USAF in deep recon mission. The thermal-absorbent paint alone probably costs more than your squads collective paycheck. Unfortunately, however, this jet was in the middle of a repair cycle when the nothern defences were breached, nessecitating an evacuation."
+
+// USCM Truck
+
+/obj/structure/prop/vehicles/tank/truck
+	name = "M887 Truck"
+	desc = "A small box-type van. It's a compact vehicle with a rectangular cargo area, typically designed for transporting goods or small equipment. It features a high roof and straight sides, providing ample vertical space for storage. Its size makes it maneuverable and ideal for urban driving and tight spaces. This van appears to be non-functional, likely due to excessive use during the recent oubreak."
+	icon = 'icons/obj/vehicles/van_prop.dmi'
+	icon_state = "van_base"
+	density = FALSE
+	unslashable = TRUE
+	unacidable = TRUE
+	explo_proof = TRUE
+
+/obj/structure/prop/vehicles/tank/truck/broken
+	icon_state = "van_broken"
+
+/obj/structure/prop/vehicles/tank/truck/alt
+	name = "M991 Truck"
+	icon_state = "truck_base"
+
+/obj/structure/prop/vehicles/tank/truck/alt/broken
+	icon_state = "truck_broken"
+
+// USCM APC
+
+/obj/structure/prop/vehicles/tank/apc
+	name = "M577 Armored Personnel Carrier"
+	desc = "An M577 Armored Personnel Carrier. An armored transport with four big wheels. This one is no longer in working order, serving now as a roadblock."
+	icon = 'icons/obj/vehicles/apc_prop.dmi'
+	icon_state = "apc_base"
+	density = FALSE
+	unslashable = TRUE
+	unacidable = TRUE
+	explo_proof = TRUE
+
+
+/obj/structure/prop/vehicles/tank/apc/destroyed
+	icon_state = "apc_destroyed"
+
+/obj/structure/prop/vehicles/tank/apc/med
+	icon_state = "apc_med"
+
+/obj/structure/prop/vehicles/tank/apc/med/destroyed
+	icon_state = "apc_med_destroyed"
+
+// USCM Military Truck
+
+/obj/structure/prop/vehicles/tank/miltruck
+	name = "M255 Armored Half-Track"
+	desc = "UA Military half-track, used by all branches of the United American army, including the US Army and USCM. Comes in multiple different configurations, from being able to haul troops to mounting a mobile mortar. Verstile and cheap. This one appears to be non-functional due to overuse during the recent oubreak."
+	icon = 'icons/obj/vehicles/miltruck_prop.dmi'
+	icon_state = "track_base"
+	density = FALSE
+	unslashable = TRUE
+	unacidable = TRUE
+	explo_proof = TRUE
+
+/obj/structure/prop/vehicles/tank/miltruck/destroyed
+	icon_state = "track_destroyed"
+
+/obj/structure/prop/vehicles/tank/miltruck/wheeled
+	icon_state = "miltruck_1_base"
+
+/obj/structure/prop/vehicles/tank/miltruck/wheeled/cover
+	icon_state = "miltruck_2_base"
+
+/obj/structure/prop/vehicles/tank/miltruck/wheeled/destroyed
+	icon_state = "miltruck_1_destroyed"
+
+// USCM HUMVEE
+
+/obj/structure/prop/vehicles/tank/humvee
+	name = "\improper M540-B Armored Recon Carrier"
+	desc = "An M540-B Armored Recon Carrier. A lightly armored reconnaissance and intelligence vehicle. This vehicle has been immobilised."
+	icon = 'icons/obj/vehicles/humvee_prop.dmi'
+	icon_state = "humvee_base"
+	density = FALSE
+	unslashable = TRUE
+	unacidable = TRUE
+	explo_proof = TRUE
+
+/obj/structure/prop/vehicles/tank/humvee/destroyed
+	icon_state = "humvee_base_wreck"
+
+/obj/structure/prop/vehicles/tank/humvee/transport
+	icon_state = "humvee_carrier"
+
+/obj/structure/prop/vehicles/tank/humvee/transport/destroyed
+	icon_state = "humvee_carrier_wreck"
+
+/obj/structure/prop/vehicles/tank/humvee/medical
+	icon_state = "humvee_med"
+
+/obj/structure/prop/vehicles/tank/humvee/medical/destroyed
+	icon_state = "humvee_med_wreck"
+
+/obj/structure/prop/vehicles/tank/humvee/turret
+	icon_state = "humvee_gun"
+
+/obj/structure/prop/vehicles/tank/humvee/turret/destroyed
+	icon_state = "humvee_gun_wreck"
+
+// USCM Infantry Fighting Vehicle
+
+/obj/structure/prop/vehicles/tank/ifv
+	name = "M34 Marshal IFV"
+	desc = "The M34 Marshal IFV: Developed by W-Y, the RAT (Rover Armed Transport) was originally designed for the 3WE Military as an armed version of their RT series of expeditionary vehicles, adopted by the US Army, It's heavier and and more durable then the M570 series the marines use, as the army don't have a need for APCs capable of being transported by dropship."
+	icon = 'icons/obj/vehicles/ifv_prop.dmi'
+	icon_state = "ifv_base"
+	density = FALSE
+	unslashable = TRUE
+	unacidable = TRUE
+	explo_proof = TRUE
+
+/obj/structure/prop/vehicles/tank/ifv/destroyed
+	icon_state = "ifv_destroyed"
+
+// USCM BISON
+
+/obj/structure/prop/vehicles/tank/bison
+	name = "BISON Automated Transport Vehicle"
+	desc = "The BISON ATV is an remote-controled logistical supply vehicle, intended to assist USCM and US Army rear-line logistic forces in moving supplies. It requires someone to be standing near it for the auto-pilot functions to work. This model is non-functional."
+	icon = 'icons/obj/vehicles/bison_prop.dmi'
+	icon_state = "base_closed"
+	density = FALSE
+	unslashable = TRUE
+	unacidable = TRUE
+	explo_proof = TRUE
+
+/obj/structure/prop/vehicles/tank/bison/destroyed
+	icon_state = "base_closed_damaged"
+
+/obj/structure/prop/vehicles/tank/bison/open
+	icon_state = "base_open"
+
+/obj/structure/prop/vehicles/tank/bison/open/destroyed
+	icon_state = "base_open_damaged"
+
+
+// USCM ARC
+
+/obj/structure/prop/vehicles/tank/arc
+	name = "M540-B Armored Recon Carrier"
+	desc = "An M540-B Armored Recon Carrier. A lightly armored reconnaissance and intelligence vehicle. This vehicle appears to be non-functional."
+	icon = 'icons/obj/vehicles/arc_prop.dmi'
+	icon_state = "arc_base"
+	density = FALSE
+	unslashable = TRUE
+	unacidable = TRUE
+	explo_proof = TRUE
+
+/obj/structure/prop/vehicles/tank/arc/destroyed
+	icon_state = "arc_destroyed"
+
+// USCM Tank
+
+/obj/structure/prop/vehicles/tank/longstreet
+	name = "M34A2 Longstreet Light Tank"
+	desc = "A giant piece of armor with a big gun, it knew what it had to do, and it served its duty."
+	icon = 'icons/obj/vehicles/tank_prop.dmi'
+	icon_state = "tank_base"
+	density = FALSE
+	unslashable = TRUE
+	unacidable = TRUE
+	explo_proof = TRUE
+
+// Hull
+// Base Armor
+
+/obj/structure/prop/vehicles/tank/longstreet/destroyed
+
+	icon_state = "tank_base_destroyed"
+
+// Caustic Armor
+
+/obj/structure/prop/vehicles/tank/longstreet/caustic
+	icon_state = "tank_caustic_base"
+
+/obj/structure/prop/vehicles/tank/longstreet/caustic/damaged
+	icon_state = "tank_caustic_damaged"
+
+/obj/structure/prop/vehicles/tank/longstreet/caustic/destroyed
+	icon_state = "tank_caustic_destroyed"
+
+// Concussive Armor
+
+/obj/structure/prop/vehicles/tank/longstreet/concussive
+	icon_state = "tank_concussive_base"
+
+/obj/structure/prop/vehicles/tank/longstreet/concussive/damaged
+	icon_state = "tank_concussive_damaged"
+
+/obj/structure/prop/vehicles/tank/longstreet/concussive/destroyed
+	icon_state = "tank_concussive_destroyed"
+
+// Ballistic Armor
+
+/obj/structure/prop/vehicles/tank/longstreet/ballistic
+	icon_state = "tank_ballistic_base"
+
+/obj/structure/prop/vehicles/tank/longstreet/ballistic/damaged
+	icon_state = "tank_ballistic_damaged"
+
+/obj/structure/prop/vehicles/tank/longstreet/ballistic/destroyed
+	icon_state = "tank_ballistic_destroyed"
+
+// Turret
+
+/obj/structure/prop/vehicles/tank/longstreet/turret
+	icon_state = "turret_base"
+
+/obj/structure/prop/vehicles/tank/longstreet/turret/damaged
+	icon_state = "turret_base_damaged"
+
+/obj/structure/prop/vehicles/tank/longstreet/turret/destroyed
+	icon_state = "turret_base_destroyed"
+
+// Primary Weapon
+
+/obj/structure/prop/vehicles/tank/longstreet/primary
+	icon_state = "ltb_base"
+
+/obj/structure/prop/vehicles/tank/longstreet/primary/ltb
+
+/obj/structure/prop/vehicles/tank/longstreet/primary/ltb/destroyed
+	icon_state = "ltb_destroyed"
+
+/obj/structure/prop/vehicles/tank/longstreet/primary/ltaaap
+	icon_state = "ltaaap_base"
+
+/obj/structure/prop/vehicles/tank/longstreet/primary/ltaaap/destroyed
+	icon_state = "ltaaap_destroyed"
+
+/obj/structure/prop/vehicles/tank/longstreet/primary/auto
+	icon_state = "ace_base"
+
+/obj/structure/prop/vehicles/tank/longstreet/primary/auto/destroyed
+	icon_state = "ace_destroyed"
+
+/obj/structure/prop/vehicles/tank/longstreet/primary/flamer
+	icon_state = "flamer_base"
+
+/obj/structure/prop/vehicles/tank/longstreet/primary/flamer/destroyed
+	icon_state = "flamer_destroyed"
+
+// Secondary
+
+/obj/structure/prop/vehicles/tank/longstreet/secondary
+	icon_state = "flamer_sec_base"
+
+/obj/structure/prop/vehicles/tank/longstreet/secondary/flamer
+
+/obj/structure/prop/vehicles/tank/longstreet/secondary/flamer/destroyed
+	icon_state = "flamer_sec_destroyed"
+
+/obj/structure/prop/vehicles/tank/longstreet/secondary/glauncher
+	icon_state = "glauncher_base"
+
+/obj/structure/prop/vehicles/tank/longstreet/secondary/glauncher/destroyed
+	icon_state = "glauncher_destroyed"
+
+/obj/structure/prop/vehicles/tank/longstreet/secondary/towlauncher
+	icon_state = "towlauncher_base"
+
+/obj/structure/prop/vehicles/tank/longstreet/secondary/towlauncher/destroyed
+	icon_state = "towlauncher_destroyed"
+
+/obj/structure/prop/vehicles/tank/longstreet/secondary/m56cupola
+	icon_state = "m56cupola_base"
+
+/obj/structure/prop/vehicles/tank/longstreet/secondary/towlauncher/destroyed
+	icon_state = "m56cupola_destroyed"
+
+// Module
+
+/obj/structure/prop/vehicles/tank/longstreet/module
+	icon_state = "warray_base"
+
+/obj/structure/prop/vehicles/tank/longstreet/module/destroyed
+	icon_state = "warray_destroyed"
+
+/obj/structure/prop/vehicles/tank/longstreet/module/odrive
+	icon_state = "odrive_enhancer_base"
+
+/obj/structure/prop/vehicles/tank/longstreet/module/odrive/destroyed
+	icon_state = "odrive_enhancer_destroyed"
+
+/obj/structure/prop/vehicles/tank/longstreet/module/slauncher
+	icon_state = "slauncher_base"
+
+/obj/structure/prop/vehicles/tank/longstreet/module/slauncher/destroyed
+	icon_state = "slauncher_destroyed"
+
+/obj/structure/prop/vehicles/tank/longstreet/module/slauncher/empty
+	icon_state = "slauncher_empty"
+
+/obj/structure/prop/vehicles/tank/longstreet/module/artillerymod
+	icon_state = "artillerymod_base"
+
+/obj/structure/prop/vehicles/tank/longstreet/module/artillerymod/destroyed
+	icon_state = "artillerymod_destroyed"
+
+// USCM Static Defense Prop
+
+/obj/structure/prop/turret
+	name = "\improper UH-46 Heavy Sentry Gun"
+	desc = "Large weapons system platform designed to deploy multiple types of automated defense systems. This one has been rendered permanently non-functional."
+	icon = 'icons/obj/structures/props/static_defence_prop.dmi'
+	icon_state = "gun_platform"
+	layer = XENO_HIDING_LAYER
+	bound_height = 32
+	bound_width = 64
+	density = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+	explo_proof = TRUE
+
+/obj/structure/prop/turret/missile
+	icon_state = "missile_platform"
 
 //overhead prop sets
 

@@ -1025,6 +1025,10 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				JOB_MESS_SERGEANT = 62,
 				// 70-149: SQUADS (look below)
 				JOB_SYNTH_K9 = 71,
+				JOB_ARMY_TROOPER = 72,
+				JOB_ARMY_ENGI = 73,
+				JOB_ARMY_MEDIC = 74,
+				JOB_ARMY_SYN = 75,
 				// 150+: Civilian/other
 				JOB_CORPORATE_LIAISON = 150,
 				JOB_CORPORATE_BODYGUARD = 151,

@@ -56,6 +56,8 @@
 #define AREA_NOSECURECADES (1<<8)
 /// Flags the area, preventing the creation of xeno tunnels, overwriting can_dig_xeno_tunnel.
 #define AREA_NOTUNNEL (1<<9)
+/// Flags the area as not being a valid location for a para-drop to land on..
+#define AREA_NO_PARA (1<<7)
 
 /// Default number of ticks for do_after
 #define DA_DEFAULT_NUM_TICKS 5

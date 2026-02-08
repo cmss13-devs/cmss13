@@ -1517,15 +1517,36 @@
 	desc = "A metal grate."
 	icon_state = "solidgrate1"
 
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible
+	unslashable = TRUE
+	unacidable = TRUE
+	explo_proof = TRUE
+
+
 /obj/structure/prop/hybrisa/misc/floorprops/grate2
 	name = "solid metal grate"
 	desc = "A metal grate."
 	icon_state = "solidgrate5"
 
+/obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible
+	unslashable = TRUE
+	unacidable = TRUE
+	explo_proof = TRUE
+
 /obj/structure/prop/hybrisa/misc/floorprops/grate3
 	name = "solid metal grate"
 	desc = "A metal grate."
 	icon_state = "zhalfgrate1"
+
+/obj/structure/prop/hybrisa/misc/floorprops/grate4
+	name = "solid metal grate"
+	desc = "A metal grate."
+	icon_state = "zhalfgrate2"
+
+/obj/structure/prop/hybrisa/misc/floorprops/plate
+	name = "plating"
+	desc = "A metal plate."
+	icon_state = "plating"
 
 /obj/structure/prop/hybrisa/misc/floorprops/floorglass
 	name = "reinforced glass floor"

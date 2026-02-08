@@ -1,0 +1,1019 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison,
+/area/navalis/indoors/med_sci/upper_level/sci_lab)
+"aK" = (
+/turf/open/floor/prison/darkpurple2/north,
+/area/navalis/indoors/med_sci/upper_level/sci_lab)
+"bb" = (
+/turf/open/floor/prison/blue/east,
+/area/navalis/indoors/med_sci/upper_level/sci_scan)
+"cu" = (
+/obj/structure/bed/chair/dropship/passenger,
+/obj/structure/machinery/door_control/brbutton{
+	id = "clf_umbilical_1";
+	pixel_x = 1;
+	pixel_y = 28;
+	range = 20
+	},
+/obj/effect/landmark/survivor_spawner/clf/navalis,
+/turf/open/floor/almayer,
+/area/navalis/indoors/clf_shuttle)
+"cG" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/navalis/outdoors/exterior/med_ext/upper)
+"cY" = (
+/turf/open/floor/roof_weedable/outerhull_dir/west,
+/area/navalis/outdoors/exterior/med_ext/upper)
+"db" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 8
+	},
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_y = 25
+	},
+/obj/effect/landmark/survivor_spawner/clf/navalis,
+/turf/open/floor/almayer/orange/west,
+/area/navalis/indoors/clf_shuttle)
+"dm" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan5"
+	},
+/area/navalis/indoors/clf_shuttle)
+"dB" = (
+/turf/closed/shuttle/ert{
+	icon_state = "leftengine_1";
+	opacity = 0
+	},
+/area/navalis/outdoors/exterior/med_ext/upper)
+"dG" = (
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = -10;
+	pixel_y = 2
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/navalis/outdoors/exterior/med_ext/upper)
+"dS" = (
+/turf/closed/wall/hybrisa/colony/hospital/reinforced,
+/area/navalis/indoors/med_sci/upper_level/flight)
+"ei" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/navalis/indoors/med_sci/upper_level/sci_lab)
+"eP" = (
+/obj/effect/landmark/survivor_spawner/clf/navalis,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/navalis/indoors/clf_shuttle)
+"fw" = (
+/obj/structure/surface/table/almayer,
+/obj/item/weapon/gun/pistol/heavy,
+/obj/item/ammo_magazine/pistol/heavy,
+/obj/item/ammo_magazine/pistol/heavy,
+/obj/item/ammo_magazine/pistol/heavy,
+/obj/item/ammo_magazine/pistol/heavy,
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/almayer,
+/area/navalis/indoors/clf_shuttle)
+"gj" = (
+/obj/structure/platform/metal/hybrisa/metalplatform1,
+/turf/open_space,
+/area/navalis/indoors/med_sci/upper_level/corridor)
+"gr" = (
+/turf/open/floor/prison/blue/north,
+/area/navalis/indoors/med_sci/upper_level/sci_scan)
+"gx" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/station_alert{
+	icon_state = "atmosb";
+	stat = 1
+	},
+/turf/open/floor/almayer,
+/area/navalis/indoors/clf_shuttle)
+"gI" = (
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/turf/open/floor/roof_weedable,
+/area/navalis/outdoors/exterior/med_ext/upper)
+"hg" = (
+/obj/structure/prop/hybrisa/xenobiology/small/empty,
+/turf/open/floor/prison/darkpurplefull2,
+/area/navalis/indoors/med_sci/upper_level/sci_lab)
+"hC" = (
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = -10;
+	pixel_y = 2
+	},
+/turf/closed/shuttle/ert{
+	icon_state = "stan1"
+	},
+/area/navalis/indoors/clf_shuttle)
+"iq" = (
+/turf/open/floor/prison/darkpurple2/east,
+/area/navalis/indoors/med_sci/upper_level/sci_lab)
+"iP" = (
+/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/kutjevo_smooth/east,
+/turf/open/floor/roof_weedable,
+/area/navalis/outdoors/exterior/med_ext/upper)
+"jA" = (
+/turf/open/floor/prison/blue/northeast,
+/area/navalis/indoors/med_sci/upper_level/sci_scan)
+"lB" = (
+/obj/structure/prop/invuln/ice_prefab/roof_greeble{
+	icon_state = "vent5"
+	},
+/turf/open/floor/roof_weedable,
+/area/navalis/outdoors/exterior/med_ext/upper)
+"nw" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/prison/darkpurplefull2,
+/area/navalis/indoors/med_sci/upper_level/sci_lab)
+"nO" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/darkpurple2/northwest,
+/area/navalis/indoors/med_sci/upper_level/sci_scan)
+"og" = (
+/obj/structure/window/framed/hybrisa/research/reinforced,
+/turf/open/floor/prison/bright_clean2/southwest,
+/area/navalis/indoors/med_sci/upper_level/sci_scan)
+"ou" = (
+/obj/structure/prop/hybrisa/airport/dropshipenginedamage{
+	light_on = 1;
+	light_power = 5;
+	light_range = 6;
+	pixel_y = -13;
+	pixel_x = -6
+	},
+/turf/closed/shuttle/ert{
+	icon_state = "leftengine_3";
+	opacity = 0
+	},
+/area/navalis/outdoors/exterior/med_ext/upper)
+"pz" = (
+/obj/structure/surface/table/almayer{
+	dir = 1;
+	flipped = 1
+	},
+/obj/effect/landmark/objective_landmark/far,
+/obj/structure/machinery/botany/extractor{
+	pixel_x = -1;
+	pixel_y = 6
+	},
+/turf/open/floor/prison/blue/east,
+/area/navalis/indoors/med_sci/upper_level/sci_scan)
+"pB" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/bright_clean2/southwest,
+/area/navalis/indoors/med_sci/upper_level/sci_scan)
+"pE" = (
+/obj/structure/machinery/door/airlock/almayer/generic/autoname{
+	dir = 1
+	},
+/turf/open/floor/almayer,
+/area/navalis/indoors/clf_shuttle)
+"pR" = (
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = 10;
+	pixel_y = 25
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/navalis/outdoors/exterior/med_ext/upper)
+"qv" = (
+/turf/open/floor/prison,
+/area/navalis/indoors/med_sci/upper_level/sci_lab)
+"qR" = (
+/obj/structure/platform/metal/hybrisa/metalplatform1/north,
+/turf/open_space,
+/area/navalis/indoors/med_sci/upper_level/corridor)
+"qY" = (
+/obj/structure/window/framed/hybrisa/colony/hospital/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
+/turf/open/floor/plating,
+/area/navalis/indoors/med_sci/upper_level/flight)
+"rA" = (
+/obj/structure/prop/hybrisa/airport/dropshipenginedamagenofire{
+	pixel_x = 5;
+	pixel_y = 2
+	},
+/turf/closed/shuttle/ert{
+	icon_state = "stan5"
+	},
+/area/navalis/indoors/clf_shuttle)
+"rB" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/darkpurple2/north,
+/area/navalis/indoors/med_sci/upper_level/sci_lab)
+"rI" = (
+/turf/closed/wall/hybrisa/research,
+/area/navalis/indoors/med_sci/upper_level/sci_lab)
+"rK" = (
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = 8;
+	pixel_y = 2
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/navalis/outdoors/exterior/med_ext/upper)
+"rP" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan9"
+	},
+/area/navalis/indoors/clf_shuttle)
+"sc" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth/north,
+/turf/open/floor/roof_weedable,
+/area/navalis/outdoors/exterior/med_ext/upper)
+"se" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan23"
+	},
+/area/navalis/indoors/clf_shuttle)
+"sq" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan22"
+	},
+/area/navalis/indoors/clf_shuttle)
+"sT" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/communications{
+	icon_state = "commb";
+	stat = 1
+	},
+/turf/open/floor/almayer,
+/area/navalis/indoors/clf_shuttle)
+"tW" = (
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/navalis/outdoors/exterior/med_ext/upper)
+"ua" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan_leftengine"
+	},
+/area/navalis/indoors/clf_shuttle)
+"ut" = (
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/turf/open/floor/roof_weedable,
+/area/navalis/outdoors/exterior/med_ext/upper)
+"uR" = (
+/obj/structure/platform_decoration/metal/kutjevo/west,
+/turf/open/floor/roof_weedable,
+/area/navalis/outdoors/exterior/med_ext/upper)
+"vj" = (
+/obj/structure/prop/invuln/ice_prefab/roof_greeble{
+	icon_state = "vent3"
+	},
+/turf/open/floor/roof_weedable,
+/area/navalis/outdoors/exterior/med_ext/upper)
+"vm" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan3"
+	},
+/area/navalis/indoors/clf_shuttle)
+"vA" = (
+/turf/closed/shuttle/ert{
+	icon_state = "rightengine_1"
+	},
+/area/navalis/outdoors/exterior/med_ext/upper)
+"vL" = (
+/obj/structure/platform/metal/hybrisa/metalplatform1,
+/obj/structure/platform/metal/hybrisa/metalplatform1/west,
+/turf/open_space,
+/area/navalis/indoors/med_sci/upper_level/corridor)
+"wz" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan8"
+	},
+/area/navalis/indoors/clf_shuttle)
+"xr" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 8
+	},
+/obj/effect/landmark/survivor_spawner/clf/navalis,
+/turf/open/floor/almayer/orange/west,
+/area/navalis/indoors/clf_shuttle)
+"xA" = (
+/turf/closed/shuttle/ert{
+	icon_state = "rightengine_3"
+	},
+/area/navalis/outdoors/exterior/med_ext/upper)
+"yc" = (
+/obj/structure/bed/chair/dropship/pilot{
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	dir = 1
+	},
+/obj/effect/landmark/survivor_spawner/clf_lead/navalis,
+/turf/open/floor/almayer,
+/area/navalis/indoors/clf_shuttle)
+"yz" = (
+/turf/open/floor/prison/darkpurple2/west,
+/area/navalis/indoors/med_sci/upper_level/sci_lab)
+"zb" = (
+/obj/structure/platform/metal/hybrisa/metalplatform1/north,
+/obj/structure/platform/metal/hybrisa/metalplatform1/west,
+/obj/structure/platform/metal/hybrisa/metalplatform1,
+/turf/open_space,
+/area/navalis/indoors/med_sci/upper_level/corridor)
+"zc" = (
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = -12;
+	pixel_y = 25
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/navalis/outdoors/exterior/med_ext/upper)
+"zo" = (
+/obj/structure/machinery/power/apc/power/north,
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 4
+	},
+/obj/effect/landmark/survivor_spawner/clf_engi/navalis,
+/turf/open/floor/almayer/orange/east,
+/area/navalis/indoors/clf_shuttle)
+"zz" = (
+/turf/open/floor/roof_weedable/outerhull_dir/north,
+/area/navalis/outdoors/exterior/med_ext/upper)
+"zU" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/faxmachine{
+	department = "CLF - Cell 42"
+	},
+/obj/item/paper/varadero/clf,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/almayer,
+/area/navalis/indoors/clf_shuttle)
+"Az" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33
+	},
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = 10
+	},
+/turf/open/floor/almayer/plate,
+/area/navalis/outdoors/exterior/med_ext/upper)
+"AP" = (
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/kutjevo_smooth,
+/turf/open/floor/roof_weedable/outerhull_dir,
+/area/navalis/outdoors/exterior/med_ext/upper)
+"AQ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	pixel_x = -1;
+	dir = 1
+	},
+/obj/effect/landmark/survivor_spawner/clf_heavy,
+/turf/open/floor/almayer,
+/area/navalis/indoors/clf_shuttle)
+"Bi" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_x = -1
+	},
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal4";
+	pixel_y = -10
+	},
+/turf/open/floor/almayer/plate,
+/area/navalis/outdoors/exterior/med_ext/upper)
+"Bs" = (
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/turf/open/floor/roof_weedable/outerhull_dir/north,
+/area/navalis/outdoors/exterior/med_ext/upper)
+"BD" = (
+/obj/effect/landmark/survivor_spawner/clf/navalis,
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/almayer,
+/area/navalis/indoors/clf_shuttle)
+"Co" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 4
+	},
+/obj/effect/landmark/survivor_spawner/clf_medic/navalis,
+/turf/open/floor/almayer/orange/east,
+/area/navalis/indoors/clf_shuttle)
+"CK" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/blue/west,
+/area/navalis/indoors/med_sci/upper_level/sci_scan)
+"Dm" = (
+/turf/open/floor/almayer/plate,
+/area/navalis/outdoors/exterior/med_ext/upper)
+"Dw" = (
+/obj/structure/surface/table/almayer{
+	dir = 1;
+	flipped = 1
+	},
+/obj/item/reagent_container/food/drinks/jar{
+	pixel_x = 4;
+	pixel_y = 3
+	},
+/turf/open/floor/prison/darkpurplefull2,
+/area/navalis/indoors/med_sci/upper_level/sci_lab)
+"DL" = (
+/obj/effect/landmark/survivor_spawner/clf/navalis,
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/almayer,
+/area/navalis/indoors/clf_shuttle)
+"Ep" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/bluefull,
+/area/navalis/indoors/med_sci/upper_level/sci_scan)
+"Ev" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/prison/darkpurple2/northwest,
+/area/navalis/indoors/med_sci/upper_level/sci_lab)
+"EJ" = (
+/turf/open/floor/plating/plating_catwalk,
+/area/navalis/outdoors/exterior/med_ext/upper)
+"Fp" = (
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/kutjevo_smooth,
+/turf/open/floor/roof_weedable,
+/area/navalis/outdoors/exterior/med_ext/upper)
+"FF" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan_l_w"
+	},
+/area/navalis/indoors/clf_shuttle)
+"FL" = (
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/stairs/perspective{
+	dir = 5;
+	icon_state = "p_stair_full"
+	},
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = 10
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33
+	},
+/turf/open/floor/almayer/plate,
+/area/navalis/outdoors/exterior/med_ext/upper)
+"FW" = (
+/obj/structure/prop/hybrisa/xenobiology/small/cracked1,
+/turf/open/floor/prison/darkpurplefull2,
+/area/navalis/indoors/med_sci/upper_level/sci_lab)
+"GA" = (
+/turf/open/floor/roof_weedable/outerhull_dir/southwest,
+/area/navalis/outdoors/exterior/med_ext/upper)
+"Hg" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan_rightengine"
+	},
+/area/navalis/indoors/clf_shuttle)
+"Ht" = (
+/obj/structure/platform/metal/kutjevo_smooth/east,
+/turf/open/floor/roof_weedable,
+/area/navalis/outdoors/exterior/med_ext/upper)
+"Hu" = (
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/navalis/indoors/med_sci/upper_level/sci_lab)
+"JH" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/darkpurplefull2,
+/area/navalis/indoors/med_sci/upper_level/sci_scan)
+"JT" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan27"
+	},
+/area/navalis/indoors/clf_shuttle)
+"Lz" = (
+/turf/closed/wall/hybrisa/colony/hospital/reinforced,
+/area/navalis/indoors/med_sci/upper_level/corridor)
+"LO" = (
+/obj/structure/surface/table/almayer{
+	dir = 1;
+	flipped = 1
+	},
+/obj/structure/machinery/power/apc{
+	dir = 8
+	},
+/turf/open/floor/prison/blue/east,
+/area/navalis/indoors/med_sci/upper_level/sci_scan)
+"Nk" = (
+/turf/open/floor/roof_weedable/outerhull_dir,
+/area/navalis/outdoors/exterior/med_ext/upper)
+"NY" = (
+/obj/effect/landmark/survivor_spawner/clf/navalis,
+/turf/open/floor/almayer,
+/area/navalis/indoors/clf_shuttle)
+"Oc" = (
+/turf/open/floor/prison/darkpurple2/northeast,
+/area/navalis/indoors/med_sci/upper_level/sci_scan)
+"Om" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/navalis/indoors/med_sci/upper_level/sci_scan)
+"OY" = (
+/obj/structure/machinery/door/poddoor/almayer{
+	id = "clf_umbilical_1";
+	name = "\improper Umbillical Airlock"
+	},
+/turf/open/floor/plating/kutjevo,
+/area/navalis/indoors/clf_shuttle)
+"Pt" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan_r_w"
+	},
+/area/navalis/indoors/clf_shuttle)
+"PI" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan20"
+	},
+/area/navalis/indoors/clf_shuttle)
+"PM" = (
+/turf/closed/wall/hybrisa/research/reinforced,
+/area/navalis/indoors/med_sci/upper_level/sci_lab)
+"Ri" = (
+/turf/closed/wall/hybrisa/research/reinforced,
+/area/navalis/indoors/med_sci/upper_level/sci_scan)
+"Rm" = (
+/obj/structure/window/framed/hybrisa/colony/hospital/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
+/turf/open/floor/plating,
+/area/navalis/indoors/med_sci/upper_level/corridor)
+"RE" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan_inner_w_1"
+	},
+/area/navalis/indoors/clf_shuttle)
+"Sy" = (
+/obj/structure/machinery/xenoanalyzer,
+/turf/open/floor/prison/blue/north,
+/area/navalis/indoors/med_sci/upper_level/sci_scan)
+"SS" = (
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/turf/open/floor/roof_weedable,
+/area/navalis/outdoors/exterior/med_ext/upper)
+"TG" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth/north,
+/turf/open/floor/roof_weedable/outerhull_dir,
+/area/navalis/outdoors/exterior/med_ext/upper)
+"Uq" = (
+/obj/structure/stairs/perspective{
+	dir = 4;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/almayer/plate,
+/area/navalis/outdoors/exterior/med_ext/upper)
+"UO" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth/east,
+/turf/open/floor/roof_weedable,
+/area/navalis/outdoors/exterior/med_ext/upper)
+"US" = (
+/turf/open/floor/roof_weedable,
+/area/navalis/outdoors/exterior/med_ext/upper)
+"UT" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = 10
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33
+	},
+/turf/open/floor/almayer/plate,
+/area/navalis/outdoors/exterior/med_ext/upper)
+"VM" = (
+/turf/closed/shuttle/ert,
+/area/navalis/indoors/clf_shuttle)
+"XM" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan25"
+	},
+/area/navalis/indoors/clf_shuttle)
+"XP" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/darkpurplefull2,
+/area/navalis/indoors/med_sci/upper_level/sci_lab)
+"XY" = (
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth/east,
+/turf/open/floor/roof_weedable,
+/area/navalis/outdoors/exterior/med_ext/upper)
+"YA" = (
+/obj/structure/machinery/light{
+	dir = 1;
+	pixel_x = 16
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/darkpurplefull2,
+/area/navalis/indoors/med_sci/upper_level/sci_scan)
+"YC" = (
+/obj/structure/machinery/chem_simulator,
+/turf/open/floor/prison/blue/northwest,
+/area/navalis/indoors/med_sci/upper_level/sci_scan)
+"YP" = (
+/obj/structure/platform/metal/kutjevo_smooth,
+/turf/open/floor/roof_weedable,
+/area/navalis/outdoors/exterior/med_ext/upper)
+"YS" = (
+/obj/structure/bed/chair/comfy{
+	dir = 5
+	},
+/turf/open/floor/prison/bluefull,
+/area/navalis/indoors/med_sci/upper_level/sci_scan)
+"ZC" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth,
+/turf/open/floor/roof_weedable,
+/area/navalis/outdoors/exterior/med_ext/upper)
+"ZD" = (
+/turf/closed/wall/hybrisa/research,
+/area/navalis/indoors/med_sci/upper_level/sci_scan)
+"ZM" = (
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/stairs/perspective{
+	dir = 6;
+	icon_state = "p_stair_full";
+	pixel_y = 13
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_x = -1
+	},
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal4";
+	pixel_y = -10
+	},
+/turf/open/floor/almayer/plate,
+/area/navalis/outdoors/exterior/med_ext/upper)
+
+(1,1,1) = {"
+cY
+cY
+cY
+cY
+cY
+cY
+cY
+cY
+cY
+cY
+cY
+cY
+cY
+cY
+cY
+cY
+cY
+cY
+GA
+"}
+(2,1,1) = {"
+dS
+US
+US
+US
+US
+ZC
+Ht
+Ht
+Ht
+Ht
+Ht
+Ht
+uR
+US
+US
+US
+ZD
+ZD
+Nk
+"}
+(3,1,1) = {"
+dS
+US
+US
+US
+ZC
+iP
+zc
+tW
+tW
+tW
+tW
+dG
+XY
+uR
+US
+US
+ZD
+ZD
+US
+"}
+(4,1,1) = {"
+dS
+US
+US
+ZC
+iP
+tW
+PI
+VM
+Pt
+VM
+VM
+ua
+ou
+dB
+uR
+US
+Ri
+Ri
+Ri
+"}
+(5,1,1) = {"
+qY
+US
+US
+YP
+zc
+PI
+sq
+fw
+RE
+zo
+Co
+wz
+VM
+hC
+SS
+US
+Ri
+pz
+LO
+"}
+(6,1,1) = {"
+qY
+US
+US
+YP
+tW
+JT
+sT
+yc
+RE
+cu
+NY
+DL
+eP
+OY
+SS
+US
+Ri
+YS
+Ep
+"}
+(7,1,1) = {"
+qY
+US
+US
+YP
+tW
+JT
+gx
+AQ
+pE
+NY
+NY
+BD
+eP
+OY
+SS
+US
+Ri
+YC
+CK
+"}
+(8,1,1) = {"
+dS
+US
+US
+YP
+pR
+XM
+se
+zU
+RE
+db
+xr
+rP
+rA
+vm
+SS
+US
+Ri
+gr
+Om
+"}
+(9,1,1) = {"
+dS
+US
+US
+sc
+Fp
+tW
+XM
+dm
+FF
+dm
+dm
+Hg
+xA
+vA
+UO
+US
+Ri
+Sy
+Om
+"}
+(10,1,1) = {"
+Lz
+US
+US
+US
+sc
+AP
+pR
+tW
+tW
+tW
+tW
+rK
+gI
+UO
+US
+US
+Ri
+jA
+bb
+"}
+(11,1,1) = {"
+Lz
+US
+US
+US
+US
+TG
+FL
+Uq
+Uq
+ZM
+Bs
+ut
+UO
+US
+US
+US
+Ri
+YA
+nO
+"}
+(12,1,1) = {"
+Lz
+US
+US
+US
+vj
+Nk
+UT
+Dm
+Dm
+Bi
+zz
+US
+US
+US
+US
+rI
+Ri
+JH
+Oc
+"}
+(13,1,1) = {"
+Lz
+Lz
+US
+US
+lB
+Nk
+Az
+cG
+EJ
+Bi
+zz
+PM
+PM
+PM
+PM
+PM
+Ri
+og
+pB
+"}
+(14,1,1) = {"
+zb
+Lz
+Lz
+US
+US
+Nk
+Az
+cG
+EJ
+Bi
+zz
+PM
+FW
+nw
+Ev
+yz
+yz
+yz
+yz
+"}
+(15,1,1) = {"
+qR
+vL
+Rm
+US
+US
+Nk
+Az
+Dm
+Dm
+Bi
+zz
+PM
+hg
+XP
+rB
+qv
+Hu
+Hu
+ei
+"}
+(16,1,1) = {"
+qR
+gj
+Rm
+US
+US
+Nk
+Az
+Dm
+Dm
+Bi
+zz
+PM
+Dw
+nw
+aK
+aa
+iq
+iq
+iq
+"}

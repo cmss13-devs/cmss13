@@ -400,6 +400,9 @@
 				if("Xeno Status HUD")
 					the_hud = GLOB.huds[MOB_HUD_XENO_STATUS]
 					the_hud.add_hud_to(src, src)
+				if("Xeno Effects HUD")
+					the_hud = GLOB.huds[MOB_HUD_XENO_HOSTILE]
+					the_hud.add_hud_to(src, src)
 				if("Faction UPP HUD")
 					the_hud = GLOB.huds[MOB_HUD_FACTION_UPP]
 					the_hud.add_hud_to(src, src)

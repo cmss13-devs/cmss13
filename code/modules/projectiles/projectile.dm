@@ -889,20 +889,42 @@
 				else
 					return FALSE
 
-/mob/living/carbon/xenomorph/get_projectile_hit_chance(obj/projectile/P)
+/mob/living/carbon/xenomorph/get_projectile_hit_chance(obj/projectile/bullet)
 	. = ..()
 	if(.)
-		var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
-		if(SEND_SIGNAL(P, COMSIG_BULLET_CHECK_MOB_SKIPPING, src) & COMPONENT_SKIP_MOB\
-			|| P.runtime_iff_group && get_target_lock(P.runtime_iff_group))
+		var/ammo_flags = bullet.ammo.flags_ammo_behavior | bullet.projectile_override_flags
+		if(SEND_SIGNAL(bullet, COMSIG_BULLET_CHECK_MOB_SKIPPING, src) & COMPONENT_SKIP_MOB\
+			|| bullet.runtime_iff_group && get_target_lock(bullet.runtime_iff_group))
 			return FALSE
 
 		if(ammo_flags & AMMO_SKIPS_ALIENS)
-			var/mob/living/carbon/xenomorph/X = P.firer
-			if(!istype(X))
+			var/mob/living/carbon/xenomorph/xeno = bullet.firer
+			if(!istype(xeno))
 				return FALSE
-			if(X.hivenumber == hivenumber)
+			if(xeno.hivenumber == hivenumber)
 				return FALSE
+
+		if(dodge_threshold > 0)
+			if(body_position == LYING_DOWN || stat == UNCONSCIOUS)
+				projectiles_counted = 0
+				last_projectile_time = 0
+			else if(!(ammo_flags & (AMMO_SNIPER | AMMO_ROCKET)))
+				if(last_projectile_time && world.time - last_projectile_time >= 6 SECONDS)
+					projectiles_counted = 0
+
+				projectiles_counted++
+				last_projectile_time = world.time
+
+				if(projectiles_counted >= dodge_threshold)
+					projectiles_counted = 0
+					last_projectile_time = 0
+
+					xeno_jitter(5 DECISECONDS)
+					if(bullet.ammo.sound_miss)
+						playsound_client(client, bullet.ammo.sound_miss, get_turf(src), 75, TRUE)
+					visible_message(SPAN_AVOIDHARM("The [src] darts aside, evading [bullet]!"),
+						SPAN_AVOIDHARM("You react fast, and [bullet] narrowly misses you!"), null, 4, CHAT_TYPE_TAKING_HIT)
+					return FALSE
 
 		if(mob_size == MOB_SIZE_SMALL)
 			. -= 10

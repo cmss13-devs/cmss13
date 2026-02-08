@@ -1,12 +1,18 @@
 import { useBackend } from 'tgui/backend';
-import { Box, Stack } from 'tgui/components';
+import { Box, Icon, Stack } from 'tgui/components';
 
 import type { DropshipEquipment } from '../DropshipWeaponsConsole';
 import { MfdPanel, type MfdProps } from './MultifunctionDisplay';
 import { mfdState, useEquipmentState } from './stateManagers';
 import type { EquipmentContext, MGSpec } from './types';
+import { useSupportCooldown } from './WeaponPanel';
 
-const MgPanel = (props: DropshipEquipment) => {
+const MgPanel = (
+  props: DropshipEquipment & {
+    readonly isOnCooldown?: boolean;
+    readonly remainingTime?: number;
+  },
+) => {
   const mgData = props.data as MGSpec;
   const ammoReadout =
     mgData.rounds === null || mgData.rounds === undefined
@@ -23,6 +29,14 @@ const MgPanel = (props: DropshipEquipment) => {
           <Stack.Item>
             <h3>{props.name}</h3>
           </Stack.Item>
+          {props.isOnCooldown && (
+            <Stack.Item>
+              <h3 style={{ color: '#ff8c00' }}>
+                <Icon name="clock" /> Deployment Cooldown: {props.remainingTime}
+                s
+              </h3>
+            </Stack.Item>
+          )}
           <Stack.Item>
             <h3>
               Health: {mgData.health} / {mgData.health_max}
@@ -55,6 +69,9 @@ export const MgMfdPanel = (props: MfdProps) => {
   const { setPanelState } = mfdState(props.panelStateId);
   const { equipmentState } = useEquipmentState(props.panelStateId);
   const mg = data.equipment_data.find((x) => x.mount_point === equipmentState);
+
+  const { isOnCooldown, remainingTime } = useSupportCooldown((mg as any) || {});
+
   const deployLabel = (mg?.data?.deployed ?? 0) === 1 ? 'RETRACT' : 'DEPLOY';
 
   const autoDeployLabel =
@@ -63,12 +80,16 @@ export const MgMfdPanel = (props: MfdProps) => {
   return (
     <MfdPanel
       panelStateId={props.panelStateId}
+      color={props.color}
       topButtons={[
         { children: 'EQUIP', onClick: () => setPanelState('equipment') },
       ]}
       leftButtons={[
         {
-          children: deployLabel,
+          children: isOnCooldown
+            ? `${deployLabel} (${remainingTime}s)`
+            : deployLabel,
+          disabled: isOnCooldown,
           onClick: () =>
             act('deploy-equipment', { equipment_id: mg?.mount_point }),
         },
@@ -84,7 +105,15 @@ export const MgMfdPanel = (props: MfdProps) => {
         },
       ]}
     >
-      <Box className="NavigationMenu">{mg && <MgPanel {...mg} />}</Box>
+      <Box className="NavigationMenu">
+        {mg && (
+          <MgPanel
+            {...mg}
+            isOnCooldown={isOnCooldown}
+            remainingTime={remainingTime}
+          />
+        )}
+      </Box>
     </MfdPanel>
   );
 };

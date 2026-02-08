@@ -42,6 +42,10 @@
 /obj/structure/machinery/computer/shuttle/dropship/flight/Initialize(mapload, ...)
 	. = ..()
 	compatible_landing_zones = get_landing_zones()
+	AddComponent(/datum/component/tacmap, has_drawing_tools = FALSE, minimap_flag = MINIMAP_FLAG_USCM, has_update = TRUE, drawing = FALSE)
+	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
+	if(tacmap_component)
+		tacmap_component.map_holder = new(null, 2, MINIMAP_FLAG_USCM, FALSE)
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/Destroy()
 	. = ..()
@@ -84,18 +88,31 @@
 	if(optimised)
 		recharge_duration = SHUTTLE_RECHARGE * SHUTTLE_OPTIMIZE_FACTOR_RECHARGE
 
+	var/has_fuel_enhancer = FALSE
+	var/has_ramrocket = FALSE
 	for(var/obj/structure/dropship_equipment/equipment as anything in dropship.equipments)
-		// fuel enhancer
 		if(istype(equipment, /obj/structure/dropship_equipment/fuel/fuel_enhancer))
-			if(is_flyby)
-				flight_duration = flight_duration / SHUTTLE_FUEL_ENHANCE_FACTOR_TRAVEL
-			else
-				flight_duration = flight_duration * SHUTTLE_FUEL_ENHANCE_FACTOR_TRAVEL
-
+			has_fuel_enhancer = TRUE
+		if(istype(equipment, /obj/structure/dropship_equipment/fuel/ram_rocket))
+			has_ramrocket = TRUE
 		// cooling system
 		if(istype(equipment, /obj/structure/dropship_equipment/fuel/cooling_system))
 			recharge_duration = recharge_duration * SHUTTLE_COOLING_FACTOR_RECHARGE
 
+
+	// Apply fuel enhancer and ramrocket effects
+	if(has_fuel_enhancer && has_ramrocket)
+		return // Cancel out both effects, use whatever flight_duration is currently set to (including optimised)
+	else if(has_fuel_enhancer)
+		if(is_flyby)
+			flight_duration = flight_duration / SHUTTLE_FUEL_ENHANCE_FACTOR_TRAVEL // 0.75, 25% longer flyby time
+		else
+			flight_duration = flight_duration * SHUTTLE_FUEL_ENHANCE_FACTOR_TRAVEL // 25% faster transport time
+	else if(has_ramrocket)
+		if(is_flyby)
+			flight_duration = flight_duration / SHUTTLE_RAM_ROCKET_FACTOR_TRAVEL // 1.25, 25% shorter flyby time (opposite of fuel enhancer)
+		else
+			flight_duration = flight_duration * SHUTTLE_RAM_ROCKET_FACTOR_TRAVEL // 25% slower transport time
 
 	dropship.callTime = floor(flight_duration)
 	dropship.rechargeTime = floor(recharge_duration)
@@ -103,6 +120,17 @@
 /obj/structure/machinery/computer/shuttle/dropship/flight/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
+		var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
+		if(tacmap_component)
+			if(!tacmap_component.map_holder)
+				tacmap_component.map_holder = new(null, 2, MINIMAP_FLAG_USCM, FALSE, FALSE)
+				tacmap_component.is_embedded = TRUE
+				// moved 50 pixels south to algin in the center
+				var/matrix/transform = matrix()
+				transform.Translate(-32, 14)
+				tacmap_component.map_holder.map.transform = transform
+				tacmap_component.map = tacmap_component.map_holder.map
+			user.client.register_map_obj(tacmap_component.map_holder.map)
 		var/obj/docking_port/mobile/shuttle = SSshuttle.getShuttle(shuttleId)
 		var/name = capitalize(shuttle?.name)
 		if(can_change_shuttle)
@@ -134,6 +162,21 @@
 		return GLOB.never_state
 	return GLOB.not_incapacitated_and_adjacent_strict_state
 
+/obj/structure/machinery/computer/shuttle/dropship/flight/ui_close(mob/user)
+	. = ..()
+	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
+	if(tacmap_component)
+		tacmap_component.on_unset_interaction(user)
+		tacmap_component.ui_close(user)
+		if(tacmap_component.map_holder)
+			user.client?.clear_map(tacmap_component.map_holder.map_ref)
+			tacmap_component.map = null
+			qdel(tacmap_component.map_holder)
+			tacmap_component.map_holder = null
+			tacmap_component.interactees -= user
+	user.client?.clear_map()
+	return FALSE
+
 /obj/structure/machinery/computer/shuttle/dropship/flight/ui_static_data(mob/user)
 	. = ..(user)
 	compatible_landing_zones = get_landing_zones()
@@ -148,6 +191,10 @@
 	.["alternative_shuttles"] = list()
 	if(can_change_shuttle)
 		.["alternative_shuttles"] = alternative_shuttles()
+
+	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
+	if(tacmap_component && tacmap_component.map_holder)
+		.["tactical_map_ref"] = tacmap_component.map_holder.map_ref
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/alternative_shuttles()
 	. = list()
@@ -429,6 +476,9 @@
 	.["is_disabled"] = disabled
 	if(shuttle?.is_hijacked)
 		.["is_disabled"] = TRUE
+	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
+	if(tacmap_component?.map_holder)
+		.["tactical_map_ref"] = tacmap_component.map_holder.map_ref
 	.["locked_down"] = FALSE
 	.["can_fly_by"] = !is_remote
 	.["can_set_automated"] = is_remote
@@ -632,6 +682,24 @@
 		if ("change_shuttle")
 			var/new_shuttle = params["new_shuttle"]
 			return set_shuttle(new_shuttle)
+
+		if("mapview")
+			var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
+			if(!tacmap_component.map_holder)
+				tacmap_component.map_holder = new(null, 2, MINIMAP_FLAG_USCM, FALSE, FALSE)
+				tacmap_component.map = tacmap_component.map_holder.map
+				// moved 50 pixels south to algin in the center
+				var/matrix/transform = matrix()
+				transform.Translate(-32, 14)
+				tacmap_component.map_holder.map.transform = transform
+				user.client.register_map_obj(tacmap_component.map_holder.map)
+				tacmap_component.interactees += user
+			else
+				tacmap_component.on_unset_interaction(user)
+				user.client.clear_map(tacmap_component.map_holder.map_ref)
+				tacmap_component.map = null
+				qdel(tacmap_component.map_holder)
+				tacmap_component.map_holder = null
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/set_shuttle(new_shuttle)
 	var/mob/user = usr

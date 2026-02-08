@@ -27,6 +27,8 @@
 	var/datum/tacmap_holder/map_holder
 	///Is drawing enabled
 	var/drawing
+	///Is this tacmap embedded in parent UI
+	var/is_embedded = FALSE
 
 
 /datum/component/tacmap/Initialize(has_drawing_tools, minimap_flag, has_update, drawing)
@@ -119,6 +121,10 @@
 	user.client.using_main_tacmap = TRUE
 
 /datum/component/tacmap/ui_status(mob/user, datum/ui_state/state)
+	// For embedded tacmap, delegate to parent's UI status
+	if(is_embedded && istype(parent, /atom) && hascall(parent, "ui_status"))
+		return call(parent, "ui_status")(user, state)
+
 	if(get_dist(parent, user) > 1)
 		return UI_CLOSE
 
@@ -166,9 +172,13 @@ GLOBAL_LIST_INIT(tacmap_holders, list())
 	var/map_ref
 	var/atom/movable/screen/minimap/map
 
-/datum/tacmap_holder/New(loc, zlevel, flags, drawing)
+/datum/tacmap_holder/New(loc, zlevel, flags, drawing, popup = TRUE)
 	map_ref = "tacmap_[REF(src)]_map"
-	map = SSminimaps.fetch_minimap_object(zlevel, flags, live=TRUE, popup=TRUE, drawing=drawing)
+	map = SSminimaps.fetch_minimap_object(zlevel, flags, live=TRUE, popup=popup, drawing=drawing)
+
+	if(!map)
+		log_debug("Minimap creation failed for zlevel [zlevel] with flags [flags]")
+		return
 
 	map.screen_loc = "[map_ref]:1,1"
 	map.assigned_map = map_ref

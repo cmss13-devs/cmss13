@@ -5,15 +5,18 @@ import type { DropshipEquipment } from '../DropshipWeaponsConsole';
 export interface ButtonProps {
   children?: ReactNode;
   onClick?: () => void;
+  disabled?: boolean;
 }
 
 export type LazeTarget = {
   target_name: string;
   target_tag: number;
+  ceiling_protection_tier?: number;
 };
 
 export type TargetContext = {
   targets_data: Array<LazeTarget>;
+  offset_ceiling_protection_tier?: number;
 };
 
 export type FultonProps = {
@@ -42,6 +45,7 @@ export type CameraProps = {
 
 export type EquipmentContext = {
   equipment_data: Array<DropshipEquipment>;
+  targets_data?: Array<LazeTarget>;
 };
 
 export type MedevacContext = {
@@ -51,6 +55,8 @@ export type MedevacContext = {
 
 export type FiremissionContext = {
   firemission_data: Array<CasFiremission>;
+  firemission_state?: number;
+  firemission_message?: string;
 };
 
 export type SentrySpec = {
@@ -73,6 +79,7 @@ export type SentrySpec = {
 
 export type SpotlightSpec = {
   name: string;
+  deployed: 0 | 1;
 };
 
 export type ParadropSpec = {
@@ -117,4 +124,13 @@ export const dirMap = (dir) => {
     case 'WEST':
       return 8;
   }
+};
+
+export type AutoreloaderSpec = {
+  name: string; // The name of the autoreloader
+  max_ammo_slots: number; // Maximum number of ammo slots
+  available_slots: number; // Number of free slots availableted to reflect the two separate ammo slots
+  cooldown: number; // Remaining cooldown time for reloading
+  selected_weapon: string;
+  selected_ammo: string;
 };

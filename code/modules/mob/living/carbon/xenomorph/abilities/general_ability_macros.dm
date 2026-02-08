@@ -209,3 +209,10 @@
 	set hidden = TRUE
 	var/action_name = "Order Construction (400)"
 	handle_xeno_macro(src, action_name)
+
+/datum/action/xeno_action/verb/verb_skyspit()
+	set category = "Alien"
+	set name = "Skyspit"
+	set hidden = TRUE
+	var/action_name = "Skyspit (150)"
+	handle_xeno_macro(src, action_name)

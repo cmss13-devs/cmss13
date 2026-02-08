@@ -39,6 +39,18 @@
 	var/mob/source_mob
 	var/combat_equipment = TRUE
 	var/faction_exclusive //if this ammo is obtainable only by certain faction
+	///if TRUE, this ammo can be used to break through cave roofs
+	var/cavebreaker = FALSE
+	///if TRUE, this ammo can pierce metal roofs in direct fire
+	var/metalbreaker = FALSE
+	///delay in how fast to loop the simulation, mainly for GAU/Laser currently
+	var/sleep_per_shot = 1
+	///if this ammo doesn't require a powerloader to be moved
+	var/handheld = FALSE
+	///if this ammo has a safety toggle
+	var/safety_enabled = FALSE
+	/// Type path to the corresponding handheld item, if any
+	var/handheld_type = null
 
 /obj/structure/ship_ammo/update_icon()
 	. = ..()
@@ -111,6 +123,9 @@
 /obj/structure/ship_ammo/proc/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
 	return
 
+/obj/structure/ship_ammo/proc/get_impact_visual_type()
+	return null
+
 /obj/structure/ship_ammo/proc/can_fire_at(turf/impact, mob/user)
 	return TRUE
 
@@ -156,6 +171,9 @@
 			else
 				PC.update_icon("ds_ammo")
 
+// Proc to create warning dots for cluster/incendiary bombs
+/obj/structure/ship_ammo/proc/create_warning_dot(turf/target_turf)
+	new /obj/effect/overlay/temp/blinking_laser(target_turf)
 
 //30mm gun
 
@@ -179,6 +197,9 @@
 	. = ..()
 	. += "It has [ammo_count] round\s."
 
+/obj/structure/ship_ammo/heavygun/get_impact_visual_type()
+	return /obj/effect/overlay/temp/cas_cannon_impact
+
 /obj/structure/ship_ammo/heavygun/show_loaded_desc(mob/user)
 	if(ammo_count)
 		return "It's loaded with \a [src] containing [ammo_count] round\s."
@@ -186,46 +207,86 @@
 		return "It's loaded with an empty [name]."
 
 /obj/structure/ship_ammo/heavygun/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
+	// moved the simulation code to its own proc so we could use CALLBACK instead of sleep() for less than 1 delay
 	set waitfor = 0
 	var/list/turf_list = RANGE_TURFS(bullet_spread_range, impact)
 	var/soundplaycooldown = 0
 	var/debriscooldown = 0
 
 	for(var/i = 1 to ammo_used_per_firing)
-		sleep(1)
-		var/turf/impact_tile = pick(turf_list)
-		var/datum/cause_data/cause_data = create_cause_data(fired_from.name, source_mob)
-		impact_tile.ex_act(EXPLOSION_THRESHOLD_VLOW, pick(GLOB.alldirs), cause_data)
-		create_shrapnel(impact_tile,1,0,0,shrapnel_type,cause_data,FALSE,100) //simulates a bullet
-		for(var/atom/movable/explosion_effect in impact_tile)
-			if(iscarbon(explosion_effect))
-				var/mob/living/carbon/bullet_effect = explosion_effect
-				explosion_effect.ex_act(EXPLOSION_THRESHOLD_VLOW, null, cause_data)
-				bullet_effect.apply_armoured_damage(directhit_damage,ARMOR_BULLET,BRUTE,null,penetration)
-			else
-				explosion_effect.ex_act(EXPLOSION_THRESHOLD_VLOW)
-		new /obj/effect/particle_effect/expl_particles(impact_tile)
-		if(!soundplaycooldown) //so we don't play the same sound 20 times very fast.
-			playsound(impact_tile, 'sound/effects/gauimpact.ogg',40,1,20)
-			soundplaycooldown = 3
-		soundplaycooldown--
-		if(!debriscooldown)
-			impact_tile.ceiling_debris_check(1)
-			debriscooldown = 6
-		debriscooldown--
-	sleep(11) //speed of sound simulation
+		addtimer(CALLBACK(src, PROC_REF(fire_heavygun_shot), turf_list, fired_from, soundplaycooldown, debriscooldown), sleep_per_shot * (i - 1))
+
+	addtimer(CALLBACK(src, PROC_REF(play_heavygun_sound), impact), 11)
+
+/obj/structure/ship_ammo/heavygun/proc/fire_heavygun_shot(turf_list, fired_from, soundplaycooldown, debriscooldown)
+	var/turf/impact_tile = pick(turf_list)
+	var/obj/structure/dropship_equipment/weapon/typed_weapon = fired_from
+	var/datum/cause_data/cause_data = create_cause_data(typed_weapon.name, source_mob)
+
+	new /obj/effect/overlay/temp/cas_cannon_impact(impact_tile, src)
+
+	impact_tile.ex_act(EXPLOSION_THRESHOLD_VLOW, pick(GLOB.alldirs), cause_data)
+	create_shrapnel(impact_tile,1,0,0,shrapnel_type,cause_data,FALSE,100)
+	for(var/atom/movable/explosion_effect in impact_tile)
+		if(iscarbon(explosion_effect))
+			var/mob/living/carbon/bullet_effect = explosion_effect
+			explosion_effect.ex_act(EXPLOSION_THRESHOLD_VLOW, null, cause_data)
+			bullet_effect.apply_armoured_damage(directhit_damage,ARMOR_BULLET,BRUTE,null,penetration)
+		else
+			explosion_effect.ex_act(EXPLOSION_THRESHOLD_VLOW)
+	new /obj/effect/particle_effect/expl_particles(impact_tile)
+	if(!soundplaycooldown)
+		playsound(impact_tile, 'sound/effects/gauimpact.ogg',40,1,20)
+		soundplaycooldown = 3
+	soundplaycooldown--
+	if(!debriscooldown)
+		impact_tile.ceiling_debris_check(1)
+		debriscooldown = 6
+	debriscooldown--
+
+// Helper proc for sound
+/obj/structure/ship_ammo/heavygun/proc/play_heavygun_sound(impact)
 	playsound(impact, 'sound/effects/gau.ogg',100,1,60)
 
 
 /obj/structure/ship_ammo/heavygun/antitank
 	name = "\improper PGU-105 30mm Anti-tank ammo crate"
 	icon_state = "30mm_crate_hv"
-	desc = "A crate full of PGU-105 Specialized 30mm APFSDS Titanium-Tungsten alloy penetrators, made for countering peer and near peer APCs, IFVs, and MBTs in CAS support. It is designed to penetrate up to the equivalent 1350mm of RHA when launched from a GAU-21. It is much less effective against soft targets however, in which case 30mm ball ammunition is recommended. WARNING: discarding petals from the ammunition can be harmful if the dropship does not pull out at the needed speeds. Please consult page 3574 of the manual, available for order at any Armat store. Can be loaded into the GAU-21 30mm cannon."
+	desc = "A crate full of PGU-105 Specialized 30mm APFSDS Titanium-Tungsten alloy penetrators, made for countering peer and near peer APCs, IFVs, and MBTs in CAS support. It is designed to penetrate up to the equivalent 1350mm of RHA when launched from a GAU-21. It is much less effective against soft targets however, in which case 30mm ball ammunition is recommended. WARNING: discarding petals from the ammunition can be harmful if the dropship does not pull out at the needed speeds. Please consult page 3574 of the manual, available for order at any Armat store. It can penetrate through metal ceilings. Can be loaded into the GAU-21 30mm cannon."
 	travelling_time = 60
+	ammo_count = 500
+	max_ammo_count = 500
+	ammo_used_per_firing = 50
+	bullet_spread_range = 4
 	point_cost = 325
+	fire_mission_delay = 2
 	shrapnel_type = /datum/ammo/bullet/shrapnel/gau/at
 	directhit_damage = 80 //how much damage is to be inflicted to a mob, this is here so that we can hit resting mobs.
 	penetration = 40 //AP value pretty much
+	sleep_per_shot = 0.75 // fires volleys more frequently than standard ammo
+	metalbreaker = TRUE // Can pierce metal roofs like mortars
+
+/obj/structure/ship_ammo/heavygun/bellygun
+	name = "\improper PGU-110 25mm Compact ammo crate"
+	icon_state = "30mm_crate_bg"
+	desc = "A crate full of PGU-110 Compact 25mm rounds designed for precise supporting fire from gunner stations aboard dropships. These smaller, lighter rounds feature enhanced ballistic stability for tighter shot groupings, making them ideal for strikes against light armored insurgents and soft targets. The reduced size allows for manual reloading by crewmembers within the dropship. Can be loaded into the GAU-24/B Belly Gunner Station."
+	equipment_type = /obj/structure/dropship_equipment/weapon/heavygun/bay
+	travelling_time = 30
+	ammo_count = 300
+	max_ammo_count = 300
+	ammo_used_per_firing = 30
+	bullet_spread_range = 2
+	point_cost = 300
+	fire_mission_delay = 2
+	shrapnel_type = /datum/ammo/bullet/shrapnel/gau/at
+	directhit_damage = 70 //how much damage is to be inflicted to a mob, this is here so that we can hit resting mobs.
+	penetration = 20 //AP value pretty much
+	sleep_per_shot = 0.75 // fires volleys more frequently than standard ammo
+	metalbreaker = TRUE // Can pierce metal roofs like mortars
+	handheld = TRUE // compact ammo can be manually loaded
+	density = FALSE //
+	anchored = FALSE // allows manual pickup
+	handheld_type = /obj/item/ship_ammo_handheld/bellygun
 
 //laser battery
 
@@ -243,7 +304,7 @@
 	ammo_used_per_firing = 10
 	max_inaccuracy = 1
 	warning_sound = 'sound/effects/nightvision.ogg'
-	point_cost = 200
+	point_cost = 250
 	fire_mission_delay = 4 //very good but long cooldown
 
 
@@ -263,10 +324,11 @@
 	set waitfor = 0
 	var/list/turf_list = RANGE_TURFS(3, impact) //This is its area of effect
 	playsound(impact, 'sound/effects/pred_vision.ogg', 20, 1)
+	var/datum/cause_data/cause_data = create_cause_data(fired_from.name, source_mob)
 	for(var/i=1 to 16) //This is how many tiles within that area of effect will be randomly ignited
 		var/turf/U = pick(turf_list)
 		turf_list -= U
-		fire_spread_recur(U, create_cause_data(fired_from.name, source_mob), 1, null, 5, 75, "#EE6515")//Very, very intense, but goes out very quick
+		fire_spread_recur(U, cause_data, 1, null, 5, 60, "#EE6515")//Very, very intense, but goes out very quick
 
 	if(!ammo_count && !QDELETED(src))
 		qdel(src) //deleted after last laser beam is fired and impact the ground.
@@ -278,7 +340,7 @@
 	name = "abstract rocket"
 	icon_state = "single"
 	icon = 'icons/obj/structures/props/dropship/dropship_ammo64.dmi'
-	equipment_type = /obj/structure/dropship_equipment/weapon/rocket_pod
+	equipment_type = list(/obj/structure/dropship_equipment/weapon/rocket_pod, /obj/structure/dropship_equipment/autoreloader)
 	ammo_count = 1
 	max_ammo_count = 1
 	ammo_name = "rocket"
@@ -293,12 +355,15 @@
 /obj/structure/ship_ammo/rocket/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
 	qdel(src)
 
+/obj/structure/ship_ammo/rocket/get_impact_visual_type()
+	return /obj/effect/overlay/temp/cas_rocket_impact
+
 //this one is air-to-air only
 /obj/structure/ship_ammo/rocket/widowmaker
 	name = "\improper AIM-224B 'Widowmaker'"
-	desc = "The AIM-224B missile is a retrofit of the latest in air-to-air missile technology. Earning the nickname of 'Widowmaker' from various dropship pilots after improvements to its guidance warhead prevents it from being jammed leading to its high kill rate. Not well suited for ground bombardment but its high velocity makes it reach its target quickly. This one has been modified to be a free-fall bomb as a result of dropship ammo shortages. Can be loaded into the LAU-444 Guided Missile Launcher."
+	desc = "The AIM-224B missile is a retrofit of the latest in air-to-air missile technology. Earning the nickname of 'Widowmaker' from various dropship pilots after improvements to its guidance warhead prevents it from being jammed leading to its high kill rate. Not well suited for ground bombardment but its high velocity makes it reach its target quickly. This one has been modified to be a free-fall bomb as a result of dropship ammo shortages. Can be loaded into the LAU-444 Guided Missile Launcher and LAB-107 Bomb Bay."
 	icon_state = "single"
-	travelling_time = 30 //not powerful, but reaches target fast
+	travelling_time = 40 //not powerful, but reaches target fast
 	ammo_id = ""
 	point_cost = 300
 
@@ -308,25 +373,29 @@
 	QDEL_IN(src, 0.5 SECONDS)
 
 /obj/structure/ship_ammo/rocket/banshee
-	name = "\improper AGM-227 'Banshee'"
-	desc = "The AGM-227 missile is a mainstay of the overhauled dropship fleet against any mobile or armored ground targets. It's earned the nickname of 'Banshee' from the sudden wail that it emits right before hitting a target. Useful to clear out large areas. Can be loaded into the LAU-444 Guided Missile Launcher."
+	name = "\improper AGM-228W 'Banshee'"
+	desc = "The AGM-228W missile is a recently new addition of the overhauled dropship fleet against any mobile or armored ground targets. It's earned the nickname of 'Banshee' from the sudden wail that it emits right before hitting a target. This variation utilizes a mixture of white phosphorus and jelled gasoline, useful for burning large areas. Can be loaded into the LAU-444 Guided Missile Launcher."
 	icon_state = "banshee"
 	ammo_id = "b"
 	point_cost = 300
 
 /obj/structure/ship_ammo/rocket/banshee/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
 	impact.ceiling_debris_check(3)
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), impact, 175, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), source_mob)), 0.5 SECONDS) //Small explosive power with a small fall off for a big explosion range
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(fire_spread), impact, create_cause_data(initial(name), source_mob), 4, 15, 50, "#00b8ff"), 0.5 SECONDS) //Very intense but the fire doesn't last very long
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), impact, 225, 40, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), source_mob)), 0.5 SECONDS) //Small explosive power compensated by its fire + white phosphorous effect
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(fire_spread), impact, create_cause_data(initial(name), source_mob), 4, 15, 50, "#00b8ff"), 1 SECONDS) //Very intense but the fire doesn't last very long
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(smoke_spread), impact, 4, /obj/effect/particle_effect/smoke/phosphorus, null, 4), 1.3 SECONDS)
 	QDEL_IN(src, 0.5 SECONDS)
 
 /obj/structure/ship_ammo/rocket/keeper
 	name = "\improper GBU-67 'Keeper II'"
-	desc = "The GBU-67 'Keeper II' is the latest in a generation of laser guided weaponry that spans all the way back to the 20th century. Earning its nickname from a shortening of 'Peacekeeper' which comes from the program that developed its guidance system and the various uses of it during peacekeeping conflicts. Its payload is designed to devastate armored targets. Can be loaded into the LAU-444 Guided Missile Launcher."
+	desc = "The GBU-67 'Keeper II' is the latest in a generation of laser guided weaponry that spans all the way back to the 20th century. Earning its nickname from a shortening of 'Peacekeeper' which comes from the program that developed its guidance system and the various uses of it during peacekeeping conflicts. Its payload is designed to devastate armored targets. It can penetrate through metal ceilings. Can be loaded into the LAU-444 Guided Missile Launcher."
 	icon_state = "paveway"
 	travelling_time = 20 //A fast payload due to its very tight blast zone
 	ammo_id = "k"
+	accuracy_range = 2
+	max_inaccuracy = 3
 	point_cost = 300
+	metalbreaker = TRUE // Can pierce metal roofs like mortars
 
 /obj/structure/ship_ammo/rocket/keeper/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
 	impact.ceiling_debris_check(3)
@@ -344,41 +413,70 @@
 
 /obj/structure/ship_ammo/rocket/harpoon/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
 	impact.ceiling_debris_check(3)
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), impact, 150, 16, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), source_mob)), 0.5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), impact, 200, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), source_mob)), 0.5 SECONDS)
 	QDEL_IN(src, 0.5 SECONDS)
 
 /obj/structure/ship_ammo/rocket/napalm
 	name = "\improper AGM-99 'Napalm'"
-	desc = "The AGM-99 'Napalm' is an incendiary missile used to turn specific targeted areas into giant balls of fire for a long time. Can be loaded into the LAU-444 Guided Missile Launcher."
+	desc = "The AGM-99 'Napalm' is an incendiary missile used to turn specific targeted areas into giant balls of fire for a long time. Can be loaded into the LAU-444 Guided Missile Launcher and LAB-107 Bomb Bay."
 	icon_state = "napalm"
 	ammo_id = "n"
+	equipment_type = list(/obj/structure/dropship_equipment/weapon/rocket_pod, /obj/structure/dropship_equipment/weapon/bomb_bay, /obj/structure/dropship_equipment/autoreloader)
 	point_cost = 500
 	fire_mission_delay = 0 //0 means unusable
 
 /obj/structure/ship_ammo/rocket/napalm/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
 	impact.ceiling_debris_check(3)
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), impact, 200, 25, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), source_mob)), 0.5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), impact, 300, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), source_mob)), 0.5 SECONDS)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(fire_spread), impact, create_cause_data(initial(name), source_mob), 6, 60, 30, "#EE6515"), 0.5 SECONDS) //Color changed into napalm's color to better convey how intense the fire actually is.
 	QDEL_IN(src, 0.5 SECONDS)
 
 /obj/structure/ship_ammo/rocket/thermobaric
 	name = "\improper BLU-200 'Dragon's Breath'"
 	desc = "The BLU-200 'Dragon's Breath' is a thermobaric fuel-air bomb. The aerosolized fuel mixture creates a vacuum when ignited causing serious damage to those in its way. Can be loaded into the LAU-444 Guided Missile Launcher."
-	icon_state = "fatty"
-	ammo_id = "f"
+	icon_state = "dragon"
+	ammo_id = "d"
 	travelling_time = 50
-	point_cost = 300
+	point_cost = 400
 
 /obj/structure/ship_ammo/rocket/thermobaric/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
 	impact.ceiling_debris_check(3)
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(fire_spread), impact, create_cause_data(initial(name), source_mob), 4, 25, 50, "#c96500"), 0.5 SECONDS) //Very intense but the fire doesn't last very long
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), impact, 50, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), source_mob)), 0.5 SECONDS) // Initial minor explosion for the first stage of the thermobaric reaction
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), impact, 75, 25, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), source_mob)), 0.9 SECONDS) // Second minor explosion to complete the thermobaric reaction
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(fire_spread), impact, create_cause_data(initial(name), source_mob), 4, 25, 50, "#c96500"), 0.9 SECONDS) //Stronger than Napalm but lasts for a smaller amount of time
 	for(var/mob/living/carbon/victim in orange(5, impact))
-		victim.throw_atom(impact, 3, 15, src, TRUE) // Implosion throws affected towards center of vacuum
-	QDEL_IN(src, 0.5 SECONDS)
+		victim.throw_atom(impact, 2, 15, src, TRUE) // Implosion throws affected towards center of vacuum
+	QDEL_IN(src, 0.9 SECONDS)
 
+/obj/structure/ship_ammo/rocket/fatty
+	name = "\improper SM-17 'Fatty'"
+	desc = "The SM-17 'Fatty' is a cluster-bomb type ordnance that only requires laser-guidance when first launched. After being temporarily recalled due to its inbalanced friendly to foe casualty ratio, it has been reintroduced to fleets in limited capacity. Can be loaded into the LAU-444 Guided Missile Launcher."
+	icon_state = "fatty"
+	ammo_id = "f"
+	travelling_time = 70 //slower
+	point_cost = 0 // zero means unbuildable
+	fire_mission_delay = 0 //0 means unusable
+
+/obj/structure/ship_ammo/rocket/fatty/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
+	impact.ceiling_debris_check(3)
+	// Initial small explosion
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), impact, 150, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), source_mob)), 0.5 SECONDS)
+
+	// Cluster explosions after delay, green warning dot effect appears on all clusters
+	var/list/impact_coords = list(list(-4,4),list(0,5),list(4,4),list(-5,0),list(5,0),list(-4,-4),list(0,-5), list(4,-4))
+
+	var/cached_name = initial(name)
+	var/mob/cached_source_mob = source_mob
+
+	for(var/i=1 to 8)
+		var/list/coords = impact_coords[i]
+		var/turf/Turf = locate(impact.x+coords[1], impact.y+coords[2], impact.z)
+		if(Turf)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(fire_in_a_hole_cluster), Turf, 275, 50, cached_name, cached_source_mob, /obj/structure/ship_ammo/rocket/fatty), (1.5 + i * 0.1) SECONDS)
+
+	QDEL_IN(src, 2.5 SECONDS)
 
 //minirockets
-
 /obj/structure/ship_ammo/minirocket
 	name = "\improper AGR-59 'Mini-Mike'"
 	desc = "The AGR-59 'Mini-Mike' minirocket is a cheap and efficient means of putting hate down range. Though rockets lack a guidance package, it makes up for it in ammunition count. Can be loaded into the LAU-229 Rocket Pod."
@@ -394,17 +492,14 @@
 
 /obj/structure/ship_ammo/minirocket/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
 	impact.ceiling_debris_check(2)
-	spawn(5)
-		cell_explosion(impact, 200, 44, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), source_mob))
-		var/datum/effect_system/expl_particles/P = new/datum/effect_system/expl_particles()
-		P.set_up(4, 0, impact)
-		P.start()
-		spawn(5)
-			var/datum/effect_system/smoke_spread/S = new/datum/effect_system/smoke_spread()
-			S.set_up(1,0,impact,null)
-			S.start()
-		if(!ammo_count && loc)
-			qdel(src) //deleted after last minirocket is fired and impact the ground.
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), impact, 200, 44, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), source_mob)), 0.5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(explosion_particles), impact, 4), 0.5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(smoke_spread), impact, 1, /obj/effect/particle_effect/smoke, null, 1), 1 SECONDS)
+	if(!ammo_count && loc)
+		qdel(src) //deleted after last minirocket is fired and impact the ground.
+
+/obj/structure/ship_ammo/minirocket/get_impact_visual_type()
+	return /obj/effect/overlay/temp/cas_minirocket_impact
 
 /obj/structure/ship_ammo/minirocket/show_loaded_desc(mob/user)
 	if(ammo_count)
@@ -417,15 +512,300 @@
 
 /obj/structure/ship_ammo/minirocket/incendiary
 	name = "\improper AGR-59-I 'Mini-Mike'"
-	desc = "The AGR-59-I 'Mini-Mike' incendiary minirocket is a cheap and efficient means of putting hate down range AND setting them on fire! Though rockets lack a guidance package, it makes up for it in ammunition count. Can be loaded into the LAU-229 Rocket Pod."
+	desc = "The AGR-59-I 'Mini-Mike' incendiary minirocket is a cheap and efficient means of putting hate down range AND setting them on fire! Upon impact, incendiary flames are left in the area. Though rockets lack a guidance package, it makes up for it in ammunition count. Can be loaded into the LAU-229 Rocket Pod."
 	icon_state = "minirocket_inc"
 	point_cost = 500
 	fire_mission_delay = 3 //high cooldown
 
 /obj/structure/ship_ammo/minirocket/incendiary/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
 	..()
-	spawn(5)
-		fire_spread(impact, create_cause_data(initial(name), source_mob), 3, 25, 20, "#EE6515")
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(fire_spread), impact, create_cause_data(initial(name), source_mob), 3, 25, 20, "#EE6515"), 0.5 SECONDS)
+
+/obj/structure/ship_ammo/minirocket/flare
+	name = "\improper AGR-59-F 'Mini-Mike'"
+	desc = "The AGR-59-F 'Mini-Mike' flare minirocket is a cheap and efficient means of putting hate down range AND lighting up the area! Upon impact, star shell ash is spread in the area. As a result, the explosion yield is weaker than its counterparts. Though rockets lack a guidance package, it makes up for it in ammunition count. Can be loaded into the LAU-229 Rocket Pod."
+	icon_state = "minirocket_flr"
+	point_cost = 400
+	fire_mission_delay = 3 //high cooldown
+
+/obj/structure/ship_ammo/minirocket/flare/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
+	impact.ceiling_debris_check(2)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), impact, 150, 44, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), source_mob)), 0.5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(explosion_particles), impact, 4), 0.5 SECONDS)
+
+	// starshell ash spread
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(create_shrapnel), impact, 3, 0, 360, /datum/ammo/flare/starshell, create_cause_data(initial(name), source_mob), FALSE, 100), 0.6 SECONDS)
+
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(smoke_spread), impact, 1, /obj/effect/particle_effect/smoke, null, 1), 1 SECONDS)
+	if(!ammo_count && loc)
+		qdel(src) //deleted after last minirocket is fired and impact the ground.
+//missiles
+
+/obj/structure/ship_ammo/missile
+	name = "abstract missile"
+	icon_state = "double"
+	icon = 'icons/obj/structures/props/dropship/dropship_ammo64.dmi'
+	equipment_type = list(/obj/structure/dropship_equipment/weapon/missile_silo, /obj/structure/dropship_equipment/autoreloader)
+	ammo_count = 4
+	max_ammo_count = 4
+	ammo_name = "missile"
+	travelling_time = 60 // can't be fired on direct so this won't come into play
+	transferable_ammo = TRUE
+	point_cost = 300
+	fire_mission_delay = 2 //low cooldown
+	ammo_id = ""
+	bound_width = 64
+	bound_height = 32
+	accuracy_range = 2 // missiles are tailored for accurate low altitude ground bombardment
+	max_inaccuracy = 5
+	point_cost = 0
+	ammo_used_per_firing = 1
+
+/obj/structure/ship_ammo/missile/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
+	qdel(src)
+
+/obj/structure/ship_ammo/missile/get_impact_visual_type()
+	return /obj/effect/overlay/temp/cas_missile_impact
+
+/obj/structure/ship_ammo/missile/show_loaded_desc(mob/user)
+	if(ammo_count)
+		return "It's loaded with \a [src] containing [ammo_count] missile\s."
+
+/obj/structure/ship_ammo/missile/get_examine_text(mob/user)
+	. = ..()
+	. += "It has [ammo_count] missile\s."
+
+/obj/structure/ship_ammo/missile/zeus
+	name = "\improper MK.12 'Zeus'"
+	desc = "The MK.12 'Zeus' is an unguided, spin stabilized rocket system which has become a mainstay option for low altitude air strikes against personnel. Its nickname 'Zeus' comes from its resembelance to a bolt of lightning when striking upon targets. Can be loaded into the Mk.14 Missile Silo."
+	icon_state = "zeus"
+	ammo_id = "z"
+	travelling_time = 40
+	point_cost = 300
+
+/obj/structure/ship_ammo/missile/zeus/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
+	impact.ceiling_debris_check(2)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), impact, 250, 40, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), source_mob)), 0.5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(explosion_particles), impact, 3), 0.5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(smoke_spread), impact, 2, /obj/effect/particle_effect/smoke, null, 2), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(create_shrapnel), impact, 60, 0, 360, /datum/ammo/bullet/shrapnel/hornet_rounds, create_cause_data(initial(name), source_mob), FALSE, 100), 0.5 SECONDS)
+	QDEL_IN(src, 0.5 SECONDS)
+
+/obj/structure/ship_ammo/missile/sgw
+	name = "\improper MK.91 'SGW'"
+	desc = "The MK.91 'SGW' is short range 'fire and forget' missile designed for use against light armor and entrenched positions. Its popularity skyrocketed upon rumors of a single well placed payload decimating an entire CLF guerilla bunker. Can be loaded into the Mk.14 Missile Silo."
+	icon_state = "sgw"
+	ammo_id = "sg"
+	travelling_time = 40
+	point_cost = 300
+	ammo_count = 4
+	max_ammo_count = 4
+	fire_mission_delay = 3 // moderate cooldown
+
+/obj/structure/ship_ammo/missile/sgw/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
+	impact.ceiling_debris_check(2)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), impact, 290, 70, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), source_mob)), 0.5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(explosion_particles), impact, 3), 0.5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(smoke_spread), impact, 2, /obj/effect/particle_effect/smoke, null, 2), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(create_shrapnel), impact, 60, 0, 360, /datum/ammo/bullet/shrapnel/metal, create_cause_data(initial(name), source_mob), FALSE, 100), 0.5 SECONDS)
+	QDEL_IN(src, 0.5 SECONDS)
+
+/obj/structure/ship_ammo/missile/banshee
+	name = "\improper MK.25 'Banshee'"
+	desc = "The Mk.25 'Banshee' is modified version of the standard AGM-228, designed for use in missile silos. As opposed to releasing a flaming willypete compound, it instead employs incendiary flechette capable of puncturing and igniting heavy armor. Can be loaded into the Mk.14 Missile Silo."
+	icon_state = "bansheeM"
+	ammo_id = "bm"
+	travelling_time = 40
+	point_cost = 300
+	ammo_count = 4
+	max_ammo_count = 4
+
+/obj/structure/ship_ammo/missile/banshee/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
+	impact.ceiling_debris_check(2)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), impact, 225, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), source_mob)), 0.5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(explosion_particles), impact, 3), 0.5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(smoke_spread), impact, 2, /obj/effect/particle_effect/smoke, null, 2), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(create_shrapnel), impact, 60, 0, 360, /datum/ammo/bullet/shrapnel/incendiary, create_cause_data(initial(name), source_mob), FALSE, 100), 0.5 SECONDS)
+	QDEL_IN(src, 0.5 SECONDS)
+
+/obj/structure/ship_ammo/missile/hellhound
+	name = "\improper ATM-230D 'HELLHOUND IV'"
+	desc = "The ATM-230D 'HELLHOUND IV' is the latest installment of multi-role tactical missiles employed by gunship pilots. Designed specifically for use against high priority targets such as vehicles, buildings and bunkers, it houses a complicated three stage motor. It can penetrate through caves. Can be loaded into the Mk.14 Missile Silo."
+	icon_state = "hellhound"
+	ammo_id = "h"
+	travelling_time = 40
+	point_cost = 0 // 0 means unbuildable
+	ammo_count = 4
+	max_ammo_count = 4
+	fire_mission_delay = 6 // very high cooldown
+	cavebreaker = TRUE // Designed for bunker busting
+
+/obj/structure/ship_ammo/missile/hellhound/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
+	impact.ceiling_debris_check(2)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), impact, 350, 75, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), source_mob)), 0.5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(explosion_particles), impact, 6), 0.5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(smoke_spread), impact, 3, /obj/effect/particle_effect/smoke, null, 2), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(create_shrapnel), impact, 75, 0, 360, /datum/ammo/bullet/shrapnel/breaching, create_cause_data(initial(name), source_mob), FALSE, 100), 0.5 SECONDS)
+	QDEL_IN(src, 0.5 SECONDS)
+
+//bombs
+
+/obj/structure/ship_ammo/bomb
+	name = "abstract bomb"
+	icon_state = "double"
+	icon = 'icons/obj/structures/props/dropship/dropship_ammo64.dmi'
+	equipment_type = /obj/structure/dropship_equipment/weapon/bomb_bay
+	ammo_count = 1
+	max_ammo_count = 1
+	ammo_name = "bomb"
+	travelling_time = 80 //bombs are slow, but they hit hard
+	transferable_ammo = TRUE
+	point_cost = 0
+	fire_mission_delay = 0 //unusable in firemissions
+	ammo_id = ""
+	bound_width = 64
+	bound_height = 32
+	accuracy_range = 3 // bombs are a bit inaccurate
+	max_inaccuracy = 5
+	point_cost = 0
+	ammo_used_per_firing = 1
+	metalbreaker = TRUE // Can pierce metal roofs like mortars
+
+/obj/structure/ship_ammo/bomb/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
+	qdel(src)
+
+/obj/structure/ship_ammo/bomb/get_impact_visual_type()
+	return /obj/effect/overlay/temp/cas_bomb_impact
+
+/obj/structure/ship_ammo/bomb/show_loaded_desc(mob/user)
+	if(ammo_count)
+		return "It's loaded with \a [src] containing [ammo_count] bomb\s."
+
+/obj/structure/ship_ammo/bomb/get_examine_text(mob/user)
+	. = ..()
+	. += "It has [ammo_count] bomb\s."
+
+/obj/structure/ship_ammo/bomb/cluster
+	name = "\improper SM-21 'Chubby'"
+	desc = "The SM-21 'Chubby' is a cluster-bomb type ordnance that only requires laser-guidance when first launched. Derived from the popular SM-17 'Fatty', this is a smaller and more compact version of its predecessor, primarily used against target rich environments. It can penetrate through metal ceilings. Can be loaded into the LAB-107 Bomb Bay."
+	icon_state = "chubby"
+	ammo_id = "c"
+	travelling_time = 70 //slow but accurate
+	accuracy_range = 2
+	max_inaccuracy = 3
+	point_cost = 400
+
+/obj/structure/ship_ammo/bomb/cluster/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
+	impact.ceiling_debris_check(3)
+	// Make debris fall from the ceiling when the bomb lands
+	impact.ceiling_debris(3)
+	// Initial small explosion
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), impact, 150, 25, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), source_mob)), 0.5 SECONDS)
+
+	// Diamond-shaped cluster explosions - center plus 4 cardinal directions
+	var/list/diamond_coords = list(
+		list(0, 0),   // Center
+		list(0, 3),   // North
+		list(3, 0),   // East
+		list(0, -3),  // South
+		list(-3, 0)   // West
+	)
+
+	var/cached_name = initial(name)
+	var/mob/cached_source_mob = source_mob
+
+	// Schedule cluster explosions with rapid delays and warning dots
+	for(var/cluster_index = 1 to diamond_coords.len)
+		var/list/coords = diamond_coords[cluster_index]
+		var/turf/target_turf = locate(impact.x + coords[1], impact.y + coords[2], impact.z)
+		if(target_turf)
+			// Schedule warning dot and explosion (using global procs to avoid src dependency)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(fire_in_a_hole_cluster), target_turf, 200, 50, cached_name, cached_source_mob), (0.5 + cluster_index * 0.1) SECONDS)
+
+	QDEL_IN(src, 0.5 SECONDS)
+
+/obj/structure/ship_ammo/bomb/incendiary
+	name = "\improper AGM-81 'Firecracker'"
+	desc = "The AGM-81 'Firecracker' is a cluster incendiary bomb designed for area denial and anti-personnel use. A more streamlined version of the AGM-99 'Napalm', it earned its nickname 'Firecracker' due to the crackling of its incendiary reaction upon detonation. It can penetrate through metal ceilings. Can be loaded into the LAB-107 Bomb Bay."
+	icon_state = "firecracker"
+	ammo_id = "fr"
+	travelling_time = 70 // slow but powerful
+	accuracy_range = 3
+	max_inaccuracy = 5
+	point_cost = 400
+
+/obj/structure/ship_ammo/bomb/incendiary/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
+	impact.ceiling_debris_check(3)
+	// Make debris fall from the ceiling when the bomb lands
+	impact.ceiling_debris(3)
+	// Get all turfs in a 7x7 area around the impact
+	var/list/target_turfs = RANGE_TURFS(3, impact) // 3 range = 7x7 area
+
+	var/cached_name = initial(name)
+	var/mob/cached_source_mob = source_mob
+
+	// Create 5 random explosions with napalm fire spread and warning dots
+	var/list/selected_turfs = list()
+	for(var/incendiary_index = 1 to 5)
+		var/turf/target_turf = pick(target_turfs)
+		selected_turfs += target_turf
+		if(target_turf)
+			// Schedule warning dot, explosion and fire
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(fire_in_a_hole_incendiary), target_turf, 150, 50, cached_name, cached_source_mob), (0.3 + incendiary_index * 0.1) SECONDS)
+
+	QDEL_IN(src, 0.5 SECONDS)
+
+/obj/structure/ship_ammo/bomb/bunkerbuster
+	name = "\improper AGM-98 'MOP'"
+	desc = "The latest cutting edge installment of heavy duty missiles, the AGM-98 'Massive Ordinance Penetrator' is a heavy duty bunker busting bomb designed to penetrate hardened structures and deliver a devastating payload. It is intentionally set to a delayed fuse to further maximize penetration before detonation. It can penetrate through caves. Can be loaded into the LAB-107 Bomb Bay."
+	icon_state = "bunkerbuster"
+	ammo_id = "bb"
+	travelling_time = 80 // very slow but powerful and accurate
+	accuracy_range = 1
+	max_inaccuracy = 2
+	point_cost = 0 // 0 means unbuildable
+	cavebreaker = TRUE // Designed for bunker busting
+
+/obj/structure/ship_ammo/bomb/bunkerbuster/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
+	impact.ceiling_debris_check(3)
+	// Make debris fall from the ceiling when the bomb lands
+	impact.ceiling_debris(3)
+
+	// schedules the bunkerbuster payload creation
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(create_bunker_buster_payload), impact, source_mob, initial(name)), 0.6 SECONDS)
+
+	QDEL_IN(src, 0.1 SECONDS)
+
+// Physical bomb object that appears on the ground with a 2 seconds delayed fuse, giving xenos even MORE time to run away
+/obj/item/explosive/bomb_payload/bunker_buster
+	name = "AGM-98 'MOP' warhead"
+	desc = "A massive ordnance penetrator bomb that has embedded itself halfway into the ground. It looks like it's about to explode, run!"
+	icon = 'icons/obj/items/weapons/grenade.dmi'
+	icon_state = "bunkerbuster_active"
+	w_class = SIZE_HUGE
+	density = TRUE
+	anchored = TRUE
+	unacidable = TRUE
+	var/mob/source_mob
+	var/fired_from_name
+
+/obj/item/explosive/bomb_payload/bunker_buster/Initialize()
+	. = ..()
+	// Add danger overlay and play warning sound
+	overlays += new /obj/effect/overlay/danger
+	playsound(src, 'sound/effects/bang.ogg', 70, 1, 15)
+	playsound(src, 'sound/effects/alert.ogg', 70, 1, 15)
+
+/obj/item/explosive/bomb_payload/bunker_buster/proc/detonate()
+	// One massive explosion with high power and wide range
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), get_turf(src), 500, 100, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(fired_from_name, source_mob)), 0.5 SECONDS)
+	// Add some dramatic effects
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(explosion_particles), get_turf(src), 8), 0.5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(smoke_spread), get_turf(src), 4, /obj/effect/particle_effect/smoke, null, 3), 1.0 SECONDS)
+
+	QDEL_IN(src, 0.1 SECONDS)
+
+//utility
 
 /obj/structure/ship_ammo/sentry
 	name = "\improper A/C-49-P Air Deployable Sentry"
@@ -436,9 +816,10 @@
 	max_ammo_count = 1
 	ammo_name = "area denial sentry"
 	travelling_time = 0 // handled by droppod
-	point_cost = 800 //handled by printer
+	point_cost = 1 //handled in vehicle_part_fabricator.dm under omnisentry_price
 	accuracy_range = 0 // pinpoint
 	max_inaccuracy = 0
+	fire_mission_delay = 0 //0 means unusable
 	/// Special structures it needs to break with drop pod
 	var/list/breakable_structures = list(/obj/structure/barricade, /obj/structure/surface/table)
 
@@ -458,3 +839,226 @@
 		to_chat(user, SPAN_WARNING("The selected drop site is a sheer wall!"))
 		return FALSE
 	return TRUE
+
+/obj/structure/ship_ammo/flare
+	name = "\improper AN/ALE-557 Flare Launcher cartridge"
+	desc = "A cartidge containing several M97-P flare sticks packed tightly into individual silos. These parachute flares are designed to be launched out of a dropship's flare launcher to provide battlefield illumination during hours of darkness. Use a screwdriver to disable the safety panel."
+	icon_state = "flare_cartridge_safety"
+	equipment_type = /obj/structure/dropship_equipment/weapon/flare_launcher
+	safety_enabled = TRUE // safety is enabled by default, preventing loading into a flare launcher
+	point_cost = 100
+	ammo_count = 3
+	max_ammo_count = 6
+	travelling_time = 20 // parachute flares light up the sky very quickly
+	accuracy_range = 4 // though not very accurate
+	max_inaccuracy = 6
+	handheld = TRUE // flare cartridges are manually installed by hand
+	density = FALSE
+	anchored = FALSE
+	handheld_type = /obj/item/ship_ammo_handheld/flare
+
+/obj/structure/ship_ammo/flare/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
+	new /obj/item/device/flashlight/flare/on/illumination/parachute(impact)
+	playsound(impact, 'sound/weapons/gun_flare.ogg', 50, 1, 4)
+
+/obj/structure/ship_ammo/flare/update_icon()
+	if (safety_enabled)
+		icon_state = "flare_cartridge_safety"
+	else
+		icon_state = "flare_cartridge"
+
+/obj/structure/ship_ammo/flare/attackby(obj/item/I, mob/user)
+	if(istype(I, /obj/item/tool/screwdriver))
+		if(!do_after(user, 10, INTERRUPT_NO_NEEDHAND | BEHAVIOR_IMMOBILE, BUSY_ICON_GENERIC))
+			return
+		if(safety_enabled)
+			safety_enabled = FALSE
+			icon_state = "flare_cartridge"
+			playsound(user, 'sound/items/Screwdriver.ogg', 50, 1)
+			to_chat(user, SPAN_NOTICE("You disable the safety on [src]. It can now be loaded into a flare launcher."))
+		else
+			safety_enabled = TRUE
+			icon_state = "flare_cartridge_safety"
+			to_chat(user, SPAN_NOTICE("You re-enable the safety on [src]. It can no longer be loaded into a flare launcher."))
+		return
+	. = ..()
+
+// Handheld item version of ship_ammo
+/obj/item/ship_ammo_handheld
+	var/ammo_count
+	var/max_ammo_count
+	var/safety_enabled = FALSE
+	var/structure_type = null
+
+/obj/item/ship_ammo_handheld/attack_hand(mob/user)
+	if(anchored)
+		to_chat(user, SPAN_WARNING("[src] is anchored and cannot be picked up."))
+		return FALSE
+	if(user.is_mob_restrained() || user.buckled || user.is_mob_incapacitated(TRUE))
+		to_chat(user, SPAN_WARNING("You can't pick this up right now."))
+		return FALSE
+	if(ammo_count < 1)
+		to_chat(user, SPAN_WARNING("The [src] has ran out of ammo, so you discard it!"))
+		qdel(src)
+		return FALSE
+	if(istype(user, /mob/living/carbon/human))
+		var/mob/living/carbon/human/human_user = user
+		var/obj/item/ship_ammo_handheld/handheld_ammo = new src.type()
+		handheld_ammo.ammo_count = src.ammo_count
+		handheld_ammo.max_ammo_count = src.max_ammo_count
+		handheld_ammo.safety_enabled = src.safety_enabled
+		handheld_ammo.update_icon()
+		if(human_user.put_in_hands(handheld_ammo))
+			qdel(src)
+			to_chat(user, SPAN_NOTICE("You pick up [handheld_ammo] by hand."))
+			return TRUE
+		else
+			qdel(handheld_ammo)
+			to_chat(user, SPAN_WARNING("You need a free hand to pick this up."))
+			return FALSE
+	else
+		to_chat(user, SPAN_WARNING("You can't pick this up by hand."))
+		return FALSE
+
+/obj/item/ship_ammo_handheld/dropped(mob/user)
+	. = ..()
+	if(QDELETED(src))
+		return .
+	if(!structure_type)
+		return .
+	var/turf/drop_turf = get_turf(user)
+	var/obj/structure/ship_ammo/structure_ammo = new structure_type(drop_turf)
+	structure_ammo.ammo_count = src.ammo_count
+	structure_ammo.max_ammo_count = src.max_ammo_count
+	structure_ammo.safety_enabled = src.safety_enabled
+	structure_ammo.icon_state = src.icon_state
+	structure_ammo.update_icon()
+	qdel(src)
+	return .
+
+/obj/item/ship_ammo_handheld/flare
+	name = "AN/ALE-557 Flare Launcher cartridge"
+	desc = "A cartridge containing several M97-P flare sticks packed tightly into individual silos. These parachute flares are designed to be launched out of a dropship's flare launcher to provide battlefield illumination during hours of darkness. Use a screwdriver to disable the safety panel."
+	icon = 'icons/obj/structures/props/dropship/dropship_ammo.dmi'
+	icon_state = "flare_cartridge_safety"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/dropship_ammo_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/dropship_ammo_righthand.dmi'
+	)
+	item_state = "flare_cartridge_safety"
+	w_class = SIZE_HUGE
+	safety_enabled = TRUE
+	structure_type = /obj/structure/ship_ammo/flare
+
+/obj/item/ship_ammo_handheld/flare/update_icon()
+	if(safety_enabled)
+		icon_state = "flare_cartridge_safety"
+		item_state = "flare_cartridge_safety"
+	else
+		icon_state = "flare_cartridge"
+		item_state = "flare_cartridge"
+	if(iscarbon(loc))
+		var/mob/living/carbon/carbon_mob = loc
+		if(carbon_mob.r_hand == src)
+			carbon_mob.update_inv_r_hand()
+		else if(carbon_mob.l_hand == src)
+			carbon_mob.update_inv_l_hand()
+
+/obj/item/ship_ammo_handheld/flare/attackby(obj/item/item_tool, mob/user)
+	if(istype(item_tool, /obj/item/tool/screwdriver))
+		if(!do_after(user, 10, INTERRUPT_NO_NEEDHAND | BEHAVIOR_IMMOBILE, BUSY_ICON_GENERIC))
+			return
+		if(safety_enabled)
+			safety_enabled = FALSE
+			to_chat(user, SPAN_NOTICE("You disable the safety on [src]. It can now be loaded into a flare launcher."))
+		else
+			safety_enabled = TRUE
+			to_chat(user, SPAN_NOTICE("You re-enable the safety on [src]. It can no longer be loaded into a flare launcher."))
+		update_icon()
+		return
+	. = ..()
+
+/obj/item/ship_ammo_handheld/bellygun
+	name = "PGU-110 25mm Compact ammo crate"
+	desc = "A crate full of PGU-110 Compact 25mm rounds designed for precise supporting fire from gunner stations aboard dropships. These smaller, lighter rounds feature enhanced ballistic stability for tighter shot groupings, making them ideal for strikes against light armored insurgents and soft targets. The reduced size allows for manual reloading by crewmembers within the dropship. Can be loaded into the GAU-24/B Belly Gunner Station."
+	icon = 'icons/obj/structures/props/dropship/dropship_ammo.dmi'
+	icon_state = "30mm_crate_bg"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/dropship_ammo_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/dropship_ammo_righthand.dmi'
+	)
+	item_state = "heavygun_bg"
+	w_class = SIZE_HUGE
+	safety_enabled = FALSE
+	structure_type = /obj/structure/ship_ammo/heavygun/bellygun
+
+/obj/structure/ship_ammo/proc/dropped(mob/user)
+	return
+
+/obj/structure/ship_ammo/attack_hand(mob/user)
+	if(!handheld)
+		return ..()
+	if(anchored)
+		to_chat(user, SPAN_WARNING("[src] is anchored and cannot be picked up."))
+		return FALSE
+	if(user.is_mob_restrained() || user.buckled || user.is_mob_incapacitated(TRUE))
+		to_chat(user, SPAN_WARNING("You can't pick this up right now."))
+		return FALSE
+	if(ammo_count < 1)
+		to_chat(user, SPAN_WARNING("The [src] has ran out of ammo, so you discard it!"))
+		qdel(src)
+		return FALSE
+	if(istype(user, /mob/living/carbon/human))
+		var/mob/living/carbon/human/human_user = user
+		if(!src.handheld_type)
+			to_chat(user, SPAN_WARNING("This ammo cannot be picked up by hand."))
+			return FALSE
+		var/obj/item/ship_ammo_handheld/handheld_ammo = new src.handheld_type()
+		handheld_ammo.ammo_count = src.ammo_count
+		handheld_ammo.max_ammo_count = src.max_ammo_count
+		handheld_ammo.safety_enabled = src.safety_enabled
+		handheld_ammo.structure_type = src.type
+		handheld_ammo.update_icon()
+		if(human_user.put_in_hands(handheld_ammo))
+			qdel(src)
+			to_chat(user, SPAN_NOTICE("You pick up [handheld_ammo] by hand."))
+			return TRUE
+		else
+			qdel(handheld_ammo)
+			to_chat(user, SPAN_WARNING("You need a free hand to pick this up."))
+			return FALSE
+	else
+		to_chat(user, SPAN_WARNING("You can't pick this up by hand."))
+		return FALSE
+
+//Procs
+
+// Global procedures for cluster/incendiary bomb effects
+/proc/fire_in_a_hole_cluster(turf/target_turf, explosion_power, explosion_falloff, weapon_name, mob/source_mob, bomb_type = /obj/structure/ship_ammo)
+	new /obj/effect/overlay/temp/blinking_laser(target_turf)
+	// unique projectile anim for the cluster part of the explosion
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(create_cluster_impact_visual), target_turf, bomb_type), 0.3 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), target_turf, explosion_power, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(weapon_name, source_mob)), 1.5 SECONDS)
+
+/proc/fire_in_a_hole_incendiary(turf/target_turf, explosion_power, explosion_falloff, weapon_name, mob/source_mob)
+	new /obj/effect/overlay/temp/blinking_laser(target_turf)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), target_turf, explosion_power, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(weapon_name, source_mob)), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(fire_spread), target_turf, create_cause_data(weapon_name, source_mob), 3, 30, 25, "#EE6515"), 1.2 SECONDS)
+
+// bunker buster payload proc to use with addtimer
+/proc/create_bunker_buster_payload(turf/impact, mob/source_mob, fired_from_name)
+	var/obj/item/explosive/bomb_payload/bunker_buster/bomb_obj = new(impact)
+	bomb_obj.source_mob = source_mob
+	bomb_obj.fired_from_name = fired_from_name
+
+	// Schedule the delayed explosion
+	addtimer(CALLBACK(bomb_obj, TYPE_PROC_REF(/obj/item/explosive/bomb_payload/bunker_buster, detonate)), 2 SECONDS)
+
+// for use with cluster bomb falling projectile visuals (fatty, chubby, etc)
+/proc/create_cluster_impact_visual(turf/target_turf, bomb_type = /obj/structure/ship_ammo/bomb/cluster)
+	if(!target_turf)
+		return
+	// create a temporary bomb object for the visual effect
+	var/obj/structure/ship_ammo/bomb/temp_bomb = new bomb_type()
+	new /obj/effect/overlay/temp/cas_cluster_impact(target_turf, temp_bomb, 1.2)
+	qdel(temp_bomb)

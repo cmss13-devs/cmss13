@@ -92,3 +92,22 @@
 	containertype = /obj/structure/closet/crate/supply
 	containername = "parachute crate"
 	group = "Gear"
+
+/datum/supply_packs/rappel
+	name = "rappel harness crate (x10)"
+	contains = list(
+		/obj/item/rappel_harness,
+		/obj/item/rappel_harness,
+		/obj/item/rappel_harness,
+		/obj/item/rappel_harness,
+		/obj/item/rappel_harness,
+		/obj/item/rappel_harness,
+		/obj/item/rappel_harness,
+		/obj/item/rappel_harness,
+		/obj/item/rappel_harness,
+		/obj/item/rappel_harness,
+	)
+	cost = 40
+	containertype = /obj/structure/closet/crate/supply
+	containername = "rappel harness crate"
+	group = "Gear"

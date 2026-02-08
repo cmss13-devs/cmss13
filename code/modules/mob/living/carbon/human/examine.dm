@@ -553,7 +553,7 @@
 	. += msg
 
 
-	if(isyautja(user))
+	if(HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		var/obj/item/clothing/gloves/yautja/hunter/bracers = gloves
 		if(istype(bracers) && bracers.name_active)
 			. += SPAN_BLUE("Their bracers identifies them as [SPAN_BOLD("[real_name].")]")

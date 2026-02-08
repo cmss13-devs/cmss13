@@ -38,6 +38,15 @@
 	if(active)
 		to_chat(user, "[src] is already active!")
 		return FALSE
+
+	if(SShijack.in_ftl)
+		to_chat(user, SPAN_WARNING("The ship's hyperdrive is currently active - a beacon cannot be launched."))
+		return FALSE
+
+	if(SShijack.crashed || SShijack.hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH)
+		to_chat(user, SPAN_WARNING("The ship's systems are unresponsive - a beacon cannot be launched."))
+		return FALSE
+
 	var/reason = tgui_input_text(user, "What is the reason for activating this beacon?", "Distress Reason")
 	if(!reason)
 		return FALSE

@@ -2415,10 +2415,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/valley/northeast)
 "aji" = (
-/turf/closed/shuttle{
-	dir = 1;
-	icon_state = "pwall"
-	},
+/turf/closed/cordon,
 /area/space)
 "ajj" = (
 /obj/item/lightstick/red/planted,

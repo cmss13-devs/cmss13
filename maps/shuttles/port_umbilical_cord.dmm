@@ -1,0 +1,256 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/template_noop,
+/area/template_noop)
+"b" = (
+/obj/effect/landmark/ert_spawns/umbilical,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/almayer/plate,
+/area/shuttle/ert/no_defenses)
+"c" = (
+/obj/effect/landmark/ert_spawns/umbilical,
+/obj/structure/machinery/door_control/automatic/umbilical{
+	pixel_x = -22
+	},
+/turf/open/floor/almayer/plate,
+/area/shuttle/ert/no_defenses)
+"d" = (
+/obj/effect/landmark/ert_spawns/umbilical,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer/plate,
+/area/shuttle/ert/no_defenses)
+"e" = (
+/obj/structure/machinery/door/poddoor/almayer/locked{
+	name = "\improper Umbillical Airlock";
+	id = "hangar_umbilical_ert"
+	},
+/turf/open/floor/almayer/plate,
+/area/shuttle/ert/no_defenses)
+"f" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	dir = 1
+	},
+/obj/structure/machinery/door/poddoor/almayer/locked{
+	name = "\improper Umbillical Airlock";
+	id = "hangar_umbilical_ert"
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert/no_defenses)
+"l" = (
+/obj/structure/machinery/door/poddoor/almayer/locked{
+	name = "\improper Umbillical Airlock"
+	},
+/turf/open/floor/almayer/plate,
+/area/shuttle/ert/no_defenses)
+"m" = (
+/obj/effect/landmark/ert_spawns/umbilical,
+/turf/open/floor/almayer/plate,
+/area/shuttle/ert/no_defenses)
+"s" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/structure/machinery/door/poddoor/almayer/locked{
+	name = "\improper Umbillical Airlock"
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert/no_defenses)
+"y" = (
+/obj/effect/landmark/ert_spawns/umbilical,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1;
+	keep_as_object = 1
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert/no_defenses)
+"A" = (
+/obj/effect/landmark/ert_spawns/umbilical,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	dir = 1;
+	keep_as_object = 1
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert/no_defenses)
+"H" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/structure/machinery/door/poddoor/almayer/locked{
+	name = "\improper Umbillical Airlock";
+	id = "hangar_umbilical_ert"
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert/no_defenses)
+"Q" = (
+/turf/closed/wall/almayer/white/hull/blend_pod,
+/area/shuttle/ert/no_defenses)
+"S" = (
+/obj/docking_port/mobile/port_umbilical_cord{
+	dir = 4
+	},
+/turf/template_noop,
+/area/template_noop)
+"Z" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	dir = 1
+	},
+/obj/structure/machinery/door/poddoor/almayer/locked{
+	name = "\improper Umbillical Airlock"
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert/no_defenses)
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+Q
+"}
+(2,1,1) = {"
+a
+a
+a
+a
+a
+Q
+"}
+(3,1,1) = {"
+a
+a
+a
+a
+a
+Q
+"}
+(4,1,1) = {"
+a
+a
+a
+a
+a
+Q
+"}
+(5,1,1) = {"
+a
+a
+a
+a
+a
+Q
+"}
+(6,1,1) = {"
+S
+a
+a
+a
+a
+Q
+"}
+(7,1,1) = {"
+Q
+Q
+Q
+Q
+Q
+Q
+"}
+(8,1,1) = {"
+e
+b
+c
+b
+m
+l
+"}
+(9,1,1) = {"
+f
+A
+A
+A
+A
+Z
+"}
+(10,1,1) = {"
+H
+y
+y
+y
+y
+s
+"}
+(11,1,1) = {"
+e
+d
+m
+d
+m
+l
+"}
+(12,1,1) = {"
+Q
+Q
+Q
+Q
+Q
+Q
+"}
+(13,1,1) = {"
+a
+a
+a
+a
+a
+Q
+"}
+(14,1,1) = {"
+a
+a
+a
+a
+a
+Q
+"}
+(15,1,1) = {"
+a
+a
+a
+a
+a
+Q
+"}
+(16,1,1) = {"
+a
+a
+a
+a
+a
+Q
+"}
+(17,1,1) = {"
+a
+a
+a
+a
+a
+Q
+"}
+(18,1,1) = {"
+a
+a
+a
+a
+a
+Q
+"}

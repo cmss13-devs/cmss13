@@ -32,7 +32,8 @@
 	var/current_bulletholes = null
 	var/image/bullet_overlay = null
 	var/list/wall_connections = list("0", "0", "0", "0")
-	var/neighbors_list = 0
+	/// A bitfield of all the directions with a blendable neighbor
+	var/neighbors_bitfield = NONE
 	var/repair_materials = list("wood"= 0.075, "metal" = 0.15, "plasteel" = 0.3) //Max health % recovered on a nailgun repair
 
 	var/d_state = 0 //Normal walls are now as difficult to remove as reinforced walls
@@ -42,9 +43,13 @@
 	var/acided_hole_dir = SOUTH
 
 	var/special_icon = 0
+	/// Kinds of /turf/closed/wall that can be blended with
 	var/list/blend_turfs = list(/turf/closed/wall)
+	/// Kinds of /turf/closed/wall that cannot be blended with
 	var/list/noblend_turfs = list(/turf/closed/wall/mineral, /turf/closed/wall/almayer/research/containment) //Turfs to avoid blending with
+	/// Kinds of /obj that can be blended with
 	var/list/blend_objects = list(/obj/structure/machinery/door, /obj/structure/window_frame, /obj/structure/window/framed) // Objects which to blend with
+	/// Kinds of /obj  that cannot be blended with
 	var/list/noblend_objects = list(/obj/structure/machinery/door/window) //Objects to avoid blending with (such as children of listed blend objects.
 
 	var/list/hiding_humans = list()
@@ -72,6 +77,12 @@
 	update_connections(FALSE)
 	update_icon()
 
+/turf/closed/wall/afterShuttleMove(turf/oldT, rotation)
+	. = ..()
+	// Check if setDir already would handle it
+	if(!rotation)
+		update_connections(FALSE)
+		update_icon()
 
 /turf/closed/wall/setDir(newDir)
 	..()

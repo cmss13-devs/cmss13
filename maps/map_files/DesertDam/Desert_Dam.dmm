@@ -799,6 +799,10 @@
 /obj/structure/platform/metal/kutjevo_smooth_immune/west,
 /turf/open_space,
 /area/desert_dam/building/warehouse/office)
+"acu" = (
+/obj/effect/landmark/mainship_crashsite,
+/turf/closed/cordon,
+/area/space)
 "acv" = (
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
@@ -74891,10 +74895,7 @@
 /turf/open/floor/prison/whitegreen/northwest,
 /area/desert_dam/building/medical/lobby)
 "vTg" = (
-/turf/closed/shuttle{
-	dir = 1;
-	icon_state = "pwall"
-	},
+/turf/closed/cordon,
 /area/space)
 "vTh" = (
 /obj/structure/bed/roller,
@@ -138301,7 +138302,7 @@ vTg
 vTg
 vTg
 vTg
-vTg
+acu
 "}
 (2,1,2) = {"
 vTg

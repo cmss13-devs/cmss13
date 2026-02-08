@@ -60,51 +60,49 @@
 		img.alpha = (i * alpha_inc) - 1
 		damage_overlays[i] = img
 
-
-/turf/closed/wall/proc/update_connections(propagate = 0)
+/// Appends (doesn't reset) to neighbors_bitfield and resets wall_connections based on
+/// blend_turfs, noblend_turfs, blend_objects, and noblend_objects in cardinals with
+/// optional propogation for a /turf/closed/wall
+/turf/closed/wall/proc/update_connections(propagate = FALSE)
 	var/list/wall_dirs = list()
 
-	for(var/turf/closed/wall/W in orange(src, 1))
-		switch(can_join_with(W))
-			if(FALSE)
-				continue
-			if(TRUE)
-				wall_dirs += get_dir(src, W)
-		if(propagate)
-			W.update_connections()
-			W.update_icon()
-
-	for(var/turf/T in orange(src, 1))
-		var/success = 0
-		for(var/obj/O in T)
-			for(var/blood_type in blend_objects)
-				if(istype(O, blood_type))
-					success = TRUE
-				for(var/nb_type in noblend_objects)
-					if(istype(O, nb_type))
-						success = FALSE
-				if(success)
-					break
-			if(success)
+	for(var/direction in GLOB.alldirs)
+		var/turf/current = get_step(src, direction)
+		if(istype(current, /turf/closed/wall))
+			var/turf/closed/wall/current_wall = current
+			if(can_join_with(current_wall))
+				wall_dirs += direction
+				if(propagate)
+					current_wall.update_connections()
+					current_wall.update_icon()
+			continue
+		if(!(direction in GLOB.cardinals))
+			continue
+		for(var/obj/thing in current)
+			if(can_join_with_object(thing))
+				wall_dirs += direction
 				break
 
-		if(success)
-			if(get_dir(src, T) in GLOB.cardinals)
-				wall_dirs += get_dir(src, T)
-
 	for(var/neighbor in wall_dirs)
-		neighbors_list |= neighbor
+		neighbors_bitfield |= neighbor
 	wall_connections = dirs_to_corner_states(wall_dirs)
 
-/turf/closed/wall/proc/can_join_with(turf/closed/wall/W)
-	if(W.type == src.type)
-		return 1
-	for(var/wb_type in blend_turfs)
-		for(var/nb_type in noblend_turfs)
-			if(istype(W, nb_type))
-				return FALSE
-		if(istype(W, wb_type))
-			return TRUE
+/// Returns whether the turf/closed/wall can be joined with based on blend_turfs and noblend_turfs (same type is assumed to be joinable regardless)
+/turf/closed/wall/proc/can_join_with(turf/closed/wall/target)
+	if(target.type == type)
+		return TRUE
+	if(is_type_in_list(target, noblend_turfs))
+		return FALSE
+	if(is_type_in_list(target, blend_turfs))
+		return TRUE
+	return FALSE
+
+/// Returns whether the obj can be joined with based on blend_objects and noblend_objects
+/turf/closed/wall/proc/can_join_with_object(obj/target)
+	if(is_type_in_list(target, noblend_objects))
+		return FALSE
+	if(is_type_in_list(target, blend_objects))
+		return TRUE
 	return FALSE
 
 #define CORNER_NONE 0

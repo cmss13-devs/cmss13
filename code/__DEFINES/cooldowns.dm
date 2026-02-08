@@ -10,6 +10,8 @@
 //Define for ship alt
 #define COOLDOWN_ALTITUDE_CHANGE "altitude_change"
 
+#define COOLDOWN_POSTHIJACK_ERT "hijack_ert"
+
 
 //// COOLDOWN SYSTEMS
 /*

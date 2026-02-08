@@ -121,7 +121,7 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 
 /datum/game_mode/proc/get_affected_zlevels()
 	if(is_in_endgame)
-		. = SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP))
+		. = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
 		return
 
 ///process()

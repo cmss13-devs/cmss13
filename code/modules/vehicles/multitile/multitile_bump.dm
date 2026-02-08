@@ -46,6 +46,12 @@
 		return TRUE
 	return FALSE
 
+/obj/structure/mineral_door/resin/handle_vehicle_bump(obj/vehicle/multitile/V)
+	take_damage(V.wall_ram_damage)
+	visible_message(SPAN_DANGER("\The [V] rams [src]!"))
+	playsound(V, 'sound/effects/metal_crash.ogg', 20)
+	return FALSE
+
 /obj/structure/barricade/handle_vehicle_bump(obj/vehicle/multitile/V)
 	if(!(V.vehicle_flags & VEHICLE_CLASS_WEAK))
 		take_damage(maxhealth)
@@ -524,6 +530,17 @@
 	playsound(V, 'sound/effects/metal_crash.ogg', 35)
 	return FALSE
 
+// legacy cargo train gets ran over and crushed without a fuss by medium and heavy vehicles
+/obj/vehicle/train/cargo/handle_vehicle_bump(obj/vehicle/multitile/V)
+	if(V.vehicle_flags & VEHICLE_CLASS_MEDIUM || V.vehicle_flags & VEHICLE_CLASS_HEAVY)
+		health = 0
+		healthcheck()
+
+		visible_message(SPAN_DANGER("\The [V] crushes into \the [src]!"))
+		playsound(V, 'sound/effects/metal_crash.ogg', 35)
+		return TRUE
+	. = ..()
+
 //-----------------------------------------------------------
 //-------------------------MOBS------------------------------
 //-----------------------------------------------------------
@@ -611,8 +628,9 @@
 			apply_damage(10 + rand(0, 10), BRUTE)
 
 	else if(V.vehicle_flags & VEHICLE_CLASS_MEDIUM)
-		apply_effect(3, WEAKEN)
-		apply_damage(10 + rand(0, 10), BRUTE)
+		apply_effect((1.5 * (V.move_momentum / V.move_max_momentum)), WEAKEN) // Even with the nerfs, still by far the most frustrating thing about the tank.
+		apply_effect((3 * (V.move_momentum / V.move_max_momentum)), SLOW)
+		apply_damage(5 + rand(0, 5), BRUTE)
 		dmg = TRUE
 
 	else if(V.vehicle_flags & VEHICLE_CLASS_HEAVY)

@@ -39,6 +39,16 @@
 	/// Holds a reference to the emissive blocker overlay
 	var/emissive_overlay
 
+	/// Is this item allowed atop a climbable vehicle?
+	/// Not at all intended for structures: This is meant for grabbable items. Weapons, ammo, pizza crates, etc...
+	/// ...However, defining it as part of obj instead of obj/item helps us handle exceptions.
+	/// E.G: Exceptionally, as QoL for corpsmen: bodybags, stasis bags, and roller beds are allowed.
+	var/is_allowed_atop_vehicle = FALSE
+	/// Tracks whether this item is currently atop a vehicle.
+	var/is_atop_vehicle = FALSE
+	/// Which vehicle are we ontop of?
+	var/tmp/obj/vehicle/multitile/tank/tank_on_top_of = null
+
 //===========================================================================
 /atom/movable/Destroy(force)
 	for(var/atom/movable/I in contents)
@@ -486,8 +496,16 @@
 	SEND_SIGNAL(src, COMSIG_OBJ_AFTER_BUCKLE, buckled_mob)
 	if(!buckled_mob)
 		UnregisterSignal(buckle_target, COMSIG_PARENT_QDELETING)
+		if(isliving(buckle_target))
+			var/mob/living/living_M
+			if(living_M.tank_on_top_of)
+				living_M.tank_on_top_of.clear_on_top(living_M)
 	else
 		RegisterSignal(buckled_mob, COMSIG_PARENT_QDELETING, PROC_REF(unbuckle))
+		if(isliving(buckled_mob))
+			var/mob/living/living_M
+			if(src.is_atop_vehicle)
+				src.tank_on_top_of.mark_on_top(living_M)
 	return buckled_mob
 
 /atom/movable/proc/handle_rotation()

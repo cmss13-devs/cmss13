@@ -60,14 +60,20 @@
 /obj/structure/bed/afterbuckle(mob/M)
 	. = ..()
 	if(. && buckled_mob == M)
-		M.pixel_y = buckling_y
+		if(is_atop_vehicle)
+			M.pixel_y = buckling_y + 12 // Magic number bad. TODO: Make tank pixel offset its own variable.
+		else
+			M.pixel_y = buckling_y
 		M.old_y = buckling_y
 		M.pixel_x = buckling_x
 		M.old_x = buckling_x
 		if(base_bed_icon)
 			density = TRUE
 	else
-		M.pixel_y = initial(buckled_mob.pixel_y)
+		if(is_atop_vehicle)
+			M.pixel_y = initial(buckled_mob.pixel_y) + 12 // Magic number bad. TODO: Make tank pixel offset its own variable.
+		else
+			M.pixel_y = initial(buckled_mob.pixel_y)
 		M.old_y = initial(buckled_mob.pixel_y)
 		M.pixel_x = initial(buckled_mob.pixel_x)
 		M.old_x = initial(buckled_mob.pixel_x)
@@ -85,7 +91,10 @@
 	buckled_bodybag = B
 	density = TRUE
 	update_icon()
-	if(buckling_y)
+	if(is_atop_vehicle)
+		tank_on_top_of.obj_mark_on_top(buckled_bodybag)
+		buckled_bodybag.pixel_y = buckled_bodybag.buckle_offset + 12 // Magic number bad. TODO: Make tank pixel offset its own variable.
+	else if(buckling_y)
 		buckled_bodybag.pixel_y = buckled_bodybag.buckle_offset + buckling_y
 	add_fingerprint(user)
 	var/mob/living/carbon/human/contained_mob = locate() in B.contents
@@ -94,7 +103,10 @@
 
 /obj/structure/bed/unbuckle()
 	if(buckled_bodybag)
-		buckled_bodybag.pixel_y = initial(buckled_bodybag.pixel_y)
+		if(is_atop_vehicle)
+			buckled_bodybag.pixel_y = initial(buckled_bodybag.pixel_y) + 12 // Magic number bad. TODO: Make tank pixel offset its own variable.
+		else
+			buckled_bodybag.pixel_y = initial(buckled_bodybag.pixel_y)
 		buckled_bodybag.roller_buckled = null
 		buckled_bodybag = null
 		density = FALSE
@@ -214,6 +226,7 @@
 	foldabletype = /obj/item/roller
 	accepts_bodybag = TRUE
 	base_bed_icon = "roller"
+	is_allowed_atop_vehicle = TRUE // Allows roller beds, exceptionally, as structures, to be used atop vehicles such as the tank.
 
 /obj/structure/bed/roller/Initialize(mapload, ...)
 	. = ..()
@@ -315,6 +328,13 @@
 	roller.add_fingerprint(user)
 	user.temp_drop_inv_item(src)
 	forceMove(roller)
+	if(isliving(user))
+		var/mob/living/L = user
+		var/obj/vehicle/multitile/tank/T = L.tank_on_top_of
+		if(T && !roller.is_atop_vehicle) // tank exists, our user is atop the tank, we are not marked as atop the tank yet.
+			T.obj_mark_on_top(roller)
+		else if (!T && roller.is_atop_vehicle) // only remove from vehicle if it is atop a vehicle to begin with
+			roller.tank_on_top_of.obj_clear_on_top(roller)
 	SEND_SIGNAL(user, COMSIG_MOB_ITEM_ROLLER_DEPLOYED, roller)
 	if(target_mob)
 		roller.buckle_mob(target_mob, user)
@@ -471,6 +491,11 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 	matter = list("plastic" = 5000, "metal" = 5000)
 
 /obj/item/roller/medevac/deploy_roller(mob/user, atom/location)
+	if(isliving(user))
+		var/mob/living/L = user
+		if(L.is_on_tank_hull())
+			to_chat(user, SPAN_WARNING("You can't set up \the [src] here."))
+			return
 	var/obj/structure/bed/medevac_stretcher/medevac_stretcher = new rollertype(location)
 	medevac_stretcher.add_fingerprint(user)
 	user.temp_drop_inv_item(src)

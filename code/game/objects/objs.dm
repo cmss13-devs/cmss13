@@ -34,7 +34,6 @@
 
 	vis_flags = VIS_INHERIT_PLANE
 
-
 /obj/Initialize(mapload, ...)
 	. = ..()
 	if(garbage)
@@ -233,6 +232,54 @@
 		buckle_mob(M, user)
 	else . = ..()
 
+/obj/Moved(atom/oldloc, direction, Forced = FALSE)
+	. = ..()
+	if(is_atop_vehicle && isturf(loc))
+		var/still_on_tank = FALSE
+		for(var/obj/vehicle/multitile/tank/T in loc)
+			if(loc in T.locs)
+				still_on_tank = TRUE
+				break
+		if(!still_on_tank)
+			src.tank_on_top_of.obj_clear_on_top(src)
+
+/obj/Move(NewLoc, direct)
+	. = ..()
+	handle_rotation()
+	if(src.is_atop_vehicle)
+		var/still_on_tank = FALSE
+		if(isturf(NewLoc))
+			for(var/obj/vehicle/multitile/tank/T in NewLoc)
+				if(NewLoc in T.locs)
+					still_on_tank = TRUE
+					break
+
+		if(!still_on_tank && buckled_mob && ismob(buckled_mob))
+			var/mob/living/M = buckled_mob
+			var/obj/vehicle/multitile/tank/temp_tank = M.tank_on_top_of
+			if(temp_tank)
+				temp_tank.clear_on_top(M)
+
+		src.forceMove(NewLoc)
+		if(buckled_mob)
+			buckled_mob.forceMove(NewLoc)
+		return
+	if(. && buckled_mob && !handle_buckled_mob_movement(loc,direct))
+		. = FALSE
+
+/obj/forceMove(atom/dest)
+	. = ..()
+
+	// Bring the buckled_mob with us. No Move(), on_move callbacks, or any of this bullshit, we just got teleported
+	if(buckled_mob && loc == dest)
+		buckled_mob.forceMove(dest)
+
+/obj/BlockedPassDirs(atom/movable/mover, target_dir)
+	if(mover == buckled_mob) //can't collide with the thing you're buckled to
+		return NO_BLOCKED_MOVEMENT
+
+	return ..()
+
 /obj/item/proc/get_mob_overlay(mob/user_mob, slot, default_bodytype = "Default")
 	var/bodytype = default_bodytype
 	var/mob/living/carbon/human/user_human
@@ -330,6 +377,10 @@
 	return
 
 /obj/handle_flamer_fire(obj/flamer_fire/fire, damage, delta_time)
+	if(isitem(src))
+		var/obj/item/T = src
+		if(T.is_atop_vehicle) // don't process flamer fire if the item is atop a climbable vehicle.
+			return
 	. = ..()
 	flamer_fire_act(damage, fire.weapon_cause_data)
 

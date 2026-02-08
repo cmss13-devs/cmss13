@@ -94,6 +94,9 @@
 		if(RESIN_TRAP_HUGGER)
 			if(can_hug(victim, hivenumber) && !isyautja(victim) && !issynth(victim) && !isthrall(victim))
 				var/mob/living/victim_mob = victim
+				// tank treads block the hugger's hole. This behavior can be also added to normal acid traps.
+				if(victim_mob.tank_on_top_of && istype(victim_mob.tank_on_top_of) && (get_turf(victim_mob) in victim_mob.tank_on_top_of.locs))
+					return
 				victim_mob.visible_message(SPAN_WARNING("[victim_mob] trips on [src]!"))
 				to_chat(victim_mob, SPAN_DANGER("You trip on [src]!"))
 				victim_mob.apply_effect(1, WEAKEN)
@@ -109,6 +112,9 @@
 			if(isxeno(victim))
 				var/mob/living/carbon/xenomorph/victim_xeno = victim
 				if(victim_xeno.hivenumber != hivenumber)
+					// just in case a Greeno decides to ride on the tank.
+					if(victim_xeno.tank_on_top_of && istype(victim_xeno.tank_on_top_of) && (get_turf(victim_xeno) in victim_xeno.tank_on_top_of.locs))
+						return
 					trigger_trap()
 			if(isVehicleMultitile(victim) && trap_type != RESIN_TRAP_GAS)
 				trigger_trap()

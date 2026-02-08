@@ -1239,6 +1239,8 @@ and you're good to go.
 
 	var/atom/original_target = target //This is for burst mode, in case the target changes per scatter chance in between fired bullets.
 
+	var/obj/vehicle/multitile/tank/tank_on_top_of = user.tank_on_top_of // Used to calculate inaccuracy when firing atop a moving tank.
+
 	if(loc != user || (flags_gun_features & GUN_WIELDED_FIRING_ONLY && !(flags_item & WIELDED)))
 		return TRUE
 
@@ -1251,7 +1253,7 @@ and you're good to go.
 
 	var/original_scatter = projectile_to_fire.scatter
 	var/original_accuracy = projectile_to_fire.accuracy
-	apply_bullet_scatter(projectile_to_fire, user, reflex, dual_wield) //User can be passed as null.
+	apply_bullet_scatter(projectile_to_fire, user, reflex, dual_wield, tank_on_top_of) //User can be passed as null.
 
 	curloc = get_turf(user)
 	if(QDELETED(original_target)) //If the target's destroyed, shoot at where it was last.
@@ -1821,13 +1823,23 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	return  TRUE
 
 //This proc calculates scatter and accuracy
-/obj/item/weapon/gun/proc/apply_bullet_scatter(obj/projectile/projectile_to_fire, mob/user, reflex = 0, dual_wield = 0)
+/obj/item/weapon/gun/proc/apply_bullet_scatter(obj/projectile/projectile_to_fire, mob/user, reflex = 0, dual_wield = 0, tank_on_top_of = null)
 	var/gun_accuracy_mult = accuracy_mult_unwielded
 	var/gun_scatter = scatter_unwielded
 
 	if(flags_item & WIELDED || flags_gun_features & GUN_ONE_HAND_WIELDED)
 		gun_accuracy_mult = accuracy_mult
 		gun_scatter = scatter
+		// increases scatter to penalize marines firing atop a moving tank instead of outright restricting it
+		// only for wielded firearms.
+		if(tank_on_top_of)
+			var/obj/vehicle/multitile/tank/TANK = tank_on_top_of
+			if(world.time < TANK.on_top_mobs_shooting_inaccuracy_time)
+				if(world.time % 3)
+					to_chat(gun_user, SPAN_DANGER("You struggle to keep your aim centered as the [TANK] moves!"))
+				gun_accuracy_mult = max(0.1, gun_accuracy_mult * 0.4) // 60% accuracy loss
+				gun_scatter += SCATTER_AMOUNT_TIER_4
+
 	else if(user && world.time - user.l_move_time < 5) //moved during the last half second
 		//accuracy and scatter penalty if the user fires unwielded right after moving
 		gun_accuracy_mult = max(0.1, gun_accuracy_mult - max(0,movement_onehanded_acc_penalty_mult * HIT_ACCURACY_MULT_TIER_3))

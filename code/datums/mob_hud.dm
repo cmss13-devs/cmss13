@@ -388,6 +388,16 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 			holder.icon_state = "hudhealth-50"
 		else
 			holder.icon_state = "hudhealth-100"
+		holder.overlays.Cut()
+		var/neuro_found = FALSE
+		for (var/datum/effects/sentinel_neuro_stacks/sns in effects_list)
+			if (!QDELETED(sns))
+				neuro_found = TRUE
+				break
+
+		if (neuro_found)
+			holder.overlays += image('icons/mob/hud/intoxicated.dmi',"intoxicated")
+
 
 
 /mob/proc/med_hud_set_status() //called when mob stat changes, or get a virus/xeno host, etc
@@ -853,6 +863,18 @@ GLOBAL_DATUM_INIT(hud_icon_hudfocus, /image, image('icons/mob/hud/human_status.d
 
 	if (acid_found && acid_count > 0)
 		acid_holder.overlays += image('icons/mob/hud/hud.dmi',"acid_stacks[acid_count]")
+
+	var/neuro_found = FALSE
+	var/neuro_count = 0
+	for (var/datum/effects/sentinel_neuro_stacks/sns in effects_list)
+		if (!QDELETED(sns))
+			neuro_count = sns.stack_count
+			neuro_found = TRUE
+			break
+
+	if (neuro_found)
+		acid_holder.overlays += image('icons/mob/hud/intoxicated.dmi',"intoxicated")
+		acid_holder.overlays += image('icons/mob/hud/intoxicated.dmi',"intoxicated_amount[neuro_count]")
 
 	var/slow_found = FALSE
 	for (var/datum/effects/xeno_slow/XS in effects_list)

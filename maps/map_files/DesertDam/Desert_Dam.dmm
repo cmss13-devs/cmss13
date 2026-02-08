@@ -12574,7 +12574,7 @@
 /turf/open/floor/prison/yellowfull/southwest,
 /area/desert_dam/building/hydroponics/hydroponics)
 "aNp" = (
-/turf/closed/shuttle/ert{
+/turf/closed/shuttle/ert/transparent{
 	icon_state = "rightengine_2"
 	},
 /area/desert_dam/interior/dam_interior/hanger)
@@ -25747,7 +25747,7 @@
 /area/desert_dam/exterior/valley/south_valley_dam)
 "cRo" = (
 /turf/closed/shuttle/ert{
-	icon_state = "stan_leftengine"
+	icon_state = "stan_leftengine_clean"
 	},
 /area/desert_dam/interior/dam_interior/hanger)
 "cRq" = (
@@ -32321,7 +32321,7 @@
 /turf/open/gm/river/desert/shallow_edge,
 /area/desert_dam/exterior/river/riverside_south)
 "fsF" = (
-/turf/closed/shuttle/ert{
+/turf/closed/shuttle/ert/transparent{
 	icon_state = "stan27"
 	},
 /area/desert_dam/interior/dam_interior/hanger)
@@ -37034,9 +37034,8 @@
 /turf/open/floor/prison/whitegreen/east,
 /area/desert_dam/building/medical/west_wing_hallway)
 "hhv" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_2";
-	opacity = 0
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "leftengine_2"
 	},
 /area/desert_dam/interior/dam_interior/hanger)
 "hhy" = (
@@ -43414,9 +43413,8 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/river/riverside_south)
 "jGg" = (
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_1"
-	},
+/obj/structure/shuttle/part/ert/transparent/right_engine,
+/turf/open/floor/prison/floor_plate/southwest,
 /area/desert_dam/interior/dam_interior/hanger)
 "jGi" = (
 /turf/open/floor/almayer_hull/outerhull_dir/east,
@@ -46371,9 +46369,8 @@
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/exterior/valley/valley_medical)
 "kQa" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_3";
-	opacity = 0
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "leftengine_3_clean"
 	},
 /area/desert_dam/interior/dam_interior/hanger)
 "kQA" = (
@@ -53694,7 +53691,7 @@
 /turf/open/desert/desert_shore/shore_edge1/west,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "nLL" = (
-/turf/closed/shuttle/ert{
+/turf/closed/shuttle/ert/transparent{
 	icon_state = "rightengine_3"
 	},
 /area/desert_dam/interior/dam_interior/hanger)
@@ -55946,9 +55943,8 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_west_wing)
 "oCf" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan25"
-	},
+/obj/structure/shuttle/part/ert/front_right_stan,
+/turf/open/floor/prison/floor_plate/southwest,
 /area/desert_dam/interior/dam_interior/hanger)
 "oCi" = (
 /turf/open/floor/prison/darkbrown2/east,
@@ -72715,10 +72711,8 @@
 /turf/open/asphalt/cement/cement12,
 /area/desert_dam/interior/dam_interior/central_tunnel)
 "vaN" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_1";
-	opacity = 0
-	},
+/obj/structure/shuttle/part/ert/transparent/left_engine,
+/turf/open/floor/prison/floor_plate/southwest,
 /area/desert_dam/interior/dam_interior/hanger)
 "vaS" = (
 /obj/structure/pipes/vents/pump{
@@ -76968,9 +76962,8 @@
 /turf/open/floor/prison/whitegreen/north,
 /area/desert_dam/building/medical/virology_wing)
 "wNM" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan20"
-	},
+/obj/structure/shuttle/part/ert/front_left_stan,
+/turf/open/floor/prison/floor_plate/southwest,
 /area/desert_dam/interior/dam_interior/hanger)
 "wNR" = (
 /obj/structure/machinery/light{

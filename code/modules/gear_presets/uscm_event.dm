@@ -17,7 +17,9 @@
 	assignment = JOB_COLONEL
 	job_title = JOB_COLONEL
 	paygrades = list(PAY_SHORT_MO6 = JOB_PLAYTIME_TIER_0)
-	role_comm_title = "COL"
+	role_comm_title = "Col"
+	minimap_icon = "so"
+	minimap_background = "background_hc_com" //now we're talking
 	minimum_age = 40
 	skills = /datum/skills/general
 	languages = ALL_HUMAN_LANGUAGES //Know your enemy.
@@ -56,18 +58,17 @@
 /datum/equipment_preset/uscm_event/general
 	name = "USCM O-7 - Brigadier General (High Command)"
 	flags = EQUIPMENT_PRESET_EXTRA
-
 	idtype = /obj/item/card/id/general
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = JOB_GENERAL
 	job_title = JOB_GENERAL
 	paygrades = list(PAY_SHORT_MO7 = JOB_PLAYTIME_TIER_0)
-	role_comm_title = "GEN"
+	role_comm_title = "BGen"
 	minimum_age = 50
-	minimap_icon = "deputy"
-	minimap_background = "background_command"
+	minimap_icon = "aso"
+	minimap_background = "background_hc_com"
 	skills = /datum/skills/general
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE, LANGUAGE_CHINESE, LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_SCANDINAVIAN, LANGUAGE_SPANISH, LANGUAGE_TSL) //Know your enemy.
+	languages = ALL_HUMAN_LANGUAGES //Know your enemy.
 
 	service_under = list(/obj/item/clothing/under/marine/officer/general, /obj/item/clothing/under/marine/officer/bridge)
 	service_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/general, /obj/item/clothing/suit/storage/jacket/marine/service, /obj/item/clothing/suit/storage/jacket/marine/service/mp)
@@ -114,20 +115,24 @@
 /datum/equipment_preset/uscm_event/general/o8
 	name = "USCM O-8 - Major General (High Command)"
 	paygrades = list(PAY_SHORT_MO8 = JOB_PLAYTIME_TIER_0)
-
+	minimap_icon = "general1"
+	role_comm_title = "MajGen"
 /datum/equipment_preset/uscm_event/general/o9
 	name = "USCM O-9 - Lieutenant General (High Command)"
 	paygrades = list(PAY_SHORT_MO9 = JOB_PLAYTIME_TIER_0)
-
+	minimap_icon = "general2"
+	role_comm_title = "LtGen"
 /datum/equipment_preset/uscm_event/general/o10
 	name = "USCM O-10 - General (High Command)"
 	paygrades = list(PAY_SHORT_MO10 = JOB_PLAYTIME_TIER_0)
-
+	minimap_icon = "general3"
+	role_comm_title = "Gen"
 /datum/equipment_preset/uscm_event/general/o10c
 	name = "USCM O-10C - Assistant Commandant of the Marine Corps (High Command)"
 	paygrades = list(PAY_SHORT_MO10C = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_ACMC
 	job_title = JOB_ACMC
+	minimap_icon = "xo"
 	role_comm_title = "ACMC"
 
 /datum/equipment_preset/uscm_event/general/o10s
@@ -135,6 +140,7 @@
 	paygrades = list(PAY_SHORT_MO10S = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_CMC
 	job_title = JOB_CMC
+	minimap_icon = "co"
 	role_comm_title = "CMC"
 
 /*****************************************************************************************************/
@@ -142,7 +148,6 @@
 /datum/equipment_preset/uscm_event/upp_spy
 	name = "UPP Spy"
 	flags = EQUIPMENT_PRESET_EXTRA
-
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN)
 	access = list(
 		ACCESS_MARINE_ENGINEERING,
@@ -194,7 +199,6 @@
 
 /datum/equipment_preset/uscm_event/provost
 	name = "USCM Provost"
-
 	idtype = /obj/item/card/id/provost
 	skills = /datum/skills/provost
 	minimap_background = "background_mp"
@@ -211,7 +215,7 @@
 	role_comm_title = "PvE"
 	flags = EQUIPMENT_PRESET_EXTRA
 	minimap_icon = "pve"
-	
+
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues)
 	dress_hat = list(/obj/item/clothing/head/marine/dress_cover)
@@ -381,25 +385,23 @@
 	name = "Provost Deputy Marshal (MO6)"
 	minimum_age = 45
 	skills = /datum/skills/general
-
 	assignment = JOB_PROVOST_DMARSHAL
 	job_title = JOB_PROVOST_DMARSHAL
 	paygrades = list(PAY_SHORT_PVDM = JOB_PLAYTIME_TIER_0)
 	role_comm_title = PAY_SHORT_PVDM
 	flags = EQUIPMENT_PRESET_EXTRA
-	minimap_icon = "deputy"
+	minimap_icon = "general1"
 
 /datum/equipment_preset/uscm_event/provost/marshal
 	name = "Provost Marshal (MO7)"
 	minimum_age = 45
 	skills = /datum/skills/general
-
+	minimap_icon = "general2"
 	assignment = JOB_PROVOST_MARSHAL
 	job_title = JOB_PROVOST_MARSHAL
 	paygrades = list(PAY_SHORT_PVM = JOB_PLAYTIME_TIER_0)
 	role_comm_title = PAY_SHORT_PVM
 	flags = EQUIPMENT_PRESET_EXTRA
-	minimap_icon = "deputy"
 
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues/general)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer)
@@ -427,7 +429,7 @@
 /datum/equipment_preset/uscm_event/provost/marshal/sector
 	name = "Provost Sector Marshal (MO9)"
 	minimum_age = 50
-
+	minimap_icon = "general3"
 	assignment = JOB_PROVOST_SMARSHAL
 	job_title = JOB_PROVOST_SMARSHAL
 	paygrades = list(PAY_SHORT_PVSM = JOB_PLAYTIME_TIER_0)
@@ -436,7 +438,7 @@
 /datum/equipment_preset/uscm_event/provost/marshal/chief
 	name = "Provost Chief Marshal (PvCM)"
 	minimum_age = 60
-
+	minimap_icon = "pve_leader"
 	assignment = JOB_PROVOST_CMARSHAL
 	job_title = JOB_PROVOST_CMARSHAL
 	paygrades = list(PAY_SHORT_PVCM = JOB_PLAYTIME_TIER_0)

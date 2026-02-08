@@ -31,6 +31,8 @@
 			hud_icon_state = "commander"
 		if(JOB_TWE_RMC_MAJOR)
 			hud_icon_state = "major"
+		if(JOB_TWE_RMC_COMMANDER)
+			hud_icon_state = "highcom"
 	if(hud_icon_state)
 		holder.overlays += image(override_icon_file ? override_icon_file : base_icon_file, H, "rmc_[hud_icon_state]")
 

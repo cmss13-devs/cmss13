@@ -12,7 +12,7 @@
 	origin_override = ORIGIN_CIVILIAN
 
 	access = list(ACCESS_CIVILIAN_PUBLIC)
-
+	role_comm_title = "Civ"
 	minimap_icon = "surv"
 	minimap_background = "background_civilian"
 	var/survivor_variant = CIVILIAN_SURVIVOR
@@ -63,7 +63,8 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 	idtype = /obj/item/card/id/silver/clearance_badge/scientist
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_MEDBAY)
 	paygrades = list(PAY_SHORT_CDOC = JOB_PLAYTIME_TIER_0)
-
+	role_comm_title = "Rsr"
+	minimap_icon = "chemist_wo"
 	survivor_variant = SCIENTIST_SURVIVOR
 
 /datum/equipment_preset/survivor/scientist/load_gear(mob/living/carbon/human/new_human)
@@ -91,7 +92,8 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 	idtype = /obj/item/card/id/silver/clearance_badge
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_MEDBAY, ACCESS_CIVILIAN_COMMAND)
 	paygrades = list(PAY_SHORT_CDOC = JOB_PLAYTIME_TIER_0)
-
+	role_comm_title = "Doc"
+	minimap_icon = "nurse"
 	survivor_variant = MEDICAL_SURVIVOR
 
 /datum/equipment_preset/survivor/doctor/load_gear(mob/living/carbon/human/new_human)
@@ -126,6 +128,8 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 	skills = /datum/skills/civilian/survivor/chef
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC)
+	role_comm_title = "Chef"
+	minimap_icon = "mst"
 
 /datum/equipment_preset/survivor/chef/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/chef(new_human), WEAR_BODY)
@@ -147,6 +151,8 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 	skills = /datum/skills/civilian/survivor/chaplain
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC)
+	role_comm_title = "Chaplain"
+	minimap_icon = "chaplain"
 
 /datum/equipment_preset/survivor/chaplain/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/chaplain(new_human), WEAR_BODY)
@@ -167,6 +173,8 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 	skills = /datum/skills/civilian/survivor/miner
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_LOGISTICS)
+	role_comm_title = "Miner"
+	minimap_icon = "miner"
 
 /datum/equipment_preset/survivor/miner/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/blue(new_human), WEAR_BODY)
@@ -194,7 +202,7 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 	idtype = /obj/item/card/id/deputy
 	job_title = JOB_CMB
 	faction = FACTION_MARSHAL
-	faction_group = list(FACTION_MARSHAL, FACTION_MARINE, FACTION_SURVIVOR)
+	faction_group = FACTION_LIST_SURVIVOR_UA
 	origin_override = ORIGIN_CMB
 	role_comm_title = "CMB DEP"
 	access = list(
@@ -234,8 +242,9 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 	skills = /datum/skills/civilian/survivor/engineer
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_ENGINEERING,ACCESS_CIVILIAN_LOGISTICS)
-
+	role_comm_title = "Engi"
 	survivor_variant = ENGINEERING_SURVIVOR
+	minimap_icon = "mt"
 
 /datum/equipment_preset/survivor/engineer/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/brown(new_human), WEAR_BODY)
@@ -264,7 +273,8 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 	idtype = /obj/item/card/id/data
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_BRIG,ACCESS_CIVILIAN_COMMAND)
 	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
-
+	role_comm_title = "Sec"
+	minimap_icon = "mp"
 	survivor_variant = SECURITY_SURVIVOR
 
 /datum/equipment_preset/survivor/security/load_gear(mob/living/carbon/human/new_human)
@@ -300,7 +310,7 @@ Everything bellow is a parent used as a base for one or multiple maps.
 	faction_group = FACTION_LIST_SURVIVOR_WY
 	job_title = JOB_EXECUTIVE
 	faction = FACTION_WY
-	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
+	faction_group = FACTION_LIST_SURVIVOR_WY
 	origin_override = ORIGIN_WY
 	idtype = /obj/item/card/id/silver/clearance_badge/cl
 	access = list(
@@ -359,7 +369,8 @@ Everything bellow is a parent used as a base for one or multiple maps.
 	skills = /datum/skills/civilian/survivor/trucker
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_ENGINEERING,ACCESS_CIVILIAN_LOGISTICS)
-
+	role_comm_title = "Vehicle Op."
+	minimap_icon = "vc"
 	survivor_variant = ENGINEERING_SURVIVOR
 
 /datum/equipment_preset/survivor/trucker/load_gear(mob/living/carbon/human/new_human)
@@ -385,6 +396,8 @@ Everything bellow is a parent used as a base for one or multiple maps.
 	idtype = /obj/item/card/id/data
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_LOGISTICS,ACCESS_WY_FLIGHT)
+	minimap_icon = "pilot"
+	role_comm_title = "FCO"
 
 /datum/equipment_preset/survivor/flight_control_operator/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/workwear/khaki(new_human), WEAR_BODY)
@@ -404,11 +417,12 @@ Everything bellow is a parent used as a base for one or multiple maps.
 // Used in Sorokyne Strata and Fiorina Science Annex.
 /datum/equipment_preset/survivor/interstellar_human_rights_observer
 	name = "Survivor - Interstellar Human Rights Observer"
-	assignment = "Interstellar Human Rights Observer(Colony)"
+	assignment = "Interstellar Human Rights Observer (Colony)"
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_COMMAND)
 	minimap_icon = "obs"
+	role_comm_title = "IHR Rep."
 	minimap_background = "background_cmb"
 
 /datum/equipment_preset/survivor/interstellar_human_rights_observer/load_gear(mob/living/carbon/human/new_human)
@@ -430,14 +444,14 @@ Everything bellow is a parent used as a base for one or multiple maps.
 /datum/equipment_preset/survivor/interstellar_commerce_commission_liaison
 	name = "Survivor - Interstellar Commerce Commission Liaison"
 	assignment = "Interstellar Commerce Commission Corporate Liaison"
-	skills = /datum/skills/civilian/survivor
+	skills = /datum/skills/civilian/icc_investigation
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	paygrades = list(PAY_SHORT_ICCL = JOB_PLAYTIME_TIER_0)
 	faction_group = FACTION_LIST_SURVIVOR_WY
 	idtype = /obj/item/card/id/silver/cl
 	role_comm_title = "ICC Rep."
 	minimap_icon = "icc"
-	minimap_background = "background_cmb"
+	minimap_background = "background_wy"
 
 	survivor_variant = CORPORATE_SURVIVOR
 
@@ -472,6 +486,8 @@ Everything bellow is a parent used as a base for one or multiple maps.
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 	origin_override = ORIGIN_USCM
+	faction_group = FACTION_LIST_SURVIVOR_UA
+	role_comm_title = "USCM ???"
 
 /datum/equipment_preset/survivor/uscm/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine(new_human), WEAR_BODY)

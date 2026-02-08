@@ -64,6 +64,7 @@
 	assignment = "IASF - Paratrooper"
 	job_title = JOB_TWE_IASF_PARA
 	skills = /datum/skills/iasf
+	role_comm_title = "24/PARA Troop"
 
 /datum/equipment_preset/survivor/iasf/paratrooper/load_gear(mob/living/carbon/human/new_human)
 	var/obj/item/clothing/under/marine/veteran/royal_marine/iasf/uniform = new()
@@ -85,7 +86,7 @@
 	paygrades = list(PAY_SHORT_IASFE3 = JOB_PLAYTIME_TIER_0)
 	assignment = "IASF - Combat Engineer"
 	job_title = JOB_TWE_IASF_PARA_ENGI
-
+	role_comm_title = "24/PARA C. Engi"
 	minimap_icon = "rmc_breacher"
 
 	skills = /datum/skills/iasf/engi
@@ -119,7 +120,7 @@
 	paygrades = list(PAY_SHORT_IASFE3 = JOB_PLAYTIME_TIER_0)
 	assignment = "IASF - Combat Medical Technician"
 	job_title = JOB_TWE_IASF_PARA_MEDIC
-
+	role_comm_title = "24/PARA C. Doc"
 	minimap_icon = "rmc_medic"
 
 	skills = /datum/skills/iasf/medic
@@ -154,6 +155,7 @@
 	name = "Survivor - IASF Dropship Pilot"
 	assignment = "IASF - Dropship Pilot"
 	job_title = JOB_TWE_IASF_PARA_PILOT
+	role_comm_title = "24/PARA DS Pilot"
 	minimap_icon = "pilot"
 	paygrades = list(PAY_SHORT_IASFE4 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/iasf/pilot

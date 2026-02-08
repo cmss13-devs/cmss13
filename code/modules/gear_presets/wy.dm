@@ -38,7 +38,7 @@
 	job_title = JOB_TRAINEE
 	minimap_icon = "trainee"
 	paygrades = list(PAY_SHORT_WYC1 = JOB_PLAYTIME_TIER_0)
-
+	role_comm_title = "Trainee"
 /datum/equipment_preset/wy/trainee/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/suit_jacket/trainee(new_human), WEAR_BODY)
 	. = ..()
@@ -50,12 +50,14 @@
 	job_title = JOB_JUNIOR_EXECUTIVE
 	minimap_icon = "junior_exec"
 	paygrades = list(PAY_SHORT_WYC2 = JOB_PLAYTIME_TIER_0)
-
+	role_comm_title = "Jr. Exec"
 /datum/equipment_preset/wy/exec
 	name = "Corporate - C - Executive"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_EXECUTIVE
 	job_title = JOB_EXECUTIVE
+	minimap_icon = "cl"
+	role_comm_title = "Exec"
 	paygrades = list(PAY_SHORT_WYC3 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/wy/senior_exec
@@ -64,6 +66,7 @@
 	assignment = JOB_SENIOR_EXECUTIVE
 	job_title = JOB_SENIOR_EXECUTIVE
 	minimap_icon = "senior_exec"
+	role_comm_title = "Sr. Exec"
 	paygrades = list(PAY_SHORT_WYC4 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/wy/exec_spec
@@ -72,13 +75,14 @@
 	assignment = JOB_EXECUTIVE_SPECIALIST
 	job_title = JOB_EXECUTIVE_SPECIALIST
 	minimap_icon = "exec_spec"
+	role_comm_title = "Exec. Spec"
 	paygrades = list(PAY_SHORT_WYC5 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/wy/exec_spec/lawyer
 	name = "Corporate - E - Lawyer"
 	assignment = JOB_LEGAL_SPECIALIST
 	job_title = JOB_LEGAL_SPECIALIST
-
+	role_comm_title = "Ex. Spc. Law"
 /datum/equipment_preset/wy/exec_spec/lawyer/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/blue(new_human), WEAR_BODY)
@@ -97,13 +101,14 @@
 	assignment = JOB_EXECUTIVE_SUPERVISOR
 	job_title = JOB_EXECUTIVE_SUPERVISOR
 	minimap_icon = "exec_super"
+	role_comm_title = "Exec. Sup"
 	paygrades = list(PAY_SHORT_WYC6 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/wy/exec_supervisor/lawyer
 	name = "Corporate - F - Lawyer"
 	assignment = JOB_LEGAL_SUPERVISOR
 	job_title = JOB_LEGAL_SUPERVISOR
-
+	role_comm_title = "Ex. Sup. Law"
 /datum/equipment_preset/wy/exec_supervisor/lawyer/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/secure/briefcase(new_human), WEAR_R_HAND)
@@ -140,6 +145,7 @@
 	assignment = JOB_ASSISTANT_MANAGER
 	job_title = JOB_ASSISTANT_MANAGER
 	minimap_icon = "ass_man"
+	role_comm_title = "Ass. Mgr"
 	paygrades = list(PAY_SHORT_WYC7 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/wy/manager/division_manager
@@ -148,6 +154,7 @@
 	assignment = JOB_DIVISION_MANAGER
 	job_title = JOB_DIVISION_MANAGER
 	minimap_icon = "div_man"
+	role_comm_title = "Div. Mgr"
 	paygrades = list(PAY_SHORT_WYC8 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/wy/manager/chief_executive
@@ -156,6 +163,7 @@
 	assignment = JOB_CHIEF_EXECUTIVE
 	job_title = JOB_CHIEF_EXECUTIVE
 	minimap_icon = "chief_man"
+	role_comm_title = "Ch. Exec"
 	paygrades = list(PAY_SHORT_WYC9 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/wy/manager/chief_executive/New()
@@ -168,6 +176,7 @@
 	assignment = JOB_DEPUTY_DIRECTOR
 	job_title = JOB_DEPUTY_DIRECTOR
 	minimap_icon = "dep_director"
+	role_comm_title = "Dep. Dir"
 	paygrades = list(PAY_SHORT_WYC10 = JOB_PLAYTIME_TIER_0)
 	gun_type = /obj/item/storage/belt/gun/m4a3/heavy/co_golden
 
@@ -177,6 +186,7 @@
 	assignment = JOB_DIRECTOR
 	job_title = JOB_DIRECTOR
 	minimap_icon = "director"
+	role_comm_title = "Corp. Dir"
 	paygrades = list(PAY_SHORT_WYC11 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/civilian/manager/director
 	headset_type = /obj/item/device/radio/headset/distress/pmc/command/director
@@ -203,6 +213,7 @@
 	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/wy_goon
 	minimap_background = "background_goon"
+	role_comm_title = "Sec"
 	minimap_icon = "cmp"
 	idtype = /obj/item/card/id/silver/cl
 

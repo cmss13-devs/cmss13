@@ -16,18 +16,19 @@
 		if(JOB_NSPA_CST)
 			hud_icon_state = "con"
 		if(JOB_NSPA_SC)
-			hud_icon_state = "con"
+			hud_icon_state = "scon"
 		if(JOB_NSPA_SGT)
-			hud_icon_state = "con"
+			hud_icon_state = "sgt"
 		if(JOB_NSPA_INSP)
-			hud_icon_state = "sgt"
+			hud_icon_state = "insp"
 		if(JOB_NSPA_CINSP)
-			hud_icon_state = "sgt"
+			hud_icon_state = "cinsp"
 		if(JOB_NSPA_CMD)
-			hud_icon_state = "sgt"
+			hud_icon_state = "cmd"
 		if(JOB_NSPA_DCO)
-			hud_icon_state = "sgt"
+			hud_icon_state = "dcom"
 		if(JOB_NSPA_COM)
-			hud_icon_state = "sgt"
+			hud_icon_state = "com"
+
 	if(hud_icon_state)
 		holder.overlays += image(override_icon_file ? override_icon_file : base_icon_file, human, "nspa_[hud_icon_state]")

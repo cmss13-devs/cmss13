@@ -656,17 +656,27 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 
 /mob/living/carbon/human/sec_hud_set_ID()
 	var/image/holder = hud_list[ID_HUD]
-	holder.icon_state = "hudsec_unknown"
+	holder.icon_state = "hudblank"
 	if(wear_id)
 		var/obj/item/card/id/I = wear_id.GetID()
 		if(I)
-			holder.icon_state = "hudsec_[ckey(I.GetJobName())]"
+			if((FACTION_MARINE in I.faction_group) || (FACTION_MARSHAL in I.faction_group))
+				if(I.registered_name == real_name) //I am a member of the USCM!
+					holder.icon_state = "hudsec_confirmed"
+				else
+					//am not who I say I am. I should probably be investigated.
+					holder.icon_state = "hudsec_rejected"
+			else
+				holder.icon_state = "hudsec_needprocessing"
+	else
+		holder.icon_state = "hudsec_unknown" //My ID is not on me, or I do not have one.
 
 /mob/living/carbon/human/proc/sec_hud_set_security_status()
 	var/image/holder = hud_list[WANTED_HUD]
 	holder.icon_state = "hudblank"
 	criminal = FALSE
 	var/perpref = null
+
 	if(wear_id)
 		var/obj/item/card/id/I = wear_id.GetID()
 		if(I)

@@ -7,7 +7,7 @@
 	assignment = JOB_PMC_STANDARD
 	job_title = JOB_PMC_STANDARD
 	faction = FACTION_PMC
-	faction_group = list(FACTION_WY, FACTION_SURVIVOR, FACTION_PMC)
+	faction_group = FACTION_LIST_SURVIVOR_WY
 	paygrades = list(PAY_SHORT_PMC_OP = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/pmc
 	skills = /datum/skills/civilian/survivor/pmc
@@ -217,7 +217,7 @@
 	role_comm_title = "Supervisor"
 	idtype = /obj/item/card/id/silver/clearance_badge/manager
 	faction = FACTION_WY
-	faction_group = list(FACTION_WY, FACTION_SURVIVOR, FACTION_PMC)
+	faction_group = FACTION_LIST_SURVIVOR_WY
 	access = list(
 		ACCESS_WY_GENERAL,
 		ACCESS_WY_COLONIAL,
@@ -259,7 +259,7 @@
 /datum/equipment_preset/synth/survivor/pmc
 	name = "Survivor - Synthetic - PMC Support Synth"
 	faction = FACTION_PMC
-	faction_group = list(FACTION_WY, FACTION_SURVIVOR, FACTION_PMC)
+	faction_group = FACTION_LIST_SURVIVOR_WY
 	access = list(
 		ACCESS_WY_GENERAL,
 		ACCESS_WY_COLONIAL,

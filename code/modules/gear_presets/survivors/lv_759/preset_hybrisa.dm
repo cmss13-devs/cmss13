@@ -9,7 +9,7 @@
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC)
-
+	role_comm_title = "Civ"
 	survivor_variant = CIVILIAN_SURVIVOR
 
 /datum/equipment_preset/survivor/hybrisa/civilian/load_gear(mob/living/carbon/human/new_human)
@@ -82,7 +82,7 @@
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC)
-
+	minimap_icon = "office"
 	survivor_variant = CIVILIAN_SURVIVOR
 
 /datum/equipment_preset/survivor/hybrisa/civilian_office/load_gear(mob/living/carbon/human/new_human)
@@ -131,7 +131,7 @@
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC)
-
+	minimap_icon = "sales"
 	survivor_variant = CIVILIAN_SURVIVOR
 
 /datum/equipment_preset/survivor/hybrisa/weymart/load_gear(mob/living/carbon/human/new_human)
@@ -160,8 +160,9 @@
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC)
-
+	role_comm_title = "MPR"
 	survivor_variant = CIVILIAN_SURVIVOR
+	minimap_icon = "mt"
 
 /datum/equipment_preset/survivor/hybrisa/sanitation/load_gear(mob/living/carbon/human/new_human)
 
@@ -208,8 +209,10 @@
 	skills = /datum/skills/civilian/survivor/pizza_delivery_driver
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC)
-
+	role_comm_title = "Pizza"
 	survivor_variant = CIVILIAN_SURVIVOR
+	minimap_icon = "pizza"
+
 
 /datum/equipment_preset/survivor/hybrisa/pizza_galaxy/load_gear(mob/living/carbon/human/new_human)
 
@@ -259,7 +262,7 @@
 	skills = /datum/skills/civilian/survivor/fire_fighter
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_MEDBAY, ACCESS_CIVILIAN_COMMAND)
-
+	minimap_icon = "firefighter"
 	survivor_variant = CIVILIAN_SURVIVOR
 
 /datum/equipment_preset/survivor/hybrisa/fire_fighter/load_gear(mob/living/carbon/human/new_human)
@@ -296,9 +299,9 @@
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC)
-
+	role_comm_title = "Bar"
 	survivor_variant = CIVILIAN_SURVIVOR
-
+	minimap_icon = "bar"
 /datum/equipment_preset/survivor/hybrisa/cuppa_joes/load_gear(mob/living/carbon/human/new_human)
 
 	var/random_gear = rand(1,50)
@@ -337,6 +340,9 @@
 	faction = FACTION_NSPA
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_RESEARCH,ACCESS_CIVILIAN_ENGINEERING,ACCESS_CIVILIAN_LOGISTICS,ACCESS_CIVILIAN_BRIG,ACCESS_CIVILIAN_MEDBAY,ACCESS_CIVILIAN_COMMAND,)
 	survivor_variant = SECURITY_SURVIVOR
+	role_comm_title = "Const"
+	minimap_icon = "so"
+	minimap_background = "background_nspa"
 
 /datum/equipment_preset/survivor/hybrisa/nspa_constable/load_gear(mob/living/carbon/human/new_human)
 
@@ -418,7 +424,8 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/clearance_badge
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_MEDBAY, ACCESS_CIVILIAN_COMMAND)
-
+	minimap_icon = "nurse" //for color
+	role_comm_title = "Doc"
 	survivor_variant = MEDICAL_SURVIVOR
 
 /datum/equipment_preset/survivor/hybrisa/doctor/load_gear(mob/living/carbon/human/new_human)
@@ -456,7 +463,8 @@
 	skills = /datum/skills/civilian/survivor/paramedic
 	idtype = /obj/item/card/id/silver
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_MEDBAY, ACCESS_CIVILIAN_COMMAND)
-
+	minimap_icon = "nurse" //for color
+	role_comm_title = "EMT"
 	survivor_variant = MEDICAL_SURVIVOR
 
 /datum/equipment_preset/survivor/hybrisa/paramedic/load_gear(mob/living/carbon/human/new_human)
@@ -504,7 +512,8 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/clearance_badge/scientist
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_MEDBAY)
-
+	minimap_icon = "miner"
+	role_comm_title = "Xenoarch"
 	survivor_variant = SCIENTIST_SURVIVOR
 
 /datum/equipment_preset/survivor/hybrisa/scientist_xenoarchaeologist/load_gear(mob/living/carbon/human/new_human)
@@ -560,7 +569,8 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/clearance_badge/scientist
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_MEDBAY)
-
+	minimap_icon = "xenobio"
+	role_comm_title = "Xenobio"
 	survivor_variant = SCIENTIST_SURVIVOR
 
 /datum/equipment_preset/survivor/hybrisa/scientist_xenobiologist/load_gear(mob/living/carbon/human/new_human)
@@ -604,8 +614,9 @@
 	skills = /datum/skills/civilian/survivor/trucker
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_ENGINEERING,ACCESS_CIVILIAN_LOGISTICS)
-
 	survivor_variant = ENGINEERING_SURVIVOR
+	minimap_icon = "vc"
+	role_comm_title = "HVO"
 
 /datum/equipment_preset/survivor/hybrisa/heavy_vehicle_operator/load_gear(mob/living/carbon/human/new_human)
 
@@ -673,7 +684,8 @@
 	skills = /datum/skills/civilian/survivor/engineer
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_ENGINEERING,ACCESS_CIVILIAN_LOGISTICS)
-
+	role_comm_title = "Elec. Engi"
+	minimap_icon = "mt"
 	survivor_variant = ENGINEERING_SURVIVOR
 
 /datum/equipment_preset/survivor/hybrisa/electrical_engineer/load_gear(mob/living/carbon/human/new_human)
@@ -723,8 +735,9 @@
 	skills = /datum/skills/civilian/survivor/engineer
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_ENGINEERING,ACCESS_CIVILIAN_LOGISTICS)
-
+	role_comm_title = "mt"
 	survivor_variant = ENGINEERING_SURVIVOR
+	role_comm_title = "Construction"
 
 /datum/equipment_preset/survivor/hybrisa/construction_worker/load_gear(mob/living/carbon/human/new_human)
 	var/choice = rand(1,3)
@@ -856,7 +869,7 @@
 	minimap_background = "background_goon"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	faction = FACTION_WY
-	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
+	faction_group = FACTION_LIST_SURVIVOR_WY
 	origin_override = ORIGIN_WY_SEC
 	paygrades = list(PAY_SHORT_WY_SEC = JOB_PLAYTIME_TIER_0, PAY_SHORT_WY_SEC_SPEC = JOB_PLAYTIME_TIER_4)
 	skills = /datum/skills/civilian/survivor/goon
@@ -931,7 +944,8 @@
 	idtype = /obj/item/card/id/gold
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_LOGISTICS,ACCESS_WY_FLIGHT,ACCESS_CIVILIAN_COMMAND,ACCESS_WY_GENERAL,ACCESS_WY_COLONIAL,ACCESS_WY_EXEC)
-
+	role_comm_title = "WY Pilot"
+	minimap_icon = "wy_pilot"
 	survivor_variant = CORPORATE_SURVIVOR
 
 /datum/equipment_preset/survivor/hybrisa/wey_po/load_gear(mob/living/carbon/human/new_human)
@@ -963,7 +977,8 @@
 	skills = /datum/skills/civilian/survivor/miner
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_LOGISTICS)
-
+	role_comm_title = "Miner"
+	minimap_icon = "miner"
 /datum/equipment_preset/survivor/hybrisa/kelland_miner/load_gear(mob/living/carbon/human/new_human)
 
 	var/random_gear = rand(1,85)

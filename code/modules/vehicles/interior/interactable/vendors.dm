@@ -14,8 +14,7 @@
 	hackable = FALSE
 
 	chem_refill = list(
-		/obj/item/reagent_container/hypospray/autoinjector/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless, //pain-stop and first-aid
 	)
 
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/vehicle/wy
@@ -50,14 +49,8 @@
 		/obj/item/reagent_container/hypospray/autoinjector/tramadol,
 		/obj/item/reagent_container/hypospray/autoinjector/tricord,
 
-		/obj/item/reagent_container/hypospray/autoinjector/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol,
-
-		/obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/antitoxin/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/tricord/skillless,
+		/obj/item/reagent_container/hypospray/autoinjector/ez, //all ez autoinjectors
+		/obj/item/reagent_container/hypospray/autoinjector/skillless, //pain-stop and first-aid
 		)
 
 /obj/structure/machinery/cm_vending/sorted/medical/vehicle/populate_product_list(scale)
@@ -441,7 +434,7 @@
 		list("Roller Bed", 0, /obj/item/roller, VENDOR_ITEM_REGULAR),
 		list("Table", 3, /obj/item/frame/table, VENDOR_ITEM_REGULAR),
 		list("Rack", 3, /obj/item/frame/rack, VENDOR_ITEM_REGULAR),
-		list("Cliboard", 4, /obj/item/clipboard, VENDOR_ITEM_REGULAR),
+		list("Clipboard", 4, /obj/item/clipboard, VENDOR_ITEM_REGULAR),
 		list("Pen", 4, /obj/item/tool/pen, VENDOR_ITEM_REGULAR),
 		list("Chair", 2, /obj/item/weapon/twohanded/folded_metal_chair, VENDOR_ITEM_REGULAR),
 

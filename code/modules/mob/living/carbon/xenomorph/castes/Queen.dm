@@ -74,6 +74,9 @@
 	color = "#a800a8"
 
 	hud_possible = list(XENO_STATUS_HUD)
+	flags_atom = NO_ZFALL
+
+
 	var/mob/is_watching
 
 	var/hivenumber = XENO_HIVE_NORMAL

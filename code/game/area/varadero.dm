@@ -50,7 +50,7 @@
 	icon_state = "NV_no_CAS"
 
 /area/varadero/interior/comms1
-	name = "New Varadero - Cargo Generator"
+	name = "New Varadero - Tertiary Communications"
 	linked_lz = DROPSHIP_LZ1
 	icon_state = "comms1"
 	minimap_color = MINIMAP_AREA_ENGI_CAVE

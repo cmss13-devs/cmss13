@@ -1,0 +1,51 @@
+{
+	"map_name": "White Antre Research Facility",
+	"map_path": "map_files/White_Antre_Research_Facility",
+	"map_file": "White_Antre_Research_Facility.dmm",
+    "webmap_url": "LV552",
+    "survivor_types": [
+        "/datum/equipment_preset/survivor_antre/civilian",
+        "/datum/equipment_preset/survivor_antre/corporate",
+        "/datum/equipment_preset/survivor_antre/site_security",
+        "/datum/equipment_preset/survivor_antre/scientist_xenobiologist",
+        "/datum/equipment_preset/survivor_antre/doctor",
+        "/datum/equipment_preset/survivor_antre/maint_engineer"
+    ],
+	"CO_survivor_types": [
+        "/datum/equipment_preset/survivor_antre/director_kadinsky"
+    ],
+    "survivor_message": "You are currently within the White Antre Research Facility, as an employee. Today is the big day, a new round of tests and a visit by corporate and government agents. Just another day at the office.",
+    "announce_text": "USS Almayer, this is Director Kadinsky of the White Antre Research Facility, welcome. I have been informed by my superiors that you have been dispatched to collect a classified cargo shipment for transport to Chinook station and to observe the on-going live-fire xenomorph testing being conducted at this site.\n\nYou’ll be joined by Azure-15, of the Whiteguard PMC. Further information will be sent after your arrival.\n\nPlease inform your corporate liaison that I look forward to seeing them again. Kadinsky out.",
+    "map_item_type": "/obj/item/map/white_antre_map",
+	"monkey_types": [
+        "monkey"
+    ],
+    "environment_traits": { "Fog": true },
+    "traits": [
+        {
+            "Ground": true,
+            "Up": 1
+        },
+        {
+            "Ground": true,
+            "Up": 1,
+            "Down": -1
+        },
+        {
+            "Ground": true,
+            "Down": -1
+        }
+    ],
+    "nightmare_path": "maps/Nightmare/maps/White_Antre_Research_Facility/",
+    "xvx_hives": {
+        "xeno_hive_k_series": 100
+    },
+    "camouflage": "classic",
+	"gamemodes": [
+        "Distress Signal",
+        "Hunter Games",
+        "Hive Wars",
+        "Faction Clash",
+        "Infection"
+    ]
+}

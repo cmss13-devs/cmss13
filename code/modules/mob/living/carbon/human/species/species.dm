@@ -275,8 +275,10 @@
 			var/static/list/what_beats_what = list("rock" = "scissors", "scissors" = "paper", "paper" = "rock")
 			if(antagonist_plays == what_beats_what[protagonist_plays])
 				winner_text = " [H] wins!"
+				SEND_SIGNAL(H, COMSIG_HUMAN_WON_RPS)
 			else
 				winner_text = " [target] wins!"
+				SEND_SIGNAL(target, COMSIG_HUMAN_WON_RPS)
 		H.visible_message(SPAN_NOTICE("[H] plays <b>[protagonist_plays]</b>![winner_text]"), SPAN_NOTICE("You play <b>[protagonist_plays]</b>![winner_text]"), max_distance = 5)
 		target.visible_message(SPAN_NOTICE("[target] plays <b>[antagonist_plays]</b>![winner_text]"), SPAN_NOTICE("You play <b>[antagonist_plays]</b>![winner_text]"), max_distance = 5)
 		playsound(target, "clownstep", 35, TRUE)

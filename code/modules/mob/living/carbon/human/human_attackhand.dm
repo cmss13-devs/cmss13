@@ -209,6 +209,8 @@
 	if (w_uniform)
 		w_uniform.add_fingerprint(M)
 
+	var/shaken_friend = FALSE
+
 	if(HAS_TRAIT(src, TRAIT_FLOORED) || HAS_TRAIT(src, TRAIT_KNOCKEDOUT) || body_position == LYING_DOWN || sleeping)
 		if(client)
 			sleeping = max(0,src.sleeping-5)
@@ -217,11 +219,13 @@
 				to_chat(M, SPAN_WARNING("[src] looks dizzy. Maybe you should let [t_him] rest a bit longer."))
 			else
 				set_resting(FALSE)
+		shaken_friend = TRUE
 		M.visible_message(SPAN_NOTICE("[M] shakes [src] trying to wake [t_him] up!"),
 			SPAN_NOTICE("You shake [src] trying to wake [t_him] up!"), null, 4)
 	else if(HAS_TRAIT(src, TRAIT_INCAPACITATED))
 		M.visible_message(SPAN_NOTICE("[M] shakes [src], trying to shake [t_him] out of his stupor!"),
 			SPAN_NOTICE("You shake [src], trying to shake [t_him] out of his stupor!"), null, 4)
+		shaken_friend = TRUE
 	else
 		var/mob/living/carbon/human/H = M
 		if(istype(H))
@@ -231,6 +235,9 @@
 				SPAN_NOTICE("You pat [src] on the back to make [t_him] feel better!"), null, 4)
 			playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 5)
 		return
+
+	if(shaken_friend)
+		SEND_SIGNAL(src, COMSIG_HUMAN_HELPING_UP)
 
 	adjust_effect(-6, PARALYZE)
 	adjust_effect(-6, STUN)

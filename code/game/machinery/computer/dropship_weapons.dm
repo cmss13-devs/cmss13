@@ -166,7 +166,7 @@
 		var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
 		if(tacmap_component)
 			if(!tacmap_component.map_holder)
-				tacmap_component.map_holder = new(null, 2, minimap_flag, FALSE, FALSE)
+				tacmap_component.map_holder = new(null, 2, minimap_flag, TRUE, FALSE)
 				tacmap_component.is_embedded = TRUE
 				// moved 50 pixels south to align in the center
 				var/matrix/transform = matrix()
@@ -643,7 +643,7 @@
 		if("mapview")
 			var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
 			if(!tacmap_component.map_holder)
-				tacmap_component.map_holder = new(null, 2, minimap_flag, FALSE, FALSE)
+				tacmap_component.map_holder = new(null, 2, minimap_flag, TRUE, FALSE)
 				tacmap_component.map = tacmap_component.map_holder.map
 				// moved 50 pixels south to align in the center
 				var/matrix/transform = matrix()

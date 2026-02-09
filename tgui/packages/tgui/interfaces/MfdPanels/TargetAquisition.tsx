@@ -19,10 +19,10 @@ import type {
 } from './types';
 
 const directionLookup = new Map<string, number>();
-directionLookup['SOUTH'] = 2;
-directionLookup['NORTH'] = 1;
-directionLookup['WEST'] = 8;
-directionLookup['EAST'] = 4;
+directionLookup.set('SOUTH', 2);
+directionLookup.set('NORTH', 1);
+directionLookup.set('WEST', 8);
+directionLookup.set('EAST', 4);
 
 // Hook for firing cooldown countdown
 const useFiringCooldown = (equipment?: DropshipEquipment) => {

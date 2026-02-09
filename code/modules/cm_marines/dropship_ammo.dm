@@ -588,7 +588,7 @@
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), impact, 250, 40, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), source_mob)), 0.5 SECONDS)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(explosion_particles), impact, 3), 0.5 SECONDS)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(smoke_spread), impact, 2, /obj/effect/particle_effect/smoke, null, 2), 1 SECONDS)
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(create_shrapnel), impact, 60, 0, 360, /datum/ammo/bullet/shrapnel/hornet_rounds, create_cause_data(initial(name), source_mob), FALSE, 100), 0.5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(create_shrapnel), impact, 20, 0, 360, /datum/ammo/bullet/shrapnel/hornet_rounds, create_cause_data(initial(name), source_mob), FALSE, 100), 0.5 SECONDS)
 	QDEL_IN(src, 0.5 SECONDS)
 
 /obj/structure/ship_ammo/missile/sgw
@@ -604,10 +604,10 @@
 
 /obj/structure/ship_ammo/missile/sgw/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
 	impact.ceiling_debris_check(2)
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), impact, 290, 70, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), source_mob)), 0.5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), impact, 290, 80, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), source_mob)), 0.5 SECONDS)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(explosion_particles), impact, 3), 0.5 SECONDS)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(smoke_spread), impact, 2, /obj/effect/particle_effect/smoke, null, 2), 1 SECONDS)
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(create_shrapnel), impact, 60, 0, 360, /datum/ammo/bullet/shrapnel/metal, create_cause_data(initial(name), source_mob), FALSE, 100), 0.5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(create_shrapnel), impact, 20, 0, 360, /datum/ammo/bullet/shrapnel/metal, create_cause_data(initial(name), source_mob), FALSE, 100), 0.5 SECONDS)
 	QDEL_IN(src, 0.5 SECONDS)
 
 /obj/structure/ship_ammo/missile/banshee
@@ -625,7 +625,7 @@
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), impact, 225, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), source_mob)), 0.5 SECONDS)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(explosion_particles), impact, 3), 0.5 SECONDS)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(smoke_spread), impact, 2, /obj/effect/particle_effect/smoke, null, 2), 1 SECONDS)
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(create_shrapnel), impact, 60, 0, 360, /datum/ammo/bullet/shrapnel/incendiary, create_cause_data(initial(name), source_mob), FALSE, 100), 0.5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(create_shrapnel), impact, 20, 0, 360, /datum/ammo/bullet/shrapnel/incendiary, create_cause_data(initial(name), source_mob), FALSE, 100), 0.5 SECONDS)
 	QDEL_IN(src, 0.5 SECONDS)
 
 /obj/structure/ship_ammo/missile/hellhound
@@ -645,7 +645,7 @@
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), impact, 350, 75, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), source_mob)), 0.5 SECONDS)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(explosion_particles), impact, 6), 0.5 SECONDS)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(smoke_spread), impact, 3, /obj/effect/particle_effect/smoke, null, 2), 1 SECONDS)
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(create_shrapnel), impact, 75, 0, 360, /datum/ammo/bullet/shrapnel/breaching, create_cause_data(initial(name), source_mob), FALSE, 100), 0.5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(create_shrapnel), impact, 25, 0, 360, /datum/ammo/bullet/shrapnel/breaching, create_cause_data(initial(name), source_mob), FALSE, 100), 0.5 SECONDS)
 	QDEL_IN(src, 0.5 SECONDS)
 
 //bombs

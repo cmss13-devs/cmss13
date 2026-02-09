@@ -498,7 +498,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	xeno_cooldown = 20 SECONDS
 	plasma_cost = 150
-	var/windup_time = 25 // 2.5 second default windup
+	var/activation_delay = 2.0 // 2.0 second default windup
 	var/skyspit_range = 4 // 9x9 area
 	var/antiair_duration = 60 // 6 seconds
 	var/sound_to_play = 'sound/effects/blobattack.ogg'

@@ -249,6 +249,6 @@
 	hide_from(Q)
 
 /datum/action/xeno_action/activable/skyspit/queen
-	windup_time = 15 // 1.5 seconds wind-up, faster than boily
+	activation_delay = 15 // 1.5 seconds wind-up, faster than boily
 	skyspit_range = 3 // 7x7 area, smaller than boily
 	antiair_duration = 35 // 3.5 seconds, lasts shorter than boily

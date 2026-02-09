@@ -1252,10 +1252,10 @@
 		to_chat(xeno, SPAN_WARNING("No valid areas to mark!"))
 		return FALSE
 
-	if(windup_time > 0)
+	if(activation_delay > 0)
 		xeno.visible_message(SPAN_WARNING("[xeno] begins to prepare a massive corrosive spit towards the sky!"),
 			SPAN_WARNING("We begin to prepare our skyspit bombardment!"))
-		if(!do_after(xeno, windup_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+		if(!do_after(xeno, activation_delay, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
 			to_chat(xeno, SPAN_XENODANGER("We decide to cancel our skyspit."))
 			return FALSE
 

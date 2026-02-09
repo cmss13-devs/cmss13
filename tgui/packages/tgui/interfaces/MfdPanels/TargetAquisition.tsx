@@ -243,7 +243,13 @@ const leftButtonGenerator = (
     const firemission =
       data.firemission_data.length > x ? data.firemission_data[x] : undefined;
     return {
-      children: firemission ? <div>FM {x + 1}</div> : undefined,
+      children: firemission ? (
+        <div>
+          {firemission.name.length > 7
+            ? firemission.name.substring(0, 7) + '...'
+            : firemission.name}
+        </div>
+      ) : undefined,
       onClick: () => {
         setFiremissionSelected(data.firemission_data[x]);
         setLeftButtonMode(undefined);
@@ -276,10 +282,7 @@ const leftButtonGenerator = (
       );
     }
 
-    const fmButtons = range(
-      0,
-      Math.min(5, data.firemission_data.length + 1),
-    ).map(firemission_mapper);
+    const fmButtons = range(fmOffset, fmOffset + 5).map(firemission_mapper);
     fmButtons[0] = {
       children: 'F-MISS',
       onClick: () => {
@@ -441,6 +444,83 @@ export const getLastTargetName = (data) => {
     : target?.target_name;
 };
 
+// Helper function to determine fire button state
+const getFireButtonState = (
+  strikeMode: string | undefined,
+  isOnCooldown: boolean,
+  isFiremissionActive: boolean,
+  strikeReady: boolean,
+) => {
+  let fireButtonText = 'FIRE';
+  let fireButtonDisabled = false;
+
+  if (strikeMode === 'weapon' && isOnCooldown) {
+    fireButtonText = 'COOLING';
+    fireButtonDisabled = true;
+  } else if (strikeMode === 'firemission' && isFiremissionActive) {
+    fireButtonText = 'ACTIVE';
+    fireButtonDisabled = true;
+  } else if (!strikeReady) {
+    fireButtonDisabled = true;
+  }
+
+  return { fireButtonText, fireButtonDisabled };
+};
+
+// Helper function to check if strike is ready
+const getStrikeReady = (
+  selectedTarget: number | undefined,
+  strikeDirection: string | undefined,
+  strikeMode: string | undefined,
+  weaponSelected: number | undefined,
+  equipmentData: Array<any>,
+  isOnCooldown: boolean,
+  firemissionSelected: any,
+  isFiremissionActive: boolean,
+) => {
+  return (
+    selectedTarget !== undefined &&
+    strikeDirection !== undefined &&
+    ((strikeMode === 'weapon' &&
+      weaponSelected !== undefined &&
+      equipmentData.find((x) => x.eqp_tag === weaponSelected) &&
+      !isOnCooldown) ||
+      (strikeMode === 'firemission' &&
+        firemissionSelected !== undefined &&
+        !isFiremissionActive))
+  );
+};
+
+// Helper function to handle fire action
+const handleFireAction = (
+  act: any,
+  strikeMode: string | undefined,
+  fireButtonDisabled: boolean,
+  firemissionSelected: any,
+  strikeDirection: string | undefined,
+  directionLookup: Map<string, number>,
+  selectedTarget: number | undefined,
+  fmXOffsetValue: number,
+  fmYOffsetValue: number,
+  weaponSelected: number | undefined,
+) => {
+  if (strikeMode === undefined || fireButtonDisabled) {
+    return;
+  }
+  if (strikeMode === 'firemission') {
+    act('firemission-execute', {
+      tag: firemissionSelected?.mission_tag,
+      direction: strikeDirection ? directionLookup.get(strikeDirection) : 0,
+      target_id: selectedTarget,
+      offset_x_value: fmXOffsetValue,
+      offset_y_value: fmYOffsetValue,
+    });
+  }
+  if (strikeMode === 'weapon') {
+    act('fire-weapon', { eqp_tag: weaponSelected });
+  }
+};
+
 export const TargetAquisitionMfdPanel = (props: MfdProps) => {
   const { panelStateId } = props;
 
@@ -495,30 +575,23 @@ export const TargetAquisitionMfdPanel = (props: MfdProps) => {
           )?.name
         : 'NONE';
 
-  const strikeReady =
-    selectedTarget !== undefined &&
-    strikeDirection !== undefined &&
-    ((strikeMode === 'weapon' &&
-      weaponSelected !== undefined &&
-      data.equipment_data.find((x) => x.eqp_tag === weaponSelected) &&
-      !isOnCooldown) ||
-      (strikeMode === 'firemission' &&
-        firemissionSelected !== undefined &&
-        !isFiremissionActive));
+  const strikeReady = getStrikeReady(
+    selectedTarget,
+    strikeDirection,
+    strikeMode,
+    weaponSelected,
+    data.equipment_data,
+    isOnCooldown,
+    firemissionSelected,
+    isFiremissionActive,
+  );
 
-  // Determine button text and disabled state
-  let fireButtonText = 'FIRE';
-  let fireButtonDisabled = false;
-
-  if (strikeMode === 'weapon' && isOnCooldown) {
-    fireButtonText = 'COOLING';
-    fireButtonDisabled = true;
-  } else if (strikeMode === 'firemission' && isFiremissionActive) {
-    fireButtonText = 'ACTIVE';
-    fireButtonDisabled = true;
-  } else if (!strikeReady) {
-    fireButtonDisabled = true;
-  }
+  const { fireButtonText, fireButtonDisabled } = getFireButtonState(
+    strikeMode,
+    isOnCooldown,
+    isFiremissionActive,
+    strikeReady,
+  );
 
   const targets = range(targetOffset, targetOffset + 5).map((x) =>
     lazeMapper(x),
@@ -541,30 +614,26 @@ export const TargetAquisitionMfdPanel = (props: MfdProps) => {
           children: fireButtonText,
           disabled: fireButtonDisabled,
           onClick: () => {
-            if (strikeMode === undefined || fireButtonDisabled) {
-              return;
-            }
-            if (strikeMode === 'firemission') {
-              act('firemission-execute', {
-                tag: firemissionSelected?.mission_tag,
-                direction: strikeDirection
-                  ? directionLookup[strikeDirection]
-                  : 0,
-                target_id: selectedTarget,
-                offset_x_value: fmXOffsetValue,
-                offset_y_value: fmYOffsetValue,
-              });
-            }
-            if (strikeMode === 'weapon') {
-              act('fire-weapon', { eqp_tag: weaponSelected });
-            }
+            handleFireAction(
+              act,
+              strikeMode,
+              fireButtonDisabled,
+              firemissionSelected,
+              strikeDirection,
+              directionLookup,
+              selectedTarget,
+              fmXOffsetValue,
+              fmYOffsetValue,
+              weaponSelected,
+            );
           },
         },
         {
           children:
-            leftButtonMode === 'STRIKE' &&
-            strikeMode === 'firemission' &&
-            firemissionSelected === undefined &&
+            ((leftButtonMode === 'STRIKE' &&
+              strikeMode === 'firemission' &&
+              firemissionSelected === undefined) ||
+              (quickMode && leftButtonMode === 'QUICK_FMISS')) &&
             fmOffset > 0 ? (
               <Icon name="arrow-up" />
             ) : undefined,
@@ -576,6 +645,7 @@ export const TargetAquisitionMfdPanel = (props: MfdProps) => {
         },
         {
           children: 'QUICK',
+          borderColor: quickMode ? '#ff0000' : undefined,
           onClick: () => {
             setQuickMode(!quickMode);
             if (!quickMode) {
@@ -613,9 +683,10 @@ export const TargetAquisitionMfdPanel = (props: MfdProps) => {
             }
           : {
               children:
-                leftButtonMode === 'STRIKE' &&
-                strikeMode === 'firemission' &&
-                firemissionSelected === undefined &&
+                ((leftButtonMode === 'STRIKE' &&
+                  strikeMode === 'firemission' &&
+                  firemissionSelected === undefined) ||
+                  (quickMode && leftButtonMode === 'QUICK_FMISS')) &&
                 fmOffset + 4 < data.firemission_data?.length ? (
                   <Icon name="arrow-down" />
                 ) : undefined,

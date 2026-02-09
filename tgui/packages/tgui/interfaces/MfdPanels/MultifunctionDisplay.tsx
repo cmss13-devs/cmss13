@@ -34,6 +34,7 @@ export const MfdButton = (props: ButtonProps) => {
         props.children && 'mfd_button_active',
         !props.children && 'mfd_button',
       ])}
+      style={props.borderColor ? { borderColor: props.borderColor } : {}}
     >
       {props.children}
     </Button>

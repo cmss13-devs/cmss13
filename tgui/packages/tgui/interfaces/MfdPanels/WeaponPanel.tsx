@@ -527,6 +527,7 @@ export const WeaponMfdPanel = (props: MfdProps) => {
         {},
         {
           children: 'QUICK',
+          borderColor: quickMode ? '#ff0000' : undefined,
           onClick: () => setQuickMode(!quickMode),
         },
         {},

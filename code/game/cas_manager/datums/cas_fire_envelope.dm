@@ -582,7 +582,7 @@
 				hivenumber_to_announce = applier_hive.hivenumber
 
 			if(hivenumber_to_announce)
-				xeno_announcement("The metal bird's cries can be heard from the sky. It's been injured!", hivenumber_to_announce, XENO_GENERAL_ANNOUNCE)
+				xeno_announcement("The metal bird's cries can be heard from the sky. It has been injured!", hivenumber_to_announce, XENO_GENERAL_ANNOUNCE)
 				src.xeno_announcement_played = TRUE
 		// Spark effect for the Dropship
 		var/list/nearby = list()

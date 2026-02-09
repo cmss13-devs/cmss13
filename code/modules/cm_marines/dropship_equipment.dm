@@ -2003,6 +2003,7 @@
 	is_interactable = TRUE
 	var/fulton_cooldown
 	var/busy_winch
+	var/list/known_fultons = list()
 	combat_equipment = FALSE
 	faction_exclusive = FACTION_MARINE
 
@@ -2010,11 +2011,19 @@
 	name = "\improper UPP RMU-19 Fulton Recovery System"
 	faction_exclusive = FACTION_UPP
 
+/obj/structure/dropship_equipment/fulton_system/Destroy()
+	GLOB.active_fulton_systems -= src
+	. = ..()
+
 /obj/structure/dropship_equipment/fulton_system/update_equipment()
 	if(ship_base)
 		icon_state = "fulton_system_deployed"
+		monitor_existing_fultons()
+		GLOB.active_fulton_systems |= src
 	else
 		icon_state = "fulton_system"
+		known_fultons.Cut()
+		GLOB.active_fulton_systems -= src
 
 
 /obj/structure/dropship_equipment/fulton_system/proc/automate_interact(mob/user, fulton_choice)
@@ -2094,6 +2103,30 @@
 		else
 			recovery_object = "Empty"
 		.["[recovery_object]"] = fulton
+
+// Initialize tracking of existing fultons when system is installed
+/obj/structure/dropship_equipment/fulton_system/proc/monitor_existing_fultons()
+	known_fultons.Cut()
+	for(var/obj/item/stack/fulton/fulton in GLOB.deployed_fultons)
+		if(faction_exclusive == fulton.faction)
+			known_fultons += "\ref[fulton]"
+
+// Called directly when a new fulton is deployed
+/obj/structure/dropship_equipment/fulton_system/proc/notify_new_fulton(obj/item/stack/fulton/new_fulton)
+	if(!ship_base) // Only notify when installed
+		return
+	if(faction_exclusive != new_fulton.faction) // Only notify for matching faction
+		return
+	if(!linked_shuttle || linked_shuttle.mode != SHUTTLE_CALL) // Only notify while in flight
+		return
+
+	var/fulton_ref = "\ref[new_fulton]"
+	if(fulton_ref in known_fultons)
+		return
+
+	known_fultons += fulton_ref
+	playsound(src, 'sound/machines/ping.ogg', 50, TRUE, 25)
+	visible_message(SPAN_NOTICE("[src] pings as it detects a retrievable fulton recovery device!"), null, 15)
 
 /obj/structure/dropship_equipment/fulton_system/equipment_interact(mob/user)
 	if(!can_fulton(user))

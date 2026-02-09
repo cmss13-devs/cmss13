@@ -1,0 +1,44 @@
+2026-02-01:
+  TrollerNoob:
+  - rscadd: Added Chestrig as a selectable backpack you can spawn with. Find it in
+      Backpack Types.
+2026-02-03:
+  Ediblebomb:
+  - maptweak: The maintenance doors leading into the orbital bombardment control room
+      on both decks now have the correctg access requirements in place.
+  Xander3359:
+  - qol: Ladders will automatically show the radial wheel after being used
+2026-02-04:
+  ihatethisengine:
+  - balance: removed aimed shot from PMC sniper spec
+2026-02-07:
+  Bibby0110:
+  - bugfix: Kings spawned in hunting grounds won't affect their primary hive wrt.
+      alliances
+  Drulikar:
+  - admin: Admins get more access to log getter verbs
+  - rscdel: Removed getruntimelog and giveruntimelog since they aren't really applicable
+      to how TGS logs dream daemon logs
+  Nihisohel:
+  - balance: Readds the barrel charger to marine vendors at very limited quantities
+      and low opportunistic restocks
+  - imageadd: Adds a new barrel charger sprite, old one is still retained in its dmi
+      file for legacy
+  Xander3359:
+  - spellcheck: spellcheck confing
+  rattybag:
+  - refactor: refactored reagent grinder to use TGUI
+  - ui: reagent grinder interface now uses TGUI
+2026-02-08:
+  hry-gh:
+  - server: added the ability to get admins/admin_ranks from an api endpoint
+2026-02-09:
+  DangerRevolution:
+  - maptweak: 'Added three new RNG variations to New Varadero: a hold-out in Engineering
+      and a variation of the Medbay alongside New Varadero Restaurant that might replace
+      the Library'
+  Ediblebomb:
+  - qol: Added a preference to opt-out of being spectated by the CMTV camera ghost.
+  ori-disillusion-mirnov:
+  - rscdel: removes playtime defines past tier 4, and removes the hybrisa CL survivor
+      ranks past 175 hours of playtime

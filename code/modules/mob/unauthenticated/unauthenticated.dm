@@ -227,7 +227,7 @@ GENERAL_PROTECT_DATUM(/mob/unauthenticated)
 		log_access("PREAUTHORIZATION: user [found_ckey] connected via [oidc_type].")
 		new_ckey = found_ckey
 
-		var/is_banned = world.IsBanned(ckey, client.address, client.computer_id, byond_user = FALSE)
+		var/is_banned = world.IsBanned(new_ckey, client.address, client.computer_id, byond_user = FALSE)
 		if(is_banned)
 			to_chat_immediate("You are unable to connect to this server: [is_banned["reason"]]")
 			log_access("PREAUTHORIZATION: user [found_ckey] disconnected due to IsBanned check.")

@@ -2,7 +2,6 @@
 	icon = 'icons/obj/items/devices.dmi'
 	name = "\improper Professor DUMMY tablet"
 	desc = "A Professor DUMMY Control Tablet."
-	suffix = "\[3\]"
 	icon_state = "dummytablet"
 	item_state = "dummytablet"
 	item_icons = list(WEAR_R_HAND = null, WEAR_L_HAND = null) // No mob state currently
@@ -33,15 +32,8 @@
 	linked_dummy = null
 	. = ..()
 
-/**
- * Checks if the user is adjacent to the dummy
- *
- * Returns TRUE if the user is adjacent to the dummy, FALSE otherwise
- *
- * * arg-1: The user
- */
 /obj/item/device/professor_dummy_tablet/proc/is_adjacent_to_dummy(mob/user)
-	if (get_dist(linked_dummy, user) > 1)
+	if(get_dist(linked_dummy, user) > 1)
 		to_chat(user, SPAN_WARNING("You are too far away from the dummy to use its tablet."))
 		return FALSE
 	return TRUE
@@ -65,35 +57,6 @@
 /obj/item/device/professor_dummy_tablet/attack_self(mob/user as mob)
 	..()
 	tgui_interact(user)
-	//interact(user)
-
-/obj/item/device/professor_dummy_tablet/interact(mob/user as mob)
-	if(isnull(linked_dummy))
-		return
-
-	if(!is_adjacent_to_dummy(user))
-		return
-
-	user.set_interaction(src)
-	var/dat = "<head><title>Professor DUMMY Control Tablet</title></head><body>"
-
-	dat += "<BR>\[ <A href='byond://?src=\ref[src];operation=brute_damage_limb'>Brute Damage (Limb)</A> \]"
-	dat += "<BR>\[ <A href='byond://?src=\ref[src];operation=brute_damage_organ'>Brute Damage (Organ)</A> \]"
-	dat += "<BR>\[ <A href='byond://?src=\ref[src];operation=burn_damage'>Burn Damage</A> \]"
-	dat += "<BR>\[ <A href='byond://?src=\ref[src];operation=toxin'>Inject Toxins</A> \]"
-	dat += "<BR>\[ <A href='byond://?src=\ref[src];operation=bones'>Break Bones</A> \]"
-	dat += "<BR>\[ <A href='byond://?src=\ref[src];operation=eschar'>Inflict Eschar</A> \]"
-	dat += "<BR>\[ <A href='byond://?src=\ref[src];operation=blood_loss'>Blood Loss</A> \]"
-	dat += "<BR>\[ <A href='byond://?src=\ref[src];operation=bleeding'>Internal Bleeding</A> \]"
-	dat += "<BR>\[ <A href='byond://?src=\ref[src];operation=shrapnel'>Shrapnel</A> \]"
-	dat += "<BR>\[ <A href='byond://?src=\ref[src];operation=delimb'>Delimb</A> \]"
-	dat += "<BR>\[ <A href='byond://?src=\ref[src];operation=reset'>Reset</A> \]"
-	dat += "<BR><hr>"
-
-	show_browser(user, dat, "Professor DUMMY Control Tablet", "dummytablet", width = 400, height = 500)
-	onclose(user, "dummytablet")
-	updateDialog()
-	return
 
 /obj/item/device/professor_dummy_tablet/proc/select_delimb_target()
 	var/list/procedureChoices = list(
@@ -182,124 +145,101 @@
 
 /obj/item/device/professor_dummy_tablet/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
-	if(.)
-		return
+
 	var/mob/user = ui.user
+
 	switch(action)
-		if ("brute_damage_organ")
+		if("brute_damage_organ")
 			var/selection = select_internal_organ()
-			if (!selection)
+			if(!selection)
 				return
 			var/datum/internal_organ/organ = LAZYACCESS(linked_dummy.internal_organs_by_name, selection)
-			if (!istype(organ))
+			if(!organ)
 				return
-			var/amount = 0
-			amount = tgui_input_real_number(usr, "Amount?")
-			if (amount==0)
+			var/amount = tgui_input_real_number(user, "Amount?")
+			if(!amount)
 				return
 			organ.take_damage(amount)
-		if ("brute_damage_limb")
+		if("brute_damage_limb")
 			var/selection = select_body_part()
-			if (!selection)
+			if(!selection)
 				return
 			var/obj/limb/limb = linked_dummy.get_limb(selection)
-			if (!istype(limb))
+			if(!limb || limb?.status & LIMB_DESTROYED)
 				return
-			if(limb.status & LIMB_DESTROYED)
+			var/amount = tgui_input_real_number(user, "Amount?")
+			if(!amount)
 				return
-			var/amount = 0
-			amount = tgui_input_real_number(usr, "Amount?")
-			if (amount==0)
-				return
-			limb.take_damage(amount, 0)
-		if ("burn_damage")
+			limb.take_damage(amount)
+		if("burn_damage")
 			var/selection = select_body_part()
-			if (!selection)
+			if(!selection)
 				return
 			var/obj/limb/limb = linked_dummy.get_limb(selection)
-			if (!istype(limb))
+			if(!limb || limb?.status & LIMB_DESTROYED)
 				return
-			if(limb.status & LIMB_DESTROYED)
-				return
-			var/amount = 0
-			amount = tgui_input_real_number(usr, "Amount?")
-			if (amount==0)
+			var/amount = tgui_input_real_number(user, "Amount?")
+			if(!amount)
 				return
 			limb.take_damage(0, amount)
-		if ("toxin")
-			var/amount = 0
-			amount = tgui_input_real_number(usr, "Amount?")
-			if (amount==0)
+		if("toxin")
+			var/amount = tgui_input_real_number(user, "Amount?")
+			if(!amount)
 				return
-			linked_dummy.reagents.add_reagent("toxin", amount)
-		if ("bones")
+			linked_dummy.setToxLoss(amount)
+		if("bones")
 			var/selection = select_body_part()
-			if (!selection)
+			if(!selection)
 				return
 			var/obj/limb/limb = linked_dummy.get_limb(selection)
-			if (!istype(limb))
-				return
-			if(limb.status & LIMB_DESTROYED)
+			if(!limb || limb?.status & LIMB_DESTROYED)
 				return
 			limb.fracture(100)
-		if ("eschar")
+		if("eschar")
 			var/selection = select_body_part()
-			if (!selection)
+			if(!selection)
 				return
 			var/obj/limb/limb = linked_dummy.get_limb(selection)
-			if (!istype(limb))
-				return
-			if(limb.status & LIMB_ESCHAR)
+			if(!limb || limb?.status & LIMB_ESCHAR)
 				return
 			limb.eschar()
 			limb.take_damage(0, limb.burn_healing_threshold)
-		if ("blood_loss")
-			var/amount = 0
-			amount = tgui_input_real_number(usr, "Amount?")
-			if (amount==0)
+		if("blood_loss")
+			var/amount = tgui_input_real_number(user, "Amount?")
+			if(!amount)
 				return
 			linked_dummy.drip(amount)
-		if ("bleeding")
+		if("bleeding")
 			var/selection = select_body_part()
-			if (!selection)
+			if(!selection)
 				return
 			var/obj/limb/limb = linked_dummy.get_limb(selection)
-			if (!istype(limb))
+			if(!limb || limb?.status & LIMB_DESTROYED)
 				return
-			if(limb.status & LIMB_DESTROYED)
-				return
-			if(linked_dummy.get_limb(selection).status & LIMB_DESTROYED)
-				return
-			var/datum/wound/internal_bleeding/I = new (0)//<- copied from limbs.dm, doesn't have any issues with cybernetics
-			limb.add_bleeding(I, TRUE)
-			limb.wounds += I
-		if ("shrapnel")
+			var/datum/wound/internal_bleeding/internal_bleeding = new(linked_dummy.effects_list)
+			limb.add_bleeding(internal_bleeding, TRUE)
+			limb.wounds += internal_bleeding
+		if("shrapnel")
 			var/selection = select_body_part()
-			if (!selection)
+			if(!selection)
 				return
 			var/obj/limb/limb = linked_dummy.get_limb(selection)
-			if (!istype(limb))
+			if(!limb || limb?.status & LIMB_DESTROYED)
 				return
-			if(limb.status & LIMB_DESTROYED)
-				return
-			var/obj/item/shard/shrapnel/s = new /obj/item/shard/shrapnel()
-			limb.embed(s)
-		if ("delimb")
+			var/obj/item/shard/shrapnel/shrapnel = new /obj/item/shard/shrapnel()
+			limb.embed(shrapnel)
+		if("delimb")
 			var/selection = select_body_part()
-			if (!selection)
+			var/clean_amputation_confirmation = tgui_alert(user, "Should the limb be cleanly removed?", "Confirmation", list("Yes", "No"), 10 SECONDS)
+			var/clean_amputation = TRUE
+			if(!clean_amputation_confirmation)
 				return
+			if(clean_amputation_confirmation == "No")
+				clean_amputation = FALSE
 			var/obj/limb/limb = linked_dummy.get_limb(selection)
-			if (!istype(limb))
+			if(!limb || limb?.status & LIMB_DESTROYED)
 				return
-			if(limb.status & LIMB_DESTROYED)
-				return
-			limb.droplimb(TRUE, TRUE, "tablet")
+			limb.droplimb(clean_amputation, TRUE, "tablet")
 			playsound(loc, 'sound/weapons/slice.ogg', 25)
 		if("reset")
 			linked_dummy.revive()
-		else
-			updateUsrDialog()
-			return FALSE
-	linked_dummy.regenerate_all_icons()
-	linked_dummy.emote("scream")
-	updateUsrDialog()

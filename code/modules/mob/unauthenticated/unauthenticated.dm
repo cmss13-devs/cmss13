@@ -231,6 +231,7 @@ GENERAL_PROTECT_DATUM(/mob/unauthenticated)
 		if(is_banned)
 			to_chat_immediate("You are unable to connect to this server: [is_banned["reason"]]")
 			log_access("PREAUTHORIZATION: user [found_ckey] disconnected due to IsBanned check.")
+			qdel(client)
 			qdel(src)
 			return FALSE
 

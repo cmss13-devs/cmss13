@@ -64,7 +64,8 @@
 
 /obj/item/device/professor_dummy_tablet/attack_self(mob/user as mob)
 	..()
-	interact(user)
+	tgui_interact(user)
+	//interact(user)
 
 /obj/item/device/professor_dummy_tablet/interact(mob/user as mob)
 	if(isnull(linked_dummy))
@@ -141,17 +142,50 @@
 	selection = tgui_input_list(usr, "Select Organ", "Organ selection", procedureChoices)
 	return LAZYACCESS(procedureChoices, selection)
 
+/obj/item/device/professor_dummy_tablet/ui_static_data(mob/user)
+	var/list/data = list()
 
-/obj/item/device/professor_dummy_tablet/Topic(href, href_list)
-	if(..())
-		return FALSE
+	data["patient"] = linked_dummy.name
 
-	if (!is_adjacent_to_dummy(usr))
-		return FALSE
+	return data
 
-	usr.set_interaction(src)
+/obj/item/device/professor_dummy_tablet/ui_data(mob/user)
 
-	switch(href_list["operation"])
+	var/list/data = list(
+		"status" = linked_dummy.stat,
+		"health" = linked_dummy.health,
+		"total_brute" = floor(linked_dummy.getBruteLoss()),
+		"total_burn" = floor(linked_dummy.getFireLoss()),
+		"total_toxin" = floor(linked_dummy.getToxLoss()),
+		"total_oxy" = floor(linked_dummy.getOxyLoss()),
+		"revival_timer" = null
+	)
+
+	return data
+
+/obj/item/device/professor_dummy_tablet/ui_status(mob/user, datum/ui_state/state)
+	. = ..()
+
+	if(is_adjacent_to_dummy(user))
+		return UI_INTERACTIVE
+
+	return UI_DISABLED
+
+/obj/item/device/professor_dummy_tablet/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_inventory_state
+
+/obj/item/device/professor_dummy_tablet/tgui_interact(mob/user, datum/tgui/ui, datum/ui_state/state)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "DummyTablet", "Dummy Tablet")
+		ui.open()
+
+/obj/item/device/professor_dummy_tablet/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+	var/mob/user = ui.user
+	switch(action)
 		if ("brute_damage_organ")
 			var/selection = select_internal_organ()
 			if (!selection)
@@ -269,4 +303,3 @@
 	linked_dummy.regenerate_all_icons()
 	linked_dummy.emote("scream")
 	updateUsrDialog()
-	return TRUE

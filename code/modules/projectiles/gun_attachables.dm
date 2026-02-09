@@ -1981,8 +1981,8 @@ Defined in conflicts.dm of the #defines folder.
 	if(!collapsible)
 		return .
 
-	if(turn_off && stock_activated)
-		stock_activated = FALSE
+	if(turn_off)
+		stock_activated = initial(stock_activated)
 		apply_on_weapon(gun)
 		return TRUE
 
@@ -2909,11 +2909,6 @@ Defined in conflicts.dm of the #defines folder.
 
 	applying_gun.recalculate_attachment_bonuses()
 	applying_gun.update_overlays(src, "stock")
-
-/obj/item/attachable/stock/smg/collapsible/brace/Detach(mob/user, obj/item/weapon/gun/detaching_gun)
-	. = ..()
-
-	detaching_gun.flags_item &= ~(NODROP|FORCEDROP_CONDITIONAL)
 
 /obj/item/attachable/stock/revolver
 	name = "\improper M44 magnum sharpshooter stock"

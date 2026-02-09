@@ -539,8 +539,22 @@
 	minimum_age = 30
 
 /datum/equipment_preset/uscm/leader_equipped/veteran/load_gear(mob/living/carbon/human/new_human)
-	. = ..()
-	//MMTODO - add in the funny vSL gun and set here
+	//backpack
+	var/back_item = get_backpack_item(new_human)
+	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
+
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/leader/mod(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/cryo/lead(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/medium/leader/mod_a(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/flare/full(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/box/mre(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a(new_human), WEAR_J_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/vp78m6/dual_holster/full(new_human), WEAR_WAIST)
 
 //*****************************************************************************************************/
 

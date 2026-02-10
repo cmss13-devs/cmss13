@@ -10,6 +10,7 @@
 	skills = /datum/skills/civilian
 	idtype = /obj/item/card/id/lanyard
 
+	minimap_background = "background_civilian"
 	minimap_icon = "surv"
 
 /datum/equipment_preset/colonist/load_gear(mob/living/carbon/human/new_human)

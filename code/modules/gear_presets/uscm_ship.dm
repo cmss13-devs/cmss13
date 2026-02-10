@@ -283,7 +283,7 @@
 	skills = /datum/skills/MT
 
 	minimap_icon = "mt"
-	minimap_background = "background_shipside"
+	minimap_background = "background_engineering"
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/engi)
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues)
@@ -320,7 +320,7 @@
 	skills = /datum/skills/OT
 
 	minimap_icon = "ot"
-	minimap_background = "background_shipside"
+	minimap_background = "background_engineering"
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/engi)
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues)
@@ -365,7 +365,7 @@
 	minimum_age = 25
 	skills = /datum/skills/RO
 
-	minimap_icon = "cargo"
+	minimap_icon = "qm"
 	minimap_background = "background_command"
 
 	utility_under = list(/obj/item/clothing/under/rank/qm_suit)
@@ -621,7 +621,7 @@
 	skills = /datum/skills/pilot
 
 	minimap_icon = "gp"
-	minimap_background = "background_command"
+	minimap_background = "background_auxiliary"
 
 /datum/equipment_preset/uscm_ship/gp/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel
@@ -673,7 +673,7 @@
 	skills = /datum/skills/pilot
 
 	minimap_icon = "pilot"
-	minimap_background = "background_command"
+	minimap_background = "background_auxiliary"
 
 /datum/equipment_preset/uscm_ship/dp/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel
@@ -724,7 +724,7 @@
 	skills = /datum/skills/crew_chief
 
 	minimap_icon = "dcc"
-	minimap_background = "background_shipside"
+	minimap_background = "background_auxiliary"
 
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/nco)
 	dress_hat = list(/obj/item/clothing/head/marine/dress_cover)
@@ -777,6 +777,8 @@
 	role_comm_title = "Cpt"
 	minimum_age = 25
 	skills = /datum/skills/commander
+	minimap_icon = "co"
+	minimap_background = "background_command"
 
 	utility_hat = list(/obj/item/clothing/head/beret/cm)
 	utility_gloves = list(/obj/item/clothing/gloves/marine)

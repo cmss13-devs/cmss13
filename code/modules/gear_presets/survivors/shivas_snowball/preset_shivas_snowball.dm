@@ -70,6 +70,9 @@
 /datum/equipment_preset/survivor/security/shiva
 	name = "Survivor - Shivas Security Guard"
 	assignment = "United Americas Peacekeeper"
+	minimap_background = "background_ua"
+	minimap_icon = "peacekeeper"
+	faction = FACTION_LIST_SURVIVOR_UA
 
 /datum/equipment_preset/survivor/security/shiva/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/ua_riot(new_human), WEAR_BODY)

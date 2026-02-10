@@ -37,12 +37,16 @@
 				marine_rk = "general"
 			if(JOB_CAS_PILOT)
 				marine_rk = "gp"
+			if(JOB_CAS_PILOT)
+				marine_rk = "gp"
 			if(JOB_DROPSHIP_PILOT)
 				marine_rk = "dp"
 			if(JOB_TANK_CREW)
 				marine_rk = "tc"
 			if(JOB_INTEL)
 				marine_rk = "io"
+			if(JOB_TANK_CREW)
+				marine_rk = "tc"
 			if(JOB_DROPSHIP_CREW_CHIEF)
 				marine_rk = "dcc"
 			if(JOB_MARINE_RAIDER)
@@ -85,6 +89,7 @@
 				var/image/IMG3 = image(file_to_use, current_human, "hudsquad_ftl")
 				IMG3.color = squad_clr
 				holder.overlays += IMG3
+
 	else
 		var/marine_rk
 		var/border_rk
@@ -95,6 +100,18 @@
 		else if(ID)
 			_role = ID.rank
 		switch(_role)
+			if(JOB_CMC)
+				marine_rk = "cmc"
+				border_rk = "highcommand"
+			if(JOB_ACMC)
+				marine_rk = "acmc"
+				border_rk = "highcommand"
+			if(JOB_GENERAL)
+				marine_rk = "general"
+				border_rk = "highcommand"
+			if(JOB_COLONEL)
+				marine_rk = "col"
+				border_rk = "highcommand"
 			if(JOB_XO)
 				marine_rk = "xo"
 				border_rk = "command"
@@ -103,15 +120,12 @@
 				border_rk = "command"
 			if(JOB_USCM_OBSV)
 				marine_rk = "vo"
-				border_rk = "command"
+				border_rk = "visiting"
 			if(JOB_SO)
 				marine_rk = "so"
 				border_rk = "command"
 			if(JOB_AUXILIARY_OFFICER)
 				marine_rk = "aso"
-				border_rk = "command"
-			if(JOB_GENERAL, JOB_COLONEL, JOB_ACMC, JOB_CMC)
-				marine_rk = "general"
 				border_rk = "command"
 			if(JOB_PLT_MED)
 				marine_rk = "med"
@@ -127,9 +141,11 @@
 				marine_rk = "dp"
 			if(JOB_DROPSHIP_CREW_CHIEF)
 				marine_rk = "dcc"
+			if(JOB_TANK_CREW)
+				marine_rk = "tc"
+				border_rk = "auxiliary"
 			if(JOB_CHIEF_POLICE)
 				marine_rk = "cmp"
-				border_rk = "command"
 			if(JOB_POLICE)
 				if(current_human.rank_fallback == "hgmp")
 					marine_rk = "hgmp"
@@ -137,39 +153,36 @@
 					marine_rk = "mp"
 			if(JOB_POLICE_HG)
 				marine_rk = "hgmp"
-			if(JOB_TANK_CREW)
-				marine_rk = "tc"
 			if(JOB_WARDEN)
 				marine_rk = "warden"
-				border_rk = "command"
 			if(JOB_CHIEF_REQUISITION)
 				marine_rk = "ro"
 			if(JOB_CARGO_TECH)
 				marine_rk = "ct"
 			if(JOB_CHIEF_ENGINEER)
 				marine_rk = "ce"
-				border_rk = "command"
 			if(JOB_MAINT_TECH)
 				marine_rk = "mt"
 			if(JOB_ORDNANCE_TECH)
 				marine_rk = "ot"
+			if(JOB_COMBAT_REPORTER)
+				marine_rk = "comrec"
 			if(JOB_CMO)
 				marine_rk = "cmo"
-				border_rk = "command"
 			if(JOB_DOCTOR)
 				marine_rk = "doctor"
-				border_rk = "command"
+			if(JOB_SURGEON)
+				marine_rk = "surgeon"
+			if(JOB_PHARMACIST)
+				marine_rk = "pharmacist"
 			if(JOB_FIELD_DOCTOR)
 				marine_rk = "field_doctor"
-				border_rk = "command"
 			if(JOB_RESEARCHER)
 				marine_rk = "researcher"
-				border_rk = "command"
 			if(JOB_NURSE)
 				marine_rk = "nurse"
 			if(JOB_SEA)
 				marine_rk = "sea"
-				border_rk = "command"
 			if(JOB_SYNTH)
 				marine_rk = "syn"
 				var/datum/equipment_preset/synth/preset = current_human.assigned_equipment_preset
@@ -184,27 +197,29 @@
 				marine_rk = "pve"
 			if(JOB_PROVOST_TML)
 				marine_rk = "pvtml"
-			if(JOB_PROVOST_INSPECTOR)
-				marine_rk = "pvi"
-				border_rk = "command"
-			if(JOB_PROVOST_UNDERCOVER)
-				marine_rk = "pvuc"
-				border_rk = "command"
-			if(JOB_PROVOST_CINSPECTOR)
-				marine_rk = "pvci"
-				border_rk = "command"
 			if(JOB_PROVOST_ADVISOR)
 				marine_rk = "pva"
-				border_rk = "command"
+			if(JOB_PROVOST_INSPECTOR)
+				marine_rk = "pvi"
+			if(JOB_PROVOST_UNDERCOVER)
+				marine_rk = "pvuc"
+			if(JOB_PROVOST_CINSPECTOR)
+				marine_rk = "pvci"
 			if(JOB_PROVOST_DMARSHAL)
 				marine_rk = "pvdm"
-				border_rk = "command"
-			if(JOB_PROVOST_MARSHAL, JOB_PROVOST_CMARSHAL, JOB_PROVOST_SMARSHAL)
+			if(JOB_PROVOST_MARSHAL)
 				marine_rk = "pvm"
-				border_rk = "command"
+			if(JOB_PROVOST_SMARSHAL)
+				marine_rk = "pvsm"
+			if(JOB_PROVOST_CMARSHAL)
+				marine_rk = "pvcm"
 			//CIA
+			if(JOB_CIA)
+				marine_rk = "cia"
 			if(JOB_CIA_LIAISON)
 				marine_rk = "cialo"
+			if(JOB_CIA_LIAISON_CO)
+				marine_rk = "ciaco"
 			if(JOB_CIA_UACQS_ADMN)
 				marine_rk = "uacqs"
 			if(JOB_CIA_UACQS_COMR)
@@ -237,8 +252,16 @@
 				marine_rk = "wo_chemist"
 			if(JOB_WO_CHIEF_REQUISITION)
 				marine_rk = "wo_ro"
+			if(JOB_WO_REQUISITION)
+				marine_rk = "wo_ct"
+			if(JOB_WO_CHIEF_ENGINEER)
+				marine_rk = "wo_ce"
+			if(JOB_WO_ORDNANCE_TECH)
+				marine_rk = "wo_ot"
 			if(JOB_WO_PILOT)
 				marine_rk = "wo_mcrew"
+			if(JOB_WO_CORPORATE_LIAISON)
+				marine_rk = "wo_comrec"
 			// Check squad marines here too, for the unique ones
 			if(JOB_SQUAD_ENGI)
 				marine_rk = "engi"
@@ -252,6 +275,8 @@
 				marine_rk = "tl"
 			if(JOB_SQUAD_LEADER)
 				marine_rk = "leader"
+
+
 		if(current_human.rank_override)
 			marine_rk = current_human.rank_override
 
@@ -262,4 +287,4 @@
 			holder.overlays += I
 			holder.overlays += image(file_to_use, current_human, "hudsquad_[marine_rk]")
 			if(border_rk)
-				holder.overlays += image(file_to_use, current_human, "hudmarineborder[border_rk]")
+				holder.overlays += image(file_to_use, current_human, "hudmarineborder_[border_rk]")

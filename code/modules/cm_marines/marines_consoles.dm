@@ -977,6 +977,7 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				JOB_CIA_UACQS_ADMN = 8,
 				JOB_CIA_UACQS_SEC = 9,
 				// 10-19: Command
+				JOB_CIA_LIAISON_CO = 10,
 				JOB_CO = 10,
 				JOB_XO = 11,
 				JOB_MARINE_RAIDER_CMD = 11,
@@ -1175,7 +1176,7 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				JOB_WY_COMMANDO_STANDARD = 70,
 				JOB_WY_COMMANDO_LEADER= 71,
 				JOB_WY_COMMANDO_GUNNER = 72,
-				JOB_WY_COMMANDO_DOGCATHER = 73,
+				JOB_WY_COMMANDO_DOGCATCHER = 73,
 
 				// ANYTHING ELSE = UNKNOWN_JOB_ID, Unknowns/custom jobs will appear after civilians, and before stowaways
 				JOB_STOWAWAY = 999,

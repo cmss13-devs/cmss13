@@ -108,6 +108,8 @@ export const SentryMfdPanel = (props: MfdProps) => {
             ? `${deployLabel} (${remainingTime}s)`
             : deployLabel,
           disabled: isOnCooldown,
+          borderColor:
+            (sentry?.data?.deployed ?? 0) === 1 ? '#ff0000' : undefined,
           onClick: () =>
             act('deploy-equipment', { equipment_id: sentry?.mount_point }),
         },
@@ -118,6 +120,8 @@ export const SentryMfdPanel = (props: MfdProps) => {
         },
         {
           children: autoDeployLabel,
+          borderColor:
+            (sentry?.data?.auto_deploy ?? 0) === 1 ? '#ff0000' : undefined,
           onClick: () =>
             act('auto-deploy', { equipment_id: sentry?.mount_point }),
         },

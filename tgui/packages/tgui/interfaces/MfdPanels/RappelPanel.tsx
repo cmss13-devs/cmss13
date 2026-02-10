@@ -107,6 +107,7 @@ export const RappelMfdPanel = (props: MfdProps) => {
         {
           children: isOnCooldown ? 'COOLING' : 'LOCK',
           disabled: isOnCooldown,
+          borderColor: rappel?.data?.locked_target ? '#ff0000' : undefined,
           onClick: () =>
             act('rappel-lock', {
               equipment_id: rappel?.mount_point,

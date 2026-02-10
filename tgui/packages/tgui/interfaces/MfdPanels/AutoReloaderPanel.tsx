@@ -8,6 +8,22 @@ import { mfdState } from './stateManagers';
 import type { AutoreloaderSpec } from './types';
 import { useSupportCooldown } from './WeaponPanel';
 
+const getMountPointLabel = (weapon: DropshipEquipment) => {
+  // Base designation on mount point
+  switch (weapon.mount_point) {
+    case 1:
+      return 'L2';
+    case 2:
+      return 'L1';
+    case 3:
+      return 'R1';
+    case 4:
+      return 'R2';
+    default:
+      return weapon.mount_point.toString();
+  }
+};
+
 export const AutoReloaderMfdPanel = (props: MfdProps) => {
   const { setPanelState } = mfdState(props.panelStateId);
   const { data, act } = useBackend<{
@@ -57,18 +73,11 @@ export const AutoReloaderMfdPanel = (props: MfdProps) => {
     setPendingWeapon(undefined);
   };
 
-  // Only show weapons that do not have ammo_equipped (ammo property is null or 0)
-  const selectableWeapons = weapons?.filter((w) => !w.ammo);
-
   // Separate weapons by mount point for left/right button mapping
   const leftWeapons =
-    selectableWeapons?.filter(
-      (w) => w.mount_point === 1 || w.mount_point === 2,
-    ) || [];
+    weapons?.filter((w) => w.mount_point === 1 || w.mount_point === 2) || [];
   const rightWeapons =
-    selectableWeapons?.filter(
-      (w) => w.mount_point === 3 || w.mount_point === 4,
-    ) || [];
+    weapons?.filter((w) => w.mount_point === 3 || w.mount_point === 4) || [];
 
   const leftButtons =
     pendingWeapon === undefined
@@ -77,15 +86,27 @@ export const AutoReloaderMfdPanel = (props: MfdProps) => {
           ...leftWeapons
             .filter((weap) => weap.mount_point === 2)
             .map((weap) => ({
-              children: weap.shorthand,
+              children: `${weap.shorthand} ${getMountPointLabel(weap)}`,
               onClick: () => handleWeaponClick(weap.eqp_tag),
+              disabled: Boolean(weap.ammo && weap.ammo > 0),
+              borderColor:
+                autoreloader?.data?.selected_weapon === weap.eqp_tag &&
+                autoreloader?.data?.selected_ammo
+                  ? '#ff0000'
+                  : undefined,
             })),
           // Mount point 1 second (left wing)
           ...leftWeapons
             .filter((weap) => weap.mount_point === 1)
             .map((weap) => ({
-              children: weap.shorthand,
+              children: `${weap.shorthand} ${getMountPointLabel(weap)}`,
               onClick: () => handleWeaponClick(weap.eqp_tag),
+              disabled: Boolean(weap.ammo && weap.ammo > 0),
+              borderColor:
+                autoreloader?.data?.selected_weapon === weap.eqp_tag &&
+                autoreloader?.data?.selected_ammo
+                  ? '#ff0000'
+                  : undefined,
             })),
         ]
       : [
@@ -103,15 +124,27 @@ export const AutoReloaderMfdPanel = (props: MfdProps) => {
           ...rightWeapons
             .filter((weap) => weap.mount_point === 3)
             .map((weap) => ({
-              children: weap.shorthand,
+              children: `${weap.shorthand} ${getMountPointLabel(weap)}`,
               onClick: () => handleWeaponClick(weap.eqp_tag),
+              disabled: Boolean(weap.ammo && weap.ammo > 0),
+              borderColor:
+                autoreloader?.data?.selected_weapon === weap.eqp_tag &&
+                autoreloader?.data?.selected_ammo
+                  ? '#ff0000'
+                  : undefined,
             })),
           // Mount point 4 second (right front)
           ...rightWeapons
             .filter((weap) => weap.mount_point === 4)
             .map((weap) => ({
-              children: weap.shorthand,
+              children: `${weap.shorthand} ${getMountPointLabel(weap)}`,
               onClick: () => handleWeaponClick(weap.eqp_tag),
+              disabled: Boolean(weap.ammo && weap.ammo > 0),
+              borderColor:
+                autoreloader?.data?.selected_weapon === weap.eqp_tag &&
+                autoreloader?.data?.selected_ammo
+                  ? '#ff0000'
+                  : undefined,
             })),
         ]
       : [];
@@ -342,7 +375,7 @@ const DrawWeapon = ({
   } else if (isPending) {
     weaponColor = '#ff8c00'; // Orange for pending weapon
   } else if (weapon && !weapon.ammo) {
-    weaponColor = '#ffff00'; // Yellow for empty weapons
+    weaponColor = '#ff0000'; // Red for empty weapons
   }
 
   // Only render if there's a weapon installed

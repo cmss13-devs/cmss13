@@ -1,9 +1,11 @@
+import { range } from 'common/collections';
 import { useBackend } from 'tgui/backend';
 import { Box, Icon, Stack } from 'tgui/components';
 
 import type { DropshipEquipment } from '../DropshipWeaponsConsole';
 import { MfdPanel, type MfdProps } from './MultifunctionDisplay';
 import { mfdState, useEquipmentState } from './stateManagers';
+import { lazeMapper, useTargetOffset } from './TargetAquisition';
 import type { EquipmentContext, ParadropSpec } from './types';
 import { useSupportCooldown } from './WeaponPanel';
 
@@ -66,6 +68,7 @@ export const ParadropMfdPanel = (props: MfdProps) => {
   const { act, data } = useBackend<EquipmentContext>();
   const { setPanelState } = mfdState(props.panelStateId);
   const { equipmentState } = useEquipmentState(props.panelStateId);
+  const { targetOffset, setTargetOffset } = useTargetOffset(props.panelStateId);
   const paradrop = data.equipment_data.find(
     (x) => x.mount_point === equipmentState,
   );
@@ -80,25 +83,54 @@ export const ParadropMfdPanel = (props: MfdProps) => {
       ? 'COOLING'
       : 'LOCK';
 
+  const targets = range(targetOffset, targetOffset + 5).map((x) =>
+    lazeMapper(x),
+  );
+
   return (
     <MfdPanel
       panelStateId={props.panelStateId}
       color={props.color}
       topButtons={[
         { children: 'EQUIP', onClick: () => setPanelState('equipment') },
+        {},
+        {},
+        {},
+        {
+          children: targetOffset > 0 ? <Icon name="arrow-up" /> : undefined,
+          onClick: () => {
+            if (targetOffset > 0) setTargetOffset(targetOffset - 1);
+          },
+        },
       ]}
       leftButtons={[
         {
           children: deployLabel,
           disabled: isOnCooldown,
+          borderColor: paradrop?.data?.locked ? '#ff0000' : undefined,
           onClick: () =>
             act('paradrop-lock', { equipment_id: paradrop?.mount_point }),
         },
       ]}
+      rightButtons={targets}
       bottomButtons={[
         {
           children: 'EXIT',
           onClick: () => setPanelState(''),
+        },
+        {},
+        {},
+        {},
+        {
+          children:
+            targetOffset + 5 < (data.targets_data?.length || 0) ? (
+              <Icon name="arrow-down" />
+            ) : undefined,
+          onClick: () => {
+            if (targetOffset + 5 < (data.targets_data?.length || 0)) {
+              setTargetOffset(targetOffset + 1);
+            }
+          },
         },
       ]}
     >

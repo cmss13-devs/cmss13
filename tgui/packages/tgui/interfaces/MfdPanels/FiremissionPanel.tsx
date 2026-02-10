@@ -262,41 +262,51 @@ const ViewFiremissionMfdPanel = (
         },
     ...data.equipment_data
       .filter((x) => x.is_weapon === 1)
-      .sort((a, b) => (a.mount_point < b.mount_point ? -1 : 1))
-      .map((x, index, arr) => {
-        // Swap 3rd and 4th weapons
-        let targetIndex = index;
-        if (index === 2 && arr.length > 3) {
-          targetIndex = 3;
-        } else if (index === 3) {
-          targetIndex = 2;
-        }
-        const targetWeapon = arr[targetIndex];
-
+      .sort((a, b) => {
+        // Custom sort order for visual QoL, L1, L2, R1, R2
+        const getDisplayOrder = (mountPoint: number) => {
+          switch (mountPoint) {
+            case 2:
+              return 1;
+            case 1:
+              return 2;
+            case 3:
+              return 3;
+            case 4:
+              return 4;
+            default:
+              return mountPoint;
+          }
+        };
+        return getDisplayOrder(a.mount_point) - getDisplayOrder(b.mount_point);
+      })
+      .map((weapon) => {
         // Determine the position label
         let positionLabel = '';
-        switch (index) {
-          case 0:
-            positionLabel = 'L1';
-            break;
+        switch (weapon.mount_point) {
           case 1:
             positionLabel = 'L2';
             break;
           case 2:
-            positionLabel = 'R1';
+            positionLabel = 'L1';
             break;
           case 3:
+            positionLabel = 'R1';
+            break;
+          case 4:
             positionLabel = 'R2';
             break;
           default:
-            positionLabel = `${index + 1}`;
+            positionLabel = weapon.mount_point.toString();
             break;
         }
 
         return {
-          children: `${targetWeapon.shorthand} ${positionLabel}`,
+          children: `${weapon.shorthand} ${positionLabel}`,
+          borderColor:
+            editFmWeapon === weapon.mount_point ? '#ff0000' : undefined,
           onClick: () => {
-            setEditFmWeapon(targetWeapon.mount_point);
+            setEditFmWeapon(weapon.mount_point);
             setShowGrid(false);
           },
         };
@@ -353,6 +363,7 @@ const ViewFiremissionMfdPanel = (
         {},
         {
           children: 'GRID',
+          borderColor: showGrid ? '#ff0000' : undefined,
           onClick: () => setShowGrid(!showGrid),
         },
         {},
@@ -449,8 +460,8 @@ const FiremissionGridView = (
     const isLeft = positionLabel.startsWith('L');
     const color = isLeft ? '#00eb4e' : '#ffff00'; // green for left, yellow for right
 
-    // L1/R1 = front (filled dot), L2/R2 = back (open circle)
-    const isFront = positionLabel.endsWith('1');
+    // Mount points 2 and 3 = front (filled dot), Mount points 1 and 4 = back (open circle)
+    const isFront = equipment.mount_point === 2 || equipment.mount_point === 3;
     const symbol = isFront ? '●' : '○'; // filled dot for front, open circle for back weapon mounts
 
     return { symbol, color, label: positionLabel };
@@ -878,23 +889,15 @@ const getMountPointLabel = (
   equipment: DropshipEquipment,
   weaponData: DropshipEquipment[],
 ) => {
-  const weaponIndex = weaponData.findIndex(
-    (x) => x.mount_point === equipment.mount_point,
-  );
-
-  let adjustedIndex = weaponIndex;
-  if (weaponIndex === 2) {
-    adjustedIndex = 3;
-  } else if (weaponIndex === 3) adjustedIndex = 2; // 4th becomes 3rd position, just qol for button placement
-
-  switch (adjustedIndex) {
-    case 0:
-      return 'L1';
+  // Base designation on actual mount point
+  switch (equipment.mount_point) {
     case 1:
       return 'L2';
     case 2:
-      return 'R1';
+      return 'L1';
     case 3:
+      return 'R1';
+    case 4:
       return 'R2';
     default:
       return equipment.mount_point.toString();

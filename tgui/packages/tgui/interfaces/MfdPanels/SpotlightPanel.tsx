@@ -110,6 +110,7 @@ export const SpotlightMfdPanel = (props: MfdProps) => {
             ? `${deployLabel} (${remainingTime}s)`
             : deployLabel,
           disabled: isOnCooldown,
+          borderColor: spotData?.deployed ? '#ff0000' : undefined,
           onClick: () =>
             act('deploy-equipment', { equipment_id: spotlight?.mount_point }),
         },

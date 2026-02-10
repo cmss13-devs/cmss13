@@ -79,6 +79,7 @@ const DrawWeaponText = (props: {
   readonly y: number;
   readonly desc: string;
   readonly sub_desc?: string;
+  readonly sub_desc_color?: string;
   readonly color?: 'green' | 'yellow' | 'blue';
 }) => {
   const themeColor = getThemeColor(props.color);
@@ -91,7 +92,11 @@ const DrawWeaponText = (props: {
       ))}
 
       {props.sub_desc && (
-        <tspan x={props.x} dy="1.2em">
+        <tspan
+          x={props.x}
+          dy="1.2em"
+          stroke={props.sub_desc_color || themeColor}
+        >
           {props.sub_desc}
         </tspan>
       )}
@@ -102,6 +107,31 @@ const DrawWeaponText = (props: {
 const DrawWeaponEquipment = (
   props: DropshipEquipment & { readonly color?: 'green' | 'yellow' | 'blue' },
 ) => {
+  // Color coding for ammo status
+  let ammoText: string;
+  let ammoColor: string | undefined;
+
+  if (props.shorthand === 'MSL') {
+    ammoText = props.ammo_name?.split(' ')[0] ?? 'Empty';
+  } else {
+    const currentAmmo = props.ammo ?? 0;
+    const maxAmmo = props.max_ammo ?? 1;
+
+    if (currentAmmo === 0) {
+      ammoText = 'EMPTY';
+      ammoColor = '#ff0000'; // Red
+    } else {
+      ammoText = currentAmmo.toString();
+      const percentage = (currentAmmo / maxAmmo) * 100;
+
+      if (percentage <= 25) {
+        ammoColor = '#ff0000'; // Red
+      } else if (percentage <= 50) {
+        ammoColor = '#ffff00'; // Yellow
+      }
+    }
+  }
+
   return (
     <>
       <DrawWeapon
@@ -115,11 +145,8 @@ const DrawWeaponEquipment = (
         x={equipment_text_xs[props.mount_point - 1]}
         y={equipment_text_ys[props.mount_point - 1]}
         desc={props.shorthand}
-        sub_desc={`${
-          props.shorthand === 'MSL'
-            ? (props.ammo_name?.split(' ')[0] ?? 'Empty')
-            : (props.ammo ?? 0)
-        }`}
+        sub_desc={ammoText}
+        sub_desc_color={ammoColor}
         color={props.color}
       />
     </>

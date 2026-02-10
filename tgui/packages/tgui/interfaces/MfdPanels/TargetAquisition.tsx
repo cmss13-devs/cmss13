@@ -250,6 +250,11 @@ const leftButtonGenerator = (
             : firemission.name}
         </div>
       ) : undefined,
+      borderColor:
+        quickMode &&
+        firemissionSelected?.mission_tag === firemission?.mission_tag
+          ? '#ff0000'
+          : undefined,
       onClick: () => {
         setFiremissionSelected(data.firemission_data[x]);
         setLeftButtonMode(undefined);
@@ -390,7 +395,7 @@ const leftButtonGenerator = (
 
 export const lazeMapper = (offset) => {
   const { act, data } = useBackend<TargetContext>();
-  const { setSelectedTarget } = useLazeTarget();
+  const { selectedTarget, setSelectedTarget } = useLazeTarget();
 
   const { fmXOffsetValue } = useFiremissionXOffsetValue();
   const { fmYOffsetValue } = useFiremissionYOffsetValue();
@@ -413,6 +418,8 @@ export const lazeMapper = (offset) => {
 
   return {
     children: buttomLabel(),
+    borderColor:
+      target && selectedTarget === target.target_tag ? '#ff0000' : undefined,
     onClick: target
       ? () => {
           setSelectedTarget(target.target_tag);
@@ -677,6 +684,7 @@ export const TargetAquisitionMfdPanel = (props: MfdProps) => {
         quickMode
           ? {
               children: 'NORTH',
+              borderColor: strikeDirection === 'NORTH' ? '#ff0000' : undefined,
               onClick: () => {
                 setStrikeDirection('NORTH');
               },
@@ -699,6 +707,7 @@ export const TargetAquisitionMfdPanel = (props: MfdProps) => {
         quickMode
           ? {
               children: 'SOUTH',
+              borderColor: strikeDirection === 'SOUTH' ? '#ff0000' : undefined,
               onClick: () => {
                 setStrikeDirection('SOUTH');
               },
@@ -707,6 +716,7 @@ export const TargetAquisitionMfdPanel = (props: MfdProps) => {
         quickMode
           ? {
               children: 'EAST',
+              borderColor: strikeDirection === 'EAST' ? '#ff0000' : undefined,
               onClick: () => {
                 setStrikeDirection('EAST');
               },
@@ -715,6 +725,7 @@ export const TargetAquisitionMfdPanel = (props: MfdProps) => {
         quickMode
           ? {
               children: 'WEST',
+              borderColor: strikeDirection === 'WEST' ? '#ff0000' : undefined,
               onClick: () => {
                 setStrikeDirection('WEST');
               },

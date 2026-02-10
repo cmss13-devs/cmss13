@@ -1,6 +1,6 @@
 import { range } from 'common/collections';
 import { useState } from 'react';
-import { useBackend } from 'tgui/backend';
+import { useBackend, useSharedState } from 'tgui/backend';
 import { ByondUi, Icon } from 'tgui/components';
 import { Box } from 'tgui/components';
 
@@ -19,6 +19,13 @@ export const CameraMfdPanel = (props: MfdProps) => {
   const { act, data } = useBackend<CameraPanelContext>();
   const { setPanelState } = mfdState(props.panelStateId);
   const [cameraIndex, setCameraIndex] = useState(0);
+  const [selectedCameraName, setSelectedCameraName] = useSharedState<
+    string | undefined
+  >(`${props.panelStateId}_selected_camera`, undefined);
+  const [nvEnabled, setNvEnabled] = useSharedState<boolean>(
+    `${props.panelStateId}_nv_enabled`,
+    false,
+  );
   const { targetOffset, setTargetOffset } = useTargetOffset(props.panelStateId);
 
   const availableCameras = data.available_cameras || [];
@@ -46,8 +53,13 @@ export const CameraMfdPanel = (props: MfdProps) => {
     // Camera buttons
     {
       children: cameraPage[0]?.name,
+      borderColor:
+        cameraPage[0]?.name && selectedCameraName === cameraPage[0]?.name
+          ? '#ff0000'
+          : undefined,
       onClick: () => {
         if (cameraPage[0]) {
+          setSelectedCameraName(cameraPage[0].name);
           act('switch_camera', {
             name: cameraPage[0].name,
           });
@@ -56,8 +68,13 @@ export const CameraMfdPanel = (props: MfdProps) => {
     },
     {
       children: cameraPage[1]?.name,
+      borderColor:
+        cameraPage[1]?.name && selectedCameraName === cameraPage[1]?.name
+          ? '#ff0000'
+          : undefined,
       onClick: () => {
         if (cameraPage[1]) {
+          setSelectedCameraName(cameraPage[1].name);
           act('switch_camera', {
             name: cameraPage[1].name,
           });
@@ -66,8 +83,13 @@ export const CameraMfdPanel = (props: MfdProps) => {
     },
     {
       children: cameraPage[2]?.name,
+      borderColor:
+        cameraPage[2]?.name && selectedCameraName === cameraPage[2]?.name
+          ? '#ff0000'
+          : undefined,
       onClick: () => {
         if (cameraPage[2]) {
+          setSelectedCameraName(cameraPage[2].name);
           act('switch_camera', {
             name: cameraPage[2].name,
           });
@@ -76,8 +98,13 @@ export const CameraMfdPanel = (props: MfdProps) => {
     },
     {
       children: cameraPage[3]?.name,
+      borderColor:
+        cameraPage[3]?.name && selectedCameraName === cameraPage[3]?.name
+          ? '#ff0000'
+          : undefined,
       onClick: () => {
         if (cameraPage[3]) {
+          setSelectedCameraName(cameraPage[3].name);
           act('switch_camera', {
             name: cameraPage[3].name,
           });
@@ -91,8 +118,22 @@ export const CameraMfdPanel = (props: MfdProps) => {
       children: cameraIndex > 0 ? 'CAM ▲' : undefined,
       onClick: navigateCamerasUp,
     },
-    { children: 'NV-ON', onClick: () => act('nvg-enable') },
-    { children: 'NV-OFF', onClick: () => act('nvg-disable') },
+    {
+      children: 'NV-ON',
+      borderColor: nvEnabled ? '#ff0000' : undefined,
+      onClick: () => {
+        setNvEnabled(true);
+        act('nvg-enable');
+      },
+    },
+    {
+      children: 'NV-OFF',
+      borderColor: !nvEnabled ? '#ff0000' : undefined,
+      onClick: () => {
+        setNvEnabled(false);
+        act('nvg-disable');
+      },
+    },
     {
       children: targetOffset > 0 ? <Icon name="arrow-up" /> : undefined,
       onClick: () => {

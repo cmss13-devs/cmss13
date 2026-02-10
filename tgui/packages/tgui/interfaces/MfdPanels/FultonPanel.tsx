@@ -11,6 +11,9 @@ import { useSupportCooldown } from './WeaponPanel';
 export const FultonMfdPanel = (props: MfdProps) => {
   const { data, act } = useBackend<FultonProps>();
   const [fulltonOffset, setFultonOffset] = useState(0);
+  const [selectedFultonTarget, setSelectedFultonTarget] = useState<
+    string | undefined
+  >(undefined);
   const { setPanelState } = mfdState(props.panelStateId);
   const { equipmentState } = useEquipmentState(props.panelStateId);
 
@@ -29,11 +32,17 @@ export const FultonMfdPanel = (props: MfdProps) => {
     const target = fultons.length > x ? fultons[x] : undefined;
     return {
       children: target ? (regex.exec(target) ?? [target])[0] : undefined,
-      onClick: () =>
-        act('fulton-target', {
-          equipment_id: result?.mount_point,
-          ref: target,
-        }),
+      borderColor:
+        target && selectedFultonTarget === target ? '#ff0000' : undefined,
+      onClick: () => {
+        if (target) {
+          setSelectedFultonTarget(target);
+          act('fulton-target', {
+            equipment_id: result?.mount_point,
+            ref: target,
+          });
+        }
+      },
     };
   };
 

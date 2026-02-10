@@ -1,6 +1,6 @@
 import { range } from 'common/collections';
 import { useState } from 'react';
-import { useBackend } from 'tgui/backend';
+import { useBackend, useSharedState } from 'tgui/backend';
 import { Box, Divider, Flex, Stack } from 'tgui/components';
 import { Icon } from 'tgui/components';
 
@@ -53,6 +53,9 @@ const MedevacOccupant = (props: { readonly data: MedevacTargets }) => (
 export const MedevacMfdPanel = (props: MfdProps) => {
   const { data, act } = useBackend<MedevacContext>();
   const [medevacOffset, setMedevacOffset] = useState(0);
+  const [selectedMedevacRef, setSelectedMedevacRef] = useSharedState<
+    string | undefined
+  >(`${props.panelStateId}_selected_medevac`, undefined);
   const { setPanelState } = mfdState(props.panelStateId);
   const { equipmentState } = useEquipmentState(props.panelStateId);
 
@@ -71,11 +74,19 @@ export const MedevacMfdPanel = (props: MfdProps) => {
       children: target
         ? (target.occupant?.split(' ')[0] ?? 'Empty')
         : undefined,
-      onClick: () =>
-        act('medevac-target', {
-          equipment_id: result?.mount_point,
-          ref: target?.ref,
-        }),
+      borderColor:
+        target && target.ref && selectedMedevacRef === target.ref
+          ? '#ff0000'
+          : undefined,
+      onClick: () => {
+        if (target && target.ref) {
+          setSelectedMedevacRef(target.ref);
+          act('medevac-target', {
+            equipment_id: result?.mount_point,
+            ref: target.ref,
+          });
+        }
+      },
     };
   };
 

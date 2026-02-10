@@ -90,11 +90,14 @@ export const MgMfdPanel = (props: MfdProps) => {
             ? `${deployLabel} (${remainingTime}s)`
             : deployLabel,
           disabled: isOnCooldown,
+          borderColor: (mg?.data?.deployed ?? 0) === 1 ? '#ff0000' : undefined,
           onClick: () =>
             act('deploy-equipment', { equipment_id: mg?.mount_point }),
         },
         {
           children: autoDeployLabel,
+          borderColor:
+            (mg?.data?.auto_deploy ?? 0) === 1 ? '#ff0000' : undefined,
           onClick: () => act('auto-deploy', { equipment_id: mg?.mount_point }),
         },
       ]}

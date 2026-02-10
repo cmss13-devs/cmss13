@@ -196,8 +196,8 @@
 		list("Prescription ballistic goggles", floor(scale * 10), /obj/item/clothing/glasses/mgoggles/prescription, VENDOR_ITEM_REGULAR),
 		list("Marine RPG glasses", floor(scale * 10), /obj/item/clothing/glasses/regular, VENDOR_ITEM_REGULAR),
 		list("M5 Integrated Gas Mask", floor(scale * 10), /obj/item/prop/helmetgarb/helmet_gasmask, VENDOR_ITEM_REGULAR),
-		list("M10 Helmet Netting", floor(scale * 10), /obj/item/prop/helmetgarb/netting, VENDOR_ITEM_REGULAR),
-		list("M10 Helmet Rain Cover", floor(scale * 10), /obj/item/prop/helmetgarb/raincover, VENDOR_ITEM_REGULAR),
+		list("M10 Helmet Netting", floor(scale * 10), /obj/item/clothing/accessory/helmet/cover/netting, VENDOR_ITEM_REGULAR),
+		list("M10 Helmet Rain Cover", floor(scale * 10), /obj/item/clothing/accessory/helmet/cover/raincover, VENDOR_ITEM_REGULAR),
 		list("Firearm Lubricant", floor(scale * 15), /obj/item/prop/helmetgarb/gunoil, VENDOR_ITEM_REGULAR),
 		list("Attachable Dogtags", floor(scale * 15), /obj/item/clothing/accessory/dogtags, VENDOR_ITEM_REGULAR),
 		list("USCM Flair", floor(scale * 15), /obj/item/prop/helmetgarb/flair_uscm, VENDOR_ITEM_REGULAR),
@@ -382,6 +382,7 @@
 /obj/structure/machinery/cm_vending/sorted/attachments/squad/populate_product_list(scale)
 	listed_products = list(
 		list("BARREL", -1, null, null),
+		list("Barrel Charger", 0.75, /obj/item/attachable/heavy_barrel, VENDOR_ITEM_REGULAR),
 		list("Extended Recoil Compensator", 2.5, /obj/item/attachable/extended_barrel/vented, VENDOR_ITEM_REGULAR),
 		list("Extended Barrel", 2.5, /obj/item/attachable/extended_barrel, VENDOR_ITEM_REGULAR),
 		list("Recoil Compensator", 2.5, /obj/item/attachable/compensator, VENDOR_ITEM_REGULAR),

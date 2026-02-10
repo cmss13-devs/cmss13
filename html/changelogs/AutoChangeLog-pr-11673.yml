@@ -1,0 +1,6 @@
+author: "Puckaboo2"
+delete-after: True
+changes:
+  - bugfix: "Anchorpoint Station marines have their minimap faction icons."
+  - bugfix: "Missing minimap icons, minimap backgrounds, and role comm titles have been applied to all CMB personnel."
+  - bugfix: "CMB Riot Control synths should have the correct minimap icons vs the CMB Investigation synths."

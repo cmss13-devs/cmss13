@@ -426,7 +426,7 @@ SUBSYSTEM_DEF(minimaps)
  * * zlevel: zlevel to fetch map for
  * * flags: map flags to fetch from
  */
-/datum/controller/subsystem/minimaps/proc/fetch_minimap_object(zlevel, flags, live=TRUE, popup=FALSE, drawing = TRUE)
+/datum/controller/subsystem/minimaps/proc/fetch_minimap_object(zlevel, flags, live, popup, drawing)
 	var/hash = "[zlevel]-[flags]-[live]-[popup]-[drawing]"
 	if(hashed_minimaps[hash])
 		return hashed_minimaps[hash]
@@ -802,11 +802,11 @@ SUBSYSTEM_DEF(minimaps)
 	if(default_overwatch_level)
 		if(!SSminimaps.minimaps_by_z["[default_overwatch_level]"] || !SSminimaps.minimaps_by_z["[default_overwatch_level]"].hud_image)
 			return
-		map = SSminimaps.fetch_minimap_object(default_overwatch_level, minimap_flags, live, drawing=drawing)
+		map = SSminimaps.fetch_minimap_object(default_overwatch_level, minimap_flags, live=live, popup=FALSE, drawing=drawing)
 		return
 	if(!SSminimaps.minimaps_by_z["[tracking.z]"] || !SSminimaps.minimaps_by_z["[tracking.z]"].hud_image)
 		return
-	map = SSminimaps.fetch_minimap_object(tracking.z, minimap_flags, live, drawing=drawing)
+	map = SSminimaps.fetch_minimap_object(tracking.z, minimap_flags, live=live, popup=FALSE, drawing=drawing)
 
 /datum/action/minimap/remove_from(mob/mob)
 	toggle_minimap(FALSE)
@@ -829,7 +829,7 @@ SUBSYSTEM_DEF(minimaps)
 				locator.UnregisterSignal(tracking, COMSIG_MOVABLE_MOVED)
 				minimap_displayed = FALSE
 			return
-		map = SSminimaps.fetch_minimap_object(default_overwatch_level, minimap_flags, live, drawing=drawing)
+		map = SSminimaps.fetch_minimap_object(default_overwatch_level, minimap_flags, live=live, popup=FALSE, drawing=drawing)
 		if(minimap_displayed)
 			if(owner.client)
 				owner.client.screen += map
@@ -842,7 +842,7 @@ SUBSYSTEM_DEF(minimaps)
 			locator.UnregisterSignal(tracking, COMSIG_MOVABLE_MOVED)
 			minimap_displayed = FALSE
 		return
-	map = SSminimaps.fetch_minimap_object(newz, minimap_flags, live, drawing=drawing)
+	map = SSminimaps.fetch_minimap_object(newz, minimap_flags, live=live, popup=FALSE, drawing=drawing)
 	if(minimap_displayed)
 		if(owner.client)
 			owner.client.screen += map
@@ -952,8 +952,8 @@ SUBSYSTEM_DEF(minimaps)
 	if(desc)
 		closeToolTip(usr)
 
-/atom/movable/screen/exit_map/clicked(location, list/modifiers)
-	linked_map.on_unset_interaction(usr)
+/atom/movable/screen/exit_map/clicked(mob/user, list/mods)
+	linked_map.on_unset_interaction(user)
 	return TRUE
 
 /atom/movable/screen/minimap_tool
@@ -1010,10 +1010,10 @@ SUBSYSTEM_DEF(minimaps)
 	if(desc)
 		closeToolTip(usr)
 
-/atom/movable/screen/minimap_tool/clicked(location, list/modifiers)
-	if(LAZYACCESS(modifiers, LEFT_CLICK))
-		RegisterSignal(usr, COMSIG_MOB_MOUSEDOWN, PROC_REF(on_mousedown))
-		usr.client.mouse_pointer_icon = active_mouse_icon
+/atom/movable/screen/minimap_tool/clicked(mob/user, list/mods)
+	if(LAZYACCESS(mods, LEFT_CLICK))
+		RegisterSignal(user, COMSIG_MOB_MOUSEDOWN, PROC_REF(on_mousedown))
+		user.client.mouse_pointer_icon = active_mouse_icon
 	return TRUE
 
 /**
@@ -1028,8 +1028,8 @@ SUBSYSTEM_DEF(minimaps)
 		return NONE
 	if(istype(object, /atom/movable/screen/minimap_tool) || istype(object, /atom/movable/screen/exit_map))
 		linked_map.active_draw_tool = null
-		UnregisterSignal(usr, COMSIG_MOB_MOUSEDOWN)
-		usr.client.mouse_pointer_icon = null
+		UnregisterSignal(source, COMSIG_MOB_MOUSEDOWN)
+		source.client.mouse_pointer_icon = null
 		return NONE
 	return COMSIG_MOB_CLICK_CANCELED
 
@@ -1046,18 +1046,21 @@ SUBSYSTEM_DEF(minimaps)
 	/// Width of the lines this is going to draw
 	var/width = 0
 
-/atom/movable/screen/minimap_tool/draw_tool/clicked(location, list/modifiers)
+	/// Whether we're drawing right now. Used to no-op clickdrag macros that we want to blackhole without deleting the verb from the client
+	var/drawing
+
+/atom/movable/screen/minimap_tool/draw_tool/clicked(mob/user, list/mods)
 	. = ..()
-	if(LAZYACCESS(modifiers, MIDDLE_CLICK))
-		usr.client.active_draw_tool = null
+	if(LAZYACCESS(mods, MIDDLE_CLICK))
+		user.client.active_draw_tool = null
 		linked_map.active_draw_tool = null
-		winset(usr, "drawingtools", "reset=true")
+		winset(user, "drawingtools", "reset=true")
 		return
 
-	winset(usr, "drawingtools", "parent=default;name=MouseDragMove;command=\".mouse-draw \[\[mapwindow.map.mouse-pos.x]] \[\[mapwindow.map.mouse-pos.y]] \[\[mapwindow.map.size.x]] \[\[mapwindow.map.size.y]] \[\[mapwindow.map.view-size.x]] \[\[mapwindow.map.view-size.y]]\"")
-	add_verb(usr.client, /client/proc/handle_draw)
+	winset(user, "drawingtools", "parent=default;name=MouseDragMove;command=\".mouse-draw \[\[mapwindow.map.mouse-pos.x]] \[\[mapwindow.map.mouse-pos.y]] \[\[mapwindow.map.size.x]] \[\[mapwindow.map.size.y]] \[\[mapwindow.map.view-size.x]] \[\[mapwindow.map.view-size.y]]\"")
+	add_verb(user.client, /client/proc/handle_draw)
 	linked_map.active_draw_tool = src
-	usr.client.active_draw_tool = src
+	user.client.active_draw_tool = src
 
 /client/var/atom/movable/screen/minimap_tool/draw_tool/active_draw_tool
 /client/var/last_drawn
@@ -1066,6 +1069,12 @@ SUBSYSTEM_DEF(minimaps)
 	set category = null
 	set hidden = TRUE
 	set name = ".mouse-draw"
+
+	if(!active_draw_tool)
+		return
+
+	if (!active_draw_tool.drawing)
+		return
 
 	mouse_y = size_y - mouse_y
 
@@ -1084,9 +1093,6 @@ SUBSYSTEM_DEF(minimaps)
 	if(mouse_x < 0 || mouse_y < 0)
 		return
 
-	if(!active_draw_tool)
-		return
-
 	active_draw_tool.freedraw_queue += vector(mouse_x, mouse_y)
 
 	if(last_drawn == world.time)
@@ -1094,11 +1100,10 @@ SUBSYSTEM_DEF(minimaps)
 	last_drawn = world.time
 
 	sleep(0) // to reschedule us to the end of the tick
-	var/mob/user = usr
 
-	if(!user)
+	if(!mob)
 		return
-	active_draw_tool.process_queue(user)
+	active_draw_tool.process_queue(mob)
 
 
 /atom/movable/screen/minimap_tool/draw_tool/proc/process_queue(mob/user)
@@ -1108,7 +1113,6 @@ SUBSYSTEM_DEF(minimaps)
 
 	if(!plane_master)
 		return
-
 
 	if(!last_coords)
 		var/vector/first_in_queue = freedraw_queue[1]
@@ -1139,6 +1143,13 @@ SUBSYSTEM_DEF(minimaps)
 	. = ..()
 	if(!.)
 		return
+
+	// N.B. popup tacmap is a different control; we never want to recieve drawing inputs from it.
+	if (control != "mapwindow.map")
+		drawing = FALSE
+		return COMSIG_MOB_CLICK_CANCELED
+	else
+		drawing = TRUE
 
 	var/atom/movable/screen/plane_master/minimap/plane_master = source.hud_used.plane_masters["[TACMAP_PLANE]"]
 
@@ -1272,10 +1283,10 @@ SUBSYSTEM_DEF(minimaps)
 	active_mouse_icon = 'icons/ui_icons/minimap_mouse/label.dmi'
 	screen_loc = "15,9"
 
-/atom/movable/screen/minimap_tool/label/clicked(location, list/modifiers)
+/atom/movable/screen/minimap_tool/label/clicked(mob/user, list/mods)
 	. = ..()
-	if(LAZYACCESS(modifiers, MIDDLE_CLICK))
-		clear_labels(usr)
+	if(LAZYACCESS(mods, MIDDLE_CLICK))
+		clear_labels(user)
 
 ///Clears all labels and logs who did it
 /atom/movable/screen/minimap_tool/label/proc/clear_labels(mob/user)
@@ -1286,6 +1297,11 @@ SUBSYSTEM_DEF(minimaps)
 	. = ..()
 	if(!.)
 		return
+
+	// N.B. popup tacmap is a different control; we never want to recieve drawing inputs from it.
+	if (control != "mapwindow.map")
+		return COMSIG_MOB_CLICK_CANCELED
+
 	INVOKE_ASYNC(src, PROC_REF(async_mousedown), source, object, location, control, params)
 	return COMSIG_MOB_CLICK_CANCELED
 
@@ -1321,7 +1337,7 @@ SUBSYSTEM_DEF(minimaps)
 	var/label_text = MAPTEXT(tgui_input_text(source, title = "Label Name", max_length = 35))
 	if(!label_text)
 		return
-	var/atom/movable/screen/minimap/mini = SSminimaps.fetch_minimap_object(zlevel, minimap_flag, TRUE)
+	var/atom/movable/screen/minimap/mini = SSminimaps.fetch_minimap_object(zlevel, minimap_flag, live=TRUE, popup=FALSE, drawing=TRUE)
 	if(!locate(mini) in source.client?.screen)
 		return
 
@@ -1340,10 +1356,10 @@ SUBSYSTEM_DEF(minimaps)
 	desc = "Remove all current labels and drawings."
 	screen_loc = "15,8"
 
-/atom/movable/screen/minimap_tool/clear/clicked(location, list/modifiers)
+/atom/movable/screen/minimap_tool/clear/clicked(mob/user, list/mods)
 	drawn_image.icon = icon('icons/ui_icons/minimap.dmi')
-	var/atom/movable/screen/minimap_tool/label/labels = locate() in usr.client?.screen
-	labels?.clear_labels(usr)
+	var/atom/movable/screen/minimap_tool/label/labels = locate() in user.client?.screen
+	labels?.clear_labels(user)
 
 /atom/movable/screen/minimap_tool/update
 	icon_state = "update"
@@ -1353,11 +1369,11 @@ SUBSYSTEM_DEF(minimaps)
 /atom/movable/screen/minimap_tool/update/proc/cooldown_finished()
 	icon_state = initial(icon_state)
 
-/atom/movable/screen/minimap_tool/update/clicked(location, list/modifiers)
+/atom/movable/screen/minimap_tool/update/clicked(mob/user, list/mods)
 	var/time_left = get_cooldown_for_minimap_flag(minimap_flag) - world.time
 
 	if(time_left > 0)
-		to_chat(location, SPAN_WARNING("Wait another [DisplayTimeText(time_left)] before sending another update."))
+		to_chat(user, SPAN_WARNING("Wait another [DisplayTimeText(time_left)] before sending another update."))
 		if(icon_state != "update_cooldown")
 			icon_state = "update_cooldown"
 			addtimer(CALLBACK(src, PROC_REF(cooldown_finished)), time_left, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
@@ -1366,8 +1382,6 @@ SUBSYSTEM_DEF(minimaps)
 	set_cooldown_for_minimap_flag(minimap_flag, CANVAS_COOLDOWN_TIME)
 	addtimer(CALLBACK(src, PROC_REF(cooldown_finished)), CANVAS_COOLDOWN_TIME, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 	icon_state = "update_cooldown"
-
-	var/mob/user = location
 
 	if(linked_map.minimap_flags & MINIMAP_FLAG_XENO)
 		announce_xeno(user)
@@ -1384,7 +1398,7 @@ SUBSYSTEM_DEF(minimaps)
 	user.client.images -= drawn_image
 	var/icon/flat_map = icon(user.client.RenderIcon(linked_map))
 	if(!flat_map || !flat_drawing)
-		to_chat(usr, SPAN_WARNING("A critical error has occurred!! Contact a coder."))
+		to_chat(user, SPAN_WARNING("A critical error has occurred!! Contact a coder."))
 		return FALSE
 
 	var/list/faction_clients = list()
@@ -1404,7 +1418,7 @@ SUBSYSTEM_DEF(minimaps)
 	var/flat_tacmap_key = icon2html(flat_map, faction_clients, keyonly = TRUE)
 	var/flat_drawing_key = icon2html(flat_drawing, faction_clients, keyonly = TRUE)
 	if(!flat_tacmap_key || !flat_drawing_key)
-		to_chat(usr, SPAN_WARNING("A critical error has occurred! Contact a coder."))
+		to_chat(user, SPAN_WARNING("A critical error has occurred! Contact a coder."))
 		return FALSE
 	var/flat_tacmap_png = SSassets.transport.get_asset_url(flat_tacmap_key)
 	var/flat_drawing_png = SSassets.transport.get_asset_url(flat_drawing_key)
@@ -1422,7 +1436,7 @@ SUBSYSTEM_DEF(minimaps)
 /atom/movable/screen/minimap_tool/update/proc/announce_human(mob/user)
 	playsound_client(user.client, "sound/effects/data-transmission.ogg")
 
-	var/atom/movable/screen/minimap/minimap_to_update = SSminimaps.fetch_minimap_object(2, MINIMAP_FLAG_USCM, FALSE)
+	var/atom/movable/screen/minimap/minimap_to_update = SSminimaps.fetch_minimap_object(2, MINIMAP_FLAG_USCM, live=FALSE, popup=FALSE, drawing=TRUE)
 	minimap_to_update.update()
 
 	user.client.images += drawn_image
@@ -1430,7 +1444,7 @@ SUBSYSTEM_DEF(minimaps)
 	user.client.images -= drawn_image
 	var/icon/flat_map = icon(user.client.RenderIcon(linked_map))
 	if(!flat_map || !flat_drawing)
-		to_chat(usr, SPAN_WARNING("A critical error has occurred!! Contact a coder."))
+		to_chat(user, SPAN_WARNING("A critical error has occurred!! Contact a coder."))
 		return FALSE
 
 	var/list/faction_clients = list()
@@ -1450,7 +1464,7 @@ SUBSYSTEM_DEF(minimaps)
 	var/flat_tacmap_key = icon2html(flat_map, faction_clients, keyonly = TRUE)
 	var/flat_drawing_key = icon2html(flat_drawing, faction_clients, keyonly = TRUE)
 	if(!flat_tacmap_key || !flat_drawing_key)
-		to_chat(usr, SPAN_WARNING("A critical error has occurred! Contact a coder."))
+		to_chat(user, SPAN_WARNING("A critical error has occurred! Contact a coder."))
 		return FALSE
 	var/flat_tacmap_png = SSassets.transport.get_asset_url(flat_tacmap_key)
 	var/flat_drawing_png = SSassets.transport.get_asset_url(flat_drawing_key)
@@ -1498,7 +1512,7 @@ SUBSYSTEM_DEF(minimaps)
 	desc = "Move up a level."
 	screen_loc = "15,6"
 
-/atom/movable/screen/minimap_tool/up/clicked(location, list/modifiers)
+/atom/movable/screen/minimap_tool/up/clicked(mob/user, list/modifiers)
 	if(!SSmapping.same_z_map(zlevel, zlevel+1))
 		return
 
@@ -1509,7 +1523,7 @@ SUBSYSTEM_DEF(minimaps)
 	desc = "Move down a level."
 	screen_loc = "15,5"
 
-/atom/movable/screen/minimap_tool/down/clicked(location, list/modifiers)
+/atom/movable/screen/minimap_tool/down/clicked(mob/user, list/modifiers)
 	if(!SSmapping.same_z_map(zlevel, zlevel-1))
 		return
 
@@ -1522,9 +1536,8 @@ SUBSYSTEM_DEF(minimaps)
 	desc = "Pop the minimap to a window."
 	screen_loc = "15,4"
 
-/atom/movable/screen/minimap_tool/popout/clicked(location, list/modifiers)
-	owner.popout()
-
+/atom/movable/screen/minimap_tool/popout/clicked(mob/user, list/modifiers)
+	owner.popout(user)
 	return TRUE
 
 /atom/movable/screen/minimap_tool/popout/set_zlevel(zlevel, minimap_flag)

@@ -102,7 +102,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	if(health <= 0)
 		toggled = FALSE // requires flipping on again once repaired
 	if(health < initial(health))
-		desc = "[initial(desc)] [SPAN_WARNING(" It is damaged and needs a welder for repairs!")]"
+		desc = "[initial(desc)] [SPAN_WARNING("It is damaged and needs a welder for repairs!")]"
 	else
 		desc = initial(desc)
 	update_state()
@@ -245,7 +245,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 		to_chat(user, SPAN_NOTICE("\The [src] is already turned [on ? "on" : "off"]!"))
 		return
 	if(stat & NOPOWER)
-		to_chat(user, SPAN_WARNING("\The [src] makes a small plaintful beep, and nothing happens. It seems to be out of power."))
+		to_chat(user, SPAN_WARNING("\The [src] makes a small plaintive beep, and nothing happens. It seems to be out of power."))
 		return FALSE
 	if(toggle_cooldown > world.time) //cooldown only to prevent spam toggling
 		to_chat(user, SPAN_WARNING("\The [src]'s processors are still cooling! Wait before trying to flip the switch again."))
@@ -428,7 +428,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	network = "tcommsat"
 	autolinkers = list("hub", "relay", "s_relay", "medical",
 		"common", "command", "engineering", "squads", "security",
-		"receiverA", "receiverB",  "broadcasterA", "broadcasterB")
+		"receiverA", "receiverB", "broadcasterA", "broadcasterB")
 
 /obj/structure/machinery/telecomms/hub/preset_cent
 	id = "CentComm Hub"

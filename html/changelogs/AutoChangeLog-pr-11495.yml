@@ -1,6 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - balance: "Direct fire can no longer occur during a fire mission"
-  - bugfix: "Fixed some dropship weapon error messages"
-  - ui: "Polished various aspects of the dropship weapon panel"

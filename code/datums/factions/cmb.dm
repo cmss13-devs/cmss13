@@ -32,5 +32,30 @@
 			hud_icon_state = "mar"
 		if(JOB_CMB_SWAT)
 			hud_icon_state = "spec"
+
+	//Anchorpoint Marines
+		if(JOB_SQUAD_MARINE)
+			hud_icon_state = "grunt"
+			anchorpoint_marine = TRUE
+		if(JOB_SQUAD_ENGI)
+			hud_icon_state = "engi"
+			anchorpoint_marine = TRUE
+		if(JOB_SQUAD_TEAM_LEADER)
+			hud_icon_state = "tl"
+			anchorpoint_marine = TRUE
+		if(JOB_SQUAD_MEDIC)
+			hud_icon_state = "med"
+			anchorpoint_marine = TRUE
+		if(JOB_SQUAD_SMARTGUN)
+			hud_icon_state = "gun"
+			anchorpoint_marine = TRUE
+
+	if(anchorpoint_marine)
+		var/image/IMG = image('icons/mob/hud/factions/marine.dmi', H, "hudsquad")
+		IMG.color = "#194877"
+		holder.overlays += IMG
+		holder.overlays += image('icons/mob/hud/factions/marine.dmi', H, "hudsquad_[hud_icon_state]")
+		return
+
 	if(hud_icon_state)
 		holder.overlays += image(override_icon_file ? override_icon_file : base_icon_file, human, "cmb_[hud_icon_state]")

@@ -71,7 +71,7 @@
 			overlays += I
 
 	if(scorchedness)
-		if(!icon_state_before_scorching) //I hate you mappers, stop var editting turfs
+		if(!icon_state_before_scorching) //I hate you mappers, stop var editing turfs
 			icon_state_before_scorching = icon_state
 		var/new_icon_state = "[icon_state_before_scorching]_scorched[scorchedness]"
 		if(icon_state != new_icon_state) //no point in updating the icon_state if it would be updated to be the same thing that it was
@@ -130,7 +130,7 @@
 			for(var/i in GLOB.cardinals)
 				singe_target = get_step(src, i)
 				if(istype(singe_target, /turf/open))
-					if(singe_target.scorchable && !singe_target.scorchedness)  //much recurision checking
+					if(singe_target.scorchable && !singe_target.scorchedness)  //much recursion checking
 						singe_target.scorch(1)
 
 	update_icon()
@@ -742,7 +742,7 @@
 				if(istype(H.gloves,/obj/item/clothing/gloves/yautja/hunter))
 					var/obj/item/clothing/gloves/yautja/hunter/Y = H.gloves
 					if(Y && istype(Y) && HAS_TRAIT(H, TRAIT_CLOAKED))
-						to_chat(H, SPAN_WARNING(" Your bracers hiss and spark as they short out!"))
+						to_chat(H, SPAN_WARNING("Your bracers hiss and spark as they short out!"))
 						Y.decloak(H, TRUE, DECLOAK_SUBMERGED)
 
 		else if(isxeno(C))
@@ -1201,7 +1201,7 @@
 
 		//piranhas - 25% chance to be an omnipresent risk, although they do practically no damage
 		if(prob(25))
-			to_chat(M, SPAN_NOTICE(" You feel something slithering around your legs."))
+			to_chat(M, SPAN_NOTICE("You feel something slithering around your legs."))
 			if(prob(50))
 				spawn(rand(25,50))
 					var/turf/T = get_turf(M)

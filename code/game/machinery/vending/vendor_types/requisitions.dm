@@ -411,6 +411,7 @@
 /obj/structure/machinery/cm_vending/sorted/attachments/populate_product_list(scale)
 	listed_products = list(
 		list("BARREL", -1, null, null),
+		list("Barrel Charger", 1.5, /obj/item/attachable/heavy_barrel, VENDOR_ITEM_REGULAR),
 		list("Extended Barrel", 6.5, /obj/item/attachable/extended_barrel, VENDOR_ITEM_REGULAR),
 		list("M5 Bayonet", 10.5, /obj/item/attachable/bayonet, VENDOR_ITEM_REGULAR),
 		list("Extended Recoil Compensator", 6.5, /obj/item/attachable/extended_barrel/vented, VENDOR_ITEM_REGULAR),
@@ -548,8 +549,8 @@
 		list("Prescription ballistic goggles", 10, /obj/item/clothing/glasses/mgoggles/prescription, VENDOR_ITEM_REGULAR),
 		list("Marine RPG glasses", 10, /obj/item/clothing/glasses/regular, VENDOR_ITEM_REGULAR),
 		list("M5 Integrated Gas Mask", 10, /obj/item/prop/helmetgarb/helmet_gasmask, VENDOR_ITEM_REGULAR),
-		list("M10 Helmet Netting", 10, /obj/item/prop/helmetgarb/netting, VENDOR_ITEM_REGULAR),
-		list("M10 Helmet Rain Cover", 10, /obj/item/prop/helmetgarb/raincover, VENDOR_ITEM_REGULAR),
+		list("M10 Helmet Netting", 10, /obj/item/clothing/accessory/helmet/cover/netting, VENDOR_ITEM_REGULAR),
+		list("M10 Helmet Rain Cover", 10, /obj/item/clothing/accessory/helmet/cover/raincover, VENDOR_ITEM_REGULAR),
 		list("Attachable Dogtags", 15, /obj/item/clothing/accessory/dogtags, VENDOR_ITEM_REGULAR),
 		list("USCM Flair", 15, /obj/item/prop/helmetgarb/flair_uscm, VENDOR_ITEM_REGULAR),
 		list("Falling Falcons Shoulder Patch", 15, /obj/item/clothing/accessory/patch/falcon, VENDOR_ITEM_REGULAR),

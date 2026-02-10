@@ -22,7 +22,7 @@
 				marine_rk = "spec"
 			if(JOB_SQUAD_TEAM_LEADER || JOB_WO_SQUAD_LEADER)
 				marine_rk = "tl"
-			if(JOB_SQUAD_MEDIC || WO_JOB_SQUAD_MEDIC)
+			if(JOB_SQUAD_MEDIC || JOB_WO_SQUAD_MEDIC)
 				if(current_human.rank_fallback == "medk9")
 					marine_rk = "medk9" //We don't need Medics to lose their job when converting to K9 Handlers as it would duplicate JOB_SQUAD_MEDIC
 				else

@@ -7,6 +7,7 @@
 	var/icon/override_icon_file
 	var/hud_icon_state
 	var/_role = human.job
+	var/anchorpoint_marine
 	if(!_role)
 		var/obj/item/card/id/id_card = human.get_idcard()
 		if(id_card)
@@ -51,10 +52,10 @@
 			anchorpoint_marine = TRUE
 
 	if(anchorpoint_marine)
-		var/image/IMG = image('icons/mob/hud/factions/marine.dmi', H, "hudsquad")
+		var/image/IMG = image('icons/mob/hud/factions/marine.dmi', human, "hudsquad")
 		IMG.color = "#194877"
 		holder.overlays += IMG
-		holder.overlays += image('icons/mob/hud/factions/marine.dmi', H, "hudsquad_[hud_icon_state]")
+		holder.overlays += image('icons/mob/hud/factions/marine.dmi', human, "hudsquad_[hud_icon_state]")
 		return
 
 	if(hud_icon_state)

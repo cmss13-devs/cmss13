@@ -12107,9 +12107,6 @@
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/building/administration/upper_hallway)
 "aLZ" = (
-/obj/effect/decal/sand_overlay/sand1/corner1{
-	dir = 4
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
@@ -12118,7 +12115,12 @@
 	shuttleId = "trijentshuttle22"
 	},
 /turf/open/floor/prison/sterile_white/west,
-/area/desert_dam/exterior/valley/valley_medical)
+/area/desert_dam/exterior/valley/valley_medical_elevator_landing{
+	power_equip = 1;
+	power_environ = 1;
+	power_light = 1;
+	always_unpowered = 0
+	})
 "aMa" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -23554,6 +23556,14 @@
 /obj/structure/machinery/light,
 /turf/open/floor/freezerfloor,
 /area/desert_dam/building/water_treatment_one/equipment)
+"bVD" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
+/area/desert_dam/exterior/valley/valley_medical_elevator_landing{
+	power_equip = 1;
+	power_environ = 1;
+	power_light = 1;
+	always_unpowered = 0
+	})
 "bVL" = (
 /obj/structure/machinery/autodispenser,
 /obj/structure/window/reinforced{
@@ -24658,6 +24668,17 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/desert_dam/exterior/valley/valley_cargo)
+"cuz" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 1
+	},
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_medical_elevator_landing{
+	power_equip = 1;
+	power_environ = 1;
+	power_light = 1;
+	always_unpowered = 0
+	})
 "cuB" = (
 /turf/open/floor/prison/darkyellowcorners2,
 /area/desert_dam/building/substation/southwest)
@@ -27071,8 +27092,16 @@
 /obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent/engi{
 	pixel_x = -32
 	},
-/turf/open/desert/rock/deep/transition/southwest,
-/area/desert_dam/exterior/valley/valley_wilderness)
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 1
+	},
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_wilderness_elevator_landing{
+	always_unpowered = 0;
+	power_environ = 1;
+	power_equip = 1;
+	power_light = 1
+	})
 "drB" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 5
@@ -27808,6 +27837,14 @@
 	},
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/building/warehouse/warehouse)
+"dDS" = (
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_medical_elevator_landing{
+	power_equip = 1;
+	power_environ = 1;
+	power_light = 1;
+	always_unpowered = 0
+	})
 "dDX" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1
@@ -29351,6 +29388,14 @@
 "ekQ" = (
 /turf/open/floor/warning/east,
 /area/desert_dam/interior/dam_interior/engine_room)
+"ele" = (
+/turf/open/asphalt/cement/cement2,
+/area/desert_dam/exterior/valley/valley_wilderness_elevator_landing{
+	always_unpowered = 0;
+	power_environ = 1;
+	power_equip = 1;
+	power_light = 1
+	})
 "ell" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/asphalt/cement/cement14,
@@ -31519,6 +31564,14 @@
 /obj/structure/machinery/power/apc/no_power/east,
 /turf/open/floor/prison/darkred2/north,
 /area/desert_dam/building/security/warden)
+"fcP" = (
+/turf/open/asphalt/cement/cement4,
+/area/desert_dam/exterior/valley/valley_wilderness_elevator_landing{
+	always_unpowered = 0;
+	power_environ = 1;
+	power_equip = 1;
+	power_light = 1
+	})
 "fcS" = (
 /obj/structure/surface/table,
 /obj/item/clothing/mask/cigarette/weed{
@@ -31549,6 +31602,17 @@
 	},
 /turf/open/floor/carpet7_3/west,
 /area/desert_dam/building/bar/bar)
+"fds" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 1
+	},
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_medical_elevator_landing{
+	power_equip = 1;
+	power_environ = 1;
+	power_light = 1;
+	always_unpowered = 0
+	})
 "fdK" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -34215,9 +34279,6 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/medical/maint/south)
 "ger" = (
-/obj/effect/decal/sand_overlay/sand2/corner2{
-	dir = 8
-	},
 /turf/open/asphalt/cement/cement13,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "gew" = (
@@ -35710,6 +35771,17 @@
 /obj/effect/decal/sand_overlay/sand1,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/valley/valley_cargo)
+"gIE" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 1
+	},
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_wilderness_elevator_landing{
+	always_unpowered = 0;
+	power_environ = 1;
+	power_equip = 1;
+	power_light = 1
+	})
 "gIG" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
 /turf/open/floor/freezerfloor,
@@ -36094,6 +36166,14 @@
 /obj/structure/flora/grass/desert/heavygrass_4,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_cargo)
+"gPt" = (
+/turf/open/asphalt/cement/cement12,
+/area/desert_dam/exterior/valley/valley_wilderness_elevator_landing{
+	always_unpowered = 0;
+	power_environ = 1;
+	power_equip = 1;
+	power_light = 1
+	})
 "gPu" = (
 /obj/structure/sink{
 	dir = 1;
@@ -37250,11 +37330,15 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/desert_dam/exterior/valley/valley_security)
 "hlL" = (
-/obj/effect/decal/sand_overlay/sand2/corner2{
-	dir = 1
-	},
-/turf/open/asphalt/cement/cement13,
-/area/desert_dam/exterior/valley/valley_wilderness)
+/obj/structure/machinery/colony_floodlight,
+/obj/effect/decal/sand_overlay/sand2,
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_wilderness_elevator_landing{
+	always_unpowered = 0;
+	power_environ = 1;
+	power_equip = 1;
+	power_light = 1
+	})
 "hlN" = (
 /turf/open/floor/prison/whitegreen,
 /area/desert_dam/building/medical/outgoing)
@@ -37826,11 +37910,13 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "hxO" = (
-/obj/effect/decal/sand_overlay/sand2{
-	dir = 1
-	},
 /turf/open/asphalt/tile,
-/area/desert_dam/exterior/valley/valley_wilderness)
+/area/desert_dam/exterior/valley/valley_wilderness_elevator_landing{
+	always_unpowered = 0;
+	power_environ = 1;
+	power_equip = 1;
+	power_light = 1
+	})
 "hxT" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Freezer"
@@ -40120,6 +40206,14 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/desert_dam/exterior/roof)
+"iqx" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
+/area/desert_dam/exterior/valley/valley_medical_elevator_landing{
+	power_equip = 1;
+	power_environ = 1;
+	power_light = 1;
+	always_unpowered = 0
+	})
 "iqy" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -41845,6 +41939,15 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkred2/east,
 /area/desert_dam/building/security/southern_hallway)
+"jak" = (
+/obj/effect/decal/sand_overlay/sand1,
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_medical_elevator_landing{
+	power_equip = 1;
+	power_environ = 1;
+	power_light = 1;
+	always_unpowered = 0
+	})
 "jaq" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -46365,11 +46468,16 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
-/obj/effect/decal/sand_overlay/sand1{
-	dir = 1
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 4
 	},
 /turf/open/floor/prison/sterile_white/west,
-/area/desert_dam/exterior/valley/valley_medical)
+/area/desert_dam/exterior/valley/valley_medical_elevator_landing{
+	power_equip = 1;
+	power_environ = 1;
+	power_light = 1;
+	always_unpowered = 0
+	})
 "kQa" = (
 /turf/closed/shuttle/ert{
 	icon_state = "leftengine_3";
@@ -52198,6 +52306,11 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
+"nhq" = (
+/turf/closed/wall/hangar{
+	name = "Elevator Shaft"
+	},
+/area/shuttle/trijent_shuttle/omega)
 "nht" = (
 /obj/effect/blocker/toxic_water,
 /turf/open/floor/filtrationside/east,
@@ -55466,6 +55579,14 @@
 /obj/item/storage/box/lights/mixed,
 /turf/open/floor/plating,
 /area/desert_dam/building/medical/maint/east)
+"osB" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+/area/desert_dam/exterior/valley/valley_medical_elevator_landing{
+	power_equip = 1;
+	power_environ = 1;
+	power_light = 1;
+	always_unpowered = 0
+	})
 "osD" = (
 /turf/open/floor/prison/whitepurplecorner/east,
 /area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
@@ -57689,6 +57810,14 @@
 /obj/structure/largecrate/chick,
 /turf/open/floor/freezerfloor,
 /area/desert_dam/building/cafeteria/cold_room)
+"pmk" = (
+/obj/effect/blocker/toxic_water/Group_1,
+/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent/omega{
+	pixel_y = 32;
+	shuttleId = "trijentshuttle22"
+	},
+/turf/open/gm/river/desert/deep,
+/area/desert_dam/exterior/river/riverside_central_south)
 "pml" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -60280,6 +60409,14 @@
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/security/office)
+"qlZ" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
+/area/desert_dam/exterior/valley/valley_medical_elevator_landing{
+	power_equip = 1;
+	power_environ = 1;
+	power_light = 1;
+	always_unpowered = 0
+	})
 "qme" = (
 /turf/open/desert/dirt/desert_transition_edge1/east,
 /area/desert_dam/exterior/valley/valley_hydro)
@@ -62744,7 +62881,12 @@
 /area/desert_dam/building/water_treatment_one/breakroom)
 "reX" = (
 /turf/open/asphalt/cement/cement14,
-/area/desert_dam/exterior/valley/valley_wilderness)
+/area/desert_dam/exterior/valley/valley_wilderness_elevator_landing{
+	always_unpowered = 0;
+	power_environ = 1;
+	power_equip = 1;
+	power_light = 1
+	})
 "rfg" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 1
@@ -62883,9 +63025,22 @@
 /turf/open/gm/river/desert/deep/covered,
 /area/desert_dam/exterior/river/filtration_a)
 "rhr" = (
-/obj/structure/flora/grass/desert/lightgrass_8,
-/turf/open/desert/rock/deep/rock3,
-/area/desert_dam/exterior/valley/valley_wilderness)
+/obj/structure/machinery/power/apc/no_power/west,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/sand_overlay/sand2,
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/exterior/valley/valley_wilderness_elevator_landing{
+	always_unpowered = 0;
+	power_environ = 1;
+	power_equip = 1;
+	power_light = 1
+	})
 "rhB" = (
 /obj/structure/machinery/computer/med_data,
 /obj/structure/window/reinforced{
@@ -71092,6 +71247,13 @@
 "uqQ" = (
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
+"uqY" = (
+/obj/effect/decal/sand_overlay/sand2/corner2{
+	dir = 8;
+	layer = 2.02
+	},
+/turf/open/asphalt/cement/cement1,
+/area/desert_dam/exterior/valley/valley_wilderness)
 "urb" = (
 /obj/structure/surface/table/reinforced,
 /turf/open/floor/prison/sterile_white,
@@ -73200,6 +73362,15 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/desert_dam/exterior/landing_pad_one)
+"vkP" = (
+/obj/effect/decal/sand_overlay/sand1/corner1,
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_medical_elevator_landing{
+	power_equip = 1;
+	power_environ = 1;
+	power_light = 1;
+	always_unpowered = 0
+	})
 "vkW" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
@@ -73896,6 +74067,12 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
 /area/desert_dam/exterior/valley/valley_civilian)
+"vyt" = (
+/obj/effect/decal/sand_overlay/sand2/corner2{
+	dir = 1
+	},
+/turf/open/asphalt/cement/cement1,
+/area/desert_dam/exterior/valley/valley_wilderness)
 "vyy" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/desert_dam/exterior/valley/valley_northwest)
@@ -77214,9 +77391,15 @@
 /turf/open/floor/prison/darkbrowncorners2/east,
 /area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "wSl" = (
-/obj/effect/decal/sand_overlay/sand2,
-/turf/open/asphalt/tile,
-/area/desert_dam/exterior/valley/valley_wilderness)
+/obj/docking_port/stationary/trijent_elevator/empty{
+	airlock_area = /area/shuttle/trijent_shuttle/omega;
+	airlock_exit = "east";
+	elevator_network = "B";
+	id = "trijent_omega";
+	name = "Omega Elevator"
+	},
+/turf/open/gm/empty,
+/area/shuttle/trijent_shuttle/omega)
 "wSA" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/sand_overlay/sand1{
@@ -78092,6 +78275,14 @@
 	},
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/medical/break_room)
+"xkL" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
+/area/desert_dam/exterior/valley/valley_medical_elevator_landing{
+	power_equip = 1;
+	power_environ = 1;
+	power_light = 1;
+	always_unpowered = 0
+	})
 "xkZ" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
@@ -78693,6 +78884,14 @@
 /obj/structure/prop/dam/large_boulder/boulder2,
 /turf/open/desert/rock,
 /area/desert_dam/exterior/valley/bar_valley_dam)
+"xxe" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
+/area/desert_dam/exterior/valley/valley_medical_elevator_landing{
+	power_equip = 1;
+	power_environ = 1;
+	power_light = 1;
+	always_unpowered = 0
+	})
 "xxh" = (
 /turf/open/desert/rock/deep/transition/southwest,
 /area/desert_dam/interior/dam_interior/workshop)
@@ -164148,7 +164347,7 @@ huj
 rIt
 sFU
 bvA
-xYi
+pmk
 xYi
 xYi
 xYi
@@ -166033,7 +166232,7 @@ dEQ
 dEQ
 dEQ
 dEQ
-dEQ
+wSl
 yjZ
 qaR
 uxD
@@ -167902,9 +168101,9 @@ qaR
 qaR
 yjZ
 aLZ
-fDa
-dbK
-dHl
+qlZ
+iqx
+dDS
 qaR
 qaR
 qaR
@@ -168134,11 +168333,11 @@ mJF
 qaR
 qaR
 qaR
-qaR
+nhq
 kPR
-cRc
-ckJ
-dHl
+xxe
+osB
+dDS
 qaR
 qaR
 qaR
@@ -168369,10 +168568,10 @@ aYn
 qaR
 qaR
 otd
-btz
-cRc
-ckJ
-dHl
+cuz
+xxe
+osB
+dDS
 qaR
 qaR
 qaR
@@ -168603,10 +168802,10 @@ iWi
 vbi
 iUk
 wqW
-btz
-cRc
-ckJ
-dHl
+cuz
+xxe
+osB
+dDS
 qaR
 qaR
 qaR
@@ -168837,10 +169036,10 @@ iWi
 jMA
 iWi
 iWi
-btz
-cRc
-ckJ
-kfE
+cuz
+xxe
+osB
+vkP
 qaR
 aYj
 vOZ
@@ -169071,10 +169270,10 @@ iWi
 iWi
 qNx
 uSe
-uPs
-oYM
-rxa
-mJF
+fds
+bVD
+xkL
+jak
 vbi
 eHo
 vbi
@@ -172998,12 +173197,12 @@ mUT
 iCL
 ihw
 dqS
-aeD
 hxO
-oJY
+hxO
+ele
 reX
-wSl
-aeD
+hxO
+hxO
 rhr
 aeD
 aeD
@@ -173231,14 +173430,14 @@ xmG
 mUT
 iCL
 oId
-xAI
-fdY
+gIE
 hxO
-aec
-xDb
-wSl
-fdY
-tuC
+hxO
+fcP
+gPt
+hxO
+hxO
+hlL
 fdY
 are
 oId
@@ -173465,14 +173664,14 @@ jtK
 mUT
 jmR
 cLO
-cLO
-cLO
-hlL
+vyt
+mpk
+ger
 mpk
 mpk
 ger
-cLO
-cLO
+mpk
+uqY
 cLO
 cLO
 cLO

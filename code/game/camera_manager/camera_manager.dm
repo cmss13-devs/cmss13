@@ -20,6 +20,7 @@
 	var/list/cam_plane_masters
 	var/isXRay = FALSE
 	var/render_mode = RENDER_MODE_TARGET
+	var/nvg_enabled = FALSE
 
 /datum/component/camera_manager/Initialize()
 	. = ..()
@@ -203,6 +204,7 @@
 
 /datum/component/camera_manager/proc/enable_nvg(source, power, matrixcol)
 	SIGNAL_HANDLER
+	nvg_enabled = TRUE
 	for(var/plane_id in cam_plane_masters)
 		var/atom/movable/screen/plane_master/plane = cam_plane_masters["[plane_id]"]
 		plane.add_filter("nvg", 1, color_matrix_filter(color_matrix_from_string(matrixcol)))
@@ -210,6 +212,7 @@
 
 /datum/component/camera_manager/proc/disable_nvg()
 	SIGNAL_HANDLER
+	nvg_enabled = FALSE
 	for(var/plane_id in cam_plane_masters)
 		var/atom/movable/screen/plane_master/plane = cam_plane_masters["[plane_id]"]
 		plane.remove_filter("nvg")

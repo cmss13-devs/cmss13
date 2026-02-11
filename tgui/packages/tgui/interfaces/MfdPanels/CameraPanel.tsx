@@ -22,13 +22,12 @@ export const CameraMfdPanel = (props: MfdProps) => {
   const [selectedCameraName, setSelectedCameraName] = useSharedState<
     string | undefined
   >(`${props.panelStateId}_selected_camera`, undefined);
-  const [nvEnabled, setNvEnabled] = useSharedState<boolean>(
-    `${props.panelStateId}_nv_enabled`,
-    false,
-  );
   const { targetOffset, setTargetOffset } = useTargetOffset(props.panelStateId);
 
   const availableCameras = data.available_cameras || [];
+
+  const nvgEnabled = data.nvg_enabled || false;
+  const nvgAvailable = data.nvg_available || false;
 
   // Get current page of cameras (4 cameras per page for left buttons)
   const cameraPage = availableCameras.slice(cameraIndex, cameraIndex + 4);
@@ -120,18 +119,22 @@ export const CameraMfdPanel = (props: MfdProps) => {
     },
     {
       children: 'NV-ON',
-      borderColor: nvEnabled ? '#ff0000' : undefined,
+      borderColor: nvgEnabled && nvgAvailable ? '#ff0000' : undefined,
+      disabled: !nvgAvailable,
       onClick: () => {
-        setNvEnabled(true);
-        act('nvg-enable');
+        if (nvgAvailable) {
+          act('nvg-enable');
+        }
       },
     },
     {
       children: 'NV-OFF',
-      borderColor: !nvEnabled ? '#ff0000' : undefined,
+      borderColor: !nvgEnabled && nvgAvailable ? '#ff0000' : undefined,
+      disabled: !nvgAvailable,
       onClick: () => {
-        setNvEnabled(false);
-        act('nvg-disable');
+        if (nvgAvailable) {
+          act('nvg-disable');
+        }
       },
     },
     {

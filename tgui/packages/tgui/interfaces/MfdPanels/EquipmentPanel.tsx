@@ -373,16 +373,18 @@ export const EquipmentMfdPanel = (props: MfdProps) => {
 
   const { setEquipmentState } = useEquipmentState(props.panelStateId);
 
-  const weap1 = data.equipment_data.find((x) => x.mount_point === 1);
-  const weap2 = data.equipment_data.find((x) => x.mount_point === 2);
-  const weap3 = data.equipment_data.find((x) => x.mount_point === 3);
-  const weap4 = data.equipment_data.find((x) => x.mount_point === 4);
-  const support1 = data.equipment_data.find((x) => x.mount_point === 7);
-  const support2 = data.equipment_data.find((x) => x.mount_point === 8);
-  const support3 = data.equipment_data.find((x) => x.mount_point === 9);
+  const equipmentData = data.equipment_data || [];
 
-  const elec1 = data.equipment_data.find((x) => x.mount_point === 5);
-  const elec2 = data.equipment_data.find((x) => x.mount_point === 6);
+  const weap1 = equipmentData.find((x) => x.mount_point === 1);
+  const weap2 = equipmentData.find((x) => x.mount_point === 2);
+  const weap3 = equipmentData.find((x) => x.mount_point === 3);
+  const weap4 = equipmentData.find((x) => x.mount_point === 4);
+  const support1 = equipmentData.find((x) => x.mount_point === 7);
+  const support2 = equipmentData.find((x) => x.mount_point === 8);
+  const support3 = equipmentData.find((x) => x.mount_point === 9);
+
+  const elec1 = equipmentData.find((x) => x.mount_point === 5);
+  const elec2 = equipmentData.find((x) => x.mount_point === 6);
 
   const generateWeaponButton = (equip: DropshipEquipment) => {
     return {
@@ -409,7 +411,10 @@ export const EquipmentMfdPanel = (props: MfdProps) => {
     if (
       props.color === 'blue' &&
       equip.mount_point >= 1 &&
-      equip.mount_point <= 4
+      equip.mount_point <= 4 &&
+      equip.is_weapon &&
+      equip.shorthand !== 'Sentry' &&
+      equip.shorthand !== 'MG'
     ) {
       return {};
     }

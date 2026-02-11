@@ -252,12 +252,15 @@ const leftButtonGenerator = (
       ) : undefined,
       borderColor:
         quickMode &&
+        firemission &&
         firemissionSelected?.mission_tag === firemission?.mission_tag
           ? '#ff0000'
           : undefined,
       onClick: () => {
-        setFiremissionSelected(data.firemission_data[x]);
-        setLeftButtonMode(undefined);
+        if (firemission) {
+          setFiremissionSelected(data.firemission_data[x]);
+          setLeftButtonMode(undefined);
+        }
       },
     };
   };
@@ -276,8 +279,11 @@ const leftButtonGenerator = (
       ];
       return weaponButtons.concat(
         weapons.map((x) => {
+          const hasAmmo = x.ammo !== null && x.ammo !== undefined && x.ammo > 0;
           return {
-            children: x.shorthand,
+            children: hasAmmo ? x.shorthand : `${x.shorthand} EMPTY`,
+            borderColor: hasAmmo ? undefined : '#ff0000',
+            disabled: !hasAmmo,
             onClick: () => {
               setWeaponSelected(x.eqp_tag);
               setStrikeMode('weapon');

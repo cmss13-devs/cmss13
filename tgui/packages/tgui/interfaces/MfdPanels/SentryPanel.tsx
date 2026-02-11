@@ -114,9 +114,12 @@ export const SentryMfdPanel = (props: MfdProps) => {
             act('deploy-equipment', { equipment_id: sentry?.mount_point }),
         },
         {
-          children: sentry?.data?.camera_available ? 'CAMERA' : undefined,
+          children:
+            sentry?.data?.camera_available && props.color === 'blue'
+              ? 'CAMERA'
+              : undefined,
           onClick: () =>
-            act('set-camera-sentry', { equipment_id: sentry?.mount_point }),
+            act('set-camera', { equipment_id: sentry?.mount_point }),
         },
         {
           children: autoDeployLabel,

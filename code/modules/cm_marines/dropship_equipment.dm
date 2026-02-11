@@ -1702,6 +1702,7 @@
 	var/busy_winch
 	combat_equipment = FALSE
 	faction_exclusive = FACTION_MARINE
+	var/list/known_stretchers = list()
 
 /obj/structure/dropship_equipment/medevac_system/upp
 	name = "\improper RMU-4M Medevac System UPP"
@@ -1724,6 +1725,12 @@
 
 /obj/structure/dropship_equipment/medevac_system/proc/get_targets()
 	. = list()
+
+	// Update known stretchers list for notification system
+	known_stretchers.Cut() // Clear the list
+	for(var/obj/structure/bed/medevac_stretcher/MS in GLOB.activated_medevac_stretchers)
+		if(faction_exclusive == MS.faction)
+			known_stretchers += "\ref[MS]"
 
 	for(var/obj/structure/bed/medevac_stretcher/MS in GLOB.activated_medevac_stretchers)
 		if(MS.faction != faction_exclusive)
@@ -1755,6 +1762,23 @@
 
 		var/key_name = strip_improper("[evaccee_name] [evaccee_triagecard_color ? "\[" + uppertext(evaccee_triagecard_color) + "\]" : ""] ([AR.name])")
 		.[key_name] = MS
+
+// Called directly when a new medevac stretcher is activated
+/obj/structure/dropship_equipment/medevac_system/proc/notify_new_stretcher(obj/structure/bed/medevac_stretcher/new_stretcher)
+	if(!ship_base) // Only notify when installed
+		return
+	if(faction_exclusive != new_stretcher.faction) // Only notify for matching faction
+		return
+	if(!linked_shuttle || linked_shuttle.mode != SHUTTLE_CALL) // Only notify while in flight
+		return
+
+	var/stretcher_ref = "\ref[new_stretcher]"
+	if(stretcher_ref in known_stretchers)
+		return
+
+	known_stretchers += stretcher_ref
+	playsound(src, 'sound/CPRbot/CPRbot_beep.ogg', 75, TRUE, 25)
+	visible_message(SPAN_NOTICE("[src] beeps as it detects a new medevac stretcher beacon!"), null, 15)
 
 /obj/structure/dropship_equipment/medevac_system/proc/can_medevac(mob/user)
 	if(!linked_shuttle)

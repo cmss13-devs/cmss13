@@ -42,6 +42,9 @@ export type MedevacTargets = {
 
 export type CameraProps = {
   camera_map_ref?: string;
+  matrix_upgrade?: string;
+  nvg_available?: boolean;
+  nvg_enabled?: boolean;
 };
 
 export type EquipmentContext = {

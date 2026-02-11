@@ -552,6 +552,12 @@
 	if(selected_equipment)
 		.["selected_eqp"] = selected_equipment.ship_base.attach_id
 
+	// Add matrix upgrade and NV state information
+	.["matrix_upgrade"] = upgraded
+	.["nvg_available"] = (upgraded == MATRIX_NVG)
+	var/datum/component/camera_manager/camera_component = GetComponent(/datum/component/camera_manager)
+	.["nvg_enabled"] = camera_component ? camera_component.nvg_enabled : FALSE
+
 	.["available_cameras"] = list()
 	var/list/cameras = get_available_cameras()
 	for(var/c_tag in cameras)
@@ -619,6 +625,31 @@
 			if(!dropship)
 				return TRUE
 
+			// Check if this is a sentry equipment ID
+			var/equipment_tag = text2num(target_camera)
+			if(equipment_tag)
+				for(var/obj/structure/dropship_equipment/equipment as anything in dropship.equipments)
+					var/mount_point = equipment.ship_base.attach_id
+					if(mount_point != equipment_tag)
+						continue
+					if(istype(equipment, /obj/structure/dropship_equipment/sentry_holder))
+						var/obj/structure/dropship_equipment/sentry_holder/sentry = equipment
+						var/obj/structure/machinery/defenses/sentry/premade/dropship/defense = sentry.deployed_turret
+						var/is_deployed = defense.loc != sentry
+						if(!is_deployed)
+							to_chat(usr, SPAN_WARNING("Sentry must be deployed to access camera."))
+							return TRUE
+						if(!defense.has_camera)
+							to_chat(usr, SPAN_WARNING("This sentry system does not have a camera."))
+							return TRUE
+						if(!defense.linked_cam)
+							to_chat(usr, SPAN_WARNING("Sentry camera is not available."))
+							return TRUE
+						camera_area_equipment = sentry
+						SEND_SIGNAL(src, COMSIG_CAMERA_SET_TARGET, defense.linked_cam, defense.linked_cam.view_range, defense.linked_cam.view_range)
+						to_chat(usr, SPAN_NOTICE("Switching to sentry camera view."))
+						return TRUE
+
 			for(var/obj/structure/dropship_equipment/rappel_system/rappel in dropship.equipments)
 				rappel.cleanup_ropes(TRUE)
 				rappel.icon_state = "rappel_hatch_closed"
@@ -629,7 +660,7 @@
 			return TRUE
 
 		if("set-camera-sentry")
-			var/equipment_tag = params["equipment_id"]
+			var/equipment_tag = text2num(params["equipment_id"])
 			var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttle_tag)
 			if(!dropship)
 				return TRUE
@@ -641,14 +672,21 @@
 				if(istype(equipment, /obj/structure/dropship_equipment/sentry_holder))
 					var/obj/structure/dropship_equipment/sentry_holder/sentry = equipment
 					var/obj/structure/machinery/defenses/sentry/defense = sentry.deployed_turret
-					if(defense.has_camera)
-						defense.set_range()
-						camera_area_equipment = sentry
-						SEND_SIGNAL(src, COMSIG_CAMERA_SET_AREA, defense.range_bounds, defense.loc.z)
+					var/is_deployed = defense.loc != sentry
+					if(!is_deployed)
+						to_chat(usr, SPAN_WARNING("Sentry must be deployed to access camera."))
+						return TRUE
+					if(!defense.has_camera)
+						to_chat(usr, SPAN_WARNING("This sentry system does not have a camera."))
+						return TRUE
+					defense.set_range()
+					camera_area_equipment = sentry
+					SEND_SIGNAL(src, COMSIG_CAMERA_SET_AREA, defense.range_bounds, defense.loc.z)
+					to_chat(usr, SPAN_NOTICE("Switching to sentry camera view."))
 			return TRUE
 
 		if("auto-deploy")
-			var/equipment_tag = params["equipment_id"]
+			var/equipment_tag = text2num(params["equipment_id"])
 			var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttle_tag)
 			if(!dropship)
 				return TRUE
@@ -1044,19 +1082,19 @@
 		equipment.linked_console = src
 
 /obj/structure/machinery/computer/cameras/dropship/one
-	name = "\improper 'Alamo' camera controls"
+	name = "\improper 'Alamo' auxiliary support controls"
 	network = list(CAMERA_NET_ALAMO, CAMERA_NET_LASER_TARGETS)
 	shuttle_tag = DROPSHIP_ALAMO
 	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_FLIGHT)
 
 /obj/structure/machinery/computer/cameras/dropship/two
-	name = "\improper 'Normandy' camera controls"
+	name = "\improper 'Normandy' auxiliary support controls"
 	network = list(CAMERA_NET_NORMANDY, CAMERA_NET_LASER_TARGETS)
 	shuttle_tag = DROPSHIP_NORMANDY
 	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_FLIGHT)
 
 /obj/structure/machinery/computer/cameras/dropship/three
-	name = "\improper 'Saipan' camera controls"
+	name = "\improper 'Saipan' auxiliary support controls"
 	network = list(CAMERA_NET_RESEARCH, CAMERA_NET_LASER_TARGETS)
 	shuttle_tag = DROPSHIP_SAIPAN
 	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_FLIGHT)

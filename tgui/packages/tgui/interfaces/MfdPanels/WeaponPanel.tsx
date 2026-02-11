@@ -460,6 +460,7 @@ export const WeaponMfdPanel = (props: MfdProps) => {
         : hasAmmo
           ? weapon.shorthand
           : `${weapon.shorthand} EMPTY`,
+      borderColor: hasAmmo ? undefined : '#ff0000',
       disabled: cooldown.isOnCooldown || !selectedTarget || !hasAmmo,
       onClick: () => act('fire-weapon', { eqp_tag: weapon.eqp_tag }),
     };

@@ -234,6 +234,12 @@
 	// equipment info
 	.["equipment_data"] = get_sanitised_equipment(user, dropship)
 
+	// Add matrix upgrade and NV state information
+	.["matrix_upgrade"] = upgraded
+	.["nvg_available"] = (upgraded == MATRIX_NVG)
+	var/datum/component/camera_manager/camera_component = GetComponent(/datum/component/camera_manager)
+	.["nvg_enabled"] = camera_component ? camera_component.nvg_enabled : FALSE
+
 	// medevac targets
 	.["medevac_targets"] = list()
 	for(var/obj/structure/dropship_equipment/equipment as anything in dropship.equipments)

@@ -579,6 +579,11 @@ export const TargetAquisitionMfdPanel = (props: MfdProps) => {
   const { isOnCooldown } = useFiringCooldown(selectedWeapon);
   const { isFiremissionActive } = useFiremissionStatus();
 
+  // Find targeting system equipment
+  const targetingSystem = data.equipment_data?.find(
+    (x) => x.shorthand === 'Targeting',
+  );
+
   const strikeConfigLabel =
     strikeMode === 'weapon'
       ? data.equipment_data.find((x) => x.eqp_tag === weaponSelected)?.name
@@ -671,7 +676,18 @@ export const TargetAquisitionMfdPanel = (props: MfdProps) => {
             }
           },
         },
-        {},
+        {
+          children: targetingSystem ? 'WTS' : undefined,
+          borderColor: targetingSystem?.data?.enabled ? '#ff0000' : undefined,
+          disabled: !targetingSystem,
+          onClick: () => {
+            if (targetingSystem) {
+              act('deploy-equipment', {
+                equipment_id: targetingSystem.mount_point,
+              });
+            }
+          },
+        },
         {
           children: targetOffset > 0 ? <Icon name="arrow-up" /> : undefined,
           onClick: () => {

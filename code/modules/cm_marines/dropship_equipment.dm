@@ -919,13 +919,33 @@
 	icon_state = "targeting_system"
 	desc = "A targeting system for dropships. It improves firing accuracy on laser targets. Fits on electronics attach points. You need a powerloader to lift this."
 	point_cost = 800
-	is_interactable = FALSE
+	is_interactable = TRUE
+	var/system_enabled = FALSE
+
+/obj/structure/dropship_equipment/electronics/targeting_system/equipment_interact(mob/user)
+	if(!ship_base)
+		to_chat(user, SPAN_WARNING("[src] must be installed before it can be operated."))
+		return
+
+	system_enabled = !system_enabled
+	if(system_enabled)
+		to_chat(user, SPAN_NOTICE("You activate [src]."))
+		icon_state = "targeting_system_on"
+	else
+		to_chat(user, SPAN_NOTICE("You deactivate [src]."))
+		icon_state = "targeting_system_installed"
 
 /obj/structure/dropship_equipment/electronics/targeting_system/update_equipment()
 	if(ship_base)
 		icon_state = "[initial(icon_state)]_installed"
 	else
+		system_enabled = FALSE
 		icon_state = initial(icon_state)
+
+/obj/structure/dropship_equipment/electronics/targeting_system/ui_data(mob/user)
+	. = list()
+	.["name"] = name
+	.["enabled"] = system_enabled
 
 /obj/structure/dropship_equipment/electronics/landing_zone_detector
 	name = "\improper AN/AVD-60 LZ detector"
@@ -1152,9 +1172,12 @@
 		ammo_max_inaccuracy = max(ammo_max_inaccuracy -3,1)
 		ammo_travelling_time = max(ammo_travelling_time - 40, 10)
 	else if(linked_shuttle)
-		for(var/obj/structure/dropship_equipment/electronics/targeting_system/TS in linked_shuttle.equipments)
+		for(var/obj/structure/dropship_equipment/electronics/targeting_system/targeting_system in linked_shuttle.equipments)
 			// Skip applying targeting system effects if the weapon is a bomb bay
 			if(istype(src, /obj/structure/dropship_equipment/weapon/bomb_bay))
+				continue
+			// Only apply effects if targeting system is enabled
+			if(!targeting_system.system_enabled)
 				continue
 			ammo_accuracy_range = max(ammo_accuracy_range-2, 0) //targeting system increase accuracy and reduce travelling time.
 			ammo_max_inaccuracy = max(ammo_max_inaccuracy -3, 1)
@@ -1310,7 +1333,10 @@
 	deplete_ammo()
 	last_fired = world.time
 	if(linked_shuttle)
-		for(var/obj/structure/dropship_equipment/electronics/targeting_system/TS in linked_shuttle.equipments)
+		for(var/obj/structure/dropship_equipment/electronics/targeting_system/targeting_system in linked_shuttle.equipments)
+			// Only apply effects if targeting system is enabled
+			if(!targeting_system.system_enabled)
+				continue
 			ammo_accuracy_range = max(ammo_accuracy_range-2, 0) //targeting system increase accuracy
 			break
 
@@ -2726,7 +2752,14 @@
 	last_fired = world.time
 
 	if(locate(/obj/structure/dropship_equipment/electronics/targeting_system) in linked_shuttle.equipments)
-		ammo_accuracy_range = max(ammo_accuracy_range - 2, 0)
+		// Check if any targeting system is enabled
+		var/targeting_enabled = FALSE
+		for(var/obj/structure/dropship_equipment/electronics/targeting_system/targeting_system in linked_shuttle.equipments)
+			if(targeting_system.system_enabled)
+				targeting_enabled = TRUE
+				break
+		if(targeting_enabled)
+			ammo_accuracy_range = max(ammo_accuracy_range - 2, 0)
 
 	ammo_accuracy_range /= 2 //buff for basically pointblanking the ground
 

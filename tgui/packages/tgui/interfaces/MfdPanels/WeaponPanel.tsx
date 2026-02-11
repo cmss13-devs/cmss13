@@ -437,6 +437,11 @@ export const WeaponMfdPanel = (props: MfdProps) => {
   const weap3 = data.equipment_data.find((x) => x.mount_point === 3);
   const weap4 = data.equipment_data.find((x) => x.mount_point === 4);
 
+  // Find targeting system equipment
+  const targetingSystem = data.equipment_data.find(
+    (x) => x.shorthand === 'Targeting',
+  );
+
   // Get all weapons for display
   const allWeapons = [weap1, weap2, weap3, weap4].filter(
     Boolean,
@@ -525,7 +530,18 @@ export const WeaponMfdPanel = (props: MfdProps) => {
           children: 'EQUIP',
           onClick: () => setPanelState('equipment'),
         },
-        {},
+        {
+          children: targetingSystem ? 'WTS' : undefined,
+          borderColor: targetingSystem?.data?.enabled ? '#ff0000' : undefined,
+          disabled: !targetingSystem,
+          onClick: () => {
+            if (targetingSystem) {
+              act('deploy-equipment', {
+                equipment_id: targetingSystem.mount_point,
+              });
+            }
+          },
+        },
         {
           children: 'QUICK',
           borderColor: quickMode ? '#ff0000' : undefined,

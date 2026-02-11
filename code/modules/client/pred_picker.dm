@@ -35,7 +35,7 @@
 	if(!pred_job)
 		return
 	var/clanrank = pred_job.get_whitelist_status(user.client)
-	if(clanrank in list(CLAN_RANK_ELITE, CLAN_RANK_ELDER, CLAN_RANK_LEADER, CLAN_RANK_ADMIN))
+	if(clanrank in list(CLAN_RANK_BLOODED, CLAN_RANK_ELITE, CLAN_RANK_ELDER, CLAN_RANK_LEADER, CLAN_RANK_ADMIN))
 		.["can_use_unique"] = TRUE
 	else
 		.["can_use_unique"] = FALSE
@@ -286,9 +286,6 @@
 			if(!ui.user.client?.check_whitelist_status(WHITELIST_YAUTJA_LEGACY))
 				return
 
-			if(prefs.predator_use_unique)
-				return
-
 			prefs.predator_use_legacy = selected
 
 		if("unique")
@@ -301,10 +298,7 @@
 				return
 			var/clanrank = pred_job.get_whitelist_status(ui.user.client)
 
-			if(!(clanrank in list(CLAN_RANK_ELITE, CLAN_RANK_ELDER, CLAN_RANK_LEADER, CLAN_RANK_ADMIN)))
-				return
-
-			if(prefs.predator_use_legacy)
+			if(!(clanrank in list(CLAN_RANK_BLOODED, CLAN_RANK_ELITE, CLAN_RANK_ELDER, CLAN_RANK_LEADER, CLAN_RANK_ADMIN)))
 				return
 
 			prefs.predator_use_unique = selected

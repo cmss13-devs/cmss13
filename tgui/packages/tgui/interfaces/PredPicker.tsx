@@ -374,7 +374,7 @@ const PredEquipment = (props: { readonly pick: (_: ModalOptions) => void }) => {
               />
             </LabeledList.Item>
             {!!can_use_legacy && (
-              <LabeledList.Item labelWrap label="Legacy">
+              <LabeledList.Item labelWrap label="Legacy Armor">
                 <Dropdown
                   options={legacies}
                   selected={use_legacy}
@@ -383,7 +383,7 @@ const PredEquipment = (props: { readonly pick: (_: ModalOptions) => void }) => {
               </LabeledList.Item>
             )}
             {!!can_use_unique && (
-              <LabeledList.Item labelWrap label="Unique">
+              <LabeledList.Item labelWrap label="Unique Armor">
                 <Dropdown
                   options={uniques}
                   selected={use_unique}

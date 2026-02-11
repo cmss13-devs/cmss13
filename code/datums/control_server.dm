@@ -46,7 +46,8 @@
 		window.reconnect = () => {
 			window.contact('get-url').then((response) => {
 				if (response?.url) {
-					BYOND.command(`.url ${response.url}`)
+					console.log("restart requested");
+//					BYOND.command(`.url ${response.url}`)
 				}
 			});
 		}
@@ -62,7 +63,6 @@
 			}
 			awaitingPong = true;
 			location.href = "byond://?src=%OBJ_REFERENCE%&command=ping"
-			BYOND.command('.controller_ping');
 			setTimeout(() => {
 				if (awaitingPong) {
 					failedPings++;

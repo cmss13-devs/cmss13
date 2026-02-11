@@ -1,5 +1,12 @@
 import { useBackend } from 'tgui/backend';
-import { Box, Divider, Flex, Stack } from 'tgui/components';
+import {
+  Box,
+  Button,
+  Divider,
+  Flex,
+  NumberInput,
+  Stack,
+} from 'tgui/components';
 import { Window } from 'tgui/layouts';
 
 import { CasSim } from './CasSim';
@@ -11,6 +18,11 @@ import { MapMfdPanel } from './MfdPanels/MapPanel';
 import { MfdPanel, type MfdProps } from './MfdPanels/MultifunctionDisplay';
 import { mfdState } from './MfdPanels/stateManagers';
 import { otherMfdState } from './MfdPanels/stateManagers';
+import {
+  useFiremissionXOffsetValue,
+  useFiremissionYOffsetValue,
+  useLazeTarget,
+} from './MfdPanels/stateManagers';
 import { SupportMfdPanel } from './MfdPanels/SupportPanel';
 import { TargetAquisitionMfdPanel } from './MfdPanels/TargetAquisition';
 import { WeaponMfdPanel } from './MfdPanels/WeaponPanel';
@@ -362,6 +374,110 @@ const PrimaryPanel = (props: MfdProps) => {
   }
 };
 
+const ManualOffsetInputs = () => {
+  const { act } = useBackend<DropshipProps>();
+  const { selectedTarget } = useLazeTarget();
+  const { fmXOffsetValue, setFmXOffsetValue } = useFiremissionXOffsetValue();
+  const { fmYOffsetValue, setFmYOffsetValue } = useFiremissionYOffsetValue();
+
+  const minValue = -12;
+  const maxValue = 12;
+
+  const handleXOffsetChange = (value: number) => {
+    if (value < minValue || value > maxValue) return;
+    setFmXOffsetValue(value);
+    act('firemission-dual-offset-camera', {
+      target_id: selectedTarget,
+      x_offset_value: value,
+      y_offset_value: fmYOffsetValue,
+    });
+  };
+
+  const handleYOffsetChange = (value: number) => {
+    if (value < minValue || value > maxValue) return;
+    setFmYOffsetValue(value);
+    act('firemission-dual-offset-camera', {
+      target_id: selectedTarget,
+      x_offset_value: fmXOffsetValue,
+      y_offset_value: value,
+    });
+  };
+
+  const handleReset = () => {
+    setFmXOffsetValue(0);
+    setFmYOffsetValue(0);
+    act('firemission-dual-offset-camera', {
+      target_id: selectedTarget,
+      x_offset_value: 0,
+      y_offset_value: 0,
+    });
+  };
+
+  return (
+    <Box className="ManualOffsetInputs">
+      <Stack vertical align="center">
+        <Stack.Item>
+          <Stack align="center">
+            <Stack.Item>
+              <Box fontSize="12px" color="#00e94e" mr={1}>
+                X:
+              </Box>
+            </Stack.Item>
+            <Stack.Item>
+              <NumberInput
+                width="3em"
+                step={1}
+                minValue={minValue}
+                maxValue={maxValue}
+                value={fmXOffsetValue}
+                onChange={handleXOffsetChange}
+                className="OffsetNumberInput"
+              />
+            </Stack.Item>
+          </Stack>
+        </Stack.Item>
+        <Stack.Item height="2px" />
+        <Stack.Item>
+          <Stack align="center">
+            <Stack.Item>
+              <Box fontSize="12px" color="#00e94e" mr={1}>
+                Y:
+              </Box>
+            </Stack.Item>
+            <Stack.Item>
+              <NumberInput
+                width="3em"
+                step={1}
+                minValue={minValue}
+                maxValue={maxValue}
+                value={fmYOffsetValue}
+                onChange={handleYOffsetChange}
+                className="OffsetNumberInput"
+              />
+            </Stack.Item>
+          </Stack>
+        </Stack.Item>
+        <Stack.Item height="5px" />
+        <Stack.Item>
+          <Button
+            content="Reset"
+            onClick={handleReset}
+            fontSize="11px"
+            width="4em"
+            height="1.5em"
+            color="#00e94e"
+            backgroundColor="transparent"
+            style={{
+              border: '1px solid #00e94e',
+              color: '#00e94e',
+            }}
+          />
+        </Stack.Item>
+      </Stack>
+    </Box>
+  );
+};
+
 export const DropshipWeaponsConsole = () => {
   return (
     <Window height={700} width={1420}>
@@ -387,7 +503,11 @@ export const DropshipWeaponsConsole = () => {
                   <br />
                   Calibration
                 </Stack.Item>
-                <Stack.Item height="280px" />
+                <Stack.Item>
+                  <ManualOffsetInputs />
+                </Stack.Item>
+                <Stack.Item height="10px" />
+                <Stack.Item height="260px" />
               </Stack>
             </Stack.Item>
 

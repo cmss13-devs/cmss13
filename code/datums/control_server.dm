@@ -1,3 +1,6 @@
+/// If this client is attached to a controller, which allows for sending updates to external software
+/client/var/datum/control_server/control_server
+
 /// Allows us to communicate back to an external localhost webserver
 /// This external webserver should have two endpoints, "status" which
 /// can return any sort of JSON blob, and "restart" which triggers

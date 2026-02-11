@@ -134,5 +134,3 @@
 	/// If this client has any windows scaling applied
 	var/window_scaling
 
-	/// If this client is attached to a controller, which allows for sending updates to external software
-	var/datum/control_server/control_server

@@ -55,7 +55,7 @@
 
 /datum/construction_template/xenomorph/antiair_pylon
 	name = XENO_STRUCTURE_PYLON_ANTIAIR
-	description = "Damages dropships that executes firemissions within its area."
+	description = "Obstructs view from above while jamming laser signals. Damages dropships that executes firemissions within its area."
 	build_type = /obj/effect/alien/resin/special/antiair_pylon
 	build_icon_state = "pylon_antiair"
 	plasma_required = 100 * XENO_STRUCTURE_PLASMA_MULTIPLIER

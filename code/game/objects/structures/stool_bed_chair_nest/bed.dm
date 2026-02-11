@@ -246,7 +246,6 @@
 	SIGNAL_HANDLER
 
 	if(buckle_target.mob_size <= MOB_SIZE_XENO)
-		if(buckle_target.stat == DEAD || HAS_TRAIT(buckle_target, TRAIT_OPPOSABLE_THUMBS))
 			return
 
 	if(buckle_target.mob_size > MOB_SIZE_HUMAN)

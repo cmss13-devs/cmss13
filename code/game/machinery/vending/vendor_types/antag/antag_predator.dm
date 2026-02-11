@@ -344,26 +344,6 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 			if("Cleopatra")
 				icon_state = "halfarmor_elite_cleopatra"
 				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elite_cleopatra")
-			if("Emissary (Classic)")
-				icon_state = "halfarmor_elite_emissary_classic"
-				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elite_emissary_classic")
-				desc = "A suit of armor carefully crafted using parts from marine equipment." // immersion, this isnt normal clan armor
-			if("Emissary (Desert)")
-				icon_state = "halfarmor_elite_emissary_classic_desert"
-				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elite_emissary_classic_desert")
-				desc = "A suit of armor carefully crafted using parts from marine equipment."
-			if("Emissary (Jungle)")
-				icon_state = "halfarmor_elite_emissary_jungle"
-				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elite_emissary_jungle")
-				desc = "A suit of armor carefully crafted using parts from marine equipment."
-			if("Emissary (Snow)")
-				icon_state = "halfarmor_elite_emissary_snow"
-				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elite_emissary_snow")
-				desc = "A suit of armor carefully crafted using parts from marine equipment."
-			if("Emissary (Urban)")
-				icon_state = "halfarmor_elite_emissary_urban"
-				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elite_emissary_urban")
-				desc = "A suit of armor carefully crafted using parts from marine equipment."
 		user.update_inv_wear_suit()
 		return
 
@@ -414,21 +394,6 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 			if("Cleopatra")
 				icon_state = "pred_mask_elite_cleopatra"
 				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elite_cleopatra")
-			if("Emissary (Classic)") // doesn't have unique mask sprites for the variants, but every variant has to be covered in here anyways
-				icon_state = "pred_mask_elite_emissary"
-				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elite_emissary")
-			if("Emissary (Desert)")
-				icon_state = "pred_mask_elite_emissary"
-				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elite_emissary")
-			if("Emissary (Jungle)")
-				icon_state = "pred_mask_elite_emissary"
-				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elite_emissary")
-			if("Emissary (Snow)")
-				icon_state = "pred_mask_elite_emissary"
-				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elite_emissary")
-			if("Emissary (Urban)")
-				icon_state = "pred_mask_elite_emissary"
-				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elite_emissary")
 		user.update_inv_wear_mask()
 		return
 
@@ -461,26 +426,6 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 			if("Cleopatra")
 				icon_state = "elite_y-boots1_cleopatra"
 				LAZYSET(item_state_slots, WEAR_FEET, "elite_y-boots1_cleopatra")
-			if("Emissary (Classic)")
-				icon_state = "elite_y-boots1_emissary_classic"
-				LAZYSET(item_state_slots, WEAR_FEET, "elite_y-boots1_emissary_classic")
-				desc = "A pair of armored, well-balanced boots plated in salvaged marine armor." // ditto as with the suit; not standard clan armor
-			if("Emissary (Desert)")
-				icon_state = "elite_y-boots1_emissary_desert"
-				desc = "A pair of armored, well-balanced boots plated in salvaged marine armor."
-				LAZYSET(item_state_slots, WEAR_FEET, "elite_y-boots1_emissary_desert")
-			if("Emissary (Jungle)")
-				icon_state = "elite_y-boots1_emissary_jungle"
-				LAZYSET(item_state_slots, WEAR_FEET, "elite_y-boots1_emissary_jungle")
-				desc = "A pair of armored, well-balanced boots plated in salvaged marine armor."
-			if("Emissary (Snow)")
-				icon_state = "elite_y-boots1_emissary_snow"
-				LAZYSET(item_state_slots, WEAR_FEET, "elite_y-boots1_emissary_snow")
-				desc = "A pair of armored, well-balanced boots plated in salvaged marine armor."
-			if("Emissary (Urban)")
-				icon_state = "elite_y-boots1_emissary_urban"
-				LAZYSET(item_state_slots, WEAR_FEET, "elite_y-boots1_emissary_urban")
-				desc = "A pair of armored, well-balanced boots plated in salvaged marine armor."
 		user.update_inv_shoes()
 		return
 

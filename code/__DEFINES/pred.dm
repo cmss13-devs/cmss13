@@ -7,7 +7,7 @@
 #define PRED_TRANSLATORS list(PRED_TECH_MODERN, PRED_TECH_RETRO, PRED_TECH_COMBO)
 #define PRED_INVIS_SOUNDS list(PRED_TECH_MODERN, PRED_TECH_RETRO)
 #define PRED_LEGACIES list("None", "Dragon", "Swamp", "Enforcer", "Collector")
-#define PRED_UNIQUES list("None", "Anubys", "Cleopatra", "Emissary (Classic)", "Emissary (Desert)", "Emissary (Jungle)", "Emissary (Snow)", "Emissary (Urban)")
+#define PRED_UNIQUES list("None", "Anubys", "Cleopatra")
 #define PRED_SKIN_COLOR list("tan", "green", "purple", "blue", "red", "black")
 
 #define PRED_YAUTJA_CAPE "yautja cape"

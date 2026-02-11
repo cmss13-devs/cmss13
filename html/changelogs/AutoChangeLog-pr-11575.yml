@@ -1,5 +1,0 @@
-author: "kiVts"
-delete-after: True
-changes:
-  - rscadd: "Fire-penetrating now makes particles appear on a fire"
-  - balance: "Made white-flame harder to get."

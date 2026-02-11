@@ -239,7 +239,6 @@
 	playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 
 /mob/living/carbon/human/proc/check_for_injuries()
-	//Target is not us
 	var/t_him = "it"
 	switch(gender)
 		if(MALE)

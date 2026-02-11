@@ -1098,6 +1098,7 @@
 	name = "Crash Site Valley"
 	icon_state = "yellow"
 	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
+	always_unpowered = 0
 
 /area/desert_dam/exterior/valley/north_valley_dam
 	name = "North Dam Valley"

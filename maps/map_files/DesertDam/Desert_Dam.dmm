@@ -45937,10 +45937,6 @@
 /obj/item/device/taperecorder,
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/security/office)
-"kbW" = (
-/obj/effect/blocker/toxic_water/Group_2,
-/turf/open/desert/desert_shore/shore_edge1/west,
-/area/desert_dam/exterior/river/riverside_east)
 "kcd" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
@@ -182677,8 +182673,8 @@ eOZ
 eOZ
 rLu
 tkz
-nSG
-hkn
+ums
+qDz
 gaJ
 dHl
 vrB
@@ -182911,8 +182907,8 @@ eOZ
 eOZ
 rAw
 yeK
-jLZ
 ums
+qDz
 gaJ
 dHl
 vrB
@@ -183145,8 +183141,8 @@ eOZ
 eOZ
 eOZ
 rLu
-jLZ
 ums
+qDz
 gaJ
 dHl
 tVM
@@ -183379,8 +183375,8 @@ eOZ
 eOZ
 eOZ
 rLu
-jLZ
 ums
+qDz
 nIB
 wkO
 ckJ
@@ -183613,8 +183609,8 @@ eOZ
 eOZ
 eOZ
 rLu
-jLZ
 ums
+qDz
 tzQ
 xGc
 ckJ
@@ -183847,8 +183843,8 @@ eOZ
 eOZ
 eOZ
 rLu
-qQE
-kbW
+ums
+qDz
 gaJ
 dHl
 tVM

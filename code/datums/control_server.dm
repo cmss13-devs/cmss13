@@ -46,10 +46,16 @@
 		window.reconnect = () => {
 			window.contact('get-url').then((response) => {
 				if (response?.url) {
-					console.log("restart requested");
-//					BYOND.command(`.url ${response.url}`)
+					BYOND.command(`.url ${response.url}`)
 				}
 			});
+		}
+
+		window.pong = () => {
+			if (awaitingPong) {
+				awaitingPong = false;
+				failedPings = 0;
+			}
 		}
 
 		function ping() {

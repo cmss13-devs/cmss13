@@ -162,10 +162,18 @@ export const DummyTablet = () => {
             <Button compact onClick={() => act('brute_damage_organ')}>
               - Set Organ Damage
             </Button>
-            <Button compact>- Simulate embryo</Button>
+            <Button compact onClick={() => act('simulate_parasite')}>
+              - Simulate embryo
+            </Button>
           </Flex>
           <Divider />
-          <Button mt="3px" width="100%" textAlign="center" bold>
+          <Button
+            mt="3px"
+            width="100%"
+            textAlign="center"
+            bold
+            onClick={() => act('randomize_condition')}
+          >
             - Randomize Condition -
           </Button>
           <Button

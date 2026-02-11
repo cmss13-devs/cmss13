@@ -10,11 +10,22 @@
 	///Should the dummy be destroyed on hijack?
 	var/dust_on_hijack = FALSE
 
+	/// List of items to be used as 'training embryo'
+	var/static/list/parasite_types = list(
+		/obj/item/toy/plush/farwa,
+		/obj/item/toy/plush/bee,
+		/obj/item/toy/plush/shark,
+		/obj/item/toy/plush/gnarp
+	)
+
+	COOLDOWN_DECLARE(randomize_condition_cooldown)
+
 /obj/item/device/professor_dummy_tablet/Initialize()
 	. = ..()
 	var/turf/actual_location = get_turf(src)
 	if(is_mainship_level(actual_location.z))
 		dust_on_hijack = TRUE
+	COOLDOWN_START(src, randomize_condition_cooldown, 5 SECONDS)
 	RegisterSignal(SSdcs, COMSIG_GLOB_HIJACK_LANDED, PROC_REF(destroy_dummy_upon_hijack))
 
 /obj/item/device/professor_dummy_tablet/proc/destroy_dummy_upon_hijack()
@@ -104,6 +115,30 @@
 	var/selection = ""
 	selection = tgui_input_list(usr, "Select Organ", "Organ selection", procedureChoices)
 	return LAZYACCESS(procedureChoices, selection)
+
+/obj/item/device/professor_dummy_tablet/proc/randomize_dummy_condition(mob/user)
+	if(!COOLDOWN_FINISHED(src, randomize_condition_cooldown))
+		to_chat(user, SPAN_WARNING("Tablet processors recharging!"))
+		return FALSE
+
+	COOLDOWN_START(src, randomize_condition_cooldown, 5 SECONDS)
+
+	var/damage_amount_split = ((rand(1, 100)) / 100)
+	var/list/limbs = linked_dummy.limbs
+	var/amount_of_parts = rand(1, 10)	// Amount of times to roll for a limb fracture
+	var/damage_amount = rand(50, 400)
+
+	for(var/i in 1 to amount_of_parts)
+		var/obj/limb/selected_limb = pick(limbs)
+		selected_limb.take_damage(round((damage_amount * damage_amount_split) / amount_of_parts), round((damage_amount * (1 - damage_amount_split)) / amount_of_parts))
+		if((damage_amount > selected_limb.min_broken_damage) && prob(40))
+			selected_limb.fracture()
+
+	if(prob(40))
+		linked_dummy.setToxLoss(rand(1, 100))
+
+	linked_dummy.updatehealth()
+	linked_dummy.UpdateDamageIcon()
 
 /obj/item/device/professor_dummy_tablet/ui_static_data(mob/user)
 	var/list/data = list()
@@ -241,5 +276,14 @@
 				return
 			limb.droplimb(clean_amputation, TRUE, "tablet")
 			playsound(loc, 'sound/weapons/slice.ogg', 25)
+		if("simulate_parasite")
+			if(locate(/obj/item/toy/plush) in linked_dummy)
+				to_chat(user, SPAN_WARNING("[linked_dummy] already contains a parasite!"))
+				return
+			var/obj/item/toy/plush/plush = pick(parasite_types)
+			new plush(linked_dummy)
+			to_chat(user, SPAN_WARNING("[linked_dummy] now contains a training parasite!"))
+		if("randomize_condition")
+			randomize_dummy_condition(user)
 		if("reset")
 			linked_dummy.revive()

@@ -96,5 +96,6 @@ GLOBAL_LIST_EMPTY(dummy_mob_list)
 /// Professor Dummy, used by CMOs and SEAs to teach new nurses/doctors
 /mob/living/carbon/human/professor_dummy/Initialize()
 	. = ..()
+	status_flags |= FAKESOUL
 	create_hud()
 	arm_equipment(src, /datum/equipment_preset/other/professor_dummy)

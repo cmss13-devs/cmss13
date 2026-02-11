@@ -43,13 +43,12 @@ export const DummyTablet = () => {
                 {data.health}% Healthy
               </ProgressBar>
             </Flex.Item>
-            <Flex.Item width="100%" align="center">
+            <Flex.Item width="100%" align="center" fontSize="11px">
               <Flex direction="row">
-                <Button width="75%" onClick={() => act('mapview')}>
-                  Status: [ ALIVE ]
+                <Button compact width="75%">
+                  Status: [ {data.status === 3 ? 'DECEASED' : 'ALIVE'} ]
                 </Button>
                 <Button
-                  onClick={() => act('mapview')}
                   width="25%"
                   icon="skull"
                   backgroundColor="transparent"
@@ -62,34 +61,24 @@ export const DummyTablet = () => {
             <Flex.Item width="100%">
               <Flex direction="row">
                 <Button
-                  width="70%"
+                  width="80%"
                   backgroundColor="transparent"
                   color="hsl(140, 100%, 46%)"
                   compact
                   fontSize="11px"
                   verticalAlignContent="middle"
                 >
-                  Revival timer: 300 seconds
+                  Revival timer: {data.revival_timer} seconds
                 </Button>
                 <Button
-                  onClick={() => act('mapview')}
-                  width="15%"
+                  width="20%"
                   fontSize="10px"
                   compact
                   textAlign="center"
                   verticalAlignContent="middle"
+                  onClick={() => act('set_revival_time')}
                 >
                   Set
-                </Button>
-                <Button
-                  onClick={() => act('mapview')}
-                  width="15%"
-                  fontSize="10px"
-                  compact
-                  textAlign="center"
-                  verticalAlignContent="middle"
-                >
-                  Pause
                 </Button>
               </Flex>
             </Flex.Item>

@@ -148,6 +148,8 @@
 	return data
 
 /obj/item/device/professor_dummy_tablet/ui_data(mob/user)
+	if(!linked_dummy)
+		return
 
 	var/list/data = list(
 		"status" = linked_dummy.stat,
@@ -156,8 +158,15 @@
 		"total_burn" = floor(linked_dummy.getFireLoss()),
 		"total_toxin" = floor(linked_dummy.getToxLoss()),
 		"total_oxy" = floor(linked_dummy.getOxyLoss()),
-		"revival_timer" = null
+		"revival_timer" = linked_dummy.revive_grace_period DECISECONDS_TO_SECONDS
 	)
+
+	if(linked_dummy.stat == DEAD)
+		var/revival_time_left = linked_dummy.timeofdeath - world.time + linked_dummy.revive_grace_period
+		if(revival_time_left <= 0)
+			data["revival_timer"] = 0
+		else
+			data["revival_timer"] = floor(revival_time_left DECISECONDS_TO_SECONDS)
 
 	return data
 
@@ -274,6 +283,8 @@
 			var/obj/limb/limb = linked_dummy.get_limb(selection)
 			if(!limb || limb?.status & LIMB_DESTROYED)
 				return
+			if(!clean_amputation)
+				limb.parent?.take_damage(30, 0, TRUE)
 			limb.droplimb(clean_amputation, TRUE, "tablet")
 			playsound(loc, 'sound/weapons/slice.ogg', 25)
 		if("simulate_parasite")
@@ -285,5 +296,10 @@
 			to_chat(user, SPAN_WARNING("[linked_dummy] now contains a training parasite!"))
 		if("randomize_condition")
 			randomize_dummy_condition(user)
+		if("set_revival_time")
+			var/grace_period = tgui_input_number(user, "How many seconds should the revival timer be set to?")
+			if(!grace_period || grace_period == linked_dummy.revive_grace_period)
+				return
+			linked_dummy.revive_grace_period = grace_period SECONDS
 		if("reset")
 			linked_dummy.revive()

@@ -154,13 +154,16 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 /obj/item/clothing/suit/armor/yautja/hunter/emissary/Initialize(mapload) // override random armor icons
 	. = ..(mapload, 0)
 	if(conforming)
-		camo_type = SSmapping.configs[GROUND_MAP].camouflage_type
+		if(SSmapping.configs[GROUND_MAP].camouflage_type == desert)
+			camo_type = "classic_[SSmapping.configs[GROUND_MAP].camouflage_type]"
+		else
+			camo_type = [SSmapping.configs[GROUND_MAP].camouflage_type]
 	icon_state = "halfarmor_elite_emissary_[camo_type]"
 	LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elite_emissary_[camo_type]")
 
 /obj/item/clothing/suit/armor/yautja/hunter/emissary/desert
-	camo_type = "desert"
-	icon_state = "halfarmor_elite_emissary_desert"
+	camo_type = "classic_desert"
+	icon_state = "halfarmor_elite_emissary_classic_desert"
 
 /obj/item/clothing/suit/armor/yautja/hunter/emissary/jungle
 	camo_type = "jungle"
@@ -309,21 +312,28 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 /obj/item/clothing/shoes/yautja/hunter/knife/emissary/Initialize(mapload)
 	. = ..(mapload, 0)
 	if(conforming)
-		camo_type = SSmapping.configs[GROUND_MAP].camouflage_type
+		if(SSmapping.configs[GROUND_MAP].camouflage_type == desert)
+			camo_type = "classic_[SSmapping.configs[GROUND_MAP].camouflage_type]"
+		else
+			camo_type = [SSmapping.configs[GROUND_MAP].camouflage_type]
 	icon_state = "elite_y-boots1_emissary_[camo_type]"
 	LAZYSET(item_state_slots, WEAR_FEET, "elite_y-boots1_emissary_[camo_type]")
 
 /obj/item/clothing/shoes/yautja/hunter/knife/emissary/desert
-	camo_type = "desert"
+	camo_type = "classic_desert"
+	icon_state = "elite_y-boots1_emissary_classic_desert"
 
 /obj/item/clothing/shoes/yautja/hunter/knife/emissary/jungle
 	camo_type = "jungle"
+	icon_state = "elite_y-boots1_emissary_jungle"
 
 /obj/item/clothing/shoes/yautja/hunter/knife/emissary/snow
 	camo_type = "snow"
+	icon_state = "elite_y-boots1_emissary_snow"
 
 /obj/item/clothing/shoes/yautja/hunter/knife/emissary/urban
 	camo_type = "urban"
+	icon_state = "elite_y-boots1_emissary_urban"
 
 /obj/item/clothing/shoes/yautja/hunter/knife/emissary/camo_conforming
 	conforming = TRUE

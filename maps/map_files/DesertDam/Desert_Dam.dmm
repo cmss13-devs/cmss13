@@ -1756,6 +1756,10 @@
 /obj/structure/surface/table,
 /turf/open/floor/darkyellow2,
 /area/desert_dam/interior/dam_interior/control_room)
+"aft" = (
+/obj/structure/flora/grass/desert/lightgrass_6,
+/turf/open/desert/dirt/rock1,
+/area/desert_dam/exterior/valley/valley_wilderness)
 "afu" = (
 /obj/structure/surface/table,
 /obj/item/paper{
@@ -3527,7 +3531,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/security/workshop)
 "akP" = (
-/obj/effect/decal/sand_overlay/sand1,
+/obj/effect/decal/sand_overlay/sand2,
 /turf/open/asphalt/tile,
 /area/desert_dam/interior/lab_northeast/east_lab_west_entrance)
 "akQ" = (
@@ -24577,12 +24581,6 @@
 	},
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/security/workshop)
-"bML" = (
-/obj/effect/decal/sand_overlay/sand1/corner1{
-	dir = 4
-	},
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
-/area/desert_dam/exterior/valley/valley_wilderness)
 "bMN" = (
 /turf/closed/wall,
 /area/desert_dam/building/medical/CMO)
@@ -26484,7 +26482,7 @@
 /turf/open/floor/prison/floor_marked/southwest,
 /area/desert_dam/exterior/telecomm/lz2_tcomms)
 "cFa" = (
-/obj/effect/decal/sand_overlay/sand1{
+/obj/effect/decal/sand_overlay/sand2{
 	dir = 8
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
@@ -36411,7 +36409,7 @@
 /turf/open/floor/prison/darkyellow2/east,
 /area/desert_dam/building/substation/west)
 "gtw" = (
-/obj/effect/decal/sand_overlay/sand1/corner1{
+/obj/effect/decal/sand_overlay/sand2/corner2{
 	dir = 1
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
@@ -42706,6 +42704,9 @@
 "iLH" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/crap_item,
+/obj/structure/machinery/light{
+	dir = 8
+	},
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/control_room)
 "iLM" = (
@@ -45930,7 +45931,7 @@
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/building/security/office)
 "kbQ" = (
-/turf/open/desert/dirt/desert_transition_edge1/northwest,
+/turf/open/desert/dirt/rock1,
 /area/desert_dam/interior/lab_northeast/east_lab_west_entrance)
 "kbU" = (
 /obj/structure/surface/table/woodentable/fancy,
@@ -47928,7 +47929,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/lobby)
 "kTz" = (
-/obj/effect/decal/sand_overlay/sand1/corner1,
+/obj/effect/decal/sand_overlay/sand2/corner2,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "kTH" = (
@@ -57367,7 +57368,7 @@
 	dir = 8;
 	pixel_x = 24
 	},
-/turf/open/desert/dirt,
+/turf/open/desert/dirt/rock1,
 /area/desert_dam/interior/lab_northeast/east_lab_west_entrance)
 "oBZ" = (
 /turf/closed/wall/hangar{
@@ -60547,7 +60548,7 @@
 /turf/open/floor/prison/yellow/east,
 /area/desert_dam/building/hydroponics/hydroponics)
 "pNX" = (
-/obj/effect/decal/sand_overlay/sand1/corner1{
+/obj/effect/decal/sand_overlay/sand2/corner2{
 	dir = 4
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
@@ -67031,9 +67032,6 @@
 /turf/open/floor/greengrid,
 /area/desert_dam/interior/dam_interior/tech_storage)
 "sod" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
 /obj/structure/surface/table,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/device/radio,
@@ -68439,7 +68437,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/landing_pad_one)
 "sOj" = (
-/obj/effect/decal/sand_overlay/sand1{
+/obj/effect/decal/sand_overlay/sand2{
 	dir = 1
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
@@ -167845,12 +167843,12 @@ vmf
 kTz
 cFa
 cFa
-bML
-dHD
-dHD
-dHD
-dHD
-kTz
+cFa
+cFa
+cFa
+cFa
+cFa
+cFa
 cFa
 pNX
 dHD
@@ -168079,13 +168077,13 @@ spP
 akP
 oBY
 kbQ
-qaR
-qaR
-qaR
-qaR
-qaR
-qaR
-lXy
+syb
+syb
+syb
+syb
+aft
+syb
+syb
 sOj
 uxM
 dZB
@@ -168314,12 +168312,12 @@ yax
 nRp
 cBC
 nRp
-fTA
-fTA
+nRp
+nRp
 qaR
 qaR
 qaR
-lXy
+syb
 sOj
 uxM
 vIu

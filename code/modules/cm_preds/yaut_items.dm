@@ -306,7 +306,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	var/conforming = FALSE
 	var/camo_type = "classic"
 
-/obj/item/clothing/shoes/yautja/New(location)
+/obj/item/clothing/shoes/yautja/hunter/knife/emissary/New(location)
 	..()
 	if(conforming)
 		camo_type = SSmapping.configs[GROUND_MAP].camouflage_type

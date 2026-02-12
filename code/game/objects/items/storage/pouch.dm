@@ -285,7 +285,7 @@
 
 /obj/item/storage/pouch/firstaid/hunted
 	name = "old pouch"
-	desc = "A general-purpose pouch used to carry neccessary survival items."
+	desc = "A general-purpose, five-pocket pouch used to carry necessary survival items."
 	icon_state = "survival"
 	storage_slots = 5
 	can_hold = list(

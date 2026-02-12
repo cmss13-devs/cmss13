@@ -557,118 +557,121 @@ const FiremissionGridView = (
           </Stack>
 
           {/* Grid rows */}
-          {gridData.slice(stepScroll, endStep).map((row, index) => {
-            const step = stepScroll + index;
-            // Calculate which tile this step fires from
-            let stepTile = 0;
-            let stepNextTile = tallyStep;
-            while (step + 1 > stepNextTile) {
-              stepTile++;
-              stepNextTile += tallyStep;
-            }
+          {gridData
+            .slice(stepScroll, endStep)
+            .reverse()
+            .map((row, index) => {
+              const step = endStep - 1 - index;
+              // Calculate which tile this step fires from
+              let stepTile = 0;
+              let stepNextTile = tallyStep;
+              while (step + 1 > stepNextTile) {
+                stepTile++;
+                stepNextTile += tallyStep;
+              }
 
-            // Check if this step starts a new tile
-            let prevStepTile = 0;
-            let prevStepNextTile = tallyStep;
-            const prevStep = step - 1;
-            while (prevStep >= 0 && prevStep + 1 > prevStepNextTile) {
-              prevStepTile++;
-              prevStepNextTile += tallyStep;
-            }
-            const isNewTile =
-              step > 0 && stepTile !== prevStepTile && tallyStep > 1;
+              // Check if this step starts a new tile
+              let prevStepTile = 0;
+              let prevStepNextTile = tallyStep;
+              const prevStep = step - 1;
+              while (prevStep >= 0 && prevStep + 1 > prevStepNextTile) {
+                prevStepTile++;
+                prevStepNextTile += tallyStep;
+              }
+              const isNewTile =
+                step > 0 && stepTile !== prevStepTile && tallyStep > 1;
 
-            return (
-              <div key={step}>
-                {/* Tile transition marker */}
-                {isNewTile && (
-                  <Stack style={{ marginTop: '2px', marginBottom: '0px' }}>
-                    <Stack.Item width="40px" textAlign="center">
-                      <strong style={{ color: '#ffff00', fontSize: '12px' }}>
-                        T{stepTile + 1}
-                      </strong>
-                    </Stack.Item>
-                    <Stack.Item grow>
-                      <hr
-                        style={{
-                          border: '1px solid rgba(255, 255, 0, 0.5)',
-                          margin: '0px',
-                          height: '1px',
-                        }}
-                      />
-                    </Stack.Item>
-                  </Stack>
-                )}
-
-                {/* Step row */}
-                <Stack>
-                  <Stack.Item width="40px" textAlign="center">
-                    <strong style={{ color: '#00eb4e' }}>{step + 1}</strong>
-                  </Stack.Item>
-                  {row.map((cell, offset) => (
-                    <Stack.Item
-                      key={offset}
-                      width="25px"
-                      textAlign="center"
-                      style={{
-                        backgroundColor:
-                          offset === centerOffset
-                            ? 'rgba(0, 235, 78, 0.15)'
-                            : 'transparent',
-                        border: '1px solid rgba(0, 235, 78, 1.0)',
-                        height: '20px',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                      }}
-                    >
-                      {cell.length > 0 && (
-                        <span
+              return (
+                <div key={step}>
+                  {/* Tile transition marker */}
+                  {isNewTile && (
+                    <Stack style={{ marginTop: '2px', marginBottom: '0px' }}>
+                      <Stack.Item width="40px" textAlign="center">
+                        <strong style={{ color: '#ffff00', fontSize: '12px' }}>
+                          T{stepTile + 1}
+                        </strong>
+                      </Stack.Item>
+                      <Stack.Item grow>
+                        <hr
                           style={{
-                            color: '#00eb4e',
-                            fontSize: '10px',
-                            display: 'flex',
-                            flexDirection: 'column',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            lineHeight: '1',
+                            border: '1px solid rgba(255, 255, 0, 0.5)',
+                            margin: '0px',
+                            height: '1px',
                           }}
-                        >
-                          <span style={{ display: 'flex' }}>
-                            {cell.map((weapon, idx) => (
-                              <span
-                                key={idx}
-                                style={{
-                                  color: weapon.color,
-                                  fontSize: '12px',
-                                  fontWeight: 'bold',
-                                  marginRight:
-                                    idx < cell.length - 1 ? '1px' : '0px',
-                                }}
-                                title={`${weapon.label} - Step ${step + 1}`}
-                              >
-                                {weapon.symbol}
-                              </span>
-                            ))}
-                          </span>
-                          {cell.length > 1 && (
-                            <span
-                              style={{
-                                fontSize: '8px',
-                                color: 'rgba(0, 235, 78, 0.8)',
-                              }}
-                            >
-                              {cell.length}
-                            </span>
-                          )}
-                        </span>
-                      )}
+                        />
+                      </Stack.Item>
+                    </Stack>
+                  )}
+
+                  {/* Step row */}
+                  <Stack>
+                    <Stack.Item width="40px" textAlign="center">
+                      <strong style={{ color: '#00eb4e' }}>{step + 1}</strong>
                     </Stack.Item>
-                  ))}
-                </Stack>
-              </div>
-            );
-          })}
+                    {row.map((cell, offset) => (
+                      <Stack.Item
+                        key={offset}
+                        width="25px"
+                        textAlign="center"
+                        style={{
+                          backgroundColor:
+                            offset === centerOffset
+                              ? 'rgba(0, 235, 78, 0.15)'
+                              : 'transparent',
+                          border: '1px solid rgba(0, 235, 78, 1.0)',
+                          height: '20px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                        }}
+                      >
+                        {cell.length > 0 && (
+                          <span
+                            style={{
+                              color: '#00eb4e',
+                              fontSize: '10px',
+                              display: 'flex',
+                              flexDirection: 'column',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              lineHeight: '1',
+                            }}
+                          >
+                            <span style={{ display: 'flex' }}>
+                              {cell.map((weapon, idx) => (
+                                <span
+                                  key={idx}
+                                  style={{
+                                    color: weapon.color,
+                                    fontSize: '12px',
+                                    fontWeight: 'bold',
+                                    marginRight:
+                                      idx < cell.length - 1 ? '1px' : '0px',
+                                  }}
+                                  title={`${weapon.label} - Step ${step + 1}`}
+                                >
+                                  {weapon.symbol}
+                                </span>
+                              ))}
+                            </span>
+                            {cell.length > 1 && (
+                              <span
+                                style={{
+                                  fontSize: '8px',
+                                  color: 'rgba(0, 235, 78, 0.8)',
+                                }}
+                              >
+                                {cell.length}
+                              </span>
+                            )}
+                          </span>
+                        )}
+                      </Stack.Item>
+                    ))}
+                  </Stack>
+                </div>
+              );
+            })}
           {/* Legend */}
           <Stack.Item
             style={{ marginTop: '10px', fontSize: '10px', color: '#00eb4e' }}

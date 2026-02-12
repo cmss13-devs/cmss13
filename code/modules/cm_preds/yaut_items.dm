@@ -154,16 +154,13 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 /obj/item/clothing/suit/armor/yautja/hunter/emissary/Initialize(mapload) // override random armor icons
 	. = ..(mapload, 0)
 	if(conforming)
-		if(SSmapping.configs[GROUND_MAP].camouflage_type == "desert")
-			camo_type = "classic_[SSmapping.configs[GROUND_MAP].camouflage_type]"
-		else
-			camo_type = SSmapping.configs[GROUND_MAP].camouflage_type
+		camo_type = SSmapping.configs[GROUND_MAP].camouflage_type
 	icon_state = "halfarmor_elite_emissary_[camo_type]"
 	LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elite_emissary_[camo_type]")
 
 /obj/item/clothing/suit/armor/yautja/hunter/emissary/desert
-	camo_type = "classic_desert"
-	icon_state = "halfarmor_elite_emissary_classic_desert"
+	camo_type = "desert"
+	icon_state = "halfarmor_elite_emissary_desert"
 
 /obj/item/clothing/suit/armor/yautja/hunter/emissary/jungle
 	camo_type = "jungle"

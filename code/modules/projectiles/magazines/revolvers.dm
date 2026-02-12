@@ -160,6 +160,9 @@
 	gun_type = /obj/item/weapon/gun/revolver
 
 /obj/item/ammo_magazine/internal/revolver/create_handful(mob/user, transfer_amount, obj_name = src)
+	if(current_rounds <= 0)
+		return FALSE
+
 	var/list/rounds_in_cylinder = list()
 	for(var/ammo_path in chamber_contents)
 		if(ammo_path != "empty" && ammo_path != "blank")

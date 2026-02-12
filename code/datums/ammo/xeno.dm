@@ -265,7 +265,9 @@
 	. = ..()
 	if(istype(target_object, /obj/structure/barricade))
 		var/obj/structure/barricade/barricade = target_object
-		barricade.acid_spray_act()
+		var/datum/effects/acid/acid_effect = locate() in barricade
+		if(!acid_effect)
+			barricade.acid_spray_act()
 
 	on_hit_turf(get_turf(target_object), proj_hit)
 

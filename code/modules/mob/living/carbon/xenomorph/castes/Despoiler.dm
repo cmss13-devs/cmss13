@@ -313,7 +313,7 @@
 
 	playsound(xeno, 'sound/voice/xeno_praetorian_screech.ogg', 75, 0, status = 0)
 	var/severity = (xeno.health <= (0.7 * xeno.maxHealth)) + (xeno.health <= (0.3 * xeno.maxHealth))
-	var/acid_range = severity ? 3 : 2
+	var/acid_range = severity + 1
 	var/empowered = delegate.next_ability_empowered
 
 	if(empowered)

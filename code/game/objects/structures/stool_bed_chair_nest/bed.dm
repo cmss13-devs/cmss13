@@ -246,7 +246,7 @@
 	SIGNAL_HANDLER
 
 	if(buckle_target.mob_size <= MOB_SIZE_XENO)
-			return
+		return
 
 	if(buckle_target.mob_size > MOB_SIZE_HUMAN)
 		if(!can_carry_big)

@@ -103,7 +103,7 @@
 /obj/item/paper/get_examine_text(mob/user)
 	. = ..()
 	if(in_range(user, src) || isobserver(user))
-		if(!(istype(user, /mob/dead/observer) || istype(user, /mob/living/carbon/human) || isRemoteControlling(user)))
+		if(!(user.mob_flags & CAN_READ || isRemoteControlling(user)))
 			// Show scrambled paper if they aren't a ghost, human, or silicone.
 			read_paper(user,scramble = TRUE)
 		else

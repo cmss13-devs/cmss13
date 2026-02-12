@@ -32,7 +32,7 @@
 	plane = GHOST_PLANE
 	layer = ABOVE_FLY_LAYER
 	stat = DEAD
-	mob_flags = KNOWS_TECHNOLOGY
+	mob_flags = KNOWS_TECHNOLOGY|CAN_READ
 
 	/// If the observer is an admin, are they excluded from the xeno queue?
 	var/admin_larva_protection = TRUE // Enabled by default

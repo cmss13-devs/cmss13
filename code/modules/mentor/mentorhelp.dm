@@ -171,9 +171,12 @@
 		message_title = "MentorHelp"
 		// If there's a mentor, let them mark it. If not, let them unmark it
 		message_sender_options = " (<a href='byond://?src=\ref[src];action=mark'>Mark/Unmark</a>"
-		message_sender_options += " | <a href='byond://?src=\ref[src];action=close'>Close</a> | <a href='byond://?src=\ref[src];action=autorespond'>AutoResponse</a>)"
+		message_sender_options += " | <a href='byond://?src=\ref[src];action=close'>Close</a>"
+		message_sender_options += " | <a href='byond://?src=\ref[src];action=close'>Follow</a>"
+		message_sender_options += " | <a href='byond://?src=\ref[src];action=close'>Friend</a>"
+		message_sender_options += " | <a href='byond://?src=\ref[src];action=autorespond'>AutoResponse</a>)"
 
-	var/message_header = SPAN_MENTORHELP("<span class='prefix'>[message_title] from [message_sender_key]:</span> <span class='message'>[message_sender_options]</span><br>")
+	var/message_header = SPAN_MENTORHELP("<span class='prefix'>[message_title] from [key_name(sender.mob)] ([message_sender_key]):</span> <span class='message'>[message_sender_options]</span><br>")
 	var/message_body = "&emsp;[SPAN_MENTORBODY("<span class='message'>[message]</span>")]<br>"
 	// Et voila! Beautiful wrapped mentorhelp messages
 	return (message_header + message_body)

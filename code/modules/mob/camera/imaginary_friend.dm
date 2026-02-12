@@ -8,6 +8,7 @@
 	stat = DEAD // Keep hearing ghosts and other IFs
 	invisibility = INVISIBILITY_MAXIMUM
 	sight = SEE_MOBS|SEE_TURFS|SEE_OBJS
+	mob_flags = CAN_READ
 	see_in_dark = 8
 	move_on_shuttle = TRUE
 	move_delay = 0
@@ -57,6 +58,10 @@
 	name = client.prefs.real_name
 	real_name = name
 	gender = client.prefs.gender
+
+	for(var/datum/mob_hud/observer_hud in client.prefs.observer_huds)
+		observer_hud.add_hud_to(src, src)
+
 	var/available_appearances = outfit_choices + "Drone"
 	var/outfit_choice = tgui_input_list(usr, "Choose your appearance:", "[src]", available_appearances)
 	if(!outfit_choice)
@@ -66,6 +71,59 @@
 		name = "Helpful Drone"
 		return
 	friend_image = get_flat_human_icon(null, outfit_choice, client.prefs)
+
+/mob/camera/imaginary_friend/click(atom/clicked_atom, list/mods)
+	if(mods[SHIFT_CLICK] && mods[MIDDLE_CLICK])
+		point_to(clicked_atom)
+		return TRUE
+
+	return ..()
+
+/mob/camera/imaginary_friend/is_mob_incapacitated()
+	return FALSE
+
+/mob/camera/imaginary_friend/point_to_atom(atom/target_atom, turf/target_turf)
+	recently_pointed_to = world.time + 2.5 SECONDS
+	new /obj/effect/overlay/temp/point/imaginary_friend(target_turf, src, target_atom)
+
+	visible_message("<b>[src]</b> points to [target_atom]", null, null, 5)
+
+	return TRUE
+
+/obj/effect/overlay/temp/point/imaginary_friend
+	invisibility = INVISIBILITY_MAXIMUM
+	var/list/client/clients
+	var/image/self_icon
+
+/obj/effect/overlay/temp/point/imaginary_friend/Initialize(mapload, mob/camera/imaginary_friend/user)
+	. = ..()
+
+	if(!user)
+		return INITIALIZE_HINT_QDEL
+
+	self_icon = image(icon, src, icon_state = icon_state)
+	LAZYINITLIST(clients)
+
+	show_to_client(user.client)
+
+	show_to_client(user.owner.client)
+
+/obj/effect/overlay/temp/point/imaginary_friend/Destroy()
+	for(var/client/client in clients)
+		client.images -= self_icon
+		LAZYREMOVE(clients, client)
+
+	clients = null
+	self_icon = null
+
+	return ..()
+
+/obj/effect/overlay/temp/point/imaginary_friend/proc/show_to_client(client/target_client)
+	if(!target_client)
+		return
+
+	target_client.images |= self_icon
+	clients |= target_client
 
 /// gets a directional icon for the xeno appearance
 /mob/camera/imaginary_friend/proc/get_xeno_appearance()

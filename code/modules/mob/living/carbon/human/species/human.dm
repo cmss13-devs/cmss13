@@ -87,7 +87,7 @@
 	primitive = /mob/living/carbon/human/monkey
 	unarmed_type = /datum/unarmed_attack/punch
 	flags = HAS_SKIN_TONE|HAS_LIPS|HAS_UNDERWEAR|HAS_HARDCRIT|HAS_SKIN_COLOR
-	mob_flags = KNOWS_TECHNOLOGY
+	mob_flags = KNOWS_TECHNOLOGY|CAN_READ
 	special_body_types = TRUE
 	fire_sprite_prefix = "Standing"
 	fire_sprite_sheet = 'icons/mob/humans/onmob/OnFire.dmi'

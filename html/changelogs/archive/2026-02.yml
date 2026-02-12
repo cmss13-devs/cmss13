@@ -52,3 +52,14 @@
       been applied to all CMB personnel.
   - bugfix: CMB Riot Control synths should have the correct minimap icons vs the CMB
       Investigation synths.
+2026-02-12:
+  Puckaboo2:
+  - bugfix: You can now apply Severe Burns or Eschar on a mob through the limb status
+      editor.
+  - spellcheck: Adds a space between your limb status and (Severe Burns) when you
+      check yourself.
+  - bugfix: Nonbinaries being 'himself' to other people while checking themselves
+      for injuries should no longer occur.
+  ori-disillusion-mirnov:
+  - bugfix: large xenos can no longer be buckled to office chairs
+  - code_imp: remove redundant line for the rollerbed

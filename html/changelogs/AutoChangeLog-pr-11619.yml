@@ -1,0 +1,5 @@
+author: "neeshacark"
+delete-after: True
+changes:
+  - qol: "the revolver rig can hold loose rounds now"
+  - spellcheck: "fixed a typo in the name of the revolver holster rig"

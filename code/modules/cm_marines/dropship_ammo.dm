@@ -85,16 +85,16 @@
 	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
 
-/obj/structure/ship_ammo/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/powerloader_clamp))
-		var/obj/item/powerloader_clamp/PC = I
-		if(!PC.linked_powerloader)
-			qdel(PC)
+/obj/structure/ship_ammo/attackby(obj/item/clamp, mob/user)
+	if(istype(clamp, /obj/item/powerloader_clamp))
+		var/obj/item/powerloader_clamp/powerloader_clamp = clamp
+		if(!powerloader_clamp.linked_powerloader)
+			qdel(powerloader_clamp)
 			return FALSE
-		if(PC.loaded)
-			if(istype(PC.loaded, /obj/structure/ship_ammo))
-				var/obj/structure/ship_ammo/SA = PC.loaded
-				SA.transfer_ammo(src, user)
+		if(powerloader_clamp.loaded)
+			if(istype(powerloader_clamp.loaded, /obj/structure/ship_ammo))
+				var/obj/structure/ship_ammo/dropship_ammo = powerloader_clamp.loaded
+				dropship_ammo.transfer_ammo(src, user)
 				return FALSE
 		else
 			if(ammo_count < 1)
@@ -103,9 +103,9 @@
 				return FALSE
 
 			if(ammo_name == "rocket")
-				PC.grab_object(user, src, "ds_rocket", 'sound/machines/hydraulics_1.ogg')
+				powerloader_clamp.grab_object(user, src, "ds_rocket", 'sound/machines/hydraulics_1.ogg')
 			else
-				PC.grab_object(user, src, "ds_ammo", 'sound/machines/hydraulics_1.ogg')
+				powerloader_clamp.grab_object(user, src, "ds_ammo", 'sound/machines/hydraulics_1.ogg')
 			update_icon()
 			return FALSE
 	else
@@ -136,13 +136,13 @@
 	if(!transferable_ammo)
 		to_chat(user, SPAN_NOTICE("\The [src] doesn't support [ammo_name] transfer!"))
 		return
-	var/obj/item/powerloader_clamp/PC
+	var/obj/item/powerloader_clamp/powerloader_clamp
 	if(istype(loc, /obj/item/powerloader_clamp))
-		PC = loc
+		powerloader_clamp = loc
 	if(ammo_count < 1)
-		if(PC)
-			PC.loaded = null
-			PC.update_icon()
+		if(powerloader_clamp)
+			powerloader_clamp.loaded = null
+			powerloader_clamp.update_icon()
 		to_chat(user, SPAN_WARNING("\The [src] has ran out of ammo, so you discard it!"))
 		forceMove(get_turf(loc))
 		qdel(src)
@@ -158,18 +158,18 @@
 	src?.update_icon()
 	target.update_icon()
 	if(ammo_count < 1)
-		if(PC)
-			PC.loaded = null
-			PC.update_icon()
+		if(powerloader_clamp)
+			powerloader_clamp.loaded = null
+			powerloader_clamp.update_icon()
 		to_chat(user, SPAN_WARNING("\The [src] has ran out of ammo, so you discard it!"))
 		forceMove(get_turf(loc))
 		qdel(src)
 	else
-		if(PC)
+		if(powerloader_clamp)
 			if(ammo_name == "rocket")
-				PC.update_icon("ds_rocket")
+				powerloader_clamp.update_icon("ds_rocket")
 			else
-				PC.update_icon("ds_ammo")
+				powerloader_clamp.update_icon("ds_ammo")
 
 // Proc to create warning dots for cluster/incendiary bombs
 /obj/structure/ship_ammo/proc/create_warning_dot(turf/target_turf)
@@ -867,8 +867,8 @@
 	else
 		icon_state = "flare_cartridge"
 
-/obj/structure/ship_ammo/flare/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/tool/screwdriver))
+/obj/structure/ship_ammo/flare/attackby(obj/item/tool, mob/user)
+	if(istype(tool, /obj/item/tool/screwdriver))
 		if(!do_after(user, 10, INTERRUPT_NO_NEEDHAND | BEHAVIOR_IMMOBILE, BUSY_ICON_GENERIC))
 			return
 		if(safety_enabled)

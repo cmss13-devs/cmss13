@@ -349,8 +349,8 @@
 		// Add the reticle image to clients
 		var/datum/mob_hud/dropship/dropship_hud = GLOB.huds[MOB_HUD_DROPSHIP]
 		if(dropship_hud)
-			for(var/mob/Mobs in dropship_hud.hudusers)
-				console.direct_fire_reticle.update_visibility_for_mob(Mobs)
+			for(var/mob/hud_user in dropship_hud.hudusers)
+				console.direct_fire_reticle.update_visibility_for_mob(hud_user)
 
 	var/list/bbox = get_bbox_of_atoms(visible_turfs)
 	var/size_x = bbox[3] - bbox[1] + 1

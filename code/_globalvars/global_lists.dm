@@ -350,7 +350,7 @@ GLOBAL_LIST_EMPTY(wy_droid_categories)
 /// dict ("category" : (emotes)) of every wy droid emote typepath
 GLOBAL_LIST_INIT(wy_droid_emotes, setup_wy_droid_emotes())
 
-//Maintenance Repair Tools
+///Maintenance Repair Tools
 GLOBAL_LIST_INIT(dropship_repair_tool_types, list(
 	/obj/item/tool/weldingtool,
 	/obj/item/tool/screwdriver,
@@ -361,7 +361,7 @@ GLOBAL_LIST_INIT(dropship_repair_tool_types, list(
 	/obj/item/stack/cable_coil,
 ))
 
-//Dropship CAS overlays
+///Dropship CAS overlays
 GLOBAL_LIST_EMPTY(dropship_reticles)
 
 /proc/cached_params_decode(params_data, decode_proc)

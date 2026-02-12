@@ -139,8 +139,10 @@ GLOBAL_DATUM(almayer_aa_cannon, /obj/structure/anti_air_cannon)
 // Generic anti-air effect datum for dropship equipment
 /datum/dropship_antiair
 	var/name = "antiair effect"
+	/// This is the examine text for the equipment itself, so people know what's wrong text-wise
 	var/description = "This equipment has been affected by anti-air defenses."
-	var/examine_text = "The skies are protected by an antiair defense system." /// This is the examine text for the tile, think metal roofs etc
+	/// This is the examine text for the tile, think metal roofs etc
+	var/examine_text = "The skies are protected by an antiair defense system."
 	/// default: infinite duration unless set by effect type
 	var/duration = null
 	var/list/repair_steps = list()
@@ -150,6 +152,7 @@ GLOBAL_DATUM(almayer_aa_cannon, /obj/structure/anti_air_cannon)
 	var/antiair_reload = FALSE
 	/// destroys the weapon after the duration
 	var/antiair_destroy = FALSE
+	/// The pool of tools picked from that is required to fix your effect.
 	var/list/tools = list(/obj/item/tool/weldingtool, /obj/item/tool/screwdriver, /obj/item/tool/wrench, /obj/item/tool/wirecutters, /obj/item/tool/crowbar, /obj/item/device/multitool, /obj/item/stack/cable_coil)
 	var/repairing = FALSE
 	var/repair_step_index = 1
@@ -157,7 +160,7 @@ GLOBAL_DATUM(almayer_aa_cannon, /obj/structure/anti_air_cannon)
 	var/effect_id = null
 	/// So we know when it was applied
 	var/creation_time = null
-	/// Number of repair steps for this effect
+	/// Number of repair steps for this effect, 3 = 3 random tools from list/tools are chosen for the repair sequence
 	var/repair_steps_count = 3
 	/// Custom message for when this antiair effect triggers during CAS, use PLANE as the placeholder for the DS name, it'll be converted into dropship/bird for marine/xeno
 	var/antiair_message = null

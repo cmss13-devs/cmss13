@@ -136,14 +136,14 @@
 				continue
 			weapons += equipment
 
-	var/datum/cas_fire_mission/fm = new()
-	for(var/obj/structure/dropship_equipment/weapon/wp in weapons)
-		fm.build_new_record(wp, fire_length, saved_equipment_configs)
+	var/datum/cas_fire_mission/new_fire_mission = new()
+	for(var/obj/structure/dropship_equipment/weapon/weapon in weapons)
+		new_fire_mission.build_new_record(weapon, fire_length, saved_equipment_configs)
 
-	fm.name = firemission_name
-	fm.mission_length = length
-	missions += fm
-	return fm
+	new_fire_mission.name = firemission_name
+	new_fire_mission.mission_length = length
+	missions += new_fire_mission
+	return new_fire_mission
 
 	//-1 - system error, 0 - mission error, 1 - all good
 /datum/cas_fire_envelope/proc/update_mission(mission_id, weapon_id, offset_step, offset, skip_checks = 0)

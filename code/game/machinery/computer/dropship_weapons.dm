@@ -446,8 +446,8 @@
 
 		if("fire-weapon")
 			var/weapon_tag = params["eqp_tag"]
-			var/obj/structure/dropship_equipment/weapon/DEW = get_weapon(weapon_tag)
-			if(!DEW)
+			var/obj/structure/dropship_equipment/weapon/dropship_weapon = get_weapon(weapon_tag)
+			if(!dropship_weapon)
 				return FALSE
 
 			var/datum/cas_signal/sig = get_cas_signal(camera_target_id)
@@ -461,7 +461,7 @@
 				rappel.last_deployed_target = null
 				rappel.manual_deploy_cooldown = world.time + 5 SECONDS
 
-			if(ui_open_fire(user, shuttle, camera_target_id, DEW))
+			if(ui_open_fire(user, shuttle, camera_target_id, dropship_weapon))
 				if(firemission_envelope)
 					firemission_envelope.untrack_object()
 			return TRUE
@@ -805,9 +805,9 @@
 
 /obj/structure/machinery/computer/dropship_weapons/proc/get_weapon(eqp_tag)
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttle_tag)
-	for(var/obj/structure/dropship_equipment/weapon/WEAP as anything in dropship.equipments)
-		if(ref(WEAP) == eqp_tag)
-			return WEAP
+	for(var/obj/structure/dropship_equipment/weapon/dropship_weapon as anything in dropship.equipments)
+		if(ref(dropship_weapon) == eqp_tag)
+			return dropship_weapon
 	return
 
 /obj/structure/machinery/computer/dropship_weapons/proc/get_cas_signal(target_ref, valid_only = FALSE)
@@ -989,11 +989,11 @@
 /obj/structure/machinery/computer/dropship_weapons/proc/get_targets()
 	. = list()
 	var/datum/cas_iff_group/cas_group = GLOB.cas_groups[faction]
-	for(var/datum/cas_signal/LT as anything in cas_group.cas_signals)
-		var/obj/object = LT.signal_loc
-		if(!istype(LT) || !LT.valid_signal() || !is_ground_level(object.z))
+	for(var/datum/cas_signal/cas_signal as anything in cas_group.cas_signals)
+		var/obj/object = cas_signal.signal_loc
+		if(!istype(cas_signal) || !cas_signal.valid_signal() || !is_ground_level(object.z))
 			continue
-		var/area/laser_area = get_area(LT.signal_loc)
+		var/area/laser_area = get_area(cas_signal.signal_loc)
 
 		// Get ceiling protection tier for this target
 		var/ceiling_tier = null
@@ -1002,8 +1002,8 @@
 
 		. += list(
 			list(
-				"target_name" = "[LT.name] ([laser_area.name])",
-				"target_tag" = LT.target_id,
+				"target_name" = "[cas_signal.name] ([laser_area.name])",
+				"target_tag" = cas_signal.target_id,
 				"ceiling_protection_tier" = ceiling_tier
 			)
 		)
@@ -1015,8 +1015,8 @@
 	E.equipment_interact(user)
 
 /obj/structure/machinery/computer/dropship_weapons/proc/ui_open_fire(mob/weapon_operator, obj/docking_port/mobile/marine_dropship/dropship, targ_id, obj/structure/dropship_equipment/weapon/override_weapon = null)
-	var/obj/structure/dropship_equipment/weapon/DEW = override_weapon ? override_weapon : selected_equipment
-	if(!DEW || !DEW.is_weapon)
+	var/obj/structure/dropship_equipment/weapon/dropship_weapon = override_weapon ? override_weapon : selected_equipment
+	if(!dropship_weapon || !dropship_weapon.is_weapon)
 		to_chat(weapon_operator, SPAN_WARNING("No weapon selected."))
 		return FALSE
 	if(ishuman(weapon_operator))
@@ -1027,7 +1027,7 @@
 		if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/ceasefire))
 			to_chat(human_operator, SPAN_WARNING("You will not break the ceasefire by doing that!"))
 			return FALSE
-	if(!skillcheck(weapon_operator, SKILL_PILOT, DEW.skill_required)) //only pilots can fire dropship weapons.
+	if(!skillcheck(weapon_operator, SKILL_PILOT, dropship_weapon.skill_required)) //only pilots can fire dropship weapons.
 		to_chat(weapon_operator, SPAN_WARNING("You don't have the training to fire this weapon!"))
 		return FALSE
 	if(dropship.mode != SHUTTLE_CALL)
@@ -1037,18 +1037,18 @@
 		return FALSE//no faction, no weapons
 	if(dropship.door_override)
 		return FALSE
-	if(!skillcheck(weapon_operator, SKILL_PILOT, DEW.skill_required)) //only pilots can fire dropship weapons.
+	if(!skillcheck(weapon_operator, SKILL_PILOT, dropship_weapon.skill_required)) //only pilots can fire dropship weapons.
 		to_chat(weapon_operator, SPAN_WARNING("You don't have the training to fire this weapon!"))
 		return FALSE
-	if(!dropship.in_flyby && DEW.fire_mission_only)
-		to_chat(weapon_operator, SPAN_WARNING("[DEW] requires a Fire Mission flight type to be fired."))
+	if(!dropship.in_flyby && dropship_weapon.fire_mission_only)
+		to_chat(weapon_operator, SPAN_WARNING("[dropship_weapon] requires a Fire Mission flight type to be fired."))
 		return FALSE
 
-	if(!DEW.ammo_equipped || DEW.ammo_equipped.ammo_count <= 0)
-		to_chat(weapon_operator, SPAN_WARNING("[DEW] has no ammo."))
+	if(!dropship_weapon.ammo_equipped || dropship_weapon.ammo_equipped.ammo_count <= 0)
+		to_chat(weapon_operator, SPAN_WARNING("[dropship_weapon] has no ammo."))
 		return FALSE
-	if(DEW.last_fired > world.time - DEW.firing_delay)
-		to_chat(weapon_operator, SPAN_WARNING("[DEW] just fired, wait for it to cool down."))
+	if(dropship_weapon.last_fired > world.time - dropship_weapon.firing_delay)
+		to_chat(weapon_operator, SPAN_WARNING("[dropship_weapon] just fired, wait for it to cool down."))
 		return FALSE
 	if(firemission_envelope.stat > FIRE_MISSION_STATE_IDLE && firemission_envelope.stat < FIRE_MISSION_STATE_COOLDOWN)
 		to_chat(weapon_operator, SPAN_WARNING("A Fire Mission is already underway."))
@@ -1059,41 +1059,41 @@
 	if(!cas_group)
 		return FALSE//broken group. No fighting
 
-	for(var/datum/cas_signal/LT in cas_group.cas_signals)
-		if(LT.target_id != targ_id || !LT.valid_signal())
+	for(var/datum/cas_signal/cas_signal in cas_group.cas_signals)
+		if(cas_signal.target_id != targ_id || !cas_signal.valid_signal())
 			continue
-		if(!LT.signal_loc)
+		if(!cas_signal.signal_loc)
 			return FALSE
-		var/turf/TU = get_turf(LT.signal_loc)
-		var/area/targ_area = get_area(LT.signal_loc)
+		var/turf/target_turf = get_turf(cas_signal.signal_loc)
+		var/area/targ_area = get_area(cas_signal.signal_loc)
 		var/is_outside = FALSE
-		if(is_ground_level(TU.z))
+		if(is_ground_level(target_turf.z))
 			switch(targ_area.ceiling)
 				if(CEILING_NONE)
 					is_outside = TRUE
 				if(CEILING_GLASS)
 					is_outside = TRUE
-		if(!is_outside && (!DEW.ammo_equipped || !DEW.ammo_equipped.cavebreaker)) // Use ammo's cavebreaker property
+		if(!is_outside && (!dropship_weapon.ammo_equipped || !dropship_weapon.ammo_equipped.cavebreaker)) // Use ammo's cavebreaker property
 			// Check if metalbreaker ammo can pierce this ceiling type
-			if(DEW.ammo_equipped?.metalbreaker && CEILING_IS_PROTECTED(targ_area.ceiling, CEILING_PROTECTION_TIER_2))
+			if(dropship_weapon.ammo_equipped?.metalbreaker && CEILING_IS_PROTECTED(targ_area.ceiling, CEILING_PROTECTION_TIER_2))
 				// Metalbreaker can pierce metal ceilings but not underground roof
 				to_chat(weapon_operator, SPAN_WARNING("INVALID TARGET: target must be visible from high altitude."))
 				return FALSE
-			else if(!DEW.ammo_equipped?.metalbreaker)
+			else if(!dropship_weapon.ammo_equipped?.metalbreaker)
 				// Regular ammo needs open sky
 				to_chat(weapon_operator, SPAN_WARNING("INVALID TARGET: target must be visible from high altitude."))
 				return FALSE
-		if (protected_by_pylon(TURF_PROTECTION_CAS, TU))
+		if (protected_by_pylon(TURF_PROTECTION_CAS, target_turf))
 			to_chat(weapon_operator, SPAN_WARNING("INVALID TARGET: biological-pattern interference with signal."))
 			return FALSE
 		// Block direct fire if chaff is present
-		if (protected_by_pylon(TURF_PROTECTION_CHAFF, TU))
+		if (protected_by_pylon(TURF_PROTECTION_CHAFF, target_turf))
 			to_chat(weapon_operator, SPAN_WARNING("INVALID TARGET: signal is obscured by a cluster of chaff!"))
 			return FALSE
-		if(!DEW.ammo_equipped.can_fire_at(TU, weapon_operator))
+		if(!dropship_weapon.ammo_equipped.can_fire_at(target_turf, weapon_operator))
 			return FALSE
 
-		DEW.open_fire(LT.signal_loc)
+		dropship_weapon.open_fire(cas_signal.signal_loc)
 		return TRUE
 	return FALSE
 
@@ -1185,9 +1185,9 @@
 	var/datum/cas_iff_group/cas_group = GLOB.cas_groups[faction]
 	var/datum/cas_signal/cas_sig
 	for(var/X in cas_group.cas_signals)
-		var/datum/cas_signal/LT = X
-		if(LT.target_id == laser  && LT.valid_signal())
-			cas_sig = LT
+		var/datum/cas_signal/cas_signal = X
+		if(cas_signal.target_id == laser  && cas_signal.valid_signal())
+			cas_sig = cas_signal
 	if(!cas_sig)
 		to_chat(weapons_operator, SPAN_WARNING("Target lost or obstructed."))
 		return FALSE

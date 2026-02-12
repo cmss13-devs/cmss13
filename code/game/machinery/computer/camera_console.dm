@@ -572,11 +572,11 @@
 	.["targets_data"] = list()
 	var/datum/cas_iff_group/cas_group = GLOB.cas_groups[FACTION_MARINE]
 	if(cas_group)
-		for(var/datum/cas_signal/LT in cas_group.cas_signals)
-			var/obj/object = LT.signal_loc
-			if(!istype(LT) || !LT.valid_signal() || !is_ground_level(object.z))
+		for(var/datum/cas_signal/cas_signal in cas_group.cas_signals)
+			var/obj/object = cas_signal.signal_loc
+			if(!istype(cas_signal) || !cas_signal.valid_signal() || !is_ground_level(object.z))
 				continue
-			var/area/laser_area = get_area(LT.signal_loc)
+			var/area/laser_area = get_area(cas_signal.signal_loc)
 
 			// Get ceiling protection tier for this target
 			var/ceiling_tier = null
@@ -585,8 +585,8 @@
 
 			.["targets_data"] += list(
 				list(
-					"target_name" = "[LT.name] ([laser_area.name])",
-					"target_tag" = LT.target_id,
+					"target_name" = "[cas_signal.name] ([laser_area.name])",
+					"target_tag" = cas_signal.target_id,
 					"ceiling_protection_tier" = ceiling_tier
 				)
 			)
@@ -911,18 +911,18 @@
 				if(ref(equipment) != equipment_tag)
 					continue
 				if(equipment.is_weapon)
-					var/obj/structure/dropship_equipment/weapon/WEAP = equipment
+					var/obj/structure/dropship_equipment/weapon/dropship_weapon = equipment
 
 					// Check weapon cooldown (same as weapon console)
-					if(WEAP.last_fired > world.time - WEAP.firing_delay)
-						to_chat(usr, SPAN_WARNING("[WEAP] just fired, wait for it to cool down."))
+					if(dropship_weapon.last_fired > world.time - dropship_weapon.firing_delay)
+						to_chat(usr, SPAN_WARNING("[dropship_weapon] just fired, wait for it to cool down."))
 						return TRUE
 
-					WEAP.linked_console = src
-					if(WEAP.is_interactable)
+					dropship_weapon.linked_console = src
+					if(dropship_weapon.is_interactable)
 						var/datum/cas_signal/target = get_cas_signal(camera_target_id)
 						if(target)
-							WEAP.open_fire(target.signal_loc, usr)
+							dropship_weapon.open_fire(target.signal_loc, usr)
 						else
 							to_chat(usr, SPAN_WARNING("No target selected."))
 				return TRUE
@@ -1154,7 +1154,7 @@
 
 /obj/structure/machinery/computer/cameras/dropship/proc/get_weapon(eqp_tag)
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttle_tag)
-	for(var/obj/structure/dropship_equipment/weapon/WEAP as anything in dropship.equipments)
-		if(ref(WEAP) == eqp_tag)
-			return WEAP
+	for(var/obj/structure/dropship_equipment/weapon/dropship_weapon as anything in dropship.equipments)
+		if(ref(dropship_weapon) == eqp_tag)
+			return dropship_weapon
 	return

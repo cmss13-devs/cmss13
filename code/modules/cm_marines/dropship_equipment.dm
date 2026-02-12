@@ -211,6 +211,7 @@
 			var/typepath = handheld_ammo.structure_type
 			var/obj/structure/ship_ammo/proto = new typepath()
 			var/equip_types = proto.equipment_type
+			// Tracks whether the handheld ammo is compatible with this equipment type
 			var/compatible = FALSE
 			if(islist(equip_types))
 				for(var/eq_type in equip_types)
@@ -285,7 +286,7 @@
 				// Stay on the same step, do not advance or reset anything
 				return TRUE
 			//need the welder to be active for welding repairs
-			if(next_step == "WELDER" && istype(item_equip, /obj/item/tool/weldingtool))
+			if(next_step == /obj/item/tool/weldingtool)
 				var/obj/item/tool/weldingtool/weld = item_equip
 				if(!weld.welding)
 					to_chat(user, SPAN_WARNING("The welder must be activated!"))
@@ -887,10 +888,9 @@
 			var/datum/cas_signal/target_signal = linked_console.get_cas_signal(linked_console.camera_target_id)
 			if(target_signal && target_signal.valid_signal())
 				create_signal_light(target_signal)
-			else
-				clear_signal_light()
-		else
-			clear_signal_light()
+				return
+		// Clear signal light if conditions aren't met or signal is invalid
+		clear_signal_light()
 
 	if(ship_base)
 		if(!light_on)
@@ -1754,40 +1754,40 @@
 
 	// Update known stretchers list for notification system
 	known_stretchers.Cut() // Clear the list
-	for(var/obj/structure/bed/medevac_stretcher/MS in GLOB.activated_medevac_stretchers)
-		if(faction_exclusive == MS.faction)
-			known_stretchers += "\ref[MS]"
+	for(var/obj/structure/bed/medevac_stretcher/medevac_stretcher in GLOB.activated_medevac_stretchers)
+		if(faction_exclusive == medevac_stretcher.faction)
+			known_stretchers += "\ref[medevac_stretcher]"
 
-	for(var/obj/structure/bed/medevac_stretcher/MS in GLOB.activated_medevac_stretchers)
-		if(MS.faction != faction_exclusive)
+	for(var/obj/structure/bed/medevac_stretcher/medevac_stretcher in GLOB.activated_medevac_stretchers)
+		if(medevac_stretcher.faction != faction_exclusive)
 			continue
-		var/area/AR = get_area(MS)
+		var/area/stretcher_area = get_area(medevac_stretcher)
 		var/evaccee_name
 		var/evaccee_triagecard_color
-		if(MS.buckled_mob)
-			evaccee_name = MS.buckled_mob.real_name
-			if (ishuman(MS.buckled_mob))
-				var/mob/living/carbon/human/H = MS.buckled_mob
-				evaccee_triagecard_color = H.holo_card_color
-		else if(MS.buckled_bodybag)
-			for(var/atom/movable/AM in MS.buckled_bodybag)
-				if(isliving(AM))
-					var/mob/living/L = AM
-					evaccee_name = "[MS.buckled_bodybag.name]: [L.real_name]"
-					if (ishuman(L))
-						var/mob/living/carbon/human/H = L
-						evaccee_triagecard_color = H.holo_card_color
+		if(medevac_stretcher.buckled_mob)
+			evaccee_name = medevac_stretcher.buckled_mob.real_name
+			if (ishuman(medevac_stretcher.buckled_mob))
+				var/mob/living/carbon/human/human = medevac_stretcher.buckled_mob
+				evaccee_triagecard_color = human.holo_card_color
+		else if(medevac_stretcher.buckled_bodybag)
+			for(var/atom/movable/movable_item in medevac_stretcher.buckled_bodybag)
+				if(isliving(movable_item))
+					var/mob/living/living_mob = movable_item
+					evaccee_name = "[medevac_stretcher.buckled_bodybag.name]: [living_mob.real_name]"
+					if (ishuman(living_mob))
+						var/mob/living/carbon/human/human = living_mob
+						evaccee_triagecard_color = human.holo_card_color
 					break
 			if(!evaccee_name)
-				evaccee_name = "Empty [MS.buckled_bodybag.name]"
+				evaccee_name = "Empty [medevac_stretcher.buckled_bodybag.name]"
 		else
 			evaccee_name = "Empty"
 
 		if (evaccee_triagecard_color && evaccee_triagecard_color == "none")
 			evaccee_triagecard_color = null
 
-		var/key_name = strip_improper("[evaccee_name] [evaccee_triagecard_color ? "\[" + uppertext(evaccee_triagecard_color) + "\]" : ""] ([AR.name])")
-		.[key_name] = MS
+		var/key_name = strip_improper("[evaccee_name] [evaccee_triagecard_color ? "\[" + uppertext(evaccee_triagecard_color) + "\]" : ""] ([stretcher_area.name])")
+		.[key_name] = medevac_stretcher
 
 // Called directly when a new medevac stretcher is activated
 /obj/structure/dropship_equipment/medevac_system/proc/notify_new_stretcher(obj/structure/bed/medevac_stretcher/new_stretcher)
@@ -1956,9 +1956,9 @@
 	for(var/stretcher_ref in stretchers)
 		var/obj/structure/bed/medevac_stretcher/stretcher = stretchers[stretcher_ref]
 
-		var/area/AR = get_area(stretcher)
+		var/area/stretcher_area = get_area(stretcher)
 		var/list/target_data = list()
-		target_data["area"] = AR
+		target_data["area"] = stretcher_area
 		target_data["ref"] = stretcher_ref
 
 		var/mob/living/carbon/human/occupant = stretcher.buckled_mob
@@ -2020,8 +2020,8 @@
 		lifted_object = linked_stretcher.buckled_bodybag
 
 	if(lifted_object)
-		var/turf/T = get_turf(lifted_object)
-		T.ceiling_debris_check(2)
+		var/turf/extraction_turf = get_turf(lifted_object)
+		extraction_turf.ceiling_debris_check(2)
 		var/old_area = get_area(lifted_object)
 		lifted_object.forceMove(loc)
 		var/new_area = get_area(lifted_object)

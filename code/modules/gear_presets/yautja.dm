@@ -174,6 +174,7 @@
 	idtype = /obj/item/card/id/dogtag // oh yeah
 	assignment = "Yautja Emissary"
 	job_title = "Yautja Emissary"
+	flags = EQUIPMENT_PRESET_EXTRA
 	faction = FACTION_YAUTJA // needs to be changed to bad blood once they're in the game
 	faction_group = FACTION_LIST_YAUTJA // ditto
 

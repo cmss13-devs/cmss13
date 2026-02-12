@@ -306,8 +306,8 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	var/conforming = FALSE
 	var/camo_type = "classic"
 
-/obj/item/clothing/shoes/yautja/hunter/knife/emissary/Initialize(mapload)
-	. = ..(mapload, 0)
+/obj/item/clothing/shoes/yautja/New(location)
+	..()
 	if(conforming)
 		camo_type = SSmapping.configs[GROUND_MAP].camouflage_type
 	icon_state = "elite_y-boots1_emissary_[camo_type]"

@@ -245,10 +245,7 @@
 /obj/structure/bed/roller/proc/check_buckle(obj/bed, mob/buckle_target, mob/user)
 	SIGNAL_HANDLER
 
-	if(buckle_target.mob_size <= MOB_SIZE_XENO)
-		return
-
-	if(buckle_target.mob_size > MOB_SIZE_HUMAN)
+	if(buckle_target.mob_size > MOB_SIZE_XENO)
 		if(!can_carry_big)
 			to_chat(user, SPAN_WARNING("[buckle_target] is too big to buckle in."))
 			return COMPONENT_BLOCK_BUCKLE

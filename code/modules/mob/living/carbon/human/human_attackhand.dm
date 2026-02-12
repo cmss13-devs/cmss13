@@ -237,7 +237,7 @@
 		return
 
 	if(shaken_friend)
-		SEND_SIGNAL(M, COMSIG_HUMAN_HELPING_UP)
+		SEND_SIGNAL(mob, COMSIG_HUMAN_HELPING_UP)
 
 	adjust_effect(-6, PARALYZE)
 	adjust_effect(-6, STUN)

@@ -338,7 +338,7 @@ DEFINES in setup.dm, referenced here.
 			else
 				opposite_hand = user.get_limb("l_arm")
 			if(opposite_hand.status & LIMB_DESTROYED)
-				tac_reload_time *= 3 // ticks, yes
+				tac_reload_time *= 3 DECISECONDS
 				effect = SLOW
 				to_chat(user, SPAN_WARNING("...but you'll have a harder time reloading with one arm!"))
 
@@ -366,7 +366,7 @@ DEFINES in setup.dm, referenced here.
 		to_chat(user, SPAN_WARNING("[src] is already at its maximum capacity!"))
 		return
 
-	var/tac_reload_time = 2 // ticks
+	var/tac_reload_time = 2 DECISECONDS
 
 	to_chat(user, SPAN_NOTICE("You get on one knee and start an unconventional reload."))
 	var/interrupted = FALSE

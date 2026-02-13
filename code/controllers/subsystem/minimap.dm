@@ -520,6 +520,11 @@ SUBSYSTEM_DEF(minimaps)
  * * flags: map flags to fetch from
  */
 /datum/controller/subsystem/minimaps/proc/fetch_minimap_object(zlevel, flags, live, popup, drawing, client/for_client)
+	if(!zlevel || zlevel <= 0 || !SSminimaps.initialized)
+		return null
+	if(!SSminimaps.minimaps_by_z["[zlevel]"])
+		return null
+
 	var/hash = "[zlevel]-[flags]-[live]-[popup]-[drawing]"
 
 	if(for_client)
@@ -967,6 +972,8 @@ SUBSYSTEM_DEF(minimaps)
 
 	var/atom/movable/tracking = locator_override ? locator_override : owner
 	if(default_overwatch_level)
+		if(default_overwatch_level <= 0 || default_overwatch_level > length(SSmapping.z_list))
+			return FALSE
 		// Try to trigger z-level loading if it doesn't exist
 		if(!SSminimaps.minimaps_by_z["[default_overwatch_level]"])
 			var/datum/space_level/z_level = SSmapping.z_list[default_overwatch_level]
@@ -975,9 +982,13 @@ SUBSYSTEM_DEF(minimaps)
 		if(!SSminimaps.minimaps_by_z["[default_overwatch_level]"])
 			return FALSE
 		map = SSminimaps.fetch_minimap_object(default_overwatch_level, minimap_flags, live=live, popup=FALSE, drawing=drawing, for_client=owner.client)
+		if(!map)
+			return FALSE
 		return TRUE
 	// Try to trigger z-level loading if it doesn't exist
 	if(!SSminimaps.minimaps_by_z["[tracking.z]"])
+		if(tracking.z <= 0 || !SSmapping.z_list || tracking.z > length(SSmapping.z_list))
+			return FALSE
 		var/datum/space_level/z_level = SSmapping.z_list[tracking.z]
 		if(z_level)
 			SSminimaps.load_new_z(null, z_level)
@@ -987,6 +998,8 @@ SUBSYSTEM_DEF(minimaps)
 	if(!SSminimaps.minimaps_by_z["[tracking.z]"].hud_image && (is_ground_level(tracking.z) || SSmapping.level_trait(tracking.z, ZTRAIT_AWAY)))
 		return FALSE
 	map = SSminimaps.fetch_minimap_object(tracking.z, minimap_flags, live=live, popup=FALSE, drawing=drawing, for_client=owner.client)
+	if(!map)  // Handle null return from fetch_minimap_object
+		return FALSE
 	return TRUE
 
 /datum/action/minimap/remove_from(mob/mob)

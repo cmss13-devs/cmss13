@@ -525,6 +525,9 @@ SUBSYSTEM_DEF(minimaps)
 	if(!SSminimaps.minimaps_by_z["[zlevel]"])
 		return null
 
+	if(!SSminimaps.minimaps_by_z["[zlevel]"].hud_image)
+		return null
+
 	var/hash = "[zlevel]-[flags]-[live]-[popup]-[drawing]"
 
 	if(for_client)

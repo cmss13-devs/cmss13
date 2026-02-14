@@ -172,7 +172,7 @@
 		// If there's a mentor, let them mark it. If not, let them unmark it
 		message_sender_options = " (<a href='byond://?src=\ref[src];action=mark'>Mark/Unmark</a>"
 		message_sender_options += " | <a href='byond://?src=\ref[src];action=close'>Close</a>"
-		message_sender_options += " | <a href='byond://?src=\ref[src];action=close'>Follow</a>"
+		message_sender_options += " | <a href='byond://?src=\ref[src];action=follow'>Follow</a>"
 		message_sender_options += " | <a href='byond://?src=\ref[src];action=close'>Friend</a>"
 		message_sender_options += " | <a href='byond://?src=\ref[src];action=autorespond'>AutoResponse</a>)"
 
@@ -262,6 +262,35 @@
 	to_chat(author, SPAN_NOTICE("Your mentorhelp thread has been closed."))
 	notify("<font style='color:red;'>[author_key]</font>'s mentorhelp thread has been closed.")
 
+/datum/mentorhelp/proc/follow(client/mentor_client)
+	if(!mentor_client)
+		return
+
+	// Not a mentor/staff
+	if(!CLIENT_IS_MENTOR(mentor_client))
+		return
+
+	if(!check_author())
+		return
+
+	if(!check_open(mentor_client))
+		return
+
+	if(!ismob(author.mob))
+		to_chat(mentor_client, SPAN_NOTICE("<b>NOTICE:</b> Thread author is still in the lobby!"))
+		return
+
+	var/mob/mentor_mob = mentor_client.mob
+	var/mob/dead/observer/mentor_ghost = mentor_mob
+
+	if(!isobserver(mentor_mob))
+		mentor_ghost = mentor_mob.ghostize(TRUE, TRUE)
+		mentor_ghost.RegisterSignal(mentor_ghost, list(COMSIG_GHOST_MOVED, COMSIG_MOVABLE_MOVED), TYPE_VERB_REF(/mob/dead/observer, reenter_corpse))
+
+	mentor_ghost?.do_observe(author.mob)
+
+	//notify("<font style='color:red;'>[mentor.key]</font> has markexxd <font style='color:red;'>[author_key]</font>'s mentorhelp.")
+
 /datum/mentorhelp/Topic(href, list/href_list)
 	if(!usr)
 		return
@@ -282,6 +311,8 @@
 		if("close")
 			if(C == author || C == mentor || CLIENT_IS_STAFF(C))
 				close(C)
+		if("follow")
+			follow(C)
 
 /*
  * Autoresponse

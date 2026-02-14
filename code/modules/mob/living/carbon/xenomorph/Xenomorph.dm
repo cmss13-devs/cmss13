@@ -718,6 +718,8 @@
 		return
 	if(active_action_cursor)
 		UnregisterSignal(client, COMSIG_CLIENT_RESET_VIEW)
+	if(!client.prefs.custom_cursors)
+		return
 	active_action_cursor = mouse_pointer
 	client.mouse_pointer_icon = mouse_pointer
 	RegisterSignal(client, COMSIG_CLIENT_RESET_VIEW, PROC_REF(handle_view))

@@ -185,6 +185,7 @@ AddTimelock(/datum/job/civilian/survivor, list(
 
 /datum/job/civilian/survivor/synth/set_spawn_positions(count)
 	if(count < min_playercount)
+		total_positions = 0
 		spawn_positions = 0
 	return spawn_positions
 

@@ -8,29 +8,29 @@
 
 /datum/paygrade/navy/e1
 	paygrade = PAY_SHORT_NE1
-	name = "Aerospaceman Recruit"
-	prefix = "ASR."
+	name = "Aeroman Recruit"
+	prefix = "AER."
 	rank_pin = /obj/item/clothing/accessory/ranks/navy/e1
 	ranking = 0
 
 /datum/paygrade/navy/e2
 	paygrade = PAY_SHORT_NE2
-	name = "Aerospaceman"
-	prefix = "ASM."
+	name = "Aeroman"
+	prefix = "AEM."
 	rank_pin = /obj/item/clothing/accessory/ranks/navy/e2
 	ranking = 1
 
 /datum/paygrade/navy/e3
 	paygrade = PAY_SHORT_NE3
-	name = "Aerospaceman 1st Class"
-	prefix = "1ASM."
+	name = "Aeroman 1st Class"
+	prefix = "1AEM."
 	rank_pin = /obj/item/clothing/accessory/ranks/navy/e3
 	ranking = 2
 
 /datum/paygrade/navy/e4
 	paygrade = PAY_SHORT_NE4
-	name = "Buck Sergeant"
-	prefix = "Bsgt."
+	name = "Sergeant"
+	prefix = "Sgt."
 	rank_pin = /obj/item/clothing/accessory/ranks/navy/e4
 	ranking = 3
 
@@ -135,16 +135,16 @@
 
 /datum/paygrade/navy/o6e
 	paygrade = PAY_SHORT_NO6E
-	name = "Commodore"
-	prefix = "CDRE."
+	name = "Wing Commander"
+	prefix = "WCmd."
 	rank_pin = /obj/item/clothing/accessory/ranks/navy/o6e
 	ranking = 17
 	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/navy/o6c
 	paygrade = PAY_SHORT_NO6C
-	name = "Senior Commodore"
-	prefix = "Snr CDRE."
+	name = "Group Captain"
+	prefix = "GCpt"
 	rank_pin = /obj/item/clothing/accessory/ranks/navy/o6e
 	ranking = 18
 	officer_grade = GRADE_OFFICER

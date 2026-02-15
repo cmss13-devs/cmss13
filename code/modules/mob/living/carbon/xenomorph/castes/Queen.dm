@@ -386,7 +386,7 @@
 	bubble_icon = "alienroyal"
 
 /mob/living/carbon/xenomorph/queen/set_resting(new_resting, silent, instant)
-	if(ovipositor)
+	if(ovipositor && new_resting)
 		return
 	return ..()
 

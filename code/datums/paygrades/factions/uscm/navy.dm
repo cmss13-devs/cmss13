@@ -78,8 +78,8 @@
 
 /datum/paygrade/navy/e9c
 	paygrade = PAY_SHORT_NE9C
-	name = "Chief Master Sergeant Of The Aerospace Force"
-	prefix = "CMSAF."
+	name = "Command Chief Master Sergeant Of The Aerospace Force"
+	prefix = "CCMSAF."
 	rank_pin = /obj/item/clothing/accessory/ranks/navy/e9c
 	ranking = 10
 

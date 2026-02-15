@@ -1,0 +1,2250 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 5
+	},
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"ab" = (
+/obj/item/weapon/gun/rifle/m41a,
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_casing/shell{
+	icon_state = "cartridge_3_1"
+	},
+/turf/open/floor/shiva/snow_mat/east,
+/area/template_noop)
+"ac" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/surface/table{
+	color = "#8B7B5B"
+	},
+/obj/structure/machinery/hybrisa/coffee_machine{
+	pixel_x = 1;
+	pixel_y = 10
+	},
+/turf/open/floor/shiva/snow_mat/west,
+/area/template_noop)
+"ad" = (
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 1
+	},
+/obj/structure/surface/table{
+	color = "#8B7B5B"
+	},
+/obj/item/clothing/under/rank/medical/pharmacist{
+	pixel_x = -7;
+	pixel_y = 12
+	},
+/obj/item/toy/plush/therapy/random_color,
+/turf/open/floor/shiva/snow_mat/east,
+/area/template_noop)
+"ae" = (
+/obj/structure/window_frame/colony,
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/template_noop)
+"af" = (
+/obj/structure/machinery/iv_drip,
+/turf/open/floor/shiva/multi_tiles/west,
+/area/template_noop)
+"ag" = (
+/obj/item/trash/used_stasis_bag,
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"ah" = (
+/obj/structure/bed/hybrisa/hospital/hospitaldivider{
+	pixel_y = 5;
+	layer = 3.8
+	},
+/turf/open/floor/shiva/red/north,
+/area/template_noop)
+"ai" = (
+/obj/structure/flora/pottedplant/random,
+/turf/open/floor/shiva/wred/west,
+/area/template_noop)
+"aj" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/structure/bed/roller/hospital/bloody,
+/obj/effect/landmark/corpsespawner/colonist/burst,
+/obj/effect/decal/cleanable/blood/gibs/core,
+/turf/open/floor/shiva/multi_tiles,
+/area/template_noop)
+"ak" = (
+/obj/item/shard,
+/obj/structure/window_frame/colony,
+/turf/open/floor/plating,
+/area/template_noop)
+"al" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/shiva/wred/west,
+/area/template_noop)
+"am" = (
+/obj/effect/decal/hybrisa/bloodtrail{
+	pixel_x = 5;
+	dir = 1
+	},
+/turf/open/floor/shiva/multi_tiles,
+/area/template_noop)
+"an" = (
+/obj/structure/pipes/standard/manifold/fourway/hidden/green,
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"ao" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"ap" = (
+/obj/effect/landmark/corpsespawner/doctor,
+/obj/effect/decal/cleanable/blood/gibs/core,
+/turf/open/floor/shiva/snow_mat/east,
+/area/template_noop)
+"aq" = (
+/obj/item/prop/alien/hugger,
+/turf/open/floor/shiva/snow_mat/east,
+/area/template_noop)
+"ar" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"as" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"at" = (
+/obj/structure/disposalpipe/junction{
+	dir = 1;
+	icon_state = "pipe-j2"
+	},
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"au" = (
+/obj/structure/largecrate/random/mini/med{
+	pixel_x = -7;
+	pixel_y = 14
+	},
+/obj/structure/largecrate/random/mini/med{
+	pixel_y = 12;
+	pixel_x = 9
+	},
+/turf/open/floor/shiva/redfull,
+/area/template_noop)
+"ax" = (
+/obj/structure/pipes/standard/manifold/hidden/green,
+/turf/open/floor/shiva/red/west,
+/area/template_noop)
+"aU" = (
+/obj/structure/sink{
+	pixel_y = 15
+	},
+/turf/open/floor/shiva/redfull,
+/area/template_noop)
+"aW" = (
+/obj/structure/machinery/light,
+/obj/structure/reagent_dispensers/tank/fuel/oxygentank,
+/turf/open/floor/shiva/red/east,
+/area/template_noop)
+"bb" = (
+/obj/structure/bed/roller/hospital_empty/bigrollerempty3,
+/turf/open/floor/shiva/multi_tiles/west,
+/area/template_noop)
+"bi" = (
+/obj/effect/landmark/hunter_primary,
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"bl" = (
+/turf/open/floor/shiva/snow_mat/west,
+/area/template_noop)
+"bF" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/machinery/door/airlock/almayer/maint{
+	dir = 1;
+	name = "\improper Underground Maintenance";
+	req_access_txt = "100";
+	req_one_access = null
+	},
+/turf/open/floor/shiva/wred,
+/area/template_noop)
+"bT" = (
+/obj/item/storage/firstaid/o2{
+	layer = 3.1;
+	pixel_x = 2;
+	pixel_y = 10
+	},
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/firstaid/regular{
+	layer = 3.2;
+	pixel_x = -4;
+	pixel_y = 3
+	},
+/turf/open/floor/shiva/greenfull/west,
+/area/template_noop)
+"bV" = (
+/obj/structure/closet/secure_closet/personal/patient,
+/obj/structure/barricade/handrail/wire{
+	dir = 8;
+	layer = 2.991
+	},
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"bY" = (
+/obj/structure/pipes/vents/pump,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/shiva/red,
+/area/template_noop)
+"cq" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"dt" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	pixel_y = 8
+	},
+/obj/structure/machinery/firealarm{
+	dir = 4;
+	pixel_x = 24
+	},
+/turf/open/floor/shiva/north,
+/area/template_noop)
+"dx" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/bed/sofa/vert/grey/top,
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"dB" = (
+/turf/closed/wall/r_wall,
+/area/template_noop)
+"dC" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/machinery/chem_dispenser,
+/turf/open/floor/shiva/multi_tiles,
+/area/template_noop)
+"dG" = (
+/obj/structure/pipes/portables_connector{
+	dir = 8
+	},
+/obj/structure/machinery/portable_atmospherics/canister/oxygen,
+/turf/open/floor/shiva/multi_tiles,
+/area/template_noop)
+"eg" = (
+/obj/structure/machinery/vending/snack,
+/turf/open/floor/shiva/redfull/west,
+/area/template_noop)
+"eo" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"et" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/shiva/red/north,
+/area/template_noop)
+"eu" = (
+/obj/structure/bed/chair{
+	dir = 8;
+	icon_state = "chair_alt"
+	},
+/turf/open/floor/shiva/red/north,
+/area/template_noop)
+"ew" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/computer/communications{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/turf/open/floor/shiva/redfull,
+/area/template_noop)
+"eU" = (
+/obj/structure/window/framed/colony,
+/turf/open/floor/plating,
+/area/template_noop)
+"eV" = (
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
+/turf/closed/wall,
+/area/template_noop)
+"fz" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/shiva/multi_tiles,
+/area/template_noop)
+"fY" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	pixel_y = 8
+	},
+/turf/open/floor/shiva/north,
+/area/template_noop)
+"gc" = (
+/obj/structure/closet/medical_wall,
+/turf/closed/wall,
+/area/template_noop)
+"gi" = (
+/obj/item/device/defibrillator,
+/obj/structure/surface/table,
+/turf/open/floor/shiva/wred/north,
+/area/template_noop)
+"gv" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/shiva/wredfull,
+/area/template_noop)
+"hg" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/shiva/redfull,
+/area/template_noop)
+"hh" = (
+/turf/open/floor/shiva/wredfull,
+/area/template_noop)
+"hG" = (
+/obj/effect/decal/cleanable/blood,
+/obj/item/clothing/suit/armor/vest,
+/turf/open/floor/shiva/redfull,
+/area/template_noop)
+"in" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/machinery/door/airlock/almayer/medical/glass{
+	dir = 1;
+	name = "\improper Underground Medical Laboratory Storage";
+	req_access_txt = "100";
+	req_one_access = null
+	},
+/turf/open/floor/shiva/wredfull,
+/area/template_noop)
+"iy" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/closet/secure_closet/personal/patient,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/obj/structure/barricade/handrail/wire{
+	dir = 4
+	},
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"iB" = (
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"iX" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva/redfull/west,
+/area/template_noop)
+"jc" = (
+/obj/structure/pipes/standard/simple/visible{
+	dir = 5
+	},
+/turf/open/floor/shiva/red,
+/area/template_noop)
+"jh" = (
+/obj/structure/bed/chair,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"jr" = (
+/obj/structure/closet/secure_closet/freezer/fridge,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/shiva/multi_tiles,
+/area/template_noop)
+"js" = (
+/obj/effect/landmark/corpsespawner/doctor,
+/obj/effect/decal/cleanable/blood/gibs/body,
+/turf/open/floor/shiva/snow_mat/north,
+/area/template_noop)
+"jx" = (
+/obj/structure/machinery/holosign_switch{
+	id = "otice";
+	pixel_y = -24
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/shiva/redfull,
+/area/template_noop)
+"jE" = (
+/turf/open/floor/shiva/multi_tiles,
+/area/template_noop)
+"jP" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/item/device/flashlight,
+/turf/open/floor/shiva/redfull,
+/area/template_noop)
+"kb" = (
+/obj/structure/sign/safety/medical,
+/turf/closed/wall,
+/area/template_noop)
+"ke" = (
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 1
+	},
+/turf/open/floor/shiva/snow_mat/east,
+/area/template_noop)
+"kh" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva/multi_tiles,
+/area/template_noop)
+"kw" = (
+/obj/structure/surface/table,
+/obj/item/storage/firstaid/o2,
+/obj/item/storage/firstaid/regular{
+	pixel_x = 5;
+	pixel_y = 3
+	},
+/turf/open/floor/shiva/wred/north,
+/area/template_noop)
+"ky" = (
+/obj/structure/prop/structure_lattice{
+	density = 0;
+	desc = "On closer inspection, everything on these shelves are made of plastic.";
+	icon_state = "book-5";
+	name = "book case"
+	},
+/turf/open/floor/shiva/redfull,
+/area/template_noop)
+"kX" = (
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/shiva/multi_tiles,
+/area/template_noop)
+"mi" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/door/window/brigdoor/westleft,
+/obj/item/tool/stamp{
+	pixel_x = 8;
+	pixel_y = 10
+	},
+/obj/item/paper_bin{
+	pixel_x = -4;
+	pixel_y = 5
+	},
+/obj/item/tool/pen/blue{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/shiva/redfull,
+/area/template_noop)
+"mo" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva/snow_mat/west,
+/area/template_noop)
+"mu" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/bodybag/cryobag,
+/turf/open/floor/shiva/multi_tiles/southeast,
+/area/template_noop)
+"mw" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"my" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva/wredfull,
+/area/template_noop)
+"mO" = (
+/obj/structure/pipes/unary/freezer{
+	dir = 8;
+	icon_state = "freezer_1"
+	},
+/turf/open/floor/shiva/red,
+/area/template_noop)
+"mQ" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/machinery/door/airlock/almayer/medical/glass{
+	dir = 1;
+	name = "\improper Underground Medical Laboratory";
+	req_one_access = null;
+	req_access = null
+	},
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"nu" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva/multi_tiles/west,
+/area/template_noop)
+"nM" = (
+/obj/structure/reagent_dispensers/water_cooler,
+/turf/open/floor/shiva/redfull,
+/area/template_noop)
+"og" = (
+/obj/structure/filingcabinet,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/shiva/redfull,
+/area/template_noop)
+"oj" = (
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 4
+	},
+/mob/living/simple_animal/small/mouse,
+/turf/open/floor/shiva/multi_tiles/southeast,
+/area/template_noop)
+"ol" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/shiva/redfull/west,
+/area/template_noop)
+"oN" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/obj/item/tool/stamp{
+	pixel_x = -6;
+	pixel_y = -2
+	},
+/obj/item/storage/box/masks{
+	pixel_x = 6;
+	pixel_y = 3
+	},
+/obj/item/ammo_magazine/rifle,
+/turf/open/floor/shiva/redfull,
+/area/template_noop)
+"oU" = (
+/obj/structure/machinery/power/apc/no_power/east,
+/turf/open/floor/shiva/wred/east,
+/area/template_noop)
+"pd" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/bed/hybrisa/hospital/hospitaldivider{
+	pixel_y = 5;
+	layer = 3.8;
+	dir = 1
+	},
+/turf/open/floor/shiva/red/north,
+/area/template_noop)
+"po" = (
+/obj/structure/pipes/standard/simple/visible{
+	dir = 5
+	},
+/turf/open/floor/shiva/multi_tiles,
+/area/template_noop)
+"pp" = (
+/obj/structure/machinery/bioprinter,
+/turf/open/floor/shiva/redfull,
+/area/template_noop)
+"ps" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva/red/east,
+/area/template_noop)
+"pz" = (
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
+/turf/open/floor/shiva/redfull,
+/area/template_noop)
+"pX" = (
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva/wredfull,
+/area/template_noop)
+"qc" = (
+/obj/structure/machinery/door/airlock/almayer/maint{
+	dir = 1;
+	name = "\improper Underground Maintenance";
+	req_access_txt = "100";
+	req_one_access = null
+	},
+/turf/open/floor/shiva/wred,
+/area/template_noop)
+"qr" = (
+/obj/structure/surface/rack,
+/obj/item/storage/pouch/shotgun,
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/shiva/red/west,
+/area/template_noop)
+"qR" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/machinery/door/airlock/almayer/medical/glass{
+	name = "\improper Underground Medical Laboratory Treatment";
+	req_access_txt = "100";
+	req_one_access = null
+	},
+/turf/open/floor/shiva/snow_mat/east,
+/area/template_noop)
+"qS" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/reagent_dispensers/water_cooler{
+	pixel_y = 22;
+	pixel_x = -7
+	},
+/obj/structure/bed/chair{
+	dir = 8;
+	pixel_y = 7
+	},
+/turf/open/floor/shiva/snow_mat/north,
+/area/template_noop)
+"rb" = (
+/obj/structure/bed/chair/wheelchair,
+/turf/open/floor/shiva/wred/northeast,
+/area/template_noop)
+"rA" = (
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"rW" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva/snow_mat/east,
+/area/template_noop)
+"rZ" = (
+/obj/structure/machinery/iv_drip,
+/turf/open/floor/shiva/redfull,
+/area/template_noop)
+"sh" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/machinery/sleep_console,
+/turf/open/floor/shiva/multi_tiles,
+/area/template_noop)
+"sx" = (
+/obj/structure/machinery/cm_vending/sorted/medical/blood,
+/turf/open/floor/shiva/wred/north,
+/area/template_noop)
+"ta" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	pixel_y = 8
+	},
+/turf/open/floor/shiva/redfull,
+/area/template_noop)
+"tE" = (
+/turf/open/floor/shiva/wred/east,
+/area/template_noop)
+"uh" = (
+/obj/structure/barricade/handrail/wire{
+	layer = 3.1
+	},
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/device/defibrillator{
+	pixel_y = 5
+	},
+/turf/open/floor/shiva/red,
+/area/template_noop)
+"ui" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/shiva/wred/east,
+/area/template_noop)
+"us" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/shiva/snow_mat/east,
+/area/template_noop)
+"uu" = (
+/obj/structure/bed/chair{
+	dir = 8;
+	icon_state = "chair_alt"
+	},
+/turf/open/floor/shiva/redfull/west,
+/area/template_noop)
+"uQ" = (
+/turf/open/floor/shiva/red/north,
+/area/template_noop)
+"vb" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/flora/pottedplant/random,
+/turf/open/floor/shiva/red,
+/area/template_noop)
+"vj" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/reagent_container/spray/cleaner{
+	pixel_x = -5;
+	pixel_y = 3
+	},
+/obj/item/tool/soap{
+	pixel_x = 5
+	},
+/turf/open/floor/shiva/redfull,
+/area/template_noop)
+"vn" = (
+/obj/structure/machinery/light,
+/obj/structure/bed/roller/hospital_empty/bigrollerempty3,
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"vu" = (
+/turf/open/floor/shiva/red/west,
+/area/template_noop)
+"vw" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	pixel_y = 8
+	},
+/turf/open/floor/shiva/redfull,
+/area/template_noop)
+"vz" = (
+/obj/structure/machinery/holosign/surgery{
+	id = "otice"
+	},
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/machinery/door/airlock/almayer/medical{
+	dir = 1;
+	name = "Underground Medical Laboratory Operating Theatre";
+	req_access_txt = "100";
+	req_one_access = null
+	},
+/turf/open/floor/shiva/snow_mat/east,
+/area/template_noop)
+"vK" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/box/cdeathalarm_kit{
+	pixel_x = -8;
+	pixel_y = 1
+	},
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"vS" = (
+/turf/open/floor/shiva/redfull,
+/area/template_noop)
+"vX" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	pixel_y = 8
+	},
+/turf/open/floor/shiva/wred/east,
+/area/template_noop)
+"wb" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+	dir = 1;
+	name = "\improper Underground Medical Laboratory";
+	req_access = null;
+	req_one_access = null
+	},
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"wi" = (
+/turf/open/floor/shiva/wred,
+/area/template_noop)
+"wn" = (
+/obj/structure/bed/chair/office/light{
+	dir = 1
+	},
+/turf/open/floor/shiva/wredfull,
+/area/template_noop)
+"xu" = (
+/obj/structure/machinery/door/airlock/almayer/medical{
+	dir = 1;
+	name = "Underground Medical Laboratory Operating Theatre";
+	req_access_txt = "100";
+	req_one_access = null
+	},
+/turf/open/floor/shiva/snow_mat/east,
+/area/template_noop)
+"yj" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/machinery/door/airlock/almayer/maint{
+	name = "\improper Underground Maintenance";
+	req_access_txt = "100";
+	req_one_access = null
+	},
+/turf/open/floor/shiva/snow_mat/east,
+/area/template_noop)
+"yo" = (
+/turf/open/floor/shiva/redfull/west,
+/area/template_noop)
+"yx" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/closet/hydrant{
+	pixel_y = 32
+	},
+/obj/item/prop/alien/hugger{
+	pixel_y = 5;
+	pixel_x = -8
+	},
+/turf/open/floor/shiva/red/east,
+/area/template_noop)
+"zc" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva/wred,
+/area/template_noop)
+"zj" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/pipes/vents/pump{
+	dir = 4
+	},
+/obj/structure/bed/chair{
+	dir = 8;
+	icon_state = "chair_alt"
+	},
+/turf/open/floor/shiva/redfull/west,
+/area/template_noop)
+"zm" = (
+/obj/structure/pipes/standard/manifold/visible{
+	dir = 1
+	},
+/obj/structure/largecrate/random/barrel/medical,
+/turf/open/floor/shiva/multi_tiles,
+/area/template_noop)
+"zC" = (
+/turf/closed/wall,
+/area/template_noop)
+"zK" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/shiva/wredfull,
+/area/template_noop)
+"zL" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/shiva/multi_tiles,
+/area/template_noop)
+"zQ" = (
+/obj/structure/bed/chair{
+	dir = 8;
+	icon_state = "chair_alt"
+	},
+/turf/open/floor/shiva/red,
+/area/template_noop)
+"zV" = (
+/obj/effect/decal/cleanable/cobweb{
+	pixel_x = -11;
+	pixel_y = 20
+	},
+/turf/template_noop,
+/area/template_noop)
+"Aa" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/closet/secure_closet/personal/patient,
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"Ar" = (
+/obj/structure/machinery/optable,
+/turf/open/floor/shiva/snow_mat/east,
+/area/template_noop)
+"AD" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/bed/sofa/vert/grey/bot,
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"AU" = (
+/obj/structure/surface/rack,
+/obj/item/storage/pouch/tools/full,
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/shiva/redfull/west,
+/area/template_noop)
+"BH" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/weapon/gun/shotgun/pump,
+/obj/item/ammo_magazine/shotgun/buckshot{
+	pixel_x = 6;
+	pixel_y = -4
+	},
+/turf/open/floor/shiva/redfull,
+/area/template_noop)
+"BS" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/bloodtrail{
+	pixel_x = 4
+	},
+/turf/open/floor/shiva/multi_tiles/southeast,
+/area/template_noop)
+"Cl" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 4
+	},
+/turf/open/floor/shiva/multi_tiles,
+/area/template_noop)
+"Cp" = (
+/obj/item/clothing/head/helmet,
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"CA" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 9
+	},
+/turf/open/floor/shiva/redfull,
+/area/template_noop)
+"CY" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/closet/secure_closet/surgical{
+	pixel_x = -30
+	},
+/obj/item/tool/surgery/scalpel/manager,
+/turf/open/floor/shiva/redfull,
+/area/template_noop)
+"Db" = (
+/obj/structure/filingcabinet,
+/obj/item/paper/research_notes,
+/turf/open/floor/shiva/redfull,
+/area/template_noop)
+"Dy" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/item/weapon/shield/riot,
+/turf/open/floor/shiva/redfull,
+/area/template_noop)
+"DC" = (
+/obj/structure/machinery/light,
+/obj/structure/bed/roller/hospital_empty/bigrollerempty3,
+/turf/open/floor/shiva/multi_tiles/west,
+/area/template_noop)
+"DQ" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/storage/box/donkpockets{
+	pixel_x = -6;
+	pixel_y = 17
+	},
+/obj/structure/machinery/recharger,
+/turf/open/floor/shiva/multi_tiles,
+/area/template_noop)
+"DY" = (
+/obj/structure/machinery/vending/snack,
+/turf/open/floor/shiva/greenfull/west,
+/area/template_noop)
+"Em" = (
+/turf/open/floor/shiva/snow_mat/east,
+/area/template_noop)
+"EC" = (
+/obj/structure/machinery/computer/operating{
+	density = 0
+	},
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/shiva/snow_mat/east,
+/area/template_noop)
+"EN" = (
+/obj/structure/closet/secure_closet/medical1{
+	req_access_txt = "100"
+	},
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/shiva/wred/north,
+/area/template_noop)
+"ER" = (
+/obj/structure/bed/roller,
+/obj/structure/machinery/iv_drip,
+/turf/open/floor/shiva/wred/north,
+/area/template_noop)
+"Fa" = (
+/obj/structure/pipes/vents/pump{
+	dir = 4
+	},
+/turf/open/floor/shiva/snow_mat/east,
+/area/template_noop)
+"FN" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/door/window/brigdoor/westleft,
+/obj/item/tool/pen/blue{
+	pixel_x = 4;
+	pixel_y = 3
+	},
+/obj/item/storage/pill_bottle/bicaridine{
+	pixel_x = -5;
+	pixel_y = 11
+	},
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/shiva/redfull,
+/area/template_noop)
+"FP" = (
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 4
+	},
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"Ga" = (
+/obj/effect/landmark/objective_landmark/medium,
+/obj/structure/closet/secure_closet/medical3{
+	req_access_txt = "100"
+	},
+/obj/structure/machinery/light,
+/turf/open/floor/shiva/wred/southeast,
+/area/template_noop)
+"Gx" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/flora/pottedplant/random,
+/turf/open/floor/shiva/redfull/west,
+/area/template_noop)
+"GU" = (
+/obj/effect/decal/cleanable/blood/gibs,
+/obj/effect/spawner/random/gun/pistol/midchance,
+/turf/open/floor/shiva/snow_mat/east,
+/area/template_noop)
+"GV" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/shiva/red/east,
+/area/template_noop)
+"He" = (
+/obj/structure/bed/chair,
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"Hu" = (
+/turf/open/floor/shiva/wred/west,
+/area/template_noop)
+"HB" = (
+/obj/structure/pipes/vents/pump,
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"HC" = (
+/obj/structure/pipes/vents/pump{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/gibs,
+/turf/open/floor/shiva/redfull,
+/area/template_noop)
+"HT" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 10
+	},
+/turf/open/floor/shiva/wredfull,
+/area/template_noop)
+"Ic" = (
+/obj/structure/bed/chair/comfy/teal,
+/turf/open/floor/shiva/multi_tiles,
+/area/template_noop)
+"Id" = (
+/obj/structure/closet/secure_closet/medical2,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/shiva/redfull,
+/area/template_noop)
+"Ih" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"Io" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/paper/janitor{
+	pixel_x = -4;
+	pixel_y = 4
+	},
+/obj/item/tool/pen/blue{
+	pixel_x = 6;
+	pixel_y = -4
+	},
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"Is" = (
+/obj/structure/machinery/chem_master,
+/turf/open/floor/shiva/red/northeast,
+/area/template_noop)
+"Iz" = (
+/turf/template_noop,
+/area/template_noop)
+"IC" = (
+/obj/structure/disposalpipe/junction{
+	dir = 8;
+	icon_state = "pipe-j2"
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva/multi_tiles/southeast,
+/area/template_noop)
+"IF" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+	name = "\improper Underground Medical Laboratory";
+	req_access = null;
+	req_one_access = null
+	},
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"IR" = (
+/obj/structure/surface/table,
+/obj/item/bodybag/cryobag,
+/obj/item/storage/box/syringes,
+/turf/open/floor/shiva/wred/north,
+/area/template_noop)
+"IV" = (
+/obj/structure/surface/rack,
+/obj/item/storage/pouch/sling,
+/obj/effect/landmark/objective_landmark/science,
+/obj/structure/machinery/light,
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"Jf" = (
+/obj/item/roller{
+	pixel_x = 2;
+	pixel_y = 7
+	},
+/obj/structure/surface/table,
+/obj/item/roller{
+	pixel_x = 4;
+	pixel_y = 14
+	},
+/turf/open/floor/shiva/redfull,
+/area/template_noop)
+"Jr" = (
+/turf/open/floor/shiva/multi_tiles/west,
+/area/template_noop)
+"JS" = (
+/obj/structure/bed/chair/office/light{
+	dir = 8
+	},
+/turf/open/floor/shiva/wredfull,
+/area/template_noop)
+"Ki" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+	dir = 1;
+	name = "\improper Underground Medical Laboratory";
+	req_access = null;
+	req_one_access = null
+	},
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"KQ" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/machinery/door/airlock/almayer/maint{
+	name = "\improper Underground Maintenance";
+	req_access_txt = "100";
+	req_one_access = null
+	},
+/turf/open/floor/shiva/redfull,
+/area/template_noop)
+"KR" = (
+/obj/structure/machinery/cm_vending/sorted/medical/no_access,
+/obj/structure/medical_supply_link,
+/turf/open/floor/shiva/wred/northwest,
+/area/template_noop)
+"KT" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/shiva/multi_tiles/southeast,
+/area/template_noop)
+"Lu" = (
+/obj/structure/machinery/vending/coffee,
+/turf/open/floor/shiva/redfull/west,
+/area/template_noop)
+"Lw" = (
+/obj/structure/machinery/photocopier,
+/turf/open/floor/shiva/wredfull,
+/area/template_noop)
+"LY" = (
+/obj/structure/machinery/vending/coffee,
+/turf/open/floor/shiva/greenfull/west,
+/area/template_noop)
+"MF" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/device/flashlight/lamp/green{
+	pixel_y = 7
+	},
+/obj/item/stock_parts/matter_bin/super{
+	pixel_x = -8;
+	pixel_y = 3
+	},
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"MM" = (
+/obj/structure/barricade/handrail/wire{
+	layer = 3.1
+	},
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/storage/box/pillbottles{
+	pixel_x = -7;
+	pixel_y = 6
+	},
+/obj/item/storage/pill_bottle/packet/bicaridine{
+	pixel_x = 6;
+	pixel_y = -2
+	},
+/turf/open/floor/shiva/red,
+/area/template_noop)
+"MZ" = (
+/obj/structure/pipes/vents/pump{
+	dir = 4
+	},
+/turf/open/floor/shiva/wred,
+/area/template_noop)
+"Nw" = (
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/machinery/medical_pod/sleeper,
+/turf/open/floor/shiva/multi_tiles,
+/area/template_noop)
+"ND" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/bed/sofa/vert/grey,
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"NI" = (
+/obj/item/stool{
+	icon_state = "stool_alt"
+	},
+/turf/open/floor/shiva/multi_tiles,
+/area/template_noop)
+"NK" = (
+/obj/structure/machinery/reagentgrinder{
+	pixel_y = 7
+	},
+/obj/item/stack/sheet/mineral/phoron,
+/obj/item/stack/sheet/mineral/phoron,
+/obj/item/stack/sheet/mineral/phoron,
+/obj/item/stack/sheet/mineral/phoron,
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/shiva/multi_tiles,
+/area/template_noop)
+"NM" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/microwave{
+	pixel_y = 9
+	},
+/obj/item/reagent_container/food/snacks/donkpocket{
+	pixel_x = -5;
+	pixel_y = 17
+	},
+/turf/open/floor/shiva/multi_tiles,
+/area/template_noop)
+"Og" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/folder/black{
+	pixel_x = -7;
+	pixel_y = 13
+	},
+/obj/item/folder/white{
+	pixel_x = -6;
+	pixel_y = 7
+	},
+/obj/item/folder/yellow{
+	pixel_x = -7
+	},
+/obj/item/facepaint/lipstick/jade{
+	pixel_x = 5
+	},
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"Ok" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/effect/landmark/objective_landmark/close,
+/obj/structure/surface/rack,
+/turf/open/floor/shiva/wred/southwest,
+/area/template_noop)
+"OM" = (
+/obj/structure/surface/table,
+/obj/item/storage/firstaid/fire,
+/obj/item/storage/firstaid/toxin{
+	pixel_x = 5;
+	pixel_y = 3
+	},
+/turf/open/floor/shiva/wred/north,
+/area/template_noop)
+"OP" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva/wredfull,
+/area/template_noop)
+"PL" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/shiva/snow_mat/east,
+/area/template_noop)
+"PQ" = (
+/turf/open/floor/shiva/red/east,
+/area/template_noop)
+"PZ" = (
+/obj/effect/decal/cleanable/blood/gibs,
+/obj/effect/landmark/corpsespawner/colonist/burst,
+/turf/open/floor/shiva/redfull,
+/area/template_noop)
+"Qn" = (
+/obj/structure/machinery/vending/coffee,
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"Qo" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/closet/secure_closet/personal/patient,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/obj/structure/barricade/handrail/wire{
+	dir = 8;
+	layer = 2.991
+	},
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"QD" = (
+/obj/structure/machinery/body_scanconsole,
+/turf/open/floor/shiva/multi_tiles,
+/area/template_noop)
+"QK" = (
+/obj/structure/sign/safety/medical,
+/turf/closed/wall/r_wall/unmeltable,
+/area/template_noop)
+"QV" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/machinery/computer/communications,
+/turf/open/floor/shiva/redfull,
+/area/template_noop)
+"QZ" = (
+/obj/structure/machinery/photocopier,
+/turf/open/floor/shiva/redfull,
+/area/template_noop)
+"Rs" = (
+/obj/structure/sign/safety/airlock{
+	pixel_x = 8
+	},
+/turf/closed/wall,
+/area/template_noop)
+"RL" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/surface/table{
+	color = "#8B7B5B"
+	},
+/obj/structure/machinery/microwave{
+	pixel_y = 18
+	},
+/obj/item/reagent_container/food/snacks/packaged_burger{
+	pixel_x = -8
+	},
+/obj/item/reagent_container/food/snacks/packaged_burger{
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/turf/open/floor/shiva/snow_mat/east,
+/area/template_noop)
+"RU" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_casing/shell{
+	icon_state = "cartridge_1_1"
+	},
+/turf/open/floor/shiva/redfull,
+/area/template_noop)
+"Se" = (
+/obj/structure/closet/secure_closet/personal/patient,
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"Sq" = (
+/obj/structure/machinery/cryo_cell,
+/obj/structure/pipes/standard/cap,
+/turf/open/floor/shiva/multi_tiles,
+/area/template_noop)
+"Su" = (
+/turf/open/floor/shiva/greenfull/west,
+/area/template_noop)
+"Sy" = (
+/turf/closed/wall/r_wall/unmeltable,
+/area/template_noop)
+"SO" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/door/window/brigdoor/northright,
+/obj/item/paper_bin{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/item/tool/pen/blue,
+/obj/item/tool/stamp{
+	pixel_x = 6;
+	pixel_y = 5
+	},
+/turf/open/floor/shiva/redfull,
+/area/template_noop)
+"SR" = (
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/item/restraint/handcuffs{
+	pixel_x = -6;
+	pixel_y = 5
+	},
+/turf/open/floor/shiva/multi_tiles,
+/area/template_noop)
+"Tc" = (
+/obj/structure/closet/secure_closet/personal/patient,
+/obj/structure/barricade/handrail/wire{
+	dir = 4
+	},
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"TP" = (
+/obj/structure/machinery/medical_pod/bodyscanner,
+/turf/open/floor/shiva/multi_tiles,
+/area/template_noop)
+"UV" = (
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/obj/structure/machinery/alarm{
+	dir = 4;
+	pixel_x = -24
+	},
+/turf/open/floor/shiva/multi_tiles,
+/area/template_noop)
+"UX" = (
+/obj/structure/pipes/standard/manifold/hidden/green,
+/turf/open/floor/shiva/wredfull,
+/area/template_noop)
+"UZ" = (
+/obj/effect/decal/hybrisa/bloodtrail{
+	pixel_x = 5;
+	dir = 9;
+	pixel_y = 7
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/shiva/red,
+/area/template_noop)
+"Vy" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/device/flashlight/lamp/green{
+	pixel_y = 7;
+	on = 1
+	},
+/turf/open/floor/shiva/redfull/west,
+/area/template_noop)
+"VI" = (
+/obj/structure/pipes/vents/pump,
+/turf/open/floor/shiva/wredfull,
+/area/template_noop)
+"VJ" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/shiva/red/west,
+/area/template_noop)
+"VY" = (
+/obj/structure/bed/chair/office/light{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/shiva/wredfull,
+/area/template_noop)
+"Wi" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/effect/landmark/corpsespawner/colonist/burst,
+/obj/item/trash/used_stasis_bag,
+/turf/open/floor/shiva/redfull/west,
+/area/template_noop)
+"Wp" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/stack/nanopaste,
+/turf/open/floor/shiva/redfull,
+/area/template_noop)
+"WI" = (
+/obj/item/stool{
+	icon_state = "stool_alt"
+	},
+/turf/open/floor/shiva/north,
+/area/template_noop)
+"WO" = (
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva/wredfull,
+/area/template_noop)
+"WP" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/shiva/red,
+/area/template_noop)
+"Xg" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva/redfull,
+/area/template_noop)
+"Xh" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/shiva/redfull,
+/area/template_noop)
+"Xk" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/tracks/wheels,
+/turf/open/floor/shiva/multi_tiles,
+/area/template_noop)
+"XT" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/obj/structure/machinery/computer/communications{
+	dir = 4
+	},
+/turf/open/floor/shiva/redfull,
+/area/template_noop)
+"Ya" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/bed/chair/wheelchair,
+/turf/open/floor/shiva/greenfull/west,
+/area/template_noop)
+"Ym" = (
+/turf/open/floor/shiva/multi_tiles/southeast,
+/area/template_noop)
+"YM" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"YP" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/effect/landmark/objective_landmark/close,
+/obj/item/clock{
+	pixel_y = 13;
+	pixel_x = -15
+	},
+/obj/item/clothing/gloves/latex,
+/turf/open/floor/shiva/redfull,
+/area/template_noop)
+"Zr" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/machinery/door/airlock/almayer/medical/glass{
+	name = "\improper Underground Medical Laboratory Lobby";
+	req_access_txt = "100";
+	req_one_access = null
+	},
+/turf/open/floor/shiva/wredfull,
+/area/template_noop)
+"Zx" = (
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/shiva/wredfull,
+/area/template_noop)
+"ZA" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/manifold/hidden/green,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"ZI" = (
+/obj/structure/surface/table,
+/obj/item/storage/box/masks,
+/obj/item/storage/box/gloves{
+	pixel_x = 6;
+	pixel_y = 10
+	},
+/turf/open/floor/shiva/wred/north,
+/area/template_noop)
+
+(1,1,1) = {"
+QK
+eU
+eU
+YM
+Ki
+eU
+eU
+kb
+eU
+eU
+zC
+zC
+eU
+eU
+zC
+zC
+zC
+Sy
+"}
+(2,1,1) = {"
+eU
+FP
+bT
+YM
+rA
+Su
+Io
+Og
+vK
+MF
+Qn
+zC
+Vy
+Lu
+zC
+KR
+Ok
+zC
+"}
+(3,1,1) = {"
+eU
+Ya
+rA
+YM
+rA
+rA
+rA
+rA
+rA
+rA
+bi
+zC
+zj
+eg
+zC
+EN
+wi
+zC
+"}
+(4,1,1) = {"
+IF
+as
+cq
+an
+cq
+dx
+dx
+ND
+ND
+AD
+cq
+mQ
+ax
+vu
+eU
+sx
+MZ
+eU
+"}
+(5,1,1) = {"
+eo
+at
+eo
+iB
+Ih
+rA
+rA
+rA
+rA
+rA
+rA
+zC
+ac
+ab
+eU
+OM
+zc
+eU
+"}
+(6,1,1) = {"
+eU
+DY
+rA
+mw
+rA
+fY
+WI
+jE
+jE
+NI
+fY
+ae
+RL
+js
+zC
+ZI
+zc
+zC
+"}
+(7,1,1) = {"
+eU
+He
+ar
+mw
+fY
+hg
+mi
+ew
+XT
+FN
+oN
+eU
+ad
+PL
+in
+gv
+UX
+qc
+"}
+(8,1,1) = {"
+kb
+jh
+HB
+ZA
+jE
+QV
+JS
+VY
+hh
+JS
+hh
+eU
+qS
+bl
+Rs
+IR
+zc
+zC
+"}
+(9,1,1) = {"
+eU
+He
+rA
+mw
+NI
+SO
+wn
+hG
+HC
+vS
+nM
+ae
+rW
+Em
+eU
+kw
+zc
+eU
+"}
+(10,1,1) = {"
+eU
+He
+Cp
+ao
+jE
+BH
+hh
+PZ
+Dy
+vS
+Db
+eU
+mo
+Em
+eU
+gi
+zc
+eU
+"}
+(11,1,1) = {"
+zC
+LY
+rA
+mw
+dt
+YP
+Lw
+ky
+RU
+jP
+og
+dB
+yx
+PQ
+gc
+ER
+HT
+bF
+"}
+(12,1,1) = {"
+zC
+zC
+rA
+wb
+zC
+eU
+eU
+eU
+Zr
+eU
+Rs
+zC
+Gx
+yo
+zC
+rb
+Ga
+zC
+"}
+(13,1,1) = {"
+eU
+vw
+hh
+my
+al
+Hu
+ai
+Hu
+OP
+uQ
+vb
+yo
+Xg
+vS
+zC
+eU
+eU
+zC
+"}
+(14,1,1) = {"
+eU
+au
+VI
+WO
+zK
+Zx
+gv
+gv
+pX
+et
+WP
+ol
+CA
+vS
+eU
+zV
+Iz
+Iz
+"}
+(15,1,1) = {"
+eU
+ta
+tE
+oU
+tE
+my
+ui
+tE
+vX
+eu
+zQ
+uu
+QZ
+Jf
+eU
+Iz
+Iz
+Iz
+"}
+(16,1,1) = {"
+Sy
+zC
+eU
+zC
+Rs
+qR
+zC
+eU
+eV
+eU
+zC
+zC
+eU
+eU
+zC
+Iz
+Iz
+Iz
+"}
+(17,1,1) = {"
+zC
+NM
+Ic
+uh
+Cl
+IC
+UV
+uQ
+fz
+Jr
+DC
+zC
+zV
+Iz
+Iz
+Iz
+Iz
+Iz
+"}
+(18,1,1) = {"
+eU
+DQ
+Ic
+MM
+kX
+KT
+Xk
+ah
+TP
+rA
+af
+eU
+Iz
+Iz
+Iz
+Iz
+Iz
+Iz
+"}
+(19,1,1) = {"
+eU
+jr
+jE
+UZ
+am
+BS
+aj
+ah
+QD
+rA
+vn
+zC
+Iz
+Iz
+Iz
+Iz
+Iz
+Iz
+"}
+(20,1,1) = {"
+zC
+Sq
+po
+bY
+zL
+oj
+SR
+pd
+Nw
+aa
+af
+eU
+Iz
+Iz
+Iz
+Iz
+Iz
+Iz
+"}
+(21,1,1) = {"
+Rs
+zC
+zm
+jc
+jE
+Ym
+jE
+uQ
+sh
+YM
+bb
+eU
+Iz
+Iz
+Iz
+Iz
+Iz
+Iz
+"}
+(22,1,1) = {"
+Iz
+zC
+dG
+mO
+dC
+mu
+NK
+Is
+GV
+ps
+aW
+zC
+Iz
+Iz
+Iz
+Iz
+Iz
+Iz
+"}
+(23,1,1) = {"
+Iz
+zC
+zC
+eU
+zC
+ak
+zC
+zC
+Qo
+nu
+bV
+zC
+Iz
+Iz
+Iz
+Iz
+Iz
+Iz
+"}
+(24,1,1) = {"
+Iz
+eU
+ta
+Wp
+CY
+vj
+ta
+eU
+Aa
+kh
+Se
+eU
+Iz
+Iz
+Iz
+Iz
+Iz
+Iz
+"}
+(25,1,1) = {"
+Iz
+Rs
+aU
+GU
+Em
+Fa
+rZ
+Rs
+iy
+nu
+Tc
+eU
+Iz
+Iz
+Iz
+Iz
+Iz
+Iz
+"}
+(26,1,1) = {"
+Iz
+xu
+vS
+ap
+Ar
+ke
+us
+vz
+VJ
+ax
+qr
+zC
+Iz
+Iz
+Iz
+Iz
+Iz
+Iz
+"}
+(27,1,1) = {"
+Iz
+eU
+Id
+aq
+EC
+rW
+jx
+zC
+ag
+YM
+IV
+zC
+Iz
+Iz
+Iz
+Iz
+Iz
+Iz
+"}
+(28,1,1) = {"
+Iz
+zC
+pp
+vS
+Xh
+Xg
+pz
+eU
+Wi
+iX
+AU
+zC
+Iz
+Iz
+Iz
+Iz
+Iz
+Iz
+"}
+(29,1,1) = {"
+Iz
+zC
+zC
+eU
+Rs
+yj
+eU
+zC
+Rs
+KQ
+eU
+zC
+Iz
+Iz
+Iz
+Iz
+Iz
+Iz
+"}

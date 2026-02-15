@@ -92,14 +92,14 @@
 /area/template_noop)
 "fX" = (
 /turf/closed/wall/mineral/bone_resin,
-/area/template_noop)
+/area/fiorina/oob)
 "gs" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison/darkbrown2/west,
 /area/template_noop)
 "gV" = (
 /turf/open/space,
-/area/template_noop)
+/area/fiorina/oob)
 "hf" = (
 /turf/open/gm/river/pool,
 /area/template_noop)
@@ -281,7 +281,7 @@
 "oL" = (
 /obj/structure/lattice,
 /turf/open/space,
-/area/template_noop)
+/area/fiorina/oob)
 "pt" = (
 /obj/structure/bed/chair/comfy{
 	layer = 2.9
@@ -573,7 +573,7 @@
 "Bf" = (
 /obj/structure/window/framed/prison/reinforced/hull,
 /turf/open/floor/plating/prison,
-/area/template_noop)
+/area/fiorina/oob)
 "Bj" = (
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison/darkbrown2,
@@ -591,15 +591,6 @@
 	pixel_y = -9
 	},
 /turf/open/floor/prison/darkbrown2/east,
-/area/template_noop)
-"Bv" = (
-/obj/structure/prop/souto_land/streamer{
-	dir = 9
-	},
-/obj/item/toy/gun_ammo{
-	pixel_y = 66
-	},
-/turf/open/floor/wood,
 /area/template_noop)
 "BK" = (
 /obj/structure/prop/souto_land/pole,
@@ -673,7 +664,7 @@
 /area/template_noop)
 "Fy" = (
 /turf/closed/wall/r_wall/prison_unmeltable,
-/area/template_noop)
+/area/fiorina/oob)
 "Fz" = (
 /obj/structure/prop/souto_land/streamer{
 	dir = 9
@@ -866,6 +857,7 @@
 /obj/structure/prop/souto_land/streamer{
 	dir = 9
 	},
+/obj/item/toy/gun_ammo,
 /turf/open/floor/wood,
 /area/template_noop)
 "LI" = (
@@ -1604,7 +1596,7 @@ YG
 aj
 Ls
 xz
-Bv
+xz
 or
 zR
 nf

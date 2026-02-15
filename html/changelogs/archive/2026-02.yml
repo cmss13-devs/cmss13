@@ -1,0 +1,86 @@
+2026-02-01:
+  TrollerNoob:
+  - rscadd: Added Chestrig as a selectable backpack you can spawn with. Find it in
+      Backpack Types.
+2026-02-03:
+  Ediblebomb:
+  - maptweak: The maintenance doors leading into the orbital bombardment control room
+      on both decks now have the correctg access requirements in place.
+  Xander3359:
+  - qol: Ladders will automatically show the radial wheel after being used
+2026-02-04:
+  ihatethisengine:
+  - balance: removed aimed shot from PMC sniper spec
+2026-02-07:
+  Bibby0110:
+  - bugfix: Kings spawned in hunting grounds won't affect their primary hive wrt.
+      alliances
+  Drulikar:
+  - admin: Admins get more access to log getter verbs
+  - rscdel: Removed getruntimelog and giveruntimelog since they aren't really applicable
+      to how TGS logs dream daemon logs
+  Nihisohel:
+  - balance: Readds the barrel charger to marine vendors at very limited quantities
+      and low opportunistic restocks
+  - imageadd: Adds a new barrel charger sprite, old one is still retained in its dmi
+      file for legacy
+  Xander3359:
+  - spellcheck: spellcheck confing
+  rattybag:
+  - refactor: refactored reagent grinder to use TGUI
+  - ui: reagent grinder interface now uses TGUI
+2026-02-08:
+  hry-gh:
+  - server: added the ability to get admins/admin_ranks from an api endpoint
+2026-02-09:
+  DangerRevolution:
+  - maptweak: 'Added three new RNG variations to New Varadero: a hold-out in Engineering
+      and a variation of the Medbay alongside New Varadero Restaurant that might replace
+      the Library'
+  Ediblebomb:
+  - qol: Added a preference to opt-out of being spectated by the CMTV camera ghost.
+  ori-disillusion-mirnov:
+  - rscdel: removes playtime defines past tier 4, and removes the hybrisa CL survivor
+      ranks past 175 hours of playtime
+2026-02-11:
+  BOBAMAx:
+  - bugfix: rescuing survivors now properly awards intel points instead of only pretending
+      to
+  Puckaboo2:
+  - bugfix: Anchorpoint Station marines have their minimap faction icons.
+  - bugfix: Missing minimap icons, minimap backgrounds, and role comm titles have
+      been applied to all CMB personnel.
+  - bugfix: CMB Riot Control synths should have the correct minimap icons vs the CMB
+      Investigation synths.
+2026-02-12:
+  Puckaboo2:
+  - bugfix: You can now apply Severe Burns or Eschar on a mob through the limb status
+      editor.
+  - spellcheck: Adds a space between your limb status and (Severe Burns) when you
+      check yourself.
+  - bugfix: Nonbinaries being 'himself' to other people while checking themselves
+      for injuries should no longer occur.
+  ori-disillusion-mirnov:
+  - bugfix: large xenos can no longer be buckled to office chairs
+  - code_imp: remove redundant line for the rollerbed
+2026-02-13:
+  Nihisohel:
+  - rscadd: Revolvers can now mix n match ammo types in their cylinders. Play hardcore
+      Russian Roulette with a High-explosive round combined with Impact rounds.
+  - balance: Tactical reloading duration and speed is now reduced if your arm is missing
+  - balance: You can now move while attaching weapon mods to your gun with a movement
+      penalty
+  - rscadd: You can now move while oiling your gun.
+  - qol: Bullet/shell ejections now stack to your hand first, before littering the
+      ground
+  - refactor: Changes the backend for normal cock to hand to standardize the function
+      with the new leveractions and shotguns ejections
+  - refactor: Cleans up suicide code a bit
+  - rscadd: Your head can now explode through the right circumstances through suicide
+  - rscadd: Adds some more flavor text to CO pistols firing at the air.
+  - bugfix: Fixes some early returns on CO pistols relating to firing to air
+  - spellcheck: Adds text for when directly ejecting from the lever-actions or shotguns
+      chamber, and a few other texts missing some color
+  neeshacark:
+  - qol: the revolver rig can hold loose rounds now
+  - spellcheck: fixed a typo in the name of the revolver holster rig

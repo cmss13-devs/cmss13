@@ -41,11 +41,11 @@
 /obj/item/clothing/accessory/proc/can_attach_to(mob/user, obj/item/clothing/C)
 	return TRUE
 
-//when user attached an accessory to S
-/obj/item/clothing/accessory/proc/on_attached(obj/item/clothing/S, mob/living/user, silent)
-	if(!istype(S))
+//when user attached an accessory to clothing/clothes
+/obj/item/clothing/accessory/proc/on_attached(obj/item/clothing/clothes, mob/living/user, silent)
+	if(!istype(clothes))
 		return
-	has_suit = S
+	has_suit = clothes
 	forceMove(has_suit)
 	has_suit.overlays += get_inv_overlay()
 
@@ -53,11 +53,24 @@
 		if(!silent)
 			to_chat(user, SPAN_NOTICE("You attach \the [src] to \the [has_suit]."))
 		src.add_fingerprint(user)
+
+	if(ismob(clothes.loc))
+		var/mob/wearer = clothes.loc
+		if(LAZYLEN(actions))
+			for(var/datum/action/action in actions)
+				action.give_to(wearer)
 	return TRUE
 
-/obj/item/clothing/accessory/proc/on_removed(mob/living/user, obj/item/clothing/C)
+/obj/item/clothing/accessory/proc/on_removed(mob/living/user, obj/item/clothing/clothes)
 	if(!has_suit)
 		return
+
+	if(ismob(clothes.loc))
+		var/mob/wearer = clothes.loc
+		if(LAZYLEN(actions))
+			for(var/datum/action/action in actions)
+				action.remove_from(wearer)
+
 	has_suit.overlays -= get_inv_overlay()
 	has_suit = null
 	if(usr)
@@ -1475,3 +1488,56 @@ Wrist Accessories
 	. = ..()
 
 	. += " It reads: [SPAN_NOTICE("[worldtime2text()]")]"
+
+
+//TEMPORARY
+
+/obj/item/clothing/accessory/helmet/cover
+	name = "potato cover"
+	desc = "ahelp if you see this."
+	garbage = TRUE // for all intents and purposes, yes
+	flags_obj = OBJ_IS_HELMET_GARB
+	w_class = SIZE_TINY
+	worn_accessory_slot = ACCESSORY_SLOT_HELM_C
+	worn_accessory_limit = 2 // cover a helmet with a raincover and a netting i guess
+	icon = 'icons/obj/items/clothing/helmet_garb.dmi'
+	accessory_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/helmet_garb/helmet_covers.dmi',
+	)
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/helmet_covers.dmi',
+	)
+
+/obj/item/clothing/accessory/helmet/cover/raincover
+	name = "raincover"
+	desc = "The standard M10 combat helmet is already water-resistant at depths of up to 10 meters. This makes the top potentially water-proof. At least it's something."
+	icon_state = "raincover"
+
+/obj/item/clothing/accessory/helmet/cover/raincover/jungle
+	name = "jungle raincover"
+	icon_state = "raincover_jungle"
+
+/obj/item/clothing/accessory/helmet/cover/raincover/desert
+	name = "desert raincover"
+	icon_state = "raincover_desert"
+
+/obj/item/clothing/accessory/helmet/cover/raincover/urban
+	name = "urban raincover"
+	icon_state = "raincover_urban"
+
+/obj/item/clothing/accessory/helmet/cover/netting
+	name = "combat netting"
+	desc = "Probably combat netting for a helmet. Probably just an extra hairnet that got ordered for the phantom Almayer cooking staff. Probably useless."
+	icon_state = "netting"
+
+/obj/item/clothing/accessory/helmet/cover/netting/desert
+	name = "desert combat netting"
+	icon_state = "netting_desert"
+
+/obj/item/clothing/accessory/helmet/cover/netting/jungle
+	name = "jungle combat netting"
+	icon_state = "netting_jungle"
+
+/obj/item/clothing/accessory/helmet/cover/netting/urban
+	name = "urban combat netting"
+	icon_state = "netting_urban"

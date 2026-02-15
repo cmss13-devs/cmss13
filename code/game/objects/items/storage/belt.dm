@@ -1070,6 +1070,20 @@
 	for(var/i in 1 to storage_slots)
 		new /obj/item/ammo_magazine/handful/shotgun/heavy/slug(src)
 
+/obj/item/storage/belt/shotgun/black/es7_mixed/fill_preset_inventory()
+	for(var/i in 1 to (storage_slots/2))
+		new /obj/item/ammo_magazine/handful/shotgun/slug/es7(src)
+	for(var/i in 1 to (storage_slots/2))
+		new /obj/item/ammo_magazine/handful/shotgun/beanbag/es7(src)
+
+/obj/item/storage/belt/shotgun/black/es7_stun/fill_preset_inventory()
+	for(var/i in 1 to storage_slots)
+		new /obj/item/ammo_magazine/handful/shotgun/beanbag/es7(src)
+
+/obj/item/storage/belt/shotgun/black/es7_lethal/fill_preset_inventory()
+	for(var/i in 1 to storage_slots)
+		new /obj/item/ammo_magazine/handful/shotgun/slug/es7(src)
+
 /obj/item/storage/belt/shotgun/van_bandolier
 	name = "two bore bandolier"
 	desc = "A leather bandolier designed to hold extremely heavy shells. Can be attached to armor, worn over the back, or attached to belt loops."
@@ -1941,13 +1955,14 @@
 #undef MAXIMUM_MAGAZINE_COUNT
 
 /obj/item/storage/belt/gun/m44
-	name = "\improper M276 pattern general revoler holster rig"
+	name = "\improper M276 pattern general revolver holster rig"
 	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is universal and adjustable for different revolvers, along with six small pouches for speedloaders. It smells faintly of hay."
 	icon_state = "m44r_holster"
 	storage_slots = 7
 	can_hold = list(
 		/obj/item/weapon/gun/revolver,
 		/obj/item/ammo_magazine/revolver,
+		/obj/item/ammo_magazine/handful/revolver,
 	)
 	flags_atom = FPRINT // has gamemode skin
 	holster_slots = list(

@@ -163,7 +163,7 @@
 				playsound(target, sound_to_play, 50, 1)
 				target.visible_message(SPAN_XENOHIGHDANGER("[user] grabs [target] by the back of the head and slams them on the ground!"))
 				if(isxeno(target))
-					target.apply_damage(50, ARMOR_MELEE, BRUTE, "chest", 5)
+					target.apply_armoured_damage(50, ARMOR_MELEE, BRUTE, "chest", 5)
 				playsound(target, 'sound/effects/hit_punch.ogg', 50)
 
 		if((INTENT_DISARM))

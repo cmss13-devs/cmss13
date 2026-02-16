@@ -39,13 +39,13 @@
 				BYOND.winget("split", "splitter").then((value) => {
 					saved_splitter = value;
 
-					BYOND.winset(null, {
+					BYOND.winset("", {
 						"split.splitter": "100",
 						"map.letterbox": "false",
 					})
 				})
 			} else if (saved_splitter !== null) {
-				BYOND.winset(null, {
+				BYOND.winset("", {
 					"split.splitter": saved_splitter,
 					"map.letterbox": "true",
 				})

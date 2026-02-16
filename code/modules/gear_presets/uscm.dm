@@ -1497,7 +1497,6 @@
 
 /datum/equipment_preset/uscm/hunted/marsoc
 	name = "Marine Raider (Hunted)"
-	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_MARINE_RAIDER
 	job_title = JOB_MARINE_RAIDER
 	role_comm_title = "Op."

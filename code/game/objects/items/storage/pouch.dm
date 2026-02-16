@@ -511,7 +511,7 @@
 
 /obj/item/storage/pouch/magazine/pistol
 	name = "pistol magazine pouch"
-	desc = "It can carry up to 4 pistol magazines or revolver speedloaders."
+	desc = "It can carry up to four pistol magazines or revolver speedloaders."
 	max_w_class = SIZE_SMALL
 	icon_state = "pistol_mag"
 	storage_slots = 4

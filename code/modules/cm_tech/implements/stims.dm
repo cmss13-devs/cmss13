@@ -3,6 +3,7 @@
 	name = "stimulant pouch"
 	desc = "A pouch that holds stimulant injectors."
 	icon = 'icons/obj/items/clothing/pouches.dmi'
+	icon_state = "stimulant"
 	w_class = SIZE_LARGE //does not fit in backpack
 	max_w_class = SIZE_SMALL
 	flags_equip_slot = SLOT_STORE

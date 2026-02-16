@@ -237,7 +237,7 @@
 
 /obj/item/storage/belt/medical/lifesaver
 	name = "\improper M276 pattern lifesaver bag"
-	desc = "The M276 is the standard load-bearing equipment of the USCM. This configuration mounts a duffel bag filled with a staggering twenty-one pockets, each capable of holding range of autoinjectors, pill bottles, and small medical supplies. It truly is a lifesaver. \nRight click its sprite and click \"toggle belt mode\" to take pills out of bottles by simply clicking them."
+	desc = "The M276 is the standard load-bearing equipment of the USCM. This configuration mounts a duffel bag filled with a staggering twenty-one pockets restricted to hold small medical supplies such as autoinjectors, pill bottles, pills, syringes , etc. It truly is a lifesaver. \nRight click its sprite and click \"toggle belt mode\" to take pills out of bottles by simply clicking them."
 	icon_state = "medicbag"
 	item_state = "medicbag"
 	icon = 'icons/obj/items/clothing/belts/belts_by_map/jungle.dmi'
@@ -588,7 +588,7 @@
 
 /obj/item/storage/belt/security/brown
 	name = "\improper 6B80 pattern ammo rig"
-	desc = "The 6B80 is an outdated but reliable ammo rig, formerly standard for the UPP Army. Its modular belt holds various munitions, still used by UPP security forces and reserves for its rugged design."
+	desc = "The 6B80 is an outdated but reliable ammo rig with five pockets, formerly standard for the UPP Army. Its modular belt holds various munitions, still used by UPP security forces and reserves for its rugged design."
 	icon_state = "securitybelt_brown"
 	item_state = "security_brown"//Could likely use a better one.
 	w_class = SIZE_LARGE
@@ -1956,7 +1956,7 @@
 
 /obj/item/storage/belt/gun/m44
 	name = "\improper M276 pattern general revolver holster rig"
-	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is universal and adjustable for different revolvers, along with six small pouches for speedloaders. It smells faintly of hay."
+	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips and seven pockets. This version is universal and adjustable for different revolvers, along with six small pouches for speedloaders. It smells faintly of hay."
 	icon_state = "m44r_holster"
 	storage_slots = 7
 	can_hold = list(

@@ -46,7 +46,7 @@
 				})
 			} else if (saved_splitter !== null) {
 				BYOND.winset("", {
-					"split.splitter": saved_splitter,
+					"split.splitter": saved_splitter.splitter,
 					"map.letterbox": "true",
 				})
 			}

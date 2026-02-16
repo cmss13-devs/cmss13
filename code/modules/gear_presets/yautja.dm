@@ -206,8 +206,13 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/cia(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack(new_human), WEAR_BACK)
 
-	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/vp78(new_human), WEAR_WAIST)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/yautja/sword(new_human), WEAR_J_STORE)
+	new_human.equip_to_slot_or_del(new  /obj/item/weapon/gun/rifle/mar40/lmg/tactical(new_human), WEAR_J_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/marine(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/mar40/lmg, WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/mar40/lmg, WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/mar40/lmg, WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/mar40/lmg, WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/mar40/lmg, WEAR_IN_BELT)
 
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/tactical/full(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/medicomp/full(new_human), WEAR_L_STORE)
@@ -215,3 +220,4 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/high_explosive(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/incendiary(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/bracer_attachments/wristblades(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/bracer_attachments/shield(new_human), WEAR_IN_BACK)

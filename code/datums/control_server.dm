@@ -15,6 +15,9 @@
 	/// The port that their external software is running on
 	var/port
 
+	/// If supported, the websocket port for software initiated events
+	var/websocket_port
+
 	/// If our software has responded successfully, and our browser has initialised
 	var/initialised = FALSE
 
@@ -25,6 +28,52 @@
 <head>
 	<script>
 		const port = %SERVER_PORT%;
+		const websocket_port = %WEBSOCKET_PORT%;
+
+		let ws = null;
+
+		let saved_splitter = null;
+
+		const onSteamOverlay = (data) => {
+			if(data.active) {
+				BYOND.winget("split", "splitter").then((value) => {
+					saved_splitter = value;
+
+					BYOND.winset(null, {
+						"split.splitter": "100",
+						"map.letterbox": "false",
+					})
+				})
+			} else if (saved_splitter !== null) {
+				BYOND.winset(null, {
+					"split.splitter": saved_splitter,
+					"map.letterbox": "true",
+				})
+			}
+		};
+
+		const connectWebSocket = () => {
+			if (!websocket_port || websocket_port === 0) return;
+
+			ws = new WebSocket(`ws://localhost:${websocket_port}`);
+
+			ws.onmessage = (event) => {
+				try {
+					const message = JSON.parse(event.data);
+					if (message.type === 'steam_overlay') {
+						onSteamOverlay(message.data);
+					}
+				} catch (e) {
+					console.error('Failed to parse WebSocket message:', e);
+				}
+			};
+
+			ws.onclose = () => {
+				setTimeout(connectWebSocket, 5000);
+			};
+		};
+
+		document.addEventListener('DOMContentLoaded', connectWebSocket);
 
 		let failedPings = 0;
 		let awaitingPong = false;
@@ -61,7 +110,7 @@
 			}
 		}
 
-		function ping() {
+		const ping = () => {
 			if (awaitingPong) {
 				failedPings++;
 				if (failedPings >= MAX_FAILED_PINGS) {
@@ -82,7 +131,7 @@
 					}
 				}
 			}, PONG_TIMEOUT);
-		}
+		};
 
 		setInterval(ping, PING_INTERVAL);
 	</script>
@@ -97,12 +146,13 @@
 </html>
 "}
 
-/datum/control_server/New(client/controlling, port)
+/datum/control_server/New(client/controlling, topic_headers)
 	controlling.control_server = src
 
 	src.controlling = controlling
 	src.controlling_ckey = controlling.ckey
-	src.port = port
+	src.port = topic_headers["launcher_port"]
+	src.websocket_port = topic_headers["websocket_port"]
 
 	RegisterSignal(controlling, COMSIG_PARENT_QDELETING, PROC_REF(handle_parent_qdel))
 	RegisterSignal(controlling, COMSIG_CLIENT_MOB_LOGGED_IN, PROC_REF(handle_parent_login))
@@ -133,7 +183,10 @@
 	if(!controlling || !port)
 		return
 
-	var/html_to_send = replacetext(server_html, "%SERVER_PORT%", port)
+	var/html_to_send = server_html
+
+	html_to_send = replacetext(html_to_send, "%SERVER_PORT%", port)
+	html_to_send = replacetext(html_to_send, "%WEBSOCKET_PORT%", websocket_port ? websocket_port : "0")
 	html_to_send = replacetext(html_to_send, "%OBJ_REFERENCE%", "\ref[src]")
 
 	controlling << browse(html_to_send, "window=control-server,size=1x1,titlebar=0,can_resize=0")

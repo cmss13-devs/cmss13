@@ -654,12 +654,16 @@
 
 /obj/item/storage/backpack/marine/satchel
 	name = "\improper USCM satchel"
-	desc = "A heavy-duty satchel carried by some USCM soldiers and support personnel."
+	desc = "A heavy-duty satchel carried by some Marines of the USCM and support personnel."
 	icon_state = "marinesatch"
 	worn_accessible = TRUE
 	storage_slots = null
 	max_storage_space = 15
 	xeno_types = null
+
+/obj/item/storage/backpack/marine/satchel/army
+	name = "\improper US Army satchel"
+	desc = "A heavy-duty satchel carried by some US Army soldiers and support personnel."
 
 /obj/item/storage/backpack/marine/satchel/big //wacky squad marine loadout item, its the IO backpack.
 	name = "\improper USCM logistics IMP backpack"
@@ -668,6 +672,9 @@
 	worn_accessible = TRUE
 	storage_slots = null
 	max_storage_space = 21 //backpack size
+
+/obj/item/storage/backpack/marine/satchel/big/army
+	name = "\improper US Army logistics IMP backpack"
 
 /obj/item/storage/backpack/marine/satchel/medic
 	name = "\improper USCM corpsman satchel"
@@ -1416,6 +1423,14 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 
 /obj/item/storage/backpack/molle/backpack/surv
 	worn_accessible = FALSE
+
+/obj/item/storage/backpack/molle/army
+	name = "\improper M1 MOLLE Satchel"
+	desc = "Tactical satchel manufactured by one of the Alphatech subsidiaries. Very lightweight beltbag variant that utilizes UA standard MOLLE fastening systems. Standard issue pack for US army troopers."
+
+/obj/item/storage/backpack/molle/backpack/army
+	name = "\improper M2 MOLLE Backpack"
+	desc = "Tactical backpack manufactured by one of the Alphatech subsidiaries. Very lightweight backpack that utilizes UA standard MOLLE fastening systems, which allows easy access and optimal weight distribution. Standard issue heavy duty pack for US army troopers."
 
 //----------WY----------
 

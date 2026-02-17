@@ -890,6 +890,12 @@
 /obj/item/weapon/gun/pistol/vp78/whiteout
 	starting_attachment_types = list(/obj/item/attachable/heavy_barrel, /obj/item/attachable/reflex)
 
+/obj/item/weapon/gun/pistol/vp78/army
+	starting_attachment_types = list(/obj/item/attachable/extended_barrel, /obj/item/attachable/reflex)
+
+/obj/item/weapon/gun/pistol/vp78/army/heap
+	current_mag = /obj/item/ammo_magazine/pistol/vp78/heap
+
 
 //-------------------------------------------------------
 /*

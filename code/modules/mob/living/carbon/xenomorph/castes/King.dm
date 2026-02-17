@@ -80,10 +80,11 @@
 	. = ..()
 	AddComponent(/datum/component/footstep, 2 , 35, 11, 4, "alien_footstep_large")
 	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(post_move))
-	hive = GLOB.hive_datum[hivenumber]
-	hive.banned_allies = list("All")
-	if(hive.break_all_alliances())
-		xeno_message(SPAN_XENOANNOUNCE("With the arrival of the King, all alliances have been broken."), 3, hivenumber)
+	if(!should_block_game_interaction(src, TRUE)) // don't let admin-level kings mess up alliances
+		hive = GLOB.hive_datum[hivenumber]
+		hive.banned_allies = list("All")
+		if(hive.break_all_alliances())
+			xeno_message(SPAN_XENOANNOUNCE("With the arrival of the King, all alliances have been broken."), 3, hivenumber)
 
 /mob/living/carbon/xenomorph/king/initialize_pass_flags(datum/pass_flags_container/pass_flags)
 	. = ..()

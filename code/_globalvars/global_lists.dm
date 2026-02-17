@@ -144,7 +144,7 @@ GLOBAL_LIST_INIT_TYPED(combining_properties, /list, list( PROPERTY_DEFIBRILLATIN
 											PROPERTY_ANTIADDICTIVE = list(PROPERTY_PSYCHOSTIMULATING, PROPERTY_ANTIHALLUCINOGENIC),\
 											PROPERTY_ADDICTIVE = list(PROPERTY_PSYCHOSTIMULATING, PROPERTY_NEUROTOXIC),\
 											PROPERTY_CIPHERING_PREDATOR = list(PROPERTY_CIPHERING, PROPERTY_CROSSMETABOLIZING),\
-											PROPERTY_FIRE_PENETRATING = list(PROPERTY_OXYGENATING, PROPERTY_VISCOUS),\
+											PROPERTY_FIRE_PENETRATING = list(PROPERTY_OXYGENATING, PROPERTY_EXPLOSIVE),\
 											PROPERTY_BONEMENDING = list(PROPERTY_CRYSTALLIZATION, PROPERTY_NUTRITIOUS)))
 
 //List of all id's from classed /datum/reagent datums indexed by class or tier. Used by chemistry generator and chem spawners.
@@ -256,7 +256,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(hair_gradient_list, /datum/sprite_accessory/hair_g
 GLOBAL_REFERENCE_LIST_INDEXED(yautja_hair_styles_list, /datum/sprite_accessory/yautja_hair, name)
 
 	//Backpacks
-GLOBAL_LIST_INIT(backbaglist, list("Backpack", "Satchel"))
+GLOBAL_LIST_INIT(backbaglist, list("Backpack", "Satchel", "Chestrig"))
 
 	//NVG colors
 GLOBAL_LIST_INIT(nvg_color_list, list("Green", "White", "Yellow", "Orange", "Red", "Blue"))

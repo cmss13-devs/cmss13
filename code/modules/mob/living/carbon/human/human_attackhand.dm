@@ -190,9 +190,9 @@
 /mob/living/carbon/human/proc/afterattack(atom/target as mob|obj|turf|area, mob/living/user as mob|obj, inrange, params)
 	return
 
-/mob/living/carbon/human/help_shake_act(mob/living/carbon/M)
+/mob/living/carbon/human/help_shake_act(mob/living/carbon/mob)
 	//Target is us
-	if(src == M)
+	if(src == mob)
 		check_for_injuries()
 		return
 
@@ -206,28 +206,28 @@
 		if(PLURAL)
 			t_him = "them"
 
-	if (w_uniform)
-		w_uniform.add_fingerprint(M)
+	if(w_uniform)
+		w_uniform.add_fingerprint(mob)
 
 	if(HAS_TRAIT(src, TRAIT_FLOORED) || HAS_TRAIT(src, TRAIT_KNOCKEDOUT) || body_position == LYING_DOWN || sleeping)
 		if(client)
 			sleeping = max(0,src.sleeping-5)
 		if(!sleeping)
 			if(is_dizzy)
-				to_chat(M, SPAN_WARNING("[src] looks dizzy. Maybe you should let [t_him] rest a bit longer."))
+				to_chat(mob, SPAN_WARNING("[src] looks dizzy. Maybe you should let [t_him] rest a bit longer."))
 			else
 				set_resting(FALSE)
-		M.visible_message(SPAN_NOTICE("[M] shakes [src] trying to wake [t_him] up!"),
-			SPAN_NOTICE("You shake [src] trying to wake [t_him] up!"), null, 4)
+		mob.visible_message(SPAN_NOTICE("[mob] shakes [src] trying to wake [t_him] up!"),
+			SPAN_NOTICE("You shake [src], trying to wake [t_him] up!"), null, 4)
 	else if(HAS_TRAIT(src, TRAIT_INCAPACITATED))
-		M.visible_message(SPAN_NOTICE("[M] shakes [src], trying to shake [t_him] out of his stupor!"),
+		mob.visible_message(SPAN_NOTICE("[mob] shakes [src], trying to shake [t_him] out of his stupor!"),
 			SPAN_NOTICE("You shake [src], trying to shake [t_him] out of his stupor!"), null, 4)
 	else
-		var/mob/living/carbon/human/H = M
-		if(istype(H))
-			H.species.hug(H, src, H.zone_selected)
+		var/mob/living/carbon/human/human = mob
+		if(istype(human))
+			human.species.hug(human, src, human.zone_selected)
 		else
-			M.visible_message(SPAN_NOTICE("[M] pats [src] on the back to make [t_him] feel better!"),
+			mob.visible_message(SPAN_NOTICE("[mob] pats [src] on the back to make [t_him] feel better!"),
 				SPAN_NOTICE("You pat [src] on the back to make [t_him] feel better!"), null, 4)
 			playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 5)
 		return
@@ -239,7 +239,16 @@
 	playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 
 /mob/living/carbon/human/proc/check_for_injuries()
-	visible_message(SPAN_NOTICE("[src] examines [gender==MALE?"himself":"herself"]."),
+	var/t_him = "it"
+	switch(gender)
+		if(MALE)
+			t_him = "him"
+		if(FEMALE)
+			t_him = "her"
+		if(PLURAL)
+			t_him = "them"
+
+	visible_message(SPAN_NOTICE("[src] examines [t_him]self."),
 	SPAN_NOTICE("You check yourself for injuries."), null, 3)
 
 	var/list/limb_message = list()
@@ -303,21 +312,20 @@
 
 		var/postscript
 		if(org.status & LIMB_UNCALIBRATED_PROSTHETIC)
-			postscript += " <b>(NONFUNCTIONAL)</b>"
+			postscript += " (NONFUNCTIONAL)"
 		if(org.status & LIMB_BROKEN)
-			postscript += " <b>(BROKEN)</b>"
+			postscript += " (BROKEN)"
 		if(org.status & LIMB_SPLINTED_INDESTRUCTIBLE)
-			postscript += " <b>(NANOSPLINTED)</b>"
+			postscript += " (NANOSPLINTED)"
 		else if(org.status & LIMB_SPLINTED)
-			postscript += " <b>(SPLINTED)</b>"
+			postscript += " (SPLINTED)"
 		if(org.status & LIMB_THIRD_DEGREE_BURNS)
-			postscript += "<b>(SEVERE BURN)</b>"
+			postscript += " (SEVERE BURN)"
 		if(org.status & LIMB_ESCHAR)
-			postscript += " <b>(ESCHAR)</b>"
-
+			postscript += " (ESCHAR)"
 
 		if(postscript)
-			limb_message += "\t My [org.display_name] is [SPAN_WARNING("[english_list(status, final_comma_text = ",")].[postscript]")]"
+			limb_message += "\t My [org.display_name] is [SPAN_WARNING("[english_list(status, final_comma_text = ",")].[SPAN_BOLD(postscript)]")]"
 		else
 			limb_message += "\t My [org.display_name] is [status[1] == "OK" ? SPAN_NOTICE("OK.") : SPAN_WARNING("[english_list(status, final_comma_text = ",")].")]"
 	to_chat(src, boxed_message(limb_message.Join("\n")))

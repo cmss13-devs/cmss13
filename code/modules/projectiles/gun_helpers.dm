@@ -262,7 +262,7 @@ DEFINES in setup.dm, referenced here.
 
 	if(istype(attack_item, /obj/item/prop/helmetgarb/gunoil))
 		var/oil_verb = pick("lubes", "oils", "cleans", "tends to", "gently strokes")
-		if(do_after(user, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, user, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
+		if(do_after(user, 3 SECONDS, (INTERRUPT_ALL & (~INTERRUPT_MOVED)), BUSY_ICON_FRIENDLY, status_effect = SLOW))
 			user.visible_message("[user] [oil_verb] [src]. It shines like new.", "You oil up and immaculately clean [src]. It shines like new.")
 			src.clean_blood()
 		else
@@ -316,7 +316,7 @@ DEFINES in setup.dm, referenced here.
 			return
 
 		// actual tactical reloads
-		var/tac_reload_time = 15
+		var/tac_reload_time = 1.5 SECONDS
 		if(istype(src, magazine.gun_type) || (magazine.type in accepted_ammo))
 
 			if(istype(bullet, /obj/item/ammo_magazine/handful) && in_chamber)
@@ -329,8 +329,20 @@ DEFINES in setup.dm, referenced here.
 
 			var/old_mag_loc = magazine.loc
 			if(user.skills)
-				tac_reload_time = max(15 - 5*user.skills.get_skill_level(SKILL_FIREARMS), 5)
-			if(!do_after(user, tac_reload_time, (INTERRUPT_ALL & (~INTERRUPT_MOVED)) , BUSY_ICON_FRIENDLY))
+				tac_reload_time = max(1.5 SECONDS - 5*user.skills.get_skill_level(SKILL_FIREARMS), 5)
+
+			var/obj/limb/opposite_hand
+			var/effect
+			if(user.l_hand == src) // cant find the helper proc for this so
+				opposite_hand = user.get_limb("r_arm")
+			else
+				opposite_hand = user.get_limb("l_arm")
+			if(opposite_hand.status & LIMB_DESTROYED)
+				tac_reload_time *= 3 DECISECONDS
+				effect = SLOW
+				to_chat(user, SPAN_WARNING("...but you'll have a harder time reloading with one arm!"))
+
+			if(!do_after(user, tac_reload_time, (INTERRUPT_ALL & (~INTERRUPT_MOVED)) , BUSY_ICON_FRIENDLY, status_effect = effect))
 				return
 			if(magazine.loc != old_mag_loc || current_mag)
 				return
@@ -354,7 +366,7 @@ DEFINES in setup.dm, referenced here.
 		to_chat(user, SPAN_WARNING("[src] is already at its maximum capacity!"))
 		return
 
-	var/tac_reload_time = 2
+	var/tac_reload_time = 2 DECISECONDS
 
 	to_chat(user, SPAN_NOTICE("You get on one knee and start an unconventional reload."))
 	var/interrupted = FALSE
@@ -436,7 +448,7 @@ DEFINES in setup.dm, referenced here.
 	var/attach_delay = 1.5 SECONDS
 	if(istype(attachment, /obj/item/attachable/bayonet))
 		attach_delay = 0.3 SECONDS
-	if(do_after(user, attach_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, numticks = 2))
+	if(do_after(user, attach_delay, (INTERRUPT_ALL & (~INTERRUPT_MOVED)), BUSY_ICON_FRIENDLY, numticks = 2, status_effect = SLOW))
 		if(attachment && attachment.loc)
 			user.visible_message(SPAN_NOTICE("[user] attaches [attachment] to [src]."),
 			SPAN_NOTICE("You attach [attachment] to [src]."), null, 4)
@@ -723,7 +735,7 @@ DEFINES in setup.dm, referenced here.
 	var/detach_delay = 1.5 SECONDS
 	if(istype(attachment, /obj/item/attachable/bayonet))
 		detach_delay = 0.3 SECONDS
-	if(!do_after(usr, detach_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+	if(!do_after(usr, detach_delay, (INTERRUPT_ALL & (~INTERRUPT_MOVED)), BUSY_ICON_FRIENDLY, status_effect = SLOW))
 		return
 
 	if(!(attachment == attachments[attachment.slot]))

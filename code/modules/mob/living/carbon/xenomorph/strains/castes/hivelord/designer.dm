@@ -1053,7 +1053,7 @@
 
 	build_overlay = overlay
 
-	if(bound_weed.weed_strength >= WEED_LEVEL_HIVE)
+	if(bound_weed.weed_strength >= WEED_LEVEL_HARDY)
 		thick_build = TRUE
 
 	if(istype(xeno.strain, /datum/xeno_strain/gardener))
@@ -1088,6 +1088,8 @@
 	var/obj/effect/alien/weeds/bound_weed
 	/// The hivenumber of the weed this wall is build on.
 	var/old_hivenumber
+	/// Prevents sticky spawn if walls get swapped.
+	var/replacing = FALSE
 
 /turf/closed/wall/resin/weedbound/Initialize()
 	. = ..()
@@ -1134,14 +1136,10 @@
 	if(new_weed && new_weed.hivenumber == old_hivenumber)
 		bound_weed = new_weed
 		RegisterSignal(bound_weed, COMSIG_PARENT_QDELETING, PROC_REF(on_weed_expire))
+		change_bound_resin(new_weed)
 	else
 		playsound(src, "alien_resin_break", 25)
 		ScrapeAway()
-
-	if(istype(src, /turf/closed/wall/resin/weedbound/node))
-		if(!istype(new_weed, /obj/effect/alien/weeds/node))
-			change_bound_resin(new_weed)
-			return
 
 /turf/closed/wall/resin/weedbound/proc/change_bound_resin(obj/effect/alien/weeds/new_weed)
 	var/turf/target_turf = get_turf(src)
@@ -1149,12 +1147,21 @@
 		return
 
 	var/target_type
+	var/node_weed = istype(new_weed, /obj/effect/alien/weeds/node)
+	var/strong_weed = (new_weed.weed_strength >= WEED_LEVEL_HARDY)
 
-	if(istype(src, /turf/closed/wall/resin/weedbound/node/thick))
-		target_type = /turf/closed/wall/resin/weedbound/thick
+	if(node_weed)
+		if(strong_weed)
+			target_type = /turf/closed/wall/resin/weedbound/node/thick
+		else
+			target_type = /turf/closed/wall/resin/weedbound/node/normal
 	else
-		target_type = /turf/closed/wall/resin/weedbound/normal
+		if(strong_weed)
+			target_type = /turf/closed/wall/resin/weedbound/thick
+		else
+			target_type = /turf/closed/wall/resin/weedbound/normal
 
+	replacing = TRUE
 	target_turf.PlaceOnTop(target_type)
 	if(!target_turf)
 		return
@@ -1165,11 +1172,13 @@
 
 	bound.bound_weed = new_weed
 	bound.old_hivenumber = new_weed.hivenumber
+	bound.replacing = FALSE
 
 //-----// Weedbound - Normal Wall //-----//
 
 /turf/closed/wall/resin/weedbound/normal/spawn_nutriplasm(turf/target_turf)
-	new /obj/effect/alien/resin/sticky/weak_nutriplasm(target_turf)
+	if(!replacing)
+		new /obj/effect/alien/resin/sticky/weak_nutriplasm(target_turf)
 
 /turf/closed/wall/resin/weedbound/normal/get_examine_text(mob/user)
 	. = ..()
@@ -1188,7 +1197,8 @@
 	walltype = WALL_THICK_WEEDBOUND_RESIN
 
 /turf/closed/wall/resin/weedbound/thick/spawn_nutriplasm(turf/target_turf)
-	new /obj/effect/alien/resin/sticky/strong_nutriplasm(target_turf)
+	if(!replacing)
+		new /obj/effect/alien/resin/sticky/strong_nutriplasm(target_turf)
 
 /turf/closed/wall/resin/weedbound/thick/get_examine_text(mob/user)
 	. = ..()
@@ -1250,6 +1260,7 @@
 
 	var/obj/effect/alien/weeds/bound_weed
 	var/old_hivenumber
+	var/replacing = FALSE
 
 /obj/structure/mineral_door/resin/weedbound/Initialize()
 	. = ..()
@@ -1295,14 +1306,39 @@
 	if(new_weed && new_weed.hivenumber == old_hivenumber)
 		bound_weed = new_weed
 		RegisterSignal(bound_weed, COMSIG_PARENT_QDELETING, PROC_REF(on_weed_expire))
+		change_bound_resin(new_weed)
 	else
 		playsound(src, "alien_resin_break", 25)
 		Dismantle()
 
+/obj/structure/mineral_door/resin/weedbound/proc/change_bound_resin(obj/effect/alien/weeds/new_weed)
+	var/turf/target_turf = get_turf(src)
+	if(!target_turf || QDELETED(src) || !new_weed)
+		return
+
+	var/target_type
+	var/strong_weed = (new_weed.weed_strength >= WEED_LEVEL_HARDY)
+
+	if(strong_weed)
+		target_type = /obj/structure/mineral_door/resin/weedbound/thick
+	else
+		target_type = /obj/structure/mineral_door/resin/weedbound/normal
+
+	replacing = TRUE
+	var/obj/structure/mineral_door/resin/weedbound/new_door = new target_type(target_turf)
+	if(!new_door)
+		return
+
+	new_door.bound_weed = new_weed
+	new_door.old_hivenumber = new_weed.hivenumber
+	new_door.replacing = FALSE
+	qdel(src)
+
 //-----// Weedbound - Normal Door //-----//
 
 /obj/structure/mineral_door/resin/weedbound/normal/spawn_nutriplasm(turf/target_turf)
-	new /obj/effect/alien/resin/sticky/weak_nutriplasm(target_turf)
+	if(!replacing)
+		new /obj/effect/alien/resin/sticky/weak_nutriplasm(target_turf)
 
 /obj/structure/mineral_door/resin/weedbound/normal/get_examine_text(mob/user)
 	. = ..()
@@ -1322,7 +1358,8 @@
 	hardness = 1.9
 
 /obj/structure/mineral_door/resin/weedbound/thick/spawn_nutriplasm(turf/target_turf)
-	new /obj/effect/alien/resin/sticky/strong_nutriplasm(target_turf)
+	if(!replacing)
+		new /obj/effect/alien/resin/sticky/strong_nutriplasm(target_turf)
 
 /obj/structure/mineral_door/resin/weedbound/thick/get_examine_text(mob/user)
 	. = ..()

@@ -15,13 +15,10 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
 	},
-/turf/open/asphalt/cement_sunbleached,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/desert_dam/exterior/valley/valley_medical)
 "ae" = (
-/obj/effect/decal/sand_overlay/sand1{
-	dir = 8
-	},
-/turf/open/asphalt/cement_sunbleached,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/desert_dam/exterior/valley/valley_medical)
 "af" = (
 /obj/structure/platform/metal/almayer/north,
@@ -41,21 +38,9 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/desert_dam/exterior/valley/valley_medical)
-"ai" = (
-/obj/effect/decal/sand_overlay/sand1{
-	dir = 1
-	},
-/turf/open/asphalt/cement_sunbleached,
-/area/desert_dam/exterior/valley/valley_medical)
 "aj" = (
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 1
-	},
-/turf/open/asphalt/cement_sunbleached,
-/area/desert_dam/exterior/valley/valley_medical)
-"ak" = (
-/obj/effect/decal/sand_overlay/sand1/corner1{
-	dir = 4
 	},
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_medical)
@@ -95,12 +80,16 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/desert_dam/exterior/valley/valley_medical)
 "as" = (
-/obj/structure/stairs,
+/obj/structure/stairs{
+	dir = 1
+	},
 /obj/structure/platform/metal/almayer/west,
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_medical)
 "at" = (
-/obj/structure/stairs,
+/obj/structure/stairs{
+	dir = 1
+	},
 /obj/structure/platform/metal/almayer/east,
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_medical)
@@ -294,7 +283,7 @@
 /turf/open/gm/river/desert/shallow,
 /area/desert_dam/exterior/river/riverside_south)
 "bl" = (
-/turf/open/asphalt/cement_sunbleached,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
 /area/desert_dam/exterior/river/riverside_south)
 "bm" = (
 /obj/effect/blocker/toxic_water/Group_1,
@@ -348,6 +337,9 @@
 "bw" = (
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_cargo)
+"bx" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
+/area/desert_dam/exterior/river/riverside_south)
 "by" = (
 /obj/structure/largecrate/random/barrel/blue,
 /turf/open/asphalt/tile,
@@ -365,6 +357,45 @@
 /obj/effect/blocker/toxic_water/Group_1,
 /turf/open/desert/desert_shore/shore_corner2,
 /area/desert_dam/exterior/river/riverside_south)
+"bC" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
+/area/desert_dam/exterior/river/riverside_south)
+"bD" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
+/area/desert_dam/exterior/river/riverside_south)
+"bE" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_medical)
+"bF" = (
+/obj/effect/decal/sand_overlay/sand1/corner1,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
+/area/desert_dam/exterior/valley/valley_medical)
+"bG" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
+/area/desert_dam/exterior/valley/valley_medical)
+"bH" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
+/area/desert_dam/exterior/valley/valley_medical)
+"bI" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
+/area/desert_dam/exterior/valley/valley_medical)
+"bJ" = (
+/turf/closed/wall/r_wall,
+/area/desert_dam/exterior/valley/valley_medical)
+"bK" = (
+/obj/structure/flora/grass/desert/heavygrass_4,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_medical)
 
 (1,1,1) = {"
 aa
@@ -409,8 +440,8 @@ aS
 aS
 aS
 bi
-bl
-bl
+bC
+bC
 bl
 bw
 "}
@@ -433,14 +464,14 @@ aS
 aS
 aS
 bi
-bl
-bl
-bl
+bD
+bD
+bx
 bw
 "}
 (4,1,1) = {"
-ac
-ai
+bK
+al
 ap
 as
 ay
@@ -464,7 +495,7 @@ bw
 "}
 (5,1,1) = {"
 ac
-ai
+al
 ap
 at
 az
@@ -512,7 +543,7 @@ bz
 "}
 (7,1,1) = {"
 ae
-ak
+aq
 ap
 aa
 aa
@@ -535,8 +566,8 @@ bu
 by
 "}
 (8,1,1) = {"
-aa
-al
+ab
+bI
 aq
 au
 au
@@ -559,13 +590,13 @@ bv
 bA
 "}
 (9,1,1) = {"
-ab
+ac
 am
 ar
 ar
-ar
-ar
-ar
+bH
+bG
+bF
 ar
 ar
 ar
@@ -583,16 +614,16 @@ br
 bB
 "}
 (10,1,1) = {"
+bJ
+bJ
 ac
 ac
+aJ
+aJ
+aJ
 ac
 ac
-ac
-ac
-ac
-ac
-ac
-ac
+bE
 ac
 ac
 ac

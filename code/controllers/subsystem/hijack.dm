@@ -357,6 +357,7 @@ SUBSYSTEM_DEF(hijack)
 /datum/controller/subsystem/hijack/proc/detonate_sd()
 	set waitfor = FALSE
 	sd_detonated = TRUE
+	SSticker?.roundend_check_paused = TRUE
 	var/creak_picked = pick('sound/effects/creak1.ogg', 'sound/effects/creak2.ogg', 'sound/effects/creak3.ogg')
 	for(var/mob/current_mob as anything in GLOB.mob_list)
 		var/turf/current_turf = get_turf(current_mob)
@@ -426,10 +427,11 @@ SUBSYSTEM_DEF(hijack)
 
 
 	sleep(0.5 SECONDS)
-	if(SSticker.mode)
-		SSticker.mode.check_win()
 
-	if(!SSticker.mode) //Just a safety, just in case a mode isn't running, somehow.
+	SSticker?.roundend_check_paused = FALSE
+	if(SSticker?.mode)
+		SSticker.mode.check_win()
+	else //Just a safety, just in case a mode isn't running, somehow.
 		to_world(SPAN_ROUNDBODY("Resetting in 30 seconds!"))
 		sleep(30 SECONDS)
 		log_game("Rebooting due to nuclear detonation.")

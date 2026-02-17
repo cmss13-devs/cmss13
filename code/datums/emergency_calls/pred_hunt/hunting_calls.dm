@@ -42,7 +42,6 @@
 		message_all_yautja("Released [length(members)] humans from storage, let the hunt commence!")
 
 /datum/emergency_call/pred/mixed/create_member(datum/mind/player, turf/override_spawn_loc)
-	set waitfor = 0
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
 	if(!istype(spawn_loc))
@@ -220,7 +219,6 @@
 	var/max_upp_elite = 2
 
 /datum/emergency_call/pred/mixed_elite/create_member(datum/mind/player, turf/override_spawn_loc)
-	set waitfor = 0
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
 	if(!istype(spawn_loc))

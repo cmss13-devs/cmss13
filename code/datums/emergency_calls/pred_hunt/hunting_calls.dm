@@ -7,6 +7,7 @@
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress/hunt_spawner
 	shuttle_id = ""
 	ert_message = "Prey is being set loose in the Yautja Hunting Grounds"
+	var/timer_mult = 1 // how much we multiply the 20 minute cooldown by
 	var/hunt_name
 	var/message = "You are still expected to uphold the RP of the standard as this character!"
 	var/mercs = 0
@@ -25,6 +26,7 @@
 /datum/emergency_call/pred/mixed
 	name = "Hunting Grounds - Multi Faction - Small"
 	hunt_name = "Multi Faction (small)"
+	timer_mult = 1.25 // 25 minutes
 	mob_max = 4
 	mob_min = 1
 	max_clf = 1
@@ -39,7 +41,8 @@
 		message_all_yautja("Not enough humans in storage for the hunt to start.")
 		COOLDOWN_RESET(GLOB, hunt_timer_yautja)
 	else
-		message_all_yautja("Released [length(members)] humans from storage, let the hunt commence!")
+		var/new_cooldown_time = DisplayTimeText(COOLDOWN_TIMELEFT(GLOB, hunt_timer_yautja))
+		message_all_yautja("Released [length(members)] humans from storage, let the hunt commence! Another hunt may be called over [new_cooldown_time].")
 
 /datum/emergency_call/pred/mixed/create_member(datum/mind/player, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
@@ -102,6 +105,7 @@
 /datum/emergency_call/pred/mixed/medium
 	name = "Hunting Grounds - Multi Faction - Medium"
 	hunt_name = "Multi Faction (group)"
+	timer_mult = 1.4 // 28 minutes
 	mob_max = 6
 	mob_min = 2
 	max_clf = 2
@@ -111,10 +115,10 @@
 	max_misc = 2
 	max_mercs = 1
 
-
 /datum/emergency_call/pred/mixed/hard
 	name = "Hunting Grounds - Multi Faction - Large"
 	hunt_name = "Multi Faction (large)"
+	timer_mult = 1.6 // 32 minutes
 	mob_max = 8
 	mob_min = 3
 	max_clf = 2
@@ -127,6 +131,7 @@
 /datum/emergency_call/pred/mixed/harder
 	name = "Hunting Grounds - Multi Faction - Larger"
 	hunt_name = "Multi Faction (larger)"
+	timer_mult = 1.8 // 36 minutes
 	mob_max = 12
 	mob_min = 4
 	max_clf = 2
@@ -153,7 +158,8 @@
 		COOLDOWN_RESET(GLOB, hunt_timer_yautja)
 		message_all_yautja("Not enough serpents in storage for the hunt to start.")
 	else
-		message_all_yautja("Released [length(members)] serpents from storage, let the hunt commence!")
+		var/new_cooldown_time = DisplayTimeText(COOLDOWN_TIMELEFT(GLOB, hunt_timer_yautja))
+		message_all_yautja("Released [length(members)] serpents from storage, let the hunt commence! Another hunt may be called over [new_cooldown_time].")
 
 /datum/emergency_call/pred/xeno/create_member(datum/mind/player, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
@@ -193,6 +199,7 @@
 /datum/emergency_call/pred/xeno/med
 	name = "Hunting Grounds - Xenos - Medium"
 	hunt_name = "Serpents (group)"
+	timer_mult = 1.2 // 24 minutes
 	mob_max = 6
 	mob_min = 3
 	hostility = TRUE
@@ -202,6 +209,7 @@
 /datum/emergency_call/pred/xeno/hard
 	name = "Hunting Grounds - Xenos - Large"
 	hunt_name = "Serpents (large)"
+	timer_mult = 1.4 // 28 minutes
 	mob_max = 8
 	mob_min = 4
 	hostility = TRUE
@@ -211,6 +219,7 @@
 /datum/emergency_call/pred/mixed_elite // uscm are "fill-ins" for this like normal multi faction, so they do not need vars for their numbers
 	name = "Hunting Grounds - Elite Multi Faction - Small"
 	hunt_name = "Elite Multi Faction (small)"
+	timer_mult = 1.5 // 30 minutes
 	mob_max = 4
 	mob_min = 1
 	var/wy_elite = 0
@@ -224,7 +233,8 @@
 		message_all_yautja("Not enough elite humans in storage for the hunt to start.")
 		COOLDOWN_RESET(GLOB, hunt_timer_yautja)
 	else
-		message_all_yautja("Released [length(members)] elite humans from storage, let the hunt commence!")
+		var/new_cooldown_time = DisplayTimeText(COOLDOWN_TIMELEFT(GLOB, hunt_timer_yautja))
+		message_all_yautja("Released [length(members)] elite humans from storage, let the hunt commence! Another hunt may be called over [new_cooldown_time].")
 
 /datum/emergency_call/pred/mixed_elite/create_member(datum/mind/player, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
@@ -260,6 +270,7 @@
 /datum/emergency_call/pred/mixed_elite/medium
 	name = "Hunting Grounds - Elite Multi Faction - Medium"
 	hunt_name = "Elite Multi Faction (group)"
+	timer_mult = 2 // 40 minutes
 	mob_max = 6
 	mob_min = 2
 	max_wy_elite = 2
@@ -268,6 +279,7 @@
 /datum/emergency_call/pred/mixed_elite/hard
 	name = "Hunting Grounds - Elite Multi Faction - Large"
 	hunt_name = "Elite Multi Faction (large)"
+	timer_mult = 2.5 // 50 minutes
 	mob_max = 8
 	mob_min = 3
 	max_wy_elite = 3
@@ -276,6 +288,7 @@
 /datum/emergency_call/pred/mixed_elite/harder
 	name = "Hunting Grounds - Elite Multi Faction - Larger"
 	hunt_name = "Elite Multi Faction (larger)"
+	timer_mult = 3 // 1 hour, make it count dude
 	mob_max = 12
 	mob_min = 4
 	max_wy_elite = 4

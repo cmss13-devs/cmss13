@@ -2073,18 +2073,6 @@
 /turf/open/floor/almayer/cargo,
 /area/almayer/medical/lower_medical_medbay)
 "afi" = (
-/obj/structure/surface/table/reinforced/prison{
-	climbable = 0
-	},
-/obj/item/desk_bell{
-	anchored = 1;
-	pixel_x = -7;
-	pixel_y = 10;
-	ring_cooldown_length = 10
-	},
-/obj/structure/machinery/door/window/eastleft{
-	dir = 8
-	},
 /obj/item/reagent_container/food/drinks/coffeecup{
 	pixel_x = 6
 	},
@@ -7881,6 +7869,10 @@
 "aul" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
+	},
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 4;
+	name = "ship-grade camera"
 	},
 /turf/open/floor/almayer/red/west,
 /area/almayer/hallways/upper/port)
@@ -36244,18 +36236,6 @@
 	},
 /obj/structure/sign/safety/maint{
 	pixel_x = 32
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 8;
-	name = "ship-grade camera"
 	},
 /turf/open/floor/almayer/red/east,
 /area/almayer/hallways/upper/port)
@@ -66275,19 +66255,6 @@
 	pixel_x = 0;
 	pixel_y = 0
 	},
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_17";
-	pixel_x = -6;
-	pixel_y = 21
-	},
-/obj/structure/machinery/door_control{
-	id = "ChemistryShu";
-	name = "\improper Medical Chemistry Shutters";
-	pixel_y = 10;
-	throw_range = 15;
-	pixel_x = 6;
-	req_one_access_txt = "19;20"
-	},
 /obj/item/book/manual/chemistry{
 	pixel_y = -7;
 	pixel_x = -5
@@ -66296,11 +66263,6 @@
 	pixel_x = -4;
 	pixel_y = -3
 	},
-/obj/structure/machinery/status_display{
-	pixel_y = 31;
-	pixel_x = -1
-	},
-/obj/structure/surface/table/almayer,
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_17";
 	pixel_x = -6;

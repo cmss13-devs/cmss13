@@ -15334,11 +15334,11 @@
 	dir = 1;
 	icon_state = "leftsecure";
 	id = null;
-	name = "Requesitions Desk"
+	name = "Requisitions Desk"
 	},
 /obj/structure/machinery/door/window/northright{
 	dir = 2;
-	name = "Requesitions Desk"
+	name = "Requisitions Desk"
 	},
 /obj/item/tool/pen/blue{
 	pixel_x = -6
@@ -26188,15 +26188,6 @@
 	},
 /turf/open/shuttle/can_surgery/red,
 /area/ice_colony/surface/hangar/alpha)
-"fgp" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/structure/machinery/door/airlock/almayer/secure/colony{
-	name = "Colony Requesitions Storage Pod"
-	},
-/turf/open/floor/plating/icefloor,
-/area/ice_colony/surface/requesitions)
 "fkY" = (
 /obj/structure/machinery/light,
 /turf/open/shuttle/can_surgery/red,
@@ -31354,7 +31345,7 @@ aab
 abD
 adY
 abD
-fgp
+aab
 abD
 adY
 abD

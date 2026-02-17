@@ -16081,11 +16081,11 @@
 	dir = 1;
 	icon_state = "leftsecure";
 	id = null;
-	name = "Requesitions Desk"
+	name = "Requisitions Desk"
 	},
 /obj/structure/machinery/door/window/northright{
 	dir = 2;
-	name = "Requesitions Desk"
+	name = "Requisitions Desk"
 	},
 /obj/item/tool/pen/blue{
 	pixel_x = -6

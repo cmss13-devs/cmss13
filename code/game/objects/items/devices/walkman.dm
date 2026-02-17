@@ -168,12 +168,10 @@
 	play()
 	to_chat(user,SPAN_INFO("You change the song."))
 
-	// this kinda sucks but i couldnt think of a better way
-	LAZYREMOVE(overlays, "+Buttons_default")
-	LAZYREMOVE(overlays, "+Play_or_pause")
-	LAZYADD(overlays, "+Next_song")
-	sleep(0.7 SECONDS)
-	update_icon()
+	overlays -= "+buttonsDefault"
+	overlays -= "+playOrPause"
+	overlays += "+nextSong"
+	addtimer(CALLBACK(src, PROC_REF(update_icon)), 0.7 SECONDS)
 
 
 /obj/item/device/walkman/update_icon()
@@ -181,13 +179,13 @@
 	overlays.Cut()
 	if(tape)
 		if(!paused)
-			overlays += "+Playing"
-			overlays += "+Play_or_pause"
+			overlays += "+playing"
+			overlays += "+playOrPause"
 		else
-			overlays += "+Inserted"
-			overlays += "+Buttons_default"
+			overlays += "+inserted"
+			overlays += "+buttonsDefault"
 	else
-		overlays += "+Buttons_default"
+		overlays += "+buttonsDefault"
 
 	if(ishuman(loc))
 		var/mob/living/carbon/human/H = loc
@@ -265,12 +263,10 @@
 	update_song(current_song, current_listener, 0)
 	to_chat(user,SPAN_INFO("You restart the song."))
 
-	// this kinda sucks but i couldnt think of a better way
-	LAZYREMOVE(overlays, "+Buttons_default")
-	LAZYREMOVE(overlays, "+Play_or_pause")
-	LAZYADD(overlays, "+Restart")
-	sleep(0.7 SECONDS)
-	update_icon()
+	overlays -= "+buttonsDefault"
+	overlays -= "+playOrPause"
+	overlays += "+restart"
+	addtimer(CALLBACK(src, PROC_REF(update_icon)), 0.7 SECONDS)
 
 /obj/item/device/walkman/verb/restart_current_song()
 	set name = "Restart Song"
@@ -352,14 +348,14 @@
 	overlays.Cut()
 	if(tape)
 		if(!paused)
-			overlays += "+Playing"
-			overlays += "+Play_or_pause"
+			overlays += "+playing"
+			overlays += "+playOrPause"
 		else
-			overlays += "+Inserted"
-			overlays += "+Buttons_default"
+			overlays += "+inserted"
+			overlays += "+buttonsDefault"
 	else
-		overlays += "+Buttons_default"
-	overlays += "+White_band"
+		overlays += "+buttonsDefault"
+	overlays += "+whiteBand"
 
 	if(ishuman(loc))
 		var/mob/living/carbon/human/H = loc

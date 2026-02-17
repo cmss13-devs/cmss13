@@ -218,6 +218,14 @@
 	var/max_wy_elite = 1
 	var/max_upp_elite = 2
 
+/datum/emergency_call/pred/mixed_elite/spawn_candidates(quiet_launch, announce_incoming, override_spawn_loc)
+	. = ..()
+	if(length(members) < mob_min)
+		message_all_yautja("Not enough elite humans in storage for the hunt to start.")
+		COOLDOWN_RESET(GLOB, hunt_timer_yautja)
+	else
+		message_all_yautja("Released [length(members)] elite humans from storage, let the hunt commence!")
+
 /datum/emergency_call/pred/mixed_elite/create_member(datum/mind/player, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 

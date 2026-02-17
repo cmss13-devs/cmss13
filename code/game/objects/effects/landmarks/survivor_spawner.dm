@@ -792,22 +792,37 @@
 /obj/effect/landmark/survivor_spawner/us_army_engineer
 	equipment = /datum/equipment_preset/survivor/army/engineer
 	spawn_priority = SPAWN_PRIORITY_HIGH
+	archetype = INSERT_ENGINEER
 
 /obj/effect/landmark/survivor_spawner/us_army_medic
 	equipment = /datum/equipment_preset/survivor/army/medic
 	spawn_priority = SPAWN_PRIORITY_MEDIUM
+	archetype = INSERT_MEDIC
 
 /obj/effect/landmark/survivor_spawner/us_army_marksman
 	equipment = /datum/equipment_preset/survivor/army/marksman
 	spawn_priority = SPAWN_PRIORITY_MEDIUM
+	archetype = INSERT_SPECIALIST
 
 /obj/effect/landmark/survivor_spawner/us_army_gunner
 	equipment = /datum/equipment_preset/survivor/army/gunner
 	spawn_priority = SPAWN_PRIORITY_MEDIUM
+	archetype = INSERT_SMARTGUNNER
 
 /obj/effect/landmark/survivor_spawner/us_army_sl
 	equipment = /datum/equipment_preset/survivor/army/sl
 	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
+	archetype = INSERT_LEADER
+
+/obj/effect/landmark/survivor_spawner/us_army_co
+	equipment = /datum/equipment_preset/survivor/army/co
+	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
+	archetype = INSERT_CO
+
+/obj/effect/landmark/survivor_spawner/us_army_synth
+	equipment = /datum/equipment_preset/synth/survivor/army
+	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
+	archetype = INSERT_SYNTH
 
 // UPP Recon //
 

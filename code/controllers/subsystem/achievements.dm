@@ -208,6 +208,8 @@ SUBSYSTEM_DEF(achievements)
 		if(achievement_name in achievements)
 			continue
 
+		var/datum/achievement/existing_achievement = achievement_datum
+
 		var/datum/achievement/my_achievement = new existing_achievement.type
 		src.achievements += my_achievement
 

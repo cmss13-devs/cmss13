@@ -1,3 +1,6 @@
+// how long the cooldown for the reserve console is
+#define RESERVE_HUNT_COOLDOWN 20 MINUTES
+
 GLOBAL_VAR_INIT(hunt_timer_yautja, 0)
 GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 
@@ -609,8 +612,10 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	to_chat(user, SPAN_NOTICE("You choose [choice] as your prey."))
 	message_all_yautja("[user.real_name] has chosen [choice] as their prey.")
 	message_admins(FONT_SIZE_LARGE("ALERT: [user.real_name] ([user.key]) triggered [choice] inside the hunting grounds"))
-	SSticker.mode.get_specific_call(potential_prey[choice], TRUE, FALSE)
-	COOLDOWN_START(GLOB, hunt_timer_yautja, 20 MINUTES)
+	var/datum/emergency_call/pred/picked_call = potential_prey[choice]
+	SSticker.mode.get_specific_call(picked_call, TRUE, FALSE)
+	var/true_cooldown = (RESERVE_HUNT_COOLDOWN) * picked_call.timer_mult // multiplies the 20 minute timer by a set amount based on the chosen call
+	COOLDOWN_START(GLOB, hunt_timer_yautja, true_cooldown)
 
 
 /obj/structure/machinery/hunt_ground_escape
@@ -1656,3 +1661,5 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 /obj/item/device/houndcam/attack_hand(mob/user)
 	. = ..()
 	internal_camera.tgui_interact(user)
+
+#undef RESERVE_HUNT_COOLDOWN

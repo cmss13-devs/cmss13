@@ -666,7 +666,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 		to_chat(user, SPAN_DANGER("The console refuses [attacking_item]."))
 		return
 	to_chat(user, SPAN_DANGER("You hold [attacking_item] up to the console, and it begins to scan..."))
-	message_all_yautja("Prey is trying to escape the hunting grounds.")
+	message_all_yautja("Prey is trying to escape the hunting grounds at [get_area(user)] console.")
 
 	if(!do_after(user, 15 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		to_chat(user, SPAN_DANGER("The strange console stops scanning abruptly."))
@@ -934,7 +934,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	armed = FALSE
 	anchored = TRUE
 
-	var/list/tether_effects = apply_tether(src, C, range = tether_range, resistable = TRUE)
+	var/list/tether_effects = apply_tether(src, C, range = tether_range, resistible = TRUE)
 	tether_effect = tether_effects["tetherer_tether"]
 	RegisterSignal(tether_effect, COMSIG_PARENT_QDELETING, PROC_REF(disarm))
 
@@ -1129,7 +1129,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 		return
 	handle_dissolve(target, user)
 
-///Checks for permission and items dissallowed to be dissolved.
+///Checks for permission and items unallowed to be dissolved.
 /obj/item/tool/yautja_cleaner/proc/can_dissolve(obj/item/target, mob/user)
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		to_chat(user, SPAN_WARNING("You have no idea what this even does."))

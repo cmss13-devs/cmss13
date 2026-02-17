@@ -315,6 +315,8 @@
 
 		list("RADIO KEYS", 0, null, null, null),
 		list("WY Encryption Key", 5, /obj/item/device/encryptionkey/WY, "white", "WY private comms encryption key, for conducting private business."),
+		list("WY Corporate Encryption Key", 5, /obj/item/device/encryptionkey/WY, "white", "WY private comms encryption key, for conducting private business."),
+		list("WY Public Encryption Key", 5, /obj/item/device/encryptionkey/wy_pub, "white", "WY public comms encryption key, for conducting business."),
 		list("Colony", 15, /obj/item/device/encryptionkey/colony, "white", "Pre-tuned Radio Key for local colony comms."),
 		list("Alpha Squad", 10, /obj/item/device/encryptionkey/alpha, "white", "Radio Key for USCM Alpha Squad."),
 		list("Bravo Squad", 10, /obj/item/device/encryptionkey/bravo, "white", "Radio Key for USCM Bravo Squad."),

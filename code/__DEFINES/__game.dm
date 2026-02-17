@@ -34,6 +34,7 @@
 #define MAP_LV522_CHANCES_CLAIM "LV-522 Chance's Claim"
 #define MAP_LV759_HYBRISA_PROSPERA "LV-759 Hybrisa Prospera" // Highpop Only
 #define MAP_NEW_VARADERO "New Varadero"//ice colony underground but as its own map
+#define MAP_TYRARGO_RIFT "Tyrargo Rift"
 #define MAP_CHINOOK "Chinook 91 GSO" //admin level
 #define MAP_ROSTOCK "SSV Rostock" //UPP Warship
 
@@ -271,6 +272,12 @@
 #define GET_RANDOM_FREQ rand(32000, 55000)
 #define GET_RANDOM_FREQ_MINOR rand(42000, 48000)
 
+/// Directions as text for riding component
+#define TEXT_NORTH "[NORTH]"
+#define TEXT_SOUTH "[SOUTH]"
+#define TEXT_EAST "[EAST]"
+#define TEXT_WEST "[WEST]"
+
 // Ceilings
 // Ceiling types
 // CEILING_PROTECTION_TIER_X are thresholds for blocking shit, everything else is
@@ -383,6 +390,9 @@
 #define WALL_STRATA_ICE "strata_ice"
 #define WALL_STRATA_ICE_DIRTY "strata_ice_dirty"
 #define WALL_JUNGLE_UPDATED "jungle_veg"
+#define WALL_FOREST "forest_veg"
+#define WALL_FOREST_ROCK "rock_forest"
+#define WALL_FOREST_ROCK_DIRTY "rock_forest_dirty"
 #define WALL_STRATA_OUTPOST_RIBBED "strata_ribbed_outpost_"
 #define WALL_STRATA_OUTPOST_BARE "strata_bare_outpost_"
 #define WALL_SHIVA_ICE "shiva_ice"

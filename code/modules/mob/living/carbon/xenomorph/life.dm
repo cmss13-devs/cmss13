@@ -158,7 +158,7 @@
 
 	if(frenzy_aura != frenzy_new || warding_aura != warding_new || recovery_aura != recovery_new)
 		frenzy_aura = frenzy_new
-		if(health > crit_health || warding_new > warding_aura || !check_weeds_for_healing())
+		if(health > health_threshold_dead || warding_new > warding_aura || !check_weeds_for_healing())
 			warding_aura = warding_new
 		recovery_aura = recovery_new
 		recalculate_move_delay = TRUE
@@ -312,7 +312,7 @@
 	clear_fullscreen("dazed")
 
 /*Heal 1/70th of your max health in brute per tick. 1 as a bonus, to help smaller pools.
-Additionally, recovery pheromones mutiply this base healing, up to 2.5 times faster at level 5
+Additionally, recovery pheromones multiply this base healing, up to 2.5 times faster at level 5
 Modified via m, to multiply the number of wounds healed.
 Heal from fire half as fast
 Xenos don't actually take oxyloss, oh well
@@ -510,9 +510,9 @@ Make sure their actual health updates immediately.*/
 		health = maxHealth - getFireLoss() - getBruteLoss() //Xenos can only take brute and fire damage.
 
 	if(stat != DEAD && !gibbing)
-		var/warding_health = crit_health != 0 ? warding_aura * 20 : 0
-		if(health <= crit_health - warding_health) //dead
-			if(prob(gib_chance + 0.5*(crit_health - health)))
+		var/warding_health = health_threshold_dead != 0 ? warding_aura * 20 : 0
+		if(health <= health_threshold_dead - warding_health) //dead
+			if(prob(gib_chance + 0.5*(health_threshold_dead - health)))
 				async_gib(last_damage_data)
 			else
 				death(last_damage_data)

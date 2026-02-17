@@ -546,7 +546,7 @@
 /datum/equipment_preset/synth/survivor/cmb_synth
 	name = "Survivor - Synthetic - CMB Investigative Synthetic"
 	idtype = /obj/item/card/id/deputy
-	role_comm_title = "CMB Syn"
+	role_comm_title = "CMB Inv. Syn"
 	assignment = JOB_CMB_SYN
 	job_title = JOB_CMB_SYN
 	paygrades = list(PAY_SHORT_CMBS = JOB_PLAYTIME_TIER_0)

@@ -136,6 +136,14 @@
 #define SCAPE_PL_LV759_CAVES list('sound/soundscape/lv759/outdoors/windy_caverns_1.ogg','sound/soundscape/lv759/outdoors/windy_caverns_2.ogg','sound/soundscape/lv759/outdoors/windy_caverns_3.ogg',)
 #define SCAPE_PL_LV759_PLATEAU_OUTDOORS list('sound/soundscape/lv759/outdoors/derelict_plateau_1.ogg','sound/soundscape/lv759/outdoors/derelict_plateau_2.ogg',)
 
+// Tyrargo Soundscapes
+
+#define AMBIENCE_TYRARGO_CITY 'sound/ambience/tyrargo_city_ambience.ogg'
+#define AMBIENCE_TYRARGO_SEWER_CITY 'sound/ambience/tyrargo_sewer_ambience.ogg'
+
+#define SCAPE_PL_TYRARGO_SEWER list('sound/ambience/tyrargo_underground_1.ogg','sound/ambience/tyrargo_underground_2.ogg','sound/ambience/tyrargo_underground_3.ogg','sound/ambience/tyrargo_underground_4.ogg')
+#define SCAPE_PL_TYRARGO_ALERT list('sound/ambience/tyrargo_alert_1.ogg', 'sound/ambience/tyrargo_alert_2.ogg', 'sound/ambience/tyrargo_alert_3.ogg', 'sound/ambience/tyrargo_alert_4.ogg', 'sound/ambience/tyrargo_alert_5.ogg', 'sound/ambience/tyrargo_alert_6.ogg')
+
 // Abyssal Soundscapes
 
 #define SCAPE_ABYSSAL_INTERIOR list('sound/ambience/ambigen1.ogg','sound/ambience/ambigen3.ogg','sound/ambience/ambigen3.ogg','sound/ambience/ambigen4.ogg','sound/ambience/ambigen5.ogg','sound/ambience/ambigen6.ogg','sound/ambience/ambigen7.ogg','sound/ambience/ambigen8.ogg','sound/ambience/ambigen9.ogg','sound/ambience/ambigen10.ogg','sound/ambience/ambigen11.ogg','sound/ambience/ambigen12.ogg','sound/ambience/ambigen14.ogg')

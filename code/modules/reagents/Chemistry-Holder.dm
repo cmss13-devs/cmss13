@@ -252,11 +252,11 @@
 						continue
 					else if(current.original_id == reagent.original_id || current.id == reagent.original_id)
 						//Merge into the original
-						var/volume_factor = clamp((max(current.overdose - reagent.overdose, 5) / 5)-1, 1, 3)
-						if(max(current.overdose, 5)/5 < 3)
+						var/volume_factor = clamp((max(abs(current.overdose - reagent.overdose), 5) / 5), 1, 3)
+						if(max(current.overdose, 5)/5 < 2)
 							volume_factor = 1
 						reagent_list -= reagent
-						current.volume += floor(reagent.volume / volume_factor)
+						add_reagent(current.id, floor(reagent.volume / volume_factor))
 						var/list/seen = viewers(4, get_turf(my_atom))
 						for(var/mob/seen_mob in seen)
 							if(volume_factor == 1)

@@ -157,6 +157,7 @@
 	desc = "A long, green, sleek, and sturdy lab coat designed to distinguish a higher ranking medical personnel. The fabric provides extra protection against chemical and biological hazards."
 	icon_state = "labcoatg"
 	item_state = "labcoatg"
+	blood_overlay_type = "suit"
 
 	//I mean, it says it is sturdy.
 	armor_melee = CLOTHING_ARMOR_LOW
@@ -218,7 +219,7 @@
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
-	blood_overlay_type = "armor"
+	blood_overlay_type = "jacket"
 	siemens_coefficient = 0.7
 
 /obj/item/clothing/suit/storage/snow_suit/doctor
@@ -406,4 +407,4 @@
 	desc = "A suit that protects against minor chemical spills and biological hazards. This one drapes down quite low."
 	icon_state = "labcoat_long"
 	item_state = "labcoat_long"
-
+	blood_overlay_type = "suit"

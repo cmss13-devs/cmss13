@@ -81,11 +81,13 @@ Radiochat range: 1441 to 1489 (most devices refuse to be tune to other frequency
 
 //WY Channels (1230-1249)
 #define WY_FREQ 1231
-#define PMC_CMD_FREQ 1232
-#define PMC_FREQ 1233
-#define PMC_ENGI_FREQ 1234
-#define PMC_MED_FREQ 1235
-#define PMC_CCT_FREQ 1236
+#define WY_PUB_FREQ 1232
+#define WY_SEC_FREQ 1233
+#define PMC_CMD_FREQ 1234
+#define PMC_FREQ 1235
+#define PMC_ENGI_FREQ 1236
+#define PMC_MED_FREQ 1237
+#define PMC_CCT_FREQ 1238
 #define WY_WO_FREQ 1239
 
 //UPP Channels (1250-1269)
@@ -129,6 +131,7 @@ Radiochat range: 1441 to 1489 (most devices refuse to be tune to other frequency
 #define PVST_FREQ 1473
 #define CBRN_FREQ 1474
 #define FORECON_FREQ 1475
+#define ARMY_FREQ 1476
 
 //Ship department channels
 #define SENTRY_FREQ 1480
@@ -190,6 +193,7 @@ GLOBAL_LIST_INIT(radiochannels, list(
 	SQUAD_CBRN = CBRN_FREQ,
 	SQUAD_FORECON = FORECON_FREQ,
 	SQUAD_SOLAR = SOF_FREQ,
+	SQUAD_ARMY = ARMY_FREQ,
 
 	RADIO_CHANNEL_ALAMO = DS1_FREQ,
 	RADIO_CHANNEL_NORMANDY = DS2_FREQ,
@@ -200,6 +204,8 @@ GLOBAL_LIST_INIT(radiochannels, list(
 	RADIO_CHANNEL_HYPERDYNE = HDC_FREQ,
 
 	RADIO_CHANNEL_WY = WY_FREQ,
+	RADIO_CHANNEL_WY_PUB = WY_PUB_FREQ,
+	RADIO_CHANNEL_WY_SEC = WY_SEC_FREQ,
 	RADIO_CHANNEL_PMC_GEN = PMC_FREQ,
 	RADIO_CHANNEL_PMC_CMD = PMC_CMD_FREQ,
 	RADIO_CHANNEL_PMC_ENGI = PMC_ENGI_FREQ,
@@ -240,7 +246,7 @@ GLOBAL_LIST_INIT(radiochannels, list(
 #define CLF_FREQS list(CLF_FREQ, CLF_CMD_FREQ, CLF_ENGI_FREQ, CLF_MED_FREQ, CLF_CCT_FREQ)
 
 // PMC Frequencies
-#define PMC_FREQS list(PMC_FREQ, PMC_CMD_FREQ, PMC_ENGI_FREQ, PMC_MED_FREQ, PMC_CCT_FREQ, WY_WO_FREQ, WY_FREQ)
+#define PMC_FREQS list(PMC_FREQ, PMC_CMD_FREQ, PMC_ENGI_FREQ, PMC_MED_FREQ, PMC_CCT_FREQ, WY_WO_FREQ, WY_FREQ, WY_PUB_FREQ, WY_SEC_FREQ)
 
 //Listening Device Frequencies
 #define BUG_FREQS list(BUG_A_FREQ, BUG_B_FREQ)
@@ -305,6 +311,8 @@ SUBSYSTEM_DEF(radio)
 		"[JTAC_FREQ]" = "jtacradio",
 		"[INTEL_FREQ]" = "intelradio",
 		"[WY_FREQ]" = "wyradio",
+		"[WY_PUB_FREQ]" = "wypubradio",
+		"[WY_SEC_FREQ]" = "wysecradio",
 		"[VAI_FREQ]" = "vairadio",
 		"[RMC_FREQ]" = "rmcradio",
 		"[CIA_FREQ]" = "ciaradio",
@@ -316,6 +324,7 @@ SUBSYSTEM_DEF(radio)
 		"[ECHO_FREQ]" = "echoradio",
 		"[CRYO_FREQ]" = "cryoradio",
 		"[CBRN_FREQ]" = "hcradio",
+		"[ARMY_FREQ]" = "hcradio",
 		"[FORECON_FREQ]" = "hcradio",
 		"[SOF_FREQ]" = "hcradio",
 		"[HC_FREQ]" = "hcradio",

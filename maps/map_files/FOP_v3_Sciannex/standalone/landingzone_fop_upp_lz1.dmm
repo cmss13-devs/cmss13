@@ -2,7 +2,7 @@
 "aj" = (
 /obj/structure/window/framed/prison/reinforced/hull,
 /turf/open/floor/plating/prison,
-/area/fiorina/tumor/servers)
+/area/fiorina/oob)
 "am" = (
 /obj/structure/window,
 /turf/open/floor/prison/darkpurplefull2,
@@ -48,7 +48,7 @@
 /area/event/metal/dynamic)
 "aK" = (
 /turf/closed/wall/mineral/bone_resin,
-/area/fiorina/tumor/servers)
+/area/fiorina/oob)
 "aN" = (
 /obj/item/device/flashlight/lamp/tripod,
 /turf/open/floor/plating/prison,
@@ -938,7 +938,7 @@
 	pixel_y = 20
 	},
 /turf/closed/wall/r_wall/prison_unmeltable,
-/area/fiorina/tumor/servers)
+/area/fiorina/oob)
 "Gf" = (
 /obj/item/stack/cable_coil,
 /turf/open/floor/prison/darkpurple2,
@@ -947,9 +947,6 @@
 /obj/item/stack/rods,
 /turf/open/space,
 /area/fiorina/oob)
-"Gt" = (
-/turf/closed/wall/r_wall/prison_unmeltable,
-/area/event/metal/dynamic)
 "Gy" = (
 /obj/structure/platform/metal/kutjevo,
 /turf/open/floor/almayer_hull,
@@ -1151,7 +1148,7 @@
 	pixel_y = 12
 	},
 /turf/closed/wall/r_wall/prison_unmeltable,
-/area/fiorina/tumor/servers)
+/area/fiorina/oob)
 "MS" = (
 /obj/structure/platform/metal/kutjevo_smooth/north,
 /obj/structure/platform/metal/kutjevo_smooth/west,
@@ -1351,10 +1348,6 @@
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/servers)
-"Ut" = (
-/obj/structure/window/framed/prison/reinforced/hull,
-/turf/open/floor/plating/prison,
-/area/event/metal/dynamic)
 "Ux" = (
 /turf/open/floor/prison/darkyellow2/northwest,
 /area/fiorina/tumor/servers)
@@ -1533,7 +1526,7 @@ xY
 xY
 aK
 aK
-il
+az
 aK
 aK
 aK
@@ -1586,7 +1579,7 @@ xY
 xY
 aK
 aK
-il
+az
 aK
 aK
 uG
@@ -1797,7 +1790,7 @@ xY
 aK
 aK
 aK
-il
+az
 aK
 aK
 su
@@ -1813,36 +1806,36 @@ pl
 pl
 pl
 pl
-Gt
-Gt
-Ut
-Ut
-Ut
-Gt
-Gt
-Ut
-Ut
-Ut
-Gt
-Gt
-Ut
-Ut
-Ut
-Gt
-Gt
-Ut
-Ut
-Ut
-Gt
-Gt
-Ut
-Ut
-Ut
-Gt
-Gt
-Ut
-Ut
-Ut
+az
+az
+aj
+aj
+aj
+az
+az
+aj
+aj
+aj
+az
+az
+aj
+aj
+aj
+az
+az
+aj
+aj
+aj
+az
+az
+aj
+aj
+aj
+az
+az
+aj
+aj
+aj
 az
 Ih
 aK
@@ -1850,7 +1843,7 @@ aK
 aK
 aK
 aK
-il
+az
 aK
 zM
 Yx
@@ -1865,23 +1858,23 @@ xY
 pl
 pl
 pl
-Gt
-Gt
-Gt
+az
+az
+az
 ar
 Oo
 Vg
-Gt
-Gt
+az
+az
 ar
 Oo
 Vg
-Gt
-Gt
+az
+az
 ar
 Oo
 Vg
-Gt
+az
 EV
 qs
 Ng
@@ -1903,7 +1896,7 @@ aK
 aK
 aK
 aK
-il
+az
 su
 su
 su
@@ -1917,8 +1910,8 @@ pl
 xY
 pl
 pl
-Gt
-Gt
+az
+az
 Ng
 tt
 IX
@@ -1956,7 +1949,7 @@ aK
 aK
 aK
 aK
-il
+az
 no
 zM
 su
@@ -1969,8 +1962,8 @@ pl
 pl
 xY
 xY
-Gt
-Gt
+az
+az
 YL
 Ng
 Ng
@@ -2004,12 +1997,12 @@ IX
 Cz
 Cz
 pT
-il
+az
 aK
 aK
 pl
 pl
-il
+az
 Yx
 su
 su
@@ -2023,7 +2016,7 @@ pl
 pl
 az
 az
-Gt
+az
 GW
 Fl
 nc
@@ -2062,7 +2055,7 @@ aK
 Ih
 pl
 pl
-il
+az
 su
 zM
 su
@@ -2115,7 +2108,7 @@ pl
 pl
 pl
 pl
-il
+az
 no
 su
 Yx
@@ -2168,7 +2161,7 @@ pl
 pl
 pl
 pl
-il
+az
 su
 zM
 su
@@ -2216,12 +2209,12 @@ IX
 Ng
 Ng
 Ng
-il
+az
 pl
 pl
 pl
 pl
-il
+az
 di
 di
 su
@@ -2269,14 +2262,14 @@ IX
 Ng
 Ng
 ik
-il
-il
+az
+az
 aj
 aj
 aj
-il
+az
 FY
-il
+az
 PN
 PN
 PN
@@ -2590,9 +2583,9 @@ cX
 uG
 uG
 di
-il
-il
-il
+az
+az
+az
 FY
 di
 su
@@ -2644,9 +2637,9 @@ fa
 Er
 Jl
 Mp
-il
-il
-il
+az
+az
+az
 ZH
 di
 di
@@ -2765,7 +2758,7 @@ xY
 xY
 az
 az
-Gt
+az
 aH
 EP
 aY
@@ -2817,8 +2810,8 @@ xY
 xY
 xY
 xY
-Gt
-Gt
+az
+az
 YL
 Ng
 Ng
@@ -2871,8 +2864,8 @@ xY
 xY
 xY
 pl
-Gt
-Gt
+az
+az
 Ng
 Ng
 IX
@@ -2925,8 +2918,8 @@ xY
 xY
 pl
 pl
-Gt
-Gt
+az
+az
 LQ
 Ng
 Ng
@@ -2960,7 +2953,7 @@ tc
 Sh
 zI
 BR
-il
+az
 di
 di
 di
@@ -2979,15 +2972,15 @@ xY
 pl
 pl
 pl
-Gt
-Gt
-Ut
-Ut
-Ut
-Gt
-Gt
-Gt
-Gt
+az
+az
+aj
+aj
+aj
+az
+az
+az
+az
 Mc
 pR
 Ng
@@ -3040,8 +3033,8 @@ pl
 pl
 pl
 pl
-Gt
-Gt
+az
+az
 Ng
 Ng
 He
@@ -3094,8 +3087,8 @@ fB
 fB
 pl
 pl
-Gt
-Gt
+az
+az
 Tv
 Fl
 nc
@@ -3148,7 +3141,7 @@ pl
 pl
 pl
 pl
-Gt
+az
 YL
 He
 kc
@@ -3201,7 +3194,7 @@ pl
 jM
 bF
 xY
-Ut
+aj
 Ng
 EP
 aY
@@ -3254,7 +3247,7 @@ pl
 jM
 fB
 oy
-Ut
+aj
 Ng
 He
 Ng
@@ -3307,7 +3300,7 @@ pl
 jM
 ed
 fB
-Gt
+az
 kn
 He
 Ng
@@ -3335,11 +3328,11 @@ di
 iT
 PN
 Qf
-il
+az
 xU
 xU
 xU
-il
+az
 iT
 "}
 (36,1,1) = {"
@@ -3360,7 +3353,7 @@ pl
 jM
 fB
 aO
-Gt
+az
 Ng
 He
 Ng
@@ -3413,7 +3406,7 @@ pl
 jM
 fB
 fN
-Ut
+aj
 Ng
 He
 Ng
@@ -3466,7 +3459,7 @@ dc
 jM
 fB
 fN
-Ut
+aj
 Ng
 He
 Ng
@@ -3481,7 +3474,7 @@ FR
 su
 PN
 di
-il
+az
 di
 Ig
 PN
@@ -3519,8 +3512,8 @@ pl
 jM
 fB
 fN
-Gt
-Gt
+az
+az
 hj
 aY
 Fj
@@ -3534,7 +3527,7 @@ FR
 su
 PN
 di
-il
+az
 di
 di
 kZ
@@ -3547,11 +3540,11 @@ di
 iT
 PN
 Qf
-il
+az
 LR
 LR
 LR
-il
+az
 iT
 "}
 (40,1,1) = {"
@@ -3573,21 +3566,21 @@ jM
 fB
 fN
 pl
-il
-il
-il
-il
-il
-il
-il
-il
+az
+az
+az
+az
+az
+az
+az
+az
 su
 YR
 FR
 su
 PN
 di
-il
+az
 di
 sr
 PN
@@ -3640,7 +3633,7 @@ FR
 su
 OB
 di
-il
+az
 UC
 ax
 PN
@@ -3693,7 +3686,7 @@ Nd
 su
 su
 di
-il
+az
 di
 Ig
 PN
@@ -3759,11 +3752,11 @@ di
 iT
 PN
 Qf
-il
+az
 oz
 oz
 oz
-il
+az
 CE
 "}
 (44,1,1) = {"

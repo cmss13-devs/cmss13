@@ -56,6 +56,9 @@
 /obj/effect/landmark/lv624/fog_blocker/short
 	time_to_dispel = 15 MINUTES
 
+/obj/effect/landmark/lv624/fog_blocker/long
+	time_to_dispel = 24 HOURS
+
 /obj/effect/landmark/lv624/fog_blocker/very_short
 	time_to_dispel = 10 SECONDS
 
@@ -452,9 +455,26 @@
 	ai_silent_announcement("Commencing final systems scan in 3 minutes.", ".V")
 	log_game("Distress Signal ARES commencing final system scan in 3 minutes!")
 
+/datum/game_mode/colonialmarines/proc/end_of_round_ert()
+	//A proc for calling end of round ERTs.
+	switch(SSmapping.configs[GROUND_MAP].map_name)
+		if(MAP_TYRARGO_RIFT)
+			SSticker.mode.get_specific_call(/datum/emergency_call/us_army, TRUE, TRUE)
+
 /datum/game_mode/colonialmarines/proc/lore_announcement()
 	//A proc that will queue up announcements for the lore of the map.
 	switch(SSmapping.configs[GROUND_MAP].map_name)
+		if(MAP_TYRARGO_RIFT)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(xeno_announcement), "My children. A great battle rages across this world, a world slathered in hosts for our taking! However, these hosts fight back with great ferocity. I have directed your sub-hive to this area, you will create a mighty cordon here to cover our western flank whilst another sub-hive overtakes a stronghold to your east that is filled with thousands of hosts!\n\nIn order to aid you, I have dispatched a legion of disposable drones ahead of you, they are far less intelligent than you, but will suffice in waylaying any remaining hostile hosts to your west until you have secured yourselves.", "everything", QUEEN_MOTHER_ANNOUNCE), 20 SECONDS)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "Almayer, this is the Tyrango Museum civilian evacuation site. We are under assault by a XX-121 cluster, but we are holding our own.\n\nWe have heavy XX-121 waves inbound from the north-east and are under heavy suppression, our evacuation craft are pinned by long range boiler strikes and the western city exits are too dangerous to move towards with ground based evacuation vehicles, we’re requesting you secure the western approach so you can suppress the enemy forces to allow civilian evacuation, over.", "Tyrargo Civilian Evac, 1st Air Cav Headquarters", 'sound/AI/commandreport.ogg'), 15 MINUTES)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(xeno_announcement), "Be on guard my children. I have sensed that the petrid sewers of this so called city could be flooded by the hosts at a moments notice if the hosts restore power to the area. The button to release this putrid water is found in the metal structure the hosts call the sewer treatement plant.", "everything", QUEEN_MOTHER_ANNOUNCE), 15 MINUTES)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "Attention: Analysis of city layout plans have identified a possible tactical advantage. A release valve can be triggered within the City Sewer Treatment Plant, this valve will flood the lower sewer tunnels with water, expunging a significant amount of xenobiological growth.\n\nHowever, this valve must be powered by repairing a special APC located within the underground power-substation, located east of the underground sewer treatment plant.", "ARES 3.2 Strategic Notice", 'sound/AI/commandreport.ogg'), 20 MINUTES)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "Almayer. We’re seeing increased XX-121 activity at the Tyrango evac site. Additional strains are inbound from the north.\n\nEnemy Boiler’s have moved close enough to suppress our air support, we’re re-orienting the Longstreet tanks to cover our flanks. Requesting immediate suppression of enemy forces near our location via the western city entrance, over. ", "Tyrargo Civilian Evac, 1st Air Cav Headquarters", 'sound/AI/commandreport.ogg'), 35 MINUTES)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "All elements, more XX-121 clusters are encroaching from our east. We’re under heavy attack from all quarters and have lost half of our Longstreet tank support to Crushers.\n\nWe’ve exhausted our HEAP munitions and have had to switch to soft-point munitions. We can’t take this for much longer, requesting urgent support from Almayer forces, over.", "Tyrargo Civilian Evac, 1st Air Cav Headquarters", 'sound/AI/commandreport.ogg'), 60 MINUTES)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "This is Tyrango. The xenos have begun to encroach from our southern flank. We only have a single tank left. We’re withdrawing to the middle corridor and have relocated the civilians to the inner perimeter.\n\nSituation is dire, we’re getting wasted. We need that support, over.", "Tyrargo Civilian Evac, 1st Air Cav Headquarters", 'sound/AI/commandreport.ogg'), 80 MINUTES)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "All elements! This is the Tyrango evac site, our situation is critical. The bugs have us surrounded on all fronts, our armoured support is destroyed and we’re now being pinned by enemy Ravagers.\n\nWe need urgent fire support, we can’t take it much longer.", "Tyrargo Civilian Evac, 1st Air Cav Headquarters", 'sound/AI/commandreport.ogg'), 100 MINUTES)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "Almayer! Bugs are pouring into the inner perimeter! Civilians are taking up arms to defend the site, but they’re untrained.\n\nWe’re being overrun, we need fire support now! Now god dammit!", "Tyrargo Civilian Evac, 1st Air Cav Headquarters", 'sound/AI/commandreport.ogg'), 120 MINUTES)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "##&@* all dead! Tyrango is overrun! T&^@%###--- the command post any second, %$#* we ne#@##s--------------------", "Tyrargo Civilian Evac, 1st Air Cav Headquarters", 'sound/AI/commandreport.ogg'), 140 MINUTES)
 		if(MAP_WHITE_ANTRE_RESEARCH_FACILITY)
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(venir_announcement), "Attention all White Antre personnel. K-Series hive testing in the northern quadrant is in progress. We will be commencing the secondary trials with the Prime hive in the eastern sector at this time.\n\nEast Sector Overwatch be prepared to receive Prime hive larvae into your containment area.\n\nFurthermore, all personnel are reminded that elements of Azure-15 of the Whiteguard PMC and a detachment of the USCM are en-route to assist in testing and to take delivery of vital cargo. Over.", "White Antre Central Announcement", 'sound/AI/commandreport.ogg'), 5 SECONDS)
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(venir_announcement), "Attention! The site is experiencing a massive containment breach! Full site lockdown initiated.", "White Antre Central Announcement", 'sound/ambience/containment_breach1.ogg'), 30 SECONDS)
@@ -636,6 +656,8 @@
 			SSticker.roundend_check_paused = TRUE
 			round_finished = MODE_INFESTATION_M_MAJOR //Humans destroyed the xenomorphs.
 			ares_conclude()
+			end_of_round_ert()
+
 			addtimer(VARSET_CALLBACK(SSticker, roundend_check_paused, FALSE), MARINE_MAJOR_ROUND_END_DELAY)
 	else if(!num_humans && !num_xenos)
 		round_finished = MODE_INFESTATION_DRAW_DEATH //Both were somehow destroyed.

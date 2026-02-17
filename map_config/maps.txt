@@ -63,6 +63,9 @@ endmap
 map new_varadero
 endmap
 
+map tyrargo_rift
+endmap
+
 map white_antre_research_facility
 endmap
 

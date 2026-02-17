@@ -7,7 +7,7 @@
 	var/datum/powernet/powernet = null
 
 	/// Reference to a power terminal, used to connect SMES and APCs to the grid.
-	var/obj/structure/machinery/power/terminal/terminal = null
+	var/obj/structure/terminal/terminal = null
 
 	var/directwired = 1 // by default, power machines are connected by a cable in a neighbouring turf
 							// if set to 0, requires a 0-X cable on this turf
@@ -338,8 +338,8 @@
 		else if(istype(power_source,/obj/structure/machinery/power/apc))
 			var/obj/structure/machinery/power/apc/apc = power_source
 			cell = apc.cell
-			if (apc.terminal)
-				PN = apc.terminal.powernet
+			if (apc.powernet)
+				PN = apc.powernet
 		else if (!power_source)
 			return 0
 		else

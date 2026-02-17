@@ -30,8 +30,6 @@
 	 */
 	var/near_lz_protection_delay = 8 MINUTES
 
-////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////
 
 /* Pre-pre-startup */
 /datum/game_mode/colonialmarines/can_start(bypass_checks = FALSE)
@@ -44,7 +42,7 @@
 /datum/game_mode/colonialmarines/get_roles_list()
 	return GLOB.ROLES_DISTRESS_SIGNAL
 
-////////////////////////////////////////////////////////////////////////////////////////
+
 //Temporary, until we sort this out properly.
 /obj/effect/landmark/lv624
 	icon = 'icons/landmarks.dmi'
@@ -82,7 +80,6 @@
 	GLOB.xeno_tunnels -= src
 	return ..()
 
-////////////////////////////////////////////////////////////////////////////////////////
 
 /* Pre-setup */
 /datum/game_mode/colonialmarines/pre_setup()
@@ -117,8 +114,7 @@
 		T.id = "hole[i]"
 	return TRUE
 
-////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////
+
 
 /* Post-setup */
 //This happens after create_character, so our mob SHOULD be valid and built by now, but without job data.
@@ -429,9 +425,9 @@
 	ai_silent_announcement("Bioscan complete. No unknown lifeform signature detected.", ".V")
 	ai_silent_announcement("Saving operational report to archive.", ".V")
 	ai_silent_announcement("Commencing final systems scan in 3 minutes.", ".V")
+	log_game("Distress Signal ARES commencing final system scan in 3 minutes!")
 
-////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////
+
 
 //This is processed each tick, but check_win is only checked 5 ticks, so we don't go crazy with scanning for mobs.
 /datum/game_mode/colonialmarines/process()
@@ -559,8 +555,6 @@
 
 	playsound_z(SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP)), 'sound/effects/double_klaxon.ogg', volume = 10)
 
-// Resource Towers
-
 /datum/game_mode/colonialmarines/ds_first_drop(obj/docking_port/mobile/marine_dropship)
 	if(!active_lz)
 		var/dest_id = marine_dropship.destination?.id
@@ -577,25 +571,27 @@
 	add_current_round_status_to_end_results("First Drop")
 	clear_lz_hazards()
 
-///////////////////////////
-//Checks to see who won///
-//////////////////////////
+/**
+ * Checks to see who won
+ */
 /datum/game_mode/colonialmarines/check_win()
 	if(SSticker.current_state != GAME_STATE_PLAYING)
 		return
 	if(ROUND_TIME < 10 MINUTES)
 		return
-	var/living_player_list[] = count_humans_and_xenos(get_affected_zlevels())
+
+	if(SShijack?.sd_detonated)
+		round_finished = MODE_INFESTATION_DRAW_DEATH // Self destruction.
+		return
+
+	var/list/living_player_list = count_humans_and_xenos(get_affected_zlevels())
 	var/num_humans = living_player_list[1]
 	var/num_xenos = living_player_list[2]
 
-	if(force_end_at && world.time > force_end_at)
-		round_finished = MODE_INFESTATION_X_MINOR
-
-	if(!num_humans && num_xenos) //No humans remain alive.
-		round_finished = MODE_INFESTATION_X_MAJOR //Evacuation did not take place. Everyone died.
+	if(!num_humans && num_xenos)
+		round_finished = MODE_INFESTATION_X_MAJOR //No humans remain alive.
 	else if(num_humans && !num_xenos)
-		if(SSticker.mode && SSticker.mode.is_in_endgame)
+		if(SSticker.mode?.is_in_endgame)
 			round_finished = MODE_INFESTATION_X_MINOR //Evacuation successfully took place.
 		else
 			SSticker.roundend_check_paused = TRUE
@@ -604,6 +600,8 @@
 			addtimer(VARSET_CALLBACK(SSticker, roundend_check_paused, FALSE), MARINE_MAJOR_ROUND_END_DELAY)
 	else if(!num_humans && !num_xenos)
 		round_finished = MODE_INFESTATION_DRAW_DEATH //Both were somehow destroyed.
+	else if (force_end_at && world.time > force_end_at)
+		round_finished = MODE_INFESTATION_X_MINOR // Times up.
 
 /datum/game_mode/colonialmarines/count_humans_and_xenos(list/z_levels)
 	. = ..()
@@ -649,18 +647,19 @@
 		round_finished = MODE_INFESTATION_M_MAJOR
 	else
 		round_finished = MODE_INFESTATION_M_MINOR
+	log_game("Distress Signal Hive collapse!")
 
-///////////////////////////////
-//Checks if the round is over//
-///////////////////////////////
+/**
+ * Checks if the round is over
+ */
 /datum/game_mode/colonialmarines/check_finished()
 	if(round_finished)
-		return 1
+		return TRUE
+	return FALSE
 
-//////////////////////////////////////////////////////////////////////
-//Announces the end of the game with all relevant information stated//
-//////////////////////////////////////////////////////////////////////
-
+/**
+ * Announces the end of the game with all relevant information stated
+ */
 /datum/game_mode/colonialmarines/declare_completion()
 	announce_ending()
 	var/musical_track

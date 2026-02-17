@@ -30,6 +30,8 @@
 /mob/living/carbon/xenomorph/proc/update_icon_source()
 	if(HAS_TRAIT(src, TRAIT_XENONID))
 		if(!icon_xenonid)
+			if(HAS_TRAIT_FROM(src, TRAIT_NO_COLOR, TRAIT_SOURCE_HIVE))
+				REMOVE_TRAIT(src, TRAIT_NO_COLOR, TRAIT_SOURCE_HIVE)
 			color = hive.color
 		else
 			icon = icon_xenonid

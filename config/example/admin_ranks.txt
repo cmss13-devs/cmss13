@@ -4,7 +4,6 @@
 # Rank is CASE-SENSITIVE, all punctuation will be stripped so spaces don't matter.     #
 # Each rank is then followed by keywords with the prefix "+".                          #
 # These keywords represent groups of verbs and abilities which are given to that rank. #
-# +@ (or +prev) is a special shorthand which adds all the rights of the rank above it. #
 # Ranks with no keywords will just be given the most basic verbs and abilities   ~Carn #
 ########################################################################################
 # PLEASE NOTE: depending on config options, some abilities will be unavailable regardless if you have permission to use them!
@@ -27,7 +26,9 @@
 # +RIGHTS (or +PERMISSIONS) = allows you to promote and/or demote people.
 # +SOUND (or +SOUNDS) = allows you to upload and play sounds
 # +SPAWN (or +CREATE) = mob transformations, spawning of most atoms including mobs
-# +EVERYTHING (or +HOST or +ALL) = Simply gives you everything without having to type every flag
+# +EVERYTHING = Simply gives you everything without having to type every flag (apart from the profiler)
+# +PROFILER = gives access to the BYOND profiler
+# +HOST = Actually gives everything, including the profiler
 
 
 Donator 		+COLOR
@@ -40,17 +41,17 @@ Trial Admin 	+ADMIN +MOD +SERVER +BAN +SPAWN +STEALTH +VAREDIT +COLOR
 Admin 			+ADMIN +MOD +SERVER +BAN +SPAWN +STEALTH +VAREDIT +POSSESS +SOUND +COLOR +BUILDMODE
 
 
-Coder			+MOD +SERVER +BAN +VAREDIT +SPAWN +DEBUG +COLOR
+Coder			+MOD +SERVER +BAN +VAREDIT +SPAWN +DEBUG +COLOR +PROFILER
 Mapper 			+MOD +VAREDIT +COLOR +BUILDMODE +SPAWN
 Spriter			+MOD +VAREDIT +SPAWN +COLOR
-Developer		+ADMIN +MOD +SERVER +BAN +VAREDIT +SPAWN +DEBUG +POSSESS +BUILDMODE +SOUND +COLOR
+Developer		+ADMIN +MOD +SERVER +BAN +VAREDIT +SPAWN +DEBUG +POSSESS +BUILDMODE +SOUND +COLOR +PROFILER
 Lead Spriter    +ADMIN +MOD +SERVER +VAREDIT +BUILDMODE +SPAWN +DEBUG +COLOR
 
 
-Host 			+EVERYTHING
-Vice Host   	+EVERYTHING
+Host 			+HOST
+Vice Host   	+HOST
 Manager			+EVERYTHING
-Head Dev		+EVERYTHING
+Head Dev		+EVERYTHING +PROFILER
 
 
 Legacy Mentor 	 +MENTOR +COLOR

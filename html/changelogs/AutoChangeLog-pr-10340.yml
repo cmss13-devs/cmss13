@@ -1,0 +1,8 @@
+author: "LC4492"
+delete-after: True
+changes:
+  - code_imp: "Codes in all new blood_overlays."
+  - code_imp: "Changes the color pallettes of blood, adds a new version of human blood: \"HUMAN_BLOOD_DRY\", for use with corpses."
+  - imageadd: "Bandages and splints received replacements and now look better and fit with the pallettes of their respective objects. Splints are now much more visually prominent, and when someone have all their limbs splinted they will look as though they have fallen from a 10-story building (As it is coherent for it to be)."
+  - imageadd: "Blood overlays for the on_mob are updated and replaced with better versions that fit better with more specific on_mobs, for example, aprons now have their own blood overlay, instead of sharing such with the generic blood overlay for armors (which is probably 10 years old by now)."
+  - imageadd: "Tweaked vests and aprons a little to be on the height of the overlays and also to look a tad better, because I couldn't resist."

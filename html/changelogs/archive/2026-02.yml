@@ -42,3 +42,55 @@
   ori-disillusion-mirnov:
   - rscdel: removes playtime defines past tier 4, and removes the hybrisa CL survivor
       ranks past 175 hours of playtime
+2026-02-11:
+  BOBAMAx:
+  - bugfix: rescuing survivors now properly awards intel points instead of only pretending
+      to
+  Puckaboo2:
+  - bugfix: Anchorpoint Station marines have their minimap faction icons.
+  - bugfix: Missing minimap icons, minimap backgrounds, and role comm titles have
+      been applied to all CMB personnel.
+  - bugfix: CMB Riot Control synths should have the correct minimap icons vs the CMB
+      Investigation synths.
+2026-02-12:
+  Puckaboo2:
+  - bugfix: You can now apply Severe Burns or Eschar on a mob through the limb status
+      editor.
+  - spellcheck: Adds a space between your limb status and (Severe Burns) when you
+      check yourself.
+  - bugfix: Nonbinaries being 'himself' to other people while checking themselves
+      for injuries should no longer occur.
+  ori-disillusion-mirnov:
+  - bugfix: large xenos can no longer be buckled to office chairs
+  - code_imp: remove redundant line for the rollerbed
+2026-02-13:
+  Nihisohel:
+  - rscadd: Revolvers can now mix n match ammo types in their cylinders. Play hardcore
+      Russian Roulette with a High-explosive round combined with Impact rounds.
+  - balance: Tactical reloading duration and speed is now reduced if your arm is missing
+  - balance: You can now move while attaching weapon mods to your gun with a movement
+      penalty
+  - rscadd: You can now move while oiling your gun.
+  - qol: Bullet/shell ejections now stack to your hand first, before littering the
+      ground
+  - refactor: Changes the backend for normal cock to hand to standardize the function
+      with the new leveractions and shotguns ejections
+  - refactor: Cleans up suicide code a bit
+  - rscadd: Your head can now explode through the right circumstances through suicide
+  - rscadd: Adds some more flavor text to CO pistols firing at the air.
+  - bugfix: Fixes some early returns on CO pistols relating to firing to air
+  - spellcheck: Adds text for when directly ejecting from the lever-actions or shotguns
+      chamber, and a few other texts missing some color
+  neeshacark:
+  - qol: the revolver rig can hold loose rounds now
+  - spellcheck: fixed a typo in the name of the revolver holster rig
+2026-02-16:
+  AmazingDragon353:
+  - balance: Larva can evolve into any t1 when queen is dead
+  timothymtorres:
+  - bugfix: Fix hydrotrays ignoring bullet damage
+2026-02-17:
+  Drathek:
+  - rscdel: Queen can no longer rest on ovi again
+  - rscadd: Added metatip to explain that resisting can interrupt most do_after actions
+      such as de-ovi

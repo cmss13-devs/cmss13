@@ -1,0 +1,6 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - admin: "Moderators (including trial) get access to more log verbs and STUI tabs"
+  - bugfix: "Trial moderators now appear in StaffWho"
+  - bugfix: "admins.txt fallback now grants rights correctly again"

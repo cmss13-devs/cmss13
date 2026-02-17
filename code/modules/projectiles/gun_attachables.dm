@@ -1982,8 +1982,8 @@ Defined in conflicts.dm of the #defines folder.
 	if(!collapsible)
 		return .
 
-	if(turn_off && stock_activated)
-		stock_activated = FALSE
+	if(turn_off)
+		stock_activated = initial(stock_activated)
 		apply_on_weapon(gun)
 		return TRUE
 
@@ -2884,9 +2884,9 @@ Defined in conflicts.dm of the #defines folder.
 	aim_speed_mod = 0
 	wield_delay_mod = WIELD_DELAY_NORMAL//you shouldn't be wielding it anyways
 
-/obj/item/attachable/stock/smg/collapsible/brace/apply_on_weapon(obj/item/weapon/gun/G)
+/obj/item/attachable/stock/smg/collapsible/brace/apply_on_weapon(obj/item/weapon/gun/applying_gun)
 	if(stock_activated)
-		G.flags_item |= NODROP|FORCEDROP_CONDITIONAL
+		applying_gun.flags_item |= NODROP|FORCEDROP_CONDITIONAL
 		accuracy_mod = -HIT_ACCURACY_MULT_TIER_3
 		scatter_mod = SCATTER_AMOUNT_TIER_8
 		recoil_mod = RECOIL_AMOUNT_TIER_2 //Hurts pretty bad if it's wielded.
@@ -2897,7 +2897,7 @@ Defined in conflicts.dm of the #defines folder.
 		icon_state = "smg_brace_on"
 		attach_icon = "smg_brace_a_on"
 	else
-		G.flags_item &= ~(NODROP|FORCEDROP_CONDITIONAL)
+		applying_gun.flags_item &= ~(NODROP|FORCEDROP_CONDITIONAL)
 		accuracy_mod = 0
 		scatter_mod = 0
 		recoil_mod = 0
@@ -2908,8 +2908,8 @@ Defined in conflicts.dm of the #defines folder.
 		icon_state = "smg_brace"
 		attach_icon = "smg_brace_a"
 
-	G.recalculate_attachment_bonuses()
-	G.update_overlays(src, "stock")
+	applying_gun.recalculate_attachment_bonuses()
+	applying_gun.update_overlays(src, "stock")
 
 /obj/item/attachable/stock/revolver
 	name = "\improper M44 magnum sharpshooter stock"

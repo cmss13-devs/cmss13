@@ -9552,7 +9552,7 @@
 /turf/open/gm/river/desert/shallow_corner/west,
 /area/kutjevo/exterior/lz_river)
 "mWA" = (
-/obj/structure/machinery/autolathe/full,
+/obj/structure/machinery/autolathe/partial,
 /turf/open/floor/kutjevo/multi_tiles/southwest,
 /area/kutjevo/interior/colony_south/power2)
 "mYj" = (
@@ -15331,7 +15331,7 @@
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/colony_south/power2)
 "vSH" = (
-/obj/structure/machinery/autolathe/full,
+/obj/structure/machinery/autolathe/partial,
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/construction/east)
 "vTc" = (

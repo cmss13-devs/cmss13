@@ -565,6 +565,9 @@ GLOBAL_LIST_INIT(autolathe_wire_descriptions, flatten_numeric_alist(alist(
 
 		printables += list(print_data)
 
+/obj/structure/machinery/autolathe/partial
+	stored_material =  list("metal" = 40000, "glass" = 20000)
+
 /obj/structure/machinery/autolathe/full
 	spawn_full = TRUE
 
@@ -587,6 +590,9 @@ GLOBAL_LIST_INIT(autolathe_wire_descriptions, flatten_numeric_alist(alist(
 		/obj/item/stock_parts/manipulator,
 		/obj/item/stock_parts/console_screen,
 	)
+
+/obj/structure/machinery/autolathe/armylathe/partial
+	stored_material =  list("metal" = 56250, "plastic" = 20000) //15 metal and 10 plastic sheets
 
 /obj/structure/machinery/autolathe/armylathe/full
 	spawn_full = TRUE
@@ -614,6 +620,9 @@ GLOBAL_LIST_INIT(autolathe_wire_descriptions, flatten_numeric_alist(alist(
 	disabled_categories = AUTOLATHE_MEDILATHE_DISABLED_CATS_LIST
 	make_loc = TRUE
 	tgui_theme = "weyland"
+
+/obj/structure/machinery/autolathe/medilathe/partial
+	stored_material =  list("glass" = 20000, "plastic" = 40000) //20 plastic and 10 glass sheets
 
 /obj/structure/machinery/autolathe/medilathe/full
 	spawn_full = TRUE

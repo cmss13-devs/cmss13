@@ -62,7 +62,7 @@
 	set name = "Aghost"
 	set category = "Admin.Game"
 
-	if(!check_rights(R_MOD))
+	if(!check_rights(R_MOD|R_MENTOR))
 		return
 
 	var/new_STUI = 0
@@ -638,7 +638,7 @@
 		return
 
 	if(!isobserver(user))
-		to_chat(user, SPAN_WARNING("Can only become an imaginary friend while observing or aghosted."))
+		to_chat(user, SPAN_WARNING("You can only become an imaginary friend while observing or aghosted!"))
 		return
 
 	var/mob/living/befriended_mob

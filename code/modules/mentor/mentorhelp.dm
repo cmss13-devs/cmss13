@@ -173,7 +173,6 @@
 		message_sender_options = " (<a href='byond://?src=\ref[src];action=mark'>Mark/Unmark</a>"
 		message_sender_options += " | <a href='byond://?src=\ref[src];action=close'>Close</a>"
 		message_sender_options += " | <a href='byond://?src=\ref[src];action=follow'>Follow</a>"
-		message_sender_options += " | <a href='byond://?src=\ref[src];action=close'>Friend</a>"
 		message_sender_options += " | <a href='byond://?src=\ref[src];action=autorespond'>AutoResponse</a>)"
 
 	var/message_header = SPAN_MENTORHELP("<span class='prefix'>[message_title] from [key_name(sender.mob)] ([message_sender_key]):</span> <span class='message'>[message_sender_options]</span><br>")
@@ -280,16 +279,9 @@
 		to_chat(mentor_client, SPAN_NOTICE("<b>NOTICE:</b> Thread author is still in the lobby!"))
 		return
 
-	var/mob/mentor_mob = mentor_client.mob
-	var/mob/dead/observer/mentor_ghost = mentor_mob
-
-	if(!isobserver(mentor_mob))
-		mentor_ghost = mentor_mob.ghostize(TRUE, TRUE)
-		mentor_ghost.RegisterSignal(mentor_ghost, list(COMSIG_GHOST_MOVED, COMSIG_MOVABLE_MOVED), TYPE_VERB_REF(/mob/dead/observer, reenter_corpse))
-
-	mentor_ghost?.do_observe(author.mob)
-
-	//notify("<font style='color:red;'>[mentor.key]</font> has markexxd <font style='color:red;'>[author_key]</font>'s mentorhelp.")
+	log_mhelp("[mentor_client.key] has begun orbiting [author_key] as a ghost")
+	notify("<font style='color:red;'>[key_name(mentor_client)]</font> is following <font style='color:red;'>[key_name(author)]</font> as a ghost.")
+	mentor_client.admin_follow(author.mob)
 
 /datum/mentorhelp/Topic(href, list/href_list)
 	if(!usr)

@@ -2,15 +2,6 @@
 "aaa" = (
 /turf/open/space,
 /area/space)
-"aab" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/structure/machinery/door/airlock/almayer/secure/colony{
-	name = "Colony Requisitions Storage Pod"
-	},
-/turf/open/floor/plating/icefloor,
-/area/ice_colony/surface/requesitions)
 "aac" = (
 /turf/closed/ice_rock/corners,
 /area/ice_colony/exterior/surface/cliff)
@@ -26188,6 +26179,15 @@
 	},
 /turf/open/shuttle/can_surgery/red,
 /area/ice_colony/surface/hangar/alpha)
+"fgp" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/machinery/door/airlock/almayer/secure/colony{
+	name = "Colony Requisitions Storage Pod"
+	},
+/turf/open/floor/plating/icefloor,
+/area/ice_colony/surface/requesitions)
 "fkY" = (
 /obj/structure/machinery/light,
 /turf/open/shuttle/can_surgery/red,
@@ -31341,15 +31341,15 @@ aaI
 aaI
 aaI
 abD
-aab
+fgp
 abD
 adY
 abD
-aab
+fgp
 abD
 adY
 abD
-aab
+fgp
 abD
 adY
 abD
@@ -35571,15 +35571,15 @@ abE
 abF
 abF
 abD
-aab
+fgp
 abD
 adY
 abD
-aab
+fgp
 abD
 adY
 abD
-aab
+fgp
 abD
 adY
 abD

@@ -254,9 +254,7 @@
 /turf/open/floor/shiva,
 /area/template_noop)
 "rC" = (
-/obj/structure/surface/table{
-	flipped = 1
-	},
+/obj/structure/surface/table/flipped,
 /turf/open/floor/shiva,
 /area/template_noop)
 "rU" = (

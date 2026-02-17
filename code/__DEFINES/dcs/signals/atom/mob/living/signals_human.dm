@@ -1,9 +1,6 @@
 ///from /mob/living/carbon/human/proc/force_say(): ()
 #define COMSIG_HUMAN_FORCESAY "human_forcesay"
 
-#define COMSIG_HUMAN_TAKE_DAMAGE "human_take_damage"
-	#define COMPONENT_BLOCK_DAMAGE (1<<0)
-
 /// From /mob/living/carbon/human/ExtinguishMob()
 #define COMSIG_HUMAN_EXTINGUISH "human_extinguish"
 

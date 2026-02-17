@@ -517,7 +517,7 @@
 		return FALSE
 	update_living_queens()
 
-/// Signal handler for COMSIG_XENO_TAKE_DAMAGE intended to extend temporary maturity by XENO_QUEEN_TEMP_AGE_EXTENSION up to XENO_QUEEN_TEMP_AGE_DURATION
+/// Signal handler for COMSIG_MOB_TAKE_DAMAGE intended to extend temporary maturity by XENO_QUEEN_TEMP_AGE_EXTENSION up to XENO_QUEEN_TEMP_AGE_DURATION
 /mob/living/carbon/xenomorph/queen/proc/on_take_damage(owner, damage_data, damage_type)
 	SIGNAL_HANDLER
 	if(queen_age_temp_timer_id == TIMER_ID_NULL)
@@ -534,7 +534,7 @@
 /mob/living/carbon/xenomorph/queen/proc/refresh_combat_effective()
 	if(queen_age_temp_timer_id != TIMER_ID_NULL && isnull(timeleft(queen_age_temp_timer_id)))
 		queen_age_temp_timer_id = TIMER_ID_NULL
-		UnregisterSignal(src, COMSIG_XENO_TAKE_DAMAGE)
+		UnregisterSignal(src, COMSIG_MOB_TAKE_DAMAGE)
 
 	refresh_combat_abilities()
 	recalculate_actions()
@@ -550,7 +550,7 @@
 		else
 			var/already_temp_mature = queen_age_temp_timer_id != TIMER_ID_NULL
 			if(!already_temp_mature)
-				RegisterSignal(src, COMSIG_XENO_TAKE_DAMAGE, PROC_REF(on_take_damage))
+				RegisterSignal(src, COMSIG_MOB_TAKE_DAMAGE, PROC_REF(on_take_damage))
 			queen_age_temp_timer_id = addtimer(CALLBACK(src, PROC_REF(refresh_combat_effective)), XENO_QUEEN_TEMP_AGE_DURATION, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_NO_HASH_WAIT)
 			if(already_temp_mature)
 				return
@@ -563,7 +563,7 @@
 		if(queen_age_temp_timer_id != TIMER_ID_NULL)
 			deltimer(queen_age_temp_timer_id)
 			queen_age_temp_timer_id = TIMER_ID_NULL
-			UnregisterSignal(src, COMSIG_XENO_TAKE_DAMAGE)
+			UnregisterSignal(src, COMSIG_MOB_TAKE_DAMAGE)
 
 	refresh_combat_effective()
 
@@ -572,7 +572,7 @@
 		return
 	deltimer(queen_age_temp_timer_id)
 	queen_age_temp_timer_id = TIMER_ID_NULL
-	UnregisterSignal(src, COMSIG_XENO_TAKE_DAMAGE)
+	UnregisterSignal(src, COMSIG_MOB_TAKE_DAMAGE)
 	refresh_combat_effective()
 
 /// When not on ovipositor, refreshes all mobile_abilities including mobile_aged_abilities if applicable

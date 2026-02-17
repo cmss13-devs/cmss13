@@ -95,6 +95,32 @@
 	display_maptext = TRUE
 	maptext_label = "Tc"
 
+/obj/item/reagent_container/hypospray/autoinjector/tricord/random_amount
+
+/obj/item/reagent_container/hypospray/autoinjector/tricord/random_amount/Initialize()
+	. = ..()
+	var/amount = rand(1, 6)
+	switch(amount)
+		if(1)
+			reagents.add_reagent("tricordrazine", -45)
+			uses_left = 0
+			update_icon()
+		if(2, 3)
+			reagents.add_reagent("tricordrazine", -30)
+			uses_left = 1
+			update_icon()
+		if(4, 5)
+			reagents.add_reagent("tricordrazine", -15)
+			uses_left = 2
+			update_icon()
+
+/obj/item/reagent_container/hypospray/autoinjector/tricord/skillless
+	name = "tricordrazine EZ autoinjector"
+	desc = "An EZ autoinjector loaded with 3 doses of 15u of Tricordrazine, a weak general use medicine for treating damage. You can refill it at Wey-Med vending machines and it does not require any training to use."
+	icon_state = "emptyskill"
+	skilllock = SKILL_MEDICAL_DEFAULT
+	maptext_label = "EzTc"
+
 /obj/item/reagent_container/hypospray/autoinjector/adrenaline
 	name = "epinephrine autoinjector"
 	chemname = "adrenaline"
@@ -122,6 +148,43 @@
 	display_maptext = TRUE
 	maptext_label = "Tr"
 
+/obj/item/reagent_container/hypospray/autoinjector/tramadol/random_amount
+
+/obj/item/reagent_container/hypospray/autoinjector/tramadol/random_amount/Initialize()
+	. = ..()
+	var/amount = rand(1, 6)
+	switch(amount)
+		if(1)
+			reagents.add_reagent("tramadol", -45)
+			uses_left = 0
+			update_icon()
+		if(2, 3)
+			reagents.add_reagent("tramadol", -30)
+			uses_left = 1
+			update_icon()
+		if(4, 5)
+			reagents.add_reagent("tramadol", -15)
+			uses_left = 2
+			update_icon()
+
+/obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless
+	name = "tramadol EZ autoinjector"
+	desc = "An EZ autoinjector loaded with 3 doses of 15u of Tramadol, a weak but effective painkiller for normal wounds. You can refill it at Wey-Med vending machines and it doesn't require any training to use."
+	icon_state = "emptyskill"
+	skilllock = SKILL_MEDICAL_DEFAULT
+	maptext_label = "EzTr"
+
+/obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless/one_use
+	name = "single-use tramadol EZ autoinjector"
+	desc = "An EZ autoinjector loaded with a single dose of 15u of Tramadol, a weak but effective painkiller for normal wounds. You cannot refill it, but it doesn't require any training to use."
+	icon_state = "empty_oneuse"
+	autoinjector_type = "autoinjector_oneuse"
+	volume = 15
+	amount_per_transfer_from_this = 15
+	uses_left = 1
+	display_maptext = TRUE
+	maptext_label = "OuTr"
+
 /obj/item/reagent_container/hypospray/autoinjector/oxycodone
 	name = "oxycodone autoinjector (EXTREME PAINKILLER)"
 	chemname = "oxycodone"
@@ -140,6 +203,44 @@
 	display_maptext = TRUE
 	maptext_label = "Kl"
 
+/obj/item/reagent_container/hypospray/autoinjector/kelotane/random_amount
+
+/obj/item/reagent_container/hypospray/autoinjector/kelotane/random_amount/Initialize()
+	. = ..()
+	var/amount = rand(1, 6)
+	switch(amount)
+		if(1)
+			reagents.add_reagent("kelotane", -45)
+			uses_left = 0
+			update_icon()
+		if(2 , 3)
+			reagents.add_reagent("kelotane", -30)
+			uses_left = 1
+			update_icon()
+		if(4 , 5)
+			reagents.add_reagent("kelotane", -15)
+			uses_left = 2
+			update_icon()
+
+/obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless
+	name = "kelotane EZ autoinjector"
+	desc = "An EZ autoinjector loaded with 3 doses of 15u of Kelotane, a common burn medicine. Doesn't require any training to use. You can refill it at Wey-Med vending machines."
+	icon_state = "emptyskill"
+	skilllock = SKILL_MEDICAL_DEFAULT
+	display_maptext = TRUE
+	maptext_label = "EzKl"
+
+/obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless/one_use
+	name = "single-use kelotane EZ autoinjector"
+	desc = "An EZ autoinjector loaded with a single dose of 15u of Kelotane, a common burn medicine. You cannot refill it, but it doesn't require any training to use."
+	icon_state = "empty_oneuse"
+	autoinjector_type = "autoinjector_oneuse"
+	volume = 15
+	amount_per_transfer_from_this = 15
+	uses_left = 1
+	display_maptext = TRUE
+	maptext_label = "OuKl"
+
 /obj/item/reagent_container/hypospray/autoinjector/bicaridine
 	name = "bicaridine autoinjector"
 	chemname = "bicaridine"
@@ -148,6 +249,44 @@
 	volume = (REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 	display_maptext = TRUE
 	maptext_label = "Bi"
+
+/obj/item/reagent_container/hypospray/autoinjector/bicaridine/random_amount
+
+/obj/item/reagent_container/hypospray/autoinjector/bicaridine/random_amount/Initialize()
+	. = ..()
+	var/amount = rand(1, 6)
+	switch(amount)
+		if(1)
+			reagents.add_reagent("bicaridine", -45)
+			uses_left = 0
+			update_icon()
+		if(2, 3)
+			reagents.add_reagent("bicaridine", -30)
+			uses_left = 1
+			update_icon()
+		if(4, 5)
+			reagents.add_reagent("bicaridine", -15)
+			uses_left = 2
+			update_icon()
+
+/obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless
+	name = "bicaridine EZ autoinjector"
+	desc = "An EZ autoinjector loaded with 3 doses of 15u of Bicaridine, a common brute and circulatory damage medicine. Doesn't require any training to use."
+	icon_state = "emptyskill"
+	skilllock = SKILL_MEDICAL_DEFAULT
+	display_maptext = TRUE
+	maptext_label = "EzBi"
+
+/obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless/one_use
+	name = "single-use bicaridine EZ autoinjector"
+	desc = "An EZ autoinjector loaded with a single dose of 15u of Bicaridine, a common brute and circulatory damage medicine. You cannot refill it, but it doesn't require any training to use."
+	icon_state = "empty_oneuse"
+	autoinjector_type = "autoinjector_oneuse"
+	volume = 15
+	amount_per_transfer_from_this = 15
+	uses_left = 1
+	display_maptext = TRUE
+	maptext_label = "OuBi"
 
 /obj/item/reagent_container/hypospray/autoinjector/antitoxin
 	name = "dylovene autoinjector"

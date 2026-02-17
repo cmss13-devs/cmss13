@@ -204,12 +204,11 @@ SUBSYSTEM_DEF(achievements)
 	handle_mob_logged_in(new_mob = owner.mob)
 	owner.achievement_manager = src
 
-	for(var/achievement in achievements)
-		var/datum/achievement/achievement_datum = SSachievements.all_achivements[achievement]
-		if(!istype(achievement_datum))
+	for(var/achievement_name, achievement_datum in SSachievements.all_achivements)
+		if(achievement_name in achievements)
 			continue
 
-		var/datum/achievement/my_achievement = new achievement_datum.type
+		var/datum/achievement/my_achievement = new existing_achievement.type
 		src.achievements += my_achievement
 
 		my_achievement.register_mob(current_mob)

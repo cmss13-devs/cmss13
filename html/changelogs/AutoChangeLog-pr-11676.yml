@@ -1,4 +1,0 @@
-author: "ori-disillusion-mirnov"
-delete-after: True
-changes:
-  - rscdel: "removes playtime defines past tier 4, and removes the hybrisa CL survivor ranks past 175 hours of playtime"

@@ -220,9 +220,9 @@
 	reagents.reaction(Mob, INGEST)
 	if(Mob.reagents)
 		var/list/injected = list()
-		for(var/datum/reagent/reagents in reagents.reagent_list)
-			injected += reagents.name
-			reagents.last_source_mob = WEAKREF(user)
+		for(var/datum/reagent/Chemical in reagents.reagent_list)
+			injected += Chemical.name
+			Chemical.last_source_mob = WEAKREF(user)
 		var/contained = english_list(injected)
 		Mob.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been injected with [src.name] by [key_name(user)]. Reagents: [contained]</font>")
 		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to inject [key_name(Mob)]. Reagents: [contained]</font>")

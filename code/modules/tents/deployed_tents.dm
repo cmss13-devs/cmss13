@@ -15,7 +15,8 @@
 	var/y_dim = 4
 
 	/// How much cold protection to add to entering humans - Full body clothing means complete (1) protection
-	var/cold_protection_factor = 0.4
+	/// Insulated enough to protect armorless patients in the medical tent
+	var/cold_protection_factor = 0.7
 
 	/// Roof display icon_state or null to disable
 	var/roof_state

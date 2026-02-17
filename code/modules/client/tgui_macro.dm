@@ -31,6 +31,9 @@ GLOBAL_LIST_EMPTY(ui_data_keybindings)
 	.["glob_keybinds"] = GLOB.ui_data_keybindings
 	.["byond_keymap"] = GLOB._kbMap
 	.["max_custom_keybinds"] = KEYBIND_CUSTOM_MAX
+	.["max_custom_keybind_picksays"] = KEYBIND_CUSTOM_PICKSAY_MAX
+	.["max_say_length"] = MAX_MESSAGE_LEN
+	.["max_emote_length"] = MAX_EMOTE_LEN
 
 /datum/tgui_macro/ui_state(mob/user)
 	return GLOB.always_state
@@ -133,28 +136,33 @@ GLOBAL_LIST_EMPTY(ui_data_keybindings)
 			if(!(keybind_type in list(KEYBIND_TYPE_SAY, KEYBIND_TYPE_ME, KEYBIND_TYPE_PICKSAY)))
 				return TRUE
 
-			var/contents = params["contents"]
-			if(keybind_type == KEYBIND_TYPE_PICKSAY && !islist(contents))
-				contents = list(contents)
-
-				if(length(contents) != KEYBIND_CUSTOM_PICKSAY_MAX)
-					var/list/list_contents = contents
-					list_contents.len = KEYBIND_CUSTOM_PICKSAY_MAX
-
-				for(var/i in 1 to length(contents))
-					var/new_contents = list()
-					new_contents[i] = strip_html(contents[i])
-					contents = new_contents
-
-			if(keybind_type != KEYBIND_TYPE_PICKSAY)
-				if(islist(contents))
-					contents = jointext(contents, ", ")
-
-				contents = strip_html(contents)
-
 			var/keybind = params["keybind"]
 			if(!keybind)
 				return TRUE
+
+			var/contents = params["contents"]
+
+			switch(keybind_type)
+				if(KEYBIND_TYPE_PICKSAY)
+					if(!islist(contents))
+						contents = list(contents)
+
+					var/list/list_contents = contents
+					if(length(contents) > KEYBIND_CUSTOM_PICKSAY_MAX)
+						list_contents.len = KEYBIND_CUSTOM_PICKSAY_MAX
+
+					for(var/i in 1 to length(contents))
+						list_contents[i] = strip_html(contents[i], MAX_EMOTE_LEN)
+
+				if(KEYBIND_TYPE_ME)
+					if(islist(contents))
+						contents = jointext(contents, ", ")
+					contents = strip_html(contents, MAX_EMOTE_LEN)
+
+				else
+					if(islist(contents))
+						contents = jointext(contents, ", ")
+					contents = strip_html(contents, MAX_MESSAGE_LEN)
 
 			for(var/i in GLOB._kbMap)
 				keybind = replacetext(keybind, i, GLOB._kbMap[i])

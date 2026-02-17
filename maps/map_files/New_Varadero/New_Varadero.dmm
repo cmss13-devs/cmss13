@@ -16076,18 +16076,16 @@
 /turf/open/floor/shiva/green,
 /area/varadero/interior/court)
 "mZC" = (
-/obj/structure/surface/table/woodentable{
-	icon_state = "reinf_table"
-	},
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/window/brigdoor/westleft{
 	dir = 1;
 	icon_state = "leftsecure";
 	id = null;
-	name = "Requisitions Desk"
+	name = "Requesitions Desk"
 	},
 /obj/structure/machinery/door/window/northright{
 	dir = 2;
-	name = "Requisitions Desk"
+	name = "Requesitions Desk"
 	},
 /obj/item/tool/pen/blue{
 	pixel_x = -6

@@ -457,6 +457,14 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
+"acb" = (
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	name = "\improper Storage Dome";
+	req_access_txt = "100";
+	req_one_access = null
+	},
+/turf/open/floor/dark,
+/area/lv624/lazarus/quartstorage)
 "acc" = (
 /obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/warning/west,
@@ -2816,7 +2824,7 @@
 	},
 /obj/item/storage/belt/medical/full,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/whiteblue/north,
+/turf/open/floor/whiteblue/northwest,
 /area/lv624/lazarus/medbay)
 "aou" = (
 /turf/open/floor/whitebluecorner,
@@ -3352,7 +3360,7 @@
 	req_access_txt = "100";
 	req_one_access = null
 	},
-/turf/open/floor/vault,
+/turf/open/floor/dark,
 /area/lv624/lazarus/quartstorage)
 "asR" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
@@ -3456,7 +3464,7 @@
 	req_access_txt = "100";
 	req_one_access = null
 	},
-/turf/open/floor/whitepurple/northeast,
+/turf/open/floor/whitepurplecorner/east,
 /area/lv624/lazarus/fitness)
 "atz" = (
 /obj/structure/window_frame/colony,
@@ -3571,7 +3579,7 @@
 	pixel_y = 4
 	},
 /obj/item/tool/pen,
-/turf/open/floor/white,
+/turf/open/floor/whiteblue/southeast,
 /area/lv624/lazarus/medbay)
 "atX" = (
 /turf/open/floor/whitepurplecorner/east,
@@ -4082,7 +4090,7 @@
 	opacity = 0;
 	req_access_txt = "100"
 	},
-/turf/open/floor/whitepurple/northeast,
+/turf/open/floor/white,
 /area/lv624/lazarus/research)
 "awt" = (
 /obj/effect/decal/remains/human,
@@ -4091,10 +4099,6 @@
 /area/lv624/lazarus/research)
 "awu" = (
 /turf/open/floor,
-/area/lv624/lazarus/fitness)
-"awv" = (
-/obj/effect/decal/cleanable/blood/splatter,
-/turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/fitness)
 "aww" = (
 /obj/structure/machinery/power/apc/no_power/north,
@@ -4184,7 +4188,7 @@
 	name = "\improper Leisure Dome";
 	req_access_txt = "100"
 	},
-/turf/open/floor/whitepurple/northeast,
+/turf/open/floor/whitepurplecorner/east,
 /area/lv624/lazarus/fitness)
 "awQ" = (
 /obj/effect/landmark/monkey_spawn,
@@ -4208,7 +4212,7 @@
 	req_access_txt = "100";
 	req_one_access = null
 	},
-/turf/open/floor/whitepurple/northeast,
+/turf/open/floor/whitepurplecorner/east,
 /area/lv624/lazarus/fitness)
 "awV" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
@@ -4481,9 +4485,6 @@
 "ayv" = (
 /turf/open/floor/white,
 /area/lv624/lazarus/fitness)
-"ayw" = (
-/turf/open/floor/plating,
-/area/lv624/lazarus/main_hall)
 "ayx" = (
 /turf/open/floor/warnwhite/east,
 /area/lv624/lazarus/fitness)
@@ -4575,13 +4576,6 @@
 /area/lv624/lazarus/fitness)
 "ayP" = (
 /turf/closed/wall/r_wall,
-/area/lv624/lazarus/main_hall)
-"ayQ" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Nexus Dome";
-	req_access_txt = "100"
-	},
-/turf/open/floor/plating,
 /area/lv624/lazarus/main_hall)
 "ayR" = (
 /obj/structure/window_frame/colony/reinforced,
@@ -5090,7 +5084,7 @@
 "aBg" = (
 /obj/item/stack/sheet/metal,
 /obj/structure/girder,
-/turf/open/floor,
+/turf/open/floor/plating,
 /area/lv624/lazarus/sleep_female)
 "aBh" = (
 /obj/effect/decal/remains/xeno{
@@ -6704,14 +6698,6 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/closed/wall,
 /area/lv624/lazarus/yggdrasil)
-"aIP" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	dir = 1;
-	name = "\improper Nexus Dome";
-	req_access_txt = "100"
-	},
-/turf/open/floor/whiteyellowcorner/east,
-/area/lv624/lazarus/main_hall)
 "aIV" = (
 /obj/structure/flora/jungle/vines/light_3,
 /obj/structure/flora/jungle/vines/heavy,
@@ -8318,7 +8304,7 @@
 	name = "\improper Nexus Dome Marshal's Quarters";
 	req_access_txt = "100"
 	},
-/turf/open/floor/cult,
+/turf/open/floor/wood,
 /area/lv624/lazarus/captain)
 "aRD" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -8707,7 +8693,7 @@
 	name = "\improper Nexus Dome Freezer";
 	req_access_txt = "100"
 	},
-/turf/open/floor,
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/kitchen)
 "aTE" = (
 /obj/structure/bed/chair{
@@ -8810,7 +8796,7 @@
 	name = "\improper Nexus Dome Director's Quarters";
 	req_access_txt = "100"
 	},
-/turf/open/floor/cult,
+/turf/open/floor/wood,
 /area/lv624/lazarus/hop)
 "aTZ" = (
 /obj/structure/machinery/vending,
@@ -17230,7 +17216,7 @@
 	phone_category = "Lazarus Landing";
 	phone_id = "Medbay"
 	},
-/turf/open/floor/white,
+/turf/open/floor/whiteblue/east,
 /area/lv624/lazarus/medbay)
 "pzP" = (
 /obj/effect/decal/cleanable/blood/oil,
@@ -19278,7 +19264,7 @@
 "tIg" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor/whiteblue/west,
+/turf/open/floor/whiteblue/southwest,
 /area/lv624/lazarus/medbay)
 "tIw" = (
 /obj/structure/stairs/perspective{
@@ -40675,7 +40661,7 @@ anS
 anS
 anS
 wLe
-pwq
+aoU
 pwq
 wLe
 anF
@@ -40916,7 +40902,7 @@ jHN
 ofv
 jHN
 atw
-awv
+awR
 awP
 atw
 atw
@@ -43627,11 +43613,11 @@ oUy
 oUy
 ayP
 ayu
-aHZ
-aIP
+azt
+aJk
 aJA
-aHZ
-aIP
+azt
+aJk
 aJA
 ayP
 ezz
@@ -47641,7 +47627,7 @@ tsK
 tsK
 axW
 jRm
-ayQ
+aWL
 azt
 azt
 azQ
@@ -47865,7 +47851,7 @@ jRm
 jRm
 mFu
 jRm
-ayw
+azt
 azt
 azt
 azQ
@@ -48313,7 +48299,7 @@ jRm
 jRm
 jRm
 jRm
-ayQ
+aWL
 azu
 azt
 azQ
@@ -48537,7 +48523,7 @@ aWh
 aWh
 god
 jRm
-ayw
+azt
 azu
 azQ
 azt
@@ -57040,7 +57026,7 @@ dLY
 aMr
 asN
 atI
-avS
+acb
 atI
 asN
 ihS

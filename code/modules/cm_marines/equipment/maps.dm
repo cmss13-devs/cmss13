@@ -151,6 +151,7 @@
 	name = "\improper SI-391 Sekhmet Swamp map"
 	desc = "An overview of the Sekhmet Swamp research facility schematics."
 	html_link = "images/1/18/Map_icecolony.png"
+
 GLOBAL_LIST_INIT_TYPED(map_type_list, /obj/item/map, setup_all_maps())
 
 /proc/setup_all_maps()

@@ -29,7 +29,7 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 	var/is_in_endgame = FALSE //Set it to TRUE when we trigger DELTA alert or dropship crashes
 	/// When set and this gamemode is selected, the taskbar icon will change to the png selected here
 	var/taskbar_icon = 'icons/taskbar/gml_distress.png'
-	var/static_comms_amount = 0
+	var/static_comms_amount = 1
 	var/obj/structure/machinery/computer/shuttle/dropship/flight/active_lz = null
 
 	var/datum/entity/statistic/round/round_stats = null
@@ -258,32 +258,32 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 		var/obj/effect/landmark/corpsespawner/spawner = pick(gamemode_spawn_corpse)
 		var/turf/spawnpoint = get_turf(spawner)
 		if(spawnpoint)
-			var/mob/living/carbon/human/M = new /mob/living/carbon/human(spawnpoint)
-			M.create_hud() //Need to generate hud before we can equip anything apparently...
-			arm_equipment(M, spawner.equip_path, TRUE, FALSE)
+			var/mob/living/carbon/human/human_mob = new /mob/living/carbon/human(spawnpoint)
+			human_mob.create_hud() //Need to generate hud before we can equip anything apparently...
+			arm_equipment(human_mob, spawner.equip_path, TRUE, FALSE)
 			for(var/obj/structure/bed/nest/found_nest in spawnpoint)
 				for(var/turf/the_turf in list(get_step(found_nest, NORTH),get_step(found_nest, EAST),get_step(found_nest, WEST)))
 					if(the_turf.density)
 						found_nest.dir = get_dir(found_nest, the_turf)
 						found_nest.pixel_x = found_nest.buckling_x["[found_nest.dir]"]
 						found_nest.pixel_y = found_nest.buckling_y["[found_nest.dir]"]
-						M.dir = get_dir(the_turf,found_nest)
+						human_mob.dir = get_dir(the_turf,found_nest)
 				if(!found_nest.buckled_mob)
-					found_nest.do_buckle(M,M)
+					found_nest.forced_buckle_mob(human_mob,human_mob)
 		gamemode_spawn_corpse.Remove(spawner)
 
 /datum/game_mode/proc/spawn_static_comms()
 	for(var/i = 1 to static_comms_amount)
-		var/obj/effect/landmark/static_comms/SCO = pick_n_take(GLOB.comm_tower_landmarks_net_one)
-		var/obj/effect/landmark/static_comms/SCT = pick_n_take(GLOB.comm_tower_landmarks_net_two)
-		if(!SCO)
-			break
-		SCO.spawn_tower()
-		if(!SCT)
-			break
-		SCT.spawn_tower()
-	QDEL_NULL_LIST(GLOB.comm_tower_landmarks_net_one)
-	QDEL_NULL_LIST(GLOB.comm_tower_landmarks_net_two)
+		var/obj/effect/landmark/static_comms/tower
+		if(i % 2)
+			tower = pick_n_take(GLOB.comm_tower_landmarks_net_one)
+		else
+			tower = pick_n_take(GLOB.comm_tower_landmarks_net_two)
+		if(!tower)
+			continue
+		tower.spawn_tower()
+	QDEL_LIST(GLOB.comm_tower_landmarks_net_one)
+	QDEL_LIST(GLOB.comm_tower_landmarks_net_two)
 
 //////////////////////////
 //Reports player logouts//

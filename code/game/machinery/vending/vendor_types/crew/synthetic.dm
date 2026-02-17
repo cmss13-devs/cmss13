@@ -79,7 +79,7 @@
 		list("Fulton Recovery Device", 5, /obj/item/stack/fulton, null, VENDOR_ITEM_REGULAR),
 		list("Motion Detector", 5, /obj/item/device/motiondetector, null, VENDOR_ITEM_REGULAR),
 		list("Space Cleaner", 2, /obj/item/reagent_container/spray/cleaner, null, VENDOR_ITEM_REGULAR),
-		list("Whistle", 5, /obj/item/device/whistle, null, VENDOR_ITEM_REGULAR),
+		list("Whistle", 5, /obj/item/clothing/accessory/device/whistle, null, VENDOR_ITEM_REGULAR),
 		list("Machete Scabbard (Full)", 2, /obj/item/storage/large_holster/machete/full, null, VENDOR_ITEM_REGULAR),
 		list("Stethoscope", 2, /obj/item/clothing/accessory/stethoscope, null, VENDOR_ITEM_REGULAR),
 		list("Penlight", 2, /obj/item/device/flashlight/pen, null, VENDOR_ITEM_REGULAR)
@@ -173,7 +173,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 	name = "\improper ColMarTech Synthetic Equipment Rack"
 	desc = "An automated rack hooked up to a colossal storage of various equipment. Can be accessed only by synthetic units."
 	req_access = list(ACCESS_MARINE_SYNTH)
-	vendor_role = list(JOB_SYNTH, JOB_SYNTH_SURVIVOR, JOB_UPP_SUPPORT_SYNTH, JOB_CMB_SYN, JOB_CMB_RSYN, JOB_PMC_SYNTH)
+	vendor_role = list(JOB_SYNTH, JOB_SYNTH_SURVIVOR, JOB_UPP_SUPPORT_SYNTH, JOB_CMB_SYN, JOB_CMB_RSYN, JOB_PMC_SYNTH, JOB_TWE_IASF_PARA_SYNTH, JOB_WY_GOON_SYNTH)
 
 /obj/structure/machinery/cm_vending/clothing/synth/get_listed_products(mob/user)
 	return GLOB.cm_vending_clothing_synth

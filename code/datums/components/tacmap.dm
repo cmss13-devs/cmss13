@@ -1,3 +1,10 @@
+// State tracking for users using tacmaps - they can't use more than one at once.
+/client/var/using_main_tacmap = FALSE
+/client/var/using_popout_tacmap = FALSE
+
+/client/proc/using_tacmap()
+	return using_main_tacmap || using_popout_tacmap
+
 /**
 	Tacmap component
 
@@ -40,7 +47,8 @@
 			/atom/movable/screen/minimap_tool/label,
 			/atom/movable/screen/minimap_tool/clear,
 			/atom/movable/screen/minimap_tool/up,
-			/atom/movable/screen/minimap_tool/down
+			/atom/movable/screen/minimap_tool/down,
+			/atom/movable/screen/minimap_tool/popout,
 		)
 
 	if(has_update)
@@ -51,21 +59,29 @@
 	var/list/_interactees = interactees.Copy()
 	for(var/mob/interactee in _interactees)
 		on_unset_interaction(interactee)
+		close_popout_tacmaps(interactee)
 	map = null
 	for(var/mob/interactee in _interactees)
 		show_tacmap(interactee)
+		tgui_interact(interactee)
 
 /datum/component/tacmap/proc/move_tacmap_down()
 	targetted_zlevel--
 	var/list/_interactees = interactees.Copy()
 	for(var/mob/interactee in _interactees)
 		on_unset_interaction(interactee)
+		close_popout_tacmaps(interactee)
 	map = null
 	for(var/mob/interactee in _interactees)
 		show_tacmap(interactee)
+		tgui_interact(interactee)
 
-/datum/component/tacmap/proc/popout()
-	tgui_interact(usr)
+/datum/component/tacmap/proc/popout(mob/user)
+	var/datum/tgui/maybe_ui = SStgui.get_open_ui(user, src)
+	if (maybe_ui == null)
+		tgui_interact(user)
+	else
+		close_popout_tacmaps(user)
 
 /datum/component/tacmap/proc/on_unset_interaction(mob/user)
 	interactees -= user
@@ -80,10 +96,15 @@
 	user.client.active_draw_tool = null
 	map?.active_draw_tool = null
 	winset(user, "drawingtools", "reset=true")
+	user.client.using_main_tacmap = FALSE
 
 /datum/component/tacmap/proc/show_tacmap(mob/user)
+	if (user.client.using_tacmap())
+		to_chat(user.client, SPAN_WARNING("You're already using a tacmap. Close it to open another one."))
+		return
+
 	if(!map)
-		map = SSminimaps.fetch_minimap_object(targetted_zlevel, minimap_flag, TRUE, drawing=drawing)
+		map = SSminimaps.fetch_minimap_object(targetted_zlevel, minimap_flag, live=TRUE, popup=FALSE, drawing=drawing)
 		map_holder = new(null, targetted_zlevel, minimap_flag, drawing=drawing)
 		close_button = new /atom/movable/screen/exit_map(null, src)
 		var/list/atom/movable/screen/actions = list()
@@ -91,31 +112,44 @@
 			actions += new path(null, targetted_zlevel, minimap_flag, map, src)
 		drawing_actions = actions
 
-
 	user.client.add_to_screen(drawing_actions)
 	user.client.add_to_screen(close_button)
 	user.client.add_to_screen(map)
 	interactees += user
-
+	user.client.using_main_tacmap = TRUE
 
 /datum/component/tacmap/ui_status(mob/user, datum/ui_state/state)
 	if(get_dist(parent, user) > 1)
-		ui_close(user)
 		return UI_CLOSE
 
 	return UI_INTERACTIVE
 
 /datum/component/tacmap/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
-	if(!ui)
-		user.client.register_map_obj(map_holder.map)
-		ui = new(user, src, "TacticalMap")
-		ui.open()
+
+	// try_update_ui returns NULL as the UI even if the UI is trying to close from ui_status.
+	// Double check that we aren't attempting to close so that we don't make a UI when we don't need to.
+	if(ui || get_dist(parent, user) > 1)
+		return
+
+	user.client.register_map_obj(map_holder.map)
+	ui = new(user, src, "TacticalMap")
+	ui.open()
+	user.client.using_popout_tacmap = TRUE
 
 /datum/component/tacmap/ui_data(mob/user)
 	. = ..()
 
-	.["mapRef"] = map_holder?.map_ref
+	if (map_holder != null)
+		.["mapRef"] = map_holder.map_ref
+
+	.["isXeno"] = isxeno(user)
+	.["canChangeZ"] = FALSE
+
+/datum/component/tacmap/proc/close_popout_tacmaps(mob/user)
+	var/datum/tgui/maybe_ui = SStgui.get_open_ui(user, src)
+	if (maybe_ui != null)
+		maybe_ui.close()
 
 /datum/component/tacmap/ui_close(mob/user)
 	. = ..()
@@ -124,6 +158,7 @@
 		return
 
 	user.client.remove_from_screen(map_holder.map)
+	user.client.using_popout_tacmap = FALSE
 
 GLOBAL_LIST_INIT(tacmap_holders, list())
 
@@ -133,13 +168,14 @@ GLOBAL_LIST_INIT(tacmap_holders, list())
 
 /datum/tacmap_holder/New(loc, zlevel, flags, drawing)
 	map_ref = "tacmap_[REF(src)]_map"
-	map = SSminimaps.fetch_minimap_object(zlevel, flags, TRUE, TRUE, TRUE, drawing=drawing)
+	map = SSminimaps.fetch_minimap_object(zlevel, flags, live=TRUE, popup=TRUE, drawing=drawing)
+
 	map.screen_loc = "[map_ref]:1,1"
+	map.assigned_map = map_ref
+	map.appearance_flags = NONE
 	var/matrix/transform = matrix()
 	transform.Translate(-32, 64)
 	map.transform = transform
-	map.assigned_map = map_ref
-	map.appearance_flags = NONE
 
 /datum/tacmap_holder/Destroy()
 	map = null

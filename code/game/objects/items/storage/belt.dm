@@ -125,7 +125,7 @@
 
 /obj/item/storage/belt/utility/construction
 	name = "\improper M277 pattern construction rig"
-	desc = "The M277 is a common rig used by Combat Technicians to carry around materials and other supplies. It consists of a modular belt with various clips. This version sarafices storage space for specialized material loading clips."
+	desc = "The M277 is a common rig used by Combat Technicians to carry around materials and other supplies. It consists of a modular belt with various clips. This version sacrifices storage space for specialized material loading clips."
 	storage_slots = 6
 	can_hold = list(
 		/obj/item/tool/crowbar,
@@ -1070,6 +1070,20 @@
 	for(var/i in 1 to storage_slots)
 		new /obj/item/ammo_magazine/handful/shotgun/heavy/slug(src)
 
+/obj/item/storage/belt/shotgun/black/es7_mixed/fill_preset_inventory()
+	for(var/i in 1 to (storage_slots/2))
+		new /obj/item/ammo_magazine/handful/shotgun/slug/es7(src)
+	for(var/i in 1 to (storage_slots/2))
+		new /obj/item/ammo_magazine/handful/shotgun/beanbag/es7(src)
+
+/obj/item/storage/belt/shotgun/black/es7_stun/fill_preset_inventory()
+	for(var/i in 1 to storage_slots)
+		new /obj/item/ammo_magazine/handful/shotgun/beanbag/es7(src)
+
+/obj/item/storage/belt/shotgun/black/es7_lethal/fill_preset_inventory()
+	for(var/i in 1 to storage_slots)
+		new /obj/item/ammo_magazine/handful/shotgun/slug/es7(src)
+
 /obj/item/storage/belt/shotgun/van_bandolier
 	name = "two bore bandolier"
 	desc = "A leather bandolier designed to hold extremely heavy shells. Can be attached to armor, worn over the back, or attached to belt loops."
@@ -1345,7 +1359,7 @@
 	max_w_class = SIZE_MEDIUM
 	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_ALLOW_QUICKDRAW
 	///Array of holster slots and stats to use for them. First layer is "1", "2" etc. Guns are stored in both the slot and the holstered_guns list which keeps track of which was last inserted.
-	var/list/obj/item/weapon/gun/holster_slots = list(
+	var/list/list/obj/item/weapon/gun/holster_slots = list(
 		"1" = list(
 			"gun" = null,
 			"underlay_sprite" = null,
@@ -1941,13 +1955,14 @@
 #undef MAXIMUM_MAGAZINE_COUNT
 
 /obj/item/storage/belt/gun/m44
-	name = "\improper M276 pattern general revoler holster rig"
+	name = "\improper M276 pattern general revolver holster rig"
 	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is universal and adjustable for different revolvers, along with six small pouches for speedloaders. It smells faintly of hay."
 	icon_state = "m44r_holster"
 	storage_slots = 7
 	can_hold = list(
 		/obj/item/weapon/gun/revolver,
 		/obj/item/ammo_magazine/revolver,
+		/obj/item/ammo_magazine/handful/revolver,
 	)
 	flags_atom = FPRINT // has gamemode skin
 	holster_slots = list(
@@ -2106,6 +2121,9 @@
 	icon_state = "cmateba_holster"
 	item_state = "marinebelt"
 	flags_atom = FPRINT // has gamemode skin
+
+/obj/item/storage/belt/gun/mateba/cmateba/black
+	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 
 /obj/item/storage/belt/gun/mateba/cmateba/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/revolver/mateba/cmateba())

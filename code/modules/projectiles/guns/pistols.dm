@@ -28,6 +28,7 @@
 		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/extended_barrel,
@@ -68,6 +69,7 @@
 		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/extended_barrel,
@@ -256,6 +258,7 @@
 		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/lasersight,
@@ -386,6 +389,7 @@
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/suppressor,
@@ -493,6 +497,7 @@
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/lasersight,
 	)
 
@@ -544,6 +549,7 @@
 	attachable_allowed = list(
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/extended_barrel,
@@ -584,6 +590,7 @@
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/suppressor/sleek,
+		/obj/item/attachable/flashlight/under_barrel, // not like it matters lol
 		/obj/item/attachable/flashlight,
 	)
 
@@ -644,6 +651,7 @@
 		/obj/item/attachable/gyro, // Under
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/burstfire_assembly,
+		/obj/item/attachable/flashlight/under_barrel,
 	)
 	/// This weapon needs to be manually racked every time a new magazine is loaded. I tried and failed to touch gun shitcode so this will do.
 	var/manually_slided = FALSE
@@ -736,6 +744,7 @@
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reddot/small,
@@ -797,6 +806,7 @@
 	attachable_allowed = list(
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/lasersight,
@@ -840,7 +850,8 @@
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
-		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight, // look its kinda strange why you would list these as allowed when the vp-78 has an integrated flashlight, but flashlight attachment code does have a warning for this so yknow whatever really
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/flashlight/laser_light_combo,
 		/obj/item/attachable/extended_barrel,
@@ -878,6 +889,12 @@
 
 /obj/item/weapon/gun/pistol/vp78/whiteout
 	starting_attachment_types = list(/obj/item/attachable/heavy_barrel, /obj/item/attachable/reflex)
+
+/obj/item/weapon/gun/pistol/vp78/army
+	starting_attachment_types = list(/obj/item/attachable/extended_barrel, /obj/item/attachable/reflex)
+
+/obj/item/weapon/gun/pistol/vp78/army/heap
+	current_mag = /obj/item/ammo_magazine/pistol/vp78/heap
 
 
 //-------------------------------------------------------
@@ -1012,6 +1029,7 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/lasersight, //Underbarrel
 		/obj/item/attachable/burstfire_assembly,
+		/obj/item/attachable/flashlight/under_barrel,
 	)
 	start_semiauto = FALSE
 	start_automatic = TRUE
@@ -1057,7 +1075,8 @@ Unlike other pistols, it can be equipped with limited mods (small muzzle, underb
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/stock/pistol/collapsible, //Stock
 		/obj/item/attachable/stock/m10_solid,
-		/obj/item/attachable/lasersight/micro //Underbarrel
+		/obj/item/attachable/lasersight/micro, //Underbarrel
+		/obj/item/attachable/flashlight/under_barrel,
 	)
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
 	start_automatic = TRUE
@@ -1114,6 +1133,7 @@ L54 service pistol
 		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/extended_barrel,
@@ -1146,6 +1166,7 @@ L54 service pistol
 		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/burstfire_assembly,
 	)

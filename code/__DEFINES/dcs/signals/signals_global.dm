@@ -92,3 +92,7 @@
 
 /// From /datum/controller/subsystem/hijack/fire()
 #define COMSIG_GLOB_FUEL_PUMP_UPDATE "!fuel_pump_update"
+
+/// From /datum/controller/subsystem/hijack/proc/call_shuttle()
+#define COMSIG_GLOB_HIJACK_INBOUND "!hijack_inbound"
+

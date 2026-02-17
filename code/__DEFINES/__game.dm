@@ -34,6 +34,7 @@
 #define MAP_LV522_CHANCES_CLAIM "LV-522 Chance's Claim"
 #define MAP_LV759_HYBRISA_PROSPERA "LV-759 Hybrisa Prospera" // Highpop Only
 #define MAP_NEW_VARADERO "New Varadero"//ice colony underground but as its own map
+#define MAP_TYRARGO_RIFT "Tyrargo Rift"
 #define MAP_CHINOOK "Chinook 91 GSO" //admin level
 #define MAP_ROSTOCK "SSV Rostock" //UPP Warship
 
@@ -160,8 +161,10 @@
 #define PLAY_TWE (1<<1)
 #define PLAY_UPP (1<<2)
 #define PLAY_CLF (1<<3)
-#define PLAY_XENO_T2 (1<<4)
-#define PLAY_XENO_T3 (1<<5)
+#define PLAY_PMC (1<<4)
+#define PLAY_HUNT_MISC (1<<5)
+#define PLAY_XENO_T2 (1<<6)
+#define PLAY_XENO_T3 (1<<7)
 
 //toggles_admin
 /// Splits admin tabs in Statpanel
@@ -185,7 +188,7 @@
 
 #define TOGGLES_SURVIVOR_DEFAULT (PLAY_SURVIVOR_HOSTILE|PLAY_SURVIVOR_NON_HOSTILE)
 
-#define TOGGLES_ERT_GROUNDS (PLAY_MERC|PLAY_TWE|PLAY_UPP|PLAY_CLF|PLAY_XENO_T2|PLAY_XENO_T3)
+#define TOGGLES_ERT_GROUNDS (PLAY_MERC|PLAY_TWE|PLAY_UPP|PLAY_CLF|PLAY_PMC|PLAY_HUNT_MISC|PLAY_XENO_T2|PLAY_XENO_T3)
 
 #define TOGGLES_ADMIN_DEFAULT (ADMIN_AFK_SAFE)
 
@@ -268,6 +271,12 @@
 /// Frequency stuff only works with 45kbps oggs.
 #define GET_RANDOM_FREQ rand(32000, 55000)
 #define GET_RANDOM_FREQ_MINOR rand(42000, 48000)
+
+/// Directions as text for riding component
+#define TEXT_NORTH "[NORTH]"
+#define TEXT_SOUTH "[SOUTH]"
+#define TEXT_EAST "[EAST]"
+#define TEXT_WEST "[WEST]"
 
 // Ceilings
 // Ceiling types
@@ -381,6 +390,9 @@
 #define WALL_STRATA_ICE "strata_ice"
 #define WALL_STRATA_ICE_DIRTY "strata_ice_dirty"
 #define WALL_JUNGLE_UPDATED "jungle_veg"
+#define WALL_FOREST "forest_veg"
+#define WALL_FOREST_ROCK "rock_forest"
+#define WALL_FOREST_ROCK_DIRTY "rock_forest_dirty"
 #define WALL_STRATA_OUTPOST_RIBBED "strata_ribbed_outpost_"
 #define WALL_STRATA_OUTPOST_BARE "strata_bare_outpost_"
 #define WALL_SHIVA_ICE "shiva_ice"

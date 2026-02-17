@@ -11,7 +11,7 @@
 /area/template_noop)
 "da" = (
 /turf/closed/wall/r_wall/prison_unmeltable,
-/area/template_noop)
+/area/fiorina/oob)
 "dv" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/computer/cameras{
@@ -269,7 +269,7 @@
 /area/template_noop)
 "OG" = (
 /turf/closed/wall/mineral/bone_resin,
-/area/template_noop)
+/area/fiorina/oob)
 "OH" = (
 /obj/structure/bed/chair{
 	dir = 8

@@ -23,7 +23,7 @@
 
 	is_intelligent = 1
 	evolution_allowed = FALSE
-	fire_immunity = FIRE_IMMUNITY_NO_DAMAGE|FIRE_IMMUNITY_NO_IGNITE
+	fire_immunity = FIRE_IMMUNITY_COMPLETE
 	caste_desc = "The Queen, in all her glory."
 	spit_types = list(/datum/ammo/xeno/toxin/queen, /datum/ammo/xeno/acid/spatter)
 	can_hold_facehuggers = 0
@@ -384,6 +384,11 @@
 	var/queen_age_temp_timer_id = TIMER_ID_NULL
 
 	bubble_icon = "alienroyal"
+
+/mob/living/carbon/xenomorph/queen/set_resting(new_resting, silent, instant)
+	if(ovipositor && new_resting)
+		return
+	return ..()
 
 /mob/living/carbon/xenomorph/queen/get_organ_icon()
 	return "heart_t3"

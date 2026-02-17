@@ -50,6 +50,7 @@
 
 /datum/action/xeno_action/activable/tail_stab/slam
 	name = "Tail Slam"
+	action_icon_state = "tail_slam"
 	blunt_stab = TRUE
 
 /datum/action/xeno_action/onclick/soak

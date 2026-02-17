@@ -411,6 +411,7 @@
 /obj/structure/machinery/cm_vending/sorted/attachments/populate_product_list(scale)
 	listed_products = list(
 		list("BARREL", -1, null, null),
+		list("Barrel Charger", 1.5, /obj/item/attachable/heavy_barrel, VENDOR_ITEM_REGULAR),
 		list("Extended Barrel", 6.5, /obj/item/attachable/extended_barrel, VENDOR_ITEM_REGULAR),
 		list("M5 Bayonet", 10.5, /obj/item/attachable/bayonet, VENDOR_ITEM_REGULAR),
 		list("Extended Recoil Compensator", 6.5, /obj/item/attachable/extended_barrel/vented, VENDOR_ITEM_REGULAR),
@@ -521,7 +522,7 @@
 		list("Marine Grey Combat Gloves", 20, /obj/item/clothing/gloves/marine/grey, VENDOR_ITEM_REGULAR),
 		list("Marine Fingerless Combat Gloves", 20, /obj/item/clothing/gloves/marine/fingerless, VENDOR_ITEM_REGULAR),
 
-		list("RADIO", -1, null, null),
+		list("ENCRYPTION KEYS", -1, null, null),
 		list("Alpha Squad Radio Encryption Key", 5, /obj/item/device/encryptionkey/alpha, VENDOR_ITEM_REGULAR),
 		list("Bravo Squad Radio Encryption Key", 5, /obj/item/device/encryptionkey/bravo, VENDOR_ITEM_REGULAR),
 		list("Charlie Squad Radio Encryption Key", 5, /obj/item/device/encryptionkey/charlie, VENDOR_ITEM_REGULAR),
@@ -531,9 +532,12 @@
 		list("Intel Radio Encryption Key", 5, /obj/item/device/encryptionkey/intel, VENDOR_ITEM_REGULAR),
 		list("JTAC Radio Encryption Key", 5, /obj/item/device/encryptionkey/jtac, VENDOR_ITEM_REGULAR),
 		list("Medical Radio Encryption Key", 5, /obj/item/device/encryptionkey/med, VENDOR_ITEM_REGULAR),
-		list("Sentry Gun Network Encryption Key", 8, /obj/item/device/encryptionkey/sentry_laptop, VENDOR_ITEM_REGULAR),
-		list("Marine Radio Headset", 5, /obj/item/device/radio/headset/almayer, VENDOR_ITEM_REGULAR),
 		list("Supply Radio Encryption Key", 5, /obj/item/device/encryptionkey/req, VENDOR_ITEM_REGULAR),
+		list("Sentry Gun Network Encryption Key", 8, /obj/item/device/encryptionkey/sentry_laptop, VENDOR_ITEM_REGULAR),
+
+		list("ALMAYER SPARE RADIOS", -1, null, null),
+		list("Almayer Radio Encryption Key", 3, /obj/item/device/encryptionkey/almayer, VENDOR_ITEM_REGULAR),
+		list("Marine Radio Headset", 5, /obj/item/device/radio/headset/almayer, VENDOR_ITEM_REGULAR),
 
 		list("MASKS", -1, null, null, null),
 		list("Gas Mask", 20, /obj/item/clothing/mask/gas, VENDOR_ITEM_REGULAR),
@@ -545,8 +549,8 @@
 		list("Prescription ballistic goggles", 10, /obj/item/clothing/glasses/mgoggles/prescription, VENDOR_ITEM_REGULAR),
 		list("Marine RPG glasses", 10, /obj/item/clothing/glasses/regular, VENDOR_ITEM_REGULAR),
 		list("M5 Integrated Gas Mask", 10, /obj/item/prop/helmetgarb/helmet_gasmask, VENDOR_ITEM_REGULAR),
-		list("M10 Helmet Netting", 10, /obj/item/prop/helmetgarb/netting, VENDOR_ITEM_REGULAR),
-		list("M10 Helmet Rain Cover", 10, /obj/item/prop/helmetgarb/raincover, VENDOR_ITEM_REGULAR),
+		list("M10 Helmet Netting", 10, /obj/item/clothing/accessory/helmet/cover/netting, VENDOR_ITEM_REGULAR),
+		list("M10 Helmet Rain Cover", 10, /obj/item/clothing/accessory/helmet/cover/raincover, VENDOR_ITEM_REGULAR),
 		list("Attachable Dogtags", 15, /obj/item/clothing/accessory/dogtags, VENDOR_ITEM_REGULAR),
 		list("USCM Flair", 15, /obj/item/prop/helmetgarb/flair_uscm, VENDOR_ITEM_REGULAR),
 		list("Falling Falcons Shoulder Patch", 15, /obj/item/clothing/accessory/patch/falcon, VENDOR_ITEM_REGULAR),

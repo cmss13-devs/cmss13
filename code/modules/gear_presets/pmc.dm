@@ -4,7 +4,6 @@
 	faction = FACTION_PMC
 	job_title = FACTION_PMC
 	idtype = /obj/item/card/id/pmc
-	faction = FACTION_PMC
 	faction_group = FACTION_LIST_WY
 	origin_override = ORIGIN_WY_PMC
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
@@ -241,17 +240,17 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	)
 
 //*****************************************************************************************************/
-/datum/equipment_preset/pmc/pmc_detainer
-	name = "Weyland-Yutani PMC (Detainer)"
+/datum/equipment_preset/pmc/pmc_security
+	name = "Weyland-Yutani PMC (Security)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	assignment = JOB_PMC_DETAINER
-	job_title = JOB_PMC_DETAINER
+	assignment = JOB_PMC_SECURITY
+	job_title = JOB_PMC_SECURITY
 	minimap_icon = "pmc_mp"
 	paygrades = list(PAY_SHORT_PMC_EN = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/pmc
 
-/datum/equipment_preset/pmc/pmc_detainer/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/pmc/pmc_security/load_gear(mob/living/carbon/human/new_human)
 
 	new_human.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc/guard, WEAR_BODY)
@@ -290,7 +289,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	new_human.equip_to_slot_or_del(new /obj/item/storage/box/zipcuffs/small, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/flash, WEAR_IN_BACK)
 
-/datum/equipment_preset/pmc/pmc_detainer/get_antag_clothing_equipment()
+/datum/equipment_preset/pmc/pmc_security/get_antag_clothing_equipment()
 	return list(
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("Boots", 0, /obj/item/clothing/shoes/veteran/pmc/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
@@ -340,7 +339,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		list("Vertical Grip", 0, /obj/item/attachable/verticalgrip, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_REGULAR),
 	)
 
-/datum/equipment_preset/pmc/pmc_detainer/get_antag_gear_equipment()
+/datum/equipment_preset/pmc/pmc_security/get_antag_gear_equipment()
 	return list(
 		list("ENGINEERING SUPPLIES", 0, null, null, null),
 		list("Entrenching Tool", 2, /obj/item/tool/shovel/etool, null, VENDOR_ITEM_RECOMMENDED),
@@ -408,21 +407,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/pmc, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/box/mre/pmc, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/shotgun/black, WEAR_WAIST)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/slug/es7, WEAR_IN_BELT)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/slug/es7, WEAR_IN_BELT)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/slug/es7, WEAR_IN_BELT)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/slug/es7, WEAR_IN_BELT)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/slug/es7, WEAR_IN_BELT)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/slug/es7, WEAR_IN_BELT)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/slug/es7, WEAR_IN_BELT)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/beanbag/es7, WEAR_IN_BELT)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/beanbag/es7, WEAR_IN_BELT)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/beanbag/es7, WEAR_IN_BELT)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/beanbag/es7, WEAR_IN_BELT)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/beanbag/es7, WEAR_IN_BELT)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/beanbag/es7, WEAR_IN_BELT)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/beanbag/es7, WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/shotgun/black/es7_mixed, WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert/wy, WEAR_R_STORE)
 
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/es7/tactical, WEAR_J_STORE)
@@ -939,7 +924,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		list("Essential SL Set", 0, /obj/effect/essentials_set/leader/upp, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 
 		list("GENERAL SUPPLIES", 0, null, null, null),
-		list("Whistle", 5, /obj/item/device/whistle, null, VENDOR_ITEM_REGULAR),
+		list("Whistle", 5, /obj/item/clothing/accessory/device/whistle, null, VENDOR_ITEM_REGULAR),
 
 		list("ENGINEERING SUPPLIES", 0, null, null, null),
 		list("Entrenching Tool", 2, /obj/item/tool/shovel/etool, null, VENDOR_ITEM_REGULAR),
@@ -1086,7 +1071,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		list("Essential SL Set", 0, /obj/effect/essentials_set/leader/upp, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 
 		list("GENERAL SUPPLIES", 0, null, null, null),
-		list("Whistle", 5, /obj/item/device/whistle, null, VENDOR_ITEM_REGULAR),
+		list("Whistle", 5, /obj/item/clothing/accessory/device/whistle, null, VENDOR_ITEM_REGULAR),
 
 		list("ENGINEERING SUPPLIES", 0, null, null, null),
 		list("Entrenching Tool", 2, /obj/item/tool/shovel/etool, null, VENDOR_ITEM_REGULAR),
@@ -1456,7 +1441,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		list("Essential SL Set", 0, /obj/effect/essentials_set/leader/upp, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 
 		list("GENERAL SUPPLIES", 0, null, null, null),
-		list("Whistle", 5, /obj/item/device/whistle, null, VENDOR_ITEM_REGULAR),
+		list("Whistle", 5, /obj/item/clothing/accessory/device/whistle, null, VENDOR_ITEM_REGULAR),
 
 		list("ENGINEERING SUPPLIES", 0, null, null, null),
 		list("Entrenching Tool", 2, /obj/item/tool/shovel/etool, null, VENDOR_ITEM_REGULAR),
@@ -1884,23 +1869,34 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 
 //*****************************************************************************************************/
 
-/datum/equipment_preset/pmc/synth
+/datum/equipment_preset/synth/pmc
 	name = "Weyland-Yutani PMC (Support Synthetic)"
+	faction = FACTION_PMC
+	faction_group = FACTION_LIST_WY
+	origin_override = ORIGIN_WY_PMC
+
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	languages = ALL_SYNTH_LANGUAGES
 
-	skills = /datum/skills/synthetic
 	idtype = /obj/item/card/id/pmc
 	assignment = JOB_PMC_SYNTH
 	job_title = JOB_PMC_SYNTH
 	minimap_icon = "pmc_syn"
+	minimap_background = "background_pmc"
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "WY Syn"
-	headset_type = /obj/item/device/radio/headset/distress/pmc/command
 
+	skills = /datum/skills/synthetic
+	locked_generation = SYNTH_GEN_THREE
 
-/datum/equipment_preset/pmc/synth/load_name(mob/living/carbon/human/new_human, randomise)
+	var/headset_type = /obj/item/device/radio/headset/distress/pmc/command
+
+/datum/equipment_preset/synth/pmc/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_WY_PMC)
+
+/datum/equipment_preset/synth/pmc/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = pick(MALE, FEMALE)
 
 	var/datum/preferences/A = new()
@@ -1926,14 +1922,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	new_human.g_eyes = 62
 	new_human.b_eyes = 19
 
-/datum/equipment_preset/pmc/synth/load_race(mob/living/carbon/human/new_human)
-		new_human.set_species(SYNTH_GEN_THREE)
-
-/datum/equipment_preset/pmc/synth/load_skills(mob/living/carbon/human/new_human)
-		new_human.set_skills(/datum/skills/synthetic)
-		new_human.allow_gun_usage = FALSE
-
-/datum/equipment_preset/pmc/synth/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/synth/pmc/load_gear(mob/living/carbon/human/new_human)
 		new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc, WEAR_BODY)
 		new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/surg_vest/equipped, WEAR_ACCESSORY)
 		new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/pmc/light/synth, WEAR_JACKET)
@@ -1972,7 +1961,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		new_human.equip_to_slot_or_del(new /obj/item/tool/weldingtool/hugetank, WEAR_IN_L_STORE)
 		new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/full_barbed_wire/wy, WEAR_R_STORE)
 
-/datum/equipment_preset/pmc/synth/get_antag_clothing_equipment()
+/datum/equipment_preset/synth/pmc/get_antag_clothing_equipment()
 	return list(
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("Boots", 0, /obj/item/clothing/shoes/veteran/pmc/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
@@ -2041,7 +2030,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 
 	)
 
-/datum/equipment_preset/pmc/synth/get_antag_gear_equipment()
+/datum/equipment_preset/synth/pmc/get_antag_gear_equipment()
 	return list(
 		list("MEDIC SET (MANDATORY)", 0, null, null, null),
 		list("Essential Medic Set", 0, /obj/effect/essentials_set/medic, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
@@ -2108,3 +2097,100 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		list("Drop Pouch", 10, /obj/item/clothing/accessory/storage/droppouch, null, VENDOR_ITEM_REGULAR),
 	)
 
+///Hunting Grounds PMC///
+
+/datum/equipment_preset/pmc/pmc_standard/hunted
+	name = "Weyland-Yutani PMC (Standard) (Hunted)"
+	faction = FACTION_HUNTED_PMC
+
+/datum/equipment_preset/pmc/pmc_standard/hunted/load_gear(mob/living/carbon/human/new_human)
+	var/obj/item/clothing/under/marine/veteran/pmc/uniform = new()
+	if(prob(50))
+		uniform.roll_suit_sleeves()
+	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/wy_faction, WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/knife, WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc, WEAR_FACE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/black_vest, WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/stack/medical/bruise_pack, WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/stack/medical/bruise_pack, WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/stack/medical/splint, WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/extinguisher/mini, WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/device/healthanalyzer, WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert/wy, WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/pmc/backpack, WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc/enclosed, WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/pmc/no_lamp, WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/nsg23, WEAR_J_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/wy/mod88, WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/wy/nsg_ext, WEAR_L_STORE)
+
+/datum/equipment_preset/pmc/pmc_medic/hunted
+	name = "Weyland-Yutani PMC (Corporate Medic) (Hunted)"
+	faction = FACTION_HUNTED_PMC
+
+/datum/equipment_preset/pmc/pmc_medic/hunted/load_gear(mob/living/carbon/human/new_human)
+
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/pmc/light, WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc, WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/knife, WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc, WEAR_FACE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/wy_faction, WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/black_vest, WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/box/mre/pmc, WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/box/mre/pmc, WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/lighter/zippo/blue, WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/pmc, WEAR_IN_ACCESSORY)
+	if(new_human.disabilities & NEARSIGHTED)
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health/prescription(new_human), WEAR_EYES)
+	else
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(new_human), WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/pmc/medic, WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/low_charge, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/extinguisher/mini, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/medical/lifesaver/wy/partial, WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medkit/wy, WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/roller, WEAR_IN_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/surgical_case/regular, WEAR_IN_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/surgery/FixOVein, WEAR_IN_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/blood/OMinus, WEAR_IN_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/fp9000/pmc, WEAR_J_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/wy/pmc_p90, WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/fp9000, WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/fp9000, WEAR_IN_JACKET)
+
+/datum/equipment_preset/pmc/technician/hunted
+	name = "Weyland-Yutani PMC (Corporate Technician) (Hunted)"
+	faction = FACTION_HUNTED_PMC
+
+/datum/equipment_preset/pmc/technician/hunted/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc/enclosed/engineer, WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc, WEAR_FACE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc/engineer, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/black_vest, WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/box/mre/pmc, WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range, WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/pmc, WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/pmc/engineer, WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/marine/wy/nsg23_pmc, WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/pmc, WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/knife, WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/wy_faction, WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/nsg23/stripped, WEAR_J_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge, WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/sebb, WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/engineerpack/ert/pmc, WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/tactical, WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/screwdriver/tactical, WEAR_IN_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical, WEAR_IN_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/wirecutters/tactical, WEAR_IN_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/wrench, WEAR_IN_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/stack/cable_coil, WEAR_IN_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/device/multitool, WEAR_IN_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert/wy, WEAR_R_STORE)

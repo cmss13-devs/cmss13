@@ -263,6 +263,13 @@
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
 	))
 
+/datum/ammo/bullet/pistol/squash/heap
+	name = "high-explosive armor-piercing pistol bullet"
+
+	headshot_state = HEADSHOT_OVERLAY_HEAVY
+	damage = 50
+	penetration = ARMOR_PENETRATION_TIER_10
+
 /datum/ammo/bullet/pistol/squash/rubber
 	name = "rubber squash-head pistol bullet"
 	damage_type = BURN

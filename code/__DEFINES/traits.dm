@@ -167,6 +167,8 @@
 #define TRAIT_HAULED "hauled"
 // only used by valkyrie
 #define TRAIT_VALKYRIE_ARMORED "trait_valkyrie_armored"
+/// Prevents mob from riding mobs when buckled onto something
+#define TRAIT_CANT_RIDE "cant_ride"
 
 // SPECIES TRAITS
 /// Knowledge of Yautja technology
@@ -181,6 +183,8 @@
 #define TRAIT_INFILTRATOR_SYNTH "t_infiltrator_synth"
 /// Makes it impossible to strip the inventory of this mob.
 #define TRAIT_UNSTRIPPABLE "t_unstrippable"
+/// For Gen 1/2 Synths for chance at resisting pounces.
+#define TRAIT_POUNCE_RESISTANT "t_pounce_resistant"
 
 // HIVE TRAITS
 /// If the Hive is a Xenonid Hive

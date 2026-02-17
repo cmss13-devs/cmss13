@@ -11098,7 +11098,7 @@
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/east,
 /area/abyssal/interior/engineering)
 "aBF" = (
-/obj/structure/machinery/power/terminal,
+/obj/structure/terminal,
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	layer = 3.33;
@@ -11107,7 +11107,7 @@
 /turf/open/floor/plating/prison,
 /area/abyssal/interior/engineering)
 "aBG" = (
-/obj/structure/machinery/power/terminal,
+/obj/structure/terminal,
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -25927,7 +25927,7 @@
 	pixel_y = 3
 	},
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 8
 	},
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/west,
@@ -26034,7 +26034,7 @@
 	anchored = 1
 	},
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/structure/machinery/power/terminal,
+/obj/structure/terminal,
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/east,
 /area/abyssal/interior/solar_control_north_west)
 "bka" = (

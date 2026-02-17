@@ -234,7 +234,6 @@ SUBSYSTEM_DEF(minimaps)
 		return hud_data.cached_ceiling_overlay
 
 	// Pre-generation failed fallback, generate on demand
-	to_chat(target_client, SPAN_WARNING("Ceiling overlay not pre-cached, generating on demand..."))
 	pregenerate_ceiling_overlay(z_level)
 	return hud_data.cached_ceiling_overlay
 
@@ -1157,14 +1156,14 @@ SUBSYSTEM_DEF(minimaps)
 		return FALSE
 
 	// Check cooldown
-	if(world.time < owner.client.ceiling_protection_toggle_cooldown)
-		to_chat(owner, SPAN_WARNING("You must wait [round((owner.client.ceiling_protection_toggle_cooldown - world.time) / 10, 0.1)] seconds before toggling ceiling protection again."))
+	if(!COOLDOWN_FINISHED(owner.client, ceiling_protection_toggle_cooldown))
+		to_chat(owner, SPAN_WARNING("You must wait [COOLDOWN_SECONDSLEFT(owner.client, ceiling_protection_toggle_cooldown)] seconds before toggling ceiling protection again."))
 		return FALSE
 
 	owner.client.prefs.show_minimap_ceiling_protection = !owner.client.prefs.show_minimap_ceiling_protection
 
 	// Set cooldown
-	owner.client.ceiling_protection_toggle_cooldown = world.time + 2 SECONDS
+	COOLDOWN_START(owner.client, ceiling_protection_toggle_cooldown, 2 SECONDS)
 	owner.client.prefs.save_preferences()
 	to_chat(owner, SPAN_NOTICE("Ceiling protection overlay [owner.client.prefs.show_minimap_ceiling_protection ? "enabled" : "disabled"] on minimaps."))
 	update_button_icon()
@@ -1314,7 +1313,7 @@ SUBSYSTEM_DEF(minimaps)
 /client/var/atom/movable/screen/minimap_tool/draw_tool/active_draw_tool
 /client/var/last_drawn
 /// Cooldown for toggling ceiling protection overlay
-/client/var/ceiling_protection_toggle_cooldown = 0
+/client/COOLDOWN_DECLARE(ceiling_protection_toggle_cooldown)
 /client/proc/handle_draw(mouse_x as num, mouse_y as num, size_x as num, size_y as num, view_size_x as num, view_size_y as num)
 	set instant = TRUE
 	set category = null

@@ -658,14 +658,14 @@ CLIENT_VERB(toggle_minimap_ceiling_protection)
 		return
 
 	// Check cooldown
-	if(world.time < ceiling_protection_toggle_cooldown)
-		to_chat(mob, SPAN_WARNING("You must wait [round((ceiling_protection_toggle_cooldown - world.time) / 10, 0.1)] seconds before toggling ceiling protection again."))
+	if(!COOLDOWN_FINISHED(src, ceiling_protection_toggle_cooldown))
+		to_chat(mob, SPAN_WARNING("You must wait [COOLDOWN_SECONDSLEFT(src, ceiling_protection_toggle_cooldown)] seconds before toggling ceiling protection again."))
 		return
 
 	prefs.show_minimap_ceiling_protection = !prefs.show_minimap_ceiling_protection
 
 	// Set cooldown
-	ceiling_protection_toggle_cooldown = world.time + 2 SECONDS
+	COOLDOWN_START(src, ceiling_protection_toggle_cooldown, 2 SECONDS)
 	prefs.save_preferences()
 	to_chat(mob, SPAN_NOTICE("Ceiling protection overlay [prefs.show_minimap_ceiling_protection ? "enabled" : "disabled"] on minimaps."))
 

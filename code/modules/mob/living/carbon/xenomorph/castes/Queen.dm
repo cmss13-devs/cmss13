@@ -385,6 +385,11 @@
 
 	bubble_icon = "alienroyal"
 
+/mob/living/carbon/xenomorph/queen/set_resting(new_resting, silent, instant)
+	if(ovipositor && new_resting)
+		return
+	return ..()
+
 /mob/living/carbon/xenomorph/queen/get_organ_icon()
 	return "heart_t3"
 

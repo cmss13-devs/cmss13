@@ -63,7 +63,7 @@
 	if (hive)
 		hivenumber = hive
 		var/datum/hive_status/hive_s = GLOB.hive_datum[hivenumber]
-		for(var/trait in hive_s.hive_inherant_traits)
+		for(var/trait in hive_s.hive_inherited_traits)
 			ADD_TRAIT(src, trait, TRAIT_SOURCE_HIVE)
 
 	set_hive_data(src, hivenumber)

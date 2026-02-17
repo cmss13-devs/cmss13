@@ -142,6 +142,11 @@
 	html_link = "images/9/94/New_Varadero.png"
 	color = "red"
 
+/obj/item/map/tyrargo_rift
+	name = "\improper Tyrargo Rift map"
+	desc = "A labeled blueprint of the UA city Tyrargo Rift"
+	html_link = "images/7/79/Tyrargo_Rift.png"
+
 /obj/item/map/navalis
 	name = "\improper Navalis Platform 13 map"
 	desc = "A blueprint of Navalis Platform 13"
@@ -166,8 +171,8 @@ GLOBAL_LIST_INIT_TYPED(map_type_list, /obj/item/map, setup_all_maps())
 		MAP_LV522_CHANCES_CLAIM = new /obj/item/map/lv522_map(),
 		MAP_LV759_HYBRISA_PROSPERA = new /obj/item/map/lv759_map(),
 		MAP_NEW_VARADERO = new /obj/item/map/new_varadero(),
+		MAP_TYRARGO_RIFT = new /obj/item/map/tyrargo_rift(),
 		MAP_NAVALIS = new /obj/item/map/navalis(),
-		MAP_NAVALIS_SINGLE = new /obj/item/map/navalis()
 	)
 
 //used by marine equipment machines to spawn the correct map.

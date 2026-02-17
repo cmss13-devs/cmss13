@@ -1,0 +1,5 @@
+author: "BOBAMAx"
+delete-after: True
+changes:
+  - qol: "you can now throw grenades through vehicle doors both ways"
+  - balance: "vans no longer stun humans. dead people no longer take up space in vehicles if they die inside of it."

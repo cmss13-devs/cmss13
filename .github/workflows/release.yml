@@ -1,0 +1,53 @@
+name: Build and Release
+
+on:
+  push:
+    branches:
+      - master
+
+concurrency:
+  group: build-and-release
+  cancel-in-progress: true
+
+jobs:
+  build_and_release:
+    name: Build and Release
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Setup Bun
+        uses: ./.github/actions/setup_bun
+
+      - name: Restore BYOND from Cache
+        uses: ./.github/actions/restore_or_install_byond
+
+      - name: Install curl
+        run: |
+          sudo dpkg --add-architecture i386
+          sudo apt update || true
+          sudo apt install -o APT::Immediate-Configure=false curl:i386
+
+      - name: Build
+        run: |
+          source $HOME/BYOND/byond/bin/byondsetup
+          tools/build/build.sh
+
+      - name: Install zstd
+        run: sudo apt install -y zstd
+
+      - name: Create compressed archive
+        run: |
+          tar --exclude='./icons' --exclude='./sound' --exclude='./.git' --exclude='node_modules' --exclude='./code' --exclude='./tools' -cvf - . | zstd -19 -T0 -o colonialmarines-build.tar.zst
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: build-${{ github.sha }}
+          name: Build ${{ github.sha }}
+          body: Automated build from commit ${{ github.sha }}
+          files: |
+            colonialmarines-build.tar.zst
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

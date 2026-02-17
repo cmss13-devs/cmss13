@@ -104,11 +104,11 @@
 			reagents.add_reagent("tricordrazine", -45)
 			uses_left = 0
 			update_icon()
-		if(2 , 3)
+		if(2, 3)
 			reagents.add_reagent("tricordrazine", -30)
 			uses_left = 1
 			update_icon()
-		if(4 , 5)
+		if(4, 5)
 			reagents.add_reagent("tricordrazine", -15)
 			uses_left = 2
 			update_icon()
@@ -173,11 +173,11 @@
 			reagents.add_reagent("tramadol", -45)
 			uses_left = 0
 			update_icon()
-		if(2 , 3)
+		if(2, 3)
 			reagents.add_reagent("tramadol", -30)
 			uses_left = 1
 			update_icon()
-		if(4 , 5)
+		if(4, 5)
 			reagents.add_reagent("tramadol", -15)
 			uses_left = 2
 			update_icon()
@@ -275,11 +275,11 @@
 			reagents.add_reagent("bicaridine", -45)
 			uses_left = 0
 			update_icon()
-		if(2 , 3)
+		if(2, 3)
 			reagents.add_reagent("bicaridine", -30)
 			uses_left = 1
 			update_icon()
-		if(4 , 5)
+		if(4, 5)
 			reagents.add_reagent("bicaridine", -15)
 			uses_left = 2
 			update_icon()

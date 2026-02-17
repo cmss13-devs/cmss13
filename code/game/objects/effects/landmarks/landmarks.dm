@@ -174,16 +174,6 @@
 
 #undef MAXIMUM_LIZARD_AMOUNT
 
-/obj/effect/landmark/xeno_npc_spawn
-	name = "xeno npc spawn"
-	icon_state = "xeno_spawn"
-
-//obj/effect/landmark/xeno_npc_spawn/Initialize(mapload, ...)
-//	. = ..()
-//	if(!prob(spawn_chance))
-//		return
-
-//	new /mob/living/simple_animal/hostile/alien(loc)
 
 /obj/effect/landmark/latewhiskey
 	name = "Whiskey Outpost Late join"

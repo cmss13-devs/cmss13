@@ -477,7 +477,7 @@
 		setDir(new_dir)
 		update_icon()
 	else
-		to_chat(usr, SPAN_WARNING("Every other facing direction is occupied, you can't rotate it!"))
+		to_chat(user, SPAN_WARNING("Every other facing direction is occupied, you can't rotate it!"))
 
 /obj/structure/barricade/proc/handle_barricade_stacking(potential_dir = FALSE)
 	var/list/directions = list()

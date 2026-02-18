@@ -20,8 +20,6 @@
 				break
 		return 0
 
-	updated_from = savefile_version
-
 	if(savefile_version < 12) //we've split toggles into toggles_sound and toggles_chat
 		S["toggles_sound"] << TOGGLES_SOUND_DEFAULT
 		S["toggles_chat"] << TOGGLES_CHAT_DEFAULT
@@ -231,7 +229,10 @@
 		pref_toggles |= TOGGLE_COCKING_TO_HAND // enabled by default for new saves
 		S["toggle_prefs"] << pref_toggles
 
-	if(savefile_version < 34)
+	if(savefile_version < 34) // we have removed Tab from the default binds, allow users to bind it back if they want. needs to be async after logging in
+		updated_from = savefile_version
+
+	if(updated_from)
 		RegisterSignal(owner, COMSIG_CLIENT_LOGGED_IN, PROC_REF(handle_logged_in))
 
 	savefile_version = SAVEFILE_VERSION_MAX

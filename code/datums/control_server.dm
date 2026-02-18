@@ -208,4 +208,4 @@
 /datum/control_server/proc/handle_parent_login(client/parent, mob/new_mob)
 	SIGNAL_HANDLER
 
-	addtimer(CALLBACK(parent, TYPE_PROC_REF(/client, enable_hardware_graphics)), 1 SECONDS)
+	addtimer(CALLBACK(parent, TYPE_PROC_REF(/client, reset_graphics)), 1 SECONDS)

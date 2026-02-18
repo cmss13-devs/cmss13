@@ -43,7 +43,7 @@
 		COOLDOWN_RESET(GLOB, hunt_timer_yautja)
 	else
 		var/new_cooldown_time = DisplayTimeText(COOLDOWN_TIMELEFT(GLOB, hunt_timer_yautja))
-		message_all_yautja("Released [length(members)] humans from storage, let the hunt commence! Another hunt may be called over [new_cooldown_time].")
+		message_all_yautja("Released [length(members)] humans from storage, let the hunt commence! Another hunt may be called in [new_cooldown_time].")
 
 /datum/emergency_call/pred/mixed/create_member(datum/mind/player, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
@@ -160,7 +160,7 @@
 		message_all_yautja("Not enough serpents in storage for the hunt to start.")
 	else
 		var/new_cooldown_time = DisplayTimeText(COOLDOWN_TIMELEFT(GLOB, hunt_timer_yautja))
-		message_all_yautja("Released [length(members)] serpents from storage, let the hunt commence! Another hunt may be called over [new_cooldown_time].")
+		message_all_yautja("Released [length(members)] serpents from storage, let the hunt commence! Another hunt may be called in [new_cooldown_time].")
 
 /datum/emergency_call/pred/xeno/create_member(datum/mind/player, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
@@ -235,7 +235,7 @@
 		COOLDOWN_RESET(GLOB, hunt_timer_yautja)
 	else
 		var/new_cooldown_time = DisplayTimeText(COOLDOWN_TIMELEFT(GLOB, hunt_timer_yautja))
-		message_all_yautja("Released [length(members)] elite humans from storage, let the hunt commence! Another hunt may be called over [new_cooldown_time].")
+		message_all_yautja("Released [length(members)] elite humans from storage, let the hunt commence! Another hunt may be called in [new_cooldown_time].")
 
 /datum/emergency_call/pred/mixed_elite/create_member(datum/mind/player, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()

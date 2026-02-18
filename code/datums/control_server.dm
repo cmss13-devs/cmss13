@@ -210,8 +210,6 @@
 
 	UnregisterSignal(logged_in, COMSIG_CLIENT_LOGGED_IN)
 
-	log_debug("CONTROL_SERVER: [logged_in], [logged_in.mob] ([logged_in.mob.type])")
-
 	if(!handle_parent_login(new_mob = controlling.mob))
 		RegisterSignal(controlling, COMSIG_CLIENT_MOB_LOGGED_IN, PROC_REF(handle_parent_login))
 
@@ -222,5 +220,5 @@
 		return FALSE
 
 	UnregisterSignal(parent, COMSIG_CLIENT_MOB_LOGGED_IN)
-	addtimer(CALLBACK(parent, TYPE_PROC_REF(/client, reset_graphics)), 1 DECISECONDS)
+	addtimer(CALLBACK(parent, TYPE_PROC_REF(/client, reset_graphics)), 0.5 SECONDS)
 	return TRUE

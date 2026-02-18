@@ -21550,7 +21550,6 @@
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/req)
 "bcC" = (
-/obj/structure/reagent_dispensers/tank/fuel/custom,
 /obj/structure/machinery/power/apc/almayer{
 	dir = 1
 	},
@@ -47857,6 +47856,7 @@
 	pixel_x = -8;
 	pixel_y = 28
 	},
+/obj/structure/reagent_dispensers/tank/fuel/custom,
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/almayer/medical/chemistry)
 "eFK" = (

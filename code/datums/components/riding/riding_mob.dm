@@ -151,6 +151,7 @@
 	. = ..()
 	var/mob/living/simple_animal/ridden = parent
 	riding_mob.density = FALSE
+	riding_mob.speed -= 1
 	ridden.stop_automated_movement = TRUE
 
 /datum/component/riding/creature/horse/RegisterWithParent()
@@ -161,6 +162,7 @@
 	var/mob/living/simple_animal/ridden = parent
 	for(var/mob/mob in ridden.buckled_mobs)
 		unequip_buckle_inhands(mob)
+		mob.speed += 1
 	ridden.density = TRUE
 	return ..()
 

@@ -810,7 +810,7 @@
 	faction = FACTION_HYPERDYNE
 	job_title = JOB_HC_SEC_SYNTH
 	assignment = JOB_HC_SEC_SYNTH
-	roel_comm_title = "HC Sec Syn"
+	role_comm_title = "HC Sec Syn"
 	faction_group = list(FACTION_HYPERDYNE, FACTION_LIST_SURVIVOR_UPP)
 	idtype = /obj/item/card/id/silver/cl/hyperdyne
 	survivor_variant = CORPORATE_SURVIVOR

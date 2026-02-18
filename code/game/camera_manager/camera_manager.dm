@@ -73,27 +73,29 @@
 				overlay = new /atom/movable/screen/fullscreen/pilot_camera/bellygun()
 			else
 				overlay = new /atom/movable/screen/fullscreen/pilot_camera()
-			overlay:assigned_map = map_name
-			overlay:pixel_x = -224
-			overlay:pixel_y = -224
-			overlay:screen_loc = null
-			overlay:layer = plane:layer + 1
-			overlay:plane = plane:plane
-			plane:vis_contents += overlay
-			if(!islist(plane:vars["cas_hud_overlays"])) plane:vars["cas_hud_overlays"] = list()
-			plane:vars["cas_hud_overlays"] += overlay
+			var/atom/movable/screen/fullscreen/pilot_camera/pilot_overlay = overlay
+			var/atom/movable/screen/plane_master/screen_plane = plane
+			pilot_overlay.assigned_map = map_name
+			pilot_overlay.pixel_x = -224
+			pilot_overlay.pixel_y = -224
+			pilot_overlay.screen_loc = null
+			pilot_overlay.layer = screen_plane.layer + 1
+			pilot_overlay.plane = screen_plane.plane
+			screen_plane.vis_contents += pilot_overlay
+			if(!islist(screen_plane.vars["cas_hud_overlays"])) screen_plane.vars["cas_hud_overlays"] = list()
+			screen_plane.vars["cas_hud_overlays"] += pilot_overlay
 
 /datum/component/camera_manager/proc/hide_pilot_camera(mob/user)
 	if(user && parent && istype(parent, /obj/structure/machinery/computer/dropship_weapons))
 		// Remove the CAS HUD overlay from the camera panel's plane masters
 		for(var/plane_id in cam_plane_masters)
 			var/atom/movable/screen/plane_master/plane = cam_plane_masters[plane_id]
-			if(islist(plane:vars["cas_hud_overlays"]))
-				for(var/overlay in plane:vars["cas_hud_overlays"])
-					var/atom/movable/screen/fullscreen/pilot_camera/typed_overlay = overlay
-					plane:vis_contents -= typed_overlay
-					qdel(typed_overlay)
-				plane:vars["cas_hud_overlays"] = list()
+			if(islist(plane.vars["cas_hud_overlays"]))
+				for(var/overlay in plane.vars["cas_hud_overlays"])
+					var/atom/movable/screen/fullscreen/pilot_camera/pilot_overlay = overlay
+					plane.vis_contents -= pilot_overlay
+					qdel(pilot_overlay)
+				plane.vars["cas_hud_overlays"] = list()
 
 /datum/component/camera_manager/proc/register(source, mob/user)
 	SIGNAL_HANDLER

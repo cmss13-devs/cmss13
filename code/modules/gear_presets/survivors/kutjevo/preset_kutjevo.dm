@@ -230,7 +230,6 @@
 
 /datum/equipment_preset/synth/survivor/kutjevo/corporate
 	name = "Survivor - Kutjevo - Synthetic - Corporate Assistant"
-	name = "Survivor - Synthetic - Corporate Synth"
 	job_title = JOB_WY_SEC_SYNTH
 	assignment = "W-Y Corporate Assistant Synthetic"
 	idtype = /obj/item/card/id/silver/cl

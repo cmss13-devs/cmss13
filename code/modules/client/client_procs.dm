@@ -798,6 +798,8 @@ CLIENT_VERB(read_key_up, key as text|null)
 					movement_keys[key] = WEST
 				if("South")
 					movement_keys[key] = SOUTH
+				if(KEYBIND_SWITCHINPUT)
+					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=\".winset \\\"input.focus=true?map.focus=true:input.focus=true\\\"\"")
 				if(SAY_CHANNEL)
 					if(prefs.tgui_say)
 						var/say = tgui_say_create_open_command(SAY_CHANNEL)

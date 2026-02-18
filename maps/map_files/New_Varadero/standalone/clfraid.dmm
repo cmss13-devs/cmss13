@@ -15,33 +15,38 @@
 /turf/open/floor/platingdmg1,
 /area/varadero/interior/research)
 "ad" = (
+/obj/structure/machinery/iv_drip,
+/obj/item/reagent_container/blood/OMinus,
+/turf/open/floor/shiva/purple/east,
+/area/varadero/interior/research)
+"ae" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
 /turf/open/floor/shiva/north,
-/area/varadero/interior/research)
-"ae" = (
-/turf/open/floor/shiva/purplecorners,
 /area/varadero/interior/research)
 "af" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/research)
 "ag" = (
-/turf/open/floor/shiva/purple/north,
+/turf/open/floor/shiva/purplecorners,
 /area/varadero/interior/research)
 "ah" = (
+/turf/open/floor/shiva/purple/north,
+/area/varadero/interior/research)
+"ai" = (
 /obj/structure/pipes/standard/manifold/fourway/hidden/green,
 /turf/open/floor/shiva/north,
 /area/varadero/interior/research)
-"ai" = (
+"aj" = (
 /obj/item/stool,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /turf/open/floor/shiva/north,
 /area/varadero/interior/research)
-"aj" = (
+"ak" = (
 /obj/structure/barricade/sandbags/wired{
 	dir = 4
 	},
@@ -50,7 +55,12 @@
 	},
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/research)
-"ak" = (
+"al" = (
+/obj/structure/closet/secure_closet/scientist,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/shiva/purple/southwest,
+/area/varadero/interior/research)
+"am" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -58,12 +68,7 @@
 /obj/effect/landmark/corpsespawner/engineer,
 /turf/open/floor/plating,
 /area/varadero/interior/research)
-"al" = (
-/obj/structure/closet/secure_closet/scientist,
-/obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor/shiva/purple/southwest,
-/area/varadero/interior/research)
-"am" = (
+"an" = (
 /obj/item/stack/tile/plasteel{
 	pixel_x = 8;
 	pixel_y = 6
@@ -203,7 +208,7 @@
 "dZ" = (
 /obj/structure/window_frame/colony/reinforced,
 /obj/item/shard,
-/turf/open/floor/plating/icefloor/asteroidplating,
+/turf/open/floor/plating,
 /area/varadero/interior/research)
 "eo" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -1172,9 +1177,6 @@
 /obj/item/ammo_casing/bullet,
 /turf/open/floor/shiva/north,
 /area/varadero/interior/research)
-"Ai" = (
-/turf/closed/wall/rock/brown,
-/area/varadero/interior/caves/north_research)
 "Al" = (
 /obj/item/stack/rods,
 /obj/item/stack/sheet/metal,
@@ -1190,10 +1192,6 @@
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/research)
 "Aw" = (
-/obj/item/stack/tile/plasteel{
-	pixel_x = 8;
-	pixel_y = 6
-	},
 /obj/item/stack/tile/plasteel{
 	pixel_x = 8;
 	pixel_y = 6
@@ -1337,10 +1335,6 @@
 "DE" = (
 /obj/structure/machinery/power/apc/power/east,
 /turf/open/floor/shiva/purple/east,
-/area/varadero/interior/research)
-"Eg" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/research)
 "El" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -1569,11 +1563,6 @@
 	pixel_x = 16;
 	pixel_y = 24
 	},
-/obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice2";
-	pixel_x = 16;
-	pixel_y = 24
-	},
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
 	dir = 4
 	},
@@ -1621,7 +1610,10 @@
 "Jf" = (
 /obj/structure/surface/rack,
 /obj/item/storage/belt/medical/full,
-/obj/item/storage/belt/medical/full,
+/obj/item/storage/belt/medical/full{
+	pixel_x = 2;
+	pixel_y = 4
+	},
 /obj/item/storage/firstaid/regular,
 /turf/open/floor/shiva/north,
 /area/varadero/interior/research)
@@ -2178,9 +2170,6 @@
 /obj/item/ammo_magazine/smg/fp9000,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/research)
-"Wv" = (
-/turf/closed/wall/rock/brown,
-/area/varadero/interior_protected/caves)
 "Wx" = (
 /obj/item/frame/table/reinforced,
 /turf/open/floor/plating,
@@ -2335,12 +2324,12 @@ KG
 fL
 SO
 oL
-Ai
-Ai
-Ai
-Ai
-Ai
-Ai
+nv
+nv
+nv
+nv
+nv
+nv
 KG
 vR
 vR
@@ -2458,7 +2447,7 @@ dZ
 pY
 Ah
 DD
-Eg
+Fk
 tU
 yl
 HL
@@ -2469,7 +2458,7 @@ Fk
 MD
 "}
 (6,1,1) = {"
-Ai
+nv
 vi
 Kk
 Al
@@ -2612,9 +2601,9 @@ Ze
 Zo
 Ze
 Hx
-ah
+ai
 Ze
-ad
+ae
 on
 gZ
 "}
@@ -2642,7 +2631,7 @@ FN
 op
 ll
 hG
-ai
+aj
 ll
 ll
 jo
@@ -2704,7 +2693,7 @@ FN
 LD
 kT
 xB
-ae
+ag
 Qe
 Fk
 "}
@@ -2732,11 +2721,11 @@ qf
 aa
 ll
 Sq
-ai
+aj
 ll
 on
 Fp
-Eg
+Fk
 "}
 (15,1,1) = {"
 gM
@@ -2769,7 +2758,7 @@ vz
 gZ
 "}
 (16,1,1) = {"
-Ai
+nv
 gM
 sB
 nN
@@ -2799,7 +2788,7 @@ BK
 gZ
 "}
 (17,1,1) = {"
-Ai
+nv
 gM
 Ms
 PN
@@ -2818,7 +2807,7 @@ ar
 HH
 gZ
 gZ
-Eg
+Fk
 gZ
 gZ
 hG
@@ -2829,7 +2818,7 @@ MC
 gZ
 "}
 (18,1,1) = {"
-Ai
+nv
 gM
 gM
 gM
@@ -2852,7 +2841,7 @@ Hh
 De
 gZ
 HW
-aj
+ak
 mK
 nq
 BP
@@ -2860,12 +2849,12 @@ gZ
 "}
 (19,1,1) = {"
 KG
-Ai
-Ai
-Ai
-Ai
-Ai
-Ai
+nv
+nv
+nv
+nv
+nv
+nv
 gM
 Kk
 lf
@@ -2881,10 +2870,10 @@ Sa
 ll
 hz
 gZ
-FE
+Fk
 OX
 ds
-FE
+Fk
 gZ
 gZ
 "}
@@ -2894,8 +2883,8 @@ vi
 vi
 vi
 nF
-Ai
-Ai
+nv
+nv
 gM
 IE
 eS
@@ -2916,7 +2905,7 @@ Jn
 IP
 iR
 gZ
-Wv
+nv
 "}
 (21,1,1) = {"
 UO
@@ -2925,7 +2914,7 @@ hC
 Xb
 KG
 oL
-Ai
+nv
 gM
 ul
 ts
@@ -2938,15 +2927,15 @@ dq
 XJ
 gZ
 vw
-ay
+ad
 OJ
 gZ
 on
 Ud
 jj
-ag
+ah
 gZ
-Wv
+nv
 "}
 (22,1,1) = {"
 KG
@@ -2955,7 +2944,7 @@ KG
 KG
 KG
 KG
-Ai
+nv
 gM
 Dy
 Ie
@@ -2964,19 +2953,19 @@ gM
 gZ
 gZ
 gZ
-Eg
-Eg
+Fk
+Fk
 gZ
 gZ
 gZ
 gZ
 gZ
-am
+an
 rV
 af
-ag
+ah
 gZ
-Wv
+nv
 "}
 (23,1,1) = {"
 KG
@@ -2992,21 +2981,21 @@ Pc
 Dy
 bm
 Jd
-Ai
-Ai
+nv
+nv
 KG
 KG
 KG
-Ai
-Ai
-Ai
+nv
+nv
+nv
 gZ
 on
-ak
+am
 VQ
-ag
+ah
 gZ
-Wv
+nv
 "}
 (24,1,1) = {"
 SO
@@ -3028,13 +3017,13 @@ KG
 KG
 KG
 oL
-Ai
-Ai
+nv
+nv
 gZ
 UP
 qi
 zB
 xh
 gZ
-Wv
+nv
 "}

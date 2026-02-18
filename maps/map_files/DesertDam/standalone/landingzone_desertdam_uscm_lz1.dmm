@@ -256,9 +256,11 @@
 /turf/open/floor/prison/blue/west,
 /area/desert_dam/building/administration/gate)
 "aW" = (
-/obj/structure/bed/sofa/vert/white,
-/turf/open/floor/prison,
-/area/desert_dam/building/administration/gate)
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
+/area/desert_dam/exterior/landing_pad_one)
 "aX" = (
 /obj/item/card/id/visa{
 	desc = "A United Americas entry visa. A rare commodity out here on the rim.";
@@ -279,7 +281,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/desert_dam/exterior/landing_pad_one)
 "ba" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -295,8 +297,10 @@
 /turf/open/floor/prison/blue/west,
 /area/desert_dam/building/administration/gate)
 "bc" = (
-/obj/structure/bed/sofa/vert/white/top,
-/turf/open/floor/prison,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/prison/blue/east,
 /area/desert_dam/building/administration/gate)
 "bd" = (
 /turf/open/floor/prison/bluecorner/west,
@@ -437,49 +441,47 @@
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/building/administration/breakroom)
 "bC" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
-/area/desert_dam/exterior/landing_pad_one)
-"bD" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor/prison/blue/east,
-/area/desert_dam/building/administration/gate)
-"bE" = (
 /obj/structure/bed/sofa/vert/white,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /turf/open/floor/prison/bluefull,
 /area/desert_dam/building/administration/gate)
-"bF" = (
+"bD" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /turf/open/floor/prison/blue/west,
 /area/desert_dam/building/administration/gate)
-"bG" = (
+"bE" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/building/administration/gate)
-"bH" = (
+"bF" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/building/administration/gate)
-"bI" = (
+"bG" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal2"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/asphalt,
 /area/desert_dam/exterior/landing_pad_one)
+"bH" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/gate)
+"bI" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 10
+	},
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/gate)
 "bJ" = (
 /turf/closed/shuttle/dropship3/tornado{
 	icon_state = "18"
@@ -490,16 +492,6 @@
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/darkred2,
 /area/desert_dam/building/administration/lobby)
-"bL" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/prison/bright_clean2,
-/area/desert_dam/building/administration/gate)
-"bM" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 10
-	},
-/turf/open/floor/prison/bright_clean2,
-/area/desert_dam/building/administration/gate)
 "bX" = (
 /obj/structure/barricade/metal/wired{
 	dir = 4
@@ -3157,10 +3149,6 @@
 /obj/structure/flora/grass/desert/heavygrass_4,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/landing_pad_one)
-"YX" = (
-/obj/structure/bed/sofa/vert/white/bot,
-/turf/open/floor/prison,
-/area/desert_dam/building/administration/gate)
 "Zb" = (
 /turf/closed/shuttle/dropship3/tornado{
 	icon_state = "65"
@@ -4704,14 +4692,14 @@ BC
 no
 "}
 (28,1,1) = {"
-bI
-bI
-bI
-bI
-bI
-bI
-bI
-bI
+bG
+bG
+bG
+bG
+bG
+bG
+bG
+bG
 aD
 cv
 cv
@@ -4767,7 +4755,7 @@ ZV
 ZV
 DI
 DI
-aZ
+aW
 ZV
 DI
 DI
@@ -4822,7 +4810,7 @@ xx
 Ij
 ei
 KZ
-bC
+aZ
 Du
 MP
 ei
@@ -5042,7 +5030,7 @@ aS
 JG
 aM
 aH
-bD
+bc
 jY
 aS
 JG
@@ -5091,13 +5079,13 @@ SA
 (35,1,1) = {"
 ZT
 GE
-bc
-aW
-YX
+aI
+FU
+RE
 aO
 GE
 aI
-bE
+bC
 FU
 RE
 ZT
@@ -5152,7 +5140,7 @@ Zw
 BV
 ky
 Zw
-bF
+bD
 Zw
 JS
 hK
@@ -5207,7 +5195,7 @@ aN
 jo
 aA
 aA
-bG
+bE
 jo
 jo
 aA
@@ -5258,11 +5246,11 @@ lz
 aA
 aA
 aA
-bM
+bI
 vQ
-bL
-bL
 bH
+bH
+bF
 aA
 aA
 aA

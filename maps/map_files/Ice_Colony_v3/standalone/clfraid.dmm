@@ -5,7 +5,6 @@
 /area/shiva/interior/colony/s_admin)
 "ab" = (
 /obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
 /turf/open/floor/plating/platingdmg1,
 /area/shiva/interior/colony/s_admin)
 "ac" = (
@@ -143,59 +142,61 @@
 /turf/open/floor/corsat/cargo,
 /area/shiva/interior/colony/clf_shuttle)
 "av" = (
+/obj/structure/machinery/light/double,
+/turf/open/floor/shiva/snow_mat/east,
+/area/shiva/interior/colony/botany)
+"aw" = (
+/obj/structure/machinery/light/double{
+	dir = 1;
+	pixel_y = 9
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva/snow_mat/east,
+/area/shiva/interior/colony/botany)
+"ax" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/shiva/multi_tiles/southeast,
 /area/shiva/interior/bar)
-"aw" = (
+"ay" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/junkyard/cp_bar)
-"ax" = (
+"az" = (
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_full"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/shiva/multi_tiles/southeast,
 /area/shiva/interior/bar)
-"ay" = (
+"aA" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	name = "\improper Panic Room Shutters"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/s_admin)
-"az" = (
+"aB" = (
 /obj/item/ammo_casing/bullet,
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/shiva/floor3,
-/area/shiva/interior/colony/s_admin)
-"aA" = (
-/obj/structure/barricade/sandbags/wired,
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/shiva/bluefull,
-/area/shiva/interior/colony/s_admin)
-"aB" = (
-/obj/structure/bed/chair{
-	dir = 1
-	},
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "aC" = (
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/junkyard/cp_bar)
 "aD" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
+/obj/structure/barricade/sandbags/wired,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "aE" = (
 /obj/structure/bed/chair{
-	dir = 4
+	dir = 1
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -208,22 +209,23 @@
 	},
 /area/shiva/interior/colony/clf_shuttle)
 "aG" = (
-/obj/structure/pipes/standard/manifold/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "aH" = (
-/obj/structure/barricade/plasteel/wired{
-	icon_state = "plasteel_2";
-	density = 1;
-	closed = 0
+/obj/structure/bed/chair{
+	dir = 4
 	},
-/obj/structure/disposalpipe/segment,
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/auto_turf/snow/layer0,
-/area/shiva/exterior/junkyard/cp_bar)
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
 "aI" = (
-/obj/structure/pipes/vents/pump,
-/turf/open/floor/plating,
+/obj/structure/pipes/standard/manifold/hidden/green,
+/turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "aJ" = (
 /obj/item/stack/sheet/metal,
@@ -234,27 +236,28 @@
 /turf/open/floor/plating,
 /area/shiva/interior/colony/clf_shuttle)
 "aK" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_2";
+	density = 1;
+	closed = 0
 	},
-/turf/open/floor/shiva/floor3,
-/area/shiva/interior/colony/s_admin)
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/auto_turf/snow/layer0,
+/area/shiva/exterior/junkyard/cp_bar)
 "aL" = (
 /obj/structure/flora/tree/dead/tree_1,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/junkyard)
 "aM" = (
-/obj/item/stack/rods,
-/obj/structure/machinery/disposal/broken,
-/obj/structure/disposalpipe/trunk{
-	dir = 8
-	},
-/turf/open/floor/plating/platingdmg1,
+/obj/structure/pipes/vents/pump,
+/turf/open/floor/plating,
 /area/shiva/interior/colony/s_admin)
 "aN" = (
-/obj/item/stack/rods,
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/plating,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/s_admin)
 "aO" = (
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
@@ -263,6 +266,19 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/s_admin)
 "aP" = (
+/obj/item/stack/rods,
+/obj/structure/machinery/disposal/broken,
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
+/turf/open/floor/plating/platingdmg1,
+/area/shiva/interior/colony/s_admin)
+"aQ" = (
+/obj/item/stack/rods,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/plating,
+/area/shiva/interior/colony/s_admin)
+"aR" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
 	icon_state = "pipe-c"
@@ -272,25 +288,6 @@
 	},
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/junkyard/cp_bar)
-"aQ" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/auto_turf/snow/layer0,
-/area/shiva/exterior/junkyard/cp_bar)
-"aR" = (
-/obj/structure/machinery/light/double,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor/shiva/bluefull,
-/area/shiva/interior/colony/s_admin)
 "aS" = (
 /obj/item/shard{
 	icon_state = "large"
@@ -304,26 +301,26 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/turf/open/auto_turf/snow/layer0,
+/area/shiva/exterior/junkyard/cp_bar)
+"aU" = (
+/obj/structure/machinery/light/double,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
-"aU" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor/shiva/north,
-/area/shiva/interior/colony/s_admin)
 "aV" = (
-/obj/structure/flora/pottedplant,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor/shiva/north,
+/turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "aW" = (
 /obj/effect/landmark/survivor_spawner/clf_lead/shivas,
@@ -332,9 +329,6 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/s_admin)
 "aX" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -344,15 +338,17 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/s_admin)
 "aY" = (
-/obj/structure/disposalpipe/junction{
+/obj/structure/flora/pottedplant,
+/obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/pipes/standard/manifold/hidden/green{
-	dir = 1
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
 	},
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/s_admin)
 "aZ" = (
+/obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /obj/structure/disposalpipe/segment{
@@ -365,38 +361,49 @@
 /area/shiva/interior/colony/s_admin)
 "ba" = (
 /obj/structure/disposalpipe/junction{
+	dir = 4
+	},
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 1
+	},
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"bb" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"bc" = (
+/obj/structure/disposalpipe/junction{
 	dir = 1;
 	icon_state = "pipe-y"
 	},
 /obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/s_admin)
-"bb" = (
-/obj/structure/disposalpipe/segment,
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/shiva/north,
-/area/shiva/interior/colony/s_admin)
-"bc" = (
-/obj/structure/disposalpipe/segment,
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/shiva/multi_tiles,
-/area/shiva/interior/colony/s_admin)
 "bd" = (
-/obj/structure/bed/chair/office/light{
-	dir = 4
-	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/s_admin)
 "be" = (
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/shiva/north,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/shiva/multi_tiles,
 /area/shiva/interior/colony/s_admin)
 "bf" = (
+/obj/structure/bed/chair/office/light{
+	dir = 4
+	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/shiva/multi_tiles/west,
+/turf/open/floor/shiva/north,
 /area/shiva/interior/colony/s_admin)
 "bg" = (
 /turf/open/auto_turf/snow/layer4,
@@ -409,13 +416,22 @@
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/bar)
 "bi" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"bj" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/shiva/multi_tiles/west,
+/area/shiva/interior/colony/s_admin)
+"bk" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
 	icon_state = "pipe-c"
 	},
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/s_admin)
-"bj" = (
+"bl" = (
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /obj/item/pipe{
@@ -426,14 +442,14 @@
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/s_admin)
-"bk" = (
+"bm" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
-"bl" = (
+"bn" = (
 /obj/item/shard{
 	icon_state = "large"
 	},
@@ -441,7 +457,11 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/s_admin)
-"bm" = (
+"bo" = (
+/obj/structure/closet/secure_closet/engineering_electrical,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/garage)
+"bp" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/paper_bin,
 /obj/item/tool/pen/blue,
@@ -450,7 +470,7 @@
 	},
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/s_admin)
-"bn" = (
+"bq" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/clipboard,
 /obj/item/tool/stamp,
@@ -460,49 +480,35 @@
 	},
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/s_admin)
-"bo" = (
-/obj/structure/closet/secure_closet/engineering_electrical,
-/turf/open/floor/shiva/north,
-/area/shiva/interior/garage)
-"bp" = (
+"br" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/s_admin)
-"bq" = (
+"bs" = (
 /obj/structure/disposalpipe/trunk{
 	dir = 8
 	},
 /obj/structure/machinery/disposal,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
-"br" = (
+"bt" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/wood,
 /area/shiva/interior/colony/s_admin)
-"bs" = (
+"bu" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
 /turf/open/floor/wood,
 /area/shiva/interior/colony/s_admin)
-"bt" = (
+"bv" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /turf/open/floor/wood,
 /area/shiva/interior/colony/s_admin)
-"bu" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor/shiva/north,
-/area/shiva/interior/colony/s_admin)
-"bv" = (
-/obj/structure/pipes/vents/pump,
-/turf/open/floor/shiva/north,
-/area/shiva/interior/garage)
 "bw" = (
 /obj/structure/filingcabinet,
 /obj/effect/landmark/objective_landmark/close,
@@ -512,13 +518,23 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"by" = (
+/obj/structure/pipes/vents/pump,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/garage)
+"bz" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /obj/structure/disposalpipe/segment{
 	dir = 1;
 	icon_state = "pipe-c"
 	},
 /turf/open/floor/shiva/north,
 /area/shiva/interior/garage)
-"by" = (
+"bA" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -527,7 +543,7 @@
 	},
 /turf/open/floor/shiva/north,
 /area/shiva/interior/garage)
-"bz" = (
+"bB" = (
 /obj/structure/barricade/sandbags/wired{
 	dir = 1
 	},
@@ -535,30 +551,30 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/shiva/multi_tiles/west,
 /area/shiva/interior/colony/s_admin)
-"bA" = (
+"bC" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/garage)
-"bB" = (
+"bD" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/shiva/snow_mat/east,
 /area/shiva/interior/colony/botany)
-"bC" = (
+"bE" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/cp_colony_grounds)
-"bD" = (
+"bF" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/botany)
-"bE" = (
+"bG" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/shiva/multi_tiles,
 /area/shiva/interior/colony/botany)
-"bF" = (
+"bH" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
@@ -568,7 +584,7 @@
 	},
 /turf/open/floor/shiva/snow_mat/east,
 /area/shiva/interior/colony/botany)
-"bG" = (
+"bI" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -577,7 +593,7 @@
 	},
 /turf/open/floor/shiva/snow_mat,
 /area/shiva/interior/colony/botany)
-"bH" = (
+"bJ" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -586,22 +602,6 @@
 	},
 /turf/open/floor/shiva/green/northwest,
 /area/shiva/interior/colony/botany)
-"bI" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/shiva/north,
-/area/shiva/interior/colony/botany)
-"bJ" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/pipes/standard/manifold/fourway/hidden/green,
-/turf/open/floor/shiva/north,
-/area/shiva/interior/colony/botany)
 "bK" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -609,7 +609,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/shiva/green/northeast,
+/turf/open/floor/shiva/north,
 /area/shiva/interior/colony/botany)
 "bL" = (
 /obj/structure/machinery/light/double{
@@ -625,6 +625,22 @@
 /turf/open/floor/shiva/multi_tiles/west,
 /area/shiva/interior/colony/botany)
 "bM" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/manifold/fourway/hidden/green,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/botany)
+"bN" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/shiva/green/northeast,
+/area/shiva/interior/colony/botany)
+"bO" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -633,7 +649,7 @@
 	},
 /turf/open/floor/shiva/multi_tiles/west,
 /area/shiva/interior/colony/botany)
-"bN" = (
+"bP" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
@@ -642,7 +658,7 @@
 	},
 /turf/open/floor/shiva/snow_mat/east,
 /area/shiva/interior/colony/botany)
-"bO" = (
+"bQ" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -651,20 +667,7 @@
 	},
 /turf/open/floor/shiva/snow_mat/east,
 /area/shiva/interior/colony/botany)
-"bP" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor/shiva/snow_mat,
-/area/shiva/interior/colony/botany)
-"bQ" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
-	pixel_y = 9
-	},
+"bR" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -673,7 +676,7 @@
 	},
 /turf/open/floor/shiva/multi_tiles/west,
 /area/shiva/interior/colony/botany)
-"bR" = (
+"bS" = (
 /obj/structure/machinery/door/airlock/almayer/medical/colony{
 	name = "\improper Colony Dormitories"
 	},
@@ -683,9 +686,9 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor/shiva/north,
+/turf/open/floor/shiva/multi_tiles/west,
 /area/shiva/interior/colony/botany)
-"bS" = (
+"bT" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -694,7 +697,7 @@
 	},
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/cp_colony_grounds)
-"bT" = (
+"bU" = (
 /obj/structure/disposalpipe/junction{
 	dir = 1;
 	icon_state = "pipe-j2"
@@ -704,11 +707,11 @@
 	},
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/cp_colony_grounds)
-"bU" = (
+"bV" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/botany)
-"bV" = (
+"bW" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/shiva/north,
@@ -792,7 +795,7 @@
 	dir = 1;
 	name = "\improper Colony Garage Repair Station"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/shiva/north,
 /area/shiva/interior/garage)
 "eT" = (
 /turf/closed/shuttle/ert{
@@ -1068,7 +1071,7 @@
 /turf/open/floor/shiva/greenfull,
 /area/shiva/interior/colony/botany)
 "nN" = (
-/obj/structure/window/framed/shiva,
+/obj/structure/window/framed/shiva/grey,
 /turf/open/floor/plating,
 /area/shiva/interior/garage)
 "oa" = (
@@ -1092,7 +1095,7 @@
 /obj/structure/machinery/door/airlock/almayer/medical/colony{
 	name = "\improper Colony Dormitories"
 	},
-/turf/open/floor/shiva/north,
+/turf/open/floor/shiva/multi_tiles/west,
 /area/shiva/interior/colony/botany)
 "oV" = (
 /obj/structure/machinery/door/poddoor/almayer{
@@ -1350,10 +1353,10 @@
 /area/shiva/interior/colony/s_admin)
 "tS" = (
 /obj/item/stack/rods,
-/obj/structure/window_frame/colony/reinforced,
 /obj/item/shard{
 	icon_state = "large"
 	},
+/obj/structure/window_frame/shiva/grey,
 /turf/open/floor/plating,
 /area/shiva/interior/garage)
 "tW" = (
@@ -1447,7 +1450,7 @@
 /obj/item/shard{
 	icon_state = "large"
 	},
-/obj/structure/window_frame/colony/reinforced,
+/obj/structure/window_frame/shiva,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/s_admin)
 "xw" = (
@@ -1632,7 +1635,7 @@
 /area/shiva/exterior/junkyard/cp_bar)
 "BZ" = (
 /turf/closed/wall/shiva/ice,
-/area/shiva/exterior/junkyard/cp_bar)
+/area/shiva/interior/oob)
 "Cb" = (
 /obj/structure/machinery/light/double,
 /turf/open/floor/shiva/multi_tiles/west,
@@ -1781,10 +1784,6 @@
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/s_admin)
-"Ff" = (
-/obj/structure/window/framed/shiva,
-/turf/open/floor/shiva/north,
-/area/shiva/interior/colony/botany)
 "Fl" = (
 /obj/structure/machinery/light/double,
 /turf/open/floor/shiva/green/southeast,
@@ -2078,10 +2077,10 @@
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_left_to_right,
 /area/shiva/interior/colony/clf_shuttle)
 "KE" = (
-/obj/structure/window_frame/colony/reinforced,
 /obj/item/shard{
 	icon_state = "medium"
 	},
+/obj/structure/window_frame/shiva/grey,
 /turf/open/floor/plating,
 /area/shiva/interior/garage)
 "KK" = (
@@ -2291,7 +2290,7 @@
 /area/shiva/exterior/junkyard)
 "Ri" = (
 /obj/item/stack/rods,
-/obj/structure/window_frame/colony/reinforced,
+/obj/structure/window_frame/shiva,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/s_admin)
 "Rk" = (
@@ -2380,9 +2379,6 @@
 /obj/item/weapon/gun/smg/fp9000,
 /turf/open/floor/shiva/multi_tiles,
 /area/shiva/interior/colony/s_admin)
-"Tn" = (
-/turf/closed/wall/shiva/ice,
-/area/shiva/interior/colony/s_admin)
 "TW" = (
 /obj/effect/decal/cleanable/blood{
 	layer = 3
@@ -2433,12 +2429,6 @@
 /obj/item/ammo_box/magazine/misc/mre/wy,
 /turf/open/floor/corsat/cargo,
 /area/shiva/interior/colony/clf_shuttle)
-"Vy" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	name = "\improper Panic Room Shutters"
-	},
-/turf/open/floor/plating,
-/area/shiva/interior/colony/s_admin)
 "Vz" = (
 /obj/item/lightstick/red/spoke/planted{
 	pixel_x = 12;
@@ -2513,6 +2503,11 @@
 /area/shiva/exterior/junkyard/cp_bar)
 "XC" = (
 /obj/structure/surface/rack,
+/obj/item/storage/belt/medical/full,
+/obj/item/storage/belt/medical/full{
+	pixel_x = 2;
+	pixel_y = 4
+	},
 /obj/item/storage/firstaid/adv{
 	pixel_x = 3;
 	pixel_y = 5
@@ -2696,20 +2691,20 @@
 
 (1,1,1) = {"
 dX
-bF
+bH
 ZQ
 NC
 Gz
-Tn
-Tn
-Tn
-Tn
-Tn
-Tn
+BZ
+BZ
+BZ
+BZ
+BZ
+BZ
 rY
 rY
-Tn
-Tn
+BZ
+BZ
 Gz
 Gz
 Gz
@@ -2724,19 +2719,19 @@ zG
 "}
 (2,1,1) = {"
 Yw
-bG
+bI
 NC
 NC
 Gz
-Tn
-Tn
-Tn
-Tn
-Tn
-Tn
-Tn
-Tn
-Tn
+BZ
+BZ
+BZ
+BZ
+BZ
+BZ
+BZ
+BZ
+BZ
 Gz
 Gz
 mz
@@ -2756,15 +2751,15 @@ bL
 Me
 Cb
 Gz
-Tn
-Tn
-Tn
-Tn
-Tn
-Tn
-Tn
-Tn
-Tn
+BZ
+BZ
+BZ
+BZ
+BZ
+BZ
+BZ
+BZ
+BZ
 Gz
 DL
 EM
@@ -2780,7 +2775,7 @@ kQ
 "}
 (4,1,1) = {"
 SD
-bH
+bJ
 nm
 xw
 Gz
@@ -2808,7 +2803,7 @@ zG
 "}
 (5,1,1) = {"
 SD
-bH
+bJ
 nm
 xw
 DU
@@ -2836,7 +2831,7 @@ kQ
 "}
 (6,1,1) = {"
 pE
-bH
+bJ
 nm
 xw
 DU
@@ -2892,7 +2887,7 @@ kQ
 "}
 (8,1,1) = {"
 pE
-bH
+bJ
 nm
 xw
 da
@@ -2912,7 +2907,7 @@ CI
 GW
 Rv
 Yn
-az
+aB
 Gz
 PA
 hq
@@ -2920,7 +2915,7 @@ rg
 "}
 (9,1,1) = {"
 pE
-bH
+bJ
 nm
 jn
 DU
@@ -2929,17 +2924,17 @@ pM
 Co
 Kf
 ar
-bj
+bl
 Kf
 Co
 pM
 DH
-Vy
+ZO
 af
 Bi
 pX
 Yf
-aB
+aE
 Jv
 Gz
 PA
@@ -2948,7 +2943,7 @@ CW
 "}
 (10,1,1) = {"
 nH
-bH
+bJ
 nm
 xw
 da
@@ -2967,7 +2962,7 @@ JM
 DH
 DH
 Ms
-aD
+aG
 Zw
 Gz
 PA
@@ -2976,7 +2971,7 @@ CW
 "}
 (11,1,1) = {"
 gl
-bI
+bK
 pE
 de
 da
@@ -2985,7 +2980,7 @@ aO
 TW
 Ib
 DH
-aD
+aG
 pM
 pM
 pM
@@ -2995,7 +2990,7 @@ JE
 Kf
 DH
 DH
-aE
+aH
 DF
 Gz
 PA
@@ -3004,26 +2999,26 @@ rg
 "}
 (12,1,1) = {"
 pE
-bI
+bK
 pE
 MG
 DU
 DW
 pM
 GG
-bi
-sV
 bk
+sV
+bm
 aW
+bf
 bd
-bb
 am
 uA
 uP
 FN
 XP
 Ht
-aG
+aI
 Gz
 Gz
 Vc
@@ -3031,21 +3026,21 @@ Jx
 pt
 "}
 (13,1,1) = {"
-bU
-bJ
-bD
+bV
+bM
+bF
 de
 da
 Lr
 YT
 Ba
-bm
+bp
 DH
 DH
 YT
 Ba
 Mv
-aR
+aU
 Gz
 qK
 ZC
@@ -3060,20 +3055,20 @@ OP
 "}
 (14,1,1) = {"
 KN
-bI
+bK
 pE
 de
 da
 Lr
 Mv
 yb
-bn
+bq
 DH
 HB
 Mv
 yb
 qY
-aT
+aV
 Gz
 ag
 DH
@@ -3088,42 +3083,42 @@ OP
 "}
 (15,1,1) = {"
 nH
-bK
+bN
 Mc
 KK
 DU
 DH
 pM
 Co
-bp
+br
 iG
 jw
 HE
 Co
 pM
-aT
+aV
 Gz
-aK
+aN
 DH
 DH
 DH
 Ay
+aD
 aA
-ay
+az
 ax
-av
-av
+ax
 "}
 (16,1,1) = {"
 pE
-bK
+bN
 Mc
 KK
 DU
 cx
 ni
 GO
-bq
+bs
 Af
 iG
 ne
@@ -3131,7 +3126,7 @@ DH
 ad
 Ke
 Gz
-aK
+aN
 yT
 nq
 DH
@@ -3144,7 +3139,7 @@ OP
 "}
 (17,1,1) = {"
 pE
-bK
+bN
 Mc
 KK
 Gz
@@ -3157,7 +3152,7 @@ Gz
 FY
 aq
 ap
-aU
+aX
 Gz
 oi
 tW
@@ -3185,7 +3180,7 @@ DU
 dB
 sL
 sL
-aV
+aY
 Gz
 DU
 DU
@@ -3200,20 +3195,20 @@ pt
 "}
 (19,1,1) = {"
 pE
-bK
+bN
 Mc
 KK
 DU
 fG
-bs
-br
+bu
+bt
 HO
 fL
 DU
 YM
 xa
 lq
-aX
+aZ
 DU
 Id
 yj
@@ -3228,12 +3223,12 @@ wr
 "}
 (20,1,1) = {"
 SD
-bK
+bN
 Mc
 KK
 DU
 Pz
-bt
+bv
 QH
 it
 BF
@@ -3241,7 +3236,7 @@ DU
 fY
 tH
 tH
-aY
+ba
 ie
 Qe
 BG
@@ -3269,9 +3264,9 @@ Gz
 Oz
 rr
 ap
-aZ
+bb
 Eg
-aM
+aP
 EM
 aa
 ak
@@ -3284,12 +3279,12 @@ wr
 "}
 (22,1,1) = {"
 tY
-bM
+bO
 Me
 Me
 Ri
 Hz
-bu
+bx
 JH
 tx
 pM
@@ -3312,20 +3307,20 @@ wr
 "}
 (23,1,1) = {"
 tY
-bN
-bE
-bB
+bP
+bG
+bD
 Ns
-bz
+bB
 xC
-bf
+bj
 VZ
-bf
-bl
-bf
+bj
+bn
+bj
+be
+be
 bc
-bc
-ba
 DU
 ER
 Cd
@@ -3367,7 +3362,7 @@ sZ
 wr
 "}
 (25,1,1) = {"
-bV
+bW
 Kb
 CA
 NC
@@ -3378,13 +3373,13 @@ pM
 pM
 xS
 da
+bk
 bi
-be
 gU
 sv
 CE
-aN
-aI
+aQ
+aM
 HO
 DB
 DU
@@ -3396,7 +3391,7 @@ wr
 "}
 (26,1,1) = {"
 tY
-bO
+bQ
 ZQ
 NC
 DU
@@ -3424,9 +3419,9 @@ wr
 "}
 (27,1,1) = {"
 tY
-bP
-NC
-NC
+bR
+Me
+Me
 DU
 DU
 DU
@@ -3452,9 +3447,9 @@ wr
 "}
 (28,1,1) = {"
 SD
-bQ
-Me
-Cb
+aw
+NC
+av
 DU
 DU
 DU
@@ -3480,8 +3475,8 @@ wr
 "}
 (29,1,1) = {"
 SD
-bR
-Ff
+bS
+tY
 oP
 DU
 DU
@@ -3508,7 +3503,7 @@ wr
 "}
 (30,1,1) = {"
 SD
-bS
+bT
 WD
 WD
 DU
@@ -3536,7 +3531,7 @@ sZ
 "}
 (31,1,1) = {"
 WD
-bS
+bT
 WD
 WD
 sZ
@@ -3551,20 +3546,20 @@ ZL
 aC
 aC
 sZ
-aP
-aw
-aw
-aH
-aw
-aw
-aw
-aw
+aR
+ay
+ay
+aK
+ay
+ay
+ay
+ay
 wL
-aw
+ay
 "}
 (32,1,1) = {"
 WD
-bS
+bT
 WD
 WD
 sZ
@@ -3579,7 +3574,7 @@ pH
 sZ
 sZ
 wr
-aQ
+aT
 wr
 wr
 hx
@@ -3592,7 +3587,7 @@ wr
 "}
 (33,1,1) = {"
 WD
-bS
+bT
 WD
 Vf
 aC
@@ -3620,7 +3615,7 @@ wr
 "}
 (34,1,1) = {"
 WD
-bS
+bT
 WD
 WD
 wr
@@ -3647,17 +3642,17 @@ sZ
 wr
 "}
 (35,1,1) = {"
-bC
-bT
-bC
-bC
-aw
-aw
-aw
-aw
-aw
-aw
-aw
+bE
+bU
+bE
+bE
+ay
+ay
+ay
+ay
+ay
+ay
+ay
 Dt
 vh
 Kx
@@ -3765,7 +3760,7 @@ Cj
 Cj
 KS
 vJ
-bv
+by
 jF
 vJ
 HC
@@ -3791,9 +3786,9 @@ Hg
 zz
 Cj
 Sb
-bA
-bA
-bx
+bC
+bC
+bz
 Al
 vJ
 ZI
@@ -3821,7 +3816,7 @@ Cj
 hV
 vJ
 vJ
-by
+bA
 vJ
 vJ
 vJ
@@ -3849,7 +3844,7 @@ Cj
 AP
 vJ
 vJ
-by
+bA
 vJ
 vJ
 UJ

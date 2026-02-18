@@ -868,6 +868,23 @@ Defined in conflicts.dm of the #defines folder.
 	movement_onehanded_acc_penalty_mod = MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
 	AddElement(/datum/element/corp_label/armat)
 
+/obj/item/attachable/quickfire
+	name = "quickfire adapter"
+	desc = "An enhanced and upgraded autoloading mechanism to fire rounds more quickly.  \nHowever, it also reduces accuracy, damage, and the number of bullets fired on burst."
+	icon = 'icons/obj/items/weapons/guns/attachments/rail.dmi'
+	slot = "rail"
+	icon_state = "autoloader"
+	attach_icon = "autoloader_a"
+
+/obj/item/attachable/quickfire/New()
+	..()
+	accuracy_mod = -HIT_ACCURACY_MULT_TIER_6 //-40% accuracy
+	scatter_mod = SCATTER_AMOUNT_TIER_8
+	damage_mod = -BULLET_DAMAGE_MULT_TIER_5 //-25% damage
+	delay_mod = -0.55 //+28~ fire-rate boost
+	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_4
+	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_6
+	burst_mod = -BURST_AMOUNT_TIER_2
 
 /obj/item/attachable/flashlight
 	name = "rail flashlight"

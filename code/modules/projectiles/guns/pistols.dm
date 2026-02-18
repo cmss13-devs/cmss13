@@ -748,6 +748,7 @@
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reddot/small,
+		/obj/item/attachable/quickfire,
 		/obj/item/attachable/burstfire_assembly,
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/flashlight/grip,
@@ -850,6 +851,7 @@
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
+		/obj/item/attachable/quickfire,
 		/obj/item/attachable/flashlight, // look its kinda strange why you would list these as allowed when the vp-78 has an integrated flashlight, but flashlight attachment code does have a warning for this so yknow whatever really
 		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/compensator,

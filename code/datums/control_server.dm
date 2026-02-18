@@ -155,7 +155,9 @@
 	src.websocket_port = topic_headers["websocket_port"]
 
 	RegisterSignal(controlling, COMSIG_PARENT_QDELETING, PROC_REF(handle_parent_qdel))
-	RegisterSignal(controlling, COMSIG_CLIENT_MOB_LOGGED_IN, PROC_REF(handle_parent_login))
+
+	if(!handle_parent_login(new_mob = controlling.mob))
+		RegisterSignal(controlling, COMSIG_CLIENT_MOB_LOGGED_IN, PROC_REF(handle_parent_login))
 
 /datum/control_server/Destroy(force, ...)
 	. = ..()
@@ -209,7 +211,8 @@
 	SIGNAL_HANDLER
 
 	if(istype(new_mob, /mob/new_player))
-		return
+		return FALSE
 
 	UnregisterSignal(parent, COMSIG_CLIENT_MOB_LOGGED_IN)
 	addtimer(CALLBACK(parent, TYPE_PROC_REF(/client, reset_graphics)), 1 DECISECONDS)
+	return TRUE

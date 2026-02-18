@@ -339,6 +339,17 @@
 
 /datum/equipment_preset/synth/survivor/corporate_synth
 	name = "Survivor - Synthetic - Corporate Synth"
+	job_title = JOB_WY_SEC_SYNTH
+	assignment = "W-Y Corporate Security Synthetic"
+	idtype = /obj/item/card/id/data
+	role_comm_title = "WY Sec Syn"
+	survivor_variant = CORPORATE_SURVIVOR
+	flags = EQUIPMENT_PRESET_EXTRA
+	faction = FACTION_WY
+	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
+	minimap_icon = "wy_syn"
+	minimap_background = "background_goon"
+	origin_override = ORIGIN_WY
 
 /datum/equipment_preset/synth/survivor/corporate_synth/load_gear(mob/living/carbon/human/new_human)
 	..()
@@ -605,8 +616,10 @@
 
 /datum/equipment_preset/synth/survivor/wy/corporate_synth
 	name = "Survivor - Synthetic - Corporate Clerical Synth"
+	job_title = JOB_WY_SEC_SYNTH
+	assignment = "W-Y Security Medical Synthetic"
 	idtype = /obj/item/card/id/data
-	role_comm_title = "WY Syn"
+	role_comm_title = "WY Med Syn"
 	equipment_to_spawn = list(
 		WEAR_L_EAR = /obj/item/device/radio/headset/distress/WY,
 		WEAR_R_EAR = /obj/item/tool/pen/clicky,

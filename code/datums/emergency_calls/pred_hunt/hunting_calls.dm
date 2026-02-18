@@ -7,7 +7,8 @@
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress/hunt_spawner
 	shuttle_id = ""
 	ert_message = "Prey is being set loose in the Yautja Hunting Grounds"
-	var/timer_mult = 1 // how much we multiply the 20 minute cooldown by
+	/// Multiplier on the base RESERVE_HUNT_COOLDOWN when a given ERT is selected; 1 is no change.
+	var/timer_mult = 1
 	var/hunt_name
 	var/message = "You are still expected to uphold the RP of the standard as this character!"
 	var/mercs = 0

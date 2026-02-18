@@ -1,5 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - rscdel: "Queen can no longer rest on ovi again"
-  - rscadd: "Added metatip to explain that resisting can interrupt most do_after actions such as de-ovi"

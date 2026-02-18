@@ -2122,6 +2122,9 @@
 	item_state = "marinebelt"
 	flags_atom = FPRINT // has gamemode skin
 
+/obj/item/storage/belt/gun/mateba/cmateba/black
+	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
+
 /obj/item/storage/belt/gun/mateba/cmateba/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/revolver/mateba/cmateba())
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)

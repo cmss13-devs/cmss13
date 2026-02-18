@@ -240,3 +240,11 @@
 	if(SSticker && MODE_HAS_MODIFIER(/datum/gamemode_modifier/heavy_specialists))
 		available_vendor_num = 4
 		available_kit_num = 5
+
+/datum/specialist_set/horse
+	name = "Cavalry Set"
+	role_name = "Cavalry"
+	skill_to_give = null
+	trait_to_give = null
+	rank_icon = "spec_heavy"
+	kit_typepath = /obj/item/storage/box/spec/horse

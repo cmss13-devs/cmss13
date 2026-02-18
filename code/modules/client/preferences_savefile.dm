@@ -20,6 +20,8 @@
 				break
 		return 0
 
+	updated_from = savefile_version
+
 	if(savefile_version < 12) //we've split toggles into toggles_sound and toggles_chat
 		S["toggles_sound"] << TOGGLES_SOUND_DEFAULT
 		S["toggles_chat"] << TOGGLES_CHAT_DEFAULT
@@ -230,10 +232,15 @@
 		S["toggle_prefs"] << pref_toggles
 
 	if(savefile_version < 34)
-		handle_controlstyle_update(savefile_version)
+		RegisterSignal(owner, COMSIG_CLIENT_LOGGED_IN, PROC_REF(handle_logged_in))
 
 	savefile_version = SAVEFILE_VERSION_MAX
 	return 1
+
+/datum/preferences/proc/handle_logged_in()
+	SIGNAL_HANDLER
+
+	handle_controlstyle_update(updated_from)
 
 /// Displays savefile updates that require user input
 /datum/preferences/proc/handle_controlstyle_update(savefile_version)

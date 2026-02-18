@@ -94,3 +94,87 @@
   - rscdel: Queen can no longer rest on ovi again
   - rscadd: Added metatip to explain that resisting can interrupt most do_after actions
       such as de-ovi
+2026-02-18:
+  BOBAMAx:
+  - qol: you can now throw grenades through vehicle doors both ways
+  - balance: vans no longer stun humans. dead people no longer take up space in vehicles
+      if they die inside of it.
+  Drathek:
+  - admin: Moderators (including trial) get access to more log verbs and STUI tabs
+  - bugfix: Trial moderators now appear in StaffWho
+  - bugfix: admins.txt fallback now grants rights correctly again
+  - code_imp: Bumped rust_g from 4.2.0 to 6.0.0
+  IowaPotatoFarmer:
+  - rscadd: Added unique synth survivors to Solaris Ridge.
+  - rscdel: Removed the high-capacity industrial blowtorch that would spawn in some
+      synth survivor backpacks.
+  LC4492:
+  - code_imp: Codes in all new blood_overlays.
+  - code_imp: 'Changes the color pallettes of blood, adds a new version of human blood:
+      "HUMAN_BLOOD_DRY", for use with corpses.'
+  - imageadd: Bandages and splints received replacements and now look better and fit
+      with the pallettes of their respective objects. Splints are now much more visually
+      prominent, and when someone have all their limbs splinted they will look as
+      though they have fallen from a 10-story building (As it is coherent for it to
+      be).
+  - imageadd: Blood overlays for the on_mob are updated and replaced with better versions
+      that fit better with more specific on_mobs, for example, aprons now have their
+      own blood overlay, instead of sharing such with the generic blood overlay for
+      armors (which is probably 10 years old by now).
+  - imageadd: Tweaked vests and aprons a little to be on the height of the overlays
+      and also to look a tad better, because I couldn't resist.
+  MistChristmas:
+  - bugfix: M39s no longer get stuck to you after you swap out your activated M39
+      Brace for something else
+  - bugfix: USCM Synths now spawn with selected generation.
+  - code_imp: Synth Colonial variants are no longer a species. Moved under existing
+      Generations.
+  - bugfix: Cades can no longer sit on top of each other.
+  PhantornRU:
+  - rscadd: Option for the administration to remove mindless mobs when spawning ERT.
+  - refactor: Refactored the code for waiting for a choice from the administrator
+      during ERT spawn.
+  Steelpoint, Zenith, Cuberound, BonniePandora, po1ntm4n, feroxz, thwomper, kyogon, blundir, crowford:
+  - mapadd: Tyrargo Rift has been added to the game. Set in the midst of a large-scale
+      armed conflict between the United American military and a Xenomorph hive on
+      a temperate but highly populated world. Expect a blend of open arena combat
+      and urban close quarter battle in a multiz-level environment.
+  - mapadd: A large set of nightmare inserts for Tyrargo Rift have been added. These
+      includes random structure changes and new combat environments.
+  - rscadd: Elements of the US Army's 1st Air Cavalry can be found defending the city
+      and outskirts of Tyrargo Rift. This includes a US Army Major and a US Army Synthetic.
+  - imageadd: Addition of a large amount of new prop sprites, including military and
+      civilian vehicles, static emplacements, aircraft, environmental flora such as
+      trees, and urban props such as tents, illuminator lights or wooden boards.
+  - admin: A US Army ERT has been added, however, this ERT is not intended to be deployed
+      as part of a Distress Signal.
+  - rscadd: US Army flavoured equipment has been added. Including armour, uniforms,
+      helmets, patches and symbols, some of which are ported from the PvE CM-SS13
+      server, others are custom sprites.
+  - rscadd: NPC Xenomorphs will no longer target monkeys, rats or mice.
+  - code_imp: Framework to facilitate map specific ERTs to be called automatically
+      once a round has ended, and for automatic USCM high command and queen mother
+      messages to be sent, have been added. This is currently used for Tyrargo Rift,
+      but the code can be used for any other map.
+  - bugfix: Fixed several errors that occur if NPC Xenos attempt to cross z-levels
+      or enter tents.
+  - rscadd: A set of new atmospheric audio files have been added for Tyrargo Rift.
+  - rscadd: A set of xeno NPC, and ammunition, spawner landmarks has been added for
+      mappers. The spawn chance is set by a variable on the spawner, allowing mappers
+      to set these items to have a random chance to appear on the map.
+  - rscadd: New water flood system has been added for Tyrargo. This allows the Marines
+      to flood the lower sewers, and for xenomorphs to undo this by breaking the appropriate
+      APC which will cause the water to recede. The flooding and receding will display
+      an animation and will push around loose objects that are caught in the flooding.
+      This new system has been retrofired for Trijent Dam's flooding.
+  - rscadd: Sticky resin and reinforced xeno wall/door spawners for the Distress Signal
+      gamemode has been added for mapper use. This will spawn these objects only during
+      the aforementioned gamemode.
+  Unknownity:
+  - rscadd: The Hunting Grounds escape console will now provide its location included
+      in the escape warning attempt.
+  - mapadd: Adds a new hunting grounds reserve map called Desert Moon.
+  Venuska1117:
+  - balance: Xenos on hijack now gain one time use "Transmute" ability.
+  matttheficus:
+  - rscadd: Added more yautja auto-generated names.

@@ -169,8 +169,6 @@
 /turf/open/auto_turf/snow/changing_layer(new_layer)
 	. = ..()
 
-	is_weedable = bleed_layer ? NOT_WEEDABLE : FULLY_WEEDABLE
-
 /turf/open/auto_turf/snow/insert_self_into_baseturfs()
 	baseturfs += /turf/open/auto_turf/snow/layer0
 

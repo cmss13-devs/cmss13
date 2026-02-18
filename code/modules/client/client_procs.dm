@@ -550,6 +550,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	view = GLOB.world_view_size
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_CLIENT_LOGGED_IN, src)
+	SEND_SIGNAL(src, COMSIG_CLIENT_LOGGED_IN)
 
 	if(CONFIG_GET(flag/ooc_country_flags))
 		spawn if(src)

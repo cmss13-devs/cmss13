@@ -127,17 +127,17 @@
 
 /obj/item/clothing/suit/storage/labcoat/science
 	name = "scientist's lab coat"
-	desc = "A suit that protects against minor chemical spills and biological hazards. Its shoulders are colored a rich purple."
+	desc = "A suit that protects against minor chemical spills and biological hazards. Its shoulders are colored electric purple."
 	icon_state = "labcoat_sci"
 
 /obj/item/clothing/suit/storage/labcoat/virologist
 	name = "virologist's lab coat"
-	desc = "A suit that protects against minor chemical spills and biological hazards. Its shoulders are colored a citrusy green."
+	desc = "A suit that protects against minor chemical spills and biological hazards. Its shoulders are colored lime green."
 	icon_state = "labcoat_vir"
 
 /obj/item/clothing/suit/storage/labcoat/genetics
 	name = "geneticist's lab coat"
-	desc = "A suit that protects against minor chemical spills and biological hazards. Its shoulders are colored a cool blue."
+	desc = "A suit that protects against minor chemical spills and biological hazards. Its shoulders are colored a cool, sky blue."
 	icon_state = "labcoat_gen"
 
 /obj/item/clothing/suit/storage/labcoat/researcher
@@ -299,31 +299,36 @@
 
 /obj/item/clothing/suit/storage/snow_suit/survivor/parka
 	name = "Parent Parka"
-	desc = "A winter coat made to withstand the frigged cold weather of the arctic deserts. W-Y branded Parka."
+	desc = "A winter coat made to withstand the frigid cold weather of the arctic deserts. W-Y branded Parka."
 
 /obj/item/clothing/suit/storage/snow_suit/survivor/parka/red
 	name = "Security Parka"
 	icon_state = "redpark"
+	desc = "A winter coat made to withstand the frigid cold weather of the arctic deserts. These are 'security' red."
 
 /obj/item/clothing/suit/storage/snow_suit/survivor/parka/navy
 	name = "Navy Parka"
 	icon_state = "navypark"
+	desc = "A winter coat made to withstand the frigid cold weather of the arctic deserts. These are a dark, navy blue."
 
 /obj/item/clothing/suit/storage/snow_suit/survivor/parka/yellow
-	name = "yellow Parka"
+	name = "Yellow Parka"
 	icon_state = "yellowpark"
+	desc = "A winter coat made to withstand the frigid cold weather of the arctic deserts. These are dull yellow."
 
 /obj/item/clothing/suit/storage/snow_suit/survivor/parka/green
 	name = "Green Parka"
 	icon_state = "greenpark"
+	desc = "A winter coat made to withstand the frigid cold weather of the arctic deserts. These are a deep green."
 
 /obj/item/clothing/suit/storage/snow_suit/survivor/parka/purple
 	name = "Purple Parka"
 	icon_state = "purplepark"
+	desc = "A winter coat made to withstand the frigid cold weather of the arctic deserts. These are a rich purple."
 
 /obj/item/clothing/suit/storage/snow_suit/soviet
-	name = "soviet snowcoat"
-	desc = "A winter coat made in some desolate snowplanet. This wintercoat was made from the fur of local wildlife which donated their fur for the greater good of UPP!"
+	name = "soviet snow coat"
+	desc = "A winter coat made in some desolate snow planet. This winter coat was made from the fur of local wildlife which donated their fur for the greater good of UPP!"
 	icon_state = "sovietcoat"
 	item_state = "sovietcoat"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UPP.dmi'

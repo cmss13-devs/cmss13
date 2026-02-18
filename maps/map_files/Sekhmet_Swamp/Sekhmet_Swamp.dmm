@@ -306,6 +306,7 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/sekhmet/int_glass/hosptial)
 "abd" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
 /turf/open/floor/prison/darkyellowcorners2/north,
 /area/sekhmet/int_glass/hosptial)
 "abe" = (
@@ -322,6 +323,10 @@
 /area/sekhmet/outside/airfield)
 "abh" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/item/tool/warning_cone{
+	pixel_x = 4;
+	pixel_y = 9
+	},
 /turf/open/floor/prison/darkyellow2/east,
 /area/sekhmet/int_glass/hosptial)
 "abi" = (
@@ -2294,6 +2299,175 @@
 	},
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/sekhmet/int_reg/catwalk)
+"agZ" = (
+/obj/effect/decal/cleanable/dirt/alt_dirt,
+/obj/item/tool/warning_cone{
+	pixel_x = -11;
+	pixel_y = 13
+	},
+/obj/item/tool/warning_cone{
+	pixel_x = -1;
+	pixel_y = 3
+	},
+/turf/open/floor/prison,
+/area/sekhmet/int_glass/hosptial)
+"aha" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random,
+/turf/open/floor/prison/darkyellow2/north,
+/area/sekhmet/int_glass/hosptial)
+"ahb" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass{
+	pixel_x = 12;
+	pixel_y = 11
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/sekhmet/outside/central_road)
+"ahc" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass{
+	pixel_x = 12;
+	pixel_y = 11
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/sekhmet/outside/swamp)
+"ahd" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_y = 18;
+	dir = 4
+	},
+/turf/open/gm/dirt,
+/area/sekhmet/outside/swamp)
+"ahe" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_y = 5;
+	dir = 8;
+	pixel_x = 1
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/sekhmet/outside/swamp)
+"ahf" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/gm/dirt/desert2,
+/area/sekhmet/outside/swamp)
+"ahg" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_y = 4;
+	dir = 8;
+	pixel_x = 23
+	},
+/turf/open/gm/dirt,
+/area/sekhmet/outside/swamp)
+"ahh" = (
+/turf/open/gm/dirt/desert1,
+/area/sekhmet/outside/swamp)
+"ahi" = (
+/turf/open/gm/dirt/desert2,
+/area/sekhmet/outside/swamp)
+"ahj" = (
+/obj/structure/flora/bush/ausbushes/ausbush,
+/turf/open/auto_turf/sand_white/layer1,
+/area/sekhmet/outside/swamp)
+"ahk" = (
+/obj/structure/flora/bush/ausbushes/ausbush,
+/turf/open/gm/dirt,
+/area/sekhmet/outside/swamp)
+"ahl" = (
+/turf/open/gm/dirt/desert_dug,
+/area/sekhmet/outside/swamp)
+"ahm" = (
+/obj/structure/flora/bush/ausbushes/reedbush{
+	pixel_x = 1;
+	pixel_y = 15
+	},
+/turf/open/gm/coast/south,
+/area/sekhmet/outside/swamp)
+"ahn" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_y = 5;
+	dir = 8;
+	pixel_x = 1
+	},
+/turf/open/gm/dirt,
+/area/sekhmet/outside/swamp)
+"aho" = (
+/obj/structure/flora/bush/ausbushes/reedbush{
+	pixel_x = -7
+	},
+/turf/open/gm/coast/south,
+/area/sekhmet/outside/swamp)
+"ahp" = (
+/obj/structure/flora/bush/ausbushes/reedbush{
+	pixel_x = -10;
+	pixel_y = 2
+	},
+/turf/open/gm/coast/beachcorner2/south_west,
+/area/sekhmet/outside/swamp)
+"ahq" = (
+/obj/structure/machinery/door/airlock/almayer/generic/autoname{
+	dir = 1
+	},
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/sekhmet/int_reg/air_filters)
+"ahr" = (
+/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/flora/bush/ausbushes/reedbush{
+	pixel_x = 1;
+	pixel_y = 10
+	},
+/turf/open/gm/coast/east,
+/area/sekhmet/outside/swamp)
+"ahs" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname{
+	dir = 1
+	},
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/sekhmet/int_reg/air_filters)
+"aht" = (
+/obj/structure/flora/bush/ausbushes/reedbush{
+	pixel_x = 5
+	},
+/turf/open/gm/coast/beachcorner/north_west,
+/area/sekhmet/outside/swamp)
+"ahu" = (
+/turf/open/gm/dirt/desert0,
+/area/sekhmet/outside/swamp)
+"ahv" = (
+/obj/structure/flora/bush/ausbushes/reedbush{
+	pixel_x = -10;
+	pixel_y = 2
+	},
+/turf/open/gm/coast/west,
+/area/sekhmet/outside/swamp)
+"ahw" = (
+/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/flora/bush/ausbushes/reedbush{
+	pixel_x = -7;
+	pixel_y = 4
+	},
+/turf/open/gm/coast/east,
+/area/sekhmet/outside/swamp)
+"ahx" = (
+/obj/structure/flora/bush/ausbushes/reedbush{
+	pixel_x = 1;
+	pixel_y = 10
+	},
+/turf/open/gm/coast/north,
+/area/sekhmet/outside/swamp)
+"ahy" = (
+/obj/structure/flora/bush/ausbushes/reedbush{
+	pixel_x = -10;
+	pixel_y = 9
+	},
+/turf/open/gm/coast/north,
+/area/sekhmet/outside/swamp)
+"ahz" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname,
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/sekhmet/int_reg/air_filters)
 "ahA" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -2309,6 +2483,22 @@
 	},
 /turf/open/floor/plating/kutjevo,
 /area/sekhmet/outside/temple_outer)
+"ahB" = (
+/turf/open/gm/dirt/desert3,
+/area/sekhmet/outside/swamp)
+"ahC" = (
+/obj/structure/machinery/door/airlock/almayer/generic/autoname,
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/sekhmet/int_reg/air_filters)
+"ahD" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = -3;
+	pixel_y = -4;
+	dir = 4
+	},
+/turf/open/gm/dirt,
+/area/sekhmet/outside/swamp)
 "ahM" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/strata/orange_edge/west,
@@ -14187,6 +14377,7 @@
 /area/sekhmet/int_heavy/research)
 "jbR" = (
 /obj/structure/machinery/light/small,
+/obj/structure/largecrate/random/barrel/yellow,
 /turf/open/floor/prison,
 /area/sekhmet/int_glass/hosptial)
 "jci" = (
@@ -81157,7 +81348,7 @@ wlK
 aHM
 abh
 abd
-aba
+agZ
 bfq
 uJJ
 rNY
@@ -81223,7 +81414,7 @@ cyh
 cyh
 kCV
 pBz
-pBz
+ahc
 pBz
 pBz
 ybn
@@ -81383,7 +81574,7 @@ mKr
 kCV
 cHW
 cHW
-cHW
+ahn
 cHW
 pBz
 pBz
@@ -81480,7 +81671,7 @@ pfs
 abk
 mNh
 abj
-abf
+aha
 jbR
 wlK
 mRJ
@@ -81542,11 +81733,11 @@ pBz
 pBz
 pBz
 qrg
+ahh
 cHW
+ahk
 cHW
-cHW
-cHW
-cHW
+ahl
 kCV
 pBz
 sUs
@@ -81702,16 +81893,16 @@ pBz
 pBz
 pBz
 pBz
-pBz
+ahc
 cHW
 cHW
 cHW
 cHW
+qqg
 cHW
 cHW
 cHW
-cHW
-pBz
+ahc
 pBz
 pBz
 kCV
@@ -81862,8 +82053,8 @@ ybn
 pBz
 sUs
 pBz
-cHW
-cHW
+ahn
+ahh
 cHW
 qTH
 yec
@@ -81871,7 +82062,7 @@ yec
 rIb
 cHW
 cHW
-cHW
+ahi
 cHW
 kRb
 pBz
@@ -82024,17 +82215,17 @@ aDJ
 pBz
 pBz
 cHW
-cHW
-qTH
+ahu
+aht
 yec
 jWo
 pdy
 pdy
-iuH
+ahp
 rIb
 gDr
 cHW
-cHW
+ahd
 kRb
 vRr
 cRQ
@@ -82180,11 +82371,11 @@ bzC
 bzC
 kCV
 kCV
+wKY
 pBz
 pBz
 pBz
-pBz
-pBz
+ahc
 cHW
 cHW
 pZW
@@ -82193,7 +82384,7 @@ pdy
 pdy
 pdy
 pdy
-dVw
+aho
 cHW
 kRb
 kRb
@@ -82342,13 +82533,13 @@ bzC
 bzC
 kCV
 kCV
-pBz
+wKY
 ybn
 pBz
 pBz
 cHW
 qTH
-yec
+ahv
 kJY
 pdy
 pdy
@@ -82505,8 +82696,8 @@ bzC
 bzC
 kCV
 kCV
-pBz
-cHW
+wKY
+ahD
 cHW
 cHW
 pZW
@@ -82519,7 +82710,7 @@ ssL
 pdy
 tnp
 rIb
-kRb
+ahj
 dPG
 uNg
 wbP
@@ -82668,10 +82859,10 @@ bzC
 bzC
 kCV
 kCV
+ahk
 cHW
 cHW
-cHW
-pZW
+ahx
 pdy
 pdy
 ssL
@@ -82831,8 +83022,8 @@ bzC
 bzC
 kCV
 kCV
-cHW
-cHW
+ahB
+ahB
 pZW
 pdy
 pdy
@@ -82842,9 +83033,9 @@ ssL
 ssL
 ssL
 pdy
-dVw
+ahm
 cHW
-kRb
+ahe
 xKQ
 kCV
 kCV
@@ -82993,9 +83184,9 @@ kCV
 kCV
 kCV
 kCV
+qqg
 cHW
-cHW
-pZW
+ahy
 pdy
 ssL
 ssL
@@ -83152,7 +83343,7 @@ bzC
 bzC
 kCV
 kCV
-cHW
+ahh
 cHW
 cHW
 cHW
@@ -83165,12 +83356,12 @@ ssL
 pdy
 pdy
 pdy
-dVw
+aho
 cHW
 kCV
 kCV
 kCV
-vRr
+cRQ
 kCV
 kCV
 kCV
@@ -83328,11 +83519,11 @@ pdy
 pdy
 pdy
 dVw
-cHW
+ahn
 kCV
 kCV
-vRr
-vRr
+cRQ
+cRQ
 kCV
 kCV
 pBz
@@ -83475,7 +83666,7 @@ bzC
 bzC
 kCV
 cHW
-cHW
+ahk
 cHW
 qTH
 jWo
@@ -83491,7 +83682,7 @@ kWZ
 sEd
 dVw
 cHW
-cHW
+ahk
 kRb
 vRr
 vRr
@@ -83636,25 +83827,25 @@ bzC
 bzC
 bzC
 kCV
-cHW
-cHW
+ahD
+ahu
 hmi
 jtC
 tsp
 xbs
 uvk
 jtC
+ahw
 tsp
 tsp
-tsp
-tsp
+ahr
 xbs
 uvk
 jtC
 xbs
 mBr
 sIP
-cHW
+ahf
 kRb
 pBz
 kkC
@@ -83816,9 +84007,9 @@ jCM
 jCM
 pKE
 hnK
+ahg
 cHW
-cHW
-bsP
+ahb
 kkC
 kkC
 hzt
@@ -83978,7 +84169,7 @@ hfX
 hfX
 iIo
 hnK
-cHW
+ahh
 mma
 mma
 mma
@@ -84128,7 +84319,7 @@ nlt
 kMe
 kMe
 sqS
-sqS
+ahs
 nlt
 kMe
 kMe
@@ -84448,7 +84639,7 @@ xvS
 tUL
 okB
 xEO
-sqS
+ahz
 kMJ
 hsh
 ktO
@@ -84456,7 +84647,7 @@ htW
 rUa
 piI
 hCj
-sqS
+ahq
 hCj
 iVp
 vKy
@@ -84942,7 +85133,7 @@ kMJ
 kMJ
 kMJ
 kMJ
-sqS
+ahq
 ktO
 oBb
 hal
@@ -85093,7 +85284,7 @@ oRx
 bzC
 nlt
 nlt
-sqS
+ahC
 nlt
 nlt
 nlt
@@ -85270,7 +85461,7 @@ nlt
 ncI
 okB
 hsh
-sqS
+ahq
 uzD
 rEN
 bRy
@@ -89310,10 +89501,10 @@ rED
 rED
 rED
 rED
-sqS
+ahq
 tUL
 tUL
-sqS
+ahq
 rED
 rED
 rED
@@ -89961,7 +90152,7 @@ hCj
 oKv
 tUL
 tUL
-sqS
+ahz
 hsh
 htW
 tae
@@ -90445,7 +90636,7 @@ nlt
 nlt
 nlt
 nlt
-sqS
+ahC
 nlt
 nlt
 pHi
@@ -91098,7 +91289,7 @@ nlt
 nlt
 nlt
 sqS
-sqS
+ahs
 nlt
 iOH
 iOH
@@ -93816,7 +94007,7 @@ eZo
 eZo
 eZo
 lWm
-dVU
+uiK
 eZo
 eZo
 eZo
@@ -94274,7 +94465,7 @@ eZo
 eZo
 eZo
 lWm
-dVU
+uiK
 eZo
 eZo
 lpv

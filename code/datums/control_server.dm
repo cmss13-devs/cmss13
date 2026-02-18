@@ -210,6 +210,8 @@
 
 	UnregisterSignal(logged_in, COMSIG_CLIENT_LOGGED_IN)
 
+	log_debug("CONTROL_SERVER: [logged_in], [logged_in.mob] ([logged_in.mob.type])")
+
 	if(!handle_parent_login(new_mob = controlling.mob))
 		RegisterSignal(controlling, COMSIG_CLIENT_MOB_LOGGED_IN, PROC_REF(handle_parent_login))
 

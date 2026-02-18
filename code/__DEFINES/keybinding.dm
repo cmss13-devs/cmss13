@@ -7,8 +7,6 @@
 #define KEYBIND_CUSTOM_MAX 60
 #define KEYBIND_CUSTOM_PICKSAY_MAX 30
 
-#define KEYBIND_SWITCHINPUT "switch_input"
-
 //Signals
 
 //General

@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN 8
-#define SAVEFILE_VERSION_MAX 33
+#define SAVEFILE_VERSION_MAX 34
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -229,8 +229,25 @@
 		pref_toggles |= TOGGLE_COCKING_TO_HAND // enabled by default for new saves
 		S["toggle_prefs"] << pref_toggles
 
+	if(savefile_version < 34)
+		handle_controlstyle_update(savefile_version)
+
 	savefile_version = SAVEFILE_VERSION_MAX
 	return 1
+
+/// Displays savefile updates that require user input
+/datum/preferences/proc/handle_controlstyle_update(savefile_version)
+	set waitfor = FALSE
+
+	if(savefile_version == /datum/preferences::savefile_version)
+		return
+
+	if(savefile_version < 34)
+		var/question = tgui_alert(owner, "Tab is no longer bound to switching between the map and the command bar. Restore this bind?", "Default Bind Changed", list("No", "Yes"))
+		if(question == "Yes")
+			LAZYADD(key_bindings["Tab"], /datum/keybinding/client/switch_input::name)
+			owner?.update_special_keybinds()
+			save_preferences()
 
 /datum/preferences/proc/load_path(ckey,filename="preferences.sav")
 	if(!ckey)

@@ -163,7 +163,7 @@
 // Sanitizes and wraps the message with some info and links, depending on the sender...?
 /datum/mentorhelp/proc/wrap_message(message, client/sender)
 	var/message_title = "MentorPM"
-	var/message_sender_key = "<a href='byond://?src=\ref[src];action=message'>[sender.key]</a>"
+	var/message_sender_key = "<a href='byond://?src=\ref[src];action=message'>[key_name(sender.mob)]</a>"
 	var/message_sender_options = ""
 
 	// The message is being sent to the mentor and should be formatted as a mentorhelp message
@@ -175,7 +175,7 @@
 		message_sender_options += " | <a href='byond://?src=\ref[src];action=follow'>Follow</a>"
 		message_sender_options += " | <a href='byond://?src=\ref[src];action=autorespond'>AutoResponse</a>)"
 
-	var/message_header = SPAN_MENTORHELP("<span class='prefix'>[message_title] from [key_name(sender.mob)] ([message_sender_key]):</span> <span class='message'>[message_sender_options]</span><br>")
+	var/message_header = SPAN_MENTORHELP("<span class='prefix'>[message_title] from [message_sender_key]:</span> <span class='message'>[message_sender_options]</span><br>")
 	var/message_body = "&emsp;[SPAN_MENTORBODY("<span class='message'>[message]</span>")]<br>"
 	// Et voila! Beautiful wrapped mentorhelp messages
 	return (message_header + message_body)

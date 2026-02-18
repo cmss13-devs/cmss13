@@ -100,6 +100,8 @@
 	if(new_STUI)
 		GLOB.STUI.tgui_interact(mob)
 
+	return TRUE
+
 /client/proc/invismin()
 	set name = "Invismin"
 	set category = "Admin.Game"

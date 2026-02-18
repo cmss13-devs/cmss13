@@ -27,6 +27,13 @@
 
 	var/list/current_huds = list()
 
+	var/static/list/hud_options = list(
+		"Medical HUD" = MOB_HUD_MEDICAL_OBSERVER,
+		"Security HUD" = MOB_HUD_SECURITY_ADVANCED,
+		"Squad HUD" = MOB_HUD_FACTION_OBSERVER,
+		"Xeno Status HUD" = MOB_HUD_XENO_STATUS,
+	)
+
 /mob/camera/imaginary_friend/Login()
 	. = ..()
 	setup_friend()
@@ -48,6 +55,8 @@
 
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
+	RegisterSignal(src, COMSIG_ATOM_DIR_CHANGE, PROC_REF(update_image))
+
 	orbit = new
 	orbit.give_to(src)
 	hide = new
@@ -59,8 +68,14 @@
 	real_name = name
 	gender = client.prefs.gender
 
-	for(var/datum/mob_hud/observer_hud in client.prefs.observer_huds)
-		observer_hud.add_hud_to(src, src)
+	var/list/observer_huds = client.prefs.observer_huds
+	for(var/observer_hud in observer_huds)
+		if(!observer_huds[observer_hud])
+			continue
+		if(!listgetindex(hud_options, observer_hud))
+			continue
+		var/datum/mob_hud/friend_hud = GLOB.huds[hud_options[observer_hud]]
+		friend_hud?.add_hud_to(src, src)
 
 	var/available_appearances = outfit_choices + "Drone"
 	var/outfit_choice = tgui_input_list(usr, "Choose your appearance:", "[src]", available_appearances)
@@ -78,6 +93,9 @@
 		return TRUE
 
 	return ..()
+
+/mob/camera/imaginary_friend/canface()
+	return TRUE
 
 /mob/camera/imaginary_friend/is_mob_incapacitated()
 	return FALSE
@@ -164,6 +182,8 @@
 
 	client?.images.Remove(friend_image)
 
+	UnregisterSignal(src, COMSIG_ATOM_DIR_CHANGE)
+
 	owner = null
 	current_image = null
 	friend_image = null
@@ -205,19 +225,6 @@
 /mob/camera/imaginary_friend/verb/toggle_hud()
 	set category = "Imaginary Friend"
 	set name = "Toggle HUD"
-
-	var/list/hud_options = list(
-		"Medical HUD" = MOB_HUD_MEDICAL_OBSERVER,
-		"Security HUD" = MOB_HUD_SECURITY_ADVANCED,
-		"Squad HUD" = MOB_HUD_FACTION_OBSERVER,
-		"Xeno Status HUD" = MOB_HUD_XENO_STATUS,
-		"Faction UPP HUD" = MOB_HUD_FACTION_UPP,
-		"Faction Wey-Yu HUD" = MOB_HUD_FACTION_WY,
-		"Faction TWE HUD" = MOB_HUD_FACTION_TWE,
-		"Faction CLF HUD" = MOB_HUD_FACTION_CLF,
-		"Faction WO HUD" = MOB_HUD_FACTION_WO,
-		"Faction Hyperdyne HUD" = MOB_HUD_FACTION_HC,
-	)
 
 	var/hud_choice = tgui_input_list(usr, "Choose a HUD to toggle", "Toggle HUD prefs", hud_options)
 	var/datum/mob_hud/hud = GLOB.huds[hud_options[hud_choice]]
@@ -276,7 +283,7 @@
 		var/link = "<a href='byond://?src=\ref[ghost];track=\ref[src]'>F</a>"
 		to_chat(ghost, "[dead_rendered] ([link])")
 
-/mob/camera/imaginary_friend/Move(newloc, Dir = 0)
+/mob/camera/imaginary_friend/Move(newloc)
 	if(world.time < move_delay)
 		return FALSE
 

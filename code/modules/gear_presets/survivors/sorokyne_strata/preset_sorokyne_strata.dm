@@ -808,6 +808,9 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	faction_group = FACTION_HYPERDYNE
 	faction = FACTION_HYPERDYNE
+	job_title = JOB_HC_SEC_SYNTH
+	assignment = JOB_HC_SEC_SYNTH
+	roel_comm_title = "HC Sec Syn"
 	faction_group = list(FACTION_HYPERDYNE, FACTION_LIST_SURVIVOR_UPP)
 	idtype = /obj/item/card/id/silver/cl/hyperdyne
 	survivor_variant = CORPORATE_SURVIVOR

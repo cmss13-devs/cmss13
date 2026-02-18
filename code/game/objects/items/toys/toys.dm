@@ -131,6 +131,7 @@
 /obj/item/toy/minesweeper_handheld/Initialize(mapload, ...)
 	. = ..()
 	minesweeper_game = new(src, list(8,8), 10, TRUE)
+	minesweeper_game.name = name
 
 /obj/item/toy/minesweeper_handheld/attack_self(mob/user)
 	. = ..()

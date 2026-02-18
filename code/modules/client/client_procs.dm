@@ -856,8 +856,22 @@ CLIENT_VERB(read_key_up, key as text|null)
 					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=whisper")
 					winset(src, "tgui_say.browser", "focus=true")
 
+/client/proc/disable_hardware_graphics()
+	winset(src, null, "command=\".configure graphics-hwmode off\"")
+
 /client/proc/enable_hardware_graphics()
 	winset(src, null, "command=\".configure graphics-hwmode on\"")
+
+/client/proc/reset_graphics()
+	disable_hardware_graphics()
+	sleep(1)
+	enable_hardware_graphics()
+
+	var/atom/movable/screen/plane_master/game_world/plane_master = locate() in screen
+	if (!plane_master)
+		return
+
+	plane_master.backdrop(mob)
 
 /client/proc/update_fullscreen()
 	if(prefs.toggle_prefs & TOGGLE_FULLSCREEN)

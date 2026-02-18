@@ -33,7 +33,7 @@
 /obj/structure/surface/table{
 	color = "#8B7B5B"
 	},
-/obj/item/clothing/under/rank/medical/pharmacist{
+/obj/item/clothing/under/rank/chemist{
 	pixel_x = -7;
 	pixel_y = 12
 	},

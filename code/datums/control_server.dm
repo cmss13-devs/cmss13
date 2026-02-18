@@ -208,4 +208,8 @@
 /datum/control_server/proc/handle_parent_login(client/parent, mob/new_mob)
 	SIGNAL_HANDLER
 
-	addtimer(CALLBACK(parent, TYPE_PROC_REF(/client, reset_graphics)), 1 SECONDS)
+	if(istype(new_mob, /mob/new_player))
+		return
+
+	UnregisterSignal(parent, COMSIG_CLIENT_MOB_LOGGED_IN)
+	addtimer(CALLBACK(parent, TYPE_PROC_REF(/client, reset_graphics)), 1 DECISECONDS)

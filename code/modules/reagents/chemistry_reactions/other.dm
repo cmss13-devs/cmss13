@@ -526,8 +526,10 @@
 	name = "Royal plasma"
 	id = "royalplasma"
 	result = "royalplasma"
-	required_reagents = list("eggplasma" = 1, "xenobloodroyal" = 1)
-	result_amount = 2
+	required_reagents = list("eggplasma" = 1, "xenobloodroyal" = 1, "xenoblood" = 1)
+	required_catalysts = list("purpleplasma" = 5)
+	reaction_type =  parent_type::reaction_type | CHEM_REACTION_SMOKING
+	result_amount = 3
 
 /datum/chemical_reaction/antineurotoxin
 	name = "Anti-Neurotoxin"

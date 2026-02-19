@@ -272,7 +272,7 @@
 	desc = "A huge, looming alien creature. The biggest and the baddest."
 	icon_size = 64
 	icon_state = "Queen Walking"
-	plasma_types = list(PLASMA_ROYAL,PLASMA_CHITIN,PLASMA_PHEROMONE,PLASMA_NEUROTOXIN)
+	plasma_types = list(PLASMA_ROYAL,PLASMA_CHITIN,PLASMA_PHEROMONE,PLASMA_NEUROTOXIN,PLASMA_EGG)
 	attacktext = "bites"
 	attack_sound = null
 	friendly = "nuzzles"

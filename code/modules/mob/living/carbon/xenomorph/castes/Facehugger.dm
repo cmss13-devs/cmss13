@@ -24,6 +24,7 @@
 	caste_type = XENO_CASTE_FACEHUGGER
 	speak_emote = list("hisses")
 	icon_state = "Facehugger"
+	plasma_types = list(PLASMA_EGG)
 	icon_size = 48
 	pixel_x = -8
 	pixel_y = -6

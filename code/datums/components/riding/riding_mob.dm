@@ -73,7 +73,6 @@
 			to_chat(user, SPAN_WARNING("You need a [initial(key.name)] to ride [movable_parent]!"))
 		return COMPONENT_DRIVER_BLOCK_MOVE
 	var/mob/living/living_parent = parent
-	var/turf/next = get_step(living_parent, direction)
 	step(living_parent, direction)
 	COOLDOWN_START(src, vehicle_move_cooldown, vehicle_move_delay)
 

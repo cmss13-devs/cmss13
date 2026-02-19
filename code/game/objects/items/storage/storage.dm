@@ -865,6 +865,12 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	for(var/obj/item/new_item in origin_storage)
 		if(!has_room(new_item))
 			break
+		if(!(new_item.type in can_hold))
+			to_chat(user, SPAN_WARNING("[new_item] can't fit into [src]!"))
+			continue
+		if(new_item.type in cant_hold)
+			to_chat(user, SPAN_WARNING("[new_item] can't fit into [src]!"))
+			continue
 		origin_storage.remove_from_storage(new_item, user)
 		handle_item_insertion(new_item, TRUE, user) //quiet insertion
 

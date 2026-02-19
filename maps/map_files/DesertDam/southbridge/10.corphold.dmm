@@ -50,11 +50,6 @@
 	pixel_y = 8;
 	pixel_x = 4
 	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/effect/blocker/water/toxic/Group_2,
 /obj/structure/largecrate/random/mini/ammo{
 	pixel_y = 8;
 	pixel_x = 4
@@ -180,15 +175,6 @@
 /obj/item/prop/alien/hugger,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/south_valley_dam)
-"hj" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/platform/metal/almayer/north,
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/template_noop,
-/area/template_noop)
 "hl" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/desert_dam/exterior/valley/south_valley_dam)
@@ -313,15 +299,6 @@
 "ml" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/desert_dam/exterior/valley/valley_medical)
-"mB" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/platform/metal/almayer/east,
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/template_noop,
-/area/template_noop)
 "mC" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
@@ -425,17 +402,6 @@
 /obj/item/ammo_casing/bullet,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
-"qA" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/effect/blocker/water/toxic/Group_2,
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal2"
-	},
-/turf/template_noop,
-/area/template_noop)
 "qS" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/valley/valley_medical)
@@ -487,15 +453,6 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/south_valley_dam)
-"ti" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/platform/metal/almayer/west,
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/template_noop,
-/area/template_noop)
 "ug" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/asphalt/tile,
@@ -511,15 +468,6 @@
 /obj/item/ammo_casing/bullet,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
-"uX" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/platform/metal/almayer,
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/template_noop,
-/area/template_noop)
 "vb" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal3"
@@ -556,15 +504,6 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
-"vV" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/disposalpipe/segment,
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/template_noop,
-/area/template_noop)
 "wj" = (
 /obj/structure/desertdam/decals/road_stop{
 	icon_state = "stop_decal5"
@@ -690,25 +629,6 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
-"Dt" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/effect/blocker/water/toxic/Group_2,
-/obj/structure/desertdam/decals/road_edge,
-/turf/template_noop,
-/area/template_noop)
-"DV" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/platform/metal/almayer/north,
-/obj/structure/platform/metal/almayer/west,
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/template_noop,
-/area/template_noop)
 "EU" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -717,11 +637,6 @@
 /area/desert_dam/exterior/valley/south_valley_dam)
 "EW" = (
 /obj/item/ammo_casing/bullet,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/effect/blocker/water/toxic/Group_2,
 /obj/item/ammo_casing/bullet,
 /turf/template_noop,
 /area/template_noop)
@@ -742,15 +657,6 @@
 /obj/item/prop/alien/hugger,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
-"FB" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/effect/blocker/water/toxic/Group_2,
-/obj/structure/disposalpipe/segment,
-/turf/template_noop,
-/area/template_noop)
 "FC" = (
 /obj/structure/bed/roller,
 /obj/structure/closet/bodybag,
@@ -959,14 +865,6 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/river/riverside_east)
-"Ow" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/template_noop,
-/area/template_noop)
 "OG" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "mgibbl3"
@@ -1012,15 +910,6 @@
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_medical)
-"PT" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/platform_decoration/metal/almayer/east,
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/template_noop,
-/area/template_noop)
 "PW" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal3"
@@ -1160,15 +1049,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_medical)
-"Zp" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/platform_decoration/metal/almayer/west,
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/template_noop,
-/area/template_noop)
 "Zz" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
@@ -1186,15 +1066,15 @@ MO
 bB
 kC
 WJ
-hj
-Ow
-Ow
-Ow
-Ow
-Ow
-Ow
-Ow
-uX
+Mc
+Mc
+Mc
+Mc
+Mc
+Mc
+Mc
+Mc
+Mc
 uM
 RN
 ae
@@ -1212,15 +1092,15 @@ MO
 bS
 oN
 xS
-hj
-Ow
-Ow
-Ow
-Ow
-Ow
-Ow
-Ow
-uX
+Mc
+Mc
+Mc
+Mc
+Mc
+Mc
+Mc
+Mc
+Mc
 NN
 CC
 ai
@@ -1238,15 +1118,15 @@ MO
 bB
 kC
 WJ
-hj
-Ow
-Ow
-Ow
-Ow
-Ow
-Ow
-Ow
-uX
+Mc
+Mc
+Mc
+Mc
+Mc
+Mc
+Mc
+Mc
+Mc
 uM
 RN
 ih
@@ -1264,15 +1144,15 @@ Qv
 bB
 kC
 WJ
-hj
-Ow
-Ow
-Ow
-Ow
-Ow
-Ow
-Ow
-uX
+Mc
+Mc
+Mc
+Mc
+Mc
+Mc
+Mc
+Mc
+Mc
 uM
 RN
 pZ
@@ -1291,13 +1171,13 @@ bB
 kC
 WJ
 Mc
-Ow
-Ow
-Ow
-Ow
-Ow
-Ow
-Ow
+Mc
+Mc
+Mc
+Mc
+Mc
+Mc
+Mc
 Mc
 uM
 RN
@@ -1317,13 +1197,13 @@ bB
 kC
 WJ
 Mc
-Ow
-Ow
-Ow
-Ow
-Ow
-Ow
-Ow
+Mc
+Mc
+Mc
+Mc
+Mc
+Mc
+Mc
 Mc
 uM
 RN
@@ -1343,13 +1223,13 @@ Gd
 oN
 Kz
 Mc
-mB
-mB
-Ow
-Ow
-Ow
-mB
-mB
+Mc
+Mc
+Mc
+Mc
+Mc
+Mc
+Mc
 Mc
 xu
 CC
@@ -1371,11 +1251,11 @@ ug
 Yi
 GJ
 ah
-Ow
-Ow
-Ow
-Ow
-Ow
+Mc
+Mc
+Mc
+Mc
+Mc
 vJ
 na
 BC
@@ -1397,11 +1277,11 @@ xl
 sy
 Sn
 EW
-Ow
-Ow
-Ow
-Ow
-Dt
+Mc
+Mc
+Mc
+Mc
+Mc
 Pr
 oS
 le
@@ -1422,12 +1302,12 @@ XW
 Na
 jR
 Ua
-Ow
-Ow
-Ow
-Ow
-Ow
-Ow
+Mc
+Mc
+Mc
+Mc
+Mc
+Mc
 LU
 ak
 zq
@@ -1448,12 +1328,12 @@ ZY
 XW
 ag
 Ce
-Ow
-Ow
-Ow
-Ow
-Ow
-Ow
+Mc
+Mc
+Mc
+Mc
+Mc
+Mc
 dI
 al
 Ke
@@ -1474,12 +1354,12 @@ sI
 sI
 UI
 Wt
-Ow
-Ow
-Ow
-Ow
-Ow
-qA
+Mc
+Mc
+Mc
+Mc
+Mc
+Mc
 Od
 lo
 lo
@@ -1500,12 +1380,12 @@ It
 Fm
 Fm
 lj
-vV
-FB
-FB
-FB
-vV
-vV
+Mc
+Mc
+Mc
+Mc
+Mc
+Mc
 lj
 MJ
 et
@@ -1524,14 +1404,14 @@ ZY
 MO
 nV
 Yi
-DV
-ti
-ti
-Ow
-Ow
-Ow
-ti
-ti
+Mc
+Mc
+Mc
+Mc
+Mc
+Mc
+Mc
+Mc
 Mc
 Lm
 CC
@@ -1550,14 +1430,14 @@ XW
 MO
 LA
 wx
-PT
-Ow
-Ow
-Ow
-Ow
-Ow
-Ow
-Ow
+Mc
+Mc
+Mc
+Mc
+Mc
+Mc
+Mc
+Mc
 Mc
 uM
 RN
@@ -1576,15 +1456,15 @@ sI
 ar
 LA
 Ku
-Zp
-Ow
-Ow
-Ow
-Ow
-Ow
-Ow
-Ow
-uX
+Mc
+Mc
+Mc
+Mc
+Mc
+Mc
+Mc
+Mc
+Mc
 uM
 RN
 ih
@@ -1602,15 +1482,15 @@ wk
 wk
 hl
 Yi
-hj
-Ow
-Ow
-Ow
-Ow
-Ow
-Ow
-Ow
-uX
+Mc
+Mc
+Mc
+Mc
+Mc
+Mc
+Mc
+Mc
+Mc
 uM
 RN
 ih
@@ -1628,15 +1508,15 @@ iJ
 jv
 IA
 IA
-hj
-Ow
-Ow
-Ow
-Ow
-Ow
-Ow
-Ow
-uX
+Mc
+Mc
+Mc
+Mc
+Mc
+Mc
+Mc
+Mc
+Mc
 uM
 RN
 ih
@@ -1654,15 +1534,15 @@ XS
 WD
 am
 IA
-hj
-Ow
-Ow
-Ow
-Ow
-Ow
-Ow
-Ow
-uX
+Mc
+Mc
+Mc
+Mc
+Mc
+Mc
+Mc
+Mc
+Mc
 NN
 CC
 kT
@@ -1680,15 +1560,15 @@ XS
 XS
 XS
 jv
-hj
-Ow
-Ow
-Ow
-Ow
-Ow
-Ow
-Ow
-uX
+Mc
+Mc
+Mc
+Mc
+Mc
+Mc
+Mc
+Mc
+Mc
 uM
 RN
 ih

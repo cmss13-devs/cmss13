@@ -278,14 +278,6 @@
 "oG" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
 /area/desert_dam/exterior/valley/valley_medical)
-"pY" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/template_noop,
-/area/template_noop)
 "qn" = (
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/south_valley_dam)
@@ -408,17 +400,6 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
-"xh" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/effect/blocker/water/toxic/Group_2,
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal2"
-	},
-/turf/template_noop,
-/area/template_noop)
 "xq" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -469,29 +450,10 @@
 "AK" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/desert_dam/exterior/valley/valley_medical)
-"AO" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/platform/metal/almayer/east,
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/template_noop,
-/area/template_noop)
 "AT" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_medical)
-"Bf" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/platform/metal/almayer/north,
-/obj/structure/platform/metal/almayer/west,
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/template_noop,
-/area/template_noop)
 "Bk" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -499,15 +461,6 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
-"Bn" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/effect/blocker/water/toxic/Group_2,
-/obj/structure/disposalpipe/segment,
-/turf/template_noop,
-/area/template_noop)
 "BA" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -538,24 +491,6 @@
 /obj/structure/machinery/colony_floodlight,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/desert_dam/exterior/valley/valley_medical)
-"Ch" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/platform/metal/almayer/west,
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/template_noop,
-/area/template_noop)
-"Cn" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/disposalpipe/segment,
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/template_noop,
-/area/template_noop)
 "Co" = (
 /obj/structure/desertdam/decals/road_stop{
 	icon_state = "stop_decal5"
@@ -610,15 +545,6 @@
 /obj/item/prop/colony/used_flare,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/south_valley_dam)
-"GH" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/platform_decoration/metal/almayer/east,
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/template_noop,
-/area/template_noop)
 "GU" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
@@ -706,15 +632,6 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
-"LZ" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/platform_decoration/metal/almayer/west,
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/template_noop,
-/area/template_noop)
 "Me" = (
 /obj/structure/desertdam/decals/road_edge,
 /obj/structure/barricade/wooden{
@@ -928,15 +845,6 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
-"UD" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/effect/blocker/water/toxic/Group_2,
-/obj/structure/desertdam/decals/road_edge,
-/turf/template_noop,
-/area/template_noop)
 "UP" = (
 /obj/structure/desertdam/decals/road_edge,
 /turf/open/asphalt,
@@ -983,15 +891,6 @@
 /obj/item/prop/colony/used_flare,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
-"Yd" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/platform/metal/almayer/north,
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/template_noop,
-/area/template_noop)
 "Yn" = (
 /obj/structure/fence,
 /turf/open/desert/dirt,
@@ -1002,15 +901,6 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached17,
 /area/desert_dam/exterior/valley/valley_medical)
-"YT" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/platform/metal/almayer,
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/template_noop,
-/area/template_noop)
 "Zr" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
@@ -1042,15 +932,15 @@ dr
 Xk
 Li
 PB
-Yd
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-YT
+SM
+SM
+SM
+SM
+SM
+SM
+SM
+SM
+SM
 Td
 Yn
 xG
@@ -1068,15 +958,15 @@ dr
 AI
 DN
 Mt
-Yd
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-YT
+SM
+SM
+SM
+SM
+SM
+SM
+SM
+SM
+SM
 rj
 Pj
 ad
@@ -1094,15 +984,15 @@ dr
 Xk
 Li
 PB
-Yd
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-YT
+SM
+SM
+SM
+SM
+SM
+SM
+SM
+SM
+SM
 Td
 Yn
 xG
@@ -1120,15 +1010,15 @@ dr
 Xk
 Li
 PB
-Yd
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-YT
+SM
+SM
+SM
+SM
+SM
+SM
+SM
+SM
+SM
 Td
 Yn
 xG
@@ -1147,13 +1037,13 @@ Xk
 Li
 PB
 SM
-pY
-pY
-pY
-pY
-pY
-pY
-pY
+SM
+SM
+SM
+SM
+SM
+SM
+SM
 SM
 Td
 Yn
@@ -1173,13 +1063,13 @@ Xk
 Li
 PB
 SM
-pY
-pY
-pY
-pY
-pY
-pY
-pY
+SM
+SM
+SM
+SM
+SM
+SM
+SM
 SM
 Td
 Yn
@@ -1199,13 +1089,13 @@ iQ
 DN
 Qt
 SM
-AO
-AO
-pY
-pY
-pY
-AO
-AO
+SM
+SM
+SM
+SM
+SM
+SM
+SM
 SM
 hI
 Pj
@@ -1226,12 +1116,12 @@ EO
 nn
 qn
 bU
-pY
-pY
-pY
-pY
-pY
-pY
+SM
+SM
+SM
+SM
+SM
+SM
 bU
 jJ
 kx
@@ -1252,12 +1142,12 @@ Me
 sA
 dp
 Rb
-pY
-pY
-pY
-pY
-pY
-UD
+SM
+SM
+SM
+SM
+SM
+SM
 RP
 UP
 UP
@@ -1278,12 +1168,12 @@ Ft
 nT
 Zr
 dj
-pY
-pY
-pY
-pY
-pY
-pY
+SM
+SM
+SM
+SM
+SM
+SM
 tn
 Qu
 Qu
@@ -1304,12 +1194,12 @@ dY
 PQ
 sl
 lr
-pY
-pY
-pY
-pY
-pY
-pY
+SM
+SM
+SM
+SM
+SM
+SM
 Iw
 Qu
 Nb
@@ -1330,12 +1220,12 @@ Fd
 fw
 eo
 ZH
-pY
-pY
-pY
-pY
-pY
-xh
+SM
+SM
+SM
+SM
+SM
+SM
 sa
 MB
 tH
@@ -1356,12 +1246,12 @@ jx
 yW
 yW
 WL
-Cn
-Bn
-Bn
-Bn
-Cn
-Cn
+SM
+SM
+SM
+SM
+SM
+SM
 WL
 AT
 iU
@@ -1380,14 +1270,14 @@ Ft
 dr
 ZC
 qn
-Bf
-Ch
-Ch
-pY
-pY
-pY
-Ch
-Ch
+SM
+SM
+SM
+SM
+SM
+SM
+SM
+SM
 SM
 Vh
 Pj
@@ -1406,14 +1296,14 @@ Ft
 dr
 ct
 ds
-GH
-pY
-pY
-pY
-pY
-pY
-pY
-pY
+SM
+SM
+SM
+SM
+SM
+SM
+SM
+SM
 SM
 Td
 Yn
@@ -1432,15 +1322,15 @@ eo
 Km
 ct
 nQ
-LZ
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-YT
+SM
+SM
+SM
+SM
+SM
+SM
+SM
+SM
+SM
 Td
 Yn
 xG
@@ -1458,15 +1348,15 @@ HW
 HW
 IN
 qn
-Yd
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-YT
+SM
+SM
+SM
+SM
+SM
+SM
+SM
+SM
+SM
 Td
 Yn
 xG
@@ -1484,15 +1374,15 @@ Mr
 yt
 qA
 qA
-Yd
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-YT
+SM
+SM
+SM
+SM
+SM
+SM
+SM
+SM
+SM
 Td
 Yn
 xG
@@ -1510,15 +1400,15 @@ RN
 ZM
 Wx
 qA
-Yd
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-YT
+SM
+SM
+SM
+SM
+SM
+SM
+SM
+SM
+SM
 rj
 Pj
 xG
@@ -1536,15 +1426,15 @@ RN
 RN
 RN
 yt
-Yd
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-YT
+SM
+SM
+SM
+SM
+SM
+SM
+SM
+SM
+SM
 Td
 Yn
 xG

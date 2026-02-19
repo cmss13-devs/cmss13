@@ -519,7 +519,7 @@
 		/obj/item/weapon/gun/rifle/mar40/lmg = /obj/item/ammo_magazine/rifle/mar40/lmg,
 		/obj/item/weapon/gun/shotgun/merc = null,
 		/obj/item/weapon/gun/launcher/rocket/anti_tank/disposable = null,
-		/obj/item/weapon/gun/flamer = null,
+		/obj/item/weapon/gun/flamer/m240 = null,
 		/obj/item/weapon/gun/shotgun/combat = null,
 		/obj/item/weapon/gun/pistol/vp78 = /obj/item/ammo_magazine/pistol/vp78,
 		/obj/item/weapon/gun/launcher/grenade/m81/m85a1 = null

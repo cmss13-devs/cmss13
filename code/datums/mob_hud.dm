@@ -344,41 +344,39 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 /mob/proc/handle_xeno_hive_hud(hive_choice, choose_verb = FALSE)
 	var/datum/mob_hud/hud
 	switch(hive_choice)
-		if("xeno_hive_normal")
+		if(XENO_HIVE_NORMAL)
 			hud = GLOB.huds[MOB_HUD_XENO_HIVE_NORMAL]
-		if("xeno_hive_corrupted")
+		if(XENO_HIVE_CORRUPTED)
 			hud = GLOB.huds[MOB_HUD_XENO_HIVE_CORRUPTED]
-		if("xeno_hive_alpha")
+		if(XENO_HIVE_ALPHA)
 			hud = GLOB.huds[MOB_HUD_XENO_HIVE_ALPHA]
-		if("xeno_hive_bravo")
+		if(XENO_HIVE_BRAVO)
 			hud = GLOB.huds[MOB_HUD_XENO_HIVE_BRAVO]
-		if("xeno_hive_charlie")
+		if(XENO_HIVE_CHARLIE)
 			hud = GLOB.huds[MOB_HUD_XENO_HIVE_CHARLIE]
-		if("xeno_hive_delta")
+		if(XENO_HIVE_DELTA)
 			hud = GLOB.huds[MOB_HUD_XENO_HIVE_DELTA]
-		if("xeno_hive_feral")
+		if(XENO_HIVE_FERAL)
 			hud = GLOB.huds[MOB_HUD_XENO_HIVE_FERAL]
-		if("xeno_hive_tamed")
+		if(XENO_HIVE_TAMED)
 			hud = GLOB.huds[MOB_HUD_XENO_HIVE_TAMED]
-		if("xeno_hive_mutated")
+		if(XENO_HIVE_MUTATED)
 			hud = GLOB.huds[MOB_HUD_XENO_HIVE_MUTATED]
-		if("xeno_hive_forsaken")
+		if(XENO_HIVE_FORSAKEN)
 			hud = GLOB.huds[MOB_HUD_XENO_HIVE_FORSAKEN]
-		if("xeno_hive_yautja")
+		if(XENO_HIVE_YAUTJA)
 			hud = GLOB.huds[MOB_HUD_XENO_HIVE_YAUTJA]
-		if("xeno_hive_hunted")
+		if(XENO_HIVE_HUNTED)
 			hud = GLOB.huds[MOB_HUD_XENO_HIVE_HUNTED]
-		if("xeno_hive_renegade")
+		if(XENO_HIVE_RENEGADE)
 			hud = GLOB.huds[MOB_HUD_XENO_HIVE_RENEGADE]
-		if("xeno_hive_tutorial")
+		if(XENO_HIVE_TUTORIAL)
 			hud = GLOB.huds[MOB_HUD_XENO_HIVE_TUTORIAL]
 	if(!hive_choice)
 		CRASH("The hive_choice '[hive_choice]' is not defined. Please define a new hive HUD.")
+	hud.add_hud_to(src, src)
 	if(!choose_verb)
-		hud.add_hud_to(src, src)
 		hud.add_to_hud(src)
-	else
-		hud.add_hud_to(src, src)
 
 //Medical HUDs
 

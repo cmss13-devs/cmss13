@@ -26,8 +26,6 @@
 	var/list/allowed_turf_typecache
 	/// allow typecache for only certain turfs, forbid to allow all but those. allow only certain turfs will take precedence.
 	var/list/forbid_turf_typecache
-	/// We don't need roads where we're going if this is TRUE, allow normal movement in space tiles
-	var/override_allow_spacemove = FALSE
 
 	/**
 	 * Ride check flags defined for the specific riding component types, so we know if we need arms, legs, or whatever.

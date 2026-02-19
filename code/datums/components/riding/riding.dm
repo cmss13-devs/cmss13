@@ -76,7 +76,7 @@
 		restore_position(mob)
 		unequip_buckle_inhands(mob)
 		DISABLE_BITFIELD(mob.flags_atom, NO_ZFALL)
-	if(LAZYLEN(movable_parent.buckled_mobs) == 1)
+	if(LAZYLEN(movable_parent.buckled_mobs) == 1) // mob removal from buckled_mob happens after this signal, so the list will be empty if only 1 mob is in it
 		qdel(src)
 	UnregisterSignal(movable_parent, COMSIG_MOB_MOVE_OR_LOOK, PROC_REF(handle_mob_move_or_look))
 

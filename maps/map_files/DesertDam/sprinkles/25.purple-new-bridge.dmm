@@ -118,12 +118,6 @@
 /area/desert_dam/exterior/rock)
 "aM" = (
 /obj/structure/platform_decoration/metal/almayer,
-/obj/structure/platform_decoration/metal/almayer,
-/turf/template_noop,
-/area/template_noop)
-"aN" = (
-/obj/structure/platform/metal/almayer,
-/obj/structure/platform/metal/almayer,
 /turf/template_noop,
 /area/template_noop)
 "aS" = (
@@ -145,12 +139,9 @@
 "ba" = (
 /obj/structure/platform/metal/almayer/north,
 /obj/structure/platform/metal/almayer/west,
-/obj/structure/platform/metal/almayer/north,
-/obj/structure/platform/metal/almayer/west,
 /turf/template_noop,
 /area/template_noop)
 "bb" = (
-/obj/structure/platform/metal/almayer/north,
 /obj/structure/platform/metal/almayer/north,
 /turf/template_noop,
 /area/template_noop)
@@ -161,34 +152,12 @@
 "bl" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
 /area/desert_dam/exterior/river/riverside_south)
-"bp" = (
-/obj/structure/platform/metal/almayer/east,
-/obj/structure/platform/metal/almayer/east,
-/turf/template_noop,
-/area/template_noop)
-"bq" = (
-/obj/structure/platform/metal/almayer/west,
-/obj/structure/platform/metal/almayer/west,
-/turf/template_noop,
-/area/template_noop)
 "bs" = (
 /obj/structure/platform/metal/almayer/east,
-/obj/structure/platform/metal/almayer,
-/obj/structure/platform/metal/almayer/east,
-/turf/template_noop,
-/area/template_noop)
-"bt" = (
-/obj/structure/platform/metal/almayer/west,
-/obj/structure/platform/metal/almayer,
-/obj/structure/platform/metal/almayer/west,
 /turf/template_noop,
 /area/template_noop)
 "bu" = (
 /obj/structure/platform/metal/almayer,
-/turf/template_noop,
-/area/template_noop)
-"bv" = (
-/obj/structure/platform_decoration/metal/almayer/north,
 /turf/template_noop,
 /area/template_noop)
 "bw" = (
@@ -272,15 +241,15 @@ bB
 bB
 bB
 aM
-bp
-bp
-bp
-bp
-bp
-bp
-bp
-bp
-bp
+bs
+bs
+bs
+bs
+bs
+bs
+bs
+bs
+bs
 bs
 bw
 "}
@@ -295,7 +264,7 @@ bB
 bB
 bB
 bB
-aN
+bu
 bL
 bi
 bi
@@ -319,7 +288,7 @@ bB
 bB
 bB
 bB
-aN
+bu
 bM
 aS
 ai
@@ -343,17 +312,17 @@ bB
 bB
 aJ
 bB
-aN
+bu
 bM
 ak
 ba
-bq
-bq
-bq
-bq
-bq
-bq
-bt
+bA
+bA
+bA
+bA
+bA
+bA
+bA
 bw
 "}
 (5,1,1) = {"
@@ -367,7 +336,7 @@ aD
 aJ
 aJ
 aJ
-aN
+bu
 bM
 ak
 bb
@@ -377,7 +346,7 @@ bB
 bB
 bB
 bB
-bu
+bB
 by
 "}
 (6,1,1) = {"
@@ -401,7 +370,7 @@ bB
 bB
 bB
 bB
-bu
+bB
 bz
 "}
 (7,1,1) = {"
@@ -425,7 +394,7 @@ bB
 bB
 bB
 bB
-bu
+bB
 by
 "}
 (8,1,1) = {"
@@ -449,8 +418,8 @@ bB
 bB
 bB
 bB
-bv
-bA
+bB
+bB
 "}
 (9,1,1) = {"
 ac

@@ -68,11 +68,6 @@
 	},
 /turf/template_noop,
 /area/template_noop)
-"hD" = (
-/obj/structure/platform/metal/almayer/east,
-/obj/structure/platform/metal/almayer,
-/turf/template_noop,
-/area/template_noop)
 "jx" = (
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
@@ -116,9 +111,6 @@
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "pl" = (
-/obj/structure/barricade/handrail/hybrisa/road/plastic/blue{
-	dir = 4
-	},
 /obj/structure/barricade/handrail/hybrisa/road/plastic/blue{
 	dir = 4
 	},
@@ -316,11 +308,6 @@
 /obj/item/ammo_casing,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/south_valley_dam)
-"Mt" = (
-/obj/structure/platform/metal/almayer/west,
-/obj/structure/platform/metal/almayer,
-/turf/template_noop,
-/area/template_noop)
 "MJ" = (
 /obj/structure/barricade/handrail/hybrisa/road/plastic/blue{
 	dir = 4
@@ -369,14 +356,6 @@
 	dir = 8;
 	layer = 3
 	},
-/obj/structure/barricade/handrail/hybrisa/road/plastic/blue{
-	dir = 8;
-	layer = 3
-	},
-/turf/template_noop,
-/area/template_noop)
-"Pv" = (
-/obj/structure/platform/metal/almayer/east,
 /turf/template_noop,
 /area/template_noop)
 "Qj" = (
@@ -393,13 +372,6 @@
 /obj/item/tool/warning_cone{
 	pixel_x = 3;
 	pixel_y = 8
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/barricade/handrail/hybrisa/road/plastic/blue{
-	dir = 8;
-	layer = 3
 	},
 /obj/item/tool/warning_cone{
 	pixel_x = 3;
@@ -453,10 +425,6 @@
 /obj/effect/decal/hybrisa/bloodtrail,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/south_valley_dam)
-"Xg" = (
-/obj/structure/platform/metal/almayer,
-/turf/template_noop,
-/area/template_noop)
 "XW" = (
 /obj/effect/landmark/corpsespawner/colonist/random,
 /obj/effect/decal/cleanable/blood,
@@ -487,43 +455,36 @@
 	pixel_x = 3;
 	pixel_y = 6
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/item/tool/warning_cone{
 	pixel_x = 3;
 	pixel_y = 6
 	},
 /turf/template_noop,
 /area/template_noop)
-"ZX" = (
-/obj/structure/platform/metal/almayer/west,
-/turf/template_noop,
-/area/template_noop)
 
 (1,1,1) = {"
-ZX
-Mt
 BD
 BD
 BD
 BD
 BD
-gO
+BD
+BD
+BD
 "}
 (2,1,1) = {"
 BD
-Xg
+BD
 Dl
 BD
 BD
 BD
 BD
-gO
+BD
 "}
 (3,1,1) = {"
 BD
-Xg
+BD
 xM
 BD
 zV
@@ -532,14 +493,14 @@ BD
 YM
 "}
 (4,1,1) = {"
-Pv
-hD
+BD
+BD
 pl
 pl
 pl
 BD
 BD
-gO
+BD
 "}
 (5,1,1) = {"
 tQ
@@ -572,8 +533,8 @@ Wi
 nd
 "}
 (8,1,1) = {"
-ZX
-Mt
+BD
+BD
 BD
 BD
 pY
@@ -583,7 +544,7 @@ gO
 "}
 (9,1,1) = {"
 BD
-Xg
+BD
 BD
 BD
 fB
@@ -592,8 +553,8 @@ ys
 gO
 "}
 (10,1,1) = {"
-Pv
-hD
+BD
+BD
 BD
 BD
 BD
@@ -632,18 +593,18 @@ CE
 nE
 "}
 (14,1,1) = {"
-ZX
-Mt
+BD
+BD
 BD
 Pr
 Pr
 eI
 BD
-gO
+BD
 "}
 (15,1,1) = {"
 BD
-Xg
+BD
 Ha
 BD
 BD
@@ -653,23 +614,23 @@ RM
 "}
 (16,1,1) = {"
 BD
-Xg
+BD
 BD
 BD
 BD
 uS
 BD
-gO
+BD
 "}
 (17,1,1) = {"
-Pv
-hD
 BD
 BD
 BD
 BD
 BD
-gO
+BD
+BD
+BD
 "}
 (18,1,1) = {"
 Ly

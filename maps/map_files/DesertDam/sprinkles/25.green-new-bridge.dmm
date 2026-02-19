@@ -3,11 +3,6 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_bridge)
-"ab" = (
-/obj/structure/platform/metal/almayer/north,
-/obj/structure/platform/metal/almayer/west,
-/turf/template_noop,
-/area/template_noop)
 "af" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/desert_dam/exterior/valley/valley_bridge)
@@ -26,10 +21,6 @@
 "aj" = (
 /turf/closed/wall/rock/orange,
 /area/desert_dam/exterior/rock)
-"al" = (
-/obj/structure/platform_decoration/metal/almayer/east,
-/turf/template_noop,
-/area/template_noop)
 "an" = (
 /obj/structure/platform/metal/almayer/east,
 /turf/template_noop,
@@ -63,28 +54,7 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_bridge)
-"au" = (
-/obj/structure/platform_decoration/metal/almayer/west,
-/turf/template_noop,
-/area/template_noop)
-"av" = (
-/obj/structure/platform/metal/almayer/east,
-/obj/structure/platform/metal/almayer/north,
-/obj/structure/platform/metal/almayer/east,
-/turf/template_noop,
-/area/template_noop)
-"ay" = (
-/obj/structure/platform/metal/almayer/west,
-/obj/structure/platform/metal/almayer/north,
-/obj/structure/platform/metal/almayer/west,
-/turf/template_noop,
-/area/template_noop)
-"az" = (
-/obj/structure/platform/metal/almayer/north,
-/turf/template_noop,
-/area/template_noop)
 "aI" = (
-/obj/structure/platform/metal/almayer/west,
 /obj/structure/platform/metal/almayer/west,
 /turf/template_noop,
 /area/template_noop)
@@ -94,7 +64,6 @@
 /turf/template_noop,
 /area/template_noop)
 "aQ" = (
-/obj/structure/platform/metal/almayer/east,
 /obj/structure/platform/metal/almayer,
 /obj/structure/platform/metal/almayer,
 /obj/structure/platform/metal/almayer/east,
@@ -105,15 +74,8 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/template_noop)
 "aS" = (
-/obj/structure/platform/metal/almayer/west,
-/obj/structure/platform/metal/almayer,
 /obj/structure/platform/metal/almayer,
 /obj/structure/platform/metal/almayer/west,
-/turf/template_noop,
-/area/template_noop)
-"aT" = (
-/obj/structure/platform/metal/almayer,
-/obj/structure/platform/metal/almayer,
 /turf/template_noop,
 /area/template_noop)
 "aU" = (
@@ -187,7 +149,6 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
 /area/desert_dam/exterior/valley/valley_medical)
 "bm" = (
-/obj/structure/platform/metal/almayer,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/valley/valley_medical)
 "bn" = (
@@ -213,7 +174,7 @@
 
 (1,1,1) = {"
 aa
-az
+aV
 aV
 aV
 aV
@@ -227,8 +188,8 @@ bi
 aY
 "}
 (2,1,1) = {"
-ab
-al
+aV
+aV
 aV
 aV
 aV
@@ -242,7 +203,7 @@ bi
 aY
 "}
 (3,1,1) = {"
-al
+aV
 aV
 aV
 aV
@@ -287,9 +248,9 @@ bj
 bo
 "}
 (6,1,1) = {"
-an
-an
-au
+aV
+aV
+aV
 aV
 aV
 aV
@@ -304,12 +265,12 @@ bp
 (7,1,1) = {"
 aa
 aa
-av
-aX
-aX
-aX
-aX
-aX
+an
+an
+an
+an
+an
+an
 aQ
 aY
 be
@@ -349,7 +310,7 @@ aY
 (10,1,1) = {"
 ah
 aq
-ay
+aI
 aI
 aI
 aI
@@ -364,13 +325,13 @@ aY
 (11,1,1) = {"
 ai
 ar
-az
 aV
 aV
 aV
 aV
 aV
-aT
+aV
+aU
 aY
 bg
 bf
@@ -379,13 +340,13 @@ aZ
 (12,1,1) = {"
 aj
 as
-az
 aV
 aV
 aV
 aV
 aV
-aU
+aV
+aV
 aY
 bg
 bf
@@ -394,13 +355,13 @@ bf
 (13,1,1) = {"
 aj
 aa
-az
 aV
 aV
 aV
 aV
 aV
-aU
+aV
+aV
 aY
 bg
 bf
@@ -409,13 +370,13 @@ bf
 (14,1,1) = {"
 aj
 aa
-az
 aV
 aV
 aV
 aV
 aV
-aU
+aV
+aV
 bb
 bh
 bn

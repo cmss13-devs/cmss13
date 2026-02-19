@@ -1,4 +1,4 @@
-// For any /obj/vehicle's that can be ridden
+// TG code for vehicles, maybe move our vehicles over to this some day
 
 /datum/component/riding/vehicle/Initialize(mob/living/riding_mob, force = FALSE, ride_check_flags = (RIDER_NEEDS_LEGS | RIDER_NEEDS_ARMS))
 	if(!isVehicle(parent))

@@ -382,6 +382,15 @@
 	},
 /turf/open/desert/dirt,
 /area/event/dynamic/lit)
+"bj" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 4
+	},
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_civilian)
+"bk" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached16,
+/area/desert_dam/exterior/valley/valley_civilian)
 "bl" = (
 /obj/structure/largecrate/random,
 /turf/open/floor/prison,
@@ -840,7 +849,7 @@
 /area/desert_dam/building/cafeteria/backroom)
 "hX" = (
 /obj/structure/window/framed/colony,
-/turf/open/floor/prison/sterile_white,
+/turf/open/floor/plating,
 /area/desert_dam/building/cafeteria/cafeteria)
 "ia" = (
 /obj/structure/barricade/sandbags/wired{
@@ -886,7 +895,8 @@
 /obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
 	name = "Remote dropship navigation computer";
 	req_one_access = null;
-	faction = "UPP"
+	faction = "UPP";
+	dir = 1
 	},
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/strata/blue3/north,
@@ -1387,7 +1397,7 @@
 	dir = 8
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/asphalt/cement_sunbleached,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/desert_dam/exterior/valley/valley_civilian)
 "qS" = (
 /obj/structure/disposalpipe/segment{
@@ -1887,9 +1897,6 @@
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 1
 	},
-/obj/effect/decal/sand_overlay/sand1/corner1{
-	dir = 1
-	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_civilian)
 "zk" = (
@@ -1943,9 +1950,6 @@
 /turf/open/floor/strata/floor2,
 /area/event/metal/dynamic/lit)
 "Ah" = (
-/obj/structure/bed/chair{
-	dir = 8
-	},
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/strata/blue3/north,
 /area/event/metal/dynamic/lit)
@@ -2046,7 +2050,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
 	},
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
 /area/desert_dam/exterior/valley/valley_civilian)
 "Cm" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -2368,7 +2372,7 @@
 /area/desert_dam/building/mining/workshop_foyer)
 "Hv" = (
 /obj/structure/fence,
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached17,
 /area/event/dynamic/lit)
 "Hw" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -3159,7 +3163,7 @@
 	pixel_y = 26;
 	layer = 2.7
 	},
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached20,
 /area/event/dynamic/lit)
 "Uf" = (
 /obj/item/reagent_container/glass/bucket/mopbucket{
@@ -3281,13 +3285,6 @@
 "Wh" = (
 /turf/open/floor/prison/darkyellowcorners2/west,
 /area/desert_dam/building/mining/workshop)
-"Wo" = (
-/obj/effect/decal/sand_overlay/sand1/corner1,
-/obj/effect/decal/sand_overlay/sand1{
-	dir = 8
-	},
-/turf/open/asphalt/tile,
-/area/event/dynamic/lit)
 "Wt" = (
 /obj/effect/decal/sand_overlay/sand1/corner1,
 /obj/structure/barricade/wooden{
@@ -3342,10 +3339,6 @@
 /obj/structure/machinery/vending/cola,
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/building/cafeteria/cafeteria)
-"Yc" = (
-/obj/effect/decal/sand_overlay/sand1,
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
-/area/desert_dam/exterior/valley/valley_civilian)
 "Yd" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 5
@@ -3353,6 +3346,9 @@
 /turf/open/asphalt/tile,
 /area/event/dynamic/lit)
 "Ye" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
 /turf/open/floor/strata/blue3/north,
 /area/event/metal/dynamic/lit)
 "Yi" = (
@@ -3360,11 +3356,6 @@
 	icon_state = "stop_decal5"
 	},
 /turf/open/asphalt,
-/area/desert_dam/exterior/valley/valley_civilian)
-"Yj" = (
-/obj/effect/decal/sand_overlay/sand1/corner1,
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_civilian)
 "Ym" = (
 /obj/effect/decal/cleanable/dirt,
@@ -4541,7 +4532,7 @@ ee
 zP
 Qu
 ff
-hX
+QR
 si
 fL
 Qq
@@ -4554,7 +4545,7 @@ Qq
 bc
 QR
 QR
-bH
+bj
 Fu
 Wa
 Ou
@@ -5046,7 +5037,7 @@ vD
 nU
 IH
 Fu
-bH
+Jf
 Iy
 Iy
 YC
@@ -5439,7 +5430,7 @@ BW
 BW
 BW
 BW
-Fu
+bk
 Wa
 vD
 nU
@@ -5517,7 +5508,7 @@ vD
 IH
 bH
 Ns
-bH
+bV
 Iy
 Iy
 Iy
@@ -5871,7 +5862,7 @@ vD
 vD
 vD
 IH
-Yc
+Mf
 kS
 Wy
 SR
@@ -5958,7 +5949,7 @@ gK
 xc
 Hv
 gK
-Hv
+xc
 Hv
 gK
 Uc
@@ -6015,7 +6006,7 @@ Ga
 Ga
 Ga
 Ga
-Wo
+Ga
 Ga
 Ga
 Ga
@@ -6214,7 +6205,7 @@ uw
 Xu
 BW
 BW
-Yj
+kS
 mU
 uW
 AW

@@ -243,6 +243,16 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
 /area/desert_dam/exterior/valley/valley_medical)
+"gL" = (
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/platform/metal/almayer/north,
+/obj/effect/blocker/water/toxic/Group_1,
+/turf/template_noop,
+/area/template_noop)
 "gQ" = (
 /turf/closed/wall/r_wall,
 /area/desert_dam/exterior/valley/valley_medical)
@@ -672,6 +682,15 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
+"yC" = (
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/effect/blocker/water/toxic/Group_1,
+/turf/template_noop,
+/area/template_noop)
 "yE" = (
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
@@ -1522,10 +1541,10 @@ OX
 OX
 PZ
 Xd
-wf
-wf
-wf
-wf
+gL
+yC
+yC
+yC
 "}
 (2,1,1) = {"
 Fj
@@ -1545,10 +1564,10 @@ lg
 lg
 gQ
 PZ
-wf
-wf
-wf
-wf
+gL
+yC
+yC
+yC
 "}
 (3,1,1) = {"
 Yq
@@ -1568,10 +1587,10 @@ cG
 cG
 lg
 MV
-wf
-wf
-wf
-wf
+gL
+yC
+yC
+yC
 "}
 (4,1,1) = {"
 Ih
@@ -1591,10 +1610,10 @@ cG
 cG
 lg
 MV
-wf
-wf
-wf
-wf
+gL
+yC
+yC
+yC
 "}
 (5,1,1) = {"
 cG
@@ -1614,10 +1633,10 @@ Iu
 cG
 lg
 MV
-wf
-wf
-wf
-wf
+gL
+yC
+yC
+yC
 "}
 (6,1,1) = {"
 rC
@@ -1637,10 +1656,10 @@ hp
 cG
 lg
 MV
-wf
-wf
-wf
-wf
+gL
+yC
+yC
+yC
 "}
 (7,1,1) = {"
 NH
@@ -1660,10 +1679,10 @@ vb
 cG
 lg
 MV
-wf
-wf
-wf
-wf
+gL
+yC
+yC
+yC
 "}
 (8,1,1) = {"
 Yq
@@ -1684,9 +1703,9 @@ cG
 lg
 MV
 wf
-wf
-wf
-wf
+yC
+yC
+yC
 "}
 (9,1,1) = {"
 aW
@@ -1707,9 +1726,9 @@ ag
 gQ
 XO
 wf
-wf
-wf
-wf
+yC
+yC
+yC
 "}
 (10,1,1) = {"
 Ch
@@ -1731,8 +1750,8 @@ lg
 MV
 wf
 wf
-wf
-wf
+yC
+yC
 "}
 (11,1,1) = {"
 Uj
@@ -1755,7 +1774,7 @@ MV
 wf
 wf
 wf
-wf
+yC
 "}
 (12,1,1) = {"
 Uj

@@ -3,6 +3,17 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_bridge)
+"ab" = (
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/west,
+/obj/effect/blocker/water/toxic/Group_2,
+/turf/template_noop,
+/area/template_noop)
 "af" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/desert_dam/exterior/valley/valley_bridge)
@@ -21,6 +32,26 @@
 "aj" = (
 /turf/closed/wall/rock/orange,
 /area/desert_dam/exterior/rock)
+"al" = (
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/platform_decoration/metal/almayer/east,
+/obj/effect/blocker/water/toxic/Group_2,
+/turf/template_noop,
+/area/template_noop)
+"an" = (
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/platform/metal/almayer/east,
+/obj/effect/blocker/water/toxic/Group_2,
+/turf/template_noop,
+/area/template_noop)
 "ao" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
@@ -50,37 +81,163 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_bridge)
+"au" = (
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/platform_decoration/metal/almayer/west,
+/obj/effect/blocker/water/toxic/Group_2,
+/turf/template_noop,
+/area/template_noop)
+"av" = (
+/obj/structure/platform/metal/almayer/east,
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/platform/metal/almayer/north,
+/obj/effect/blocker/water/toxic/Group_2,
+/obj/structure/platform/metal/almayer/east,
+/turf/template_noop,
+/area/template_noop)
+"ay" = (
+/obj/structure/platform/metal/almayer/west,
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/platform/metal/almayer/north,
+/obj/effect/blocker/water/toxic/Group_2,
+/obj/structure/platform/metal/almayer/west,
+/turf/template_noop,
+/area/template_noop)
+"az" = (
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/platform/metal/almayer/north,
+/obj/effect/blocker/water/toxic/Group_2,
+/turf/template_noop,
+/area/template_noop)
+"aC" = (
+/obj/structure/platform/metal/almayer/east,
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/effect/blocker/water/toxic/Group_2,
+/obj/structure/platform/metal/almayer/east,
+/turf/template_noop,
+/area/template_noop)
 "aI" = (
 /obj/structure/platform/metal/almayer/west,
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/effect/blocker/water/toxic/Group_2,
+/obj/structure/platform/metal/almayer/west,
+/turf/template_noop,
+/area/template_noop)
+"aO" = (
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/effect/blocker/water/toxic/Group_2,
+/obj/effect/blocker/water/toxic/Group_2,
 /turf/template_noop,
 /area/template_noop)
 "aP" = (
 /obj/structure/platform_decoration/metal/almayer,
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/platform_decoration/metal/almayer,
+/obj/effect/blocker/water/toxic/Group_2,
 /turf/template_noop,
 /area/template_noop)
 "aQ" = (
 /obj/structure/platform/metal/almayer/east,
 /obj/structure/platform/metal/almayer,
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/platform/metal/almayer,
+/obj/effect/blocker/water/toxic/Group_2,
+/obj/structure/platform/metal/almayer/east,
 /turf/template_noop,
 /area/template_noop)
 "aR" = (
-/obj/effect/blocker/toxic_water/Group_2,
+/obj/effect/blocker/water/toxic/Group_2,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/template_noop)
 "aS" = (
 /obj/structure/platform/metal/almayer/west,
 /obj/structure/platform/metal/almayer,
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/effect/blocker/water/toxic/Group_2,
+/obj/structure/platform/metal/almayer,
+/obj/structure/platform/metal/almayer/west,
 /turf/template_noop,
 /area/template_noop)
 "aT" = (
 /obj/structure/platform/metal/almayer,
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/platform/metal/almayer,
+/obj/effect/blocker/water/toxic/Group_2,
+/turf/template_noop,
+/area/template_noop)
+"aU" = (
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/platform/metal/almayer,
+/obj/effect/blocker/water/toxic/Group_2,
+/obj/effect/blocker/water/toxic/Group_2,
 /turf/template_noop,
 /area/template_noop)
 "aV" = (
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/effect/blocker/water/toxic/Group_2,
 /turf/template_noop,
 /area/template_noop)
 "aX" = (
 /obj/structure/platform/metal/almayer/east,
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/platform/metal/almayer/east,
+/obj/effect/blocker/water/toxic/Group_2,
 /turf/template_noop,
 /area/template_noop)
 "aY" = (
@@ -162,13 +319,23 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/desert_dam/exterior/valley/valley_medical)
 "bq" = (
-/obj/effect/blocker/toxic_water/Group_2,
+/obj/effect/blocker/water/toxic/Group_2,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
+/area/template_noop)
+"br" = (
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/platform/metal/almayer,
+/obj/effect/blocker/water/toxic/Group_2,
+/turf/template_noop,
 /area/template_noop)
 
 (1,1,1) = {"
 aa
-aV
+az
 aV
 aV
 aV
@@ -182,22 +349,22 @@ bi
 aY
 "}
 (2,1,1) = {"
+ab
+al
 aV
 aV
 aV
 aV
 aV
 aV
-aV
-aV
-aV
+aO
 aV
 bc
 bi
 aY
 "}
 (3,1,1) = {"
-aV
+al
 aV
 aV
 aV
@@ -242,9 +409,9 @@ bj
 bo
 "}
 (6,1,1) = {"
-aV
-aV
-aV
+an
+an
+au
 aV
 aV
 aV
@@ -259,12 +426,12 @@ bp
 (7,1,1) = {"
 aa
 aa
-aX
-aX
-aX
-aX
-aX
-aX
+av
+aC
+aC
+aC
+aC
+aC
 aQ
 aY
 be
@@ -304,7 +471,7 @@ aY
 (10,1,1) = {"
 ah
 aq
-aI
+ay
 aI
 aI
 aI
@@ -319,7 +486,7 @@ aY
 (11,1,1) = {"
 ai
 ar
-aV
+az
 aV
 aV
 aV
@@ -334,13 +501,13 @@ aZ
 (12,1,1) = {"
 aj
 as
+az
 aV
 aV
 aV
 aV
 aV
-aV
-aV
+aU
 aY
 bg
 bf
@@ -349,13 +516,13 @@ bf
 (13,1,1) = {"
 aj
 aa
+az
 aV
 aV
 aV
 aV
 aV
-aV
-aV
+br
 aY
 bg
 bf
@@ -364,13 +531,13 @@ bf
 (14,1,1) = {"
 aj
 aa
+az
 aV
 aV
 aV
 aV
 aV
-aV
-aV
+br
 bb
 bh
 bn

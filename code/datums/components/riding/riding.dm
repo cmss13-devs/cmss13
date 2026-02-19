@@ -132,10 +132,6 @@
 	if(!keytype)
 		return TRUE
 
-	//if(isVehicle(parent))
-	//	var/obj/vehicle/vehicle_parent = parent
-	//	return istype(vehicle_parent.inserted_key, keytype)
-
 	return user.is_holding_item_of_type(keytype, mainhand=FALSE)
 
 //BUCKLE HOOKS

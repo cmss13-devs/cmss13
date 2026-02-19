@@ -60,11 +60,9 @@
 /area/template_noop)
 "aP" = (
 /obj/structure/platform_decoration/metal/almayer,
-/obj/structure/platform_decoration/metal/almayer,
 /turf/template_noop,
 /area/template_noop)
 "aQ" = (
-/obj/structure/platform/metal/almayer,
 /obj/structure/platform/metal/almayer,
 /obj/structure/platform/metal/almayer/east,
 /turf/template_noop,
@@ -83,11 +81,6 @@
 /turf/template_noop,
 /area/template_noop)
 "aV" = (
-/turf/template_noop,
-/area/template_noop)
-"aX" = (
-/obj/structure/platform/metal/almayer/east,
-/obj/structure/platform/metal/almayer/east,
 /turf/template_noop,
 /area/template_noop)
 "aY" = (
@@ -257,7 +250,7 @@ aV
 aV
 aV
 aP
-aX
+an
 bd
 bk
 bp

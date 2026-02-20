@@ -13,7 +13,7 @@
 		qdel(src)
 		return
 	owner = client
-	RegisterSignal(owner.mob, COMSIG_MOVABLE_MOVED, PROC_REF(on_mob_moved))
+	RegisterSignal(owner.mob, COMSIG_MOVABLE_MOVED, PROC_REF(on_mob_moved), override = TRUE)
 	RegisterSignal(owner.mob, COMSIG_MOB_LOGOUT, PROC_REF(on_mob_logout))
 	RegisterSignal(owner, COMSIG_CLIENT_MOB_LOGGED_IN, PROC_REF(on_client_mob_logged_in))
 	return ..()
@@ -179,7 +179,7 @@
 
 /datum/soundOutput/proc/on_client_mob_logged_in(datum/source, mob/new_mob)
 	SIGNAL_HANDLER //COMSIG_CLIENT_MOB_LOGGED_IN
-	RegisterSignal(owner.mob, COMSIG_MOVABLE_MOVED, PROC_REF(on_mob_moved))
+	RegisterSignal(owner.mob, COMSIG_MOVABLE_MOVED, PROC_REF(on_mob_moved), override = TRUE)
 	RegisterSignal(owner.mob, COMSIG_MOB_LOGOUT, PROC_REF(on_mob_logout))
 	update_mob_environment_override()
 

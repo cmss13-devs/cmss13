@@ -187,7 +187,7 @@
 	assignment = JOB_CMB_SYN
 	job_title = JOB_CMB_SYN
 	minimap_background = "background_cmb"
-	minimap_icon = "cmb_syn"
+	minimap_icon = "pmc_syn"
 
 	paygrades = list(PAY_SHORT_CMBS = JOB_PLAYTIME_TIER_0)
 	faction = FACTION_MARSHAL

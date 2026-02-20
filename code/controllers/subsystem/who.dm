@@ -225,7 +225,7 @@ SUBSYSTEM_DEF(who)
 		listings["Maintainers"] = list(R_PROFILER, list())
 	listings["Administrators"] = list(R_ADMIN, list())
 	if(CONFIG_GET(flag/show_mods))
-		listings["Moderators"] = list(R_MOD|R_BAN, list())
+		listings["Moderators"] = list(R_MOD, list())
 	if(CONFIG_GET(flag/show_mentors))
 		listings["Mentors"] = list(R_MENTOR, list())
 

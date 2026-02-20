@@ -20,6 +20,7 @@
 	tacklestrength_min = 4
 	tacklestrength_max = 5
 
+	evolution_allowed = FALSE
 	deevolves_to = list(XENO_CASTE_LURKER)
 	caste_desc = "A brutal, devastating front-line attacker."
 	fire_immunity = FIRE_IMMUNITY_NO_DAMAGE|FIRE_IMMUNITY_XENO_FRENZY
@@ -30,7 +31,6 @@
 		/datum/xeno_strain/hedgehog,
 	)
 	behavior_delegate_type = /datum/behavior_delegate/ravager_base
-	unlocked = FALSE
 
 	minimap_icon = "ravager"
 

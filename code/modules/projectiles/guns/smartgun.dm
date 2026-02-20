@@ -932,6 +932,10 @@
 		/datum/action/item_action/smartgun/toggle_recoil_compensation,
 	)
 
+/obj/item/weapon/gun/smartgun/autoaim/Initialize(mapload, ...)
+	. = ..()
+	toggle_aim_assist(null, TRUE)
+
 //TERMINATOR SMARTGUN
 /obj/item/weapon/gun/smartgun/terminator
 	name = "\improper M57R 'Terminator' smartgun"

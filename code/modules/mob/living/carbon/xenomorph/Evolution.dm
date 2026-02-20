@@ -35,7 +35,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	castes_available -= hive.blacklisted_castes
 
 	for(var/caste in castes_available)
-		if((GLOB.xeno_datum_list[caste].caste_type) in XENO_T3_CASTES && !src.hive.tier_3_unlocked)
+		if((GLOB.xeno_datum_list[caste].caste_type in XENO_T3_CASTES) && !src.hive.tier_3_unlocked)
 			castes_available -= caste
 		else
 			if(GLOB.xeno_datum_list[caste].minimum_evolve_time > ROUND_TIME)

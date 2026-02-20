@@ -339,6 +339,8 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 
 /// Handle dropship hud update
 /mob/living/proc/init_dropship_hud_tracking()
+	UnregisterSignal(src, COMSIG_MOVABLE_ENTERED_DROPSHIP)
+	UnregisterSignal(src, COMSIG_MOVABLE_EXITED_DROPSHIP)
 	RegisterSignal(src, COMSIG_MOVABLE_ENTERED_DROPSHIP, PROC_REF(on_dropship_area_entered))
 	RegisterSignal(src, COMSIG_MOVABLE_EXITED_DROPSHIP, PROC_REF(on_dropship_area_exited))
 

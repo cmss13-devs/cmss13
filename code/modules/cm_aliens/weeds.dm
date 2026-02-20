@@ -687,10 +687,10 @@
 	icon_state = "constructnode"
 
 /obj/effect/resin_construct/construct_doorslow
-	icon_state = "DoorConstrucSlow"
+	icon_state = "BoundDoorSlow"
 
 /obj/effect/resin_construct/construct_wallslow
-	icon_state = "WeakConstructSlow"
+	icon_state = "BoundWallSlow"
 
 /obj/effect/resin_construct/thickfast
 	icon_state = "ThickConstructFast"

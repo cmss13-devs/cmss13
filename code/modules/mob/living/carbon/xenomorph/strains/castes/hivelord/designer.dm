@@ -76,21 +76,21 @@
 			xeno.set_action_cursor('icons/effects/mouse_pointer/designer/spd_wall_mouse.dmi')
 		else
 			xeno.set_action_cursor('icons/effects/mouse_pointer/designer/spd_door_mouse.dmi')
+		return
 
 	if(xeno.selected_design == /obj/effect/alien/resin/design/cost_node)
 		if(xeno.selected_design_mark == /datum/design_mark/resin_wall)
 			xeno.set_action_cursor('icons/effects/mouse_pointer/designer/cost_wall_mouse.dmi')
 		else
 			xeno.set_action_cursor('icons/effects/mouse_pointer/designer/cost_door_mouse.dmi')
+		return
 
 	if(xeno.selected_design == /obj/effect/alien/resin/design/construct_node)
 		if(xeno.selected_design_mark == /datum/design_mark/resin_wall)
 			xeno.set_action_cursor('icons/effects/mouse_pointer/designer/const_wall_mouse.dmi')
 		else
 			xeno.set_action_cursor('icons/effects/mouse_pointer/designer/const_door_mouse.dmi')
-
-	if(xeno.selected_design == /obj/effect/alien/resin/design/upgrade || xeno.selected_design == /obj/effect/alien/resin/design/remove)
-		xeno.clear_action_cursor()
+		return
 
 //////////////////////////
 ///   Change Design    ///
@@ -140,9 +140,11 @@
 			des = TRUE
 		if("Thicken Resin (60)")
 			xeno.selected_design = /obj/effect/alien/resin/design/upgrade
+			xeno.set_action_cursor('icons/effects/mouse_pointer/designer/upgrade_mouse.dmi')
 			rem = TRUE
 		if("Remove Node (25)")
 			xeno.selected_design = /obj/effect/alien/resin/design/remove
+			xeno.set_action_cursor('icons/effects/mouse_pointer/designer/remove_mouse.dmi')
 			rem = TRUE
 		if("Open Old UI")
 			tgui_interact(xeno)
@@ -983,15 +985,6 @@
 
 /obj/effect/alien/resin/design/construct_node/attackby(obj/item/item, mob/user)
 	if(isxeno(user) && user.a_intent != INTENT_HARM)
-		if(istype(item, /obj/item/reagent_container/food/snacks/resin_fruit/plasma))
-			to_chat(user, SPAN_NOTICE("We squeeze plasma fruit juices on node, activating its growth."))
-			qdel(item)
-			thick_build = TRUE
-
-			var/mob/living/carbon/xenomorph/xeno = user
-			begin_construction(xeno)
-			return
-
 		//Do NOT call attack_hand here — that bypasses destruction
 		to_chat(user, SPAN_NOTICE("You examine the node curiously, but nothing happens."))
 		return

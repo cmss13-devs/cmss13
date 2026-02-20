@@ -534,7 +534,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/smartgun_battery, WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/vp78, WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/vp78, WEAR_IN_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun/terminator/low_threat, WEAR_J_STORE) // normal smartgun with autoaim, no irradiated rounds here, sorry pal
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun/l56a2, WEAR_J_STORE) // normal smartgun with autoaim, no irradiated rounds here, sorry pal
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m56_goggles, WEAR_EYES)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_sg, WEAR_L_STORE)
 

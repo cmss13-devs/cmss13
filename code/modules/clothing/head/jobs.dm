@@ -101,7 +101,7 @@
 
 /obj/item/clothing/head/surgery/blue
 	name = "blue surgical cap"
-	desc = "A cap doctors wear during operations. Keeps their hair from tickling your internal organs. This one reminds you of blueberries. "
+	desc = "A cap doctors wear during operations. Keeps their hair from tickling your internal organs. This one reminds you of blueberries."
 	icon_state = "surgcap_blue"
 
 /obj/item/clothing/head/surgery/lightblue
@@ -111,7 +111,7 @@
 
 /obj/item/clothing/head/surgery/green
 	name = "green surgical cap"
-	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. This one matches medbay's color scheme, jade green."
+	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. This one matches the medbay's color scheme, jade green."
 	icon_state = "surgcap_green"
 
 /obj/item/clothing/head/surgery/morgue

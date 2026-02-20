@@ -1,4 +1,5 @@
 /obj/structure/pipes/multiz
+	icon = 'icons/obj/pipes/pipes.dmi'
 	icon_state = "cap"
 	var/multiz_direction = UP
 

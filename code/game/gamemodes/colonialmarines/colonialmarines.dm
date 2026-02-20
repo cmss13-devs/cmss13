@@ -129,211 +129,11 @@
 
 	addtimer(CALLBACK(src, PROC_REF(ares_online)), 5 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(map_announcement)), 20 SECONDS)
-	addtimer(CALLBACK(src, PROC_REF(start_lz_hazards)), DISTRESS_LZ_HAZARD_START)
 	addtimer(CALLBACK(src, PROC_REF(ares_command_check)), 2 MINUTES)
 	addtimer(CALLBACK(SSentity_manager, TYPE_PROC_REF(/datum/controller/subsystem/entity_manager, select), /datum/entity/survivor_survival), 7 MINUTES)
 	GLOB.chemical_data.reroll_chemicals()
 
 	return ..()
-
-/datum/game_mode/colonialmarines/ds_first_landed(obj/docking_port/stationary/marine_dropship)
-	. = ..()
-	clear_lz_hazards() // This shouldn't normally do anything, but is here just in case
-
-	// Assumption: Shuttle origin is its center
-	// Assumption: dwidth is atleast 2 and dheight is atleast 4 otherwise there will be overlap
-	var/list/options = list()
-	var/list/structures_to_break = list(/obj/structure/barricade, /obj/structure/surface/table, /obj/structure/bed)
-	var/bottom = marine_dropship.y - marine_dropship.dheight - 2
-	var/top = marine_dropship.y + marine_dropship.dheight + 2
-	var/left = marine_dropship.x - marine_dropship.dwidth - 2
-	var/right = marine_dropship.x + marine_dropship.dwidth + 2
-	var/z = marine_dropship.z
-
-	var/dropship_type = marine_dropship.type
-
-	// Bottom left
-	if(GLOB.sentry_spawns[dropship_type]?[SENTRY_BOTTOM_LEFT])
-		options += GLOB.sentry_spawns[dropship_type][SENTRY_BOTTOM_LEFT]
-	else
-		options += get_valid_sentry_turfs(left, bottom, z, width=5, height=2, structures_to_ignore=structures_to_break)
-		options += get_valid_sentry_turfs(left, bottom + 2, z, width=2, height=6, structures_to_ignore=structures_to_break)
-	spawn_lz_sentry(pick(options), structures_to_break)
-
-	// Bottom right
-	options.Cut()
-	if(GLOB.sentry_spawns[dropship_type]?[SENTRY_BOTTOM_RIGHT])
-		options += GLOB.sentry_spawns[dropship_type][SENTRY_BOTTOM_RIGHT]
-	else
-		options += get_valid_sentry_turfs(right-4, bottom, z, width=5, height=2, structures_to_ignore=structures_to_break)
-		options += get_valid_sentry_turfs(right-1, bottom + 2, z, width=2, height=6, structures_to_ignore=structures_to_break)
-	spawn_lz_sentry(pick(options), structures_to_break)
-
-	// Top left
-	options.Cut()
-	if(GLOB.sentry_spawns[dropship_type]?[SENTRY_TOP_LEFT])
-		options += GLOB.sentry_spawns[dropship_type][SENTRY_TOP_LEFT]
-	else
-		options += get_valid_sentry_turfs(left, top-1, z, width=5, height=2, structures_to_ignore=structures_to_break)
-		options += get_valid_sentry_turfs(left, top-7, z, width=2, height=6, structures_to_ignore=structures_to_break)
-	spawn_lz_sentry(pick(options), structures_to_break)
-
-	// Top right
-	options.Cut()
-	if(GLOB.sentry_spawns[dropship_type]?[SENTRY_TOP_RIGHT])
-		options += GLOB.sentry_spawns[dropship_type][SENTRY_TOP_RIGHT]
-	else
-		options += get_valid_sentry_turfs(right-4, top-1, z, width=5, height=2, structures_to_ignore=structures_to_break)
-		options += get_valid_sentry_turfs(right-1, top-7, z, width=2, height=6, structures_to_ignore=structures_to_break)
-	spawn_lz_sentry(pick(options), structures_to_break)
-
-///Returns a list of non-dense turfs using the given block arguments ignoring the provided structure types
-/datum/game_mode/colonialmarines/proc/get_valid_sentry_turfs(left, bottom, z, width, height, list/structures_to_ignore)
-	var/valid_turfs = list()
-	for(var/turf/turf as anything in block(left, bottom, z, left+width-1, bottom+height-1))
-		if(turf.density)
-			continue
-		var/structure_blocking = FALSE
-		for(var/obj/structure/existing_structure in turf)
-			if(!existing_structure.density)
-				continue
-			if(!is_type_in_list(existing_structure, structures_to_ignore))
-				structure_blocking = TRUE
-				break
-		if(structure_blocking)
-			continue
-		valid_turfs += turf
-	return valid_turfs
-
-///Spawns a droppod with a temporary defense sentry at the given turf
-/datum/game_mode/colonialmarines/proc/spawn_lz_sentry(turf/target, list/structures_to_break)
-	var/obj/structure/droppod/equipment/sentry_holder/droppod = new(target, /obj/structure/machinery/sentry_holder/landing_zone)
-	droppod.special_structures_to_damage = structures_to_break
-	droppod.special_structure_damage = 500
-	droppod.drop_time = 0
-	droppod.launch(target)
-
-///Creates an OB warning at each LZ to warn of the miasma and then spawns the miasma
-/datum/game_mode/colonialmarines/proc/start_lz_hazards()
-	if(SSobjectives.first_drop_complete)
-		return // Just for sanity
-	if(!MODE_HAS_MODIFIER(/datum/gamemode_modifier/lz_roundstart_miasma))
-		return
-
-	log_game("Distress Signal LZ hazards active!")
-	INVOKE_ASYNC(src, PROC_REF(warn_lz_hazard), locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz1))
-	INVOKE_ASYNC(src, PROC_REF(warn_lz_hazard), locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz2))
-	addtimer(CALLBACK(src, PROC_REF(spawn_lz_hazards)), OB_TRAVEL_TIMING + 1 SECONDS)
-
-///Creates an OB warning at each LZ to warn of the incoming miasma
-/datum/game_mode/colonialmarines/proc/warn_lz_hazard(lz)
-	if(!lz)
-		return
-	var/turf/target = get_turf(lz)
-	if(!target)
-		return
-	var/obj/structure/ob_ammo/warhead/explosive/warhead = new
-	warhead.name = "\improper CN20-X miasma warhead"
-	warhead.clear_power = 0
-	warhead.clear_falloff = 400
-	warhead.standard_power = 0
-	warhead.standard_falloff = 30
-	warhead.clear_delay = 3
-	warhead.double_explosion_delay = 6
-	warhead.warhead_impact(target) // This is a blocking call
-	playsound(target, 'sound/effects/smoke.ogg', vol=50, vary=1, sound_range=75)
-
-///Spawns miasma smoke in landing zones
-/datum/game_mode/colonialmarines/proc/spawn_lz_hazards()
-	var/datum/cause_data/new_cause_data = create_cause_data("CN20-X miasma")
-	for(var/area/area in GLOB.all_areas)
-		if(!area.is_landing_zone)
-			continue
-		if(!is_ground_level(area.z))
-			continue
-		for(var/turf/turf in area)
-			if(turf.density)
-				if(!istype(turf, /turf/closed/wall))
-					continue
-				var/turf/closed/wall/wall = turf
-				if(wall.turf_flags & TURF_HULL)
-					continue
-			lz_smoke += new /obj/effect/particle_effect/smoke/miasma(turf, null, new_cause_data)
-
-///Clears miasma smoke in landing zones
-/datum/game_mode/colonialmarines/proc/clear_lz_hazards()
-	for(var/obj/effect/particle_effect/smoke/miasma/smoke as anything in lz_smoke)
-		smoke.time_to_live = rand(1, 5)
-	lz_smoke.Cut()
-
-/// Called during the dropship flight, clears resin and indicates to those in flight that resin near the LZ has been cleared.
-/datum/game_mode/colonialmarines/proc/warn_resin_clear(obj/docking_port/mobile/marine_dropship)
-	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/lz_weeding))
-		msg_admin_niche("Skipped weed killer event due to lz_weeding modifier already getting set")
-		return
-
-	clear_proximity_resin()
-
-	var/list/announcement_mobs = list()
-	for(var/area/area in marine_dropship.shuttle_areas)
-		for(var/mob/mob in area)
-			shake_camera(mob, steps = 3, strength = 1)
-			announcement_mobs += mob
-
-	announcement_helper("Dropship [marine_dropship.name] dispersing [/obj/effect/particle_effect/smoke/weedkiller::name] due to potential biological infestation.", MAIN_AI_SYSTEM, announcement_mobs, 'sound/effects/rocketpod_fire.ogg')
-
-/**
- * Clears any built resin in the areas around the landing zone,
- * when the dropship first deploys.
- */
-/datum/game_mode/colonialmarines/proc/clear_proximity_resin()
-	var/datum/cause_data/cause_data = create_cause_data(/obj/effect/particle_effect/smoke/weedkiller::name)
-
-	if(!active_lz)
-		pick_a_lz()
-
-	for(var/area/near_area as anything in GLOB.all_areas)
-		var/area_lz = near_area.linked_lz
-		if(!area_lz)
-			continue
-
-		if(islist(area_lz))
-			if(!(active_lz.linked_lz in area_lz))
-				continue
-
-		else if(area_lz != active_lz.linked_lz)
-			continue
-
-		for(var/turf/turf in near_area)
-			if(turf.density)
-				if(!istype(turf, /turf/closed/wall))
-					continue
-				var/turf/closed/wall/wall = turf
-				if(wall.turf_flags & TURF_HULL)
-					continue
-			new /obj/effect/particle_effect/smoke/weedkiller(turf, null, cause_data)
-
-		near_area.purge_weeds()
-
-	addtimer(CALLBACK(src, PROC_REF(allow_proximity_resin)), near_lz_protection_delay)
-
-/**
- * If the area was previously weedable, and this was disabled by the
- * LZ proximity, re-enable the weedability
- */
-/datum/game_mode/colonialmarines/proc/allow_proximity_resin()
-	for(var/area/near_area as anything in GLOB.all_areas)
-		var/area_lz = near_area.linked_lz
-		if(!area_lz)
-			continue
-
-		if(area_lz != active_lz.linked_lz)
-			continue
-
-		if(initial(near_area.is_resin_allowed) == FALSE)
-			continue
-
-		near_area.is_resin_allowed = TRUE
 
 /datum/game_mode/colonialmarines/proc/spawn_smallhosts()
 	if(!GLOB.players_preassigned)
@@ -564,12 +364,10 @@
 			select_lz(locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz2))
 
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(show_blurb_uscm)), DROPSHIP_DROP_MSG_DELAY)
-	addtimer(CALLBACK(src, PROC_REF(warn_resin_clear), marine_dropship), DROPSHIP_DROP_FIRE_DELAY)
 	DB_ENTITY(/datum/entity/survivor_survival) // Record surv survival right now
 	addtimer(CALLBACK(SSentity_manager, TYPE_PROC_REF(/datum/controller/subsystem/entity_manager, select), /datum/entity/survivor_survival), 7 MINUTES) // And 7 minutes after drop. By then, marines will have found them, most likely
 
 	add_current_round_status_to_end_results("First Drop")
-	clear_lz_hazards()
 
 /**
  * Checks to see who won

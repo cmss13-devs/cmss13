@@ -2,14 +2,10 @@
 // static lookup table for ammo categories
 /proc/get_ammo_category(ammo_type)
 	switch(ammo_type)
-		if(/obj/structure/ship_ammo/rocket)
-			return "Rocket Pod"
-		if(/obj/structure/ship_ammo/rocket/napalm)
-			return "Rocket Pod"
-		if(/obj/structure/ship_ammo/rocket/widowmaker, /obj/structure/ship_ammo/rocket/banshee, /obj/structure/ship_ammo/rocket/keeper, /obj/structure/ship_ammo/rocket/harpoon, /obj/structure/ship_ammo/rocket/thermobaric)
-			return "Rocket Pod"
 		else
-			if(ispath(ammo_type, /obj/structure/ship_ammo/heavygun))
+			if(ispath(ammo_type, /obj/structure/ship_ammo/rocket))
+				return "Rocket Pod"
+			else if(ispath(ammo_type, /obj/structure/ship_ammo/heavygun))
 				return "GAU Cannon"
 			else if(ispath(ammo_type, /obj/structure/ship_ammo/laser_battery))
 				return "Laser Battery"

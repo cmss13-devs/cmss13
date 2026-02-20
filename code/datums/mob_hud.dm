@@ -339,7 +339,6 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 
 /// Handle dropship hud update
 /mob/living/proc/init_dropship_hud_tracking()
-	UnregisterSignal(src, COMSIG_MOVABLE_MOVED)
 	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(on_dropship_area_changed))
 
 
@@ -356,7 +355,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 			continue
 		hud.remove_from_hud(src)
 	// Remove dropship hud
-	UnregisterSignal(src, COMSIG_MOVABLE_MOVED)
+	UnregisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(on_dropship_area_changed))
 
 /mob/living/carbon/xenomorph/remove_from_all_mob_huds()
 	for(var/datum/mob_hud/hud in GLOB.huds)
@@ -369,7 +368,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 			hud.remove_from_hud(src)
 			hud.remove_hud_from(src, src)
 	// Remove dropship hud
-	UnregisterSignal(src, COMSIG_MOVABLE_MOVED)
+	UnregisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(on_dropship_area_changed))
 	if (xeno_hostile_hud)
 		xeno_hostile_hud = FALSE
 		var/datum/mob_hud/hostile_hud = GLOB.huds[MOB_HUD_XENO_HOSTILE]

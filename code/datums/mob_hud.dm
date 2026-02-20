@@ -329,9 +329,6 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 		hud.add_to_hud(src)
 	hud_set_new_player()
 	init_dropship_hud_overlays()
-	// Handle dropship hud update
-	UnregisterSignal(src, COMSIG_MOVABLE_MOVED)
-	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(on_dropship_area_changed))
 
 /mob/living/carbon/xenomorph/add_to_all_mob_huds()
 	var/datum/mob_hud/hud = GLOB.huds[MOB_HUD_XENO_STATUS]
@@ -339,7 +336,9 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 	if(GLOB.huds[MOB_HUD_DROPSHIP])
 		GLOB.huds[MOB_HUD_DROPSHIP].add_to_hud(src)
 	init_dropship_hud_overlays()
-	// Handle dropship hud update
+
+/// Handle dropship hud update
+/mob/living/proc/init_dropship_hud_tracking()
 	UnregisterSignal(src, COMSIG_MOVABLE_MOVED)
 	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(on_dropship_area_changed))
 

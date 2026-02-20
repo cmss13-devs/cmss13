@@ -1,20 +1,18 @@
 
 // static lookup table for ammo categories
 /proc/get_ammo_category(ammo_type)
-	switch(ammo_type)
-		else
-			if(ispath(ammo_type, /obj/structure/ship_ammo/rocket))
-				return "Rocket Pod"
-			else if(ispath(ammo_type, /obj/structure/ship_ammo/heavygun))
-				return "GAU Cannon"
-			else if(ispath(ammo_type, /obj/structure/ship_ammo/laser_battery))
-				return "Laser Battery"
-			else if(ispath(ammo_type, /obj/structure/ship_ammo/minirocket))
-				return "Minirocket Pod"
-			else if(ispath(ammo_type, /obj/structure/ship_ammo/sentry))
-				return "Launch Bay"
-			else
-				return "Uncategorized"
+	if(ispath(ammo_type, /obj/structure/ship_ammo/rocket))
+		return "Rocket Pod"
+	else if(ispath(ammo_type, /obj/structure/ship_ammo/heavygun))
+		return "GAU Cannon"
+	else if(ispath(ammo_type, /obj/structure/ship_ammo/laser_battery))
+		return "Laser Battery"
+	else if(ispath(ammo_type, /obj/structure/ship_ammo/minirocket))
+		return "Minirocket Pod"
+	else if(ispath(ammo_type, /obj/structure/ship_ammo/sentry))
+		return "Launch Bay"
+	else
+		return "Uncategorized"
 
 
 /obj/structure/machinery/part_fabricator

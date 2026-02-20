@@ -26,7 +26,7 @@
 #define PAY_SHORT_WYC6 "WYC6"
 
 /// WYC5L, Legal Supervisor
-#define PAY_SHORT_WYC6L "WYC5L"
+#define PAY_SHORT_WYC6L "WYC6L"
 
 /// WYC7, Assistant Manager
 #define PAY_SHORT_WYC7 "WYC7"

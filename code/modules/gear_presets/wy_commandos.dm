@@ -431,6 +431,7 @@
 /datum/equipment_preset/pmc/commando/hunted
 	name = "WY-Commandos (Hunted)"
 	faction = FACTION_HUNTED_PMC
+	faction_group = FACTION_LIST_HUNTED
 	job_title = FACTION_PMC
 	idtype = /obj/item/card/id/pmc/commando
 	skills = /datum/skills/hunted_specops // instant injectors but not instant trauma kits

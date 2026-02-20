@@ -237,7 +237,7 @@
 #define WEED_EXPLOSION_DAMAGEMULT rand(2, 10)*0.01
 
 /// Amount of time (in deciseconds) after marines land that T3s are unlocked
-#define XENO_UNLOCK_T3_TIME 5 MINUTES
+#define XENO_UNLOCK_T3_TIME 3 MINUTES
 
 /////////////////////////////////////////////////////////////////////////////////////
 //

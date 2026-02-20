@@ -26,7 +26,6 @@
 	behavior_delegate_type = /datum/behavior_delegate/despoiler_base
 	minimap_icon = "despoiler"
 	spit_types = list(/datum/ammo/xeno/acid/despoiler)
-	minimum_evolve_time = 15 MINUTES
 	evolution_allowed = FALSE
 
 

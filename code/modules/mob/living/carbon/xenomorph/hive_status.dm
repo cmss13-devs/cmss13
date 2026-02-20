@@ -174,6 +174,9 @@
 	/// Has a King hatchery
 	var/has_hatchery = FALSE
 
+	/// are t3s unlocked?
+	var/tier_3_unlocked = FALSE
+
 	// Hive Stat Modifiers
 	// Makes sweeping increases/decreases to certain stats of Xenos in the Hive
 	// Flat decreases obviously just need - added before the value (except for speed cause speed is special and needs the opposite)
@@ -219,6 +222,7 @@
 		generate_evo_menu_images()
 
 	RegisterSignal(SSdcs, COMSIG_GLOB_POST_SETUP, PROC_REF(post_setup))
+	RegisterSignal(SSdcs, COMSIG_GLOB_DS_FIRST_LANDED, PROC_REF(start_tier_3_timer))
 
 	setup_banned_allies()
 
@@ -239,6 +243,18 @@
 			continue
 
 		addtimer(CALLBACK(src, PROC_REF(announce_evolve_available), GLOB.xeno_evolve_times[time]), text2num(time))
+
+// start the timers to unlock t3s in XENO_UNLOCK_T3_TIME
+/datum/hive_status/proc/start_tier_3_timer()
+	SIGNAL_HANDLER
+
+	var/castes_to_unlock = list()
+	for(var/datum/caste_datum/caste as anything in subtypesof(/datum/caste_datum))
+		if(initial(caste.caste_type) in XENO_T3_CASTES)
+			castes_to_unlock += caste
+
+	addtimer(CALLBACK(src, PROC_REF(announce_evolve_available), castes_to_unlock), XENO_UNLOCK_T3_TIME)
+	addtimer(VARSET_CALLBACK(src, tier_3_unlocked, TRUE), XENO_UNLOCK_T3_TIME)
 
 /// Sets up limits on pylons in New() for potential futureproofing with more static comms
 /datum/hive_status/proc/setup_pylon_limits()

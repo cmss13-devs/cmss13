@@ -17,8 +17,6 @@
 	available_strains = list(/datum/xeno_strain/charger)
 	behavior_delegate_type = /datum/behavior_delegate/crusher_base
 
-	minimum_evolve_time = 15 MINUTES
-
 	tackle_min = 2
 	tackle_max = 6
 	tackle_chance = 25

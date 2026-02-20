@@ -126,6 +126,8 @@
 // cannot evolve to this caste until the round has been going on for this amount of time
 	// IMPORTANT: this is ROUND_TIME, not world.time
 	var/minimum_evolve_time = 1 MINUTES
+	// for castes with dynamic unlock times, like T3s
+	var/unlocked = FALSE
 	/// Iconstate for the xeno on the minimap
 	var/minimap_icon = "xeno"
 	var/minimap_background = "background_xeno"

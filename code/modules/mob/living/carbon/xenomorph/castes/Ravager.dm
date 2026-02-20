@@ -17,7 +17,7 @@
 	tackle_min = 2
 	tackle_max = 5
 	tackle_chance = 35
-	tacklestrength_min = 4
+	tacklestrength_min = 4a
 	tacklestrength_max = 5
 
 	evolution_allowed = FALSE

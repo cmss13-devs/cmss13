@@ -1177,6 +1177,7 @@
 	color = "#80ff80"
 	ui_color ="#4d994d"
 	latejoin_burrowed = FALSE
+	tier_3_unlocked = TRUE
 
 	need_round_end_check = TRUE
 
@@ -1207,6 +1208,7 @@
 	color = "#ff4040"
 	ui_color = "#992626"
 	latejoin_burrowed = FALSE
+	tier_3_unlocked = TRUE
 
 	dynamic_evolution = FALSE
 
@@ -1218,6 +1220,7 @@
 	color = "#ffff80"
 	ui_color = "#99994d"
 	latejoin_burrowed = FALSE
+	tier_3_unlocked = TRUE
 
 	dynamic_evolution = FALSE
 
@@ -1229,6 +1232,7 @@
 	color = "#bb40ff"
 	ui_color = "#702699"
 	latejoin_burrowed = FALSE
+	tier_3_unlocked = TRUE
 
 	dynamic_evolution = FALSE
 
@@ -1240,6 +1244,7 @@
 	color = "#8080ff"
 	ui_color = "#4d4d99"
 	latejoin_burrowed = FALSE
+	tier_3_unlocked = TRUE
 
 	dynamic_evolution = FALSE
 
@@ -1257,6 +1262,7 @@
 	allow_no_queen_evo = TRUE
 	allow_queen_evolve = FALSE
 	latejoin_burrowed = FALSE
+	tier_3_unlocked = TRUE
 	tacmap_requires_queen_ovi = FALSE
 
 /datum/hive_status/forsaken
@@ -1272,6 +1278,7 @@
 	allow_no_queen_evo = TRUE
 	allow_queen_evolve = FALSE
 	latejoin_burrowed = FALSE
+	tier_3_unlocked = TRUE
 	see_humans_on_tacmap = TRUE
 	tacmap_requires_queen_ovi = FALSE
 
@@ -1357,6 +1364,7 @@
 	allow_no_queen_evo = TRUE
 	allow_queen_evolve = FALSE
 	latejoin_burrowed = FALSE
+	tier_3_unlocked = TRUE
 	tacmap_requires_queen_ovi = TRUE // No tacmap
 
 	need_round_end_check = TRUE
@@ -1382,6 +1390,7 @@
 
 	hive_inherited_traits = list(TRAIT_XENONID, TRAIT_NO_COLOR)
 	latejoin_burrowed = FALSE
+	tier_3_unlocked = TRUE
 
 /datum/hive_status/corrupted/tamed
 	name = FACTION_XENOMORPH_TAMED
@@ -1396,6 +1405,7 @@
 	allow_queen_evolve = FALSE
 	latejoin_burrowed = FALSE
 	tacmap_requires_queen_ovi = FALSE
+	tier_3_unlocked = TRUE
 
 	var/mob/living/carbon/human/leader
 	var/list/allied_factions
@@ -1463,6 +1473,7 @@
 	allow_queen_evolve = FALSE
 	allow_no_queen_evo = TRUE
 	latejoin_burrowed = FALSE
+	tier_3_unlocked = TRUE
 
 /datum/hive_status/corrupted/renegade/New()
 	. = ..()

@@ -213,6 +213,7 @@
 	LAZYINITLIST(active_hivebuffs)
 	LAZYINITLIST(used_hivebuffs)
 	LAZYINITLIST(active_endgame_pylons)
+	RegisterSignal(SSdcs, COMSIG_GLOB_DS_FIRST_LANDED, PROC_REF(start_tier_3_timer))
 
 	if(hivenumber != XENO_HIVE_NORMAL)
 		return
@@ -222,7 +223,6 @@
 		generate_evo_menu_images()
 
 	RegisterSignal(SSdcs, COMSIG_GLOB_POST_SETUP, PROC_REF(post_setup))
-	RegisterSignal(SSdcs, COMSIG_GLOB_DS_FIRST_LANDED, PROC_REF(start_tier_3_timer))
 
 	setup_banned_allies()
 

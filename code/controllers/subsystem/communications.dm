@@ -131,6 +131,7 @@ Radiochat range: 1441 to 1489 (most devices refuse to be tune to other frequency
 #define PVST_FREQ 1473
 #define CBRN_FREQ 1474
 #define FORECON_FREQ 1475
+#define ARMY_FREQ 1476
 
 //Ship department channels
 #define SENTRY_FREQ 1480
@@ -315,6 +316,7 @@ SUBSYSTEM_DEF(radio)
 		"[OSCAR_FREQ]" = "oscarradio",
 		"[CRYO_FREQ]" = "cryoradio",
 		"[CBRN_FREQ]" = "hcradio",
+		"[ARMY_FREQ]" = "hcradio",
 		"[FORECON_FREQ]" = "hcradio",
 		"[SOF_FREQ]" = "hcradio",
 		"[HC_FREQ]" = "hcradio",

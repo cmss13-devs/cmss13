@@ -464,7 +464,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	id = "CentComm Receiver"
 	network = "tcommsat"
 	autolinkers = list("receiverCent")
-	freq_listening = list(WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, YAUT_OVR_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ, CBRN_FREQ, FORECON_FREQ)
+	freq_listening = list(WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, YAUT_OVR_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ, CBRN_FREQ, FORECON_FREQ, ARMY_FREQ)
 
 //Buses
 

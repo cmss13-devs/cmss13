@@ -922,6 +922,7 @@
 
 // Normal smartgun but with autoaim option
 /obj/item/weapon/gun/smartgun/autoaim
+	desc = "The actual firearm in the 4-piece M56A2 Smartgun System. Essentially a heavy, mobile machinegun. This upgraded variant features new, updated tracking software."
 	actions_types = list(
 		/datum/action/item_action/smartgun/toggle_accuracy_improvement,
 		/datum/action/item_action/smartgun/toggle_ammo_type,

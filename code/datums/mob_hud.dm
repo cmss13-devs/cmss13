@@ -339,7 +339,8 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 
 /// Handle dropship hud update
 /mob/living/proc/init_dropship_hud_tracking()
-	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(on_dropship_area_changed))
+	RegisterSignal(src, COMSIG_MOVABLE_ENTERED_DROPSHIP, PROC_REF(on_dropship_area_entered))
+	RegisterSignal(src, COMSIG_MOVABLE_EXITED_DROPSHIP, PROC_REF(on_dropship_area_exited))
 
 
 /mob/proc/remove_from_all_mob_huds()
@@ -355,7 +356,8 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 			continue
 		hud.remove_from_hud(src)
 	// Remove dropship hud
-	UnregisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(on_dropship_area_changed))
+	UnregisterSignal(src, COMSIG_MOVABLE_ENTERED_DROPSHIP)
+	UnregisterSignal(src, COMSIG_MOVABLE_EXITED_DROPSHIP)
 
 /mob/living/carbon/xenomorph/remove_from_all_mob_huds()
 	for(var/datum/mob_hud/hud in GLOB.huds)
@@ -368,7 +370,8 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 			hud.remove_from_hud(src)
 			hud.remove_hud_from(src, src)
 	// Remove dropship hud
-	UnregisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(on_dropship_area_changed))
+	UnregisterSignal(src, COMSIG_MOVABLE_ENTERED_DROPSHIP)
+	UnregisterSignal(src, COMSIG_MOVABLE_EXITED_DROPSHIP)
 	if (xeno_hostile_hud)
 		xeno_hostile_hud = FALSE
 		var/datum/mob_hud/hostile_hud = GLOB.huds[MOB_HUD_XENO_HOSTILE]
@@ -1028,36 +1031,41 @@ GLOBAL_DATUM_INIT(hud_icon_new_player_3, /image, image('icons/mob/hud/hud.dmi', 
 			hud_list[icon_state].icon_state = icon_state
 
 /// Updates dropship HUD when changing areas
-/mob/living/proc/on_dropship_area_changed(datum/source, atom/old_loc, dir, forced)
+/mob/living/proc/on_dropship_area_entered(datum/source, area/dropship_area)
 	SIGNAL_HANDLER
 	if(!GLOB.huds[MOB_HUD_DROPSHIP])
 		return
-	var/area/old_area = get_area(old_loc)
-	var/area/new_area = get_area(src)
-	if(old_area != new_area)
-		update_dropship_hud_on_move(src, old_area, new_area)
+	var/datum/mob_hud/dropship/dropship_hud = GLOB.huds[MOB_HUD_DROPSHIP]
+	// Refresh all HUD users view of this mob
+	for(var/mob/user in dropship_hud.hudusers)
+		// Remove existing overlays
+		dropship_hud.remove_from_single_hud(user, src)
+		// Re-add them if appropriate
+		dropship_hud.add_to_single_hud(user, src)
+	// If this mob is a HUD user, refresh their view of all targets
+	if(src in dropship_hud.hudusers)
+		for(var/mob/target in dropship_hud.hudmobs)
+			// Remove existing overlays
+			dropship_hud.remove_from_single_hud(src, target)
+			// Re-add them if appropriate
+			dropship_hud.add_to_single_hud(src, target)
 
-/// Updates dropship HUD visibility when someone tps between areas, mainly for paradropping
-/proc/update_dropship_hud_on_move(mob/updated_mob, area/old_area, area/new_area)
-	if(!updated_mob || !GLOB.huds[MOB_HUD_DROPSHIP])
+/// Updates dropship HUD when exiting dropship areas
+/mob/living/proc/on_dropship_area_exited(datum/source, area/dropship_area)
+	SIGNAL_HANDLER
+	if(!GLOB.huds[MOB_HUD_DROPSHIP])
 		return
 	var/datum/mob_hud/dropship/dropship_hud = GLOB.huds[MOB_HUD_DROPSHIP]
-	var/was_dropship = istype(old_area, /area/shuttle/drop1) || istype(old_area, /area/shuttle/drop2)
-	var/is_dropship = istype(new_area, /area/shuttle/drop1) || istype(new_area, /area/shuttle/drop2)
-
-	// Only update if dropship status actually changed
-	if(was_dropship != is_dropship)
-		// Refresh all HUD users view of this mob
-		for(var/mob/user in dropship_hud.hudusers)
+	// Refresh all HUD users view of this mob
+	for(var/mob/user in dropship_hud.hudusers)
+		// Remove existing overlays
+		dropship_hud.remove_from_single_hud(user, src)
+		// Re-add them if appropriate
+		dropship_hud.add_to_single_hud(user, src)
+	// If the updated mob is a HUD user, refresh their view of all targets
+	if(src in dropship_hud.hudusers)
+		for(var/mob/target in dropship_hud.hudmobs)
 			// Remove existing overlays
-			dropship_hud.remove_from_single_hud(user, updated_mob)
+			dropship_hud.remove_from_single_hud(src, target)
 			// Re-add them if appropriate
-			dropship_hud.add_to_single_hud(user, updated_mob)
-
-		// If the updated mob is a HUD user, refresh their view of all targets
-		if(updated_mob in dropship_hud.hudusers)
-			for(var/mob/target in dropship_hud.hudmobs)
-				// Remove existing overlays
-				dropship_hud.remove_from_single_hud(updated_mob, target)
-				// Re-add them if appropriate
-				dropship_hud.add_to_single_hud(updated_mob, target)
+			dropship_hud.add_to_single_hud(src, target)

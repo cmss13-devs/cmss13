@@ -1314,12 +1314,7 @@
 	if(lifted_object)
 		var/turf/extraction_turf = get_turf(lifted_object)
 		extraction_turf.ceiling_debris_check(2)
-		var/old_area = get_area(lifted_object)
 		lifted_object.forceMove(loc)
-		var/new_area = get_area(lifted_object)
-		// Update HUD for marines moved from ground to dropship
-		if(ismob(lifted_object))
-			update_dropship_hud_on_move(lifted_object, old_area, new_area)
 	else
 		to_chat(user, SPAN_WARNING("The winch finishes lifting the medevac stretcher but it's empty!"))
 		linked_stretcher.linked_medevac = null

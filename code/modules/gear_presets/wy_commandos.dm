@@ -437,6 +437,9 @@
 	languages = list(LANGUAGE_TSL, LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	minimap_background = "background_wy_com"
 
+/datum/equipment_preset/pmc/commando/hunted/load_status(mob/living/carbon/human/new_human)
+	new_human.nutrition = NUTRITION_MAX
+
 /datum/equipment_preset/pmc/commando/hunted/standard
 	name = "Weyland-Yutani Commando (Hunted)"
 	flags = EQUIPMENT_PRESET_EXTRA

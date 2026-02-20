@@ -4345,6 +4345,9 @@
 	faction = FACTION_HUNTED_UPP
 	skills = /datum/skills/hunted_specops/scout // instant injectors but not instant trauma kits, can use cloak
 
+/datum/equipment_preset/upp/commando/hunted/load_status(mob/living/carbon/human/new_human)
+	new_human.nutrition = NUTRITION_MAX
+
 /datum/equipment_preset/upp/commando/hunted/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp, WEAR_ACCESSORY)
@@ -4377,6 +4380,9 @@
 	name = "UPP Commando Medic (Hunted)"
 	faction = FACTION_HUNTED_UPP
 	skills = /datum/skills/hunted_specops/scout/medic // instant trauma kits & can revive others
+
+/datum/equipment_preset/upp/commando/medic/hunted/load_status(mob/living/carbon/human/new_human)
+	new_human.nutrition = NUTRITION_MAX
 
 /datum/equipment_preset/upp/commando/medic/hunted/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP/medic, WEAR_BODY)
@@ -4418,6 +4424,9 @@
 	name = "UPP Commando Leader (Hunted)"
 	faction = FACTION_HUNTED_UPP
 	skills = /datum/skills/hunted_specops/scout
+
+/datum/equipment_preset/upp/commando/leader/hunted/load_status(mob/living/carbon/human/new_human)
+	new_human.nutrition = NUTRITION_MAX
 
 /datum/equipment_preset/upp/commando/leader/hunted/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP, WEAR_BODY)

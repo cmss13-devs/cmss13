@@ -2113,6 +2113,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 /datum/equipment_preset/pmc/pmc_standard/hunted
 	name = "Weyland-Yutani PMC (Standard) (Hunted)"
 	faction = FACTION_HUNTED_PMC
+	faction_group = FACTION_LIST_HUNTED
 
 /datum/equipment_preset/pmc/pmc_standard/hunted/load_gear(mob/living/carbon/human/new_human)
 	var/obj/item/clothing/under/marine/veteran/pmc/uniform = new()
@@ -2141,6 +2142,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 /datum/equipment_preset/pmc/pmc_medic/hunted
 	name = "Weyland-Yutani PMC (Corporate Medic) (Hunted)"
 	faction = FACTION_HUNTED_PMC
+	faction_group = FACTION_LIST_HUNTED
 
 /datum/equipment_preset/pmc/pmc_medic/hunted/load_gear(mob/living/carbon/human/new_human)
 
@@ -2177,6 +2179,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 /datum/equipment_preset/pmc/technician/hunted
 	name = "Weyland-Yutani PMC (Corporate Technician) (Hunted)"
 	faction = FACTION_HUNTED_PMC
+	faction_group = FACTION_LIST_HUNTED
 
 /datum/equipment_preset/pmc/technician/hunted/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc/enclosed/engineer, WEAR_HEAD)

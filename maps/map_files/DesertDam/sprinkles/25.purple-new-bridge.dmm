@@ -120,6 +120,10 @@
 /obj/structure/platform_decoration/metal/almayer,
 /turf/template_noop,
 /area/template_noop)
+"aN" = (
+/obj/structure/platform/metal/almayer,
+/turf/template_noop,
+/area/template_noop)
 "aS" = (
 /obj/effect/blocker/water/toxic/Group_1,
 /turf/open/asphalt/cement_sunbleached,
@@ -156,8 +160,8 @@
 /obj/structure/platform/metal/almayer/east,
 /turf/template_noop,
 /area/template_noop)
-"bu" = (
-/obj/structure/platform/metal/almayer,
+"bt" = (
+/obj/structure/platform/metal/almayer/west,
 /turf/template_noop,
 /area/template_noop)
 "bw" = (
@@ -175,10 +179,6 @@
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_cargo)
 "bA" = (
-/obj/structure/platform/metal/almayer/west,
-/turf/template_noop,
-/area/template_noop)
-"bB" = (
 /turf/template_noop,
 /area/template_noop)
 "bC" = (
@@ -231,15 +231,15 @@
 
 (1,1,1) = {"
 aa
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
+bA
+bA
+bA
+bA
+bA
+bA
+bA
+bA
+bA
 aM
 bs
 bs
@@ -258,13 +258,13 @@ ab
 ag
 aa
 aa
-bB
-bB
-bB
-bB
-bB
-bB
-bu
+bA
+bA
+bA
+bA
+bA
+bA
+aN
 bL
 bi
 bi
@@ -282,13 +282,13 @@ ac
 ah
 ao
 aa
-bB
-bB
-bB
-bB
-bB
-bB
-bu
+bA
+bA
+bA
+bA
+bA
+bA
+aN
 bM
 aS
 ai
@@ -308,21 +308,21 @@ ap
 as
 ay
 aD
-bB
-bB
+bA
+bA
 aJ
-bB
-bu
+bA
+aN
 bM
 ak
 ba
-bA
-bA
-bA
-bA
-bA
-bA
-bA
+bt
+bt
+bt
+bt
+bt
+bt
+bt
 bw
 "}
 (5,1,1) = {"
@@ -336,17 +336,17 @@ aD
 aJ
 aJ
 aJ
-bu
+aN
 bM
 ak
 bb
-bB
-bB
-bB
-bB
-bB
-bB
-bB
+bA
+bA
+bA
+bA
+bA
+bA
+bA
 by
 "}
 (6,1,1) = {"
@@ -360,17 +360,17 @@ aE
 aJ
 aJ
 aJ
-bB
+bA
 aV
 ak
 bb
-bB
-bB
-bB
-bB
-bB
-bB
-bB
+bA
+bA
+bA
+bA
+bA
+bA
+bA
 bz
 "}
 (7,1,1) = {"
@@ -388,13 +388,13 @@ aa
 aW
 ap
 bb
-bB
-bB
-bB
-bB
-bB
-bB
-bB
+bA
+bA
+bA
+bA
+bA
+bA
+bA
 by
 "}
 (8,1,1) = {"
@@ -412,14 +412,14 @@ au
 aq
 ap
 bb
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
+bA
+bA
+bA
+bA
+bA
+bA
+bA
+bA
 "}
 (9,1,1) = {"
 ac
@@ -436,14 +436,14 @@ ar
 ar
 aZ
 bb
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
+bA
+bA
+bA
+bA
+bA
+bA
+bA
+bA
 "}
 (10,1,1) = {"
 bJ
@@ -460,12 +460,12 @@ ac
 ac
 ac
 bb
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
+bA
+bA
+bA
+bA
+bA
+bA
+bA
+bA
 "}

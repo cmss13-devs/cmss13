@@ -63,9 +63,6 @@
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "gO" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /turf/template_noop,
 /area/template_noop)
 "jx" = (
@@ -103,6 +100,12 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
 /area/desert_dam/exterior/valley/south_valley_dam)
+"nZ" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/template_noop,
+/area/template_noop)
 "oI" = (
 /obj/structure/barricade/handrail/hybrisa/road/plastic/blue{
 	layer = 4
@@ -215,9 +218,6 @@
 	pixel_x = -2;
 	pixel_y = 9
 	},
-/turf/template_noop,
-/area/template_noop)
-"BD" = (
 /turf/template_noop,
 /area/template_noop)
 "Ct" = (
@@ -463,44 +463,44 @@
 /area/template_noop)
 
 (1,1,1) = {"
-BD
-BD
-BD
-BD
-BD
-BD
-BD
-BD
+gO
+gO
+gO
+gO
+gO
+gO
+gO
+gO
 "}
 (2,1,1) = {"
-BD
-BD
+gO
+gO
 Dl
-BD
-BD
-BD
-BD
-BD
+gO
+gO
+gO
+gO
+gO
 "}
 (3,1,1) = {"
-BD
-BD
+gO
+gO
 xM
-BD
+gO
 zV
-BD
-BD
+gO
+gO
 YM
 "}
 (4,1,1) = {"
-BD
-BD
+gO
+gO
 pl
 pl
 pl
-BD
-BD
-BD
+gO
+gO
+gO
 "}
 (5,1,1) = {"
 tQ
@@ -533,34 +533,34 @@ Wi
 nd
 "}
 (8,1,1) = {"
-BD
-BD
-BD
-BD
-pY
-BD
-BD
 gO
+gO
+gO
+gO
+pY
+gO
+gO
+nZ
 "}
 (9,1,1) = {"
-BD
-BD
-BD
-BD
-fB
-BD
-ys
 gO
+gO
+gO
+gO
+fB
+gO
+ys
+nZ
 "}
 (10,1,1) = {"
-BD
-BD
-BD
-BD
-BD
-jx
-BD
 gO
+gO
+gO
+gO
+gO
+jx
+gO
+nZ
 "}
 (11,1,1) = {"
 OV
@@ -593,44 +593,44 @@ CE
 nE
 "}
 (14,1,1) = {"
-BD
-BD
-BD
+gO
+gO
+gO
 Pr
 Pr
 eI
-BD
-BD
+gO
+gO
 "}
 (15,1,1) = {"
-BD
-BD
+gO
+gO
 Ha
-BD
-BD
+gO
+gO
 Pr
 Pr
 RM
 "}
 (16,1,1) = {"
-BD
-BD
-BD
-BD
-BD
+gO
+gO
+gO
+gO
+gO
 uS
-BD
-BD
+gO
+gO
 "}
 (17,1,1) = {"
-BD
-BD
-BD
-BD
-BD
-BD
-BD
-BD
+gO
+gO
+gO
+gO
+gO
+gO
+gO
+gO
 "}
 (18,1,1) = {"
 Ly

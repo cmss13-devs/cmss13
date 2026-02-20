@@ -21,10 +21,6 @@
 "aj" = (
 /turf/closed/wall/rock/orange,
 /area/desert_dam/exterior/rock)
-"an" = (
-/obj/structure/platform/metal/almayer/east,
-/turf/template_noop,
-/area/template_noop)
 "ao" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
@@ -76,11 +72,15 @@
 /obj/structure/platform/metal/almayer/west,
 /turf/template_noop,
 /area/template_noop)
-"aU" = (
+"aT" = (
 /obj/structure/platform/metal/almayer,
 /turf/template_noop,
 /area/template_noop)
 "aV" = (
+/turf/template_noop,
+/area/template_noop)
+"aX" = (
+/obj/structure/platform/metal/almayer/east,
 /turf/template_noop,
 /area/template_noop)
 "aY" = (
@@ -250,7 +250,7 @@ aV
 aV
 aV
 aP
-an
+aX
 bd
 bk
 bp
@@ -258,12 +258,12 @@ bp
 (7,1,1) = {"
 aa
 aa
-an
-an
-an
-an
-an
-an
+aX
+aX
+aX
+aX
+aX
+aX
 aQ
 aY
 be
@@ -324,7 +324,7 @@ aV
 aV
 aV
 aV
-aU
+aT
 aY
 bg
 bf

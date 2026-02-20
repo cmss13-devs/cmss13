@@ -10,7 +10,7 @@
 	/// Multiplier on the base RESERVE_HUNT_COOLDOWN when a given ERT is selected; 1 is no change.
 	var/timer_mult = 1
 	var/hunt_name
-	var/message = "You are still expected to uphold the RP of the standard as this character!"
+	var/message = "You are still expected to uphold RP standards as this character!"
 	var/mercs = 0
 	var/royal_marines= 0
 	var/upp = 0
@@ -267,6 +267,9 @@
 		var/hunted_type = pick(hunted_types)
 		arm_equipment(hunted, hunted_type , TRUE, TRUE)
 		to_chat(hunted, SPAN_BOLD("My team is number one. Far above most marines in training and equipment, your squad of Marine Raiders often dealt with high-profile missions that demanded extreme prejudice and absolute secrecy, alongside overbearing force. The last mission you were on had your squad clearing out a strange dig site, only to come into contact with several unknown hostile humanoids, one of which barely managed to knock you out after a prolonged battle. With your head spinning, you wake up in a strange place."))
+
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), hunted.client, 'sound/misc/hunt_begin.ogg'), 10 SECONDS)
+	show_blurb(hunted, 15, message, null, "center", "center", COLOR_RED, null, null, 1)
 
 /datum/emergency_call/pred/mixed_elite/medium
 	name = "Hunting Grounds - Elite Multi Faction - Medium"

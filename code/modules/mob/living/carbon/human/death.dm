@@ -134,6 +134,9 @@
 
 	. = ..(cause, gibbed, death_message)
 
+	// Update dropship HUD overlays to show dead state
+	init_dropship_hud_overlays()
+
 	// stat is now set
 	var/datum/cause_data/death_data = cause
 	if(!gibbed && death_data?.cause_name != "gibbing")

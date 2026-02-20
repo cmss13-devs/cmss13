@@ -752,6 +752,35 @@
 	icon = 'icons/obj/structures/props/ice_colony/Hula.dmi'
 	icon_state = "Hula_Gal"
 
+/obj/structure/prop/ice_colony/hula_girl/Initialize()
+	. = ..()
+	START_PROCESSING(SSobj, src)
+
+/obj/structure/prop/ice_colony/hula_girl/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	return ..()
+
+/obj/structure/prop/ice_colony/hula_girl/process() //i got you 4 years later monkey -TrollerNoob
+	var/area/current_area = get_area(src)
+	if(istype(current_area, /area/shuttle))
+		var/obj/docking_port/mobile/found_shuttle = null
+		for(var/obj/docking_port/mobile/shuttle in SSshuttle.mobile)
+			if(get_area(shuttle) == current_area)
+				found_shuttle = shuttle
+				break
+		if(found_shuttle)
+			switch(found_shuttle.mode)
+				if(SHUTTLE_IGNITING)
+					icon_state = "Hula_Gal_Bounce"
+				if(SHUTTLE_CALL, SHUTTLE_RECALL)
+					icon_state = "Hula_Gal_Wild"
+				if(SHUTTLE_IDLE)
+					icon_state = "Hula_Gal"
+				else
+					icon_state = "Hula_Gal"
+			return
+	icon_state = "Hula_Gal"
+
 /obj/structure/prop/ice_colony/tiger_rug
 	name = "tiger rug"
 	desc = "A rather tasteless but impressive tiger rug. Must've costed a fortune to get this exported to the rim."

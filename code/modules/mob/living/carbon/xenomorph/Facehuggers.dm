@@ -6,7 +6,7 @@
 
 /obj/item/clothing/mask/facehugger
 	name = "facehugger"
-	desc = "It has some sort of a tube at the end of its tail."
+	desc = "A crab-like creature with a long, ribbed tail. Has some sort of proboscis sticking out of its stomach. Yuck!"
 	icon = 'icons/mob/xenos/effects.dmi'
 	flags_obj = OBJ_IS_HELMET_GARB
 	item_icons = list(

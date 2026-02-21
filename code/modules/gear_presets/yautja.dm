@@ -204,7 +204,6 @@
 		if(81 to 100)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/twohanded/yautja/glaive/alt(new_human), WEAR_BACK)
 
-// evil event-only loadouts, pre-equipped
 /datum/equipment_preset/yautja/emissary
 	name = "Yautja Emissary (Pre-Equipped)"
 	idtype = /obj/item/card/id/dogtag // oh yeah

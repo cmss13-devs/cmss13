@@ -1,0 +1,8 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - refactor: "Reverted Xeno Fire Immunity Refactor and did it a different way: Xenos now define fire_immunity per xeno rather than per caste, always are registered to fire signals, and handle ignition in IgniteMob proc."
+  - balance: "Hive buff for fire immunity will now stop even fire penetration."
+  - balance: "Burning clouds now do no damage if the xeno has FIRE_IMMUNITY_NO_DAMAGE instead of half damage."
+  - bugfix: "Fixed messages about burrowed stepping over flames somehow."
+  - code_imp: "Cleaned up various variable usage in fire signal procs."

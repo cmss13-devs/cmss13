@@ -41,6 +41,9 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 	var/static/datum/pred_picker/pred_picker = new
 
+	/// The previous version of this savefile
+	var/updated_from
+
 
 	//doohickeys for savefiles
 	var/path
@@ -93,6 +96,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 							"Security HUD" = FALSE,
 							"Squad HUD" = FALSE,
 							"Xeno Status HUD" = FALSE,
+							"Hunter HUD"= FALSE,
 							HUD_MENTOR_SIGHT = FALSE
 							)
 	var/ghost_vision_pref = GHOST_VISION_LEVEL_MID_NVG

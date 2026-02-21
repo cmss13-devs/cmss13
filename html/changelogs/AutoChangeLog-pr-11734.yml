@@ -1,0 +1,9 @@
+author: "Joe Lampost"
+delete-after: True
+changes:
+  - rscadd: "Adds a minimum time having played youngblood for the more experienced ERTs"
+  - rscadd: "Added a larger group of youngbloods for highpop as well as a single youngblood call for people who only want a single pupil."
+  - rscadd: "Added a mark for whitelisted preds to mark youngbloods they are teaching."
+  - rscadd: "Gives ghosts access to the pred hud."
+  - qol: "Adds a equipped hunter preset"
+  - bugfix: "Fixes hunted smartgunners hunger"

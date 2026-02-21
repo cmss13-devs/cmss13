@@ -1,0 +1,4 @@
+author: "hry-gh"
+delete-after: True
+changes:
+  - server: "allows server operators to configure an oidc endpoint to be checked if a user has an access code given on connection"

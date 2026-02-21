@@ -1,0 +1,4 @@
+author: "dawsonkeyes"
+delete-after: True
+changes:
+  - bugfix: "Ravager Empower ability background no longer bugs out"

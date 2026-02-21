@@ -1,0 +1,8 @@
+author: "Steelpoint"
+delete-after: True
+changes:
+  - maptweak: "Change the stair sprites for the apartment complex in Tyrargo Rift to appear visually distinct from typical multiz stairs, to avoid people accidentally falling out of a window thinking they were using a set of stairs."
+  - maptweak: "Fixed a unintended mapping area allowing people to climb out of the intended playable area on Tyrargo Rift."
+  - rscadd: "Edits the Tyrargo Rift map item to display the proper image."
+  - maptweak: "Removes duplicated doors within the Stanfeld Apartments."
+  - maptweak: "Marines and Xenomorphs can no longer climb on the roof of buildings outside of the city, this is to avoid people creating unreachable killboxes."

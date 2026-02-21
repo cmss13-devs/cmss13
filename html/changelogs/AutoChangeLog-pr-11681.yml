@@ -1,4 +1,0 @@
-author: "BOBAMAx"
-delete-after: True
-changes:
-  - bugfix: "rescuing survivors now properly awards intel points instead of only pretending to"

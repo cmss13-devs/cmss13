@@ -1,0 +1,4 @@
+author: "npukoJl"
+delete-after: True
+changes:
+  - qol: "Yautja click-drag override now works on yautjas"

@@ -1,0 +1,5 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - qol: "Mass Screenshot debug verb can now toggle multi-z effects for open_space turfs for that client"
+  - qol: "MapTileImageTool python script can now default to the Byond screenshots folder"

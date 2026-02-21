@@ -1,0 +1,4 @@
+author: "ComboTombo"
+delete-after: True
+changes:
+  - rscadd: "Added the expedition satchel to the synthetic points vendor"

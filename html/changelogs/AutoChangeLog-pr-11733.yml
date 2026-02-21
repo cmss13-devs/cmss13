@@ -1,0 +1,7 @@
+author: "ori-disillusion-mirnov"
+delete-after: True
+changes:
+  - code_imp: "cleaned up comments in riding.dm, riding_vehicle.dm, and riding_mob.dm"
+  - code_imp: "removed redundant check for diagonal movement since we dont have that"
+  - bugfix: "drivable mobs (there are none right now) can be driven as intended"
+  - bugfix: "riding component is properly removed when the last rider unbuckles"

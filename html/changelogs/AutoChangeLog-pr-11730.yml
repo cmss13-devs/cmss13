@@ -1,0 +1,4 @@
+author: "Bibby0110"
+delete-after: True
+changes:
+  - bugfix: "Hijack doesn't make ears bleed via the boon notification"

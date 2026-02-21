@@ -1,0 +1,4 @@
+author: "MistChristmas"
+delete-after: True
+changes:
+  - bugfix: "ERT UPP Synths can spawn again. Along with the admin spawn ones."

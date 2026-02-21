@@ -1,0 +1,4 @@
+author: "ori-disillusion-mirnov"
+delete-after: True
+changes:
+  - code_imp: "replaces COMSIG_HUMAN_TAKE_DAMAGE and COMSIG_XENO_TAKE_DAMAGE with COMSIG_MOB_TAKE_DAMAGE, completing a todo from 3 years ago"

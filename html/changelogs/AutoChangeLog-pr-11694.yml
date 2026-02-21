@@ -1,0 +1,5 @@
+author: "ComboTombo"
+delete-after: True
+changes:
+  - balance: "General utility belts can now be worn on windbreakers and external webbings"
+  - bugfix: "Fixed general utility belts not being wearable when certain bomber jacket variants are equipped"

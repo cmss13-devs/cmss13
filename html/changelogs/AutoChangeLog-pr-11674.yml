@@ -1,0 +1,4 @@
+author: "Red-byte3D"
+delete-after: True
+changes:
+  - balance: "Heavy m44's now work in stacks, every third stack will stun stunnable xenos aka sluggable xenos for a small bit."

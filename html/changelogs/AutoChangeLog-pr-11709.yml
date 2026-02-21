@@ -1,0 +1,5 @@
+author: "AnCopper"
+delete-after: True
+changes:
+  - rscadd: "Added an animation to the fulton taking off."
+  - soundadd: "Added fulton_takeoff.ogg for the new fulton animation."

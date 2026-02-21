@@ -1,0 +1,9 @@
+author: "Puckaboo2"
+delete-after: True
+changes:
+  - rscadd: "Adds missing factions, HUD icons, minimap icons, assignments, role comms, and jobs to personnel who did not have them."
+  - bugfix: "All corporate synths now have jobs, assignments, hud and minimap icons, factions, origins, etc. They're no longer standard survivors."
+  - qol: "You can discern which Security Goon is which type in role-comms."
+  - qol: "You can discern whether somebody is a Executive/Legal Specialists/Supervisor in their name prefix."
+  - spellcheck: "'Dogcather' is now 'Dogcatcher'"
+  - spellcheck: "The 'Capt' prefix is now 'Capt.'"

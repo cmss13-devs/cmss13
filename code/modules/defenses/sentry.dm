@@ -974,6 +974,14 @@
 	minimap_icon_state = "sentry_omni"
 	handheld_type = /obj/item/defenses/handheld/sentry/upp/light
 
+/obj/structure/machinery/defenses/sentry/premade/deployable/colony/landing_zone/upp
+	name = "\improper UPP-577 Spaceborne Gauss Turret"	// Not a very good name.
+	icon = 'icons/obj/structures/machinery/defenses/upp_defenses.dmi'
+	sentry_type = "upp_sentry"
+	selected_categories = list(
+		SENTRY_CATEGORY_IFF = FACTION_UPP,
+	)
+
 /obj/structure/machinery/defenses/sentry/omni
 	name = "\improper UA 571-D omnidirectional sentry gun"
 	omni_directional = TRUE

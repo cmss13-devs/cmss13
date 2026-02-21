@@ -21,6 +21,14 @@
 /datum/game_mode/colonialmarines/upp/get_roles_list()
 	return UPP_JOB_LIST + GLOB.ROLES_GROUND
 
+///Spawns a droppod with a temporary defense sentry at the given turf
+/datum/game_mode/colonialmarines/upp/spawn_lz_sentry(turf/target, list/structures_to_break)
+	var/obj/structure/droppod/equipment/sentry_holder/droppod = new(target, /obj/structure/machinery/sentry_holder/landing_zone/upp)
+	droppod.special_structures_to_damage = structures_to_break
+	droppod.special_structure_damage = 500
+	droppod.drop_time = 0
+	droppod.launch(target)
+
 #undef MONKEYS_TO_TOTAL_RATIO
 #undef PODLOCKS_OPEN_WAIT
 #undef HIJACK_EXPLOSION_COUNT

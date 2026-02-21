@@ -906,6 +906,19 @@
 	},
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/medical_science)
+"acm" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/toolbox/mechanical,
+/obj/item/clothing/head/welding{
+	pixel_x = 6;
+	pixel_y = 12
+	},
+/obj/item/stack/cable_coil/cyan{
+	pixel_x = -11;
+	pixel_y = -4
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/hallways/hangar)
 "acn" = (
 /obj/structure/stairs/multiz/down{
 	dir = 1
@@ -6197,6 +6210,14 @@
 /obj/structure/machinery/status_display{
 	pixel_y = 30
 	},
+/obj/item/prop/almayer/box{
+	pixel_x = 7;
+	pixel_y = 4
+	},
+/obj/item/prop/almayer/box{
+	pixel_x = 7;
+	pixel_y = 12
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/pilotbunks)
 "ape" = (
@@ -6226,6 +6247,10 @@
 	dir = 4
 	},
 /obj/structure/disposalpipe/trunk,
+/obj/item/prop/almayer/flight_recorder{
+	pixel_x = -6;
+	pixel_y = -6
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/pilotbunks)
 "api" = (
@@ -6293,6 +6318,10 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_18";
 	pixel_y = 13
+	},
+/obj/item/prop/tableflag/uscm{
+	pixel_x = 7;
+	pixel_y = -4
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/pilotbunks)
@@ -13060,6 +13089,10 @@
 	layer = 2.5;
 	pixel_y = 2
 	},
+/obj/item/prop/colony/game{
+	pixel_x = 8;
+	pixel_y = 10
+	},
 /turf/open/floor/almayer/no_build,
 /area/almayer/living/offices/flight)
 "aHD" = (
@@ -13676,12 +13709,13 @@
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/sp)
 "aJn" = (
-/obj/structure/prop/hybrisa/factory/robotic_arm/flipped{
-	pixel_x = -28;
-	pixel_y = 10
+/obj/effect/decal/cleanable/blood/oil/streak,
+/obj/item/device/multitool{
+	pixel_x = -13;
+	pixel_y = 13
 	},
-/turf/open/floor/almayer/no_build/plate,
-/area/almayer/underdeck/req)
+/turf/open/floor/almayer/cargo,
+/area/almayer/hallways/hangar)
 "aJo" = (
 /obj/structure/platform/metal/almayer_smooth/north,
 /turf/open_space,
@@ -14128,6 +14162,18 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/stair_clone/upper/port_aft)
+"aKB" = (
+/obj/structure/surface/table/almayer,
+/obj/item/device/dropship_computer{
+	pixel_x = 0;
+	pixel_y = 6
+	},
+/obj/item/device/dropship_handheld{
+	pixel_x = 8;
+	pixel_y = 9
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/hallways/hangar)
 "aKC" = (
 /obj/structure/machinery/light,
 /turf/open_space,
@@ -18002,6 +18048,10 @@
 /obj/structure/airlock_assembly,
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/maintenance/sp)
+"aUE" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/floor/almayer,
+/area/almayer/hallways/hangar)
 "aUF" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer/no_build/test_floor4,
@@ -19810,6 +19860,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/shipboard/navigation)
+"aYH" = (
+/obj/structure/sign/banners/colonial_marines_flag,
+/turf/closed/wall/almayer,
+/area/almayer/living/pilotbunks)
 "aYI" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -20367,6 +20421,10 @@
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sp)
+"aZU" = (
+/obj/structure/sign/calendar/ua,
+/turf/closed/wall/almayer,
+/area/almayer/living/pilotbunks)
 "aZV" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo,
 /turf/open/floor/almayer/plate,
@@ -20726,10 +20784,6 @@
 /obj/structure/barricade/handrail/hybrisa/road/plastic,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/briefing)
-"baR" = (
-/obj/structure/surface/table/almayer,
-/turf/open/floor/almayer,
-/area/almayer/hallways/hangar)
 "baS" = (
 /obj/structure/machinery/landinglight/ds1/delaythree{
 	dir = 4
@@ -22816,12 +22870,34 @@
 /area/almayer/shipboard/navigation)
 "bfJ" = (
 /obj/structure/surface/table/almayer,
-/obj/item/prop/almayer/handheld1,
+/obj/item/device/multitool{
+	pixel_x = 4;
+	pixel_y = 6
+	},
+/obj/item/device/dropship_handheld{
+	pixel_x = -3;
+	pixel_y = 7
+	},
+/obj/item/stack/cable_coil/green{
+	pixel_x = 10;
+	pixel_y = -7
+	},
+/obj/item/storage/toolbox/mechanical/green{
+	pixel_x = -4;
+	pixel_y = -14
+	},
+/obj/item/clothing/glasses/welding{
+	pixel_x = -3;
+	pixel_y = -9
+	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
 "bfK" = (
 /obj/structure/surface/table/almayer,
-/obj/item/prop/almayer/comp_closed,
+/obj/item/device/dropship_computer{
+	pixel_x = 0;
+	pixel_y = 6
+	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
 "bfL" = (
@@ -22933,11 +23009,6 @@
 /obj/effect/decal/heavy_cable/node_n_e_s,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/briefing)
-"bfY" = (
-/obj/structure/surface/table/almayer,
-/obj/item/prop/almayer/comp_open,
-/turf/open/floor/almayer,
-/area/almayer/hallways/hangar)
 "bfZ" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
 	dir = 4
@@ -31184,13 +31255,14 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/aft)
 "bxQ" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/prop/hybrisa/factory/robotic_arm/flipped{
-	pixel_x = -28;
-	pixel_y = 10
+/obj/structure/surface/table/almayer,
+/obj/item/storage/toolbox/mechanical,
+/obj/item/clothing/head/welding{
+	pixel_x = 6;
+	pixel_y = 12
 	},
-/turf/open/floor/almayer/no_build/plate,
-/area/almayer/underdeck/req)
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/hallways/hangar)
 "bxR" = (
 /obj/effect/decal/heavy_cable/cable_vertical,
 /obj/structure/prop/invuln/lattice_prop{
@@ -34634,13 +34706,17 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/upper/fore_hallway)
 "bFG" = (
-/obj/structure/largecrate/random,
-/obj/structure/prop/hybrisa/factory/robotic_arm/flipped{
-	pixel_x = -28;
-	pixel_y = 10
+/obj/structure/surface/table/almayer,
+/obj/item/device/dropship_handheld{
+	pixel_x = 3;
+	pixel_y = 2
 	},
-/turf/open/floor/almayer/no_build/plate,
-/area/almayer/underdeck/req)
+/obj/item/stack/cable_coil/cyan{
+	pixel_x = -11;
+	pixel_y = -4
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/hallways/hangar)
 "bFH" = (
 /obj/structure/reagent_dispensers/tank/fuel/oxygentank{
 	anchored = 1
@@ -59186,6 +59262,23 @@
 	dir = 4;
 	layer = 3.1;
 	pixel_x = 1
+	},
+/obj/structure/surface/rack,
+/obj/item/rappel_harness{
+	pixel_y = 9;
+	pixel_x = 0
+	},
+/obj/item/rappel_harness{
+	pixel_y = 5;
+	pixel_x = 0
+	},
+/obj/item/rappel_harness{
+	pixel_y = 1;
+	pixel_x = 0
+	},
+/obj/item/rappel_harness{
+	pixel_y = -3;
+	pixel_x = 0
 	},
 /turf/open/floor/almayer/silver/northeast,
 /area/almayer/hallways/lower/repair_bay)
@@ -133907,7 +134000,7 @@ iWH
 aqe
 apI
 apy
-aiX
+aYH
 apd
 bTU
 gZK
@@ -134113,7 +134206,7 @@ rMO
 aqj
 rMO
 apC
-aiX
+aZU
 aph
 xNz
 utK
@@ -134952,9 +135045,9 @@ aYt
 aYt
 aYt
 aYt
-bfY
-baR
-bfJ
+aYt
+aYt
+aYt
 btO
 dTI
 btO
@@ -135045,7 +135138,7 @@ aYu
 ilG
 aYt
 bfJ
-btO
+aUE
 btO
 btO
 btO
@@ -137211,7 +137304,7 @@ eXq
 eXq
 kqv
 pcl
-gHZ
+acm
 pcl
 gHZ
 pcl
@@ -137314,8 +137407,8 @@ eXq
 eXq
 aYt
 pcl
-gHZ
-pcl
+aKB
+aJn
 gpi
 pcl
 oJp

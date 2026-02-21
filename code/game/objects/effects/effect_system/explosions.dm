@@ -141,3 +141,8 @@
 		var/datum/effect_system/smoke_spread/S = new/datum/effect_system/smoke_spread()
 		S.set_up(3,0,location,null, 2)
 		S.start()
+
+/proc/explosion_particles(location, number = 10)
+	var/datum/effect_system/expl_particles/Particle = new /datum/effect_system/expl_particles()
+	Particle.set_up(number, 0, location)
+	Particle.start()

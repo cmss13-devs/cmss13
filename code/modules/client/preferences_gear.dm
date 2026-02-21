@@ -1231,37 +1231,6 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	fluff_cost = 1 //The cadmium poisoning pays for the discounted cost longterm
 	allowed_origins = USCM_ORIGINS
 
-// civilian shoes, technically contraband for marines so more expensive, civilians can get them discounted in the civilian only section.
-
-/datum/gear/misc/shoes
-	display_name = "black shoes"
-	path = /obj/item/clothing/shoes/black
-	fluff_cost = 3
-
-/datum/gear/misc/shoes/brown
-	display_name = "brown shoes"
-	path = /obj/item/clothing/shoes/brown
-
-/datum/gear/misc/shoes/blue
-	display_name = "blue shoes"
-	path = /obj/item/clothing/shoes/blue
-
-/datum/gear/misc/shoes/green
-	display_name = "green shoes"
-	path = /obj/item/clothing/shoes/green
-
-/datum/gear/misc/shoes/yellow
-	display_name = "yellow shoes"
-	path = /obj/item/clothing/shoes/yellow
-
-/datum/gear/misc/shoes/purple
-	display_name = "purple shoes"
-	path = /obj/item/clothing/shoes/purple
-
-/datum/gear/misc/shoes/red
-	display_name = "red shoes"
-	path = /obj/item/clothing/shoes/red
-
 /datum/gear/misc/dogtags
 	display_name = "Attachable Dogtags"
 	path = /obj/item/clothing/accessory/dogtags

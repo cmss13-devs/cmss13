@@ -11,14 +11,14 @@
 /// The ratio of forsaken to groundside humans before calling more forsaken xenos
 #define GROUNDSIDE_XENO_MULTIPLIER 1.0
 
-/datum/game_mode/colonialmarines/UPP
+/datum/game_mode/colonialmarines/upp
 	name = "UPP Distress Signal"
 	config_tag = "UPP Distress Signal"
 //	role_mappings = list(
 //		/datum/job/command/commander/whiskey = JOB_CO,
 //	)
 
-/datum/game_mode/colonialmarines/get_roles_list()
+/datum/game_mode/colonialmarines/upp/get_roles_list()
 	return UPP_JOB_LIST + GLOB.ROLES_GROUND
 
 #undef MONKEYS_TO_TOTAL_RATIO

@@ -59,7 +59,7 @@
 	if(SSxevolution)
 		progress_amount = SSxevolution.get_evolution_boost_power(hive.hivenumber)
 	var/ovipositor_check = hive.allow_no_queen_evo || hive.evolution_without_ovipositor || (hive.living_xeno_queen && hive.living_xeno_queen.ovipositor)
-	if(caste.evolution_allowed && (ovipositor_check || caste.evolve_without_queen))
+	if(caste.evolution_allowed && (ovipositor_check || (caste.evolve_without_queen && evolution_stored < evolution_threshold)))
 		if(evolution_stored >= evolution_threshold)
 			if(!got_evolution_message)
 				evolve_message()

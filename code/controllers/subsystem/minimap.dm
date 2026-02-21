@@ -702,7 +702,6 @@ SUBSYSTEM_DEF(minimaps)
 	. = ..()
 	if(!map)
 		return FALSE
-	map = SSminimaps.fetch_minimap_object(owner.z, minimap_flags, live=live, popup=FALSE, drawing=drawing)
 
 	if(!minimap_displayed && !isobserver(owner) && owner.is_mob_incapacitated())
 		return FALSE

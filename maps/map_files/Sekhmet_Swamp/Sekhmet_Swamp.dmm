@@ -2499,10 +2499,116 @@
 	},
 /turf/open/gm/dirt,
 /area/sekhmet/outside/swamp)
+"ahE" = (
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname,
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/sekhmet/int_heavy/low_level_rsr)
+"ahF" = (
+/obj/structure/machinery/door/airlock/maintenance/colony,
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/sekhmet/int_heavy/low_level_rsr)
+"ahG" = (
+/obj/structure/machinery/door/airlock/maintenance/colony{
+	dir = 1
+	},
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/sekhmet/int_heavy/low_level_rsr)
+"ahH" = (
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname{
+	dir = 2
+	},
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/sekhmet/int_heavy/low_level_rsr)
+"ahI" = (
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname{
+	locked = 1
+	},
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/sekhmet/int_heavy/low_level_gen)
+"ahJ" = (
+/obj/structure/machinery/door/airlock/hybrisa/generic/autoname{
+	dir = 1
+	},
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/sekhmet/int_heavy/low_level_gen)
+"ahK" = (
+/obj/structure/machinery/door/airlock/hybrisa/generic/autoname,
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/sekhmet/int_heavy/low_level_rsr)
+"ahL" = (
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname{
+	locked = 1
+	},
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/sekhmet/int_heavy/low_level_rsr)
 "ahM" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/strata/orange_edge/west,
 /area/sekhmet/int_reg/comms_lower)
+"ahN" = (
+/obj/structure/machinery/door/airlock/hybrisa/generic/autoname,
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/sekhmet/int_heavy/low_level_gen)
+"ahO" = (
+/obj/structure/platform/metal/shiva/east,
+/turf/open/floor/strata/red1,
+/area/sekhmet/int_heavy/low_level_gen)
+"ahP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/platform/metal/shiva/east,
+/turf/open/floor/strata/red1,
+/area/sekhmet/int_heavy/low_level_gen)
+"ahQ" = (
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname,
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/sekhmet/int_heavy/low_level_gen)
+"ahR" = (
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname{
+	dir = 2
+	},
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/sekhmet/int_heavy/low_level_gen)
+"ahS" = (
+/obj/structure/machinery/door/airlock/maintenance/colony,
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/sekhmet/int_heavy/low_level_gen)
+"ahT" = (
+/obj/structure/machinery/door/airlock/maintenance/colony{
+	dir = 1
+	},
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/sekhmet/int_heavy/low_level_gen)
+"ahU" = (
+/obj/structure/machinery/light{
+	light_power = 0.5;
+	dir = 4
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/sekhmet/int_heavy/entry_zone)
+"ahV" = (
+/obj/structure/machinery/light{
+	light_power = 0.5;
+	dir = 1
+	},
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/sekhmet/int_heavy/entry_zone)
+"ahW" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 5;
+	pixel_y = -1
+	},
+/turf/open/gm/dirt,
+/area/sekhmet/outside/swamp)
+"ahX" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_y = 2;
+	dir = 8;
+	pixel_x = 8
+	},
+/turf/open/gm/dirt,
+/area/sekhmet/outside/swamp)
 "ahY" = (
 /obj/structure/platform_decoration/metal/shiva/north,
 /turf/open/gm/coast/beachcorner/south_east,
@@ -2525,9 +2631,82 @@
 /obj/item/clothing/suit/storage/hazardvest/yellow,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/sekhmet/int_heavy/research)
+"aia" = (
+/obj/structure/flora/bush/ausbushes/reedbush{
+	pixel_x = -10;
+	pixel_y = 9
+	},
+/turf/open/gm/coast/beachcorner/south_west,
+/area/sekhmet/outside/swamp)
+"aib" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 5;
+	pixel_y = -1
+	},
+/turf/open/gm/coast/beachcorner/north_east,
+/area/sekhmet/outside/swamp)
+"aic" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = -4;
+	pixel_y = -5
+	},
+/obj/structure/flora/jungle/vines/light_1,
+/turf/open/gm/dirt,
+/area/sekhmet/outside/swamp)
+"aid" = (
+/obj/structure/flora/bush/ausbushes/reedbush{
+	pixel_x = 5;
+	pixel_y = 6
+	},
+/turf/open/gm/coast/beachcorner/south_west,
+/area/sekhmet/outside/swamp)
+"aie" = (
+/obj/structure/flora/bush/ausbushes/reedbush,
+/turf/open/gm/coast/beachcorner/south_west,
+/area/sekhmet/outside/swamp)
 "aif" = (
 /turf/closed/wall/strata_outpost,
 /area/sekhmet/int_heavy/low_level_gen)
+"aig" = (
+/obj/structure/flora/bush/ausbushes/reedbush{
+	pixel_x = -10;
+	pixel_y = 9
+	},
+/turf/open/gm/coast/east,
+/area/sekhmet/outside/swamp)
+"aih" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 5;
+	pixel_x = 8;
+	pixel_y = -3
+	},
+/turf/open/gm/dirt,
+/area/sekhmet/outside/swamp)
+"aii" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_y = 5;
+	dir = 8;
+	pixel_x = 1
+	},
+/turf/open/gm/coast/beachcorner/north_west,
+/area/sekhmet/outside/swamp)
+"aij" = (
+/obj/structure/flora/bush/ausbushes/reedbush{
+	pixel_x = -10;
+	pixel_y = 2
+	},
+/turf/open/gm/coast/beachcorner/north_east,
+/area/sekhmet/outside/swamp)
+"aik" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname{
+	dir = 1
+	},
+/turf/open/gm/coast/beachcorner/south_west,
+/area/sekhmet/outside/temple_outer)
 "aiD" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/coast/north,
@@ -2955,9 +3134,8 @@
 	pixel_x = 16;
 	pixel_y = 3
 	},
-/obj/structure/machinery/light{
-	light_power = 0.5;
-	dir = 8
+/obj/structure/machinery/door/airlock/hybrisa/generic/autoname{
+	dir = 1
 	},
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/sekhmet/int_heavy/entry_zone)
@@ -15390,23 +15568,6 @@
 	},
 /turf/open/floor/plating/kutjevo,
 /area/sekhmet/int_heavy/research)
-"jQz" = (
-/obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice4";
-	pixel_x = -16;
-	pixel_y = 3
-	},
-/obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice8";
-	pixel_x = 16;
-	pixel_y = 3
-	},
-/obj/structure/machinery/light{
-	light_power = 0.5;
-	dir = 4
-	},
-/turf/open/floor/plating/plating_catwalk/strata,
-/area/sekhmet/int_heavy/entry_zone)
 "jRI" = (
 /obj/structure/surface/rack{
 	color = "#6b675e";
@@ -16760,7 +16921,7 @@
 /area/sekhmet/int_glass/complex_generic)
 "kWN" = (
 /obj/structure/stairs{
-	dir = 8
+	dir = 4
 	},
 /turf/open/floor/strata/red1,
 /area/sekhmet/int_heavy/low_level_gen)
@@ -28029,6 +28190,10 @@
 /area/sekhmet/int_heavy/entry_zone)
 "tRs" = (
 /obj/structure/pipes/vents/pump,
+/obj/structure/machinery/light{
+	light_power = 0.5;
+	dir = 8
+	},
 /turf/open/floor/strata/floor3/east,
 /area/sekhmet/int_heavy/entry_zone)
 "tRB" = (
@@ -33586,6 +33751,7 @@
 /obj/structure/machinery/light{
 	light_power = 0.5
 	},
+/obj/structure/platform/metal/shiva/east,
 /turf/open/floor/strata/red1,
 /area/sekhmet/int_heavy/low_level_gen)
 "ykT" = (
@@ -48083,7 +48249,7 @@ nFa
 nFa
 eMc
 eMc
-nuI
+ahN
 tbS
 lma
 ckh
@@ -48420,7 +48586,7 @@ lma
 lma
 lma
 nuI
-nuI
+ahR
 lma
 nFa
 nFa
@@ -48907,7 +49073,7 @@ lma
 mCq
 wzM
 wzM
-nuI
+ahQ
 xol
 uLu
 mCq
@@ -49056,7 +49222,7 @@ eMc
 eMc
 eMc
 nuI
-nuI
+ahR
 lma
 nFa
 nFa
@@ -49075,7 +49241,7 @@ wzM
 wzM
 xol
 xol
-nuI
+ahT
 gSR
 gSR
 aif
@@ -49227,7 +49393,7 @@ kZr
 kZr
 dQy
 dQy
-nuI
+ahJ
 xol
 wzM
 wRT
@@ -49717,7 +49883,7 @@ lma
 ojQ
 ofC
 xol
-nuI
+ahJ
 cmN
 qNa
 niV
@@ -50352,7 +50518,7 @@ kty
 kty
 eMc
 nuI
-nuI
+ahR
 lma
 tbS
 lma
@@ -50517,7 +50683,7 @@ lNE
 lNE
 uZJ
 uZJ
-nuI
+ahQ
 lBe
 lab
 roU
@@ -50854,7 +51020,7 @@ dEQ
 lma
 tbS
 tbS
-nuI
+ahN
 tbS
 tbS
 lma
@@ -51022,7 +51188,7 @@ cmN
 cmN
 crK
 crK
-nuI
+ahQ
 dSd
 dSd
 nNz
@@ -51335,7 +51501,7 @@ lma
 lma
 lma
 nuI
-nuI
+ahR
 lma
 lma
 lma
@@ -51657,7 +51823,7 @@ aVe
 lma
 dSd
 aod
-nuI
+ahJ
 crK
 cmN
 pkw
@@ -51812,7 +51978,7 @@ eMc
 tbS
 lma
 nuI
-nuI
+ahR
 lma
 owL
 dSd
@@ -51844,7 +52010,7 @@ cmN
 aif
 aif
 aif
-nuI
+ahN
 aDW
 aif
 aif
@@ -52000,7 +52166,7 @@ aif
 aif
 aif
 nuI
-nuI
+ahR
 aDW
 aDW
 aif
@@ -52147,7 +52313,7 @@ lma
 luA
 cmN
 kZr
-nuI
+ahJ
 aod
 dSd
 lma
@@ -52480,7 +52646,7 @@ lma
 lma
 crK
 cmN
-nuI
+ahJ
 crK
 bjp
 aif
@@ -52488,7 +52654,7 @@ aif
 aif
 aif
 nuI
-nuI
+ahR
 aif
 aif
 aif
@@ -52639,7 +52805,7 @@ cmN
 cmN
 crK
 crK
-nuI
+ahQ
 cmN
 cmN
 aif
@@ -52791,7 +52957,7 @@ aVe
 lma
 dSd
 aod
-nuI
+ahJ
 cmN
 crK
 crK
@@ -52813,7 +52979,7 @@ crK
 crK
 lYV
 cmN
-nuI
+ahI
 cmN
 crK
 crK
@@ -52823,7 +52989,7 @@ crK
 cmN
 cmN
 cmN
-nuI
+ahI
 crK
 crK
 cmN
@@ -53138,9 +53304,9 @@ aif
 aif
 aif
 aif
-phP
-abe
-phP
+ahO
+ahP
+ahO
 kWN
 ykv
 aif
@@ -53296,7 +53462,7 @@ crK
 vmj
 oFQ
 cmN
-nuI
+ahQ
 cmN
 crK
 aif
@@ -53430,7 +53596,7 @@ lGf
 iGd
 iGd
 iGd
-nuI
+ahQ
 nTO
 bRM
 lma
@@ -53467,7 +53633,7 @@ jTo
 kZr
 kZr
 dQy
-nuI
+ahJ
 hCV
 gSR
 aOi
@@ -53767,7 +53933,7 @@ lma
 esn
 crK
 kZr
-nuI
+ahJ
 aod
 dSd
 lma
@@ -53780,7 +53946,7 @@ aif
 aDW
 aDW
 aDW
-nuI
+ahN
 aif
 aif
 sqm
@@ -53918,14 +54084,14 @@ ekA
 ulF
 lma
 nuI
-nuI
+ahR
 lma
 lma
 aVe
 lma
 dSd
 aod
-nuI
+ahJ
 cmN
 crK
 rJy
@@ -54428,12 +54594,12 @@ crK
 crK
 crK
 crK
-nuI
+ahQ
 crK
 cmN
 cmN
 crK
-nuI
+ahQ
 cmN
 cmN
 crK
@@ -54891,7 +55057,7 @@ nFa
 eMc
 oeS
 nTO
-nuI
+ahT
 hCV
 hCV
 gSR
@@ -54901,14 +55067,14 @@ lma
 crK
 crK
 dQy
-nuI
+ahJ
 aod
 dSd
 lma
 aVe
 lma
 lma
-nuI
+ahS
 lma
 aif
 aDW
@@ -55059,7 +55225,7 @@ hCV
 rZf
 kMh
 hCV
-nuI
+ahT
 cmN
 crK
 kTt
@@ -55385,7 +55551,7 @@ tUl
 qSY
 lma
 nuI
-nuI
+ahR
 lma
 qSY
 wyg
@@ -55863,7 +56029,7 @@ nFa
 eMc
 rUS
 dQy
-nuI
+ahT
 hCV
 dWy
 lma
@@ -55874,7 +56040,7 @@ lma
 lma
 tbS
 lma
-nuI
+ahN
 lma
 lma
 lma
@@ -56364,7 +56530,7 @@ fVz
 lma
 fjk
 keq
-nuI
+ahT
 hCV
 gSR
 hCV
@@ -56514,7 +56680,7 @@ qME
 lma
 gSR
 hCV
-nuI
+ahT
 fjk
 fjk
 uIW
@@ -57359,7 +57525,7 @@ sCx
 sCx
 sCx
 sCx
-awi
+ahF
 sCx
 sCx
 wlv
@@ -57842,7 +58008,7 @@ sCx
 sCx
 sCx
 sCx
-awi
+ahF
 sCx
 sCx
 sCx
@@ -58001,7 +58167,7 @@ sox
 pLJ
 kuO
 bhx
-awi
+ahL
 oDl
 kuO
 kuO
@@ -58015,7 +58181,7 @@ bhx
 bhx
 kuO
 bhx
-awi
+ahG
 cir
 cir
 lPw
@@ -58185,7 +58351,7 @@ sCx
 sCx
 sCx
 pmA
-awi
+ahF
 sCx
 sCx
 sCx
@@ -58327,11 +58493,11 @@ kuO
 kuO
 sCx
 sCx
-awi
+ahF
 sCx
 sCx
 sCx
-awi
+ahF
 sCx
 sCx
 wlv
@@ -59479,7 +59645,7 @@ jvv
 bhx
 kuO
 kuO
-awi
+ahE
 bhx
 coV
 kuO
@@ -59947,7 +60113,7 @@ tMg
 tMg
 sCx
 sCx
-awi
+ahK
 tJv
 kuO
 kME
@@ -59968,7 +60134,7 @@ uII
 fVk
 fBb
 rgU
-awi
+ahE
 kuO
 kuO
 cMi
@@ -60928,7 +61094,7 @@ awi
 sCx
 sCx
 awi
-awi
+ahH
 qLv
 qLv
 ani
@@ -61576,7 +61742,7 @@ awi
 sCx
 sCx
 awi
-awi
+ahH
 qLv
 ani
 ani
@@ -63833,7 +63999,7 @@ jnJ
 jgD
 bhx
 bhx
-awi
+ahL
 bhx
 kuO
 eOs
@@ -77205,7 +77371,7 @@ mKr
 mKr
 pBz
 qTH
-rIb
+aie
 lzJ
 cHW
 pBz
@@ -77369,7 +77535,7 @@ cHW
 pZW
 dVw
 cHW
-cHW
+ahd
 pBz
 pBz
 exp
@@ -77689,11 +77855,11 @@ pBz
 pBz
 sUs
 pBz
-cHW
+ahn
 pZW
 pdy
 iuH
-rIb
+aid
 cHW
 pBz
 pBz
@@ -77856,7 +78022,7 @@ mkN
 bjW
 pdy
 dVw
-cHW
+ahW
 pBz
 pBz
 exp
@@ -78339,7 +78505,7 @@ vRr
 vRr
 pBz
 cHW
-cHW
+ahd
 pZW
 dVw
 cHW
@@ -78504,7 +78670,7 @@ pBz
 cHW
 mkN
 ksB
-cHW
+aic
 kCV
 pBz
 exp
@@ -78665,8 +78831,8 @@ aDJ
 pBz
 pBz
 pBz
-cHW
-cHW
+rCO
+rCO
 kCV
 pBz
 pBz
@@ -78826,11 +78992,11 @@ pBz
 pBz
 pBz
 pBz
-pBz
-pBz
-cHW
-cHW
-cHW
+wKY
+wKY
+rCO
+rCO
+rCO
 pBz
 exp
 exp
@@ -78989,7 +79155,7 @@ pBz
 pBz
 cHW
 kCV
-sUs
+qGY
 cHW
 cHW
 cHW
@@ -79150,9 +79316,9 @@ lzJ
 cHW
 cHW
 cHW
+ahn
 cHW
-cHW
-cHW
+ahW
 cHW
 cHW
 cHW
@@ -79471,7 +79637,7 @@ iIo
 hnK
 cHW
 cHW
-pZW
+yab
 pdy
 pdy
 pdy
@@ -79479,7 +79645,7 @@ tBj
 yec
 rIb
 cHW
-cHW
+ahX
 cHW
 cHW
 pBz
@@ -79632,7 +79798,7 @@ hfX
 iIo
 hnK
 cHW
-qTH
+aii
 nai
 ssL
 ssL
@@ -79641,7 +79807,7 @@ pdy
 pdy
 iuH
 yec
-rIb
+aia
 cHW
 lzJ
 cHW
@@ -79956,7 +80122,7 @@ jCM
 pKE
 hnK
 cHW
-mkN
+aij
 lqt
 pdy
 pdy
@@ -80117,11 +80283,11 @@ nLM
 nLM
 nLM
 okx
-cHW
+gDr
 cHW
 mkN
 kWZ
-kWZ
+aig
 kWZ
 vwh
 lqt
@@ -80281,7 +80447,7 @@ kCV
 kCV
 kCV
 kCV
-cHW
+aih
 cHW
 cHW
 cHW
@@ -80934,9 +81100,9 @@ cyh
 kCV
 cyh
 wKY
+ahn
 cHW
-cHW
-mkN
+aib
 kWZ
 kWZ
 ksB
@@ -81263,7 +81429,7 @@ pBz
 pBz
 cHW
 lzJ
-cHW
+ahX
 cHW
 exp
 exp
@@ -81426,7 +81592,7 @@ rEe
 pBz
 cHW
 cHW
-cHW
+ahW
 exp
 exp
 exp
@@ -86918,7 +87084,7 @@ kMs
 bpU
 qoh
 oQH
-wGb
+aik
 iiB
 iiB
 dkY
@@ -94142,7 +94308,7 @@ dkY
 eZo
 kcL
 gHe
-dVU
+uiK
 rKh
 gLu
 acA
@@ -95063,7 +95229,7 @@ iOH
 iOH
 ran
 ran
-tUv
+ahV
 avA
 tRs
 mND
@@ -96035,9 +96201,9 @@ iOH
 iOH
 ran
 ran
-tUv
-jQz
-ery
+ahV
+avA
+ahU
 jTw
 oDs
 uir

@@ -9,16 +9,16 @@
 	if(!isliving(parent))
 		return COMPONENT_INCOMPATIBLE
 
-	src.heavy_shots = shots
-	src.stun_threshold = threshold
+	heavy_shots = shots
+	stun_threshold = threshold
 
 	to_chat(parent, SPAN_XENOHIGHDANGER("We struggle to remain on our feet!"))
 	START_PROCESSING(SSdcs, src)
 
 /datum/component/heavy_buildup/InheritComponent(datum/component/heavy_buildup/component_var, increment_shot, increment_threshold)
-	src.heavy_shots += (component_var ? component_var.heavy_shots : increment_shot)
+	heavy_shots += (component_var ? component_var.heavy_shots : increment_shot)
 
-	if(src.heavy_shots >= src.stun_threshold)
+	if(heavy_shots >= stun_threshold)
 		var/mob/living/carbon/xenomorph/target_shot = parent
 
 		if(target_shot.mob_size >= MOB_SIZE_BIG)

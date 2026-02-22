@@ -1709,31 +1709,22 @@
 "agt" = (
 /turf/closed/wall/kutjevo/rock,
 /area/kutjevo/exterior/Northwest_Colony)
-"agu" = (
-/turf/open/auto_turf/sand/layer0,
-/area/kutjevo/interior/oob)
 "agv" = (
 /turf/closed/wall/kutjevo/colony,
 /area/kutjevo/interior/oob)
-"agw" = (
-/turf/open/auto_turf/sand/layer2,
-/area/kutjevo/interior/complex/med/auto_doc)
-"agx" = (
-/turf/closed/wall/kutjevo/rock,
-/area/kutjevo/interior/complex/med/auto_doc)
 "agy" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 1
 	},
 /turf/open/auto_turf/sand/layer1,
-/area/kutjevo/interior/complex/med/auto_doc)
+/area/kutjevo/exterior/scrubland)
 "agz" = (
 /obj/structure/flora/bush/desert{
 	icon_state = "tree_2";
 	pixel_y = 14
 	},
 /turf/open/auto_turf/sand/layer1,
-/area/kutjevo/interior/complex/med/auto_doc)
+/area/kutjevo/exterior/scrubland)
 "agA" = (
 /obj/item/stack/sheet/metal,
 /turf/open/floor/kutjevo/tan,
@@ -1741,17 +1732,10 @@
 "agB" = (
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/exterior/Northwest_Colony)
-"agC" = (
-/turf/open/auto_turf/sand/layer0,
-/area/kutjevo/interior/complex/med/auto_doc)
 "agD" = (
 /obj/structure/flora/grass/tallgrass/desert/corner,
 /turf/open/auto_turf/sand/layer1,
-/area/kutjevo/interior/complex/med/auto_doc)
-"agE" = (
-/obj/structure/flora/grass/tallgrass/desert,
-/turf/open/auto_turf/sand/layer1,
-/area/kutjevo/interior/complex/med/auto_doc)
+/area/kutjevo/exterior/scrubland)
 "agF" = (
 /obj/structure/girder/displaced,
 /turf/open/floor/plating/kutjevo,
@@ -1789,7 +1773,7 @@
 	icon_state = "tree_4"
 	},
 /turf/open/auto_turf/sand/layer0,
-/area/kutjevo/interior/oob)
+/area/kutjevo/exterior/scrubland)
 "agN" = (
 /obj/item/stack/sheet/wood,
 /turf/open/floor/plating/kutjevo,
@@ -1902,7 +1886,7 @@
 	dir = 10
 	},
 /turf/open/auto_turf/sand/layer1,
-/area/kutjevo/interior/complex/med/auto_doc)
+/area/kutjevo/exterior/scrubland)
 "amb" = (
 /obj/structure/machinery/cm_vending/sorted/medical/no_access,
 /turf/open/floor/kutjevo/colors/cyan,
@@ -10711,9 +10695,6 @@
 "oeb" = (
 /turf/open/floor/kutjevo/multi_tiles/north,
 /area/kutjevo/exterior/runoff_bridge)
-"oex" = (
-/turf/open/auto_turf/sand/layer1,
-/area/kutjevo/interior/complex/med/auto_doc)
 "oeE" = (
 /turf/open/mars_cave/mars_cave_11,
 /area/kutjevo/exterior/scrubland)
@@ -13992,12 +13973,6 @@
 	},
 /turf/open/floor/kutjevo/tan/grey_edge/north,
 /area/kutjevo/interior/complex/med)
-"tob" = (
-/obj/structure/flora/grass/tallgrass/desert/corner{
-	dir = 9
-	},
-/turf/open/auto_turf/sand/layer1,
-/area/kutjevo/interior/complex/med/auto_doc)
 "toD" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_29"
@@ -15017,7 +14992,7 @@
 	dir = 5
 	},
 /turf/open/auto_turf/sand/layer1,
-/area/kutjevo/interior/complex/med/auto_doc)
+/area/kutjevo/exterior/scrubland)
 "uRH" = (
 /obj/structure/largecrate/random/secure,
 /obj/structure/platform/metal/kutjevo_smooth/east,
@@ -15273,7 +15248,7 @@
 	dir = 6
 	},
 /turf/open/auto_turf/sand/layer1,
-/area/kutjevo/interior/complex/med/auto_doc)
+/area/kutjevo/exterior/scrubland)
 "vls" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/barricade/wooden{
@@ -29148,9 +29123,9 @@ pCS
 sYd
 jtJ
 bXl
-agu
-agu
-agu
+bXl
+bXl
+bXl
 bXl
 kIn
 kIn
@@ -29315,10 +29290,10 @@ pCS
 kIn
 bXl
 sYd
-agu
-agu
-agu
-agu
+bXl
+bXl
+bXl
+bXl
 kIn
 kIn
 kIn
@@ -29481,11 +29456,11 @@ pCS
 pCS
 sYd
 sYd
-agu
-dxF
-dxF
-agu
-agu
+bXl
+bEp
+bEp
+bXl
+bXl
 bXl
 kIn
 kIn
@@ -29648,12 +29623,12 @@ pCS
 pCS
 sYd
 wKp
-agu
-dxF
-dxF
-agu
-agu
-agu
+bXl
+bEp
+bEp
+bXl
+bXl
+bXl
 sYd
 bXl
 sYd
@@ -29815,12 +29790,12 @@ pCS
 pCS
 sYd
 bXl
-dxF
-dxF
-agu
-agu
-agu
-agu
+bEp
+bEp
+bXl
+bXl
+bXl
+bXl
 sYd
 sYd
 sYd
@@ -29982,12 +29957,12 @@ pCS
 sYd
 sYd
 bXl
-dxF
-dxF
-agu
-agu
-agu
-agu
+bEp
+bEp
+bXl
+bXl
+bXl
+bXl
 bXl
 sYd
 sYd
@@ -30148,11 +30123,11 @@ pCS
 jzb
 sYd
 sYd
-dxF
-dxF
-agu
-agC
-oex
+bEp
+bEp
+bXl
+bXl
+sYd
 jkR
 uog
 bXl
@@ -30315,11 +30290,11 @@ pCS
 pCS
 pCS
 sYd
-dxF
-dxF
-agu
-agC
-agw
+bEp
+bEp
+bXl
+bXl
+kIn
 jkR
 sIG
 thU
@@ -30482,11 +30457,11 @@ pCS
 pCS
 pCS
 kIn
-agu
-agu
-agu
-agC
-agx
+bXl
+bXl
+bXl
+bXl
+bEp
 jkR
 mIB
 mIB
@@ -30649,11 +30624,11 @@ kIn
 pCS
 pCS
 sYd
-agu
-agu
-agu
-agC
-agx
+bXl
+bXl
+bXl
+bXl
+bEp
 jkR
 qOy
 uHP
@@ -30816,11 +30791,11 @@ pCS
 pCS
 pCS
 sYd
-agu
-agu
-oex
+bXl
+bXl
+sYd
 vlg
-agx
+bEp
 jkR
 mIB
 mIB
@@ -30985,7 +30960,7 @@ pCS
 kIn
 bXl
 agM
-agw
+kIn
 agD
 agy
 xKb
@@ -31151,10 +31126,10 @@ pCS
 pCS
 kIn
 bXl
-agu
-agw
+bXl
+kIn
 alL
-tob
+eLO
 xKb
 uHP
 iYo
@@ -31318,9 +31293,9 @@ pCS
 pCS
 sYd
 kIn
-agu
-oex
-oex
+bXl
+sYd
+sYd
 agz
 xKb
 amb
@@ -31484,9 +31459,9 @@ pCS
 pCS
 pCS
 sYd
-agu
-agu
-oex
+bXl
+bXl
+sYd
 vlg
 uRA
 xKb
@@ -31650,12 +31625,12 @@ sYd
 pCS
 pCS
 pCS
-agu
-agu
-agu
+bXl
+bXl
+bXl
 vlg
-agE
-tob
+voI
+eLO
 xKb
 sSF
 iYo

@@ -976,7 +976,6 @@
 
 /obj/structure/machinery/defenses/sentry/premade/deployable/colony/landing_zone/upp
 	name = "\improper UPP-577 Spaceborne Gauss Turret"	// Not a very good name.
-	icon = 'icons/obj/structures/machinery/defenses/upp_defenses.dmi'
 	sentry_type = "upp_sentry"
 	faction_group = list(FACTION_UPP, FACTION_MARINE, FACTION_COLONIST, FACTION_SURVIVOR, FACTION_NSPA)	//Should this kill marines instead?
 

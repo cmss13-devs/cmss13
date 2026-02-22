@@ -1001,6 +1001,15 @@
 /obj/structure/fence/slim/dark/door,
 /turf/open/floor/prison/floor_plate,
 /area/lv522/outdoors/nw_rockies)
+"adD" = (
+/obj/effect/landmark/survivor_spawner/lv522_forecon_major,
+/turf/open/floor/prison,
+/area/lv522/indoors/a_block/admin)
+"adE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/survivor_spawner/lv522_forecon_synth,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv522/indoors/a_block/admin)
 "adG" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/reagent_container/food/condiment/saltshaker,
@@ -78274,7 +78283,7 @@ fRk
 ibk
 qcd
 mEx
-sWr
+adD
 lxZ
 lHV
 wGY
@@ -79097,7 +79106,7 @@ lsa
 svf
 ydV
 sWT
-oGF
+adE
 dkq
 iBr
 wGY

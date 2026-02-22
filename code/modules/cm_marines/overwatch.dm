@@ -81,11 +81,30 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		ob_cannon_safety = GLOB.ob_cannon_safety
 
 	AddComponent(/datum/component/tacmap, has_drawing_tools=TRUE, minimap_flag=minimap_flag, has_update=TRUE)
+	RegisterSignal(SSminimaps, COMSIG_HUMAN_TACMAP_BLIP_CLICKED, PROC_REF(tacmap_blip_callback))
+
+/obj/structure/machinery/computer/overwatch/proc/tacmap_blip_callback(_SSminimaps, mob/clicker, mob/living/carbon/human/clicked)
+	SIGNAL_HANDLER
+
+	if (clicker.interactee != src)
+		return
+
+	if (!current_squad)
+		return
+
+	// GOC can overwatch anybody
+	var/is_groundside_operations = istype(src, /obj/structure/machinery/computer/overwatch/groundside_operations)
+	if(!is_groundside_operations && (!clicked.assigned_squad || clicked.assigned_squad != current_squad))
+		to_chat(clicker, SPAN_WARNING("That marine is from the wrong squad for this console."))
+		return
+
+	try_watch_camera(clicker, clicked)
 
 /obj/structure/machinery/computer/overwatch/Destroy()
 	GLOB.active_overwatch_consoles -= src
 	current_orbital_cannon = null
 	concurrent_users = null
+	UnregisterSignal(SSminimaps, COMSIG_HUMAN_TACMAP_BLIP_CLICKED)
 	if(!camera_holder)
 		return ..()
 	disconnect_holder()
@@ -585,6 +604,43 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	// if none of the above were true, something is very wrong
 	return UI_CLOSE
 
+/obj/structure/machinery/computer/overwatch/proc/try_watch_camera(mob/user, mob/living/carbon/human/cam_target)
+	var/obj/item/new_holder = cam_target.get_camera_holder()
+	var/obj/structure/machinery/camera/new_cam
+	if(new_holder)
+		new_cam = new_holder.get_camera()
+	if(user.interactee != src) //if we multitasking
+		user.set_interaction(src)
+		if(cam == new_cam) //if we switch to a console that is already watching this cam
+			return
+	if(!new_cam || !new_cam.can_use())
+		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("Searching for camera. No camera found for this marine! Tell your squad to put their cameras on!")]")
+	else if(cam && cam == new_cam)//click the camera you're watching a second time to stop watching.
+		visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Stopping camera view of [cam_target].")]")
+		for(var/datum/weakref/user_ref in concurrent_users)
+			var/mob/concurrent = user_ref.resolve()
+			if(!concurrent)
+				continue
+			concurrent.reset_view(null)
+			concurrent.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
+		disconnect_holder()
+		cam = null
+	else if(user.client.view != GLOB.world_view_size)
+		to_chat(user, SPAN_WARNING("You're too busy peering through binoculars."))
+	else
+		for(var/datum/weakref/user_ref in concurrent_users)
+			var/mob/concurrent = user_ref.resolve()
+			if(!concurrent)
+				continue
+			if(cam)
+				concurrent.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
+			concurrent.reset_view(new_cam)
+			concurrent.RegisterSignal(new_cam, COMSIG_PARENT_QDELETING, TYPE_PROC_REF(/mob, reset_observer_view_on_deletion))
+		if(camera_holder)
+			disconnect_holder()
+		cam = new_cam
+		connect_holder(new_holder)
+
 /obj/structure/machinery/computer/overwatch/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
@@ -778,47 +834,14 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				return
 			if(!params["target_ref"])
 				return
-			if(current_squad)
-				var/mob/living/carbon/human/cam_target = locate(params["target_ref"])
+			if(!current_squad)
+				return
 
-				if(!istype(cam_target))
-					return
+			var/mob/living/carbon/human/cam_target = locate(params["target_ref"])
+			if(!istype(cam_target))
+				return
 
-				var/obj/item/new_holder = cam_target.get_camera_holder()
-				var/obj/structure/machinery/camera/new_cam
-				if(new_holder)
-					new_cam = new_holder.get_camera()
-				if(user.interactee != src) //if we multitasking
-					user.set_interaction(src)
-					if(cam == new_cam) //if we switch to a console that is already watching this cam
-						return
-				if(!new_cam || !new_cam.can_use())
-					to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("Searching for camera. No camera found for this marine! Tell your squad to put their cameras on!")]")
-				else if(cam && cam == new_cam)//click the camera you're watching a second time to stop watching.
-					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Stopping camera view of [cam_target].")]")
-					for(var/datum/weakref/user_ref in concurrent_users)
-						var/mob/concurrent = user_ref.resolve()
-						if(!concurrent)
-							continue
-						concurrent.reset_view(null)
-						concurrent.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
-					disconnect_holder()
-					cam = null
-				else if(user.client.view != GLOB.world_view_size)
-					to_chat(user, SPAN_WARNING("You're too busy peering through binoculars."))
-				else
-					for(var/datum/weakref/user_ref in concurrent_users)
-						var/mob/concurrent = user_ref.resolve()
-						if(!concurrent)
-							continue
-						if(cam)
-							concurrent.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
-						concurrent.reset_view(new_cam)
-						concurrent.RegisterSignal(new_cam, COMSIG_PARENT_QDELETING, TYPE_PROC_REF(/mob, reset_observer_view_on_deletion))
-					if(camera_holder)
-						disconnect_holder()
-					cam = new_cam
-					connect_holder(new_holder)
+			try_watch_camera(user, cam_target)
 
 		if("change_operator")
 			if(operator != user)

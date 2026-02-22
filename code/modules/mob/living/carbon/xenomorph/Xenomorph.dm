@@ -232,6 +232,7 @@
 	var/acid_splash_cooldown = 5 SECONDS //Time it takes between acid splash retaliate procs
 	var/acid_splash_last //Last recorded time that an acid splash procced
 	var/mob/living/carbon/xenomorph/observed_xeno // Overwatched xeno for xeno hivemind vision
+	var/tacmap_click_listener_initialized // Are we currently listening for tacmap clicks? Useful because we also deregister when we die.
 	var/need_weeds = TRUE // Do we need weeds to regen HP?
 	var/datum/behavior_delegate/behavior_delegate = null // Holds behavior delegate. Governs all 'unique' hooked behavior of the Xeno. Set by caste datums and strains.
 	var/datum/action/xeno_action/activable/selected_ability // Our currently selected ability
@@ -487,6 +488,8 @@
 	if(hivenumber != XENO_HIVE_TUTORIAL)
 		INVOKE_NEXT_TICK(src, PROC_REF(add_minimap_marker))
 
+	start_listening_for_tacmap_clicks()
+
 	//Sight
 	sight |= (SEE_MOBS|SEE_BLACKNESS|SEE_TURFS)
 	see_invisible = SEE_INVISIBLE_LIVING
@@ -730,6 +733,8 @@
 	if(IS_XENO_LEADER(src)) //Strip them from the Xeno leader list, if they are indexed in here
 		hive.remove_hive_leader(src, light_mode = TRUE)
 	SStracking.stop_tracking("hive_[hivenumber]", src)
+
+	stop_listening_for_tacmap_clicks()
 
 	hive?.remove_xeno(src)
 	remove_from_all_mob_huds()

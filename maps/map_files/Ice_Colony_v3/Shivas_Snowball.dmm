@@ -22398,7 +22398,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/interior/caves/cp_camp)
 "uBz" = (
-/obj/structure/machinery/autolathe/full,
+/obj/structure/machinery/autolathe/partial,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/aux_power)
 "uBE" = (

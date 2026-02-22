@@ -17456,7 +17456,7 @@
 /area/fiorina/station/medbay)
 "ntW" = (
 /obj/structure/platform/metal/almayer/west,
-/obj/structure/machinery/autolathe/full{
+/obj/structure/machinery/autolathe/partial{
 	layer = 2.98
 	},
 /turf/open/floor/prison,
@@ -18133,7 +18133,7 @@
 /turf/open/floor/prison/bluecorner,
 /area/fiorina/station/chapel)
 "nTV" = (
-/obj/structure/machinery/autolathe/full,
+/obj/structure/machinery/autolathe/partial,
 /turf/open/floor/prison/darkbrownfull2,
 /area/fiorina/tumor/aux_engi)
 "nUb" = (
@@ -20079,7 +20079,7 @@
 /turf/open/floor/almayer/plating/northeast,
 /area/fiorina/tumor/ship)
 "prC" = (
-/obj/structure/machinery/autolathe/medilathe/full,
+/obj/structure/machinery/autolathe/medilathe/partial,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/medbay)
 "prL" = (

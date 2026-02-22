@@ -12559,7 +12559,7 @@
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/exterior/deep_jungle/east)
 "aIS" = (
-/obj/structure/machinery/autolathe/full,
+/obj/structure/machinery/autolathe/partial,
 /obj/structure/machinery/camera/autoname{
 	dir = 4
 	},

@@ -220,8 +220,8 @@
 				to_chat(victim, SPAN_WARNING("You're sprayed directly in the eyes with pepperspray!"))
 				victim.EyeBlur(25)
 				victim.EyeBlind(10)
-				victim.set_effect(3, STUN)
-				victim.set_effect(3, WEAKEN)
+				victim.Stun(3)
+				victim.KnockDown(3)
 
 /datum/reagent/frostoil
 	name = "Frost Oil"

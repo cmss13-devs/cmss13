@@ -178,3 +178,81 @@
   - balance: Xenos on hijack now gain one time use "Transmute" ability.
   matttheficus:
   - rscadd: Added more yautja auto-generated names.
+2026-02-22:
+  AnCopper:
+  - rscadd: Added an animation to the fulton taking off.
+  - soundadd: Added fulton_takeoff.ogg for the new fulton animation.
+  Bibby0110:
+  - bugfix: Hijack doesn't make ears bleed via the boon notification
+  ComboTombo:
+  - rscadd: Added the expedition satchel to the synthetic points vendor
+  - balance: General utility belts can now be worn on windbreakers and external webbings
+  - bugfix: Fixed general utility belts not being wearable when certain bomber jacket
+      variants are equipped
+  Drathek:
+  - qol: Mass Screenshot debug verb can now toggle multi-z effects for open_space
+      turfs for that client
+  - qol: MapTileImageTool python script can now default to the Byond screenshots folder
+  - refactor: 'Reverted Xeno Fire Immunity Refactor and did it a different way: Xenos
+      now define fire_immunity per xeno rather than per caste, always are registered
+      to fire signals, and handle ignition in IgniteMob proc.'
+  - balance: Hive buff for fire immunity will now stop even fire penetration.
+  - balance: Burning clouds now do no damage if the xeno has FIRE_IMMUNITY_NO_DAMAGE
+      instead of half damage.
+  - bugfix: Fixed messages about burrowed stepping over flames somehow.
+  - code_imp: Cleaned up various variable usage in fire signal procs.
+  Joe Lampost:
+  - rscadd: Adds a minimum time having played youngblood for the more experienced
+      ERTs
+  - rscadd: Added a larger group of youngbloods for highpop as well as a single youngblood
+      call for people who only want a single pupil.
+  - rscadd: Added a mark for whitelisted preds to mark youngbloods they are teaching.
+  - rscadd: Gives ghosts access to the pred hud.
+  - qol: Adds a equipped hunter preset
+  - bugfix: Fixes hunted smartgunners hunger
+  MistChristmas:
+  - bugfix: ERT UPP Synths can spawn again. Along with the admin spawn ones.
+  Puckaboo2:
+  - rscadd: Adds missing factions, HUD icons, minimap icons, assignments, role comms,
+      and jobs to personnel who did not have them.
+  - bugfix: All corporate synths now have jobs, assignments, hud and minimap icons,
+      factions, origins, etc. They're no longer standard survivors.
+  - qol: You can discern which Security Goon is which type in role-comms.
+  - qol: You can discern whether somebody is a Executive/Legal Specialists/Supervisor
+      in their name prefix.
+  - spellcheck: '''Dogcather'' is now ''Dogcatcher'''
+  - spellcheck: The 'Capt' prefix is now 'Capt.'
+  Red-byte3D:
+  - balance: Heavy m44's now work in stacks, every third stack will stun stunnable
+      xenos aka sluggable xenos for a small bit.
+  Steelpoint:
+  - maptweak: Change the stair sprites for the apartment complex in Tyrargo Rift to
+      appear visually distinct from typical multiz stairs, to avoid people accidentally
+      falling out of a window thinking they were using a set of stairs.
+  - maptweak: Fixed a unintended mapping area allowing people to climb out of the
+      intended playable area on Tyrargo Rift.
+  - rscadd: Edits the Tyrargo Rift map item to display the proper image.
+  - maptweak: Removes duplicated doors within the Stanfeld Apartments.
+  - maptweak: Marines and Xenomorphs can no longer climb on the roof of buildings
+      outside of the city, this is to avoid people creating unreachable killboxes.
+  carlarctg:
+  - balance: Xenomorph on dropship alert now only occurs after landing.
+  cuberound:
+  - rscadd: up and down pipes for multiz
+  dawsonkeyes:
+  - bugfix: Ravager Empower ability background no longer bugs out
+  halgmor:
+  - rscadd: Added black headband to marines' loadout
+  hry-gh:
+  - server: server operators can configure achievement backends
+  - server: allows server operators to configure an oidc endpoint to be checked if
+      a user has an access code given on connection
+  npukoJl:
+  - qol: Yautja click-drag override now works on yautjas
+  ori-disillusion-mirnov:
+  - code_imp: replaces COMSIG_HUMAN_TAKE_DAMAGE and COMSIG_XENO_TAKE_DAMAGE with COMSIG_MOB_TAKE_DAMAGE,
+      completing a todo from 3 years ago
+  - code_imp: cleaned up comments in riding.dm, riding_vehicle.dm, and riding_mob.dm
+  - code_imp: removed redundant check for diagonal movement since we dont have that
+  - bugfix: drivable mobs (there are none right now) can be driven as intended
+  - bugfix: riding component is properly removed when the last rider unbuckles

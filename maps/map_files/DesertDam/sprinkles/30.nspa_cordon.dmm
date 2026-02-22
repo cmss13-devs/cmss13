@@ -62,13 +62,6 @@
 	},
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/south_valley_dam)
-"gO" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/effect/blocker/water/toxic/Group_1,
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
-/area/desert_dam/exterior/valley/south_valley_dam)
 "hD" = (
 /obj/structure/platform/metal/almayer/east,
 /obj/structure/platform/metal/almayer,
@@ -97,6 +90,9 @@
 	dir = 4
 	},
 /obj/item/ammo_casing,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "nk" = (
@@ -113,13 +109,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
-/area/desert_dam/exterior/valley/south_valley_dam)
-"nZ" = (
-/obj/structure/disposalpipe/segment{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/blocker/water/toxic/Group_2,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "oI" = (
@@ -400,6 +392,9 @@
 /obj/structure/barricade/handrail/hybrisa/road/plastic/blue{
 	dir = 4
 	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "ON" = (
@@ -467,6 +462,9 @@
 	pixel_x = 3;
 	pixel_y = 8
 	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "Tb" = (
@@ -474,6 +472,9 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/blood/gibs/limb,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "TO" = (
@@ -575,6 +576,9 @@
 	pixel_x = 3;
 	pixel_y = 6
 	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "ZX" = (
@@ -591,7 +595,7 @@ BD
 BD
 BD
 BD
-gO
+nE
 "}
 (2,1,1) = {"
 Bq
@@ -601,7 +605,7 @@ rl
 rl
 rl
 rl
-gO
+nE
 "}
 (3,1,1) = {"
 Ks
@@ -621,7 +625,7 @@ pl
 pl
 Np
 Np
-gO
+nE
 "}
 (5,1,1) = {"
 tQ
@@ -661,7 +665,7 @@ Uw
 pY
 Uw
 Uw
-nZ
+nE
 "}
 (9,1,1) = {"
 Lt
@@ -671,7 +675,7 @@ Uw
 fB
 Uw
 ys
-nZ
+nE
 "}
 (10,1,1) = {"
 Im
@@ -681,7 +685,7 @@ Uw
 Uw
 jx
 Uw
-nZ
+nE
 "}
 (11,1,1) = {"
 OV
@@ -721,7 +725,7 @@ Pr
 Pr
 eI
 Uw
-nZ
+nE
 "}
 (15,1,1) = {"
 Lt
@@ -741,7 +745,7 @@ UM
 UM
 uS
 UM
-nZ
+nE
 "}
 (17,1,1) = {"
 QF
@@ -751,7 +755,7 @@ ex
 ex
 ex
 ex
-nZ
+nE
 "}
 (18,1,1) = {"
 Ly

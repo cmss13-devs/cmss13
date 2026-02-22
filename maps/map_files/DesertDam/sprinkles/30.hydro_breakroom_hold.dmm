@@ -1,4 +1,32 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/disposalpipe/trunk{
+	dir = 4
+	},
+/obj/structure/machinery/disposal,
+/obj/structure/barricade/wooden{
+	layer = 3.01
+	},
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"ab" = (
+/obj/item/frame/table,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"ac" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 10
+	},
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"ad" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
 "bx" = (
 /obj/item/trash/cigbutt{
 	pixel_x = -10;
@@ -20,6 +48,7 @@
 "cD" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/blood/oil,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/plating,
 /area/desert_dam/building/hydroponics/hydroponics_breakroom)
 "dr" = (
@@ -82,10 +111,12 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/hydroponics/hydroponics_breakroom)
 "ll" = (
-/obj/structure/disposalpipe/segment,
+/obj/structure/disposalpipe/junction,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/plating/burnt_platingdmg3,
 /area/desert_dam/building/hydroponics/hydroponics_breakroom)
 "lr" = (
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/freezerfloor,
 /area/desert_dam/building/hydroponics/hydroponics_breakroom)
 "lw" = (
@@ -105,6 +136,9 @@
 	pixel_y = 30
 	},
 /obj/item/prop/helmetgarb/spent_buckshot,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/hydroponics/hydroponics_breakroom)
 "my" = (
@@ -113,6 +147,9 @@
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/hydroponics/hydroponics_breakroom)
 "mY" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /turf/open/floor/plating/burnt_platingdmg3,
 /area/desert_dam/building/hydroponics/hydroponics_breakroom)
 "np" = (
@@ -164,6 +201,9 @@
 /area/desert_dam/building/hydroponics/hydroponics_breakroom)
 "rh" = (
 /obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 8
+	},
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/hydroponics/hydroponics_breakroom)
 "rz" = (
@@ -173,6 +213,7 @@
 	welded = 1
 	},
 /obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/freezerfloor,
 /area/desert_dam/building/hydroponics/hydroponics_breakroom)
 "sa" = (
@@ -216,6 +257,9 @@
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_x = 2;
 	pixel_y = 15
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
 	},
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/hydroponics/hydroponics_breakroom)
@@ -346,12 +390,18 @@
 	pixel_y = 10
 	},
 /obj/effect/landmark/objective_landmark/close,
+/obj/structure/pipes/vents/pump{
+	dir = 4
+	},
 /turf/open/floor/freezerfloor,
 /area/desert_dam/building/hydroponics/hydroponics_breakroom)
 "WJ" = (
 /obj/structure/surface/table,
 /obj/structure/largecrate/random/case,
 /obj/effect/landmark/objective_landmark/close,
+/obj/structure/pipes/vents/pump{
+	dir = 4
+	},
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/hydroponics/hydroponics_breakroom)
 "Xd" = (
@@ -381,6 +431,7 @@
 	icon_state = "pipe-c"
 	},
 /obj/structure/barricade/wooden,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/freezerfloor,
 /area/desert_dam/building/hydroponics/hydroponics_breakroom)
 "ZP" = (
@@ -424,7 +475,7 @@ iv
 Of
 dr
 dr
-lF
+aa
 ti
 "}
 (4,1,1) = {"
@@ -434,8 +485,8 @@ VT
 lr
 Yc
 rz
-rh
-rh
+ad
+ad
 rh
 ll
 cD
@@ -462,7 +513,7 @@ iv
 iv
 jI
 dr
-ZP
+ab
 Mv
 oz
 "}
@@ -501,7 +552,7 @@ iv
 xW
 np
 ZP
-dr
+ac
 WJ
 ti
 "}

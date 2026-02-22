@@ -63,8 +63,21 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/desert_dam/exterior/valley/bar_valley_dam)
+"al" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 8
+	},
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "am" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal11"
@@ -74,6 +87,90 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
+"an" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/asphalt/cement/cement3,
+/area/desert_dam/interior/dam_interior/south_tunnel_entrance)
+"ao" = (
+/obj/structure/desertdam/decals/road_edge,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/bar_valley_dam)
+"ap" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/bar_valley_dam)
+"aq" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 9
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/bar_valley_dam)
+"ar" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
+/area/desert_dam/exterior/valley/bar_valley_dam)
+"as" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal7"
+	},
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/bar_valley_dam)
+"at" = (
+/obj/structure/desertdam/decals/road_edge,
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/bar_valley_dam)
+"au" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/bar_valley_dam)
+"av" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
+/area/desert_dam/exterior/valley/bar_valley_dam)
 "aw" = (
 /obj/effect/decal/sand_overlay/sand1,
 /obj/effect/decal/sand_overlay/sand1{
@@ -82,6 +179,24 @@
 /obj/item/ammo_casing/bullet,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/valley/bar_valley_dam)
+"ax" = (
+/obj/structure/desertdam/decals/road_edge,
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 4
+	},
+/obj/item/ammo_casing/bullet,
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/bar_valley_dam)
+"ay" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/plating/platingdmg3/west,
+/area/desert_dam/building/bar/bar)
+"az" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/plating/platingdmg1,
+/area/desert_dam/building/bar/bar)
 "aO" = (
 /obj/item/prop/colony/used_flare,
 /turf/open/floor/plating/platingdmg3/west,
@@ -138,6 +253,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "bN" = (
@@ -156,6 +274,7 @@
 	icon_state = "W"
 	},
 /obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "bY" = (
@@ -337,11 +456,6 @@
 /obj/item/stack/rods,
 /turf/open/floor/grimy,
 /area/desert_dam/building/bar/bar)
-"fN" = (
-/obj/structure/disposalpipe/segment,
-/obj/item/stack/sandbags,
-/turf/open/asphalt,
-/area/desert_dam/exterior/valley/bar_valley_dam)
 "fP" = (
 /obj/structure/bed/bedroll,
 /obj/item/bedsheet/brown,
@@ -354,6 +468,8 @@
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 4
 	},
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "ga" = (
@@ -367,11 +483,6 @@
 /obj/structure/desertdam/decals/road_edge,
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
-"gA" = (
-/obj/structure/disposalpipe/segment,
-/obj/item/ammo_casing/bullet,
-/turf/open/asphalt,
-/area/desert_dam/exterior/valley/bar_valley_dam)
 "gM" = (
 /obj/item/trash/candy,
 /turf/open/mars/mars_dirt_5,
@@ -457,6 +568,9 @@
 	icon_state = "N"
 	},
 /obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /turf/open/asphalt,
@@ -641,6 +755,12 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "lT" = (
@@ -676,6 +796,7 @@
 /area/desert_dam/building/bar/backroom)
 "mF" = (
 /obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "mL" = (
@@ -1024,6 +1145,7 @@
 	icon_state = "W"
 	},
 /obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "ug" = (
@@ -1218,6 +1340,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/bar)
 "xz" = (
@@ -1332,6 +1457,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8;
 	icon_state = "pipe-c"
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 9
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
@@ -1548,6 +1676,13 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 5
+	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "CA" = (
@@ -1710,7 +1845,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/obj/structure/disposalpipe/segment,
 /obj/item/ammo_casing/bullet,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
@@ -1753,7 +1887,6 @@
 /turf/open/desert/dirt/desert_transition_corner1/east,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "FF" = (
-/obj/structure/disposalpipe/segment,
 /obj/item/ammo_casing/bullet,
 /obj/item/prop/colony/used_flare,
 /turf/open/asphalt,
@@ -1776,9 +1909,11 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
+/obj/structure/disposalpipe/junction{
+	dir = 4
+	},
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 1
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
@@ -1844,6 +1979,7 @@
 /area/desert_dam/building/bar/bar)
 "HV" = (
 /obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "Ip" = (
@@ -1906,6 +2042,9 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/desert_dam/building/bar/bar)
 "Jt" = (
@@ -1984,6 +2123,7 @@
 	id = "dam_checkpoint_west";
 	name = "\improper Checkpoint Lock"
 	},
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "LC" = (
@@ -2111,6 +2251,8 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 8
 	},
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "Ow" = (
@@ -2304,6 +2446,13 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 5
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 10
+	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "RW" = (
@@ -2324,8 +2473,8 @@
 /turf/open/floor/plating/platingdmg3/west,
 /area/desert_dam/building/bar/bar)
 "Sl" = (
-/obj/structure/pipes/standard/manifold/hidden/green{
-	dir = 1
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
 	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/desert_dam/building/bar/bar)
@@ -2377,6 +2526,7 @@
 /obj/structure/barricade/wooden{
 	dir = 8
 	},
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/plating,
 /area/desert_dam/building/bar/bar)
 "Ta" = (
@@ -2391,14 +2541,14 @@
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/backroom)
 "Td" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
 /obj/structure/machinery/light{
 	dir = 1
 	},
 /obj/structure/barricade/wooden{
 	dir = 8
+	},
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 1
 	},
 /turf/open/floor/plating/platingdmg3,
 /area/desert_dam/building/bar/bar)
@@ -2546,6 +2696,9 @@
 /obj/structure/barricade/sandbags/wired{
 	dir = 4
 	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 6
+	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "VT" = (
@@ -2568,6 +2721,8 @@
 /obj/item/ammo_magazine/rifle/type71/heap{
 	current_rounds = 0
 	},
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "Wb" = (
@@ -2575,6 +2730,9 @@
 	icon_state = "road_edge_decal2"
 	},
 /obj/effect/decal/cleanable/blood/xeno,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "Wh" = (
@@ -2670,10 +2828,10 @@
 /obj/structure/bed/chair/wood/normal{
 	dir = 8
 	},
-/obj/structure/disposalpipe/segment{
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/disposalpipe/broken{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/desert_dam/building/bar/bar)
 "XR" = (
@@ -2775,6 +2933,7 @@
 	icon_state = "W"
 	},
 /obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "ZY" = (
@@ -3205,8 +3364,8 @@ hv
 hv
 Td
 SY
-Jc
-zM
+az
+ay
 Jc
 aa
 hm
@@ -3537,7 +3696,7 @@ bP
 LB
 mF
 bP
-mF
+al
 mF
 bP
 tX
@@ -3552,7 +3711,7 @@ ln
 ln
 ln
 Ta
-yP
+av
 PS
 kD
 nP
@@ -3593,7 +3752,7 @@ Ch
 RU
 Ou
 fR
-kk
+ar
 Cx
 kk
 kk
@@ -3613,7 +3772,7 @@ OJ
 pW
 cZ
 so
-dR
+an
 dR
 dJ
 pW
@@ -3632,7 +3791,7 @@ kD
 kD
 eQ
 Jx
-Jx
+ao
 Jx
 Jx
 Jx
@@ -3670,7 +3829,7 @@ kD
 kD
 hH
 HI
-OZ
+ap
 HI
 HI
 OZ
@@ -3961,20 +4120,20 @@ xT
 xT
 "}
 (32,1,1) = {"
-CE
-CE
+at
+at
 VW
-CE
-Vc
-CE
-CE
-Vc
-CE
-Vc
-CE
-ab
-HI
-bJ
+at
+ax
+at
+at
+ax
+at
+ax
+at
+as
+HV
+aq
 eI
 kD
 ZY
@@ -4012,7 +4171,7 @@ vR
 OZ
 HI
 HI
-bJ
+HI
 nt
 mf
 lT
@@ -4037,20 +4196,20 @@ xT
 xT
 "}
 (34,1,1) = {"
-HV
-HV
-ZS
-fN
-HV
+HI
+HI
+au
+Vg
+HI
 EW
-HV
+HI
 FF
-HV
-HV
-ZS
-HV
-gA
-zl
+HI
+HI
+au
+HI
+hi
+HI
 YE
 Hl
 xT

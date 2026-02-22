@@ -28,15 +28,34 @@
 	},
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
-"bw" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 9
-	},
+"ad" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"ae" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"af" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"ag" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 10
+	},
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "bx" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /turf/open/floor/plating/burnt_platingdmg3,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "ca" = (
@@ -49,9 +68,6 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "dF" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
 /obj/item/frame/table/reinforced,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/platingdmg3,
@@ -67,15 +83,13 @@
 "ex" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "gJ" = (
 /turf/open/floor/plating/platingdmg3,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "gW" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/gibspawner/xeno,
 /turf/open/floor/prison/bright_clean/southwest,
@@ -118,6 +132,9 @@
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "kf" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "kk" = (
@@ -150,9 +167,6 @@
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "oe" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
 /obj/item/device/multitool{
 	pixel_x = -11;
 	pixel_y = 2
@@ -183,20 +197,16 @@
 /obj/structure/machinery/floodlight,
 /turf/open/floor/prison/darkyellow2/west,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
-"sh" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/interior/dam_interior/primary_tool_storage)
 "sF" = (
 /obj/item/weapon/gun/smg/nailgun,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "uj" = (
-/obj/structure/pipes/vents/pump,
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 8
+	},
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "vh" = (
@@ -208,11 +218,6 @@
 /obj/effect/spawner/random/toolbox,
 /obj/structure/surface/table/reinforced,
 /turf/open/floor/prison/darkyellow2/east,
-/area/desert_dam/interior/dam_interior/primary_tool_storage)
-"wB" = (
-/obj/structure/pipes/vents/pump,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "xB" = (
 /obj/structure/disposalpipe/segment{
@@ -275,9 +280,6 @@
 /turf/open/floor/prison/darkyellow2/east,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "AF" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/platingdmg3,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
@@ -288,9 +290,6 @@
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "Bh" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/item/tool/crowbar/red{
 	pixel_x = -4;
@@ -306,6 +305,7 @@
 	dir = 1;
 	pixel_y = 7
 	},
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "Cc" = (
@@ -330,9 +330,6 @@
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "Cv" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
 /obj/item/stack/cable_coil/random{
 	pixel_y = 12;
 	pixel_x = 3
@@ -377,8 +374,10 @@
 /turf/open/floor/plating/burnt_platingdmg3,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "HS" = (
-/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/junction,
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 8
+	},
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "IE" = (
@@ -386,6 +385,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Engineering Central"
 	},
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "JP" = (
@@ -423,13 +423,12 @@
 	},
 /turf/open/floor/prison/darkyellowcorners2/north,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
-"Mq" = (
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/interior/dam_interior/primary_tool_storage)
 "MN" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/xeno,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /turf/open/floor/plating/platingdmg3,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "NQ" = (
@@ -482,13 +481,14 @@
 "Pe" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /turf/open/floor/plating/burnt_platingdmg3,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "Pt" = (
-/obj/structure/pipes/standard/manifold/hidden/green{
-	dir = 8
-	},
 /obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "Pu" = (
@@ -594,6 +594,7 @@
 "WU" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/xeno,
+/obj/structure/pipes/vents/pump,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "Xr" = (
@@ -648,7 +649,7 @@ KV
 (4,1,1) = {"
 IE
 BV
-Mq
+Pt
 ex
 uj
 Pt
@@ -661,7 +662,7 @@ KV
 ST
 KV
 Pd
-EJ
+af
 gW
 Pe
 HK
@@ -707,7 +708,7 @@ JR
 EJ
 Cc
 Cv
-EJ
+af
 ca
 ls
 "}
@@ -718,7 +719,7 @@ ca
 EJ
 ZW
 Bh
-EJ
+af
 ca
 JP
 "}
@@ -728,10 +729,10 @@ JU
 JR
 EJ
 EJ
-sh
-EJ
 KV
-EJ
+ag
+ae
+ad
 "}
 (12,1,1) = {"
 Wn
@@ -739,7 +740,7 @@ ox
 ca
 sF
 kk
-sh
+KV
 EJ
 cA
 EJ
@@ -750,7 +751,7 @@ op
 UH
 yq
 Am
-sh
+KV
 EJ
 DS
 Zz
@@ -760,8 +761,8 @@ Fq
 ST
 iN
 EP
-wB
-bw
+EJ
+EJ
 EJ
 ca
 vh

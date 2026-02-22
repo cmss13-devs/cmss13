@@ -1,3 +1,6 @@
+GLOBAL_LIST_EMPTY(upp_leaders)
+GLOBAL_LIST_EMPTY(upp_officers)
+
 /// How many smallhosts to preassigned players to spawn?
 #define MONKEYS_TO_TOTAL_RATIO 1/32
 /// When to start opening the podlocks identified as "map_lockdown" (takes 30s)
@@ -10,6 +13,8 @@
 #define MARINE_MAJOR_ROUND_END_DELAY (3 MINUTES)
 /// The ratio of forsaken to groundside humans before calling more forsaken xenos
 #define GROUNDSIDE_XENO_MULTIPLIER 1.0
+/// UPP Chain of command
+#define UPP_COMMAND_ROLES list(JOB_UPP_CO_OFFICER, JOB_UPP_KPT_OFFICER, JOB_UPP_SRLT_OFFICER, JOB_UPP_LT_OFFICER, JOB_UPP_PILOT, JOB_UPP_LT_DOKTOR, JOB_UPP_COMMISSAR)
 
 /datum/game_mode/colonialmarines/upp
 	name = "UPP Distress Signal"
@@ -29,9 +34,74 @@
 	droppod.drop_time = 0
 	droppod.launch(target)
 
+/datum/game_mode/colonialmarines/upp/ares_command_check(mob/living/carbon/human/commander = null, force = FALSE)
+	/// Job of the person being auto-promoted.
+	var/role_in_charge
+	/// human being auto-promoted.
+	var/mob/living/carbon/human/person_in_charge
+	/// Extra info to add to the ARES announcement announcing the promotion.
+	var/announce_addendum
+
+	//Basically this follows the list of command staff in order of CoC,
+	//then if the role lacks senior command access it gives the person that access
+
+	if(SSticker.mode.acting_commander && !force) // If there's already an aCO; don't set a new one, unless forced.
+		return
+
+	if((GLOB.upp_leaders[JOB_UPP_CO_OFFICER] || GLOB.upp_leaders[JOB_UPP_KPT_OFFICER]) && !force)
+		return
+	//If we have a CO or XO, we're good no need to announce anything.
+
+	for(var/job_by_chain in UPP_COMMAND_ROLES)
+		role_in_charge = job_by_chain
+
+		if(job_by_chain == JOB_UPP_SRLT_OFFICER && GLOB.upp_leaders[JOB_UPP_SRLT_OFFICER])
+			person_in_charge = pick(GLOB.upp_leaders[JOB_UPP_SRLT_OFFICER])
+			break
+		if(job_by_chain == JOB_UPP_LT_OFFICER && GLOB.upp_leaders[JOB_UPP_LT_OFFICER])
+			person_in_charge = pick(GLOB.upp_leaders[JOB_UPP_LT_OFFICER])
+			break
+		if(job_by_chain == JOB_UPP_LT_DOKTOR && GLOB.upp_officers[JOB_UPP_LT_DOKTOR])
+			person_in_charge = pick(GLOB.upp_officers[JOB_UPP_LT_DOKTOR])
+			break
+
+		//If the job is a list we have to stop here
+		if(person_in_charge)
+			break
+
+		var/datum/job/job_datum = GLOB.RoleAuthority.roles_for_mode[job_by_chain]
+		person_in_charge = job_datum?.get_active_player_on_job()
+		if(!isnull(person_in_charge))
+			break
+
+	if(commander) // pre-provided commander overrides the automatic selection.
+		person_in_charge = commander
+		role_in_charge = person_in_charge.job
+
+	if(!person_in_charge)
+		return log_admin("No valid commander found for automatic promotion.")
+
+	SSticker.mode.acting_commander = person_in_charge // Prevents double-dipping.
+
+	var/obj/item/card/id/card = person_in_charge.get_idcard()
+	if(card)
+		var/static/to_add = list(ACCESS_UPP_SENIOR_LEAD)
+		var/new_access = card.access | to_add
+		if(card.access ~! new_access)
+			card.access = new_access
+			announce_addendum += "\nSenior Command access added to ID."
+
+	announce_addendum += "\nA Command headset is available in the Command Tablet cabinet."
+
+	//does an announcement to the crew about the commander & alerts admins to that change for logs.
+	shipwide_ai_announcement("Acting Commander authority has been transferred to: [role_in_charge] [person_in_charge], who will assume command until further notice. Please direct all inquiries and follow instructions accordingly. [announce_addendum]", MAIN_AI_SYSTEM, 'sound/misc/interference.ogg')
+	message_admins("[key_name(person_in_charge, TRUE)] [ADMIN_JMP_USER(person_in_charge)] has been designated the operation commander.")
+	return
+
 #undef MONKEYS_TO_TOTAL_RATIO
 #undef PODLOCKS_OPEN_WAIT
 #undef HIJACK_EXPLOSION_COUNT
 #undef MAJORITY
 #undef MARINE_MAJOR_ROUND_END_DELAY
 #undef GROUNDSIDE_XENO_MULTIPLIER
+#undef UPP_COMMAND_ROLES

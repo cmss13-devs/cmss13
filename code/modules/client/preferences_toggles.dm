@@ -738,6 +738,7 @@ CLIENT_VERB(toggle_adaptive_zooming)
 		"Squad HUD" = MOB_HUD_FACTION_OBSERVER,
 		"Xeno Status HUD" = MOB_HUD_XENO_STATUS,
 		"Xeno Effects HUD" = MOB_HUD_XENO_HOSTILE,
+		"Hunter HUD" = MOB_HUD_HUNTER,
 		"Faction UPP HUD" = MOB_HUD_FACTION_UPP,
 		"Faction Wey-Yu HUD" = MOB_HUD_FACTION_WY,
 		"Faction TWE HUD" = MOB_HUD_FACTION_TWE,

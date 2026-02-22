@@ -442,6 +442,15 @@
 /obj/structure/machinery/power/apc/almayer/east,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/upper/s_stern)
+"abd" = (
+/obj/structure/machinery/door/airlock/almayer/maint/reinforced{
+	access_modified = 1;
+	dir = 1;
+	req_one_access = null;
+	req_one_access_txt = "7;19"
+	},
+/turf/open/floor/almayer/no_build/test_floor4,
+/area/almayer/middeck/maintenance/pb)
 "abe" = (
 /obj/structure/machinery/power/apc/almayer/hardened/south,
 /turf/open/floor/almayer/plate,
@@ -4557,6 +4566,10 @@
 /turf/open/floor/almayer/plating_stripedcorner/west,
 /area/almayer/hallways/lower/port_midship_hallway)
 "akE" = (
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera"
+	},
+/obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/secure_closet{
 	name = "Field Doctor's locker"
 	},
@@ -4568,7 +4581,6 @@
 /obj/item/storage/box/mre,
 /obj/item/device/radio/marine,
 /obj/item/clothing/accessory/patch/medic_patch,
-/obj/effect/decal/cleanable/dirt,
 /obj/item/book/manual/surgery,
 /obj/item/book/manual/chemistry,
 /obj/item/book/manual/medical_diagnostics_manual,
@@ -14692,8 +14704,11 @@
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/hydroponics)
 "aMe" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	dir = 1
+/obj/structure/machinery/door/airlock/almayer/maint/reinforced{
+	access_modified = 1;
+	dir = 1;
+	req_one_access = null;
+	req_one_access_txt = "7;19"
 	},
 /turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/middeck/maintenance/bow)
@@ -162652,7 +162667,7 @@ aMh
 aMK
 aMu
 aMj
-aNU
+abd
 aZo
 bay
 bwN

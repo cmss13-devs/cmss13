@@ -749,6 +749,7 @@ GLOBAL_DATUM_INIT(hud_icon_hunter_dishonored, /image, image('icons/mob/hud/hud_y
 GLOBAL_DATUM_INIT(hud_icon_hunter_honored, /image, image('icons/mob/hud/hud_yautja.dmi', src, "hunter_honored"))
 GLOBAL_DATUM_INIT(hud_icon_hunter_thralled, /image, image('icons/mob/hud/hud_yautja.dmi', src, "hunter_thralled"))
 GLOBAL_DATUM_INIT(hud_icon_hunter_blooded, /image, image('icons/mob/hud/hud_yautja.dmi', src, "hunter_thrall_blooded"))
+GLOBAL_DATUM_INIT(hud_icon_hunter_youngblood, /image, image('icons/mob/hud/hud_yautja.dmi', src, "predhud"))
 
 /mob/living/carbon/hud_set_hunter()
 	var/image/holder = hud_list[HUNTER_HUD]
@@ -769,6 +770,9 @@ GLOBAL_DATUM_INIT(hud_icon_hunter_blooded, /image, image('icons/mob/hud/hud_yaut
 
 	if(hunter_data.blooded)
 		holder.overlays += GLOB.hud_icon_hunter_blooded
+
+	if(hunter_data.youngblood_marked)
+		holder.overlays += GLOB.hud_icon_hunter_youngblood
 
 	hud_list[HUNTER_HUD] = holder
 

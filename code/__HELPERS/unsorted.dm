@@ -364,10 +364,11 @@
 		moblist += friend
 	return moblist
 
-/proc/key_name(whom, include_link = null, include_name = 1, highlight_special_characters = 1)
+/proc/key_name(whom, include_link = null, include_name = 1, highlight_special_characters = 1, show_username = FALSE)
 	var/mob/M
 	var/client/C
 	var/key
+	var/username
 
 	if(!whom)
 		return "*null*"
@@ -375,10 +376,12 @@
 		C = whom
 		M = C.mob
 		key = C.key
+		username = C.username()
 	else if(ismob(whom))
 		M = whom
 		C = M.client
 		key = M.key
+		username = M.username()
 	else if(istype(whom, /datum))
 		var/datum/D = whom
 		return "*invalid:[D.type]*"
@@ -391,7 +394,10 @@
 		if(include_link && C)
 			. += "<a href='byond://?priv_msg=[C.ckey]'>"
 
-		. += key
+		if(show_username && username && username != key)
+			. += "[username] ([key])"
+		else
+			. += key
 
 		if(include_link)
 			if(C) . += "</a>"
@@ -413,6 +419,10 @@
 
 /proc/key_name_admin(whom, include_name = 1)
 	return key_name(whom, 1, include_name)
+
+/// Returns key_name with username shown when it differs from key - for admin contexts
+/proc/key_name_with_username(whom, include_name = 1)
+	return key_name(whom, TRUE, include_name, TRUE, TRUE)
 
 
 // returns the turf located at the map edge in the specified direction relative to A

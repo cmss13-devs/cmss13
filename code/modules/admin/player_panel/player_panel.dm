@@ -484,6 +484,7 @@
 
 		.["client_key"] = targetClient.key
 		.["client_ckey"] = targetClient.ckey
+		.["client_username"] = targetClient.username()
 
 		.["client_muted"] = targetClient.prefs.muted
 		.["client_age"] = targetClient.player_data.byond_account_age

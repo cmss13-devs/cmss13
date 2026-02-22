@@ -2781,6 +2781,7 @@
 
 /datum/equipment_preset/synth/upp
 	name = "UPP Synthetic (Cryo)"
+	flags = EQUIPMENT_PRESET_EXTRA
 	faction = FACTION_UPP
 	origin_override = ORIGIN_UPP
 	languages = ALL_SYNTH_LANGUAGES_UPP

@@ -1155,7 +1155,7 @@
 		var/datum/reagents/current_reagents = current.reagents
 		var/datum/reagent/current_reagent = locate() in current_reagents.reagent_list //reagent color is in here
 		if(current_reagent)
-			var/image/filling = image('icons/obj/items/chemistry.dmi', src, "[icon_state]_[length(contents)]")
+			var/image/filling = image('icons/obj/items/chemistry.dmi', src, "[base_icon]_[length(contents)]")
 			filling.color = current_reagent.color
 			overlays += filling
 			return

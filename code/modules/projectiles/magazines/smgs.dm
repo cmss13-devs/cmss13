@@ -192,6 +192,8 @@
 	icon_state = "type64mag"
 	max_rounds = 64
 	gun_type = /obj/item/weapon/gun/smg/bizon
+	ammo_band_icon = "+type64mag_band"
+	ammo_band_icon_empty = "+type64mag_band_e"
 
 /obj/item/ammo_magazine/smg/bizon/ap
 	name = "\improper Type 64 Helical AP Magazine (7.62x19mm)"

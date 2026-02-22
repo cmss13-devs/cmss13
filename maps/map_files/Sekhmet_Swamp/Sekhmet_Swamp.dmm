@@ -2728,327 +2728,10 @@
 "aiq" = (
 /turf/open/floor/strata/green3/southwest,
 /area/sekhmet/int_heavy/low_level_rsr)
-"air" = (
-/turf/open/auto_turf/strata_grass/layer1,
-/area/sky)
-"ais" = (
-/obj/structure/machinery/colony_floodlight,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/sky)
-"ait" = (
-/turf/closed/wall/strata_outpost,
-/area/sky)
-"aiu" = (
-/obj/structure/window/framed/strata,
-/turf/open/floor/plating/kutjevo,
-/area/sky)
-"aiv" = (
-/turf/open/floor/strata/multi_tiles/southeast,
-/area/sky)
-"aiw" = (
-/obj/structure/stairs/multiz/down{
-	dir = 8
-	},
-/turf/open/floor/corsat/marked,
-/area/sky)
-"aix" = (
-/obj/structure/stairs/multiz/down{
-	dir = 4
-	},
-/turf/open/floor/corsat/marked,
-/area/sky)
-"aiy" = (
-/obj/structure/machinery/light{
-	light_power = 0.5;
-	dir = 8
-	},
-/turf/open/floor/corsat/squares,
-/area/sky)
-"aiz" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/pipes/vents/pump,
-/turf/open/floor/kutjevo/grey,
-/area/sky)
-"aiA" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 2
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
-/obj/structure/machinery/chem_master,
-/turf/open/floor/strata/multi_tiles/southwest,
-/area/sky)
-"aiB" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 2
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/strata/multi_tiles/southwest,
-/area/sky)
-"aiC" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/reagent_container/hypospray,
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 2
-	},
-/turf/open/floor/strata/multi_tiles/southwest,
-/area/sky)
 "aiD" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/coast/north,
 /area/sekhmet/outside/swamp)
-"aiE" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/storage/box/syringes{
-	pixel_x = -4;
-	pixel_y = 10
-	},
-/obj/item/storage/box/beakers{
-	pixel_x = -11;
-	pixel_y = 1
-	},
-/obj/item/storage/box/beakers{
-	pixel_x = 5;
-	pixel_y = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 2
-	},
-/turf/open/floor/strata/multi_tiles/southwest,
-/area/sky)
-"aiF" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/reagentgrinder{
-	pixel_y = 5
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 2
-	},
-/obj/structure/machinery/light{
-	light_power = 0.5;
-	dir = 4
-	},
-/turf/open/floor/strata/multi_tiles/southwest,
-/area/sky)
-"aiG" = (
-/obj/structure/machinery/computer/crew/colony,
-/turf/open/floor/corsat/squares,
-/area/sky)
-"aiH" = (
-/obj/structure/reagent_dispensers/tank/fuel/custom,
-/turf/open/floor/kutjevo/grey,
-/area/sky)
-"aiI" = (
-/turf/open/floor/corsat/squares,
-/area/sky)
-"aiJ" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/kutjevo/grey,
-/area/sky)
-"aiK" = (
-/turf/open/floor/strata/multi_tiles/west,
-/area/sky)
-"aiL" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/strata/multi_tiles/west,
-/area/sky)
-"aiM" = (
-/obj/effect/alien/weeds/node,
-/turf/open/floor/strata/multi_tiles/west,
-/area/sky)
-"aiN" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open_space,
-/area/sky)
-"aiO" = (
-/obj/effect/alien/weeds/node,
-/turf/open/floor/plating/plating_catwalk/strata,
-/area/sky)
-"aiP" = (
-/turf/open/floor/plating/plating_catwalk/strata,
-/area/sky)
-"aiQ" = (
-/turf/open/floor/corsat/marked,
-/area/sky)
-"aiR" = (
-/obj/structure/pipes/standard/tank/oxygen,
-/turf/open/floor/corsat/squares,
-/area/sky)
-"aiS" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/door_control{
-	pixel_x = -22;
-	id = "rsrSTORE"
-	},
-/turf/open/floor/corsat/squares,
-/area/sky)
-"aiT" = (
-/obj/structure/machinery/sleep_console{
-	dir = 8;
-	pixel_x = 6;
-	pixel_y = 12
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/strata/multi_tiles/southeast,
-/area/sky)
-"aiU" = (
-/obj/structure/machinery/medical_pod/sleeper,
-/turf/open/floor/corsat/marked,
-/area/sky)
-"aiV" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/strata/multi_tiles/southeast,
-/area/sky)
-"aiW" = (
-/obj/structure/machinery/cryo_cell,
-/obj/structure/pipes/standard/cap,
-/turf/open/floor/corsat/marked,
-/area/sky)
-"aiX" = (
-/obj/structure/pipes/standard/simple/visible{
-	dir = 4
-	},
-/turf/open/floor/strata/multi_tiles/southeast,
-/area/sky)
-"aiY" = (
-/obj/structure/pipes/standard/tank/oxygen{
-	dir = 8
-	},
-/turf/open/floor/corsat/squares,
-/area/sky)
-"aiZ" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/floor/plating/plating_catwalk/strata,
-/area/sky)
-"aja" = (
-/obj/effect/stairs/down,
-/turf/open/floor/corsat/marked,
-/area/sky)
-"ajb" = (
-/obj/structure/machinery/prop/almayer/computer/PC{
-	dir = 8;
-	pixel_x = -2;
-	pixel_y = 4
-	},
-/obj/structure/surface/table/reinforced/prison,
-/turf/open/floor/corsat/squares,
-/area/sky)
-"ajc" = (
-/obj/structure/machinery/body_scanconsole{
-	dir = 1;
-	pixel_y = 12;
-	pixel_x = 6
-	},
-/turf/open/floor/strata/multi_tiles/southeast,
-/area/sky)
-"ajd" = (
-/obj/structure/machinery/medical_pod/bodyscanner,
-/turf/open/floor/corsat/marked,
-/area/sky)
-"aje" = (
-/obj/structure/stairs/multiz/down{
-	dir = 1
-	},
-/turf/open/floor/corsat/marked,
-/area/sky)
-"ajf" = (
-/obj/structure/pipes/unary/freezer{
-	icon_state = "freezer_1"
-	},
-/turf/open/floor/corsat/marked,
-/area/sky)
-"ajg" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/storage/box/implant{
-	pixel_x = 3;
-	pixel_y = -5
-	},
-/obj/item/storage/box/sprays{
-	pixel_x = 4;
-	pixel_y = 9
-	},
-/turf/open/floor/corsat/squares,
-/area/sky)
-"ajh" = (
-/obj/effect/stairs/down,
-/turf/open/floor/strata/multi_tiles/west,
-/area/sky)
-"aji" = (
-/obj/structure/machinery/bioprinter,
-/turf/open/floor/kutjevo/grey,
-/area/sky)
-"ajj" = (
-/obj/structure/machinery/iv_drip,
-/turf/open/floor/strata/multi_tiles/west,
-/area/sky)
-"ajk" = (
-/obj/structure/machinery/iv_drip,
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light{
-	light_power = 0.5;
-	dir = 1
-	},
-/turf/open/floor/strata/multi_tiles/west,
-/area/sky)
-"ajl" = (
-/obj/structure/closet/hydrant{
-	pixel_y = 32
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/alien/weeds/node,
-/turf/open/floor/kutjevo/grey,
-/area/sky)
-"ajm" = (
-/obj/item/storage/box/gloves{
-	pixel_x = -4;
-	pixel_y = 15
-	},
-/obj/item/storage/box/gloves{
-	pixel_x = 5;
-	pixel_y = 6
-	},
-/obj/structure/surface/rack{
-	color = "#6b675e";
-	layer = 2.79
-	},
-/obj/item/storage/briefcase/inflatable,
-/turf/open/floor/corsat/squares,
-/area/sky)
-"ajn" = (
-/obj/structure/machinery/computer/med_data,
-/obj/structure/machinery/light{
-	light_power = 0.5;
-	dir = 1
-	},
-/turf/open/floor/corsat/squares,
-/area/sky)
-"ajo" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/reagent_analyzer{
-	pixel_x = -2;
-	pixel_y = 7
-	},
-/turf/open/floor/corsat/squares,
-/area/sky)
-"ajp" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/device/reagent_scanner{
-	pixel_x = 7;
-	pixel_y = -8
-	},
-/obj/item/co2_cartridge{
-	pixel_x = -7;
-	pixel_y = 9
-	},
-/obj/item/tool/portadialysis,
-/turf/open/floor/corsat/squares,
-/area/sky)
 "ajq" = (
 /obj/structure/stairs/multiz/down{
 	dir = 8
@@ -36276,15 +35959,15 @@ cit
 cit
 cit
 cit
-ait
-ait
-aiu
-aiZ
-ait
-ait
-ait
-ait
-air
+cit
+cit
+cit
+cit
+cit
+cit
+cit
+cit
+cit
 cit
 cit
 cit
@@ -36438,15 +36121,15 @@ cit
 cit
 cit
 cit
-ait
-aji
-aiI
-aiI
-aiI
-aiI
-aiG
-ait
-ais
+cit
+cit
+cit
+cit
+cit
+cit
+cit
+cit
+cit
 cit
 cit
 cit
@@ -36600,15 +36283,15 @@ cit
 cit
 cit
 cit
-ait
-ajj
-aiP
-aiv
-aiv
-aiv
-aiv
-ait
-ait
+cit
+cit
+cit
+cit
+cit
+cit
+cit
+cit
+cit
 cit
 cit
 cit
@@ -36762,15 +36445,15 @@ cit
 cit
 cit
 cit
-ait
-ajk
-aiP
-aiv
-aiv
-aiv
-aiv
-aiv
-aiu
+cit
+cit
+cit
+cit
+cit
+cit
+cit
+cit
+cit
 cit
 cit
 cit
@@ -36924,15 +36607,15 @@ cit
 cit
 cit
 cit
-ait
-aiK
-aiP
-aiQ
-aiQ
-aiw
-aiw
-aiw
-aiu
+cit
+cit
+cit
+cit
+cit
+cit
+cit
+cit
+cit
 cit
 cit
 cit
@@ -37086,15 +36769,15 @@ cit
 cit
 cit
 cit
-aiu
-aiK
-aiK
-aiQ
-pNL
-pNL
-pNL
-pNL
-ait
+cit
+cit
+cit
+cit
+cit
+cit
+cit
+cit
+cit
 cit
 cit
 cit
@@ -37248,15 +36931,15 @@ cit
 cit
 cit
 cit
-aiZ
-aiL
-aiK
-aja
-pNL
-aiN
-pNL
-pNL
-ait
+cit
+cit
+cit
+cit
+cit
+cit
+cit
+cit
+cit
 cit
 cit
 cit
@@ -37410,15 +37093,15 @@ cit
 cit
 cit
 cit
-aiZ
-aiL
-aiK
-aiQ
-pNL
-pNL
-pNL
-pNL
-ait
+cit
+cit
+cit
+cit
+cit
+cit
+cit
+cit
+cit
 cit
 cit
 cit
@@ -37572,15 +37255,15 @@ cit
 cit
 cit
 cit
-ait
-ajl
-aiK
-aiQ
-pNL
-pNL
-pNL
-pNL
-ait
+cit
+cit
+cit
+cit
+cit
+cit
+cit
+cit
+cit
 cit
 cit
 cit
@@ -37734,15 +37417,15 @@ cit
 cit
 cit
 cit
-ait
-ajm
-aiP
-aiQ
-aiQ
-aix
-aix
-aix
-aiu
+cit
+cit
+cit
+cit
+cit
+cit
+cit
+cit
+cit
 cit
 cit
 cit
@@ -37896,15 +37579,15 @@ cit
 cit
 cit
 cit
-ait
-ajn
-aiP
-aiv
-aiv
-aiv
-aiv
-aiv
-aiu
+cit
+cit
+cit
+cit
+cit
+cit
+cit
+cit
+cit
 cit
 cit
 cit
@@ -38058,15 +37741,15 @@ cit
 cit
 cit
 cit
-ait
-ajo
-aiP
-aiv
-aiv
-aiv
-aiv
-ait
-ait
+cit
+cit
+cit
+cit
+cit
+cit
+cit
+cit
+cit
 cit
 cit
 cit
@@ -38220,15 +37903,15 @@ cit
 cit
 cit
 cit
-ait
-ajp
-ajg
-ajb
-aiR
-aiH
-aiH
-ait
-xeE
+cit
+cit
+cit
+cit
+cit
+cit
+cit
+cit
+cit
 cit
 cit
 cit
@@ -38382,15 +38065,15 @@ cit
 cit
 cit
 cit
-ait
-ait
-ait
-ait
-ait
-ait
-ait
-ait
-air
+cit
+cit
+cit
+cit
+cit
+cit
+cit
+cit
+cit
 cit
 cit
 cit
@@ -38706,15 +38389,15 @@ cit
 cit
 cit
 cit
-ait
-ait
-aiu
-aiZ
-ait
-ait
-ait
-ait
-air
+cit
+cit
+cit
+cit
+cit
+cit
+cit
+cit
+cit
 cit
 cit
 cit
@@ -38868,15 +38551,15 @@ cit
 cit
 cit
 cit
-ait
-aji
-aiI
-aiI
-aiS
-aiJ
-aiG
-ait
-ais
+cit
+cit
+cit
+cit
+cit
+cit
+cit
+cit
+cit
 cit
 cit
 cit
@@ -39030,15 +38713,15 @@ cit
 cit
 cit
 cit
-ait
-ajj
-aiP
-ajc
-aiT
-aiO
-aiI
-ait
-ait
+cit
+cit
+cit
+cit
+cit
+cit
+cit
+cit
+cit
 cit
 cit
 cit
@@ -39192,15 +38875,15 @@ cit
 cit
 cit
 cit
-ait
-ajk
-aiP
-ajd
-aiU
-aiP
-aiI
-aiy
-aiu
+cit
+cit
+cit
+cit
+cit
+cit
+cit
+cit
+cit
 cit
 cit
 cit
@@ -39354,15 +39037,15 @@ cit
 cit
 cit
 cit
-ait
-aiL
-aiP
-aiv
-aiv
-aiP
-aiJ
-aiz
-aiu
+cit
+cit
+cit
+cit
+cit
+cit
+cit
+cit
+cit
 cit
 cit
 cit
@@ -39516,15 +39199,15 @@ cit
 cit
 cit
 cit
-aiu
-aiK
-aiK
-aje
-pNL
-pNL
-aiK
-aiA
-ait
+cit
+cit
+cit
+cit
+cit
+cit
+cit
+cit
+cit
 cit
 cit
 cit
@@ -39678,15 +39361,15 @@ cit
 cit
 cit
 cit
-aiZ
-aiL
-ajh
-aje
-pNL
-aiN
-aiK
-aiB
-aiu
+cit
+cit
+cit
+cit
+cit
+cit
+cit
+cit
+cit
 cit
 cit
 cit
@@ -39840,15 +39523,15 @@ cit
 cit
 cit
 cit
-aiZ
-aiL
-aiK
-aje
-pNL
-pNL
-aiL
-aiB
-aiu
+cit
+cit
+cit
+cit
+cit
+cit
+cit
+cit
+cit
 cit
 cit
 cit
@@ -40002,15 +39685,15 @@ cit
 cit
 cit
 cit
-ait
-ajl
-aiK
-aje
-pNL
-pNL
-aiL
-aiC
-ait
+cit
+cit
+cit
+cit
+cit
+cit
+cit
+cit
+cit
 cit
 cit
 cit
@@ -40164,15 +39847,15 @@ cit
 cit
 cit
 cit
-ait
-ajm
-aiP
-aiV
-aiV
-aiP
-aiK
-aiE
-aiu
+cit
+cit
+cit
+cit
+cit
+cit
+cit
+cit
+cit
 cit
 cit
 cit
@@ -40326,15 +40009,15 @@ cit
 cit
 cit
 cit
-ait
-ajn
-aiP
-ajf
-aiW
-aiP
-aiK
-aiF
-aiu
+cit
+cit
+cit
+cit
+cit
+cit
+cit
+cit
+cit
 cit
 cit
 cit
@@ -40488,15 +40171,15 @@ cit
 cit
 cit
 cit
-ait
-ajo
-aiP
-aiv
-aiX
-aiP
-aiM
-ait
-ait
+cit
+cit
+cit
+cit
+cit
+cit
+cit
+cit
+cit
 cit
 cit
 cit
@@ -40650,15 +40333,15 @@ cit
 cit
 cit
 cit
-ait
-ajp
-ajg
-ajb
-aiY
-aiH
-aiH
-ait
-xeE
+cit
+cit
+cit
+cit
+cit
+cit
+cit
+cit
+cit
 cit
 cit
 cit
@@ -40812,15 +40495,15 @@ cit
 cit
 cit
 cit
-ait
-ait
-ait
-ait
-ait
-ait
-ait
-ait
-air
+cit
+cit
+cit
+cit
+cit
+cit
+cit
+cit
+cit
 cit
 cit
 cit

@@ -118,8 +118,9 @@
 	name = "Sekhmet Ruins"
 	icon_state = "cave"
 /area/sekhmet/outside/temple_outer
-	name = "Sekhmet Outer Ruins"
+	name = "Sekhmet North Eastern Jungle"
 	icon_state = "northwest"
+	ceiling = CEILING_DEEP_UNDERGROUND
 /area/sekhmet/outside/southeast_road
 	name = "Sekhmet Southeastern Path"
 	icon_state = "southeast"

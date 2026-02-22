@@ -1022,8 +1022,18 @@ SUBSYSTEM_DEF(hijack)
 		if(mob.z in ship_zs)
 			playsound_client(mob.client, sound('sound/effects/supercapacitors_uncharging.ogg'))
 
-	shipwide_ai_announcement("ALERT: Build up detected within pumping systems. Overload in 10 seconds.", HIJACK_ANNOUNCE, sound('sound/effects/double_klaxon.ogg'))
-	addtimer(CALLBACK(src, PROC_REF(explode_pumps)), 10 SECONDS)
+	explode_pumps_with_warning(10 SECONDS)
+
+/// Warn exploding pumps
+/datum/controller/subsystem/hijack/proc/explode_pumps_with_warning(time_till = 10 SECONDS)
+	shipwide_ai_announcement("ALERT: Build up detected within pumping systems. Overload in [DisplayTimeText(time_till)].", HIJACK_ANNOUNCE, sound('sound/effects/double_klaxon.ogg'))
+	addtimer(CALLBACK(src, PROC_REF(explode_pumps)), time_till)
+	for(var/obj/structure/machinery/fuelpump/pump as anything in fuelpumps)
+		playsound(pump, 'sound/effects/pipe_hissing.ogg', vol = 40)
+		pump.visible_message(SPAN_HIGHDANGER("[pump] begins hissing violently!"))
+		var/turf/origin = get_turf(pump)
+		for(var/turf/position in block(origin, locate(origin.x + 3, origin.y, origin.z)))
+			new /obj/effect/warning/explosive(position, time_till)
 
 /// Called to explode the fuel pumps
 /datum/controller/subsystem/hijack/proc/explode_pumps()

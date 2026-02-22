@@ -571,6 +571,9 @@
 		else if(src.hunter_data.gear)
 			. += SPAN_RED("[src] was marked as carrying gear by [src.hunter_data.gear_set].")
 
+		if(src.hunter_data.youngblood)
+			. += SPAN_GREEN("[src] is being taught by [src.hunter_data.hunter.real_name].")
+
 
 //Helper procedure. Called by /mob/living/carbon/human/get_examine_text() and /mob/living/carbon/human/Topic() to determine HUD access to security and medical records.
 /proc/hasHUD(mob/passed_mob, hudtype)

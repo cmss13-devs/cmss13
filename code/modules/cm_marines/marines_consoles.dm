@@ -1149,6 +1149,7 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				JOB_SENIOR_EXECUTIVE = 22,
 				JOB_EXECUTIVE = 23,
 				JOB_JUNIOR_EXECUTIVE = 24,
+				JOB_WY_PILOT = 24,
 				// 30-38: Security
 				JOB_WY_GOON_LEAD = 30,
 				JOB_WY_GOON_MEDIC = 31,
@@ -1179,7 +1180,7 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				JOB_WY_COMMANDO_STANDARD = 70,
 				JOB_WY_COMMANDO_LEADER= 71,
 				JOB_WY_COMMANDO_GUNNER = 72,
-				JOB_WY_COMMANDO_DOGCATHER = 73,
+				JOB_WY_COMMANDO_DOGCATCHER = 73,
 
 				// ANYTHING ELSE = UNKNOWN_JOB_ID, Unknowns/custom jobs will appear after civilians, and before stowaways
 				JOB_STOWAWAY = 999,

@@ -126,6 +126,6 @@
 	gear_preset = /datum/equipment_preset/pmc/commando/gunner
 
 /datum/job/special/wey_yu/pmc/commando_dogcatcher
-	title = JOB_WY_COMMANDO_DOGCATHER
+	title = JOB_WY_COMMANDO_DOGCATCHER
 	gear_preset = /datum/equipment_preset/pmc/commando/dogcatcher
 

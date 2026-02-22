@@ -36,7 +36,7 @@
 	see_in_dark = 8
 	tier = 0  //Larva's don't count towards Pop limits
 	age = XENO_NO_AGE
-	crit_health = -25
+	health_threshold_dead = -25
 	gib_chance = 25
 	mob_size = MOB_SIZE_SMALL
 	speaking_noise = "larva_talk"
@@ -86,7 +86,7 @@
 	..()
 	if (pass_flags)
 		pass_flags.flags_pass = PASS_MOB_THRU|PASS_FLAGS_CRAWLER
-		pass_flags.flags_can_pass_all = PASS_ALL^PASS_OVER_THROW_ITEM
+		pass_flags.flags_can_pass_all = PASS_ALL|PASS_OVER_THROW_ITEM
 
 /mob/living/carbon/xenomorph/larva/corrupted
 	AUTOWIKI_SKIP(TRUE)

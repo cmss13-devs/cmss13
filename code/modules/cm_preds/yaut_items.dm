@@ -1,3 +1,6 @@
+// how long the cooldown for the reserve console is
+#define RESERVE_HUNT_COOLDOWN 20 MINUTES
+
 GLOBAL_VAR_INIT(hunt_timer_yautja, 0)
 GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 
@@ -334,7 +337,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	minimap_flag = MINIMAP_FLAG_YAUTJA
 
 /obj/item/device/radio/headset/yautja/talk_into(mob/living/M as mob, message, channel, verb = "commands", datum/language/speaking)
-	if(!isyautja(M)) //Nope.
+	if(!isyautja(M) && !isthrall(M)) //Nope.
 		to_chat(M, SPAN_WARNING("You try to talk into the headset, but just get a horrible shrieking in your ears!"))
 		return
 
@@ -529,6 +532,10 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 		to_chat(user, SPAN_WARNING("You do not understand how to use this console."))
 		return
 
+	if(isthrall(user))
+		to_chat(user, SPAN_WARNING("Your master would not like you to use this."))
+		return
+
 	if(user.faction == FACTION_YAUTJA_YOUNG)
 		to_chat(user, SPAN_WARNING("You do not understand how to use this console."))
 		return
@@ -609,8 +616,10 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	to_chat(user, SPAN_NOTICE("You choose [choice] as your prey."))
 	message_all_yautja("[user.real_name] has chosen [choice] as their prey.")
 	message_admins(FONT_SIZE_LARGE("ALERT: [user.real_name] ([user.key]) triggered [choice] inside the hunting grounds"))
-	SSticker.mode.get_specific_call(potential_prey[choice], TRUE, FALSE)
-	COOLDOWN_START(GLOB, hunt_timer_yautja, 20 MINUTES)
+	var/datum/emergency_call/pred/picked_call = potential_prey[choice]
+	SSticker.mode.get_specific_call(picked_call, TRUE, FALSE)
+	var/true_cooldown = (RESERVE_HUNT_COOLDOWN) * picked_call.timer_mult // multiplies the 20 minute timer by a set amount based on the chosen call
+	COOLDOWN_START(GLOB, hunt_timer_yautja, true_cooldown)
 
 
 /obj/structure/machinery/hunt_ground_escape
@@ -666,7 +675,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 		to_chat(user, SPAN_DANGER("The console refuses [attacking_item]."))
 		return
 	to_chat(user, SPAN_DANGER("You hold [attacking_item] up to the console, and it begins to scan..."))
-	message_all_yautja("Prey is trying to escape the hunting grounds.")
+	message_all_yautja("Prey is trying to escape the hunting grounds at [get_area(user)] console.")
 
 	if(!do_after(user, 15 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		to_chat(user, SPAN_DANGER("The strange console stops scanning abruptly."))
@@ -934,7 +943,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	armed = FALSE
 	anchored = TRUE
 
-	var/list/tether_effects = apply_tether(src, C, range = tether_range, resistable = TRUE)
+	var/list/tether_effects = apply_tether(src, C, range = tether_range, resistible = TRUE)
 	tether_effect = tether_effects["tetherer_tether"]
 	RegisterSignal(tether_effect, COMSIG_PARENT_QDELETING, PROC_REF(disarm))
 
@@ -975,7 +984,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 					if(O == H)
 						continue
 					O.show_message(SPAN_WARNING("[icon2html(src, O)] <B>[H] gets caught in \the [src].</B>"), SHOW_MESSAGE_VISIBLE)
-			else if(isanimal(AM) && !istype(AM, /mob/living/simple_animal/parrot))
+			else if(isanimal(AM) && !istype(AM, /mob/living/simple_animal/small/parrot))
 				armed = FALSE
 				var/mob/living/simple_animal/SA = AM
 				SA.health -= 20
@@ -1129,7 +1138,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 		return
 	handle_dissolve(target, user)
 
-///Checks for permission and items dissallowed to be dissolved.
+///Checks for permission and items unallowed to be dissolved.
 /obj/item/tool/yautja_cleaner/proc/can_dissolve(obj/item/target, mob/user)
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		to_chat(user, SPAN_WARNING("You have no idea what this even does."))
@@ -1199,6 +1208,18 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	new /obj/item/reagent_container/hypospray/autoinjector/yautja(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/yautja(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/yautja(src)
+	new /obj/item/tool/surgery/healing_gel/(src)
+	new /obj/item/tool/surgery/healing_gel/(src)
+	new /obj/item/tool/surgery/healing_gel/(src)
+
+/obj/item/storage/medicomp/thrall/fill_preset_inventory()
+	new /obj/item/tool/surgery/stabilizer_gel(src)
+	new /obj/item/tool/surgery/healing_gun(src)
+	new /obj/item/tool/surgery/wound_clamp(src)
+	new /obj/item/device/healthanalyzer/alien(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/yautja/thrall(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/yautja/thrall(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/yautja/thrall(src)
 	new /obj/item/tool/surgery/healing_gel/(src)
 	new /obj/item/tool/surgery/healing_gel/(src)
 	new /obj/item/tool/surgery/healing_gel/(src)
@@ -1656,3 +1677,5 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 /obj/item/device/houndcam/attack_hand(mob/user)
 	. = ..()
 	internal_camera.tgui_interact(user)
+
+#undef RESERVE_HUNT_COOLDOWN

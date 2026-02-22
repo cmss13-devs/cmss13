@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN 8
-#define SAVEFILE_VERSION_MAX 33
+#define SAVEFILE_VERSION_MAX 34
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -229,8 +229,33 @@
 		pref_toggles |= TOGGLE_COCKING_TO_HAND // enabled by default for new saves
 		S["toggle_prefs"] << pref_toggles
 
+	if(savefile_version < 34) // we have removed Tab from the default binds, allow users to bind it back if they want. needs to be async after logging in
+		updated_from = savefile_version
+
+	if(updated_from)
+		RegisterSignal(owner, COMSIG_CLIENT_LOGGED_IN, PROC_REF(handle_logged_in))
+
 	savefile_version = SAVEFILE_VERSION_MAX
 	return 1
+
+/datum/preferences/proc/handle_logged_in()
+	SIGNAL_HANDLER
+
+	handle_controlstyle_update(updated_from)
+
+/// Displays savefile updates that require user input
+/datum/preferences/proc/handle_controlstyle_update(savefile_version)
+	set waitfor = FALSE
+
+	if(savefile_version == /datum/preferences::savefile_version)
+		return
+
+	if(savefile_version < 34)
+		var/question = tgui_alert(owner, "Tab is no longer bound to switching between the map and the command bar. Restore this bind?", "Default Bind Changed", list("No", "Yes"))
+		if(question == "Yes")
+			LAZYADD(key_bindings["Tab"], /datum/keybinding/client/switch_input::name)
+			owner?.update_special_keybinds()
+			save_preferences()
 
 /datum/preferences/proc/load_path(ckey,filename="preferences.sav")
 	if(!ckey)
@@ -311,6 +336,7 @@
 	S["ghost_vision_pref"] >> ghost_vision_pref
 	S["ghost_orbit"] >> ghost_orbit
 	S["auto_observe"] >> auto_observe
+	S["CMTV_toggle_optout"] >> CMTV_toggle_optout
 
 	S["human_name_ban"] >> human_name_ban
 
@@ -379,6 +405,8 @@
 	S["tooltips"] >> tooltips
 	S["key_bindings"] >> key_bindings
 
+	S["custom_keybinds"] >> custom_keybinds
+
 	S["tgui_lock"] >> tgui_lock
 	S["tgui_fancy"] >> tgui_fancy
 	S["window_scale"] >> window_scale
@@ -422,6 +450,8 @@
 
 	S["remembered_key_bindings"] << GLOB.keybindings_by_name
 
+	load_custom_keybinds()
+
 	if(toggles_chat & SHOW_TYPING)
 		owner.typing_indicators = FALSE
 	else
@@ -460,6 +490,7 @@
 	ghost_vision_pref = sanitize_inlist(ghost_vision_pref, list(GHOST_VISION_LEVEL_NO_NVG, GHOST_VISION_LEVEL_MID_NVG, GHOST_VISION_LEVEL_HIGH_NVG, GHOST_VISION_LEVEL_FULL_NVG), GHOST_VISION_LEVEL_MID_NVG)
 	ghost_orbit = sanitize_inlist(ghost_orbit, GLOB.ghost_orbits, initial(ghost_orbit))
 	auto_observe = sanitize_integer(auto_observe, 0, 1, 1)
+	CMTV_toggle_optout = sanitize_integer(CMTV_toggle_optout, 0, 1, 0)
 	playtime_perks = sanitize_integer(playtime_perks, 0, 1, 1)
 	skip_playtime_ranks = sanitize_integer(skip_playtime_ranks, 0, 1, 1)
 	show_queen_name = sanitize_integer(show_queen_name, FALSE, TRUE, FALSE)
@@ -528,9 +559,15 @@
 	chem_presets = sanitize_islist(chem_presets, list())
 
 	if(!observer_huds)
-		observer_huds = list("Medical HUD" = FALSE, "Security HUD" = FALSE, "Squad HUD" = FALSE, "Xeno Status HUD" = FALSE, HUD_MENTOR_SIGHT = FALSE)
+		observer_huds = list("Medical HUD" = FALSE, "Security HUD" = FALSE, "Squad HUD" = FALSE, "Xeno Status HUD" = FALSE, "Hunter HUD"= FALSE, HUD_MENTOR_SIGHT = FALSE)
 
 	volume_preferences = sanitize_volume_preferences(volume_preferences, list(1, 0.5, 1, 0.6)) // Game, music, admin midis, lobby music
+
+	if(!islist(custom_keybinds))
+		custom_keybinds = new /list(KEYBIND_CUSTOM_MAX)
+
+	if(length(custom_keybinds) != KEYBIND_CUSTOM_MAX)
+		custom_keybinds.len = KEYBIND_CUSTOM_MAX
 
 /datum/preferences/proc/save_preferences()
 	if(!path)
@@ -576,6 +613,7 @@
 	S["ghost_vision_pref"] << ghost_vision_pref
 	S["ghost_orbit"] << ghost_orbit
 	S["auto_observe"] << auto_observe
+	S["CMTV_toggle_optout"] << CMTV_toggle_optout
 
 	S["human_name_ban"] << human_name_ban
 
@@ -660,6 +698,8 @@
 	S["show_cooldown_messages"] << show_cooldown_messages
 
 	S["chem_presets"] << chem_presets
+
+	S["custom_keybinds"] << custom_keybinds
 
 	return TRUE
 
@@ -983,6 +1023,21 @@
 				LAZYREMOVE(key_bindings[entry], conflicted.name)
 
 		LAZYADD(key_bindings["Unbound"], conflicted.name) // set it to unbound to prevent this from opening up again in the future
+
+/datum/preferences/proc/load_custom_keybinds()
+	key_to_custom_keybind = list()
+
+	for(var/keybind in custom_keybinds)
+		if(!("keybinding" in keybind))
+			continue // unbound
+
+		var/datum/keybinding/custom/custom_key = new
+		custom_key.keybind_type = keybind["type"]
+		custom_key.contents = keybind["contents"]
+		custom_key.when_human = keybind["when_human"]
+		custom_key.when_xeno = keybind["when_xeno"]
+
+		key_to_custom_keybind[keybind["keybinding"]] = custom_key
 
 #undef SAVEFILE_VERSION_MAX
 #undef SAVEFILE_VERSION_MIN

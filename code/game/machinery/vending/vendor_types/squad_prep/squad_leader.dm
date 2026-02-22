@@ -25,7 +25,6 @@ GLOBAL_LIST_INIT(cm_vending_gear_leader, list(
 		list("M276 Pattern Combat Toolbelt Rig", 15, /obj/item/storage/belt/gun/utility, null, VENDOR_ITEM_REGULAR),
 
 		list("UTILITIES", 0, null, null, null),
-		list("Whistle", 3, /obj/item/device/whistle, null, VENDOR_ITEM_REGULAR),
 		list("Fire Extinguisher (Portable)", 3, /obj/item/tool/extinguisher/mini, null, VENDOR_ITEM_REGULAR),
 		list("Motion Detector", 5, /obj/item/device/motiondetector, null, VENDOR_ITEM_REGULAR),
 		list("Fulton Device Stack", 5, /obj/item/stack/fulton, null, VENDOR_ITEM_REGULAR),
@@ -227,4 +226,5 @@ GLOBAL_LIST_INIT(cm_vending_clothing_leader, list(
 		/obj/item/storage/box/m94/signal,
 		/obj/item/tool/extinguisher/mini,
 		/obj/item/storage/box/zipcuffs,
+		/obj/item/clothing/accessory/device/whistle/trench,
 	)

@@ -637,7 +637,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 					var/mob/concurrent = user_ref.resolve()
 					if(!concurrent)
 						continue
-					concurrent.reset_view(null)
+					stop_watching_camera(concurrent)
 					concurrent.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
 			cam = null
 			if(camera_holder)
@@ -774,7 +774,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 		if("watch_camera")
 			if(isRemoteControlling(user))
-				to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("Unable to override console camera viewer. Track with camera instead. ")]")
+				to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("Unable to override console camera viewer. Track with camera instead.")]")
 				return
 			if(!params["target_ref"])
 				return
@@ -800,7 +800,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 						var/mob/concurrent = user_ref.resolve()
 						if(!concurrent)
 							continue
-						concurrent.reset_view(null)
+						stop_watching_camera(concurrent)
 						concurrent.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
 					disconnect_holder()
 					cam = null
@@ -813,7 +813,8 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 							continue
 						if(cam)
 							concurrent.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
-						concurrent.reset_view(new_cam)
+						start_watching_camera(concurrent, new_cam)
+						set_onscreen_text(concurrent, cam_target)
 						concurrent.RegisterSignal(new_cam, COMSIG_PARENT_QDELETING, TYPE_PROC_REF(/mob, reset_observer_view_on_deletion))
 					if(camera_holder)
 						disconnect_holder()
@@ -916,7 +917,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 				if(announcement_type == "shipside")
 					shipwide_ai_announcement(input, COMMAND_SHIP_ANNOUNCE, signature = signed)
-					message_admins("[key_name(user)] has made a shipwide annoucement.")
+					message_admins("[key_name(user)] has made a shipwide announcement.")
 					log_announcement("[key_name(user)] has announced the following to the ship: [input]")
 					COOLDOWN_START(src, cooldown_shipside_message, COOLDOWN_COMM_MESSAGE)
 				else
@@ -930,9 +931,9 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 		if("messageUSCM")
 			if(!COOLDOWN_FINISHED(src, cooldown_central))
-				to_chat(user, SPAN_WARNING("Arrays are re-cycling.  Please stand by."))
+				to_chat(user, SPAN_WARNING("Arrays are re-cycling. Please stand by."))
 				return FALSE
-			var/input = stripped_input(user, "Please choose a message to transmit to USCM.  Please be aware that this process is very expensive, and abuse will lead to termination.  Transmission does not guarantee a response. There is a small delay before you may send another message. Be clear and concise.", "To abort, send an empty message.", "")
+			var/input = stripped_input(user, "Please choose a message to transmit to USCM. Please be aware that this process is very expensive, and abuse will lead to termination. Transmission does not guarantee a response. There is a small delay before you may send another message. Be clear and concise.", "To abort, send an empty message.", "")
 			if(!input || !(user in dview(1, src)) || !COOLDOWN_FINISHED(src, cooldown_central))
 				return FALSE
 
@@ -1158,7 +1159,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				continue
 			if(cam)
 				concurrent.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
-			concurrent.reset_view(null)
+			stop_watching_camera(concurrent)
 		if(camera_holder)
 			disconnect_holder()
 		cam = null
@@ -1173,7 +1174,8 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			if(user.client.view != GLOB.world_view_size)
 				to_chat(user, SPAN_WARNING("You're too busy peering through binoculars."))
 				return
-			user.reset_view(cam)
+			start_watching_camera(user, cam)
+			set_onscreen_text(user, camera_holder.loc)
 			user.RegisterSignal(cam, COMSIG_PARENT_QDELETING, TYPE_PROC_REF(/mob, reset_observer_view_on_deletion))
 
 /obj/structure/machinery/computer/overwatch/on_unset_interaction(mob/user)
@@ -1181,7 +1183,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	if(!isRemoteControlling(user) && concurrent_users)
 		if(cam)
 			user.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
-		user.reset_view(null)
+		stop_watching_camera(user)
 		concurrent_users -= WEAKREF(user)
 
 /obj/structure/machinery/computer/overwatch/ui_close(mob/user)
@@ -1190,6 +1192,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		user.unset_interaction()
 	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
 	tacmap_component.on_unset_interaction(user)
+	tacmap_component.close_popout_tacmaps(user)
 
 /// checks if the human has an overwatch camera at all
 /obj/structure/machinery/computer/overwatch/proc/marine_has_camera(mob/living/carbon/human/marine)
@@ -1473,6 +1476,80 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	log_game("[key_name(usr)] launched supply drop '[crate.name]' to X[x_coord], Y[y_coord].")
 	visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("'[crate.name]' supply drop launched! Another launch will be available in five minutes.")]")
 	busy = FALSE
+
+/obj/structure/machinery/computer/overwatch/proc/start_watching_camera(mob/watcher, atom/target)
+	watcher.reset_view(target)
+
+	var/atom/movable/plane_master_controller/non_master/plane_controller = watcher.hud_used.plane_master_controllers[PLANE_MASTERS_NON_MASTER]
+	if(!plane_controller)
+		return
+
+	plane_controller.add_filter("overwatch_saturation", 1, color_matrix_filter(color_matrix_saturation(0.65)))
+
+	var/icon/overlay_icon = icon('icons/mob/hud/minimap_overlay.dmi')
+	var/overlay_color = rgb(255, 255, 255, 128)
+	plane_controller.add_filter("overwatch_overlay1", 3, layering_filter(x = -480, y = 0, color=overlay_color, icon = overlay_icon, blend_mode = BLEND_INSET_OVERLAY))
+	plane_controller.add_filter("overwatch_overlay2", 4, layering_filter(x = 0, y = 0, color=overlay_color, icon = overlay_icon, blend_mode = BLEND_INSET_OVERLAY))
+	plane_controller.add_filter("overwatch_overlay3", 5, layering_filter(x = -480, y = 480, color=overlay_color, icon = overlay_icon, blend_mode = BLEND_INSET_OVERLAY))
+	plane_controller.add_filter("overwatch_overlay4", 6, layering_filter(x = 0, y = 480, color=overlay_color, icon = overlay_icon, blend_mode = BLEND_INSET_OVERLAY))
+	plane_controller.add_filter("overwatch_overlay5", 7, layering_filter(x = 480, y = 0, color=overlay_color, icon = overlay_icon, blend_mode = BLEND_INSET_OVERLAY))
+	plane_controller.add_filter("overwatch_overlay6", 8, layering_filter(x = 480, y = 480, color=overlay_color, icon = overlay_icon, blend_mode = BLEND_INSET_OVERLAY))
+
+/obj/structure/machinery/computer/overwatch/proc/stop_watching_camera(mob/watcher, atom/target)
+	watcher.reset_view(null)
+	set_onscreen_text(watcher, null)
+	var/atom/movable/plane_master_controller/non_master/plane_controller = watcher.hud_used.plane_master_controllers[PLANE_MASTERS_NON_MASTER]
+	if(!plane_controller)
+		return
+
+	plane_controller.remove_filter("overwatch_saturation")
+
+	plane_controller.remove_filter("overwatch_overlay1")
+	plane_controller.remove_filter("overwatch_overlay2")
+	plane_controller.remove_filter("overwatch_overlay3")
+	plane_controller.remove_filter("overwatch_overlay4")
+	plane_controller.remove_filter("overwatch_overlay5")
+	plane_controller.remove_filter("overwatch_overlay6")
+
+/obj/structure/machinery/computer/overwatch/proc/set_onscreen_text(mob/watcher, atom/target)
+	if(target == null)
+		watcher.hud_used.overwatch_text.maptext = ""
+		return
+	else if(istype(target, /mob/living/carbon/human))
+		var/mob/living/carbon/human/watched_marine = target
+		var/obj/item/card/id/card = watched_marine.get_idcard()
+		var/marine_rank = ""
+		if(card && card.paygrade)
+			var/datum/paygrade/watched_marine_paygrade = GLOB.paygrades[card.paygrade]
+			if(watched_marine_paygrade)
+				marine_rank = watched_marine_paygrade.prefix + ". "
+
+		var/area/current_area = get_area(watched_marine)
+		var/job_name = ""
+		if(watched_marine.job)
+			job_name = watched_marine.job
+		else if(card?.rank) //decapitated marine is mindless,
+			job_name = card.rank
+
+		var/health_color = ""
+		var/health_status
+		switch(watched_marine.stat)
+			if(CONSCIOUS)
+				health_status = "Alive"
+				health_color = "green"
+			if(UNCONSCIOUS)
+				health_status = "Unconscious"
+				health_color = "yellow"
+			if(DEAD)
+				health_status = "Dead"
+				health_color = "red"
+
+		var/name_part = "<span class='langchat langchat_yell'>[marine_rank][watched_marine.real_name]</span><br>"
+		var/location_part = "<span class='langchat' style='font-size: 7px;'>[sanitize_area(current_area.name)]</span><br>"
+		var/job_part = "<span class='langchat' style='font-size: 6px;'>[job_name] - </span>"
+		var/living_part = "<span class='langchat' style='color: [health_color]'>[health_status]</span>"
+
+		watcher.hud_used.overwatch_text.maptext = name_part + location_part + job_part + living_part
 
 /obj/structure/machinery/computer/overwatch/almayer
 	density = FALSE

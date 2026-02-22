@@ -259,6 +259,14 @@
 	SSprojectiles.queue_projectile(src)
 
 /obj/projectile/proc/update_angle(turf/source_turf, turf/aim_turf)
+	var/datum/turf_reservation/reservation = SSmapping.used_turfs[loc]
+	if(reservation && (reservation.is_below(source_turf, aim_turf)))
+		source_turf = SSmapping.get_turf_above(source_turf)
+	else
+		if(reservation && (reservation.is_below(aim_turf, source_turf)))
+			aim_turf = SSmapping.get_turf_above(aim_turf)
+
+
 	p_x = clamp(p_x, -16, 16)
 	p_y = clamp(p_y, -16, 16)
 
@@ -1072,7 +1080,7 @@
 
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 
-	if((ammo_flags & AMMO_FLAME) && (caste.fire_immunity & (FIRE_IMMUNITY_NO_IGNITE|FIRE_IMMUNITY_NO_DAMAGE)))
+	if((ammo_flags & AMMO_FLAME) && (fire_immunity & (FIRE_IMMUNITY_NO_IGNITE|FIRE_IMMUNITY_NO_DAMAGE)))
 		to_chat(src, SPAN_AVOIDHARM("You shrug off the glob of flame."))
 		bullet_message(P, damaging = FALSE)
 		return

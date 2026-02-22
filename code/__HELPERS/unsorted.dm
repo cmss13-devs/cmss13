@@ -113,6 +113,7 @@
 		. += 360
 
 /proc/angle_to_dir(angle)
+	angle = ((angle % 360) + 382.5) % 360
 	switch(angle) //diagonal directions get priority over straight directions in edge cases
 		if (22.5 to 67.5)
 			return NORTHEAST
@@ -364,10 +365,11 @@
 		moblist += friend
 	return moblist
 
-/proc/key_name(whom, include_link = null, include_name = 1, highlight_special_characters = 1)
+/proc/key_name(whom, include_link = null, include_name = 1, highlight_special_characters = 1, show_username = FALSE)
 	var/mob/M
 	var/client/C
 	var/key
+	var/username
 
 	if(!whom)
 		return "*null*"
@@ -375,10 +377,12 @@
 		C = whom
 		M = C.mob
 		key = C.key
+		username = C.username()
 	else if(ismob(whom))
 		M = whom
 		C = M.client
 		key = M.key
+		username = M.username()
 	else if(istype(whom, /datum))
 		var/datum/D = whom
 		return "*invalid:[D.type]*"
@@ -391,7 +395,10 @@
 		if(include_link && C)
 			. += "<a href='byond://?priv_msg=[C.ckey]'>"
 
-		. += key
+		if(show_username && username && username != key)
+			. += "[username] ([key])"
+		else
+			. += key
 
 		if(include_link)
 			if(C) . += "</a>"
@@ -413,6 +420,10 @@
 
 /proc/key_name_admin(whom, include_name = 1)
 	return key_name(whom, 1, include_name)
+
+/// Returns key_name with username shown when it differs from key - for admin contexts
+/proc/key_name_with_username(whom, include_name = 1)
+	return key_name(whom, TRUE, include_name, TRUE, TRUE)
 
 
 // returns the turf located at the map edge in the specified direction relative to A
@@ -763,7 +774,7 @@ GLOBAL_DATUM(action_purple_power_up, /image)
  * numticks: If a value is given, denotes how often the timed action checks for interrupting actions. By default, there are 5 checks every delay/5 deciseconds.
  * Note: 'delay' should be divisible by numticks in order for the timing to work as intended. numticks should also be a whole number.
  */
-/proc/do_after(mob/user, delay, user_flags = INTERRUPT_ALL, show_busy_icon, atom/movable/target, target_flags = INTERRUPT_MOVED, show_target_icon, max_dist = 1, \
+/proc/do_after(mob/user, delay, user_flags = INTERRUPT_ALL, show_busy_icon, atom/movable/target, target_flags = INTERRUPT_MOVED, show_target_icon, max_dist = 1, status_effect = null, \
 		show_remaining_time = FALSE, numticks = DA_DEFAULT_NUM_TICKS) // These args should primarily be named args, since you only modify them in niche situations
 	if(!istype(user) || delay < 0)
 		return FALSE
@@ -801,6 +812,10 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 
 	if(user_flags & BEHAVIOR_IMMOBILE)
 		busy_user.status_flags |= IMMOBILE_ACTION
+
+	// if we wanna apply a status effect to a user
+	if(status_effect && busy_user)
+		busy_user.adjust_effect(delay, status_effect)
 
 	busy_user.action_busy++ // target is not tethered by action, the action is tethered by target though
 	busy_user.resisting = FALSE
@@ -949,6 +964,10 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 	if(target_is_mob)
 		T.resisting = FALSE
 	busy_user.status_flags &= ~IMMOBILE_ACTION
+
+	// remove the effect once we finish
+	if(status_effect && busy_user)
+		busy_user.adjust_effect(-delay, status_effect)
 
 	if (show_remaining_time)
 		return (. ? 0 : time_remaining/expected_total_time) // If action was not interrupted, return 0 for no time left, otherwise return ratio of time remaining
@@ -1296,12 +1315,21 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
 /proc/get_line(atom/start_atom, atom/end_atom, include_start_atom = TRUE)
 	var/turf/start_turf = get_turf(start_atom)
 	var/turf/end_turf = get_turf(end_atom)
+	var/turf/end_turf_fall = end_turf //in case we are going cross fake z levels we store here the end tile to fall to
 	var/start_z
 
 	if(end_atom.z > start_atom.z)
 		start_z = end_atom.z
 	else
 		start_z = start_atom.z
+
+	var/datum/turf_reservation/reservation = SSmapping.used_turfs[start_turf]
+	if(reservation)
+		if(reservation.is_below(start_turf, end_turf))
+			start_turf = SSmapping.get_turf_above(start_turf)
+		else
+			if(reservation.is_below(end_turf, start_turf))
+				end_turf = SSmapping.get_turf_above(end_turf)
 
 	var/list/line = list()
 	if(include_start_atom)
@@ -1323,7 +1351,7 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
 		y += step_y
 		line += locate(x, y, start_z)
 
-	line += end_turf
+	line += end_turf_fall
 
 	return line
 

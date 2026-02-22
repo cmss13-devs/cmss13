@@ -46,7 +46,8 @@
 							"Medical HUD" = FALSE,
 							"Security HUD" = FALSE,
 							"Squad HUD" = FALSE,
-							"Xeno Status HUD" = FALSE
+							"Xeno Status HUD" = FALSE,
+							"Hunter HUD" = FALSE
 							)
 	universal_speak = TRUE
 	var/updatedir = TRUE //Do we have to update our dir as the ghost moves around?
@@ -400,6 +401,9 @@
 				if("Xeno Status HUD")
 					the_hud = GLOB.huds[MOB_HUD_XENO_STATUS]
 					the_hud.add_hud_to(src, src)
+				if("Hunter HUD")
+					the_hud = GLOB.huds[MOB_HUD_HUNTER]
+					the_hud.add_hud_to(src, src)
 				if("Faction UPP HUD")
 					the_hud = GLOB.huds[MOB_HUD_FACTION_UPP]
 					the_hud.add_hud_to(src, src)
@@ -708,7 +712,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	usr.forceMove(pick(L))
 	following = null
 
-/mob/dead/observer/proc/scan_health(mob/living/target in GLOB.living_mob_list)
+/mob/dead/observer/proc/scan_health(mob/living/carbon/human/target in GLOB.living_mob_list)
 	set name = "Scan Health"
 
 	if(!istype(target))
@@ -755,9 +759,9 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	ghostize_appearance(client.prefs.preview_dummy)
 	QDEL_NULL(client.prefs.preview_dummy)
 
-	var/real_name = client.prefs.real_name
-	name = real_name
-	real_name = real_name
+	var/preferences_real_name = client.prefs.real_name
+	name = preferences_real_name
+	real_name = preferences_real_name
 
 	to_chat(client, SPAN_NOTICE("Appearance reset."))
 

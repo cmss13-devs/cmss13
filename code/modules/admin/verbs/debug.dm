@@ -93,6 +93,10 @@
 	if(!sleep_duration)
 		return
 
+	var/multi_z_effects = tgui_alert(usr, "What Multi-Z effects do you want to disable?", "Multi-Z Effects", list("All", "Dropshadow + Blur", "Dropshadow", "Nothing"))
+	if(!multi_z_effects)
+		return
+
 	if(!mob)
 		return
 
@@ -103,6 +107,18 @@
 	if(mob.hud_used)
 		mob.hud_used.show_hud(HUD_STYLE_NOHUD)
 	mob.animate_movement = NO_STEPS
+
+	var/atom/movable/screen/plane_master/openspace_backdrop/open_space_shadow = locate() in screen
+	var/atom/movable/screen/plane_master/open_space/open_space_blur = locate() in screen
+	switch(multi_z_effects)
+		if("All")
+			open_space_shadow.Hide()
+			open_space_blur.Hide()
+		if("Dropshadow + Blur")
+			open_space_shadow.Hide()
+			open_space_blur.remove_filters()
+		if("Dropshadow")
+			open_space_shadow.Hide()
 
 	message_admins(WRAP_STAFF_LOG(usr, "started a mass screenshot operation."))
 
@@ -144,6 +160,16 @@
 		cur_x = half_chunk_size
 		cur_y += chunk_size
 		cur_y = min(cur_y, height_inside)
+
+	switch(multi_z_effects)
+		if("All")
+			open_space_shadow.Show()
+			open_space_blur.Show()
+		if("Dropshadow + Blur")
+			open_space_shadow.Show()
+			open_space_blur.add_filters()
+		if("Dropshadow")
+			open_space_shadow.Show()
 
 	mob.alpha = initial(mob.alpha)
 	if(mob.hud_used)

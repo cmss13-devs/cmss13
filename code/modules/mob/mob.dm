@@ -1083,3 +1083,9 @@ note dizziness decrements automatically in the mob's Life() proc.
 		return client.username()
 
 	return key
+
+/mob/relaymove(mob/living/user, direction)
+	. = ..()
+	if(user.is_mob_incapacitated())
+		return
+	return relaydrive(user, direction)

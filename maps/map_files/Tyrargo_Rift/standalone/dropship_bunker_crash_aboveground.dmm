@@ -3,31 +3,31 @@
 /turf/template_noop,
 /area/template_noop)
 "c" = (
-/turf/open/floor/almayer_hull/outerhull_dir/southwest,
+/turf/open/slippery/hull/dir/southwest,
 /area/tyrargo/outdoors/outskirts/central)
 "d" = (
-/turf/open/floor/almayer_hull,
+/turf/open/slippery/hull,
 /area/tyrargo/outdoors/outskirts/central)
 "h" = (
-/turf/open/floor/almayer_hull/outerhull_dir/southeast,
+/turf/open/slippery/hull/dir/southeast,
 /area/tyrargo/outdoors/outskirts/central)
 "t" = (
-/turf/open/floor/almayer_hull/outerhull_dir/northeast,
+/turf/open/slippery/hull/dir/northeast,
 /area/tyrargo/outdoors/outskirts/central)
 "w" = (
-/turf/open/floor/almayer_hull/outerhull_dir,
+/turf/open/slippery/hull/dir,
 /area/tyrargo/outdoors/outskirts/central)
 "x" = (
-/turf/open/floor/almayer_hull/outerhull_dir/northwest,
+/turf/open/slippery/hull/dir/northwest,
 /area/tyrargo/outdoors/outskirts/central)
 "B" = (
-/turf/open/floor/almayer_hull/outerhull_dir/east,
+/turf/open/slippery/hull/dir/east,
 /area/tyrargo/outdoors/outskirts/central)
 "F" = (
-/turf/open/floor/almayer_hull/outerhull_dir/north,
+/turf/open/slippery/hull/dir/north,
 /area/tyrargo/outdoors/outskirts/central)
 "M" = (
-/turf/open/floor/almayer_hull/outerhull_dir/west,
+/turf/open/slippery/hull/dir/west,
 /area/tyrargo/outdoors/outskirts/central)
 
 (1,1,1) = {"
@@ -199,7 +199,7 @@ a
 a
 a
 a
-F
+d
 d
 w
 a
@@ -210,7 +210,7 @@ a
 a
 a
 a
-F
+d
 d
 w
 a

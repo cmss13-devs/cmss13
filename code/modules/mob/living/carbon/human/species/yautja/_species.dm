@@ -52,6 +52,9 @@
 		/mob/living/carbon/human/proc/unmark_dishonored,
 		/mob/living/carbon/human/proc/mark_thralled,
 		/mob/living/carbon/human/proc/unmark_thralled,
+		/mob/living/carbon/human/proc/mark_blooded,
+		/mob/living/carbon/human/proc/mark_youngblood,
+		/mob/living/carbon/human/proc/unmark_youngblood,
 		/mob/living/carbon/human/proc/mark_panel,
 	)
 

@@ -4,7 +4,6 @@
 	faction = FACTION_PMC
 	job_title = FACTION_PMC
 	idtype = /obj/item/card/id/pmc
-	faction = FACTION_PMC
 	faction_group = FACTION_LIST_WY
 	origin_override = ORIGIN_WY_PMC
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
@@ -1870,23 +1869,34 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 
 //*****************************************************************************************************/
 
-/datum/equipment_preset/pmc/synth
+/datum/equipment_preset/synth/pmc
 	name = "Weyland-Yutani PMC (Support Synthetic)"
+	faction = FACTION_PMC
+	faction_group = FACTION_LIST_WY
+	origin_override = ORIGIN_WY_PMC
+
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	languages = ALL_SYNTH_LANGUAGES
 
-	skills = /datum/skills/synthetic
 	idtype = /obj/item/card/id/pmc
 	assignment = JOB_PMC_SYNTH
 	job_title = JOB_PMC_SYNTH
 	minimap_icon = "pmc_syn"
+	minimap_background = "background_pmc"
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "WY Syn"
-	headset_type = /obj/item/device/radio/headset/distress/pmc/command
 
+	skills = /datum/skills/synthetic
+	locked_generation = SYNTH_GEN_THREE
 
-/datum/equipment_preset/pmc/synth/load_name(mob/living/carbon/human/new_human, randomise)
+	var/headset_type = /obj/item/device/radio/headset/distress/pmc/command
+
+/datum/equipment_preset/synth/pmc/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_WY_PMC)
+
+/datum/equipment_preset/synth/pmc/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = pick(MALE, FEMALE)
 
 	var/datum/preferences/A = new()
@@ -1912,14 +1922,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	new_human.g_eyes = 62
 	new_human.b_eyes = 19
 
-/datum/equipment_preset/pmc/synth/load_race(mob/living/carbon/human/new_human)
-		new_human.set_species(SYNTH_GEN_THREE)
-
-/datum/equipment_preset/pmc/synth/load_skills(mob/living/carbon/human/new_human)
-		new_human.set_skills(/datum/skills/synthetic)
-		new_human.allow_gun_usage = FALSE
-
-/datum/equipment_preset/pmc/synth/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/synth/pmc/load_gear(mob/living/carbon/human/new_human)
 		new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc, WEAR_BODY)
 		new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/surg_vest/equipped, WEAR_ACCESSORY)
 		new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/pmc/light/synth, WEAR_JACKET)
@@ -1958,7 +1961,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		new_human.equip_to_slot_or_del(new /obj/item/tool/weldingtool/hugetank, WEAR_IN_L_STORE)
 		new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/full_barbed_wire/wy, WEAR_R_STORE)
 
-/datum/equipment_preset/pmc/synth/get_antag_clothing_equipment()
+/datum/equipment_preset/synth/pmc/get_antag_clothing_equipment()
 	return list(
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("Boots", 0, /obj/item/clothing/shoes/veteran/pmc/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
@@ -2027,7 +2030,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 
 	)
 
-/datum/equipment_preset/pmc/synth/get_antag_gear_equipment()
+/datum/equipment_preset/synth/pmc/get_antag_gear_equipment()
 	return list(
 		list("MEDIC SET (MANDATORY)", 0, null, null, null),
 		list("Essential Medic Set", 0, /obj/effect/essentials_set/medic, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),

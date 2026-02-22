@@ -722,7 +722,7 @@
 		add_filter("combistick_charge", 1, list("type" = "outline", "color" = color, "size" = 2))
 
 /obj/item/weapon/yautja/chained/attack_hand(mob/user) //Prevents marines from instantly picking it up via pickup macros.
-	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
+	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH) && !isthrall(user))
 		user.visible_message(SPAN_DANGER("[user] starts to untangle the chain on \the [src]..."), SPAN_NOTICE("You start to untangle the chain on \the [src]..."))
 		if(do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 			..()
@@ -794,9 +794,9 @@
 		to_chat(user, SPAN_WARNING("You're not strong enough to rip an entire humanoid apart. Also, that's kind of fucked up."))
 		return TRUE
 
-	if(issamespecies(user, victim))
+	if(isspeciesyautja(victim))
 		to_chat(user, SPAN_HIGHDANGER("ARE YOU OUT OF YOUR MIND!?"))
-		return
+		return TRUE
 
 	if(isspeciessynth(victim))
 		to_chat(user, SPAN_WARNING("You can't flay metal..."))

@@ -12,16 +12,16 @@
 	if(!istype(above_user, /turf/open_space) || istype(above_current, /turf/open_space) || !above_current || !above_user)
 		return
 
-	if(istype(above_current, /turf/open/slippery))
-		to_chat(user, "The roof is too sloped to stand on it.")
-		return
-
 	while(above_current.density)
 		above_current = SSmapping.get_turf_above(get_turf(above_current))
 		above_user = SSmapping.get_turf_above(get_turf(above_user))
 
 		if(!istype(above_user, /turf/open_space) || istype(above_current, /turf/open_space) || !above_current || !above_user)
 			return
+
+	if(istype(above_current, /turf/open/slippery))
+		to_chat(user, "The roof is too sloped to stand on it.")
+		return
 
 	for(var/atom/possible_blocker in above_current)
 		if(possible_blocker.density)

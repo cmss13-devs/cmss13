@@ -1,0 +1,5 @@
+author: "Puckaboo2"
+delete-after: True
+changes:
+  - spellcheck: "Some 'The' that are not capitalized at the beginning of sentences are now capitalized."
+  - spellcheck: "More spellchecks, too."

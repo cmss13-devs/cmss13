@@ -36085,7 +36085,7 @@
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/prison/telecomms)
 "pgg" = (
-/obj/structure/machinery/autolathe/full,
+/obj/structure/machinery/autolathe/partial,
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/access/south)
 "pib" = (

@@ -6064,7 +6064,7 @@
 /turf/open/floor/prison/cell_stripe/north,
 /area/whiskey_outpost/inside/bunker)
 "zd" = (
-/obj/structure/machinery/autolathe/medilathe/full,
+/obj/structure/machinery/autolathe/medilathe/partial,
 /turf/open/floor/white,
 /area/whiskey_outpost/inside/hospital)
 "zf" = (

@@ -339,11 +339,41 @@
 	},
 /turf/open/floor/wood,
 /area/varadero/interior/library)
+"abh" = (
+/turf/closed/wall/rock/brown,
+/area/varadero/interior/caves/north_research)
+"abi" = (
+/turf/open/floor/shiva/yellow/north,
+/area/varadero/interior/comms1)
+"abj" = (
+/turf/open/floor/shiva/yellowfull/west,
+/area/varadero/interior/comms1)
+"abk" = (
+/obj/effect/landmark/static_comms/net_one,
+/turf/open/floor/platebot,
+/area/varadero/interior/comms1)
 "abl" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/device/radio,
 /turf/open/floor/shiva/red/southwest,
 /area/varadero/interior/security)
+"abm" = (
+/turf/open/floor/platebot,
+/area/varadero/interior/comms1)
+"abn" = (
+/turf/open/floor/shiva/yellow/west,
+/area/varadero/interior/comms1)
+"abo" = (
+/obj/structure/prop/rock/brown,
+/turf/closed/wall/rock/brown,
+/area/varadero/interior/caves/north_research)
+"abp" = (
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/shiva/yellow/west,
+/area/varadero/interior/comms1)
+"abq" = (
+/turf/closed/wall/r_wall/unmeltable,
+/area/varadero/interior/cargo)
 "abu" = (
 /obj/item/stack/sheet/wood,
 /obj/item/shard{
@@ -590,7 +620,7 @@
 	},
 /obj/structure/largecrate/random,
 /turf/open/floor/asteroidfloor/north,
-/area/varadero/interior/comms1)
+/area/varadero/interior/cargo)
 "alL" = (
 /obj/structure/prop/structure_lattice{
 	dir = 1;
@@ -731,7 +761,7 @@
 "arC" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/asteroidfloor/north,
-/area/varadero/interior/comms1)
+/area/varadero/interior/cargo)
 "arF" = (
 /obj/structure/closet/crate/trashcart,
 /obj/item/trash/ceramic_plate,
@@ -2069,7 +2099,7 @@
 /obj/structure/platform_decoration/metal/kutjevo/west,
 /obj/structure/platform_decoration/metal/kutjevo/east,
 /turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/comms1)
+/area/varadero/interior/cargo)
 "boV" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -2542,7 +2572,7 @@
 	},
 /obj/structure/platform_decoration/metal/kutjevo,
 /turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/comms1)
+/area/varadero/interior/cargo)
 "bNC" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -2565,7 +2595,7 @@
 	},
 /obj/structure/largecrate/random,
 /turf/open/floor/asteroidfloor/north,
-/area/varadero/interior/comms1)
+/area/varadero/interior/cargo)
 "bOu" = (
 /obj/effect/sentry_landmark/lz_1/bottom_left,
 /turf/open/floor/asteroidfloor/north,
@@ -3236,7 +3266,7 @@
 	climb_delay = 1
 	},
 /turf/open/floor/asteroidfloor/north,
-/area/varadero/interior/comms1)
+/area/varadero/interior/cargo)
 "coQ" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
@@ -5032,10 +5062,6 @@
 	},
 /turf/open/floor/shiva/red/north,
 /area/varadero/interior/security)
-"dQK" = (
-/obj/effect/landmark/static_comms/net_one,
-/turf/open/floor/asteroidfloor/north,
-/area/varadero/interior/comms1)
 "dQT" = (
 /obj/structure/bed/chair/comfy/teal,
 /turf/open/floor/shiva/multi_tiles,
@@ -7557,7 +7583,7 @@
 "fQW" = (
 /obj/structure/prop/turbine_extras,
 /turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/comms1)
+/area/varadero/interior/cargo)
 "fRl" = (
 /obj/structure/largecrate/random/case,
 /obj/item/spacecash/c10{
@@ -7970,7 +7996,7 @@
 	dir = 1
 	},
 /turf/open/floor/asteroidfloor/north,
-/area/varadero/interior/comms1)
+/area/varadero/interior/cargo)
 "giN" = (
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/maintenance/north)
@@ -8587,7 +8613,7 @@
 	},
 /obj/structure/machinery/constructable_frame,
 /turf/open/floor/asteroidfloor/north,
-/area/varadero/interior/comms1)
+/area/varadero/interior/cargo)
 "gJs" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -10086,7 +10112,7 @@
 "iah" = (
 /obj/item/tool/pickaxe,
 /turf/open/floor/asteroidfloor/north,
-/area/varadero/interior/comms1)
+/area/varadero/interior/cargo)
 "iat" = (
 /obj/structure/barricade/wooden{
 	dir = 1
@@ -10474,7 +10500,7 @@
 	dir = 8
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/comms1)
+/area/varadero/interior/cargo)
 "iqW" = (
 /obj/structure/surface/rack,
 /obj/item/paper{
@@ -10775,9 +10801,8 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure/machinery/power/apc/power/north,
 /turf/open/floor/asteroidfloor/north,
-/area/varadero/interior/comms1)
+/area/varadero/interior/cargo)
 "iCy" = (
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/research)
@@ -11865,7 +11890,7 @@
 	dir = 9
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/comms1)
+/area/varadero/interior/cargo)
 "jty" = (
 /obj/effect/landmark/hunter_primary,
 /turf/open/floor/shiva/multi_tiles/west,
@@ -12398,7 +12423,7 @@
 	pixel_y = 4
 	},
 /turf/open/floor/asteroidfloor/north,
-/area/varadero/interior/comms1)
+/area/varadero/interior/cargo)
 "jPC" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -12486,7 +12511,7 @@
 	pixel_y = 8
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/comms1)
+/area/varadero/interior/cargo)
 "jSN" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/surface/table/woodentable{
@@ -12498,7 +12523,7 @@
 /obj/structure/surface/rack,
 /obj/item/tool/pickaxe/jackhammer,
 /turf/open/floor/asteroidfloor/north,
-/area/varadero/interior/comms1)
+/area/varadero/interior/cargo)
 "jSX" = (
 /turf/open/gm/coast/beachcorner/north_west,
 /area/varadero/exterior/pontoon_beach)
@@ -14246,7 +14271,7 @@
 	},
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/comms1)
+/area/varadero/interior/cargo)
 "lxs" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
@@ -14601,7 +14626,7 @@
 /area/varadero/interior/maintenance/security/south)
 "lMB" = (
 /turf/open/floor/asteroidfloor/north,
-/area/varadero/interior/comms1)
+/area/varadero/interior/cargo)
 "lMC" = (
 /obj/structure/filtration/coagulation_arm{
 	explo_proof = 1;
@@ -19562,7 +19587,7 @@
 "pPl" = (
 /obj/structure/machinery/light,
 /turf/open/floor/asteroidwarning,
-/area/varadero/interior/comms1)
+/area/varadero/interior/cargo)
 "pPE" = (
 /obj/structure/platform/metal/kutjevo_smooth{
 	climb_delay = 1
@@ -20993,7 +21018,7 @@
 "qRe" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
 /turf/open/floor/asteroidwarning,
-/area/varadero/interior/comms1)
+/area/varadero/interior/cargo)
 "qRi" = (
 /obj/item/device/flashlight/lamp/tripod,
 /turf/open/floor/plating/icefloor/asteroidplating,
@@ -21416,7 +21441,7 @@
 	pixel_y = 4
 	},
 /turf/open/floor/asteroidfloor/north,
-/area/varadero/interior/comms1)
+/area/varadero/interior/cargo)
 "rjE" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/reagent_container/food/drinks/coffeecup/uscm{
@@ -22177,7 +22202,7 @@
 /obj/structure/prop/turbine,
 /obj/structure/prop/turbine_extras/border,
 /turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/comms1)
+/area/varadero/interior/cargo)
 "rMN" = (
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/hall_SE)
@@ -22254,7 +22279,7 @@
 	pixel_y = 5
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/comms1)
+/area/varadero/interior/cargo)
 "rQk" = (
 /obj/effect/decal/warning_stripes/asteroid{
 	dir = 1;
@@ -23002,7 +23027,7 @@
 /obj/structure/prop/turbine_extras/left,
 /obj/item/tool/crowbar,
 /turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/comms1)
+/area/varadero/interior/cargo)
 "ssv" = (
 /obj/effect/landmark/hunter_secondary,
 /obj/structure/machinery/landinglight/ds2/delaythree{
@@ -23281,7 +23306,7 @@
 	climb_delay = 1
 	},
 /turf/open/floor/asteroidwarning,
-/area/varadero/interior/comms1)
+/area/varadero/interior/cargo)
 "sBF" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
@@ -23945,7 +23970,7 @@
 /obj/structure/platform_decoration/metal/kutjevo/east,
 /obj/structure/platform_decoration/metal/kutjevo/west,
 /turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/comms1)
+/area/varadero/interior/cargo)
 "tfC" = (
 /obj/structure/showcase/yautja/alt,
 /turf/open/floor/corsat/squareswood/north,
@@ -24721,9 +24746,6 @@
 	},
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/bunks)
-"tQT" = (
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/comms1)
 "tRs" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -26988,7 +27010,7 @@
 /obj/structure/surface/rack,
 /obj/item/tool/weldpack,
 /turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/comms1)
+/area/varadero/interior/cargo)
 "vFu" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
@@ -27138,7 +27160,7 @@
 "vMq" = (
 /obj/item/stack/sheet/metal/med_large_stack,
 /turf/open/floor/asteroidfloor/north,
-/area/varadero/interior/comms1)
+/area/varadero/interior/cargo)
 "vMU" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/tool,
@@ -27388,7 +27410,7 @@
 	pixel_y = 8
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/comms1)
+/area/varadero/interior/cargo)
 "vVy" = (
 /obj/structure/machinery/shower{
 	dir = 1
@@ -27762,7 +27784,7 @@
 /area/varadero/interior/laundry)
 "wjB" = (
 /turf/open/floor/asteroidwarning,
-/area/varadero/interior/comms1)
+/area/varadero/interior/cargo)
 "wkq" = (
 /obj/structure/machinery/photocopier,
 /obj/structure/machinery/firealarm{
@@ -28031,7 +28053,7 @@
 	dir = 1
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/comms1)
+/area/varadero/interior/cargo)
 "wrg" = (
 /obj/structure/desertdam/decals/road_edge{
 	pixel_x = -12
@@ -28251,7 +28273,7 @@
 	dir = 8
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/comms1)
+/area/varadero/interior/cargo)
 "wCc" = (
 /obj/structure/machinery/floodlight/landing/floor,
 /turf/open/floor/asteroidfloor/north,
@@ -35244,11 +35266,11 @@ pGs
 pGs
 pGs
 pGs
-huF
-huF
-huF
-huF
-huF
+abq
+abq
+abq
+abq
+abq
 nbB
 ykM
 dpW
@@ -35426,11 +35448,11 @@ pGs
 pGs
 pGs
 huF
-huF
+abq
 rQe
 vFs
 iqv
-huF
+abq
 huF
 nbB
 fQK
@@ -35791,8 +35813,8 @@ pGs
 huF
 huF
 coP
-tQT
-tQT
+lSg
+lSg
 fQW
 jSP
 ykc
@@ -35973,8 +35995,8 @@ pGs
 huF
 huF
 giu
-tQT
-tQT
+lSg
+lSg
 rMM
 wjB
 ykc
@@ -36155,8 +36177,8 @@ huF
 huF
 huF
 coP
-tQT
-tQT
+lSg
+lSg
 ssh
 pPl
 ykc
@@ -36554,7 +36576,7 @@ lSg
 pGs
 pGs
 xCn
-xCn
+uHY
 xCn
 xCn
 xCn
@@ -36701,7 +36723,7 @@ huF
 huF
 huF
 giu
-dQK
+lMB
 wBY
 lMB
 wjB
@@ -36736,10 +36758,10 @@ nfX
 tng
 pGs
 pGs
-uHY
-uHY
-xCn
-xCn
+abo
+abh
+abh
+abh
 xCn
 xCn
 xCn
@@ -36917,8 +36939,8 @@ bpH
 rdq
 lSg
 bAj
-pGs
-pGs
+xpP
+xpP
 pGs
 pGs
 pGs
@@ -37099,11 +37121,11 @@ vLt
 miU
 jcN
 gHT
-pGs
-pGs
-pGs
-pGs
-pGs
+xpP
+abm
+abk
+abi
+xpP
 pGs
 pGs
 pGs
@@ -37281,11 +37303,11 @@ vLt
 lSg
 lSg
 gKw
-pGs
-pGs
-pGs
-pGs
-pGs
+xpP
+abm
+abm
+abi
+xpP
 pGs
 pGs
 pGs
@@ -37463,11 +37485,11 @@ dRX
 wVI
 pGJ
 lsU
-pGJ
-pGJ
-pGJ
-pGJ
-pGJ
+xpP
+abp
+abn
+abj
+xpP
 pGJ
 pGJ
 pGJ
@@ -37645,7 +37667,7 @@ cYc
 mGb
 lgP
 lzu
-mGb
+lgP
 qHu
 mGb
 lzu
@@ -37974,7 +37996,7 @@ huF
 huF
 huF
 huF
-xpP
+adw
 iBX
 bNx
 rjs

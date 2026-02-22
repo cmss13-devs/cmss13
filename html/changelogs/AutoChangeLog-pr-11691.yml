@@ -1,4 +1,0 @@
-author: "MistChristmas"
-delete-after: True
-changes:
-  - bugfix: "M39s no longer get stuck to you after you swap out your activated M39 Brace for something else"

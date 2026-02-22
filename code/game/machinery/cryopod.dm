@@ -207,11 +207,6 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 //Lifted from Unity stasis.dm and refactored. ~Zuhayr
 /obj/structure/machinery/cryopod/process()
 	if(occupant && !(occupant in GLOB.freed_mob_list)) //ignore freed mobs
-		if(occupant == SSticker.mode.acting_commander)
-			is_aco=TRUE
-		//if occupant ghosted, entered willingly or is the aCO, time till despawn is severely shorter
-		if((!occupant.key || willing || is_aco) && time_till_despawn == 10 MINUTES)
-			time_till_despawn -= 9 MINUTES
 		//Allow a gap between entering the pod and actually despawning.
 		if(world.time - time_entered < time_till_despawn)
 			return
@@ -522,22 +517,29 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 /obj/structure/machinery/cryopod/proc/go_in_cryopod(mob/mob, silent = FALSE)
 	if(occupant)
 		return
-	mob.forceMove(src)
+
 	occupant = mob
+	if(occupant == SSticker.mode.acting_commander)
+		is_aco=TRUE
+	//if occupant ghosted, entered willingly or is the aCO, time till despawn is severely shorter
+	if((!occupant.key || willing || is_aco) && time_till_despawn == 10 MINUTES)
+		time_till_despawn -= 9 MINUTES
+
+	occupant.forceMove(src)
 	icon_state = "body_scanner_closed"
 	set_light(2)
 	time_entered = world.time
 	start_processing()
 
 	if(!silent)
-		if(mob.client)
-			to_chat(mob, SPAN_NOTICE("You feel cool air surround you. You go numb as your senses turn inward."))
-			to_chat(mob, SPAN_BOLDNOTICE("If you ghost or close your client now, your character will permanently removed from the round in 1 minute."))
+		if(occupant.client)
+			to_chat(occupant, SPAN_NOTICE("You feel cool air surround you. You go numb as your senses turn inward."))
+			to_chat(occupant, SPAN_BOLDNOTICE("If you ghost or close your client now, your character will permanently removed from the round in 1 minute."))
 			if(!should_block_game_interaction(src)) // Set their queue time now because the client has to actually leave to despawn and at that point the client is lost
-				mob.client.player_details.larva_pool_time = max(mob.client.player_details.larva_pool_time, world.time)
+				occupant.client.player_details.larva_pool_time = max(occupant.client.player_details.larva_pool_time, world.time)
 		var/area/location = get_area(src)
-		if(mob.job != GET_MAPPED_ROLE(JOB_SQUAD_MARINE))
-			message_admins("[key_name_admin(mob)], [mob.job], has entered \a [src] at [location] after playing for [duration2text(world.time - mob.life_time_start)].")
+		if(occupant.job != GET_MAPPED_ROLE(JOB_SQUAD_MARINE))
+			message_admins("[key_name_admin(occupant)], [occupant.job], has entered \a [src] at [location] after playing for [duration2text(world.time - occupant.life_time_start)].")
 		playsound(src, 'sound/machines/hydraulics_3.ogg', 30)
 	silent_exit = silent
 

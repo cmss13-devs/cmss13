@@ -10400,18 +10400,9 @@
 /turf/open/floor/prison/blue/west,
 /area/desert_dam/building/administration/gate)
 "aGE" = (
-/obj/effect/blocker/water/toxic/Group_1,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/effect/blocker/toxic_water/Group_1,
-/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent/omega{
-	pixel_y = 32;
-	shuttleId = "trijentshuttle22"
-	},
-/turf/open/gm/river/desert/deep,
-/area/desert_dam/exterior/river/riverside_central_south)
+/obj/effect/landmark/mainship_crashsite,
+/turf/closed/cordon,
+/area/space)
 "aGF" = (
 /obj/item/card/id/visa{
 	desc = "A United Americas entry visa. A rare commodity out here on the rim.";
@@ -20841,9 +20832,24 @@
 /turf/open/asphalt/cement/cement1,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "bmP" = (
-/obj/effect/landmark/mainship_crashsite,
-/turf/closed/cordon,
-/area/space)
+/obj/effect/blocker/water/toxic/Group_1,
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/effect/blocker/toxic_water/Group_1,
+/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent/omega{
+	pixel_y = 32;
+	shuttleId = "trijentshuttle22"
+	},
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/effect/blocker/toxic_water/Group_1,
+/turf/open/gm/river/desert/deep,
+/area/desert_dam/exterior/river/riverside_central_south)
 "bmQ" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 10
@@ -138385,7 +138391,7 @@ vTg
 vTg
 vTg
 vTg
-bmP
+aGE
 "}
 (2,1,2) = {"
 vTg
@@ -164232,7 +164238,7 @@ huj
 rIt
 sFU
 bvA
-aGE
+bmP
 xYi
 xYi
 xYi

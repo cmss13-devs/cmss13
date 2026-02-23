@@ -34,8 +34,7 @@
 
 	prae.recalculate_everything()
 
-#define DANCER_ABILITY_CD_REDUCTION 5 SECONDS
-#define DANCER_LAST_TAG_SPREAD_TIME 7 SECONDS
+#define DANCER_LAST_TAG_SPREAD_DURATION 7 SECONDS
 #define DANCER_YELLOW_TAG_SPREAD_CD 20 SECONDS
 #define DANCER_TAG_SPREAD_COUNT 5
 
@@ -96,11 +95,11 @@
 
 	var/datum/action/xeno_action/activable/prae_impale/impale_action = get_action(bound_xeno, /datum/action/xeno_action/activable/prae_impale)
 	if(!impale_action.action_cooldown_check())
-		impale_action.reduce_cooldown(DANCER_ABILITY_CD_REDUCTION)
+		impale_action.apply_cooldown_override()
 
 	var/datum/action/xeno_action/activable/prae_tail_trip/tail_trip_action = get_action(bound_xeno, /datum/action/xeno_action/activable/prae_tail_trip)
 	if(!tail_trip_action.action_cooldown_check())
-		tail_trip_action.reduce_cooldown(DANCER_ABILITY_CD_REDUCTION)
+		tail_trip_action.apply_cooldown_override()
 
 /datum/behavior_delegate/praetorian_dancer/melee_attack_additional_effects_target(mob/living/carbon/target_carbon)
 	if(!isxeno_human(target_carbon))
@@ -142,7 +141,7 @@
 	if(!origin)
 		return
 
-	if(world.time < last_dancer_spread_time + DANCER_LAST_TAG_SPREAD_TIME)
+	if(world.time < last_dancer_spread_time + DANCER_LAST_TAG_SPREAD_DURATION)
 		return
 
 	if(world.time < source.last_target_spread_time + DANCER_YELLOW_TAG_SPREAD_CD)

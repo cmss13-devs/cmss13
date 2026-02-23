@@ -5,7 +5,8 @@
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 	minimap_icon = "synth"
 	skills = /datum/skills/synthetic
-	var/preset_generation_support = FALSE
+	///If there is a specific generation required. Set as Generation Define required.
+	var/locked_generation = FALSE
 	var/subtype
 
 /datum/equipment_preset/synth/New()
@@ -14,17 +15,12 @@
 
 /datum/equipment_preset/synth/load_race(mob/living/carbon/human/new_human)
 	var/generation_selection = SYNTH_GEN_THREE
-	if(new_human.client?.prefs?.synthetic_type)
-		generation_selection = new_human.client.prefs.synthetic_type
-	switch(generation_selection)
-		if(SYNTH_GEN_THREE)
-			new_human.set_species(SYNTH_GEN_THREE)
-		if(SYNTH_GEN_TWO)
-			new_human.set_species(SYNTH_COLONY_GEN_TWO)
-		if(SYNTH_GEN_ONE)
-			new_human.set_species(SYNTH_COLONY_GEN_ONE)
-		else
-			new_human.set_species(SYNTH_GEN_THREE)
+	if(locked_generation)
+		new_human.set_species(locked_generation, default_species = SYNTH_GEN_THREE)
+	else
+		if(new_human.client?.prefs?.synthetic_type)
+			generation_selection = new_human.client.prefs.synthetic_type
+		new_human.set_species(generation_selection, default_species = SYNTH_GEN_THREE)
 
 /datum/equipment_preset/synth/load_name(mob/living/carbon/human/new_human, randomise)
 	var/final_name = "David"
@@ -34,17 +30,31 @@
 			final_name = "David"
 	new_human.change_real_name(new_human, final_name)
 
-/datum/equipment_preset/synth/load_skills(mob/living/carbon/human/new_human, client/mob_client)
+/datum/equipment_preset/synth/load_skills(mob/living/carbon/human/new_human)
 	new_human.allow_gun_usage = FALSE
-
-	if(preset_generation_support && new_human.client)
-		switch(new_human.client?.prefs?.synthetic_type)
-			if(SYNTH_GEN_ONE, SYNTH_GEN_TWO)
-				new_human.set_skills(/datum/skills/colonial_synthetic)
+	if(locked_generation)
+		new_human.set_skills(skills)
+		return
+	var/synth_type = new_human.species.name
+	if(synth_type in SYNTH_TYPES)
+		switch(synth_type)
+			if(SYNTH_GEN_ONE)
+				new_human.set_skills(/datum/skills/synthetic/gen_two/gen_one)
+			if(SYNTH_GEN_TWO)
+				new_human.set_skills(/datum/skills/synthetic/gen_two)
 			else
 				new_human.set_skills(/datum/skills/synthetic)
 	else
-		new_human.set_skills(skills)
+		if(new_human.client)
+			switch(new_human.client?.prefs?.synthetic_type)
+				if(SYNTH_GEN_ONE)
+					new_human.set_skills(/datum/skills/synthetic/gen_two/gen_one)
+				if(SYNTH_GEN_TWO)
+					new_human.set_skills(/datum/skills/synthetic/gen_two)
+				else
+					new_human.set_skills(/datum/skills/synthetic)
+		else
+			new_human.set_skills(skills)
 
 //*****************************************************************************************************/
 
@@ -56,14 +66,11 @@
 	idtype = /obj/item/card/id/lanyard
 	assignment = JOB_SYNTH
 	job_title = JOB_SYNTH_SURVIVOR
-	skills = /datum/skills/colonial_synthetic
-	preset_generation_support = TRUE
 	origin_override = ORIGIN_CIVILIAN
 
 	var/list/equipment_to_spawn = list(
 		WEAR_BODY = /obj/item/clothing/under/rank/synthetic/joe,
 		WEAR_BACK = /obj/item/storage/backpack/marine/satchel,
-		WEAR_IN_BACK = /obj/item/tool/weldingtool/hugetank,
 		WEAR_WAIST = /obj/item/storage/belt/utility/full,
 		WEAR_R_STORE = /obj/item/storage/pouch/tools/full,
 		WEAR_FEET = /obj/item/clothing/shoes/marine/knife,
@@ -71,21 +78,6 @@
 	)
 
 	var/survivor_variant = CIVILIAN_SURVIVOR
-
-/datum/equipment_preset/synth/survivor/load_race(mob/living/carbon/human/new_human)
-	//Switch to check client for synthetic generation preference, and set the subspecies of colonial synth
-	var/generation_selection = SYNTH_COLONY_GEN_ONE
-	if(new_human.client?.prefs?.synthetic_type)
-		generation_selection = new_human.client.prefs.synthetic_type
-	switch(generation_selection)
-		if(SYNTH_GEN_THREE)
-			new_human.set_species(SYNTH_GEN_THREE)
-		if(SYNTH_GEN_TWO)
-			new_human.set_species(SYNTH_COLONY_GEN_TWO)
-		if(SYNTH_GEN_ONE)
-			new_human.set_species(SYNTH_COLONY_GEN_ONE)
-		else
-			new_human.set_species(SYNTH_GEN_THREE)
 
 /datum/equipment_preset/synth/survivor/New()
 	. = ..()
@@ -339,6 +331,17 @@
 
 /datum/equipment_preset/synth/survivor/corporate_synth
 	name = "Survivor - Synthetic - Corporate Synth"
+	job_title = JOB_WY_SEC_SYNTH
+	assignment = "W-Y Corporate Security Synthetic"
+	idtype = /obj/item/card/id/silver/cl
+	role_comm_title = "WY Sec Syn"
+	survivor_variant = CORPORATE_SURVIVOR
+	flags = EQUIPMENT_PRESET_EXTRA
+	faction = FACTION_WY
+	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
+	minimap_icon = "wy_syn"
+	minimap_background = "background_goon"
+	origin_override = ORIGIN_WY
 
 /datum/equipment_preset/synth/survivor/corporate_synth/load_gear(mob/living/carbon/human/new_human)
 	..()
@@ -605,8 +608,10 @@
 
 /datum/equipment_preset/synth/survivor/wy/corporate_synth
 	name = "Survivor - Synthetic - Corporate Clerical Synth"
-	idtype = /obj/item/card/id/data
-	role_comm_title = "WY Syn"
+	job_title = JOB_WY_SEC_SYNTH
+	assignment = "W-Y Security Medical Synthetic"
+	idtype = /obj/item/card/id/silver/cl
+	role_comm_title = "WY Med Syn"
 	equipment_to_spawn = list(
 		WEAR_L_EAR = /obj/item/device/radio/headset/distress/WY,
 		WEAR_R_EAR = /obj/item/tool/pen/clicky,
@@ -651,9 +656,19 @@
 	survivor_variant = CORPORATE_SURVIVOR
 
 /datum/equipment_preset/synth/survivor/pilot_synth
-	name = "Survivor - Synthetic - WY Pilot Synth"
+	name = "Survivor - Synthetic - W-Y Pilot"
+	job_title = JOB_WY_SEC_SYNTH
+	assignment = "W-Y Commercial Pilot Synthetic"
+	idtype = /obj/item/card/id/data
+	role_comm_title = "WY Pilot Syn"
+	survivor_variant = CORPORATE_SURVIVOR
+	flags = EQUIPMENT_PRESET_EXTRA
+	faction = FACTION_WY
+	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
+	minimap_icon = "wy_syn"
+	minimap_background = "background_goon"
+	origin_override = ORIGIN_WY
 	idtype = /obj/item/card/id/silver/cl
-	role_comm_title = "Pilot Syn"
 	equipment_to_spawn = list(
 		WEAR_L_EAR = /obj/item/device/radio/headset/distress/WY,
 		WEAR_R_EAR = /obj/item/tool/pen/clicky,
@@ -667,9 +682,10 @@
 		WEAR_FEET = /obj/item/clothing/shoes/dress,
 		WEAR_L_HAND = /obj/item/weapon/telebaton
 	)
-	skills = /datum/skills/synthetic
-	preset_generation_support = FALSE
 	survivor_variant = CORPORATE_SURVIVOR
+
+	skills = /datum/skills/synthetic
+	locked_generation = SYNTH_GEN_THREE
 
 //*****************************************************************************************************/
 

@@ -152,7 +152,7 @@
 	ID.faction = faction
 	ID.faction_group = faction_group.Copy()
 	ID.assignment = assignment
-	ID.rank = manifest_title
+	ID.rank = job_title
 	ID.registered_name = new_human.real_name
 	ID.registered_ref = WEAKREF(new_human)
 	ID.registered_gid = new_human.gid

@@ -87,7 +87,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	dat += "<A href='byond://?_src_=admin_holder;[HrefToken()];ahelp_tickets=[state]'>Refresh</A><br><br>"
 	for(var/I in l2b)
 		var/datum/admin_help/AH = I
-		dat += "[SPAN_ADMINNOTICE("[SPAN_ADMINHELP("Ticket #[AH.id]")]: <A href='byond://?_src_=admin_holder;[HrefToken()];ahelp=[REF(AH)];ahelp_action=ticket'>[AH.initiator_key_name]: [AH.name]</A>")]<br>"
+		dat += "[SPAN_ADMINNOTICE("[SPAN_ADMINHELP("Ticket #[AH.id]")]: <A href='byond://?_src_=admin_holder;[HrefToken()];ahelp=[REF(AH)];ahelp_action=ticket' style='word-break: break-all;'>[AH.initiator_key_name]: [AH.name]</A>")]<br>"
 
 	usr << browse(dat.Join(), "window=ahelp_list[state];size=600x480")
 
@@ -181,6 +181,8 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	var/client/initiator
 	/// The ckey of the initiator
 	var/initiator_ckey
+	/// The username of the initiator (may differ from ckey with external auth)
+	var/initiator_username
 	/// The key name of the initiator
 	var/initiator_key_name
 	/// If any admins were online when the ticket was initialized
@@ -228,7 +230,8 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 
 	initiator = C
 	initiator_ckey = initiator.ckey
-	initiator_key_name = key_name(initiator, FALSE, TRUE)
+	initiator_username = initiator.username()
+	initiator_key_name = key_name(initiator, FALSE, TRUE, show_username = TRUE)
 	if(initiator.current_ticket) //This is a bug
 		stack_trace("Multiple ahelp current_tickets")
 		initiator.current_ticket.AddInteraction("Ticket erroneously left open by code")
@@ -276,6 +279,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		admin_text += "**Lacks +BAN**: [other_admins]\n"
 	embed.fields = list(
 		"CKEY" = initiator_ckey,
+		"USERNAME" = initiator_username && initiator_username != initiator_ckey ? initiator_username : null,
 		"PLAYERS" = player_count,
 		"ROUND STATE" = round_state,
 		"ROUND ID" = GLOB.round_id,
@@ -342,7 +346,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	headers["Content-Type"] = "application/json"
 	var/datum/http_request/request = new()
 	request.prepare(RUSTG_HTTP_METHOD_POST, webhook, json_encode(webhook_info), headers, "tmp/response.json")
-	request.begin_async()
+	request.execute_fire_and_forget()
 
 /datum/admin_help/Destroy()
 	RemoveActive()
@@ -643,7 +647,9 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 /datum/admin_help/proc/TicketPanel()
 	var/list/dat = list("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><link rel='stylesheet' type='text/css' href='[SSassets.transport.get_asset_url("common.css")]'><title>Ticket #[id]</title></head>")
 	var/ref_src = "[REF(src)]"
-	dat += "<h4>Admin Help Ticket #[id]: [LinkedReplyName(ref_src)]</h4>"
+	dat += "<h4 style='word-break: break-all;'>Admin Help Ticket #[id]: [LinkedReplyName(ref_src)]</h4>"
+	if(initiator_username && initiator_username != initiator_ckey)
+		dat += "<b>Username:</b> <span style='word-break: break-all;'>[initiator_username]</span> <b>| Ckey:</b> <span style='word-break: break-all;'>[initiator_ckey]</span><br>"
 	dat += "<b>State: [ticket_status()]</b>"
 	dat += "[FOURSPACES][TicketHref("Refresh", ref_src)][FOURSPACES][TicketHref("Re-Title", ref_src, "retitle")]"
 	if(state != AHELP_ACTIVE)

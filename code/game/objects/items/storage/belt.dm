@@ -1594,6 +1594,7 @@
 	cant_hold = list(
 		/obj/item/weapon/gun/pistol/smart,
 		/obj/item/ammo_magazine/pistol/smart,
+		/obj/item/weapon/gun/pistol/m10, //Has it's own holster
 		/obj/item/weapon/gun/pistol/kt42, // HONKed currently
 		/obj/item/weapon/gun/pistol/auto9, // HONKed currently
 		/obj/item/weapon/gun/pistol/chimp, // HONKed currently
@@ -1852,14 +1853,12 @@
 	for(var/i = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/smg/m39/ap(src)
 
-#define MAXIMUM_MAGAZINE_COUNT 2
-
 /obj/item/storage/belt/gun/m10
 	name = "\improper M276 pattern M10 holster rig"
-	desc = "Special issue variant of the M276 - designed exclusively to securely hold a M10 Auto Pistol and seven spare magazines, allowing quick access in close-quarters situations. Ideal for defending against boarding threats, this belt supports rapid deployment of high-rate sidearms while maintaining stability in zero-G environments."
+	desc = "Special issue variant of the M276 - designed exclusively to securely hold a M10 Auto Pistol and three spare magazines, allowing quick access in close-quarters situations. Ideal for defending against boarding threats, this belt supports rapid deployment of high-rate sidearms while maintaining stability in zero-G environments."
 	icon_state = "m10_armor"
 	flags_atom = FPRINT // has gamemode skin
-	storage_slots = 8
+	storage_slots = 4
 	max_w_class = 5
 	gun_has_gamemode_skin = TRUE
 	can_hold = list(
@@ -1886,6 +1885,7 @@
 	for(var/i = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/pistol/m10/drum(src)
 
+#define MAXIMUM_MAGAZINE_COUNT 2
 
 /obj/item/storage/belt/gun/xm51
 	name = "\improper M276 pattern XM51 holster rig"

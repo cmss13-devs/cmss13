@@ -73,8 +73,7 @@ SUBSYSTEM_DEF(influxdriver)
 	for(var/line in queue)
 		payload += "[line]\n"
 	request.prepare(RUSTG_HTTP_METHOD_POST, url, payload, headers)
-	request.begin_async()
-	// TODO possibly check back result of request later
+	request.execute_fire_and_forget()
 
 /// Enqueues sending to InfluxDB Backend selected measurement values - round_id and timestamp are filled in automatically
 /datum/controller/subsystem/influxdriver/proc/enqueue_stats(measurement, list/tags, list/fields)

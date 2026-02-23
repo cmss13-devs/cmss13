@@ -1,0 +1,5 @@
+author: "EldritchSack (sprites), ori (code)"
+delete-after: True
+changes:
+  - rscadd: "added new white and black banded walkmans"
+  - imageadd: "added new icons for walkmans, animations for pressing the buttons, and white/black striped overlays"

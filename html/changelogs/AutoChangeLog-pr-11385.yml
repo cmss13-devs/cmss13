@@ -1,0 +1,5 @@
+author: "Venuska1117, Harry"
+delete-after: True
+changes:
+  - balance: "Xenomorphs now have their own separate HUD icons per hive, if xenomorph do not belong to same hive, they cannot see other hive HUD."
+  - balance: "Invisible xenos now have their HUD icons visible."

@@ -1,0 +1,5 @@
+author: "dawsonkeyes"
+delete-after: True
+changes:
+  - rscadd: "New elite human hunting grounds presets"
+  - rscadd: "Longer cooldowns for hunting reserve depending on the chosen call"

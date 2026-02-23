@@ -46,7 +46,8 @@
 							"Medical HUD" = FALSE,
 							"Security HUD" = FALSE,
 							"Squad HUD" = FALSE,
-							"Xeno Status HUD" = FALSE
+							"Xeno Status HUD" = FALSE,
+							"Hunter HUD" = FALSE
 							)
 	universal_speak = TRUE
 	var/updatedir = TRUE //Do we have to update our dir as the ghost moves around?
@@ -399,6 +400,9 @@
 					the_hud.add_hud_to(src, src)
 				if("Xeno Status HUD")
 					the_hud = GLOB.huds[MOB_HUD_XENO_STATUS]
+					the_hud.add_hud_to(src, src)
+				if("Hunter HUD")
+					the_hud = GLOB.huds[MOB_HUD_HUNTER]
 					the_hud.add_hud_to(src, src)
 				if("Faction UPP HUD")
 					the_hud = GLOB.huds[MOB_HUD_FACTION_UPP]

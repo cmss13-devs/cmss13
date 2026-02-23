@@ -924,14 +924,17 @@
 
 /datum/equipment_preset/survivor/hybrisa/wey_po
 	name = "Survivor - Hybrisa - Weyland-Yutani - Commercial Pilot"
+	job_title = JOB_WY_PILOT
 	assignment = "Weyland-Yutani - Commercial Pilot"
 	skills = /datum/skills/civilian/survivor/wy_pilot
 	paygrades = list(PAY_SHORT_WYPO2 = JOB_PLAYTIME_TIER_0)
 	faction_group = FACTION_LIST_SURVIVOR_WY
+	faction = FACTION_WY
 	idtype = /obj/item/card/id/gold
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_LOGISTICS,ACCESS_WY_FLIGHT,ACCESS_CIVILIAN_COMMAND,ACCESS_WY_GENERAL,ACCESS_WY_COLONIAL,ACCESS_WY_EXEC)
-
+	minimap_icon = "wy_pilot"
+	minimap_background = "background_goon"
 	survivor_variant = CORPORATE_SURVIVOR
 
 /datum/equipment_preset/survivor/hybrisa/wey_po/load_gear(mob/living/carbon/human/new_human)

@@ -873,6 +873,22 @@
 	for(var/datum/hivebuff/buff in active_hivebuffs)
 		buff._on_cease()
 
+/datum/hive_status/proc/bless_on_hijack()
+	xeno_maptext("My Children, the time has come to assault the Metal Hive. Evolve now into castes best suited for the task!", "Queen Mother") // NOTE: sends a maptext to all xenos globally, hence not in below loop
+	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos)
+		if(xeno.caste.tier > 3)
+			return
+
+		if(get_action(xeno, /datum/action/xeno_action/onclick/transmute))
+			return
+
+
+		if(xeno.caste.tier > 0)
+			add_verb(xeno, /mob/living/carbon/xenomorph/proc/transmute_verb)
+			var/datum/action/xeno_action/onclick/transmute/transmute_action = new()
+			transmute_action.give_to(xeno)
+
+
 /datum/hive_status/proc/free_respawn(client/C)
 	stored_larva++
 	if(!hive_location || !hive_location.spawn_burrowed_larva(C.mob))

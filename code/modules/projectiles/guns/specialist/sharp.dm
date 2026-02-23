@@ -81,14 +81,14 @@
 	var/mine_mode_notice = ""
 	switch (current_mine_mode)
 		if (SHARP_DANGER_MODE)
-			current_mine_mode = SHARP_DIRECTED_MODE
-			mine_mode_notice += "[icon2html(src, user)] You set [src]'s mine mode to [current_mine_mode]. Explosive ammo will blow up regularly."
-		if (SHARP_DIRECTED_MODE)
 			current_mine_mode = SHARP_SAFE_MODE
-			mine_mode_notice += "[icon2html(src, user)] You set [src]'s mine mode to [current_mine_mode]. Explosive ammo will concentrate the explosion on the target."
-		if (SHARP_SAFE_MODE)
-			current_mine_mode = SHARP_DANGER_MODE
 			mine_mode_notice += "[icon2html(src, user)] You set [src]'s mine mode to [current_mine_mode]. Explosive ammo will not blow up near detected IFF targets."
+		if (SHARP_DIRECTED_MODE)
+			current_mine_mode = SHARP_DANGER_MODE
+			mine_mode_notice += "[icon2html(src, user)] You set [src]'s mine mode to [current_mine_mode]. Explosive ammo will blow up regularly."
+		if (SHARP_SAFE_MODE)
+			current_mine_mode = SHARP_DIRECTED_MODE
+			mine_mode_notice += "[icon2html(src, user)] You set [src]'s mine mode to [current_mine_mode]. Explosive ammo will concentrate the explosion on the target."
 	user.balloon_alert(user, "[current_mine_mode] mode activated")
 	to_chat(user, SPAN_NOTICE(mine_mode_notice))
 

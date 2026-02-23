@@ -195,8 +195,6 @@ SUBSYSTEM_DEF(minimaps)
 				ceiling_color = MINIMAP_CEILING_TIER_1
 			else if(turf_area.ceiling >= CEILING_GLASS)
 				ceiling_color = MINIMAP_CEILING_TIER_GLASS
-			else
-				ceiling_color = MINIMAP_CEILING_TIER_0
 
 			if(ceiling_color)
 				if(!istype(turfloc, /turf/open/space))

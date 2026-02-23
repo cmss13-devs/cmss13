@@ -1559,14 +1559,22 @@ SUBSYSTEM_DEF(minimaps)
 	if(SSmapping.level_has_any_trait(linked_map.target, list(ZTRAIT_GROUND)))
 		if(SSmapping.level_has_any_trait(user.z, list(ZTRAIT_MARINE_MAIN_SHIP)))
 			new_linked_map = SSminimaps.fetch_minimap_object(user.z, linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing)
+			for(var/datum/action/minimap/map in user.actions)
+				user.client.add_to_screen(map.locator)
 		else
 			new_linked_map = SSminimaps.fetch_minimap_object(SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)[1], linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing)
-
+			for(var/datum/action/minimap/map in user.actions)
+				user.client.remove_from_screen(map.locator)
 	else
 		if(SSmapping.level_has_any_trait(user.z, list(ZTRAIT_GROUND)))
 			new_linked_map = SSminimaps.fetch_minimap_object(user.z, linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing)
+			for(var/datum/action/minimap/map in user.actions)
+				user.client.add_to_screen(map.locator)
 		else
 			new_linked_map = SSminimaps.fetch_minimap_object(SSmapping.levels_by_trait(ZTRAIT_GROUND)[1] , linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing)
+			for(var/datum/action/minimap/map in user.actions)
+				user.client.remove_from_screen(map.locator)
+
 	update_shown_map(user, new_linked_map)
 
 /atom/movable/screen/minimap_tool/up/clicked(mob/user, list/modifiers)

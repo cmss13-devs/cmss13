@@ -591,7 +591,7 @@ GLOBAL_LIST_INIT(autolathe_wire_descriptions, flatten_numeric_alist(alist(
 		/obj/item/stock_parts/console_screen,
 	)
 
-/obj/structure/machinery/autolathe/armylathe/full
+/obj/structure/machinery/autolathe/armylathe/partial
 	stored_material =  list("metal" = 56250, "plasteel" = 56250, "plastic" = 20000) //15 metal, 15 plasteel, and 10 plastic sheets
 
 /obj/structure/machinery/autolathe/armylathe/full

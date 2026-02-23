@@ -2092,7 +2092,7 @@
 	},
 /area/prison/hangar_storage/research/shuttle)
 "aib" = (
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/prison/hangar_storage/research/shuttle)
 "aic" = (
 /obj/structure/surface/table/reinforced,
@@ -2119,7 +2119,7 @@
 /area/corsat/sigma/south/complex/teleporter)
 "aig" = (
 /obj/structure/machinery/computer3,
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/prison/hangar_storage/research/shuttle)
 "aih" = (
 /obj/structure/machinery/light,
@@ -2134,10 +2134,10 @@
 	},
 /area/prison/hangar_storage/research/shuttle)
 "aij" = (
-/turf/open/shuttle/dropship/light_grey_single_wide_left_to_right,
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_left_to_right,
 /area/prison/hangar_storage/research/shuttle)
 "aik" = (
-/turf/open/shuttle/dropship/light_grey_top_right,
+/turf/open/shuttle/dropship/can_surgery/light_grey_top_right,
 /area/prison/hangar_storage/research/shuttle)
 "ail" = (
 /turf/open/floor/corsat/marked,
@@ -2145,10 +2145,10 @@
 "aim" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/tech_supply,
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/prison/hangar_storage/research/shuttle)
 "ain" = (
-/turf/open/shuttle/dropship/light_grey_top_left,
+/turf/open/shuttle/dropship/can_surgery/light_grey_top_left,
 /area/prison/hangar_storage/research/shuttle)
 "aio" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -2161,7 +2161,7 @@
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 4
 	},
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/prison/hangar_storage/research/shuttle)
 "aiq" = (
 /turf/closed/shuttle/ert{
@@ -2197,7 +2197,7 @@
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/prison/hangar_storage/research/shuttle)
 "aiv" = (
 /turf/closed/shuttle/ert{
@@ -2210,7 +2210,7 @@
 	},
 /area/prison/hangar_storage/research/shuttle)
 "aix" = (
-/turf/open/shuttle/dropship/light_grey_bottom_right,
+/turf/open/shuttle/dropship/can_surgery/light_grey_bottom_right,
 /area/prison/hangar_storage/research/shuttle)
 "aiy" = (
 /obj/effect/landmark/teleporter_loc/corsat_sigma_local{
@@ -2219,9 +2219,8 @@
 /turf/open/floor/corsat/corsat_teleporter_static/southwest,
 /area/corsat/sigma/south/complex/teleporter)
 "aiz" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_3";
-	opacity = 0
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "leftengine_3"
 	},
 /area/prison/hangar_storage/research/shuttle)
 "aiA" = (
@@ -2248,24 +2247,21 @@
 	},
 /area/prison/hangar_storage/research/shuttle)
 "aiF" = (
-/turf/open/shuttle/dropship/light_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/prison/hangar_storage/research/shuttle)
 "aiG" = (
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_3";
-	opacity = 0
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "rightengine_3"
 	},
 /area/prison/hangar_storage/research/shuttle)
 "aiH" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_2";
-	opacity = 0
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "leftengine_2"
 	},
 /area/prison/hangar_storage/research/shuttle)
 "aiI" = (
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_2";
-	opacity = 0
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "rightengine_2"
 	},
 /area/prison/hangar_storage/research/shuttle)
 "aiJ" = (
@@ -3892,10 +3888,8 @@
 /turf/open/floor/corsat/squares,
 /area/corsat/omega/hangar/security)
 "apj" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_1";
-	opacity = 0
-	},
+/obj/structure/shuttle/part/ert/transparent/left_engine,
+/turf/open/floor/plating,
 /area/prison/hangar_storage/research/shuttle)
 "apk" = (
 /turf/open/floor/plating,
@@ -7727,9 +7721,8 @@
 /turf/open/floor/corsat/darkgreen/north,
 /area/corsat/sigma/hangar/arrivals)
 "aDY" = (
-/turf/closed/shuttle/ert{
-	icon_state = "wy20"
-	},
+/obj/structure/shuttle/part/ert/front_left_wy,
+/turf/open/floor/plating,
 /area/prison/hangar_storage/research/shuttle)
 "aDZ" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
@@ -7755,14 +7748,13 @@
 /turf/open/floor/corsat/red/southeast,
 /area/corsat/gamma/hangar/checkpoint)
 "aEc" = (
-/turf/closed/shuttle/ert{
+/turf/closed/shuttle/ert/transparent{
 	icon_state = "wy27"
 	},
 /area/prison/hangar_storage/research/shuttle)
 "aEd" = (
-/turf/closed/shuttle/ert{
-	icon_state = "wy25"
-	},
+/obj/structure/shuttle/part/ert/front_right_wy,
+/turf/open/floor/plating,
 /area/prison/hangar_storage/research/shuttle)
 "aEe" = (
 /turf/closed/shuttle/ert{
@@ -10401,7 +10393,7 @@
 /turf/open/floor/corsat/squares,
 /area/corsat/gamma/hangar/checkpoint)
 "aOe" = (
-/turf/open/shuttle/dropship/light_grey_single_wide_left_to_right,
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_left_to_right,
 /area/corsat/gamma/hangar/monorail/railcart)
 "aOf" = (
 /turf/open/floor/corsat/red/southwest,
@@ -10923,10 +10915,8 @@
 	},
 /area/prison/hangar_storage/research/shuttle)
 "aQg" = (
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_1";
-	opacity = 0
-	},
+/obj/structure/shuttle/part/ert/transparent/right_engine,
+/turf/open/floor/plating,
 /area/prison/hangar_storage/research/shuttle)
 "aQh" = (
 /obj/structure/machinery/power/apc/no_power/north,
@@ -10960,7 +10950,7 @@
 /turf/closed/wall/r_wall/biodome,
 /area/corsat/omega/hangar/office)
 "aQn" = (
-/turf/open/shuttle/dropship/light_grey_bottom_left,
+/turf/open/shuttle/dropship/can_surgery/light_grey_bottom_left,
 /area/prison/hangar_storage/research/shuttle)
 "aQo" = (
 /obj/structure/window/framed/corsat/security,
@@ -27779,7 +27769,7 @@
 /area/corsat/gamma/residential)
 "dXp" = (
 /obj/effect/spawner/gibspawner/human,
-/turf/open/shuttle/dropship/light_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/prison/hangar_storage/research/shuttle)
 "dXq" = (
 /obj/structure/surface/table/almayer,
@@ -29593,7 +29583,7 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2
 	},
-/turf/open/floor/plating,
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_left_to_right,
 /area/prison/hangar_storage/research/shuttle)
 "fTw" = (
 /obj/structure/closet/firecloset,
@@ -29925,7 +29915,7 @@
 /area/corsat/sigma/southeast/datalab)
 "gjt" = (
 /obj/structure/machinery/door/airlock/almayer/generic,
-/turf/open/floor/plating,
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/prison/hangar_storage/research/shuttle)
 "gjw" = (
 /obj/structure/flora/pottedplant{
@@ -30413,7 +30403,7 @@
 /area/corsat/omega/control)
 "gGR" = (
 /obj/structure/surface/rack,
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/prison/hangar_storage/research/shuttle)
 "gGT" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -30633,7 +30623,7 @@
 "gSm" = (
 /obj/structure/surface/rack,
 /obj/item/storage/firstaid,
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/prison/hangar_storage/research/shuttle)
 "gSu" = (
 /turf/open/floor/corsat/purplewhitecorner/west,
@@ -32123,7 +32113,7 @@
 "ilo" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/toolbox,
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/prison/hangar_storage/research/shuttle)
 "ilr" = (
 /obj/structure/closet/emcloset,
@@ -32938,7 +32928,7 @@
 /area/corsat/gamma/administration)
 "jhR" = (
 /obj/effect/landmark/corpsespawner/pmc,
-/turf/open/shuttle/dropship/light_grey_single_wide_left_to_right,
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_left_to_right,
 /area/prison/hangar_storage/research/shuttle)
 "jja" = (
 /turf/open/floor/corsat/bluecorner/west,
@@ -32946,7 +32936,7 @@
 "jjb" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/tool,
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/prison/hangar_storage/research/shuttle)
 "jjz" = (
 /obj/structure/pipes/vents/pump{
@@ -33195,7 +33185,7 @@
 "jyk" = (
 /obj/structure/surface/rack,
 /obj/item/device/binoculars,
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/prison/hangar_storage/research/shuttle)
 "jyK" = (
 /obj/effect/decal/cleanable/blood/splatter,
@@ -35847,7 +35837,7 @@
 /turf/open/floor/corsat/bluegreycorner,
 /area/corsat/gamma/hangar/flightcontrol)
 "msm" = (
-/turf/open/shuttle/dropship/dark_grey_bottom,
+/turf/open/shuttle/dropship/can_surgery/dark_grey_bottom,
 /area/prison/hangar_storage/research/shuttle)
 "msp" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -36402,7 +36392,7 @@
 	dir = 8
 	},
 /obj/effect/spawner/gibspawner/human,
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/prison/hangar_storage/research/shuttle)
 "mWj" = (
 /obj/structure/flora/pottedplant,
@@ -39405,7 +39395,7 @@
 /obj/structure/bed/chair/dropship/pilot{
 	dir = 1
 	},
-/turf/open/shuttle/dropship/light_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/prison/hangar_storage/research/shuttle)
 "qjL" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -39629,7 +39619,7 @@
 /turf/open/floor/corsat/tan/north,
 /area/corsat/gamma/canteen)
 "qvz" = (
-/turf/open/shuttle/dropship/light_grey_middle,
+/turf/open/shuttle/dropship/can_surgery/light_grey_middle,
 /area/prison/hangar_storage/research/shuttle)
 "qvB" = (
 /obj/structure/surface/table,
@@ -40420,7 +40410,7 @@
 /area/corsat/sigma/south/complex)
 "rpr" = (
 /obj/effect/landmark/corpsespawner/pmc,
-/turf/open/shuttle/dropship/light_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/prison/hangar_storage/research/shuttle)
 "rpB" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -41635,7 +41625,7 @@
 "sBH" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/landmark/corpsespawner/scientist,
-/turf/open/shuttle/dropship/light_grey_single_wide_left_to_right,
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_left_to_right,
 /area/corsat/gamma/hangar/monorail/railcart)
 "sBV" = (
 /obj/structure/filingcabinet/filingcabinet,
@@ -43003,7 +42993,7 @@
 /turf/open/floor/wood,
 /area/corsat/gamma/administration)
 "tYX" = (
-/turf/open/shuttle/dropship/light_grey_top,
+/turf/open/shuttle/dropship/can_surgery/light_grey_top,
 /area/prison/hangar_storage/research/shuttle)
 "tZp" = (
 /obj/structure/pipes/vents/pump{
@@ -45015,7 +45005,7 @@
 /area/corsat/omega/hallways)
 "wjb" = (
 /obj/effect/decal/cleanable/blood/splatter,
-/turf/open/shuttle/dropship/light_grey_single_wide_left_to_right,
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_left_to_right,
 /area/corsat/gamma/hangar/monorail/railcart)
 "wji" = (
 /obj/structure/pipes/vents/pump{
@@ -45213,7 +45203,7 @@
 "wrd" = (
 /obj/structure/surface/rack,
 /obj/item/restraint/legcuffs/xeno_restraints,
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/prison/hangar_storage/research/shuttle)
 "wrC" = (
 /obj/structure/pipes/vents/pump{

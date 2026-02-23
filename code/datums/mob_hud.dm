@@ -10,6 +10,20 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 	MOB_HUD_MEDICAL_OBSERVER = new /datum/mob_hud/medical/observer(),
 	MOB_HUD_XENO_INFECTION = new /datum/mob_hud/xeno_infection(),
 	MOB_HUD_XENO_STATUS = new /datum/mob_hud/xeno(),
+	MOB_HUD_XENO_HIVE_NORMAL = new /datum/mob_hud/xeno/xeno_hive_normal(),
+	MOB_HUD_XENO_HIVE_CORRUPTED = new /datum/mob_hud/xeno/xeno_hive_corrupted(),
+	MOB_HUD_XENO_HIVE_ALPHA = new /datum/mob_hud/xeno/xeno_hive_alpha(),
+	MOB_HUD_XENO_HIVE_BRAVO = new /datum/mob_hud/xeno/xeno_hive_bravo(),
+	MOB_HUD_XENO_HIVE_CHARLIE = new /datum/mob_hud/xeno/xeno_hive_charlie(),
+	MOB_HUD_XENO_HIVE_DELTA = new /datum/mob_hud/xeno/xeno_hive_delta(),
+	MOB_HUD_XENO_HIVE_FERAL = new /datum/mob_hud/xeno/xeno_hive_feral(),
+	MOB_HUD_XENO_HIVE_TAMED = new /datum/mob_hud/xeno/xeno_hive_tamed(),
+	MOB_HUD_XENO_HIVE_MUTATED = new /datum/mob_hud/xeno/xeno_hive_mutated(),
+	MOB_HUD_XENO_HIVE_FORSAKEN = new /datum/mob_hud/xeno/xeno_hive_forsaken(),
+	MOB_HUD_XENO_HIVE_YAUTJA = new /datum/mob_hud/xeno/xeno_hive_yautja(),
+	MOB_HUD_XENO_HIVE_HUNTED = new /datum/mob_hud/xeno/xeno_hive_hunted(),
+	MOB_HUD_XENO_HIVE_RENEGADE = new /datum/mob_hud/xeno/xeno_hive_renegade(),
+	MOB_HUD_XENO_HIVE_TUTORIAL = new /datum/mob_hud/xeno/xeno_hive_tutorial(),
 	MOB_HUD_XENO_HOSTILE = new /datum/mob_hud/xeno_hostile(),
 	MOB_HUD_FACTION_MARINE = new /datum/mob_hud/faction(),
 	MOB_HUD_FACTION_OBSERVER = new /datum/mob_hud/faction/observer(),
@@ -174,6 +188,21 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 /datum/mob_hud/xeno
 	hud_icons = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_HUD_XENO, XENO_STATUS_HUD, XENO_BANISHED_HUD, HUNTER_HUD)
 
+/datum/mob_hud/xeno/xeno_hive_normal
+/datum/mob_hud/xeno/xeno_hive_corrupted
+/datum/mob_hud/xeno/xeno_hive_alpha
+/datum/mob_hud/xeno/xeno_hive_bravo
+/datum/mob_hud/xeno/xeno_hive_charlie
+/datum/mob_hud/xeno/xeno_hive_delta
+/datum/mob_hud/xeno/xeno_hive_feral
+/datum/mob_hud/xeno/xeno_hive_tamed
+/datum/mob_hud/xeno/xeno_hive_mutated
+/datum/mob_hud/xeno/xeno_hive_forsaken
+/datum/mob_hud/xeno/xeno_hive_yautja
+/datum/mob_hud/xeno/xeno_hive_hunted
+/datum/mob_hud/xeno/xeno_hive_renegade
+/datum/mob_hud/xeno/xeno_hive_tutorial
+
 /datum/mob_hud/xeno_hostile
 	hud_icons = list(XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_FREEZE)
 
@@ -251,7 +280,8 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 /mob/proc/add_to_all_mob_huds()
 	return
 
-/mob/hologram/queen/add_to_all_mob_huds()
+/mob/hologram/queen/add_to_all_mob_huds(hivenumber)
+	handle_xeno_hive_hud(hivenumber)
 	var/datum/mob_hud/hud = GLOB.huds[MOB_HUD_XENO_STATUS]
 	hud.add_to_hud(src)
 
@@ -267,17 +297,19 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 		hud.add_to_hud(src)
 	hud_set_new_player()
 
-/mob/living/carbon/xenomorph/add_to_all_mob_huds()
+/mob/living/carbon/xenomorph/add_to_all_mob_huds(hivenumber)
+	handle_xeno_hive_hud(hivenumber)
 	var/datum/mob_hud/hud = GLOB.huds[MOB_HUD_XENO_STATUS]
 	hud.add_to_hud(src)
-
 
 /mob/proc/remove_from_all_mob_huds()
 	return
 
 /mob/hologram/queen/remove_from_all_mob_huds()
-	var/datum/mob_hud/hud = GLOB.huds[MOB_HUD_XENO_STATUS]
-	hud.remove_from_hud(src)
+	for(var/datum/mob_hud/hud in GLOB.huds)
+		if(istype(hud, /datum/mob_hud/xeno))
+			continue
+		hud.remove_from_hud(src)
 
 /mob/living/carbon/human/remove_from_all_mob_huds()
 	for(var/datum/mob_hud/hud in GLOB.huds)
@@ -290,25 +322,61 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 		if(istype(hud, /datum/mob_hud/xeno))
 			hud.remove_from_hud(src)
 			hud.remove_hud_from(src, src)
-		else if (istype(hud, /datum/mob_hud/xeno_infection))
+		else if(istype(hud, /datum/mob_hud/xeno_infection))
 			hud.remove_hud_from(src, src)
-	if (xeno_hostile_hud)
+	if(xeno_hostile_hud)
 		xeno_hostile_hud = FALSE
 		var/datum/mob_hud/hostile_hud = GLOB.huds[MOB_HUD_XENO_HOSTILE]
 		hostile_hud.remove_hud_from(src, src)
 
-	if (execute_hud)
+	if(execute_hud)
 		execute_hud = FALSE
 		var/datum/mob_hud/execute = GLOB.huds[MOB_HUD_EXECUTE]
 		execute.remove_hud_from(src, src)
-
-
 
 /mob/proc/refresh_huds(mob/source_mob)
 	var/mob/M = source_mob ? source_mob : src
 	for(var/datum/mob_hud/hud in GLOB.huds)
 		if(M in hud.hudusers)
 			hud.refresh_hud(src, hud.hudusers[M])
+
+
+/mob/proc/handle_xeno_hive_hud(hive_choice, choose_verb = FALSE)
+	var/datum/mob_hud/hud
+	switch(hive_choice)
+		if(XENO_HIVE_NORMAL)
+			hud = GLOB.huds[MOB_HUD_XENO_HIVE_NORMAL]
+		if(XENO_HIVE_CORRUPTED)
+			hud = GLOB.huds[MOB_HUD_XENO_HIVE_CORRUPTED]
+		if(XENO_HIVE_ALPHA)
+			hud = GLOB.huds[MOB_HUD_XENO_HIVE_ALPHA]
+		if(XENO_HIVE_BRAVO)
+			hud = GLOB.huds[MOB_HUD_XENO_HIVE_BRAVO]
+		if(XENO_HIVE_CHARLIE)
+			hud = GLOB.huds[MOB_HUD_XENO_HIVE_CHARLIE]
+		if(XENO_HIVE_DELTA)
+			hud = GLOB.huds[MOB_HUD_XENO_HIVE_DELTA]
+		if(XENO_HIVE_FERAL)
+			hud = GLOB.huds[MOB_HUD_XENO_HIVE_FERAL]
+		if(XENO_HIVE_TAMED)
+			hud = GLOB.huds[MOB_HUD_XENO_HIVE_TAMED]
+		if(XENO_HIVE_MUTATED)
+			hud = GLOB.huds[MOB_HUD_XENO_HIVE_MUTATED]
+		if(XENO_HIVE_FORSAKEN)
+			hud = GLOB.huds[MOB_HUD_XENO_HIVE_FORSAKEN]
+		if(XENO_HIVE_YAUTJA)
+			hud = GLOB.huds[MOB_HUD_XENO_HIVE_YAUTJA]
+		if(XENO_HIVE_HUNTED)
+			hud = GLOB.huds[MOB_HUD_XENO_HIVE_HUNTED]
+		if(XENO_HIVE_RENEGADE)
+			hud = GLOB.huds[MOB_HUD_XENO_HIVE_RENEGADE]
+		if(XENO_HIVE_TUTORIAL)
+			hud = GLOB.huds[MOB_HUD_XENO_HIVE_TUTORIAL]
+	if(!hive_choice)
+		CRASH("The hive_choice '[hive_choice]' is not defined. Please define a new hive HUD.")
+	hud.add_hud_to(src, src)
+	if(!choose_verb)
+		hud.add_to_hud(src)
 
 //Medical HUDs
 

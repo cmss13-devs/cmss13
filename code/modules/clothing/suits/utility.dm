@@ -14,6 +14,7 @@
 	desc = "A suit that protects against fire and heat."
 	icon_state = "fire"
 	item_state = "fire_suit"
+	blood_overlay_type = "suit"
 	icon = 'icons/obj/items/clothing/suits/hazard.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/hazard.dmi',
@@ -51,10 +52,10 @@
 	UnregisterSignal(user, COMSIG_LIVING_FLAMER_CROSSED)
 	..()
 
-/obj/item/clothing/suit/fire/proc/flamer_fire_crossed_callback(mob/living/L, datum/reagent/R)
+/obj/item/clothing/suit/fire/proc/flamer_fire_crossed_callback(mob/living/target, datum/reagent/fire_reagent)
 	SIGNAL_HANDLER
 
-	if(R.fire_penetrating)
+	if(fire_reagent?.fire_penetrating)
 		return
 
 	return COMPONENT_NO_IGNITE
@@ -70,6 +71,7 @@
 	name = "bomb hood"
 	desc = "Use in case of bomb."
 	icon_state = "bombsuit"
+	blood_overlay_type = "helmet"
 	icon = 'icons/obj/items/clothing/hats/hazard.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hazard.dmi'
@@ -93,6 +95,7 @@
 	desc = "A suit designed for safety when handling explosives."
 	icon_state = "bombsuit"
 	item_state = "bombsuit"
+	blood_overlay_type = "suit"
 	icon = 'icons/obj/items/clothing/suits/hazard.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/hazard.dmi',
@@ -118,11 +121,13 @@
 /obj/item/clothing/head/bomb_hood/security
 	icon_state = "bombsuitsec"
 	item_state = "bombsuitsec"
+	blood_overlay_type = "helmet"
 	flags_armor_protection = BODY_FLAG_HEAD
 
 /obj/item/clothing/suit/bomb_suit/security
 	icon_state = "bombsuitsec"
 	item_state = "bombsuitsec"
+	blood_overlay_type = "suit"
 	allowed = list(
 		/obj/item/weapon/gun,
 		/obj/item/weapon/baton,
@@ -144,6 +149,7 @@
 	name = "Radiation Hood"
 	desc = "A hood with radiation protective properties. Label: Made with lead, do not eat insulation."
 	icon_state = "rad"
+	blood_overlay_type = "helmet"
 	icon = 'icons/obj/items/clothing/hats/hazard.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hazard.dmi'
@@ -166,6 +172,7 @@
 	desc = "A suit that protects against radiation. Label: Made with lead, do not eat insulation."
 	icon_state = "rad"
 	item_state = "rad_suit"
+	blood_overlay_type = "suit"
 	icon = 'icons/obj/items/clothing/suits/hazard.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/hazard.dmi',

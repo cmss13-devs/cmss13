@@ -775,7 +775,7 @@
 	assignment = "Corporate Liaison"
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	paygrades = list(PAY_SHORT_WYC2 = JOB_PLAYTIME_TIER_0, PAY_SHORT_WYC3 = JOB_PLAYTIME_TIER_2, PAY_SHORT_WYC4 = JOB_PLAYTIME_TIER_3, PAY_SHORT_WYC5 = JOB_PLAYTIME_TIER_4, PAY_SHORT_WYC6 = JOB_PLAYTIME_TIER_5, PAY_SHORT_WYC7 = JOB_PLAYTIME_TIER_6, PAY_SHORT_WYC8 = JOB_PLAYTIME_TIER_7, PAY_SHORT_WYC9 = JOB_PLAYTIME_TIER_8)
+	paygrades = list(PAY_SHORT_WYC2 = JOB_PLAYTIME_TIER_0, PAY_SHORT_WYC3 = JOB_PLAYTIME_TIER_2, PAY_SHORT_WYC4 = JOB_PLAYTIME_TIER_3, PAY_SHORT_WYC5 = JOB_PLAYTIME_TIER_4)
 	faction_group = FACTION_LIST_SURVIVOR_WY
 	idtype = /obj/item/card/id/silver/clearance_badge/cl
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_COMMAND,ACCESS_WY_GENERAL,ACCESS_WY_COLONIAL,ACCESS_WY_EXEC,)
@@ -924,14 +924,17 @@
 
 /datum/equipment_preset/survivor/hybrisa/wey_po
 	name = "Survivor - Hybrisa - Weyland-Yutani - Commercial Pilot"
+	job_title = JOB_WY_PILOT
 	assignment = "Weyland-Yutani - Commercial Pilot"
 	skills = /datum/skills/civilian/survivor/wy_pilot
 	paygrades = list(PAY_SHORT_WYPO2 = JOB_PLAYTIME_TIER_0)
 	faction_group = FACTION_LIST_SURVIVOR_WY
+	faction = FACTION_WY
 	idtype = /obj/item/card/id/gold
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_LOGISTICS,ACCESS_WY_FLIGHT,ACCESS_CIVILIAN_COMMAND,ACCESS_WY_GENERAL,ACCESS_WY_COLONIAL,ACCESS_WY_EXEC)
-
+	minimap_icon = "wy_pilot"
+	minimap_background = "background_goon"
 	survivor_variant = CORPORATE_SURVIVOR
 
 /datum/equipment_preset/survivor/hybrisa/wey_po/load_gear(mob/living/carbon/human/new_human)

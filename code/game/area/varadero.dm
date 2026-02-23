@@ -50,7 +50,7 @@
 	icon_state = "NV_no_CAS"
 
 /area/varadero/interior/comms1
-	name = "New Varadero - Cargo Generator"
+	name = "New Varadero - Tertiary Communications"
 	linked_lz = DROPSHIP_LZ1
 	icon_state = "comms1"
 	minimap_color = MINIMAP_AREA_ENGI_CAVE
@@ -274,6 +274,10 @@
 	icon_state = "offices0"
 	linked_lz = DROPSHIP_LZ1
 	minimap_color = MINIMAP_AREA_COMMAND_CAVE
+
+/area/varadero/interior/library/restaraunt
+	name = "New Varadero - Restaurant"
+	icon_state = "pizza"
 
 /area/varadero/interior/court
 	name = "New Varadero - Basketball Court"

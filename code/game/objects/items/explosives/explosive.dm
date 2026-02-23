@@ -169,7 +169,7 @@
 		else
 			if(held_object.reagents.total_volume)
 				if(held_object.reagents.maximum_volume + current_container_volume > max_container_volume)
-					to_chat(user, SPAN_DANGER("\the [held_object] is too large for [name]."))
+					to_chat(user, SPAN_DANGER("\The [held_object] is too large for [name]."))
 					return
 				if(user.temp_drop_inv_item(held_object))
 					to_chat(user, SPAN_NOTICE("You add \the [held_object] to the assembly."))
@@ -179,7 +179,7 @@
 					assembly_stage = ASSEMBLY_UNLOCKED
 					desc = initial(desc) + "\n Contains [length(containers)] containers, [length(cartridges)] cartridges[detonator?" and detonator":""]"
 			else
-				to_chat(user, SPAN_DANGER("\the [held_object] is empty."))
+				to_chat(user, SPAN_DANGER("\The [held_object] is empty."))
 	else if (istype(held_object, /obj/item/reagent_container/cartridge) && (!assembly_stage || assembly_stage == ASSEMBLY_UNLOCKED))
 		var/obj/item/reagent_container/cartridge/cartridge = held_object
 		if (!cartridge.has_required_reagents)

@@ -9,12 +9,11 @@
 	if(istype(squad))
 		var/squad_clr = current_human.assigned_squad.equipment_color
 		var/marine_rk
-		var/obj/item/card/id/I = current_human.get_idcard()
-		var/_role
-		if(current_human.job)
-			_role = current_human.job
-		else if(I)
-			_role = I.rank
+		var/_role = current_human.job
+		if(!_role)
+			var/obj/item/card/id/id_card = current_human.get_idcard()
+			if(id_card)
+				_role = id_card.rank
 		switch(GET_DEFAULT_ROLE(_role))
 			if(JOB_SQUAD_ENGI)
 				marine_rk = "engi"
@@ -55,6 +54,23 @@
 				marine_rk = "soccmd"
 			if(JOB_FORECON_SUPPORT)
 				marine_rk = "tech"
+			// US Army
+			if(JOB_ARMY_TROOPER)
+				marine_rk = "trpr"
+			if(JOB_ARMY_ENGI)
+				marine_rk = "cet"
+			if(JOB_ARMY_MEDIC)
+				marine_rk = "cmt"
+			if(JOB_ARMY_MARKSMAN)
+				marine_rk = "snpr"
+			if(JOB_ARMY_SMARTGUNNER)
+				marine_rk = "mmg"
+			if(JOB_ARMY_SNCO)
+				marine_rk = "sl_army"
+			if(JOB_ARMY_CO)
+				marine_rk = "co_army"
+			if(JOB_ARMY_SYN)
+				marine_rk = "syn_army"
 		if(squad.squad_leader == current_human)
 			switch(squad.squad_type)
 				if("Squad")
@@ -88,12 +104,11 @@
 	else
 		var/marine_rk
 		var/border_rk
-		var/obj/item/card/id/ID = current_human.get_idcard()
-		var/_role
-		if(current_human.mind)
-			_role = current_human.job
-		else if(ID)
-			_role = ID.rank
+		var/_role = current_human.job
+		if(!_role)
+			var/obj/item/card/id/id_card = current_human.get_idcard()
+			if(id_card)
+				_role = id_card.rank
 		switch(_role)
 			if(JOB_XO)
 				marine_rk = "xo"
@@ -119,6 +134,23 @@
 				marine_rk = "leader"
 			if(JOB_FORECON_SUPPORT)
 				marine_rk = "tech"
+			// US Army
+			if(JOB_ARMY_TROOPER)
+				marine_rk = "trpr"
+			if(JOB_ARMY_MEDIC)
+				marine_rk = "cmt"
+			if(JOB_ARMY_ENGI)
+				marine_rk = "cet"
+			if(JOB_ARMY_MARKSMAN)
+				marine_rk = "snpr"
+			if(JOB_ARMY_SMARTGUNNER)
+				marine_rk = "mmg"
+			if(JOB_ARMY_SNCO)
+				marine_rk = "sl_army"
+			if(JOB_ARMY_CO)
+				marine_rk = "co_army"
+			if(JOB_ARMY_SYN)
+				marine_rk = "syn_army"
 			if(JOB_INTEL)
 				marine_rk = "io"
 			if(JOB_CAS_PILOT)

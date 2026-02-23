@@ -1,0 +1,5 @@
+author: "MistChristmas"
+delete-after: True
+changes:
+  - code_imp: "Clean up deprecated usage. Simplify copying to clipboard."
+  - ui: "Makes the copy button text slightly bigger. And scales to width."

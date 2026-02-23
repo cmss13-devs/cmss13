@@ -1,0 +1,4 @@
+author: "npukoJl"
+delete-after: True
+changes:
+  - bugfix: "Yautja gauntlet help combo now deals damage to humanoids."

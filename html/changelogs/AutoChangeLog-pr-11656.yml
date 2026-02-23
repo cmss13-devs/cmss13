@@ -1,4 +1,0 @@
-author: "Ediblebomb"
-delete-after: True
-changes:
-  - qol: "Added a preference to opt-out of being spectated by the CMTV camera ghost."

@@ -205,7 +205,6 @@
 	faction = FACTION_IASF
 	faction_group = FACTION_LIST_SURVIVOR_IASF
 	origin_override = ORIGIN_TWE
-	skills = /datum/skills/colonial_synthetic
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/dogtag
 	role_comm_title = "24/PARA Syn"

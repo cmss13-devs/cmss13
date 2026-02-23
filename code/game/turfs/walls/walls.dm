@@ -60,7 +60,6 @@
 /turf/closed/wall/Initialize(mapload, ...)
 	. = ..()
 	is_weedable = initial(is_weedable) //so we can spawn weeds on the wall
-
 	// Defer updating based on neighbors while we're still loading map
 	if(mapload && . != INITIALIZE_HINT_QDEL)
 		return INITIALIZE_HINT_LATELOAD
@@ -68,7 +67,6 @@
 	update_connections(TRUE)
 	if(. != INITIALIZE_HINT_LATELOAD)
 		update_icon()
-
 
 /turf/closed/wall/LateInitialize()
 	. = ..()

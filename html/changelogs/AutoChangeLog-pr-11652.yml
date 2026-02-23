@@ -1,0 +1,5 @@
+author: "cuberound"
+delete-after: True
+changes:
+  - bugfix: "prevents climbing on slippery roof even when it is more then one level above you"
+  - bugfix: "prevents paradroping and pouncing on slippery roofs"

@@ -575,21 +575,16 @@
 	var/datum/reagent
 	var/smoke_radius = 2
 	var/flame_radius = 2
-	if(mine_level == 1)
-		playsound(loc, 'sound/weapons/gun_sharp_explode.ogg', 100)
-	else if(mine_level == 2)
+	if(mine_level == 2)
 		is_smoke = FALSE
 		reagent = /datum/reagent/napalm/green
-		playsound(loc, 'sound/weapons/gun_flamethrower3.ogg', 45)
 	else if(mine_level == 3)
 		is_smoke = FALSE
 		reagent = /datum/reagent/napalm/ut
-		playsound(loc, 'sound/weapons/gun_flamethrower3.ogg', 45)
 	else
 		is_smoke = FALSE
 		reagent = /datum/reagent/napalm/ut
-		flame_radius = mine_mode == SHARP_DIRECTED_MODE ? 0 : 3
-		playsound(loc, 'sound/weapons/gun_flamethrower3.ogg', 45)
+		flame_radius = 3
 	switch(mine_mode)
 		if (SHARP_DIRECTED_MODE)
 			smoke_radius = 0
@@ -599,6 +594,12 @@
 				if (human.get_target_lock(iff_signal))
 					disarm()
 					return
+
+	if (mine_level > 1)
+		playsound(loc, 'sound/weapons/gun_flamethrower3.ogg', 45)
+	else
+		playsound(loc, 'sound/weapons/gun_sharp_explode.ogg', 100)
+
 	if (is_smoke)
 		var/datum/effect_system/smoke_spread/phosphorus/smoke = new /datum/effect_system/smoke_spread/phosphorus/sharp
 		smoke.set_up(smoke_radius, 0, loc)

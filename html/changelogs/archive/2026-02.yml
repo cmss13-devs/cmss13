@@ -256,3 +256,121 @@
   - code_imp: removed redundant check for diagonal movement since we dont have that
   - bugfix: drivable mobs (there are none right now) can be driven as intended
   - bugfix: riding component is properly removed when the last rider unbuckles
+2026-02-23:
+  Bibby0110:
+  - rscadd: Adds onscreen text for helmet cameras.
+  - rscadd: Adds some screen-like filters to helmet cameras, for extra immersion.
+  EldritchSack (sprites), ori (code):
+  - rscadd: added new white and black banded walkmans
+  - imageadd: added new icons for walkmans, animations for pressing the buttons, and
+      white/black striped overlays
+  JackieEstegado:
+  - bugfix: Fixed the pneumatic delivery chute not flushing sometimes.
+  MistChristmas:
+  - balance: M10 Holster Rig capacity reduced to M10 + 3 magazines.
+  - balance: Buff M10 Compensator damage up a tier to 10%. Buff Micro Laser sight
+      one-handed scatter by 3 Tiers
+  - balance: Reduced M10 Attachment(M10 Compensator/Micro Laser/M10 Solid/Folding
+      Stock) & Extended Mag availability.
+  - balance: M10 Custom Kit comes with 4 + 1 Extended Mags.
+  - balance: Removed AP/AP Extended Mag availability.
+  - balance: Removed collapse/extending delay for M10 Folding stock
+  - balance: Reduced ammo speed to in-between M39 and M39 AP
+  - balance: Increased one handed and wielded recoil. Increased Full Auto scatter
+      and build up.
+  - bugfix: M10 uses it's unwielded stats whilst unwielded. Gun attachments that were
+      supposed to changed the hitsound and attack_verb, now actually do that.
+  - bugfix: Holding Right click no longer stops the left clicking from going through
+      and vice versa.
+  - bugfix: Shocked autolathes let you open their UI so you can fix them
+  - bugfix: View Intel Objectives bluescreening, crematoriums now cremate the people
+      in the bodybag not just the bodybag.
+  - code_imp: Clean up deprecated usage. Simplify copying to clipboard.
+  - ui: Makes the copy button text slightly bigger. And scales to width.
+  - bugfix: Moving a partially fixed broken vendor to a powered area no longer makes
+      it look fully repaired. Nanomeds can no longer be tipped over. Rec-Vend doesn't
+      go invisible when unpowered or broken. Vendors don't magically fix themselves
+      when you upright them.
+  Nemesis1337:
+  - bugfix: added missing sprite rotations for TWE ERT shuttle set
+  - code_imp: added new dropship and shuttle tiles for easier mapping
+  - imageadd: added additional sprites for UPP, WY and TWE ERT shuttle sets
+  - imagetweak: fixed a lot of inconsistencies in dropship sprites
+  - maptweak: replaced turf on stationary shuttles to allow surgeries in them
+  - maptweak: replaced misplaced tiles on dropships
+  - maptweak: made majority of the shuttle windows transparent
+  Nihisohel:
+  - balance: Huggers get activated sooner now, from a minimum of 5 seconds to a max
+      of 15 seconds, to 3.5 seconds and 7 seconds. They still have an average lifespan
+      of 30 seconds after activation, though
+  - balance: Huggers can only hug the person next to them rather from 3 tiles away
+  - balance: Huggers now have 5 tries to jump at someone, from only having 2 tries
+  - balance: All xenos now have a cooldown on dropping or throwing facehuggers
+  - balance: Carriers can now throw their stored facehuggers farther with their throw
+      facehugger ability, from a range of 3 tiles to 6 tiles, nearly screenwide
+  - balance: Carrier facehugger throwing is much faster, from 2 seconds to 5 deciseconds,
+      much faster than the standard xeno cooldown
+  - balance: Carrier facehugger retrieval from their storage now has a 5 decisecond
+      cooldown, matching their throw cooldown
+  - code_imp: Facehugger throw range is no longer hardcoded to 1, but its range switches
+      to 1 if the mob is a xenomorph. You can now throw dead facehuggers at your friends,
+      rather than it landing pathetically next to you
+  - code_imp: Kills some single letter variables in facehugger and carrier.dm
+  - refactor: Refactors carrier throw facehugger code a bit slightly
+  - refactor: Some minor reorganization of files for cleanliness
+  - rscdel: Removes some defunct and unused variables
+  Puckaboo2:
+  - spellcheck: Some 'The' that are not capitalized at the beginning of sentences
+      are now capitalized.
+  - spellcheck: More spellchecks, too.
+  Red-byte3D:
+  - balance: Scout requistion ammo now has +1 per (incin and impact), same change
+      on their starting kit.
+  Steelpoint:
+  - maptweak: For New Varadero, moves the northern LZ1 comms spawn southward near
+      the main access hallways, adjacent to the chapel. The rational for this is to
+      make it equally as challenging to defend this comm spawn as every other possible
+      comm spawn location, as the far north comms spawn currently is easier to defend
+      in comparison.
+  Thereisabear:
+  - bugfix: fixed the Armour ID locks constantly returning the wrong value causing
+      invalid IDs to unlock the lock.
+  Unknownity:
+  - rscadd: Thralls now get the Yautja Headset from their vendor.
+  - rscadd: Blooded Thralls now get their own blooded clan bracers with wristblades.
+  - rscadd: Thralls can now mark prey to hunt and unmark them.
+  - rscadd: Yautja are able to butcher fellow Yautja now.
+  - rscadd: Added a new Thwei subtype called Dathwei, a human compatible version of
+      the chemical.
+  - balance: Thralls' health has been buffed to 150 and they are now immune to shrapnel,
+      no longer get slowed while dragging people and can flay people with their ceremonial
+      dagger and use the yautja rope.
+  - balance: Thralls are now able to resist from fire and acid as good as Yautja.
+  - bugfix: Thrall greaves can store ceremonial daggers now and now spawn with them.
+  - bugfix: Blooded Thralls are now able to examine and see names of fellow Yautja.
+  - bugfix: Youngbloods now get the proper version of the lantern.
+  - bugfix: Thralls can now properly use the Combistick and War Axe.
+  - bugfix: The simple relay beacon has been fixed.
+  - bugfix: Thralls can now go in crit but won't die while being dragged if in crit.
+  Venuska1117, Harry:
+  - balance: Xenomorphs now have their own separate HUD icons per hive, if xenomorph
+      do not belong to same hive, they cannot see other hive HUD.
+  - balance: Invisible xenos now have their HUD icons visible.
+  cuberound:
+  - bugfix: prevents climbing on slippery roof even when it is more then one level
+      above you
+  - bugfix: prevents paradroping and pouncing on slippery roofs
+  - bugfix: marine tacmap gets uplaoded correctly for marines, working multiz tacmap
+  - balance: chance for empty sandbags from req
+  - balance: sandbag create price 20 -> 15
+  - balance: sandbag with showels price 30 -> 20
+  - balance: metal 20 -> 25
+  - balance: plasteel 30 -> 33
+  - bugfix: DS sprites rotate correctly with DS direction change (mainly for ert)
+  dawsonkeyes:
+  - rscadd: New elite human hunting grounds presets
+  - rscadd: Longer cooldowns for hunting reserve depending on the chosen call
+  npukoJl:
+  - bugfix: Yautja gauntlet help combo now deals damage to humanoids.
+  riot:
+  - rscadd: Knockoff Bimax sunglasses can now be bought in the loadout as non-civilians.

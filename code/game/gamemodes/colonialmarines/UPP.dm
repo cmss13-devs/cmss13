@@ -134,7 +134,7 @@ GLOBAL_LIST_EMPTY(upp_officers)
 		//	if(GLOB.round_statistics && GLOB.round_statistics.current_map)
 		//		GLOB.round_statistics.current_map.total_xeno_victories++
 		//		GLOB.round_statistics.current_map.total_xeno_majors++
-		if(human_major)
+		if(MODE_FACTION_CLASH_UPP_MAJOR)
 			musical_track = pick('sound/theme/winning_triumph1.ogg','sound/theme/winning_triumph2.ogg','sound/theme/winning_triumph3.ogg')
 			end_icon = "upp_major"
 		//	if(GLOB.round_statistics && GLOB.round_statistics.current_map)
@@ -167,7 +167,7 @@ GLOBAL_LIST_EMPTY(upp_officers)
 				musical_track = pick('sound/theme/neutral_melancholy1.ogg')
 		//	if(GLOB.round_statistics && GLOB.round_statistics.current_map)
 		//		GLOB.round_statistics.current_map.total_xeno_victories++
-		if(human_minor)
+		if(MODE_FACTION_CLASH_UPP_MAJOR)
 			musical_track = pick('sound/theme/neutral_hopeful1.ogg','sound/theme/neutral_hopeful2.ogg')
 			end_icon = "upp_minor"
 			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
@@ -213,11 +213,11 @@ GLOBAL_LIST_EMPTY(upp_officers)
 	switch(round_finished)
 		if(MODE_INFESTATION_X_MAJOR)
 			return "Round has ended. Xeno Major Victory."
-		if(human_major)
+		if(MODE_FACTION_CLASH_UPP_MAJOR)
 			return "Round has ended. UPP Major Victory."
 		if(MODE_INFESTATION_X_MINOR)
 			return "Round has ended. Xeno Minor Victory."
-		if(human_minor)
+		if(MODE_FACTION_CLASH_UPP_MINOR)
 			return "Round has ended. UPP Minor Victory."
 		if(MODE_INFESTATION_DRAW_DEATH)
 			return "Round has ended. Draw."

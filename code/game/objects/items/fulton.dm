@@ -140,13 +140,28 @@ GLOBAL_LIST_EMPTY(active_fulton_systems)
 	if(!attached_atom)
 		return
 	var/image/I = image(icon, icon_state)
-	if(isxeno(attached_atom))
-		var/mob/living/carbon/xenomorph/X = attached_atom
-		I.pixel_x = (X.pixel_x * -1)
-	attached_atom.overlays += I
-	sleep(30)
-	original_location = get_turf(attached_atom)
+	var/image/cables = image('icons/obj/structures/droppod_32x64.dmi', attached_atom, "chute_cables_static")
+	var/image/chute = image('icons/obj/structures/droppod_64x64.dmi', attached_atom, "chute_static")
+	var/corr_x = (attached_atom.pixel_x * -1)//This fixes a pixel offset bug with big sprites
+	I.pixel_x = corr_x
+	cables.pixel_x = corr_x
+	chute.pixel_x = corr_x - 16
+	chute.pixel_y = 16
+	icon_state = ""
+	attached_atom.overlays += list(cables, chute, I)
+	var/originalLayer = attached_atom.layer
+	var/originalAlpha = attached_atom.alpha
+	attached_atom.layer = 100 //You want this above everything else because it flies up into the sky
+	animate(attached_atom, pixel_y = 10, time = 30, easing = BOUNCE_EASING)
 	playsound(loc, 'sound/items/fulton.ogg', 50, 1)
+	sleep(30)
+	animate(attached_atom, pixel_y = 500, time = 50, alpha = 0, easing = CIRCULAR_EASING|EASE_OUT)
+	playsound(loc, 'sound/items/fulton_takeoff.ogg', 50, 1)
+	sleep(50)
+	original_location = get_turf(attached_atom)
+
+
+
 	reservation = SSmapping.request_turf_block_reservation(3, 3, 1, turf_type_override = /turf/open/space)
 	var/turf/bottom_left_turf = reservation.bottom_left_turfs[1]
 	var/turf/top_right_turf = reservation.top_right_turfs[1]
@@ -157,14 +172,17 @@ GLOBAL_LIST_EMPTY(active_fulton_systems)
 		visible_message(SPAN_WARNING("[src] begins beeping like crazy. Something is wrong!"))
 		return
 
-	icon_state = ""
-
 	attached_atom.anchored = TRUE
 	attached_atom.forceMove(space_tile)
+	attached_atom.pixel_y = 0
 
 	forceMove(attached_atom)
 	GLOB.deployed_fultons += src
 	attached_atom.overlays -= I
+	attached_atom.overlays -= cables
+	attached_atom.overlays -= chute
+	attached_atom.layer = originalLayer
+	attached_atom.alpha = originalAlpha
 
 	// Notify all fulton systems about the new deployment
 	for(var/obj/structure/dropship_equipment/fulton_system/system in GLOB.active_fulton_systems)

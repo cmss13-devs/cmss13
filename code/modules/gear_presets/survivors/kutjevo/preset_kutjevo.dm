@@ -230,9 +230,17 @@
 
 /datum/equipment_preset/synth/survivor/kutjevo/corporate
 	name = "Survivor - Kutjevo - Synthetic - Corporate Assistant"
-	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	job_title = JOB_WY_SEC_SYNTH
+	assignment = "W-Y Corporate Assistant Synthetic"
 	idtype = /obj/item/card/id/silver/cl
-	role_comm_title = "WY Syn"
+	role_comm_title = "WY Asst. Syn"
+	survivor_variant = CORPORATE_SURVIVOR
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	faction = FACTION_WY
+	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
+	minimap_icon = "wy_syn"
+	minimap_background = "background_goon"
+	origin_override = ORIGIN_WY
 
 	survivor_variant = CORPORATE_SURVIVOR
 

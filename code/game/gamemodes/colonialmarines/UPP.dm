@@ -123,7 +123,7 @@ GLOBAL_LIST_EMPTY(upp_officers)
 /**
  * Announces the end of the game with all relevant information stated
  */
-/datum/game_mode/colonialmarines/declare_completion()
+/datum/game_mode/colonialmarines/upp/declare_completion()
 	announce_ending()
 	var/musical_track
 	var/end_icon = "draw"
@@ -209,7 +209,7 @@ GLOBAL_LIST_EMPTY(upp_officers)
 	return 1
 
 // for the toolbox
-/datum/game_mode/colonialmarines/end_round_message()
+/datum/game_mode/colonialmarines/upp/end_round_message()
 	switch(round_finished)
 		if(MODE_INFESTATION_X_MAJOR)
 			return "Round has ended. Xeno Major Victory."

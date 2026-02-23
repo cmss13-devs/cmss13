@@ -1709,115 +1709,110 @@
 "agt" = (
 /turf/closed/wall/kutjevo/rock,
 /area/kutjevo/exterior/Northwest_Colony)
-"agv" = (
+"agu" = (
 /turf/closed/wall/kutjevo/colony,
 /area/kutjevo/interior/oob)
+"agv" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 5
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/scrubland)
+"agw" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/exterior/Northwest_Colony)
+"agx" = (
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/exterior/Northwest_Colony)
 "agy" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
-	dir = 1
+	dir = 6
 	},
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/scrubland)
 "agz" = (
-/obj/structure/flora/bush/desert{
-	icon_state = "tree_2";
-	pixel_y = 14
-	},
-/turf/open/auto_turf/sand/layer1,
-/area/kutjevo/exterior/scrubland)
-"agA" = (
-/obj/item/stack/sheet/metal,
-/turf/open/floor/kutjevo/tan,
-/area/kutjevo/exterior/Northwest_Colony)
-"agB" = (
-/turf/open/floor/kutjevo/tan,
-/area/kutjevo/exterior/Northwest_Colony)
-"agD" = (
-/obj/structure/flora/grass/tallgrass/desert/corner,
-/turf/open/auto_turf/sand/layer1,
-/area/kutjevo/exterior/scrubland)
-"agF" = (
 /obj/structure/girder/displaced,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/exterior/Northwest_Colony)
-"agG" = (
-/turf/open/floor/kutjevo/colors/orange/edge,
-/area/kutjevo/interior/foremans_office)
-"agH" = (
+"agA" = (
 /obj/effect/decal/cleanable/blood/gibs/xeno,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/exterior/Northwest_Colony)
-"agI" = (
+"agB" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/exterior/Northwest_Colony)
-"agJ" = (
+"agC" = (
 /obj/structure/barricade/metal{
 	dir = 4
 	},
 /obj/item/stack/sheet/metal,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/exterior/Northwest_Colony)
-"agK" = (
+"agD" = (
 /obj/structure/window_frame/kutjevo,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/exterior/Northwest_Colony)
-"agL" = (
+"agE" = (
 /obj/structure/barricade/wooden{
 	dir = 4
 	},
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/exterior/Northwest_Colony)
-"agM" = (
+"agF" = (
 /obj/structure/flora/bush/desert{
 	icon_state = "tree_4"
 	},
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/scrubland)
-"agN" = (
+"agG" = (
+/turf/open/floor/kutjevo/colors/orange/edge,
+/area/kutjevo/interior/foremans_office)
+"agH" = (
 /obj/item/stack/sheet/wood,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/exterior/Northwest_Colony)
-"agO" = (
+"agI" = (
 /obj/effect/decal/cleanable/blood/gibs/xeno,
 /turf/open/floor/kutjevo/grey,
 /area/kutjevo/exterior/Northwest_Colony)
-"agP" = (
+"agJ" = (
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/exterior/Northwest_Colony)
-"agQ" = (
+"agK" = (
 /turf/open/floor/kutjevo/tan/grey_inner_edge/east,
 /area/kutjevo/exterior/Northwest_Colony)
-"agR" = (
+"agL" = (
 /obj/item/tool/crowbar,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/exterior/Northwest_Colony)
-"agS" = (
+"agM" = (
 /obj/structure/barricade/metal/wired{
 	dir = 4
 	},
 /turf/open/floor/kutjevo/tan/grey_inner_edge/west,
 /area/kutjevo/exterior/Northwest_Colony)
-"agT" = (
+"agN" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/kutjevo/tan/grey_inner_edge,
 /area/kutjevo/exterior/Northwest_Colony)
-"agU" = (
+"agO" = (
 /obj/structure/barricade/wooden{
 	dir = 4
 	},
 /turf/open/floor/kutjevo/tan/grey_inner_edge/north,
 /area/kutjevo/exterior/Northwest_Colony)
-"agV" = (
+"agP" = (
 /obj/structure/window/framed/kutjevo,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/exterior/Northwest_Colony)
-"agW" = (
+"agQ" = (
 /obj/structure/surface/table/almayer,
 /obj/item/paper/janitor,
 /turf/open/floor/kutjevo/grey,
 /area/kutjevo/exterior/Northwest_Colony)
-"agX" = (
+"agR" = (
 /obj/item/stack/sheet/metal,
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/exterior/Northwest_Colony)
@@ -1881,12 +1876,6 @@
 /obj/structure/platform_decoration/metal/kutjevo,
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/interior/colony_central)
-"alL" = (
-/obj/structure/flora/grass/tallgrass/desert/corner{
-	dir = 10
-	},
-/turf/open/auto_turf/sand/layer1,
-/area/kutjevo/exterior/scrubland)
 "amb" = (
 /obj/structure/machinery/cm_vending/sorted/medical/no_access,
 /turf/open/floor/kutjevo/colors/cyan,
@@ -6811,6 +6800,12 @@
 /obj/structure/platform/metal/kutjevo/west,
 /turf/open/gm/river/desert/deep/toxic,
 /area/kutjevo/interior/oob)
+"hSo" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 10
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/scrubland)
 "hSA" = (
 /turf/closed/shuttle{
 	dir = 1;
@@ -10695,6 +10690,13 @@
 "oeb" = (
 /turf/open/floor/kutjevo/multi_tiles/north,
 /area/kutjevo/exterior/runoff_bridge)
+"oex" = (
+/obj/structure/flora/bush/desert{
+	icon_state = "tree_2";
+	pixel_y = 14
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/scrubland)
 "oeE" = (
 /turf/open/mars_cave/mars_cave_11,
 /area/kutjevo/exterior/scrubland)
@@ -14989,7 +14991,7 @@
 /area/kutjevo/interior/oob)
 "uRA" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
-	dir = 5
+	dir = 1
 	},
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/scrubland)
@@ -15244,9 +15246,7 @@
 /turf/open/gm/river/desert/shallow_edge/northeast,
 /area/kutjevo/exterior/runoff_dunes)
 "vlg" = (
-/obj/structure/flora/grass/tallgrass/desert/corner{
-	dir = 6
-	},
+/obj/structure/flora/grass/tallgrass/desert/corner,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/scrubland)
 "vls" = (
@@ -25449,7 +25449,7 @@ huR
 iin
 sVF
 hrz
-agF
+agz
 pkP
 pkP
 hrz
@@ -25604,8 +25604,8 @@ iin
 sVF
 iin
 pkP
-agP
-agP
+agJ
+agJ
 pkP
 hrz
 hrz
@@ -25616,9 +25616,9 @@ huR
 iin
 sVF
 pkP
-agH
 agA
-agv
+agw
+agu
 dxF
 dxF
 dxF
@@ -25771,9 +25771,9 @@ sVF
 sVF
 sVF
 bNG
-agT
-agQ
-agF
+agN
+agK
+agz
 pkP
 iin
 sVF
@@ -25781,11 +25781,11 @@ huR
 huR
 mjN
 sVF
-agN
+agH
+agx
 agB
-agI
-agB
-agv
+agx
+agu
 dxF
 dxF
 dxF
@@ -25936,21 +25936,21 @@ iin
 iin
 sVF
 sVF
-agK
-agW
-agB
-agR
-agO
-agK
+agD
+agQ
+agx
+agL
+agI
+agD
 nWu
 pKK
 dDq
 uBr
 kxt
 oET
-agF
-agL
-agJ
+agz
+agE
+agC
 pkP
 pkP
 agt
@@ -26088,7 +26088,7 @@ jec
 jnV
 jnV
 iin
-agX
+agR
 iin
 sVF
 dxF
@@ -26105,8 +26105,8 @@ sVF
 sVF
 pkP
 pkP
-agU
-agS
+agO
+agM
 pkP
 pkP
 hrz
@@ -26116,8 +26116,8 @@ huR
 huR
 sVF
 sVF
-agK
-agK
+agD
+agD
 pkP
 agt
 agt
@@ -26272,7 +26272,7 @@ hrz
 dxF
 dxF
 pkP
-agV
+agP
 dXL
 pkP
 bNG
@@ -30794,7 +30794,7 @@ sYd
 bXl
 bXl
 sYd
-vlg
+agy
 bEp
 jkR
 mIB
@@ -30959,10 +30959,10 @@ pCS
 pCS
 kIn
 bXl
-agM
+agF
 kIn
-agD
-agy
+vlg
+uRA
 xKb
 uHP
 iYo
@@ -31128,7 +31128,7 @@ kIn
 bXl
 bXl
 kIn
-alL
+hSo
 eLO
 xKb
 uHP
@@ -31296,7 +31296,7 @@ kIn
 bXl
 sYd
 sYd
-agz
+oex
 xKb
 amb
 iYo
@@ -31462,8 +31462,8 @@ sYd
 bXl
 bXl
 sYd
-vlg
-uRA
+agy
+agv
 xKb
 vuj
 iYo
@@ -31628,7 +31628,7 @@ pCS
 bXl
 bXl
 bXl
-vlg
+agy
 voI
 eLO
 xKb

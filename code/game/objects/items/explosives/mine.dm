@@ -425,7 +425,7 @@
 		if(HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL))
 			user.visible_message(SPAN_NOTICE("[user] starts disarming [src]."), \
 			SPAN_NOTICE("You start disarming [src]."))
-			if(!do_after(user, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
+			if(!do_after(user, 3 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
 				user.visible_message(SPAN_WARNING("[user] stops disarming [src]."), \
 				SPAN_WARNING("You stop disarming [src]."))
 				return
@@ -441,7 +441,7 @@
 				return
 			user.visible_message(SPAN_NOTICE("[user] starts rearming [src]."), \
 			SPAN_NOTICE("You start rearming [src]."))
-			if(!do_after(user, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
+			if(!do_after(user, 3 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
 				user.visible_message(SPAN_WARNING("[user] stops rearming [src]."), \
 				SPAN_WARNING("You stop rearming [src]."))
 				return
@@ -489,7 +489,6 @@
 			for(var/mob/living/carbon/human in range((explosion_strength / explosion_falloff) - 1, src))
 				if (human.get_target_lock(iff_signal))
 					disarm()
-					// to_chat(user, SPAN_WARNING("[src] recognized an IFF marked target and did not detonate!"))
 					return
 	cell_explosion(loc, explosion_strength, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, CARDINAL_ALL_DIRS, cause_data, enviro=map_deployed)
 	playsound(loc, 'sound/weapons/gun_sharp_explode.ogg', 100)
@@ -589,7 +588,7 @@
 	else
 		is_smoke = FALSE
 		reagent = /datum/reagent/napalm/ut
-		flame_radius = 3
+		flame_radius = mine_mode == SHARP_DIRECTED_MODE ? 0 : 3
 		playsound(loc, 'sound/weapons/gun_flamethrower3.ogg', 45)
 	switch(mine_mode)
 		if (SHARP_DIRECTED_MODE)
@@ -599,7 +598,6 @@
 			for(var/mob/living/carbon/human in range(flame_radius, src))
 				if (human.get_target_lock(iff_signal))
 					disarm()
-					// to_chat(user, SPAN_WARNING("[src] recognized an IFF marked target and did not detonate!"))
 					return
 	if (is_smoke)
 		var/datum/effect_system/smoke_spread/phosphorus/smoke = new /datum/effect_system/smoke_spread/phosphorus/sharp

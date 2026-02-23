@@ -34,10 +34,10 @@
 	..(process, D, copy)
 
 
-// Hullucigen
+// Hallucinogen
 
-/datum/disease/advance/hullucigen/New(process = 1, datum/disease/advance/D, copy = 0)
+/datum/disease/advance/hallucinogen/New(process = 1, datum/disease/advance/D, copy = 0)
 	if(!D)
 		name = "Reality Impairment"
-		symptoms = list(new/datum/symptom/hallucigen)
+		symptoms = list(new/datum/symptom/hallucinogen)
 	..(process, D, copy)

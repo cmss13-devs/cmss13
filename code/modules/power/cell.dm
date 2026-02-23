@@ -17,7 +17,7 @@
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
 	w_class = SIZE_SMALL
-	var/charge = 1000 // note %age conveted to actual charge in New
+	var/charge = 1000 // note %age converted to actual charge in New
 	var/maxcharge = 1000
 	var/minor_fault = 0 //If not 100% reliable, it will build up faults.
 	matter = list("metal" = 700, "glass" = 50)

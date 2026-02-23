@@ -397,8 +397,8 @@
 	target.set_state(RESIN_TRAP_ACID1 + acid_level - 1)
 
 	playsound(target, 'sound/effects/refill.ogg', 25, 1)
-	visible_message(SPAN_XENOWARNING("[src] pressurises the resin trap with acid!"),
-	SPAN_XENOWARNING("You pressurise the resin trap with acid!"), null, 5)
+	visible_message(SPAN_XENOWARNING("[src] pressurizes the resin trap with acid!"),
+	SPAN_XENOWARNING("You pressurize the resin trap with acid!"), null, 5)
 	return TRUE
 
 #undef ACID_COST_LEVEL_1
@@ -691,7 +691,7 @@
 		to_chat(xeno, SPAN_XENOWARNING("These weeds don't belong to our hive!"))
 		return FALSE
 
-	// This snowflake check exists because stairs specifically are indestructable, tile-covering, and cannot be moved, which allows resin holes to be
+	// This snowflake check exists because stairs specifically are indestructible, tile-covering, and cannot be moved, which allows resin holes to be
 	// planted under them without any possible counterplay. In the future if resin holes stop being able to be hidden under objects, remove this check.
 	if(locate(/obj/structure) in src)
 		if(locate(/obj/structure/stairs) in src)

@@ -91,7 +91,7 @@
 	spawn_nothing_percentage = 80
 	icon_state = "loot_pistol_20"
 
-/obj/effect/spawner/random/gun/upp_secondary/medchance
+/obj/effect/spawner/random/gun/upp_secondary/midchance
 	spawn_nothing_percentage = 50
 	icon_state = "loot_pistol_50"
 
@@ -141,7 +141,7 @@
 	spawn_nothing_percentage = 80
 	icon_state = "loot_pistol_20"
 
-/obj/effect/spawner/random/gun/pmc_secondary/medchance
+/obj/effect/spawner/random/gun/pmc_secondary/midchance
 	spawn_nothing_percentage = 50
 	icon_state = "loot_pistol_50"
 
@@ -188,7 +188,7 @@
 	spawn_nothing_percentage = 80
 	icon_state = "loot_pistol_20"
 
-/obj/effect/spawner/random/gun/clf_secondary/medchance
+/obj/effect/spawner/random/gun/clf_secondary/midchance
 	spawn_nothing_percentage = 50
 	icon_state = "loot_pistol_50"
 

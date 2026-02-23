@@ -28,7 +28,7 @@
 		I = giver.r_hand
 	if(!istype(I) || (I.flags_item & (DELONDROP|NODROP|ITEM_ABSTRACT)))
 		return
-	if(body_position == LYING_DOWN) // replace by mobiilty_flags probably
+	if(body_position == LYING_DOWN) // replace by mobility_flags probably
 		to_chat(giver, SPAN_WARNING("[src] can't hold that while lying down."))
 		return
 	if(r_hand && l_hand)

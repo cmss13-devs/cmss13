@@ -45,11 +45,11 @@
 	var/datum/seed/seed = null // The currently planted seed
 	/// used in property/Excreting/reaction_hydro_tray and other potency increasing methods
 	var/potency_counter = 0
-	/// used in property/photosensative/reaction_hydro_tray to set repeat harvest on
+	/// used in property/photosensitive/reaction_hydro_tray to set repeat harvest on
 	var/repeat_harvest_counter = 0
-	/// used in purpleplasma/rection_hydro_tray to reduce production time
+	/// used in purpleplasma/reaction_hydro_tray to reduce production time
 	var/production_time_counter = 0
-	///used in darkacidic reaction_hydro tray to add chems to plant
+	///used in dark acidic reaction_hydro tray to add chems to plant
 	var/chem_add_counter = 0
 	///Adjust the time between plant cycles Min -140
 	var/metabolism_adjust = 0

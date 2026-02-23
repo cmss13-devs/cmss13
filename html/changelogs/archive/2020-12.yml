@@ -2,7 +2,7 @@
   Nanu:
   - maptweak: Made all stairs on Almayer 3x3 instead of 2x2
   - maptweak: Moved North pods and South pods slightly on upper deck.
-  - maptweak: Moved maint. a few places to accomodate the size of new stairs.
+  - maptweak: Moved maint. a few places to accommodate the size of new stairs.
   - maptweak: Fixed an Area issue in brig.
   - maptweak: Stairs have vehicle blockers. No APC or Tank allowed on upper deck!
   Segrain:
@@ -109,8 +109,8 @@
   - maptweak: as a reward for being a good cat jones now has their own office!
   - maptweak: CIC has been slightly changed to be less of a hassle to operate.
   Kryth:
-  - tweak: Changed Pressurized Reagent Pouch revival mix from 5/5/5 Peridaxon/Epipharine/Inaprovaline
-      to 3/6/6 Peridaxon/Epipherine/Inaprovaline
+  - tweak: Changed Pressurized Reagent Pouch revival mix from 5/5/5 Peridaxon/Epinephrine/Inaprovaline
+      to 3/6/6 Peridaxon/Epinephrine/Inaprovaline
   Segrain:
   - bugfix: Research skill is now properly included in the Check Skills window.
   - tweak: Chemical investigation ERT is now provided with the research skill needed
@@ -278,7 +278,7 @@
       to reflect their skills.
   - tweak: Changed PMC Gunner's paygrade to PMC2S to match the above.
   - bugfix: PMC Medic paygrade changed to PMC2M to display correctly upon inspection.
-  - rscadd: Deathsquad now have comm titles to tell eachother apart. (CC for standard,
+  - rscadd: Deathsquad now have comm titles to tell each other apart. (CC for standard,
       CCM medic, LCC lead, CCT terminator)
   - tweak: Renamed the Fleet Admiral equipment preset to UPP Fleet Admiral to reflect
       it's contents.
@@ -333,7 +333,7 @@
       added extra volume and bass. '
 2020-12-13:
   ChainsawMullet:
-  - tweak: Hunter melee damage has been rebalanced and normalised across the board.
+  - tweak: Hunter melee damage has been rebalanced and normalized across the board.
   - tweak: Hunter melee armour reduced heavily, hunter bullet armour increased slightly.
   - tweak: Hunter pouch given 2 extra storage slots.
   - tweak: Scythe double hit chance has been reduced and no longer has bonus chance
@@ -347,7 +347,7 @@
   - maptweak: Brought in Nhon shipwrights to fix what the Thar'ns broke.
   - bugfix: Hunter weapon sprites are now masked correctly.
   Firartix:
-  - bugfix: audio heard from outside in vehicles is now properly spatialized
+  - bugfix: audio heard from outside in vehicles is now properly specialized
   - tweak: audio sent inside vehicle now uses falloff for increased range reduction,
       rather than flat volume decrease
   - tweak: audio now not only leaks into vehicles, but also out of them
@@ -373,7 +373,7 @@
   - tweak: Reduced damage of Crusher's Charge from 70 to 60.
   - tweak: Increased Crusher's Shield from 150 to 200.
   Nanu:
-  - maptweak: These map changes are specifically for the LV Nigthtmare insert of CLF-Ship.
+  - maptweak: These map changes are specifically for the LV Nightmare insert of CLF-Ship.
   - maptweak: Removed M60 from CLF spawn.
   - maptweak: Removed space tiles.
   - maptweak: Fixed corruption errors.
@@ -523,12 +523,12 @@
   - maptweak: Moved the Hangar Control Bubble northwards slightly.
   - tweak: The security camera consoles in the Hangar Control Bubble now only view
       the dropships.
-  - bugfix: Hangar Lockdown button has access requirements again. (Brig, CIC, Logisitcs
+  - bugfix: Hangar Lockdown button has access requirements again. (Brig, CIC, Logistics
       or Flight)
   - maptweak: Moved the Flight Office north of the hangar. Access changed to Brig,
-      CIC, Logisitcs or Flight
+      CIC, Logistics or Flight
   - maptweak: Moved the Deployment Workshop north of the hangar. Shutters locked to
-      Brig, CIC, Logisitcs or Flight
+      Brig, CIC, Logistics or Flight
   - maptweak: Moved the OT Workshop to the original site of the Deployment Workshop
       & Flight Office
   - maptweak: Filled in the original space of moved and removed areas with metal foam
@@ -572,7 +572,7 @@
       courtesy of Weston Yamada. '
   - rscadd: Added Holiday Priest to synth vendor.
   - tweak: The CHIMP70 gun and M57-4A no longer have ID locks on them.
-  - bugfix: 'Kutjevos landing zone can no longer be weeded before marines drop. '
+  - bugfix: 'Kutjevos landing zone can no longer be weeded before marines drop.'
   - tweak: The XRF Scanner now scans much faster than before.
   Bongosz:
   - imageadd: Resprited Synth Councilor uniform.
@@ -593,7 +593,7 @@
   - maptweak: Fully reworked the CLF Nightmare insert on LV.
   - maptweak: Lowered start damage on the CLF Survivors greatly.
   Segrain:
-  - bugfix: Fixed a rare issue preventing some generated chemical reactions from occuring.
+  - bugfix: Fixed a rare issue preventing some generated chemical reactions from occurring.
   TheDonkified:
   - bugfix: Fixed issues with fire not igniting people.
   - bugfix: Fixed death squad SG not having proper armor sprites.
@@ -640,7 +640,7 @@
   - tweak: Upon scoring an aimed shot, the sniper will be notified with a "Bullseye!"
       message.
   ghostsheet:
-  - tweak: Flamer's pilot light is now simplfied and merged into the gun's safety
+  - tweak: Flamer's pilot light is now simplified and merged into the gun's safety
       feature.
   - rscadd: M240-T (specialist flamer) can now switch fuel tank with unique action.
   - bugfix: M240-T is now less likely to bug out when used with magnetic harness.

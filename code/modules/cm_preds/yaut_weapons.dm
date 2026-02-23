@@ -1072,7 +1072,7 @@
 
 /obj/item/weapon/twohanded/yautja/spear
 	name = "hunter spear"
-	desc = "A spear of exquisite design, used by an ancient civilisation."
+	desc = "A spear of exquisite design, used by an ancient civilization."
 	icon_state = "spearhunter"
 	item_state = "spearhunter"
 	flags_item = TWOHANDED|ADJACENT_CLICK_DELAY

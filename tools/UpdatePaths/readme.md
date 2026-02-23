@@ -24,7 +24,7 @@ Simply create a `.TXT` file and type this on a line:
 /obj/structure/door/airlock/science/closed/rd : /obj/structure/door/airlock/science/rd/closed{@OLD}
 ```
 
-The path on the left is the old, the path on the right is the new. It is seperated by a ":"
+The path on the left is the old, the path on the right is the new. It is separated by a ":"
 If you want to make multiple path changes in one script, simply add more changes on new lines.
 
 Putting `{@OLD}` is important since otherwise, UpdatePaths will automatically discard the old variables attached to the old path. Adding `{@OLD}` to the right-hand side will ensure that every single variable from the old path will be applied to the new path.
@@ -134,7 +134,7 @@ Presto, like it never existed. Note how both the "a" and "b" files were able to 
 
 ### Multiple Path Output
 
-UpdatePaths has the powerful ability to output multiple paths from a single input path. Let's say that you have a snowflake turf (`/turf/open/floor/iron/i_like_spawning_mobs`) with some behavior that you atomize out into some spawner `/obj/mob_spawner` that can work on every single turf. So, let's script that out. 
+UpdatePaths has the powerful ability to output multiple paths from a single input path. Let's say that you have a snowflake turf (`/turf/open/floor/iron/i_like_spawning_mobs`) with some behavior that you atomize out into some spawner `/obj/mob_spawner` that can work on every single turf. So, let's script that out.
 
 ```txt
 /turf/open/floor/iron/i_like_spawning_mobs : /obj/mob_spawner, /turf/open/floor/iron
@@ -177,7 +177,7 @@ So, let's assume we have the following map file:
 	name = "really large big chungus"
 	},
 /turf/open/floor/iron,
-/area/station/maintainence/fore/greater),
+/area/station/maintenance/fore/greater),
 ```
 
 Running the script will update this into:
@@ -192,7 +192,7 @@ Running the script will update this into:
 	name = "really large big chungus"
 	},
 /turf/open/floor/iron,
-/area/station/maintainence/fore/greater),
+/area/station/maintenance/fore/greater),
 ```
 
 Note how since you kept in `{@OLD}`, it was able to retain the re-named variables of the subtypes.

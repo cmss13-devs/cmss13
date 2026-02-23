@@ -577,7 +577,7 @@ GLOBAL_LIST_INIT(aalarm_mode_descriptions, flatten_numeric_alist(alist(
 <style>
 .dl0 { color: green; }
 .dl1 { color: orange; }
-.dl2 { color: red; font-weght: bold;}
+.dl2 { color: red; font-weight: bold;}
 </style>
 "}
 
@@ -755,14 +755,14 @@ Nitrous Oxide
 <a href='byond://?src=\ref[src];screen=[AALARM_SCREEN_MAIN]'>Main menu</a><br>
 <b>Alarm thresholds:</b><br>
 Partial pressure for gases
-<style>/* some CSS woodoo here. Does not work perfect in ie6 but who cares? */
+<style>/* some CSS voodoo here. Does not work perfect in ie6 but who cares? */
 table td { border-left: 1px solid black; border-top: 1px solid black;}
 table tr:first-child th { border-left: 1px solid black;}
 table th:first-child { border-top: 1px solid black; font-weight: normal;}
 table tr:first-child th:first-child { border: none;}
 .dl0 { color: green; }
 .dl1 { color: orange; }
-.dl2 { color: red; font-weght: bold;}
+.dl2 { color: red; font-weight: bold;}
 </style>
 <table cellspacing=0>
 <TR><th></th><th class=dl2>min2</th><th class=dl1>min1</th><th class=dl1>max1</th><th class=dl2>max2</th></TR>

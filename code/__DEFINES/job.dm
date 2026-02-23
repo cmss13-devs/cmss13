@@ -83,8 +83,7 @@ GLOBAL_LIST_INIT(job_squad_roles, JOB_SQUAD_ROLES_LIST)
 #define JOB_SYNTH_K9 "Synthetic K9"
 #define JOB_WORKING_JOE "Working Joe"
 
-// Synthetic Specialisations
-
+// Synthetic Specializations
 #define JOB_SYNTH_ENG "Engineering Synthetic"
 #define JOB_SYNTH_MED "Medical Synthetic"
 #define JOB_SYNTH_INTEL "Intelligence Synthetic"
@@ -162,7 +161,7 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 	. = ..(L);\
 }
 
-// Used to add a timelock to a job. Will be passed onto derivates. Will not include the parent's timelocks.
+// Used to add a timelock to a job. Will be passed onto derivatives. Will not include the parent's timelocks.
 #define OverrideTimelock(Path, timelockList) \
 ##Path/setup_requirements(list/L){\
 	L = timelockList;\
@@ -173,7 +172,6 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define CHAIN_OF_COMMAND_ROLES list(JOB_CO, JOB_XO, JOB_AUXILIARY_OFFICER, JOB_CHIEF_POLICE, JOB_CMO, JOB_SO, JOB_CHIEF_ENGINEER, JOB_DROPSHIP_PILOT, JOB_CAS_PILOT, JOB_INTEL, JOB_FIELD_DOCTOR, JOB_SURGEON, JOB_DOCTOR, JOB_CHIEF_REQUISITION)
 
 //-------------WO roles---------------
-
 #define JOB_WO_CO "Ground Commander"
 #define JOB_WO_XO "Lieutenant Commander"
 #define JOB_WO_CHIEF_POLICE "Honor Guard Squad Leader"
@@ -236,7 +234,6 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define ROLES_WY_COMMANDOS list(JOB_WY_COMMANDO_STANDARD, JOB_WY_COMMANDO_LEADER, JOB_WY_COMMANDO_GUNNER, JOB_WY_COMMANDO_DOGCATCHER)
 
 //-------- WY --------//
-
 #define JOB_WY_SEC "W-Y Security Guard"
 #define JOB_WY_SEC_SYNTH "W-Y Security Guard Synthetic"
 #define JOB_TRAINEE "Corporate Trainee"
@@ -279,7 +276,6 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define ROLES_WY_GOONS list(JOB_WY_GOON_LEAD, JOB_WY_GOON_TECH, JOB_WY_GOON_MEDIC, JOB_WY_GOON, JOB_WY_RESEARCHER, JOB_WY_RESEARCH_LEAD, JOB_WY_GOON_SYNTH)
 
 //-------- Hyperdyne --------//
-
 #define JOB_HC_SEC "HC Security Guard"
 #define JOB_HC_SEC_SYNTH "HC Security Guard Synthetic"
 #define JOB_HC_TRAINEE "Corporate Trainee"
@@ -344,7 +340,6 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define NSPA_GRUNT_LIST list(JOB_NSPA_CST, JOB_NSPA_SC, JOB_NSPA_SGT)
 
 //-------- FORECON --------//
-
 #define JOB_FORECON_CO "Reconnaissance Commander"
 #define JOB_FORECON_SL "Reconnaissance Squad Leader"
 #define JOB_FORECON_SYN "Reconnaissance Synthetic"
@@ -419,7 +414,6 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_UPP_COMMISSAR "UPP Political Commissar"
 
 //-------- People's Armed Police --------//
-
 #define JOB_PAP_MILITSIONER "UPP Militsioner"
 #define JOB_PAP_STARSHIY_MILITSIONER "UPP Starshiy Militsioner"
 #define JOB_PAP_STARSHINA "UPP Starshina"
@@ -447,7 +441,6 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_TWE_REPRESENTATIVE "TWE Representative"
 
 //IASF
-
 #define JOB_TWE_IASF_PARA "IASF Paratrooper"
 #define JOB_TWE_IASF_PARA_SNIPER "IASF Paratrooper (Marksman)"
 #define JOB_TWE_IASF_PARA_PILOT "IASF Fleet Air Arm (Dropship Pilot)"
@@ -509,6 +502,7 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_RIOT_CHIEF "Chief Riot Control"
 
 #define RIOT_JOB_LIST list(JOB_RIOT, JOB_RIOT_CHIEF)
+
 //-------- CIA --------//
 #define JOB_CIA "Intelligence Analyst"
 #define JOB_CIA_LIAISON "Intelligence Liaison Officer"
@@ -517,6 +511,7 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_CIA_UACQS_COMR "UACQS Commissioner"
 
 #define JOB_CIA_ROLES_LIST list(JOB_CIA, JOB_CIA_LIAISON, JOB_CIA_UACQS_SEC, JOB_CIA_UACQS_ADMN, JOB_CIA_UACQS_COMR)
+
 //-------- DUTCH'S DOZEN --------//
 #define JOB_DUTCH_ARNOLD "Dutch's Dozen - Dutch"
 #define JOB_DUTCH_RIFLEMAN "Dutch's Dozen - Rifleman"
@@ -539,7 +534,6 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_FAX_RESPONDER_PRESS "Free Press Relay Operator"
 
 #define FAX_RESPONDER_JOB_LIST list(JOB_FAX_RESPONDER_USCM_HC, JOB_FAX_RESPONDER_USCM_PVST, JOB_FAX_RESPONDER_WY, JOB_FAX_RESPONDER_UPP, JOB_FAX_RESPONDER_TWE, JOB_FAX_RESPONDER_CLF, JOB_FAX_RESPONDER_CMB, JOB_FAX_RESPONDER_PRESS)
-
 
 //---------- ANTAG ----------//
 #define JOB_PREDATOR "Predator"

@@ -26,7 +26,7 @@
 
 	slot = HDPT_TURRET
 
-	// big beefy chonk of metal
+	// big beefy chunk of metal
 	health = 450
 	damage_multiplier = 0.05
 

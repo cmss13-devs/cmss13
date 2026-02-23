@@ -13,7 +13,7 @@
 
 	var/ckey = ckey(key)
 
-	// This is added siliently. Thanks to MSO for this fix. You will see it when/if we go OS
+	// This is added silently. Thanks to MSO for this fix. You will see it when/if we go OS
 	if (type == "world")
 		return ..() //shunt world topic banchecks to purely to byond's internal ban system
 

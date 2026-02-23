@@ -12,7 +12,7 @@
 	///gun update_icon doesn't detect that guns with no magazine are loaded or not, and will always append _o or _e if possible.
 	var/GL_has_open_icon = FALSE
 
-	///Internal storage item used as magazine. Must be initialised to work! Set parameters by variables or it will inherit standard numbers from storage.dm. Got to call it *something* and 'magazine' or w/e would be confusing.
+	///Internal storage item used as magazine. Must be initialized to work! Set parameters by variables or it will inherit standard numbers from storage.dm. Got to call it *something* and 'magazine' or w/e would be confusing.
 	var/obj/item/storage/internal/cylinder
 	/// Variable that initializes the above.
 	var/has_cylinder = FALSE

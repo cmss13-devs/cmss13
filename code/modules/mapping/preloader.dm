@@ -1,4 +1,4 @@
-// global datum that will preload variables on atoms instanciation
+// global datum that will preload variables on atoms instantiation
 GLOBAL_VAR_INIT(use_preloader, FALSE)
 GLOBAL_LIST_INIT(_preloader_attributes, null)
 GLOBAL_LIST_INIT(_preloader_path, null)

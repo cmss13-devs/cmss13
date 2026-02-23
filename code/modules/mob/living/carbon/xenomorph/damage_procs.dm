@@ -88,7 +88,7 @@
 		powerfactor_value = min(powerfactor_value,20)
 		if(powerfactor_value > 0 && small_explosives_stun)
 			KnockDown(powerfactor_value/5)
-			Stun(powerfactor_value/5) // Due to legacy knockdown being considered an impairement
+			Stun(powerfactor_value/5) // Due to legacy knockdown being considered an impairment
 			if(mob_size < MOB_SIZE_BIG)
 				Slow(powerfactor_value)
 				Superslow(powerfactor_value/2)

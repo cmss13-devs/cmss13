@@ -111,8 +111,8 @@ SUBSYSTEM_DEF(redis)
 	try
 		usable_data = json_decode(raw_data)
 	catch
-		message_admins("Failed to deserialise a redis message.")
-		log_debug("Failed to deserialise: [raw_data]")
+		message_admins("Failed to deserialize a redis message.")
+		log_debug("Failed to deserialize: [raw_data]")
 		return
 
 	for(var/channel in usable_data)

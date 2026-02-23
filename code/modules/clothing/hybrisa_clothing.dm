@@ -96,7 +96,7 @@
 
 // Sanitation Worker
 
-/obj/item/clothing/under/hybrisa/santiation
+/obj/item/clothing/under/hybrisa/sanitation
 	name = "\improper Weyland-Yutani RFF - Sanitation uniform"
 	desc = "A set of Weyland-Yutani RFF - Sanitation fatigues, a green pair of work slacks and a grey polo-shirt with green reflecting stripes."
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/service.dmi'
@@ -316,7 +316,7 @@
 
 /obj/item/clothing/head/hybrisa/cmb_cap_new
 	name = "\improper Colonial Marshal Bureau cap"
-	desc = "A dark cap enscribed with the powerful letters of 'MARSHAL' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
+	desc = "A dark cap inscribed with the powerful letters of 'MARSHAL' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/CMB.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/CMB.dmi',
@@ -337,7 +337,7 @@
 
 /obj/item/clothing/head/hybrisa/cmb_cap_new/riot
 	name = "\improper Police cap"
-	desc = "A dark cap enscribed with the powerful letters of 'POLICE' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
+	desc = "A dark cap inscribed with the powerful letters of 'POLICE' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/CMB.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/CMB.dmi',
@@ -347,7 +347,7 @@
 
 /obj/item/clothing/head/hybrisa/cmb_peaked_cap
 	name = "\improper Colonial Marshal Bureau cap"
-	desc = "A dark peaked cap enscribed with the powerful star shaped emblem of the 'Colonial Marshalls Bureau' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
+	desc = "A dark peaked cap inscribed with the powerful star shaped emblem of the 'Colonial Marshalls Bureau' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/CMB.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/CMB.dmi',
@@ -368,7 +368,7 @@
 
 /obj/item/clothing/head/hybrisa/cmb_peaked_cap_gold
 	name = "\improper Colonial Marshal Bureau cap"
-	desc = "A dark peaked cap enscribed with the powerful star shaped emblem of the 'Colonial Marshalls Bureau' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
+	desc = "A dark peaked cap inscribed with the powerful star shaped emblem of the 'Colonial Marshalls Bureau' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/CMB.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/CMB.dmi',
@@ -391,7 +391,7 @@
 
 /obj/item/clothing/head/hybrisa/wy_po_cap
 	name = "\improper Weyland-Yutani Pilot cap"
-	desc = "A dark peaked cap enscribed with the Weyland-Yutani 'Wings' logo. A formal cap for qualified civilian Pilots, akin to old Earth formal Pilots-wear."
+	desc = "A dark peaked cap inscribed with the Weyland-Yutani 'Wings' logo. A formal cap for qualified civilian Pilots, akin to old Earth formal Pilots-wear."
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/WY.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/WY.dmi',
@@ -440,7 +440,7 @@
 
 /obj/item/clothing/head/helmet/hybrisa/medtech
 	name = "MT-SHIELD-X 525 helmet"
-	desc = "The MT-SHIELD-X 525 (MedTech - Safety Helmet Integrated for Extreme Danger). A closed helmet designed to protect the wearer from hazardous environments, this specific model is designed to be effective in a variety of hazardous environments and protects the user from potential biohazards. This helmet was designed by Hyperdyne Systems, in collabaration with MedTech."
+	desc = "The MT-SHIELD-X 525 (MedTech - Safety Helmet Integrated for Extreme Danger). A closed helmet designed to protect the wearer from hazardous environments, this specific model is designed to be effective in a variety of hazardous environments and protects the user from potential biohazards. This helmet was designed by Hyperdyne Systems, in collaboration with MedTech."
 	icon = 'icons/obj/items/clothing/hats/hazard.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hazard.dmi'
@@ -482,7 +482,7 @@
 
 /obj/item/clothing/head/helmet/hybrisa/kelland_mining_helmet
 	name = "HS-KM-SHIELD-X 550 helmet"
-	desc = "The HS-KM-SHIELD-X 550 (Hyperdyne Systems - Kelland Mining - Safety Helmet Integrated for Extreme Danger). A closed helmet designed to protect the wearer from hazardous environments, this specific model is designed to be effective in a variety of hazardous environments and protect the user from toxic fume inhalation. It has a built in semi-closed breathing system. This helmet was designed by Hyperdyne Systems, in collabaration with Kelland-Mining."
+	desc = "The HS-KM-SHIELD-X 550 (Hyperdyne Systems - Kelland Mining - Safety Helmet Integrated for Extreme Danger). A closed helmet designed to protect the wearer from hazardous environments, this specific model is designed to be effective in a variety of hazardous environments and protect the user from toxic fume inhalation. It has a built in semi-closed breathing system. This helmet was designed by Hyperdyne Systems, in collaboration with Kelland-Mining."
 	icon = 'icons/obj/items/clothing/hats/hazard.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hazard.dmi'
@@ -1245,7 +1245,7 @@
 
 /obj/item/clothing/head/hybrisa/nspa_peaked_cap
 	name = "\improper NSPA peaked cap"
-	desc = "A dark peaked cap enscribed with the powerful silver & red Sakura flower shaped emblem of the NSPA. Empire and Honor, Bound by Duty. Duty Beyond Borders, Justice Across Worlds."
+	desc = "A dark peaked cap inscribed with the powerful silver & red Sakura flower shaped emblem of the NSPA. Empire and Honor, Bound by Duty. Duty Beyond Borders, Justice Across Worlds."
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/TWE.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/TWE.dmi',
@@ -1266,7 +1266,7 @@
 
 /obj/item/clothing/head/hybrisa/nspa_peaked_cap_goldandsilver
 	name = "\improper NSPA peaked cap"
-	desc = "A dark peaked cap enscribed with the powerful silver & gold Sakura flower shaped emblem of the NSPA. Empire and Honor, Bound by Duty. Duty Beyond Borders, Justice Across Worlds."
+	desc = "A dark peaked cap inscribed with the powerful silver & gold Sakura flower shaped emblem of the NSPA. Empire and Honor, Bound by Duty. Duty Beyond Borders, Justice Across Worlds."
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/TWE.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/TWE.dmi',
@@ -1287,7 +1287,7 @@
 
 /obj/item/clothing/head/hybrisa/nspa_peaked_cap_gold
 	name = "\improper NSPA peaked cap"
-	desc = "A dark peaked cap enscribed with the powerful red & gold Sakura flower shaped emblem of the NSPA, more commonly used by higher ranking Constables & NSPA personnel. Empire and Honor, Bound by Duty. Duty Beyond Borders, Justice Across Worlds."
+	desc = "A dark peaked cap inscribed with the powerful red & gold Sakura flower shaped emblem of the NSPA, more commonly used by higher ranking Constables & NSPA personnel. Empire and Honor, Bound by Duty. Duty Beyond Borders, Justice Across Worlds."
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/TWE.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/TWE.dmi',

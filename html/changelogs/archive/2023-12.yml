@@ -76,7 +76,7 @@
   Tsurupeta:
   - bugfix: fixed saving of certain preferences.
   silencer_pl:
-  - admin: Recieving prayers now makes a sound
+  - admin: Receiving prayers now makes a sound
   - admin: Prayers and USCM emergency messages are now better highlighted for mods/admins
 2023-12-06:
   Birdtalon:
@@ -88,7 +88,7 @@
   - refactor: vehicle weapons can fire full-auto
   - rscdel: no more controls for firing vehicle non-selected weapons
   Drathek:
-  - bugfix: Fix some errors regarding the nano subystem
+  - bugfix: Fix some errors regarding the nano subsystem
   - code_imp: Reduced most preference re-saving when preferences are initially loaded
   Ediblebomb:
   - rscadd: M5 Helmet Gasmask now functions as a gasmask when in a marine helmet (and
@@ -122,7 +122,7 @@
 2023-12-08:
   Birdtalon:
   - bugfix: Wall weeds now destroyed when closed wall turfs are changed.
-  - code_imp: Reorganises some xeno code from xeno_defines.dm
+  - code_imp: Reorganizes some xeno code from xeno_defines.dm
   Doubleumc:
   - code_imp: projectiles smoothly animate their movement
   Firartix, Birdtalon:
@@ -148,7 +148,7 @@
       role weights into account. This should moderately decrease budget and starting
       gear.
   - bugfix: Roundstart distributed amount of gear and ASRS points does not count Survivors
-      and Monkeys anymore. This should moderatly decrease budget and starting gear.
+      and Monkeys anymore. This should moderately decrease budget and starting gear.
   - rscadd: Main marine vendors and ASRS now get matching supply for every additional
       marine latejoining, similar to larvas. This should be a substantial increase
       over the course of a round. Supplies given are 60% of what a roundstart marine
@@ -293,7 +293,7 @@
       and unpackaged states.
   - imageadd: The ME3 hand welder and industrial welder now have unique sprites and
       inhands.
-  - imageadd: Differentiates synth graft and surgical line, color coded now to represent
+  - imageadd: Differentiates synth-graft and surgical line, color coded now to represent
       the damage they fix.
 2023-12-16:
   Birdtalon:
@@ -312,7 +312,7 @@
   - rscadd: Added a Flight Control Operator Survivor to Solaris Ridge (for now, might
       be added to more maps soon!).
   - qol: made survivor.dm easier to use by moving the basic security surv with the
-      engineer/scientist/doctor which it wierdly enough it wasn't with.
+      engineer/scientist/doctor which it weirdly enough it wasn't with.
   - balance: rebalanced CL a lockable satchel.
   - bugfix: fixed the survivor.dm comments falsely saying that some surv types are
       not used anywhere when they are.
@@ -324,7 +324,7 @@
   - bugfix: Fixes ghosts not displaying their name on hover if weeded and weird behavior
       when orbited via ctrl+click
   Huffie56:
-  - balance: For SG,IO,medic,comtech standartize the binoculars section as fallow
+  - balance: For SG,IO,medic,comtech standardize the binoculars section as fallow
       (Binoculars=5, Range Finder =10, Laser Designator=15).
   - balance: reduce the number of stages from 5 to 3. each stage take 6 min or 360s.
   - balance: rework the logic that handle the disease progress
@@ -378,7 +378,7 @@
   Birdtalon, Fira:
   - bugfix: Fixes hive UI crash upon pylon giving new larva.
   Contrabang:
-  - bugfix: Matches now do burn damage instead of brute, when you accidently burn
+  - bugfix: Matches now do burn damage instead of brute, when you accidentally burn
       your own hand.
   InsaneRed:
   - spellcheck: Converted more "YOU" to "WE"  for xenomorphs.
@@ -414,7 +414,7 @@
   Cthulhu80:
   - ui: tacmap ui tweaks
   Doubleumc:
-  - bugfix: Fixed security tuner not dispalying direction to room's APC
+  - bugfix: Fixed security tuner not displaying direction to room's APC
   - refactor: Refactored code handling angles
   InsaneRed:
   - code_imp: Converts xenomorph cooldowns into SECONDS
@@ -425,7 +425,7 @@
   cuberound:
   - bugfix: bad DS doorgun placement
   fira:
-  - bugfix: Fix Xmas helmets getting overriden by map camouflage.
+  - bugfix: Fix Xmas helmets getting overridden by map camouflage.
   realforest2001:
   - bugfix: Hijack should no longer end the round immediately.
   - rscadd: Ghosts can now toggle hearing listening devices or not. This is dependant
@@ -481,7 +481,7 @@
   - bugfix: Fix queen death not fully readmitting any banished xenos
   - bugfix: Fixed resisting acid
   SabreML:
-  - code_imp: Made the Tech Tree subsystem initialise faster.
+  - code_imp: Made the Tech Tree subsystem initialize faster.
   Steelpoint:
   - rscadd: The Executive Officer now has a personal weapons vendor. It includes the
       ability to acquire a full suite of combat and support gear, giving the XO more
@@ -505,7 +505,7 @@
   - bugfix: Fix xeno wounds layering over weeds when merged with the weeds
   InsaneRed:
   - spellcheck: More WE/YOU fixes for xenomorph side.
-  - bugfix: Spitter's charge spit abiltiy now properly adds and removes the 5 armor
+  - bugfix: Spitter's charge spit ability now properly adds and removes the 5 armor
       like its supposed to initially.
   SabreML:
   - bugfix: Fixed the Queen Eye still showing as "Immature" after the Queen ages.
@@ -547,7 +547,7 @@
   - bugfix: Fixed the CAS laser cannon only setting fire to a single tile, rather
       a 7x7 range.
   - qol: Made the designation of a tunnel display in chat when a player enters it.
-  - bugfix: Fixed the pyro spec's fuel pack sometimes giving weird failure messages
+  - bugfix: Fixed the pyro spec's fuelpack sometimes giving weird failure messages
       when trying to switch fuel.
   Zonespace27:
   - rscadd: Added a tutorial system for various roles (and just general information),

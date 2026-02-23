@@ -175,7 +175,7 @@
 
 /area/proc/atmosalert(danger_level)
 // if(type==/area) //No atmos alarms in space
-// return 0 //redudant
+// return 0 //redundant
 
 	//Check all the alarms before lowering atmosalm. Raising is perfectly fine.
 	for (var/obj/structure/machinery/alarm/AA in src)

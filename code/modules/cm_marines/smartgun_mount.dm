@@ -470,7 +470,7 @@
 	unslashable = TRUE
 	unacidable = TRUE //stop the xeno me(l)ta.
 	density = TRUE
-	layer = ABOVE_MOB_LAYER //no hiding the hmg beind corpse
+	layer = ABOVE_MOB_LAYER //no hiding the hmg behind corpse
 	use_power = USE_POWER_NONE
 	projectile_coverage = PROJECTILE_COVERAGE_LOW
 	var/rounds = 0 //Have it be empty upon spawn.
@@ -482,7 +482,7 @@
 	var/atom/target = null // required for shooting at things.
 	var/datum/ammo/bullet/machinegun/ammo = /datum/ammo/bullet/machinegun
 	var/obj/projectile/in_chamber = null
-	var/locked = 0 //1 means its locked inplace (this will be for sandbag MGs)
+	var/locked = 0 //1 means its locked in place (this will be for sandbag MGs)
 	var/muzzle_flash_lum = 4
 	var/icon_full = "M56D" // Put this system in for other MGs or just other mounted weapons in general, future proofing.
 	var/icon_empty = "M56D_e" //Empty
@@ -1035,7 +1035,7 @@
 /obj/structure/machinery/m56d_hmg/clicked(mob/user, list/mods)
 	if (mods[CTRL_CLICK])
 		if(operator != user)
-			return ..()//only the operatore can toggle fire mode
+			return ..()//only the operator can toggle fire mode
 		if(!CAN_PICKUP(user, src))
 			return ..()
 

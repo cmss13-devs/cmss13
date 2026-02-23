@@ -80,7 +80,7 @@
       of acid depending on the range. Also cannot be picked up via macro anymore.
   forest2001:
   - rscadd: Added a verb to allow predators to dye their capes. It has a single use
-      only and can only be accessede via right-click on the cape.
+      only and can only be accessed via right-click on the cape.
 2021-04-03:
   Carlarc:
   - tweak: Turns caste_name strings into defines.
@@ -154,7 +154,7 @@
   Firartix:
   - bugfix: fix density issue with ghillie suit cloak
   Jackie_Estegado:
-  - bugfix: Hivecores and pylons can no longer be built inside walls.
+  - bugfix: Hive cores and pylons can no longer be built inside walls.
   Nanu:
   - maptweak: Fixed Lighting in Briefing.
   - maptweak: Fixed Walltype used in the Brig.
@@ -276,7 +276,7 @@
   - tweak: Changed motion detector description to be more detailed.
   - bugfix: Fixed entering vehicle despite vehicle rotating during timed action.
   - maptweak: Swapped WY-med and blood bags vendors in MED APC to allow easier medical
-      supplies restocking without enterrupting surgeries. Per CynicalRose's request.
+      supplies restocking without interrupting surgeries. Per CynicalRose's request.
   JohnTitor:
   - bugfix: Carp fillet and the food made out of it now properly contain fish meat
       in addition to carpotoxin.
@@ -321,7 +321,7 @@
   - rscadd: Added an instantly mature subtype of queen. Admin usage only.
 2021-04-14:
   Carlarc:
-  - tweak: Changed autoinjector cooldowm from being click-delay based to self-cooldown
+  - tweak: Changed autoinjector cooldown from being click-delay based to self-cooldown
       (.75 seconds) based. Should be significantly smoother.
 2021-04-15:
   Carlarc:
@@ -426,7 +426,7 @@
   BIgboyyo:
   - maptweak: Added a few more boxes of buck along with HG shotguns and spent buckshot
       to Kutjevo.
-  - maptweak: Added about 4 medvendors to Kutjveo, all in medbay.
+  - maptweak: Added about 4 medvendors to Kutjevo, all in medbay.
   - maptweak: 'Replaced a number of the cades near Fiorina''s LZ with metal since
       they''re annoying to move. '
   - bugfix: 'Fixed the door stack SW of Yard on Fiorina. '
@@ -577,7 +577,7 @@
   - tweak: MapView init is now deferred to game start to account for potential map
       changes
   - tweak: show_browser now has an option to specify the browser datum onclose reference
-  - bugfix: MapView controller subystem should now behave as such and properly pause
+  - bugfix: MapView controller subsystem should now behave as such and properly pause
   - bugfix: Tactical Maps should now refresh and detect closing properly
   forest2001:
   - tweak: Ancients can be in clans now

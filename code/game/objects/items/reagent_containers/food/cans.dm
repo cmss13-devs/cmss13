@@ -31,7 +31,7 @@
 /obj/item/reagent_container/food/drinks/cans/attackby(obj/item/opening_tool as obj, mob/user as mob)
 	var/opening_time
 	var/opening_sound
-	var/hiss = pick("Nice hiss!", "No hiss.", "A small hiss.") //i couldn't not include stevemre reference
+	var/hiss = pick("Nice hiss!", "No hiss.", "A small hiss.") //i couldn't not include SteveMRE reference
 	if(user.action_busy || open || !needs_can_opener || !(opening_tool.type in CAN_OPENER_EFFECTIVE) && !(opening_tool.type in CAN_OPENER_CRUDE))
 		return
 
@@ -561,7 +561,7 @@
 
 /obj/item/reagent_container/food/drinks/cans/souto/diet/cherry
 	name = "\improper Diet Cherry Souto"
-	desc = "It's neither diet nor cherry flavored. Canned in Havanna."
+	desc = "It's neither diet nor cherry flavored. Canned in Havana."
 	icon_state = "souto_diet_cherry"
 	item_state = "souto_diet_cherry"
 

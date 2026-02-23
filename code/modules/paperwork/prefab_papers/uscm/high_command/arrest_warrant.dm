@@ -112,7 +112,7 @@
 	dat += "<p class=\"header-title\">Arrest Warrant</p>"
 	dat += "<p class=\"header-subtitle\">UAM211</p>"
 	dat += "<hr style=\"margin-top:-15px; margin-bottom:15px;\">"
-	dat += "</div> <!-- /Heasder Info -->"
+	dat += "</div> <!-- /Header Info -->"
 
 	dat += "<div class=\"message-body-text\">"
 	dat += "<b>Date:</b> <font face=\"Times New Roman\"><i>[time2text(REALTIMEOFDAY, "Day DD Month [GLOB.game_year]")]</i></font><br>"

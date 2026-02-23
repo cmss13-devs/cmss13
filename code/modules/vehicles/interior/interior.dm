@@ -133,7 +133,7 @@
 					LAZYADD(passengers, M)
 	return passengers
 
-//syncronizes vehicles passenger settings to interior and resets taken slots
+//synchronizes vehicles passenger settings to interior and resets taken slots
 /datum/interior/proc/update_passenger_settings()
 	var/obj/vehicle/multitile/V = exterior
 	passengers_slots = V.passengers_slots

@@ -67,12 +67,12 @@
 	// Disable UIs if unconscious.
 	else if(stat)
 		return UI_DISABLED
-	// Update UIs if incapicitated but conscious.
+	// Update UIs if incapacitated but conscious.
 	else if(is_mob_incapacitated())
 		return UI_UPDATE
 	return UI_INTERACTIVE
 
-/* Not sure why this is here, it just breaks interactibility on inventory_state
+/* Not sure why this is here, it just breaks interactability on inventory_state
 /mob/living/shared_ui_interaction(src_object)
 	. = ..()
 	//if(!(mobility_flags & MOBILITY_UI) && . == UI_INTERACTIVE)

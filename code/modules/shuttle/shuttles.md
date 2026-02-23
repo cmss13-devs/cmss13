@@ -37,7 +37,7 @@ To setup an elevator:
 - give the docking port instance a unique Name
 - make sure the door direction is correct west/east
 - give the docking port shuttle_area the area name for where it sits
-- if you want to build a docking port 'network' then change the roudnstart_template to a subclass
+- if you want to build a docking port 'network' then change the roundstart_template to a subclass
 - if you want to assign a docking port to a 'network' then give it a value in "tag"
 
 If things are unclear, look at trident. It has two elevator networks.

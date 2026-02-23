@@ -207,7 +207,7 @@
 	force = MELEE_FORCE_VERY_STRONG
 
 /*
- * Bucher's cleaver
+ * Butcher's cleaver
  */
 /obj/item/tool/kitchen/knife/butcher
 	name = "butcher's cleaver"

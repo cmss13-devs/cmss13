@@ -338,7 +338,7 @@ Generated per the various mags, and then changed based on the number of
 casings. .dir is the main thing that controls the icon. It modifies
 the icon_state to look like more casings are hitting the ground.
 There are 8 directions, 8 bullets are possible so after that it tries to grab the next
-icon_state while reseting the direction. After 16 casings, it just ignores new
+icon_state while resetting the direction. After 16 casings, it just ignores new
 ones. At that point there are too many anyway. Shells and bullets leave different
 items, so they do not intersect. This is far more efficient than using Bl*nd() or
 Turn() or Shift() as there is virtually no overhead. ~N

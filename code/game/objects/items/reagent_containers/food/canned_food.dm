@@ -58,7 +58,7 @@
 
 /obj/item/reagent_container/food/drinks/cans/food/upp/soup
 	name = "canned soup"
-	desc = "Canned soup consisting of beef boullion, potato, peas and god knows what else, makes for a great food when heated."
+	desc = "Canned soup consisting of beef bouillon, potato, peas and god knows what else, makes for a great food when heated."
 	icon_state = "Canned_stew"
 	consume_sound = 'sound/items/drink.ogg'
 	volume = 25

@@ -155,7 +155,7 @@
 				for(var/amount in 1 to rand(1, destroyed_loot[type_path]))
 					new type_path(loc)
 					spawned_any = TRUE
-		if(!spawned_any) // It wasn't empty so atleast drop something
+		if(!spawned_any) // It wasn't empty so at least drop something
 			var/type_path = pick(destroyed_loot)
 			for(var/amount in 1 to rand(1, destroyed_loot[type_path]))
 				new type_path(loc)

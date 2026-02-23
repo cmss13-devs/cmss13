@@ -1,6 +1,6 @@
 // This file is included right at the start of the DME.
 // Its purpose is to enable multiple lints (pragmas) that are supported by OpenDream to better validate the codebase
-// These are essentially nitpicks the DM compiler should pick up on but doesnt
+// These are essentially nitpicks the DM compiler should pick up on but doesn't
 
 #ifndef SPACEMAN_DMM
 #ifdef OPENDREAM

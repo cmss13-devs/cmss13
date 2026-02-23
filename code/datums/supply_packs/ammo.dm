@@ -208,7 +208,7 @@
 	containername = "\improper M4A3 HP magazines crate"
 	group = "Ammo"
 
-//------------------------For  Shootgun ammo----------------
+//------------------------For  Shotgun ammo----------------
 
 /datum/supply_packs/ammo_shell_box
 	name = "Shell box (100x slug shells)"

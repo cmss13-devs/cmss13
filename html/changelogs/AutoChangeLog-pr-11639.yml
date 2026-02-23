@@ -1,0 +1,5 @@
+author: "Bibby0110"
+delete-after: True
+changes:
+  - rscadd: "Adds onscreen text for helmet cameras."
+  - rscadd: "Adds some screen-like filters to helmet cameras, for extra immersion."

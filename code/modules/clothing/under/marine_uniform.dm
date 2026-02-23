@@ -2099,7 +2099,7 @@
 /obj/item/clothing/under/marine/cbrn/proc/flamer_fire_callback(mob/living/burning_mob, datum/reagent/fire_reagent)
 	SIGNAL_HANDLER
 
-	if(fire_reagent.fire_penetrating)
+	if(fire_reagent?.fire_penetrating)
 		return
 
 	. = COMPONENT_NO_IGNITE|COMPONENT_NO_BURN

@@ -1,0 +1,4 @@
+author: "MistChristmas"
+delete-after: True
+changes:
+  - bugfix: "Holding Right click no longer stops the left clicking from going through and vice versa."

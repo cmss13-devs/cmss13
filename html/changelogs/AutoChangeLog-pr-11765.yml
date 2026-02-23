@@ -1,0 +1,4 @@
+author: "cuberound"
+delete-after: True
+changes:
+  - bugfix: "marine tacmap gets uplaoded correctly for marines, working multiz tacmap"

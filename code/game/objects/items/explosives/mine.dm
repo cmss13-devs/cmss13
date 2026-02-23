@@ -576,11 +576,11 @@
 	var/flame_radius = 2
 
 	if(mine_level == 2)
-		reagent = /datum/reagent/napalm/green
+		reagent = new /datum/reagent/napalm/green()
 	else if(mine_level == 3)
-		reagent = /datum/reagent/napalm/ut
+		reagent = new /datum/reagent/napalm/ut()
 	else
-		reagent = /datum/reagent/napalm/ut
+		reagent = new /datum/reagent/napalm/ut()
 		flame_radius = 3
 	switch(mine_mode)
 		if (SHARP_DIRECTED_MODE)

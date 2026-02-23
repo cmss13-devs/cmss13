@@ -25,7 +25,7 @@
 	flags_item = TWOHANDED|NO_CRYO_STORE
 	map_specific_decoration = TRUE
 
-	var/current_mine_mode = SHARP_DANGER_MODE
+	var/current_mine_mode = SHARP_SAFE_MODE
 
 /obj/item/weapon/gun/rifle/sharp/Initialize()
 	. = ..()

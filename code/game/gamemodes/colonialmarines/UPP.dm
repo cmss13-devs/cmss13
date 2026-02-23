@@ -19,6 +19,9 @@ GLOBAL_LIST_EMPTY(upp_officers)
 /datum/game_mode/colonialmarines/upp
 	name = "UPP Distress Signal"
 	config_tag = "UPP Distress Signal"
+	human_major = MODE_FACTION_CLASH_UPP_MAJOR
+	human_minor = MODE_FACTION_CLASH_UPP_MINOR
+	//vote_cycle = 5 // Uncomment after testing is done.
 
 /datum/game_mode/colonialmarines/upp/get_roles_list()
 	return UPP_JOB_LIST + GLOB.ROLES_GROUND
@@ -128,15 +131,15 @@ GLOBAL_LIST_EMPTY(upp_officers)
 		if(MODE_INFESTATION_X_MAJOR)
 			musical_track = pick('sound/theme/sad_loss1.ogg','sound/theme/sad_loss2.ogg')
 			end_icon = "xeno_major"
-			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
-				GLOB.round_statistics.current_map.total_xeno_victories++
-				GLOB.round_statistics.current_map.total_xeno_majors++
-		if(MODE_INFESTATION_M_MAJOR)
+		//	if(GLOB.round_statistics && GLOB.round_statistics.current_map)
+		//		GLOB.round_statistics.current_map.total_xeno_victories++
+		//		GLOB.round_statistics.current_map.total_xeno_majors++
+		if(human_major)
 			musical_track = pick('sound/theme/winning_triumph1.ogg','sound/theme/winning_triumph2.ogg','sound/theme/winning_triumph3.ogg')
 			end_icon = "upp_major"
-			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
-				GLOB.round_statistics.current_map.total_marine_victories++
-				GLOB.round_statistics.current_map.total_marine_majors++
+		//	if(GLOB.round_statistics && GLOB.round_statistics.current_map)
+		//		GLOB.round_statistics.current_map.total_marine_victories++
+		//		GLOB.round_statistics.current_map.total_marine_majors++
 		if(MODE_INFESTATION_X_MINOR)
 			var/list/living_player_list = count_humans_and_xenos(get_affected_zlevels())
 			end_icon = "xeno_minor"
@@ -150,7 +153,7 @@ GLOBAL_LIST_EMPTY(upp_officers)
 					message_admins("3rd party victory: Weyland-Yutani")
 				else if ((headcount["UPP_headcount"] / living) > MAJORITY)
 					musical_track = pick('sound/theme/lastmanstanding_upp.ogg')
-					end_icon = "upp_minor"
+					end_icon = "upp_major"
 					log_game("3rd party victory: Union of Progressive Peoples")
 					message_admins("3rd party victory: Union of Progressive Peoples")
 				else if ((headcount["CLF_headcount"] / living) > MAJORITY)
@@ -160,14 +163,13 @@ GLOBAL_LIST_EMPTY(upp_officers)
 					message_admins("3rd party victory: Colonial Liberation Front")
 				else if ((headcount["marine_headcount"] / living) > MAJORITY)
 					musical_track = pick('sound/theme/neutral_melancholy2.ogg') //This is the theme song for Colonial Marines the game, fitting
-					end_icon = "marine_major"
 			else
 				musical_track = pick('sound/theme/neutral_melancholy1.ogg')
-			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
-				GLOB.round_statistics.current_map.total_xeno_victories++
-		if(MODE_INFESTATION_M_MINOR)
+		//	if(GLOB.round_statistics && GLOB.round_statistics.current_map)
+		//		GLOB.round_statistics.current_map.total_xeno_victories++
+		if(human_minor)
 			musical_track = pick('sound/theme/neutral_hopeful1.ogg','sound/theme/neutral_hopeful2.ogg')
-			end_icon = "marine_minor"
+			end_icon = "upp_minor"
 			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
 				GLOB.round_statistics.current_map.total_marine_victories++
 		if(MODE_INFESTATION_DRAW_DEATH)
@@ -211,11 +213,11 @@ GLOBAL_LIST_EMPTY(upp_officers)
 	switch(round_finished)
 		if(MODE_INFESTATION_X_MAJOR)
 			return "Round has ended. Xeno Major Victory."
-		if(MODE_INFESTATION_M_MAJOR)
+		if(human_major)
 			return "Round has ended. UPP Major Victory."
 		if(MODE_INFESTATION_X_MINOR)
 			return "Round has ended. Xeno Minor Victory."
-		if(MODE_INFESTATION_M_MINOR)
+		if(human_minor)
 			return "Round has ended. UPP Minor Victory."
 		if(MODE_INFESTATION_DRAW_DEATH)
 			return "Round has ended. Draw."

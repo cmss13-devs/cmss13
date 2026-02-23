@@ -489,14 +489,14 @@
 	desc = "A gun case containing the necessary attachments to assemble a custom M10 auto-pistol. Comes with two extended & two extended (AP) magazines."
 	storage_slots = 11
 
-	can_hold = list(/obj/item/weapon/gun/pistol/m10, /obj/item/ammo_magazine/pistol/m10/extended, /obj/item/ammo_magazine/pistol/m10/ap/extended, /obj/item/attachable/reddot/small, /obj/item/attachable/suppressor/sleek, /obj/item/attachable/compensator/m10/spiked, /obj/item/attachable/lasersight/micro, /obj/item/attachable/stock/m10_solid, /obj/item/storage/belt/gun/m10)
+	can_hold = list(/obj/item/weapon/gun/pistol/m10, /obj/item/ammo_magazine/pistol/m10/extended, /obj/item/attachable/reddot/small, /obj/item/attachable/suppressor/sleek, /obj/item/attachable/compensator/m10/spiked, /obj/item/attachable/lasersight/micro, /obj/item/attachable/stock/m10_solid, /obj/item/storage/belt/gun/m10)
 
 /obj/item/storage/box/guncase/m10_custom_kit/fill_preset_inventory()
-	new /obj/item/weapon/gun/pistol/m10(src)
+	new /obj/item/weapon/gun/pistol/m10/extended(src)
 	new /obj/item/ammo_magazine/pistol/m10/extended(src)
 	new /obj/item/ammo_magazine/pistol/m10/extended(src)
-	new /obj/item/ammo_magazine/pistol/m10/ap/extended(src)
-	new /obj/item/ammo_magazine/pistol/m10/ap/extended(src)
+	new /obj/item/ammo_magazine/pistol/m10/extended(src)
+	new /obj/item/ammo_magazine/pistol/m10/extended(src)
 	new /obj/item/attachable/reddot/small(src)
 	new /obj/item/attachable/suppressor/sleek(src)
 	new /obj/item/attachable/compensator/m10/spiked(src)

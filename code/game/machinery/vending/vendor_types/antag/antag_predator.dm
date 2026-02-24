@@ -344,6 +344,12 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 			if("Cleopatra")
 				icon_state = "halfarmor_elite_cleopatra"
 				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elite_cleopatra")
+			if("Plated")
+				icon_state = "halfarmor_elite_plated"
+				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elite_plated")
+			if("Ronin")
+				icon_state = "halfarmor_elite_ronin"
+				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elite_ronin")
 		user.update_inv_wear_suit()
 		return
 
@@ -394,6 +400,15 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 			if("Cleopatra")
 				icon_state = "pred_mask_elite_cleopatra"
 				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elite_cleopatra")
+			if("Plated")
+				icon_state = "pred_mask_elite_plated"
+				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elite_plated")
+			if("AnubyRonins")
+				item_icons = list(
+					WEAR_FACE = 'icons/mob/humans/onmob/hunter/pred_gear64.dmi'
+				)
+				icon_state = "pred_mask_elite_ronin"
+				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elite_ronin")
 		user.update_inv_wear_mask()
 		return
 

@@ -109,7 +109,7 @@
 		var/transferred = udder.trans_id_to(G, "milk", rand(5,10))
 		if(G.reagents.total_volume >= G.volume)
 			to_chat(user, SPAN_DANGER("\The [O] is full."))
-		if(!transfered)
+		if(!transferred)
 			to_chat(user, SPAN_DANGER("The udder is dry. Wait a bit longer..."))
 	else
 		..()

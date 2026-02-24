@@ -5088,7 +5088,7 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/colony_streets/south_west_street)
 "czO" = (
-/obj/item/pamphlet/skill/powerloader{
+/obj/item/pamphlet/upgradeable/powerloader{
 	layer = 2.9;
 	pixel_y = -8;
 	pixel_x = 9

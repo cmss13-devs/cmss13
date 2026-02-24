@@ -3,7 +3,6 @@
 	faction = FACTION_CONTRACTOR
 	job_title = JOB_CONTRACTOR
 	idtype = /obj/item/card/id/data
-	faction = FACTION_CONTRACTOR
 	faction_group = list(FACTION_CONTRACTOR)
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_SPANISH, LANGUAGE_RUSSIAN)
 	var/human_versus_human = FALSE
@@ -365,20 +364,25 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/box/mre/fsr, WEAR_IN_BACK)
 
 //*****************************************************************************************************/
-/datum/equipment_preset/contractor/duty/synth
+/datum/equipment_preset/synth/contractor/duty
 	name = "Military Contractor (Synthetic)"
 	paygrades = list(PAY_SHORT_VAI_SN = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "Syn"
 	flags = EQUIPMENT_PRESET_EXTRA
 
+	idtype = /obj/item/card/id/data
 	assignment = "VAIPO Support Synthetic"
 	job_title = JOB_CONTRACTOR_SYN
 	faction = FACTION_CONTRACTOR
 	languages = ALL_SYNTH_LANGUAGES
 
-/datum/equipment_preset/contractor/duty/synth/load_skills(mob/living/carbon/human/new_human)
-		new_human.set_skills(/datum/skills/synthetic)
-		new_human.allow_gun_usage = FALSE
+	locked_generation = SYNTH_GEN_THREE
+
+	var/headset_type = /obj/item/device/radio/headset/distress/contractor
+
+/datum/equipment_preset/synth/contractor/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_EMERGENCY_RESPONSE)
 
 /datum/equipment_preset/contractor/duty/synth/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = pick(MALE, FEMALE)
@@ -411,9 +415,6 @@
 	new_human.r_eyes = colors[eye_color][1]
 	new_human.g_eyes = colors[eye_color][2]
 	new_human.b_eyes = colors[eye_color][3]
-
-/datum/equipment_preset/contractor/duty/synth/load_race(mob/living/carbon/human/new_human)
-	new_human.set_species(SYNTH_GEN_THREE)
 
 /datum/equipment_preset/contractor/duty/synth/load_gear(mob/living/carbon/human/new_human)
 	//back
@@ -763,7 +764,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/box/attachments, WEAR_IN_BACK)
 
 //*****************************************************************************************************/
-/datum/equipment_preset/contractor/covert/synth
+/datum/equipment_preset/synth/contractor/covert
 	name = "Military Contractor (Covert Synthetic)"
 	paygrades = list(PAY_SHORT_VAI_SN = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "Syn"
@@ -775,11 +776,9 @@
 	faction = FACTION_CONTRACTOR
 	languages = ALL_SYNTH_LANGUAGES
 
-/datum/equipment_preset/contractor/covert/synth/load_skills(mob/living/carbon/human/new_human)
-		new_human.set_skills(/datum/skills/synthetic)
-		new_human.allow_gun_usage = FALSE
+	var/headset_type = /obj/item/device/radio/headset/distress/contractor
 
-/datum/equipment_preset/contractor/covert/synth/load_name(mob/living/carbon/human/new_human, randomise)
+/datum/equipment_preset/synth/contractor/covert/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = pick(MALE, FEMALE)
 
 	var/datum/preferences/A = new()
@@ -812,10 +811,7 @@
 	new_human.b_eyes = colors[eye_color][3]
 	idtype = /obj/item/card/id/data
 
-/datum/equipment_preset/contractor/covert/synth/load_race(mob/living/carbon/human/new_human)
-	new_human.set_species(SYNTH_GEN_THREE)
-
-/datum/equipment_preset/contractor/covert/synth/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/synth/contractor/covert/load_gear(mob/living/carbon/human/new_human)
 	//back
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/smartpack/a1/black, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator, WEAR_IN_BACK) //1

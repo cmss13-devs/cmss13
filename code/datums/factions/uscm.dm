@@ -119,7 +119,7 @@
 			if(JOB_USCM_OBSV)
 				marine_rk = "vo"
 				border_rk = "command"
-			if(JOB_SO, JOB_WO_SO)
+			if(JOB_SO)
 				marine_rk = "so"
 				border_rk = "command"
 			if(JOB_AUXILIARY_OFFICER)

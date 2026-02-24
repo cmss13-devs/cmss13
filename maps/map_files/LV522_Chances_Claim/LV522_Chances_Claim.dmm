@@ -1040,6 +1040,36 @@
 	},
 /turf/open/floor/plating,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
+"adK" = (
+/obj/structure/largecrate/random/secure,
+/turf/open/asphalt/cement/cement15,
+/area/lv522/indoors/lone_buildings/engineering)
+"adL" = (
+/obj/structure/platform_decoration/metal/almayer,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/portable_atmospherics/canister/empty/phoron{
+	density = 0;
+	layer = 3.2;
+	pixel_x = 2;
+	pixel_y = 15
+	},
+/turf/open/asphalt/cement,
+/area/lv522/indoors/lone_buildings/engineering)
+"adM" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/toolbox/electrical,
+/turf/open/asphalt/cement,
+/area/lv522/indoors/lone_buildings/engineering)
+"adN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table/almayer,
+/obj/effect/spawner/random/powercell,
+/turf/open/asphalt/cement,
+/area/lv522/indoors/lone_buildings/engineering)
+"adO" = (
+/obj/structure/largecrate/random/barrel/red,
+/turf/open/asphalt/cement/cement4,
+/area/lv522/indoors/lone_buildings/engineering)
 "adP" = (
 /obj/structure/barricade/deployable{
 	dir = 4
@@ -1143,10 +1173,110 @@
 	},
 /turf/open/asphalt/cement,
 /area/lv522/indoors/lone_buildings/engineering)
+"aeg" = (
+/turf/open/asphalt/cement/cement4,
+/area/lv522/indoors/lone_buildings/engineering)
+"aeh" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement/cement4,
+/area/lv522/indoors/lone_buildings/engineering)
+"aei" = (
+/obj/structure/largecrate/random/barrel/yellow,
+/turf/open/asphalt/cement/cement4,
+/area/lv522/indoors/lone_buildings/engineering)
+"aej" = (
+/obj/structure/largecrate/random,
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/outdoors/colony_streets/north_west_street)
+"aek" = (
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = 6;
+	pixel_y = 11
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/outdoors/colony_streets/north_west_street)
+"ael" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 1
+	},
+/turf/open/auto_turf/shale/layer1,
+/area/lv522/outdoors/colony_streets/north_west_street)
 "aem" = (
 /obj/structure/barricade/plasteel/metal,
 /turf/open/asphalt/cement/cement12,
 /area/lv522/outdoors/colony_streets/north_street)
+"aen" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/turf/open/floor/plating,
+/area/lv522/outdoors/colony_streets/north_west_street)
+"aeo" = (
+/obj/structure/prop/dam/crane/cargo{
+	dir = 1;
+	pixel_x = -1;
+	pixel_y = 6
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/outdoors/colony_streets/north_west_street)
+"aep" = (
+/obj/item/lightstick/red/spoke/planted{
+	layer = 3.1;
+	pixel_x = -7;
+	pixel_y = 27
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/outdoors/colony_streets/north_west_street)
+"aeq" = (
+/obj/structure/fence,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/prison/floor_plate,
+/area/lv522/outdoors/colony_streets/north_west_street)
+"aer" = (
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/turf/open/auto_turf/shale/layer1,
+/area/lv522/outdoors/colony_streets/north_west_street)
+"aes" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/plating,
+/area/lv522/outdoors/colony_streets/north_west_street)
+"aet" = (
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/turf/open/auto_turf/shale/layer2,
+/area/lv522/outdoors/colony_streets/north_west_street)
 "aeD" = (
 /obj/structure/largecrate/random,
 /obj/effect/decal/cleanable/dirt,
@@ -3771,8 +3901,8 @@
 /area/lv522/indoors/b_block/bar)
 "bOX" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/closed/wall/strata_ice/dirty,
-/area/lv522/oob)
+/turf/open/auto_turf/shale/layer1,
+/area/lv522/outdoors/colony_streets/north_west_street)
 "bPH" = (
 /obj/structure/prop/invuln/ice_prefab/trim{
 	dir = 6
@@ -38660,13 +38790,6 @@
 	},
 /turf/open/floor/prison/blue/east,
 /area/lv522/indoors/a_block/hallway)
-"uab" = (
-/obj/structure/prop/invuln/rope{
-	pixel_x = 11;
-	pixel_y = 5
-	},
-/turf/open/auto_turf/shale/layer1,
-/area/sky)
 "uad" = (
 /obj/structure/closet/boxinggloves,
 /obj/effect/decal/cleanable/dirt,
@@ -50576,10 +50699,10 @@ cpy
 ien
 cpy
 cpy
+ien
 cpy
 cpy
-cpy
-cpy
+ien
 cpy
 cpy
 ien
@@ -50782,11 +50905,11 @@ ien
 ien
 ien
 ien
-cpy
-cpy
-cpy
-cpy
-cpy
+ien
+ien
+ien
+ien
+ien
 ien
 ien
 ien
@@ -50985,15 +51108,15 @@ pwR
 spn
 hJZ
 hJZ
+ien
 sjY
-sjY
+hJZ
 ien
-ien
-cpy
-cpy
-cpy
-ien
-ien
+hJZ
+aeo
+hJZ
+hJZ
+adO
 ien
 teE
 gBf
@@ -51193,15 +51316,15 @@ hJZ
 clY
 clY
 sjY
-ien
-cpy
-cpy
-cpy
-cpy
-cpy
-ien
+hJZ
+adv
+hJZ
+hJZ
+hJZ
+hJZ
+aeg
 teE
-gBf
+adL
 vHP
 wPV
 tyl
@@ -51399,13 +51522,13 @@ sjY
 clY
 clY
 sjY
-ien
-cpy
-cpy
-cpy
-cpy
-cpy
-xoj
+hJZ
+adv
+thI
+hJZ
+aek
+hJZ
+aeh
 tfO
 nIR
 abe
@@ -51605,14 +51728,14 @@ acB
 sjY
 clY
 clY
-ien
-ien
-cpy
-cpy
-cpy
-ien
-xoj
-ien
+hJZ
+adv
+thI
+hJZ
+tPv
+clY
+aeh
+nKj
 nIR
 gJL
 ukT
@@ -51811,14 +51934,14 @@ acB
 acB
 clY
 clY
+clY
 ien
-cpy
-cpy
-cpy
-cpy
-cpy
-ien
-tfZ
+hJZ
+mwX
+ael
+sjY
+aeg
+nKj
 nIR
 ttf
 tDR
@@ -52015,16 +52138,16 @@ saQ
 sHy
 sNk
 acB
-clY
-clY
+adu
+aeq
 ien
-cpy
-cpy
-cpy
-cpy
+ien
+ien
+tPv
+hJZ
 bOX
-xoj
-tfZ
+aeh
+adM
 mIx
 pxO
 wdj
@@ -52221,16 +52344,16 @@ acC
 sDf
 sNQ
 acB
-sjY
+aet
+aer
 clY
 ien
-ien
-cpy
-cpy
-cpy
-ien
-xoj
-xoj
+hJZ
+tPv
+hJZ
+clY
+aeh
+adN
 she
 tNS
 tEW
@@ -52429,13 +52552,13 @@ sPH
 acB
 sjY
 clY
-ien
-cpy
-cpy
-cpy
-cpy
-cpy
-ien
+clY
+sjY
+hJZ
+tPv
+hJZ
+hJZ
+aei
 she
 she
 nKj
@@ -52635,19 +52758,19 @@ sRx
 acB
 clY
 clY
-ien
-ien
-cpy
-ien
-cpy
-ien
+clY
+clY
+sjY
+aep
+hJZ
+aej
 ien
 tjg
-nKj
+tfZ
 nKj
 she
 she
-jnr
+adK
 yiM
 mGC
 pfJ
@@ -52839,13 +52962,13 @@ sDf
 sLZ
 acB
 acB
-adu
-sIS
-ien
-ien
-ien
-ien
-ien
+aes
+aes
+aen
+aen
+aen
+aen
+aen
 xoj
 xoj
 ien
@@ -90335,10 +90458,10 @@ roM
 rzq
 roM
 roM
+rzq
 roM
 roM
-roM
-roM
+rzq
 roM
 roM
 rzq
@@ -90541,11 +90664,11 @@ rzq
 rzq
 rzq
 rzq
-roM
-roM
-roM
-roM
-roM
+rzq
+rzq
+rzq
+rzq
+rzq
 rzq
 rzq
 rzq
@@ -90748,9 +90871,9 @@ rzq
 rzq
 rzq
 rzq
-roM
-roM
-roM
+rzq
+rzq
+rzq
 rzq
 rzq
 rzq
@@ -90953,11 +91076,11 @@ rzq
 rzq
 rzq
 rzq
-roM
-roM
-roM
-roM
-roM
+rzq
+rzq
+rzq
+rzq
+rzq
 rzq
 rzq
 rzq
@@ -91159,11 +91282,11 @@ rzq
 rzq
 rzq
 rzq
-roM
-roM
-roM
-roM
-roM
+rzq
+rzq
+rzq
+rzq
+rzq
 rzq
 rzq
 rzq
@@ -91366,9 +91489,9 @@ rzq
 rzq
 rzq
 rzq
-roM
-roM
-roM
+rzq
+rzq
+rzq
 rzq
 rzq
 rzq
@@ -91571,11 +91694,11 @@ add
 rzq
 rzq
 rzq
-roM
-roM
-roM
-roM
-roM
+rzq
+rzq
+rzq
+rzq
+rzq
 rzq
 rzq
 rzq
@@ -91777,11 +91900,11 @@ acZ
 rzq
 rzq
 rzq
-roM
-roM
-roM
-roM
-roM
+rzq
+rzq
+rzq
+rzq
+rzq
 rzq
 rzq
 rzq
@@ -91983,10 +92106,10 @@ acZ
 rzq
 rzq
 rzq
-roM
-roM
-roM
-roM
+rzq
+rzq
+rzq
+rzq
 rzq
 rzq
 rzq
@@ -92189,11 +92312,11 @@ acZ
 rzq
 rzq
 rzq
-roM
-roM
-roM
-roM
-roM
+rzq
+rzq
+rzq
+rzq
+rzq
 rzq
 rzq
 rzq
@@ -92396,9 +92519,9 @@ rzq
 rzq
 rzq
 rzq
-roM
 rzq
-roM
+rzq
+rzq
 rzq
 rzq
 rzq
@@ -128226,8 +128349,8 @@ roM
 roM
 roM
 roM
-fIA
-fIA
+roM
+roM
 roM
 roM
 roM
@@ -128431,10 +128554,10 @@ roM
 roM
 roM
 roM
-fQa
-esO
-deB
-djF
+roM
+roM
+roM
+roM
 roM
 roM
 roM
@@ -128636,12 +128759,12 @@ roM
 roM
 roM
 roM
-fQa
-jNb
-osc
-wtq
-qYy
-fIA
+roM
+roM
+roM
+roM
+roM
+roM
 roM
 roM
 roM
@@ -128841,13 +128964,13 @@ roM
 roM
 roM
 roM
-flN
-jNb
-rza
-wiq
-cIS
-qYy
-fIA
+roM
+roM
+roM
+roM
+roM
+roM
+roM
 roM
 roM
 roM
@@ -129047,13 +129170,13 @@ roM
 roM
 roM
 roM
-mdU
-vvN
-cYd
-cYd
-rmA
-cAl
-fIA
+roM
+roM
+roM
+roM
+roM
+roM
+roM
 roM
 roM
 roM
@@ -129252,13 +129375,13 @@ roM
 roM
 roM
 roM
-fIA
-mdU
-cbX
-nKr
-rME
-qoZ
-cYd
+roM
+roM
+roM
+roM
+roM
+roM
+roM
 roM
 roM
 roM
@@ -129458,13 +129581,13 @@ roM
 roM
 roM
 roM
-fIA
-qVN
-cIS
-suw
-ngM
-qoZ
-fIA
+roM
+roM
+roM
+roM
+roM
+roM
+roM
 roM
 roM
 roM
@@ -129664,13 +129787,13 @@ roM
 roM
 roM
 roM
-cYd
-hsD
-dhO
-cIS
-rmA
-ruv
-fIA
+roM
+roM
+roM
+roM
+roM
+roM
+roM
 roM
 roM
 roM
@@ -129870,12 +129993,12 @@ roM
 roM
 roM
 roM
-cYd
-cYd
-hsD
-lpe
-cAl
-fIA
+roM
+roM
+roM
+roM
+roM
+roM
 roM
 roM
 roM
@@ -130076,13 +130199,13 @@ roM
 rzq
 roM
 roM
-cCg
-cYd
-uab
-cCg
-fIA
-fIA
-cCg
+roM
+roM
+roM
+roM
+roM
+roM
+roM
 roM
 roM
 rzq

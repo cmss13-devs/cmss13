@@ -374,3 +374,7 @@
   - bugfix: Yautja gauntlet help combo now deals damage to humanoids.
   riot:
   - rscadd: Knockoff Bimax sunglasses can now be bought in the loadout as non-civilians.
+2026-02-24:
+  Puckaboo2:
+  - spellcheck: '''transferred'', ''transferring'', ''suppress'', ''modifying'', and
+      ''chosen'' are no longer misspelled, among other words.'

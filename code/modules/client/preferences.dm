@@ -104,6 +104,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/dual_wield_pref = DUAL_WIELD_FIRE
 	var/playtime_perks = TRUE
 	var/skip_playtime_ranks = FALSE
+	var/show_minimap_ceiling_protection = FALSE
 
 	//Synthetic specific preferences
 	var/synthetic_name = "Undefined"

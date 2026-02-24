@@ -619,8 +619,8 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 	if(!client)
 		return
 	for(var/obj/effect/alien/resin/design/des in hive.designer_marks)
-		if(des.choosenMark)
-			client.images |= des.choosenMark
+		if(des.chosenMark)
+			client.images |= des.chosenMark
 
 /mob/living/carbon/xenomorph/proc/hud_set_plasma()
 	var/image/holder = hud_list[PLASMA_HUD]

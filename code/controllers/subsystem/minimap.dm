@@ -1435,9 +1435,9 @@ SUBSYSTEM_DEF(minimaps)
 
 /atom/movable/screen/minimap_tool/update/proc/announce_human(mob/user)
 	playsound_client(user.client, "sound/effects/data-transmission.ogg")
-
-	var/atom/movable/screen/minimap/minimap_to_update = SSminimaps.fetch_minimap_object(2, MINIMAP_FLAG_USCM, live=FALSE, popup=FALSE, drawing=TRUE)
-	minimap_to_update.update()
+	for(var/z_to_update in SSmapping.levels_by_trait(ZTRAIT_GROUND))
+		var/atom/movable/screen/minimap/minimap_to_update = SSminimaps.fetch_minimap_object(z_to_update, MINIMAP_FLAG_USCM, live=FALSE, popup=FALSE, drawing=TRUE)
+		minimap_to_update.update()
 
 	user.client.images += drawn_image
 	var/icon/flat_drawing = icon(user.client.RenderIcon(drawn_image))

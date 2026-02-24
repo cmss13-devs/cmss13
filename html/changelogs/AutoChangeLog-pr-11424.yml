@@ -1,5 +1,0 @@
-author: "MistChristmas"
-delete-after: True
-changes:
-  - bugfix: "USCM Synths now spawn with selected generation."
-  - code_imp: "Synth Colonial variants are no longer a species. Moved under existing Generations."

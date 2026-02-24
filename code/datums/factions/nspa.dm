@@ -6,12 +6,11 @@
 /datum/faction/nspa/modify_hud_holder(image/holder, mob/living/carbon/human/human)
 	var/icon/override_icon_file
 	var/hud_icon_state
-	var/obj/item/card/id/ID = human.get_idcard()
-	var/_role
-	if(human.mind)
-		_role = human.job
-	else if(ID)
-		_role = ID.rank
+	var/_role = human.job
+	if(!_role)
+		var/obj/item/card/id/id_card = human.get_idcard()
+		if(id_card)
+			_role = id_card.rank
 	switch(_role)
 		if(JOB_NSPA_CST)
 			hud_icon_state = "con"

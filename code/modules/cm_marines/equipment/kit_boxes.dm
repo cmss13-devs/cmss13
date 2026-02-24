@@ -144,6 +144,8 @@
 	new /obj/item/ammo_magazine/rifle/m4ra/custom(src)
 	new /obj/item/ammo_magazine/rifle/m4ra/custom/incendiary(src)
 	new /obj/item/ammo_magazine/rifle/m4ra/custom/incendiary(src)
+	new /obj/item/ammo_magazine/rifle/m4ra/custom/incendiary(src)
+	new /obj/item/ammo_magazine/rifle/m4ra/custom/impact(src)
 	new /obj/item/ammo_magazine/rifle/m4ra/custom/impact(src)
 	new /obj/item/ammo_magazine/rifle/m4ra/custom/impact(src)
 	new /obj/item/weapon/gun/pistol/vp78(src)
@@ -203,6 +205,7 @@
 	name = "\improper SHARP Operator equipment case"
 	desc = "A large case containing a P9 SHARP rifle, M3-G4 Grenadier armor and helmet, and various pieces of additional equipment.\nDrag this sprite onto yourself to open it up!"
 	kit_overlay = "grenadier"
+	kit_name = "sharp_operator"
 
 /obj/item/storage/box/spec/sharp_operator/fill_preset_inventory()
 	new /obj/item/weapon/gun/rifle/sharp(src)

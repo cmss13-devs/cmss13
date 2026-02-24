@@ -92,7 +92,7 @@
 			if (fullness > NUTRITION_VERYLOW && fullness <= NUTRITION_LOW)
 				to_chat(M, SPAN_NOTICE("You hungrily chomp down on a chunk of [src]."))
 			if (fullness > NUTRITION_LOW && fullness <= NUTRITION_NORMAL)
-				to_chat(M, SPAN_NOTICE(" You take a bite of [src]."))
+				to_chat(M, SPAN_NOTICE("You take a bite of [src]."))
 			if (fullness > NUTRITION_NORMAL && fullness <= NUTRITION_HIGH)
 				to_chat(M, SPAN_NOTICE("You unwillingly chew a bit of [src]."))
 			if (fullness > NUTRITION_HIGH)
@@ -239,7 +239,7 @@
 					M.emote("[sattisfaction_text].")
 				qdel(src)
 		if(ismouse(M))
-			var/mob/living/simple_animal/mouse/N = M
+			var/mob/living/simple_animal/small/mouse/N = M
 			to_chat(N, text(SPAN_NOTICE("You nibble away at [src].")))
 			if(prob(50))
 				N.visible_message("[N] nibbles away at [src].", "")

@@ -260,11 +260,11 @@
 			if(JOB_WO_PILOT)
 				marine_rk = "wo_mcrew"
 			// Check squad marines here too, for the unique ones
-			if(JOB_SQUAD_ENGI, JOB_WO_SQUAD_MARINE)
+			if(JOB_SQUAD_ENGI, JOB_WO_SQUAD_ENGINEER)
 				marine_rk = "engi"
 			if(JOB_SQUAD_MEDIC, JOB_WO_SQUAD_MEDIC)
 				marine_rk = "med"
-			if(JOB_SQUAD_SPECIALIST, JOB_WO_SQUAD_MEDIC)
+			if(JOB_SQUAD_SPECIALIST, JOB_WO_SQUAD_SPECIALIST)
 				marine_rk = "spec"
 			if(JOB_SQUAD_SMARTGUN, JOB_WO_SQUAD_SMARTGUNNER)
 				marine_rk = "gun"

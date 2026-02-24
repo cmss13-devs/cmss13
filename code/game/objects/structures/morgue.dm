@@ -233,33 +233,42 @@
 
 		update_icon()
 
-		for(var/mob/living/M in contents)
-			if(M.stat!=DEAD)
-				if(!ishuman(M))
-					M.emote("scream")
-				else
-					var/mob/living/carbon/human/H = M
-					if(H.pain.feels_pain)
-						H.emote("scream")
+		for(var/obj/structure/closet/body_container in contents)
+			for(var/mob/living/mob_being_cremated in body_container.contents)
+				handle_mobs(user, mob_being_cremated)
+			qdel(body_container)
 
-			user.attack_log +="\[[time_stamp()]\] Cremated <b>[key_name(M)]</b>"
-			msg_admin_attack("\[[time_stamp()]\] <b>[key_name(user)]</b> cremated <b>[key_name(M)]</b> in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
-			M.death(create_cause_data("cremation", user), TRUE)
-			M.ghostize()
-			qdel(M)
+		for(var/mob/living/mob_being_cremated in contents)
+			handle_mobs(user, mob_being_cremated)
 
-		for(var/obj/O in contents)
-			if(istype(O, /obj/structure/morgue_tray))
+		for(var/obj/item/item in contents)
+			if(item.is_objective)
 				continue
-			qdel(O)
+			qdel(item)
 
-		new /obj/effect/decal/cleanable/ash(src)
 		sleep(30)
+		new /obj/effect/decal/cleanable/ash(get_step(loc, dir))
+		visible_message(SPAN_NOTICE("[src] finishes its undertaking and empties out the ashes."), null, 2)
 		cremating = 0
 		update_icon()
 		playsound(src.loc, 'sound/machines/ding.ogg', 25, 1)
 
+/obj/structure/morgue/crematorium/proc/handle_mobs(mob/user, mob/mob_being_cremated)
+	var/human_was_alive
+	if(mob_being_cremated.stat!=DEAD)
+		if(!ishuman(mob_being_cremated))
+			mob_being_cremated.emote("scream")
+		else
+			var/mob/living/carbon/human/human_being_cremated = mob_being_cremated
+			human_was_alive = TRUE
+			if(human_being_cremated.pain.feels_pain)
+				human_being_cremated.emote("scream")
 
+	user.attack_log +="\[[time_stamp()]\] Cremated [SPAN_BOLD(key_name(mob_being_cremated))][human_was_alive ? " they were Alive upon cremation." : "."]"
+	msg_admin_attack("\[[time_stamp()]\] [SPAN_BOLD(key_name(user))] cremated [SPAN_BOLD(key_name(mob_being_cremated))][human_was_alive ? " they were Alive upon cremation, " : ""] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
+	mob_being_cremated.death(create_cause_data("cremation", user), TRUE)
+	mob_being_cremated.ghostize()
+	qdel(mob_being_cremated)
 /*
  * Crematorium tray
  */

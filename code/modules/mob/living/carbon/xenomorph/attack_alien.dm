@@ -1232,7 +1232,7 @@
 
 /obj/structure/machinery/vending/attack_alien(mob/living/carbon/xenomorph/M)
 	if(is_tipped_over)
-		to_chat(M, SPAN_WARNING("There's no reason to bother with that old piece of trash."))
+		to_chat(M, SPAN_WARNING("There's no reason to bother with that [unslashable ? "old" : "broken"] piece of trash."))
 		return XENO_NO_DELAY_ACTION
 
 	if(M.a_intent == INTENT_HARM)
@@ -1297,22 +1297,6 @@
 	xeno.tail_stab_animation(src, blunt_stab)
 	deflate(TRUE)
 	return TAILSTAB_COOLDOWN_NORMAL
-
-/obj/structure/machinery/vending/proc/tip_over()
-	var/matrix/A = matrix()
-	is_tipped_over = TRUE
-	density = FALSE
-	A.Turn(90)
-	apply_transform(A)
-	malfunction()
-
-/obj/structure/machinery/vending/proc/flip_back()
-	icon_state = initial(icon_state)
-	is_tipped_over = FALSE
-	density = TRUE
-	var/matrix/A = matrix()
-	apply_transform(A)
-	stat &= ~BROKEN //Remove broken. MAGICAL REPAIRS
 
 //Misc
 /obj/structure/prop/invuln/joey/attack_alien(mob/living/carbon/xenomorph/alien)

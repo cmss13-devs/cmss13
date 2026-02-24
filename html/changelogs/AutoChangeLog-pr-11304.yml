@@ -1,5 +1,0 @@
-author: "IowaPotatoFarmer"
-delete-after: True
-changes:
-  - rscadd: "Added unique synth survivors to Solaris Ridge."
-  - rscdel: "Removed the high-capacity industrial blowtorch that would spawn in some synth survivor backpacks."

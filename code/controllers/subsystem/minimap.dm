@@ -1526,6 +1526,12 @@ SUBSYSTEM_DEF(minimaps)
 	desc = "Move up a level."
 	screen_loc = "15,6"
 
+/atom/movable/screen/minimap_tool/up/clicked(mob/user, list/modifiers)
+	if(!SSmapping.same_z_map(zlevel, zlevel+1))
+		return
+
+	owner.move_tacmap_up()
+
 /atom/movable/screen/minimap_tool/up/simple
 
 /atom/movable/screen/minimap_tool/up/simple/clicked(mob/user, list/modifiers)
@@ -1576,12 +1582,6 @@ SUBSYSTEM_DEF(minimaps)
 				user.client.remove_from_screen(map.locator)
 
 	update_shown_map(user, new_linked_map)
-
-/atom/movable/screen/minimap_tool/up/clicked(mob/user, list/modifiers)
-	if(!SSmapping.same_z_map(zlevel, zlevel+1))
-		return
-
-	owner.move_tacmap_up()
 
 /atom/movable/screen/minimap_tool/down
 	icon_state = "down"

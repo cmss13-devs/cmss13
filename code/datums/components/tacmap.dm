@@ -62,7 +62,6 @@
 	map = null
 	for(var/mob/interactee in _interactees)
 		show_tacmap(interactee)
-		tgui_interact(interactee)
 
 /datum/component/tacmap/proc/move_tacmap_down()
 	targetted_zlevel--
@@ -73,7 +72,6 @@
 	map = null
 	for(var/mob/interactee in _interactees)
 		show_tacmap(interactee)
-		tgui_interact(interactee)
 
 /datum/component/tacmap/proc/popout(mob/user)
 	var/datum/tgui/maybe_ui = SStgui.get_open_ui(user, src)

@@ -179,9 +179,10 @@
 /turf/closed/wall/strata_outpost,
 /area/lv522/landing_zone_1/ceiling)
 "aaF" = (
-/turf/closed/shuttle/dropship3/tornado{
-	icon_state = "15"
+/obj/structure/shuttle/part/dropship3/lower_right_wall{
+	name = "\improper Tornado"
 	},
+/turf/open/floor/plating,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "aaG" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
@@ -1001,11 +1002,44 @@
 /obj/structure/fence/slim/dark/door,
 /turf/open/floor/prison/floor_plate,
 /area/lv522/outdoors/nw_rockies)
+"adD" = (
+/obj/structure/machinery/door/airlock/dropship_hatch/two,
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"adE" = (
+/turf/closed/shuttle/dropship3/tornado{
+	icon_state = "81"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"adF" = (
+/obj/structure/shuttle/part/dropship3/transparent/outer_left_weapons{
+	name = "\improper Tornado"
+	},
+/turf/open/floor/plating,
+/area/lv522/landing_zone_forecon/UD6_Tornado)
 "adG" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/reagent_container/food/condiment/saltshaker,
 /turf/open/floor/prison/darkredfull2,
 /area/lv522/indoors/lone_buildings/chunk)
+"adH" = (
+/obj/structure/shuttle/part/dropship3/transparent/inner_left_weapons{
+	name = "\improper Tornado"
+	},
+/turf/open/floor/plating,
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"adI" = (
+/obj/structure/shuttle/part/dropship3/transparent/inner_right_weapons{
+	name = "\improper Tornado"
+	},
+/turf/open/floor/plating,
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"adJ" = (
+/obj/structure/shuttle/part/dropship3/transparent/outer_right_weapons{
+	name = "\improper Tornado"
+	},
+/turf/open/floor/plating,
+/area/lv522/landing_zone_forecon/UD6_Tornado)
 "adP" = (
 /obj/structure/barricade/deployable{
 	dir = 4
@@ -1052,7 +1086,9 @@
 /turf/open/floor/prison/floor_plate,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "adV" = (
-/obj/structure/cargo_container/horizontal/blue/top,
+/obj/structure/cargo_container/horizontal/blue/top{
+	layer = 3.1
+	},
 /turf/open/floor/plating,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "adW" = (
@@ -6520,7 +6556,7 @@
 	pixel_x = 8;
 	pixel_y = 10
 	},
-/turf/closed/shuttle/dropship3/tornado/typhoon{
+/turf/closed/shuttle/dropship3/typhoon/transparent{
 	icon_state = "22"
 	},
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
@@ -7353,7 +7389,7 @@
 /turf/open/floor/carpet,
 /area/lv522/indoors/c_block/garage)
 "dIr" = (
-/turf/closed/shuttle/dropship3/tornado{
+/turf/closed/shuttle/dropship3/tornado/transparent{
 	icon_state = "22"
 	},
 /area/lv522/landing_zone_forecon/UD6_Tornado)
@@ -7871,9 +7907,10 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/c_block/cargo)
 "dWv" = (
-/turf/closed/shuttle/dropship3/tornado{
-	icon_state = "6"
+/obj/structure/shuttle/part/dropship3/transparent/right_outer_bottom_wing{
+	name = "\improper Tornado"
 	},
+/turf/open/floor/plating,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "dWD" = (
 /obj/structure/cargo_container/kelland/left,
@@ -7908,7 +7945,7 @@
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/containers)
 "dWY" = (
-/turf/closed/shuttle/dropship3/tornado{
+/turf/closed/shuttle/dropship3/tornado/transparent{
 	icon_state = "32"
 	},
 /area/lv522/landing_zone_forecon/UD6_Tornado)
@@ -9609,7 +9646,7 @@
 /turf/open/floor/corsat/marked,
 /area/lv522/indoors/lone_buildings/outdoor_bot)
 "eUS" = (
-/turf/closed/shuttle/dropship3/tornado{
+/turf/closed/shuttle/dropship3/tornado/transparent{
 	icon_state = "33"
 	},
 /area/lv522/landing_zone_forecon/UD6_Tornado)
@@ -10571,7 +10608,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/b_block/bridge)
 "fzC" = (
-/turf/closed/shuttle/dropship3/tornado{
+/turf/closed/shuttle/dropship3/tornado/transparent{
 	icon_state = "28"
 	},
 /area/lv522/landing_zone_forecon/UD6_Tornado)
@@ -10664,7 +10701,7 @@
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/indoors/lone_buildings/storage_blocks/south)
 "fDg" = (
-/turf/closed/shuttle/dropship3/tornado/typhoon{
+/turf/closed/shuttle/dropship3/typhoon{
 	icon_state = "30"
 	},
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
@@ -12140,7 +12177,7 @@
 /turf/open/floor/prison/darkpurplefull2,
 /area/lv522/indoors/a_block/dorms)
 "guR" = (
-/turf/closed/shuttle/dropship3/tornado/typhoon{
+/turf/closed/shuttle/dropship3/typhoon/transparent{
 	icon_state = "26"
 	},
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
@@ -15017,7 +15054,7 @@
 /turf/open/floor/prison/blue_plate,
 /area/lv522/indoors/a_block/admin)
 "ibE" = (
-/turf/closed/shuttle/dropship3/tornado{
+/turf/closed/shuttle/dropship3/tornado/transparent{
 	icon_state = "23"
 	},
 /area/lv522/landing_zone_forecon/UD6_Tornado)
@@ -19836,9 +19873,10 @@
 /turf/open/floor/prison/blue/west,
 /area/lv522/indoors/a_block/admin)
 "kzk" = (
-/turf/closed/shuttle/dropship3/tornado{
-	icon_state = "17"
+/obj/structure/shuttle/part/dropship3/transparent/engine_right_exhaust{
+	name = "\improper Tornado"
 	},
+/turf/open/floor/plating,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "kzl" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -24746,7 +24784,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/mining)
 "nbO" = (
-/turf/closed/shuttle/dropship3/tornado/typhoon{
+/turf/closed/shuttle/dropship3/typhoon{
 	icon_state = "77"
 	},
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
@@ -24900,7 +24938,7 @@
 /turf/open/floor/prison/blue_plate/north,
 /area/lv522/indoors/a_block/bridges/garden_bridge)
 "nfq" = (
-/turf/closed/shuttle/dropship3/tornado/typhoon{
+/turf/closed/shuttle/dropship3/typhoon{
 	icon_state = "36"
 	},
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
@@ -26204,7 +26242,10 @@
 /turf/open/floor/prison/darkredfull2,
 /area/lv522/indoors/a_block/security)
 "nPN" = (
-/turf/closed/shuttle/dropship3/tornado,
+/obj/structure/shuttle/part/dropship3/transparent/left_outer_bottom_wing{
+	name = "\improper Tornado"
+	},
+/turf/open/floor/plating,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "nPV" = (
 /turf/open/asphalt/cement/cement2,
@@ -26361,7 +26402,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/admin)
 "nSN" = (
-/turf/closed/shuttle/dropship3/tornado{
+/turf/closed/shuttle/dropship3/tornado/transparent{
 	icon_state = "27"
 	},
 /area/lv522/landing_zone_forecon/UD6_Tornado)
@@ -26702,10 +26743,11 @@
 /turf/open/floor/prison/greenfull,
 /area/lv522/indoors/a_block/fitness)
 "obe" = (
-/turf/closed/shuttle/dropship3/tornado/typhoon{
-	icon_state = "40"
+/obj/structure/shuttle/part/dropship3/transparent/inner_left_weapons{
+	name = "\improper Typhoon"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/turf/open/auto_turf/shale/layer1,
+/area/lv522/landing_zone_forecon/UD6_Typhoon)
 "obl" = (
 /obj/structure/platform_decoration/metal/almayer/east,
 /turf/open/auto_turf/sand_white/layer0,
@@ -28839,9 +28881,10 @@
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/indoors/c_block/mining)
 "pkB" = (
-/turf/closed/shuttle/dropship3/tornado{
-	icon_state = "9"
+/obj/structure/shuttle/part/dropship3/bottom_left_wall{
+	name = "\improper Tornado"
 	},
+/turf/open/floor/plating,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "pkE" = (
 /obj/structure/machinery/light{
@@ -28935,9 +28978,10 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "pps" = (
-/turf/closed/shuttle/dropship3/tornado/typhoon{
-	icon_state = "100"
+/obj/structure/shuttle/part/dropship3/transparent/nose_top_left{
+	name = "\improper Typhoon"
 	},
+/turf/open/auto_turf/shale/layer1,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "ppy" = (
 /obj/structure/surface/table/almayer{
@@ -28955,9 +28999,10 @@
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/south_east_street)
 "ppF" = (
-/turf/closed/shuttle/dropship3/tornado/typhoon{
-	icon_state = "101"
+/obj/structure/shuttle/part/dropship3/transparent/nose_center{
+	name = "\improper Typhoon"
 	},
+/turf/open/auto_turf/shale/layer1,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "ppK" = (
 /obj/structure/surface/table/almayer,
@@ -29029,14 +29074,16 @@
 /turf/open/floor/prison/blue,
 /area/lv522/indoors/a_block/hallway)
 "pqZ" = (
-/turf/closed/shuttle/dropship3/tornado/typhoon{
-	icon_state = "102"
+/obj/structure/shuttle/part/dropship3/transparent/nose_top_right{
+	name = "\improper Typhoon"
 	},
+/turf/open/auto_turf/shale/layer1,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "prD" = (
-/turf/closed/shuttle/dropship3/tornado{
-	icon_state = "5"
+/obj/structure/shuttle/part/dropship3/transparent/right_inner_bottom_wing{
+	name = "\improper Tornado"
 	},
+/turf/open/floor/plating,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "prM" = (
 /obj/structure/cargo_container/horizontal/blue/top,
@@ -29194,9 +29241,10 @@
 /turf/open/floor/prison/floor_plate,
 /area/lv522/indoors/a_block/dorms)
 "pxY" = (
-/turf/closed/shuttle/dropship3/tornado/typhoon{
-	icon_state = "95"
+/obj/structure/shuttle/part/dropship3/nose_front_left{
+	name = "\improper Typhoon"
 	},
+/turf/open/auto_turf/shale/layer1,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "pxZ" = (
 /obj/structure/bed/chair{
@@ -29205,7 +29253,7 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/colony_streets/containers)
 "pys" = (
-/turf/closed/shuttle/dropship3/tornado{
+/turf/closed/shuttle/dropship3/typhoon/transparent{
 	icon_state = "97"
 	},
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
@@ -29218,9 +29266,10 @@
 	pixel_x = -8;
 	pixel_y = 10
 	},
-/turf/closed/shuttle/dropship3/tornado/typhoon{
-	icon_state = "99"
+/obj/structure/shuttle/part/dropship3/nose_front_right{
+	name = "\improper Typhoon"
 	},
+/turf/open/auto_turf/shale/layer1,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "pyQ" = (
 /obj/structure/platform/metal/almayer/west,
@@ -29561,7 +29610,7 @@
 /turf/open/floor/prison/darkpurplefull2,
 /area/lv522/indoors/a_block/bridges/dorms_fitness)
 "pIu" = (
-/turf/closed/shuttle/dropship3/tornado/typhoon{
+/turf/closed/shuttle/dropship3/typhoon/transparent{
 	icon_state = "86"
 	},
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
@@ -29936,13 +29985,13 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/garage)
 "pRK" = (
-/turf/closed/shuttle/dropship3/tornado/typhoon{
+/turf/closed/shuttle/dropship3/typhoon{
 	icon_state = "75"
 	},
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "pRM" = (
-/turf/closed/shuttle/dropship3/tornado/typhoon{
-	icon_state = "81"
+/turf/closed/shuttle/dropship3/typhoon{
+	icon_state = "76"
 	},
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "pRR" = (
@@ -30194,7 +30243,7 @@
 /turf/open/floor/prison/cell_stripe/north,
 /area/lv522/atmos/way_in_command_centre)
 "pZb" = (
-/turf/closed/shuttle/dropship3/tornado/typhoon{
+/turf/closed/shuttle/dropship3/typhoon/transparent{
 	icon_state = "33"
 	},
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
@@ -30552,9 +30601,10 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/dorm_north)
 "qjs" = (
-/turf/closed/shuttle/dropship3/tornado/typhoon{
-	icon_state = "71"
+/obj/structure/shuttle/part/dropship3/transparent/upper_left_wing{
+	name = "\improper Typhoon"
 	},
+/turf/open/auto_turf/shale/layer1,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "qjt" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -30672,7 +30722,7 @@
 	pixel_x = -8;
 	pixel_y = 10
 	},
-/turf/closed/shuttle/dropship3/tornado/typhoon{
+/turf/closed/shuttle/dropship3/typhoon{
 	icon_state = "72"
 	},
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
@@ -30992,9 +31042,10 @@
 /turf/open/floor/corsat/marked,
 /area/lv522/atmos/east_reactor/south)
 "qtc" = (
-/turf/closed/shuttle/dropship3/tornado/typhoon{
-	icon_state = "74"
+/obj/structure/shuttle/part/dropship3/transparent/upper_right_wing{
+	name = "\improper Typhoon"
 	},
+/turf/open/auto_turf/shale/layer1,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "qts" = (
 /turf/open/floor/platingdmg1,
@@ -31228,7 +31279,7 @@
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "qzw" = (
-/turf/closed/shuttle/dropship3/tornado{
+/turf/closed/shuttle/dropship3/tornado/transparent{
 	icon_state = "26"
 	},
 /area/lv522/landing_zone_forecon/UD6_Tornado)
@@ -31512,9 +31563,10 @@
 /turf/open/floor/prison/darkredfull2,
 /area/lv522/outdoors/colony_streets/north_street)
 "qFs" = (
-/turf/closed/shuttle/dropship3/tornado/typhoon{
-	icon_state = "66"
+/obj/structure/shuttle/part/dropship3/transparent/middle_left_wing{
+	name = "\improper Typhoon"
 	},
+/turf/open/auto_turf/shale/layer1,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "qFE" = (
 /turf/open/asphalt/cement/cement1,
@@ -31569,7 +31621,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/bridges)
 "qGQ" = (
-/turf/closed/shuttle/dropship3/tornado/typhoon{
+/turf/closed/shuttle/dropship3/typhoon{
 	icon_state = "67"
 	},
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
@@ -31578,9 +31630,10 @@
 /turf/open/floor/prison/darkpurplefull2,
 /area/lv522/indoors/a_block/dorms)
 "qHg" = (
-/turf/closed/shuttle/dropship3/tornado{
-	icon_state = "2"
+/obj/structure/shuttle/part/dropship3/transparent/left_outer_inner_wing{
+	name = "\improper Tornado"
 	},
+/turf/open/floor/plating,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "qHj" = (
 /obj/effect/decal/cleanable/dirt,
@@ -31760,7 +31813,7 @@
 /turf/open/floor/prison/darkpurple2,
 /area/lv522/indoors/a_block/dorms)
 "qLz" = (
-/turf/closed/shuttle/dropship3/tornado/typhoon{
+/turf/closed/shuttle/dropship3/typhoon{
 	icon_state = "69"
 	},
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
@@ -31809,9 +31862,10 @@
 	pixel_x = -8;
 	pixel_y = 10
 	},
-/turf/closed/shuttle/dropship3/tornado/typhoon{
-	icon_state = "70"
+/obj/structure/shuttle/part/dropship3/transparent/middle_right_wing{
+	name = "\improper Typhoon"
 	},
+/turf/open/auto_turf/shale/layer1,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "qNg" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
@@ -31913,7 +31967,7 @@
 	pixel_x = -8;
 	pixel_y = 10
 	},
-/turf/closed/shuttle/dropship3/tornado/typhoon{
+/turf/closed/shuttle/dropship3/typhoon/transparent{
 	icon_state = "26"
 	},
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
@@ -32131,9 +32185,10 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/landing_zone_1)
 "qSP" = (
-/turf/closed/shuttle/dropship3/tornado/typhoon{
-	icon_state = "61"
+/obj/structure/shuttle/part/dropship3/transparent/lower_left_wing{
+	name = "\improper Typhoon"
 	},
+/turf/open/auto_turf/shale/layer1,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "qSS" = (
 /obj/structure/prop/ice_colony/dense/planter_box{
@@ -32145,7 +32200,7 @@
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/indoors/b_block/bridge)
 "qTh" = (
-/turf/closed/shuttle/dropship3/tornado/typhoon{
+/turf/closed/shuttle/dropship3/typhoon{
 	icon_state = "62"
 	},
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
@@ -32270,7 +32325,7 @@
 /turf/open/floor/prison/darkpurplefull2,
 /area/lv522/indoors/a_block/dorms)
 "qVl" = (
-/turf/closed/shuttle/dropship3/tornado/typhoon{
+/turf/closed/shuttle/dropship3/typhoon{
 	icon_state = "64"
 	},
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
@@ -32346,9 +32401,10 @@
 /turf/open/floor/corsat/marked,
 /area/lv522/indoors/a_block/dorms)
 "qWZ" = (
-/turf/closed/shuttle/dropship3/tornado/typhoon{
-	icon_state = "65"
+/obj/structure/shuttle/part/dropship3/transparent/lower_right_wing{
+	name = "\improper Typhoon"
 	},
+/turf/open/auto_turf/shale/layer1,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "qXs" = (
 /obj/structure/closet/firecloset/full,
@@ -32826,9 +32882,10 @@
 /turf/open/floor/prison/floor_plate,
 /area/lv522/indoors/a_block/bridges/corpo)
 "rfi" = (
-/turf/closed/shuttle/dropship3/tornado{
-	icon_state = "100"
+/obj/structure/shuttle/part/dropship3/transparent/nose_top_left{
+	name = "\improper Tornado"
 	},
+/turf/open/floor/plating,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "rfj" = (
 /obj/vehicle/train/cargo/trolley,
@@ -32893,9 +32950,10 @@
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/indoors/c_block/cargo)
 "rgA" = (
-/turf/closed/shuttle/dropship3/tornado{
-	icon_state = "101"
+/obj/structure/shuttle/part/dropship3/transparent/nose_center{
+	name = "\improper Tornado"
 	},
+/turf/open/floor/plating,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "rha" = (
 /obj/structure/surface/table/almayer,
@@ -32941,12 +32999,13 @@
 /turf/open/floor/prison/blue_plate/north,
 /area/lv522/indoors/a_block/bridges/op_centre)
 "rii" = (
-/turf/closed/shuttle/dropship3/tornado{
-	icon_state = "102"
+/obj/structure/shuttle/part/dropship3/transparent/nose_top_right{
+	name = "\improper Tornado"
 	},
+/turf/open/floor/plating,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "riE" = (
-/turf/closed/shuttle/dropship3/tornado/typhoon{
+/turf/closed/shuttle/dropship3/typhoon{
 	icon_state = "68"
 	},
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
@@ -33363,7 +33422,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/dorms)
 "ruj" = (
-/turf/closed/shuttle/dropship3/tornado/typhoon{
+/turf/closed/shuttle/dropship3/typhoon{
 	icon_state = "59"
 	},
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
@@ -33640,9 +33699,10 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/garage)
 "rAc" = (
-/turf/closed/shuttle/dropship3/tornado{
-	icon_state = "95"
+/obj/structure/shuttle/part/dropship3/nose_front_left{
+	name = "\improper Tornado"
 	},
+/turf/open/floor/plating,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "rAf" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -33683,12 +33743,13 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/admin)
 "rBU" = (
-/turf/closed/shuttle/dropship3/tornado/typhoon{
-	icon_state = "41"
+/obj/structure/shuttle/part/dropship3/transparent/engine_right_cap{
+	name = "\improper Typhoon"
 	},
+/turf/open/auto_turf/shale/layer1,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "rBZ" = (
-/turf/closed/shuttle/dropship3/tornado{
+/turf/closed/shuttle/dropship3/tornado/transparent{
 	icon_state = "97"
 	},
 /area/lv522/landing_zone_forecon/UD6_Tornado)
@@ -33704,9 +33765,10 @@
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/lv522/indoors/lone_buildings/engineering)
 "rCi" = (
-/turf/closed/shuttle/dropship3/tornado{
-	icon_state = "99"
+/obj/structure/shuttle/part/dropship3/nose_front_right{
+	name = "\improper Tornado"
 	},
+/turf/open/floor/plating,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "rCz" = (
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -33723,9 +33785,10 @@
 	pixel_x = -6;
 	pixel_y = 32
 	},
-/turf/closed/shuttle/dropship3/tornado{
-	icon_state = "17"
+/obj/structure/shuttle/part/dropship3/transparent/engine_right_exhaust{
+	name = "\improper Tornado"
 	},
+/turf/open/floor/plating,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "rCQ" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -33742,7 +33805,7 @@
 	id = "UD6";
 	name = "Cargo Shutter Control"
 	},
-/turf/closed/shuttle/dropship3/tornado/typhoon{
+/turf/closed/shuttle/dropship3/typhoon{
 	icon_state = "53"
 	},
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
@@ -33791,7 +33854,7 @@
 /turf/open/auto_turf/shale/layer2,
 /area/lv522/outdoors/nw_rockies)
 "rFp" = (
-/turf/closed/shuttle/dropship3/tornado/typhoon{
+/turf/closed/shuttle/dropship3/typhoon{
 	icon_state = "51"
 	},
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
@@ -33800,9 +33863,10 @@
 /turf/open/floor/plating,
 /area/lv522/landing_zone_2)
 "rGg" = (
-/turf/closed/shuttle/dropship3/tornado/typhoon{
-	icon_state = "40"
+/obj/structure/shuttle/part/dropship3/transparent/engine_left_cap{
+	name = "\improper Typhoon"
 	},
+/turf/open/auto_turf/shale/layer1,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "rGi" = (
 /obj/effect/decal/cleanable/blood{
@@ -34189,9 +34253,10 @@
 /turf/open/floor/strata/cyan2/east,
 /area/lv522/indoors/a_block/medical)
 "rOO" = (
-/turf/closed/shuttle/dropship3/tornado{
-	icon_state = "4"
+/obj/structure/shuttle/part/dropship3/right_outer_wing_connector{
+	name = "\improper Tornado"
 	},
+/turf/open/floor/plating,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "rOP" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -34633,7 +34698,7 @@
 /turf/open/asphalt/cement,
 /area/lv522/outdoors/colony_streets/south_west_street)
 "sbG" = (
-/turf/closed/shuttle/dropship3/tornado/typhoon{
+/turf/closed/shuttle/dropship3/typhoon/transparent{
 	icon_state = "28"
 	},
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
@@ -34656,14 +34721,15 @@
 /turf/open/floor/plating/platingdmg3,
 /area/lv522/indoors/a_block/kitchen/damage)
 "sci" = (
-/turf/closed/shuttle/dropship3/tornado/typhoon{
+/turf/closed/shuttle/dropship3/typhoon/transparent{
 	icon_state = "29"
 	},
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "sct" = (
-/turf/closed/shuttle/dropship3/tornado{
-	icon_state = "40"
+/obj/structure/shuttle/part/dropship3/transparent/engine_left_cap{
+	name = "\improper Tornado"
 	},
+/turf/open/floor/plating,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "scw" = (
 /obj/item/ammo_magazine/rifle/heap{
@@ -34685,7 +34751,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/bridges/op_centre)
 "sdE" = (
-/turf/closed/shuttle/dropship3/tornado/typhoon{
+/turf/closed/shuttle/dropship3/typhoon{
 	icon_state = "31"
 	},
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
@@ -34710,7 +34776,7 @@
 	pixel_x = -8;
 	pixel_y = 10
 	},
-/turf/closed/shuttle/dropship3/tornado/typhoon{
+/turf/closed/shuttle/dropship3/typhoon/transparent{
 	icon_state = "33"
 	},
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
@@ -34757,9 +34823,10 @@
 	pixel_x = 10;
 	pixel_y = 32
 	},
-/turf/closed/shuttle/dropship3/tornado/typhoon{
-	icon_state = "16"
+/obj/structure/shuttle/part/dropship3/transparent/engine_left_exhaust{
+	name = "\improper Typhoon"
 	},
+/turf/open/auto_turf/shale/layer1,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "sgm" = (
 /obj/item/stack/sheet/wood,
@@ -34829,7 +34896,7 @@
 /turf/open/floor/prison/greenfull,
 /area/lv522/indoors/a_block/fitness/glass)
 "shq" = (
-/turf/closed/shuttle/dropship3/tornado{
+/turf/closed/shuttle/dropship3/tornado/transparent{
 	icon_state = "86"
 	},
 /area/lv522/landing_zone_forecon/UD6_Tornado)
@@ -35300,7 +35367,7 @@
 /turf/open/floor/prison/floor_marked,
 /area/lv522/indoors/lone_buildings/storage_blocks/north_west)
 "ssU" = (
-/turf/closed/shuttle/dropship3/tornado{
+/turf/closed/shuttle/dropship3/tornado/transparent{
 	icon_state = "89"
 	},
 /area/lv522/landing_zone_forecon/UD6_Tornado)
@@ -35415,9 +35482,10 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/landing_zone_2)
 "swr" = (
-/turf/closed/shuttle/dropship3/tornado{
-	icon_state = "45"
+/obj/structure/shuttle/part/dropship3/transparent/engine_right_cap{
+	name = "\improper Tornado"
 	},
+/turf/open/floor/plating,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "swt" = (
 /obj/structure/prop/invuln/ice_prefab{
@@ -35754,7 +35822,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/lv522/indoors/b_block/hydro)
 "sFG" = (
-/turf/closed/shuttle/dropship3/tornado/typhoon{
+/turf/closed/shuttle/dropship3/typhoon/transparent{
 	icon_state = "22"
 	},
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
@@ -35765,12 +35833,12 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/colony_streets/north_west_street)
 "sFS" = (
-/turf/closed/shuttle/dropship3/tornado/typhoon{
+/turf/closed/shuttle/dropship3/typhoon/transparent{
 	icon_state = "23"
 	},
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "sGc" = (
-/turf/closed/shuttle/dropship3/tornado/typhoon{
+/turf/closed/shuttle/dropship3/typhoon{
 	icon_state = "24"
 	},
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
@@ -35829,7 +35897,7 @@
 /turf/open/floor/prison,
 /area/lv522/landing_zone_2)
 "sIx" = (
-/turf/closed/shuttle/dropship3/tornado/typhoon{
+/turf/closed/shuttle/dropship3/typhoon{
 	icon_state = "25"
 	},
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
@@ -35847,7 +35915,7 @@
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
 "sIK" = (
-/turf/closed/shuttle/dropship3/tornado/typhoon{
+/turf/closed/shuttle/dropship3/typhoon/transparent{
 	icon_state = "27"
 	},
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
@@ -36601,9 +36669,10 @@
 /turf/open/asphalt/cement/cement4,
 /area/lv522/outdoors/colony_streets/south_east_street)
 "tbl" = (
-/turf/closed/shuttle/dropship3/tornado/typhoon{
-	icon_state = "16"
+/obj/structure/shuttle/part/dropship3/transparent/engine_left_exhaust{
+	name = "\improper Typhoon"
 	},
+/turf/open/auto_turf/shale/layer1,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "tby" = (
 /obj/structure/bed/chair/comfy{
@@ -36643,9 +36712,10 @@
 /turf/open/floor/prison/floor_marked,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "tcz" = (
-/turf/closed/shuttle/dropship3/tornado/typhoon{
-	icon_state = "17"
+/obj/structure/shuttle/part/dropship3/transparent/engine_right_exhaust{
+	name = "\improper Typhoon"
 	},
+/turf/open/auto_turf/shale/layer1,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "tcE" = (
 /obj/structure/prop/ice_colony/dense/planter_box{
@@ -36701,12 +36771,13 @@
 /turf/open/floor/shiva/radiator_tile2,
 /area/lv522/indoors/a_block/bridges/corpo)
 "tdE" = (
-/turf/closed/shuttle/dropship3/tornado/typhoon{
-	icon_state = "46"
+/obj/structure/shuttle/part/dropship3/lower_left_wall{
+	name = "\improper Typhoon"
 	},
+/turf/open/auto_turf/shale/layer1,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "tdH" = (
-/turf/closed/shuttle/dropship3/tornado/typhoon{
+/turf/closed/shuttle/dropship3/typhoon{
 	icon_state = "47"
 	},
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
@@ -36795,7 +36866,7 @@
 /turf/open/floor/corsat/browncorner,
 /area/lv522/atmos/west_reactor)
 "tfV" = (
-/turf/closed/shuttle/dropship3/tornado/typhoon{
+/turf/closed/shuttle/dropship3/typhoon{
 	icon_state = "48"
 	},
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
@@ -36825,9 +36896,10 @@
 /turf/open/floor/prison/floor_marked/southwest,
 /area/lv522/landing_zone_1)
 "tgM" = (
-/turf/closed/shuttle/dropship3/tornado/typhoon{
-	icon_state = "49"
+/obj/structure/shuttle/part/dropship3/lower_right_wall{
+	name = "\improper Typhoon"
 	},
+/turf/open/auto_turf/shale/layer1,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "thc" = (
 /obj/structure/window/framed/strata/reinforced,
@@ -36845,9 +36917,10 @@
 /turf/open/floor/prison/darkpurplefull2,
 /area/lv522/indoors/a_block/dorms/glass)
 "the" = (
-/turf/closed/shuttle/dropship3/tornado{
-	icon_state = "71"
+/obj/structure/shuttle/part/dropship3/transparent/upper_left_wing{
+	name = "\improper Tornado"
 	},
+/turf/open/floor/plating,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "thI" = (
 /obj/structure/barricade/wooden{
@@ -38693,9 +38766,10 @@
 /turf/open/floor/prison/darkpurplefull2,
 /area/lv522/indoors/a_block/fitness)
 "ucD" = (
-/turf/closed/shuttle/dropship3/tornado{
-	icon_state = "74"
+/obj/structure/shuttle/part/dropship3/transparent/upper_right_wing{
+	name = "\improper Tornado"
 	},
+/turf/open/floor/plating,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "ucM" = (
 /obj/structure/pipes/standard/manifold/fourway/hidden/green,
@@ -39062,9 +39136,10 @@
 /turf/open/floor/prison/floor_marked,
 /area/lv522/indoors/lone_buildings/engineering)
 "ulh" = (
-/turf/closed/shuttle/dropship3/tornado{
-	icon_state = "3"
+/obj/structure/shuttle/part/dropship3/left_outer_wing_connector{
+	name = "\improper Tornado"
 	},
+/turf/open/floor/plating,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "ulL" = (
 /turf/open/floor/prison/darkpurple2/west,
@@ -39301,9 +39376,10 @@
 /turf/open/floor/corsat/brown/northeast,
 /area/lv522/atmos/reactor_garage)
 "uru" = (
-/turf/closed/shuttle/dropship3/tornado{
-	icon_state = "66"
+/obj/structure/shuttle/part/dropship3/transparent/middle_left_wing{
+	name = "\improper Tornado"
 	},
+/turf/open/floor/plating,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "urv" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -39785,9 +39861,10 @@
 	pixel_x = -6;
 	pixel_y = 32
 	},
-/turf/closed/shuttle/dropship3/tornado/typhoon{
-	icon_state = "17"
+/obj/structure/shuttle/part/dropship3/transparent/engine_right_exhaust{
+	name = "\improper Typhoon"
 	},
+/turf/open/auto_turf/shale/layer1,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "uFe" = (
 /obj/structure/machinery/light{
@@ -40790,7 +40867,10 @@
 /turf/open/auto_turf/shale/layer2,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "vcu" = (
-/turf/closed/shuttle/dropship3/tornado/typhoon,
+/obj/structure/shuttle/part/dropship3/transparent/left_outer_bottom_wing{
+	name = "\improper Typhoon"
+	},
+/turf/open/auto_turf/shale/layer1,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "vcF" = (
 /obj/effect/decal/cleanable/blood/oil,
@@ -40916,9 +40996,10 @@
 /turf/open/floor/wood,
 /area/lv522/indoors/c_block/casino)
 "vfl" = (
-/turf/closed/shuttle/dropship3/tornado/typhoon{
-	icon_state = "2"
+/obj/structure/shuttle/part/dropship3/transparent/left_outer_inner_wing{
+	name = "\improper Typhoon"
 	},
+/turf/open/auto_turf/shale/layer1,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "vfq" = (
 /obj/effect/decal/cleanable/dirt,
@@ -40962,9 +41043,10 @@
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/indoors/c_block/garage)
 "vga" = (
-/turf/closed/shuttle/dropship3/tornado/typhoon{
-	icon_state = "3"
+/obj/structure/shuttle/part/dropship3/left_outer_wing_connector{
+	name = "\improper Typhoon"
 	},
+/turf/open/auto_turf/shale/layer1,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "vgs" = (
 /obj/structure/bed,
@@ -40993,19 +41075,22 @@
 /turf/open/floor/corsat/browncorner/north,
 /area/lv522/oob/w_y_vault)
 "vhC" = (
-/turf/closed/shuttle/dropship3/tornado/typhoon{
-	icon_state = "4"
+/obj/structure/shuttle/part/dropship3/right_outer_wing_connector{
+	name = "\improper Typhoon"
 	},
+/turf/open/auto_turf/shale/layer1,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "vhJ" = (
-/turf/closed/shuttle/dropship3/tornado/typhoon{
-	icon_state = "5"
+/obj/structure/shuttle/part/dropship3/transparent/right_inner_bottom_wing{
+	name = "\improper Typhoon"
 	},
+/turf/open/auto_turf/shale/layer1,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "vhO" = (
-/turf/closed/shuttle/dropship3/tornado/typhoon{
-	icon_state = "6"
+/obj/structure/shuttle/part/dropship3/transparent/right_outer_bottom_wing{
+	name = "\improper Typhoon"
 	},
+/turf/open/auto_turf/shale/layer1,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "vir" = (
 /obj/structure/machinery/power/power_generator/reactor/colony,
@@ -41365,9 +41450,10 @@
 /turf/open/floor/prison/floor_plate,
 /area/lv522/indoors/a_block/corpo/glass)
 "vpU" = (
-/turf/closed/shuttle/dropship3/tornado{
-	icon_state = "70"
+/obj/structure/shuttle/part/dropship3/transparent/middle_right_wing{
+	name = "\improper Tornado"
 	},
+/turf/open/floor/plating,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "vqk" = (
 /obj/vehicle/train/cargo/trolley,
@@ -43504,9 +43590,10 @@
 /turf/open/floor/prison/darkpurplefull2,
 /area/lv522/indoors/a_block/dorms)
 "wqt" = (
-/turf/closed/shuttle/dropship3/tornado{
-	icon_state = "16"
+/obj/structure/shuttle/part/dropship3/transparent/engine_left_exhaust{
+	name = "\improper Tornado"
 	},
+/turf/open/floor/plating,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "wqA" = (
 /obj/structure/bed/chair{
@@ -43834,9 +43921,10 @@
 /turf/open/floor/corsat/marked,
 /area/lv522/indoors/a_block/bridges)
 "wyM" = (
-/turf/closed/shuttle/dropship3/tornado{
-	icon_state = "61"
+/obj/structure/shuttle/part/dropship3/transparent/lower_left_wing{
+	name = "\improper Tornado"
 	},
+/turf/open/floor/plating,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "wzg" = (
 /turf/closed/shuttle/dropship3/tornado{
@@ -44600,9 +44688,10 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/bridges/dorms_fitness)
 "wXe" = (
-/turf/closed/shuttle/dropship3/tornado{
-	icon_state = "65"
+/obj/structure/shuttle/part/dropship3/transparent/lower_right_wing{
+	name = "\improper Tornado"
 	},
+/turf/open/floor/plating,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "wXq" = (
 /obj/structure/surface/table/almayer,
@@ -45038,7 +45127,7 @@
 /turf/open/floor/wood,
 /area/lv522/indoors/c_block/casino)
 "xic" = (
-/turf/closed/shuttle/dropship3/tornado/typhoon{
+/turf/closed/shuttle/dropship3/typhoon/transparent{
 	icon_state = "32"
 	},
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
@@ -45388,7 +45477,7 @@
 /turf/open/asphalt/cement/cement12,
 /area/lv522/indoors/lone_buildings/engineering)
 "xsc" = (
-/turf/closed/shuttle/dropship3/tornado{
+/turf/closed/shuttle/dropship3/tornado/transparent{
 	icon_state = "29"
 	},
 /area/lv522/landing_zone_forecon/UD6_Tornado)
@@ -82999,13 +83088,13 @@ qUL
 qUL
 nSF
 qUL
-qUL
+adF
 sCp
 toY
 uwQ
 wzg
-xRM
-xRM
+adD
+adD
 bpZ
 wRL
 pAd
@@ -83205,7 +83294,7 @@ qUL
 qUL
 nSF
 qUL
-sct
+adH
 sIA
 dpS
 qbP
@@ -83824,7 +83913,7 @@ qUL
 rii
 rCi
 ssU
-sKi
+adE
 bYC
 dNx
 dNx
@@ -84029,7 +84118,7 @@ qUL
 qUL
 qUL
 pTW
-swr
+adI
 sIA
 goC
 jAX
@@ -84235,7 +84324,7 @@ qUL
 qUL
 qUL
 qUL
-qUL
+adJ
 tcu
 tSo
 vjv

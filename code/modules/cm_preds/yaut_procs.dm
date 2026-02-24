@@ -101,10 +101,6 @@
 	var/list/choices = list()
 	for(var/mob/living/carbon/M in view(1, src) - src)
 		if(Adjacent(M) && M.stat == DEAD)
-			if(ishuman(M))
-				var/mob/living/carbon/human/Q = M
-				if(Q.species && issamespecies(Q, src))
-					continue
 			choices += M
 
 	var/mob/living/carbon/T = tgui_input_list(src, "What do you wish to butcher?", "Butcher", choices)

@@ -99,7 +99,7 @@
 		log_message(msg, sender.key, "All mentors")
 
 	// Sender feedback
-	to_chat(sender, "[SPAN_MENTORHELP("<span class='prefix'>MentorHelp:</span> Message to [(recipient?.key) ? "<a href='byond://?src=\ref[src];action=message'>[recipient.key]</a>" : "mentors"]:")] [SPAN_MENTORBODY(msg)]")
+	to_chat(sender, "[SPAN_MENTORHELP("<span class='prefix'>MentorHelp:</span> Message to [(recipient?.username()) ? "<a href='byond://?src=\ref[src];action=message'>[recipient.username()]</a>" : "mentors"]:")] [SPAN_MENTORBODY(msg)]")
 
 	// Recipient direct message
 	if(recipient)
@@ -162,7 +162,8 @@
 // Sanitizes and wraps the message with some info and links, depending on the sender...?
 /datum/mentorhelp/proc/wrap_message(message, client/sender)
 	var/message_title = "MentorPM"
-	var/message_sender_name = "<a href='byond://?src=\ref[src];action=message'>[sender.mob?.name]</a>"
+  
+	var/message_sender_name = "<a href='byond://?src=\ref[src];action=message'>[sender.username()]</a>"
 	var/message_sender_options = ""
 
 	// The message is being sent to the mentor and should be formatted as a mentorhelp message
@@ -212,8 +213,8 @@
 
 	// the mentor exists, and is us, and we no longer want that to be the case
 	log_mhelp("[mentor.key] has unmarked [author_key]'s mentorhelp")
-	notify("<font style='color:red;'>[mentor.key]</font> has unmarked <font style='color:red;'><a href='byond://?src=\ref[src];action=message'>[author_key]</a></font>'s mentorhelp.")
-	to_chat(author, SPAN_NOTICE("<b>NOTICE:</b> <font style='color:red;'>[mentor.key]</font> has unmarked your thread and is no longer responding to it."))
+	notify("<font style='color:red;'>[mentor.username()]</font> has unmarked <font style='color:red;'><a href='byond://?src=\ref[src];action=message'>[author_key]</a></font>'s mentorhelp.")
+	to_chat(author, SPAN_NOTICE("<b>NOTICE:</b> <font style='color:red;'>[mentor.username()]</font> has unmarked your thread and is no longer responding to it."))
 	mentor = null
 
 /*

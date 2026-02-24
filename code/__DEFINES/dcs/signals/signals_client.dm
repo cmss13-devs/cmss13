@@ -42,3 +42,6 @@
 
 /// Called when view is modified through the change_view() setter : /client/proc/change_view(new_view)
 #define COMSIG_CLIENT_VIEW_CHANGED "client_changed_view"
+
+/// Called in /client/proc/PreLogin() after a client's mob has been logged into
+#define COMSIG_CLIENT_LOGGED_IN "client_logged_in"

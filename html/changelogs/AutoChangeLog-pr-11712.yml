@@ -1,0 +1,6 @@
+author: "TrollerNoob"
+delete-after: True
+changes:
+  - rscadd: "Topographical data has finally been linked to the USCM's Tactical Map readings. A system update has began to be rolled out fleet wide!"
+  - ui: "Added a 'Toggle Minimap Ceiling Overlay' preference underneath UI that showcases a new overlay for the minimap, one that color codes areas based on the tier of their ceiling. The darker the color, the harder the roof is to penetrate."
+  - ui: "Added an action button for it next to the Minimap button. The red version toggles the ceiling area mode on or off."

@@ -239,7 +239,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/yautja/hunter/knife/emissary/camo_conforming(new_human), WEAR_FEET)
 
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/cia(new_human), WEAR_L_EAR)
-	new_human.equip_to_slot_or_del(new  /obj/item/weapon/gun/rifle/mar40/lmg/tactical(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/mar40/lmg/tactical(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/yautja(new_human), WEAR_WAIST)
 
 	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/mre_food/clf/meatpie(new_human), WEAR_IN_BELT)

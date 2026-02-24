@@ -686,7 +686,7 @@
 /turf/open/floor/wood,
 /area/fiorina/station/chapel)
 "anl" = (
-/obj/item/pamphlet/engineer,
+/obj/item/pamphlet/upgradeable/engineer,
 /obj/structure/closet,
 /obj/item/restraint/handcuffs,
 /obj/effect/landmark/objective_landmark/close,
@@ -26537,7 +26537,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/lowsec)
 "uqd" = (
-/obj/item/pamphlet/skill/powerloader,
+/obj/item/pamphlet/upgradeable/powerloader,
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/station/medbay)
@@ -28435,7 +28435,7 @@
 /area/fiorina/station/lowsec/showers_laundry)
 "vRF" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/pamphlet/skill/powerloader,
+/obj/item/pamphlet/upgradeable/powerloader,
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/station/medbay)
 "vRH" = (

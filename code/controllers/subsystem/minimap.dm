@@ -105,37 +105,38 @@ SUBSYSTEM_DEF(minimaps)
 	for(var/xval = 1 to world.maxx)
 		for(var/yval = 1 to world.maxy) //Scan all the turfs and draw as needed
 			var/turf/location = locate(xval,yval,level)
+			var/area/turfloc = location.loc
+			var/base_color = location.minimap_color
+
 			if(location.density)
 				if(!istype(location, /turf/closed/wall/almayer/outer)) // Ignore almayer border
 					xmin = min(xmin, xval)
 					ymin = min(ymin, yval)
 					xmax = max(xmax, xval)
 					ymax = max(ymax, yval)
-				icon_gen.DrawBox(location.minimap_color, xval, yval)
+				base_color = location.minimap_color
+			else if(istype(location, /turf/open/space))
 				continue
-			if(istype(location, /turf/open/space))
-				continue
-			var/atom/movable/alttarget = (locate(/obj/structure/machinery/door) in location) || (locate(/obj/structure/fence) in location)
-			if(alttarget)
+			else
+				var/atom/movable/alttarget = (locate(/obj/structure/machinery/door) in location) || (locate(/obj/structure/fence) in location)
+				if(alttarget)
+					base_color = alttarget.minimap_color
+				else if(turfloc.minimap_color)
+					base_color = BlendRGB(location.minimap_color, turfloc.minimap_color, 0.5)
+				else
+					base_color = location.minimap_color
+
+
+
+			var/final_color = base_color
+
+			if(!istype(location, /turf/open/space))
 				xmin = min(xmin, xval)
 				ymin = min(ymin, yval)
 				xmax = max(xmax, xval)
 				ymax = max(ymax, yval)
-				icon_gen.DrawBox(alttarget.minimap_color, xval, yval)
-				continue
-			var/area/turfloc = location.loc
-			if(turfloc.minimap_color)
-				xmin = min(xmin, xval)
-				ymin = min(ymin, yval)
-				xmax = max(xmax, xval)
-				ymax = max(ymax, yval)
-				icon_gen.DrawBox(BlendRGB(location.minimap_color, turfloc.minimap_color, 0.5), xval, yval)
-				continue
-			xmin = min(xmin, xval)
-			ymin = min(ymin, yval)
-			xmax = max(xmax, xval)
-			ymax = max(ymax, yval)
-			icon_gen.DrawBox(location.minimap_color, xval, yval)
+
+			icon_gen.DrawBox(final_color, xval, yval)
 	xmin = xmin * MINIMAP_SCALE - 1
 	ymin = ymin * MINIMAP_SCALE - 1
 	xmax = min(xmax * MINIMAP_SCALE, MINIMAP_PIXEL_SIZE)
@@ -154,6 +155,7 @@ SUBSYSTEM_DEF(minimaps)
 	icon_gen.Shift(EAST, minimaps_by_z["[level]"].x_offset + xmin)
 	icon_gen.Shift(NORTH, minimaps_by_z["[level]"].y_offset + ymin)
 	minimaps_by_z["[level]"].hud_image = icon_gen //done making the image!
+	pregenerate_ceiling_overlay(level)
 
 	//lateload icons
 	if(!LAZYACCESS(earlyadds, "[level]"))
@@ -162,6 +164,92 @@ SUBSYSTEM_DEF(minimaps)
 	for(var/datum/callback/callback as anything in LAZYACCESS(earlyadds, "[level]"))
 		callback.Invoke()
 	LAZYREMOVE(earlyadds, "[level]")
+
+/// Pre-generates ceiling protection overlay during minimap creation
+/datum/controller/subsystem/minimaps/proc/pregenerate_ceiling_overlay(z_level)
+	var/datum/hud_displays/hud_data = minimaps_by_z["[z_level]"]
+	if(!hud_data)
+		return
+
+	var/icon/ceiling_overlay = icon('icons/ui_icons/minimap.dmi')
+	var/xmin = world.maxx
+	var/ymin = world.maxy
+	var/xmax = 1
+	var/ymax = 1
+
+	for(var/xval = 1, xval <= world.maxx, xval++)
+		for(var/yval = 1, yval <= world.maxy, yval++)
+			var/turf/turfloc = locate(xval, yval, z_level)
+			var/area/turf_area = get_area(turfloc)
+			if(!turf_area?.ceiling)
+				continue
+
+			var/ceiling_color
+			if(turf_area.ceiling >= CEILING_PROTECTION_TIER_4)
+				ceiling_color = MINIMAP_CEILING_TIER_4
+			else if(turf_area.ceiling >= CEILING_PROTECTION_TIER_3)
+				ceiling_color = MINIMAP_CEILING_TIER_3
+			else if(turf_area.ceiling >= CEILING_PROTECTION_TIER_2)
+				ceiling_color = MINIMAP_CEILING_TIER_2
+			else if(turf_area.ceiling >= CEILING_PROTECTION_TIER_1)
+				ceiling_color = MINIMAP_CEILING_TIER_1
+			else if(turf_area.ceiling >= CEILING_GLASS)
+				ceiling_color = MINIMAP_CEILING_TIER_GLASS
+
+			if(ceiling_color)
+				if(!istype(turfloc, /turf/open/space))
+					xmin = min(xmin, xval)
+					ymin = min(ymin, yval)
+					xmax = max(xmax, xval)
+					ymax = max(ymax, yval)
+				ceiling_overlay.DrawBox(ceiling_color, xval, yval)
+
+	xmin = xmin * MINIMAP_SCALE - 1
+	ymin = ymin * MINIMAP_SCALE - 1
+	xmax = min(xmax * MINIMAP_SCALE, MINIMAP_PIXEL_SIZE)
+	ymax = min(ymax * MINIMAP_SCALE, MINIMAP_PIXEL_SIZE)
+
+	ceiling_overlay.Scale(ceiling_overlay.Width() * MINIMAP_SCALE, ceiling_overlay.Height() * MINIMAP_SCALE)
+	ceiling_overlay.Crop(xmin, ymin, MINIMAP_PIXEL_SIZE + xmin - 1, MINIMAP_PIXEL_SIZE + ymin - 1)
+
+	ceiling_overlay.Shift(EAST, hud_data.x_offset + xmin)
+	ceiling_overlay.Shift(NORTH, hud_data.y_offset + ymin)
+
+	// Cache the overlay for all clients to use
+	hud_data.cached_ceiling_overlay = ceiling_overlay
+
+/// Creates ceiling protection overlay for a specific client and z-level
+/datum/controller/subsystem/minimaps/proc/create_ceiling_overlay(client/target_client, z_level)
+	if(!target_client?.prefs?.show_minimap_ceiling_protection)
+		return null
+
+	var/datum/hud_displays/hud_data = minimaps_by_z["[z_level]"]
+	if(!hud_data)
+		return null
+
+	// Return cached overlay
+	if(hud_data.cached_ceiling_overlay)
+		return hud_data.cached_ceiling_overlay
+
+	// Pre-generation failed fallback, generate on demand
+	pregenerate_ceiling_overlay(z_level)
+	return hud_data.cached_ceiling_overlay
+
+/datum/controller/subsystem/minimaps/proc/regenerate_minimap_for_z(z_level)
+	if(!minimaps_by_z["[z_level]"])
+		return
+
+	var/datum/space_level/space_level = SSmapping.z_list[z_level]
+	if(!space_level)
+		return
+
+	// Clear the old minimap data but preserve the structure
+	var/datum/hud_displays/old_display = minimaps_by_z["[z_level]"]
+	minimaps_by_z["[z_level]"] = new /datum/hud_displays
+
+	// Copy over any existing drawn images
+	if(old_display?.drawing_image)
+		minimaps_by_z["[z_level]"].drawing_image = old_display.drawing_image
 
 /**
  * Adds an atom to the processing updators that will have blips drawn on them
@@ -214,6 +302,8 @@ SUBSYSTEM_DEF(minimaps)
 	var/list/images_raw = list()
 	///drawing image of the map
 	var/image/drawing_image
+	///Cached ceiling protection overlay to prevent lagspikes
+	var/icon/cached_ceiling_overlay
 	///x offset of the actual icon to center it to screens
 	var/x_offset = 0
 	///y offset of the actual icons to keep it to screens
@@ -426,8 +516,57 @@ SUBSYSTEM_DEF(minimaps)
  * * zlevel: zlevel to fetch map for
  * * flags: map flags to fetch from
  */
-/datum/controller/subsystem/minimaps/proc/fetch_minimap_object(zlevel, flags, live, popup, drawing)
+/datum/controller/subsystem/minimaps/proc/fetch_minimap_object(zlevel, flags, live, popup, drawing, client/for_client)
+	if(!zlevel || zlevel <= 0 || !SSminimaps.initialized)
+		return null
+	if(!SSminimaps.minimaps_by_z["[zlevel]"])
+		return null
+
+	if(!SSminimaps.minimaps_by_z["[zlevel]"].hud_image)
+		return null
+
 	var/hash = "[zlevel]-[flags]-[live]-[popup]-[drawing]"
+
+	if(for_client)
+		if(!hashed_minimaps[hash])
+			// Create and cache the base minimap
+			var/atom/movable/screen/minimap/base_map = new(null, null, zlevel, flags, live, popup, drawing)
+			if(!base_map.icon)
+				CRASH("Empty and unusable minimap generated for '[zlevel]-[flags]-[live]-[popup]'")
+			hashed_minimaps[hash] = base_map
+
+		var/atom/movable/screen/minimap/cached_base = hashed_minimaps[hash]
+		var/atom/movable/screen/minimap/map = new()
+
+		// Copy essential properties and basic overlay filters
+		map.icon = cached_base.icon
+		map.target = cached_base.target
+		map.minimap_flags = cached_base.minimap_flags
+		map.live = cached_base.live
+		map.drawing = cached_base.drawing
+		map.screen_loc = cached_base.screen_loc
+		map.name = cached_base.name
+		map.dir = cached_base.dir
+		map.x_max = cached_base.x_max
+		map.y_max = cached_base.y_max
+		map.choices_by_mob = list()
+		map.stop_polling = list()
+
+		map.add_filter("border_outline", 1, outline_filter(2, COLOR_BLACK))
+		map.add_filter("map_glow", 2, drop_shadow_filter(x = 0, y = 0, size = 3, offset = 1, color = "#c0f7ff"))
+		map.add_filter("overlay1", 3, layering_filter(x = -480, y = 0, icon = 'icons/mob/hud/minimap_overlay.dmi', blend_mode = BLEND_INSET_OVERLAY))
+		map.add_filter("overlay2", 4, layering_filter(x = 0, y = 0, icon = 'icons/mob/hud/minimap_overlay.dmi', blend_mode = BLEND_INSET_OVERLAY))
+		map.add_filter("overlay3", 5, layering_filter(x = -480, y = 480, icon = 'icons/mob/hud/minimap_overlay.dmi', blend_mode = BLEND_INSET_OVERLAY))
+		map.add_filter("overlay4", 6, layering_filter(x = 0, y = 480, icon = 'icons/mob/hud/minimap_overlay.dmi', blend_mode = BLEND_INSET_OVERLAY))
+		map.add_filter("overlay5", 7, layering_filter(x = 480, y = 0, icon = 'icons/mob/hud/minimap_overlay.dmi', blend_mode = BLEND_INSET_OVERLAY))
+		map.add_filter("overlay6", 8, layering_filter(x = 480, y = 480, icon = 'icons/mob/hud/minimap_overlay.dmi', blend_mode = BLEND_INSET_OVERLAY))
+
+		// Register for live updates if needed
+		if(live)
+			SSminimaps.add_to_updaters(map, flags, zlevel, drawing, labels=drawing)
+
+		return map
+
 	if(hashed_minimaps[hash])
 		return hashed_minimaps[hash]
 	var/atom/movable/screen/minimap/map = new(null, null, zlevel, flags, live, popup, drawing)
@@ -569,6 +708,20 @@ SUBSYSTEM_DEF(minimaps)
 	SSminimaps.remove_updator(src)
 	SSminimaps.add_to_updaters(src, minimap_flags, target, drawing, labels=drawing)
 
+/// Updates ceiling protection overlay for this minimap
+/atom/movable/screen/minimap/proc/update_ceiling_overlay(client/owner_client)
+	// Remove any existing ceiling filter
+	remove_filter("ceiling_protection")
+
+	// Check if this specific client wants ceiling protection overlay
+	if(!owner_client?.prefs?.show_minimap_ceiling_protection)
+		return
+
+	// Create ceiling overlay for this client
+	var/icon/ceiling_overlay = SSminimaps.create_ceiling_overlay(owner_client, target)
+	if(ceiling_overlay)
+		add_filter("ceiling_protection", 9, layering_filter(icon = ceiling_overlay, blend_mode = BLEND_OVERLAY))
+
 /atom/movable/screen/minimap/Destroy()
 	SSminimaps.hashed_minimaps -= src
 	stop_polling = null
@@ -700,8 +853,12 @@ SUBSYSTEM_DEF(minimaps)
 
 /datum/action/minimap/action_activate()
 	. = ..()
+	// Try to initialize map if it doesn't exist
 	if(!map)
-		return FALSE
+		try_initialize_map()
+		if(!map)
+			to_chat(owner, SPAN_WARNING("Minimap data is not available for this area yet. Please try again in a moment."))
+			return FALSE
 
 	if(!minimap_displayed && !isobserver(owner) && owner.is_mob_incapacitated())
 		return FALSE
@@ -719,11 +876,14 @@ SUBSYSTEM_DEF(minimaps)
 		override_locator(owner.loc)
 	var/atom/movable/tracking = locator_override ? locator_override : owner
 	if(force_state)
-		if(locate(/atom/movable/screen/minimap) in owner.client.screen) //This seems like the most effective way to do this without some wacky code
+		if(map in owner.client.screen)
 			to_chat(owner, SPAN_WARNING("You already have a minimap open!"))
 			return FALSE
 		owner.client.add_to_screen(map)
 		owner.client.add_to_screen(locator)
+		// Apply ceiling protection overlay if client has preference enabled
+		if(owner.client.prefs?.show_minimap_ceiling_protection)
+			map.update_ceiling_overlay(owner.client)
 		locator.link_locator(map, owner)
 		locator.update(tracking, null, null)
 		locator.RegisterSignal(tracking, COMSIG_MOVABLE_MOVED, TYPE_PROC_REF(/atom/movable/screen/minimap_locator, update))
@@ -799,18 +959,57 @@ SUBSYSTEM_DEF(minimaps)
 	. = ..()
 	var/atom/movable/tracking = locator_override ? locator_override : mob
 	RegisterSignal(tracking, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(on_owner_z_change))
+	try_initialize_map()
+
+	// Also give ceiling protection toggle action
+	give_action(mob, /datum/action/minimap_ceiling)
+
+/// Attempts to initialize the minimap object for current z-level
+/datum/action/minimap/proc/try_initialize_map()
+	// Check if subsystem is still initializing
+	if(!SSminimaps.initialized)
+		return FALSE
+
+	var/atom/movable/tracking = locator_override ? locator_override : owner
 	if(default_overwatch_level)
-		if(!SSminimaps.minimaps_by_z["[default_overwatch_level]"] || !SSminimaps.minimaps_by_z["[default_overwatch_level]"].hud_image)
-			return
-		map = SSminimaps.fetch_minimap_object(default_overwatch_level, minimap_flags, live=live, popup=FALSE, drawing=drawing)
-		return
-	if(!SSminimaps.minimaps_by_z["[tracking.z]"] || !SSminimaps.minimaps_by_z["[tracking.z]"].hud_image)
-		return
-	map = SSminimaps.fetch_minimap_object(tracking.z, minimap_flags, live=live, popup=FALSE, drawing=drawing)
+		if(default_overwatch_level <= 0 || default_overwatch_level > length(SSmapping.z_list))
+			return FALSE
+		// Try to trigger z-level loading if it doesn't exist
+		if(!SSminimaps.minimaps_by_z["[default_overwatch_level]"])
+			var/datum/space_level/z_level = SSmapping.z_list[default_overwatch_level]
+			if(z_level)
+				SSminimaps.load_new_z(null, z_level)
+		if(!SSminimaps.minimaps_by_z["[default_overwatch_level]"])
+			return FALSE
+		map = SSminimaps.fetch_minimap_object(default_overwatch_level, minimap_flags, live=live, popup=FALSE, drawing=drawing, for_client=owner.client)
+		if(!map)
+			return FALSE
+		return TRUE
+	// Try to trigger z-level loading if it doesn't exist
+	if(!SSminimaps.minimaps_by_z["[tracking.z]"])
+		if(tracking.z <= 0 || !SSmapping.z_list || tracking.z > length(SSmapping.z_list))
+			return FALSE
+		var/datum/space_level/z_level = SSmapping.z_list[tracking.z]
+		if(z_level)
+			SSminimaps.load_new_z(null, z_level)
+	if(!SSminimaps.minimaps_by_z["[tracking.z]"])
+		return FALSE
+	// Only require hud_image for ground levels
+	if(!SSminimaps.minimaps_by_z["[tracking.z]"].hud_image && (is_ground_level(tracking.z) || SSmapping.level_trait(tracking.z, ZTRAIT_AWAY)))
+		return FALSE
+	map = SSminimaps.fetch_minimap_object(tracking.z, minimap_flags, live=live, popup=FALSE, drawing=drawing, for_client=owner.client)
+	if(!map)  // Handle null return from fetch_minimap_object
+		return FALSE
+	return TRUE
 
 /datum/action/minimap/remove_from(mob/mob)
 	toggle_minimap(FALSE)
 	UnregisterSignal(locator_override || mob, COMSIG_MOVABLE_Z_CHANGED)
+
+	// Also remove ceiling protection toggle action
+	for(var/datum/action/minimap_ceiling/ceiling_action in mob.actions)
+		ceiling_action.remove_from(mob)
+
 	return ..()
 
 /**
@@ -829,10 +1028,11 @@ SUBSYSTEM_DEF(minimaps)
 				locator.UnregisterSignal(tracking, COMSIG_MOVABLE_MOVED)
 				minimap_displayed = FALSE
 			return
-		map = SSminimaps.fetch_minimap_object(default_overwatch_level, minimap_flags, live=live, popup=FALSE, drawing=drawing)
+		map = SSminimaps.fetch_minimap_object(default_overwatch_level, minimap_flags, live=live, popup=FALSE, drawing=drawing, for_client=owner.client)
 		if(minimap_displayed)
 			if(owner.client)
 				owner.client.screen += map
+				map.update_ceiling_overlay(owner.client)
 			else
 				minimap_displayed = FALSE
 		return
@@ -842,10 +1042,11 @@ SUBSYSTEM_DEF(minimaps)
 			locator.UnregisterSignal(tracking, COMSIG_MOVABLE_MOVED)
 			minimap_displayed = FALSE
 		return
-	map = SSminimaps.fetch_minimap_object(newz, minimap_flags, live=live, popup=FALSE, drawing=drawing)
+	map = SSminimaps.fetch_minimap_object(newz, minimap_flags, live=live, popup=FALSE, drawing=drawing, for_client=owner.client)
 	if(minimap_displayed)
 		if(owner.client)
 			owner.client.screen += map
+			map.update_ceiling_overlay(owner.client)
 		else
 			minimap_displayed = FALSE
 
@@ -925,6 +1126,51 @@ SUBSYSTEM_DEF(minimaps)
 	owner.abstract_move(clicked_turf)
 	// Close minimap
 	toggle_minimap(FALSE)
+
+/**
+ * Action for toggling ceiling protection overlays on minimaps
+ */
+/datum/action/minimap_ceiling
+	name = "Toggle Minimap Ceiling Overlay"
+	action_icon_state = "minimap_ceiling"
+
+/datum/action/minimap_ceiling/give_to(mob/mob)
+	. = ..()
+	update_button_icon()
+
+/datum/action/minimap_ceiling/update_button_icon()
+	. = ..()
+	if(!button || !owner?.client?.prefs)
+		return
+
+	if(owner.client.prefs.show_minimap_ceiling_protection)
+		button.icon_state = "template_on"
+	else
+		button.icon_state = "template"
+
+/datum/action/minimap_ceiling/action_activate()
+	. = ..()
+	if(!owner?.client?.prefs)
+		return FALSE
+
+	// Check cooldown
+	if(!COOLDOWN_FINISHED(owner.client, ceiling_protection_toggle_cooldown))
+		to_chat(owner, SPAN_WARNING("You must wait [COOLDOWN_SECONDSLEFT(owner.client, ceiling_protection_toggle_cooldown)] seconds before toggling ceiling protection again."))
+		return FALSE
+
+	owner.client.prefs.show_minimap_ceiling_protection = !owner.client.prefs.show_minimap_ceiling_protection
+
+	// Set cooldown
+	COOLDOWN_START(owner.client, ceiling_protection_toggle_cooldown, 2 SECONDS)
+	owner.client.prefs.save_preferences()
+	to_chat(owner, SPAN_NOTICE("Ceiling protection overlay [owner.client.prefs.show_minimap_ceiling_protection ? "enabled" : "disabled"] on minimaps."))
+	update_button_icon()
+
+	// Refresh minimaps for this client
+	for(var/atom/movable/screen/minimap/mini_map in owner.client.screen)
+		mini_map.update_ceiling_overlay(owner.client)
+
+	return TRUE
 
 /atom/movable/screen/exit_map
 	name = "Close Minimap"
@@ -1064,6 +1310,8 @@ SUBSYSTEM_DEF(minimaps)
 
 /client/var/atom/movable/screen/minimap_tool/draw_tool/active_draw_tool
 /client/var/last_drawn
+/// Cooldown for toggling ceiling protection overlay
+/client/COOLDOWN_DECLARE(ceiling_protection_toggle_cooldown)
 /client/proc/handle_draw(mouse_x as num, mouse_y as num, size_x as num, size_y as num, view_size_x as num, view_size_y as num)
 	set instant = TRUE
 	set category = null
@@ -1435,9 +1683,9 @@ SUBSYSTEM_DEF(minimaps)
 
 /atom/movable/screen/minimap_tool/update/proc/announce_human(mob/user)
 	playsound_client(user.client, "sound/effects/data-transmission.ogg")
-
-	var/atom/movable/screen/minimap/minimap_to_update = SSminimaps.fetch_minimap_object(2, MINIMAP_FLAG_USCM, live=FALSE, popup=FALSE, drawing=TRUE)
-	minimap_to_update.update()
+	for(var/z_to_update in SSmapping.levels_by_trait(ZTRAIT_GROUND))
+		var/atom/movable/screen/minimap/minimap_to_update = SSminimaps.fetch_minimap_object(z_to_update, MINIMAP_FLAG_USCM, live=FALSE, popup=FALSE, drawing=TRUE)
+		minimap_to_update.update()
 
 	user.client.images += drawn_image
 	var/icon/flat_drawing = icon(user.client.RenderIcon(drawn_image))

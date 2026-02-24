@@ -247,7 +247,7 @@
 			if(V.reagents.total_volume == V.reagents.maximum_volume) //The vial is full
 				continue
 
-			//Calculate how much we are transfering
+			//Calculate how much we are transferring
 			var/amount_to_transfer = V.reagents.maximum_volume - V.reagents.total_volume
 			if(R.volume < amount_to_transfer)
 				amount_to_transfer = R.volume
@@ -265,7 +265,7 @@
 		if(V.reagents.total_volume == V.reagents.maximum_volume) //The vial is full
 			continue
 
-		//Calculate how much we are transfering
+		//Calculate how much we are transferring
 		var/amount_to_transfer = V.reagents.maximum_volume - V.reagents.total_volume
 		if(source_container.reagents.total_volume < amount_to_transfer)
 			amount_to_transfer = source_container.reagents.total_volume

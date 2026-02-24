@@ -1,8 +1,0 @@
-author: "Nihisohel"
-delete-after: True
-changes:
-  - bugfix: "You can take the essential fireteam utilities with either specialization as the FTL now"
-  - bugfix: "XOs can also take either specialization kit with the whistle now"
-  - bugfix: "The action button for using the whistle is now shown when attached on the uniform"
-  - code_imp: "Some minor backend for UI_action_buttons for accessories"
-  - spellcheck: "Switches UK specialisation to US specialization wording introduced from trench whistles"

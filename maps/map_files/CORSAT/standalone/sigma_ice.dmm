@@ -1340,7 +1340,8 @@
 /area/corsat/sigma/airlock/control)
 "Eg" = (
 /obj/structure/machinery/computer/general_air_control/large_tank_control{
-	name = "CO2 Control"
+	name = "CO2 Control";
+	dir = 4
 	},
 /obj/structure/surface/table/almayer{
 	dir = 4

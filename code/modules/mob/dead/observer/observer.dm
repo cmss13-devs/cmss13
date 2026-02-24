@@ -192,6 +192,7 @@
 	if(loc == get_turf(observe_target_mob))
 		return
 	clean_observe_target()
+	SEND_SIGNAL(src, COMSIG_OBSERVER_DISCONNECTED)
 
 /// When the observer target gets a screen, our observer gets a screen minus some game screens we don't want the observer to touch
 /mob/dead/observer/proc/observe_target_screen_add(observe_target_mob_client, screen_add)

@@ -39,17 +39,16 @@
 // Helper to check that the author is still around
 // Closes the thread if they're not
 /datum/mentorhelp/proc/check_author()
-	if(!author)
-		close()
-		return FALSE
-	return TRUE
+	if(author)
+		return author
+	close()
+	return
 
 // Helper to check that the thread is still open
-/datum/mentorhelp/proc/check_open(client/C)
+/datum/mentorhelp/proc/check_open(client/mentor_client)
 	if(!open)
-		to_chat(C, SPAN_NOTICE("This mentorhelp thread is closed!"))
-		return FALSE
-	return TRUE
+		to_chat(mentor_client, SPAN_NOTICE("This mentorhelp thread is closed!"))
+	return open
 
 // Logs the mentorhelp message to admin logs
 /datum/mentorhelp/proc/log_message(msg, from_key, to_key)
@@ -143,7 +142,7 @@
 
 		// If the mentor forgot to mark the mentorhelp, mark it for them
 		if(!mentor)
-			mark(sender)
+			toggle_mark(sender)
 
 		// Some other mentor is already taking care of this thread
 		else if(mentor != sender)
@@ -163,19 +162,20 @@
 // Sanitizes and wraps the message with some info and links, depending on the sender...?
 /datum/mentorhelp/proc/wrap_message(message, client/sender)
 	var/message_title = "MentorPM"
-	var/message_sender_key = "<a href='byond://?src=\ref[src];action=message'>[key_name(sender.mob)]</a>"
+	var/message_sender_name = "<a href='byond://?src=\ref[src];action=message'>[sender.mob?.name]</a>"
 	var/message_sender_options = ""
 
 	// The message is being sent to the mentor and should be formatted as a mentorhelp message
 	if(sender == author)
 		message_title = "MentorHelp"
 		// If there's a mentor, let them mark it. If not, let them unmark it
-		message_sender_options = " (<a href='byond://?src=\ref[src];action=mark'>Mark/Unmark</a>"
+		message_sender_options = " (<a href='byond://?src=\ref[src];action=toggle_mark'>Mark/Unmark</a>"
 		message_sender_options += " | <a href='byond://?src=\ref[src];action=close'>Close</a>"
 		message_sender_options += " | <a href='byond://?src=\ref[src];action=follow'>Follow</a>"
+		message_sender_options += " | <a href='byond://?src=\ref[src];action=friend'>Friend</a>"
 		message_sender_options += " | <a href='byond://?src=\ref[src];action=autorespond'>AutoResponse</a>)"
 
-	var/message_header = SPAN_MENTORHELP("<span class='prefix'>[message_title] from [message_sender_key]:</span> <span class='message'>[message_sender_options]</span><br>")
+	var/message_header = SPAN_MENTORHELP("<span class='prefix'>[message_title] from [message_sender_name]:</span> <span class='message'>[message_sender_options]</span><br>")
 	var/message_body = "&emsp;[SPAN_MENTORBODY("<span class='message'>[message]</span>")]<br>"
 	// Et voila! Beautiful wrapped mentorhelp messages
 	return (message_header + message_body)
@@ -185,47 +185,32 @@
  */
 
 // Marks the mentorhelp thread and notifies the author that the thread is being responded to
-/datum/mentorhelp/proc/mark(client/thread_mentor)
-	if(!check_author())
-		return
-
-	if(!check_open(thread_mentor))
-		return
-
-	// Already marked
-	if(mentor)
-		to_chat(thread_mentor, SPAN_MENTORHELP("<b>NOTICE:</b> A mentor is already handling this thread!"))
-		return
-
+/datum/mentorhelp/proc/toggle_mark(client/thread_mentor)
 	if(!thread_mentor)
 		return
 
-	// Not a mentor/staff
 	if(!CLIENT_IS_MENTOR(thread_mentor))
 		return
 
-	mentor = thread_mentor
-
-	log_mhelp("[mentor.key] has marked [author_key]'s mentorhelp")
-	notify("<font style='color:red;'>[mentor.key]</font> has marked <font style='color:red;'>[author_key]</font>'s mentorhelp.")
-	to_chat(author, SPAN_NOTICE("<b>NOTICE:</b> <font style='color:red;'>[mentor.key]</font> has marked your thread and is preparing to respond."))
-
-// Unmarks the mentorhelp thread and notifies the author that the thread is no longer being handled by a mentor
-/datum/mentorhelp/proc/unmark(client/thread_mentor)
 	if(!check_author())
 		return
 
 	if(!check_open(thread_mentor))
 		return
 
-	// Already not marked
 	if(!mentor)
+		mentor = thread_mentor
+		log_mhelp("[mentor.key] has marked [author_key]'s mentorhelp")
+		notify("<font style='color:red;'>[mentor.key]</font> has marked <font style='color:red;'>[author_key]</font>'s mentorhelp.")
+		to_chat(author, SPAN_NOTICE("<b>NOTICE:</b> <font style='color:red;'>[mentor.key]</font> has marked your thread and is preparing to respond."))
 		return
 
-	// If we're not the thread mentor and not a staff member
-	if((!thread_mentor || thread_mentor != mentor) && !CLIENT_IS_STAFF(thread_mentor))
+	// Already marked
+	if(mentor != thread_mentor)
+		to_chat(thread_mentor, SPAN_MENTORHELP("<b>NOTICE:</b> A mentor is already handling this thread!"))
 		return
 
+	// the mentor exists, and is us, and we no longer want that to be the case
 	log_mhelp("[mentor.key] has unmarked [author_key]'s mentorhelp")
 	notify("<font style='color:red;'>[mentor.key]</font> has unmarked <font style='color:red;'><a href='byond://?src=\ref[src];action=message'>[author_key]</a></font>'s mentorhelp.")
 	to_chat(author, SPAN_NOTICE("<b>NOTICE:</b> <font style='color:red;'>[mentor.key]</font> has unmarked your thread and is no longer responding to it."))
@@ -265,8 +250,7 @@
 	if(!mentor_client)
 		return
 
-	// Not a mentor/staff
-	if(!CLIENT_IS_MENTOR(mentor_client))
+	if(!check_rights(R_MOD|R_MENTOR))
 		return
 
 	if(!check_author())
@@ -281,30 +265,80 @@
 
 	log_mhelp("[mentor_client.key] has begun orbiting [author_key] as a ghost")
 	notify("<font style='color:red;'>[key_name(mentor_client)]</font> is following <font style='color:red;'>[key_name(author)]</font> as a ghost.")
-	mentor_client.admin_follow(author.mob)
+
+	var/mob/dead/observer/mentor_ghost = mentor_client.mob
+	if(!isobserver(mentor_client.mob))
+		mentor_ghost = mentor_client.mob.ghostize(TRUE, TRUE)
+		RegisterSignal(mentor_ghost, COMSIG_OBSERVER_DISCONNECTED, PROC_REF(handle_mghost_disconnect))
+	mentor_ghost.do_observe(author.mob)
+
+/datum/mentorhelp/proc/handle_mghost_disconnect(mob/dead/observer/mghost)
+	SIGNAL_HANDLER
+
+	if(isobserver(mghost))
+		mghost.reenter_corpse()
+
+	UnregisterSignal(mghost, COMSIG_OBSERVER_DISCONNECTED)
+
+/datum/mentorhelp/proc/handle_imaginary_friend(client/mentor_client, mob/befriended_mob)
+	if(!mentor_client)
+		return
+
+	if(!check_rights(R_MOD|R_MENTOR))
+		return
+
+	if(!mentor_client.mob)
+		return
+
+	var/mob/mentor_mob = mentor_client.mob
+
+	if(!mentor)
+		to_chat(mentor_client, SPAN_WARNING("You must mark this mentorhelp before becoming an imaginary friend."))
+		return
+
+	if(mentor != mentor_client)
+		to_chat(mentor_client, SPAN_NOTICE("Another mentor has already marked this thread."))
+		return
+
+	if(istype(mentor_mob, /mob/camera/imaginary_friend))
+		to_chat(mentor_client, SPAN_WARNING("You are already an imaginary friend!"))
+		return
+
+	if(!befriended_mob)
+		return
+
+	var/mob/camera/imaginary_friend/friend = new(get_turf(befriended_mob), befriended_mob)
+	friend.aghosted_original_mob = mentor_mob.mind?.original
+	mentor_mob.mind?.transfer_to(friend)
+
+	log_admin("[key_name(friend)] started being imaginary friend of [key_name(befriended_mob)].")
+	message_admins("[key_name_admin(friend)] started being imaginary friend of [key_name_admin(befriended_mob)].")
 
 /datum/mentorhelp/Topic(href, list/href_list)
 	if(!usr)
 		return
-	var/client/C = usr.client
-	if(!istype(C))
+	var/client/mentor_client = usr.client
+
+	if(!mentor_client)
+		return
+
+	if(!check_rights(R_MOD|R_MENTOR))
 		return
 
 	switch(href_list["action"])
 		if("message")
-			input_message(C)
+			input_message(mentor_client)
 		if("autorespond")
-			autoresponse(C)
-		if("mark")
-			if(!mentor)
-				mark(C)
-			else
-				unmark(C)
+			autoresponse(mentor_client)
+		if("toggle_mark")
+			toggle_mark(mentor_client)
 		if("close")
-			if(C == author || C == mentor || CLIENT_IS_STAFF(C))
-				close(C)
+			if(mentor_client == author || mentor_client == mentor || CLIENT_IS_STAFF(mentor_client))
+				close(mentor_client)
 		if("follow")
-			follow(C)
+			follow(mentor_client)
+		if("friend")
+			handle_imaginary_friend(mentor_client, author.mob)
 
 /*
  * Autoresponse
@@ -324,7 +358,7 @@
 
 	// If the mentor forgot to mark the mentorhelp, mark it for them
 	if(!mentor)
-		mark(responder)
+		toggle_mark(responder)
 	else if(mentor != responder)
 		to_chat(responder, SPAN_NOTICE("<b>NOTICE:</b> A mentor is already handling this thread!"))
 		return
@@ -346,7 +380,7 @@
 
 	// Re-mark if they unmarked it while the dialog was open (???)
 	if(!mentor)
-		mark(responder)
+		toggle_mark(responder)
 	else if(mentor != responder)
 		to_chat(responder, SPAN_NOTICE("<b>NOTICE:</b> A mentor is already handling this thread!"))
 		return

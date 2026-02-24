@@ -13,7 +13,7 @@
 	move_on_shuttle = TRUE
 	move_delay = 0
 
-	var/aghosted_original_mob
+	var/mob/aghosted_original_mob
 
 	var/icon/friend_image
 	var/image/current_image
@@ -324,7 +324,10 @@
 /mob/camera/imaginary_friend/proc/deactivate()
 	log_admin("[key_name(src)] stopped being imaginary friend of [key_name(owner)].")
 	message_admins("[key_name_admin(src)] stopped being imaginary friend of [key_name_admin(owner)].")
-	ghostize(TRUE, TRUE)
+	if(aghosted_original_mob?.stat != DEAD)
+		mind.transfer_to(aghosted_original_mob)
+	else
+		ghostize(TRUE, TRUE)
 	qdel(src)
 
 /mob/camera/imaginary_friend/ghostize(can_reenter_corpse = FALSE, aghosted = FALSE)

@@ -708,8 +708,8 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 	return
 
 /mob/living/carbon/human/hud_set_squad()
-	var/datum/faction/faction = get_faction(faction)
-	var/image/holder = hud_list[faction.hud_type]
+	var/datum/faction/player_faction = get_faction(faction)
+	var/image/holder = hud_list[player_faction.hud_type]
 	holder.icon_state = "hudblank"
 	holder.overlays.Cut()
 
@@ -721,7 +721,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 		holder.overlays += image('icons/mob/hud/human_status.dmi', src, "hudnoncombat", pixel_y = 9)
 
 	hud_set_new_player()
-	faction.modify_hud_holder(holder, src)
+	player_faction.modify_hud_holder(holder, src)
 
 /mob/living/carbon/human/yautja/hud_set_squad()
 	set waitfor = FALSE

@@ -21069,8 +21069,8 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "door_warning2";
-	pixel_x = 1;
-	pixel_y = -2
+	pixel_y = -2;
+	pixel_x = 1
 	},
 /turf/open/floor/almayer/research/containment/floor2/north,
 /area/almayer/medical/containment/cell)
@@ -21111,12 +21111,12 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/aft)
 "bcU" = (
+/obj/structure/machinery/light/double/blue{
+	light_color = "#a7dbc7"
+	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "door_warning2_red";
 	pixel_y = -1
-	},
-/obj/structure/machinery/light/double/blue{
-	light_color = "#a7dbc7"
 	},
 /turf/open/floor/almayer/flooredge/south,
 /area/almayer/medical/containment)
@@ -21146,8 +21146,8 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "door_warning2";
-	pixel_x = 1;
-	pixel_y = -2
+	pixel_y = -2;
+	pixel_x = 1
 	},
 /turf/open/floor/almayer/research/containment/corner2,
 /area/almayer/medical/containment/cell)
@@ -22305,9 +22305,10 @@
 "bga" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/containment/contshutter{
 	name = "\improper Containment Stairs";
-	id = "ResearchStairs_A";
+	id = null;
 	dir = 2;
-	req_one_access = list(28,206,207)
+	req_one_access = list(28,206,207);
+	id_tag = "ResearchStairs_A"
 	},
 /turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/medical/containment)
@@ -29341,8 +29342,8 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "door_warning2";
-	pixel_x = 1;
-	pixel_y = -2
+	pixel_y = -2;
+	pixel_x = 1
 	},
 /turf/open/floor/almayer/research/containment/corner/east,
 /area/almayer/medical/containment/cell)
@@ -39649,8 +39650,8 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "door_warning2";
-	pixel_x = 1;
-	pixel_y = -2
+	pixel_y = -2;
+	pixel_x = 1
 	},
 /turf/open/floor/almayer/research/containment/corner/east,
 /area/almayer/medical/containment/cell)
@@ -39660,16 +39661,16 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "door_warning2";
-	pixel_x = 1;
-	pixel_y = -2
+	pixel_y = -2;
+	pixel_x = 1
 	},
 /turf/open/floor/almayer/research/containment/floor2/north,
 /area/almayer/medical/containment/cell)
 "bVa" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "door_warning2";
-	pixel_x = 1;
-	pixel_y = -2
+	pixel_y = -2;
+	pixel_x = 1
 	},
 /turf/open/floor/almayer/research/containment/floor2/north,
 /area/almayer/medical/containment/cell)
@@ -39689,8 +39690,8 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "door_warning2";
-	pixel_x = 1;
-	pixel_y = -2
+	pixel_y = -2;
+	pixel_x = 1
 	},
 /turf/open/floor/almayer/research/containment/corner/north,
 /area/almayer/medical/containment/cell)
@@ -39713,23 +39714,19 @@
 "bVg" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "door_warning2_red";
-	pixel_y = -1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "door_warning2_red";
 	dir = 8;
 	pixel_x = -1
 	},
 /obj/structure/sign/nosmoking_2{
 	pixel_y = -30
 	},
-/turf/open/floor/almayer/flooredge/southwest,
-/area/almayer/medical/containment)
-"bVh" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "door_warning2_red";
 	pixel_y = -1
 	},
+/turf/open/floor/almayer/flooredge/southwest,
+/area/almayer/medical/containment)
+"bVh" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "door_warning2_red";
 	dir = 4;
@@ -39738,6 +39735,10 @@
 /obj/structure/machinery/camera/autoname/almayer/containment{
 	name = "ship-grade camera";
 	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2_red";
+	pixel_y = -1
 	},
 /turf/open/floor/almayer/flooredge/southeast,
 /area/almayer/medical/containment)
@@ -40084,7 +40085,8 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/containment/contshutter{
 	name = "\improper Umbilical Containment Airlock";
 	req_one_access = list(28,206,207);
-	id = "Containment_Cell_Umbilical_B"
+	id = null;
+	id_tag = "Containment_Cell_Umbilical_B"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /turf/open/floor/almayer/no_build/test_floor4,
@@ -40229,15 +40231,6 @@
 	dir = 8
 	},
 /turf/open/floor/almayer/no_build/test_floor4,
-/area/almayer/medical/containment)
-"bWj" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
-	dir = 8
-	},
-/turf/open/floor/almayer/sterile_green_corner/west,
 /area/almayer/medical/containment)
 "bWk" = (
 /obj/effect/decal/warning_stripes{
@@ -40492,7 +40485,7 @@
 	pixel_y = 28;
 	pixel_x = 14
 	},
-/turf/open/floor/almayer/sterile_green_corner/north,
+/turf/open/floor/almayer/sterile_green_side/north,
 /area/almayer/medical/containment)
 "bWI" = (
 /obj/effect/decal/warning_stripes{
@@ -40562,6 +40555,13 @@
 	name = "Cell 1 Control";
 	pixel_y = 24
 	},
+/obj/structure/machinery/door_control{
+	id = "W_Containment Cell 1";
+	name = "Containment Cell 1 Windows";
+	pixel_y = 24;
+	req_one_access_txt = "19;28";
+	pixel_x = -16
+	},
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/almayer/medical/containment)
 "bWP" = (
@@ -40630,8 +40630,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "door_warning2_red";
-	pixel_y = -2;
-	pixel_x = 1
+	pixel_y = -1
 	},
 /turf/open/floor/almayer/research/containment/corner/east,
 /area/almayer/medical/containment/cell)
@@ -40648,8 +40647,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "door_warning2_red";
-	pixel_y = -2;
-	pixel_x = 1
+	pixel_y = -1
 	},
 /turf/open/floor/almayer/research/containment/corner/north,
 /area/almayer/medical/containment/cell)
@@ -40701,7 +40699,8 @@
 	pixel_y = 8;
 	req_one_access_txt = "19;28";
 	pixel_x = 6;
-	specialfunctions = 4
+	specialfunctions = 4;
+	normaldoorcontrol = 1
 	},
 /turf/open/floor/almayer/flooredge/north,
 /area/almayer/medical/containment)
@@ -41111,7 +41110,8 @@
 	name = "Stairway Entrance Lock";
 	pixel_y = 24;
 	req_one_access_txt = "19;28";
-	specialfunctions = 4
+	specialfunctions = 4;
+	normaldoorcontrol = 1
 	},
 /turf/open/floor/almayer/flooredge/southwest,
 /area/almayer/medical/containment)
@@ -41123,7 +41123,8 @@
 	pixel_y = 24;
 	req_one_access_txt = "19;28";
 	pixel_x = -7;
-	specialfunctions = 4
+	specialfunctions = 4;
+	normaldoorcontrol = 1
 	},
 /obj/structure/sign/safety/bulkhead_door{
 	pixel_y = 26;
@@ -41265,7 +41266,8 @@
 	pixel_y = 0;
 	req_one_access_txt = "19;28";
 	pixel_x = 6;
-	specialfunctions = 4
+	specialfunctions = 4;
+	normaldoorcontrol = 1
 	},
 /turf/open/floor/almayer/flooredge/south,
 /area/almayer/medical/containment)
@@ -41410,7 +41412,7 @@
 	pixel_y = -26;
 	pixel_x = 14
 	},
-/turf/open/floor/almayer/sterile_green_corner/west,
+/turf/open/floor/almayer/sterile_green_side,
 /area/almayer/medical/containment)
 "bYh" = (
 /obj/effect/decal/warning_stripes{
@@ -41484,8 +41486,7 @@
 "bYp" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "door_warning2_red";
-	pixel_y = -2;
-	pixel_x = 1
+	pixel_y = -1
 	},
 /turf/open/floor/almayer/research/containment/floor2/north,
 /area/almayer/medical/containment/cell)
@@ -41562,7 +41563,7 @@
 /obj/structure/machinery/alarm/almayer{
 	dir = 1
 	},
-/turf/open/floor/almayer/sterile_green_corner/north,
+/turf/open/floor/almayer/sterile_green_side/north,
 /area/almayer/medical/containment)
 "bYy" = (
 /obj/effect/decal/warning_stripes{
@@ -41773,7 +41774,8 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/containment/contshutter{
 	name = "\improper Umbilical Containment Airlock";
 	req_one_access = list(28,206,207);
-	id = "Containment_Cell_Umbilical_A"
+	id = null;
+	id_tag = "Containment_Cell_Umbilical_A"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /turf/open/floor/almayer/no_build/test_floor4,
@@ -42025,8 +42027,8 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "door_warning2";
-	pixel_x = 1;
-	pixel_y = -2
+	pixel_y = -2;
+	pixel_x = 1
 	},
 /turf/open/floor/almayer/research/containment/corner/east,
 /area/almayer/medical/containment/cell)
@@ -42056,8 +42058,8 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "door_warning2";
-	pixel_x = 1;
-	pixel_y = -2
+	pixel_y = -2;
+	pixel_x = 1
 	},
 /turf/open/floor/almayer/research/containment/floor2/north,
 /area/almayer/medical/containment/cell)
@@ -42068,8 +42070,8 @@
 /obj/structure/bed/roller/heavy,
 /obj/effect/decal/warning_stripes{
 	icon_state = "door_warning2";
-	pixel_x = 1;
-	pixel_y = -2
+	pixel_y = -2;
+	pixel_x = 1
 	},
 /turf/open/floor/almayer/research/containment/entrance,
 /area/almayer/medical/containment/cell)
@@ -42079,8 +42081,8 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "door_warning2";
-	pixel_x = 1;
-	pixel_y = -2
+	pixel_y = -2;
+	pixel_x = 1
 	},
 /turf/open/floor/almayer/research/containment/floor2/north,
 /area/almayer/medical/containment/cell)
@@ -43122,7 +43124,8 @@
 "cbE" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/research{
 	name = "\improper Research Wing";
-	id = "rsr01"
+	id = null;
+	id_tag = "rsr01"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 1
@@ -177207,7 +177210,7 @@ bXB
 bXn
 bUW
 bWH
-bWj
+bWk
 bUW
 aRQ
 aRQ

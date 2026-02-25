@@ -1,4 +1,4 @@
-// For any /obj/vehicle's that can be ridden
+// TG code for vehicles, maybe move our vehicles over to this some day
 
 /datum/component/riding/vehicle/Initialize(mob/living/riding_mob, force = FALSE, ride_check_flags = (RIDER_NEEDS_LEGS | RIDER_NEEDS_ARMS))
 	if(!isVehicle(parent))
@@ -73,8 +73,7 @@
 		return
 
 	step(movable_parent, direction)
-	last_move_diagonal = ((direction & (direction - 1)) && (movable_parent.loc == next))
-	COOLDOWN_START(src, vehicle_move_cooldown, (last_move_diagonal ? 2 : 1) * vehicle_move_delay)
+	COOLDOWN_START(src, vehicle_move_cooldown, vehicle_move_delay)
 
 	if(QDELETED(src))
 		return

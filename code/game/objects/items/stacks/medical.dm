@@ -98,6 +98,13 @@
 				to_chat(user, SPAN_WARNING("There are no wounds on [possessive] [affecting.display_name]."))
 				return TRUE
 
+/obj/item/stack/medical/bruise_pack/random_amount
+
+/obj/item/stack/medical/bruise_pack/random_amount/Initialize(mapload, ...)
+	. = ..()
+	amount = rand(4,10)
+	update_icon()
+
 /obj/item/stack/medical/bruise_pack/two
 	amount = 2
 
@@ -148,6 +155,13 @@
 			else
 				to_chat(user, SPAN_WARNING("There are no burns on [possessive] [affecting.display_name]."))
 				return TRUE
+
+/obj/item/stack/medical/ointment/random_amount
+
+/obj/item/stack/medical/ointment/random_amount/Initialize(mapload, ...)
+	. = ..()
+	amount = rand(4,10)
+	update_icon()
 
 /obj/item/stack/medical/advanced/bruise_pack
 	name = "trauma kit"
@@ -369,6 +383,13 @@
 		if(affecting.apply_splints(src, user, M, indestructible_splints)) // Referenced in external organ helpers.
 			use(1)
 			playsound(user, 'sound/handling/splint1.ogg', 25, 1, 2)
+
+/obj/item/stack/medical/splint/random_amount
+
+/obj/item/stack/medical/splint/random_amount/Initialize(mapload, ...)
+	. = ..()
+	amount = rand(2,5)
+	update_icon()
 
 /obj/item/stack/medical/splint/nano
 	name = "nano splints"

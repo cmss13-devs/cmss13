@@ -644,12 +644,10 @@
 		return
 
 	var/mob/living/befriended_mob
-	switch(tgui_input_list(user, "Select by:", "Imaginary Friend", list("Key", "Mob")))
-		if("Key")
-			var/client/selected_client = tgui_input_list(user, "Select a key", "Imaginary Friend", GLOB.clients)
-			if(!selected_client)
-				return
-			befriended_mob = selected_client.mob
+	var/selection_preference = "Mob"
+	if(check_rights(R_MOD))	// only staff get to see the key list
+		selection_preference = tgui_input_list(user, "Select by:", "Imaginary Friend", list("Key", "Mob"))
+	switch(selection_preference)
 		if("Mob")
 			var/list/cliented_mobs = GLOB.living_mob_list.Copy()
 			for(var/mob/checking_mob as anything in cliented_mobs)
@@ -660,6 +658,11 @@
 			if(!selected_mob)
 				return
 			befriended_mob = selected_mob
+		if("Key")
+			var/client/selected_client = tgui_input_list(user, "Select a key", "Imaginary Friend", GLOB.clients)
+			if(!selected_client)
+				return
+			befriended_mob = selected_client.mob
 
 	if(!isobserver(user))
 		return

@@ -89,7 +89,7 @@
 		message_handlers(msg, sender)
 		addtimer(CALLBACK(src, PROC_REF(broadcast_unhandled), msg, sender), 5 MINUTES)
 
-/datum/mentorhelp/proc/message_handlers(msg, client/sender, client/recipient, with_sound = TRUE, staff_only = FALSE, include_keys = TRUE)
+/datum/mentorhelp/proc/message_handlers(msg, client/sender, client/recipient, with_sound = TRUE, staff_only = FALSE, include_keys = FALSE)
 	if(!sender || !check_author())
 		return
 
@@ -99,13 +99,13 @@
 		log_message(msg, sender.key, "All mentors")
 
 	// Sender feedback
-	to_chat(sender, "[SPAN_MENTORHELP("<span class='prefix'>MentorHelp:</span> Message to [(recipient?.username()) ? "<a href='byond://?src=\ref[src];action=message'>[recipient.username()]</a>" : "mentors"]:")] [SPAN_MENTORBODY(msg)]")
+	to_chat(sender, "[SPAN_MENTORHELP("<span class='prefix'>MentorHelp:</span> Message to [(get_message_name(recipient, sender)) ? "<a href='byond://?src=\ref[src];action=message'>[get_message_name(recipient, sender)]</a>" : "mentors"]:")] [SPAN_MENTORBODY(msg)]")
 
 	// Recipient direct message
 	if(recipient)
 		if(with_sound && (recipient.prefs?.toggles_sound & SOUND_ADMINHELP))
 			sound_to(recipient, 'sound/effects/mhelp.ogg')
-		to_chat(recipient, wrap_message(msg, sender))
+		to_chat(recipient, wrap_message(msg, sender, recipient))
 
 	for(var/client/admin_client in GLOB.admins)
 		var/formatted = msg
@@ -116,13 +116,13 @@
 
 		// Initial broadcast
 		else if(!staff_only && !recipient && CLIENT_HAS_RIGHTS(admin_client, R_MENTOR))
-			formatted = wrap_message(formatted, sender)
+			formatted = wrap_message(formatted, sender, admin_client)
 			soundfile = 'sound/effects/mhelp.ogg'
 
 		// Eavesdrop
 		else if(CLIENT_HAS_RIGHTS(admin_client, R_MENTOR) && (!staff_only || CLIENT_IS_STAFF(admin_client)) && admin_client != sender)
 			if(include_keys)
-				formatted = SPAN_MENTORHELP(key_name(sender, TRUE) + " -> " + key_name(recipient, TRUE) + ": ") + msg
+				formatted = SPAN_MENTORHELP(get_message_name(sender, admin_client) + " -> " + get_message_name(recipient, admin_client) + ": ") + msg
 
 		else
 			continue
@@ -159,11 +159,23 @@
 		message_handlers(message, sender, target)
 	return
 
+/datum/mentorhelp/proc/get_message_name(client/target, client/reader)
+	if(CLIENT_IS_STAFF(reader))
+		return key_name(target)
+	if(target == author)
+		if(reader == mentor)
+			return key_name(target)
+		else
+			return target.mob ? target.mob.name : "*Private*"
+	if(!mentor)
+		return FALSE
+	if(target == mentor)
+		return target.username()
+
 // Sanitizes and wraps the message with some info and links, depending on the sender...?
-/datum/mentorhelp/proc/wrap_message(message, client/sender)
+/datum/mentorhelp/proc/wrap_message(message, client/sender, client/recipient)
 	var/message_title = "MentorPM"
-  
-	var/message_sender_name = "<a href='byond://?src=\ref[src];action=message'>[sender.username()]</a>"
+	var/message_sender_name = "<a href='byond://?src=\ref[src];action=message'>[get_message_name(sender, recipient)]</a>"
 	var/message_sender_options = ""
 
 	// The message is being sent to the mentor and should be formatted as a mentorhelp message
@@ -321,9 +333,6 @@
 	var/client/mentor_client = usr.client
 
 	if(!mentor_client)
-		return
-
-	if(!check_rights(R_MOD|R_MENTOR))
 		return
 
 	switch(href_list["action"])

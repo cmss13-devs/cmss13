@@ -558,7 +558,7 @@
 	. += msg
 
 
-	if(isyautja(user))
+	if(HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		var/obj/item/clothing/gloves/yautja/hunter/bracers = gloves
 		if(istype(bracers) && bracers.name_active)
 			. += SPAN_BLUE("Their bracers identifies them as [SPAN_BOLD("[real_name].")]")
@@ -575,6 +575,10 @@
 			. += SPAN_GREEN("[src] was thralled by [src.hunter_data.thralled_set.real_name] for '[src.hunter_data.thralled_reason]'.")
 		else if(src.hunter_data.gear)
 			. += SPAN_RED("[src] was marked as carrying gear by [src.hunter_data.gear_set].")
+
+		if(src.hunter_data.youngblood)
+			. += SPAN_GREEN("[src] is being taught by [src.hunter_data.hunter.real_name].")
+
 
 //Helper procedure. Called by /mob/living/carbon/human/get_examine_text() and /mob/living/carbon/human/Topic() to determine HUD access to security and medical records.
 /proc/hasHUD(mob/passed_mob, hudtype)

@@ -274,9 +274,11 @@
 		if(protagonist_plays != antagonist_plays)
 			var/static/list/what_beats_what = list("Камень" = "Ножницы", "Ножницы" = "Бумагу", "Бумагу" = "Камень")
 			if(antagonist_plays == what_beats_what[protagonist_plays])
-				winner_text = "Победитель [H]!" // SS220 EDIT ADDICTION
+				winner_text = "Победитель - [H]!"
+				SEND_SIGNAL(H, COMSIG_HUMAN_WON_RPS)
 			else
-				winner_text = "Победитель [target]!" // SS220 EDIT ADDICTION
+				winner_text = "Победитель - [target]!"
+				SEND_SIGNAL(target, COMSIG_HUMAN_WON_RPS)
 		H.visible_message(SPAN_NOTICE("[capitalize(H.declent_ru(NOMINATIVE))] выбрасывает <b>[protagonist_plays]</b>![winner_text]"), SPAN_NOTICE("Вы выбрасываете <b>«[protagonist_plays]»</b>! [winner_text]"), max_distance = 5)
 		target.visible_message(SPAN_NOTICE("[target] выбрасывает <b>[antagonist_plays]</b>![winner_text]"), SPAN_NOTICE("Вы выбрасываете <b>«[antagonist_plays]»</b>! [winner_text]"), max_distance = 5)
 		playsound(target, "clownstep", 35, TRUE)

@@ -20528,16 +20528,16 @@
 /obj/structure/bed/chair/comfy{
 	dir = 4
 	},
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/prison/monorail/east)
 "bBf" = (
-/turf/open/shuttle/dropship/light_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/prison/monorail/east)
 "bBg" = (
 /obj/structure/bed/chair/comfy{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/prison/monorail/east)
 "bBh" = (
 /turf/closed/wall/prison,
@@ -21349,12 +21349,12 @@
 /turf/open/floor/prison/darkyellow2/north,
 /area/prison/telecomms)
 "bEg" = (
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/prison/monorail/east)
 "bEh" = (
 /obj/structure/machinery/door/unpowered/shuttle,
 /obj/structure/machinery/door/poddoor/shutters/transit/open,
-/turf/open/shuttle/dropship/light_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/prison/monorail/east)
 "bEi" = (
 /obj/structure/machinery/door/airlock/almayer/generic,
@@ -36085,7 +36085,7 @@
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/prison/telecomms)
 "pgg" = (
-/obj/structure/machinery/autolathe/full,
+/obj/structure/machinery/autolathe/partial,
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/access/south)
 "pib" = (

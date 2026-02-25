@@ -44,7 +44,6 @@
 		list("M4A3 Magazine (9mm)", floor(scale * 10), /obj/item/ammo_magazine/pistol, VENDOR_ITEM_REGULAR),
 
 		list("ATTACHMENTS", -1, null, null),
-		list("M10 Folding Stock", floor(scale * 5), /obj/item/attachable/stock/pistol/collapsible, VENDOR_ITEM_REGULAR),
 		list("M39 Folding Stock", floor(scale * 5), /obj/item/attachable/stock/smg/collapsible, VENDOR_ITEM_REGULAR),
 		list("M41A Folding Stock", floor(scale * 5), /obj/item/attachable/stock/rifle/collapsible, VENDOR_ITEM_REGULAR),
 		list("Rail Flashlight", floor(scale * 10), /obj/item/attachable/flashlight, VENDOR_ITEM_RECOMMENDED),
@@ -284,8 +283,6 @@
 	listed_products = list(
 		list("ARMOR-PIERCING AMMUNITION", -1, null, null),
 		list("M4RA AP Magazine (10x24mm)", 3.5, /obj/item/ammo_magazine/rifle/m4ra/ap, VENDOR_ITEM_REGULAR),
-		list("M10 AP Magazine (10x20mm-APC)", floor(scale * 4), /obj/item/ammo_magazine/pistol/m10/ap , VENDOR_ITEM_REGULAR),
-		list("M10 AP Extended Magazine (10x20mm-APC)", floor(scale * 2), /obj/item/ammo_magazine/pistol/m10/ap/extended , VENDOR_ITEM_REGULAR),
 		list("M39 AP Magazine (10x20mm)", floor(scale * 3), /obj/item/ammo_magazine/smg/m39/ap, VENDOR_ITEM_REGULAR),
 		list("M41A AP Magazine (10x24mm)", floor(scale * 3), /obj/item/ammo_magazine/rifle/ap, VENDOR_ITEM_REGULAR),
 
@@ -386,7 +383,7 @@
 		list("Extended Recoil Compensator", 2.5, /obj/item/attachable/extended_barrel/vented, VENDOR_ITEM_REGULAR),
 		list("Extended Barrel", 2.5, /obj/item/attachable/extended_barrel, VENDOR_ITEM_REGULAR),
 		list("Recoil Compensator", 2.5, /obj/item/attachable/compensator, VENDOR_ITEM_REGULAR),
-		list("M10 Compensator", 2.5, /obj/item/attachable/compensator/m10, VENDOR_ITEM_REGULAR),
+		list("M10 Compensator", 1, /obj/item/attachable/compensator/m10, VENDOR_ITEM_REGULAR),
 		list("Suppressor", 2.5, /obj/item/attachable/suppressor, VENDOR_ITEM_REGULAR),
 		list("Suppressor, Compact", 2.5, /obj/item/attachable/suppressor/sleek, VENDOR_ITEM_REGULAR),
 		list("Shotgun Choke", 1.5, /obj/item/attachable/shotgun_choke, VENDOR_ITEM_REGULAR),
@@ -416,6 +413,7 @@
 
 		list("STOCK", -1, null, null),
 		list("M10 Solid Stock", 3.5, /obj/item/attachable/stock/m10_solid, VENDOR_ITEM_REGULAR),	// SS220 EDIT - Balance attachments
+		list("M10 Folding Stock", 1.5, /obj/item/attachable/stock/pistol/collapsible, VENDOR_ITEM_REGULAR),
 		list("M37A2 Collapsible Stock", 3.5, /obj/item/attachable/stock/synth/collapsible, VENDOR_ITEM_REGULAR),	// SS220 EDIT - Balance attachments
 		list("M39 Arm Brace", 3.5, /obj/item/attachable/stock/smg/collapsible/brace, VENDOR_ITEM_REGULAR),	// SS220 EDIT - Balance attachments
 		list("M39 Stock", 3.5, /obj/item/attachable/stock/smg, VENDOR_ITEM_REGULAR),	// SS220 EDIT - Balance attachments

@@ -75,6 +75,7 @@ const hasPermission = (data, action) => {
 type ClientData = {
   client_key: string;
   client_ckey: string;
+  client_username: string;
   client_muted: number;
   client_age: number;
   first_join: string;
@@ -144,6 +145,7 @@ export const PlayerPanel = (props) => {
     mob_type,
     client_key,
     client_ckey,
+    client_username,
     client_rank,
     client_age,
     first_join,
@@ -209,7 +211,13 @@ export const PlayerPanel = (props) => {
                           act('set_ckey', { ckey: value })
                         }
                       />
-                    )) || <Box inline>{client_key}</Box>}
+                    )) || (
+                    <Box inline style={{ wordBreak: 'break-all' }}>
+                      {client_username && client_username !== client_key
+                        ? `${client_username} (${client_key})`
+                        : client_key}
+                    </Box>
+                  )}
                 </Stack.Item>
                 {!!client_ckey && (
                   <Stack.Item align="right">

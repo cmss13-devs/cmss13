@@ -167,3 +167,39 @@
 	. = ..()
 	var/new_name = "Pack Leader [new_human.real_name]" //fluff rank blooded outrank them
 	new_human.change_real_name(new_human, new_name)
+
+/datum/equipment_preset/yautja/equipped
+	name = "Yautja Hunter (Equipped)"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	clan_rank = CLAN_RANK_BLOODED_INT
+
+/datum/equipment_preset/yautja/equipped/load_status(mob/living/carbon/human/new_human)
+	new_human.nutrition = NUTRITION_MAX
+
+/datum/equipment_preset/yautja/equipped/load_gear(mob/living/carbon/human/new_human)
+	. = ..()
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/chainshirt/hunter(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/yautja/hunter(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/yautja/hunter(new_human), WEAR_FACE)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/yautja(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/bracer_attachments/wristblades(new_human), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/bracer_attachments/wristblades(new_human), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/yautja/hunter/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/device/yautja_teleporter(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/medicomp/full(new_human), WEAR_R_STORE)
+	switch(rand(1, 100))
+		if(1 to 10)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/yautja/sword(new_human), WEAR_BACK)
+		if(11 to 20)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/yautja/chain(new_human), WEAR_J_STORE)
+		if(21 to 30)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/yautja/scythe(new_human), WEAR_BACK)
+		if(31 to 40)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/yautja/scythe/alt(new_human), WEAR_BACK)
+		if(41 to 60)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/yautja/chained/combistick(new_human), WEAR_BACK)
+		if(61 to 80)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/twohanded/yautja/glaive(new_human), WEAR_BACK)
+		if(81 to 100)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/twohanded/yautja/glaive/alt(new_human), WEAR_BACK)

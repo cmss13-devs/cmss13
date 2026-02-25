@@ -214,6 +214,8 @@
 	if(w_uniform)
 		w_uniform.add_fingerprint(mob)
 
+	var/shaken_friend = FALSE
+
 	if(HAS_TRAIT(src, TRAIT_FLOORED) || HAS_TRAIT(src, TRAIT_KNOCKEDOUT) || body_position == LYING_DOWN || sleeping)
 		if(client)
 			sleeping = max(0,src.sleeping-5)
@@ -222,11 +224,13 @@
 				to_chat(mob, SPAN_WARNING("Похоже у [declent_ru(GENITIVE)] кружится голова. Не стоит [t_him] сейчас беспокоить."))
 			else
 				set_resting(FALSE)
+		shaken_friend = TRUE
 		mob.visible_message(SPAN_NOTICE("[capitalize(mob.declent_ru(NOMINATIVE))] трясёт [declent_ru(ACCUSATIVE)], пытаясь разбудить [t_him]!"), // SS220 EDIT ADDICTION
 			SPAN_NOTICE("Вы трясёте [declent_ru(ACCUSATIVE)], пытаясь разбудить [t_him]!"), null, 4) // SS220 EDIT ADDICTION
 	else if(HAS_TRAIT(src, TRAIT_INCAPACITATED))
 		mob.visible_message(SPAN_NOTICE("[capitalize(mob.declent_ru(NOMINATIVE))] трясёт [declent_ru(ACCUSATIVE)], пытаясь вывести [t_him] из ступора!"),
 			SPAN_NOTICE("Вы трясёте [declent_ru(ACCUSATIVE)], пытаясь вывести [t_him] из ступора!"), null, 4)
+		shaken_friend = TRUE
 	else
 		var/mob/living/carbon/human/human = mob
 		if(istype(human))
@@ -236,6 +240,9 @@
 				SPAN_NOTICE("Вы похлопываете [declent_ru(ACCUSATIVE)] по спине, чтобы [t_him] стало лучше!"), null, 4)
 			playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 5)
 		return
+
+	if(shaken_friend)
+		SEND_SIGNAL(mob, COMSIG_HUMAN_HELPING_UP)
 
 	adjust_effect(-6, PARALYZE)
 	adjust_effect(-6, STUN)

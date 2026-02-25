@@ -358,6 +358,16 @@ prepositional = "Адском "
 gender = "male"
 tags = [ "cm13",]
 
+["проклятый "]
+nominative = "Проклятый "
+genitive = "Проклятого "
+dative = "Проклятому "
+accusative = "Проклятого "
+instrumental = "Проклятым "
+prepositional = "Проклятом "
+gender = "male"
+tags = [ "cm13",]
+
 ["молодая "]
 nominative = "Молодая "
 genitive = "Молодой "

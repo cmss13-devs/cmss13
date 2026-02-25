@@ -165,7 +165,7 @@ GLOBAL_LIST_INIT_TYPED(map_type_list, /obj/item/map, setup_all_maps())
 		MAP_LV522_CHANCES_CLAIM = new /obj/item/map/lv522_map(),
 		MAP_LV759_HYBRISA_PROSPERA = new /obj/item/map/lv759_map(),
 		MAP_NEW_VARADERO = new /obj/item/map/new_varadero(),
-		MAP_TYRARGO_RIFT = new /obj/item/map/tyrargo_rift(),
+		MAP_TYRARGO_RIFT = new /obj/item/map/tyrargo_rift()
 	)
 
 //used by marine equipment machines to spawn the correct map.

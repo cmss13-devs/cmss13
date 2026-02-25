@@ -32,7 +32,7 @@ About the Holder:
 			This proc equally transfers the contents of the holder to another
 			objects holder. You need to pass it the object (not the holder) you want
 			to transfer to and the amount you want to transfer. Its return value is the
-			actual amount transfered (if one of the objects is full/empty)
+			actual amount transferred (if one of the objects is full/empty)
 
 		trans_id_to(obj/target, reagent, amount)
 			Same as above but only for a specific reagent in the reagent list.
@@ -140,7 +140,7 @@ About Reagents:
 			slippery floors for lube or something in here.
 
 		on_mob_life(mob/M)
-			This proc is called everytime the mobs life proc executes.
+			This proc is called every time the mobs life proc executes.
 			This is the place where you put damage for toxins ,
 			drowsiness for sleep toxins etc etc.
 			You'll want to call the parents proc by using ..() .

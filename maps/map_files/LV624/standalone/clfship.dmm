@@ -561,7 +561,7 @@
 /turf/open/floor/plating/warnplate/northeast,
 /area/lv624/lazarus/crashed_ship)
 "iq" = (
-/turf/closed/shuttle/ert{
+/turf/closed/shuttle/ert/transparent{
 	icon_state = "rightengine_3"
 	},
 /area/lv624/lazarus/crashed_ship)
@@ -739,7 +739,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/lv624/lazarus/crashed_ship)
 "nt" = (
-/turf/closed/shuttle/ert{
+/turf/closed/shuttle/ert/transparent{
 	icon_state = "stan27"
 	},
 /area/lv624/lazarus/crashed_ship)
@@ -1123,7 +1123,7 @@
 /turf/open/floor/wood,
 /area/lv624/lazarus/crashed_ship)
 "BC" = (
-/turf/closed/shuttle/ert{
+/turf/closed/shuttle/ert/transparent{
 	icon_state = "rightengine_2"
 	},
 /area/lv624/lazarus/crashed_ship)
@@ -1244,10 +1244,8 @@
 /turf/open/floor/almayer/bluecorner/east,
 /area/lv624/lazarus/crashed_ship)
 "Ev" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_1";
-	opacity = 0
-	},
+/obj/structure/shuttle/part/ert/transparent/left_engine,
+/turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship)
 "Ex" = (
 /obj/structure/barricade/metal/wired{
@@ -1378,7 +1376,7 @@
 /area/lv624/lazarus/crashed_ship)
 "Kk" = (
 /turf/closed/shuttle/ert{
-	icon_state = "stan_leftengine"
+	icon_state = "stan_leftengine_clean"
 	},
 /area/lv624/lazarus/crashed_ship)
 "Kt" = (
@@ -1429,9 +1427,8 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "Mv" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan20"
-	},
+/obj/structure/shuttle/part/ert/front_left_stan,
+/turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship)
 "Mw" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -1793,9 +1790,8 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "VN" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_2";
-	opacity = 0
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "leftengine_2"
 	},
 /area/lv624/lazarus/crashed_ship)
 "VQ" = (
@@ -1831,9 +1827,8 @@
 /turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "WH" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan25"
-	},
+/obj/structure/shuttle/part/ert/front_right_stan,
+/turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship)
 "WJ" = (
 /obj/structure/largecrate/supply/supplies/flares,
@@ -1900,9 +1895,8 @@
 /turf/open/floor/almayer/emerald,
 /area/lv624/lazarus/crashed_ship)
 "YF" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_3";
-	opacity = 0
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "leftengine_3_clean"
 	},
 /area/lv624/lazarus/crashed_ship)
 "YX" = (
@@ -1928,9 +1922,8 @@
 /turf/open/floor/plating/warnplate/southeast,
 /area/lv624/lazarus/crashed_ship)
 "ZS" = (
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_1"
-	},
+/obj/structure/shuttle/part/ert/transparent/right_engine,
+/turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship)
 "ZV" = (
 /turf/open/floor/almayer/greencorner,

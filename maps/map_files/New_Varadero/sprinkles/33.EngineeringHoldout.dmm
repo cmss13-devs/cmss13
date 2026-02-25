@@ -54,7 +54,7 @@
 /obj/item/device/sentry_computer{
 	open = 1
 	},
-/obj/item/pamphlet/skill/engineer{
+/obj/item/pamphlet/upgradeable/engineer{
 	pixel_x = -7;
 	pixel_y = 5
 	},

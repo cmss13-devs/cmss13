@@ -65124,7 +65124,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/maint/lower/cryo_cells)
 "lZZ" = (
-/obj/structure/machinery/autolathe/medilathe/full,
+/obj/structure/machinery/autolathe/medilathe/partial,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/hydroponics)
 "may" = (
@@ -65366,7 +65366,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/l_m_p)
 "mgd" = (
-/obj/structure/machinery/autolathe/armylathe/full,
+/obj/structure/machinery/autolathe/armylathe/partial,
 /obj/structure/machinery/light{
 	dir = 1
 	},

@@ -113,7 +113,7 @@
 		log_message(msg, sender.key, "Всем менторам") //SS220 EDIT
 
 	// Sender feedback
-	to_chat(sender, "[SPAN_MENTORHELP("<span class='prefix'>MentorHelp:</span> сообщение [(recipient?.key) ? "<a href='byond://?src=\ref[src];action=message'>[recipient.key]</a>" : "менторам"]:<br>")] [SPAN_MENTORBODY(msg)]") // SS220 EDIT ADDICTION
+	to_chat(sender, "[SPAN_MENTORHELP("<span class='prefix'>MentorHelp:</span> сообщение [(recipient?.username()) ? "<a href='byond://?src=\ref[src];action=message'>[recipient.username()]</a>" : "менторам"]:<br>")] [SPAN_MENTORBODY(msg)]") // SS220 EDIT ADDICTION
 
 	// Recipient direct message
 	if(recipient)
@@ -176,7 +176,7 @@
 // Sanitizes and wraps the message with some info and links, depending on the sender...?
 /datum/mentorhelp/proc/wrap_message(message, client/sender)
 	var/message_title = "MentorPM"
-	var/message_sender_key = "<a href='byond://?src=\ref[src];action=message'>[sender.key]</a>"
+	var/message_sender_key = "<a href='byond://?src=\ref[src];action=message'>[sender.username()]</a>"
 	var/message_sender_options = ""
 
 	// The message is being sent to the mentor and should be formatted as a mentorhelp message
@@ -218,8 +218,8 @@
 	mentor = thread_mentor
 
 	log_mhelp("[mentor.key] has marked [author_key]'s mentorhelp")
-	notify("<font style='color:red;'>[mentor.key]</font> начал отвечать на тикет <font style='color:red;'>[author_key]</font> в «MentorHelp».") // SS220 EDIT ADDICTION
-	to_chat(author, SPAN_NOTICE("<b>УВЕДОМЛЕНИЕ:</b> <font style='color:red;'>[mentor.key]</font> начал отвечать на ваш тикет.")) // SS220 EDIT ADDICTION
+	notify("<font style='color:red;'>[mentor.username()]</font> начал отвечать на тикет <font style='color:red;'>[author_key]</font> в «MentorHelp».") // SS220 EDIT ADDICTION
+	to_chat(author, SPAN_NOTICE("<b>УВЕДОМЛЕНИЕ:</b> <font style='color:red;'>[mentor.username()]</font> начал отвечать на ваш тикет.")) // SS220 EDIT ADDICTION
 
 // Unmarks the mentorhelp thread and notifies the author that the thread is no longer being handled by a mentor
 /datum/mentorhelp/proc/unmark(client/thread_mentor)
@@ -238,8 +238,8 @@
 		return
 
 	log_mhelp("[mentor.key] has unmarked [author_key]'s mentorhelp")
-	notify("<span class='message'><font style='color:red;'>[mentor.key]</font> перестал отвечать на тикет <font style='color:red;'><a href=byond://?src=\ref[src];action=message>[author_key]</a></font> в «MentorHelp».") // SS220 EDIT ADDICTION
-	to_chat(author, SPAN_NOTICE("<b>УВЕДОМЛЕНИЕ:</b> <font style='color:red;'>[mentor.key]</font> перестал отвечать на ваш тикет.")) // SS220 EDIT ADDICTION
+	notify("<span class='message'><font style='color:red;'>[mentor.username()]</font> перестал отвечать на тикет <font style='color:red;'><a href=byond://?src=\ref[src];action=message>[author_key]</a></font> в «MentorHelp».") // SS220 EDIT ADDICTION
+	to_chat(author, SPAN_NOTICE("<b>УВЕДОМЛЕНИЕ:</b> <font style='color:red;'>[mentor.username()]</font> перестал отвечать на ваш тикет.")) // SS220 EDIT ADDICTION
 	mentor = null
 
 /*

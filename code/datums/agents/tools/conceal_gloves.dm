@@ -1,6 +1,6 @@
 /obj/item/clothing/gloves/antag
 	name = "suspicious gloves"
-	desc = "Black gloves, both insulated and immune to the detection of " + MAIN_AI_SYSTEM + "."
+	desc = "Black gloves, both insulated and immune to the detection of " + MAIN_AI_SYSTEM_DEFAULT + "."
 	// "[]" won't work here because it wouldn't be a constant expression
 
 	icon_state = "black"

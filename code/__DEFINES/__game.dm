@@ -6,7 +6,10 @@
 #define GLOBAL_PROC "magic BS"
 
 //Game defining directives.
-#define MAIN_AI_SYSTEM "ARES v3.2"
+#define MAIN_AI_SYSTEM SSmapping.get_main_ai_name()
+#define MAIN_AI_SYSTEM_DEFAULT "ARES 3.2"
+#define FACTION_MAIN SSmapping.get_main_faction()
+#define FACTION_MAIN_DEFAULT "USCM"
 
 // Maploader bounds indices
 #define MAP_MINX 1

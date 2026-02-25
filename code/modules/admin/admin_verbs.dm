@@ -315,7 +315,6 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 	/client/proc/deadmin_self,
 	/client/proc/cmd_mentor_say,
 	/datum/admins/proc/imaginary_friend,
-	/client/proc/admin_ghost,
 	/client/proc/toggle_newplayer_ghost_hud,
 	/client/proc/toggle_newplayer_ic_hud
 ))

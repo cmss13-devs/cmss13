@@ -1,15 +1,12 @@
 // Represents a mentorhelp thread
 /datum/mentorhelp
-	// The client/player who initiated (authored) the mentorhelp thread
+	/// The client/player who initiated (authored) the mentorhelp thread
 	var/client/author = null
-	// The author's key
+	/// The author's key
 	var/author_key = ""
-
-	// The mentor who's responding to this mentorhelp thread
-	// If this is null, it means no mentor has responded yet
+	/// The mentor client responding to this mentorhelp thread
 	var/client/mentor = null
-
-	// If this thread is still open
+	/// If this thread is still open
 	var/open = TRUE
 
 /datum/mentorhelp/New(client/thread_author)
@@ -36,21 +33,20 @@
  * Helpers
  */
 
-// Helper to check that the author is still around
-// Closes the thread if they're not
+/// Checks that the thread author is still around. Closes the thread if they're not
 /datum/mentorhelp/proc/check_author()
 	if(author)
 		return author
 	close()
 	return
 
-// Helper to check that the thread is still open
+/// Checks that the thread is still open
 /datum/mentorhelp/proc/check_open(client/mentor_client)
 	if(!open)
 		to_chat(mentor_client, SPAN_NOTICE("This mentorhelp thread is closed!"))
 	return open
 
-// Logs the mentorhelp message to admin logs
+/// Logs the mentorhelp message to admin logs
 /datum/mentorhelp/proc/log_message(msg, from_key, to_key)
 	msg = strip_html(msg)
 	var/log_msg = msg
@@ -58,6 +54,7 @@
 		log_msg = "[SPAN_MENTORHELP("[from_key] -> [to_key]:")] [msg]"
 	log_mhelp(log_msg)
 
+/// Broadcasts mentorhelp thread actions to staff members and mentors
 /datum/mentorhelp/proc/notify(text, to_thread_mentor = TRUE, to_mentors = TRUE, to_staff = TRUE)
 	var/list/hitlist = list()
 	if(to_thread_mentor && mentor)
@@ -159,6 +156,7 @@
 		message_handlers(message, sender, target)
 	return
 
+/// Returns the name of a client based on who's asking for it, and how much information they're allowed.
 /datum/mentorhelp/proc/get_client_name(client/target, client/reader)
 	if(CLIENT_IS_STAFF(reader))
 		return key_name(target)
@@ -232,7 +230,7 @@
  * Misc.
  */
 
-// Closes the thread and notifies the author/mentor that it has been closed
+/// Closes the thread and notifies the author/mentor that it has been closed
 /datum/mentorhelp/proc/close(client/closer)
 	if(!open)
 		return
@@ -258,6 +256,7 @@
 	to_chat(author, SPAN_NOTICE("Your mentorhelp thread has been closed."))
 	notify("<font style='color:red;'>[get_client_name(author)]</font>'s mentorhelp thread has been closed.")
 
+/// Follows the thread author as an aghost, with movement restrictions
 /datum/mentorhelp/proc/follow(client/mentor_client)
 	if(!mentor_client)
 		return
@@ -284,6 +283,7 @@
 		RegisterSignal(mentor_ghost, COMSIG_OBSERVER_DISCONNECTED, PROC_REF(handle_mghost_disconnect))
 	mentor_ghost.do_observe(author.mob)
 
+/// Called when the mentor aghost is no longer following its target, and needs to be recalled
 /datum/mentorhelp/proc/handle_mghost_disconnect(mob/dead/observer/mghost)
 	SIGNAL_HANDLER
 
@@ -292,6 +292,7 @@
 
 	UnregisterSignal(mghost, COMSIG_OBSERVER_DISCONNECTED)
 
+/// Spawns the mentor as an imaginary friend, bypassing the mob selection process
 /datum/mentorhelp/proc/handle_imaginary_friend(client/mentor_client, mob/befriended_mob)
 	if(!mentor_client)
 		return

@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Fix Restore Ghost Character verb causing ghosts to be visible to living players"

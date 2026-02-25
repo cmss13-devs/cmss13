@@ -1,7 +1,7 @@
 ///CORE MRE, ALSO JUST SO HAPPEN TO BE USCM MRE
 /obj/item/storage/box/mre
-	name = "\improper USCM MRE"
-	desc = "A Meal, Ready-to-Eat. A single-meal combat ration designed to provide a soldier with enough nutrients for a day of strenuous work. Its expiration date is at least 20 years ahead of your combat life expectancy."
+	name = "\improper US MRE"
+	desc = "A Meal, Ready-to-Eat. A single-meal combat ration designed to provide a soldier or marine with enough nutrients for a day of strenuous work. Its expiration date is at least 20 years ahead of your combat life expectancy."
 	icon = 'icons/obj/items/storage/mre.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/mres_lefthand.dmi',
@@ -248,7 +248,7 @@
 
 /obj/item/storage/box/mre/fsr
 	name = "\improper FSR combat ration"
-	desc = "First Strike Ration, produced by the same manufacturere that produces MREs for UA militaries, but oriented on a civillian and private markets."
+	desc = "First Strike Ration, produced by the same manufacturere that produces MREs for UA militaries, but oriented on a civilian and private markets."
 	icon_state = "merc_mealpack"
 	icon_closed = "merc_mealpack"
 	icon_opened = "merc_mealpackopened"

@@ -318,7 +318,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_CHINESE)
 	faction = FACTION_UPP
-	minimap_background = "background_upp_civillian"
+	minimap_background = "background_upp_civilian"
 	paygrades = list(PAY_SHORT_CIV = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/civilian
 	access = list(ACCESS_CIVILIAN_PUBLIC)
@@ -438,7 +438,7 @@
 	faction = FACTION_UPP
 	faction_group = FACTION_LIST_SURVIVOR_UPP
 	role_comm_title = "FPPB"
-	minimap_background = "background_upp_civillian"
+	minimap_background = "background_upp_civilian"
 	skills = /datum/skills/civilian/survivor/fire_fighter
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_MEDBAY, ACCESS_CIVILIAN_COMMAND)
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
@@ -481,7 +481,7 @@
 /datum/equipment_preset/survivor/upp_miner
 	name = "Survivor - UPP - Jutou Combine - Miner"
 	assignment = "Jùtóu Combine - Shakhtyor"
-	minimap_background = "background_upp_civillian"
+	minimap_background = "background_upp_civilian"
 	skills = /datum/skills/civilian/survivor/miner
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_CHINESE)
 	faction = FACTION_UPP

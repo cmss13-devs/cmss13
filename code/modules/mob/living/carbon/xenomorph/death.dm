@@ -3,6 +3,8 @@
 /// Doesn't count tier 0
 GLOBAL_VAR_INIT(total_dead_xenos, 0)
 
+#define LAST_XENO_HEAL_COOLDOWN "last_xeno_heal_cooldown"
+
 /mob/living/carbon/xenomorph/death(cause, gibbed)
 	var/msg = "lets out a waning guttural screech, green blood bubbling from its maw."
 	. = ..(cause, gibbed, msg)
@@ -100,7 +102,7 @@ GLOBAL_VAR_INIT(total_dead_xenos, 0)
 			playsound(loc, prob(50) == 1 ? 'sound/voice/alien_death.ogg' : 'sound/voice/alien_death2.ogg', 25, 1)
 		var/area/A = get_area(src)
 		if(hive && hive.living_xeno_queen)
-			if(!HAS_TRAIT(src, TRAIT_TEMPORARILY_MUTED))
+			if(!HAS_TRAIT(src, TRAIT_TEMPORARILY_MUTED) && !hardcore)
 				xeno_message("Hive: [src] has <b>died</b>[A? " at [sanitize_area(A.name)]":""]! [banished ? "They were banished from the hive." : ""]", death_fontsize, hivenumber)
 
 	if(hive && IS_XENO_LEADER(src)) //Strip them from the Xeno leader list, if they are indexed in here
@@ -142,7 +144,9 @@ GLOBAL_VAR_INIT(total_dead_xenos, 0)
 				// Tell the xeno she is the last one, heal her and make her fight to the death
 				if(xeno.client)
 					to_chat(xeno, SPAN_XENOANNOUNCE("Your carapace rattles with RAGE. You are all that remains of the hive! Go out fighting, kill them all!"))
-					xeno.rejuvenate()
+					if(!TIMER_COOLDOWN_CHECK(xeno, LAST_XENO_HEAL_COOLDOWN))
+						xeno.rejuvenate()
+						TIMER_COOLDOWN_START(xeno, LAST_XENO_HEAL_COOLDOWN, 10 MINUTES)
 					if(!isqueen(xeno))
 						xeno.can_heal = FALSE
 				notify_ghosts(header = "Last Xenomorph", message = "There is only one Xenomorph left: [xeno.name].", source = xeno, action = NOTIFY_ORBIT)
@@ -183,3 +187,5 @@ GLOBAL_VAR_INIT(total_dead_xenos, 0)
 /mob/living/carbon/xenomorph/revive()
 	SEND_SIGNAL(src, COMSIG_XENO_REVIVED)
 	..()
+
+#undef LAST_XENO_HEAL_COOLDOWN

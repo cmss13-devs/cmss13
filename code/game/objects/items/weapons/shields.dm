@@ -147,7 +147,7 @@
 /obj/item/weapon/shield/riot/ballistic //FOR THE ROYAL MARINE SPEC DO NOT TOUCH SMELLY MAN
 	name = "FBS-B Ballistic shield"
 	desc = "Ballistic shield used by the royal marines commando. This shield is commonly used during boarding actions due to its lightweight but durable design."
-	desc_lore = "The Fox Ballistic Shield-B (FBS-B), was originally introduced as the FBS, attempting to be a solution to high-impact operations following increased counter-insurgency deployments since 2151. It was designed to provide maximum protection, and for the user to be able to utilize their primary armament in tandem. By 2163 tertiary ballistics trials were undertaken to ascertain it's effectiveness against improved munitions, and was additionally used as an opportunity to  deal with user complaints making their way up from quartermasters. The complaints of the original FBS were twofold: weight and extended usage in combat causing the side to melt closest to the barrel. After further material research and in the field tests were conducted, by 2171, the FBS had attained a ballistics protection classification of D, the highest available for a portable shield, by being able to stop a singular armor piercing round. This reported success was due to the usage of a new fibre reinforced lightweight composite.  In the wake of the successful improvements, the FBS was later christened the FBS-B as with the enhanced shield, the user had a tendency for maximum aggression during engagements. The nickname 'Bellicose' was given to breachers by their squaddies and later became it's official designation."
+	desc_lore = "The Fox Ballistic Shield-B (FBS-B), was originally introduced as the FBS, attempting to be a solution to high-impact operations following increased counter-insurgency deployments since 2151. It was designed to provide maximum protection, and for the user to be able to utilize their primary armament in tandem. By 2163 tertiary ballistics trials were undertaken to ascertain it's effectiveness against improved munitions, and was additionally used as an opportunity to deal with user complaints making their way up from quartermasters. The complaints of the original FBS were twofold: weight and extended usage in combat causing the side to melt closest to the barrel. After further material research and in the field tests were conducted, by 2171, the FBS had attained a ballistics protection classification of D, the highest available for a portable shield, by being able to stop a singular armor piercing round. This reported success was due to the usage of a new fibre reinforced lightweight composite. In the wake of the successful improvements, the FBS was later christened the FBS-B as with the enhanced shield, the user had a tendency for maximum aggression during engagements. The nickname 'Bellicose' was given to breachers by their squaddies and later became it's official designation."
 	icon_state = "ballisticshield"
 	item_state = "ballisticshield"
 	base_icon_state = "ballisticshield"
@@ -155,3 +155,26 @@
 	passive_projectile_mult = PROJECTILE_BLOCK_PERC_60
 	readied_block = SHIELD_CHANCE_GODLY
 	readied_projectile_mult = PROJECTILE_BLOCK_PERC_80
+
+/obj/item/weapon/shield/riot/roman
+	name = "imperial scutum shield"
+	desc = "A large metal shield often used by Roman heavy infantry units. Capable of stopping multiple projectiles and melee blows. its size makes it extraordinary difficult to carry around."
+
+	icon_state = "roman_shield"
+	item_state = "roman_shield"
+	base_icon_state = "roman_shield"
+	flags_equip_slot = NO_FLAGS
+	force = MELEE_FORCE_TIER_3
+	passive_block = SHIELD_CHANCE_VHIGH
+	passive_projectile_mult = PROJECTILE_BLOCK_PERC_60
+	readied_block = SHIELD_CHANCE_SUPER
+	readied_projectile_mult = PROJECTILE_BLOCK_PERC_80
+	readied_slowdown = SLOWDOWN_ARMOR_MEDIUM
+	throwforce = MELEE_FORCE_TIER_2
+	throw_speed = SPEED_SLOW
+	throw_range = 3
+	w_class = SIZE_MASSIVE
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/shields_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/shields_righthand.dmi'
+	)

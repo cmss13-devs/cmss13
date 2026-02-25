@@ -12,7 +12,7 @@
 
 /datum/emergency_call/contractors/New()
 	..()
-	arrival_message = "[MAIN_SHIP_NAME], this is USCSS Inheritor with Vanguard's Arrow Incorporated, Primary Operations; we are responding to your distress call and boarding in accordance with the Military Aid Act of 2177, authenticication code Lima-18153. "
+	arrival_message = "[MAIN_SHIP_NAME], this is USCSS Inheritor with Vanguard's Arrow Incorporated, Primary Operations; we are responding to your distress call and boarding in accordance with the Military Aid Act of 2177, authentication code Lima-18153."
 	objectives = "Ensure the survival of the [MAIN_SHIP_NAME], eliminate any hostiles, and assist the crew in any way possible."
 
 
@@ -124,7 +124,7 @@
 	else if(synths < max_synths && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_SYNTH) && H.client.check_whitelist_status(WHITELIST_SYNTHETIC))
 		synths++
 		to_chat(H, SPAN_ROLE_HEADER("You are a Contractor Support Synthetic of Vanguard's Arrow Incorporated!"))
-		arm_equipment(H, /datum/equipment_preset/contractor/covert/synth, TRUE, TRUE)
+		arm_equipment(H, /datum/equipment_preset/synth/contractor/covert, TRUE, TRUE)
 	else if(medics < max_medics && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(H.client, JOB_SQUAD_MEDIC, time_required_for_job))
 		medics++
 		to_chat(H, SPAN_ROLE_HEADER("You are a Covert Contractor Medical Specialist of Vanguard's Arrow Incorporated!"))

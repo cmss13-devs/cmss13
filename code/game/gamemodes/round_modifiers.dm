@@ -149,3 +149,11 @@
 /datum/gamemode_modifier/ceasefire
 	modifier_name = "Ceasefire"
 	modifier_desc = "Prevents firing guns and throwing granades."
+
+/datum/gamemode_modifier/more_crit
+	modifier_name = "Increased Crit Threshold"
+	modifier_desc = "Increases the crit and dead thresholds on humans."
+
+/datum/gamemode_modifier/disable_wj_spawns
+	modifier_name = "Disable Working Joe"
+	modifier_desc = "Disables Working Joes from spawning."

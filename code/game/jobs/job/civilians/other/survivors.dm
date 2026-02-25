@@ -99,7 +99,7 @@ GLOBAL_LIST_EMPTY(spawned_survivors)
 		to_chat(survivor, "<h2>You are a survivor!</h2>")
 		to_chat(survivor, SPAN_NOTICE(SSmapping.configs[GROUND_MAP].survivor_message))
 		to_chat(survivor, SPAN_NOTICE("You are fully aware of the xenomorph threat and are able to use this knowledge as you see fit."))
-		to_chat(survivor, SPAN_NOTICE("You are NOT aware of the marines or their intentions. "))
+		to_chat(survivor, SPAN_NOTICE("You are NOT aware of the marines or their intentions."))
 
 	if(story_text)
 		to_chat(survivor, story_text)
@@ -222,7 +222,7 @@ AddTimelock(/datum/job/civilian/survivor, list(
 	if(picked_spawner.CO_equipment) //insert with CO
 		arm_equipment(equipping_human, picked_spawner.CO_equipment, FALSE, TRUE)
 		return
-	else if(length(CO_survivor_types)) //map with guarenteed CO slot
+	else if(length(CO_survivor_types)) //map with guaranteed CO slot
 		arm_equipment(equipping_human, pick(CO_survivor_types), FALSE, TRUE)
 		return
 	else //map that has an insert that enabled rolling for CO but the insert didn't fire and there is no default CO equipment, thus equip as a normal survivor

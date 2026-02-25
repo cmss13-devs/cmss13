@@ -224,7 +224,7 @@
 
 	// the mentor exists, and is us, and we no longer want that to be the case
 	log_mhelp("[mentor.username()] has unmarked [author_key]'s mentorhelp")
-	notify("<font style='color:red;'>[mentor.username()]</font> has unmarked <font style='color:red;'><a href='byond://?src=\ref[src];action=message'>[get_client_name(author)]</a></font>'s mentorhelp.")
+	notify("<font style='color:red;'>[mentor.username()]</font> has unmarked <font style='color:red;'>[get_client_name(author)]</font>'s mentorhelp.")
 	to_chat(author, SPAN_NOTICE("<b>NOTICE:</b> <font style='color:red;'>[mentor.username()]</font> has unmarked your thread and is no longer responding to it."))
 	mentor = null
 

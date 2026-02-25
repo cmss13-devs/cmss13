@@ -378,3 +378,43 @@
   Puckaboo2:
   - spellcheck: '''transferred'', ''transferring'', ''suppress'', ''modifying'', and
       ''chosen'' are no longer misspelled, among other words.'
+2026-02-25:
+  MistChristmas:
+  - rscdel: Removed a UpdatePath script for lathes
+  - bugfix: Data Detector now detects things in labcoats and other such storages properly.
+  Nihisohel:
+  - rscadd: Adds a few missing language pamphlets and other pamphlets for admin spawns
+  - balance: Some skill pamphlets (E.G. JTAC) can now be upgraded to a higher level
+      upon use.
+  - bugfix: Pamphlets whose skills you already have will no longer be wasted upon
+      use, either preventing its use or upgrading it.
+  - code_imp: Changed the paths of some pamphlets to be categorized in its own files
+      for cleanliness
+  - code_imp: Deletes some now defunct skill traits
+  - spellcheck: Beautifies the descriptions of the various pamphlets
+  Steelpoint:
+  - maptweak: The LZ1 northern communications array on Chances Claim has had a new
+      path opened up to its north. The intention for this change is to make holding
+      the array more challenging for the Marines, and to give Xenomorphs a new attack
+      route to siege the array. This new path also opens a new attack route for both
+      factions to use.
+  - maptweak: Fixes a duplicated multiz room on Chances Claim (the off-map sniper
+      spawn).
+  - maptweak: The medical podlock on Kutjevo has been opened up, this should make
+      this area less of a choke point for the attacking Marines.
+  - maptweak: The east, north-east and south entrances to LZ1 on Kutjevo have been
+      opened up via removing some hull walls and creating new attack paths. This should
+      make the LZ more challenging to defend but also give Xenomorphs more attack
+      paths.
+  - maptweak: The south communications array spawn for LZ1 on Kutjevo has been moved
+      slightly south-east, as part of an extended cave network. The aim of this change
+      is to make holding the array more challenging and to give Xenomorphs more options
+      to siege the communications array, instead of being forced into a small chokepoint.
+  TrollerNoob:
+  - rscadd: Topographical data has finally been linked to the USCM's Tactical Map
+      readings. A system update has began to be rolled out fleet wide!
+  - ui: Added a 'Toggle Minimap Ceiling Overlay' preference underneath UI that showcases
+      a new overlay for the minimap, one that color codes areas based on the tier
+      of their ceiling. The darker the color, the harder the roof is to penetrate.
+  - ui: Added an action button for it next to the Minimap button. The red version
+      toggles the ceiling area mode on or off.

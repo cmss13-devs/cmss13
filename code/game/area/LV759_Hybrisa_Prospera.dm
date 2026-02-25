@@ -1152,6 +1152,14 @@
 	icon_state = "recycling"
 	linked_lz = DROPSHIP_LZ1
 
+// Fire Station
+
+/area/lv759/indoors/fire_station
+	name = "Fire Station"
+	icon_state = "fire_station"
+	minimap_color = MINIMAP_AREA_SEC
+	linked_lz = DROPSHIP_LZ1
+
 // Restrooms
 
 /area/lv759/indoors/south_public_restroom

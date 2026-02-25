@@ -139,6 +139,11 @@
 	icon = 'icons/obj/structures/props/vehicles/armored_truck_wy_white.dmi'
 	icon_state = "armored_truck_wy_white"
 
+/obj/structure/prop/hybrisa/vehicles/Armored_Truck/fire_truck
+	name = "fire-truck"
+	icon = 'icons/obj/structures/props/vehicles/small_firetruck_red.dmi'
+	icon_state = "small_firetruck_red"
+
 // Ambulance - Damage States
 /obj/structure/prop/hybrisa/vehicles/Ambulance
 	name = "ambulance"
@@ -149,6 +154,10 @@
 	bound_width = 96
 	density = TRUE
 	layer = ABOVE_MOB_LAYER
+
+/obj/structure/prop/hybrisa/vehicles/ambulance
+	icon = 'icons/obj/structures/props/vehicles/ambulance_fire.dmi'
+	icon_state = "ambulance"
 
 // Long Hauler Truck - Damage States
 /obj/structure/prop/hybrisa/vehicles/Long_Truck
@@ -2845,6 +2854,11 @@
 	name = "wrecked phonebox"
 	desc = "It's a phonebox, outdated but reliable technology. These are used to communicate throughout the colony and connected colonies without interference. It seems it's completely wrecked, covered in blood and the glass is smashed. Hiding inside would be pointless."
 	icon_state = "phonebox_bloody_off_broken"
+
+/obj/structure/prop/hybrisa/misc/phonebox/broken
+	name = "wrecked phonebox"
+	desc = "It's a phonebox, outdated but reliable technology. These are used to communicate throughout the colony and connected colonies without interference. It seems it's completely wrecked, and the glass is smashed. Hiding inside would be pointless."
+	icon_state = "phonebox_off_broken"
 
 /obj/structure/prop/hybrisa/misc/phonebox/bullet_act(obj/projectile/P)
 	health -= P.damage

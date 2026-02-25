@@ -66,7 +66,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/lastchangelog = "" // Saved changlog filesize to detect if there was a change
 	var/ooccolor
 	var/be_special = BE_ALIEN|BE_KING // Special role selection
-	var/toggle_prefs = TOGGLE_DIRECTIONAL_ATTACK|TOGGLE_COMBAT_CLICKDRAG_OVERRIDE|TOGGLE_MEMBER_PUBLIC|TOGGLE_AMBIENT_OCCLUSION|TOGGLE_VEND_ITEM_TO_HAND|TOGGLE_LEADERSHIP_SPOKEN_ORDERS|TOGGLE_COCKING_TO_HAND // flags in #define/mode.dm
+	var/toggle_prefs = TOGGLE_DIRECTIONAL_ATTACK|TOGGLE_COMBAT_CLICKDRAG_OVERRIDE|TOGGLE_MEMBER_PUBLIC|TOGGLE_AMBIENT_OCCLUSION|TOGGLE_VEND_ITEM_TO_HAND|TOGGLE_LEADERSHIP_SPOKEN_ORDERS|TOGGLE_COCKING_TO_HAND|TOGGLE_WIELD_ASSIST // flags in #define/mode.dm
 	var/xeno_ability_click_mode = XENO_ABILITY_CLICK_MIDDLE
 	var/auto_fit_viewport = FALSE
 	var/adaptive_zoom = 0
@@ -671,6 +671,8 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 					</b> <a href='byond://?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_COCKING_TO_HAND]'><b>[toggle_prefs & TOGGLE_COCKING_TO_HAND ? "On" : "Off"]</b></a><br>"
 			dat += "<b>Toggle Leadership Spoken Orders: \
 					</b> <a href='byond://?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_LEADERSHIP_SPOKEN_ORDERS]'><b>[toggle_prefs & TOGGLE_LEADERSHIP_SPOKEN_ORDERS ? "On" : "Off"]</b></a><br>"
+			dat += "<b>Toggle Gun Wielding Assist: \
+					</b> <a href='byond://?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_WIELD_ASSIST]'><b>[toggle_prefs & TOGGLE_WIELD_ASSIST ? "On" : "Off"]</b></a><br>"
 			dat += "<b>Toggle Combat Click-Drag Override: \
 					</b> <a href='byond://?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_COMBAT_CLICKDRAG_OVERRIDE]'><b>[toggle_prefs & TOGGLE_COMBAT_CLICKDRAG_OVERRIDE ? "On" : "Off"]</b></a><br>"
 			dat += "<b>Toggle Middle-Click Swap Hands: \

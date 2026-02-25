@@ -25,7 +25,7 @@
 		return
 
 	author = thread_author
-	author_key = thread_author.key
+	author_key = thread_author.username()
 
 /datum/mentorhelp/Destroy()
 	author = null
@@ -89,17 +89,17 @@
 		message_handlers(msg, sender)
 		addtimer(CALLBACK(src, PROC_REF(broadcast_unhandled), msg, sender), 5 MINUTES)
 
-/datum/mentorhelp/proc/message_handlers(msg, client/sender, client/recipient, with_sound = TRUE, staff_only = FALSE, include_keys = FALSE)
+/datum/mentorhelp/proc/message_handlers(msg, client/sender, client/recipient, with_sound = TRUE, staff_only = FALSE, include_keys = TRUE)
 	if(!sender || !check_author())
 		return
 
-	if(recipient?.key)
-		log_message(msg, sender.key, recipient.key)
+	if(recipient?.username())
+		log_message(msg, sender.username(), recipient.username())
 	else
-		log_message(msg, sender.key, "All mentors")
+		log_message(msg, sender.username(), "All mentors")
 
 	// Sender feedback
-	to_chat(sender, "[SPAN_MENTORHELP("<span class='prefix'>MentorHelp:</span> Message to [(get_message_name(recipient, sender)) ? "<a href='byond://?src=\ref[src];action=message'>[get_message_name(recipient, sender)]</a>" : "mentors"]:")] [SPAN_MENTORBODY(msg)]")
+	to_chat(sender, "[SPAN_MENTORHELP("<span class='prefix'>MentorHelp:</span> Message to [(get_client_name(recipient, sender)) ? "<a href='byond://?src=\ref[src];action=message'>[get_client_name(recipient, sender)]</a>" : "mentors"]:")] [SPAN_MENTORBODY(msg)]")
 
 	// Recipient direct message
 	if(recipient)
@@ -122,7 +122,7 @@
 		// Eavesdrop
 		else if(CLIENT_HAS_RIGHTS(admin_client, R_MENTOR) && (!staff_only || CLIENT_IS_STAFF(admin_client)) && admin_client != sender)
 			if(include_keys)
-				formatted = SPAN_MENTORHELP(get_message_name(sender, admin_client) + " -> " + get_message_name(recipient, admin_client) + ": ") + msg
+				formatted = SPAN_MENTORHELP(get_client_name(sender, admin_client) + " -> " + get_client_name(recipient, admin_client) + ": ") + msg
 
 		else
 			continue
@@ -159,14 +159,13 @@
 		message_handlers(message, sender, target)
 	return
 
-/datum/mentorhelp/proc/get_message_name(client/target, client/reader)
+/datum/mentorhelp/proc/get_client_name(client/target, client/reader)
 	if(CLIENT_IS_STAFF(reader))
 		return key_name(target)
 	if(target == author)
-		if(reader == mentor)
-			return key_name(target)
-		else
-			return target.mob ? target.mob.name : "*Private*"
+		if(target.mob)
+			return target.mob.name
+		return "*Private Key*"
 	if(!mentor)
 		return FALSE
 	if(target == mentor)
@@ -175,7 +174,7 @@
 // Sanitizes and wraps the message with some info and links, depending on the sender...?
 /datum/mentorhelp/proc/wrap_message(message, client/sender, client/recipient)
 	var/message_title = "MentorPM"
-	var/message_sender_name = "<a href='byond://?src=\ref[src];action=message'>[get_message_name(sender, recipient)]</a>"
+	var/message_sender_name = "<a href='byond://?src=\ref[src];action=message'>[get_client_name(sender, recipient)]</a>"
 	var/message_sender_options = ""
 
 	// The message is being sent to the mentor and should be formatted as a mentorhelp message
@@ -213,9 +212,9 @@
 
 	if(!mentor)
 		mentor = thread_mentor
-		log_mhelp("[mentor.key] has marked [author_key]'s mentorhelp")
-		notify("<font style='color:red;'>[mentor.key]</font> has marked <font style='color:red;'>[author_key]</font>'s mentorhelp.")
-		to_chat(author, SPAN_NOTICE("<b>NOTICE:</b> <font style='color:red;'>[mentor.key]</font> has marked your thread and is preparing to respond."))
+		log_mhelp("[mentor.username()] has marked [author_key]'s mentorhelp")
+		notify("<font style='color:red;'>[mentor.username()]</font> has marked <font style='color:red;'>[get_client_name(author)]</font>'s mentorhelp.")
+		to_chat(author, SPAN_NOTICE("<b>NOTICE:</b> <font style='color:red;'>[mentor.username()]</font> has marked your thread and is preparing to respond."))
 		return
 
 	// Already marked
@@ -224,8 +223,8 @@
 		return
 
 	// the mentor exists, and is us, and we no longer want that to be the case
-	log_mhelp("[mentor.key] has unmarked [author_key]'s mentorhelp")
-	notify("<font style='color:red;'>[mentor.username()]</font> has unmarked <font style='color:red;'><a href='byond://?src=\ref[src];action=message'>[author_key]</a></font>'s mentorhelp.")
+	log_mhelp("[mentor.username()] has unmarked [author_key]'s mentorhelp")
+	notify("<font style='color:red;'>[mentor.username()]</font> has unmarked <font style='color:red;'><a href='byond://?src=\ref[src];action=message'>[get_client_name(author)]</a></font>'s mentorhelp.")
 	to_chat(author, SPAN_NOTICE("<b>NOTICE:</b> <font style='color:red;'>[mentor.username()]</font> has unmarked your thread and is no longer responding to it."))
 	mentor = null
 
@@ -251,13 +250,13 @@
 
 	open = FALSE
 	if(closer)
-		log_mhelp("[closer.key] closed [author_key]'s mentorhelp")
+		log_mhelp("[closer.username()] closed [author_key]'s mentorhelp")
 		if(closer == author)
 			to_chat(author, SPAN_NOTICE("You have closed your mentorhelp thread."))
-			notify("<font style='color:red;'>[author_key]</font> closed their mentorhelp thread.")
+			notify("<font style='color:red;'>[get_client_name(author)]</font> closed their mentorhelp thread.")
 			return
 	to_chat(author, SPAN_NOTICE("Your mentorhelp thread has been closed."))
-	notify("<font style='color:red;'>[author_key]</font>'s mentorhelp thread has been closed.")
+	notify("<font style='color:red;'>[get_client_name(author)]</font>'s mentorhelp thread has been closed.")
 
 /datum/mentorhelp/proc/follow(client/mentor_client)
 	if(!mentor_client)
@@ -276,8 +275,8 @@
 		to_chat(mentor_client, SPAN_NOTICE("<b>NOTICE:</b> Thread author is still in the lobby!"))
 		return
 
-	log_mhelp("[mentor_client.key] has begun orbiting [author_key] as a ghost")
-	notify("<font style='color:red;'>[key_name(mentor_client)]</font> is following <font style='color:red;'>[key_name(author)]</font> as a ghost.")
+	log_mhelp("[mentor_client.username()] has begun orbiting [author_key] as a ghost")
+	notify("<font style='color:red;'>[mentor_client.username()]</font> is following <font style='color:red;'>[get_client_name(author)]</font> as a ghost.")
 
 	var/mob/dead/observer/mentor_ghost = mentor_client.mob
 	if(!isobserver(mentor_client.mob))

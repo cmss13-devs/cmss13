@@ -1,8 +1,0 @@
-author: "cuberound"
-delete-after: True
-changes:
-  - balance: "chance for empty sandbags from req"
-  - balance: "sandbag create price 20 -> 15"
-  - balance: "sandbag with showels price 30 -> 20"
-  - balance: "metal 20 -> 25"
-  - balance: "plasteel 30 -> 33"

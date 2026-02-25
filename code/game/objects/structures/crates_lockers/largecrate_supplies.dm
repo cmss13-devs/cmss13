@@ -227,6 +227,11 @@
 	desc = "A case containing twenty-five 80mm flare mortar shells."
 	supplies = list(/obj/item/mortar_shell/flare = 25)
 
+/obj/structure/largecrate/supply/explosives/mortar_frag
+	name = "80mm frag mortar shell case (x25)"
+	desc = "A case containing twenty-five 80mm frag mortar shells."
+	supplies = list(/obj/item/mortar_shell/frag = 25)
+
 
 /obj/structure/largecrate/supply/supplies
 	name = "supplies crate"
@@ -287,7 +292,7 @@
 	desc = "A crate containing one folded, but fully assembled, Caterpillar P-5000 Work Loader and included pamphlet for quick training."
 	supplies = list(
 		/obj/vehicle/powerloader = 1,
-		/obj/item/pamphlet/skill/powerloader = 1,
+		/obj/item/pamphlet/upgradeable/powerloader = 1,
 	)
 
 /obj/structure/largecrate/supply/floodlights

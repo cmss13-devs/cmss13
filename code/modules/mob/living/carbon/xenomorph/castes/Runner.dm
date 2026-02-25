@@ -38,6 +38,7 @@
 	icon = 'icons/mob/xenos/castes/tier_1/runner.dmi'
 	icon_state = "Runner Walking"
 	icon_size = 64
+	buckle_flags = CAN_BUCKLE
 	layer = MOB_LAYER
 	plasma_types = list(PLASMA_CATECHOLAMINE)
 	tier = 1
@@ -86,6 +87,18 @@
 	pull_multiplier *= 0.85
 	if(is_zoomed)
 		zoom_out()
+
+/mob/living/carbon/xenomorph/runner/can_mount(mob/living/user, target_mounting = FALSE)
+	if(!target_mounting)
+		user = pulling
+	if(!ishuman(user))
+		return FALSE
+	var/mob/living/carbon/human/human_pulled = user
+	if(human_pulled.stat == DEAD)
+		return FALSE
+	if(!istype(back, /obj/item/storage/backpack/marine/saddle)) //cant ride without a saddle
+		return FALSE
+	return TRUE
 
 /datum/behavior_delegate/runner_base
 	name = "Base Runner Behavior Delegate"

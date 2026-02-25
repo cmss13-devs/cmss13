@@ -553,6 +553,42 @@
 	xeno_icon_state = "medicpack"
 	xeno_types = list(/mob/living/carbon/xenomorph/runner, /mob/living/carbon/xenomorph/praetorian, /mob/living/carbon/xenomorph/drone, /mob/living/carbon/xenomorph/warrior, /mob/living/carbon/xenomorph/defender, /mob/living/carbon/xenomorph/sentinel, /mob/living/carbon/xenomorph/spitter)
 
+/obj/item/storage/backpack/marine/saddle
+	name = "\improper USCM XX-121 Saddle"
+	desc = "A saddle with straps designed to fit around a XX-121 specimen. Not sure who would be stupid enough to try and put this on one."
+	icon_state = "saddlebags"
+	xeno_icon_state = "saddlebags"
+	xeno_types = list(/mob/living/carbon/xenomorph/runner)
+
+/obj/item/storage/backpack/marine/saddle/mob_can_equip(mob/equipping_mob, slot, disable_warning)
+	if(!isrunner(equipping_mob))
+		return FALSE
+	return ..()
+
+/obj/item/storage/backpack/marine/saddle/unequipped(mob/user, slot, silent)
+	. = ..()
+	if(isrunner(user))
+		DISABLE_BITFIELD(user.buckle_flags, CAN_BUCKLE)
+		user.RemoveElement(/datum/element/ridable, /datum/component/riding/creature/runner)
+		for(var/mob/riders in user.buckled_mobs)
+			user.unbuckle(riders)
+
+/obj/item/storage/backpack/marine/saddle/attack(mob/living/target_mob, mob/living/user)
+	. = ..()
+	var/mob/living/carbon/xenomorph/xeno = target_mob
+	if(!user || !user.ally_of_hivenumber(xeno.hivenumber))
+		user.KnockDown(rand(xeno.caste.tacklestrength_min, xeno.caste.tacklestrength_max))
+		playsound(user.loc, 'sound/weapons/pierce.ogg', 25, TRUE)
+		user.visible_message(SPAN_WARNING("[user] tried to strap [src] onto [xeno] but instead gets a tail swipe to the head!"))
+		return FALSE
+	if(isrunner(xeno))
+		ENABLE_BITFIELD(xeno.buckle_flags, CAN_BUCKLE)
+		xeno.AddElement(/datum/element/ridable, /datum/component/riding/creature/runner)
+
+/obj/item/storage/backpack/marine/saddle/cowboy
+	icon_state = "cowboybags"
+	xeno_icon_state = "cowboybags"
+
 /obj/item/storage/backpack/marine/k9_synth
 	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/UA.dmi'
 	icon_override = 'icons/mob/humans/species/synth_k9/onmob/synth_k9_overlays.dmi'
@@ -618,12 +654,16 @@
 
 /obj/item/storage/backpack/marine/satchel
 	name = "\improper USCM satchel"
-	desc = "A heavy-duty satchel carried by some USCM soldiers and support personnel."
+	desc = "A heavy-duty satchel carried by some Marines of the USCM and support personnel."
 	icon_state = "marinesatch"
 	worn_accessible = TRUE
 	storage_slots = null
 	max_storage_space = 15
 	xeno_types = null
+
+/obj/item/storage/backpack/marine/satchel/army
+	name = "\improper US Army satchel"
+	desc = "A heavy-duty satchel carried by some US Army soldiers and support personnel."
 
 /obj/item/storage/backpack/marine/satchel/big //wacky squad marine loadout item, its the IO backpack.
 	name = "\improper USCM logistics IMP backpack"
@@ -632,6 +672,9 @@
 	worn_accessible = TRUE
 	storage_slots = null
 	max_storage_space = 21 //backpack size
+
+/obj/item/storage/backpack/marine/satchel/big/army
+	name = "\improper US Army logistics IMP backpack"
 
 /obj/item/storage/backpack/marine/satchel/medic
 	name = "\improper USCM corpsman satchel"
@@ -1380,6 +1423,14 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 
 /obj/item/storage/backpack/molle/backpack/surv
 	worn_accessible = FALSE
+
+/obj/item/storage/backpack/molle/army
+	name = "\improper M1 MOLLE Satchel"
+	desc = "Tactical satchel manufactured by one of the Alphatech subsidiaries. Very lightweight beltbag variant that utilizes UA standard MOLLE fastening systems. Standard issue pack for US army troopers."
+
+/obj/item/storage/backpack/molle/backpack/army
+	name = "\improper M2 MOLLE Backpack"
+	desc = "Tactical backpack manufactured by one of the Alphatech subsidiaries. Very lightweight backpack that utilizes UA standard MOLLE fastening systems, which allows easy access and optimal weight distribution. Standard issue heavy duty pack for US army troopers."
 
 //----------WY----------
 

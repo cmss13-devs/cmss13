@@ -98,7 +98,7 @@
 			var/damage = rand(attacking_xeno.melee_damage_lower, attacking_xeno.melee_damage_upper) + dam_bonus
 			var/acid_damage = 0
 
-			//Frenzy auras stack in a way, then the raw value is multipled by two to get the additive modifier
+			//Frenzy auras stack in a way, then the raw value is multiplied by two to get the additive modifier
 			if(attacking_xeno.frenzy_aura > 0)
 				damage += (attacking_xeno.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER)
 				if(acid_damage)
@@ -231,7 +231,7 @@
 			var/knocked_down
 			if(attacking_xeno.attempt_tackle(src, tackle_mult, tackle_min_offset, tackle_max_offset))
 				var/strength = rand(attacking_xeno.tacklestrength_min, attacking_xeno.tacklestrength_max)
-				var/datum/status_effect/incapacitating/stun/stun = Stun(strength, resistable=TRUE)
+				var/datum/status_effect/incapacitating/stun/stun = Stun(strength, resistible=TRUE)
 				var/stun_resisted = strength != stun.last_amount
 				playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, stun_resisted ? 1.5 : 0)
 				KnockDown(stun.last_amount) // Purely for knockdown visuals. All the heavy lifting is done by Stun
@@ -281,7 +281,7 @@
 			M.track_slashes(M.caste_type) //Adds to slash stat.
 			var/damage = rand(M.melee_damage_lower, M.melee_damage_upper)
 
-			//Frenzy auras stack in a way, then the raw value is multipled by two to get the additive modifier
+			//Frenzy auras stack in a way, then the raw value is multiplied by two to get the additive modifier
 			if(M.frenzy_aura > 0)
 				damage += (M.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER)
 
@@ -298,9 +298,9 @@
 			last_damage_data = create_cause_data(initial(M.name), M)
 			M.visible_message(SPAN_DANGER("[M] [M.slashes_verb] [src]!"),
 			SPAN_DANGER("We [M.slash_verb] [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-			attack_log += text("\[[time_stamp()]\] <font color='orange'>was [M.slash_verb]ed by [key_name(M)]</font>")
-			M.attack_log += text("\[[time_stamp()]\] <font color='red'>[M.slash_verb]ed [key_name(src)]</font>")
-			log_attack("[key_name(M)] [M.slash_verb]ed [key_name(src)]")
+			attack_log += text("\[[time_stamp()]\] <font color='orange'>was [M.slash_verb]ed by [key_name(M)] at [get_area(src)] ([loc.x],[loc.y],[loc.z])</font>")
+			M.attack_log += text("\[[time_stamp()]\] <font color='red'>[M.slash_verb]ed [key_name(src)] at [get_area(src)] ([loc.x],[loc.y],[loc.z])</font>")
+			log_attack("[key_name(M)] [M.slash_verb]ed [key_name(src)] at [get_area(src)] ([loc.x],[loc.y],[loc.z]).")
 
 			if(custom_slashed_sound)
 				playsound(loc, custom_slashed_sound, 25, 1)
@@ -1232,7 +1232,7 @@
 
 /obj/structure/machinery/vending/attack_alien(mob/living/carbon/xenomorph/M)
 	if(is_tipped_over)
-		to_chat(M, SPAN_WARNING("There's no reason to bother with that old piece of trash."))
+		to_chat(M, SPAN_WARNING("There's no reason to bother with that [unslashable ? "old" : "broken"] piece of trash."))
 		return XENO_NO_DELAY_ACTION
 
 	if(M.a_intent == INTENT_HARM)
@@ -1297,22 +1297,6 @@
 	xeno.tail_stab_animation(src, blunt_stab)
 	deflate(TRUE)
 	return TAILSTAB_COOLDOWN_NORMAL
-
-/obj/structure/machinery/vending/proc/tip_over()
-	var/matrix/A = matrix()
-	is_tipped_over = TRUE
-	density = FALSE
-	A.Turn(90)
-	apply_transform(A)
-	malfunction()
-
-/obj/structure/machinery/vending/proc/flip_back()
-	icon_state = initial(icon_state)
-	is_tipped_over = FALSE
-	density = TRUE
-	var/matrix/A = matrix()
-	apply_transform(A)
-	stat &= ~BROKEN //Remove broken. MAGICAL REPAIRS
 
 //Misc
 /obj/structure/prop/invuln/joey/attack_alien(mob/living/carbon/xenomorph/alien)

@@ -453,23 +453,9 @@
 	return flags
 
 /area/proc/reg_in_areas_in_z()
-	if(!length(contents))
-		return
-
-	var/list/areas_in_z = SSmapping.areas_in_z
-	var/z
-	for(var/i in contents)
-		var/atom/thing = i
-		if(!thing)
-			continue
-		z = thing.z
-		break
-	if(!z)
-		WARNING("No z found for [src]")
-		return
-	if(!areas_in_z["[z]"])
-		areas_in_z["[z]"] = list()
-	areas_in_z["[z]"] += src
+	if(!SSmapping.areas_in_z["[z]"])
+		SSmapping.areas_in_z["[z]"] = list()
+	SSmapping.areas_in_z["[z]"] += src
 
 /**
  * Purges existing weeds, and prevents future weeds from being placed.
@@ -484,6 +470,13 @@
 	addtimer(VARSET_CALLBACK(src, unoviable_timer, FALSE), unoviable_timer)
 
 /area/sky
-	name = "Sky"
+	name = "Lower Sky"
 	icon_state = "lv-626"
 	flags_area = AREA_UNWEEDABLE
+	is_resin_allowed = FALSE
+
+/area/sky/level4
+	name = "Sky"
+
+/area/sky/level5
+	name = "Upper Sky"

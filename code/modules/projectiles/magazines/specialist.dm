@@ -107,11 +107,11 @@
 	name = "rusty M56 smartgun drum"
 	icon_state = "m56f_drum"
 	bonus_overlay = "rusty_drum_overlay"
-	desc = "A sligtly worn 10x28mm 500-round drum magazine for use in the M56 Smartgun, or pretty much, whatever the hell you have on your hands, model names barely apply at this point."
+	desc = "A slightly worn 10x28mm 500-round drum magazine for use in the M56 Smartgun, or pretty much, whatever the hell you have on your hands, model names barely apply at this point."
 
 /obj/item/ammo_magazine/smartgun/rusty/Initialize(mapload, spawn_empty)
 	. = ..()
-	current_rounds = rand(280, 500) //Scavenged surplus, so there is more suprise factors
+	current_rounds = rand(280, 500) //Scavenged surplus, so there is more surprise factors
 
 /obj/item/ammo_magazine/smartgun/empty
 	current_rounds = 0
@@ -211,7 +211,7 @@
 		return
 	var/obj/item/weapon/twohanded/offhand/off_hand = demoman.get_inactive_hand()
 	if(!off_hand || !istype(off_hand))
-		to_chat(user, SPAN_WARNING("\the [demoman] needs to be wielding \the [in_hand] in order to reload!"))
+		to_chat(user, SPAN_WARNING("\The [demoman] needs to be wielding \the [in_hand] in order to reload!"))
 		return
 	if(!skillcheck(demoman, SKILL_FIREARMS, SKILL_FIREARMS_TRAINED))
 		to_chat(user, SPAN_WARNING("You don't know how to reload \the [in_hand]!"))
@@ -220,7 +220,7 @@
 		to_chat(user, SPAN_WARNING("You must be standing behind \the [demoman] in order to reload it!"))
 		return
 	if(in_hand.current_mag.current_rounds > 0)
-		to_chat(user, SPAN_WARNING("\the [in_hand] is already loaded!"))
+		to_chat(user, SPAN_WARNING("\The [in_hand] is already loaded!"))
 		return
 	if(user.action_busy)
 		return
@@ -229,7 +229,7 @@
 		to_chat(user, SPAN_WARNING("Your reload was interrupted!"))
 		return
 	if(off_hand != demoman.get_inactive_hand())
-		to_chat(user, SPAN_WARNING("\the [demoman] needs to be wielding \the [in_hand] in order to reload!"))
+		to_chat(user, SPAN_WARNING("\The [demoman] needs to be wielding \the [in_hand] in order to reload!"))
 		return
 	if(demoman.dir != user.dir)
 		to_chat(user, SPAN_WARNING("You must be standing behind \the [demoman] in order to reload it!"))
@@ -288,7 +288,7 @@
 	icon_state = "brute_rocket"
 	default_ammo = /datum/ammo/rocket/brute
 	gun_type = /obj/item/weapon/gun/launcher/rocket/brute
-	desc = "The M5510 rockets are high-explosive anti-structure munitions designed to rapidly accelerate to nearly 1,000 miles per hour in any atmospheric conditions. The warhead itself uses an inflection stabilized shaped-charge to generate a low-frequency pressure wave that can flatten nearly any fortification in an ellipical radius of several meters. These rockets are known to have reduced lethality to personel, but will put just about any ol' backwater mud-hut right into orbit."
+	desc = "The M5510 rockets are high-explosive anti-structure munitions designed to rapidly accelerate to nearly 1,000 miles per hour in any atmospheric conditions. The warhead itself uses an inflection stabilized shaped-charge to generate a low-frequency pressure wave that can flatten nearly any fortification in an ellipical radius of several meters. These rockets are known to have reduced lethality to personnel, but will put just about any ol' backwater mud-hut right into orbit."
 
 /obj/item/ammo_magazine/rocket/custom
 	name = "\improper 84mm custom rocket"
@@ -437,7 +437,7 @@
 /obj/item/ammo_magazine/rocket/upp/incen
 	name = "\improper HJRA-12 Extreme-Intensity Incendiary Rocket"
 	desc = "A rocket for the UPP standard-issue HJRA-12 Handheld Anti-Tank Rocket Launcher. This one is an extreme-intensity incendiary rocket."
-	desc_lore = "This incendiary rocket uses an experimental chemical designated 'R-189' by the UPP. It is designed to melt through fortifications and bunkers but is most commonly used in an anti-personnel role due to over-issuing and the tempeartures after use in its intended role leaving behind a cloud of super-heated air, preventing troops' advance."
+	desc_lore = "This incendiary rocket uses an experimental chemical designated 'R-189' by the UPP. It is designed to melt through fortifications and bunkers but is most commonly used in an anti-personnel role due to over-issuing and the temperatures after use in its intended role leaving behind a cloud of super-heated air, preventing troops' advance."
 	caliber = "88mm"
 	icon_state = "hjra_incen"
 

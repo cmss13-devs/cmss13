@@ -80,9 +80,7 @@ GLOBAL_LIST_INIT(droppod_target_mode, list(
 		if(holder)
 			to_chat(holder, SPAN_WARNING("There's no /area/admin/droppod/loading. You can make one yourself, but yell at the mappers to fix this."))
 		CRASH("No /area/admin/droppod/loading has been mapped into the admin z-level!")
-	ordered_area = list()
-	for(var/turf/T in bay)
-		ordered_area += T
+	ordered_area = bay.get_turfs_from_all_zlevels()
 	pre_launch()
 	refresh_view()
 
@@ -178,9 +176,7 @@ GLOBAL_LIST_INIT(droppod_target_mode, list(
 	setup_view(RANGE_TURFS(2, temp_pod))
 
 /datum/admin_podlauncher/proc/setup_view_bay()
-	var/list/visible_turfs = list()
-	for(var/turf/bay_turf in bay)
-		visible_turfs += bay_turf
+	var/list/visible_turfs = bay.get_turfs_from_all_zlevels()
 	setup_view(visible_turfs)
 
 /datum/admin_podlauncher/proc/setup_view_dropoff()

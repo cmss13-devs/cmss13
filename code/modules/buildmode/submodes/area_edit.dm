@@ -52,8 +52,7 @@
 			var/area/old_area = get_area(T)
 			if(old_area != storedarea)
 				log_admin("Build Mode: [key_name(c)] added [AREACOORD(T)] to [storedarea]")
-				TRANSFER_TURF_CONTAINED_AREA(T, old_area, storedarea)
-				storedarea.contents.Add(T)
+				T.change_area(old_area, storedarea)
 			return
 		return ..()
 	else if(LAZYACCESS(modifiers, RIGHT_CLICK))
@@ -72,7 +71,6 @@
 			var/area/old_area = get_area(T)
 			if(old_area == storedarea)
 				continue // no-op, skip
-			TRANSFER_TURF_CONTAINED_AREA(T, old_area, storedarea)
-			storedarea.contents.Add(T)
+			T.change_area(old_area, storedarea)
 		log_admin("Build Mode: [key_name(c)] set the area of the region from [AREACOORD(cornerA)] through [AREACOORD(cornerB)] to [storedarea].")
 

@@ -125,15 +125,16 @@
 		log_mapping("[src] has AREA_UNWEEDABLE flag but has is_resin_allowed as true! Forcing is_resin_allowed false...")
 
 	if(!(flags_area & AREA_UNWEEDABLE))
-		for(var/turf/current in src)
-			if(!current.density)
-				openable_turf_count++
-				continue
-			if(istype(current, /turf/closed/wall))
-				var/turf/closed/wall/current_wall = current
-				if(!(current_wall.turf_flags & TURF_HULL))
+		for(var/list/turf_list in get_zlevel_turf_lists())
+			for(var/turf/current in turf_list)
+				if(!current.density)
 					openable_turf_count++
 					continue
+				if(istype(current, /turf/closed/wall))
+					var/turf/closed/wall/current_wall = current
+					if(!(current_wall.turf_flags & TURF_HULL))
+						openable_turf_count++
+						continue
 
 /area/proc/initialize_power(override_power)
 	if(requires_power)

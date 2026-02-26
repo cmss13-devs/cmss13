@@ -1,13 +1,27 @@
-/datum/action/xeno_action/verb/corrosive_slash()
+/datum/action/xeno_action/verb/acid_barrage()
 	set category = "Alien"
-	set name = "Empower Slashes"
+	set name = "Acid Barrage"
 	set hidden = TRUE
-	var/action_name = "Empower Slashes"
+	var/action_name = "Acid Barrage"
 	handle_xeno_macro(src, action_name)
 
-/datum/action_xeno_action/verb/decomposing_enzymes()
+/datum/action/xeno_action/verb/caustic_embrace()
 	set category = "Alien"
-	set name = "Decomposing enzymes"
+	set name = "Caustic Embrace"
 	set hidden = TRUE
-	var/action_name = "Decomposing enzymes"
+	var/action_name = "Caustic Embrace"
+	handle_xeno_macro(src, action_name)
+
+/datum/action/xeno_action/verb/oozing_wounds()
+	set category = "Alien"
+	set name = "Oozing Wounds"
+	set hidden = TRUE
+	var/action_name = "Oozing Wounds"
+	handle_xeno_macro(src, action_name)
+
+/datum/action/xeno_action/verb/catalyze()
+	set category = "Alien"
+	set name = "Catalyze"
+	set hidden = TRUE
+	var/action_name = "Catalyze"
 	handle_xeno_macro(src, action_name)

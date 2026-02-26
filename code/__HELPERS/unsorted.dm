@@ -1004,10 +1004,7 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 	var/area/A = GLOB.areas_by_type[areatype]
 
 	// Fix it up with /area/var/related due to lighting shenanigans
-	for(var/turf/T in A)
-		turfs += T
-
-	return turfs
+	return A.get_turfs_from_all_zlevels()
 
 /datum/coords //Simple datum for storing coordinates.
 	var/x_pos = null

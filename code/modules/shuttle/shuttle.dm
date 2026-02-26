@@ -697,7 +697,8 @@
 		var/turf/oldT = old_turfs[i]
 		if(!oldT || !istype(oldT.loc, area_type))
 			continue
-// var/area/old_area = oldT.loc
+		var/area/old_area = oldT.loc
+		TRANSFER_TURF_CONTAINED_AREA(oldT, old_area, underlying_area)
 		underlying_area.contents += oldT
 		//oldT.change_area(old_area, underlying_area) //lighting
 		oldT.empty(FALSE)

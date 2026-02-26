@@ -257,6 +257,8 @@ SUBSYSTEM_DEF(shuttle)
 	var/area/shuttle/transit/new_area = new()
 	//new_area.parallax_movedir = travel_dir
 	new_area.contents = proposal.reserved_turfs
+	LISTASSERTLEN(new_area.turfs_by_zlevel, bottomleft.z, list())
+	new_area.turfs_by_zlevel[bottomleft.z] = proposal.reserved_turfs
 	var/obj/docking_port/stationary/transit/new_transit_dock = new(midpoint)
 	new_transit_dock.reserved_area = proposal
 	new_transit_dock.name = "Transit for [M.id]/[M.name]"

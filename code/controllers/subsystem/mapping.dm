@@ -14,7 +14,7 @@ SUBSYSTEM_DEF(mapping)
 	///map_id of all tents
 	var/list/tent_type_templates = list()
 
-	var/list/areas_in_z = list()
+	var/alist/areas_in_z = alist()
 
 	var/list/turf/unused_turfs = list() //Not actually unused turfs they're unused but reserved for use for whatever requests them. "[zlevel_of_turf]" = list(turfs)
 	var/list/datum/turf_reservations //list of turf reservations
@@ -79,8 +79,8 @@ SUBSYSTEM_DEF(mapping)
 	// Cache for sonic speed
 	var/list/unused_turfs = src.unused_turfs
 	// CM TODO: figure out if these 2 are needed. Might be required by updated versions of map reader
-	//var/list/world_contents = GLOB.areas_by_type[world.area].contents
-	//var/list/world_turf_contents = GLOB.areas_by_type[world.area].contained_turfs
+	var/list/world_contents = GLOB.areas_by_type[world.area].contents
+	var/list/world_turf_contents_by_z = GLOB.areas_by_type[world.area].turfs_by_zlevel
 	var/list/lists_to_reserve = src.lists_to_reserve
 	var/index = 0
 	while(index < length(lists_to_reserve))
@@ -91,15 +91,19 @@ SUBSYSTEM_DEF(mapping)
 				if(index)
 					lists_to_reserve.Cut(1, index)
 				return
-			var/turf/T = packet[packetlen]
-			T.empty(RESERVED_TURF_TYPE, RESERVED_TURF_TYPE, null, TRUE)
-			LAZYINITLIST(unused_turfs["[T.z]"])
-			unused_turfs["[T.z]"] |= T
-			//var/area/old_area = T.loc
-			//old_area.turfs_to_uncontain += T
-			T.turf_flags |= UNUSED_RESERVATION_TURF
-			//world_contents += T
-			//world_turf_contents += T
+			var/turf/reserving_turf = packet[packetlen]
+			reserving_turf.empty(RESERVED_TURF_TYPE, RESERVED_TURF_TYPE, null, TRUE)
+			LAZYINITLIST(unused_turfs["[reserving_turf.z]"])
+			unused_turfs["[reserving_turf.z]"] |= reserving_turf
+
+			var/area/old_area = reserving_turf.loc
+			LISTASSERTLEN(old_area.turfs_to_uncontain_by_zlevel, reserving_turf.z, list())
+			old_area.turfs_to_uncontain_by_zlevel[reserving_turf.z] += reserving_turf
+			world_contents += reserving_turf
+			LISTASSERTLEN(world_turf_contents_by_z, reserving_turf.z, list())
+			world_turf_contents_by_z[reserving_turf.z] += reserving_turf
+
+			reserving_turf.turf_flags |= UNUSED_RESERVATION_TURF
 			packet.len--
 			packetlen = length(packet)
 
@@ -413,8 +417,24 @@ SUBSYSTEM_DEF(mapping)
 	// First, add the z
 	z_list += new_z
 	// Then we build our lookup lists
-	//var/z_value = new_z.z_value
+	var/z_value = new_z.z_value
 	//TODO: All the Z-plane init stuff goes below here normally, we don't have that yet
+	if(contain_turfs)
+		build_area_turfs(z_value, filled_with_space)
+
+/datum/controller/subsystem/mapping/proc/build_area_turfs(z_level, space_guaranteed)
+	// If we know this is filled with default tiles, we can use the default area
+	// Faster
+	if(space_guaranteed)
+		var/area/global_area = GLOB.areas_by_type[world.area]
+		LISTASSERTLEN(global_area.turfs_by_zlevel, z_level, list())
+		global_area.turfs_by_zlevel[z_level] = Z_TURFS(z_level)
+		return
+
+	for(var/turf/to_contain as anything in Z_TURFS(z_level))
+		var/area/our_area = to_contain.loc
+		LISTASSERTLEN(our_area.turfs_by_zlevel, z_level, list())
+		our_area.turfs_by_zlevel[z_level] += to_contain
 
 /// Gets a name for the marine ship as per the enabled ship map configuration
 /datum/controller/subsystem/mapping/proc/get_main_ship_name()

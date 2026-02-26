@@ -350,10 +350,9 @@
 	SSatoms.map_loader_stop(REF(src))
 	loading = FALSE
 
-	// CM: Disabled due to not using contained_turfs and SSarea_contents
-//	if(new_z)
-//		for(var/z_index in bounds[MAP_MINZ] to bounds[MAP_MAXZ])
-//			SSmapping.build_area_turfs(z_index)
+	if(new_z)
+		for(var/z_index in bounds[MAP_MINZ] to bounds[MAP_MAXZ])
+			SSmapping.build_area_turfs(z_index)
 
 	if(!no_changeturf)
 		for(var/turf/T as anything in block(bounds[MAP_MINX], bounds[MAP_MINY], bounds[MAP_MINZ], bounds[MAP_MAXX], bounds[MAP_MAXY], bounds[MAP_MAXZ]))
@@ -931,8 +930,7 @@ GLOBAL_LIST_EMPTY(map_model_default)
 
 		if(!new_z)
 			old_area = crds.loc
-//			old_area.turfs_to_uncontain += crds
-//			area_instance.contained_turfs.Add(crds)
+			TRANSFER_TURF_CONTAINED_AREA(crds, old_area, area_instance)
 		area_instance.contents.Add(crds)
 		if(old_area)
 			// Make sure atoms leave their old area and enter the new area

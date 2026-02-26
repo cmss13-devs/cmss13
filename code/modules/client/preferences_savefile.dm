@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN 8
-#define SAVEFILE_VERSION_MAX 34
+#define SAVEFILE_VERSION_MAX 35
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -229,7 +229,13 @@
 		pref_toggles |= TOGGLE_COCKING_TO_HAND // enabled by default for new saves
 		S["toggle_prefs"] << pref_toggles
 
-	if(savefile_version < 34) // we have removed Tab from the default binds, allow users to bind it back if they want. needs to be async after logging in
+	if(savefile_version < 34)
+		var/pref_toggles
+		S["toggle_prefs"] >> pref_toggles
+		pref_toggles |= TOGGLE_WIELD_ASSIST // enabled by default for new saves
+		S["toggle_prefs"] << pref_toggles
+
+	if(savefile_version < 35) // we have removed Tab from the default binds, allow users to bind it back if they want. needs to be async after logging in
 		updated_from = savefile_version
 
 	if(updated_from)

@@ -254,6 +254,9 @@
 	/// the icon for spinning the gun
 	var/temp_icon = null
 
+	/// for referencing the timer subsystem, such as the wield queue timer
+	var/gun_timer_id
+
 /**
  * An assoc list where the keys are fire delay group string defines
  * and the keys are when the guns of the group can be fired again
@@ -563,6 +566,10 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 /obj/item/weapon/gun/dropped(mob/user)
 	. = ..()
 
+	if(gun_timer_id) // just in case too
+		deltimer(gun_timer_id)
+		gun_timer_id = null
+
 	var/delay_left = (last_fired + fire_delay + additional_fire_group_delay) - world.time
 	if(fire_delay_group && delay_left > 0)
 		LAZYSET(user.fire_delay_next_fire, src, world.time + delay_left)
@@ -784,12 +791,30 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	if(!(flags_item & TWOHANDED) || flags_item & WIELDED)
 		return
 
-	if(world.time < pull_time) //Need to wait until it's pulled out to aim
+	// dont want a wield when its not on the user, obviously
+	if(loc != user)
 		return
 
-	var/obj/item/I = user.get_inactive_hand()
-	if(I)
-		if(!user.drop_inv_item_on_ground(I))
+	if(world.time < pull_time) //Need to wait until it's pulled out to aim
+		if(user.client?.prefs?.toggle_prefs & TOGGLE_WIELD_ASSIST)
+			if(gun_timer_id)
+				return TRUE
+
+			gun_timer_id = addtimer(CALLBACK(src, PROC_REF(wield), user), pull_time - world.time, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
+
+			if(wield_delay > WIELD_DELAY_VERY_FAST) // dont want the message to play when you can instantly wield it anyway
+				to_chat(user, SPAN_NOTICE("You start readying yourself to wield \the [src]..."))
+			if(wield_delay >= WIELD_DELAY_SLOW) // for the more slower wielding weapons
+				user.balloon_alert(user, "wielding")
+
+			return TRUE
+		return
+
+	gun_timer_id = null
+
+	var/obj/item/item = user.get_inactive_hand()
+	if(item)
+		if(!user.drop_inv_item_on_ground(item))
 			return
 
 	if(ishuman(user))
@@ -824,7 +849,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	if(user.client)
 		RegisterSignal(user.client, COMSIG_CLIENT_RESET_VIEW, PROC_REF(handle_view))
 
-	return 1
+	return TRUE
 
 /obj/item/weapon/gun/unwield(mob/user)
 	. = ..()

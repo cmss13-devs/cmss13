@@ -34,6 +34,8 @@ GLOBAL_VAR_INIT(create_and_destroy_ignore_paths, generate_ignore_paths())
 	// Always ought to have an associated escape menu. Any references it could possibly hold would need one regardless.
 	. += subtypesof(/atom/movable/screen/escape_menu)
 	. += typesof(/obj/effect/timed_event)
+	// Need a defined ID, mapping-only, will and should fail loudly if spawned without one
+	. += typesof(/obj/effect/landmark/dispersal_initiator)
 
 GLOBAL_VAR_INIT(running_create_and_destroy, FALSE)
 /datum/unit_test/create_and_destroy/Run()

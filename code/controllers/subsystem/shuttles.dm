@@ -463,9 +463,9 @@ SUBSYSTEM_DEF(shuttle)
 		to_replace.jumpToNullSpace()
 
 	for(var/area/cur_area as anything in preview_shuttle.shuttle_areas)
-		for(var/turf/cur_turf as anything in cur_area)
-			// update underlays
-			if(istype(cur_turf, /turf/closed/shuttle))
+		for(var/list/turf_list in cur_area.get_zlevel_turf_lists())
+			for(var/turf/closed/shuttle/cur_turf in turf_list)
+				// update underlays
 				var/dx = cur_turf.x - preview_shuttle.x
 				var/dy = cur_turf.y - preview_shuttle.y
 				var/turf/target_lz = locate(dest_dock.x + dx, dest_dock.y + dy, dest_dock.z)

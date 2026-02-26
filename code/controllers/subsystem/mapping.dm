@@ -152,7 +152,8 @@ SUBSYSTEM_DEF(mapping)
 	// check that the total z count of all maps matches the list of traits
 	var/total_z = 0
 	var/list/parsed_maps = list()
-	var/did_nothing = FALSE
+	// this is evil: basically if a level is entirely empty (just the space key) we have to run contain_turfs
+	var/alist/empty_levels = alist()
 	for (var/file in files)
 		var/full_path = "[override_map_path]/[path]/[file]"
 		var/datum/parsed_map/pm = new(file(full_path))
@@ -160,9 +161,9 @@ SUBSYSTEM_DEF(mapping)
 		if (!bounds)
 			errorList |= full_path
 			continue
-		if(length(pm.modelCache) == 1 && pm.modelCache[1] == SPACE_KEY) // this level is space-only so we did literally nothing
-			did_nothing = TRUE
 		parsed_maps[pm] = total_z  // save the start Z of this file
+		if(length(pm.modelCache) == 1 && pm.modelCache[1] == SPACE_KEY) // this level is space-only so we did literally nothing
+			empty_levels[total_z] = TRUE
 		total_z += bounds[MAP_MAXZ] - bounds[MAP_MINZ] + 1
 
 	if (!length(traits))  // null or empty - default
@@ -180,7 +181,7 @@ SUBSYSTEM_DEF(mapping)
 	var/i = 0
 	for (var/level in traits)
 		// if we did nothing, we need to run contain_turfs.
-		add_new_zlevel("[name][i ? " [i + 1]" : ""]", level, contain_turfs = did_nothing)
+		add_new_zlevel("[name][i ? " [i + 1]" : ""]", level, contain_turfs = empty_levels[i])
 		++i
 
 	// ================== CM Change ==================

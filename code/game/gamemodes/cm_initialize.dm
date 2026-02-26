@@ -346,6 +346,7 @@ Additional game mode variables.
 		if(!loaded_fax_base)
 			return FALSE
 
+	responder_candidate.close_spawn_windows()
 	responder_candidate.client.prefs.find_assigned_slot(JOB_FAX_RESPONDER)
 
 	var/turf/spawn_point = get_turf(pick(GLOB.latejoin_by_job[sub_job]))
@@ -369,7 +370,6 @@ Additional game mode variables.
 
 	if(isnewplayer(responder_candidate))
 		var/mob/new_player/noob = responder_candidate
-		noob.close_spawn_windows()
 		noob.spawning = TRUE
 		qdel(noob)
 

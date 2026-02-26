@@ -58,7 +58,7 @@
 				return
 			fireaxe = O
 			user.drop_held_item()
-			src.contents += O
+			O.forceMove(src)
 			to_chat(user, SPAN_NOTICE("You place the fire axe back in the [src.name]."))
 			update_icon()
 		else

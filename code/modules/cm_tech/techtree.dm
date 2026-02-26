@@ -62,8 +62,12 @@
 	// (The `+ 2` on both of these is 1 for a buffer tile, and 1 for the outer `/turf/closed/void`.)
 	var/area_max_x = longest_tier * 2 + 2
 	var/area_max_y = length(all_techs) * 3 + 2
+
+	var/area/techtree/techtree_area = GLOB.areas_by_type[/area/techtree]
+	if(!techtree_area) // create a new area instance
+		techtree_area = new
 	for(var/turf/pos as anything in block(1, 1, zlevel.z_value, area_max_x, area_max_y, zlevel.z_value))
-		for(var/A as anything in pos)
+		for(var/atom/movable/A as anything in pos)
 			qdel(A)
 
 		if(pos.x == area_max_x || pos.y == area_max_y)
@@ -72,7 +76,10 @@
 		else
 			pos.ChangeTurf(/turf/open/blank)
 			pos.color = "#000000"
-		new /area/techtree(pos)
+
+		var/area/old_area = get_area(pos)
+		TRANSFER_TURF_CONTAINED_AREA(pos, old_area, techtree_area)
+		techtree_area.contents += pos
 
 	// Create the tech nodes
 	var/y_offset = 1

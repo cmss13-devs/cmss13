@@ -84,7 +84,12 @@ class PingApp extends Component<PingAppProps> {
         currentIndex: prevState.currentIndex + 1,
       }));
 
-      sendPing(Number(event.data) + 1);
+      const nextIter = Number(event.data) + 1;
+      if (nextIter <= 10) {
+        sendPing(nextIter);
+      } else {
+        socket.close();
+      }
     });
 
     socket.addEventListener('error', () => {

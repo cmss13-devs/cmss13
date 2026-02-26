@@ -545,10 +545,6 @@
 	if(W.directional_opacity != old_directional_opacity)
 		W.reconsider_lights()
 
-	var/area/thisarea = get_area(W)
-	if(thisarea.lighting_effect)
-		W.overlays += thisarea.lighting_effect
-
 	W.levelupdate()
 	add_merged_decals()
 	return W

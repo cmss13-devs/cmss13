@@ -181,7 +181,7 @@ SUBSYSTEM_DEF(mapping)
 	var/i = 0
 	for (var/level in traits)
 		// if we did nothing, we need to run contain_turfs.
-		add_new_zlevel("[name][i ? " [i + 1]" : ""]", level, contain_turfs = empty_levels[i])
+		add_new_zlevel("[name][i ? " [i + 1]" : ""]", level, contain_turfs = empty_levels[i] || FALSE) // null uses default argument which is TRUE which is bad
 		++i
 
 	// ================== CM Change ==================

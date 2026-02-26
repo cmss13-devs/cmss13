@@ -574,6 +574,10 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	display_name = "Cartridge"
 	path = /obj/item/prop/helmetgarb/cartridge
 
+/datum/gear/helmet_garb/helmet_bandolier
+	display_name = "Helmet bandolier"
+	path = /obj/item/prop/helmetgarb/helmet_bandolier
+
 /datum/gear/helmet_garb/spacejam_tickets
 	display_name = "Tickets to Space Jam"
 	path = /obj/item/prop/helmetgarb/spacejam_tickets
@@ -581,6 +585,10 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 /datum/gear/helmet_garb/trimmed_wire
 	display_name = "Trimmed barbed wire"
 	path = /obj/item/prop/helmetgarb/trimmed_wire
+
+/datum/gear/helmet_garb/dog_tags
+	display_name = "Dog tags"
+	path = /obj/item/prop/helmetgarb/dog_tags
 
 /datum/gear/helmet_garb/bullet_pipe
 	display_name = "10x99mm XM43E1 casing pipe"

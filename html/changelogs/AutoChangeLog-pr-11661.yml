@@ -1,0 +1,5 @@
+author: "Nivrak, Thwomper"
+delete-after: True
+changes:
+  - balance: "Reworked despoiler"
+  - imageadd: "Added new sprites to despoiler, made by thwomper"

@@ -234,8 +234,6 @@ Additional game mode variables.
 	return TRUE
 
 /datum/game_mode/proc/transform_predator(mob/pred_candidate)
-	set waitfor = FALSE
-
 	if(!pred_candidate.client) // Legacy - probably due to spawn code sync sleeps
 		log_debug("Null client attempted to transform_predator")
 		return

@@ -79,8 +79,9 @@ SUBSYSTEM_DEF(mapping)
 	// Cache for sonic speed
 	var/list/unused_turfs = src.unused_turfs
 	// CM TODO: figure out if these 2 are needed. Might be required by updated versions of map reader
-	var/list/world_contents = GLOB.areas_by_type[world.area].contents
-	var/list/world_turf_contents_by_z = GLOB.areas_by_type[world.area].turfs_by_zlevel
+	var/area/world_area = GLOB.areas_by_type[world.area]
+	var/list/world_contents = world_area.contents
+	var/list/world_turf_contents_by_z = world_area.turfs_by_zlevel
 	var/list/lists_to_reserve = src.lists_to_reserve
 	var/index = 0
 	while(index < length(lists_to_reserve))
@@ -92,18 +93,18 @@ SUBSYSTEM_DEF(mapping)
 					lists_to_reserve.Cut(1, index)
 				return
 			var/turf/reserving_turf = packet[packetlen]
+			var/area/old_area = reserving_turf.loc
 			reserving_turf.empty(RESERVED_TURF_TYPE, RESERVED_TURF_TYPE, null, TRUE)
 			LAZYINITLIST(unused_turfs["[reserving_turf.z]"])
 			unused_turfs["[reserving_turf.z]"] |= reserving_turf
-
-			var/area/old_area = reserving_turf.loc
-			LISTASSERTLEN(old_area.turfs_to_uncontain_by_zlevel, reserving_turf.z, list())
-			old_area.turfs_to_uncontain_by_zlevel[reserving_turf.z] += reserving_turf
-			world_contents += reserving_turf
-			LISTASSERTLEN(world_turf_contents_by_z, reserving_turf.z, list())
-			world_turf_contents_by_z[reserving_turf.z] += reserving_turf
-
 			reserving_turf.turf_flags |= UNUSED_RESERVATION_TURF
+			if(old_area != world_area)
+				LISTASSERTLEN(old_area.turfs_to_uncontain_by_zlevel, reserving_turf.z, list())
+				old_area.turfs_to_uncontain_by_zlevel[reserving_turf.z] += reserving_turf
+				world_contents += reserving_turf
+				LISTASSERTLEN(world_turf_contents_by_z, reserving_turf.z, list())
+				world_turf_contents_by_z[reserving_turf.z] += reserving_turf
+
 			packet.len--
 			packetlen = length(packet)
 
@@ -201,7 +202,7 @@ SUBSYSTEM_DEF(mapping)
 		for(var/z in bounds[MAP_MINZ] to bounds[MAP_MAXZ])
 			var/datum/space_level/zlevel = z_list[start_z + z - 1]
 			zlevel.bounds = list(bounds[MAP_MINX] + x_offset - 1, bounds[MAP_MINY] + y_offset - 1, z, bounds[MAP_MAXX] + x_offset - 1, bounds[MAP_MAXY] + y_offset - 1, z)
-			if(is_guaranteed_space) // this level is space-only so we did literally nothing
+			if(is_guaranteed_space) // this level is space-only so we did literally nothing and have to build turfs here
 				build_area_turfs(start_z + z - 1, TRUE)
 
 	// =============== END CM Change =================
@@ -233,6 +234,10 @@ SUBSYSTEM_DEF(mapping)
 		ground_base_path = "data/"
 	Loadground(FailedZs, ground_map.map_name, ground_map.map_path, ground_map.map_file, ground_map.traits, ZTRAITS_GROUND, override_map_path = ground_base_path)
 
+// we only load one map in unit testing
+#ifdef UNIT_TESTS
+	ground_map.disable_ship_map = TRUE
+#endif
 	if(!ground_map.disable_ship_map)
 		var/datum/map_config/ship_map = configs[SHIP_MAP]
 		var/ship_base_path = "maps/"
@@ -391,10 +396,12 @@ SUBSYSTEM_DEF(mapping)
 
 /// Schedules a group of turfs to be handed back to the reservation system's control
 /// If await is true, will sleep until the turfs are finished work
-/datum/controller/subsystem/mapping/proc/reserve_turfs(list/turfs, await = FALSE)
+/datum/controller/subsystem/mapping/proc/reserve_turfs_async(list/turfs)
 	lists_to_reserve += list(turfs)
-	if(await)
-		UNTIL(!length(turfs))
+
+/datum/controller/subsystem/mapping/proc/reserve_turfs(list/turfs)
+	reserve_turfs_async(turfs)
+	UNTIL(!length(turfs))
 
 //DO NOT CALL THIS PROC DIRECTLY, CALL wipe_reservations().
 /datum/controller/subsystem/mapping/proc/do_wipe_turf_reservations()
@@ -412,7 +419,7 @@ SUBSYSTEM_DEF(mapping)
 	clearing |= used_turfs //used turfs is an associative list, BUT, reserve_turfs() can still handle it. If the code above works properly, this won't even be needed as the turfs would be freed already.
 	unused_turfs.Cut()
 	used_turfs.Cut()
-	reserve_turfs(clearing, await = TRUE)
+	reserve_turfs(clearing)
 
 /// Takes a z level datum, and tells the mapping subsystem to manage it
 /// Also handles things like plane offset generation, and other things that happen on a z level to z level basis

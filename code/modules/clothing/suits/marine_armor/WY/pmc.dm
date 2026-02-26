@@ -14,7 +14,6 @@
 	storage_slots = 2
 	slowdown = SLOWDOWN_ARMOR_LIGHT
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
-	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/pmc)
 	item_state_slots = list(WEAR_JACKET = "pmc_armor")
 	lamp_icon = "pmc_lamp"
 	light_color = LIGHT_COLOR_FLARE
@@ -103,13 +102,11 @@
 	name = "\improper M4 pattern PMC leader armor"
 	desc = "A modification of the standard Armat Systems M3 armor. Designed for high-profile security operators and corporate mercenaries in mind. This particular suit looks like it belongs to a high-ranking officer."
 	icon_state = "officer_armor"
-	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/pmc/leader)
 	item_state_slots = list(WEAR_JACKET = "officer_armor")
 
 /obj/item/clothing/suit/storage/marine/veteran/pmc/leader/guard
 	name = "\improper M4 pattern PMC guard leader armor"
 	icon_state = "guard_armor_officer"
-	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/pmc)
 	item_state_slots = list(WEAR_JACKET = "guard_armor_officer")
 
 /obj/item/clothing/suit/storage/marine/veteran/pmc/light/synth

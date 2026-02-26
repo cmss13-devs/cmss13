@@ -1,5 +1,4 @@
 import { round } from 'common/math';
-import { Ping } from 'common/ping';
 import type { BooleanLike } from 'common/react';
 import { Component } from 'react';
 import { useBackend } from 'tgui/backend';
@@ -35,56 +34,81 @@ type State = {
 };
 
 class PingApp extends Component<PingAppProps> {
-  pinger: Ping;
+  sockets: WebSocket[];
   results: PingResult[];
   state: State;
-  realCurrentIndex: number;
 
   constructor(props: PingAppProps) {
     super(props);
 
-    this.pinger = new Ping();
-    this.results = new Array();
+    this.sockets = [];
+    this.results = [];
     this.state = {
       currentIndex: 0,
       lastClickedIndex: 0,
       lastClickedState: false,
     };
-    this.realCurrentIndex = 0;
   }
 
-  startTest(
-    desc: string,
-    pingURL: string,
-    connectURL: string,
-    retryIndex: number = -1,
-  ) {
-    this.pinger.ping(
-      'http://' + pingURL,
-      (error: string | null, pong: number) => {
-        // reading state is too unreliable now somereason so we have to use realCurrentIndex
-        let index = retryIndex === -1 ? this.realCurrentIndex++ : retryIndex;
+  startTest(index: number, desc: string, pingURL: string, connectURL: string) {
+    const pingsSent: Record<string, number> = {};
+    const pingTimes: number[] = [];
 
-        if (error !== null && retryIndex === -1) {
-          // Attempt a retry since it errored and we haven't tried yet
-          console.warn('Retrying ' + desc);
-          this.startTest(desc, pingURL, connectURL, index);
-          return;
-        }
+    const socket = new WebSocket(`wss://${pingURL}`);
+    this.sockets[index] = socket;
 
+    const sendPing = (iter: number) => {
+      if (socket.readyState !== WebSocket.OPEN) {
+        return;
+      }
+      pingsSent[String(iter)] = Date.now();
+      socket.send(String(iter));
+    };
+
+    socket.addEventListener('open', () => {
+      sendPing(1);
+    });
+
+    socket.addEventListener('message', (event) => {
+      const rtt = Date.now() - pingsSent[event.data];
+      pingTimes.push(rtt);
+
+      const avgPing = round(
+        pingTimes.reduce((a, b) => a + b, 0) / pingTimes.length,
+        0,
+      );
+
+      this.results[index]?.update(desc, `byond://${connectURL}`, avgPing, null);
+
+      this.setState((prevState: State) => ({
+        currentIndex: prevState.currentIndex + 1,
+      }));
+
+      sendPing(Number(event.data) + 1);
+    });
+
+    socket.addEventListener('error', () => {
+      this.results[index]?.update(desc, `byond://${connectURL}`, -1, 'Error');
+
+      this.setState((prevState: State) => ({
+        currentIndex: prevState.currentIndex + 1,
+      }));
+    });
+
+    socket.addEventListener('close', () => {
+      if (this.results[index]?.ping === -1 && !this.results[index]?.error) {
         this.results[index]?.update(
           desc,
-          'byond://' + connectURL,
-          round(pong * 0.75, 0), // The ping is inflated so lets compensate a bit
-          error,
+          `byond://${connectURL}`,
+          -1,
+          'Closed',
         );
 
-        // We still have to set a state to cause a redraw
         this.setState((prevState: State) => ({
           currentIndex: prevState.currentIndex + 1,
         }));
-      },
-    );
+      }
+    });
   }
 
   handleConfirmChange(index: number, newState: boolean) {
@@ -95,12 +119,11 @@ class PingApp extends Component<PingAppProps> {
   }
 
   componentDidMount() {
-    // We have to set a state to cause a redraw (buttons are now populated)
-    this.realCurrentIndex = 0;
     this.setState({ currentIndex: 0 });
     for (let i = 0; i < this.props.relayNames.length; i++) {
       this.results.push(new PingResult());
       this.startTest(
+        i,
         this.props.relayNames[i],
         this.props.relayPings[i],
         this.props.relayCons[i],
@@ -109,7 +132,11 @@ class PingApp extends Component<PingAppProps> {
   }
 
   componentWillUnmount() {
-    this.pinger.cancel();
+    for (const socket of this.sockets) {
+      if (socket && socket.readyState === WebSocket.OPEN) {
+        socket.close();
+      }
+    }
   }
 
   render() {
@@ -152,7 +179,7 @@ class PingApp extends Component<PingAppProps> {
                     <Box inline>
                       {this.state.lastClickedIndex === i &&
                       this.state.lastClickedState
-                        ? 'Connect via ' + result.desc + '?'
+                        ? `Connect via ${result.desc}?`
                         : result.desc}
                     </Box>
                   </Flex.Item>
@@ -168,7 +195,7 @@ class PingApp extends Component<PingAppProps> {
                         average: [200, 500],
                         bad: [500, 1000],
                       }}
-                      format={(x) => x + 'ms'}
+                      format={(x) => `${x}ms`}
                       inline
                     />
                   </Flex.Item>
@@ -184,7 +211,7 @@ class PingApp extends Component<PingAppProps> {
                   </Flex.Item>
                   <Flex.Item width={8}>
                     <Box inline preserveWhitespace color={RED} bold>
-                      {' (' + result.error + ')'}
+                      {` (${result.error})`}
                     </Box>
                   </Flex.Item>
                 </Flex>

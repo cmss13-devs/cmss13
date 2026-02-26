@@ -152,8 +152,6 @@ SUBSYSTEM_DEF(mapping)
 	// check that the total z count of all maps matches the list of traits
 	var/total_z = 0
 	var/list/parsed_maps = list()
-	// this is evil: basically if a level is entirely empty (just the space key) we have to run contain_turfs
-	var/alist/empty_levels = alist()
 	for (var/file in files)
 		var/full_path = "[override_map_path]/[path]/[file]"
 		var/datum/parsed_map/pm = new(file(full_path))
@@ -162,8 +160,6 @@ SUBSYSTEM_DEF(mapping)
 			errorList |= full_path
 			continue
 		parsed_maps[pm] = total_z  // save the start Z of this file
-		if(length(pm.modelCache) == 1 && pm.modelCache[1] == SPACE_KEY) // this level is space-only so we did literally nothing
-			empty_levels[total_z] = TRUE
 		total_z += bounds[MAP_MAXZ] - bounds[MAP_MINZ] + 1
 
 	if (!length(traits))  // null or empty - default
@@ -180,8 +176,7 @@ SUBSYSTEM_DEF(mapping)
 	var/start_z = world.maxz + 1
 	var/i = 0
 	for (var/level in traits)
-		// if we did nothing, we need to run contain_turfs.
-		add_new_zlevel("[name][i ? " [i + 1]" : ""]", level, contain_turfs = empty_levels[i] || FALSE) // null uses default argument which is TRUE which is bad
+		add_new_zlevel("[name][i ? " [i + 1]" : ""]", level, contain_turfs = FALSE)
 		++i
 
 	// ================== CM Change ==================
@@ -201,10 +196,13 @@ SUBSYSTEM_DEF(mapping)
 			y_offset = floor(world.maxy / 2 - bounds[MAP_MAXY] / 2) + 1
 		if (!pm.load(x_offset, y_offset, start_z + parsed_maps[pm], no_changeturf = TRUE, new_z = TRUE))
 			errorList |= pm.original_path
+		var/is_guaranteed_space = (length(pm.modelCache) == 1 && pm.modelCache[1] == SPACE_KEY)
 		// CM Snowflake for Mass Screenshot dimensions auto detection
 		for(var/z in bounds[MAP_MINZ] to bounds[MAP_MAXZ])
 			var/datum/space_level/zlevel = z_list[start_z + z - 1]
 			zlevel.bounds = list(bounds[MAP_MINX] + x_offset - 1, bounds[MAP_MINY] + y_offset - 1, z, bounds[MAP_MAXX] + x_offset - 1, bounds[MAP_MAXY] + y_offset - 1, z)
+			if(is_guaranteed_space) // this level is space-only so we did literally nothing
+				build_area_turfs(start_z + z - 1, TRUE)
 
 	// =============== END CM Change =================
 

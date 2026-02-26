@@ -100,6 +100,7 @@
 	// rather than waiting for atoms to initialize.
 	if(unique)
 		GLOB.areas_by_type[type] = src
+	GLOB.all_areas += src
 	..()
 
 	initialize_power()
@@ -110,7 +111,6 @@
 	uid = ++global_uid
 	. = ..()
 	GLOB.active_areas += src
-	GLOB.all_areas += src
 	reg_in_areas_in_z()
 	if(is_mainship_level(z))
 		GLOB.ship_areas += src

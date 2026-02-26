@@ -363,28 +363,6 @@ SUBSYSTEM_DEF(minimaps)
 			// Update legacy storage
 			drawn_images[cic_hash] = transmitted_copy
 
-	// If processing xeno flags, also copy USCM transmitted drawings to xeno keys
-	if(minimap_flag & MINIMAP_FLAG_ALL_XENOS)
-		for(var/z_level in minimaps_by_z)
-			// Copy USCM drawings to xeno keys
-			var/uscm_drawing_key = "[z_level]-[MINIMAP_FLAG_USCM]"
-			if(transmitted_drawings[uscm_drawing_key])
-				for(var/flag in bitfield2list(minimap_flag))
-					transmitted_drawings["[z_level]-[flag]"] = transmitted_drawings[uscm_drawing_key]
-					// Also update legacy storage for xeno flags
-					drawn_images["[z_level]-[flag]"] = transmitted_drawings[uscm_drawing_key]
-
-			// Copy USCM labels to xeno keys
-			for(var/transmitted_key in transmitted_drawings)
-				if(findtext(transmitted_key, "[z_level]-[MINIMAP_FLAG_USCM]label-"))
-					// Extract the coordinates from the USCM label key
-					var/label_suffix = copytext(transmitted_key, findtext(transmitted_key, "label-"))
-					for(var/flag in bitfield2list(minimap_flag))
-						var/xeno_label_key = "[z_level]-[flag][label_suffix]"
-						transmitted_drawings[xeno_label_key] = transmitted_drawings[transmitted_key]
-						// Also update legacy storage for xeno label flags
-						drawn_images[xeno_label_key] = transmitted_drawings[transmitted_key]
-
 	// Now capture frozen state for latejoiners after drawings are transmitted
 	for(var/z_level in minimaps_by_z)
 		var/list/frozen_overlays = list()
@@ -449,15 +427,6 @@ SUBSYSTEM_DEF(minimaps)
 			frozen_overlays |= minimaps_by_z[z_level].images_raw["[flag]label"]
 			if(drawn_images["[z_level]-[flag]label"])
 				frozen_overlays |= drawn_images["[z_level]-[flag]label"]
-
-			// For xeno flags, also include transmitted drawings from USCM updates
-			if(flag & MINIMAP_FLAG_ALL_XENOS)
-				if(transmitted_drawings["[z_level]-[flag]"])
-					frozen_overlays += transmitted_drawings["[z_level]-[flag]"]
-				// Add transmitted labels for this flag
-				for(var/key in transmitted_drawings)
-					if(findtext(key, "[z_level]-[flag]label-"))
-						frozen_overlays += transmitted_drawings[key]
 		frozen_overlay_states["[z_level]-[minimap_flag]"] = frozen_overlays
 
 	// Update individual client copies with overlay system
@@ -1401,6 +1370,19 @@ SUBSYSTEM_DEF(minimaps)
 	if(!istype(xeno))
 		return
 
+	// Automatically show drawing tools for ovi'd queens
+	if(istype(xeno, /mob/living/carbon/xenomorph/queen))
+		var/mob/living/carbon/xenomorph/queen/queen = xeno
+		if(queen.ovipositor)
+			var/datum/component/tacmap/tacmap_component = queen.GetComponent(/datum/component/tacmap)
+			if(tacmap_component)
+				if(queen in tacmap_component.interactees)
+					tacmap_component.on_unset_interaction(queen)
+					tacmap_component.close_popout_tacmaps(queen)
+				else
+					tacmap_component.show_tacmap(queen)
+				return
+
 	if(!minimap_displayed && !xeno?.hive?.living_xeno_queen?.ovipositor && xeno != xeno?.hive?.living_xeno_queen && xeno?.hive?.tacmap_requires_queen_ovi)
 		to_chat(xeno, SPAN_WARNING("You cannot access that right now, The Queen has shed her ovipositor."))
 		return
@@ -2007,6 +1989,12 @@ SUBSYSTEM_DEF(minimaps)
 /atom/movable/screen/minimap_tool/update/proc/announce_xeno(mob/user)
 	playsound_client(user.client, get_sfx("queen"))
 
+	// Trigger a refresh of all non-live xeno minimaps with new drawings
+	SSminimaps.refresh_static_minimaps(minimap_flag)
+
+	// Apply drawings to all live xeno minimaps now that update has been sent
+	SSminimaps.apply_drawings_to_live_minimaps(minimap_flag)
+
 	user.client.images += drawn_image
 	var/icon/flat_drawing = icon(user.client.RenderIcon(drawn_image))
 	user.client.images -= drawn_image
@@ -2055,12 +2043,6 @@ SUBSYSTEM_DEF(minimaps)
 
 	// Apply drawings to all live minimaps now that update has been sent
 	SSminimaps.apply_drawings_to_live_minimaps(MINIMAP_FLAG_USCM)
-
-	// Also transmit drawings and labels to xeno minimaps
-	// Include all xeno hive variations
-	for(var/hive_flag in bitfield2list(MINIMAP_FLAG_ALL_XENOS))
-		SSminimaps.refresh_static_minimaps(hive_flag)
-		SSminimaps.apply_drawings_to_live_minimaps(hive_flag)
 
 	user.client.images += drawn_image
 	var/icon/flat_drawing = icon(user.client.RenderIcon(drawn_image))

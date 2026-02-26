@@ -472,7 +472,7 @@
 		WEAR_HEAD = /obj/item/clothing/head/soft/ferret,
 		WEAR_BODY = /obj/item/clothing/under/rank/frontier,
 		WEAR_BACK = /obj/item/storage/backpack/satchel/norm,
-		WEAR_IN_BACK = /obj/item/pamphlet/skill/powerloader,
+		WEAR_IN_BACK = /obj/item/pamphlet/upgradeable/powerloader,
 		WEAR_R_HAND = /obj/item/hardpoint/locomotion/van_wheels,
 		WEAR_FEET = /obj/item/clothing/shoes/marine/knife,
 		WEAR_L_HAND = /obj/item/weapon/baseballbat/metal

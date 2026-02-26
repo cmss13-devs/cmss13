@@ -22122,7 +22122,7 @@
 /area/varadero/interior_protected/caves/digsite)
 "rJq" = (
 /obj/structure/surface/table,
-/obj/item/pamphlet/skill/engineer{
+/obj/item/pamphlet/upgradeable/engineer{
 	pixel_x = -3;
 	pixel_y = 5
 	},

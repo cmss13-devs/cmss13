@@ -54,7 +54,7 @@
 	*/
 	var/list/cooldowns
 
-	/// A weak reference to another datum
+	/// The weakref pointing to this datum; ref reuse can cause weakrefs to resolve to the wrong object, so we compare it against this.
 	var/datum/weakref/weak_reference
 
 #ifdef REFERENCE_TRACKING

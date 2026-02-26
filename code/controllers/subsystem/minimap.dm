@@ -364,7 +364,7 @@ SUBSYSTEM_DEF(minimaps)
 			drawn_images[cic_hash] = transmitted_copy
 
 	// If processing xeno flags, also copy USCM transmitted drawings to xeno keys
-	if(minimap_flag & (MINIMAP_FLAG_XENO|MINIMAP_FLAG_XENO_CORRUPTED|MINIMAP_FLAG_XENO_ALPHA|MINIMAP_FLAG_XENO_BRAVO|MINIMAP_FLAG_XENO_CHARLIE|MINIMAP_FLAG_XENO_DELTA|MINIMAP_FLAG_XENO_FERAL|MINIMAP_FLAG_XENO_TAMED|MINIMAP_FLAG_XENO_MUTATED|MINIMAP_FLAG_XENO_FORSAKEN|MINIMAP_FLAG_XENO_RENEGADE|MINIMAP_FLAG_XENO_HUNTED))
+	if(minimap_flag & MINIMAP_FLAG_ALL_XENOS)
 		for(var/z_level in minimaps_by_z)
 			// Copy USCM drawings to xeno keys
 			var/uscm_drawing_key = "[z_level]-[MINIMAP_FLAG_USCM]"
@@ -451,7 +451,7 @@ SUBSYSTEM_DEF(minimaps)
 				frozen_overlays |= drawn_images["[z_level]-[flag]label"]
 
 			// For xeno flags, also include transmitted drawings from USCM updates
-			if(flag & (MINIMAP_FLAG_XENO|MINIMAP_FLAG_XENO_CORRUPTED|MINIMAP_FLAG_XENO_ALPHA|MINIMAP_FLAG_XENO_BRAVO|MINIMAP_FLAG_XENO_CHARLIE|MINIMAP_FLAG_XENO_DELTA|MINIMAP_FLAG_XENO_FERAL|MINIMAP_FLAG_XENO_TAMED|MINIMAP_FLAG_XENO_MUTATED|MINIMAP_FLAG_XENO_FORSAKEN|MINIMAP_FLAG_XENO_RENEGADE|MINIMAP_FLAG_XENO_HUNTED))
+			if(flag & MINIMAP_FLAG_ALL_XENOS)
 				if(transmitted_drawings["[z_level]-[flag]"])
 					frozen_overlays += transmitted_drawings["[z_level]-[flag]"]
 				// Add transmitted labels for this flag
@@ -2057,10 +2057,8 @@ SUBSYSTEM_DEF(minimaps)
 	SSminimaps.apply_drawings_to_live_minimaps(MINIMAP_FLAG_USCM)
 
 	// Also transmit drawings and labels to xeno minimaps
-	SSminimaps.refresh_static_minimaps(MINIMAP_FLAG_XENO)
-	SSminimaps.apply_drawings_to_live_minimaps(MINIMAP_FLAG_XENO)
 	// Include all xeno hive variations
-	for(var/hive_flag in list(MINIMAP_FLAG_XENO_CORRUPTED, MINIMAP_FLAG_XENO_ALPHA, MINIMAP_FLAG_XENO_BRAVO, MINIMAP_FLAG_XENO_CHARLIE, MINIMAP_FLAG_XENO_DELTA, MINIMAP_FLAG_XENO_FERAL, MINIMAP_FLAG_XENO_TAMED, MINIMAP_FLAG_XENO_MUTATED, MINIMAP_FLAG_XENO_FORSAKEN, MINIMAP_FLAG_XENO_RENEGADE, MINIMAP_FLAG_XENO_HUNTED))
+	for(var/hive_flag in bitfield2list(MINIMAP_FLAG_ALL_XENOS))
 		SSminimaps.refresh_static_minimaps(hive_flag)
 		SSminimaps.apply_drawings_to_live_minimaps(hive_flag)
 

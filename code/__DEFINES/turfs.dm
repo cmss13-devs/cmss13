@@ -14,6 +14,9 @@
 ///Returns all turfs in a zlevel
 #define Z_TURFS(ZLEVEL) block(1, 1, (ZLEVEL), world.maxx, world.maxy, (ZLEVEL))
 
+///Returns all currently loaded turfs
+#define ALL_TURFS(...) block(1, 1, 1, world.maxx, world.maxy, world.maxz)
+
 /// Returns a list of turfs in the rectangle specified by BOTTOM LEFT corner and height/width
 #define CORNER_BLOCK(corner, width, height) CORNER_BLOCK_OFFSET(corner, width, height, 0, 0)
 

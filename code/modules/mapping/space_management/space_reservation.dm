@@ -110,9 +110,8 @@
 /datum/turf_reservation/proc/generate_cordon()
 	for(var/turf/cordon_turf as anything in cordon_turfs)
 		var/area/misc/cordon/cordon_area = GLOB.areas_by_type[/area/misc/cordon] || new
-		//var/area/old_area = cordon_turf.loc
-		//old_area.turfs_to_uncontain += cordon_turf
-		//cordon_area.contained_turfs += cordon_turf
+		var/area/old_area = cordon_turf.loc
+		TRANSFER_TURF_CONTAINED_AREA(cordon_turf, old_area, cordon_area)
 		cordon_area.contents += cordon_turf
 		// Its no longer unused, but its also not "used"
 		cordon_turf.turf_flags &= ~UNUSED_RESERVATION_TURF

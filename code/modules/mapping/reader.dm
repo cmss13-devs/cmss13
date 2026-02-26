@@ -250,7 +250,7 @@
 			gridSet.zcrd = curr_z
 
 			bounds[MAP_MINX] = min(bounds[MAP_MINX], curr_x)
-			bounds[MAP_MINZ] = min(bounds[MAP_MINZ], curr_y)
+			bounds[MAP_MINZ] = min(bounds[MAP_MINZ], curr_z)
 			bounds[MAP_MAXZ] = max(bounds[MAP_MAXZ], curr_z)
 
 			var/list/gridLines = splittext(regexOutput[6], "\n")

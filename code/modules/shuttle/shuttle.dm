@@ -478,7 +478,7 @@
 	var/list/all_turfs = return_ordered_turfs(x, y, z, dir)
 	for(var/i in 1 to length(all_turfs))
 		var/turf/curT = all_turfs[i]
-		var/area/cur_area = get_area(curT)
+		var/area/cur_area = curT.loc
 		if(istype(cur_area, area_type))
 			shuttle_areas[cur_area] = TRUE
 

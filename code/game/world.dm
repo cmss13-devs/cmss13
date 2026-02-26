@@ -336,7 +336,6 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 			old_maxx + 1, 1, zlevel,
 			maxx, maxy, zlevel
 		)
-
 		global_area.turfs_by_zlevel[zlevel] += to_add
 
 /world/proc/increase_max_y(new_maxy, map_load_z_cutoff = maxz)

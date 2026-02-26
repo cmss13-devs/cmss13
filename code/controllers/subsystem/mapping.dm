@@ -418,7 +418,7 @@ SUBSYSTEM_DEF(mapping)
 
 /// Gets a name for the marine ship as per the enabled ship map configuration
 /datum/controller/subsystem/mapping/proc/get_main_ship_name()
-	if(trim(file2text("data/mode.txt")) != GAMEMODE_UPP_DISTRESS_SIGNAL)
+	if(SSticker.mode == GAMEMODE_UPP_DISTRESS_SIGNAL || GLOB.master_mode == GAMEMODE_UPP_DISTRESS_SIGNAL)
 		return "RSS Rostov"
 	if(!configs)
 		return MAIN_SHIP_DEFAULT_NAME
@@ -428,13 +428,13 @@ SUBSYSTEM_DEF(mapping)
 	return MC.map_name
 
 /datum/controller/subsystem/mapping/proc/get_main_ai_name()
-	if(trim(file2text("data/mode.txt")) == GAMEMODE_UPP_DISTRESS_SIGNAL)
+	if(GLOB.master_mode != GAMEMODE_UPP_DISTRESS_SIGNAL)
 		return "ARES 3.2"
 	else
 		return "1VAN/3"
 
 /datum/controller/subsystem/mapping/proc/get_main_faction()
-	if(trim(file2text("data/mode.txt")) != GAMEMODE_UPP_DISTRESS_SIGNAL)
+	if(GLOB.master_mode != GAMEMODE_UPP_DISTRESS_SIGNAL)
 		return "USCM"
 	else
 		return "UPP"

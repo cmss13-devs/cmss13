@@ -3624,7 +3624,9 @@
 /turf/open/floor/strata,
 /area/rostock/upper_deck/hallway)
 "bVO" = (
-/obj/structure/machinery/power/apc/upp/north,
+/obj/structure/machinery/power/apc/upp/north{
+	crash_break_probability = 0
+	},
 /obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/engineering/reactor)
@@ -7491,7 +7493,7 @@
 /obj/item/clothing/glasses/welding{
 	pixel_y = 6
 	},
-/obj/structure/machinery/power/apc/upp/south,
+/obj/structure/machinery/power/apc/upp/hardened/south,
 /turf/open/floor/strata/blue3/north,
 /area/rostock/command/cic)
 "fdp" = (
@@ -12020,7 +12022,9 @@
 /turf/open/floor/almayer/tcomms,
 /area/rostock/upperdeck_maint/p_a)
 "iCj" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/blastdoor,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/blastdoor{
+	linked_dock = "rostock-lifeboat1"
+	},
 /turf/open/floor/corsat/marked,
 /area/rostock/lifeboat)
 "iCE" = (
@@ -15109,7 +15113,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/lower_deck/bathroom)
 "kQV" = (
-/obj/structure/machinery/power/apc/upp/south,
+/obj/structure/machinery/power/apc/upp/hardened/south,
 /turf/open/floor/almayer/aicore/no_build,
 /area/rostock/airoom)
 "kRk" = (
@@ -18890,7 +18894,7 @@
 /turf/open/floor/corsat/marked,
 /area/rostock/security/headquarters_interrogation)
 "omS" = (
-/obj/structure/machinery/power/apc/upp/north,
+/obj/structure/machinery/power/apc/upp/hardened/north,
 /turf/open/floor/corsat/plate,
 /area/rostock/command/astronavigation)
 "omU" = (
@@ -20694,7 +20698,8 @@
 /area/rostock/lowerdeck_maint/p_a)
 "pHz" = (
 /obj/structure/closet/secure_closet/cmdcabinet{
-	pixel_y = 24
+	pixel_y = 24;
+	req_one_access = list(240)
 	},
 /obj/item/device/cotablet/upp,
 /turf/open/floor/strata/blue3,
@@ -30412,7 +30417,7 @@
 /turf/open/floor/corsat/plate,
 /area/rostock/lower_deck/p_hallway)
 "xvT" = (
-/obj/structure/machinery/power/apc/upp/north,
+/obj/structure/machinery/power/apc/upp/hardened/north,
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/strata/floor2,
 /area/rostock/lifeboat)

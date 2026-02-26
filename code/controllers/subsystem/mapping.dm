@@ -152,6 +152,7 @@ SUBSYSTEM_DEF(mapping)
 	// check that the total z count of all maps matches the list of traits
 	var/total_z = 0
 	var/list/parsed_maps = list()
+	var/did_nothing = FALSE
 	for (var/file in files)
 		var/full_path = "[override_map_path]/[path]/[file]"
 		var/datum/parsed_map/pm = new(file(full_path))
@@ -159,6 +160,8 @@ SUBSYSTEM_DEF(mapping)
 		if (!bounds)
 			errorList |= full_path
 			continue
+		if(length(pm.modelCache) == 1 && pm.modelCache[1] == SPACE_KEY) // this level is space-only so we did literally nothing
+			did_nothing = TRUE
 		parsed_maps[pm] = total_z  // save the start Z of this file
 		total_z += bounds[MAP_MAXZ] - bounds[MAP_MINZ] + 1
 
@@ -176,7 +179,8 @@ SUBSYSTEM_DEF(mapping)
 	var/start_z = world.maxz + 1
 	var/i = 0
 	for (var/level in traits)
-		add_new_zlevel("[name][i ? " [i + 1]" : ""]", level, contain_turfs = FALSE)
+		// if we did nothing, we need to run contain_turfs.
+		add_new_zlevel("[name][i ? " [i + 1]" : ""]", level, contain_turfs = did_nothing)
 		++i
 
 	// ================== CM Change ==================

@@ -64,7 +64,7 @@
 /obj/docking_port/mobile/crashable/proc/create_crash_point()
 	var/list/all_ground_levels = SSmapping.levels_by_trait(ZTRAIT_GROUND)
 	var/ground_z_level = all_ground_levels[1]
-	var/list/area/potential_areas = SSmapping.areas_in_z["[ground_z_level]"]
+	var/list/area/potential_areas = SSmapping.areas_in_z[ground_z_level]
 
 	for(var/i in 1 to 10)
 		var/area/area_picked = pick(potential_areas)

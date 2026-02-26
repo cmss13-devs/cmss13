@@ -104,6 +104,7 @@
 	// rather than waiting for atoms to initialize.
 	if(unique)
 		GLOB.areas_by_type[type] = src
+	GLOB.all_areas += src
 	..()
 
 	initialize_power()
@@ -114,7 +115,6 @@
 	uid = ++global_uid
 	. = ..()
 	GLOB.active_areas += src
-	GLOB.all_areas += src
 	reg_in_areas_in_z()
 	if(is_mainship_level(z))
 		GLOB.ship_areas += src
@@ -463,9 +463,13 @@
 	return flags
 
 /area/proc/reg_in_areas_in_z()
-	if(!SSmapping.areas_in_z["[z]"])
-		SSmapping.areas_in_z["[z]"] = list()
-	SSmapping.areas_in_z["[z]"] += src
+	if(!has_contained_turfs())
+		return
+	var/alist/areas_in_z = SSmapping.areas_in_z
+	if(!z)
+		WARNING("No z found for [src]")
+		return
+	LAZYADD(areas_in_z[z], src)
 
 /**
  * Purges existing weeds, and prevents future weeds from being placed.

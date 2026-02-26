@@ -418,3 +418,12 @@
       of their ceiling. The darker the color, the harder the roof is to penetrate.
   - ui: Added an action button for it next to the Minimap button. The red version
       toggles the ceiling area mode on or off.
+2026-02-26:
+  Nihisohel:
+  - balance: Gun wielding can now be queued, ensuring that you do not need to spam
+      hit the wield button in order to actually wield the thing. This does not apply
+      to twohanded melee weapons as they don't have a delay to begin with, as of yet
+      anyhow.
+  Nivrak, Thwomper:
+  - balance: Reworked despoiler
+  - imageadd: Added new sprites to despoiler, made by thwomper

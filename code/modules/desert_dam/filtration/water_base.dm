@@ -18,6 +18,8 @@
 	var/list/water_sounds = list('sound/effects/slosh.ogg')
 
 /obj/effect/blocker/water/proc/drain_spread(from_dir = 0)
+	if(!dispersing)
+		return
 	for(var/obj/effect/blocker/water/neighboring_water in orange(1, src)) // this won't check directions that don't even have water
 		var/direction = get_dir(src, neighboring_water)
 		if(direction == from_dir)
@@ -54,7 +56,7 @@
 
 /obj/effect/blocker/water/proc/drain()
 	dispersing = FALSE
-	animate(src, alpha = initial(alpha), time = 60)
+	animate(src, alpha = initial(alpha), time = 6 SECONDS)
 	var/turf/location = loc
 	location.is_weedable = initial(location.is_weedable)
 
@@ -78,7 +80,7 @@
 		if(prob(70))
 			item.throw_atom((get_step(loc,turn(from_dir,180))),1)
 
-	animate(src, alpha= flooded_alpha, easing = BACK_EASING | EASE_OUT , time= 40)
+	animate(src, alpha = flooded_alpha, easing = BACK_EASING | EASE_OUT, time = 4 SECONDS)
 	update_icon()
 	var/turf/location = loc
 	location.is_weedable = NOT_WEEDABLE

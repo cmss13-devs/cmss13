@@ -94,6 +94,12 @@
 		user.client.remove_from_screen(user_objects["drawing_actions"])
 		user.client.remove_from_screen(user_objects["close_button"])
 
+		// Remove ceiling protection toggle action when CIC tactical map closes
+		var/datum/action/minimap_ceiling/ceiling_action = user_objects["ceiling_action"]
+		if(ceiling_action)
+			ceiling_action.hidden = TRUE
+			user.update_action_buttons()
+
 		// Clean up drawing tool references
 		var/atom/movable/screen/minimap/user_map = user_objects["map"]
 		user_map?.active_draw_tool = null
@@ -116,6 +122,11 @@
 	var/atom/movable/screen/minimap/user_map = SSminimaps.fetch_minimap_object(targetted_zlevel, minimap_flag, live=TRUE, popup=FALSE, drawing=drawing, for_client=user.client)
 	var/atom/movable/screen/exit_map/user_close_button = new(null, src)
 
+	// Apply drawing overlays to minimap
+	if(drawing)
+		user_map.is_cic_minimap = TRUE
+		user_map.update_drawing_overlay(show_cic_drawings = TRUE)
+
 	var/list/atom/movable/screen/user_drawing_actions = list()
 	for(var/path in drawing_tools)
 		user_drawing_actions += new path(null, targetted_zlevel, minimap_flag, user_map, src)
@@ -128,9 +139,17 @@
 	if(user.client.prefs?.show_minimap_ceiling_protection)
 		user_map.update_ceiling_overlay(user.client)
 
+	// Give ceiling protection toggle action when CIC tactical map opens
+	var/datum/action/minimap_ceiling/ceiling_action
+	for(var/datum/action/minimap_ceiling/existing_action in user.actions)
+		ceiling_action = existing_action
+		ceiling_action.hidden = FALSE
+		user.update_action_buttons()
+		break
+
 	// Store references for cleanup
 	if(!interactees[user])
-		interactees[user] = list("map" = user_map, "close_button" = user_close_button, "drawing_actions" = user_drawing_actions)
+		interactees[user] = list("map" = user_map, "close_button" = user_close_button, "drawing_actions" = user_drawing_actions, "ceiling_action" = ceiling_action)
 
 	user.client.using_main_tacmap = TRUE
 

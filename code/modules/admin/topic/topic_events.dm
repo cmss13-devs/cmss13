@@ -281,6 +281,13 @@
 
 			arm_equipment(spawned_human, job_name, TRUE, FALSE)
 
+			// Ensure created humans get proper minimap integration
+			var/obj/item/device/radio/headset/headset = spawned_human.wear_l_ear
+			if(!headset || !istype(headset, /obj/item/device/radio/headset))
+				headset = spawned_human.wear_r_ear
+			if(headset && istype(headset, /obj/item/device/radio/headset) && headset.minimap_type)
+				headset.add_minimap(spawned_human)
+
 			humans += spawned_human
 
 			if(strip_the_humans)

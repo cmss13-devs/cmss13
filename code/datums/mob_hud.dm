@@ -285,10 +285,11 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 	if(!user.client || user == target)
 		return
 	// Only show HUD if user is in either the Alamo or Normandy
-	if(!(istype(get_area(user), /area/shuttle/drop1) || istype(get_area(user), /area/shuttle/drop2)))
+	var/list/allowed_areas = list(/area/shuttle/drop1, /area/shuttle/drop2)
+	if(!is_type_in_list(get_area(user), allowed_areas))
 		return
 	// Do not show overlays if the target is also in a dropship area
-	if(istype(get_area(target), /area/shuttle/drop1) || istype(get_area(target), /area/shuttle/drop2))
+	if(is_type_in_list(get_area(target), allowed_areas))
 		return
 	// Marines: always add both overlays
 	if(istype(target, /mob/living/carbon/human) && target.faction == FACTION_MARINE)

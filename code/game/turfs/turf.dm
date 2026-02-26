@@ -46,6 +46,9 @@
 	 */
 	var/list/obj/effect/decal/cleanable/cleanables
 
+	/// Images representing decals that were merged into overlays to reduce sendmaps lag.
+	var/list/image/merged_decals
+
 	var/list/baseturfs = /turf/baseturf_bottom
 	var/changing_turf = FALSE
 	var/chemexploded = FALSE // Prevents explosion stacking
@@ -249,6 +252,10 @@
 		var/obj/effect/decal/cleanable/C = cleanables[cleanable_type]
 		if(C.overlayed_image)
 			overlays += C.overlayed_image
+
+/turf/proc/add_merged_decals()
+	for(var/image/merged_decal in merged_decals)
+		overlays += merged_decal
 
 /turf/proc/loc_to_string()
 	var/text
@@ -495,6 +502,7 @@
 	var/old_lighting_corner_NW = lighting_corner_NW
 	//hybrid lighting
 	var/list/old_hybrid_lights_affecting = hybrid_lights_affecting?.Copy()
+	var/list/old_merged_decals = merged_decals?.Copy()
 	var/old_directional_opacity = directional_opacity
 
 	changing_turf = TRUE
@@ -513,6 +521,7 @@
 
 	W.hybrid_lights_affecting = old_hybrid_lights_affecting
 	W.dynamic_lumcount = dynamic_lumcount
+	W.merged_decals = old_merged_decals
 
 	lighting_corner_NE = old_lighting_corner_NE
 	lighting_corner_SE = old_lighting_corner_SE
@@ -541,6 +550,7 @@
 		W.overlays += thisarea.lighting_effect
 
 	W.levelupdate()
+	add_merged_decals()
 	return W
 
 //If you modify this function, ensure it works correctly with lateloaded map templates.

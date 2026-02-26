@@ -21,6 +21,7 @@
 /turf/open/update_icon()
 	overlays.Cut()
 
+	add_merged_decals()
 	add_cleanable_overlays()
 
 	var/alist/auto_turf_dirs = alist()

@@ -12,6 +12,7 @@
 	overlays.Cut()
 
 	add_cleanable_overlays()
+	add_merged_decals()
 
 	//smooth wall stuff
 	if(!special_icon)

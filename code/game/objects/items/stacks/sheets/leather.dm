@@ -106,7 +106,7 @@
 /obj/item/stack/sheet/animalhide/attackby(obj/item/W, mob/user)
 	if(W.sharp)
 		//visible message on mobs is defined as visible_message(message, self_message, blind_message)
-		user.visible_message(SPAN_NOTICE("\the [usr] starts cutting hair off \the [src]."), SPAN_NOTICE("You start cutting the hair off \the [src]"), "You hear the sound of a knife rubbing against flesh.")
+		user.visible_message(SPAN_NOTICE("\The [usr] starts cutting hair off \the [src]."), SPAN_NOTICE("You start cutting the hair off \the [src]"), "You hear the sound of a knife rubbing against flesh.")
 		if(do_after(user,50, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			to_chat(user, SPAN_NOTICE("You cut the hair from this [src.singular_name]."))
 			//Try locating an existing stack on the tile and add to there if possible

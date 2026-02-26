@@ -392,6 +392,7 @@
 /datum/equipment_preset/goon/standard/hunted
 	name = "Weyland-Yutani Corporate Security Goon (Hunted)"
 	faction = FACTION_HUNTED_PMC
+	faction_group = FACTION_LIST_HUNTED
 
 /datum/equipment_preset/goon/standard/hunted/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc/corporate, WEAR_BODY)
@@ -418,6 +419,7 @@
 /datum/equipment_preset/goon/lead/hunted
 	name = "Weyland-Yutani Corporate Security Lead (Hunted)"
 	faction = FACTION_HUNTED_PMC
+	faction_group = FACTION_LIST_HUNTED
 
 /datum/equipment_preset/goon/lead/hunted/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc/corporate/lead, WEAR_BODY)

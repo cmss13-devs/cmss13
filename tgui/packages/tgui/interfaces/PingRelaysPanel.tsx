@@ -142,10 +142,23 @@ class PingApp extends Component<PingAppProps> {
   render() {
     const { act } = useBackend();
 
+    const sortedResults = this.results
+      .map((result, index) => ({ result, index }))
+      .sort((a, b) => {
+        const aValid = a.result.ping > -1 && a.result.error === null;
+        const bValid = b.result.ping > -1 && b.result.error === null;
+        if (aValid && bValid) {
+          return a.result.ping - b.result.ping;
+        }
+        if (aValid) return -1;
+        if (bValid) return 1;
+        return 0;
+      });
+
     return (
       <Stack direction="column" fill vertical>
-        {this.results.map((result, i) => (
-          <Stack.Item key={i} height={2}>
+        {sortedResults.map(({ result, index }) => (
+          <Stack.Item key={index} height={2}>
             <Button.Confirm
               fluid
               height={2}
@@ -153,7 +166,7 @@ class PingApp extends Component<PingAppProps> {
               confirmColor="caution"
               disabled={result.ping === -1 || result.error !== null}
               onConfirmChange={(clickedOnce) =>
-                this.handleConfirmChange(i, clickedOnce)
+                this.handleConfirmChange(index, clickedOnce)
               }
               onClick={() =>
                 act('connect', { url: result.url, desc: result.desc })
@@ -177,7 +190,7 @@ class PingApp extends Component<PingAppProps> {
                   </Flex.Item>
                   <Flex.Item>
                     <Box inline>
-                      {this.state.lastClickedIndex === i &&
+                      {this.state.lastClickedIndex === index &&
                       this.state.lastClickedState
                         ? `Connect via ${result.desc}?`
                         : result.desc}
@@ -195,7 +208,7 @@ class PingApp extends Component<PingAppProps> {
                         average: [200, 500],
                         bad: [500, 1000],
                       }}
-                      format={(x) => `${x}ms`}
+                      format={(x) => `${Math.round(x)}ms`}
                       inline
                     />
                   </Flex.Item>

@@ -401,11 +401,12 @@
 		var/max_x = WORLDMAXX_CUTOFF
 		var/max_y = WORLDMAXY_CUTOFF
 		for(var/area/area as anything in shuttle_areas)
-			for(var/turf/turf in area)
-				min_x = max(turf.x, min_x)
-				max_x = min(turf.x, max_x)
-				min_y = max(turf.y, min_y)
-				max_y = min(turf.y, max_y)
+			for(var/list/turf_list in area.get_zlevel_turf_lists())
+				for(var/turf/turf in turf_list)
+					min_x = max(turf.x, min_x)
+					max_x = min(turf.x, max_x)
+					min_y = max(turf.y, min_y)
+					max_y = min(turf.y, max_y)
 			CHECK_TICK
 
 		if(min_x == -1 || max_x == WORLDMAXX_CUTOFF)

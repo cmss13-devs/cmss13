@@ -1,5 +1,3 @@
-#define COMSIG_XENO_TAKE_DAMAGE "xeno_take_damage"
-
 /// from /mob/living/carbon/xenomorph/attack_alien()
 #define COMSIG_XENO_ALIEN_ATTACK "xeno_alien_attack"
 
@@ -98,3 +96,6 @@
 
 /// From /mob/living/carbon/human/death(cause, gibbed)
 #define COMSIG_XENO_REVEAL_TACMAP "xeno_reveal_tacmap"
+
+/// From /mob/living/carbon/xenomorph/larva/proc/chest_burst
+#define COMSIG_XENO_BURSTED "xeno_burst"

@@ -758,6 +758,9 @@
 
 		GLOB.round_statistics.log_round_statistics()
 
+	for(var/mob/mob as anything in GLOB.alive_human_list)
+		SEND_SIGNAL(mob, COMSIG_HUMAN_FINISHED_ROUND)
+
 	calculate_end_statistics()
 	show_end_statistics(end_icon)
 

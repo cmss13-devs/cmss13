@@ -228,7 +228,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 
 	var/joe_chance = trim(file2text("data/colonyjoechance.txt"))
 	if(joe_chance)
-		joe_chance = text2num(chance)
+		joe_chance = text2num(joe_chance)
 	else
 		joe_chance = 20
 		WRITE_FILE(file("data/colonyjoechance.txt"), joe_chance)

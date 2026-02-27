@@ -280,10 +280,8 @@ Additional game mode variables.
 
 //===================================================\\
 
-/datum/game_mode/proc/initialize_colony_joe(mob/living/carbon/human/new_predator, ignore_pred_num = FALSE)
-	predators[new_predator.username()] = list("Name" = new_predator.real_name, "Status" = "Alive")
-	if(!ignore_pred_num)
-		pred_current_num++
+/datum/game_mode/proc/initialize_colony_joe(mob/living/carbon/human/new_joe)
+	colony_joes[new_joe.username()] = list("Name" = new_joe.real_name, "Status" = "Alive")
 
 /datum/game_mode/proc/attempt_to_join_as_colony_joe(mob/joe_candidate)
 	var/mob/living/carbon/human/new_joe = transform_colony_joe(joe_candidate) //Initialized and ready.

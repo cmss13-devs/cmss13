@@ -19,6 +19,7 @@
 	var/build_state = BARRICADE_BSTATE_SECURED //Look at __game.dm for barricade defines
 	var/upgrade = null
 	var/refund_type = /obj/item/stack/sheet/metal
+	var/upgradable = TRUE
 
 	welder_lower_damage_limit = BARRICADE_DMG_HEAVY
 
@@ -91,6 +92,9 @@
 					return
 				if(upgraded)
 					to_chat(user, SPAN_NOTICE("This barricade is already upgraded."))
+					return
+				if(!upgradable)
+					to_chat(user, SPAN_WARNING("This type of fortification cannot be upgraded any further!"))
 					return
 				var/obj/item/stack/sheet/metal/metal = item
 				if(user.client?.prefs?.no_radials_preference)
@@ -301,5 +305,6 @@
 	stack_amount = 6
 	destroyed_stack_amount = 3
 	barricade_type = "new_plasteel"
+	upgradable = FALSE
 	repair_materials = list("plasteel" = 0.45)
 

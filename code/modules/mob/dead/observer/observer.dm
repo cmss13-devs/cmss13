@@ -125,10 +125,11 @@
 		var/datum/action/observer_action/new_action = new path()
 		new_action.give_to(src)
 
-	if(SSticker.mode && SSticker.mode.flags_round_type & MODE_PREDATOR)
-		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), src, SPAN_RED("This is a <B>PREDATOR ROUND</B>! If you are whitelisted, you may Join the Hunt!")), 2 SECONDS)
-	if(SSticker.mode && SSticker.mode.flags_round_type & MODE_COLONY_JOE)
-		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), src, SPAN_RED("Colony Working Joes are enabled this round! If you are whitelisted, you may join!")), 2 SECONDS)
+	if(SSticker.mode)
+		if(SSticker.mode.flags_round_type & MODE_PREDATOR)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), src, SPAN_RED("This is a <B>PREDATOR ROUND</B>! If you are whitelisted, you may Join the Hunt!")), 2 SECONDS)
+		if(SSticker.mode.flags_round_type & MODE_COLONY_JOE)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), src, SPAN_RED("Colony Working Joes are enabled this round! If you are whitelisted, you may join!")), 2 SECONDS)
 
 	verbs -= /mob/verb/pickup_item
 	verbs -= /mob/verb/pull_item

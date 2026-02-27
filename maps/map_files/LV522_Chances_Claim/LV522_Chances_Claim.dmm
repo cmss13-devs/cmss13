@@ -2682,8 +2682,8 @@
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
 "bbi" = (
-/obj/structure/closet/secure_closet/atmos_personal,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/cryopod/right,
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/lv522/indoors/lone_buildings/engineering)
 "bbk" = (
@@ -24547,6 +24547,11 @@
 /obj/item/prop/colony/used_flare,
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/north_east_street)
+"mRu" = (
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
+/turf/open/floor/prison,
+/area/lv522/indoors/lone_buildings/engineering)
 "mRx" = (
 /obj/structure/prop/dam/drill{
 	layer = 3.1;
@@ -25016,6 +25021,12 @@
 	},
 /turf/open/floor/prison/floor_marked,
 /area/lv522/outdoors/colony_streets/north_east_street)
+"neN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
+/turf/open/floor/prison,
+/area/lv522/indoors/lone_buildings/engineering)
 "neO" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -42427,7 +42438,10 @@
 /turf/open/floor/prison/darkpurplefull2,
 /area/lv522/indoors/a_block/dorms/glass)
 "vKF" = (
-/obj/structure/closet/secure_closet/atmos_personal,
+/obj/structure/machinery/cryopod/right{
+	layer = 3.1;
+	pixel_y = 13
+	},
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/lv522/indoors/lone_buildings/engineering)
 "vKH" = (
@@ -52378,8 +52392,8 @@ sXM
 rwM
 vxq
 bzL
-xdD
-rwM
+neN
+mRu
 wbi
 nJv
 hpq

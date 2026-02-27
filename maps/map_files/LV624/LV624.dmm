@@ -12492,7 +12492,11 @@
 /turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
 "fAs" = (
-/obj/item/tool/crowbar,
+/obj/structure/machinery/cryopod/right{
+	dir = 4;
+	layer = 3.1;
+	pixel_y = 13
+	},
 /turf/open/floor/dark,
 /area/lv624/lazarus/engineering)
 "fAz" = (
@@ -12624,6 +12628,8 @@
 	icon_state = "W";
 	pixel_x = -1
 	},
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
 /turf/open/floor/dark,
 /area/lv624/lazarus/engineering)
 "fLh" = (
@@ -12672,6 +12678,8 @@
 	pixel_x = -1;
 	pixel_y = 2
 	},
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
 /turf/open/floor/dark,
 /area/lv624/lazarus/engineering)
 "fQD" = (
@@ -18805,6 +18813,12 @@
 /obj/structure/platform_decoration/stone/runed_sandstone/east,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
+"sEM" = (
+/obj/structure/machinery/cryopod/right{
+	dir = 4
+	},
+/turf/open/floor/dark,
+/area/lv624/lazarus/engineering)
 "sET" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/decal/grass_overlay/grass1{
@@ -42812,7 +42826,7 @@ kvo
 mNO
 fFN
 aTM
-aTM
+sEM
 fAs
 aSX
 aVH

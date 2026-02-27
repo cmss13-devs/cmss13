@@ -29279,6 +29279,8 @@
 "bFW" = (
 /obj/effect/landmark/corpsespawner/colonist/random,
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/outpost/engi)
 "bFX" = (
@@ -40807,6 +40809,14 @@
 "eHp" = (
 /turf/open/floor/strata/blue1,
 /area/strata/interior/outpost/canteen)
+"eHG" = (
+/obj/structure/machinery/cryopod/right{
+	dir = 4;
+	layer = 3.1;
+	pixel_y = 13
+	},
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/interior/outpost/engi)
 "eHM" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -48727,6 +48737,12 @@
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/deep_jungle/south)
+"pfX" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/interior/outpost/engi)
 "pge" = (
 /obj/structure/flora/grass/tallgrass/jungle_alt/corner{
 	dir = 4
@@ -52895,8 +52911,8 @@
 /turf/open/floor/strata/white_cyan1/east,
 /area/strata/interior/bball)
 "uqY" = (
-/obj/structure/surface/rack{
-	color = "#98a3ab"
+/obj/structure/machinery/cryopod/right{
+	dir = 4
 	},
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/outpost/engi)
@@ -77721,7 +77737,7 @@ awa
 bDj
 aQV
 bFW
-bFA
+pfX
 bXq
 oKo
 ceI
@@ -77896,7 +77912,7 @@ awc
 bDj
 bFA
 uqY
-uqY
+eHG
 bXq
 aUS
 xYB

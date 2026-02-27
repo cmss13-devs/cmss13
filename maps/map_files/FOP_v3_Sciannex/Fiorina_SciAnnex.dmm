@@ -1610,6 +1610,11 @@
 	},
 /turf/open/floor/prison/whitegreen/west,
 /area/fiorina/station/medbay)
+"aWJ" = (
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
+/turf/open/floor/prison/darkbrown2/north,
+/area/fiorina/maintenance)
 "aWR" = (
 /obj/structure/platform/metal/almayer/north,
 /turf/open/floor/plating/prison,
@@ -15540,6 +15545,12 @@
 "lNC" = (
 /turf/open/floor/prison/yellowcorner,
 /area/fiorina/station/lowsec/east)
+"lND" = (
+/obj/structure/machinery/cryopod/right{
+	dir = 4
+	},
+/turf/open/space,
+/area/fiorina/oob)
 "lNP" = (
 /obj/structure/bed/roller,
 /turf/open/floor/prison,
@@ -17446,6 +17457,9 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/civres_blue)
 "nrn" = (
+/obj/structure/machinery/cryopod/right{
+	dir = 4
+	},
 /turf/open/floor/prison/darkbrown2/northeast,
 /area/fiorina/maintenance)
 "nrU" = (
@@ -20300,6 +20314,11 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/transit_hub)
 "pxL" = (
+/obj/structure/machinery/cryopod/right{
+	dir = 4;
+	layer = 3.1;
+	pixel_y = 13
+	},
 /turf/open/floor/prison/darkbrown2/east,
 /area/fiorina/maintenance)
 "pxX" = (
@@ -25021,6 +25040,11 @@
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/station/chapel)
+"tgH" = (
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/maintenance)
 "tgK" = (
 /obj/structure/machinery/landinglight/ds1/delayone,
 /turf/open/floor/prison/darkyellowfull2/east,
@@ -33617,7 +33641,7 @@ bQM
 bQM
 bQM
 bQM
-bQM
+lND
 bQM
 bQM
 bQM
@@ -56736,8 +56760,8 @@ vZX
 vZX
 vZX
 jwc
-qsF
-kTs
+aWJ
+tgH
 gfo
 gfo
 ivK

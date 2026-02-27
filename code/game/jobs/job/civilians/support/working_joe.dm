@@ -73,16 +73,17 @@
 	spawn_positions = 0
 	allow_additional = TRUE
 	scaled = FALSE
+	gear_preset = /datum/equipment_preset/synth/working_joe/colony
 
 /datum/job/civilian/working_joe/colony/handle_job_options(option)
-	standard = TRUE
-	gear_preset = /datum/equipment_preset/synth/working_joe/colony
+	return
 
 /datum/job/civilian/working_joe/colony/generate_entry_message(mob/living/carbon/human/H)
 	. = {"You are a <a href='[generate_wiki_link()]'>Colony Working Joe.</a> You are held to a higher standard and are required to obey not only the Server Rules but Roleplay Expectations and Synthetic Rules. Your primary task is to maintain the cleanliness of the colony, putting things in their proper place. Alternatively, your primary task may be to assist with manual labor in limited capacity, or clerical duties. Your capacities are limited, but you have all the equipment you need, and the central AI has a plan! Stay in character at all times. Use the ARTEMIS link to communicate with your uplink!"}
 
 /datum/job/civilian/working_joe/colony/announce_entry_message(mob/living/carbon/human/H)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(ares_artemis_talk), "[H.real_name] has been activated."), 1.5 SECONDS)
+	return ..()
 
 /obj/effect/landmark/start/working_joe/colony
 	name = JOB_COLONY_JOE

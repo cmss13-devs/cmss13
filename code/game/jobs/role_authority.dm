@@ -231,6 +231,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		chance = text2num(chance)
 	else
 		chance = 20
+		WRITE_FILE(file("data/colonyjoechance.txt"), chance)
 
 	if(prob(chance) && !Check_WO())
 		SSticker.mode.flags_round_type |= MODE_COLONY_JOE

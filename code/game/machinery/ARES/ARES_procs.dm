@@ -136,7 +136,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 			return FALSE
 		artemis.broadcast(ai, broadcast_message)
 	for(var/mob/listener in (GLOB.human_mob_list + GLOB.dead_mob_list))
-		if(listener.hear_apollo())//Only plays sound to mobs and not observers, to reduce spam.
+		if(listener.hear_artemis())//Only plays sound to mobs and not observers, to reduce spam.
 			playsound_client(listener.client, sound('sound/misc/interference.ogg'), listener, vol = 45)
 
 /proc/ares_can_interface()

@@ -38,6 +38,7 @@
 	icon_state = "ppo_armor"
 	item_state = "ppo_armor"
 	item_state_slots = list(WEAR_JACKET = "ppo_armor")
+	uniform_restricted = null
 	storage_slots = 1
 
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW

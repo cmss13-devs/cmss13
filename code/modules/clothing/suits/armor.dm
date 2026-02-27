@@ -73,6 +73,7 @@
 	armor_bio = CLOTHING_ARMOR_LOW
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
+	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/dutch)
 
 /obj/item/clothing/suit/armor/vest/security
 	name = "Wey-Yu security armor"
@@ -322,6 +323,7 @@
 		/obj/item/weapon/sword,
 		/obj/item/device/flashlight,
 	)
+	uniform_restricted = list(/obj/item/clothing/under/tunic)
 	slowdown = SLOWDOWN_ARMOR_SUPER_LIGHT
 
 /obj/item/clothing/suit/armor/roman/centurion

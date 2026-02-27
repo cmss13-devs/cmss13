@@ -58,6 +58,7 @@
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
 	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_LEGS|BODY_FLAG_ARMS|BODY_FLAG_FEET
+	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/pmc/apesuit)
 	item_state_slots = list(WEAR_JACKET = "ape_suit")
 	unacidable = TRUE
 	flags_marine_armor = null

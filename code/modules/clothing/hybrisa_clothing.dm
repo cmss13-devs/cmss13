@@ -558,6 +558,7 @@
 	icon_state = "sci_expedition"
 	item_state = "sci_expedition"
 	slowdown = 0
+	uniform_restricted = null
 
 /obj/item/clothing/suit/bio_suit/wy_bio/Initialize()
 	. = ..()
@@ -590,6 +591,7 @@
 	)
 	icon_state = "sci_expedition_synth"
 	item_state = "sci_expedition_synth"
+	uniform_restricted = null
 
 /////////////////////// Oversuits ///////////////////////
 ////////////////////////////////////////////////////////
@@ -606,6 +608,7 @@
 	)
 	icon_state = "firefighter_oversuit"
 	item_state = "firefighter_oversuit"
+	uniform_restricted = null
 	gas_transfer_coefficient = 0.90
 	fire_intensity_resistance = BURN_LEVEL_TIER_1
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
@@ -679,6 +682,7 @@
 	desc = "A rugged, no-frills fire-resistant overcoat issued to UPP industrial and emergency crews. Based on the PyroTex LT design but using cheaper, domestically produced materials, it offers basic protection against heat and debris at the cost of weight and comfort."
 	icon_state = "upp_firefighter_alt"
 	item_state = "upp_firefighter_alt"
+	uniform_restricted = FALSE
 
 /obj/item/clothing/suit/storage/marine/light/vest/fire_light/upp/alt
 	icon_state = "upp_firefighter"
@@ -741,6 +745,7 @@
 	)
 	icon_state = "kellandmining_oversuit"
 	item_state = "kellandmining_oversuit"
+	uniform_restricted = null
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_LOW
@@ -786,6 +791,7 @@
 	)
 	icon_state = "kellandmining_alt_oversuit"
 	item_state = "kellandmining_alt_oversuit"
+	uniform_restricted = null
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_LOW
@@ -833,6 +839,7 @@
 	)
 	icon_state = "paramedic_green_oversuit"
 	item_state = "paramedic_green_oversuit"
+	uniform_restricted = null
 
 /obj/item/clothing/suit/hybrisa/EMT_red_utility
 	name = "\improper EMT - Paramedic utility fatigues"
@@ -843,6 +850,7 @@
 	)
 	icon_state = "paramedic_redblack_oversuit"
 	item_state = "paramedic_redblack_oversuit"
+	uniform_restricted = null
 
 // Sanitation
 
@@ -855,6 +863,7 @@
 	)
 	icon_state = "sanitation_worker_oversuit"
 	item_state = "sanitation_worker_oversuit"
+	uniform_restricted = null
 
 // Engineer Utility Oversuit
 
@@ -867,6 +876,7 @@
 	)
 	icon_state = "engineer_worker_oversuit"
 	item_state = "engineer_worker_oversuit"
+	uniform_restricted = null
 
 /obj/item/clothing/suit/hybrisa/engineering_utility_oversuit/alt
 	icon_state = "engineer_worker_alt_oversuit"
@@ -883,6 +893,7 @@
 	)
 	icon_state = "civilian_pilot_jacket"
 	item_state = "civilian_pilot_jacket"
+	uniform_restricted = null
 
 // Executive Trench-coat
 
@@ -895,6 +906,7 @@
 	)
 	icon_state = "wy_expensive_fur_trenchcoat"
 	item_state = "wy_expensive_fur_trenchcoat"
+	uniform_restricted = null
 
 /obj/item/clothing/suit/storage/CMB/hybrisa/fur_lined_trench_coat/alt
 	icon_state = "wy_expensive_fur_trenchcoat_alt"
@@ -914,6 +926,7 @@
 	)
 	icon_state = "police_jacket"
 	item_state = "police_jacket"
+	uniform_restricted = null
 
 // CMB Vest
 
@@ -926,6 +939,7 @@
 	)
 	icon_state = "police_ballistic_armor"
 	item_state = "police_ballistic_armor"
+	uniform_restricted = null
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
@@ -940,6 +954,7 @@
 	desc = "An general-use, unmarked armored vest that protects against some damage."
 	icon_state = "generic_ballistic_armor"
 	item_state = "generic_ballistic_armor"
+	uniform_restricted = null
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
@@ -1173,6 +1188,7 @@
 	)
 	icon_state = "nspa_police_ballistic_armor"
 	item_state = "nspa_police_ballistic_armor"
+	uniform_restricted = null
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
@@ -1191,6 +1207,7 @@
 	)
 	icon_state = "nspa_police_jacket"
 	item_state = "nspa_police_jacket"
+	uniform_restricted = null
 
 /obj/item/clothing/suit/storage/CMB/hybrisa/nspa_formal_jacket
 	name = "\improper NSPA police formal jacket"
@@ -1201,6 +1218,7 @@
 	)
 	icon_state = "nspa_police_formal_jacket"
 	item_state = "nspa_police_formal_jacket"
+	uniform_restricted = null
 
 /obj/item/clothing/suit/storage/CMB/hybrisa/nspa_hazard_jacket
 	name = "\improper NSPA high-vis jacket"
@@ -1211,6 +1229,7 @@
 	)
 	icon_state = "nspa_hazard_jacket"
 	item_state = "nspa_hazard_jacket"
+	uniform_restricted = null
 
 /obj/item/clothing/suit/storage/hazardvest/nspa_hazard
 	name = "NSPA hazard vest"

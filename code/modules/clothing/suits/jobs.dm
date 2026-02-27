@@ -156,6 +156,7 @@
 	icon_state = "trench_tan"
 	item_state = "trench_tan"
 	blood_overlay_type = "suit"
+	uniform_restricted = null
 
 /obj/item/clothing/suit/storage/CMB/trenchcoat/brown
 

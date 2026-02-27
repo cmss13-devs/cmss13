@@ -189,9 +189,6 @@
 "ix" = (
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzII)
-"iZ" = (
-/turf/closed/wall/r_wall/prison_unmeltable,
-/area/fiorina/station/security/wardens)
 "jj" = (
 /obj/structure/platform/metal/kutjevo_smooth,
 /turf/open/space,
@@ -505,7 +502,7 @@
 	pixel_y = -7
 	},
 /turf/closed/wall/r_wall/prison_unmeltable,
-/area/fiorina/station/security/wardens)
+/area/fiorina/oob)
 "wb" = (
 /obj/structure/barricade/metal/wired{
 	dir = 8
@@ -571,7 +568,7 @@
 "Az" = (
 /obj/structure/extinguisher_cabinet,
 /turf/closed/wall/r_wall/prison_unmeltable,
-/area/fiorina/lz/near_lzII)
+/area/fiorina/oob)
 "AH" = (
 /obj/item/device/flashlight/lamp/tripod,
 /turf/open/floor/prison,
@@ -982,9 +979,6 @@
 "VO" = (
 /turf/open/floor/prison/blue/north,
 /area/fiorina/station/power_ring)
-"VT" = (
-/turf/closed/wall/r_wall/prison_unmeltable,
-/area/fiorina/lz/near_lzII)
 "VX" = (
 /obj/structure/barricade/metal/wired{
 	dir = 1
@@ -1016,14 +1010,11 @@
 "Ww" = (
 /obj/structure/window/framed/prison/reinforced/hull,
 /turf/open/floor/plating/prison,
-/area/fiorina/lz/near_lzII)
+/area/fiorina/oob)
 "WT" = (
 /obj/item/newspaper,
 /turf/open/floor/prison/red/east,
 /area/fiorina/lz/near_lzII)
-"Xb" = (
-/turf/closed/wall/r_wall/prison_unmeltable,
-/area/fiorina/station/power_ring)
 "XP" = (
 /obj/structure/bed/sofa/vert/grey/top,
 /turf/open/floor/prison/floor_plate,
@@ -1249,11 +1240,11 @@ la
 Po
 HC
 dK
-iZ
-iZ
-iZ
-iZ
-iZ
+qG
+qG
+qG
+qG
+qG
 "}
 (4,1,1) = {"
 Ru
@@ -1298,11 +1289,11 @@ zJ
 zJ
 Iw
 PC
-iZ
+qG
 KB
 KB
 KB
-iZ
+qG
 "}
 (5,1,1) = {"
 Ru
@@ -1344,10 +1335,10 @@ bD
 lz
 lz
 bD
-iZ
-iZ
-iZ
-iZ
+qG
+qG
+qG
+qG
 KB
 ij
 KB
@@ -1393,7 +1384,7 @@ qd
 Gn
 Gn
 Th
-VT
+qG
 KB
 KB
 KB
@@ -1589,11 +1580,11 @@ qd
 bg
 bg
 Th
-VT
+qG
 Ww
 Ww
 Ww
-VT
+qG
 KB
 KB
 ij
@@ -1642,8 +1633,8 @@ VH
 bK
 bK
 bK
-VT
-VT
+qG
+qG
 KB
 KB
 "}
@@ -1693,8 +1684,8 @@ bg
 bg
 bg
 Az
-VT
-VT
+qG
+qG
 "}
 (13,1,1) = {"
 Ru
@@ -1741,9 +1732,9 @@ ix
 xw
 Bh
 bg
-VT
-VT
-VT
+qG
+qG
+qG
 "}
 (14,1,1) = {"
 Ru
@@ -1790,9 +1781,9 @@ hf
 xw
 xw
 bg
-VT
-VT
-VT
+qG
+qG
+qG
 "}
 (15,1,1) = {"
 Ru
@@ -1839,7 +1830,7 @@ hf
 xw
 xw
 bg
-VT
+qG
 qG
 qG
 "}
@@ -2525,7 +2516,7 @@ xw
 xw
 xw
 bg
-VT
+qG
 qG
 qG
 "}
@@ -2552,10 +2543,10 @@ xw
 xw
 xw
 bg
-VT
-VT
-VT
-VT
+qG
+qG
+qG
+qG
 mp
 Tz
 ri
@@ -2574,9 +2565,9 @@ bg
 xw
 bg
 bg
-VT
-VT
-VT
+qG
+qG
+qG
 "}
 (31,1,1) = {"
 ga
@@ -2601,10 +2592,10 @@ uL
 yW
 jx
 uf
-VT
+qG
 KB
 ij
-VT
+qG
 bg
 bg
 bg
@@ -2622,8 +2613,8 @@ bg
 bg
 bg
 bg
-VT
-VT
+qG
+qG
 ij
 ij
 "}
@@ -2644,34 +2635,34 @@ qY
 VO
 Fs
 mZ
-Xb
-Xb
+qG
+qG
 Az
 Ww
 Ww
 Ww
-VT
+qG
 KB
 ij
-VT
+qG
 JY
 AH
 bg
 bg
 vn
 NO
-VT
+qG
 Ww
 Ww
 Ww
-VT
+qG
 Ww
 Ww
-VT
+qG
 Ww
 Ww
 Ww
-VT
+qG
 ij
 ij
 ij
@@ -2694,22 +2685,22 @@ VO
 Fs
 mZ
 gS
-Xb
-VT
+qG
+qG
 KB
 ij
 KB
 ij
 KB
 ij
-VT
+qG
 Ww
 Ww
 Ww
 Ww
 Ww
 Ww
-VT
+qG
 ij
 ij
 jj

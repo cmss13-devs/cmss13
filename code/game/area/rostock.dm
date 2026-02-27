@@ -29,6 +29,12 @@
 	///Whether this area is additive or multiplicative towards evacuation progress
 	var/hijack_evacuation_type = EVACUATION_TYPE_NONE
 
+/area/rostock/Initialize(mapload, ...)
+	. = ..()
+
+	if(hijack_evacuation_area)
+		SShijack.progress_areas[src] = power_equip
+
 // Upper Deck Misc
 /area/rostock/upper_deck
 	fake_zlevel = 1 // upperdeck

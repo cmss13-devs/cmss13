@@ -135,7 +135,7 @@ SUBSYSTEM_DEF(hijack)
 
 	if(!resumed)
 		current_run = progress_areas.Copy()
-	if(GLOB.master_mode != /datum/game_mode/colonialmarines/upp::name)
+	if(GLOB.master_mode != GAMEMODE_UPP_DISTRESS_SIGNAL)
 		for(var/area/almayer/cycled_area as anything in current_run)
 			current_run -= cycled_area
 

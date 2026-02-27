@@ -226,6 +226,15 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	fdel("data/predchance.txt")
 	WRITE_FILE(file("data/predchance.txt"), chance)
 
+	chance = trim(file2text("data/colonyjoechance.txt"))
+	if(chance)
+		chance = text2num(chance)
+	else
+		chance = 20
+
+	if(prob(chance) && !Check_WO())
+		SSticker.mode.flags_round_type |= MODE_COLONY_JOE
+
 	// Assign the roles, this time for real, respecting limits we have established.
 	var/list/roles_left = assign_roles(temp_roles_for_mode, unassigned_players)
 

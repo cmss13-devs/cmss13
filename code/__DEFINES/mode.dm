@@ -67,6 +67,7 @@
 #define MODE_RANDOM_HIVE (1<<12)// Makes Join-as-Xeno choose a hive to join as burrowed larva at random rather than at user's input..
 #define MODE_THUNDERSTORM (1<<13)// Enables thunderstorm effects on maps that are compatible with it. (Lit exterior tiles, rain effects)
 #define MODE_FACTION_CLASH (1<<14)// Disables scopes, sniper sentries, OBs, shooting corpses, dragging enemy corpses, stripping enemy corpses, increase armor bullet/bomb/internal damage protection
+#define MODE_COLONY_JOE (1<<15) // Enables joes spawning on the colony
 
 #define ROUNDSTATUS_FOG_DOWN 1
 #define ROUNDSTATUS_PODDOORS_OPEN 2
@@ -128,7 +129,7 @@ GLOBAL_LIST_INIT(ROLES_NOSPAWN, list(JOB_POLICE_HG))
 
 //Groundside roles
 GLOBAL_LIST_INIT(ROLES_XENO, list(JOB_XENOMORPH_QUEEN, JOB_XENOMORPH))
-GLOBAL_LIST_INIT(ROLES_WHITELISTED, list(JOB_SYNTH_SURVIVOR, JOB_CO_SURVIVOR, JOB_PREDATOR, JOB_FAX_RESPONDER))
+GLOBAL_LIST_INIT(ROLES_WHITELISTED, list(JOB_SYNTH_SURVIVOR, JOB_CO_SURVIVOR, JOB_PREDATOR, JOB_FAX_RESPONDER, JOB_COLONY_JOE))
 GLOBAL_LIST_INIT(ROLES_SPECIAL, list(JOB_SURVIVOR))
 
 GLOBAL_LIST_INIT(ROLES_USCM, ROLES_CIC + GLOB.ROLES_POLICE + GLOB.ROLES_AUXIL_SUPPORT + GLOB.ROLES_MISC + GLOB.ROLES_ENGINEERING + GLOB.ROLES_REQUISITION + GLOB.ROLES_MEDICAL + GLOB.ROLES_MARINES - ROLES_WO - ROLES_NOSPAWN)

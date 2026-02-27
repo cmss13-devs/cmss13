@@ -67,6 +67,28 @@
 	if(SSticker.mode)
 		SSticker.mode.initialize_joe(M)
 
+/datum/job/civilian/working_joe/colony
+	title = JOB_COLONY_JOE
+	total_positions = 3
+	spawn_positions = 0
+	allow_additional = TRUE
+	scaled = FALSE
+
+/datum/job/civilian/working_joe/colony/handle_job_options(option)
+	standard = TRUE
+	gear_preset = /datum/equipment_preset/synth/working_joe
+
+/datum/job/civilian/working_joe/colony/generate_entry_message(mob/living/carbon/human/H)
+	. = {"You are a <a href='[generate_wiki_link()]'>Colony Working Joe.</a> You are held to a higher standard and are required to obey not only the Server Rules but Marine Law, Roleplay Expectations and Synthetic Rules. Your primary task is to maintain the cleanliness of the colony, putting things in their proper place. Alternatively, your primary task may be to assist with manual labor in limited capacity, or clerical duties. Your capacities are limited, but you have all the equipment you need, and the central AI has a plan! Stay in character at all times. Use the APOLLO link to communicate with your uplink!"}
+
+/datum/job/civilian/working_joe/colony/announce_entry_message(mob/living/carbon/human/H)
+	return ..()
+
+/obj/effect/landmark/start/working_joe/colony
+	name = JOB_COLONY_JOE
+	icon_state = "wj_spawn"
+	job = /datum/job/civilian/working_joe/colony
+
 /datum/job/antag/upp/dzho_automaton
 	title = JOB_UPP_JOE
 	total_positions = 3 //Number is actually based on information from Colonial Marines_Operations Manual, 1IVAN/3 starts to lag if it is connected to more than 3.

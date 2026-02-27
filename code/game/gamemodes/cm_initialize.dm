@@ -311,7 +311,7 @@ Additional game mode variables.
 
 	if(!(flags_round_type & MODE_COLONY_JOE))
 		if(show_warning)
-			to_chat(joe_candidate, SPAN_WARNING("There are no Colony Working Joes! Maybe the next one."))
+			to_chat(joe_candidate, SPAN_WARNING("There are no Colony Working Joes this round! Maybe the next one."))
 		return FALSE
 
 	if(joe_candidate.key in colony_joes)

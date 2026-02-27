@@ -226,15 +226,14 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	fdel("data/predchance.txt")
 	WRITE_FILE(file("data/predchance.txt"), chance)
 
-	chance = null
-	chance = trim(file2text("data/colonyjoechance.txt"))
-	if(chance)
-		chance = text2num(chance)
+	var/joe_chance = trim(file2text("data/colonyjoechance.txt"))
+	if(joe_chance)
+		joe_chance = text2num(chance)
 	else
-		chance = 20
-		WRITE_FILE(file("data/colonyjoechance.txt"), chance)
+		joe_chance = 20
+		WRITE_FILE(file("data/colonyjoechance.txt"), joe_chance)
 
-	if(prob(chance) && !Check_WO())
+	if(prob(joe_chance) && !Check_WO())
 		SSticker.mode.flags_round_type |= MODE_COLONY_JOE
 
 	// Assign the roles, this time for real, respecting limits we have established.

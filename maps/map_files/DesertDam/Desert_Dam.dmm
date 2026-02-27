@@ -34346,6 +34346,12 @@
 	},
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/building/administration/hallway)
+"ggO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/engine_west_wing)
 "ggR" = (
 /obj/effect/blocker/water/toxic/Group_2,
 /turf/open/desert/desert_shore/desert_shore1/north,
@@ -43599,6 +43605,10 @@
 "jJc" = (
 /obj/structure/machinery/light{
 	dir = 8
+	},
+/obj/structure/machinery/cryopod/right{
+	layer = 3.1;
+	pixel_y = 13
 	},
 /turf/open/floor/prison/darkyellow2/west,
 /area/desert_dam/interior/dam_interior/engine_west_wing)
@@ -54459,6 +54469,8 @@
 /area/desert_dam/exterior/valley/valley_medical)
 "nYX" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
 /turf/open/floor/prison/darkyellowcorners2/east,
 /area/desert_dam/interior/dam_interior/engine_west_wing)
 "nZa" = (
@@ -67908,7 +67920,7 @@
 	},
 /area/desert_dam/interior/dam_interior/hanger)
 "thP" = (
-/obj/item/device/flashlight,
+/obj/structure/machinery/cryopod/right,
 /turf/open/floor/prison/darkyellow2/northwest,
 /area/desert_dam/interior/dam_interior/engine_west_wing)
 "tie" = (
@@ -74150,6 +74162,14 @@
 	},
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/purification)
+"vEc" = (
+/obj/structure/machinery/cryopod/right{
+	dir = 4;
+	layer = 3.1;
+	pixel_y = 13
+	},
+/turf/closed/wall/rock/orange,
+/area/desert_dam/exterior/rock/level1)
 "vEe" = (
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating,
@@ -82571,7 +82591,7 @@ rfS
 rfS
 rfS
 rfS
-rfS
+vEc
 rfS
 rfS
 rfS
@@ -158262,7 +158282,7 @@ ioy
 ioy
 wuf
 nYX
-nyi
+ggO
 aWI
 una
 kNB

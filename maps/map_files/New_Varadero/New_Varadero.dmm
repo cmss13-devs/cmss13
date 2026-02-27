@@ -5284,6 +5284,11 @@
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/dirt,
 /area/varadero/exterior/eastbeach)
+"ebk" = (
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
+/turf/open/floor/shiva/north,
+/area/varadero/interior/electrical)
 "ebm" = (
 /obj/structure/stairs/perspective{
 	color = "#b29082";
@@ -17942,7 +17947,11 @@
 /turf/open/floor/interior/plastic/alt,
 /area/varadero/interior/laundry)
 "oBP" = (
-/obj/structure/closet/emcloset,
+/obj/structure/machinery/cryopod/right{
+	dir = 4;
+	layer = 3.1;
+	pixel_y = 13
+	},
 /turf/open/floor/shiva/yellow/east,
 /area/varadero/interior/electrical)
 "oBQ" = (
@@ -25576,6 +25585,12 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/north)
+"uAv" = (
+/obj/structure/machinery/cryopod/right{
+	dir = 4
+	},
+/turf/open/floor/shiva/yellow/east,
+/area/varadero/interior/electrical)
 "uAM" = (
 /obj/structure/largecrate/random/barrel/yellow,
 /turf/open/gm/dirt,
@@ -29719,6 +29734,7 @@
 /area/varadero/interior/research)
 "xPV" = (
 /obj/structure/machinery/light,
+/obj/structure/closet/emcloset,
 /turf/open/floor/shiva/yellow,
 /area/varadero/interior/electrical)
 "xQJ" = (
@@ -53687,8 +53703,8 @@ mvi
 kCA
 sHs
 cbq
-kCA
-kCA
+ebk
+ebk
 pkX
 nsl
 kCA
@@ -53869,7 +53885,7 @@ oIC
 jtU
 jtU
 qId
-jtU
+uAv
 oBP
 kLA
 vnH

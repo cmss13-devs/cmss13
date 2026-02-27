@@ -9773,6 +9773,11 @@
 /obj/item/storage/firstaid/fire,
 /turf/open/shuttle/can_surgery/black,
 /area/shiva/interior/aerodrome)
+"foM" = (
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/medseceng)
 "fpp" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/auto_turf/ice/layer0,
@@ -15260,10 +15265,7 @@
 /turf/open/floor/shiva/red/southwest,
 /area/shiva/interior/colony/medseceng)
 "lPh" = (
-/obj/structure/surface/rack,
-/obj/item/explosive/grenade/custom/metal_foam,
-/obj/item/explosive/grenade/custom/metal_foam,
-/obj/item/device/flashlight,
+/obj/structure/machinery/cryopod/right,
 /turf/open/floor/shiva/yellow/west,
 /area/shiva/interior/colony/medseceng)
 "lPC" = (
@@ -16250,6 +16252,13 @@
 	},
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_lz2)
+"mWj" = (
+/obj/structure/machinery/cryopod/right{
+	layer = 3.1;
+	pixel_y = 13
+	},
+/turf/open/floor/shiva/yellow/west,
+/area/shiva/interior/colony/medseceng)
 "mWw" = (
 /obj/structure/machinery/light/double,
 /turf/open/floor/shiva/redfull/west,
@@ -54242,7 +54251,7 @@ axG
 aDn
 sOg
 lPh
-cYa
+mWj
 aVF
 cYa
 cYa
@@ -54405,8 +54414,8 @@ hdF
 axG
 aek
 vhG
-agh
-agh
+foM
+foM
 vcx
 agh
 agh

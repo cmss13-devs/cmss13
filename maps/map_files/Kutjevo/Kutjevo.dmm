@@ -3116,6 +3116,11 @@
 	},
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/colony_central/mine_elevator)
+"cgW" = (
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/interior/power)
 "cht" = (
 /obj/item/ammo_magazine/shotgun/buckshot,
 /turf/open/floor/kutjevo/tan/multi_tiles,
@@ -5962,6 +5967,13 @@
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/Northwest_Colony)
+"gzK" = (
+/obj/structure/machinery/cryopod/right{
+	layer = 3.1;
+	pixel_y = 13
+	},
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/interior/power)
 "gAt" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/flora/pottedplant{
@@ -8544,6 +8556,10 @@
 	},
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/exterior/complex_border/med_rec)
+"kMd" = (
+/obj/structure/machinery/cryopod/right,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/interior/power)
 "kMx" = (
 /turf/open/floor/coagulation/icon7_8_2,
 /area/kutjevo/interior/power/comms)
@@ -25716,8 +25732,8 @@ psz
 vdC
 xHm
 cvm
-fRI
-hQj
+kMd
+gzK
 lAT
 xgV
 xHm
@@ -25883,8 +25899,8 @@ hQj
 fCz
 nLJ
 dzD
-hQj
-hQj
+cgW
+cgW
 hQj
 xgV
 pnM

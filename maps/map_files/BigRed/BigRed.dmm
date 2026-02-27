@@ -14177,8 +14177,8 @@
 /turf/open/floor/almayer/test_floor4,
 /area/bigredv2/outside/engineering)
 "bok" = (
-/obj/structure/largecrate/random,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/cryopod/right,
 /turf/open/floor/darkyellow2/west,
 /area/bigredv2/outside/engineering)
 "boq" = (
@@ -14244,6 +14244,8 @@
 /area/bigredv2/outside/engineering)
 "boK" = (
 /obj/item/trash/kepler/flamehot,
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
 /turf/open/floor/dark,
 /area/bigredv2/outside/engineering)
 "boL" = (
@@ -35959,6 +35961,12 @@
 /obj/structure/flora/grass/desert/lightgrass_1,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/filtration_plant)
+"vaO" = (
+/obj/effect/landmark/crap_item,
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
+/turf/open/floor/dark,
+/area/bigredv2/outside/engineering)
 "vbi" = (
 /turf/open/floor/darkpurple2/northeast,
 /area/bigredv2/caves/lambda/research)
@@ -36557,6 +36565,13 @@
 "vBI" = (
 /turf/open/mars_cave/mars_cave_9,
 /area/bigredv2/outside/n)
+"vBV" = (
+/obj/structure/machinery/cryopod/right{
+	layer = 3.1;
+	pixel_y = 13
+	},
+/turf/open/floor/darkyellow2/west,
+/area/bigredv2/outside/engineering)
 "vCd" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/twohanded/lungemine{
@@ -52295,7 +52310,7 @@ bmR
 bnr
 bnr
 bok
-bnr
+vBV
 bpi
 mfQ
 ayr
@@ -52507,7 +52522,7 @@ bmm
 bmS
 tTI
 tTI
-iQC
+vaO
 boK
 nVq
 cKu

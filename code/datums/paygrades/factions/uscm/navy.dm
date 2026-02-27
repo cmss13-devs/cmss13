@@ -72,7 +72,7 @@
 /datum/paygrade/navy/e9
 	paygrade = PAY_SHORT_NE9
 	name = "Chief Master Sergeant"
-	prefix = "MCPO."
+	prefix = "CMSgt."
 	rank_pin = /obj/item/clothing/accessory/ranks/navy/e9
 	ranking = 9
 

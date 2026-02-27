@@ -54,6 +54,7 @@
 
 /datum/job/civilian/working_joe/announce_entry_message(mob/living/carbon/human/H)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(ares_apollo_talk), "[H.real_name] has been activated."), 1.5 SECONDS)
+	return ..()
 
 /obj/effect/landmark/start/working_joe
 	name = JOB_WORKING_JOE
@@ -82,7 +83,6 @@
 
 /datum/job/civilian/working_joe/colony/announce_entry_message(mob/living/carbon/human/H)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(ares_artemis_talk), "[H.real_name] has been activated."), 1.5 SECONDS)
-	return ..()
 
 /obj/effect/landmark/start/working_joe/colony
 	name = JOB_COLONY_JOE

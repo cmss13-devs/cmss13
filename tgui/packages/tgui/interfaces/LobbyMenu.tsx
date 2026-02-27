@@ -39,7 +39,7 @@ type LobbyData = {
   confirmation_message?: string | string[];
 
   upp_enabled: BooleanLike;
-  uscm_enabled: BooleonLike;
+  uscm_enabled: BooleanLike;
   xenomorph_enabled: BooleanLike;
   predator_enabled: BooleanLike;
   fax_responder_enabled: BooleanLike;

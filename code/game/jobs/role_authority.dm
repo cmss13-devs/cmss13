@@ -226,6 +226,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	fdel("data/predchance.txt")
 	WRITE_FILE(file("data/predchance.txt"), chance)
 
+	chance = null
 	chance = trim(file2text("data/colonyjoechance.txt"))
 	if(chance)
 		chance = text2num(chance)

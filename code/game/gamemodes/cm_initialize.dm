@@ -293,9 +293,6 @@ Additional game mode variables.
 	if(joe_candidate)
 		joe_candidate.moveToNullspace() //Nullspace it for garbage collection later.
 
-/datum/game_mode/proc/calculate_colony_joe_max()
-	return floor(length(GLOB.player_list) / pred_per_players) + pred_count_modifier + pred_start_count
-
 /datum/game_mode/proc/check_colony_joe_late_join(mob/joe_candidate, show_warning = TRUE)
 	if(!joe_candidate?.client)
 		return

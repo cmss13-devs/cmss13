@@ -182,6 +182,16 @@
 	key = "6"
 	flags = RESTRICTED|HIVEMIND
 
+/datum/language/artemis
+	name = LANGUAGE_ARTEMIS
+	desc = "The ARTEMIS Link is an AI subprocessor based on APOLLO Link. Its signal is stronger than APOLLO Link to accomidate the ground it must travel through for an underground AI core."
+	color = "skrell"
+	speech_verb = "states"
+	ask_verb = "queries"
+	exclaim_verb = "declares"
+	key = "6"
+	flags = RESTRICTED|HIVEMIND
+
 /datum/language/apollo/broadcast(mob/living/speaker, message, speaker_mask)
 	if(!speaker.hear_apollo())
 		return

@@ -189,7 +189,7 @@
 	speech_verb = "states"
 	ask_verb = "queries"
 	exclaim_verb = "declares"
-	key = "6"
+	key = "10"
 	flags = RESTRICTED|HIVEMIND
 
 /datum/language/apollo/broadcast(mob/living/speaker, message, speaker_mask)

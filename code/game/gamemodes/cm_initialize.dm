@@ -304,7 +304,7 @@ Additional game mode variables.
 			to_chat(joe_candidate, SPAN_WARNING("Something went wrong!"))
 		return FALSE
 
-	if(!joe_candidate.client.check_whitelist_status(WHITELIST_JOE))
+	if(!joe_candidate.client.check_whitelist_status(WHITELIST_SYNTHETIC))
 		if(show_warning)
 			to_chat(joe_candidate, SPAN_WARNING("You are not whitelisted! You may apply on the forums to be whitelisted as a synthetic."))
 		return FALSE
@@ -330,8 +330,6 @@ Additional game mode variables.
 	return TRUE
 
 /datum/game_mode/proc/transform_colony_joe(mob/joe_candidate)
-	set waitfor = FALSE
-
 	if(!joe_candidate.client) // Legacy - probably due to spawn code sync sleeps
 		log_debug("Null client attempted to transform_colony_joe")
 		return

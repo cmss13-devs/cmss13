@@ -596,6 +596,9 @@
 		else if(src.hunter_data.gear)
 			. += SPAN_RED("[src] was marked as carrying gear by [src.hunter_data.gear_set].")
 
+		if(src.hunter_data.youngblood)
+			. += SPAN_GREEN("[src] is being taught by [src.hunter_data.hunter.real_name].")
+
 
 /mob/living/carbon/on_lying_down(new_lying_angle)
 	. = ..()

@@ -1,18 +1,8 @@
 GLOBAL_LIST_EMPTY(upp_leaders)
 GLOBAL_LIST_EMPTY(upp_officers)
 
-/// How many smallhosts to preassigned players to spawn?
-#define MONKEYS_TO_TOTAL_RATIO 1/32
-/// When to start opening the podlocks identified as "map_lockdown" (takes 30s)
-#define PODLOCKS_OPEN_WAIT (45 MINUTES) // CORSAT pod doors drop at 12:45
-/// How many pipes explode at a time during hijack?
-#define HIJACK_EXPLOSION_COUNT 5
 /// What percent do we consider a 'majority?' to win
 #define MAJORITY 0.5
-/// How long to delay the round completion (command is immediately notified)
-#define MARINE_MAJOR_ROUND_END_DELAY (3 MINUTES)
-/// The ratio of forsaken to groundside humans before calling more forsaken xenos
-#define GROUNDSIDE_XENO_MULTIPLIER 1.0
 /// UPP Chain of command
 #define UPP_COMMAND_ROLES list(JOB_UPP_CO_OFFICER, JOB_UPP_KPT_OFFICER, JOB_UPP_SRLT_OFFICER, JOB_UPP_LT_OFFICER, JOB_UPP_PILOT, JOB_UPP_LT_DOKTOR, JOB_UPP_COMMISSAR)
 
@@ -21,7 +11,7 @@ GLOBAL_LIST_EMPTY(upp_officers)
 	config_tag = "UPP Distress Signal"
 	human_major = MODE_FACTION_CLASH_UPP_MAJOR
 	human_minor = MODE_FACTION_CLASH_UPP_MINOR
-	//vote_cycle = 5 // Uncomment after testing is done.
+	//vote_cycle = 3 // Uncomment after testing is done.
 
 /datum/game_mode/colonialmarines/upp/get_roles_list()
 	return UPP_JOB_LIST + GLOB.ROLES_GROUND
@@ -223,10 +213,5 @@ GLOBAL_LIST_EMPTY(upp_officers)
 			return "Round has ended. Draw."
 	return "Round has ended in a strange way."
 
-#undef MONKEYS_TO_TOTAL_RATIO
-#undef PODLOCKS_OPEN_WAIT
-#undef HIJACK_EXPLOSION_COUNT
 #undef MAJORITY
-#undef MARINE_MAJOR_ROUND_END_DELAY
-#undef GROUNDSIDE_XENO_MULTIPLIER
 #undef UPP_COMMAND_ROLES

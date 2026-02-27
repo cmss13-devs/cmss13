@@ -174,12 +174,6 @@
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/upp_squad_guns,
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lower_deck/prep)
-"aaz" = (
-/obj/structure/platform/metal/strata,
-/obj/effect/landmark/late_join/upp/pilot,
-/obj/effect/landmark/start/upp/pilot,
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/rostock/hangar/pilotbunk)
 "aaA" = (
 /turf/open/floor/corsat/purple/north,
 /area/rostock/command/cic)
@@ -1211,6 +1205,34 @@
 	},
 /turf/open/floor/plating,
 /area/rostock/req)
+"adU" = (
+/obj/structure/machinery/cryopod/right,
+/turf/open/floor/wood/ship,
+/area/rostock/command/so)
+"adV" = (
+/obj/effect/landmark/start/upp/xo,
+/obj/effect/landmark/late_join/upp/xo,
+/turf/open/floor/wood,
+/area/rostock/command/xo)
+"adW" = (
+/obj/structure/machinery/cryopod{
+	layer = 2.8;
+	dir = 8
+	},
+/turf/open/floor/corsat/squares,
+/area/rostock/command/cic)
+"adX" = (
+/obj/structure/medical_supply_link,
+/obj/structure/machinery/cm_vending/sorted/medical/upp,
+/obj/structure/machinery/light/small{
+	light_color = "#ffd4d4";
+	dir = 1
+	},
+/turf/open/floor/corsat/squares,
+/area/rostock/command/cic)
+"adY" = (
+/turf/closed/wall/upp_ship/reinforced/outer,
+/area/space)
 "aeC" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/machinery/camera/autoname/almayer{
@@ -2407,6 +2429,11 @@
 	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/rostock/lower_deck/prep)
+"aZI" = (
+/obj/effect/landmark/late_join/upp/dzho_automaton,
+/obj/effect/landmark/start/upp/dzho_automaton,
+/turf/open/floor/almayer/aicore/no_build,
+/area/rostock/airoom)
 "aZY" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -3347,10 +3374,9 @@
 /turf/open/floor/strata/orange_edge,
 /area/rostock/vehiclehangar)
 "bMP" = (
-/obj/effect/landmark/start/upp/xo,
-/obj/effect/landmark/late_join/upp/xo,
-/turf/open/floor/wood,
-/area/rostock/command/xo)
+/obj/structure/machinery/cryopod/right,
+/turf/open/floor/carpet,
+/area/rostock/command/co)
 "bNm" = (
 /turf/open/floor/upp_hull_rostock/outerhull_dir/northwest,
 /area/rostock/lowerdeck_maint/p_a)
@@ -3907,6 +3933,11 @@
 	},
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lowerdeck_maint/p_m)
+"clB" = (
+/obj/effect/landmark/start/upp/soldier,
+/obj/effect/landmark/late_join/upp/soldier,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/rostock/lower_deck/cryogenics)
 "clW" = (
 /obj/structure/ladder{
 	height = 1;
@@ -9181,8 +9212,8 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/upperdeck_maint/p_f)
 "gBc" = (
-/obj/effect/landmark/start/upp/logi,
-/obj/effect/landmark/late_join/upp/logi,
+/obj/effect/landmark/start/upp/police,
+/obj/effect/landmark/late_join/upp/police,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/req)
 "gBe" = (
@@ -11395,6 +11426,11 @@
 	pixel_x = -1
 	},
 /turf/open/floor/strata/floor3/east,
+/area/rostock/req)
+"ihS" = (
+/obj/effect/landmark/start/upp/logi,
+/obj/effect/landmark/late_join/upp/logi,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/req)
 "iid" = (
 /obj/structure/machinery/door/airlock/upp/generic/solid{
@@ -15171,11 +15207,6 @@
 /obj/structure/machinery/optable,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/lifeboat)
-"kWC" = (
-/obj/effect/landmark/start/upp/synth,
-/obj/effect/landmark/late_join/upp/synth,
-/turf/open/floor/corsat/squares,
-/area/rostock/command/cic)
 "kWM" = (
 /obj/item/storage/firstaid/adv/empty{
 	pixel_x = 8;
@@ -17247,10 +17278,6 @@
 	},
 /turf/open/floor/corsat/cargo,
 /area/rostock/hangar/repairbay)
-"mRK" = (
-/obj/structure/machinery/cryopod/right,
-/turf/open/floor/carpet,
-/area/rostock/command/co)
 "mRT" = (
 /obj/structure/surface/table/almayer,
 /obj/item/tool/screwdriver{
@@ -20785,9 +20812,6 @@
 /obj/structure/machinery/vending/cola,
 /turf/open/floor/strata/green3/east,
 /area/rostock/command/hallway)
-"pNs" = (
-/turf/closed/wall/upp_ship/reinforced/outer,
-/area/space)
 "pNt" = (
 /obj/structure/surface/table/almayer,
 /obj/item/paper_bin/uscm{
@@ -20823,6 +20847,12 @@
 	},
 /turf/open/floor/strata/floor2,
 /area/rostock/upper_deck/hallway)
+"pOn" = (
+/obj/structure/platform/metal/strata,
+/obj/effect/landmark/late_join/upp/pilot,
+/obj/effect/landmark/start/upp/pilot,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/rostock/hangar/pilotbunk)
 "pOB" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
@@ -23438,10 +23468,8 @@
 /turf/open/floor/strata/floor3,
 /area/rostock/lifeboat)
 "rXz" = (
-/obj/structure/machinery/cryopod{
-	layer = 2.8;
-	dir = 8
-	},
+/obj/effect/landmark/start/upp/synth,
+/obj/effect/landmark/late_join/upp/synth,
 /turf/open/floor/corsat/squares,
 /area/rostock/command/cic)
 "rXN" = (
@@ -23867,10 +23895,6 @@
 /obj/structure/machinery/cm_vending/sorted/tech/comp_storage/antag,
 /turf/open/floor/prison/darkbrownfull2,
 /area/rostock/lower_deck/s_a_hallway)
-"skK" = (
-/obj/structure/machinery/cryopod/right,
-/turf/open/floor/wood/ship,
-/area/rostock/command/so)
 "slD" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -29317,11 +29341,6 @@
 /obj/structure/machinery/power/apc/upp/south,
 /turf/open/floor/almayer/silverfull,
 /area/rostock/medical/accessway)
-"wDO" = (
-/obj/effect/landmark/start/upp/police,
-/obj/effect/landmark/late_join/upp/police,
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/rostock/req)
 "wDZ" = (
 /obj/structure/largecrate/random/barrel/white,
 /obj/item/prop/colony/usedbandage{
@@ -30708,15 +30727,6 @@
 	},
 /turf/open/floor/strata/floor3/east,
 /area/rostock/req)
-"xMD" = (
-/obj/structure/medical_supply_link,
-/obj/structure/machinery/cm_vending/sorted/medical/upp,
-/obj/structure/machinery/light/small{
-	light_color = "#ffd4d4";
-	dir = 1
-	},
-/turf/open/floor/corsat/squares,
-/area/rostock/command/cic)
 "xNe" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/orange_edge,
@@ -30867,11 +30877,6 @@
 "xTh" = (
 /turf/closed/wall/upp_ship/reinforced/outer,
 /area/rostock/lowerdeck_maint/s_f)
-"xTv" = (
-/obj/effect/landmark/start/upp/soldier,
-/obj/effect/landmark/late_join/upp/soldier,
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/rostock/lower_deck/cryogenics)
 "xUA" = (
 /obj/structure/machinery/computer/cameras/wooden_tv/broadcast{
 	pixel_x = -2;
@@ -31063,11 +31068,6 @@
 	},
 /turf/open/floor/corsat/plate,
 /area/rostock/railgun/starboard)
-"yce" = (
-/obj/effect/landmark/late_join/upp/dzho_automaton,
-/obj/effect/landmark/start/upp/dzho_automaton,
-/turf/open/floor/almayer/aicore/no_build,
-/area/rostock/airoom)
 "ycD" = (
 /obj/structure/platform{
 	dir = 8;
@@ -38192,10 +38192,10 @@ hgp
 ldD
 hYF
 aAZ
-xTv
-xTv
-xTv
-xTv
+clB
+clB
+clB
+clB
 mcx
 vNW
 fVw
@@ -38375,9 +38375,9 @@ euJ
 sRW
 aAZ
 dkz
-xTv
-xTv
-xTv
+clB
+clB
+clB
 mcx
 vNW
 fVw
@@ -38920,10 +38920,10 @@ hgp
 nVD
 pbs
 aAZ
-xTv
-xTv
-xTv
-xTv
+clB
+clB
+clB
+clB
 mcx
 vNW
 fVw
@@ -39103,9 +39103,9 @@ vvL
 pbs
 aAZ
 hyW
-xTv
-xTv
-xTv
+clB
+clB
+clB
 mcx
 vNW
 fVw
@@ -39648,10 +39648,10 @@ hgp
 gVz
 daA
 aAZ
-xTv
-xTv
-xTv
-xTv
+clB
+clB
+clB
+clB
 mcx
 rkU
 vHK
@@ -39831,9 +39831,9 @@ aLQ
 hId
 aAZ
 dkz
-xTv
-xTv
-xTv
+clB
+clB
+clB
 mcx
 vNW
 vWY
@@ -40376,10 +40376,10 @@ hgp
 wjb
 wvm
 aAZ
-xTv
-xTv
-xTv
-xTv
+clB
+clB
+clB
+clB
 mcx
 vNW
 fVw
@@ -40559,9 +40559,9 @@ dkU
 sRW
 aAZ
 hyW
-xTv
-xTv
-xTv
+clB
+clB
+clB
 mcx
 vNW
 fVw
@@ -41104,10 +41104,10 @@ hgp
 mlH
 pKP
 aAZ
-xTv
-xTv
+clB
+clB
 yjz
-xTv
+clB
 bWp
 qxx
 vHK
@@ -47322,10 +47322,10 @@ qYI
 izG
 oim
 cJG
-wDO
-wDO
-wDO
-wDO
+gBc
+gBc
+gBc
+gBc
 hfN
 kUd
 hwi
@@ -47504,15 +47504,15 @@ qYI
 kHP
 oim
 pzh
-wDO
-wDO
-wDO
-wDO
+gBc
+gBc
+gBc
+gBc
 hfN
 igM
-gBc
-gBc
-gBc
+ihS
+ihS
+ihS
 hfN
 xxe
 aai
@@ -48935,7 +48935,7 @@ ofW
 ofW
 vTq
 nbf
-yce
+aZI
 gRw
 sFn
 mxm
@@ -49505,7 +49505,7 @@ jPl
 hsv
 hqV
 lyz
-mRK
+bMP
 gQt
 mnG
 pjn
@@ -49693,7 +49693,7 @@ xku
 lyz
 lyz
 lyz
-bMP
+adV
 vCr
 lMs
 plE
@@ -51700,7 +51700,7 @@ pNi
 dpC
 lqx
 okw
-skK
+adU
 kfY
 lqx
 jgO
@@ -53858,8 +53858,8 @@ iFa
 iFa
 iFa
 ltN
-xMD
-kWC
+adX
+rXz
 nrA
 hZn
 uZF
@@ -54041,7 +54041,7 @@ iFa
 iFa
 ltN
 ltN
-rXz
+adW
 nrA
 hZn
 hrh
@@ -54768,7 +54768,7 @@ ofW
 ofW
 ofW
 vTq
-pNs
+adY
 ltN
 rYW
 hZn
@@ -56147,13 +56147,13 @@ wtZ
 glA
 iFY
 dmB
-aaz
+pOn
 tRR
 sLI
 sLI
 tRR
 fLZ
-aaz
+pOn
 lmA
 jtG
 ofW

@@ -524,6 +524,11 @@
 	icon_state = "late_join_misc"
 	job = JOB_WORKING_JOE
 
+/obj/effect/landmark/late_join/working_joe/colony
+	name = "colony working joe late join"
+	icon_state = "late_join_misc"
+	job = JOB_COLONY_JOE
+
 /obj/effect/landmark/late_join/dzho_automaton
 	name = "dzho automaton late join"
 	icon_state = "late_join_upp"

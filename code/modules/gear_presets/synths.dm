@@ -763,6 +763,10 @@
 
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_ARTEMIS, LANGUAGE_JAPANESE, LANGUAGE_SPANISH)
 
+/datum/equipment_preset/synth/working_joe/colony/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_COLONIAL_ALL) + get_region_accesses(2) + get_region_accesses(4) + ACCESS_MARINE_RESEARCH
+
 /datum/equipment_preset/synth/working_joe/colony/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic/joe(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/dress(new_human), WEAR_FEET) //don't remove shrap by yourself, go to android maintenance or have ARES call a human handler!
@@ -826,6 +830,10 @@
 	assignment = JOB_COLONY_JOE
 	job_title = JOB_COLONY_JOE
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_ARTEMIS, LANGUAGE_JAPANESE, LANGUAGE_SPANISH)
+
+/datum/equipment_preset/synth/working_joe/engi/colony/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_COLONIAL_ALL) + get_region_accesses(2) + get_region_accesses(4) + ACCESS_MARINE_RESEARCH
 
 /datum/equipment_preset/synth/working_joe/engi/colony/load_gear(mob/living/carbon/human/new_human)
 	var/choice = rand(1,2)

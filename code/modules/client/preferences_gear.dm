@@ -776,6 +776,11 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	display_name = "Box of Prideful Crayons"
 	path = /obj/item/storage/box/pride
 
+/datum/gear/toy/coin_silver
+	display_name = "Silver coin"
+	path = /obj/item/coin/silver
+	fluff_cost = 1
+
 /datum/gear/weapon
 	category = "Weapons"
 	fluff_cost = 4

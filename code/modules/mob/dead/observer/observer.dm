@@ -322,6 +322,7 @@
 		toggle_predator_action()
 
 	if(client.check_whitelist_status(WHITELIST_SYNTHETIC) || client.check_whitelist_status(WHITELIST_JOE))
+		RegisterSignal(SSdcs, COMSIG_GLOB_COLONY_JOE_ROUND_TOGGLED, PROC_REF(toggle_predator_action))
 		toggle_colony_joe_action()
 
 	client.move_delay = MINIMAL_MOVEMENT_INTERVAL

@@ -387,11 +387,13 @@ const ViewTabHolder = (props) => {
         </Flex.Item>
         <Flex.Item grow={1} mt={1}>
           <ByondUi
-            className="CameraPanel"
-            height="100%"
-            params={{
+            winsetParams={{
               id: map_ref,
               type: 'map',
+            }}
+            boxProps={{
+              className: 'CameraPanel',
+              height: '100%',
             }}
           />
         </Flex.Item>

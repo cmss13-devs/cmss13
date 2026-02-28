@@ -451,6 +451,11 @@
 	item_state = "neckerchief_brown"
 	original_state = "neckerchief_brown"
 
+/obj/item/clothing/mask/neckerchief/yellow
+	icon_state = "neckerchief_bravo"
+	item_state = "neckerchief_bravo"
+	original_state = "neckerchief_bravo"
+
 /obj/item/clothing/mask/owlf_mask
 	name = "\improper OWLF gas mask"
 	desc = "A close-fitting mask that can be connected to an air supply."

@@ -1479,7 +1479,7 @@
 /area/adminlevel/ert_station)
 "Rj" = (
 /obj/structure/window/framed/colony,
-/turf/open/floor/almayer/floor,
+/turf/open/floor/plating,
 /area/adminlevel/ert_station)
 "RF" = (
 /turf/open/floor/almayer/sterile_green,

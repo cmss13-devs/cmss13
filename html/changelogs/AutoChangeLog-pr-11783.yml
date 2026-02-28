@@ -1,0 +1,4 @@
+author: "DangerRevolution"
+delete-after: True
+changes:
+  - rscadd: "Added Construction Belt to the Synthetic Vendor"

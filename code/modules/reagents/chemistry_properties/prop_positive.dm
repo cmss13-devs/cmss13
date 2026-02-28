@@ -710,7 +710,7 @@
 		return
 
 	if(revivetimerid)
-		if(dead.health <= HEALTH_THRESHOLD_DEAD) //If the mob got damaged to below the threshold while the timer was ticking then we reset
+		if(dead.health <= dead.health_threshold_dead) //If the mob got damaged to below the threshold while the timer was ticking then we reset
 			deltimer(revivetimerid)
 			revivetimerid = null
 		return
@@ -721,7 +721,7 @@
 			property.trigger(affected_mob)
 			affected_mob.reagents.remove_reagent(electrogenetic_reagent.id, 1)
 			break
-	if(dead.health > HEALTH_THRESHOLD_DEAD)
+	if(dead.health > dead.health_threshold_dead)
 		revivetimerid = addtimer(CALLBACK(dead, TYPE_PROC_REF(/mob/living/carbon/human, handle_revive)), 5 SECONDS, TIMER_STOPPABLE)
 		if(!COOLDOWN_FINISHED(src, revive_notif))
 			return
@@ -732,7 +732,7 @@
 		if(ghost?.client)
 			playsound_client(ghost.client, 'sound/effects/adminhelp_new.ogg')
 			to_chat(ghost, SPAN_BOLDNOTICE("Your heart is struggling to pump! There is a chance you might get up!(Verbs -> Ghost -> Re-enter corpse, or <a href='byond://?src=\ref[ghost];reentercorpse=1'>click here!</a>)"))
-	else if ((potency >= 1) && dead.health <= HEALTH_THRESHOLD_DEAD) //heals on all level above 1. This is however, minimal.
+	else if ((potency >= 1) && dead.health <= dead.health_threshold_dead) //heals on all level above 1. This is however, minimal.
 		to_chat(dead, SPAN_NOTICE("You feel a faint spark in your chest."))
 		dead.apply_damage(-potency * POTENCY_MULTIPLIER_VLOW, BRUTE)
 		dead.apply_damage(-potency * POTENCY_MULTIPLIER_VLOW, BURN)
@@ -877,9 +877,9 @@
 	code = "FUL"
 	description = "The chemical can be burned as a fuel, expanding the burn time of a chemical fire. However, this also slightly lowers heat intensity."
 	rarity = PROPERTY_COMMON
-	value = 1
+	value = 2
 	intensity_per_level = -3
-	duration_per_level = 8
+	duration_per_level = 7
 
 	intensitymod_per_level = -0.1
 	durationmod_per_level = 0.2
@@ -901,9 +901,9 @@
 	code = "OXI"
 	description = "The chemical is oxidizing, increasing the intensity of chemical fires. However, the fuel is also burned slightly faster because of it."
 	rarity = PROPERTY_COMMON
-	value = 1
-	intensity_per_level = 8
-	duration_per_level = -3
+	value = 2
+	intensity_per_level = 7
+	duration_per_level = -4
 
 	intensitymod_per_level = 0.2
 	durationmod_per_level = -0.1
@@ -929,7 +929,7 @@
 	code = "FLW"
 	description = "The chemical is the opposite of viscous, and it tends to spill everywhere. This could probably be used to expand the radius of a chemical fire."
 	rarity = PROPERTY_COMMON
-	value = 1
+	value = 2
 	range_per_level = 2
 
 	intensitymod_per_level = -0.05
@@ -939,7 +939,7 @@
 /datum/chem_property/positive/explosive
 	name = PROPERTY_EXPLOSIVE
 	code = "EXP"
-	description = "The chemical is highly explosive. Do not ignite. Careful when handling, sensitivity is based off the OD threshold, which can lead to spontanous detonation."
+	description = "The chemical is highly explosive. Do not ignite. Careful when handling, sensitivity is based off the OD threshold, which can lead to spontaneous detonation."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_REACTANT|PROPERTY_TYPE_COMBUSTIBLE
 	volatile = TRUE
@@ -1124,7 +1124,7 @@
 /datum/chem_property/positive/aiding
 	name = PROPERTY_AIDING
 	code = "AID"
-	description = "Fixes genetic defects, disfigurments, disabilities. In plants removes compounds modfying yield and mutation."
+	description = "Fixes genetic defects, disfigurments, disabilities. In plants removes compounds modifying yield and mutation."
 	rarity = PROPERTY_DISABLED
 	category = PROPERTY_TYPE_MEDICINE
 	value = 1

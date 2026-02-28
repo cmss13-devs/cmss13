@@ -575,6 +575,8 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 
 /obj/structure/machinery/cryopod/no_cryo // groundside cryopods that dont cryo you, for colony joes
 	no_store_pod = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
 
 /obj/structure/machinery/cryopod/no_cryo/process()
 	return

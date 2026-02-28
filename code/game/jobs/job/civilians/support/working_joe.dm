@@ -71,10 +71,11 @@
 	title = JOB_COLONY_JOE
 	total_positions = 3
 	spawn_positions = 0
-	allow_additional = TRUE
 	scaled = FALSE
+	gear_preset = /datum/equipment_preset/synth/working_joe/colony
 
 /datum/job/civilian/working_joe/colony/handle_job_options(option)
+	option = usr.client.prefs.pref_special_job_options[JOB_WORKING_JOE] // use the preference set for shipside working joes
 	if(option != HAZMAT_VARIANT)
 		standard = TRUE
 		gear_preset = /datum/equipment_preset/synth/working_joe/colony

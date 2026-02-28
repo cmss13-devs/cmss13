@@ -1453,6 +1453,10 @@
 	icon_state = "10"
 	},
 /area/tyrargo/indoors/saipan)
+"aen" = (
+/obj/structure/machinery/cryopod/right,
+/turf/open/floor/prison/darkyellow2/east,
+/area/tyrargo/underground/engineering)
 "aeo" = (
 /turf/closed/shuttle/dropship3{
 	icon_state = "18"
@@ -22730,6 +22734,12 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/oob)
+"aZY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
+/turf/open/floor/prison/cell_stripe/east,
+/area/tyrargo/underground/engineering)
 "aZZ" = (
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 8
@@ -108094,10 +108104,6 @@
 	},
 /turf/open/floor/plating/platingdmg3,
 /area/tyrargo/indoors/apartment/south_upper)
-"nsn" = (
-/obj/structure/machinery/cryopod/right,
-/turf/open/floor/prison/darkyellow2/east,
-/area/tyrargo/underground/engineering)
 "nsL" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/vomit,
@@ -113246,12 +113252,6 @@
 "wzA" = (
 /turf/open/floor/prison/darkyellowcorners2/east,
 /area/tyrargo/indoors/engineering/ground)
-"wzP" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/start/working_joe/colony,
-/obj/effect/landmark/late_join/working_joe/colony,
-/turf/open/floor/prison/cell_stripe/east,
-/area/tyrargo/underground/engineering)
 "wAQ" = (
 /obj/effect/decal/hybrisa/doubleroad/lines3{
 	pixel_y = 13
@@ -137644,7 +137644,7 @@ dzC
 dzC
 dPY
 dzC
-nsn
+aen
 dPC
 dvf
 dvf
@@ -137828,7 +137828,7 @@ dPL
 dPL
 dPZ
 dPS
-wzP
+aZY
 dPD
 dzi
 dvf

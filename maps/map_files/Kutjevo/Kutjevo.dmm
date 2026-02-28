@@ -1816,6 +1816,22 @@
 /obj/item/stack/sheet/metal,
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/exterior/Northwest_Colony)
+"agS" = (
+/obj/structure/machinery/cryopod/right{
+	layer = 3.1;
+	pixel_y = 13
+	},
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/interior/power)
+"agT" = (
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/interior/power)
+"agU" = (
+/obj/structure/machinery/cryopod/right,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/interior/power)
 "ahp" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
@@ -3116,11 +3132,6 @@
 	},
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/colony_central/mine_elevator)
-"cgW" = (
-/obj/effect/landmark/start/working_joe/colony,
-/obj/effect/landmark/late_join/working_joe/colony,
-/turf/open/floor/kutjevo/multi_tiles,
-/area/kutjevo/interior/power)
 "cht" = (
 /obj/item/ammo_magazine/shotgun/buckshot,
 /turf/open/floor/kutjevo/tan/multi_tiles,
@@ -5967,13 +5978,6 @@
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/Northwest_Colony)
-"gzK" = (
-/obj/structure/machinery/cryopod/right{
-	layer = 3.1;
-	pixel_y = 13
-	},
-/turf/open/floor/kutjevo/multi_tiles,
-/area/kutjevo/interior/power)
 "gAt" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/flora/pottedplant{
@@ -8556,10 +8560,6 @@
 	},
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/exterior/complex_border/med_rec)
-"kMd" = (
-/obj/structure/machinery/cryopod/right,
-/turf/open/floor/kutjevo/multi_tiles,
-/area/kutjevo/interior/power)
 "kMx" = (
 /turf/open/floor/coagulation/icon7_8_2,
 /area/kutjevo/interior/power/comms)
@@ -25732,8 +25732,8 @@ psz
 vdC
 xHm
 cvm
-kMd
-gzK
+agU
+agS
 lAT
 xgV
 xHm
@@ -25899,8 +25899,8 @@ hQj
 fCz
 nLJ
 dzD
-cgW
-cgW
+agT
+agT
 hQj
 xgV
 pnM

@@ -10,6 +10,13 @@
 "aac" = (
 /turf/closed/wall/shiva/prefabricated/pink,
 /area/shiva/interior/lz2_habs)
+"aad" = (
+/obj/structure/machinery/cryopod/right{
+	layer = 3.1;
+	pixel_y = 13
+	},
+/turf/open/floor/shiva/yellow/west,
+/area/shiva/interior/colony/medseceng)
 "aae" = (
 /obj/structure/girder,
 /turf/open/auto_turf/ice/layer1,
@@ -748,6 +755,11 @@
 	},
 /turf/open/floor/shiva/multi_tiles,
 /area/shiva/interior/colony/research_hab)
+"acH" = (
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/medseceng)
 "acI" = (
 /obj/structure/fence,
 /turf/open/auto_turf/snow/layer3,
@@ -9773,11 +9785,6 @@
 /obj/item/storage/firstaid/fire,
 /turf/open/shuttle/can_surgery/black,
 /area/shiva/interior/aerodrome)
-"foM" = (
-/obj/effect/landmark/start/working_joe/colony,
-/obj/effect/landmark/late_join/working_joe/colony,
-/turf/open/floor/shiva/north,
-/area/shiva/interior/colony/medseceng)
 "fpp" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/auto_turf/ice/layer0,
@@ -16252,13 +16259,6 @@
 	},
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_lz2)
-"mWj" = (
-/obj/structure/machinery/cryopod/right{
-	layer = 3.1;
-	pixel_y = 13
-	},
-/turf/open/floor/shiva/yellow/west,
-/area/shiva/interior/colony/medseceng)
 "mWw" = (
 /obj/structure/machinery/light/double,
 /turf/open/floor/shiva/redfull/west,
@@ -54251,7 +54251,7 @@ axG
 aDn
 sOg
 lPh
-mWj
+aad
 aVF
 cYa
 cYa
@@ -54414,8 +54414,8 @@ hdF
 axG
 aek
 vhG
-foM
-foM
+acH
+acH
 vcx
 agh
 agh

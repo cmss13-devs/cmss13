@@ -374,6 +374,17 @@
 "abq" = (
 /turf/closed/wall/r_wall/unmeltable,
 /area/varadero/interior/cargo)
+"abr" = (
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
+/turf/open/floor/shiva/north,
+/area/varadero/interior/electrical)
+"abs" = (
+/obj/structure/machinery/cryopod/right{
+	dir = 4
+	},
+/turf/open/floor/shiva/yellow/east,
+/area/varadero/interior/electrical)
 "abu" = (
 /obj/item/stack/sheet/wood,
 /obj/item/shard{
@@ -5284,11 +5295,6 @@
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/dirt,
 /area/varadero/exterior/eastbeach)
-"ebk" = (
-/obj/effect/landmark/start/working_joe/colony,
-/obj/effect/landmark/late_join/working_joe/colony,
-/turf/open/floor/shiva/north,
-/area/varadero/interior/electrical)
 "ebm" = (
 /obj/structure/stairs/perspective{
 	color = "#b29082";
@@ -25585,12 +25591,6 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/north)
-"uAv" = (
-/obj/structure/machinery/cryopod/right{
-	dir = 4
-	},
-/turf/open/floor/shiva/yellow/east,
-/area/varadero/interior/electrical)
 "uAM" = (
 /obj/structure/largecrate/random/barrel/yellow,
 /turf/open/gm/dirt,
@@ -53703,8 +53703,8 @@ mvi
 kCA
 sHs
 cbq
-ebk
-ebk
+abr
+abr
 pkX
 nsl
 kCA
@@ -53885,7 +53885,7 @@ oIC
 jtU
 jtU
 qId
-uAv
+abs
 oBP
 kLA
 vnH

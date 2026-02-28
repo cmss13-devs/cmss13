@@ -457,6 +457,12 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
+"acb" = (
+/obj/structure/machinery/cryopod/right{
+	dir = 4
+	},
+/turf/open/floor/dark,
+/area/lv624/lazarus/engineering)
 "acc" = (
 /obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/warning/west,
@@ -18813,12 +18819,6 @@
 /obj/structure/platform_decoration/stone/runed_sandstone/east,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
-"sEM" = (
-/obj/structure/machinery/cryopod/right{
-	dir = 4
-	},
-/turf/open/floor/dark,
-/area/lv624/lazarus/engineering)
 "sET" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/decal/grass_overlay/grass1{
@@ -42826,7 +42826,7 @@ kvo
 mNO
 fFN
 aTM
-sEM
+acb
 fAs
 aSX
 aVH

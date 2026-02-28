@@ -1277,6 +1277,17 @@
 	},
 /turf/open/auto_turf/shale/layer2,
 /area/lv522/outdoors/colony_streets/north_west_street)
+"aeu" = (
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
+/turf/open/floor/prison,
+/area/lv522/indoors/lone_buildings/engineering)
+"aev" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
+/turf/open/floor/prison,
+/area/lv522/indoors/lone_buildings/engineering)
 "aeD" = (
 /obj/structure/largecrate/random,
 /obj/effect/decal/cleanable/dirt,
@@ -24547,11 +24558,6 @@
 /obj/item/prop/colony/used_flare,
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/north_east_street)
-"mRu" = (
-/obj/effect/landmark/start/working_joe/colony,
-/obj/effect/landmark/late_join/working_joe/colony,
-/turf/open/floor/prison,
-/area/lv522/indoors/lone_buildings/engineering)
 "mRx" = (
 /obj/structure/prop/dam/drill{
 	layer = 3.1;
@@ -25021,12 +25027,6 @@
 	},
 /turf/open/floor/prison/floor_marked,
 /area/lv522/outdoors/colony_streets/north_east_street)
-"neN" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/start/working_joe/colony,
-/obj/effect/landmark/late_join/working_joe/colony,
-/turf/open/floor/prison,
-/area/lv522/indoors/lone_buildings/engineering)
 "neO" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -52392,8 +52392,8 @@ sXM
 rwM
 vxq
 bzL
-neN
-mRu
+aev
+aeu
 wbi
 nJv
 hpq

@@ -386,6 +386,16 @@
 	icon_state = "wy27"
 	},
 /area/fiorina/oob)
+"abr" = (
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/maintenance)
+"abs" = (
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
+/turf/open/floor/prison/darkbrown2/north,
+/area/fiorina/maintenance)
 "abG" = (
 /obj/item/trash/chunk,
 /turf/open/floor/prison/whitegreen/north,
@@ -1610,11 +1620,6 @@
 	},
 /turf/open/floor/prison/whitegreen/west,
 /area/fiorina/station/medbay)
-"aWJ" = (
-/obj/effect/landmark/start/working_joe/colony,
-/obj/effect/landmark/late_join/working_joe/colony,
-/turf/open/floor/prison/darkbrown2/north,
-/area/fiorina/maintenance)
 "aWR" = (
 /obj/structure/platform/metal/almayer/north,
 /turf/open/floor/plating/prison,
@@ -25034,11 +25039,6 @@
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/station/chapel)
-"tgH" = (
-/obj/effect/landmark/start/working_joe/colony,
-/obj/effect/landmark/late_join/working_joe/colony,
-/turf/open/floor/prison/floor_plate,
-/area/fiorina/maintenance)
 "tgK" = (
 /obj/structure/machinery/landinglight/ds1/delayone,
 /turf/open/floor/prison/darkyellowfull2/east,
@@ -56754,8 +56754,8 @@ vZX
 vZX
 vZX
 jwc
-aWJ
-tgH
+abs
+abr
 gfo
 gfo
 ivK

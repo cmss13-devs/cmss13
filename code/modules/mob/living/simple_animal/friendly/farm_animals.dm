@@ -291,6 +291,7 @@ GLOBAL_VAR_INIT(chicken_count, 0)
 	response_harm   = "kicks the"
 	attacktext = "kicks"
 	buckle_flags = CAN_BUCKLE
+	maxHealth = 50
 	health = 50
 	// Do we register a unique rider?
 	var/unique_tamer = FALSE
@@ -302,6 +303,13 @@ GLOBAL_VAR_INIT(chicken_count, 0)
 /mob/living/simple_animal/big/horse/Initialize(mapload)
 	. = ..()
 	apply_colour()
+
+/mob/living/simple_animal/big/horse/death()
+	. = ..()
+	overlays.Cut()
+	var/image/pony_hair_dead = image('icons/mob/animal.dmi', icon_state = "pony_hair_dead")
+	pony_hair_dead.color = ponycolors[2]
+	overlays += "pony_hair_dead"
 
 /mob/living/simple_animal/big/horse/proc/tamed(mob/living/tamer)
 	ENABLE_BITFIELD(buckle_flags, CAN_BUCKLE)
@@ -373,13 +381,15 @@ GLOBAL_VAR_INIT(chicken_count, 0)
 	name = "cavalry horse"
 	desc = "A horse trained for combat. Charge!!"
 	unique_tamer = TRUE
+	maxHealth = 300
 	health = 300
 
 /mob/living/simple_animal/big/horse/yautja
 	name = "yautja horse"
 	desc = "It is red because it hates you"
 	unique_tamer = TRUE
-	health = 300
+	maxHealth = 500
+	health = 500
 	ponycolors = list("#aa0000", "#444444")
 
 /obj/item/explosive/grenade/spawnergrenade/horse

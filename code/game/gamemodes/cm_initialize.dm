@@ -354,6 +354,7 @@ Additional game mode variables.
 		return
 	// This is usually done in assign_role, a proc which is not executed in this case, since check_joe_late_join is running its own checks.
 	joe_job.current_positions++
+	joe_job.handle_job_options(new_joe.client.prefs.pref_special_job_options[JOB_WORKING_JOE])
 	GLOB.RoleAuthority.equip_role(new_joe, joe_job, new_joe.loc)
 	SSticker.minds += new_joe.mind
 	return new_joe

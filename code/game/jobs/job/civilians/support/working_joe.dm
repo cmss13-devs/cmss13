@@ -74,8 +74,7 @@
 	scaled = FALSE
 	gear_preset = /datum/equipment_preset/synth/working_joe/colony
 
-/datum/job/civilian/working_joe/colony/handle_job_options(option, client/joe_client)
-	option = joe_client.prefs.pref_special_job_options[JOB_WORKING_JOE] // use the preference set for shipside working joes
+/datum/job/civilian/working_joe/colony/handle_job_options(option)
 	if(option != HAZMAT_VARIANT)
 		standard = TRUE
 		gear_preset = /datum/equipment_preset/synth/working_joe/colony
@@ -86,9 +85,23 @@
 /datum/job/civilian/working_joe/colony/generate_entry_message(mob/living/carbon/human/H)
 	. = {"You are a <a href='[generate_wiki_link()]'>Colony Working Joe.</a> You are held to a higher standard and are required to obey not only the Server Rules but Roleplay Expectations and Synthetic Rules. Your primary task is to maintain the cleanliness of the colony, putting things in their proper place. Alternatively, your primary task may be to assist with manual labor in limited capacity, or clerical duties. Your capacities are limited, but you have all the equipment you need, and the central AI has a plan! Stay in character at all times. Use the ARTEMIS link to communicate with your uplink!"}
 
-/datum/job/civilian/working_joe/colony/announce_entry_message(mob/living/carbon/human/H)
+/datum/job/civilian/working_joe/colony/announce_entry_message(mob/living/carbon/human/H, datum/money_account/M, whitelist_status)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(ares_artemis_talk), "[H.real_name] has been activated."), 1.5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(send_entry_message), H, M, whitelist_status), 1.4 SECONDS)
 	return
+
+/datum/job/civilian/working_joe/colony/proc/send_entry_message(mob/living/carbon/human/H, datum/money_account/M, whitelist_status)
+	if(H && H.loc && H.client)
+		var/title_given
+		title_given = lowertext(disp_title)
+
+		var/entrydisplay = boxed_message("\
+			[SPAN_ROLE_BODY("|______________________|")] \n\
+			[SPAN_ROLE_HEADER("You are \a [title_given]")] \n\
+			[SPAN_ROLE_BODY("[generate_entry_message(H)]<br>[M ? "Your account number is: <b>[M.account_number]</b>. Your account pin is: <b>[M.remote_access_pin]</b>." : "You do not have a bank account."]")] \n\
+			[SPAN_ROLE_BODY("|______________________|")] \
+		")
+		to_chat_spaced(H, html = entrydisplay)
 
 /obj/effect/landmark/start/working_joe/colony
 	name = JOB_COLONY_JOE

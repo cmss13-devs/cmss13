@@ -460,7 +460,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	if(!late_join)
 		new_human.client?.prefs.update_slot(new_job.title, 10 SECONDS)
 
-	if((new_job.job_options && new_human?.client?.prefs?.pref_special_job_options[new_job.title]) || istype(new_job, /datum/job/civilian/working_joe/colony)) // special check for colony joes since you cant set their special job option
+	if(new_job.job_options && new_human?.client?.prefs?.pref_special_job_options[new_job.title])
 		new_job.handle_job_options(new_human.client.prefs.pref_special_job_options[new_job.title], new_human.client)
 
 	var/job_whitelist = new_job.title

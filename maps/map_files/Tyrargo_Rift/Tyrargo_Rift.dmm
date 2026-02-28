@@ -1454,7 +1454,7 @@
 	},
 /area/tyrargo/indoors/saipan)
 "aen" = (
-/obj/structure/machinery/cryopod/right,
+/obj/structure/machinery/cryopod/no_store/right,
 /turf/open/floor/prison/darkyellow2/east,
 /area/tyrargo/underground/engineering)
 "aeo" = (
@@ -78948,9 +78948,9 @@
 	pixel_y = 17;
 	pixel_x = -33
 	},
-/obj/structure/machinery/cryopod/right{
-	layer = 3.1;
-	pixel_y = 13
+/obj/structure/machinery/cryopod/no_store/right{
+	pixel_y = 13;
+	layer = 3.1
 	},
 /turf/open/floor/prison/darkyellow2/east,
 /area/tyrargo/underground/engineering)

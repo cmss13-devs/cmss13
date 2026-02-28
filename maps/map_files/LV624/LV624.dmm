@@ -458,9 +458,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
 "acb" = (
-/obj/structure/machinery/cryopod/right{
-	dir = 4
-	},
+/obj/structure/machinery/cryopod/no_store,
 /turf/open/floor/dark,
 /area/lv624/lazarus/engineering)
 "acc" = (
@@ -12499,10 +12497,9 @@
 /turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
 "fAs" = (
-/obj/structure/machinery/cryopod/right{
-	dir = 4;
-	layer = 3.1;
-	pixel_y = 13
+/obj/structure/machinery/cryopod/no_store{
+	pixel_y = 13;
+	layer = 3.1
 	},
 /turf/open/floor/dark,
 /area/lv624/lazarus/engineering)

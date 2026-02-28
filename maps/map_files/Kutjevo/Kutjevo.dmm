@@ -1817,9 +1817,9 @@
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/exterior/Northwest_Colony)
 "agS" = (
-/obj/structure/machinery/cryopod/right{
-	layer = 3.1;
-	pixel_y = 13
+/obj/structure/machinery/cryopod/no_store/right{
+	pixel_y = 13;
+	layer = 3.1
 	},
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/power)
@@ -1829,7 +1829,7 @@
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/power)
 "agU" = (
-/obj/structure/machinery/cryopod/right,
+/obj/structure/machinery/cryopod/no_store/right,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/power)
 "ahp" = (

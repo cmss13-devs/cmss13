@@ -115,3 +115,17 @@
 /datum/job/antag/upp/dzho_automaton/generate_entry_message(mob/living/carbon/human/H)
 	. = {"You are a <a>Dzho Automaton.</a> You are held to a higher standard and are required to obey not only the Server Rules but UPP Law, Roleplay Expectations and Synthetic Rules. Your primary task is to maintain the ship, patrol and other tasks given to you by UPP officer staff. Alternatively, your primary task may be to assist with manual labor in limited capacity, or clerical duties. You can perform brig duties and security duties if needed. You have a firearm permit and can use lethal force where applicable. Your capacities are limited, but you have all the equipment you need, and the central AI has a plan! Stay in character at all times.!"}
 
+/datum/job/antag/upp/dzho_automaton/colony
+	title = JOB_UPP_COLONY_JOE
+	total_positions = 3
+	spawn_positions = 0
+	supervisors = "1VAN/3 and UPP command staff"
+	gear_preset = /datum/equipment_preset/synth/working_joe/upp/colony
+
+/datum/job/antag/upp/dzho_automaton/colony/generate_entry_message(mob/living/carbon/human/H)
+	. = {"You are a <a>Colony Dzho Automaton.</a> You are held to a higher standard and are required to obey not only the Server Rules but Roleplay Expectations and Synthetic Rules. Your primary task is to maintain the colony, patrol and other tasks given to you by UPP colony administration. Alternatively, your primary task may be to assist with manual labor in limited capacity, or clerical duties. As you are a civillian model, all firearm capabilities have been removed. Your capacities are limited, but you have all the equipment you need, and the central AI has a plan! Stay in character at all times.!"}
+
+/obj/effect/landmark/start/dzho_automaton/colony
+	name = JOB_UPP_COLONY_JOE
+	icon_state = "wj_spawn"
+	job = /datum/job/antag/upp/dzho_automaton/colony

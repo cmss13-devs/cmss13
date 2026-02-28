@@ -10,13 +10,6 @@
 "aac" = (
 /turf/closed/wall/shiva/prefabricated/pink,
 /area/shiva/interior/lz2_habs)
-"aad" = (
-/obj/structure/machinery/cryopod/right{
-	layer = 3.1;
-	pixel_y = 13
-	},
-/turf/open/floor/shiva/yellow/west,
-/area/shiva/interior/colony/medseceng)
 "aae" = (
 /obj/structure/girder,
 /turf/open/auto_turf/ice/layer1,
@@ -755,11 +748,6 @@
 	},
 /turf/open/floor/shiva/multi_tiles,
 /area/shiva/interior/colony/research_hab)
-"acH" = (
-/obj/effect/landmark/start/working_joe/colony,
-/obj/effect/landmark/late_join/working_joe/colony,
-/turf/open/floor/shiva/north,
-/area/shiva/interior/colony/medseceng)
 "acI" = (
 /obj/structure/fence,
 /turf/open/auto_turf/snow/layer3,
@@ -894,6 +882,13 @@
 /obj/structure/fence,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_colony_grounds)
+"adf" = (
+/obj/structure/machinery/cryopod/no_store/right{
+	pixel_y = 13;
+	layer = 3.1
+	},
+/turf/open/floor/shiva/yellow/west,
+/area/shiva/interior/garage)
 "adg" = (
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 8
@@ -910,6 +905,12 @@
 "adi" = (
 /turf/open/floor/shiva/yellowcorners/north,
 /area/shiva/interior/colony/research_hab)
+"adj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/late_join/working_joe/colony,
+/obj/effect/landmark/start/working_joe/colony,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/garage)
 "adk" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/kitchen,
@@ -2405,6 +2406,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
+"aic" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/cryopod/no_store/right,
+/turf/open/floor/shiva/yellow/west,
+/area/shiva/interior/garage)
 "aii" = (
 /obj/structure/machinery/power/smes/buildable{
 	name = "colony distribution SMES"
@@ -15272,7 +15278,12 @@
 /turf/open/floor/shiva/red/southwest,
 /area/shiva/interior/colony/medseceng)
 "lPh" = (
-/obj/structure/machinery/cryopod/right,
+/obj/structure/surface/rack,
+/obj/item/device/flashlight,
+/obj/item/explosive/grenade/metal_foam,
+/obj/item/explosive/grenade/metal_foam,
+/obj/item/explosive/grenade/metal_foam,
+/obj/item/explosive/grenade/metal_foam,
 /turf/open/floor/shiva/yellow/west,
 /area/shiva/interior/colony/medseceng)
 "lPC" = (
@@ -50215,8 +50226,8 @@ afa
 ohb
 ohb
 afa
-aeY
-aBV
+aic
+adf
 aCz
 ktd
 cZk
@@ -50379,8 +50390,8 @@ aeL
 ver
 ver
 ver
-aeL
-aeL
+adj
+adj
 bYd
 ktd
 ktd
@@ -54251,7 +54262,7 @@ axG
 aDn
 sOg
 lPh
-aad
+cYa
 aVF
 cYa
 cYa
@@ -54414,8 +54425,8 @@ hdF
 axG
 aek
 vhG
-acH
-acH
+agh
+agh
 vcx
 agh
 agh

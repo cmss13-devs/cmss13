@@ -43606,9 +43606,9 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/machinery/cryopod/right{
-	layer = 3.1;
-	pixel_y = 13
+/obj/structure/machinery/cryopod/no_store/right{
+	pixel_y = 13;
+	layer = 3.1
 	},
 /turf/open/floor/prison/darkyellow2/west,
 /area/desert_dam/interior/dam_interior/engine_west_wing)
@@ -67920,7 +67920,9 @@
 	},
 /area/desert_dam/interior/dam_interior/hanger)
 "thP" = (
-/obj/structure/machinery/cryopod/right,
+/obj/structure/machinery/cryopod/no_store/right{
+	pixel_y = 4
+	},
 /turf/open/floor/prison/darkyellow2/northwest,
 /area/desert_dam/interior/dam_interior/engine_west_wing)
 "tie" = (

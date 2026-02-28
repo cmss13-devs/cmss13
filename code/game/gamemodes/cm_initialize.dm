@@ -334,10 +334,20 @@ Additional game mode variables.
 		log_debug("Null client attempted to transform_colony_joe")
 		return
 
-	var/turf/spawn_point = get_turf(pick(GLOB.latejoin_by_job[JOB_COLONY_JOE]))
+	var/turf/spawn_point = null
+	var/datum/job/joe_job = null
+	if(get_turf(pick(GLOB.latejoin_by_job[JOB_COLONY_JOE])))
+		spawn_point = get_turf(pick(GLOB.latejoin_by_job[JOB_COLONY_JOE]))
+		joe_job = GLOB.RoleAuthority.roles_by_name[JOB_COLONY_JOE]
+	else if(get_turf(pick(GLOB.latejoin_by_job[JOB_UPP_COLONY_JOE])))
+		spawn_point = get_turf(pick(GLOB.latejoin_by_job[JOB_UPP_COLONY_JOE]))
+		joe_job = GLOB.RoleAuthority.roles_by_name[JOB_UPP_COLONY_JOE]
+	else
+		log_debug("No valid colony joe spawn points!")
+		return
+
 	var/mob/living/carbon/human/synthetic/new_joe = new(spawn_point)
 	joe_candidate.mind.transfer_to(new_joe, TRUE)
-	var/datum/job/joe_job = GLOB.RoleAuthority.roles_by_name[JOB_COLONY_JOE]
 
 	if(!joe_job)
 		qdel(new_joe)

@@ -158,9 +158,8 @@
 	dir = 4
 	},
 /obj/structure/machinery/colony_floodlight_switch/electrified_fence_switch{
-	pixel_y = 25;
-	is_on = 1;
-	ispowered = 1
+	pixel_x = -4;
+	pixel_y = 27
 	},
 /turf/open/floor/corsat/red/north,
 /area/point_loma/research_facility/security_hq)
@@ -648,6 +647,10 @@
 /obj/structure/filingcabinet/chestdrawer{
 	pixel_x = 23;
 	pixel_y = 21
+	},
+/obj/structure/machinery/colony_floodlight_switch/electrified_fence_switch{
+	pixel_x = -4;
+	pixel_y = 27
 	},
 /turf/open/floor/shiva/redfull,
 /area/point_loma/airbase/mining_colony/interior/security)

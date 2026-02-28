@@ -597,6 +597,9 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 		playsound(src, 'sound/machines/hydraulics_3.ogg', 30)
 	silent_exit = silent
 
+/obj/structure/machinery/cryopod/no_cryo/ex_act()
+	return
+
 /obj/structure/machinery/cryopod/no_cryo/right
 	dir = WEST
 

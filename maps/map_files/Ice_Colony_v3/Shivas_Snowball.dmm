@@ -11,7 +11,7 @@
 /turf/closed/wall/shiva/prefabricated/pink,
 /area/shiva/interior/lz2_habs)
 "aad" = (
-/obj/structure/machinery/cryopod/no_store/right{
+/obj/structure/machinery/cryopod/no_cryo/right{
 	pixel_y = 13;
 	layer = 3.1
 	},
@@ -897,7 +897,7 @@
 /area/shiva/exterior/cp_colony_grounds)
 "adf" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/cryopod/no_store/right,
+/obj/structure/machinery/cryopod/no_cryo/right,
 /turf/open/floor/shiva/yellow/west,
 /area/shiva/interior/garage)
 "adg" = (

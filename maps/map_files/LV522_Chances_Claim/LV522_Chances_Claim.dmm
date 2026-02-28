@@ -2694,7 +2694,7 @@
 /area/lv522/indoors/c_block/cargo)
 "bbi" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/cryopod/no_store/right,
+/obj/structure/machinery/cryopod/no_cryo/right,
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/lv522/indoors/lone_buildings/engineering)
 "bbk" = (
@@ -42438,7 +42438,7 @@
 /turf/open/floor/prison/darkpurplefull2,
 /area/lv522/indoors/a_block/dorms/glass)
 "vKF" = (
-/obj/structure/machinery/cryopod/no_store/right{
+/obj/structure/machinery/cryopod/no_cryo/right{
 	pixel_y = 13;
 	layer = 3.1
 	},

@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aaa" = (
-/obj/structure/machinery/cryopod/no_store/right{
+/obj/structure/machinery/cryopod/no_cryo/right{
 	pixel_y = 13;
 	layer = 3.1
 	},
@@ -14191,7 +14191,7 @@
 /area/bigredv2/outside/engineering)
 "bok" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/cryopod/no_store/right,
+/obj/structure/machinery/cryopod/no_cryo/right,
 /turf/open/floor/darkyellow2/west,
 /area/bigredv2/outside/engineering)
 "boq" = (

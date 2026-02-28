@@ -16059,7 +16059,7 @@
 /turf/open/gm/dirt/brown,
 /area/strata/exterior/deep_jungle/carplake_north)
 "aSG" = (
-/obj/structure/machinery/cryopod/no_store,
+/obj/structure/machinery/cryopod/no_cryo,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/outpost/engi)
 "aSH" = (
@@ -52904,7 +52904,7 @@
 /turf/open/floor/strata/white_cyan1/east,
 /area/strata/interior/bball)
 "uqY" = (
-/obj/structure/machinery/cryopod/no_store{
+/obj/structure/machinery/cryopod/no_cryo{
 	pixel_y = 13;
 	layer = 3.1
 	},

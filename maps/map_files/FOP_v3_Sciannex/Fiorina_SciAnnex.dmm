@@ -17456,7 +17456,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/civres_blue)
 "nrn" = (
-/obj/structure/machinery/cryopod/no_store,
+/obj/structure/machinery/cryopod/no_cryo,
 /turf/open/floor/prison/darkbrown2/northeast,
 /area/fiorina/maintenance)
 "nrU" = (
@@ -20311,7 +20311,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/transit_hub)
 "pxL" = (
-/obj/structure/machinery/cryopod/no_store{
+/obj/structure/machinery/cryopod/no_cryo{
 	pixel_y = 13;
 	layer = 3.1
 	},

@@ -15545,12 +15545,6 @@
 "lNC" = (
 /turf/open/floor/prison/yellowcorner,
 /area/fiorina/station/lowsec/east)
-"lND" = (
-/obj/structure/machinery/cryopod/right{
-	dir = 4
-	},
-/turf/open/space,
-/area/fiorina/oob)
 "lNP" = (
 /obj/structure/bed/roller,
 /turf/open/floor/prison,
@@ -33641,7 +33635,7 @@ bQM
 bQM
 bQM
 bQM
-lND
+bQM
 bQM
 bQM
 bQM

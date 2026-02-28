@@ -8734,6 +8734,7 @@
 	icon_state = "W";
 	pixel_x = -1
 	},
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/dark,
 /area/lv624/lazarus/engineering)
 "aTv" = (
@@ -12623,7 +12624,6 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/south_west_caves)
 "fLf" = (
-/obj/effect/landmark/survivor_spawner,
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
 	pixel_x = -1

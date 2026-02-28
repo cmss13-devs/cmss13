@@ -227,25 +227,37 @@
 
 /datum/ammo/xeno/acid/despoiler
 	name = "corrosive spit"
-	icon_state = "xeno_acid_strong"
-	flags_ammo_behavior = AMMO_ACIDIC|AMMO_XENO|AMMO_STOPPED_BY_COVER
-	accuracy = HIT_ACCURACY_TIER_MAX
+	icon_state = "xeno_acid_lingering"
+	flags_ammo_behavior = AMMO_ACIDIC|AMMO_XENO|AMMO_STOPPED_BY_COVER|AMMO_HITS_TARGET_TURF
+	accuracy = HIT_ACCURACY_MULT_TIER_5
+	accurate_range_min_strict = 3
 	accurate_range = 32
-	max_range = 4
-	damage = 35
-	spit_cost = 50
-	scatter = SCATTER_AMOUNT_TIER_6
+	max_range = 7
+	shell_speed = AMMO_SPEED_TIER_2
+	damage = 20
 	var/acid_progression = 10
+
+/datum/ammo/xeno/acid/despoiler/on_hit_turf(turf/turf, obj/projectile/projectile)
+	. = ..()
+	var/hivenumber = XENO_HIVE_NORMAL
+	if(isxeno(projectile.firer))
+		var/mob/living/carbon/xenomorph/xeno = projectile.firer
+		hivenumber = xeno.hivenumber
+
+	var/obj/effect/lingering_acid/acid = locate() in turf
+	if(!acid)
+		new /obj/effect/lingering_acid(turf, hivenumber)
+
+/datum/ammo/xeno_acid/despoiler/do_at_max_range(obj/projectile/projectile)
+	on_hit_turf(get_turf(projectile), projectile)
 
 /datum/ammo/xeno/acid/despoiler/on_hit_mob(mob/mob, obj/projectile/projectile)
 	. = ..()
 	if(. == FALSE)
 		return
 	var/datum/effects/acid/acid_effect = locate() in mob.effects_list
-	if(acid_effect)
-		acid_effect.enhance_acid(super_acid = FALSE)
-	else
-		acid_effect = new /datum/effects/acid/(mob, projectile.firer)
+	acid_effect = new /datum/effects/acid(mob, projectile.firer)
+	acid_effect.enhance_acid()
 	acid_effect.increment_duration(acid_progression)
 	splatter(mob, 1, projectile)
 
@@ -253,15 +265,17 @@
 	. = ..()
 	if(istype(target_object, /obj/structure/barricade))
 		var/obj/structure/barricade/barricade = target_object
-		barricade.acid_spray_act()
+		var/datum/effects/acid/acid_effect = locate() in barricade
+		if(!acid_effect)
+			barricade.acid_spray_act()
+
+	on_hit_turf(get_turf(target_object), proj_hit)
 
 /datum/ammo/xeno/acid/despoiler/proc/splatter(mob/mob, range = 1, obj/projectile/projectile)
 	for(var/mob/living/carbon/human/victim in range(range, mob))
 		var/datum/effects/acid/acid_effect = locate() in victim.effects_list
 		if(!acid_effect)
 			new /datum/effects/acid/(victim, projectile.firer)
-
-
 
 /datum/ammo/xeno/boiler_gas
 	name = "glob of neuro gas"

@@ -17,7 +17,7 @@
 	icon_state = "concrete_slab_thin"
 
 /obj/effect/decal/new_varadero/concrete1/tip_thin
-	icon_state = "concrete_slab_tip_thin"
+	icon_state = "concrete_tip_thin"
 
 /obj/effect/decal/new_varadero/warning/parallel
 	icon_state = "parallel_warning"

@@ -154,8 +154,16 @@
 /turf/open/floor/corsat/purple/west,
 /area/point_loma/airbase/interior/research)
 "aaB" = (
-/turf/open/hybrisa/street/roadlines,
-/area/point_loma/oob)
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 4
+	},
+/obj/structure/machinery/colony_floodlight_switch/electrified_fence_switch{
+	pixel_y = 25;
+	is_on = 1;
+	ispowered = 1
+	},
+/turf/open/floor/corsat/red/north,
+/area/point_loma/research_facility/security_hq)
 "aaC" = (
 /obj/structure/fence/slim/dark/door,
 /obj/effect/decal/medical_decals{
@@ -755,9 +763,6 @@
 /obj/effect/decal/hybrisa/road/lines3,
 /turf/open/hybrisa/street/asphalt,
 /area/point_loma/airbase/exterior/west)
-"acw" = (
-/turf/open/hybrisa/street/roadlines3,
-/area/point_loma/oob)
 "acx" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "test_warning"
@@ -862,9 +867,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/floor3,
 /area/point_loma/airbase/interior/cargo)
-"acP" = (
-/turf/open/hybrisa/street/asphalt,
-/area/point_loma/oob)
 "acQ" = (
 /obj/structure/machinery/computer/cameras/dropship,
 /turf/open/floor/corsat/squares,
@@ -878,9 +880,6 @@
 	},
 /turf/open/floor/corsat/purple/north,
 /area/point_loma/airbase/interior/research)
-"acS" = (
-/turf/open/new_varadero/taupe_concrete,
-/area/point_loma/oob)
 "acT" = (
 /turf/open/floor/corsat/green/southwest,
 /area/point_loma/research_facility/dorms)
@@ -2106,9 +2105,6 @@
 "agK" = (
 /turf/open/floor/corsat/greenwhite/east,
 /area/point_loma/research_facility/medical)
-"agL" = (
-/turf/open/new_varadero/taupe_concrete/warning,
-/area/point_loma/oob)
 "agM" = (
 /obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/corsat/squares,
@@ -2496,10 +2492,6 @@
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/point_loma/airbase/mining_colony/caves)
-"ahS" = (
-/obj/effect/decal/cleanable/dirt/sand_2,
-/turf/open/asphalt/cement_sunbleached,
-/area/point_loma/oob)
 "ahT" = (
 /obj/structure/largecrate/random/barrel/true_random{
 	pixel_y = 8;
@@ -2774,10 +2766,6 @@
 	},
 /turf/open/floor/shiva/multi_tiles,
 /area/point_loma/airbase/interior/cargo)
-"aiP" = (
-/obj/effect/decal/cleanable/dirt/sand_1,
-/turf/open/asphalt/cement_sunbleached,
-/area/point_loma/oob)
 "aiQ" = (
 /obj/structure/pipes/standard/simple/visible{
 	dir = 5
@@ -9306,7 +9294,8 @@
 "aBa" = (
 /obj/structure/fence/slim{
 	cut = 1;
-	name = "destroyed fence"
+	name = "destroyed fence";
+	density = 0
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/point_loma/airbase/exterior/west)
@@ -12665,6 +12654,10 @@
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva/multi_tiles,
 /area/point_loma/airbase/interior/cargo)
+"aKU" = (
+/obj/effect/decal/cleanable/dirt/sand_1,
+/turf/open/hybrisa/street/roadlines3,
+/area/point_loma/airbase/exterior/west)
 "aKV" = (
 /obj/structure/barricade/handrail/hybrisa/handrail{
 	dir = 4
@@ -13723,7 +13716,8 @@
 "aNG" = (
 /obj/structure/fence/slim{
 	cut = 1;
-	name = "destroyed fence"
+	name = "destroyed fence";
+	density = 0
 	},
 /turf/open/auto_turf/hybrisa_auto_turf/layer1,
 /area/point_loma/airbase/exterior/west)
@@ -17855,7 +17849,7 @@
 /area/point_loma/airbase/exterior/west)
 "bae" = (
 /obj/item/stack/sheet/metal,
-/turf/open/hybrisa/street/roadlines,
+/turf/open/hybrisa/street/roadlines3,
 /area/point_loma/airbase/exterior/west)
 "baf" = (
 /obj/item/lightstick/red/variant/planted{
@@ -26125,18 +26119,6 @@
 "bxu" = (
 /turf/open/hybrisa/street/asphalt,
 /area/point_loma/airbase/exterior/east)
-"bxv" = (
-/obj/effect/decal/hybrisa/dirt/sand_1,
-/turf/open/asphalt/cement_sunbleached,
-/area/point_loma/oob)
-"bxw" = (
-/obj/effect/decal/hybrisa/dirt/sand_2,
-/turf/open/asphalt/cement_sunbleached,
-/area/point_loma/oob)
-"bxx" = (
-/obj/effect/decal/cleanable/dirt/sand_3,
-/turf/open/asphalt/cement_sunbleached,
-/area/point_loma/oob)
 "bxy" = (
 /obj/structure/fence/slim/dark,
 /obj/structure/blocker/invisible_wall,
@@ -26755,7 +26737,8 @@
 "bzk" = (
 /obj/structure/fence/slim{
 	cut = 1;
-	name = "destroyed fence"
+	name = "destroyed fence";
+	density = 0
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/point_loma/airbase/exterior/crash_site)
@@ -26905,7 +26888,8 @@
 "bzH" = (
 /obj/structure/fence/slim{
 	cut = 1;
-	name = "destroyed fence"
+	name = "destroyed fence";
+	density = 0
 	},
 /turf/open/new_varadero/dock_concrete,
 /area/point_loma/airbase/exterior/crash_site)
@@ -34493,7 +34477,7 @@
 /turf/open/hybrisa/street/asphalt,
 /area/point_loma/airbase/mining_colony/exterior/security/checkpoint)
 "bXV" = (
-/turf/open/hybrisa/street/roadlines4,
+/turf/open/hybrisa/street/roadlines3,
 /area/point_loma/airbase/exterior/west)
 "bXW" = (
 /turf/open/hybrisa/street/sidewalkcenter,
@@ -37993,34 +37977,10 @@
 /obj/structure/window/framed/shiva/orange,
 /turf/open/new_varadero,
 /area/point_loma/airbase/mining_colony/interior/storage)
-"cjy" = (
-/obj/structure/prop/rock/black_ground,
-/turf/open/auto_turf/sand_white/layer1,
-/area/point_loma/oob)
-"cjz" = (
-/turf/open/auto_turf/sand_white/layer1,
-/area/point_loma/oob)
-"cjA" = (
-/obj/structure/prop/rock/brown,
-/turf/open/auto_turf/sand_white/layer1,
-/area/point_loma/oob)
-"cjB" = (
-/obj/structure/flora/grass/desert/heavygrass_2,
-/turf/open/auto_turf/sand_white/layer1,
-/area/point_loma/oob)
-"cjC" = (
-/obj/structure/flora/grass/desert/lightgrass_1,
-/obj/item/lightstick/red/variant/planted,
-/turf/open/auto_turf/sand_white/layer1,
-/area/point_loma/oob)
 "cjD" = (
 /obj/structure/window/framed/shiva/blue,
 /turf/open/new_varadero,
 /area/point_loma/airbase/mining_colony/interior/living_quarters)
-"cjE" = (
-/obj/structure/flora/grass/desert/heavy,
-/turf/open/auto_turf/sand_white/layer1,
-/area/point_loma/oob)
 "cjF" = (
 /obj/structure/flora/grass/desert/heavy,
 /turf/open/auto_turf/sand_white/layer1,
@@ -41022,10 +40982,6 @@
 /obj/structure/machinery/colony_floodlight,
 /turf/open/auto_turf/sand_white/layer1,
 /area/point_loma/airbase/mining_colony/exterior/north)
-"ctr" = (
-/obj/structure/machinery/colony_floodlight_switch/electrified_fence_switch,
-/turf/open/new_varadero/taupe_concrete,
-/area/point_loma/oob)
 "cts" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/auto_turf/sand_white/layer1,
@@ -109998,7 +109954,7 @@ aqf
 bGG
 aqf
 aqf
-bGt
+aaB
 biV
 aqf
 bjI
@@ -142164,8 +142120,8 @@ ajF
 ajF
 ajF
 bXT
-bQp
-bQp
+bXV
+bXV
 ajF
 ajF
 ajF
@@ -142346,7 +142302,7 @@ ajF
 aUF
 cjm
 ajF
-bQp
+bXV
 clh
 ajF
 ajF
@@ -142528,7 +142484,7 @@ bXS
 ajF
 ajF
 ajF
-bQp
+bXV
 bQp
 ajF
 cjm
@@ -143615,13 +143571,13 @@ bXT
 bXT
 bXT
 bXT
-bQp
-bQp
+bXV
+bXV
 ajF
 ajF
 ajF
-bQp
-clh
+bXV
+aKU
 ajF
 ajF
 ajF
@@ -143824,8 +143780,8 @@ ajF
 ajF
 ajF
 ajF
-bXV
-bXV
+bQp
+bQp
 ajF
 ajF
 ajF
@@ -143979,13 +143935,13 @@ bXS
 bXS
 bXS
 bXS
-bQp
-bQp
+bXV
+bXV
 bXS
 bXS
 bXS
-bQp
-bQp
+bXV
+bXV
 bXS
 bXS
 bXS
@@ -144517,9 +144473,9 @@ bUU
 bUU
 aLe
 aLe
+bXV
 bQp
-bQp
-bQp
+bXV
 aLe
 aLe
 bPH
@@ -144699,9 +144655,9 @@ bDb
 bUU
 bCI
 aLe
+bXV
 bQp
-bQp
-bQp
+bXV
 aLe
 aLe
 bPH
@@ -148157,9 +148113,9 @@ bDi
 bCV
 aeU
 bCJ
-bQp
+bXV
 bUP
-bQp
+bXV
 aLe
 aLe
 bQW
@@ -148341,7 +148297,7 @@ bCQ
 aLe
 bUP
 bQp
-bQp
+bXV
 bUP
 aLe
 bQW
@@ -162755,7 +162711,7 @@ aPi
 axa
 bQe
 bQe
-bQe
+bzg
 bQd
 asb
 asb
@@ -162936,8 +162892,8 @@ aPu
 aPi
 axa
 bQe
-bQe
-bQe
+bzg
+bzg
 bQd
 bQR
 asb
@@ -163117,7 +163073,7 @@ bnD
 bRX
 aPi
 axa
-bQe
+bzg
 bQe
 bQe
 bQd
@@ -165664,7 +165620,7 @@ asb
 bRT
 bRT
 bRT
-bPO
+bRT
 bPO
 bPO
 aTT
@@ -173690,13 +173646,13 @@ aSX
 aSX
 aSX
 aSX
-bxv
 aSX
-acS
-acS
-aaB
-aaB
-aaB
+aSX
+aSX
+aSX
+aSX
+aSX
+aSX
 aSX
 aSX
 aSX
@@ -173872,13 +173828,13 @@ aSX
 aSX
 aSX
 aSX
-bxw
 aSX
-acS
-acS
-acw
-acw
-acw
+aSX
+aSX
+aSX
+aSX
+aSX
+aSX
 aSX
 aSX
 aSX
@@ -174054,13 +174010,13 @@ aSX
 aSX
 aSX
 aSX
-bxx
 aSX
-acS
-acS
-acP
-acP
-acP
+aSX
+aSX
+aSX
+aSX
+aSX
+aSX
 aSX
 aSX
 aSX
@@ -174236,13 +174192,13 @@ aSX
 aSX
 aSX
 aSX
-ahS
 aSX
-acS
-acS
-acP
-acP
-acP
+aSX
+aSX
+aSX
+aSX
+aSX
+aSX
 aSX
 aSX
 aSX
@@ -174418,13 +174374,13 @@ aSX
 aSX
 aSX
 aSX
-aiP
 aSX
-agL
-ctr
-acP
-acP
-acP
+aSX
+aSX
+aSX
+aSX
+aSX
+aSX
 aSX
 aSX
 aSX
@@ -174602,11 +174558,11 @@ aSX
 aSX
 aSX
 aSX
-agL
-acS
-acP
-acP
-acP
+aSX
+aSX
+aSX
+aSX
+aSX
 aSX
 aSX
 aSX
@@ -174781,14 +174737,14 @@ aSX
 aSX
 aSX
 aSX
-cjA
-cjy
 aSX
-acS
-acS
-acP
-acP
-acP
+aSX
+aSX
+aSX
+aSX
+aSX
+aSX
+aSX
 aSX
 aSX
 aSX
@@ -174966,11 +174922,11 @@ aSX
 aSX
 aSX
 aSX
-acS
-acS
-acP
-acP
-acP
+aSX
+aSX
+aSX
+aSX
+aSX
 aSX
 aSX
 aSX
@@ -175142,11 +175098,11 @@ aSX
 aSX
 aSX
 aSX
-cjE
-cjz
-cjB
-cjA
-cjy
+aSX
+aSX
+aSX
+aSX
+aSX
 aSX
 aSX
 aSX
@@ -175324,11 +175280,11 @@ aSX
 aSX
 aSX
 aSX
-cjz
-cjC
-cjB
-cjz
-cjz
+aSX
+aSX
+aSX
+aSX
+aSX
 aSX
 aSX
 aSX

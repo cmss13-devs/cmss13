@@ -64,7 +64,6 @@ of predators), but can be added to include variant game modes (like humans vs. h
 		to_world("[dat]")
 
 /datum/game_mode/proc/declare_completion_announce_colony_joes()
-	set waitfor = 0
 	if(length(colony_joes))
 		var/dat = "<br>"
 		dat += SPAN_ROUNDBODY("<br>The Colony Working Joes were:")

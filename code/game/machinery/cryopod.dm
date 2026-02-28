@@ -594,7 +594,6 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	if(!silent)
 		if(mob.client)
 			to_chat(mob, SPAN_NOTICE("You feel cool air surround you. You go numb as your senses turn inward."))
-		var/area/location = get_area(src)
 		playsound(src, 'sound/machines/hydraulics_3.ogg', 30)
 	silent_exit = silent
 

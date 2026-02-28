@@ -72,7 +72,6 @@
 	set desc = "Force-toggle a colony joe round for the round type. Only works on maps that support colony joe spawns."
 	set category = "Server.Round"
 
-	// note: This is a proof of concept. ideally, scenario parameters should all be changeable in the same UI, rather than writing snowflake code everywhere like this
 	if(!SSticker || SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
 		to_chat(usr, SPAN_WARNING("Wait for the round to start!"))
 		return

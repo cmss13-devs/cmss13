@@ -151,7 +151,6 @@
 /obj/structure/platform/broken
 	stat = BROKEN
 	density = FALSE
-	icon_state = "platform_broken"
 
 /obj/structure/platform_decoration
 	name = "platform"

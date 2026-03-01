@@ -418,6 +418,11 @@
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi',
 	)
 
+/obj/item/clothing/under/marine/army/usasf //parented to army for simplicity
+	name = "USASF Uniform"
+	desc = "Standard-issue USASF Ground Crew uniform. Lightly protected."
+	icon_state = "usasf_formal"
+
 /obj/item/clothing/under/marine/officer
 	name = "marine officer uniform"
 	desc = "Softer than silk. Lighter than feather. More protective than Kevlar. Fancier than a regular jumpsuit, too. It has shards of light Kevlar to help protect against stabbing weapons and bullets."

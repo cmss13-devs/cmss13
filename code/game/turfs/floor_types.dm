@@ -5038,7 +5038,7 @@
 	icon_state = "grass2"
 
 /turf/open/floor/new_varadero/alt_concrete/floor
-	name = "foundation ground"
+	name = "fake foundation ground"
 	icon_state = "dark_asteroidfloor_alt"
 	icon = 'icons/turf/floors/new_varadero/concrete_bits.dmi'
 	plating_type = /turf/open/new_varadero/alt_concrete

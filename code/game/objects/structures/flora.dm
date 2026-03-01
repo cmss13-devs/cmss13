@@ -247,6 +247,118 @@ PLANT_CUT_MACHETE = 3 = Needs at least a machete to be cut down
 
 /obj/structure/flora/grass/colorable
 	icon = 'icons/obj/structures/props/natural/vegetation/colorable_grass.dmi'
+
+/// USASF Point Loma - Grass & Tall Grass ///
+
+/obj/structure/flora/grass/colorable/point_loma
+	color = "#A3B88A"
+
+/obj/structure/flora/grass/colorable/point_loma/random/light
+	icon_state = "lightgrass_1"
+	icon_tag = "lightgrass"
+	variations = 12
+
+/obj/structure/flora/grass/colorable/point_loma/random/heavy
+	icon_state = "heavygrass_1"
+	icon_tag = "heavygrass"
+	variations = 16
+
+/obj/structure/flora/grass/colorable/point_loma/light/one
+	icon_state = "lightgrass_1"
+
+/obj/structure/flora/grass/colorable/point_loma/light/two
+	icon_state = "lightgrass_2"
+
+/obj/structure/flora/grass/colorable/point_loma/light/three
+	icon_state = "lightgrass_3"
+
+/obj/structure/flora/grass/colorable/point_loma/light/four
+	icon_state = "lightgrass_4"
+
+/obj/structure/flora/grass/colorable/point_loma/light/five
+	icon_state = "lightgrass_5"
+
+/obj/structure/flora/grass/colorable/point_loma/light/six
+	icon_state = "lightgrass_6"
+
+/obj/structure/flora/grass/colorable/point_loma/light/seven
+	icon_state = "lightgrass_7"
+
+/obj/structure/flora/grass/colorable/point_loma/light/eight
+	icon_state = "lightgrass_8"
+
+/obj/structure/flora/grass/colorable/point_loma/light/nine
+	icon_state = "lightgrass_9"
+
+/obj/structure/flora/grass/colorable/point_loma/light/ten
+	icon_state = "lightgrass_10"
+
+/obj/structure/flora/grass/colorable/point_loma/light/eleven
+	icon_state = "lightgrass_11"
+
+/obj/structure/flora/grass/colorable/point_loma/light/twelve
+	icon_state = "lightgrass_12"
+
+/obj/structure/flora/grass/colorable/point_loma/heavy/one
+	icon_state = "heavygrass_1"
+
+/obj/structure/flora/grass/colorable/point_loma/heavy/two
+	icon_state = "heavygrass_2"
+
+/obj/structure/flora/grass/colorable/point_loma/heavy/three
+	icon_state = "heavygrass_3"
+
+/obj/structure/flora/grass/colorable/point_loma/heavy/four
+	icon_state = "heavygrass_4"
+
+/obj/structure/flora/grass/colorable/point_loma/heavy/five
+	icon_state = "heavygrass_5"
+
+/obj/structure/flora/grass/colorable/point_loma/heavy/six
+	icon_state = "heavygrass_6"
+
+/obj/structure/flora/grass/colorable/point_loma/heavy/seven
+	icon_state = "heavygrass_7"
+
+/obj/structure/flora/grass/colorable/point_loma/heavy/eight
+	icon_state = "heavygrass_8"
+
+/obj/structure/flora/grass/colorable/point_loma/heavy/nine
+	icon_state = "heavygrass_9"
+
+/obj/structure/flora/grass/colorable/point_loma/heavy/ten
+	icon_state = "heavygrass_10"
+
+/obj/structure/flora/grass/colorable/point_loma/heavy/eleven
+	icon_state = "heavygrass_11"
+
+/obj/structure/flora/grass/colorable/point_loma/heavy/twelve
+	icon_state = "heavygrass_12"
+
+/obj/structure/flora/grass/colorable/point_loma/heavy/thirteen
+	icon_state = "heavygrass_13"
+
+/obj/structure/flora/grass/colorable/point_loma/heavy/fourteen
+	icon_state = "heavygrass_14"
+
+/obj/structure/flora/grass/colorable/point_loma/heavy/fifteen
+	icon_state = "heavygrass_15"
+
+/obj/structure/flora/grass/colorable/point_loma/heavy/sixteen
+	icon_state = "heavygrass_16"
+
+/obj/structure/flora/grass/tallgrass/point_loma
+	icon = 'icons/obj/structures/props/natural/vegetation/colorable_grass.dmi'
+	icon_state = "tallgrass"
+	fire_flag = FLORA_BURN_SPREAD_ALL
+	color = "#A3B88A"
+
+/obj/structure/flora/grass/tallgrass/point_loma/corner
+	icon_state = "tallgrass_corner"
+	overlay_type = "tallgrass_overlay_corner"
+	center = FALSE
+
+
 /*
 
 

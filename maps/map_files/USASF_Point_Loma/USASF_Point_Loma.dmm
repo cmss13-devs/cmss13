@@ -14683,9 +14683,7 @@
 /turf/open/floor/darkred2/southwest,
 /area/point_loma/airbase/interior/cargo)
 "aQL" = (
-/turf/open/new_varadero/alt_concrete/warning{
-	dir = 2
-	},
+/turf/open/new_varadero/alt_concrete/warning/south,
 /area/point_loma/airbase/interior/workshop/upper)
 "aQM" = (
 /obj/structure/machinery/power/power_generator/port_gen/pacman,
@@ -22619,9 +22617,7 @@
 	pixel_y = 18;
 	pixel_x = 16
 	},
-/turf/open/new_varadero/alt_concrete/warning/corner{
-	dir = 10
-	},
+/turf/open/new_varadero/alt_concrete/warning/corner/southwest,
 /area/point_loma/airbase/interior/workshop/upper)
 "bmV" = (
 /obj/structure/pipes/standard/simple/hidden/green,

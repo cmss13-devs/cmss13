@@ -174,6 +174,7 @@
 /datum/equipment_preset/survivor/usasf/crew/load_gear(mob/living/carbon/human/new_human)
 	..()
 	var/duty = rand(1,10)
+	var/shoes = rand (1,3)
 	switch(duty)
 		if(1 , 3) //off-duty
 			var/offduty_outfit = rand(1,4) //1 number per outfit
@@ -207,6 +208,13 @@
 					new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/army/usasf, WEAR_BODY) //ToDO: Make
 				if (2)
 					new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/pilot/dcc, WEAR_BODY)
+	switch(shoes)
+		if (1)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/sandal, WEAR_FEET)
+		if (2)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine, WEAR_FEET) //ToDO: USASF Boots
+		if (3)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/black, WEAR_FEET)
 
 /datum/equipment_preset/survivor/usasf/crew/duty
 	name = "USASF Ground Crew"
@@ -266,7 +274,7 @@
 	paygrades = list(PAY_SHORT_NO1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_NO2 = JOB_PLAYTIME_TIER_1)
 
 /datum/equipment_preset/survivor/usasf/crew/duty/mess_tech/load_gear(mob/living/carbon/human/new_human)
-	. = ..()
+	..()
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/welding, WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full, WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest, WEAR_JACKET)
@@ -285,7 +293,7 @@
 	skills = /datum/skills/military/survivor/usasf/technician
 	paygrades = list(PAY_SHORT_NO1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_NO2 = JOB_PLAYTIME_TIER_1)
 /datum/equipment_preset/survivor/usasf/crew/duty/cargo_tech/load_gear(mob/living/carbon/human/new_human)
-	. = ..()
+	..()
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest/yellow, WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow, WEAR_HANDS)
@@ -315,7 +323,7 @@
 	paygrades = list(PAY_SHORT_NO2 = JOB_PLAYTIME_TIER_0, PAY_SHORT_NO3 = JOB_PLAYTIME_TIER_1)
 
 /datum/equipment_preset/survivor/usasf/crew/medical/nurse/load_gear(mob/living/carbon/human/new_human)
-	. = ..()
+	..()
 	spawn_secondary(new_human)
 	spawn_backpack(new_human)
 	spawn_helmet(new_human)
@@ -332,7 +340,7 @@
 	paygrades = list(PAY_SHORT_NO3 = JOB_PLAYTIME_TIER_0, PAY_SHORT_NO4 = JOB_PLAYTIME_TIER_1)
 
 /datum/equipment_preset/survivor/usasf/crew/medical/doctor/load_gear(mob/living/carbon/human/new_human)
-	. = ..()
+	..()
 	spawn_secondary(new_human)
 	spawn_backpack(new_human)
 	spawn_helmet(new_human)
@@ -363,7 +371,7 @@
 	survivor_variant = SECURITY_SURVIVOR
 
 /datum/equipment_preset/survivor/usasf/crew/security/load_gear(mob/living/carbon/human/new_human)
-	. = ..()
+	..()
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/mp, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/MP, WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/MP, WEAR_HEAD)
@@ -391,7 +399,7 @@
 	)
 
 /datum/equipment_preset/survivor/usasf/crew/usasf_officer/load_gear(mob/living/carbon/human/new_human)
-	. = ..()
+	..()
 	// TODO: Add USASF Uniform
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/MP/SO, WEAR_HEAD)
 	spawn_security_primary(new_human)
@@ -410,7 +418,7 @@
 	paygrades = list(PAY_SHORT_NO3 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/survivor/usasf/crew/officer/pilot/load_gear(mob/living/carbon/human/new_human)
-	. = ..()
+	..()
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/pilot, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/pilot/novisor, WEAR_HEAD)
 	spawn_secondary(new_human)
@@ -428,7 +436,7 @@
 	paygrades = list(PAY_SHORT_NO5 = JOB_PLAYTIME_TIER_0) // Major equivalent
 
 /datum/equipment_preset/survivor/usasf/crew/officer/co/load_gear(mob/living/carbon/human/new_human)
-	. = ..()
+	..()
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/mtr6m/full, WEAR_WAIST)
 	spawn_security_primary(new_human)
 	spawn_backpack(new_human)

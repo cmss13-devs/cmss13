@@ -9344,6 +9344,10 @@
 	},
 /turf/open/floor/corsat/retrosquareslight,
 /area/point_loma/research_facility/medical)
+"aBe" = (
+/obj/structure/flora/grass/tallgrass/point_loma/corner,
+/turf/open/auto_turf/sand_white/layer1,
+/area/point_loma/airbase/mining_colony/caves)
 "aBf" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "MedicalDistriShu";
@@ -30304,12 +30308,6 @@
 "bIW" = (
 /turf/closed/wall/new_varadero,
 /area/point_loma/research_facility/gym)
-"bIX" = (
-/obj/structure/flora/grass/tallgrass/point_loma/corner{
-	dir = 7
-	},
-/turf/open/auto_turf/sand_white/layer1,
-/area/point_loma/airbase/exterior/east)
 "bIY" = (
 /turf/open/floor/corsat,
 /area/point_loma/research_facility/security_hq)
@@ -41577,7 +41575,6 @@
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/dorms)
 "cuO" = (
-/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/barricade/handrail/hybrisa{
 	dir = 1;
@@ -158726,7 +158723,7 @@ bQf
 bQf
 bQd
 bQd
-bIX
+bZf
 bIo
 bZq
 bZq
@@ -158908,7 +158905,7 @@ bQf
 bQf
 bQd
 bQd
-bIX
+bZf
 bZq
 bZq
 bZq
@@ -159090,7 +159087,7 @@ bQf
 bQf
 bQd
 bQd
-bIX
+bZf
 bZq
 bZq
 bZq
@@ -162237,7 +162234,7 @@ bOR
 bOS
 bOR
 bOR
-bCR
+aBe
 bzh
 asb
 asb

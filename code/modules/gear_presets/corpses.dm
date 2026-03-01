@@ -1928,12 +1928,14 @@
 	xenovictim = TRUE
 
 /datum/equipment_preset/corpse/point_loma/alphatech
+	name  = "Corpse - AlphaTech"
 
 /datum/equipment_preset/corpse/point_loma/alphaatech/burst
 	name = "Corpse - Burst - Alphatech"
 	xenovictim = TRUE
 
 /datum/equipment_preset/corpse/point_loma/usasf
+	name = "Corpse - Burst - USASF"
 
 /datum/equipment_preset/corpse/point_loma/usasf/burst
 	name = "Corpse - Burst - USASF"

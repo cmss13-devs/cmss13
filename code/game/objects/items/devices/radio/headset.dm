@@ -1482,13 +1482,6 @@
 	initial_keys = list(/obj/item/device/encryptionkey/almayer, /obj/item/device/encryptionkey/alphatech)
 	has_hud = FALSE //toDO: Fix!
 
-/obj/item/device/radio/headset/distress/CMB/ICC
-	name = "\improper ICC Liaison Headset"
-	desc = "An expensive headset used by The Interstellar Commerce Commission. This one in particular has a liaison chip with the CMB. Featured channels include: ; - CMB, :o - Colony, :g - public, :v - marine command, :m - medbay, :t - intel, :y - Weyland-Yutani."
-	icon_state = "wy_headset"
-	additional_hud_types = list(MOB_HUD_FACTION_WY)
-	initial_keys = list(/obj/item/device/encryptionkey/WY, /obj/item/device/encryptionkey/cmb)
-
 /obj/item/device/radio/headset/almayer/mcom/vc
 	name = "marine vehicle crew radio headset"
 	desc = "Used by USCM vehicle crew, features a non-standard brace. Channels are as follows: :v - marine command, :n - engineering, :m - medbay, :u - requisitions."

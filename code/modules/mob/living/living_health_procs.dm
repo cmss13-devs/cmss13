@@ -104,7 +104,7 @@
 	if(S)
 		return S.get_duration_left() / GLOBAL_STATUS_MULTIPLIER
 	return 0
-/mob/living/proc/Stun(amount, resistable = FALSE)
+/mob/living/proc/Stun(amount, resistible = FALSE)
 	if(!(status_flags & CANSTUN))
 		return
 	amount = GetStunDuration(amount)
@@ -113,9 +113,9 @@
 		if(nst_stim.get_property(PROPERTY_NERVESTIMULATING))
 			nst_stim.volume += max(min((-1*amount)/10, 0), -10)
 	if(S)
-		S.update_duration(amount, increment=TRUE, resistable=resistable)
+		S.update_duration(amount, increment=TRUE, resistible=resistible)
 	else if(amount > 0)
-		S = apply_status_effect(/datum/status_effect/incapacitating/stun, amount, resistable)
+		S = apply_status_effect(/datum/status_effect/incapacitating/stun, amount, resistible)
 	return S
 /mob/living/proc/SetStun(amount, ignore_canstun = FALSE) //Sets remaining duration
 	if(!(status_flags & CANSTUN))
@@ -448,6 +448,9 @@
 	stuttering = max(stuttering + amount,0)
 	return
 
+/mob/living/proc/EyeBlind(amount)
+	eye_blind = max(max(eye_blind, amount), 0)
+	return
 
 /mob/living/proc/SetEyeBlind(amount)
 	eye_blind = max(amount, 0)

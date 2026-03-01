@@ -1,6 +1,0 @@
-author: "Nihisohel"
-delete-after: True
-changes:
-  - balance: "The spare senior command headset is now incapable of broadcasting a live tacmap, you know who you are giving it away to grunts."
-  - code_imp: "The CO tablet closet now spawns its contents upon initialization, rather than mapped in"
-  - bugfix: "SEAs get their MP radio channel back."

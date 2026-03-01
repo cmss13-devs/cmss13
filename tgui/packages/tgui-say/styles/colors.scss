@@ -34,6 +34,8 @@ $echo: hsl(158, 49%, 47%);
 $foxtrot: hsl(22, 41%, 48%);
 $jtac: hsl(311, 49%, 45%);
 $wy: hsl(33, 99%, 57%);
+$wypub: hsl(33, 90%, 62%);
+$wysec: hsl(33, 85%, 44%);
 $cct: hsl(184, 57%, 55%);
 $intel: hsl(120, 97%, 25%);
 $pmc: hsl(184, 57%, 55%);
@@ -70,6 +72,8 @@ $_channel_map: (
   'foxtrot': $foxtrot,
   'jtac': $jtac,
   'wy': $wy,
+  'wypub': $wypub,
+  'wysec': $wysec,
   'cct': $cct,
   'intel': $intel,
   'sof': $highcom,

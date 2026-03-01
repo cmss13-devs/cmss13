@@ -1,4 +1,4 @@
-#This script processes screenshots from the Mass-Screenshot Debug verb in SS13 into a full map image
+# This script processes screenshots from the Mass-Screenshot Debug verb in SS13 into a full map image
 
 # Loosely based on https://github.com/vortex1942/telescience/blob/master/src/tools/PhotoProcessor.py
 
@@ -11,21 +11,40 @@
 
 from PIL import Image
 from os import listdir, path
+import winreg
 
 # Selection of Input/Output directories
-rawimgdir = str(input("Directory of RAW images: "))
-if path.exists(rawimgdir) == False:
+defaultrawimgdir = path.expanduser("~/Documents/BYOND/screenshots") # default windows
+if not path.exists(defaultrawimgdir):
+    defaultrawimgdir = path.expanduser("~/BYOND/screenshots") # default lutris?
+    if not path.exists(defaultrawimgdir):
+        try:
+            # look up registry key on windows for where the default Documents folder is changed to
+            documentskey = winreg.OpenKey(winreg.HKEY_CURRENT_USER, "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders")
+            documentsvalue, _ = winreg.QueryValueEx(documentskey, "Personal")
+            documentskey.Close()
+            defaultrawimgdir = path.abspath(documentsvalue + "/BYOND/screenshots")
+        except:
+            pass
+rawimgdir = ""
+if path.exists(defaultrawimgdir):
+    rawimgdir = str(input("Directory of RAW images (leave blank to use BYOND/screenshots directory): "))
+    if rawimgdir == "":
+        rawimgdir = defaultrawimgdir
+else:
+    rawimgdir = str(input("Directory of RAW images: "))
+if not path.exists(rawimgdir):
     print("Directory could not be found!")
     exit(1)
 
 imgdir = str(input("Directory for output image (leave blank to use RAW image directory): "))
 if imgdir == "":
     imgdir = rawimgdir
-elif path.exists(imgdir) == False:
+elif not path.exists(imgdir):
     print("Directory could not be found!")
     exit(1)
 
-exportfilename = str(input("Filename for Full Image (E.g LV624_Complete): "))
+exportfilename = str(input("Filename for Full Image (E.g. LV624_Complete): "))
 if exportfilename == "":
     print("Filename is invalid!")
     exit(1)

@@ -196,7 +196,7 @@
 	key = "pain"
 	message = "cries out in pain!"
 	alt_message = "cries out"
-	species_type_allowed_typecache = list(/datum/species/human, /datum/species/synthetic, /datum/species/yautja, /datum/species/synthetic/colonial/wy_droid)
+	species_type_allowed_typecache = list(/datum/species/human, /datum/species/synthetic, /datum/species/yautja, /datum/species/synthetic/gen_two/gen_one/wy_droid)
 	species_type_blacklist_typecache = list(/datum/species/synthetic)
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 

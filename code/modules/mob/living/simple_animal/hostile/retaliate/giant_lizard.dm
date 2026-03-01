@@ -908,24 +908,24 @@
 		return
 
 	if(ishuman(pounced_mob) && (pounced_mob.dir in reverse_nearby_direction(dir)))
-		var/mob/living/carbon/human/human = pounced_mob
-		if(human.check_shields("the pounce", get_dir(human, src), attack_type = SHIELD_ATTACK_POUNCE, custom_response = TRUE)) //Human shield block.
-			visible_message(SPAN_DANGER("[src] slams into [human]!"))
+		var/mob/living/carbon/human/human_mob = pounced_mob
+		if(human_mob.check_shields("the pounce", get_dir(human_mob, src), attack_type = SHIELD_ATTACK_POUNCE, custom_response = TRUE)) //human_mob shield block.
+			visible_message(SPAN_DANGER("[src] slams into [human_mob]!"))
 			KnockDown(1)
 			Stun(1)
 			throwing = FALSE //Reset throwing manually.
-			playsound(human, "bonk", 75, FALSE) //bonk
+			playsound(human_mob, "bonk", 75, FALSE) //bonk
 			return
 
-		if(isyautja(human) && prob(75))//Body slam.
-			visible_message(SPAN_DANGER("[human] body slams [src]!"))
+		if(isyautja(human_mob) && prob(75))//Body slam.
+			visible_message(SPAN_DANGER("[human_mob] body slams [src]!"))
 			KnockDown(3)
 			Stun(3)
 			throwing = FALSE
 			playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
 			return
-		if(iscolonysynthetic(human) && prob(60))
-			visible_message(SPAN_DANGER("[human] withstands being pounced and slams down [src]!"))
+		if(HAS_TRAIT(human_mob, TRAIT_POUNCE_RESISTANT) && prob(60))
+			visible_message(SPAN_DANGER("[human_mob] withstands being pounced and slams down [src]!"))
 			KnockDown(1.5)
 			Stun(1.5)
 			throwing = FALSE

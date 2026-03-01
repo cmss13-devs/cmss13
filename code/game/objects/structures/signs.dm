@@ -108,6 +108,14 @@
 	. = ..()
 	desc = "1) These premises are under the operation of the United Americas Commission for Quality and Standards.<br>2) Access to these premises are regulated by UACQS personnel, or the regulating authority of the region.<br>[SPAN_RED("3) In accordance with Civil Law, firearms are not permitted in these premises.")]"
 
+/obj/structure/sign/minefield
+	name = "\improper MINEFIELD WARNING"
+	desc = "A warning sign indicating the presence of a minefield!"
+	icon_state = "minefield"
+
+/obj/structure/sign/minefield/alt
+	icon_state = "mines_warning"
+
 //============//
 //  Banners  //
 //==========//
@@ -640,7 +648,7 @@
 
 /obj/structure/sign/ROsign
 	name = "\improper USCM Requisitions Office Guidelines"
-	desc = " 1. You are not entitled to service or equipment. Attachments are a privilege, not a right.\n 2. You must be fully dressed to obtain service. Cryosleep underwear is non-permissible.\n 3. The Quartermaster has the final say and the right to decline service. Only the Acting Commanding Officer may override their decisions.\n 4. Please treat your Requsitions staff with respect. They work hard."
+	desc = "1. You are not entitled to service or equipment. Attachments are a privilege, not a right.\n 2. You must be fully dressed to obtain service. Cryosleep underwear is non-permissible.\n 3. The Quartermaster has the final say and the right to decline service. Only the Acting Commanding Officer may override their decisions.\n 4. Please treat your Requsitions staff with respect. They work hard."
 	icon_state = "roplaque"
 	deconstructable = FALSE
 

@@ -1927,6 +1927,11 @@
 	name = "Corpse - Burst - US Army - Medic"
 	xenovictim = TRUE
 
+// USASF Point Loma //
+
+/datum/equipment_preset/corpse/point_loma
+	flags = EQUIPMENT_PRESET_STUB
+
 /datum/equipment_preset/corpse/point_loma/alphatech // ToDO:
 	name  = "Corpse - AlphaTech"
 

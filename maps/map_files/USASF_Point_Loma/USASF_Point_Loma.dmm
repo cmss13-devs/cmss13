@@ -9344,6 +9344,10 @@
 	},
 /turf/open/floor/corsat/retrosquareslight,
 /area/point_loma/research_facility/medical)
+"aBe" = (
+/obj/structure/flora/grass/tallgrass/point_loma/corner,
+/turf/open/auto_turf/sand_white/layer1,
+/area/point_loma/airbase/mining_colony/caves)
 "aBf" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "MedicalDistriShu";
@@ -9877,6 +9881,10 @@
 	},
 /turf/open/floor/white,
 /area/point_loma/research_facility/gym)
+"aCC" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/asphalt/cement_shaded,
+/area/point_loma/research_facility/hallway/east)
 "aCD" = (
 /turf/open/floor/shiva/yellow/north,
 /area/point_loma/airbase/mining_colony/interior/storage)
@@ -12648,6 +12656,10 @@
 /obj/structure/surface/table/woodentable,
 /turf/open/floor/shiva/yellowfull,
 /area/point_loma/research_facility/hallway/north)
+"aKR" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/shiva/yellowfull,
+/area/point_loma/airbase/interior/cargo/lower)
 "aKS" = (
 /obj/structure/bed/chair{
 	dir = 8;
@@ -12820,6 +12832,7 @@
 /area/point_loma/airbase/interior/cargo/lower)
 "aLp" = (
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/shiva/yellowfull,
 /area/point_loma/airbase/interior/cargo/lower)
 "aLq" = (
@@ -14698,9 +14711,7 @@
 /turf/open/floor/darkred2/southwest,
 /area/point_loma/airbase/interior/cargo)
 "aQL" = (
-/turf/open/new_varadero/alt_concrete/warning{
-	dir = 2
-	},
+/turf/open/new_varadero/alt_concrete/warning/south,
 /area/point_loma/airbase/interior/workshop/upper)
 "aQM" = (
 /obj/structure/machinery/power/power_generator/port_gen/pacman,
@@ -22682,9 +22693,7 @@
 	pixel_y = 18;
 	pixel_x = 16
 	},
-/turf/open/new_varadero/alt_concrete/warning/corner{
-	dir = 10
-	},
+/turf/open/new_varadero/alt_concrete/warning/corner/southwest,
 /area/point_loma/airbase/interior/workshop/upper)
 "bmV" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -28244,12 +28253,6 @@
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/new_varadero/taupe_concrete,
 /area/point_loma/airbase/exterior/west)
-"bCR" = (
-/obj/structure/flora/grass/tallgrass/point_loma/corner{
-	dir = 3
-	},
-/turf/open/auto_turf/sand_white/layer1,
-/area/point_loma/airbase/mining_colony/caves)
 "bCS" = (
 /obj/item/alien_embryo,
 /turf/open/new_varadero/dock_concrete,
@@ -30308,12 +30311,6 @@
 "bIW" = (
 /turf/closed/wall/new_varadero,
 /area/point_loma/research_facility/gym)
-"bIX" = (
-/obj/structure/flora/grass/tallgrass/point_loma/corner{
-	dir = 7
-	},
-/turf/open/auto_turf/sand_white/layer1,
-/area/point_loma/airbase/exterior/east)
 "bIY" = (
 /turf/open/floor/corsat,
 /area/point_loma/research_facility/security_hq)
@@ -41581,7 +41578,6 @@
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/dorms)
 "cuO" = (
-/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/barricade/handrail/hybrisa{
 	dir = 1;
@@ -94070,7 +94066,7 @@ bNn
 bNn
 cis
 cin
-bNn
+aKR
 bNe
 aKI
 bLc
@@ -94252,7 +94248,7 @@ bNn
 bNQ
 cit
 cio
-bNn
+aKR
 bNf
 aKI
 bLo
@@ -94616,7 +94612,7 @@ bNn
 bNn
 ciu
 aLy
-bNn
+aKR
 bNf
 aKI
 aKq
@@ -113566,11 +113562,11 @@ bIO
 bIO
 cfa
 ceK
-ceK
-ceK
-ceK
-ceK
-ceK
+aCC
+aCC
+aCC
+aCC
+aCC
 ceK
 ceK
 bJw
@@ -158730,7 +158726,7 @@ bQf
 bQf
 bQd
 bQd
-bIX
+bZf
 bIo
 bZq
 bZq
@@ -158912,7 +158908,7 @@ bQf
 bQf
 bQd
 bQd
-bIX
+bZf
 bZq
 bZq
 bZq
@@ -159094,7 +159090,7 @@ bQf
 bQf
 bQd
 bQd
-bIX
+bZf
 bZq
 bZq
 bZq
@@ -162241,7 +162237,7 @@ bOR
 bOS
 bOR
 bOR
-bCR
+aBe
 bzh
 asb
 asb
@@ -162423,7 +162419,7 @@ bOR
 bOS
 bOS
 bOR
-bCR
+aBe
 bzh
 asb
 asb

@@ -9,7 +9,7 @@
 	faction = FACTION_ALPHATECH
 	faction_group = list(FACTION_ALPHATECH, FACTION_SURVIVOR)
 	origin_override = ORIGIN_ALPHATECH
-	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	flags = EQUIPMENT_PRESET_STUB
 
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 
@@ -28,6 +28,7 @@
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_CHINESE, LANGUAGE_JAPANESE, LANGUAGE_RUSSIAN)
 	skills = /datum/skills/civilian/survivor/manager // ToDO: Check what manager skills actually are
 	paygrades = list(PAY_SHORT_ATHC1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ATHC2 = JOB_PLAYTIME_TIER_1, PAY_SHORT_ATHC3 = JOB_PLAYTIME_TIER_2)
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 /datum/equipment_preset/survivor/alphatech/corporate/load_gear(mob/living/carbon/human/new_human)
 	..()
@@ -75,6 +76,7 @@
 	skills = /datum/skills/civilian/survivor/scientist
 	paygrades = list(PAY_SHORT_CCMOA = JOB_PLAYTIME_TIER_0, PAY_SHORT_CCMOC = JOB_PLAYTIME_TIER_1)
 	survivor_variant = SCIENTIST_SURVIVOR
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 /datum/equipment_preset/survivor/alphatech/scientist/load_gear(mob/living/carbon/human/new_human) // ToDO: Uncopypaste this
 	..()
@@ -104,6 +106,7 @@
 	skills = /datum/skills/civilian/survivor/miner // ToDO: Make this an Engineer-type
 	paygrades = list(PAY_SHORT_CIV = JOB_PLAYTIME_TIER_0)
 	survivor_variant = CIVILIAN_SURVIVOR
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 /datum/equipment_preset/survivor/alphatech/miner/load_gear(mob/living/carbon/human/new_human) // TODO: Uncopypaste this
 	..()

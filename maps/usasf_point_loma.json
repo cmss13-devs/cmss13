@@ -12,23 +12,21 @@
 		"/datum/equipment_preset/survivor/alphatech/scientist",
 		"/datum/equipment_preset/survivor/alphatech/scientist/research_director",
 		"/datum/equipment_preset/survivor/alphatech/off_duty",
-		"/datum/equipment_preset/survivor/usasf/crew",
-		"/datum/equipment_preset/survivor/usasf/crew/off_duty",
-		"/datum/equipment_preset/survivor/usasf/crew/hangar_tech",
-		"/datum/equipment_preset/survivor/usasf/crew/mess_tech",
-		"/datum/equipment_preset/survivor/usasf/crew/cargo_tech",
+		"/datum/equipment_preset/survivor/usasf/crew/duty",
+		"/datum/equipment_preset/survivor/usasf/crew/duty/hangar_tech",
+		"/datum/equipment_preset/survivor/usasf/crew/duty/mess_tech",
+		"/datum/equipment_preset/survivor/usasf/crew/duty/cargo_tech",
 		"/datum/equipment_preset/survivor/usasf/crew/medical/nurse",
 		"/datum/equipment_preset/survivor/usasf/crew/medical/doctor",
-		"/datum/equipment_preset/survivor/usasf/security",
-		"/datum/equipment_preset/survivor/usasf/officer",
-		"/datum/equipment_preset/survivor/usasf/officer/off_duty",
-		"/datum/equipment_preset/survivor/usasf/officer/pilot"
+		"/datum/equipment_preset/survivor/usasf/crew/security",
+		"/datum/equipment_preset/survivor/usasf/crew/officer",
+		"/datum/equipment_preset/survivor/usasf/crew/officer/pilot"
     ],
 	"synth_survivor_types": [
         "/datum/equipment_preset/synth/usasf"
     ],
 	"CO_survivor_types": [
-        "/datum/equipment_preset/survivor/usasf/officer/co"
+        "/datum/equipment_preset/survivor/usasf/crew/officer/co"
     ],
     "map_item_type": "/obj/item/map/lazarus_landing_map",
     "announce_text": "Distress Signal received from USASF Point Loma, T-1 Hour Ago. \n Orbital Scan Underway. \n Await results.",

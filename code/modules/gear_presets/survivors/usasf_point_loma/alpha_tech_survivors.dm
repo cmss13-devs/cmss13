@@ -24,8 +24,6 @@
 	skills = /datum/skills/civilian/survivor/manager // ToDO: Check what manager skills actually are
 	paygrades = list(PAY_SHORT_ATHC1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ATHC2 = JOB_PLAYTIME_TIER_1, PAY_SHORT_ATHC3 = JOB_PLAYTIME_TIER_2)
 
-
-
 /datum/equipment_preset/survivor/alphatech/corporate/chief_engineer
 	name = "Alpha-Tech Mining Colony Chief Engineer"
 	job_title = JOB_ALPHATECH_CHIEF_ENGINEER

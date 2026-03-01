@@ -1472,7 +1472,7 @@
 	initial_keys = list(/obj/item/device/encryptionkey/soc/usasf)
 	volume = RADIO_VOLUME_QUIET
 	has_hud = TRUE
-	hud_type = MOD_HUD_FACTION_MARINE
+	hud_type = MOB_HUD_FACTION_MARINE
 
 /obj/item/device/radio/headset/distress/alphatech
 	name = "Alpha-Tech Hardware Corporation Headset" // toDO: Fix!

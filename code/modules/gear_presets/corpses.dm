@@ -1927,7 +1927,7 @@
 	name = "Corpse - Burst - US Army - Medic"
 	xenovictim = TRUE
 
-/datum/equipment_preset/corpse/point_loma/alphatech
+/datum/equipment_preset/corpse/point_loma/alphatech // ToDO:
 	name  = "Corpse - AlphaTech"
 
 /datum/equipment_preset/corpse/point_loma/alphaatech/burst

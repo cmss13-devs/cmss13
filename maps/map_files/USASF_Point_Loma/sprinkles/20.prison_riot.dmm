@@ -148,14 +148,10 @@
 /turf/open/floor/corsat/red/northeast,
 /area/point_loma/research_facility/security_hq)
 "dT" = (
-/obj/item/ammo_magazine/pistol/l54,
-/obj/item/ammo_magazine/pistol/l54,
-/obj/item/ammo_magazine/pistol/l54,
-/obj/item/ammo_magazine/pistol/l54,
-/obj/item/ammo_box/magazine/l54,
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
+/obj/effect/spawner/random/gun/shotgun,
 /turf/open/floor/corsat/red,
 /area/point_loma/research_facility/security_hq)
 "el" = (
@@ -207,9 +203,7 @@
 "gh" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/corpsespawner/prison_security,
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
-	pixel_y = -1
-	},
+/obj/effect/spawner/random/gun/shotgun,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/security_hq)
 "gx" = (
@@ -266,7 +260,7 @@
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/obj/effect/spawner/random/gun/shotgun,
 /turf/open/floor/corsat/red/north,
 /area/point_loma/research_facility/security_hq)
 "hB" = (
@@ -388,14 +382,7 @@
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
-/obj/item/weapon/gun/pistol/l54{
-	pixel_x = -2;
-	pixel_y = 4
-	},
-/obj/item/weapon/gun/pistol/l54{
-	pixel_x = -2;
-	pixel_y = -4
-	},
+/obj/effect/spawner/random/gun/uscm_primary,
 /turf/open/floor/corsat/red/north,
 /area/point_loma/research_facility/security_hq)
 "kU" = (
@@ -467,6 +454,7 @@
 	pixel_y = -3;
 	pixel_x = 12
 	},
+/obj/effect/spawner/random/gun/clf_secondary,
 /turf/open/floor/corsat/red/west,
 /area/point_loma/research_facility/security_hq)
 "lV" = (
@@ -1344,9 +1332,9 @@
 	pixel_x = 4;
 	pixel_y = 6
 	},
-/obj/effect/spawner/random/tool{
-	pixel_x = -7;
-	pixel_y = -1
+/obj/effect/spawner/random/technology_scanner{
+	pixel_y = -3;
+	pixel_x = -3
 	},
 /turf/open/floor/corsat/red,
 /area/point_loma/research_facility/security_hq)

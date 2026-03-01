@@ -36,6 +36,7 @@
 
 #define DANCER_LAST_TAG_SPREAD_DURATION 7 SECONDS
 #define DANCER_YELLOW_TAG_SPREAD_CD 20 SECONDS
+#define DANCER_YELLOW_TAG_SPREAD_DIST 5
 #define DANCER_TAG_SPREAD_COUNT 5
 
 /datum/behavior_delegate/praetorian_dancer
@@ -134,7 +135,7 @@
 	try_spread_tags_from(target_carbon)
 
 /datum/behavior_delegate/praetorian_dancer/proc/try_spread_tags_from(mob/living/carbon/human/source)
-	if(!isxeno_human(source))
+	if(!ishuman(source))
 		return
 
 	var/turf/origin = get_turf(source)
@@ -151,35 +152,27 @@
 	candidates.Cut()
 	var/spread_count = 0
 
-	for(var/mob/living/carbon/human/human_target in view(5, origin))
+	for(var/mob/living/carbon/human/human_target in view(DANCER_YELLOW_TAG_SPREAD_DIST, origin))
 		if(human_target == source)
 			continue
-		if(human_target.stat == DEAD)
-			continue
-		if(human_target.stat == UNCONSCIOUS)
-			continue
-		if(!isxeno_human(human_target))
+		if(human_target.stat == DEAD || human_target.stat == UNCONSCIOUS)
 			continue
 		if(locate(/datum/effects/dancer_tag/normal) in human_target.effects_list)
 			continue
 		if(locate(/datum/effects/dancer_tag/spread) in human_target.effects_list)
 			continue
-		candidates += human_target
-
-	if(!length(candidates))
-		return
-
-	candidates = sort_list_dist(candidates, origin)
-	for(var/mob/living/carbon/human/human_target in candidates)
-		if(spread_count >= DANCER_TAG_SPREAD_COUNT)
-			break
+		if(get_dist(origin, human_target) > DANCER_YELLOW_TAG_SPREAD_DIST)
+			continue
 
 		new /datum/effects/dancer_tag/spread(human_target, bound_xeno)
 		human_target.update_xeno_hostile_hud()
 		spread_count++
 
-		if(spread_count)
-			last_dancer_spread_time = world.time
+		if(spread_count >= DANCER_TAG_SPREAD_COUNT)
+			break
+
+	if(spread_count)
+		last_dancer_spread_time = world.time
 
 /datum/behavior_delegate/praetorian_dancer/proc/intent_detection()
 	if(bound_xeno && bound_xeno.a_intent == INTENT_DISARM)

@@ -28,8 +28,6 @@
 	job_title  = JOB_USASF_CREW
 	assignment = JOB_USASF_CREW
 
-/datum/equipment_preset/survivor/usasf/crew/off_duty
-
 /datum/equipment_preset/survivor/usasf/crew/chaplain
 	name = "USASF Chaplain"
 	job_title = JOB_USASF_CHAPLAIN

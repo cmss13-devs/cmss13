@@ -19,7 +19,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG
 	gun_category = GUN_CATEGORY_SHOTGUN
 	aim_slowdown = SLOWDOWN_ADS_SHOTGUN
-	wield_delay = WIELD_DELAY_NORMAL //Shotguns are as hard to pull up as a rifle. They're quite bulky afterall
+	wield_delay = WIELD_DELAY_NORMAL //Shotguns are as hard to pull up as a rifle. They're quite bulky after all
 	has_empty_icon = FALSE
 	has_open_icon = FALSE
 	fire_delay_group = list(FIRE_DELAY_GROUP_SHOTGUN)
@@ -88,8 +88,17 @@ can cause issues with ammo types getting mixed up during the burst.
 		if(in_chamber)
 			in_chamber = null
 			var/obj/item/ammo_magazine/handful/new_handful = retrieve_shell(ammo.type)
-			playsound(user, reload_sound, 25, TRUE)
-			new_handful.forceMove(get_turf(src))
+			if(user)
+				for(var/obj/item/ammo_magazine/handful/hand in user.get_hands())
+					if(hand && hand.default_ammo == new_handful.default_ammo && hand.current_rounds < hand.max_rounds)
+						hand.transfer_ammo(new_handful, user, 1)
+						qdel(new_handful)
+						new_handful = null
+						break
+				if(new_handful)
+					user.put_in_hands(new_handful)
+				playsound(user, reload_sound, 25, TRUE)
+				to_chat(user, SPAN_WARNING("You eject a shell from the [src]'s chamber."))
 			if(flags_gun_features & GUN_AMMO_COUNTER && user)
 				var/chambered = in_chamber ? TRUE : FALSE //useless, but for consistency
 				if(!silent)
@@ -109,18 +118,26 @@ can cause issues with ammo types getting mixed up during the burst.
 	var/obj/item/ammo_magazine/handful/new_handful = retrieve_shell(current_mag.chamber_contents[current_mag.chamber_position])
 
 	if(user)
-		user.put_in_hands(new_handful)
-		playsound(user, reload_sound, 25, 1)
+		for(var/obj/item/ammo_magazine/handful/hand in user.get_hands())
+			if(hand && hand.default_ammo == new_handful.default_ammo && hand.current_rounds < hand.max_rounds)
+				hand.transfer_ammo(new_handful, user, 1)
+				qdel(new_handful)
+				new_handful = null
+				break
+		if(new_handful)
+			user.put_in_hands(new_handful)
+		playsound(user, reload_sound, 25, TRUE)
 	else
 		new_handful.forceMove(get_turf(src))
 
 	current_mag.current_rounds--
 	current_mag.chamber_contents[current_mag.chamber_position] = "empty"
 	current_mag.chamber_position--
-	return 1
+	return TRUE
 
 		//While there is a much smaller way to do this,
 		//this is the most resource efficient way to do it.
+		// what the hell are you talking about cm dev
 /obj/item/weapon/gun/shotgun/proc/retrieve_shell(selection)
 	var/datum/ammo/A = GLOB.ammo_list[selection]
 	var/obj/item/ammo_magazine/handful/new_handful = new A.handful_type()
@@ -252,7 +269,7 @@ can cause issues with ammo types getting mixed up during the burst.
 /obj/item/weapon/gun/shotgun/es7
 	name = "\improper ES-7 Supernova Electrostatic Shockgun"
 	desc = "An archaic electrostatic 20ga shotgun design based on old Earth designs, albeit modernized for its time period. Being a dual-mode system, it is capable of firing semi-auto and pump-action modes, although this particular model is strictly semi-auto only. It can only accept X21 slugs."
-	desc_lore = "Despite receiving very little upgrades over its service period both within the Weyland Corporation and later the Weyland-Yutani Corporation, it remains popular with mercenaries and security firms because it was designed with security and law enforcement use in mind. "
+	desc_lore = "Despite receiving very little upgrades over its service period both within the Weyland Corporation and later the Weyland-Yutani Corporation, it remains popular with mercenaries and security firms because it was designed with security and law enforcement use in mind."
 	icon_state = "es7"
 	item_state = "es7"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/WY/shotguns.dmi'
@@ -932,7 +949,7 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/double/mou53/reload(mob/user, obj/item/ammo_magazine/magazine)
 	if(ispath(magazine.default_ammo, /datum/ammo/bullet/shotgun/buckshot)) // No buckshot in this gun
-		to_chat(user, SPAN_WARNING("\the [src] cannot safely fire this type of shell!"))
+		to_chat(user, SPAN_WARNING("\The [src] cannot safely fire this type of shell!"))
 		return
 	..()
 
@@ -1300,9 +1317,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	if(world.time < (recent_pump + pump_delay) )
 		return //Don't spam it.
 	if(pumped)
-		if (world.time > (message + pump_delay))
-			to_chat(usr, SPAN_WARNING("<i>[src] already has a shell in the chamber!<i>"))
-			message = world.time
+		to_chat(user, SPAN_WARNING("<i>[src] already has a shell in the chamber!<i>"))
 		return
 	if(in_chamber) //eject the chambered round
 		in_chamber = null
@@ -1312,6 +1327,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	ready_shotgun_tube()
 
 	playsound(user, pump_sound, 10, 1)
+	to_chat(user, SPAN_WARNING("<i>You pump [src], loading a shell into the chamber!<i>"))
 	recent_pump = world.time
 	if (in_chamber)
 		pumped = TRUE
@@ -1416,7 +1432,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		return FALSE
 	var/obj/item/weapon/gun/shotgun/pump/dual_tube/shotgun = user.get_active_hand()
 	if(shotgun != src)
-		to_chat(user, SPAN_WARNING("You must be holding \the [src] in your active hand to switch the active internal magazine!")) // currently this warning can't show up, but this is incase you get an action button or similar for it instead of current implementation
+		to_chat(user, SPAN_WARNING("You must be holding \the [src] in your active hand to switch the active internal magazine!")) // currently this warning can't show up, but this is in case you get an action button or similar for it instead of current implementation
 		return
 	if(!current_mag)
 		return

@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Mass screenshot verb will now optionally disable all open_space blur planes instead of just the first"

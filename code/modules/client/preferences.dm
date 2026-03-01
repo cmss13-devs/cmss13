@@ -41,6 +41,9 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 	var/static/datum/pred_picker/pred_picker = new
 
+	/// The previous version of this savefile
+	var/updated_from
+
 
 	//doohickeys for savefiles
 	var/path
@@ -63,7 +66,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/lastchangelog = "" // Saved changlog filesize to detect if there was a change
 	var/ooccolor
 	var/be_special = BE_ALIEN|BE_KING // Special role selection
-	var/toggle_prefs = TOGGLE_DIRECTIONAL_ATTACK|TOGGLE_COMBAT_CLICKDRAG_OVERRIDE|TOGGLE_MEMBER_PUBLIC|TOGGLE_AMBIENT_OCCLUSION|TOGGLE_VEND_ITEM_TO_HAND|TOGGLE_LEADERSHIP_SPOKEN_ORDERS|TOGGLE_COCKING_TO_HAND // flags in #define/mode.dm
+	var/toggle_prefs = TOGGLE_DIRECTIONAL_ATTACK|TOGGLE_COMBAT_CLICKDRAG_OVERRIDE|TOGGLE_MEMBER_PUBLIC|TOGGLE_AMBIENT_OCCLUSION|TOGGLE_VEND_ITEM_TO_HAND|TOGGLE_LEADERSHIP_SPOKEN_ORDERS|TOGGLE_COCKING_TO_HAND|TOGGLE_WIELD_ASSIST // flags in #define/mode.dm
 	var/xeno_ability_click_mode = XENO_ABILITY_CLICK_MIDDLE
 	var/auto_fit_viewport = FALSE
 	var/adaptive_zoom = 0
@@ -93,6 +96,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 							"Security HUD" = FALSE,
 							"Squad HUD" = FALSE,
 							"Xeno Status HUD" = FALSE,
+							"Hunter HUD"= FALSE,
 							HUD_MENTOR_SIGHT = FALSE
 							)
 	var/ghost_vision_pref = GHOST_VISION_LEVEL_MID_NVG
@@ -100,6 +104,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/dual_wield_pref = DUAL_WIELD_FIRE
 	var/playtime_perks = TRUE
 	var/skip_playtime_ranks = FALSE
+	var/show_minimap_ceiling_protection = FALSE
 
 	//Synthetic specific preferences
 	var/synthetic_name = "Undefined"
@@ -112,6 +117,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/predator_h_style = "Standard"
 	var/predator_skin_color = "tan"
 	var/predator_use_legacy = "None"
+	var/predator_use_unique = "None"
 	var/predator_translator_type = PRED_TECH_MODERN
 	var/predator_invisibility_sound = PRED_TECH_MODERN
 	var/predator_mask_type = 1
@@ -295,6 +301,9 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	/// If this client has auto observe enabled, used by /datum/orbit_menu
 	var/auto_observe = TRUE
 
+	// Whether or not they've toggled opting out of CMTV
+	var/CMTV_toggle_optout = FALSE
+
 	/// Fluff items that the user is equipped with on spawn.
 	var/list/gear
 
@@ -315,6 +324,12 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 	/// A list of saved presets for the ChemMaster, storing pill bottle color, label, and pill color preferences
 	var/list/chem_presets = list()
+
+	/// The custom keybinds, in an array to associated array of {"keybinding": [], "type": "picksay"|"say"|"me", "contents": "CHARGE!"}
+	var/list/custom_keybinds = list()
+
+	/// The same keybinds, but in an array of {"keybinding": /datum/keybinding/custom}
+	var/list/key_to_custom_keybind = list()
 
 /datum/preferences/New(client/C)
 	key_bindings = deep_copy_list(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
@@ -624,6 +639,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			dat += "<b>Default Ghost Night Vision Level:</b> <a href='byond://?_src_=prefs;preference=ghost_vision_pref;task=input'><b>[ghost_vision_pref]</b></a><br>"
 			dat += "<b>Button To Activate Xenomorph Abilities:</b> <a href='byond://?_src_=prefs;preference=mouse_button_activation;task=input'><b>[xeno_ability_mouse_pref_to_string(xeno_ability_click_mode)]</b></a><br>"
 			dat += "<b>Xeno Cooldown Messages:</b> <a href='byond://?_src_=prefs;preference=show_cooldown_messages'><b>[(show_cooldown_messages) ? "Show" : "Hide"]</b></a><br>"
+			dat += "<b>Toggle CMTV Opt-Out:</b> <a href='byond://?_src_=prefs;preference=CMTV_toggle_optout'><b>[CMTV_toggle_optout? "Enabled" : "Disabled"]</b></a><br>"
 			dat += "<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/receive_random_tip'>Read Random Tip of the Round</a><br>"
 			if(CONFIG_GET(flag/allow_Metadata))
 				dat += "<b>OOC Notes:</b> <a href='byond://?_src_=prefs;preference=metadata;task=input'> Edit </a>"
@@ -656,6 +672,8 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 					</b> <a href='byond://?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_COCKING_TO_HAND]'><b>[toggle_prefs & TOGGLE_COCKING_TO_HAND ? "On" : "Off"]</b></a><br>"
 			dat += "<b>Toggle Leadership Spoken Orders: \
 					</b> <a href='byond://?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_LEADERSHIP_SPOKEN_ORDERS]'><b>[toggle_prefs & TOGGLE_LEADERSHIP_SPOKEN_ORDERS ? "On" : "Off"]</b></a><br>"
+			dat += "<b>Toggle Gun Wielding Assist: \
+					</b> <a href='byond://?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_WIELD_ASSIST]'><b>[toggle_prefs & TOGGLE_WIELD_ASSIST ? "On" : "Off"]</b></a><br>"
 			dat += "<b>Toggle Combat Click-Drag Override: \
 					</b> <a href='byond://?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_COMBAT_CLICKDRAG_OVERRIDE]'><b>[toggle_prefs & TOGGLE_COMBAT_CLICKDRAG_OVERRIDE ? "On" : "Off"]</b></a><br>"
 			dat += "<b>Toggle Middle-Click Swap Hands: \
@@ -743,7 +761,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
  * * width - Screen' width.
  * * height - Screen's height.
  */
-/datum/preferences/proc/SetChoices(mob/user, limit = 21, list/splitJobs = list(JOB_CHIEF_REQUISITION, JOB_WO_CMO), width = 950, height = 750)
+/datum/preferences/proc/SetChoices(mob/user, limit = 21, list/splitJobs = list(JOB_MAINT_TECH, JOB_WO_CMO), width = 950, height = 750)
 	if(!GLOB.RoleAuthority)
 		return
 
@@ -863,7 +881,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
  * * width - Screen' width.
  * * height - Screen's height.
  */
-/datum/preferences/proc/set_job_slots(mob/user, limit = 21, list/splitJobs = list(JOB_CHIEF_REQUISITION, JOB_WO_CMO), width = 950, height = 750)
+/datum/preferences/proc/set_job_slots(mob/user, limit = 21, list/splitJobs = list(JOB_MAINT_TECH, JOB_WO_CMO), width = 950, height = 750)
 	if(!GLOB.RoleAuthority)
 		return
 
@@ -1305,6 +1323,11 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 					if(!legacy_choice)
 						return
 					predator_use_legacy = legacy_choice
+				if("pred_use_unique")
+					var/unique_choice = tgui_input_list(user, "What unique set do you wish to use?", "Unique Set", PRED_UNIQUES)
+					if(!unique_choice)
+						return
+					predator_use_unique = unique_choice
 				if("pred_trans_type")
 					var/new_translator_type = tgui_input_list(user, "Choose your translator type.", "Translator Type", PRED_TRANSLATORS)
 					if(!new_translator_type)
@@ -1843,6 +1866,9 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 				if("playtime_perks")
 					playtime_perks = !playtime_perks
 
+				if("CMTV_toggle_optout")
+					CMTV_toggle_optout = !CMTV_toggle_optout
+
 				if("skip_playtime_ranks")
 					skip_playtime_ranks = !skip_playtime_ranks
 
@@ -2191,8 +2217,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	character.underwear = underwear
 	character.undershirt = undershirt
 
-	if(backbag > 2 || backbag < 1)
-		backbag = 2 //Same as above
+	backbag = sanitize_integer(backbag, 1, length(GLOB.backbaglist), initial(backbag))
 	character.backbag = backbag
 
 	//Debugging report to track down a bug, which randomly assigned the plural gender to people.
@@ -2265,8 +2290,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	character.underwear = underwear
 	character.undershirt = undershirt
 
-	if(backbag > 2 || backbag < 1)
-		backbag = 2 //Same as above
+	backbag = sanitize_integer(backbag, 1, length(GLOB.backbaglist), initial(backbag))
 	character.backbag = backbag
 
 	//Debugging report to track down a bug, which randomly assigned the plural gender to people.

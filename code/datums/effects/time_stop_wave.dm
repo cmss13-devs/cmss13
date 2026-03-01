@@ -2,7 +2,6 @@
 /obj/effect/abstract/time_stop_wave
 	name = "time stop wave"
 	icon = 'icons/effects/effects.dmi'
-	icon_state = "explosion1"
 	layer = ABOVE_MOB_LAYER
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	anchored = TRUE

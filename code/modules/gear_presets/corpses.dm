@@ -1930,7 +1930,7 @@
 /datum/equipment_preset/corpse/point_loma/alphatech // ToDO:
 	name  = "Corpse - AlphaTech"
 
-/datum/equipment_preset/corpse/point_loma/alphaatech/burst
+/datum/equipment_preset/corpse/point_loma/alphatech/burst
 	name = "Corpse - Burst - Alphatech"
 	xenovictim = TRUE
 

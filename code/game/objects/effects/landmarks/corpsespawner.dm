@@ -404,6 +404,7 @@
 /obj/effect/landmark/corpsespawner/point_loma/alphatech/burst
 	name = "Corpse - AlphaTech - Burst"
 	equip_path = /datum/equipment_preset/corpse/point_loma/alphatech/burst
+
 /obj/effect/landmark/corpsespawner/point_loma/usasf
 	name = "Corpse - USASF"
 	equip_path = /datum/equipment_preset/corpse/point_loma/usasf

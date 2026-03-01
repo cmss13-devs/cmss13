@@ -52,6 +52,7 @@
 		/datum/action/xeno_action/activable/warrior_punch,
 		/datum/action/xeno_action/activable/lunge,
 		/datum/action/xeno_action/activable/fling,
+		/datum/action/xeno_action/activable/time_stop,
 	)
 
 	claw_type = CLAW_TYPE_SHARP
@@ -438,3 +439,86 @@
 	warrior.flick_attack_overlay(carbon, "punch")
 	shake_camera(carbon, 2, 1)
 	step_away(carbon, warrior, 2)
+
+
+/datum/action/xeno_action/activable/time_stop
+	name = "Time Stop"
+	action_icon_state = "time_stop"
+	ability_primacy = XENO_PRIMARY_ACTION_4
+
+	var/freeze_radius = 3
+	var/freeze_duration = 5 SECONDS
+	var/list/turf_cache
+
+/datum/action/xeno_action/activable/time_stop/use_ability(atom/target)
+
+	var/mob/living/carbon/xenomorph/warrior/warrior = owner
+
+	addtimer(CALLBACK(src, PROC_REF(apply_freeze), warrior), 0.5 SECONDS)
+	..()
+
+/datum/action/xeno_action/activable/time_stop/proc/apply_freeze(mob/living/carbon/xenomorph/warrior/warrior)
+	if(QDELETED(warrior) || !warrior.client)
+		return
+
+
+	var/list/mobs_in_range = list()
+	for(var/mob/living/nearby_mob in range(freeze_radius, warrior))
+		if(nearby_mob == warrior)
+			continue
+		mobs_in_range += nearby_mob
+
+
+	if(warrior.client)
+		var/r_shift = rand(-15, 15) / 255
+		var/g_shift = rand(-15, 15) / 255
+		var/b_shift = rand(-15, 15) / 255
+		warrior.client.color = list(
+			-1,  0,  0, 0,
+			0, -1,  0, 0,
+			0,  0, -1, 0,
+			0,  0,  0, 1,
+			1 + r_shift, 1 + g_shift, 1 + b_shift, 0
+		)
+
+	new /obj/effect/heavy_impact(warrior.loc)
+	for(var/step in CARDINAL_ALL_DIRS)
+		new /obj/effect/heavy_impact(get_step(warrior.loc, step))
+
+	turf_cache = list()
+	for(var/ring = 0, ring <= freeze_radius, ring++)
+		addtimer(CALLBACK(src, PROC_REF(freeze_ring), warrior, ring), ring * 0.50 SECONDS)
+
+	warrior.say("Domain Expansion: Infinite Void")
+
+
+/datum/action/xeno_action/activable/time_stop/proc/freeze_ring(mob/living/carbon/xenomorph/warrior/warrior, ring)
+	if(QDELETED(warrior))
+		return
+
+
+	for(var/turf/T in range(ring, warrior))
+		if(get_dist(T, warrior) != ring)
+			continue
+		turf_cache[T] = T.color
+		var/r_shift = rand(-15, 15) / 255
+		var/g_shift = rand(-15, 15) / 255
+		var/b_shift = rand(-15, 15) / 255
+		T.color = list(
+			-1,  0,  0, 0,
+			0, -1,  0, 0,
+			0,  0, -1, 0,
+			0,  0,  0, 1,
+			1 + r_shift, 1 + g_shift, 1 + b_shift, 0
+		)
+
+
+	for(var/mob/living/nearby_mob in range(ring, warrior))
+		if(get_dist(nearby_mob, warrior) != ring)
+			continue
+		if(nearby_mob == warrior)
+			continue
+		var/datum/status_effect/time_stop_freeze/freeze = nearby_mob.apply_status_effect(/datum/status_effect/time_stop_freeze)
+		if(freeze)
+			freeze.caster = warrior
+			freeze.saved_turf_colors = turf_cache

@@ -12679,6 +12679,10 @@
 /obj/effect/decal/cleanable/dirt/sand_1,
 /turf/open/hybrisa/street/roadlines3,
 /area/point_loma/airbase/exterior/west)
+"aKV" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/floor/almayer/research/containment/yautja/alt,
+/area/point_loma/research_facility/crash_site)
 "aKW" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/prop/almayer/computer/PC{
@@ -13621,6 +13625,10 @@
 	},
 /turf/open/floor/whiteyellowfull,
 /area/point_loma/research_facility/gym/basketball)
+"aNp" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/floor/plating/burnt_platingdmg3,
+/area/point_loma/research_facility/crash_site)
 "aNq" = (
 /obj/structure/bed/chair{
 	pixel_x = 4;
@@ -16285,6 +16293,10 @@
 /obj/structure/prop/hybrisa/boulders/wide_boulderdark/wide_boulder1,
 /turf/open/auto_turf/sand_white/layer0,
 /area/point_loma/airbase/cave/south_west)
+"aVi" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/shuttle/dropship/predship/tile/hunter_tile_1,
+/area/point_loma/airbase/exterior/crash_site)
 "aVj" = (
 /obj/structure/cable/white{
 	color = "#550d0d";
@@ -20651,6 +20663,10 @@
 	},
 /turf/open/floor/plating/catwalk,
 /area/point_loma/airbase/interior/workshop/upper)
+"bhq" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/shuttle/dropship/predship/hunter_grille,
+/area/point_loma/airbase/exterior/crash_site)
 "bhr" = (
 /obj/item/toy/inflatable_duck,
 /turf/open/gm/river/desert/shallow/pool,
@@ -26674,6 +26690,7 @@
 "byQ" = (
 /obj/item/stool,
 /obj/effect/hunter/catwalk/hunter_grate,
+/obj/effect/landmark/monkey_spawn,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "byR" = (
@@ -26692,6 +26709,7 @@
 /area/point_loma/airbase/exterior/crash_site)
 "byU" = (
 /obj/effect/hunter/catwalk/hunter_grate,
+/obj/effect/landmark/monkey_spawn,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "byV" = (
@@ -27073,6 +27091,7 @@
 /area/point_loma/airbase/exterior/crash_site)
 "bzW" = (
 /obj/effect/hunter/catwalk/new_alpha,
+/obj/effect/landmark/monkey_spawn,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/point_loma/airbase/exterior/crash_site)
 "bzX" = (
@@ -27916,15 +27935,18 @@
 /obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter,
 /obj/effect/decal/cleanable/dirt/sand_1,
+/obj/effect/landmark/monkey_spawn,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_5/west,
 /area/point_loma/airbase/exterior/crash_site)
 "bCc" = (
 /obj/structure/prop/hunter/fake_platform/hunter,
+/obj/effect/landmark/monkey_spawn,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_5/west,
 /area/point_loma/airbase/exterior/crash_site)
 "bCd" = (
 /obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter/north,
+/obj/effect/landmark/monkey_spawn,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_5/west,
 /area/point_loma/airbase/exterior/crash_site)
 "bCe" = (
@@ -97728,9 +97750,9 @@ ctC
 brp
 bsm
 aFk
-brW
-brW
-brW
+aKV
+aKV
+aKV
 brW
 aFk
 aFk
@@ -98090,7 +98112,7 @@ bNt
 bro
 bss
 bKe
-aFk
+aNp
 aFk
 brW
 brZ
@@ -98272,7 +98294,7 @@ cfL
 brp
 bst
 bKe
-aFk
+aNp
 aFk
 brW
 brW
@@ -98454,7 +98476,7 @@ brU
 ctC
 bsu
 bKe
-aFk
+aNp
 aFk
 brW
 brW
@@ -98819,10 +98841,10 @@ ctC
 brW
 aFk
 bJv
-brW
-brW
-brW
-brW
+aKV
+aKV
+aKV
+aKV
 bqf
 bqf
 bqf
@@ -101911,9 +101933,9 @@ cuB
 bpi
 brp
 ctC
-brW
-brW
-brW
+aKV
+aKV
+aKV
 brW
 brp
 brp
@@ -152887,9 +152909,9 @@ aNI
 byh
 bxY
 bRG
-bxK
-bxK
-bxK
+aVi
+aVi
+aVi
 bxK
 bxK
 bxK
@@ -153069,9 +153091,9 @@ aNI
 byi
 bxZ
 bRG
-bxK
-bxK
-bxK
+aVi
+aVi
+aVi
 bxK
 bxK
 bxK
@@ -156692,7 +156714,7 @@ bRz
 aNI
 aZC
 cxb
-byR
+bhq
 byU
 byU
 byQ

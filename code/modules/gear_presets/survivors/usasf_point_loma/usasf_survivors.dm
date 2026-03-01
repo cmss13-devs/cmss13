@@ -445,7 +445,7 @@
 	spawn_pouch(new_human)
 	spawn_food(new_human)
 
-/datum/equipment_preset/survivor/usasf/officer/co
+/datum/equipment_preset/survivor/usasf/crew/officer/co
 	name = "USASF Aerospace Base Commander"
 	job_title = JOB_USASF_CO
 	assignment = JOB_USASF_CO

@@ -9,6 +9,7 @@
 	faction = FACTION_ALPHATECH
 	faction_group = list(FACTION_ALPHATECH, FACTION_SURVIVOR)
 	origin_override = ORIGIN_ALPHATECH
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 
@@ -67,7 +68,7 @@
 
 
 /datum/equipment_preset/survivor/alphatech/scientist
-	name = "Alpha-Tech Scientist"
+	name = "Survivor - Alpha-Tech Scientist"
 	job_title = JOB_ALPHATECH_SCIENTIST
 	assignment = JOB_ALPHATECH_SCIENTIST
 	languages = list(LANGUAGE_CHINESE)
@@ -96,7 +97,7 @@
 // 	survivor_variant = SCIENTIST_SURVIVOR
 
 /datum/equipment_preset/survivor/alphatech/miner
-	name = "Alpha-Tech Mining Contractor"
+	name = "Survivor - Alpha-Tech Mining Contractor"
 	job_title = JOB_ALPHATECH_EMPLOYEE
 	assignment = JOB_ALPHATECH_EMPLOYEE
 	languages = list(LANGUAGE_CHINESE)

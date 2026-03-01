@@ -18,6 +18,7 @@
 		ACCESS_CIVILIAN_LOGISTICS,
 	)
 
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	minimap_icon = "surv"
 	minimap_background = "background_civilian"
 

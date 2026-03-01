@@ -396,3 +396,19 @@
 /obj/effect/landmark/corpsespawner/tyrargo/us_army_medic/burst
 	name = "Corpse - Burst - US Army - Trooper"
 	equip_path = /datum/equipment_preset/corpse/tyrargo/us_army_medic/burst
+
+/obj/effect/landmark/corpsespawner/point_loma/alphatech
+	name = "Corpse - AlphaTech"
+	equip_path = /datum/equipment_preset/corpse/point_loma/alphatech
+
+/obj/effect/landmark/corpsespawner/point_loma/alphatech/burst
+	name = "Corpse - AlphaTech - Burst"
+	equip_path = /datum/equipment_preset/corpse/point_loma/alphatech/burst
+
+/obj/effect/landmark/corpsespawner/point_loma/usasf
+	name = "Corpse - USASF"
+	equip_path = /datum/equipment_preset/corpse/point_loma/usasf
+
+/obj/effect/landmark/corpsespawner/point_loma/usasf/burst
+	name = "Corpse - USASF - Burst"
+	equip_path = /datum/equipment_preset/corpse/point_loma/usasf/burst

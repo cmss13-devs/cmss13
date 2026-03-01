@@ -1464,6 +1464,24 @@
 	has_hud = TRUE
 	hud_type = MOB_HUD_FACTION_MARINE
 
+/obj/item/device/radio/headset/almayer/sof/survivor_usasf
+	name = "US Aerospace Force headset"
+	desc = "Issued to Aerospacemen and women"
+	icon_state = "soc_headset"
+	frequency = USASF_FREQ
+	initial_keys = list(/obj/item/device/encryptionkey/soc/usasf)
+	volume = RADIO_VOLUME_QUIET
+	has_hud = TRUE
+	hud_type = MOB_HUD_FACTION_MARINE
+
+/obj/item/device/radio/headset/distress/alphatech
+	name = "Alpha-Tech Hardware Corporation Headset" // toDO: Fix!
+	desc = "A special headset used by Alpha-Tech Hardware employees, Channels are as follows: :g - public, :v - marine command, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC, :t - intel."
+	frequency = APHC_FREQ
+	icon_state = "vai_headset"
+	initial_keys = list(/obj/item/device/encryptionkey/almayer, /obj/item/device/encryptionkey/alphatech)
+	has_hud = FALSE //toDO: Fix!
+
 /obj/item/device/radio/headset/almayer/mcom/vc
 	name = "marine vehicle crew radio headset"
 	desc = "Used by USCM vehicle crew, features a non-standard brace. Channels are as follows: :v - marine command, :n - engineering, :m - medbay, :u - requisitions."

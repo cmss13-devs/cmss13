@@ -1926,3 +1926,22 @@
 /datum/equipment_preset/corpse/tyrargo/us_army_medic/burst
 	name = "Corpse - Burst - US Army - Medic"
 	xenovictim = TRUE
+
+// USASF Point Loma //
+
+/datum/equipment_preset/corpse/point_loma
+	flags = EQUIPMENT_PRESET_STUB
+
+/datum/equipment_preset/corpse/point_loma/alphatech // ToDO:
+	name  = "Corpse - AlphaTech"
+
+/datum/equipment_preset/corpse/point_loma/alphatech/burst
+	name = "Corpse - Burst - Alphatech"
+	xenovictim = TRUE
+
+/datum/equipment_preset/corpse/point_loma/usasf
+	name = "Corpse - Burst - USASF"
+
+/datum/equipment_preset/corpse/point_loma/usasf/burst
+	name = "Corpse - Burst - USASF"
+	xenovictim = TRUE

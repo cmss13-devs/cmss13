@@ -120,6 +120,9 @@ Radiochat range: 1441 to 1489 (most devices refuse to be tune to other frequency
 
 #define HDC_FREQ 1331
 
+//AlphaTech channels (1350-1399) - yes this takes half the number above but I don't care
+#define APHC_FREQ 1350
+
 //General Radio
 #define MIN_FREQ 1460 // ------------------------------------------------------
 #define PUB_FREQ 1461
@@ -132,6 +135,7 @@ Radiochat range: 1441 to 1489 (most devices refuse to be tune to other frequency
 #define CBRN_FREQ 1474
 #define FORECON_FREQ 1475
 #define ARMY_FREQ 1476
+#define USASF_FREQ 1477
 
 //Ship department channels
 #define SENTRY_FREQ 1480

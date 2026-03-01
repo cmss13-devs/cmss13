@@ -300,7 +300,7 @@
 		"tricordrazine",
 	)
 
-	var/base_state = "mixer"
+	var/base_state = "pcdispenser"
 
 /obj/structure/machinery/chem_dispenser/yauja
 

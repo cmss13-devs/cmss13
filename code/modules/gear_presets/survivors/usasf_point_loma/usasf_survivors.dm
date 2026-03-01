@@ -225,6 +225,7 @@
 	name = "USASF Ground Crew"
 	job_title  = JOB_USASF_CREW
 	assignment = JOB_USASF_CREW
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 /datum/equipment_preset/survivor/usasf/crew/duty/load_gear(mob/living/carbon/human/new_human)
 	..()
@@ -243,6 +244,7 @@
 	assignment = JOB_USASF_CHAPLAIN
 	survivor_variant = CIVILIAN_SURVIVOR
 	paygrades = list(PAY_SHORT_NO1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_NO2 = JOB_PLAYTIME_TIER_1)
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 /datum/equipment_preset/survivor/usasf/crew/chaplain/duty/load_gear(mob/living/carbon/human/new_human)
 	..()
@@ -258,6 +260,7 @@
 	assignment = JOB_USASF_HANGARTECH
 	skills = /datum/skills/military/survivor/usasf/technician
 	paygrades = list(PAY_SHORT_NO1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_NO2 = JOB_PLAYTIME_TIER_1)
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 /datum/equipment_preset/survivor/usasf/crew/duty/hangar_tech/load_gear(mob/living/carbon/human/new_human)
 	..()
@@ -277,6 +280,7 @@
 	survivor_variant = ENGINEERING_SURVIVOR
 	skills = /datum/skills/military/survivor/usasf/technician
 	paygrades = list(PAY_SHORT_NO1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_NO2 = JOB_PLAYTIME_TIER_1)
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 /datum/equipment_preset/survivor/usasf/crew/duty/mess_tech/load_gear(mob/living/carbon/human/new_human)
 	..()
@@ -297,6 +301,8 @@
 	survivor_variant = ENGINEERING_SURVIVOR
 	skills = /datum/skills/military/survivor/usasf/technician
 	paygrades = list(PAY_SHORT_NO1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_NO2 = JOB_PLAYTIME_TIER_1)
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+
 /datum/equipment_preset/survivor/usasf/crew/duty/cargo_tech/load_gear(mob/living/carbon/human/new_human)
 	..()
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full, WEAR_BODY)
@@ -320,12 +326,14 @@
 	)
 
 	survivor_variant = MEDICAL_SURVIVOR
+	flags = EQUIPMENT_PRESET_STUB
 
 /datum/equipment_preset/survivor/usasf/crew/medical/nurse
 	name = "USASF Nurse"
 	job_title = JOB_USASF_NURSE
 	assignment = JOB_USASF_NURSE
 	paygrades = list(PAY_SHORT_NO2 = JOB_PLAYTIME_TIER_0, PAY_SHORT_NO3 = JOB_PLAYTIME_TIER_1)
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 /datum/equipment_preset/survivor/usasf/crew/medical/nurse/load_gear(mob/living/carbon/human/new_human)
 	..()
@@ -343,6 +351,7 @@
 	job_title = JOB_USASF_DOCTOR
 	assignment = JOB_USASF_DOCTOR
 	paygrades = list(PAY_SHORT_NO3 = JOB_PLAYTIME_TIER_0, PAY_SHORT_NO4 = JOB_PLAYTIME_TIER_1)
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 /datum/equipment_preset/survivor/usasf/crew/medical/doctor/load_gear(mob/living/carbon/human/new_human)
 	..()
@@ -364,6 +373,7 @@
 	skills = /datum/skills/military/survivor/usasf/security
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_CHINESE) // needed to communicate with alpha-tech staff
 	paygrades = list(PAY_SHORT_NE3 = JOB_PLAYTIME_TIER_0, PAY_SHORT_NE4 = JOB_PLAYTIME_TIER_1)
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_ENGINEERING,
@@ -395,6 +405,7 @@
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_CHINESE) // needed to communicate with alpha-tech staff
 	idtype = /obj/item/card/id/gold/usasf
 	paygrades = list(PAY_SHORT_NO2 = JOB_PLAYTIME_TIER_0, PAY_SHORT_NO3 = JOB_PLAYTIME_TIER_1)
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_ENGINEERING,
@@ -421,6 +432,7 @@
 	assignment = JOB_USASF_PILOT
 	skills = /datum/skills/military/survivor/usasf/pilot
 	paygrades = list(PAY_SHORT_NO3 = JOB_PLAYTIME_TIER_0)
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 /datum/equipment_preset/survivor/usasf/crew/officer/pilot/load_gear(mob/living/carbon/human/new_human)
 	..()
@@ -439,6 +451,7 @@
 	assignment = JOB_USASF_CO
 	skills = /datum/skills/commander
 	paygrades = list(PAY_SHORT_NO5 = JOB_PLAYTIME_TIER_0) // Major equivalent
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 /datum/equipment_preset/survivor/usasf/crew/officer/co/load_gear(mob/living/carbon/human/new_human)
 	..()
@@ -457,6 +470,7 @@
 	assignment = JOB_USASF_SYNTHETIC
 	job_title  = JOB_USASF_SYNTHETIC
 	idtype = /obj/item/card/id/gold
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 /datum/equipment_preset/synth/usasf/load_gear(mob/living/carbon/human/preset_human)
 	preset_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/army/usasf, WEAR_BODY)

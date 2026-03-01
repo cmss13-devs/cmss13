@@ -414,7 +414,7 @@
 		ACCESS_CIVILIAN_COMMAND,
 	)
 
-/datum/equipment_preset/survivor/usasf/crew/usasf_officer/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/survivor/usasf/crew/officer/load_gear(mob/living/carbon/human/new_human)
 	..()
 	// TODO: Add USASF Uniform
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/MP/SO, WEAR_HEAD)

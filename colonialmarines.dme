@@ -65,6 +65,7 @@
 #include "code\__DEFINES\fonts.dm"
 #include "code\__DEFINES\gamemode.dm"
 #include "code\__DEFINES\generators.dm"
+#include "code\__DEFINES\gradient.dm"
 #include "code\__DEFINES\guns.dm"
 #include "code\__DEFINES\hijack.dm"
 #include "code\__DEFINES\html.dm"

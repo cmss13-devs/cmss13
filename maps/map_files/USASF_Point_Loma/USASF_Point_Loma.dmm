@@ -28244,12 +28244,6 @@
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/new_varadero/taupe_concrete,
 /area/point_loma/airbase/exterior/west)
-"bCR" = (
-/obj/structure/flora/grass/tallgrass/point_loma/corner{
-	dir = 3
-	},
-/turf/open/auto_turf/sand_white/layer1,
-/area/point_loma/airbase/mining_colony/caves)
 "bCS" = (
 /obj/item/alien_embryo,
 /turf/open/new_varadero/dock_concrete,
@@ -162416,7 +162410,7 @@ bOR
 bOS
 bOS
 bOR
-bCR
+aBe
 bzh
 asb
 asb

@@ -11,14 +11,14 @@
 	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
 	origin_override = ORIGIN_USASF
 	paygrades = list(PAY_SHORT_NE3 = JOB_PLAYTIME_TIER_0, PAY_SHORT_NE4 = JOB_PLAYTIME_TIER_1)
-	job_title  = JOB_ARMY_TROOPER
+	job_title  = JOB_USASF_CREW
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_ENGINEERING,
 		ACCESS_CIVILIAN_LOGISTICS,
 	)
 
-	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	flags = EQUIPMENT_PRESET_STUB
 	minimap_icon = "surv"
 	minimap_background = "background_civilian"
 

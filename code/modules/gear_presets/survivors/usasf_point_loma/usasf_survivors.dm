@@ -32,6 +32,10 @@
 /datum/equipment_preset/survivor/usasf/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/sof/survivor_usasf, WEAR_L_EAR)
 
+/datum/equipment_preset/survivor/usasf/crew
+	name = "USASF Enlisted Crew"
+	flags = EQUIPMENT_PRESET_STUB // Fails tests without this idk why
+
 /datum/equipment_preset/survivor/usasf/proc/spawn_food(mob/living/carbon/human/new_human)
 	var/spawn_food = rand(1,3)
 	switch(spawn_food)

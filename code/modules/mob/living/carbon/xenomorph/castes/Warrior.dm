@@ -443,7 +443,7 @@
 
 /datum/action/xeno_action/activable/time_stop
 	name = "Time Stop"
-	action_icon_state = "time_stop"
+	action_icon_state = "screech"
 	ability_primacy = XENO_PRIMARY_ACTION_4
 
 	var/freeze_radius = 3

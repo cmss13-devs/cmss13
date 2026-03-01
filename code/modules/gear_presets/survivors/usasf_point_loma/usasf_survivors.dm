@@ -1,7 +1,7 @@
 // **United States Aerospace Force Survivors**
 
 /datum/equipment_preset/survivor/usasf //abstract
-	name = "USASF Enlisted"
+	name = "Survivor - USASF Enlisted"
 	//job_title = JOB_SURVIVOR
 
 	skills = /datum/skills/military/survivor/usasf
@@ -33,7 +33,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/sof/survivor_usasf, WEAR_L_EAR)
 
 /datum/equipment_preset/survivor/usasf/crew
-	name = "USASF Enlisted Crew"
+	name = "Survivor - USASF Enlisted Crew"
 	flags = EQUIPMENT_PRESET_STUB // Fails tests without this idk why
 
 /datum/equipment_preset/survivor/usasf/proc/spawn_food(mob/living/carbon/human/new_human)
@@ -45,13 +45,13 @@
 			var/packaged_food = rand(1,3)
 			switch(packaged_food)
 				if (1)
-					new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/packaged_burger)
+					new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/packaged_burger, WEAR_IN_JACKET)
 				if (2)
-					new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/packaged_burrito)
+					new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/packaged_burrito, WEAR_IN_JACKET)
 				if (3)
-					new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/packaged_hdogs)
+					new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/packaged_hdogs, WEAR_IN_JACKET)
 		if (3)
-			new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/wrapped/barcardine)
+			new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/wrapped/barcardine, WEAR_IN_JACKET)
 
 /datum/equipment_preset/survivor/usasf/proc/spawn_pouch(mob/living/carbon/human/new_human)
 	var/spawn_pouch = rand(1,4)
@@ -66,7 +66,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medkit/full, WEAR_L_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/device/flashlight, WEAR_R_STORE)
 		if (4)
-			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/flare, WEAR_L_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/flare/full, WEAR_L_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector/m717, WEAR_R_STORE)
 
 /datum/equipment_preset/survivor/usasf/proc/spawn_belt(mob/living/carbon/human/new_human)
@@ -181,8 +181,8 @@
 	var/duty = rand(1,10)
 	var/shoes = rand (1,3)
 	switch(duty)
-		if(1 , 3) //off-duty
-			var/offduty_outfit = rand(1,4) //1 number per outfit
+		if(1 to 3) //off-duty
+			var/offduty_outfit = rand(1,3) //1 number per outfit
 			switch(offduty_outfit)
 				if (1)
 					new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/frontier, WEAR_BODY)
@@ -193,7 +193,7 @@
 							new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/blue, WEAR_BODY)
 						if (2)
 							new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/brown, WEAR_BODY)
-						if(3)
+						if (3)
 							new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/gray, WEAR_BODY)
 				if (3)
 					var/flavour = rand(1,3)
@@ -204,9 +204,7 @@
 							new_human.equip_to_slot_or_del(new /obj/item/clothing/under/tshirt/gray_blu, WEAR_BODY)
 						if(3)
 							new_human.equip_to_slot_or_del(new /obj/item/clothing/under/tshirt/r_bla, WEAR_BODY)
-				if (4)
-					new_human.equip_to_slot_or_del(new /obj/item/clothing/under/shorts, WEAR_BODY)
-		if (4, 10) //on-duty
+		if (4 to 10) //on-duty
 			var/onduty_outfit = rand(1,2)
 			switch(onduty_outfit)
 				if (1)
@@ -222,7 +220,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/black, WEAR_FEET)
 
 /datum/equipment_preset/survivor/usasf/crew/duty
-	name = "USASF Ground Crew"
+	name = "Survivor - USASF Ground Crew"
 	job_title  = JOB_USASF_CREW
 	assignment = JOB_USASF_CREW
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
@@ -239,7 +237,7 @@
 	spawn_food(new_human)
 
 /datum/equipment_preset/survivor/usasf/crew/duty/chaplain
-	name = "USASF Chaplain"
+	name = "Survivor - USASF Chaplain"
 	job_title = JOB_USASF_CHAPLAIN
 	assignment = JOB_USASF_CHAPLAIN
 	survivor_variant = CIVILIAN_SURVIVOR
@@ -255,7 +253,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/priest_robe, WEAR_JACKET)
 
 /datum/equipment_preset/survivor/usasf/crew/duty/hangar_tech
-	name = "USASF Hangar Technician"
+	name = "Survivor - USASF Hangar Technician"
 	job_title  = JOB_USASF_HANGARTECH
 	assignment = JOB_USASF_HANGARTECH
 	skills = /datum/skills/military/survivor/usasf/technician
@@ -276,7 +274,7 @@
 
 
 /datum/equipment_preset/survivor/usasf/crew/duty/mess_tech
-	name = "USASF Mess Technician"
+	name = "Survivor - USASF Mess Technician"
 	survivor_variant = ENGINEERING_SURVIVOR
 	skills = /datum/skills/military/survivor/usasf/technician
 	paygrades = list(PAY_SHORT_NO1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_NO2 = JOB_PLAYTIME_TIER_1)
@@ -295,7 +293,7 @@
 	spawn_food(new_human)
 
 /datum/equipment_preset/survivor/usasf/crew/duty/cargo_tech
-	name = "USASF Cargo Technician"
+	name = "Survivor - USASF Cargo Technician"
 	job_title = JOB_USASF_CARGOTECH
 	assignment = JOB_USASF_CARGOTECH
 	survivor_variant = ENGINEERING_SURVIVOR
@@ -316,7 +314,7 @@
 	spawn_food(new_human)
 
 /datum/equipment_preset/survivor/usasf/crew/medical //abstract
-	name = "USASF Medical Staff"
+	name = "Survivor - USASF Medical Staff"
 	skills = /datum/skills/military/survivor/usasf/medical // both nurse and doctor are surgery capable
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
@@ -329,7 +327,7 @@
 	flags = EQUIPMENT_PRESET_STUB
 
 /datum/equipment_preset/survivor/usasf/crew/medical/nurse
-	name = "USASF Nurse"
+	name = "Survivor - USASF Nurse"
 	job_title = JOB_USASF_NURSE
 	assignment = JOB_USASF_NURSE
 	paygrades = list(PAY_SHORT_NO2 = JOB_PLAYTIME_TIER_0, PAY_SHORT_NO3 = JOB_PLAYTIME_TIER_1)
@@ -347,7 +345,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular, WEAR_R_HAND)
 
 /datum/equipment_preset/survivor/usasf/crew/medical/doctor
-	name = "USASF Doctor"
+	name = "Survivor - USASF Doctor"
 	job_title = JOB_USASF_DOCTOR
 	assignment = JOB_USASF_DOCTOR
 	paygrades = list(PAY_SHORT_NO3 = JOB_PLAYTIME_TIER_0, PAY_SHORT_NO4 = JOB_PLAYTIME_TIER_1)
@@ -367,7 +365,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv, WEAR_R_HAND)
 
 /datum/equipment_preset/survivor/usasf/crew/security
-	name = "USASF Security Defender"
+	name = "Survivor - USASF Security Defender"
 	job_title = JOB_USASF_SECURITY_DEFENDER
 	assignment = JOB_USASF_SECURITY_DEFENDER
 	skills = /datum/skills/military/survivor/usasf/security
@@ -398,7 +396,7 @@
 	spawn_food(new_human)
 
 /datum/equipment_preset/survivor/usasf/crew/officer
-	name = "USASF Officer"
+	name = "Survivor - USASF Officer"
 	job_title = JOB_USASF_OFFICER
 	assignment = JOB_USASF_OFFICER
 	skills = /datum/skills/military/survivor/usasf/officer
@@ -427,7 +425,7 @@
 	spawn_food(new_human)
 
 /datum/equipment_preset/survivor/usasf/crew/officer/pilot
-	name = "USASF Pilot"
+	name = "Survivor - USASF Pilot"
 	job_title = JOB_USASF_PILOT
 	assignment = JOB_USASF_PILOT
 	skills = /datum/skills/military/survivor/usasf/pilot
@@ -446,7 +444,7 @@
 	spawn_food(new_human)
 
 /datum/equipment_preset/survivor/usasf/crew/officer/co
-	name = "USASF Aerospace Base Commander"
+	name = "Survivor - USASF Aerospace Base Commander"
 	job_title = JOB_USASF_CO
 	assignment = JOB_USASF_CO
 	skills = /datum/skills/commander
@@ -464,7 +462,7 @@
 	new_human.equip_to_slot_or_del (new /obj/item/device/binoculars/range/designator, WEAR_IN_BACK)
 
 /datum/equipment_preset/synth/usasf // only thing that needs to be parented to something else
-	name = "USASF Synthetic"
+	name = "Survivor - USASF Synthetic"
 	paygrades = list(PAY_SHORT_NE7 = JOB_PLAYTIME_TIER_0)
 	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
 	assignment = JOB_USASF_SYNTHETIC
@@ -485,3 +483,4 @@
 	preset_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(preset_human), WEAR_R_STORE)
 	preset_human.equip_to_slot_or_del(new /obj/item/storage/pouch/sling(preset_human), WEAR_L_STORE)
 	preset_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/sof/survivor_usasf(preset_human), WEAR_L_EAR)
+	preset_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(preset_human), WEAR_FEET)

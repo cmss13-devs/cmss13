@@ -22,7 +22,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/black, WEAR_FEET)
 
 /datum/equipment_preset/survivor/alphatech/corporate
-	name = "Alpha-Tech Corporate Liaison"
+	name = "Survivor - Alpha-Tech Corporate Liaison"
 	job_title = JOB_ALPHATECH_CL
 	assignment = JOB_ALPHATECH_CL
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_CHINESE, LANGUAGE_JAPANESE, LANGUAGE_RUSSIAN)

@@ -70,6 +70,7 @@
         "xeno_hive_charlie": 70
     },
     "camouflage": "desert",
+	"disable_ship_map": true
     "gamemodes": [
         "Distress Signal",
         "Hunter Games",

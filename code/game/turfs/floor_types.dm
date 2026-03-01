@@ -3640,6 +3640,12 @@
 /turf/open/floor/corsat/purplecorner/north
 	dir = NORTH
 
+/turf/open/floor/corsat/purplecornerlong
+	icon_state = "purplecornerlong"
+
+/turf/open/floor/corsat/purplecornerlong/north
+	dir = NORTH
+
 /turf/open/floor/corsat/purplewhite/north
 	dir = NORTH
 
@@ -3737,6 +3743,9 @@
 	dir = EAST
 
 /turf/open/floor/corsat/purplecorner/east
+	dir = EAST
+
+/turf/open/floor/corsat/purplecornerlong/east
 	dir = EAST
 
 /turf/open/floor/corsat/purplewhite/east
@@ -3883,6 +3892,9 @@
 /turf/open/floor/corsat/purplecorner/west
 	dir = WEST
 
+/turf/open/floor/corsat/purplecornerlong/west
+	dir = WEST
+
 /turf/open/floor/corsat/purplewhite/west
 	dir = WEST
 
@@ -3948,6 +3960,9 @@
 
 /turf/open/floor/corsat/yellow/northwest
 	dir = NORTHWEST
+
+/turf/open/floor/corsat/purplecornerlong/south
+	dir = SOUTH
 
 /turf/open/floor/corsat/arrow_east
 	icon_state = "arrow_east"

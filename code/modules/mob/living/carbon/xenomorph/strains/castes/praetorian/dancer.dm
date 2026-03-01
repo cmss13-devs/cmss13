@@ -48,8 +48,6 @@
 	/// Check for slashed target that had yellow tag
 	var/spread_slash_triggered = FALSE
 
-	/// List of targets, used to spread yellow tag.
-	var/list/candidates = list()
 	/// How many targets got yellow tag.
 	var/spread_count = 0
 
@@ -149,7 +147,6 @@
 		return
 	source.last_target_spread_time = world.time
 
-	candidates.Cut()
 	var/spread_count = 0
 
 	for(var/mob/living/carbon/human/human_target in view(DANCER_YELLOW_TAG_SPREAD_DIST, origin))

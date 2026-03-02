@@ -130,13 +130,13 @@
 		if (2)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/smartpistol/full, WEAR_WAIST)
 		if (3)
-			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/wy/mod88, WEAR_L_HAND)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/wy/mod88, WEAR_WAIST)
 		if (4)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m44/full, WEAR_WAIST)
 		if (5)
-			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/wy/vp78, WEAR_L_HAND)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/wy/vp78, WEAR_WAIST)
 		if (6)
-			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/m1911, WEAR_L_HAND)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/m1911, WEAR_WAIST)
 		if (7)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m10/full, WEAR_WAIST)
 
@@ -401,11 +401,6 @@
 	..()
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/pilot, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/pilot/novisor, WEAR_HEAD)
-	spawn_backpack(new_human)
-	spawn_armour(new_human)
-	spawn_pouch(new_human)
-	spawn_food(new_human)
-	spawn_usasf_weapon(new_human)
 
 /datum/equipment_preset/survivor/usasf/crew/officer/co
 	name = "Survivor - USASF Aerospace Base Commander"
@@ -417,13 +412,8 @@
 
 /datum/equipment_preset/survivor/usasf/crew/officer/co/load_gear(mob/living/carbon/human/new_human)
 	..()
-	spawn_security_primary(new_human)
-	spawn_backpack(new_human)
-	spawn_armour(new_human)
-	spawn_pouch(new_human)
-	spawn_food(new_human)
-	new_human.equip_to_slot_or_del (new /obj/item/device/binoculars/range/designator, WEAR_IN_BACK)
-	new_human.equip_if_possible(new /obj/item/storage/belt/gun/mateba/mtr6m/full, WEAR_WAIST)
+	new_human.equip_to_slot_or_del (new /obj/item/device/binoculars/range/designator, WEAR_R_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/mtr6m/full, WEAR_L_HAND)
 
 /datum/equipment_preset/synth/usasf // only thing that needs to be parented to something else
 	name = "Survivor - USASF Synthetic"

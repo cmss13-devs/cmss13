@@ -462,6 +462,10 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	display_name = "USCM headband, squad specific"
 	path = /obj/item/clothing/head/headband/squad
 
+/datum/gear/headwear/headband_fcred
+	display_name = "Headband, red"
+	path = /obj/item/clothing/head/headband/fcred
+
 /datum/gear/headwear/uscm/headset
 	display_name = "USCM headset"
 	path = /obj/item/clothing/head/headset

@@ -349,6 +349,16 @@
 	var/static/list/valid_icon_states
 	flags_atom = NO_GAMEMODE_SKIN
 
+/obj/item/clothing/head/headband/fcred
+	name = "red paisley bandana headband"
+	desc = "A Fast Color red bandana worn by marines who'd rather let their guns do the talking."
+	icon_state = "headband_fcred"
+	icon = 'icons/obj/items/clothing/hats/headbands.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/headbands.dmi',
+	)
+	flags_atom = NO_GAMEMODE_SKIN
+
 /obj/item/clothing/head/headband/squad/Initialize(mapload, ...)
 	. = ..()
 	if(!valid_icon_states)

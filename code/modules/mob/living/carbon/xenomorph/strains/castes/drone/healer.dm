@@ -196,14 +196,14 @@
 		return
 	if(bound_xeno.stat == DEAD)
 		return
-	var/image/holder = bound_xeno.hud_list[PLASMA_HUD]
+	var/image/holder = bound_xeno.hud_list[SPECIAL_HUD]
 	holder.overlays.Cut()
 	var/percentage_transferred = min(round((transferred_amount / required_transferred_amount) * 100, 10), 100)
 	if(percentage_transferred)
 		holder.overlays += image('icons/mob/hud/hud.dmi', "xenoenergy[percentage_transferred]")
 
 /datum/behavior_delegate/drone_healer/handle_death(mob/M)
-	var/image/holder = bound_xeno.hud_list[PLASMA_HUD]
+	var/image/holder = bound_xeno.hud_list[SPECIAL_HUD]
 	holder.overlays.Cut()
 
 /datum/action/xeno_action/activable/healer_sacrifice

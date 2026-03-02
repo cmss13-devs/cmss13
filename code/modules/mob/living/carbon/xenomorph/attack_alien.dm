@@ -96,7 +96,7 @@
 			//From this point, we are certain a full attack will go out. Calculate damage and modifiers
 			attacking_xeno.track_slashes(attacking_xeno.caste_type) //Adds to slash stat.
 			var/damage = rand(attacking_xeno.melee_damage_lower, attacking_xeno.melee_damage_upper) + dam_bonus
-			var/acid_damage = 0
+			var/acid_damage = attacking_xeno.behavior_delegate.melee_attack_modify_burn_damage(0, src)
 
 			//Frenzy auras stack in a way, then the raw value is multiplied by two to get the additive modifier
 			if(attacking_xeno.frenzy_aura > 0)
@@ -1232,7 +1232,7 @@
 
 /obj/structure/machinery/vending/attack_alien(mob/living/carbon/xenomorph/M)
 	if(is_tipped_over)
-		to_chat(M, SPAN_WARNING("There's no reason to bother with that old piece of trash."))
+		to_chat(M, SPAN_WARNING("There's no reason to bother with that [unslashable ? "old" : "broken"] piece of trash."))
 		return XENO_NO_DELAY_ACTION
 
 	if(M.a_intent == INTENT_HARM)
@@ -1297,22 +1297,6 @@
 	xeno.tail_stab_animation(src, blunt_stab)
 	deflate(TRUE)
 	return TAILSTAB_COOLDOWN_NORMAL
-
-/obj/structure/machinery/vending/proc/tip_over()
-	var/matrix/A = matrix()
-	is_tipped_over = TRUE
-	density = FALSE
-	A.Turn(90)
-	apply_transform(A)
-	malfunction()
-
-/obj/structure/machinery/vending/proc/flip_back()
-	icon_state = initial(icon_state)
-	is_tipped_over = FALSE
-	density = TRUE
-	var/matrix/A = matrix()
-	apply_transform(A)
-	stat &= ~BROKEN //Remove broken. MAGICAL REPAIRS
 
 //Misc
 /obj/structure/prop/invuln/joey/attack_alien(mob/living/carbon/xenomorph/alien)

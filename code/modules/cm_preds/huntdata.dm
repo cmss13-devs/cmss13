@@ -51,6 +51,12 @@
 	/// The thrall that is now blooded
 	var/mob/living/carbon/newblood
 
+	var/youngblood_marked = FALSE
+	/// The Yautja that has marked the youngblood for teaching
+	var/mob/living/carbon/youngblood_set
+	/// The youngblood that is marked for teaching
+	var/mob/living/carbon/youngblood
+
 /datum/huntdata/proc/clean_data()
 	if(dishonored)
 		if(dishonored_set)
@@ -114,3 +120,9 @@
 	if(newblood)
 		newblood.hunter_data.blooded_set = null
 		newblood = null
+
+	if(youngblood_marked)
+		if(youngblood_set)
+			youngblood_set.hunter_data.youngblood = null
+			youngblood_set = null
+		youngblood_marked = FALSE

@@ -31,6 +31,15 @@
 	if(player.whitelist_flags & WHITELIST_YAUTJA_LEADER)
 		options += WHITELIST_LEADER
 
+	var/datum/job/pred_job = GLOB.RoleAuthority.roles_by_name[JOB_PREDATOR]
+	if(!pred_job)
+		return
+	var/clanrank = pred_job.get_whitelist_status(user.client)
+	if(clanrank in list(CLAN_RANK_ELITE, CLAN_RANK_ELDER, CLAN_RANK_LEADER, CLAN_RANK_ADMIN))
+		.["can_use_unique"] = TRUE
+	else
+		.["can_use_unique"] = FALSE
+
 	.["available_statuses"] = options
 
 	.["hair_icon"] = /datum/sprite_accessory/yautja_hair::icon
@@ -69,6 +78,7 @@
 	.["translators"] = PRED_TRANSLATORS
 	.["invisibility_sounds"] = PRED_INVIS_SOUNDS
 	.["legacies"] = PRED_LEGACIES
+	.["uniques"] = PRED_UNIQUES
 
 
 /datum/pred_picker/ui_data(mob/user)
@@ -87,6 +97,7 @@
 	.["yautja_status"] = prefs.yautja_status
 
 	.["use_legacy"] = prefs.predator_use_legacy
+	.["use_unique"] = prefs.predator_use_unique
 	.["translator_type"] = prefs.predator_translator_type
 	.["invisibility_sound"] = prefs.predator_invisibility_sound
 
@@ -276,6 +287,21 @@
 				return
 
 			prefs.predator_use_legacy = selected
+
+		if("unique")
+			var/selected = params["selected"]
+			if(!selected || !(selected in PRED_UNIQUES))
+				return
+
+			var/datum/job/pred_job = GLOB.RoleAuthority.roles_by_name[JOB_PREDATOR]
+			if(!pred_job)
+				return
+			var/clanrank = pred_job.get_whitelist_status(ui.user.client)
+
+			if(!(clanrank in list(CLAN_RANK_ELITE, CLAN_RANK_ELDER, CLAN_RANK_LEADER, CLAN_RANK_ADMIN)))
+				return
+
+			prefs.predator_use_unique = selected
 
 		if("cape_color")
 			var/color = params["color"]

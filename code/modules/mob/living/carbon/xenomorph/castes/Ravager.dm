@@ -23,7 +23,6 @@
 	evolution_allowed = FALSE
 	deevolves_to = list(XENO_CASTE_LURKER)
 	caste_desc = "A brutal, devastating front-line attacker."
-	fire_immunity = FIRE_IMMUNITY_NO_DAMAGE|FIRE_IMMUNITY_XENO_FRENZY
 	attack_delay = -1
 
 	available_strains = list(
@@ -51,6 +50,8 @@
 	old_x = -16
 	claw_type = CLAW_TYPE_VERY_SHARP
 	organ_value = 3000
+	fire_immunity = FIRE_IMMUNITY_NO_DAMAGE|FIRE_IMMUNITY_XENO_FRENZY
+
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/release_haul,
@@ -155,7 +156,7 @@
 	var/datum/behavior_delegate/ravager_base/behavior = xeno.behavior_delegate
 
 	activated_once = FALSE
-	button.icon_state = "template_xeno_xeno"
+	button.icon_state = "template_xeno"
 	xeno.visible_message(SPAN_XENOWARNING("[xeno] gets empowered by the surrounding enemies!"), SPAN_XENOWARNING("We feel a rush of power from the surrounding enemies!"))
 	xeno.create_empower()
 

@@ -20,7 +20,11 @@ export const ReconnectButton = () => {
       <Button
         color="white"
         onClick={() => {
-          Byond.command('.reconnect');
+          Byond.winget('control-server', '*').then((val) =>
+            val.type
+              ? Byond.command('.output control-server.browser:reconnect')
+              : Byond.command('.reconnect'),
+          );
         }}
       >
         Reconnect

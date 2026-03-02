@@ -91,7 +91,7 @@ GLOBAL_LIST_INIT(cm_vending_elder_yautja, list(
 
 GLOBAL_LIST_INIT(cm_vending_young_yautja, list(
 		list("Essential Hunting Supplies", 0, null, null, null),
-		list("Hunting Equipment", 0, list(/obj/item/clothing/under/chainshirt/hunter, /obj/item/storage/backpack/yautja, /obj/item/storage/medicomp/full, /obj/item/device/flashlight/lantern), MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
+		list("Hunting Equipment", 0, list(/obj/item/clothing/under/chainshirt/hunter, /obj/item/storage/backpack/yautja, /obj/item/storage/medicomp/full, /obj/item/device/flashlight/lantern/yautja), MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 		list("Armor", 0, list(/obj/item/clothing/suit/armor/yautja/hunter, /obj/item/clothing/mask/gas/yautja/hunter, /obj/item/clothing/accessory/mask, /obj/item/clothing/shoes/yautja/hunter/knife), MARINE_CAN_BUY_COMBAT_ARMOR, VENDOR_ITEM_MANDATORY),
 
 		list("Main Weapons (CHOOSE 1)", 0, null, null, null),
@@ -117,14 +117,14 @@ GLOBAL_LIST_INIT(cm_vending_young_yautja, list(
 
 GLOBAL_LIST_INIT(cm_vending_thrall, list(
 		list("Essential Hunting Supplies", 0, null, null, null),
-		list("Hunting Equipment", 0, list(/obj/item/clothing/under/chainshirt/thrall, /obj/item/storage/backpack/yautja), MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
+		list("Hunting Equipment", 0, list(/obj/item/clothing/under/chainshirt/thrall, /obj/item/storage/backpack/yautja, /obj/item/device/flashlight/lantern/yautja, /obj/item/device/radio/headset/yautja), MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 
 		list("Armor Material (CHOOSE 1)", 0, null, null, null),
-		list("Ebony", 0, list(/obj/item/clothing/suit/armor/yautja/thrall, /obj/item/clothing/shoes/yautja/thrall, /obj/item/clothing/mask/gas/yautja/thrall, /obj/item/clothing/shoes/yautja/hunter/knife), MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
-		list("Silver", 0, list(/obj/item/clothing/suit/armor/yautja/thrall/silver, /obj/item/clothing/shoes/yautja/thrall/silver, /obj/item/clothing/mask/gas/yautja/thrall/silver, /obj/item/clothing/shoes/yautja/hunter/knife), MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
-		list("Gold", 0, list(/obj/item/clothing/suit/armor/yautja/thrall/gold, /obj/item/clothing/shoes/yautja/thrall/gold, /obj/item/clothing/mask/gas/yautja/thrall/gold, /obj/item/clothing/shoes/yautja/hunter/knife), MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
-		list("Crimson", 0, list(/obj/item/clothing/suit/armor/yautja/thrall/crimson, /obj/item/clothing/shoes/yautja/thrall/crimson, /obj/item/clothing/mask/gas/yautja/thrall/crimson, /obj/item/clothing/shoes/yautja/hunter/knife), MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
-		list("Bone", 0, list(/obj/item/clothing/suit/armor/yautja/thrall/bone, /obj/item/clothing/shoes/yautja/thrall/bone, /obj/item/clothing/mask/gas/yautja/thrall/bone, /obj/item/clothing/shoes/yautja/hunter/knife), MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
+		list("Ebony", 0, list(/obj/item/clothing/suit/armor/yautja/thrall, /obj/item/clothing/shoes/yautja/thrall, /obj/item/clothing/mask/gas/yautja/thrall), MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
+		list("Silver", 0, list(/obj/item/clothing/suit/armor/yautja/thrall/silver, /obj/item/clothing/shoes/yautja/thrall/silver, /obj/item/clothing/mask/gas/yautja/thrall/silver), MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
+		list("Gold", 0, list(/obj/item/clothing/suit/armor/yautja/thrall/gold, /obj/item/clothing/shoes/yautja/thrall/gold, /obj/item/clothing/mask/gas/yautja/thrall/gold), MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
+		list("Crimson", 0, list(/obj/item/clothing/suit/armor/yautja/thrall/crimson, /obj/item/clothing/shoes/yautja/thrall/crimson, /obj/item/clothing/mask/gas/yautja/thrall/crimson), MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
+		list("Bone", 0, list(/obj/item/clothing/suit/armor/yautja/thrall/bone, /obj/item/clothing/shoes/yautja/thrall/bone, /obj/item/clothing/mask/gas/yautja/thrall/bone), MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
 
 		list("Main Weapons (CHOOSE 1)", 0, null, null, null),
 		list("The Primary Hunting Sword", 0, /obj/item/weapon/yautja/sword, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
@@ -143,7 +143,14 @@ GLOBAL_LIST_INIT(cm_vending_thrall, list(
 
 GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 		list("Blooded Equipment", 0, null, null, null),
-		list("Blooded Equipment", 0, list(/obj/item/device/thrall_teleporter, /obj/item/storage/medicomp/full), MARINE_CAN_BUY_KIT, VENDOR_ITEM_REGULAR),
+		list("Blooded Equipment", 0, list(/obj/item/device/thrall_teleporter, /obj/item/storage/medicomp/thrall), MARINE_CAN_BUY_KIT, VENDOR_ITEM_REGULAR),
+
+		list("Blooded Bracer Material (CHOOSE 1)", 0, null, null, null),
+		list("Ebony", 0, list(/obj/item/clothing/gloves/yautja/hunter/bloodedthrall, /obj/item/bracer_attachments/wristblades, /obj/item/bracer_attachments/wristblades), MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_RECOMMENDED),
+		list("Silver", 0, list(/obj/item/clothing/gloves/yautja/hunter/bloodedthrall/silver, /obj/item/bracer_attachments/wristblades, /obj/item/bracer_attachments/wristblades), MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_RECOMMENDED),
+		list("Gold", 0, list(/obj/item/clothing/gloves/yautja/hunter/bloodedthrall/bronze, /obj/item/bracer_attachments/wristblades, /obj/item/bracer_attachments/wristblades), MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_RECOMMENDED),
+		list("Crimson", 0, list(/obj/item/clothing/gloves/yautja/hunter/bloodedthrall/crimson, /obj/item/bracer_attachments/wristblades, /obj/item/bracer_attachments/wristblades), MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_RECOMMENDED),
+		list("Bone", 0, list(/obj/item/clothing/gloves/yautja/hunter/bloodedthrall/bone, /obj/item/bracer_attachments/wristblades, /obj/item/bracer_attachments/wristblades), MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_RECOMMENDED),
 
 		list("Clothing Accessory (CHOOSE 1)", 0, null, null, null),
 		list("Third-Cape", 0, /obj/item/clothing/yautja_cape/third, MARINE_CAN_BUY_COMBAT_ARMOR, VENDOR_ITEM_MANDATORY),
@@ -336,6 +343,23 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 		user.update_inv_wear_suit()
 		return
 
+	if(mob_client.prefs.predator_use_unique != "None")
+		switch(mob_client.prefs.predator_use_unique)
+			if("Anubys")
+				icon_state = "halfarmor_elite_anubys"
+				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elite_anubys")
+			if("Cleopatra")
+				icon_state = "halfarmor_elite_cleopatra"
+				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elite_cleopatra")
+			if("Plated")
+				icon_state = "halfarmor_elite_plated"
+				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elite_plated")
+			if("Ronin")
+				icon_state = "halfarmor_elite_ronin"
+				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elite_ronin")
+		user.update_inv_wear_suit()
+		return
+
 	icon_state = "halfarmor[mob_client.prefs.predator_armor_type]_[mob_client.prefs.predator_armor_material]"
 	LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor[mob_client.prefs.predator_armor_type]_[mob_client.prefs.predator_armor_material]")
 	user.update_inv_wear_suit()
@@ -372,6 +396,29 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 		user.update_inv_wear_mask()
 		return
 
+	if(mob_client.prefs.predator_use_unique != "None")
+		switch(mob_client.prefs.predator_use_unique)
+			if("Anubys")
+				item_icons = list(
+					WEAR_FACE = 'icons/mob/humans/onmob/hunter/pred_gear64.dmi' // fat fuckass mask
+				)
+				icon_state = "pred_mask_elite_anubys"
+				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elite_anubys")
+			if("Cleopatra")
+				icon_state = "pred_mask_elite_cleopatra"
+				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elite_cleopatra")
+			if("Plated")
+				icon_state = "pred_mask_elite_plated"
+				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elite_plated")
+			if("Ronin")
+				item_icons = list(
+					WEAR_FACE = 'icons/mob/humans/onmob/hunter/pred_gear64.dmi'
+				)
+				icon_state = "pred_mask_elite_ronin"
+				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elite_ronin")
+		user.update_inv_wear_mask()
+		return
+
 	icon_state = "pred_mask[mob_client.prefs.predator_mask_type]_[mob_client.prefs.predator_mask_material]"
 	LAZYSET(item_state_slots, WEAR_FACE, "pred_mask[mob_client.prefs.predator_mask_type]_[mob_client.prefs.predator_mask_material]")
 	user.update_inv_wear_mask()
@@ -393,7 +440,25 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 		return
 	var/client/mob_client = user.client
 
+	if(mob_client.prefs.predator_use_unique != "None")
+		switch(mob_client.prefs.predator_use_unique)
+			if("Anubys")
+				icon_state = "elite_y-boots1_anubys"
+				LAZYSET(item_state_slots, WEAR_FEET, "elite_y-boots1_anubys")
+			if("Cleopatra")
+				icon_state = "elite_y-boots1_cleopatra"
+				LAZYSET(item_state_slots, WEAR_FEET, "elite_y-boots1_cleopatra")
+			if("Plated")
+				icon_state = "elite_y-boots1_plated"
+				LAZYSET(item_state_slots, WEAR_FEET, "elite_y-boots1_plated")
+			if("Ronin")
+				icon_state = "elite_y-boots1_ronin"
+				LAZYSET(item_state_slots, WEAR_FEET, "elite_y-boots1_ronin")
+		user.update_inv_shoes()
+		return
+
 	icon_state = "y-boots[mob_client.prefs.predator_boot_type]_[mob_client.prefs.predator_greave_material]"
+	LAZYSET(item_state_slots, WEAR_FEET, "y-boots[mob_client.prefs.predator_boot_type]_[mob_client.prefs.predator_greave_material]")
 	user.update_inv_shoes()
 
 //Cape Prefs

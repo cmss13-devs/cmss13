@@ -253,6 +253,37 @@
 /obj/effect/xenomorph/spray/strong/no_stun
 	stun_duration = 0
 
+/obj/effect/xenomorph/spray/despoiler
+	icon_state = "acid2-strong"
+	damage_amount = 30
+	time_to_live = 2 SECONDS
+	stun_duration = 0
+
+/obj/effect/xenomorph/spray/despoiler/apply_spray(mob/living/carbon/carbon)
+	. = ..()
+	var/datum/effects/acid/acid_effect = locate() in carbon.effects_list
+
+	if(!acid_effect)
+		acid_effect = new /datum/effects/acid(carbon)
+
+/obj/effect/xenomorph/spray/despoiler/empowered
+	stun_duration = 1
+
+/obj/effect/xenomorph/spray/despoiler/empowered/apply_spray(mob/living/carbon/carbon)
+	var/datum/component/acid_immunity/immunity = carbon.GetComponent(/datum/component/acid_immunity)
+
+	if(immunity)
+		return
+
+	. = ..()
+	// Prevent empowered acid spam
+	carbon.AddComponent(/datum/component/acid_immunity, 3 SECONDS)
+	var/datum/effects/acid/acid_effect = locate() in carbon.effects_list
+
+	if(!acid_effect)
+		acid_effect = new /datum/effects/acid(carbon)
+
+	acid_effect.enhance_acid()
 
 /obj/effect/xenomorph/spray/praetorian
 	name = "splatter"
@@ -559,6 +590,9 @@
 
 /obj/effect/xenomorph/xeno_telegraph/red
 	color = COLOR_DARK_RED
+
+/obj/effect/xenomorph/xeno_telegraph/yellow
+	color = "#799657"
 
 /obj/effect/xenomorph/xeno_telegraph/brown
 	color = COLOR_BROWN

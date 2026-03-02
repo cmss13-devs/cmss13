@@ -740,6 +740,7 @@
 	var/full_report
 	var/grant
 	var/contract
+	is_objective = TRUE
 
 /obj/item/paper/research_notes/Initialize(mapload, data, note_type, contract)
 	. = ..()

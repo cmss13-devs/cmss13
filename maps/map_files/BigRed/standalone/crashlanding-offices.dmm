@@ -152,14 +152,13 @@
 /turf/open/floor/plating/platingdmg3,
 /area/bigredv2/outside/office_complex)
 "aD" = (
-/turf/closed/shuttle/ert{
+/turf/closed/shuttle/ert/transparent{
 	icon_state = "wy27"
 	},
 /area/bigredv2/outside/office_complex)
 "aE" = (
-/turf/closed/shuttle/ert{
-	icon_state = "wy25"
-	},
+/obj/structure/shuttle/part/ert/front_right_wy,
+/turf/open/floor/plating/panelscorched,
 /area/bigredv2/outside/office_complex)
 "aF" = (
 /obj/effect/spawner/gibspawner/xeno,
@@ -193,9 +192,8 @@
 /area/bigredv2/outside/c)
 "aK" = (
 /obj/structure/prop/invuln/fire,
-/turf/closed/shuttle/ert{
-	icon_state = "wy20"
-	},
+/obj/structure/shuttle/part/ert/front_left_wy,
+/turf/open/floor/plating/panelscorched,
 /area/bigredv2/outside/office_complex)
 "aL" = (
 /obj/effect/decal/mecha_wreckage/ripley/firefighter,
@@ -364,7 +362,7 @@
 /area/bigredv2/outside/office_complex)
 "bJ" = (
 /obj/structure/machinery/door/airlock/almayer/generic,
-/turf/open/floor/plating,
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/bigredv2/outside/office_complex)
 "bK" = (
 /obj/structure/surface/table,
@@ -415,9 +413,8 @@
 /area/bigredv2/outside/office_complex)
 "cL" = (
 /obj/structure/prop/invuln/fire,
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_3";
-	opacity = 0
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "leftengine_3"
 	},
 /area/bigredv2/outside/office_complex)
 "cM" = (
@@ -431,9 +428,8 @@
 	},
 /area/bigredv2/outside/office_complex)
 "cO" = (
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_3";
-	opacity = 0
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "rightengine_3"
 	},
 /area/bigredv2/outside/office_complex)
 "cR" = (
@@ -441,16 +437,14 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/office_complex)
 "cT" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_2";
-	opacity = 0
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "leftengine_2"
 	},
 /area/bigredv2/outside/office_complex)
 "cU" = (
 /obj/structure/prop/invuln/fire,
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_2";
-	opacity = 0
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "rightengine_2"
 	},
 /area/bigredv2/outside/office_complex)
 "da" = (
@@ -458,16 +452,12 @@
 /turf/closed/wall/solaris,
 /area/bigredv2/outside/office_complex)
 "dc" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_1";
-	opacity = 0
-	},
+/obj/structure/shuttle/part/ert/transparent/left_engine,
+/turf/open/floor/plating/panelscorched,
 /area/bigredv2/outside/office_complex)
 "dd" = (
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_1";
-	opacity = 0
-	},
+/obj/structure/shuttle/part/ert/transparent/right_engine,
+/turf/open/floor/platingdmg1,
 /area/bigredv2/outside/office_complex)
 "dg" = (
 /turf/closed/shuttle/ert{
@@ -494,7 +484,7 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2
 	},
-/turf/open/floor/plating,
+/turf/open/shuttle/dropship/can_surgery,
 /area/bigredv2/outside/office_complex)
 "ds" = (
 /obj/effect/decal/cleanable/dirt,
@@ -850,7 +840,7 @@
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/corpsespawner/pmc,
 /obj/item/weapon/gun/rifle/nsg23/no_lock,
-/turf/open/floor/whiteyellowfull/east,
+/turf/open/floor/platingdmg1,
 /area/bigredv2/outside/office_complex)
 "zl" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -1179,7 +1169,7 @@
 /obj/item/clothing/head/helmet/marine/veteran/pmc,
 /obj/item/clothing/under/marine/veteran/pmc,
 /obj/item/clothing/head/helmet/marine/veteran/pmc/black,
-/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/bigredv2/outside/office_complex)
 "Oi" = (
 /obj/structure/bed/chair{

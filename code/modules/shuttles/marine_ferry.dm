@@ -221,16 +221,6 @@
 
 	sleep(warmup_time) //Warming up
 
-	if(!queen_locked)
-		for(var/turf/T in turfs_src)
-			var/mob/living/carbon/xenomorph/xeno = locate(/mob/living/carbon/xenomorph) in T
-			if((xeno && xeno.stat != DEAD) && !(FACTION_MARINE in xeno.iff_tag?.faction_groups))
-				var/name = "Unidentified Lifesigns"
-				var/input = "Unidentified lifesigns detected onboard. Recommendation: lockdown of exterior access ports, including ducting and ventilation."
-				shipwide_ai_announcement(input, name, 'sound/AI/unidentified_lifesigns.ogg', ares_logging = ARES_LOG_SECURITY)
-				set_security_level(SEC_LEVEL_RED)
-				break
-
 	moving_status = SHUTTLE_INTRANSIT
 
 	for(var/X in equipments)
@@ -293,6 +283,16 @@
 	turfs_trg = get_shuttle_turfs(T_trg, info_datums)
 
 	open_doors(turfs_trg) //And now open the doors
+
+	if(!queen_locked)
+		for(var/turf/T in turfs_src)
+			var/mob/living/carbon/xenomorph/xeno = locate(/mob/living/carbon/xenomorph) in T
+			if((xeno && xeno.stat != DEAD) && !(FACTION_MARINE in xeno.iff_tag?.faction_groups))
+				var/name = "Unidentified Lifesigns"
+				var/input = "Unidentified lifesigns detected onboard. Recommendation: lockdown of exterior access ports, including ducting and ventilation."
+				shipwide_ai_announcement(input, name, 'sound/AI/unidentified_lifesigns.ogg', ares_logging = ARES_LOG_SECURITY)
+				set_security_level(SEC_LEVEL_RED)
+				break
 
 	//END: Heavy lifting backend
 

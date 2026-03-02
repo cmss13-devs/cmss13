@@ -6,7 +6,7 @@
 	var/trigger_volatiles = FALSE
 	var/allow_star_shape = TRUE
 	var/exploded = FALSE
-	var/endothermic_reaction_occuring = FALSE
+	var/endothermic_reaction_occurring = FALSE
 	var/datum/weakref/source_mob
 
 	var/locked = FALSE
@@ -38,13 +38,13 @@
 	return ..()
 
 /datum/reagents/proc/remove_any(amount=1)
-	var/total_transfered = 0
+	var/total_transferred = 0
 	var/current_list_element = 1
 
 	current_list_element = rand(1,length(reagent_list))
 
-	while(total_transfered != amount)
-		if(total_transfered >= amount)
+	while(total_transferred != amount)
+		if(total_transferred >= amount)
 			break
 		if(total_volume <= 0 || !length(reagent_list))
 			break
@@ -56,21 +56,21 @@
 		remove_reagent(current_reagent.id, 1)
 
 		current_list_element++
-		total_transfered++
+		total_transferred++
 		update_total()
 
 	handle_reactions()
-	return total_transfered
+	return total_transferred
 
 ///This proc is one that removes all reagents from the targeted datum other than the designated ignored reagent
 /datum/reagents/proc/remove_any_but(reagent_to_ignore, amount=1)
-	var/total_transfered = 0
+	var/total_transferred = 0
 	var/current_list_element = 1
 
 	current_list_element = rand(1, length(reagent_list))
 
-	while(total_transfered != amount)
-		if(total_transfered >= amount)
+	while(total_transferred != amount)
+		if(total_transferred >= amount)
 			break
 		if(total_volume <= 0 || !length(reagent_list))
 			break
@@ -90,11 +90,11 @@
 		remove_reagent(current_reagent.id, 1)
 
 		current_list_element++
-		total_transfered++
+		total_transferred++
 		update_total()
 
 	handle_reactions()
-	return total_transfered
+	return total_transferred
 
 
 /datum/reagents/proc/get_master_reagent()
@@ -132,7 +132,7 @@
 		return trans_to_datum(R, amount, multiplier, preserve_data, reaction)
 
 /// Transfers to a reagent datum
-/datum/reagents/proc/trans_to_datum(datum/reagents/target, amount=1, multiplier=1, preserve_data=1, reaction = TRUE)//if preserve_data=0, the reagents data will be lost. Usefull if you use data for some strange stuff and don't want it to be transferred.
+/datum/reagents/proc/trans_to_datum(datum/reagents/target, amount=1, multiplier=1, preserve_data=1, reaction = TRUE)//if preserve_data=0, the reagents data will be lost. Useful if you use data for some strange stuff and don't want it to be transferred.
 	amount = min(min(amount, total_volume), target.maximum_volume-target.total_volume)
 	var/part = amount / total_volume
 	for(var/datum/reagent/current_reagent in reagent_list)
@@ -310,7 +310,7 @@
 						multiplier = max(multiplier, 1) //this shouldn't happen ...
 						set_data(reaction.result, preserved_data)
 					if(CHECK_BITFIELD(reaction.reaction_type, CHEM_REACTION_CALM) && !CHECK_BITFIELD(reaction.reaction_type, CHEM_REACTION_ENDOTHERMIC)) //mix the chemicals
-						if(endothermic_reaction_occuring)
+						if(endothermic_reaction_occurring)
 							continue
 						for(var/required_reagent in reaction.required_reagents)
 							remove_reagent(required_reagent, (multiplier * reaction.required_reagents[required_reagent]), safety = TRUE)
@@ -420,7 +420,7 @@
 		if((catalysts_in_holder.id in reaction.required_catalysts) && catalysts_in_holder.volume >= reaction.required_catalysts[catalysts_in_holder.id])
 			required_catalysts_present++
 	if(!(length(reaction.required_reagents) == required_reagents_present && length(reaction.required_catalysts) == required_catalysts_present))
-		endothermic_reaction_occuring = FALSE //forgive me
+		endothermic_reaction_occurring = FALSE //forgive me
 		handle_reactions()
 		return
 	var/list/seen = viewers(2, get_turf(my_atom))
@@ -437,7 +437,7 @@
 	for(var/mob/seen_mob in this_turf)
 		if(prob(15))
 			to_chat(seen_mob, SPAN_NOTICE("[icon2html(my_atom, seen_mob)] [my_atom] feels extremely cold to touch."))
-	endothermic_reaction_occuring = TRUE
+	endothermic_reaction_occurring = TRUE
 	addtimer(CALLBACK(src, PROC_REF(handle_endothermic_reaction), reaction), 1 SECONDS, TIMER_UNIQUE)
 
 /datum/reagents/proc/isolate_reagent(reagent)
@@ -491,7 +491,7 @@
 
 	update_total()
 	if(total_volume + amount > maximum_volume)
-		amount = maximum_volume - total_volume //Doesnt fit in. Make it disappear. Shouldnt happen. Will happen.
+		amount = maximum_volume - total_volume //Doesn't fit in. Make it disappear. Shouldn't happen. Will happen.
 
 	var/new_data = list("blood_type" = null, "blood_color" = "#A10808", "viruses" = null, "resistances" = null, "last_source_mob" = null)
 	if(data)
@@ -608,7 +608,7 @@
 
 	return res
 
-/datum/reagents/proc/remove_all_type(reagent_type, amount, strict = 0, safety = 1) // Removes all reagent of X type. @strict set to 1 determines whether the childs of the type are included.
+/datum/reagents/proc/remove_all_type(reagent_type, amount, strict = 0, safety = 1) // Removes all reagent of X type. @strict set to 1 determines whether the children of the type are included.
 	if(!isnum(amount))
 		return TRUE
 

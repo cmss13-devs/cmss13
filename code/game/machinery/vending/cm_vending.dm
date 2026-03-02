@@ -18,6 +18,7 @@
 	wrenchable = FALSE
 	var/hackable = FALSE
 	var/hacked = FALSE
+	var/untippable = FALSE
 
 	var/vendor_theme = VENDOR_THEME_COMPANY //sets vendor theme in NanoUI
 
@@ -82,9 +83,9 @@ IN_USE used for vending/denying
 
 	if(stat & NOPOWER || stat & TIPPED_OVER) //tipping off without breaking uses "_off" sprite
 		overlays += image(icon, "[icon_state]_off")
-	if(stat & MAINT) //if we require maintenance, then it is completely "_broken"
+	if(stat & BROKEN) //if we require maintenance, then it is completely "_broken"
 		overlays += image(icon, "[initial(icon_state)]_broken")
-		if(stat & IN_REPAIR) //if someone started repairs, they unscrewed "_panel"
+		if(!(stat & MAINT)) //if someone started repairs, they unscrewed "_panel"
 			overlays += image(icon, "[icon_state]_panel")
 
 	if(stat & TIPPED_OVER) //finally, if it is tipped over, flip the sprite
@@ -336,16 +337,18 @@ GLOBAL_LIST_EMPTY(vending_products)
 	update_icon()
 
 /obj/structure/machinery/cm_vending/proc/tip_over() //tipping over, flipping back is enough, unless vendor was broken before being tipped over
-	stat |= TIPPED_OVER
-	density = FALSE
+	if(!untippable)
+		stat |= TIPPED_OVER
+		density = FALSE
 	if(!(stat & MAINT))
 		stat |= BROKEN
 		stat &= ~WORKING
 	update_icon()
 
 /obj/structure/machinery/cm_vending/proc/flip_back()
-	density = TRUE
-	stat &= ~TIPPED_OVER
+	if(!untippable)
+		density = TRUE
+		stat &= ~TIPPED_OVER
 	if(!(stat & MAINT)) //we fix vendor only if it was tipped over while working. No magic fixing of broken and then tipped over vendors.
 		stat &= ~BROKEN
 		stat |= WORKING
@@ -357,25 +360,26 @@ GLOBAL_LIST_EMPTY(vending_products)
 
 	var/possessive = include_name ? "[src]'s" : "Its"
 	var/nominative = include_name ? "[src]" : "It"
-
-	if(stat & MAINT)
-		return "[possessive] broken panel still needs to be <b>unscrewed</b> and removed."
+	if(stat & TIPPED_OVER)
+		return "[nominative] needs to be uprighted."
+	else if(stat & MAINT)
+		return "[possessive] broken panel still needs to be [SPAN_BOLD("unscrewed")] and removed."
 	else if(stat & REPAIR_STEP_ONE)
-		return "[possessive] broken wires still need to be <b>cut</b> and removed from the vendor."
+		return "[possessive] broken wires still need to be [SPAN_BOLD("cut")] and removed from the vendor."
 	else if(stat & REPAIR_STEP_TWO)
-		return "[nominative] needs to have <b>new wiring</b> installed."
+		return "[nominative] needs to have [SPAN_BOLD("new wiring")] installed."
 	else if(stat & REPAIR_STEP_THREE)
-		return "[nominative] needs to have a <b>metal</b> panel installed."
+		return "[nominative] needs to have a [SPAN_BOLD("metal")] panel installed."
 	else if(stat & REPAIR_STEP_FOUR)
-		return "[possessive] new panel needs to be <b>fastened</b> to it."
+		return "[possessive] new panel needs to be [SPAN_BOLD("fastened")] to it."
 	else
 		return "[nominative] is being affected by some power-related issue."
 
 //------------INTERACTION PROCS---------------
 
 /obj/structure/machinery/cm_vending/attack_alien(mob/living/carbon/xenomorph/user)
-	if(stat & TIPPED_OVER || unslashable)
-		to_chat(user, SPAN_WARNING("There's no reason to bother with that old piece of trash."))
+	if(stat & TIPPED_OVER || unslashable || (untippable && (stat & BROKEN)))
+		to_chat(user, SPAN_WARNING("There's no reason to bother with that [unslashable ? "old" : "broken"] piece of trash."))
 		return XENO_NO_DELAY_ACTION
 
 	if(user.a_intent == INTENT_HARM && !unslashable)
@@ -403,6 +407,9 @@ GLOBAL_LIST_EMPTY(vending_products)
 			spark_system.set_up(5, 5, get_turf(src))
 			hacked = TRUE
 		return XENO_ATTACK_ACTION
+	if(untippable)
+		to_chat(user, SPAN_WARNING("There's no reason to bother with that [unslashable ? "old" : "broken"] piece of trash."))
+		return XENO_NO_DELAY_ACTION
 	user.visible_message(SPAN_WARNING("[user] begins to lean against [src]."),
 	SPAN_WARNING("You begin to lean against [src]."), null, 5, CHAT_TYPE_XENO_COMBAT)
 	var/shove_time = 80
@@ -421,7 +428,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 	return XENO_NO_DELAY_ACTION
 
 /obj/structure/machinery/cm_vending/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
-	if(stat & TIPPED_OVER || unslashable)
+	if(stat & TIPPED_OVER || unslashable || (untippable && (stat & BROKEN)))
 		return TAILSTAB_COOLDOWN_NONE
 	if(prob(xeno.melee_damage_upper))
 		playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)

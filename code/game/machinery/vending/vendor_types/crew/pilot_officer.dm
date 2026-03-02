@@ -31,7 +31,8 @@
 		list("M82F Flare Gun", 4, /obj/item/weapon/gun/flare, VENDOR_ITEM_REGULAR),
 
 		list("SIDEARM AMMUNITION", -1, null, null),
-		list("M10 HV Extended Magazine (10x20mm-APC)", 6, /obj/item/ammo_magazine/pistol/m10/extended , null, VENDOR_ITEM_REGULAR),
+		list("M10 HV Magazine (10x20mm-APC)", 12, /obj/item/ammo_magazine/pistol/m10, VENDOR_ITEM_REGULAR),
+		list("M10 HV Extended Magazine (10x20mm-APC)", 4, /obj/item/ammo_magazine/pistol/m10/extended, VENDOR_ITEM_REGULAR),
 		list("88M4 AP Magazine (9mm)", 20, /obj/item/ammo_magazine/pistol/mod88, VENDOR_ITEM_REGULAR),
 		list("M44 Speedloader (.44)", 20, /obj/item/ammo_magazine/revolver, VENDOR_ITEM_REGULAR),
 		list("M4A3 Magazine (9mm)", 20, /obj/item/ammo_magazine/pistol, VENDOR_ITEM_REGULAR),
@@ -154,6 +155,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_pilot_officer, list(
 		list("M41A Solid Stock", 10, /obj/item/attachable/stock/rifle, null, VENDOR_ITEM_REGULAR),
 		list("M37A2 Collapsible Stock", 10, /obj/item/attachable/stock/synth/collapsible, null, VENDOR_ITEM_REGULAR),
 		list("M10 Solid Stock", 10, /obj/item/attachable/stock/m10_solid, null, VENDOR_ITEM_REGULAR),
+		list("M10 Folding Stock", 10, /obj/item/attachable/stock/pistol/collapsible, null, VENDOR_ITEM_REGULAR),
 		list("M39 Stock", 10, /obj/item/attachable/stock/smg, null, VENDOR_ITEM_REGULAR),
 
 		list("AMMUNITION", 0, null, null, null),
@@ -273,6 +275,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_dropship_crew_chief, list(
 		list("M41A Solid Stock", 10, /obj/item/attachable/stock/rifle, null, VENDOR_ITEM_REGULAR),
 		list("M37A2 Collapsible Stock", 10, /obj/item/attachable/stock/synth/collapsible, null, VENDOR_ITEM_REGULAR),
 		list("M10 Solid Stock", 10, /obj/item/attachable/stock/m10_solid, null, VENDOR_ITEM_REGULAR),
+		list("M10 Folding Stock", 10, /obj/item/attachable/stock/pistol/collapsible, VENDOR_ITEM_REGULAR),
 		list("M39 Stock", 10, /obj/item/attachable/stock/smg, null, VENDOR_ITEM_REGULAR),
 
 		list("AMMUNITION", 0, null, null, null),

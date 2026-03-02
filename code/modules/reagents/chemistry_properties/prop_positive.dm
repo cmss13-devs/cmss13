@@ -939,7 +939,7 @@
 /datum/chem_property/positive/explosive
 	name = PROPERTY_EXPLOSIVE
 	code = "EXP"
-	description = "The chemical is highly explosive. Do not ignite. Careful when handling, sensitivity is based off the OD threshold, which can lead to spontanous detonation."
+	description = "The chemical is highly explosive. Do not ignite. Careful when handling, sensitivity is based off the OD threshold, which can lead to spontaneous detonation."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_REACTANT|PROPERTY_TYPE_COMBUSTIBLE
 	volatile = TRUE
@@ -1124,7 +1124,7 @@
 /datum/chem_property/positive/aiding
 	name = PROPERTY_AIDING
 	code = "AID"
-	description = "Fixes genetic defects, disfigurments, disabilities. In plants removes compounds modfying yield and mutation."
+	description = "Fixes genetic defects, disfigurments, disabilities. In plants removes compounds modifying yield and mutation."
 	rarity = PROPERTY_DISABLED
 	category = PROPERTY_TYPE_MEDICINE
 	value = 1

@@ -1,4 +1,8 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/shuttle/part/ert/front_right_stan,
+/turf/open/space/basic,
+/area/template_noop)
 "aE" = (
 /obj/structure/machinery/light/small{
 	dir = 8;
@@ -8,9 +12,8 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/template_noop)
 "aN" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan20"
-	},
+/obj/structure/shuttle/part/ert/front_left_stan,
+/turf/open/space/basic,
 /area/template_noop)
 "aW" = (
 /turf/open/floor/prison/floor_plate,
@@ -110,10 +113,8 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/template_noop)
 "jZ" = (
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_1";
-	opacity = 0
-	},
+/obj/structure/shuttle/part/ert/transparent/right_engine,
+/turf/open/space/basic,
 /area/template_noop)
 "kA" = (
 /obj/structure/bed/chair/dropship/pilot,
@@ -282,7 +283,7 @@
 /area/template_noop)
 "wO" = (
 /turf/closed/shuttle/ert{
-	icon_state = "stan_leftengine"
+	icon_state = "stan_leftengine_clean"
 	},
 /area/template_noop)
 "xR" = (
@@ -338,13 +339,11 @@
 /turf/open/floor/almayer,
 /area/template_noop)
 "CM" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_1";
-	opacity = 0
-	},
+/obj/structure/shuttle/part/ert/transparent/left_engine,
+/turf/open/space/basic,
 /area/template_noop)
 "DS" = (
-/turf/closed/shuttle/ert{
+/turf/closed/shuttle/ert/transparent{
 	icon_state = "stan27"
 	},
 /area/template_noop)
@@ -355,9 +354,8 @@
 /turf/open/organic/grass/astroturf,
 /area/template_noop)
 "EW" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_3";
-	opacity = 0
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "leftengine_3_clean"
 	},
 /area/template_noop)
 "Fd" = (
@@ -614,9 +612,8 @@
 /turf/open/floor/almayer,
 /area/template_noop)
 "Wd" = (
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_3";
-	opacity = 0
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "rightengine_3"
 	},
 /area/template_noop)
 "Wt" = (
@@ -625,9 +622,8 @@
 	},
 /area/template_noop)
 "WN" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan25"
-	},
+/obj/structure/shuttle/part/ert/front_right_stan,
+/turf/open/floor/plating/prison,
 /area/template_noop)
 "Xf" = (
 /turf/closed/shuttle/ert{
@@ -838,7 +834,7 @@ NV
 NV
 "}
 (9,1,1) = {"
-WN
+aa
 xR
 Nm
 bw
@@ -863,7 +859,7 @@ NV
 (10,1,1) = {"
 NV
 NV
-WN
+aa
 LG
 kR
 oH
@@ -887,7 +883,7 @@ CM
 NV
 NV
 NV
-WN
+aa
 LG
 vI
 BC

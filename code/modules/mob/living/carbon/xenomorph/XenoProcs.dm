@@ -660,8 +660,8 @@
 	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
 		return FALSE
 
-	if(fire_immunity & (FIRE_IMMUNITY_NO_DAMAGE || FIRE_IMMUNITY_COMPLETE))
-		burn_amount *= 0.5
+	if(fire_immunity & FIRE_IMMUNITY_NO_DAMAGE)
+		return FALSE
 
 	apply_damage(burn_amount, BURN)
 	to_chat(src, SPAN_DANGER("Our flesh, it melts!"))

@@ -97,7 +97,7 @@
 /datum/design_mark
 	var/name = "xeno_declare"
 	var/icon_state = "empty"
-	var/desc = "Xenos make psychic markers with this meaning as positional lasting communication to eachother."
+	var/desc = "Xenos make psychic markers with this meaning as positional lasting communication to each other."
 
 /datum/design_mark/resin_wall
 	name = "Resin Wall"
@@ -137,7 +137,7 @@
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/plasma_cost = 0
 
-	var/image/choosenMark
+	var/image/chosenMark
 
 /obj/effect/alien/resin/design/Initialize(mapload, obj/effect/alien/weeds/weeds, mob/living/carbon/xenomorph/xeno)
 	if(!istype(xeno))
@@ -165,9 +165,9 @@
 		if(mark_meaning)
 			var/icon_state_to_use = get_marker_icon_state()
 			if(icon_state_to_use)
-				choosenMark = image(icon, src, icon_state_to_use, ABOVE_HUD_LAYER, "pixel_y" = 5)
-				choosenMark.plane = ABOVE_HUD_PLANE
-				choosenMark.appearance_flags = RESET_COLOR
+				chosenMark = image(icon, src, icon_state_to_use, ABOVE_HUD_LAYER, "pixel_y" = 5)
+				chosenMark.plane = ABOVE_HUD_PLANE
+				chosenMark.appearance_flags = RESET_COLOR
 
 				for(xeno in hive.totalXenos)
 					if(xeno.client)
@@ -179,8 +179,8 @@
 	if(hive)
 		hive.designer_marks -= src
 		for(var/mob/living/carbon/xenomorph/xeno in hive.totalXenos)
-			if(xeno.client && choosenMark)
-				xeno.client.images -= choosenMark
+			if(xeno.client && chosenMark)
+				xeno.client.images -= chosenMark
 				xeno.hud_set_design_marks()
 
 	if(!QDELETED(bound_xeno))
@@ -188,15 +188,15 @@
 	unregister_weed_expiration_signal_design()
 	bound_xeno = null
 	bound_weed = null
-	choosenMark = null
+	chosenMark = null
 	return ..()
 
 /obj/effect/alien/resin/design/proc/refresh_marker()
-	if(!choosenMark || !mark_meaning)
+	if(!chosenMark || !mark_meaning)
 		return
 
 	if(bound_xeno.selected_design_mark == /datum/design_mark/resin_wall || bound_xeno.selected_design_mark == /datum/design_mark/resin_door)
-		choosenMark.icon_state = mark_meaning.icon_state
+		chosenMark.icon_state = mark_meaning.icon_state
 
 /obj/effect/alien/resin/design/proc/get_marker_icon_state()
 	if(!mark_meaning)
@@ -237,11 +237,11 @@
 	plasma_cost = 50
 
 /obj/effect/alien/resin/design/speed_node/refresh_marker()
-	if(!choosenMark || !mark_meaning)
+	if(!chosenMark || !mark_meaning)
 		return
 
 	if(bound_xeno.selected_design_mark == /datum/design_mark/resin_wall || bound_xeno.selected_design_mark == /datum/design_mark/resin_door)
-		choosenMark.icon_state = mark_meaning.icon_state + "_speed"
+		chosenMark.icon_state = mark_meaning.icon_state + "_speed"
 	else
 		..()
 
@@ -263,11 +263,11 @@
 	plasma_cost = 60
 
 /obj/effect/alien/resin/design/cost_node/refresh_marker()
-	if(!choosenMark || !mark_meaning)
+	if(!chosenMark || !mark_meaning)
 		return
 
 	if(bound_xeno.selected_design_mark == /datum/design_mark/resin_wall || bound_xeno.selected_design_mark == /datum/design_mark/resin_door)
-		choosenMark.icon_state = mark_meaning.icon_state + "_cost"
+		chosenMark.icon_state = mark_meaning.icon_state + "_cost"
 	else
 		..()
 
@@ -648,7 +648,7 @@
 /obj/effect/alien/resin/sticky/weak_nutriplasm/get_examine_text(mob/user)
 	. = ..()
 	if(ishuman(user))
-		. += SPAN_NOTICE("On closer examination, this thin sticky substance remainds you of sticky resin.")
+		. += SPAN_NOTICE("On closer examination, this thin, sticky substance reminds you of sticky resin.")
 	if(isxeno(user) || isobserver(user))
 		. += SPAN_NOTICE("We stare at the remains of weedbound walls - nutriplasm. As edible as it sounds, it's just another kind of sticky resin.")
 
@@ -661,7 +661,7 @@
 /obj/effect/alien/resin/sticky/strong_nutriplasm/get_examine_text(mob/user)
 	. = ..()
 	if(ishuman(user))
-		. += SPAN_NOTICE("On closer examination, this thick sticky substance remainds you of sticky resin.")
+		. += SPAN_NOTICE("On closer examination, this thick, sticky substance reminds you of sticky resin.")
 	if(isxeno(user) || isobserver(user))
 		. += SPAN_NOTICE("We stare at thick nutriplasm, the remains from weedbound resin, it sound delicious but you remember, its just different sticky resin.")
 
@@ -934,7 +934,7 @@
 		playsound(xeno.loc, "alien_resin_move2", 25)
 		return
 
-	if(length(xeno.current_design) >= xeno.max_design_nodes) //Check if there are more nodes than lenght that was defined
+	if(length(xeno.current_design) >= xeno.max_design_nodes) //Check if there are more nodes than length that was defined
 		to_chat(xeno, SPAN_XENOWARNING("We cannot sustain another node, one will wither away to allow this one to live!"))
 		var/obj/effect/alien/resin/design/old_design = xeno.current_design[1] //Check with node is first for deletion on list
 		xeno.current_design.Remove(old_design) //Removes first node stored inside list
@@ -1145,7 +1145,7 @@
 
 	var/choice
 	if(owner.client.prefs.no_radials_preference)
-		choice = tgui_input_list(owner, "Choose Desing Option", "Pick", options, theme="hive_status")
+		choice = tgui_input_list(owner, "Choose Design Option", "Pick", options, theme="hive_status")
 	else
 		choice = show_radial_menu(owner, owner?.client.get_eye(), options, radius = 50)
 

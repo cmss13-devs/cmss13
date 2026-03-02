@@ -222,7 +222,7 @@
 
 	setup_banned_allies()
 
-///Generate the image()'s requried for the evolution radial menu.
+///Generate the image()'s required for the evolution radial menu.
 /datum/hive_status/proc/generate_evo_menu_images()
 	for(var/datum/caste_datum/caste as anything in subtypesof(/datum/caste_datum))
 		evolution_menu_images[initial(caste.caste_type)] = image('icons/mob/xenos/radial_xenos.dmi', initial(caste.caste_type))
@@ -874,6 +874,7 @@
 		buff._on_cease()
 
 /datum/hive_status/proc/bless_on_hijack()
+	xeno_maptext("My Children, the time has come to assault the Metal Hive. Evolve now into castes best suited for the task!", "Queen Mother") // NOTE: sends a maptext to all xenos globally, hence not in below loop
 	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos)
 		if(xeno.caste.tier > 3)
 			return
@@ -881,7 +882,6 @@
 		if(get_action(xeno, /datum/action/xeno_action/onclick/transmute))
 			return
 
-		xeno_maptext("My Children, the time has come to assault the Metal Hive. Evolve now into castes best suited for the task!", "Queen Mother")
 
 		if(xeno.caste.tier > 0)
 			add_verb(xeno, /mob/living/carbon/xenomorph/proc/transmute_verb)
@@ -1594,7 +1594,7 @@
 
 	xeno_message(SPAN_XENOANNOUNCE("We sense that [english_list(defectors)] turned their backs against their sisters and the Queen in favor of their slavemasters!"), 3, hivenumber)
 	if(faction == FACTION_MARINE && ares_can_interface())
-		marine_announcement("The advanced IFF Xenomorph tagging technology has detected hostile intentions and succesfully supressed the psychic link of [length(defectors)] lifeform\s. The collaborative lifeforms are given designation Renegades. Full cooperation is to be expected.", MAIN_AI_SYSTEM)
+		marine_announcement("The advanced IFF Xenomorph tagging technology has detected hostile intentions and successfully suppressed the psychic link of [length(defectors)] lifeform\s. The collaborative lifeforms are given designation Renegades. Full cooperation is to be expected.", MAIN_AI_SYSTEM)
 	defectors.Cut()
 
 /datum/hive_status/corrupted/proc/add_personal_ally(mob/living/ally)

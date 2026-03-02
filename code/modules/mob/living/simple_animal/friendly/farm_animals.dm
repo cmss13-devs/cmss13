@@ -60,10 +60,10 @@
 	var/obj/item/reagent_container/glass/G = O
 	if(stat == CONSCIOUS && istype(G) && G.is_open_container())
 		user.visible_message(SPAN_NOTICE("[user] milks [src] using \the [O]."))
-		var/transfered = udder.trans_id_to(G, "milk", rand(5,10))
+		var/transferred = udder.trans_id_to(G, "milk", rand(5,10))
 		if(G.reagents.total_volume >= G.volume)
 			to_chat(user, SPAN_DANGER("[O] is full."))
-		if(!transfered)
+		if(!transferred)
 			to_chat(user, SPAN_DANGER("The udder is dry. Wait a bit longer..."))
 	else
 		..()
@@ -106,10 +106,10 @@
 	var/obj/item/reagent_container/glass/G = O
 	if(stat == CONSCIOUS && istype(G) && G.is_open_container())
 		user.visible_message(SPAN_NOTICE("[user] milks [src] using \the [O]."))
-		var/transfered = udder.trans_id_to(G, "milk", rand(5,10))
+		var/transferred = udder.trans_id_to(G, "milk", rand(5,10))
 		if(G.reagents.total_volume >= G.volume)
 			to_chat(user, SPAN_DANGER("The [O] is full."))
-		if(!transfered)
+		if(!transferred)
 			to_chat(user, SPAN_DANGER("The udder is dry. Wait a bit longer..."))
 	else
 		..()

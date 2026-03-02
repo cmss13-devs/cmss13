@@ -180,6 +180,28 @@
 	)
 	flags = REAGENT_TYPE_MEDICAL
 
+/datum/reagent/medical/thwei/human
+	name = "Dathwei"
+	id = "dathwei"
+	color = "#c46b41" // rgb: 77, 42, 25
+	properties = list(
+		PROPERTY_CARDIOSTABILIZING = 4,
+		PROPERTY_ORGANSTABILIZE = 1,
+		PROPERTY_PAINKILLING = 4,
+		PROPERTY_ANTITOXIC = 1,
+		PROPERTY_YAUTJA_HEMOGENIC = 3,
+		PROPERTY_OXYGENATING = 6,
+		PROPERTY_ANTICARCINOGENIC = 6,
+		PROPERTY_BONEMENDING = 6,
+		PROPERTY_AIDING = 1,
+		PROPERTY_ANTIHALLUCINOGENIC = 2,
+		PROPERTY_FOCUSING = 6,
+		PROPERTY_CURING = 4,
+		PROPERTY_OCULOPEUTIC = 2,
+		PROPERTY_NEUROPEUTIC = 2,
+	)
+	flags = REAGENT_TYPE_MEDICAL | REAGENT_NO_GENERATION
+
 /datum/reagent/medical/neuraline //injected by neurostimulator implant
 	name = "Neuraline"
 	id = "neuraline"

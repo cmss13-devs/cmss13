@@ -147,8 +147,8 @@
 		sleep(P.time)
 		P.process(src.loc, O)
 		src.processing = 0
-	src.visible_message(SPAN_NOTICE("\the [src] finished processing."),
-		"You hear the food processor stopping/")
+	src.visible_message(SPAN_NOTICE("\The [src] finished processing."),
+		"You hear the food processor stopping.")
 
 /obj/structure/machinery/processor/yautja
 	name = "food grinder"

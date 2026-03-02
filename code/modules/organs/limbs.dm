@@ -251,7 +251,7 @@
 /**
  * Describes how limbs (body parts) of human mobs get damage applied.
  *
- * Any damage past the limb maximum health is transfered onto the next limb up the line, by
+ * Any damage past the limb maximum health is transferred onto the next limb up the line, by
  * calling this proc recursively. When a hand is too damaged it is passed to the arm,
  * then to the chest and so on.
  *
@@ -259,11 +259,11 @@
  * directly would allow the attacker to effectively bypass all of that armor. A lurker
  * with 35 slash damage repeatedly slashing a hand protected by marine combat gloves
  * (20 armor) would do 20 damage to the hand, then would start doing the same 20 to
- * the arm, and then the chest. But if the lurker slashes the arm direclty it would only
+ * the arm, and then the chest. But if the lurker slashes the arm directly it would only
  * do 16 damage, assuming the marine is wearing medium armor which has armor value of 30.
  *
  * Thus we have to apply armor damage reduction on each limb to which the damage is
- * transfered. When this proc is called recursively for the first damage transfer to the
+ * transferred. When this proc is called recursively for the first damage transfer to the
  * parent, we set reduced_by variables to be the armor of the original limb hit. Then we
  * compare the parent limb armor with the applicable reduced_by and if it's higher we reduce
  * the damage by the difference between the two. Then we set reduced_by to
@@ -281,7 +281,7 @@
  * initial child limb armor.
  * One practical example where this would happen is when a human is wearing a set of armor
  * that does not protect legs, like the UPP officer. If a xeno keeps slashing his foot,
- * the damage would eventually get transfered to the leg, which has 0 armor. But this damage
+ * the damage would eventually get transferred to the leg, which has 0 armor. But this damage
  * has been already reduced by the boot armor even before this proc got first called.
  * So, assuming 35 damage slash, the leg would only be damaged by 21 even though it has
  * 0 armor. Fixing this would require a new proc that would be able to unapply armor
@@ -461,7 +461,7 @@ This function completely restores a damaged organ to perfect condition.
 	damage_state = "=="
 	if(status & LIMB_SYNTHSKIN)
 		status = LIMB_SYNTHSKIN
-	else if(status & LIMB_ROBOT) //Robotic organs stay robotic.  Fix because right click rejuvinate makes IPC's organs organic.
+	else if(status & LIMB_ROBOT) //Robotic organs stay robotic.  Fix because right click rejuvenate makes IPC's organs organic.
 		status = LIMB_ROBOT
 	else
 		status = LIMB_ORGANIC
@@ -572,7 +572,7 @@ This function completely restores a damaged organ to perfect condition.
 
 ///Adds bleeding to the limb. Damage_amount lets you apply an amount worth of bleeding, otherwise it uses the given wound's damage.
 /obj/limb/proc/add_bleeding(datum/wound/W, internal = FALSE, damage_amount)
-	if(!(SSticker.current_state >= GAME_STATE_PLAYING)) //If the game hasnt started, don't add bleed. Hacky fix to avoid having 100 bleed effect from roundstart.
+	if(!(SSticker.current_state >= GAME_STATE_PLAYING)) //If the game hasn't started, don't add bleed. Hacky fix to avoid having 100 bleed effect from roundstart.
 		return
 
 	if(status & (LIMB_ROBOT|LIMB_SYNTHSKIN))

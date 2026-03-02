@@ -29,7 +29,8 @@
 
 /obj/item/device/walkman/Initialize()
 	. = ..()
-	design = rand(1, 5)
+	design = rand(1, 13)
+	icon_state = "walkman_[design]"
 	update_icon()
 	AddElement(/datum/element/corp_label/synsound)
 
@@ -167,17 +168,24 @@
 	play()
 	to_chat(user,SPAN_INFO("You change the song."))
 
+	overlays -= "+buttonsDefault"
+	overlays -= "+playOrPause"
+	overlays += "+nextSong"
+	addtimer(CALLBACK(src, PROC_REF(update_icon)), 0.7 SECONDS)
+
 
 /obj/item/device/walkman/update_icon()
 	..()
 	overlays.Cut()
-	if(design)
-		overlays += "+[design]"
 	if(tape)
 		if(!paused)
 			overlays += "+playing"
+			overlays += "+playOrPause"
+		else
+			overlays += "+inserted"
+			overlays += "+buttonsDefault"
 	else
-		overlays += "+empty"
+		overlays += "+buttonsDefault"
 
 	if(ishuman(loc))
 		var/mob/living/carbon/human/H = loc
@@ -255,6 +263,11 @@
 	update_song(current_song, current_listener, 0)
 	to_chat(user,SPAN_INFO("You restart the song."))
 
+	overlays -= "+buttonsDefault"
+	overlays -= "+playOrPause"
+	overlays += "+restart"
+	addtimer(CALLBACK(src, PROC_REF(update_icon)), 0.7 SECONDS)
+
 /obj/item/device/walkman/verb/restart_current_song()
 	set name = "Restart Song"
 	set category = "Object"
@@ -319,6 +332,34 @@
 	if(target)
 		var/obj/item/device/walkman/WM = target
 		WM.restart_song(owner)
+
+/obj/item/device/walkman/white_band
+	name = "Synsound Walkman (White Band)"
+	desc = "A Synsound cassette player that first hit the market over 200 years ago. Crazy how these never went out of style. This one has a white band."
+
+/obj/item/device/walkman/white_band/Initialize()
+	. = ..()
+	name = "Synsound Walkman" // band color in the name was only for the vendor
+	design = rand(1, 14)
+	icon_state = "walkman_[design]"
+	update_icon()
+
+/obj/item/device/walkman/white_band/update_icon()
+	overlays.Cut()
+	if(tape)
+		if(!paused)
+			overlays += "+playing"
+			overlays += "+playOrPause"
+		else
+			overlays += "+inserted"
+			overlays += "+buttonsDefault"
+	else
+		overlays += "+buttonsDefault"
+	overlays += "+whiteBand"
+
+	if(ishuman(loc))
+		var/mob/living/carbon/human/H = loc
+		H.regenerate_icons()
 
 /*
 	TAPES

@@ -595,7 +595,7 @@
 	name = PROPERTY_ENCEPHALOPHRASIVE
 	code = "ESP"
 	description = "Drastically increases the amplitude of Gamma and Beta brain waves, allowing the host to broadcast their mind."
-	rarity = PROPERTY_LEGENDARY
+	rarity = PROPERTY_ADMIN
 	category = PROPERTY_TYPE_STIMULANT
 	value = 8
 

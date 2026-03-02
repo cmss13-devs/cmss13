@@ -37,7 +37,7 @@
 	var/originmastercommit
 	var/commit
 	var/list/cached_custom_tgs_chat_commands
-	var/warned_revision = FALSE
+	var/warned_revison = FALSE
 	var/warned_custom_commands = FALSE
 
 /datum/tgs_api/v3210/ApiVersion()
@@ -177,10 +177,10 @@
 		. += tm
 
 /datum/tgs_api/v3210/Revision()
-	if(!warned_revision)
+	if(!warned_revison)
 		var/datum/tgs_version/api_version = ApiVersion()
 		TGS_WARNING_LOG("Use of TgsRevision on [api_version.deprefixed_parameter] origin_commit only points to master!")
-		warned_revision = TRUE
+		warned_revison = TRUE
 	var/datum/tgs_revision_information/ri = new
 	ri.commit = commit
 	ri.origin_commit = originmastercommit

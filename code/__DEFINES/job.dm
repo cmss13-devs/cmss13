@@ -386,7 +386,7 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_USASF_NURSE "USASF Medical Nurse"
 #define JOB_USASF_DOCTOR "USASF Doctor"
 #define JOB_USASF_PILOT "USASF Pilot"
-#define JOB_USASF_SECURITY_DEFENDER "USASF Security Defender"
+#define JOB_USASF_SECURITY_DEFENDER "USASF Security Police"
 #define JOB_USASF_OFFICER "USASF Officer"
 #define JOB_USASF_CO "USASF Aerospace Base Commander"
 #define JOB_USASF_SYNTHETIC "USASF Synthetic"

@@ -1943,20 +1943,20 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 /datum/equipment_preset/corpse/point_loma/alphatech/load_gear(mob/living/carbon/human/new_human)
-	var/outfit = rand (1,4)
+	var/outfit = rand(1,4)
 	switch(outfit) //ToDO: Parent equipping a radio
 		if(1) //Corpo Exec
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/brown, WEAR_BODY)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/vest, WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/brown(new_human), WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/vest(new_human), WEAR_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/lockable(new_human), WEAR_BACK)
-			new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/alphatech, WEAR_L_EAR)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/black, WEAR_FEET)
+			new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/alphatech(new_human), WEAR_L_EAR)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(new_human), WEAR_FEET)
 		if(2) //Scientist
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/brown, WEAR_BODY)
-			new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/alphatech, WEAR_L_EAR)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/brown(new_human), WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/alphatech(new_human), WEAR_L_EAR)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/latex(new_human), WEAR_HANDS)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/white(new_human), WEAR_FEET)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat, WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat(new_human), WEAR_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/science(new_human), WEAR_EYES)
 		if(3) //Miner
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest/yellow(new_human), WEAR_JACKET)
@@ -1964,15 +1964,16 @@
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(new_human), WEAR_FEET)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/blue(new_human), WEAR_BODY)
 			new_human.equip_to_slot_or_del(new /obj/item/device/flashlight/lantern(new_human), WEAR_WAIST)
-			new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/alphatech, WEAR_L_EAR)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/kutjevo/safety, WEAR_EYES)
+			new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/alphatech(new_human), WEAR_L_EAR)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/kutjevo/safety(new_human), WEAR_EYES)
 		if(4) //Contractor
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/kutjevo(new_human), WEAR_BODY)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/kutjevo(new_human), WEAR_HEAD)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/kutjevo(new_human), WEAR_EYES)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(new_human), WEAR_FEET)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(new_human), WEAR_HANDS)
-			new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/alphatech, WEAR_L_EAR)
+			new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/alphatech(new_human), WEAR_L_EAR)
+
 
 /datum/equipment_preset/corpse/point_loma/alphatech/burst
 	name = "Corpse - Burst - Alphatech"
@@ -1984,77 +1985,76 @@
 	languages = list(LANGUAGE_ENGLISH)
 	idtype = /obj/item/card/id/dogtag/usasf
 	faction = FACTION_SURVIVOR
+	job_title  = JOB_USASF_CREW
+	assignment = JOB_USASF_CREW
 	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
 	origin_override = ORIGIN_USASF
 	paygrades = list(PAY_SHORT_NE3 = JOB_PLAYTIME_TIER_0)
 	job_title  = JOB_USASF_CREW
-	access = list(
-		ACCESS_CIVILIAN_PUBLIC,
-		ACCESS_CIVILIAN_ENGINEERING,
-		ACCESS_CIVILIAN_LOGISTICS,
-	)
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 /datum/equipment_preset/corpse/point_loma/usasf/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/sof/survivor_usasf, WEAR_L_EAR)
 	var/duty = rand(1,10)
-	var/shoes = rand (1,3)
-	var/role = rand (1,4)
+	var/shoes = rand(1,3)
+	var/role = rand(1,4)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/sof/survivor_usasf(new_human), WEAR_L_EAR)
+
 	switch(duty)
 		if(1 to 3) //off-duty
 			var/offduty_outfit = rand(1,3) //1 number per outfit
 			switch(offduty_outfit)
 				if (1)
-					new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/frontier, WEAR_BODY)
+					new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/frontier(new_human), WEAR_BODY)
 				if (2)
-					var/colour = rand (1,3)
+					var/colour = rand(1,3)
 					switch(colour)
 						if (1)
-							new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/blue, WEAR_BODY)
+							new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/blue(new_human), WEAR_BODY)
 						if (2)
-							new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/brown, WEAR_BODY)
+							new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/brown(new_human), WEAR_BODY)
 						if (3)
-							new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/gray, WEAR_BODY)
+							new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/gray(new_human), WEAR_BODY)
 				if (3)
 					var/flavour = rand(1,3)
 					switch(flavour)
 						if (1)
-							new_human.equip_to_slot_or_del(new /obj/item/clothing/under/tshirt/w_br, WEAR_BODY)
+							new_human.equip_to_slot_or_del(new /obj/item/clothing/under/tshirt/w_br(new_human), WEAR_BODY)
 						if (2)
-							new_human.equip_to_slot_or_del(new /obj/item/clothing/under/tshirt/gray_blu, WEAR_BODY)
+							new_human.equip_to_slot_or_del(new /obj/item/clothing/under/tshirt/gray_blu(new_human), WEAR_BODY)
 						if(3)
-							new_human.equip_to_slot_or_del(new /obj/item/clothing/under/tshirt/r_bla, WEAR_BODY)
+							new_human.equip_to_slot_or_del(new /obj/item/clothing/under/tshirt/r_bla(new_human), WEAR_BODY)
 		if (4 to 10) //on-duty
 			var/onduty_outfit = rand(1,2)
 			switch(onduty_outfit)
 				if (1)
-					new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/navy, WEAR_BODY)
+					new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/navy(new_human), WEAR_BODY)
 				if (2)
-					new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/pilot/dcc, WEAR_BODY)
+					new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/pilot/dcc(new_human), WEAR_BODY)
 	switch(shoes)
 		if (1)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/sandal, WEAR_FEET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/sandal(new_human), WEAR_FEET)
 		if (2)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine, WEAR_FEET) //ToDO: USASF Boots
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(new_human), WEAR_FEET) //ToDO: USASF Boots
 		if (3)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/black, WEAR_FEET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(new_human), WEAR_FEET)
 	switch(role)
 		if(1) // Engineer
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/welding, WEAR_HEAD)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/tool_webbing/equipped, WEAR_ACCESSORY)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest, WEAR_JACKET)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow, WEAR_HANDS)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/welding(new_human), WEAR_HEAD)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/tool_webbing/equipped(new_human), WEAR_ACCESSORY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest(new_human), WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(new_human), WEAR_HANDS)
 		if(2) // Doctor
-			new_human.equip_to_slot_or_del (new /obj/item/clothing/suit/chef/classic/medical, WEAR_BODY)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_EYES)
+			new_human.equip_to_slot_or_del (new /obj/item/clothing/suit/chef/classic/medical(new_human), WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(new_human), WEAR_EYES)
 		if(3) // Security Police
 			var/obj/item/clothing/under/marine/navy/uniform = new()
 			var/obj/item/clothing/accessory/ranks/navy/special/brassard/patch_SP = new()
 			new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
 			uniform.attach_accessory(new_human,patch_SP)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/navy, WEAR_HEAD)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/navy(new_human), WEAR_HEAD)
 		if(4) // Pilot
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/pilot, WEAR_BODY)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/pilot/novisor, WEAR_HEAD)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/pilot(new_human), WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/pilot/novisor(new_human), WEAR_HEAD)
 
 /datum/equipment_preset/corpse/point_loma/usasf/burst
 	name = "Corpse - Burst - USASF"

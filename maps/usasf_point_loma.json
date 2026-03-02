@@ -6,9 +6,6 @@
     "weather_holder": "/datum/weather_ss_map_holder/new_varadero",
 
     "survivor_types": [
-        "/datum/equipment_preset/survivor/alphatech/corporate",
-		"/datum/equipment_preset/survivor/alphatech/miner",
-		"/datum/equipment_preset/survivor/alphatech/scientist",
 		"/datum/equipment_preset/survivor/usasf/crew/duty",
 		"/datum/equipment_preset/survivor/usasf/crew/duty/hangar_tech",
 		"/datum/equipment_preset/survivor/usasf/crew/duty/mess_tech",

@@ -2428,6 +2428,7 @@
 #include "code\modules\projectiles\guns\specialist\launcher\rocket_launcher.dm"
 #include "code\modules\projectiles\magazines\flamer.dm"
 #include "code\modules\projectiles\magazines\lever_action.dm"
+#include "code\modules\projectiles\magazines\m4ra_tracker.dm"
 #include "code\modules\projectiles\magazines\misc.dm"
 #include "code\modules\projectiles\magazines\pistols.dm"
 #include "code\modules\projectiles\magazines\revolvers.dm"

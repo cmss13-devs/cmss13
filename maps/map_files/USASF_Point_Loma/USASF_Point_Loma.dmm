@@ -36888,10 +36888,6 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/east)
-"cfO" = (
-/obj/structure/machinery/power/apc/fully_broken/no_cell/west,
-/turf/open/floor/plating/burnt_platingdmg3,
-/area/point_loma/research_facility/dorms)
 "cfP" = (
 /obj/effect/landmark/corpsespawner/point_loma/usasf,
 /obj/effect/spawner/random/gun/rifle,
@@ -41689,7 +41685,7 @@
 "cvo" = (
 /obj/structure/machinery/power/apc/no_power/east,
 /turf/open/floor/corsat/squares,
-/area/point_loma/research_facility/hallway/north)
+/area/point_loma/airbase/mining_colony/interior/engineering/communications/two)
 "cvp" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/effect/landmark/objective_landmark/science,
@@ -101305,7 +101301,7 @@ cdE
 cdE
 cdE
 cdE
-cfO
+bpi
 aFk
 aFk
 bqf

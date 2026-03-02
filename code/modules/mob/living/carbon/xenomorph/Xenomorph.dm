@@ -376,6 +376,7 @@
 	/// cooldown between throwing facehuggers
 	var/hugger_throw_cooldown = 0
 
+
 /mob/living/carbon/xenomorph/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
 	if(old_xeno && old_xeno.hivenumber)
 		src.hivenumber = old_xeno.hivenumber
@@ -434,26 +435,12 @@
 	if(hive)
 		for(var/trait in hive.hive_inherited_traits)
 			ADD_TRAIT(src, trait, TRAIT_SOURCE_HIVE)
+
 	//Set caste stuff
-	if(caste_type && GLOB.xeno_datum_list[caste_type])
-		caste = GLOB.xeno_datum_list[caste_type]
-		damage_state_prefix = caste.caste_type
-
-		//Fire immunity signals
-		if (HAS_FLAG(caste.fire_immunity, FIRE_IMMUNITY_NO_DAMAGE | FIRE_IMMUNITY_NO_IGNITE | FIRE_IMMUNITY_XENO_FRENZY))
-			if(caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE)
-				RegisterSignal(src, COMSIG_LIVING_PREIGNITION, PROC_REF(fire_immune))
-
-			RegisterSignal(src, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED), PROC_REF(flamer_crossed_immune))
-		else
-			UnregisterSignal(src, list(
-				COMSIG_LIVING_PREIGNITION,
-				COMSIG_LIVING_FLAMER_CROSSED,
-				COMSIG_LIVING_FLAMER_FLAMED
-			))
 	if(!caste_type || !GLOB.xeno_datum_list[caste_type])
 		CRASH("Attempted to create a new xenomorph [src] without caste datum.")
 	caste = GLOB.xeno_datum_list[caste_type]
+
 	//Fire immunity check signals
 	RegisterSignal(src, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED), PROC_REF(flamer_crossed))
 

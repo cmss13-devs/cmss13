@@ -145,6 +145,19 @@
 	scatter = SCATTER_AMOUNT_NEURO
 	bonus_projectiles_amount = 0
 
+/datum/ammo/xeno/toxin/neuro
+	effect_power = XENO_NEURO_TIER_4
+	var/datum/callback/retro_neuro_callback
+
+/datum/ammo/xeno/toxin/neuro/New()
+	..()
+
+	retro_neuro_callback = CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(apply_retro_neuro))
+
+/datum/ammo/xeno/toxin/neuro/on_hit_mob(mob/M,obj/projectile/P)
+
+	retro_neuro_callback.Invoke(M, effect_power)
+
 // attempt 2
 /proc/apply_retro_neuro(mob/living/victim, power, daze_amount)
 	var/pass_down_the_line = FALSE
@@ -162,6 +175,8 @@
 
 
 	if(HAS_TRAIT(victim, TRAIT_DAZED))
+		victim.visible_message(SPAN_DANGER("[victim] has the dazed trait."))
+
 
 /* attempt 1
 

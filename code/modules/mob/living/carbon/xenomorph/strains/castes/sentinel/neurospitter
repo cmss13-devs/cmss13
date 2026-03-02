@@ -1,4 +1,3 @@
-
 /datum/xeno_strain/neuro_spitter
 	name = SENTINEL_NEURO_SPITTER
 	description = "At the cost of your scatterspit and paralyzing slash, your tackles are improved and your slowing spit gains the ability to inflict neurotoxin effects into talls it hits, upto knocking them out for an easy capture."

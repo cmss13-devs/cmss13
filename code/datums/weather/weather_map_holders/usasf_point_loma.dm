@@ -1,6 +1,7 @@
 /datum/weather_ss_map_holder/point_loma
 	name = "Point_Loma Map Holder"
 
+
 	min_time_between_events = 15 MINUTES
 	no_weather_turf_icon_state = "strata_clearsky"
 
@@ -16,3 +17,4 @@
 
 /datum/weather_ss_map_holder/point_loma/should_start_event()
 	return prob(PROB_WEATHER_POINT_LOMA) //100%
+

@@ -21187,7 +21187,7 @@
 /obj/structure/machinery/door/airlock/security/colony,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 8;
-	id = s;
+	id = "bot_armory";
 	name = "\improper Armory Shutters"
 	},
 /turf/open/floor/corsat/squares,

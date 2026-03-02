@@ -1,4 +1,4 @@
- /datum/weather_event/point_loma/heat
+/datum/weather_event/point_loma/heat
 	name = "High Heat"
 	display_name = "High Heat"
 	length = 15 MINUTES // 15 minutes long, happens every 15 minutes
@@ -6,7 +6,7 @@
 
 	effect_message = "It is unbelievably hot. You can't wait to get indoors."
 
- /datum/weather_event/point_loma/heat/heat_wave
+/datum/weather_event/point_loma/heat/heat_wave
 	name = "High Heat Extra"
 	display_name = "Heat Wave"
 	length = 15 MINUTES

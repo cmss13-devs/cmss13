@@ -1981,18 +1981,67 @@
 	name = "Corpse - Burst - USASF"
 
 /datum/equipment_preset/corpse/point_loma/usasf/load_gear(mob/living/carbon/human/new_human)
-	var/outfit = rand(1,5)
-	switch (outfit)
-		if(1) //Hangar-Tech
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/sof/survivor_usasf, WEAR_L_EAR)
+	var/duty = rand(1,10)
+	var/shoes = rand (1,3)
+	var/role = rand (1,4)
+	switch(duty)
+		if(1 to 3) //off-duty
+			var/offduty_outfit = rand(1,3) //1 number per outfit
+			switch(offduty_outfit)
+				if (1)
+					new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/frontier, WEAR_BODY)
+				if (2)
+					var/colour = rand (1,3)
+					switch(colour)
+						if (1)
+							new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/blue, WEAR_BODY)
+						if (2)
+							new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/brown, WEAR_BODY)
+						if (3)
+							new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/gray, WEAR_BODY)
+				if (3)
+					var/flavour = rand(1,3)
+					switch(flavour)
+						if (1)
+							new_human.equip_to_slot_or_del(new /obj/item/clothing/under/tshirt/w_br, WEAR_BODY)
+						if (2)
+							new_human.equip_to_slot_or_del(new /obj/item/clothing/under/tshirt/gray_blu, WEAR_BODY)
+						if(3)
+							new_human.equip_to_slot_or_del(new /obj/item/clothing/under/tshirt/r_bla, WEAR_BODY)
+		if (4 to 10) //on-duty
+			var/onduty_outfit = rand(1,2)
+			switch(onduty_outfit)
+				if (1)
+					new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/navy, WEAR_BODY)
+				if (2)
+					new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/pilot/dcc, WEAR_BODY)
+	switch(shoes)
+		if (1)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/sandal, WEAR_FEET)
+		if (2)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine, WEAR_FEET) //ToDO: USASF Boots
+		if (3)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/black, WEAR_FEET)
+	switch(role)
+		if(1) // Engineer
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/welding, WEAR_HEAD)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/tool_webbing/equipped, WEAR_ACCESSORY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest, WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow, WEAR_HANDS)
+		if(2) // Doctor
+			new_human.equip_to_slot_or_del (new /obj/item/clothing/suit/chef/classic/medical, WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_EYES)
+		if(3) // Security Police
+			var/obj/item/clothing/under/marine/navy/uniform = new()
+			var/obj/item/clothing/accessory/ranks/navy/special/brassard/patch_SP = new()
+			new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
+			uniform.attach_accessory(new_human,patch_SP)
 
-		if(2) //Officer
-
-		if(3) //Pilot
-
-		if(4) //Nurse
-
-		if(5) //Security Police
-		
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/navy, WEAR_HEAD)
+		if(4) // Pilot
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/pilot, WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/pilot/novisor, WEAR_HEAD)
 
 /datum/equipment_preset/corpse/point_loma/usasf/burst
 	name = "Corpse - Burst - USASF"

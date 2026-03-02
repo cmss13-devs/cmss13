@@ -1,0 +1,4 @@
+author: "ComboTombo"
+delete-after: True
+changes:
+  - rscadd: "Added marine combat boots and gloves of different variants to the synthetic clothing vendor and loadout menu"

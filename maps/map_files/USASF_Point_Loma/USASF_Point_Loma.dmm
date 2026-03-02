@@ -10676,7 +10676,7 @@
 "aER" = (
 /obj/structure/window,
 /turf/open/floor/corsat/squares,
-/area/point_loma/research_facility/gym)
+/area/point_loma/research_facility/hallway/central)
 "aES" = (
 /obj/structure/anti_air_cannon,
 /turf/open/floor/corsat/squares,
@@ -31648,6 +31648,10 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/east)
+"bMT" = (
+/obj/structure/machinery/power/apc/fully_broken/no_cell/west,
+/turf/open/floor/plating/burnt_platingdmg3,
+/area/point_loma/research_facility/dorms)
 "bMU" = (
 /turf/closed/wall/new_varadero/reinforced/hull,
 /area/point_loma/airbase/interior/cargo/lower)
@@ -32814,7 +32818,7 @@
 	},
 /obj/structure/closet/firecloset,
 /turf/open/floor/corsat,
-/area/point_loma/research_facility/pool)
+/area/point_loma/research_facility/gym)
 "bRi" = (
 /obj/item/lightstick/red/variant/planted,
 /turf/open/auto_turf/sand_white/layer1,
@@ -35435,7 +35439,7 @@
 	dir = 4
 	},
 /turf/open/floor/corsat,
-/area/point_loma/research_facility/pool)
+/area/point_loma/research_facility/gym)
 "cbc" = (
 /obj/item/device/flashlight/flare/on,
 /turf/open/floor/corsat/squares,
@@ -39644,12 +39648,6 @@
 	},
 /turf/open/floor/corsat,
 /area/point_loma/research_facility/gym)
-"coE" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor/corsat,
-/area/point_loma/research_facility/pool)
 "coF" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
@@ -41773,6 +41771,13 @@
 /obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/engineering)
+"cvl" = (
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
+	pixel_y = 16;
+	layer = 6
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/point_loma/oob)
 "cvm" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/effect/landmark/objective_landmark/medium,
@@ -41785,7 +41790,7 @@
 "cvo" = (
 /obj/structure/machinery/power/apc/no_power/east,
 /turf/open/floor/corsat/squares,
-/area/point_loma/airbase/mining_colony/interior/engineering/communications/two)
+/area/point_loma/research_facility/hallway/north)
 "cvp" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/effect/landmark/objective_landmark/science,
@@ -42216,7 +42221,7 @@
 	dir = 8
 	},
 /turf/closed/wall/new_varadero/reinforced/hull,
-/area/point_loma/airbase/exterior/west)
+/area/point_loma/oob)
 "cwO" = (
 /obj/effect/landmark/yautja_teleport,
 /turf/open/floor/corsat/lightplate,
@@ -43086,6 +43091,12 @@
 /obj/structure/catwalk/strata,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/north)
+"cAs" = (
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 8
+	},
+/turf/open/floor/shiva/north,
+/area/point_loma/airbase/interior/cargo/upper)
 "cAu" = (
 /obj/structure/stairs/multiz/up{
 	dir = 8
@@ -43191,12 +43202,6 @@
 /obj/item/stack/sheet/plasteel/medium_stack,
 /turf/open/floor/shiva/multi_tiles,
 /area/point_loma/airbase/interior/cargo)
-"cAK" = (
-/turf/closed/wall/new_varadero/reinforced/hull,
-/area/point_loma/airbase/exterior/west)
-"cAL" = (
-/turf/open/auto_turf/sand_white/layer1,
-/area/point_loma/oob)
 "cAM" = (
 /turf/open/floor/shiva/red/northeast,
 /area/point_loma/airbase/mining_colony/interior/security)
@@ -101401,7 +101406,7 @@ cdE
 cdE
 cdE
 cdE
-bpi
+bMT
 aFk
 aFk
 bqf
@@ -106729,8 +106734,8 @@ aBX
 cbw
 aAY
 bIW
-caL
-coE
+bJb
+coC
 bIQ
 bhF
 bhQ
@@ -106911,8 +106916,8 @@ aBZ
 aAY
 aAZ
 bIW
-caL
-coE
+bJb
+coC
 bil
 bid
 bgT
@@ -107093,8 +107098,8 @@ coV
 coR
 aAY
 bIW
-caL
-coE
+bJb
+coC
 bIQ
 bgV
 bIS
@@ -107275,8 +107280,8 @@ aAY
 aAY
 aAY
 bIW
-caL
-coE
+bJb
+coC
 bIQ
 bif
 bhT
@@ -107458,7 +107463,7 @@ aAY
 aAY
 bIW
 bRh
-coE
+coC
 bil
 bgV
 bhU
@@ -107639,7 +107644,7 @@ aDY
 aDY
 bIW
 bIW
-bIQ
+bIW
 cbb
 bIQ
 caT
@@ -150767,7 +150772,7 @@ cjn
 ajF
 bPH
 bPH
-cAL
+bPH
 cwN
 awk
 atg
@@ -150949,8 +150954,8 @@ ajF
 ajF
 bPH
 bPH
-cAL
-cAK
+bPH
+bJw
 atI
 cgS
 cgS
@@ -153523,7 +153528,7 @@ aIg
 aIg
 aND
 aIg
-aIg
+asb
 asb
 asb
 asb
@@ -153705,7 +153710,7 @@ aIg
 aIg
 aND
 aIg
-aIg
+asb
 asb
 asb
 asb
@@ -153883,11 +153888,11 @@ bOU
 bOU
 bOU
 bOU
-aIg
-aIg
-aND
+bIT
+bIT
+cvl
 asb
-aIg
+asb
 asb
 asb
 asb
@@ -154069,7 +154074,7 @@ bOU
 bOU
 aOx
 bOU
-aIg
+asb
 asb
 asb
 asb
@@ -155535,11 +155540,11 @@ bOU
 bOU
 bOU
 bOU
-bOU
 aIg
 aIg
 aIg
 aIg
+bIT
 asb
 asb
 asb
@@ -155717,7 +155722,7 @@ bOU
 bOU
 bOU
 bOU
-bOU
+aIg
 aIg
 aIg
 aIg
@@ -186031,7 +186036,7 @@ cmz
 cmz
 cmD
 cmz
-bUr
+cAs
 cna
 cna
 cmz

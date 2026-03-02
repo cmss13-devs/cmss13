@@ -1537,6 +1537,7 @@
 #include "code\game\turfs\hybrisa.dm"
 #include "code\game\turfs\kutjevo.dm"
 #include "code\game\turfs\light.dm"
+#include "code\game\turfs\loma.dm"
 #include "code\game\turfs\new_varadero.dm"
 #include "code\game\turfs\open.dm"
 #include "code\game\turfs\open_space.dm"

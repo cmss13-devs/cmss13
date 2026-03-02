@@ -2037,7 +2037,6 @@
 			var/obj/item/clothing/accessory/ranks/navy/special/brassard/patch_SP = new()
 			new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
 			uniform.attach_accessory(new_human,patch_SP)
-
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/navy, WEAR_HEAD)
 		if(4) // Pilot
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/pilot, WEAR_BODY)

@@ -6162,6 +6162,7 @@
 /area/point_loma/airbase/interior/hospital)
 "asG" = (
 /obj/structure/surface/table/reinforced/prison,
+/obj/item/weapon/gun/flamer/survivor,
 /turf/open/floor/corsat/box,
 /area/point_loma/airbase/interior/workshop)
 "asH" = (
@@ -7360,8 +7361,8 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/point_loma/research_facility/medical)
 "avC" = (
-/obj/effect/landmark/corpsespawner/miner,
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/point_loma/alphatech,
 /turf/open/floor/shiva/multi_tiles,
 /area/point_loma/airbase/interior/cargo)
 "avD" = (
@@ -8183,6 +8184,7 @@
 /obj/structure/window/framed/new_varadero{
 	dir = 4
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/corsat/squares,
 /area/point_loma/airbase/interior/workshop)
 "axO" = (
@@ -12083,6 +12085,13 @@
 	},
 /turf/open/hybrisa/street/roadlines,
 /area/point_loma/airbase/interior/hospital)
+"aJg" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/item/ammo_magazine/flamer_tank/survivor,
+/turf/open/floor/corsat,
+/area/point_loma/airbase/interior/cargo/lower)
 "aJh" = (
 /obj/structure/bed/chair/comfy/beige{
 	dir = 8
@@ -12970,6 +12979,7 @@
 	pixel_x = -5;
 	pixel_y = 33
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/corsat/squares,
 /area/point_loma/airbase/interior/workshop)
 "aLH" = (
@@ -13003,6 +13013,7 @@
 /obj/item/stock_parts/capacitor/super{
 	pixel_y = 39
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/corsat/squares,
 /area/point_loma/airbase/interior/workshop)
 "aLK" = (
@@ -14170,6 +14181,7 @@
 /obj/structure/window/framed/new_varadero{
 	dir = 4
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/corsat/squares,
 /area/point_loma/airbase/interior/workshop)
 "aPa" = (
@@ -17609,7 +17621,7 @@
 /area/point_loma/airbase/mining_colony/interior/security)
 "aZo" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/miner,
+/obj/effect/landmark/corpsespawner/point_loma/alphatech,
 /turf/open/auto_turf/sand_white/layer1,
 /area/point_loma/airbase/exterior/west)
 "aZp" = (
@@ -25767,10 +25779,12 @@
 "bvZ" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/donut_box,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva/red/southwest,
 /area/point_loma/airbase/interior/workshop)
 "bwa" = (
 /obj/structure/surface/table/reinforced/prison,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva/red,
 /area/point_loma/airbase/interior/workshop)
 "bwb" = (
@@ -25937,6 +25951,7 @@
 /area/point_loma/airbase/interior/workshop)
 "bwC" = (
 /obj/structure/surface/table/reinforced/prison,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva/red/north,
 /area/point_loma/airbase/interior/workshop)
 "bwD" = (
@@ -28254,7 +28269,7 @@
 /area/point_loma/airbase/mining_colony/caves)
 "bCL" = (
 /obj/effect/decal/cleanable/blood/xeno,
-/obj/effect/landmark/corpsespawner/forecon_spotter,
+/obj/effect/landmark/corpsespawner/point_loma/usasf,
 /turf/open/new_varadero/taupe_concrete,
 /area/point_loma/airbase/exterior/west)
 "bCM" = (
@@ -37072,6 +37087,17 @@
 /obj/item/ammo_casing/bullet,
 /turf/open/asphalt/cement_shaded,
 /area/point_loma/research_facility/hallway/east)
+"cgh" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/ammo_magazine/flamer_tank/survivor{
+	pixel_y = 3
+	},
+/obj/item/ammo_magazine/flamer_tank/survivor{
+	pixel_y = -2;
+	pixel_x = -9
+	},
+/turf/open/floor/corsat/box,
+/area/point_loma/airbase/interior/workshop)
 "cgi" = (
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal2";
@@ -37133,6 +37159,12 @@
 /obj/structure/largecrate/empty,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/east)
+"cgr" = (
+/obj/item/ammo_magazine/flamer_tank/survivor{
+	pixel_y = 3
+	},
+/turf/closed/wall/new_varadero/reinforced,
+/area/point_loma/airbase/interior/workshop)
 "cgt" = (
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal3";
@@ -38719,11 +38751,11 @@
 /turf/open/floor/shiva/multi_tiles,
 /area/point_loma/airbase/interior/cargo)
 "clM" = (
-/obj/effect/landmark/corpsespawner/miner,
 /obj/effect/decal/cleanable/blood{
 	dir = 4;
 	icon_state = "gib6"
 	},
+/obj/effect/landmark/corpsespawner/point_loma/alphatech,
 /turf/open/floor/shiva/multi_tiles,
 /area/point_loma/airbase/interior/cargo)
 "clN" = (
@@ -96572,7 +96604,7 @@ chV
 bLc
 bKU
 cgT
-crL
+aJg
 bsQ
 bsP
 aJB
@@ -156322,7 +156354,7 @@ bQd
 bQd
 bQd
 bQd
-bPq
+cgr
 bdZ
 aWP
 aWP
@@ -157599,7 +157631,7 @@ bQd
 bPq
 aJA
 aWP
-asG
+cgh
 aWP
 acx
 aiL

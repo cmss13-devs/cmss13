@@ -1933,7 +1933,45 @@
 	flags = EQUIPMENT_PRESET_STUB
 
 /datum/equipment_preset/corpse/point_loma/alphatech // ToDO:
-	name  = "Corpse - AlphaTech"
+	name = "Survivor - Alpha-Tech Corporate Liaison"
+	job_title = JOB_ALPHATECH_CL
+	assignment = JOB_ALPHATECH_CL
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_CHINESE, LANGUAGE_JAPANESE, LANGUAGE_RUSSIAN)
+	skills = /datum/skills/civilian/survivor/manager // ToDO: Check what manager skills actually are
+	paygrades = list(PAY_SHORT_ATHC1 = JOB_PLAYTIME_TIER_0)
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+
+/datum/equipment_preset/corpse/point_loma/alphatech/load_gear(mob/living/carbon/human/new_human)
+	var/outfit = rand (1,4)
+	switch(outfit) //ToDO: Parent equipping a radio
+		if(1) //Corpo Exec
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/brown, WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/vest, WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/lockable(new_human), WEAR_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/alphatech, WEAR_L_EAR)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/black, WEAR_FEET)
+		if(2) //Scientist
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/brown, WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/alphatech, WEAR_L_EAR)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/latex(new_human), WEAR_HANDS)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/white(new_human), WEAR_FEET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat, WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/science(new_human), WEAR_EYES)
+		if(3) //Miner
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest/yellow(new_human), WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/blue(new_human), WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(new_human), WEAR_FEET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/blue(new_human), WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/device/flashlight/lantern(new_human), WEAR_WAIST)
+			new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/alphatech, WEAR_L_EAR)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/kutjevo/safety, WEAR_EYES)
+		if(4) //Contractor
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/kutjevo(new_human), WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/kutjevo(new_human), WEAR_HEAD)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/kutjevo(new_human), WEAR_EYES)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(new_human), WEAR_FEET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(new_human), WEAR_HANDS)
+			new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/alphatech, WEAR_L_EAR)
 
 /datum/equipment_preset/corpse/point_loma/alphatech/burst
 	name = "Corpse - Burst - Alphatech"
@@ -1941,6 +1979,20 @@
 
 /datum/equipment_preset/corpse/point_loma/usasf
 	name = "Corpse - Burst - USASF"
+
+/datum/equipment_preset/corpse/point_loma/usasf/load_gear(mob/living/carbon/human/new_human)
+	var/outfit = rand(1,5)
+	switch (outfit)
+		if(1) //Hangar-Tech
+
+		if(2) //Officer
+
+		if(3) //Pilot
+
+		if(4) //Nurse
+
+		if(5) //Security Police
+		
 
 /datum/equipment_preset/corpse/point_loma/usasf/burst
 	name = "Corpse - Burst - USASF"

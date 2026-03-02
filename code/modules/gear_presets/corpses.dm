@@ -1980,7 +1980,6 @@
 
 /datum/equipment_preset/corpse/point_loma/usasf
 	name = "Corpse - USASF"
-	//job_title = JOB_SURVIVOR
 	skills = /datum/skills/military/survivor/usasf
 	languages = list(LANGUAGE_ENGLISH)
 	idtype = /obj/item/card/id/dogtag/usasf

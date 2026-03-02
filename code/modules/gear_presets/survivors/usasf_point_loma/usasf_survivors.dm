@@ -144,7 +144,7 @@
 	var/spawn_security_primary = rand(1,2)
 	switch(spawn_security_primary)
 		if (1)
-			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/combat/riot, WEAR_R_HAND)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/combat, WEAR_R_HAND)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/shotgun/full, WEAR_WAIST)
 		if (2)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m39/full, WEAR_WAIST)

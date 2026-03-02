@@ -3,7 +3,7 @@
     "map_path": "map_files/USASF_Point_Loma",
     "map_file": "USASF_Point_Loma.dmm",
     "webmap_url": "LV624",
-    "weather_holder": "/datum/weather_ss_map_holder/new_varadero",
+    "weather_holder": "/datum/weather_ss_map_holder/usasf_point_loma",
 
     "survivor_types": [
 		"/datum/equipment_preset/survivor/usasf/crew/duty",

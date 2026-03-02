@@ -10679,7 +10679,7 @@
 "aER" = (
 /obj/structure/window,
 /turf/open/floor/corsat/squares,
-/area/point_loma/research_facility/gym)
+/area/point_loma/research_facility/hallway/central)
 "aES" = (
 /obj/structure/anti_air_cannon,
 /turf/open/floor/corsat/squares,
@@ -32776,7 +32776,7 @@
 	},
 /obj/structure/closet/firecloset,
 /turf/open/floor/corsat,
-/area/point_loma/research_facility/pool)
+/area/point_loma/research_facility/gym)
 "bRi" = (
 /obj/item/lightstick/red/variant/planted,
 /turf/open/auto_turf/sand_white/layer1,
@@ -35386,7 +35386,7 @@
 	dir = 4
 	},
 /turf/open/floor/corsat,
-/area/point_loma/research_facility/pool)
+/area/point_loma/research_facility/gym)
 "cbc" = (
 /obj/item/device/flashlight/flare/on,
 /turf/open/floor/corsat/squares,
@@ -39569,12 +39569,6 @@
 	},
 /turf/open/floor/corsat,
 /area/point_loma/research_facility/gym)
-"coE" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor/corsat,
-/area/point_loma/research_facility/pool)
 "coF" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
@@ -106640,8 +106634,8 @@ aBX
 cbw
 aAY
 bIW
-caL
-coE
+bJb
+coC
 bIQ
 bhF
 bhQ
@@ -106822,8 +106816,8 @@ aBZ
 aAY
 aAZ
 bIW
-caL
-coE
+bJb
+coC
 bil
 bid
 bgT
@@ -107004,8 +106998,8 @@ coV
 coR
 aAY
 bIW
-caL
-coE
+bJb
+coC
 bIQ
 bgV
 bIS
@@ -107186,8 +107180,8 @@ aAY
 aAY
 aAY
 bIW
-caL
-coE
+bJb
+coC
 bIQ
 bif
 bhT
@@ -107369,7 +107363,7 @@ aAY
 aAY
 bIW
 bRh
-coE
+coC
 bil
 bgV
 bhU
@@ -107550,7 +107544,7 @@ aDY
 aDY
 bIW
 bIW
-bIQ
+bIW
 cbb
 bIQ
 caT

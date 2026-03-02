@@ -1933,9 +1933,10 @@
 	flags = EQUIPMENT_PRESET_STUB
 
 /datum/equipment_preset/corpse/point_loma/alphatech // ToDO:
-	name = "Survivor - Alpha-Tech Corporate Liaison"
-	job_title = JOB_ALPHATECH_CL
-	assignment = JOB_ALPHATECH_CL
+	name = "Corpse - AlphaTech"
+	job_title = JOB_ALPHATECH_EMPLOYEE
+	faction = FACTION_ALPHATECH
+	assignment = JOB_ALPHATECH_EMPLOYEE
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_CHINESE, LANGUAGE_JAPANESE, LANGUAGE_RUSSIAN)
 	skills = /datum/skills/civilian/survivor/manager // ToDO: Check what manager skills actually are
 	paygrades = list(PAY_SHORT_ATHC1 = JOB_PLAYTIME_TIER_0)
@@ -1978,7 +1979,21 @@
 	xenovictim = TRUE
 
 /datum/equipment_preset/corpse/point_loma/usasf
-	name = "Corpse - Burst - USASF"
+	name = "Corpse - USASF"
+	//job_title = JOB_SURVIVOR
+	skills = /datum/skills/military/survivor/usasf
+	languages = list(LANGUAGE_ENGLISH)
+	idtype = /obj/item/card/id/dogtag/usasf
+	faction = FACTION_SURVIVOR
+	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
+	origin_override = ORIGIN_USASF
+	paygrades = list(PAY_SHORT_NE3 = JOB_PLAYTIME_TIER_0)
+	job_title  = JOB_USASF_CREW
+	access = list(
+		ACCESS_CIVILIAN_PUBLIC,
+		ACCESS_CIVILIAN_ENGINEERING,
+		ACCESS_CIVILIAN_LOGISTICS,
+	)
 
 /datum/equipment_preset/corpse/point_loma/usasf/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/sof/survivor_usasf, WEAR_L_EAR)
@@ -2037,7 +2052,6 @@
 			var/obj/item/clothing/accessory/ranks/navy/special/brassard/patch_SP = new()
 			new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
 			uniform.attach_accessory(new_human,patch_SP)
-
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/navy, WEAR_HEAD)
 		if(4) // Pilot
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/pilot, WEAR_BODY)

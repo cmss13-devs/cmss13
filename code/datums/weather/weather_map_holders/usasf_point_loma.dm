@@ -3,7 +3,6 @@
 
 
 	min_time_between_events = 15 MINUTES
-	no_weather_turf_icon_state = "strata_clearsky"
 
 	warn_time = 0 SECONDS //No time between warning and effect
 

@@ -2150,4 +2150,7 @@
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE|UNIFORM_JACKET_REMOVABLE
+	item_icons = list(
+		WEAR_BODY = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/USASF.dmi',
+	)
 

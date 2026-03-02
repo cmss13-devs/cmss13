@@ -91,6 +91,7 @@
 	icon_state = "shrapnelshot"
 	handful_state = "shrapnel"
 	bonus_projectiles_type = /datum/ammo/bullet/revolver/upp/shrapnel_bits
+	shell_casing = /obj/effect/decal/cleanable/ammo_casing/shrapnel
 
 	max_range = 6
 	damage = 40 // + TIER_4 * 3

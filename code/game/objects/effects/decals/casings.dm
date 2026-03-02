@@ -57,9 +57,21 @@ that said, the icon_states in the dmi files aren't culled for use by mappers - n
 	cleanable_turf.overlays += overlayed_image
 	moveToNullspace()
 
+/obj/effect/decal/cleanable/ammo_casing/shrapnel
+	icon_state = "shrapnel_casing"
+	number_of_states = 0
+
 /obj/effect/decal/cleanable/ammo_casing/cartridge
 	name = "spent cartridge"
 	icon_state = "cartridge"
+
+/obj/effect/decal/cleanable/ammo_casing/cartridge/lever_action
+	icon_state = "lever_action_cartridge"
+	number_of_states = 0
+
+/obj/effect/decal/cleanable/ammo_casing/cartridge/shrapnel
+	icon_state = "shrapnel_cartridge"
+	number_of_states = 0
 
 /obj/effect/decal/cleanable/ammo_casing/shell
 	name = "spent shell"
@@ -67,31 +79,66 @@ that said, the icon_states in the dmi files aren't culled for use by mappers - n
 	ejection_sfx = "gun_casing_shotgun"
 
 /obj/effect/decal/cleanable/ammo_casing/shell/green_shell
-	name = "spent shell"
 	icon_state = "green_shell"
 
 /obj/effect/decal/cleanable/ammo_casing/shell/red_shell
-	name = "spent shell"
 	icon_state = "red_shell"
 	number_of_states = 0
 
 /obj/effect/decal/cleanable/ammo_casing/shell/blue_shell
-	name = "spent shell"
 	icon_state = "blue_shell"
 
 /obj/effect/decal/cleanable/ammo_casing/shell/purple_shell
-	name = "spent shell"
 	icon_state = "purple_shell"
 	number_of_states = 0
 
 /obj/effect/decal/cleanable/ammo_casing/shell/incen_shell
-	name = "spent shell"
 	icon_state = "incen_shell"
 	number_of_states = 0
 
+/obj/effect/decal/cleanable/ammo_casing/shell/incen_slug
+	icon_state = "incen_slug"
+	number_of_states = 0
+
+/obj/effect/decal/cleanable/ammo_casing/shell/es7_shock
+	icon_state = "es7_shock"
+	number_of_states = 0
+
+/obj/effect/decal/cleanable/ammo_casing/shell/es7_slug
+	icon_state = "es7_slug"
+	number_of_states = 0
+
 /obj/effect/decal/cleanable/ammo_casing/shell/blank_shell
-	name = "spent shell"
 	icon_state = "blank_shell"
+	number_of_states = 0
+
+/obj/effect/decal/cleanable/ammo_casing/shell/heavy
+	icon_state = "heavy_shell_red"
+	number_of_states = 0
+
+/obj/effect/decal/cleanable/ammo_casing/shell/heavy/green_shell
+	icon_state = "heavy_shell_green"
+	number_of_states = 0
+
+/obj/effect/decal/cleanable/ammo_casing/shell/heavy/purple_shell
+	icon_state = "heavy_shell_purple"
+	number_of_states = 0
+
+/obj/effect/decal/cleanable/ammo_casing/shell/heavy/blue_shell
+	icon_state = "heavy_shell_blue"
+	number_of_states = 0
+
+/obj/effect/decal/cleanable/ammo_casing/shell/heavy/incen_shell
+	icon_state = "heavy_shell_incen"
+	number_of_states = 0
+
+
+/obj/effect/decal/cleanable/ammo_casing/shell/light
+	icon_state = "breaching_shell"
+	number_of_states = 0
+
+/obj/effect/decal/cleanable/ammo_casing/shell/light/rubbershot
+	icon_state = "rubbershot_shell"
 	number_of_states = 0
 
 /obj/effect/decal/cleanable/ammo_casing/shell/twobore_shell

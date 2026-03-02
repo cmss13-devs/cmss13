@@ -145,6 +145,84 @@
 	scatter = SCATTER_AMOUNT_NEURO
 	bonus_projectiles_amount = 0
 
+// attempt 2
+/proc/apply_retro_neuro(mob/living/victim, power, daze_amount)
+	var/pass_down_the_line = FALSE
+
+	if(skillcheck(victim, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX))
+		victim.visible_message(SPAN_DANGER("[victim] withstands the neurotoxin!"))
+		return //endurance 5 makes you immune to weak neurotoxin
+	if(ishuman(victim))
+		var/mob/living/carbon/human/H = victim
+		if(H.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO || H.species.flags & NO_NEURO)
+			return
+
+	if(ishuman(victim))
+		victim.visible_message(SPAN_DANGER("[victim] falls limp on the ground."))
+
+
+	if(HAS_TRAIT(victim, TRAIT_DAZED))
+
+/* attempt 1
+
+/proc/apply_retro_neuro(mob/living/mob, power, daze_amount)
+	var/pass_down_the_line = FALSE
+	var/datum/status_effect/incapacitating/dazed/dazed = IsDaze(mob)
+	if(skillcheck(mob, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX))
+		mob.visible_message(SPAN_DANGER("[mob] withstands the neurotoxin!"))
+		return //endurance 5 makes you immune to weak neurotoxin
+	if(ishuman(mob))
+		var/mob/living/carbon/human/H = mob
+		if(H.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO || H.species.flags & NO_NEURO)
+			return
+
+	if(ishuman(mob))
+		var/mob/living/carbon/human/H = mob
+		if(H.knocked_out || pass_down_the_line) //second part is always false, but consistency is a great thing
+			pass_down_the_line = TRUE
+
+	if(!isXeno(mob))
+		if(mob.KnockDown < 3)
+			mob.KnockDown(power) // Completely arbitrary values from another time where stun timers incorrectly stacked. Kill as needed.
+			mob.Stun(power)
+		return
+
+	if(mob.knockdown > 4 || pass_down_the_line)
+		if(!pass_down_the_line)
+			mob.visible_message(SPAN_DANGER("[mob] falls limp on the ground."))
+		mob.KnockOut(30) //KO them. They already got rekt too much
+		pass_down_the_line = TRUE
+
+		var/no_clothes_neuro = FALSE
+
+
+		if(ishuman(mob))
+			var/mob/living/carbon/human/H = mob
+			if(!H.wear_suit || H.wear_suit.slowdown == 0)
+				no_clothes_neuro = TRUE
+
+		if(mob.dazed  || pass_down_the_line || no_clothes_neuro)
+			if(mob.KnockDown < 5)
+				mob.KnockDown(power) // Completely arbitrary values from another time where stun timers incorrectly stacked. Kill as needed.
+				mob.Stun(power)
+				if(!pass_down_the_line)
+					mob.visible_message(SPAN_DANGER("[mob] falls prone."))
+			pass_down_the_line = TRUE
+
+		if(mob.Superslow || pass_down_the_line)
+			if(mob.daze_duration < 6)
+				mob.AdjustDaze(3 * power) // Daze them a bit more
+				if(!pass_down_the_line)
+					mob.visible_message(SPAN_DANGER("[mob] is visibly confused."))
+			pass_down_the_line = TRUE
+
+	if(mob.Superslow < 10)
+		mob.AdjustSuperslow(3 * power) // Superslow them a bit more
+		if(!pass_down_the_line)
+			mob.visible_message(SPAN_DANGER("[mob] movements are slowed."))
+
+*/
+
 /datum/ammo/xeno/acid
 	name = "acid spit"
 	icon_state = "xeno_acid_weak"

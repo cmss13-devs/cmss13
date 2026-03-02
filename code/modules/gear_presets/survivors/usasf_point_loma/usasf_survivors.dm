@@ -435,7 +435,7 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 /datum/equipment_preset/synth/usasf/load_gear(mob/living/carbon/human/preset_human)
-	preset_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/army/usasf, WEAR_BODY)
+	preset_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/navy, WEAR_BODY)
 	preset_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/droppouch(preset_human), WEAR_ACCESSORY)
 	preset_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel/chestrig(preset_human), WEAR_BACK)
 	preset_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/light/synvest(preset_human), WEAR_JACKET)

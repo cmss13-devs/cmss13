@@ -61,7 +61,8 @@
 /// From /obj/effect/alien/weeds/Crossed(atom/movable/AM)
 #define COMSIG_MOB_WEED_SLOWDOWN "mob_weeds_slowdown"
 
-#define COMSIG_MOB_TAKE_DAMAGE "mob_take_damage" // TODO: move COMSIG_XENO_TAKE_DAMAGE & COMSIG_HUMAN_TAKE_DAMAGE to this
+#define COMSIG_MOB_TAKE_DAMAGE "mob_take_damage"
+	#define COMPONENT_BLOCK_DAMAGE (1<<0)
 
 ///From /mob/living/carbon/human/attack_alien(): (mob/living/carbon/xenomorph/M, dam_bonus)
 #define COMSIG_MOB_TACKLED_DOWN "mob_tackled_down"

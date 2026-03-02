@@ -436,7 +436,7 @@ export const TargetAquisitionMfdPanel = (props: MfdProps) => {
                 tag: firemissionSelected?.mission_tag,
                 direction: strikeDirection
                   ? directionLookup[strikeDirection]
-                  : 1,
+                  : 0,
                 target_id: selectedTarget,
                 offset_x_value: fmXOffsetValue,
                 offset_y_value: fmYOffsetValue,
@@ -553,7 +553,7 @@ export const TargetAquisitionMfdPanel = (props: MfdProps) => {
       <Box className="NavigationMenu">
         <Stack>
           <Stack.Item width="50px">
-            <svg width="50px" height="500px">
+            <svg width="50px" height="500px" overflow="visible">
               <defs>
                 <marker
                   id="arrowhead"
@@ -575,15 +575,15 @@ export const TargetAquisitionMfdPanel = (props: MfdProps) => {
               />
             </svg>
           </Stack.Item>
-          <Stack.Item width="400px">
+          <Stack.Item width="390px">
             <Stack vertical align="center">
               <Stack.Item height="50px">
-                <svg width="500px" height="50px">
+                <svg width="500px" height="50px" overflow="visible">
                   <path
                     stroke="#00e94e"
                     strokeWidth="1"
                     fillOpacity="0"
-                    d="M -1 0 l 50 50 l 395 0 l 50 -50"
+                    d="M -1 0 l 50 50 l 392 0 l 50 -50"
                   />
                 </svg>
               </Stack.Item>
@@ -592,9 +592,6 @@ export const TargetAquisitionMfdPanel = (props: MfdProps) => {
               </Stack.Item>
               <Stack.Item>
                 <h3>Strike mode: {strikeMode?.toUpperCase() ?? 'NONE'}</h3>
-              </Stack.Item>
-              <Stack.Item>
-                <h3>Target mode: {quickMode ? 'QUICK' : 'STANDARD'}</h3>
               </Stack.Item>
               <Stack.Item>
                 <h3>Strike configuration {strikeConfigLabel}</h3>
@@ -606,6 +603,9 @@ export const TargetAquisitionMfdPanel = (props: MfdProps) => {
                     (x) => x?.target_tag === selectedTarget,
                   )?.target_name ?? 'NONE'}
                 </h3>
+              </Stack.Item>
+              <Stack.Item>
+                <h3>Target mode: {quickMode ? 'QUICK' : 'STANDARD'}</h3>
               </Stack.Item>
               <Stack.Item>
                 <h3>Attack Vector {strikeDirection ?? 'NONE'}</h3>
@@ -623,7 +623,7 @@ export const TargetAquisitionMfdPanel = (props: MfdProps) => {
             </Stack>
           </Stack.Item>
           <Stack.Item>
-            <svg width="50px" height="500px">
+            <svg width="50px" height="500px" overflow="visible">
               <path
                 stroke="#00e94e"
                 strokeWidth="1"

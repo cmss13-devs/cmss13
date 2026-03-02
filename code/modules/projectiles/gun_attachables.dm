@@ -75,6 +75,10 @@ Defined in conflicts.dm of the #defines folder.
 
 	var/activation_sound = 'sound/weapons/handling/gun_underbarrel_activate.ogg'
 	var/deactivation_sound = 'sound/weapons/handling/gun_underbarrel_deactivate.ogg'
+	///Should only be TRUE for muzzle attachments that want to change the melee hit sound of the gun.
+	var/sound_override = FALSE
+	///Should only be TRUE for muzzle attachments that want to change the list of attack verbs for the gun.
+	var/verb_override = FALSE
 
 	var/flags_attach_features = ATTACH_REMOVABLE
 
@@ -328,6 +332,8 @@ Defined in conflicts.dm of the #defines folder.
 	throw_range = 6
 	hitsound = 'sound/weapons/slash.ogg'
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	sound_override = TRUE
+	verb_override = TRUE
 	attack_speed = 9
 	flags_equip_slot = SLOT_FACE
 	flags_armor_protection = SLOT_FACE
@@ -576,8 +582,9 @@ Defined in conflicts.dm of the #defines folder.
 	desc = "A hyper threaded barrel extender that fits to the muzzle of most firearms. Increases bullet speed and velocity.\nGreatly increases projectile damage at the cost of accuracy and firing speed."
 	slot = "muzzle"
 	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
-	icon_state = "hbarrel"
-	attach_icon = "hbarrel_a"
+	icon_state = "charger"
+	attach_icon = "charger_a"
+	pixel_shift_y = 18
 	hud_offset_mod = -3
 
 /obj/item/attachable/heavy_barrel/New()
@@ -632,7 +639,7 @@ Defined in conflicts.dm of the #defines folder.
 	recoil_mod = -RECOIL_AMOUNT_TIER_4
 	accuracy_unwielded_mod = HIT_ACCURACY_MULT_TIER_4
 	recoil_unwielded_mod = -RECOIL_AMOUNT_TIER_4
-	damage_mod = BULLET_DAMAGE_MULT_TIER_1
+	damage_mod = BULLET_DAMAGE_MULT_TIER_2
 
 /obj/item/attachable/compensator/m10/Initialize(mapload, ...)
 	. = ..()
@@ -674,33 +681,9 @@ Defined in conflicts.dm of the #defines folder.
 	throw_range = 6
 	hitsound = 'sound/weapons/spike_thunk.ogg'
 	attack_verb = list("bashed", "bludgeoned", "cracked", "smashed", "crushed", "pummeled", "spiked", "rammed")
+	sound_override = TRUE
+	verb_override = TRUE
 	attack_speed = 9
-
-/obj/item/attachable/compensator/m10/spiked/Attach(obj/item/weapon/gun/attaching_gun)
-	if(!istype(attaching_gun, /obj/item/weapon/gun))
-		return ..()
-	attaching_gun.hitsound = 'sound/weapons/spike_thunk.ogg'
-	melee_mod = 20
-	sharp = IS_SHARP_ITEM_SIMPLE
-	force = MELEE_FORCE_STRONG
-	hitsound = 'sound/weapons/spike_thunk.ogg'
-	attack_verb = list("bashed", "bludgeoned", "cracked", "smashed", "crushed", "pummeled", "spiked", "rammed")
-	attack_speed = 9
-	return ..()
-
-/obj/item/attachable/compensator/m10/spiked/Detach(mob/user, obj/item/weapon/gun/detaching_gun)
-	if(!istype(detaching_gun, /obj/item/weapon/gun))
-		return ..()
-	detaching_gun.hitsound = initial(detaching_gun.hitsound)
-	return ..()
-
-/obj/item/attachable/compensator/m10/spiked/New()
-	..()
-	accuracy_mod = HIT_ACCURACY_MULT_TIER_3
-	recoil_mod = -RECOIL_AMOUNT_TIER_4
-	accuracy_unwielded_mod = HIT_ACCURACY_MULT_TIER_4
-	recoil_unwielded_mod = -RECOIL_AMOUNT_TIER_4
-	damage_mod = BULLET_DAMAGE_MULT_TIER_1
 
 /obj/item/attachable/shotgun_choke
 	name = "shotgun choke"
@@ -1981,8 +1964,8 @@ Defined in conflicts.dm of the #defines folder.
 	if(!collapsible)
 		return .
 
-	if(turn_off && stock_activated)
-		stock_activated = FALSE
+	if(turn_off)
+		stock_activated = initial(stock_activated)
 		apply_on_weapon(gun)
 		return TRUE
 
@@ -2205,9 +2188,9 @@ Defined in conflicts.dm of the #defines folder.
 	pixel_shift_x = 40
 	pixel_shift_y = 14
 	hud_offset_mod = 3
+	size_mod = 0
 	collapsible = TRUE
 	stock_activated = FALSE
-	collapse_delay = 0.5 SECONDS
 	wield_delay_mod = WIELD_DELAY_NONE
 	flags_attach_features = ATTACH_REMOVABLE | ATTACH_ACTIVATION
 	attachment_action_type = /datum/action/item_action/toggle
@@ -2247,6 +2230,7 @@ Defined in conflicts.dm of the #defines folder.
 		accuracy_mod = 0
 		recoil_mod = 0
 		scatter_mod = 0
+		size_mod = 0
 		movement_onehanded_acc_penalty_mod = 0
 		accuracy_unwielded_mod = 0
 		recoil_unwielded_mod = 0
@@ -2883,9 +2867,9 @@ Defined in conflicts.dm of the #defines folder.
 	aim_speed_mod = 0
 	wield_delay_mod = WIELD_DELAY_NORMAL//you shouldn't be wielding it anyways
 
-/obj/item/attachable/stock/smg/collapsible/brace/apply_on_weapon(obj/item/weapon/gun/G)
+/obj/item/attachable/stock/smg/collapsible/brace/apply_on_weapon(obj/item/weapon/gun/applying_gun)
 	if(stock_activated)
-		G.flags_item |= NODROP|FORCEDROP_CONDITIONAL
+		applying_gun.flags_item |= NODROP|FORCEDROP_CONDITIONAL
 		accuracy_mod = -HIT_ACCURACY_MULT_TIER_3
 		scatter_mod = SCATTER_AMOUNT_TIER_8
 		recoil_mod = RECOIL_AMOUNT_TIER_2 //Hurts pretty bad if it's wielded.
@@ -2896,7 +2880,7 @@ Defined in conflicts.dm of the #defines folder.
 		icon_state = "smg_brace_on"
 		attach_icon = "smg_brace_a_on"
 	else
-		G.flags_item &= ~(NODROP|FORCEDROP_CONDITIONAL)
+		applying_gun.flags_item &= ~(NODROP|FORCEDROP_CONDITIONAL)
 		accuracy_mod = 0
 		scatter_mod = 0
 		recoil_mod = 0
@@ -2907,8 +2891,8 @@ Defined in conflicts.dm of the #defines folder.
 		icon_state = "smg_brace"
 		attach_icon = "smg_brace_a"
 
-	G.recalculate_attachment_bonuses()
-	G.update_overlays(src, "stock")
+	applying_gun.recalculate_attachment_bonuses()
+	applying_gun.update_overlays(src, "stock")
 
 /obj/item/attachable/stock/revolver
 	name = "\improper M44 magnum sharpshooter stock"
@@ -3900,7 +3884,7 @@ Defined in conflicts.dm of the #defines folder.
 	accuracy_mod = HIT_ACCURACY_MULT_TIER_1
 	movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
 	scatter_mod = -SCATTER_AMOUNT_TIER_10
-	scatter_unwielded_mod = -SCATTER_AMOUNT_TIER_9
+	scatter_unwielded_mod = -SCATTER_AMOUNT_TIER_6
 	accuracy_unwielded_mod = HIT_ACCURACY_MULT_TIER_1
 
 /obj/item/attachable/bipod
@@ -4180,7 +4164,7 @@ Defined in conflicts.dm of the #defines folder.
 	desc = "A set of rugged telescopic poles to keep a weapon stabilized during firing."
 	icon_state = "bipod_m41ae2"
 	attach_icon = "bipod_m41ae2_a"
-	heavy_bipod = TRUE
+	heavy_bipod = FALSE
 	camo_bipod = TRUE // this bipod has a camo skin
 
 /obj/item/attachable/bipod/m41ae2/Initialize(mapload, ...)

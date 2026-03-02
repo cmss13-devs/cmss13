@@ -315,7 +315,7 @@
 			action_icon_state = "motion_detector"
 	else
 		if(istype(detector, /obj/item/device/motiondetector/intel))
-			action_icon_state = "data_detector_on"
+			action_icon_state = "data_detector_off"
 		else
 			action_icon_state = "motion_detector_off"
 	button.overlays.Cut()

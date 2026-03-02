@@ -1,0 +1,23 @@
+2026-03-01:
+  ComboTombo:
+  - rscadd: Added marine combat boots and gloves of different variants to the synthetic
+      clothing vendor and loadout menu
+  MistChristmas:
+  - admin: Psychic Property (ENCEPHALOPHRASIVE) is now Admin spawn only.
+2026-03-02:
+  Drathek:
+  - bugfix: Mass screenshot verb will now optionally disable all open_space blur planes
+      instead of just the first
+  Unknownity:
+  - balance: Roman weapons ie. Gladius, Javelin, Staff have been slightly damage buffed
+      to deal with Yautja armor better. Gladius and Javelin also have additional description
+      to them that you can raise/lower them.
+  - balance: Romans are now immune to shrapnel.
+  - bugfix: Roman Aquilifer's bear belt hat's onmob sprite facing west has been fixed.
+  - bugfix: Historical Prey are no longer able to spawn with loadout vanity items.
+  - bugfix: Romans no longer wear immersion breaking marine underwear.
+  - rscadd: Roman soldiers now get IDs.
+  dawsonkeyes:
+  - bugfix: Pepperspray effects no longer stack infinitely
+  ori-disillusion-mirnov:
+  - bugfix: whitelisted predators can no longer spawn as a youngblood

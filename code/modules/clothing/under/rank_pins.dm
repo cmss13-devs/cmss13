@@ -418,3 +418,7 @@
 	name = "rank boards"
 	rank_short = "PvI"
 	icon_state = "ranks_pvstofficer"
+
+/obj/item/clothing/accessory/ranks/navy/special/brassard
+	name = "rank brassard"
+	icon_state = "sp_brassard"

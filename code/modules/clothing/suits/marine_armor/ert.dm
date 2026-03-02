@@ -1029,7 +1029,7 @@
 	icon_state = "windbreaker_navy"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/USASF.dmi'
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
-	flags_marine_armor = ARMOR_LAMP_OVERLAY //No squad colors when wearing this since it'd look funny.
+	flags_marine_armor = ARMOR_LAMP_OVERLAY
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_HIGH
 	armor_energy = CLOTHING_ARMOR_LOW

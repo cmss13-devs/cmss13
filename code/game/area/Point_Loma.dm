@@ -58,6 +58,11 @@
 	name = "Point Loma - Beach" // reserved for beach + water noises
 	icon_state = "nv_no_ob"
 	minimap_color = MINIMAP_AREA_OOB
+	ceiling = CEILING_NONE
+
+/area/point_loma/oob/beach/cave
+	name = "Point Loma - Beach - Cave"
+	ceiling = CEILING_DEEP_UNDERGROUND
 
 /area/point_loma/oob/sky
 	name = "Point Loma - Open Sky" // reserved for sky noises
@@ -73,6 +78,10 @@
 /area/point_loma/oob/sky/lower // reserved for sky noises closer to water
 	soundscape_playlist = FALSE
 	ambience_exterior = FALSE
+
+/area/point_loma/oob/ocean //reserved for ocean - water noises
+	name = "Point Loma - Open Ocean"
+	minimap_color = MINIMAP_AREA_CONTESTED_ZONE
 
 // USASF Airbase //
 
@@ -160,6 +169,10 @@
 	name = "Runway Crash Site"
 	icon_state = "predship"
 
+/area/point_loma/airbase/exterior/crash_site/opening
+	name = "Runway Crash Site - Sink Hole"
+	minimap_color = MINIMAP_AREA_HYBRISARESEARCH
+
 /area/point_loma/airbase/exterior/north
 	name = "USASF Point Loma Airbase - North" // maybe some wind / sea noises?
 
@@ -182,11 +195,18 @@
 /area/point_loma/airbase/cave/south
 	name = "Point Loma Airbase - Caves - South"
 
+/area/point_loma/airbase/cave/south/upper
+	name = "Point Loma Airbase - Caves - South - Upper"
+
+
 /area/point_loma/airbase/cave/south_west
 	name = "Point Loma Airbase - Caves - South West"
 
 /area/point_loma/airbase/cave/west
 	name = "Point Loma Airbase - Caves - West"
+
+/area/point_loma/airbase/cave/west/upper
+	name = "Point Loma Airbase - Caves - West - Upper"
 
 /area/point_loma/airbase/cave/north
 	name = "Point Loma Airbase - Caves - North"

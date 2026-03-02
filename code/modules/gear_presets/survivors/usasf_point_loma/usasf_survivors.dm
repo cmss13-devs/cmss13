@@ -215,7 +215,7 @@
 	paygrades = list(PAY_SHORT_NO1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_NO2 = JOB_PLAYTIME_TIER_1)
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
-/datum/equipment_preset/survivor/usasf/crew/chaplain/duty/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/survivor/usasf/crew/duty/chaplain/load_gear(mob/living/carbon/human/new_human)
 	..()
 	spawn_pouch(new_human)
 	spawn_food(new_human)
@@ -307,6 +307,7 @@
 	spawn_pouch(new_human)
 	spawn_food(new_human)
 	spawn_usasf_weapon(new_human)
+	spawn_armour(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/surg_vest/equipped, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular, WEAR_R_HAND)
 

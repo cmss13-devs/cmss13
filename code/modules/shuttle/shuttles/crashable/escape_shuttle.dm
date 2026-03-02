@@ -103,6 +103,9 @@
 /obj/docking_port/mobile/crashable/escape_shuttle/crash_check()
 	. = ..()
 
+	if(SShijack.crashed)
+		return TRUE
+
 	if(SShijack.hijack_status >= HIJACK_OBJECTIVES_FTL_CRASH)
 		return FALSE
 

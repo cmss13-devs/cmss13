@@ -62,6 +62,9 @@
 /obj/docking_port/mobile/crashable/lifeboat/crash_check()
 	. = ..()
 
+	if(SShijack.crashed)
+		return TRUE
+
 	if(SShijack.hijack_status >= HIJACK_OBJECTIVES_FTL_CRASH)
 		return FALSE
 

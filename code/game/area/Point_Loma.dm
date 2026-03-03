@@ -88,9 +88,11 @@
 /area/point_loma/airbase
 	name = "USASF Point Loma Airbase"
 	icon_state = "shuttle"
+	sound_environment = SOUND_ENVIRONMENT_PARKING_LOT
 
 /area/point_loma/airbase/interior
 	ceiling = CEILING_METAL
+	sound_environment = SOUND_ENVIRONMENT_LIVINGROOM
 
 /area/point_loma/airbase/interior/atc
 	name = "Air Traffic Control"
@@ -191,6 +193,7 @@
 	icon_state = "tunnels0"
 	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
 	always_unpowered = TRUE // always off
+	sound_environment = SOUND_ENVIRONMENT_CAVE
 
 /area/point_loma/airbase/cave/south
 	name = "Point Loma Airbase - Caves - South"
@@ -225,6 +228,7 @@
 	icon = 'icons/turf/area_almayer.dmi'
 	icon_state = "science"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
+	sound_environment = SOUND_ENVIRONMENT_ROOM
 
 /area/point_loma/research_facility/cave
 	name = "Alpha-Tech Research Facility Cave"
@@ -232,6 +236,8 @@
 	icon = 'icons/turf/area_varadero.dmi'
 	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
 	always_unpowered = TRUE // always off
+	sound_environment = SOUND_ENVIRONMENT_CAVE
+
 
 /area/point_loma/research_facility/cave/west
 	name = "Alpha-Tech Research Facility Cave - West"
@@ -258,6 +264,7 @@
 	name = "Alpha-Tech Hardware - Research Facility Hallway"
 	icon = 'icons/turf/area_varadero.dmi'
 	icon_state = "hall0"
+	sound_environment = SOUND_ENVIRONMENT_HALLWAY
 
 /area/point_loma/research_facility/hallway/central
 	name = "Alpha-Tech Hardware - Research Facility Hallway - Central"
@@ -284,6 +291,7 @@
 	icon_state = "Tactical"
 	minimap_color = MINIMAP_AREA_RESEARCH_CAVE
 	ceiling = CEILING_DEEP_UNDERGROUND_METAL
+	sound_environment = SOUND_ENVIRONMENT_HANGAR
 
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator
 	name = "Super Death Cannon - Ammo Elevator"
@@ -291,10 +299,12 @@
 
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator/upper
 	name = "Super Death Cannon - Ammo Elevator"
+	sound_environment = SOUND_ENVIRONMENT_PARKING_LOT
 
 /area/point_loma/research_facility/super_death_cannon/cannon
 	name = "Super Death Cannon - Cannon Room"
 	icon_state = "firingrange"
+	sound_environment = SOUND_ENVIRONMENT_PARKING_LOT
 
 /area/point_loma/research_facility/super_death_cannon/observation
 	name = "Super Death Cannon - Research Observation Room"
@@ -308,6 +318,7 @@
 	name = "Super Death Cannon - Outside Catwalk"
 	ceiling = CEILING_NONE
 	requires_power = FALSE
+	sound_environment = SOUND_ENVIRONMENT_PLAIN
 
 /area/point_loma/research_facility/super_death_cannon/engineering
 	name = "Super Death Cannon - Control Room"
@@ -318,6 +329,7 @@
 	name = "Alpha-Tech - Meeting Hall and Press Office"
 	icon = 'icons/turf/areas.dmi'
 	icon_state = "Theatre"
+	sound_environment = SOUND_ENVIRONMENT_AUDITORIUM
 
 /area/point_loma/research_facility/corporate
 	name = "Alpha-Tech Hardware Liaison Office"
@@ -362,6 +374,7 @@
 	icon = 'icons/turf/area_almayer.dmi'
 	icon_state = "gruntrnr"
 	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
+	sound_environment = SOUND_ENVIRONMENT_CONCERT_HALL
 
 /area/point_loma/research_facility/gym/basketball
 	icon_state = "basketball"
@@ -379,6 +392,7 @@
 	icon = 'icons/turf/area_kutjevo.dmi'
 	icon_state = "med4"
 	minimap_color = MINIMAP_AREA_MEDBAY
+	sound_environment = SOUND_ENVIRONMENT_CONCERT_HALL
 
 /area/point_loma/research_facility/pool
 	name = "Alpha-Tech - Pool and Sauna"
@@ -405,6 +419,7 @@
 	name = "Alpha-Tech Research Facility - Park"
 	minimap_color = MINIMAP_AREA_JUNGLE
 	icon_state = "botany"
+	sound_environment = SOUND_ENVIRONMENT_FOREST
 
 /area/point_loma/research_facility/research/park/opening
 	name = "Alpha-Tech Research Facility - Park - Sinkhole"
@@ -431,6 +446,7 @@
 	//temperature = TROPICAL_TEMP
 	minimap_color = MINIMAP_AREA_ENGI_CAVE
 	icon_state = "varadero4"
+	sound_environment = SOUND_ENVIRONMENT_MOUNTAINS
 
 /area/point_loma/airbase/mining_colony/caves
 	name = "Mining Colony - South Caves"
@@ -438,10 +454,12 @@
 	icon_state = "tunnels4"
 	ceiling = CEILING_SANDSTONE_ALLOW_CAS
 	always_unpowered = TRUE // always off
+	sound_environment = SOUND_ENVIRONMENT_CAVE
 
 /area/point_loma/airbase/mining_colony/interior
 	name = "Mining Colony - Interior"
 	ceiling = CEILING_METAL
+	sound_environment = SOUND_ENVIRONMENT_ROOM
 
 /area/point_loma/airbase/mining_colony/interior/corporate
 	name = "Mining Colony - Alpha-Tech Hardware - Corporate Office"

@@ -227,6 +227,9 @@
 
 	return XENO_NO_DELAY_ACTION
 
+/turf/open/auto_turf/snow/attack_larva(mob/living/carbon/xenomorph/larva/M)
+	return //Larvae can't do shit
+
 /turf/open/auto_turf/snow/Entered(atom/movable/AM)
 	if(bleed_layer > 0)
 		if(iscarbon(AM))

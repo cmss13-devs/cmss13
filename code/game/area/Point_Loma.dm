@@ -155,6 +155,7 @@
 	minimap_color = MINIMAP_AREA_ENGI_CAVE
 	icon = 'icons/turf/area_kutjevo.dmi'
 	icon_state = "construction3"
+	sound_environment = SOUND_ENVIRONMENT_HANGAR
 
 /area/point_loma/airbase/interior/workshop/upper
 	name = "Airbase Aircraft and Munitions Workshop - Upper"
@@ -443,10 +444,9 @@
 /area/point_loma/airbase/mining_colony
 	name = "Point Loma Mining Colony"
 	linked_lz = DROPSHIP_LZ1 // entire mining colony will be cleaned by weedkiller
-	//temperature = TROPICAL_TEMP
 	minimap_color = MINIMAP_AREA_ENGI_CAVE
 	icon_state = "varadero4"
-	sound_environment = SOUND_ENVIRONMENT_MOUNTAINS
+	sound_environment = SOUND_ENVIRONMENT_QUARRY
 
 /area/point_loma/airbase/mining_colony/caves
 	name = "Mining Colony - South Caves"

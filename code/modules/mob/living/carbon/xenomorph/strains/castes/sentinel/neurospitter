@@ -1,6 +1,6 @@
 /datum/xeno_strain/neuro_spitter
 	name = SENTINEL_NEURO_SPITTER
-	description = "At the cost of your abilities, your tackles are improved and your gain neurotoxic spit, which will slow down, stun, and eventually knock out hosts."
+	description = "At the cost of your abilities, your tackles are improved and your gain neurotoxic spit, which will slow down, stun, and eventually knock out hosts with consecutive spits."
 	flavor_description = "Anyone else wanna take a nap?" // REM
 	icon_state_prefix = "Neurotoxin Spitter"
 	actions_to_remove = list(
@@ -14,4 +14,5 @@
 
 /datum/xeno_strain/neuro_spitter/apply_strain(mob/living/carbon/xenomorph/sentinel/sentinel)
 	sentinel.tackle_min = 2
+	sentinel.tacklestrength_max = 5
 	sentinel.recalculate_everything()

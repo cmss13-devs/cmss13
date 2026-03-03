@@ -309,7 +309,8 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 	on_tickrate_change()
 
 /world/proc/on_tickrate_change()
-	SStimer.reset_buckets()
+	SStimer?.reset_buckets()
+	SSsound_loops?.reset_buckets()
 
 /**
  * Handles incresing the world's maxx var and initializing the new turfs and assigning them to the global area.

@@ -545,6 +545,29 @@
 	. = ..()
 	set_fire_delay(FIRE_DELAY_TIER_7)
 
+GLOBAL_LIST_EMPTY(flamer_particles)
+/particles/flamer_fire
+	icon = 'icons/effects/particles/fire.dmi'
+	icon_state = "bonfire"
+	width = 100
+	height = 100
+	count = 200
+	spawning = 5
+	lifespan = 0.6 SECONDS
+	fade = 0.8 SECONDS
+	grow = -0.01
+	velocity = list(0, 0)
+	position = generator("box", list(-16, -16), list(16, 16), NORMAL_RAND)
+	drift = generator("vector", list(0, -0.2), list(0, 0.2))
+	gravity = list(0, 0.95)
+	scale = generator("vector", list(0.3, 0.3), list(1,1), NORMAL_RAND)
+	rotation = 30
+	spin = generator("num", -20, 20)
+
+/particles/flamer_fire/New(set_color)
+	..()
+	color = set_color
+
 /obj/flamer_fire
 	name = "fire"
 	desc = "Ouch!"
@@ -600,7 +623,11 @@
 		flame_icon = R.burn_sprite
 
 	set_light(l_color = R.burncolor)
-
+	if(R.fire_penetrating)
+		var/new_burncolor = color_matrix_multiply(color_matrix_rotate_x(5), color_hex2color_matrix(R.burncolor))
+		if(!GLOB.flamer_particles[new_burncolor])
+			GLOB.flamer_particles[new_burncolor] = new /particles/flamer_fire(new_burncolor)
+		particles = GLOB.flamer_particles[new_burncolor]
 	tied_reagent = new R.type() // Can't get deleted this way
 	tied_reagent.make_alike(R)
 
@@ -760,55 +787,61 @@
 	if(X.armor_deflection_debuff)
 		X.armor_deflection_debuff = 0
 
-/obj/flamer_fire/proc/set_on_fire(mob/living/M)
-	if(!istype(M))
+/obj/flamer_fire/proc/set_on_fire(mob/living/target)
+	if(!istype(target))
 		return
 
-	var/sig_result = SEND_SIGNAL(M, COMSIG_LIVING_FLAMER_CROSSED, tied_reagent)
+	var/sig_result = SEND_SIGNAL(target, COMSIG_LIVING_FLAMER_CROSSED, tied_reagent)
 	var/burn_damage = floor(burnlevel * 0.5)
 	switch(fire_variant)
 		if(FIRE_VARIANT_TYPE_B) //Armor Shredding Greenfire, 2x tile damage (Equiavlent to UT)
 			burn_damage = burnlevel
-	var/fire_intensity_resistance = M.check_fire_intensity_resistance()
+	var/fire_intensity_resistance = target.check_fire_intensity_resistance()
+	var/penetrating = tied_reagent.fire_penetrating
+	if(penetrating && isxeno(target))
+		var/mob/living/carbon/xenomorph/xeno_target = target
+		if(xeno_target.fire_immunity & FIRE_IMMUNITY_IGNORE_PEN)
+			penetrating = FALSE
 
-	if(!tied_reagent.fire_penetrating)
+	if(!penetrating)
 		burn_damage = max(burn_damage - fire_intensity_resistance * 0.5, 0)
 
 	if(sig_result & COMPONENT_XENO_FRENZY)
-		var/mob/living/carbon/xenomorph/X = M
-		if(X.plasma_stored != X.plasma_max) //limit num of noise
-			to_chat(X, SPAN_DANGER("The heat of the fire roars in your veins! KILL! CHARGE! DESTROY!"))
-			X.emote("roar")
-		X.plasma_stored = X.plasma_max
+		var/mob/living/carbon/xenomorph/xeno_target = target
+		if(xeno_target.plasma_stored != xeno_target.plasma_max) //limit num of noise
+			to_chat(xeno_target, SPAN_DANGER("The heat of the fire roars in your veins! KILL! CHARGE! DESTROY!"))
+			xeno_target.emote("roar")
+		xeno_target.plasma_stored = xeno_target.plasma_max
 
 	if(!(sig_result & COMPONENT_NO_IGNITE) && burn_damage)
 		switch(fire_variant)
 			if(FIRE_VARIANT_TYPE_B) //Armor Shredding Greenfire, super easy to pat out. 50 duration -> 10 stacks (1 pat/resist)
-				M.TryIgniteMob(floor(tied_reagent.durationfire / 5), tied_reagent)
+				target.TryIgniteMob(floor(tied_reagent.durationfire / 5), tied_reagent)
 			else
-				M.TryIgniteMob(tied_reagent.durationfire, tied_reagent)
+				target.TryIgniteMob(tied_reagent.durationfire, tied_reagent)
 
-	if(sig_result & COMPONENT_NO_BURN && !tied_reagent.fire_penetrating)
+	if(sig_result & COMPONENT_NO_BURN && !penetrating)
 		burn_damage = 0
 
 	if(!burn_damage)
-		if(HAS_TRAIT(M, TRAIT_HAULED))
-			M.visible_message(SPAN_WARNING("[M] is shielded from the flames!"), SPAN_WARNING("You are shielded from the flames!"))
-		else
-			to_chat(M, SPAN_DANGER("[isxeno(M) ? "We" : "You"] step over the flames."))
+		if(!HAS_TRAIT(target, TRAIT_ABILITY_BURROWED))
+			if(HAS_TRAIT(target, TRAIT_HAULED))
+				target.visible_message(SPAN_WARNING("[target] is shielded from the flames!"), SPAN_WARNING("You are shielded from the flames!"))
+			else
+				to_chat(target, SPAN_DANGER("[isxeno(target) ? "We" : "You"] step over the flames."))
 		return
 
-	M.last_damage_data = weapon_cause_data
-	M.apply_damage(burn_damage, BURN) //This makes fire stronk.
+	target.last_damage_data = weapon_cause_data
+	target.apply_damage(burn_damage, BURN) //This makes fire stronk.
 
 	var/variant_burn_msg = null
 	switch(fire_variant) //Fire variant special message appends.
 		if(FIRE_VARIANT_TYPE_B)
-			if(isxeno(M))
-				var/mob/living/carbon/xenomorph/X = M
-				X.armor_deflection?(variant_burn_msg=" We feel the flames weakening our exoskeleton!"):(variant_burn_msg=" You feel the flaming chemicals eating into your body!")
-	to_chat(M, SPAN_DANGER("You are burned![variant_burn_msg?"[variant_burn_msg]":""]"))
-	M.updatehealth()
+			if(isxeno(target))
+				var/mob/living/carbon/xenomorph/xeno_target = target
+				xeno_target.armor_deflection?(variant_burn_msg=" We feel the flames weakening our exoskeleton!"):(variant_burn_msg=" You feel the flaming chemicals eating into your body!")
+	to_chat(target, SPAN_DANGER("You are burned![variant_burn_msg?"[variant_burn_msg]":""]"))
+	target.updatehealth()
 
 /obj/flamer_fire/proc/update_flame()
 	if(burnlevel < 15 && flame_icon != "dynamic")

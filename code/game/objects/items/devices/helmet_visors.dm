@@ -12,7 +12,7 @@
 	///The sound when toggling off the visor
 	var/toggle_off_sound = 'sound/handling/hud_off.ogg'
 	///The icon name for our helmet's action
-	var/action_icon_string = "hud_sight_down"
+	var/action_icon_string = "hud_marine_sight_down"
 	///The icon for the helmet_overlay
 	var/helmet_overlay_icon = 'icons/mob/humans/onmob/clothing/helmet_garb/huds.dmi'
 	///The overlay name for when our visor is active

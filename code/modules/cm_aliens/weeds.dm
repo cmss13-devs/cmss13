@@ -57,7 +57,7 @@
 	set_hive_data(src, hivenumber)
 	if(spread_on_semiweedable && weed_strength == WEED_LEVEL_HARDY)
 		if(color)
-			var/list/RGB = ReadRGB(color)
+			var/list/RGB = rgb2num(color)
 			RGB[1] = clamp(RGB[1] + 35, 0, 255)
 			RGB[2] = clamp(RGB[2] + 35, 0, 255)
 			RGB[3] = clamp(RGB[3] + 35, 0, 255)

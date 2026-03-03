@@ -43,7 +43,7 @@
 			if("Title")
 				var/str = trim(strip_html(input(usr,"Label text?","Set label","")))
 				if(!str || !length(str))
-					to_chat(usr, SPAN_WARNING(" Invalid text."))
+					to_chat(usr, SPAN_WARNING("Invalid text."))
 					return
 				user.visible_message("\The [user] titles \the [src] with \a [W], marking down: \"[str]\"",
 				SPAN_NOTICE("You title \the [src]: \"[str]\""),
@@ -101,7 +101,7 @@
 	. = ..()
 	if(get_dist(src, user) <= 4)
 		if(sortTag)
-			. += SPAN_NOTICE("It is labeled \"[sortTag]\"")
+			. += SPAN_NOTICE("There's a sorting tag with the destination set to \"[sortTag]\"")
 		if(examtext)
 			. += SPAN_NOTICE("It has a note attached which reads, \"[examtext]\"")
 
@@ -150,7 +150,7 @@
 			if("Title")
 				var/str = trim(strip_html(input(usr,"Label text?","Set label","")))
 				if(!str || !length(str))
-					to_chat(usr, SPAN_WARNING(" Invalid text."))
+					to_chat(usr, SPAN_WARNING("Invalid text."))
 					return
 				user.visible_message("\The [user] titles \the [src] with \a [W], marking down: \"[str]\"",
 				SPAN_NOTICE("You title \the [src]: \"[str]\""),
@@ -206,7 +206,7 @@
 	. = ..()
 	if(get_dist(src, user) <= 4)
 		if(sortTag)
-			. += SPAN_NOTICE("It is labeled \"[sortTag]\"")
+			. += SPAN_NOTICE("There's a sorting tag with the destination set to \"[sortTag]\"")
 		if(examtext)
 			. += SPAN_NOTICE("It has a note attached which reads, \"[examtext]\"")
 
@@ -314,7 +314,7 @@
 		else if(amount < 3)
 			to_chat(user, SPAN_WARNING("You need more paper."))
 	else
-		to_chat(user, SPAN_NOTICE(" The object you are trying to wrap is unsuitable for the sorting machinery!"))
+		to_chat(user, SPAN_NOTICE("The object you are trying to wrap is unsuitable for the sorting machinery!"))
 	if (amount <= 0)
 		new /obj/item/trash/c_tube( loc )
 		qdel(src)
@@ -343,19 +343,19 @@
 	var/dat = "<tt><center><h1><b>TagMaster 2.3</b></h1></center>"
 
 	dat += "<table style='width:100%; padding:4px;'><tr>"
-	for(var/i = 1, i <= length(GLOB.tagger_locations), i++)
-		dat += "<td><a href='byond://?src=\ref[src];nextTag=[GLOB.tagger_locations[i]]'>[GLOB.tagger_locations[i]]</a></td>"
+	for(var/i in 1 to length(GLOB.tagger_locations))
+		var/encoded_tag = html_encode(GLOB.tagger_locations[i])
+		dat += "<td><a href='byond://?src=\ref[src];nextTag=[encoded_tag]'>[encoded_tag]</a></td>"
 
 		if (i%4==0)
 			dat += "</tr><tr>"
 
 	dat += "</tr></table><br>Current Selection: [currTag ? currTag : "None"]</tt>"
-
-	user << browse(HTML_SKELETON(dat), "window=destTagScreen;size=450x350")
+	show_browser(user, dat, "Whiskey Outpost Destination Tagger")
 	onclose(user, "destTagScreen")
 
 /obj/item/device/destTagger/attack_self(mob/user)
-	..()
+	. = ..()
 	openwindow(user)
 
 /obj/item/device/destTagger/Topic(href, href_list)

@@ -1,9 +1,0 @@
-author: "Unknownity"
-delete-after: True
-changes:
-  - balance: "Roman weapons ie. Gladius, Javelin, Staff have been slightly damage buffed to deal with Yautja armor better. Gladius and Javelin also have additional description to them that you can raise/lower them."
-  - balance: "Romans are now immune to shrapnel."
-  - bugfix: "Roman Aquilifer's bear belt hat's onmob sprite facing west has been fixed."
-  - bugfix: "Historical Prey are no longer able to spawn with loadout vanity items."
-  - bugfix: "Romans no longer wear immersion breaking marine underwear."
-  - rscadd: "Roman soldiers now get IDs."

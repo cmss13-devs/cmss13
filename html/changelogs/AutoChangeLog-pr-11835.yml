@@ -1,4 +1,0 @@
-author: "ori-disillusion-mirnov"
-delete-after: True
-changes:
-  - bugfix: "whitelisted predators can no longer spawn as a youngblood"

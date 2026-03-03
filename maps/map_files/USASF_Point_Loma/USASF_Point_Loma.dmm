@@ -2124,6 +2124,7 @@
 "agI" = (
 /obj/structure/surface/table/woodentable,
 /obj/structure/pipes/vents/pump,
+/obj/effect/spawner/random/gun/pmc_secondary,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/chapel)
 "agJ" = (
@@ -5568,6 +5569,14 @@
 /obj/structure/ship_ammo/minirocket,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator)
+"aqP" = (
+/obj/item/stack/sandbags/large_stack,
+/obj/item/tool/shovel/etool{
+	pixel_y = 15;
+	pixel_x = 16
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/point_loma/research_facility/research/park)
 "aqQ" = (
 /obj/structure/prop/hybrisa/factory/conveyor_belt,
 /obj/structure/ship_ammo/rocket,
@@ -6475,6 +6484,7 @@
 	icon_state = "N";
 	layer = 3.33
 	},
+/obj/structure/largecrate/supply/supplies/metal,
 /turf/open/floor/shiva/floor3,
 /area/point_loma/airbase/interior/cargo)
 "atq" = (
@@ -9171,6 +9181,7 @@
 	id = "colony_basketball";
 	pixel_y = 30
 	},
+/obj/item/stack/sandbags/large_stack,
 /turf/open/floor/corsat/purple/north,
 /area/point_loma/research_facility/hallway/south)
 "aAv" = (
@@ -12843,6 +12854,8 @@
 	pixel_x = -1;
 	pixel_y = 1
 	},
+/obj/item/storage/box/packet/foam,
+/obj/effect/spawner/random/gun/uscm_primary/lowchance,
 /turf/open/floor/shiva/yellowfull/west,
 /area/point_loma/airbase/interior/cargo/lower)
 "aLc" = (
@@ -14103,6 +14116,10 @@
 /obj/item/stack/rods,
 /turf/open/hybrisa/street/asphalt/runway,
 /area/point_loma/airbase/exterior/crash_site)
+"aOz" = (
+/obj/item/stack/sandbags/large_stack,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/point_loma/research_facility/research/park)
 "aOA" = (
 /obj/structure/fence/slim/dark,
 /turf/open/floor/shiva/red/east,
@@ -14308,6 +14325,11 @@
 "aPe" = (
 /turf/open/new_varadero/sidewalk/west,
 /area/point_loma/airbase/interior/fuel_storage)
+"aPf" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
+/obj/effect/landmark/corpsespawner/point_loma/usasf/burst,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/point_loma/research_facility/research/park)
 "aPg" = (
 /obj/structure/machinery/door_control{
 	id = "garage_ice_2";
@@ -15095,6 +15117,9 @@
 	color = "#98a3ab"
 	},
 /obj/structure/machinery/recharger,
+/obj/item/storage/box/packet/m15/rubber{
+	pixel_y = 16
+	},
 /turf/open/floor/shiva/red/southwest,
 /area/point_loma/airbase/mining_colony/interior/security)
 "aRB" = (
@@ -24530,6 +24555,7 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
+/obj/structure/largecrate/supply/supplies/metal,
 /turf/open/floor/corsat,
 /area/point_loma/research_facility/engineering)
 "brG" = (
@@ -24669,10 +24695,6 @@
 "bsd" = (
 /turf/closed/wall/rock/brown,
 /area/fiorina/station/park)
-"bse" = (
-/obj/effect/spawner/random/gun/clf_primary,
-/turf/open/floor/corsat/squares,
-/area/point_loma/research_facility/hallway/west)
 "bsf" = (
 /turf/open/floor/almayer/research/containment/yautja,
 /area/point_loma/research_facility/crash_site)
@@ -27448,6 +27470,10 @@
 	},
 /turf/open/shuttle/dropship/predship/tile/red2,
 /area/point_loma/airbase/exterior/crash_site)
+"bAu" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/kutjevo/tan,
+/area/point_loma/research_facility/research/park)
 "bAv" = (
 /obj/item/trash/burger,
 /obj/item/trash/hybrisa/cuppa_joes_static/lid{
@@ -30705,7 +30731,8 @@
 /obj/structure/machinery/light{
 	dir = 1;
 	needs_power = 0;
-	flickering = 1
+	flickering = 1;
+	pixel_y = -5
 	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/cave/west/opening)
@@ -31397,6 +31424,7 @@
 /obj/item/tool/pickaxe/drill,
 /obj/item/tool/pickaxe/drill,
 /obj/item/tool/pickaxe/drill,
+/obj/effect/spawner/random/gun/uscm_primary/midchance,
 /turf/open/floor/shiva/north,
 /area/point_loma/airbase/interior/cargo/lower)
 "bLG" = (
@@ -33843,6 +33871,12 @@
 "bUC" = (
 /turf/open/hybrisa/street/roadlines,
 /area/point_loma/airbase/interior/hospital)
+"bUD" = (
+/obj/effect/decal/hybrisa/bloodtrail{
+	dir = 4
+	},
+/turf/open/floor/kutjevo/tan,
+/area/point_loma/research_facility/research/park)
 "bUE" = (
 /obj/effect/acid_hole{
 	dir = 8
@@ -35482,10 +35516,6 @@
 /obj/effect/landmark/corpsespawner/point_loma/usasf,
 /turf/open/floor/corsat/purple/west,
 /area/point_loma/research_facility/hallway/south)
-"caB" = (
-/obj/effect/spawner/random/gun/shotgun,
-/turf/open/floor/corsat/squares,
-/area/point_loma/research_facility/hallway/south)
 "caC" = (
 /obj/effect/landmark/corpsespawner/point_loma/usasf,
 /turf/open/floor/corsat/squares,
@@ -35512,6 +35542,7 @@
 /area/point_loma/research_facility/hallway/south)
 "caG" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
+/obj/effect/spawner/random/gun/uscm_primary,
 /turf/open/floor/corsat/purple/west,
 /area/point_loma/research_facility/hallway/south)
 "caH" = (
@@ -36516,6 +36547,13 @@
 "cdL" = (
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/chapel)
+"cdM" = (
+/obj/item/prop/alien/hugger,
+/obj/effect/decal/hybrisa/bloodtrail{
+	dir = 5
+	},
+/turf/open/floor/kutjevo/tan,
+/area/point_loma/research_facility/research/park)
 "cdN" = (
 /obj/structure/barricade/handrail{
 	dir = 4
@@ -36861,6 +36899,10 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/command)
+"ceQ" = (
+/obj/effect/spawner/random/gun/uscm_secondary,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/east)
 "ceR" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/structure/transmitter/rotary/no_dnd{
@@ -41266,6 +41308,14 @@
 	},
 /turf/open/floor/plating/warnplate/west,
 /area/shuttle/drop1/point_loma)
+"csU" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/item/storage/box/packet/incendiary,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/central)
 "csV" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 8
@@ -42806,7 +42856,7 @@
 /turf/open/floor/corsat/purple/northwest,
 /area/point_loma/research_facility/hallway/south)
 "cyd" = (
-/obj/effect/spawner/random/gun/uscm_primary/midchance,
+/obj/effect/spawner/random/gun/uscm_primary,
 /turf/open/floor/corsat/purplecorner/north,
 /area/point_loma/research_facility/hallway/south)
 "cye" = (
@@ -43208,7 +43258,6 @@
 /turf/open/floor/corsat/purple/north,
 /area/point_loma/research_facility/hallway/east)
 "czS" = (
-/obj/effect/spawner/random/gun/clf_primary,
 /turf/open/floor/corsat/yellow/northwest,
 /area/point_loma/research_facility/hallway/west)
 "czT" = (
@@ -43367,6 +43416,10 @@
 /obj/structure/catwalk/strata,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/north)
+"cAs" = (
+/obj/item/storage/box/packet/incendiary,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/central)
 "cAt" = (
 /obj/structure/ladder/multiz,
 /turf/open/auto_turf/sand_white/layer0,
@@ -43474,10 +43527,6 @@
 /obj/item/stack/sheet/plasteel/medium_stack,
 /turf/open/floor/shiva/multi_tiles,
 /area/point_loma/airbase/interior/cargo)
-"cAK" = (
-/obj/effect/spawner/random/gun/clf_primary,
-/turf/open/floor/corsat/yellow/north,
-/area/point_loma/research_facility/hallway/west)
 "cAL" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
 /obj/effect/landmark/xeno_spawn,
@@ -43816,10 +43865,26 @@
 /obj/structure/window/framed/new_varadero/foundation/concrete/reinforced,
 /turf/open/floor/corsat,
 /area/point_loma/airbase/interior/hospital)
+"cBM" = (
+/obj/item/stack/sandbags/large_stack,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/hallway/central)
 "cBN" = (
 /obj/structure/machinery/vending/cigarette,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/super_death_cannon/ammo_elevator)
+"cBO" = (
+/obj/item/storage/box/packet/m15,
+/turf/open/floor/corsat/squares,
+/area/point_loma/research_facility/crash_site)
+"cBP" = (
+/obj/structure/machinery/conveyor{
+	dir = 4;
+	icon_state = "conveyor-1"
+	},
+/obj/structure/largecrate/supply/weapons/m56d,
+/turf/open/new_varadero,
+/area/point_loma/airbase/interior/cargo)
 "cBZ" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
 /obj/effect/landmark/xeno_spawn,
@@ -98575,7 +98640,7 @@ aFk
 bJv
 ccI
 ccI
-bse
+ccI
 czS
 czP
 acD
@@ -98757,7 +98822,7 @@ bqu
 aNu
 brv
 ccI
-bse
+ccI
 aNt
 czl
 cyW
@@ -98939,8 +99004,8 @@ bqu
 brp
 brp
 brn
-bse
-cAK
+ccI
+czT
 bqW
 cxu
 cdN
@@ -101110,7 +101175,7 @@ agx
 crf
 bKF
 bKH
-bJA
+cBO
 aFk
 bqf
 bqh
@@ -101344,7 +101409,7 @@ big
 big
 bZr
 abP
-caB
+abP
 bYH
 bIP
 cap
@@ -101499,7 +101564,7 @@ cdB
 agx
 czn
 cdb
-cpx
+csU
 ccJ
 bJf
 cyL
@@ -105496,7 +105561,7 @@ bJf
 bJf
 bJf
 cdV
-bJf
+cAs
 cdJ
 bJf
 cpi
@@ -105858,7 +105923,7 @@ bJw
 bJw
 bJf
 bJf
-bJf
+cBM
 bJf
 cfy
 bJf
@@ -106270,8 +106335,8 @@ bID
 bID
 bID
 cnw
-agJ
-bID
+bAu
+aqP
 bID
 bwt
 bID
@@ -106452,8 +106517,8 @@ bfs
 aJo
 bfb
 cnw
-agJ
-bID
+bUD
+aOz
 bID
 bID
 bID
@@ -106634,7 +106699,7 @@ bfH
 bfs
 bfc
 cnw
-agJ
+bUD
 bID
 bID
 bID
@@ -106816,8 +106881,8 @@ bfI
 bfs
 bfd
 cnw
-agJ
-bID
+cdM
+aPf
 aDD
 bID
 bID
@@ -110811,7 +110876,7 @@ cdP
 bIO
 bIO
 bIO
-bIO
+ceQ
 bIO
 bIO
 adf
@@ -138583,7 +138648,7 @@ apE
 ctD
 ayg
 abW
-akL
+cBP
 bzI
 asb
 chK

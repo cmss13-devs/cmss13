@@ -275,7 +275,7 @@
 	new_human.nutrition = NUTRITION_MAX
 
 /datum/equipment_preset/yautja/soldier/load_name(mob/living/carbon/human/new_human, randomise)
-	var/list/mcaste_names = (
+	var/list/mcaste_names = list(
 		"P'kya-uha",
 		"K'var-de",
 		"Vor'mekta",
@@ -300,7 +300,7 @@
 
  // unlike other presets, we do not intake pred prefs - these are always randomly-generated preds
 /datum/equipment_preset/yautja/soldier/load_gear(mob/living/carbon/human/new_human, client/mob_client)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yautja/hunter/soldier(new_human, translator_type, invisibility_sound, caster_material, clan_rank, bracer_material), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yautja/hunter/soldier(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/chainshirt/hunter(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/yautja(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/yautja/hunter/full/powered(new_human), WEAR_JACKET)
@@ -309,7 +309,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/yautja/sword(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/energy/yautja/plasmacarbine(new_human), WEAR_J_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/yautja/soldier(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/yautja(new_human), WEAR_WAIST)
 
 	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/mre_food/clf/meatpie(new_human), WEAR_IN_BELT)
 	new_human.equip_to_slot_or_del(new /obj/item/bracer_attachments/wristblades(new_human), WEAR_IN_BELT)
@@ -328,11 +328,11 @@
 
 /datum/equipment_preset/yautja/soldier/enforcer/load_name(mob/living/carbon/human/new_human, randomise)
 	. = ..()
-	codename = ("Enforcer " + codename)
-	new_human.change_real_name(new_human, codename)
+	var/newname = ("Enforcer " + new_human.real_name)
+	new_human.change_real_name(new_human, newname)
 
 /datum/equipment_preset/yautja/soldier/enforcer/load_gear(mob/living/carbon/human/new_human, client/mob_client)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yautja/hunter/soldier(new_human, translator_type, invisibility_sound, caster_material, clan_rank, bracer_material), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yautja/hunter/soldier(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/chainshirt/hunter(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/yautja(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/yautja/hunter/full/powered(new_human), WEAR_JACKET)
@@ -342,10 +342,10 @@
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/energy/yautja/plasmacarbine(new_human), WEAR_J_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/yautja/advanced(new_human), WEAR_BACK)
 
-	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/mre_food/clf/meatpie(new_human), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/mre_food/clf/meatpie(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/bracer_attachments/wristblades(new_human), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/bracer_attachments/shield(new_human), WEAR_IN_BELT)
-	new_human.equip_to_slot_or_del(new /obj/item/tool/yautja_cleaner(new_human), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/bracer_attachments/shield(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/yautja_cleaner(new_human), WEAR_IN_BACK)
 
 	new_human.equip_to_slot_or_del(new /obj/item/device/yautja_teleporter(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/medicomp/full(new_human), WEAR_L_STORE)

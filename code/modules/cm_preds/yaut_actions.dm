@@ -265,7 +265,7 @@
 	action_icon_state = "zoom"
 	listen_signal = COMSIG_KB_YAUTJA_MASK_TOGGLE_ZOOM
 
-/datum/action/predator_action/helmet/action_activate()
+/datum/action/predator_action/helmet/zoom/action_activate()
 	. = ..()
 	helmet.toggle_zoom()
 
@@ -275,9 +275,22 @@
 	require_bracers = TRUE
 	listen_signal = COMSIG_KB_YAUTJA_MASK_TOGGLESIGHT
 
-/datum/action/predator_action/helmet/action_activate()
+/datum/action/predator_action/helmet/visor/action_activate()
 	. = ..()
 	helmet.togglesight()
+
+/datum/action/predator_action/helmet/visor/update_button_icon(enabled)
+	. = ..()
+
+	var/new_icon_state = action_icon_state
+	if(enabled)
+		new_icon_state += "_on"
+
+	button.overlays.Cut()
+	var/image/new_overlays
+	new_overlays = image(icon_file, button, new_icon_state)
+
+	button.overlays += new_overlays
 
 //Advanced pack actions (back-mounted plasma cannons)
 /datum/action/predator_action/pack

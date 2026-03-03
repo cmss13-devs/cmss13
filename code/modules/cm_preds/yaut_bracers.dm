@@ -284,6 +284,14 @@
 	var/obj/item/bracer_attachments/left_bracer_attachment
 	var/obj/item/bracer_attachments/right_bracer_attachment
 
+	var/blades_enabled = TRUE
+	var/caster_enabled = TRUE
+	var/cloak_enabled = TRUE
+	var/healing_enabled = TRUE
+	var/translate_enabled = TRUE
+	var/sd_enabled = TRUE
+	var/smartdisc_enabled = TRUE
+
 	///A list of all intrinsic bracer actions
 	var/list/bracer_actions = list(/datum/action/predator_action/bracer/wristblade, /datum/action/predator_action/bracer/caster, /datum/action/predator_action/bracer/cloak, /datum/action/predator_action/bracer/thwei, /datum/action/predator_action/bracer/capsule, /datum/action/predator_action/bracer/translator, /datum/action/predator_action/bracer/self_destruct, /datum/action/predator_action/bracer/smartdisc)
 
@@ -506,6 +514,9 @@
 		to_chat(user, SPAN_WARNING("You do not know how to attach the [attacking_item] to the [src]."))
 		return
 
+	if(blades_enabled == FALSE)
+		to_chat(user, SPAN_WARNING("These bracers lack the function to carry attachments."))
+
 	var/obj/item/bracer_attachments/bracer_attachment = attacking_item
 	if(!bracer_attachment.attached_weapon_type)
 		CRASH("[key_name(user)] attempted to attach the [bracer_attachment] to the [src], with no valid attached_weapon.")
@@ -594,6 +605,10 @@
 
 	. = check_random_function(user, forced)
 	if(.)
+		return
+
+	if(blades_enabled == FALSE)
+		to_chat(user, SPAN_WARNING("These bracers lack this function."))
 		return
 
 	if(bracer_attachment_deployed)
@@ -746,6 +761,10 @@
 	var/mob/living/carbon/human/M = user
 	var/new_alpha = cloak_alpha
 
+	if(cloak_enabled == FALSE)
+		to_chat(user, SPAN_WARNING("These bracers lack this function."))
+		return FALSE
+
 	if(!istype(M) || M.is_mob_incapacitated())
 		return FALSE
 
@@ -874,6 +893,10 @@
 	if(.)
 		return
 
+	if(caster_enabled == FALSE)
+		to_chat(user, SPAN_WARNING("These bracers lack this function."))
+		return
+
 	if(caster_deployed)
 		if(caster.loc == user)
 			user.drop_inv_item_to_loc(caster, src, FALSE, TRUE)
@@ -971,6 +994,9 @@
 	var/mob/living/carbon/human/boomer = user
 	var/area/grounds = get_area(boomer)
 
+	if(sd_enabled == FALSE)
+		to_chat(user, SPAN_WARNING("These bracers lack this function."))
+		return
 	if(HAS_TRAIT(boomer, TRAIT_CLOAKED))
 		to_chat(boomer, SPAN_WARNING("Not while you're cloaked. It might disrupt the sequence."))
 		return
@@ -1155,6 +1181,10 @@
 	if(user.is_mob_incapacitated())
 		return FALSE
 
+	if(healing_enabled == FALSE)
+		to_chat(user, SPAN_WARNING("These bracers lack this function."))
+		return FALSE
+
 	. = check_random_function(user, forced)
 	if(.)
 		return
@@ -1188,6 +1218,10 @@
 
 /obj/item/clothing/gloves/yautja/hunter/proc/human_injectors_internal(mob/user, forced = FALSE)
 	if(user.is_mob_incapacitated())
+		return FALSE
+
+	if(healing_enabled == FALSE)
+		to_chat(user, SPAN_WARNING("These bracers lack this function."))
 		return FALSE
 
 	. = check_random_function(user, forced)
@@ -1228,6 +1262,10 @@
 	if(user.is_mob_incapacitated())
 		return FALSE
 
+	if(healing_enabled == FALSE)
+		to_chat(user, SPAN_WARNING("These bracers lack this function."))
+		return FALSE
+
 	. = check_random_function(user, forced)
 	if(.)
 		return
@@ -1264,6 +1302,10 @@
 
 /obj/item/clothing/gloves/yautja/hunter/proc/call_disc_internal(mob/user, forced = FALSE)
 	if(user.is_mob_incapacitated())
+		return FALSE
+
+	if(smartdisc_enabled == FALSE)
+		to_chat(user, SPAN_WARNING("These bracers lack this function."))
 		return FALSE
 
 	. = check_random_function(user, forced)

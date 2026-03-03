@@ -220,7 +220,7 @@
 /datum/ammo/energy/yautja/caster/lance
 	name = "plasma lance"
 	flags_ammo_behavior = AMMO_EXPLOSIVE|AMMO_HITS_TARGET_TURF|AMMO_ANTISTRUCT
-	shell_speed = AMMO_SPEED_INSTANT
+	shell_speed = AMMO_SPEED_INSTANT // travels 300 tiles in one tick, perfect for drawing an evil-ass laser beam from you to where you hit!
 	scatter = SCATTER_AMOUNT_NONE
 	accuracy = HIT_ACCURACY_MULT_TIER_10
 	penetration = ARMOR_PENETRATION_TIER_10
@@ -230,49 +230,65 @@
 	max_range = 10
 	var/vehicle_slowdown_time = 5 SECONDS
 
-/datum/ammo/energy/yautja/caster/lance/on_hit_mob(mob/all_targets, obj/projectile/lethal_projectile)
+/datum/ammo/energy/yautja/caster/lance/proc/shaboomboom(obj/projectile/projectile, atom/impact_atom)
+	if(!projectile || !impact_atom)
+		return
+	var/mob/living/user = projectile.firer
+	if(!user)
+		return
+	var/turf/impact_turf = get_turf(impact_atom)
+	if(!impact_turf)
+		return
+	var/datum/beam/plasma_lance = user.beam(impact_turf, "light_beam", 'icons/effects/beam.dmi', time = 0.35 SECONDS, maxdistance = max_range, beam_type = /obj/effect/ebeam/laser/plasma_lance, always_turn = TRUE)
+	if(!plasma_lance || !plasma_lance.visuals)
+		return
+	animate(plasma_lance.visuals, alpha = 0, time = 0.3 SECONDS, color = COLOR_PURPLE, luminosity = 3, easing = SINE_EASING|EASE_OUT)
+
+/datum/ammo/energy/yautja/caster/lance/on_hit_mob(mob/mob, obj/projectile/projectile)
+	shaboomboom(projectile, mob)
 	var/turf/turf = get_turf(mob)
 	mob.ex_act(150, projectile.dir, projectile.weapon_cause_data, 100)
 	mob.apply_effect(3, WEAKEN)
 	mob.apply_effect(3, PARALYZE)
-	if(ishuman_strict(mob)) // functions like an AP rocket, but it's hitscan
+	if(ishuman_strict(mob))
 		mob.ex_act(300, null, projectile.weapon_cause_data, 100)
-	cell_explosion(turf, 100, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data) // weaker boom than a normal HPC otherwise. land direct hits!
+	cell_explosion(turf, 100, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
 
-/datum/ammo/energy/yautja/caster/lance/on_hit_turf(mob/all_targets, obj/projectile/lethal_projectile)
+/datum/ammo/energy/yautja/caster/lance/on_hit_turf(turf/turf, obj/projectile/projectile)
+	shaboomboom(projectile, turf)
 	var/hit_something = 0
 	for(var/mob/mob in turf)
 		mob.ex_act(150, projectile.dir, projectile.weapon_cause_data, 100)
 		mob.apply_effect(3, WEAKEN)
 		mob.apply_effect(3, PARALYZE)
 		hit_something = 1
-		continue
 	if(!hit_something)
 		for(var/obj/object in turf)
 			if(object.density)
 				object.ex_act(150, projectile.dir, projectile.weapon_cause_data, 100)
 				hit_something = 1
-				continue
 	if(!hit_something)
 		turf.ex_act(150, projectile.dir, projectile.weapon_cause_data, 200)
-
 	cell_explosion(turf, 100, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
 
-/datum/ammo/energy/yautja/caster/lance/on_hit_obj(obj/any_object, obj/projectile/lethal_projectile)
-	if(istype(any_object, /obj/vehicle/multitile))
-		var/obj/vehicle/multitile/multitile_vehicle = any_object
+/datum/ammo/energy/yautja/caster/lance/on_hit_obj(obj/object, obj/projectile/projectile)
+	shaboomboom(projectile, object)
+	if(istype(object, /obj/vehicle/multitile))
+		var/obj/vehicle/multitile/multitile_vehicle = object
 		multitile_vehicle.next_move = world.time + vehicle_slowdown_time
 		playsound(multitile_vehicle, 'sound/effects/meteorimpact.ogg', 35)
-		multitile_vehicle.at_munition_interior_explosion_effect(cause_data = create_cause_data("Plasma Lance", lethal_projectile.firer))
+		multitile_vehicle.at_munition_interior_explosion_effect(cause_data = create_cause_data("Plasma Lance", projectile.firer))
 		multitile_vehicle.interior_crash_effect()
-		multitile_vehicle.ex_act(150, lethal_projectile.dir, lethal_projectile.weapon_cause_data, 100)
+		multitile_vehicle.ex_act(150, projectile.dir, projectile.weapon_cause_data, 100)
+		cell_explosion(get_turf(projectile), 100, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
 	else
 		var/turf/turf = get_turf(object)
 		object.ex_act(150, projectile.dir, projectile.weapon_cause_data, 100)
-	cell_explosion(turf, 100, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
+		cell_explosion(turf, 100, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
 
-/datum/ammo/energy/yautja/caster/lance/do_at_max_range(obj/projectile/lethal_projectile)
-	cell_explosion(get_turf(lethal_projectile), 170, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, lethal_projectile.weapon_cause_data)
+/datum/ammo/energy/yautja/caster/lance/do_at_max_range(obj/projectile/projectile)
+	shaboomboom(projectile, get_turf(projectile))
+	cell_explosion(get_turf(projectile), 100, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
 
 /datum/ammo/energy/yautja/rifle/bolt
 	name = "plasma rifle bolt"

@@ -3,7 +3,7 @@
 
 /obj/item/weapon/gun/energy/yautja/plasmacarbine
 	name = "plasma carbine"
-	desc = "A short-barreled rapid-fire assault weapon only given to military caste soldiers, unsuitable for hunting actual prey. Features a deadly burst-fire mode, alongside incendiary or impact-explosive rounds."
+	desc = "A short-barreled rapid-fire assault weapon only given to military caste soldiers, unsuitable for hunting actual prey. Features a deadly burst-fire mode, alongside incendiary or impact-explosive rounds. Although more accurate when wielded, it can be fired with one hand."
 	icon_state = "plasmacarbine"
 	item_state = "plasmacarbine"
 	unacidable = TRUE
@@ -15,6 +15,8 @@
 	var/charge_time = 50
 	// charge drained per shot, double for explosive bolts
 	var/shot_cost = 1
+	// fire mode - incendiary or explosive
+	var/mode = FIRE_MODE_INCENDIARY
 	flags_gun_features = GUN_UNUSUAL_DESIGN
 	flags_item = ITEM_PREDATOR|TWOHANDED
 
@@ -40,10 +42,10 @@
 	..()
 	set_fire_delay(FIRE_DELAY_TIER_9)
 	set_burst_amount(BURST_AMOUNT_TIER_2)
-	set_burst_delay(FIRE_DELAY_TIER_9
+	set_burst_delay(FIRE_DELAY_TIER_11)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_10
-	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_10
-	scatter = SCATTER_AMOUNT_TIER_6
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_8
+	scatter = SCATTER_AMOUNT_TIER_9
 	scatter_unwielded = SCATTER_AMOUNT_TIER_6
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 
@@ -116,13 +118,13 @@
 	item_state = "plasma_cannons"
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	item_icons = list(
-		WEAR_BACK = 'icons/mob/humans/onmob/hunter/suit_storage.dmi',
-		WEAR_J_STORE = 'icons/mob/humans/onmob/hunter/suit_storage.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
+		WEAR_BACK = 'icons/mob/humans/onmob/hunter/mcaste_gear.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/hunter/mcaste_gear.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/mcaste_gear.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/mcaste_gear.dmi'
 	)
 	fire_sound = 'sound/weapons/pred_plasmacaster_fire.ogg'
-	ammo = /datum/ammo/energy/yautja/caster/bolt/single_stun
+	ammo = /datum/ammo/energy/yautja/caster/lance
 	muzzle_flash = "muzzle_flash_blue"
 	muzzle_flash_color = COLOR_MAGENTA
 	w_class = SIZE_HUGE
@@ -132,25 +134,26 @@
 	flags_item = NOBLUDGEON|IGNITING_ITEM
 	flags_gun_features = GUN_UNUSUAL_DESIGN
 
-	var/obj/item/clothing/gloves/yautja/hunter/source = null
-	charge_cost = 200
-
-	var/obj/effect/ebeam/plasma_beam_type = /obj/effect/ebeam/laser/plasma_lance // hitscan! shaboomboom!
+	var/obj/item/storage/backpack/yautja/advanced/source = null
+	charge_cost = 1000 // three shots until dry, recharges fast but you still need to run from a fight or swap to a carbine to fire it again
 
 /obj/item/weapon/gun/energy/yautja/cannon/Initialize(mapload)
 	. = ..()
 	icon_state = "plasma_cannons"
 	item_state = "plasma_cannons"
-	. = ..()
 	source = loc
 	verbs -= /obj/item/weapon/gun/verb/field_strip
 	verbs -= /obj/item/weapon/gun/verb/use_toggle_burst
 	verbs -= /obj/item/weapon/gun/verb/empty_mag
 	verbs -= /obj/item/verb/use_unique_action
 
+/obj/item/weapon/gun/energy/yautja/cannon/Destroy()
+	. = ..()
+	source = null
+
 /obj/item/weapon/gun/energy/yautja/cannon/set_gun_config_values()
 	..()
-	set_fire_delay(FIRE_DELAY_TIER_6)
+	set_fire_delay(FIRE_DELAY_TIER_2 * 6)
 	accuracy_mult = BASE_ACCURACY_MULT
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT + FIRE_DELAY_TIER_6
 	scatter = SCATTER_AMOUNT_TIER_6
@@ -162,15 +165,15 @@
 	to_chat(M, SPAN_NOTICE("You deactivate your plasma cannons."))
 	update_mouse_pointer(M, FALSE)
 
-	var/datum/action/predator_action/bracer/caster/caster_action
-	for(caster_action as anything in M.actions)
-		if(istypestrict(caster_action, /datum/action/predator_action/bracer/caster))
-			caster_action.update_button_icon(FALSE)
+	var/datum/action/predator_action/pack/cannons/cannon_action
+	for(cannon_action as anything in M.actions)
+		if(istypestrict(cannon_action, /datum/action/predator_action/pack/cannons))
+			cannon_action.update_button_icon(FALSE)
 			break
 
 	if(source)
 		forceMove(source)
-		source.caster_deployed = FALSE
+		source.cannons_deployed = FALSE
 	..()
 
 /obj/item/weapon/gun/energy/yautja/cannon/able_to_fire(mob/user)
@@ -201,12 +204,3 @@
 		var/mob/living/carbon/human/user = usr
 		user.update_power_display(perc)
 	return TRUE
-
-/obj/item/weapon/gun/energy/yautja/cannon/handle_fire(atom/target, mob/living/user)
-	var/datum/beam/plasma_lance
-	if(!has_ammunition)
-		click_empty(user)
-		return
-	plasma_lance = target.beam(user, "light_beam", 'icons/effects/beam.dmi', time = 0.7 SECONDS, maxdistance = 30, beam_type = plasma_beam_type, always_turn = TRUE)
-	animate(plasma_lance.visuals, alpha = 255, time = 0.7 SECONDS, color = COLOR_PURPLE, luminosity = 3 , easing = SINE_EASING|EASE_OUT) // imaginary technique: hollow purple
-	. = ..() // fire the hitscan bolt after visualizing the death beam

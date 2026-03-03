@@ -10754,10 +10754,7 @@
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north)
 "aAT" = (
-/obj/structure/surface/table/almayer{
-	dir = 8;
-	flipped = 1
-	},
+/obj/structure/surface/table/almayer/flipped/west,
 /turf/open/floor/prison/blue/east,
 /area/tyrargo/indoors/admin/ground)
 "aAU" = (
@@ -10823,19 +10820,13 @@
 /area/tyrargo/indoors/admin/ground)
 "aBe" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/surface/table/almayer{
-	dir = 4;
-	flipped = 1
-	},
 /obj/effect/landmark/objective_landmark/science,
+/obj/structure/surface/table/almayer,
 /turf/open/floor/prison/darkred2/west,
 /area/tyrargo/indoors/admin/ground)
 "aBf" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/surface/table/almayer{
-	dir = 8;
-	flipped = 1
-	},
+/obj/structure/surface/table/almayer/flipped/west,
 /turf/open/floor/prison/blue/east,
 /area/tyrargo/indoors/admin/ground)
 "aBg" = (
@@ -11065,16 +11056,12 @@
 /turf/open/floor/prison/blue,
 /area/tyrargo/indoors/admin/ground)
 "aBJ" = (
-/obj/structure/surface/table/almayer{
-	flipped = 1
-	},
+/obj/structure/surface/table/almayer/flipped,
 /turf/open/floor/prison/green/southwest,
 /area/tyrargo/indoors/admin/ground)
 "aBK" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/surface/table/almayer{
-	flipped = 1
-	},
+/obj/structure/surface/table/almayer/flipped,
 /turf/open/floor/prison/green,
 /area/tyrargo/indoors/admin/ground)
 "aBL" = (
@@ -11134,15 +11121,11 @@
 /area/tyrargo/indoors/admin/ground)
 "aBT" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/surface/table/almayer{
-	flipped = 1
-	},
+/obj/structure/surface/table/almayer/flipped,
 /turf/open/floor/prison/green/north,
 /area/tyrargo/indoors/admin/ground)
 "aBU" = (
-/obj/structure/surface/table/almayer{
-	flipped = 1
-	},
+/obj/structure/surface/table/almayer/flipped,
 /turf/open/floor/prison/green/northeast,
 /area/tyrargo/indoors/admin/ground)
 "aBV" = (
@@ -14391,14 +14374,12 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aJP" = (
-/obj/structure/surface/table/almayer{
-	flipped = 1
-	},
 /obj/item/prop/flower_vase/bluewhiteflowers{
 	pixel_y = -1;
 	pixel_x = 2;
 	layer = 3.04
 	},
+/obj/structure/surface/table/almayer,
 /turf/open/floor/hybrisa/wood/darkerwood,
 /area/tyrargo/indoors/apartment/north_ground)
 "aJQ" = (
@@ -43694,7 +43675,7 @@
 /turf/open/floor/corsat/squares,
 /area/tyrargo/underground/bunker/ammo_dump_entrance)
 "bWf" = (
-/obj/structure/surface/table/gamblingtable{
+/obj/structure/surface/table/woodentable/gamblingtable{
 	color = "#aeaeae"
 	},
 /turf/open/floor/hybrisa/wood/blackwood,
@@ -54860,7 +54841,7 @@
 /turf/open/floor/strata/floor2,
 /area/tyrargo/indoors/admin/upper)
 "cGr" = (
-/obj/structure/surface/table/gamblingtable{
+/obj/structure/surface/table/woodentable/gamblingtable{
 	color = "#aeaeae"
 	},
 /obj/effect/landmark/objective_landmark/close,
@@ -54910,7 +54891,7 @@
 /turf/open/floor/almayer_hull/outerhull_dir/west,
 /area/tyrargo/indoors/bar/upper/external)
 "cGC" = (
-/obj/structure/surface/table/gamblingtable{
+/obj/structure/surface/table/woodentable/gamblingtable{
 	color = "#aeaeae"
 	},
 /obj/effect/landmark/objective_landmark/close,
@@ -61266,7 +61247,7 @@
 /turf/open/floor/strata/fake_wood,
 /area/tyrargo/indoors/bar/upper)
 "cYb" = (
-/obj/structure/surface/table/gamblingtable{
+/obj/structure/surface/table/woodentable/gamblingtable{
 	color = "#aeaeae"
 	},
 /obj/item/toy/deck{
@@ -61276,7 +61257,7 @@
 /turf/open/floor/hybrisa/wood/blackwood,
 /area/tyrargo/indoors/bar/upper)
 "cYc" = (
-/obj/structure/surface/table/gamblingtable{
+/obj/structure/surface/table/woodentable/gamblingtable{
 	color = "#aeaeae"
 	},
 /obj/item/reagent_container/food/drinks/drinkingglass{
@@ -61287,7 +61268,7 @@
 /turf/open/floor/hybrisa/wood/greywood,
 /area/tyrargo/indoors/bar/upper)
 "cYd" = (
-/obj/structure/surface/table/gamblingtable{
+/obj/structure/surface/table/woodentable/gamblingtable{
 	color = "#aeaeae"
 	},
 /obj/item/spacecash/c200{
@@ -61316,7 +61297,7 @@
 /turf/open/floor/strata/fake_wood,
 /area/tyrargo/indoors/bar/upper)
 "cYg" = (
-/obj/structure/surface/table/gamblingtable{
+/obj/structure/surface/table/woodentable/gamblingtable{
 	color = "#aeaeae"
 	},
 /obj/item/spacecash/c200{
@@ -61325,7 +61306,7 @@
 /turf/open/floor/hybrisa/wood/greywood,
 /area/tyrargo/indoors/bar/upper)
 "cYh" = (
-/obj/structure/surface/table/gamblingtable{
+/obj/structure/surface/table/woodentable/gamblingtable{
 	color = "#aeaeae"
 	},
 /obj/item/device/flashlight/lamp/green{
@@ -61342,7 +61323,7 @@
 /turf/open/floor/hybrisa/wood/greywood,
 /area/tyrargo/indoors/bar/upper)
 "cYj" = (
-/obj/structure/surface/table/gamblingtable{
+/obj/structure/surface/table/woodentable/gamblingtable{
 	color = "#aeaeae"
 	},
 /obj/item/reagent_container/food/drinks/drinkingglass{
@@ -61353,7 +61334,7 @@
 /turf/open/floor/hybrisa/wood/blackwood,
 /area/tyrargo/indoors/bar/upper)
 "cYk" = (
-/obj/structure/surface/table/gamblingtable{
+/obj/structure/surface/table/woodentable/gamblingtable{
 	color = "#aeaeae"
 	},
 /obj/item/toy/handcard/aceofspades{
@@ -74587,10 +74568,6 @@
 	},
 /turf/open/floor/prison/green/southeast,
 /area/tyrargo/indoors/mall)
-"dFc" = (
-/obj/structure/window/framed/strata/reinforced,
-/turf/open/asphalt/cement,
-/area/tyrargo/indoors/mall)
 "dFd" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/asphalt/cement,
@@ -86211,10 +86188,6 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/hybrisa/tile/tilegrey,
-/area/tyrargo/indoors/museum_storage/ground)
-"ehv" = (
-/obj/structure/window/framed/strata/reinforced,
-/turf/open/asphalt/cement,
 /area/tyrargo/indoors/museum_storage/ground)
 "ehw" = (
 /obj/structure/machinery/light/small{
@@ -104822,11 +104795,9 @@
 /turf/closed/wall/strata_ice/forest/rock,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "gDS" = (
-/obj/structure/surface/table/almayer{
-	flipped = 1
-	},
 /obj/item/trash/kepler,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table/almayer,
 /turf/open/floor/hybrisa/wood/redwood,
 /area/tyrargo/indoors/apartment/south_ground)
 "gEd" = (
@@ -107517,12 +107488,10 @@
 /turf/open/gm/dirt/dark_brown/variant_1,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "msI" = (
-/obj/structure/surface/table/almayer{
-	flipped = 1
-	},
 /obj/item/device/flashlight/lamp/on{
 	pixel_x = 6
 	},
+/obj/structure/surface/table/almayer,
 /turf/open/floor/hybrisa/wood/darkerwood,
 /area/tyrargo/indoors/apartment/north_ground)
 "mtB" = (
@@ -112339,12 +112308,10 @@
 /area/tyrargo/outdoors/colony_streets/north_west)
 "vgM" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/surface/table/almayer{
-	flipped = 1
-	},
 /obj/item/device/flashlight/lamp/on{
 	pixel_x = 6
 	},
+/obj/structure/surface/table/almayer,
 /turf/open/floor/hybrisa/carpet/carpetreddeco,
 /area/tyrargo/indoors/apartment/south_ground)
 "vhI" = (
@@ -113346,7 +113313,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/indoors/admin/ground)
 "wFS" = (
-/obj/structure/surface/table/gamblingtable{
+/obj/structure/surface/table/woodentable/gamblingtable{
 	color = "#aeaeae"
 	},
 /turf/open/floor/hybrisa/wood/greywood,
@@ -113539,9 +113506,6 @@
 /turf/open/floor/plating/platingdmg2,
 /area/tyrargo/indoors/apartment/south_upper)
 "wYk" = (
-/obj/structure/surface/table/almayer{
-	flipped = 1
-	},
 /obj/item/device/flashlight/lamp/on{
 	pixel_x = 6
 	},
@@ -113549,6 +113513,7 @@
 	dir = 4;
 	light_color = "#A7DBB6"
 	},
+/obj/structure/surface/table/almayer,
 /turf/open/floor/hybrisa/wood/redwood,
 /area/tyrargo/indoors/apartment/south_ground)
 "wYA" = (
@@ -194687,9 +194652,9 @@ cNw
 cVV
 alY
 alY
-dFc
-dFc
-dFc
+aOT
+aOT
+aOT
 alY
 alY
 lkt
@@ -196337,8 +196302,8 @@ ePz
 cln
 cmO
 alY
-dFc
-dFc
+aOT
+aOT
 alY
 cNo
 cev
@@ -197990,8 +197955,8 @@ doT
 cmR
 ckE
 ckE
-ehv
-ehv
+cma
+cma
 ckE
 ckE
 ehE
@@ -197999,8 +197964,8 @@ ehE
 ckE
 ckE
 ckE
-ehv
-ehv
+cma
+cma
 dbB
 dbB
 doL

@@ -153,7 +153,7 @@
 "ax" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "clf_umbilical_1";
-	name = "\improper Umbillical Airlock"
+	name = "\improper Umbilical Airlock"
 	},
 /turf/open/floor/plating,
 /area/fiorina/station/clf_ship)
@@ -182,7 +182,7 @@
 /area/fiorina/station/park)
 "aC" = (
 /obj/structure/barricade/plasteel/wired{
-	icon_state = "plasteel_2";
+	icon_state = "folding_plasteel_2";
 	density = 1;
 	closed = 0;
 	dir = 4
@@ -272,7 +272,7 @@
 "dq" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "clf_umbilical_1";
-	name = "\improper Umbillical Airlock"
+	name = "\improper Umbilical Airlock"
 	},
 /turf/open/floor/delivery,
 /area/fiorina/station/clf_ship)
@@ -660,7 +660,7 @@
 /area/fiorina/station/clf_ship)
 "nc" = (
 /obj/structure/barricade/plasteel/wired{
-	icon_state = "plasteel_2";
+	icon_state = "folding_plasteel_2";
 	density = 1;
 	closed = 0;
 	dir = 8
@@ -1041,7 +1041,7 @@
 /obj/effect/decal/cleanable/blood,
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "clf_umbilical_1";
-	name = "\improper Umbillical Airlock"
+	name = "\improper Umbilical Airlock"
 	},
 /turf/open/floor/delivery,
 /area/fiorina/station/clf_ship)
@@ -1595,7 +1595,7 @@
 /area/fiorina/station/clf_ship)
 "Qg" = (
 /obj/structure/barricade/plasteel/wired{
-	icon_state = "plasteel_2";
+	icon_state = "folding_plasteel_2";
 	density = 1;
 	closed = 0;
 	dir = 1
@@ -1741,7 +1741,7 @@
 /area/fiorina/station/clf_ship)
 "Ua" = (
 /obj/structure/barricade/plasteel/wired{
-	icon_state = "plasteel_2";
+	icon_state = "folding_plasteel_2";
 	density = 1;
 	closed = 0;
 	dir = 4
@@ -1787,7 +1787,7 @@
 /area/fiorina/station/clf_ship)
 "UQ" = (
 /obj/structure/barricade/plasteel/wired{
-	icon_state = "plasteel_2";
+	icon_state = "folding_plasteel_2";
 	density = 1;
 	closed = 0;
 	dir = 8

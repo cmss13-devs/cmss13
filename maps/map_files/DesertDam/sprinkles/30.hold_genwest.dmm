@@ -66,9 +66,7 @@
 "ew" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
 	dir = 1;
-	health = 25000;
 	layer = 5;
 	level = 3;
 	pixel_y = 17
@@ -363,9 +361,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
 	dir = 1;
-	health = 25000;
 	layer = 5;
 	level = 3;
 	pixel_y = 17

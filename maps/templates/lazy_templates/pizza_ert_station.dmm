@@ -1319,7 +1319,7 @@
 "rL" = (
 /obj/structure/blocker/invisible_wall,
 /obj/structure/machinery/door/poddoor/almayer{
-	name = "\improper Umbillical Airlock";
+	name = "\improper Umbilical Airlock";
 	unacidable = 1
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
@@ -1403,7 +1403,7 @@
 "sW" = (
 /obj/structure/blocker/invisible_wall,
 /obj/structure/machinery/door/poddoor/almayer{
-	name = "\improper Umbillical Airlock";
+	name = "\improper Umbilical Airlock";
 	unacidable = 1
 	},
 /turf/open/floor/almayer/test_floor4,
@@ -1490,7 +1490,7 @@
 	dir = 2
 	},
 /obj/structure/machinery/door/poddoor/almayer/open{
-	name = "\improper Umbillical Airlock";
+	name = "\improper Umbilical Airlock";
 	id = "pizza_ert_arrival"
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
@@ -2397,7 +2397,7 @@
 /area/adminlevel/ert_station/pizza_station)
 "Ep" = (
 /obj/structure/machinery/door/poddoor/almayer/open{
-	name = "\improper Umbillical Airlock";
+	name = "\improper Umbilical Airlock";
 	id = "pizza_ert_arrival"
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
@@ -2420,7 +2420,7 @@
 /area/adminlevel/ert_station/pizza_station)
 "EO" = (
 /obj/structure/machinery/door/poddoor/almayer/open{
-	name = "\improper Umbillical Airlock";
+	name = "\improper Umbilical Airlock";
 	id = "pizza_ert_arrival"
 	},
 /turf/open/floor/almayer/test_floor4,
@@ -3688,7 +3688,7 @@
 	dir = 2
 	},
 /obj/structure/machinery/door/poddoor/almayer/open{
-	name = "\improper Umbillical Airlock";
+	name = "\improper Umbilical Airlock";
 	id = "pizza_ert_arrival"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -3938,7 +3938,7 @@
 	dir = 2
 	},
 /obj/structure/machinery/door/poddoor/almayer/open{
-	name = "\improper Umbillical Airlock";
+	name = "\improper Umbilical Airlock";
 	id = "pizza_ert_arrival"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -3972,7 +3972,7 @@
 	dir = 2
 	},
 /obj/structure/machinery/door/poddoor/almayer/open{
-	name = "\improper Umbillical Airlock";
+	name = "\improper Umbilical Airlock";
 	id = "pizza_ert_arrival"
 	},
 /turf/open/floor/almayer/test_floor4,

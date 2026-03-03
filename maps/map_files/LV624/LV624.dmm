@@ -457,6 +457,14 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
+"acb" = (
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	name = "\improper Storage Dome";
+	req_access_txt = "100";
+	req_one_access = null
+	},
+/turf/open/floor/dark,
+/area/lv624/lazarus/quartstorage)
 "acc" = (
 /obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/warning/west,
@@ -1378,18 +1386,12 @@
 /turf/open/floor/plating/warnplate/northwest,
 /area/lv624/ground/barrens/central_barrens)
 "afv" = (
-/obj/structure/surface/table/reinforced{
-	dir = 1;
-	flipped = 1
-	},
+/obj/structure/surface/table/flipped/north,
 /turf/open/floor/plating/warnplate/north,
 /area/lv624/ground/barrens/central_barrens)
 "afw" = (
-/obj/structure/surface/table/reinforced{
-	dir = 1;
-	flipped = 1
-	},
 /obj/item/ammo_casing,
+/obj/structure/surface/table/flipped/north,
 /turf/open/floor/plating/warnplate/north,
 /area/lv624/ground/barrens/central_barrens)
 "afx" = (
@@ -1433,10 +1435,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/central_barrens)
 "afG" = (
-/obj/structure/surface/table/reinforced{
-	dir = 8;
-	flipped = 1
-	},
+/obj/structure/surface/table/flipped/west,
 /turf/open/floor/plating/warnplate/west,
 /area/lv624/ground/barrens/central_barrens)
 "afH" = (
@@ -1471,10 +1470,7 @@
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "afO" = (
-/obj/structure/surface/table/reinforced{
-	dir = 4;
-	flipped = 1
-	},
+/obj/structure/surface/table/flipped/east,
 /turf/open/floor/plating/warnplate/east,
 /area/lv624/ground/barrens/central_barrens)
 "afP" = (
@@ -1504,11 +1500,8 @@
 /turf/closed/wall/cult,
 /area/lv624/ground/caves/south_west_caves)
 "afW" = (
-/obj/structure/surface/table/reinforced{
-	dir = 8;
-	flipped = 1
-	},
 /obj/effect/decal/remains/human,
+/obj/structure/surface/table/flipped/west,
 /turf/open/floor/plating/warnplate/west,
 /area/lv624/ground/barrens/central_barrens)
 "afX" = (
@@ -1557,28 +1550,19 @@
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "agh" = (
-/obj/structure/surface/table/reinforced{
-	dir = 1;
-	flipped = 1
-	},
 /obj/item/device/healthanalyzer,
+/obj/structure/surface/table/flipped/north,
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "agi" = (
-/obj/structure/surface/table/reinforced{
-	dir = 1;
-	flipped = 1
-	},
 /obj/item/ammo_magazine/rifle,
 /obj/effect/landmark/good_item,
+/obj/structure/surface/table/flipped/north,
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "agj" = (
 /obj/effect/decal/remains/human,
-/obj/structure/surface/table/reinforced{
-	dir = 1;
-	flipped = 1
-	},
+/obj/structure/surface/table/flipped/north,
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "agk" = (
@@ -1607,10 +1591,7 @@
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "agq" = (
-/obj/structure/surface/table/reinforced{
-	dir = 4;
-	flipped = 1
-	},
+/obj/structure/surface/table/flipped/east,
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "agr" = (
@@ -1621,11 +1602,8 @@
 /turf/open/floor/plating/warnplate/west,
 /area/lv624/ground/barrens/central_barrens)
 "agt" = (
-/obj/structure/surface/table/reinforced{
-	dir = 8;
-	flipped = 1
-	},
 /obj/item/explosive/grenade/high_explosive,
+/obj/structure/surface/table/flipped/west,
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "agu" = (
@@ -1671,11 +1649,8 @@
 /turf/open/gm/dirtgrassborder/east,
 /area/lv624/lazarus/landing_zones/lz2)
 "agD" = (
-/obj/structure/surface/table/reinforced{
-	dir = 8;
-	flipped = 1
-	},
 /obj/effect/landmark/good_item,
+/obj/structure/surface/table/flipped/west,
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "agE" = (
@@ -1695,11 +1670,8 @@
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "agH" = (
-/obj/structure/surface/table/reinforced{
-	dir = 4;
-	flipped = 1
-	},
 /obj/item/explosive/grenade/incendiary,
+/obj/structure/surface/table/flipped/east,
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "agI" = (
@@ -1739,12 +1711,9 @@
 /turf/open/floor/plating/warnplate/west,
 /area/lv624/ground/barrens/central_barrens)
 "agR" = (
-/obj/structure/surface/table/reinforced{
-	dir = 8;
-	flipped = 1
-	},
 /obj/item/ammo_magazine/pistol,
 /obj/item/ammo_casing,
+/obj/structure/surface/table/flipped/west,
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "agS" = (
@@ -1773,11 +1742,8 @@
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "agV" = (
-/obj/structure/surface/table/reinforced{
-	dir = 4;
-	flipped = 1
-	},
 /obj/effect/landmark/good_item,
+/obj/structure/surface/table/flipped/east,
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "agW" = (
@@ -1824,33 +1790,24 @@
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "ahi" = (
-/obj/structure/surface/table/reinforced{
-	dir = 4;
-	flipped = 1
-	},
 /obj/item/attachable/suppressor,
+/obj/structure/surface/table/flipped/east,
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "ahk" = (
-/obj/structure/surface/table/reinforced{
-	flipped = 1
-	},
 /obj/item/ammo_casing,
 /obj/effect/landmark/good_item,
+/obj/structure/surface/table/flipped,
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "ahl" = (
-/obj/structure/surface/table/reinforced{
-	flipped = 1
-	},
 /obj/effect/decal/remains/human,
 /obj/item/ammo_casing,
+/obj/structure/surface/table/flipped,
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "ahm" = (
-/obj/structure/surface/table/reinforced{
-	flipped = 1
-	},
+/obj/structure/surface/table/flipped,
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "ahr" = (
@@ -1905,11 +1862,9 @@
 /turf/open/floor/plating/warnplate/southwest,
 /area/lv624/ground/barrens/central_barrens)
 "ahN" = (
-/obj/structure/surface/table/reinforced{
-	flipped = 1
-	},
 /obj/effect/decal/remains/human,
 /obj/effect/decal/cleanable/blood,
+/obj/structure/surface/table/flipped,
 /turf/open/floor/plating/warnplate,
 /area/lv624/ground/barrens/central_barrens)
 "ahO" = (
@@ -1917,9 +1872,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/containers)
 "ahQ" = (
-/obj/structure/surface/table/reinforced{
-	flipped = 1
-	},
+/obj/structure/surface/table/flipped,
 /turf/open/floor/plating/warnplate,
 /area/lv624/ground/barrens/central_barrens)
 "ahR" = (
@@ -2871,7 +2824,7 @@
 	},
 /obj/item/storage/belt/medical/full,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/whiteblue/north,
+/turf/open/floor/whiteblue/northwest,
 /area/lv624/lazarus/medbay)
 "aou" = (
 /turf/open/floor/whitebluecorner,
@@ -3407,7 +3360,7 @@
 	req_access_txt = "100";
 	req_one_access = null
 	},
-/turf/open/floor/vault,
+/turf/open/floor/dark,
 /area/lv624/lazarus/quartstorage)
 "asR" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
@@ -3511,7 +3464,7 @@
 	req_access_txt = "100";
 	req_one_access = null
 	},
-/turf/open/floor/whitepurple/northeast,
+/turf/open/floor/whitepurplecorner/east,
 /area/lv624/lazarus/fitness)
 "atz" = (
 /obj/structure/window_frame/colony,
@@ -3626,7 +3579,7 @@
 	pixel_y = 4
 	},
 /obj/item/tool/pen,
-/turf/open/floor/white,
+/turf/open/floor/whiteblue/southeast,
 /area/lv624/lazarus/medbay)
 "atX" = (
 /turf/open/floor/whitepurplecorner/east,
@@ -4137,7 +4090,7 @@
 	opacity = 0;
 	req_access_txt = "100"
 	},
-/turf/open/floor/whitepurple/northeast,
+/turf/open/floor/white,
 /area/lv624/lazarus/research)
 "awt" = (
 /obj/effect/decal/remains/human,
@@ -4146,10 +4099,6 @@
 /area/lv624/lazarus/research)
 "awu" = (
 /turf/open/floor,
-/area/lv624/lazarus/fitness)
-"awv" = (
-/obj/effect/decal/cleanable/blood/splatter,
-/turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/fitness)
 "aww" = (
 /obj/structure/machinery/power/apc/no_power/north,
@@ -4239,7 +4188,7 @@
 	name = "\improper Leisure Dome";
 	req_access_txt = "100"
 	},
-/turf/open/floor/whitepurple/northeast,
+/turf/open/floor/whitepurplecorner/east,
 /area/lv624/lazarus/fitness)
 "awQ" = (
 /obj/effect/landmark/monkey_spawn,
@@ -4263,7 +4212,7 @@
 	req_access_txt = "100";
 	req_one_access = null
 	},
-/turf/open/floor/whitepurple/northeast,
+/turf/open/floor/whitepurplecorner/east,
 /area/lv624/lazarus/fitness)
 "awV" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
@@ -4536,9 +4485,6 @@
 "ayv" = (
 /turf/open/floor/white,
 /area/lv624/lazarus/fitness)
-"ayw" = (
-/turf/open/floor/plating,
-/area/lv624/lazarus/main_hall)
 "ayx" = (
 /turf/open/floor/warnwhite/east,
 /area/lv624/lazarus/fitness)
@@ -4630,13 +4576,6 @@
 /area/lv624/lazarus/fitness)
 "ayP" = (
 /turf/closed/wall/r_wall,
-/area/lv624/lazarus/main_hall)
-"ayQ" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Nexus Dome";
-	req_access_txt = "100"
-	},
-/turf/open/floor/plating,
 /area/lv624/lazarus/main_hall)
 "ayR" = (
 /obj/structure/window_frame/colony/reinforced,
@@ -5145,7 +5084,7 @@
 "aBg" = (
 /obj/item/stack/sheet/metal,
 /obj/structure/girder,
-/turf/open/floor,
+/turf/open/floor/plating,
 /area/lv624/lazarus/sleep_female)
 "aBh" = (
 /obj/effect/decal/remains/xeno{
@@ -6759,14 +6698,6 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/closed/wall,
 /area/lv624/lazarus/yggdrasil)
-"aIP" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	dir = 1;
-	name = "\improper Nexus Dome";
-	req_access_txt = "100"
-	},
-/turf/open/floor/whiteyellowcorner/east,
-/area/lv624/lazarus/main_hall)
 "aIV" = (
 /obj/structure/flora/jungle/vines/light_3,
 /obj/structure/flora/jungle/vines/heavy,
@@ -7413,7 +7344,7 @@
 /turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "aMm" = (
-/obj/structure/surface/table/gamblingtable,
+/obj/structure/surface/table/woodentable/gamblingtable,
 /turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "aMn" = (
@@ -8320,11 +8251,8 @@
 /turf/open/gm/grass/grass2,
 /area/lv624/lazarus/yggdrasil)
 "aRq" = (
-/obj/structure/surface/table/reinforced{
-	dir = 1;
-	flipped = 1
-	},
 /obj/structure/machinery/computer/shuttle/dropship/flight/lz1,
+/obj/structure/surface/table/reinforced,
 /turf/open/gm/grass/grass1,
 /area/lv624/landing/console)
 "aRu" = (
@@ -8376,7 +8304,7 @@
 	name = "\improper Nexus Dome Marshal's Quarters";
 	req_access_txt = "100"
 	},
-/turf/open/floor/cult,
+/turf/open/floor/wood,
 /area/lv624/lazarus/captain)
 "aRD" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -8765,7 +8693,7 @@
 	name = "\improper Nexus Dome Freezer";
 	req_access_txt = "100"
 	},
-/turf/open/floor,
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/kitchen)
 "aTE" = (
 /obj/structure/bed/chair{
@@ -8868,7 +8796,7 @@
 	name = "\improper Nexus Dome Director's Quarters";
 	req_access_txt = "100"
 	},
-/turf/open/floor/cult,
+/turf/open/floor/wood,
 /area/lv624/lazarus/hop)
 "aTZ" = (
 /obj/structure/machinery/vending,
@@ -9108,10 +9036,7 @@
 /turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/lv624/ground/colony/north_nexus_road)
 "aVn" = (
-/obj/structure/surface/table/reinforced{
-	dir = 8;
-	flipped = 1
-	},
+/obj/structure/surface/table/flipped/west,
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "aVo" = (
@@ -12825,11 +12750,8 @@
 /turf/open/floor/warning/north,
 /area/lv624/lazarus/landing_zones/lz2)
 "gfc" = (
-/obj/structure/surface/table/reinforced{
-	dir = 8;
-	flipped = 1
-	},
 /obj/effect/landmark/objective_landmark/science,
+/obj/structure/surface/table/flipped/west,
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "ggl" = (
@@ -17294,7 +17216,7 @@
 	phone_category = "Lazarus Landing";
 	phone_id = "Medbay"
 	},
-/turf/open/floor/white,
+/turf/open/floor/whiteblue/east,
 /area/lv624/lazarus/medbay)
 "pzP" = (
 /obj/effect/decal/cleanable/blood/oil,
@@ -19342,7 +19264,7 @@
 "tIg" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor/whiteblue/west,
+/turf/open/floor/whiteblue/southwest,
 /area/lv624/lazarus/medbay)
 "tIw" = (
 /obj/structure/stairs/perspective{
@@ -40739,7 +40661,7 @@ anS
 anS
 anS
 wLe
-pwq
+aoU
 pwq
 wLe
 anF
@@ -40980,7 +40902,7 @@ jHN
 ofv
 jHN
 atw
-awv
+awR
 awP
 atw
 atw
@@ -43691,11 +43613,11 @@ oUy
 oUy
 ayP
 ayu
-aHZ
-aIP
+azt
+aJk
 aJA
-aHZ
-aIP
+azt
+aJk
 aJA
 ayP
 ezz
@@ -47705,7 +47627,7 @@ tsK
 tsK
 axW
 jRm
-ayQ
+aWL
 azt
 azt
 azQ
@@ -47929,7 +47851,7 @@ jRm
 jRm
 mFu
 jRm
-ayw
+azt
 azt
 azt
 azQ
@@ -48377,7 +48299,7 @@ jRm
 jRm
 jRm
 jRm
-ayQ
+aWL
 azu
 azt
 azQ
@@ -48601,7 +48523,7 @@ aWh
 aWh
 god
 jRm
-ayw
+azt
 azu
 azQ
 azt
@@ -57104,7 +57026,7 @@ dLY
 aMr
 asN
 atI
-avS
+acb
 atI
 asN
 ihS

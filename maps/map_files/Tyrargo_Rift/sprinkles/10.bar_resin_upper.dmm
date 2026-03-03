@@ -65,7 +65,7 @@
 /turf/open_space,
 /area/tyrargo/indoors/bar/upper)
 "hp" = (
-/obj/structure/surface/table/gamblingtable{
+/obj/structure/surface/table/woodentable/gamblingtable{
 	color = "#aeaeae"
 	},
 /obj/item/reagent_container/food/drinks/drinkingglass{
@@ -137,7 +137,7 @@
 /turf/open/floor/hybrisa/wood/greywood,
 /area/tyrargo/indoors/bar/upper)
 "nM" = (
-/obj/structure/surface/table/gamblingtable{
+/obj/structure/surface/table/woodentable/gamblingtable{
 	color = "#aeaeae"
 	},
 /obj/item/toy/handcard/aceofspades{
@@ -178,7 +178,7 @@
 /turf/open_space,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "to" = (
-/obj/structure/surface/table/gamblingtable{
+/obj/structure/surface/table/woodentable/gamblingtable{
 	color = "#aeaeae"
 	},
 /obj/item/device/flashlight/lamp/green{
@@ -378,7 +378,7 @@
 /turf/open/floor/almayer_hull/outerhull_dir,
 /area/tyrargo/indoors/bar/upper/external)
 "Pi" = (
-/obj/structure/surface/table/gamblingtable{
+/obj/structure/surface/table/woodentable/gamblingtable{
 	color = "#aeaeae"
 	},
 /obj/effect/landmark/objective_landmark/close,
@@ -441,7 +441,7 @@
 /turf/open/floor/almayer_hull/outerhull_dir/northwest,
 /area/tyrargo/indoors/bar/upper/external)
 "YJ" = (
-/obj/structure/surface/table/gamblingtable{
+/obj/structure/surface/table/woodentable/gamblingtable{
 	color = "#aeaeae"
 	},
 /turf/open/floor/hybrisa/wood/blackwood,

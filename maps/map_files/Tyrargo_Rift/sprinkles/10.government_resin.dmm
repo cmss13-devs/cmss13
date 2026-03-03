@@ -64,9 +64,7 @@
 /area/tyrargo/indoors/admin/ground)
 "cl" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/surface/table/almayer{
-	flipped = 1
-	},
+/obj/structure/surface/table/almayer/flipped,
 /turf/open/floor/prison/green/north,
 /area/tyrargo/indoors/admin/ground)
 "cA" = (
@@ -425,9 +423,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/admin/ground)
 "nj" = (
-/obj/structure/surface/table/almayer{
-	flipped = 1
-	},
+/obj/structure/surface/table/almayer/flipped,
 /turf/open/floor/prison/green/southwest,
 /area/tyrargo/indoors/admin/ground)
 "nv" = (
@@ -670,11 +666,8 @@
 /area/tyrargo/indoors/admin/ground)
 "vB" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/surface/table/almayer{
-	dir = 4;
-	flipped = 1
-	},
 /obj/effect/landmark/objective_landmark/science,
+/obj/structure/surface/table/almayer,
 /turf/open/floor/prison/darkred2/west,
 /area/tyrargo/indoors/admin/ground)
 "vK" = (
@@ -1218,9 +1211,7 @@
 /area/tyrargo/indoors/admin/ground)
 "PI" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/surface/table/almayer{
-	flipped = 1
-	},
+/obj/structure/surface/table/almayer/flipped,
 /turf/open/floor/prison/green,
 /area/tyrargo/indoors/admin/ground)
 "Qe" = (
@@ -1346,9 +1337,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/admin/ground)
 "Uq" = (
-/obj/structure/surface/table/almayer{
-	flipped = 1
-	},
+/obj/structure/surface/table/almayer/flipped,
 /turf/open/floor/prison/green/northeast,
 /area/tyrargo/indoors/admin/ground)
 "Uy" = (
